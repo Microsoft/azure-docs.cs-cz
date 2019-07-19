@@ -1,20 +1,20 @@
 ---
 title: Co je Azure Container Instances?
-description: Služba Azure Container Instances nabízí nejrychlejší a nejjednodušší způsob spouštění izolovaných kontejnerech v Azure, aniž byste museli spravovat virtuální počítače a bez nutnosti přijmout vyšší úrovně nástroje orchestrator.
+description: Služba Azure Container Instances nabízí nejrychlejší a nejjednodušší způsob, jak spouštět izolované kontejnery v Azure, aniž by bylo nutné spravovat virtuální počítače a bez nutnosti přijmout Orchestrator vyšší úrovně.
 services: container-instances
 author: dlepow
-manager: jeconnoc
+manager: gwallace
 ms.service: container-instances
 ms.topic: overview
 ms.date: 04/25/2019
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 0ec0280ab2a39674a1b41120f0a8791dfb8b1922
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: a07eda709c813e68bc3e4f08b6aab3f93dec65a6
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65073292"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68325744"
 ---
 # <a name="what-is-azure-container-instances"></a>Co je Azure Container Instances?
 
@@ -38,7 +38,7 @@ Kontejnery tradičně nabízejí izolaci závislostí aplikace a zásady správn
 
 Kontejnery jsou obvykle optimalizované pro spouštění jenom jedné aplikace, ale konkrétní požadavky těchto aplikací se můžou značně lišit. Služba Azure Container Instances zajišťuje optimální využití díky tomu, že umožňuje přesnou specifikaci jader procesoru a paměti. Platíte podle toho, co potřebujete, a účtuje se po sekundách, takže můžete podrobně upravovat náklady podle vašich aktuálních potřeb.
 
-Pro úlohy náročné na výpočetní, jako jsou machine learning, Azure Container Instances může plánovat kontejnery Linuxu používat NVIDIA Tesla [GPU prostředky](container-instances-gpu.md) (preview).
+Pro úlohy náročné na výpočetní výkon, jako je Machine Learning, může Azure Container Instances naplánovat kontejnery Linux na používání [prostředků GPU](container-instances-gpu.md) NVIDIA Tesla (Preview).
 
 ## <a name="persistent-storage"></a>Trvalé úložiště
 
@@ -48,18 +48,18 @@ Pro načtení a uložení stavu pomocí služby Azure Container Instances nabíz
 
 Služba Azure Container Instances může plánovat kontejnery Windows i Linuxu pomocí stejného rozhraní API. Při vytváření [skupiny kontejnerů](container-instances-container-groups.md) stačí jednoduše zadat typ operačního systému.
 
-Některé funkce jsou momentálně omezené jenom na Linuxové kontejnery:
+Některé funkce jsou aktuálně omezené na kontejnery Linux:
 
 * Více kontejnerů na skupinu kontejnerů
-* Připojení svazku ([Azure Files](container-instances-volume-azure-files.md), [emptyDir](container-instances-volume-emptydir.md), [GitRepo](container-instances-volume-gitrepo.md), [tajný klíč](container-instances-volume-secret.md))
-* [Metriky využití prostředků](container-instances-monitor.md) službou Azure Monitor
-* [Nasazení virtuální sítě](container-instances-vnet.md) (preview)
-* [Prostředky GPU](container-instances-gpu.md) (preview)
+* Připojení svazku ([soubory Azure](container-instances-volume-azure-files.md), [emptyDir](container-instances-volume-emptydir.md), [gitrepo nepodporují](container-instances-volume-gitrepo.md), [tajný kód](container-instances-volume-secret.md))
+* [Metriky využití prostředků](container-instances-monitor.md) pomocí Azure monitor
+* [Nasazení virtuální sítě](container-instances-vnet.md) Tisk
+* [Zdroje GPU](container-instances-gpu.md) Tisk
 
-Nasazení kontejneru Windows, použijte Image na společné platformě [základní Image Windows](container-instances-faq.md#what-windows-base-os-images-are-supported).
+Pro nasazení kontejnerů Windows používejte image založené na běžných [bitových kopiích Windows Base](container-instances-faq.md#what-windows-base-os-images-are-supported).
 
 > [!NOTE]
-> Použití založené na Windows Server 2019 imagí ve službě Azure Container Instances je ve verzi preview.
+> Používání imagí založených na Windows serveru 2019 v Azure Container Instances je ve verzi Preview.
 
 ## <a name="co-scheduled-groups"></a>Společně plánované skupiny
 
@@ -70,9 +70,9 @@ Azure Container Instances podporuje plánování [skupin více kontejnerů](cont
 Tato funkce služby Azure Container Instances je aktuálně ve verzi Preview a umožňuje [nasazení instancí kontejneru do virtuální sítě Azure](container-instances-vnet.md). Když nasadíte instance kontejnerů do podsítě ve virtuální síti, můžou zabezpečeně komunikovat s jinými prostředky ve virtuální síti včetně těch, které jsou v místním prostředí (prostřednictvím [brány virtuální sítě](../vpn-gateway/vpn-gateway-about-vpngateways.md) nebo [ExpressRoute](../expressroute/expressroute-introduction.md)).
 
 > [!IMPORTANT]
-> Některé funkce Azure Container Instances jsou ve verzi preview a některé [platí omezení](container-instances-vnet.md#preview-limitations). Verze Preview vám zpřístupňujeme pod podmínkou, že budete souhlasit s [dodatečnými podmínkami použití][terms-of-use]. Některé aspekty těchto funkcí může změnit před obecné dostupnosti (GA).
+> Některé funkce Azure Container Instances jsou ve verzi Preview a platí některá [omezení](container-instances-vnet.md#preview-limitations). Verze Preview vám zpřístupňujeme pod podmínkou, že budete souhlasit s [dodatečnými podmínkami použití][terms-of-use]. Některé aspekty těchto funkcí se mohou změnit před všeobecnou dostupností (GA).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Vyzkoušejte si nasazení kontejneru do Azure jediným příkazem s využitím naší příručky Rychlý start:
 

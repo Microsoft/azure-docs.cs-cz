@@ -1,31 +1,31 @@
 ---
-title: Připojení svazku služby soubory Azure ve službě Azure Container Instances
-description: Zjistěte, jak připojení svazku služby soubory Azure k uložení stavu pomocí služby Azure Container Instances
+title: Připojení svazku souborů Azure v Azure Container Instances
+description: Naučte se, jak připojit svazek souborů Azure k trvalému stavu pomocí Azure Container Instances
 services: container-instances
 author: dlepow
-manager: jeconnoc
+manager: gwallace
 ms.service: container-instances
 ms.topic: article
 ms.date: 07/08/2019
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: bc09aa500743d608c0a3a7a379fe9584c9c55e9b
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: 25cac6a66baeb1587e4b5ba3f0923ca9c4394706
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67657626"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68325484"
 ---
-# <a name="mount-an-azure-file-share-in-azure-container-instances"></a>Připojení sdílené složky Azure ve službě Azure Container Instances
+# <a name="mount-an-azure-file-share-in-azure-container-instances"></a>Připojení sdílené složky Azure v Azure Container Instances
 
-Ve výchozím nastavení Azure Container Instances jsou bezstavové. Pokud kontejner dojde k chybě nebo zastaví, veškerý její stav bude ztracena. Zachovat stav i mimo dobu života kontejneru, musí připojit svazek z externího úložiště. Tento článek popisuje, jak připojit sdílenou složku Azure vytvořené pomocí [Azure Files](../storage/files/storage-files-introduction.md) pro použití se službou Azure Container Instances. Azure Files nabízí plně spravované sdílené složky v cloudu, které jsou přístupné přes standardní protokol Server Message Block (SMB). Sdílené složky Azure pomocí Azure Container Instances nabízí sdílení souborů funkce podobně jako u sdílené složky Azure s virtuálními počítači Azure.
+Ve výchozím nastavení jsou Azure Container Instances Bezstavová. Pokud dojde k chybě nebo zastavení kontejneru, veškerý jeho stav bude ztracen. Chcete-li zachovat stav po dobu životnosti kontejneru, je nutné připojit svazek z externího úložiště. Tento článek ukazuje, jak připojit sdílenou složku Azure vytvořenou se [soubory Azure](../storage/files/storage-files-introduction.md) pro použití s Azure Container Instances. Azure Files nabízí plně spravované sdílené složky v cloudu, které jsou přístupné přes standardní protokol Server Message Block (SMB). Použití sdílené složky Azure s Azure Container Instances poskytuje funkce pro sdílení souborů podobně jako použití sdílené složky Azure s virtuálními počítači Azure.
 
 > [!NOTE]
-> Připojením sdílené složky služby soubory Azure je momentálně omezené jenom na Linuxové kontejnery. Pracujeme na všechny funkce byly do kontejnerů Windows, můžete najít aktuální rozdíly pro tyto platformy v [přehled](container-instances-overview.md#linux-and-windows-containers).
+> Připojení sdílené složky služby soubory Azure je aktuálně omezené na kontejnery Linux. Pracujeme na tom, abychom do kontejnerů Windows přenesli všechny funkce. aktuální rozdíly na platformách najdete v [přehledu](container-instances-overview.md#linux-and-windows-containers).
 
 ## <a name="create-an-azure-file-share"></a>Vytvoření sdílené složky Azure
 
-Než začnete používat sdílené složky Azure pomocí služby Azure Container Instances, je třeba ji vytvořit. Spusťte následující skript k vytvoření účtu úložiště pro hostování sdílené složky a sdílené složky, samotného. Název účtu úložiště musí být globálně jedinečný, takže skript přidá do řetězce base náhodnou hodnotu.
+Předtím, než použijete sdílenou složku Azure s Azure Container Instances, je nutné ji vytvořit. Spuštěním následujícího skriptu vytvořte účet úložiště pro hostování sdílené složky a samotné sdílené složky. Název účtu úložiště musí být globálně jedinečný, takže skript přidá náhodnou hodnotu do základního řetězce.
 
 ```azurecli-interactive
 # Change these four parameters as needed
@@ -47,24 +47,24 @@ az storage share create --name $ACI_PERS_SHARE_NAME --account-name $ACI_PERS_STO
 
 ## <a name="get-storage-credentials"></a>Získat přihlašovací údaje úložiště
 
-Připojení sdílené složky Azure jako svazku ve službě Azure Container Instances, tři hodnoty budete potřebovat: název účtu úložiště, název sdílené složky a přístupový klíč úložiště.
+Pokud chcete připojit sdílenou složku Azure jako svazek v Azure Container Instances, budete potřebovat tři hodnoty: název účtu úložiště, název sdílené složky a přístupový klíč úložiště.
 
-Pokud jste použili výše uvedené skriptu, název účtu úložiště byl uložen v proměnné ACI_PERS_STORAGE_ACCOUNT_NAME $. Pokud chcete zobrazit název účtu, zadejte:
+Pokud jste použili skript výše, název účtu úložiště byl uložený v proměnné $ACI _PERS_STORAGE_ACCOUNT_NAME. Název účtu zobrazíte tak, že zadáte:
 
 ```console
 echo $ACI_PERS_STORAGE_ACCOUNT_NAME
 ```
 
-Název sdílené složky je již znám (definované jako *acishare* ve skriptu výše), takže všechny, zůstane je klíč účtu úložiště, které lze nalézt pomocí následujícího příkazu:
+Název sdílené složky je již známý (definován jako *acishare* ve skriptu výše), takže vše zůstane klíčem účtu úložiště, který lze najít pomocí následujícího příkazu:
 
 ```azurecli-interactive
 STORAGE_KEY=$(az storage account keys list --resource-group $ACI_PERS_RESOURCE_GROUP --account-name $ACI_PERS_STORAGE_ACCOUNT_NAME --query "[0].value" --output tsv)
 echo $STORAGE_KEY
 ```
 
-## <a name="deploy-container-and-mount-volume---cli"></a>Nasazení kontejneru a připojit svazek – rozhraní příkazového řádku
+## <a name="deploy-container-and-mount-volume---cli"></a>Nasazení kontejneru a přípojného svazku – rozhraní příkazového řádku
 
-Připojení sdílené složky Azure jako svazek v kontejneru pomocí rozhraní příkazového řádku Azure, zadejte do sdílené složky a svazek přípojný bod při vytváření kontejneru s [az container vytvořit][az-container-create]. Pokud jste postupovali podle předchozích kroků, můžete připojit sdílenou složku, kterou jste vytvořili dříve, pomocí následujícího příkazu vytvořte kontejner:
+Pokud chcete připojit sdílenou složku Azure jako svazek v kontejneru pomocí rozhraní příkazového řádku Azure, určete sdílenou složku a přípojný bod svazku při vytváření kontejneru pomocí [AZ Container Create][az-container-create]. Pokud jste postupovali podle předchozích kroků, můžete sdílenou složku, kterou jste vytvořili dříve, připojit pomocí následujícího příkazu k vytvoření kontejneru:
 
 ```azurecli-interactive
 az container create \
@@ -79,25 +79,25 @@ az container create \
     --azure-file-volume-mount-path /aci/logs/
 ```
 
-`--dns-name-label` Hodnota musí být jedinečný v rámci oblasti Azure, ve kterém vytváříte instanci kontejneru. Aktualizujte hodnotu v předchozím příkazu, pokud se zobrazí **popisku názvu DNS** při spuštění příkazu zobrazí chybová zpráva.
+`--dns-name-label` Hodnota musí být jedinečná v rámci oblasti Azure, ve které vytvoříte instanci kontejneru. Pokud se při spuštění příkazu zobrazí chybová zpráva **popisku názvu DNS** , aktualizujte hodnotu v předchozím příkazu.
 
-## <a name="manage-files-in-mounted-volume"></a>Správa souborů ve svazku připojeném
+## <a name="manage-files-in-mounted-volume"></a>Správa souborů na připojeném svazku
 
-Po spuštění kontejneru můžete jednoduché webové aplikace nasazené prostřednictvím Microsoft [aci hellofiles][aci-hellofiles] image to create small text files in the Azure file share at the mount path you specified. Obtain the web app's fully qualified domain name (FQDN) with the [az container show][az-container-show] příkaz:
+Po spuštění kontejneru můžete použít jednoduchou webovou aplikaci nasazenou prostřednictvím příkazu Microsoft [ACI-hellofiles][aci-hellofiles] image to create small text files in the Azure file share at the mount path you specified. Obtain the web app's fully qualified domain name (FQDN) with the [az container show][az-container-show] :
 
 ```azurecli-interactive
 az container show --resource-group $ACI_PERS_RESOURCE_GROUP --name hellofiles --query ipAddress.fqdn --output tsv
 ```
 
-Po uložení textu s použitím aplikace, můžete použít [webu Azure portal][portal] or a tool like the [Microsoft Azure Storage Explorer][storage-explorer] načíst a zkontrolovat soubor zapsán do sdílené složky.
+Po uložení textu pomocí aplikace můžete použít [Azure Portal][portal] or a tool like the [Microsoft Azure Storage Explorer][storage-explorer] k načtení a zkontrolování souboru zapsaného do sdílené složky.
 
-## <a name="deploy-container-and-mount-volume---yaml"></a>Nasazení kontejneru a připojit svazek - YAML
+## <a name="deploy-container-and-mount-volume---yaml"></a>Nasazení kontejneru a připojení svazku – YAML
 
-Můžete také nasadit skupinu kontejnerů a připojení svazku v kontejneru pomocí Azure CLI a [šablon YAML](container-instances-multi-container-yaml.md). Nasazení pomocí šablon YAML je upřednostňovanou metodou při nasazování skupiny kontejnerů, který se skládá z několika kontejnerů.
+Můžete také nasadit skupinu kontejnerů a připojit svazek do kontejneru pomocí Azure CLI a [šablony YAML](container-instances-multi-container-yaml.md). Nasazení šablonou YAML je upřednostňovanou metodou při nasazování skupin kontejnerů, které se skládají z více kontejnerů.
 
-Následující šablony YAML definuje skupinu kontejnerů s vytvořené pomocí jednoho kontejneru `aci-hellofiles` bitové kopie. Kontejner připojí sdílená složka Azure *acishare* nevytvořili jako svazek. Uvedeno, zadejte název a úložiště klíč pro účet úložiště, který je hostitelem sdílené složky. 
+Následující šablona YAML definuje skupinu kontejnerů s jedním kontejnerem vytvořeným s `aci-hellofiles` imagí. Kontejner připojí sdílenou složku Azure *acishare* , která byla dříve vytvořena jako svazek. Tam, kde je uvedeno, zadejte název a klíč úložiště pro účet úložiště, který hostuje sdílenou složku. 
 
-Jako příklad rozhraní příkazového řádku `dnsNameLabel` hodnota musí být jedinečný v rámci oblasti Azure, ve kterém vytváříte instanci kontejneru. V případě potřeby aktualizujte hodnotu v souboru YAML.
+Stejně jako v příkladu rozhraní příkazového `dnsNameLabel` řádku musí být hodnota jedinečná v rámci oblasti Azure, kde vytvoříte instanci kontejneru. V případě potřeby aktualizujte hodnotu v souboru YAML.
 
 ```yaml
 apiVersion: '2018-10-01'
@@ -135,23 +135,23 @@ tags: {}
 type: Microsoft.ContainerInstance/containerGroups
 ```
 
-K nasazení pomocí šablony YAML, uložit do souboru s názvem předchozí YAML `deploy-aci.yaml`, provádějí [az container vytvořit][az-container-create] příkazů `--file` parametr:
+K nasazení se šablonou YAML uložte předchozí YAML do souboru s názvem `deploy-aci.yaml`a potom spusťte příkaz [AZ Container Create][az-container-create] s `--file` parametrem:
 
 ```azurecli
 # Deploy with YAML template
 az container create --resource-group myResourceGroup --file deploy-aci.yaml
 ```
-## <a name="deploy-container-and-mount-volume---resource-manager"></a>Nasazení kontejneru a připojení svazku - Resource Manageru
+## <a name="deploy-container-and-mount-volume---resource-manager"></a>Nasazení kontejneru a připojení svazku – Správce prostředků
 
-Kromě rozhraní příkazového řádku a YAML nasazení, můžete nasadit skupinu kontejnerů a připojení svazku v kontejneru s použitím Azure [šablony Resource Manageru](/azure/templates/microsoft.containerinstance/containergroups).
+Kromě nasazení CLI a YAML můžete nasadit skupinu kontejnerů a připojit svazek do kontejneru pomocí [šablony Azure správce prostředků](/azure/templates/microsoft.containerinstance/containergroups).
 
-Nejprve naplnit `volumes` pole ve skupině kontejnerů `properties` část šablony. 
+Nejdřív naplňte `volumes` pole do části skupina `properties` kontejnerů v šabloně. 
 
-Naplnit pro každý kontejner, ve kterém chcete připojení svazku, `volumeMounts` obsahuje pole `properties` část definice kontejneru.
+Pak u každého kontejneru, do kterého chcete svazek připojit, naplňte `volumeMounts` pole `properties` v části definice kontejneru.
 
-Následující šablony Resource Manageru definuje skupinu kontejnerů s vytvořené pomocí jednoho kontejneru `aci-hellofiles` bitové kopie. Kontejner připojí sdílená složka Azure *acishare* nevytvořili jako svazek. Uvedeno, zadejte název a úložiště klíč pro účet úložiště, který je hostitelem sdílené složky. 
+Následující šablona správce prostředků definuje skupinu kontejnerů s jedním kontejnerem vytvořeným s `aci-hellofiles` imagí. Kontejner připojí sdílenou složku Azure *acishare* , která byla dříve vytvořena jako svazek. Tam, kde je uvedeno, zadejte název a klíč úložiště pro účet úložiště, který hostuje sdílenou složku. 
 
-Stejně jako v předchozích příkladech `dnsNameLabel` hodnota musí být jedinečný v rámci oblasti Azure, ve kterém vytváříte instanci kontejneru. V případě potřeby aktualizujte hodnotu v šabloně.
+Stejně jako v předchozích příkladech `dnsNameLabel` musí být hodnota jedinečná v rámci oblasti Azure, kde vytvoříte instanci kontejneru. V případě potřeby aktualizujte hodnotu v šabloně.
 
 ```JSON
 {
@@ -220,7 +220,7 @@ Stejně jako v předchozích příkladech `dnsNameLabel` hodnota musí být jedi
 }
 ```
 
-K nasazení pomocí šablony Resource Manageru uložit do souboru s názvem výše uvedeného kódu JSON `deploy-aci.json`, provádějí [vytvořit nasazení skupiny pro az][az-group-deployment-create] příkazů `--template-file` parametr:
+Pokud chcete nasadit šablonu správce prostředků, uložte předchozí JSON do souboru s názvem `deploy-aci.json`a pak spusťte příkaz [AZ Group Deployment Create][az-group-deployment-create] s `--template-file` parametrem:
 
 ```azurecli
 # Deploy with Resource Manager template
@@ -228,11 +228,11 @@ az group deployment create --resource-group myResourceGroup --template-file depl
 ```
 
 
-## <a name="mount-multiple-volumes"></a>Připojení více svazků
+## <a name="mount-multiple-volumes"></a>Připojit více svazků
 
-Připojení více svazků v instanci kontejneru, je nutné nasadit pomocí [šablony Azure Resource Manageru](/azure/templates/microsoft.containerinstance/containergroups) nebo soubor YAML. Chcete-li použít šablonu nebo soubor YAML, zadejte podrobnosti o sdílené složce a definovat svazky naplněním `volumes` obsahuje pole `properties` část šablony. 
+Chcete-li připojit více svazků v instanci kontejneru, je nutné nasadit pomocí [šablony Azure Resource Manager](/azure/templates/microsoft.containerinstance/containergroups) nebo souboru YAML. Chcete-li použít šablonu nebo soubor YAML, zadejte podrobnosti o sdílené složce a definujte svazky naplněním `volumes` pole `properties` v části šablony. 
 
-Například, pokud jste vytvořili dva sdílených složek Azure s názvem *sdílená_složka1* a *share2* v účtu úložiště *myStorageAccount*, `volumes` pole v Resource Manageru Šablona by vypadat přibližně takto:
+Pokud jste například vytvořili dvě sdílené složky Azure Files s názvem *share1* a *share2* v účtu úložiště *myStorageAccount*, `volumes` pole v šabloně správce prostředků by vypadalo podobně jako v následujícím příkladu:
 
 ```JSON
 "volumes": [{
@@ -253,7 +253,7 @@ Například, pokud jste vytvořili dva sdílených složek Azure s názvem *sdí
 }]
 ```
 
-V dalším kroku pro každý kontejner ve skupině kontejnerů, ve kterém byste chtěli připojit svazky naplnit `volumeMounts` obsahuje pole `properties` část definice kontejneru. Například to připojí dva svazky *myvolume1* a *myvolume2*, dříve definovanou:
+Dále pro každý kontejner ve skupině kontejnerů, do kterého chcete svazky připojit, vyplňte `volumeMounts` pole `properties` v části definice kontejneru. Například to připojí dva svazky, *myvolume1* a *myvolume2*, dříve definované:
 
 ```JSON
 "volumeMounts": [{
@@ -266,12 +266,12 @@ V dalším kroku pro každý kontejner ve skupině kontejnerů, ve kterém byste
 }]
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
-Zjistěte, jak připojit další typy svazku ve službě Azure Container Instances:
+Naučte se připojit další typy svazků v Azure Container Instances:
 
 * [Připojit emptyDir svazek v Azure kontejner instancí](container-instances-volume-emptydir.md)
-* [Připojit svazek gitRepo ve službě Azure Container Instances](container-instances-volume-gitrepo.md)
+* [Připojení svazku Gitrepo nepodporují v Azure Container Instances](container-instances-volume-gitrepo.md)
 * [Připojení tajný svazku v Azure kontejner instancí](container-instances-volume-secret.md)
 
 <!-- LINKS - External -->

@@ -1,158 +1,162 @@
 ---
-title: Nastavit zdroj transformace ve funkci mapování toku dat služby Azure Data Factory
-description: Zjistěte, jak nastavit zdroj transformace v mapování se předávají Data.
+title: Nastavte transformaci zdroje v funkci toku dat mapování Azure Data Factory
+description: Přečtěte si, jak nastavit transformaci zdroje v toku dat mapování.
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/12/2019
-ms.openlocfilehash: 4f77eafd3309d7c1d679c126b1a5eb1ff0e9a28d
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.openlocfilehash: f6aed5d2ac1c4672d8d8868fe127ead053512e42
+ms.sourcegitcommit: da0a8676b3c5283fddcd94cdd9044c3b99815046
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67490098"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68314837"
 ---
-# <a name="source-transformation-for-mapping-data-flow"></a>Transformace zdroje pro mapování toku dat 
+# <a name="source-transformation-for-mapping-data-flow"></a>Transformace zdroje pro tok dat mapování 
 
 [!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
-Transformace zdrojového nakonfiguruje zdroje dat pro datový tok. Tok dat může obsahovat více než jeden zdroj transformace. Při návrhu datové toky, vždy začínají znakem transformace zdroje.
+Zdrojová transformace konfiguruje zdroj dat pro tok dat. Tok dat může zahrnovat víc než jednu zdrojovou transformaci. Při navrhování toků dat vždy začněte se zdrojovou transformací.
 
-Každý tok dat vyžaduje alespoň jeden zdroj transformace. Podle potřeby k dokončení transformace dat, přidejte libovolný počet zdrojů. Můžete připojit k těmto zdrojům společně s připojení k transformaci nebo union transformace.
+Každý tok dat vyžaduje aspoň jednu zdrojovou transformaci. Přidejte tolik zdrojů, kolik je potřeba k dokončení transformace dat. Tyto zdroje můžete spojit společně s transformací transformace nebo sjednocením.
 
 > [!NOTE]
-> Při ladění váš tok dat je pro čtení data ze zdroje pomocí nastavení vzorkování nebo omezení ladění zdroje. Zapsat data do jímky, je nutné spustit váš tok dat z kanálu toku dat aktivit. 
+> Při ladění toku dat se data čtou ze zdroje pomocí nastavení vzorkování nebo zdrojů ladění. Chcete-li zapsat data do jímky, je nutné spustit tok dat z aktivity toku dat kanálu. 
 
-![Možnosti transformace na kartě Nastavení zdroje zdroje](media/data-flow/source.png "zdroje")
+![Možnosti transformace zdroje na kartě nastavení zdroje](media/data-flow/source.png "zdroj")
 
-Váš tok dat transformace zdroje přidružte přesně jednu datovou sadu služby Data Factory. Datová sada definuje tvar a umístění dat, které chcete zapisovat nebo číst z. Zástupné znaky a soubor seznamy můžete použít ve zdroji pro práci s více než jeden soubor současně.
+Přidružte transformaci zdroje toku dat k právě jedné datové sadě Data Factory. Datová sada definuje tvar a umístění dat, ke kterým chcete zapisovat, nebo z nich číst. Ve zdroji můžete použít zástupné znaky a seznamy souborů pro práci s více než jedním souborem v jednom okamžiku.
 
-## <a name="data-flow-staging-areas"></a>Data toku pracovní oblasti
+## <a name="data-flow-staging-areas"></a>Pracovní oblasti toku dat
 
-Tok dat funguje s *pracovní* datových sad, které jsou v Azure. Pro přípravu, když jste transformace vašich dat použijte tyto datové sady. 
+Tok dat funguje s *přípravnými* datovými sadami, které jsou všechny v Azure. Tyto datové sady použijte pro přípravu při transformaci dat. 
 
-Data Factory má přístup k téměř 80 nativní konektory. Pokud chcete zahrnout data z těchto zdrojů ve svém toku dat, připravit data v jednom z pracovní oblasti datového toku datovou sadu pomocí nástroje aktivitu kopírování.
+Data Factory má přístup k téměř 80 nativním konektorům. Chcete-li zahrnout data z těchto jiných zdrojů do toku dat, použijte nástroj pro kopírování aktivit pro přípravu těchto dat v jednom z pracovních oblastí datové sady datových toků.
 
 ## <a name="options"></a>Možnosti
 
-Výběr možností schématu a vzorkování pro vaše data.
+Vyberte možnosti schématu a vzorkování pro vaše data.
 
-### <a name="allow-schema-drift"></a>Povolit schématu odchylek
-Vyberte **povolit schématu odchylek** Pokud zdrojové sloupce se změní často. Toto nastavení povolí všechna příchozí zdrojového pole tok prostřednictvím transformací pro jímku.
+### <a name="schema-drift"></a>Posun schématu
+[Posun schématu](concepts-data-flow-schema-drift.md) je schopnost ADF nativně zpracovávat flexibilní schémata v datových tocích, aniž by bylo nutné explicitně definovat změny sloupců.
 
-### <a name="validate-schema"></a>Ověření schématu
+* Pokud se zdrojové sloupce často mění, vyberte možnost **povoluje posun schématu** . Toto nastavení umožňuje, aby všechna vstupní pole zdroje prošla transformacemi do jímky.
 
-Pokud příchozí verze zdroje dat neodpovídá definované schéma, tok dat se nepodaří spustit.
+* Zvolíte-li možnost **odvodit sloupce** s odrovnými sloupci, požádejte ADF, aby definovala datové typy pro každý zjištěný nový sloupec. Když je tato funkce vypnutá, vytvoří ADF řetězec.
 
-![Nastavení veřejného zdroje, zobrazující možnosti pro ověřením schématu, povolit schématu odchylek a vzorkování](media/data-flow/source1.png "veřejný zdroj 1")
+### <a name="validate-schema"></a>Ověřit schéma
 
-### <a name="sample-the-data"></a>Ukázková data
-Povolit **vzorkování** omezit počet řádků ze zdroje. Toto nastavení použijte při testování nebo ukázková data ze zdroje pro účely ladění.
+Pokud příchozí verze zdrojových dat neodpovídá definovanému schématu, tok dat se nepodaří spustit.
+
+![Nastavení veřejného zdroje, které zobrazuje možnosti pro ověření schématu, povolení posunu schématu a vzorkování](media/data-flow/source1.png "veřejný zdroj 1")
+
+### <a name="sample-the-data"></a>Ukázka dat
+Povolte **vzorkování** , abyste omezili počet řádků ze zdroje. Toto nastavení použijte při testování nebo vzorkování dat ze zdroje pro účely ladění.
 
 ## <a name="define-schema"></a>Definovat schéma
 
-Pokud zdrojové soubory nejsou silného typu (pro příklad, plochých souborů a nikoli soubory Parquet), definování typů dat pro každé pole tady v transformaci zdroje.  
+Pokud zdrojové soubory nejsou silného typu (například ploché soubory namísto souborů Parquet), definujte datové typy pro každé pole ve zdrojové transformaci.  
 
-![Transformace nastavení na kartě definovat schéma zdroje](media/data-flow/source2.png "zdroje 2")
+![Nastavení transformace zdroje na kartě definice schématu](media/data-flow/source2.png "zdroj 2")
 
-Později můžete změnit názvy sloupců v vyberte transformaci. Ke změně datové typy, které použijte odvozené sloupce transformace. Pro silného typu zdroje můžete upravit datových typů v později vyberte transformace. 
+Později můžete změnit názvy sloupců v transformaci SELECT. Pro změnu datových typů použijte transformaci odvozeného sloupce. U zdrojů se silným typem můžete změnit datové typy v pozdější transformaci SELECT. 
 
-![Datové typy v vyberte transformaci](media/data-flow/source003.png "datové typy")
+![Datové typy v transformaci Select](media/data-flow/source003.png "datové typy")
 
-### <a name="optimize-the-source-transformation"></a>Optimalizace transformace zdroje
+### <a name="optimize-the-source-transformation"></a>Optimalizace zdrojové transformace
 
-Na **optimalizace** kartu pro transformaci zdroj, může se zobrazit **zdroj** oddílu typu. Tato možnost je dostupná jenom v případě zdroje je Azure SQL Database. Je to proto, že Data Factory se pokusí navázat připojení paralelní spouštění velkých dotazů na databázi SQL zdroje.
+Na kartě **optimalizace** pro transformaci zdroje se může zobrazit typ **zdrojového** oddílu. Tato možnost je dostupná jenom v případě, že je váš zdroj Azure SQL Database. Důvodem je to, že Data Factory se snaží vytvořit propojení paralelně, aby se spouštěly velké dotazy proti vašemu zdroji SQL Database.
 
-![Nastavení oddílu zdroje](media/data-flow/sourcepart3.png "dělení")
+![Nastavení zdrojového oddílu](media/data-flow/sourcepart3.png "vytváření oddílů")
 
-Nemáte k dělení dat v databázi SQL zdroje, ale jsou užitečné pro dotazy na velkých oddílů. Oddíl můžete založit na sloupec nebo dotazu.
+Nemusíte rozdělit data na zdroj SQL Database, ale oddíly jsou užitečné pro velké dotazy. Oddíl můžete založit na sloupci nebo dotazu.
 
-### <a name="use-a-column-to-partition-data"></a>Použít sloupec k dělení dat
+### <a name="use-a-column-to-partition-data"></a>Použití sloupce k dělení dat
 
-Ze zdrojové tabulky vyberte na sloupec, který oddíl. Nastavte také počet oddílů.
+Ve zdrojové tabulce vyberte sloupec, na kterém chcete vytvořit oddíly. Nastavte také počet oddílů.
 
-### <a name="use-a-query-to-partition-data"></a>Použijte dotaz k dělení dat
+### <a name="use-a-query-to-partition-data"></a>Použití dotazu k dělení dat
 
-Můžete při vytváření oddílů připojení na základě dotazu. Stačí zadáte obsah predikát WHERE. Zadejte například roku > 1980.
+Můžete se rozhodnout rozdělit připojení na základě dotazu. Stačí zadat obsah predikátu WHERE. Zadejte například rok > 1980.
 
 ## <a name="source-file-management"></a>Správa zdrojového souboru
 
-Při volbě nastavení pro správu souborů ve zdroji. 
+Vyberte nastavení pro správu souborů ve zdroji. 
 
-![Nová nastavení zdroje](media/data-flow/source2.png "nové nastavení")
+![Nové nastavení zdroje](media/data-flow/source2.png "Nové nastavení")
 
-* **Cesta se zástupným znakem**: Ze zdrojové složky zvolte řadu soubory, které odpovídají vzoru. Toto nastavení potlačí všechny soubory v definici datové sady.
+* **Cesta zástupného znaku**: Ze zdrojového kontejneru vyberte řadu souborů, které odpovídají vzoru. Toto nastavení přepíše libovolný soubor v definici datové sady.
 
-Zástupný znak příklady:
+Příklady zástupných znaků:
 
-* ```*``` Představuje libovolnou sadu znaků
-* ```**``` Představuje rekurzivní directory vnoření
-* ```?``` Nahrazuje jeden znak
-* ```[]``` Odpovídá jednomu z více znaků v závorkách
+* ```*```Představuje libovolnou sadu znaků.
+* ```**```Představuje rekurzivní vnořování adresářů.
+* ```?```Nahradí jeden znak.
+* ```[]```Odpovídá jednomu nebo více znakům v závorkách
 
-* ```/data/sales/**/*.csv``` Získá všechny soubory sdíleného svazku clusteru v rámci /data/sales
-* ```/data/sales/20??/**``` Získá všechny soubory ve 20. prosincem století
-* ```/data/sales/2004/*/12/[XY]1?.csv``` Získá všechny soubory csv v 2004 v prosinci od verze X nebo Y předchází 2 číslice
+* ```/data/sales/**/*.csv```Načte všechny soubory CSV v rámci/data/Sales.
+* ```/data/sales/20??/**```Načte všechny soubory ve dvacátém století.
+* ```/data/sales/2004/*/12/[XY]1?.csv```Načte všechny soubory CSV v 2004 v prosinci počínaje písmenem X nebo Y s předponou a číslem 2 číslice.
 
-Kontejner musí být zadaný v datové sadě. Vaše cesta se zástupným znakem proto musí také obsahovat vaše cesta ke složce z kořenové složky.
+V datové sadě musí být zadaný kontejner. Cesta ke zástupným znakům proto musí taky obsahovat cestu ke složce z kořenové složky.
 
-* **Seznam souborů**: Toto je sada souborů. Vytvořte textový soubor, který obsahuje seznam souborů relativní cestu ke zpracování. Přejděte na tento textový soubor.
-* **Sloupce pro uložení názvu souboru**: Název zdrojového souboru Store ve sloupci ve vašich datech. Zadejte nový název pro uložení řetězce názvu souboru.
-* **Po dokončení**: Zvolte po data spouštění toků, odstranění souboru se zdrojovým nebo přesunutí zdrojového souboru se zdrojovým souborem neprovede žádnou akci. Jsou relativní cesty pro přesunutí.
+* **Seznam souborů**: Toto je sada souborů. Vytvořte textový soubor, který obsahuje seznam relativních souborů cest ke zpracování. Najeďte na tento textový soubor.
+* **Sloupec pro uložení názvu souboru**: Uložte název zdrojového souboru do sloupce v datech. Sem zadejte nový název pro uložení řetězce názvu souboru.
+* **Po dokončení**: Po spuštění toku dat vyberte, že nechcete nic dělat se zdrojovým souborem, odstraňte zdrojový soubor nebo přesuňte zdrojový soubor. Cesty pro přesun jsou relativní.
 
-Pokud chcete přesunout do jiného umístění následující po zpracování zdrojové soubory, vyberte nejdřív "Přesun" pro operace se soubory. Nastavte adresář "z". Pokud nepoužíváte žádné zástupné znaky pro cestu, pak bude "od" nastavení budou stejné složce jako zdrojové složky.
+Chcete-li přesunout zdrojové soubory do následujícího následného zpracování, vyberte nejprve možnost přesunout pro operaci soubor. Potom nastavte adresář "z". Pokud pro cestu nepoužíváte žádné zástupné znaky, pak bude mít nastavení "od" stejnou složku jako vaše zdrojová složka.
 
-Pokud máte cestu ke zdroji se zástupnými znaky, například:
+Pokud máte zástupnou cestu ke zdroji, např.:
 
 ```/data/sales/20??/**/*.csv```
 
-Můžete zadat jako "z"
+Můžete zadat "od" jako
 
 ```/data/sales```
 
-A "do" jako
+A "to" jako
 
 ```/backup/priorSales```
 
-V takovém případě všechny podadresáře v rámci /data/sales, které byly Source přesunou vzhledem k /backup/priorSales.
+V takovém případě jsou všechny podadresáře, které byly nasource, přesunuty do/data/Sales vzhledem k/backup/priorSales.
 
 ### <a name="sql-datasets"></a>Datové sady SQL
 
-Pokud je zdrojem v SQL Database nebo SQL Data Warehouse, máte další možnosti pro správu zdrojového souboru.
+Pokud je váš zdroj v SQL Database nebo SQL Data Warehouse, máte k dispozici další možnosti správy zdrojového souboru.
 
-* **Dotaz:** Zadejte dotaz SQL pro zdroj. Toto nastavení potlačí všechny tabulky, kterou jste zvolili v datové sadě. Všimněte si, že **klauzule Order By** klauzule zde nejsou podporovány, ale můžete nastavit úplný příkaz SELECT FROM. Můžete také použít funkce uživatelem definovaná tabulka. **Vybrat * z udfGetData()** je UDF v SQL, která vrací tabulku. Tento dotaz vytvoří zdrojové tabulky, který používáte ve svém toku data.
-* **Velikost dávky**: Zadejte velikost dávky k bloku dat velkých objemů dat do operace čtení.
-* **Úroveň izolace**: Výchozí hodnota pro ADF mapování toků dat zdroje SQL je nepotvrzené čtení. Můžete změnit úroveň izolace na jednu z těchto hodnot:
-* Read Committed
-* Nepotvrzené čtení
-* Opakovatelné pro čtení
-* Serializovatelné
-* Žádné (Ignorovat úroveň izolace)
+* **Dotaz:** Zadejte dotaz SQL pro zdroj. Toto nastavení potlačí všechny tabulky, které jste vybrali v datové sadě. Všimněte si, že klauzule **ORDER by** nejsou tady podporované, ale můžete nastavit úplný příkaz SELECT FROM. Můžete také použít uživatelsky definované funkce tabulky. **SELECT * FROM udfGetData ()** je UDF v SQL, který vrací tabulku. Tento dotaz vytvoří zdrojovou tabulku, kterou můžete použít v toku dat.
+* **Velikost dávky**: Zadejte velikost dávky pro velké objemy dat v čtení.
+* **Úroveň izolace**: Ve výchozím nastavení pro zdroje SQL v datových tocích mapování ADF je čtení nepotvrzené. Úroveň izolace můžete změnit tady na jednu z těchto hodnot:
+* Čtení potvrzeno
+* Čtení nepotvrzených
+* Opakované čtení
+* Serializovatelný
+* Žádné (ignorovat úroveň izolace)
 
-![Úroveň izolace](media/data-flow/isolationlevel.png "úroveň izolace")
+![Úroveň izolace](media/data-flow/isolationlevel.png "Úroveň izolace")
 
 > [!NOTE]
-> Operace se soubory spustit pouze v případě, že spuštění toku dat z kanálu (ladění kanálu nebo spustit provádění), která používá aktivitu spuštění toku dat v rámci kanálu. Operace se soubory *nejsou* spuštění v režimu ladění se předávají Data.
+> Operace se soubory běží jenom při spuštění toku dat ze spuštění kanálu (ladění kanálu nebo spuštění spuštění), které používá aktivitu spustit tok dat v kanálu. Operace *se* soubory neběží v režimu ladění toku dat.
 
 ### <a name="projection"></a>Projekce
 
-Jako jsou schémata v datových sadách projekce ve zdroji definuje sloupce dat, typy a formáty ze zdrojových dat. 
+Stejně jako schémata v datových sadách definuje projekce ve zdroji datové sloupce, typy a formáty ze zdrojových dat. 
 
-![Nastavení na kartě projekce](media/data-flow/source3.png "projekce")
+![Nastavení na kartě projekce](media/data-flow/source3.png "Projekce")
 
-Pokud textový soubor nemá definované schéma, vyberte **rozpoznat datový typ** tak, aby se Data Factory ukázkový a odvodit datové typy. Vyberte **definovat výchozí formát** rozpozná výchozí data formátů. 
+Pokud textový soubor nemá žádné definované schéma, vyberte možnost **detekovat datový typ** , aby data Factory vzorkovat a odvodit datové typy. Pro automatické rozpoznání výchozích formátů dat vyberte možnost **definovat výchozí formát** . 
 
-Datové typy sloupce v odvozených sloupců transformaci dále můžete upravit. Vyberte transformace použijte k úpravě názvů sloupců.
+Datové typy sloupců můžete upravit v pozdější transformaci odvozeného sloupce. Použijte transformaci SELECT k úpravě názvů sloupců.
 
-![Nastavení pro výchozí datových formátů](media/data-flow/source2.png "výchozí formáty")
+![Nastavení pro výchozí formáty dat](media/data-flow/source2.png "Výchozí formáty")
 
 ### <a name="add-dynamic-content"></a>Přidat dynamický obsah
 
-Po kliknutí na uvnitř polí v nastavení panelu, zobrazí se hypertextový odkaz "Přidat dynamický obsah". Když kliknete sem, spustí se Tvůrce výrazů. Je to, kde můžete nastavit hodnoty pro nastavení dynamicky pomocí výrazů, statické hodnoty literálu nebo parametry.
+Po kliknutí na pole na panelu nastavení se zobrazí hypertextový odkaz na Přidat dynamický obsah. Když kliknete sem, spustí se Tvůrce výrazů. Tady můžete nastavit hodnoty pro nastavení dynamicky pomocí výrazů, hodnot statických literálů nebo parametrů.
 
-![Parametry](media/data-flow/params6.png "parametry")
+![Parametry](media/data-flow/params6.png "Parametry")
 
 ## <a name="next-steps"></a>Další postup
 
-Zahájení sestavování [odvozené sloupce transformace](data-flow-derived-column.md) a [vyberte transformace](data-flow-select.md).
+Začněte sestavovat [transformaci odvozeného sloupce](data-flow-derived-column.md) a [transformaci Select](data-flow-select.md).

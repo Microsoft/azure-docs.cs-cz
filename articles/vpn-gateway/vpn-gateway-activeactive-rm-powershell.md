@@ -1,58 +1,59 @@
 ---
-title: 'Konfigurovat připojení S2S VPN typu aktivní aktivní pro brány VPN Gateway: Azure Resource Manageru: Prostředí PowerShell | Dokumentace Microsoftu'
-description: Tento článek vás provede konfigurace připojení typu aktivní aktivní s bránami Azure VPN Gateway pomocí Azure Resource Manageru a Powershellu.
+title: 'Konfigurace připojení S2S VPN typu aktivní-aktivní pro brány VPN Gateway: Azure Resource Manager: PowerShell | Microsoft Docs'
+description: Tento článek vás provede konfigurací připojení typu aktivní-aktivní pomocí Azure VPN Gateway pomocí Azure Resource Manager a PowerShellu.
 services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: article
 ms.date: 07/24/2018
-ms.author: yushwang, cherylmc
-ms.openlocfilehash: 7ba4fb32ddfb8b3eb88d2dbfce265b070d521414
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: yushwang
+ms.reviewer: cherylmc
+ms.openlocfilehash: 6d973d81e0de407893beb5c5808962562f091d4c
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66119439"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67871826"
 ---
-# <a name="configure-active-active-s2s-vpn-connections-with-azure-vpn-gateways"></a>Konfigurovat připojení S2S VPN typu aktivní aktivní s bránami Azure VPN Gateway
+# <a name="configure-active-active-s2s-vpn-connections-with-azure-vpn-gateways"></a>Konfigurace připojení VPN S2S typu aktivní-aktivní pomocí bran Azure VPN
 
-Tento článek vás provede kroky k vytvoření typu aktivní aktivní mezi různými místy a připojení VNet-to-VNet pomocí modelu nasazení Resource Manageru a Powershellu.
+Tento článek vás provede kroky k vytvoření připojení typu aktivní-aktivní mezi lokalitami a VNet-to-VNet pomocí modelu nasazení Správce prostředků a PowerShellu.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="about-highly-available-cross-premises-connections"></a>Informace o připojení s vysokou dostupností mezi různými místy
-Abyste dosáhli vysoké dostupnosti pro připojení různých míst a připojení VNet-to-VNet, by měl nasadit více bran VPN a vytvořit více paralelních připojení mezi vaší sítí a Azure. Zobrazit [vysoce dostupná mezi různými místy a VNet-to-VNet připojení](vpn-gateway-highlyavailable.md) přehled topologie a možnosti připojení.
+## <a name="about-highly-available-cross-premises-connections"></a>O vysoce dostupných připojeních mezi různými místy
+Abyste dosáhli vysoké dostupnosti pro připojení mezi různými místy a VNet-to-VNet, měli byste nasadit víc bran VPN a navázat víc paralelních připojení mezi vašimi sítěmi a Azure. Přehled možností připojení a topologie najdete v tématu [vysoce dostupné možnosti připojení mezi různými místy a VNET-to-VNet](vpn-gateway-highlyavailable.md) .
 
-Tento článek obsahuje pokyny k nastavení připojení k síti VPN typu aktivní aktivní mezi různými místy a aktivní aktivní připojení mezi dvěma virtuálními sítěmi.
+Tento článek poskytuje pokyny pro nastavení připojení VPN typu aktivní-aktivní mezi místními sítěmi a připojení aktivní-aktivní mezi dvěma virtuálními sítěmi.
 
-* [Část 1 – Vytvoření a konfigurace Azure VPN gateway v režimu aktivní aktivní](#aagateway)
-* [Část 2 – Vytvoření připojení typu aktivní aktivní mezi různými místy](#aacrossprem)
-* [Část 3 – vytvoření připojení typu aktivní aktivní připojení typu VNet-to-VNet](#aav2v)
+* [Část 1 – Vytvoření a konfigurace brány Azure VPN v režimu aktivní-aktivní](#aagateway)
+* [Část 2 – Vytvoření připojení mezi různými místy aktivní – aktivní](#aacrossprem)
+* [Část 3 – navázání připojení VNet-to-VNet mezi aktivními aktivními virtuálními sítěmi](#aav2v)
 
-Pokud už máte bránu VPN, můžete:
-* [Aktualizovat z aktivní pohotovostní existující bráně VPN typu aktivní aktivní, nebo naopak](#aaupdate)
+Pokud už máte bránu sítě VPN, můžete:
+* [Aktualizace stávající brány VPN z aktivního pohotovostního režimu na aktivní-aktivní nebo naopak](#aaupdate)
 
-Zkombinujete dohromady a vytvářet složitější, vysoce dostupné síťové topologii, která bude vyhovovat vašim potřebám.
+Dohromady je můžete kombinovat a vytvořit tak složitější a vysoce dostupnou síťovou topologii, která vyhovuje vašim potřebám.
 
 > [!IMPORTANT]
-> Režim aktivní – aktivní používá pouze následující SKU: 
+> Režim aktivní-aktivní používá jenom tyto SKU: 
 >   * VpnGw1, VpnGw2, VpnGw3
->   * HighPerformance (pro staré skladové položky starší verze)
+>   * HighPerformance (pro staré starší verze SKU)
 
-## <a name ="aagateway"></a>Část 1 – Vytvoření a konfigurace brány VPN typu aktivní aktivní
-Takto bude konfigurace Azure VPN gateway v režimu aktivní aktivní. Hlavní rozdíly mezi brány typu aktivní aktivní a aktivní pohotovostní:
+## <a name ="aagateway"></a>Část 1 – Vytvoření a Konfigurace bran VPN typu aktivní-aktivní
+Následující postup nastaví vaši bránu Azure VPN v režimech aktivní-aktivní. Klíčové rozdíly mezi branami aktivní-aktivní a aktivní-pohotovostní:
 
-* Je potřeba vytvořit dvě konfigurace IP brány s dvě veřejné IP adresy
-* Je nutné nastavit příznak EnableActiveActiveFeature
+* Musíte vytvořit dvě konfigurace protokolu IP brány se dvěma veřejnými IP adresami.
+* Je potřeba nastavit příznak EnableActiveActiveFeature.
 * SKU brány musí být VpnGw1, VpnGw2, VpnGw3 nebo HighPerformance (starší verze SKU).
 
-Další vlastnosti jsou stejné jako aktivní aktivní brány. 
+Ostatní vlastnosti jsou stejné jako brány mimo aktivní-aktivní. 
 
-### <a name="before-you-begin"></a>Než začnete
+### <a name="before-you-begin"></a>Před zahájením
 * Ověřte, že máte předplatné Azure. Pokud ještě nemáte předplatné Azure, můžete si aktivovat [výhody pro předplatitele MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) nebo si zaregistrovat [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/).
-* Budete potřebovat nainstalovat nejnovější verzi rutin prostředí PowerShell pro Azure Resource Manager. Zobrazit [Přehled prostředí Azure PowerShell](/powershell/azure/overview) pro další informace o instalaci rutin prostředí PowerShell.
+* Budete potřebovat nainstalovat nejnovější verzi rutin prostředí PowerShell pro Azure Resource Manager. Další informace o instalaci rutin PowerShellu najdete v tématu [přehled Azure PowerShell](/powershell/azure/overview) .
 
-### <a name="step-1---create-and-configure-vnet1"></a>Krok 1 – Vytvoření a konfigurace sítě VNet1
+### <a name="step-1---create-and-configure-vnet1"></a>Krok 1 – Vytvoření a konfigurace VNet1
 #### <a name="1-declare-your-variables"></a>1. Deklarace proměnných
 Tento ukázkový postup zahájíme deklarací proměnných. V následujícím příkladu jsou proměnné deklarovány s použitím hodnot pro tento ukázkový postup. Při konfiguraci pro ostrý provoz nezapomeňte nahradit hodnoty vlastními. Tyto proměnné můžete použít, pokud procházíte kroky, abyste se seznámili s tímto typem konfigurace. Upravte proměnné a pak je zkopírujte a vložte do konzoly prostředí PowerShell.
 
@@ -81,7 +82,7 @@ $Connection151 = "VNet1toSite5_1"
 $Connection152 = "VNet1toSite5_2"
 ```
 
-#### <a name="2-connect-to-your-subscription-and-create-a-new-resource-group"></a>2. Připojení k vašemu předplatnému a vytvořte novou skupinu prostředků
+#### <a name="2-connect-to-your-subscription-and-create-a-new-resource-group"></a>2. Připojte se k předplatnému a vytvořte novou skupinu prostředků.
 Ujistěte se, že jste přešli do režimu prostředí PowerShell, aby bylo možné používat rutiny Resource Manageru. Další informace najdete v tématu [Použití prostředí Windows PowerShell s Resource Managerem](../powershell-azure-resource-manager.md).
 
 Otevřete konzolu prostředí PowerShell a připojte se ke svému účtu. Připojení vám usnadní následující ukázka:
@@ -103,9 +104,9 @@ $gwsub1 = New-AzVirtualNetworkSubnetConfig -Name $GWSubName1 -AddressPrefix $GWS
 New-AzVirtualNetwork -Name $VNetName1 -ResourceGroupName $RG1 -Location $Location1 -AddressPrefix $VNetPrefix11,$VNetPrefix12 -Subnet $fesub1,$besub1,$gwsub1
 ```
 
-### <a name="step-2---create-the-vpn-gateway-for-testvnet1-with-active-active-mode"></a>Krok 2 – Vytvoření brány sítě VPN pro virtuální síť TestVNet1 v režimu aktivní aktivní
-#### <a name="1-create-the-public-ip-addresses-and-gateway-ip-configurations"></a>1. Vytvoření veřejné IP adresy a brány konfigurací protokolu IP
-Požádat o dvě veřejné adresy IP, která bude přidělena pro bránu, kterou vytvoříte pro příslušnou virtuální síť. Budete také definovat podsítě a požadované konfigurace protokolu IP.
+### <a name="step-2---create-the-vpn-gateway-for-testvnet1-with-active-active-mode"></a>Krok 2 – Vytvoření brány VPN pro virtuální sítě testvnet1 s režimem aktivní-aktivní
+#### <a name="1-create-the-public-ip-addresses-and-gateway-ip-configurations"></a>1. Vytvoření veřejných IP adres a konfigurací IP adresy brány
+Vyžádejte si dvě veřejné IP adresy, které se mají přidělit bráně, kterou vytvoříte pro svou virtuální síť. Také definujete požadovanou podsíť a konfiguraci IP adres.
 
 ```powershell
 $gw1pip1 = New-AzPublicIpAddress -Name $GW1IPName1 -ResourceGroupName $RG1 -Location $Location1 -AllocationMethod Dynamic
@@ -117,15 +118,15 @@ $gw1ipconf1 = New-AzVirtualNetworkGatewayIpConfig -Name $GW1IPconf1 -Subnet $sub
 $gw1ipconf2 = New-AzVirtualNetworkGatewayIpConfig -Name $GW1IPconf2 -Subnet $subnet1 -PublicIpAddress $gw1pip2
 ```
 
-#### <a name="2-create-the-vpn-gateway-with-active-active-configuration"></a>2. Vytvoření brány VPN typu aktivní aktivní konfigurace
-Vytvořte bránu virtuální sítě pro virtuální síť TestVNet1. Všimněte si, že existují dvě GatewayIpConfig položky a je nastavený příznak EnableActiveActiveFeature. Vytvoření brány může nějakou dobu trvat (45 minut nebo déle).
+#### <a name="2-create-the-vpn-gateway-with-active-active-configuration"></a>2. Vytvoření brány VPN s konfigurací aktivní-aktivní
+Vytvořte bránu virtuální sítě pro virtuální síť TestVNet1. Všimněte si, že existují dvě GatewayIpConfig položky a je nastaven příznak EnableActiveActiveFeature. Vytvoření brány může nějakou dobu trvat (45 minut nebo déle).
 
 ```powershell
 New-AzVirtualNetworkGateway -Name $GWName1 -ResourceGroupName $RG1 -Location $Location1 -IpConfigurations $gw1ipconf1,$gw1ipconf2 -GatewayType Vpn -VpnType RouteBased -GatewaySku VpnGw1 -Asn $VNet1ASN -EnableActiveActiveFeature -Debug
 ```
 
-#### <a name="3-obtain-the-gateway-public-ip-addresses-and-the-bgp-peer-ip-address"></a>3. Získat veřejné IP adresy brány a IP adresa partnera BGP
-Po vytvoření brány, musíte získat IP adresa partnera BGP ve službě Azure VPN Gateway. Tato adresa je potřeba nakonfigurovat jako partnerský uzel protokolu BGP pro vaše místní zařízení VPN Azure VPN Gateway.
+#### <a name="3-obtain-the-gateway-public-ip-addresses-and-the-bgp-peer-ip-address"></a>3. Získání veřejné IP adresy brány a IP adresy partnerského uzlu protokolu BGP
+Po vytvoření brány budete muset získat IP adresu partnerského uzlu protokolu BGP na Azure VPN Gateway. Tato adresa je potřeba ke konfiguraci VPN Gateway Azure jako partnerského uzlu protokolu BGP pro vaše místní zařízení VPN.
 
 ```powershell
 $gw1pip1 = Get-AzPublicIpAddress -Name $GW1IPName1 -ResourceGroupName $RG1
@@ -133,7 +134,7 @@ $gw1pip2 = Get-AzPublicIpAddress -Name $GW1IPName2 -ResourceGroupName $RG1
 $vnet1gw = Get-AzVirtualNetworkGateway -Name $GWName1 -ResourceGroupName $RG1
 ```
 
-Chcete-li zobrazit dvě veřejné IP adresy přidělené vaší brány VPN a jejich odpovídající IP adresu partnera BGP u každé instance brány slouží následující rutiny:
+Pomocí následujících rutin můžete zobrazit dvě veřejné IP adresy přidělené vaší bráně VPN a odpovídající IP adresy partnerského uzlu protokolu BGP pro každou instanci brány:
 
 ```powershell
 PS D:\> $gw1pip1.IpAddress
@@ -150,20 +151,20 @@ PS D:\> $vnet1gw.BgpSettingsText
 }
 ```
 
-Pořadí veřejné IP adresy pro instance brány a odpovídající adresy partnerského vztahu protokolu BGP jsou stejné. V tomto příkladu bude brána virtuální počítač s veřejnou IP Adresou 40.112.190.5 používat 10.12.255.4 jako adresy partnerského vztahu protokolu BGP a brána s 138.91.156.129 používat 10.12.255.5. Tyto informace je potřeba při nastavování vašeho na místními zařízeními VPN připojení typu aktivní aktivní brány. Brána se zobrazí v diagramu níže se všechny adresy:
+Pořadí veřejných IP adres pro instance brány a odpovídajících adres partnerských vztahů protokolu BGP je stejné. V tomto příkladu bude virtuální počítač brány s veřejnou IP adresou 40.112.190.5 používat jako adresu partnerského vztahu protokolu BGP 10.12.255.4 a brána s 138.91.156.129 bude používat 10.12.255.5. Tyto informace jsou nutné při nastavení místních zařízení VPN, která se připojují k bráně Active-Active. Brána se zobrazuje v následujícím diagramu se všemi adresami:
 
-![brány typu aktivní aktivní](./media/vpn-gateway-activeactive-rm-powershell/active-active-gw.png)
+![aktivní – aktivní brána](./media/vpn-gateway-activeactive-rm-powershell/active-active-gw.png)
 
-Po vytvoření brány můžete tuto bránu můžete použít k vytvoření typu aktivní aktivní mezi různými místy nebo připojení VNet-to-VNet. V dalších částech provede kroky k dokončení cvičení.
+Po vytvoření brány můžete tuto bránu použít k vytvoření připojení mezi místními sítěmi nebo VNet-to-VNet. V následujících částech najdete postup k dokončení tohoto cvičení.
 
-## <a name ="aacrossprem"></a>Část 2 – Vytvoření připojení typu aktivní aktivní mezi různými místy
-K navázání připojení mezi různými místy, budete muset vytvořit bránu místní sítě k reprezentaci vaše místní zařízení VPN a připojení k připojení Azure VPN gateway pomocí brány místní sítě. V tomto příkladu Azure VPN gateway je v režimu aktivní aktivní. V důsledku toho se obě instance brány Azure VPN i v případě, že existuje pouze jeden místní zařízení VPN (brány místní sítě) a jedno připojení prostředků, vytvořit tunel VPN s2s s místním zařízením.
+## <a name ="aacrossprem"></a>Část 2 – Vytvoření připojení mezi různými místy v aktivním prostředí
+K navázání připojení mezi různými místy potřebujete vytvořit bránu místní sítě, která bude představovat vaše místní zařízení VPN, a připojení k připojení brány Azure VPN k bráně místní sítě. V tomto příkladu je brána Azure VPN Gateway v režimu aktivní-aktivní. V důsledku toho i v případě, že je k dispozici jenom jedno místní zařízení VPN (Brána místní sítě) a jeden prostředek připojení, vytvoří obě instance služby Azure VPN Gateway tunely S2S VPN s místním zařízením.
 
 Než budete pokračovat, ujistěte se prosím, že jste dokončili [část 1](#aagateway) tohoto cvičení.
 
 ### <a name="step-1---create-and-configure-the-local-network-gateway"></a>Krok 1 – Vytvoření a konfigurace brány místní sítě
 #### <a name="1-declare-your-variables"></a>1. Deklarace proměnných
-V tomto cvičení bude sestavení konfigurace znázorněné v diagramu. Nezapomeňte nahradit hodnoty těmi, které chcete použít pro svou konfiguraci.
+Toto cvičení bude pokračovat v sestavování konfigurace zobrazené v diagramu. Nezapomeňte nahradit hodnoty těmi, které chcete použít pro svou konfiguraci.
 
 ```powershell
 $RG5 = "TestAARG5"
@@ -175,38 +176,38 @@ $LNGASN5 = 65050
 $BGPPeerIP51 = "10.52.255.253"
 ```
 
-Pár věcí, které poznámka týkající se parametry brány místní sítě:
+V souvislosti s parametry brány místní sítě si poznamenejte několik věcí:
 
-* Brána místní sítě může být ve stejném nebo jiném umístění a skupině prostředků jako brány sítě VPN. Tento příklad ukazuje, je v různých skupinách prostředků, ale ve stejném umístění Azure.
-* Pokud existuje pouze jeden místní zařízení VPN, jak je uvedeno výše, aktivní aktivní připojení můžete pracovat s nebo bez protokolu BGP. Tento příklad používá protokol BGP pro připojení mezi různými místy.
-* Pokud je protokol BGP povolen, předpony, které je potřeba deklarovat pro bránu místní sítě je adresa hostitele vaše IP adresa partnera BGP ve vašem zařízení VPN. V tomto případě jde /32 předponu "10.52.255.253/32".
-* Připomínáme je nutné použít různá čísla ASN protokolu BGP mezi vaší místní sítí a virtuální sítě Azure. Pokud se shodují, musíte změnit ASN virtuální sítě, pokud vaše místní zařízení VPN již používá číslo ASN pro vytvoření partnerského vztahu s dalším sousedům protokolu BGP.
+* Brána místní sítě může být ve stejném nebo jiném umístění a skupině prostředků jako brána sítě VPN. V tomto příkladu se zobrazují v různých skupinách prostředků, ale ve stejném umístění Azure.
+* Pokud je v tomto příkladu jenom jedno místní zařízení VPN, může připojení aktivní-aktivní fungovat s protokolem BGP nebo bez něj. Tento příklad používá protokol BGP pro připojení mezi různými místy.
+* Pokud je protokol BGP povolený, předpona, kterou potřebujete deklarovat pro bránu místní sítě, je adresa hostitele vaší IP adresy partnerského uzlu protokolu BGP na vašem zařízení VPN. V tomto případě je to předpona/32 "10.52.255.253/32".
+* V rámci připomenutí musíte použít různé čísla ASN protokolu BGP mezi místními sítěmi a virtuální sítí Azure. Pokud jsou stejné, musíte změnit číslo ASN vaší virtuální sítě, pokud vaše místní zařízení VPN už používá ASN k partnerským uzlům s jinými sousedními uzly protokolu BGP.
 
-#### <a name="2-create-the-local-network-gateway-for-site5"></a>2. Vytvořte bránu místní sítě pro Site5
-Než budete pokračovat, zkontrolujte, že jste stále připojeni k předplatnému 1. Vytvořte skupinu prostředků, pokud ještě není vytvořeno.
+#### <a name="2-create-the-local-network-gateway-for-site5"></a>2. Vytvoření brány místní sítě pro site5
+Než budete pokračovat, zkontrolujte, že jste stále připojeni k předplatnému 1. Vytvořte skupinu prostředků, pokud ještě není vytvořená.
 
 ```powershell
 New-AzResourceGroup -Name $RG5 -Location $Location5
 New-AzLocalNetworkGateway -Name $LNGName51 -ResourceGroupName $RG5 -Location $Location5 -GatewayIpAddress $LNGIP51 -AddressPrefix $LNGPrefix51 -Asn $LNGASN5 -BgpPeeringAddress $BGPPeerIP51
 ```
 
-### <a name="step-2---connect-the-vnet-gateway-and-local-network-gateway"></a>Krok 2: připojení brány virtuální sítě a bránu místní sítě
-#### <a name="1-get-the-two-gateways"></a>1. Získat dvě brány
+### <a name="step-2---connect-the-vnet-gateway-and-local-network-gateway"></a>Krok 2 – připojení brány virtuální sítě a brány místní sítě
+#### <a name="1-get-the-two-gateways"></a>1. Získání dvou bran
 
 ```powershell
 $vnet1gw = Get-AzVirtualNetworkGateway -Name $GWName1  -ResourceGroupName $RG1
 $lng5gw1 = Get-AzLocalNetworkGateway  -Name $LNGName51 -ResourceGroupName $RG5
 ```
 
-#### <a name="2-create-the-testvnet1-to-site5-connection"></a>2. Vytvoření virtuální sítě TestVNet1 k Site5 připojení
-V tomto kroku vytvoříte připojení z virtuální sítě TestVNet1 do Site5_1 s "EnableBGP" nastavit na $True.
+#### <a name="2-create-the-testvnet1-to-site5-connection"></a>2. Vytvoření připojení virtuální sítě testvnet1 k site5
+V tomto kroku vytvoříte připojení z virtuální sítě testvnet1 k Site5_1 s nastavením "EnableBGP" nastaveným na $True.
 
 ```powershell
 New-AzVirtualNetworkGatewayConnection -Name $Connection151 -ResourceGroupName $RG1 -VirtualNetworkGateway1 $vnet1gw -LocalNetworkGateway2 $lng5gw1 -Location $Location1 -ConnectionType IPsec -SharedKey 'AzureA1b2C3' -EnableBGP $True
 ```
 
-#### <a name="3-vpn-and-bgp-parameters-for-your-on-premises-vpn-device"></a>3. Parametry sítě VPN a protokol BGP pro vaše místní zařízení VPN
-V příkladu níže jsou uvedeny parametry, které zadáte do oddílu konfigurace protokolu BGP na vaše místní zařízení VPN pro toto cvičení:
+#### <a name="3-vpn-and-bgp-parameters-for-your-on-premises-vpn-device"></a>3. Parametry sítě VPN a protokolu BGP pro vaše místní zařízení VPN
+Následující příklad uvádí parametry, které zadáte do konfiguračního oddílu protokolu BGP na místním zařízení VPN pro toto cvičení:
 
 ```
 - Site5 ASN            : 65050
@@ -220,15 +221,15 @@ V příkladu níže jsou uvedeny parametry, které zadáte do oddílu konfigurac
 - eBGP Multihop        : Ensure the "multihop" option for eBGP is enabled on your device if needed
 ```
 
-Po několika minutách by měl navázat připojení a relace partnerského vztahu protokolu BGP se spustí, jakmile se naváže připojení IPsec. V tomto příkladu má nakonfigurovanou zatím pouze jeden zařízení VPN v místním, což vede k diagramu je znázorněno níže:
+Připojení by se mělo navázat po několika minutách a relace partnerského vztahu protokolu BGP se spustí, jakmile se naváže připojení IPsec. V tomto příkladu je nakonfigurované jenom jedno místní zařízení VPN, což vede k tomu, že se zobrazí následující diagram:
 
-![active-active-crossprem](./media/vpn-gateway-activeactive-rm-powershell/active-active.png)
+![aktivní – aktivní – crossprem](./media/vpn-gateway-activeactive-rm-powershell/active-active.png)
 
-### <a name="step-3---connect-two-on-premises-vpn-devices-to-the-active-active-vpn-gateway"></a>Krok 3: připojení dvou místních zařízení VPN k bráně VPN typu aktivní aktivní
-Pokud máte dvě zařízení VPN ve stejné místní síti, můžete dosáhnout dvojitá redundance připojení Azure VPN gateway, která ve druhém zařízení VPN.
+### <a name="step-3---connect-two-on-premises-vpn-devices-to-the-active-active-vpn-gateway"></a>Krok 3: připojení dvou místních zařízení VPN k bráně VPN typu aktivní-aktivní
+Pokud máte dvě zařízení VPN ve stejné místní síti, můžete dosáhnout dvojí redundance tím, že bránu Azure VPN Gateway připojíte k druhému zařízení VPN.
 
-#### <a name="1-create-the-second-local-network-gateway-for-site5"></a>1. Vytvoření druhé brány místní sítě pro Site5
-IP adresa brány, předponu adresy a adresa partnerského vztahu protokolu BGP pro druhá brána místní sítě se nesmí překrývat s předchozí brána místní sítě pro stejnou místní síť.
+#### <a name="1-create-the-second-local-network-gateway-for-site5"></a>1. Vytvoření druhé brány místní sítě pro site5
+IP adresa brány, předpona adresy a adresa partnerského vztahu protokolu BGP pro druhou bránu místní sítě se nesmí překrývat s předchozí bránou místní sítě pro stejnou místní síť.
 
 ```powershell
 $LNGName52 = "Site5_2"
@@ -241,8 +242,8 @@ $BGPPeerIP52 = "10.52.255.254"
 New-AzLocalNetworkGateway -Name $LNGName52 -ResourceGroupName $RG5 -Location $Location5 -GatewayIpAddress $LNGIP52 -AddressPrefix $LNGPrefix52 -Asn $LNGASN5 -BgpPeeringAddress $BGPPeerIP52
 ```
 
-#### <a name="2-connect-the-vnet-gateway-and-the-second-local-network-gateway"></a>2. Připojení brány virtuální sítě a druhá brána místní sítě
-Vytvoření připojení z virtuální sítě TestVNet1 k Site5_2 s "EnableBGP" nastavit na $True
+#### <a name="2-connect-the-vnet-gateway-and-the-second-local-network-gateway"></a>2. Připojte bránu virtuální sítě a druhou bránu místní sítě.
+Vytvořte připojení z virtuální sítě testvnet1 k Site5_2 s nastavením "EnableBGP" nastaveným na $True
 
 ```powershell
 $lng5gw2 = Get-AzLocalNetworkGateway -Name $LNGName52 -ResourceGroupName $RG5
@@ -252,8 +253,8 @@ $lng5gw2 = Get-AzLocalNetworkGateway -Name $LNGName52 -ResourceGroupName $RG5
 New-AzVirtualNetworkGatewayConnection -Name $Connection152 -ResourceGroupName $RG1 -VirtualNetworkGateway1 $vnet1gw -LocalNetworkGateway2 $lng5gw2 -Location $Location1 -ConnectionType IPsec -SharedKey 'AzureA1b2C3' -EnableBGP $True
 ```
 
-#### <a name="3-vpn-and-bgp-parameters-for-your-second-on-premises-vpn-device"></a>3. Parametry sítě VPN a protokolu BGP pro druhý místní zařízení VPN
-Obdobně dole najdete parametry zadáte do druhé zařízení VPN:
+#### <a name="3-vpn-and-bgp-parameters-for-your-second-on-premises-vpn-device"></a>3. Parametry sítě VPN a protokolu BGP pro vaše druhé místní zařízení VPN
+Podobně níže jsou uvedeny parametry, které zadáte do druhého zařízení VPN:
 
 ```
 - Site5 ASN            : 65050
@@ -267,19 +268,19 @@ Obdobně dole najdete parametry zadáte do druhé zařízení VPN:
 - eBGP Multihop        : Ensure the "multihop" option for eBGP is enabled on your device if needed
 ```
 
-Jakmile se naváže připojení (tunelů), budete mít dva redundantní zařízení VPN a tunely připojení vaší místní sítí a Azure:
+Jakmile se naváže připojení (tunely), budete mít duální redundantní zařízení VPN a tunely připojující místní síť a Azure:
 
 ![dual-redundancy-crossprem](./media/vpn-gateway-activeactive-rm-powershell/dual-redundancy.png)
 
-## <a name ="aav2v"></a>Část 3 – vytvoření připojení typu aktivní aktivní připojení typu VNet-to-VNet
-Tato část vytvoří připojení typu aktivní aktivní připojení typu VNet-to-VNet s protokolem BGP. 
+## <a name ="aav2v"></a>Část 3 – navázání připojení VNet-to-VNet aktivní – aktivní
+Tato část vytvoří aktivní aktivní připojení VNet-to-VNet s protokolem BGP. 
 
-Následující pokyny jsou pokračování kroků uvedených výše. Je třeba provést [část 1](#aagateway) vytvoření a konfigurace virtuální sítě TestVNet1 a bránu VPN s protokolem BGP. 
+Následující pokyny jsou pokračování kroků uvedených výše. Pokud chcete vytvořit a nakonfigurovat virtuální sítě testvnet1 a VPN Gateway s protokolem BGP, musíte dokončit [část 1](#aagateway) . 
 
-### <a name="step-1---create-testvnet2-and-the-vpn-gateway"></a>Krok 1: vytvoření TestVNet2 a brány VPN
-Je důležité, abyste měli jistotu, že se adresní prostor IP adres nové virtuální sítě, TestVNet2, nepřekrývá s žádným z rozsahů virtuálních sítí.
+### <a name="step-1---create-testvnet2-and-the-vpn-gateway"></a>Krok 1 – Vytvoření TestVNet2 a brány VPN
+Je důležité se ujistit, že se adresní prostor IP adres nové virtuální sítě, TestVNet2, nepřekrývá s žádným z rozsahů virtuální sítě.
 
-V tomto příkladu patří virtuální sítě do stejného předplatného. Můžete nastavit připojení VNet-to-VNet mezi různých předplatných; najdete [konfigurace připojení typu VNet-to-VNet](vpn-gateway-vnet-vnet-rm-ps.md) další podrobnosti. Ujistěte se, že přidáte "-EnableBgp $True" při vytváření připojení se povolit protokol BGP.
+V tomto příkladu virtuální sítě patří do stejného předplatného. Můžete nastavit připojení VNet-to-VNet mezi různými předplatnými. Další informace najdete [v tématu Konfigurace připojení typu VNet-to-VNet](vpn-gateway-vnet-vnet-rm-ps.md) . Nezapomeňte přidat "-EnableBgp $True" při vytváření připojení pro povolení protokolu BGP.
 
 #### <a name="1-declare-your-variables"></a>1. Deklarace proměnných
 Nezapomeňte nahradit hodnoty těmi, které chcete použít pro svou konfiguraci.
@@ -319,8 +320,8 @@ $gwsub2 = New-AzVirtualNetworkSubnetConfig -Name $GWSubName2 -AddressPrefix $GWS
 New-AzVirtualNetwork -Name $VNetName2 -ResourceGroupName $RG2 -Location $Location2 -AddressPrefix $VNetPrefix21,$VNetPrefix22 -Subnet $fesub2,$besub2,$gwsub2
 ```
 
-#### <a name="3-create-the-active-active-vpn-gateway-for-testvnet2"></a>3. Vytvoření brány VPN typu aktivní aktivní pro TestVNet2
-Požádat o dvě veřejné adresy IP, která bude přidělena pro bránu, kterou vytvoříte pro příslušnou virtuální síť. Budete také definovat podsítě a požadované konfigurace protokolu IP.
+#### <a name="3-create-the-active-active-vpn-gateway-for-testvnet2"></a>3. Vytvoření brány VPN typu aktivní-aktivní pro TestVNet2
+Vyžádejte si dvě veřejné IP adresy, které se mají přidělit bráně, kterou vytvoříte pro svou virtuální síť. Také definujete požadovanou podsíť a konfiguraci IP adres.
 
 ```powershell
 $gw2pip1 = New-AzPublicIpAddress -Name $GW2IPName1 -ResourceGroupName $RG2 -Location $Location2 -AllocationMethod Dynamic
@@ -332,16 +333,16 @@ $gw2ipconf1 = New-AzVirtualNetworkGatewayIpConfig -Name $GW2IPconf1 -Subnet $sub
 $gw2ipconf2 = New-AzVirtualNetworkGatewayIpConfig -Name $GW2IPconf2 -Subnet $subnet2 -PublicIpAddress $gw2pip2
 ```
 
-Vytvoření brány sítě VPN s číslo AS a příznak "EnableActiveActiveFeature". Všimněte si, že je nutné přepsat výchozí číslo ASN pro Azure VPN Gateway. Čísla ASN pro připojené virtuální sítě musí být odlišný povolit protokol BGP a směrování provozu.
+Vytvořte bránu VPN s použitím čísla AS a příznaku "EnableActiveActiveFeature". Všimněte si, že musíte přepsat výchozí číslo ASN na vašich branách Azure VPN Gateway. Čísla ASN pro připojené virtuální sítě musí být odlišné, aby bylo možné povolit směrování protokolu BGP a přenosu.
 
 ```powershell
 New-AzVirtualNetworkGateway -Name $GWName2 -ResourceGroupName $RG2 -Location $Location2 -IpConfigurations $gw2ipconf1,$gw2ipconf2 -GatewayType Vpn -VpnType RouteBased -GatewaySku VpnGw1 -Asn $VNet2ASN -EnableActiveActiveFeature
 ```
 
-### <a name="step-2---connect-the-testvnet1-and-testvnet2-gateways"></a>Krok 2: připojení brány virtuální sítě TestVNet1 a TestVNet2
-V tomto příkladu jsou obě brány ve stejném předplatném. Můžete tento krok dokončit ve stejné relaci prostředí PowerShell.
+### <a name="step-2---connect-the-testvnet1-and-testvnet2-gateways"></a>Krok 2 – připojení bran virtuální sítě testvnet1 a TestVNet2
+V tomto příkladu jsou obě brány ve stejném předplatném. Tento krok můžete provést ve stejné relaci prostředí PowerShell.
 
-#### <a name="1-get-both-gateways"></a>1. Získejte obě brány
+#### <a name="1-get-both-gateways"></a>1. Získat obě brány
 Ujistěte se, že jste přihlášeni a připojeni k předplatnému 1.
 
 ```powershell
@@ -349,8 +350,8 @@ $vnet1gw = Get-AzVirtualNetworkGateway -Name $GWName1 -ResourceGroupName $RG1
 $vnet2gw = Get-AzVirtualNetworkGateway -Name $GWName2 -ResourceGroupName $RG2
 ```
 
-#### <a name="2-create-both-connections"></a>2. Vytvoření obě připojení
-V tomto kroku vytvoříte připojení z virtuální sítě TestVNet1 k TestVNet2 a připojení z TestVNet2 k virtuální síti TestVNet1.
+#### <a name="2-create-both-connections"></a>2. Vytvoření obou připojení
+V tomto kroku vytvoříte připojení z virtuální sítě testvnet1 k TestVNet2 a připojení od TestVNet2 k virtuální sítě testvnet1.
 
 ```powershell
 New-AzVirtualNetworkGatewayConnection -Name $Connection12 -ResourceGroupName $RG1 -VirtualNetworkGateway1 $vnet1gw -VirtualNetworkGateway2 $vnet2gw -Location $Location1 -ConnectionType Vnet2Vnet -SharedKey 'AzureA1b2C3' -EnableBgp $True
@@ -359,25 +360,25 @@ New-AzVirtualNetworkGatewayConnection -Name $Connection21 -ResourceGroupName $RG
 ```
 
 > [!IMPORTANT]
-> Je nutné povolit protokol BGP pro obě připojení.
+> Nezapomeňte u obou připojení povolit protokol BGP.
 > 
 > 
 
-Po dokončení těchto kroků, naváže připojení v pár minut a protokolu BGP bude relaci partnerského vztahu až po dokončení připojení VNet-to-VNet s dvojitá redundance:
+Po dokončení těchto kroků bude připojení navázáno během několika minut a relace partnerského vztahu protokolu BGP bude až do dokončení připojení typu VNet-to-VNet s duální redundancí:
 
-![active-active-v2v](./media/vpn-gateway-activeactive-rm-powershell/vnet-to-vnet.png)
+![aktivní – aktivní – V2V](./media/vpn-gateway-activeactive-rm-powershell/vnet-to-vnet.png)
 
-## <a name ="aaupdate"></a>Aktualizovat existující bráně VPN
+## <a name ="aaupdate"></a>Aktualizovat existující bránu VPN
 
-Tato část vám pomůže změnit existující bráně Azure VPN z aktivní pohotovostní režim aktivní – aktivní, nebo naopak.
+Tato část vám pomůže změnit existující bránu Azure VPN z aktivního režimu na režim aktivní-aktivní, nebo naopak.
 
-### <a name="change-an-active-standby-gateway-to-an-active-active-gateway"></a>Změnit bránou aktivní pohotovostní do brány typu aktivní aktivní
+### <a name="change-an-active-standby-gateway-to-an-active-active-gateway"></a>Změna brány aktivní-pohotovostní na bránu aktivní-aktivní
 
-Následující příklad převádí brány typu aktivní aktivní brány aktivní pohotovostní. Při změně aktivní pohotovostní brány typu aktivní aktivní, můžete vytvořit jinou veřejnou IP adresu a pak přidejte druhá konfigurace IP brány.
+Následující příklad převede bránu aktivní-pohotovostní na bránu aktivní-aktivní. Když změníte bránu typu aktivní-pohotovostní na aktivní-aktivní, vytvoříte jinou veřejnou IP adresu a pak přidáte druhou konfiguraci protokolu IP brány.
 
 #### <a name="1-declare-your-variables"></a>1. Deklarace proměnných
 
-Nahraďte následující parametry použité příklady s nastavením vyžadují pro vaši vlastní konfiguraci a potom deklarujte tyto proměnné.
+Nahraďte následující parametry používané pro příklady s nastavením, které požadujete pro vlastní konfiguraci, a pak tyto proměnné deklarovat.
 
 ```powershell
 $GWName = "TestVNetAA1GW"
@@ -387,7 +388,7 @@ $GWIPName2 = "gwpip2"
 $GWIPconf2 = "gw1ipconf2"
 ```
 
-Po deklarování proměnné, můžete zkopírovat a vložit tohoto příkladu a konzola Powershellu.
+Po deklarování proměnných můžete tento příklad zkopírovat a vložit do konzoly PowerShellu.
 
 ```powershell
 $vnet = Get-AzVirtualNetwork -Name $VNetName -ResourceGroupName $RG
@@ -396,47 +397,47 @@ $gw = Get-AzVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG
 $location = $gw.Location
 ```
 
-#### <a name="2-create-the-public-ip-address-then-add-the-second-gateway-ip-configuration"></a>2. Vytvoření veřejné IP adresy a pak přidejte druhá konfigurace IP adresy brány
+#### <a name="2-create-the-public-ip-address-then-add-the-second-gateway-ip-configuration"></a>2. Vytvořte veřejnou IP adresu a pak přidejte druhou konfiguraci IP adresy brány.
 
 ```powershell
 $gwpip2 = New-AzPublicIpAddress -Name $GWIPName2 -ResourceGroupName $RG -Location $location -AllocationMethod Dynamic
 Add-AzVirtualNetworkGatewayIpConfig -VirtualNetworkGateway $gw -Name $GWIPconf2 -Subnet $subnet -PublicIpAddress $gwpip2
 ```
 
-#### <a name="3-enable-active-active-mode-and-update-the-gateway"></a>3. Povolit režim aktivní – aktivní a aktualizovat bránu
+#### <a name="3-enable-active-active-mode-and-update-the-gateway"></a>3. Povolit režim aktivní-aktivní a aktualizovat bránu
 
-V tomto kroku povolíte režim aktivní – aktivní a aktualizovat bránu. V tomto příkladu je brány VPN gateway aktuálně pomocí starší verze standardní SKU. Aktivní aktivní nepodporuje standardního SKU. Změna velikosti starší verze SKU, který se podporuje (v tomto případě HighPerformance), stačí určit podporované starší verze SKU, kterou chcete použít.
+V tomto kroku povolíte režim aktivní-aktivní a aktualizujete bránu. V tomto příkladu služba VPN Gateway aktuálně používá starší verzi Standard SKU. Aktivní-aktivní ale nepodporuje standardní SKU. Chcete-li změnit velikost starší verze SKU na jednu, která je podporována (v tomto případě HighPerformance), stačí zadat podporovanou položku starší verze SKU, kterou chcete použít.
 
-* Nelze změnit starší verze SKU na jednu z nové SKU pomocí tohoto kroku. Můžete pouze změnit velikost starší verze SKU na jiné podporované starší verze SKU. Například je nelze změnit skladovou Položku z Standard na VpnGw1 (i v případě, že pro aktivní aktivní je podporované VpnGw1) protože standardní verze je starší verze SKU a je aktuální skladová položka VpnGw1. Další informace o SKU pro změnu velikosti a migrace, najdete v části [skladové položky brány](vpn-gateway-about-vpngateways.md#gwsku).
+* V tomto kroku nemůžete změnit starší položku SKU na jednu z nových SKU. Změnit velikost původní SKU můžete jenom na jinou podporovanou starší verzi SKU. Nemůžete například změnit SKLADOVOU položku z úrovně Standard na VpnGw1 (i když je VpnGw1 podporovaná pro aktivní-aktivní), protože Standard je starší skladová položka a VpnGw1 je aktuální SKU. Další informace o změně velikosti a migraci SKU najdete v tématu [SKU brány](vpn-gateway-about-vpngateways.md#gwsku).
 
-* Pokud chcete změnit velikost aktuální skladová položka VpnGw1 například k VpnGw3, lze provést pomocí tohoto kroku, protože SKU jsou stejné řady SKU. Proto byste použili hodnotu: ```-GatewaySku VpnGw3```
+* Pokud chcete změnit velikost aktuální SKU, například VpnGw1 na VpnGw3, můžete to udělat pomocí tohoto kroku, protože SKU jsou ve stejné rodině SKU. K tomu byste měli použít tuto hodnotu:```-GatewaySku VpnGw3```
 
-Pokud používáte to ve vašem prostředí, pokud nepotřebujete změňte velikost brány, nebudete muset zadat - GatewaySku. Všimněte si, že v tomto kroku musíte nastavit brány objekt v prostředí PowerShell pro aktivaci skutečné aktualizace. Tato aktualizace může trvat 30 až 45 minut, i když nejsou Změna velikosti brány.
+Pokud ve svém prostředí používáte tuto bránu, nemusíte-li měnit velikost brány, nemusíte zadávat-GatewaySku. Všimněte si, že v tomto kroku musíte nastavit objekt brány v PowerShellu tak, aby aktivoval skutečnou aktualizaci. Tato aktualizace může trvat 30 až 45 minut, i když neměníte velikost brány.
 
 ```powershell
 Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gw -EnableActiveActiveFeature -GatewaySku HighPerformance
 ```
 
-### <a name="change-an-active-active-gateway-to-an-active-standby-gateway"></a>Změnit brány typu aktivní aktivní na aktivní pohotovostní gateway
+### <a name="change-an-active-active-gateway-to-an-active-standby-gateway"></a>Změna brány aktivní-aktivní na bránu s aktivním pohotovostním režimem
 #### <a name="1-declare-your-variables"></a>1. Deklarace proměnných
 
-Nahraďte následující parametry použité příklady s nastavením vyžadují pro vaši vlastní konfiguraci a potom deklarujte tyto proměnné.
+Nahraďte následující parametry používané pro příklady s nastavením, které požadujete pro vlastní konfiguraci, a pak tyto proměnné deklarovat.
 
 ```powershell
 $GWName = "TestVNetAA1GW"
 $RG = "TestVPNActiveActive01"
 ```
 
-Po deklarování proměnné, získejte název konfigurace protokolu IP, kterou chcete odebrat.
+Po deklarování proměnných Získejte název konfigurace protokolu IP, kterou chcete odebrat.
 
 ```powershell
 $gw = Get-AzVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG
 $ipconfname = $gw.IpConfigurations[1].Name
 ```
 
-#### <a name="2-remove-the-gateway-ip-configuration-and-disable-the-active-active-mode"></a>2. Odebrat konfiguraci IP adresy brány a zakázat režim aktivní – aktivní
+#### <a name="2-remove-the-gateway-ip-configuration-and-disable-the-active-active-mode"></a>2. Odebrání konfigurace protokolu IP brány a zakázání režimu aktivní-aktivní
 
-V tomto příkladu můžete odebrat konfiguraci IP adresy brány a zakázat režim aktivní – aktivní. Všimněte si, že je nutné nastavit objektu brány v prostředí PowerShell pro aktivaci skutečné aktualizace.
+Tento příklad slouží k odebrání konfigurace protokolu IP brány a zakázání režimu aktivní-aktivní. Všimněte si, že musíte nastavit objekt brány v PowerShellu tak, aby aktivoval skutečnou aktualizaci.
 
 ```powershell
 Remove-AzVirtualNetworkGatewayIpConfig -Name $ipconfname -VirtualNetworkGateway $gw

@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Konfigurace Figma automatické zřizování uživatelů pomocí Azure Active Directory | Dokumentace Microsoftu'
-description: Zjistěte, jak konfigurovat Azure Active Directory a automaticky zřizovat a rušit zřízení uživatelských účtů do Figma.
+title: 'Kurz: Konfigurace automatického zřizování uživatelů Figma pomocí Azure Active Directory | Microsoft Docs'
+description: Naučte se konfigurovat Azure Active Directory pro automatické zřízení a zrušení zřízení uživatelských účtů pro Figma.
 services: active-directory
 documentationcenter: ''
 author: zchia
@@ -8,151 +8,151 @@ writer: zchia
 manager: beatrizd
 ms.assetid: na
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2019
 ms.author: zhchia
-ms.openlocfilehash: b71aa6709b1c93688ea3eece4ce3f4066f9a6b7a
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 38ebba8803e584e9b5d1179281fcff3a3f98d5a4
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67673168"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67848198"
 ---
-# <a name="tutorial-configure-figma-for-automatic-user-provisioning"></a>Kurz: Konfigurace Figma pro automatické zřizování uživatelů
+# <a name="tutorial-configure-figma-for-automatic-user-provisioning"></a>Kurz: Konfigurace Figma pro Automatické zřizování uživatelů
 
-Cílem tohoto kurzu je předvést postup provést v Figma a Azure Active Directory (Azure AD) ke konfiguraci Azure AD automaticky zřizovat a rušit zřízení uživatele a/nebo skupiny, které se Figma.
+Cílem tohoto kurzu je předvést kroky, které je třeba provést v Figma a Azure Active Directory (Azure AD) ke konfiguraci služby Azure AD pro Automatické zřizování a zrušení zřizování uživatelů nebo skupin pro Figma.
 
 > [!NOTE]
-> Tento kurz popisuje konektor postavené na službě zřizování uživatelů služby Azure AD. Důležité podrobnosti o význam této služby, jak to funguje a nejčastější dotazy najdete v tématu [automatizace zřizování uživatelů a jeho rušení pro aplikace SaaS ve službě Azure Active Directory](../manage-apps/user-provisioning.md).
+> Tento kurz popisuje konektor založený na službě zřizování uživatelů Azure AD. Důležité informace o tom, co tato služba dělá, jak funguje a nejčastější dotazy, najdete v tématu [Automatizace zřizování a rušení zřizování uživatelů pro SaaS aplikací pomocí Azure Active Directory](../manage-apps/user-provisioning.md).
 >
-> Tento konektor je aktuálně ve verzi Public Preview. Další informace o obecných Microsoft Azure podmínky použití pro funkce ve verzi Preview, najdete v části [doplňkovými podmínkami použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Tento konektor je aktuálně ve Public Preview. Další informace o obecných Microsoft Azure podmínek použití pro funkce ve verzi Preview najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)náhledy.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Scénář popsaný v tomto kurzu se předpokládá, že už máte splněné následující požadavky:
+Scénář popsaný v tomto kurzu předpokládá, že už máte následující požadavky:
 
 * Tenanta Azure AD.
-* [Figma tenant](https://www.figma.com/pricing/).
-* Účet uživatele s oprávněními správce v Figma.
+* [Tenant Figma](https://www.figma.com/pricing/)
+* Uživatelský účet v Figma s oprávněními správce.
 
-## <a name="assign-users-to-figma"></a>Přiřazení uživatelů k Figma.
-Azure Active Directory používá koncept volá přiřazení k určení, kteří uživatelé měli obdržet přístup k vybrané aplikace. V souvislosti s automatické zřizování uživatelů se synchronizují pouze na uživatele a/nebo skupiny, které jsou přiřazené k aplikaci ve službě Azure AD.
+## <a name="assign-users-to-figma"></a>Přiřaďte uživatele k Figma.
+Azure Active Directory používá koncept nazvaný přiřazení k určení uživatelů, kteří mají získat přístup k vybraným aplikacím. V kontextu automatického zřizování uživatelů se synchronizují jenom uživatelé a skupiny, které jsou přiřazené k aplikaci v Azure AD.
 
-Než nakonfigurujete a povolíte automatické zřizování uživatelů, byste měli rozhodnout, které uživatele a/nebo skupiny ve službě Azure AD potřebují přístup k Figma. Jakmile se rozhodli, můžete přiřadit tyto uživatele a/nebo skupiny Figma podle zde uvedených pokynů:
+Před konfigurací a povolením automatického zřizování uživatelů byste se měli rozhodnout, kteří uživatelé a skupiny ve službě Azure AD potřebují přístup k Figma. Po rozhodnutí můžete přiřadit tyto uživatele nebo skupiny k Figma podle pokynů uvedených tady:
  
-* [Přiřadit uživatele nebo skupiny k podnikové aplikace](../manage-apps/assign-user-or-group-access-portal.md)
-## <a name="important-tips-for-assigning-users-to-figma"></a>Důležité tipy pro přiřazování uživatelů k Figma
+* [Přiřazení uživatele nebo skupiny k podnikové aplikaci](../manage-apps/assign-user-or-group-access-portal.md)
+## <a name="important-tips-for-assigning-users-to-figma"></a>Důležité tipy pro přiřazení uživatelů k Figma
 
- * Dále je doporučeno jednoho uživatele Azure AD, je přiřazená Figma otestovat automatické konfigurace zřizování uživatelů. Další uživatele a/nebo skupiny může být přiřazen později.
+ * Doporučuje se, aby se k Figma k testování automatické konfigurace zřizování uživatelů přiřadil jeden uživatel Azure AD. Další uživatele a skupiny můžete přiřadit později.
 
-* Při přiřazení uživatele k Figma, musíte vybrat libovolnou platnou roli specifické pro aplikaci (Pokud je k dispozici) v dialogovém okně přiřazení. Uživatelé s rolí výchozího přístupu k nezahrnou se zřizování.
+* Při přiřazování uživatele k Figma musíte v dialogovém okně přiřazení vybrat jakoukoli platnou roli specifickou pro aplikaci (Pokud je dostupná). Uživatelé s výchozí rolí přístupu se z zřizování vylučují.
 
 ## <a name="set-up-figma-for-provisioning"></a>Nastavení Figma pro zřizování
 
-Před konfigurací Figma pro automatické zřizování uživatelů pomocí Azure AD, je potřeba načíst některé informace o zajištění z Figma.
+Před konfigurací Figma pro Automatické zřizování uživatelů se službou Azure AD bude nutné načíst některé informace o zřizování z Figma.
 
-1. Přihlaste se k vaší [konzoly pro správu Figma](https://www.Figma.com/). Klikněte na ikonu ozubeného kola vedle vašeho tenanta.
+1. Přihlaste se ke [konzole pro správu Figma](https://www.Figma.com/). Klikněte na ikonu ozubeného kolečka vedle vašeho tenanta.
 
-    ![FigmaFigma-employee-provision](media/Figma-provisioning-tutorial/image0.png)
+    ![FigmaFigma – zřízení zaměstnanců](media/Figma-provisioning-tutorial/image0.png)
 
-2. Přejděte do **Obecné > aktualizovat přihlašovací nastavení**.
+2. Přejděte na **obecné > aktualizace nastavení přihlášení**.
 
-    ![FigmaFigma-employee-provision](media/Figma-provisioning-tutorial/figma03.png)
+    ![FigmaFigma – zřízení zaměstnanců](media/Figma-provisioning-tutorial/figma03.png)
 
-3. Kopírovat **ID Tenanta**. Tato hodnota se použije k vytvoření adresu URL koncového bodu SCIM se zapisují do **adresy URL Tenanta** pole na kartě zřizování Figma aplikace na webu Azure Portal.
+3. Zkopírujte **ID tenanta**. Tato hodnota se použije k vytvoření adresy URL koncového bodu SCIM, která se má zadat do pole **Adresa URL tenanta** na kartě zřizování vaší aplikace Figma v Azure Portal.
 
-    ![Figma vytvořit Token](media/Figma-provisioning-tutorial/figma-tenantid.png)
+    ![Figma vytvořit token](media/Figma-provisioning-tutorial/figma-tenantid.png)
 
-4. Posuňte se dolů a klikněte na **vygenerovat Token API**.
+4. Posuňte se dolů a klikněte na **vygenerovat token rozhraní API**.
 
-    ![Figma vytvořit Token](media/Figma-provisioning-tutorial/token.png)
+    ![Figma vytvořit token](media/Figma-provisioning-tutorial/token.png)
 
-5. Kopírovat **API Token** hodnotu. Tuto hodnotu zadá do **tajný klíč tokenu** pole na kartě zřizování Figma aplikace na webu Azure Portal. 
+5. Zkopírujte hodnotu **tokenu rozhraní API** . Tato hodnota se zadá do pole **token tajného** kódu na kartě zřizování vaší aplikace Figma ve Azure Portal. 
 
-    ![Figma vytvořit Token](media/Figma-provisioning-tutorial/figma04.png)
+    ![Figma vytvořit token](media/Figma-provisioning-tutorial/figma04.png)
 
 ## <a name="add-figma-from-the-gallery"></a>Přidání Figma z Galerie
 
-Ke konfiguraci Figma pro automatické zřizování uživatelů pomocí Azure AD, budete muset přidat Figma z Galerie aplikací Azure AD na váš seznam spravovaných aplikací SaaS.
+Pokud chcete nakonfigurovat Figma pro Automatické zřizování uživatelů pomocí Azure AD, musíte přidat Figma z Galerie aplikací Azure AD do svého seznamu spravovaných aplikací SaaS.
 
-1. V  **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu vyberte **Azure Active Directory**.
+1. V **[Azure Portal](https://portal.azure.com)** v levém navigačním panelu vyberte možnost **Azure Active Directory**.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-2. Přejděte na **podnikové aplikace**a pak vyberte **všechny aplikace**.
+2. Vyberte možnost **podnikové aplikace**a pak vyberte **všechny aplikace**.
 
     ![V okně podnikové aplikace](common/enterprise-applications.png)
 
-3. Chcete-li přidat novou aplikaci, **novou aplikaci** tlačítko v horní části podokna.
+3. Chcete-li přidat novou aplikaci, vyberte tlačítko **Nová aplikace** v horní části podokna.
 
     ![Tlačítko nové aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **Figma**vyberte **Figma** panel výsledků a pak klikněte na **přidat** tlačítko pro přidání aplikace.
+4. Do vyhledávacího pole zadejte **Figma**, na panelu výsledků vyberte **Figma** a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
 
     ![Figma v seznamu výsledků](common/search-new-app.png)
 
-## <a name="configuring-automatic-user-provisioning-to-figma"></a>Konfigurace automatické zřizování uživatelů pro Figma 
+## <a name="configuring-automatic-user-provisioning-to-figma"></a>Konfigurace automatického zřizování uživatelů na Figma 
 
-Tato část vás provede kroky pro konfiguraci Azure AD služby zřizování a vytvářet, aktualizovat a zakázat uživatele a/nebo skupiny v Figma podle přiřazení uživatele a/nebo skupiny ve službě Azure AD.
+V této části se seznámíte s postupem konfigurace služby zřizování Azure AD k vytváření, aktualizaci a zakázání uživatelů nebo skupin v Figma na základě přiřazení uživatelů nebo skupin ve službě Azure AD.
 
 > [!TIP]
-> Můžete také povolit založené na SAML jednotného přihlašování pro Figma, postupujte podle pokynů uvedených v [Figma Single sign-on kurzu](figma-tutorial.md). Jednotné přihlašování se dá nakonfigurovat nezávisle na automatické zřizování uživatelů, i když tyto dvě funkce návrzích mezi sebou.
+> Můžete se také rozhodnout povolit jednotné přihlašování založené na SAML pro Figma podle pokynů uvedených v [kurzu Figma jednotného přihlašování](figma-tutorial.md). Jednotné přihlašování se dá nakonfigurovat nezávisle na automatickém zřizování uživatelů, i když se tyto dvě funkce navzájem doplňují.
 
-### <a name="to-configure-automatic-user-provisioning-for-figma--in-azure-ad"></a>Konfigurace automatické zřizování uživatelů pro Figma ve službě Azure AD:
+### <a name="to-configure-automatic-user-provisioning-for-figma--in-azure-ad"></a>Konfigurace automatického zřizování uživatelů pro Figma ve službě Azure AD:
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
 
-    ![Okno aplikace organizace](common/enterprise-applications.png)
+    ![Okno podnikových aplikací](common/enterprise-applications.png)
 
-2. V seznamu aplikací vyberte **Figma**.
+2. V seznamu aplikace vyberte **Figma**.
 
     ![Odkaz Figma v seznamu aplikací](common/all-applications.png)
 
-3. Vyberte **zřizování** kartu.
+3. Vyberte kartu **zřizování** .
 
-    ![Zřizování](common/provisioning.png)
+    ![Karta zřizování](common/provisioning.png)
 
-4. Nastavte **režim zřizování** k **automatické**.
+4. Nastavte **režim zřizování** na **automaticky**.
 
-    ![Zřizování](common/provisioning-automatic.png)
+    ![Karta zřizování](common/provisioning-automatic.png)
 
-5. V části **přihlašovacích údajů správce** části zadejte `https://www.figma.com/scim/v2/<TenantID>` v **adresy URL Tenanta** kde **TenantID** je hodnota, kterou jste získali dříve z Figma. Vstup **API Token** hodnota v **tajný klíč tokenu**. Klikněte na tlačítko **Test připojení** aby Azure AD můžete připojit k Figma. Pokud se nepovede, ujistěte se, že váš účet Figma má oprávnění správce a zkuste to znovu.
+5. V části **přihlašovací údaje správce** zadejte `https://www.figma.com/scim/v2/<TenantID>` **adresu URL tenanta** , kde **TenantID** je hodnota, kterou jste dříve získali ze Figma. Zadejte hodnotu **tokenu rozhraní API** v **tajném tokenu**. Klikněte na **Test připojení** a ujistěte se, že se služba Azure AD může připojit k Figma. Pokud se připojení nepovede, ujistěte se, že má váš účet Figma oprávnění správce, a zkuste to znovu.
 
-    ![Adresa URL tenanta + Token](common/provisioning-testconnection-tenanturltoken.png)
+    ![Adresa URL tenanta + token](common/provisioning-testconnection-tenanturltoken.png)
 
-8. V **e-mailové oznámení** zadejte e-mailovou adresu osoby nebo skupiny, který by měla přijímat oznámení zřizování chyba a zaškrtnutím políčka - **odeslání e-mailové oznámení, když dojde k selhání**.
+8. V poli **e-mail** s oznámením zadejte e-mailovou adresu osoby nebo skupiny, které by měly dostávat oznámení o chybách zřizování, a zaškrtněte políčko – **pošle e-mailové oznámení, když dojde k chybě**.
 
-    ![E-mailové oznámení](common/provisioning-notification-email.png)
+    ![E-mail s oznámením](common/provisioning-notification-email.png)
 
 9. Klikněte na **Uložit**.
 
-10. V části **mapování** vyberte **synchronizace Azure Active Directory uživatelům Figma**.
+10. V části **mapování** vyberte **synchronizovat Azure Active Directory uživatelé Figma**.
 
     ![Mapování uživatelů Figma](media/Figma-provisioning-tutorial/figma05.png)
 
-11. Zkontrolujte atributy uživatele, které se synchronizují ze služby Azure AD do Figma v **mapování atributů** oddílu. Atributy vybrané jako **odpovídající** vlastnosti se používají tak, aby odpovídaly uživatelské účty v Figma pro operace update. Vyberte **Uložit** tlačítko potvrďte všechny změny.
+11. Zkontrolujte atributy uživatele synchronizované z Azure AD do Figma v oddílu **mapování atributů** . Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování uživatelských účtů v Figma pro operace aktualizace. Kliknutím na tlačítko **Uložit** potvrďte změny.
 
     ![Atributy uživatele Figma](media/Figma-provisioning-tutorial/figma06.png)
 
-12. Konfigurace filtrů oborů, najdete v následující pokyny uvedené v [Scoping filtr kurzu](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
+12. Pokud chcete nakonfigurovat filtry oborů, přečtěte si následující pokyny uvedené v [kurzu filtr oboru](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
 
-13. Služba pro Figma zřizování Azure AD povolit, změňte **stavu zřizování** k **na** v **nastavení** oddílu.
+13. Pokud chcete povolit službu Azure AD Provisioning pro Figma, změňte **stav zřizování** na **zapnuto** v části **Nastavení** .
 
-    ![Stav zřizování zapnutém](common/provisioning-toggle-on.png)
+    ![Zapnutý stav zřizování](common/provisioning-toggle-on.png)
 
-14. Definovat uživatele a/nebo skupiny, které chcete k poskytování Figma výběrem požadované hodnoty do **oboru** v **nastavení** oddílu.
+14. Definujte uživatele nebo skupiny, které chcete zřídit pro Figma, výběrem požadovaných hodnot v **oboru** v části **Nastavení** .
 
-    ![Zřizování oboru](common/provisioning-scope.png)
+    ![Rozsah zřizování](common/provisioning-scope.png)
 
-15. Až budete připravení ke zřízení, klikněte na tlačítko **Uložit**.
+15. Až budete připraveni zřídit, klikněte na **Uložit**.
 
-    ![Ukládá se konfigurace zřizování](common/provisioning-configuration-save.png)
+    ![Ukládá se konfigurace zřizování.](common/provisioning-configuration-save.png)
 
-Tato operace spustí počáteční synchronizaci všech uživatelů a/nebo skupiny definované v **oboru** v **nastavení** oddílu. Počáteční synchronizace trvá déle než při následné synchronizace, ke kterým dochází přibližně každých 40 minut tak dlouho, dokud je spuštěna služba zřizování Azure AD. Můžete použít **podrobnosti synchronizace** části ke sledování průběhu a odkazech na zřizování sestava aktivity, která popisuje všechny akce, které provádí služba na Figma zřizování Azure AD.
+Tato operace spustí počáteční synchronizaci všech uživatelů nebo skupin definovaných v **oboru** v části **Nastavení** . Počáteční synchronizace trvá déle než další synchronizace, ke kterým dochází přibližně každých 40 minut, pokud je služba zřizování Azure AD spuštěná. V části **Podrobnosti o synchronizaci** můžete sledovat průběh a postupovat podle odkazů na sestavu aktivity zřizování, která popisuje všechny akce prováděné službou zřizování Azure AD v Figma.
 
 Další informace o tom, jak číst zřizování protokoly Azure AD najdete v tématu [hlášení o zřizování automatické uživatelských účtů](../manage-apps/check-status-user-account-provisioning.md).
 
@@ -163,4 +163,4 @@ Další informace o tom, jak číst zřizování protokoly Azure AD najdete v t�
 
 ## <a name="next-steps"></a>Další postup
 
-* [Zjistěte, jak kontrolovat protokoly a získat sestavy o zřizování aktivity](../manage-apps/check-status-user-account-provisioning.md)
+* [Přečtěte si, jak zkontrolovat protokoly a získat sestavy pro aktivitu zřizování.](../manage-apps/check-status-user-account-provisioning.md)

@@ -1,24 +1,24 @@
 ---
-title: Odchozí pravidla ve službě Azure Load Balancer
+title: Odchozí pravidla v Azure Load Balancer
 titlesuffix: Azure Load Balancer
 description: Můžete definovat odchozí síťové adresy překlady odchozí pravidla
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: asudbring
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
 ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/19/2018
-ms.author: kumud
-ms.openlocfilehash: 52fafa7e9dd46b6c78af3776797bae48b22ea8df
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 7/17/2019
+ms.author: allensu
+ms.openlocfilehash: 39a23fa277d7bb389098674556b65b1b13676ead
+ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64698429"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68305581"
 ---
 # <a name="load-balancer-outbound-rules"></a>Odchozí pravidla nástroje pro vyrovnávání zatížení
 
@@ -34,7 +34,7 @@ Odchozí pravidla umožňují řídit:
 - které virtuální počítače by měl přeložit na které veřejné IP adresy. 
 - Jak [odchozích portech SNAT](load-balancer-outbound-connections.md#snat) by měly být přiděleny.
 - protokoly, které k poskytování odchozí překlad.
-- jaké doby trvání pro časový limit nečinnosti odchozí připojení (4 – 120 minut).
+- Jaká doba se má použít pro časový limit nečinnosti odchozího připojení (4-120 minut).
 - Určuje, zda odesílat TCP Reset na časový limit nečinnosti (ve verzi Public Preview). 
 
 Odchozí pravidla rozšiřují [scénář 2](load-balancer-outbound-connections.md#lb) v podle [odchozí připojení](load-balancer-outbound-connections.md) článku a určování priorit scénář bude nadála – je.
@@ -84,13 +84,13 @@ Použijte tento parametr k přidělení 10 000 SNAT porty na virtuálním počí
 
           "allocatedOutboundPorts": 10000
 
-Každá veřejná IP adresa ze všech front-endů odchozí pravidla přispívá 51 až 200 dočasné porty pro použití jako porty SNAT.  Nástroj pro vyrovnávání zatížení přiděluje SNAT porty v násobcích po 8. Pokud zadáte hodnotu není dělitelná 8, operace konfigurace byl odmítnut.  Při pokusu o přidělení více SNAT porty, než je k dispozici na základě počtu veřejných IP adres, operace konfigurace byl odmítnut.  Pokud přidělíte 10 000 porty na virtuálním počítači a 7 virtuálních počítačů v back-end fondu by sdílet jednu veřejnou IP adresu, je konfigurace odmítnuté (7 × 10 000 SNAT porty > 51,200 SNAT porty).  Můžete přidat více veřejné IP adresy pro front-endu odchozí pravidla povolit tento scénář.
+Každá veřejná IP adresa ze všech front-endů odchozí pravidla přispívá 51 až 200 dočasné porty pro použití jako porty SNAT.  Nástroj pro vyrovnávání zatížení přiděluje SNAT porty v násobcích po 8. Pokud zadáte hodnotu není dělitelná 8, operace konfigurace byl odmítnut.  Při pokusu o přidělení více SNAT porty, než je k dispozici na základě počtu veřejných IP adres, operace konfigurace byl odmítnut.  Pokud například přidělíte porty 10 000 na virtuální počítač a 7 virtuálních počítačů ve fondu back-end, bude se jednat o jednu veřejnou IP adresu, konfigurace se odmítne (7 x 10 000 SNAT portů > 51 200 portů SNAT).  Můžete přidat více veřejné IP adresy pro front-endu odchozí pravidla povolit tento scénář.
 
 Můžete se vrátit zpět k [automatické přidělování port SNAT podle velikosti fondu back-endu](load-balancer-outbound-connections.md#preallocatedports) zadáním 0 pro čísla portů.
 
 ### <a name="idletimeout"></a> Časový limit nečinnosti odchozího toku řízení
 
-Odchozí pravidla poskytují parametr konfigurace k řízení odchozího toku časový limit nečinnosti a přizpůsobit potřebám vaší aplikace.  Výchozí odchozí časový limit nečinnosti 4 minuty.  Parametr přijímá hodnotu od 4 do 120 konkrétní dobu v minutách pro časový limit nečinnosti pro tento konkrétní pravidlo pro porovnávání toky.
+Odchozí pravidla poskytují parametr konfigurace k řízení odchozího toku časový limit nečinnosti a přizpůsobit potřebám vaší aplikace.  Výchozí odchozí časový limit nečinnosti 4 minuty.  Parametr přijímá hodnotu od 4 do 120 pro určitý počet minut pro časový limit nečinnosti pro toky, které odpovídají tomuto konkrétnímu pravidlu.
 
 K nastavení odchozí časový limit nečinnosti na 1 hodinu, použijte následující parametr:
 
@@ -193,22 +193,22 @@ Při použití interní Load balanceru úrovně Standard, odchozí NAT není k d
    1. Zakážete odchozí SNAT na pravidla Vyrovnávání zatížení.
    2. Odchozí pravidlo nakonfigurujte na stejné nástroje pro vyrovnávání zatížení.
    3. Opakovaně používat back-endový fond už používá vaše virtuální počítače.
-   4. Zadejte "protokol": "Vše" jako součást odchozí pravidla.
+   4. Zadejte "protokol": "Vše" jako součást odchozího pravidla.
 
 - Pokud se používá jenom příchozích pravidel NAT, je k dispozici žádná odchozí NAT.
 
    1. Umístěte virtuální počítače v back-endový fond.
    2. Definujte jeden nebo více konfigurací protokolu IP front-endu pomocí veřejné IP adresy nebo předpony veřejných IP.
    3. Odchozí pravidlo nakonfigurujte na stejné nástroje pro vyrovnávání zatížení.
-   4. Zadejte "protokol": "Vše" jako součást odchozí pravidla
+   4. Zadejte "protokol": "Vše" jako součást odchozího pravidla
 
 ## <a name="limitations"></a>Omezení
 
 - Maximální počet použitelné dočasné porty na front-endové IP adresy je 51,200.
-- Rozsah konfigurovatelné odchozí časový limit nečinnosti se 4 až 120 minut (240 do 7200 sekund).
+- Rozsah konfigurovatelného odchozího časového limitu nečinnosti je 4 až 120 minut (240 až 7200 sekund).
 - Nástroj pro vyrovnávání zatížení nepodporuje protokol ICMP pro odchozí NAT.
 - Portál nelze použít ke konfiguraci nebo zobrazení odchozí pravidla.  Použijte šablony, rozhraní REST API, Az CLI 2.0 nebo prostředí PowerShell.
-- Odchozí pravidla lze použít pouze pro primární síťovou kartu a primární konfigurace IP adresy.
+- Odchozí pravidla se dají použít jenom u primární konfigurace IP adresy síťového adaptéru.  Podporuje se víc síťových adaptérů.
 
 ## <a name="next-steps"></a>Další postup
 

@@ -1,6 +1,6 @@
 ---
-title: Vytvoření webové aplikace ASP.NET s mezipamětí Azure pro Redis | Dokumentace Microsoftu
-description: V tomto rychlém startu se dozvíte, jak vytvořit webovou aplikaci ASP.NET s mezipamětí Azure pro Redis
+title: Vytvoření webové aplikace v ASP.NET s mezipamětí Azure pro Redis | Microsoft Docs
+description: V tomto rychlém startu se dozvíte, jak vytvořit webovou aplikaci v ASP.NET s mezipamětí Azure pro Redis
 services: cache
 documentationcenter: ''
 author: yegu-ms
@@ -15,28 +15,21 @@ ms.topic: quickstart
 ms.date: 03/26/2018
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: bac43ef17116dcb2d6a6bb3dd7c1617d91a010d9
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: 7cca9d020d5e999bda2c494853295957da5cca1a
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65864824"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68326503"
 ---
-# <a name="quickstart-create-an-aspnet-web-app"></a>Rychlý start: Vytvoření webové aplikace ASP.NET 
+# <a name="quickstart-use-azure-cache-for-redis-with-an-aspnet-web-app"></a>Rychlý start: Použití Azure cache pro Redis s webovou aplikací ASP.NET 
 
-## <a name="introduction"></a>Úvod
-
-Tento rychlý start ukazuje, jak vytvořit a nasadit webovou aplikaci ASP.NET do služby Azure App Service pomocí Visual Studio 2019. Ukázková aplikace se připojí k mezipaměti Azure ukládat a načítat data z mezipaměti Redis. Po dokončení tohoto rychlého startu budete mít funkční webovou aplikaci, hostované v Azure, která čte a zapisuje do mezipaměti Azure pro Redis.
-
-![Jednoduchý test dokončený v Azure](./media/cache-web-app-howto/cache-simple-test-complete-azure.png)
-
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+V tomto rychlém startu použijete Visual Studio 2019 k vytvoření webové aplikace v ASP.NET, která se připojí ke službě Azure cache pro Redis, aby ukládala a načetla data z mezipaměti. Pak nasadíte aplikaci do Azure App Service.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Abyste mohli absolvovat tento rychlý start, je potřeba nainstalovat [Visual Studio 2019](https://www.visualstudio.com/downloads/) pomocí následujících prostředích:
-* Vývoj pro ASP.NET a web
-* Vývoj pro Azure
+- Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
+- [Visual Studio 2019](https://www.visualstudio.com/downloads/) s úlohami vývoje **ASP.NET a web** a **vývoj pro Azure** .
 
 ## <a name="create-the-visual-studio-project"></a>Vytvoření projektu sady Visual Studio
 
@@ -46,7 +39,7 @@ Abyste mohli absolvovat tento rychlý start, je potřeba nainstalovat [Visual St
 
     ![Vytvoření projektu](./media/cache-web-app-howto/cache-create-project.png)
 
-    a. V seznamu **Šablony** rozbalte uzel **Visual C#**.
+    a. V seznamu **Šablony** rozbalte uzel **Visual C#** .
 
     b. Vyberte **Cloud**.
 
@@ -95,16 +88,16 @@ V dalším kroku vytvoříte pro aplikaci mezipaměť.
 
 ## <a name="update-the-mvc-application"></a>Aktualizace aplikace MVC
 
-V této části aktualizujete aplikaci, aby podporovala nové zobrazení, které zobrazí jednoduchý test mezipaměti Azure Redis.
+V této části aktualizujete aplikaci tak, aby podporovala nové zobrazení, které zobrazuje jednoduchý test proti službě Azure cache pro Redis.
 
 * [Aktualizace souboru web.config o nastavení aplikace pro mezipaměť](#update-the-webconfig-file-with-an-app-setting-for-the-cache)
-* Konfigurace aplikace pro použití klienta StackExchange.Redis
+* Konfigurace aplikace tak, aby používala klienta StackExchange. Redis
 * Aktualizace souboru HomeController a rozložení
 * Přidání nového zobrazení RedisCache
 
 ### <a name="update-the-webconfig-file-with-an-app-setting-for-the-cache"></a>Aktualizace souboru web.config o nastavení aplikace pro mezipaměť
 
-Při spuštění aplikace místně, informace v *CacheSecrets.config* slouží k připojení k mezipaměti Azure pro Redis instance. Později tuto aplikaci nasadíte do Azure. Přitom nakonfigurujete nastavení aplikace v Azure tak, aby aplikace místo použití tohoto souboru načetla informace o připojení k mezipaměti. 
+Když aplikaci spouštíte místně, informace v *CacheSecrets. config* se použijí pro připojení k instanci Azure cache pro instanci Redis. Později tuto aplikaci nasadíte do Azure. Přitom nakonfigurujete nastavení aplikace v Azure tak, aby aplikace místo použití tohoto souboru načetla informace o připojení k mezipaměti. 
 
 Protože soubor *CacheSecrets.config* není nasazený v Azure společně s aplikací, použijete ho jen při místním testování aplikace. Tyto informace maximálně zabezpečte, abyste zabránili škodlivému přístupu k datům mezipaměti.
 
@@ -116,9 +109,9 @@ Protože soubor *CacheSecrets.config* není nasazený v Azure společně s aplik
 2. V souboru *web.config* vyhledejte element `<appSetting>`. Potom přidejte tento atribut `file`. Pokud jste použili jiný název souboru nebo umístění, nahraďte těmito hodnotami hodnoty uvedené v příkladu.
 
 * Před: `<appSettings>`
-* Po:  `<appSettings file="C:\AppSecrets\CacheSecrets.config">`
+* Konci`<appSettings file="C:\AppSecrets\CacheSecrets.config">`
 
-Modul runtime ASP.NET sloučí obsah externího souboru se značkami v elementu `<appSettings>`. Pokud zadaný soubor nelze nalézt, modul runtime atribut souboru ignoruje. Vaše tajné kódy (připojovací řetězce k mezipaměti) nejsou součástí zdrojového kódu aplikace. Při nasazení vaší webové aplikace do Azure, *CacheSecrets.config* soubor není nasazen.
+Modul runtime ASP.NET sloučí obsah externího souboru se značkami v elementu `<appSettings>`. Pokud zadaný soubor nelze nalézt, modul runtime atribut souboru ignoruje. Vaše tajné kódy (připojovací řetězce k mezipaměti) nejsou součástí zdrojového kódu aplikace. Když nasadíte webovou aplikaci do Azure, soubor *CacheSecrets. config* není nasazený.
 
 ### <a name="to-configure-the-application-to-use-stackexchangeredis"></a>Konfigurace aplikace pro používání StackExchange.Redis
 
@@ -252,9 +245,9 @@ Projekt je standardně nakonfigurovaný tak, aby pro účely testování a ladě
 ### <a name="to-run-the-app-locally"></a>Spuštění aplikace místně
 1. V sadě Visual Studio vyberte **Ladění** > **Spustit ladění** a sestavte a spusťte aplikaci místně pro účely testování a ladění.
 
-2. V prohlížeči vyberte **mezipaměti Azure redis Cache testu** na navigačním panelu.
+2. V prohlížeči na navigačním panelu vyberte **Azure cache for Redis test** .
 
-3. V následujícím příkladu `Message` klíč dříve obsahovalo hodnotu uloženou v mezipaměti, která byla nastavena pomocí ukládání do mezipaměti Azure pro konzola Redis na portálu. Aplikace tuto hodnotu z mezipaměti aktualizovala. Aplikace rovněž spustila příkazy `PING` a `CLIENT LIST`.
+3. V následujícím příkladu `Message` měl klíč dříve hodnotu uloženou v mezipaměti, která byla nastavena pomocí konzoly Azure cache for Redis na portálu. Aplikace tuto hodnotu z mezipaměti aktualizovala. Aplikace rovněž spustila příkazy `PING` a `CLIENT LIST`.
 
     ![Jednoduchý test dokončený místně](./media/cache-web-app-howto/cache-simple-test-complete-local.png)
 
@@ -266,7 +259,7 @@ Jakmile aplikaci úspěšně místně otestujete, můžete ji nasadit do Azure a
 
 1. V sadě Visual Studio klikněte pravým tlačítkem na uzel projektu v Průzkumníku řešení. Potom vyberte **Publikovat**.
 
-    ![Publikovat](./media/cache-web-app-howto/cache-publish-app.png)
+    ![Publikování](./media/cache-web-app-howto/cache-publish-app.png)
 
 2. Vyberte **Microsoft Azure App Service**, dále **Vytvořit nový** a nakonec **Publikovat**.
 
@@ -301,13 +294,13 @@ Po publikování nové aplikace přidejte nové nastavení aplikace. Toto nastav
 
 2. Přidejte nové nastavení aplikace s názvem **PřipojeníKMezipaměti**, které aplikace použije pro připojení k mezipaměti. Použijte stejnou hodnotu, jakou jste pro `CacheConnection` nakonfigurovali v souboru *TajnéKódyMezipaměti.config*. Tato hodnota obsahuje název hostitele mezipaměti a přístupový klíč.
 
-    ![Přidat nastavení aplikace](./media/cache-web-app-howto/cache-add-app-setting.png)
+    ![Přidání nastavení aplikace](./media/cache-web-app-howto/cache-add-app-setting.png)
 
 ### <a name="run-the-app-in-azure"></a>Spuštění aplikace v Azure
 
 V prohlížeči přejděte na adresu URL aplikace. Tato adresa se zobrazuje ve výsledcích operace publikování v okně výstupu v sadě Visual Studio. Je také k dispozici na portálu Azure Portal na stránce přehledu aplikace, kterou jste vytvořili.
 
-Vyberte **mezipaměti Azure redis Cache testování** na navigačním panelu se otestujte přístup k mezipaměti.
+Na navigačním panelu vyberte **Azure cache for Redis test** a otestujte přístup k mezipaměti.
 
 ![Jednoduchý test dokončený v Azure](./media/cache-web-app-howto/cache-simple-test-complete-azure.png)
 
@@ -326,7 +319,7 @@ V opačném případě, pokud jste už s ukázkovou aplikací v tomto rychlém s
 
 2. Do pole **Filtrovat podle názvu** zadejte název vaší skupiny prostředků. V pokynech v tomto článku se používala skupina prostředků *TestResources*. U skupiny prostředků ve výsledcích hledání vyberte **...** a pak vyberte **Odstranit skupinu prostředků**.
 
-    ![Odstranit](./media/cache-web-app-howto/cache-delete-resource-group.png)
+    ![Odstranění](./media/cache-web-app-howto/cache-delete-resource-group.png)
 
 Zobrazí se výzva k potvrzení odstranění skupiny prostředků. Potvrďte odstranění zadáním názvu vaší skupiny prostředků a vyberte **Odstranit**.
 
@@ -334,7 +327,7 @@ Po chvíli se skupina prostředků včetně všech prostředků, které obsahuje
 
 ## <a name="next-steps"></a>Další postup
 
-V dalším kurzu použijete Azure Cache pro Redis v vyzkoušet realističtější scénář pro zvýšení výkonu aplikace. Tuto aplikaci aktualizujete tak, aby do mezipaměti ukládala tabulku výsledků s využitím principu s doplňováním mezipaměti aplikací pomocí ASP.NET a databáze.
+V dalším kurzu použijete mezipaměť Azure pro Redis ve realističtějším scénáři k vylepšení výkonu aplikace. Tuto aplikaci aktualizujete tak, aby do mezipaměti ukládala tabulku výsledků s využitím principu s doplňováním mezipaměti aplikací pomocí ASP.NET a databáze.
 
 > [!div class="nextstepaction"]
 > [Vytvoření tabulky výsledků s principem doplňování mezipaměti aplikací v ASP.NET](cache-web-app-cache-aside-leaderboard.md)

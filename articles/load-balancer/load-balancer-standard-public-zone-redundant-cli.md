@@ -1,10 +1,10 @@
 ---
-title: Zónově redundantní virtuálních počítačů pomocí Azure CLI můžete vyvažovat zatížení u
+title: Zóna vyrovnávání zatížení – redundantní virtuální počítače pomocí Azure CLI
 titlesuffix: Azure Load Balancer
-description: Zjistěte, jak vytvořit veřejný Load Balancer Standard s zóny redundantních front-endu pomocí Azure CLI
+description: Naučte se vytvářet veřejné Standard Load Balancer s zónou redundantního front-endu pomocí Azure CLI.
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: asudbring
 ms.custom: seodec18
 ms.assetid: ''
 ms.service: load-balancer
@@ -13,17 +13,17 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/09/2018
-ms.author: kumud
-ms.openlocfilehash: 8f1bf9b9070f2db2376de9cb0a0602eaea98b47e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: allensu
+ms.openlocfilehash: 6a22ac9a2727c537d98e692e67076637fe8cc457
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66147666"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68274331"
 ---
-#  <a name="load-balance-vms-across-all-availability-zones-using-azure-cli"></a>Nástroj pro vyrovnávání zatížení virtuálních počítačů ve všech zónách dostupnosti pomocí Azure CLI
+#  <a name="load-balance-vms-across-all-availability-zones-using-azure-cli"></a>Vyrovnávání zatížení virtuálních počítačů napříč všemi zónami dostupnosti pomocí Azure CLI
 
-Tento článek popisuje postup vytvořením veřejné [Load balanceru úrovně Standard](https://aka.ms/azureloadbalancerstandard) s zónově redundantních front-endu zajistit redundanci zón bez závislosti na několik záznamů DNS. Jedna IP adresa front-endu je automaticky zónově redundantní.  Nástroj pro vyrovnávání zatížení, jednu IP adresu pomocí redundantních front-endu zóny můžete nyní přistupovat jakýkoli virtuální počítač ve virtuální síti v rámci oblasti, která je ve všech zónách dostupnosti. Zóny dostupnosti se používají k ochraně aplikací a dat před málo pravděpodobným selháním nebo ztrátou celého datového centra.
+Tento článek vás provede vytvořením veřejné [Standard Load Balancer](https://aka.ms/azureloadbalancerstandard) s koncovým front-redundantním frontou pro zajištění redundance zóny bez závislosti na více záznamech DNS. Jedna front-end IP adresa je automaticky redundantní pro zónu.  Pomocí zóny redundantního front-endu pro váš nástroj pro vyrovnávání zatížení s jednou IP adresou teď můžete získat přístup k libovolnému virtuálnímu počítači ve virtuální síti v rámci oblasti, která je ve všech Zóny dostupnostich. Zóny dostupnosti se používají k ochraně aplikací a dat před málo pravděpodobným selháním nebo ztrátou celého datového centra.
 
 Další informace o používání zón dostupnosti s Load Balancerem úrovně Standard najdete v tématu o [Load Balanceru úrovně Standard a zónách dostupnosti](load-balancer-standard-availability-zones.md).
 
@@ -31,7 +31,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)] 
 
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, tento kurz vyžaduje použití Azure CLI verze 2.0.17 nebo vyšší.  Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli). 
+Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít spuštěný Azure CLI verze 2.0.17 nebo novější.  Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli). 
 
 > [!NOTE]
 > Podpora pro zóny dostupnosti je k dispozici pro vyberte prostředky Azure a oblasti a velikostní řady virtuálních počítačů. Další informace o tom, jak začít a které prostředky Azure, oblasti a velikostní řady virtuálních počítačů můžete vyzkoušet zóny dostupnosti s, najdete v části [přehledu zón dostupnosti](https://docs.microsoft.com/azure/availability-zones/az-overview). Pokud budete potřebovat podporu, můžete kontaktovat [StackOverflow](https://stackoverflow.com/questions/tagged/azure-availability-zones) nebo [otevřít lístek podpory Azure](../azure-supportability/how-to-create-azure-support-request.md?toc=%2fazure%2fvirtual-network%2ftoc.json).  
@@ -40,7 +40,7 @@ Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku m
 
 Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group#az-group-create). Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure.
 
-Následující příklad vytvoří skupinu prostředků s názvem *myResourceGroupSLB* v *westeurope* umístění:
+Následující příklad vytvoří skupinu prostředků s názvem *myResourceGroupSLB* v umístění *westeurope* :
 
 ```azurecli-interactive
 az group create \
@@ -48,10 +48,10 @@ az group create \
 --location westeurope
 ```
 
-## <a name="create-a-zone-redundant-public-ip-standard"></a>Vytvoření zónově redundantní veřejné IP Standard
-Pokud chcete mít k aplikaci přístup přes internet, potřebujete pro nástroj pro vyrovnávání zatížení veřejnou IP adresu. Zónově redundantních front-endu obsluhují všechny zóny dostupnosti v oblasti současně. Vytvoření zóny redundantní veřejnou IP adresu s [az network public-ip vytvořit](/cli/azure/network/public-ip#az-network-public-ip-create). Když vytvoříte standardní veřejnou IP adresu, je zónově redundantní ve výchozím nastavení.
+## <a name="create-a-zone-redundant-public-ip-standard"></a>Vytvoření standardu veřejné IP adresy zóny redundantní
+Pokud chcete mít k aplikaci přístup přes internet, potřebujete pro nástroj pro vyrovnávání zatížení veřejnou IP adresu. Záložní front-end zóna je obsluhována všemi zónami dostupnosti v oblasti současně. Vytvořte zónu redundantní veřejné IP adresy pomocí [AZ Network Public-IP Create](/cli/azure/network/public-ip#az-network-public-ip-create). Když vytvoříte standardní veřejnou IP adresu, bude ve výchozím nastavení zóna redundantní.
 
-Následující příklad vytvoří zónu redundantní veřejnou IP adresu s názvem *myPublicIP* v *myResourceGroupLoadBalancer* skupinu prostředků.
+Následující příklad vytvoří zónu redundantní veřejnou IP adresu s názvem *myPublicIP* ve skupině prostředků *myResourceGroupLoadBalancer* .
 
 ```azurecli-interactive
 az network public-ip create \
@@ -60,7 +60,7 @@ az network public-ip create \
 --sku Standard
 ```
 
-## <a name="create-azure-standard-load-balancer"></a>Vytvořit Azure Load balancer úrovně Standard
+## <a name="create-azure-standard-load-balancer"></a>Vytvoření Standard Load Balancer Azure
 Tato část podrobně popisuje vytvoření a konfiguraci následujících komponent nástroje pro vyrovnávání zatížení:
 - Front-endový fond IP adres, který přijímá příchozí síťový provoz do nástroje pro vyrovnávání zatížení.
 - Back-endový fond IP adres, kam front-endový fond odesílá síťový provoz s vyrovnáváním zatížení.
@@ -68,7 +68,7 @@ Tato část podrobně popisuje vytvoření a konfiguraci následujících kompon
 - Pravidlo nástroje pro vyrovnávání zatížení, které definuje způsob distribuce provozu do virtuálních počítačů.
 
 ### <a name="create-the-load-balancer"></a>Vytvoření nástroje pro vyrovnávání zatížení
-Vytvořte nástroj pro vyrovnávání zatížení Standard s [az network lb vytvořit](/cli/azure/network/lb#az-network-lb-create). Následující příklad vytvoří nástroj pro vyrovnávání zatížení s názvem *myLoadBalancer* a přiřadí *myPublicIP* ke konfiguraci front-end IP adresy.
+Vytvořte standardní nástroj pro vyrovnávání zatížení pomocí [AZ Network](/cli/azure/network/lb#az-network-lb-create)diskont Create. Následující příklad vytvoří nástroj pro vyrovnávání zatížení s názvem *myLoadBalancer* a přiřadí *myPublicIP* adresu konfigurace front-endové IP adresy.
 
 ```azurecli-interactive
 az network lb create \
@@ -82,7 +82,7 @@ az network lb create \
 
 ## <a name="create-health-probe-on-port-80"></a>Vytvoření sondy stavu na portu 80
 
-Test stavu kontroluje všechny instance virtuálních počítačů a ověřuje, že mohou posílat síťový provoz. Instance virtuálního počítače, u níž se kontroly testu nezdaří, se odebere z nástroje pro vyrovnávání zatížení do té doby, než znovu přejde do režimu online a kontrola testu určí, že je v pořádku. Vytvořte sondu stavu pomocí az network lb probe vytvořit pro monitorování stavu virtuálních počítačů. Sondu stavu protokolu TCP vytvoříte pomocí příkazu [az network lb probe create](/cli/azure/network/lb/probe#az-network-lb-probe-create). Následující příklad vytvoří sondu stavu *myHealthProbe*:
+Test stavu kontroluje všechny instance virtuálních počítačů a ověřuje, že mohou posílat síťový provoz. Instance virtuálního počítače, u níž se kontroly testu nezdaří, se odebere z nástroje pro vyrovnávání zatížení do té doby, než znovu přejde do režimu online a kontrola testu určí, že je v pořádku. Vytvořte sondu stavu pomocí AZ Network disprobe Create a Monitorujte stav virtuálních počítačů. Sondu stavu protokolu TCP vytvoříte pomocí příkazu [az network lb probe create](/cli/azure/network/lb/probe#az-network-lb-probe-create). Následující příklad vytvoří sondu stavu *myHealthProbe*:
 
 ```azurecli-interactive
 az network lb probe create \
@@ -93,7 +93,7 @@ az network lb probe create \
 --port 80
 ```
 
-## <a name="create-load-balancer-rule-for-port-80"></a>Vytvořte pravidlo nástroje pro vyrovnávání zatížení pro port 80
+## <a name="create-load-balancer-rule-for-port-80"></a>Vytvoření pravidla nástroje pro vyrovnávání zatížení pro port 80
 Pravidlo nástroje pro vyrovnávání zatížení definuje konfiguraci front-endových IP adres pro příchozí provoz, back-endový fond IP adres pro příjem provozu a také požadovaný zdrojový a cílový port. Pomocí příkazu *myLoadBalancerRuleWeb* vytvořte pravidlo nástroje pro vyrovnávání zatížení [myLoadBalancerRuleWeb](/cli/azure/network/lb/rule#az-network-lb-rule-create) pro naslouchání na portu 80 ve front-endovém fondu *myFrontEndPool* a odesílání síťového provozu s vyrovnáváním zatížení do back-endového fondu adres *myBackEndPool* rovněž na portu 80.
 
 ```azurecli-interactive
@@ -114,7 +114,7 @@ Než nasadíte několik virtuálních počítačů a budete moci otestovat svůj
 
 ### <a name="create-a-virtual-network"></a>Vytvoření virtuální sítě
 
-Vytvoření virtuální sítě s názvem *myVnet* s podsítí *mySubnet* myResourceGroup pomocí [az network vnet vytvořit](/cli/azure/network/vnet#az-network-vnet-create).
+Vytvořte virtuální síť s názvem *myVnet* s podsítí s názvem *mySubnet* v myResourceGroup pomocí [AZ Network VNet Create](/cli/azure/network/vnet#az-network-vnet-create).
 
 
 ```azurecli-interactive
@@ -127,7 +127,7 @@ az network vnet create \
 
 ### <a name="create-a-network-security-group"></a>Vytvoření skupiny zabezpečení sítě
 
-Vytvořit skupinu zabezpečení sítě s názvem *myNetworkSecurityGroup* definovat příchozí připojení k virtuální síti s [az network nsg vytvořit](/cli/azure/network/nsg#az-network-nsg-create).
+Vytvořte skupinu zabezpečení sítě s názvem *myNetworkSecurityGroup* , která definuje příchozí připojení k virtuální síti pomocí [AZ Network NSG Create](/cli/azure/network/nsg#az-network-nsg-create).
 
 ```azurecli-interactive
 az network nsg create \
@@ -135,7 +135,7 @@ az network nsg create \
 --name myNetworkSecurityGroup
 ```
 
-Vytvořte pravidlo skupiny zabezpečení sítě s názvem *myNetworkSecurityGroupRule* pro port 80 s [az network nsg pravidlo vytvořte](/cli/azure/network/nsg/rule#az-network-nsg-rule-create).
+Vytvořte pravidlo skupiny zabezpečení sítě s názvem *myNetworkSecurityGroupRule* pro port 80 pomocí [AZ Network NSG Rule Create](/cli/azure/network/nsg/rule#az-network-nsg-rule-create).
 
 ```azurecli-interactive
 az network nsg rule create \
@@ -152,7 +152,7 @@ az network nsg rule create \
 --priority 200
 ```
 ### <a name="create-nics"></a>Vytvoření síťových rozhraní
-Vytvořte tři virtuální síťové karty s [az network nic vytvořit](/cli/azure/network/nic#az-network-nic-create) a přidružit je k veřejné IP adrese a skupině zabezpečení sítě. Následující příklad vytvoří šesti virtuálních síťových karet. (Jednu virtuální síťovou kartu pro každý virtuální počítač, který pro svou aplikaci vytvoříte v následujících krocích). Kdykoli můžete vytvořit další virtuální síťové karty a virtuální počítače a přidat je do nástroje pro vyrovnávání zatížení:
+Vytvořte tři virtuální síťové karty pomocí [AZ Network nic Create](/cli/azure/network/nic#az-network-nic-create) a přidružte je k veřejné IP adrese a skupině zabezpečení sítě. Následující příklad vytvoří šest virtuálních síťových karet. (Jednu virtuální síťovou kartu pro každý virtuální počítač, který pro svou aplikaci vytvoříte v následujících krocích). Kdykoli můžete vytvořit další virtuální síťové karty a virtuální počítače a přidat je do nástroje pro vyrovnávání zatížení:
 
 ```azurecli-interactive
 for i in `seq 1 3`; do
@@ -167,7 +167,7 @@ for i in `seq 1 3`; do
 done
 ```
 ## <a name="create-backend-servers"></a>Vytvoření serverů back-end
-V tomto příkladu vytvoříte tři virtuální počítače v zóně 1, zóna 2 a zóny 3 se použije jako servery back-endu nástroje pro vyrovnávání zatížení. Na virtuální počítače k ověření úspěšného vytvoření nástroje pro vyrovnávání zatížení taky nainstalujete server NGINX.
+V tomto příkladu vytvoříte tři virtuální počítače umístěné v zóně 1, v zóně 2 a v zóně 3 jako servery back-end pro nástroj pro vyrovnávání zatížení. Na virtuální počítače nainstalujete také NGINX a ověříte tak, že nástroj pro vyrovnávání zatížení byl úspěšně vytvořen.
 
 ### <a name="create-cloud-init-config"></a>Vytvoření konfigurace cloud-init
 
@@ -215,10 +215,10 @@ runcmd:
   - nodejs index.js
 ```
 
-### <a name="create-the-zonal-virtual-machines"></a>Vytvoření zónového virtuálních počítačů
-Vytvoření virtuálních počítačů s [az vm vytvořit](/cli/azure/vm#az-vm-create) v zóně 1, zóna 2 a zóna 3. Následující příklad vytvoří virtuální počítač v každé zóně a vygeneruje klíče SSH, pokud ještě neexistují:
+### <a name="create-the-zonal-virtual-machines"></a>Vytvoření virtuálních počítačů s více oblastmi
+Virtuální počítače vytvoříte pomocí [AZ VM Create](/cli/azure/vm#az-vm-create) v zóně 1, zóně 2 a zóně 3. Následující příklad vytvoří virtuální počítač v každé zóně a vygeneruje klíče SSH, pokud ještě neexistují:
 
-Vytvoření virtuálního počítače v každé zóně (zóna 1, zóna 2 a zóna 3) *westeurope* umístění.
+Vytvořte virtuální počítač v každé zóně (zóna 1, zóna 2 a zóna 3) umístění *westeurope* .
 
 ```azurecli-interactive
 for i in `seq 1 3`; do
@@ -234,7 +234,7 @@ done
 ```
 ## <a name="test-the-load-balancer"></a>Test nástroje pro vyrovnávání zatížení
 
-Získejte veřejnou IP adresu nástroje pro vyrovnávání zatížení pomocí [az network public-ip show](/cli/azure/network/public-ip#az-network-public-ip-show). 
+Získejte veřejnou IP adresu nástroje pro vyrovnávání zatížení pomocí [AZ Network Public-IP show](/cli/azure/network/public-ip#az-network-public-ip-show). 
 
 ```azurecli-interactive
   az network public-ip show \
@@ -247,7 +247,7 @@ Veřejnou IP adresu pak můžete zadat do webového prohlížeče. Nezapomeňte,
 
 ![Spuštěná aplikace Node.js](./media/load-balancer-standard-public-zone-redundant-cli/running-nodejs-app.png)
 
-Chcete-li zobrazit nástroje pro vyrovnávání zatížení distribuovat provoz napříč virtuálními počítači ve všech třech zónách dostupnosti používající vaši aplikaci, můžete zastavení virtuálního počítače v konkrétní zóně a aktualizujte svůj prohlížeč.
+Pokud chcete vidět, že nástroj pro vyrovnávání zatížení distribuuje provoz mezi virtuálními počítači ve všech třech zónách dostupnosti, na kterých běží vaše aplikace, můžete zastavit virtuální počítač v konkrétní zóně a aktualizovat si prohlížeč.
 
 ## <a name="next-steps"></a>Další postup
 - Další informace o [Load Balanceru úrovně Standard](./load-balancer-standard-overview.md)

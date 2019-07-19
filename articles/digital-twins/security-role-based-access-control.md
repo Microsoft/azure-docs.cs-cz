@@ -1,45 +1,45 @@
 ---
-title: Principy řízení přístupu na základě rolí Azure digitální dvojče | Dokumentace Microsoftu
-description: Další ověřování v digitální dvojče s řízením přístupu na základě rolí.
+title: Pochopení řízení přístupu na základě role u digitálních vláken Azure | Microsoft Docs
+description: Projděte si ověřování v digitálních seznamech s řízením přístupu na základě rolí.
 author: lyrana
 manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 12/27/2018
-ms.author: lyrana
-ms.openlocfilehash: bfc73a71a0ccda5c135e6a740d6f63bd37522a9b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: lyhughes
+ms.openlocfilehash: 33e09ad52722665e6162b18159012d69ec1463bd
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60534080"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67849282"
 ---
-# <a name="role-based-access-control-in-azure-digital-twins"></a>Řízení přístupu podle role v Azure digitální dvojče
+# <a name="role-based-access-control-in-azure-digital-twins"></a>Řízení přístupu na základě role v digitálních Vlákenách Azure
 
-Azure digitální dvojče umožňuje řízení přístupu na přesné ke konkrétní data, prostředkům a akcím v prostorových grafu. Dělá to pomocí granulární role a oprávnění správy nazývá řízení přístupu na základě role (RBAC). RBAC se skládá z _role_ a _přiřazení rolí_. Role určete úroveň oprávnění. Přiřazení rolí roli přidružit uživateli nebo zařízení.
+Digitální vlákna Azure umožňuje přesné řízení přístupu ke konkrétním datům, prostředkům a akcím v prostorovém grafu. K tomu připadá prostřednictvím podrobné správy rolí a oprávnění označovaného jako řízení přístupu na základě role (RBAC). RBAC se skládá z _rolí_ a _přiřazení rolí_. Role identifikují úroveň oprávnění. Přiřazení rolí přiřadí roli k uživateli nebo zařízení.
 
-Pomocí RBAC, oprávnění lze udělit práva:
+Pomocí RBAC se dá udělit oprávnění k těmto akcím:
 
 - Uživatel.
 - Zařízení.
-- Objekt služby.
-- Uživatelem definované funkce.
-- Všichni uživatelé, kteří patří do nějaké domény.
+- Instanční objekt
+- Uživatelsky definovaná funkce.
+- Všichni uživatelé patřící do domény.
 - Tenant.
 
-Úroveň přístupu také možné podrobně nastavit.
+Stupeň přístupu lze také doladit.
 
-RBAC je jedinečný v tom, že se oprávnění dědí dolů na prostorový graf.
+RBAC je jedinečný v tom, že jsou tato oprávnění zděděná v prostorovém grafu.
 
 ## <a name="what-can-i-do-with-rbac"></a>Co mi RBAC umožňuje?
 
-Vývojáři mohou využít RBAC pro:
+Vývojář může použít RBAC k těmto akcím:
 
-- Udělte schopnost spravovat zařízení pro celé sestavení, nebo jenom pro konkrétní místnost nebo dolní mez.
-- Udělení globální přístup správce ke všem uzlům prostorový graf pro celý graf nebo pouze pro části grafu.
-- Udělte přístup k podpoře specialista pro čtení do grafu, s výjimkou přístupové klíče.
-- Udělení přístupu k doméně pro čtení ke všem objektům grafu každého člena.
+- Udělte uživateli možnost spravovat zařízení pro celou stavbu nebo pouze pro konkrétní místnost nebo podlahu.
+- Udělte globálním přístup správce ke všem uzlům prostorového grafu pro celý graf nebo pouze pro část grafu.
+- Udělte odborníkovi podpory přístup pro čtení do grafu s výjimkou přístupových klíčů.
+- Udělte každému členovi domény přístup pro čtení ke všem objektům grafu.
 
 ## <a name="rbac-best-practices"></a>Osvědčené postupy RBAC
 
@@ -49,38 +49,38 @@ Vývojáři mohou využít RBAC pro:
 
 ### <a name="role-definitions"></a>Definice rolí
 
-Definice role je soubor oprávnění a další atributy, které tvoří roli. Definice role obsahuje povolené operace, které zahrnují *vytvořit*, *čtení*, *aktualizace*, a *odstranit* žádný objekt s ním role mohou provádět. Také určuje, ke kterému objekt typy oprávnění se vztahují na.
+Definice role je kolekce oprávnění a dalších atributů, které tvoří roli. Definice role obsahuje seznam povolených operací, které zahrnují *vytváření*, *čtení*, *aktualizaci*a *odstraňování* všech objektů s touto rolí, které mohou provádět. Určuje také, na které typy objektů se vztahují oprávnění.
 
 [!INCLUDE [digital-twins-roles](../../includes/digital-twins-roles.md)]
 
 >[!NOTE]
-> K načtení úplné definice pro předchozí role, dotaz rozhraní API systému/rolí.
-> Další informace najdete v [vytváření a správa přiřazení rolí](./security-create-manage-role-assignments.md#all).
+> Chcete-li načíst úplné definice pro předchozí role, Dotazujte rozhraní API systému nebo rolí.
+> Další informace najdete v [tématu vytváření a správa přiřazení rolí](./security-create-manage-role-assignments.md#all).
 
 ### <a name="object-identifier-types"></a>Typy identifikátorů objektů
 
 [!INCLUDE [digital-twins-object-types](../../includes/digital-twins-object-id-types.md)]
 
 >[!TIP]
-> Zjistěte, jak udělit oprávnění instančního objektu služby přečtením [vytváření a správa přiřazení rolí](./security-create-manage-role-assignments.md#grant).
+> Přečtěte si, jak udělit oprávnění k instančnímu objektu tím, že si přečtete [vytváření a správu přiřazení rolí](./security-create-manage-role-assignments.md#grant).
 
-V následujících referenční dokumentaci článcích:
+V následujících tématech najdete popis těchto článků dokumentace:
 
-- Jak [dotazu nebo ID objektu uživatele](https://docs.microsoft.com/powershell/module/azuread/get-azureaduser?view=azureadps-2.0).
-- Jak [získání ID objektu pro objekt zabezpečení služby](https://docs.microsoft.com/powershell/module/az.resources/get-azadserviceprincipal).
-- Jak [načíst ID objektu pro tenanta služby Azure AD](../active-directory/develop/quickstart-create-new-tenant.md).
+- Dotazování [nebo ID objektu pro uživatele](https://docs.microsoft.com/powershell/module/azuread/get-azureaduser?view=azureadps-2.0).
+- Jak [získat ID objektu pro instanční](https://docs.microsoft.com/powershell/module/az.resources/get-azadserviceprincipal)objekt.
+- Jak [Načíst ID objektu pro tenanta Azure AD](../active-directory/develop/quickstart-create-new-tenant.md).
 
 ## <a name="role-assignments"></a>Přiřazení rolí
 
-Přiřazení role Azure digitální dvojče objektu, například uživatele nebo tenantem Azure AD přidruží roli a mezerou. Oprávnění jsou udělena pro všechny objekty, které patří do tohoto místa. Místo zahrnuje celý prostorový graf pod ním.
+Přiřazení role digitálních vláken Azure přidružuje objekt, jako je uživatel nebo tenant Azure AD, s rolí a mezerou. Oprávnění jsou udělena všem objektům, které patří do daného prostoru. Prostor obsahuje celý prostorový graf pod ním.
 
-Například uživatel dostane přiřazení role s rolí `DeviceInstaller` pro kořenový uzel prostorový graf, který představuje budovy. Uživatel pak číst a aktualizovat zařízení pro tento uzel a všechny ostatní podřízené prostory v budově.
+Uživateli je například přiděleno přiřazení role s rolí `DeviceInstaller` pro kořenový uzel prostorového grafu, který představuje budova. Uživatel pak může číst a aktualizovat zařízení pro tento uzel a všechny ostatní podřízené prostory v budově.
 
-Udělení oprávnění pro příjemce, vytvořte přiřazení role. Odvolat oprávnění, odeberte přiřazení role.
+Chcete-li udělit oprávnění příjemci, vytvořte přiřazení role. Chcete-li odvolat oprávnění, odeberte přiřazení role.
 
 >[!IMPORTANT]
-> Další informace o přiřazení rolí načtením [vytváření a správa přiřazení rolí](./security-create-manage-role-assignments.md).
+> Další informace o přiřazení rolí najdete v [tématu vytváření a správa přiřazení rolí](./security-create-manage-role-assignments.md).
 
 ## <a name="next-steps"></a>Další postup
 
-- Další informace o vytváření a správa Azure digitální dvojče přiřazení rolí, přečtěte si téma [vytvořit a spravovat přiřazení rolí](./security-create-manage-role-assignments.md).
+- Pokud chcete získat další informace o vytváření a správě přiřazení rolí digitálních vláken Azure, přečtěte si téma [Vytvoření a správa přiřazení rolí](./security-create-manage-role-assignments.md).

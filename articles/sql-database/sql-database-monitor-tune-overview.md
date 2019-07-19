@@ -1,6 +1,6 @@
 ---
-title: Monitorování a optimalizace výkonu – Azure SQL Database | Dokumentace Microsoftu
-description: Tipy pro ladění ve službě Azure SQL Database prostřednictvím hodnocení a zlepšování výkonu.
+title: Monitorování ladění výkonu & – Azure SQL Database | Microsoft Docs
+description: Tipy pro ladění výkonu v Azure SQL Database prostřednictvím vyhodnocení a vylepšení.
 services: sql-database
 ms.service: sql-database
 ms.subservice: performance
@@ -12,116 +12,116 @@ ms.author: jovanpop
 ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 2fa43fcd48736a3d044deb07ed690af580c3b987
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fdc130a7ac13e1cc551c50a7ab284ff640ecbbe4
+ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66416276"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68305763"
 ---
 # <a name="monitoring-and-performance-tuning"></a>Sledování a ladění výkonu
 
-Azure SQL Database umožňuje snadno monitorovat využití, přidání nebo odebrání prostředků (procesoru, paměti, vstupně-výstupní operace), řešení potíží s potenciální problémy a najít doporučení, která může zlepšit výkon vaší databáze. Azure SQL Database obsahuje mnoho funkcí, které automaticky opravit problémy ve vašich databázích Pokud chcete, aby databáze přizpůsobit vaší úloze a automaticky optimalizace výkonu. Existují však některé vlastní problémy, které může být třeba řešit. Tento článek vysvětluje některé osvědčené postupy a nástroje, které můžete použít k řešení problémů s výkonem.
+Azure SQL Database poskytuje nástroje a metody pro snadné monitorování využití, přidávání nebo odebírání prostředků (CPU, paměť, I/O), řešení potíží s potenciálními problémy a hledání doporučení, která můžou zlepšit výkon databáze. Azure SQL Database má mnoho funkcí, které mohou automaticky opravovat problémy v databázích, které umožní, aby se databáze přizpůsobila k zatížení a automaticky optimalizoval výkon. Existují však některé vlastní problémy, které mohou vyžadovat řešení potíží. Tento článek popisuje některé osvědčené postupy a nástroje, které lze použít k řešení problémů s výkonem.
 
-Existují dvě hlavní aktivity, které musíte udělat, aby se zajistilo, že databáze je běží bez problémů:
-- [Monitorování výkonu databáze](#monitoring-database-performance) Pokud chcete mít jistotu, že prostředky přiřazené k vaší databázi můžete zpracování vašich úloh. Pokud zjistíte, že nenarážíte limity prostředků, je třeba identifikovat hlavní dotazy využívající prostředky a optimalizovat, nebo přidat další prostředky upgradujte úroveň služby.
-- [Řešení problémů s výkonem](#troubleshoot-performance-issues) za účelem zjištění, proč některá potenciální problém se stalo, identifikovat hlavní příčinu problému a akce, která bude tento problém vyřešit.
+Existují dvě hlavní aktivity, které by měly být provedeny, aby bylo zajištěno, že databáze běží bez problémů:
+- [Monitorujte výkon databáze](#monitoring-database-performance) a ujistěte se, že prostředky přiřazené k databázi mohou zpracovat úlohu. Pokud zjistíte, že databáze je na dosahu omezení prostředků, je třeba identifikovat a optimalizovat nejlepší dotazy na prostředky, které by měly být přidány, a to upgradem úrovně služby.
+- [Vyřešte problémy s výkonem](#troubleshoot-performance-issues) , abyste mohli zjistit, proč došlo k nějakému případnému problému, identifikovat hlavní příčinu problému a provést akci, která tento problém vyřeší.
 
 ## <a name="monitoring-database-performance"></a>Monitorování výkonu databáze
 
-Monitorování výkonu databáze SQL v Azure začíná sledováním využití prostředků relativně ke zvolené úrovni výkonu databáze. Je třeba monitorovat následující prostředky:
- - **Využití procesoru** – je potřeba zkontrolovat, se dosažení 100 % využití procesoru v delší časové období. To může znamenat, že potřebujete upgrade, databáze nebo instance nebo identifikovat a ladění dotazů, které se používají nejvíce výpočetní výkon.
- - **Statistiky čekání** – je potřeba zkontrolovat, co důvod, proč vaše dotazy čekají na několik zdrojů informací. Queriesmig počkejte data načtena, nebo se uloží soubory databáze, čekání, protože je dosažení limitu některé prostředků atd.
- - **Využití vstupně-výstupních operací** – je potřeba zkontrolovat, se blíží limity vstupně-výstupních operací pro použité úložiště.
- - **Využití paměti** -množství paměti k dispozici pro databáze nebo instance je přímo úměrný počtu virtuálních jader a je potřeba zkontrolovat je dostatečně pro vaši úlohu. Životnost stránky je jeden z parametrů, které může obsahovat stránky rychle odeberou se z paměti.
+Monitorování výkonu databáze SQL v Azure začíná sledováním využití prostředků relativně ke zvolené úrovni výkonu databáze. Následující prostředky by se měly monitorovat pro stejné:
+ - **Využití CPU** – ověřte, jestli databáze po delší dobu dosáhla 100% využití procesoru. To může znamenat, že se databáze nebo instance musí upgradovat na vyšší úroveň služby nebo že by se měly identifikovat a vyladit dotazy využívající většinu výpočetního výkonu.
+ - **Čekací Statistika** – ověřte, proč se dotazy čekají na některé prostředky. Dotazy čekají, až se data načtou nebo uloží do souborů databáze. Počkejte, protože se dosáhne nějakého limitu prostředků atd.
+ - **Použití v/** v – ověřte, jestli se databáze blíží omezení v/v podkladového úložiště.
+ - **Využití paměti** – velikost paměti, která je k dispozici pro databázi nebo instanci, je úměrná počtu virtuální jádra a kontrole, jestli je to pro úlohu dostačující. Životnost stránky očekávané je jedním z parametrů, které mohou určit, jak rychle se stránky odstraňují z paměti.
 
-Azure SQL Database **poskytuje avíza dokladů, které vám může pomoct vyřešit a opravte potenciální problémy s výkonem**. Můžete snadno identifikovat příležitosti, jak vylepšit a optimalizovat výkon dotazů beze změny zdroje kontrolou [doporučení pro optimalizaci výkonu](sql-database-advisor.md). Častým důvodem toho, že databáze je pomalá, jsou chybějící indexy a nedostatečně optimalizované dotazy. Můžete použít tato doporučení pro vyladění výkonu vašich úloh. Můžete také umožňují Azure SQL database a [automaticky optimalizace výkonu vašich dotazů](sql-database-automatic-tuning.md) použitím všechny určené doporučení a ověřuje, že pomáhají zvýšit výkon databáze.
+Služba Azure SQL Database **zahrnuje nástroje a prostředky, které vám pomohou vyřešit problémy s výkonem a opravit potenciální problémy s výkonem**. Příležitosti lze snadno identifikovat a optimalizovat výkon dotazů bez změny prostředků, a to kontrolou [doporučení pro ladění výkonu](sql-database-advisor.md). Častým důvodem toho, že databáze je pomalá, jsou chybějící indexy a nedostatečně optimalizované dotazy. Tato doporučení pro ladění můžete použít ke zvýšení výkonu úloh. Díky použití všech identifikovaných doporučení můžeme také službě Azure SQL Database povolit [automatickou optimalizaci výkonu dotazů](sql-database-automatic-tuning.md) , a to díky tomu, že se zlepší výkon databáze.
 
-Máte následující možnosti pro monitorování a řešení potíží s výkonem databáze:
+K dispozici jsou následující možnosti pro monitorování a řešení potíží s výkonem databáze:
 
-- V [webu Azure portal](https://portal.azure.com), klikněte na tlačítko **databází SQL**, vyberte databázi a pak použít graf monitorování k vyhledání prostředků blíží jejich maximální. Ve výchozím nastavení se zobrazí spotřeba DTU. Klikněte na tlačítko **upravit** změnit časový rozsah a hodnoty.
-- Nástroje, jako je SQL Server Management Studio poskytuje mnoho užitečných sestav, jako jsou [řídicí panel Výkon](https://docs.microsoft.com/sql/relational-databases/performance/performance-dashboard?view=sql-server-2017) tam, kde můžete monitorovat využití prostředků a identifikovat hlavní dotazy, využívající prostředky nebo [Query Store](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store#Regressed)ve kterém můžete identifikovat dotazy s nižším výkonem.
-- Použití [Query Performance Insight](sql-database-query-performance.md) [webu Azure portal](https://portal.azure.com) v identifikovat dotazy, které tráví nejvíce prostředků. Tato funkce je dostupná v izolované databáze a Elastických fondů pouze.
-- Použití [služby SQL Database Advisor](sql-database-advisor-portal.md) Chcete-li zobrazit doporučení pro vytváření a vyřazení indexů, parametrické dotazy a řešení problémů schématu. Tato funkce je dostupná v izolované databáze a Elastických fondů pouze.
-- Použití [Azure SQL Intelligent Insights](sql-database-intelligent-insights.md) pro automatické monitorování výkonu vaší databáze. Po zjištění problému s výkonem se vygeneruje protokol diagnostiky s podrobnostmi a kořenové příčiny analýzy RCA () problému. Pokud je to možné, poskytuje doporučení pro zlepšení výkonu.
-- [Povolení automatického ladění](sql-database-automatic-tuning-enable.md) a nechat Azure SQL database automaticky opravě zjištěných problémů s výkonem.
-- Použití [zobrazení dynamické správy (DMV)](sql-database-monitoring-with-dmvs.md), [rozšířených událostí](sql-database-xevent-db-diff-from-svr.md)a [Query Store](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store) podrobný Poradce při potížích s problémy s výkonem.
+- V [Azure Portal](https://portal.azure.com)klikněte na **databáze SQL**, vyberte databázi a potom pomocí grafu monitorování vyhledejte prostředky, které se blíží jejich maximálnímu využití. Ve výchozím nastavení se zobrazuje spotřeba DTU. Kliknutím na **Upravit** změníte časový rozsah a zobrazené hodnoty.
+- Nástroje, jako je například SQL Server Management Studio, poskytují mnoho užitečných sestav, jako je [řídicí panel výkonu](https://docs.microsoft.com/sql/relational-databases/performance/performance-dashboard?view=sql-server-2017) pro monitorování využití prostředků a identifikaci nejčastějších dotazů, které jsou náročné na prostředky, nebo [úložiště dotazů](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store#Regressed) pro identifikaci dotazů. předepsané.
+- Pomocí [Query Performance Insight](sql-database-query-performance.md) v [Azure Portal](https://portal.azure.com) Identifikujte dotazy, které stráví nejvíc prostředků. Tato funkce je k dispozici pouze v Izolovaná databáze a elastických fondech.
+- Pomocí [SQL Database Advisor](sql-database-advisor-portal.md) můžete zobrazit doporučení pro vytváření a odstraňování indexů, dotazů Parametrizace a řešení problémů se schématem. Tato funkce je k dispozici pouze v Izolovaná databáze a elastických fondech.
+- Pro automatické sledování výkonu databáze použijte [Azure SQL Intelligent Insights](sql-database-intelligent-insights.md) . Jakmile se zjistí problém s výkonem, vygeneruje se diagnostický protokol s podrobnostmi a analýzou hlavní příčiny (RCA) problému. Doporučení pro zlepšení výkonu je k dispozici, pokud je to možné.
+- [Povolte automatické ladění](sql-database-automatic-tuning-enable.md) a umožněte službě Azure SQL Database automaticky opravovat zjištěné problémy s výkonem.
+- Pomocí [zobrazení dynamické správy (zobrazení dynamické správy)](sql-database-monitoring-with-dmvs.md), [rozšířených událostí](sql-database-xevent-db-diff-from-svr.md)a [úložiště dotazů](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store) podrobnější řešení potíží s výkonem.
 
 > [!TIP]
-> Zobrazit [Průvodce výkonem](sql-database-performance-guidance.md) najít techniky, které můžete použít ke zlepšení výkonu služby Azure SQL Database po identifikaci problému výkonu pomocí jednoho nebo více z výše uvedených metod.
+> V tématu [pokyny k výkonu](sql-database-performance-guidance.md) najdete techniky, pomocí kterých můžete vylepšit výkon Azure SQL Database po identifikaci problému s výkonem pomocí jedné nebo více výše uvedených metod.
 
 ## <a name="troubleshoot-performance-issues"></a>Řešení potíží s výkonem
 
-K diagnostikování a vyřešení problémů s výkonem, začněte tím, že vysvětlení stavu každý aktivní dotaz a podmínek, které způsobují problémy s výkonem relevantní pro každý stav úlohy. Kvůli zvýšení výkonu Azure SQL Database se pochopit, že každý požadavek aktivní dotaz z vaší aplikace je buď ve stavu čekání nebo spuštěné. Při řešení problému s výkonem ve službě Azure SQL Database, mějte v následujícím grafu jako jste si tento článek k diagnostikování a vyřešení problémů s výkonem.
+Chcete-li diagnostikovat a vyřešit problémy s výkonem, začněte tím, že pochopíte stav jednotlivých aktivních dotazů a podmínek, které způsobují problémy s výkonem, které jsou relevantní pro jednotlivé stavy zatížení. Pro zlepšení výkonu Azure SQL Database je potřeba pochopit, že každý aktivní požadavek na dotaz z aplikace je buď ve spuštěném, nebo ve stavu čekání na vyřízení. Při řešení potíží s výkonem v Azure SQL Database mějte na paměti následující graf, který vám umožní diagnostikovat a vyřešit problémy s výkonem v tomto článku.
 
 ![Stavy úlohy](./media/sql-database-monitor-tune-overview/workload-states.png)
 
-Pro úlohy s problémy s výkonem, tyto problémy s výkonem pravděpodobně z důvodu kolize procesoru ( **týkající se spouštění** podmínky) nebo jednotlivé dotazy čekají na libovolnou položku ( **související čekání** podmínku ).
+U úloh s problémy s výkonem může být problém s výkonem způsobený kolizími PROCESORů (stav s **průběžnými** platbami) nebo jednotlivé dotazy čekají na něco (podmínka **související s čekáním** ).
 
-Příčiny nebo **týkající se spouštění** problémů může být:
-- **Problémy při kompilaci** -optimalizátoru dotazů SQL může vytvořit optimální plán kvůli zastaralé statistiky, nesprávné odhad počtu řádků, které budou zpracovány nebo odhadu požadované paměti. Pokud víte, že tento dotaz se provedl rychleji v minulosti nebo na jinou instanci (mi nebo SQL Server instance), proveďte vlastní provedení plány a porovnejte je chcete zobrazit, že jsou různé. Došlo k pokusu o použití pomocné parametry dotazu nebo znovu sestaví statistiku ani index k získání lepší plánu. Povolte Automatická oprava plánů ve službě Azure SQL Database automaticky tyto problémy zmírnit.
-- **Problémů provádění** – Pokud je optimální plán dotazu, pak pravděpodobně dosahuje některá omezení prostředků v databázi, jako je propustnost zápisu protokolu nebo může použít defragmentovanou indexy, které by měl být znovu vytvořen. Velký počet souběžných dotazů, které zůstávají prostředky může být také příčiny problémů provádění. **Související čekání** problémy jsou ve většině případů související s problémy provádění, protože dotazy, které nejsou efektivní provádění pravděpodobně čekají na několik zdrojů informací.
+Příčiny potíží **souvisejících** s prováděním mohou být následující:
+- **Problémy s kompilací** – Optimalizátor dotazů SQL může vydávat dílčí optimální plán z důvodu zastaralých statistik, nesprávného odhadu počtu zpracovaných řádků nebo odhadu požadované paměti. Pokud víte, že dotaz byl proveden rychleji v minulosti nebo v jiné instanci (buď spravované instance, nebo SQL Server instance), proveďte skutečné plány spuštění a porovnejte je, abyste zjistili, zda jsou odlišné. Zkuste použít pomocný parametr dotazu nebo znovu sestavit statistiku nebo znovu sestavit indexy, abyste získali lepší plán. Povolte automatickou opravu plánu v Azure SQL Database, aby se tyto problémy automaticky zmírnily.
+- **Problémy** s prováděním – Pokud je plán dotazů optimální, je pravděpodobné, že v databázi dojde k některému omezení prostředků, například propustnost zápisu protokolu nebo používá defragmentované indexy, které by se měly znovu sestavit. Velký počet souběžných dotazů, které tráví, může být také příčinou problémů se spouštěním. **Čekání související** problémy ve většině případů souvisí s problémy při spuštění, protože dotazy, které neběží efektivně, pravděpodobně čekají na některé prostředky.
 
-Příčiny nebo **související čekání** problémů může být:
-- **Blokování** – jeden dotaz můžou blokovat zámek pro některé objekty v databázi, zatímco jiné se pokoušíte získat přístup na stejné objekty. Můžete snadno identifikovat blokující dotazů pomocí zobrazení dynamické správy nebo nástroje pro monitorování.
-- **Vstupně-výstupních operací problémy** -dotazů může být čekání na stránky k zápisu do souborů dat či protokolu. V tomto případě se zobrazí `INSTANCE_LOG_RATE_GOVERNOR`, `WRITE_LOG`, nebo `PAGEIOLATCH_*` počkejte statistické údaje ve zobrazení dynamické správy.
-- **Problémy s databází TempDB** – Pokud používáte velké množství dočasné tabulky nebo uvidíte velké množství databází TempDB rozlití kapaliny v plánech dotazů může jít o problém s databází TempDB propustnost. 
-- **Problémy související s pamětí** -nemusí mít dostatek paměti pro vaši úlohu tak, aby životnost vaše stránka může vyřaďte nebo dotazy získávají méně přidělení paměti, než je potřeba. V některých případech bude integrované inteligentní funkce v optimalizátoru dotazů opravit tyto problémy.
+Příčiny potíží **souvisejících s čekáním** mohou být následující:
+- **Blokování** – jeden dotaz může uchovat zámek u některých objektů v databázi, zatímco ostatní se pokoušejí o přístup ke stejným objektům. Blokování dotazů lze snadno identifikovat pomocí nástrojů pro DMV nebo monitorování.
+- **Vstupně-výstupní problémy** – dotazy můžou čekat na zápis stránek do dat nebo souborů protokolu. V tomto případě se `INSTANCE_LOG_RATE_GOVERNOR`v `WRITE_LOG`DMV zobrazují `PAGEIOLATCH_*` statistiky, nebo čekají.
+- **Problémy** s databází tempdb – Pokud zatížení využívá spoustu dočasných tabulek nebo je v nich velké množství vynechání databází tempdb, dotazy mohou mít problémy s propustností databáze tempdb. 
+- **Problémy související** s pamětí – pravděpodobně není dostatek paměti pro úlohu, aby mohla očekávanéa životnosti stránky nebo že dotazy mají méně paměti, než je potřeba. V některých případech se tyto problémy vyřeší integrovanými inteligentními funkcemi v optimalizátoru dotazů.
  
-V následujících částech budou vysvětlena jak identifikovat a vyřešit některé z těchto problémů.
+ V následujících částech se dozvíte, jak identifikovat a vyřešit některé z těchto problémů.
 
-## <a name="running-related-performance-issues"></a>Problémy s výkonem souvisejících s spuštění
+## <a name="running-related-performance-issues"></a>Problémy s výkonem související se spouštěním
 
-V rámci obecných pokynů Pokud vaše využití procesoru je trvale dosahovalo nebo přesahovalo 80 %, je nutné problém s výkonem souvisejících s spuštěná. Pokud máte potíže se související se spuštěná, může být způsobena nedostatkem prostředků procesoru nebo může mít relaci k jednomu z následujících podmínek:
+Obecně platí, že pokud je využití procesoru konzistentně na úrovni 80% nebo vyšší, dochází k potížím s výkonem, ke kterým dochází. V případě, že dojde k problému souvisejícímu se systémem, může to být způsobeno nedostatečnými prostředky procesoru nebo může souviset s jednou z následujících podmínek:
 
-- Moc velký počet spuštěných dotazů
-- Příliš mnoho kompilaci dotazů
-- Jeden nebo více provádění dotazů používají plán neoptimálním průběhem dotazu
+- Příliš mnoho spuštěných dotazů
+- Příliš mnoho dotazů kompilace
+- Jeden nebo více zpracovávaných dotazů používá plán dotazu pro dílčí optimální použití.
 
-Pokud zjistíte, že máte problém s výkonem souvisejících s běží, je vaším cílem je k jeho identifikaci přesné pomocí jedné nebo několika metod. Nejběžnější metody k identifikaci problémů souvisejících se spuštění jsou následující:
+Je-li zjištěno, že došlo k potížím s výkonem, je cílem identifikovat přesný problém pomocí jedné nebo více metod. Nejběžnější metody identifikace potíží souvisejících s prováděním jsou:
 
-- Použití [webu Azure portal](sql-database-manage-after-migration.md#monitor-databases-using-the-azure-portal) k monitorování procenta využití procesoru.
-- Pomocí následujících [zobrazení dynamické správy](sql-database-monitoring-with-dmvs.md):
+- Pomocí [Azure Portal](sql-database-manage-after-migration.md#monitor-databases-using-the-azure-portal) můžete monitorovat procento využití procesoru.
+- Použijte následující [zobrazení dynamické správy](sql-database-monitoring-with-dmvs.md):
 
-  - [Sys.dm_db_resource_stats](sql-database-monitoring-with-dmvs.md#monitor-resource-use) vrátí spotřeby procesoru, vstupně-výstupní operace a paměti pro databázi Azure SQL Database. Jeden řádek existuje pro každých 15 sekund, i v případě, že neexistuje žádná aktivita v databázi. Historická data se udržují za jednu hodinu.
-  - [Sys.resource_stats](sql-database-monitoring-with-dmvs.md#monitor-resource-use) vrátí data o využití a úložiště CPU pro službu Azure SQL Database. Data se shromažďují a agregují v pětiminutovém intervalu.
+  - [Sys. DM _db_resource_stats](sql-database-monitoring-with-dmvs.md#monitor-resource-use) vrací CPU, vstupně-výstupní operace a spotřebu paměti pro Azure SQL Database. Jeden řádek existuje v intervalu 15 sekund, a to i v případě, že databáze neobsahuje žádné aktivity. Historická data se uchovávají po dobu jedné hodiny.
+  - [Sys. resource_stats](sql-database-monitoring-with-dmvs.md#monitor-resource-use) vrátí využití CPU a data úložiště pro Azure SQL Database. Data se shromažďují a agregují v intervalu pěti minut.
 
 > [!IMPORTANT]
-> Sada dotazů T-SQL pomocí těchto zobrazení dynamické správy k řešení potíží využití procesoru, naleznete v tématu [procesoru identifikovat problémy s výkonem](sql-database-monitoring-with-dmvs.md#identify-cpu-performance-issues).
+> Pokud chcete řešit problémy s využitím procesoru, nastavte dotazy T-SQL, které používají tyto zobrazení dynamické správy, v tématu [Identifikace problémů s výkonem procesoru](sql-database-monitoring-with-dmvs.md#identify-cpu-performance-issues).
 
-### <a name="ParamSniffing"></a> Řešení potíží s dotazy s problémy plán spuštění závislé na parametru dotazu
+### <a name="ParamSniffing"></a>Řešení potíží s dotazy s plánem spouštění dotazů závislých na parametrech
 
-Potíže s parametrem citlivé plán (PSP) odkazuje na scénáři, kde Optimalizátor dotazů generuje plán provádění dotazu, který je ideální jenom pro konkrétní parametr (nebo sadu hodnot) a bude plánů v mezipaměti optimální zadání hodnot parametrů používaných pro počet po sobě jdoucích spuštění. Optimální jiné plány může pak způsobit problémy s výkonem dotazů a celkovou propustnost snížení zatížení. Další informace o parametru pro analýzu sítě a zpracování dotazů, najdete v článku [Průvodce architekturou zpracování dotazu](/sql/relational-databases/query-processing-architecture-guide#ParamSniffing).
+Problém s parametrem citlivého plánu (PSP) odkazuje na scénář, ve kterém nástroj pro optimalizaci dotazů generuje plán spouštění dotazů, který je optimální pouze pro konkrétní hodnotu parametru (nebo sadu hodnot) a plán uložený v mezipaměti je neoptimální pro hodnoty parametrů používané v po sobě jdoucí spuštění. Neoptimální plány potom můžou vést k problémům s výkonem a celkovému snížení propustnosti úloh. Další informace o sledování parametrů a zpracování dotazů najdete v [Průvodci architekturou zpracování dotazů](/sql/relational-databases/query-processing-architecture-guide#ParamSniffing).
 
-Existuje několik řešení zmírnit problémy, každá má přidružené kompromisy a nevýhody:
+Pro zmírnění těchto problémů existuje několik alternativních řešení, z nichž každý má Spojené kompromisy a nevýhody:
 
-- Použití [znovu ZKOMPILOVAT](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) pomocný parametr dotazu v každé spuštění dotazu. Toto řešení obchoduje čas kompilace a zvýšení využití procesoru pro lepší kvalitu plánu. Použití `RECOMPILE` možnost je často není možné pro úlohy vyžadující vysokou propustnost.
-- Použití [možnosti (optimalizace pro...) ](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) pomocný parametr dotazu přepsat hodnotu skutečný parametr s hodnotou typické parametr, který vytváří plán dostatečné pro většinu možností hodnotu parametru.   Tato možnost vyžaduje dostatečné povědomí o charakteristiky související plán a optimální parametr hodnoty.
-- Použití [možnosti (optimalizace pro neznámý)](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) pomocný parametr dotazu přepsat hodnotu skutečný parametr výměnou za pomocí vektoru průměr hustoty. Dalším způsobem, jak to provést, je zachycení příchozí hodnoty parametrů do místní proměnné a pak pomocí místní proměnné v rámci predikáty, namísto použití parametrů samotných. Musí být průměrné hustota *dostatečné* pomocí této opravy.
-- Zakažte parametr pro analýzu sítě zcela pomocí [DISABLE_PARAMETER_SNIFFING](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) pomocný parametr dotazu.
-- Použití [KEEPFIXEDPLAN](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) pomocný parametr dotazu tak, aby se znovu zkompiluje v mezipaměti. Toto řešení předpokládá *dobré dostatečně* běžné plán už je v mezipaměti. Aby bylo možné snížit pravděpodobnost svého Dobrý plán vyřazuje a nový plán chybný kompilovanému mohou také zakázat automatické aktualizace statistiky.
-- Nelze vynutit jiný plán explicitně pomocí [USE PLAN](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) pomocný parametr dotazu (explicitním zadáním, nastavením konkrétní plán pomocí Query Store nebo povolením [automatické ladění](sql-database-automatic-tuning.md).
-- Nahraďte jedinou proceduru vnořenou sadu postupy, které lze každý použít na základě podmíněnou logiku a přidružené parametr hodnoty.
-- Vytvoření dynamické řetězce provádění alternativy k definici statické metody.
+- Použijte [znovu zkompilování](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) nápovědy pro dotaz při každém spuštění dotazu. Toto řešení usnadňuje dobu kompilace a zvýšenou kapacitu procesoru pro lepší kvalitu plánu. `RECOMPILE` Použití možnosti není často možné pro úlohy, které vyžadují vysokou propustnost.
+- Použijte pomocný parametr dotazu [Option (optimize for.](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) ..) pro přepsání skutečné hodnoty parametru s typickou hodnotou parametru, která vytvoří dobrý dostatečný plán pro většinu možností hodnoty parametru.   Tato možnost vyžaduje dobrou představu o optimálních hodnotách parametrů a přidružených vlastnostech plánu.
+- Použijte [možnost (optimalizovat pro neznámý)](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) Nápověda pro dotaz k přepsání skutečné hodnoty parametru v Exchangi pro použití průměru vektoru hustoty. Dalším způsobem, jak to provést, je zachycení hodnot příchozích parametrů do místních proměnných a následné použití místních proměnných v predikátech namísto použití samotných parametrů. Průměrná hustota musí být pro tuto konkrétní opravu *dostatečně dobrá* .
+- Zakažte sledování parametrů výhradně pomocí pomocného parametru dotazu [DISABLE_PARAMETER_SNIFFING](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) .
+- Použijte pomocný parametr dotazu [KEEPFIXEDPLAN](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) , abyste zabránili překompilování v mezipaměti. Toto alternativní řešení předpokládá *dobrý* společný plán, který je už v mezipaměti. Můžete také zakázat automatické aktualizace statistických údajů, aby se snížila pravděpodobnost, že se dobrý plán vyloučí a že se kompiluje nový špatný plán.
+- Vynutit plán explicitním použitím pomocného parametru dotazu [použít plán](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) (explicitním zadáním, nastavením konkrétního plánu pomocí úložiště dotazů nebo povolením [automatického ladění](sql-database-automatic-tuning.md)).
+- Nahraďte jeden postup vnořenou sadou procedur, které mohou být použity na základě podmíněné logiky a přidružených hodnot parametrů.
+- Vytváření alternativ dynamického provádění řetězce pro definici statické procedury.
 
-Další informace o řešení těchto typů problémů najdete v tématu:
+Další informace o řešení těchto typů problémů najdete v následujících tématech:
 
-- To [můžu cítit parametr](https://blogs.msdn.microsoft.com/queryoptteam/2006/03/31/i-smell-a-parameter/) blogový příspěvek
-- To [dynamické srovnání plánu kvality pro parametrizované dotazy sql](https://blogs.msdn.microsoft.com/conor_cunningham_msft/2009/06/03/conor-vs-dynamic-sql-vs-procedures-vs-plan-quality-for-parameterized-queries/) blogový příspěvek
-- To [techniky optimalizace dotazů SQL v SQL serveru: Parametr Sniffing](https://www.sqlshack.com/query-optimization-techniques-in-sql-server-parameter-sniffing/) blogový příspěvek
+- Toto [je v pachu parametru](https://blogs.msdn.microsoft.com/queryoptteam/2006/03/31/i-smell-a-parameter/) Blogový příspěvek.
+- Tato [Dynamická kvalita plánu SQL versus plánování pro parametrizované dotazy na](https://blogs.msdn.microsoft.com/conor_cunningham_msft/2009/06/03/conor-vs-dynamic-sql-vs-procedures-vs-plan-quality-for-parameterized-queries/) Blogový příspěvek
+- Tyto [techniky optimalizace dotazů SQL v SQL Server: Příspěvek na](https://www.sqlshack.com/query-optimization-techniques-in-sql-server-parameter-sniffing/) Blogový příspěvek pro parametry
 
-### <a name="troubleshooting-compile-activity-due-to-improper-parameterization"></a>Řešení potíží s aktivitu kompilace z důvodu nesprávné Parametrizace
+### <a name="troubleshooting-compile-activity-due-to-improper-parameterization"></a>Řešení potíží s aktivitou kompilace z důvodu nesprávného Parametrizace
 
-Když má dotaz literály, databázový stroj zvolí možnost automaticky parametrizovat příkaz nebo uživatel můžete explicitně parametrizovat kvůli snížení počtu zkompiluje. Vysoké využití procesoru může způsobit vysoký počet zkompiluje dotazu pomocí stejného vzoru, ale jiné hodnoty literálu. Podobně pokud jen částečně parametrizace dotazu, který se bude mít literály, databázový stroj parametrizovat ho dále.  Níže je příklad částečně parametrizovaného dotazu:
+Pokud má dotaz literály, buď databázový modul zvolí možnost automatického parametrizovat příkaz nebo ho může uživatel explicitně parametrizovat, aby se snížil počet kompilací. Vysoký počet zkompilování dotazu pomocí stejného vzoru, ale různé hodnoty literálu může mít za následek vysoké využití procesoru. Podobně, pokud pouze částečně parametrizovat dotaz, který nadále má literály, databázový stroj ho ještě neparametrizovat.  Níže je uveden příklad částečně parametrizovaného dotazu:
 
 ```sql
 SELECT * FROM t1 JOIN t2 ON t1.c1 = t2.c1
 WHERE t1.c1 = @p1 AND t2.c2 = '961C3970-0E54-4E8E-82B6-5545BE897F8F'
 ```
 
-V předchozím příkladu `t1.c1` trvá `@p1` ale `t2.c2` pokračuje trvat identifikátor GUID jako literál. V takovém případě pokud se změní hodnota `c2`, dotaz bude zacházeno jako jiný dotaz, a dojde k nové kompilace. Pokud chcete snížit kompilace v předchozím příkladu, řešením je také parametrizovat identifikátor GUID.
+V předchozím příkladu převezme `t1.c1` `@p1` , ale `t2.c2` nadále převezme GUID jako literál. V takovém případě, pokud změníte hodnotu pro `c2`, dotaz bude zpracován jako jiný dotaz a dojde k nové kompilaci. Chcete-li omezit kompilace v předchozím příkladu, řešení je také parametrizovat identifikátor GUID.
 
-Následující dotaz zobrazí počet dotazů podle hodnota hash dotazu k určení, pokud dotaz nebo není správně parametrizované:
+Následující dotaz znázorňuje počet dotazů podle hodnoty hash dotazu k určení, jestli je dotaz správně parametrizovaný, nebo ne:
 
 ```sql
 SELECT  TOP 10  
@@ -143,99 +143,99 @@ WHERE
 GROUP BY q.query_hash
 ORDER BY count (distinct p.query_id) DESC
 ```
-### <a name="factors-influencing-query-plan-changes"></a>Faktory ovlivňující změny plánu dotazu
+### <a name="factors-influencing-query-plan-changes"></a>Faktory ovlivňující změny plánu dotazů
 
-Opětovná kompilace plán provádění dotazů může vést k plánu generování dotazu, který se liší od původně mezipaměti. Existují různé důvody, proč může automaticky překompilovány existující původní plán:
-- Změny ve schématu odkazuje dotaz
-- Změny dat k tabulkám, odkazuje dotaz 
-- Změny v možnosti kontext dotazu 
+Opětovná kompilace plánu spuštění dotazu může mít za následek vygenerovaný plán dotazu, který se liší od původního ukládání do mezipaměti. Existují různé důvody, proč je možné automaticky znovu zkompilovat existující původní plán:
+- Změny ve schématu, na které odkazuje dotaz
+- Změny dat v tabulkách, na které odkazuje dotaz 
+- Změny možností kontextu dotazu 
 
-Kompilované plán může vysunout z různých důvodů, včetně restartování instance mezipaměti, změny konfigurace, tlaku na paměť a explicitní žádosti o vymazání mezipaměti v oboru databáze. Kromě toho pomocí pomocného parametru RECOMPILE znamená, že nebudou zapisována do mezipaměti plánu.
+Kompilovaný plán může být z mezipaměti vysunut z nejrůznějších důvodů, včetně restartování instance, změn konfigurace v oboru databáze, zatížení paměti a explicitních požadavků na vymazání mezipaměti. Kromě toho se pomocí pomocného parametru pro rekompilaci znamená, že plán nebude uložen do mezipaměti.
 
-Rekompilace (nebo nové kompilace po vyřazení mezipaměti) může stále dojít generování plán provádění identické dotazu z jedné původně pozorováno.  Pokud jsou však změny plánu ve srovnání s předchozí nebo původní plán, tady jsou nejčastěji používané vysvětlení pro proč změnit plán provádění dotazu:
+Opětovná kompilace (nebo nová kompilace po vyřazení mezipaměti) může i nadále způsobit generování identického plánu spuštění dotazu od původně zjištěného.  Pokud jsou však změny v plánu porovnány s předchozím nebo původním plánem, jsou zde nejběžnější vysvětlení, proč se plán spouštění dotazů změnil:
 
-- **Změnit návrh fyzické**. Například nové indexy vytvořit, je více optimální využití nového indexu, než datová struktura původně vybrali pro první verzi efektivněji krytí, které požadavky dotazu může být použita na nové kompilace, pokud se rozhodne optimalizátoru dotazů provádění dotazu.  Všechny fyzické změny odkazované objekty nemusí se nová možnost plánu v době kompilace.
+- **Fyzický návrh se změnil**. Například byly vytvořeny nové indexy, které efektivněji pokrývají požadavky dotazu. Ty mohou být použity na novou kompilaci, pokud se Optimalizátor dotazů rozhodne použít tento nový index, než aby používal datovou strukturu původně vybranou pro první verzi provádění dotazů.  Všechny fyzické změny v odkazovaných objektech mohou mít za následek v době kompilace nový plán.
 
-- **Server prostředků rozdíly**. Ve scénáři, kde se liší jeden plán systému"A" a "systém B" – dostupnost prostředků, jako je počet dostupných procesorů mohou mít vliv na jaký plán získá vygenerována.  Pokud jeden systém má vyšší počet procesorů, například může být zvolen paralelním plánu. 
+- **Rozdíly prostředků serveru**. V situaci, kdy se jeden plán liší od "System A" oproti systému B "– dostupnost prostředků, například počet dostupných procesorů, může ovlivnit, který plán se vygeneruje.  Pokud má například jeden systém větší počet procesorů, můžete vybrat paralelní plán. 
 
-- **Různé statistické údaje**. Statistické údaje přidružené k odkazované objekty změnit nebo se významně liší od původního systému statistiky.  Pokud změníte statistiky a rekompilujte dochází, optimalizátoru dotazů použije statistiky od tohoto konkrétního bodu v čase. Revidované statistiky může mít distribuce výrazně odlišné dat a frekvencí, které nejsou písmena v původní kompilace.  Tyto změny se používají k odhadu kardinality odhadu (počet řádků očekávané výsledky pomocí stromu dotazu logický tok).  Změny odhadů mohutnost může vést nám k výběru různých fyzických operátory a související objednávky z operací.  I menší změny statistiky může způsobit plán provádění změny dotazu.
+- **Různé statistiky**. Statistika přidružená k odkazovaným objektům se změnila nebo se podstatně liší od statistik původních systémů.  Pokud dojde ke změně statistiky a k rekompilaci, bude Optimalizátor dotazů používat statistické údaje k určitému bodu v čase. Revidované statistiky mohou mít značně odlišné distribuce a četnosti dat, které nebyly v původní kompilaci.  Tyto změny se používají k odhadování odhadů mohutnosti (počet řádků očekávaných při toku prostřednictvím logického stromu dotazů).  Změny odhadů mohutnosti nám můžou vést k volbě různých fyzických operátorů a přidružených operací.  I drobné změny statistik můžou mít za následek změnu plánu spuštění dotazu.
 
-- **Databáze byl změněn úroveň nebo kardinalitu estimator verze kompatibility**.  Změny na úrovni kompatibility databáze můžete povolit nové strategie a funkce, které může mít za následek plán spuštění různých dotazů.  Zakázání nebo povolení příznak trasování 4199 nebo změnu stavu databáze s vymezeným oborem konfiguraci, kterou může také ovlivnit QUERY_OPTIMIZER_HOTFIXES dotazování nad rámec úroveň kompatibility databáze volby plánu spuštění v době kompilace.  Příznaky trasování 9481 (starší verze platnost CE) a 2312 (vynutit výchozí CE) jsou taky naplánovat by to mělo dopad. 
+- **Změnila se úroveň kompatibility databáze nebo verze Estimator**.  Změny úrovně kompatibility databáze mohou umožňovat nové strategie a funkce, které mohou mít za následek jiný plán spouštění dotazů.  Kromě úrovně kompatibility databáze může být zakázáním nebo povolením příznaku trasování 4199 nebo změnou stavu databáze QUERY_OPTIMIZER_HOTFIXES s rozsahem, který je v době kompilace ovlivněn.  Naplánování ovlivňují také příznaky trasování 9481 (vynutit starší verze CE) a 2312 (vynutit výchozí CE). 
 
-### <a name="resolve-problem-queries-or-provide-more-resources"></a>Vyřešte problém dotazy nebo Poskytněte další zdroje informací
+### <a name="resolve-problem-queries-or-provide-more-resources"></a>Řešení problémů s dotazy nebo poskytnutí dalších prostředků
 
-Jakmile identifikujete problém, můžete ladit problémových dotazů nebo upgradovat výpočetního prostředí nebo ke zvýšení kapacity databáze Azure SQL a chránit před požadavky na procesor úroveň služby. Informace o škálování prostředků pro izolované databáze, najdete v části [škálování izolované databáze prostředků ve službě Azure SQL Database](sql-database-single-database-scale.md) a škálování prostředků pro elastické fondy, najdete v části [škálování elastického fondu prostředků ve službě Azure SQL Databáze](sql-database-elastic-pool-scale.md). Informace o vertikálním navýšení managed instance najdete v tématu [omezení prostředků na úrovni Instance](sql-database-managed-instance-resource-limits.md#instance-level-resource-limits).
+Po vyřešení problému můžete buď vyladit dotazy na problém nebo upgradovat výpočetní velikost nebo úroveň služby, abyste zvýšili kapacitu vaší databáze SQL Azure, aby se zvýšila nároky na procesor. Informace o škálování prostředků pro izolované databáze najdete v tématu škálování prostředků [jedné databáze v Azure SQL Database](sql-database-single-database-scale.md) a pro škálování prostředků pro elastické fondy najdete v tématu [škálování prostředků elastického fondu v Azure SQL Database](sql-database-elastic-pool-scale.md). Informace o škálování spravované instance najdete v tématu [omezení prostředků na úrovni instance](sql-database-managed-instance-resource-limits.md#instance-level-resource-limits).
 
-### <a name="determine-if-running-issues-due-to-increase-workload-volume"></a>Určí, zda je spuštěna problémy z důvodu zvýšení zatížení svazku
+### <a name="determine-if-running-issues-due-to-increase-workload-volume"></a>Určení, jestli se spouští problémy kvůli zvýšení objemu úloh
 
-Pro zvýšení využití procesoru může účet zvýšení provozu aplikace a úlohy, ale musí být pozor, abyste správně diagnostiku tohoto problému. V případě vysoké využití procesoru v odpovězte na tyto otázky k určení, zda skutečně zvýšení využití procesoru je z důvodu změny hlasitosti úlohy:
+Zvýšení provozu a zatížení aplikací může mít za následek zvýšení využití procesoru, ale při správné diagnostice tohoto problému musíte být opatrní. Ve scénáři s vysokým využitím procesoru odpovězte na tyto otázky, abyste zjistili, jestli je z důvodu změn svazku zatížení skutečně zvýšení výkonu procesoru:
 
-1. Jsou dotazy z aplikace příčinu vysoké využití procesoru problém?
-2. Pro začátek využívání procesoru dotazy (které je možné identifikovat):
+1. Jsou dotazy z aplikace příčinou potíží s vysokým využitím procesoru?
+2. Pro nejčastější dotazy náročné na procesor (které je možné identifikovat):
 
-   - Určete, pokud došlo k několika plánům spuštění přidružené stejný dotaz. Pokud ano, zjistěte, proč.
-   - Pro dotazy s stejný plán spuštění určete, pokud spuštění s úspěšností byly konzistentní a zvýšení počtu spuštění. Pokud ano, jsou problémy s výkonem pravděpodobně z důvodu zvýšení zatížení.
+   - Určete, zda bylo ke stejnému dotazu přidruženo více plánů spuštění. Pokud ano, určete, proč.
+   - U dotazů se stejným plánem spuštění určete, zda byly časy spuštění konzistentní a zda byl zvýšen počet spuštění. Pokud ano, dochází k pravděpodobným problémům s výkonem kvůli nárůstu zatížení.
 
-Stručně řečeno, pokud plán provádění dotazu neměli spouštět jinak, ale využití procesoru zvýšit spolu s počtem provádění, pravděpodobně nastane problém s úlohy související s zvýšení výkonu.
+V případě, že se plán spouštění dotazů nespustí jinak, ale využití procesoru se zvýšilo společně s počtem spuštění, je pravděpodobný problém s výkonem související s zvýšením zatížení.
 
-Není vždy jednoduché k závěru, že dojde ke změně svazku zatížení, který má zásadní vliv na využití procesoru problém.   Faktory ke zvážení: 
+Nemusíte se vždycky snadno domístit, když se změní hlasitost zatížení, která je schopná vyřešit problém s PROCESORem.   Faktory, které je potřeba vzít v úvahu: 
 
-- **Změnit využití prostředků**
+- **Využití prostředků se změnilo.**
 
-  Zvažte například scénář, ve kterém procesoru zvýšit na hodnotu 80 % delší dobu.  Využití procesoru samostatně neznamená svazku úlohy změnit.  Dotaz na plán provádění, že regrese a rozdělení změny dat můžete přispívat také další využití prostředků i v případě, že aplikace provádí stejné úlohy přesné.
+  Představte si třeba situaci, kdy se procesor zvýšil na 80% po delší dobu.  Samotný využití procesoru neznamená, že se změnil objem úloh.  Regrese plánu provádění dotazů a změny distribuce dat můžou přispět i k využívání prostředků i v případě, že aplikace spouští stejnou konkrétní úlohu.
 
-- **Nový dotaz objevil**
+- **Objevil se nový dotaz**
 
-   Aplikace může to podpořit nové sady dotazů v různých časech.
+   Aplikace může v různých časech zařídit novou sadu dotazů.
 
-- **Počet požadavků, které zvýší nebo sníží**
+- **Počet požadavků, které se zvýšily nebo snížily**
 
-   Tento scénář je Nejobvyklejšími měr pracovní vytížení. Počet dotazů nebude vždy odpovídat další využití prostředků. Tato metrika je však stále významné signál za předpokladu, že další faktory jsou beze změny.
+   Tento scénář představuje nejobvyklejší míru úlohy. Počet dotazů nemusí vždy odpovídat více využití prostředků. Tato metrika je však stále významným signálem, což předpokládá, že jiné faktory nejsou změněny.
 
-## <a name="waiting-related-performance-issues"></a>Problémy s výkonem souvisejících s čekání
+## <a name="waiting-related-performance-issues"></a>Čekající problémy s výkonem
 
-Jakmile jste si jisti, že nejsou připojena vysoké využití procesoru, problémy s výkonem souvisejících s spuštění, máte problém s výkonem souvisejících s čekání. Konkrétně vaše prostředky procesoru nejsou používány efektivně protože procesoru čeká na jiný prostředek. V takovém případě bude dalším krokem je identifikovat, co čeká prostředky procesoru. Nejběžnější metody pro zobrazení na začátek čekání kategorií typů:
+Až se rozhodnete, že nejste s vysokými nároky na výkon procesoru, dochází k problémům s výkonem, ke kterým dochází. Prostředky vašeho procesoru se totiž nepoužívají efektivně, protože procesor čeká na jiný prostředek. V tomto případě je dalším krokem určení toho, co vaše prostředky CPU čekají. Nejběžnější metody pro zobrazení hlavních kategorií typu čekání:
 
-- [Query Store](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store) poskytuje statistiky čekání každý dotaz v čase. Na Query Store čekání typy jsou sloučeny do kategorií čekání. Je k dispozici v mapování kategorií wait čekat typy [sys.query_store_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-query-store-wait-stats-transact-sql#wait-categories-mapping-table).
-- [Sys.dm_db_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-wait-stats-azure-sql-database) vrátí informace o všech čeká tak vlákna, která provedených během operace. Toto souhrnné zobrazení můžete použít k diagnostice problémů s výkonem s Azure SQL Database a také s konkrétní dotazy a dávek.
-- [Sys.dm_os_waiting_tasks](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-os-waiting-tasks-transact-sql) vrátí informace o frontě čekání úlohy, které čekají na některých prostředků.
+- [Úložiště dotazů](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store) poskytuje statistické údaje o čekání na dotaz v průběhu času. V úložišti dotazů jsou typy čekání kombinovány do kategorií čekání. Mapování kategorií čekání na typy čekání je k dispozici v [tabulce sys. query_store_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-query-store-wait-stats-transact-sql#wait-categories-mapping-table).
+- [Sys. DM _db_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-wait-stats-azure-sql-database) vrací informace o všech čekáních zjištěných vlákny, které byly během operace provedeny. Pomocí tohoto agregovaného zobrazení můžete diagnostikovat problémy s výkonem Azure SQL Database a také s konkrétními dotazy a dávkami.
+- [Sys. DM _os_waiting_tasks](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-os-waiting-tasks-transact-sql) vrací informace o frontě čekání pro úlohy, které čekají na určitý prostředek.
 
-Ve scénářích vysoké využití procesoru Query Store a statistiky čekání nemusí pokaždé odpovídat využití procesoru pro dvě z těchto důvodů:
+Ve scénářích s vysokým využitím procesoru neodráží Statistika úložiště dotazů a čekání vždy využití CPU z těchto dvou důvodů:
 
-- Využívání dotazy vysoké využití procesoru může být stále provádí a dotazy nebylo dokončeno.
-- Vysoké využití procesoru náročné dotazy byly spuštěny při došlo k chybě převzetí služeb při selhání
+- Je možné, že se pořád spouštějí dotazy s vysokým využitím procesoru a dotazy se nedokončily.
+- Dotazy s vysokým využitím procesoru byly spuštěny, když došlo k převzetí služeb při selhání
 
-Query Store a zobrazení dynamické správy sledování statistiky čekání pouze zobrazit výsledky pro dotazy na úspěšně dokončené a časového limitu a nezobrazují data pro aktuálně spouští příkazy (až do dokončení). Zobrazení dynamické správy [sys.dm_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) umožňuje sledovat právě spouští dotazy a přidružené pracovní doby.
+Úložiště dotazů a statistické údaje čekání – sledování zobrazení dynamické správy zobrazuje jenom výsledky pro úspěšně dokončené a časované dotazy a nezobrazují data pro aktuálně zpracovávané příkazy (až do jejich dokončení). Zobrazení dynamické správy [Sys. DM _exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) umožňuje sledovat aktuálně spuštěné dotazy a související čas pracovního procesu.
 
-Jak je znázorněno v předchozí tabulce, jsou nejčastěji používané čeká:
+Jak je znázorněno v předchozím grafu, nejběžnější čekání:
 
 - Zámky (blokování)
-- VSTUPNĚ-VÝSTUPNÍCH OPERACÍ
-- `tempdb`-týkající se sporů
-- Paměť udělení čeká
+- I/O
+- `tempdb`-související spory
+- Přidělení paměti čeká
 
 > [!IMPORTANT]
-> Sada dotazů T-SQL pomocí těchto zobrazení dynamické správy k řešení těchto problémů souvisejících s čekání najdete tady:
+> Chcete-li vyřešit tyto dotazy T-SQL pomocí těchto zobrazení dynamické správy k řešení těchto problémů souvisejících s čekáním, přečtěte si:
 >
-> - [Identifikace problémů s výkonem vstupně-výstupních operací](sql-database-monitoring-with-dmvs.md#identify-io-performance-issues)
-> - [Identifikujte `tempdb` problémy s výkonem](sql-database-monitoring-with-dmvs.md#identify-io-performance-issues)
-> - [Identifikujte paměti udělení čeká](sql-database-monitoring-with-dmvs.md#identify-memory-grant-wait-performance-issues)
-> - [TigerToolbox – čeká a zámky](https://github.com/Microsoft/tigertoolbox/tree/master/Waits-and-Latches)
+> - [Identifikace problémů s výkonem v/v](sql-database-monitoring-with-dmvs.md#identify-io-performance-issues)
+> - [Identifikace `tempdb` problémů s výkonem](sql-database-monitoring-with-dmvs.md#identify-io-performance-issues)
+> - [Identifikace čekání na udělení paměti](sql-database-monitoring-with-dmvs.md#identify-memory-grant-wait-performance-issues)
+> - [TigerToolbox – čekání a zámky](https://github.com/Microsoft/tigertoolbox/tree/master/Waits-and-Latches)
 > - [TigerToolbox - usp_whatsup](https://github.com/Microsoft/tigertoolbox/tree/master/usp_WhatsUp)
 
-## <a name="improving-database-performance-with-more-resources"></a>Zlepšení výkonu databáze s více prostředky
+## <a name="improving-database-performance-with-more-resources"></a>Zvýšení výkonu databáze pomocí dalších prostředků
 
-Nakonec pokud nebyly nalezeny žádné užitečné položky, které může zlepšit výkon vaší databáze, můžete změnit množství prostředků, které jsou k dispozici ve službě Azure SQL Database. Můžete přiřadit více prostředků tak, že změníte [jednotek DTU úrovně](sql-database-service-tiers-dtu.md) izolované databáze nebo zvýšení Edtu elastického fondu v každém okamžiku. Případně pokud používáte [nákupní model založený na virtuálních jádrech](sql-database-service-tiers-vcore.md), můžete změnit úroveň služby nebo zvýšit prostředky přidělené k vaší databázi.
+Nakonec, pokud nejsou k dispozici žádné položky, které by mohly zvýšit výkon vaší databáze, můžete změnit množství prostředků, které jsou k dispozici v Azure SQL Database. Další prostředky můžete přiřadit změnou [úrovně služby DTU](sql-database-service-tiers-dtu.md) v izolované databázi nebo v jakémkoli okamžiku zvýšit eDTU elastického fondu. Případně, pokud používáte [nákupní model založený na Vcore](sql-database-service-tiers-vcore.md), můžete změnit buď úroveň služby, nebo zvýšit prostředky přidělené vaší databázi.
 
-1. Pro izolované databáze můžete [změna úrovní služeb](sql-database-single-database-scale.md) nebo [výpočetní prostředky](sql-database-single-database-scale.md) na vyžádání ke zlepšení výkonu databáze.
-2. Pro více databází, zvažte použití [elastické fondy](sql-database-elastic-pool-guidance.md) automaticky škálovat prostředky.
+1. U izolovaných databází můžete [měnit úrovně služeb](sql-database-single-database-scale.md) nebo [výpočetní prostředky](sql-database-single-database-scale.md) na vyžádání, aby se zlepšil výkon databáze.
+2. U více databází zvažte možnost použití [elastických fondů](sql-database-elastic-pool-guidance.md) k automatickému škálování prostředků.
 
-## <a name="tune-and-refactor-application-or-database-code"></a>Ladění a Refaktorujte aplikace nebo kódu databáze
+## <a name="tune-and-refactor-application-or-database-code"></a>Ladit a Refaktorovat kód aplikace nebo databáze
 
-Můžete změnit kód aplikace více optimálně použít databázi, změňte indexy, vynutit plány nebo používání pomocné parametry ručně přizpůsobit databáze vaší úloze. Najdete některé pokyny a tipy pro ruční optimalizace a přepsáním kódu v [tématu pokyny k výkonu](sql-database-performance-guidance.md) článku.
+Kód aplikace můžete změnit tak, aby lépe používal databázi, změnili indexy, vynutila plány nebo používali tipy k ručnímu přizpůsobení databáze na vaše zatížení. Seznamte se s pokyny a tipy k ručnímu vyladění a psaní kódu v [tématu Průvodce výkonem](sql-database-performance-guidance.md) .
 
 ## <a name="next-steps"></a>Další postup
 
-- Povolení automatického ladění ve službě Azure SQL Database a nechat funkce automatického ladění plně spravovat vaše úlohy najdete v tématu [povolení automatického ladění](sql-database-automatic-tuning-enable.md).
-- Chcete-li použít ruční ladění, můžete zkontrolovat [doporučení na webu Azure portal pro optimalizaci](sql-database-advisor-portal.md) a aplikovat ručně ty, které zlepšují výkon vašich dotazů.
-- Změnit prostředky, které jsou k dispozici v databázi tak, že změníte [úrovně služby Azure SQL Database](sql-database-performance-guidance.md)
+- Pokud chcete povolit automatické ladění v Azure SQL Database a nechat funkci automatického ladění plně spravovat vaše zatížení, přečtěte si téma [Povolení automatického ladění](sql-database-automatic-tuning-enable.md).
+- Pokud chcete použít ruční ladění, můžete si projít [doporučení pro ladění v Azure Portal](sql-database-advisor-portal.md) a ručně použít ty, které zlepšují výkon dotazů.
+- Změna prostředků, které jsou k dispozici v databázi, změnou [Azure SQL Database úrovní služeb](sql-database-performance-guidance.md)

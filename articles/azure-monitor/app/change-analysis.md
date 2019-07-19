@@ -1,6 +1,6 @@
 ---
-title: Použít změnu analýza aplikace ve službě Azure Monitor k vyhledání problémů s webovou aplikací | Dokumentace Microsoftu
-description: Použijte změnu analýzy aplikace ve službě Azure Monitor k řešení potíží aplikace na weby ve službě Azure App Service.
+title: Použití analýzy změn aplikace v Azure Monitor k nalezení problémů s webovými aplikacemi | Microsoft Docs
+description: Pomocí analýzy změn aplikace v Azure Monitor můžete řešit problémy s aplikacemi na živých webech na Azure App Service.
 services: application-insights
 author: cawams
 manager: carmonm
@@ -10,91 +10,91 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/07/2019
 ms.author: cawa
-ms.openlocfilehash: 45df8f9e57223ea60a11c6af2187d362184cae2b
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 3efa26a1eaea8f522d9717efb0de0ec8e1682e0e
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67443348"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67875114"
 ---
-# <a name="use-application-change-analysis-preview-in-azure-monitor"></a>Pomocí analýzy změny aplikace (preview) ve službě Azure Monitor
+# <a name="use-application-change-analysis-preview-in-azure-monitor"></a>Použití analýzy změn aplikace (Preview) v Azure Monitor
 
-Pokud dojde k problému živého webu nebo kvůli výpadku, k rychlému určení hlavní příčinou je velmi důležité. Standardní řešení pro monitorování může vás upozorní na problém. Může dokonce označení, která komponenta selhává. Ale tato výstraha nebude vysvětlují vždy okamžitě příčinu jeho selhání. Víte, že se váš web pracoval pěti minutami, a teď je poškozen. Co se změnilo v posledních pět minut? Toto je dotaz, který změnu analýza aplikace je navržená k zodpovězení ve službě Azure Monitor.
+Když dojde k problému nebo výpadku živého webu, rychle určit hlavní příčinu je kritická. Standardní řešení monitorování vás můžou upozornit na problém. Můžou dokonce označovat, která součást selhává. Tato výstraha ale nebude vždycky okamžitě vysvětlit příčinu selhání. Věděli jste, že váš web pracoval před pěti minutami a teď je porušený. Co se změnilo za posledních pět minut? Jedná se o otázku, kterou analýza změn aplikace je navržená tak, aby odpovídala v Azure Monitor.
 
-Stavíme na sílu [grafu prostředků Azure](https://docs.microsoft.com/azure/governance/resource-graph/overview), změna analýzy poskytuje přehledy o změny aplikace Azure ke zvýšení observability a snížení MTTR (průměrný čas potřebný k opravě).
+Při sestavování výkonného [grafu prostředků Azure](https://docs.microsoft.com/azure/governance/resource-graph/overview)vám analýza změn poskytuje přehledy o změnách aplikací Azure, aby se zvýšila pozorování a snižovala MTTR (což znamená, jak dlouho se má opravit).
 
 > [!IMPORTANT]
-> Analýza změn je aktuálně ve verzi preview. Tato verze preview neposkytujeme bez smlouvu o úrovni služeb. Tato verze se nedoporučuje pro produkční úlohy. Některé funkce nemusí být podporován nebo můžou mít omezené možnosti. Další informace najdete v tématu [dodatečnými podmínkami použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Změna analýzy je aktuálně ve verzi Preview. Tato verze Preview se poskytuje bez smlouvy o úrovni služeb. Tato verze se nedoporučuje pro produkční úlohy. Některé funkce nemusí být podporované nebo můžou mít omezené možnosti. Další informace najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)verze Preview.
 
 ## <a name="overview"></a>Přehled
 
-Změna analýzy detekuje různé typy změn z vrstvy infrastruktury až po nasazení aplikace. Zprostředkovatel prostředků Azure na úrovni předplatného, který kontroluje změn prostředků v předplatném je. Změna analýzy poskytuje data pro různé diagnostické nástroje, které pomáhají uživatelům pomoct pochopit, jaké změny může způsobit problémy.
+Změna analýzy detekuje různé typy změn, od vrstvy infrastruktury po nasazení aplikace. Jedná se o poskytovatele prostředků Azure na úrovni předplatného, který kontroluje změny prostředků v předplatném. Změna analýz poskytuje data různých diagnostických nástrojů, které uživatelům pomůžou pochopit, jaké změny mohly způsobovat problémy.
 
-Následující diagram znázorňuje architekturu změnu analýzy:
+Následující diagram znázorňuje architekturu analýzy změn:
 
-![Diagram architektury toho, jak změnit analýzy získá změny data a poskytuje klienta nástroje](./media/change-analysis/overview.png)
+![Diagram architektury, jak analýza změn získává data změny a poskytuje je klientským nástrojům](./media/change-analysis/overview.png)
 
-Aktuálně integrovaná analýza změnit **diagnostikovat a řešit problémy** prostředí ve službě App Service webovou aplikaci. Povolení detekce změn a zobrazíte změny ve webové aplikaci, najdete v článku *změnit analýzy pro funkci Web Apps* části dále v tomto článku.
+V současné době se analýza změn integruje do **diagnostiky a řešení problémů** v App Service webové aplikaci. Pokud chcete povolit detekci změn a zobrazit změny ve webové aplikaci, přečtěte si část *Analýza změn pro Web Apps funkce* dále v tomto článku.
 
-### <a name="azure-resource-manager-deployment-changes"></a>Změny nasazení Azure Resource Manageru
+### <a name="azure-resource-manager-deployment-changes"></a>Změny nasazení Azure Resource Manager
 
-Pomocí [Azure Graph prostředků](https://docs.microsoft.com/azure/governance/resource-graph/overview), změna analýzy obsahuje Historický záznam o tom, jak Azure prostředky, které jsou hostiteli aplikace mění v průběhu času. Může zjistit změny analýzy, například změny v nastavení SSL, spravované identity a pravidla konfigurace protokolu IP. Takže pokud do webové aplikace se přidá značka, změna se projeví změna analýzy. Tyto informace jsou k dispozici za předpokladu, `Microsoft.ChangeAnalysis` je povolen zprostředkovatel prostředků v předplatném Azure.
+Pomocí [Azure Resource graphu](https://docs.microsoft.com/azure/governance/resource-graph/overview)vám analýza změn poskytuje historický záznam o tom, jak se prostředky Azure, které hostují vaši aplikaci, v průběhu času změnily. Změna analýz může například rozpoznat změny v pravidlech konfigurace protokolu IP, spravovaných identit a nastavení SSL. Takže pokud je do webové aplikace přidána značka, změny se projeví v analýze. Tyto informace jsou k dispozici, pokud `Microsoft.ChangeAnalysis` je poskytovatel prostředků povolený v předplatném Azure.
 
-### <a name="changes-in-web-app-deployment-and-configuration"></a>Změny v nasazení webové aplikace a konfigurace
+### <a name="changes-in-web-app-deployment-and-configuration"></a>Změny v nasazení a konfiguraci webové aplikace
 
-Změna analýzy zaznamenat stav nasazení a konfiguraci aplikace každé 4 hodiny. Může zjistit, například změny v proměnných prostředí aplikace. Nástroj vypočítá rozdíly a prezentuje, co se změnilo. Na rozdíl od změny Resource Manageru nemusí být k dispozici okamžitě v nástroji pro informace o změně pro nasazení kódu. Chcete-li zobrazit nejnovější změny v analýze změnit, vyberte **kontrola změní nyní**.
+Změna analýz zachytí stav nasazení a konfigurace aplikace každé 4 hodiny. Může zjistit například změny v proměnných prostředí aplikace. Nástroj počítá rozdíly a prezentuje, co se změnilo. Na rozdíl od Správce prostředků změn nemusí být informace o změně nasazení kódu v nástroji k dispozici okamžitě. Chcete-li zobrazit nejnovější změny v rámci analýzy změn, vyberte **nyní možnost Prohledat změny**.
 
-![Snímek obrazovky tlačítka "Kontrola změní teď"](./media/change-analysis/scan-changes.png)
+![Snímek obrazovky s tlačítkem "Vyhledat změny nyní"](./media/change-analysis/scan-changes.png)
 
-### <a name="dependency-changes"></a>Změny závislostí
+### <a name="dependency-changes"></a>Změny závislosti
 
-Změny závislosti prostředků může také způsobit problémy ve webové aplikaci. Například pokud webová aplikace volá do mezipaměti redis cache, Redis cache skladové položky mohou ovlivnit výkonu webových aplikací. Zjišťovat změny v závislosti, ověří změnu analýzy záznam DNS pro webovou aplikaci. Tímto způsobem identifikuje změny ve všech komponent aplikace, které by mohly způsobit problémy.
+Změny závislostí prostředků mohou také způsobovat problémy ve webové aplikaci. Například pokud webová aplikace volá do mezipaměti Redis, může být SKU Redis Cache ovlivněn výkon webové aplikace. Pokud chcete zjistit změny v závislostech, změňte analýzu na záznam DNS webové aplikace. Tímto způsobem identifikuje změny ve všech součástech aplikace, které by mohly způsobovat problémy.
 
-## <a name="change-analysis-for-the-web-apps-feature"></a>Pro funkci Web Apps změňte analýzy
+## <a name="change-analysis-for-the-web-apps-feature"></a>Změna analýzy pro funkci Web Apps
 
-Ve službě Azure Monitor, změna analýzy aktuálně součástí samoobslužný **diagnostikovat a řešit problémy** prostředí. Přístup k této zkušenosti z **přehled** stránky aplikace služby App Service.
+V Azure Monitor je analýza změn v současnosti integrovaná v rámci samoobslužné **diagnostiky a řešení problémů** . K tomuto prostředí se dostanete ze stránky **Přehled** vaší aplikace App Service.
 
-![Snímek obrazovky tlačítka "Přehled" a "diagnostikovat a řešit problémy" tlačítko](./media/change-analysis/change-analysis.png)
+![Snímek obrazovky s tlačítkem "Přehled" a "diagnostikovat a řešit problémy"](./media/change-analysis/change-analysis.png)
 
-### <a name="enable-change-analysis-in-the-diagnose-and-solve-problems-tool"></a>Povolit analýzu změn v diagnostikovat a řešit problémy nástroje
+### <a name="enable-change-analysis-in-the-diagnose-and-solve-problems-tool"></a>Povolení analýzy změn v nástroji Diagnostika a řešení problémů
 
 1. Vyberte **dostupnost a výkon**.
 
-    ![Snímek obrazovky "Dostupnosti a výkonu" možnosti Poradce při potížích](./media/change-analysis/availability-and-performance.png)
+    ![Snímek možností Poradce při potížích s dostupností a výkonem](./media/change-analysis/availability-and-performance.png)
 
-1. Vyberte **změny aplikace**. Ne, tato funkce je také dostupná v **aplikace spadne**.
+1. Vyberte **změny aplikace**. Tato funkce není k dispozici také při **selhání aplikace**.
 
-   ![Snímek obrazovky tlačítka pro "Aplikaci dojde k chybě"](./media/change-analysis/application-changes.png)
+   ![Snímek obrazovky s tlačítkem pro zhroucení aplikace](./media/change-analysis/application-changes.png)
 
-1. Chcete-li změnit analýzy, vyberte **povolit teď**.
+1. Pokud chcete povolit analýzu změn, vyberte **Povolit nyní**.
 
-   ![Snímek obrazovky s možností "Aplikace dojde k chybě"](./media/change-analysis/enable-changeanalysis.png)
+   ![Snímek obrazovky s možnostmi zhroucení aplikací](./media/change-analysis/enable-changeanalysis.png)
 
-1. Zapnout **změnu analýzy** a vyberte **Uložit**.
+1. Zapněte **analýzu změn** a vyberte **Uložit**.
 
-    ![Snímek obrazovky uživatelského rozhraní "Povolit analýzu změnu"](./media/change-analysis/change-analysis-on.png)
-
-
-1. Pro přístup k Analysis změnit, vyberte **diagnostikovat a řešit problémy** > **dostupnost a výkon** > **aplikace spadne**. Zobrazí se graf, který obsahuje souhrn typů změn v čase spolu s podrobnostmi o těchto změnách:
-
-     ![Snímek obrazovky změnit zobrazení rozdílu](./media/change-analysis/change-view.png)
+    ![Snímek obrazovky s uživatelským rozhraním povolit analýzu změn](./media/change-analysis/change-analysis-on.png)
 
 
-### <a name="enable-change-analysis-at-scale"></a>Povolit změnu analýzy ve velkém měřítku
+1. Chcete-li získat přístup k analýze změn, vyberte možnost **Diagnostika a řešení problémů s** > **dostupností a výkonem** > **aplikace**výkonu. Zobrazí se graf, který shrnuje typ změn v průběhu času spolu s podrobnostmi o těchto změnách:
 
-Pokud vaše předplatné zahrnuje mnoho webových aplikací, povolení služby na úrovni webové aplikace by být neefektivní. V takovém případě postupujte podle těchto pokynů alternativní.
+     ![Snímek obrazovky se zobrazením rozdílů změn](./media/change-analysis/change-view.png)
 
-### <a name="register-the-change-analysis-resource-provider-for-your-subscription"></a>Registrace poskytovatele prostředků Analysis změnu pro vaše předplatné
 
-1. Zaregistrujte příznak funkce změnit analýzu (preview). Protože příznak funkce je ve verzi preview, budete muset zaregistrovat ho tak, aby viditelné pro vaše předplatné:
+### <a name="enable-change-analysis-at-scale"></a>Povolit škálovatelnou analýzu změn
+
+Pokud vaše předplatné obsahuje mnoho webových aplikací, povolení služby na úrovni webové aplikace bude neefektivní. V takovém případě postupujte podle těchto alternativních pokynů.
+
+### <a name="register-the-change-analysis-resource-provider-for-your-subscription"></a>Zaregistrujte poskytovatele prostředků analýzy změn pro vaše předplatné.
+
+1. Zaregistrujte příznak funkce změny analýzy (Preview). Vzhledem k tomu, že příznak funkce je ve verzi Preview, musíte ho zaregistrovat, aby bylo možné ho zviditelnit v rámci vašeho předplatného:
 
    1. Otevřete službu [Azure Cloud Shell](https://azure.microsoft.com/features/cloud-shell/).
 
-      ![Snímek obrazovky změnu Cloud Shell](./media/change-analysis/cloud-shell.png)
+      ![Snímek obrazovky se změnou Cloud Shell](./media/change-analysis/cloud-shell.png)
 
-   1. Změnit typ prostředí, který má **Powershellu**.
+   1. Změňte typ prostředí na **PowerShell**.
 
-      ![Snímek obrazovky změnu Cloud Shell](./media/change-analysis/choose-powershell.png)
+      ![Snímek obrazovky se změnou Cloud Shell](./media/change-analysis/choose-powershell.png)
 
    1. Spusťte následující příkaz PowerShellu:
 
@@ -104,17 +104,17 @@ Pokud vaše předplatné zahrnuje mnoho webových aplikací, povolení služby n
         Register-AzureRmProviderFeature -FeatureName PreviewAccess -ProviderNamespace Microsoft.ChangeAnalysis #Register feature flag
         ```
 
-1. Registrace poskytovatele prostředků Analysis změnu pro předplatné.
+1. Zaregistrujte poskytovatele prostředků analýzy změn pro toto předplatné.
 
-   - Přejděte na **předplatná**a vyberte předplatné, které chcete povolit ve službě změnit. Vyberte poskytovatele prostředků:
+   - Přejděte na **odběry**a vyberte předplatné, které chcete ve službě Change Service povolit. Pak vyberte poskytovatelé prostředků:
 
-        ![Snímek obrazovky ukazující, jak se zaregistrovat poskytovatele prostředků Analysis změn](./media/change-analysis/register-rp.png)
+        ![Snímek obrazovky s informacemi o tom, jak zaregistrovat poskytovatele prostředků pro změnu analýzy](./media/change-analysis/register-rp.png)
 
-       - Vyberte **Microsoft.ChangeAnalysis**. V horní části stránky vyberte **zaregistrovat**.
+       - Vyberte **Microsoft. ChangeAnalysis**. Pak v horní části stránky vyberte **Registrovat**.
 
-       - Po povolení poskytovatele prostředků, můžete nastavit značku skryté na webové aplikace ke zjištění změny na úrovni nasazení. Nastavit značku skryté, postupujte podle pokynů v části **se nepovedlo načíst informace změnit analýzy**.
+       - Jakmile je poskytovatel prostředků povolený, můžete na webové aplikaci nastavit skrytou značku a zjišťovat tak změny v úrovni nasazení. Chcete-li nastavit skrytou značku, postupujte podle pokynů v části **nelze načíst informace o analýze změn**.
 
-   - Alternativně můžete použít skript prostředí PowerShell se zaregistrovat poskytovatele prostředků:
+   - Případně můžete k registraci poskytovatele prostředků použít skript prostředí PowerShell:
 
         ```PowerShell
         Get-AzureRmResourceProvider -ListAvailable | Select-Object ProviderNamespace, RegistrationState #Check if RP is ready for registration
@@ -122,7 +122,7 @@ Pokud vaše předplatné zahrnuje mnoho webových aplikací, povolení služby n
         Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.ChangeAnalysis" #Register the Change Analysis RP
         ```
 
-        Jak nastavit skryté klíčové slovo ve webové aplikaci pomocí prostředí PowerShell, spusťte následující příkaz:
+        Pokud chcete použít PowerShell k nastavení skryté značky na webové aplikaci, spusťte následující příkaz:
 
         ```powershell
         $webapp=Get-AzWebApp -Name <name_of_your_webapp>
@@ -132,9 +132,10 @@ Pokud vaše předplatné zahrnuje mnoho webových aplikací, povolení služby n
         ```
 
      > [!NOTE]
-     > Poté, co přidáte značku skrytá, může stále muset počkat až 4 hodiny, než začnete, zobrazuje změny. Výsledky jsou zpožděna, protože změna analýzy prohledá webové aplikace pouze každé 4 hodiny. Plán 4hodinového omezení kontroly dopad na výkon.
+     > Po přidání skryté značky možná budete muset počkat až 4 hodiny, než začnete zobrazovat změny. Výsledky jsou zpožděny, protože analýza změn kontroluje webové aplikace pouze každé 4 hodiny. Plán na 4 hodiny omezí dopad kontroly na výkon.
 
 ## <a name="next-steps"></a>Další postup
 
-- Monitorování služby App Service efektivněji pomocí [povolení funkcí Application Insights](azure-web-apps.md) ve službě Azure Monitor.
-- Další informace o [Azure Graph prostředků](https://docs.microsoft.com/azure/governance/resource-graph/overview), což pomáhá power změnu analýzy.
+- Povolí Application Insights pro [aplikace Azure App Services](azure-web-apps.md).
+- Povolte Application Insights pro virtuální počítače [Azure a Azure Virtual Machine Scale set pro aplikace hostované službou IIS](azure-vm-vmss-apps.md).
+- Přečtěte si další informace o [Azure Resource graphu](https://docs.microsoft.com/azure/governance/resource-graph/overview), který pomáhá analyzovat změny napájení.

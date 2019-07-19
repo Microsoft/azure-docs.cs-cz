@@ -1,6 +1,6 @@
 ---
-title: Azure IoT Edge vývojového prostředí | Dokumentace Microsoftu
-description: Přečtěte si o podporovaných systémů a nástroje pro vývoj první strany, které vám pomůžou že vytvářet moduly IoT Edge
+title: Azure IoT Edge vývojové prostředí | Microsoft Docs
+description: Přečtěte si o podporovaných systémech a vývojářských nástrojích pro první stranu, které vám pomůžou vytvořit IoT Edge moduly.
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -8,117 +8,117 @@ ms.date: 01/04/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: a6fc2af0cbe770ee787da757966bbc1647717e5a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ddfa93328fb3533a937cc7f0d81482b66275faf3
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66302686"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67848950"
 ---
-# <a name="prepare-your-development-and-test-environment-for-iot-edge"></a>Připravte vývojové a testovací prostředí pro IoT Edge
+# <a name="prepare-your-development-and-test-environment-for-iot-edge"></a>Příprava vývojového a testovacího prostředí pro IoT Edge
 
-Azure IoT Edge přesouvá stávající obchodní logiky na zařízení provoz na hraničních zařízeních. Příprava vašich aplikací a úloh, aby se spouštěly jako [moduly IoT Edge](iot-edge-modules.md), budete muset sestavit jako kontejnery. Tento článek obsahuje pokyny k jeho konfigurace vývojového prostředí, takže můžete úspěšně vytvořit řešení IoT Edge. Jakmile budete mít nastavení vývojového prostředí, pak můžete získat informace tom, jak [vyvíjet vlastní moduly IoT Edge](module-development.md).
+Azure IoT Edge přesouvá stávající obchodní logiku do zařízení, která pracují na hraničních zařízeních. Chcete-li připravit aplikace a úlohy tak, aby běžely jako [IoT Edge moduly](iot-edge-modules.md), je nutné je vytvořit jako kontejnery. Tento článek poskytuje pokyny k tomu, jak nakonfigurovat vývojové prostředí, abyste mohli úspěšně vytvořit IoT Edge řešení. Po nastavení vývojového prostředí můžete zjistit, jak [vyvíjet vlastní moduly IoT Edge](module-development.md).
 
-V žádném řešení IoT Edge se minimálně dva počítače, které byste měli zvážit. Jedna je zařízení IoT Edge (nebo zařízení) samostatně, který spustí modul IoT Edge. Druhá je vývojovém počítači, který použijete k sestavení, testování a nasazení modulů. Tento článek se zaměřuje především na vývojovém počítači. Pro účely testování dvě počítače můžou být stejné. Můžete spustit IoT Edge na počítači pro vývoj a nasadíme do ní moduly.
+V jakémkoli řešení IoT Edge existují aspoň dva počítače, které je potřeba vzít v úvahu. Jedním z nich je IoT Edge zařízení (nebo zařízení), ve kterém se spouští modul IoT Edge. Druhá je vývojový počítač, který používáte k sestavování, testování a nasazování modulů. Tento článek se zaměřuje hlavně na vývojovém počítači. Pro účely testování můžou být tyto dva počítače stejné. Můžete spustit IoT Edge na svém vývojovém počítači a nasadit do něj moduly.
 
 ## <a name="operating-system"></a>Operační systém
 
-Azure IoT Edge běží na konkrétní sadu [podporované operační systémy](support.md). Při vývoji pro IoT Edge, můžete použít Většina operačních systémů, které lze spustit modul kontejneru. Modul kontejneru je požadavek na vývojovém počítači k vytvoření své moduly jako kontejnery a vložit je do registru kontejneru. 
+Azure IoT Edge běží na konkrétní sadě [podporovaných operačních systémů](support.md). Pro vývoj pro IoT Edge můžete použít většinu operačních systémů, které mohou spustit kontejnerový modul. Kontejnerový modul je požadavkem na vývojovém počítači pro sestavení modulů jako kontejnerů a jejich vložení do registru kontejneru. 
 
-Pokud vývojovém počítači nelze spustit Azure IoT Edge, pokračujte v tomto článku se dozvíte o [testovací nástroje](#testing-tools) , které vám pomohou testování a ladění místně. 
+Pokud váš vývojový počítač nemůže spustit Azure IoT Edge, pokračujte v tomto článku, abyste se seznámili s testovacími [nástroji](#testing-tools) , které vám pomůžou místní testování a ladění. 
 
-Operační systém ze svého vývojového počítače nemusí odpovídat operačnímu systému vašeho zařízení IoT Edge. Operační systém kontejneru však musí být konzistentní vzhledem k aplikacím mezi počítači pro vývoj a zařízení IoT Edge. Můžete například vývoj modulů na počítači s Windows a nasaďte je u zařízení s Linuxem. Počítače Windows potřebuje ke spuštění kontejnerů Linuxu vytvářet moduly pro Linux zařízení. 
+Operační systém vašeho vývojového počítače nemusí odpovídat operačnímu systému vašeho zařízení IoT Edge. Operační systém kontejneru ale musí být konzistentní mezi vývojovým počítačem a zařízením IoT Edge. Můžete například vyvíjet moduly na počítači s Windows a nasazovat je na zařízení se systémem Linux. Počítač s Windows potřebuje ke sestavení modulů pro zařízení se systémem Linux spustit kontejnery Linux. 
 
 ## <a name="container-engine"></a>Modul kontejneru
 
-Centrální konceptu IoT Edge je, že můžete logiky podnikání a cloudu vzdáleně nasadit do zařízení balení do kontejnerů. K vytvoření kontejnerů, musíte modul kontejneru na vývojovém počítači. 
+Centrálním konceptem IoT Edge je, že můžete do zařízení vzdáleně nasadit svou obchodní a cloudovou logiku, a to tak, že je zabalíte do kontejnerů. Chcete-li vytvořit kontejnery, budete potřebovat kontejnerový modul na svém vývojovém počítači. 
 
-Modul kontejneru pouze podporované pro zařízení IoT Edge v produkčním prostředí je Moby. Žádné kompatibilní s Open Initiative kontejneru, jako je Docker, kontejner modulu je však schopna vytváření bitové kopie modulu IoT Edge. 
+Jediným podporovaným kontejnerovým modulem pro IoT Edgeá zařízení v produkčním prostředí je Moby. Nicméně jakýkoli modul kontejneru, který je kompatibilní s iniciativou Open container, jako je Docker, dokáže sestavovat image IoT Edge modulů. 
 
 ## <a name="development-tools"></a>Vývojářské nástroje
 
-Visual Studio a Visual Studio Code jsou doplňku rozšíření pro vývoj řešení IoT Edge. Tato rozšíření poskytují specifické pro jazyk šablony vám pomůže vytvořit a nasadit nové scénáře IoT Edge. Rozšíření Azure IoT Edge pro Visual Studio a Visual Studio Code nápovědy kód, vytvořit, nasadit a ladit řešení služby IoT Edge. Můžete vytvořit celé řešení IoT Edge, který obsahuje více modulů a rozšíření automaticky aktualizovat šablonu manifestu nasazení každé přidání nového modulu. Pomocí rozšíření můžete také spravovat zařízení IoT z v rámci sady Visual Studio nebo Visual Studio Code. Do zařízení nasadit moduly, monitorování stavu a zobrazení zprávy při jejich doručení na IoT Hub. Obě rozšíření použijte [IoT EdgeHub vývojového nástroje](#iot-edgehub-dev-tool) umožňující místní spouštění a ladění modulů na svém vývojovém počítači. 
+Visual Studio i Visual Studio Code mají rozšíření doplňku, které vám pomůžou vyvíjet IoT Edge řešení. Tato rozšíření poskytují šablony specifické pro jazyk, které vám pomůžou vytvářet a nasazovat nové scénáře IoT Edge. Rozšíření Azure IoT Edge pro Visual Studio a Visual Studio Code vám pomůžou při kódování, sestavování, nasazování a ladění řešení IoT Edge. Můžete vytvořit celé IoT Edge řešení, které obsahuje více modulů, a rozšíření automaticky aktualizuje šablonu manifestu nasazení se všemi novými moduly. S rozšířeními můžete také spravovat zařízení IoT z aplikace Visual Studio nebo Visual Studio Code. Nasaďte moduly do zařízení, Sledujte stav a zobrazte zprávy při jejich doručování IoT Hub. Obě rozšíření používají [Nástroj IoT EdgeHub dev](#iot-edgehub-dev-tool) , který umožňuje také místní spuštění a ladění modulů ve vývojovém počítači. 
 
-Pokud chcete vyvíjet pomocí jiné editory nebo z rozhraní příkazového řádku, nástroj pro vývojáře Azure IoT Edge poskytuje příkazy, takže můžete vyvíjet a testovat z příkazového řádku. Můžete vytvořit nový IoT Edge scénáře, vytváření bitové kopie modulu, spusťte moduly v simulátoru a sledování zpráv odeslaných do služby IoT Hub. 
+Pokud dáváte přednost vývoji s jinými editory nebo rozhraním příkazového řádku, poskytuje nástroj Azure IoT Edge dev příkazy, abyste mohli vyvíjet a testovat z příkazového řádku. Můžete vytvářet nové scénáře IoT Edge, vytvářet bitové kopie modulu, spouštět moduly v simulátoru a monitorovat zprávy odesílané do IoT Hub. 
 
 ### <a name="visual-studio-code-extension"></a>Rozšíření editoru Visual Studio Code
 
-Rozšíření Azure IoT Edge pro Visual Studio Code poskytuje IoT Edge module šablony založená na programovací jazyky, včetně C, C#, Java, Node.js a Python, jakož i služba Azure functions v C#. 
+Rozšíření Azure IoT Edge pro Visual Studio Code poskytuje IoT Edge šablony modulů založené na programovacích jazycích, včetně jazyků C#C,, Java, Node. js a Python, a také funkcí Azure C#v nástroji. 
 
-Další informace a ke stažení najdete na stránce [Azure IoT Tools for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools).
+Další informace a jejich stažení najdete v tématu [Azure IoT Tools for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools).
 
-Kromě rozšíření IoT Edge možná bude užitečné, chcete-li nainstalovat další rozšíření pro vývoj. Například můžete použít [podporu Dockeru pro Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=PeterJausovec.vscode-docker) ke správě bitových kopií, kontejnery a registry. Všechny hlavní podporované jazyky kromě toho mají rozšíření pro Visual Studio Code, který vám pomůže, když vyvíjíte moduly. 
+Kromě rozšíření IoT Edge může být užitečné nainstalovat další rozšíření pro vývoj. Můžete například použít [podporu Docker pro Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=PeterJausovec.vscode-docker) ke správě imagí, kontejnerů a registrů. Všechny hlavní podporované jazyky navíc mají rozšíření pro Visual Studio Code, která můžou pomáhat při vývoji modulů. 
 
 #### <a name="prerequisites"></a>Požadavky
 
-Modul šablon pro některé jazyky a služby mají požadavky, které jsou potřebné k vývoji projektu složek na svém vývojovém počítači s Visual Studio Code.
+Šablony modulů pro některé jazyky a služby mají požadavky, které jsou nezbytné pro sestavení složek projektu na vývojovém počítači pomocí Visual Studio Code.
 
 | Šablona modulu | Požadavek |
 | --------------- | ------------ |
-| Azure Functions | [.NET Core 2.1 SDK](https://www.microsoft.com/net/download) |
+| Azure Functions | [Sada .NET Core 2,1 SDK](https://www.microsoft.com/net/download) |
 | C | [Git](https://git-scm.com/) |
-| C# | [.NET Core 2.1 SDK](https://www.microsoft.com/net/download) |
-| Java | <ul><li>[Java SE Development Kit 10](https://aka.ms/azure-jdks) <li> [Nastavte proměnnou prostředí JAVA_HOME](https://docs.oracle.com/cd/E19182-01/820-7851/inst_cli_jdk_javahome_t/) <li> [Maven](https://maven.apache.org/)</ul> |
-| Node.js | <ul><li>[Node.js](https://nodejs.org/) <li> [Yeoman](https://www.npmjs.com/package/yo) <li> [Generátor modulu Azure IoT Edge Node.js](https://www.npmjs.com/package/generator-azure-iot-edge-module)</ul> |
-| Python |<ul><li> [Python](https://www.python.org/downloads/) <li> [PIP](https://pip.pypa.io/en/stable/installing/#installation) <li> [Cookiecutter](https://cookiecutter.readthedocs.io/en/latest/installation.html) <li> [Git](https://git-scm.com/) </ul> |
+| C# | [Sada .NET Core 2,1 SDK](https://www.microsoft.com/net/download) |
+| Java | <ul><li>[Java SE Development Kit 10](https://aka.ms/azure-jdks) <li> [Nastavení proměnné prostředí JAVA_HOME](https://docs.oracle.com/cd/E19182-01/820-7851/inst_cli_jdk_javahome_t/) <li> [Maven](https://maven.apache.org/)</ul> |
+| Node.js | <ul><li>[Node.js](https://nodejs.org/) <li> [Yeoman](https://www.npmjs.com/package/yo) <li> [Azure IoT Edge generátoru modulu Node. js](https://www.npmjs.com/package/generator-azure-iot-edge-module)</ul> |
+| Python |<ul><li> [Python](https://www.python.org/downloads/) <li> [PIP](https://pip.pypa.io/en/stable/installing/#installation) <li> [Git](https://git-scm.com/) </ul> |
 
-### <a name="visual-studio-20172019-extension"></a>Visual Studio 2017/2019 extension
+### <a name="visual-studio-20172019-extension"></a>Rozšíření sady Visual Studio 2017/2019
 
-Nástroje Azure IoT Edge pro Visual Studio poskytují IoT Edge šablona modulu založená na C# a C. 
+Azure IoT Edge nástroje pro Visual Studio poskytují šablonu IoT Edge modulů postavenou na C# a C. 
 
-Další informace a ke stažení najdete na stránce [Azure IoT Edge Tools for Visual Studio 2017](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vsiotedgetools) nebo [Azure IoT Edge Tools for Visual Studio 2019](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vs16iotedgetools).
+Další informace a jejich stažení naleznete v tématu [Azure IoT Edge Tools for Visual studio 2017](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vsiotedgetools) nebo [Azure IoT Edge Tools for Visual Studio 2019](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vs16iotedgetools).
 
-### <a name="iot-edge-dev-tool"></a>Nástroj pro vývojáře IoT Edge
+### <a name="iot-edge-dev-tool"></a>Nástroj pro vývoj IoT Edge
 
-Nástroj pro vývojáře Azure IoT Edge zjednodušuje vývoj aplikací IoT Edge pomocí možnosti příkazového řádku. Tento nástroj poskytuje příkazy rozhraní příkazového řádku pro vývoj, ladění a testování moduly. Nástroj pro vývojáře IoT Edge spolupracuje s váš vývojový systém, ať už jste nainstalovali ručně závislosti na vašem počítači nebo používáte kontejneru vývoj IoT Edge. 
+Nástroj Azure IoT Edge dev zjednodušuje vývoj IoT Edge pomocí možností příkazového řádku. Tento nástroj poskytuje příkazy rozhraní příkazového řádku pro vývoj, ladění a testování modulů. Nástroj pro IoT Edge vývoj funguje s vaším vývojovým systémem bez ohledu na to, zda jste ručně nainstalovali závislosti na vašem počítači nebo používáte IoT Edge vývojového kontejneru. 
 
-Další informace a mohli začít, najdete v části [wiki nástroj pro vývojáře IoT Edge](https://github.com/Azure/iotedgedev/wiki).
+Další informace a informace o tom, jak začít, najdete v tématu [IoT Edge wiki nástrojů pro vývoj](https://github.com/Azure/iotedgedev/wiki).
 
 ## <a name="testing-tools"></a>Testovací nástroje
 
-Několik testovacích nástrojů existovat pro simulaci zařízení IoT Edge nebo ladění modulů efektivněji. V následující tabulce jsou uvedeny vysoké úrovně srovnání nástroje a potom jednotlivé části popisují každý nástroj přesněji. 
+Existuje několik testovacích nástrojů, které vám pomůžou simulovat IoT Edge zařízení nebo efektivněji ladit moduly. V následující tabulce je uvedeno porovnání na nejvyšší úrovni mezi nástroji a potom jednotlivé části popisují jednotlivé nástroje přesněji. 
 
-Pro nasazení v produkčním prostředí je podporován pouze modul runtime IoT Edge, ale tyto nástroje umožňují simulaci nebo snadno vytvořit IoT Edge zařízení pro účely vývoje a testování. Tyto nástroje se vzájemně nevylučují, ale můžou spolupracovat kompletní vývojové prostředí. 
+Pro produkční nasazení se podporuje jenom modul runtime IoT Edge, ale následující nástroje umožňují simulovat nebo snadno vytvářet IoT Edge zařízení pro účely vývoje a testování. Tyto nástroje se vzájemně nevylučují, ale můžou spolupracovat na kompletním prostředí pro vývoj. 
 
-| Nástroj | Označuje se taky jako | Podporované platformy | Nejvhodnější pro |
+| Nástroj | Označuje se také jako | Podporované platformy | Nejvhodnější pro |
 | ---- | ------------- | ------------------- | --------- |
-| Nástroj pro vývojáře IoT EdgeHub  | iotedgehubdev | Windows, Linux, MacOS | Simulace zařízení za účelem ladění modulů. |
-| Kontejner vývoj IoT Edge | microsoft/iotedgedev | Windows, Linux, MacOS | Vývoj bez instalování závislostí. |
-| Modul runtime IoT Edge v kontejneru | iotedgec | Windows, Linux, MacOS, ARM | Testování na zařízení, které nemusí podporovat modulu runtime. |
-| Kontejner zařízení IoT Edge | toolboc/azure-iot-edge-device-container | Windows, Linux, MacOS, ARM | Testuje scénář s mnoha hraniční zařízení IoT ve velkém měřítku. |
+| Nástroj pro vývoj IoT EdgeHub  | iotedgehubdev | Windows, Linux, MacOS | Simulace zařízení pro moduly ladění. |
+| IoT Edge kontejner pro vývoj | microsoft/iotedgedev | Windows, Linux, MacOS | Vývoj bez instalace závislostí. |
+| IoT Edge modul runtime v kontejneru | iotedgec | Windows, Linux, MacOS, ARM | Testování v zařízení, které nemusí podporovat modul runtime. |
+| IoT Edge kontejner zařízení | toolboc/azure-iot-edge-device-container | Windows, Linux, MacOS, ARM | Testování scénáře s velkým množstvím IoT Edge zařízení ve velkém měřítku. |
 
-### <a name="iot-edgehub-dev-tool"></a>Nástroj pro vývojáře IoT EdgeHub
+### <a name="iot-edgehub-dev-tool"></a>Nástroj pro vývoj IoT EdgeHub
 
-Azure IoT EdgeHub vývojového nástroje poskytuje místního prostředí pro vývoj a ladění. Nástroj umožňuje spuštění moduly IoT Edge bez modul runtime IoT Edge tak, že můžete vytvořit, vývoj, testování, spouštění a ladění řešení místně a moduly IoT Edge. Není nutné nahrávání imagí do registru kontejneru a nasaďte je u zařízení pro účely testování.
+Nástroj pro vývoj v Azure IoT EdgeHub poskytuje místní vývojové a ladicí prostředí. Nástroj pomáhá spustit IoT Edge moduly bez modulu runtime IoT Edge, takže můžete vytvářet, vyvíjet, testovat, spouštět a ladit IoT Edge moduly a řešení místně. Nemusíte vkládat image do registru kontejnerů a nasazovat je do zařízení pro testování.
 
-Nástroj pro vývoj IoT EdgeHub byla navržena pro spolupráci v kombinaci s rozšířeními sady Visual Studio a Visual Studio Code, a také pomocí nástroje pro vývoj IoT Edge. Podporuje vývoje vnitřní smyčky, jakož i testování vnější smyčky, proto se příliš integruje pomocí nástrojů DevOps. 
+Vývojářský nástroj IoT EdgeHub byl navržený tak, aby fungoval společně s rozšířeními sady Visual Studio a Visual Studio Code a také s nástrojem IoT Edge dev. Podporuje vývoj vnitřních smyček i testování vnějších smyček, takže se integruje i s nástroji DevOps. 
 
-Další informace a nainstalovat, naleznete v tématu [vývojového nástroje Azure IoT EdgeHub](https://pypi.org/project/iotedgehubdev/).
+Další informace a pokyny k instalaci najdete v tématu [Azure IoT EdgeHub dev Tool](https://pypi.org/project/iotedgehubdev/).
 
-### <a name="iot-edge-dev-container"></a>Kontejner vývoj IoT Edge
+### <a name="iot-edge-dev-container"></a>IoT Edge kontejner pro vývoj
 
-Kontejner vývojáře Azure IoT Edge je kontejner Dockeru, který má všechny závislosti, které potřebujete pro vývoj IoT Edge. Tento kontejner umožňuje snadno a rychle začít s libovolný preferovaný jazyk chcete vyvíjet, včetně C#, Python, Node.js nebo Java. Vše, co potřebujete k instalaci je modul kontejneru, jako je Docker nebo Moby, k vyžádání kontejneru do svého vývojového počítače. 
+Kontejner pro vývoj Azure IoT Edge je kontejner Docker, který obsahuje všechny závislosti, které potřebujete pro vývoj IoT Edge. Tento kontejner usnadňuje začátek s libovolným jazykem, který chcete vyvíjet, včetně C#jazyků Python, Node. js a Java. Vše, co je potřeba nainstalovat, je kontejnerový modul, jako je Docker nebo Moby, který načte kontejner do vývojového počítače. 
 
-Další informace najdete v tématu [kontejneru pro vývojáře Azure IoT Edge](https://hub.docker.com/r/microsoft/iotedgedev/).
+Další informace najdete v tématu [Azure IoT Edge vývojového kontejneru](https://hub.docker.com/r/microsoft/iotedgedev/).
 
-### <a name="iot-edge-runtime-in-a-container"></a>Modul runtime IoT Edge v kontejneru
+### <a name="iot-edge-runtime-in-a-container"></a>IoT Edge modul runtime v kontejneru
 
-Modul runtime IoT Edge v kontejneru poskytuje kompletní modulu runtime, který přebírá připojovací řetězec zařízení jako proměnnou prostředí. Tento kontejner umožňuje testovat moduly IoT Edge a scénáře v systému, který nemusí podporovat nativně, modul runtime jako s MacOS. Spustí se všechny moduly, které nasadíte mimo svůj kontejner modulu runtime. Pokud chcete modul runtime a všechny nasazené moduly, které existují v rámci stejného kontejneru, zvažte kontejneru zařízení IoT Edge.
+Modul runtime IoT Edge v kontejneru poskytuje úplný modul runtime, který jako proměnnou prostředí převezme řetězec připojení zařízení. Tento kontejner umožňuje testovat IoT Edge moduly a scénáře v systému, který nemusí nativně podporovat modul runtime, jako je MacOS. Všechny moduly, které nasadíte, se spustí mimo kontejner modulu runtime. Pokud chcete, aby modul runtime a všechny nasazené moduly existovaly ve stejném kontejneru, zvažte místo toho IoT Edge kontejner zařízení.
 
-Další informace najdete v tématu [systémem Azure IoT Edge v kontejneru](https://github.com/Azure/iotedgedev/tree/master/docker/runtime).
+Další informace najdete v tématu [spuštění Azure IoT Edge v kontejneru](https://github.com/Azure/iotedgedev/tree/master/docker/runtime).
 
-### <a name="iot-edge-device-container"></a>Kontejner zařízení IoT Edge
+### <a name="iot-edge-device-container"></a>IoT Edge kontejner zařízení
 
-Kontejner zařízení IoT Edge je kompletní zařízení IoT Edge, jste připravení spustit na jakýkoli počítač s modulem kontejneru. Kontejner zařízení zahrnuje modul runtime IoT Edge a samotný modul kontejneru. Každá instance kontejneru je plně funkční samoobslužné zřizování zařízení IoT Edge. Kontejner zařízení podporuje vzdálené ladění modulů, jako je síťová trasa do modulu. Kontejner zařízení je dobrá pro rychlé vytváření velkého počtu IoT Edge zařízení k otestování scénářů ve velkém měřítku nebo kanály Azure. Také podporuje nasazování do kubernetes pomocí helm. 
+IoT Edge kontejner zařízení je kompletní IoT Edge zařízení, které se dá spustit na jakémkoli počítači s modulem kontejneru. Kontejner zařízení zahrnuje IoT Edge modulu runtime a samotného modulu kontejneru. Každá instance kontejneru je plně funkční zařízení IoT Edge pro samoobslužné zřizování. Kontejner zařízení podporuje vzdálené ladění modulů, pokud existuje síťová trasa k modulu. Kontejner zařízení je vhodný pro rychlé vytvoření velkého počtu zařízení IoT Edge pro testování scénářů nebo Azure Pipelines. Podporuje také nasazení do Kubernetes prostřednictvím Helm. 
 
-Další informace najdete v tématu [kontejneru zařízení Azure IoT Edge](https://github.com/toolboc/azure-iot-edge-device-container).
+Další informace najdete v tématu [Azure IoT Edge kontejneru zařízení](https://github.com/toolboc/azure-iot-edge-device-container).
 
 ## <a name="devops-tools"></a>Nástroje DevOps
 
-Jakmile budete připraveni k vývoji řešení ve velkém měřítku pro rozsáhlé produkčních scénářů, využijte moderní DevOps zásady, včetně služby automation, monitorování a procesy zjednodušené softwarového inženýrství. IoT Edge je rozšíření pro podporu nástrojů DevOps, včetně Azure DevOps, projekty Azure DevOps a Jenkinse. Pokud chcete upravit existující kanál nebo použít jiné nástroje DevOps, jako je CircleCI nebo travis ci, udělat s funkcemi rozhraní příkazového řádku zahrnutý v nástroji pro vývoj IoT Edge.
+Až budete připraveni vyvíjet řešení v rozsáhlých produkčních scénářích, využijte výhod moderních DevOpsch principů, včetně automatizace, monitorování a zefektivnění procesů softwarových inženýrů. IoT Edge má rozšíření pro podporu nástrojů DevOps, včetně Azure DevOps, Azure DevOps Projects a Jenkinse. Pokud chcete přizpůsobit existující kanál nebo použít jiný nástroj DevOps jako CircleCI nebo Travis CI, můžete to udělat pomocí funkcí CLI, které jsou součástí nástroje IoT Edge dev Tool.
 
-Další informace, pokyny a příklady naleznete na následujících stránkách:
-* [Průběžná integrace a průběžné nasazování do Azure IoT Edge](how-to-ci-cd.md)
-* [Vytvoření kanálu CI/CD pro IoT Edge s projekty Azure DevOps](how-to-devops-project.md)
+Další informace, doprovodné materiály a příklady najdete na následujících stránkách:
+* [Průběžná integrace a průběžné nasazování pro Azure IoT Edge](how-to-ci-cd.md)
+* [Vytvoření kanálu CI/CD pro IoT Edge s využitím Azure DevOps Projects](how-to-devops-project.md)
 * [Modul plug-in Azure IoT Edge Jenkinse](https://plugins.jenkins.io/azure-iot-edge)
-* [Úložiště IoT Edge DevOps GitHub](https://github.com/toolboc/IoTEdge-DevOps)
+* [Úložiště GitHub IoT Edge DevOps](https://github.com/toolboc/IoTEdge-DevOps)
