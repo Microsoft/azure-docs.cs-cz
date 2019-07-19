@@ -1,6 +1,6 @@
 ---
-title: Potíže při přihlašování k aplikaci Galerie Azure AD konfigurované pro heslo jednotného přihlašování | Dokumentace Microsoftu
-description: Tento článek popisuje problémových oblastí, které poskytují pokyny k odstraňování problémů souvisejících s přihlašováním k aplikacím Galerie Azure AD nakonfigurované pro heslo jednotného přihlašování
+title: Použití jednotného přihlašování (SSO) založené na heslech na přístupovém panelu | Microsoft Docs
+description: Popisuje problematické oblasti, které poskytují pokyny k řešení problémů souvisejících s přihlašováním k aplikacím Galerie Azure AD nakonfigurovaným pro jednotné přihlašování k heslům.
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -16,133 +16,133 @@ ms.date: 07/11/2017
 ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d95703166c3e1ed8034ea8c0d813c54759603fce
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c020f3ab3ea7ed96b72d0490b717225d44c4fac1
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65825055"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68277747"
 ---
-# <a name="problems-signing-in-to-an-azure-ad-gallery-application-configured-for-password-single-sign-on"></a>Potíže při přihlašování k aplikaci Galerie Azure AD konfigurované pro heslo jednotného přihlašování
+# <a name="problems-signing-in-to-an-azure-ad-gallery-application-configured-for-password-single-sign-on"></a>Problémy s přihlášením k aplikaci Galerie Azure AD konfigurované pro jednotné přihlašování s heslem
 
-Přístupový Panel je webový portál, který uživatel, který má pracovní nebo školní účet v Azure Active Directory (Azure AD) umožňuje zobrazovat a spouštět cloudové aplikace, které jim správce Azure AD udělil přístup k. Uživatel, který má edice Azure AD můžete použít rovněž samoobslužné skupiny a možnosti správy aplikací přes přístupový Panel. Přístupový Panel je nezávislý na webu Azure Portal a nevyžaduje, aby uživatelé měli předplatné Azure.
+Přístupový panel je webový portál, který umožňuje uživateli, který má pracovní nebo školní účet ve službě Azure Active Directory (Azure AD) zobrazovat a spouštět cloudové aplikace, ke kterým správce Azure AD udělil přístup. Uživatel, který má edice Azure AD, může pomocí přístupového panelu použít taky samoobslužnou skupinu a možnosti správy aplikací. Přístupový panel je oddělený od Azure Portal a nevyžaduje, aby uživatelé měli předplatné Azure.
 
-Chcete-li použít založené na heslech jednotné přihlašování (SSO) na přístupovém panelu, musí být nainstalovaná rozšíření přístupového panelu v prohlížeči uživatele. Toto rozšíření se automaticky stáhne, když uživatel vybere, který je nakonfigurovaný pro jednotné přihlašování pomocí hesla aplikace.
+Pokud chcete na přístupovém panelu použít jednotné přihlašování založené na heslech (SSO), musí se v prohlížeči uživatele nainstalovat rozšíření přístupového panelu. Toto rozšíření se stáhne automaticky, když uživatel vybere aplikaci, která je nakonfigurovaná pro jednotné přihlašování založené na heslech.
 
-## <a name="meeting-browser-requirements-for-the-access-panel"></a>Splňuje požadavky na prohlížeč pro na přístupovém panelu
+## <a name="meeting-browser-requirements-for-the-access-panel"></a>Požadavky prohlížeče schůzky na přístupový panel
 
-Přístupový Panel vyžaduje prohlížeč, který podporuje JavaScript a má povolený šablon stylů CSS. Chcete-li použít založené na heslech jednotné přihlašování (SSO) na přístupovém panelu, musí být nainstalovaná rozšíření přístupového panelu v prohlížeči uživatele. Toto rozšíření se automaticky stáhne, když uživatel vybere, který je nakonfigurovaný pro jednotné přihlašování pomocí hesla aplikace.
+Přístupový panel vyžaduje prohlížeč, který podporuje jazyk JavaScript a je povolený pomocí šablon stylů CSS. Pokud chcete na přístupovém panelu použít jednotné přihlašování založené na heslech (SSO), musí se v prohlížeči uživatele nainstalovat rozšíření přístupového panelu. Toto rozšíření se stáhne automaticky, když uživatel vybere aplikaci, která je nakonfigurovaná pro jednotné přihlašování založené na heslech.
 
-Pro jednotné přihlašování založené na heslech může být koncového uživatele prohlížeče:
+V případě jednotného přihlašování založeného na heslech můžou být prohlížeče koncového uživatele:
 
--   Aplikace Internet Explorer 8, 9, 10, 11 – ve Windows 7 nebo novější
+-   Internet Explorer 8, 9, 10, 11 – v systému Windows 7 nebo novějším
 
--   Chrome – Ve Windows 7 nebo novější a v systému MacOS X nebo novější
+-   Chrome – v systému Windows 7 nebo novějším a na MacOS X nebo novějším
 
--   Firefox 26.0 nebo později – na Windows XP SP2 nebo novější a v systému Mac OS X 10,6 nebo novější
+-   Firefox 26,0 nebo novější – v systému Windows XP SP2 nebo novějším a v Mac OS X 10,6 nebo novějším
 
 >[!NOTE]
->Rozšíření založené na heslech jednotného přihlašování k dispozici pro Microsoft Edge ve Windows 10 při rozšíření prohlížeče se nepodporuje pro Microsoft Edge.
+>Rozšíření jednotného přihlašování založené na heslech bude k dispozici pro Microsoft Edge ve Windows 10, když se rozšíření prohlížeče budou podporovat pro Microsoft Edge.
 >
 >
 
-## <a name="how-to-install-the-access-panel-browser-extension"></a>Postup instalace rozšíření prohlížeče Panel přístupu
+## <a name="how-to-install-the-access-panel-browser-extension"></a>Postup instalace rozšíření prohlížeče přístupového panelu
 
-K instalaci rozšíření prohlížeče panelu přístup, postupujte podle následujících kroků:
+Chcete-li nainstalovat rozšíření prohlížeče přístupového panelu, postupujte podle následujících kroků:
 
-1.  Otevřít [přístupového panelu](https://myapps.microsoft.com) v jednom z podporovaných prohlížečů a přihlaste se jako **uživatele** ve službě Azure AD.
+1.  Otevřete [přístupový panel](https://myapps.microsoft.com) v jednom z podporovaných prohlížečů a přihlaste se jako **uživatel** ve službě Azure AD.
 
-2.  Klikněte na tlačítko **heslem jednotného přihlašování aplikace** na přístupovém panelu.
+2.  na přístupovém panelu klikněte na **aplikaci pro jednotné přihlašování pomocí hesla** .
 
-3.  V příkazovém řádku s výzvou k instalaci softwaru vyberte **nainstalovat**.
+3.  Na příkazovém řádku s výzvou k instalaci softwaru vyberte **nainstalovat hned**.
 
-4.  Závislosti na vašem prohlížeči budete přesměrováni na odkaz ke stažení. **Přidat** rozšíření do prohlížeče.
+4.  V závislosti na prohlížeči, který budete přesměrováni na odkaz ke stažení. **Přidejte** rozšíření do prohlížeče.
 
-5.  Pokud vás prohlížeč vyzve, vyberte buď **povolit** nebo **povolit** rozšíření.
+5.  Pokud se v prohlížeči zobrazí dotaz, vyberte možnost **Povolit** nebo **Povolit** rozšíření.
 
-6.  Po instalaci **restartovat** relace prohlížeče.
+6.  Po instalaci **restartujte** relaci prohlížeče.
 
-7.  Přihlaste se na přístupovém panelu a zobrazit, pokud můžete **spuštění** vaše heslo jednotného přihlašování aplikace
+7.  Přihlaste se na přístupový panel a podívejte se, jestli můžete **spouštět** aplikace pro jednotné přihlašování k heslům.
 
-Rozšíření pro Chrome a Firefox lze také stáhnout z přímé odkazy níže:
+Rozšíření pro Chrome a Firefox si můžete stáhnout také z přímých odkazů níže:
 
--   [Rozšíření Chrome přístupového panelu](https://chrome.google.com/webstore/detail/access-panel-extension/ggjhpefgjjfobnfoldnjipclpcfbgbhl)
+-   [Rozšíření přístupového panelu Chrome](https://chrome.google.com/webstore/detail/access-panel-extension/ggjhpefgjjfobnfoldnjipclpcfbgbhl)
 
--   [Rozšíření Firefox přístupového panelu](https://addons.mozilla.org/firefox/addon/access-panel-extension/)
+-   [Rozšíření přístupového panelu Firefox](https://addons.mozilla.org/firefox/addon/access-panel-extension/)
 
-## <a name="setting-up-a-group-policy-for-internet-explorer"></a>Nastavení zásad skupiny pro aplikaci Internet Explorer
+## <a name="setting-up-a-group-policy-for-internet-explorer"></a>Nastavení zásad skupiny pro Internet Explorer
 
-Můžete nastavit zásady skupiny, který umožňuje vzdálenou instalaci rozšíření přístupový Panel pro aplikaci Internet Explorer v počítačích uživatelů.
+Můžete nastavit zásady skupiny, které vám umožní vzdáleně nainstalovat rozšíření přístupového panelu pro Internet Explorer na počítačích uživatelů.
 
-Požadované součásti patří:
+Požadavky zahrnují:
 
--   Nastavíte [Active Directory Domain Services](https://msdn.microsoft.com/library/aa362244%28v=vs.85%29.aspx), a vaši uživatelé počítačů se připojili k vaší doméně.
+-   Nastavili jste [Active Directory Domain Services](https://msdn.microsoft.com/library/aa362244%28v=vs.85%29.aspx)a připojili jste počítače uživatelů k vaší doméně.
 
--   Musíte mít oprávnění "Upravit nastavení" k úpravě objektu zásad skupiny (GPO). Ve výchozím nastavení mají toto oprávnění členy z těchto skupin zabezpečení: Domain Administrators, Enterprise Administrators a Group Policy Creator Owners. [Další informace](https://technet.microsoft.com/library/cc781991%28v=ws.10%29.aspx).
+-   Chcete-li upravit objekt Zásady skupiny (GPO), je nutné mít oprávnění upravit nastavení. Ve výchozím nastavení mají toto oprávnění členové těchto skupin zabezpečení: Domain Administrators, Enterprise Administrators a Zásady skupiny Creator Owners. [Další informace](https://technet.microsoft.com/library/cc781991%28v=ws.10%29.aspx).
 
-Postupujte podle kurzu [jak pro aplikaci Internet Explorer pomocí zásad skupiny nasadit rozšíření přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-ie-group-policy) pro podrobné pokyny o tom, jak nakonfigurovat zásady skupiny a nasadit je uživatelům.
+Postupujte podle kurzu [nasazení rozšíření přístupového panelu pro Internet Explorer pomocí Zásady skupiny](https://docs.microsoft.com/azure/active-directory/active-directory-saas-ie-group-policy) , kde najdete podrobné pokyny ke konfiguraci zásad skupiny a jejich nasazení pro uživatele.
 
-## <a name="troubleshoot-the-access-panel-in-internet-explorer"></a>Řešení potíží s přístupového panelu v aplikaci Internet Explorer
+## <a name="troubleshoot-the-access-panel-in-internet-explorer"></a>Řešení potíží s přístupovým panelem v aplikaci Internet Explorer
 
-Postupujte podle [řešení potíží s rozšířením Panel přístupu pro aplikaci Internet Explorer](https://docs.microsoft.com/azure/active-directory/active-directory-saas-ie-troubleshooting) Příručka pro přístup Diagnostika a podrobné pokyny ke konfiguraci rozšíření pro aplikaci Internet Explorer.
+Postupujte podle pokynů v tématu [Poradce při potížích s rozšířením přístupového panelu pro Internet Explorer](https://docs.microsoft.com/azure/active-directory/active-directory-saas-ie-troubleshooting) a získejte přístup ke diagnostickému nástroji a krok za krokem pokyny ke konfiguraci rozšíření pro IE.
 
-## <a name="how-to-configure-password-single-sign-on-for-a-non-gallery-application"></a>Postup konfigurace hesel jednotného přihlašování pro aplikaci mimo Galerii
+## <a name="how-to-configure-password-single-sign-on-for-a-non-gallery-application"></a>Jak nakonfigurovat jednotné přihlašování k heslům pro aplikaci mimo galerii
 
-Konfigurace aplikace z Galerie Azure AD, které je potřeba:
+Ke konfiguraci aplikace z Galerie Azure AD potřebujete:
 
--   [Přidat aplikaci mimo Galerii](#add-a-non-gallery-application)
+-   [Přidat aplikaci mimo galerii](#add-a-non-gallery-application)
 
--   [Konfigurace aplikace pro heslo jednotného přihlašování](#configure-the-application-for-password-single-sign-on)
+-   [Konfigurace aplikace pro jednotné přihlašování k heslům](#configure-the-application-for-password-single-sign-on)
 
 -   [Přiřazení uživatelů k aplikaci](#assign-users-to-the-application)
 
-### <a name="add-a-non-gallery-application"></a>Přidat aplikaci mimo Galerii
+### <a name="add-a-non-gallery-application"></a>Přidat aplikaci mimo galerii
 
-Přidat aplikaci z Galerie Azure AD, postupujte podle následujících kroků:
+Pokud chcete přidat aplikaci z Galerie Azure AD, postupujte podle následujících kroků:
 
-1.  Otevřít [webu Azure portal](https://portal.azure.com) a přihlaste se jako **globálního správce** nebo **spolusprávce**
+1.  Otevřete [Azure Portal](https://portal.azure.com) a přihlaste se jako **globální správce** nebo **spolusprávce** .
 
-2.  Otevřít **rozšíření Azure Active Directory** kliknutím **všechny služby** v horní části hlavní navigační nabídce vlevo.
+2.  Otevřete **rozšíření Azure Active Directory** kliknutím na **všechny služby** v horní části hlavní navigační nabídky vlevo.
 
 3.  Zadejte **"Azure Active Directory**" do vyhledávacího pole filtrovat a vybrat **Azure Active Directory** položky.
 
-4.  Klikněte na tlačítko **podnikové aplikace** levé navigační nabídce Azure Active Directory.
+4.  v navigační nabídce Azure Active Directory vlevo klikněte na **podnikové aplikace** .
 
-5.  Klikněte na tlačítko **přidat** tlačítko v pravém horním rohu **podnikové aplikace** podokně.
+5.  klikněte na tlačítko **Přidat** v pravém horním rohu podokna **podnikové aplikace** .
 
-6.  Klikněte na tlačítko **aplikace mimo galerii.**
+6.  klikněte na **aplikaci mimo galerii.**
 
-7.  Zadejte název vaší aplikace v **název** textového pole. Vyberte **přidat.**
+7.  Do textového pole **název** zadejte název vaší aplikace. Vyberte **Přidat.**
 
-Po krátké době budete moci zobrazit podokno konfiguračních vaší aplikace.
+Po krátké době se bude moci zobrazit podokno konfigurace aplikace.
 
-### <a name="configure-the-application-for-password-single-sign-on"></a>Konfigurace aplikace pro heslo jednotného přihlašování
+### <a name="configure-the-application-for-password-single-sign-on"></a>Konfigurace aplikace pro jednotné přihlašování k heslům
 
-Pokud chcete nakonfigurovat jednotné přihlašování pro aplikaci, použijte následující postup:
+Chcete-li nakonfigurovat jednotné přihlašování pro aplikaci, postupujte podle následujících kroků:
 
-1. Otevřít [ **webu Azure portal** ](https://portal.azure.com/) a přihlaste se jako **globálního správce** nebo **Spolusprávce.**
+1. Otevřete [**Azure Portal**](https://portal.azure.com/) a přihlaste se jako **globální správce** nebo **spolusprávce.**
 
-2. Otevřít **rozšíření Azure Active Directory** kliknutím **všechny služby** v horní části hlavní navigační nabídce vlevo.
+2. Otevřete **rozšíření Azure Active Directory** kliknutím na **všechny služby** v horní části hlavní navigační nabídky vlevo.
 
 3. Zadejte **"Azure Active Directory**" do vyhledávacího pole filtrovat a vybrat **Azure Active Directory** položky.
 
-4. Klikněte na tlačítko **podnikové aplikace** levé navigační nabídce Azure Active Directory.
+4. v navigační nabídce Azure Active Directory vlevo klikněte na **podnikové aplikace** .
 
 5. Klikněte na tlačítko **všechny aplikace** zobrazíte seznam všech aplikací.
 
    * Pokud nevidíte aplikaci, kterou má zobrazit tady, použijte **filtr** ovládacího prvku v horní části **seznam všech aplikací** a nastavit **zobrazit** umožňuje **všechny Aplikace.**
 
-6. Vyberte aplikaci, kterou chcete nakonfigurovat jednotné přihlašování
+6. Vyberte aplikaci, pro kterou chcete nakonfigurovat jednotné přihlašování.
 
-7. Po načtení aplikace, klikněte na tlačítko **jednotného přihlašování** levé navigační nabídce aplikace.
+7. Po načtení aplikace klikněte na tlačítko **jednotného přihlašování** z nabídky navigace na levé straně aplikace.
 
-8. Vyberte režim **přihlašování na základě heslo.**
+8. Vyberte možnost režim **přihlašování založené na heslech.**
 
-9. Zadejte **přihlašovací adresa URL**. Toto je adresa URL, kde uživatelé zadat svoje uživatelské jméno a heslo pro přihlášení k aplikaci. Zkontrolujte, že přihlášení pole jsou viditelné na adrese URL.
+9. Zadejte **přihlašovací adresu URL**. Toto je adresa URL, kam uživatelé zadají své uživatelské jméno a heslo, aby se mohli přihlásit. Ujistěte se, že přihlašovací pole jsou viditelná na adrese URL.
 
-10. Přiřazení uživatelů k aplikaci.
+10. Přiřaďte uživatele k aplikaci.
 
-11. Kromě toho můžete také zadat přihlašovací údaje jménem uživatele výběr řádků uživatele a kliknutím na **aktualizaci přihlašovacích údajů** a zadáním uživatelského jména a hesla jménem uživatele. V opačném případě uživatelé vyzváni k zadání samotné přihlašovací údaje při spuštění.
+11. Kromě toho můžete přihlašovací údaje jménem uživatele zadat také tak, že vyberete řádky uživatelů a kliknete na **Aktualizovat přihlašovací údaje** a zadáte uživatelské jméno a heslo jménem uživatele. V opačném případě se uživatelům zobrazí výzva k zadání přihlašovacích údajů sami při spuštění.
 
 ### <a name="assign-users-to-the-application"></a>Přiřazení uživatelů k aplikaci
 
@@ -150,11 +150,11 @@ Jeden nebo více uživatelů přiřadit přímo k aplikaci, postupujte podle ná
 
 1. Otevřít [ **webu Azure portal** ](https://portal.azure.com/) a přihlaste se jako **globálního správce.**
 
-2. Otevřít **rozšíření Azure Active Directory** kliknutím **všechny služby** v horní části hlavní navigační nabídce vlevo.
+2. Otevřete **rozšíření Azure Active Directory** kliknutím na **všechny služby** v horní části hlavní navigační nabídky vlevo.
 
 3. Zadejte **"Azure Active Directory**" do vyhledávacího pole filtrovat a vybrat **Azure Active Directory** položky.
 
-4. Klikněte na tlačítko **podnikové aplikace** levé navigační nabídce Azure Active Directory.
+4. v navigační nabídce Azure Active Directory vlevo klikněte na **podnikové aplikace** .
 
 5. Klikněte na tlačítko **všechny aplikace** zobrazíte seznam všech aplikací.
 
@@ -162,7 +162,7 @@ Jeden nebo více uživatelů přiřadit přímo k aplikaci, postupujte podle ná
 
 6. Vyberte aplikaci, kterou chcete přiřadit uživatele ze seznamu.
 
-7. Po načtení aplikace, klikněte na tlačítko **uživatelů a skupin** levé navigační nabídce aplikace.
+7. Po načtení aplikace klikněte na **Uživatelé a skupiny** v nabídce navigace na levé straně aplikace.
 
 8. Klikněte na tlačítko **přidat** tlačítko nahoře **uživatelů a skupin** seznamu a otevře **přidat přiřazení** podokně.
 
@@ -172,7 +172,7 @@ Jeden nebo více uživatelů přiřadit přímo k aplikaci, postupujte podle ná
 
 11. Najeďte myší **uživatele** v seznamu zobrazíte **zaškrtávací políčko**. Klikněte na zaškrtávací políčko vedle profilové fotky uživatele nebo logo, které chcete přidat uživatele **vybrané** seznamu.
 
-12. **Volitelné:** Pokud byste chtěli **přidat více než jeden uživatel**, typ v jiném **celý název** nebo **e-mailová adresa** do **hledat podle jména nebo e-mailové adresy** vyhledávací pole a klikněte na zaškrtávací políčko a přidáním tohoto uživatele do **vybrané** seznamu.
+12. **Volitelné** Pokud chcete **Přidat více než jednoho uživatele**, zadejte do vyhledávacího pole **jméno nebo e** -mailová adresa další **jméno** nebo **e-mailovou adresu** a kliknutím na zaškrtávací políčko přidejte tohoto uživatele do **vybraného** seznamu.
 
 13. Po dokončení výběru uživatelů, klikněte na tlačítko **vyberte** tlačítko pro přidání do seznamu uživatelů a skupin pro přiřazení k aplikaci.
 
@@ -180,23 +180,23 @@ Jeden nebo více uživatelů přiřadit přímo k aplikaci, postupujte podle ná
 
 15. Klikněte na tlačítko **přiřadit** tlačítko přiřadit aplikaci do vybraného uživatele.
 
-Po krátké době uživatele, které jste vybrali dát spustit tyto aplikace na přístupovém panelu.
+Po krátké době uživatelé, které jste vybrali, budou moci spouštět tyto aplikace na přístupovém panelu.
 
-## <a name="if-these-troubleshooting-steps-do-not-the-resolve-the-issue"></a>Pokud tyto kroky pro řešení potíží není vyřešit problém
+## <a name="if-these-troubleshooting-steps-do-not-the-resolve-the-issue"></a>Pokud tyto kroky pro řešení potíží nevyřešily problém
 
-vytvořit lístek podpory s použitím následujících informací, pokud je k dispozici:
+Otevřete lístek podpory s následujícími informacemi, pokud jsou k dispozici:
 
--   Chyba ID korelace
+-   ID chyby korelace
 
--   Hlavní název uživatele (uživatel e-mailová adresa)
+-   UPN (uživatelská e-mailová adresa)
 
--   ID Tenanta
+-   TenantID
 
 -   Typ prohlížeče
 
--   Vyvolá se časové pásmo a čas nebo časový rámec při chybě
+-   Časové pásmo a čas/časový rámec při výskytu chyby
 
--   Trasování Fiddler
+-   Fiddler trasování
 
 ## <a name="next-steps"></a>Další postup
 [Poskytovat jednotné přihlašování do aplikací pomocí Proxy aplikace](application-proxy-configure-single-sign-on-with-kcd.md)

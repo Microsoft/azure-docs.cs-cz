@@ -1,6 +1,6 @@
 ---
-title: Sdílení účtů a přihlašovací údaje – Azure Active Directory | Dokumentace Microsoftu
-description: Popisuje, jak Azure Active Directory umožňuje organizacím bezpečně sdílet účty pro místní aplikace i spotřebitelské cloudové služby.
+title: Účty a přihlašovací údaje pro sdílení – Azure Active Directory | Microsoft Docs
+description: Popisuje, jak Azure Active Directory umožňuje organizacím bezpečně sdílet účty pro místní aplikace a cloudové služby pro spotřebitele.
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -15,63 +15,62 @@ ms.author: curtand
 ms.reviewer: jeffsta
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 902696e35a2447b67dab74b73794b80ad5e26511
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5638710c4c01d361d108cfef69869fad1a7dad1a
+ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67083735"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68304380"
 ---
-# <a name="sharing-accounts-with-azure-ad"></a>Sdílení účtů pomocí Azure AD
+# <a name="sharing-accounts-with-azure-ad"></a>Sdílení účtů s Azure AD
 ## <a name="overview"></a>Přehled
-Někdy organizace budou muset pomocí jednoho uživatelského jména a hesla pro více osob, které obvykle dojde ve dvou případech:
+Někdy organizace potřebují použít jedno uživatelské jméno a heslo pro více lidí, což se obvykle stává ve dvou případech:
 
-* Při přístupu k aplikací, které vyžadují jedinečné přihlášení a hesla pro každého uživatele, zda místní aplikace nebo příjemce cloudové služby (například podniková sociální účty).
-* Při vytváření prostředí pro více uživatelů. Může mít jeden místní účet, který se zvýšenými oprávněními a slouží k základní instalaci, správu a obnovení aktivity. Například místní "globální správce" účtu Office 365 nebo pomocí kořenového účtu v Salesforce.
+* Při přístupu k aplikacím, které vyžadují jedinečné přihlášení a heslo pro každého uživatele, bez ohledu na to, jestli jsou místní aplikace nebo spotřebitelské cloudové služby (například firemní účty sociálních médií).
+* Při vytváření prostředí s více uživateli. Je možné, že máte jeden místní účet, který má zvýšená oprávnění, a používá se pro základní aktivity nastavení, správy a obnovení. Například místní účet globální správce pro Office 365 nebo kořenový účet v Salesforce.
 
-Tyto účty jsou tradičně sdílí distribuci pověření (uživatelské jméno a heslo) vpravo jednotlivcům nebo jejich ukládáním do sdíleného umístění, kde více důvěryhodných agentů k nim přistupovat.
+Tradičně jsou tyto účty sdíleny distribucí přihlašovacích údajů (uživatelské jméno a heslo) pravým jednotlivcům nebo jejich uložením do sdíleného umístění, kde k nim může přistupovat více důvěryhodných agentů.
 
-Tradiční sdílení model obsahuje několik nevýhody:
+Tradiční model sdílení má několik nevýhod:
 
-* Povolení přístupu k nové aplikace, musíte distribuovat přihlašovací údaje pro všechny uživatele, které potřebuje přístup.
-* Každé sdílené aplikace může vyžadovat, aby svou vlastní jedinečnou sadu sdílené přihlašovací údaje by uživatelé museli pamatovat více sad přihlašovacích údajů. Uživatelé, kteří mají zapamatovat si přihlašovací údaje mnoho, zvyšuje riziko, se uchýlíte k rizikové postupy. (například zápis dolů hesla).
-* Nelze zjistit, kdo má přístup k aplikaci.
-* Nelze zjistit, kdo má *přistupovat* aplikace.
-* Pokud chcete odebrat přístup k aplikaci, budete muset aktualizovat přihlašovací údaje a jejich distribuci pro všechny uživatele, který potřebuje přístup k dané aplikaci.
+* Povolení přístupu k novým aplikacím vyžaduje distribuci přihlašovacích údajů všem, kteří potřebují přístup.
+* Každá sdílená aplikace může vyžadovat vlastní jedinečnou sadu sdílených přihlašovacích údajů, aby si uživatelé museli pamatovat několik sad přihlašovacích údajů. Když si uživatelé musí pamatovat spoustu přihlašovacích údajů, riziko se zvýší, že se budou rozmyslet na rizikové postupy. (například zápis hesel do hesla).
+* Nemůžete říct, kdo má přístup k aplikaci.
+* Nemůžete zjistit, kdo získal *k aplikaci pøístup* .
+* Pokud chcete odebrat přístup k aplikaci, musíte aktualizovat přihlašovací údaje a znovu je distribuovat všem, kteří potřebují k této aplikaci přístup.
 
-## <a name="azure-active-directory-account-sharing"></a>Sdílení účtů v Azure Active Directory
-Azure AD nabízí nový přístup k použití sdílené účty, které předchází tyto nevýhody.
+## <a name="azure-active-directory-account-sharing"></a>Sdílení účtu Azure Active Directory
+Azure AD poskytuje nový přístup k používání sdílených účtů, které eliminují tyto nevýhody.
 
-Správce Azure AD nakonfiguruje vhodné aplikace, které má uživatel přístup pomocí na přístupovém panelu a výběrem typu nejlepší jednotné přihlašování pro tuto aplikaci. Jeden z těchto typů *založené na heslech jednotného přihlašování*, umožňuje Azure AD fungovat jako typ "zprostředkovatele" během procesu přihlašování pro tuto aplikaci.
+Správce Azure AD nakonfiguruje, které aplikace může uživatel přistupovat, pomocí přístupového panelu a výběrem typu jednotného přihlašování, které se pro tuto aplikaci nejlépe hodí. Jeden z těchto typů: *jednotné přihlašování založené na heslech*umožňuje službě Azure AD fungovat jako typ Broker během procesu přihlašování pro tuto aplikaci.
 
-Uživatelé přihlásit jednou pro účet své organizace. Tento účet je stejný jako ten, který pravidelně používají pro přístup k ploše nebo v e-mailu. Mohou zjišťovat a přístup pouze aplikace, které jsou přiřazeny. S sdílené účty tento seznam aplikací může obsahovat libovolný počet sdílených přihlašovacích údajů. Koncový uživatel nemusí si zapamatujte nebo poznamenejte různé účty, které by mohly používat.
+Uživatelé se přihlašují pomocí účtu organizace. Tento účet je stejný jako ten, který pravidelně používá pro přístup ke svému desktopu nebo e-mailu. Můžou zjišťovat a přistupovat jenom k aplikacím, ke kterým jsou přiřazené. U sdílených účtů může tento seznam aplikací obsahovat libovolný počet sdílených přihlašovacích údajů. Koncový uživatel nemusí pamatovat ani zapisovat různé účty, které můžou používat.
 
-Sdílené účty nejen zvýšit dohledu a zlepšit použitelnost, jsou také posílit zabezpečení. Uživatelé s oprávněními k použití pověření nevidíte sdílené heslo, ale spíše získání oprávnění používat heslo jako součást tok, který iniciovat organizovaně, což ověřování. Dále některé heslem jednotného přihlašování aplikace poskytují možnost používat Azure AD, aby pravidelně hesla výměny (update). Systém používá velkých a složitých hesel, která zvyšuje zabezpečení účtu. Správce může snadno udělit nebo odvolat přístup k aplikaci, která ví, kdo má přístup k účtu, a kdo použil v minulosti.
+Sdílené účty nezvyšují jenom zlepšení a zlepšují použitelnost, zvyšují taky vaše zabezpečení. Uživatelé s oprávněními k použití přihlašovacích údajů nevidí sdílené heslo, ale místo toho získají oprávnění používat heslo jako součást procesu orchestrace ověřování. Některé aplikace jednotného přihlašování k heslům navíc umožňují použití Azure AD k pravidelné výměně hesel (aktualizace). Systém používá velká, složitá hesla, která zvyšují zabezpečení účtů. Správce může snadno udělit nebo odvolat přístup k aplikaci, ví, kdo má přístup k účtu a kdo k němu získal přístup v minulosti.
 
-Azure AD podporuje sdílené účty u Basic, Premium nebo Enterprise Mobility Suite (EMS) uživatele, s licencí napříč všemi typy heslo jednotné přihlašování aplikací. Můžete sdílet účty pro některý z tisíce předem integrovaných aplikací v galerii aplikací a můžete přidat vlastní ověření hesla aplikací s [vlastní jednotného přihlašování aplikace](../manage-apps/configure-single-sign-on-portal.md).
+Azure AD podporuje sdílené účty pro všechny licencované uživatele sady Enterprise Mobility Suite (EMS), Premium nebo Basic pro všechny typy aplikací s jednotným přihlašováním k heslům. V galerii aplikací můžete sdílet účty pro všechny tisíce předem integrovaných aplikací a můžou přidat vlastní aplikaci ověřování hesla s [vlastními aplikacemi jednotného přihlašování](../manage-apps/configure-single-sign-on-portal.md).
 
-Azure AD k funkcím, které umožňují sdílení účet patří:
+Funkce Azure AD, které umožňují sdílení účtů, zahrnují:
 
-* [Heslo jednotného přihlašování](../manage-apps/what-is-single-sign-on.md#password-based-sso)
-* Heslo jednotné přihlašování agenta
+* [Jednotné přihlašování k heslu](../manage-apps/what-is-single-sign-on.md#password-based-sso)
+* Agent jednotného přihlašování k heslům
 * [Přiřazení skupiny](groups-self-service-management.md)
-* Aplikace vlastního hesla
-* [Sestavy řídicího panelu využití aplikace](../active-directory-passwords-get-insights.md)
-* Portálech pro koncové uživatele přístup
-* [Proxy aplikací](../manage-apps/application-proxy.md)
-* [Tržiště Active Directory](https://azure.microsoft.com/marketplace/active-directory/all/)
+* Vlastní aplikace pro hesla
+* [Řídicí panel a sestavy využití aplikací](../active-directory-passwords-get-insights.md)
+* Portál pro přístup koncových uživatelů
+* [Proxy aplikace](../manage-apps/application-proxy.md)
+* [Tržiště služby Active Directory](https://azure.microsoft.com/marketplace/active-directory/all/)
 
-## <a name="sharing-an-account"></a>Účet pro sdílení obsahu
-Používání Azure AD pro sdílet účet, budete muset:
+## <a name="sharing-an-account"></a>Sdílení účtu
+Pokud chcete ke sdílení účtu použít Azure AD, musíte:
 
-* Přidat aplikaci [Galerie aplikací](https://azure.microsoft.com/marketplace/active-directory/) nebo [vlastní aplikace](https://cloudblogs.microsoft.com/enterprisemobility/2015/06/17/bring-your-own-app-with-azure-ad-self-service-saml-configuration-now-in-preview/)
-* Konfigurace aplikace pro heslo jednotné přihlašování (SSO)
-* Použití [přiřazování na základě skupiny](groups-saasapps.md) a vyberte možnost a zadejte sdílené přihlašovací údaje
-* Volitelné: v některých aplikacích, jako je Facebook, Twitter a LinkedIn, můžete povolit možnost [automatizované převrácení hesla Azure AD](https://cloudblogs.microsoft.com/enterprisemobility/2015/02/20/azure-ad-automated-password-roll-over-for-facebook-twitter-and-linkedin-now-in-preview/)
+* Přidání [Galerie](https://azure.microsoft.com/marketplace/active-directory/) aplikačních aplikací nebo [vlastní aplikace](https://cloudblogs.microsoft.com/enterprisemobility/2015/06/17/bring-your-own-app-with-azure-ad-self-service-saml-configuration-now-in-preview/)
+* Konfigurace aplikace pro jednotné přihlašování k heslům (SSO)
+* Použijte [přiřazení na základě skupin](groups-saasapps.md) a vyberte možnost zadání sdíleného přihlašovacího údaje.
 
-Můžete také vytvořit sdílené účet lépe zabezpečit pomocí ověřování služby Multi-Factor Authentication (MFA) (Další informace o [zabezpečení aplikací s Azure AD](../authentication/concept-mfa-whichversion.md)) a schopnost spravovat, kdo má přístup k aplikaci pomocí můžetedelegovat[ Azure AD samoobslužný](groups-self-service-management.md) správu skupin.
+Sdílený účet můžete také lépe zabezpečit pomocí služby Multi-Factor Authentication (MFA) (Další informace o [zabezpečení aplikací pomocí Azure AD](../authentication/concept-mfa-whichversion.md)) a můžete delegovat schopnost spravovat, kdo má k aplikaci přístup pomocí [samoobslužné služby Azure AD. ](groups-self-service-management.md)Správa skupin.
 
 ## <a name="related-articles"></a>Související články
 * [Správa aplikací ve službě Azure Active Directory](../manage-apps/what-is-application-management.md)
-* [Ochrana aplikací s podmíněným přístupem](../active-directory-conditional-access-azure-portal.md)
-* [Správa/SSAA samoobslužné skupiny](groups-self-service-management.md)
+* [Ochrana aplikací pomocí podmíněného přístupu](../active-directory-conditional-access-azure-portal.md)
+* [Samoobslužná správa skupin/SSAA](groups-self-service-management.md)

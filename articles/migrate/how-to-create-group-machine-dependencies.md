@@ -1,145 +1,166 @@
 ---
-title: Seskupit počítače s využitím závislostí počítačů pomocí služby Azure Migrate | Dokumentace Microsoftu
-description: Popisuje, jak vytvořit posouzení závislostí počítačů pomocí služby Azure Migrate.
+title: Seskupit počítače pomocí závislostí počítačů s Azure Migrate | Microsoft Docs
+description: Popisuje, jak vytvořit vyhodnocení pomocí závislostí počítačů se službou Azure Migrate.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
-ms.date: 12/05/2018
-ms.author: raynew
-ms.openlocfilehash: af47678b19209936aed86c132a8a3f400c3a7e8f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 07/17/2019
+ms.author: hamusa
+ms.openlocfilehash: 7cde18f2da764a055443900e7daf160f72e2eeb5
+ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60596774"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68301656"
 ---
-# <a name="group-machines-using-machine-dependency-mapping"></a>Seskupení počítačů s využitím mapování závislostí počítačů
+# <a name="set-up-dependency-visualization-for-assessment"></a>Nastavení Vizualizace závislostí pro posouzení
 
-Tento článek popisuje, jak vytvořit skupinu počítačů pro [Azure Migrate](migrate-overview.md) posouzení vizualizací závislostí počítačů. Obvykle použijete tuto metodu, pokud chcete posouzení skupiny virtuálních počítačů s vyšší úrovní spolehlivosti mezi Kontrola závislostí počítačů, před spuštěním posouzení. Vizualizace závislostí můžete efektivně naplánovat migraci do Azure. To vám pomůže zajistit, že nic se zachovají a překvapením, že není dojde k výpadku při migraci do Azure. Je možné vyhledat všechny vzájemně závislých systémů, které je potřeba migrovat společně a zjistit, jestli spuštěný systém stále poskytuje uživatelům nebo je kandidátem pro vyřazení z provozu místo migrace.
+Tento článek popisuje, jak nastavit mapování závislostí v Azure Migrate: Posouzení serveru.
 
-> [!NOTE]
-> Funkce vizualizace závislostí není k dispozici ve službě Azure Government.
+Mapování závislostí pomáhá vizualizovat závislosti mezi počítači, které chcete vyhodnotit a migrovat.
 
-## <a name="prepare-for-dependency-visualization"></a>Příprava pro vizualizace závislostí
-Azure Migrate využívá řešení Service Map v protokolech Azure Monitor umožňuje vizualizace závislostí počítačů.
+- V Azure Migrate: Vyhodnocování serveru shromažďujete počítače dohromady pro posouzení. Obvykle počítače, které chcete migrovat společně.
+- Mapování závislostí se obvykle používá, pokud chcete vyhodnotit skupiny s vyšší úrovní spolehlivosti.
+- Mapování závislostí vám umožňuje křížově kontrolovat závislosti počítačů před spuštěním posouzení a migrace.
+- Mapování a vizualizace závislostí pomáhají efektivně naplánovat migraci do Azure. Pomáhá zajistit, aby nic nezůstalo na pozadí, takže během migrace se vyhne výpadkům.
+- Pomocí mapování můžete zjistit vzájemně závislé systémy, které potřebují migrovat dohromady. Můžete také zjistit, zda běžící systém stále obsluhuje uživatele, nebo je kandidátem na vyřazení z provozu místo migrace.
 
-### <a name="associate-a-log-analytics-workspace"></a>Přiřadit pracovní prostor Log Analytics
-Využití vizualizace závislostí, je potřeba přiřadit pracovní prostor Log Analytics, novou nebo existující s projekt Azure Migrate. Můžete pouze vytvářet nebo připojit pracovní prostor v rámci stejného předplatného, ve kterém se vytvoří projekt migrace.
+[Přečtěte si další informace](concepts-dependency-visualization.md#how-does-it-work) o vizualizaci závislostí.
 
-- K připojení do pracovního prostoru Log Analytics do projektu, v **přehled**, přejděte na stránku **Essentials** části projektu klikněte na tlačítko **vyžaduje konfiguraci**
+## <a name="before-you-start"></a>Než začnete
 
-    ![Přiřadit pracovní prostor Log Analytics](./media/concepts-dependency-visualization/associate-workspace.png)
+- Ujistěte se, že jste [vytvořili](how-to-add-tool-first-time.md) projekt Azure Migrate.
+- Pokud jste již vytvořili projekt, ujistěte se, že jste [přidali](how-to-assess.md) Azure Migrate: Nástroj pro vyhodnocení serveru.
+- Ujistěte se, že jste počítače zjistili v Azure Migrate. to můžete provést nastavením zařízení Azure Migrate pro [VMware](how-to-set-up-appliance-vmware.md) nebo [Hyper-V](how-to-set-up-appliance-hyper-v.md). Zařízení zjišťuje místní počítače a odesílá data o metadatech a výkonu Azure Migrate: Posouzení serveru. [Další informace](migrate-appliance.md).
 
-- Při přiřazení pracovního prostoru, bude mít možnost vytvořit nový pracovní prostor nebo připojení existující:
-  - Když vytvoříte nový pracovní prostor, musíte zadat název pracovního prostoru. Pracovní prostor se pak vytvoří v oblasti, ve stejném [zeměpisná oblast Azure](https://azure.microsoft.com/global-infrastructure/geographies/) jako projekt migrace.
-  - Po připojení existujícího pracovního prostoru, můžete vybrat ze všech dostupných pracovních prostorů ve stejném předplatném jako projekt migrace. Všimněte si, že jsou uvedené pouze ty pracovní prostory, které byly vytvořeny v oblasti kde [Service Map je podporována](https://docs.microsoft.com/azure/azure-monitor/insights/service-map-configure#supported-azure-regions). Aby bylo možné se připojit s pracovním prostorem, ujistěte se, že máte "Čtečky" přístup do pracovního prostoru.
 
-> [!NOTE]
-> Nelze změnit pracovní prostor, přidružené k projektu migrace.
+**Funkce** | **Poznámka**
+--- | ---
+Dostupnost | Vizualizace závislostí není v Azure Government k dispozici.
+Mapa služeb | Vizualizace závislostí používá řešení Service Map v protokolech Azure Monitor. [Service map](../azure-monitor/insights/service-map-configure.md) automaticky zjišťuje a zobrazuje spojení mezi servery.
+Agenti | Pokud chcete použít vizualizaci závislostí, nainstalujte na počítačích, které chcete namapovat, několik agentů:<br/> - Agent [Azure Log Analytics](../azure-monitor/platform/log-analytics-agent.md) (dříve označovaný jako Microsoft Monitoring Agent (MMA).<br/> -Service Map agenta závislostí.<br/><br/> K automatizaci instalace agenta můžete použít nástroj pro nasazení, jako je System Center Configuration Manager nebo partnerský nástroj, jako je například [Intigua](https://www.intigua.com/getting-started-intigua-for-azure-migration), který má řešení nasazení agenta pro Azure Migrate.
+Agent závislostí | Projděte si podporu agenta závislostí pro [systémy Windows](/azure-monitor/insights/service-map-configure.md#supported-windows-operating-systems) a [Linux](../azure-monitor/insights/service-map-configure.md#supported-linux-operating-systems).<br/><br/> [Přečtěte si další informace](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#installation-script-examples) o použití skriptů k instalaci agenta závislostí.
+Agent Log Analytics (MMA) | [Přečtěte si další informace](../azure-monitor/platform/log-analytics-agent.md#install-and-configure-agent) o metodách instalace MMA.<br/><br/> Pro počítače monitorované nástrojem System Center Operations Manager 2012 R2 nebo novějším není nutné instalovat agenta MMA. Service Map se integruje s Operations Manager. Integraci můžete povolit pomocí pokynů [zde](https://docs.microsoft.com/azure/azure-monitor/insights/service-map-scom#prerequisites). Upozorňujeme však, že na tyto počítače bude nutné nainstalovat agenta závislostí.<br/><br/> [Přečtěte si](../azure-monitor/platform/log-analytics-agent.md#supported-linux-operating-systems) operační systémy Linux podporované agentem Log Analytics.
+Skupiny posouzení | Skupiny, pro které chcete vizualizovat závislosti, by neměly obsahovat více než 10 počítačů. Pokud máte více než 10 počítačů, rozdělte je do menších skupin a vizualizujte závislosti.
 
-### <a name="download-and-install-the-vm-agents"></a>Stažení a instalace agentů virtuálního počítače
-Po konfiguraci pracovního prostoru, budete muset stáhnout a nainstalovat agenty na každém v místním počítači, který chcete vyhodnotit. Kromě toho, pokud máte počítače bez připojení k Internetu, musíte stáhnout a nainstalovat [Log Analytics gateway](../azure-monitor/platform/gateway.md) na ně.
+## <a name="associate-a-log-analytics-workspace"></a>Přidružit Log Analytics pracovní prostor
 
-1. V **přehled**, klikněte na tlačítko **spravovat** > **počítače**a vyberte požadovaný počítač.
-2. V **závislosti** sloupce, klikněte na tlačítko **instalovat agenty**.
-3. Na **závislosti** stránce, stáhněte a nainstalujte Microsoft Monitoring Agent (MMA) a agenta závislostí na každém virtuálním počítači, na kterou chcete vyhodnotit.
-4. Zkopírujte ID a klíč pracovního prostoru. Budete je potřebovat při instalaci agenta MMA na místním počítači.
+Chcete-li použít vizualizaci závislostí, je třeba přidružit [Log Analytics pracovní prostor](../azure-monitor/platform/manage-access.md) k projektu Azure Migrate.
 
-> [!NOTE]
-> K automatizaci instalace agentů můžete použít libovolný nástroj nasazení, jako je System Center Configuration Manager nebo použijte nástroj našich partnerů [Intigua](https://www.intigua.com/getting-started-intigua-for-azure-migration), který obsahuje řešení nasazení agenta ke službě Azure Migrate.
+- Pracovní prostor můžete připojit pouze v předplatném Azure Migrate projektu.
+- Můžete připojit existující pracovní prostor nebo vytvořit nový.
+- Pracovní prostor se připojuje při prvním nastavení vizualizace závislosti pro určitý počítač.
+- Pracovní prostor můžete připojit až po zjištění počítačů v Azure Migrate projektu. To můžete provést nastavením zařízení Azure Migrate pro [VMware](how-to-set-up-appliance-vmware.md) nebo [Hyper-V](how-to-set-up-appliance-hyper-v.md). Zařízení zjišťuje místní počítače a odesílá data o metadatech a výkonu Azure Migrate: Posouzení serveru. [Další informace](migrate-appliance.md).
+
+Pracovní prostor připojte následujícím způsobem:
+
+1. V **Azure Migrate: Vyhodnocování**serveru klikněte na **Přehled**. Pokud jste ještě nepřidali Nástroj pro vyhodnocení serveru, [udělejte to jako první](how-to-assess.md).
+2. V části **Přehled**klikněte na šipku dolů a rozbalte **základy**.
+3. V **pracovním prostoru OMS**klikněte na **vyžaduje konfiguraci**.
+4. V **oblasti konfigurovat pracovní prostor**určete, jestli chcete vytvořit nový pracovní prostor, nebo použijte existující:
+
+    ![Přidat pracovní prostor](./media/how-to-create-group-machine-dependencies/workspace.png)
+
+    - Když zadáte název nového pracovního prostoru, vytvoří se ve stejné geografické oblasti jako projekt Azure Migrate.
+    - Když připojíte existující pracovní prostor, můžete vybrat ze všech dostupných pracovních prostorů ve stejném předplatném jako projekt migrace.
+    - K pracovnímu prostoru potřebujete přístup čtenář, abyste ho mohli připojit.
+    - Po připojení nelze upravit pracovní prostor přidružený k projektu.
+
+## <a name="download-and-install-the-vm-agents"></a>Stažení a instalace agentů virtuálního počítače
+
+Stáhněte a nainstalujte agenty na každý místní počítač, který chcete vizualizovat pomocí mapování závislostí.
+
+1. V **Azure Migrate: Vyhodnocování**serveru klikněte na **zjištěné servery**.
+2. Pro každý počítač, pro který chcete používat vizualizaci závislostí, klikněte na **vyžaduje instalaci agenta**.
+3. Na stránce **závislosti** v počítači > **Stáhněte a nainstalujte MMA**, Stáhněte si příslušného agenta a nainstalujte ho, jak je popsáno níže.
+4. V části **Stažení a instalace agenta závislostí**Stáhněte příslušný agent a nainstalujte jej, jak je popsáno níže.
+5. V části **Konfigurovat agenta MMA**zkopírujte ID a klíč pracovního prostoru. Budete je potřebovat při instalaci agenta MMA.
 
 ### <a name="install-the-mma"></a>Instalace agenta MMA
 
-#### <a name="install-the-agent-on-a-windows-machine"></a>Nainstalujte agenta na počítači s Windows
+#### <a name="install-the-agent-on-a-windows-machine"></a>Instalace agenta na počítač s Windows
 
-Instalace agenta na počítači s Windows:
+Instalace agenta na počítač s Windows:
 
 1. Dvakrát klikněte na staženého agenta.
 2. Na **úvodní** stránce klikněte na **Další**. Na stránce **Licenční podmínky** kliknutím na **Souhlasím** přijměte licenci.
-3. V **cílovou složku**, udržovat nebo změnit výchozí instalační složku > **Další**.
-4. V **možnosti instalace agenta**vyberte **Azure Log Analytics** > **Další**.
-5. Klikněte na tlačítko **přidat** přidáte nový pracovní prostor Log Analytics. Vložte ID pracovního prostoru a klíč, který jste zkopírovali z portálu. Klikněte na **Další**.
+3. V části **cílová složka**ponechejte nebo upravte výchozí instalační složku > **Další**.
+4. V **Možnosti nastavení agenta**vyberte **Azure Log Analytics** > **Další**.
+5. Kliknutím na **Přidat** přidejte nový pracovní prostor Log Analytics. Vložte do ID a klíče pracovního prostoru, který jste zkopírovali z portálu. Klikněte na **Další**.
 
-Agenta můžete nainstalovat z příkazového řádku nebo pomocí automatizovaného metody jako je System Center Configuration Manager. [Další informace](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent#install-and-configure-agent) o použití těchto metod k instalaci agenta MMA.
+#### <a name="install-the-agent-on-a-linux-machine"></a>Instalace agenta do počítače se systémem Linux
 
-#### <a name="install-the-agent-on-a-linux-machine"></a>Nainstalujte agenta na počítači s Linuxem
+Instalace agenta na počítač se systémem Linux:
 
-Instalace agenta na počítači s Linuxem:
-
-1. Přeneste příslušný balíček (x86 nebo x64) na počítači s Linuxem pomocí příkazu scp/sftp.
-2. Instalaci sady pomocí argumentu--install.
+1. Přeneste příslušný balíček (x86 nebo x64) do počítače se systémem Linux pomocí spojovacího bodu služby a SFTP.
+2. Nainstalujte sadu prostředků pomocí argumentu--Install.
 
     ```sudo sh ./omsagent-<version>.universal.x64.sh --install -w <workspace id> -s <workspace key>```
 
-[Další informace](https://docs.microsoft.com/azure/log-analytics/log-analytics-concept-hybrid#supported-linux-operating-systems) o seznam operačních systémů Linux nepodporuje agenta MMA.
-
-#### <a name="install-the-agent-on-a-machine-monitored-by-scom"></a>Nainstalujte agenta na počítači sledováno SCOM
-
-Počítače monitorované pomocí System Center Operations Manager 2012 R2 nebo novější není nutné k instalaci agenta MMA. Řešení Service Map je integrovaná se sadou SCOM, které využívá připojení MMA SCOM ke shromažďování dat potřebné závislosti. Můžete povolit podle pokynů k integraci [tady](https://docs.microsoft.com/azure/azure-monitor/insights/service-map-scom#prerequisites). Všimněte si však, že agenta závislostí, bude nutné nainstalovat na těchto počítačích.
-
-
 ### <a name="install-the-dependency-agent"></a>Instalace agenta závislostí
-1. Instalace agenta závislostí na počítači s Windows, klikněte dvakrát na instalační soubor a postupujte podle pokynů průvodce.
-2. Pokud chcete nainstalovat agenta závislostí na počítači s Linuxem, nainstalujte jako uživatel root pomocí následujícího příkazu:
+1. Chcete-li nainstalovat agenta závislostí na počítač se systémem Windows, dvakrát klikněte na instalační soubor a postupujte podle pokynů průvodce.
+2. Chcete-li nainstalovat agenta závislostí na počítač se systémem Linux, nainstalujte jako kořenový adresář pomocí následujícího příkazu:
 
     ```sh InstallDependencyAgent-Linux64.bin```
 
-Další informace o podpoře agenta závislostí [Windows](../azure-monitor/insights/service-map-configure.md#supported-windows-operating-systems) a [Linux](../azure-monitor/insights/service-map-configure.md#supported-linux-operating-systems) operačních systémů.
+## <a name="create-a-group-using-dependency-visualization"></a>Vytvoření skupiny pomocí Vizualizace závislostí
 
-[Další informace](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#installation-script-examples) o použití skriptů k instalaci agenta závislostí.
+1. V **Azure Migrate: Vyhodnocování**serveru klikněte na **zjištěné servery**.
+2. Ve sloupci **závislosti** klikněte na možnost **Zobrazit závislosti** pro každý počítač, který chcete zkontrolovat.
+3. Na mapě závislostí vidíte následující:
+    - Příchozí (klienti) a odchozí (servery) připojení TCP, k počítači a z něj.
+    - Závislé počítače, které nemají nainstalované agenty závislosti, jsou seskupeny podle čísel portů.
+    - Závislé počítače s nainstalovanými agenty závislostí se zobrazují jako samostatná pole.
+    - Procesy běžící v počítači. Rozbalením jednotlivých polí počítače zobrazíte procesy.
+    - Vlastnosti počítače (včetně plně kvalifikovaného názvu domény, operačního systému, adresy MAC) Kliknutím na jednotlivá pole počítačů zobrazíte podrobnosti.
 
-
-## <a name="create-a-group"></a>Vytvoření skupiny
-
-1. Po instalaci agentů, přejděte na portál a klikněte na tlačítko **spravovat** > **počítače**.
-2. Hledání počítače, kam jste nainstalovali agenty.
-3. **Závislosti** sloupec pro počítač by měl nyní zobrazit jako **zobrazit závislosti**. Klikněte na sloupec a zobrazit závislosti počítače.
-4. Mapa závislostí pro počítač se zobrazí následující podrobnosti:
-    - Odchozí připojení (servery) TCP do/z počítače a příchozí (klientů)
-        - Závislé počítače, které nemají nainstalovaného agenta MMA a závislosti jsou seskupené podle čísla portů
-        - Závislé počítače, které mají agenta MMA a instalaci agenta závislosti jsou uvedeny v samostatných polích.
-    - Spuštěné procesy v rámci počítače, můžete rozbalit každé pole počítače zobrazit procesy
-    - Vlastnosti, jako je plně kvalifikovaný název domény, operačního systému, atd. adresu MAC každého počítače, můžete kliknout na každé pole počítače zobrazit tyto podrobnosti
-
-      ![Zobrazení závislostí počítačů](./media/how-to-create-group-machine-dependencies/machine-dependencies.png)
-
-4. Po kliknutí na dobu trvání rozsah popisku čas můžete prohlédnout závislosti pro různé dob trvání. Rozsah ve výchozím nastavení je jedna hodina. Můžete upravit časový rozsah, nebo zadat počáteční a koncové datum a dobu trvání.
-
-   > [!NOTE]
-   >    Vizualizace závislostí uživatelského rozhraní v současné době nepodporuje výběr časový rozsah, který je delší než hodinu. Použití Azure monitoru zaznamená do [zadávat dotazy na data závislostí](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies) za delší dobu.
-
-5. Po identifikaci závislých počítačů, které chcete seskupit dohromady pomocí Ctrl + kliknutí výběr více počítačů na mapě, a klikněte na **skupiny počítačů**.
-6. Zadejte název skupiny. Ověřte, že se službou Azure Migrate zjistí závislých počítačů.
+4. Závislosti pro různá časová období můžete sledovat kliknutím na časový interval v popisku časového rozsahu. Ve výchozím nastavení je rozsah hodina. Můžete změnit časový rozsah nebo zadat počáteční a koncové datum a dobu trvání.
 
     > [!NOTE]
-    > Pokud se službou Azure Migrate nenašel se závislý počítač, nelze jej přidat do skupiny. Tyto počítače přidat do skupiny, budete muset spustit proces zjišťování znovu s správný obor v systému vCenter Server a ujistěte se, že na počítači zjišťuje službou Azure Migrate.  
+    > Časový rozsah může být až hodinu. Pokud potřebujete delší rozsah, použijte Azure Monitor k dotazování závislých dat po delší dobu.
 
-7. Pokud chcete vytvořit posouzení pro tuto skupinu, vyberte zaškrtávací políčko, chcete-li vytvořit nové posouzení pro skupinu.
-8. Klikněte na tlačítko **OK** uložte skupinu.
+5. Po zjištění závislých počítačů, které chcete seskupovat, můžete pomocí Ctrl + kliknutí vybrat na mapě více počítačů a kliknout na **Seskupit počítače**.
+6. Zadejte název skupiny.
+7. Ověřte, zda jsou závislé počítače zjištěny Azure Migrate.
 
-Jakmile se vytvoří skupina, se doporučuje nainstalovat agenty na všech počítačích skupině a skupinu Upřesnit vizualizací závislostí celou skupinu.
+    - Pokud se nezjistí závislý počítač Azure Migrate: Vyhodnocování serveru ho nemůžete přidat do skupiny.
+    - Chcete-li přidat počítač, spusťte znovu zjišťování a ověřte, zda je počítač zjištěn.
 
-## <a name="query-dependency-data-from-azure-monitor-logs"></a>Dotazování na závislost data z protokolů Azure Monitor
+8. Pokud chcete pro tuto skupinu vytvořit vyhodnocení, zaškrtněte políčko pro vytvoření nového vyhodnocení pro skupinu.
+8. Kliknutím na tlačítko **OK** skupinu uložte.
 
-Závislost data zachycená pomocí mapy služeb je k dispozici pro dotazování v pracovním prostoru Log Analytics přidružený k projektu Azure Migrate. [Další informace](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#log-analytics-records) tabulky dat Service Map pro dotazování ve službě Azure Monitor protokoly. 
+Po vytvoření skupiny doporučujeme nainstalovat agenty do všech počítačů ve skupině a potom vizualizovat závislosti pro celou skupinu.
 
-Spuštění dotazů Kusto:
+## <a name="query-dependency-data-in-azure-monitor"></a>Dotazování na data závislostí v Azure Monitor
 
-1. Po instalaci agentů, přejděte na portál a klikněte na tlačítko **přehled**.
-2. V **přehled**, přejděte na stránku **Essentials** části projektu a klikněte na název pracovního prostoru k dispozici vedle **pracovní prostor OMS**.
-3. Na stránce pracovního prostoru Log Analytics, klikněte na tlačítko **Obecné** > **protokoly**.
-4. Napsat dotaz pro shromažďování dat závislosti pomocí protokolů z Azure monitoru. Ukázkové dotazy najdete v další části.
-5. Spusťte dotaz kliknutím na spustit. 
+Data závislosti zachycená Service Map můžete dotazovat v pracovním prostoru Log Analytics přidruženém k vašemu projektu Azure Migrate. Log Analytics slouží k zápisu a spouštění dotazů protokolu Azure Monitor.
 
-[Další informace](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal) o tom, jak psát dotazy Kusto. 
+- [Naučte se](../azure-monitor/insights/service-map.md#log-analytics-records) Hledat Service map data v Log Analytics.
+- [Získejte přehled](../azure-monitor/log-query/get-started-queries.md) o psaní dotazů protokolu v [Log Analytics](../azure-monitor/log-query/get-started-portal.md).
 
-### <a name="sample-azure-monitor-logs-queries"></a>Ukázka Azure Monitor zaznamenává dotazy
+Spusťte dotaz na data závislostí následujícím způsobem:
 
-Tady jsou ukázkové dotazy, které vám umožní extrahovat data závislostí. Můžete upravit dotazy k extrakci upřednostňované datových bodů. Úplný seznam polí v závislosti datových záznamů je k dispozici [tady](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#log-analytics-records). Najít další ukázkové dotazy [tady](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#sample-log-searches).
+1. Po instalaci agentů přejděte na portál a klikněte na **Přehled**.
+2. V **Azure Migrate: Vyhodnocování**serveru klikněte na **Přehled**. Kliknutím na šipku dolů rozbalte **základy**.
+3. V **pracovním prostoru OMS**klikněte na název pracovního prostoru.
+3. Na stránce Log Analytics pracovní prostor > **Obecné**klikněte na **protokoly**.
+4. Napište dotaz a klikněte na **Spustit**.
 
-#### <a name="summarize-inbound-connections-on-a-set-of-machines"></a>Shrnutí příchozí připojení na sadu počítačů
+### <a name="sample-queries"></a>Ukázkové dotazy
 
-Všimněte si, že záznamy v tabulce metrik připojení, VMConnection, nepředstavují jednotlivých fyzických síťových připojení. Víc fyzických síťových připojení jsou seskupeny do logických připojení. [Další informace](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#connections) o jak fyzické síťové připojení se data agregují do jednoho logického záznamu v VMConnection. 
+Poskytujeme počet ukázkových dotazů, které můžete použít k extrakci dat závislostí.
+
+- Můžete upravit dotazy pro extrakci preferovaných datových bodů.
+- [Prohlédněte si](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#log-analytics-records) úplný seznam záznamů dat závislosti.
+- [Projděte si](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#sample-log-searches) další Ukázkové dotazy.
+
+#### <a name="sample-review-inbound-connections"></a>Ukázka: Zkontrolovat příchozí připojení
+
+Zkontrolujte příchozí připojení pro sadu virtuálních počítačů.
+
+- Záznamy v tabulce pro metriky připojení (VMConnection) nepředstavují jednotlivá fyzická síťová připojení.
+- Několik fyzických síťových připojení se seskupí do logického připojení.
+- [Přečtěte si další informace](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#connections) o tom, jak se data fyzického připojení k síti agreguje v VMConnection.
 
 ```
 // the machines of interest
@@ -147,15 +168,17 @@ let ips=materialize(ServiceMapComputer_CL
 | summarize ips=makeset(todynamic(Ipv4Addresses_s)) by MonitoredMachine=ResourceName_s
 | mvexpand ips to typeof(string));
 let StartDateTime = datetime(2019-03-25T00:00:00Z);
-let EndDateTime = datetime(2019-03-30T01:00:00Z); 
+let EndDateTime = datetime(2019-03-30T01:00:00Z);
 VMConnection
-| where Direction == 'inbound' 
+| where Direction == 'inbound'
 | where TimeGenerated > StartDateTime and TimeGenerated  < EndDateTime
 | join kind=inner (ips) on $left.DestinationIp == $right.ips
 | summarize sum(LinksEstablished) by Computer, Direction, SourceIp, DestinationIp, DestinationPort
 ```
 
-#### <a name="summarize-volume-of-data-sent-and-received-on-inbound-connections-between-a-set-of-machines"></a>Shrnutí objem dat odeslaných a přijatých u příchozích připojení mezi sadu počítačů
+#### <a name="sample-summarize-sent-and-received-data"></a>Ukázka: Sumarizace odeslaných a přijatých dat
+
+Tato ukázka shrnuje objem dat odesílaných a přijatých na příchozích připojeních mezi sadou počítačů.
 
 ```
 // the machines of interest
@@ -163,9 +186,9 @@ let ips=materialize(ServiceMapComputer_CL
 | summarize ips=makeset(todynamic(Ipv4Addresses_s)) by MonitoredMachine=ResourceName_s
 | mvexpand ips to typeof(string));
 let StartDateTime = datetime(2019-03-25T00:00:00Z);
-let EndDateTime = datetime(2019-03-30T01:00:00Z); 
+let EndDateTime = datetime(2019-03-30T01:00:00Z);
 VMConnection
-| where Direction == 'inbound' 
+| where Direction == 'inbound'
 | where TimeGenerated > StartDateTime and TimeGenerated  < EndDateTime
 | join kind=inner (ips) on $left.DestinationIp == $right.ips
 | summarize sum(BytesSent), sum(BytesReceived) by Computer, Direction, SourceIp, DestinationIp, DestinationPort
@@ -173,6 +196,4 @@ VMConnection
 
 ## <a name="next-steps"></a>Další postup
 
-- [Další informace](https://docs.microsoft.com/azure/migrate/resources-faq#dependency-visualization) o nejčastějších dotazech na vizualizaci závislostí.
-- [Zjistěte, jak](how-to-create-group-dependencies.md) pro upřesnění skupiny pomocí vizualizace závislostí skupin.
-- [Přečtěte si další informace](concepts-assessment-calculation.md) o tom, jak se v rámci posouzení počítají náklady.
+[Vytvořte posouzení](how-to-create-assessment.md) pro skupinu.

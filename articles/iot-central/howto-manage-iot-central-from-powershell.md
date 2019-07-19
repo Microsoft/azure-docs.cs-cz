@@ -1,25 +1,25 @@
 ---
-title: Správa IoT Central z prostředí Azure PowerShell | Dokumentace Microsoftu
-description: IoT Central spravujte z prostředí Azure PowerShell.
+title: Spravovat IoT Central z Azure PowerShell | Microsoft Docs
+description: Umožňuje spravovat IoT Central z Azure PowerShell.
 services: iot-central
 ms.service: iot-central
 author: dominicbetts
 ms.author: dobett
-ms.date: 01/14/2019
+ms.date: 07/11/2019
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: 086c7d303fd199090de3be77b2456c4ebcd053a8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 23243324c64519094432ee0c80d3e0cad447ef8b
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66726935"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67849057"
 ---
 # <a name="manage-iot-central-from-azure-powershell"></a>Správa řešení IoT Central z Azure PowerShellu
 
 [!INCLUDE [iot-central-selector-manage](../../includes/iot-central-selector-manage.md)]
 
-Místo vytváření a správu aplikací IoT Central z IoT Central [Správce aplikací](https://aka.ms/iotcentral) stránku, použijte [prostředí Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) ke správě vašich aplikací.
+Místo vytváření a správy aplikací IoT Central ze stránky IoT Central [Správce aplikací](https://aka.ms/iotcentral) můžete ke správě aplikací použít [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) .
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -27,17 +27,17 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Pokud chcete spustit prostředí Azure PowerShell na místním počítači, přečtěte si téma [instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps). Při spuštění prostředí Azure PowerShell místně, použijte **připojit AzAccount** rutiny pro přihlášení k Azure, než se pokusíte rutiny v tomto článku.
+Pokud dáváte přednost spuštění Azure PowerShell na místním počítači, přečtěte si téma [Instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps). Když spustíte Azure PowerShell místně, přihlaste se k Azure pomocí rutiny **Connect-AzAccount** , než se pokusíte rutiny v tomto článku vyzkoušet.
 
 ## <a name="install-the-iot-central-module"></a>Instalace modulu IoT Central
 
-Spusťte následující příkaz a zkontrolujte [modulu IoT Central](https://docs.microsoft.com/powershell/module/az.iotcentral/) je nainstalovaný ve vašem prostředí PowerShell:
+Spuštěním následujícího příkazu ověřte, že je v prostředí PowerShellu nainstalovaný [modul IoT Central](https://docs.microsoft.com/powershell/module/az.iotcentral/) :
 
 ```powershell
 Get-InstalledModule -name Az.I*
 ```
 
-Pokud se seznam nainstalovaných modulů neobsahuje **Az.IotCentral**, spusťte následující příkaz:
+Pokud seznam nainstalovaných modulů neobsahuje **AZ. IotCentral**, spusťte následující příkaz:
 
 ```powershell
 Install-Module Az.IotCentral
@@ -45,7 +45,7 @@ Install-Module Az.IotCentral
 
 ## <a name="create-an-application"></a>Vytvoření aplikace
 
-Použití [New-AzIotCentralApp](https://docs.microsoft.com/powershell/module/az.iotcentral/New-AzIotCentralApp) rutina pro vytvoření aplikace IoT Central ve vašem předplatném Azure. Příklad:
+Pomocí rutiny [New-AzIotCentralApp](https://docs.microsoft.com/powershell/module/az.iotcentral/New-AzIotCentralApp) vytvořte aplikaci IoT Central ve vašem předplatném Azure. Příklad:
 
 ```powershell
 # Create a resource group for the IoT Central application
@@ -61,17 +61,17 @@ New-AzIotCentralApp -ResourceGroupName "MyIoTCentralResourceGroup" `
   -DisplayName "My Custom Display Name"
 ```
 
-Skript nejprve vytvoří skupinu prostředků na východě USA oblast pro aplikaci. Následující tabulka popisuje parametry používané s **New-AzIotCentralApp** příkaz:
+Skript nejprve vytvoří skupinu prostředků v oblasti východní USA pro aplikaci. Následující tabulka popisuje parametry, které se používají v příkazu **New-AzIotCentralApp** :
 
 |Parametr         |Popis |
 |------------------|------------|
-|ResourceGroupName |Skupina prostředků, která obsahuje aplikaci. Tato skupina prostředků musí existovat ve vašem předplatném. |
-|Location |Tato rutina se používá ve výchozím umístění, ze skupiny prostředků. V současné době můžete vytvořit aplikace IoT Central **USA – východ**, **USA – západ**, **Severní Evropa**, nebo **západní Evropa** oblastech. |
-|Název              |Název aplikace na webu Azure Portal. |
-|Subdoména         |Subdoména v adrese URL aplikace. V tomto příkladu je adresa URL aplikace https://mysubdomain.azureiotcentral.com. |
-|Skladová jednotka (SKU)               |V současné době je jediná hodnota **S1** (úrovně standard). Zobrazit [ceny Azure IoT Central](https://azure.microsoft.com/pricing/details/iot-central/). |
-|Šablona          | Šablony aplikace používat. Další informace najdete v tématu v následující tabulce: |
-|displayName       |Název aplikace, jak se zobrazuje v uživatelském rozhraní. |
+|ResourceGroupName |Skupina prostředků, která obsahuje aplikaci. Tato skupina prostředků už musí existovat ve vašem předplatném. |
+|Location |Ve výchozím nastavení používá tato rutina umístění ze skupiny prostředků. V současné době můžete vytvořit aplikaci IoT Central v oblastech **východní USA**, **západní USA**, **Severní Evropa**nebo **západní Evropa** . |
+|Name              |Název aplikace v Azure Portal. |
+|subdomény         |Subdoména v adrese URL aplikace V tomto příkladu je https://mysubdomain.azureiotcentral.com adresa URL aplikace. |
+|Skladová jednotka (SKU)               |V současné době jediná hodnota je **S1** (úroveň Standard). Viz [ceny za Azure IoT Central](https://azure.microsoft.com/pricing/details/iot-central/). |
+|Šablona          | Šablona aplikace, která se má použít Další informace najdete v následující tabulce: |
+|DisplayName       |Název aplikace, jak se zobrazuje v uživatelském rozhraní. |
 
 **Šablony aplikací**
 
@@ -79,15 +79,15 @@ Skript nejprve vytvoří skupinu prostředků na východě USA oblast pro aplika
 |---------------|------------|
 |iotc-default@1.0.0 |Vytvoří prázdnou aplikaci, kterou můžete naplnit vlastními šablonami zařízení a zařízeními. |
 |iotc-demo@1.0.0    |Vytvoří aplikaci, která zahrnuje již vytvořenou šablonu zařízení pro chladící prodejní automat. Pomocí této šablony můžete začít zkoumat Azure IoT Central. |
-|iotc-devkit-sample@1.0.0 |Vytvoří aplikaci s připravenými šablonami zařízení pro připojení zařízení MXChip nebo Raspberry Pi. Tuto šablonu použijte, pokud jste vývojář zařízení experimentovat s některou z těchto zařízení. |
+|iotc-devkit-sample@1.0.0 |Vytvoří aplikaci s připravenými šablonami zařízení pro připojení zařízení MXChip nebo Raspberry Pi. Tuto šablonu použijte, pokud jste vývojář zařízení experimentovat s některým z těchto zařízení. |
 
-## <a name="view-your-iot-central-applications"></a>Zobrazit aplikace IoT Central
+## <a name="view-your-iot-central-applications"></a>Zobrazení aplikací IoT Central
 
-Použití [Get-AzIotCentralApp](https://docs.microsoft.com/powershell/module/az.iotcentral/Get-AzIotCentralApp) rutina pro zobrazení seznamu aplikací IoT Central a zobrazení metadat.
+Pomocí rutiny [Get-AzIotCentralApp](https://docs.microsoft.com/powershell/module/az.iotcentral/Get-AzIotCentralApp) můžete zobrazit seznam aplikací IoT Central a zobrazovat metadata.
 
-## <a name="modify-an-application"></a>Upravit aplikace
+## <a name="modify-an-application"></a>Úprava aplikace
 
-Použití [Set-AzIotCentralApp](https://docs.microsoft.com/powershell/module/az.iotcentral/set-aziotcentralapp) rutiny pro aktualizaci metadat aplikace IoT Central. Chcete-li například změnit zobrazovaný název aplikace:
+Pomocí rutiny [set-AzIotCentralApp](https://docs.microsoft.com/powershell/module/az.iotcentral/set-aziotcentralapp) aktualizujte metadata aplikace IoT Central. Například pro změnu zobrazovaného názvu vaší aplikace:
 
 ```powershell
 Set-AzIotCentralApp -Name "myiotcentralapp" `
@@ -97,16 +97,16 @@ Set-AzIotCentralApp -Name "myiotcentralapp" `
 
 ## <a name="remove-an-application"></a>Odebrání aplikace
 
-Použití [odebrat AzIotCentralApp](https://docs.microsoft.com/powershell/module/az.iotcentral/Remove-AzIotCentralApp) rutina pro odstranění aplikace IoT Central. Příklad:
+K odstranění aplikace IoT Central použijte rutinu [Remove-AzIotCentralApp](https://docs.microsoft.com/powershell/module/az.iotcentral/Remove-AzIotCentralApp) . Příklad:
 
 ```powershell
 Remove-AzIotCentralApp -ResourceGroupName "MyIoTCentralResourceGroup" `
  -Name "myiotcentralapp"
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Teď, když jste zjistili, jak spravovat Azure IoT Central aplikace z prostředí Azure PowerShell, tady je navrhované další krok:
+Teď, když jste se naučili, jak spravovat aplikace Azure IoT Central z Azure PowerShell, je tady doporučený další krok:
 
 > [!div class="nextstepaction"]
-> [Spravovat aplikaci](howto-administer.md)
+> [Správa aplikace](howto-administer.md)

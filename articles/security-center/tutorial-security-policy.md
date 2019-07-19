@@ -1,6 +1,6 @@
 ---
-title: Práce se zásadami zabezpečení | Dokumentace Microsoftu
-description: Tento článek popisuje, jak pracovat se zásadami zabezpečení ve službě Azure Security Center.
+title: Práce se zásadami zabezpečení | Microsoft Docs
+description: Tento článek popisuje, jak pracovat se zásadami zabezpečení v Azure Security Center.
 services: security-center
 documentationcenter: na
 author: monhaber
@@ -13,41 +13,41 @@ ms.topic: conceptual
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 5/05/2019
+ms.date: 7/18/2019
 ms.author: v-mohabe
-ms.openlocfilehash: 7ff05421222ff0f4312d703366cfd443eee06450
-ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
+ms.openlocfilehash: 4550532d36753d9b8ed472193bc833855ddd34c9
+ms.sourcegitcommit: da0a8676b3c5283fddcd94cdd9044c3b99815046
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67551728"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68314920"
 ---
 # <a name="working-with-security-policies"></a>Práce se zásadami zabezpečení
 
-Tento článek vysvětluje, jak jsou nakonfigurované zásady zabezpečení a jak zobrazit ve službě Security Center. Azure Security Center automaticky přiřadí jeho [integrované bezpečnostní zásady](security-center-policy-definitions.md) na každé předplatné, které zprovoznění. Můžete nakonfigurovat v [Azure Policy](../governance/policy/overview.md), který také umožňuje nastavit zásady napříč skupinami pro správu a napříč několika předplatnými.
+Tento článek vysvětluje, jak se konfigurují zásady zabezpečení, a jak je zobrazit v Security Center. Azure Security Center automaticky přiřadí do každého předplatného, které je zaregistrované, [integrované zásady zabezpečení](security-center-policy-definitions.md) . Můžete je nakonfigurovat v [Azure Policy](../governance/policy/overview.md), což také umožňuje nastavit zásady napříč skupinami pro správu a mezi několika předplatnými.
 
-Pokyny o tom, jak nastavit zásady pomocí Powershellu najdete v tématu [rychlý start: Vytvoření přiřazení zásady pro identifikaci neodpovídajících prostředků pomocí modulu Azure PowerShell](../governance/policy/assign-policy-powershell.md).
+Pokyny k nastavení zásad pomocí prostředí PowerShell najdete v tématu [rychlý Start: Vytvořte přiřazení zásady pro identifikaci prostředků, které nedodržují předpisy, pomocí](../governance/policy/assign-policy-powershell.md)modulu Azure PowerShell.
 
 >[!NOTE]
-> Security Center začít své integraci s Azure Policy. Stávající zákazníci budou automaticky migrovat na nové integrované podnět ve službě Azure Policy, namísto předchozí zásady zabezpečení ve službě Security Center. Tato změna nebude mít vliv na prostředky nebo prostředí s výjimkou přítomnost nové aktivity ve službě Azure Policy.
+> Security Center spustil svou integraci s Azure Policy. Stávající zákazníci budou automaticky migrováni na novou předdefinovanou iniciativu v Azure Policy místo na předchozí zásady zabezpečení v Security Center. Tato změna nebude mít vliv na vaše prostředky nebo prostředí s výjimkou přítomnosti nové iniciativy v Azure Policy.
 
 ## <a name="what-are-security-policies"></a>Co jsou zásady zabezpečení?
-Zásady zabezpečení definují požadovanou konfiguraci úloh a pomáhají zajišťovat dodržování předpisů společnosti nebo soulad se zákonnými požadavky na zabezpečení. Ve službě Azure Policy můžete definovat zásady pro vaše předplatná Azure a je typu úlohy nebo citlivosti dat. přizpůsobit. Aplikace, které používají regulovaná data, jako je například osobní údaje nebo zákaznická data, například může vyžadovat vyšší úroveň zabezpečení než jiné úlohy. Nastavit zásady napříč předplatnými nebo skupin pro správu, je nastavit [Azure Policy](../governance/policy/overview.md).
+Zásady zabezpečení definují požadovanou konfiguraci úloh a pomáhají zajišťovat dodržování předpisů společnosti nebo soulad se zákonnými požadavky na zabezpečení. V Azure Policy můžete definovat zásady pro vaše předplatná Azure a přizpůsobit je vašemu typu úlohy nebo citlivosti vašich dat. Například aplikace, které používají regulovaná data, jako jsou osobní údaje nebo zákaznická data, mohou vyžadovat vyšší úroveň zabezpečení než jiné úlohy. Chcete-li nastavit zásadu napříč předplatnými nebo skupinami pro správu, nastavte je v [Azure Policy](../governance/policy/overview.md).
 
-Zásady zabezpečení vliv na doporučení zabezpečení, získáte v Azure Security Center. Můžete monitorovat dodržování zásad v nich můžete najít potenciální nedostatky zabezpečení a zmírnit hrozby. Další informace o tom, jak určit, která možnost je pro vás vhodná, najdete v seznamu [integrované bezpečnostní zásady](security-center-policy-definitions.md).
+Vaše zásady zabezpečení řídí doporučení zabezpečení, která se zobrazí v Azure Security Center. Dodržování předpisů můžete monitorovat, abyste mohli identifikovat potenciální ohrožení zabezpečení a zmírnit hrozby. Další informace o tom, jak určit, která možnost je pro vás vhodná, najdete v seznamu [integrovaných zásad zabezpečení](security-center-policy-definitions.md).
 
-Když povolíte Security Center, zásady zabezpečení, která je integrovaná do služby Security Center se projeví ve službě Azure Policy jako integrované iniciativy v rámci kategorie Security Center. Integrované iniciativy se automaticky přiřadí na všechny odběry registrované Security Center (úrovně Free nebo Standard). Integrované iniciativy obsahuje pouze zásady auditu.
+Pokud povolíte Security Center, jsou zásady zabezpečení integrované s Security Center se projeví v Azure Policy jako integrovaná iniciativa v kategorii Security Center. Předdefinovaná iniciativa se automaticky přiřadí všem Security Center registrovaným předplatným (úrovně Free nebo Standard). Integrovaná iniciativa obsahuje pouze zásady auditu.
 
 
 ### <a name="management-groups"></a>Skupiny pro správu
-Pokud má vaše organizace mnoho předplatných, možná budete potřebovat způsob, jak efektivně spravovat přístup, zásady a dodržování předpisů pro tato předplatná. Skupiny pro správu Azure poskytují úroveň rozsahu nad předplatnými. Předplatná uspořádáte do kontejnerů označovaných jako skupiny pro správu a na tyto skupiny pro správu použijete své zásady správného řízení. Všechna předplatná v rámci skupiny pro správu automaticky dědí zásady, které se vztahují na skupinu pro správu. Každý adresář obdrží jednu skupinu pro správu nejvyšší úrovně označovanou jako kořenová skupina pro správu. Tato kořenová skupina pro správu je integrovaná do hierarchie tak, aby pod ní spadaly všechny skupiny pro správu a všechna předplatná. Tato kořenová skupina pro správu umožňuje používání globálních zásad a přiřazení RBAC na úrovni adresáře. Nastavení skupin pro správu pro použití se službou Azure Security Center, postupujte podle pokynů v [získejte potřebný Přehled celého tenanta pro Azure Security Center](security-center-management-groups.md).
+Pokud má vaše organizace mnoho předplatných, možná budete potřebovat způsob, jak efektivně spravovat přístup, zásady a dodržování předpisů pro tato předplatná. Skupiny pro správu Azure poskytují úroveň rozsahu nad předplatnými. Předplatná uspořádáte do kontejnerů označovaných jako skupiny pro správu a na tyto skupiny pro správu použijete své zásady správného řízení. Všechna předplatná v rámci skupiny pro správu automaticky dědí zásady, které se vztahují na skupinu pro správu. Každý adresář obdrží jednu skupinu pro správu nejvyšší úrovně označovanou jako kořenová skupina pro správu. Tato kořenová skupina pro správu je integrovaná do hierarchie tak, aby pod ní spadaly všechny skupiny pro správu a všechna předplatná. Tato kořenová skupina pro správu umožňuje používání globálních zásad a přiřazení RBAC na úrovni adresáře. Chcete-li nastavit skupiny pro správu pro použití s Azure Security Center, postupujte podle pokynů v části [získání viditelnosti pro Azure Security Center v rámci tenanta](security-center-management-groups.md).
 
 > [!NOTE]
 > Je důležité, abyste rozuměli hierarchii skupin pro správu a předplatných. Další informace o skupinách pro správu, kořenových skupinách pro správu a přístupu ke skupinám pro správu najdete v tématu věnovaném [uspořádání prostředků pomocí skupin pro správu Azure](../governance/management-groups/index.md#root-management-group-for-each-directory).
 >
 
 ## <a name="how-security-policies-work"></a>Způsob fungování zásad zabezpečení
-Security Center automaticky vytváří výchozí zásady zabezpečení pro každé z vašich předplatných Azure. Můžete upravit zásady ve službě Azure Policy provádět následující akce:
+Security Center automaticky vytváří výchozí zásady zabezpečení pro každé z vašich předplatných Azure. Zásady v Azure Policy můžete upravit, abyste mohli provádět následující akce:
 - Vytvoření nových definic zásad
 - Přiřazení zásad napříč skupinami pro správu a předplatnými, které můžou reprezentovat celou organizaci nebo obchodní jednotku v rámci organizace
 - Monitorování dodržování zásad
@@ -56,95 +56,96 @@ Další informace o službě Azure Policy najdete v tématu [Vytvoření a sprá
 
 Zásada Azure se skládá z následujících součástí:
 
-- A **zásady** je pravidlo.
-- **Iniciativy** je kolekce zásady.
-- **Přiřazení** je o iniciativy nebo zásady aplikace pro konkrétní obor (skupiny pro správu, předplatné nebo skupinu prostředků).
+- **Zásada** je pravidlo.
+- **Iniciativa** je kolekce zásad.
+- **Přiřazení** je aplikace iniciativy nebo zásady konkrétního oboru (skupina pro správu, předplatné nebo skupina prostředků).
 
 ## <a name="view-security-policies"></a>Zobrazení zásad zabezpečení
 
 Zobrazení zásad zabezpečení ve službě Security Center:
 
-1. V **Security Center** řídicího panelu, vyberte **zásady zabezpečení**.
+1. Na řídicím panelu **Security Center** vyberte **zásady zabezpečení**.
 
     ![Okno Správa zásad](./media/security-center-policies/security-center-policy-mgt.png)
 
-   V **Správa zásad** obrazovky, zobrazí se počet skupin pro správu, předplatných a pracovních prostorů, jakož i strukturu skupin pro správu.
+   Na obrazovce **Správa zásad** můžete zobrazit počet skupin pro správu, odběry a pracovní prostory i strukturu skupiny pro správu.
 
    > [!NOTE]
-   > - Řídicí panel Security Center může zobrazit větší počet předplatných v rámci **pokrytí předplatného** než počet předplatných, které jsou uvedené v části **Správa zásad**. V části Pokrytí předplatného se zobrazuje počet předplatných úrovně Standard a Free a „nepokrytých“ předplatných. Předplatná "nejsou zahrnuta" nemají povolené Security Center a nejsou zobrazeny v části **Správa zásad**.
+   > Řídicí panel Security Center může zobrazit větší počet předplatných v rámci **pokrytí** předplatného, než je počet předplatných zobrazený v části **Správa zásad**. V části Pokrytí předplatného se zobrazuje počet předplatných úrovně Standard a Free a „nepokrytých“ předplatných. Předplatná, která nejsou pokrytá, nemají povolený Security Center a nejsou zobrazená v části **Správa zásad**.
    >
 
-2. Vyberte předplatné nebo správu skupinu, jejichž zásady, které chcete zobrazit.
+2. Vyberte předplatné nebo skupinu pro správu, jejichž zásady chcete zobrazit.
 
-   - **Zásady zabezpečení** obrazovce se projeví akci provedenou na základě zásad přiřazených na předplatné nebo skupinu pro správu jste vybrali.
-   - V horní části stránky, použijte odkazy otevřete jednotlivé zásady **přiřazení** , která se vztahuje na předplatné nebo skupinu pro správu. Odkazy můžete použít pro přístup k přiřazení a upravte nebo zakažte zásadu. Například pokud se zobrazí, že konkrétní zásady přiřazení efektivně odepření služby endpoint protection, můžete použít odkaz pro přístup k zásadám a upravit nebo zakázat.
-   - V seznamu zásad uvidíte efektivní použití zásady na vaše předplatné nebo skupinu pro správu. To znamená, že jsou nastavení jednotlivých zásad, které se vztahují k oboru vzít v úvahu a jsou součástí souhrnné výsledky akci těmito zásadami. Například pokud v jedné přiřazení zásady zakázaly, ale v jiném nastavená na AuditIfNotExist, kumulativní efekt použije AuditIfNotExist. Aktivní efekt vždy přednost.
-   - Tyto zásady vliv může být: Připojit, Audit, AuditIfNotExists, zakáže, DeployIfNotExists, zakázané. Další informace o použití efektů, naleznete v tématu [pochopit zásady účinky](../governance/policy/concepts/effects.md).
+   - Obrazovka **zásady zabezpečení** odráží akci provedenou zásadami přiřazenými k předplatnému nebo skupině pro správu, kterou jste vybrali.
+   - V horní části použijte poskytnuté odkazy k otevření každého **přiřazení** zásady, které platí pro předplatné nebo skupinu pro správu. Pomocí odkazů můžete získat přístup k přiřazení a upravit nebo zakázat zásady. Pokud se například zobrazí, že konkrétní přiřazení zásad efektivně odmítá službu Endpoint Protection, můžete použít odkaz pro přístup k zásadám a jejich úpravu nebo zakázání.
+   - V seznamu zásad se můžete podívat na efektivní použití zásad pro vaše předplatné nebo skupinu pro správu. To znamená, že se vezme v úvahu nastavení každé zásady, která se vztahují k oboru, a vy budete mít kumulativní výsledek toho, co zásady provádí. Například pokud je v jednom přiřazení zásada zakázána, ale v jiném je nastavená na AuditIfNotExist, pak se Kumulativní efekt použije AuditIfNotExist. Vyšší aktivní efekt vždy má přednost.
+   - Účinek zásad může být: Připojení, audit, AuditIfNotExists, zamítnutí, DeployIfNotExists, zakázáno. Další informace o tom, jak se efekty používají, najdete v tématu [vysvětlení efektů zásad](../governance/policy/concepts/effects.md).
 
-   ![zásady obrazovky](./media/security-center-policies/policy-screen.png)
+   ![obrazovka zásady](./media/security-center-policies/policy-screen.png)
 
 > [!NOTE]
-> - Při zobrazení můžete přiřadit zásady, můžete zobrazit více přiřazení a vy vidíte, konfiguraci každé přiřazení sama o sobě.
+> Když si zobrazíte přiřazené zásady, uvidíte několik přiřazení a uvidíte, jak se každé přiřazení konfiguruje sami.
 
 ## <a name="edit-security-policies"></a>Upravení zásad zabezpečení
-Ve službě [Azure Policy](../governance/policy/tutorials/create-and-manage.md) můžete upravit výchozí zásady zabezpečení pro každou z vašich skupin pro správu a každé z vašich předplatných Azure. Pokud chcete upravit zásady zabezpečení, musíte být vlastníkem, přispěvatelem nebo správcem zabezpečení daného předplatného nebo skupiny pro správu, která ho obsahuje.
+Ve službě [Azure Policy](../governance/policy/tutorials/create-and-manage.md) můžete upravit výchozí zásady zabezpečení pro každou z vašich skupin pro správu a každé z vašich předplatných Azure. Chcete-li upravit zásadu zabezpečení, musíte být vlastníkem nebo správcem zabezpečení předplatného nebo obsahující skupiny pro správu.
 
-Pokyny o tom, jak upravit zásady zabezpečení ve službě Azure Policy najdete v tématu a [vytvoření a Správa zásad pro vynucování dodržování předpisů](../governance/policy/tutorials/create-and-manage.md).
+Pokyny k úpravám zásad zabezpečení v Azure Policy najdete v tématech a [vytváření a Správa zásad pro vymáhání dodržování předpisů](../governance/policy/tutorials/create-and-manage.md).
 
-Můžete upravit zásady zabezpečení pomocí portálu Azure Policy, prostřednictvím rozhraní REST API nebo pomocí Windows Powershellu. Následující příklad uvádí pokyny k úpravám pomocí rozhraní REST API.
+Zásady zabezpečení můžete upravovat prostřednictvím Azure Policyového portálu prostřednictvím REST API nebo pomocí Windows PowerShellu. Následující příklad uvádí pokyny pro úpravy pomocí REST API.
 
 
-## <a name="disable-security-policies"></a>Vypnutí zásad zabezpečení
-Pokud výchozí zásady zabezpečení je generování doporučení, které nejsou relevantní pro vaše prostředí, můžete zastavit jeho zakázáním definice zásad, která odesílá doporučení.
+## <a name="disable-security-policies"></a>Zakázat zásady zabezpečení
+Pokud výchozí zásady zabezpečení generují doporučení, které není pro vaše prostředí důležité, můžete je zastavit tím, že zakážete definici zásady, která posílá doporučení.
 Další informace o doporučeních najdete v tématu [Správa doporučení zabezpečení](security-center-recommendations.md).
 
-1. Ve službě Security Center z **zásady a dodržování předpisů** klikněte na tlačítko **zásady zabezpečení**.
+1. V Security Center v části **zásady & dodržování předpisů** klikněte na **zásady zabezpečení**.
 
    ![Správa zásad](./media/tutorial-security-policy/policy-management.png)
 
-2. Klikněte předplatné nebo skupinu pro správu pro kterou chcete zakázat toto doporučení.
+2. Klikněte na předplatné nebo skupinu pro správu, pro kterou chcete doporučení zakázat.
 
    > [!Note]
-   > Mějte na paměti, platí skupinu pro správu zásad pro její odběry. Proto pokud zásada předplatného a předplatné patří do skupiny pro správu, která stále používá stejné zásady, pak je bude dál dostávat doporučení týkající se zásad. Zásada se použije v úrovni pro správu a doporučení budou i nadále vygenerována.
+   > Pamatujte, že skupina pro správu použije své zásady na své odběry. Proto pokud zakážete zásady předplatného a předplatné patří do skupiny pro správu, která stále používá stejné zásady, pak budou doporučení k zásadám dál dostávat. Zásada bude i nadále použita z úrovně správy a doporučení budou vygenerována.
 
-1. Klikněte na přiřazené zásady.
+1. Klikněte na přiřazenou zásadu.
 
-   ![Zakázat zásadu](./media/tutorial-security-policy/security-policy.png)
+   ![zakázat zásadu](./media/tutorial-security-policy/security-policy.png)
 
-1. V **parametry** části hledání zásad, který vyvolá doporučení, který chcete zakázat a z rozevíracího seznamu vyberte **zakázáno**
+1. V části **parametry** vyhledejte zásadu, která vyvolá doporučení, které chcete zakázat, a v rozevíracím seznamu vyberte možnost **zakázáno** .
 
-   ![Zakázat zásadu](./media/tutorial-security-policy/disable-policy.png)
+   ![zakázat zásadu](./media/tutorial-security-policy/disable-policy.png)
 1. Klikněte na **Uložit**.
    > [!Note]
-   > Změny zásad zakázat může trvat až 12 hodin, než se projeví.
+   > Změny zásad, které se projeví, můžou trvat až 12 hodin.
 
 
-### <a name="configure-a-security-policy-using-the-rest-api"></a>Konfigurace zásad zabezpečení pomocí rozhraní REST API
+### <a name="configure-a-security-policy-using-the-rest-api"></a>Konfigurace zásad zabezpečení pomocí REST API
 
-Jako součást nativní integrace se službou Azure Policy Azure Security Center umožňuje využít výhod Azure Policy rozhraní REST API k vytvoření přiřazení zásady. Postupujte podle následujících pokynů vás provedou vytvořením přiřazení zásad, stejně jako vlastní nastavení z existující přiřazení. 
+V rámci nativní integrace s Azure Policy Azure Security Center umožňuje využít REST API Azure Policy k vytváření přiřazení zásad. Následující pokyny vás provedou vytvořením přiřazení zásad a přizpůsobením stávajících přiřazení. 
 
-Důležité koncepty ve službě Azure Policy: 
+Důležité pojmy v Azure Policy: 
 
-- A **definice zásady** je pravidlo 
+- **Definice zásady** je pravidlo 
 
-- **Iniciativy** je kolekce definic zásad (pravidla) 
+- **Iniciativa** je kolekcí definic zásad (pravidel) 
 
-- **Přiřazení** aplikaci iniciativy nebo zásady pro konkrétní obor (skupiny pro správu, předplatné, atd.) 
+- **Přiřazení** je aplikace iniciativy nebo zásady konkrétního oboru (skupina pro správu, předplatné atd.). 
 
-Security Center obsahuje vestavěné iniciativy, která obsahuje všechny jeho zásady zabezpečení. Aby bylo možné vyhodnotit zásady služby Security Center ve vašich prostředcích Azure, měli byste vytvořit přiřazení skupiny pro správu nebo předplatného, které chcete posoudit.  
+Security Center má předdefinovanou iniciativu, která zahrnuje všechny zásady zabezpečení. Aby bylo možné vyhodnotit zásady Security Center v prostředcích Azure, měli byste vytvořit přiřazení ke skupině pro správu nebo předplatnému, které chcete vyhodnotit.  
 
-Integrované iniciativy má všechny zásady služby Security Center ve výchozím nastavení povolená. Můžete také zakázat určitých zásad z předdefinované iniciativu, například můžete použít všechny zásady služby Security Center s výjimkou **firewallu webových aplikací**, tak, že změníte hodnotu parametru účinku zásad  **Zakázané**. 
+Integrovaná iniciativa má ve výchozím nastavení povolené všechny zásady Security Center. Můžete zakázat určité zásady z předdefinované iniciativy, například můžete použít všechny zásady Security Center s výjimkou **firewallu webových aplikací**, a to tak, že změníte hodnotu parametru efektu zásady na Disabled ( **zakázáno**). 
 
 ### <a name="api-examples"></a>Příklady rozhraní API
 
 V následujících příkladech nahraďte tyto proměnné:
 
-- **{oboru}**  zadejte název skupiny pro správu nebo předplatného jsou použití zásady tak, aby.
-- **{policyAssignmentName}**  zadejte [název přiřazení zásady relevantní](#policy-names).
-- **{name}**  zadejte své jméno nebo název správce, který schválení zásadu změnit.
+- **{Scope}** zadejte název skupiny pro správu nebo předplatného, na které zásady aplikujete.
+- **{policyAssignmentName}** zadejte [název odpovídajícího přiřazení zásad](#policy-names).
+- **{Name}** zadejte své jméno nebo jméno správce, který schválil změnu zásad.
 
-Tento příklad ukazuje, jak přiřadit předdefinované iniciativu Security Center podle předplatného nebo skupiny pro správu
+V tomto příkladu se dozvíte, jak přiřadit integrovanou Security Center iniciativu pro předplatné nebo skupinu pro správu.
  
+ ```
     PUT  
     https://management.azure.com/{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}?api-version=2018-05-01 
 
@@ -169,89 +170,90 @@ Tento příklad ukazuje, jak přiřadit předdefinované iniciativu Security Cen
     } 
 
     } 
+ ```
 
-Tento příklad ukazuje, jak přiřadit předdefinované iniciativu Security Center v rámci předplatného se tyto zásady zakázaná: 
+V tomto příkladu se dozvíte, jak přiřadit integrovanou Security Center iniciativu k předplatnému, a tyto zásady jsou zakázané: 
 
-- Aktualizace systému ("systemUpdatesMonitoringEffect") 
+- Aktualizace systému (systemUpdatesMonitoringEffect) 
 
-- Konfigurace zabezpečení ("systemConfigurationsMonitoringEffect") 
+- Konfigurace zabezpečení (systemConfigurationsMonitoringEffect) 
 
-- Aplikace Endpoint protection (dále jen "endpointProtectionMonitoringEffect") 
+- Endpoint Protection (endpointProtectionMonitoringEffect) 
 
-
+ ```
     PUT https://management.azure.com/{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}?api-version=2018-05-01 
     
-    Text požadavku (JSON) 
+    Request Body (JSON) 
     
     { 
     
       "properties":{ 
     
-    "displayName": "Povolit monitorování v Azure Security Center", 
+    "displayName":"Enable Monitoring in Azure Security Center", 
     
-    "metadat": { 
+    "metadata":{ 
     
-    "assignedBy": "{Name}. 
+    "assignedBy":"{Name}" 
     
     }, 
     
     "policyDefinitionId":"/providers/Microsoft.Authorization/policySetDefinitions/1f3afdf9-d0c9-4c3d-847f-89da613e70a8", 
     
-    "parametrů": { 
+    "parameters":{ 
     
-    "systemUpdatesMonitoringEffect": {"value": "Zakázáno"}, 
+    "systemUpdatesMonitoringEffect":{"value":"Disabled"}, 
     
-    "systemConfigurationsMonitoringEffect": {"value": "Zakázáno"}, 
+    "systemConfigurationsMonitoringEffect":{"value":"Disabled"}, 
     
-    "endpointProtectionMonitoringEffect": {"value": "Zakázáno"}, 
+    "endpointProtectionMonitoringEffect":{"value":"Disabled"}, 
     
     }, 
     
      } 
     
     } 
-
-Tento příklad ukazuje, jak odebrat přiřazení:
-
+ ```
+V tomto příkladu se dozvíte, jak odebrat přiřazení:
+ ```
     DELETE   
     https://management.azure.com/{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}?api-version=2018-05-01 
+ ```
 
+### Odkazy na názvy zásad<a name="policy-names"></a>
 
-### Referenční příručce o zásadách názvy <a name="policy-names"></a>
-
-|Název zásad ve službě Security Center|Název zásady zobrazovaný v Azure Policy |Název parametru účinku zásad|
+|Název zásady v Security Center|Název zásad zobrazený v Azure Policy |Název parametru efektu zásad|
 |----|----|----|
-|Šifrování SQL |Monitorovat nešifrovanou databázi SQL ve službě Azure Security Center |sqlEncryptionMonitoringEffect| 
-|SQL Auditing (Auditování SQL) |Monitorovat neauditovanou databázi SQL ve službě Azure Security Center |sqlAuditingMonitoringEffect|
-|Aktualizace systému |Monitorovat chybějící aktualizace systému ve službě Azure Security Center |systemUpdatesMonitoringEffect|
-|Šifrování úložiště |Auditovat chybějící šifrování objektů blob pro účty úložiště |storageEncryptionMonitoringEffect|
-|Přístup k síti JIT |Monitorovat možné síťový přístup pouze In Time (JIT) ve službě Azure Security Center |jitNetworkAccessMonitoringEffect |
-|Adaptivní řízení aplikací |Monitorovat možné přidávání aplikací na seznam povolených ve službě Azure Security Center |adaptiveApplicationControlsMonitoringEffect|
-|Skupiny zabezpečení sítě |Monitorovat benevolentní přístup k síti ve službě Azure Security Center |networkSecurityGroupsMonitoringEffect| 
-|Konfigurace zabezpečení |Monitorování ohrožení zabezpečení operačního systému ve službě Azure Security Center |systemConfigurationsMonitoringEffect| 
-|Ochrana koncových bodů |Monitorování chybějící služby Endpoint Protection ve službě Azure Security Center |endpointProtectionMonitoringEffect |
-|Šifrování disku |Monitorovat nešifrované disky virtuálních počítačů ve službě Azure Security Center |diskEncryptionMonitoringEffect|
-|Posouzení ohrožení zabezpečení |Monitorování ohrožení zabezpečení virtuálních počítačů ve službě Azure Security Center |vulnerabilityAssessmentMonitoringEffect|
-|Brána firewall webových aplikací |Monitorovat nechráněné webové aplikace ve službě Azure Security Center |webApplicationFirewallMonitoringEffect |
-|Brána firewall příští generace |Monitorovat nechráněné koncové body sítě ve službě Azure Security Center| |
+|Šifrování SQL |Monitorování nešifrované databáze SQL v Azure Security Center |sqlEncryptionMonitoringEffect| 
+|SQL Auditing (Auditování SQL) |Monitorování neauditované databáze SQL v Azure Security Center |sqlAuditingMonitoringEffect|
+|Aktualizace systému |Monitorovat chybějící aktualizace systému v Azure Security Center |systemUpdatesMonitoringEffect|
+|Šifrování úložiště |Auditovat chybějící šifrování objektů BLOB pro účty úložiště |storageEncryptionMonitoringEffect|
+|Síťový přístup JIT |Monitorovat možný přístup k síti za běhu (just in time) v Azure Security Center |jitNetworkAccessMonitoringEffect |
+|Adaptivní řízení aplikací |Monitorování možného seznamu povolených aplikací v Azure Security Center |adaptiveApplicationControlsMonitoringEffect|
+|Skupiny zabezpečení sítě |Monitorování opravňujícího přístupu k síti v Azure Security Center |networkSecurityGroupsMonitoringEffect| 
+|Konfigurace zabezpečení |Monitorování ohrožení zabezpečení operačního systému v Azure Security Center |systemConfigurationsMonitoringEffect| 
+|Ochrana koncových bodů |Monitorovat chybějící Endpoint Protection v Azure Security Center |endpointProtectionMonitoringEffect |
+|Šifrování disku |Monitorování nešifrovaných disků virtuálních počítačů v Azure Security Center |diskEncryptionMonitoringEffect|
+|Posouzení ohrožení zabezpečení |Monitorování ohrožení zabezpečení virtuálních počítačů v Azure Security Center |vulnerabilityAssessmentMonitoringEffect|
+|Brána firewall webových aplikací |Monitorování nechráněné webové aplikace v Azure Security Center |webApplicationFirewallMonitoringEffect |
+|Brána firewall příští generace |Monitorování nechráněných koncových bodů sítě v Azure Security Center| |
 
 
-### <a name="who-can-edit-security-policies"></a>Kdo může upravit zásady zabezpečení?
-Security Center používá Role-Based řízení přístupu (RBAC), který poskytuje předdefinované role, které je možné přiřadit uživatelům, skupinám a službám v Azure. Když uživatelé otevřou Security Center, uvidí jenom informace týkající se prostředky, ke kterým mají přístup. Což znamená, že uživatelé mají přiřazenou roli vlastník, Přispěvatel nebo Čtenář na předplatné nebo skupinu prostředků, které prostředek patří. Kromě těchto rolí existují ve službě Security Center dvě specifické role:
+### <a name="who-can-edit-security-policies"></a>Kdo může upravovat zásady zabezpečení?
+Security Center používá Access Control na základě rolí (RBAC), která poskytuje předdefinované role, které se dají přiřadit uživatelům, skupinám a službám v Azure. Když uživatelé otevřou Security Center, uvidí jenom informace, které souvisejí s prostředky, ke kterým mají přístup. To znamená, že uživatelé mají přiřazenou roli vlastník, přispěvatel nebo čtenář do předplatného nebo skupiny prostředků, do které prostředek patří. Kromě těchto rolí existují ve službě Security Center dvě specifické role:
 
-- Čtenář zabezpečení: Zobrazení oprávnění ke službě Security Center, což zahrnuje doporučení, výstrahy, zásady a stav, ale jejich nemůže provádět změny.
-- Správce zabezpečení: Mají práva zobrazení stejné jako čtenář zabezpečení, a můžete také aktualizovat zásady zabezpečení a rušit doporučení a výstrahy.
+- Čtecí modul zabezpečení: Mít oprávnění k zobrazení Security Center, což zahrnuje doporučení, výstrahy, zásady a stav, ale nemůže provádět změny.
+- Správce zabezpečení: Mít stejná oprávnění k zobrazení jako čtenář zabezpečení a můžou taky aktualizovat zásady zabezpečení a zrušit doporučení a upozornění.
 
 
 
 ## <a name="next-steps"></a>Další postup
-V tomto článku jste zjistili, jak upravit zásady zabezpečení ve službě Azure Policy. Další informace o službě Security Center najdete v následujících článcích:
+V tomto článku jste zjistili, jak upravit zásady zabezpečení v Azure Policy. Další informace o službě Security Center najdete v následujících článcích:
 
-* [Průvodce Azure Security Center plánováním a provozem](security-center-planning-and-operations-guide.md): Zjistěte, jak naplánovat a pochopit aspekty návrhu pro Azure Security Center.
+* [Průvodce plánováním a provozem Azure Security Center](security-center-planning-and-operations-guide.md): Naučte se plánovat a porozumět hlediskům návrhu Azure Security Center.
 * [Sledování stavu zabezpečení v Azure Security Center](security-center-monitoring.md): Zjistěte, jak monitorovat stav svých prostředků Azure.
-* [Správa a reakce na výstrahy zabezpečení ve službě Azure Security Center](security-center-managing-and-responding-alerts.md): Zjistěte, jak spravovat a zpracovávat výstrahy zabezpečení.
+* [Správa a reakce na výstrahy zabezpečení v Azure Security Center](security-center-managing-and-responding-alerts.md): Zjistěte, jak spravovat a zpracovávat výstrahy zabezpečení.
 * [Monitorování partnerských řešení pomocí Azure Security Center](security-center-partner-solutions.md): Zjistěte, jak monitorovat stav partnerských řešení.
-* [Získejte potřebný Přehled celého tenanta pro Azure Security Center](security-center-management-groups.md): Zjistěte, jak vytvořit skupiny pro správu pro Azure Security Center.
+* [Získat viditelnost pro Azure Security Center v úrovni tenanta](security-center-management-groups.md): Přečtěte si, jak nastavit skupiny pro správu pro Azure Security Center.
 * [Nejčastější dotazy k Azure Security Center](security-center-faq.md): Získejte odpovědi na nejčastější dotazy k používání této služby.
 * [Blog o zabezpečení Azure](https://blogs.msdn.com/b/azuresecurity/): Přečtěte si příspěvky o zabezpečení Azure a dodržování předpisů.
 

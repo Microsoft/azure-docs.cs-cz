@@ -1,6 +1,6 @@
 ---
-title: Azure SQL Database Managed Instance vlastní DNS | Dokumentace Microsoftu
-description: Toto téma popisuje možnosti konfigurace pro vlastní DNS pomocí Azure SQL Database Managed Instance.
+title: Azure SQL Database vlastní DNS spravované instance | Microsoft Docs
+description: Toto téma popisuje možnosti konfigurace pro vlastní DNS s Azure SQL Database spravované instance.
 services: sql-database
 ms.service: sql-database
 ms.subservice: managed-instance
@@ -11,41 +11,28 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 manager: craigg
-ms.date: 12/13/2018
-ms.openlocfilehash: bb5890b883b6062d834b928bff28a26a3664fb64
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 07/17/2019
+ms.openlocfilehash: 674c5d48dad5d3cfd138853d7ea38ae4a216c93d
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60700403"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68309868"
 ---
-# <a name="configuring-a-custom-dns-for-azure-sql-database-managed-instance"></a>Konfigurace vlastního DNS pro službu Azure SQL Database Managed Instance
+# <a name="configuring-a-custom-dns-for-azure-sql-database-managed-instance"></a>Konfigurace vlastního DNS pro Azure SQL Database spravovanou instanci
 
-Azure SQL Database Managed Instance musí být nasazen v rámci Azure [virtuální síť (VNet)](../virtual-network/virtual-networks-overview.md). Existuje několik scénářů (například db e-mailu, propojené servery na jiné instance SQL ve vašem prostředí cloudu nebo hybridní), které vyžadují privátní hostitele vyřešen z Managed Instance. V takovém případě potřebujete nakonfigurovat vlastní DNS v Azure. Managed Instance používá stejnou službu DNS pro jeho vnitřní fungování, konfiguraci serveru DNS virtuální sítě musí být kompatibilní s Managed Instance.
+Spravovaná instance Azure SQL Database musí být nasazená v rámci [virtuální sítě Azure (VNET)](../virtual-network/virtual-networks-overview.md). Existuje několik scénářů (například databázová pošta, propojené servery na jiné instance SQL ve vašem cloudovém nebo hybridním prostředí), které vyžadují, aby byly názvy privátních hostitelů přeloženy ze spravované instance. V takovém případě musíte nakonfigurovat vlastní DNS v Azure. 
 
-   > [!IMPORTANT]
-   > Vždy používejte plně kvalifikované názvy domén (FQDN) pro poštovní servery, servery SQL a dalším službám, i v případě, že jsou v rámci vaší privátní zóny DNS. Například použijte `smtp.contoso.com` pro poštovní server protože jednoduché `smtp` nebudou správně přeložit.
-
-Chcete-li vlastní konfigurací DNS je kompatibilní s Managed Instance, budete muset:
-
-- Konfigurace vlastního serveru DNS tak, aby byl schopen přeložit názvy veřejné domény.
-- Vložit Azure rekurzivní Překladač DNS IP adresy 168.63.129.16 na konec seznamu DNS virtuální sítě
-
-## <a name="setting-up-custom-dns-servers-configuration"></a>Nastavení vlastní konfigurace serverů DNS
-
-1. Na webu Azure Portal vyhledejte vlastní možnost DNS pro vaši virtuální síť.
-
-   ![možnost vlastní dns](./media/sql-database-managed-instance-custom-dns/custom-dns-option.png)
-
-2. Přepnout na vlastní a zadat vlastní IP adresu serveru DNS, stejně jako Azure rekurzivní překladače IP adresy 168.63.129.16.
-
-   ![možnost vlastní dns](./media/sql-database-managed-instance-custom-dns/custom-dns-server-ip-address.png)
+Vzhledem k tomu, že spravovaná instance používá pro vnitřní práci stejnou službu DNS, musíte nakonfigurovat vlastní server DNS tak, aby mohl přeložit názvy veřejných domén.
 
    > [!IMPORTANT]
-   > V seznamu DNS nastavit rekurzivní překladače Azure může způsobit Managed Instance zadání chybného stavu, pokud z nějakého důvodu nejsou k dispozici vlastní servery DNS. Obnovení ze stavu může vyžadovat k vytvoření nové instance ve virtuální síti s předpisy sítě, vytvořte dat na úrovni instance a obnovit své databáze. Rekurzivní překladače Azure pro nastavení, protože zajišťuje, že poslední položka v seznamu DNS, i v případě, že všechny vlastní servery DNS selže, veřejné názvy stále lze přeložit.
+   > Vždy používejte plně kvalifikované názvy domén (FQDN) pro poštovní servery, servery SQL a další služby, i když se nacházejí v privátní zóně DNS. Například použijte `smtp.contoso.com` pro poštovní server, protože jednoduchá `smtp` nebude vyřešena správně.
+
+   > [!IMPORTANT]
+   > Aktualizace serverů DNS virtuální sítě by neovlivnila přímo spravovanou instanci. Konfigurace DNS spravované instance se aktualizuje po vypršení platnosti zapůjčení DHCP nebo za platformou upgarade, ať už nastane dřív. **Před vytvořením první spravované instance doporučujeme uživatelům, aby si nastavili konfiguraci DNS virtuální sítě.**
 
 ## <a name="next-steps"></a>Další postup
 
-- Přehled najdete v tématu [co je Managed Instance](sql-database-managed-instance.md)
-- Kurz ukazuje, jak vytvořit nový Managed Instance, najdete v tématu [vytvoření Managed Instance](sql-database-managed-instance-get-started.md).
-- Informace o konfiguraci virtuální sítě pro Managed Instance najdete v tématu [konfigurace virtuální sítě pro Managed instance](sql-database-managed-instance-connectivity-architecture.md)
+- Přehled najdete v tématu [co je spravovaná instance](sql-database-managed-instance.md) .
+- Kurz, ve kterém se dozvíte, jak vytvořit novou spravovanou instanci, najdete v tématu [Vytvoření spravované instance](sql-database-managed-instance-get-started.md).
+- Informace o konfiguraci virtuální sítě pro spravovanou instanci najdete v tématu [Konfigurace virtuální sítě pro spravované instance](sql-database-managed-instance-connectivity-architecture.md) .

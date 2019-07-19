@@ -1,6 +1,6 @@
 ---
-title: Zjistit koncový bod pro správu Azure SQL Database Managed Instance | Dokumentace Microsoftu
-description: Zjistěte, jak získat Azure SQL Database Managed Instance koncový bod veřejné IP adresa pro správu a ověření integrované firewall ochrany
+title: Zjistit Azure SQL Database koncový bod správy spravované instance | Microsoft Docs
+description: Přečtěte si, jak získat veřejnou IP adresu koncového bodu správy spravované instance Azure SQL Database a ověřit jeho integrovanou ochranu brány firewall.
 services: sql-database
 ms.service: sql-database
 ms.subservice: managed-instance
@@ -12,27 +12,24 @@ ms.author: srbozovi
 ms.reviewer: sstein, carlrab
 manager: craigg
 ms.date: 12/04/2018
-ms.openlocfilehash: b7eb9ecd6b94aad263346ad6b5c45b694e0bd46f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c5304c62b29d842f9beeadb34eba1cb53048d179
+ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60699978"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68302282"
 ---
-# <a name="determine-the-management-endpoint-ip-address"></a>Určit IP adresu koncového bodu správy
+# <a name="determine-the-management-endpoint-ip-address"></a>Určení IP adresy koncového bodu správy
 
-Virtuální cluster Azure SQL Database Managed Instance obsahuje koncový bod správy, které společnost Microsoft používá pro operace správy. Koncový bod správy je chráněný pomocí integrované brány firewall na úrovni a vzájemné certifikát ověření sítě na úrovni aplikace. Můžete určit IP adresu koncového bodu správy, ale nemáte přístup k tomuto koncovému bodu.
+Virtuální cluster Azure SQL Database Managed instance obsahuje koncový bod správy, který Microsoft používá pro operace správy. Koncový bod správy je chráněný integrovanou bránou firewall na úrovni sítě a vzájemného ověřování certifikátů na úrovni aplikace. Můžete určit IP adresu koncového bodu správy, ale nemůžete získat přístup k tomuto koncovému bodu.
 
-## <a name="determine-ip-address"></a>Určení adresy IP
+IP adresu pro správu určíte tak, že provedete vyhledávání DNS v plně kvalifikovaném názvu domény spravované instance: `mi-name.zone_id.database.windows.net`. Tato akce vrátí položku DNS, jako `trx.region-a.worker.vnet.database.windows.net`je. Potom můžete provést vyhledání DNS v tomto plně kvalifikovaném názvu domény s odebraným ". VNet". Tím se vrátí IP adresa pro správu. 
 
-Předpokládejme, že je Managed Instance hostitele `mi-demo.xxxxxx.database.windows.net`. Spustit `nslookup` pomocí názvu hostitele.
+Tento PowerShell to vše udělá za vás, pokud nahradíte \<plně kvalifikovaný\> název domény názvem mi pomocí položky DNS vaší spravované `mi-name.zone_id.database.windows.net`instance:
+  
+``` powershell
+  $MIFQDN = "<MI FQDN>"
+  resolve-dnsname $MIFQDN | select -first 1  | %{ resolve-dnsname $_.NameHost.Replace(".vnet","")}
+```
 
-![Překlad názvu interního hostitele](./media/sql-database-managed-instance-management-endpoint/01_find_internal_host.png)
-
-Teď provádět jiné `nslookup` pro odebrání název zvýrazněný `.vnet.` segmentu. Při spuštění tohoto příkazu získáte veřejnou IP adresu.
-
-![Řešení veřejnou IP adresu](./media/sql-database-managed-instance-management-endpoint/02_find_public_ip.png)
-
-## <a name="next-steps"></a>Další postup
-
-Další informace o Managed instance a připojení najdete v tématu [Azure SQL Database Managed Instance připojení architektury](sql-database-managed-instance-connectivity-architecture.md).
+Další informace o spravovaných instancích a připojeních najdete v tématu [Azure SQL Database architektura připojení spravované instance](sql-database-managed-instance-connectivity-architecture.md).

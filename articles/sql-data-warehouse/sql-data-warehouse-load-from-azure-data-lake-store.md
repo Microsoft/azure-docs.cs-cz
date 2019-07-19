@@ -1,51 +1,51 @@
 ---
-title: Kurz zatížení z Azure Data Lake Storage do služby Azure SQL Data Warehouse | Dokumentace Microsoftu
-description: Načtení dat ze služby Azure Data Lake Storage do Azure SQL Data Warehouse pomocí PolyBase externí tabulky.
+title: Kurz se načítá z Azure Data Lake Storage do Azure SQL Data Warehouse | Microsoft Docs
+description: Pomocí základních externích tabulek načtěte data z Azure Data Lake Storage do Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: load-data
-ms.date: 04/26/2019
+ms.date: 07/17/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: c69382ee0bec5586fc247cd0e568f5f48f0eda08
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: cbf642b47e4233cec2e2d860288b3bb35b419cf2
+ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67588590"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68304172"
 ---
-# <a name="load-data-from-azure-data-lake-storage-to-sql-data-warehouse"></a>Načtení dat ze služby Azure Data Lake Storage do SQL Data Warehouse
-Načtení dat ze služby Azure Data Lake Storage do Azure SQL Data Warehouse pomocí PolyBase externí tabulky. I když můžete spouštět ad hoc dotazy s daty uloženými ve službě Data Lake Storage, doporučujeme importování dat do SQL Data Warehouse pro zajištění nejlepšího výkonu.
+# <a name="load-data-from-azure-data-lake-storage-to-sql-data-warehouse"></a>Načtení dat z Azure Data Lake Storage do SQL Data Warehouse
+Pomocí základních externích tabulek načtěte data z Azure Data Lake Storage do Azure SQL Data Warehouse. I když můžete spouštět dotazy ad hoc s daty uloženými v Data Lake Storage, doporučujeme data importovat do SQL Data Warehouse pro dosažení co nejvyššího výkonu.
 
 > [!div class="checklist"]
-> * Vytváření databázových objektů, které jsou nutné k načtení z úložiště Data Lake.
-> * Připojení k adresáři Data Lake Storage.
-> * Načtení dat do Azure SQL Data Warehouse.
+> * Vytváření databázových objektů potřebných k načtení z Data Lake Storage.
+> * Připojte se k adresáři Data Lake Storage.
+> * Načte data do Azure SQL Data Warehouse.
 
 Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="before-you-begin"></a>Před zahájením
 Než začnete s tímto kurzem, stáhněte a nainstalujte nejnovější verzi aplikace [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS).
 
-Ke spuštění v tomto kurzu, budete potřebovat:
+Pro spuštění tohoto kurzu budete potřebovat:
 
-* Azure Active Directory aplikace pro použití ověřování služba-služba, pokud načítáte z Gen1. Pokud chcete vytvořit, postupujte podle [ověřování služby Active directory](../data-lake-store/data-lake-store-authenticate-using-active-directory.md)
+* Azure Active Directory aplikaci, která se má použít pro ověřování služba-služba, pokud načítáte z Gen1. Chcete-li vytvořit, postupujte podle [ověřování služby Active Directory](../data-lake-store/data-lake-store-authenticate-using-active-directory.md)
 
 >[!NOTE] 
-> Pokud načítáte z Azure Data Lake úložiště Gen1, potřebujete ID klienta, klíče a OAuth 2.0 Token Endpoint hodnotu aplikace Active Directory pro připojení k účtu úložiště ze služby SQL Data Warehouse. Podrobnosti o tom, jak tyto hodnoty jsou v výše uvedený odkaz. Pro registrace Azure Active Directory aplikace pomocí ID aplikace jako ID klienta.
+> Pokud načítáte z Azure Data Lake nákladnost Gen1, budete potřebovat hodnotu koncového bodu tokenu ID klienta, klíče a OAuth2.0 vaší aplikace Active Directory, abyste se připojili k účtu úložiště z SQL Data Warehouse. Podrobnosti o tom, jak tyto hodnoty získat, najdete v odkazu výše. Pro Azure Active Directory registraci aplikace použijte ID aplikace jako ID klienta.
 > 
 
-* Službu Azure SQL Data Warehouse. Zobrazit [vytvořit a dotaz a Azure SQL Data Warehouse](create-data-warehouse-portal.md).
+* Azure SQL Data Warehouse. Viz [Vytvoření a dotazování a Azure SQL Data Warehouse](create-data-warehouse-portal.md).
 
-* Účet Data Lake Storage. Zobrazit [Začínáme s Azure Data Lake Storage](../data-lake-store/data-lake-store-get-started-portal.md). 
+* Účet Data Lake Storage. Viz Začínáme [s Azure Data Lake Storage](../data-lake-store/data-lake-store-get-started-portal.md). 
 
 ##  <a name="create-a-credential"></a>Vytvoření přihlašovacích údajů
-Přístup ke svému účtu Data Lake Storage, musíte vytvořit hlavní klíč databáze k zašifrování vaší tajného kódu přihlašovacích údajů použít v dalším kroku. Pak vytvoříte Database Scoped Credential. Database Scoped Credential pro Gen1, uloží pověření instančního objektu služby nastavení v adresáři AAD. Klíč účtu úložiště musí používat v Database Scoped Credential pro Gen2. 
+Pokud chcete získat přístup k účtu Data Lake Storage, budete muset vytvořit hlavní klíč databáze k šifrování tajného kódu přihlašovacích údajů, který jste použili v dalším kroku. Pak vytvoříte databázi s rozsahem pověření. V případě Gen1 ukládá přihlašovací údaje v oboru databáze nastavené přihlašovací údaje instančního objektu v AAD. V databázi s rozsahem pověření pro Gen2 je nutné použít klíč účtu úložiště. 
 
-Pro připojení k Data Lake Storage Gen1, je nutné **první** vytvoření aplikace Azure Active Directory, vytvořte přístupový klíč a umožnit aplikaci přístup k Data Lake Storage Gen1 prostředku. Pokyny najdete v tématu [ověřování pro Azure Data Lake Storage Gen1 pomocí služby Active Directory](../data-lake-store/data-lake-store-authenticate-using-active-directory.md).
+Chcete-li se připojit k Data Lake Storage Gen1, je nutné **nejprve** vytvořit aplikaci Azure Active Directory, vytvořit přístupový klíč a udělit aplikaci přístup k prostředku Data Lake Storage Gen1. Pokyny najdete v tématu [ověření pro Azure Data Lake Storage Gen1 pomocí služby Active Directory](../data-lake-store/data-lake-store-authenticate-using-active-directory.md).
 
 ```sql
 -- A: Create a Database Master Key.
@@ -85,8 +85,8 @@ WITH
 ;
 ```
 
-## <a name="create-the-external-data-source"></a>Vytvoření externího zdroje dat.
-Použijte tento [CREATE EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql) příkaz k uložení umístění data. 
+## <a name="create-the-external-data-source"></a>Vytvoření externího zdroje dat
+Pomocí tohoto příkazu [Create External data source](/sql/t-sql/statements/create-external-data-source-transact-sql) uložte umístění dat. 
 
 ```sql
 -- C (for Gen1): Create an external data source
@@ -109,14 +109,14 @@ WITH (
 CREATE EXTERNAL DATA SOURCE AzureDataLakeStorage
 WITH (
     TYPE = HADOOP,
-    LOCATION='abfs://<container>@<AzureDataLake account_name>.dfs.core.windows.net', -- Please note the abfs endpoint
+    LOCATION='abfss://<container>@<AzureDataLake account_name>.dfs.core.windows.net', -- Please note the abfs endpoint
     CREDENTIAL = ADLSCredential
 );
 ```
 
-## <a name="configure-data-format"></a>Konfigurovat formát dat
-Pro import dat ze služby Data Lake Storage, budete muset zadat External File Format. Tento objekt definuje, jak soubory jsou zapsány v Data Lake Storage.
-Úplný seznam najdete v naší dokumentaci jazyka T-SQL [CREATE EXTERNAL FILE FORMAT](/sql/t-sql/statements/create-external-file-format-transact-sql)
+## <a name="configure-data-format"></a>Konfigurace formátu dat
+Chcete-li importovat data z Data Lake Storage, je nutné zadat formát externího souboru. Tento objekt definuje způsob, jakým jsou soubory zapisovány v Data Lake Storage.
+Úplný seznam najdete v naší dokumentaci k T-SQL [Vytvoření formátu externího souboru](/sql/t-sql/statements/create-external-file-format-transact-sql) .
 
 ```sql
 -- D: Create an external file format
@@ -137,7 +137,7 @@ WITH
 ```
 
 ## <a name="create-the-external-tables"></a>Vytvoření externích tabulek
-Teď, když zadáte zdroj a soubor formátu data, jste připraveni k vytvoření externí tabulky. Externí tabulky, které se, jak pracovat s externími daty. Parametr umístění můžete určit soubor nebo adresář. Pokud Určuje adresář, se načtou všechny soubory v adresáři.
+Teď, když jste zadali zdroj dat a formát souboru, jste připraveni vytvořit externí tabulky. Externí tabulky představují způsob interakce s externími daty. Parametr Location může určovat soubor nebo adresář. Pokud se určí adresář, načtou se všechny soubory v adresáři.
 
 ```sql
 -- D: Create an External Table
@@ -165,22 +165,22 @@ WITH
 
 ```
 
-## <a name="external-table-considerations"></a>Důležité informace o externí tabulky
-Vytvoření externí tabulky je jednoduché, ale existují nějaké drobné rozdíly, které je třeba být popsány.
+## <a name="external-table-considerations"></a>Otázky k externí tabulce
+Vytvoření externí tabulky je jednoduché, ale existuje několik drobné odlišnostiů, které je třeba projednávat.
 
-Externí tabulky, které jsou silného typu. To znamená, že každý řádek dat ingestuje musí splňovat definice schématu tabulky.
-Pokud řádek neodpovídá definici schématu, řádek zamítnuto zatížení.
+Externí tabulky jsou silného typu. To znamená, že každý řádek zpracovávaných dat musí splňovat definici schématu tabulky.
+Pokud řádek neodpovídá definici schématu, je řádek od načtení odmítnut.
 
-Možnosti REJECT_TYPE a REJECT_VALUE umožňují definovat, kolik řádků nebo jaké procento dat musí být k dispozici v konečné tabulky. Během procesu načítání Pokud je dosaženo hodnoty odmítnout, zatížení se nezdaří. Nejčastější příčinou pozice zamítnutých řádků se neshodují definice schématu. Například pokud sloupec je nesprávně přiřazena schématu int, když data v souboru je řetězec, každý řádek se nepovedlo se načíst.
+Možnosti REJECT_TYPE a REJECT_VALUE umožňují definovat, kolik řádků nebo jaké procento dat musí být v konečné tabulce přítomné. Při načtení se při dosažení hodnoty odmítnutí zatížení nezdařilo. Nejběžnější příčinou zamítnutých řádků je neshoda definice schématu. Například pokud je sloupci nesprávně přiděleno schéma int, když jsou data v souboru řetězec, každý řádek se nepodaří načíst.
 
-Data Lake Storage Gen1 používá k řízení přístupu k datům na základě řízení přístupu Role (RBAC). To znamená, že instanční objekt musí mít oprávnění ke čtení adresáře, které jsou definované v parametru umístění a podřízených prvků konečné adresáře a soubory. To umožňuje PolyBase k ověření a načíst data. 
+Data Lake Storage Gen1 používá k řízení přístupu k datům Access Control na základě rolí (RBAC). To znamená, že instanční objekt musí mít oprávnění ke čtení pro adresáře definované v parametru Location a podřízeným složkám finálního adresáře a souborů. To umožňuje, aby základ ověřil a načetl tato data. 
 
 ## <a name="load-the-data"></a>Načtení dat
-K načtení dat z Data Lake Storage použijte [CREATE TABLE AS SELECT (Transact-SQL)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) příkazu. 
+Chcete-li načíst data z Data Lake Storage použijte příkaz [CREATE TABLE AS Select (Transact-SQL)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) . 
 
-Funkce CTAS vytvoří novou tabulku a naplní ji výsledky příkazu select. Funkce CTAS definuje novou tabulku pro mají stejné sloupce a datové typy jako výsledky příkazu select. Je-li vybrat všechny sloupce z externí tabulky, je nová tabulka repliky sloupců a datové typy v externí tabulky.
+CTAS vytvoří novou tabulku a naplní ji výsledky příkazu SELECT. CTAS definuje novou tabulku, která bude mít stejné sloupce a datové typy jako výsledky příkazu SELECT. Pokud vyberete všechny sloupce z externí tabulky, je nová tabulka replikou sloupců a datových typů v externí tabulce.
 
-V tomto příkladu vytváříme distribuovaná zatřiďovací tabulka volat DimProduct z našich DimProduct_external externí tabulky.
+V tomto příkladu vytvoříme distribuovanou tabulku hash s názvem DimProduct z našeho externího tabulkového DimProduct_external.
 
 ```sql
 
@@ -193,9 +193,9 @@ OPTION (LABEL = 'CTAS : Load [dbo].[DimProduct]');
 
 
 ## <a name="optimize-columnstore-compression"></a>Optimalizace komprese columnstore
-Ve výchozím nastavení SQL Data Warehouse ukládá jako clusterovaný index columnstore v tabulce. Po dokončení zátěžového některé řádky dat nemusí být komprimovaná do indexu columnstore.  Není k dispozici z různých důvodů, proč k tomu může dojít. Další informace najdete v tématu [spravovat indexy columnstore](sql-data-warehouse-tables-index.md).
+Ve výchozím nastavení SQL Data Warehouse ukládá tabulku jako clusterovaný index columnstore. Po dokončení načtení se některé řádky dat nemusí do columnstore komprimovat.  K tomu může dojít z nejrůznějších důvodů. Další informace najdete v tématu [Správa indexů columnstore](sql-data-warehouse-tables-index.md).
 
-Pokud chcete optimalizovat výkon dotazů a provádí kompresi columnstore po zatížení, tabulku sestavte v přinutit index columnstore tak, aby se komprimoval všechny řádky.
+Pro optimalizaci výkonu dotazů a komprese columnstore po načtení znovu sestavte tabulku, aby index columnstore vynutil komprimaci všech řádků.
 
 ```sql
 
@@ -203,30 +203,30 @@ ALTER INDEX ALL ON [dbo].[DimProduct] REBUILD;
 
 ```
 
-## <a name="optimize-statistics"></a>Optimalizace statistiky
-Doporučujeme vytvořit jednosloupcovou statistiku okamžitě po zatížení. Existuje několik možností pro statistiku. Například pokud vytvořit jednosloupcovou statistiku pro každý sloupec může trvat dlouhou dobu znovu sestavit všechny statistiky. Pokud víte, že některé sloupce se bude v predikátech dotazu, můžete přeskočit vytvoření statistiky pro tyto sloupce.
+## <a name="optimize-statistics"></a>Optimalizace statistik
+Je nejlepší vytvořit statistiku s jedním sloupcem hned po načtení. K dispozici je několik možností pro statistiku. Pokud například vytvoříte statistiku s jedním sloupcem v každém sloupci, může opětovné sestavení všech statistik trvat dlouhou dobu. Pokud víte, že některé sloupce nejsou v predikátech dotazů, můžete na tyto sloupce přeskočit vytváření statistik.
 
-Pokud se rozhodnete vytvořit jednosloupcovou statistiku pro každý sloupec každé tabulky, můžete použít vzorek kódu uloženou proceduru `prc_sqldw_create_stats` v [statistiky](sql-data-warehouse-tables-statistics.md) článku.
+Pokud se rozhodnete vytvořit statistiku s jedním sloupcem pro každý sloupec každé tabulky, můžete použít ukázku `prc_sqldw_create_stats` kódu uložené procedury v článku [Statistika](sql-data-warehouse-tables-statistics.md) .
 
-V následujícím příkladu je dobrým výchozím bodem pro vytváření statistik. Vytvoří jednosloupcovou statistiku pro každý sloupec v tabulce dimenzí a pro každý sloupec spojovacího v tabulkách faktů. Můžete vždy přidat jeden nebo více sloupci statistiky ostatním sloupcům tabulky faktů později.
+Následující příklad je dobrým výchozím bodem pro vytváření statistik. Vytvoří statistiku s jedním sloupcem pro každý sloupec v tabulce dimenzí a pro každý sloupec spojování v tabulkách faktů. Můžete kdykoli přidat statistiku jednoho nebo více sloupců do dalších sloupců tabulky faktů.
 
-## <a name="achievement-unlocked"></a>Odemknout úspěch!
+## <a name="achievement-unlocked"></a>Úspěch je odemčený!
 Úspěšně jste načetli data do Azure SQL Data Warehouse. Skvělá práce!
 
-## <a name="next-steps"></a>Další kroky 
-V tomto kurzu jste vytvořili externí tabulky pro definici struktury dat uložených v Data Lake Storage Gen1 a pak použít příkazu PolyBase CREATE TABLE AS SELECT k načtení dat do datového skladu. 
+## <a name="next-steps"></a>Další postup 
+V tomto kurzu jste vytvořili externí tabulky, abyste definovali strukturu pro data uložená v Data Lake Storage Gen1 a pak jste použili základní CREATE TABLE jako příkaz SELECT pro načtení dat do datového skladu. 
 
 Provedli jste tyto akce:
 > [!div class="checklist"]
-> * Vytvořené databázové objekty nezbytné k načtení z Data Lake Storage Gen1.
-> * Připojení k adresáři Data Lake Storage Gen1.
-> * Načtená data do Azure SQL Data Warehouse.
+> * Byly vytvořeny objekty databáze požadované pro načtení z Data Lake Storage Gen1.
+> * Připojeno k adresáři Data Lake Storage Gen1.
+> * Data se načetla do Azure SQL Data Warehouse.
 > 
 
-Načítání dat je prvním krokem při vývoji řešení datového skladu, použití služby SQL Data Warehouse. Projděte si naše prostředky pro vývoj.
+Načítání dat je prvním krokem k vývoji řešení datového skladu pomocí SQL Data Warehouse. Podívejte se na naše vývojové prostředky.
 
 > [!div class="nextstepaction"]
->[Další informace jak vyvíjet tabulek v SQL Data Warehouse](sql-data-warehouse-tables-overview.md)
+>[Naučte se vyvíjet tabulky v SQL Data Warehouse](sql-data-warehouse-tables-overview.md)
 
 
 

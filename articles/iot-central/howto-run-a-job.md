@@ -1,108 +1,108 @@
 ---
-title: Vytváření a spouštění úloh v aplikaci Azure IoT Central | Dokumentace Microsoftu
-description: Azure IoT Central úlohy umožňují hromadně možnosti správy zařízení, jako je například aktualizace vlastností zařízení, nastavení nebo spuštění příkazu.
+title: Vytvoření a spuštění úloh v aplikaci Azure IoT Central | Microsoft Docs
+description: Úlohy Azure IoT Central umožňují využít možnosti správy hromadných zařízení, jako je aktualizace vlastnosti zařízení, nastavení nebo spuštění příkazu.
 ms.service: iot-central
 services: iot-central
 author: sarahhubbard
 ms.author: sahubbar
-ms.date: 03/18/2019
+ms.date: 07/08/2019
 ms.topic: conceptual
 manager: peterpr
-ms.openlocfilehash: 903b4f1ea1484aec827c4b2d54c8dd8a9dd69d8f
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: 298770b1b2da816ddef9154fafb20d7c6cb82df3
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67509525"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67849043"
 ---
 # <a name="create-and-run-a-job-in-your-azure-iot-central-application"></a>Vytvoření a spuštění úlohy v aplikaci Azure IoT Central
 
-Microsoft Azure IoT Central můžete použít ke správě připojených zařízení ve velkém měřítku pomocí úlohy. Úlohy umožňují hromadné aktualizace vlastností zařízení, nastavení a příkazy. Tento článek vás provede a začněte využívat úlohy ve své aplikaci.
+Pomocí Microsoft Azure IoT Central můžete spravovat připojená zařízení ve velkém měřítku pomocí úloh. Úlohy umožňují hromadné aktualizace vlastností zařízení, nastavení a příkazů. Tento článek vás seznámí s postupem, jak začít používat úlohy ve vaší vlastní aplikaci.
 
 ## <a name="create-and-run-a-job"></a>Vytvoření a spuštění úlohy
 
-V této části se dozvíte, jak vytvořit a spustit úlohu. To ukazuje, jak zvýšit rychlost ventilátor pro více chladicí automaty.
+V této části se dozvíte, jak vytvořit a spustit úlohu. Ukazuje, jak zvýšit rychlost ventilátoru pro více chladírenských prodejních počítačů.
 
-1. V navigačním podokně přejděte do úlohy.
+1. V navigačním podokně přejděte na úlohy.
 
-1. Vyberte **+ nová** k vytvoření nové úlohy.
+1. Vyberte **+ Nová** a vytvořte novou úlohu.
 
-    ![Vytvoření nové úlohy](./media/howto-run-a-job/createnewjob.png)
+    ![Vytvořit novou úlohu](./media/howto-run-a-job/createnewjob.png)
 
 1. Zadejte název a popis pro identifikaci úlohy, kterou vytváříte.
 
-1. Vyberte sadu zařízení chcete použít pro vaši úlohu. Po výběru zařízení nastavení, se zobrazí na pravé straně naplnit zařízení v sadě zařízení. Pokud vyberete sada přerušeno zařízení, zobrazit žádná zařízení a zobrazí se zpráva, že vaše zařízení sada je přerušeno.
+1. Vyberte sadu zařízení, na kterou se má vaše úloha vztahovat. Po výběru sady zařízení se zobrazí pravá strana naplněná pomocí zařízení v sadě zařízení. Pokud vyberete poškozenou sadu zařízení, nezobrazí se žádná zařízení a zobrazí se zpráva, že vaše zařízení je poškozené.
 
-1. Potom vyberte typ úlohy k definování (nastavení, vlastnost nebo příkaz). Vyberte **+** vedle typu úlohy vybraná a přidat své operace.
+1. Dále vyberte typ úlohy, která se má definovat (nastavení, vlastnost nebo příkaz). Vyberte **+** možnost vedle vybraného typu úlohy a přidejte své operace.
 
-    ![Konfigurace úlohy](./media/howto-run-a-job/configurejob.png)
+    ![Konfigurovat úlohu](./media/howto-run-a-job/configurejob.png)
 
-1. Na pravé straně zvolte zařízení, které chcete spustit úlohu. Zaškrtnutím políčka horní jsou vybrány všechna zařízení v sadě celého zařízení. Zaškrtnutím políčka vedle **název**, jsou vybrány všechna zařízení na aktuální stránce.
+1. Na pravé straně vyberte zařízení, na kterých chcete úlohu spustit. Když zaškrtnete horní políčko, všechna zařízení se vyberou v celé sadě zařízení. Zaškrtnutím políčka u položky **název**se vybere všechna zařízení na aktuální stránce.
 
-1. Po výběru zařízení, zvolte **spustit** nebo **Uložit**. Úloha se zobrazí na vaší hlavní **úlohy** stránky. V tomto zobrazení můžete zobrazit aktuálně spuštěné úlohy a historii některého dříve spouštění úloh. Spuštěná úloha se vždy zobrazí v horní části seznamu. Uložené úlohy lze otevřít znovu kdykoli chcete dál upravovat nebo ke spuštění.
+1. Po výběru zařízení zvolte **Spustit** nebo **Uložit**. Úloha se teď zobrazí na stránce hlavní **úlohy** . V tomto zobrazení uvidíte aktuálně spuštěnou úlohu a historii všech dříve spuštěných úloh. Spuštěná úloha se vždycky zobrazuje v horní části seznamu. Uloženou úlohu můžete kdykoli znovu otevřít, aby bylo možné pokračovat v úpravách nebo spouštění.
 
     ![Zobrazit úlohu](./media/howto-run-a-job/viewjob.png)
 
     > [!NOTE]
-    > Zobrazení historie dřív spuštěných úloh po dobu až 30 dnů.
+    > Historii dříve spuštěných úloh můžete zobrazit po dobu až 30 dnů.
 
-1. Získat přehled o úlohy, vyberte úlohu chcete-li zobrazit ze seznamu. Tento přehled obsahuje podrobnosti o úloze, zařízení a hodnoty stavu zařízení. Z tohoto přehledu, můžete také vybrat **stáhnout podrobnosti o úloze** stáhnout soubor CSV si podrobnosti o úloze, včetně zařízení a jejich hodnoty stavu. Tyto informace mohou být užitečné při řešení potíží.
+1. Pokud chcete získat přehled o vaší úloze, vyberte úlohu, kterou chcete zobrazit v seznamu. Tento přehled obsahuje podrobnosti úlohy, zařízení a stavové hodnoty zařízení. Z tohoto přehledu můžete také vybrat **Stáhnout podrobnosti o úloze** a stáhnout soubor. csv s podrobnostmi o úloze, včetně zařízení a jejich stavových hodnot. Tyto informace mohou být užitečné při řešení potíží.
 
     ![Zobrazení stavu zařízení](./media/howto-run-a-job/downloaddetails.png)
 
-### <a name="stop-a-running-job"></a>Zastavit spuštěné úlohy
+### <a name="stop-a-running-job"></a>Zastavit běžící úlohu
 
-Zastavit spuštěné úlohy, vyberte ho a zvolte **Zastavit** na panelu. Stav úlohy se změní podle úlohy zastavena.
+Chcete-li zastavit běžící úlohu, vyberte ji a zvolte možnost **zastavit** na panelu. Stav úlohy se změní, aby odrážela zastavení úlohy.
 
    ![Zastavit úlohu](./media/howto-run-a-job/stopjob.png)
 
-### <a name="run-a-stopped-job"></a>Spustit úlohu zastaveno
+### <a name="run-a-stopped-job"></a>Spuštění zastavené úlohy
 
-Pokud chcete spustit úlohu, která je nyní zastavena, vyberte zastavenou úlohu. Zvolte **spustit** na panelu. Změny stavu úlohy tak, aby odrážely úlohy je nyní spuštěna znovu.
+Pokud chcete spustit úlohu, která je aktuálně zastavená, vyberte zastavenou úlohu. Na panelu vyberte **Spustit** . Změna stavu úlohy se projeví v závislosti na tom, že úloha je nyní spuštěna.
 
-   ![Obnovit úlohy](./media/howto-run-a-job/resumejob.png)
+   ![Obnovená úloha](./media/howto-run-a-job/resumejob.png)
 
-## <a name="copy-a-job"></a>Úloha kopírování
+## <a name="copy-a-job"></a>Kopírování úlohy
 
-Pokud chcete zkopírovat existující úlohy, které jste vytvořili, vyberte ho ze stránky s hlavní úlohy a vyberte **kopírování**. Otevře novou kopii konfigurace úlohy můžete upravit. Můžete uložit nebo spustit novou úlohu. Pokud změny byly provedeny na sadu vybraných zařízení, budete se projeví v tento zkopírovaný úlohy můžete upravit.
+Chcete-li zkopírovat existující úlohu, kterou jste vytvořili, vyberte ji na stránce hlavní úlohy a vyberte možnost **Kopírovat**. Otevře se nová kopie konfigurace úlohy, kterou můžete upravit. Novou úlohu můžete uložit nebo spustit. Pokud jste ve zvolené sadě zařízení udělali nějaké změny, projeví se v této zkopírované úloze, abyste je mohli upravit.
 
-   ![Úloha kopírování](./media/howto-run-a-job/copyjob.png)
+   ![Kopírovat úlohu](./media/howto-run-a-job/copyjob.png)
 
 ## <a name="view-the-job-status"></a>Zobrazení stavu úlohy
 
-Po vytvoření úlohy **stav** aktualizace sloupců s nejnovější stavová zpráva úlohy. Následující tabulka uvádí stav možné hodnoty:
+Po vytvoření úlohy se sloupec **stav** aktualizuje o nejnovější stavovou zprávu úlohy. Hodnoty možných stavů jsou uvedené v následující tabulce:
 
-| Zpráva o stavu       | Stav význam                                          |
+| Zpráva o stavu       | Význam stavu                                          |
 | -------------------- | ------------------------------------------------------- |
-| Dokončeno            | Tato úloha byla provedena na všech zařízeních.              |
-| Selhalo               | Tato úloha má se nezdařilo a není plně proveden v zařízení.  |
-| Čekající na vyřízení              | Tato úloha ještě nezačala provádění na zařízení.         |
-| Spuštěno              | Tato úloha právě probíhá na zařízeních.             |
-| Zastaveno              | Tato úloha byla ručně zastavena uživatelem.           |
+| Dokončeno            | Tato úloha se spustila na všech zařízeních.              |
+| Selhalo               | Tato úloha se nezdařila a na zařízeních se nedokončilo úplné spuštění.  |
+| Čekající na vyřízení              | Tato úloha se ještě na zařízeních nezačala spouštět.         |
+| Spuštěno              | Tato úloha se v tuto chvíli spouští na zařízeních.             |
+| Zastaveno              | Tuto úlohu zastavil uživatel ručně.           |
 
-Ve zprávě o stavu Následuje přehled zařízení v rámci úlohy. V následující tabulce jsou uvedeny hodnoty stavu zařízení:
+Stavová zpráva je následován přehledem zařízení v úloze. Následující tabulka uvádí možné hodnoty stavu zařízení:
 
-| Zpráva o stavu       | Stav význam                                                     |
+| Zpráva o stavu       | Význam stavu                                                     |
 | -------------------- | ------------------------------------------------------------------ |
-| Úspěch            | Počet zařízení, která se úloha úspěšně provedena na.       |
-| Selhalo               | Počet zařízení, která úloha se nezdařila se promítnou u.       |
+| Úspěch            | Počet zařízení, na kterých byla úloha úspěšně provedena.       |
+| Selhalo               | Počet zařízení, na kterých se úloha nedokázala spustit.       |
 
-### <a name="view-the-device-status"></a>Zobrazení stavu zařízení
+### <a name="view-the-device-status"></a>Zobrazit stav zařízení
 
-Chcete-li zobrazit stav úlohy a všech příslušných zařízení, vyberte úlohu. Chcete-li stáhnout soubor CSV obsahující podrobnosti o úlohy, včetně seznamu zařízení a jejich hodnoty stavu vyberte **stáhnout podrobnosti o úloze**. Vedle názvu každé zařízení se zobrazí jedna z následujících zpráv o stavu:
+Pokud chcete zobrazit stav úlohy a všechna postižená zařízení, vyberte úlohu. Pokud chcete stáhnout soubor. csv, který obsahuje podrobnosti úlohy, včetně seznamu zařízení a jejich stavových hodnot, vyberte **Stáhnout podrobnosti o úloze**. Vedle každého názvu zařízení se zobrazí jedna z následujících stavových zpráv:
 
-| Zpráva o stavu       | Stav význam                                                                |
+| Zpráva o stavu       | Význam stavu                                                                |
 | -------------------- | ----------------------------------------------------------------------------- |
-| Dokončeno            | Úloha byla provedena na tomto zařízení.                                     |
-| Selhalo               | Úlohu se nepodařilo spustit na tomto zařízení. Další informace se zobrazí chybová zpráva.  |
-| Čekající na vyřízení              | Úloha ještě neprovedlo na tomto zařízení.                                   |
+| Dokončeno            | Úloha se spustila na tomto zařízení.                                     |
+| Selhalo               | U tohoto zařízení se nepovedlo spustit úlohu. V této chybové zprávě se zobrazí další informace.  |
+| Čekající na vyřízení              | Tato úloha na tomto zařízení ještě nebyla spuštěna.                                   |
 
 > [!NOTE]
-> Pokud zařízení byla odstraněna, nelze vybrat zařízení a zobrazí se odstranil s ID zařízení.
+> Pokud se zařízení odstranilo, nemůžete zařízení vybrat a zobrazí se jako odstraněné s ID zařízení.
 
 ## <a name="next-steps"></a>Další postup
 
-Teď, když jsme zjistili, jak vytvářet úlohy v aplikaci Azure IoT Central, tady jsou některé další kroky:
+Teď, když jste se naučili vytvářet úlohy v aplikaci Azure IoT Central, tady je několik dalších kroků:
 
 - [Použití sad zařízení](howto-use-device-sets.md)
 - [Správa zařízení](howto-manage-devices.md)

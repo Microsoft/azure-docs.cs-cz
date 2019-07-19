@@ -1,74 +1,74 @@
 ---
-title: Spouštění více akcí z pravidla protokolu Azure IoT Central | Dokumentace Microsoftu
-description: Spouštění více akcí z jednoho pravidla IoT Central a vytvořit znovu použitelných skupin akcí, které můžete spustit z více pravidel.
+title: Spuštění více akcí z pravidla Azure IoT Central | Microsoft Docs
+description: Spuštění více akcí z jednoho pravidla IoT Central a vytvoření opakovaně použitelných skupin akcí, které lze spustit z více pravidel.
 services: iot-central
 author: dominicbetts
 ms.author: dobett
-ms.date: 03/19/2019
+ms.date: 07/10/2019
 ms.topic: conceptual
 ms.service: iot-central
 manager: philmea
-ms.openlocfilehash: 857d747fa691d1ec2b386d5931a7edea08b7e609
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d9d7b2d189c6a1533be2d1cae4989669787c3f2a
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60517212"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67849011"
 ---
-# <a name="group-multiple-actions-to-run-from-one-or-more-rules"></a>Seskupit více akcí pro spuštění z jednoho nebo více pravidel
+# <a name="group-multiple-actions-to-run-from-one-or-more-rules"></a>Seskupit více akcí ke spuštění z jednoho nebo více pravidel
 
-*Tento článek se týká pro tvůrce a správce.*
+*Tento článek se týká tvůrců a správců.*
 
-V Azure IoT Central můžete vytvořit pravidla ke spouštění akcí, když je splněna podmínka. Pravidla jsou založeny na telemetrii zařízení nebo událostí. Operátor může například upozornit, pokud teplota v zařízení překračuje prahovou hodnotu. Tento článek popisuje způsob použití [Azure Monitor](../azure-monitor/overview.md) *skupiny akcí* připojit více akcí pro pravidlo IoT Central. Skupiny akcí můžete připojit k více pravidel. [Skupiny akcí](../azure-monitor/platform/action-groups.md) je kolekce předvolby oznamování určené vlastník předplatného Azure.
+V Azure IoT Central vytvoříte pravidla ke spouštění akcí, když je splněna podmínka. Pravidla jsou založená na telemetrie a událostech zařízení. Například můžete informovat operátora, když teplota v zařízení překročí prahovou hodnotu. Tento článek popisuje, jak pomocí [Azure Monitorch](../azure-monitor/overview.md) *skupin akcí* připojit k pravidlu IoT Central více akcí. Skupinu akcí můžete připojit k několika pravidlům. [Skupina akcí](../azure-monitor/platform/action-groups.md) je kolekce předvoleb oznámení definovaných vlastníkem předplatného Azure.
 
 ## <a name="prerequisites"></a>Požadavky
 
 - Aplikace s průběžnými platbami
-- Účet Azure a předplatného můžete vytvořit a spravovat skupiny akcí Azure Monitor
+- Účet a předplatné Azure pro vytváření a správu Azure Monitorch skupin akcí
 
 ## <a name="create-action-groups"></a>Vytvoření skupin akcí
 
-Je možné [vytváření a Správa skupin akcí na webu Azure Portal](../azure-monitor/platform/action-groups.md) nebo se [šablony Azure Resource Manageru](../azure-monitor/platform/action-groups-create-resource-manager-template.md).
+Můžete [vytvořit a spravovat skupiny akcí v Azure Portal](../azure-monitor/platform/action-groups.md) nebo pomocí [šablony Azure Resource Manager](../azure-monitor/platform/action-groups-create-resource-manager-template.md).
 
-Skupiny akcí můžete:
+Skupina akcí může:
 
-- Odesílání oznámení, jako je e-mail, SMS, nebo nastavit jako hlasové volání.
-- Spusťte akce, jako je zavolání webhooku.
+- Odesílat oznámení, jako je e-mail, SMS nebo hlasové volání.
+- Spusťte akci, jako je například volání Webhooku.
 
-Následující snímek obrazovky ukazuje skupiny akcí, která odesílá e-mailu a oznámení SMS a volá webhook:
+Na následujícím snímku obrazovky vidíte skupinu akcí, která odesílá e-maily a oznámení SMS a volá Webhook:
 
 ![Skupina akcí](media/howto-use-action-groups/actiongroup.png)
 
-Pokud chcete použít skupiny akcí v pravidle IoT Central, musí být skupina akcí ve stejném předplatném Azure jako aplikace IoT Central.
+Pokud chcete v pravidle IoT Central použít skupinu akcí, musí být skupina akcí ve stejném předplatném Azure jako aplikace IoT Central.
 
-## <a name="use-an-action-group"></a>Použít skupiny akcí
+## <a name="use-an-action-group"></a>Použití skupiny akcí
 
-Pomocí skupiny akcí ve vaší aplikaci IoT Central, nejprve vytvořte pravidlo telemetrická data nebo události. Když přidáte akci pravidla, vyberte **skupiny akcí Azure Monitor**:
+Chcete-li v aplikaci IoT Central použít skupinu akcí, nejprve vytvořte telemetrii nebo pravidlo události. Když do pravidla přidáte akci, vyberte **Azure monitor skupiny akcí**:
 
-![Vybrat akci](media/howto-use-action-groups/chooseaction.png)
+![Zvolit akci](media/howto-use-action-groups/chooseaction.png)
 
-Vyberte skupinu akcí z vašeho předplatného Azure:
+Vyberte skupinu akcí z předplatného Azure:
 
-![Vyberte skupinu akcí](media/howto-use-action-groups/chooseactiongroup.png)
+![Zvolit skupinu akcí](media/howto-use-action-groups/chooseactiongroup.png)
 
-Vyberte **Uložit**. Skupina akcí se teď zobrazí v seznamu akcí spustit, když se aktivuje pravidlo:
+Vyberte **Uložit**. Skupina akcí se nyní zobrazí v seznamu akcí, které mají být spuštěny při aktivaci pravidla:
 
-![Uložit skupinu akcí](media/howto-use-action-groups/savedactiongroup.png)
+![Uložená skupina akcí](media/howto-use-action-groups/savedactiongroup.png)
 
-Následující tabulka shrnuje informace o typy podporovaných akcí:
+Následující tabulka shrnuje informace odesílané do podporovaných typů akcí:
 
 | Typ akce | Výstupní formát |
 | ----------- | -------------- |
-| Email       | Standardní šablona e-mailu IoT Central |
-| SMS         | Upozornění Azure IoT Central: ${applicationName} - "{ruleName}" na "${název_zařízení}" $ ${triggerDate} {triggerTime} aktivuje |
-| Hlas       | Upozornění Azure I.O.T střed: pravidlo "${ruleName}" aktivuje na zařízení "${název_zařízení}" na {triggerTime}, ${triggerDate} $ $ aplikace {applicationName} |
-| Webhook     | { "schemaId" : "AzureIoTCentralRuleWebhook", "data": {[datová část webhooku regulární](#payload)}} |
+| Email       | Šablona e-mailu Standard IoT Central |
+| SMS         | Výstraha Azure IoT Central: $ {applicationName} – "$ {Rule}" aktivované v "$ {název_zařízení}" na $ {triggerDate} $ {triggerTime} |
+| Hlas       | Azure I. O. T centrální výstrahu: pravidlo "$ {Rule}" aktivované na zařízení "$ {název_zařízení}" na $ {triggerDate} $ {triggerTime}, v aplikaci $ {applicationName} |
+| Webhook     | { "schemaId" : "AzureIoTCentralRuleWebhook", "data": {[běžný datový](#payload)obsah Webhooku}} |
 
-Následující text je ukázková zpráva SMS z skupiny akcí:
+Následující text je příkladem zprávy SMS ze skupiny akcí:
 
 `iotcentral: Azure IoT Central alert: Sample Contoso 22xu4spxjve - "Low pressure alert" triggered on "Refrigerator 2" at March 20, 2019 10:12 UTC`
 
-<a id="payload"></a> Následující kód JSON ukazuje datovou část akce webhooku příkladu:
+<a id="payload"></a>Následující JSON ukazuje příklad datové části akce Webhooku:
 
 ```json
 {
@@ -111,4 +111,4 @@ Následující text je ukázková zpráva SMS z skupiny akcí:
 
 ## <a name="next-steps"></a>Další postup
 
-Teď, když jste zjistili, jak použít skupiny akcí s pravidly, navrhované dalším krokem je další způsob [spravujte svá zařízení](howto-manage-devices.md).
+Teď, když jste se seznámili s používáním skupin akcí s pravidly, je navržený další krok, kde se dozvíte, jak [spravovat vaše zařízení](howto-manage-devices.md).

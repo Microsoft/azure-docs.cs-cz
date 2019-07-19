@@ -1,5 +1,5 @@
 ---
-title: Ukázky jazyka JavaScript – Azure Active Directory B2C | Dokumentace Microsoftu
+title: Ukázky JavaScriptu – Azure Active Directory B2C | Microsoft Docs
 description: Další informace o použití jazyka JavaScript v Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
@@ -10,25 +10,25 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 9e19df7c50ca9d2c57ab385a567f4911b200c5e2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5dfc1ef732c8456356de82f7fe026476fdfc075b
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66510896"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68227130"
 ---
 # <a name="javascript-samples-for-use-in-azure-active-directory-b2c"></a>Ukázky jazyka JavaScript pro použití v Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
-Pro vaše aplikace Azure Active Directory (Azure AD) B2C můžete přidat vlastní kód jazyka JavaScript na straně klienta. Povolit JavaScript pro aplikace, je nutné přidat prvek k vaší [vlastní zásady](active-directory-b2c-overview-custom.md), vyberte [stránku smlouvy](page-contract.md)a použít [b2clogin.com](b2clogin.md) v požadavcích. Tento článek popisuje, jak můžete změnit váš vlastní zásadu k zapnutí provádění skriptu.
+Pro vaše aplikace Azure Active Directory (Azure AD) B2C můžete přidat vlastní kód jazyka JavaScript na straně klienta. Pro povolení JavaScriptu pro vaše aplikace musíte přidat element do [vlastních zásad](active-directory-b2c-overview-custom.md), vybrat [rozložení stránky](page-layout.md)a ve svých žádostech použít [b2clogin.com](b2clogin.md) . Tento článek popisuje, jak můžete změnit vlastní zásady a povolit spouštění skriptů.
 
 > [!NOTE]
-> Pokud chcete povolit JavaScript pro toky uživatelů, přečtěte si téma [jazyka JavaScript a stránku smlouvy verze v Azure Active Directory B2C](user-flow-javascript-overview.md).
+> Pokud chcete povolit JavaScript pro toky uživatelů, přečtěte si téma [verze JavaScriptu a rozložení stránky v Azure Active Directory B2C](user-flow-javascript-overview.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Vyberte stránku smlouvy pro prvky uživatelského rozhraní aplikace. Pokud máte v úmyslu použít jazyk JavaScript, budete muset definovat verzi smlouvy stránky pro všechny vaše obsahu definice ve vlastních zásadách.
+Vyberte rozložení stránky pro prvky uživatelského rozhraní vaší aplikace. Pokud máte v úmyslu používat jazyk JavaScript, je nutné ve vlastních zásadách definovat verzi rozložení stránky pro všechny definice obsahu.
 
 ## <a name="add-the-scriptexecution-element"></a>Přidejte prvek ScriptExecution
 
@@ -143,7 +143,7 @@ function addTermsOfUseLink() {
 }
 ```
 
-V kódu, nahraďte `termsOfUseUrl` s odkazem na vaše smlouva o podmínkách použití. Pro svůj adresář vytvořit nový atribut uživatele s názvem **podmínky použití** a poté zahrnout **podmínky použití** jako atribut uživatele.
+V kódu, nahraďte `termsOfUseUrl` s odkazem na vaše smlouva o podmínkách použití. Pro váš adresář vytvořte nový atribut uživatele s názvem **termsOfUse** a pak jako atribut uživatele přidejte **termsOfUse** .
 
 ## <a name="next-steps"></a>Další postup
 

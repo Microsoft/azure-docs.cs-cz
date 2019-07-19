@@ -1,6 +1,6 @@
 ---
-title: Démon procesu aplikace volání webových rozhraní API (Konfigurace aplikace) – platforma identit Microsoft
-description: Zjistěte, jak vytvořit aplikaci pro proces démon, že volání webových rozhraní API (Konfigurace aplikace)
+title: Aplikace démona, která volá webová rozhraní API (konfigurace aplikace) – platforma Microsoftu identity
+description: Naučte se vytvářet aplikace démona, která volá webová rozhraní API (konfigurace aplikace).
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -12,63 +12,63 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 07/16/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd2da6baecdce3ab85a45347f27f573bf814445d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 705545fd5167087be1a001c45f58907d6ff225e8
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67055765"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68277824"
 ---
-# <a name="daemon-app-that-calls-web-apis---code-configuration"></a>Démon procesu aplikace, že volání webových rozhraní API – konfigurace kódu
+# <a name="daemon-app-that-calls-web-apis---code-configuration"></a>Aplikace démona, která volá webovou rozhraní API – konfigurace kódu
 
-Zjistěte, jak nakonfigurovat kódu pro vaši aplikaci démona, volá webové rozhraní API.
+Naučte se konfigurovat kód pro aplikaci démona, která volá webová rozhraní API.
 
-## <a name="msal-libraries-supporting-daemon-apps"></a>Aplikace démonů podpůrné knihovny MSAL
+## <a name="msal-libraries-supporting-daemon-apps"></a>Knihovny MSAL podporující aplikace démona
 
-Knihovny Microsoft podporuje aplikace démonů jsou:
+Knihovny Microsoftu podporující aplikace démona jsou:
 
   Knihovna MSAL | Popis
   ------------ | ----------
-  ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | Podporované platformy, jak vytvořit webovou aplikaci démon jsou platformy .NET Framework a .NET Core (UPW Ne, Xamarin.iOS a Xamarin.Android jako těchto platforem se používají k vytváření veřejné klientských aplikací)
-  ![Python](media/sample-v2-code/logo_python.png) <br/> MSAL.Python | Vývoj v průběhu – ve verzi public preview
-  ![Java](media/sample-v2-code/logo_java.png) <br/> MSAL.Java | Vývoj v průběhu – ve verzi public preview
+  ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | Podporované platformy pro sestavení aplikace démona jsou .NET Framework a platformy .NET Core (ne UWP, Xamarin. iOS a Xamarin. Android, protože tyto platformy slouží k vytváření veřejných klientských aplikací).
+  ![Python](media/sample-v2-code/logo_python.png) <br/> MSAL.Python | Vývoj v průběhu verze Public Preview
+  ![Java](media/sample-v2-code/logo_java.png) <br/> MSAL. Kompilátor | Vývoj v průběhu verze Public Preview
 
 ## <a name="configuration-of-the-authority"></a>Konfigurace autority
 
-Vzhledem k tomu, že aplikace démon nepoužívejte delegovaná oprávnění, ale oprávnění aplikací, jejich *nepodporuje typ účtu* nemůže být *účty v libovolném adresáři organizace a Microsoft osobní účty () například, Skype, Xbox, Outlook.com)* . Ve skutečnosti neexistuje žádný správce tenanta udělit souhlas démon aplikace pro osobní účty Microsoft. Budete muset zvolit *účty v mé organizaci* nebo *účty v jakékoli organizaci*.
+Vzhledem k tom, že aplikace démona nepoužívají delegovaná oprávnění, ale oprávnění aplikací, jejich *podporovaný typ účtu* nemůže být *účty v žádném organizačním adresáři a osobních účtech Microsoft (například Skype, Xbox, Outlook.com)* . K udělení souhlasu s aplikací démon pro osobní účty Microsoft se totiž neposkytuje žádný správce tenanta. V organizaci nebo účtech budete muset zvolit *účty* *v libovolné organizaci*.
 
-Proto autority zadané v konfiguraci aplikace by měla být tenanta ed (určení ID Tenanta nebo název domény přidružený k vaší organizaci).
+Proto by autorita zadaná v konfiguraci aplikace měla být přihlášená klientovi (zadáním ID tenanta nebo názvu domény přidruženého k vaší organizaci).
 
-Pokud jste nezávislý výrobce softwaru a chcete poskytnout nástroj pro více tenantů, můžete použít `organizations`. Ale pamatujte, že budete také muset vašim zákazníkům vysvětlují, jak udělit souhlas správce. Zobrazit [požaduje souhlas pro celého tenanta](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant) podrobnosti. Také aktuálně nejsou k dispozici v MSAL omezení, která `organizations` je povolený jenom při přihlašovacích údajů klienta se tajný klíč aplikace (ne certifikát). Zobrazit [MSAL.NET chyb #891](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/891)
+Pokud jste nezávislý výrobce softwaru a chcete poskytnout více tenantů nástroje, můžete použít `organizations`. Mějte ale na paměti, že budete taky muset vysvětlit zákazníkům, jak udělit souhlas správce. Podrobnosti najdete v tématu o [žádosti o souhlas pro celého tenanta](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant) . V současné době je také v MSAL omezení, `organizations` které je povoleno pouze v případě, že přihlašovací údaje klienta obsahují tajný klíč aplikace (nikoli certifikát). Viz [MSAL.NET chyby #891](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/891)
 
-## <a name="application-configuration-and-instantiation"></a>Konfigurace aplikace a instance
+## <a name="application-configuration-and-instantiation"></a>Konfigurace a instance aplikace
 
-Přihlašovací údaje klienta (tajný klíč nebo certifikát) jsou v knihovnách MSAL předaného jako parametr konstrukce důvěrnému klientovi aplikace.
+V knihovnách MSAL se přihlašovací údaje klienta (tajný kód nebo certifikát) předávají jako parametr konstrukce důvěrné klientské aplikace.
 
 > [!IMPORTANT]
-> I v případě, že vaše aplikace je konzolová aplikace spuštění jako služby, pokud je to aplikace démon ho musí být důvěrný klientské aplikace.
+> I v případě, že vaše aplikace je Konzolová aplikace spuštěná jako služba, a pokud se jedná o aplikaci démona, musí to být důvěrná klientská aplikace.
 
 ### <a name="msalnet"></a>MSAL.NET
 
-Přidat [Microsoft.IdentityClient](https://www.nuget.org/packages/Microsoft.Identity.Client) balíček NuGet do vaší aplikace.
+Přidejte do své aplikace balíček NuGet [Microsoft. IdentityClient](https://www.nuget.org/packages/Microsoft.Identity.Client) .
 
-Pomocí MSAL.NET obor názvů
+Použít obor názvů MSAL.NET
 
 ```CSharp
 using Microsoft.Identity.Client;
 ```
 
-Démon procesu aplikace se zobrazí podle `IConfidentialClientApplication`
+Aplikace démona bude prezentována`IConfidentialClientApplication`
 
 ```CSharp
 IConfidentialClientApplication app;
 ```
 
-Tady je kód pro vytvoření aplikace s tajný klíč aplikace:
+Zde je kód pro sestavení aplikace s tajným klíčem aplikace:
 
 ```CSharp
 app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
@@ -77,7 +77,7 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
            .Build();
 ```
 
-Tady je kód pro vytvoření aplikace pomocí certifikátu:
+Zde je kód pro sestavení aplikace s certifikátem:
 
 ```CSharp
 X509Certificate2 certificate = ReadCertificate(config.CertificateName);
@@ -86,6 +86,9 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
     .WithAuthority(new Uri(config.Authority))
     .Build();
 ```
+
+Místo toho může klientská aplikace v tajných klientech také prokázat svoji identitu pomocí kontrolních výrazů klienta. Tento rozšířený scénář je podrobně popsán v [kontrolním výrazu klienta](msal-net-client-assertions.md) .
+
 
 ### <a name="msalpython"></a>MSAL.Python
 
@@ -102,7 +105,7 @@ app = msal.ConfidentialClientApplication(
     )
 ```
 
-### <a name="msaljava"></a>MSAL.Java
+### <a name="msaljava"></a>MSAL. Kompilátor
 
 ```Java
 PrivateKey key = getPrivateKey();
@@ -120,4 +123,4 @@ ConfidentialClientApplication cca = ConfidentialClientApplication
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Démon procesu aplikace – získávání tokenů pro aplikaci](./scenario-daemon-acquire-token.md)
+> [Aplikace démona – získávání tokenů pro aplikaci](./scenario-daemon-acquire-token.md)

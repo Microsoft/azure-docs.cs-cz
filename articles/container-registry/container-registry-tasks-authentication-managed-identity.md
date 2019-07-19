@@ -1,60 +1,61 @@
 ---
-title: Použití spravované identity s Azure Container Registry úkoly
-description: Poskytují Azure Container Registry úloh přístup k prostředkům Azure, včetně dalších registrů kontejneru soukromého přiřazením spravovanou identitu pro prostředky Azure.
+title: Použití spravované identity s Azure Container Registry úlohami
+description: Přiřaďte ke zdrojům Azure přístup k prostředkům Azure Container Registry, včetně dalších privátních registrů kontejnerů, a to přiřazením spravované identity pro prostředky Azure.
 services: container-registry
 author: dlepow
+manager: gwallace
 ms.service: container-registry
 ms.topic: article
 ms.date: 06/12/2019
 ms.author: danlep
-ms.openlocfilehash: 5b60727472a06aaac8ccd3dce8609461e8972311
-ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.openlocfilehash: 46351af375ab4c6e59a3ddfba3c05c1e517fab0d
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67148029"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68311535"
 ---
-# <a name="use-an-azure-managed-identity-in-acr-tasks"></a>Použití Azure spravovat identity v úlohách služby ACR 
+# <a name="use-an-azure-managed-identity-in-acr-tasks"></a>Použití spravované identity Azure v úlohách ACR 
 
-Použití [spravované identity pro prostředky Azure](../active-directory/managed-identities-azure-resources/overview.md) o ověření z úlohy služby ACR do služby Azure container registry nebo jiných prostředků služby Azure bez nutnosti poskytnout nebo spravovat přihlašovací údaje v kódu. Například pomocí spravované identity o přijetí změn nebo nahrávání imagí kontejneru do registru jiný jako krok v rámci úlohy.
+Použijte [spravovanou identitu pro prostředky Azure](../active-directory/managed-identities-azure-resources/overview.md) k ověření z ACR úloh do služby Azure Container registry nebo jiných prostředků Azure, aniž byste museli zadávat nebo spravovat přihlašovací údaje v kódu. Například použijte spravovanou identitu pro vyžádání nebo vložení imagí kontejneru do jiného registru jako krok v rámci úlohy.
 
-V tomto článku najdete další informace o spravovaných identit a jak:
+V tomto článku se dozvíte víc o spravovaných identitách a o tom, jak:
 
 > [!div class="checklist"]
-> * Povolení identity se systém přiřadil nebo uživatelsky přiřazené identity v rámci úlohy služby ACR
-> * Udělit přístup identit k prostředkům Azure, jako jsou jiné registry kontejnerů Azure
-> * Použití spravované identity pro přístup k prostředkům z úlohy 
+> * Povolení identity přiřazené systémem nebo uživatelsky přiřazené identity pro úlohu ACR
+> * Udělte identitám přístup k prostředkům Azure, jako jsou třeba jiné Registry kontejnerů Azure.
+> * Přístup k prostředkům z úlohy pomocí spravované identity 
 
-Vytváření prostředků Azure, tento článek vyžaduje, abyste spustili Azure CLI verze 2.0.66 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][azure-cli].
+Tento článek vyžaduje, abyste spustili Azure CLI verze 2.0.66 nebo novější, abyste mohli vytvořit prostředky Azure. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][azure-cli].
 
 ## <a name="why-use-a-managed-identity"></a>Proč používat spravovanou identitu?
 
-Spravovaná identita pro prostředky Azure poskytuje služby Azure se automaticky spravovanou identitu ve službě Azure Active Directory (Azure AD). Můžete nakonfigurovat [určité prostředky Azure](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md), včetně úloh ACR pomocí spravované identity. Potom použijte identitu a přístup jiných prostředků služby Azure bez předávání přihlašovacích údajů v kódu nebo skriptech.
+Spravovaná identita pro prostředky Azure poskytuje služby Azure s automaticky spravovanou identitou v Azure Active Directory (Azure AD). Pomocí spravované identity můžete nakonfigurovat [určité prostředky Azure](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md), včetně úloh ACR. Pak použijte identitu pro přístup k dalším prostředkům Azure bez předání přihlašovacích údajů v kódu nebo skriptech.
 
-Spravované identity jsou dvou typů:
+Spravované identity mají dva typy:
 
-* *Uživatelsky přiřazené identity*, který lze přiřadit k více prostředkům a až vaše chcete zachovat. Uživatelsky přiřazené identity jsou aktuálně ve verzi preview.
+* *Uživatelsky přiřazené identity*, které můžete přiřadit k více prostředkům a uchovávat tak dlouho, dokud budete chtít. Uživatelsky přiřazené identity jsou momentálně ve verzi Preview.
 
-* A *identity spravované systému*, které jsou jedinečné pro konkrétní prostředek, jako je například úloha služby ACR a má platnost po dobu životnosti prostředku.
+* *Identita spravovaná systémem*, která je jedinečná pro konkrétní prostředek, jako je například úloha ACR a která trvá po dobu života daného prostředku.
 
-Po nastavení prostředku Azure s využitím spravované identity udělte přístup identity na jiný prostředek, stejně jako libovolný objekt zabezpečení. Například spravovanou identitu roli s o přijetí změn, vložení a o přijetí změn nebo jiná oprávnění můžete přiřadíte soukromého registru kontejnerů v Azure. (Úplný seznam rolí registru najdete v tématu [Azure Container Registry role a oprávnění](container-registry-roles.md).) Můžete poskytnout přístup identity na jeden nebo více prostředků.
+Po nastavení prostředku Azure pomocí spravované identity Udělte identitě přístup k jinému prostředku stejným způsobem jako jakýkoli objekt zabezpečení. Přiřaďte například roli spravované identity s oprávněním Pull, push a pull nebo jinými oprávněními k soukromému registru kontejneru v Azure. (Úplný seznam rolí registru najdete v tématu [Azure Container Registry role a oprávnění](container-registry-roles.md).) Jednomu nebo více prostředkům můžete přidělit přístup k identitě.
 
-## <a name="create-container-registries"></a>Vytvoření registry kontejnerů
+## <a name="create-container-registries"></a>Vytvoření registrů kontejnerů
 
-Pro účely tohoto kurzu potřebujete tři registry kontejnerů:
+Pro tento kurz potřebujete tři Registry kontejnerů:
 
-* První registru použijete k vytvoření a spuštění úlohy služby ACR. V tomto článku se tento zdroj registr jmenuje *myregistry*. 
-* Druhý a třetí registry jsou cílové registrů pro první příklad úlohu chcete nasdílet image, které se sestaví. V tomto článku jsou pojmenovány registrů cílového *customregistry1* a *customregistry2*.
+* Pomocí prvního registru můžete vytvářet a spouštět úlohy ACR. V tomto článku se jedná o zdrojový registr s názvem *myregistry*. 
+* Druhý a třetí registr jsou cílové registry pro první ukázkový úkol, který bude nabízet obrázek, který sestaví. V tomto článku jsou cílové Registry pojmenované *customregistry1* a *customregistry2*.
 
-Nahraďte vlastními názvy registru v dalších krocích.
+Nahraďte vlastními názvy registru v pozdějších krocích.
 
-Pokud ještě nemáte potřebné Azure container registry, najdete v článku [rychlý start: Vytvořit privátní registr pomocí rozhraní příkazového řádku Azure](container-registry-get-started-azure-cli.md). Není potřeba ještě nahrávání imagí do registru.
+Pokud ještě nemáte potřebné registry kontejnerů Azure, přečtěte si [téma rychlý Start: Vytvoření soukromého registru kontejnerů pomocí Azure CLI](container-registry-get-started-azure-cli.md). Image ještě nemusíte vkládat do registru.
 
-## <a name="example-task-with-a-system-assigned-identity"></a>Příklad: Úloha s identitou systém přiřadil
+## <a name="example-task-with-a-system-assigned-identity"></a>Příklad: Úloha s identitou přiřazenou systémem
 
-Tento příklad ukazuje, jak vytvořit [vícekrokových úkolů](container-registry-tasks-multi-step.md) s identitou systému přiřazené. Úloha sestavení image a pak použije identitu ověřit pomocí dvou registrů cílového nasdílejte image.
+V tomto příkladu se dozvíte, jak vytvořit [úlohu s více kroky](container-registry-tasks-multi-step.md) s identitou přiřazenou systémem. Úloha sestaví image a pak použije identitu k ověření se dvěma cílovými registry pro vložení image.
 
-Kroky pro tuto úlohu příkladu jsou definovány v [soubor YAML](container-registry-tasks-reference-yaml.md) s názvem `testtask.yaml`. Soubor se nachází v adresáři multipleRegistries [acr úlohy](https://github.com/Azure-Samples/acr-tasks) ukázkové úložiště. Soubor je reprodukován zde:
+Kroky pro tento příklad úlohy jsou definovány v [souboru YAML](container-registry-tasks-reference-yaml.md) s názvem `testtask.yaml`. Soubor se nachází v adresáři multipleRegistries úložiště ukázek [ACR-Tasks](https://github.com/Azure-Samples/acr-tasks) . Soubor se reprodukuje zde:
 
 ```yml
 version: v1.0.0
@@ -65,9 +66,9 @@ steps:
   - push: ["{{.Values.REGISTRY2}}/hello-world:{{.Run.ID}}"]
 ```
 
-### <a name="create-task-with-system-assigned-identity"></a>Vytvoří úkol s identitou systém přiřadil
+### <a name="create-task-with-system-assigned-identity"></a>Vytvořit úlohu s identitou přiřazenou systémem
 
-Vytvořit úlohu *více reg* spuštěním následujícího [az acr úloha vytvoření] [ az-acr-task-create] příkazu. Kontext úlohy je složka multipleRegistries z úložiště ukázek a příkazu odkazuje na soubor `testtask.yaml` v úložišti. `--assign-identity` Parametr bez dalších hodnot vytvoří identitu systém přiřadil pro úlohu. Tato úloha je nastavený tak, že budete muset aktivovat ručně, ale můžete nastavit ji spustit, když se provedou žádost o přijetí změn nebo potvrzení změn do úložiště. 
+Pomocí následujícího příkazu [AZ ACR Task Create][az-acr-task-create] vytvořte úlohu *Multiple-reg* . Kontext úlohy je složka multipleRegistries úložiště ukázek a příkaz odkazuje na soubor `testtask.yaml` v úložišti. `--assign-identity` Parametr bez další hodnoty vytvoří pro úlohu identitu přiřazenou systémem. Tato úloha je nastavená tak, aby ji bylo možné spustit ručně, ale je možné ji nastavit tak, aby se potvrzení odeslala do úložiště nebo žádost o přijetí změn. 
 
 ```azurecli
 az acr task create \
@@ -80,7 +81,7 @@ az acr task create \
   --assign-identity
 ```
 
-Ve výstupu tohoto příkazu `identity` část ukazuje identity typu `SystemAssigned` je nastavena v úloze. `principalId` Je ID instančního objektu služby identity:
+Ve výstupu `identity` příkazu ukazuje oddíl identitu typu `SystemAssigned` nastavenou v úloze. `principalId` Je ID objektu služby identity:
 
 ```console
 [...]
@@ -94,33 +95,33 @@ Ve výstupu tohoto příkazu `identity` část ukazuje identity typu `SystemAssi
 [...]
 ``` 
 
-Použít [az acr úkolu zobrazit] [ az-acr-task-show] příkazu pro uložení `principalId` do proměnné pro použití v pozdější příkazy:
+Pomocí příkazu [AZ ACR Task show][az-acr-task-show] uložte `principalId` proměnnou do proměnné a použijte ji v pozdějších příkazech:
 
 ```azurecli
 principalID=$(az acr task show --name multiple-reg --registry myregistry --query identity.principalId --output tsv)
 ```
 
-### <a name="give-identity-push-permissions-to-two-target-container-registries"></a>Udělit oprávnění identity nabízených oznámení do dvou cílové registrů kontejnerů
+### <a name="give-identity-push-permissions-to-two-target-container-registries"></a>Udělení oprávnění pro nabízení identity dvěma cílovým registrům kontejnerů
 
-V této části poskytují oprávnění systém přiřadil identity tak, aby nabízel dvě cílové registrů, s názvem *customregistry1* a *customregistry2*.
+V této části udělte systémem přiřazená oprávnění identity k odeslání do dvou cílových registrů s názvem *customregistry1* a *customregistry2*.
 
-Nejprve pomocí [az acr show] [ az-acr-show] příkazu Získejte ID prostředku každý registr a ukládá ID proměnné:
+Nejprve pomocí příkazu [AZ ACR show][az-acr-show] Získejte ID prostředku každého registru a uložte ID do proměnných:
 
 ```azurecli
 reg1_id=$(az acr show --name customregistry1 --query id --output tsv)
 reg2_id=$(az acr show --name customregistry2 --query id --output tsv)
 ```
 
-Použití [vytvořit přiřazení role az] [ az-role-assignment-create] příkazu přiřaďte identitu `acrpush` roli pro každý registr. Tato role má oprávnění k pull a push Image do registru kontejneru.
+Pomocí příkazu [AZ role Assignment Create][az-role-assignment-create] přiřaďte identitě `acrpush` roli ke každému registru. Tato role má oprávnění k vyžádání a vložení imagí do registru kontejneru.
 
 ```azurecli
 az role assignment create --assignee $principalID --scope $reg1_id --role acrpush
 az role assignment create --assignee $principalID --scope $reg2_id --role acrpush
 ```
 
-### <a name="add-target-registry-credentials-to-task"></a>Přidat přihlašovací údaje registru cíle úlohy
+### <a name="add-target-registry-credentials-to-task"></a>Přidat do úlohy přihlašovací údaje pro cílový registr
 
-Teď použijte [přidání az acr úloh pověření] [ az-acr-task-credential-add] příkaz pro přidání identity přihlašovací údaje k úloze tak, aby ho mohli ověřit oba registrů cílového.
+Teď pomocí příkazu [AZ ACR Task Credential Add][az-acr-task-credential-add] přidejte přihlašovací údaje identity k úloze, aby se mohla ověřit s oběma cílovými Registry.
 
 ```azurecli
 az acr task credential add \
@@ -138,7 +139,7 @@ az acr task credential add \
 
 ### <a name="manually-run-the-task"></a>Ručně spustit úlohu
 
-Použití [az acr úlohy] [ az-acr-task-run] příkaz k ruční aktivaci úlohy. `--set` Parametr se používá a zajistěte tak předání přihlašovací jména serveru z registrů dvě cílové hodnoty pro proměnné úkolů `REGISTRY1` a `REGISTRY2`.
+Úlohu můžete aktivovat ručně pomocí příkazu [AZ ACR Task Run][az-acr-task-run] . Parametr se používá k předání názvů přihlašovacích serverů dvou cílových registrů jako hodnot pro proměnné `REGISTRY1` úlohy a `REGISTRY2`. `--set`
 
 ```azurecli
 az acr task run \
@@ -219,25 +220,25 @@ cf31: digest: sha256:92c7f9c92844bbbb5d0a101b22f7c2a7949e40f8ea90c8b3bc396879d95
 Run ID: cf31 was successful after 35s
 ```
 
-## <a name="example-task-with-a-user-assigned-identity"></a>Příklad: Úlohu uživatelsky přiřazené identity
+## <a name="example-task-with-a-user-assigned-identity"></a>Příklad: Úkol s identitou přiřazenou uživatelem
 
-V tomto příkladu vytvoření uživatelsky přiřazené identity s oprávněním ke čtení tajných kódů z trezoru klíčů Azure. Tato identita přiřadíte vícekrokových úkolů, která čte tajného kódu, sestavení image a přihlásí do Azure CLI se přečíst značku image.
+V tomto příkladu vytvoříte identitu přiřazenou uživateli s oprávněním ke čtení tajných klíčů z trezoru klíčů Azure. Tuto identitu přiřadíte k úkolu s více kroky, který přečte tajný klíč, vytvoří image a přihlásí se do Azure CLI a přečte si značku image.
 
-### <a name="create-a-key-vault-and-store-a-secret"></a>Vytvoření trezoru klíčů a uložíte tajný klíč
+### <a name="create-a-key-vault-and-store-a-secret"></a>Vytvoření trezoru klíčů a uložení tajného klíče
 
-Nejprve, pokud je potřeba, vytvořte skupinu prostředků s názvem *myResourceGroup* v *eastus* umístění následujícím [vytvořit skupiny az] [ az-group-create]příkaz:
+Nejdřív v případě potřeby vytvořte skupinu prostředků s názvem *myResourceGroup* v umístění *eastus* pomocí následujícího příkazu [AZ Group Create][az-group-create] :
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
 ```
 
-Použití [az keyvault vytvořit] [ az-keyvault-create] příkaz pro vytvoření trezoru klíčů. Nezapomeňte zadat název jedinečný trezoru klíčů. 
+Pomocí příkazu [AZ datatrezor Create][az-keyvault-create] vytvořte Trezor klíčů. Nezapomeňte zadat jedinečný název trezoru klíčů. 
 
 ```azurecli-interactive
 az keyvault create --name mykeyvault --resource-group myResourceGroup --location eastus
 ```
 
-Store ukázkový tajný klíč v trezoru klíčů pomocí [az keyvault secret sady] [ az-keyvault-secret-set] příkaz:
+Pomocí příkazu [AZ Key trezor tajné sady][az-keyvault-secret-set] uložte ukázkový tajný klíč do trezoru klíčů:
 
 ```azurecli
 az keyvault secret set \
@@ -247,17 +248,17 @@ az keyvault secret set \
   --vault-name mykeyvault
 ```
 
-Můžete například chtít ukládat přihlašovací údaje k ověření pomocí privátního registru Dockeru, aby si můžete vyžádat privátní image.
+Můžete například chtít ukládat přihlašovací údaje pro ověření pomocí privátního registru Docker, abyste si mohli vyžádat privátní image.
 
 ### <a name="create-an-identity"></a>Vytvoření identity
 
-Vytvoření identity s názvem *myACRTasksId* v předplatném pomocí [vytvoření az identity] [ az-identity-create] příkazu. Můžete použít stejnou skupinu prostředků, které jste použili k vytvoření registru kontejnerů nebo trezoru klíčů nebo na jiném.
+Pomocí příkazu [AZ identity Create][az-identity-create] vytvořte v předplatném identitu s názvem *myACRTasksId* . Stejnou skupinu prostředků, kterou jste použili dříve, můžete použít k vytvoření registru kontejneru nebo trezoru klíčů nebo jiné.
 
 ```azurecli-interactive
 az identity create --resource-group myResourceGroup --name myACRTasksId
 ```
 
-Ke konfiguraci identity v následujících krocích, použijte [az identity zobrazit] [ az-identity-show] příkazu pro uložení identity prostředku, ID a ID instančního objektu v proměnné.
+Pokud chcete nakonfigurovat identitu v následujících krocích, pomocí příkazu [AZ identity show][az-identity-show] uložte ID prostředku identity a ID instančního objektu do proměnných.
 
 ```azurecli
 # Get resource ID of the user-assigned identity
@@ -267,25 +268,25 @@ resourceID=$(az identity show --resource-group myResourceGroup --name myACRTasks
 principalID=$(az identity show --resource-group myResourceGroup --name myACRTasksId --query principalId --output tsv)
 ```
 
-### <a name="grant-identity-access-to-keyvault-to-read-secret"></a>Identita udělení přístupu k trezoru klíčů pro čtení tajného kódu
+### <a name="grant-identity-access-to-keyvault-to-read-secret"></a>Udělte identitě přístup k trezoru klíčů pro čtení tajného klíče.
 
-Spusťte následující příkaz [az keyvault set-policy] [ az-keyvault-set-policy] příkaz pro nastavení zásad přístupu pro trezor klíčů. Následující příklad umožňuje uživatelsky přiřazené identity k získání tajné kódy z trezoru klíčů. Tento přístup je potřeba později k vícekrokového úkol spuštěn úspěšně.
+Pokud chcete nastavit zásady přístupu pro Trezor klíčů, spusťte následující příkaz [AZ Key trezor set-Policy][az-keyvault-set-policy] . Následující příklad umožňuje uživatelsky přiřazené identitě získat tajné kódy z trezoru klíčů. Tento přístup je potřeba provést později, aby bylo možné úspěšně spustit úlohu s více kroky.
 
 ```azurecli-interactive
  az keyvault set-policy --name mykeyvault --resource-group myResourceGroup --object-id $principalID --secret-permissions get
 ```
 
-### <a name="grant-identity-reader-access-to-the-resource-group-for-registry"></a>Udělit identity čtečky přístup do skupiny prostředků pro registr
+### <a name="grant-identity-reader-access-to-the-resource-group-for-registry"></a>Udělení přístupu ke skupině prostředků v registru ke službě čtenář identity
 
-Spusťte následující příkaz [vytvořit přiřazení role az] [ az-role-assignment-create] příkazu přiřaďte identitu role Čtenář, v tomto případě do skupiny prostředků obsahující zdroj registru. Tato role je potřeba později k vícekrokového úkol spuštěn úspěšně.
+Spusťte následující příkaz [AZ role Assignment Create][az-role-assignment-create] a přiřaďte mu roli Čtenář a v tomto případě do skupiny prostředků obsahující zdrojový registr. Tato role je potřeba později, aby bylo možné úspěšně spustit úlohu s více kroky.
 
 ```azurecli
 az role assignment create --role reader --resource-group myResourceGroup --assignee $principalID
 ```
 
-### <a name="create-task-with-user-assigned-identity"></a>Vytvoření úlohy s využitím uživatelsky přiřazené identity
+### <a name="create-task-with-user-assigned-identity"></a>Vytvořit úlohu s identitou přiřazenou uživatelem
 
-Nyní vytvořte [vícekrokových úkolů](container-registry-tasks-multi-step.md) a přiřaďte ho uživatelsky přiřazené identity. Pro tuto úlohu příklad vytvoření [soubor YAML](container-registry-tasks-reference-yaml.md) s názvem `managed-identities.yaml` do místního pracovního adresáře a vložte následující obsah. Nezapomeňte nahradit název trezoru klíčů v souboru s názvem trezoru klíčů
+Nyní vytvořte [úkol s více kroky](container-registry-tasks-multi-step.md) a přiřaďte mu identitu přiřazenou uživatelem. Pro tento příklad úlohy vytvořte [soubor YAML](container-registry-tasks-reference-yaml.md) s názvem `managed-identities.yaml` v místním pracovním adresáři a vložte následující obsah. Nezapomeňte nahradit název trezoru klíčů v souboru názvem vašeho trezoru klíčů.
 
 ```yml
 version: v1.0.0
@@ -309,13 +310,13 @@ steps:
   - cmd: microsoft/azure-cli az acr repository show-tags -n {{.Values.registryName}} --repository my-website
 ```
 
-Tento úkol provede následující akce:
+Tato úloha provede následující akce:
 
-* Ověří, že můžete získat přístup ke tajný klíč v trezoru klíčů. Tento krok je pro demonstrační účely. Ve skutečném scénáři musíte úloh krokem k získání přihlašovacích údajů pro přístup k privátním úložišti Docker Hubu.
-* Vytvoří a předá `mywebsite` image do registru zdroje.
-* Protokoly do příkazového řádku Azure do seznamu `my-website` obrázku značky v registru zdroje.
+* Ověří, jestli má přístup ke tajnému kódu ve vašem trezoru klíčů. Tento krok je určen pro demonstrační účely. Ve scénáři reálného světa budete možná potřebovat krok úkolu, který získá přihlašovací údaje pro přístup k úložišti privátního Docker Hub.
+* Sestaví a `mywebsite` vloží image do zdrojového registru.
+* Přihlásí se do Azure CLI a vypíše `my-website` značky imagí ve zdrojovém registru.
 
-Vytvořte úlohu volá *msitask* a předejte mu ID prostředku uživatelsky přiřazené identity, kterou jste předtím vytvořili. Tento příklad úkolu je vytvořený z `managed-identities.yaml` soubor uložený v místní pracovní adresář, takže budete muset aktivovat ručně.
+Vytvořte úlohu s názvem *msitask* a předejte jí ID prostředku uživatelem přiřazené identity, kterou jste vytvořili dříve. Tento příklad úlohy se vytvoří ze `managed-identities.yaml` souboru, který jste uložili do místního pracovního adresáře, takže je potřeba ho aktivovat ručně.
 
 ```azurecli
 az acr task create \
@@ -328,7 +329,7 @@ az acr task create \
   --assign-identity $resourceID
 ```
 
-Ve výstupu tohoto příkazu `identity` část ukazuje identity typu `UserAssigned` je nastavena v úloze. `principalId` Je ID instančního objektu služby identity:
+Ve výstupu `identity` příkazu ukazuje oddíl identitu typu `UserAssigned` nastavenou v úloze. `principalId` Je ID objektu služby identity:
 
 ```console
 [...]
@@ -346,13 +347,13 @@ Ve výstupu tohoto příkazu `identity` část ukazuje identity typu `UserAssign
 
 ### <a name="manually-run-the-task"></a>Ručně spustit úlohu
 
-Použití [az acr úlohy] [ az-acr-task-run] příkaz k ruční aktivaci úlohy. `--set` Parametr se používá a zajistěte tak předání názvu registru zdroje do úlohy:
+Úlohu můžete aktivovat ručně pomocí příkazu [AZ ACR Task Run][az-acr-task-run] . `--set` Parametr se používá k předání názvu zdrojového registru do úlohy:
 
 ```azurecli
 az acr task run --name msitask --registry myregistry --set registryName=myregistry  
 ```
 
-Výstup ukazuje tajný kód je vyřešen, image úspěšně sestavíte a vloženo a protokoly úlohy do příkazového řádku Azure s použitím identity ke čtení z registru zdrojové značka obrázku:
+Výstup ukazuje, že je tajný kód vyřešen, image je úspěšně sestavena a vložena a úloha se přihlásí do Azure CLI s identitou ke čtení značky image ze zdrojového registru:
 
 ```console
 Queued a run with ID: cf32
@@ -410,16 +411,16 @@ cf32: digest: sha256:cbb4aa83b33f6959d83e84bfd43ca901084966a9f91c42f111766473dc9
 ```
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-V tomto článku jste se dozvěděli o použití spravovaných identit s Azure Container Registry úlohy a jak:
+V tomto článku jste se dozvěděli o používání spravovaných identit s Azure Container Registry úlohami a postupy:
 
 > [!div class="checklist"]
-> * Povolit identitu se systém přiřadil nebo přiřazené uživatele v rámci úlohy služby ACR
-> * Udělit přístup identit k prostředkům Azure, jako jsou jiné registry kontejnerů Azure
-> * Použití spravované identity pro přístup k prostředkům z úlohy  
+> * Povolení uživatelsky přiřazené identity nebo uživatele přiřazené k úloze ACR
+> * Udělte identitám přístup k prostředkům Azure, jako jsou třeba jiné Registry kontejnerů Azure.
+> * Přístup k prostředkům z úlohy pomocí spravované identity  
 
-* Další informace o [spravovaných identit pro prostředky Azure](/azure/active-directory/managed-identities-azure-resources/).
+* Přečtěte si další informace o [spravovaných identitách pro prostředky Azure](/azure/active-directory/managed-identities-azure-resources/).
 
 <!-- LINKS - Internal -->
 [az-login]: /cli/azure/reference-index#az-login

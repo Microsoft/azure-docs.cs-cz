@@ -1,10 +1,10 @@
 ---
-title: Obnovení protokolu TCP nástroje pro vyrovnávání zatížení při nečinnosti v Azure
+title: Load Balancer resetování protokolu TCP při nečinnosti v Azure
 titlesuffix: Azure Load Balancer
-description: Nástroj pro vyrovnávání zatížení s obousměrný TCP RVNÍ paketů na časový limit nečinnosti
+description: Load Balancer s obousměrnými pakety TCP RST při nečinnosti
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: asudbring
 ms.custom: seodec18
 ms.service: load-balancer
 ms.devlang: na
@@ -12,36 +12,36 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/03/2019
-ms.author: kumud
-ms.openlocfilehash: 4a09492fcb8a7985fa27b6daae89aa5dec0fa6e0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: allensu
+ms.openlocfilehash: 8485f4b6e8d4ff55de4930b3cfb7a07802cf1d41
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65413864"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68274158"
 ---
-# <a name="load-balancer-with-tcp-reset-on-idle-public-preview"></a>Nástroj pro vyrovnávání zatížení s TCP Nulováním nečinnosti (Public Preview)
+# <a name="load-balancer-with-tcp-reset-on-idle-public-preview"></a>Load Balancer s resetováním protokolu TCP po nečinnosti (Public Preview)
 
-Můžete použít [Load balanceru úrovně Standard](load-balancer-standard-overview.md) vytvořit předvídatelnějšího chování aplikace pro vaše scénáře tím, že pro dané pravidlo umožňuje TCP resetovat při nečinnosti. Výchozí chování pro vyrovnávání zatížení je tiše síťový toky, když je dosaženo časového limitu nečinnosti toku.  Povolení této funkce způsobí, že nástroj pro vyrovnávání zatížení k odeslání obousměrné (TCP RVNÍ paket) může resetovat TCP na časový limit nečinnosti.  Koncových bodů vaší aplikace to bude informovat, že připojení vypršela platnost a již není použitelné.  Koncové body můžete okamžitě vytvořit nové připojení v případě potřeby.
+Pomocí [Standard Load Balancer](load-balancer-standard-overview.md) můžete pro své scénáře vytvořit předvídatelné chování aplikace tím, že pro dané pravidlo povolíte resetování protokolu TCP pro nečinnost. Výchozím chováním Load Balancer je nejenom tiché vyřazení toků při dosažení časového limitu nečinnosti toku.  Povolení této funkce způsobí, že Load Balancer odesílat obousměrné resety TCP (TCP RST Packet) na časový limit nečinnosti.  Tím se informují koncové body vaší aplikace, ke kterým vypršel časový limit připojení a které už nejsou použitelné.  Koncové body můžou v případě potřeby okamžitě vytvořit nové připojení.
 
-![Obnovení protokolu TCP nástroje pro vyrovnávání zatížení](media/load-balancer-tcp-reset/load-balancer-tcp-reset.png)
+![Resetování protokolu TCP Load Balancer](media/load-balancer-tcp-reset/load-balancer-tcp-reset.png)
 
 >[!NOTE] 
->Nástroj pro vyrovnávání zatížení se vynulují funkce časového limitu nečinnosti protokolu TCP je v tuto chvíli k dispozici jako verze Public Preview. Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje pro úlohy v produkčním prostředí. Některé funkce nemusí být podporované nebo můžou mít omezené možnosti. Podrobnosti najdete v [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+>Load Balancer s funkcí vypršení časového limitu nečinnosti protokolu TCP je k dispozici jako Public Preview v tomto okamžiku. Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje pro úlohy v produkčním prostředí. Některé funkce nemusí být podporované nebo můžou mít omezené možnosti. Podrobnosti najdete v [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
  
-Změnit toto výchozí chování a odesílat TCP resetuje na časový limit nečinnosti na pravidla příchozího překladu adres, Vyrovnávání zatížení a pravidla povolit a [odchozí pravidla](https://aka.ms/lboutboundrules).  Když povolena pro každé pravidlo nástroje pro vyrovnávání zatížení odešle obousměrné TCP Reset (TCP RVNÍ pakety) do koncových bodů klienta i serveru v době nečinnosti časový limit pro všechny toky odpovídající.
+Toto výchozí chování můžete změnit a povolit odesílání resetů TCP na časový limit nečinnosti u příchozích pravidel NAT, pravidel vyrovnávání zatížení a [odchozích pravidel](https://aka.ms/lboutboundrules).  Pokud je povoleno podle pravidla, Load Balancer odešle obousměrné resetování TCP (pakety TCP RST) do koncových bodů klienta i serveru v době nečinnosti u všech vyhovujících toků.
 
-Příjem paketů TCP RVNÍ koncové body odpovídající soketu okamžitě ukončena. Tento postup umožňuje okamžité odeslání oznámení do koncových bodů, které vydání sady připojení došlo k chybě a všechny budoucí komunikaci na stejné připojení TCP se nezdaří.  Aplikace může odstranit připojení, když soket nezavře a znovu vytvořit připojení podle potřeby a bez čekání na připojení TCP se nakonec vypršení časového limitu.
+Koncové body, které obdrží pakety TCP RST, okamžitě zavřou příslušný soket. To poskytuje okamžité oznámení koncovým bodům, k nimž došlo k vydání připojení, a veškerá budoucí komunikace se stejným připojením TCP selže.  Aplikace mohou vyprázdnit připojení v případě, že soket zavře a znovu vytvoří připojení podle potřeby, aniž by čekali na vypršení časového limitu připojení TCP.
 
-Pro většinu scénářů to může snížit nutnost odesílání TCP (nebo aplikační vrstva) keepalive aktualizovat časový limit nečinnosti toku. 
+V mnoha scénářích to může snížit nutnost odesílání nečinných dat toku TCP (nebo aplikační vrstvy), aby se obnovil časový limit nečinnosti. 
 
-Pokud vaše nečinnosti dob trvání překračují povolené konfigurací nebo vaše aplikace zobrazuje nežádoucí chování se resetuje TCP povolený, může stále muset použít keepalive TCP (nebo keepalive vrstvy aplikace) k monitorování aktivity připojení TCP.  Dále keepalive lze také budou fungovat i když je připojení směrovány přes proxy server někde v cestě, zejména keepalive vrstvy aplikace.  
+Pokud vaše doby nečinnosti překračují hodnoty povolené konfigurací nebo pokud vaše aplikace zobrazuje nežádoucí chování s povolenými obnovenými omezeními protokolu TCP, může být stále nutné použít kontroly stavu protokolu TCP (nebo neaktivních zobrazení vrstvy aplikace) a monitorovat tak živý výkon připojení TCP.  V případě, že se připojení proxy serverem nachází v cestě, může to být také užitečné i v případě, že se připojení využije, zejména v případě nečinnosti aplikační vrstvy.  
 
-Pečlivě zkontrolujte celý scénář koncového rozhodnout, jestli můžete využívat povolení TCP obnoví nastavení časového limitu nečinnosti, a pokud může být nutné další kroky k zajištění chování požadované aplikace.
+Pečlivě Projděte celý scénář od konce až do konce, abyste se rozhodli, jestli vám doporučujeme povolit resetování protokolu TCP, upravit časový limit nečinnosti a případně provést další kroky, abyste zajistili, že se chování aplikace požaduje.
 
-## <a name="enabling-tcp-reset-on-idle-timeout"></a>Povoluje se na časový limit nečinnosti TCP Reset
+## <a name="enabling-tcp-reset-on-idle-timeout"></a>Povolení resetování protokolu TCP při nečinnosti
 
-Pomocí rozhraní API verze 2018-07-01, můžete povolit odesílání obousměrné TCP resetuje na časový limit nečinnosti na základě za pravidla:
+Pomocí rozhraní API verze 2018-07-01 můžete povolit odesílání obousměrných resetů TCP na časový limit nečinnosti u jednotlivých pravidel:
 
 ```json
       "loadBalancingRules": [
@@ -67,16 +67,16 @@ Pomocí rozhraní API verze 2018-07-01, můžete povolit odesílání obousměrn
       ]
 ```
 
-## <a name="regions"></a> Regionální dostupnost
+## <a name="regions"></a>Dostupnost oblasti
 
 K dispozici ve všech oblastech.
 
 ## <a name="limitations"></a>Omezení
 
-- Portál nelze použít ke konfiguraci nebo zobrazit TCP Reset.  Použijte šablony, rozhraní REST API, Az CLI 2.0 nebo prostředí PowerShell.
-- RVNÍ TCP se odesílají jenom při připojení TCP ve stavu založené.
+- Portál nelze použít ke konfiguraci nebo zobrazení resetu protokolu TCP.  Použijte šablony, rozhraní REST API, Az CLI 2.0 nebo prostředí PowerShell.
+- TCP RST se posílá pouze během připojení TCP v navázaném stavu.
 
 ## <a name="next-steps"></a>Další postup
 
 - Další informace o [Load balanceru úrovně Standard](load-balancer-standard-overview.md).
-- Další informace o [odchozí pravidla](load-balancer-outbound-rules-overview.md).
+- Přečtěte si o [odchozích pravidlech](load-balancer-outbound-rules-overview.md).

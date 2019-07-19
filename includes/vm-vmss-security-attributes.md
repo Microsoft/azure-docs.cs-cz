@@ -4,37 +4,37 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 07/10/2019
 ms.author: mbaldwin
-ms.openlocfilehash: df11493fa9663d3fcbf0a2f74a5acbead55a25fb
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: 642f63966533416be7b86bae362d24cd286706b3
+ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67800273"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68306087"
 ---
 ## <a name="preventative"></a>Preventivní
 
 | Atribut zabezpečení | Ano/Ne | Poznámky |
 |---|---|--|
-| Šifrování v klidovém stavu (například šifrování na straně serveru, šifrování na straně serveru pomocí klíčů spravovaných zákazníkem a další funkce šifrování) | Ano | Zobrazit [jak šifrování virtuálního počítače s Linuxem v Azure](/azure/virtual-machines/linux/encrypt-disks.md) a [zašifrovat virtuální disky na virtuálním počítači s Windows](/azure/virtual-machines/windows/encrypt-disks.md). |
-| Šifrování během přenosu (například šifrování ExpressRoute ve virtuální síti a šifrováním virtuálními sítěmi)| Ano | Azure Virtual Machines podporuje [ExpressRoute](/azure/expressroute) a šifrování virtuální sítě. Zobrazit [šifrování ve virtuálních počítačích v cestě](/azure/security/security-azure-encryption-overview.md#in-transit-encryption-in-vms). |
-| Šifrování klíče zpracování (CMK, BYOK, atd.)| Ano | Klíče spravované zákazníkem je scénář šifrování podporovaných Azure; Zobrazit [Přehled šifrování Azure](/azure/security/security-azure-encryption-overview#in-transit-encryption-in-vms.md).|
+| Šifrování v klidovém formátu (například šifrování na straně serveru, šifrování na straně serveru pomocí klíčů spravovaných zákazníkem a další funkce šifrování) | Ano | Podívejte [se, jak zašifrovat virtuální počítač se systémem Linux v Azure](/azure/virtual-machines/linux/encrypt-disks) a [Šifrovat virtuální disky na](/azure/virtual-machines/windows/encrypt-disks)virtuálním počítači s Windows. |
+| Šifrování při přenosu (například šifrování ExpressRoute, šifrování virtuální sítě a šifrování virtuální sítě)| Ano | Azure Virtual Machines podporuje šifrování [ExpressRoute](/azure/expressroute) a virtuální sítě. Viz [šifrování v přenosech na virtuálních počítačích](/azure/security/security-azure-encryption-overview#in-transit-encryption-in-vms). |
+| Zpracování šifrovacích klíčů (CMK, BYOK atd.)| Ano | Klíče spravované zákazníkem jsou podporovaným scénářem šifrování Azure; viz [Přehled šifrování Azure](/azure/security/security-azure-encryption-overview#in-transit-encryption-in-vms).|
 | Šifrování na úrovni sloupce (Azure Data Services)| Není k dispozici | |
-| Šifrované volání rozhraní API| Ano | Via HTTPS and SSL. |
+| Zašifrovaná volání rozhraní API| Ano | Přes HTTPS a SSL. |
 
 ## <a name="network-segmentation"></a>Segmentace sítě
 
 | Atribut zabezpečení | Ano/Ne | Poznámky |
 |---|---|--|
 | Podpora koncového bodu služby| Ano | |
-| Vkládání podpory virtuálních sítí| Ano | . |
-| Izolace sítě a Firewalling podpory| Ano |  |
-| Vynucené tunelování podpory| Ano | Zobrazit [konfigurace vynuceného tunelování pomocí modelu nasazení Azure Resource Manageru](/azure/vpn-gateway/vpn-gateway-forced-tunneling-rm.md). |
+| Podpora vkládání virtuální sítě| Ano | . |
+| Izolace sítě a podpora brány firewall| Ano |  |
+| Podpora vynuceného tunelování| Ano | Další informace najdete v tématu [Konfigurace vynuceného tunelování pomocí modelu nasazení Azure Resource Manager](/azure/vpn-gateway/vpn-gateway-forced-tunneling-rm). |
 
 ## <a name="detection"></a>Detection (Detekce)
 
 | Atribut zabezpečení | Ano/Ne | Poznámky|
 |---|---|--|
-| Podpora (Log analytics, App insights atd.) pro monitorování Azure| Ano | Zobrazit [monitorovat a aktualizovat virtuální počítač s Linuxem v Azure](/azure/virtual-machines/linux/tutorial-monitoring.md) a [monitorovat a aktualizovat virtuální počítač s Windows v Azure](/azure/virtual-machines/windows/tutorial-monitoring.md). |
+| Podpora monitorování Azure (Log Analytics, App Insights atd.)| Ano | Podívejte se na téma [monitorování a aktualizace virtuálního počítače se systémem Linux v Azure](/azure/virtual-machines/linux/tutorial-monitoring) a [monitorování a aktualizace virtuálního počítače s Windows v Azure](/azure/virtual-machines/windows/tutorial-monitoring). |
 
 ## <a name="identity-and-access-management"></a>Správa identit a přístupu
 
@@ -48,11 +48,11 @@ ms.locfileid: "67800273"
 
 | Atribut zabezpečení | Ano/Ne | Poznámky|
 |---|---|--|
-| Ovládací prvek a správu roviny protokolování a auditování| Ano |  |
-| Protokolování roviny dat a auditu | Ne |  |
+| Protokolování a audit roviny řízení a správy| Ano |  |
+| Protokolování a audit roviny dat | Ne |  |
 
 ## <a name="configuration-management"></a>Správa konfigurace
 
 | Atribut zabezpečení | Ano/Ne | Poznámky|
 |---|---|--|
-| Podpora správy konfigurace (verze konfigurace atd.)| Ano |  | 
+| Podpora správy konfigurace (Správa verzí konfigurace atd.)| Ano |  | 

@@ -1,37 +1,38 @@
 ---
-title: Rychlý start – události odeslání Azure Container Registry do služby Event Grid
-description: V tomto rychlém startu povolte událostí služby Event Grid pro svůj registr kontejneru a odesílání nabízených oznámení image kontejneru a odstraňovat události k ukázkové aplikaci.
+title: Rychlý Start – odeslání Azure Container Registrych událostí do Event Grid
+description: V tomto rychlém startu povolíte Event Grid události pro registr kontejnerů a potom zadáte události pro vložení a odstranění image kontejneru do ukázkové aplikace.
 services: container-registry
 author: dlepow
+manager: gwallace
 ms.service: container-registry
 ms.topic: article
 ms.date: 08/23/2018
 ms.author: danlep
 ms.custom: seodec18
-ms.openlocfilehash: f5c075942a29968ea57c684cd817e578df951989
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 49ee9a7f12601b0d93e320ab797be4a1ada41c04
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60427636"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68309804"
 ---
-# <a name="quickstart-send-events-from-private-container-registry-to-event-grid"></a>Rychlý start: Odesílání událostí v privátním registru kontejneru do služby Event Grid
+# <a name="quickstart-send-events-from-private-container-registry-to-event-grid"></a>Rychlý start: Odeslání událostí z privátního registru kontejneru do Event Grid
 
-Azure Event Grid je plně spravovaná služba Směrování událostí, která poskytuje jednotnou spotřebu událostí s využitím publikování-odběru modelu. V tomto rychlém startu použijete Azure CLI k vytvoření registru kontejnerů, přihlášení k odběru událostí registru a pak nasadit ukázkovou webovou aplikaci pro příjem událostí. Nakonec se aktivuje image kontejneru `push` a `delete` události a zobrazení datové části události v ukázkové aplikaci.
+Azure Event Grid je plně spravovaná služba Směrování událostí, která poskytuje jednotnou spotřebu událostí pomocí modelu publikování a odběru. V tomto rychlém startu pomocí Azure CLI vytvoříte registr kontejnerů, přihlásíte se k odběru událostí registru a pak nasadíte ukázkovou webovou aplikaci pro příjem událostí. Nakonec můžete aktivovat image `push` kontejneru a `delete` události a zobrazit datovou část události v ukázkové aplikaci.
 
-Po dokončení kroků v tomto článku, události odeslané z vašeho registru kontejneru do služby Event Grid se zobrazí v ukázkové webové aplikace:
+Po dokončení kroků v tomto článku se v ukázkové webové aplikaci zobrazí události odeslané z registru kontejneru, které se Event Grid.
 
-![Webový prohlížeč vykreslování ukázkovou webovou aplikaci pomocí tří přijatých událostí][sample-app-01]
+![Webový prohlížeč, který vykresluje ukázkovou webovou aplikaci se třemi přijatými událostmi][sample-app-01]
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet][azure-account] před tím, než začnete.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Příkazy rozhraní příkazového řádku Azure v tomto článku jsou formátována pro **Bash** prostředí. Pokud používáte jiné prostředí, jako je PowerShell nebo příkazového řádku, budete muset upravit znaky pokračování řádku nebo řádky přiřazení proměnné odpovídajícím způsobem. Tento článek používá proměnné, chcete-li minimalizovat množství příkaz Úpravy vyžaduje.
+Příkazy rozhraní příkazového řádku Azure v tomto článku jsou formátované pro prostředí **bash** Shell. Pokud používáte jiné prostředí, jako je PowerShell nebo příkazový řádek, možná budete muset odpovídajícím způsobem upravit řádky pro pokračování řádku nebo přiřazení proměnných. V tomto článku se k minimalizaci velikosti požadovaných příkazů používají proměnné.
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-Skupina prostředků Azure je logický kontejner, ve kterém můžete nasadit a spravovat prostředky Azure. Následující [vytvořit skupiny az] [ az-group-create] příkaz vytvoří skupinu prostředků s názvem *myResourceGroup* v *eastus* oblasti. Pokud chcete použít jiný název skupiny prostředků, nastavte `RESOURCE_GROUP_NAME` na jinou hodnotu.
+Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure. Následující příkaz [AZ Group Create][az-group-create] vytvoří skupinu prostředků s názvem *myResourceGroup* v oblasti *eastus* . Pokud chcete pro skupinu prostředků použít jiný název, nastavte `RESOURCE_GROUP_NAME` na jinou hodnotu.
 
 ```azurecli-interactive
 RESOURCE_GROUP_NAME=myResourceGroup
@@ -41,7 +42,7 @@ az group create --name $RESOURCE_GROUP_NAME --location eastus
 
 ## <a name="create-a-container-registry"></a>Vytvoření registru kontejnerů
 
-V dalším kroku nasazení služby container registry do skupiny prostředků pomocí následujících příkazů. Před spuštěním [az acr vytvořit] [ az-acr-create] příkazu, nastavte `ACR_NAME` na název vašeho registru. Název musí být jedinečný v rámci Azure a je omezen na 5 až 50 alfanumerických znaků.
+V dalším kroku nasaďte registr kontejneru do skupiny prostředků pomocí následujících příkazů. Před spuštěním příkazu [AZ ACR Create][az-acr-create] nastavte `ACR_NAME` na název svého registru. Název musí být v rámci Azure jedinečný a omezený na 5-50 alfanumerických znaků.
 
 ```azurecli-interactive
 ACR_NAME=<acrName>
@@ -49,7 +50,7 @@ ACR_NAME=<acrName>
 az acr create --resource-group $RESOURCE_GROUP_NAME --name $ACR_NAME --sku Basic
 ```
 
-Po vytvoření registru rozhraní Azure CLI vrátí výstup podobný následujícímu:
+Po vytvoření registru vrátí Azure CLI podobný výstup jako v následujícím příkladu:
 
 ```json
 {
@@ -75,9 +76,9 @@ Po vytvoření registru rozhraní Azure CLI vrátí výstup podobný následují
 
 ## <a name="create-an-event-endpoint"></a>Vytvoření koncového bodu události
 
-V této části pomocí šablony Resource Manageru se nachází v úložišti GitHub nasadit předem sestavené ukázkovou webovou aplikaci do služby Azure App Service. Později přihlášení k odběru událostí služby Event Grid vašeho registru a zadejte tuto aplikaci jako koncový bod, ke které se odesílají události.
+V této části použijete šablonu Správce prostředků umístěnou v úložišti GitHub k nasazení předem připravené ukázkové webové aplikace do Azure App Service. Později se přihlásíte k odběru událostí Event Grid registru a tuto aplikaci určíte jako koncový bod, do kterého se události odesílají.
 
-Pokud chcete nasadit ukázkovou aplikaci, nastavte `SITE_NAME` jedinečný název pro vaši webovou aplikaci a spusťte následující příkazy. Název webu musí být v rámci Azure jedinečný, protože je součástí plně kvalifikovaného názvu domény (FQDN) webové aplikace. V další části přejděte do aplikace plně kvalifikovaný název domény ve webovém prohlížeči zobrazení událostí v registru.
+Pokud chcete ukázkovou aplikaci nasadit, `SITE_NAME` nastavte na jedinečný název vaší webové aplikace a spusťte následující příkazy. Název webu musí být v rámci Azure jedinečný, protože tvoří součást plně kvalifikovaného názvu domény (FQDN) webové aplikace. V pozdější části přejdete do plně kvalifikovaného názvu domény aplikace ve webovém prohlížeči a zobrazíte události v registru.
 
 ```azurecli-interactive
 SITE_NAME=<your-site-name>
@@ -88,19 +89,19 @@ az group deployment create \
     --parameters siteName=$SITE_NAME hostingPlanName=$SITE_NAME-plan
 ```
 
-Po úspěšném nasazení (může trvat několik minut), otevřete prohlížeč a přejděte do své webové aplikace a ujistěte se, zda je spuštěná:
+Po úspěšném nasazení (může to trvat několik minut) otevřete prohlížeč a přejděte do webové aplikace, abyste se ujistili, že je spuštěný:
 
 `http://<your-site-name>.azurewebsites.net`
 
-Měli byste vidět ukázkovou aplikaci vybarvením žádné zprávy o událostech zobrazí:
+Měla by se zobrazit ukázková aplikace vykreslená bez zobrazených zpráv o událostech:
 
-![Webové prohlížeče zobrazující ukázkovou webovou aplikaci s se zobrazí žádné události][sample-app-02]
+![Webový prohlížeč, ve kterém se zobrazuje Ukázková webová aplikace bez zobrazených událostí][sample-app-02]
 
 [!INCLUDE [event-grid-register-provider-cli.md](../../includes/event-grid-register-provider-cli.md)]
 
 ## <a name="subscribe-to-registry-events"></a>Přihlášení k odběru událostí registru
 
-Ve službě Event Grid se přihlásíte k odběru *tématu* mu sdělíte, které události chcete sledovat a kam poslat platbu je. Následující [az eventgrid-odběr události vytvoření] [ az-eventgrid-event-subscription-create] příkaz přihlásí k registru kontejneru, které jste vytvořili a určuje adresu URL webové aplikace jako koncový bod, ke kterému se má odeslat události. Proměnné prostředí, které vyplní v předchozích částech jsou zde, znovu tak, aby byly požadované žádné úpravy.
+V Event Grid se přihlásíte k odběru *tématu* a sdělte mu, které události chcete sledovat a kam je odeslat. Následující příkaz [AZ eventgrid Event-Subscription Create][az-eventgrid-event-subscription-create] se přihlásí k odběru registru kontejneru, který jste vytvořili, a určí adresu URL vaší webové aplikace jako koncový bod, na který by měla posílat události. Zde se znovu použijí proměnné prostředí, které jste nastavili v předchozích částech, takže se nevyžadují žádné úpravy.
 
 ```azurecli-interactive
 ACR_REGISTRY_ID=$(az acr show --name $ACR_NAME --query id --output tsv)
@@ -112,7 +113,7 @@ az eventgrid event-subscription create \
     --endpoint $APP_ENDPOINT
 ```
 
-Pokud předplatné bylo dokončeno, byste měli vidět výstup podobný následujícímu:
+Po dokončení odběru by se měl zobrazit výstup podobný následujícímu:
 
 ```JSON
 {
@@ -139,19 +140,19 @@ Pokud předplatné bylo dokončeno, byste měli vidět výstup podobný následu
 }
 ```
 
-## <a name="trigger-registry-events"></a>Aktivační události registru
+## <a name="trigger-registry-events"></a>Aktivovat události registru
 
-Teď, když je ukázková aplikace v provozu a spuštěný a vy jste odběru do vašeho registru pomocí služby Event Grid, jste připraveni vygenerovat některé události. V této části použijete sestavíte a odešlete image kontejneru do registru ACR úlohy. Úlohy služby ACR je funkce ve službě Azure Container Registry, která vám umožní vytvářet Image kontejneru v cloudu, bez nutnosti modul Docker v místním počítači byly nainstalovány.
+Teď, když je ukázková aplikace spuštěná a že jste se k odběru svého registru přihlásili Event Grid, jste připraveni vygenerovat nějaké události. V této části použijete úlohy ACR k sestavení a vložení image kontejneru do registru. ACR úkoly jsou funkce Azure Container Registry, která umožňuje vytvářet image kontejnerů v cloudu, aniž by bylo potřeba modul Docker nainstalovaný na místním počítači.
 
-### <a name="build-and-push-image"></a>Vytvoření a nahrání image
+### <a name="build-and-push-image"></a>Sestavit a vložit obrázek
 
-Spusťte následující příkaz rozhraní příkazového řádku Azure k sestavení image kontejneru z obsahu úložiště GitHub. Ve výchozím nastavení, ACR úlohy automaticky nasdílí úspěšně sestavenou image do vašeho registru, který generuje `ImagePushed` událostí.
+Spuštěním následujícího příkazu Azure CLI sestavíte image kontejneru z obsahu úložiště GitHub. Ve výchozím nastavení ACR úlohy automaticky do registru vloží úspěšně sestavenou image, která `ImagePushed` událost vygeneruje.
 
 ```azurecli-interactive
 az acr build --registry $ACR_NAME --image myimage:v1 -f Dockerfile https://github.com/Azure-Samples/acr-build-helloworld-node.git
 ```
 
-Zatímco ACR úlohy sestavení a předá image byste měli vidět výstup podobný následujícímu. Následující ukázkový výstup byl zkrácen pro zkrácení.
+Měl by se zobrazit výstup podobný následujícímu při sestavování úloh ACR a následném vložení image. Následující vzorový výstup byl zkrácen pro zkrácení.
 
 ```console
 $ az acr build -r $ACR_NAME --image myimage:v1 -f Dockerfile https://github.com/Azure-Samples/acr-build-helloworld-node.git
@@ -168,13 +169,13 @@ Step 1/5 : FROM node:9-alpine
 ...
 ```
 
-Pokud chcete ověřit, že sestavenou image se v registru, spusťte následující příkaz k zobrazení značky v úložišti "myimage":
+Pokud chcete ověřit, jestli je vytvořená image ve vašem registru, spusťte následující příkaz, který zobrazí značky v úložišti "MyImage":
 
 ```azurecli-interactive
 az acr repository show-tags --name $ACR_NAME --repository myimage
 ```
 
-Značka "v1" image, kterou jste vytvořili by se měla zobrazit v výstup podobný následujícímu:
+Značka "v1" obrázku, kterou jste vytvořili, by se měla zobrazit ve výstupu, podobně jako v následujícím příkladu:
 
 ```console
 $ az acr repository show-tags --name $ACR_NAME --repository myimage
@@ -183,15 +184,15 @@ $ az acr repository show-tags --name $ACR_NAME --repository myimage
 ]
 ```
 
-### <a name="delete-the-image"></a>Odstranit image
+### <a name="delete-the-image"></a>Odstranění obrázku
 
-Nyní, generovat `ImageDeleted` události tak, že odstraníte bitová kopie se [az acr úložiště odstranit] [ az-acr-repository-delete] příkaz:
+Nyní vygenerujte `ImageDeleted` událost odstraněním bitové kopie pomocí příkazu [AZ ACR úložiště Delete][az-acr-repository-delete] :
 
 ```azurecli-interactive
 az acr repository delete --name $ACR_NAME --image myimage:v1
 ```
 
-Byste měli vidět výstup podobný následujícímu, s výzvou k potvrzení odstranění manifestu a související obrázky:
+Měl by se zobrazit výstup podobný následujícímu, který žádá o potvrzení o odstranění manifestu a přidružených imagí:
 
 ```console
 $ az acr repository delete --name $ACR_NAME --image myimage:v1
@@ -199,38 +200,38 @@ This operation will delete the manifest 'sha256:f15fa9d0a69081ba93eee308b0e475a5
 Are you sure you want to continue? (y/n): y
 ```
 
-## <a name="view-registry-events"></a>Zobrazení událostí modulu registru
+## <a name="view-registry-events"></a>Zobrazení událostí registru
 
-Jste nyní obrázek nahrány do vašeho registru a byl odstraněn. Přejděte do webové aplikace mřížky Prohlížeč událostí a byste měli vidět oba `ImageDeleted` a `ImagePushed` události. Můžete si také prohlédnout vygenerované pomocí provádí se příkaz v událost ověření předplatného [přihlášení k odběru událostí registru](#subscribe-to-registry-events) oddílu.
+Nyní jste do svého registru vložili image a pak jste ji odstranili. Přejděte do webové aplikace v prohlížeči Event Grid a měli byste vidět `ImageDeleted` události a. `ImagePushed` Můžete také zobrazit událost ověření odběru vygenerovanou spuštěním příkazu v části [přihlášení k odběru událostí registru](#subscribe-to-registry-events) .
 
-Následující snímek obrazovky ukazuje ukázkovou aplikaci s tři události a `ImageDeleted` události rozbalen a zobrazuje její podrobnosti.
+Na následujícím snímku obrazovky vidíte ukázkovou aplikaci se třemi událostmi a `ImageDeleted` událost je rozbalená tak, aby zobrazovala její podrobnosti.
 
-![Webový prohlížeč zobrazující ukázkovou aplikaci s událostmi ImagePushed a ImageDeleted][sample-app-03]
+![Webový prohlížeč, který zobrazuje ukázkovou aplikaci s ImagePushed a ImageDeletedmi událostmi][sample-app-03]
 
-Blahopřejeme! Pokud se zobrazí `ImagePushed` a `ImageDeleted` události, váš registr je odesílání událostí do služby Event Grid a předává tyto události do vašeho koncového bodu aplikace webové služby Event Grid.
+Blahopřejeme! Pokud se zobrazí `ImagePushed` události a `ImageDeleted` , registr odesílá události do Event Grid a Event Grid předává tyto události do koncového bodu webové aplikace.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Až budete hotovi s prostředky, které jste vytvořili v rámci tohoto rychlého startu, můžete je odstranit všechny pomocí následujícího příkazu rozhraní příkazového řádku Azure. Když odstraníte skupinu prostředků, všechny prostředky, které obsahuje se trvale odstraní.
+Jakmile budete hotovi s prostředky, které jste vytvořili v rámci tohoto rychlého startu, můžete je odstranit pomocí následujícího příkazu rozhraní příkazového řádku Azure CLI. Když odstraníte skupinu prostředků, všechny prostředky, které obsahuje, se trvale odstraní.
 
-**UPOZORNĚNÍ**: Tato operace je nevratná operace. Ujistěte se, že už nepotřebujete žádné prostředky ve skupině před spuštěním příkazu.
+**UPOZORNĚNÍ**: Tato operace je nevratná. Před spuštěním příkazu se ujistěte, že už ve skupině nepotřebujete žádné prostředky.
 
 ```azurecli-interactive
 az group delete --name $RESOURCE_GROUP_NAME
 ```
 
-## <a name="event-grid-event-schema"></a>Schéma událostí mřížka událostí
+## <a name="event-grid-event-schema"></a>Event Grid schéma událostí
 
-Odkaz na schéma zprávu události Azure Container Registry najdete v dokumentaci služby Event Grid:
+Odkaz na schéma zpráv Azure Container Registry události najdete v dokumentaci k Event Grid:
 
-[Schéma událostí Azure Event Grid pro registr kontejneru](../event-grid/event-schema-container-registry.md)
+[Azure Event Grid schéma událostí pro Container Registry](../event-grid/event-schema-container-registry.md)
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto rychlém startu nasazení registru kontejneru, vytvořená image s úlohami služby ACR, byl odstraněn a spotřebovaly vašeho registru události ze služby Event Grid s ukázkovou aplikací. V dalším kroku podívat na kurz služby ACR úlohy Další informace o vytváření imagí kontejnerů v cloudu, včetně automatizované buildy při aktualizaci základní image:
+V tomto rychlém startu jste nasadili registr kontejneru, vytvořili jste image s ACR úkoly, odstranili jsme ji a využili jste události registru z Event Grid s ukázkovou aplikací. Potom přejděte k kurzu ACR úkoly, kde se dozvíte víc o vytváření imagí kontejnerů v cloudu, včetně automatizovaných sestavení při aktualizaci základní Image:
 
 > [!div class="nextstepaction"]
-> [Sestavování imagí kontejneru v cloudu s využitím ACR úlohy](container-registry-tutorial-quick-task.md)
+> [Vytváření imagí kontejnerů v cloudu s ACR úkoly](container-registry-tutorial-quick-task.md)
 
 <!-- IMAGES -->
 [sample-app-01]: ./media/container-registry-event-grid-quickstart/sample-app-01.png

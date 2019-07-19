@@ -1,32 +1,32 @@
 ---
-title: Jak odesílat události služby Azure SignalR do služby Event Grid
-description: Tento průvodce ukazují, jak povolit událostí služby Event Grid pro služby SignalR odešlete připojení klienta Připojení/odpojení události k ukázkové aplikaci.
-services: azure-signalr
+title: Odeslání událostí služby signalizace Azure do Event Grid
+description: Průvodce, který vám ukáže, jak povolit události Event Grid pro službu Signaler, a pak odeslat události připojené/odpojené klientovi k ukázkové aplikaci.
+services: signalr
 author: chenyl
 ms.service: azure-signalr
 ms.topic: conceptual
 ms.date: 06/12/2019
 ms.author: chenyl
-ms.openlocfilehash: 2d782306938136ce6d21a331185f591316f58a29
-ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
+ms.openlocfilehash: 52e4194acd6a3abfed3fabadb892b0de76025b7e
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67789173"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68296866"
 ---
-# <a name="how-to-send-events-from-azure-signalr-service-to-event-grid"></a>Jak odesílat události ze služby Azure SignalR do služby Event Grid
+# <a name="how-to-send-events-from-azure-signalr-service-to-event-grid"></a>Jak odesílat události ze služby signalizace Azure do Event Grid
 
-Azure Event Grid je plně spravovaná služba Směrování událostí, která poskytuje jednotnou spotřebu událostí s využitím modelu pub-sub. V této příručce použijte rozhraní příkazového řádku Azure k vytvoření služby Azure SignalR, přihlášení k odběru událostí připojení a pak nasadit ukázkovou webovou aplikaci pro příjem událostí. Nakonec můžete připojit a odpojit a zobrazit datovou část události v ukázkové aplikaci.
+Azure Event Grid je plně spravovaná služba Směrování událostí, která poskytuje jednotnou spotřebu událostí pomocí modelu Pub-sub. V tomto průvodci pomocí Azure CLI vytvoříte službu signalizace Azure, přihlásíte se k odběru událostí připojení a pak nasadíte ukázkovou webovou aplikaci, abyste přijímali události. Nakonec se můžete připojit a odpojit a zobrazit datovou část události v ukázkové aplikaci.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet][azure-account] před tím, než začnete.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Příkazy rozhraní příkazového řádku Azure v tomto článku jsou formátována pro **Bash** prostředí. Pokud používáte jiné prostředí, jako je PowerShell nebo příkazového řádku, budete muset upravit znaky pokračování řádku nebo řádky přiřazení proměnné odpovídajícím způsobem. Tento článek používá proměnné, chcete-li minimalizovat množství příkaz Úpravy vyžaduje.
+Příkazy rozhraní příkazového řádku Azure v tomto článku jsou formátované pro prostředí **bash** Shell. Pokud používáte jiné prostředí, jako je PowerShell nebo příkazový řádek, možná budete muset odpovídajícím způsobem upravit řádky pro pokračování řádku nebo přiřazení proměnných. V tomto článku se k minimalizaci velikosti požadovaných příkazů používají proměnné.
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-Skupina prostředků Azure je logický kontejner, ve kterém můžete nasadit a spravovat prostředky Azure. Následující [vytvořit skupiny az][az-group-create] příkaz vytvoří skupinu prostředků s názvem *myResourceGroup* v *eastus* oblasti. Pokud chcete použít jiný název skupiny prostředků, nastavte `RESOURCE_GROUP_NAME` na jinou hodnotu.
+Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure. Následující příkaz [AZ Group Create][az-group-create] vytvoří skupinu prostředků s názvem *myResourceGroup* v oblasti *eastus* . Pokud chcete pro skupinu prostředků použít jiný název, nastavte `RESOURCE_GROUP_NAME` na jinou hodnotu.
 
 ```azurecli-interactive
 RESOURCE_GROUP_NAME=myResourceGroup
@@ -36,14 +36,14 @@ az group create --name $RESOURCE_GROUP_NAME --location eastus
 
 ## <a name="create-a-signalr-service"></a>Vytvoření služby SignalR
 
-V dalším kroku nasazení služby Azure Signalr do skupiny prostředků pomocí následujících příkazů.
+V dalším kroku nasaďte službu Azure Signal Service do skupiny prostředků pomocí následujících příkazů.
 ```azurecli-interactive
 SIGNALR_NAME=SignalRTestSvc
 
 az signalr create --resource-group $RESOURCE_GROUP_NAME --name $SIGNALR_NAME --sku Free_F1
 ```
 
-Po vytvoření služby SignalR, rozhraní příkazového řádku Azure CLI vrátí výstup podobný následujícímu:
+Po vytvoření služby signalizace Azure CLI vrátí výstup podobný následujícímu:
 
 ```json
 {
@@ -73,9 +73,9 @@ Po vytvoření služby SignalR, rozhraní příkazového řádku Azure CLI vrát
 
 ## <a name="create-an-event-endpoint"></a>Vytvoření koncového bodu události
 
-V této části pomocí šablony Resource Manageru se nachází v úložišti GitHub nasadit předem sestavené ukázkovou webovou aplikaci do služby Azure App Service. Později přihlášení k odběru událostí služby Event Grid vašeho registru a zadejte tuto aplikaci jako koncový bod, ke které se odesílají události.
+V této části použijete šablonu Správce prostředků umístěnou v úložišti GitHub k nasazení předem připravené ukázkové webové aplikace do Azure App Service. Později se přihlásíte k odběru událostí Event Grid registru a tuto aplikaci určíte jako koncový bod, do kterého se události odesílají.
 
-Pokud chcete nasadit ukázkovou aplikaci, nastavte `SITE_NAME` jedinečný název pro vaši webovou aplikaci a spusťte následující příkazy. Název webu musí být v rámci Azure jedinečný, protože je součástí plně kvalifikovaného názvu domény (FQDN) webové aplikace. V další části přejděte do aplikace plně kvalifikovaný název domény ve webovém prohlížeči zobrazení událostí v registru.
+Pokud chcete ukázkovou aplikaci nasadit, `SITE_NAME` nastavte na jedinečný název vaší webové aplikace a spusťte následující příkazy. Název webu musí být v rámci Azure jedinečný, protože tvoří součást plně kvalifikovaného názvu domény (FQDN) webové aplikace. V pozdější části přejdete do plně kvalifikovaného názvu domény aplikace ve webovém prohlížeči a zobrazíte události v registru.
 
 ```azurecli-interactive
 SITE_NAME=<your-site-name>
@@ -86,7 +86,7 @@ az group deployment create \
     --parameters siteName=$SITE_NAME hostingPlanName=$SITE_NAME-plan
 ```
 
-Po úspěšném nasazení (může trvat několik minut), otevřete prohlížeč a přejděte do své webové aplikace a ujistěte se, zda je spuštěná:
+Po úspěšném nasazení (může to trvat několik minut) otevřete prohlížeč a přejděte do webové aplikace, abyste se ujistili, že je spuštěný:
 
 `http://<your-site-name>.azurewebsites.net`
 
@@ -94,7 +94,7 @@ Po úspěšném nasazení (může trvat několik minut), otevřete prohlížeč 
 
 ## <a name="subscribe-to-registry-events"></a>Přihlášení k odběru událostí registru
 
-Ve službě Event Grid se přihlásíte k odběru *tématu* mu sdělíte, které události chcete sledovat a kam poslat platbu je. Následující [az eventgrid-odběr události vytvoření][az-eventgrid-event-subscription-create] příkaz přihlásí ke službě Azure SignalR jste vytvořili a určuje adresu URL webové aplikace jako koncový bod, ke kterému se má odeslat události. Proměnné prostředí, které vyplní v předchozích částech jsou zde, znovu tak, aby byly požadované žádné úpravy.
+V Event Grid se přihlásíte k odběru *tématu* a sdělte mu, které události chcete sledovat a kam je odeslat. Následující příkaz [AZ eventgrid Event-Subscription Create][az-eventgrid-event-subscription-create] se přihlásí k odběru služby signalizace Azure, kterou jste vytvořili, a určí adresu URL vaší webové aplikace jako koncový bod, do kterého by měla posílat události. Zde se znovu použijí proměnné prostředí, které jste nastavili v předchozích částech, takže se nevyžadují žádné úpravy.
 
 ```azurecli-interactive
 SIGNALR_SERVICE_ID=$(az signalr show --resource-group $RESOURCE_GROUP_NAME --name $SIGNALR_NAME --query id --output tsv)
@@ -106,7 +106,7 @@ az eventgrid event-subscription create \
     --endpoint $APP_ENDPOINT
 ```
 
-Pokud předplatné bylo dokončeno, byste měli vidět výstup podobný následujícímu:
+Po dokončení odběru by se měl zobrazit výstup podobný následujícímu:
 
 ```JSON
 {
@@ -139,9 +139,9 @@ Pokud předplatné bylo dokončeno, byste měli vidět výstup podobný následu
 }
 ```
 
-## <a name="trigger-registry-events"></a>Aktivační události registru
+## <a name="trigger-registry-events"></a>Aktivovat události registru
 
-Přepnout do režimu servisu na `Serverless Mode` a nastavení připojení klienta ke službě SignalR. Můžete využít [bez serveru ukázka](https://github.com/aspnet/AzureSignalR-samples/tree/master/samples/Serverless) jako odkaz.
+Přepněte do režimu `Serverless Mode` služby a nastavte připojení klienta ke službě Signal. Jako referenci můžete mít [ukázku bez serveru](https://github.com/aspnet/AzureSignalR-samples/tree/master/samples/Serverless) .
 
 ```bash
 git clone git@github.com:aspnet/AzureSignalR-samples.git
@@ -160,9 +160,9 @@ cd SignalRClient
 dotnet run
 ```
 
-## <a name="view-registry-events"></a>Zobrazení událostí modulu registru
+## <a name="view-registry-events"></a>Zobrazení událostí registru
 
-Jste teď připojení klienta pro služby SignalR. Přejděte do prohlížeče událostí mřížky webové aplikace a měli byste vidět `ClientConnectionConnected` událostí. Pokud je ukončit klienta, zobrazí se také `ClientConnectionDisconnected` událostí.
+Nyní jste připojili klienta ke službě signalizace. Přejděte do webové aplikace v prohlížeči Event Grid a měla by se zobrazit `ClientConnectionConnected` událost. Pokud ukončíte klienta nástroje, zobrazí se také `ClientConnectionDisconnected` událost.
 
 <!-- LINKS - External -->
 [azure-account]: https://azure.microsoft.com/free/?WT.mc_id=A261C142F

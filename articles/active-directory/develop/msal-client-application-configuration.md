@@ -1,6 +1,6 @@
 ---
-title: Konfigurace aplikace klienta (knihovna Microsoft Authentication Library) | Azure
-description: Další informace o možnostech konfigurace pro veřejné klienty a důvěrnému klientovi aplikací v Microsoft Authentication Library (MSAL).
+title: Konfigurace klientské aplikace (knihovna ověřování Microsoft) | Azure
+description: Přečtěte si o možnostech konfigurace pro veřejné klientské a důvěrné klientské aplikace v knihovně Microsoft Authentication Library (MSAL).
 services: active-directory
 documentationcenter: dev-center-name
 author: rwike77
@@ -12,124 +12,130 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/12/2019
+ms.date: 07/16/2019
 ms.author: ryanwi
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b5e175a8cdd1622add90bd80df63303fe914ab9c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 767f7362a6c46d864ba17f23f6506bf6cdb71414
+ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66430803"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68304735"
 ---
 # <a name="application-configuration-options"></a>Možnosti konfigurace aplikace
 
-Ve vašem kódu, je inicializovat nového klienta veřejné nebo důvěrnými informacemi (nebo uživatelský agent pro MSAL.js) aplikace k ověření a získávat tokeny. Při inicializaci klienta aplikace v Microsoft Authentication Library (MSAL), můžete nastavit několik možností konfigurace. Tyto možnosti se dělí do dvou skupin:
+V kódu inicializujete novou veřejnou nebo důvěrnou klientskou aplikaci (nebo uživatelského agenta pro MSAL. js) k ověřování a získání tokenů. Můžete nastavit řadu možností konfigurace při inicializaci klientské aplikace v knihovně Microsoft Authentication Library (MSAL). Tyto možnosti spadají do dvou skupin:
 
 - Možnosti registrace, včetně:
-    - [Autorita](#authority) (tvořený zprostředkovatele identity [instance](#cloud-instance) a přihlaste se [cílovou skupinu](#application-audience) pro aplikace a případně ID tenanta).
+    - [Autorita](#authority) (skládá se z [instance](#cloud-instance) zprostředkovatele identity a [cílové skupiny](#application-audience) přihlášení pro aplikaci a případně ID tenanta).
     - [ID klienta](#client-id).
-    - [Identifikátor URI pro přesměrování](#redirect-uri).
-    - [tajný kód klienta](#client-secret) (pro aplikace důvěrnému klientovi).
-- [Možnosti protokolování](#logging), včetně úroveň protokolu, ovládacího osobní údaje a název komponenty pomocí knihovny.
+    - [Identifikátor URI pro přesměrování](#redirect-uri)
+    - [Tajný kód klienta](#client-secret) (u důvěrných klientských aplikací).
+- [Možnosti protokolování](#logging), včetně úrovně protokolování, řízení osobních údajů a názvu komponenty pomocí knihovny.
 
-## <a name="authority"></a>Autorita
-Oprávnění je adresa URL, která určuje adresář, který MSAL můžete požádat o tokeny od. Běžné autority jsou:
+## <a name="authority"></a>Dohled
+Autorita je adresa URL, která označuje adresář, ze kterého může MSAL žádat o tokeny. Mezi běžné autority patří:
 
-- https://login.microsoftonline.com/&lt ; tenanta&gt; /, kde &lt; tenanta&gt; je ID tenanta domény přidružené k tohoto tenanta Azure AD nebo tenanta Azure Active Directory (Azure AD). Použít pouze k přihlášení uživatelů konkrétní organizace.
-- https://login.microsoftonline.com/common/. Použít k přihlášení uživatelů s pracovní a školní účty nebo osobní účty Microsoft.
-- https://login.microsoftonline.com/organizations/. Použít k přihlášení uživatelů s pracovním a školním účtům.
-- https://login.microsoftonline.com/consumers/. Použít k přihlášení uživatelů s (dříve označované jako účty Windows Live ID) jenom osobní účty Microsoft.
+- tenant\:\< &lt;https//Login.microsoftonline.com//, kde tenant&gt; je ID tenanta klienta Azure Active Directory (Azure AD) nebo doménu přidruženou k tomuto tenantovi Azure AD.\> Používá se jenom pro přihlášení uživatelů určité organizace.
+- https\://Login.microsoftonline.com/Common/. Slouží k přihlašování uživatelů pomocí pracovních a školních účtů nebo osobních účtů Microsoft.
+- https\://Login.microsoftonline.com/Organizations/. Slouží k přihlašování uživatelů pomocí pracovních a školních účtů.
+- https\://Login.microsoftonline.com/consumers/. Slouží k přihlašování uživatelů pouze k osobním účtům Microsoft (dříve označovaným jako účty Windows Live ID).
 
-Nastavení autority musí být v souladu s co je deklarován v portálu pro registraci aplikace.
+Nastavení autority musí být konzistentní s tím, co je deklarované na portálu pro registraci aplikací.
 
-Adresa URL autority se skládá z instance a cílová skupina.
+Adresa URL autority se skládá z instance a cílové skupiny.
 
-Oprávnění může být:
-- Autoritu cloudové služby Azure AD.
-- autoritu Azure AD B2C. Zobrazit [B2C specifika](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/AAD-B2C-specifics).
-- Autoritu Active Directory Federation Services (ADFS). Zobrazit [podpory služby AD FS](https://aka.ms/msal-net-adfs-support).
+Autorita může být:
+- Cloudová autorita Azure AD.
+- Azure AD B2C autorita. Viz [konkrétní B2C](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/AAD-B2C-specifics).
+- Autorita Active Directory Federation Services (AD FS) (AD FS). Viz [podpora AD FS](https://aka.ms/msal-net-adfs-support).
 
-Azure AD cloudu autority mít dvě části:
-- Zprostředkovatel identity *instance*
-- Přihlášení *cílovou skupinu* pro aplikaci
+Cloudové autority Azure AD mají dvě části:
+- *Instance* zprostředkovatele identity
+- *Cílová skupina* pro přihlášení k aplikaci
 
-Instance a cílová skupina může zřetězit a zadat jako adresu URL autority. Ve verzích MSAL.NET starších než MSAL 3. *x*, měl oprávnění sestavit sami, založené na cloudu, vám chtěli cíl a cílovou skupinu přihlášení.  Tento diagram znázorňuje, jak se skládá adresu URL autority:
+Instance a cílová skupina se dají zřetězit a zadat jako adresu URL autority. Ve verzích MSAL.NET starších než MSAL 3. *x*jste museli vytvořit autoritu na základě cloudu, na který jste chtěli cílit, a cílové skupiny přihlášení.  Tento diagram znázorňuje, jak se adresa URL autority skládá:
 
-![Jak se skládá adresu URL autority](media/msal-client-application-configuration/authority.png)
+![Jak se skládá adresa URL autority](media/msal-client-application-configuration/authority.png)
 
-## <a name="cloud-instance"></a>Instance cloudu
-*Instance* slouží k určení, pokud je vaše aplikace přihlašování uživatelů z veřejného cloudu Azure nebo z národních cloudů. S využitím MSAL ve vašem kódu, můžete nastavit instanci cloudu Azure pomocí výčtu nebo předáním adresu URL [instanci národního cloudu](authentication-national-cloud.md#azure-ad-authentication-endpoints) jako `Instance` člena (pokud ho znáte).
+## <a name="cloud-instance"></a>Cloudová instance
+*Instance* se používá k určení, jestli vaše aplikace podepisuje uživatele z veřejného cloudu Azure nebo z národních cloudů. Pomocí MSAL ve svém kódu můžete nastavit cloudovou instanci Azure pomocí výčtu nebo předáním adresy URL [národním cloudovým instancí](authentication-national-cloud.md#azure-ad-authentication-endpoints) jako `Instance` člena (pokud ho znáte).
 
-MSAL.NET vyvolá výjimku explicitní, pokud mají oba `Instance` a `AzureCloudInstance` jsou uvedeny.
+MSAL.NET vyvolá explicitní výjimku, pokud jsou zadány `AzureCloudInstance` obě `Instance` i.
 
-Pokud nechcete zadat instanci, vaše aplikace se zaměří na instanci veřejného cloudu Azure (instance URL `https://login.onmicrosoftonline.com`).
+Pokud instanci neurčíte, vaše aplikace bude cílit na instanci veřejného cloudu Azure (instance adresy URL `https://login.onmicrosoftonline.com`).
 
-## <a name="application-audience"></a>Cílové skupiny aplikací
+## <a name="application-audience"></a>Cílová skupina aplikace
 
-Cílová skupina přihlášení závisí na obchodních potřeb pro vaši aplikaci:
-- Pokud budete psát obchodní (LOB) pro vývojáře, budete pravděpodobně vytvářet aplikace v jazyce jednoho tenanta, který se použije pouze ve vaší organizaci. V takovém případě musíte určit organizaci, a to buď podle jeho ID tenanta (ID instance služby Azure AD) nebo název domény přidružený k instanci služby Azure AD.
-- Pokud jste nezávislý dodavatel softwaru, můžete chtít přihlásit uživatele pomocí jejich pracovním a školním účtům v jakékoli organizaci nebo v některých organizacích (víceklientskou aplikaci). Ale můžete také nechat uživatele přihlásit pomocí svých osobních účtů Microsoft.
+Cílová skupina pro přihlášení závisí na obchodních potřebách vaší aplikace:
+- Pokud pracujete jako obchodní vývojář (LOB), budete pravděpodobně vydávat jedinou aplikaci, která bude použita pouze ve vaší organizaci. V takovém případě je potřeba zadat organizaci buď podle jejího ID tenanta (ID vaší instance služby Azure AD), nebo podle názvu domény přidruženého k instanci Azure AD.
+- Pokud jste nezávislý výrobce softwaru, možná budete chtít uživatele přihlašovat pomocí pracovních a školních účtů v jakékoli organizaci nebo v některých organizacích (víceklientské aplikace). Můžete ale také chtít, aby se uživatelé přihlásili pomocí osobních účtů Microsoft.
 
-### <a name="how-to-specify-the-audience-in-your-codeconfiguration"></a>Jak určit cílovou skupinu v kódu/konfigurace
-S využitím MSAL ve vašem kódu, zadejte cílovou skupinu pomocí jedné z následujících hodnot:
-- Výčet cílovou skupinu autority Azure AD
-- ID tenanta, který může být:
-  - Identifikátor GUID (ID instance služby Azure AD), pro aplikace s jedním tenantem
-  - Název domény přidružený k vaší instanci Azure AD (také pro aplikace s jedním tenantem)
-- Jedna z těchto zástupných symbolů jako ID tenanta místo cílové skupiny výčtu autority Azure AD:
-    - `organizations` pro víceklientské aplikace
-    - `consumers` k přihlášení uživatelů jenom pomocí svých osobních účtů
-    - `common` Chcete-li přihlásit uživatele pomocí jejich pracovních a školních účtů nebo svých osobních účtů Microsoft
+### <a name="how-to-specify-the-audience-in-your-codeconfiguration"></a>Určení cílové skupiny v kódu/konfiguraci
+Pomocí MSAL ve svém kódu určíte cílovou skupinu pomocí jedné z následujících hodnot:
+- Výčet cílových skupin autorit Azure AD
+- ID tenanta, které může být:
+  - Identifikátor GUID (ID vaší instance služby Azure AD) pro aplikace s jedním klientem
+  - Název domény, který je přidružený k vaší instanci služby Azure AD (také pro aplikace pro jednoho tenanta)
+- Jedna z těchto zástupných symbolů jako ID tenanta místo výčtu cílové skupiny autorit Azure AD:
+    - `organizations`pro víceklientské aplikace
+    - `consumers`přihlášení uživatelů jenom pomocí svých osobních účtů
+    - `common`přihlášení uživatelů pomocí pracovních a školních účtů nebo jejich osobních účtů Microsoft
 
-Knihovna MSAL vyvolá smysluplné výjimku, pokud zadáte cílovou skupinu autority Azure AD a ID tenanta.
+MSAL vyvolá smysluplnou výjimku, pokud zadáte jak cílovou skupinu autority Azure AD, tak i ID tenanta.
 
-Pokud nechcete zadat cílovou skupinou, vaše aplikace se zaměří na Azure AD a osobní účty Microsoft, jako cílovou skupinou. (To znamená, bude se chovat stejně jako by `common` byly zadány.)
+Pokud nezadáte cílovou skupinu, vaše aplikace bude cílit na Azure AD a osobní účty Microsoft jako cílovou skupinu. (To znamená, že se bude chovat, jako `common` by byly zadány.)
 
-### <a name="effective-audience"></a>Efektivní cílové skupiny
-Efektivní cílovou skupinu pro vaši aplikaci budou mít minimální (pokud existuje průnik) cílové skupiny, které jste nastavili ve vaší aplikaci a cílová skupina zadaná v registraci aplikace. Ve skutečnosti [registrace aplikací](https://aka.ms/appregistrations) experience vám umožňuje určit cílové skupiny (typy podporovaných účtů) pro aplikaci. Další informace najdete v tématu [rychlý start: Registrace aplikace s platformou identity Microsoft](quickstart-register-app.md).
+### <a name="effective-audience"></a>Efektivní cílová skupina
+Efektivní cílovou skupinou vaší aplikace bude minimální (pokud existuje průnik) cílové skupiny, kterou jste v aplikaci nastavili, a cílové skupině, která je zadaná v registraci aplikace. Ve skutečnosti vám [Registrace aplikací](https://aka.ms/appregistrations) prostředí umožňuje určit cílovou skupinu (podporované typy účtů) pro aplikaci. Další informace najdete v tématu [rychlý Start: Zaregistrujte aplikaci s platformou](quickstart-register-app.md)Microsoft identity.
 
-V současné době je jediný způsob, jak získat aplikace pro přihlásit uživatele pomocí osobních účtů Microsoft ke konfiguraci těchto nastavení:
-- Nastavte cílové skupiny registrací aplikací na `Work and school accounts and personal accounts`.
-- Nastavte v kódu nebo konfiguraci tak, aby cílová skupina `AadAuthorityAudience.PersonalMicrosoftAccount` (nebo `TenantID` = "příjemci").
+V současné době jediným způsobem, jak získat aplikaci pro přihlašování uživatelů jenom k osobním účtům Microsoft, je nakonfigurovat obě tato nastavení:
+- Nastavte cílovou skupinu registrace aplikace na `Work and school accounts and personal accounts`.
+- Nastavte cílovou skupinu v kódu/konfiguraci na `AadAuthorityAudience.PersonalMicrosoftAccount` (nebo `TenantID` = "spotřebitelé").
 
 ## <a name="client-id"></a>ID klienta
-ID klienta je ID jedinečné aplikace (klient) přiřazené vaší aplikaci pomocí Azure AD, kdy byl zaregistrován aplikace.
+ID klienta je jedinečné ID aplikace (klienta) přiřazené vaší aplikaci službou Azure AD při registraci aplikace.
 
 ## <a name="redirect-uri"></a>Identifikátor URI pro přesměrování
-Přesměrování identifikátoru URI je identifikátor URI zprostředkovatele identity se posílají tokeny zabezpečení.
+Identifikátor URI přesměrování je identifikátor URI, kterému poskytovatel identity pošle tokeny zabezpečení zpátky.
 
-### <a name="redirect-uri-for-public-client-apps"></a>Identifikátor URI přesměrování pro veřejné klientské aplikace.
-Pokud jste vývojář aplikace veřejným klientem, který je s využitím MSAL:
-- Není nutné předat `RedirectUri` vzhledem k tomu, že je vypočtena automaticky podle MSAL. Toto přesměrování identifikátoru URI je nastaven na jednu z těchto hodnot, v závislosti na platformě:
-   - `urn:ietf:wg:oauth:2.0:oob` pro všechny platformy Windows
-   - `msal{ClientId}://auth` pro Xamarin Android a iOS
+### <a name="redirect-uri-for-public-client-apps"></a>Identifikátor URI pro přesměrování pro veřejné klientské aplikace
+Pokud jste vývojář aplikace veřejného klienta, který používá MSAL:
+- Chcete použít `.WithDefaultRedirectUri()` v aplikacích klasické pracovní plochy nebo UWP (MSAL.NET 4.1 +). Tato metoda nastaví vlastnost přesměrování URI veřejné klientské aplikace na výchozí doporučený identifikátor URI pro přesměrování pro veřejné klientské aplikace. 
 
-- Musíte nakonfigurovat přesměrování identifikátory URI v [registrace aplikací](https://aka.ms/appregistrations):
+  Platforma  | Identifikátor URI pro přesměrování  
+  ---------  | --------------
+  Aplikace klasické pracovní plochy (.NET FW) | `https://login.microsoftonline.com/common/oauth2/nativeclient` 
+  UWP | `WebAuthenticationBroker.GetCurrentApplicationCallbackUri()`hodnota. To umožňuje jednotné přihlašování s prohlížečem nastavením hodnoty na výsledek WebAuthenticationBroker. GetCurrentApplicationCallbackUri (), který se musí zaregistrovat.
+  .NET Core | `https://localhost`. Díky tomu může uživatel používat prohlížeč systému pro interaktivní ověřování, protože .NET Core nemá v současnosti uživatelské rozhraní pro vložené webové zobrazení.
 
-   ![Identifikátor URI pro přesměrování v registrace aplikací](media/msal-client-application-configuration/redirect-uri.png)
+- Pokud vytváříte aplikaci pro Xamarin Android a iOS, která nepodporuje zprostředkovatele (identifikátor URI pro přesměrování je automaticky nastavený na `msal{ClientId}://auth` pro Xamarin Android a iOS), nemusíte přidávat identifikátor URI pro přesměrování.
 
-Identifikátor URI pro přesměrování lze přepsat pomocí `RedirectUri` vlastnosti (například, pokud používáte můžou být zprostředkovatelé). Tady je několik příkladů identifikátory URI pro přesměrování pro tento scénář:
+- V [Registrace aplikací](https://aka.ms/appregistrations)musíte nakonfigurovat identifikátor URI přesměrování:
+
+   ![Identifikátor URI přesměrování v Registrace aplikací](media/msal-client-application-configuration/redirect-uri.png)
+
+Identifikátor URI přesměrování můžete přepsat pomocí `RedirectUri` vlastnosti (například při použití zprostředkovatelů). Tady jsou některé příklady identifikátorů URI přesměrování pro tento scénář:
 
 - `RedirectUriOnAndroid` = "msauth-5a434691-ccb2-4fd1-b97b-b64bcfbc03fc://com.microsoft.identity.client.sample";
-- `RedirectUriOnIos` = $"msauth.{Bundle.ID}://auth";
+- `RedirectUriOnIos`= $ "msauth. {Svazek. ID}://auth ";
 
-Podrobnosti najdete v tématu [dokumentaci pro Android a iOS](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Leveraging-the-broker-on-iOS).
+Podrobnosti najdete v [dokumentaci pro Android a iOS](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Leveraging-the-broker-on-iOS).
 
-### <a name="redirect-uri-for-confidential-client-apps"></a>Identifikátor URI přesměrování pro důvěrné klientské aplikace.
-Identifikátor URI pro přesměrování (nebo identifikátor URI odpovědi) je pro webové aplikace, identifikátor URI, který Azure AD použije k odeslání tokenu zpět do aplikace. Pokud jeden z nich je důvěrné aplikace, může to být adresa URL na webovou aplikaci nebo webové rozhraní API. Přesměrování identifikátor URI musí být zaregistrované v registraci aplikace. Tuto registrace je obzvláště důležité, když nasazujete aplikaci, která původně místně otestujete. Potom musíte přidat příslušnou odpovědní adresu URL nasazené aplikace v portálu pro registraci aplikace.
+### <a name="redirect-uri-for-confidential-client-apps"></a>Identifikátor URI přesměrování pro důvěrné klientské aplikace
+U webových aplikací je identifikátor URI přesměrování (nebo identifikátor URI odpovědi) identifikátor URI, který bude služba Azure AD používat k odeslání tokenu zpět do aplikace. Tento identifikátor URI může být adresa URL webové aplikace nebo webového rozhraní API, pokud je důvěrná aplikace jednou z nich. Identifikátor URI pro přesměrování musí být zaregistrován v registraci aplikace. Tato registrace je zvláště důležitá, když nasadíte aplikaci, kterou jste původně otestovali místně. Pak je potřeba přidat adresu URL odpovědi nasazené aplikace na portál pro registraci aplikací.
 
-Pro aplikace démonů není nutné určit identifikátor URI přesměrování.
+Pro aplikace démona není nutné zadávat identifikátor URI přesměrování.
 
 ## <a name="client-secret"></a>Tajný klíč klienta
-Tato možnost určuje tajný kód klienta pro aplikaci důvěrnému klientovi. Tento tajný kód (heslo aplikace) je poskytován portál pro registraci aplikací nebo součástí do služby Azure AD během registrace aplikace Azure AD PowerShell, AzureRM Powershellu nebo rozhraní příkazového řádku Azure.
+Tato možnost určuje tajný klíč klienta pro důvěrnou klientskou aplikaci. Tento tajný klíč (heslo aplikace) poskytuje portál pro registraci aplikací nebo poskytovaný službě Azure AD během registrace aplikace pomocí PowerShellu AzureAD, PowerShell AzureRM nebo Azure CLI.
 
 ## <a name="logging"></a>Protokolování
-Další možnosti konfigurace povolit protokolování a řešení potíží. Zobrazit [protokolování](msal-logging.md) , kde najdete podrobnosti o tom, jak je používat.
+Další možnosti konfigurace umožňují protokolování a odstraňování potíží. Podrobnosti o tom, jak je používat, najdete v článku [protokolování](msal-logging.md) .
 
 ## <a name="next-steps"></a>Další postup
-Další informace o [vytvoření klientské aplikace pomocí MSAL.NET](msal-net-initializing-client-applications.md).
+Přečtěte si o [vytváření instancí klientských aplikací pomocí MSAL.NET](msal-net-initializing-client-applications.md).
 
-Další informace o [vytvoření klientské aplikace s využitím MSAL.js](msal-js-initializing-client-applications.md).
+Přečtěte si o [vytváření instancí klientských aplikací pomocí MSAL. js](msal-js-initializing-client-applications.md).

@@ -1,6 +1,6 @@
 ---
-title: Řešení potíží pomocí agenta Log Analytics pro Windows | Dokumentace Microsoftu
-description: Popište příznaky, příčiny a řešení běžných problémů pomocí agenta Log Analytics pro Windows ve službě Azure Monitor.
+title: Řešení potíží s agentem Log Analytics pro systém Windows | Microsoft Docs
+description: Popište příznaky, příčiny a řešení nejběžnějších problémů s agentem Log Analytics pro systém Windows v Azure Monitor.
 services: azure-monitor
 documentationcenter: ''
 author: mgoedtel
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/12/2019
 ms.author: magoedte
-ms.openlocfilehash: afa4483677336e9a887908a8cccf9590eed27af3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9df389b6e6a73530c9bbf5a2187d6735946e309f
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67120107"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68249779"
 ---
-# <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-windows"></a>Řešení potíží pomocí agenta Log Analytics pro Windows 
+# <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-windows"></a>Řešení potíží s agentem Log Analytics pro Windows 
 
-Tento článek poskytuje nápovědu řešení potíží s chybami setkat s agenta Log Analytics pro Windows ve službě Azure Monitor a navrhne řešení k jejich řešení.
+Tento článek poskytuje nápovědu k řešení chyb, se kterými se můžete setkat s agentem Log Analytics pro Windows v Azure Monitor a navrhuje možná řešení k jejich řešení.
 
 Pokud žádný z těchto kroků pro vás nejvhodnější, jsou také k dispozici následující kanály podpory:
 
@@ -30,15 +30,15 @@ Pokud žádný z těchto kroků pro vás nejvhodnější, jsou také k dispozici
 * Zákazníci s smlouvy o podpoře Azure můžou otevřít žádost o podporu [na webu Azure Portal](https://manage.windowsazure.com/?getsupport=true).
 * Na stránce Log Analytics zpětnou vazbu ke kontrole odeslané nápady a chyby [ https://aka.ms/opinsightsfeedback ](https://aka.ms/opinsightsfeedback) nebo soubor nový. 
 
-## <a name="important-troubleshooting-sources"></a>Důležité zdroje pro řešení potíží
+## <a name="important-troubleshooting-sources"></a>Důležité zdroje pro odstraňování potíží
 
- Jako pomoc při řešení potíží vztahujících se k agentovi Log Analytics pro Windows, agent protokoluje události do protokolu událostí Windows konkrétně v části *aplikací a správce Services\Operations*.  
+ Pro pomoc s řešením potíží souvisejících s Log Analytics agentem pro Windows Agent protokoluje události do protokolu událostí systému Windows, konkrétně v části *aplikace a správce Services\Operations*.  
 
 ## <a name="connectivity-issues"></a>Problémy s připojením
 
-Pokud je agent komunikaci prostřednictvím serveru proxy nebo brány firewall, může být omezení na místě, které znemožňuje komunikaci ze zdrojového počítače a služby Azure Monitor. Pokud je komunikace blokovaná, chybné konfiguraci, registrace s pracovním prostorem může selhat při pokusu o instalaci agenta, konfigurace po instalaci agenta pro hlášení další pracovní prostor, nebo po úspěšném dokončení registrace se nezdaří komunikace agenta. Tato část popisuje metody k řešení potíží s tímto typem problémů s agentem Windows. 
+Pokud agent komunikuje prostřednictvím proxy server nebo brány firewall, mohou být zavedena omezení, která zabraňují komunikaci ze zdrojového počítače a služby Azure Monitor. Pokud je komunikace zablokovaná, může při pokusu o instalaci agenta dojít k chybě při registraci v pracovním prostoru, nakonfigurovat po instalaci agenta, aby se nahlásila na další pracovní prostor, nebo po úspěšné registraci selže komunikace agenta. Tato část popisuje metody pro řešení tohoto typu problému s agentem Windows. 
 
-Překontrolujte, že brána firewall nebo proxy server nakonfigurována, aby umožňovala následující porty a adresy URL popisované v následující tabulce. Také potvrďte, že kontrola HTTP není povolena pro webový provoz, jak může zabránit zabezpečený kanál TLS mezi agentem a Azure Monitor.  
+Ověřte, že je brána firewall nebo proxy server nakonfigurovaná tak, aby povolovala následující porty a adresy URL, které jsou popsané v následující tabulce. Ověřte také, že kontrola protokolu HTTP není povolena pro webový provoz, protože může bránit zabezpečenému kanálu TLS mezi agentem a Azure Monitor.  
 
 |Prostředek agenta|Porty |Směr |Obejít kontrolu protokolu HTTPS|
 |------|---------|--------|--------|   
@@ -47,13 +47,13 @@ Překontrolujte, že brána firewall nebo proxy server nakonfigurována, aby umo
 |*.blob.core.windows.net |Port 443 |Odchozí|Ano |  
 |*.azure-automation.net |Port 443 |Odchozí|Ano |  
 
-Informace o bráně firewall vyžadované pro Azure Government, najdete v části [správy Azure Government](../../azure-government/documentation-government-services-monitoringandmanagement.md#azure-monitor-logs). 
+Informace o bráně firewall požadované pro Azure Government najdete v tématu [správa Azure Government](../../azure-government/documentation-government-services-monitoringandmanagement.md#azure-monitor-logs). 
 
-Existuje několik způsobů, jak můžete ověřit, pokud je agent úspěšně komunikuje s Azure Monitor.
+Existuje několik způsobů, jak můžete ověřit, zda agent úspěšně komunikuje s Azure Monitor.
 
-- Povolit [hodnocení Azure Log Analytics agenta stavu](../insights/solution-agenthealth.md) v pracovním prostoru. Zobrazit na řídicím panelu Stav agenta **počet nereagujících agentů** sloupec, který se krátce zobrazit, pokud je agent uveden.  
+- Povolte v pracovním prostoru [hodnocení agent Health Azure Log Analytics](../insights/solution-agenthealth.md) . Z řídicího panelu Agent Health můžete zobrazit sloupec **počet** nereagujících agentů a rychle zjistit, jestli je agent uvedený.  
 
-- Spusťte následující dotaz, abychom potvrdili, že agenta k pracovnímu prostoru, který je nakonfigurovaný k ukládání dat do odesílá prezenční signál. Nahraďte <ComputerName> skutečným názvem počítače.
+- Spuštěním následujícího dotazu potvrďte, že Agent odesílá prezenční signál do pracovního prostoru, do kterého je nakonfigurované hlášení. Nahraďte `<ComputerName>` skutečným názvem počítače.
 
     ```
     Heartbeat 
@@ -61,36 +61,36 @@ Existuje několik způsobů, jak můžete ověřit, pokud je agent úspěšně k
     | summarize arg_max(TimeGenerated, * ) by Computer 
     ```
 
-    Pokud počítač úspěšně komunikuje se službou, by dotaz vrátit výsledek. Pokud dotaz nevrátí výsledek, nejdřív ověřte, zda že je agent nakonfigurovaný k ukládání dat do správného pracovního prostoru. Pokud je nakonfigurovaný správně, přejděte ke kroku 3 a hledání v protokolu událostí Windows a zjistěte, jestli je agent protokolování, s jakým problémem může být brání jeho komunikaci se službou Azure Monitor.
+    Pokud počítač úspěšně komunikuje se službou, dotaz by měl vrátit výsledek. Pokud dotaz nevrátil výsledek, nejdřív ověřte, že agent je nakonfigurovaný tak, aby nahlásil správnému pracovnímu prostoru. Pokud je správně nakonfigurována, přejděte ke kroku 3 a vyhledejte v protokolu událostí systému Windows, zda má agent protokolovat, jaký problém by mohl bránit v komunikaci s Azure Monitor.
 
-- Jinou metodou identifikovat problém s připojením je spuštěním **TestCloudConnectivity** nástroj. Nástroj je nainstalovaný ve výchozím nastavení s agentem ve složce *%SystemRoot%\Program Files\Microsoft Monitoring Agent\Agent*. Z příkazového řádku se zvýšenými oprávněními přejděte do složky a spusťte nástroj. Nástroj vrátí výsledky a vybraná vystoupení, kde se test nezdařil (například pokud byl souvisejících s konkrétní port/adresy URL, který se zablokoval). 
+- Další metodou identifikace problému s připojením je spuštění nástroje **TestCloudConnectivity** . Nástroj je ve výchozím nastavení nainstalován s agentem ve složce *%systemroot%\Program Files\Microsoft monitoring Agent\Agent*. Z příkazového řádku se zvýšenými oprávněními přejděte do složky a spusťte nástroj. Nástroj vrátí výsledky a zvýrazní, kde se test nezdařil (například pokud se jednalo o konkrétní port nebo adresu URL, která byla zablokována). 
 
     ![Výsledky spuštění nástroje TestCloudConnection](./media/agent-windows-troubleshoot/output-testcloudconnection-tool-01.png)
 
-- Filtr *nástroje Operations Manager* protokolu událostí podle **zdroje událostí** - *modulů služby stavu*, *HealthService*, a *Konektoru služby* a filtrovat podle **úroveň události** *upozornění* a *chyba* pro potvrzení, pokud má zapisovat události z Následující tabulka. Pokud jsou, přečtěte si postup řešení, které jsou zahrnuté pro všechny možné události.
+- Filtrovat protokol událostí *Operations Manager* podle **zdrojů** - událostí*Health Service moduly*, *HealthService*a *konektor služby* a filtrovat podle *Upozornění* a *chyby* **úrovně události** Potvrďte, jestli má v následující tabulce napsané události. Pokud jsou, Projděte si postup řešení, který je součástí jednotlivých možných událostí.
 
-    |ID události |source |Popis |Řešení |
+    |ID události |Source |Popis |Řešení |
     |---------|-------|------------|-----------|
-    |2133 & 2129 |Služba Health Service |Připojení ke službě z agenta se nezdařila |Této chybě může dojít, pokud agent nemůže komunikovat přímo nebo prostřednictvím brány firewall a proxy serveru do služby Azure Monitor. Ověřte nastavení proxy serveru agenta nebo, že brány firewall nebo proxy server sítě povoluje provoz TCP z počítače do služby.|
-    |2138 |Modulů služby stavu. |Proxy server vyžaduje ověření |Konfigurace nastavení proxy serveru agenta a zadejte uživatelské jméno/heslo potřebné k ověření proxy serveru. |
-    |2129 |Modulů služby stavu. |Nezdařilo se připojení/nevyhověl vyjednávání protokolu SSL |Zkontrolujte nastavení protokolu TCP/IP síťového adaptéru a nastavení serveru proxy agenta.|
-    |2127 |Modulů služby stavu. |Chyba odesílání dat přijatých kód chyby: |Pokud se stane pouze pravidelně během dne, je možné pouze náhodné anomálií, které můžete ignorovat. Monitorování a pochopení, jak často se stane. Pokud se to stává často v průběhu dne, nejprve zkontrolujte konfiguraci sítě a nastavení proxy serveru. Pokud je poprvé, agent se pokusí o odeslání dat službě popis obsahuje kód chyby protokolu HTTP 404, bude zahrnovat 500 chybě s kódem vnitřní chybu 404. 404 znamená, že nebyl nalezen, což znamená, že se oblast úložiště pro nový pracovní prostor ještě zřizuje. Na další opakování se úspěšně zápisu dat do pracovního prostoru podle očekávání. Oprávnění nebo problém přihlašovacích údajů může znamenat chybu HTTP 403. Není k dispozici další informace ceně Chyba 403, které vám pomohou vyřešit problém.|
-    |4000 |Konektoru Service Connector |Překlad názvů DNS se nezdařilo |Počítač nebylo možné přeložit adresu Internetu používá při odesílání dat do služby. To může být nastavení překladu DNS na váš počítač, nastavení proxy serveru nesprávné nebo možná o dočasný problém DNS u svého poskytovatele. Pokud dochází pravidelně, může být způsobena přechodný problém související se sítí.|
-    |4001 |Konektoru Service Connector |Připojení ke službě se nezdařilo. |Této chybě může dojít, pokud agent nemůže komunikovat přímo nebo prostřednictvím brány firewall a proxy serveru do služby Azure Monitor. Ověřte nastavení proxy serveru agenta nebo, že brány firewall nebo proxy server sítě povoluje provoz TCP z počítače do služby.|
-    |4002 |Konektoru Service Connector |Služba vrátila v reakci na dotaz stavový kód HTTP 403. Zeptejte se správcem služby stav služby. Dotaz se zopakuje později. |Tato chyba je zapsán v průběhu fáze počáteční registraci agenta a zobrazí se vám podobná následující adresy URL: *https://<workspaceID>.oms.opinsights.azure.com/AgentService.svc/AgentTopologyRequest*. Chybu kód 403 znamená, že je zakázáno a může být způsobena chybným zadáním ID pracovního prostoru nebo klíč, nebo data a času je nesprávné v počítači. Pokud je doba +/-15 minut od aktuálního času, registrace se nezdaří. Když to pokud chcete opravit, aktualizujte datum a časové pásmo počítače Windows.|
+    |2133 & 2129 |Health Service |Nepovedlo se připojit ke službě z agenta. |K této chybě může dojít, pokud Agent nemůže komunikovat přímo nebo přes bránu firewall/proxy server ke službě Azure Monitor. Ověřte nastavení proxy serveru agenta nebo síťová brána firewall/proxy umožňuje provoz TCP z počítače do služby.|
+    |2138 |Moduly Health Service |Proxy server vyžaduje ověření |Nakonfigurujte nastavení proxy serveru agenta a zadejte uživatelské jméno/heslo potřebné k ověření pomocí proxy server. |
+    |2129 |Moduly Health Service |Neúspěšné připojení/neúspěšné vyjednávání SSL |Ověřte nastavení protokolu TCP/IP síťového adaptéru a nastavení proxy agenta.|
+    |2127 |Moduly Health Service |Chyba při odesílání dat přijatý kód chyby |Pokud k tomu dochází pouze pravidelně během dne, může to být pouze náhodná anomálie, kterou lze ignorovat. Sledujte, jak často dochází k tomu. Pokud k tomu dojde často v průběhu dne, nejprve ověřte konfiguraci sítě a nastavení proxy serveru. Pokud popis obsahuje kód chyby HTTP 404 a je první, když se agent pokusí odeslat data službě, bude obsahovat chybu 500 s vnitřním kódem chyby 404. 404 se nenašly, což znamená, že se stále zřizuje oblast úložiště pro nový pracovní prostor. Při příštím opakování budou data v pracovním prostoru úspěšně zapsána podle očekávání. Chyba protokolu HTTP 403 může indikovat problém s oprávněním nebo přihlašovacími údaji. V případě chyby 403 jsou k dispozici další informace, které vám pomůžou problém vyřešit.|
+    |4000 |Konektor služby |Překlad názvu DNS se nezdařil. |Počítač nemohl přeložit internetovou adresu, která se používá při odesílání dat službě. To může být nastavení překladače DNS na vašem počítači, nesprávné nastavení proxy serveru nebo možná dočasný problém DNS s vaším poskytovatelem. Pokud k tomu dojde pravidelně, může to být způsobeno přechodným problémem souvisejícím se sítí.|
+    |4001 |Konektor služby |Připojení ke službě se nezdařilo. |K této chybě může dojít, pokud Agent nemůže komunikovat přímo nebo přes bránu firewall/proxy server ke službě Azure Monitor. Ověřte nastavení proxy serveru agenta nebo síťová brána firewall/proxy umožňuje provoz TCP z počítače do služby.|
+    |4002 |Konektor služby |Služba vrátila stavový kód HTTP 403 v reakci na dotaz. Obraťte se na správce služby se stavem služby. Dotaz se bude opakovat později. |Tato chyba se zapisuje během fáze prvotní registrace agenta a zobrazí se adresa URL podobná následující: *https://\<ID pracovního prostoru >. OMS. o statistice provozu. Azure. com/AgentService. svc/AgentTopologyRequest*. Kód chyby 403 znamená zakázaný a může být způsoben nesprávně zadaným ID pracovního prostoru nebo klíčem nebo jsou data a čas v počítači nesprávné. Pokud je doba +/-15 minut od aktuálního času, registrace se nezdaří. Tuto chybu opravíte tak, že aktualizujete datum nebo časové pásmo počítače s Windows.|
 
-## <a name="data-collection-issues"></a>Problémy s kolekce dat
+## <a name="data-collection-issues"></a>Problémy se shromažďováním dat
 
-Po instalaci agenta a sestavy do jeho nakonfigurovaný pracovní prostor nebo pracovní prostory, může systém přestat přijetí konfigurace, shromažďování nebo předávání výkonu, protokolů nebo jiná data do služby v závislosti na tom, co je povolená a cílí na počítač. Je potřeba určit, jestli:
+Po instalaci agenta a hlášení do nakonfigurovaného pracovního prostoru nebo pracovních prostorů může přestat přijímat konfiguraci, shromažďovat nebo předávat výkon, protokoly nebo jiná data službě v závislosti na tom, co je povolené a cílí na počítač. Je nutné určit, zda:
 
-- Je konkrétní datový typ nebo všechna data, která není k dispozici v pracovním prostoru?
-- Datový typ určený řešení nebo se musí zadat jako součást konfigurace shromažďování dat pracovního prostoru?
-- Kolik počítačů se to týká? Je jeden nebo více počítačích odesílajících sestavy do pracovního prostoru?
-- Byla práce a zastavit v určitou denní dobu nebo ho nebylo nikdy shromážděných? 
-- Je syntakticky správný z dotazu prohledávání protokolu, které používáte? 
-- Agent někdy přijal konfiguraci ze služby Azure Monitor?
+- Je to konkrétní datový typ nebo všechna data, která nejsou v pracovním prostoru k dispozici?
+- Je datový typ zadaný řešením nebo zadaný jako součást konfigurace shromažďování dat v pracovním prostoru?
+- Kolik počítačů je ovlivněno? Jedná se o jeden nebo víc počítačů, které se hlásí do pracovního prostoru?
+- Pracovalo a zastavilo se v konkrétní denní době nebo nebylo dosud shromážděno? 
+- Používá se dotaz na prohledávání protokolu syntakticky správný? 
+- Přijal Agent od Azure Monitor svou konfiguraci?
 
-Prvním krokem při řešení potíží je určit, pokud počítač odesílá události prezenčního signálu.
+Prvním krokem při řešení potíží je určit, jestli počítač posílá událost prezenčního signálu.
 
 ```
 Heartbeat 
@@ -98,18 +98,18 @@ Heartbeat
     | summarize arg_max(TimeGenerated, * ) by Computer
 ```
 
-Pokud dotaz vrací výsledky, budete muset zjistit, zda konkrétní datový typ není shromažďovat a předávat do služby. Důvodem může být agent nepřijímá aktualizovanou konfiguraci ze služby nebo některé jiné příznaky, které brání normálně agenta. Proveďte následující kroky, chcete-li dále řešit.
+Pokud dotaz vrátí výsledky, je nutné určit, zda určitý datový typ není shromážděn a předán do služby. To může být způsobeno tím, že agent neobdrží aktualizovanou konfiguraci ze služby nebo nějaký jiný příznak, který brání v běžném provozu agenta. K dalšímu řešení potíží proveďte následující kroky.
 
-1. Otevřete příkazový řádek se zvýšenými oprávněními v počítači a restartujte službu agenta zadáním `net stop healthservice && net start healthservice`.
-2. Otevřít *nástroje Operations Manager* protokolu událostí a vyhledejte **ID událostí** *7023, 7024 7025, 7028* a *1210* z **událostí Zdroj** *HealthService*.  Tyto události značí agenta úspěšně přijímá konfiguraci ze služby Azure Monitor a jsou počítač aktivně monitorovat. Popis události pro událost, kterou zadejte ID 1210 také na poslední řádek všech řešení a přehledy, které jsou zahrnuty v oboru monitorování v agentovi.  
+1. V počítači otevřete příkazový řádek se zvýšenými oprávněními a restartujte službu `net stop healthservice && net start healthservice`agenta zadáním příkazu.
+2. Otevřete protokol událostí *Operations Manager* a vyhledejte **ID událostí** *7023, 7024, 7025, 7028* a *1210* ze **zdroje událostí** *HealthService*.  Tyto události označují, že agent úspěšně přijímá konfiguraci od Azure Monitor a aktivně monitoruje počítač. Popis události pro ID události 1210 se také určí na posledním řádku všechna řešení a přehledy, které jsou součástí rozsahu monitorování v agentovi.  
 
-    ![Popis události. ID 1210](./media/agent-windows-troubleshoot/event-id-1210-healthservice-01.png)
+    ![Popis události s ID 1210](./media/agent-windows-troubleshoot/event-id-1210-healthservice-01.png)
 
-3. Pokud po několika minutách se nezobrazí ve výsledcích dotazu nebo vizualizaci očekávaná data, podle toho, pokud zobrazujete data z řešení nebo získávání informací z *nástroje Operations Manager* protokolu událostí, vyhledejte **událostí zdroje** *HealthService* a *modulů služby stavu* a filtrovat podle **úroveň události** *upozornění* a *Chyba* pro potvrzení, pokud zapsala události z následující tabulky.
+3. Pokud se ve výsledcích nebo vizualizaci dotazu nezobrazuje očekávaná data, v závislosti na tom, jestli prohlížíte data z řešení nebo vhledu, v protokolu událostí *Operations Manager* vyhledejte **zdroje událostí** *HealthService* a *Health Service moduly* a vyfiltrovat podle *Upozornění* na **úrovni události** a *chybu* , abyste se ujistili, zda mají v následující tabulce zapsané události.
 
-    |ID události |source |Popis |Řešení |
+    |ID události |Source |Popis |Řešení |
     |---------|-------|------------|
-    |8000 |HealthService |Tato událost bude zadat, pokud pracovní postup souvisejících s výkonem, události nebo jiný typ dat shromážděných není schopen dál služba pro ingestování do pracovního prostoru. | ID události 2136 ze zdroje služby Health Service se zapíše společně s touto událostí a může znamenat, že agent není schopen komunikovat se službou, pravděpodobně z důvodu chybné konfigurace nastavení proxy serveru a ověřování, výpadek sítě nebo síťová brána firewall / proxy server nepovoluje provoz TCP z počítače do služby.| 
-    |10102 a 10103 |Modulů služby stavu. |Zdroj dat se nepovedlo vyhodnotit pracovního postupu. |Tato situace může nastat, pokud zadaný čítač výkonu nebo instance v počítači neexistuje nebo je nesprávně definovaný v nastavení dat pracovního prostoru. Pokud je zadán uživatel [čítač výkonu](data-sources-performance-counters.md#configuring-performance-counters)ověřte informace zadané sleduje ve správném formátu a existuje v cílových počítačích. |
-    |26002 |Modulů služby stavu. |Zdroj dat se nepovedlo vyhodnotit pracovního postupu. |Tato situace může nastat, pokud zadaný protokol událostí Windows v počítači neexistuje. Tuto chybu můžete bezpečně ignorovat, pokud počítač není má mít tento protokol událostí zaregistrované, v opačném případě pokud je zadán uživatel [protokolu událostí](data-sources-windows-events.md#configuring-windows-event-logs), zkontrolujte zadané informace jsou správné. |
+    |8000 |HealthService |Tato událost určí, jestli pracovní postup související s výkonem, událostí nebo jiným shromážděným datovým typem nemůže přesílat službě k ingestování do pracovního prostoru. | Událost s ID 2136 ze zdrojového HealthService se zapisuje společně s touto událostí a může indikovat, že Agent nemůže komunikovat se službou, pravděpodobně v důsledku chyby konfigurace proxy serveru a nastavení ověřování, výpadku sítě nebo brány firewall sítě/ proxy nepovoluje provoz TCP z počítače do služby.| 
+    |10102 a 10103 |Moduly Health Service |Pracovní postup nemohl vyřešit zdroj dat. |Tato situace může nastat, pokud zadaný čítač výkonu nebo instance v počítači neexistují nebo jsou nesprávně definovány v nastavení dat pracovního prostoru. Pokud se jedná o [čítač výkonu](data-sources-performance-counters.md#configuring-performance-counters)zadaný uživatelem, ověřte, že zadané informace jsou následující ve správném formátu a existují v cílových počítačích. |
+    |26002 |Moduly Health Service |Pracovní postup nemohl vyřešit zdroj dat. |Tato situace může nastat, pokud zadaný protokol událostí systému Windows v počítači neexistuje. Tuto chybu můžete bezpečně ignorovat, pokud se neočekává, že bude tento protokol událostí zaregistrován, jinak pokud se jedná o [protokol událostí](data-sources-windows-events.md#configuring-windows-event-logs)zadaný uživatelem, ověřte, jestli jsou zadané informace správné. |
 

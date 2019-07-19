@@ -1,6 +1,6 @@
 ---
-title: Zobrazení a použití šablony virtuálního počítače Azure Resource Manageru | Dokumentace Microsoftu
-description: Zjistěte, jak pomocí šablony Azure Resource Manageru z virtuálního počítače k vytvoření dalších virtuálních počítačů
+title: Zobrazení a použití šablony Azure Resource Manager virtuálního počítače | Microsoft Docs
+description: Naučte se používat Azure Resource Manager šablonu z virtuálního počítače k vytvoření dalších virtuálních počítačů.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -12,59 +12,63 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/18/2019
+ms.date: 07/12/2019
 ms.author: spelluru
-ms.openlocfilehash: 533770d98b146dea01e91e1249115c4b5c074b3c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c14abf3acce0084507a03f3d34fdd59566d88c28
+ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62101559"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67854281"
 ---
-# <a name="create-virtual-machines-using-an-azure-resource-manager-template"></a>Vytvoření virtuálních počítačů pomocí šablony Azure Resource Manageru 
+# <a name="create-virtual-machines-using-an-azure-resource-manager-template"></a>Vytváření virtuálních počítačů pomocí šablony Azure Resource Manager 
 
-Při vytváření virtuálního počítače (VM) ve službě DevTest Labs prostřednictvím [webu Azure portal](https://go.microsoft.com/fwlink/p/?LinkID=525040), před uložením virtuálního počítače můžete zobrazit šablonu Azure Resource Manageru. Šablonu pak slouží jako základ k vytvoření testovacího prostředí více virtuálních počítačů se stejným nastavením.
+Když vytváříte virtuální počítač v DevTest Labs prostřednictvím [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040), můžete před ULOŽENÍM virtuálního počítače zobrazit Azure Resource Manager šablonu. Šablonu je pak možné použít jako základ pro vytvoření více virtuálních počítačů testovacího prostředí se stejným nastavením.
 
-Tento článek popisuje více virtuálních počítačů a šablon Resource Manageru jednoho virtuálního počítače a ukazuje, jak zobrazit a uložit šablonu při vytváření virtuálního počítače.
+Tento článek popisuje více virtuálních počítačů a Správce prostředků šablon pro jeden virtuální počítač a ukazuje, jak zobrazit a uložit šablonu při vytváření virtuálního počítače.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="multi-vm-vs-single-vm-resource-manager-templates"></a>Více virtuálních počítačů a šablon Resource Manageru jednoho virtuálního počítače
-Existují dva způsoby, jak vytvořit virtuální počítače ve službě DevTest Labs pomocí šablony Resource Manageru: zřízení prostředků Microsoft.DevTestLab/labs/virtualmachines nebo zřídit Microsoft.Compute/virtualmachines prostředků. Každá se používá v různých scénářích a vyžaduje jiný oprávnění.
+## <a name="multi-vm-vs-single-vm-resource-manager-templates"></a>Více virtuálních počítačů a Správce prostředků šablon pro jeden virtuální počítač
+Existují dva způsoby, jak vytvořit virtuální počítače v DevTest Labs pomocí šablony Správce prostředků: zřízení prostředku Microsoft. DevTestLab/Labs/VirtualMachines nebo zřízení prostředku Microsoft. COMPUTE/VirtualMachines. Každý se používá v různých scénářích a vyžaduje jiná oprávnění.
 
-- Šablony Resource Manageru, které používají typ prostředku Microsoft.DevTestLab/labs/virtualmachines (jak je deklarovaný ve vlastnosti v šabloně "prostředků") můžete zřizovat virtuální počítače jednotlivých testovacího prostředí. Každý virtuální počítač se pak zobrazí jako jedna položka v seznamu virtuálních počítačů DevTest Labs:
+- Správce prostředků šablony, které používají typ prostředku Microsoft. DevTestLab/Labs/VirtualMachines (jak je deklarované v šabloně "prostředku") mohou zřídit jednotlivé virtuální počítače v testovacím prostředí. Každý virtuální počítač se pak v seznamu virtuálních počítačů DevTest Labs zobrazí jako jedna položka:
 
-   ![Seznam virtuálních počítačů jako jednotlivé položky v seznamu virtuálních počítačů DevTest Labs](./media/devtest-lab-use-arm-template/devtestlab-lab-vm-single-item.png)
+   ![Seznam virtuálních počítačů jako jedné položky v seznamu virtuálních počítačů DevTest Labs](./media/devtest-lab-use-arm-template/devtestlab-lab-vm-single-item.png)
 
-   Tento typ šablony Resource Manageru dají zřídit prostřednictvím Azure Powershellu příkaz **New-AzResourceGroupDeployment** nebo prostřednictvím příkazového řádku Azure **vytvořit nasazení skupiny pro az**. Vyžaduje oprávnění správce, aby uživatelé, kteří jsou přiřazeni k roli uživatele DevTest Labs nelze provádět nasazení. 
+   Tento typ šablony Správce prostředků můžete zřídit pomocí příkazu Azure PowerShell **New-AzResourceGroupDeployment** nebo pomocí příkazu Azure CLI **AZ Group Deployment Create**. Vyžaduje oprávnění správce, takže uživatelé, kteří jsou přiřazeni pomocí role uživatele DevTest Labs, nemůžou nasazení provést. 
 
-- Šablony Resource Manageru, které používají typ prostředku Microsoft.Compute/virtualmachines můžete zřídit několik virtuálních počítačů jako jednotné prostředí v DevTest Labs seznam virtuálních počítačů:
+- Správce prostředků šablony, které používají typ prostředku Microsoft. COMPUTE/VirtualMachines, mohou zřídit několik virtuálních počítačů jako jedno prostředí v seznamu virtuálních počítačů DevTest Labs:
 
-   ![Seznam virtuálních počítačů jako jednotlivé položky v seznamu virtuálních počítačů DevTest Labs](./media/devtest-lab-use-arm-template/devtestlab-lab-vm-single-environment.png)
+   ![Seznam virtuálních počítačů jako jedné položky v seznamu virtuálních počítačů DevTest Labs](./media/devtest-lab-use-arm-template/devtestlab-lab-vm-single-environment.png)
 
-   Virtuální počítače ve stejném prostředí můžete spravovat společně a sdílet stejný životní cyklus. Uživatelé, kteří jsou přiřazeni k roli uživatele DevTest Labs můžete vytvořit prostředí pomocí těchto šablon, tak dlouho, dokud správce nakonfiguroval testovacího prostředí tímto způsobem.
+   Virtuální počítače ve stejném prostředí je možné spravovat společně a sdílet stejný životní cyklus. Uživatelé, kteří jsou přiřazeni pomocí role uživatele DevTest Labs, mohou vytvářet prostředí pomocí těchto šablon, pokud správce nakonfigurovali testovací prostředí tímto způsobem.
 
-Zbývající část tohoto článku popisuje šablon Resource Manageru, které používají Microsoft.DevTestLab/labs/virtualmachines. Správce testovacího prostředí tyto jsou používány k automatizaci vytvoření testovacího prostředí virtuálního počítače (například nárokovatelných virtuálních počítačů) nebo generování zlaté image (například obrázek objekt pro vytváření).
+Zbývající část tohoto článku se zabývá Správce prostředkůmi šablonami, které používají Microsoft. DevTestLab/Labs/VirtualMachines. Používají je správci testovacího prostředí k automatizaci vytváření virtuálních počítačů testovacího prostředí (například s nárokem na virtuální počítače) nebo při generování zlatých imagí (například objekt pro vytváření imagí).
 
-[Osvědčené postupy pro vytváření šablon Azure Resource Manageru](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-template-best-practices) nabízí mnoho pokyny a návrhy k vytváření šablon Azure Resource Manageru, které je spolehlivé a snadné použití.
+[Osvědčené postupy pro vytváření šablon Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-template-best-practices) nabízí mnoho pokynů a návrhů, které vám pomůžou vytvořit Azure Resource Manager šablony, které jsou spolehlivé a snadno použitelné.
 
-## <a name="view-and-save-a-virtual-machines-resource-manager-template"></a>Zobrazení a uložení virtuálního počítače šablonu Resource Manageru
-1. Postupujte podle kroků uvedených v [vytvoření vašeho prvního virtuálního počítače v testovacím prostředí](tutorial-create-custom-lab.md#add-a-vm-to-the-lab) zahajte proces vytváření virtuálního počítače.
-1. Zadejte požadované informace pro váš virtuální počítač a přidat všechny artefakty, které chcete pro tento virtuální počítač.
-1. V dolní části okna Konfigurovat nastavení, zvolte **šablony ARM zobrazení**.
+## <a name="view-and-save-a-virtual-machines-resource-manager-template"></a>Zobrazení a uložení šablony Správce prostředků virtuálního počítače
+1. Pokud chcete začít vytvářet virtuální počítač, postupujte podle kroků v části [Vytvoření prvního virtuálního počítače v testovacím prostředí](tutorial-create-custom-lab.md#add-a-vm-to-the-lab) .
+1. Zadejte požadované informace pro virtuální počítač a přidejte všechny artefakty, které chcete pro tento virtuální počítač.
+1. Swtich na kartu **Upřesnit nastavení** . 
+1. V dolní části okna Konfigurovat nastavení vyberte možnost **Zobrazit šablonu ARM**.
+1. Zkopírujte a uložte šablonu Správce prostředků pro pozdější použití k vytvoření dalšího virtuálního počítače.
 
-   ![Zobrazit tlačítko šablony ARM](./media/devtest-lab-use-arm-template/devtestlab-lab-view-rm-template.png)
-1. Zkopírujte a uložte šablonu Resource Manageru pro pozdější použití k vytvoření jiného virtuálního počítače.
+   ![Správce prostředků šablonu, která se má uložit pro pozdější použití](./media/devtest-lab-use-arm-template/devtestlab-lab-copy-rm-template.png)
 
-   ![Šablony Resource Manageru uložit pro pozdější použití.](./media/devtest-lab-use-arm-template/devtestlab-lab-copy-rm-template.png)
-
-Po uložení šablony Resource Manageru, je nutné aktualizovat sekci parametrů šablony, než budete moct použít. Můžete vytvořit parameter.json, který upravuje pouze parametry, mimo skutečnou šablonu Resource Manageru. 
+Po uložení šablony Správce prostředků musíte aktualizovat oddíl Parameters (parametry), abyste mohli šablonu použít. Můžete vytvořit parametr. JSON, který přizpůsobí pouze parametry, mimo skutečnou šablonu Správce prostředků. 
 
 ![Přizpůsobení parametrů pomocí souboru JSON](./media/devtest-lab-use-arm-template/devtestlab-lab-custom-params.png)
 
-Šablony Resource Manageru je teď připravený k použití na [vytvoření virtuálního počítače](devtest-lab-create-environment-from-arm.md).
+Šablona Správce prostředků je teď připravená k použití k [Vytvoření virtuálního počítače](devtest-lab-create-environment-from-arm.md).
+
+## <a name="set-expiration-date"></a>Nastavit datum vypršení platnosti
+Ve scénářích, jako jsou například školení, ukázky a zkušební verze, můžete chtít vytvořit virtuální počítače a odstranit je automaticky po pevné době trvání, takže nebudete mít zbytečné náklady. Virtuální počítač testovacího prostředí s datem vypršení platnosti můžete vytvořit zadáním vlastnosti **expirationDate** pro virtuální počítač. Podívejte se na stejnou šablonu Správce prostředků v [našem úložišti GitHub](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates/101-dtl-create-vm-username-pwd-customimage-with-expiration).
+
+
 
 ### <a name="next-steps"></a>Další postup
 * Zjistěte, jak [vytvoření prostředí více virtuálních počítačů pomocí šablon Resource Manageru](devtest-lab-create-environment-from-arm.md).
-* [Nasazení šablony Resource Manageru k vytvoření virtuálního počítače](devtest-lab-create-environment-from-arm.md#automate-deployment-of-environments)
+* [Nasazení šablony Správce prostředků k vytvoření virtuálního počítače](devtest-lab-create-environment-from-arm.md#automate-deployment-of-environments)
 * Prozkoumejte další šablony Resource Manageru rychlý start pro DevTest Labs automatizace z [veřejného úložiště DevTest Labs GitHub](https://github.com/Azure/azure-quickstart-templates).

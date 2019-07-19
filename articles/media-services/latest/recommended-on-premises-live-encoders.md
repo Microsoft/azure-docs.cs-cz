@@ -1,37 +1,37 @@
 ---
-title: Živé streamování kodérů doporučená službou Media Services – Azure | Dokumentace Microsoftu
-description: Další informace o streamování s místními kodéry doporučená službou Media Services
+title: Kodéry živého streamování doporučují Media Services – Azure | Microsoft Docs
+description: Přečtěte si o službě Live streamování pro místní kodéry Doporučené Media Services
 services: media-services
-keywords: kódování; kodérů; média
+keywords: kódování; kodéry; média
 author: johndeu
 manager: johndeu
 ms.author: johndeu
-ms.date: 06/12/2019
+ms.date: 08/16/2019
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: e31ad51121b1b198e2d444e70c3f482b208ef105
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 1f152f7f94c12beecf015d9389ed85cb310573bd
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67840143"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68297722"
 ---
-# <a name="recommended-live-streaming-encoders"></a>Doporučené datové proudy kodéry
+# <a name="recommended-live-streaming-encoders"></a>Doporučené kodéry živého streamování
 
-Ve službě Azure Media Services [živá událost](https://docs.microsoft.com/rest/api/media/liveevents) (kanál) představuje kanál pro zpracování obsahu živého streamování. Živá událost přijímat živé vstupní datové proudy v jednom ze dvou způsobů.
+V Azure Media Services [živá událost](https://docs.microsoft.com/rest/api/media/liveevents) (kanál) představuje kanál pro zpracování obsahu živého streamování. Živá událost přijímá živé vstupní proudy jedním ze dvou způsobů.
 
-* Místní odešle kodér služby live Encoding pro živá událost, která není povoleno provádět živé kódování pomocí Media Services datového proudu s více přenosovými rychlostmi RTMP nebo technologie Smooth Streaming (fragmentovaný MP4). Ingestované datové proudy prochází živé události bez dalšího zpracování. Tato metoda je volána **předávací**. Live encoder můžete odeslat datový proud s jednou přenosovou rychlostí průchozí kanál. Tuto konfiguraci nedoporučujeme, protože ji nepovoluje pro adaptivní přenosové rychlosti streamování do klienta.
+* On-premises Live Encoder odesílá datový proud s více přenosovými rychlostmi nebo Smooth Streaming (fragmentovaný MP4) do živé události, která není povolena k provádění živého kódování pomocí Media Services. Ingestované datové proudy procházejí živými událostmi bez dalšího zpracování. Tato metoda se nazývá **předávací**. Živý kodér může poslat datový proud s jednou přenosovou rychlostí do předávacího kanálu. Tuto konfiguraci nedoporučujeme, protože neumožňuje streamování s adaptivní přenosovou rychlostí na klienta.
 
   > [!NOTE]
-  > Použití průchozí metody je nejekonomičtější způsob, jak živě Streamovat.
+  > Použití předávací metody je nejúčinnější způsob, jak provádět živé streamování.
  
-* Místní kodér služby live Encoding odešle datový proud s jednou přenosovou rychlostí živá událost, který má povolené provádět živé kódování pomocí Media Services v jednom z následujících formátů: RTMP nebo technologie Smooth Streaming (fragmentovaný MP4). Živá událost potom provede kódování v reálném čase příchozího datového proudu s jednou přenosovou rychlostí na datový proud s více přenosovými rychlostmi (adaptivní) videa.
+* On-premises Live Encoder pošle datový proud s jednou přenosovou rychlostí do živé události, která má povoleno provádět kódování v reálném čase pomocí Media Services v jednom z následujících formátů: RTMP nebo Smooth Streaming (fragmentovaný MP4). Živá událost pak provede živé kódování příchozího datového proudu s jednou přenosovou rychlostí do datového proudu s více přenosovými rychlostmi (adaptivní).
 
-Podrobné informace o kódování v reálném čase pomocí služby Media Services najdete v tématu [živé streamování pomocí služby Media Services v3](live-streaming-overview.md).
+Podrobné informace o živém kódování pomocí Media Services najdete v tématu [živé streamování s Media Services V3](live-streaming-overview.md).
 
-## <a name="live-encoders-that-output-rtmp"></a>Kodéry výstupu RTMP
+## <a name="live-encoders-that-output-rtmp"></a>Živé kodéry, které mají výstup RTMP
 
-Služba Media Services doporučuje používat jeden z následujících kodérů pro kódování v reálném čase, které mají RTMP jako výstup. Jsou podporované schémata URL `rtmp://` nebo `rtmps://`.
+Služba Media Services doporučuje používat jeden z následujících kodérů pro kódování v reálném čase, které mají RTMP jako výstup. Podporovaná schémata URL jsou `rtmp://` nebo `rtmps://`.
 
 > [!NOTE]
 > Při streamování přes RTMP zkontrolujte nastavení brány firewall nebo proxy serveru, aby se zajistilo, že jsou otevřené odchozí porty TCP 1935 a 1936.
@@ -49,86 +49,86 @@ Služba Media Services doporučuje používat jeden z následujících kodérů 
 - VMIX
 - xStream
 
-## <a name="live-encoders-that-output-fragmented-mp4"></a>Kodéry pro kódování, jejichž výstupem fragmentovaného MP4
+## <a name="live-encoders-that-output-fragmented-mp4"></a>Živé kodéry, jejichž výstupem je fragment MP4
 
-Služba Media Services se doporučuje používat jednu z následující kodéry, které mají s více přenosovými rychlostmi technologie Smooth Streaming (fragmentovaný MP4) jako výstup. Jsou podporované schémata URL `http://` nebo `https://`.
+Media Services doporučuje použít jeden z následujících živých kodérů, které mají s více přenosovými rychlostmi Smooth Streaming (fragmentované MP4) jako výstup. Podporovaná schémata URL jsou `http://` nebo `https://`.
 
 - Ateme TITAN Live
 - Cisco Digital Media Encoder 2200
 - Elemental Live
 - Envivio 4Caster C4 Gen III
-- Imagine Communications Selenio MCP3
+- Představte si Communications Selenio MCP3
 - Media Excel Hero Live a Hero 4K (UHD/HEVC)
 
 > [!TIP]
->  Pokud jsou streamování živých událostí v různých jazycích (například anglické jedna zvuková stopa a španělština jedna zvuková stopa), můžete to udělat pomocí živých kodéru Media Excel nakonfigurovaný tak, aby posílala průchozí živá událost živého kanálu.
+>  Pokud vytváříte streamování živých událostí v několika jazycích (například jedna anglická zvuková stopa a jedna Španělská zvuková stopa), můžete toho dosáhnout pomocí Media Encoder Live kodéru nakonfigurovaného tak, aby odesílal živý kanál do předávací živé události.
 
-## <a name="configuring-on-premises-live-encoder-settings"></a>Konfigurace místní kodér služby live Encoding nastavení
+## <a name="configuring-on-premises-live-encoder-settings"></a>Konfigurace nastavení místního kodéru pro Live Encoder
 
-Informace o tom, jaká nastavení jsou platné pro váš typ živou událost najdete v tématu [živá událost typy porovnání](live-event-types-comparison.md).
+Informace o tom, jaká nastavení jsou platná pro váš typ živé události, najdete v tématu [porovnání typů událostí typu Live](live-event-types-comparison.md).
 
-### <a name="playback-requirements"></a>Požadavky pro přehrávání
+### <a name="playback-requirements"></a>Požadavky na přehrávání
 
-K přehrávání obsahu, musí být k dispozici jak datovému proudu zvuku a videa. Přehrání datového proudu jen pro videa se nepodporuje.
+Aby bylo možné přehrávat obsah, musí být k dispozici zvukový a obrazový Stream. Přehrávání datového proudu, který je jen pro video, se nepodporuje.
 
-### <a name="configuration-tips"></a>Tipy týkající se konfigurace
+### <a name="configuration-tips"></a>Tipy pro konfiguraci
 
 - Kdykoli je to možné, použijte standardní kabelové internetové připojení.
-- Pokud při určování požadavků na šířku pásma, double streamování přenosových rychlostí. I když není povinné, toto jednoduché pravidlo pomáhá zmírnit dopad zahlcení sítě.
+- Při určování požadavků na šířku pásma Zdvojnásobte přenosové rychlosti streamování. I když není povinné, toto jednoduché pravidlo pomáhá zmírnit dopad zahlcení sítě.
 - Při použití softwarových kodérů uzavřete všechny nepotřebné programy.
-- Po zahájení jeho doručením (push), když změníte konfiguraci kodér má negativní vliv na události. Změny konfigurace může způsobit nestabilitu události. 
-- Ujistěte se, abyste udělili sami dostatek času na vytvoření události. Pro zajištění vysoce škálovatelné události doporučujeme spuštěním instalačního programu za hodinu před události.
+- Změna konfigurace kodéru po zahájení práce má na událost negativní vliv. Změny konfigurace můžou způsobit, že dojde k nestabilitě události. 
+- Ujistěte se, že máte k nastavení události dostatek času. Pro vysoce škálovatelné události doporučujeme spustit nastavení hodinu před událostí.
 
-## <a name="becoming-an-on-premises-encoder-partner"></a>Stát partnerem místní kodér
+## <a name="becoming-an-on-premises-encoder-partner"></a>Stane se místní partner kodéru.
 
-Jako partner Azure Media Services místní kodér Media Services podporuje váš produkt doporučením váš kodér pro podnikové zákazníky. Pokud chcete stát partnerem místní kodér, musíte ověřit kompatibilitu vaší místní kodér pomocí služby Media Services. Uděláte to tak, dokončete následující ověření.
+Jako Azure Media Services on-premises Encoder partner Media Services propaguje váš produkt tím, že doporučí kodér zákazníkům pro podniky. Pokud se chcete stát místním partnerem kodéru, musíte ověřit kompatibilitu místního kodéru s Media Services. Provedete to tak, že provedete následující ověření.
 
-### <a name="pass-through-live-event-verification"></a>Předávací ověřování živá událost
+### <a name="pass-through-live-event-verification"></a>Předávací ověření události za provozu
 
-1. Ve vašem účtu Media Services, ujistěte se, že **koncový bod streamování** běží. 
-2. Vytvoření a spuštění **předávací** živá událost. <br/> Další informace najdete v tématu [živá událost stavy a fakturace](live-event-states-billing.md).
-3. Získání adres URL ingestování a konfiguraci vaší místní kodér odesílat živý datový proud s více přenosovými rychlostmi do Media Services pomocí adresy URL.
-4. Získat adresu URL ve verzi preview a použít ho k ověření, že je ve skutečnosti přijímají vstup z kodéru.
-5. Vytvořte nový **Asset** objektu.
-6. Vytvoření **Live výstup** a používat název assetu, kterou jste vytvořili.
-7. Vytvoření **Lokátor streamování** pomocí integrované **streamování zásad** typy.
-8. V seznamu cest **Lokátor streamování** získat zpět adresy URL používat.
-9. Získat název hostitele **koncový bod streamování** , kterou chcete z datového proudu.
-10. Adresa URL v kroku 8 kombinovat s názvem hostitele v kroku 9 získat úplnou adresu URL.
-11. Spusťte váš kodér služby live Encoding přibližně 10 minut.
-12. Zastavte živou událost. 
-13. Například použijte přehrávač [Azure Media Player](http://aka.ms/azuremediaplayer) sledovat archivovaný asset, který k zajištění přehrávání nemá žádné viditelné potížím s vykreslováním na všech úrovních kvality. Nebo, sledovat a ověřit prostřednictvím adresy URL náhledu během živé relace.
-14. ID assetu, publikované streamovací adresa URL pro živý archív a nastavení a verze se používá z váš kodér služby live Encoding záznamu.
-15. Obnovit stav živá událost po vytvoření každý vzorek.
-16. Opakujte kroky 5 až 15 u všech konfigurací s nepodporuje váš kodér (s opakováním a bez signalizace ad, titulky nebo různými rychlostmi kódování).
+1. Ujistěte se, že je v účtu Media Services spuštěný **koncový bod streamování** . 
+2. Vytvořte a spusťte **předávací** živou událost. <br/> Další informace najdete v tématu [stavy událostí Live a fakturace](live-event-states-billing.md).
+3. Získejte adresy URL pro příjem a nakonfigurujte místní kodér tak, aby používal adresu URL k odeslání živého datového proudu s více přenosovými rychlostmi do Media Services.
+4. Získejte adresu URL náhledu a použijte ji k ověření, že vstup z kodéru je skutečně přijatý.
+5. Vytvoří nový objekt **assetu** .
+6. Vytvořte **živý výstup** a použijte název assetu, který jste vytvořili.
+7. Vytvořte **Lokátor streamování** s integrovanými typy **zásad streamování** .
+8. Vypište cesty na **lokátoru streamování** a vraťte tak adresy URL, které se mají použít.
+9. Získejte název hostitele **koncového bodu streamování** , ze kterého chcete streamovat datový proud.
+10. Kombinací adresy URL z kroku 8 s názvem hostitele v kroku 9 získáte úplnou adresu URL.
+11. Spusťte živý kodér po dobu přibližně 10 minut.
+12. Zastaví živou událost. 
+13. Pomocí přehrávače, jako je například [Azure Media Player](https://aka.ms/azuremediaplayer) , Sledujte archivovaný Asset a ujistěte se, že přehrávání nemá žádné viditelné histogramu na všech úrovních kvality. Nebo sledujte a ověřte pomocí adresy URL náhledu během živé relace.
+14. Poznamenejte si ID assetu, publikovanou adresu URL streamování pro živý archiv a nastavení a verzi používanou z kodéru Live Encoder.
+15. Po vytvoření každého vzorku resetujte stav živé události.
+16. Opakujte kroky 5 až 15 pro všechny konfigurace, které kodér podporuje (s signalizací a bez něj, popisky nebo jiné rychlosti kódování).
 
-### <a name="live-encoding-live-event-verification"></a>Živé kódování živá událost ověření
+### <a name="live-encoding-live-event-verification"></a>Live Encoding – ověření události Live
 
-1. Ve vašem účtu Media Services, ujistěte se, že **koncový bod streamování** běží. 
-2. Vytvoření a spuštění **živého kódování** živá událost. <br/> Další informace najdete v tématu [živá událost stavy a fakturace](live-event-states-billing.md).
-3. Získání adres URL ingestování a nakonfigurovat váš kodér tak, aby nabízel živý datový proud s jednou přenosovou rychlostí služby Media Services.
-4. Získat adresu URL ve verzi preview a použít ho k ověření, že je ve skutečnosti přijímají vstup z kodéru.
-5. Vytvořte nový **Asset** objektu.
-6. Vytvoření **Live výstup** a používat název assetu, kterou jste vytvořili.
-7. Vytvoření **Lokátor streamování** pomocí integrované **streamování zásad** typy.
-8. V seznamu cest **Lokátor streamování** získat zpět adresy URL používat.
-9. Získat název hostitele **koncový bod streamování** , kterou chcete z datového proudu.
-10. Adresa URL v kroku 8 kombinovat s názvem hostitele v kroku 9 získat úplnou adresu URL.
-11. Spusťte váš kodér služby live Encoding přibližně 10 minut.
-12. Zastavte živou událost.
-13. Například použijte přehrávač [Azure Media Player](http://aka.ms/azuremediaplayer) sledovat archivovaný asset, který k zajištění přehrávání histogramu úplně bez viditelné pro všechny úrovně kvality. Nebo, sledovat a ověřit prostřednictvím adresy URL náhledu během živé relace.
-14. ID assetu, publikované streamovací adresa URL pro živý archív a nastavení a verze se používá z váš kodér služby live Encoding záznamu.
-15. Obnovit stav živá událost po vytvoření každý vzorek.
-16. Opakujte kroky 5 až 15 u všech konfigurací s nepodporuje váš kodér (s opakováním a bez signalizace ad, titulky nebo různými rychlostmi kódování).
+1. Ujistěte se, že je v účtu Media Services spuštěný **koncový bod streamování** . 
+2. Vytvořte a spusťte živou událost **živého kódování** . <br/> Další informace najdete v tématu [stavy událostí Live a fakturace](live-event-states-billing.md).
+3. Získejte adresy URL pro příjem a nakonfigurujte kodér tak, aby do Media Services načetl živý datový proud s jednou přenosovou rychlostí.
+4. Získejte adresu URL náhledu a použijte ji k ověření, že vstup z kodéru je skutečně přijatý.
+5. Vytvoří nový objekt **assetu** .
+6. Vytvořte **živý výstup** a použijte název assetu, který jste vytvořili.
+7. Vytvořte **Lokátor streamování** s integrovanými typy **zásad streamování** .
+8. Vypište cesty na **lokátoru streamování** a vraťte tak adresy URL, které se mají použít.
+9. Získejte název hostitele **koncového bodu streamování** , ze kterého chcete streamovat datový proud.
+10. Kombinací adresy URL z kroku 8 s názvem hostitele v kroku 9 získáte úplnou adresu URL.
+11. Spusťte živý kodér po dobu přibližně 10 minut.
+12. Zastaví živou událost.
+13. Pomocí přehrávače, jako je například [Azure Media Player](https://aka.ms/azuremediaplayer) , Sledujte archivovaný Asset a ujistěte se, že přehrávání nemá žádné viditelné histogramu pro všechny úrovně kvality. Nebo sledujte a ověřte pomocí adresy URL náhledu během živé relace.
+14. Poznamenejte si ID assetu, publikovanou adresu URL streamování pro živý archiv a nastavení a verzi používanou z kodéru Live Encoder.
+15. Po vytvoření každého vzorku resetujte stav živé události.
+16. Opakujte kroky 5 až 15 pro všechny konfigurace, které kodér podporuje (s signalizací a bez něj, popisky nebo jiné rychlosti kódování).
 
-### <a name="longevity-verification"></a>Životnost ověření
+### <a name="longevity-verification"></a>Longevity ověřování
 
-Postupujte stejným způsobem jako v [živá událost předávací ověřování](#pass-through-live-event-verification) s výjimkou kroku 11. <br/>Místo 10 minut spusťte váš kodér služby live Encoding pro jeden týden nebo i delší dobu. Například použijte přehrávač [Azure Media Player](http://aka.ms/azuremediaplayer) sledovat živé streamování z času na čas (nebo archivovaný asset) k zajištění přehrávání nemá žádné viditelné potížím s vykreslováním.
+Použijte stejný postup jako v rámci [předávacího ověřování pro živé události](#pass-through-live-event-verification) s výjimkou kroku 11. <br/>Místo 10 minut spusťte živý kodér po dobu jednoho týdne nebo déle. Pomocí přehrávače, jako je například [Azure Media Player](https://aka.ms/azuremediaplayer) , Sledujte živé streamování v čase (nebo archivovaný Asset), abyste zajistili, že přehrávání nemá žádné viditelné histogramu.
 
-### <a name="email-your-recorded-settings"></a>Zaznamenané nastavení e-mailu
+### <a name="email-your-recorded-settings"></a>Poslat zaznamenaná nastavení e-mailem
 
-Nakonec zaznamenané nastavení e-mailu a live parametry archivu služby Azure Media Services na amslived@microsoft.com jako oznámení, že se prošly všechny kontroly připravenosti ověření. Také vaše kontaktní informace pro všechny zpracování. Obraťte se na tým Azure Media Services s jakékoliv otázky týkající se tohoto procesu.
+Nakonec odešlete e-mailem zaznamenaná nastavení a parametry živého archivu do Azure Media Services amshelp@microsoft.com jako oznámení, že prošly všechny kontroly pro vlastní ověření. Také zahrňte kontaktní informace pro jakékoliv následné zprávy. Můžete se obrátit na tým Azure Media Services s případnými dotazy týkajícími se tohoto procesu.
 
 ## <a name="next-steps"></a>Další postup
 
-[Živé streamování pomocí služby Media Services v3](live-streaming-overview.md)
+[Živé streamování s Media Services V3](live-streaming-overview.md)

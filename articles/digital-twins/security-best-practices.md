@@ -1,77 +1,77 @@
 ---
-title: Pochopení osvědčených postupů zabezpečení digitální dvojče Azure | Dokumentace Microsoftu
-description: Digitální dvojče osvědčené postupy zabezpečení Azure.
+title: Porozumění osvědčeným postupům zabezpečení Azure pro digitální vlákna | Microsoft Docs
+description: Osvědčené postupy zabezpečení v Azure jsou vyzdvojené.
 author: kingdomofends
 manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 01/15/2019
+ms.date: 07/08/2019
 ms.author: v-adgera
-ms.openlocfilehash: 1d7194beeac1f6f0034738c842e0fc3a58668a13
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 64a980ba8ed581b3cad369951220d47baf9e17ab
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65966955"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67849286"
 ---
 # <a name="security-best-practices"></a>Osvědčené postupy zabezpečení
 
-Zabezpečení Azure digitální dvojče umožňuje přesné přístup ke konkrétním prostředkům a akcím v grafu IoT. Provádí se prostřednictvím detailní role a oprávnění správy volá [řízení přístupu na základě rolí](./security-role-based-access-control.md).
+Zabezpečení digitálních vláken Azure umožňuje přesný přístup ke konkrétním prostředkům a akcím v grafu IoT. K tomu připadá prostřednictvím podrobné správy rolí a oprávnění označovaného jako [řízení přístupu na základě role](./security-role-based-access-control.md).
 
-Azure digitální dvojče používá také další funkce zabezpečení, které se nacházejí ve službě Azure IoT, včetně služby Azure Active Directory (Azure AD). Z tohoto důvodu, konfiguraci a zabezpečení aplikace založené na Azure digitální dvojče využívá mnoho stejných [postupy zabezpečení Azure IoT](../iot-fundamentals/iot-security-best-practices.md) aktuálně doporučené.
+Funkce digitálních vláken Azure používá i další funkce zabezpečení, které jsou k dispozici v Azure IoT, včetně Azure Active Directory (Azure AD). Z tohoto důvodu se při konfiguraci a zabezpečování aplikací založených na digitálních pročinnostech Azure používá celá řada stejných [postupů zabezpečení Azure IoT](../iot-fundamentals/iot-security-best-practices.md) , které se v tuto chvíli doporučují.
 
-Tento článek shrnuje klíčové doporučené postupy.
+Tento článek shrnuje klíčové osvědčené postupy, které je potřeba sledovat.
 
 > [!IMPORTANT]
-> K zajištění maximální zabezpečení pro váš prostor IoT, zkontrolujte další bezpečnostní prostředky. Ujistěte se, že zahrnete dodavatele vašeho zařízení.
+> Pokud chcete zajistit maximální zabezpečení prostoru IoT, Projděte si další zdroje zabezpečení. Ujistěte se, že jste zahrnuli vaše dodavatele zařízení.
 
 ## <a name="iot-security-best-practices"></a>Osvědčené postupy zabezpečení IoT
 
-Některé klíče postupy bezpečně zabezpečit zařízení IoT zahrnují:
+Mezi klíčové postupy pro bezpečné zabezpečení vašich zařízení IoT patří:
 
 > [!div class="checklist"]
-> * Zabezpečení všech zařízení, která je připojen k IoT prostoru způsobem odolný proti manipulaci.
-> * Omezte role jednotlivých zařízení, senzorů a osoby v rámci adresního prostoru vaše IoT. Pokud dojde k narušení, je minimalizovat vliv.
-> * Vezměte v úvahu potenciální využívání zařízení IP adres, filtrování a portu omezení.
-> * Omezit šířku pásma vstupně-výstupní operace a zařízení pro zlepšení výkonu. Omezení četnosti můžete zlepšit zabezpečení zabráněním útoky s cílem odepření služeb.
-> * Zajištění aktuálnosti firmwaru zařízení.
+> * Zabezpečte všechna zařízení, která jsou připojená k prostoru IoT v případě úmyslného ověření.
+> * Omezte role všech zařízení, senzorů a osob v rámci vašeho prostoru IoT. Pokud dojde k ohrožení zabezpečení, efekt se minimalizuje.
+> * Vezměte v úvahu potenciální využívání filtrování IP adres a omezení portů zařízení.
+> * Omezí vstupně-výstupní operace a šířku pásma zařízení pro zlepšení výkonu. Omezení rychlosti může zlepšit zabezpečení tím, že se zabrání útokům DOS (Denial-of-Service).
+> * Udržujte firmware zařízení v aktuálním stavu.
 
-Některé klíče postupy k zabezpečení bezpečně prostorem IoT patří:
+Mezi klíčové postupy pro bezpečné zabezpečení prostoru IoT patří:
 
 > [!div class="checklist"]
-> * Šifrovat data uložená, uložené nebo trvalé.
-> * Vyžadovat hesla nebo klíče pravidelně změnit nebo aktualizovat.
-> * Důkladným omezením přístupu a oprávnění rolí. V části [osvědčené postupy pro řízení přístupu na základě Role](#rbac) níže.
-> * Pomocí výkonných šifrování. Vyžadovat dlouhá hesla a používají zabezpečené protokoly a dvojúrovňového ověřování.
+> * Šifrování uložených, uložených nebo trvalých dat.
+> * Vyžadovat, aby hesla nebo klíče byly pravidelně měněny nebo aktualizovány.
+> * Pozorně omezte přístup a oprávnění podle role. Další informace najdete v části [osvědčené postupy řízení přístupu založené na rolích](#rbac) níže.
+> * Používejte výkonné šifrování. Vyžadovat dlouhá hesla a používat zabezpečené protokoly a dvojúrovňové ověřování.
 
-[Monitorování](./how-to-configure-monitoring.md) prostředky IoT a sledujte odlehlé hodnoty, hrozby nebo parametry prostředků, které spadají mimo rozsah běžné operace. Pomocí Azure Analytics pro monitorování správy.
+[Monitorování](./how-to-configure-monitoring.md) Prostředky IoT, které můžete sledovat pro odlehlé hodnoty, hrozby nebo parametry prostředků, které spadají mimo rozsah běžné operace. Využijte Azure Analytics ke správě monitorování.
 
 > [!NOTE]
-> Další informace o monitorování a zpracování událostí naleznete v tématu [směrování událostí a zpráv pomocí Azure digitální dvojče](./concepts-events-routing.md).
+> Další informace o zpracování a monitorování událostí najdete v tématu [události a zprávy směrování pomocí digitálních vláken Azure](./concepts-events-routing.md).
 
-## <a name="azure-active-directory-best-practices"></a>Osvědčené postupy pro Azure Active Directory
+## <a name="azure-active-directory-best-practices"></a>Azure Active Directory osvědčené postupy
 
-Azure digitální dvojče používá Azure Active Directory k ověřování uživatelů a ochraně aplikací. Azure Active Directory podporuje ověřování pro širokou škálu moderní architektury. Všechny založených na standardních oborových protokolů, jako jsou OAuth 2.0 nebo OpenID Connect. Pár klíčů postupy zabezpečení IoT prostoru pro Azure Active Directory jsou následující:
+Digitální vlákna Azure používá Azure Active Directory k ověřování uživatelů a ochraně aplikací. Azure Active Directory podporuje ověřování pro nejrůznější moderní architektury. Jsou založené na standardních protokolech, jako je OAuth 2,0 nebo OpenID Connect. Mezi nejdůležitější postupy zabezpečení prostoru IoT pro Azure Active Directory patří:
 
 > [!div class="checklist"]
-> * Store klíčů nebo tajných kódů aplikace Azure Active Directory v zabezpečeném umístění, jako například [Azure Key Vault](https://azure.microsoft.com/services/key-vault/).
-> * Použít certifikát vydaný důvěryhodný [certifikační autorita](../active-directory/authentication/active-directory-certificate-based-authentication-get-started.md) místo tajných kódů aplikace k ověření.
-> * Omezit obor přístupu pro token OAuth 2.0.
-> * Zkontrolujte dobu, kterou je token platný a zda zůstane platný token.
-> * Nastavte odpovídající délky času, které jsou platné pro tokeny.
-> * Aktualizujte vypršení platnosti tokenů.
+> * Ukládejte Azure Active Directory tajných klíčů a klíčů aplikace v zabezpečeném umístění, jako je například [Azure Key Vault](https://azure.microsoft.com/services/key-vault/).
+> * Použijte certifikát vydaný důvěryhodnou [certifikační autoritou](../active-directory/authentication/active-directory-certificate-based-authentication-get-started.md) namísto ověřování tajných klíčů aplikací.
+> * Omezení rozsahu OAuth 2,0 přístupu pro token.
+> * Ověřte, že doba platnosti tokenu je platná a zda token zůstává platný.
+> * Nastavte odpovídající délkové doby, pro které jsou tokeny platné.
+> * Aktualizujte tokeny, jejichž platnost vypršela.
 
 <div id="rbac"></div>
 
-## <a name="role-based-access-control-best-practices"></a>Osvědčené postupy pro řízení přístupu na základě role
+## <a name="role-based-access-control-best-practices"></a>Osvědčené postupy řízení přístupu založené na rolích
 
 [!INCLUDE [digital-twins-rbac-best-practices](../../includes/digital-twins-rbac-best-practices.md)]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* Další informace o osvědčených postupech pro Azure IoT, [osvědčené postupy zabezpečení IoT](../iot-fundamentals/iot-security-best-practices.md).
+* Další informace o osvědčených postupech pro Azure IoT najdete v článku [osvědčené postupy zabezpečení IoT](../iot-fundamentals/iot-security-best-practices.md).
 
-* Další informace o řízení přístupu na základě rolí najdete v článku [řízení přístupu na základě rolí](./security-role-based-access-control.md).
+* Další informace o řízení přístupu na základě rolí najdete v tématu [řízení přístupu na základě role](./security-role-based-access-control.md).
 
-* Další informace o ověřování najdete v článku [ověřování pomocí rozhraní API](./security-authenticating-apis.md).
+* Pokud se chcete dozvědět o ověřování, přečtěte si téma [ověřování pomocí rozhraní API](./security-authenticating-apis.md).

@@ -13,15 +13,15 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 06/03/2019
 ms.author: mbullwin
-ms.openlocfilehash: cdaae4e539d5216cf4950c15349f01b54ae8acd2
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: 5e42c36e6a321775e6017a2318857e20b7dcaf0d
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66496376"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67876464"
 ---
 # <a name="what-is-application-insights"></a>Co je Application Insights?
-Application Insights je rozšiřitelná služba pro správu výkonu aplikací (APM). Je určena webovým vývojářům na více platformách. Slouží k monitorování živé webové aplikace. Automaticky zjišťuje anomálie ve výkonu. Obsahuje výkonné analytické nástroje pro diagnostiku problémů a pomáhá porozumět, jak vlastně uživatelé vaši aplikaci používají.  Je navržená tak, aby pomáhala průběžně vylepšovat výkon a možnosti využití. Funguje na nejrůznějších platformách, včetně .NET, Node.js a platformě Java EE určený pro aplikace hostované v místním, hybridním nebo jakémkoli veřejném cloudu. Integruje se s vaším procesem DevOps a obsahuje body připojení k celé řadě dalších vývojářských nástrojů. Díky integraci s Visual Studio App Center může monitorovat a analyzovat telemetrii z mobilních aplikací.
+Application Insights je rozšiřitelná služba pro správu výkonu aplikací (APM). Je určena webovým vývojářům na více platformách. Slouží k monitorování živé webové aplikace. Automaticky zjišťuje anomálie ve výkonu. Obsahuje výkonné analytické nástroje pro diagnostiku problémů a pomáhá porozumět, jak vlastně uživatelé vaši aplikaci používají.  Je navržená tak, aby pomáhala průběžně vylepšovat výkon a možnosti využití. Funguje pro aplikace na nejrůznějších platformách, jako jsou .NET, Node. js a Java EE, hostované místně, hybridním nebo jakýmkoli veřejným cloudem. Integruje se s vaším procesem DevOps a obsahuje body připojení k celé řadě dalších vývojářských nástrojů. Díky integraci s Visual Studio App Center může monitorovat a analyzovat telemetrii z mobilních aplikací.
 
 ## <a name="how-does-application-insights-work"></a>Jak Application Insights funguje?
 Do aplikace nainstalujete malý instrumentační balíček a vytvoříte prostředek Application Insights na webu Microsoft Azure Portal. Instrumentace monitoruje vaši aplikaci a odesílá telemetrická data na portál. (Aplikace se dá spustit kdekoli, nemusí být hostovaná v Azure.)
@@ -44,7 +44,7 @@ Služba Application Insights je zaměřená na vývojový tým. Pomáhá pochopi
 
 * **Frekvence požadavků, doby odezvy a míra selhání** – Zjistěte, které stránky jsou nejoblíbenější a v kterou denní dobu a kde jsou vaši uživatelé. Zjistíte, která stránka si vede nejlépe. Pokud se při zvýšení počtu požadavků zvýší i doba odezvy a míra selhání, máte pravděpodobně potíže s prostředky. 
 * **Míra závislosti, doby odezvy a míra selhání** – Zjistěte, jestli vás nezpomalují externí služby.
-* **Výjimky** – analýza souhrnné statistiky nebo vyberte konkrétní instance a přejít k podrobnostem trasování zásobníku a souvisejících požadavcích. Hlásí se výjimky serveru i prohlížeče.
+* **Výjimky** – analyzuje agregované statistiky nebo si vyberou konkrétní instance a podrobí se k trasování zásobníku a souvisejícím žádostem. Hlásí se výjimky serveru i prohlížeče.
 * **Zobrazení a načítání stránek** – Tyto informace hlásí prohlížeče uživatelů.
 * **Volání AJAX** z webových stránek – frekvence, doby odezvy a míry selhání.
 * **Počty uživatelů a relací**.
@@ -79,7 +79,7 @@ Data se dají prozkoumávat mnoha způsoby. Podívejte se na tyto články:
 ### <a name="monitor"></a>Monitorování
 Nainstalujte Application Insights ve vaší aplikaci, nastavte [webové testy dostupnosti](../../azure-monitor/app/monitor-web-app-availability.md) a:
 
-* Výchozí rezervace [řídicí panel aplikací](../../azure-monitor/app/overview-dashboard.md) pro vaši týmovou místnost a sledujte zatížení, rychlost odezvy a výkon vašich závislostí, načtení stránek a volání AJAX.
+* Podívejte se na výchozí [řídicí panel aplikace](../../azure-monitor/app/overview-dashboard.md) pro svou týmovou místnost, abyste měli přehled o zatížení, odezvě a výkonu vašich závislostí, načtení stránek a voláních AJAX.
 * Zjistěte, které požadavky jsou nejpomalejší a u kterých nejčastěji dochází k selhání.
 * Při nasazování nové verze sledujte [živý datový proud](../../azure-monitor/app/live-stream.md), abyste se o případném snížená výkonu dozvěděli okamžitě.
 
@@ -87,7 +87,7 @@ Nainstalujte Application Insights ve vaší aplikaci, nastavte [webové testy do
 Když dostanete výstrahu nebo zjistíte problém:
 
 * Posuďte, kolika uživatelů se top týká.
-* Dejte selhání do souvislosti s výjimkami, voláními závislosti a trasováními.
+* Proveďte korelaci selhání s výjimkami, voláními závislostí a trasování.
 * Prozkoumejte profiler, snímky, výpisy zásobníků a protokoly trasování.
 
 ### <a name="build-measure-learn"></a>Vytváření, měření a učení
@@ -102,23 +102,25 @@ Application Insights je jedna z mnoha služeb hostovaných v Microsoft Azure. Od
 
 Existuje několik způsobů, jak začít. Použijte ten, který vám nejvíce vyhovuje. K ostatním se můžete vrátit později.
 
-* **Během spuštění: Instrumentujte vaši webové aplikace na serveru.** Ideální pro aplikace, které jsou už nasazené. Vyhněte se jakýmkoli aktualizacím kódu.
-  * [**Aplikace ASP.NET hostované ve službě IIS místně nebo na virtuálním počítači**](../../azure-monitor/app/monitor-performance-live-website-now.md)
-  * [**Technologie ASP.NET nebo ASP.NET Core aplikacemi hostovanými na Azure Web Apps**](../../azure-monitor/app/azure-web-apps.md)
-* **Během vývoje: Přidejte Application Insights do vašeho kódu.** Můžete přizpůsobit shromažďování telemetrie a odesílání další telemetrické údaje.
-  * [Aplikace ASP.NET](../../azure-monitor/app/asp-net.md)
-  * [Aplikace ASP.NET Core](../../azure-monitor/app/asp-net-core.md)
+* **Během spuštění: Instrumentujte vaši webové aplikace na serveru.** Ideální pro aplikace, které jsou již nasazeny. Vyhněte se jakýmkoli aktualizacím kódu.
+  * [**ASP.NET nebo ASP.NET Core aplikace hostované v Azure Web Apps**](../../azure-monitor/app/azure-web-apps.md)
+  * [**ASP.NET aplikací hostovaných ve službě IIS na virtuálním počítači Azure nebo v sadě Azure Virtual Machine scaleing**](../../azure-monitor/app/azure-vm-vmss-apps.md)
+  * [**ASP.NET aplikací hostovaných na místním virtuálním počítači IIS**](../../azure-monitor/app/monitor-performance-live-website-now.md)
+* **Během vývoje: Přidejte Application Insights do vašeho kódu.** Umožňuje přizpůsobit shromažďování telemetrie a odesílat další telemetrie.
+  * [ASP.NET aplikace](../../azure-monitor/app/asp-net.md)
+  * [ASP.NET Core aplikací](../../azure-monitor/app/asp-net-core.md)
   * [Konzolové aplikace .NET](../../azure-monitor/app/console.md)
   * [Java](../../azure-monitor/app/java-get-started.md)
   * [Node.js](../../azure-monitor/app/nodejs.md)
   * [Jiné platformy](../../azure-monitor/app/platforms.md)
-* **[Instrumentace webových stránek](../../azure-monitor/app/javascript.md)**  pro zobrazení stránek, AJAX a další telemetrie na straně klienta.
+* **[Instrumentujte webové stránky](../../azure-monitor/app/javascript.md)** pro zobrazení stránky, AJAX a další telemetrie na straně klienta.
 * **[Analýza využití mobilních aplikací](../../azure-monitor/learn/mobile-center-quickstart.md)** díky integraci s Visual Studio App Center.
 * **[Testy dostupnosti](../../azure-monitor/app/monitor-web-app-availability.md)** – Příkazem ping z našich serverů pravidelně testujte váš web.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Začínáme při spuštění:
 
+* [Virtuální počítače Azure a škálování sady virtuálních počítačů Azure – aplikace hostované službou IIS](../../azure-monitor/app/azure-vm-vmss-apps.md)
 * [Server IIS](../../azure-monitor/app/monitor-performance-live-website-now.md)
 * [Azure Web Apps](../../azure-monitor/app/azure-web-apps.md)
 
@@ -131,7 +133,7 @@ Začínáme při vývoji:
 
 ## <a name="support-and-feedback"></a>Podpora a zpětná vazba
 * Otázky a problémy:
-  * [Řešení potíží][qna]
+  * [Odstraňování potíží][qna]
   * [Fórum MSDN](https://social.msdn.microsoft.com/Forums/vstudio/home?forum=ApplicationInsights)
   * [StackOverflow](https://stackoverflow.com/questions/tagged/ms-application-insights)
 * Vaše návrhy:
@@ -141,9 +143,9 @@ Začínáme při vývoji:
 
 ## <a name="videos"></a>Videa
 
-- Externí video: [konfigurace Application Insights s aplikací v ASP.NET](https://www.youtube.com/watch?v=blnGAVgMAfA).
-- Externí video: [konfigurace Application Insights pomocí ASP.NET Core a Visual Studio](https://www.youtube.com/watch?v=NoS9UhcR4gA&t).
-- Externí video: [konfigurace Application Insights pomocí ASP.NET Core a Visual Studio Code](https://youtu.be/ygGt84GDync).
+- Externí video: [konfigurace Application Insights s využitím aplikace ASP.NET](https://www.youtube.com/watch?v=blnGAVgMAfA)
+- Externí video: [konfigurace Application Insights s využitím ASP.NET Core a sady Visual Studio](https://www.youtube.com/watch?v=NoS9UhcR4gA&t).
+- Externí video: [konfigurace Application Insights s využitím ASP.NET Core a Visual Studio Code](https://youtu.be/ygGt84GDync).
 
 <!--Link references-->
 

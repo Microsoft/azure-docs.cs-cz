@@ -1,70 +1,70 @@
 ---
-title: Azure partnerů a zákazníků využití attribution | Azure Marketplace
-description: Přehled o tom, jak sledovat využití ze strany zákazníků pro řešení Azure Marketplace
+title: Přidělení údajů o partnerovi a využití zákazníky v Azure | Azure Marketplace
+description: Přehled toho, jak sledovat zákaznickou spotřebu Azure Marketplace řešení
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: yijenj
 ms.service: marketplace
 ms.topic: article
 ms.date: 11/17/2018
-ms.author: yijenj
-ms.openlocfilehash: 45d575488db8d740069fba961203842899024747
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: pabutler
+ms.openlocfilehash: fa0a88ce3f74c20ab36931a6a78f8265bdb9d8be
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66807194"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67876245"
 ---
 # <a name="azure-partner-customer-usage-attribution"></a>Přisuzování využití ze strany zákazníků partnerům Azure
 
-Jako partner softwaru pro Azure vaše řešení nevyžaduje komponenty Azure nebo, je nutné nasadit přímo na infrastruktuře Azure. Zákazníci, kteří nasazení partnerského řešení a vytvořit svoje vlastní prostředky Azure můžete těžké získat přehled o stavu nasazení a získat optická dopad na Azure růst. Když přidáte vyšší úroveň viditelnosti, bylo v souladu s prodejním týmům Microsoftu a získáte kredit ve výši programy partnera společnosti Microsoft.
+Jako softwarový partner pro Azure vaše řešení vyžadují součásti Azure nebo musí být nasazeny přímo v infrastruktuře Azure. Zákazníci, kteří nasazují Partnerské řešení a zřídí vlastní prostředky Azure, můžou najít obtížné získat přehled o stavu nasazení a dostat se do dopadu na růst Azure. Když přidáte vyšší úroveň viditelnosti, zarovnáte se s prodejními týmy Microsoftu a získáte kredit pro partnerské programy Microsoftu.
 
-Microsoft teď nabízí způsob, jak partnerů lépe sledovat využití Azure pro zákaznická nasazení softwaru na Azure. Nová metoda používá Azure Resource Manageru můžete orchestrovat nasazení služby Azure.
+Microsoft teď nabízí metodu, která pomáhá partnerům lépe sledovat využití Azure zákaznických nasazení jejich softwaru v Azure. Nová metoda používá Azure Resource Manager k orchestraci nasazení služeb Azure.
 
-Jako partner Microsoftu můžete přidružit využití Azure s jakýmikoli prostředky Azure, které zřizujete jménem zákazníka. Můžete formulář přidružení prostřednictvím Azure Marketplace, rychlý start úložiště, privátní úložiště GitHub a zapojení zákazníků od vyhrazeného pracovníka. Zákazník využití attribution podporuje tři možnosti nasazení:
+Jako partner Microsoftu můžete k využití Azure přidružit všechny prostředky Azure, které zřídíte jménem zákazníka. Přidružení můžete vytvořit prostřednictvím Azure Marketplace, úložiště pro rychlé zprovoznění, privátních úložišť GitHub a zapojení zákazníka na jednu možnost. Označení zákaznického využití podporuje tři možnosti nasazení:
 
-- Šablony Azure Resource Manageru: Partneři mohou pomocí šablon Resource Manageru k nasazení služeb Azure ke spuštění softwaru partnera. Partneři můžete vytvořit šablonu Resource Manageru pro definování infrastrukturu a konfiguraci jejich řešení Azure. Šablony Resource Manageru umožňuje vám a vašim zákazníkům k nasazení svého řešení v průběhu životního cyklu. Máte jistotu, že se prostředky nasadí konzistentně.
-- Rozhraní API Azure Resource Manageru: Partneři mohou volat rozhraní API Resource Manageru přímo k nasazení šablony Resource Manageru nebo ke generování volání rozhraní API přímo zřídit služby Azure.
-- Terraform: Partneři slouží k nasazení šablony Resource Manageru nebo přímo nasadit služby Azure cloud orchestrátor, jako je Terraformu.
+- Šablony Azure Resource Manager: Partneři můžou pomocí Správce prostředků šablon nasadit služby Azure pro spouštění softwaru partnera. Partneři můžou vytvořit šablonu Správce prostředků k definování infrastruktury a konfigurace jejich řešení Azure. Šablona Správce prostředků umožňuje vašim zákazníkům nasadit vaše řešení v celém životním cyklu. Máte jistotu, že se prostředky nasazují v konzistentním stavu.
+- Rozhraní API pro Azure Resource Manager: Partneři můžou rozhraní API pro Správce prostředků volat přímo k nasazení Správce prostředků šablony nebo pro generování volání rozhraní API, která přímo zřídí služby Azure.
+- Terraformu Partneři můžou použít Cloud Orchestrator, jako je Terraformu, k nasazení šablony Správce prostředků nebo nasazení služeb Azure přímo.
 
-Využití attribution zákazníků je pro nové nasazení a nepodporuje označování stávající prostředky, které jsou už nasazené.
+Přidělení zákaznického využití je pro nové nasazení a nepodporuje označení existujících prostředků, které už byly nasazené.
 
-Attribution využití zákazníky je vyžadován na [aplikace Azure](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/azure-applications/cpp-azure-app-offer): nabídka šablony řešení publikovaných na webu Azure Marketplace.
+V [aplikaci Azure](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/azure-applications/cpp-azure-app-offer)se vyžaduje označení zákaznického využívání: nabídka šablon řešení se publikovala do Azure Marketplace.
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="use-resource-manager-templates"></a>Použití šablon Resource Manageru
-Mnoho partnerská řešení jsou nasazené na předplatné zákazníka pomocí šablon Resource Manageru. Pokud máte šablony Resource Manageru, který je dostupný v Tržišti Azure Marketplace, na Githubu nebo jako rychlý start, by měl být přímočaré procesu úpravy šablony pro povolení attribution využití zákazníka.
+Mnohé z partnerských řešení se nasazují v rámci předplatného zákazníka pomocí Správce prostředků šablon. Pokud máte šablonu Správce prostředků, která je k dispozici v Azure Marketplace, na GitHubu nebo v rychlém startu, proces změny šablony tak, aby bylo umožněno přidělení zákaznického využití, by mělo být rovné.
 
-Další informace o vytváření a publikování šablon řešení najdete v tématu
+Další informace o vytváření a publikování šablon řešení najdete v tématu.
 
-* [Vytvoření a nasazení první šablony Resource Manageru](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal).
-* [Nabídka Azure aplikace](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/azure-applications/cpp-azure-app-offer).
-* Video: [Vytváření řešení šablony a spravované aplikace pro Azure Marketplace](https://channel9.msdn.com/Events/Build/2018/BRK3603).
+* [Vytvořte a nasaďte první šablonu správce prostředků](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal).
+* [Nabídka aplikací Azure](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/azure-applications/cpp-azure-app-offer)
+* Video: [Sestavování šablon řešení a spravovaných aplikací pro Azure Marketplace](https://channel9.msdn.com/Events/Build/2018/BRK3603).
 
 
-## <a name="add-a-guid-to-your-template"></a>Přidat identifikátor GUID do šablony
+## <a name="add-a-guid-to-your-template"></a>Přidání identifikátoru GUID do šablony
 
-Chcete-li přidat globálně jedinečný identifikátor (GUID), provedete jeden úpravy souboru hlavní šablony:
+Chcete-li přidat globálně jedinečný identifikátor (GUID), proveďte jednu úpravu souboru hlavní šablony:
 
-1. [Vytvořit GUID](#create-guids) pomocí navrhované metody a [zaregistrovat GUID](#register-guids-and-offers).
+1. [Vytvořte identifikátor GUID](#create-guids) pomocí navrhované metody a zaregistrujte [identifikátor GUID](#register-guids-and-offers).
 
-1. Otevřete šablonu Resource Manageru.
+1. Otevřete šablonu Správce prostředků.
 
-1. Přidáte nový prostředek v souboru hlavní šablony. Prostředek musí být v **mainTemplate.json** nebo **azuredeploy.json** soubor pouze a ne v žádné vnořené nebo propojené šablony.
+1. Přidejte nový prostředek do hlavního souboru šablony. Prostředek musí být v souboru **mainTemplate. JSON** nebo **azuredeploy. JSON** , a ne v žádné vnořené nebo propojené šabloně.
 
-1. Zadejte hodnotu GUID po **pid -** předpona (například pid-eb7927c8-dd66-43e1-b0cf-c346a422063).
+1. Zadejte hodnotu identifikátoru GUID za předponou **PID-** prefix (např. PID-eb7927c8-dd66-43e1-b0cf-c346a422063).
 
-1. Zkontrolujte šablonu pro všechny chyby.
+1. V šabloně vyhledejte případné chyby.
 
-1. Znovu publikujte šablony v příslušné úložiště.
+1. Znovu publikujte šablonu v příslušných úložištích.
 
-1. [Ověření úspěšné identifikátor GUID v nasazení šablony](#verify-the-guid-deployment).
+1. [Ověřte úspěch identifikátoru GUID v nasazení šablony](#verify-the-guid-deployment).
 
-### <a name="sample-resource-manager-template-code"></a>Kód šablony Resource Manageru ukázkový
+### <a name="sample-resource-manager-template-code"></a>Ukázka kódu Správce prostředků šablony
 
-Pokud chcete povolit sledování prostředků pro vaši šablonu, budete muset přidat následující dalších prostředků v části prostředky. Zkontrolujte, zda chcete-li změnit následující vzorový kód s vlastním vstupů při přidání do souboru hlavní šablony.
-Prostředek musí být přidán do **mainTemplate.json** nebo **azuredeploy.json** soubor pouze a ne v žádné vnořené nebo propojené šablony.
+Chcete-li povolit sledování prostředků pro šablonu, je třeba přidat následující další prostředek do části prostředky. Nezapomeňte prosím, abyste při přidávání do hlavního souboru šablony upravili následující vzorový kód s vlastními vstupy.
+Prostředek se musí přidat jenom v souboru **mainTemplate. JSON** nebo **azuredeploy. JSON** , a ne v žádné vnořené nebo propojené šabloně.
 
 ```
 // Make sure to modify this sample code with your own inputs where applicable
@@ -84,52 +84,52 @@ Prostředek musí být přidán do **mainTemplate.json** nebo **azuredeploy.json
 } // remove all comments from the file when complete
 ```
 
-## <a name="use-the-resource-manager-apis"></a>Použití rozhraní API Resource Manageru
+## <a name="use-the-resource-manager-apis"></a>Použití rozhraní API pro Správce prostředků
 
-V některých případech můžete chtít volat přímo proti rozhraní REST API Resource Manageru k nasazení služby Azure. [Azure podporuje více sad SDK](https://docs.microsoft.com/azure/#pivot=sdkstools) umožňující těchto volání. Můžete použít jednu ze sad SDK nebo volání rozhraní REST API přímo k nasazení prostředků.
+V některých případech můžete chtít volat přímo proti Správce prostředků rozhraní REST API pro nasazení služeb Azure. [Azure podporuje několik sad SDK](https://docs.microsoft.com/azure/#pivot=sdkstools) , aby tato volání mohla povolit. Můžete použít jednu ze sad SDK nebo volat rozhraní REST API přímo k nasazení prostředků.
 
-Pokud používáte šablonu Resource Manageru, by mělo být označení řešení podle pokynů, jak je popsáno výše. Pokud nepoužíváte šablony Resource Manageru a vytvoření přímého volání rozhraní API, můžete stále označit nasazení tak, aby přidružit využití prostředků Azure.
+Pokud používáte šablonu Správce prostředků, měli byste označit své řešení podle pokynů popsaných výše. Pokud nepoužíváte šablonu Správce prostředků a provádíte Přímá volání rozhraní API, můžete si i nadále označit nasazení, aby bylo možné přidružit využití prostředků Azure.
 
-### <a name="tag-a-deployment-with-the-resource-manager-apis"></a>Označení nasazení pomocí rozhraní API Resource Manageru
+### <a name="tag-a-deployment-with-the-resource-manager-apis"></a>Označení nasazení pomocí Správce prostředků rozhraní API
 
-Umožňuje využití ze strany zákazníků attribution při návrhu vaše volání rozhraní API, zahrňte identifikátor GUID hlavičky uživatelského agenta v požadavku. Přidejte identifikátor GUID pro každou nabídku nebo SKU. Formátovací řetězec se **pid -** Předpona a zahrnují GUID generované partnera. Tady je příklad formát identifikátoru GUID pro vložení do uživatelského agenta:
+Pokud chcete při návrhu volání rozhraní API povolit jeho přihlašování, uveďte v žádosti identifikátor GUID v hlavičce uživatelského agenta. Přidejte identifikátor GUID pro každou nabídku nebo SKU. Naformátujte řetězec pomocí předpony **PID-** prefix a ZAHRŇTE identifikátor GUID generovaný partnerem. Tady je příklad formátu identifikátoru GUID pro vložení do uživatelského agenta:
 
-![Příklad formátu identifikátoru GUID](media/marketplace-publishers-guide/tracking-sample-guid-for-lu-2.PNG)
-
-> [!Note]
-> Formát řetězce je důležité. Pokud **pid -** předpona není zahrnut, není možné zadávat dotazy na data. Různé sady SDK sledovat odlišně. Tuto metodu implementovat, najdete v tématu podporu a sledování přístupu pro vaše preferované Azure SDK.
-
-#### <a name="example-the-python-sdk"></a>Příklad: Python SDK
-
-Pro Python, použijte **config** atribut. Atribut lze přidat pouze do UserAgent. Tady je příklad:
-
-![Přidat atribut pro uživatelského agenta](media/marketplace-publishers-guide/python-for-lu.PNG)
+![Příklad formátu GUID](media/marketplace-publishers-guide/tracking-sample-guid-for-lu-2.PNG)
 
 > [!Note]
-> Přidejte atribut pro každého klienta. Neexistuje žádné globální statické konfigurace. Může být označení objektu factory klienta k Ujistěte se, že se ke sledování každého klienta. Další informace najdete v tomto [klienta factory ukázka na Githubu](https://github.com/Azure/azure-cli/blob/7402fb2c20be2cdbcaa7bdb2eeb72b7461fbcc30/src/azure-cli-core/azure/cli/core/commands/client_factory.py#L70-L79).
+> Formát řetězce je důležitý. Pokud není k dispozici předpona **PID-** prefix, není možné zadat dotaz na data. Různé sady SDK sledují různě. Pokud chcete implementovat tuto metodu, přečtěte si přístup k podpoře a sledování pro preferovanou sadu Azure SDK.
 
-#### <a name="tag-a-deployment-by-using-the-azure-powershell"></a>Označení nasazení pomocí Azure Powershellu
+#### <a name="example-the-python-sdk"></a>Příklad: Sada Python SDK
 
-Pokud provádíte nasazení prostředků pomocí Azure Powershellu, připojte vaši GUID pomocí následující metody:
+Pro Python použijte atribut **config** . Atribut lze přidat pouze k vlastnosti UserAgent. Tady je příklad:
+
+![Přidání atributu do uživatelského agenta](media/marketplace-publishers-guide/python-for-lu.PNG)
+
+> [!Note]
+> Přidejte atribut pro každého klienta. Neexistuje žádná globální statická konfigurace. Můžete označit objekt pro vytváření klienta, aby se ujistil, že každý klient sleduje sledování. Další informace najdete v tématu tato [Ukázka klienta v GitHubu](https://github.com/Azure/azure-cli/blob/7402fb2c20be2cdbcaa7bdb2eeb72b7461fbcc30/src/azure-cli-core/azure/cli/core/commands/client_factory.py#L70-L79).
+
+#### <a name="tag-a-deployment-by-using-the-azure-powershell"></a>Označení nasazení pomocí Azure PowerShell
+
+Pokud prostředky nasazujete prostřednictvím Azure PowerShell, přidejte svůj identifikátor GUID pomocí následující metody:
 
 ```powershell
 [Microsoft.Azure.Common.Authentication.AzureSession]::ClientFactory.AddUserAgent("pid-eb7927c8-dd66-43e1-b0cf-c346a422063")
 ```
 
-#### <a name="tag-a-deployment-by-using-the-azure-cli"></a>Označení nasazení pomocí rozhraní příkazového řádku Azure
+#### <a name="tag-a-deployment-by-using-the-azure-cli"></a>Označení nasazení pomocí Azure CLI
 
-Při použití rozhraní příkazového řádku Azure k připojení vašeho identifikátor GUID, nastavte **AZURE_HTTP_USER_AGENT** proměnné prostředí. Tuto proměnnou lze nastavit v rámci oboru skriptu. Můžete také nastavit proměnnou globálně pro obor prostředí:
+Když k připojení svého GUID použijete rozhraní příkazového řádku Azure CLI, nastavte proměnnou prostředí **AZURE_HTTP_USER_AGENT** . Tuto proměnnou můžete nastavit v rámci oboru skriptu. Pro rozsah prostředí můžete také nastavit proměnnou globálně:
 
 ```
 export AZURE_HTTP_USER_AGENT='pid-eb7927c8-dd66-43e1-b0cf-c346a422063'
 ```
-Další informace najdete v tématu [Azure SDK for Go](https://docs.microsoft.com/go/azure/).
+Další informace najdete v tématu [Azure SDK pro go](https://docs.microsoft.com/go/azure/).
 
 ## <a name="use-terraform"></a>Použití Terraformu
 
-Podpora pro Terraform je dostupná prostřednictvím zprostředkovatele Azure 1.21.0 uvolnit: [ https://github.com/terraform-providers/terraform-provider-azurerm/blob/master/CHANGELOG.md#1210-january-11-2019 ](https://github.com/terraform-providers/terraform-provider-azurerm/blob/master/CHANGELOG.md#1210-january-11-2019).  Tato podpora se vztahuje na všechny partnery, kteří si nasadí jejich řešení pomocí Terraformu a všechny prostředky nasazené a měří pomocí zprostředkovatele služby Azure (verze 1.21.0 nebo novější).
+Podpora pro Terraformu je dostupná prostřednictvím 1.21.0 verze poskytovatele Azure: [https://github.com/terraform-providers/terraform-provider-azurerm/blob/master/CHANGELOG.md#1210-january-11-2019](https://github.com/terraform-providers/terraform-provider-azurerm/blob/master/CHANGELOG.md#1210-january-11-2019).  Tato podpora se vztahuje na všechny partnery, kteří nasazují své řešení prostřednictvím Terraformu, a všechny nasazené prostředky a měřené poskytovatelem Azure (verze 1.21.0 nebo novější).
 
-Zprostředkovatel Azure pro Terraformu přidán nový volitelné pole s názvem [ *partner_id* ](https://www.terraform.io/docs/providers/azurerm/#partner_id) což je, kde můžete určit identifikátor GUID, který používáte pro vaše řešení pro sledování. Hodnota tohoto pole můžete také použít jako zdroj *ARM_PARTNER_ID* proměnné prostředí.
+Poskytovatel Azure pro Terraformu přidal nové volitelné pole s názvem [*partner_id*](https://www.terraform.io/docs/providers/azurerm/#partner_id) , kde můžete zadat sledovací identifikátor GUID, který používáte pro vaše řešení. Hodnota tohoto pole může být také zdrojová z proměnné prostředí *ARM_PARTNER_ID* .
 
 ```
 provider "azurerm" {
@@ -139,82 +139,82 @@ provider "azurerm" {
           # new stuff for ISV attribution
           partner_id = “xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"}
 ```
-Partneři, kteří chtějí získat jejich nasazování s využitím Terraformu sledovat využití attribution zákazníka potřebovat provést následující kroky:
+Partneři, kteří chtějí získat své nasazení prostřednictvím Terraformuu, které sledují označení zákaznického využití, musí provádět tyto akce:
 
-* Vytvořit GUID (identifikátor GUID by měl přidat pro jednotlivé nabídky nebo skladové položky)
-* Aktualizovat poskytovatele Azure k nastavení hodnoty *partner_id* na identifikátor GUID (nesmí před oprava identifikátor GUID s "pid-", stačí ji nastavit na skutečné GUID)
+* Vytvořte identifikátor GUID (identifikátor GUID by měl být přidán pro každou nabídku nebo SKU).
+* Aktualizujte svého poskytovatele Azure a nastavte hodnotu *partner_id* na GUID (neopravte GUID pomocí "PID-", stačí ho nastavit na skutečný identifikátor GUID).
 
 ## <a name="create-guids"></a>Vytvořit GUID
 
-Identifikátor GUID je jedinečný referenční číslo, které má 32 šestnáctkových číslic. Vytvořit GUID pro sledování, měli by používat GUID generator. Vytvořil tým Azure Storage [formátu identifikátoru GUID generátor](https://aka.ms/StoragePartners) , který bude e-mailem GUID ve správném formátu a lze opětovně použít napříč systémy různých sledování.
+Identifikátor GUID je jedinečné referenční číslo, které má 32 hexadecimálních číslic. Chcete-li vytvořit identifikátory GUID pro sledování, měli byste použít generátor GUID. Tým Azure Storage vytvořil [formulář generátoru GUID](https://aka.ms/StoragePartners) , který pošle e-mailem identifikátor GUID správného formátu a bude možné ho znovu použít v různých sledovacích systémech.
 
 > [!Note]
-> Důrazně doporučujeme použít [služby Azure Storage GUID generátor formuláře](https://aka.ms/StoragePartners) vytvořit váš identifikátor GUID. Další informace najdete v tématu naše [nejčastější dotazy k](#faq).
+> Důrazně doporučujeme, abyste pomocí [formuláře generátoru identifikátoru guid Azure Storage](https://aka.ms/StoragePartners) vytvořili identifikátor GUID. Další informace najdete v našich [nejčastějších dotazech](#faq).
 
-Doporučujeme že vytvořit jedinečný identifikátor GUID pro každou nabídku a distribuční kanál pro jednotlivé produkty. Můžete se rozhodnout použít jeden identifikátor GUID pro více distribučních kanálů produktu, pokud nechcete, aby vytváření sestav, který se má rozdělit.
+Pro každou nabídku a distribuční kanál pro každý produkt doporučujeme vytvořit jedinečný identifikátor GUID. Pokud nechcete, aby vytváření sestav bylo rozděleno, můžete použít jeden identifikátor GUID pro více distribučních kanálů produktu.
 
-Pokud nasadíte produktu pomocí šablony a je k dispozici na Azure Marketplace a na Githubu, můžete vytvořit a zaregistrovat 2 odlišné identifikátory GUID:
+Pokud nasadíte produkt pomocí šablony a je k dispozici na Azure Marketplace i na GitHubu, můžete vytvořit a zaregistrovat 2 jedinečné identifikátory GUID:
 
-*   Produkt A na webu Azure Marketplace
-*   Produkt A na Githubu
+*   Produkt A v Azure Marketplace
+*   Produkt A na GitHubu
 
-Vytváření sestav se provádí tak, že hodnota partnera (ID partnera společnosti Microsoft) a identifikátory GUID.
+Vytváření sestav se provádí na základě hodnoty partnera (ID partnera Microsoftu) a identifikátorů GUID.
 
-Můžete také sledovat identifikátory GUID na podrobnější úrovni jako SKU, ve kterém se tyto skladové položky varianty nabídky.
+Můžete také sledovat identifikátory GUID na podrobnější úrovni, jako je SKU, kde SKU jsou varianty nabídky.
 
-## <a name="register-guids-and-offers"></a>Zaregistrujte identifikátory GUID a nabídky
+## <a name="register-guids-and-offers"></a>Registrace identifikátorů GUID a nabídek
 
-Identifikátory GUID musí být zaregistrovaná pro povolení attribution využití zákazníka.
+Aby bylo možné povolit přidělení zákaznického využití, musí být zaregistrované identifikátory GUID.
 
-Všechny registrace pro identifikátory GUID šablony se provádějí prostřednictvím Azure Marketplace Cloud Partner Portal (CPP).
+Všechny registrace pro identifikátory GUID šablon se provádí prostřednictvím Azure Marketplace portál partnerů cloudu (CPP).
 
-Po přidání identifikátoru GUID šablony nebo uživatelský agent a zaregistrovat GUID v CPP, jsou sledovány všechna nasazení.
+Po přidání identifikátoru GUID do šablony nebo uživatelského agenta a registraci identifikátoru GUID v rámci CPP jsou sledována všechna nasazení.
 
-1. Platí pro [Azure Marketplace](https://aka.ms/listonazuremarketplace) a získejte přístup k CPP.
+1. Platí pro [Azure Marketplace](https://aka.ms/listonazuremarketplace) a získání přístupu k cpp.
 
-   * Partneři jsou potřeba [mají profil v CPP](https://docs.microsoft.com/azure/marketplace/become-publisher). Jste vyzkoušeli vypsat nabídky v Azure Marketplace nebo AppSource.
-   * Partneři mohou registrovat více identifikátorů GUID.
-   * Partneři mohou registrovat identifikátor GUID pro šablony mimo Marketplace řešení a nabídek.
+   * Partneři musí [mít profil v CPP](https://docs.microsoft.com/azure/marketplace/become-publisher). Doporučujeme zobrazit seznam nabídek v Azure Marketplace nebo AppSource.
+   * Partneři můžou registrovat víc identifikátorů GUID.
+   * Partneři můžou zaregistrovat identifikátor GUID pro šablony řešení a nabídky mimo Marketplace.
 
 1. Přihlaste se k [portál partnerů cloudu](https://cloudpartner.azure.com/).
 
-1. V pravém horním rohu vyberte ikonu vašeho účtu a pak vyberte **profilu vydavatele**.
+1. V pravém horním rohu vyberte ikonu účtu a pak vyberte **profil vydavatele**.
 
-   ![Vyberte profil vydavatele](media/marketplace-publishers-guide/guid-image-for-lu.png)
+   ![Vybrat profil vydavatele](media/marketplace-publishers-guide/guid-image-for-lu.png)
 
-1. Na **stránku profilu**vyberte **přidání sledování identifikátoru GUID.**
+1. Na **stránce profil**vyberte **Přidat identifikátor GUID sledování.**
 
-   ![Výběr možnosti Přidat sledování GUID](media/marketplace-publishers-guide/guid-how-to-add-tracking.png)
+   ![Vyberte Přidat identifikátor GUID sledování.](media/marketplace-publishers-guide/guid-how-to-add-tracking.png)
 
-1. V **sledování GUID** zadejte vaše sledování identifikátor GUID. Zadejte jenom identifikátor GUID bez **pid -** předponu. V **vlastní popis** , zadejte název nabídky nebo popis.
+1. Do pole **sledovací identifikátor GUID** zadejte identifikátor GUID sledování. Zadejte jenom identifikátor GUID bez předpony **PID-** prefix. Do pole **vlastní popis** zadejte název vaší nabídky nebo její popis.
 
    ![Stránka profilu](media/marketplace-publishers-guide/guid-dev-center-login.png)
 
-   ![Zadejte identifikátor GUID a popis nabídky](media/marketplace-publishers-guide/guid-dev-center-example.png)
+   ![Zadejte identifikátor GUID a popis nabídky.](media/marketplace-publishers-guide/guid-dev-center-example.png)
 
-1. Pokud chcete registrovat více než jeden identifikátor GUID, vyberte **přidání identifikátoru GUID sledování** znovu. Na stránce se zobrazí další pole.
+1. Pokud chcete zaregistrovat více než jeden identifikátor GUID, vyberte znovu **Přidat identifikátor GUID sledování** . Na stránce se zobrazí další pole.
 
-   ![Znovu vyberte Přidat sledování GUID](media/marketplace-publishers-guide/guid-dev-center-example-add.png)
+   ![Znovu vyberte Přidat identifikátor GUID sledování.](media/marketplace-publishers-guide/guid-dev-center-example-add.png)
 
-   ![Zadejte jiný identifikátor GUID a popis nabídky](media/marketplace-publishers-guide/guid-dev-center-example-description.png)
+   ![Zadejte jiný identifikátor GUID a popis nabídky.](media/marketplace-publishers-guide/guid-dev-center-example-description.png)
 
 1. Vyberte **Uložit**.
 
-   ![Vyberte Uložit.](media/marketplace-publishers-guide/guid-dev-center-save.png)
+   ![Vybrat Uložit](media/marketplace-publishers-guide/guid-dev-center-save.png)
 
-Po přidání identifikátoru GUID šablony nebo uživatelský agent a zaregistrovat GUID v CPP, jsou sledovány všechna nasazení.
+Po přidání identifikátoru GUID do šablony nebo uživatelského agenta a registraci identifikátoru GUID v rámci CPP jsou sledována všechna nasazení.
 
-## <a name="verify-the-guid-deployment"></a>Ověření nasazení GUID
+## <a name="verify-the-guid-deployment"></a>Ověření nasazení identifikátoru GUID
 
-Po šablonu upravit a spustíte testovací nasazení, pomocí následujícího skriptu prostředí PowerShell k načtení prostředků, které jste nasadili a označené.
+Po úpravě šablony a spuštění testovacího nasazení použijte následující skript prostředí PowerShell k načtení prostředků, které jste nasadili a označili.
 
-Skript můžete použít k ověření, že identifikátor GUID se úspěšně přidal do šablony Resource Manageru. Skript se nevztahuje na rozhraní API Resource Manageru nebo Terraformu nasazení.
+Pomocí skriptu můžete ověřit, že identifikátor GUID je úspěšně přidaný do šablony Správce prostředků. Tento skript se nevztahuje na Správce prostředků nasazení API nebo Terraformu.
 
-Přihlaste se k Azure. Vyberte předplatné, které chcete ověřit před spuštěním skriptu pro nasazení pomocí. Spusťte skript nasazení v rámci předplatného.
+Přihlaste se k Azure. Před spuštěním skriptu vyberte předplatné s nasazením, které chcete ověřit. Spusťte skript v rámci předplatného nasazení.
 
-**GUID** a **resourceGroup** název nasazení jsou povinné parametry.
+**Identifikátor GUID** a název **zdrojové** sady nasazení jsou povinné parametry.
 
-Můžete získat [původní skript](https://gist.github.com/bmoore-msft/ae6b8226311014d6e7177c5127c7eba1#file-verify-deploymentguid-ps1) na Githubu.
+[Původní skript](https://gist.github.com/bmoore-msft/ae6b8226311014d6e7177c5127c7eba1#file-verify-deploymentguid-ps1) můžete získat na GitHubu.
 
 ```powershell
 Param(
@@ -245,114 +245,114 @@ foreach ($deployment in $deployments){
 }
 ```
 
-## <a name="report"></a>Sestava
+## <a name="report"></a>Zpráva
 
-Sestavy pro zákazníka attribution využití najdete na řídicím panelu Partner Center analyzovat. ([https://partner.microsoft.com/en-us/dashboard/mpn/analytics/CPP/MicrosoftAzure](https://partner.microsoft.com/dashboard/mpn/analytics/CPP/MicrosoftAzure)). Chcete-li zobrazit sestavu, budete muset k přihlášení použijte přihlašovací údaje partnerského centra. Pokud dojde k potížím s sestavy nebo přihlášení, vytvořte žádost o podporu podle pokynů v části Podpora Get.
+Sestavu pro přidělení zákaznického využití najdete na řídicím panelu analyzovat v partnerském centru. ([https://partner.microsoft.com/en-us/dashboard/mpn/analytics/CPP/MicrosoftAzure](https://partner.microsoft.com/dashboard/mpn/analytics/CPP/MicrosoftAzure)). Pokud chcete zobrazit sestavu, musíte se přihlásit pomocí přihlašovacích údajů partnerského centra. Pokud narazíte na nějaké problémy se sestavou nebo přihlášením, vytvořte žádost o podporu podle pokynů v části získat podporu.
 
-Výběr šablony sledovány v rozevíracím seznamu Typ přidružení partnera zobrazíte sestavu.
+Kliknutím na sledovanou šablonu v rozevíracím seznamu typ přidružení partnera sestavu zobrazíte.
 
-![Sestavu využití attribution zákazníka](media/marketplace-publishers-guide/customer-usage-attribution-report.png)
+![Sestava pro přidělení zákaznického využití](media/marketplace-publishers-guide/customer-usage-attribution-report.png)
 
-## <a name="notify-your-customers"></a>Informovat vaše zákazníky
+## <a name="notify-your-customers"></a>Upozorněte vaše zákazníky
 
-Partneři by měla být podkladem zákazníků o nasazení, která používají attribution využití zákazníka. Společnosti Microsoft sestavy využití Azure, který je spojen s Tato nasazení partnerovi. Následující příklady zahrnují obsah, který můžete použít k upozornění zákazníků o tato nasazení. V příkladech nahraďte \<partnera > s názvem vaší společnosti. Partneři musí Ujistěte se, že oznámení v souladu s jejich data zásady ochrany osobních údajů a kolekce, včetně možnosti pro zákazníky, kteří mají být vyloučeny z sledování.
+Partneři by měli informovat své zákazníky o nasazeních, která používají označení zákaznického využití. Microsoft oznamuje partnerovi využití Azure, které je k těmto nasazením přidružené. Následující příklady zahrnují obsah, který můžete použít k informování zákazníků o těchto nasazeních. V příkladech nahraďte \<Partnerská > názvem vaší společnosti. Partneři by se měli ujistit, že se oznámení zarovnají se zásadami ochrany osobních údajů a kolekcí dat, včetně možností pro vyloučení zákazníků ze sledování.
 
-### <a name="notification-for-resource-manager-template-deployments"></a>Oznámení pro nasazení šablony Resource Manageru
+### <a name="notification-for-resource-manager-template-deployments"></a>Oznámení pro nasazení šablon Správce prostředků
 
-Při nasazení této šablony je schopen identifikovat instalaci Microsoft \<partnera > software s prostředky Azure, které jsou nasazeny. Společnost Microsoft si je mohla zjišťovat korelaci prostředky Azure, které se používají pro podporu tohoto softwaru. Společnost Microsoft shromažďuje tyto informace poskytnout nejlepší prostředí svoje produkty a provozovat svůj podnik. Data se shromažďují a řídí zásady ochrany osobních údajů společnosti Microsoft, které lze nalézt v https://www.microsoft.com/trustcenter.
+Když tuto šablonu nasadíte, Microsoft dokáže identifikovat instalaci \<partnerského > softwaru s nasazenými prostředky Azure. Společnost Microsoft je schopná korelovat prostředky Azure, které se používají k podpoře softwaru. Společnost Microsoft tyto informace shromažďuje, aby poskytovala co nejvíc zkušeností s produkty a pracovala s jejich podnikáním. Data se shromažďují a řídí zásadami ochrany osobních údajů od Microsoftu, které najdete na adrese https://www.microsoft.com/trustcenter.
 
-### <a name="notification-for-sdk-or-api-deployments"></a>Oznámení pro nasazení sady SDK nebo rozhraní API
+### <a name="notification-for-sdk-or-api-deployments"></a>Oznámení pro nasazení SDK nebo rozhraní API
 
-Při nasazení \<partnera > software Microsoft je schopen identifikovat instalaci \<partnera > software s prostředky Azure, které jsou nasazeny. Společnost Microsoft si je mohla zjišťovat korelaci prostředky Azure, které se používají pro podporu tohoto softwaru. Společnost Microsoft shromažďuje tyto informace poskytnout nejlepší prostředí svoje produkty a provozovat svůj podnik. Data se shromažďují a řídí zásady ochrany osobních údajů společnosti Microsoft, které lze nalézt v https://www.microsoft.com/trustcenter.
+Když nasadíte \<partnerský > software, společnost Microsoft dokáže identifikovat \<instalaci partnerského > softwaru s nasazenými prostředky Azure. Společnost Microsoft je schopná korelovat prostředky Azure, které se používají k podpoře softwaru. Společnost Microsoft tyto informace shromažďuje, aby poskytovala co nejvíc zkušeností s produkty a pracovala s jejich podnikáním. Data se shromažďují a řídí zásadami ochrany osobních údajů od Microsoftu, které najdete na adrese https://www.microsoft.com/trustcenter.
 
 ## <a name="get-support"></a>Získat podporu
 
-Existují dva kanály podpory v závislosti na problémy, se kterými se setkáváte.
+Existují dva kanály podpory v závislosti na problémech, které máte k dispozici.
 
-Pokud narazíte na problémy v partnerském centru, jako je například zobrazuje sestavu využití attribution zákazníka nebo přihlášení si vytvořili žádost o podporu s týmem podpory partnerského centra tady: [https://partner.microsoft.com/en-US/support](https://partner.microsoft.com/support)
+Pokud narazíte na nějaké problémy v partnerském centru, jako je například zobrazení sestavy týkající se zákaznického používání nebo přihlašování, vytvořte žádost o podporu pomocí týmu podpory partnerského centra, který najdete tady:[https://partner.microsoft.com/en-US/support](https://partner.microsoft.com/support)
 
 ![](./media/marketplace-publishers-guide/partner-center-log-in-support.png)
 
-Pokud potřebujete pomoc pro Marketplace Onboarding a/nebo zákazníka attribution využití obecně platí, jako je například nastavení attribution využití zákazníka, postupujte podle následujících kroků:
+Pokud potřebujete pomoc s registrací na tržišti a/nebo s uvedením údajů o využití zákazníka, jako je například nastavení označení zákaznického využití, postupujte podle následujících kroků:
 
-1. Přejděte [stránku podpory](https://go.microsoft.com/fwlink/?linkid=844975).
+1. Přejít na [stránku podpory](https://go.microsoft.com/fwlink/?linkid=844975).
 
-1. V části **typ problému**vyberte **Marketplace připojování**.
+1. V části **typ problému**vyberte možnost **připojování Marketplace**.
 
-1. Zvolte **kategorie** problému:
+1. Vyberte **kategorii** problému:
 
-   - Přidružení problémy spotřeba energie, vyberte **jiných**.
-   - Potíže s přístupem k s Azure Marketplace CPP, vyberte **potíže při přístupu k**.
+   - V případě problémů s přidružením využití vyberte **jiné**.
+   - Pro problémy s přístupem Azure Marketplace CPP vyberte problém s **přístupem**.
 
-     ![Vyberte kategorii problému](media/marketplace-publishers-guide/lu-article-incident.png)
+     ![Výběr kategorie problému](media/marketplace-publishers-guide/lu-article-incident.png)
 
-1. Vyberte **požadavek na spuštění**.
+1. Vyberte možnost **Spustit požadavek**.
 
 1. Na další stránce zadejte požadované hodnoty. Vyberte **pokračovat**.
 
 1. Na další stránce zadejte požadované hodnoty.
 
    > [!Important]
-   > V **název incidentu** zadejte **sledování využití ISV**. Popište svůj problém podrobně.
+   > Do pole **název incidentu** zadejte **sledování využívání ISV**. Podrobně popište svůj problém.
 
-   ![Název incidentu zadejte ISV sledování využití](media/marketplace-publishers-guide/guid-dev-center-help-hd%201.png)
+   ![Zadat sledování využití ISV pro název incidentu](media/marketplace-publishers-guide/guid-dev-center-help-hd%201.png)
 
-1. Vyplňte formulář a potom vyberte **odeslat**.
+1. Vyplňte formulář a pak vyberte **Odeslat**.
 
-Můžete také získat technickou pomoc od Microsoft Partner technické konzultant pro technické předprodejní, nasazení a scénáře vývoje aplikací a začlenit attribution využití zákazníka.
+Můžete také získat technické pokyny od Microsoft Partner Technical konzultanta k technickým scénářům pro účely předprodeji, nasazení a vývoje aplikací, které vám pomůžou pochopit a začlenit jejich přidělení.
 
-### <a name="how-to-submit-a-technical-consultation-request"></a>Jak odeslat žádost o technickou konzultace
+### <a name="how-to-submit-a-technical-consultation-request"></a>Odeslání žádosti o technickou spolupráci
 
-1. Navštivte [ https://aka.ms/TechnicalJourney ](https://aka.ms/TechnicalJourney).
-1. Vyberte cloudové infrastruktury a správy a nová stránka se otevře umožní zobrazit technické cesty.
-1. V rámci služby pro nasazení klikněte na Odeslat žádost tlačítka
-1. Přihlaste se pomocí MSA (účtu MPN) nebo AAD (účtu řídicího panelu partnera); podle přihlašovacími údaji, otevře se formulář žádosti o online:
-    * Dokončení/zkontrolujte kontaktní informace.
-    * Podrobnosti o konzultaci může být předem vyplněný nebo vyberte z rozevírací nabídky.
-    * Zadejte název a popis problému (zadejte co nejvíce podrobností nejvíce).
-1. Klikněte na tlačítko Odeslat
+1. Přejděte [https://aka.ms/TechnicalJourney](https://aka.ms/TechnicalJourney)na adresu.
+1. Vyberte cloudovou infrastrukturu a správu a otevře se nová stránka, která vám umožní zobrazit technickou cestu.
+1. V části služby nasazení klikněte na tlačítko Odeslat žádost.
+1. Přihlaste se pomocí účtu MSA (MPN) nebo svého AAD (účet partnerského řídicího panelu). na základě přihlašovacích údajů pro přihlášení se otevře formulář online žádosti:
+    * Dokončete/zkontrolujte kontaktní údaje.
+    * Informace o konzultacích můžou být předem vyplněné nebo si můžete vybrat z rozevíracích seznamu.
+    * Zadejte název a popis problému (uveďte co nejvíc podrobností).
+1. Klikněte na Odeslat.
 
-Zobrazit podrobné pokyny včetně snímků obrazovky na [ https://aka.ms/TechConsultInstructions ](https://aka.ms/TechConsultInstructions).
+Prohlédněte si podrobné pokyny k snímkům obrazovky v [https://aka.ms/TechConsultInstructions](https://aka.ms/TechConsultInstructions).
 
-### <a name="whats-next"></a>Co se chystá
+### <a name="whats-next"></a>Co dál
 
-Vás bude kontaktovat partnera Microsoft technické konzultant nastavit volání k určení rozsahu vašim potřebám.
+Obraťte se na partnera Microsoftu, který vám poskytne odborného technického konzultanta k nastavení volání podle rozsahu vašich potřeb.
 
 ## <a name="faq"></a>Nejčastější dotazy
 
-**Co je výhodou přidání identifikátoru GUID šablony?**
+**Jaké jsou výhody přidání identifikátoru GUID do šablony?**
 
-Společnost Microsoft poskytuje partnerům, kteří mají přehled zákaznická nasazení svého řešení a přehledy o jejich influenced využití. Microsoft a partnerem, můžete použít tyto informace k blíže zapojení mezi prodejní týmy. Microsoft a partnerem můžete data získat konzistentní zobrazení jednotlivých partnerů dopad na chod firmy na Azure růst.
+Microsoft poskytuje partnerům přehled o zákaznických nasazeních jejich řešení a přehledy o jejich ovlivněném využití. Microsoft i partner můžou tyto informace využít k tomu, aby proužívali užší zapojení mezi prodejními týmy. Microsoft i partner můžou data používat k získání jednotnějšího zobrazení dopadu jednotlivých partnerů na růst Azure.
 
-**Po přidání identifikátoru GUID, můžete ho změnit?**
+**Po přidání identifikátoru GUID ho lze změnit?**
 
-Ano, partner zákazníka nebo implementace může přizpůsobit šablonu a můžete změnit nebo odebrat identifikátor GUID. Doporučujeme vám, že partneři proaktivně popis role prostředků a identifikátor GUID pro jejich zákazníky a partnery, aby se zabránilo odstranění nebo úpravy na identifikátor GUID. Změna GUID ovlivní pouze nové, ne stávající nasazení a prostředky.
+Ano, zákazník nebo implementační partner může šablonu přizpůsobit a může změnit nebo odebrat identifikátor GUID. Doporučujeme, aby partneři proaktivně popsali roli prostředku a identifikátor GUID svým zákazníkům a partnerům, aby se zabránilo odebrání nebo úpravám identifikátoru GUID. Změna identifikátoru GUID ovlivní jenom nové, neexistující, nasazení a prostředky.
 
-**Můžete sledovat nasazených z úložiště jiných společností než Microsoft, např. GitHub šablon?**
+**Můžu sledovat Šablony nasazené z jiného úložiště než od Microsoftu, jako je GitHub?**
 
-Ano, za předpokladu, identifikátor GUID je k dispozici při nasazení šablony, využití se sleduje. Partneři musí mít profil v CPP zaregistrovat GUID použitý pro nasazení mimo Azure Marketplace.
+Ano, pokud je k dispozici identifikátor GUID při nasazení šablony, je sledování využití sledováno. Partneři musí mít profil v CPP k registraci identifikátorů GUID používaných pro nasazení mimo Azure Marketplace.
 
-**Zákazník obdrží také vytváření sestav?**
+**Obdrží zákazník hlášení také?**
 
-Zákazníci můžou sledovat jejich používání jednotlivé prostředky nebo skupiny uživatelsky definovaných prostředků na webu Azure portal.
+Zákazníci mohou sledovat využití jednotlivých prostředků nebo skupin prostředků definovaných zákazníkem v rámci Azure Portal.
 
-**Tento přístup se podobá k digitální DPOR Partner of Record ()?**
+**Je tato metodika podobná digitálnímu partnerovi záznamu (partnera DPOR)?**
 
-Tato nová metoda připojování nasazení a využití partnerské řešení poskytuje mechanismus pro propojení partnerského řešení pro využití Azure. Partnera DPOR slouží k přidružení konzultační (systémový integrátor) nebo partnera pro správu (Managed Service Provider) s předplatným Azure zákazníka.
+Tato nová metoda propojení nasazení a využití s řešením partnera poskytuje mechanismus pro propojení partnerského řešení s využitím Azure. PARTNERA DPOR má k přidružení konzultačního poradce (systémů) nebo správy (poskytovatele spravované služby) k předplatnému Azure zákazníka.
 
-**Co je výhoda pro použití služby Azure Storage GUID Generator formuláře?**
+**S jakou výhodou je použití formuláře generátoru identifikátorů GUID Azure Storage?**
 
-Azure Storage GUID Generator formuláře je zaručeno, že generování identifikátoru GUID požadovaný formát. Kromě toho pokud používáte některý z metody sledování rovina dat služby Azure Storage, můžete využívat stejný identifikátor GUID pro rovinu řízení Marketplace sledování. To umožňuje využívat jedinou jednotné identifikátor GUID pro partnera attribution aniž byste museli udržovat samostatných GUID.
+Je zaručeno, že formulář generátoru GUID Azure Storage vygeneruje identifikátor GUID požadovaného formátu. Pokud navíc používáte některé metody sledování roviny dat Azure Storage, můžete použít stejný identifikátor GUID pro sledování roviny ovládacího prvku Marketplace. Díky tomu můžete využít jeden sjednocený identifikátor GUID pro přidělení partnera, aniž byste museli udržovat samostatné identifikátory GUID.
 
-**Můžete použít privátní, vlastní virtuálního pevného disku šablony nabídky řešení na webu Azure Marketplace?**
+**Můžu použít privátní vlastní virtuální pevný disk pro nabídku šablony řešení v Azure Marketplace?**
 
-Ne, nemůžete. Image virtuálního počítače musí pocházet z Azure Marketplace, naleznete v tématu: [ https://docs.microsoft.com/azure/marketplace/marketplace-virtual-machines ](https://docs.microsoft.com/azure/marketplace/marketplace-virtual-machines).
+Ne, nemůžete. Image virtuálního počítače musí pocházet z Azure Marketplace, viz: [https://docs.microsoft.com/azure/marketplace/marketplace-virtual-machines](https://docs.microsoft.com/azure/marketplace/marketplace-virtual-machines).
 
-Můžete vytvořit nabídky virtuálních počítačů na marketplace pomocí vlastního virtuálního pevného disku a označte ji jako privátní, takže nikdo je můžou zobrazit. Potom odkaz na tento virtuální počítač do šablony řešení.
+Nabídku virtuálních počítačů můžete na webu Marketplace vytvořit pomocí vlastního virtuálního pevného disku a označit ji jako soukromou, takže ji nikdo neuvidí. Pak na tento virtuální počítač na šablonu řešení odkazujte.
 
-**Nepovedlo se aktualizovat *contentversion –* vlastnost hlavní šablony?**
+**Nepovedlo se aktualizovat vlastnost *contentversion –* pro hlavní šablonu?**
 
-Pravděpodobné chyby v některých případech při nasazení šablony pomocí TemplateLink z jiné šablony, které očekávají starší contentversion – z nějakého důvodu. Alternativním řešením je použití vlastnosti metadat:
+V některých případech pravděpodobně dojde k chybě při nasazení šablony pomocí TemplateLink z jiné šablony, která z nějakého důvodu očekává starší Contentversion –. Alternativním řešením je použití vlastnosti metadata:
 
 ```
 "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",

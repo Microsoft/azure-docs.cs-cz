@@ -1,51 +1,54 @@
 ---
-title: Vertikální navýšení kapacity clusteru služby Průzkumník dat Azure tak, aby vyhovovaly měnících se požadavků
-description: Tento článek popisuje kroky pro vertikální navýšení kapacity a vertikální snížení kapacity clusteru služby Azure Průzkumník dat na základě změny poptávky.
+title: Správa vertikálního škálování clusteru (horizontální navýšení kapacity) v Azure Průzkumník dat, aby se vešla měnící poptávka
+description: Tento článek popisuje kroky pro horizontální navýšení a snížení kapacity clusteru Azure Průzkumník dat na základě změny poptávky.
 author: radennis
 ms.author: radennis
 ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 06/30/2019
-ms.openlocfilehash: dc9ca8bb592e699d19835efeafb91e81408ae297
-ms.sourcegitcommit: 1e347ed89854dca2a6180106228bfafadc07c6e5
+ms.date: 07/14/2019
+ms.openlocfilehash: 80bbdf3a5d936719b06782cd78d56088b36cb21d
+ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67571527"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67985483"
 ---
-# <a name="manage-cluster-scale-up-to-accommodate-changing-demand"></a>Správa clusteru vertikálně navýšit kapacitu tak, aby vyhovovaly měnících se požadavků
+# <a name="manage-cluster-vertical-scaling-scale-up-in-azure-data-explorer-to-accommodate-changing-demand"></a>Správa vertikálního škálování clusteru (horizontální navýšení kapacity) v Azure Průzkumník dat, aby se vešla měnící poptávka
 
-Existují dva pracovní postupy pro škálování clusteru služby Průzkumník dat Azure:
-1. [Horizontální škálování](manage-cluster-horizontal-scaling.md), označované také jako vertikální navýšení nebo snížení kapacity.
-2. Vertikální škálování, nazývá se také vertikálně navýšit nebo snížit kapacitu.
+Odpovídající změna velikosti clusteru je zásadní pro výkon Azure Průzkumník dat. Statická velikost clusteru může vést k použití nebo převzetí služeb při selhání, ani z toho, co není ideální.
 
-Tento článek ukazuje, jak spravovat vertikální škálování clusteru.
+Vzhledem k tomu, že poptávka na clusteru se nedá předpovědět s absolutní přesností, lepším řešením je *škálování* clusteru, přidání a odebrání kapacity a prostředků procesoru se měnícím se poptávkou. 
 
-Nastavování velikosti clusteru správně je důležité pro výkon Průzkumník dat Azure. Ale nemůže být předpovězen nároky na cluster s absolutní přesnost. Velikost statické clusteru může vést k nízkého využití nebo overutilization, ani jedno z nich je ideální. Lepším řešením je *škálování* cluster, přidávání a odebírání kapacitu a prostředky procesoru s měnícími poptávky. 
+K dispozici jsou dva pracovní postupy pro škálování clusteru Azure Průzkumník dat:
 
-## <a name="steps-to-configure-vertical-scaling"></a>Postup konfigurace vertikálního škálování
+* [Horizontální škálování](manage-cluster-horizontal-scaling.md), označované také jako škálování v a ven.
+* Vertikální škálování, označované také jako horizontální navýšení kapacity.
 
-1. Přejděte ke svému clusteru. V části **nastavení**vyberte **vertikálně navýšit kapacitu**.
+Tento článek vysvětluje pracovní postup vertikálního škálování:
 
-    Se zobrazí seznam dostupných skladových položek. Například následující obrázek, pouze čtyři skladové položky jsou k dispozici.
+## <a name="configure-vertical-scaling"></a>Konfigurace vertikálního škálování
+
+1. V Azure Portal přejdete do svého prostředku clusteru Azure Průzkumník dat. V části **Nastavení**vyberte **horizontální navýšení kapacity**.
+
+1. V okně **horizontální navýšení kapacity** se zobrazí seznam dostupných SKU pro váš cluster. Například na následujícím obrázku jsou k dispozici pouze čtyři SKU.
 
     ![Vertikální navýšení kapacity](media/manage-cluster-vertical-scaling/scale-up.png)
 
-    Skladové položky jsou zakázané, protože aktuální SKU jsou nebo nejsou k dispozici v oblasti, kde se nachází clusteru.
+    SKU jsou zakázané, protože se jedná o aktuální SKU, nebo nejsou dostupné v oblasti, ve které se cluster nachází.
 
-1. Chcete-li změnit skladovou jednotku, vyberte SKU chcete a zvolte **vyberte** tlačítko.
+1. Pokud chcete změnit SKLADOVOU položku, vyberte novou SKLADOVOU položku a klikněte na **Vybrat**.
 
 > [!NOTE]
-> Vertikální škálování proces může trvat několik minut a během této doby se vám váš cluster. Všimněte si, že škálování může poškodit svůj výkon clusteru.
+> * Proces vertikálního škálování může trvat několik minut a během této doby se cluster pozastaví. 
+> * Horizontální navýšení kapacity může mít vliv na výkon vašeho clusteru.
+> * Cena představuje odhad virtuálních počítačů clusteru a nákladů služby Azure Průzkumník dat. Ostatní náklady nejsou zahrnuty. Informace o odhadech a cenách Azure Průzkumník dat najdete na stránce s [cenami](https://azure.microsoft.com/pricing/details/data-explorer/) za službu Azure Průzkumník dat [cost Estimator](https://dataexplorer.azure.com/AzureDataExplorerCostEstimator.html) .
 
-Nyní jste provedli operaci vertikální navýšení nebo snížení pro váš cluster Průzkumník dat Azure.
+Nyní jste nakonfigurovali vertikální škálování pro váš cluster Azure Průzkumník dat. Přidejte další pravidlo pro horizontální škálování. Pokud potřebujete pomoc s problémy s škálováním clusteru, [otevřete žádost o podporu](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) v Azure Portal.
 
-Pokud potřebujete pomoc s problémy škálování clusterů [žádost o podporu](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) na webu Azure Portal.
+## <a name="next-steps"></a>Další postup
 
-## <a name="next-steps"></a>Další kroky
+* [Správa horizontálního škálování clusteru](manage-cluster-horizontal-scaling.md) pro dynamické horizontální navýšení kapacity počtu instancí na základě metrik, které zadáte.
 
-* [Správa clusteru horizontální škálování](manage-cluster-horizontal-scaling.md) pro dynamicky horizontálně navyšovat kapacitu počtu instancí na základě metrik, který zadáte.
-
-* Monitorujte využití prostředků podle tohoto článku: [Sledování výkonu, stavu a využití s metrikami Průzkumník dat Azure](using-metrics.md).
+* Pomocí tohoto článku sledujte využití prostředků: [Monitorujte výkon, stav a využití Azure Průzkumník dat s metrikami](using-metrics.md).
 

@@ -1,6 +1,6 @@
 ---
-title: Kurz – přizpůsobení rozhraní uživatelské prostředí – Azure Active Directory B2C | Dokumentace Microsoftu
-description: Zjistěte, jak přizpůsobit uživatelské rozhraní aplikace v Azure Active Directory B2C na webu Azure portal.
+title: Kurz – přizpůsobení rozhraní pro uživatelské prostředí – Azure Active Directory B2C | Microsoft Docs
+description: Naučte se, jak přizpůsobit uživatelské rozhraní svých aplikací v Azure Active Directory B2C pomocí Azure Portal.
 services: B2C
 author: mmacy
 manager: celestedg
@@ -10,73 +10,73 @@ ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 4c0fdbee2c5108dd3203217cb721576703b3faca
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: da7ec020b6f3f4a3b1890695a78fb6bdb363d233
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66512087"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67849384"
 ---
 # <a name="tutorial-customize-the-interface-of-user-experiences-in-azure-active-directory-b2c"></a>Kurz: Přizpůsobení rozhraní uživatelského prostředí v Azure Active Directory B2C
 
-Pro běžné uživatelské prostředí jako například registrace, přihlašování a úpravy profilu, můžete použít [toky uživatelů](active-directory-b2c-reference-policies.md) v Azure Active Directory (Azure AD) B2C. Informace v tomto kurzu vám umožní získat informace tom, jak [přizpůsobení uživatelského rozhraní (UI)](customize-ui-overview.md) z těchto prostředí s využitím vlastní soubory HTML a CSS.
+Pro běžné uživatelské prostředí, jako je registrace, přihlašování a úpravy profilu, můžete použít [toky uživatelů](active-directory-b2c-reference-policies.md) v Azure Active Directory (Azure AD) B2C. Informace v tomto kurzu vám pomůžou s postupem [přizpůsobení uživatelského rozhraní (UI)](customize-ui-overview.md) těchto prostředí pomocí vlastních souborů HTML a CSS.
 
 V tomto článku získáte informace o těchto tématech:
 
 > [!div class="checklist"]
-> * Vytvoření souborů přizpůsobení uživatelského rozhraní
-> * Aktualizovat tok uživatele k využití souborů
-> * Testování vlastní uživatelské rozhraní
+> * Vytvořit vlastní soubory uživatelského rozhraní
+> * Aktualizace toku uživatele pro použití souborů
+> * Testování přizpůsobeného uživatelského rozhraní
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
-[Vytvořit tok uživatele](tutorial-create-user-flows.md) umožňují uživatelům registraci a přihlášení do vaší aplikace.
+[Vytvořte uživatelský tok](tutorial-create-user-flows.md) , který uživatelům umožní přihlásit se k aplikaci a přihlásit se k ní.
 
 ## <a name="create-customization-files"></a>Vytvořit soubory vlastního nastavení
 
-Vytvoření účtu služby Azure storage a kontejner a pak umístit základní soubory HTML a CSS v kontejneru.
+Vytvoříte účet a kontejner úložiště Azure a potom do kontejneru umístíte základní soubory HTML a CSS.
 
 ### <a name="create-a-storage-account"></a>vytvořit účet úložiště
 
-I když můžete ukládat soubory v mnoha směrech pro účely tohoto kurzu, jsou uloženy v [úložiště objektů Blob v Azure](../storage/blobs/storage-blobs-introduction.md).
+I když můžete soubory ukládat mnoha různými způsoby, můžete je v tomto kurzu ukládat do [úložiště objektů BLOB v Azure](../storage/blobs/storage-blobs-introduction.md).
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-2. Ujistěte se, že používáte adresáře, který obsahuje předplatné Azure. Vyberte **filtr adresářů a předplatných** v horní nabídce a vyberte adresář, který obsahuje vaše předplatné. Tento adresář je jiný než ten, který obsahuje váš tenant Azure B2C.
-3. Vyberte všechny služby v levém horním rohu webu Azure portal, vyhledejte a vyberte **účty úložiště**. 
+2. Ujistěte se, že používáte adresář, který obsahuje vaše předplatné Azure. V horní nabídce vyberte **adresář a filtr** předplatného a zvolte adresář, který obsahuje vaše předplatné. Tento adresář je jiný než ten, který obsahuje vašeho tenanta Azure B2C.
+3. V levém horním rohu Azure Portal vyberte všechny služby, vyhledejte a vyberte **účty úložiště**.
 4. Vyberte **Přidat**.
-5. V části **skupiny prostředků**vyberte **vytvořit nový**, zadejte název pro novou skupinu prostředků a pak klikněte na tlačítko **OK**.
+5. V části **Skupina prostředků**vyberte **vytvořit novou**, zadejte název nové skupiny prostředků a pak klikněte na **OK**.
 6. Zadejte název účtu úložiště. Zvolený název musí být jedinečný v rámci Azure, mít délku 3 až 24 znaků a může obsahovat jen číslice a malá písmena.
-7. Vyberte umístění účtu úložiště, nebo přijměte výchozí umístění. 
-8. Přijměte všechny výchozí hodnoty, vyberte **revize + vytvořit**a potom klikněte na tlačítko **vytvořit**.
-9. Po vytvoření účtu úložiště vyberte **přejít k prostředku**.
+7. Vyberte umístění účtu úložiště nebo přijměte výchozí umístění.
+8. Přijměte všechny ostatní výchozí hodnoty, vyberte **zkontrolovat + vytvořit**a pak klikněte na **vytvořit**.
+9. Po vytvoření účtu úložiště vyberte **Přejít k prostředku**.
 
 ### <a name="create-a-container"></a>Vytvoření kontejneru
 
-1. Na stránce Přehled účtu úložiště vyberte **objekty BLOB**.
-2. Vyberte **kontejneru**, zadejte název kontejneru, zvolte **objektů Blob (anonymní přístup pro čtení pro objekty BLOB pouze)** a potom klikněte na tlačítko **OK**.
+1. Na stránce Přehled účtu úložiště vyberte **objekty blob**.
+2. Vyberte **kontejner**, zadejte název kontejneru, zvolte **objekt BLOB (anonymní přístup pro čtení jenom pro objekty BLOB)** a pak klikněte na **OK**.
 
 ### <a name="enable-cors"></a>Povolení CORS
 
- Azure AD B2C kód v prohlížeči používá moderní a standardní přístup k načtení vlastního obsahu z adresy URL, kterou zadáte v toku uživatele. Prostředků mezi zdroji (CORS) pro sdílení obsahu s omezeným přístupem prostředků umožňuje na webové stránce vyžadované z jiných domén.
+ Azure AD B2C kód v prohlížeči používá moderní a standardní přístup k načtení vlastního obsahu z adresy URL, kterou zadáte v toku uživatele. Sdílení prostředků mezi zdroji (CORS) umožňuje omezit prostředky na webové stránce, které se mají požadovat z jiných domén.
 
 1. V nabídce vyberte **CORS**.
-2. Pro **povolené zdroje**, zadejte `https://your-tenant-name.b2clogin.com`. Nahraďte `your-tenant-name` s názvem vašeho tenanta Azure AD B2C. Například, `https://fabrikam.b2clogin.com`. Budete muset použít jenom malá písmena. Pokud zadáte název vašeho klienta.
-3. Pro **povolené metody**, vyberte oba `GET` a `OPTIONS`.
-4. Pro **povolené hlavičky**, zadejte hvězdičku (*).
-5. Pro **zveřejněné hlavičky**, zadejte hvězdičku (*).
-6. Pro **maximální stáří**, zadejte 200.
+2. V případě **povolených zdrojů**zadejte `https://your-tenant-name.b2clogin.com`. Nahraďte `your-tenant-name` s názvem vašeho tenanta Azure AD B2C. Například, `https://fabrikam.b2clogin.com`. Při zadávání názvu tenanta je potřeba použít všechna malá písmena.
+3. U **povolených metod**vyberte obojí `GET` a `OPTIONS`.
+4. U **povolených hlaviček**zadejte hvězdičku (*).
+5. U **zveřejněných hlaviček**zadejte hvězdičku (*).
+6. Do **maximálního stáří**zadejte 200.
 
-    ![Povolení CORS](./media/tutorial-customize-ui/enable-cors.png)
+    ![Konfigurační stránka CORS ve službě Azure Blob Storage v Azure Portal](./media/tutorial-customize-ui/enable-cors.png)
 
 5. Klikněte na **Uložit**.
 
-### <a name="create-the-customization-files"></a>Vytvořit soubory vlastního nastavení
+### <a name="create-the-customization-files"></a>Vytvoření souborů vlastního nastavení
 
-Přizpůsobení uživatelského rozhraní přihlašovacího prostředí, začnete vytvořením jednoduchého souboru HTML a CSS. Můžete nakonfigurovat libovolným způsobem, ale musí mít kódu HTML **div** element s identifikátorem `api`. Například, `<div id="api"></div>`. Vloží prvky do Azure AD B2C `api` stránka se zobrazí v kontejneru.
+Chcete-li přizpůsobit uživatelské rozhraní prostředí pro registraci, začněte tím, že vytvoříte jednoduchý soubor HTML a CSS. HTML můžete nakonfigurovat způsobem, který chcete, ale musí mít element **div** s identifikátorem `api`. Například, `<div id="api"></div>`. Azure AD B2C vloží prvky do `api` kontejneru při zobrazení stránky.
 
-1. V místní složce, vytvořte následující soubor a ujistěte se, že změníte `your-storage-account` k názvu účtu úložiště a `your-container` název kontejneru, který jste vytvořili. Například, `https://store1.blob.core.windows.net/b2c/style.css`.
+1. V místní složce vytvořte následující soubor a ujistěte se, že jste změnili `your-storage-account` název účtu úložiště a `your-container` název kontejneru, který jste vytvořili. Například, `https://store1.blob.core.windows.net/b2c/style.css`.
 
     ```html
     <!DOCTYPE html>
@@ -85,17 +85,17 @@ Přizpůsobení uživatelského rozhraní přihlašovacího prostředí, začnet
         <title>My B2C Application</title>
         <link rel="stylesheet" href="https://your-storage-account.blob.core.windows.net/your-container/style.css">
       </head>
-      <body>  
+      <body>
         <h1>My B2C Application</h1>
         <div id="api"></div>
       </body>
     </html>
     ```
 
-    Na stránce nelze navrhovat způsobem, který chcete, ale **api** div element se vyžaduje pro libovolný soubor vlastního nastavení HTML, který vytvoříte. 
+    Stránku lze navrhnout jakýmkoli způsobem, ale element **rozhraní API** div je vyžadován pro libovolný soubor vlastního nastavení HTML, který vytvoříte.
 
-3. Uložte soubor jako *vlastní ui.html*.
-4. Vytvořte následující jednoduchý šablon stylů CSS, která centra pro všechny elementy na stránce registrace / přihlášení, včetně prvků, které Azure AD B2C vkládá.
+3. Uložte soubor jako *Custom-UI. html*.
+4. Vytvořte následující jednoduchou šablonu stylů CSS, která bude nacentrovat všechny prvky na stránce pro registraci nebo přihlášení včetně prvků, které Azure AD B2C vkládání.
 
     ```css
     h1 {
@@ -103,7 +103,7 @@ Přizpůsobení uživatelského rozhraní přihlašovacího prostředí, začnet
       text-align: center;
     }
     .intro h2 {
-      text-align: center; 
+      text-align: center;
     }
     .entry {
       width: 300px ;
@@ -111,7 +111,7 @@ Přizpůsobení uživatelského rozhraní přihlašovacího prostředí, začnet
       margin-right: auto ;
     }
     .divider h2 {
-      text-align: center; 
+      text-align: center;
     }
     .create {
       width: 300px ;
@@ -120,49 +120,49 @@ Přizpůsobení uživatelského rozhraní přihlašovacího prostředí, začnet
     }
     ```
 
-5. Uložte soubor jako *style.css*.
+5. Uložte soubor jako *style. CSS*.
 
-### <a name="upload-the-customization-files"></a>Nahrát soubory vlastního nastavení
+### <a name="upload-the-customization-files"></a>Odeslat soubory vlastního nastavení
 
-V tomto kurzu ukládáte soubory, které jste vytvořili v účtu úložiště tak, aby Azure AD B2C k nim přistupovat.
+V tomto kurzu ukládáte soubory, které jste vytvořili v účtu úložiště tak, aby k nim Azure AD B2C přistupovat.
 
-1. Zvolte **všechny služby** v levém horním rohu webu Azure portal, vyhledejte a vyberte **účty úložiště**.
-2. Vyberte účet úložiště, který jste vytvořili, vyberte **objekty BLOB**a potom vyberte kontejner, který jste vytvořili.
-3. Vyberte **nahrát**, najděte a vyberte *vlastní ui.html* souboru a pak klikněte na tlačítko **nahrát**.
+1. V levém horním rohu Azure Portal vyberte **všechny služby** , vyhledejte a vyberte **účty úložiště**.
+2. Vyberte účet úložiště, který jste vytvořili, vyberte **objekty blob**a potom vyberte kontejner, který jste vytvořili.
+3. Vyberte **Odeslat**, přejděte na a vyberte soubor *Custom-UI. html* a pak klikněte na **nahrát**.
 
-    ![Nahrát soubory vlastního nastavení](./media/tutorial-customize-ui/upload-blob.png)
+    ![Stránka nahrát objekt blob na portálu se zvýrazněným tlačítkem Odeslat a soubory](./media/tutorial-customize-ui/upload-blob.png)
 
-4. Zkopírujte adresu URL souboru, který jste nahráli do použít později v tomto kurzu.
-5. Zopakujte kroky 3 a 4 *style.css* souboru.
+4. Zkopírujte adresu URL souboru, který jste nahráli pro pozdější použití v tomto kurzu.
+5. Zopakujte kroky 3 a 4 pro soubor *style. CSS* .
 
-## <a name="update-the-user-flow"></a>Aktualizovat tok uživatele.
+## <a name="update-the-user-flow"></a>Aktualizace toku uživatele
 
-1. Zvolte **všechny služby** v horním levém horním rohu webu Azure portal a poté vyhledejte a vyberte **Azure AD B2C**.
-2. Vyberte **toky uživatelů (zásady)** a pak vyberte *B2C_1_signupsignin1* tok uživatele.
-3. Vyberte **rozložení stránek**a potom v části **stránku registrace nebo přihlášení Unified**, klikněte na tlačítko **Ano** pro **použít vlastní obsah stránky**.
-4. V **vlastní identifikátor URI stránky**, zadejte identifikátor URI *vlastní ui.html* soubor, který jste si poznamenali dříve.
-5. V horní části stránky vyberte **Uložit**.
+1. V levém horním rohu Azure Portal vyberte **všechny služby** a pak vyhledejte a vyberte **Azure AD B2C**.
+2. Vyberte **toky uživatelů (zásady)** a pak vyberte tok uživatele *B2C_1_signupsignin1* .
+3. Vyberte **rozložení stránky**a potom v části **jednotná registrace nebo přihlášení**klikněte na **Ano** , aby se **použil vlastní obsah stránky**.
+4. Do pole **URI vlastní stránky**zadejte identifikátor URI pro soubor *Custom-UI. html* , který jste si poznamenali dříve.
+5. V horní části stránky vyberte **Save (Uložit**).
 
-## <a name="test-the-user-flow"></a>Testování tohoto toku uživatele
+## <a name="test-the-user-flow"></a>Testování toku uživatele
 
-1. Ve vašem tenantovi Azure AD B2C vyberte **toky uživatelů** a vyberte *B2C_1_signupsignin1* tok uživatele.
-2. V horní části stránky klikněte na tlačítko **spustit tok uživatele**.
-3. Klikněte na tlačítko **spustit tok uživatele** tlačítko.
+1. Ve vašem tenantovi Azure AD B2C vyberte **uživatelské toky** a pak vyberte tok uživatele *B2C_1_signupsignin1* .
+2. V horní části stránky klikněte na **Spustit tok uživatele**.
+3. Klikněte na tlačítko **Spustit tok uživatele** .
 
-    ![Spuštění toku registrace nebo přihlašování uživatelů](./media/tutorial-customize-ui/run-user-flow.png)
+    ![Spustit stránku Flow uživatele pro uživatelský tok registrace nebo přihlašování](./media/tutorial-customize-ui/run-user-flow.png)
 
-    Měli byste vidět stránku podobně jako v následujícím příkladu s elementy na střed na základě souboru šablon stylů CSS, který jste vytvořili:
+    Měla by se zobrazit stránka podobná následujícímu příkladu s prvky na středovém souboru CSS, který jste vytvořili:
 
-    ![Výsledky toku uživatele](./media/tutorial-customize-ui/run-now.png) 
+    ![Webový prohlížeč zobrazující přihlašovací stránku pro registraci nebo přihlášení s vlastními prvky uživatelského rozhraní](./media/tutorial-customize-ui/run-now.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto článku jste zjistili, jak:
 
 > [!div class="checklist"]
-> * Vytvoření souborů přizpůsobení uživatelského rozhraní
-> * Aktualizovat tok uživatele k využití souborů
-> * Testování vlastní uživatelské rozhraní
+> * Vytvořit vlastní soubory uživatelského rozhraní
+> * Aktualizace toku uživatele pro použití souborů
+> * Testování přizpůsobeného uživatelského rozhraní
 
 > [!div class="nextstepaction"]
 > [Přizpůsobení jazyka v Azure Active Directory B2C](active-directory-b2c-reference-language-customization.md)

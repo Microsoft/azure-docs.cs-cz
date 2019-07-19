@@ -1,21 +1,22 @@
 ---
-title: Kurz – nasazení aplikace z geograficky replikovaného registru Dockeru v Azure
-description: Nasaďte linuxovou webovou aplikaci do dvou různých oblastech Azure pomocí image kontejneru z geograficky replikovaného Azure container registry. Druhá část třídílné série.
+title: Kurz – nasazení aplikace z geograficky replikovaného registru Docker v Azure
+description: Nasazení webové aplikace se systémem Linux do dvou různých oblastí Azure pomocí Image kontejneru z geograficky replikovaného registru kontejnerů Azure. Druhá část třídílné série.
 services: container-registry
 author: dlepow
+manager: gwallace
 ms.service: container-registry
 ms.topic: tutorial
 ms.date: 08/20/2018
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: e5a38e2b6550d763f30c2462944b154f76bbe92c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5a3ffcc75ac37dac1284d0ffb5af234fd2f376cd
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60508167"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68310468"
 ---
-# <a name="tutorial-deploy-a-web-app-from-a-geo-replicated-azure-container-registry"></a>Kurz: Nasazení webové aplikace z geograficky replikovaného Azure container registry
+# <a name="tutorial-deploy-a-web-app-from-a-geo-replicated-azure-container-registry"></a>Kurz: Nasazení webové aplikace z geograficky replikovaného registru kontejnerů Azure
 
 Toto je druhá část z třídílné série kurzů. V [první části](container-registry-tutorial-prepare-registry.md) jste vytvořili privátní, geograficky replikovaný registr kontejneru a ze zdroje jste sestavili image kontejneru, kterou jste vložili do registru. V tomto článku nasadíte kontejner do instancí webových aplikací ve dvou různých oblastech Azure a využijete tak aspekt blízkosti sítě u geograficky replikovaného registru. Každá instance pak načte image kontejneru z nejbližšího registru.
 
@@ -78,7 +79,7 @@ Po nasazení image Dockeru z geograficky replikovaného registru kontejneru se v
 
 Podle postupu uvedeného v předchozí části nasaďte druhou webovou aplikaci do oblasti *USA – východ*. V části **Web App for Containers** zadejte následující hodnoty:
 
-| Nastavení | Hodnota |
+| Nastavení | Value |
 |---|---|
 | **Název lokality** | Globálně jedinečný název webové aplikace. V tomto příkladu používáme formát `<acrName>-eastus`, abychom mohli snadno identifikovat, ze kterého registru a oblasti je webová aplikace nasazená. |
 | **Skupina prostředků** | **Použít existující** > `myResourceGroup` |

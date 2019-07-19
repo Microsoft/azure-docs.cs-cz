@@ -15,18 +15,18 @@ ms.author: billmath
 search.appverid:
 - MET150
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 66ff1cb57bb3317adc7ab6208ebf5029361b7c54
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d74eb91b5122f63088f3344836eab8decf5c57d2
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66235143"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68227370"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>Implementace synchronizace hodnot hash hesel pomocí synchronizace Azure AD Connect
 Tento článek obsahuje informace, které potřebujete k synchronizaci hesel uživatelů mezi místní instancí Active Directory a instanci cloudové služby Azure Active Directory (Azure AD).
 
 ## <a name="how-password-hash-synchronization-works"></a>Jak funguje synchronizace hodnot hash hesel
-Active Directory domain Services ukládá ve formě reprezentaci hodnoty hash hesla skutečného uživatelského hesla. Hodnota hash je výsledek jednosměrné matematické funkce ( *algoritmus hash*). Neexistuje žádný způsob, jak výsledek jednosměrné funkce převést zpět na heslo v prostém textu. Hodnotu hash hesla není možné použít pro přihlášení k místní síti.
+Active Directory domain Services ukládá ve formě reprezentaci hodnoty hash hesla skutečného uživatelského hesla. Hodnota hash je výsledek jednosměrné matematické funkce ( *algoritmus hash*). Neexistuje žádný způsob, jak výsledek jednosměrné funkce převést zpět na heslo v prostém textu. 
 
 Synchronizace Azure AD Connect synchronizaci hesla, extrahuje vaše hodnoty hash hesla z místní instance Active Directory. Zpracování dodatečné zabezpečení se použije pro hodnoty hash hesla předtím, než se synchronizují do služby ověřování Azure Active Directory. Hesla se nesynchronizují na jednotlivé uživatele a v chronologickém pořadí.
 

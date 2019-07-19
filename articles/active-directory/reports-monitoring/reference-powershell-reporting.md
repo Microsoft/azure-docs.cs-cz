@@ -1,0 +1,83 @@
+---
+title: Rutiny Azure AD PowerShellu pro vytváření sestav | Microsoft Docs
+description: Reference k rutinám Azure AD PowerShellu pro vytváření sestav.
+services: active-directory
+documentationcenter: ''
+author: MarkusVi
+manager: daveba
+editor: ''
+ms.assetid: a1f93126-77d1-4345-ab7d-561066041161
+ms.service: active-directory
+ms.devlang: na
+ms.topic: reference
+ms.tgt_pltfrm: na
+ms.workload: identity
+ms.subservice: report-monitor
+ms.date: 07/12/2019
+ms.author: markvi
+ms.reviewer: dhanyahk
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 27fa3d7be5238527f86e9dfde3be70ae09259d69
+ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68302741"
+---
+# <a name="azure-ad-powershell-cmdlets-for-reporting"></a>Rutiny Azure AD PowerShellu pro vytváření sestav
+
+Pomocí sestav Azure Active Directory (Azure AD) můžete získat informace, které potřebujete k určení toho, jak vaše prostředí dělá. Data sestavy můžete načíst pomocí rutin Azure AD PowerShell pro vytváření sestav.
+
+Tento článek poskytuje přehled této rutiny.
+
+
+
+
+## <a name="audit-logs"></a>Protokoly auditu
+
+[Protokoly auditu](concept-audit-logs.md) poskytují sledovatelnost prostřednictvím protokolů pro všechny změny prováděné různými funkcemi v rámci služby Azure AD. Mezi příklady protokolů auditu patří změny provedené u všech prostředků v rámci Azure AD, jako je přidávání nebo odebírání uživatelů, aplikací, skupin, rolí a zásad.
+
+Přístup k protokolům auditu získáte pomocí rutiny Get-AzureADAuditDirectoryLogs.
+
+
+| Scénář                      | Příkaz PowerShellu |
+| :--                           | :--                |
+| Zobrazovaný název aplikace      | Get-AzureADAuditDirectoryLogs-Filter "initiatedBy/App/DisplayName" Azure AD Cloud Sync "" |
+| Kategorie                      | Get-AzureADAuditDirectoryLogs-Filter "kategorie EQ" Správa aplikací "" |
+| Datum a čas aktivity            | Get-AzureADAuditDirectoryLogs-Filter "activityDateTime gt 2019-04-18" |
+| Vše z výše uvedených              | Get-AzureADAuditDirectoryLogs-Filter "initiatedBy/App/DisplayName EQ" Azure AD Cloud Sync "and Category EQ" Správa aplikací "and activityDateTime gt 2019-04-18"|
+
+
+Příklad tohoto příkazu je znázorněn na následujícím obrázku. 
+
+![Tlačítko Souhrn dat](./media/reference-powershell-reporting/get-azureadauditdirectorylogs.png)
+
+
+
+## <a name="sign-in-logs"></a>Protokoly přihlašování
+
+Protokoly [přihlášení](concept-sign-ins.md) poskytují informace o použití spravovaných aplikací a aktivitách přihlašování uživatelů.
+
+Přístup k protokolům přihlášení získáte pomocí rutiny Get-AzureADAuditSignInLogs.
+
+
+| Scénář                      | Příkaz PowerShellu |
+| :--                           | :--                |
+| Zobrazované jméno uživatele             | Get-AzureADAuditSignInLogs-Filter "userDisplayName EQ" Alexander Perkins "" |
+| Vytvořit datum a čas              | Get-AzureADAuditSignInLogs-Filter "createdDateTime gt 2019-04-18T17:30:00.0 Z" (vše od 5:30 pm v 4/18) |
+| Stav                        | Get-AzureADAuditSignInLogs-Filter "status/errorCode EQ 50105" |
+| Zobrazovaný název aplikace      | Get-AzureADAuditSignInLogs-Filter "appDisplayName EQ" StoreFrontStudio [wsfed Enabled] "" |
+| Vše z výše uvedených              | Get-AzureADAuditSignInLogs-Filter "userDisplayName EQ" Alexander Perkins "a status/errorCode New 0 and appDisplayName EQ" StoreFrontStudio [wsfed Enabled] "" |
+
+
+Příklad tohoto příkazu je znázorněn na následujícím obrázku. 
+
+![Tlačítko Souhrn dat](./media/reference-powershell-reporting/get-azureadauditsigninlogs.png)
+
+
+
+## <a name="next-steps"></a>Další postup
+
+- [Přehled sestav Azure AD](overview-reports.md).
+- [Sestava protokolů auditu](concept-audit-logs.md). 
+- [Programový přístup k sestavám Azure AD](concept-reporting-api.md)

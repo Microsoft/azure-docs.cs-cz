@@ -1,35 +1,36 @@
 ---
-title: Rychlý start – sestavení a spuštění image kontejneru ve službě Azure Container Registry
-description: Úlohy lze rychle spustit pomocí Azure Container Registry k sestavení a spuštění kontejneru obrázků na vyžádání v cloudu.
+title: Rychlý Start – sestavení a spuštění image kontejneru v Azure Container Registry
+description: Rychle spouštějte úlohy s Azure Container Registry k sestavení a spuštění image kontejneru na vyžádání v cloudu.
 services: container-registry
 author: dlepow
+manager: gwallace
 ms.service: container-registry
 ms.topic: quickstart
 ms.date: 04/02/2019
 ms.author: danlep
 ms.custom: ''
-ms.openlocfilehash: be120ea8ae588da486c9a5acd4eb7bfdb4e45dee
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: e5e02d8194f9164a03bb27d932df45d91486c518
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64701569"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68310633"
 ---
-# <a name="quickstart-build-and-run-a-container-image-using-azure-container-registry-tasks"></a>Rychlý start: Sestavte a spusťte image kontejneru pomocí Azure Container Registry úlohy
+# <a name="quickstart-build-and-run-a-container-image-using-azure-container-registry-tasks"></a>Rychlý start: Sestavení a spuštění image kontejneru pomocí Azure Container Registrych úloh
 
-V tomto rychlém startu použijete Azure Container Registry úlohy příkazy rychle vytvářet, vkládat a spuštění Docker image kontejneru z nativně v rámci Azure, ukazuje, jak přesměrovat cyklu vývoje "vnitřní smyčky" do cloudu. [Úlohy služby ACR] [ container-registry-tasks-overview] je sada funkcí v rámci Azure Container Registry k vám pomůžou spravovat a upravovat imagí kontejnerů v cyklu kontejneru. 
+V tomto rychlém startu použijete příkazy Azure Container Registry úkoly k rychlému sestavování, nasdílení a spuštění image kontejneru Docker v rámci Azure, který ukazuje, jak přesměrovat vývojový cyklus "vnitřní smyčka" do cloudu. [ACR úkoly][container-registry-tasks-overview] jsou sadou funkcí v rámci Azure Container Registry, které vám pomůžou se správou a úpravou imagí kontejnerů napříč životním cyklem kontejneru. 
 
-Po tomto rychlém startu prozkoumání pokročilejších funkcí úloh služby ACR. Úlohy služby ACR může automatizace sestavování imagí na základě potvrzení změn kódu nebo aktualizace základní image, nebo testovat více kontejnerů, paralelně, mimo jiné scénáře. 
+Po tomto rychlém startu Prozkoumejte pokročilejší funkce úloh ACR. ACR úlohy můžou automatizovat sestavení imagí na základě potvrzení kódu nebo základních aktualizací imagí nebo můžete paralelně testovat více kontejnerů, a to i v jiných scénářích. 
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet][azure-account] před tím, než začnete.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-K dokončení tohoto rychlého startu můžete použít Azure Cloud Shell nebo místní instalaci Azure CLI. Pokud chcete použít ho místně, verze 2.0.58 nebo později se doporučuje. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][azure-cli-install].
+K dokončení tohoto rychlého startu můžete použít Azure Cloud Shell nebo místní instalaci Azure CLI. Pokud byste ho chtěli používat místně, doporučuje se verze 2.0.58 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][azure-cli-install].
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-Pokud ještě nemáte registru kontejneru, nejdřív vytvořte skupinu prostředků s [vytvořit skupiny az] [ az-group-create] příkazu. Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure.
+Pokud ještě nemáte registr kontejnerů, vytvořte nejprve skupinu prostředků pomocí příkazu [AZ Group Create][az-group-create] . Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure.
 
 Následující příklad vytvoří skupinu prostředků *myResourceGroup* v umístění *eastus*.
 
@@ -39,23 +40,23 @@ az group create --name myResourceGroup --location eastus
 
 ## <a name="create-a-container-registry"></a>Vytvoření registru kontejnerů
 
-Vytvoření registru kontejnerů pomocí [az acr vytvořit] [ az-acr-create] příkazu. Název registru musí být jedinečný v rámci Azure a musí obsahovat 5 až 50 alfanumerických znaků. V následujícím příkladu *myContainerRegistry008* se používá. Aktualizujte název na jedinečnou hodnotu.
+Pomocí příkazu [AZ ACR Create][az-acr-create] vytvořte registr kontejnerů. Název registru musí být jedinečný v rámci Azure a musí obsahovat 5 až 50 alfanumerických znaků. V následujícím příkladu se používá *myContainerRegistry008* . Aktualizujte název na jedinečnou hodnotu.
 
 ```azurecli-interactive
 az acr create --resource-group myResourceGroup --name myContainerRegistry008 --sku Basic
 ```
 
-Tento příklad vytvoří *základní* registru, možnost pro vývojáře, další informace o službě Azure Container Registry a optimalizovat náklady. Podrobnosti o úrovních služeb najdete v tématu [skladové položky služby Container registry][container-registry-skus].
+Tento příklad vytvoří *základní* registr, což je možnost pro vývojáře, která se naučí o Azure Container Registry. Podrobnosti k dostupným úrovním služeb najdete v tématu [SKU služby Container Registry][container-registry-skus].
 
-## <a name="build-an-image-from-a-dockerfile"></a>Sestavení image ze souboru Dockerfile
+## <a name="build-an-image-from-a-dockerfile"></a>Vytvoření image z souboru Dockerfile
 
-Teď pomocí Azure Container Registry k sestavení image. Nejprve vytvořte pracovní adresář a potom vytvořte soubor Dockerfile s názvem *soubor Dockerfile* s následujícím obsahem. Toto je jednoduchý příklad k vytvoření image kontejneru Linuxu, ale můžete vytvořit vlastní standardní soubor Dockerfile a tvorbě bitových kopií pro jiné platformy.
+Nyní pomocí Azure Container Registry vytvořit bitovou kopii. Nejprve vytvořte pracovní adresář a pak vytvořte souboru Dockerfile s názvem *souboru Dockerfile* s následujícím obsahem. Toto je jednoduchý příklad pro sestavení image kontejneru Linux, ale můžete vytvořit vlastní standardní souboru Dockerfile a image sestavení pro jiné platformy.
 
 ```bash
 echo FROM hello-world > Dockerfile
 ```
 
-Spustit [az acr sestavení] [ az-acr-build] příkazu k sestavení image. Po úspěšném sestavení, je na obrázku nahrány do vašeho registru. Následující příklad nabízených oznámení `sample/hello-world:v1` bitové kopie. `.` Na konci příkaz nastaví umístění souboru Dockerfile, v tomto případě aktuální adresář.
+Spusťte příkaz [AZ ACR Build][az-acr-build] a sestavte image. Po úspěšném sestavení se obrázek vloží do registru. Následující příklad `sample/hello-world:v1` vloží obrázek. `.` Na konci příkazu nastaví umístění souboru Dockerfile, v tomto případě aktuální adresář.
 
 ```azurecli-interactive
 az acr build --image sample/hello-world:v1 --registry myContainerRegistry008 --file Dockerfile . 
@@ -113,18 +114,18 @@ v1: digest: sha256:92c7f9c92844bbbb5d0a101b22f7c2a7949e40f8ea90c8b3bc396879d95e8
 Run ID: ca8 was successful after 10s
 ```
 
-## <a name="run-the-image"></a>Spusťte image
+## <a name="run-the-image"></a>Spustit bitovou kopii
 
-Nyní lze rychle spustit obrázek, který vytvořeny a nahrány do vašeho registru. V pracovním postupu vývoje kontejneru může se jednat o ověřovací krok před nasazením image.
+Nyní můžete rychle spustit obrázek, který jste vytvořili a vložili do registru. V pracovním postupu vývoje kontejneru může to být krok ověření před nasazením image.
 
-Vytvořte soubor *quickrun.yaml* v místní pracovní složky s následujícím obsahem pro jednoho kroku. Nahraďte názvem přihlašovacího serveru vašeho registru pro  *\<acrLoginServer\>*. Název přihlašovacího serveru je ve formátu  *\<název registru\>. azurecr.io* (malými písmeny), například *mycontainerregistry008.azurecr.io*. Tento příklad předpokládá vytvořeny a nahrány `sample/hello-world:v1` bitové kopie v předchozí části:
+Vytvořte soubor *quickrun. yaml* v místním pracovním adresáři s následujícím obsahem pro jeden krok. Nahraďte název přihlašovacího serveru vašeho registru pro  *\<acrLoginServer\>* . Název přihlašovacího serveru je ve formátu  *\<Registry-name\>. azurecr.IO* (všechna malá písmena), například *mycontainerregistry008.azurecr.IO*. V tomto příkladu se předpokládá, že jste vytvořili `sample/hello-world:v1` a vložili image do předchozí části:
 
 ```yml
 steps:
   - cmd: <acrLoginServer>/sample/hello-world:v1
 ```
 
-`cmd` Krok v tomto příkladu se spustí kontejner v její výchozí konfiguraci, ale `cmd` podporuje další `docker run` parametry nebo dokonce i v dalších `docker` příkazy.
+Krok v tomto příkladu spustí kontejner ve své výchozí konfiguraci, ale `cmd` podporuje další `docker run` parametry nebo dokonce i jiné `docker` příkazy. `cmd`
 
 Spusťte kontejner pomocí následujícího příkazu:
 
@@ -179,7 +180,7 @@ Run ID: cab was successful after 6s
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud už je nepotřebujete, můžete použít [odstranění skupiny az] [ az-group-delete] příkazu odeberte skupinu prostředků, do registru kontejneru a imagí kontejnerů v ní uloženy.
+Pokud už je nepotřebujete, můžete k odebrání skupiny prostředků, registru kontejneru a uložených imagí kontejneru použít příkaz [AZ Group Delete][az-group-delete] .
 
 ```azurecli
 az group delete --name myResourceGroup
@@ -187,10 +188,10 @@ az group delete --name myResourceGroup
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto rychlém startu jste použili funkce ACR úloh rychle vytvářet, vkládat a spuštění Docker image kontejneru z nativně v rámci Azure. I nadále kurzů Azure Container Registry a další informace o použití služby ACR úloh k automatizaci sestavování imagí a aktualizace.
+V tomto rychlém startu jste použili funkce ACR úloh k rychlému sestavování, nasdílení a spouštění image kontejneru Docker v rámci Azure. Další informace o použití úloh ACR k automatizaci sestavení a aktualizací imagí najdete v kurzech Azure Container Registry.
 
 > [!div class="nextstepaction"]
-> [Kurzy služby Azure Container Registry][container-registry-tutorial-quick-task]
+> [Kurzy Azure Container Registry][container-registry-tutorial-quick-task]
 
 <!-- LINKS - external -->
 [docker-linux]: https://docs.docker.com/engine/installation/#supported-platforms

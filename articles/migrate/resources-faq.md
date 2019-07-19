@@ -1,231 +1,205 @@
 ---
-title: Azure Migrate – nejčastější dotazy (FAQ) | Dokumentace Microsoftu
-description: Nejčastější dotazy k Azure Migrate adresy
+title: Nejčastější dotazy k Azure Migrateu (FAQ) | Microsoft Docs
+description: Řeší Nejčastější dotazy týkající se Azure Migrate
 author: snehaamicrosoft
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 03/28/2019
+ms.date: 07/17/2019
 ms.author: snehaa
-ms.openlocfilehash: 08a0312f12b3daab8b7f5e88da118b5bcbeb2f4c
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: e5b4777adfcbb5babbf5db792a10d025c79b1a8b
+ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67807332"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68302372"
 ---
-# <a name="azure-migrate---frequently-asked-questions-faq"></a>Azure Migrate – nejčastější dotazy (FAQ)
+# <a name="azure-migrate---frequently-asked-questions-faq"></a>Nejčastější dotazy k Azure Migrate (FAQ)
 
-Tento článek obsahuje nejčastější dotazy týkající se Azure Migrate. Pokud máte další dotazy, po přečtení tohoto článku, publikujte je na [fórum pro Azure Migrate](https://aka.ms/AzureMigrateForum).
+Tento článek obsahuje nejčastější dotazy týkající se Azure Migrate. Pokud máte další dotazy po přečtení tohoto článku, publikujte je na [Azure Migrate Fórum](https://aka.ms/AzureMigrateForum).
 
 ## <a name="general"></a>Obecné
 
-### <a name="which-azure-geographies-are-supported-by-azure-migrate"></a>Které geografické oblasti Azure jsou podporovány službou Azure Migrate?
-Azure Migrate aktuálně podporuje řadu geografické oblasti, ve kterých je vytvořit projekt Azure Migrate. I v případě, že projekty lze vytvořit pouze v těchto geografické oblasti, můžete přesto posoudit vašich počítačů pro jiné cílové umístění. Zeměpisné oblasti projektu slouží pouze k uložení metadat zjištěných.
+### <a name="which-azure-geographies-are-supported-by-azure-migrate"></a>Které geografické oblasti Azure podporuje Azure Migrate?
+Azure Migrate aktuálně podporuje řadu geografických oblastí, ve kterých lze vytvořit Azure Migrate projekt. I když v těchto geografických oblastech můžete vytvářet pouze projekty, můžete i nadále vyhodnocovat nebo migrovat počítače pro další cílová umístění. Geografie projektu se používá pouze k uložení zjištěných metadat.
 
-**Zeměpisné oblasti** | **umístění úložiště metadat** Azure Government | Asie Virginie US Gov | Jihovýchodní Asie nebo Evropy východní Asie | Jižní Evropa a západní Evropa, Spojené království | Velká Británie – jih nebo Velká Británie – západ USA | USA (střed) nebo USA – západ 2
+
+**Zeměpisné oblasti** | **Umístění úložiště metadat**
+--- | ---
+Azure Government | USA (Gov) – Virginia
+Asie | Jihovýchodní Asie nebo Východní Asie
+Evropa | Jižní Evropa nebo Západní Evropa
+Spojené království | Velká Británie – jih nebo Velká Británie – západ
+Spojené státy | Střed USA nebo Západní USA 2
+
+
+> [!NOTE]
+> Podpora Azure Government je v tuto chvíli dostupná jenom pro [starší verze](https://docs.microsoft.com/azure/migrate/migrate-services-overview#azure-migrate-versions) Azure Migrate.
 
 ### <a name="how-is-azure-migrate-different-from-azure-site-recovery"></a>Jak se Azure Migrate liší od Azure Site Recovery?
 
-Azure Migrate nabízí nástroje, které vám umožní zjišťovat, posuzovat a migrovat počítače a úlohy do Azure. [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/migrate-tutorial-on-premises-azure) je řešení pro zotavení po havárii. Obě služby sdílí některé komponenty.
+Azure Migrate poskytuje centralizované centrum pro spouštění, spouštění a sledování zjišťování, posuzování a migrace počítačů a úloh do Azure. [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/migrate-tutorial-on-premises-azure) je řešení zotavení po havárii. Migrace Azure Migrate serveru využívá Azure Site Recovery v back-endu k povolení migračních scénářů pro migraci místních počítačů pomocí přenesených a posunutí.
 
 ## <a name="azure-migrate-appliance-vmwarephysical-servers"></a>Zařízení Azure Migrate (VMware/fyzické servery)
 
-### <a name="how-does-the-azure-migrate-appliance-connect-to-azure"></a>Jak Azure Migrate zařízení připojit k Azure?
+### <a name="how-does-the-azure-migrate-appliance-connect-to-azure"></a>Jak se zařízení Azure Migrate připojuje k Azure?
 
-Může být připojení přes internet, nebo můžete použít u veřejného partnerského vztahu ExpressRoute.
+Připojení může být přes Internet nebo můžete použít ExpressRoute s veřejným partnerským vztahem/Microsoftu.
 
-### <a name="what-network-connectivity-requirements-are-needed-for-azure-migrate-server-assessment-and-migration"></a>Jaké požadavky síťového připojení jsou potřeba pro Azure Migrate serveru vyhodnocení a migrace
+### <a name="what-network-connectivity-requirements-are-needed-for-azure-migrate-server-assessment-and-migration"></a>Jaké požadavky na připojení k síti jsou potřeba pro Azure Migrate posouzení a migrace serveru
 
-Adresy URL a porty potřebné ke službě Azure Migrate ke komunikaci s Azure, najdete v tématu [VMWare](migrate-support-matrix-vmware.md) a [Hyper-V](migrate-support-matrix-hyper-v.md) podporují matice.
+Pro adresy URL a porty potřebné pro Azure Migrate komunikace s Azure si přečtěte matrice podpory [VMware](migrate-support-matrix-vmware.md) a [Hyper-V](migrate-support-matrix-hyper-v.md) .
 
-### <a name="can-i-harden-the-appliance-vmware-vm-i-set-up-with-the-ova-template"></a>Můžete posílení zabezpečení zařízení nastavit pomocí OVA šablony virtuálního počítače VMware?
+### <a name="can-i-harden-the-appliance-vm-i-set-up-with-the-template"></a>Je možné posílit virtuální počítač zařízení, který jste nastavili pomocí šablony?
 
-Další součásti (například antivirový program) je možné přidat do šablony OVA komunikace a brány firewall pravidel potřebných pro zařízení Azure Migrate re doleva, jako je.   
+Do šablony se dají přidat další komponenty (například anti-virus), pokud se pravidla komunikace a brány firewall požadovaná pro Azure Migrate zařízení znovu nacházela.   
 
-### <a name="to-harden-the-azure-migrate-appliance-what-are-the-recommended-antivirus-av-exclusions"></a>Posilte zabezpečení zařízení Azure Migrate, jaké jsou doporučené výjimky antivirové ochrany v programu (AV)?
+### <a name="what-data-is-collected-by-azure-migrate-appliance"></a>Jaká data shromažďuje zařízení Azure Migrate?
 
-Je třeba vyloučit z kontroly na zařízení následující složky:
+Podrobnosti o datech shromažďovaných v Azure Migrate zařízení najdete [tady](https://docs.microsoft.com/azure/migrate/migrate-appliance#collected-performance-data-vmware).
 
-- Složky obsahující binární soubory pro služby Azure Migrate. Vylučte všechny podsložky.
-- %ProgramFiles%\ProfilerService  
-- Azure Migrate webové aplikace. Vylučte všechny podsložky.
-- %SystemDrive%\inetpub\wwwroot
-- V místní mezipaměti databáze a soubory protokolů. Služba Azure Migrate potřebuje přístup pro čtení/zápis do této složky.
-  - %SystemDrive%\Profiler
+### <a name="is-there-any-performance-impact-on-the-analyzed-vmware-or-hyper-v-environment"></a>Existuje nějaký dopad na výkon analyzovaného prostředí VMware nebo Hyper-V?
 
-### <a name="what-data-is-collected-by-azure-migrate"></a>Jaká data se shromažďují službou Azure Migrate?
+Díky průběžnému profilování dat o výkonu Azure Migrate zařízení profily na místních počítačích k měření údajů o výkonu virtuálních počítačů. To má skoro nulový dopad na výkon hostitele Hyper-V/ESXi a také na vCenter Server.
 
-Zařízení Azure Migrate shromáždí metadata pro místní virtuální počítače, včetně:
+### <a name="where-is-the-collected-data-stored-and-for-how-long"></a>Kde jsou shromážděná data uložená a jak dlouho?
 
-**Data konfigurace virtuálního počítače**
-- Zobrazovaný název virtuálního počítače (na serveru vCenter)
-- Cesta inventáře virtuálního počítače (hostitele nebo clusteru/složku v systému vCenter)
-- IP adresa
-- Adresa MAC
-- Operační systém
-- Počet jader, disků, síťových adaptérů
-- Velikost paměti, velikosti disků
+Data shromažďovaná zařízením Azure Migrate se ukládají do umístění Azure, které zadáte při vytváření projektu migrace. Data jsou bezpečně uložená v rámci předplatného Microsoft a odstraňují se při odstranění Azure Migrate projektu.
 
-**Údaje o výkonu virtuálního počítače**
-- Využití procesoru
-- Využití paměti
-- U každého disku připojeného k virtuálnímu počítači:
-  - Propustnost čtení z disku
-  - Propustnost zápisů disku
-  - Čtení z disku operací za sekundu
-  - Disk se zapisuje operací za sekundu
-- Pro každý síťový adaptér připojený k virtuálnímu počítači:
-  - Sítě v
-  - Síťové výstupy
+Pokud pro vizualizaci závislostí nainstalujete agenty na virtuální počítače, uloží se data shromážděná agenty závislostí do USA v Log Analytics pracovním prostoru vytvořeném v předplatném Azure. Tato data se odstraní při odstranění pracovního prostoru Log Analytics v rámci vašeho předplatného. [Další informace](concepts-dependency-visualization.md).
 
-TN toho, pokud provádíte nasazení mapování závislostí, agenti mapování závislostí shromažďovat informace, jako jsou počítače plně kvalifikovaný název domény, operačního systému, IP adresa, adresa MAC, spuštěné procesy v rámci virtuálního počítače a příchozí/odchozí připojení TCP pro virtuální počítač. Toto zjišťování je volitelný používá pouze v případě, že povolíte mapování závislostí pro zjišťování.
+### <a name="what-is-the-volume-of-data-uploaded-by-azure-migrate-appliance-during-continuous-profiling"></a>Jaký je objem dat odesílaných zařízením Azure Migrate během nepřetržitého profilace?
 
-### <a name="is-there-any-performance-impact-on-the-analyzed-esxi-host-environment"></a>Je v analyzované prostředí hostitele ESXi ovlivnit výkon?
+Objem dat odesílaných do Azure Migrate se liší v závislosti na několika parametrech. Aby bylo možné poskytnout orientační číslo, Azure Migrate projekt s 10 počítači (každý s jedním diskem a jedním síťovým ROZHRANÍm) posílá přibližně 50 MB za den. Jedná se o přibližnou hodnotu, která se mění v závislosti na počtu datových bodů pro síťové karty a disky (posílaná data je nelineární, pokud se zvyšuje počet počítačů, síťových karet nebo disků).
 
-S průběžné profilace údaje o výkonu, profily zařízení Azure Migrate místních počítačů k měření údaje o výkonu virtuálního počítače. Tato akce nemá téměř žádný vliv na výkon na hostitelích ESXi, stejně jako v systému vCenter Server.
+### <a name="is-the-data-encrypted-at-rest-and-in-transit"></a>Jsou data zašifrovaná na klidovém a přenosovém stavu?
 
-### <a name="where-is-the-collected-data-stored-and-for-how-long"></a>Kde se shromážděná data uložená a jak dlouho?
+Ano pro obojí. Metadata se bezpečně odesílají do služby Azure Migrate přes Internet prostřednictvím protokolu HTTPS. Metadata se ukládají do [Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/database-encryption-at-rest)a v [Azure Blob Storage](https://docs.microsoft.com/azure/storage/common/storage-service-encryption) v předplatném Microsoftu a jsou šifrovaná v klidovém stavu.
 
-Data shromažďovaná společností zařízení Azure Migrate je uložen v umístění Azure, který zadáváte při vytváření projektu migrace. Data je bezpečně uložen v rámci předplatného Microsoft a se odstraní při odstranění projektu Azure Migrate.
+Data shromážděná agenty závislosti se zašifrují i při přenosu (zabezpečený protokol HTTPS) a ukládají se do Log Analyticsho pracovního prostoru v rámci předplatného uživatele. Je také zašifrovaný v klidovém stavu.
 
-Pro vizualizaci závislostí Pokud jste instalovali agenty na virtuální počítače, data shromážděná agenty závislostí uložená v USA, v pracovním prostoru Log Analytics vytvořené v rámci předplatného Azure. Tato data jsou odstraněna při odstranění pracovního prostoru Log Analytics v rámci vašeho předplatného. [Další informace](concepts-dependency-visualization.md).
+### <a name="how-does-the-azure-migrate-appliance-communicate-with-the-vcenter-server-and-the-azure-migrate-service"></a>Jak zařízení Azure Migrate komunikuje s vCenter Server a službou Azure Migrate?
 
-### <a name="what-is-the-volume-of-data-uploaded-by-azure-migrate-during-continuous-profiling"></a>Co je objem dat odeslaných službou Azure Migrate během profilace průběžné?
+Zařízení se připojí k vCenter Server (port 443) s použitím přihlašovacích údajů, které jste zadali při nastavení zařízení. Pomocí VMware PowerCLI se dotazuje na vCenter Server k shromažďování metadat o virtuálních počítačích spravovaných pomocí vCenter Server. Shromažďuje jak konfigurační data virtuálních počítačů (jader, paměti, disků, síťových adaptérů atd.), tak i historii výkonu každého virtuálního počítače za poslední měsíc. Shromážděná metadata se pak odesílají do posouzení serveru Azure Migrate (přes Internet prostřednictvím protokolu HTTPS) pro posouzení.
 
-Objem dat odesílaných do Azure Migrate se liší v závislosti na několik parametrů. Projekt Azure Migrate s 10 počítačů (každá má jeden disk a jednu síťovou kartu), poskytnout orientační číslo, odešle přibližně 50 MB za den. To je přibližně hodnota, která změny podle počtu datových bodů pro síťová rozhraní a disků (data odeslaná je nelineárních, pokud se zvyšuje počet počítačů, síťové adaptéry nebo disky).
+### <a name="can-i-connect-the-same-appliance-to-multiple-vcenter-servers"></a>Můžu připojit stejné zařízení k více serverům vCenter?
 
-### <a name="is-the-data-encrypted-at-rest-and-in-transit"></a>Je šifrování dat v klidovém stavu a během přenosu?
+Ano, jedno zařízení Azure Migrate se dá použít ke zjišťování více serverů vCenter, ale ne souběžně. Je nutné spustit zjišťování jednu po druhém.
 
-Ano pro obojí. Metadata se ke službě Azure Migrate odeslány bezpečně přes internet prostřednictvím protokolu https. Metadata uložená v [Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/database-encryption-at-rest)a v [úložiště objektů blob v Azure](https://docs.microsoft.com/azure/storage/common/storage-service-encryption) v předplatném Microsoft, a je šifrovaný v klidovém stavu.
+### <a name="i-changed-my-machine-size-can-i-rerun-an-assessment"></a>Změnil (a) jsem velikost mého počítače. Můžu znovu spustit posouzení?
 
-Data shromážděná agenty závislostí je také šifrovaný v přenosu (secure HTTPS) a je uložen v pracovním prostoru Log Analytics v předplatném uživatele. Je také šifrovaný v klidovém stavu.
+Zařízení Azure Migrate průběžně shromažďuje informace o místním prostředí. Posouzení je ale snímkem v čase místních virtuálních počítačů. Pokud změníte nastavení na virtuálním počítači, který chcete vyhodnotit, použijte k aktualizaci posouzení nejnovější změny možnost přepočítat.
 
-### <a name="how-does-the-azure-migrate-appliance-communicate-with-the-vcenter-server-and-the-azure-migrate-service"></a>Jak Azure Migrate zařízení komunikují s systému vCenter Server a služby Azure Migrate?
+### <a name="how-can-i-discover-a-multi-tenant-environment-in-azure-migrate-server-assessment"></a>Jak můžu zjistit víceklientské prostředí v Azure Migrate posouzení serveru?
 
-Zařízení se připojuje k systému vCenter Server (port 443) pomocí přihlašovacích údajů k dispozici při nastavování zařízení. Vyžádá si vCenter Server s použitím VMware PowerCLI se získat metadata o virtuálních počítačích spravovaných přes vCenter Server. Shromažďuje konfigurační data o virtuálních počítačích (jader, paměti, disky, NIC atd.), a také historie výkonu každého virtuálního počítače za poslední měsíc. Shromážděná metadata se pak posílají do Azure migrovat posouzení serveru (přes internet prostřednictvím protokolu HTTPS) pro posouzení. 
+V případě VMware máte prostředí, které je sdíleno mezi klienty a nechcete zjišťovat virtuální počítače jednoho klienta v rámci předplatného jiného tenanta, vytvořit vCenter Server přihlašovací údaje s přístupem pouze k těmto virtuálním počítačům, které chcete zjistit. Pak použijte přihlašovací údaje při zahájení zjišťování v zařízení Azure Migrate.
 
-### <a name="can-i-connect-the-same-appliance-to-multiple-vcenter-servers"></a>Můžete připojit na stejné zařízení na několik serverů vCenter?
+V případě technologie Hyper-V používá zjišťování přihlašovací údaje hostitele Hyper-V, a pokud virtuální počítače sdílejí stejný Hostitel Hyper-V, neexistuje v současnosti žádný způsob, jak zjišťování oddělit.  
 
-Ano, o jediné zařízení Azure Migrate je možné zjistit více vCenter servery, ale ne současně. Budete muset spustit zjišťování jeden po druhém.
+### <a name="how-many-vms-can-be-discovered-using-a-single-migration-appliance"></a>Kolik virtuálních počítačů je možné zjistit pomocí jediného zařízení migrace?
 
-### <a name="is-the-ova-template-used-by-site-recovery-integrated-with-the-ova-used-by-azure-migrate"></a>Šablona OVA používané pro Site Recovery integrovaná OVA použít se službou Azure Migrate?
+Můžete zjistit až 10 000 virtuálních počítačů VMware a až 5 000 virtuálních počítačů Hyper-V s použitím jediného zařízení migrace.  Pokud máte ve svém místním prostředí více počítačů, Naučte se škálovat [technologie Hyper-V](scale-hyper-v-assessment.md) a odhad [VMware](scale-vmware-assessment.md) .
 
-Aktuálně neexistuje žádná integrace. Na. Šablony pro soubory OVA ve službě Site Recovery se používá k nastavení konfiguračního serveru Site Recovery pro replikaci virtuálních počítačů VMware nebo fyzický server. Na. Soubory OVA použít se službou Azure Migrate se používá ke zjišťování virtuálních počítačů VMware, které jsou spravovány serverem vCenter, pro účely vyhodnocení a migraci.
+## <a name="azure-migrate-server-assessment"></a>Azure Migrate: Hodnocení serverů
 
-### <a name="i-changed-my-machine-size-can-i-rerun-an-assessment"></a>Můžu změnit svoji velikost počítače. Můžete znovu spustit posouzení?
-Zařízení Azure Migrate průběžně shromažďuje informace o místním prostředí. Posouzení ale snímku bodu v čase z místních virtuálních počítačů. Pokud změníte nastavení virtuálního počítače chcete posouzení, použijte možnost 'Přepočítat' k aktualizaci posouzení s nejnovějšími změnami.
+### <a name="does-azure-migrate-server-assessment-support-assessment-of-physical-servers"></a>Azure Migrate: Vyhodnocování podpory serverů pro fyzické servery?
 
-### <a name="how-can-i-discover-a-multi-tenant-environment-in-azure-migrate"></a>Jak lze zjistit prostředí s více tenanty ve službě Azure Migrate?
+Ne, Azure Migrate aktuálně nepodporuje posouzení fyzických serverů.
 
-Pro replikaci z VMware Pokud máte prostředí, které se sdílejí napříč tenanty a nechcete, aby ke zjištění virtuálních počítačů z jednoho tenanta v jiném tenantovi předplatné, vytvořte vCenter Server přihlašovací údaje s přístupem jen pro tyto virtuální počítače, které jste chtěli vyhledat. Pak použijte přihlašovací údaje při rutinního zjišťování v zařízení Azure Migrate.
+### <a name="does-azure-migrate-need-vcenter-server-to-discover-a-vmware-environment"></a>Vyžaduje Azure Migrate vCenter Server zjišťování prostředí VMware?
 
-Pro Hyper-V, zjišťování používá přihlašovacím údajům hostitele Hyper-V, pokud virtuální počítače sdílení stejného hostitele Hyper-V, neexistuje aktuálně žádný způsob, jak oddělit zjišťování.  
+Ano, Azure Migrate potřebuje vCenter Server ke zjišťování prostředí VMware. Nepodporuje zjišťování hostitelů ESXi, které nejsou spravované pomocí vCenter Server.
 
-### <a name="how-many-vms-can-be-discovered-using-a-single-migration-appliance"></a>Kolik virtuálních počítačů můžete zjistit pomocí zařízení jedna migrace?
+### <a name="whats-the-difference-between-using-azure-migrate-server-assessment-and-the-map-toolkit"></a>Jaký je rozdíl mezi použitím Azure Migrate: Vyhodnocování serveru a mapová sada nástrojů?
 
-Je možné vyhledat až 10 000 virtuálních počítačů VMware a až 5 000 virtuálních počítačů Hyper-V pomocí zařízení jedna migrace.  Pokud máte další počítače ve vašem místním prostředí, přečtěte si, jak škálovat [Hyper-V](scale-hyper-v-assessment.md) a [VMware](scale-vmware-assessment.md) posouzení.
+Azure Migrate: Posouzení serveru poskytuje vyhodnocení migrace, které vám pomůžou s připraveností na migraci, a vyhodnocení úloh pro migraci do Azure. [Sada nástrojů Microsoft Assessment and Planning (map) Toolkit](https://www.microsoft.com/download/details.aspx?id=7826) má jiné funkce, jako je například plánování migrace pro novější verze klientských a serverových operačních systémů Windows a sledování využívání softwaru. Pro tyto scénáře pokračujte v používání sady MAP Toolkit.
 
+### <a name="how-is-azure-migrate-server-assessment-different-from-azure-site-recovery-deployment-planner"></a>Jak je Azure Migrate: Vyhodnocování serveru se liší od Plánovač nasazení služby Azure Site Recovery?
 
-## <a name="azure-migrate-server-assessment"></a>Azure Migrate: Server Assessment
+Azure Migrate: Posuzování serveru je nástroj pro plánování migrace. Plánovač nasazení služby Azure Site Recovery je nástroj pro plánování zotavení po havárii.
 
-### <a name="does-azure-migrate-server-assessment-support-assessment-of-physical-servers"></a>Migrace Azure: Server Assessment podporuje posouzení fyzických serverů?
+- **Migrace z VMware/Hyper-V do Azure**: Pokud máte v úmyslu migrovat vaše místní servery do Azure, použijte Azure Migrate: Nástroj pro vyhodnocení serveru pro plánování migrace. Nástroj posuzuje místní úlohy a poskytuje pokyny, poznatky a mechanismy, které vám pomůžou při migraci do Azure. Jakmile budete připraveni k vašemu plánu migrace, můžete použít nástroje, jako je Azure Migrate: Migrace serveru, aby se počítače migrovali do Azure.
+- **Zotavení po havárii z VMware/Hyper-V do Azure**: Pro zotavení po havárii do Azure pomocí Site Recovery použijte Plánovač nasazení Site Recovery pro plánování zotavení po havárii. Site Recovery Plánovač nasazení provede hloubkové, Site Recovery specifické vyhodnocení místního prostředí. Poskytuje doporučení Site Recovery pro úspěšné operace zotavení po havárii, jako je replikace a převzetí služeb při selhání virtuálních počítačů.
 
-Ne, Azure Migrate v současné době nepodporuje posouzení fyzických serverů. 
+### <a name="does-azure-migrate-support-enterprise-agreement-ea-based-cost-estimation"></a>Podporuje Azure Migrate odhad nákladů na základě smlouva Enterprise (EA)?
 
-### <a name="does-azure-migrate-need-vcenter-server-to-discover-a-vmware-environment"></a>Serveru ke zjištění prostředí VMware vCenter potřebuje Azure Migrate?
-
-Ano, potřebuje Azure Migrate vCenter Server ke zjištění prostředí VMware. Nepodporuje zjišťování hostitelů ESXi, které nejsou spravované přes vCenter Server.
-
-### <a name="whats-the-difference-between-using-azure-migrate-server-assessment-and-the-map-toolkit"></a>Jaký je rozdíl mezi použitím nástrojů Azure Migrate: Server Assessment and Map Toolkit?
-
-Azure Migrate: Server Assessment poskytuje posouzení migrace, které vám pomůžou s přípravu migrace a hodnocení úloh pro migraci do Azure. [Microsoft Assessment and Planning (MAP) Toolkit](https://www.microsoft.com/download/details.aspx?id=7826) má jiné funkce, jako je migrace, plánování novějších verzích Windows klientských a serverových operačních systémů a sledování využití softwaru. U scénářů dál používat MAP Toolkit.
-
-### <a name="how-is-azure-migrate-server-assessment-different-from-azure-site-recovery-deployment-planner"></a>Jak se Azure Migrate: Posouzení serveru liší od Azure Site Recovery Deployment Planner?
-
-Azure Migrate: Server Assessment je nástroj pro plánování migrace. Azure Site Recovery Deployment Planner je nástroj pro plánování obnovení po havárii.
-
-- **Migraci z VMware/Hyper-V do Azure**: Pokud máte v úmyslu migrace vašich místních serverů do Azure, použijte Azure Migrate: Nástroj pro vyhodnocení server pro plánování migrace. Nástroj posuzuje místní úlohy a poskytuje pokyny, přehledy a mechanismy, které vám pomohou při migraci do Azure. Až budete připravení plán migrace zrealizovat, můžete použít nástroje, jako je Azure Migrate: Migrace serveru k migraci počítače do Azure.
-- **Zotavení po havárii z VMware/Hyper-V do Azure**: Pro zotavení po havárii do Azure pomocí Site Recovery použijte Plánovač nasazení služby Site Recovery pro plánování zotavení po havárii. Plánovač nasazení služby Site Recovery nemá podrobné, posouzení specifické pro Site Recovery v místním prostředí. Poskytuje doporučení, které jsou potřebné pro úspěšné po havárii operace, jako je replikace a převzetí služeb při selhání virtuálních počítačů pomocí Site Recovery. 
-
-### <a name="does-azure-migrate-support-enterprise-agreement-ea-based-cost-estimation"></a>Odhad nákladů na základě smlouvy Enterprise Agreement EA podporuje Azure Migrate?
-
-Azure Migrate v současné době nepodporuje odhad nákladů pro [nabídky Enterprise Agreement](https://azure.microsoft.com/offers/enterprise-agreement-support/). Alternativním řešením je zadat jako nabídku s průběžnými platbami a ručně zadejte procento slevy (platí pro předplatné) do pole "Slevy" vlastnosti posouzení.
+Azure Migrate v tuto chvíli nepodporuje odhad nákladů pro [smlouva Enterprise nabídku](https://azure.microsoft.com/offers/enterprise-agreement-support/). Alternativním řešením je zadat průběžné platby jako nabídku a ručně zadat procento slevy (použitelné pro předplatné) v poli sleva ve vlastnostech posouzení.
 
   ![Sleva](./media/resources-faq/discount.png)
 
-### <a name="whats-the-difference-between-as-on-premises-sizing-and-performance-based-sizing"></a>Jaký je rozdíl mezi jako on-premises velikost a velikost na základě výkonu?
+### <a name="whats-the-difference-between-as-on-premises-sizing-and-performance-based-sizing"></a>Jaký je rozdíl mezi tím, jak se mění velikost podle místního nastavení a velikosti na základě výkonu?
 
-- V podle velikosti, v místním Azure Migrate nebere v úvahu údaje o výkonu virtuálního počítače. Jeho velikosti virtuálních počítačů založených na místní konfiguraci. – V určení velikosti na základě výkonu velikosti podle data o využití.
-- Například pokud místní virtuální počítač má 4 jádra a 8 GB paměti s 50 % využití CPU a 50 % využití paměti v aplikaci, jako v místním nastavení velikosti doporučuje skladovou Položku virtuálního počítače Azure s 4 jádry a 8GB paměti. Změna velikosti na základě výkonu, ale doporučuje skladovou Položku virtuálního počítače 2 jádra a 4 GB, protože procentuální hodnota využití se považuje za.
-- Podobně určení velikosti disku závisí na dvě vlastnosti posouzení – Změna velikosti kritéria a úložiště typu.
-= Když je kritérium určení velikosti na základě výkonu a úložiště typu je automatické, hodnoty IOPS a propustnost disku jsou považovány za při identifikaci cílový typ disku (Standard nebo Premium).
-- Pokud je kritérium určení velikosti na základě výkonu a úložiště typu premium, se doporučuje disk úrovně premium. Disk úrovně premium, který je vybraná skladová položka podle velikosti na místním disku. Stejnou logiku slouží k určení velikosti disku, pokud je kritérium určení velikosti jako v místním nastavení velikosti, a je typ úložiště úrovně standard nebo premium.
+- V rámci as, Azure Migrate nepovažují data o výkonu virtuálních počítačů za místní. Velikost virtuálních počítačů vychází z místních konfigurací. – Při změně velikosti na základě výkonu je velikost založena na datech využití.
+- Například pokud má místní virtuální počítač 4 jádra a 8 GB paměti s 50% využitím procesoru a 50% využití paměti, jako při změně velikosti v místním prostředí se doporučuje SKU virtuálního počítače Azure se čtyřmi jádry a 8 GB paměti. Velikost na základě výkonu však doporučuje SKU virtuálních počítačů se dvěma jádry a 4 GB, protože procento využití je považováno za.
+- Podobně závisí velikost disku na dvou kritériích pro určení velikosti a typu úložiště.
+= Pokud je kritérium změny velikosti v závislosti na výkonu a typ úložiště je automatický, hodnoty IOPS a propustnosti disku se při určování typu cílového disku (Standard nebo Premium) posuzují.
+- Pokud je kritérium změny velikosti v závislosti na výkonu a typ úložiště je Premium, doporučuje se disk Premium. SKU disku úrovně Premium se vybere na základě velikosti místního disku. Stejná logika se používá k určení velikosti disku, pokud je kritérium změny velikosti místní a typ úložiště je Standard nebo Premium.
 
-### <a name="what-impact-does-performance-history-and-percentile-utilization-have-on-the-size-recommendations"></a>Doporučení velikosti jaký vliv má percentilu a historii využití výkonu?
+### <a name="what-impact-does-performance-history-and-percentile-utilization-have-on-the-size-recommendations"></a>Jaký dopad má využití historie výkonu a percentilu na velikost doporučení?
 
 Tyto vlastnosti se zohledňují pouze při určování velikosti na základě výkonu.
 
-- Azure Migrate shromažďuje historie výkonu místních počítačů a použije ho k doporučujeme typ velikosti a disku virtuálního počítače v Azure.
-- Zařízení průběžně profily v místním prostředí pro shromažďování dat o využití v reálném čase každých 20 sekund. Zařízení seskupuje 20sekundové vzorky a pro každých 15 minut vytvoří jeden datový bod. Jeden datový bod se vytvoří tak, že zařízení ze všech 20sekundových vzorků vybere maximální hodnotu a odešle ji do Azure.
-- Když vytváříte posouzení v Azure (podle dobu trvání výkonu a hodnoty percentilu historie výkonu), Azure Migrate vypočítá hodnotu efektivní využití a použije ho k nastavení velikosti.
-- Například pokud nastavíte dobu trvání výkonu bude jeden den a hodnotu percentilu 95. percentilu, Azure Migrate používá 15 minut vzorových bodů zaslaná z kolekce za poslední den, seřazený ve vzestupném pořadí a vybere 95. percentil hodnoty jako efektivní využití.
-- 95. percentil hodnoty zajistí, že se ignoruje všechny odlehlé hodnoty, které může dojít, pokud 99. percentilu. Pokud chcete vybrat maximální využití v určitém období a nechcete přijít o žádné odlehlé hodnoty, měli byste vybrat 99. percentil.
+- Azure Migrate shromažďuje historii výkonu místních počítačů a používá je k tomu, aby v Azure doporučila velikost virtuálního počítače a typ disku.
+- Zařízení nepřetržitě profiluje místní prostředí za účelem shromažďování dat o využití v reálném čase každých 20 sekund. Zařízení seskupuje 20sekundové vzorky a pro každých 15 minut vytvoří jeden datový bod. Jeden datový bod se vytvoří tak, že zařízení ze všech 20sekundových vzorků vybere maximální hodnotu a odešle ji do Azure.
+- Když vytvoříte posouzení v Azure (na základě hodnoty doby trvání a percentilu historie výkonu), Azure Migrate vypočítá efektivní hodnotu využití a použije ji ke změně velikosti.
+- Pokud například nastavíte dobu trvání výkonu na jeden den a hodnotu percentilu na 95. percentil, Azure Migrate použije pro poslední den vzorové body 15 minut odeslané kolektorem, seřadí je ve vzestupném pořadí a hodnota 95. percentilu se vybere jako efektivní využití.
+- Hodnota 95. percentilu zajišťuje, že budete ignorovat jakékoli odlehlé hodnoty, ke kterým může dojít, pokud použijete 99 percentil. Pokud chcete vybrat maximální využití v určitém období a nechcete přijít o žádné odlehlé hodnoty, měli byste vybrat 99. percentil.
 
-### <a name="what-is-dependency-visualization"></a>Co je vizualizace závislostí?
+### <a name="what-is-dependency-visualization"></a>Co je Vizualizace závislostí?
 
-Vizualizace závislostí lze posoudit skupiny virtuálních počítačů pro migraci s větší jistotou. Je mezi zjednodušená kontrola hodnot závislostí počítačů před spuštěním posouzení. Vizualizace závislostí pomáhá zajistit, že nic se zachovají a vyhnout se nečekaných výpadků při migraci do Azure. Azure Migrate využívá řešení Service Map v protokolech Azure Monitor umožňuje vizualizace závislostí.
+Vizualizace závislostí umožňuje vyhodnotit skupiny virtuálních počítačů pro migraci s větší jistotou. Křížově kontroluje závislosti počítačů před spuštěním posouzení. Vizualizace závislostí pomáhá zajistit, že nic nezbývá, a při migraci do Azure se vyhnete neočekávanému výpadku. Azure Migrate využívá řešení Service Map v protokolech Azure Monitor, aby bylo možné povolit vizualizaci závislostí.
 
 > [!NOTE]
-> Funkce vizualizace závislostí není k dispozici ve službě Azure Government.
+> Funkce vizualizace závislosti není v Azure Government k dispozici.
 
-### <a name="do-i-need-to-pay-to-use-the-dependency-visualization-feature"></a>Musím zaplatit pomocí funkce vizualizace závislostí?
+### <a name="do-i-need-to-pay-to-use-the-dependency-visualization-feature"></a>Musím platit za použití funkce Vizualizace závislostí?
 
 Ne. [Další informace](https://azure.microsoft.com/pricing/details/azure-migrate/) o cenách služby Azure Migrate.
 
-### <a name="do-i-need-to-install-anything-for-dependency-visualization"></a>Je potřeba instalovat cokoli, co je pro vizualizace závislostí?
+### <a name="do-i-need-to-install-anything-for-dependency-visualization"></a>Musím pro vizualizaci závislostí nainstalovat cokoli?
 
-Pokud chcete použít vizualizaci závislostí, budete muset stáhnout a nainstalovat agenty na každém v místním počítači, který chcete vyhodnotit.
+Pokud chcete používat vizualizaci závislostí, je potřeba stáhnout a nainstalovat agenty na každý místní počítač, který chcete vyhodnotit.
 
-- [Microsoft Monitoring agent(MMA)](https://docs.microsoft.com/azure/log-analytics/log-analytics-agent-windows) musí být nainstalovaný na každém počítači.
-- [Agenta závislostí](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure) musí být nainstalovaný na každém počítači.
-- Kromě toho pokud máte počítače bez připojení k Internetu, musíte stáhnout a nainstalovat bránu Log Analytics na ně.
+- Na každém počítači je potřeba nainstalovat [agenta Microsoft Monitoring Agent (MMA)](https://docs.microsoft.com/azure/log-analytics/log-analytics-agent-windows) .
+- Na každém počítači je potřeba nainstalovat [agenta závislostí](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure) .
+- Kromě toho, pokud máte počítače bez připojení k Internetu, je potřeba stáhnout a nainstalovat Log Analytics bránu.
 
-Pokud používáte vizualizace závislostí, nemusíte tyto agenty.
+Pokud nepoužíváte vizualizaci závislostí, nepotřebujete tyto agenty.
 
-### <a name="can-i-use-an-existing-workspace-for-dependency-visualization"></a>Můžete použít stávající pracovní prostor pro vizualizace závislostí?
+### <a name="can-i-use-an-existing-workspace-for-dependency-visualization"></a>Můžu použít existující pracovní prostor pro vizualizaci závislostí?
 
-Ano, můžete připojit existující pracovní prostor do projektu migrace a využít pro vizualizace závislostí. [Další informace](concepts-dependency-visualization.md#how-does-it-work).
+Ano, existující pracovní prostor můžete připojit k projektu migrace a využít ho pro vizualizaci závislostí. [Další informace](concepts-dependency-visualization.md#how-does-it-work).
 
-### <a name="can-i-export-the-dependency-visualization-report"></a>Můžete exportovat sestavu vizualizace závislostí?
+### <a name="can-i-export-the-dependency-visualization-report"></a>Můžu sestavu Vizualizace závislostí exportovat?
 
-Ne, není možné exportovat vizualizace závislostí. Ale protože Azure Migrate využívá mapu služeb pro vizualizaci závislostí, můžete použít [rozhraní REST API služby mapy](https://docs.microsoft.com/rest/api/servicemap/machines/listconnections) získat závislosti ve formátu json.
+Ne, vizualizace závislosti se nedá exportovat. Vzhledem k tomu, že Azure Migrate používá Service Map pro vizualizaci závislostí, můžete použít [rozhraní Service map REST API](https://docs.microsoft.com/rest/api/servicemap/machines/listconnections) k získání závislostí ve formátu JSON.
 
-### <a name="how-can-i-automate-the-installation-of-microsoft-monitoring-agent-mma-and-dependency-agent"></a>Jak automatizovat instalaci Microsoft Monitoring Agent (MMA) a agenta závislostí
+### <a name="how-can-i-automate-the-installation-of-microsoft-monitoring-agent-mma-and-dependency-agent"></a>Jak můžu automatizovat instalaci Microsoft Monitoring Agent (MMA) a agenta závislostí?
 
-[Pomocí tohoto skriptu](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#installation-script-examples) pro instalaci agentů. [Postupujte podle těchto pokynů](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent#install-and-configure-agent) k instalaci agenta MMA pomocí příkazového řádku nebo automatizace. Pro agenta MMA, využijte [tento skript](https://gallery.technet.microsoft.com/scriptcenter/Install-OMS-Agent-with-2c9c99ab).
+[Použijte tento skript](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#installation-script-examples) pro instalaci agentů. [Postupujte podle těchto pokynů](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent#install-and-configure-agent) a nainstalujte MMA pomocí příkazového řádku nebo automatizace. Pro MMA [Tento skript](https://gallery.technet.microsoft.com/scriptcenter/Install-OMS-Agent-with-2c9c99ab)Využijte.
 
-Kromě skriptů, můžete pomocí nástroje nasazení, jako je System Center Configuration Manager [Intigua](https://www.intigua.com/getting-started-intigua-for-azure-migration) atd. a nasadit agenty.
+Kromě skriptů můžete použít nástroje pro nasazení, jako je System Center Configuration Manager, [Intigua](https://www.intigua.com/getting-started-intigua-for-azure-migration) atd. k nasazení agentů.
 
-### <a name="what-operating-systems-are-supported-by-mma"></a>Jaké operační systémy podporují MMA?
+### <a name="what-operating-systems-are-supported-by-mma"></a>Které operační systémy podporuje MMA?
 
-- [Kontrola](https://docs.microsoft.com/azure/log-analytics/log-analytics-concept-hybrid#supported-windows-operating-systems) seznamu operačních systémů Windows nepodporuje agenta MMA.
-- [Revize] https://docs.microsoft.com/azure/log-analytics/log-analytics-concept-hybrid#supported-linux-operating-systems) seznam operačních systémů Linux podporuje agenta MMA.
+- [Projděte](https://docs.microsoft.com/azure/log-analytics/log-analytics-concept-hybrid#supported-windows-operating-systems) si seznam operačních systémů Windows, které podporuje MMA.
+- [Projděte](https://docs.microsoft.com/azure/log-analytics/log-analytics-concept-hybrid#supported-linux-operating-systems) si seznam operačních systémů Linux podporovaných nástrojem MMA.
 
-### <a name="what-are-the-operating-systems-supported-by-the-dependency-agent"></a>Co jsou operačních systémech podporovaných produktem agenta závislostí?
+### <a name="what-are-the-operating-systems-supported-by-the-dependency-agent"></a>Jaké jsou operační systémy podporované agentem závislostí?
 
-[Kontrola](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#supported-windows-operating-systems) operační systémy Windows nepodporuje agenta závislostí.
-[Kontrola](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#supported-linux-operating-systems) seznam operačních systémů Linux podporuje agenta závislostí.
+[Přečtěte si](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#supported-windows-operating-systems) operační systémy Windows podporované agentem závislostí.
+[Projděte](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#supported-linux-operating-systems) si seznam operačních systémů Linux podporovaných agentem závislostí.
 
-### <a name="can-i-visualize-dependencies-in-azure-migrate-for-more-than-an-hour"></a>Je možné vizualizovat závislosti ve službě Azure Migrate pro více než jedna hodina?
-Ne, můžete vizualizovat závislosti pro až na jednu hodinu. Můžete přejít zpět na konkrétní datum v historii, až po poslední měsíc, ale maximální doba trvání za účelem vizualizace je jedna hodina. Například můžete dobu trvání na mapě závislostí zobrazit závislosti pro včerejška ale jenom ji mohou zobrazit okna hodinová. Můžete však použít protokoly Azure monitoru a [dotazovat data závislostí](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies) za delší dobu.
+### <a name="can-i-visualize-dependencies-in-azure-migrate-for-more-than-an-hour"></a>Je možné vizualizovat závislosti v Azure Migrate po dobu delší než hodinu?
+Ne, můžete vizualizovat závislosti až o hodinu. Můžete se vrátit k určitému datu v historii, až do posledního měsíce, ale maximální doba trvání vizualizace je hodina. Například můžete použít dobu trvání na mapě závislostí k zobrazení závislostí včera, ale lze je zobrazit pouze v rámci jednoho hodiny okna. Můžete ale použít protokoly Azure Monitor k dotazování na [data závislostí](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies) v delší době trvání.
 
-### <a name="is-dependency-visualization-supported-for-groups-with-more-than-ten-vms"></a>Platí pro skupiny s více než deset virtuálních počítačů vizualizace závislostí?
-Je možné [vizualizace závislostí u skupin](https://docs.microsoft.com/azure/migrate/how-to-create-group-dependencies) s až deset virtuálních počítačů. Jestli máte skupinu s více než deset virtuálních počítačů, doporučujeme rozdělit skupiny v menším skupinám a pak vizualizovat závislosti.
+### <a name="is-dependency-visualization-supported-for-groups-with-more-than-10-vms"></a>Podporuje se pro skupiny s více než 10 virtuálními počítači Vizualizace závislostí?
+Můžete [vizualizovat závislosti pro skupiny](https://docs.microsoft.com/azure/migrate/how-to-create-group-dependencies) s až 10 virtuálními počítači. Pokud máte skupinu s více než 10 virtuálními počítači, doporučujeme rozdělit skupinu do menších skupin a potom tyto závislosti vizualizovat.
 
 ## <a name="azure-migrate-server-migration"></a>Azure Migrate: Migrace serveru
 
-### <a name="how-is-azure-migrate-server-migration-different-from-azure-site-recovery"></a>Jak se Azure Migrate: Migrace serveru liší od Azure Site Recovery?
+### <a name="how-is-azure-migrate-server-migration-different-from-azure-site-recovery"></a>Jak je Azure Migrate: Migrace serveru se liší od Azure Site Recovery?
 
-Azure Migrate: Migrace serveru využívá modul replikace Site Recovery pro migraci založené na agentovi serverů do Azure.
-## <a name="next-steps"></a>Další postup
+Azure Migrate: Migrace serveru využívá replikační modul Site Recovery pro migraci virtuálních počítačů VMware založenou na agentech, migraci virtuálních počítačů Hyper-V a migraci fyzických serverů do Azure. Možnost bez agenta pro migraci virtuálních počítačů VMware je nativně integrovaná do migrace serveru.
+
+## <a name="next-steps"></a>Další kroky
 Přečtěte si [přehled Azure Migrate](migrate-services-overview.md)

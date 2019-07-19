@@ -1,56 +1,56 @@
 ---
-title: Azure Container Registry úložiště na webu Azure Portal
-description: Postup zobrazení Azure Container Registry úložiště na webu Azure Portal.
+title: Azure Container Registry úložišť v Azure Portal
+description: Jak zobrazit Azure Container Registry úložišť v Azure Portal.
 services: container-registry
 author: cristy
-manager: jeconnoc
+manager: gwallace
 ms.service: container-registry
 ms.topic: article
 ms.date: 01/05/2018
-ms.author: cristyg
-ms.openlocfilehash: 685c978ff206e75d770918f2528a826ad522b706
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: jeconnoc
+ms.openlocfilehash: 22f84efee2b3996734e8e38c73d30ba891b745d9
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64710187"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68310586"
 ---
-# <a name="view-container-registry-repositories-in-the-azure-portal"></a>Zobrazit úložiště registru kontejnerů na webu Azure Portal
+# <a name="view-container-registry-repositories-in-the-azure-portal"></a>Zobrazení úložišť registru kontejnerů v Azure Portal
 
-Služba Azure Container Registry umožňuje ukládat Docker imagí kontejnerů v úložišti. Když ukládání imagí v úložištích, můžete ukládat skupiny imagí (nebo verze Image) v izolovaném prostředí. Při nahrávání imagí do registru a zobrazit jejich obsah na webu Azure Portal, můžete zadat tato úložiště.
+Azure Container Registry umožňuje ukládat image kontejneru Docker v úložištích. Díky ukládání obrázků do úložišť můžete ukládat skupiny imagí (nebo verze imagí) do izolovaných prostředí. Tato úložiště můžete zadat, když nahrajete obrázky do svého registru a zobrazíte jejich obsah v Azure Portal.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* **Registr kontejnerů**: Vytvoření registru kontejnerů ve vašem předplatném Azure. Například použít [webu Azure portal](container-registry-get-started-portal.md) nebo [rozhraní příkazového řádku Azure](container-registry-get-started-azure-cli.md).
-* **Docker CLI**: Nainstalujte [Docker] [ docker-install] na místním počítači, který vám poskytuje rozhraní příkazového řádku Dockeru.
-* **Image kontejneru**: Odeslat image do vašeho registru kontejneru. Pokyny k nabízené a vyžádané instalace Image, najdete v části [nabízená a vyžádaná instalace image](container-registry-get-started-docker-cli.md).
+* **Registr kontejneru**: Vytvořte registr kontejnerů ve vašem předplatném Azure. Použijte například [Azure Portal](container-registry-get-started-portal.md) nebo rozhraní příkazového [řádku Azure CLI](container-registry-get-started-azure-cli.md).
+* **Docker CLI**: Nainstalujte [Docker][docker-install] do místního počítače, který vám poskytne rozhraní příkazového řádku Docker.
+* **Obrázek kontejneru**: Nahrajte image do registru kontejneru. Pokyny k nasdílení a vyžádání imagí najdete v tématu [vložení a načtení obrázku](container-registry-get-started-docker-cli.md).
 
-## <a name="view-repositories-in-azure-portal"></a>Zobrazení úložišť na webu Azure portal
+## <a name="view-repositories-in-azure-portal"></a>Zobrazit úložiště v Azure Portal
 
-Zobrazí se seznam úložišť, který je hostitelem vašich imagí, stejně jako značky obrázku, na webu Azure Portal.
+V Azure Portal můžete zobrazit seznam úložišť, která jsou hostitelem imagí, a také značky obrázků.
 
-Pokud jste postupovali podle kroků v [nabízená a vyžádaná instalace image](container-registry-get-started-docker-cli.md) (a nebyl následně odstranit image) v registru kontejneru byste měli mít image serveru Nginx. Pokyny v tomto článku zadaný označit image s oborem názvů, "vzorky" v `/samples/nginx`. Jako aktualizačního programu [docker push] [ docker-push] byl příkaz zadaný v tomto článku:
+Pokud jste postupovali podle kroků v části [push a pull image](container-registry-get-started-docker-cli.md) (a následně image neodstraníte), měli byste mít Nginx image ve vašem registru kontejneru. V pokynech v tomto článku jste určili, že obrázek označíte pomocí oboru názvů, "Samples `/samples/nginx`" v. Jako aktualizační program, příkaz Docker [push][docker-push] uvedený v tomto článku:
 
 ```Bash
 docker push myregistry.azurecr.io/samples/nginx
 ```
 
- Protože Azure Container Registry podporuje takové víceúrovňové obory názvů úložiště, můžete omezit rozsah kolekce imagí souvisejících s konkrétní aplikací nebo kolekcí aplikací pro různé vývojové nebo provozní týmy. Další informace o úložišti v container registry, najdete v článku [registry kontejnerů pro Private Docker v Azure](container-registry-intro.md).
+ Vzhledem k tomu, že Azure Container Registry podporuje takové víceúrovňové obory názvů úložiště, můžete vytvořit obor kolekcí imagí souvisejících s konkrétní aplikací nebo kolekcí aplikací pro různé vývojové nebo provozní týmy. Další informace o úložištích v registrech kontejnerů najdete v tématu [soukromé Registry kontejnerů Docker v Azure](container-registry-intro.md).
 
-Chcete-li zobrazit úložiště:
+Zobrazení úložiště:
 
-1. Přihlaste se k [webu Azure portal][portal]
-1. Vyberte **Azure Container Registry** ke kterému jste nasdíleli image serveru Nginx
-1. Vyberte **úložišť** zobrazíte seznam úložišť, které obsahují imagí v registru
-1. Vyberte úložiště, který chcete zobrazit značky image v rámci tohoto úložiště
+1. Přihlaste se k portálu [Azure Portal][portal].
+1. Vyberte **Azure Container Registry** , do které jste posunuli obrázek Nginx.
+1. Vyberte **úložiště** a zobrazte seznam úložišť, která obsahují image v registru.
+1. Vyberte úložiště, ve kterém se mají zobrazit značky imagí v tomto úložišti.
 
-Například pokud jste nasdíleli image serveru Nginx jako vydal pokyn pro nástroje v [nabízená a vyžádaná instalace image](container-registry-get-started-docker-cli.md), by měl vypadat podobně jako:
+Pokud jste například nahráli image Nginx jako na [vyžádání a](container-registry-get-started-docker-cli.md)načetli obrázek, měla by se zobrazit něco podobného:
 
 ![Úložiště na portálu](./media/container-registry-repositories/container-registry-repositories.png)
 
 ## <a name="next-steps"></a>Další postup
 
-Teď, když znáte základy zobrazení a práce s úložišť na portálu, zkuste pomocí Azure Container Registry se službou [Azure Kubernetes Service (AKS)](../aks/tutorial-kubernetes-prepare-app.md) clusteru.
+Teď, když znáte základy zobrazení a práce s úložišti na portálu, zkuste použít Azure Container Registry s clusterem [Azure Kubernetes Service (AKS)](../aks/tutorial-kubernetes-prepare-app.md) .
 
 <!-- LINKS - External -->
 [docker-install]: https://docs.docker.com/engine/installation/

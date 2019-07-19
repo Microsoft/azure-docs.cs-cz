@@ -1,6 +1,6 @@
 ---
-title: Webové aplikace, který se přihlásí uživatelé (kód konfigurace) – platforma identit Microsoft
-description: Zjistěte, jak sestavit webovou aplikaci, který se přihlásí uživatelé (konfigurace kódu)
+title: Webová aplikace, která přihlašuje uživatele (konfigurace kódu) – Microsoft Identity Platform
+description: Naučte se, jak vytvořit webovou aplikaci, která přihlašuje uživatele (konfigurace kódu).
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -15,37 +15,37 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b7484b627d3bc3f26fa01d4c38ee96047c70d007
-ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
+ms.openlocfilehash: c962e95b3d213c4089b51f58139cab17a3332cbd
+ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67785485"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67853072"
 ---
-# <a name="web-app-that-signs-in-users---code-configuration"></a>Webová aplikace, které přihlásí uživatelé - konfigurace kódu
+# <a name="web-app-that-signs-in-users---code-configuration"></a>Webová aplikace, která přihlásí uživatele – konfigurace kódu
 
-Zjistěte, jak nakonfigurovat kód pro webové aplikace, které uživatelé přihlásí.
+Přečtěte si, jak nakonfigurovat kód pro vaši webovou aplikaci, která se přihlásí uživatelům.
 
-## <a name="libraries-used-to-protect-web-apps"></a>Knihovny používat k ochraně webových aplikací
+## <a name="libraries-used-to-protect-web-apps"></a>Knihovny používané k ochraně Web Apps
 
 <!-- This section can be in an include for Web App and Web APIs -->
-Knihovny použitým k zamknutí webovou aplikaci (a webové rozhraní API) jsou:
+Knihovny používané k ochraně webové aplikace (a webového rozhraní API) jsou:
 
 | Platforma | Knihovna | Popis |
 |----------|---------|-------------|
-| ![.NET](media/sample-v2-code/logo_net.png) | [Rozšíření modelu identit pro .NET](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/wiki) | Rozšíření identit společnosti Microsoft pro .NET použít přímo v rámci ASP.NET a ASP.NET Core, navrhne sadu knihoven DLL systémem i rozhraní .NET Framework a .NET Core. Z ASP.NET/ASP.NET základní webové aplikace, můžete řídit pomocí ověřování tokenů **parametry tokenvalidationparameters** třídy (zejména v některých scénářích nezávislý výrobce softwaru) |
+| ![.NET](media/sample-v2-code/logo_net.png) | [Rozšíření modelu identity pro .NET](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/wiki) | Microsoft Identity Extensions for .NET, který používá přímo ASP.NET a ASP.NET Core, navrhuje sadu knihoven DLL běžících jak v .NET Framework a .NET Core. Z webové aplikace ASP.NET/ASP.NET Core můžete řídit ověření tokenu pomocí třídy **TokenValidationParameters** (zejména v některých scénářích ISV). |
 
 ## <a name="aspnet-core-configuration"></a>Konfigurace ASP.NET Core
 
-Fragmenty kódu v tomto článku a následující se extrahují z [přírůstkové výukový program, kapitoly webové aplikace ASP.NET Core aplikace 1](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-1-MyOrg). Můžete chtít najdete v tomto kurzu o úplnou implementaci.
+Fragmenty kódu v tomto článku a následující jsou extrahovány z [přírůstkového kurzu ASP.NET Core webové aplikace, kapitola 1](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-1-MyOrg). Můžete chtít v tomto kurzu vyhledat úplné podrobnosti o implementaci.
 
 ### <a name="application-configuration-files"></a>Konfigurační soubory aplikace
 
-V ASP.NET Core se konfigurují webové aplikace přihlášení uživatele s platformou identity Microsoft prostřednictvím `appsettings.json` souboru. Nastavení, které je potřeba vyplnit, musí být:
+V ASP.NET Core je pomocí tohoto `appsettings.json` souboru nakonfigurovaná webová aplikace přihlašování uživatelů pomocí platformy Microsoft Identity Platform. Nastavení, která je třeba vyplnit, jsou následující:
 
-- cloudu `Instance` Pokud chcete svoji aplikaci spouštět v národních cloudech
-- cílové skupiny v `tenantId`
-- `clientId` pro vaši aplikaci, jak zkopírovat z portálu Azure portal.
+- Cloud `Instance` , pokud chcete, aby se vaše aplikace spouštěla v národních cloudech
+- Cílová skupina v`tenantId`
+- `clientId` pro aplikaci, jak je zkopírováno z Azure Portal.
 
 ```JSon
 {
@@ -58,7 +58,7 @@ V ASP.NET Core se konfigurují webové aplikace přihlášení uživatele s plat
     "Instance": "https://login.microsoftonline.com/",
 
     // Azure AD Audience among:
-    // - the tenant Id as a a GUID obtained from the azure portal to sign-in users in your organization
+    // - the tenant Id as a GUID obtained from the azure portal to sign-in users in your organization
     // - "organizations" to sign-in users in any work or school accounts
     // - "common" to sign-in users with any work and school account or Microsoft personal account
     // - "consumers" to sign-in users with Microsoft personal account only
@@ -72,7 +72,7 @@ V ASP.NET Core se konfigurují webové aplikace přihlášení uživatele s plat
 }
 ```
 
-V ASP.NET Core je jiný soubor, který obsahuje adresu URL (`applicationUrl`) a SSL Port (`sslPort`) pro aplikace, jakož i různé profily.
+V ASP.NET Core existuje další soubor, který obsahuje adresu URL (`applicationUrl`) a port SSL (`sslPort`) pro vaši aplikaci i pro různé profily.
 
 ```JSon
 {
@@ -104,16 +104,16 @@ V ASP.NET Core je jiný soubor, který obsahuje adresu URL (`applicationUrl`) a 
 }
 ```
 
-Na webu Azure Portal, identifikátory URI, které budete muset zaregistrovat v odpovědi **ověřování** musí odpovídat tyto adresy URL stránky pro vaše aplikace; to znamená pro výše uvedené dva konfigurační soubory, byly by `https://localhost:44321/signin-oidc` jako applicationUrl je `http://localhost:3110` ale `sslPort` je zadané (44321) a `CallbackPath` je `/signin-oidc` podle `appsettings.json`.
+V Azure Portal musí být identifikátory URI odpovědi, které je třeba registrovat na **ověřovací** stránce vaší aplikace, odpovídat těmto adresám URL; To znamená, že pro dva konfigurační soubory `https://localhost:44321/signin-oidc` výše by to bylo, že ApplicationUrl nebyla je `http://localhost:3110` , `sslPort` ale `CallbackPath` je zadána (44321) a je `/signin-oidc` definován v `appsettings.json`.
   
-Stejným způsobem, odhlaste identifikátoru URI by byl nastaven na `https://localhost:44321/signout-callback-oidc`.
+Stejným způsobem by byl identifikátor URI pro odhlášení nastaven na `https://localhost:44321/signout-callback-oidc`hodnotu.
 
 ### <a name="initialization-code"></a>Inicializační kód
 
-Webové aplikace ASP.NET Core (a webových rozhraní API), kód způsobem inicializace aplikace nachází v `Startup.cs` souboru, a pokud chcete přidat ověřování pomocí v2.0 Microsoft Identity platform (dříve Azure AD), budete muset přidat následující kód. Komentáře v kódu by měla být zřejmých.
+V ASP.NET Core Web Apps (a webových rozhraních API) se kód, který provádí inicializaci aplikace, nachází `Startup.cs` v souboru, a pokud chcete přidat ověřování s platformou Microsoft identity (dříve Azure AD) v 2.0, budete muset přidat následující kód. Komentáře v kódu by měly být vysvětlivekné.
 
   > [!NOTE]
-  > Pokud spouštíte projekt s výchozí ASP.NET core webového projektu v rámci sady Visual studio nebo pomocí `dotnet new mvc` metodu `AddAzureAD` je k dispozici ve výchozím nastavení, protože jsou automaticky načteny související balíčky. Ale pokud se sestavení projektu od začátku a chcete použít níže uvedeného kódu doporučujeme, abyste přidali balíček NuGet **"Microsoft.AspNetCore.Authentication.AzureAD.UI"** do vašeho projektu, aby `AddAzureAD` dostupnou metodu.
+  > Pokud spustíte projekt s výchozím webovým projektem ASP.NET Core v sadě Visual Studio nebo pokud `dotnet new mvc` použijete `AddAzureAD` metodu, je ve výchozím nastavení dostupná, protože související balíčky jsou automaticky načteny. Pokud však sestavíte projekt od začátku a pokoušíte se použít níže uvedený kód, doporučujeme vám přidat balíček NuGet **"Microsoft. AspNetCore. Authentication. AzureAD. UI"** do svého projektu, aby byla `AddAzureAD` metoda k dispozici.
   
 ```CSharp
  services.AddAuthentication(AzureADDefaults.AuthenticationScheme)
@@ -140,9 +140,9 @@ Webové aplikace ASP.NET Core (a webových rozhraní API), kód způsobem inicia
   ...
 ```
 
-## <a name="aspnet-configuration"></a>Konfigurace technologie ASP.NET
+## <a name="aspnet-configuration"></a>Konfigurace ASP.NET
 
-V technologii ASP.NET, aplikace je nakonfigurovaná prostřednictvím `Web.Config` souboru
+V ASP.NET je aplikace nakonfigurovaná prostřednictvím `Web.Config` souboru.
 
 ```XML
 <?xml version="1.0" encoding="utf-8"?>
@@ -164,7 +164,7 @@ V technologii ASP.NET, aplikace je nakonfigurovaná prostřednictvím `Web.Confi
   </appSettings>
 ```
 
-Kód související s ověřováním v rozhraní ASP.NET Web aplikace / webové rozhraní API se nachází v `App_Start/Startup.Auth.cs` souboru.
+Kód související s ověřováním ve webové aplikaci ASP.NET nebo webové rozhraní API je umístěný v `App_Start/Startup.Auth.cs` souboru.
 
 ```CSharp
  public void ConfigureAuth(IAppBuilder app)

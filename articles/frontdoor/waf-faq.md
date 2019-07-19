@@ -1,6 +1,6 @@
 ---
-title: Firewall webových aplikací – – nejčastější dotazy
-description: Tato stránka nabízí odpovědi na nejčastější dotazy týkající se Azure branou služby
+title: Brána Firewall webových aplikací Azure – Nejčastější dotazy
+description: Tato stránka obsahuje odpovědi na nejčastější dotazy týkající se služby Azure front-dveří.
 services: frontdoor
 documentationcenter: ''
 author: KumudD
@@ -10,69 +10,70 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/10/2019
-ms.author: kumud;tyao
-ms.openlocfilehash: 91ee8b6e614cf12deccd1429ad67323c277954a0
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: kumud
+ms.reviewer: tyao
+ms.openlocfilehash: c993e465bc439ff52cba3241dbff64b7655d1f12
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67061479"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67849176"
 ---
-# <a name="frequently-asked-questions-for-azure-web-application-firewall"></a>Nejčastější dotazy ke službě Azure web application firewall
+# <a name="frequently-asked-questions-for-azure-web-application-firewall"></a>Nejčastější dotazy k bráně firewall webových aplikací Azure
 
-Tento článek obsahuje odpovědi na běžné otázky o Azure web application firewall (WAF) funkce a funkce. 
+Tento článek obsahuje odpovědi na běžné dotazy týkající se funkcí a funkcí firewallu webových aplikací v Azure (WAF). 
 
 ## <a name="what-is-azure-waf"></a>Co je Azure WAF?
 
-Azure WAF je firewall webových aplikací, který pomáhá chránit vaše webové aplikace z běžné hrozby, jako jsou SQL injektáž, skriptování napříč weby a další typy útoků. Můžete definovat zásady WAF, který se skládá z kombinace vlastního a spravované pravidla pro řízení přístupu k webovým aplikacím.
+Azure WAF je brána firewall webových aplikací, která pomáhá chránit webové aplikace před běžnými hrozbami, jako jsou například injektáže SQL, skriptování mezi weby a další webové útoky. Můžete definovat zásady WAF, které se skládají z kombinace vlastních a spravovaných pravidel pro řízení přístupu k vašim webovým aplikacím.
 
-Zásady služby Azure WAF lze použít pro webové aplikace hostované na službách Application Gateway nebo branou Azure.
+Zásady Azure WAF je možné použít u webových aplikací hostovaných na službě Application Gateway nebo Azure front-dveří.
 
-## <a name="what-is-waf-for-azure-front-door-service"></a>Co je WAF branou služby Azure? 
+## <a name="what-is-waf-for-azure-front-door-service"></a>Co je WAF pro službu Azure front-dveří? 
 
-Branou Azure je vysoce škálovatelné a globálně distribuované aplikace a síť pro doručování obsahu. Azure WAF, při integraci s branou, přestane denial-of-service a cílených útoků aplikace na hranici sítě Azure, blízko útoku zdroje před vstupem vaší virtuální síti, nabízí ochranu bez omezení výkonu.
+Přední dvířka Azure je vysoce škálovatelná, globálně distribuovaná aplikace a síť pro doručování obsahu. Služba Azure WAF, která je integrovaná s předními dveřmi, zabrání útokům na dostupnost služby a cíle aplikace na hraničních zařízeních Azure. před přechodem do vaší virtuální sítě pak nabízí ochranu bez obětování výkonu.
 
-## <a name="does-azure-waf-support-https"></a>Podporuje Azure WAF HTTPS?
+## <a name="does-azure-waf-support-https"></a>Podporuje Azure WAF protokol HTTPS?
 
-Nabízí služba branou snižování zátěže protokolu SSL. WAF je nativně integrováno s branou a můžete si prohlédnout žádost po vrácením se dešifrují.
+Služba front-dveří nabízí snižování zátěže SSL. WAF je nativně integrovaná s předními dveřmi a může žádost po dešifrování zkontrolovat.
 
-## <a name="does-azure-waf-support-ipv6"></a>Podporuje Azure WAF IPv6?
+## <a name="does-azure-waf-support-ipv6"></a>Podporuje Azure WAF protokol IPv6?
 
 Ano. Můžete nakonfigurovat omezení IP adres pro IPv4 a IPv6.
 
-## <a name="how-up-to-date-are-the-managed-rule-sets"></a>Zprávu o aktuálnosti jsou sady pravidel spravovaná?
+## <a name="how-up-to-date-are-the-managed-rule-sets"></a>Jak se spravují sady pravidel?
 
-Můžeme ale snažit co nejlépe udržovat tempo s měnícími světě hrozeb. Jakmile se aktualizuje nové pravidlo, přidá se do výchozí sada pravidel se nové číslo verze.
+Náš postup se snažíme udržovat s měnícími se hrozbami. Po aktualizaci nového pravidla se přidá do výchozí sady pravidel s novým číslem verze.
 
-## <a name="what-is-the-propagation-time-if-i-make-a-change-to-my-waf-policy"></a>Co je doba rozšíření, pokud Moje zásad WAF udělám nějakou změnu?
+## <a name="what-is-the-propagation-time-if-i-make-a-change-to-my-waf-policy"></a>Jaká je doba šíření, když provedete změnu v zásadách WAF?
 
-Nasazení zásady WAF globálně obvykle trvá přibližně 5 minut a často dokončí dříve.
+Nasazení zásad WAF globálně obvykle trvá přibližně 5 minut a často se dokončí dřív.
 
-## <a name="can-waf-policies-be-different-for-different-regions"></a>Mohou být různé pro různé oblasti WAF zásady?
+## <a name="can-waf-policies-be-different-for-different-regions"></a>Můžou se zásady WAF lišit pro různé oblasti?
 
-Při integraci s branou služby WAF je globální prostředek. Stejné konfigurace platí ve všech umístěních branou.
+Při integraci s front-Dvířk Service je WAF globálním prostředkem. Stejná konfigurace se vztahuje na všechna umístění front dveří.
  
-## <a name="how-do-i-limit-access-to-my-back-end-to-be-from-front-door-only"></a>Jak omezit přístup do své back endu na pouze z branou?
+## <a name="how-do-i-limit-access-to-my-back-end-to-be-from-front-door-only"></a>Návody omezit přístup k back-endu jenom z předních dveří?
 
-Můžete nakonfigurovat seznam řízení přístupu IP v back endu k povolení pro pouze branou odchozí rozsahy IP adres nebo zamítnutí přímý přístup z Internetu. Značky služeb se podporují pro použití ve vaší virtuální síti. Kromě toho můžete ověřit, že pole hlavičky HTTP X předané hostiteli je platný pro vaši webovou aplikaci.
-
-
+Můžete nakonfigurovat seznam IP Access Control v back-endu tak, aby umožňoval pouze odchozí rozsahy IP adres na front-endu a odepřít veškerý přímý přístup z Internetu. Značky služeb jsou podporované pro použití ve vaší virtuální síti. Kromě toho můžete ověřit, jestli je pro vaši webovou aplikaci platné pole hlavička protokolu HTTP předávaného přes hostitele X.
 
 
-## <a name="which-azure-waf-options-should-i-choose"></a>Jaké možnosti Azure WAF mám zvolit?
-
-Existují dvě možnosti při používání WAF zásad v Azure. WAF s branou Azure je globálně distribuovaná, hraniční řešení zabezpečení. WAF pomocí služby Application Gateway je vyhrazené místní řešení. Doporučujeme, abyste že si vyberete řešení na základě požadavků celkový výkon a zabezpečení. Další informace najdete v tématu [Vyrovnávání zatížení se sadou Azure application delivery](https://docs.microsoft.com/azure/frontdoor/front-door-lb-with-azure-app-delivery-suite).
 
 
-## <a name="do-you-support-same-waf-features-in-all-integrated-platforms"></a>Podporujete stejné funkce WAF na všech platformách, integrované?
+## <a name="which-azure-waf-options-should-i-choose"></a>Které možnosti Azure WAF mám zvolit?
 
-V současné době pravidel CRS 3.0 a ModSec CRS 2.2.9 jsou podporovaná jenom s WAF ve službě Application Gateway. Omezení rychlosti, geografické filtrování a Azure spravované výchozí sada pravidel pravidla jsou podporovány pouze s WAF na Azure branou.
+Při použití zásad WAF v Azure jsou k dispozici dvě možnosti. WAF s Azure front-Dvířks je globálně distribuované řešení zabezpečení Edge. WAF s Application Gateway je místní vyhrazené řešení. Doporučujeme zvolit řešení na základě celkových požadavků na výkon a zabezpečení. Další informace najdete v tématu [Vyrovnávání zatížení s využitím sady pro doručování aplikací v Azure](https://docs.microsoft.com/azure/frontdoor/front-door-lb-with-azure-app-delivery-suite).
 
-## <a name="is-ddos-protection-integrated-with-front-door"></a>Je služba DDoS protection integrována s branou? 
 
-Globálně distribuované na hranách síť Azure a Azure branou vyrovnat se s a geograficky izolovat velké objemy útoky. Vlastní zásady WAF automaticky blokovat a míry můžete vytvořit útoků limit http (s), které znají podpisy. Další informace, můžete povolit před útoky DDoS Protection standardní ve virtuální síti, ve které jsou nasazené back EndY. Azure DDoS Protection standardní zákazníci získají další výhody, včetně ochrana nákladů, se zárukou smlouvy SLA a přístup k odborníkům na od týmu služby DDoS rychlé odpovědi nápovědu k okamžité během útoku. 
+## <a name="do-you-support-same-waf-features-in-all-integrated-platforms"></a>Podporujete stejné funkce WAF na všech integrovaných platformách?
+
+V současné době se pravidla ModSecch počítačových 2.2.9 a počítačových systémů 3,0 podporují jenom s WAF v Application Gateway. Pravidla omezení četnosti, geografického filtrování a spravovaného výchozího pravidla sady Azure jsou podporovaná jenom s WAF v Azure front-dveřích.
+
+## <a name="is-ddos-protection-integrated-with-front-door"></a>Je ochrana DDoS integrovaná s předními dvířky? 
+
+V případě globálně distribuovaných na okrajích sítě Azure můžou přední dveře Azure absorbovat a geograficky izolovat útoky na velké objemy svazků. Můžete vytvořit vlastní zásady WAF a automaticky tak blokovat a omezit útoky na požadavky HTTP (s), které mají známé signatury. Další informace můžete povolit DDoS Protection Standard ve virtuální síti, kde jsou nasazené back-endy. Zákazníci s Azure DDoS Protection Standard získají další výhody, jako je ochrana nákladů, záruka SLA a přístup k odborníkům z týmu DDoS Rapid Response pro zajištění okamžité pomoci během útoku. 
 
 ## <a name="next-steps"></a>Další postup
 
-- Další informace o [firewallu webových aplikací](waf-overview.md).
-- Další informace o [Azure branou](front-door-overview.md).
+- Přečtěte si o [bráně firewall webových aplikací Azure](waf-overview.md).
+- Přečtěte si další informace o [službě Azure front-dveří](front-door-overview.md).

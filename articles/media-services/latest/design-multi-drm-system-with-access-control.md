@@ -1,5 +1,5 @@
 ---
-title: Návrh systému s více variantami DRM ochrany obsahu pomocí řízení přístupu – Azure Media Services | Dokumentace Microsoftu
+title: Návrh systému ochrany obsahu s více technologiemi DRM pomocí řízení přístupu – Azure Media Services | Microsoft Docs
 description: Informace o možnostech licencování Microsoft Smooth Streaming klienta portování Kit.
 services: media-services
 documentationcenter: ''
@@ -14,29 +14,26 @@ ms.topic: article
 ms.date: 12/21/2018
 ms.author: willzhan
 ms.custom: seodec18
-ms.openlocfilehash: ef695d913c73f0a4266b20f21f1008108b85b4d0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ffbf53c0bb0aaf2832afecc2d0df935f04eeff19
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60734082"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68310332"
 ---
 # <a name="design-of-a-multi-drm-content-protection-system-with-access-control"></a>Návrh systému s více variantami DRM ochrany obsahu pomocí řízení přístupu 
-
-## <a name="overview"></a>Přehled
 
 Návrh a vytváření správy digitálních práv (DRM) subsystém pro over-the-top (OTT) nebo řešení online streamování je složitý úkol. Operátory/online video poskytovatelé obvykle externí pomocí této úlohy můžete specializované DRM poskytovatelů služeb. Cílem tohoto dokumentu je k dispozici referenční návrh a referenční implementace subsystému DRM začátku do konce v OTT nebo řešení online streamování.
 
 Cílové čtecí zařízení pro tento dokument se techniků, kteří pracují v DRM subsystémy OTT nebo řešení online streamování/s více obrazovkami nebo čtenáře, kteří mají zájem o subsystémy DRM. Předpokladem je, že čtečky obeznámeni s alespoň jedním technologií DRM na trhu, jako je PlayReady, Widevine, FairPlay nebo Adobe přístup.
 
-V této diskuzi pomocí několika variant DRM zahrnujeme 3 technologiemi DRM podporovaných službou Azure Media Services: Common Encryption (CENC) PlayReady a Widevine, FairPlay, jakož i AES-128 s nezašifrovaným klíčem. Hlavní trendu v oboru OTT a online streamování se má používat nativní technologiemi DRM na různých klientských platformách. Tento trend je posun z předchozí, který používá jeden DRM a jeho Klientská sada SDK pro různé platformy klienta. Při použití šifrování CENC s více nativní DRM PlayReady i Widevine jsou šifrované podle [používat standard Common Encryption (CENC 23001-7 ISO/IEC)](https://www.iso.org/iso/home/store/catalogue_ics/catalogue_detail_ics.htm?csnumber=65271/) specifikace.
+V této diskuzi se službou multi-DRM zahrnuje 3 několikanásobnou, které podporuje Azure Media Services: Common Encryption (CENC) pro PlayReady a Widevine, FairPlay a šifrování AES-128 Clear Key Encryption. Hlavní trendu v oboru OTT a online streamování se má používat nativní technologiemi DRM na různých klientských platformách. Tento trend je posun z předchozí, který používá jeden DRM a jeho Klientská sada SDK pro různé platformy klienta. Při použití šifrování CENC s více nativní DRM PlayReady i Widevine jsou šifrované podle [používat standard Common Encryption (CENC 23001-7 ISO/IEC)](https://www.iso.org/iso/home/store/catalogue_ics/catalogue_detail_ics.htm?csnumber=65271/) specifikace.
 
 Mezi výhody používání nativní s více variantami DRM pro ochranu obsahu se, že:
 
 * Snižuje náklady na šifrování, protože proces jedné šifrování se používá k určené pro různé platformy s jeho nativní technologiemi DRM.
 * Snižuje náklady na správu prostředků, protože je potřeba jenom jednu kopii prostředku v úložišti.
 * Eliminuje DRM klienta licenční poplatky, protože je nativní klient DRM obvykle zdarma na jeho nativní platformě.
-
 
 ### <a name="goals-of-the-article"></a>Cíle tohoto článku
 
@@ -51,7 +48,7 @@ Následující tabulka shrnuje nativní podpora DRM na různých platformách a 
 | **Klientskou platformu** | **Nativní DRM** | **ROZŠÍŘENÍ EME** |
 | --- | --- | --- |
 | **Smart TV, externích zařízení** | PlayReady, Widevine, nebo jiné | Vložený prohlížeče/EME PlayReady nebo Widevine|
-| **Windows 10** | PlayReady | Microsoft Edge/11 pro PlayReady|
+| **Windows 10** | PlayReady | Microsoft Edge/IE11 pro PlayReady|
 | **Zařízení s androidem (telefony, tablety, TV)** |Widevine |Chrome pro Widevine |
 | **iOS** | FairPlay | Safari pro FairPlay (od verze iOS 11.2) |
 | **macOS** | FairPlay | Safari pro FairPlay (od verze Safari 9 + na Mac OS X 10.11 + El Capitan)|
@@ -119,11 +116,11 @@ Tyto aspekty jsou důležité
 
 Pokud chcete použít veřejný cloud pro naším vlastním doručováním licencí, trvalé a nonpersistent licence mít přímý vliv na náklady na licence doručování. Následující dva případy návrhů slouží pro ilustraci:
 
-* Měsíční předplatné: Použijte trvalou licenci a obsahu klíč assetu mapování 1: m. Například všech dětí filmů, používáme jeden klíč k obsahu pro šifrování. V tomto případě:
+* Měsíční předplatné: Použijte trvalou licenci a mapování klíč-to-Asset obsahu 1: n. Například všech dětí filmů, používáme jeden klíč k obsahu pro šifrování. V tomto případě:
 
     Celkový počet licencí požadovaným pro všechny děti filmy/zařízení = 1
 
-* Měsíční předplatné: Používejte licenci nonpersistent a mapování 1: 1 mezi klíče k obsahu a prostředků. V tomto případě:
+* Měsíční předplatné: Použijte netrvalou licenci a mapování 1:1 mezi klíčem obsahu a Assetem. V tomto případě:
 
     Celkový počet licencí požadovaným pro všechny děti filmy/zařízení = [čísla filmů sledovali vysílání televizní] x [počet relací]
 
@@ -145,7 +142,7 @@ V následující tabulce jsou uvedeny mapování.
 | **Správa klíčů** |Nevyžaduje se pro referenční implementace |
 | **Správa obsahu** |Konzolová aplikace jazyka C# |
 
-Jinými slovy zprostředkovatele identity a služba tokenů zabezpečení jsou k dispozici ve službě Azure AD. [Rozhraní API služby Azure Media Player](https://amp.azure.net/libs/amp/latest/docs/) se používá pro přehrávač. Azure Media Services a Azure Media Player podporu prostřednictvím technologie smooth streaming nebo šifrování AES-128 pro DASH, HLS nebo smooth CENC přes DASH, přes HLS FairPlay, PlayReady.
+Jinými slovy zprostředkovatele identity a služba tokenů zabezpečení jsou k dispozici ve službě Azure AD. [Rozhraní API služby Azure Media Player](https://amp.azure.net/libs/amp/latest/docs/) se používá pro přehrávač. Azure Media Services i Azure Media Player podporují CENC přes POMLČKu, FairPlay nad HLS, PlayReady přes hladké streamování a šifrování AES-128 pro POMLČKy, HLS a hladké.
 
 Následující diagram ukazuje celkovou strukturu a tok s předchozím mapování technologie:
 
@@ -220,6 +217,7 @@ Informace o službě Azure AD:
 * Můžete najít informace pro správce v [Správa tenanta adresáře Azure AD](../../active-directory/fundamentals/active-directory-administer.md).
 
 ### <a name="some-issues-in-implementation"></a>Některé problémy v provádění
+
 Použijte následující informace o odstraňování potíží pro pomoc při potížích s implementací.
 
 * Vydavatel, adresa URL musí končit "/". Cílová skupina musí být ID klienta aplikace přehrávače. Přidejte také "/" na konci adresy URL vystavitele.
@@ -247,7 +245,7 @@ Použijte následující informace o odstraňování potíží pro pomoc při po
 
 * Členství ve skupině udělit deklarací oprávnění. Ujistěte se, že je v souboru manifestu aplikace Azure AD: 
 
-    "groupMembershipClaims": "Vše" (výchozí hodnota je null)
+    "groupMembershipClaims": "All" (výchozí hodnota je null)
 
 * Nastavte správný typ TokenType při vytváření omezení požadavků.
 
@@ -255,120 +253,8 @@ Použijte následující informace o odstraňování potíží pro pomoc při po
 
     Vzhledem k tomu, že přidáte podporu pro token JWT (Azure AD) kromě SWT (ACS), je výchozí typ TokenType TokenType.JWT. Pokud používáte SWT/ACS, je nutné nastavit token k TokenType.SWT.
 
-## <a name="faqs"></a>Nejčastější dotazy
-
-Tato část popisuje některé další témata v návrhu a implementaci.
-
-### <a name="http-or-https"></a>Protokol HTTP nebo HTTPS?
-Aplikace ASP.NET MVC hráč musí podporovat následující:
-
-* Ověřování uživatelů prostřednictvím Azure AD, která je v rámci protokolu HTTPS.
-* Výměna tokenů JWT mezi klientem a Azure AD, která je v rámci protokolu HTTPS.
-* Získání licence DRM klientem, který musí být v rámci protokolu HTTPS, pokud je naším vlastním doručováním licencí poskytované službou Media Services. Sada produktů PlayReady není povinné HTTPS pro naším vlastním doručováním licencí. Pokud je server licencí PlayReady mimo Media Services, můžete použít protokol HTTP nebo HTTPS.
-
-Aplikace přehrávače ASP.NET používá protokol HTTPS jako osvědčený postup, takže Media Player je na stránce v části protokol HTTPS. HTTP je však upřednostňované pro streamování, takže je třeba vzít v úvahu problém smíšený obsah.
-
-* Prohlížeč neumožňuje smíšený obsah. Ale mohla moduly plug-in jako Silverlight a modulu plug-in pro OSMF plynulé a pomlčka. Smíšený obsah je kvůli ohrožení schopnost injektovat škodlivý jazyka JavaScript, který může způsobit, že zákaznická data nepředáme být ohrožena zabezpečení. Prohlížeče blokovat tato funkce ve výchozím nastavení. Jediný způsob, jak obejít je na straně serveru (původní) tím, že všechny domény (bez ohledu na HTTPS nebo HTTP). To je pravděpodobně není vhodné.
-* Nepoužívejte smíšený obsah. Aplikace přehrávače a Media Player by měl používat protokol HTTP nebo HTTPS. Při přehrávání smíšený obsah, technické silverlightSS zrušením upozornění smíšený obsah. Odborný flashSS zpracovává smíšený obsah bez upozornění smíšený obsah.
-* Pokud váš koncový bod streamování byl vytvořen před srpnem 2014, nebudou podporovat protokol HTTPS. V tomto případě vytvořit a použít nový koncový bod streamování pro protokol HTTPS.
-
-V referenční implementace pro chráněný pomocí DRM obsah aplikace a streamování jsou v rámci protokolu HTTPS. Pro otevřít obsah není nutné hráč ověřování nebo licenci, abyste mohli používat HTTP nebo HTTPS.
-
-### <a name="what-is-azure-active-directory-signing-key-rollover"></a>Co je Azure Active Directory podepisování výměny klíčů?
-Výměna podpisových klíčů je důležité vzít v vzít v úvahu ve vaší implementaci. Pokud ho ignorovat dokončení systém nakonec přestane fungovat zcela, do šesti týdnů nejvíce.
-
-Azure AD využívá oborové standardy, na navázání vztahu důvěryhodnosti mezi samostatně a aplikace, které používají Azure AD. Konkrétně Azure AD používá podpisového klíče, které obsahuje pár veřejného a privátního klíče. Když Azure AD vytvoří token zabezpečení, který obsahuje informace o uživateli, je podepsaný službou Azure AD s privátním klíčem, před odesláním zpět do aplikace. Pokud chcete ověřit, že je token platný a pocházející ze ze služby Azure AD, musí aplikace ověřit podpis tokenu. Aplikace používá veřejný klíč vystavený službou Azure AD, která je součástí dokumentu federačních metadat vašeho tenanta. Tento veřejný klíč a podpisový klíč, ze kterého pochází, je stejný jako ten používá pro všechny tenanty ve službě Azure AD.
-
-Další informace o výměně klíče služby Azure AD najdete v tématu [důležité informace o podepisování výměny klíčů ve službě Azure AD](../../active-directory/active-directory-signing-key-rollover.md).
-
-Mezi [pár veřejného a privátního klíče](https://login.microsoftonline.com/common/discovery/keys/):
-
-* Privátní klíč ve službě Azure AD slouží ke generování token JWT.
-* Veřejný klíč se používá aplikace například služeb doručování licencí DRM ve službě Media Services k ověření tokenů JWT.
-
-Z bezpečnostních důvodů Azure AD bude otáčet certifikát pravidelně (každých šest týdnů). V případě porušení zabezpečení může dojít výměny klíčů, kdykoli. Proto služeb doručování licencí Media Services je potřeba aktualizovat veřejný klíč použít jako Azure AD otočí pár klíčů. V opačném případě se nezdaří ověření tokenu ve službě Media Services a vydává žádná licence.
-
-K nastavení této služby nastavit TokenRestrictionTemplate.OpenIdConnectDiscoveryDocument při konfiguraci služeb doručování licencí DRM.
-
-Tady je token JWT toku:
-
-* Azure AD vydá token JWT s aktuální privátní klíč pro ověřeného uživatele.
-* Když hráč vidí šifrování CENC s více technologiemi DRM chráněný obsah, nejprve vyhledá token JWT vydaného službě Azure AD.
-* Přehrávač odešle žádost o získání licence se token JWT služeb doručování licencí Media Services.
-* Služeb doručování licencí Media Services pomocí ověření tokenů JWT před vydáním licence aktuální/platný veřejný klíč ze služby Azure AD.
-
-Služeb doručování licencí DRM vždy zkontrolujte aktuální/platný veřejný klíč ze služby Azure AD. Veřejný klíč předložený Azure AD je klíč používaný k ověření JWT vydaného službě Azure AD.
-
-Co když výměny klíčů se stane po Azure AD vygeneruje token JWT, ale před odesláním tokenů JWT hráči služeb doručování licencí DRM ve službě Media Services k ověření?
-
-Protože klíč můžete provádět jednotlivě v daném okamžiku provádějí, je vždy k dispozici v dokumentu federačních metadat více než jeden platný veřejný klíč. Doručování licencí Media Services můžete použít některý z klíče specifikované v dokumentu. Protože jeden z nich může být vrácena brzy, jiné můžou být jejím nahrazení a tak dále.
-
-### <a name="where-is-the-access-token"></a>Kde je přístupový token?
-Pokud se podíváte na jak webová aplikace volá aplikaci API v rámci [identitu aplikace pomocí udělení přihlašovacích údajů klienta OAuth 2.0](../../active-directory/develop/web-api.md), tok ověřování vypadá takto:
-
-* Uživatel přihlásí ke službě Azure AD ve webové aplikaci. Další informace najdete v tématu [webového prohlížeče a webové aplikace](../../active-directory/develop/web-app.md).
-* Koncový bod autorizace Azure AD přesměruje uživatelského agenta zpět do klientské aplikace s autorizační kód. Uživatelský agent vrátí autorizační kód identifikátor URI přesměrování klienta aplikace.
-* Webová aplikace musí získat přístupový token, takže ho můžete ověřit do webového rozhraní API a získat požadovaný prostředek. Učiní žádost vůči koncovému bodu tokenu Azure AD a poskytuje přihlašovací údaje, ID klienta a identifikátor URI ID aplikace webového rozhraní API. Představuje autorizační kód k prokázání, že uživatel odsouhlasený.
-* Azure AD ověřuje aplikace a vrátí přístupový token JWT, který se používá k volání webového rozhraní API.
-* Přes protokol HTTPS webová aplikace používá vrácené přístupový token JWT přidat token JWT řetězec s označením "Nosiče" v "Autorizace" záhlaví žádosti do webového rozhraní API. Webové rozhraní API pak ověří token JWT. Pokud je ověření úspěšné, vrátí požadovaný prostředek.
-
-V tomto toku identity aplikace webového rozhraní API důvěřuje, že webová aplikace ověřil daného uživatele. Z tohoto důvodu tento model se nazývá důvěryhodný subsystém. [Autorizace vývojový diagram](https://docs.microsoft.com/azure/active-directory/active-directory-protocols-oauth-code) popisuje jak – udělení autorizačního kódu-tok funguje.
-
-Získání licence se omezení s tokenem používá stejný vzor důvěryhodný subsystém. Službu doručování licencí Media Services je prostředek webového rozhraní API, nebo "prostředek back-end", který potřebuje přístup k webové aplikaci. Kde jsou přístupový token?
-
-Přístupový token pochází ze služby Azure AD. Po ověření uživatele úspěšné je vrácena autorizační kód. Autorizační kód se pak použije, společně s ID klienta a klíč aplikace k výměně za přístupový token. Přístupový token se používá pro přístup k aplikaci "ukazatelů", která odkazuje na nebo představuje službu doručování licencí Media Services.
-
-Registrace a konfigurace aplikace ukazatel ve službě Azure AD, proveďte následující kroky:
-
-1. V tenantovi Azure AD:
-
-   * Přidání aplikace (prostředek) pomocí adresy URL https://[resource_name].azurewebsites.net/ přihlašování. 
-   * Přidáte ID aplikace pomocí adresy URL https://[aad_tenant_name].onmicrosoft.com/[resource_name].
-
-2. Přidejte nový klíč aplikace prostředků.
-
-3. Aktualizace souboru manifestu aplikace tak, aby vlastnost groupMembershipClaims má hodnotu "groupMembershipClaims": "Vše".
-
-4. V aplikaci Azure AD, která odkazuje na webové aplikace přehrávače, v části **oprávnění k ostatním aplikacím**, přidání aplikace prostředku, který byl přidán v kroku 1. V části **delegovaná oprávnění**vyberte **přístupu [resource_name]** . Tato možnost poskytuje oprávnění webové aplikace k vytvoření přístupové tokeny, které přístup k aplikaci prostředků. Proveďte pro místní a nasazené verze webové aplikace při vývoji v sadě Visual Studio a webové aplikace Azure.
-
-Token JWT vydaného službě Azure AD je přístupový token pro přístup k prostředku ukazatele.
-
-### <a name="what-about-live-streaming"></a>A co živé streamování?
-Předchozí diskuze, zaměřuje na prostředky na vyžádání. A co živé streamování?
-
-K ochraně živého streamování služby Media Services díky tomu asset přidružený k programu jako asset videa na Vyžádání, že můžete přesně stejné návrh a implementaci.
-
-Konkrétně jak živě Streamovat ve službě Media Services, musíte vytvořit kanál a pak vytvoření programu v rámci kanálu. K vytvoření programu, potřebujete pouze vytvořit asset, který obsahuje živý archív programu. Šifrování CENC s více variantami DRM ochrany živého obsahu, aby stejné nastavení/zpracování na asset použijte jako by šlo asset videa na Vyžádání před spuštěním programu.
-
-### <a name="what-about-license-servers-outside-media-services"></a>A co licenční servery mimo Media Services?
-
-Zákazníci často investovali do serverové farmy licence buď ve své vlastní datové centrum nebo jeden hostitelských počítačích poskytovatelů služeb DRM. Pomocí Media Services content protection můžete provozovat v hybridním režimu. Obsah můžete hostované a dynamicky chráněné ve službě Media Services, zatímco licence DRM jsou poskytované servery mimo Media Services. V takovém případě zvažte následující změny:
-
-* Služba tokenů zabezpečení je potřeba vystavovat tokeny, které jsou přijatelné a dá ověřit pomocí licence serverové farmy. Servery licence Widevine poskytované Axinom například vyžadovat konkrétní token JWT, který obsahuje zprávu o oprávnění. Proto budete muset mít služby STS pro vydávání takový token JWT. 
-* Už je potřeba nakonfigurovat službu doručování licencí Media Services. Je potřeba zadat licence získání adresy URL (PlayReady, Widevine a FairPlay) při konfiguraci ContentKeyPolicies.
-
-### <a name="what-if-i-want-to-use-a-custom-sts"></a>Co když chci používat vlastní službu STS?
-Zákazník může rozhodnout použít vlastní službu STS poskytnout tokeny Jwt. Mezi důvody patří:
-
-* Zprostředkovatel identity využívaných zákazníkem nepodporuje službu tokenů zabezpečení. V takovém případě vlastních služeb STS, může být možnost.
-* Zákazník může být nutné flexibilní nebo užší ovládací prvek integrovat službu tokenů zabezpečení zákazníka odběratele fakturačním systémem. Například operátor MVPD mohou nabízet více balíčků OTT odběratele, jako je například premium, basic nebo sportu. Operátor může být vhodné tak, aby odpovídaly deklarací identity v tokenu s balíčkem předplatitele, tak, že jsou k dispozici pouze obsah v určitém balíčku. V takovém případě vlastních služeb STS nabízí potřebné flexibility a kontroly.
-
-Při použití vlastních služeb STS musí udělali dvě změny:
-
-* Když nakonfigurujete službu doručování licencí pro určitý prostředek, musíte zadat klíč zabezpečení použijí k ověření pomocí vlastních služeb STS místo platnost aktuálního klíče ze služby Azure AD. (Další podrobnosti podle.) 
-* Při vygenerování tokenu JTW klíč zabezpečení je zadán místo aktuální X509 privátní klíč certifikátu ve službě Azure AD.
-
-Existují dva typy bezpečnostních klíčů:
-
-* Symetrický klíč: Stejný klíč se používá ke generování a ověřit token JWT.
-* Asymetrický klíč: Pár veřejného a privátního klíče v x X509 certifikát se používá s privátním klíčem k šifrování a generovat token JWT a s veřejným klíčem k ověření tokenu.
-
-> [!NOTE]
-> Pokud používáte rozhraní .NET Framework a jazyka C# jako svou vývojovou platformu, X509 certifikát používaný pro asymetrické bezpečnostní klíč musí mít klíč délku aspoň 2048. Jde o požadavek třídy System.IdentityModel.Tokens.X509AsymmetricSecurityKey v rozhraní .NET Framework. V opačném případě je vyvolána následující výjimka:
-> 
-> IDX10630: "System.IdentityModel.Tokens.X509AsymmetricSecurityKey" pro podepisování nesmí být menší než "2048" bits.
-
 ## <a name="the-completed-system-and-test"></a>Dokončené systému a testování
+
 Tato část vás provede následující scénáře v dokončené začátku do konce systému tak, aby základní přehled o chování může mít, než se ponoříte přihlašovací účet:
 
 * Pokud potřebujete neintegrovaném scénáře:
@@ -400,19 +286,20 @@ Autoři měli účet vytvoření nebo přidání za vás může kontaktovat.
 
 Na následujících snímcích obrazovky zobrazit různé přihlašovací stránky používá jinou doménu účty:
 
-**Účet domény vlastní služby Azure AD tenant**: Přizpůsobená přihlašovací stránce vlastní služby Azure AD tenanta domény.
+**Vlastní účet domény tenanta Azure AD**: Přizpůsobená přihlašovací stránka vlastní domény tenanta Azure AD.
 
 ![Účtu tenanta domény vlastní služby Azure AD, jeden](./media/design-multi-drm-system-with-access-control/media-services-ad-tenant-domain1.png)
 
-**Microsoft doménový účet s čipovou kartu**: Přihlašovací stránky přizpůsobený microsoftem podnikové IT s dvoufaktorovým ověřováním.
+**Doménový účet Microsoft s čipovou kartou**: Přihlašovací stránka přizpůsobená Microsoftem IT Pomocí dvojúrovňového ověřování.
 
 ![Účet domény vlastní služby Azure AD tenanta dvě](./media/design-multi-drm-system-with-access-control/media-services-ad-tenant-domain2.png)
 
-**Účet Microsoft**: Přihlašovací stránku účtu Microsoft pro zákazníky.
+**Účet Microsoft**: Přihlašovací stránka účet Microsoft pro příjemce.
 
 ![Účet domény vlastní služby Azure AD tenanta tři](./media/design-multi-drm-system-with-access-control/media-services-ad-tenant-domain3.png)
 
 ### <a name="use-encrypted-media-extensions-for-playready"></a>Použití rozšíření šifrované média pro PlayReady
+
 Plán PlayReady je v moderním prohlížeči s Media rozšíření eme (Encrypted Extensions) pro podporu PlayReady, jako je například Internet Explorer 11 na Windows 8.1 nebo novější a prohlížeč Microsoft Edge ve Windows 10 v podkladové DRM pro rozšíření EME.
 
 ![Použití rozšíření EME PlayReady](./media/design-multi-drm-system-with-access-control/media-services-eme-for-playready1.png)
@@ -428,6 +315,7 @@ Rozšíření EME v Microsoft Edge a Internet Explorer 11 na Windows 10 umožňu
 PlayReady a zaměřte se na zařízení Windows, je pouze DRM v části hardware, které jsou k dispozici na zařízeních s Windows (PlayReady SL3000). Služba streamování pomocí PlayReady přes EME nebo pomocí aplikace pro univerzální platformu Windows a nabízejí vyšší kvalitu videa pomocí technologie PlayReady SL3000 než jiné DRM. Obvykle obsahu až do 2 tis. toků prostřednictvím prohlížeče Chrome nebo Firefox a obsahu až 4 tis. toků prostřednictvím Microsoft Edge nebo Internet Explorer 11 nebo aplikace pro univerzální platformu Windows na jednom zařízení. Závisí na nastavení služby a implementaci.
 
 #### <a name="use-eme-for-widevine"></a>Použití rozšíření EME Widevine
+
 V moderním prohlížeči s podporou EME/Widevine, jako je Chrome 41 + na Windows 10, Windows 8.1, Mac OS x Yosemite nebo Chrome na Android bodu 4.4.4 je Google Widevine DRM za EME.
 
 ![Použití rozšíření EME Widevine](./media/design-multi-drm-system-with-access-control/media-services-eme-for-widevine1.png)
@@ -437,16 +325,19 @@ Widevine nezabrání provádění snímek obrazovky videa chráněné.
 ![Přehrávač moduly plug-in pro Widevine](./media/design-multi-drm-system-with-access-control/media-services-eme-for-widevine2.png)
 
 #### <a name="use-eme-for-fairplay"></a>Použití rozšíření EME pro FairPlay
+
 Podobně můžete otestovat FairPlay chráněný obsah v této testovací player v prohlížeči Safari v systému macOS nebo iOS 11.2 a novější.
 
 Ujistěte se, že zadáte "FairPlay" jako protectionInfo.type a umístit do správné adresy URL pro certifikát vaší aplikace v cestě AC snímků za Sekundu (FairPlay Streaming aplikace cesta k certifikátu).
 
 ### <a name="unentitled-users"></a>Unentitled uživatelů
+
 Pokud uživatel není členem skupiny "Uživatelů s názvem", uživatel neprojde kontrola oprávnění. Licenční služby s více variantami DRM odmítá pak vydá požadovanou licenci, jak je znázorněno. Podrobný popis je "získat licenci se nepovedlo," což je tak, jak navrženo.
 
 ![Unentitled uživatelů](./media/design-multi-drm-system-with-access-control/media-services-unentitledusers.png)
 
 ### <a name="run-a-custom-security-token-service"></a>Spuštění vlastní bezpečnostní služby tokenu
+
 Při spuštění vlastních služeb STS, tokenů JWT je vydané vlastní službu STS s použitím symetrický nebo asymetrickým klíčem.
 
 Na následujícím snímku obrazovky představuje scénář, který používá symetrického klíče (s použitím Chrome):
@@ -459,13 +350,8 @@ Následující snímek obrazovky ukazuje scénář, který se používá asymetr
 
 Ověřování uživatelů v obou předchozích případech zůstává stejný. To se provádí prostřednictvím služby Azure AD. Jediným rozdílem je, že jsou vydané tokeny Jwt vlastních služeb STS místo Azure AD. Když nakonfigurujete dynamické šifrování CENC ochranu, licenční omezení doručování služby určuje typ tokenů JWT symetrický nebo asymetrickým klíčem.
 
-## <a name="summary"></a>Souhrn
-Tento dokument popsány ochrany obsahu pomocí 3 technologiemi DRM a řízením přístupu prostřednictvím ověřování pomocí tokenu, návrhem a její implementaci pomocí Azure, Azure Media Services a Azure Media Playeru.
-
-* Referenční návrh byl vystaven, který obsahuje všechny potřebné komponenty v subsystému DRM.
-* Referenční implementace se zobrazí na Azure, Azure Media Services a Azure Media Playeru.
-* Některá témata, která je přímo součástí návrhu a implementace byly také popsány.
-
 ## <a name="next-steps"></a>Další postup
 
-[Chránit obsah pomocí DRM](protect-with-drm.md)
+* [Nejčastější dotazy](frequently-asked-questions.md)
+* [Přehled ochrany obsahu](content-protection-overview.md)
+* [Chránit obsah pomocí DRM](protect-with-drm.md)

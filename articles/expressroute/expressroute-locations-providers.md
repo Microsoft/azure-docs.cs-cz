@@ -1,5 +1,5 @@
 ---
-title: 'Umístění a poskytovatelé připojení: Azure ExpressRoute | Dokumentace Microsoftu'
+title: 'Umístění a poskytovatelé připojení: Azure ExpressRoute | Microsoft Docs'
 description: Tento článek obsahuje podrobný přehled o umístěních, kde jsou nabízené služby, a jak se připojit k oblastem Azure. Řazení je podle umístění.
 services: expressroute
 documentationcenter: na
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/10/2019
-ms.author: jaredr80
-ms.openlocfilehash: 21d06dfaecb0448194355f13978483779a2ff6be
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.date: 07/17/2019
+ms.author: cherylmc
+ms.openlocfilehash: 331a554332db8c05d4ece1a1df5d6557d6e86906
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67805700"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68310362"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>Partneři ExpressRoute a umístění partnerského vztahu
 
@@ -40,18 +40,18 @@ Pokud jste připojení k aspoň jednomu umístění ExpressRoute v rámci geopol
 ### <a name="azure-regions-to-expressroute-locations-within-a-geopolitical-region"></a>Mapování oblastí Azure na umístění ExpressRoute v rámci geopolitické oblasti
 Následující tabulka obsahuje mapování oblastí Azure na umístění ExpressRoute v rámci geopolitické oblasti.
 
-| **Geopolitická oblast** | **Zóna** | **Oblasti Azure** | **Umístění ExpressRoute** |
+| **Geopolitická oblast** | **Zóny** | **Oblasti Azure** | **Umístění ExpressRoute** |
 | --- | --- | --- | --- |
 | **Australská vláda** | 1 | Austrálie – střed, Austrálie – střed 2 |Canberra, Canberra2 |
 | **Evropa** | 1 |Francie – střed, Francie – jih, Severní Evropa, Západní Evropa, Velká Británie – západ, Velká Británie – jih |Amsterdam, Amsterdam2, Dublin, Frankfurt, Londýn, London2, Marseille, Newport (Wales), Paříž, Curych |
 | **Severní Amerika** | 1 |Východní USA, Západní USA, Východní USA 2, Západní USA 2, Střed USA, Střed USA – jih, Střed USA – sever, Střed USA – západ, Střední Kanada, Východní Kanada |Atlanta, Chicago, Dallas, Denver, Las Vegas, Los Angeles, Miami, New York, San Antonio, Seattle, Silicon Valley, Silicon Valley2, Washington DC, Washington DC2, Montreal, Quebec City, Toronto |
-| **Asie** | 2 |Východní Asie, Jihovýchodní Asie |Hongkong – zvláštní administrativní oblast, Kuala Lumpur, Singapur, singapur2, Tchaj-pej |
+| **Asie** | 2 |Východní Asie, Jihovýchodní Asie |Hongkong – zvláštní správní oblast, Kuala Lumpur, Singapur, Singapur2, Taipei |
 | **Indie** | 2 |Indie – západ, Indie – střed, Indie – jih |Čennaj, Čennaj2, Bombaj, Bombaj2 |
 | **Japonsko** | 2 |Japonsko – západ, Japonsko – východ |Ósaka, Tokio |
-| **Oceánie** | 2 |Austrálie – jihovýchod, Austrálie – východ |Auckland, Melbourne, Perth, Sydney | 
+| **Oceánie a** | 2 |Austrálie – jihovýchod, Austrálie – východ |Auckland, Melbourne, Perth, Sydney | 
 | **Jižní Korea** | 2 |Jižní Korea – střed, Jižní Korea – jih |Busan, Soul|
-| **SPOJENÉ ARABSKÉ EMIRÁTY** | 3 | Spojené arabské emiráty – střed, Spojené arabské emiráty – sever | Dubai, Dubai2 |
-| **Jižní Afrika** | 3 |Jihoafrická republika – Západ, Jihoafrická republika – sever |Kapské město, Johannesburg |
+| **SPOJENÉ ARABSKÉ EMIRÁTY** | 3 | Spojené arabské emiráty Central, Spojené arabské emiráty sever | Dubaj, Dubai2 |
+| **Jižní Afrika** | 3 |Jižní Afrika – západ, Jižní Afrika – sever |Kapské město, Johannesburg |
 | **Jižní Amerika** | 3 |Brazílie – jih |Sao Paulo |
 
 ### <a name="regions-and-geopolitical-boundaries-for-national-clouds"></a>Oblasti a geopolitické hranice pro národní cloudy
@@ -60,7 +60,7 @@ Následující tabulka obsahuje informace o oblastech a geopolitických hranicí
 | **Geopolitická oblast** | **Oblasti Azure** | **Umístění ExpressRoute** |
 | --- | --- | --- |
 | **Cloud vlády USA** |US Gov – Arizona, US Gov – Iowa, US Gov – Texas, US Gov – Virginie, US DoD – střed, US DoD – východ  |Chicago, Dallas, New York, Phoenix, San Antonio, Seattle, Silicon Valley, Washington DC |
-| **Čína – východ** |Čína – východ, Čína – východ 2 |Šanghaj, Shanghai2 |
+| **Čína – východ** |Čína – východ, Čína – východ 2 |Shanghai, Shanghai2 |
 | **Čína – sever** |Čína – sever, Čína – sever 2 |Peking, Beijing2 |
 | **Německo** |Střední Německo, Východní Německo |Berlín, Frankfurt |
 
@@ -70,7 +70,7 @@ Připojení přes geopolitické oblasti není pomocí standardní SKU pro Expres
 
 Následující tabulka uvádí umístění připojení a poskytovatele služby pro každé umístění. Seznam poskytovatelů služeb a umístění, ve kterých působí, najdete v článku [Umístění podle poskytovatelů služeb](expressroute-locations.md#locations). 
 
-**Místních oblastech Azure** jsou ty, které [ExpressRoute místní](expressroute-faqs.md) přístup v každém umístění partnerského vztahu. **není k dispozici** znamená, že místní ExpressRoute není v tomto umístění partnerského vztahu k dispozici.
+**Místní oblasti Azure** jsou ty, které [ExpressRoute místní](expressroute-faqs.md) v každém umístění partnerského vztahu mají přístup. není k dispozici **, znamená to** , že ExpressRoute Local není v tomto umístění partnerského vztahu k dispozici.
 
 
 ### <a name="production-azure"></a>Produkční prostředí Azure
@@ -79,36 +79,36 @@ Následující tabulka uvádí umístění připojení a poskytovatele služby p
 | **Amsterdam** | Equinix | Západní Evropa | Aryaka Networks, AT&T NetBond, British Telecom, Colt, Equinix, euNetworks, GÉANT, InterCloud, Interxion, KPN, IX Reach, Level 3 Communications, Megaport, NTT Communications, Orange, Tata Communications, TeleCity Group, Telefonica, Telenor, Telia Carrier, Verizon, Zayo |
 | **Amsterdam2** | Interxion | Západní Evropa | CenturyLink Cloud Connect, DE-CIX, Interxion, Vodafone |
 | **Atlanta** | Equinix | neuvedeno | Equinix, Megaport |
-| **Auckland** | Vocus | neuvedeno | Devoli, Kordia, Megaport |
+| **Auckland** | Vocus skupina NZ | neuvedeno | Devoli, Kordia, Megaport, Vocus skupina NZ |
 | **Busan** |LG CNS | Jižní Korea – jih | LG CNS |
 | **Canberra** | CDC | Austrálie – střed | CDC |
 | **Canberra2** | CDC | Austrálie – střed 2| CDC |
 | **Kapské město** | Teraco | Jižní Afrika – západ | Internet Solutions – Cloud Connect, Liquid Telecom, Teraco |
 | **Čennaj** | Tata Communications | Indie – jih | Global CloudXchange (GCX), SIFY, Tata Communications |
 | **Čennaj2** | Airtel | Indie – jih | Airtel |
-| **Chicago** | Equinix | Střed USA – sever | Aryaka Networks, AT & T NetBond, CenturyLink Cloud Connect, Cologix, tak, Coresite, Equinix, InterCloud, Internet2, Level 3 Communications, Megaport, PacketFabric, PCCW globální omezený, Sprintu, Telia operátora, Verizon, Zayo |
+| **Chicago** | Equinix | Střed USA – sever | Aryaka Networks sítě, v & T NetBond, CenturyLink Cloud Connect, Cologix, Comcastu, Coresite, Equinix, spolucloud, Internet2, Level 3 Communications, Megaport, PacketFabric, PCCW, Telia, Verizon, Zayo |
 | **Dallas** | Equinix | neuvedeno | Aryaka Networks, AT&T NetBond, Cologix, Equinix, Internet2, Level 3 Communications, Megaport, Neutrona Networks, Telmex Uninet, Telia Carrier, Transtelco, Verizon, Zayo|
 | **Denver** | CoreSite | Západní střed USA | CoreSite, Megaport, Zayo |
-| **Dubai** | Spojené arabské emiráty Etisalat | Spojené arabské emiráty – sever | Spojené arabské emiráty Etisalat |
-| **Dubai2** | rozlišované sjednocení typu datamena | Spojené arabské emiráty – sever | rozlišované sjednocení typu datamena, Orixcom |
+| **Dubai** | Etisalat Spojené arabské emiráty | Spojené arabské emiráty – sever | Etisalat Spojené arabské emiráty |
+| **Dubai2** | du dataměna | Spojené arabské emiráty – sever | du dataměna, Orixcom |
 | **Dublin** | Equinix | Severní Evropa | Colt, eir, Equinix, Interxion, Megaport |
 | **Frankfurt** | Interxion | neuvedeno | DE-CIX, Interxion |
-| **Hongkong – zvláštní administrativní oblast** | Equinix | Východní Asie | Aryaka sítě, British Telecom, CenturyLink Cloud Connect, Telecom ředitel, Čína Telecom globální, Equinix, Megaport, NTT Communications, Orange, PCCW globální omezený, Tata Communications, Telia operátora, Verizon |
-| **Johannesburg** | Teraco | Jižní Afrika – sever | British Telecom, Internet Solutions - Cloud Connect, Liquid Telecom, Teraco |
+| **Hongkong – zvláštní správní oblast** | Equinix | Východní Asie | Aryaka Networks sítě, British Telecom, CenturyLink Cloud Connect, generální Telecom, Čína Telecom Global, Equinix, Megaport, NTT Communications, oranžová, PCCW Globaled, Tata Communications, Telia Carrier, Verizon |
+| **Johannesburg** | Teraco | Jižní Afrika – sever | British Telecom, Internet Solutions – Cloud Connect, Liquid Telecom, teraco |
 | **Kuala Lumpur** | TIME dotCom | neuvedeno | TIME dotCom |
 | **Las Vegas** | Přepínač | neuvedeno | CenturyLink Cloud Connect, Megaport |
 | **Londýn** | Equinix | Velká Británie – jih | AT&T NetBond, British Telecom, Colt, Equinix, InterCloud, Internet Solutions – Cloud Connect, Interxion, Jisc, Level 3 Communications, Megaport, MTN, NTT Communications, Orange, PCCW Global Limited, Tata Communications, Telehouse – KDDI, Telenor, Telia Carrier, Verizon, Vodafone, Zayo |
-| **London2** | Telehouse | Velká Británie – jih | IX Reach, Equinix |
+| **London2** | Telehouse | Velká Británie – jih | IX dosažitelný, Equinix |
 | **Los Angeles** | CoreSite | neuvedeno | CoreSite, Equinix, Megaport, Neutrona Networks, NTT, Zayo |
 | **Marseille** |Interxion | Francie – jih | DE-CIX, Interxion, Jaguar Network |
 | **Melbourne** | NextDC | Austrálie – jihovýchod | AARNet, Devoli, Equinix, Megaport, NEXTDC, Optus, Telstra Corporation, TPG Telecom |
 | **Miami** | Equinix | neuvedeno | C3ntro+, Equinix, Megaport, Neutrona Networks |
 | **Montreal** | Cologix | neuvedeno | Bell Canada, Cologix, Telus, Zayo |
-| **Bombaj** | Tata Communications | Indie – západ | Globální CloudXchange (GCX), umožňující Jio, Sify, Tata Communications, Verizon |
+| **Bombaj** | Tata Communications | Indie – západ | Global CloudXchange (GCX), Spoléhácí se na jio, Sify, Tata Communications, Verizon |
 | **Mumbai2** | Airtel | Indie – západ | Airtel, Sify, Vodafone Idea |
 | **New York** | Equinix | neuvedeno | CenturyLink Cloud Connect, Coresite, Equinix, InterCloud, Megaport, Packet, Zayo |
-| **Newport(Wales)** | Next Generation Data | Spojené království – západ | British Telecom, Colt, Level 3 Communications, příští generace |
-| **Ósaka** | Equinix | Japonsko – západ | Colt, Equinix, Internet Initiative Japan Inc. – IIJ, NTT Communications, NTT SmartConnect, Softbank |
+| **Newport(Wales)** | Next Generation Data | Spojené království – západ | British Telecom, Colt, Level 3 Communications, data nové generace |
+| **Ósaka** | Equinix | Japonsko – západ | Colt, Equinix, Internet Initiative Japonska Inc. – IIJ, NTT Communications, NTT SmartConnect, Softbank |
 | **Paříž** | Interxion | Francie – střed | CenturyLink Cloud Connect, Colt, Equinix, Intercloud, Interxion, Orange, Telia Carrier, Zayo |
 | **Perth** | NextDC | neuvedeno | Megaport, NextDC |
 | **Québec** | 4Degrees | Kanada – východ | Bell Canada, Megaport |
@@ -116,16 +116,16 @@ Následující tabulka uvádí umístění připojení a poskytovatele služby p
 | **Sao Paulo** | Equinix | Brazílie – jih | Aryaka Networks, Ascenty Data Centers, British Telecom, Equinix, Level 3 Communications, Neutrona Networks, Orange, Tata Communications, Telefonica, UOLDIVEO |
 | **Seattle** | Equinix | USA – západ 2 | Aryaka Networks, Equinix, Level 3 Communications, Megaport, Telus, Zayo |
 | **Soul** | KINX | Jižní Korea – střed | KINX, LG CNS, Sejong Telecom |
-| **Silicon Valley** | Equinix | USA – západ | Aryaka Networks, AT & T NetBond, British Telecom, CenturyLink Cloud Connect, tak Coresite, Equinix, InterCloud, IX oslovit paketů, PacketFabric, Level 3 Communications, Megaport, Orange, Sprintu, Tata Communications, Verizon, Zayo |
+| **Silicon Valley** | Equinix | USA – západ | Aryaka Networks sítě, v & T NetBond, British Telecom, CenturyLink Cloud Connect, Comcastu, Coresite, Equinix, spolucloud, IX dosažitelný, Packet, PacketFabric, Level 3 Communications, Megaport, oranžová, Sprint, Tata Communications, Verizon, Zayo |
 | **Silicon Valley2** | Coresite | USA – západ | Coresite | 
 | **Singapur** | Equinix | Jihovýchodní Asie | Aryaka Networks, AT&T NetBond, British Telecom, Epsilon Global Communications, Equinix, InterCloud, Level 3 Communications, Megaport, NTT Communications, Orange, SingTel, Tata Communications, Telstra Corporation, Verizon, Vodafone |
-| **Singapur2** | Globální přepínač | Jihovýchodní Asie | Colt epsilon – globální Communications, Megaport, SingTel |
-| **Sydney** | Equinix | Austrálie – východ | AARNet, AT&T NetBond, British Telecom, Devoli, Equinix, Kordia, Megaport, NEXTDC, NTT Communications, Optus, Orange, Telstra Corporation, TPG Telecom, Verizon |
-| **Tchaj-pej** | Hlavní telekomunikaci | neuvedeno | Hlavní Telecom, FarEasTone |
+| **Singapur2** | Globální přepínač | Jihovýchodní Asie | Colt, Epsilon Global Communications, Megaport, SingTel |
+| **Sydney** | Equinix | Austrálie – východ | Equinix, v & T NetBond, British Telecom, Devoli, Equinix, Kordia, Megaport, NEXTDC, NTT Communications, Optus, oranžová, Spark NZ, Telstra Corporation, TPG Telecom, Verizon, Vocus Group NZ |
+| **WAN** | Hlavní telekomunikační systémy | neuvedeno | Generální telekomunikace, FarEasTone |
 | **Tokio** | Equinix | Japonsko – východ | Aryaka Networks, AT&T NetBond, British Telecom, CenturyLink Cloud Connect, Colt, Equinix, Internet Initiative Japan Inc. - IIJ, NTT Communications, NTT EAST, Orange, Softbank, Verizon |
 | **Toronto** | Cologix | Kanada – střed | AT&T NetBond, Bell Canada, CenturyLink Cloud Connect, Cologix, Equinix, IX Reach Megaport, Telus, Verizon, Zayo |
-| **Washington, D.C.** | Equinix | USA – východ, USA – východ 2 | Aryaka Networks, AT & T NetBond, British Telecom, CenturyLink Cloud Connect, Cologix, tak, Coresite, Equinix, Internet2, InterCloud, Level 3 Communications, Megaport, Neutrona sítě, NTT Communications, Orange, PacketFabric, Sprintu, Tata Komunikace, Telia operátora, Verizon, Zayo |
-| **Washington DC2** | Coresite | USA – východ, USA – východ 2 |Coresite | 
+| **Washington, D.C.** | Equinix | Východní USA Východní USA 2 | Aryaka Networks sítě, v & T NetBond, British Telecom, CenturyLink Cloud Connect, Cologix, Comcastu, Coresite, Equinix, Internet2, spolucloud, Level 3 Communications, Megaport, Neutrona Networks, NTT Communications, pomeranče, PacketFabric, Sprint, Tata Komunikace, Telia dopravce, Verizon, Zayo |
+| **Washington DC2** | Coresite | Východní USA Východní USA 2 |Coresite | 
 | **Curych** | Interxion | neuvedeno | Intercloud, Interxion |
 
  **+** označuje brzké uvedení.
@@ -138,7 +138,7 @@ Následující tabulka uvádí umístění připojení a poskytovatele služby p
 | **Chicago** |AT&T NetBond, Equinix, Level 3 Communications, Verizon |
 | **Dallas** |Equinix, Megaport, Verizon |
 | **New York** |Equinix, CenturyLink Cloud Connect, Verizon |
-| **Phoenix** | AT&T NetBond, CenturyLink Cloud Connect, Megaport |
+| **Phoenix** | V & T NetBond, CenturyLink Cloud Connect, Megaport |
 | **San Antonio** | CenturyLink Cloud Connect, Megaport |
 | **Silicon Valley** | Equinix, Level 3 Communications, Verizon |
 | **Seattle** | Equinix, Megaport |
@@ -180,31 +180,31 @@ Pokud poskytovatel připojení není v předchozích částech uvedený, můžet
 ## <a name="c1partners"></a>Možnosti připojení prostřednictvím dalších poskytovatelů služeb
 | **Location** | **Výměna** | **Poskytovatelé připojení** |
 | --- | --- | --- |
-| **Amsterdam** | Equinix, Telecity | BICS, CloudXpress, Eurofiber, Fastweb S.p.A, Gulf Bridge International, MainOne, Nianet, Post, Proximus, TDC Erhverv, Telecom Italia Sparkle, Telia |
-| **Atlanta** | Equinix| Castle koruna
+| **Amsterdam** | Equinix, Interxion,, Level 3 Communications, měst | BICS, CloudXpress, Eurofiber, Fastweb S. p. A, mezinárodní most v Perském zálivu, Kalaam Telecom Bahrajn B. S. C, MainOne, Nianet, post, Proximus, ORS Erhverv, Telecom Italia Sparkle, Telekom Deutschland GmbH, Telia |
+| **Atlanta** | Equinix| Castle na koruna
 | **Kapské město** | Teraco | MTN |
-| **Chicago** | Equinix | Windstream koruna Castle, Opensourcová Enterprise |
-| **Dallas** | Equinix, Megaport | Firma Axtel C3ntro Telecom Cox obchodní koruna Castle Data Foundry spektrum podnikových Transtelco |
-| **Frankfurt** | Telecity | BICS, Cinia, Nianet, QSC AG |
-| **Hamburg** | Equinix | Cinia |
-| **Hongkong – zvláštní administrativní oblast** | Equinix | Ředitel pro Macroview telekomunikaci |
+| **Chicago** | Equinix| Koruna Castle, spektrum Enterprise, Windstream |
+| **Dallas** | Equinix, Megaport | AXTEL, C3ntro Telecom, Cox Business, koruna Castle, data slévárenské, spektrum Enterprise, Transtelco |
+| **Frankfurt** | Interxion, měst | BICS, Cinia, Nianet, QSC AG, Telekom Deutschland GmbH |
+| **Hamburk** | Equinix | Cinia |
+| **Hongkong – zvláštní správní oblast** | Equinix | Hlavní Macroview Telecom |
 | **Johannesburg** | Teraco | MTN |
-| **Londýn** | BICS, Equinix, euNetworks, Telecity | Bezeq International Ltd., CoreAzure, Epsilon Telecommunications Limited, Exponential E, HSO, NexGen Networks, Proximus, Tamares Telecom, Zain |
-| **Los Angeles** | Equinix |Transtelco koruna Castle, Opensourcová Enterprise |
+| **Londýn** | BICS, Equinix, euNetworks, Telecity | Bezeq International Ltd., CoreAzure, Epsilon – omezené, exponenciální E, HSO, NexGen Networks, Proximus, Tamares Telecom, Zajn |
+| **Los Angeles** | Equinix |Koruna Castle, spektrum Enterprise, Transtelco |
 | **Madrid** | Level3 | Zertia |
 | **Montreal** | Cologix, Equinix | Airgate Technologies, Inc. Cogeco Peer 1, Rogers, Zirro |
-| **New York** |Equinix, Megaport | Altice firmy, koruna Castle spektra Enterprise, Webair |
+| **New York** |Equinix, Megaport | Altice Business, koruna Castle, spektrum Enterprise, Webair |
 | **Paříž** | Equinix | Proximus |
 | **Québec** | Megaport | Fibrenoire |
 | **Sao Paula** | Equinix | Venha Pra Nuvem |
 | **Seattle** |Equinix | Alaska Communications |
-| **Silicon Valley** |Coresite, Equinix | Cox firmy, Opensourcová Enterprise, Windstream, X2nsat Inc. |
+| **Silicon Valley** |Coresite, Equinix | Cox Business, spektrum Enterprise, Windstream, X2nsat Inc. |
 | **Singapur** |Equinix |1CLOUDSTAR, BICS, Epsilon Telecommunications Limited, LGA Telecom, United Information Highway (UIH) |
 | **Slough** | Equinix | HSO|
 | **Sydney** | Megaport | Macquarie Telecom Group|
 | **Tokio** | Equinix | ARTERIA Networks Corporation, BroadBand Tower, Inc. |
-| **Toronto** | Equinix, Megaport | Airgate Technologies Inc., Beanfield Metroconnect, Cogeco Peer 1, IVedha Inc, Rogers, Thinktel, Zirro|
-| **Washington, D.C.** |Equinix | Altice Business, BICS, Cox Business, Crown Castle, Gtt Communications Inc, Epsilon Telecommunications Limited, Masergy, Windstream |
+| **Toronto** | Equinix, Megaport | Technologie Beanfield Metroconnect, Cogeco partner 1, IVedha Inc, Rogers, Thinktel, Zirro|
+| **Washington, D.C.** |Equinix | Altice Business, BICS, Cox Business, koruna Castle, GTT Communications Inc, Epsilon v oblasti krátké telekomunikace, Masergy, Windstream |
 
 ## <a name="expressroute-system-integrators"></a>Systémoví integrátoři ExpressRoute
 Povolení soukromého připojení podle vlastních potřeb může být náročné, v závislosti na rozsahu vaší sítě. Můžete spolupracovat s kterýmkoli systémovým integrátorem uvedeným v následující tabulce, aby vám pomohl s připojením k ExpressRoute.
@@ -216,7 +216,7 @@ Povolení soukromého připojení podle vlastních potřeb může být náročn�
 | **Evropa** |Avanade Inc., Altogee, Bright Skies GmbH, Inframon, MSG Services, New Signature, Nelite, Orange Networks, sol-tec |
 | **Severní Amerika** |Avanade Inc., Equinix Professional Services, FlexManage, Lightstream, Perficient, Presidio |
 | **Jižní Amerika** |Avanade Inc., Venha Pra Nuvem |
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 * Další informace o ExpressRoute najdete v tématu [ExpressRoute – nejčastější dotazy](expressroute-faqs.md).
 * Zkontrolujte, že jsou splněné všechny požadavky. Viz [Požadavky služby ExpressRoute](expressroute-prerequisites.md).
 

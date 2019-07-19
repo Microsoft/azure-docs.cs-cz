@@ -1,165 +1,201 @@
 ---
-title: Sítě Azure | Dokumentace Microsoftu
-description: Přečtěte si o Azure síťové služby a funkce.
+title: Sítě Azure | Microsoft Docs
+description: Přečtěte si o síťových službách v Azure a jejich schopnostech.
 services: networking
 documentationcenter: na
-author: jimdial
-manager: timlt
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
+author: KumudD
+manager: twooley
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/19/2017
-ms.author: jdial
-ms.openlocfilehash: 02db9f2b8cb2ec71d23ad077b90eeacb905d2a16
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 07/17/2019
+ms.author: kumud
+ms.openlocfilehash: 759b61e5fb444643bf83e1cca47b6f7152a96590
+ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60565792"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68305654"
 ---
 # <a name="azure-networking"></a>Sítě Azure
 
-Azure nabízí širokou škálu možností sítě, které lze použít společně nebo samostatně. Získáte po kliknutí na následující klíčové funkce pro další informace o nich:
-- [Připojení mezi prostředky Azure](#connectivity): Připojení prostředků Azure společně v zabezpečené a privátní virtuální sítě v cloudu.
-- [Připojení k Internetu](#internet-connectivity): Z prostředků Azure a komunikují přes Internet.
-- [Místní připojení](#on-premises-connectivity): Připojení místní sítě k prostředkům Azure pomocí virtuální privátní sítě (VPN) přes Internet nebo prostřednictvím vyhrazené připojení k Azure.
-- [Směr provozu a vyrovnávání zatížení](#load-balancing): Vyrovnávání zatížení provozu na servery ve stejném umístění a směrovat přenos dat na servery v různých umístěních.
-- [Zabezpečení:](#security) Filtrování síťového provozu mezi podsítěmi síť nebo jednotlivé virtuální počítače (VM).
-- [Směrování](#routing): Použít výchozí směrování nebo plně řídit směrování mezi Azure a místní prostředky.
-- [Možnosti správy](#manageability): Monitorování a Správa síťových prostředků Azure.
-- [Nasazení a konfigurace nástroje](#tools): Webový portál nebo nástrojů příkazového řádku pro různé platformy použijte k nasazení a konfiguraci síťových prostředků.
+Síťové služby v Azure poskytují nejrůznější možnosti sítě, které se dají použít společně nebo samostatně. Pokud se chcete dozvědět víc o těchto klíčových funkcích, klikněte na některou z těchto klíčových funkcí:
+- [**Služby připojení**](#connect): Propojte prostředky Azure a místní prostředky pomocí kterékoli nebo kombinace těchto síťových služeb v Azure-Virtual Network (VNet), Virtual WAN, ExpressRoute, VPN Gateway, Azure DNS nebo Azure bastionu.
+- [**Služby ochrany aplikací**](#protect) Chraňte své aplikace pomocí kterékoli nebo kombinace těchto síťových služeb v Azure – DDoS Protection, brány firewall, skupinách zabezpečení sítě, firewallu webových aplikací nebo koncových bodů Virtual Network.
+- [**Služby doručování aplikací**](#deliver) Doručovat aplikace do sítě Azure pomocí kterékoli nebo kombinace těchto síťových služeb v Azure-Content Delivery Network (CDN), služby front-in Azure, Traffic Manager, Application Gateway nebo Load Balancer.
+- [**Monitorování sítě**](#monitor) – monitorujte síťové prostředky pomocí kterékoli nebo kombinace těchto síťových služeb v Azure-Network Watcher, monitorování ExpressRoute, Azure monitor nebo terminálu přístupového bodu VNet (klepněte).
 
-## <a name="connectivity"></a>Připojení mezi prostředky Azure
+## <a name="connect"></a>Služby připojení
+ 
+Tato část popisuje služby, které poskytují konektivitu mezi prostředky Azure, připojením z místní sítě k prostředkům Azure a větví k připojení větví ve službě Azure – Virtual Network, ExpressRoute, VPN Gateway, Virtual WAN, DNS a Azure. Bastionu.
 
-Prostředky Azure, jako jsou Virtual Machines, Cloud Services, Škálovací sady virtuálních počítačů a Azure App Service Environment může komunikovat soukromě mezi sebou prostřednictvím služby Azure Virtual Network (VNet). Virtuální síť je logickou izolaci cloudu Azure, které jsou vyhrazené pro váš [předplatné](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fnetworking%2ftoc.json). Můžete implementovat několik virtuálních sítí v každém předplatném Azure a Azure [oblasti](https://azure.microsoft.com/regions). Každá virtuální síť je izolovaná od jiných virtuálních sítí. Pro každou virtuální síť můžete:
+|Služba|Proč použít?|Scénáře|
+|---|---|---|
+|[Virtuální síť](#vnet)|Umožňuje prostředkům Azure zabezpečeně komunikovat mezi sebou, internetem a místními sítěmi.| <p>[Filtrování provozu sítě](../virtual-network/tutorial-filter-network-traffic.md)</p> <p>[Směrování provozu sítě](../virtual-network/tutorial-create-route-table-portal.md)</p> <p>[Omezení síťového přístupu k prostředkům](../virtual-network/tutorial-restrict-network-access-to-resources.md)</p> <p>[Připojení virtuálních sítí](../virtual-network/tutorial-connect-virtual-networks-portal.md)</p>|
+|[ExpressRoute](#expressroute)|Rozšiřuje vaše místní sítě do cloudu Microsoftu přes soukromé připojení, které usnadňuje poskytovatel připojení.|<p>[Vytvoření a úprava okruhu ExpressRoute](../expressroute/expressroute-howto-circuit-portal-resource-manager.md)</p> <p>[Vytvoření a úprava partnerského vztahu pro okruh ExpressRoute](../expressroute/expressroute-howto-routing-portal-resource-manager.md)</p> <p>[Propojení virtuální sítě s okruhem ExpressRoute](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md)</p> <p>[Konfigurace a Správa filtrů tras pro okruhy ExpressRoute](../expressroute/how-to-routefilter-portal.md)</p>|
+|[VPN Gateway](#vpngateway)|Odesílá zašifrovaný provoz mezi virtuální sítí Azure a místním umístěním přes veřejný Internet.|<p>[Připojení mezi lokalitami](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)</p> <p>[Připojení VNet-to-VNet](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)</p> <p>[Připojení Point-to-site](../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md)</p>|
+|[Virtuální síť WAN](#virtualwan)|Optimalizuje a automatizuje připojení větví k Azure. Oblasti Azure slouží jako centra, ke kterým se můžete připojit ke svým větvím.|<p>[Připojení Site-to-site](../virtual-wan/virtual-wan-site-to-site-portal.md), [připojení ExpressRoute](../virtual-wan/virtual-wan-expressroute-portal.md)</p> <p>[Připojení Point-to-site](../virtual-wan/virtual-wan-point-to-site-portal.md)</p> |
+|[Azure DNS](#dns)|Hostuje domény DNS, které poskytují překlad názvů pomocí Microsoft Azure infrastruktury.|<p>[Hostování vaší domény v Azure DNS](../dns/dns-delegate-domain-azure-dns.md)</p><p>[Vytvoření záznamů DNS pro webovou aplikaci](../dns/dns-web-sites-custom-domain.md)</p> <p>[Vytvořit záznam aliasu pro Traffic Manager](../dns/tutorial-alias-tm.md)</p> <p>[Vytvořit záznam aliasu pro veřejnou IP adresu](../dns/tutorial-alias-pip.md)</p> <p>[Vytvoří záznam aliasu pro záznam prostředku zóny.](../dns/tutorial-alias-rr.md)</p>|
+|[Azure bastionu (Preview)](#bastion)|Nakonfigurujte možnosti bezpečného a bezproblémového připojení RDP/SSH k virtuálním počítačům přímo na webu Azure Portal přes SSL. Když se připojujete přes Azure bastionu, virtuální počítače nepotřebují veřejnou IP adresu.|<p>[Vytvoření hostitele Azure bastionu](../bastion/bastion-create-host-portal.md)</p><p>[Připojení pomocí SSH k virtuálnímu počítači se systémem Linux](../bastion/bastion-connect-vm-ssh.md)</p><p>[Připojení pomocí protokolu RDP k virtuálnímu počítači s Windows](/bastion/bastion-connect-vm-rdp.md)</p>|
+||||
 
-- Zadání vlastního adresního prostoru privátních IP adres pomocí veřejných a privátních (RFC 1918) adres. Azure přiřazuje prostředkům připojené k virtuální síti privátní IP adresu z adresního prostoru, který přiřadíte.
-- Virtuální síť segmentovat do jedné nebo několika podsítí a přidělení části adresního prostoru virtuální sítě ke každé podsíti.
-- Použít překlad názvů poskytovaných Azure nebo zadat vlastní server DNS pro použití podle prostředků, které jsou připojené k virtuální síti.
 
-Další informace o službě Azure Virtual Network, [Přehled virtuálních sítí](../virtual-network/virtual-networks-overview.md?toc=%2fazure%2fnetworking%2ftoc.json) článku. Propojení virtuálních sítí mezi sebou, povolení prostředkům připojeným k jedné virtuální sítě ve virtuálních sítích komunikovat mezi sebou. Propojení virtuálních sítí mezi sebou můžete použít jednu nebo obě z následujících možností:
+### <a name="vnet"></a>Virtuální síť
 
-- **Vytvoření partnerského vztahu:** Umožňuje prostředkům připojeným k jiné virtuální sítě Azure v rámci stejné oblasti Azure ke komunikaci mezi sebou. Na šířku pásma a latencí mezi virtuálními sítěmi je stejný jako v případě, že prostředky, které byly připojené ke stejné virtuální síti. Další informace o partnerských vztazích najdete v článku [přehled partnerských vztahů virtuálních sítí](../virtual-network/virtual-network-peering-overview.md?toc=%2fazure%2fnetworking%2ftoc.json) článku.
-- **Brána sítě VPN:** Umožňuje prostředkům připojeným k jiné virtuální sítě Azure v různých oblastech Azure pro komunikaci mezi sebou. Provoz mezi virtuálními sítěmi probíhá prostřednictvím služby Azure VPN Gateway. Šířka pásma mezi virtuálními sítěmi je omezená na šířku pásma brány. Další informace o propojení virtuálních sítí pomocí služby VPN Gateway najdete v článku [konfigurace připojení typu VNet-to-VNet mezi oblastmi](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md?toc=%2fazure%2fnetworking%2ftoc.json) článku.
+Azure Virtual Network (VNet) je základní stavební blok vaší privátní sítě v Azure. Virtuální sítě můžete použít k těmto akcím:
+- **Komunikace mezi prostředky Azure**: Virtuální počítače a několik dalších typů prostředků Azure můžete nasadit do virtuální sítě, jako jsou Azure App Service prostředí, Azure Kubernetes Service (AKS) a Azure Virtual Machine Scale Sets. Úplný seznam prostředků Azure, které můžete nasadit do virtuální sítě, najdete v tématu věnovaném [integraci virtuální sítě do služeb](../virtual-network/virtual-network-for-azure-services.md).
+- Vzájemná **komunikace mezi**sebou: Pomocí partnerského vztahu virtuálních sítí můžete propojit virtuální sítě mezi sebou a tím umožnit vzájemnou komunikaci prostředků v obou virtuálních sítích. Propojené virtuální sítě se můžou nacházet ve stejné oblasti Azure nebo v různých oblastech. Další informace najdete v tématu [partnerský vztah virtuálních sítí](../virtual-network/virtual-network-peering-overview.md).
+- **Komunikace s internetem**: Všechny prostředky ve virtuální síti můžou ve výchozím nastavení komunikovat odchozí připojení k Internetu. Příchozí komunikaci s prostředkem můžete umožnit tím, že prostředku přiřadíte veřejnou IP adresu nebo veřejný Load Balancer. Ke správě odchozích připojení můžete použít taky [veřejné IP adresy](../virtual-network/virtual-network-public-ip-address.md) nebo veřejné [Load Balancer](../load-balancer/load-balancer-overview.md) .
+- **Komunikace s místními sítěmi**: Místní počítače a sítě můžete připojit k virtuální síti pomocí [VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md) nebo [ExpressRoute](../expressroute/expressroute-introduction.md).
 
-## <a name="internet-connectivity"></a>Připojení k Internetu
+Další informace najdete v tématu [co je Azure Virtual Network?](../virtual-network/virtual-networks-overview.md).
 
-Všechny prostředky Azure, které jsou připojené k virtuální síti mají ve výchozím nastavení odchozího připojení k Internetu. Privátní IP adresu prostředku je zdrojové síťové adresy přeložit (SNAT) na veřejnou IP adresu infrastrukturou Azure. Další informace o odchozích připojení k Internetu, přečtěte si [Principy odchozích připojení v Azure](../load-balancer/load-balancer-outbound-connections.md?toc=%2fazure%2fnetworking%2ftoc.json) článku.
+### <a name="expressroute"></a>ExpressRoute
+ExpressRoute umožňuje rozšiřování místních sítí do cloudu Microsoftu přes soukromé připojení, které usnadňuje poskytovatel připojení. Toto připojení je soukromé. Provoz se nepřenáší přes internet. Pomocí ExpressRoute může vytvořit připojení ke cloudovým službám Microsoftu, jako je například Microsoft Azure, Office 365 nebo Dynamics 365.  Další informace najdete v tématu [co je ExpressRoute?](../expressroute/expressroute-introduction.md).
 
-Ke komunikaci příchozí k prostředkům Azure z Internetu nebo k Internetu bez SNAT odchozí komunikaci, zdroj musí přiřadit veřejnou IP adresu. Další informace o veřejné IP adresy, [veřejné IP adresy](../virtual-network/virtual-network-public-ip-address.md?toc=%2fazure%2fnetworking%2ftoc.json) článku.
+![Azure ExpressRoute](./media/networking-overview/expressroute-connection-overview.png)
 
-## <a name="on-premises-connectivity"></a>Místní připojení
+### <a name="vpngateway"></a>VPN Gateway
+VPN Gateway vám pomůže vytvořit šifrovaná připojení mezi různými místy k virtuální síti z místních umístění nebo vytvářet šifrovaná připojení mezi virtuální sítě. K dispozici jsou různé konfigurace pro VPN Gateway připojení, například site-to-site, Point-to-site nebo VNet to VNet.
+Následující diagram znázorňuje více připojení VPN typu Site-to-site ke stejné virtuální síti.
 
-Je můžete zabezpečený přístup k prostředkům ve vaší virtuální síti přes připojení VPN nebo privátní připojení s přímým přístupem. K posílání síťového provozu mezi virtuální sítí Azure a vaší místní síti, musíte vytvořit bránu virtuální sítě. Nakonfigurujete nastavení pro bránu vytvořit typ připojení, které chcete, síť VPN nebo ExpressRoute.
+![Připojení Site-to-site pro Azure VPN Gateway](./media/networking-overview/vpngateway-multisite-connection-diagram.png)
 
-Vaše místní sítě můžete připojit k virtuální síti pomocí jakékoli kombinace následujících možností:
+Další informace o různých typech připojení k síti VPN najdete v tématu [VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md).
 
-**Point-to-site (VPN přes SSTP)**
+### <a name="virtualwan"></a>Virtuální síť WAN
+Azure Virtual WAN je síťová služba, která poskytuje optimalizované a automatizované připojení větví k Azure. Oblasti Azure slouží jako centra, ke kterým se můžete připojit ke svým větvím. Můžete využít páteřní síť Azure a taky připojit větve a využít připojení k virtuální síti. Služba Azure Virtual WAN přináší dohromady mnoho služeb cloudového připojení Azure, jako je VPN typu Site-to-site, ExpressRoute, User VPN typu Point-to-site, do jediného provozního rozhraní. Připojení ke službě Azure virtuální sítě se vytváří pomocí připojení k virtuální síti. Další informace najdete v tématu [co je Azure Virtual WAN?](../virtual-wan/virtual-wan-about.md).
 
-Následující obrázek znázorňuje samostatný bod pro připojení k serveru mezi více počítačů a virtuální sítě:
+![Diagram virtuální sítě WAN](./media/networking-overview/virtualwan1.png)
 
-![Point-to-Site](./media/networking-overview/point-to-site.png)
+### <a name="dns"></a>Azure DNS
+Azure DNS je hostitelská služba určená pro domény DNS, která zajišťuje překlad názvů s využitím infrastruktury Microsoft Azure. Pokud své domény hostujete v Azure, můžete spravovat záznamy DNS pomocí stejných přihlašovacích údajů, rozhraní API a nástrojů a za stejných fakturačních podmínek jako u ostatních služeb Azure. Další informace najdete v tématu [co je Azure DNS?](../dns/dns-overview.md).
 
-Toto připojení mezi do jednoho počítače a virtuální sítě. Tento typ připojení je skvělý, pokud teprve začínáte s Azure, nebo pro vývojáře, protože nevyžaduje téměř nebo vůbec žádné změny vaší stávající sítě. Je také vhodné, když se připojujete ze vzdáleného umístění, jako je například z místa konání konference nebo home. Připojení point-to-site jsou často svázány s připojením site-to-site prostřednictvím stejné brány virtuální sítě. Připojení používá protokol SSTP poskytnout šifrovanou komunikaci prostřednictvím Internetu mezi počítačem a virtuální síť. Latence pro sítě VPN point-to-site nepředvídatelné, protože provoz prochází Internetem.
+### <a name="bastion"></a>Azure bastionu (Preview)
+Služba Azure bastionu je nová plně spravovaná služba PaaS spravovaná platformou, kterou zřizujete v rámci vaší virtuální sítě. Poskytuje zabezpečené a bezproblémové připojení RDP/SSH k virtuálním počítačům přímo v Azure Portal přes SSL. Když se připojíte přes Azure Bastion, virtuální počítače nepotřebují veřejnou IP adresu. Další informace najdete v tématu [co je Azure bastionu?](/bastion/bastion-overview.md).
 
-**Site-to-site (tunel VPN IPsec/IKE)**
+![Architektura Azure bastionu](./media/networking-overview/architecture.png)
 
-![Site-to-Site](./media/networking-overview/site-to-site.png)
 
-Toto připojení mezi místní zařízení VPN a službou Azure VPN Gateway. Tento typ připojení povoluje místnímu prostředku, který autorizaci pro přístup k virtuální síti. Připojení je protokolu IPSec/IKE VPN, poskytující šifrovanou komunikaci prostřednictvím Internetu mezi místním zařízením a bránou Azure VPN. Několik místních serverů můžete připojit ke stejné bráně VPN. Místní zařízení VPN v každé lokalitě musí mít externě určených pro veřejnou IP adresu, která není za zařízením NAT. Latence pro připojení site-to-site nepředvídatelné, protože provoz prochází Internetem.
+## <a name="protect"></a>Služby ochrany aplikací
 
-**ExpressRoute (vyhrazené soukromé připojení)**
+Tato část popisuje síťové služby v Azure, které vám pomůžou chránit síťové prostředky – DDoS Protection, Firewall webových aplikací, Azure Firewall, skupiny zabezpečení sítě a koncové body služby.
 
-![ExpressRoute](./media/networking-overview/expressroute.png)
+|Služba|Proč použít?|Scénář|
+|---|---|---|
+|[Ochrana DDoS](#ddosprotection) |Vysoká dostupnost pro vaše aplikace s ochranou před nadměrnými poplatky za přenosy IP|[Správa Azure DDoS Protection](../virtual-network/manage-ddos-protection.md)|
+|[Firewall webových aplikací](#waf)|<p>[Azure WAF s Application Gateway](../application-gateway/waf-overview.md) poskytuje místní ochranu entit ve veřejných a privátních adresních prostorech.</p><p>[Azure WAF s předními dveřmi](../frontdoor/waf-overview.md) zajišťuje ochranu v hraniční síti do veřejných koncových bodů.</p>|<p>[Konfigurace pravidel ochrany bot](../frontdoor/waf-front-door-policy-configure-bot-protection.md)</p> <p>[Konfigurace vlastního kódu odpovědi](../frontdoor/waf-front-door-configure-custom-response-code.md)</p> <p>[Konfigurovat pravidla omezení IP adres](../frontdoor/waf-front-door-configure-ip-restriction.md)</p> <p>[Konfigurovat pravidlo omezení četnosti](../frontdoor/waf-front-door-rate-limit-powershell.md)</p> |
+|[Azure Firewall](#firewall)|Azure Firewall je spravovaná cloudová služba síťového zabezpečení, která chrání vaše prostředky ve virtuálních sítích Azure. Jedná se o plně stavovou bránu firewall jako službu s integrovanou vysokou dostupností a neomezenou škálovatelností cloudu.|<p>[Nasazení Azure Firewall ve virtuální síti](../firewall/tutorial-firewall-deploy-portal.md)</p> <p>[– Nasazení Azure Firewall v hybridní síti](../firewall/tutorial-hybrid-ps.md)</p> <p>[Filtrování příchozího provozu pomocí Azure Firewall DNAT](../firewall/tutorial-firewall-dnat.md)</p>|
+|[Skupiny zabezpečení sítě](#nsg)|Úplný podrobný ovládací prvek distribuovaného uzlu na virtuálním počítači/podsíti pro všechny toky síťových přenosů|[Filtrování síťového provozu pomocí skupin zabezpečení sítě](../virtual-network/tutorial-filter-network-traffic.md)|
+|[Koncové body služby pro virtuální síť](#serviceendpoints)|Umožňuje omezit síťový přístup k některým prostředkům služby Azure na podsíť virtuální sítě.|[Omezení síťového přístupu k prostředkům PaaS](../virtual-network/tutorial-restrict-network-access-to-resources-powershell.md)|
+|||
+### <a name="ddosprotection"></a>DDoS Protection 
+[Azure DDoS Protection](../virtual-network/manage-ddos-protection.md) poskytuje protiopatření proti nejpropracovanějším hrozbám DDoS. Služba poskytuje rozšířené možnosti zmírnění DDoS pro vaši aplikaci a prostředky nasazené ve virtuálních sítích. Kromě toho zákazníci, kteří používají Azure DDoS Protection, mají přístup k DDoS podpoře rychlých odpovědí, aby při aktivním útoku zapojili odborníky na DDoS.
 
-Tento typ připojení se naváže mezi vaší sítí a Azure prostřednictvím partnera ExpressRoute. Toto připojení je soukromé. Přenosy neprocházejí přes Internet. Latence pro připojení ExpressRoute je předvídatelné, od provozu nepodporuje procházení Internetu. ExpressRoute můžete kombinovat pomocí připojení site-to-site.
+![DDoS Protection](./media/networking-overview/ddos-protection.png)
 
-Další informace o všech předchozích možností připojení, přečtěte si [diagramy topologie připojení](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fnetworking%2ftoc.json) článku.
+### <a name="waf"></a>Firewall webových aplikací
 
-## <a name="load-balancing"></a>Směr provozu a vyrovnávání zatížení
+Firewall webových aplikací Azure (WAF) poskytuje ochranu webových aplikací před běžnými webovými útoky a ohroženími zabezpečení, jako je například vkládání SQL a skriptování mezi weby. Azure WAF poskytuje předem chráněnou ochranu od OWASP hlavních chyb zabezpečení prostřednictvím spravovaných pravidel. Zákazníci navíc můžou nakonfigurovat také vlastní pravidla, která jsou zákaznická pravidla pro zajištění další ochrany založená na zdrojovém rozsahu IP adres, a požadavky na atributy, jako jsou hlavičky, soubory cookie, datová pole formuláře nebo parametry řetězce dotazu.
 
-Microsoft Azure poskytuje několik služeb pro správu, jak se distribuuje síťový provoz s vyrovnáváním zatížení. Můžete použít libovolnou z následujících funkcí, samostatně nebo společně:
+Zákazníci se můžou rozhodnout nasadit [Azure WAF s Application Gateway](../application-gateway/waf-overview.md) , která poskytuje regionální ochranu entit ve veřejných a privátních adresních prostorech. Zákazníci si také můžou nasadit [Azure WAF s předními dveřmi](../frontdoor/waf-overview.md) , které poskytují ochranu na hraničních sítích pro veřejné koncové body.
 
-**Vyrovnávání zatížení DNS**
 
-Služba Azure Traffic Manager poskytuje Vyrovnávání zatížení globálního DNS. Traffic Manager jsou reaguje na klienty s IP adresou v dobrém stavu koncového bodu, na základě jedné z následujících metod směrování:
-- **Geografické:** Klienti jsou přesměrováni na konkrétní koncové body (Azure, externí nebo vnořené) na základě, na jaké geografické umístění jejich dotaz DNS pochází z. Tato metoda umožňuje scénáře, kde je důležité vědět, geografické oblasti klienta a směrování je podle něj. Mezi příklady patří vyhovující pověření suverenita dat, lokalizace obsahu & uživatelské prostředí a měření přenosů z různých oblastí.
-- **Výkon:** IP adresa, který je vrácen do klienta je "nejbližší" do klienta. 'Co nejblíže' koncový bod není nutně co nejblíž koncovým měřený podle geografické vzdálenosti. Místo toho tato metoda určuje nejbližší koncového bodu, na základě měření latence sítě. Traffic Manager udržuje tabulku Internet latence sledovat dobu odezvy mezi rozsahy IP adres a každé datové centrum Azure.
-- **Priorita:** Provoz se směřuje do primárního koncového bodu (nejvyšší priorita). Pokud primární koncový bod není k dispozici, Traffic Manager směruje provoz do druhé koncového bodu. Pokud obě primární a sekundární koncových bodů nejsou k dispozici, provoz směrován na třetí a tak dále. Dostupnost koncového bodu závisí na nakonfigurovaných stavu (povoleno nebo zakázáno) a monitorování probíhající koncových bodů.
-- **Vážené kruhové dotazování:** Pro každý požadavek Traffic Manager náhodně vybere koncový bod k dispozici. Pravděpodobnost Výběr koncového bodu podle váhy přiřazené všechny dostupné koncové body. Použitím stejnou váhou pro všechny koncové body výsledky v distribuci i provoz. Pomocí vyšší nebo nižší váhu na konkrétním koncovým bodům způsobí, že tyto koncové body mají více nebo méně často vrátit v odpovědi DNS.
+### <a name="firewall"></a>Azure Firewall
+Azure Firewall je spravovaná cloudová služba síťového zabezpečení, která chrání vaše prostředky ve virtuálních sítích Azure. Pomocí Azure Firewall můžete centrálně vytvářet, vysazovat a protokolovat zásady pro připojení aplikací a sítí napříč předplatnými a virtuálními sítěmi. Brána Azure Firewall používá statickou veřejnou IP adresu pro prostředky virtuální sítě a díky tomu umožňuje venkovním bránám firewall identifikovat provoz pocházející z vaší virtuální sítě. 
 
-Následující obrázek ukazuje požadavek pro webovou aplikaci přesměrováni na koncový bod webové aplikace. Koncové body mohou být také další služby Azure, jako jsou virtuální počítače a cloudové služby.
+Další informace o Azure Firewall najdete v dokumentaci k [Azure firewall](../firewall/overview.md).
 
-![Traffic Manager](./media/networking-overview/traffic-manager.png)
+![Přehled brány firewall](./media/networking-overview/firewall-threat.png)
 
-Klient se připojí přímo do tohoto koncového bodu. Azure Traffic Manager zjistí, že koncový bod není v pořádku a klienty přesměruje na koncový bod jiné, v pořádku. Další informace o Traffic Manageru, najdete [Azure Traffic Manager – Přehled](../traffic-manager/traffic-manager-overview.md?toc=%2fazure%2fnetworking%2ftoc.json) článku.
+### <a name="nsg"></a>Skupiny zabezpečení sítě
+Můžete filtrovat síťový provoz do a z prostředků Azure ve virtuální síti Azure pomocí skupiny zabezpečení sítě. Další informace najdete v tématu [Přehled zabezpečení](../virtual-network/security-overview.md).
 
-**Vyrovnávání zatížení aplikace**
+### <a name="serviceendpoints"></a>Koncové body služby
+Koncové body služby virtuální sítě rozšiřují privátní adresní prostor vaší virtuální sítě a její identitu do služeb Azure přes přímé připojení. Koncové body umožňují svázat vaše důležité prostředky služeb Azure pouze s vašimi virtuálními sítěmi. Provoz z vaší virtuální sítě do služby Azure vždy zůstává v páteřní síti Microsoft Azure. Další informace najdete v tématu [koncové body služby virtuální sítě](../virtual-network/virtual-network-service-endpoints-overview.md).
 
-Služba Azure Application Gateway poskytuje kontroler doručování aplikací (ADC) jako službu. Služba Application Gateway nabízí různé vrstvy 7 (HTTP/HTTPS) možnostmi Vyrovnávání zatížení pro vaše aplikace, včetně brány firewall webových aplikací k ochraně vašich webových aplikací před ohrožením zabezpečení a zneužitím. Služba Application Gateway umožňuje optimalizovat produktivitu webové farmy tím, že se ukončování protokolu SSL náročnou na procesor, ke službě application gateway. 
+![Koncové body služby pro virtuální síť](./media/networking-overview/vnet-service-endpoints-overview.png)
 
-Další možnosti přesměrování vrstvy 7 obsahovat kruhové dotazování na distribuci příchozích přenosů, spřažení relace na základě souborů cookie, směrování na základě cesty URL a možnost hostování několika webů za jedné službě application gateway. Application Gateway lze nakonfigurovat jako brány přístupem k Internetu, pouze interní brány nebo kombinaci obojího. Služba Application Gateway je Azure plně spravované, škálovatelné a vysoce dostupné. Nabízí celou řadu možností diagnostiky a protokolování, které zlepšují správu. Další informace o službě Application Gateway, přečtěte si [Přehled služby Application Gateway](../application-gateway/application-gateway-introduction.md?toc=%2fazure%2fnetworking%2ftoc.json) článku.
+## <a name="deliver"></a>Služby doručování aplikací
 
-Následující obrázek ukazuje adresu URL, – směrování na základě cest pomocí služby Application Gateway:
+Tato část popisuje síťové služby v Azure, které vám pomůžou doručovat aplikace Content Delivery Network (CDN), službu Azure front-dveří, Traffic Manager, Application Gateway a Load Balancer.
 
-![Application Gateway](./media/networking-overview/application-gateway.png)
+|Služba|Proč použít?|Scénář|
+|---|---|---|
+|[Content Delivery Network](#cdn)|Poskytuje uživatelům obsah s vysokou šířkou pásma. Sítě CDN ukládat obsah uložený v mezipaměti na hraničních serverech, které jsou blízko koncovým uživatelům, aby se minimalizovala latence|<p>[Přidání CDN do webové aplikace](../cdn/cdn-add-to-web-app.md)</p> <p>[– Přístup k objektům blob úložiště pomocí Azure CDN vlastní domény přes HTTPS](..//cdn/cdn-storage-custom-domain-https.md)</p> <p>[Přidání vlastní domény do koncového bodu Azure CDN](../cdn/cdn-map-content-to-custom-domain.md)</p> <p>[Konfigurace HTTPS pro vlastní doménu Azure CDN](../cdn/cdn-custom-ssl.md?tabs=option-1-default-enable-https-with-a-cdn-managed-certificate)</p>|
+|[Služba front-dveří Azure](#frontdoor)|Umožňuje definovat, spravovat a monitorovat globální směrování pro webový provoz optimalizací pro nejlepší výkon a rychlé globální převzetí služeb při selhání pro zajištění vysoké dostupnosti.|<p>[Přidání vlastní domény do služby Azure front-dveří](../frontdoor/front-door-custom-domain.md)</p> <p>[Konfigurace HTTPS pro vlastní doménu přední dveře](../frontdoor/front-door-custom-domain-https.md)</p><p>[Nastavení zásad brány firewall webových aplikací geografického filtrování](../frontdoor/front-door-tutorial-geo-filtering.md)|
+|[Traffic Manager](#trafficmanager)|Distribuuje provoz na základě DNS do služeb napříč globálními oblastmi Azure a zajišťuje vysokou dostupnost a rychlost odezvy.|<p> [Směrování provozu pro zajištění nízké latence](../traffic-manager/tutorial-traffic-manager-improve-website-response.md)</p><p>[Směrování provozu do prioritního koncového bodu](../traffic-manager/traffic-manager-configure-priority-routing-method.md)</p><p> [Řízení provozu s váženými koncovými body](../traffic-manager/tutorial-traffic-manager-weighted-endpoint-routing.md)</p><p>[Směrování provozu na základě geografického umístění koncového bodu](../traffic-manager/traffic-manager-configure-geographic-routing-method.md)</p> <p> [Směrování provozu na základě podsítě uživatele](../traffic-manager/tutorial-traffic-manager-subnet-routing.md)</p>|
+|[Load Balancer](#loadbalancer)|Zajišťuje regionální vyrovnávání zatížení díky směrování provozu napříč zónami dostupnosti a do virtuální sítě. Poskytuje interní vyrovnávání zatížení díky směrování provozu mezi prostředky a mezi nimi a k sestavení vaší místní aplikace.|<p> [Vyrovnávání zatížení internetového provozu do virtuálních počítačů](../load-balancer/tutorial-load-balancer-standard-manage-portal.md)</p> <p>[Vyrovnávání zatížení napříč virtuálními počítači uvnitř virtuální sítě](../load-balancer/tutorial-load-balancer-basic-internal-portal.md)<p>[Přeposílání provozu na konkrétní port na konkrétní virtuální počítače](../load-balancer/tutorial-load-balancer-port-forwarding-portal.md)</p><p> [Konfigurace vyrovnávání zatížení a odchozích pravidel](../load-balancer/configure-load-balancer-outbound-cli.md)</p>|
+|[Application Gateway](#applicationgateway)|Azure Application Gateway je nástroj pro vyrovnávání zatížení webových přenosů, který vám umožní spravovat provoz do webových aplikací.|<p>[Směrování webového provozu s využitím Azure Application Gateway](../application-gateway/quick-create-portal.md)</p><p>[Konfigurace aplikační brány s ukončením protokolu SSL](../application-gateway/create-ssl-portal.md)</p><p>[Vytvoření aplikační brány se směrováním založeným na cestě URL](../application-gateway/create-url-route-portal.md) </p>|
+|
 
-**Vyrovnávání zatížení sítě**
+### <a name="cdn"></a>Content Delivery Network
+Azure Content Delivery Network (CDN) nabízí vývojářům globální řešení pro rychlé doručování širokopásmového obsahu uživatelům díky ukládání obsahu do mezipaměti na fyzických uzlech strategicky umístěných po celém světě. Další informace o Azure CDN najdete v tématu [Azure Content Delivery Network](../cdn/cdn-overview.md)
 
-Nástroje Azure Load Balancer poskytuje vysoce výkonné, s nízkou latencí 4 vrstvy Vyrovnávání zatížení pro všechny protokoly UDP a TCP. Spravuje příchozí a odchozí připojení. Veřejné a vnitřní s vyrovnáváním zatížení koncové body můžete nakonfigurovat. Můžete definovat pravidla pro namapování příchozí připojení do back endového fondu cílů s použitím TCP nebo HTTP zjišťování stavu možností pro správu dostupnost služeb. Další informace o nástroji Load Balancer, [Load Balancer – přehled](../load-balancer/load-balancer-overview.md?toc=%2fazure%2fnetworking%2ftoc.json) článku.
+![Azure CDN](./media/networking-overview/cdn-overview.png)
 
-Následující obrázek znázorňuje vícevrstvou aplikaci přístupem k Internetu, které využívá oba nástroje pro vyrovnávání zatížení externí a interní:
+### <a name="frontdoor"></a>Služba front-dveří Azure
+Služba Azure Front Door vám umožňuje definovat, spravovat a monitorovat globální směrování webového provozu tím, že provádí optimalizaci pro nejlepší výkon a poskytuje okamžité globální převzetí služeb při selhání, aby byla zajištěna vysoká dostupnost. Se službou Front Door můžete transformovat svoje globální (zahrnující více oblastí) spotřebitelské a podnikové aplikace do robustních a vysoce výkonných přizpůsobených moderních aplikací, rozhraní API a obsahu, kterými s pomocí Azure oslovíte globální cílovou skupinu. Další informace najdete v tématu [přední dvířka Azure](../frontdoor/front-door-overview.md).
 
-![Nástroj pro vyrovnávání zatížení](./media/networking-overview/load-balancer.png)
 
-## <a name="security"></a>Zabezpečení
+### <a name="trafficmanager"></a>Traffic Manager
 
-Můžete filtrovat provoz do a z prostředků Azure pomocí následujících možností:
+Azure Traffic Manager je nástroj pro vyrovnávání zatížení provozu na základě DNS, který umožňuje optimálně distribuovat provoz do služeb napříč globálními oblastmi Azure při zajištění vysoké dostupnosti a rychlosti odezvy. Traffic Manager poskytuje řadu metod směrování provozu pro distribuci provozu, jako je priorita, vážená, výkonná, geografická, více hodnot nebo podsíť. Další informace o metodách směrování provozu najdete v tématu [Traffic Manager metod směrování](../traffic-manager/traffic-manager-routing-methods.md).
 
-- **Síť:** Můžete implementovat skupiny zabezpečení sítě Azure (Nsg) pro filtrování příchozího a odchozího provozu do prostředků Azure. Každá skupina NSG obsahuje jedno nebo více příchozích a odchozích pravidel. Každé pravidlo určuje zdrojové IP adresy, cílové IP adresy, portu a protokolu, který se bude filtrovat provoz s. Skupiny zabezpečení sítě můžete použít pro jednotlivé podsítě a jednotlivým virtuálním počítačům. Další informace o skupinách Nsg najdete v článku [přehled skupin zabezpečení sítě](../virtual-network/security-overview.md?toc=%2fazure%2fnetworking%2ftoc.json) článku.
-- **Aplikace:** Pomocí služby Application Gateway s firewallem webových aplikací dokáže ochránit vaše webové aplikace před ohroženími zabezpečení a zneužitím. Běžné příklady jsou SQL útoky prostřednictvím injektáže, skriptování mezi weby a chybně vytvořená záhlaví. Služba Application gateway filtruje provoz a zastaví dosažení vašich webových serverů. Budete moct nakonfigurovat pravidla má povoleno. Poskytuje možnost konfigurovat zásady vyjednávání SSL umožňuje to zakázání určitých zásad. Další informace o firewallu webových aplikací najdete v článku [firewallu webových aplikací](../application-gateway/application-gateway-web-application-firewall-overview.md?toc=%2fazure%2fnetworking%2ftoc.json) článku.
+Následující diagram znázorňuje směrování na základě priority koncového bodu s Traffic Manager:
 
-Pokud potřebujete možnost sítě Azure nebude poskytovat nebo chcete použít síť aplikací, které používáte v místním, můžete implementovat produkty ve virtuálních počítačích a připojte se k virtuální síti. [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/networking?page=1&subcategories=appliances) obsahuje několik různých virtuálních počítačů předem nakonfigurovaným programem síťové aplikace mohou právě používáte. Tato předem nakonfigurovaných virtuálních počítačů se obvykle označují jako síťová virtuální zařízení (NVA). Síťová virtuální zařízení jsou k dispozici s aplikací, jako jsou brány firewall a optimalizace sítě WAN.
+![Služba Azure Traffic Manager "Priorita" přenosu – Metoda směrování](./media/networking-overview/priority.png)
 
-## <a name="routing"></a>Směrování
+Další informace o Traffic Manager najdete v tématu [co je Azure Traffic Manager?](../traffic-manager/traffic-manager-overview.md)
 
-Azure vytvoří výchozí směrovací tabulky, které umožňují prostředkům připojeným k žádné podsíti v libovolné virtuální síti komunikovat mezi sebou. Můžete implementovat jednu nebo obě z následujících typů trasy přepisují výchozí trasy, které Azure vytváří:
-- **Uživatelem definované:** Nemůžete vytvářet vlastní směrovací tabulky s trasami tento ovládací prvek, kde provoz se směruje do pro každou podsíť. Další informace o trasách definovaných uživatelem najdete v článku [Trasy definované uživatelem](../virtual-network/virtual-networks-udr-overview.md?toc=%2fazure%2fnetworking%2ftoc.json).
-- **Border gateway protocol (BGP):** Je-li propojit vaši virtuální síť k místní síti pomocí Azure VPN Gateway nebo ExpressRoute, můžete rozšířit trasy protokolu BGP pro vaše virtuální sítě. BGP je standardní směrovací protokol, na internetu běžně používaný k výměně informací o směrování a dostupnosti mezi dvěma nebo více sítěmi. Při použití v rámci virtuální sítě Azure, umožňuje Azure VPN Gateway a vaše místní zařízení VPN, nazývají partnerské uzly protokolu BGP nebo okolí, výměnu "tras" informujících obě brány o dostupnosti a dosažitelnosti předpon, chcete-li přejít protokolu BGP prostřednictvím těmito bránami nebo trasami, které jsou zahrnuté. BGP také umožňuje směrování přenosu mezi více sítěmi pomocí šíření tras, které brána s protokolem BGP zjistí od jednoho partnerského uzlu protokolu BGP pro všechny další partnerské uzly protokolu BGP. Další informace o protokolu BGP, najdete v článku [protokolu BGP se službou Azure VPN Gateway přehled](../vpn-gateway/vpn-gateway-bgp-overview.md?toc=%2fazure%2fnetworking%2ftoc.json) článku.
+### <a name="loadbalancer"></a>Load Balancer
+Azure Load Balancer poskytuje vysoce výkonné a nízké latence vyrovnávání zatížení vrstvy 4 pro všechny protokoly UDP a TCP. Spravuje příchozí a odchozí připojení. Můžete nakonfigurovat veřejné a interní koncové body s vyrovnáváním zatížení. Můžete definovat pravidla pro mapování příchozích připojení k cílům back-end fondu pomocí možností nástroje pro zjišťování stavu TCP a HTTP pro správu dostupnosti služby. Další informace o Load Balancer najdete v článku [Load Balancer přehled](../load-balancer/load-balancer-overview.md) .
 
-## <a name="manageability"></a>Možnosti správy
+Následující obrázek znázorňuje internetovou vícevrstvou aplikaci, která využívá externí i interní nástroje pro vyrovnávání zatížení:
 
-Azure poskytuje následující nástroje pro monitorování a Správa sítě:
-- **Protokoly aktivit:** Všechny prostředky Azure mají protokoly aktivit, které poskytují informace o operacích provedených místo, stav operací a kdo operaci zahájil. Další informace o protokolech aktivit, [protokoly aktivit přehled](../azure-monitor/platform/activity-logs-overview.md?toc=%2fazure%2fnetworking%2ftoc.json) článku.
-- **Diagnostické protokoly:** Pravidelné a spontánních události jsou vytvořené síťové prostředky a protokolovány v účtech Azure storage, odeslaná do centra událostí Azure nebo odesílat protokoly Azure monitoru. Diagnostické protokoly poskytují přehled o stavu prostředku. Diagnostické protokoly jsou k dispozici pro nástroj pro vyrovnávání zatížení (internetový), skupin zabezpečení sítě, tras a služba Application Gateway. Další informace o diagnostických protokolech najdete v článku [přehled diagnostických protokolů](../azure-monitor/platform/diagnostic-logs-overview.md?toc=%2fazure%2fnetworking%2ftoc.json) článku.
-- **Metriky:** Metriky jsou měření výkonu a čítače shromažďují za časové období na prostředky. Metriky lze použít k aktivaci výstrahy na základě prahových hodnot. Metriky jsou teď dostupné ve službě Application Gateway. Další informace o metrikách, [přehled metriky](../monitoring-and-diagnostics/monitoring-overview-metrics.md?toc=%2fazure%2fnetworking%2ftoc.json) článku.
-- **Řešení potíží:** Informace o odstraňování potíží je přístupný přímo na webu Azure portal. Informace pomohou diagnostikovat běžné problémy se službou ExpressRoute, VPN Gateway, Application Gateway, protokoly zabezpečení sítě, tras, DNS, nástroj pro vyrovnávání zatížení a Traffic Manager.
-- **Řízení přístupu na základě role (RBAC):** Řídíte, kdo může vytvářet a spravovat síťové prostředky s řízením přístupu na základě rolí (RBAC). Další informace o RBAC pro čtení [vám umožní začít RBAC](../role-based-access-control/overview.md?toc=%2fazure%2fnetworking%2ftoc.json) článku. 
-- **Zachycení paketů:** Služba Azure Network Watcher nabízí možnost spustit zachytávání paketů na virtuálním počítači prostřednictvím rozšíření ve virtuálním počítači. Tato funkce je dostupná pro virtuální počítače Windows a Linux. Další informace o zachytávání paketů, [přehled zachytávání paketů](../network-watcher/network-watcher-packet-capture-overview.md?toc=%2fazure%2fnetworking%2ftoc.json) článku.
-- **Ověření toků protokolu IP:** Network Watcher umožňuje ověření IP toků mezi Virtuálním počítači Azure a vzdáleného prostředku k určení, zda pakety jsou povolené nebo zakázané. Tato funkce poskytuje správcům možnost rychle diagnostikovat problémy s připojením. Další informace o tom, jak ověření IP toků, přečtěte si [ověření toku protokolu IP přehled](../network-watcher/network-watcher-ip-flow-verify-overview.md?toc=%2fazure%2fnetworking%2ftoc.json) článku.
-- **Řešení potíží s připojením VPN:** Možnost Poradce při potížích s VPN služby Network Watcher umožňuje dotazování připojení nebo brány a ověřit stav prostředků. Další informace o řešení potíží s připojením VPN najdete v článku [řešení potíží s přehled připojení k síti VPN](../network-watcher/network-watcher-troubleshoot-overview.md?toc=%2fazure%2fnetworking%2ftoc.json) článku.
-- **Zobrazení topologie sítě:** Zobrazte grafická reprezentace síťovým prostředkům ve virtuální síti pomocí služby Network Watcher. Další informace o zobrazení topologie sítě, [přehled topologie](../network-watcher/network-watcher-topology-overview.md?toc=%2fazure%2fnetworking%2ftoc.json) článku.
+![Příklad Azure Load Balancer](./media/networking-overview/IC744147.png)
 
-## <a name="tools"></a>Nástroje pro nasazení a konfigurace
 
-Můžete nasadit a nakonfigurovat síťovými prostředky Azure s žádným z následujících nástrojů:
+### <a name="applicationgateway"></a>Application Gateway
+Azure Application Gateway je nástroj pro vyrovnávání zatížení webových přenosů, který vám umožní spravovat provoz do webových aplikací. Je to řadič pro doručování aplikací (ADC) jako služba a nabízí různé možnosti vyrovnávání zatížení vrstvy 7 pro vaše aplikace. Další informace najdete v tématu [co je Azure Application Gateway?](../application-gateway/overview.md).
 
-- **Azure portal:** Grafické uživatelské rozhraní, na kterém běží v prohlížeči. Otevřete web [Azure Portal](https://portal.azure.com).
-- **Azure PowerShell:** Nástroje příkazového řádku pro správu Azure z počítačů s Windows. Další informace o Azure Powershellu najdete [Přehled prostředí Azure PowerShell](/powershell/azure/overview?toc=%2fazure%2fnetworking%2ftoc.json) článku.
-- **Rozhraní příkazového řádku Azure (CLI):** Nástroje příkazového řádku pro správu Azure z počítačů systému Linux, macOS nebo Windows. Další informace o rozhraní příkazového řádku Azure pro čtení [přehled Azure CLI](/cli/azure/get-started-with-azure-cli?toc=%2fazure%2fnetworking%2ftoc.json) článku.
-- **Šablony Azure Resource Manageru:** Soubor (ve formátu JSON), která definuje infrastrukturu a konfiguraci řešení Azure. Pomocí šablony můžete řešení opakovaně nasadit v průběhu životního cyklu a mít přitom jistotu, že se prostředky nasadí konzistentně. Další informace o vytváření šablon najdete v článku [osvědčené postupy pro vytváření šablon](../azure-resource-manager/resource-manager-template-best-practices.md?toc=%2fazure%2fnetworking%2ftoc.json) článku. Šablony můžete nasadit pomocí webu Azure portal, rozhraní příkazového řádku nebo Powershellu. Začínáme se šablonami hned, nasaďte jednu z mnoha předem nakonfigurovaných šablon v [šablony pro rychlý start Azure](https://azure.microsoft.com/resources/templates/?term=network) knihovny. 
+Následující diagram znázorňuje směrování na základě cesty URL s Application Gateway.
 
-## <a name="pricing"></a>Ceny
+![Příklad Application Gateway](./media/networking-overview/figure1-720.png)
 
-Některé síťové služby Azure mají poplatek, zatímco ostatní jsou zdarma. Zobrazení [virtuální síť](https://azure.microsoft.com/pricing/details/virtual-network), [VPN Gateway](https://azure.microsoft.com/pricing/details/vpn-gateway), [Application Gateway](https://azure.microsoft.com/pricing/details/application-gateway/), [nástroje pro vyrovnávání zatížení](https://azure.microsoft.com/pricing/details/load-balancer), [Network Watcher](https://azure.microsoft.com/pricing/details/network-watcher), [DNS](https://azure.microsoft.com/pricing/details/dns), [Traffic Manageru](https://azure.microsoft.com/pricing/details/traffic-manager) a [ExpressRoute](https://azure.microsoft.com/pricing/details/expressroute) pro další informace o stránkách s cenami.
+## <a name="monitor"></a>Služby monitorování sítě
+Tato část popisuje síťové služby v Azure, které vám pomůžou monitorovat síťové prostředky – Network Watcher, monitor ExpressRoute, Azure Monitor a Virtual Network klepněte na.
+
+|Služba|Proč použít?|Scénář|
+|---|---|---|
+|[Network Watcher](#networkwatcher)|Pomáhá monitorovat a řešit potíže s připojením, pomáhá diagnostikovat problémy VPN, NSG a směrování, zachytávání paketů na vašem VIRTUÁLNÍm počítači automatizuje aktivaci diagnostických nástrojů pomocí Azure Functions a Logic Apps|<p>[Diagnostika potíží s filtrováním provozu virtuálních počítačů](../network-watcher/diagnose-vm-network-traffic-filtering-problem.md)</p><p>[Diagnostika potíží se směrováním virtuálních počítačů](../network-watcher/diagnose-vm-network-routing-problem.md)</p><p>[Monitorování komunikace mezi virtuálními počítači](../network-watcher/connection-monitor.md)</p><p>[Diagnostika potíží s komunikací mezi sítěmi](../network-watcher/diagnose-communication-problem-between-networks.md)</p><p>[Protokolování síťového provozu do a z virtuálního počítače](../network-watcher/network-watcher-nsg-flow-logging-portal.md)</p>|
+|[ExpressRoute Monitor](#expressroutemonitor)|Poskytuje sledování výkonu, dostupnosti a využití sítě v reálném čase, pomáhá při automatickém zjišťování síťové topologie, zajišťuje rychlejší izolaci chyb, detekuje dočasné problémy se sítí, pomáhá analyzovat historický výkon sítě. vlastnosti, podpora více předplatných|<p>[Konfigurace Network Performance Monitor pro ExpressRoute](../expressroute/how-to-npm.md)</p><p>[ExpressRoute monitorování, metriky a výstrahy](../expressroute/expressroute-monitoring-metrics-alerts.md)</p>|
+|[Azure Monitor](#azuremonitor)|Pomůže vám pochopit, jak vaše aplikace provádí a aktivně identifikuje problémy, které se jim ovlivňují, a prostředky, na kterých jsou závislé.|<p>[Traffic Manager metriky a výstrahy](../traffic-manager/traffic-manager-metrics-alerts.md)</p><p>[Diagnostika Azure monitor pro Standard Load Balancer](../load-balancer/load-balancer-standard-diagnostics.md)</p><p>[Monitorovat protokoly Azure Firewall a metriky](../firewall/tutorial-diagnostics.md)</p><p>[Monitorování a protokolování Firewallu webových aplikací Azure](../frontdoor/waf-front-door-monitor.md)</p>|
+|[Virtual Network klepněte na](#vnettap)|Poskytuje průběžné streamování provozu sítě virtuálních počítačů do sběrače paketů, umožňuje řešení pro správu výkonu sítě a aplikace a nástroje pro analýzu zabezpečení.|[Vytvoření virtuální sítě klepnutím na prostředek](../virtual-network/tutorial-tap-virtual-network-cli.md)|
+|
+
+### <a name="networkwatcher"></a>Network Watcher
+Azure Network Watcher poskytuje nástroje pro monitorování, diagnostiku, zobrazení metrik a povolení nebo zakázání protokolů pro prostředky ve virtuální síti Azure. Další informace najdete v tématu [co je Network Watcher?](../network-watcher/network-watcher-monitoring-overview.md?toc=%2fazure%2fnetworking%2ftoc.json).
+### <a name="expressroutemonitor"></a>Monitorování ExpressRoute
+Další informace o tom, jak zobrazit metriky okruhů ExpressRoute, diagnostické protokoly a výstrahy, najdete v tématu [monitorování ExpressRoute, metriky a výstrahy](../expressroute/expressroute-monitoring-metrics-alerts.md?toc=%2fazure%2fnetworking%2ftoc.json).
+### <a name="azuremonitor"></a>Azure Monitor
+Azure Monitor maximalizuje dostupnost a výkon vašich aplikací tím, že poskytuje ucelené řešení pro shromažďování, analýzu a vykonávání telemetrie z vašich cloudových a místních prostředí. Pomůže vám při zjišťování stavu vašich aplikací a proaktivně identifikuje problémy, které je ovlivňují, a prostředky, na kterých jsou závislé. Další informace najdete v tématu [přehled Azure monitor](../azure-monitor/overview.md?toc=%2fazure%2fnetworking%2ftoc.json).
+### <a name="vnettap"></a>Virtual Network klepněte na
+KLEPNUTÍ na virtuální síť Azure (terminálový přístupový bod) umožňuje nepřetržitě streamovat síťový provoz virtuálního počítače do nástroje pro shromažďování síťových paketů nebo pro analýzu. Sběrač nebo nástroj pro analýzu poskytuje síťový partner pro [síťové virtuální zařízení](https://azure.microsoft.com/solutions/network-appliances/) . 
+
+Následující obrázek ukazuje, jak funguje virtuální síť. 
+
+![Jak funguje na virtuální síti](./media/networking-overview/virtual-network-tap-architecture.png)
+
+Další informace najdete v tématu [co je Virtual Network klepněte na](../virtual-network/virtual-network-tap-overview.md).
 
 ## <a name="next-steps"></a>Další postup
 
-- Vytvoření první virtuální sítě a připojení několika virtuálními počítači, pomocí kroků v [vytvoření první virtuální sítě](../virtual-network/quick-create-portal.md?toc=%2fazure%2fnetworking%2ftoc.json) článku.
-- Připojení počítače k virtuální síti pomocí kroků v [konfigurace připojení typu point-to-site](../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md?toc=%2fazure%2fnetworking%2ftoc.json) článku.
-- Internetový provoz na veřejné servery Vyrovnávání zatížení pomocí kroků v [vytvořit nástroj pro vyrovnávání zatížení přístupem k Internetu](../load-balancer/load-balancer-get-started-internet-portal.md?toc=%2fazure%2fnetworking%2ftoc.json) článku.
+- Vytvořte svou první virtuální síť a připojte k ní několik virtuálních počítačů, a to provedením kroků v článku [Vytvoření první virtuální sítě](../virtual-network/quick-create-portal.md?toc=%2fazure%2fnetworking%2ftoc.json) .
+- Připojte počítač k virtuální síti provedením kroků v [článku Konfigurace připojení typu Point-to-site](../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md?toc=%2fazure%2fnetworking%2ftoc.json).
+- Vyrovnávání zatížení internetového provozu na veřejné servery provedením kroků v článku [vytvoření internetového nástroje pro vyrovnávání zatížení](../load-balancer/load-balancer-get-started-internet-portal.md?toc=%2fazure%2fnetworking%2ftoc.json) .
+ 
+ 
+   

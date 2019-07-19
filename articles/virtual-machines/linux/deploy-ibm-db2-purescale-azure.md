@@ -1,6 +1,6 @@
 ---
-title: Nasazení pureScale IBM DB2 v Azure
-description: Zjistěte, jak nasadit architekturu příklad nepoužil migrace organizace ze své prostředí IBM DB2 používají z/OS a pureScale IBM DB2 v Azure.
+title: Nasazení IBM DB2 pureScale v Azure
+description: Naučte se, jak nasadit ukázkovou architekturu, která se nedávno použila k migraci podniku z prostředí IBM DB2 běžícího na z/OS do IBM DB2 pureScale v Azure.
 services: virtual-machines-linux
 documentationcenter: ''
 author: njray
@@ -14,95 +14,95 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
 ms.date: 11/09/2018
-ms.author: njray
-ms.openlocfilehash: fba6b5308b380b374611c09747302dbf8305dd9b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: edprice
+ms.openlocfilehash: 68fde09b1ee5f18aa784793cc19e9f547b19ed43
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60716043"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67871884"
 ---
-# <a name="deploy-ibm-db2-purescale-on-azure"></a>Nasazení pureScale IBM DB2 v Azure
+# <a name="deploy-ibm-db2-purescale-on-azure"></a>Nasazení IBM DB2 pureScale v Azure
 
-Tento článek popisuje, jak nasadit [příklad architektury](ibm-db2-purescale-azure.md) , který podnikový zákazník naposledy použité k migraci z databáze IBM DB2 prostředí používají z/OS a pureScale IBM DB2 v Azure.
+Tento článek popisuje, jak nasadit [ukázkovou architekturu](ibm-db2-purescale-azure.md) , kterou Podnikoví zákazníci nedávno použili k migraci z prostředí IBM DB2 běžícímu na z/OS do IBM DB2 PureScale v Azure.
 
-Postupujte podle kroků pro migraci, najdete v tématu Instalace skripty v [DB2onAzure](https://aka.ms/db2onazure) úložišti na Githubu. Tyto skripty jsou založené na architektuře pro úlohy zpracování (OLTP) typické, online transaction.
+Pokud chcete postupovat podle kroků používaných pro migraci, přečtěte si instalační skripty v úložišti [DB2onAzure](https://aka.ms/db2onazure) na GitHubu. Tyto skripty jsou založené na architektuře pro typickou úlohu zpracování online zpracování transakcí (OLTP).
 
 ## <a name="get-started"></a>Začínáme
 
-Tuto architekturu nasadit, stáhněte a spusťte skript deploy.sh součástí [DB2onAzure](https://aka.ms/db2onazure) úložišti na Githubu.
+Pokud chcete nasadit tuto architekturu, Stáhněte a spusťte skript deploy.sh, který najdete v úložišti [DB2onAzure](https://aka.ms/db2onazure) na GitHubu.
 
-Úložiště také obsahuje skripty pro nastavení řídicím panelem Grafana. Řídicí panel můžete použít k dotazování Prometheus, open source monitorování a systém výstrah, které jsou součástí DB2.
+Úložiště má také skripty pro nastavení řídicího panelu Grafana. Řídicí panel můžete použít k dotazování na Prometheus, open source monitorování a systém výstrah, který je součástí DB2.
 
 > [!NOTE]
-> Deploy.sh skript na straně klienta vytvoří privátního klíče SSH a předává je do šablony nasazení přes protokol HTTPS. Pro lepší zabezpečení, doporučujeme použít [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview) ukládat tajné klíče, klíče a hesla.
+> Skript deploy.sh na klientovi vytvoří privátní klíče SSH a předá je do šablony nasazení přes protokol HTTPS. Pro zajištění vyššího zabezpečení doporučujeme použít [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview) k ukládání tajných klíčů, klíčů a hesel.
 
-## <a name="how-the-deployment-script-works"></a>Jak funguje skriptu nasazení
+## <a name="how-the-deployment-script-works"></a>Jak skript nasazení funguje
 
-Deploy.sh skript vytvoří a nakonfiguruje prostředky Azure pro tuto architekturu. Skript vás vyzve k zadání předplatného Azure a virtuální počítače použité v cílovém prostředí a poté provede následující operace:
+Skript deploy.sh vytvoří a nakonfiguruje prostředky Azure pro tuto architekturu. Skript vás vyzve k zadání předplatného Azure a virtuálních počítačů používaných v cílovém prostředí a pak provede následující operace:
 
--   Vytvoří skupinu prostředků, virtuální sítě a podsítí v Azure pro instalaci
+-   Nastaví pro instalaci skupinu prostředků, virtuální síť a podsítě v Azure.
 
--   Nastaví skupiny zabezpečení sítě a SSH pro prostředí
+-   Nastaví skupiny zabezpečení sítě a SSH pro prostředí.
 
--   Nastaví síťové karty na GlusterFS i DB2 pureScale virtuálních počítačů
+-   Nastaví síťové adaptéry na virtuálních počítačích GlusterFS i DB2 pureScale.
 
--   Vytvoří virtuální počítače s úložištěm GlusterFS
+-   Vytvoří virtuální počítače úložiště GlusterFS.
 
--   Vytvoří virtuální počítač jumpbox
+-   Vytvoří virtuální počítač s JumpBox.
 
--   Vytvoří virtuální počítače pureScale DB2
+-   Vytvoří virtuální počítače DB2 pureScale.
 
--   Vytvoří virtuální počítač s kopií clusteru této příkazy ping pro zjištění pureScale DB2
+-   Vytvoří virtuální počítač s kopií clusteru, který pureScale příkazy testu dostupnosti DB2.
 
--   Vytvoří virtuální počítač s Windows a použít pro testování, ale nic neinstaluje na něm
+-   Vytvoří virtuální počítač s Windows, který se má použít pro testování, ale neinstaluje na něj cokoli.
 
-V dalším kroku skripty nasazení nastavení iSCSI virtuální síť SAN (vSAN) pro sdílené úložiště v Azure. V tomto příkladu iSCSI připojí k GlusterFS. Toto řešení také nabízí možnost instalace cíle iSCSI jako jeden uzel Windows. iSCSI poskytuje rozhraní sdílené blokové úložiště přes TCP/IP, které umožňuje postup DB2 pureScale nastavení použít rozhraní zařízení pro připojení ke sdílenému úložišti. Základy GlusterFS, najdete v článku [architektury: Typy svazků](https://docs.gluster.org/en/latest/Quick-Start-Guide/Architecture/) téma v Gluster dokumentace.
+V dalším kroku se skripty nasazení nastavily jako virtuální síť SAN (síti vSAN) iSCSI pro sdílené úložiště v Azure. V tomto příkladu se iSCSI připojí k GlusterFS. Toto řešení také nabízí možnost nainstalovat cíle iSCSI jako jeden uzel systému Windows. iSCSI poskytuje rozhraní sdíleného blokového úložiště přes protokol TCP/IP, které umožňuje, aby instalační program DB2 pureScale k připojení ke sdílenému úložišti používal rozhraní zařízení. Základní informace o GlusterFS najdete v [tématu Architektura: Téma typy svazků](https://docs.gluster.org/en/latest/Quick-Start-Guide/Architecture/) v Gluster docs.
 
-Skripty nasazení spusťte tyto obecné kroky:
+Skripty nasazení spouštějí tyto obecné kroky:
 
-1.  Pomocí GlusterFS nastavíte cluster sdíleného úložiště v Azure. Tento krok zahrnuje alespoň dva uzly s Linuxem. Podrobnosti instalace najdete v tématu [nastavení Red Hat Gluster Storage ve službě Microsoft Azure](https://access.redhat.com/documentation/en-us/red_hat_gluster_storage/3.1/html/deployment_guide_for_public_cloud/chap-documentation-deployment_guide_for_public_cloud-azure-setting_up_rhgs_azure) v Red Hat Gluster dokumentaci.
+1.  Pomocí GlusterFS nastavte cluster sdíleného úložiště v Azure. Tento krok zahrnuje aspoň dva uzly Linux. Podrobné informace o instalaci najdete v tématu [Nastavení úložiště Red Hat Gluster ve Microsoft Azure](https://access.redhat.com/documentation/en-us/red_hat_gluster_storage/3.1/html/deployment_guide_for_public_cloud/chap-documentation-deployment_guide_for_public_cloud-azure-setting_up_rhgs_azure) v dokumentaci k Red Hat Gluster.
 
-2.  Nastavení rozhraní iSCSI s přímým přístupem na cílové servery s Linuxem pro GlusterFS. Podrobnosti instalace najdete v tématu [GlusterFS iSCSI](https://docs.gluster.org/en/latest/Administrator%20Guide/GlusterFS%20iSCSI/) v příručce pro správu GlusterFS.
+2.  Nastavte rozhraní iSCSI Direct na cílových serverech Linux pro GlusterFS. Podrobné informace o instalaci najdete v tématu [GlusterFS iSCSI](https://docs.gluster.org/en/latest/Administrator%20Guide/GlusterFS%20iSCSI/) v příručce pro správu GlusterFS.
 
-3.  Nastavte iniciátor iSCSI na virtuální počítače s Linuxem. Iniciátor přístup k clusteru GlusterFS pomocí cíle iSCSI. Podrobnosti instalace najdete v tématu [konfigurace s iSCSI cíl a iniciátor v systému Linux](https://www.rootusers.com/how-to-configure-an-iscsi-target-and-initiator-in-linux/) v dokumentaci k RootUsers.
+3.  Nastavte iniciátor iSCSI na virtuálních počítačích se systémem Linux. Iniciátor bude přistupovat ke clusteru GlusterFS pomocí cíle iSCSI. Podrobné informace o instalaci najdete v tématu [Postup konfigurace cíle iSCSI a iniciátoru v systému Linux](https://www.rootusers.com/how-to-configure-an-iscsi-target-and-initiator-in-linux/) v dokumentaci k RootUsers.
 
 4.  Nainstalujte GlusterFS jako vrstvu úložiště pro rozhraní iSCSI.
 
-Po vytvoření skriptů zařízení iSCSI, posledním krokem je instalace DB2 pureScale. Jako součást instalace pureScale DB2 [IBM spektra škálování](https://www.ibm.com/support/knowledgecenter/SSEPGG_11.1.0/com.ibm.db2.luw.qb.server.doc/doc/t0057167.html) (dříve označované jako GPFS) kompiluje a nainstalovat na clusteru GlusterFS. Tato clusterového souborového systému umožňuje pureScale DB2 ke sdílení dat mezi virtuálními počítači, na kterých běží modul pureScale DB2. Další informace najdete v tématu [IBM spektra škálování](https://www.ibm.com/support/knowledgecenter/en/STXKQY_4.2.0/ibmspectrumscale42_welcome.html) dokumentaci na webu IBM.
+Až skripty vytvoří zařízení iSCSI, posledním krokem je instalace DB2 pureScale. V rámci nastavení DB2 pureScale se v clusteru GlusterFS zkompiluje a nainstaluje [IBM spektrum](https://www.ibm.com/support/knowledgecenter/SSEPGG_11.1.0/com.ibm.db2.luw.qb.server.doc/doc/t0057167.html) (dřív označované jako GPFS). Tento clusterový systém souborů umožňuje DB2 pureScale sdílet data mezi virtuálními počítači, na kterých běží modul pureScale DB2. Další informace najdete v dokumentaci k [IBM spektra](https://www.ibm.com/support/knowledgecenter/en/STXKQY_4.2.0/ibmspectrumscale42_welcome.html) na webu IBM.
 
-## <a name="db2-purescale-response-file"></a>Soubor odpovědí pureScale DB2
+## <a name="db2-purescale-response-file"></a>Soubor odpovědi DB2 pureScale
 
-Úložiště GitHub zahrnuje DB2server.rsp, soubor odpovědí (.rsp), který umožňuje generovat automatizovaný skript pro instalaci pureScale DB2. Následující tabulka uvádí možnosti pureScale DB2, které používá soubor odpovědí pro instalaci. Soubor odpovědí můžete přizpůsobit podle potřeby pro vaše prostředí.
+Úložiště GitHub obsahuje soubor DB2server. rsp, odpověď (. rsp), který umožňuje vygenerovat automatizovaný skript pro instalaci DB2 pureScale. V následující tabulce jsou uvedené možnosti DB2 pureScale, které soubor odpovědí používá pro instalaci. Soubor odpovědí můžete přizpůsobit podle potřeby pro vaše prostředí.
 
 > [!NOTE]
-> Je součástí ukázkového souboru odpovědí DB2server.rsp, [DB2onAzure](https://aka.ms/db2onazure) úložišti na Githubu. Pokud používáte tento soubor, musíte upravit předtím, než můžete pracovat ve vašem prostředí.
+> Do úložiště [DB2onAzure](https://aka.ms/db2onazure) na GitHubu je zahrnut ukázkový soubor odezvy DB2server. rsp. Pokud tento soubor použijete, musíte ho před tím, než bude fungovat ve vašem prostředí, upravit.
 
-| Název obrazovky               | Pole                                        | Hodnota                                                                                                 |
+| Název obrazovky               | Pole                                        | Value                                                                                                 |
 |---------------------------|----------------------------------------------|-------------------------------------------------------------------------------------------------------|
 | Vítej                   |                                              | Nová instalace                                                                                           |
-| Vyberte produkt          |                                              | DB2 verze 11.1.3.3. Edice serveru s DB2 pureScale                                              |
-| Konfigurace             | Adresář                                    | /data1/opt/ibm/db2/V11.1                                                                              |
-|                           | Vybrat typ instalace                 | Typické                                                                                               |
+| Zvolit produkt          |                                              | 11.1.3.3 verze DB2 Edice serveru s DB2 pureScale                                              |
+| Konfiguraci             | Adresář                                    | /data1/opt/ibm/db2/V11.1                                                                              |
+|                           | Vyberte typ instalace.                 | Typické                                                                                               |
 |                           | Souhlasím s podmínkami IBM                     | Zaškrtnuto                                                                                               |
-| Vlastníka instance            | Existující Instance pro uživatele, uživatelského jména        | DB2sdin1                                                                                              |
-| Ohraničených uživatele               | Existující uživatele, uživatelského jména                     | DB2sdfe1                                                                                              |
-| Systém souborů clusteru       | Sdílené cesty k disku oddílu zařízení            | /dev/dm-2                                                                                             |
+| Vlastník instance            | Stávající uživatel instance, uživatelské jméno        | DB2sdin1                                                                                              |
+| Uživatel s ochranou               | Existující uživatel, uživatelské jméno                     | DB2sdfe1                                                                                              |
+| Systém souborů clusteru       | Cesta k zařízení oddílu sdíleného disku            | /dev/dm-2                                                                                             |
 |                           | Přípojný bod                                  | /DB2sd\_1804a                                                                                         |
-|                           | Sdíleném disku pro data                         | /dev/dm-1                                                                                             |
-|                           | Přípojný bod (Data)                           | /DB2fs/datafs1                                                                                        |
-|                           | Sdílený disk protokolu                          | /dev/dm-0                                                                                             |
-|                           | Přípojný bod (protokolu)                            | /DB2fs/logfs1                                                                                         |
-|                           | DB2 Rozhodujícího prvku clusteru služby. Cesta k zařízení | /dev/dm-3                                                                                             |
-| Seznam hostitelů                 | D1 [eth1] d2 [eth1] cf1 [eth1] F2 [eth1] |                                                                                                       |
-|                           | Upřednostňované primární CF                         | cf1                                                                                                   |
-|                           | Upřednostňované sekundární CF                       | cf2                                                                                                   |
-| Soubor odpovědí a souhrn | první možnost                                 | Nainstalujte DB2 Server Edition s funkcí pureScale IBM DB2 a uložit Moje nastavení v souboru odpovědí. |
-|                           | Název souboru odpovědí                           | /root/DB2server.rsp                                                                                   |
+|                           | Sdílený disk pro data                         | /dev/dm-1                                                                                             |
+|                           | Přípojný bod (data)                           | /DB2fs/datafs1                                                                                        |
+|                           | Sdílený disk pro protokol                          | /dev/dm-0                                                                                             |
+|                           | Přípojný bod (protokol)                            | /DB2fs/logfs1                                                                                         |
+|                           | Clusterové služby DB2 rozhodujícího prvku. Cesta k zařízení | /dev/dm-3                                                                                             |
+| Seznam hostitelů                 | D1 [eth1], D2 [eth1], CF1 [eth1], CF2 [eth1] |                                                                                                       |
+|                           | Preferovaný primární CF                         | cf1                                                                                                   |
+|                           | Preferovaný sekundární CF                       | cf2                                                                                                   |
+| Soubor odpovědi a souhrn | první možnost                                 | Nainstalujte DB2 Server Edition pomocí funkce IBM DB2 pureScale a uložte nastavení do souboru odpovědí. |
+|                           | Název souboru odpovědi                           | /root/DB2server.rsp                                                                                   |
 
-### <a name="notes-about-this-deployment"></a>Poznámky k nasazení
+### <a name="notes-about-this-deployment"></a>Poznámky k tomuto nasazení
 
-- Po restartování počítače na virtuálním počítači, kde probíhá nastavení můžete změnit hodnoty /dev-dm0, /dev-dm1, /dev-dm2 a /dev-dm3 (d0 v automatického skriptu). Pokud chcete najít správné hodnoty, můžete vydejte následující příkaz před dokončením soubor odpovědí na serveru, ve kterém se spustí instalační program:
+- Hodnoty pro/dev-dm0,/dev-DM1,/dev-dm2 a/dev-dm3 se můžou po restartování na virtuálním počítači, kde se má nastavení uskutečnit (D0 do automatizovaného skriptu), změnit. Chcete-li najít správné hodnoty, můžete před dokončením souboru odpovědí na serveru, kde bude instalační program běžet, vydat následující příkaz:
 
    ```
    [root\@d0 rhel]\# ls -als /dev/mapper
@@ -116,42 +116,42 @@ Po vytvoření skriptů zařízení iSCSI, posledním krokem je instalace DB2 pu
    0 lrwxrwxrwx 1 root root 7 May 30 11:08 db2tieb -\> ../dm-3
    ```
 
-- Skripty pro nastavení pomocí aliasů pro disky iSCSI tak, aby názvy lze snadno nalézt.
+- Skripty pro instalaci používají aliasy pro disky iSCSI, aby se mohly snadno najít skutečné názvy.
 
-- Při spuštění instalačního skriptu d0, **/dev/dm -\***  hodnoty můžou být různé d1, cf0 a cf1. Rozdíl v hodnotách nemá vliv na nastavení pureScale DB2.
+- Pokud je instalační skript spuštěn v D0, hodnoty **/dev/DM-\***  se mohou lišit v sestavách D1, cf0 a CF1. Rozdíl v hodnotách nemá vliv na nastavení pureScale DB2.
 
 ## <a name="troubleshooting-and-known-issues"></a>Řešení potíží a známé problémy
 
-Úložiště GitHub se vzorovými zahrnuje znalostní báze, který autoři udržovat. Vypíše potenciální problémy, může být a jejich řešení, můžete to zkusit. Například známé problémy může dojít, když:
+Úložiště GitHub zahrnuje znalostní bázi, kterou autoři udržují. Uvádí možné problémy, které byste mohli mít, a řešení, která můžete vyzkoušet. Například známé problémy mohou nastat v těchto případech:
 
--   Se snažíte dosáhnout IP adresu brány.
+-   Pokoušíte se připojit k IP adrese brány.
 
--   Při kompilaci General Public License (GPL).
+-   Kompilujete si obecnou veřejnou licenci (GPL).
 
--   Bezpečnostní ověření typu handshake mezi hostiteli se nezdaří.
+-   Bezpečnostní signalizace mezi hostiteli se nezdařila.
 
--   DB2 instalační program zjistí existující systém souborů.
+-   Instalační program DB2 detekuje existující systém souborů.
 
--   Ručně instalujete IBM spektra škálování.
+-   Ruční instalace škály IBM pro spektrum
 
--   Když už je vytvořená IBM spektra škálování instalujete DB2 pureScale.
+-   Instalujete DB2 pureScale v době, kdy už je vytvořeno IBM spektrum.
 
--   Odstraňujete DB2 pureScale a IBM spektra škálování.
+-   Odebíráte si škálu DB2 pureScale a IBM pro spektrum.
 
-Další informace o těchto a dalších známých problémů naleznete v souboru kb.md v [DB2onAzure](https://aka.ms/DB2onAzure) úložiště.
+Další informace o těchto a dalších známých problémech najdete v souboru kb.md v úložišti [DB2onAzure](https://aka.ms/DB2onAzure) .
 
 ## <a name="next-steps"></a>Další postup
 
 -   [GlusterFS iSCSI](https://docs.gluster.org/en/latest/Administrator%20Guide/GlusterFS%20iSCSI/)
 
--   [Vytváří se požadovaní uživatelé pro DB2 pureScale instalace funkce](https://www.ibm.com/support/knowledgecenter/en/SSEPGG_11.1.0/com.ibm.db2.luw.qb.server.doc/doc/t0055374.html?pos=2)
+-   [Vytváření požadovaných uživatelů pro instalaci funkce DB2 pureScale](https://www.ibm.com/support/knowledgecenter/en/SSEPGG_11.1.0/com.ibm.db2.luw.qb.server.doc/doc/t0055374.html?pos=2)
 
--   [DB2icrt - vytvořit instanci příkaz](https://www.ibm.com/support/knowledgecenter/en/SSEPGG_11.1.0/com.ibm.db2.luw.admin.cmd.doc/doc/r0002057.html)
+-   [DB2icrt – vytvoření instance – příkaz](https://www.ibm.com/support/knowledgecenter/en/SSEPGG_11.1.0/com.ibm.db2.luw.admin.cmd.doc/doc/r0002057.html)
 
--   [DB2 pureScale clustery Data řešení](https://www.ibmbigdatahub.com/blog/db2-purescale-clustered-database-solution-part-1)
+-   [Řešení pro data o clusterech DB2 pureScale](https://www.ibmbigdatahub.com/blog/db2-purescale-clustered-database-solution-part-1)
 
 -   [IBM Data Studio](https://www.ibm.com/developerworks/downloads/im/data/index.html/)
 
--   [Modernizace Alliance platformy: IBM DB2 v Azure](https://www.platformmodernization.org/pages/ibmdb2azure.aspx)
+-   [Moderní Alliance pro platformy: IBM DB2 v Azure](https://www.platformmodernization.org/pages/ibmdb2azure.aspx)
 
--   [Azure virtuální datové centrum Lift and Shift Průvodce](https://azure.microsoft.com/resources/azure-virtual-datacenter-lift-and-shift-guide/)
+-   [Průvodce zvednutím a posunutím virtuálního datového centra Azure](https://azure.microsoft.com/resources/azure-virtual-datacenter-lift-and-shift-guide/)

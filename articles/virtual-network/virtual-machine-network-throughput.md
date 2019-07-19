@@ -1,6 +1,6 @@
 ---
-title: Propustnost sítě virtuálních počítačů Azure | Dokumentace Microsoftu
-description: Další informace o propustnosti sítě virtuálních počítačů Azure.
+title: Propustnost sítě virtuálních počítačů Azure | Microsoft Docs
+description: Přečtěte si o propustnosti sítě virtuálních počítačů Azure.
 services: virtual-network
 documentationcenter: na
 author: steveesp
@@ -13,61 +13,62 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 4/26/2019
-ms.author: kumud,steveesp, mareat
-ms.openlocfilehash: 9d74e53c754367ecfa63642514db93354fcadf25
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: steveesp
+ms.reviewer: kumud, mareat
+ms.openlocfilehash: f5694e18d5743118e2b6e73708dd3acb17151198
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65153744"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67874926"
 ---
-# <a name="virtual-machine-network-bandwidth"></a>Šířka pásma sítě virtuálních počítačů
+# <a name="virtual-machine-network-bandwidth"></a>Šířka pásma sítě virtuálního počítače
 
-Azure nabízí širokou škálu velikostí virtuálních počítačů a typy, každý s různou kombinaci možností výkonu. Jedna funkce je sítě propustnost (nebo šířky pásma) měří v MB za sekundu (MB/s). Vzhledem k tomu virtuální počítače hostují na sdíleném hardwaru, musí být kapacita šířky sdílené poměrně mezi virtuálními počítači, které sdílení stejného hardwaru. Větší virtuální počítače mají při přidělování relativně větší šířku pásma než menších virtuálních počítačích.
+Azure nabízí nejrůznější velikosti a typy virtuálních počítačů, z nichž každá má různou kombinaci možností výkonu. Jedna z možností je propustnost sítě (neboli šířka pásma) měřená v megabajtech za sekundu (MB/s). Vzhledem k tomu, že virtuální počítače jsou hostované na sdíleném hardwaru, musí být síťová kapacita sdílená mezi virtuálními počítači, které sdílejí stejný hardware. Větší virtuální počítače jsou přidělovány relativně větší šířce pásma než menší virtuální počítače.
  
-Šířka pásma sítě, které jsou přidělené na každý virtuální počítač se měří na výchozí přenos (odchozí) z virtuálního počítače. Veškerý přenos v síti byste museli opustit virtuální počítač se počítá směrem k přidělené limit, bez ohledu na cílový. Například pokud virtuální počítač má limit 1 000 MB/s, toto omezení platí, zda je odchozí provoz určený pro jiný virtuální počítač ve stejné virtuální síti nebo mimo Azure.
+Šířka pásma sítě přidělená každému virtuálnímu počítači se měří na odchozím (odchozím) provozu z virtuálního počítače. Veškerý síťový provoz opouštějící virtuální počítač se započítává k přidělenému limitu bez ohledu na cíl. Pokud má třeba virtuální počítač omezení 1 000 MB/s, platí toto omezení, jestli je odchozí provoz určený pro jiný virtuální počítač ve stejné virtuální síti nebo mimo Azure.
  
-Příchozí přenos dat se měří nebo jsou omezena přímo. Existují však dalších faktorů, jako jsou omezení úložiště a procesoru, které můžou ovlivnit virtuálního počítače není schopen zpracovávat příchozí data.
+Příchozí přenos dat není měřený ani omezený přímo. Existují však i jiné faktory, například omezení pro procesor a úložiště, což může mít vliv na schopnost virtuálního počítače zpracovávat příchozí data.
 
-Akcelerované síťové služby se funkci navrženou pro zvýšení výkonu sítě, včetně latence, propustnosti a využití procesoru. Akcelerované síťové služby může zlepšit propustnost virtuálních počítačů, je to tak, jen až k virtuálnímu počítači přidělená šířky pásma. Další informace o akcelerovaných síťových službách najdete v tématu Accelerated networking pro [Windows](create-vm-accelerated-networking-powershell.md) nebo [Linux](create-vm-accelerated-networking-cli.md) virtuálních počítačů.
+Akcelerovaná síť je funkce navržená tak, aby vylepšila výkon sítě, včetně latence, propustnosti a využití procesoru. I když akcelerované síťové služby můžou zvýšit propustnost virtuálního počítače, můžete tak učinit jenom s přidělenou šířkou pásma virtuálního počítače. Další informace o akcelerovaných sítích najdete v tématu urychlení sítě pro virtuální počítače se [systémem Windows](create-vm-accelerated-networking-powershell.md) nebo [Linux](create-vm-accelerated-networking-cli.md) .
  
-Virtuální počítače Azure musí mít jeden, ale může mít několik, síťová rozhraní připojená k nim. Šířka pásma přidělená k virtuálnímu počítači je součet veškerého odchozího provozu ve všech síťových rozhraní připojených k virtuálnímu počítači. Jinými slovy přidělené šířky pásma je na virtuální počítač, bez ohledu na to, kolik síťových rozhraní, které jsou připojené k virtuálnímu počítači. Informace o tom, kolik síťová rozhraní různé podporu velikosti virtuálního počítače Azure, podívejte se na Azure [Windows](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) a [Linux](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) velikosti virtuálních počítačů. 
+Virtuální počítače Azure musí mít jednu, ale může mít několik síťových rozhraní, která jsou k nim připojená. Šířka pásma přidělená virtuálnímu počítači je součet všech odchozích přenosů napříč všemi síťovými rozhraními připojenými k virtuálnímu počítači. Jinými slovy, přidělená šířka pásma je vázaná na virtuální počítač bez ohledu na to, kolik síťových rozhraní je připojeno k virtuálnímu počítači. Další informace o tom, kolik síťových rozhraní různé velikosti virtuálních počítačů Azure podporuje, najdete v tématu velikosti virtuálních počítačů Azure s [Windows](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) a [Linux](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) . 
 
-## <a name="expected-network-throughput"></a>Propustnost sítě očekávané
+## <a name="expected-network-throughput"></a>Očekávaná propustnost sítě
 
-Očekávaná výstupní propustnost a počet síťových rozhraní, které podporuje všechny velikosti virtuálních počítačů je podrobně popsán v Azure [Windows](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) a [Linux](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) velikosti virtuálních počítačů. Vyberte typ, například pro obecné účely, pak vyberte velikost series na výsledný stránky, například řady Dv2-series. Každé datové řady obsahuje tabulku s sítě specifikace v poslední sloupec s názvem, **maximální počet síťových karet / očekávaný výkon sítě (MB/s)** . 
+Očekávaná odchozí propustnost a počet síťových rozhraní podporovaných jednotlivými velikostmi virtuálních počítačů je podrobně popsán v části velikosti virtuálních počítačů Azure s [Windows](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) a [Linux](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) . Vyberte typ, například obecné účely, a pak na výsledné stránce vyberte řadu velikostí, například Dv2-Series. Každá řada obsahuje tabulku se specifikacemi sítě v posledním sloupci s názvem, **maximální počet síťových adaptérů/očekávaný výkon sítě (MB/s)** . 
 
-Omezení propustnosti platí pro virtuální počítač. Propustnost je tato akce vliv následující faktory:
-- **Počet síťových rozhraní**: Limit šířky pásma je kumulativní z veškerého odchozího provozu z virtuálního počítače.
-- **Akcelerované síťové služby**: I když tato funkce může být užitečné při dosažení limitu publikované, nezmění limit.
-- **Určení provozu**: Všechny cíle počítají odchozí limit.
-- **Protokol**: Veškerý odchozí provoz přes všechny protokoly započítává limitu.
+Limit propustnosti se vztahuje na virtuální počítač. Propustnost není ovlivněná následujícími faktory:
+- **Počet síťových rozhraní**: Limit šířky pásma je kumulativní ze všech odchozích přenosů z virtuálního počítače.
+- **Akcelerované síťové služby**: I když může být tato funkce užitečná při dosahování publikovaného limitu, tento limit se nemění.
+- **Cíl provozu**: Všechny cíle se počítají směrem k odchozímu limitu.
+- **Protokol**: Veškerý odchozí provoz ve všech protokolech počítá směrem k limitu.
 
-## <a name="network-flow-limits"></a>Síťové omezení toku
+## <a name="network-flow-limits"></a>Omezení toku sítě
 
-Kromě šířky pásma počet síťových připojení, které jsou k dispozici na virtuálním počítači v daném okamžiku může ovlivnit výkon sítě. Azure stack sítě udržuje svůj stav pro každý směr připojení TCP/UDP v datových struktur nazývá "toky". Typické připojení TCP nebo UDP bude mít 2 toky vytvořené, jeden pro příchozí a druhý pro odchozí směr. 
+Kromě šířky pásma může mít počet síťových připojení na virtuálním počítači v určitou dobu vliv na výkon sítě. Azure Networking Stack udržuje stav pro každý směr připojení TCP/UDP v datových strukturách nazývaných toky. Typické připojení TCP/UDP bude mít vytvořené 2 toky, jednu pro příchozí a další pro odchozí směr. 
 
-Přenos dat mezi koncovými body vyžaduje vytvoření několika toků kromě těch, které provádějí přenos dat. Mezi příklady patří toky vytvořené pro překlad názvů DNS a toků vytvořených pro sondy stavu nástroje pro vyrovnávání zatížení. Všimněte si, že síťová virtuální zařízení (Nva), jako jsou brány, proxy servery, brány firewall, se také zobrazí toky vytváří pro připojení k ukončuje na zařízení a vytvoří se zařízení. 
+Přenos dat mezi koncovými body vyžaduje vytvoření několika toků kromě těch, které provádějí přenos dat. Některé příklady jsou toky vytvořené pro překlad DNS a toky vytvořené pro sondy stavu nástroje pro vyrovnávání zatížení. Všimněte si také, že síťová virtuální zařízení (síťová virtuální zařízení), jako jsou brány, proxy servery a brány firewall, uvidí toky vytvořené pro připojení ukončená na zařízení a vzniklá zařízením. 
 
-![Počet toku pro konverzace TCP přes zařízení předávání](media/virtual-machine-network-throughput/flow-count-through-network-virtual-appliance.png)
+![Počet toků pro konverzaci TCP prostřednictvím zařízení pro předávání](media/virtual-machine-network-throughput/flow-count-through-network-virtual-appliance.png)
 
-## <a name="flow-limits-and-recommendations"></a>Tok omezení a doporučení
+## <a name="flow-limits-and-recommendations"></a>Omezení toků a doporučení
 
-V současné době podporuje Azure síťového zásobníku celé sítě 250 tis. toků s dobrého výkonu pro virtuální počítače s větší než 8 jader procesoru a 100 tisíc celkový počet toků s dobrého výkonu pro virtuální počítače s méně než 8 jader procesoru. Za toto omezení sítě výkon sníží, přetrénujte řádně pro další toky až vynucené omezení milionu celkový počet toků, 500 tisíc příchozí a 500 tisíc odchozí, po které další toky se zahodí.
+V současné době sada Azure Networking Stack podporuje 250 tisíc celkové síťové toky s dobrým výkonem pro virtuální počítače s více než 8 jádry procesoru a 100 tisíc celkové toky s dobrým výkonem pro virtuální počítače s méně než 8 jádry procesoru. Po uplynutí tohoto limitu dojde k řádnému snížení výkonu sítě pro další toky až do pevného limitu 1M celkových toků, 500 000 příchozích a 500 000ch odchozích přenosů, po jejichž uplynutí budou další toky vyřazeny.
 
-||Virtuální počítače s < procesor s 8 jádry|Virtuální počítače s 8 + jader procesoru|
+||Virtuální počítače s < 8 PROCESORových jader|Virtuální počítače s 8 a jádry procesoru|
 |---|---|---|
-|<b>Dobrý výkon</b>|100 tis. toků |250 tis. toků|
-|<b>Důvodem sníženého výkonu</b>|Nad 100 tisíc toky|Nad 250 tis. toků|
-|<b>Limit toku</b>|1 milion toků|1 milion toků|
+|<b>Dobrý výkon</b>|Toky 100 tisíc |Toky 250 tisíc|
+|<b>Snížený výkon</b>|Nad 100 tisíc toky|Nad 250 tisíc toky|
+|<b>Limit toků</b>|1M toků|1M toků|
 
-Metriky jsou k dispozici v [Azure Monitor](../azure-monitor/platform/metrics-supported.md#microsoftcomputevirtualmachines) můžete sledovat počet síťovými toky a rychlost vytváření toku u virtuálního počítače nebo VMSS instancí.
+Metriky jsou k dispozici v [Azure monitor](../azure-monitor/platform/metrics-supported.md#microsoftcomputevirtualmachines) ke sledování počtu toků sítě a rychlosti vytváření toku na INSTANCÍCH virtuálních počítačů nebo VMSS.
 
 ![azure-monitor-flow-metrics.png](media/virtual-machine-network-throughput/azure-monitor-flow-metrics.png)
 
-Připojení zařízení a ukončení míra může také ovlivnit výkon sítě jako připojení zařízení a ukončení složek procesoru pomocí rutiny zpracování paketů. Doporučujeme vám, že jste srovnávací testy úlohy s využitím očekávaného provozu a horizontální navýšení kapacity úloh odpovídajícím způsobem tak, aby odpovídaly vašim požadavkům na výkon. 
+Zatížení sítě a sazby za ukončení můžou mít vliv na výkon sítě, protože vytváření připojení a ukončení sdílí procesor s rutinami zpracování paketů. Doporučujeme, abyste provedli úlohy srovnávacích testů oproti očekávaným tokům provozu a mohli škálovat úlohy správně, aby odpovídaly vašim požadavkům na výkon. 
 
 ## <a name="next-steps"></a>Další postup
 
 - [Optimalizace propustnosti sítě pro operační systém virtuálního počítače](virtual-network-optimize-network-bandwidth.md)
-- [Propustnost sítě testovací](virtual-network-bandwidth-testing.md) pro virtuální počítač.
+- [Test propustnosti sítě](virtual-network-bandwidth-testing.md) pro virtuální počítač.

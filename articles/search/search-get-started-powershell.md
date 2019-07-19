@@ -1,6 +1,6 @@
 ---
-title: 'Rychlý start pro PowerShell: Vytvoření, načtení a dotazování indexů Azure Search REST API – Azure Search pomocí'
-description: Vysvětluje, jak vytvořit index, načtení dat a spouštění dotazů pomocí Powershellu Invoke-RestMethod a rozhraní REST API Azure Search.
+title: 'Rychlý Start PowerShellu: Vytváření, načítání a dotazování indexů pomocí Azure Search rozhraní REST API – Azure Search'
+description: Vysvětluje, jak vytvořit index, načíst data a spustit dotazy pomocí rutiny Invoke-RestMethod prostředí PowerShell a REST API Azure Search.
 ms.date: 07/11/2019
 author: heidisteen
 manager: cgronlun
@@ -10,49 +10,49 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: c8a49fe5d334b5752b9272e480fb2502a980b0a4
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 6bff2c84a4bfd81b94054b85744c17a1cd217756
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67840173"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67847069"
 ---
-# <a name="quickstart-create-an-azure-search-index-in-powershell-using-rest-apis"></a>Rychlý start: Vytvoření indexu Azure Search v prostředí PowerShell pomocí rozhraní REST API
+# <a name="quickstart-create-an-azure-search-index-in-powershell-using-rest-apis"></a>Rychlý start: Vytvoření indexu Azure Search v PowerShellu pomocí rozhraní REST API
 > [!div class="op_single_selector"]
 > * [PowerShell (REST)](search-create-index-rest-api.md)
 > * [C#](search-create-index-dotnet.md)
-> * [Postman (REST)](search-get-started-postman.md)
+> * [Post (REST)](search-get-started-postman.md)
 > * [Python](search-get-started-python.md)
 > * [Azure Portal](search-create-index-portal.md)
 > 
 
-Tento článek vás provede procesem vytvoření, načtení a dotazování indexu Azure Search pomocí prostředí PowerShell a [rozhraní REST API Azure Search](https://docs.microsoft.com/rest/api/searchservice/). Tento článek vysvětluje, jak interaktivně spusťte příkazy Powershellu. Alternativně můžete [stáhněte a spusťte skript prostředí Powershell](https://github.com/Azure-Samples/azure-search-powershell-samples/tree/master/Quickstart) , který provede stejné operace.
+Tento článek vás provede procesem vytvoření, načtení a dotazování indexu Azure Search pomocí prostředí PowerShell a [rozhraní API pro Azure Search REST](https://docs.microsoft.com/rest/api/searchservice/). Tento článek vysvětluje, jak interaktivně spustit příkazy prostředí PowerShell. Případně můžete [Stáhnout a spustit skript prostředí PowerShell](https://github.com/Azure-Samples/azure-search-powershell-samples/tree/master/Quickstart) , který provede stejné operace.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Tyto služby a nástroje se používají v tomto rychlém startu. 
+V tomto rychlém startu jsou vyžadovány následující služby a nástroje. 
 
-+ [Prostředí PowerShell 5.1 nebo novější](https://github.com/PowerShell/PowerShell)s použitím [Invoke-RestMethod](https://docs.microsoft.com/powershell/module/Microsoft.PowerShell.Utility/Invoke-RestMethod) pro sekvenční a interaktivní kroky.
++ [PowerShell 5,1 nebo novější](https://github.com/PowerShell/PowerShell), pomocí rutiny [Invoke-RestMethod](https://docs.microsoft.com/powershell/module/Microsoft.PowerShell.Utility/Invoke-RestMethod) pro sekvenční a interaktivní kroky.
 
-+ [Vytvoření služby Azure Search](search-create-service-portal.md) nebo [najít existující službu](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) pod vaším aktuálním předplatným. Můžete použít bezplatnou službou pro tento rychlý start. 
++ [Vytvořte službu Azure Search](search-create-service-portal.md) nebo [Najděte existující službu](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) v rámci aktuálního předplatného. Pro tento rychlý Start můžete použít bezplatnou službu. 
 
-## <a name="get-a-key-and-url"></a>Získejte klíč a adresy URL
+## <a name="get-a-key-and-url"></a>Získat klíč a adresu URL
 
 Volání REST vyžadují pro každý požadavek adresu URL služby a přístupový klíč. Vyhledávací služba se vytvoří s oběma, takže pokud jste do svého předplatného přidali službu Azure Search, získejte potřebné informace pomocí následujícího postupu:
 
-1. [Přihlaste se k webu Azure portal](https://portal.azure.com/)a ve vyhledávací službě **přehled** stránce, získat adresu URL. Příkladem koncového bodu může být `https://mydemo.search.windows.net`.
+1. Přihlaste se [k Azure Portal](https://portal.azure.com/)a na stránce **Přehled** vyhledávací služby Získejte adresu URL. Příkladem koncového bodu může být `https://mydemo.search.windows.net`.
 
-2. V **nastavení** > **klíče**, získat klíč pro úplná práva správce na službu. Existují dva klíče zaměnitelné správce, v případě, že budete potřebovat k výměně jeden k dispozici zajišťuje nepřetržitý chod podniků. U požadavků můžete použít buď primární nebo sekundární klíč pro přidání, úpravy a odstraňování objektů.
+2. V části **Nastavení** > **klíče**Získejte klíč správce s úplnými právy k této službě. Existují dva zaměnitelné klíče správce poskytované pro zajištění kontinuity podnikových služeb pro případ, že byste museli nějakou dobu navrátit. V žádostech o přidání, úpravu a odstranění objektů můžete použít primární nebo sekundární klíč.
 
-![Získejte koncový bod a přístupový klíč rozhraní HTTP](media/search-get-started-postman/get-url-key.png "získat HTTP koncový bod a přístupový klíč")
+![Získání koncového bodu http a přístupového klíče](media/search-get-started-postman/get-url-key.png "Získání koncového bodu http a přístupového klíče")
 
-Všechny požadavky vyžaduje klíč rozhraní api na každou požadavku odeslaného do vaší služby. Platný klíč vytváří na základě žádosti vztah důvěryhodnosti mezi aplikací, která žádost odeslala, a službou, která ji zpracovává.
+Všechny požadavky vyžadují klíč rozhraní API na všech žádostech odeslaných službě. Platný klíč vytváří na základě žádosti vztah důvěryhodnosti mezi aplikací, která žádost odeslala, a službou, která ji zpracovává.
 
-## <a name="connect-to-azure-search"></a>Připojení ke službě Azure Search
+## <a name="connect-to-azure-search"></a>Připojení k Azure Search
 
-1. V prostředí PowerShell, vytvořte **$headers** objekt pro uložení typu obsahu a klíč rozhraní API. Klíč rozhraní API pro správu (YOUR-ADMIN-API-KEY) nahraďte klíčem, který je platný pro vaši vyhledávací službu. Budete muset nastavit toto záhlaví jednou po dobu trvání relace, ale které přidáte do každého požadavku. 
+1. V PowerShellu vytvořte objekt **$Headers** pro uložení typu obsahu a klíče rozhraní API. Nahraďte klíč rozhraní API pro správu (klíč-správce-API-KEY) klíčem, který je platný pro vaši vyhledávací službu. Tuto hlavičku musíte nastavit jenom jednou po dobu trvání relace, ale přidáte ji do každé žádosti. 
 
     ```powershell
     $headers = @{
@@ -61,19 +61,19 @@ Všechny požadavky vyžaduje klíč rozhraní api na každou požadavku odeslan
     'Accept' = 'application/json' }
     ```
 
-2. Vytvoření **$url** objekt, který určuje služby indexování kolekce. Název služby (YOUR-SEARCH-SERVICE-NAME) nahraďte platný vyhledávací služby.
+2. Vytvořte objekt **$URL** , který určuje kolekci indexů služby. Nahraďte název služby (služba-SEARCH-SERVICE-NAME) platnou vyhledávací službou.
 
     ```powershell
     $url = "https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes?api-version=2019-05-06&$select=name"
     ```
 
-3. Spustit **Invoke-RestMethod** odeslat požadavek GET na službu a ověření připojení. Přidat **ConvertTo-Json** tak, abyste mohli zobrazit odpovědi odeslané ze služby.
+3. Spuštěním rutiny **Invoke-RestMethod** odešlete službě požadavek GET a ověřte připojení. Přidejte **ConvertTo-JSON** , abyste mohli zobrazit odpovědi, které se ze služby odesílají zpátky.
 
     ```powershell
     Invoke-RestMethod -Uri $url -Headers $headers | ConvertTo-Json
     ```
 
-   Pokud služba je prázdný a nemá žádné indexy, výsledky jsou podobné následujícímu příkladu. V opačném případě uvidíte JSON s reprezentací provedených definic indexu.
+   Pokud je služba prázdná a nemá žádné indexy, výsledky jsou podobné jako v následujícím příkladu. V opačném případě se zobrazí reprezentace definice indexu ve formátu JSON.
 
     ```
     {
@@ -86,13 +86,13 @@ Všechny požadavky vyžaduje klíč rozhraní api na každou požadavku odeslan
 
 ## <a name="1---create-an-index"></a>1\. Vytvoření indexu
 
-Pokud používáte portál, index, musí existovat ve službě můžete načíst data. Tento krok definuje index a nasdílí změny do služby. [Vytvořit Index rozhraní REST API služby](https://docs.microsoft.com/rest/api/searchservice/create-index) se používá pro tento krok.
+Pokud portál nepoužíváte, musí ve službě existovat index, aby bylo možné načíst data. Tento krok definuje index a odešle ho do služby. Pro tento krok se používá [REST API vytvoření indexu](https://docs.microsoft.com/rest/api/searchservice/create-index) .
 
-Požadované elementy indexu patří název a kolekci polí. Kolekce polí definuje strukturu *dokumentu*. Každé pole má název, typ a atributy, které určují, jak se používá (například, zda je fulltextově prohledávatelné, filtrovatelné nebo retrievable ve výsledcích hledání). V rámci indexu, jeden z pole typu `Edm.String` musí být určena jako *klíč* pro identitu dokumentu.
+Požadované prvky indexu zahrnují název a kolekci polí. Kolekce polí definuje strukturu *dokumentu*. Každé pole má název, typ a atributy, které určují, jak se používá (například zda je fulltextově prohledávatelné, filtrovatelné nebo získatelné ve výsledcích hledání). V indexu musí být jedno z polí typu `Edm.String` určeno jako *klíč* pro identitu dokumentu.
 
-Tento index je s názvem "hotely – rychlý start" a obsahuje definice pole, které vidíte níže. Je podmnožinou větší [indexu Hotels](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/hotels/Hotels_IndexDefinition.JSON) použít v dalších kurzech. Jsme oříznut v tomto rychlém startu pro zkrácení.
+Tento index má název "hotely-rychlý Start" a obsahuje definice polí, které vidíte níže. Jedná se o podmnožinu většího [indexu hotelů](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/hotels/Hotels_IndexDefinition.JSON) používaných v jiných návodech. V tomto rychlém startu jsme ho pro zkrácení vystříhat.
 
-1. Vložte tento příklad do prostředí PowerShell k vytvoření **$body** objekt, který obsahuje schéma indexu.
+1. Vložte tento příklad do PowerShellu a vytvořte objekt **$body** obsahující schéma indexu.
 
     ```powershell
     $body = @"
@@ -121,19 +121,19 @@ Tento index je s názvem "hotely – rychlý start" a obsahuje definice pole, kt
     "@
     ```
 
-2. Nastavte identifikátor URI kolekce indexů pro vaši službu a *hotels-quickstart* indexu.
+2. Nastavte identifikátor URI pro kolekci indexů ve vaší službě a index *rychlé* spuštění v hotelů.
 
     ```powershell
     $url = "https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart?api-version=2019-05-06"
     ```
 
-3. Spuštění příkazu s **$url**, **$headers**, a **$body** pro vytvoření indexu ve službě. 
+3. Spusťte příkaz s **$URL**, **$Headers**a **$body** k vytvoření indexu ve službě. 
 
     ```powershell
     Invoke-RestMethod -Uri $url -Headers $headers -Method Put -Body $body | ConvertTo-Json
     ```
 
-    Výsledky by měly vypadat podobně jako tento (zkrácen na první dvě pole pro zkrácení):
+    Výsledky by měly vypadat podobně jako v tomto příkladu (zkrácený na první dvě pole pro zkrácení):
 
     ```
     {
@@ -174,17 +174,17 @@ Tento index je s názvem "hotely – rychlý start" a obsahuje definice pole, kt
     ```
 
 > [!Tip]
-> Pro ověření můžete také zkontrolovat seznam indexů na portálu.
+> Pro ověření můžete také na portálu vyhledat seznam indexy.
 
 <a name="load-documents"></a>
 
-## <a name="2---load-documents"></a>2 – nahrání dokumentů
+## <a name="2---load-documents"></a>2\. načtení dokumentů
 
-Pro vkládání dokumentů, pomocí požadavku HTTP POST do koncového bodu adresy URL vašeho indexu. Rozhraní REST API pro tuto úlohu je [přidání, aktualizace nebo odstranění dokumentů](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents).
+K odesílání dokumentů použijte požadavek HTTP POST na koncový bod adresy URL vašeho indexu. REST API pro tento úkol je [Přidání, aktualizace nebo odstranění dokumentů](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents).
 
-1. Vložte tento příklad do prostředí PowerShell k vytvoření **$body** objekt obsahující dokumenty, které chcete nahrát. 
+1. Vložte tento příklad do PowerShellu a vytvořte objekt **$body** obsahující dokumenty, které chcete nahrát. 
 
-    Tato žádost obsahuje dvě úplné a částečné jeden záznam. Částečné záznam ukazuje, že můžou nahrávat dokumenty, neúplné. `@search.action` Parametr určuje, jak se dělá indexování. Platné hodnoty jsou odeslání, sloučení, mergeOrUpload a delete. Chování mergeOrUpload buď vytvoří nový dokument pro hotelId = 3, nebo aktualizuje obsah, pokud již existuje.
+    Tato žádost obsahuje dva úplné a jeden částečný záznam. Částečný záznam ukazuje, že můžete nahrávat nedokončené dokumenty. `@search.action` Parametr určuje, jak je indexování provedeno. Platné hodnoty zahrnují nahrávání, sloučení, mergeOrUpload a odstranění. Chování mergeOrUpload buď vytvoří nový dokument pro hotelId = 3, nebo aktualizuje obsah, pokud již existuje.
 
     ```powershell
     $body = @"
@@ -271,18 +271,18 @@ Pro vkládání dokumentů, pomocí požadavku HTTP POST do koncového bodu adre
     "@
     ```
 
-1. Nastavte na koncový bod *hotels-quickstart* dokumentace kolekce a zahrnují operace s indexem (indexy/hotels – rychlý start/docs/index).
+1. Nastavte koncový bod do kolekce dokumentů pro *rychlé zprovoznění hotelů* a zahrňte operaci indexu (indexy/hotely – rychlý Start, dokumentace/index).
 
     ```powershell
     $url = "https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart/docs/index?api-version=2019-05-06"
     ```
 
-1. Spuštění příkazu s **$url**, **$headers**, a **$body** načtení dokumentů do indexu hotels – rychlý start.
+1. Spusťte příkaz s **$URL**, **$Headers**a **$body** k načtení dokumentů do indexu pro rychlé spuštění v hotelů.
 
     ```powershell
     Invoke-RestMethod -Uri $url -Headers $headers -Method Post -Body $body | ConvertTo-Json
     ```
-    Výsledky by měly vypadat podobně jako v následujícím příkladu. Měli byste vidět [stavový kód 201](https://docs.microsoft.com/rest/api/searchservice/HTTP-status-codes).
+    Výsledky by měly vypadat podobně jako v následujícím příkladu. Měl by se zobrazit [stavový kód 201](https://docs.microsoft.com/rest/api/searchservice/HTTP-status-codes).
 
     ```
     {
@@ -318,25 +318,25 @@ Pro vkládání dokumentů, pomocí požadavku HTTP POST do koncového bodu adre
 
 ## <a name="3---search-an-index"></a>3\. Prohledání indexu
 
-Tento krok ukazuje, jak zadávat dotazy na index pomocí [rozhraní API pro vyhledávání dokumentů](https://docs.microsoft.com/rest/api/searchservice/search-documents).
+V tomto kroku se dozvíte, jak zadat dotaz na index pomocí [rozhraní API pro hledání dokumentů](https://docs.microsoft.com/rest/api/searchservice/search-documents).
 
-Ujistěte se, že jste na hledání $urls použijte jednoduché uvozovky. Řetězce dotazu obsahovat **$** znaky a můžete vynechat, nechte museli řídicí je celý řetězec je uzavřen do jednoduchých uvozovek a být...
+Nezapomeňte použít jednoduché uvozovky při hledání $urls. Řetězce dotazů obsahují **$** znaky a je možné je vynechat, pokud je celý řetězec uzavřen v jednoduchých uvozovkách.
 
-1. Nastavit koncový bod na *hotels-quickstart* dokumentace kolekce a přidejte **vyhledávání** parametr předat řetězec dotazu. 
+1. Nastavte koncový bod do kolekce dokumentů pro *rychlé zprovoznění hotelů* a přidejte parametr **hledání** , který se bude předávat v řetězci dotazu. 
   
-   Tento řetězec spustí prázdné vyhledávání (vyhledávání = *), vrátí unranked seznamu (skóre vyhledávání = 1.0) libovolný dokumentů. Azure Search ve výchozím nastavení, vrátí 50 shodnými najednou. Jako strukturované tento dotaz vrátí strukturu celého dokumentu a hodnoty. Přidat **$count = true** zobrazíte počet všechny dokumenty ve výsledcích.
+   Tento řetězec spustí prázdné hledání (Search = *) a vrátí Neseřazený seznam (skóre hledání = 1,0) libovolných dokumentů. Ve výchozím nastavení Azure Search vrátí 50 shod v čase. Jako strukturovaný tento dotaz vrátí celou strukturu dokumentů a hodnot. Přidejte **$Count = true** pro získání počtu všech dokumentů ve výsledcích.
 
     ```powershell
     $url = 'https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart/docs?api-version=2019-05-06&search=*&$count=true'
     ```
 
-1. Spusťte příkaz k odeslání **$url** ke službě.
+1. Spuštěním příkazu odešlete **$URL** službě.
 
     ```powershell
     Invoke-RestMethod -Uri $url -Headers $headers | ConvertTo-Json
     ```
 
-    Výsledky by měly vypadat podobně jako následující výstup.
+    Výsledky by měly vypadat podobně jako v následujícím výstupu.
 
     ```
     {
@@ -370,7 +370,7 @@ Ujistěte se, že jste na hledání $urls použijte jednoduché uvozovky. Řetě
                 . . . 
     ```
 
-Zkuste několik další příklady dotazů syntaxe získat představu. Můžete řetězec hledání, dotazy verbatim $filter, omezit sadu výsledků, obor hledání na konkrétní pole a další.
+Vyzkoušejte si několik dalších příkladů dotazů, které vám pomohou s syntaxí. Můžete provést hledání v řetězci, doslovné znění $filter dotazů, omezit sadu výsledků, určit rozsah hledání na konkrétní pole a další.
 
 ```powershell
 # Query example 1
@@ -394,15 +394,15 @@ $url = 'https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quicksta
 ```
 ## <a name="clean-up"></a>Vyčištění 
 
-Pokud pracujete ve svém vlastním předplatném, je vhodné na konci projektu a zjistěte, jestli stále potřebují prostředky, že kterou jste vytvořili. Levé může spuštěné prostředky nákladů peníze. Můžete odstranit prostředky jednotlivě nebo odstranit skupinu prostředků, kterou chcete odstranit celou sadu prostředků.
+Pokud pracujete ve vlastním předplatném, je vhodné na konci projektu zjistit, zda stále potřebujete prostředky, které jste vytvořili. Prostředky, které se na něm zbývá, můžou mít náklady na peníze. Prostředky můžete odstranit jednotlivě nebo odstranit skupinu prostředků, abyste odstranili celou sadu prostředků.
 
-Můžete najít a spravovat prostředky na portálu pro použití **všechny prostředky** nebo **skupiny prostředků** odkaz v levém navigačním podokně.
+Prostředky můžete najít a spravovat na portálu pomocí odkazu **všechny prostředky** nebo **skupiny prostředků** v levém navigačním podokně.
 
-Pokud používáte bezplatné služby, mějte na paměti, že jste omezeni na tři indexy, indexery a datového zdroje. Můžete odstranit jednotlivé položky na portálu, abychom dodrželi omezení. 
+Pokud používáte bezplatnou službu, pamatujte na to, že jste omezeni na tři indexy, indexery a zdroje dat. Jednotlivé položky na portálu můžete odstranit, aby zůstaly pod limitem. 
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto rychlém startu jste použili prostředí PowerShell pro jednotlivé kroky v základní pracovní postup pro vytváření a přístup k obsahu ve službě Azure Search. Koncepty v úvahu doporučujeme zvolit pokročilejších scénářích, jako jsou indexování ze zdrojů dat Azure;
+V tomto rychlém startu jste pomocí PowerShellu procházeli základní pracovní postup pro vytváření a přístup k obsahu v Azure Search. V případě konceptů doporučujeme přejít k pokročilejším scénářům, jako je například indexování ze zdrojů dat Azure;
 
 > [!div class="nextstepaction"]
-> [Kurz REST pro: Index a prohledávání částečně strukturovaných dat (objektů BLOB JSON) ve službě Azure Search](search-semi-structured-data.md)
+> [Kurz REST: Indexujte a prohledejte částečně strukturovaná data (bloby JSON) v Azure Search](search-semi-structured-data.md)

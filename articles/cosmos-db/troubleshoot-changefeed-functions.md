@@ -1,101 +1,101 @@
 ---
-title: Diagnostika a řešení problémů při používání aktivační událost Azure Cosmos DB ve službě Azure Functions
-description: Běžné problémy, řešení a krokům diagnostiky, při použití aktivační událost Azure Cosmos DB s využitím Azure Functions
+title: Diagnostika a řešení potíží při použití triggeru Azure Cosmos DB v Azure Functions
+description: Běžné problémy, alternativní řešení a diagnostické kroky při použití triggeru Azure Cosmos DB s Azure Functions
 author: ealsur
 ms.service: cosmos-db
 ms.date: 05/23/2019
 ms.author: maquaran
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 09ea70ac302806b4cb0e97fde92dda4208e3d659
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9c728a735e56e461e49dd3f594186c9c0192a3f0
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66734518"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68250016"
 ---
-# <a name="diagnose-and-troubleshoot-issues-when-using-azure-cosmos-db-trigger-in-azure-functions"></a>Diagnostika a řešení problémů při používání aktivační událost Azure Cosmos DB ve službě Azure Functions
+# <a name="diagnose-and-troubleshoot-issues-when-using-azure-cosmos-db-trigger-in-azure-functions"></a>Diagnostika a řešení potíží při použití triggeru Azure Cosmos DB v Azure Functions
 
-Tento článek se věnuje běžné problémy, řešení a krokům diagnostiky, při použití [aktivační událost Azure Cosmos DB](change-feed-functions.md) s využitím Azure Functions.
+Tento článek popisuje běžné problémy, alternativní řešení a diagnostické kroky při použití [triggeru Azure Cosmos DB](change-feed-functions.md) s Azure Functions.
 
 ## <a name="dependencies"></a>Závislosti
 
-Azure Cosmos DB aktivační události a vazby závisí na balíčky rozšíření prostřednictvím základní modulu runtime Azure Functions. Vždy ponechte tyto balíčky se aktualizovaly, jak se může zahrnovat opravy a nové funkce, které může vyřešit všechny potenciální problémy, se můžete setkat:
+Aktivační událost Azure Cosmos DB a vazby závisejí na balíčcích rozšíření v rámci základního Azure Functions runtime. Vždy udržujte tyto balíčky aktualizované, protože můžou zahrnovat opravy a nové funkce, které mohou řešit případné problémy, se kterými se můžete setkat:
 
-* Azure Functions 2, přečtěte si [Microsoft.Azure.WebJobs.Extensions.CosmosDB](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.CosmosDB).
-* Azure Functions V1, naleznete v tématu [Microsoft.Azure.WebJobs.Extensions.DocumentDB](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DocumentDB).
+* Azure Functions v2 najdete v tématu [Microsoft. Azure. WebJobs. Extensions. CosmosDB](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.CosmosDB).
+* Azure Functions v1 najdete v tématu [Microsoft. Azure. WebJobs. Extensions. DocumentDB](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DocumentDB).
 
-Tento článek vždy vrátíme se k Azure Functions V2 pokaždé, když modul runtime je již bylo zmíněno, pokud není explicitně zadán.
+Tento článek se vždy odkazuje na Azure Functions v2 vždy, když je zmíněn modul runtime, pokud není explicitně zadán.
 
-## <a name="consume-the-azure-cosmos-db-sdk-independently"></a>Nezávisle na sobě využívat Azure Cosmos DB SDK
+## <a name="consume-the-azure-cosmos-db-sdk-independently"></a>Využívat sadu SDK pro Azure Cosmos DB nezávisle
 
-Klíčové funkce balíček rozšíření je k poskytování podpory pro aktivační událost Azure Cosmos DB a vazby. Zahrnuje také [.NET SDK služby Azure Cosmos DB](sql-api-sdk-dotnet-core.md), což je užitečné, pokud budete chtít pracovat s Azure Cosmos DB prostřednictvím kódu programu bez použití aktivační události a vazby.
+Klíčovou funkcí balíčku rozšíření je poskytnutí podpory pro aktivační událost Azure Cosmos DB a vazby. Zahrnuje také [sadu Azure Cosmos DB .NET SDK](sql-api-sdk-dotnet-core.md), která je užitečná, pokud chcete pracovat s Azure Cosmos DB programově bez použití triggeru a vazeb.
 
-Pokud chcete používat Azure Cosmos DB SDK, ujistěte se, že nepřidáte do svého projektu odkaz na jiný balíček NuGet. Místo toho **nechat přeložit pomocí balíček rozšíření Azure Functions odkazu sady SDK**. Využívání Azure Cosmos DB SDK odděleně od aktivační událost a vazby
+Pokud chcete použít sadu Azure Cosmos DB SDK, ujistěte se, že do projektu nepřidáte další odkaz na balíček NuGet. Místo toho je třeba **pomocí balíčku rozšíření Azure Functions vyhodnotit odkaz na sadu SDK**. Využití sady SDK Azure Cosmos DB odděleně od triggeru a vazeb
 
-Kromě toho pokud ručně vytvoříte svoji vlastní instanci služby [klienta služby Azure Cosmos DB SDK](./sql-api-sdk-dotnet-core.md), měli byste postupovat podle vzor pouze jedna instance klienta s [použitím Singleton vzor přístupu](../azure-functions/manage-connections.md#documentclient-code-example-c) . Tento proces se vyhnuli případným potížím soketu ve vašich operací.
+Pokud navíc ručně vytváříte vlastní instanci [klienta Azure Cosmos DB SDK](./sql-api-sdk-dotnet-core.md), měli byste postupovat podle vzoru, který má pouze jednu instanci klienta s [přístupem ke vzorům typu Singleton](../azure-functions/manage-connections.md#documentclient-code-example-c). Tento proces se zabrání potenciálním problémům soketu v rámci vašich operací.
 
-## <a name="common-scenarios-and-workarounds"></a>Běžné scénáře a řešení
+## <a name="common-scenarios-and-workarounds"></a>Běžné scénáře a alternativní řešení
 
-### <a name="azure-function-fails-with-error-message-collection-doesnt-exist"></a>Funkce Azure selže a zobrazí se chybová zpráva kolekce neexistuje.
+### <a name="azure-function-fails-with-error-message-collection-doesnt-exist"></a>Funkce Azure Functions se nezdařila, protože kolekce chybových zpráv neexistuje.
 
-Funkce Azure Functions se nezdaří s chybovou zprávou "buď zdrojové kolekce"kolekce name"(v databázi"database-name") nebo kolekci zapůjčení"kolekce 2 name"(v databázi"databáze 2 name") neexistuje. Obě kolekce musí existovat před spuštěním naslouchacího procesu. Chcete-li automaticky vytvořit kolekci zapůjčení, nastavte 'CreateLeaseCollectionIfNotExists' na 'true' "
+Funkce Azure Functions se nezdařila s chybovou zprávou "buď zdrojová kolekce ' Collection-Name" (v databázi ' Database-name ') nebo kolekce zapůjčení ' Collection2-name ' (v databázi ' databáze 2-Name ') neexistuje. Obě kolekce musí existovat před spuštěním naslouchacího procesu. Pokud chcete automaticky vytvořit kolekci zapůjčení, nastavte ' CreateLeaseCollectionIfNotExists ' na ' true '.
 
-To znamená, že jedno nebo obě kontejnerů Azure Cosmos, vyžaduje se pro aktivační událost pro práci neexistují nebo nejsou dostupné pro funkce Azure functions. **Vlastní chyba vám dá vědět, kterou databázi Azure Cosmos a kontejnerů, je trigger hledáte** na základě vaší konfigurace.
+To znamená, že jeden nebo oba kontejnery Azure Cosmos, které má aktivační událost fungovat, neexistují nebo nejsou dosažitelné pro funkci Azure Functions. **Tato chyba vám sdělí, které služby Azure Cosmos Database a kontejnery jsou spouštěné triggerem** na základě vaší konfigurace.
 
-1. Ověřte, `ConnectionStringSetting` atribut a že **odkazuje na nastavení, která existuje v aplikaci Azure Function App**. Hodnota tohoto atributu by neměla být samotný řetězec připojení, ale název tohoto nastavení konfigurace.
-2. Ověřte, že `databaseName` a `collectionName` existovat ve vašem účtu Azure Cosmos. Pokud používáte automatické hodnoty nahrazení (pomocí `%settingName%` vzory), ujistěte se, že název nastavení existuje ve vaší aplikaci funkcí Azure.
-3. Pokud nezadáte `LeaseCollectionName/leaseCollectionName`, výchozí hodnota je "zapůjčení". Ověřte, zda existuje takový kontejner. Volitelně můžete nastavit `CreateLeaseCollectionIfNotExists` atribut v aktivační událost pro `true` automaticky ji vytvořit.
-4. Ověřte vaše [konfigurace brány Firewall na účtu Azure Cosmos](how-to-configure-firewall.md) zobrazíte zobrazíte, že není neblokuje funkce Azure functions.
+1. Ověřte atribut, který **odkazuje na nastavení, které existuje ve vašem Azure Function App.** `ConnectionStringSetting` Hodnota tohoto atributu nesmí být samotný připojovací řetězec, ale název nastavení konfigurace.
+2. Ověřte, jestli `databaseName` v `collectionName` účtu Azure Cosmos existují a. Pokud používáte automatické nahrazení hodnoty (pomocí `%settingName%` vzorů), ujistěte se, že název nastavení existuje ve vašem Azure Function App.
+3. Pokud nezadáte a `LeaseCollectionName/leaseCollectionName`, výchozí hodnota je "zapůjčení". Ověřte, že tento kontejner existuje. Volitelně můžete nastavit `CreateLeaseCollectionIfNotExists` atribut v triggeru tak `true` , aby se automaticky vytvořil.
+4. Ověřte [konfiguraci brány firewall účtu Azure Cosmos](how-to-configure-firewall.md) , abyste viděli, že neblokuje funkci Azure Functions.
 
-### <a name="azure-function-fails-to-start-with-shared-throughput-collection-should-have-a-partition-key"></a>Začít s selže funkci Azure "Shared propustnost kolekce by měly mít klíč oddílu"
+### <a name="azure-function-fails-to-start-with-shared-throughput-collection-should-have-a-partition-key"></a>Funkci Azure Functions se nepodařilo spustit, protože sdílená kolekce propustnosti by měla mít klíč oddílu.
 
-Předchozí verze rozšíření Azure Cosmos DB pomocí zapůjčení kontejneru, který byl vytvořen v rámci nepodporoval [sdílené propustnosti databáze](./set-throughput.md#set-throughput-on-a-database). Pokud chcete tento problém vyřešit, aktualizujte [Microsoft.Azure.WebJobs.Extensions.CosmosDB](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.CosmosDB) rozšíření získat nejnovější verzi.
+Předchozí verze rozšíření Azure Cosmos DB nepodporovaly používání kontejneru zapůjčení, který byl vytvořen v rámci [sdílené databáze propustnosti](./set-throughput.md#set-throughput-on-a-database). Pokud chcete tento problém vyřešit, aktualizujte rozšíření [Microsoft. Azure. WebJobs. Extensions. CosmosDB](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.CosmosDB) , aby se získala nejnovější verze.
 
-### <a name="azure-function-fails-to-start-with-the-lease-collection-if-partitioned-must-have-partition-key-equal-to-id"></a>Funkce Azure Functions se nezdaří spuštění s "kolekci zapůjčení, pokud rozdělená na oddíly, musí mít stejné ID klíče oddílu."
+### <a name="azure-function-fails-to-start-with-the-lease-collection-if-partitioned-must-have-partition-key-equal-to-id"></a>Funkce Azure Function se nespustí s "kolekce zapůjčení, pokud je rozdělená na oddíly, musí mít klíč oddílu roven ID."
 
-Tato chyba znamená, že aktuální zapůjčení kontejneru je rozdělit na oddíly, ale cesta klíče oddílu je `/id`. Pokud chcete tento problém vyřešit, budete muset znovu vytvořit kontejner zapůjčení s `/id` jako klíč oddílu.
+Tato chyba znamená, že váš aktuální kontejner zapůjčení je rozdělený na oddíly, ale cesta ke klíči oddílu `/id`není. Chcete-li tento problém vyřešit, je nutné znovu vytvořit kontejner zapůjčení s `/id` klíčem oddílu.
 
-### <a name="you-see-a-value-cannot-be-null-parameter-name-o-in-your-azure-functions-logs-when-you-try-to-run-the-trigger"></a>Uvidíte "hodnota nemůže být null. Název parametru: o "v Azure Functions protokolů při pokusu o spuštění aktivační události
+### <a name="you-see-a-value-cannot-be-null-parameter-name-o-in-your-azure-functions-logs-when-you-try-to-run-the-trigger"></a>Zobrazí se hodnota nemůže mít hodnotu null. Název parametru: o v protokolech Azure Functions při pokusu o spuštění triggeru
 
-Tento problém se zobrazí v případě, že používáte na webu Azure portal a vyberte **spustit** tlačítko na obrazovce při kontrole funkce Azure, který používá danou aktivační událost. Aktivační událost nevyžaduje, aby pro výběr spuštěním se zahájí, se automaticky spustí po nasazení funkce Azure functions. Pokud chcete zkontrolovat datový proud protokolu funkce Azure Functions na portálu Azure portal, stačí přejít na monitorovaných kontejner a vložit některé nové položky, automaticky zobrazí se aktivační událost spouští.
+K tomuto problému dochází, pokud používáte Azure Portal a při kontrole funkce Azure, která používá aktivační událost, se pokusíte vybrat tlačítko **Spustit** na obrazovce. Aktivační událost nevyžaduje, abyste vybrali možnost spustit pro spuštění, automaticky se spustí při nasazení funkce Azure. Pokud chcete v Azure Portal kontrolovat Stream protokolu Azure Functions, stačí přejít do monitorovaného kontejneru a vložit nějaké nové položky, automaticky se zobrazí aktivační událost, která se spouští.
 
-### <a name="my-changes-take-too-long-be-received"></a>Přijmout moje změny trvají příliš dlouho
+### <a name="my-changes-take-too-long-be-received"></a>Vaše změny trvají příliš dlouho.
 
-Tento scénář může mít několik příčin a všechny z nich by měly být porovnány:
+Tento scénář může mít několik příčin a všechny by měly být zkontrolovány:
 
-1. Nasazení funkce Azure ve stejné oblasti jako váš účet Azure Cosmos? Pro optimální síťovou latenci funkce Azure functions a váš účet Azure Cosmos by měly být umístěny společně ve stejné oblasti Azure.
-2. Probíhají změny vašeho kontejneru Azure Cosmos průběžné nebo sporadické?
-Pokud je ten, může být některých zpoždění mezi uložené změny a funkce Azure Functions je výběr. Je to proto interně, když trigger zkontroluje změny ve vašem kontejneru Azure Cosmos a zjistí žádné čekající ke čtení, ji budou přejít do režimu spánku konfigurovatelnou dobu (5 sekund, ve výchozím nastavení) předtím, než zkontroluje nové změny (aby se zabránilo vysoké spotřebu RU). Můžete nakonfigurovat v současné době v režimu spánku `FeedPollDelay/feedPollDelay` nastavení [konfigurace](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---configuration) triggeru (hodnota má být v milisekundách).
-3. Váš kontejner Azure Cosmos může být [míra časově omezené](./request-units.md).
-4. Můžete použít `PreferredLocations` atribut v triggeru zadat čárkou oddělený seznam oblastí Azure k definování vlastní připojení upřednostňované pořadí.
+1. Je vaše funkce Azure nasazená ve stejné oblasti jako váš účet Azure Cosmos? Pro optimální latenci sítě by měl být funkce Azure i účet Azure Cosmos společně umístěn ve stejné oblasti Azure.
+2. Probíhají změny v kontejneru Azure Cosmos Continuous nebo občas?
+V takovém případě může dojít k prodlevě mezi uloženými změnami a funkcí Azure Functions, která je vybírá. Je tomu tak proto, že když Trigger vyhledá změny v kontejneru Azure Cosmos a nenajde žádné nedokončené čtení, bude ve výchozím nastavení v režimu spánku (5 sekund), než se pokusí zkontrolovat nové změny (aby se zabránilo využití vysokého řádu RU). Tento čas režimu spánku můžete nakonfigurovat pomocí `FeedPollDelay/feedPollDelay` nastavení v [konfiguraci](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---configuration) triggeru (hodnota se očekává v milisekundách).
+3. Váš kontejner Azure Cosmos může být [omezený na míru](./request-units.md).
+4. Pomocí `PreferredLocations` atributu v triggeru můžete zadat seznam oblastí Azure oddělených čárkou, abyste mohli definovat vlastní preferované pořadí připojení.
 
-### <a name="some-changes-are-missing-in-my-trigger"></a>Některé změny nebyly nalezeny v mé triggeru
+### <a name="some-changes-are-missing-in-my-trigger"></a>V aktivační události chybí některé změny.
 
-Pokud zjistíte, že některé změny, ke kterým došlo ve vašem kontejneru Azure Cosmos se se nenačítají pomocí funkce Azure Functions, že je počáteční zkoumání krok, kterou je potřeba provést.
+Pokud zjistíte, že některé změny, ke kterým došlo v kontejneru Azure Cosmos, nejsou vyzvednuty funkcí Azure, je k dispozici počáteční krok šetření, který je potřeba provést.
 
-Změny přijetí vaši funkci Azure Functions je často zpracovává a může volitelně, odeslat výsledky do jiného umístění. Když prošetřujete chybějící změny, ujistěte se, že jste **měr, které změny jsou přijímány v okamžiku ingestování** (funkce Azure Functions začíná), není v cíli.
+Když vaše funkce Azure přijme změny, často je zpracuje a může volitelně odeslat výsledek do jiného cíle. Při zkoumání chybějících změn nezapomeňte **změřit, které změny jsou přijímány v bodu** příjmu (při spuštění funkce Azure), nikoli v cíli.
 
-Pokud v cíli chybí některé změny, to může znamenat, že je některé chybu během spuštění funkce Azure Functions poté, co byly změny přijaty.
+Pokud v cíli chybějí nějaké změny, může to znamenat, že došlo k chybě při provádění funkce Azure po přijetí změn.
 
-V tomto scénáři je nejlepší postup přidání `try/catch blocks` ve vašem kódu a uvnitř smyčky, které může zpracovávat změny, zjistit jakékoli neúspěchy pro konkrétní podmnožině položek a odpovídajícím způsobem jejich zpracování (odeslat je do jiného úložiště pro další analýzy nebo opakování). 
+V tomto scénáři je nejlepší postup přidat `try/catch blocks` do kódu a uvnitř smyček, které mohou zpracovávat změny, zjistit případné selhání pro určitou podmnožinu položek a odpovídajícím způsobem je zpracovat (Odeslat je do jiného úložiště pro další Analýza nebo opakování). 
 
 > [!NOTE]
-> Aktivační událost Azure Cosmos DB ve výchozím nastavení, nebude akci opakovat dávce změn, pokud došlo k neošetřené výjimce během provádění kódu. To znamená, že z důvodu, že změny nepřišla v cílovém umístění je tím, že se nedaří zpracovat.
+> Aktivační událost Azure Cosmos DB ve výchozím nastavení neopakuje dávku změn, pokud došlo k neošetřené výjimce během provádění kódu. To znamená, že důvodem nedoručení změn do cíle je to, že nebudete schopni je zpracovat.
 
-Pokud zjistíte, že některé změny nebyly přijaty ve všech vašich aktivační procedura, nejběžnější scénář, který je **je spuštěna jiná funkce Azure Functions**. Může to být jiné funkce Azure, které jsou nasazené v Azure nebo funkce Azure s místně na počítači pro vývojáře, na které má **přesně stejnou konfiguraci** (stejné monitorovat a zapůjčení kontejnerů), a tato funkce Azure Functions je krádež podmnožina změny, které by uživatel očekával vaši funkci Azure Functions pro zpracování.
+Pokud zjistíte, že Trigger nepřijal vůbec nějaké změny, nejběžnějším scénářem je, že je **spuštěná jiná funkce Azure**. Může to být jiná funkce Azure nasazená v Azure nebo funkce Azure spuštěná místně na počítači vývojáře, který má **přesně stejnou konfiguraci** (stejný monitorovaný a kontejner zapůjčení), a tato funkce Azure ukrást podmnožinu změn, které očekává, že vaše funkce Azure Functions zpracuje.
 
-Kromě toho tento scénář může být ověřen, pokud víte, kolik instancí aplikace Azure Function App máte systémem. Je-li zkontrolovat zapůjčení kontejneru a spočítat počet zapůjčení položek v rámci různých hodnot položky, které `Owner` vlastnost v nich by měl být roven počtu instancí aplikace Function App. Pokud existují další vlastníky než známé instancí aplikace Azure Function App, to znamená, že tyto dodatečné vlastníky jeden "zcizování" změny.
+Pokud víte, kolik instancí Azure Function App máte spuštěné, můžete taky ověřit scénář. Pokud provedete kontrolu kontejneru zapůjčení a určíte počet položek zapůjčení v rámci, budou jedinečné hodnoty `Owner` vlastnosti v nich rovny počtu instancí Function App. Pokud jsou k dispozici více vlastníků než známé instance služby Azure Function App, znamená to, že tyto další vlastníci jsou "ukrást".
 
-Jeden snadný způsob, jak řešení této situace je použít `LeaseCollectionPrefix/leaseCollectionPrefix` vaši funkci s novou/jinou hodnotu nebo alternativně test pomocí nového kontejneru zapůjčení.
+Jedním ze `LeaseCollectionPrefix/leaseCollectionPrefix` způsobů, jak tuto situaci vyřešit, je použít pro vaši funkci novou/odlišnou hodnotu nebo nebo otestovat pomocí nového kontejneru zapůjčení.
 
-### <a name="binding-can-only-be-done-with-ireadonlylistdocument-or-jarray"></a>Vazby jde jenom s IReadOnlyList<Document> nebo JArray
+### <a name="binding-can-only-be-done-with-ireadonlylistdocument-or-jarray"></a>Vazbu lze provést pouze s dokumentem\<IReadOnlyList > nebo JArray
 
-K této chybě dochází, pokud váš projekt Azure Functions (nebo jakéhokoli odkazovaného projektu) obsahuje ruční NuGet odkaz na sadu Azure Cosmos DB SDK s jinou verzí než ten, který poskytuje [Azure Functions Cosmos DB Extension](./troubleshoot-changefeed-functions.md#dependencies).
+K této chybě dochází, pokud váš Azure Functions projekt (nebo jakýkoli odkazovaný projekt) obsahuje ruční odkaz na sadu NuGet na Azure Cosmos DB SDK s jinou verzí, než je ta, kterou poskytuje [rozšíření Azure Functions Cosmos DB](./troubleshoot-changefeed-functions.md#dependencies).
 
-Chcete-li vyřešit tuto situaci, odebrat vyřešit ruční odkaz NuGet, který byl přidán a nechat odkaz na sadu Azure Cosmos DB SDK prostřednictvím balíček rozšíření Azure Functions Cosmos DB.
+Chcete-li tuto situaci vyřešit, odeberte ručně vytvořený odkaz NuGet a nechejte odkaz Azure Cosmos DB SDK vyřešit prostřednictvím balíčku rozšíření Azure Functions Cosmos DB.
 
 ## <a name="next-steps"></a>Další postup
 
-* [Povolit monitorování pro službu Azure Functions](../azure-functions/functions-monitoring.md)
-* [Azure Cosmos DB .NET řešení potíží s SDK](./troubleshoot-dot-net-sdk.md)
+* [Povolit monitorování pro Azure Functions](../azure-functions/functions-monitoring.md)
+* [Řešení potíží s Azure Cosmos DB .NET SDK](./troubleshoot-dot-net-sdk.md)

@@ -1,6 +1,6 @@
 ---
-title: Konfigurovat kodér Haivision KB odesílat živý datový proud s jednou přenosovou rychlostí do Azure | Dokumentace Microsoftu
-description: Toto téma ukazuje, jak nakonfigurovat živé kodér Haivision KB k odesílání datového proudu s jednou přenosovou rychlostí do AMS kanály, které jsou povolené kódování v reálném čase.
+title: Konfigurace kodéru Haivision KB pro odeslání živého datového proudu s jednou přenosovou rychlostí do Azure | Microsoft Docs
+description: V tomto tématu se dozvíte, jak nakonfigurovat kodér Haivision KB Live pro odeslání datového proudu s jednou přenosovou rychlostí do kanálů AMS, které mají povolené kódování v reálném čase.
 services: media-services
 documentationcenter: ''
 author: dbgeorge
@@ -13,27 +13,27 @@ ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
 ms.date: 03/14/2019
-ms.author: juliako;dbgeorge
-ms.openlocfilehash: 058a1f964eb14d89628c92cbadd80511b7a27bae
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: juliako
+ms.openlocfilehash: 7bb3db4861842e145689682035adc3c691538adf
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61230442"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68297801"
 ---
-# <a name="use-the-haivision-kb-live-encoder-to-send-a-single-bitrate-live-stream"></a>Použití živého kodér Haivision KB odesílat živý datový proud s jednou přenosovou rychlostí  
+# <a name="use-the-haivision-kb-live-encoder-to-send-a-single-bitrate-live-stream"></a>Použití kodéru Haivision KB Live k odeslání živého datového proudu s jednou přenosovou rychlostí  
 > [!div class="op_single_selector"]
 > * [FMLE](media-services-configure-fmle-live-encoder.md)
 > * [Haivision](media-services-configure-kb-live-encoder.md)
 > * [Tricaster](media-services-configure-tricaster-live-encoder.md)
 > * [Wirecast](media-services-configure-wirecast-live-encoder.md)
 
-Toto téma ukazuje, jak nakonfigurovat [kodér služby live Encoding Havision KB](https://www.haivision.com/products/kb-series/) kodér Odeslat datový proud s jednou přenosovou rychlostí do AMS kanály, které jsou povolené kódování v reálném čase. Další informace najdete v článku o [práci s kanály, které mají povolené kódování v reálném čase pomocí služby Azure Media Services](media-services-manage-live-encoder-enabled-channels.md).
+V tomto tématu se dozvíte, jak nakonfigurovat kodér kodéru [HAVISION KB](https://www.haivision.com/products/kb-series/) pro odesílání datových proudů s jednou přenosovou rychlostí do kanálů AMS, které mají povolené kódování v reálném čase. Další informace najdete v článku o [práci s kanály, které mají povolené kódování v reálném čase pomocí služby Azure Media Services](media-services-manage-live-encoder-enabled-channels.md).
 
 Tento kurz ukazuje, jak spravovat Azure Media Services (AMS) s nástrojem Azure Media Services Explorer (AMSE). Tento nástroj lze spustit pouze na počítač s Windows. Pokud jste v systému Mac nebo Linux, pomocí webu Azure portal k vytvoření [kanály](media-services-portal-creating-live-encoder-enabled-channel.md#create-a-channel) a [programy](media-services-portal-creating-live-encoder-enabled-channel.md).
 
 ## <a name="prerequisites"></a>Požadavky
-*   Přístup k kodér Haivision KB, Jihozápadní 5.01 nebo vyšší, s nebo vyšší.
+*   Přístup k kodéru Haivision KB, na kterém běží software SW verze 5.01 nebo vyšší.
 * [Vytvoření účtu Azure Media Services](media-services-portal-create-account.md)
 * Ujistěte se, je koncový bod streamování, spuštěná. Další informace najdete v tématu [spravovat koncové body streamování v účtu Media Services](media-services-portal-manage-streaming-endpoints.md)
 * Nainstalujte nejnovější verzi [AMSE](https://github.com/Azure/Azure-Media-Services-Explorer) nástroj.
@@ -54,54 +54,54 @@ Tento kurz ukazuje, jak spravovat Azure Media Services (AMS) s nástrojem Azure 
 > [!NOTE]
 > Kanál může trvat až 20 minut.
 
-## <a name="configure-the-haivision-kb-encoder"></a>Konfigurovat kodér Haivision KB
+## <a name="configure-the-haivision-kb-encoder"></a>Konfigurace kodéru Haivision KB
 V tomto kurzu se používají následující nastavení výstupu. Zbytek tohoto oddílu popisuje jednotlivé kroky konfigurace v podrobněji.
 
 Video:
--   Kodek: H.264
--   Profil: Vysoká (úroveň 4.0)
--   S přenosovou rychlostí: 5000 kb/s
--   Klíčový snímek: 2 sekundy (60 snímků)
+-   Kodek H. 264
+-   Profilu Vysoká (úroveň 4,0)
+-   Rychlostí 5000 KB/s
+-   Klíč 2 sekundy (60 snímků)
 -   Snímková frekvence: 30
 
 Audio:
--   Kodek: AAC (LC)
--   S přenosovou rychlostí: 192 kb/s
+-   Kodek AAC (LC)
+-   Rychlostí 192 KB/s
 -   Vzorkovací frekvence: 44,1 kHz
 
 ## <a name="configuration-steps"></a>Postup konfigurace
-1.  Přihlaste se k uživatelské rozhraní Haivision KB.
-2.  Klikněte na **tlačítko nabídky** v control centeru kanálu a vyberte **přidat kanálu**  
-    ![Snímek obrazovky 2017-08-14 na 9.15.09 AM](./media/media-services-configure-kb-live-encoder/step2.png)
-3.  Typ **název kanálu** v názvu pole a klikněte na tlačítko Další.  
-    ![Snímek obrazovky 2017-08-14 na 9.19.07 AM](./media/media-services-configure-kb-live-encoder/step3.png)
-4.  Vyberte **kanál vstupní zdroj** z **vstupní zdroj** rozevíracího seznamu a klikněte na tlačítko Další.
-    ![Snímek obrazovky 2017-08-14 na 9.20.44 AM](./media/media-services-configure-kb-live-encoder/step4.png)
-5.  Z **šablony Encoder** rozevíracího seznamu zvolte **H264 – 720-AAC-192** a klikněte na tlačítko Další.
-    ![Snímek obrazovky 2017-08-14 na 9.23.15 AM](./media/media-services-configure-kb-live-encoder/step5.png)
-6.  Z **vyberte nový výstup** rozevíracího seznamu zvolte **RTMP** a klikněte na tlačítko Další.  
-    ![Snímek obrazovky 2017-08-14 na 9.27.51 AM](./media/media-services-configure-kb-live-encoder/step6.png)
-7.  Z **výstupní kanál** okně naplnit informace o Azure stream. Vložit **RTMP** odkaz z nastavení počáteční kanál ve **Server** oblasti. V **název výstupního** oblasti zadejte název kanálu. V oblasti Stream název šablony použijte šablonu RTMPStreamName_ % video_bitrate % název datového proudu.
-    ![Snímek obrazovky 2017-08-14 na 9.33.17 AM](./media/media-services-configure-kb-live-encoder/step7.png)
-8.  Klikněte na tlačítko Další a pak klikněte na Hotovo.
-9.  Klikněte na tlačítko **tlačítko Přehrát** spuštění kanálu kodér.  
-    ![Haivision KB.png](./media/media-services-configure-kb-live-encoder/step9.png)
+1.  Přihlaste se k uživatelskému rozhraní Haivision KB.
+2.  Klikněte na **tlačítko nabídky** v centru řízení kanálů a vyberte **Přidat kanál** .  
+    ![Snímek obrazovky 2017-08-14 na adrese 9.15.09](./media/media-services-configure-kb-live-encoder/step2.png)
+3.  Do pole název zadejte **název kanálu** a klikněte na další.  
+    ![Snímek obrazovky 2017-08-14 na adrese 9.19.07](./media/media-services-configure-kb-live-encoder/step3.png)
+4.  V rozevíracím seznamu **vstupní zdroj** vyberte **zdroj vstupu kanálu** a klikněte na další.
+    ![Snímek obrazovky 2017-08-14 na adrese 9.20.44](./media/media-services-configure-kb-live-encoder/step4.png)
+5.  V rozevíracím seznamu **Šablona kodéru** vyberte **H264-720-AAC-192** a klikněte na další.
+    ![Snímek obrazovky 2017-08-14 na adrese 9.23.15](./media/media-services-configure-kb-live-encoder/step5.png)
+6.  V rozevíracím seznamu **vybrat nový výstup** zvolte **RTMP** a klikněte na další.  
+    ![Snímek obrazovky 2017-08-14 na adrese 9.27.51](./media/media-services-configure-kb-live-encoder/step6.png)
+7.  V okně **výstup kanálu** vyplňte informace o Azure streamu. Vložte odkaz **RTMP** z nastavení počátečního kanálu v oblasti **serveru** . V oblasti **Název výstupu** zadejte název kanálu. V oblasti šablona názvu datového proudu použijte k pojmenování datového proudu šablonu RTMPStreamName_% video_bitrate%.
+    ![Snímek obrazovky 2017-08-14 na adrese 9.33.17](./media/media-services-configure-kb-live-encoder/step7.png)
+8.  Klikněte na další a potom na Hotovo.
+9.  Kliknutím na **tlačítko Přehrát** spusťte kanál kodéru.  
+    ![Haivision KB. png](./media/media-services-configure-kb-live-encoder/step9.png)
 
 ## <a name="test-playback"></a>Přehrávání testů
-Přejděte na nástroj AMSE a klikněte pravým tlačítkem na kanál, který má být testována. Z nabídky najeďte myší přehrávání na verzi Preview a vyberte pomocí Azure Media Playeru.
+Přejděte na nástroj AMSE a klikněte pravým tlačítkem na kanál, který má být testována. V nabídce najeďte myší na přehrávání náhledu a vyberte možnost s Azure Media Player.
 
 Pokud datový proud se zobrazí v přehrávači, pak kodér správně nakonfigurovaný pro připojení k AMS.
 
-Pokud k chybě, kanál je potřeba resetovat a upravit nastavení kodéru. Najdete v článku řešení problémů s pokyny.
+Pokud k chybě, kanál je potřeba resetovat a upravit nastavení kodéru. Pokyny najdete v článku věnovaném řešení potíží.
 
 ## <a name="create-a-program"></a>Vytvoření programu
-1.  Jakmile přehrávání kanálu je potvrzen, vytvořte program. Na kartě živé nástroj AMSE klikněte pravým tlačítkem v rámci oblasti program a zvolte Vytvořit nový Program.
+1.  Jakmile přehrávání kanálu je potvrzen, vytvořte program. Na kartě živá v nástroji AMSE klikněte pravým tlačítkem myši v oblasti programu a vyberte možnost vytvořit nový program.
 [Haivision](./media/media-services-configure-kb-live-encoder/program.png)
-1.  Zadejte název programu a v případě potřeby upravte délka okna archivu, (kde je použit výchozí čtyři hodiny). Můžete také určit umístění úložiště nebo ponechte jako výchozí.
-2.  Políčko počáteční Program nyní.
-3.  Klikněte na vytvořit Program.
-4.  Jakmile program běží, potvrďte přehrávání kliknutím pravým tlačítkem myši program a přejdete k přehrávání programech a následným výběrem pomocí Azure Media Playeru.
-5.  Až potvrdí, klikněte pravým tlačítkem na program znovu a vyberte Kopírovat výstupní adresy URL do schránky (nebo tyto informace načíst informace o programu a možnosti nastavení v nabídce).
+1.  Pojmenujte program a v případě potřeby upravte délku okna archivu (výchozí nastavení je 4 hodiny). Můžete také určit umístění úložiště nebo ponechte jako výchozí.
+2.  Zaškrtněte políčko Spustit program nyní.
+3.  Klikněte na vytvořit program.
+4.  Po spuštění programu potvrďte přehrávání tak, že kliknete pravým tlačítkem myši na program a přejdete na přehrávání těchto programů a pak vyberete Azure Media Player.
+5.  Po potvrzení klikněte znovu pravým tlačítkem myši na program a vyberte možnost Kopírovat výstupní adresu URL do schránky (nebo z nabídky informace o programu a nastavení načtěte tyto informace z nabídky).
 
 Datový proud je teď připravený k součástí přehrávač nebo distribuované na cílovou skupinou pro živé zobrazení.
 

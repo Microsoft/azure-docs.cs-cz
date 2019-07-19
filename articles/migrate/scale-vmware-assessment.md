@@ -1,115 +1,112 @@
 ---
-title: Vyhodnocení velký počet virtuálních počítačů VMware pro migraci do Azure pomocí služby Azure Migrate | Dokumentace Microsoftu
-description: Popisuje, jak posoudit velký počet virtuálních počítačů VMware pro migraci do Azure pomocí služby Azure Migrate.
+title: Vyhodnoťte velký počet virtuálních počítačů VMware pro migraci do Azure pomocí Azure Migrate | Microsoft Docs
+description: Popisuje, jak vyhodnotit velký počet virtuálních počítačů VMware pro migraci do Azure pomocí služby Azure Migrate.
 author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 07/10/2019
-ms.author: raynew
-ms.openlocfilehash: 6102a1c59be3627b95dc1e0cb1d1d712d5832d2f
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.date: 07/12/2019
+ms.author: hamusa
+ms.openlocfilehash: c9c57a07100f2ea6db86408826bf74d05c8df5aa
+ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67811333"
+ms.lasthandoff: 07/13/2019
+ms.locfileid: "67868686"
 ---
-# <a name="assess-large-numbers-of-vmware-vms-for-migration-to-azure"></a>Vyhodnocení velký počet virtuálních počítačů VMware pro migraci do Azure
+# <a name="assess-large-numbers-of-vmware-vms-for-migration-to-azure"></a>Vyhodnocení velkého počtu virtuálních počítačů VMware pro migraci do Azure
 
 
-Tento článek popisuje, jak k vyhodnocení velký (1 000 35 000) z místních virtuálních počítačů VMware pro migraci do Azure pomocí nástroje Azure Migrate Server Assessment
+Tento článek popisuje, jak vyhodnotit Velká čísla (1000 35000) místních virtuálních počítačů VMware pro migraci do Azure pomocí nástroje pro vyhodnocení serveru Azure Migrate.
 
-[Azure Migrate](migrate-services-overview.md) představuje Centrum nástrojů, které vám umožní zjišťovat, posuzovat a migrovat aplikace, infrastruktury a úlohy Microsoft Azure. Centra zahrnuje nástroje Azure Migrate a nezávislé výrobce softwaru třetích stran výrobce (ISV) nabídky. 
+[Azure Migrate](migrate-services-overview.md) poskytuje centrum nástrojů, které vám pomůžou zjišťovat, vyhodnocovat a migrovat aplikace, infrastrukturu a úlohy do Microsoft Azure. Centrum zahrnuje nástroje pro Azure Migrate a nabídky nezávislého výrobce softwaru (ISV) od jiných výrobců. 
 
 V tomto článku získáte informace o těchto tématech:
 > [!div class="checklist"]
-> * Naplánovat vyhodnocování ve velkém měřítku.
-> * Nakonfigurujte oprávnění Azure a příprava VMware na posouzení.
-> * Vytvoření projektu Azure Migrate a vytvořit posouzení.
-> * Při plánování migrace, projděte si hodnocení.
+> * Naplánujte hodnocení ve velkém měřítku.
+> * Nakonfigurujte oprávnění Azure a připravte VMware na posouzení.
+> * Vytvořte projekt Azure Migrate a vytvořte posouzení.
+> * Projděte si hodnocení při plánování migrace.
 
 
 > [!NOTE]
-> Pokud chcete vyzkoušet testování konceptu k vyhodnocení několika virtuálních počítačů před posouzení ve velkém měřítku, postupujte podle našich [série kurzů](tutorial-prepare-vmware.md)
+> Pokud si chcete vyzkoušet zkušební verzi, abyste si vyhodnotili několik virtuálních počítačů před vyhodnocením škálování, postupujte podle našich [kurzů](tutorial-prepare-vmware.md) .
 
-## <a name="plan-for-assessment"></a>Plán pro hodnocení
+## <a name="plan-for-assessment"></a>Plánování posouzení
 
-Při plánování pro posouzení velký počet virtuálních počítačů VMware, existuje několik věcí zvážit:
+Při plánování posouzení velkého počtu virtuálních počítačů VMware je potřeba zvážit několik věcí:
 
-- **Plánování projektů Azure Migrate**: Zjistěte, jak nasadit Azure Migrate projekty. Například pokud vaše datová centra jsou v různých zeměpisných oblastech nebo potřebujete ukládat zjišťování, vyhodnocení nebo metadata související s migrací v jiném datovém typu geography, můžete potřebovat více projektů. 
-- **Plán zařízení**: Azure Migrate ho použije místní Azure Migrate zařízení, nasazená jako virtuální počítač VMware, se průběžně zjistit virtuální počítače. Zařízení sleduje změny v prostředí jako je například přidávání virtuálních počítačů, disků nebo síťových adaptérů. Rovněž odesílá data výkon a metadata o nich do Azure. Budete muset zjistit, kolik zařízení je třeba nasadit.
-- **Plánování účty pro zjišťování**: Zařízení Azure Migrate používá účet s přístupem k serveru vCenter pro zjištění virtuálních počítačů pro vyhodnocení a migraci. Pokud jste zjišťování víc než 10 000 virtuálních počítačů, nastavte víc účtů.
+- **Plánování Azure Migrate projektů**: Zjistěte, jak nasadit Azure Migrate projekty. Například pokud jsou datová centra v různých geografických oblastech nebo potřebujete ukládat metadata pro zjišťování, hodnocení nebo migraci v různých zeměpisných oblastech, možná budete potřebovat více projektů. 
+- **Zařízení pro plánování**: Azure Migrate používá místní zařízení Azure Migrate nasazené jako virtuální počítač VMware pro průběžné zjišťování virtuálních počítačů. Zařízení monitoruje změny prostředí, jako je například přidání virtuálních počítačů, disků nebo síťových adaptérů. Do Azure taky odesílají metadata a data o výkonu. Potřebujete zjistit, kolik zařízení potřebujete nasadit.
+- **Plánování účtů pro zjišťování**: Zařízení Azure Migrate používá účet s přístupem k vCenter Server, aby bylo možné zjistit virtuální počítače pro účely posouzení a migrace. Pokud zjišťujete více než 10 000 virtuálních počítačů, nastavte více účtů.
 
 
-## <a name="planning-limits"></a>Plánování omezení
+## <a name="planning-limits"></a>Omezení plánování
  
-Použijte výše uvedené v této tabulce pro plánování.
+Pro plánování použijte omezení shrnutá v této tabulce.
 
 **Plánování** | **Omezení**
 --- | --- 
-**Projekty Azure Migrate** | Posouzení až 35 000 virtuálních počítačů v projektu.
-**Zařízení Azure Migrate** | Zařízení lze připojit pouze k jedné systému vCenter Server.<br/><br/> Zařízení lze přidružit pouze pomocí jednoho projektu Azure Migrate.<br/> Zařízení možné vyhledat až 10 000 virtuálních počítačů na vCenter serveru.
-**Vyhodnocení Azure Migrate** | Můžete posoudit až 35 000 virtuálních počítačů v rámci jednoho interního hodnocení.
+**Azure Migrate projekty** | Vyhodnoťte až 35 000 virtuálních počítačů v projektu.
+**Zařízení Azure Migrate** | Zařízení se může připojit jenom k jednomu vCenter Server.<br/><br/> Zařízení může být přidruženo pouze k jednomu Azure Migrate projektu.<br/> Zařízení může na vCenter Server zjistit až 10 000 virtuálních počítačů.
+**Posouzení Azure Migrate** | V jednom posouzení můžete vyhodnotit až 35 000 virtuálních počítačů.
 
-Pomocí těchto omezení na paměti tady jsou některá ukázková nasazení:
+Tato omezení jsou uvedená v některých ukázkových nasazeních:
 
 
 **Server vCenter** | **Virtuální počítače na serveru** | **Doporučení** | **Akce**
 ---|---|---
-Jeden | < 10,000 | Jeden projekt Azure Migrate.<br/> Jeden zařízení.<br/> Jeden účet vCenter pro zjišťování. | Nastavení zařízení, připojení k vCenter serveru pomocí účtu.
-Jeden | > 10,000 | Jeden projekt Azure Migrate.<br/> Více zařízení.<br/> Více účtů vCenter. | Nastavení zařízení pro každých 10 000 virtuálních počítačů.<br/><br/> Nastavení účtů vCenter a dělení inventář, abyste omezili přístup k účtu na méně než 10 000 virtuálních počítačů.<br/> Každé zařízení připojte k vCenter serveru pomocí účtu.<br/> Analýzu závislostí mezi počítači, které se zjišťují pomocí různých zařízení.
-Několik | < 10,000 |  Jeden projekt Azure Migrate.<br/> Více zařízení.<br/> Jeden účet vCenter pro zjišťování. | Nastavení zařízení, připojení k vCenter serveru pomocí účtu.<br/> Analýzu závislostí mezi počítači, které se zjišťují pomocí různých zařízení.
-Několik | > 10,000 | Jeden projekt Azure Migrate.<br/> Více zařízení.<br/> Více účtů vCenter. | Pokud zjišťování serveru vCenter < 10 000 virtuálních počítačů, nastavit zařízení pro každou vCenter Server.<br/><br/> Pokud zjišťování serveru vCenter > 10 000 virtuálních počítačů, nastavit zařízení pro každých 10 000 virtuálních počítačů.<br/> Nastavení účtů vCenter a dělení inventář, abyste omezili přístup k účtu na méně než 10 000 virtuálních počítačů.<br/> Každé zařízení připojte k vCenter serveru pomocí účtu.<br/> Analýzu závislostí mezi počítači, které se zjišťují pomocí různých zařízení.
+hodinu | < 10 000 | Jeden Azure Migrate projekt.<br/> Jedno zařízení.<br/> Jeden účet vCenter pro zjišťování. | Nastavte zařízení, připojte se k vCenter Server pomocí účtu.
+hodinu | > 10 000 | Jeden Azure Migrate projekt.<br/> Více zařízení.<br/> Několik účtů vCenter. | Nastavte zařízení pro každý virtuální počítač 10 000.<br/><br/> Nastavte účty vCenter a vydělte inventář, abyste omezili přístup k účtu na méně než 10 000 virtuálních počítačů.<br/> Připojte každé zařízení k vCenter serveru pomocí účtu.<br/> Můžete analyzovat závislosti mezi počítači, které jsou zjištěny s různými zařízeními.
+Několik | < 10 000 |  Jeden Azure Migrate projekt.<br/> Více zařízení.<br/> Jeden účet vCenter pro zjišťování. | Nastavte zařízení, připojte se k vCenter Server pomocí účtu.<br/> Můžete analyzovat závislosti mezi počítači, které jsou zjištěny s různými zařízeními.
+Několik | > 10 000 | Jeden Azure Migrate projekt.<br/> Více zařízení.<br/> Několik účtů vCenter. | Pokud vCenter Server Discovery < 10 000 virtuálních počítačů, nastavte zařízení pro jednotlivé vCenter Server.<br/><br/> Pokud vCenter Server Discovery > 10 000 virtuálních počítačů, nastavte zařízení pro každých 10 000 virtuálních počítačů.<br/> Nastavte účty vCenter a vydělte inventář, abyste omezili přístup k účtu na méně než 10 000 virtuálních počítačů.<br/> Připojte každé zařízení k vCenter serveru pomocí účtu.<br/> Můžete analyzovat závislosti mezi počítači, které jsou zjištěny s různými zařízeními.
 
 
-## <a name="plan-discovery-in-a-multi-tenant-environment"></a>Plánování zjišťování v prostředí s více tenanty
+## <a name="plan-discovery-in-a-multi-tenant-environment"></a>Plánování zjišťování v prostředí s více klienty
 
-Pokud máte v plánu pro prostředí s více tenanty, můžete omezit rozsah zjišťování serveru vCenter.
+Pokud plánujete pro více tenantů prostředí, můžete určit rozsah zjišťování vCenter Server.
 
-- Můžete nastavit obor zjišťování zařízení k serveru vCenter Server datacenter, clusteru nebo složce clustery, hostitele nebo složky hostitele nebo jednotlivé virtuální počítače.
-- Pokud vaše prostředí se sdílí mezi tenanty a nechcete zjišťovat každý klient samostatně, můžete omezit rozsah přístup k serveru vCenter účtu, který zařízení používá pro zjišťování. 
-    - Pokud klienti sdílejí hostitele, vytvořte pro virtuální počítače, které patří ke konkrétnímu tenantu. přihlašovací údaje s přístupem jen pro čtení. 
-    - Pomocí těchto přihlašovacích údajů pro Azure Migrate zjišťování zařízení.
-    - Vyhodnocení Azure Migrate nelze zjistit virtuální počítače, pokud má účet vCenter přístupu na úrovni složky serveru vCenter virtuálního počítače. Jsou podporovány složky hostitelů a clusterů. 
+- Rozsah zjišťování zařízení můžete nastavit vCenter Server datacentrech, clusterech nebo složkách clusterů, hostitelů nebo složek hostitelů nebo jednotlivých virtuálních počítačů.
+- Pokud je vaše prostředí sdíleno mezi klienty a chcete zjistit jednotlivé klienty samostatně, můžete nastavit rozsah přístupu k účtu vCenter, který zařízení používá ke zjišťování. 
+    - Můžete chtít obor podle složek virtuálních počítačů, pokud klienti sdílejí hostitele. Azure Migrate nemůže zjistit virtuální počítače, pokud má účet vCenter udělen přístup na úrovni složky virtuálního počítače vCenter. Pokud chcete určit obor zjišťování pomocí složek virtuálních počítačů, můžete to provést tak, že účet vCenter má přiřazený přístup jen pro čtení na úrovni virtuálního počítače. Další informace o zjišťování oboru [najdete tady](tutorial-assess-vmware.md#scoping-discovery).
 
 ## <a name="prepare-for-assessment"></a>Příprava na posouzení
 
-Příprava Azure i z VMware na serveru posouzení. 
+Připravte Azure a VMware pro vyhodnocování serveru. 
 
-1. Ověřte [VMware podporují požadavky a omezení](migrate-support-matrix-vmware.md).
-2. Nastavení oprávnění k vašemu účtu Azure k interakci s Azure Migrate.
-3. Příprava VMware na posouzení.
+1. Ověřte [požadavky a omezení podpory VMware](migrate-support-matrix-vmware.md).
+2. Nastavte oprávnění pro účet Azure pro interakci s Azure Migrate.
+3. Připravte VMware na posouzení.
 
-
-Postupujte podle pokynů v [v tomto kurzu](tutorial-prepare-vmware.md) k nakonfigurování těchto nastavení.
+Pokud chcete nakonfigurovat tato nastavení, postupujte podle pokynů v [tomto kurzu](tutorial-prepare-vmware.md) .
 
 
 ## <a name="create-a-project"></a>Vytvoření projektu
 
-V souladu s požadavků na plánování postupujte takto:
+V souladu s požadavky na plánování udělejte toto:
 
-1. Vytvoření Azure Migrate projektů.
-2. K projektům přidáte Azure Migrate Server Assessment tool.
+1. Vytvořte Azure Migrate projekty.
+2. Přidejte do projektů Nástroj pro vyhodnocení Azure Migrate serveru.
 
 [Víc se uč](how-to-add-tool-first-time.md)
 
 ## <a name="create-and-review-an-assessment"></a>Vytvoření a kontrola posouzení
 
 1. Vytvořte posouzení pro virtuální počítače VMware.
-1. Kontrola posouzení v rámci přípravy pro plánování migrace.
+1. Projděte si posouzení v části Příprava na plánování migrace.
 
 
-Postupujte podle pokynů v [v tomto kurzu](tutorial-assess-vmware.md) k nakonfigurování těchto nastavení.
+Pokud chcete nakonfigurovat tato nastavení, postupujte podle pokynů v [tomto kurzu](tutorial-assess-vmware.md) .
     
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto článku:
  
 > [!div class="checklist"] 
-> * Plánované škálování Azure Migrate posouzení pro virtuální počítače VMware
-> * Azure a VMware pro posouzení
-> * Vytvoří projekt Azure Migrate a spuštění posouzení
-> * Zkontrolovat, jestli posouzení v rámci přípravy na migraci.
+> * Plánováno pro škálování Azure Migrate posouzení pro virtuální počítače VMware
+> * Připravené Azure a VMware pro posouzení
+> * Vytvořil se Azure Migrate projekt a běžela posouzení.
+> * Revidována posouzení při přípravě na migraci.
 
-Nyní [zjistěte, jak](concepts-assessment-calculation.md) se posouzení počítá a jak [upravit posouzení](how-to-modify-assessment.md).
+Nyní se [naučíte](concepts-assessment-calculation.md) počítat vyhodnocení a postup [Úpravy hodnocení](how-to-modify-assessment.md).

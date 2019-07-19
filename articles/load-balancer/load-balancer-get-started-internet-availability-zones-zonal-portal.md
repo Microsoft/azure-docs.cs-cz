@@ -1,10 +1,10 @@
 ---
-title: Vytvoření Load Balanceru s oblastmi front-endu – Azure portal
+title: Vytvoření Load Balancer s oblastmi front-endu-Azure Portal
 titlesuffix: Azure Load Balancer
-description: Zjistěte, jak vytvořit Load balanceru úrovně Standard s oblastmi front-endu pomocí webu Azure portal
+description: Naučte se vytvářet Standard Load Balancer s oblastmi front-endu s Azure Portal
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: asudbring
 manager: twooley
 ms.service: load-balancer
 ms.custom: seodec18
@@ -13,17 +13,17 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2018
-ms.author: kumud
-ms.openlocfilehash: c81ff5ea330c4c0ba26a92a3b5399cfa961e4b2b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: allensu
+ms.openlocfilehash: 9a260c267febb3dc851fe0a8ca8a8e351124116b
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60753500"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68275137"
 ---
-#  <a name="create-a-standard-load-balancer-with-zonal-frontend-using-azure-portal"></a>Vytvoření Load Balanceru úrovně Standard s oblastmi front-endu pomocí webu Azure portal
+#  <a name="create-a-standard-load-balancer-with-zonal-frontend-using-azure-portal"></a>Vytvoření Standard Load Balancer s použitím Zona front-endu pomocí Azure Portal
 
-Tento článek popisuje postup vytvořením veřejné [Load balanceru úrovně Standard](https://aka.ms/azureloadbalancerstandard) s konfigurací IP adresy front-endu oblastmi. Vysvětlení fungování zón dostupnosti s Load balanceru úrovně Standard najdete v tématu [Load balanceru úrovně Standard a dostupnost zóny](load-balancer-standard-availability-zones.md). 
+Tento článek vás provede vytvořením veřejné [Standard Load Balancer](https://aka.ms/azureloadbalancerstandard) s konfigurací IP adresy ve front-endu. Vysvětlení fungování zón dostupnosti s Load balanceru úrovně Standard najdete v tématu [Load balanceru úrovně Standard a dostupnost zóny](load-balancer-standard-availability-zones.md). 
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
@@ -49,10 +49,10 @@ Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 1. Pro **skupiny prostředků**, klikněte na tlačítko **vytvořit nový**a pak zadejte **myResourceGroupZLB** jako název skupiny prostředků.
 1. Pro **umístění**vyberte **západní Evropa**a potom klikněte na tlačítko **OK**. Nástroj pro vyrovnávání zatížení se pak začne nasazovat. Úspěšné dokončení nasazení trvá několik minut.
 
-    ![Vytvoření zónově redundantní Load balanceru úrovně Standard pomocí webu Azure portal](./media/load-balancer-get-started-internet-availability-zones-zonal-portal/load-balancer-zonal-frontend.png)
+    ![Vytvoření Standard Load Balancer redundantních v zóně s Azure Portal](./media/load-balancer-get-started-internet-availability-zones-zonal-portal/load-balancer-zonal-frontend.png)
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 - Další informace o [Load balanceru úrovně Standard a dostupnost zóny](load-balancer-standard-availability-zones.md).
 
 

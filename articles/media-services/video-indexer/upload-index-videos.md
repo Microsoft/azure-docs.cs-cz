@@ -10,35 +10,35 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: juliako
-ms.openlocfilehash: e92086ca18887b9b2c2362e97d855c33834b83bb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6e62eb862cf6d6760ca67b9e948a724b16303e89
+ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65799194"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68305624"
 ---
 # <a name="upload-and-index-your-videos"></a>Nahrání videí na server a jejich indexování  
 
-Při nahrávání videí pomocí služby Video Indexer API, máte následující možnosti nahrání: 
+Při nahrávání videí pomocí rozhraní Video Indexer API máte následující možnosti nahrávání: 
 
 * Nahrání videa na server z adresy URL (upřednostňovaná možnost)
-* Odešlete soubor videa jako bajtové pole v textu požadavku
-* Použijte existující prostředek služby Azure Media Services tím, že poskytuje [ID assetu](https://docs.microsoft.com/azure/media-services/latest/assets-concept) (podporováno pouze placené účty).
+* Odeslat videosoubor jako pole bajtů v textu žádosti
+* Použijte existující Asset Azure Media Services tím, že zadáte [ID assetu](https://docs.microsoft.com/azure/media-services/latest/assets-concept) (podporované jenom u placených účtů).
 
 Tento článek ukazuje, jak používat API [Upload video](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) (Nahrát video) k nahrání videí na server a jejich indexování na základě adresy URL. Vzorový kód v článku obsahuje okomentovaný kód, který ukazuje, jak nahrát pole bajtů. <br/>Článek se také zabývá některými parametry, které můžete v API nastavit, abyste proces a výstup API změnili.
 
-Jakmile je Nahraná videa, Video Indexer, volitelně kóduje video (popsané v článku). Při vytváření účtu Video Indexeru můžete zvolit účet bezplatné zkušební verze (ve kterém získáte určitý počet minut indexování zdarma) nebo placenou variantu (ve které nejste omezení kvótou). V bezplatné zkušební verzi Video Indexer poskytuje až 600 minut bezplatného indexování pro uživatele webu a až 2400 minut bezplatného indexování pro uživatele rozhraní API. S placenou variantu, vytvoříte účet služby Video Indexer, který je [připojené k vašemu předplatnému Azure a účet Azure Media Services](connect-to-azure.md). Platíte za indexované minuty a také poplatky související s účtem Media. 
+Po nahrání videa Video Indexer případně zakódovat video (popsané v článku). Při vytváření účtu Video Indexeru můžete zvolit účet bezplatné zkušební verze (ve kterém získáte určitý počet minut indexování zdarma) nebo placenou variantu (ve které nejste omezení kvótou). V bezplatné zkušební verzi Video Indexer poskytuje až 600 minut bezplatného indexování pro uživatele webu a až 2400 minut bezplatného indexování pro uživatele rozhraní API. Pomocí placené možnosti vytvoříte účet Video Indexer, který je [připojený k vašemu předplatnému Azure a účet Azure Media Services](connect-to-azure.md). Platíte za indexované minuty a také poplatky související s účtem Media. 
 
 ## <a name="uploading-considerations"></a>Aspekty nahrávání videí na server
 
 - Při nahrávání videa na server podle zadané adresy URL (upřednostňovaná možnost) musí být koncový bod zabezpečený pomocí protokolu TLS 1.2 (nebo vyššího).
-- Velikost pro odeslání pomocí možnosti adresa URL je omezená na 30GB
-- Délka adresy URL žádosti je omezená na 2 048 znaků
-- Velikost pro odeslání s možností bajtové pole je omezená na 2GB
-- Pole bajtů možnost vyprší po 30 min
+- Velikost nahrávání s možností URL je omezená na 30 GB
+- Délka adresy URL žádosti je omezená na 2048 znaků.
+- Velikost nahrávání s možností bajtového pole je omezená na 2 GB.
+- Časový limit možnosti bajtového pole vyprší po 30 minutách.
 - Adresa URL zadaná v parametru `videoURL` musí být zakódovaná.
-- Indexování prostředků Media Services má stejné omezení jako indexování z adresy URL
-- Video Indexer má limit maximální dobu trvání 4 hodiny pro jeden soubor
+- Indexace Media Services prostředků má stejné omezení jako indexování z adresy URL.
+- Video Indexer má pro jeden soubor maximální dobu trvání 4 hodiny.
 
 > [!Tip]
 > Doporučujeme používat rozhraní .NET Framework verze 4.6.2 nebo novější, protože starší rozhraní .NET Framework nemají ve výchozím nastavení protokol TLS 1.2.
@@ -55,32 +55,32 @@ Tento parametr umožňuje určit ID, které bude s videem spojené. ID můžete 
 
 ### <a name="callbackurl"></a>callbackUrl
 
-Adresa URL, která se používá k upozornění zákazníků (pomocí požadavku POST) o následujících událostech:
+Adresa URL, která se používá k upozornění na zákazníka (pomocí žádosti POST) o následujících událostech:
 
-- Indexování změnu stavu: 
-    - Vlastnosti:    
+- Změna stavu indexování: 
+    - Vlastnosti    
     
         |Name|Popis|
         |---|---|
         |id|ID videa|
         |state|Stav videa|  
-    - Příklad: https://test.com/notifyme?projectName=MyProject&id=1234abcd&state=Processed
-- Osobu identifikovanou ve videu:
+    - Příklad: https:\//test.com/notifyme?ProjectName=MyProject&ID=1234abcd&State=processed
+- Osoba identifikovaná ve videu:
   - Vlastnosti
     
-      |Název|Popis|
+      |Name|Popis|
       |---|---|
       |id| ID videa|
-      |funkci faceId|Face ID, které se zobrazí v rejstřík videí|
-      |knownPersonId|ID osoby, které jsou jedinečné v rámci modelu pro rozpoznávání tváře|
-      |PersonName|Jméno osoby|
+      |faceId|ID obličeje, které se zobrazí v indexu videa|
+      |knownPersonId|Jedinečné ID osoby v rámci modelu obličeje|
+      |personName|Jméno osoby|
         
-    - Příklad: https://test.com/notifyme?projectName=MyProject&id=1234abcd&faceid=12&knownPersonId=CCA84350-89B7-4262-861C-3CAC796542A5&personName=Inigo_Montoya 
+    - Příklad: https:\//test.com/notifyme?ProjectName=MyProject&ID=1234abcd&FaceID=12&knownPersonId=CCA84350-89B7-4262-861C-3CAC796542A5&personName=Inigo_Montoya 
 
 #### <a name="notes"></a>Poznámky
 
-- Video Indexer vrátí všechny existující parametry zadané v původní adresu URL.
-- Zadaná adresa URL musí kódováním.
+- Video Indexer vrátí všechny existující parametry zadané v původní adrese URL.
+- Zadaná adresa URL musí být kódovaná.
 
 ### <a name="indexingpreset"></a>indexingPreset
 
@@ -92,11 +92,11 @@ Tento parametr použijte, pokud nezpracované nebo externí záznamy obsahují �
 
 Cena závisí na vybrané možnosti indexování.  
 
-### <a name="priority"></a>priorita
+### <a name="priority"></a>priority
 
-Videa se indexují modulem Video Indexer podle jejich priority. Použití **priority** parametr k určení priority indexu. Platné jsou následující hodnoty: **Nízká**, **normální** (výchozí), a **vysoké**.
+Videa se indexují Video Indexer podle jejich priority. Pro určení priority indexu použijte parametr **priority** . Platné jsou následující hodnoty: **Nízká**, **normální** (výchozí) a **Vysoká**.
 
-**Priorita** parametr je podporován pouze pro placené účty.
+Parametr **priority** se podporuje jenom pro placené účty.
 
 ### <a name="streamingpreset"></a>streamingPreset
 
@@ -289,6 +289,6 @@ Operace Upload může vrátit kódy stavu uvedené v následující tabulce.
 |400|VIDEO_ALREADY_IN_PROGRESS|V daném účtu už probíhá zpracování stejného videa.|
 |400|VIDEO_ALREADY_FAILED|V daném účtu se méně než před 2 hodinami nepodařilo zpracovat stejné video. Klienti rozhraní API by měli před dalším nahráním videa vyčkat minimálně 2 hodiny.|
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-[Prozkoumání výstupu funkce Video Indexer pro Azure vytvořené metodou rozhraní API](video-indexer-output-json-v2.md)
+[Projděte si výstup Azure Video Indexer vytvořený pomocí rozhraní API](video-indexer-output-json-v2.md)

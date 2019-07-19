@@ -1,10 +1,10 @@
 ---
-title: Nasazení přístupem k Internetu – nástroj pro vyrovnávání zatížení s protokolem IPv6 – šablony Azure
+title: Nasazení internetového nástroje pro vyrovnávání zatížení pomocí šablony IPv6 – Azure
 titlesuffix: Azure Load Balancer
-description: Jak nasadit podpory protokolu IPv6 pro Azure Load Balancer a virtuálních počítačů s vyrovnáváním zatížení.
+description: Nasazení podpory protokolu IPv6 pro Azure Load Balancer a virtuálních počítačů s vyrovnáváním zatížení.
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: asudbring
 keywords: protokol IPv6, nástroje pro vyrovnávání zatížení azure, duálním zásobníkem, veřejné IP adresy, nativní protokol ipv6, mobilní zařízení, iot
 ms.service: load-balancer
 ms.devlang: na
@@ -13,15 +13,15 @@ ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
-ms.author: kumud
-ms.openlocfilehash: 4a8c7309a07238ef3410e42c3d631ad525f023cc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: allensu
+ms.openlocfilehash: 4286879dc53cc835532c7a8243eaf88813545265
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61216737"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68275001"
 ---
-# <a name="deploy-an-internet-facing-load-balancer-solution-with-ipv6-using-a-template"></a>Nasazení řešení ve nástroje pro vyrovnávání zatížení přístupem k Internetu s protokolem IPv6 pomocí šablony
+# <a name="deploy-an-internet-facing-load-balancer-solution-with-ipv6-using-a-template"></a>Nasazení řešení internetového vyrovnávání zatížení s protokolem IPv6 pomocí šablony
 
 > [!div class="op_single_selector"]
 > * [PowerShell](load-balancer-ipv6-internet-ps.md)
@@ -34,106 +34,106 @@ Azure Load Balancer je nástroj pro vyrovnávání zatížení úrovně 4 (TCP, 
 
 ## <a name="example-deployment-scenario"></a>Příklad scénáře nasazení
 
-Následující diagram znázorňuje řešení vyrovnávání zatížení nasazení pomocí šablony příklad popsaných v tomto článku.
+Následující diagram znázorňuje nasazení řešení vyrovnávání zatížení pomocí ukázkové šablony popsané v tomto článku.
 
 ![Scénář nástroje pro vyrovnávání zatížení](./media/load-balancer-ipv6-internet-template/lb-ipv6-scenario.png)
 
 V tomto scénáři vytvoříte následující prostředky Azure:
 
-* Rozhraní virtuální sítě pro každý virtuální počítač s protokoly IPv4 a IPv6 adresy přiřazené
-* Vyrovnávání zatížení přístupem k Internetu s IPv4 a IPv6 veřejnou IP adresu
-* Dvě pravidla vyrovnávání přiřadit privátní koncových bodů veřejných virtuálních IP adres zatížení
-* Skupinu dostupnosti, která obsahuje dva virtuální počítače
-* Dva virtuální počítače (VM)
+* Virtuální síťové rozhraní pro každý virtuální počítač s přiřazenými adresami IPv4 i IPv6
+* Internetový Load Balancer s IPv4 a veřejnou IP adresou IPv6
+* Dvě pravidla vyrovnávání zatížení pro mapování veřejných virtuálních IP adres na privátní koncové body
+* Skupina dostupnosti, která obsahuje dva virtuální počítače
+* Dva virtuální počítače
 
-## <a name="deploying-the-template-using-the-azure-portal"></a>Nasazení pomocí webu Azure portal
+## <a name="deploying-the-template-using-the-azure-portal"></a>Nasazení šablony pomocí Azure Portal
 
-Tento článek odkazuje na šablonu, která je publikovaná v [šablony pro rychlý start Azure](https://azure.microsoft.com/documentation/templates/201-load-balancer-ipv6-create/) galerie. Můžete šablonu stáhnout z galerie, nebo spusťte nasazení v Azure přímo z galerie. Tento článek předpokládá, že jste si stáhli šablonu do místního počítače.
+Tento článek odkazuje na šablonu, která je publikovaná v galerii [šablon Azure pro rychlý Start](https://azure.microsoft.com/documentation/templates/201-load-balancer-ipv6-create/) . Šablonu si můžete stáhnout z Galerie nebo spustit nasazení v Azure přímo z galerie. V tomto článku se předpokládá, že jste stáhli šablonu do svého místního počítače.
 
-1. Otevřete na webu Azure portal a přihlaste se pomocí účtu, který má oprávnění k vytvoření virtuálních počítačů a síťových prostředků v rámci předplatného Azure. Pokud používáte existujících prostředků, účet musí oprávnění k vytvoření skupiny prostředků a účtu úložiště.
-2. Klikněte na tlačítko "+ nový" v nabídce a zadejte "Šablona" do vyhledávacího pole. Ve výsledcích hledání vyberte "Šablony nasazení".
+1. Otevřete Azure Portal a přihlaste se pomocí účtu, který má oprávnění k vytváření virtuálních počítačů a síťových prostředků v rámci předplatného Azure. Kromě toho, pokud nepoužíváte stávající prostředky, účet potřebuje oprávnění k vytvoření skupiny prostředků a účtu úložiště.
+2. V nabídce klikněte na + nový a potom do vyhledávacího pole zadejte Template. Ve výsledcích hledání vyberte "Template deployment".
 
-    ![lb-ipv6-portal-step2](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step2.png)
+    ![9,1 – IPv6-portál – STEP2](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step2.png)
 
-3. Vše v okně klikněte na tlačítko "Šablony nasazení."
+3. V okně vše klikněte na Template deployment.
 
     ![lb-ipv6-portal-step3](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step3.png)
 
-4. Klikněte na možnost "Vytvořit".
+4. Klikněte na vytvořit.
 
-    ![lb-ipv6-portal-step4](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step4.png)
+    ![9,1 – IPv6-portál – step4](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step4.png)
 
-5. Klikněte na tlačítko "Upravit šablonu." Odstraňte existující obsah a kopírování a vkládání v celý obsah souboru šablony (chcete zahrnout spuštění a ukončení {}) a pak klikněte na možnost "Uložit."
+5. Klikněte na Upravit šablonu. Odstraňte existující obsah a zkopírujte nebo vložte do celého obsahu souboru šablony (aby zahrnoval začátek a konec {}) a pak klikněte na Uložit.
 
     > [!NOTE]
-    > Pokud používáte Microsoft Internet Explorer, můžete vložit zobrazí dialogové okno s výzvou k povolení přístupu do schránky Windows. Klikněte na možnost "Povolit přístup."
+    > Pokud používáte aplikaci Microsoft Internet Explorer, při vložení se zobrazí dialogové okno s výzvou k povolení přístupu ke schránce systému Windows. Klikněte na možnost "udělit přístup".
 
     ![lb-ipv6-portal-step5](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step5.png)
 
-6. Klikněte na tlačítko "Upravit parametry." V okně Parametry zadejte hodnoty podle pokynů v oddílu parametry šablony a pak klikněte na "Save (Uložit) zavřete okno parametry. V okně Vlastní nasazení vyberte své předplatné, existující skupinu prostředků nebo vytvořit novou. Pokud vytvoříte skupinu prostředků, vyberte umístění pro skupinu prostředků. Klepnutím na tlačítko **právní podmínky**, pak klikněte na tlačítko **nákupní** pro právní podmínky. Azure zahájí nasazení prostředků. Trvá několik minut, do které prostředky nasadíte.
+6. Klikněte na upravit parametry. V okně Parametry zadejte hodnoty podle pokynů v části parametry šablony a potom kliknutím na Uložit zavřete okno parametry. V okně vlastní nasazení vyberte vaše předplatné, existující skupinu prostředků nebo vytvořte jednu z nich. Pokud vytváříte skupinu prostředků, vyberte umístění pro skupinu prostředků. V dalším kroku klikněte na **právní předpisy**a pak na **koupit** pro zákonné smlouvy. Azure začíná nasazovat prostředky. Nasazení všech prostředků trvá několik minut.
 
-    ![lb-ipv6-portal-step6](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step6.png)
+    ![9,1 – IPv6-portál – step6](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step6.png)
 
-    Další informace o těchto parametrech najdete v tématu [šablonu parametry a proměnné](#template-parameters-and-variables) části dále v tomto článku.
+    Další informace o těchto parametrech naleznete v části [parametry šablony a proměnné](#template-parameters-and-variables) dále v tomto článku.
 
-7. Pokud chcete zobrazit prostředky vytvořené v rámci šablony, klikněte na tlačítko Procházet, přejděte dolů na položku v seznamu naleznete v tématu "Skupiny prostředků", potom na ni klikněte.
+7. Chcete-li zobrazit prostředky vytvořené šablonou, klikněte na tlačítko Procházet, přejděte v seznamu dolů, dokud neuvidíte "skupiny prostředků" a klikněte na něj.
 
     ![lb-ipv6-portal-step7](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step7.png)
 
-8. V okně skupiny prostředků klikněte na název skupiny prostředků, které jste zadali v kroku 6. Zobrazí seznam všech prostředků, které se nasadily. Pokud vše se podařilo, to by mělo být uvedeno "ÚSPĚCH" v části "Posledního nasazení." Pokud ne, ujistěte se, že účet, který používáte, má oprávnění k vytvoření potřebných prostředků.
+8. V okně skupiny prostředků klikněte na název skupiny prostředků, kterou jste zadali v kroku 6. Zobrazí se seznam všech nasazených prostředků. Pokud vše bylo úspěšné, mělo by se v části poslední nasazení jednat o úspěch. Pokud ne, ujistěte se, že účet, který používáte, má oprávnění k vytváření potřebných prostředků.
 
     ![lb-ipv6-portal-step8](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step8.png)
 
     > [!NOTE]
-    > Pokud hned po dokončení kroku 6 skupin prostředků, "posledního nasazení" se zobrazí stav "Nasazení" se se prostředky nasadí.
+    > Pokud prohlížíte skupiny prostředků hned po dokončení kroku 6, "poslední nasazení" zobrazí při nasazení prostředků stav "nasazování".
 
-9. Klikněte na tlačítko "myIPv6PublicIP" v seznamu prostředků. Uvidíte, že na něm adresu IPv6 v oblasti IP adresa a že jeho název DNS je hodnota zadaná pro parametr dnsNameforIPv6LbIP v kroku 6. Tento prostředek je veřejnou IPv6 adresu a název hostitele, který je přístupný pro internetové klienty.
+9. V seznamu prostředků klikněte na "myIPv6PublicIP". Uvidíte, že má v části IP adresa IPv6 adresu a že jeho název DNS je hodnota, kterou jste zadali pro parametr dnsNameforIPv6LbIP v kroku 6. Tento prostředek je veřejná adresa IPv6 a název hostitele, který je přístupný pro internetové klienty.
 
-    ![lb-ipv6-portal-step9](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step9.png)
+    ![9,1 – IPv6-portál – step9](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step9.png)
 
-## <a name="validate-connectivity"></a>Ověření připojení
+## <a name="validate-connectivity"></a>Ověřit připojení
 
-Po úspěšném nasazení šablony můžete připojení ověřit provedením následujících úloh:
+Po úspěšném nasazení šablony můžete ověřit připojení provedením následujících úloh:
 
-1. Přihlaste se k webu Azure portal a připojte se k každý virtuální počítač vytvořil šablonu nasazení. Pokud jste nasadili Server virtuálního počítače s Windows, spusťte příkaz ipconfig/vše z příkazového řádku. Uvidíte, že virtuální počítače mají adresy IPv4 a IPv6. Pokud jste nasadili virtuální počítače s Linuxem, budete muset nakonfigurovat operační systém Linux přijímat dynamické adresy IPv6 pomocí pokynů pro vaši Linuxovou distribuci.
-2. Z klienta připojeného k Internetu s protokolem IPv6 Inicializujte připojení a veřejnou IPv6 adresu nástroje pro vyrovnávání zatížení. Pokud chcete potvrdit, že je nástroj pro vyrovnávání zatížení vyrovnávání mezi dvěma virtuálními počítači, můžete nainstalovat webový server jako internetové informační služby (IIS) na všech virtuálních počítačích. Výchozí webová stránka na každém serveru může obsahovat text "Server0" nebo "Server1", aby byl jednoznačně identifikovaný. Potom otevřete internetový prohlížeč na klientech připojeného k Internetu s protokolem IPv6 a přejděte na název hostitele zadaný pro parametr dnsNameforIPv6LbIP potvrdíte připojení IPv6 začátku do konce pro každý virtuální počítač nástroje pro vyrovnávání zatížení. Pokud se zobrazí pouze webové stránky z jenom jeden server, budete muset vymazat mezipaměť prohlížeče. Otevřete více privátní procházení relací. Měli byste vidět odpovědi z jednotlivých serverů.
-3. Z klienta připojeného k Internetu s IPv4 Inicializujte připojení a veřejnou IPv4 adresu nástroje pro vyrovnávání zatížení. Abyste se ujistili, že nástroj pro vyrovnávání zatížení dva virtuální počítače pro vyrovnávání zatížení, je možné otestovat pomocí služby IIS, jak je uvedeno v kroku 2.
-4. Z každého virtuálního počítače inicializujte odchozí připojení k zařízení s IPv6 nebo internetové připojení IPv4. V obou případech je zdrojová IP adresa vidět cílové zařízení veřejnou IPv4 nebo IPv6 adresu nástroje pro vyrovnávání zatížení.
+1. Přihlaste se k Azure Portal a připojte se ke každému virtuálnímu počítači vytvořenému nasazením šablony. Pokud jste nasadili virtuální počítač s Windows serverem, spusťte na příkazovém řádku příkaz ipconfig/all. Vidíte, že virtuální počítače mají adresy IPv4 i IPv6. Pokud jste nasadili virtuální počítače se systémem Linux, je nutné nakonfigurovat operační systém Linux pro příjem dynamických adres IPv6 podle pokynů pro distribuci systému Linux.
+2. Z klienta připojeného k Internetu s protokolem IPv6 Iniciujte připojení k veřejné adrese IPv6 nástroje pro vyrovnávání zatížení. Chcete-li ověřit, že nástroj pro vyrovnávání zatížení vyrovnává mezi dvěma virtuálními počítači, můžete nainstalovat webový server, jako je například Microsoft Internetová informační služba (IIS) na každém virtuálním počítači. Výchozí webová stránka na každém serveru může obsahovat text "Server0" nebo "Server1" k jednoznačné identifikaci. Pak otevřete internetový prohlížeč na klientovi připojeném k Internetu s protokolem IPv6 a vyhledejte název hostitele, který jste zadali pro parametr dnsNameforIPv6LbIP nástroje pro vyrovnávání zatížení, a potvrďte tak koncové připojení protokolu IPv6 ke každému virtuálnímu počítači. Pokud se webová stránka zobrazí jenom jenom na jednom serveru, možná budete muset vymazat mezipaměť prohlížeče. Otevřete několik privátních relací procházení. Měla by se zobrazit odpověď z každého serveru.
+3. Z klienta připojeného k Internetu s protokolem IPv4 Iniciujte připojení k veřejné IPv4 adrese nástroje pro vyrovnávání zatížení. Pokud chcete potvrdit, že nástroj pro vyrovnávání zatížení vyrovnává zatížení těchto dvou virtuálních počítačů, můžete otestovat pomocí služby IIS, jak je popsáno v kroku 2.
+4. Z každého virtuálního počítače Iniciujte odchozí připojení k internetovému zařízení připojenému k síti IPv6 nebo IPv4. V obou případech je zdrojová adresa IP, kterou cílové zařízení uvidí, veřejnou adresou protokolu IPv4 nebo IPv6 nástroje pro vyrovnávání zatížení.
 
 > [!NOTE]
-> ICMP pro protokol IPv4 i IPv6 je blokována v síti Azure. V důsledku toho ICMP nástroje jako vždy ping nezdaří. K otestování připojení, použijte alternativní TCP například použít příkaz TCPing nebo rutiny prostředí PowerShell Test-NetConnection. Všimněte si, že IP adresy je vidět na obrázku jsou příklady hodnot, které se mohou objevit. Protože IPv6 adres se přidělují dynamicky, adresy, které se zobrazí, se budou lišit a jednotlivých oblastech můžou lišit. Navíc je běžné, že veřejnou IPv6 adresu v nástroji pro vyrovnávání zatížení má začít s jinou předponu než privátními IPv6 adresami ve fondu back-end.
+> Protokol ICMP pro IPv4 i IPv6 je v síti Azure blokovaný. V důsledku toho nástroje protokolu ICMP, jako je třeba příkaz test, vždy selžou. K otestování připojení použijte alternativu protokolu TCP, jako je TCPing nebo rutina PowerShell test-NetConnection. Všimněte si, že IP adresy zobrazené v diagramu představují příklady hodnot, které mohou být zobrazeny. Vzhledem k tomu, že se adresy IPv6 přiřazují dynamicky, adresy, které obdržíte, se budou lišit a můžou se lišit podle oblasti. Také je běžné, že veřejná IPv6 adresa v nástroji pro vyrovnávání zatížení začíná jinou předponou než privátní IPv6 adresy ve fondu back-end.
 
 ## <a name="template-parameters-and-variables"></a>Parametry šablony a proměnné
 
-Šablony Azure Resource Manageru obsahuje několik proměnných a parametry, které můžete přizpůsobit svým potřebám. Proměnné se používají pro pevné hodnoty, které nechcete, aby uživatel změnit. Parametry se používají pro hodnoty, který má uživatel zadávat při nasazení šablony. Ukázková šablona je nakonfigurovaná pro scénář popsaný v tomto článku. Si ho můžete přizpůsobit podle potřeb vašeho prostředí.
+Šablona Azure Resource Manager obsahuje více proměnných a parametrů, které můžete přizpůsobit podle svých potřeb. Proměnné jsou používány pro pevné hodnoty, které nechcete, aby uživatel měnil. Parametry se používají pro hodnoty, které má uživatel zadat při nasazování šablony. Ukázková šablona je nakonfigurována pro scénář popsaný v tomto článku. Můžete ho přizpůsobit potřebám vašeho prostředí.
 
-Příklad šablony použité v tomto článku obsahuje následující proměnné a parametry:
+Ukázková šablona použitá v tomto článku obsahuje následující proměnné a parametry:
 
-| Parametr / proměnné | Poznámky |
+| Parametr/proměnná | Poznámky |
 | --- | --- |
-| adminUsername |Zadejte název účtu správce používá k přihlášení k virtuálním počítačům s. |
-| adminPassword |Zadejte heslo pro účet správce používá k přihlášení k virtuálním počítačům s. |
-| dnsNameforIPv4LbIP |Zadejte název hostitele DNS, kterou chcete přiřadit jako veřejný název nástroje pro vyrovnávání zatížení. Tento název se přeloží na veřejnou IPv4 adresu nástroje pro vyrovnávání zatížení. Název musí být psaný malými písmeny a odpovídat regulárnímu: ^ [-z] [-z0 - 9-]{1,61}[a-z0-9] $. |
-| dnsNameforIPv6LbIP |Zadejte název hostitele DNS, kterou chcete přiřadit jako veřejný název nástroje pro vyrovnávání zatížení. Tento název se přeloží na veřejnou IPv6 adresu nástroje pro vyrovnávání zatížení. Název musí být psaný malými písmeny a odpovídat regulárnímu: ^ [-z] [-z0 - 9-]{1,61}[a-z0-9] $. Může to být stejný název jako adresu IPv4. Když klient odešle dotaz DNS pro tento název bude vracet Azure A a AAAA zaznamenává, když se sdílí název. |
-| vmNamePrefix |Zadejte předponu názvu virtuálního počítače. Šablona přidá číslo (0, 1, atd.) k názvu při vytváření virtuálních počítačů. |
-| nicNamePrefix |Zadejte předponu názvu síťové rozhraní. Šablona přidá číslo (0, 1, atd.) k názvu při vytvoření síťových rozhraní. |
-| storageAccountName |Zadejte název existující účet úložiště nebo zadejte název nové předplatné má být vytvořen pomocí šablony. |
-| availabilitySetName |Potom zadejte název sady dostupnosti pro použití s virtuálními počítači |
-| addressPrefix |Předpona adresy sloužících k definování rozsahu adres ve virtuální síti |
-| subnetName |Název podsítě ve vytvořené pro virtuální síť |
-| subnetPrefix |Předpona adresy sloužících k definování rozsahu adres podsítě. |
-| vnetName |Zadejte název pro virtuální síť používat virtuální počítače. |
-| ipv4PrivateIPAddressType |Metodu přidělování privátní IP adresy (statické nebo dynamické) |
-| ipv6PrivateIPAddressType |Metodu přidělování pro privátní IP adresu (dynamickou). Dynamické přidělení podporuje pouze protokol IPv6. |
-| numberOfInstances |Počet instancí s vyrovnáváním zatížení pomocí šablony nasazení |
-| ipv4PublicIPAddressName |Zadejte název DNS, který chcete použít ke komunikaci s veřejnou IPv4 adresu nástroje pro vyrovnávání zatížení. |
-| ipv4PublicIPAddressType |Metodu přidělování pro veřejnou IP adresu (statická nebo dynamická) |
-| Ipv6PublicIPAddressName |Zadejte název DNS, který chcete použít ke komunikaci s veřejnou IPv6 adresu nástroje pro vyrovnávání zatížení. |
-| ipv6PublicIPAddressType |Metodu přidělování pro veřejnou IP adresu (dynamickou). Dynamické přidělení podporuje pouze protokol IPv6. |
-| lbName |Zadejte název nástroje pro vyrovnávání zatížení. Tento název se zobrazí na portálu nebo používají při odkazování na ji pomocí příkazu rozhraní příkazového řádku nebo Powershellu. |
+| adminUsername |Zadejte název účtu správce, který se používá pro přihlášení k virtuálním počítačům. |
+| adminPassword |Zadejte heslo pro účet správce, který se používá pro přihlášení k virtuálním počítačům. |
+| dnsNameforIPv4LbIP |Zadejte název hostitele DNS, který chcete přiřadit jako veřejný název nástroje pro vyrovnávání zatížení. Tento název se překládá na veřejnou IPv4 adresu nástroje pro vyrovnávání zatížení. Název musí být malými písmeny a musí odpovídat regulárnímu výrazu: ^ [a-z] [a-Z0{1,61}-9-] [a-Z0-9] $. |
+| dnsNameforIPv6LbIP |Zadejte název hostitele DNS, který chcete přiřadit jako veřejný název nástroje pro vyrovnávání zatížení. Tento název se přeloží na veřejnou IPv6 adresu nástroje pro vyrovnávání zatížení. Název musí být malými písmeny a musí odpovídat regulárnímu výrazu: ^ [a-z] [a-Z0{1,61}-9-] [a-Z0-9] $. Může se jednat o stejný název jako adresa IPv4. Když klient pošle dotaz DNS na tento název, Azure při sdílení názvu vrátí záznamy A i AAAA. |
+| vmNamePrefix |Zadejte předponu názvu virtuálního počítače. Šablona připojí k názvu číslo (0, 1 atd.), když se vytvoří virtuální počítače. |
+| nicNamePrefix |Zadejte předponu názvu síťového rozhraní. Šablona připojí číslo (0, 1 atd.) k názvu při vytvoření síťových rozhraní. |
+| storageAccountName |Zadejte název existujícího účtu úložiště nebo zadejte název nového, který má šablona vytvořit. |
+| availabilitySetName |Zadejte název skupiny dostupnosti, která se má používat s virtuálními počítači. |
+| addressPrefix |Předpona adresy používaná k definování rozsahu adres Virtual Network |
+| subnetName |Název podsítě vytvořené pro virtuální síť |
+| subnetPrefix |Předpona adresy používaná k definování rozsahu adres podsítě |
+| vnetName |Zadejte název virtuální sítě používané virtuálními počítači. |
+| ipv4PrivateIPAddressType |Metoda alokace použitá pro privátní IP adresu (static nebo Dynamic) |
+| ipv6PrivateIPAddressType |Metoda přidělení, která se používá pro privátní IP adresu (dynamická). IPv6 podporuje pouze dynamické přidělování. |
+| numberOfInstances |Počet instancí s vyrovnáváním zatížení nasazených šablonou |
+| ipv4PublicIPAddressName |Zadejte název DNS, který chcete použít ke komunikaci s veřejnou IPv4 adresou nástroje pro vyrovnávání zatížení. |
+| ipv4PublicIPAddressType |Metoda přidělení, která se používá pro veřejnou IP adresu (static nebo Dynamic) |
+| Ipv6PublicIPAddressName |Zadejte název DNS, který chcete použít ke komunikaci s veřejnou adresou IPv6 nástroje pro vyrovnávání zatížení. |
+| ipv6PublicIPAddressType |Metoda přidělení, která se používá pro veřejnou IP adresu (dynamická). IPv6 podporuje pouze dynamické přidělování. |
+| lbName |Zadejte název nástroje pro vyrovnávání zatížení. Tento název se zobrazí na portálu nebo použije se při odkazování pomocí příkazu CLI nebo PowerShellu. |
 
-Zbývající proměnné v šabloně obsahují odvozeným hodnotám, které jsou přiřazeny při Azure vytvoří potřebné prostředky. Neměňte těchto proměnných.
+Zbývající proměnné v šabloně obsahují odvozené hodnoty, které jsou přiřazeny při vytváření prostředků v Azure. Neměňte tyto proměnné.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Syntaxi JSON a vlastnosti služby vyrovnání zatížení v šabloně najdete v tématu [Microsoft.Network/loadBalancers](/azure/templates/microsoft.network/loadbalancers).
+Syntaxi a vlastnosti služby Vyrovnávání zatížení v šabloně najdete v tématu [Microsoft. Network/loadBalancers](/azure/templates/microsoft.network/loadbalancers).

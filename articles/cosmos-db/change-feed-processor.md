@@ -1,78 +1,96 @@
 ---
-title: Práce s kanálu knihovny procesoru ve službě Azure Cosmos DB změn
-description: Knihovna processor změn databáze Azure Cosmos DB pomocí kanálu.
+title: Práce s knihovnou Change feed Processor v Azure Cosmos DB
+description: Pomocí knihovny Azure Cosmos DB Change feed Processor.
 author: rimman
 ms.service: cosmos-db
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 05/21/2019
+ms.date: 07/02/2019
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: d0faeba5278e23990a72c9d2dd3d7e18510bdf80
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 42b7cd8a60e70ab75afc30910c46eb49f1f6d62a
+ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67342049"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68000951"
 ---
-# <a name="change-feed-processor-in-azure-cosmos-db"></a>Změna kanálu procesoru ve službě Azure Cosmos DB 
+# <a name="change-feed-processor-in-azure-cosmos-db"></a>Změnit procesor kanálu v Azure Cosmos DB 
 
-[Kanálu změn databáze Azure Cosmos DB knihovny procesoru](sql-api-sdk-dotnet-changefeed.md) usnadňuje distribuci zpracování událostí mezi několik příjemců. Tato knihovna usnadňuje čtení změny napříč oddíly a fungujících paralelně několik vláken.
+Procesor změn kanálu je součástí sady [Azure Cosmos DB SDK V3](https://github.com/Azure/azure-cosmos-dotnet-v3). Zjednodušuje proces čtení kanálu změn a umožňuje distribuci zpracování událostí mezi více příjemců efektivně.
 
-Hlavní výhodou knihovnou change feed processor je, že není nutné spravovat každý oddíl a token pro pokračování a vy nemusíte ručně dotazovat jednotlivých kontejnerů.
+Hlavní výhodou knihovny Change feed Processor je chování odolné proti chybám, které zajišťuje "nejméně jednou" doručení všech událostí v kanálu změn.
 
-Knihovnou change feed processor usnadňuje čtení změn napříč oddíly a fungujících paralelně několik vláken. Automaticky spravuje čtení změn napříč oddíly, použití mechanismu zapůjčení. Jak vidíte na následujícím obrázku, pokud spustíte dvě klienty, kteří používají kanálu knihovny procesoru změn, rozdělení práce mezi servery. V průběhu zvýšit počet klientů, které se zachovat rozdělení práce mezi servery.
+## <a name="components-of-the-change-feed-processor"></a>Součásti procesoru změny kanálu
 
-![Použití změn databáze Azure Cosmos DB kanálu knihovny procesoru](./media/change-feed-processor/change-feed-output.png)
+Existují čtyři hlavní součásti implementace procesoru Change feed: 
 
-Byl spuštěn první levé klienta a jeho spuštění, sledování, které všechny oddíly, pak druhého klienta byla spuštěna a potom první opustila některých zapůjčení pro druhého klienta. Toto je účinný způsob, jak rozdělit práci mezi klienty a různých počítačích.
+1. **Monitorovaný kontejner:** Monitorovaný kontejner obsahuje data, ze kterých se generuje kanál změn. Jakékoli vložení a aktualizace monitorovaného kontejneru se projeví v kanálu změn kontejneru.
 
-Pokud máte dvě funkce bez serveru Azure monitoring stejného kontejneru a pomocí stejného zapůjčení, může se zobrazit různé dokumenty v závislosti na tom, jak knihovny procesoru rozhodne zpracovat oddíly dvě funkce.
+1. **Kontejner zapůjčení:** Kontejner zapůjčení funguje jako úložiště stavu a koordinuje zpracování kanálu změn napříč několika procesy. Kontejner zapůjčení může být uložený ve stejném účtu jako monitorovaný kontejner nebo v samostatném účtu. 
 
-## <a name="implementing-the-change-feed-processor-library"></a>Implementací, informační kanál knihovny procesoru
+1. **Hostitel:** Hostitel je instance aplikace, která používá procesor změn kanálu k naslouchání změnám. Víc instancí se stejnou konfigurací zapůjčení můžete spustit paralelně, ale každá instance by měla mít jiný **název instance**. 
 
-Existují čtyři hlavní součásti implementace kanálu knihovny procesoru změn: 
+1. **Delegát:** Delegát je kód, který definuje, co vy, vývojář, chcete dělat s každou dávkou změn, které má procesor Change feed načíst. 
 
-1. **Monitorované kontejneru:** Monitorované kontejner obsahuje data, ze kterého je generován kanál změn. Všechny operace vložení a změny monitorovaných kontejneru se projeví v kanálu změn kontejneru.
+Abychom lépe porozuměli tomu, jak tyto čtyři prvky procesoru Change feed fungují společně, Podívejme se na příklad v následujícím diagramu. Monitorovaný kontejner ukládá dokumenty a používá jako klíč oddílu "City". Zjistili jsme, že hodnoty klíčů oddílu jsou distribuované v oblastech, které obsahují položky. Existují dvě instance hostitele a procesor změn kanálu přiřazuje každé instanci různé rozsahy hodnot klíče oddílu, aby bylo možné maximalizovat výpočetní rozdělení. Každý rozsah je čten paralelně a jeho průběh se udržuje odděleně od jiných rozsahů v kontejneru zapůjčení.
 
-1. **Zapůjčení kontejneru:** Souřadnicích kontejneru zapůjčení zpracování kanálu změn napříč několika pracovních procesů. Samostatný kontejner se používá k ukládání zapůjčení s jeden zapůjčení na oddíl. Je výhodné pro uložení tohoto kontejneru zapůjčení na jiný účet s oblastí zápisu blíže na kterém je spuštěný kanálu procesoru změn. Objekt zapůjčení obsahuje následující atributy:
+![Ukázka změny procesoru kanálu](./media/change-feed-processor/changefeedprocessor.png)
 
-   * Vlastník: Určuje hostitele, který vlastní zapůjčení.
+## <a name="implementing-the-change-feed-processor"></a>Implementace procesoru změny kanálu
 
-   * Pokračování: Určuje pozici (token pro pokračování) v kanálu pro konkrétní oddíl změn.
+Bod vstupu je vždy monitorovaný kontejner, z `Container` instance, kterou voláte: `GetChangeFeedProcessorBuilder`
 
-   * Časové razítko: Poslední čas zapůjčení aktualizace; časové razítko slouží ke kontrole, jestli zapůjčení je považována za ukončenou.
+[!code-csharp[Main](~/samples-cosmosdb-dotnet-change-feed-processor/src/Program.cs?name=DefineProcessor)]
 
-1. **Hostitel procesoru:** Každý hostitel Určuje, kolik oddíly ke zpracování na základě počtu instancí hostitelů mají aktivní zapůjčení.
+Kde první parametr je jedinečný název, který popisuje cíl tohoto procesoru a druhý název je implementace delegáta, která bude zpracovávat změny. 
 
-   * Při spuštění hostitele, získá zapůjčení vyrovnávat zatížení na všech hostitelích. Hostitel pravidelně obnoví zapůjčení, tak zůstanou aktivní zapůjčení.
+Příkladem delegáta může být:
 
-   * Kontrolní body hostitele poslední token pro pokračování k zapůjčení pro každé čtení. K zajištění bezpečnosti souběžnosti, zkontroluje hostitele ETag pro každou aktualizaci zapůjčení. Podporují se také další strategie zaměřené na kontrolní bod.
+[!code-csharp[Main](~/samples-cosmosdb-dotnet-change-feed-processor/src/Program.cs?name=Delegate)]
 
-   * Při vypnutí počítače Hostitel uvolní všechny zapůjčení ale uchovává informace o pokračování, abyste ho mohli obnovit čtení z uložené kontrolního bodu později.
+Nakonec definujete název této instance procesoru s `WithInstanceName` a, který je kontejnerem pro udržení `WithLeaseContainer`stavu zapůjčení.
 
-   Počet hostitelů v současné době nemůže být větší než počet oddílů (zapůjčení).
+Volání `Build` vám poskytne instanci procesoru, kterou můžete spustit voláním `StartAsync`.
 
-1. **Příjemci:** Uživatelé nebo pracovníci, jsou vlákna, které provádějí zpracování kanálu změn inicializuje v každém hostiteli. Každý procesor hostitel může mít několik příjemců. Každý příjemce čte změnu datového kanálu z oddílu, který je přiřazen k a upozorní jeho hostitel změny a vypršení platnosti zapůjčení.
+## <a name="processing-life-cycle"></a>Životní cyklus zpracování
 
-Abyste pochopili, jak tyto čtyři prvky z kanálu změn práce procesoru společně, Pojďme se podívat na příklad na následujícím diagramu. Monitorované kolekci ukládá dokumenty a používá "Město" jako klíč oddílu. Vidíme, že modrý oddíl obsahuje dokumenty s polem "Město" z "A-E –" a tak dále. Existují dva hostitele, každou s dvěma čtením čtyři oddíly paralelní konzumenty. Šipky zobrazují příjemci čtení z určité místo v kanálu změn. Do prvního oddílu představuje tmavší modrá nepřečtené změny, zatímco světle modrá představuje změny již čtení na kanálu změn. Hostitele použít kolekci zapůjčení pro uložení hodnoty "pokračování" ke sledování na aktuální pozici čtení pro každého příjemce.
+Normální životní cyklus instance hostitele je:
 
-![Příklad procesoru kanálu změn](./media/change-feed-processor/changefeedprocessor.png)
+1. Přečtěte si kanál změn.
+1. Pokud nedošlo k žádným změnám, přejdete do režimu spánku v předdefinovaném `WithPollInterval` čase (dá se přizpůsobit v Tvůrci) a přejdete na #1.
+1. Pokud dojde ke změnám, odešlete je **delegátovi**.
+1. Když delegát dokončí zpracování změn **úspěšně**, aktualizujte úložiště zapůjčení s nejnovějším zpracovávaným bodem v čase a přejděte na #1.
 
-### <a name="change-feed-and-provisioned-throughput"></a>Kanál změn a zřízenou propustnost
+## <a name="error-handling"></a>Zpracování chyb
 
-Bude vám účtována od přesunu dat do a z Cosmos kontejnery vždy využívá ru spotřebovaných rezervovaných jednotek. Bude vám účtována ru spotřebovaných kontejneru zapůjčení.
+Procesor změn kanálu je odolný proti chybám uživatelského kódu. To znamená, že pokud vaše implementace delegáta má neošetřenou výjimku (krok #4), zpracování vlákna, které konkrétní dávku změn dojde, se zastaví a vytvoří se nové vlákno. Nové vlákno zkontroluje, který byl nejnovějším bodem v čase, který má úložiště zapůjčení pro daný rozsah hodnot klíče oddílu, a pak se z něj restartuje a efektivně posílá stejnou dávku změn delegáta. Toto chování bude pokračovat, dokud váš delegát nezpracuje změny správně a jedná se o důvod, proč má procesor změn "alespoň jednou" jistotu, protože pokud kód delegáta vyvolá, bude opakovat tuto dávku.
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="dynamic-scaling"></a>Dynamické škálování
 
-* [Azure Cosmos DB knihovnou change feed processor](sql-api-sdk-dotnet-changefeed.md)
-* [Balíček NuGet](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.ChangeFeedProcessor/)
-* [Další ukázky na Githubu](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/ChangeFeedProcessor)
+Jak je uvedeno v úvodu, procesor Change feed může distribuovat výpočty napříč několika instancemi automaticky. Můžete nasadit více instancí aplikace pomocí procesoru změn kanálu a využít je k tomu, že jsou k dispozici jenom tyto klíčové požadavky:
+
+1. Všechny instance musí mít stejnou konfiguraci kontejneru zapůjčení.
+1. Všechny instance musí mít stejný název pracovního postupu.
+1. Každá instance musí mít jiný název instance (`WithInstanceName`).
+
+Pokud platí tyto tři podmínky, bude procesor změn pomocí stejného distribučního algoritmu distribuovat všechna zapůjčení do kontejneru zapůjčení ve všech spuštěných instancích a paralelizovat Compute. Jednu zapůjčenou adresu může vlastnit jenom jedna instance v daném okamžiku, takže maximální počet instancí se rovná počtu zapůjčení.
+
+Instance se můžou zvětšovat a zmenšovat a procesor změn kanálu bude dynamicky upravovat zatížení tím, že je odpovídajícím způsobem znovu distribuován.
+
+## <a name="change-feed-and-provisioned-throughput"></a>Změnit kanál a zřízenou propustnost
+
+Účtují se vám poplatky za ru spotřebované, protože přesun dat do kontejnerů Cosmos a z nich vždycky spotřebovává ru. Účtují se vám poplatky za ru spotřebované kontejnerem zapůjčení.
+
+## <a name="additional-resources"></a>Další zdroje
+
+* [Sada Azure Cosmos DB SDK](sql-api-sdk-dotnet.md)
+* [Další ukázky na GitHubu](https://github.com/Azure-Samples/cosmos-dotnet-change-feed-processor)
 
 ## <a name="next-steps"></a>Další postup
 
 Teď můžete přejít k další informace o změně v následujících článcích:
 
 * [Přehled kanálu změn](change-feed.md)
-* [Způsoby, jak čtení kanálu změn](read-change-feed.md)
+* [Způsoby čtení kanálu změn](read-change-feed.md)
 * [Změna kanálu s využitím Azure Functions](change-feed-functions.md)

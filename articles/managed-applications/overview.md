@@ -4,14 +4,14 @@ description: Popisuje koncepty spravovaných aplikací Azure.
 author: tfitzmac
 ms.service: managed-applications
 ms.topic: overview
-ms.date: 05/31/2019
+ms.date: 07/12/2019
 ms.author: tomfitz
-ms.openlocfilehash: 5b6cb030c6eba5d80dfd046f1c3950609da1ed73
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 97d6a229651f1c3fbcdbb79c7ae7d1c1f855882b
+ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66479819"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68234742"
 ---
 # <a name="azure-managed-applications-overview"></a>Přehled spravovaných aplikací Azure
 
@@ -29,7 +29,7 @@ I když zákazníci nasadí tyto spravované aplikace do svého předplatného, 
 
 Týmům IT umožňují spravované aplikace nabízet uživatelům v rámci organizace předem schválená řešení. Máte jistotu, že jsou tato řešení v souladu se standardy organizace.
 
-Spravované aplikace podporují [spravovaných identit pro prostředky Azure](./publish-managed-identity.md).
+Spravované aplikace podporují [spravované identity prostředků Azure](./publish-managed-identity.md).
 
 ## <a name="types-of-managed-applications"></a>Typy spravovaných aplikací
 
@@ -51,7 +51,7 @@ Informace o publikování spravovaných aplikací do Marketplace najdete v téma
 
 ## <a name="resource-groups-for-managed-applications"></a>Skupiny prostředků pro spravované aplikace
 
-Prostředky pro spravované aplikace jsou obvykle ve dvou skupinách prostředků. Jednu skupinu prostředků spravuje zákazník a druhou vydavatel. Při definování spravované aplikace určí vydavatel úrovně přístupu. Vydavatel může vyžádat buď trvalé přiřazení role, nebo [just-in-time přístup](request-just-in-time-access.md) pro zadání, která je omezen na časové období.
+Prostředky pro spravovanou aplikaci jsou obvykle ve dvou skupinách prostředků. Jednu skupinu prostředků spravuje zákazník a druhou vydavatel. Při definování spravované aplikace určí vydavatel úrovně přístupu. Vydavatel může požádat o trvalé přiřazení role nebo [přístup za běhu](request-just-in-time-access.md) pro přiřazení, které je omezené na časové období.
 
 Omezení přístupu pro [operace dat](../role-based-access-control/role-definitions.md) se momentálně nepodporuje pro všechny poskytovatele dat v Azure.
 
@@ -67,7 +67,9 @@ Zákazník má k této skupině prostředků plný přístup a používá ji ke 
 
 ### <a name="managed-resource-group"></a>Spravovaná skupina prostředků
 
-Tato skupina prostředků obsahuje všechny prostředky, které spravovaná aplikace potřebuje. Tato skupina prostředků třeba obsahuje virtuální počítače, účty úložiště a virtuální sítě pro dané řešení. Zákazník má k této skupině prostředků omezený přístup, protože nespravuje jednotlivé prostředky spravované aplikace. Přístup vydavatele k této skupině prostředků odpovídá roli stanovené v definici spravované aplikace. Vydavatel si může pro tuto skupinu prostředků vyžádat třeba roli vlastníka nebo přispěvatele. Tento přístup je buď trvalé nebo máte jenom omezenou na určitou dobu.
+Tato skupina prostředků obsahuje všechny prostředky, které spravovaná aplikace potřebuje. Tato skupina prostředků třeba obsahuje virtuální počítače, účty úložiště a virtuální sítě pro dané řešení. Zákazník má k této skupině prostředků omezený přístup, protože nespravuje jednotlivé prostředky spravované aplikace. Přístup vydavatele k této skupině prostředků odpovídá roli stanovené v definici spravované aplikace. Vydavatel si může pro tuto skupinu prostředků vyžádat třeba roli vlastníka nebo přispěvatele. Přístup je buď trvalý, nebo omezený na určitou dobu.
+
+Při publikování [spravované aplikace na webu Marketplace](publish-marketplace-app.md)může vydavatel zákazníkům udělit možnost provádět určité akce s prostředky ve spravované skupině prostředků. Vydavatel může například určit, že uživatelé můžou restartovat virtuální počítače. Všechny ostatní akce nad akcí čtení jsou stále odmítnuty.
 
 Když zákazník spravovanou aplikaci odstraní, dojde i k odstranění spravované skupiny prostředků.
 
@@ -80,4 +82,4 @@ Na spravovanou aplikaci můžete použít zásady [Azure Policy](../governance/p
 V tomto článku jste se dozvěděli o výhodách používání spravovaných aplikací. Přejděte na další článek, který se zabývá vytvořením definice spravované aplikace.
 
 > [!div class="nextstepaction"]
-> [Rychlé zprovoznění: Publikování Azure definice spravované aplikace](publish-managed-app-definition-quickstart.md)
+> [Rychlé zprovoznění: Publikování definice spravované aplikace Azure](publish-managed-app-definition-quickstart.md)

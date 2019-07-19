@@ -7,29 +7,29 @@ ms.topic: conceptual
 ms.date: 07/09/2019
 ms.author: tomfitz
 ms.custom: seodec18
-ms.openlocfilehash: 36e881fb9ba3ab81611b94a36ef0beed8748d5b1
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: f457b316d9f499f2cab02452c1b03ad07a9aef27
+ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67705123"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68302833"
 ---
 # <a name="throttling-resource-manager-requests"></a>Omezování požadavků Resource Manageru
 
-Pro každé předplatné Azure a tenanta Resource Manager umožňuje až 12 000 požadavků za hodinu na čtení a zápis 1 200 žádosti za hodinu. Tato omezení jsou omezená na objekt zabezpečení (uživatele nebo aplikace) žádosti a ID předplatného nebo tenanta ID. Pokud vaše požadavky pocházejí z více než objekt zabezpečení, je větší než 12 000 a 1 200 za hodinu limitu vašeho předplatného nebo tenanta.
+Pro každé předplatné Azure a tenanta Resource Manager umožňuje až 12 000 požadavků za hodinu na čtení a zápis 1 200 žádosti za hodinu. Tato omezení jsou vymezená na objekt zabezpečení (uživatel nebo aplikace), který vytváří požadavky a ID předplatného nebo ID tenanta. Pokud vaše požadavky pocházejí z více než jednoho objektu zabezpečení, je limit v rámci předplatného nebo tenanta větší než 12 000 a 1 200 za hodinu.
 
-Požadavky se použijí pro vaše předplatné nebo vašeho tenanta. Žádosti jsou ty, které zahrnují předání ID vašeho předplatného, třeba načítání skupin prostředků ve vašem předplatném. Požadavky klientů jsou ID vašeho předplatného, třeba načítání platných umístění Azure.
+Požadavky se použijí pro vaše předplatné nebo vašeho tenanta. Žádosti o předplatné jsou ty, které zahrnují předávání ID předplatného, jako je například načtení skupin prostředků ve vašem předplatném. Požadavky klientů jsou ID vašeho předplatného, třeba načítání platných umístění Azure.
 
 Tato omezení platí pro každou instanci Azure Resource Manageru. Existuje více instancí ve všech oblastech Azure a Azure Resource Manageru je nasazený do všech oblastí Azure.  Takže v praxi, jsou efektivně mnohem vyšší než tato omezení limitů, jako uživatel požadavky jsou obvykle obsluhovány pomocí mnoha různých instancích.
 
-Pokud vaše aplikace nebo skript dosáhne těchto limitů, budete muset omezení požadavků. V tomto článku se dozvíte, jak určit zbývajících požadavků, které je nutné před dosažením limitu a týkající se reakce, když jste dosáhli limitu.
+Pokud vaše aplikace nebo skript dosáhne těchto limitů, budete muset omezení požadavků. V tomto článku se dozvíte, jak určit zbývající požadavky, které máte, abyste dosáhli limitu, a jak reagovat na to, kdy jste dosáhli limitu.
 
 Pokud limit překročíte, obdržíte kód stavu HTTP **429 příliš mnoho požadavků**.
 
-Azure Graph prostředků omezuje počet požadavků na jeho operace. Kroky v tomto článku k určení zbývajících požadavků a jak reagovat při dosažení limitu neplatí pro prostředek grafu. Prostředek grafu však nastaví vlastní míry omezení a resetování. Další informace najdete v tématu [omezení v Azure prostředek grafu](../governance/resource-graph/overview.md#throttling).
+Graf Azure Resource omezuje počet požadavků na jeho operace. Kroky v tomto článku k určení zbývajících požadavků a způsobu, jak reagovat na to, jak se dosáhlo limitu, platí také pro graf prostředků. Graf prostředků ale nastaví svůj vlastní limit a rychlost resetování. Další informace najdete v tématu [omezení v Azure Resource graphu](../governance/resource-graph/overview.md#throttling).
 
 ## <a name="remaining-requests"></a>Zbývajících požadavků
-Počet zbývajících požadavků, které můžete určit tím, že kontroluje hlavičky odpovědi. Žádosti o čtení vracet hodnotu v záhlaví po dobu zbývajících požadavků na čtení. Zapsat požadavky zahrnout hodnotu pro počet zbývajících požadavků na zápis. Následující tabulka popisuje hlavičky odpovědi, které můžete zkontrolovat pro tyto hodnoty:
+Počet zbývajících požadavků, které můžete určit tím, že kontroluje hlavičky odpovědi. Žádosti o čtení vrátí hodnotu v hlavičce pro počet zbývajících požadavků na čtení. Požadavky na zápis obsahují hodnotu pro počet zbývajících požadavků na zápis. Následující tabulka popisuje hlavičky odpovědi, které můžete zkontrolovat pro tyto hodnoty:
 
 | Hlavička odpovědi | Popis |
 | --- | --- |

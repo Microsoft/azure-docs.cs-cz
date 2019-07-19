@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý start: Extrahujte rukou psaný text – JavaScript'
+title: 'Rychlý start: Extrakce tištěných a rukou psaných textů, JavaScript'
 titleSuffix: Azure Cognitive Services
-description: V tomto rychlém startu extrahujete rukou psaný text z obrázku pomocí rozhraní API pro počítačové zpracování obrazu a JavaScriptu.
+description: V tomto rychlém startu extrahujete vytištěný a rukou psaný text z obrázku pomocí rozhraní API pro počítačové zpracování obrazu s JavaScriptem.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,25 +11,25 @@ ms.topic: quickstart
 ms.date: 07/03/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: f4e627286f6a32816eafa84e860cb8eb49111f67
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 42bb85b5dfab6c9799d89ff92ab5e5b3c0230019
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67604345"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68311990"
 ---
-# <a name="quickstart-extract-handwritten-text-using-the-computer-vision-rest-api-and-javascript"></a>Rychlý start: Extrahujte rukou psaný text pomocí REST API pro počítačové zpracování obrazu a JavaScript
+# <a name="quickstart-extract-printed-and-handwritten-text-using-the-computer-vision-rest-api-and-javascript"></a>Rychlý start: Extrakce vytištěného textu a ručního textu pomocí Počítačové zpracování obrazu REST API a JavaScriptu
 
-V tomto rychlém startu extrahujete rukou psaný text z obrázku pomocí rozhraní REST API počítačového zpracování obrazu. S [čtení dávky](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) rozhraní API a [výsledek operace čtení](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d) rozhraní API, můžete zjistit rukou psaný text v obrázku a extrahovat rozpoznané znaky do datového proudu počítačově využitelný znaků.
+V tomto rychlém startu extrahujete vytištěný nebo ručně psaný text z obrázku pomocí REST API Počítačové zpracování obrazu. Pomocí metod [čtení](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) a čtení dávkových [operací](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d) Batch můžete detekovat text v obrázku a extrahovat rozpoznané znaky do datového proudu znaků, který je strojově čitelný. Rozhraní API určí, který model rozpoznávání se má použít pro každý řádek textu, takže podporuje obrázky s tištěným i psaným textem.
 
 > [!IMPORTANT]
-> Na rozdíl od [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) metody [čtení dávky](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) metoda běží asynchronně. Tato metoda nevrací žádné informace v textu úspěšné odpovědi. Místo toho čtení dávky metoda vrací identifikátor URI v hodnotě `Operation-Content` pole hlavičky odpovědi. Potom můžete zavolat tento identifikátor URI, který představuje [výsledek operace čtení](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d) metodu, jak zkontrolovat stav a vrátí výsledky volání metody pro čtení služby Batch.
+> Na rozdíl od metody [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) se metoda [čtení dávky](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) spouští asynchronně. Tato metoda nevrací žádné informace v textu úspěšné odpovědi. Místo toho metoda čtení dávky vrátí identifikátor URI v hodnotě `Operation-Content` pole hlavičky odpovědi. Pak můžete zavolat tento identifikátor URI, který představuje metodu [výsledku operace čtení](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d) , pro kontrolu stavu a vrácení výsledků volání metody čtení dávky.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Musíte mít klíč předplatného pro počítačové zpracování obrazu. Můžete získat bezplatné zkušební verze klíče z [zkuste služby Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Nebo, postupujte podle pokynů v [vytvoření účtu služeb Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) k přihlášení pro počítačové zpracování obrazu a získejte klíč.
+Musíte mít klíč předplatného pro počítačové zpracování obrazu. Bezplatný zkušební klíč si můžete [vyzkoušet Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Případně postupujte podle pokynů v části [Vytvoření účtu Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) pro přihlášení k odběru počítačové zpracování obrazu a získání klíče.
 
 ## <a name="create-and-run-the-sample"></a>Vytvoření a spuštění ukázky
 
@@ -38,9 +38,9 @@ Pokud chcete vytvořit a spustit ukázku, postupujte takto:
 1. Zkopírujte do textového editoru následující kód.
 1. Proveďte v kódu na příslušných místech následující změny:
     1. Hodnotu `subscriptionKey` nahraďte klíčem předplatného.
-    1. Nahraďte hodnotu `uriBase` vyplněná adresa URL koncového bodu [čtení dávky](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) metoda z oblasti Azure, kde jste získali klíče předplatného, v případě potřeby.
-    1. Volitelně můžete hodnotu atributu `value` pro ovládací prvek `inputImage` nahradit adresou URL jiného obrázku, ze kterého chcete extrahovat rukou psaný text.
-1. Uložte kód jako soubor s příponou `.html`. Například, `get-handwriting.html`.
+    1. V případě potřeby nahraďte hodnotu `uriBase` adresou URL koncového bodu pro metodu [čtení dávky](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) z oblasti Azure, kde jste v případě potřeby získali klíče předplatného.
+    1. V případě potřeby nahraďte hodnotu `value` atributu `inputImage` ovládacího prvku adresou URL jiného obrázku, ze kterého chcete extrahovat text.
+1. Uložte kód jako soubor s příponou `.html`. Například, `get-text.html`.
 1. Otevřete okno prohlížeče.
 1. Přetáhněte daný soubor do okna prohlížeče.
 1. Když se v prohlížeči zobrazí webová stránka, zvolte tlačítko **Read image** (Načíst obrázek).
@@ -49,7 +49,7 @@ Pokud chcete vytvořit a spustit ukázku, postupujte takto:
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Handwriting Sample</title>
+    <title>Text Recognition Sample</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
 </head>
 <body>
@@ -99,10 +99,10 @@ Pokud chcete vytvořit a spustit ukázku, postupujte takto:
 
         .done(function(data, textStatus, jqXHR) {
             // Show progress.
-            $("#responseTextArea").val("Handwritten text submitted. " +
+            $("#responseTextArea").val("Text submitted. " +
                 "Waiting 10 seconds to retrieve the recognized text.");
 
-            // Note: The response may not be immediately available. Handwriting
+            // Note: The response may not be immediately available. Text
             // recognition is an asynchronous operation that can take a variable
             // amount of time depending on the length of the text you want to
             // recognize. You may need to wait or retry the GET operation.
@@ -160,8 +160,8 @@ Pokud chcete vytvořit a spustit ukázku, postupujte takto:
         });
     };
 </script>
-<h1>Read handwritten image:</h1>
-Enter the URL to an image of handwritten text, then click
+<h1>Read text from image:</h1>
+Enter the URL to an image of text, then click
 the <strong>Read image</strong> button.
 <br><br>
 Image to read:
@@ -290,7 +290,7 @@ Image to read:
 }
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Prozkoumejte aplikaci v JavaScriptu, která používá počítačové zpracování obrazu k optickému rozpoznávání znaků (OCR), vytvořte chytře ořezané miniatury a rozpoznávejte, kategorizujte, označujte a popisujte vizuální vlastnosti na obrázku včetně obličejů. Pokud chcete rychle vyzkoušet rozhraní API pro počítačové zpracování obrazu, vyzkoušejte [testovací konzolu Open API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console).
 

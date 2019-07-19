@@ -1,6 +1,6 @@
 ---
-title: Konfigurace úlohy SAP se zónami dostupnosti Azure | Dokumentace Microsoftu
-description: Architektura pro vysokou dostupnost a scénáře pro SAP NetWeaver pomocí zóny dostupnosti Azure
+title: Konfigurace úloh SAP pomocí Zóny dostupnosti Azure | Microsoft Docs
+description: Architektura a scénáře s vysokou dostupností pro SAP NetWeaver pomocí Zóny dostupnosti Azure
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: msjuergent
@@ -14,171 +14,172 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 02/03/2019
+ms.date: 07/15/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3772dbdc8582eea1b2eac368784878a8a36d34ad
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ead1dfdce4bf3a803eee46a536dc7062626640d9
+ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62125310"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68234241"
 ---
 # <a name="sap-workload-configurations-with-azure-availability-zones"></a>Konfigurace úloh SAP s využitím služby Zóny dostupnosti Azure
-[Zóny dostupnosti Azure](https://docs.microsoft.com/azure/availability-zones/az-overview) je jedna z funkcí vysoké dostupnosti, které poskytuje Azure. Použití zón dostupnosti zlepšuje celkovou dostupnost úloh SAP v Azure. Tato funkce je k dispozici v některých [oblastí Azure](https://azure.microsoft.com/global-infrastructure/regions/). V budoucnu bude k dispozici v dalších oblastech.
+[Zóny dostupnosti Azure](https://docs.microsoft.com/azure/availability-zones/az-overview) je jednou z funkcí s vysokou dostupností, které poskytuje Azure. Použití Zóny dostupnosti zlepšuje celkovou dostupnost úloh SAP v Azure. Tato funkce je už v některých [oblastech Azure](https://azure.microsoft.com/global-infrastructure/regions/)dostupná. V budoucnu bude k dispozici ve více oblastech.
 
-Tento obrázek ukazuje základní architektury vysoké dostupnosti SAP:
+Tento obrázek znázorňuje základní architekturu vysoké dostupnosti SAP:
 
-![Konfigurace standardní vysoké dostupnosti](./media/sap-ha-availability-zones/standard-ha-config.png)
+![Standardní konfigurace vysoké dostupnosti](./media/sap-ha-availability-zones/standard-ha-config.png)
 
-Nasazení aplikační vrstvě SAP v Azure jednu [dostupnosti](https://docs.microsoft.com/azure/virtual-machines/windows/manage-availability). Pro zajištění vysoké dostupnosti SAP Central Services nasadíte dva virtuální počítače v samostatné skupiny dostupnosti. Použijte Windows Server Failover Clustering nebo Pacemaker (Linux) jako Architektura vysoké dostupnosti s automatické převzetí služeb při selhání v případě infrastruktury nebo softwaru problému. Další informace o těchto nasazení najdete v tématu:
+Aplikační vrstva SAP je nasazená v rámci jedné [skupiny dostupnosti](https://docs.microsoft.com/azure/virtual-machines/windows/manage-availability)Azure. Pro zajištění vysoké dostupnosti centrálních služeb SAP můžete nasadit dva virtuální počítače v samostatné skupině dostupnosti. Používejte Clustering s podporou převzetí služeb při selhání Windows serveru nebo Pacemaker (Linux) jako architekturu s vysokou dostupností s automatickým převzetím služeb při selhání v případě infrastruktury nebo softwaru. Další informace o těchto nasazeních najdete v těchto tématech:
 
-- [Instance SAP ASCS/SCS clusteru v clusteru převzetí služeb při selhání Windows s použitím sdíleného disku clusteru](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-shared-disk)
-- [Instance SAP ASCS/SCS clusteru v clusteru převzetí služeb při selhání Windows s použitím sdílené složky](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-file-share)
+- [Vytvoření clusteru instance SAP ASCS/SCS v clusteru s podporou převzetí služeb při selhání systému Windows pomocí sdíleného disku clusteru](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-shared-disk)
+- [Vytvoření clusteru instance SAP ASCS/SCS v clusteru s podporou převzetí služeb při selhání systému Windows pomocí sdílené složky](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-file-share)
 - [Vysoká dostupnost pro SAP NetWeaver na virtuálních počítačích Azure na SUSE Linux Enterprise Server pro aplikace SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse)
-- [Azure Virtual Machines vysoká dostupnost pro SAP NetWeaver na Red Hat Enterprise Linux](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel)
+- [Vysoká dostupnost Azure Virtual Machines pro SAP NetWeaver v Red Hat Enterprise Linux](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel)
 
-Platí i pro vrstvu DBMS Hybris systémy, S/4HANA nebo SAP NetWeaver podobnou architekturu. Nasazením DBMS vrstvy v režimu aktivní/pasivní vysokou dostupnost pomocí řešení clusteru převzetí služeb při selhání k ochraně při selhání infrastruktury nebo softwaru. Řešení clusteru převzetí služeb při selhání může být specifické pro systém DBMS framework převzetí služeb při selhání, Windows Server Failover Clustering nebo Pacemaker.
+Podobná architektura se vztahuje na vrstvu DBMS systémů SAP NetWeaver, S/4HANA nebo Hybris. Vrstvu DBMS nasadíte v aktivním nebo pasivním režimu s řešením clusteru s podporou převzetí služeb při selhání za účelem ochrany před infrastrukturou nebo selháním softwaru. Řešení clusteru s podporou převzetí služeb při selhání může být architektura převzetí služeb při selhání specifická pro DBMS, clustering s podporou převzetí služeb při selhání Windows serveru
 
-K nasazení stejnou architekturu s využitím zón dostupnosti Azure, budete muset udělat nějaké změny architektury popsané výše. Tento článek popisuje tyto změny.
+Chcete-li nasadit stejnou architekturu pomocí Zóny dostupnosti Azure, je nutné provést některé změny v architektuře, která byla dříve naznačena. Tento článek popisuje tyto změny.
 
-## <a name="considerations-for-deploying-across-availability-zones"></a>Důležité informace týkající se nasazení napříč zónami dostupnosti
-
-
-Při použití zón dostupnosti, zvažte následující:
-
-- Neexistují žádné záruky týkající se vzdáleností mezi různými zónami dostupnosti v rámci oblasti Azure.
-- Zóny dostupnosti nejsou ideální řešení zotavení po Havárii. Přírodními katastrofami mohou způsobit poškození rozšířených ve světě oblastech, včetně těžkých poškození infrastruktur power. Vzdálenost mezi různými oblastmi nemusí být dostatečně velký, aby tvoří správné řešení zotavení po Havárii.
-- Latence sítě napříč zónami dostupnosti není stejná ve všech oblastech Azure. V některých případech můžete nasadit a spustit aplikační vrstvě SAP napříč různými zónami, protože je přijatelné latence sítě z jednu zónu na aktivní DBMS virtuálního počítače. Ale v některých oblastech Azure, latence mezi aktivního databázového systému virtuálního počítače a instance aplikace SAP při nasazení v různých oblastech, nemusí být přijatelné pro SAP obchodních procesů. V těchto případech se architektura nasazení musí být odlišný se aktivní/aktivní architekturu pro aplikaci nebo architekturu typu aktivní/pasivní vysokou dostupnost, kde je příliš vysoká latence sítě mezi zónami.
-- Při rozhodování, kam k používání zón dostupnosti, základní rozhodnutí o latenci sítě mezi zóny. Latence sítě hraje důležitou roli ve dvou oblastech:
-    - Latence mezi dvěma instancemi DBMS, které potřebují mít synchronní replikace. Čím vyšší latence sítě, větší pravděpodobností bude mít vliv na škálovatelnost vašich úloh.
-    - Rozdíl v latence sítě mezi virtuálním Počítačem s aktivní instanci databázového systému SAP dialogové okno instance v zóně a podobně jako virtuální počítač v jiné zóně. Jak se zvyšuje tohoto rozdílu, vliv na provozní dobu obchodní procesy a dávkové úlohy také zvyšuje, závisí na, jestli jsou spuštěné v zónami s správce databáze nebo v jiné zóně.
-
-Při nasazení napříč zónami dostupnosti virtuálních počítačů Azure a vytvořit řešení převzetí služeb při selhání v rámci stejné oblasti Azure, platí určitá omezení:
-
-- Je nutné použít [Azure Managed Disks](https://azure.microsoft.com/services/managed-disks/) při nasazování do zóny dostupnosti Azure. 
-- Mapování výčtů zóny pro fyzické zóny vyřešen na základě předplatného Azure. Pokud používáte k nasazení vašich systémů SAP různých předplatných, musíte definovat ideální zóny pro každé předplatné.
-- Skupinu dostupnosti Azure v rámci zóny dostupnosti Azure se nedají nasadit. Zvolte jeden z nich jako architektura pro nasazení pro virtuální počítače.
-- Nelze použít [Azure Load balancer úrovně Basic](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview#skus) k vytvoření clusteru řešení založená na Windows Server Failover Clustering nebo Linux Pacemaker převzetí služeb při selhání. Místo toho budete muset použít [Azure standardní SKU nástroje pro vyrovnávání zatížení](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones).
+## <a name="considerations-for-deploying-across-availability-zones"></a>Předpoklady pro nasazení v rámci Zóny dostupnosti
 
 
+Při použití Zóny dostupnosti Vezměte v úvahu následující:
 
-## <a name="the-ideal-availability-zones-combination"></a>Ideální kombinaci zóny dostupnosti
-Než se rozhodnete použití zón dostupnosti, je nutné určit:
+- Neexistují žádné záruky týkající se vzdálenosti mezi různými Zóny dostupnosti v oblasti Azure.
+- Zóny dostupnosti není ideální řešení pro zotavení po havárii. Přírodní katastrofy můžou způsobit rozšířenou škodu v oblastech světa, včetně těžkého poškození infrastruktury napájení. Vzdálenosti mezi různými zónami nemusí být dostatečně velká, aby představovaly správné řešení zotavení po havárii.
+- Latence sítě v rámci Zóny dostupnosti není stejná ve všech oblastech Azure. V některých případech můžete nasadit a spustit aplikační vrstvu SAP v různých zónách, protože latence sítě z jedné zóny na aktivní virtuální počítač DBMS je přijatelná. V některých oblastech Azure ale nemusí být latence mezi aktivním virtuálním počítačem DBMS a instancí aplikace SAP, pokud je nasazená v různých zónách, nepřijatelná pro obchodní procesy SAP. V těchto případech je potřeba, aby se architektura nasazení lišila s architekturou aktivní/aktivní pro aplikaci nebo aktivní/pasivní architekturou, ve které je latence sítě mezi zónami příliš vysoká.
+- Při rozhodování, kde použít Zóny dostupnosti, založte rozhodnutí o latenci sítě mezi zónami. Latence sítě hraje důležitou roli ve dvou oblastech:
+    - Latence mezi dvěma instancemi systému DBMS, které musí mít synchronní replikaci. Čím vyšší je latence sítě, tím pravděpodobněji bude ovlivněná škálovatelnost vašich úloh.
+    - Rozdíl v latenci sítě mezi virtuálním počítačem, na kterém běží instance dialogového okna SAP v zóně s aktivní instancí DBMS a podobným virtuálním počítačem v jiné zóně. Vzhledem k tomu, že se tento rozdíl zvyšuje, zvyšuje se vliv na dobu běhu obchodních procesů a dávkových úloh, záleží na tom, jestli běží v zóně se systémem DBMS nebo v jiné zóně.
 
-- Latence sítě mezi tři zóny oblasti Azure. To vám umožní vybrat zóny s nejnižší síťovou latencí mezi zónami provozu v síti.
-- Rozdíl mezi virtuálních počítačů VM latence v rámci jedné ze zón, které si vyberete a latence sítě napříč dvě zóny, které si vyberete.
-- Určení, jestli se typy virtuálních počítačů, které potřebujete k nasazení jsou dostupné dvě zóny, které jste vybrali. Několik virtuálních počítačů, zejména řady M-Series virtuálních počítačů, může dojít k situacích, ve kterých jsou k dispozici pouze ve dvou tři zóny některých jednotkách SKU.
+Když nasadíte virtuální počítače Azure napříč Zóny dostupnosti a vytvoříte řešení pro převzetí služeb při selhání v rámci stejné oblasti Azure, uplatní se některá omezení:
 
-## <a name="network-latency-between-and-within-zones"></a>Latence sítě mezi a v rámci zóny
-Pokud chcete zjistit latence mezi různými zónami, budete muset:
+- Při nasazení do Zóny dostupnosti Azure je nutné použít [Azure Managed disks](https://azure.microsoft.com/services/managed-disks/) . 
+- Mapování výčtů zóny na fyzické zóny je vyřešeno na základě předplatného Azure. Pokud k nasazení systémů SAP používáte různá předplatná, musíte pro každé předplatné definovat ideální zóny.
+- Skupiny dostupnosti Azure nemůžete nasadit v rámci zóny dostupnosti Azure, pokud nepoužíváte [skupinu umístění s použitím Azure Proximity](https://docs.microsoft.com/azure/virtual-machines/linux/co-location). Způsob nasazení vrstvy SAP DBMS a centrálních služeb v různých zónách a zároveň nasazení vrstvy aplikace SAP pomocí skupin dostupnosti a zajištění bezprostřední blízkosti virtuálních počítačů je popsána v článku [umístění blízkosti Azure Skupiny pro optimální latenci sítě s aplikacemi SAP](sap-proximity-placement-scenarios.md). Pokud nepoužíváte skupiny umístění blízkosti Azure, musíte zvolit jednu nebo druhou jako architekturu nasazení pro virtuální počítače.
+- K vytvoření řešení clusteru s podporou převzetí služeb při selhání založeného na clusteringu Windows Server s podporou převzetí služeb při selhání nebo Linux Pacemaker nejde použít [Azure Basic Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview#skus) . Místo toho je potřeba použít [SKU Azure Standard Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones).
 
-- Nasazení skladovou Položku virtuálního počítače, které chcete použít pro vaši instanci databázového systému ve všech třech zónách. Ujistěte se, že [akcelerovaných síťových služeb Azure](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/) je povolená, když provedete toto měření.
-- Když najdete dvě zóny s nejnižší síťovou latencí nasaďte další tři virtuální počítače skladovou Položku virtuálního počítače, který chcete použít jako aplikační vrstvu virtuálních počítačů ve třech zónách dostupnosti. Měření latence sítě na dva virtuální počítače DBMS v dvě zóny DBMS, které jste vybrali. 
-- Použití **niping** jako nástroj pro měření. Tento nástroj, od SAP, je popsaná v poznámkách podporu [#500235](https://launchpad.support.sap.com/#/notes/500235) a [#1100926](https://launchpad.support.sap.com/#/notes/1100926/E). Zaměřte se na příkazy popsané pro měření latence. Protože **ping** nefunguje prostřednictvím cesty kódu akcelerovaných síťových služeb Azure nedoporučujeme její použití.
 
-Na základě měření a dostupnosti vašich skladové položky virtuálních počítačů v zónách dostupnosti, je třeba některá rozhodnutí:
+
+## <a name="the-ideal-availability-zones-combination"></a>Ideální kombinace Zóny dostupnosti
+Než se rozhodnete, jak používat Zóny dostupnosti, je nutné určit:
+
+- Latence sítě mezi třemi zónami oblasti Azure. To vám umožní vybrat zóny s minimální latencí sítě v síťových přenosech mezi zónami.
+- Rozdíl mezi latencí virtuálních počítačů v rámci jedné z zón, podle vašeho výběru a latencí sítě ve dvou zónách podle vašeho výběru.
+- Určení, zda typy virtuálních počítačů, které je třeba nasadit, jsou k dispozici ve dvou zónách, které jste vybrali. U některých virtuálních počítačů, zejména virtuálních počítačů řady M-Series, může dojít k situaci, kdy jsou některé SKU dostupné jenom v obou třech zónách.
+
+## <a name="network-latency-between-and-within-zones"></a>Latence sítě mezi a v zónách
+K určení latence mezi různými zónami budete potřebovat:
+
+- Nasaďte položku virtuálního počítače, kterou chcete použít pro instanci systému DBMS ve všech třech zónách. Ujistěte se, že je při provádění tohoto měření povolené [urychlení sítě Azure](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/) .
+- Když najdete dvě zóny s minimální latencí sítě, nasaďte další tři virtuální počítače skladové položky virtuálního počítače, které chcete použít jako virtuální počítač aplikační vrstvy v rámci tří Zóny dostupnosti. Změřte latenci sítě proti dvěma virtuálním počítačům DBMS v obou zónách DBMS, které jste vybrali. 
+- Použijte **niping** jako měřicí nástroj. Tento nástroj ze SAP je popsaný v tématu poznámky k podpoře SAP [#500235](https://launchpad.support.sap.com/#/notes/500235) a [#1100926](https://launchpad.support.sap.com/#/notes/1100926/E). Zaměřte se na příkazy dokumentované pro měření latence. Protože nástroj **příkazového testu** na cestách nefunguje přes službu Azure akcelerované síťové cesty, nedoporučujeme ho používat.
+
+Na základě vašich měření a dostupnosti skladových položek virtuálních počítačů v Zóny dostupnosti musíte udělat některá rozhodnutí:
 
 - Definujte ideální zóny pro vrstvu DBMS.
-- Zjistěte, zda chcete distribuovat aktivní aplikační vrstvě SAP napříč jedna, dvě nebo všechny tři zóny, podle rozdílů latence v zóny sítě a napříč zónami.
-- Určete, jestli chcete nasadit konfiguraci aktivní/pasivní nebo konfiguraci aktivní/aktivní, z hlediska aplikací. (Tyto konfigurace jsou vysvětleny dále v tomto článku).
+- Určete, jestli chcete distribuovat aktivní aplikační vrstvu SAP pro jednu, dvě nebo všechny tři zóny na základě rozdílů mezi zónou latence sítě v různých zónách.
+- Určete, zda chcete nasadit konfiguraci typu aktivní/pasivní nebo aktivní/aktivní v aplikačním bodě zobrazení. (Tyto konfigurace jsou vysvětleny dále v tomto článku.)
 
-V rozhodování, rovněž brát v úvahu účet SAP doporučení latence sítě, jak je uvedeno v Poznámka SAP [#1100926](https://launchpad.support.sap.com/#/notes/1100926/E).
-
-> [!IMPORTANT]
-> Jsou platné pro předplatné Azure, které jste použili při trvalo měření měření a rozhodnutí, které provedete. Pokud používáte jiného předplatného Azure, musíte opakovat měření. Mapování výčtu zóny můžou být různé pro jiného předplatného Azure.
-
+Při rozhodování o těchto rozhodnutích Vezměte v úvahu také doporučení pro latenci sítě SAP, jak je popsáno v SAP Note [#1100926](https://launchpad.support.sap.com/#/notes/1100926/E).
 
 > [!IMPORTANT]
-> Očekává se, že měření bylo popsáno dříve bude poskytovat různé výsledky ve všech oblastech Azure, který podporuje [zóny dostupnosti](https://docs.microsoft.com/azure/availability-zones/az-overview). I v případě, že vaše požadavky na latenci sítě jsou stejné, můžete potřebovat přijmout různé strategie nasazení v různých oblastech Azure, protože latence sítě mezi zónami se může lišit. V některých oblastech Azure latence sítě mezi tři různé oblasti, může se výrazně lišit. V jiných oblastech může být latence sítě mezi tři různé oblasti jednotnější. Deklarace identity, který je vždycky latence sítě mezi 1 a 2 ms není správná. Latence sítě napříč zónami dostupnosti v oblasti Azure, které nelze zobecněný.
+> Měření a rozhodnutí, která učiníte, jsou platná pro předplatné Azure, které jste použili, když jste provedli měření. Pokud používáte jiné předplatné Azure, budete muset měření opakovat. Mapování výčtu zón se může pro jiné předplatné Azure lišit.
+
+
+> [!IMPORTANT]
+> Očekává se, že výše popsané míry poskytují různé výsledky v každé oblasti Azure, která podporuje [zóny dostupnosti](https://docs.microsoft.com/azure/availability-zones/az-overview). I v případě, že požadavky na latenci sítě jsou stejné, možná budete muset v různých oblastech Azure přijmout různé strategie nasazení, protože latence sítě mezi zónami se může lišit. V některých oblastech Azure může být latence sítě mezi třemi různými zónami výrazně odlišná. V jiných oblastech může být latence sítě mezi třemi různými zónami větší. Deklarace identity, která je vždy latence sítě mezi 1 a 2 milisekundami, není správná. Latence sítě napříč Zóny dostupnosti v oblastech Azure není možné zobecnit.
 
 ## <a name="activeactive-deployment"></a>Aktivní/aktivní nasazení
-Tato architektura nasazení se nazývá aktivní/aktivní, protože nasazení aktivní aplikační servery SAP napříč zónami dvě nebo tři. Centrální služby SAP instanci, která používá replikaci na zařazení do fronty se nasadí mezi dvě zóny. Totéž platí pro vrstvu DBMS, které budou nasazené ve stejné oblasti jako centrální služby SAP.
+Tato architektura nasazení se nazývá aktivní/aktivní, protože vaše aktivní aplikační servery SAP nasazujete ve dvou nebo třech zónách. Instance služby SAP Central Services, která využívá replikaci do fronty, bude nasazena mezi dvěma zónami. Totéž platí pro vrstvu DBMS, která bude nasazena ve stejných zónách jako centrální služba SAP.
 
-Při zvažování tuto konfiguraci, budete muset najít dvě zóny dostupnosti ve vaší oblasti této nabídky mezi zónami sítích s latencí, které je přijatelné pro vaši úlohu a vaše synchronní replikace DBMS. Můžete také chtít nechat rozdílů mezi latence sítě v rámci zóny, kterou jste vybrali a latence sítě napříč zónami není příliš velký. Důvodem je, že už nechcete velké odchylky, v závislosti na tom, jestli úloha běží v zóně serverem DBMS nebo napříč oblasti, ve spuštěné časů vašich firemních procesech nebo dávkových úloh Hive. Některé změny jsou přijatelné, ale ne faktory rozdíl.
+Při zvažování této konfigurace potřebujete najít dvě Zóny dostupnosti ve vaší oblasti, které nabízejí latenci sítě mezi zónami, což je přijatelné pro vaše zatížení a synchronní replikaci DBMS. Také si přejete mít jistotu, že rozdíl mezi latencí sítě v rámci vybraných zón a latencí sítě mezi zónami není moc velký. Důvodem je to, že nechcete velké odchylky v závislosti na tom, jestli úloha běží v zóně se serverem DBMS nebo v různých zónách, a to v době spuštění vašich obchodních procesů nebo dávkových úloh. Některé varianty jsou přijatelné, ale ne faktory rozdílu.
 
-Zjednodušené schéma aktivní/aktivní nasazení napříč zónami dvě může vypadat například takto:
+Zjednodušené schéma aktivního/aktivního nasazení ve dvou zónách může vypadat takto:
 
-![Nasazení zóny aktivní/aktivní](./media/sap-ha-availability-zones/active_active_zones_deployment.png)
+![Nasazení aktivní/aktivní zóny](./media/sap-ha-availability-zones/active_active_zones_deployment.png)
 
-Pro tuto konfiguraci, platí následující aspekty:
+Pro tuto konfiguraci platí následující požadavky:
 
-- Je považovat za zóny dostupnosti Azure doménami selhání a aktualizačními doménami pro všechny virtuální počítače, protože skupiny dostupnosti se nedá nasadit zóny dostupnosti Azure.
-- Pro nástroje pro vyrovnávání zatížení clustery převzetí služeb při selhání centrální služby SAP a vrstvě DBMS, budete muset použít [skladová položka Azure Load balanceru úrovně Standard](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones). Základní nástroje pro vyrovnávání zatížení nebude fungovat mezi zónami.
-- Virtuální síť Azure, který jste nasadili jako hostitele systému SAP, společně s jeho podsítě je roztažená napříč zónami. Není nutné oddělit virtuálních sítí pro každou zónu.
-- Pro všechny virtuální počítače nasadíte, budete muset použít [Azure Managed Disks](https://azure.microsoft.com/services/managed-disks/). Nespravované disky nejsou podporovány pro zónové nasazení.
-- Azure Premium Storage a [Ultra SSD úložiště](https://docs.microsoft.com/azure/virtual-machines/windows/disks-ultra-ssd) nepodporují libovolného typu replikace úložiště mezi zónami. Aplikace (systém DBMS nebo centrální služby SAP) musí replikovat důležitá data.
-- Totéž platí pro adresář sdílené sapmnt, který je sdílený disk (Windows), sdílené složky CIFS (Windows) nebo do sdílené složky systému souborů NFS (Linux). Budete muset použít technologii, která se replikují mezi zóny těchto sdílených disků nebo sdílených složek. Podporují se tyto technologie:
-  - Pro Windows, clusterové řešení, která používá SIOS DataKeeper, jak je uvedeno v [instanci SAP ASCS/SCS clusteru v clusteru převzetí služeb při selhání Windows s použitím sdíleného disku clusteru v Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-shared-disk).
-  - SUSE Linux sdílet systému souborů NFS, které tvoříme tak, jak je uvedeno v [vysoká dostupnost pro NFS na virtuálních počítačích Azure na SUSE Linux Enterprise Server](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs).
+- Nepoužíváte [skupinu umístění blízkosti Azure](https://docs.microsoft.com/azure/virtual-machines/linux/co-location), považujete zóny dostupnosti Azure jako chybu a aktualizační domény pro všechny virtuální počítače, protože skupiny dostupnosti nejde nasadit v zóny dostupnosti Azure.
+- Pokud chcete kombinovat nasazení na více systémů pro vrstvu DBMS a centrální služby, ale chcete použít skupiny dostupnosti Azure pro aplikační vrstvu, je třeba použít skupiny s použitím Azure Proximity, jak je popsáno v článku [skupiny umístění blízkosti Azure pro optimální latence sítě s aplikacemi SAP](sap-proximity-placement-scenarios.md).
+- Pro nástroje pro vyrovnávání zatížení clusterů s podporou převzetí služeb při selhání v centrálních službách SAP a ve vrstvě DBMS musíte použít [standardní SKU Azure Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones). Základní Load Balancer nebudou v různých zónách fungovat.
+- Virtuální síť Azure, kterou jste nasadili pro hostování systému SAP, spolu s jejími podsítěmi, je roztažena v různých zónách. Pro každou zónu nepotřebujete samostatné virtuální sítě.
+- U všech virtuálních počítačů, které nasazujete, je potřeba použít [Azure Managed disks](https://azure.microsoft.com/services/managed-disks/). Nespravované disky nejsou podporované pro nasazení v prostředích.
+- Služba Azure Premium Storage a [úložiště SSD úrovně Ultra](https://docs.microsoft.com/azure/virtual-machines/windows/disks-ultra-ssd) nepodporují žádný typ replikace úložiště mezi zónami. Aplikace (DBMS nebo SAP Central Services) musí replikovat důležitá data.
+- Totéž platí pro sdílený adresář sapmnt, což je sdílený disk (Windows), sdílená složka CIFS (Windows) nebo sdílená složka systému souborů NFS (Linux). Je potřeba použít technologii, která replikuje tyto sdílené disky nebo sdílené složky mezi zónami. Podporují se tyto technologie:
+  - Pro Windows se jedná o Clusterové řešení, které používá s DataKeeper, jak je popsáno v [clusteru instance SAP ASCS/SCS v clusteru s podporou převzetí služeb při selhání s Windows pomocí sdíleného disku clusteru v Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-shared-disk).
+  - Pro SUSE Linux se jedná o sdílenou složku NFS, která je popsána jako popsaná ve [vysoké dostupnosti pro systém souborů NFS na virtuálních počítačích Azure na SUSE Linux Enterprise Server](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs).
     
-    V současné době řešení, které používá Microsoft horizontální navýšení kapacity souborového serveru, jak je uvedeno v [infrastruktury Příprava Azure pro zajištění vysoké dostupnosti SAP pomocí Windows převzetí služeb při selhání clusteru a sdílenou složku pro instance SAP ASCS/SCS](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-infrastructure-wsfc-file-share), není podporované napříč zónami.
-- Třetí zóny slouží jako hostitel SBD zařízení v případě, že vytvoříte [operačním systémem SUSE Linux Pacemaker clusteru](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#create-azure-fence-agent-stonith-device) nebo instance další aplikace.
-- Jak dosáhnout konzistence běhu pro důležité obchodní procesy, můžete zkusit přímé některé úlohy služby batch a uživatelů do instancí aplikace, které jsou v zóně s aktivní instanci databázového systému SAP pomocí služby batch skupiny serverů, skupin přihlášení nebo RFC skupiny. Ale v případě oblastmi převzetí služeb při selhání, je třeba ručně přesunout tyto skupiny do instance běžící na virtuálních počítačích, které jsou v zóně s virtuálním Počítačem aktivní databáze.  
-- Můžete chtít nasadit neaktivní dialogové okno instance ve všech oblastech. Toto je povolit okamžité návrat do kapacity bývalé prostředku, pokud zóna používané části instancí vašich aplikací je mimo provoz.
+    V současné době řešení, které používá souborový server se škálováním na více systémů, jak je popsáno v části [Příprava infrastruktury Azure pro službu SAP high availability pomocí clusteru s podporou převzetí služeb při selhání systému Windows a sdílené složky pro instance SAP ASCS/SCS](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-infrastructure-wsfc-file-share), není podporováno napříč zónami.
+- Třetí zóna se používá k hostování zařízení SBD pro případ, že vytvoříte [cluster SUSE Linux Pacemaker](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#create-azure-fence-agent-stonith-device) nebo další instance aplikace.
+- Aby byla zajištěna konzistence za běhu pro kritické obchodní procesy, můžete se pokusit směrovat určité úlohy služby Batch a uživatele do instancí aplikace, které jsou v zóně s aktivní instancí DBMS, pomocí skupin systému SAP Batch, skupin přihlášení SAP nebo skupin RFC. V případě převzetí služeb při selhání však budete muset tyto skupiny ručně přesunout na instance spuštěné na virtuálních počítačích, které jsou v zóně s aktivním virtuálním počítačem databáze.  
+- V každé z zón můžete chtít nasadit instance nespících dialogových oken. Je tak umožněn okamžitý návrat k dřívější kapacitě prostředků, pokud je zóna, kterou používá část instancí vaší aplikace, mimo provoz.
 
 
-## <a name="activepassive-deployment"></a>Aktivní/pasivní vysoká dostupnost nasazení
-Pokud nemůžete najít přijatelné rozdílů mezi latence sítě v jedné zóně a latence napříč zónami síťový provoz, můžete nasadit architekturu, která obsahuje znak aktivní/pasivní vysokou dostupnost z SAP application layer hlediska. Můžete definovat *aktivní* zóně, což je zóna, kde nasadíte kompletní aplikační vrstvy a při pokusu o spuštění aktivní správce databáze a instance centrální služby SAP. S konfigurací budete muset Ujistěte se, že nemáte extreme běhu odchylky, v závislosti na tom, zda úloha běží v zónami s aktivní instanci databázového systému nebo Ne, v obchodních transakcí a úloh služby batch.
+## <a name="activepassive-deployment"></a>Aktivní/pasivní nasazení
+Pokud nemůžete najít přijatelný rozdíl mezi latencí sítě v rámci jedné zóny a latencí síťového provozu mezi zónami, můžete nasadit architekturu s aktivním/pasivním znakem z bodu aplikační vrstvy SAP. Definujete *aktivní* zónu, což je zóna, do které nasazujete kompletní vrstvu aplikace a kde se pokusíte spustit jak aktivní systém DBMS, tak i službu SAP Central Services. Tato konfigurace vyžaduje, abyste měli jistotu, že nemáte extrémní dobu běhu, a to v závislosti na tom, jestli úloha běží v zóně s aktivní instancí DBMS, nebo ne, v obchodních transakcích a dávkových úlohách.
 
-Základní rozložení architektura vypadá takto:
+Základní rozložení architektury vypadá takto:
 
-![Aktivní/pasivní zónu nasazení](./media/sap-ha-availability-zones/active_passive_zones_deployment.png)
+![Aktivní/pasivní nasazení zóny](./media/sap-ha-availability-zones/active_passive_zones_deployment.png)
 
-Pro tuto konfiguraci, platí následující aspekty:
+Pro tuto konfiguraci platí následující požadavky:
 
-- Zóny dostupnosti Azure se nedá nasadit skupiny dostupnosti. Ano v takovém případě máte jednu doménu aktualizace a odolnost pro aplikační vrstvu. To je proto, že je nasazena pouze v jedné zóně. Tato konfigurace je mírně méně žádoucí než referenční architektury, což naznačuje, že nasadíte aplikační vrstvu ve skupině dostupnosti Azure.
-- Při použití této architektury, budete muset pečlivě monitorovat stav a snažte se zachovat aktivní DBMS a centrální služby SAP instance ve stejné zóně jako nasazená aplikační vrstvu. V případě selhání centrální služby SAP nebo instance databázového systému budete chtít Ujistěte se, že můžete ručně převzít zpět do zóny s aplikační vrstvě SAP nasazené co nejrychleji.
-- Pro nástroje pro vyrovnávání zatížení clustery převzetí služeb při selhání centrální služby SAP a vrstvě DBMS, budete muset použít [skladová položka Azure Load balanceru úrovně Standard](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones). Základní nástroje pro vyrovnávání zatížení nebude fungovat mezi zónami.
-- Virtuální síť Azure, který jste nasadili jako hostitele systému SAP, společně s jeho podsítě je roztažená napříč zónami. Není nutné oddělit virtuálních sítí pro každou zónu.
-- Pro všechny virtuální počítače nasadíte, budete muset použít [Azure Managed Disks](https://azure.microsoft.com/services/managed-disks/). Nespravované disky nejsou podporovány pro zónové nasazení.
-- Azure Premium Storage a [Ultra SSD úložiště](https://docs.microsoft.com/azure/virtual-machines/windows/disks-ultra-ssd) nepodporují libovolného typu replikace úložiště mezi zónami. Aplikace (systém DBMS nebo centrální služby SAP) musí replikovat důležitá data.
-- Totéž platí pro adresář sdílené sapmnt, který je sdílený disk (Windows), sdílené složky CIFS (Windows) nebo do sdílené složky systému souborů NFS (Linux). Budete muset použít technologii, která se replikují mezi zóny těchto sdílených disků nebo sdílených složek. Podporují se tyto technologie:
-    - Pro Windows, clusterové řešení, která používá SIOS DataKeeper, jak je uvedeno v [instanci SAP ASCS/SCS clusteru v clusteru převzetí služeb při selhání Windows s použitím sdíleného disku clusteru v Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-shared-disk).
-    - SUSE Linux sdílet systému souborů NFS, které tvoříme tak, jak je uvedeno v [vysoká dostupnost pro NFS na virtuálních počítačích Azure na SUSE Linux Enterprise Server](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs).
+- Skupiny dostupnosti nejde nasadit v Zóny dostupnosti Azure. Abyste to mohli kompenzovat, můžete použít skupiny umístění v blízkosti Azure, jak je popsáno v článku [skupiny umístění blízkosti Azure pro optimální latenci sítě s aplikacemi SAP](sap-proximity-placement-scenarios.md).
+- Když použijete tuto architekturu, musíte monitorovat stav těsně a pokusit se zachovat instance Active DBMS a služby SAP Central Services ve stejné zóně jako nasazená aplikační vrstva. V případě převzetí služeb při selhání centrální služby SAP nebo systému DBMS se ujistěte, že můžete ručně navrátit služby po obnovení do zóny s aplikační vrstvou SAP nasazenou co nejrychleji.
+- Pro nástroje pro vyrovnávání zatížení clusterů s podporou převzetí služeb při selhání v centrálních službách SAP a ve vrstvě DBMS musíte použít [standardní SKU Azure Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones). Základní Load Balancer nebudou v různých zónách fungovat.
+- Virtuální síť Azure, kterou jste nasadili pro hostování systému SAP, spolu s jejími podsítěmi, je roztažena v různých zónách. Pro každou zónu nepotřebujete samostatné virtuální sítě.
+- U všech virtuálních počítačů, které nasazujete, je potřeba použít [Azure Managed disks](https://azure.microsoft.com/services/managed-disks/). Nespravované disky nejsou podporované pro nasazení v prostředích.
+- Služba Azure Premium Storage a [úložiště SSD úrovně Ultra](https://docs.microsoft.com/azure/virtual-machines/windows/disks-ultra-ssd) nepodporují žádný typ replikace úložiště mezi zónami. Aplikace (DBMS nebo SAP Central Services) musí replikovat důležitá data.
+- Totéž platí pro sdílený adresář sapmnt, což je sdílený disk (Windows), sdílená složka CIFS (Windows) nebo sdílená složka systému souborů NFS (Linux). Je potřeba použít technologii, která replikuje tyto sdílené disky nebo sdílené složky mezi zónami. Podporují se tyto technologie:
+    - Pro Windows se jedná o Clusterové řešení, které používá s DataKeeper, jak je popsáno v [clusteru instance SAP ASCS/SCS v clusteru s podporou převzetí služeb při selhání s Windows pomocí sdíleného disku clusteru v Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-shared-disk).
+    - Pro SUSE Linux se jedná o sdílenou složku NFS, která je popsána jako popsaná ve [vysoké dostupnosti pro systém souborů NFS na virtuálních počítačích Azure na SUSE Linux Enterprise Server](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs).
     
-  V současné době řešení, které používá Microsoft horizontální navýšení kapacity souborového serveru, jak je uvedeno v [infrastruktury Příprava Azure pro zajištění vysoké dostupnosti SAP pomocí Windows převzetí služeb při selhání clusteru a sdílenou složku pro instance SAP ASCS/SCS](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-infrastructure-wsfc-file-share), není podporované napříč zónami.
-- Třetí zóny slouží jako hostitel SBD zařízení v případě, že vytvoříte [operačním systémem SUSE Linux Pacemaker clusteru](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#create-azure-fence-agent-stonith-device) nebo instance další aplikace.
-- Měli byste nasadit neaktivní virtuální počítače ve skupině pasivní zónu (z DBMS hlediska), abyste je mohli začít prostředků aplikace v případě selhání zóny.
-    - [Azure Site Recovery](https://azure.microsoft.com/services/site-recovery/) současné době není schopna replikovat virtuální počítače aktivní na neaktivní virtuální počítače mezi zónami. 
-- Investovat ve službě automation, která umožňuje, v případě selhání zóny na automatické spuštění aplikační vrstvě SAP v druhé zóny.
+  V současné době řešení, které používá souborový server se škálováním na více systémů, jak je popsáno v části [Příprava infrastruktury Azure pro službu SAP high availability pomocí clusteru s podporou převzetí služeb při selhání systému Windows a sdílené složky pro instance SAP ASCS/SCS](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-infrastructure-wsfc-file-share), není podporováno napříč zónami.
+- Třetí zóna se používá k hostování zařízení SBD pro případ, že vytvoříte [cluster SUSE Linux Pacemaker](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#create-azure-fence-agent-stonith-device) nebo další instance aplikace.
+- Měli byste nasadit neaktivní virtuální počítače v pasivní zóně (ze zobrazení bod DBMS), abyste mohli v případě selhání zóny spustit prostředky aplikace.
+    - [Azure Site Recovery](https://azure.microsoft.com/services/site-recovery/) aktuálně nedokáže replikovat aktivní virtuální počítače na neaktivní virtuální počítače mezi zónami. 
+- Měli byste investovat do automatizace, která vám v případě selhání zóny umožní automaticky spustit vrstvu aplikace SAP ve druhé zóně.
 
-## <a name="combined-high-availability-and-disaster-recovery-configuration"></a>Kombinované vysoké dostupnosti a konfigurace zotavení po havárii
-Microsoft nesdílel žádné informace o geografické vzdálenosti mezi prostředky tohoto hostitele různých zón dostupnosti Azure v oblasti Azure. Zákazníci, kteří stále, využívají zóny pro kombinované vysokou dostupnost a zotavení po Havárii konfiguraci, která slibuje plánovaného bodu obnovení (RPO), nula. To znamená, že by neměla ztratit jakékoli transakce potvrzeny databáze i v případě zotavení po havárii. 
+## <a name="combined-high-availability-and-disaster-recovery-configuration"></a>Kombinovaná konfigurace vysoké dostupnosti a zotavení po havárii
+Společnost Microsoft nesdílí žádné informace o geografických vzdálenostech mezi zařízeními, která jsou hostitelem různých Zóny dostupnosti Azure v oblasti Azure. Přesto někteří zákazníci používají zóny pro kombinovanou konfiguraci HA a zotavení po havárii, která příslibů cíl bodu obnovení (RPO) nula. To znamená, že byste neměli přijít na jakékoli potvrzené databázové transakce i v případě zotavení po havárii. 
 
 > [!NOTE]
-> Doporučujeme použít konfiguraci jako to pouze za určitých okolností. Ho můžete použít například, když data nemohou opustit oblast Azure z důvodů zabezpečení nebo dodržování předpisů. 
+> Doporučujeme, abyste používali konfiguraci, jako je to jenom za určitých okolností. Můžete ho například použít, když data nemůžou opustit oblast Azure z důvodů zabezpečení nebo dodržování předpisů. 
 
-Tady je jeden příklad toho, jak taková konfigurace může vypadat:
+Tady je příklad toho, jak by tato konfigurace mohla vypadat:
 
-![Kombinované zotavení po Havárii vysokou dostupnost v oblastech](./media/sap-ha-availability-zones/combined_ha_dr_in_zones.png)
+![Kombinovaná vysoká dostupnost DR v zónách](./media/sap-ha-availability-zones/combined_ha_dr_in_zones.png)
 
-Pro tuto konfiguraci, platí následující aspekty:
+Pro tuto konfiguraci platí následující požadavky:
 
-- Buď jste za předpokladu, že je důležité vzdálenost mezi zařízení, který je hostitelem zóny dostupnosti nebo budete muset zůstat v určité oblasti Azure. Zóny dostupnosti Azure se nedá nasadit skupiny dostupnosti. Ano v takovém případě máte jednu doménu aktualizace a odolnost pro aplikační vrstvu. To je proto, že je nasazena pouze v jedné zóně. Tato konfigurace je mírně méně žádoucí než referenční architektury, což naznačuje, že nasadíte aplikační vrstvu ve skupině dostupnosti Azure.
-- Při použití této architektury, budete muset pečlivě monitorovat stav a snažte se zachovat aktivní DBMS a centrální služby SAP instance ve stejné zóně jako nasazená aplikační vrstvu. V případě selhání centrální služby SAP nebo instance databázového systému budete chtít Ujistěte se, že můžete ručně převzít zpět do zóny s aplikační vrstvě SAP nasazené co nejrychleji.
-- Měli byste mít produkčních instancí aplikace předinstalované ve virtuálních počítačích, na kterých běží aktivní instance aplikace dotazů a odpovědí.
-- V případě selhání zóny vypne instance aplikace QA a spouštěli produkční instance. Všimněte si, že budete muset použít virtuální názvů pro instance aplikace provést tuto práci.
-- Pro nástroje pro vyrovnávání zatížení clustery převzetí služeb při selhání centrální služby SAP a vrstvě DBMS, budete muset použít [skladová položka Azure Load balanceru úrovně Standard](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones). Základní nástroje pro vyrovnávání zatížení nebude fungovat mezi zónami.
-- Virtuální síť Azure, který jste nasadili jako hostitele systému SAP, společně s jeho podsítě je roztažená napříč zónami. Není nutné oddělit virtuálních sítí pro každou zónu.
-- Pro všechny virtuální počítače nasadíte, budete muset použít [Azure Managed Disks](https://azure.microsoft.com/services/managed-disks/). Nespravované disky nejsou podporovány pro zónové nasazení.
-- Azure Premium Storage a [Ultra SSD úložiště](https://docs.microsoft.com/azure/virtual-machines/windows/disks-ultra-ssd) nepodporují libovolného typu replikace úložiště mezi zónami. Aplikace (systém DBMS nebo centrální služby SAP) musí replikovat důležitá data.
-- Totéž platí pro adresář sdílené sapmnt, který je sdílený disk (Windows), sdílené složky CIFS (Windows) nebo do sdílené složky systému souborů NFS (Linux). Budete muset použít technologii, která se replikují mezi zóny těchto sdílených disků nebo sdílených složek. Podporují se tyto technologie:
-    - Pro Windows, clusterové řešení, která používá SIOS DataKeeper, jak je uvedeno v [instanci SAP ASCS/SCS clusteru v clusteru převzetí služeb při selhání Windows s použitím sdíleného disku clusteru v Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-shared-disk).
-    - SUSE Linux sdílet systému souborů NFS, které tvoříme tak, jak je uvedeno v [vysoká dostupnost pro NFS na virtuálních počítačích Azure na SUSE Linux Enterprise Server](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs).
+- Za předpokladu, že mezi zařízeními, která hostuje zónu dostupnosti, nebo v určité oblasti Azure máte významnou vzdálenost. Skupiny dostupnosti nejde nasadit v Zóny dostupnosti Azure. Abyste to mohli kompenzovat, můžete použít skupiny umístění v blízkosti Azure, jak je popsáno v článku [skupiny umístění blízkosti Azure pro optimální latenci sítě s aplikacemi SAP](sap-proximity-placement-scenarios.md).
+- Když použijete tuto architekturu, musíte monitorovat stav těsně a pokusit se zachovat instance Active DBMS a služby SAP Central Services ve stejné zóně jako nasazená aplikační vrstva. V případě převzetí služeb při selhání centrální služby SAP nebo systému DBMS se ujistěte, že můžete ručně navrátit služby po obnovení do zóny s aplikační vrstvou SAP nasazenou co nejrychleji.
+- Na virtuálních počítačích, na kterých běží aktivní instance aplikace QA, byste měli mít předem nainstalované instance produkčních aplikací.
+- V případě selhání zóny vypněte instance aplikace QA a místo toho spusťte instance v produkčním prostředí. Všimněte si, že k této práci musíte použít virtuální názvy pro instance aplikace.
+- Pro nástroje pro vyrovnávání zatížení clusterů s podporou převzetí služeb při selhání v centrálních službách SAP a ve vrstvě DBMS musíte použít [standardní SKU Azure Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones). Základní Load Balancer nebudou v různých zónách fungovat.
+- Virtuální síť Azure, kterou jste nasadili pro hostování systému SAP, spolu s jejími podsítěmi, je roztažena v různých zónách. Pro každou zónu nepotřebujete samostatné virtuální sítě.
+- U všech virtuálních počítačů, které nasazujete, je potřeba použít [Azure Managed disks](https://azure.microsoft.com/services/managed-disks/). Nespravované disky nejsou podporované pro nasazení v prostředích.
+- Služba Azure Premium Storage a [úložiště SSD úrovně Ultra](https://docs.microsoft.com/azure/virtual-machines/windows/disks-ultra-ssd) nepodporují žádný typ replikace úložiště mezi zónami. Aplikace (DBMS nebo SAP Central Services) musí replikovat důležitá data.
+- Totéž platí pro sdílený adresář sapmnt, což je sdílený disk (Windows), sdílená složka CIFS (Windows) nebo sdílená složka systému souborů NFS (Linux). Je potřeba použít technologii, která replikuje tyto sdílené disky nebo sdílené složky mezi zónami. Podporují se tyto technologie:
+    - Pro Windows se jedná o Clusterové řešení, které používá s DataKeeper, jak je popsáno v [clusteru instance SAP ASCS/SCS v clusteru s podporou převzetí služeb při selhání s Windows pomocí sdíleného disku clusteru v Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-shared-disk).
+    - Pro SUSE Linux se jedná o sdílenou složku NFS, která je popsána jako popsaná ve [vysoké dostupnosti pro systém souborů NFS na virtuálních počítačích Azure na SUSE Linux Enterprise Server](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs).
 
-  V současné době řešení, které používá Microsoft horizontální navýšení kapacity souborového serveru, jak je uvedeno v [infrastruktury Příprava Azure pro zajištění vysoké dostupnosti SAP pomocí Windows převzetí služeb při selhání clusteru a sdílenou složku pro instance SAP ASCS/SCS](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-infrastructure-wsfc-file-share), není podporované napříč zónami.
-- Třetí zóny slouží jako hostitel SBD zařízení v případě, že vytvoříte [operačním systémem SUSE Linux Pacemaker clusteru](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#create-azure-fence-agent-stonith-device) nebo instance další aplikace.
+  V současné době řešení, které používá souborový server se škálováním na více systémů, jak je popsáno v části [Příprava infrastruktury Azure pro službu SAP high availability pomocí clusteru s podporou převzetí služeb při selhání systému Windows a sdílené složky pro instance SAP ASCS/SCS](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-infrastructure-wsfc-file-share), není podporováno napříč zónami.
+- Třetí zóna se používá k hostování zařízení SBD pro případ, že vytvoříte [cluster SUSE Linux Pacemaker](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#create-azure-fence-agent-stonith-device) nebo další instance aplikace.
 
 
 
 
 
 ## <a name="next-steps"></a>Další postup
-Tady jsou některé další kroky k nasazení napříč zónami dostupnosti Azure:
+Tady je několik dalších kroků pro nasazení v rámci Zóny dostupnosti Azure:
 
-- [Instance SAP ASCS/SCS clusteru v clusteru převzetí služeb při selhání Windows s použitím sdíleného disku clusteru v Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-shared-disk)
-- [Příprava infrastruktury Azure pro zajištění vysoké dostupnosti SAP pomocí Windows převzetí služeb při selhání clusteru a sdílenou složku pro instance SAP ASCS/SCS](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-infrastructure-wsfc-file-share)
+- [Vytvoření clusteru instance SAP ASCS/SCS v clusteru s podporou převzetí služeb při selhání s Windows pomocí sdíleného disku clusteru v Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-shared-disk)
+- [Příprava infrastruktury Azure na vysokou dostupnost pomocí clusteru s podporou převzetí služeb při selhání systému Windows a sdílené složky pro instance SAP ASCS/SCS](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-infrastructure-wsfc-file-share)
 
 
 

@@ -1,63 +1,63 @@
 ---
-title: Značky a verze imagí ve službě Azure Container Registry
-description: Osvědčené postupy pro označování a správy verzí Docker imagí kontejneru
+title: Označení a verze obrázků v Azure Container Registry
+description: Osvědčené postupy pro označování a image kontejnerů kontejneru Docker
 services: container-registry
 author: stevelasker
 ms.service: container-registry
 ms.topic: article
 ms.date: 07/10/2019
-ms.author: steve.lasker
-ms.openlocfilehash: bd00fd4f8dd247c766eb34849ecf9de603c5171b
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.author: stevelas
+ms.openlocfilehash: ea7c0831f4ecc345cbcd8a9b8eb6d6566e8c5023
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67800390"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68297767"
 ---
-# <a name="recommendations-for-tagging-and-versioning-container-images"></a>Doporučení pro označování a správy verzí Image kontejneru
+# <a name="recommendations-for-tagging-and-versioning-container-images"></a>Doporučení pro označování a naznačení verzí imagí kontejneru
 
-Při nahrávání nasazování imagí kontejneru do registru kontejneru a jejich nasazení, potřebují strategii pro označování image a správy verzí. Tento článek popisuje dva přístupy a kde každý vyhovuje během životního cyklu kontejneru:
+Při doručování nasazování imagí kontejneru do registru kontejneru a jejich nasazení budete potřebovat strategii pro označování imagí a správu verzí. Tento článek popisuje dva přístupy a jejich umístění do životního cyklu kontejneru:
 
-* **Stabilní značky** – značky, které můžete znovu použít, například znamenat velkou nebo vedlejší číslo verze, jako *mycontainerimage:1.0*.
-* **Jedinečné značky** -jinou značku pro každý obrázek nahrajete do registru, jako například *mycontainerimage:abc123*.
+* **Stabilní značky značek** , které můžete opakovaně používat, například k označení hlavní nebo dílčí verze, jako je například *mycontainerimage: 1.0*.
+* **Jedinečné značky** – pro každý obrázek, který zadáváte do registru, jako je například *mycontainerimage: abc123*, se jedná o jinou značku.
 
 ## <a name="stable-tags"></a>Stabilní značky
 
-**Doporučení**: Použití značek stabilní udržovat **základní image** pro sestavení kontejneru. Nasazení s stabilní značky se vyhněte, protože tyto visačky nadále získávat aktualizace a můžete zavést nekonzistence v produkčním prostředí.
+**Doporučení**: Používejte stabilní značky pro zachování **základních imagí** pro sestavení kontejneru. Vyhněte se nasazení s stabilními značkami, protože tyto značky nadále získávají aktualizace a můžou v produkčních prostředích zavádět nekonzistence.
 
-*Stabilní značky* znamenat vývojář nebo systém sestavení, můžete nadále o přijetí změn s konkrétní značkou nadále získávat aktualizace. Stabilní, neznamená, že jsou zmražená obsah. Místo toho znamená stabilní verze image by měla být stabilní pro záměr tuto verzi. Zůstat "stálé", může být obsluhovány použití opravy zabezpečení nebo aktualizace rozhraní framework.
+*Stabilní značky* znamenají, že vývojář nebo systém sestavení může pokračovat v vyžádání konkrétní značky, která bude nadále získávat aktualizace. Stabilita znamená, že obsah je zmrazený. Místo toho předpokládá, že by image měla být stabilní pro záměr této verze. Aby zůstala stálá, mohla by se provozovat na použití oprav zabezpečení nebo aktualizací rozhraní.
 
 ### <a name="example"></a>Příklad
 
-Tým rozhraní framework dodává verze 1.0. Ví, že se budete vydávat, včetně dílčí aktualizace. Pro podporu stabilní značky pro danou hlavní a dílčí verze, mají dvě sady stabilní značky.
+Tým rozhraní dodává verzi 1,0. Ví, že budou dodávat aktualizace, včetně menších aktualizací. Pro podporu stabilních značek pro danou hlavní a dílčí verzi mají dvě sady stabilních značek.
 
-* `:1` – stabilní značky pro hlavní verzi. `1` představuje verzi 1.* "nejnovější" nebo "posledního".
-* `:1.0`-stabilní značky pro verzi 1.0, což vývojář, abyste mohli vytvořit vazbu k aktualizacím 1.0 a nesmí být posunut dopředu na hodnotu 1.1 po vydání.
+* `:1`– stabilní značka pro hlavní verzi. `1`představuje nejnovější nebo nejnovější verzi 1. *.
+* `:1.0`– stabilní značka pro verzi 1,0, která vývojářům umožňuje vytvořit vazby na aktualizace 1,0 a nebude se předávat do 1,1 po vydání.
 
-Tým také používá `:latest` značku, která odkazuje na nejnovější stabilní značka, bez ohledu na to, jaký je aktuální hlavní verze.
+Tým také používá `:latest` značku, která odkazuje na nejnovější stabilní značku bez ohledu na to, co je aktuální hlavní verze.
 
-Když jsou k dispozici aktualizace základní image nebo libovolný typ obsluhy verzi rozhraní framework imagí pomocí stabilní značky se aktualizují na nejnovější ověřování algoritmem digest, který představuje nejnovější stabilní verze tuto verzi.
+Pokud jsou k dispozici základní aktualizace obrázků nebo jakýkoli typ servisního vydání rozhraní, bitové kopie s stabilními značkami se aktualizují na nejnovější výtah, který představuje nejaktuálnější verzi této verze.
 
-V tomto případě jsou neustále údržba hlavních a vedlejších značek. Ze základní image scénáře díky tomu vlastníka bitové kopie poskytnout obsluhované imagí.
+V tomto případě se průběžně obsluhují hlavní i vedlejší značky. V případě základní Image to umožňuje vlastníkovi obrázku poskytovat obsluhované bitové kopie.
 
 ## <a name="unique-tags"></a>Jedinečné značky
 
-**Doporučení**: Použijte jedinečný značky pro **nasazení**, obzvláště v prostředí, které se může škálovat na více uzlech. Pravděpodobně budete chtít rozhodnout vědomě a záměrně nasazení konzistentní verzi komponenty. Pokud restartování kontejneru nebo orchestrátor horizontálně navýší kapacitu instancí, vaši hostitelé nebudou o přijetí změn omylem novější verze, konzistentní se do dalších uzlů.
+**Doporučení**: Používejte jedinečné značky pro **nasazení**, zejména v prostředí, které by mohlo škálovat na více uzlů. Pravděpodobně budete chtít záměrné nasazení konzistentní verze komponent. Pokud se Váš kontejner restartuje nebo Orchestrator navýší více instancí, nebudou Vaši hostitelé omylem vyčítat novější verzi, která není konzistentní s ostatními uzly.
 
-Jedinečné tagování jednoduše znamená, že každý obrázek nahrány do registru má značku jedinečný. Znovu použít značky. Existují některé postupy, které můžete provést, abyste generovat jedinečný značky, včetně:
+Jedinečné označení jednoduše znamená, že každý obrázek, který byl vložen do registru, má jedinečnou značku. Značky se znovu nepoužívají. Existuje několik vzorů, které můžete použít ke generování jedinečných značek, včetně:
 
-* **Časové razítko** -tento přístup je poměrně běžný, protože jasně poznáte, kdy byla vytvořena image. Ale jak porovnat zpět do vašeho systému sestavení? Je nutné nalézt sestavení, který byl dokončen ve stejnou dobu? Časové pásmo se nacházíte? Jsou všechny systémy sestavení nastaveny na čas UTC?
-* **Potvrzení změn Git** – tento postup funguje, dokud nespustíte podporuje aktualizace základní image. Pokud se stane aktualizací základních imagí, systém sestavení zahajuje s potvrzení Git stejný jako předchozí sestavení. Základní image má však nový obsah. Obecně platí, poskytuje potvrzení změn Git *částečně*-stabilní značky.
-* **Ověřování algoritmem digest manifestu** – každá image kontejneru do registru kontejneru je spojen s manifestem, identifikovat jedinečné hodnoty hash SHA-256, nebo ověřování algoritmem digest. Jedinečné, algoritmus digest je dlouhý, mohou ztížit čtení a bez korelace nejsou s vaším prostředím sestavení.
-* **ID sestavení** – tato možnost může být nejvhodnější, protože bude pravděpodobně přírůstkové, a umožňuje korelovat zpět na konkrétní sestavení odeslat najít všechny artefakty a protokoly. Však stejně jako manifestu hodnotu hash, může být obtížné pro lidské ke čtení.
+* **Časové razítko** – tento přístup je poměrně společný, protože můžete jasně určit, kdy se obrázek sestavil. Ale jak ho korelovat zpátky do vašeho sestavovacího systému? Je nutné najít sestavení, které bylo dokončeno ve stejnou dobu? V jakém časovém pásmu jste? Jsou všechny vaše systémy sestavení kalibrovány do standardu UTC?
+* **Git Commit** – tento přístup funguje, dokud nezačnete podporovat základní aktualizace imagí. Pokud dojde k aktualizaci základní image, systém sestavení se zahájí se stejným potvrzením Git jako předchozí sestavení. Základní image ale obsahuje nový obsah. Obecně platí, že Git potvrzení poskytuje *částečně*stabilní značku.
+* **Výtah manifestu** – každá image kontejneru vložená do registru kontejneru je přidružená k manifestu, který je identifikovaný jedinečnou hodnotou hash SHA-256 nebo hodnotou Digest. I když je jedinečný, je výtah dlouhý, obtížně čitelný a nekoreluje s vaším prostředím sestavení.
+* **ID buildu** – Tato možnost může být nejlepší, protože je pravděpodobně přírůstková a umožňuje provést korelaci zpět k určitému sestavení a vyhledat všechny artefakty a protokoly. Podobně jako u výtahu manifestu ale může být obtížné číst člověka.
 
-  Pokud má vaše organizace několik systémů buildů, předpony značky s názvem systému sestavení je podobný tuto možnost: `<build-system>-<build-id>`. Například může odlišíte sestavení z týmu rozhraní API systému sestavení Jenkinse a kanály pro Azure web týmu sestavovací systém.
+  Pokud má vaše organizace několik systémů sestavení, Předpona značky s názvem systému sestavení je variací této možnosti: `<build-system>-<build-id>`. Můžete například odlišit buildy ze systému sestavení Jenkinse týmu rozhraní API a webového týmu Azure Pipelines systém sestavení.
 
 ## <a name="next-steps"></a>Další postup
 
-Podrobnější popis konceptů v tomto článku najdete v příspěvku blogu [označování Dockeru: Osvědčené postupy pro označování a správy verzí Image dockeru](https://stevelasker.blog/2018/03/01/docker-tagging-best-practices-for-tagging-and-versioning-docker-images/).
+Podrobnější diskuzi o konceptech v tomto článku najdete v blogovém příspěvku [Docker – označování: Osvědčené postupy pro označování a používání verzí imagí](https://stevelasker.blog/2018/03/01/docker-tagging-best-practices-for-tagging-and-versioning-docker-images/)Docker
 
-Umožní vám maximalizovat výkon a nákladově efektivní používání svého registru kontejneru Azure, najdete v článku [osvědčené postupy pro službu Azure Container Registry](container-registry-best-practices.md).
+V zájmu maximalizace výkonu a nákladově efektivního využívání služby Azure Container Registry si přečtěte téma [osvědčené postupy pro Azure Container Registry](container-registry-best-practices.md).
 
 <!-- IMAGES -->
 
