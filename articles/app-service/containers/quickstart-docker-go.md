@@ -1,5 +1,5 @@
 ---
-title: Vytvoření aplikace v Dockeru/Go v Linuxu – služba Azure App Service
+title: Vytvoření aplikace Docker/přejít na platformě Linux-Azure App Service
 description: Postup pro nasazení image Dockeru s aplikací v Go do služby Azure Web App for Containers.
 keywords: azure app service, web app, go, docker, kontejner
 services: app-service
@@ -12,14 +12,14 @@ ms.topic: quickstart
 ms.date: 03/28/2019
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 88c9996ce3f2d89ae58881c913f6bd4e549b5814
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: ec2b974e008ea4c7e266f5ae0d46cd67d2133e54
+ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62117743"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67854004"
 ---
-# <a name="run-a-custom-linux-container-in-azure-app-service"></a>Spuštění vlastního kontejneru Linuxu ve službě Azure App Service
+# <a name="run-a-custom-linux-container-in-azure-app-service"></a>Spuštění vlastního kontejneru Linux v Azure App Service
 
 [App Service Linux](app-service-linux-intro.md) poskytuje předdefinované zásobníky aplikací v Linuxu s podporou jazyků, jako jsou .NET, PHP, Node.js a další. Můžete také použít vlastní image Dockeru a spouštět webovou aplikaci v zásobníku aplikací, který ještě není v Azure definovaný. Tento rychlý start ukazuje, jak vytvořit webovou aplikaci a nasadit image jazyka Go z Docker Hubu. Webovou aplikaci vytvoříte pomocí [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli).
 
@@ -35,7 +35,7 @@ ms.locfileid: "62117743"
 
 ## <a name="create-a-web-app"></a>Vytvoření webové aplikace
 
-Pomocí příkazu [az webapp create](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) vytvořte [webovou aplikaci](../overview.md) v plánu služby App Service `myAppServicePlan`. Nezapomeňte nahradit `<app name>` globálně jedinečným názvem aplikace.
+Pomocí příkazu [az webapp create](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) vytvořte [webovou aplikaci](../overview.md) v plánu služby App Service `myAppServicePlan`. Nezapomeňte nahradit `<app name>` globálně jedinečným názvem aplikace (platné znaky jsou `a-z`, `0-9`a `-`).
 
 ```azurecli-interactive
 az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app name> --deployment-container-image-name microsoft/azure-appservices-go-quickstart
@@ -75,10 +75,10 @@ http://<app_name>.azurewebsites.net/hello
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Kurz: Nasazení z kontejneru soukromého úložiště](tutorial-custom-docker-image.md)
+> [Kurz: Nasazení z privátního úložiště kontejnerů](tutorial-custom-docker-image.md)
 
 > [!div class="nextstepaction"]
 > [Konfigurace vlastního kontejneru](configure-custom-container.md)
 
 > [!div class="nextstepaction"]
-> [Kurz: Wordpressu vícekontejnerové aplikace](tutorial-multi-container-app.md)
+> [Kurz: Aplikace WordPress s více kontejnery](tutorial-multi-container-app.md)

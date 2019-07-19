@@ -1,95 +1,95 @@
 ---
-title: Windows virtuální plochy PowerShell – Azure
-description: Řešení potíží s prostředím PowerShell při nastavování prostředí virtuálního klienta Windows tenanta.
+title: Prostředí PowerShell pro virtuální počítače s Windows – Azure
+description: Řešení potíží s PowerShellem při nastavování prostředí klienta virtuální plochy Windows
 services: virtual-desktop
 author: ChJenk
 ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 04/08/2019
 ms.author: v-chjenk
-ms.openlocfilehash: 06b955365ffc7c0a1dff93db95932d8696293e9f
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 41c3c25962d5cb0d608a226ed77408460446bfa5
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67605248"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68248200"
 ---
 # <a name="windows-virtual-desktop-powershell"></a>PowerShell pro Windows Virtual Desktop
 
-Použijte tento článek vyřešit chyby a problémy při použití Powershellu s virtuální plochy Windows. Další informace o Powershellu služby vzdálené plochy najdete v tématu [Windows Powershellu virtuální plochy](https://docs.microsoft.com/powershell/module/windowsvirtualdesktop/).
+Pomocí tohoto článku můžete vyřešit chyby a problémy při používání PowerShellu s virtuálním počítačem s Windows. Další informace o PowerShellu služby Vzdálená plocha najdete v tématu [prostředí PowerShell pro virtuální počítače s Windows](https://docs.microsoft.com/powershell/module/windowsvirtualdesktop/).
 
 ## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
 
-Můžeme aktuálně nejsou trvá případy podpory virtuální plochy Windows je ve verzi preview. Přejděte [technické komunitě virtuální plochy Windows](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) fattica virtuální plochy Windows service s produktovým týmem a aktivní komunitě členy.
+V současné době nepřijímáme případy podpory, ale virtuální počítač s Windows je ve verzi Preview. Navštivte [technickou komunitu pro virtuální počítače s Windows](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) , kde můžete diskutovat o službě Virtual Desktop v systému Windows pomocí produktového týmu a aktivních členů komunity.
 
-## <a name="powershell-commands-used-during-windows-virtual-desktop-setup"></a>Příkazy prostředí PowerShell použít během instalace virtuálního klienta Windows
+## <a name="powershell-commands-used-during-windows-virtual-desktop-setup"></a>Příkazy prostředí PowerShell použité při instalaci virtuálních počítačů s Windows
 
-Tato část obsahuje seznam příkazů prostředí PowerShell, které se běžně používají při nastavování virtuální plochy Windows a poskytuje způsoby, jak vyřešit problémy, které mohou nastat při jejich používání.
+Tato část obsahuje seznam příkazů PowerShellu, které se obvykle používají při nastavování virtuální plochy Windows, a poskytuje možnosti pro řešení problémů, ke kterým může dojít při jejich používání.
 
-### <a name="error-add-rdsappgroupuser-command----the-specified-userprincipalname-is-already-assigned-to-a-remoteapp-app-group-in-the-specified-host-pool"></a>Chyba: Příkaz Přidat RdsAppGroupUser--zadaný atribut UserPrincipalName je už přiřazený k skupinu aplikace RemoteApp v zadaném fondu hostitele
+### <a name="error-add-rdsappgroupuser-command----the-specified-userprincipalname-is-already-assigned-to-a-remoteapp-app-group-in-the-specified-host-pool"></a>Chyba: Příkaz Add-RdsAppGroupUser – zadaná hodnota UserPrincipalName je již přiřazena ke skupině aplikací RemoteApp v zadaném fondu hostitelů.
 
 ```Powershell
 Add-RdsAppGroupUser -TenantName <TenantName> -HostPoolName <HostPoolName> -AppGroupName 'Desktop Application Group' -UserPrincipalName <UserName>
 ```
 
-**Příčina:** Uživatelské jméno používané byla již přiřazena do jiného typu skupiny aplikací. Uživatele nelze přiřadit oba do skupiny Vzdálená plocha a Vzdálená aplikace v rámci stejného fondu hostitele relace.
+**Způsobit** Použité uživatelské jméno již bylo přiřazeno do skupiny aplikací jiného typu. Uživatele nelze přiřadit ke vzdálené ploše a skupině vzdálených aplikací v rámci stejného fondu hostitelů relace.
 
-**Oprava:** Pokud uživatel potřebuje vzdálené aplikace a vzdálené plochy, vytvořte fondy jiného hostitele nebo udělit uživatelům přístup k vzdálené plochy, která umožní použití libovolné aplikace na virtuální počítač hostitele relace.
+**Opravit** Pokud uživatel potřebuje obě vzdálené aplikace i Vzdálená plocha, vytvořte různé fondy hostitelů nebo udělte uživatelům přístup ke vzdálené ploše. Tím umožníte použití jakékoli aplikace na virtuálním počítači hostitele relace.
 
-### <a name="error-add-rdsappgroupuser-command----the-specified-userprincipalname-doesnt-exist-in-the-azure-active-directory-associated-with-the-remote-desktop-tenant"></a>Chyba: Příkaz Přidat RdsAppGroupUser – zadaným UserPrincipalName neexistuje v Azure Active Directory přidružené k tenantovi vzdálené plochy
+### <a name="error-add-rdsappgroupuser-command----the-specified-userprincipalname-doesnt-exist-in-the-azure-active-directory-associated-with-the-remote-desktop-tenant"></a>Chyba: Příkaz Add-RdsAppGroupUser – zadaná hodnota UserPrincipalName neexistuje v Azure Active Directory přidružených k tenantovi vzdálené plochy.
 
 ```PowerShell
 Add-RdsAppGroupUser -TenantName <TenantName> -HostPoolName <HostPoolName> -AppGroupName “Desktop Application Group” -UserPrincipalName <UserPrincipalName>
 ```
 
-**Příčina:** Uživatel určený parametrem - UserPrincipalName nebyl nalezen v Azure Active Directory, které jsou vázány na tenanta virtuální plochy Windows.
+**Způsobit** Uživatele zadaného parametrem-UserPrincipalName nelze nalézt v Azure Active Directory vázaných na klienta virtuální plochy systému Windows.
 
-**Oprava:** Zkontrolujte položky v následujícím seznamu.
+**Opravit** Potvrďte položky v následujícím seznamu.
 
-- Uživatel je synchronizovat do Azure Active Directory.
-- Uživatel není vázaný na a zákazníky (B2C) nebo obchodování business-to-business (B2B).
-- Virtuální plochy Windows tenanta se váže na správné Azure Active Directory.
+- Uživatel je synchronizován na Azure Active Directory.
+- Uživatel není spojený s obchodem s B2C (Business to Consumer) ani B2B (Business-to-Business).
+- Tenant virtuálních počítačů s Windows je vázaný na správnou Azure Active Directory.
 
-### <a name="error-get-rdsdiagnosticactivities----user-isnt-authorized-to-query-the-management-service"></a>Chyba: Get-RdsDiagnosticActivities – Uživatel nemá oprávnění k dotazování na službu správy
+### <a name="error-get-rdsdiagnosticactivities----user-isnt-authorized-to-query-the-management-service"></a>Chyba: Get-RdsDiagnosticActivities--User není autorizován pro dotazování služby správy.
 
 ```PowerShell
 Get-RdsDiagnosticActivities -ActivityId <ActivityId>
 ```
 
-**Příčina:** parametr - TenantName
+**Příčina:** -parametr tenant
 
-**Oprava:** Vydávání s - TenantName Get-RdsDiagnosticActivities <TenantName>.
+**Opravit** Vydejte příkaz Get-RdsDiagnosticActivities s- \<tenant tenant >.
 
-### <a name="error-get-rdsdiagnosticactivities----the-user-isnt-authorized-to-query-the-management-service"></a>Chyba: Get-RdsDiagnosticActivities – uživatel nemá oprávnění k dotazování na službu správy
+### <a name="error-get-rdsdiagnosticactivities----the-user-isnt-authorized-to-query-the-management-service"></a>Chyba: Get-RdsDiagnosticActivities – uživatel nemá oprávnění k dotazování služby správy.
 
 ```PowerShell
 Get-RdsDiagnosticActivities -Deployment -username <username>
 ```
 
-**Příčina:** Pomocí parametru - nasazení přepínače.
+**Způsobit** Přepínač-Deployment
 
-**Oprava:** – nasazení přepínač lze použít pouze správci nasazení. Tito správci jsou obvykle členové týmu vzdálené plochy virtuální služby nebo Windows Desktop. Nahraďte přepínač-nasazení - TenantName <TenantName>.
+**Oprava:** – přepínač nasazení může být používán pouze správci nasazení. Tito správci jsou obvykle členy týmu vzdálené plochy služby Vzdálená plocha nebo Windows. Nahraďte přepínač-Deployment parametrem-tenant \<>.
 
-### <a name="error-new-rdsroleassignment----the-user-isnt-authorized-to-query-the-management-service"></a>Chyba: Nové – RdsRoleAssignment – uživatel nemá oprávnění k dotazování na službu správy
+### <a name="error-new-rdsroleassignment----the-user-isnt-authorized-to-query-the-management-service"></a>Chyba: New-RdsRoleAssignment--uživatel nemá oprávnění k dotazování na službu správy.
 
-**1. příčina:** Použitý účet nemá oprávnění vlastníka služby Vzdálená plocha v tenantovi.
+**Příčina 1:** Použitý účet nemá oprávnění vlastníka služby Vzdálená plocha pro tenanta.
 
-**Oprava 1:** Uživatel s oprávněními vlastníka služby Vzdálená plocha je potřeba provést přiřazení role.
+**Oprava 1:** Uživatel s oprávněním vlastníka vzdálené plochy musí provést přiřazení role.
 
-**2. příčina:** Použitý účet má oprávnění vlastníka služby Vzdálená plocha, ale není součástí vašeho tenanta Azure Active Directory nebo nemá oprávnění k dotazování Azure Active Directory, kde se uživatel zdržuje.
+**Příčina 2:** Použitý účet má oprávnění vlastníka vzdálené plochy, ale není součástí Azure Active Directory klienta nebo nemá oprávnění k dotazování Azure Active Directory, kde se uživatel nachází.
 
-**Oprava 2:** Uživatel s oprávnění služby Active Directory je potřeba provést přiřazení role.
+**Oprava 2:** Uživatel s oprávněním služby Active Directory musí provést přiřazení role.
 
 >[!Note]
->Nové RdsRoleAssignment nelze udělit oprávnění pro uživatele, který neexistuje v Azure Active Directory (AD).
+>Příkaz New-RdsRoleAssignment nemůže udělit oprávnění uživateli, který neexistuje v Azure Active Directory (AD).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
-- Přehled o řešení potíží virtuální plochy Windows a sleduje eskalace, naleznete v tématu [řešení potíží s přehled, zpětná vazba a podpora](troubleshoot-set-up-overview.md).
-- Řešení potíží při vytváření fondu tenanta a hostitele v prostředí virtuálního klienta Windows, naleznete v tématu [Tenanta a hostitele fondu vytváření](troubleshoot-set-up-issues.md).
-- Řešení potíží při konfiguraci virtuálního počítače (VM) v virtuální plochy Windows, naleznete v tématu [konfigurace virtuálního počítače hostitele relací](troubleshoot-vm-configuration.md).
-- Řešení potíží s připojeními klientů virtuální plochy Windows, naleznete v tématu [klienta připojení ke vzdálené ploše](troubleshoot-client-connection.md).
-- Další informace o služba ve verzi Preview, najdete v článku [prostředí Windows Desktop Preview](https://docs.microsoft.com/azure/virtual-desktop/environment-setup).
-- Absolvovat kurz řešení potíží, najdete v článku [kurzu: Řešení potíží s nasazení šablon Resource Manageru](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-troubleshoot).
-- Další informace o auditování akcí najdete v tématu [Audit operací pomocí Resource Manageru](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-audit).
-- Další informace o akcích, chcete-li zjistit chyby během nasazení najdete v tématu [zobrazení operací nasazení](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-operations).
+- Přehled řešení potíží s virtuálním počítačem s Windows a cvičeními eskalace najdete v tématu [věnovaném řešení potíží s přehledem, zpětnou vazbou a podporou](troubleshoot-set-up-overview.md).
+- Pokud chcete řešit problémy při vytváření tenanta a fondu hostitelů v prostředí virtuálních počítačů s Windows, přečtěte si téma [vytváření fondů klientů a hostitelů](troubleshoot-set-up-issues.md).
+- Informace o řešení problémů při konfiguraci virtuálního počítače na virtuálním počítači s Windows najdete v tématu [Konfigurace virtuálního počítače hostitele relace](troubleshoot-vm-configuration.md).
+- Informace o řešení problémů s připojením klienta k virtuální ploše Windows najdete v tématu [připojení klientů vzdálené plochy](troubleshoot-client-connection.md).
+- Další informace o službě verze Preview najdete v tématu [prostředí Windows Desktop Preview](https://docs.microsoft.com/azure/virtual-desktop/environment-setup).
+- Postup při řešení potíží najdete v [kurzu: Řešení potíží s nasazeními](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-troubleshoot)šablon Správce prostředků.
+- Další informace o akcích auditování najdete v tématu věnovaném [operacím auditu správce prostředků](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-audit).
+- Další informace o akcích k určení chyb během nasazení najdete v tématu [Zobrazení operací nasazení](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-operations).

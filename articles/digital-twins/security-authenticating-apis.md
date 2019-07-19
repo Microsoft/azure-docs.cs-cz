@@ -1,52 +1,52 @@
 ---
-title: Principy ověřování digitální dvojče API Azure | Dokumentace Microsoftu
-description: Digitální dvojče Azure můžete připojit a provést ověření rozhraní API
+title: Vysvětlení ověřování rozhraní API pro digitální vlákna Azure | Microsoft Docs
+description: Použití digitálních vláken Azure k připojení a ověřování v rozhraních API
 author: lyrana
 manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.author: lyrana
-ms.openlocfilehash: 4ea4479d77e06940bed50859341952ffbcbbda46
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: lyhughes
+ms.openlocfilehash: 114edc072524552fab35e9cad6fc85573c4e8d0e
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60533822"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67846537"
 ---
-# <a name="connect-and-authenticate-to-apis"></a>Připojit a provést ověření rozhraní API
+# <a name="connect-and-authenticate-to-apis"></a>Připojení a ověřování v rozhraních API
 
-Azure digitální dvojče používá Azure Active Directory (Azure AD) k ověřování uživatelů a ochraně aplikací. Azure AD podporuje ověřování pro širokou škálu moderní architektury. Všechny z nich jsou založeny na standardních oborových protokolů OAuth 2.0 nebo OpenID Connect. Kromě toho mohou vývojáři služby Azure AD k vytvoření jednoho tenanta a obchodní aplikace (LOB). Vývojáři taky můžete použít Azure AD k vývoji víceklientských aplikací.
+Digitální vlákna Azure používá k ověřování uživatelů a ochraně aplikací Azure Active Directory (Azure AD). Azure AD podporuje ověřování pro nejrůznější moderní architektury. Všechny tyto protokoly jsou založené na standardních protokolech OAuth 2,0 nebo OpenID Connect. Kromě toho můžou vývojáři použít Azure AD k vytváření aplikací pro jednoho tenanta a obchodní aplikace (LOB). Vývojáři můžou k vývoji víceklientské aplikací použít taky Azure AD.
 
-Přehled služby Azure AD, najdete [základy stránky](https://docs.microsoft.com/azure/active-directory/fundamentals/index) podrobní průvodci, koncepty a šablon rychlý start.
+Přehled služby Azure AD najdete na [stránce základy](https://docs.microsoft.com/azure/active-directory/fundamentals/index) , kde najdete podrobné návody, koncepty a rychlé starty.
 
-K integraci aplikace nebo služby pomocí Azure AD musí vývojář nejdřív aplikaci zaregistrovat v Azure AD. Podrobné pokyny a snímky obrazovky najdete v tématu [v tomto rychlém startu](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-add-azure-ad-app).
+K integraci aplikace nebo služby pomocí Azure AD musí vývojář nejdřív aplikaci zaregistrovat v Azure AD. Podrobné pokyny a snímky obrazovky najdete v [tomto rychlém](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-add-azure-ad-app)startu.
 
-[Scénáře pěti primární aplikace](https://docs.microsoft.com/azure/active-directory/develop/v2-app-types) jsou podporovány službou Azure AD:
+Služba Azure AD podporuje [pět scénářů primárních aplikací](https://docs.microsoft.com/azure/active-directory/develop/v2-app-types) :
 
-* Jednostránkové aplikace (SPA): Uživatel musí přihlásit k jednostránkovou aplikaci, která je zabezpečena pomocí služby Azure AD.
-* Webový prohlížeč na webovou aplikaci: Uživatel musí přihlásit k webové aplikaci, která je zabezpečena pomocí služby Azure AD.
-* Nativní aplikace pro webové rozhraní API: Nativní aplikaci, která běží na telefonu, tabletu nebo počítači potřebuje ověřit uživatele k získání zdroje z webového rozhraní API, která je zabezpečena pomocí služby Azure AD.
-* Webové aplikace k webovému rozhraní API: Webová aplikace je potřeba získat prostředky z webového rozhraní API zabezpečené pomocí Azure AD.
-* Proces démon nebo server aplikace webového rozhraní API: Démon aplikace nebo serverovou aplikaci s žádné webové uživatelské rozhraní je potřeba získat prostředky z webového rozhraní API zabezpečené pomocí Azure AD.
+* Jednostránkové aplikace (SPA): Uživatel se musí přihlásit k jednostránkové aplikaci, která je zabezpečená službou Azure AD.
+* Webový prohlížeč do webové aplikace: Uživatel se musí přihlásit k webové aplikaci, která je zabezpečená službou Azure AD.
+* Nativní aplikace do webového rozhraní API: Nativní aplikace, která běží na telefonu, tabletu nebo počítači, musí ověřit uživatele a získat prostředky z webového rozhraní API zabezpečeného službou Azure AD.
+* Webové aplikace do webového rozhraní API: Webová aplikace potřebuje získat prostředky z webového rozhraní API zabezpečeného službou Azure AD.
+* Démon nebo serverová aplikace do webového rozhraní API: Aplikace démona nebo serverová aplikace bez webového uživatelského rozhraní potřebuje získat prostředky z webového rozhraní API zabezpečeného službou Azure AD.
 
-Knihovna ověřování Windows Azure nabízí mnoho způsobů, jak získat tokeny služby Active Directory. Podrobnosti o do knihovny a ukázky kódu, naleznete v tématu [v tomto článku](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki).
+Knihovna ověřování Windows Azure nabízí mnoho způsobů, jak získat tokeny služby Active Directory. Podrobnosti o knihovně a ukázkách kódu najdete v [tomto článku](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki).
 
-## <a name="call-digital-twins-from-a-middle-tier-web-api"></a>Volání digitální dvojče z webového rozhraní API střední vrstvy
+## <a name="call-digital-twins-from-a-middle-tier-web-api"></a>Volání digitálních vláken z webového rozhraní API střední vrstvy
 
-Když vývojáři navrhovat řešení digitální dvojče, obvykle vytvoří aplikace střední vrstvy nebo rozhraní API. Aplikace nebo API potom směru server-klient volá rozhraní API pro digitální dvojče. Pro podporu této architektury řešení standardních webových, ujistěte se, že uživatelé první:
+Když vývojáři naprogramují řešení digitálních vláken, obvykle vytvoří aplikaci střední vrstvy nebo rozhraní API. Aplikace nebo rozhraní API pak zavolá pro podřízené rozhraní API digitální vlákna. Aby bylo možné podporovat tuto standardní architekturu webového řešení, nezapomeňte nejprve uživatele:
 
 1. Ověřování pomocí aplikace střední vrstvy
 
-1. Token OAuth 2.0 On-Behalf-Of je požadován při ověřování
+1. Při ověřování se získal token jménem OAuth 2,0.
 
-1. Získané token se pak použije k ověření pomocí nebo volání rozhraní API, která dále směru server-klient používá tok On-Behalf-Of
+1. Získaný token se pak použije k ověřování nebo volání rozhraní API, která jsou dále podřízená za použití toku za běhu.
 
-Pokyny ohledně toho, jak orchestrovat tok on-behalf-of, naleznete v tématu [tok OAuth 2.0 On-Behalf-Of](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow). Také můžete zobrazit ukázky kódu v [volat podřízené webové rozhraní API](https://azure.microsoft.com/resources/samples/active-directory-dotnet-webapi-onbehalfof/).
+Pokyny k orchestraci služby Flow najdete v tématu [tok OAuth 2,0 za](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow)běhu. Můžete si také zobrazit ukázky kódu při [volání webového rozhraní API pro příjem dat](https://azure.microsoft.com/resources/samples/active-directory-dotnet-webapi-onbehalfof/).
 
 ## <a name="next-steps"></a>Další postup
 
-Nakonfigurovat a otestovat Azure digitální dvojče pomocí tok implicitní grant OAuth 2.0, přečtěte si [nakonfigurovat Postman](./how-to-configure-postman.md).
+Pokud chcete konfigurovat a testovat digitální vlákna Azure pomocí procesu implicitního grantu OAuth 2,0, přečtěte si téma [Configure post](./how-to-configure-postman.md).
 
-Další informace o zabezpečení Azure digitální dvojče [vytvořit a spravovat přiřazení rolí](./security-create-manage-role-assignments.md).
+Pokud se chcete dozvědět víc o zabezpečení digitálních vláken Azure, přečtěte si téma [Vytvoření a správa přiřazení rolí](./security-create-manage-role-assignments.md).

@@ -1,10 +1,10 @@
 ---
-title: Vyrovnávání zatížení na více konfigurací protokolu IP pomocí Azure CLI
+title: Vyrovnávání zatížení u více konfigurací IP pomocí Azure CLI
 titlesuffix: Azure Load Balancer
-description: Zjistěte, jak přiřadit několik IP adres k virtuálnímu počítači pomocí rozhraní příkazového řádku Azure.
+description: Přečtěte si, jak přiřadit virtuálnímu počítači víc IP adres pomocí Azure CLI.
 services: virtual-network
 documentationcenter: na
-author: KumudD
+author: asudbring
 ms.custom: seodec18
 ms.service: load-balancer
 ms.devlang: na
@@ -12,51 +12,51 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/25/2018
-ms.author: kumud
-ms.openlocfilehash: 1e8911847a555e3b6326f15d15a09344a4472f2c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: allensu
+ms.openlocfilehash: c1606f14650843ea42cfe55381b5f23bf2742a58
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60860551"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68274721"
 ---
-# <a name="load-balancing-on-multiple-ip-configurations-using-azure-cli"></a>Vyrovnávání zatížení na více konfigurací protokolu IP pomocí Azure CLI
+# <a name="load-balancing-on-multiple-ip-configurations-using-azure-cli"></a>Vyrovnávání zatížení u více konfigurací IP pomocí Azure CLI
 
-Tento článek popisuje, jak používat Azure Load Balancer s několika IP adresami na sekundární síťové rozhraní (NIC). V tomto scénáři máme dva virtuální počítače se systémem Windows, každý s primární a sekundární síťové rozhraní Každá sekundární síťová rozhraní obsahuje dvěma konfiguracemi IP. Každý virtuální počítač hostuje websites contoso.com a fabrikam.com. Každý z těchto webů je vázán na jednu z konfigurace protokolu IP na sekundární síťové rozhraní Nástroj pro vyrovnávání zatížení Azure používáme k vystavení dva front-endové IP adresy, jeden pro každý web, za účelem distribuce provozu do příslušné konfigurace protokolu IP pro web. Tento scénář používá stejné číslo portu mezi jak front-endů, tak i back-endový fond IP adres.
+Tento článek popisuje, jak použít Azure Load Balancer s více IP adresami na sekundárním síťovém rozhraní (NIC). V tomto scénáři máme dva virtuální počítače s Windows, každý s primárním a sekundárním síťovým ADAPTÉRem. Každá ze sekundárních síťových adaptérů má dvě konfigurace protokolu IP. Každý virtuální počítač je hostitelem webů contoso.com a fabrikam.com. Každý web je vázán na jednu z konfigurací protokolu IP v sekundárním síťovém adaptéru. K vystavení přenosu dat do příslušné konfigurace protokolu IP pro web používáme Azure Load Balancer k vystavení dvou IP adres front-endu, jeden pro každý web. V tomto scénáři se používá stejné číslo portu v obou front-endu i v obou IP adresách back-end fondu.
 
-![Obrázek scénář LB](./media/load-balancer-multiple-ip/lb-multi-ip.PNG)
+![Obrázek scénáře vyrovnávání zatížení](./media/load-balancer-multiple-ip/lb-multi-ip.PNG)
 
-## <a name="steps-to-load-balance-on-multiple-ip-configurations"></a>Postup pro více konfigurací IP Vyrovnávání zatížení
+## <a name="steps-to-load-balance-on-multiple-ip-configurations"></a>Postup vyrovnávání zatížení u více konfigurací IP adres
 
-K dosažení scénář popsaný v tomto článku, proveďte následující kroky:
+Chcete-li dosáhnout scénáře popsaného v tomto článku, proveďte následující kroky:
 
-1. [Instalace a konfigurace rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) pomocí následujících kroků v odkazovaném článku a protokolu ke svému účtu Azure.
-2. [Vytvořte skupinu prostředků](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-resource-group) volá *contosofabrikam* následujícím způsobem:
+1. [Nainstalujte a nakonfigurujte rozhraní příkazového řádku Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) podle kroků v propojeném článku a přihlaste se k účtu Azure.
+2. [Vytvořte skupinu prostředků s](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-resource-group) názvem *contosofabrikam* následujícím způsobem:
 
     ```azurecli
     az group create contosofabrikam westcentralus
     ```
 
-3. [Vytvoření skupiny dostupnosti](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-an-availability-set) k pro dva virtuální počítače. V tomto scénáři použijte následující příkaz:
+3. Vytvořte pro tyto dva virtuální počítače [skupinu dostupnosti](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-an-availability-set) . V tomto scénáři použijte následující příkaz:
 
     ```azurecli
     az vm availability-set create --resource-group contosofabrikam --location westcentralus --name myAvailabilitySet
     ```
 
-4. [Vytvoření virtuální sítě](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-a-virtual-network-and-subnet) volá *myVNet* podsíť s názvem *mySubnet*:
+4. [Vytvořte virtuální síť s](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-a-virtual-network-and-subnet) názvem *myVNet* a podsíť s názvem *mySubnet*:
 
     ```azurecli
     az network vnet create --resource-group contosofabrikam --name myVnet --address-prefixes 10.0.0.0/16  --location westcentralus --subnet-name MySubnet --subnet-prefix 10.0.0.0/24
 
     ```
 
-5. [Vytvoření load balanceru úrovně](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json) volá *mylb*:
+5. [Vytvořte Nástroj pro vyrovnávání zatížení s](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json) názvem *mylb*:
 
     ```azurecli
     az network lb create --resource-group contosofabrikam --location westcentralus --name mylb
     ```
 
-6. Vytvořte dvě dynamické veřejné IP adresy pro front-endová konfigurace protokolu IP nástroje pro vyrovnávání zatížení:
+6. Vytvořte dvě dynamické veřejné IP adresy pro konfigurace IP adresy front-endu vašeho nástroje pro vyrovnávání zatížení:
 
     ```azurecli
     az network public-ip create --resource-group contosofabrikam --location westcentralus --name PublicIp1 --domain-name-label contoso --allocation-method Dynamic
@@ -64,14 +64,14 @@ K dosažení scénář popsaný v tomto článku, proveďte následující kroky
     az network public-ip create --resource-group contosofabrikam --location westcentralus --name PublicIp2 --domain-name-label fabrikam --allocation-method Dynamic
     ```
 
-7. Vytvořte dvě konfigurace protokolu IP front-endu *contosofe* a *fabrikamfe* v uvedeném pořadí:
+7. Vytvořte dvě konfigurace IP adresy front-endu, *contosofe* a *fabrikamfe* :
 
     ```azurecli
     az network lb frontend-ip create --resource-group contosofabrikam --lb-name mylb --public-ip-name PublicIp1 --name contosofe
     az network lb frontend-ip create --resource-group contosofabrikam --lb-name mylb --public-ip-name PublicIp2 --name fabrkamfe
     ```
 
-8. Vytvoření back-end fondu adres – *contosopool* a *fabrikampool*, [sondy](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json) - *HTTP*a zatížení pravidla - vyrovnávání *HTTPc* a *HTTPf*:
+8. Vytvořte své fondy back-end adres – *contosopool* a *fabrikampool*, [test](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json) - *http*a vaše pravidla vyrovnávání zatížení – *HTTPc* a *HTTPf*:
 
     ```azurecli
     az network lb address-pool create --resource-group contosofabrikam --lb-name mylb --name contosopool
@@ -83,13 +83,13 @@ K dosažení scénář popsaný v tomto článku, proveďte následující kroky
     az network lb rule create --resource-group contosofabrikam --lb-name mylb --name HTTPf --protocol tcp --probe-name http --frontend-port 5000 --backend-port 5000 --frontend-ip-name fabrkamfe --backend-address-pool-name fabrikampool
     ```
 
-9. Zkontrolujte výstup [ověřit nástroj pro vyrovnávání zatížení](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json) správně vytvořila spuštěním následujícího příkazu:
+9. Zkontrolujte výstup, abyste [ověřili, že se Váš nástroj pro vyrovnávání zatížení](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json) správně vytvořil, spuštěním následujícího příkazu:
 
     ```azurecli
     az network lb show --resource-group contosofabrikam --name mylb
     ```
 
-10. [Vytvoření veřejné IP adresy](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-a-public-ip-address), *myPublicIp*, a [účtu úložiště](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json), *mystorageaccont1* pro svůj první virtuální počítač VM1 následujícím způsobem:
+10. [Vytvořte veřejnou IP adresu](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-a-public-ip-address), *myPublicIp*a [účet úložiště](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json) *mystorageaccont1* pro první virtuální počítač VM1 následujícím způsobem:
 
     ```azurecli
     az network public-ip create --resource-group contosofabrikam --location westcentralus --name myPublicIP --domain-name-label mypublicdns345 --allocation-method Dynamic
@@ -97,7 +97,7 @@ K dosažení scénář popsaný v tomto článku, proveďte následující kroky
     az storage account create --location westcentralus --resource-group contosofabrikam --kind Storage --sku-name GRS mystorageaccount1
     ```
 
-11. [Vytvoření síťových rozhraní](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-a-virtual-nic) pro VM1 a druhá konfigurace IP adresy, přidejte *VM1 ipconfig2*, a [vytvořit virtuální počítač](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-a-vm) následujícím způsobem:
+11. [Vytvořte síťová rozhraní](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-a-virtual-nic) pro VM1 a přidejte druhou konfiguraci protokolu IP, *VM1-ipconfig2*a [vytvořte virtuální počítač](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-a-vm) následujícím způsobem:
 
     ```azurecli
     az network nic create --resource-group contosofabrikam --location westcentralus --subnet-vnet-name myVnet --subnet-name mySubnet --name VM1Nic1 --ip-config-name NIC1-ipconfig1
@@ -117,8 +117,8 @@ K dosažení scénář popsaný v tomto článku, proveďte následující kroky
     az vm create --resource-group contosofabrikam --name VM2 --location westcentralus --os-type linux --nic-names VM2Nic1,VM2Nic2 --vnet-name VNet1 --vnet-subnet-name Subnet1 --availability-set myAvailabilitySet --vm-size Standard_DS3_v2 --storage-account-name mystorageaccount2 --image-urn canonical:UbuntuServer:16.04.0-LTS:latest --admin-username <your username>  --admin-password <your password>
     ```
 
-13. Nakonec musíte nakonfigurovat záznamy prostředků DNS tak, aby odkazoval na IP adresu odpovídající front-endu nástroje pro vyrovnávání zatížení. Může hostovat domény v Azure DNS. Další informace o použití Azure DNS s nástrojem pro vyrovnávání zatížení najdete v tématu [pomocí Azure DNS s ostatními službami Azure](../dns/dns-for-azure-services.md).
+13. Nakonec je třeba nakonfigurovat záznamy prostředků DNS tak, aby odkazovaly na příslušné IP adresy front-endu Load Balancer. Domény můžete hostovat v Azure DNS. Další informace o použití Azure DNS s Load Balancer najdete v tématu [použití Azure DNS s dalšími službami Azure](../dns/dns-for-azure-services.md).
 
-## <a name="next-steps"></a>Další postup
-- Další informace o tom, jak kombinací služeb Vyrovnávání zatížení v Azure v [pomocí služby Vyrovnávání zatížení v Azure](../traffic-manager/traffic-manager-load-balancing-azure.md).
-- Zjistěte, jak pomocí různých typů protokolů v Azure pro správu a řešení potíží s nástroj pro vyrovnávání zatížení v [Log analytics pro Azure Load Balancer](../load-balancer/load-balancer-monitor-log.md).
+## <a name="next-steps"></a>Další kroky
+- Přečtěte si další informace o tom, jak kombinovat služby Vyrovnávání zatížení v Azure [pomocí služeb vyrovnávání zatížení v Azure](../traffic-manager/traffic-manager-load-balancing-azure.md).
+- Přečtěte si, jak můžete pomocí různých typů protokolů v Azure spravovat a řešit potíže s vyrovnáváním zatížení v [Log Analytics pro Azure Load Balancer](../load-balancer/load-balancer-monitor-log.md).

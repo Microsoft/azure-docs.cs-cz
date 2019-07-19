@@ -1,6 +1,6 @@
 ---
-title: Globální síť Microsoftu – Azure
-description: Popisuje, jak Microsoft sestavení jejich rychlé a spolehlivé globální síti
+title: Globální síť Microsoft – Azure
+description: Popisuje způsob, jakým společnost Microsoft vytváří rychlou a spolehlivou globální síť.
 services: networking
 documentationcenter: ''
 author: KumudD
@@ -11,63 +11,64 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/13/2019
-ms.author: ypitsch,kumud
-ms.openlocfilehash: bcd2415255643926db2cd4e1e4e55bb7381d6437
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.author: kumud
+ms.reviewer: ypitsch
+ms.openlocfilehash: c064a5afee8db0c747273ab1c38c901a6f10ef98
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67672537"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67876132"
 ---
 # <a name="microsoft-global-network"></a>Globální síť Microsoftu
 
-Společnost Microsoft je vlastníkem a jeden z největších sítí páteřní na světě funguje. Tato globální a důmyslné architektura pokrývající více než 100 000 mil, připojí se naše datová centra a zákazníky. 
+Společnost Microsoft vlastní a provozuje jednu z největších páteřních sítí na světě. Tato globální a složitá architektura, která pokrývá více než 100 000 mil, spojuje naše datová centra a zákazníky. 
  
-Každý den, zákazníci po celém světě připojení a předat triliony požadavky do Microsoft Azure, Bing, Dynamics 365, Office 365, XBox a mnoha dalších. Bez ohledu na typ zákazníci očekávají rychlé spolehlivost a rychlost odezvy z našich služeb. 
+Každý den se zákazníci po celém světě připojí a předají bilióny žádosti Microsoft Azure, Bingu, Dynamics 365, Office 365, XBox a mnoha dalším. Bez ohledu na typ zákazníci očekávají rychlou spolehlivost a odezvu od našich služeb. 
  
-[Globální síti Microsoftu](https://azure.microsoft.com/global-infrastructure/global-network/) (WAN) je klíčovou součást skvělé cloudové prostředí. Připojení naše Microsoft [datových centrech](https://azure.microsoft.com/global-infrastructure/) napříč 54 oblastí Azure a velké síť hraničních uzlů strategicky umístěných po celém světě, nabízí naší globální sítě i dostupnost kapacity a flexibilitu pro splnění všech požadavků.
+[Microsoft Global Network](https://azure.microsoft.com/global-infrastructure/global-network/) (WAN) je centrální součástí poskytování skvělého cloudového prostředí. Díky propojení našich [Datacenter Microsoftu v](https://azure.microsoft.com/global-infrastructure/) rámci 54 oblastí Azure a rozsáhlé sítě hraničních uzlů, které jsou strategicky umístěné po celém světě, přináší naše globální síť dostupnost, kapacitu a flexibilitu, aby splnila jakékoli požadavky.
 
 ![Globální síť Microsoftu](./media/microsoft-global-network/microsoft-global-wan.png)
  
-## <a name="get-the-premium-cloud-network"></a>Získejte cloudové sítě úrovně premium
+## <a name="get-the-premium-cloud-network"></a>Získat cloudovou síť úrovně Premium
  
-Pro vypnutí [osvědčené možného prostředí](https://www.sdxcentral.com/articles/news/azure-tops-aws-gcp-in-cloud-performance-says-thousandeyes/2018/11/) je jednoduché, když používáte Microsoft cloud. Od okamžiku, kdy provozu zákazníka přejde do naší globální sítě prostřednictvím našich strategicky umístěných hraničních uzlů vaše data prochází optimalizované trasy v blízkosti rychlostí světla. Tím se zajistí optimální latence pro zajištění nejlepšího výkonu. Tyto hraničních uzlů, všechny připojen do více než 3500 jedinečný Internet partnerů (partneři) přes tisíc připojení ve více než 145 umístěních, poskytují základ naší strategie propojení. 
+[Možnost výběru nejlepšího prostředí](https://www.sdxcentral.com/articles/news/azure-tops-aws-gcp-in-cloud-performance-says-thousandeyes/2018/11/) je snadná, když používáte Microsoft Cloud. Od okamžiku, kdy provoz zákazníka vstoupí do naší globální sítě prostřednictvím našich strategických hraničních uzlů, vaše data se v blízkosti rychlosti světla přenáší optimalizovanými trasami. Tím se zajistí optimální latence pro nejlepší výkon. Tyto hraniční uzly, které jsou propojeny s více než 3500 jedinečnými internetovými partnery (partnery) prostřednictvím tisíců připojení ve více než 145 umístěních, poskytují základ naší strategie vzájemného propojení. 
  
-Zda připojení z Londýna do Tokio, nebo z Washington DC k Los Angeles, je vyjadřuje výkon sítě a vliv věci, jako je například latenci, zpoždění, ztrátu paketů a propustnost.  V Microsoftu nám dávají přednost a použití přímé propojení na rozdíl od přenosu odkazy, se takto zachová přenosy odpovědí symetrický a pomáhá udržovat segmentů směrování, partnerský vztah stranami a cesty jako krátce a jednoduše co nejblíže. 
+Bez ohledu na to, jestli se připojení z Londýna do Brna nebo z Washington DC do Los Angeles, vyznačuje výkon sítě a bude ovlivněný takovými akcemi, jako je latence, kolísání, ztráta paketů a propustnost.  V Microsoftu upřednostňujeme a používáme přímé propojení na rozdíl od přenosu, což znamená, že je přenos dat symetrický a pomáhá udržet směrování, partnerské strany a cesty co nejkratší a nejjednodušší. 
 
-Například pokud uživatel v Londýně se pokusí získat přístup ke službě v Brně, potom zadá přenosy z Internetu, jeden z našich hrany v Londýně, prochází přes Microsoft WAN prostřednictvím Francie, naše Trans Arábie cesty mezi Evropy a Indie a Japonska je hostitelem služby. Symetrický se přenosy odpovědí. To se někdy označuje jako [studeného brambory směrování](https://en.wikipedia.org/wiki/Hot-potato_and_cold-potato_routing) což znamená, že provoz zůstává v Microsoft sítě, dokud než je možné předat ji vypnout.  
+Pokud se třeba uživatel v Londýně pokusí získat přístup ke službě v Brně, pak internetové přenosy vstoupí do jedné z našich okrajů v Londýně, přechází přes Microsoft WAN přes Francii, naše cesty k trans-Arábie mezi Evropa a Indie a pak na Japonsko, kde je služba hostovaná. Provoz odezvy je symetrický. V takovém případě se někdy označuje jako [Směrování studených brambor](https://en.wikipedia.org/wiki/Hot-potato_and_cold-potato_routing) , což znamená, že provoz zůstává v síti od Microsoftu co nejkratší, než jsme ho vypnuli.  
   
-Ano, to znamená všechny přenosy při použití služby Microsoft? Ano, veškerý provoz mezi datového centra, v rámci Microsoft Azure nebo mezi službami Microsoftu, jako jsou virtuální počítače, Office 365, XBox, databáze SQL, Storage, a virtuální sítě jsou směrovány do naší globální sítě a nikdy přes veřejný Internet, k zajištění optimální výkon a integritu.  
+Znamená to tedy jakýkoliv a veškerý provoz při používání služeb Microsoftu? Ano, jakýkoli provoz mezi datovými centry v rámci Microsoft Azure nebo mezi službami Microsoftu, jako jsou Virtual Machines, Office 365, XBox, SQL databáze, úložiště a virtuální sítě, je směrován v rámci naší globální sítě a nikdy přes veřejný Internet, aby bylo zajištěno optimální výkon a integrita.  
  
-Obrovské investice do kapacity fiber rozsah a rozmanitost napříč metro, pozemního a podmořské cesty jsou zásadní pro nás zajistit konzistentní a vysoké úrovně služeb během technologickým extrémní nárůst našich cloudových a online služeb. Nedávno přidanými funkcemi naší globální sítě jsou naše [MAREA](https://www.submarinecablemap.com/#/submarine-cable/marea) Podmořský kabel, v oboru první otevřít řádku systému (OLS) přes subsea mezi Bilbao, Španělsko a Virginie Beach, Virginia, USA, jakož i [AEC](https://www.submarinecablemap.com/#/submarine-cable/aeconnect-1)mezi New York, USA a Dublin, Irsko a [nové napříč Tichomoří (NCP)](https://www.submarinecablemap.com/#/submarine-cable/new-cross-pacific-ncp-cable-system) až Tokio, Japonsko, Portland, Oregon, USA. 
- 
-
-## <a name="our-network-is-your-network"></a>V naší síti je vaší sítě
-
-Máme více než dvacetileté zkušenosti, spolu s obrovské investice do sítě, chcete-li zajistit optimální výkon vůbec. Firmy můžete naplno využít naše síťové prostředky a sestavujte architektury pokročilé překrytí v horní části. 
- 
-Microsoft Azure nabízí nejkomplexnější portfolio služeb a funkcí, umožní zákazníkům rychle a snadno vytvářet, rozbalte a splnění síťových požadavků kdekoli. Naše řada služeb připojení span partnerské vztahy virtuálních sítí mezi oblastmi, hybridní a point-to-site v cloudu a architektury site-to-site, jakož i globální IP přenosu scénáře.  Pro podniky chtějí připojit své vlastní datové centrum nebo síť do Azure nebo Zákazníci s ingestování velké objemy dat nebo potřeby přenosu [ExpressRoute](../expressroute/expressroute-introduction.md), a [ExpressRoute přímo](../expressroute/expressroute-erdirect-about.md) až poskytují možnosti 100 GB/s šířky pásma, přímo do globální síti Microsoftu na umístění partnerského vztahu po celém světě.  
- 
-[Globální dosah ExpressRoute](../expressroute/expressroute-global-reach.md) je určena k doplnění WAN implementace poskytovatele služeb a připojte vaše místní weby po celém světě. Při spuštění na globální operaci, vám pomůže globální dosah ExpressRoute ve spojení s poskytovatelům služeb upřednostňované a místní připojení všech globální lokalit pomocí globální sítě Microsoftu. Rozšíření nové sítě v cloudu (WAN) zahrnuje velké množství pobočkách – je možné provádět prostřednictvím Azure virtuální sítě WAN, která přináší schopnost hladce větve globální sítě Microsoftu s SDWAN & VPN pro zařízení (to znamená, Místní zařízení zákazníka nebo CPE) s integrovanou snadné použití a automatické připojení a správy konfigurace. 
- 
-[Globální VNet peering](../virtual-network/virtual-network-peering-overview.md) umožňuje zákazníkům připojit dva nebo více virtuálních sítí Azure napříč oblastmi se bez problémů. Po navázání partnerského vztahu se virtuální sítě se jeví jako jedna. Provoz mezi virtuálními počítači v partnerských virtuálních sítích je směrován přes páteřní infrastrukturu Microsoftu, stejně jako mezi virtuálními počítači ve stejné virtuální síti – prostřednictvím privátních IP adres pouze prochází. 
+Velkou škálu investic do kapacity a rozmanitosti zemního vlákna na cestách Metro, suchozemských a podmořských cest je rozhodující pro nás, aby se zajistila konzistence a vysoká úroveň služeb při současném nárůstu našeho cloudu a online služby. Poslední dodatky do naší globální sítě jsou naše [MAREA](https://www.submarinecablemap.com/#/submarine-cable/marea) podmořský kabel, první Open line line (OLS) v oboru Subsea, mezi Bilbao, Španělsko a) – Virginia, plážový,) – Virginia, USA a také pochod [mezi New](https://www.submarinecablemap.com/#/submarine-cable/aeconnect-1) York, USA a Dublinem, Irskem. a [nové mezi Tichomoří (NCP)](https://www.submarinecablemap.com/#/submarine-cable/new-cross-pacific-ncp-cable-system) mezi Tokio, japonskoem a Portland, Brno. 
  
 
-## <a name="well-managed-using-software-defined-innovation"></a>Dobře spravované pomocí softwarově definovaných inovace
+## <a name="our-network-is-your-network"></a>Naše síť je vaše síť.
 
-V celém světě s některým z přední cloudy, Microsoft získal spoustu přehledy a prostředí v [vytváření a správu](https://myignite.techcommunity.microsoft.com/sessions/66668) globální infrastruktuře vysoce výkonné.  
+Provedli jsme dvě desetiletí zkušeností, společně s obrovskými investicemi do sítě, aby se zajistil optimální výkon na všech místech. Firmy můžou plně využít výhod našich síťových prostředků a sestavovat pokročilé architektury překryvů nahoře. 
  
-Dodržujeme robustní sadu provozní zásady: 
+Microsoft Azure nabízí bohatou portfolio služeb a schopností, které zákazníkům umožňuje rychle a snadno sestavit, rozšířit a splnit požadavky na síť kdekoli. Naše rodina služeb připojení pokrývá partnerský vztah virtuálních sítí mezi oblastmi, hybridními a cloudy typu Point-to-site a architekturami typu Site-to-site a také s globálními scénáři přenosu IP adres.  Pro podniky, které chtějí připojit své vlastní datové centrum nebo síť k Azure, nebo zákazníkům s obrovskými pořízením nebo přenosem dat, [ExpressRoute](../expressroute/expressroute-introduction.md)a [ExpressRoute přímých](../expressroute/expressroute-erdirect-about.md) nabízí možnosti až 100 GB/s šířky pásma. Globální síť Microsoftu na místech partnerských vztahů po celém světě.  
  
-- Použijte hardware nejlepší druhu přepínání mezi různými úrovněmi sítě.  
-- Nasaďte nové funkce bez nejmenšího vlivu na koncové uživatele.  
-- Zavést aktualizace bezpečně a spolehlivě napříč flotilou, co nejrychleji. Hodin, a nikoli týdnů.  
-- Využívat podrobné telemetrie v cloudovém měřítku a plně automatizované omezení rizik selhání.  
-- Všechny prvky hardwaru v síti pomocí technologie jednotné a softwarově definované sítě.  Odstranění duplicity a omezit chyby. 
+[ExpressRoute Global REACH](../expressroute/expressroute-global-reach.md) je navržená tak, aby doplnila implementaci sítě WAN poskytovatele služeb a připojila vaše místní weby po celém světě. Pokud spustíte globální operaci, můžete použít ExpressRoute Global Reach ve spojení s upřednostňovanými a místními poskytovateli služeb pro připojení všech svých globálních lokalit pomocí globální sítě Microsoft. Rozšiřování nové sítě v cloudu (WAN) tak, aby zahrnovalo velký počet větví, se dá provést prostřednictvím Azure Virtual WAN, což přináší možnost bezproblémového připojení větví k globální síti Microsoft pomocí SDWAN & zařízení VPN (tj. Zákaznická zařízení nebo CPE) s integrovaným snadným používáním a automatizovaným řízením připojení a konfigurací. 
  
-Tyto zásady platí i pro všechny vrstvy sítě: z hostitele síťového rozhraní, přepínání platformy, síťové funkce v datovém centru, třeba nástroje Vyrovnávání zatížení, úplně až WAN s naší platformou engineering provoz a naše optických sítí.  
+[Globální VNet peering](../virtual-network/virtual-network-peering-overview.md) umožňuje zákazníkům bez problémů propojit dvě nebo víc virtuálních sítí Azure napříč oblastmi. Po navázání partnerského vztahu se virtuální sítě zobrazí jako jedna. Přenos dat mezi virtuálními počítači v partnerských virtuálních sítích je směrován přes páteřní infrastrukturu Microsoftu, podobně jako provoz se směruje mezi virtuálními počítači ve stejné virtuální síti, a to prostřednictvím privátních IP adres. 
  
-Exponenciální růst Azure a jeho sítě dosáhl bod, kde jsme nakonec realizované, lidské intuition může už spoléhat ke správě operací globální sítě. Ke splnění potřebné k ověření, střední a krátkodobé změn v síti, jsme vyvinuli platformu pro zrcadlení a synteticky emulovat naše produkční sítě. Možnost vytváření zrcadlených prostředí a spouštění milionů simulací, umožňuje testování softwaru a změny hardwaru a jejich dopad před potvrzením pro naše produkční platformu a síť. 
 
-## <a name="next-steps"></a>Další postup
-- [Další informace o síťových služeb v Azure](https://azure.microsoft.com/product-categories/networking/)
+## <a name="well-managed-using-software-defined-innovation"></a>Dobře spravované pomocí softwarově definovaných inovací
+
+Po spuštění některého z špičkových cloudů na světě získala společnost Microsoft spoustu přehledů a zkušeností při sestavování [a správě](https://myignite.techcommunity.microsoft.com/sessions/66668) vysoce výkonné globální infrastruktury.  
+ 
+Dodržujeme robustní sadu funkčních principů: 
+ 
+- Využijte nejlepšího přepínání hardwaru napříč různými úrovněmi sítě.  
+- Nasaďte nové funkce s nulovým dopadem na koncové uživatele.  
+- Co nejrychleji naveďte aktualizace bezpečně a spolehlivě napříč loďstvem. Hodiny místo týdnů.  
+- Využijte rozsáhlou telemetrii a plně automatizovanou odolnost proti chybám v cloudu.  
+- K řízení všech hardwarových prvků v síti použijte sjednocené a softwarově definovanou síťovou technologii.  Eliminace duplicit a snížení počtu selhání. 
+ 
+Tyto zásady se vztahují na všechny vrstvy sítě: od síťového rozhraní hostitele, přepínání platformy, síťových funkcí v datovém centru, jako jsou nástroje pro vyrovnávání zatížení, a to vše až do sítě WAN s naší platformou provozního provozu a našimi optickými sítěmi.  
+ 
+Exponenciální nárůst Azure a jeho síť dosáhly místa, kde jsme nakonec provedli, že by se v rámci správy globálních síťových operací mohla tato lidská Intuition nadále spoléhat. Abychom mohli splnit nutnost ověřit dlouhodobou, střední a krátkodobou změnu v síti, vyvinuli jsme platformu pro syntetické zrcadlení a emulaci naší produkční sítě. Možnost vytvářet zrcadlená prostředí a spouštět miliony simulací, umožňuje nám otestovat změny softwaru a hardwaru a jejich dopad, než je potvrdíme v naší provozní platformě a síti. 
+
+## <a name="next-steps"></a>Další kroky
+- [Další informace o síťových službách poskytovaných v Azure](https://azure.microsoft.com/product-categories/networking/)

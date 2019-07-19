@@ -4,16 +4,16 @@ ms.service: service-bus
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: spelluru
-ms.openlocfilehash: b8cf4217ca6c80be998b92e71c3ba29c4f68bce2
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: b150cad22528234286fa7939bf7055e8312ed361
+ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67175256"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68229227"
 ---
-## <a name="webapi-project"></a>Projektem WebAPI
-1. V sadě Visual Studio, otevřete **AppBackend** projekt, který jste vytvořili v **oznamování uživatelům pomocí** kurzu.
-2. Notifications.cs nahradit celý **oznámení** třídy následujícím kódem. Nezapomeňte nahradit zástupné symboly vaším připojovacím řetězcem (s úplným přístupem) pro vaše Centrum oznámení a název centra. Tyto hodnoty z můžete získat [webu Azure portal](http://portal.azure.com). Tento modul teď představuje různé zabezpečených oznámení se odešlou. Ve zcela implementován oznámení uloží v databázi. pro jednoduchost v tomto případě jsme uložit je do paměti.
+## <a name="webapi-project"></a>Projekt WebAPI
+1. V aplikaci Visual Studio otevřete projekt **projekt appbackend** , který jste vytvořili v kurzu pro **upozorňování uživatelů** .
+2. V Notifications.cs nahraďte celou třídu **oznámení** následujícím kódem. Nezapomeňte nahradit zástupné symboly připojovacím řetězcem (s úplným přístupem) pro vaše centrum oznámení a názvem centra. Tyto hodnoty můžete získat z [Azure Portal](https://portal.azure.com). Tento modul teď představuje různá zabezpečená oznámení, která se odešlou. V úplné implementaci budou oznámení uložená v databázi. pro zjednodušení v tomto případě je ukládáme do paměti.
    
         public class Notification
         {
@@ -53,7 +53,7 @@ ms.locfileid: "67175256"
             }
         }
 
-1. V souboru NotificationsController.cs nahraďte kód uvnitř **NotificationsController** třídy definice s následujícím kódem. Tato komponenta implementuje způsob, aby zařízení načetlo oznámení bezpečně a také nabízí možnost (pro účely tohoto kurzu) Chcete-li aktivovat zabezpečené nabízení do zařízení. Všimněte si, že při odesílání oznámení do centra oznámení, pouze pošleme nezpracovaná oznámení s ID oznámení (a žádný skutečný zprávy):
+1. V NotificationsController.cs nahraďte kód uvnitř definice třídy **NotificationsController** následujícím kódem. Tato součást implementuje způsob, jak zařízení správně načte oznámení, a poskytuje způsob (pro účely tohoto kurzu) pro aktivaci zabezpečeného nabízeného oznámení pro vaše zařízení. Všimněte si, že při odesílání oznámení do centra oznámení pošleme nezpracované oznámení s ID oznámení (bez skutečné zprávy):
    
        public NotificationsController()
        {
@@ -88,8 +88,8 @@ ms.locfileid: "67175256"
         }
 
 
-Všimněte si, `Post` metoda nyní neodešle oznámení s informační zprávou. Odešle nezpracovaná oznámení, která obsahuje pouze ID oznámení a nikoliv citlivého obsahu. Také ujistěte se, že chcete přidat komentář operace odeslání pro platformy, pro které nemáte přihlašovací údaje nakonfigurované v centru oznámení, jako jsou způsobí chyby.
+Všimněte si, `Post` že metoda teď neposílá oznámení informační zprávy. Pošle nezpracované oznámení, které obsahuje jenom ID oznámení, a ne žádný citlivý obsah. Nezapomeňte taky zadat komentář k operaci Odeslat pro platformy, pro které nemáte nakonfigurované přihlašovací údaje v centru oznámení, protože budou mít chyby.
 
-1. Nyní jsme se znovu nasadit tuto aplikaci na web Azure aby byla přístupná ze všech zařízení. Klikněte pravým tlačítkem na projekt **AppBackend** a vyberte **Publikovat**.
-2. Vyberte web Azure jako váš cíl publikování. Přihlaste se pomocí svého účtu Azure a vyberte stávající nebo novou webovou stránku a poznamenejte si **cílovou adresu URL** vlastnost **připojení** kartu. Na tuto adresu URL budeme odkazovat jako na *koncový bod back-endu* později v tomto kurzu. Klikněte na tlačítko **publikovat**.
+1. Tuto aplikaci teď znovu nasadíme na web Azure, aby bylo možné ji zpřístupnit ze všech zařízení. Klikněte pravým tlačítkem na projekt **AppBackend** a vyberte **Publikovat**.
+2. Jako cíl publikování vyberte web Azure. Přihlaste se pomocí svého účtu Azure a vyberte existující nebo nový web a poznamenejte si vlastnost **cílová adresa URL** na kartě **připojení** . Na tuto adresu URL budeme odkazovat jako na *koncový bod back-endu* později v tomto kurzu. Klikněte na tlačítko **publikovat**.
 

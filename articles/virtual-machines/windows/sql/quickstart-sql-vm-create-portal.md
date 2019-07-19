@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 05/11/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 1c1317726cf29f23e4729c67a5a5794fa459220b
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: fb35cc99164cc8da047e8309d63bf7909abf4815
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65410871"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67846035"
 ---
 # <a name="quickstart-create-a-sql-server-2017-windows-virtual-machine-in-the-azure-portal"></a>Rychlý start: Vytvoření virtuálního počítače s Windows a SQL Serverem 2017 na webu Azure Portal
 
@@ -40,13 +40,13 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 ## <a id="select"></a> Výběr image virtuálního počítače s SQL Serverem
 
-1. Přihlaste se k [webu Azure portal](https://portal.azure.com) pomocí svého účtu.
+1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí svého účtu.
 
 1. Na webu Azure Portal vyberte **Vytvořit prostředek**. 
 
-1. Do vyhledávacího pole zadejte `SQL Server 2017 Developer on Windows Server 2016`, a stiskněte klávesu ENTER. SQL Server 2017 na Windows serveru 2016 možnost $expand 
+1. Do vyhledávacího pole zadejte `SQL Server 2017 Developer on Windows Server 2016`a stiskněte klávesu ENTER. Rozbalte možnost SQL Server 2017 v systému Windows Server 2016. 
 
-1. Vyberte **bezplatná licence SQL serveru: SQL Server 2017 Developer ve Windows serveru 2016** bitové kopie. V tomto kurzu se používá edice Developer, protože je to plná verze SQL Serveru, která je zdarma pro účely testování vývoje. Platíte jenom náklady na provozování virtuálního počítače. Kompletní informace o cenách najdete v [doprovodných materiálech k cenám pro virtuální počítače Azure s SQL Serverem](virtual-machines-windows-sql-server-pricing-guidance.md).
+1. **Vyberte bezplatnou licenci SQL Server: SQL Server 2017 vývojář na obrázku Windows serveru** 2016. V tomto kurzu se používá edice Developer, protože je to plná verze SQL Serveru, která je zdarma pro účely testování vývoje. Platíte jenom náklady na provozování virtuálního počítače. Kompletní informace o cenách najdete v [doprovodných materiálech k cenám pro virtuální počítače Azure s SQL Serverem](virtual-machines-windows-sql-server-pricing-guidance.md).
 
    ![Nové okno hledání](./media/quickstart-sql-vm-create-portal/newsearch.png)
 
@@ -55,54 +55,54 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 ## <a id="configure"></a> Poskytnutí základních informací
 
-Na **Základy** kartu, zadejte následující informace:
+Na kartě **základy** zadejte následující informace:
 
-1. V **Project Details** , vyberte své předplatné Azure a pak vyberte **vytvořit nový** vytvořit novou skupinu prostředků. Typ _SQLVM-RG_ pro název.
+1. V části **Project Details (podrobnosti projektu** ) vyberte předplatné Azure a pak vyberte **vytvořit novou** a vytvořte novou skupinu prostředků. Jako název zadejte _SQLVM-RG_ .
 
-   ![Předplatné](media/quickstart-sql-vm-create-portal/basics-project-details.png)
+   ![Subscription](media/quickstart-sql-vm-create-portal/basics-project-details.png)
 
-1. V části **Instance podrobnosti**:
-    1. Typ _SQLVM_ pro **název virtuálního počítače**. 
-    1. Vyberte umístění pro vaše **oblasti**. 
-    1. Pro účely tohoto rychlého startu ponechte **možností dostupnosti** nastavena na _žádné redundance infrastruktury požadované_. Další informace o možnosti dostupnosti najdete v tématu [oblastí Azure a dostupnost](../../windows/regions-and-availability.md). 
-    1. V **Image** seznamu vyberte _bezplatná licence SQL serveru: SQL Server 2017 Developer ve Windows serveru 2016_. 
-    1. Zvolit **změnit velikost** pro **velikost** virtuálního počítače a vyberte **A2 základní** nabídky. Ujistěte se, že vyčistit prostředky, až budete hotovi s nimi, abyste zabránili neočekávaným poplatkům. 
+1. V části **Podrobnosti instance**:
+    1. Jako **název virtuálního počítače**zadejte _SQLVM_ . 
+    1. Vyberte umístění pro vaši **oblast**. 
+    1. Pro účely tohoto rychlého startu nechte **Možnosti dostupnosti** nastavené na nepotřebnou _redundanci infrastruktury_. Další informace o možnostech dostupnosti najdete v tématu [dostupnost](../../windows/availability.md). 
+    1. V seznamu **Obrázek** vyberte _bezplatný SQL Server licence: SQL Server 2017 Developer v systému Windows Server_2016. 
+    1. Zvolte, chcete-li **změnit velikost** pro **Velikost** virtuálního počítače, a vyberte položku **základní nabídka a2** . Abyste zabránili neočekávaným poplatkům, nezapomeňte prostředky vyčistit. 
 
-   ![Podrobnosti o instancích](media/quickstart-sql-vm-create-portal/basics-instance-details.png)
+   ![Podrobnosti instance](media/quickstart-sql-vm-create-portal/basics-instance-details.png)
 
-1. V části **účet správce**, zadejte uživatelské jméno, například _azureuser_ a heslo. Heslo musí obsahovat nejméně 12 znaků a musí splňovat [zadané požadavky na složitost](../../windows/faq.md#what-are-the-password-requirements-when-creating-a-vm).
+1. V části **účet správce**zadejte uživatelské jméno, například _azureuser_ a heslo. Heslo musí obsahovat nejméně 12 znaků a musí splňovat [zadané požadavky na složitost](../../windows/faq.md#what-are-the-password-requirements-when-creating-a-vm).
 
    ![Účet správce](media/quickstart-sql-vm-create-portal/basics-administrator-account.png)
 
-1. V části **příchozí pravidla portů**, zvolte **povolit vybrané porty** a pak vyberte **protokolu RDP (3389)** z rozevíracího seznamu. 
+1. V části **pravidla portů pro příchozí spojení**zvolte **Povolit vybrané porty** a v rozevíracím seznamu vyberte **RDP (3389)** . 
 
-   ![Pravidla portů pro příchozí spojení](media/quickstart-sql-vm-create-portal/basics-inbound-port-rules.png)
+   ![Pravidla portů pro příchozí provoz](media/quickstart-sql-vm-create-portal/basics-inbound-port-rules.png)
 
 ## <a name="sql-server-settings"></a>Nastavení SQL Serveru
 
-Na **nastavení systému SQL Server** kartu, nakonfigurujte následující možnosti:
+Na kartě **nastavení SQL Server** nakonfigurujte následující možnosti:
 
-1. V části **zabezpečení a sítě**vyberte _veřejné (Internet_) pro **připojení SQL** a změňte port, který se `1401` abyste se vyhnuli použití známého portu v veřejného scénáře. 
-1. V části **ověřování SQL**vyberte **povolit**. Jako přihlašovací údaje pro SQL je nastavené stejné uživatelské jméno a heslo, které jste nakonfigurovali pro virtuální počítač. Použít výchozí nastavení pro **integrace Azure Key Vault** a **konfiguraci úložiště**.  
+1. V části **zabezpečení & sítě**vyberte možnost _veřejné (Internet_) pro **připojení SQL** a změňte port tak `1401` , abyste se vyhnuli použití dobře známého čísla portu ve veřejném scénáři. 
+1. V části **ověřování SQL**vyberte **Povolit**. Jako přihlašovací údaje pro SQL je nastavené stejné uživatelské jméno a heslo, které jste nakonfigurovali pro virtuální počítač. Použijte výchozí nastavení pro **Azure Key Vault integraci** a **konfiguraci úložiště**.  
 
-   ![Nastavení zabezpečení systému SQL server](media/quickstart-sql-vm-create-portal/sql-server-settings.png)
+   ![Nastavení zabezpečení systému SQL Server](media/quickstart-sql-vm-create-portal/sql-server-settings.png)
 
-1. Změna dalších nastavení v případě potřeby a pak vyberte **revize + vytvořit**. 
+1. V případě potřeby změňte všechna další nastavení a potom vyberte **zkontrolovat + vytvořit**. 
 
    ![Zkontrolovat a vytvořit](media/quickstart-sql-vm-create-portal/review-create.png)
 
 
 ## <a name="create-the-sql-server-vm"></a>Vytvoření virtuálního počítače s SQL Serverem
 
-Na **zkontrolujte + vytvořit** kartu, zkontrolujte souhrn a vyberte **vytvořit** k vytvoření systému SQL Server, skupinu prostředků a prostředky zadané pro tento virtuální počítač.
+Na kartě **Revize + vytvořit** zkontrolujte souhrn a vyberte **vytvořit** a vytvořte SQL Server, skupinu prostředků a prostředky zadané pro tento virtuální počítač.
 
 Nasazení můžete monitorovat z webu Azure Portal. Tlačítko **Oznámení** v horní části obrazovky zobrazuje základní stav nasazení. Nasazení může trvat několik minut. 
 
 ## <a name="connect-to-sql-server"></a>Připojení k SQL Serveru
 
-1. Na portálu vyhledejte **veřejnou IP adresu** virtuálního počítače SQL serveru v **přehled** část vlastnosti virtuálního počítače.
+1. Na portálu vyhledejte **veřejnou IP adresu** vašeho virtuálního počítače SQL Server v části **Přehled** vlastností virtuálního počítače.
 
-1. Na jiném počítači připojeném k Internetu, otevřete [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms).
+1. Na jiném počítači připojeném k Internetu otevřete [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms).
 
 
 1. V dialogovém okně **Připojit k serveru** nebo **Connect to Database Engine** (Připojit k databázovému stroji) upravte hodnotu **Název serveru**. Zadejte veřejnou IP adresu vašeho virtuálního počítače. Potom zadejte čárku a vlastní port, **1401**, který jsme zadali, když jste konfigurovali nový virtuální počítač. Například, `11.22.33.444,1401`.
@@ -134,7 +134,7 @@ Pokud nepotřebujete, aby virtuální počítač SQL VM běžel nepřetržitě, 
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto rychlém startu jste vytvořili virtuální počítač SQL serverem 2017 na webu Azure Portal. Další informace o tom, jak na tento nový SQL Server migrovat data, najdete v následujícím článku.
+V tomto rychlém startu jste v Azure Portal vytvořili virtuální počítač s SQL Server 2017. Další informace o tom, jak na tento nový SQL Server migrovat data, najdete v následujícím článku.
 
 > [!div class="nextstepaction"]
 > [Migrace databáze na virtuální počítač s SQL](virtual-machines-windows-migrate-sql.md)

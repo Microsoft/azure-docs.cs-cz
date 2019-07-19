@@ -1,6 +1,6 @@
 ---
-title: Podpora HTTP/2 v Azure CDN | Dokumentace Microsoftu
-description: Další informace o podpoře protokolu HTTP/2 a CDN.
+title: Podpora HTTP/2 v Azure CDN | Microsoft Docs
+description: Přečtěte si o podpoře HTTP/2 a CDN.
 services: cdn
 documentationcenter: ''
 author: lichard
@@ -12,38 +12,38 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 5/04/2017
-ms.author: rli
-ms.openlocfilehash: c59ecceee35587f1b7d844f160ac0f61c5288e0e
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.author: ril
+ms.openlocfilehash: 703623e3f7f314d87417458f3f9a218dfdf45427
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67593747"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67849978"
 ---
 # <a name="http2-support-in-azure-cdn"></a>Podpora HTTP/2 v Azure CDN
 
-HTTP/2 je hlavní revizi HTTP/1.1\. To zajišťuje rychlejší webového výkonu, snížení odezvu a vylepšené uživatelské prostředí a přitom zkušenosti metody HTTP, stavové kódy a sémantika. I když HTTP/2 je navržen pro práci s HTTP a HTTPS, mnoha webových prohlížečích klienta přes protokol TLS podporují jenom HTTP/2.
+HTTP/2 je hlavní revize HTTP/1.1 \. Poskytuje rychlejší webový výkon, omezenou dobu odezvy a vylepšené uživatelské prostředí a současně zachovává známé metody HTTP, stavové kódy a sémantiku. I když je protokol HTTP/2 navržený tak, aby fungoval s HTTP a HTTPS, mnoho klientských webových prohlížečů podporuje jenom HTTP/2 přes TLS.
 
 ### <a name="http2-benefits"></a>Výhody protokolu HTTP/2
 
-Výhody protokolu HTTP/2 patří:
+Mezi výhody HTTP/2 patří:
 
-*   **Multiplexingu a souběžnost**
+*   **Multiplexování a souběžnost**
 
-    Pomocí protokolu HTTP 1.1, provedení žádosti více prostředků vyžaduje více připojení TCP a každé připojení má nároky na výkon s ním spojená. HTTP/2 umožňuje více prostředků k požadovat u jednoho připojení TCP.
+    Pomocí protokolu HTTP 1,1 vyžaduje více žádostí o prostředky více připojení TCP a každé z nich má k sobě přiřazené nároky na výkon. HTTP/2 umožňuje vyžádání více prostředků v jednom připojení TCP.
 
-*   **Komprimaci hlaviček**
+*   **Komprese hlaviček**
 
-    Kompresí hlavičky protokolu HTTP pro obsloužit prostředky je výrazně snížit čas na lince.
+    Díky komprimaci hlaviček protokolu HTTP pro obsluhované prostředky se čas na lince významně sníží.
 
-*   **Stream závislosti**
+*   **Závislosti streamu**
 
-    Závislosti Stream povolit klientům sdělit serveru prostředků, které mají prioritu.
+    Závislosti streamu umožňují klientovi označovat serveru, který má prostředky přednost.
 
 
 ## <a name="http2-browser-support"></a>Podpora prohlížeče HTTP/2
 
-Všechny hlavní prohlížeče implementovali podpora HTTP/2 v jejich aktuálních verzí. Nepodporovaná prohlížeče automaticky náhradu za HTTP/1.1.
+Všechny hlavní prohlížeče mají v jejich současných verzích naimplementovaná podpora HTTP/2. Nepodporované prohlížeče se automaticky přenemají na HTTP/1.1.
 
 |Browser|Minimální verze|
 |-------------|------------|
@@ -55,16 +55,16 @@ Všechny hlavní prohlížeče implementovali podpora HTTP/2 v jejich aktuální
 
 ## <a name="enabling-http2-support-in-azure-cdn"></a>Povolení podpory HTTP/2 v Azure CDN
 
-Podpora HTTP/2 je v současné době aktivní pro všechny profily Azure CDN. Není žádná další akce vyžaduje od zákazníků.
+V současné době je podpora protokolu HTTP/2 aktivní pro všechny profily Azure CDN. Od zákazníků není vyžadována žádná další akce.
 
 ## <a name="next-steps"></a>Další kroky
 
-Výhody protokolu HTTP/2 v akci najdete v tématu [této ukázky od Akamai](https://http2.akamai.com/demo).
+Pokud chcete zobrazit výhody HTTP/2 v akci, podívejte se na [tuto ukázku z Akamai](https://http2.akamai.com/demo).
 
-Další informace o HTTP/2 najdete na následujících odkazech:
+Další informace o HTTP/2 najdete v následujících zdrojích informací:
 
-*   [Domovská stránka specifikaci protokolu HTTP/2](https://http2.github.io/)
-*   [Oficiální HTTP/2 – nejčastější dotazy](https://http2.github.io/faq/)
-*   [Informace o společnosti Akamai HTTP/2](https://http2.akamai.com/)
+*   [Domovská stránka specifikace HTTP/2](https://http2.github.io/)
+*   [Oficiální Nejčastější dotazy k HTTP/2](https://http2.github.io/faq/)
+*   [Akamai HTTP/2 – informace](https://http2.akamai.com/)
 
-Další informace o dostupných funkcích Azure CDN, najdete v článku [přehled sítě CDN Azure](https://azure.microsoft.com/documentation/articles/cdn-overview/).
+Další informace o funkcích, které jsou k dispozici Azure CDN, najdete v [přehledu Azure CDN](https://azure.microsoft.com/documentation/articles/cdn-overview/).

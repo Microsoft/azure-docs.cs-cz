@@ -1,5 +1,5 @@
 ---
-title: Vazby Azure Cosmos DB pro službu Functions 2.x
+title: Azure Cosmos DB vazby pro Functions 2. x
 description: Vysvětlení použití služby Azure Cosmos DB triggerů a vazeb ve službě Azure Functions.
 services: functions
 documentationcenter: na
@@ -11,35 +11,35 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: 1a505fc5ef09fe9842e72488843155af7c0888cb
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: b0f8b5efcf7e22a3f9d98d5c812ba4821a8b2124
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67480805"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68254773"
 ---
-# <a name="azure-cosmos-db-bindings-for-azure-functions-2x"></a>Vazby Azure Cosmos DB pro službu Azure Functions 2.x
+# <a name="azure-cosmos-db-bindings-for-azure-functions-2x"></a>Azure Cosmos DB vazby pro Azure Functions 2. x
 
-> [!div class="op_single_selector" title1="Vyberte verzi modulu runtime Azure Functions, které používáte: "]
+> [!div class="op_single_selector" title1="Vyberte verzi Azure Functions runtime, kterou používáte: "]
 > * [Verze 1](functions-bindings-cosmosdb.md)
 > * [Verze 2](functions-bindings-cosmosdb-v2.md)
 
-Tento článek vysvětluje, jak pracovat s [služby Azure Cosmos DB](../cosmos-db/serverless-computing-database.md) vazby ve službě Azure Functions 2.x. Azure Functions podporuje aktivaci, vstupní a výstupní vazby pro službu Azure Cosmos DB.
+Tento článek vysvětluje, jak pracovat s [Azure Cosmos DBmi](../cosmos-db/serverless-computing-database.md) vazbami v Azure Functions 2. x. Azure Functions podporuje aktivaci, vstupní a výstupní vazby pro službu Azure Cosmos DB.
 
 > [!NOTE]
-> Tento článek je určený pro [Azure Functions verze 2.x](functions-versions.md).  Informace o tom, jak používat tyto vazby ve funkcích 1.x, najdete v článku [vazby Azure Cosmos DB pro službu Azure Functions 1.x](functions-bindings-cosmosdb.md).
+> Tento článek je určen pro [Azure Functions verze 2. x](functions-versions.md).  Informace o tom, jak tyto vazby použít ve funkcích 1. x, najdete v tématu [Azure Cosmos DB vazby pro Azure Functions 1. x](functions-bindings-cosmosdb.md).
 >
-> Tato vazba se původně nazývala DocumentDB. Funkce verze 2.x, aktivační událost, vazby a balíčků jsou všechny s názvem služby Cosmos DB.
+> Tato vazba se původně nazývala DocumentDB. Ve funkcích Functions verze 2. x jsou triggery, vazby a balíčky všechny pojmenované Cosmos DB.
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-## <a name="supported-apis"></a>Podporované rozhraní API
+## <a name="supported-apis"></a>Podporovaná rozhraní API
 
 [!INCLUDE [SQL API support only](../../includes/functions-cosmosdb-sqlapi-note.md)]
 
 ## <a name="packages---functions-2x"></a>Balíčky – funkce 2.x
 
-Vazby Azure Cosmos DB pro verzi Functions jsou součástí 2.x [Microsoft.Azure.WebJobs.Extensions.CosmosDB](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.CosmosDB) balíčku NuGet, verze 3.x. Zdrojový kód pro vazbu se [azure webjobs sdk rozšíření](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.CosmosDB/) úložiště GitHub.
+Vazby Azure Cosmos DB pro funkce verze 2. x jsou k dispozici v balíčku NuGet [Microsoft. Azure. WebJobs. Extensions. CosmosDB](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.CosmosDB) , verze 3. x. Zdrojový kód pro vazbu se [azure webjobs sdk rozšíření](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.CosmosDB/) úložiště GitHub.
 
 [!INCLUDE [functions-package-v2](../../includes/functions-package-v2.md)]
 
@@ -57,7 +57,7 @@ Podívejte se na příklad specifické pro jazyk:
 * [JavaScript](#trigger---javascript-example)
 * [Python](#trigger---python-example)
 
-Příklady přeskočit triggeru
+Přeskočit příklady triggerů
 
 ### <a name="trigger---c-example"></a>Aktivační události – příklad v jazyce C#
 
@@ -93,7 +93,7 @@ namespace CosmosDBSamplesV2
 }
 ```
 
-Příklady přeskočit triggeru
+Přeskočit příklady triggerů
 
 ### <a name="trigger---c-script-example"></a>Aktivační události – příklad skriptu jazyka C#
 
@@ -131,7 +131,7 @@ Tady je kód skriptu jazyka C#:
     }
 ```
 
-Příklady přeskočit triggeru
+Přeskočit příklady triggerů
 
 ### <a name="trigger---javascript-example"></a>Aktivační události – příklad v jazyce JavaScript
 
@@ -164,7 +164,7 @@ Tady je kód jazyka JavaScript:
 
 ### <a name="trigger---java-example"></a>Aktivační události – příklad v jazyce Java
 
-Následující příklad ukazuje trigger Cosmos DB vazby v *function.json* souboru a [Java funkce](functions-reference-java.md) , který používá vazba. Funkce se tak zapojí při vložení nebo aktualizace v zadané databázi a kolekci.
+Následující příklad ukazuje Cosmos DB aktivační vazby v souboru *Function. JSON* a [funkci jazyka Java](functions-reference-java.md) , která používá vazbu. Funkce je zahrnuta v případě, že se v zadané databázi a kolekci nacházejí vložené nebo aktualizované databáze.
 
 ```json
 {
@@ -196,14 +196,14 @@ Tady je kód Java:
 ```
 
 
-V [Java funkce knihovny prostředí runtime](/java/api/overview/azure/functions/runtime), použijte `@CosmosDBTrigger` poznámku o parametrech, jehož hodnota bude pocházet ze služby Cosmos DB.  Tato poznámka je možné s nativní typy v jazyce Java, objektů Pojo nebo s povolenou hodnotou Null hodnoty pomocí nepovinné<T>.
+V [knihovně modulu runtime Functions jazyka Java](/java/api/overview/azure/functions/runtime)použijte `@CosmosDBTrigger` anotaci pro parametry, jejichž hodnota by pocházela z Cosmos DB.  Tuto poznámku lze použít s nativními typy s možnou hodnotou null, Pojo nebo Nullable\<pomocí volitelné T >.
 
 
-Příklady přeskočit triggeru
+Přeskočit příklady triggerů
 
-### <a name="trigger---python-example"></a>Aktivační události – příklad v Pythonu
+### <a name="trigger---python-example"></a>Trigger – příklad Pythonu
 
-Následující příklad ukazuje vazby v trigger Cosmos DB *function.json* souboru a [funkce Pythonu](functions-reference-python.md) , který používá vazba. Funkce zapisuje zprávy protokolu při změně záznamů Cosmos DB.
+Následující příklad ukazuje Cosmos DB aktivační vazby v souboru *Function. JSON* a [funkci Pythonu](functions-reference-python.md) , která používá vazbu. Funkce zapisuje zprávy protokolu při změně záznamů Cosmos DB.
 
 Zde je vazba dat v *function.json* souboru:
 
@@ -232,7 +232,7 @@ Tady je kód Pythonu:
             logging.info('First document Id modified: %s', documents[0]['id'])
 ```
 
-## <a name="trigger---c-attributes"></a>Trigger – C# atributy
+## <a name="trigger---c-attributes"></a>Aktivační C# atributy
 
 V [knihoven tříd C#](functions-dotnet-class-library.md), použijte [CosmosDBTrigger](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.CosmosDB/Trigger/CosmosDBTriggerAttribute.cs) atribut.
 
@@ -274,9 +274,9 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 |**leaseAcquireInterval**| **leaseAcquireInterval**| (Volitelné) Pokud nastavíte, definuje, v milisekundách, interval aktivovala úloha Vypočítat, pokud oddíly jsou rovnoměrně mezi známými hostiteli instance. Výchozí hodnota je 13000 (13 sekund).
 |**leaseExpirationInterval**| **leaseExpirationInterval**| (Volitelné) Pokud nastavíte, definuje, v milisekundách, interval, pro kterou je zapůjčení pořízené zapůjčení představující oddílu. Pokud v rámci tohoto intervalu nedojde k jeho prodloužení zapůjčení, způsobí vypršení platnosti a vlastnictví oddílu se přesune do jiné instance. Výchozí hodnota je 60000 (60 sekund).
 |**leaseRenewInterval**| **leaseRenewInterval**| (Volitelné) Pokud nastavíte, definuje, v milisekundách, interval obnovení pro všechny zapůjčení pro oddíly právě načtený v instanci. Výchozí hodnota je 17000 (17 sekund).
-|**checkpointFrequency**| **checkpointFrequency**| (Volitelné) Pokud nastavíte, definuje, v milisekundách, interval mezi zapůjčení kontrolní body. Výchozí hodnota je vždy po každé volání funkce.
+|**checkpointFrequency**| **checkpointFrequency**| (Volitelné) Pokud nastavíte, definuje, v milisekundách, interval mezi zapůjčení kontrolní body. Výchozí hodnota je vždy po volání funkce.
 |**maxItemsPerInvocation**| **maxItemsPerInvocation**| (Volitelné) Pokud nastavíte, přizpůsobuje maximální objem přijatých položek pro volání funkce.
-|**startFromBeginning**| **StartFromBeginning**| (Volitelné) Pokud nastavíte, sdělí triggeru pro spuštění čtení změny od začátku této historie kolekce místo aktuální čas. Toto funguje, pouze při prvním spuštění triggeru, stejně jako v následné spuštění, kontrolní body jsou již uloženy. Nastavení na `true` pokud existuje zapůjčení už vytvořili nemá žádný vliv.
+|**startFromBeginning**| **StartFromBeginning**| Volitelné Když se nastaví, sdělí triggeru, aby začal číst změny od začátku historie kolekce namísto aktuálního času. To funguje jenom při prvním spuštění triggeru, stejně jako v dalších spuštěních, kontrolní body už jsou uložené. Toto nastavení na `true` , pokud jsou již vytvořeny zapůjčené adresy, nemá žádný vliv.
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -480,7 +480,7 @@ namespace CosmosDBSamplesV2
 
 Následující příklad ukazuje [funkce jazyka C#](functions-dotnet-class-library.md) , který načte jednotlivý dokument. Je funkce aktivována požadavkem HTTP, že používá směrování dat k určení ID se má vyhledat. Že ID slouží k načtení `ToDoItem` dokument ze zadané databáze a kolekce.
 
-Tento příklad ukazuje způsob použití vazbového výrazu v `SqlQuery` parametru. Můžete předat data trasy pro `SqlQuery` parametru, jak je vidět, ale aktuálně [nelze předat hodnoty řetězce dotazu](https://github.com/Azure/azure-functions-host/issues/2554#issuecomment-392084583).
+Příklad ukazuje, jak použít výraz vazby v `SqlQuery` parametru. Můžete předat údaje o trasách k `SqlQuery` parametru, jak je znázorněno, ale v současné době [nelze předat hodnoty řetězce dotazu](https://github.com/Azure/azure-functions-host/issues/2554#issuecomment-392084583).
 
 
 ```cs
@@ -990,7 +990,7 @@ public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, Docume
 
 ### <a name="input---javascript-examples"></a>(Vstup) – příklady jazyka JavaScript
 
-Tato část obsahuje následující příklady, které čtou jeden dokument tak, že zadáte hodnotu ID z různých zdrojů:
+Tato část obsahuje následující příklady, které čtou jeden dokument zadáním hodnoty ID z různých zdrojů:
 
 * [Aktivační událost fronty, vyhledejte ID z formátu JSON](#queue-trigger-look-up-id-from-json-javascript)
 * [Trigger HTTP, vyhledejte ID z řetězce dotazu](#http-trigger-look-up-id-from-query-string-javascript)
@@ -1196,9 +1196,9 @@ Tady je kód jazyka JavaScript:
 
 [Přeskočit vstupní příklady](#input---attributes)
 
-### <a name="input---python-examples"></a>(Vstup) – příklady Pythonu
+### <a name="input---python-examples"></a>Input – příklady Pythonu
 
-Tato část obsahuje následující příklady, které čtou jeden dokument tak, že zadáte hodnotu ID z různých zdrojů:
+Tato část obsahuje následující příklady, které čtou jeden dokument zadáním hodnoty ID z různých zdrojů:
 
 * [Aktivační událost fronty, vyhledejte ID z formátu JSON](#queue-trigger-look-up-id-from-json-python)
 * [Trigger HTTP, vyhledejte ID z řetězce dotazu](#http-trigger-look-up-id-from-query-string-python)
@@ -1207,9 +1207,9 @@ Tato část obsahuje následující příklady, které čtou jeden dokument tak,
 
 [Přeskočit vstupní příklady](#input---attributes)
 
-#### <a name="queue-trigger-look-up-id-from-json-python"></a>Aktivační událost fronty, vyhledejte ID z formátu JSON (Python)
+#### <a name="queue-trigger-look-up-id-from-json-python"></a>Aktivační událost fronty, vyhledání ID z formátu JSON (Python)
 
-Následující příklad ukazuje vstupní vazby Cosmos DB v *function.json* souboru a [funkce Pythonu](functions-reference-python.md) , který používá vazba. Funkce přečte jednotlivý dokument a aktualizuje hodnotu textového dokumentu.
+Následující příklad ukazuje vstupní vazbu Cosmos DB v souboru *Function. JSON* a [funkci Pythonu](functions-reference-python.md) , která používá vazbu. Funkce přečte jednotlivý dokument a aktualizuje hodnotu textového dokumentu.
 
 Zde je vazba dat v *function.json* souboru:
 
@@ -1253,9 +1253,9 @@ def main(queuemsg: func.QueueMessage, documents: func.DocumentList) -> func.Docu
 
 [Přeskočit vstupní příklady](#input---attributes)
 
-#### <a name="http-trigger-look-up-id-from-query-string-python"></a>Trigger HTTP, vyhledejte ID z řetězce dotazu (Python)
+#### <a name="http-trigger-look-up-id-from-query-string-python"></a>Trigger HTTP, vyhledání ID z řetězce dotazu (Python)
 
-Následující příklad ukazuje [funkce Pythonu](functions-reference-python.md) , který načte jednotlivý dokument. Je funkce aktivována požadavkem HTTP, který používá řetězec dotazu k určení ID se má vyhledat. Že ID slouží k načtení `ToDoItem` dokument ze zadané databáze a kolekce.
+Následující příklad ukazuje funkci jazyka [Python](functions-reference-python.md) , která načte jeden dokument. Je funkce aktivována požadavkem HTTP, který používá řetězec dotazu k určení ID se má vyhledat. Že ID slouží k načtení `ToDoItem` dokument ze zadané databáze a kolekce.
 
 Tady je *function.json* souboru:
 
@@ -1311,9 +1311,9 @@ def main(req: func.HttpRequest, todoitems: func.DocumentList) -> str:
 
 [Přeskočit vstupní příklady](#input---attributes)
 
-#### <a name="http-trigger-look-up-id-from-route-data-python"></a>Trigger HTTP, vyhledejte ID z dat trasy (Python)
+#### <a name="http-trigger-look-up-id-from-route-data-python"></a>Trigger HTTP, vyhledání ID z dat trasy (Python)
 
-Následující příklad ukazuje [funkce Pythonu](functions-reference-python.md) , který načte jednotlivý dokument. Je funkce aktivována požadavkem HTTP, který používá řetězec dotazu k určení ID se má vyhledat. Že ID slouží k načtení `ToDoItem` dokument ze zadané databáze a kolekce.
+Následující příklad ukazuje funkci jazyka [Python](functions-reference-python.md) , která načte jeden dokument. Je funkce aktivována požadavkem HTTP, který používá řetězec dotazu k určení ID se má vyhledat. Že ID slouží k načtení `ToDoItem` dokument ze zadané databáze a kolekce.
 
 Tady je *function.json* souboru:
 
@@ -1369,9 +1369,9 @@ def main(req: func.HttpRequest, todoitems: func.DocumentList) -> str:
 
 [Přeskočit vstupní příklady](#input---attributes)
 
-#### <a name="queue-trigger-get-multiple-docs-using-sqlquery-python"></a>Aktivační událost fronty, více dokumenty pomocí SqlQuery (Python)
+#### <a name="queue-trigger-get-multiple-docs-using-sqlquery-python"></a>Aktivační událost fronty, získání více dokumentů s použitím SqlQuery (Python)
 
-Následující příklad ukazuje vstupní vazby Azure Cosmos DB, v *function.json* souboru a [funkce Pythonu](functions-reference-python.md) , který používá vazba. Tato funkce načítá více dokumentů vybraných podle dotazu SQL, pomocí aktivační událost fronty přizpůsobit parametry dotazu.
+Následující příklad ukazuje vstupní vazbu Azure Cosmos DB v souboru *Function. JSON* a [funkci Pythonu](functions-reference-python.md) , která používá vazbu. Tato funkce načítá více dokumentů vybraných podle dotazu SQL, pomocí aktivační událost fronty přizpůsobit parametry dotazu.
 
 Aktivační událost fronty obsahuje parametr `departmentId`. Zprávy z fronty `{ "departmentId" : "Finance" }` vrátí všechny záznamy z finančního oddělení.
 
@@ -1452,15 +1452,15 @@ Tento příklad vyžaduje `project.json` soubor, který určuje, `FSharp.Interop
 
 Chcete-li přidat `project.json` souborů naleznete v tématu [ F# Správa balíčků](functions-reference-fsharp.md#package).
 
-### <a name="input---java-examples"></a>Vstup - příkladů v jazyce Java
+### <a name="input---java-examples"></a>Input – příklady jazyka Java
 
 Tato část obsahuje následující příklady:
 
-* [Trigger HTTP, vyhledejte ID z řetězce dotazu – parametr řetězce](#http-trigger-look-up-id-from-query-string---string-parameter-java)
-* [Trigger HTTP, vyhledejte ID z řetězce dotazu - POJO parametr](#http-trigger-look-up-id-from-query-string---pojo-parameter-java)
+* [Trigger HTTP, vyhledání ID z řetězce dotazu – parametr řetězce](#http-trigger-look-up-id-from-query-string---string-parameter-java)
+* [Trigger HTTP, vyhledání ID z řetězce dotazu – parametr POJO](#http-trigger-look-up-id-from-query-string---pojo-parameter-java)
 * [Trigger HTTP, vyhledejte ID z dat trasy](#http-trigger-look-up-id-from-route-data-java)
 * [Trigger HTTP, vyhledejte ID z dat trasy, pomocí SqlQuery](#http-trigger-look-up-id-from-route-data-using-sqlquery-java)
-* [HTTP aktivovat, získat z dat trasy, SqlQuery pomocí více dokumentace](#http-trigger-get-multiple-docs-from-route-data-using-sqlquery-java)
+* [Aktivační událost HTTP, získání více dokumentů z dat směrování pomocí SqlQuery](#http-trigger-get-multiple-docs-from-route-data-using-sqlquery-java)
 
 Příklady najdete jednoduchý `ToDoItem` typu:
 
@@ -1485,9 +1485,9 @@ public class ToDoItem {
 }
 ```
 
-#### <a name="http-trigger-look-up-id-from-query-string---string-parameter-java"></a>Trigger HTTP, vyhledejte ID z řetězce dotazu – parametr řetězce (Java)
+#### <a name="http-trigger-look-up-id-from-query-string---string-parameter-java"></a>Trigger HTTP, vyhledání ID z řetězce dotazu – parametr řetězce (Java)
 
-Následující příklad ukazuje funkci Java, která načte jednotlivý dokument. Je funkce aktivována požadavkem HTTP, který používá řetězec dotazu k určení ID se má vyhledat. Toto ID se používá k načtení dokumentu ze zadané databáze a kolekce, ve formátu řetězce.
+Následující příklad ukazuje funkci jazyka Java, která načte jeden dokument. Funkce je aktivována požadavkem HTTP, který pomocí řetězce dotazu určuje ID, které se má vyhledat. Toto ID se používá k načtení dokumentu ze zadané databáze a kolekce ve formě řetězce.
 
 ```java
 public class DocByIdFromQueryString {
@@ -1529,11 +1529,11 @@ public class DocByIdFromQueryString {
 }
  ```
 
-V [Java funkce knihovny prostředí runtime](/java/api/overview/azure/functions/runtime), použijte `@CosmosDBInput` Poznámka k parametrům funkcí, jehož hodnota bude pocházet ze služby Cosmos DB.  Tato poznámka je možné s nativní typy v jazyce Java, objektů Pojo nebo s povolenou hodnotou Null hodnoty pomocí nepovinné<T>.
+V [knihovně modulu runtime Functions jazyka Java](/java/api/overview/azure/functions/runtime)použijte `@CosmosDBInput` anotaci u parametrů funkce, jejichž hodnota pochází z Cosmos DB.  Tuto poznámku lze použít s nativními typy s možnou hodnotou null, Pojo nebo Nullable\<pomocí volitelné T >.
 
-#### <a name="http-trigger-look-up-id-from-query-string---pojo-parameter-java"></a>Trigger HTTP, vyhledejte ID z řetězce dotazu – parametr POJO (Java)
+#### <a name="http-trigger-look-up-id-from-query-string---pojo-parameter-java"></a>Trigger HTTP, vyhledání ID z řetězce dotazu – parametr POJO (Java)
 
-Následující příklad ukazuje funkci Java, která načte jednotlivý dokument. Je funkce aktivována požadavkem HTTP, který používá řetězec dotazu k určení ID se má vyhledat. Toto ID se používá k načtení dokumentu ze zadané databáze a kolekce. Dokument je pak převedeno do instance ```ToDoItem``` POJO dříve vytvořen a předán jako argument funkce.
+Následující příklad ukazuje funkci jazyka Java, která načte jeden dokument. Funkce je aktivována požadavkem HTTP, který pomocí řetězce dotazu určuje ID, které se má vyhledat. Toto ID se používá k načtení dokumentu ze zadané databáze a kolekce. Dokument se pak převede na instanci ```ToDoItem``` Pojo, která se dřív vytvořila, a předal se jako argument funkce.
 
 ```java
 public class DocByIdFromQueryStringPojo {
@@ -1573,9 +1573,9 @@ public class DocByIdFromQueryStringPojo {
 }
  ```
 
-#### <a name="http-trigger-look-up-id-from-route-data-java"></a>Trigger HTTP, vyhledejte ID z dat trasy (Java)
+#### <a name="http-trigger-look-up-id-from-route-data-java"></a>Aktivační událost HTTP, vyhledání ID z dat trasy (Java)
 
-Následující příklad ukazuje funkci Java, která načte jednotlivý dokument. Je funkce aktivována požadavkem HTTP, který se používá parametr trasa k určení ID se má vyhledat. Že ID slouží k načtení dokumentu ze zadané databáze a kolekce, vrácením jako ```Optional<String>```.
+Následující příklad ukazuje funkci jazyka Java, která načte jeden dokument. Funkce je aktivována požadavkem HTTP, který používá parametr směrování k určení ID, které se má vyhledat. Toto ID se používá k načtení dokumentu ze zadané databáze a kolekce a vrátí ho jako ```Optional<String>```.
 
 ```java
 public class DocByIdFromRoute {
@@ -1618,9 +1618,9 @@ public class DocByIdFromRoute {
 }
  ```
 
-#### <a name="http-trigger-look-up-id-from-route-data-using-sqlquery-java"></a>Trigger HTTP, vyhledejte ID z dat trasy, pomocí SqlQuery (Java)
+#### <a name="http-trigger-look-up-id-from-route-data-using-sqlquery-java"></a>Aktivační událost HTTP, vyhledání ID z dat trasy, použití SqlQuery (Java)
 
-Následující příklad ukazuje funkci Java, která načte jednotlivý dokument. Je funkce aktivována požadavkem HTTP, který se používá parametr trasa k určení ID se má vyhledat. Že ID slouží k načtení dokumentu ze zadané databáze a kolekce, převod výsledku nastaveno ```ToDoItem[]```, protože mnoho dokumentů mohou být vráceny, v závislosti na kritéria dotazu.
+Následující příklad ukazuje funkci jazyka Java, která načte jeden dokument. Funkce je aktivována požadavkem HTTP, který používá parametr směrování k určení ID, které se má vyhledat. Toto ID se používá k načtení dokumentu ze zadané databáze a kolekce a převod výsledné sady na ```ToDoItem[]```, protože v závislosti na kritériích dotazu může být vráceno mnoho dokumentů.
 
 ```java
 public class DocByIdFromRouteSqlQuery {
@@ -1660,9 +1660,9 @@ public class DocByIdFromRouteSqlQuery {
 }
  ```
 
-#### <a name="http-trigger-get-multiple-docs-from-route-data-using-sqlquery-java"></a>HTTP aktivovat, získat více dokumentace od data trasy, která pomocí SqlQuery (Java)
+#### <a name="http-trigger-get-multiple-docs-from-route-data-using-sqlquery-java"></a>Aktivační událost HTTP, získání více dokumentů z dat směrování pomocí SqlQuery (Java)
 
-Následující příklad ukazuje funkci Java, která více dokumentů. Je funkce aktivována požadavkem HTTP, který používá parametr trasa ```desc``` zadat řetězec pro hledání v ```description``` pole. Hledaný termín se používá k načtení kolekce dokumentů ze zadané databáze a kolekce, převod sadu výsledků ```ToDoItem[]``` a předáním jako argument funkce.
+Následující příklad ukazuje funkci jazyka Java, která obsahuje více dokumentů. Funkce se aktivuje požadavkem http, který používá parametr ```desc``` směrování k určení řetězce, který se má ```description``` v poli vyhledat. Hledaný termín slouží k načtení kolekce dokumentů ze zadané databáze a kolekce, převodu výsledku sady výsledků na objekt ```ToDoItem[]``` a jeho předání jako argumentu funkce.
 
 ```java
 public class DocsFromRouteSqlQuery {
@@ -1704,7 +1704,7 @@ public class DocsFromRouteSqlQuery {
 
 ## <a name="input---attributes"></a>(Vstup) – atributy
 
-V [knihoven tříd C#](functions-dotnet-class-library.md), použijte [CosmosDB](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.CosmosDB/CosmosDBAttribute.cs) atribut.
+V [ C# knihovnách tříd](functions-dotnet-class-library.md)použijte atribut [CosmosDB](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.CosmosDB/CosmosDBAttribute.cs) .
 
 Konstruktor atributu má název databáze a název kolekce. Informace o těchto nastaveních a dalších vlastností, které můžete nakonfigurovat, najdete v části [následující konfigurační oddíl](#input---configuration).
 
@@ -1730,7 +1730,7 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 
 V C# a F# funkce, když funkce skončí úspěšně, všechny změny provedené vstupní dokument přes pojmenované vstupní parametry jsou automaticky trvalé.
 
-Do funkce jazyka JavaScript nejsou automaticky provedeny aktualizace při ukončení funkce. Místo toho použijte `context.bindings.<documentName>In` a `context.bindings.<documentName>Out` ke zpřístupnění aktualizací. Podívejte se na příklad JavaScript.
+Do funkce jazyka JavaScript nejsou automaticky provedeny aktualizace při ukončení funkce. Místo toho použijte `context.bindings.<documentName>In` a `context.bindings.<documentName>Out` ke zpřístupnění aktualizací. Podívejte se na příklad JavaScriptu.
 
 ## <a name="output"></a>Výstup
 
@@ -2114,17 +2114,17 @@ Tento příklad vyžaduje `project.json` soubor, který určuje, `FSharp.Interop
 
 Chcete-li přidat `project.json` souborů naleznete v tématu [ F# Správa balíčků](functions-reference-fsharp.md#package).
 
-### <a name="output---java-examples"></a>Výstup – příkladů v jazyce Java
+### <a name="output---java-examples"></a>Výstup – příklady Java
 
-* [Aktivační událost fronty zprávu uložit do databáze prostřednictvím návratová hodnota](#queue-trigger-save-message-to-database-via-return-value-java)
-* [Trigger HTTP, uložení jednoho dokumentu do databáze prostřednictvím návratová hodnota](#http-trigger-save-one-document-to-database-via-return-value-java)
-* [Trigger HTTP, uložit do databáze prostřednictvím OutputBinding jednoho dokumentu](#http-trigger-save-one-document-to-database-via-outputbinding-java)
-* [Trigger HTTP, ukládání více dokumentů do databáze prostřednictvím OutputBinding](#http-trigger-save-multiple-documents-to-database-via-outputbinding-java)
+* [Aktivační událost fronty, uložení zprávy do databáze prostřednictvím návratové hodnoty](#queue-trigger-save-message-to-database-via-return-value-java)
+* [Aktivační událost HTTP – uložte jeden dokument do databáze prostřednictvím návratové hodnoty.](#http-trigger-save-one-document-to-database-via-return-value-java)
+* [Aktivační procedura HTTP – uložení jednoho dokumentu do databáze prostřednictvím OutputBinding](#http-trigger-save-one-document-to-database-via-outputbinding-java)
+* [Aktivační událost HTTP, uložení více dokumentů do databáze prostřednictvím OutputBinding](#http-trigger-save-multiple-documents-to-database-via-outputbinding-java)
 
 
-#### <a name="queue-trigger-save-message-to-database-via-return-value-java"></a>Aktivační událost fronty zprávu uložit do databáze prostřednictvím návratovou hodnotu (Java)
+#### <a name="queue-trigger-save-message-to-database-via-return-value-java"></a>Aktivační událost fronty – uložení zprávy do databáze prostřednictvím návratové hodnoty (Java)
 
-Následující příklad ukazuje funkci Java, která přidá dokumentu do databáze s daty ze zprávy v rámci Queue storage.
+Následující příklad ukazuje funkci jazyka Java, která přidá dokument do databáze s daty z zprávy ve front-Queue Storage.
 
 ```java
 @FunctionName("getItem")
@@ -2142,9 +2142,9 @@ public String cosmosDbQueryById(
    }
 ```
 
-#### <a name="http-trigger-save-one-document-to-database-via-return-value-java"></a>Trigger HTTP, uložení jednoho dokumentu do databáze prostřednictvím návratovou hodnotu (Java)
+#### <a name="http-trigger-save-one-document-to-database-via-return-value-java"></a>Trigger HTTP – uložení jednoho dokumentu do databáze prostřednictvím návratové hodnoty (Java)
 
-Následující příklad ukazuje funkce Java, jejíž podpis je opatřen poznámkou ```@CosmosDBOutput``` a má návratovou hodnotu typu ```String```. Dokument JSON vrácené funkcí se automaticky zapíše do příslušné kolekce cosmos DB.
+Následující příklad ukazuje funkci jazyka Java ```@CosmosDBOutput``` , jejíž signatura je opatřena poznámkami a má návratovou hodnotu typu. ```String``` Dokument JSON vrácený funkcí se automaticky zapíše do odpovídající kolekce CosmosDB.
 
 ```java
     @FunctionName("WriteOneDoc")
@@ -2179,9 +2179,9 @@ Následující příklad ukazuje funkce Java, jejíž podpis je opatřen poznám
     }
 ```
 
-#### <a name="http-trigger-save-one-document-to-database-via-outputbinding-java"></a>Trigger HTTP, uložení jednoho dokumentu do databáze prostřednictvím OutputBinding (Java)
+#### <a name="http-trigger-save-one-document-to-database-via-outputbinding-java"></a>Trigger HTTP – uložení jednoho dokumentu do databáze prostřednictvím OutputBinding (Java)
 
-Následující příklad ukazuje funkci Java, která zapíše dokument služby cosmos DB prostřednictvím ```OutputBinding<T>``` výstupní parametr. Všimněte si, že v tomto nastavení je ```outputItem``` parametr, který musí být komentována atributem ```@CosmosDBOutput```, ne signatura funkce. Pomocí ```OutputBinding<T>``` umožňuje funkci využít výhod vazby pro zápis dokumentu do služby cosmos DB a zároveň vrací jinou hodnotu volajícímu funkce, jako je dokument JSON nebo XML.
+Následující příklad ukazuje funkci jazyka Java, která zapisuje dokument do CosmosDB prostřednictvím ```OutputBinding<T>``` parametru Output. Všimněte si, že v tomto instalačním programu je ```outputItem``` parametr, který je nutné opatřit poznámkami ```@CosmosDBOutput```, nikoli signaturou funkce. Použití ```OutputBinding<T>``` umožňuje, aby funkce využila vazbu k zápisu dokumentu do CosmosDB, zatímco také umožňuje vracet jinou hodnotu volající funkci, jako je JSON nebo dokument XML.
 
 ```java
     @FunctionName("WriteOneDocOutputBinding")
@@ -2223,9 +2223,9 @@ Následující příklad ukazuje funkci Java, která zapíše dokument služby c
     }
 ```
 
-#### <a name="http-trigger-save-multiple-documents-to-database-via-outputbinding-java"></a>Trigger HTTP, ukládání více dokumentů do databáze prostřednictvím OutputBinding (Java)
+#### <a name="http-trigger-save-multiple-documents-to-database-via-outputbinding-java"></a>Aktivační událost HTTP, uložení více dokumentů do databáze prostřednictvím OutputBinding (Java)
 
-Následující příklad ukazuje funkci Java, která zapisuje do služby cosmos DB přes několik dokumentů ```OutputBinding<T>``` výstupní parametr. Všimněte si, že v tomto nastavení je ```outputItem``` parametr, který musí být komentována atributem ```@CosmosDBOutput```, ne signatura funkce. Výstupní parametr ```outputItem``` má seznam ```ToDoItem``` objekty jako jeho typu parametru šablony. Pomocí ```OutputBinding<T>``` umožňuje funkci využít výhod vazby pro zápis dokumenty do služby cosmos DB a zároveň vrací jinou hodnotu volajícímu funkce, jako je dokument JSON nebo XML.
+Následující příklad ukazuje funkci jazyka Java, která zapisuje více dokumentů do CosmosDB prostřednictvím ```OutputBinding<T>``` výstupního parametru. Všimněte si, že v tomto instalačním programu je ```outputItem``` parametr, který je nutné opatřit poznámkami ```@CosmosDBOutput```, nikoli signaturou funkce. Výstupní parametr ```outputItem``` obsahuje ```ToDoItem``` seznam objektů jako typ parametru šablony. Použití ```OutputBinding<T>``` umožňuje, aby funkce využila vazbu k zápisu dokumentů do CosmosDB, zatímco také umožňuje vracet jinou hodnotu volající funkci, jako je JSON nebo dokument XML.
 
 ```java
     @FunctionName("WriteMultipleDocsOutputBinding")
@@ -2272,12 +2272,12 @@ Následující příklad ukazuje funkci Java, která zapisuje do služby cosmos 
     }
 ```
 
-V [Java funkce knihovny prostředí runtime](/java/api/overview/azure/functions/runtime), použijte `@CosmosDBOutput` poznámku o parametrech, které se zapíšou do služby Cosmos DB.  Typ anotace parametru by měl být ```OutputBinding<T>```, kde T je nativní typ Java nebo objekt POJO.
+V [knihovně modulu runtime Functions jazyka Java](/java/api/overview/azure/functions/runtime)použijte `@CosmosDBOutput` anotaci k parametrům, které budou zapsány do Cosmos DB.  Typ parametru anotace by měl ```OutputBinding<T>```být, kde T je buď nativní typ Java, nebo Pojo.
 
 
 ## <a name="output---attributes"></a>Výstup – atributy
 
-V [knihoven tříd C#](functions-dotnet-class-library.md), použijte [CosmosDB](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/master/WebJobs.Extensions.CosmosDB/CosmosDBAttribute.cs) atribut.
+V [ C# knihovnách tříd](functions-dotnet-class-library.md)použijte atribut [CosmosDB](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/master/WebJobs.Extensions.CosmosDB/CosmosDBAttribute.cs) .
 
 Konstruktor atributu má název databáze a název kolekce. Informace o těchto nastaveních a dalších vlastností, které můžete nakonfigurovat, najdete v části [výstup - konfigurace](#output---configuration). Tady je `CosmosDB` příklad atributů v podpisu metody:
 
@@ -2291,7 +2291,7 @@ Konstruktor atributu má název databáze a název kolekce. Informace o těchto 
     }
 ```
 
-Kompletní příklad naleznete v tématu výstup – C# příklad.
+Úplný příklad naleznete v tématu Output- C# example.
 
 ## <a name="output---configuration"></a>Výstup – konfigurace
 
@@ -2347,9 +2347,9 @@ Tato část popisuje globální konfiguraci nastavení k dispozici pro tuto vazb
 
 |Vlastnost  |Výchozí | Popis |
 |---------|---------|---------| 
-|GatewayMode|brána|Režim připojení používané funkce při připojování ke službě Azure Cosmos DB. Možnosti jsou `Direct` a `Gateway`|
-|Protocol (Protokol)|HTTPS|Protokol připojení používá funkce při připojení ke službě Azure Cosmos DB.  Čtení [zde vysvětlení oba režimy](../cosmos-db/performance-tips.md#networking)| 
-|leasePrefix|neuvedeno|Předpona zapůjčení pro použití na různých všechny funkce v aplikaci.| 
+|GatewayMode|brána|Režim připojení, který funkce používá při připojování ke službě Azure Cosmos DB. Možnosti jsou `Direct` a`Gateway`|
+|Protocol|Https|Protokol připojení, který funkce používá při připojení ke službě Azure Cosmos DB.  Přečtěte si [zde pro vysvětlení obou režimů](../cosmos-db/performance-tips.md#networking) .| 
+|leasePrefix|neuvedeno|Předpona zapůjčení pro použití ve všech funkcích aplikace| 
 
 ## <a name="next-steps"></a>Další postup
 

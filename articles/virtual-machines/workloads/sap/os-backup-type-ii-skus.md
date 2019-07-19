@@ -1,6 +1,6 @@
 ---
-title: Operační systém zálohování a obnovení systému SAP HANA v Azure (velké instance) zadejte II SKU | Dokumentace Microsoftu
-description: Provedení operační systém zálohování a obnovení pro SAP HANA v Azure (velké instance) SKU typu II
+title: Zálohování a obnovení operačního systému SAP HANA v Azure (velké instance) – SKU typu II | Microsoft Docs
+description: Provedení zálohování a obnovení operačního systému pro SAP HANA v Azure (velké instance) SKU typu II
 services: virtual-machines-linux
 documentationcenter: ''
 author: saghorpa
@@ -11,79 +11,83 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 06/27/2018
-ms.author: saghorpa
+ms.date: 07/12/2019
+ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: dacc0a745fc387dcaf6be282b562d83e1b798ea4
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 3afcd429351a0d988ff0e82ecf09f524ceac70f1
+ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67710102"
+ms.lasthandoff: 07/13/2019
+ms.locfileid: "67868973"
 ---
-# <a name="os-backup-and-restore-for-type-ii-skus"></a>Operační systém zálohování a obnovení pro SKU typu II
+# <a name="os-backup-and-restore-for-type-ii-skus-of-revision-3-stamps"></a>Zálohování a obnovení operačního systému pro SKU typu II u razítek revize 3
 
-Tento dokument popisuje postup, jak provést zálohu úrovni souboru operačního systému a obnovení **SKU typu II** z velkých instancích HANA. 
+Tento dokument popisuje kroky pro zálohování a obnovení na úrovni souborů operačního systému pro **skladové jednotky typu II** pro velké instancey revize 3 pro Hana. 
+
+>[!Important]
+> **Tento článek neplatí pro nasazení typu II SKU v revizi velká instance na úrovni 4 HANA.** Spouštěcí jednotky logických jednotek typu II HANA velké instance, které jsou nasazené v revizi 4 HANA velká instance, se dají zálohovat pomocí snímků úložiště, protože se jedná o případ, kdy se v nich už v revizích 3 razítka nacházejí.
+
 
 >[!NOTE]
->Skripty pro zálohování operačního systému používá zpětná software, který je předem nainstalované na serveru.  
+>Skripty pro zálohování operačního systému využívají zadní software, který je předem nainstalován na serveru.  
 
-Po dokončení týmem Microsoft Service Management ve výchozím nastavení, zřizování je server nakonfigurován s plánem dvojí zálohování k zálohování systému souborů na úrovni zálohování operačního systému. Plán úlohy zálohování můžete zkontrolovat pomocí následujícího příkazu:
+Po dokončení zřizování týmem Microsoftu `Service Management` ve výchozím nastavení je server nakonfigurovaný se dvěma plány zálohování k zálohování na úrovni systému souborů zpátky v operačním systému. Plány úloh zálohování můžete kontrolovat pomocí následujícího příkazu:
 ```
 #crontab –l
 ```
-Můžete změnit plán zálohování kdykoli pomocí následujícího příkazu:
+Plán zálohování můžete kdykoli změnit pomocí následujícího příkazu:
 ```
 #crontab -e
 ```
-## <a name="how-to-take-a-manual-backup"></a>Jak vytvořit ruční zálohu?
+## <a name="how-to-take-a-manual-backup"></a>Jak provést ruční zálohování?
 
-Zálohu systému souborů operačního systému je naplánováno, použití **úlohy cron** již. Však můžete provést operační systém záloha na úrovni souborů i ručně. K provedení ruční zálohy, spusťte následující příkaz:
+Zálohování systému souborů operačního systému je naplánováno pomocí **úlohy cron** . Zálohování na úrovni souborů operačního systému ale můžete provádět také ručně. Ruční zálohování provedete spuštěním následujícího příkazu:
 
 ```
 #rear -v mkbackup
 ```
-Tyto obrazovky zobrazit ukazuje ruční zálohy vzorku:
+Na následující obrazovce vidíte ukázková ruční záloha:
 
-![Jak](media/HowToHLI/OSBackupTypeIISKUs/HowtoTakeManualBackup.PNG)
+![Použití](media/HowToHLI/OSBackupTypeIISKUs/HowtoTakeManualBackup.PNG)
 
 
 ## <a name="how-to-restore-a-backup"></a>Jak obnovit zálohu?
 
-Úplné zálohování nebo jednotlivých souborů můžete obnovit ze zálohy. Pokud chcete obnovit, použijte následující příkaz:
+Můžete obnovit úplnou zálohu nebo jednotlivý soubor ze zálohy. K obnovení použijte následující příkaz:
 
 ```
 #tar  -xvf  <backup file>  [Optional <file to restore>]
 ```
-Po obnovení je obnovena soubor v aktuálním pracovním adresáři.
+Po obnovení se soubor obnoví v aktuálním pracovním adresáři.
 
-Následující příkaz ukazuje, obnovení souboru */etc/fstabfrom* záložní soubor *backup.tar.gz*
+Následující příkaz ukazuje obnovení souboru */etc/fstabfrom* zálohy záložního souboru *. tar. gz*
 ```
 #tar  -xvf  /osbackups/hostname/backup.tar.gz  etc/fstab 
 ```
 >[!NOTE] 
->Budete muset po obnovení ze zálohy zkopírujte soubor do požadovaného umístění.
+>Až se soubor obnoví ze zálohy, musíte ho zkopírovat do požadovaného umístění.
 
 Následující snímek obrazovky ukazuje obnovení úplné zálohy:
 
-![HowtoRestoreaBackup.PNG](media/HowToHLI/OSBackupTypeIISKUs/HowtoRestoreaBackup.PNG)
+![HowtoRestoreaBackup. PNG](media/HowToHLI/OSBackupTypeIISKUs/HowtoRestoreaBackup.PNG)
 
-## <a name="how-to-install-the-rear-tool-and-change-the-configuration"></a>Jak nainstalovat nástroj zadní a změňte konfiguraci? 
+## <a name="how-to-install-the-rear-tool-and-change-the-configuration"></a>Jak nainstalovat zadní nástroj a změnit konfiguraci? 
 
-Balíčky Relax a obnovení (zpětná) jsou **předinstalovaným** v **SKU typu II** velkých instancích HANA, a od vás nevyžaduje žádná akce. Můžete přímo začít používat zadní pro zálohování operačního systému.
-Ale v případech, kdy potřebujete k instalaci balíčků ve vašem vlastním, můžete použít uvedené postup instalace a konfigurace nástroje zadní.
+Balíčky s vysokou a obnovenou **instalací jsou předem nainstalovány** v **SKU typu II** velkých instancí Hana a žádná akce není od vás nutná. Pro zálohování operačního systému můžete přímo začít používat zezadu.
+V případech, kdy potřebujete balíčky nainstalovat sami, můžete postupovat podle pokynů uvedených v části instalace a konfigurace nástroje pro zpětnou instalaci.
 
-Chcete-li nainstalovat **zadní** zálohování balíčky, použijte následující příkazy:
+Chcete-li **nainstalovat záložní balíčky** , použijte následující příkazy:
 
-Pro **SLES** operační systém, použijte následující příkaz:
+Pro operační systém **SLES** použijte následující příkaz:
 ```
 #zypper install <rear rpm package>
 ```
-Pro **RHEL** operační systém, použijte následující příkaz: 
+Pro operační systém **RHEL** použijte následující příkaz: 
 ```
 #yum install rear -y
 ```
-Ke konfiguraci nástroje zadní, budete muset aktualizovat parametry **OUTPUT_URL** a **BACKUP_URL** v *souboru /etc/rear/local.conf*.
+Ke konfiguraci zadního nástroje je potřeba aktualizovat parametry **OUTPUT_URL** a **BACKUP_URL** v *souboru/etc/Rear/Local.conf*.
 ```
 OUTPUT=ISO
 ISO_MKISOFS_BIN=/usr/bin/ebiso
@@ -96,4 +100,4 @@ EXCLUDE_VG=( vgHANA-data-HC2 vgHANA-data-HC3 vgHANA-log-HC2 vgHANA-log-HC3 vgHAN
 BACKUP_PROG_EXCLUDE=("${BACKUP_PROG_EXCLUDE[@]}" '/media' '/var/tmp/*' '/var/crash' '/hana' '/usr/sap'  ‘/proc’)
 ```
 
-Následující snímek obrazovky ukazuje obnovení úplné zálohy: ![RearToolConfiguration.PNG](media/HowToHLI/OSBackupTypeIISKUs/RearToolConfiguration.PNG)
+Následující snímek obrazovky ukazuje obnovení úplné zálohy: ![RearToolConfiguration. PNG](media/HowToHLI/OSBackupTypeIISKUs/RearToolConfiguration.PNG)

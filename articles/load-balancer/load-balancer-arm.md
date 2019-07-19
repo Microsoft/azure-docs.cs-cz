@@ -1,38 +1,38 @@
 ---
-title: Podpora Azure Resource Manageru pro nástroj pro vyrovnávání zatížení | Dokumentace Microsoftu
-description: Použití prostředí powershell pro nástroj pro vyrovnávání zatížení pomocí Azure Resource Manageru. Nástroje pro vyrovnávání zatížení pomocí šablony
+title: Azure Resource Manager podporu pro Load Balancer | Microsoft Docs
+description: Použití PowerShellu pro Load Balancer s Azure Resource Manager. Používání šablon pro nástroj pro vyrovnávání zatížení
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: asudbring
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
-ms.author: kumud
-ms.openlocfilehash: 596ac871067886ee3124c0f21beb35cb3b8fe1ae
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: allensu
+ms.openlocfilehash: 839b607b7787d51151401737848a46d7b66229dd
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60888982"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68275486"
 ---
-# <a name="using-azure-resource-manager-support-with-azure-load-balancer"></a>Podpora Azure Resource Manageru pomocí nástroje pro vyrovnávání zatížení Azure
+# <a name="using-azure-resource-manager-support-with-azure-load-balancer"></a>Použití podpory Azure Resource Manager s Azure Load Balancer
 
 
 
-Azure Resource Manager je upřednostňovaný správu platforma pro služby v Azure. Nástroj Azure Load Balancer je možné spravovat pomocí nástroje a rozhraní API založená na Azure Resource Manageru.
+Azure Resource Manager je upřednostňovaná architektura pro správu služeb v Azure. Azure Load Balancer můžete spravovat pomocí rozhraní API a nástrojů založených na Azure Resource Manager.
 
 ## <a name="concepts"></a>Koncepty
 
-S Resource Managerem se Azure Load Balancer obsahuje následující podřízené prostředky:
+V Správce prostředků Azure Load Balancer obsahuje následující podřízené prostředky:
 
-* Konfiguraci front-end IP adresy – nástroj pro vyrovnávání zatížení může zahrnovat jeden nebo více front-endové IP adresy, jinak známé jako virtuální IP adresy (VIP). Tyto IP adresy slouží jako vstup pro přenos.
-* Back endový fond adres – Toto jsou IP adresy, které jsou spojené s virtuální počítač síťových adaptérů (NIC) ke kterému se distribuuje zatížení.
-* Pravidla Vyrovnávání zatížení – vlastnost pravidla mapuje danou front-endová IP a kombinace portu na sadu back endové IP adresy a portu. Nástroj pro vyrovnávání zatížení může mít několik pravidel vyrovnávání zatížení. Každé pravidlo je kombinace IP front-endová IP a port a back-end a port přidružený k virtuálním počítačům.
-* Sondy – testy umožňují udržovat přehled o stavu instance virtuálních počítačů. Pokud selže test stavu instance virtuálního počítače je automaticky vyřazen ze smyčky.
-* Pravidla příchozího překladu adres – NAT pravidla definující příchozí provoz prostřednictvím protokolu IP front-endu a distribuovat do back endovou IP adresu.
+* Konfigurace front-endové IP adresy – Nástroj pro vyrovnávání zatížení může zahrnovat jednu nebo víc IP adres front-endu, jinak se říká virtuální IP adresa (VIP). Tyto IP adresy slouží jako vstup pro přenos.
+* Fond adres back-endu – jedná se o IP adresy přidružené k síťovému adaptéru virtuálního počítače, do kterého je zatížení distribuováno.
+* Pravidla vyrovnávání zatížení – vlastnost pravidla mapuje danou kombinaci IP adresy a portu front-endu na sadu IP adres back-endu a kombinaci portů. Nástroj pro vyrovnávání zatížení může mít několik pravidel vyrovnávání zatížení. Každé pravidlo je kombinací IP adresy front-endu a portu a back-endové IP adresy a portu přidružených k virtuálním počítačům.
+* Sondy – sondy umožňují sledovat stav instancí virtuálních počítačů. Pokud se sonda stavu nezdařila, instance virtuálního počítače se automaticky převezme z rotace.
+* Pravidla příchozího překladu adres (NAT) – pravidla překladu adres (NAT) definující příchozí přenos přes front-end IP adresu a distribuované do back-endové IP adresy.
 
 ![](./media/load-balancer-arm/load-balancer-arm.png)
 
@@ -40,31 +40,31 @@ S Resource Managerem se Azure Load Balancer obsahuje následující podřízené
 
 Azure Resource Manager umožňuje zřizovat aplikace pomocí deklarativní šablony. S jednou šablonou můžete nasadit několik služeb společně s jejich závislostmi. Stejnou šablonu můžete použít k opakovanému nasazení aplikace během každé fáze životního cyklu této aplikace.
 
-Šablony mohou obsahovat definice pro virtuální počítače, virtuální sítě, dostupnosti, síťová rozhraní (NIC), účty úložiště, nástroje pro vyrovnávání zatížení, skupiny zabezpečení sítě a veřejné IP adresy. Pomocí šablon můžete vytvořit vše potřebné pro komplexní aplikace. Soubor šablony může být zařazeno do systému správy obsahu pro správu verzí a spolupráci.
+Šablony mohou zahrnovat definice pro Virtual Machines, virtuální sítě, skupiny dostupnosti, síťová rozhraní (nic), účty úložiště, nástroje pro vyrovnávání zatížení, skupiny zabezpečení sítě a veřejné IP adresy. Pomocí šablon můžete vytvořit vše, co potřebujete pro složitou aplikaci. Soubor šablony lze zkontrolovat do systému správy obsahu pro správu verzí a spolupráci.
 
 [Další informace o šablonách](../azure-resource-manager/resource-manager-template-walkthrough.md)
 
-[Další informace o síťových prostředků](../networking/networking-overview.md)
+[Další informace o síťových prostředcích](../networking/networking-overview.md)
 
-Používání služby Azure Load Balancer šablony pro rychlý start, najdete v článku [úložiště GitHub](https://github.com/Azure/azure-quickstart-templates) , který je hostitelem sadu community vygenerované šablony.
+Informace o šablonách pro rychlý Start pomocí Azure Load Balancer najdete v [úložišti GitHub](https://github.com/Azure/azure-quickstart-templates) , které hostuje sadu šablon generovaných komunitou.
 
 Příklady šablon:
 
-* [2 virtuální počítače v Load Balanceru a pravidla Vyrovnávání zatížení](https://go.microsoft.com/fwlink/?LinkId=544799)
-* [2 virtuální počítače ve virtuální síti pomocí pravidel pro interní nástroj pro vyrovnávání zatížení a nástroje pro vyrovnávání zatížení](https://go.microsoft.com/fwlink/?LinkId=544800)
-* [2 virtuální počítače v nástroji pro vyrovnávání zatížení a nakonfigurujte pravidla překladu adres na LB](https://go.microsoft.com/fwlink/?LinkId=544801)
+* [2 virtuální počítače v Load Balancer a pravidla vyrovnávání zatížení](https://go.microsoft.com/fwlink/?LinkId=544799)
+* [2 virtuální počítače ve virtuální síti s interními Load Balancer a pravidly Load Balancer](https://go.microsoft.com/fwlink/?LinkId=544800)
+* [2 virtuální počítače ve Load Balancer a konfigurují pravidla překladu adres (NAT) na 9,1](https://go.microsoft.com/fwlink/?LinkId=544801)
 
-## <a name="setting-up-azure-load-balancer-with-a-powershell-or-cli"></a>Nastavení nástroje pro vyrovnávání zatížení Azure pomocí Powershellu nebo rozhraní příkazového řádku
+## <a name="setting-up-azure-load-balancer-with-a-powershell-or-cli"></a>Nastavení Azure Load Balancer pomocí PowerShellu nebo rozhraní příkazového řádku
 
-Začínáme s Azure Resource Manageru rutiny, nástroje příkazového řádku a rozhraní REST API
+Začínáme s rutinami Azure Resource Manager, nástroji příkazového řádku a rozhraními REST API
 
-* [Rutiny Azure sítě](https://docs.microsoft.com/powershell/module/az.network#networking) slouží k vytvoření nástroje pro vyrovnávání zatížení.
-* [Jak vytvořit nástroj pro vyrovnávání zatížení pomocí Azure Resource Manageru](load-balancer-get-started-ilb-arm-ps.md)
-* [Použití Azure CLI s Azure Resource Management](../xplat-cli-azure-resource-manager.md)
-* [Rozhraní REST API nástroje pro vyrovnávání zatížení](https://msdn.microsoft.com/library/azure/mt163651.aspx)
+* K vytvoření Load Balancer můžete použít [rutiny sítě Azure](https://docs.microsoft.com/powershell/module/az.network#networking) .
+* [Postup vytvoření nástroje pro vyrovnávání zatížení pomocí Azure Resource Manager](load-balancer-get-started-ilb-arm-ps.md)
+* [Použití Azure CLI se správou prostředků Azure](../xplat-cli-azure-resource-manager.md)
+* [Rozhraní REST API pro Load Balancer](https://msdn.microsoft.com/library/azure/mt163651.aspx)
 
 ## <a name="next-steps"></a>Další postup
 
-Můžete také [Začínáme vytvářet internetový nástroj pro vyrovnávání zatížení](load-balancer-get-started-internet-arm-ps.md) a nakonfigurovat, jaký typ [distribučního režimu](load-balancer-distribution-mode.md) pro konkrétní zatížení nástroje pro vyrovnávání síťové přenosy chování.
+Můžete také začít [vytvářet internetový nástroj pro vyrovnávání zatížení](load-balancer-get-started-internet-arm-ps.md) a nakonfigurovat, jaký typ [distribučního režimu](load-balancer-distribution-mode.md) má konkrétní chování síťového provozu nástroje pro vyrovnávání zatížení.
 
-Další informace o správě [nastavení časového limitu TCP pro nástroj pro vyrovnávání zatížení nečinnosti](load-balancer-tcp-idle-timeout.md). To je důležité, když vaše aplikace potřebuje udržovat aktivní servery za nástroj pro vyrovnávání zatížení připojení.
+Naučte se spravovat [Nastavení časových limitů TCP nečinných pro nástroj pro vyrovnávání zatížení](load-balancer-tcp-idle-timeout.md). To je důležité, pokud vaše aplikace potřebuje zachovat připojení na serverech za nástrojem pro vyrovnávání zatížení.

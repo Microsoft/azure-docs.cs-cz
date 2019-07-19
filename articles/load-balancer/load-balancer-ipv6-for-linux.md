@@ -4,7 +4,7 @@ titlesuffix: Azure Load Balancer
 description: Postup konfigurace protokolu DHCPv6 pro virtuální počítače s Linuxem.
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: asudbring
 keywords: protokol IPv6, nástroje pro vyrovnávání zatížení azure, duálním zásobníkem, veřejné IP adresy, nativní protokol ipv6, mobilní zařízení, iot
 ms.service: load-balancer
 ms.devlang: na
@@ -13,13 +13,13 @@ ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/22/2019
-ms.author: kumud
-ms.openlocfilehash: 66777ec314e95d81a4be57082f06ef16dc170186
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: allensu
+ms.openlocfilehash: 3e987b6718ead6b7014ec302d1a186dabef11126
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60516552"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68274917"
 ---
 # <a name="configure-dhcpv6-for-linux-vms"></a>Konfigurace protokolu DHCPv6 pro virtuální počítače s Linuxem
 
@@ -54,9 +54,9 @@ Tento dokument popisuje, jak povolit DHCPv6 tak, aby virtuální počítač s Li
     ```bash
     sudo ifdown eth0 && sudo ifup eth0
     ```
-Od verze Ubuntu 17.10, je výchozí mechanismus konfigurace sítě [NETPLAN]( https://netplan.io).  V době instalace/instance NETPLAN načteme konfigurace sítě YAML konfigurační soubory v tomto umístění: / {lib,etc,run}/netplan/*.yaml.
+Počínaje verzí Ubuntu 17,10 je výchozí mechanismus konfigurace sítě [NETPLAN]( https://netplan.io).  V době instalace/vytvoření instance NETPLAN přečte konfiguraci sítě z konfiguračních souborů YAML v tomto umístění:/{lib, atd. Run}/netplan/*. yaml.
 
-Uveďte *dhcp6:true* příkazu pro každé rozhraní sítě ethernet ve vaší konfiguraci.  Příklad:
+Pro každé rozhraní sítě Ethernet ve vaší konfiguraci uveďte příkaz *dhcp6: true* .  Příklad:
   
         network:
           version: 2
@@ -64,7 +64,7 @@ Uveďte *dhcp6:true* příkazu pro každé rozhraní sítě ethernet ve vaší k
             eno1:
               dhcp6: true
 
-Během počáteční spouštění netplan "Síťová renderer" zápisy konfigurace/spustit ručně vypnout kontrolu nad zařízeními démona zadané síťové referenční informace o NETPLAN, naleznete v tématu https://netplan.io/reference.
+Během předčasného spuštění netplan "Nástroj pro vyřízení sítě" zapisuje konfiguraci do programu/Run, aby bylo možné předat řízení zařízení zadanému síťovému démonu pro https://netplan.io/reference referenční informace o netplan najdete v tématu.
  
 ## <a name="debian"></a>Debian
 

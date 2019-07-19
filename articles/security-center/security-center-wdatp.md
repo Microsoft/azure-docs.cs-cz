@@ -1,6 +1,6 @@
 ---
-title: Rozšířená ochrana před internetovými útoky pomocí Azure Security Center programu Windows Defender
-description: Tento dokument přináší integraci Azure Security Center a rozšířené ochrany před internetovými útoky programu Windows Defender.
+title: Rozšířená ochrana před internetovými útoky v programu Windows Defender pomocí Azure Security Center
+description: Tento dokument zavádí integraci mezi Azure Security Center a rozšířenou ochranou před internetovými útoky v programu Windows Defender.
 services: security-center
 documentationcenter: na
 author: monhaber
@@ -12,111 +12,111 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/27/2018
-ms.author: monhaber
-ms.openlocfilehash: 1737856067b2490db4a993b4383b320cb13a7774
-ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
+ms.author: v-mohabe
+ms.openlocfilehash: 87f5a14bcd6003ad81b663ed97e5349dcbff2a30
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67551777"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68296518"
 ---
-# <a name="windows-defender-advanced-threat-protection-with-azure-security-center"></a>Rozšířená ochrana před internetovými útoky pomocí Azure Security Center programu Windows Defender
+# <a name="windows-defender-advanced-threat-protection-with-azure-security-center"></a>Rozšířená ochrana před internetovými útoky v programu Windows Defender pomocí Azure Security Center
 
 Azure Security Center rozšiřuje svoji nabídku platforem ochrany cloudových úloh na základě integrace s [rozšířenou ochranou před internetovými útoky v programu Windows Defender](https://www.microsoft.com/en-us/WindowsForBusiness/windows-atp) (ATP).
-Tato změna přináší komplexní možnosti technologie EDR (Endpoint Detection and Response). Integrace ochrany ATP v programu Windows Defender můžete vybírat anomálie. Můžete také zjistit a reagovat na pokročilých útoků na koncové body serveru monitorovaný pomocí Azure Security Center.
+Tato změna přináší komplexní možnosti technologie EDR (Endpoint Detection and Response). Díky integraci ochrany ATP v programu Windows Defender můžete obdržíte nezvyklosti. Můžete také detekovat a reagovat na pokročilé útoky na koncových bodech serveru monitorovaných Azure Security Center.
 
-## <a name="windows-defender-atp-features-in-security-center"></a>Funkce ochrany ATP v programu Windows Defender ve službě Security Center
+## <a name="windows-defender-atp-features-in-security-center"></a>Funkce ochrany ATP v programu Windows Defender v Security Center
 
-Při použití ochrany ATP v programu Windows Defender získáte:
+Při používání ochrany ATP v programu Windows Defender získáte:
 
-- **Generace příspěvek porušení detekci senzorů**: Ochrana ATP v programu Windows Defender senzory pro funkce Windows serverů shromažďovat velké množství chování signálů.
+- **Senzory pro detekci porušení zabezpečení nové generace**: Senzory ATP v programu Windows Defender pro Windows servery shromažďují obrovské množství signálů chování.
 
-- **Detekce porušení zabezpečení na základě analýzy, s využitím cloudu příspěvek**: Ochrana ATP v programu Windows Defender rychle přizpůsobovat měnícím hrozbám. Využívá pokročilé analýzy a velké objemy dat. Ochrana ATP v programu Windows Defender je rozšířena výkonem Intelligent Security Graph se signály pro Windows, Azure a Office zjišťovat neznámé hrozby. Poskytuje užitečné výstrahy a umožňují rychle reagovat.
+- **Zjišťování porušení narušení cloudu založeného na analýze**: Ochrana ATP v programu Windows Defender se rychle přizpůsobí měnícím se hrozbám. Používá pokročilou analýzu a velké objemy dat. Ochrana ATP v programu Windows Defender je doplněná výkonem Intelligent Security Graph s signály v systému Windows, Azure a Office pro detekci neznámých hrozeb. Poskytuje užitečné výstrahy a umožňuje rychle reagovat.
 
-- **Hrozeb**: Ochrana ATP v programu Windows Defender identifikuje útočník nástroje, techniky a postupy. Při zjištění těchto, vygeneruje upozornění. Použije data generovaná myslivci hrozeb Microsoftu a týmu zabezpečení rozšířeno díky partnery.
+- **Analýza hrozeb**: ATP v programu Windows Defender identifikuje nástroje, techniky a postupy pro útočníky. Když je detekuje, generují výstrahy. Využívá data vygenerovaná Microsoft Threat Hunters a týmy zabezpečení a rozšiřuje je o inteligentní informace poskytované partnery.
 
 Tyto možnosti jsou teď dostupné ve službě Azure Security Center:
 
-- **Automatické připojování**: Snímač ochrany ATP v programu Windows Defender je pro servery Windows, které se připojí ke službě Azure Security Center se automaticky povolené.
+- **Automatizované připojování**: Senzor ochrany ATP v programu Windows Defender je automaticky povolen pro Windows servery, které jsou připojené k Azure Security Center.
 
-- **Souhrnné zobrazení**: Konzoly Azure Security Center zobrazuje výstrahy ochrany ATP v programu Windows Defender.
+- **Jedno podokno skla**: Konzola Azure Security Center zobrazuje výstrahy ochrany ATP v programu Windows Defender.
 
-- **Podrobné zkoumání počítačů**: Zákazníci Azure Security Center přístup ke konzole ochrany ATP v programu Windows Defender provádět podrobné zkoumání odhalit další obor porušení zabezpečení.
+- **Podrobné šetření počítačů**: Zákazníci Azure Security Center mají přístup ke konzole ochrany ATP v programu Windows Defender, aby provedli podrobné šetření, aby bylo možné zjistit rozsah porušení.
 
-![Azure Security Center, zobrazení seznamu výstrah a obecné informace o jednotlivých výstrahách](media/security-center-wdatp/image1.png)
+![Azure Security Center zobrazení seznamu výstrah a obecných informací o jednotlivých výstrahách](media/security-center-wdatp/image1.png)
 
-Můžete hlouběji analyzovat upozornění podle Přesun do ochrany ATP v programu Windows Defender. Zde vidíte další informace, jako je strom procesu výstrah a incidentů grafu. Můžete také zobrazit časovou osu podrobné počítač, který ukazuje každý chování historických po dobu až šest měsíců.
+Výstrahu můžete dále prozkoumat tím, že převedete do ochrany ATP v programu Windows Defender. Můžete zobrazit další informace, jako je například strom procesu výstrahy a graf incidentu. Můžete se také podívat na podrobnou časovou osu počítače, která zobrazuje každé chování po dobu až šesti měsíců.
 
-![Ochrana ATP v programu Windows Defender stránce s podrobnými informacemi o určité výstraze](media/security-center-wdatp/image3.png)
+![Stránka ATP v programu Windows Defender s podrobnými informacemi o výstraze](media/security-center-wdatp/image3.png)
 
 ## <a name="platform-support"></a>Podpora platformy
 
-Windows Defender ATP ve službě Security Center podporuje zjišťování v systému Windows Server 2012 R2 a Windows serveru 2016 operačních systémech, které patří do předplatného služby Standard.
+Ochrana ATP v programu Windows Defender v Security Center podporuje detekci v operačních systémech Windows Server 2012 R2 a Windows Server 2016 patřících ke standardnímu předplatnému služby.
 
 > [!NOTE]
-> Při použití Azure Security Center k monitorování serverů klienta ochrany ATP v programu Windows Defender je automaticky vytvořen a ochrana ATP v programu Windows Defender data uložená v Evropě ve výchozím nastavení. Pokud potřebujete přesunout data do jiného umístění, budete muset kontaktovat Microsoft Support resetovat klienta.
+> Při použití Azure Security Center k monitorování serverů se automaticky vytvoří tenant ATP v programu Windows Defender a data ATP v programu Windows Defender se ve výchozím nastavení uloží do Evropy. Pokud potřebujete přesunout data do jiného umístění, musíte kontaktovat podpora Microsoftu pro resetování tenanta.
 
-## <a name="onboarding-servers-to-security-center"></a>Registrace serverů do služby Security Center 
+## <a name="onboarding-servers-to-security-center"></a>Připojování serverů k Security Center 
 
-Na servery připojit ke službě Security Center, klikněte na tlačítko **přejděte do Azure Security Center a připojení serverů** z registrace serveru ochrany ATP v programu Windows Defender.
+Pokud chcete servery připojit k Security Center, klikněte na **Přejít na Azure Security Center a připojte servery** ze serveru Windows Defender atp.
 
-1. V **připojování** okna Vybrat nebo vytvořit pracovní prostor, ve kterých se mají uložit data. <br>
-2. Pokud nevidíte všechny pracovní prostory, je možné kvůli chybějícímu oprávnění, ujistěte se, že váš pracovní prostor je nastaven na úroveň Standard zabezpečení Azure. Další informace najdete v části [upgradovat na Security Center úrovně Standard pro zvýšení zabezpečení](security-center-pricing.md).
+1. V okně **připojování** vyberte nebo vytvořte pracovní prostor, do kterého chcete ukládat data. <br>
+2. Pokud nevidíte všechny vaše pracovní prostory, může to být způsobeno nedostatečnými oprávněními, ujistěte se, že je váš pracovní prostor nastavený na úroveň zabezpečení Azure úrovně Standard. Další informace najdete v tématu [upgrade na úroveň Security Center úrovně Standard pro zvýšení zabezpečení](security-center-pricing.md).
     
-3. Vyberte **přidat servery** zobrazíte pokyny o tom, jak nainstalovat agenta Microsoft Monitoring Agent. 
+3. Pokud chcete zobrazit pokyny k instalaci Microsoft Monitoring Agent, vyberte **Přidat servery** . 
 
-4. Po připojení, můžete monitorovat počítače v rámci **výpočetní prostředky a aplikace**.
+4. Po zaregistrování můžete monitorovat počítače v části **výpočetní prostředí a aplikace**.
 
-   ![Připojení počítače](media/security-center-wdatp/onboard-computers.png)
+   ![Zprovoznění počítačů](media/security-center-wdatp/onboard-computers.png)
 
-## <a name="enable-windows-defender-atp-integration"></a>Povolení integrace ochrany ATP v programu Windows Defender
+## <a name="enable-windows-defender-atp-integration"></a>Povolit integraci ochrany ATP v programu Windows Defender
 
-Chcete-li zobrazit, pokud je povolená ochrana ATP v programu Windows Defender integrace, vyberte **Security center** > **ceny na & stavení** > klikněte na předplatné.
+Pokud chcete zobrazit, jestli je povolená integrace ochrany ATP v programu Windows Defender, vyberte**Nastavení cenové &** **Security Center** > > klikněte na své předplatné.
 
   ![Správa zásad Azure Security Center](media/security-center-wdatp/policy-management.png)
 
-Zde můžete zobrazit na integrace, které aktuálně povoleno.
+Tady vidíte aktuálně povolená integrace.
 
-  ![Stránka nastavení rozpoznávání hrozeb Azure Security Center s integrací ochrany ATP v programu Windows Defender povolený](media/security-center-wdatp/enable-integrations.png)
+  ![Stránka Nastavení detekce hrozeb Azure Security Center s povolenou integrací ochrany ATP v programu Windows Defender](media/security-center-wdatp/enable-integrations.png)
 
-- Pokud jste už připojili servery do Azure Security Center úrovně standard, je nutné provést žádné další akce. Azure Security Center bude automaticky připojit servery do ochrany ATP v programu Windows Defender. Může to trvat až 24 hodin.
+- Pokud jste již servery připojili k Azure Security Center úrovně Standard, nemusíte provádět žádné další akce. Azure Security Center automaticky připojí servery do ochrany ATP v programu Windows Defender. Tato situace může trvat až 24 hodin.
 
-- Pokud jste nikdy připojili servery do Azure Security Center úrovně standard, připojit je ke službě Azure Security Center jako obvykle.
+- Pokud jste servery nikdy nepřipojili do Azure Security Center úrovně Standard, připojíte je k Azure Security Center běžným způsobem.
 
-- Pokud jste připojili servery přes ochrany ATP v programu Windows Defender:
-  - Další informace naleznete v dokumentaci pro doprovodné materiály v [jak počítače server odpojit](https://go.microsoft.com/fwlink/p/?linkid=852906).
-  - Připojení ke službě Azure Security Center tyto servery.
+- Pokud jste servery připojili pomocí ochrany ATP v programu Windows Defender:
+  - Pokyny [k odpojení serverových počítačů](https://go.microsoft.com/fwlink/p/?linkid=852906)najdete v dokumentaci.
+  - Připojte tyto servery k Azure Security Center.
 
 ## <a name="access-to-the-windows-defender-atp-portal"></a>Přístup k portálu ochrany ATP v programu Windows Defender
 
-Postupujte podle pokynů v [přiřadit přístup uživatelům k portálu](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-atp/assign-portal-access-windows-defender-advanced-threat-protection).
+Postupujte podle pokynů v části [přiřazení přístupu uživatele k portálu](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-atp/assign-portal-access-windows-defender-advanced-threat-protection).
 
 ## <a name="set-the-firewall-configuration"></a>Nastavení konfigurace brány firewall
 
-Pokud máte proxy server nebo bránu firewall, která blokuje anonymní provoz, jak senzoru ochrany ATP v programu Windows Defender se připojuje z kontextu systému, ujistěte se, že je povolený anonymní provoz. Postupujte podle pokynů v [povolit přístup k adresám URL služby ochrany ATP v programu Windows Defender v proxy serveru](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-atp/configure-proxy-internet-windows-defender-advanced-threat-protection#enable-access-to-microsoft-defender-atp-service-urls-in-the-proxy-server).
+Pokud máte proxy nebo bránu firewall, která blokuje anonymní provoz, protože se senzor ATP v programu Windows Defender připojuje z kontextu systému, zajistěte, aby byl povolen anonymní provoz. Postupujte podle pokynů v tématu [Povolení přístupu k adresám URL služby ochrany ATP v programu Windows Defender v proxy server](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-atp/configure-proxy-internet-windows-defender-advanced-threat-protection#enable-access-to-microsoft-defender-atp-service-urls-in-the-proxy-server).
 
-## <a name="test-the-feature"></a>Otestovat funkci
+## <a name="test-the-feature"></a>Testování funkce
 
-Generovat upozornění na neškodné ochrany ATP v programu Windows Defender:
+Vygenerování neškodné výstrahy testu ochrany ATP v programu Windows Defender:
 
-1. Použití vzdálené plochy k virtuálnímu počítači s Windows serverem 2012 R2 nebo virtuálního počítače s Windows serverem 2016.  Otevřete okno příkazového řádku.
+1. Pro přístup k virtuálnímu počítači s Windows Serverem 2012 R2 nebo k virtuálnímu počítači s Windows serverem 2016 použijte vzdálenou plochu.  Otevřete okno příkazového řádku.
 
-2. Na řádku kopírovat a spusťte následující příkaz. Okno příkazového řádku se automaticky zavře.
+2. Na příkazovém řádku zkopírujte a spusťte následující příkaz. Okno příkazového řádku se automaticky zavře.
 
     ```
     powershell.exe -NoExit -ExecutionPolicy Bypass -WindowStyle Hidden (New-Object System.Net.WebClient).DownloadFile('http://127.0.0.1/1.exe', 'C:\\test-WDATP-test\\invoice.exe'); Start-Process 'C:\\test-WDATP-test\\invoice.exe'
     ```
 
-   ![Okno příkazového řádku pomocí výše uvedeného příkazu](media/security-center-wdatp/image4.jpeg)
+   ![Okno příkazového řádku s výše uvedeným příkazem](media/security-center-wdatp/image4.jpeg)
 
-3. Pokud příkaz je úspěšná, zobrazí se vám nové výstrahy na řídicím panelu Azure Security Center a na portálu ochrany ATP v programu Windows Defender. Tato výstraha může trvat několik minut.
+3. Pokud je příkaz úspěšný, zobrazí se na řídicím panelu Azure Security Center a na portálu ochrany ATP v programu Windows Defender nová výstraha. Zobrazení této výstrahy může trvat několik minut.
 
-4. Pokud chcete zkontrolovat upozornění ve službě Security Center, přejděte na **výstrahy zabezpečení** >  **podezřelý příkazový řádek Powershellu**.
+4. Pokud chcete zobrazit výstrahu v Security Center, přečtěte si**podezřelé příkazový řádek PowerShellu** **výstrahy** >  zabezpečení.
 
-5. V okně šetření vyberte odkaz přejdete na portál ochrany ATP v programu Windows Defender.
+5. V okně šetření vyberte odkaz pro přechod na portál ochrany ATP v programu Windows Defender.
 
 ## <a name="next-steps"></a>Další postup
 
-- [Nastavení zásad zabezpečení ve službě Azure Security Center](tutorial-security-policy.md): Zjistěte, jak nakonfigurovat zásady zabezpečení pro vaše předplatná Azure a skupiny prostředků.
-- [Správa doporučení zabezpečení v Azure Security Center](security-center-recommendations.md): Zjistěte, jak vám doporučení pomáhají chránit prostředky Azure.
+- [Nastavení zásad zabezpečení v Azure Security Center](tutorial-security-policy.md): Přečtěte si, jak nakonfigurovat zásady zabezpečení pro vaše předplatná Azure a skupiny prostředků.
+- [Správa doporučení zabezpečení v Azure Security Center](security-center-recommendations.md): Přečtěte si, jak doporučení vám pomůžou chránit prostředky Azure.
 - [Sledování stavu zabezpečení v Azure Security Center](security-center-monitoring.md): Zjistěte, jak monitorovat stav svých prostředků Azure.

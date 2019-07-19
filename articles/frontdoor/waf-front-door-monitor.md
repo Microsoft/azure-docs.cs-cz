@@ -1,6 +1,6 @@
 ---
-title: Firewall webových aplikací monitorování a protokolování
-description: Přečtěte si firewall webových aplikací (WAF) s FrontDoor monitorování a protokolování
+title: Monitorování a protokolování brány firewall webových aplikací Azure
+description: Zjistěte, jak Firewall webových aplikací (WAF) s FrontDoor monitoring a protokolování
 services: frontdoor
 author: KumudD
 ms.service: frontdoor
@@ -9,35 +9,36 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/31/2019
-ms.author: tyao;kumud
-ms.openlocfilehash: e4ba6cca679ce4910ea941d9578939721514b2ec
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: kumud
+ms.reviewer: tyao
+ms.openlocfilehash: 675d06f3d2071022da3867a4c45137efb818980d
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66478969"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67849147"
 ---
-# <a name="azure-web-application-firewall-monitoring-and-logging"></a>Firewall webových aplikací monitorování a protokolování 
+# <a name="azure-web-application-firewall-monitoring-and-logging"></a>Monitorování a protokolování brány firewall webových aplikací Azure 
 
-Protokolování a monitorování Azure webových aplikací (WAF) brána firewall, je zajišťována protokolováním a integrací se službami Azure Monitor a Azure Monitor protokoly.
+Monitorování a protokolování firewallu webových aplikací Azure (WAF) se poskytuje prostřednictvím protokolování a integrace s protokoly Azure Monitor a Azure Monitor.
 
 ## <a name="azure-monitor"></a>Azure Monitor
 
-WAF FrontDoor protokolu je integrovaná s [Azure Monitor](../azure-monitor/overview.md). Azure Monitor umožňuje sledovat diagnostické informace, včetně výstrah a protokolů WAF. Můžete nakonfigurovat v rámci branou prostředků na portálu v části monitorování WAF **diagnostiky** kartu nebo přímo prostřednictvím služby Azure Monitor service.
+WAF s protokolem FrontDoor je integrovaná do [Azure monitor](../azure-monitor/overview.md). Azure Monitor umožňuje sledovat diagnostické informace, včetně výstrah a protokolů WAF. Monitorování WAF v rámci prostředku front-dveří můžete nakonfigurovat na portálu na kartě **Diagnostika** nebo přímo prostřednictvím služby Azure monitor.
 
-Z webu Azure portal přejděte na typ prostředku branou. Z **monitorování**/**metriky** kartu na levé straně, můžete přidat **WebApplicationFirewallRequestCount** sledovat počet požadavků, které odpovídají pravidla firewallu webových aplikací. Vlastní filtry lze vytvořit na základě typy akcí a názvy pravidel.
+Z Azure Portal přejít na typ prostředku front-dveří. Na kartě **monitorování**/**metriky** na levé straně můžete přidat **WebApplicationFirewallRequestCount** ke sledování počtu požadavků odpovídajících pravidlům WAF. Vlastní filtry je možné vytvořit na základě typů akcí a názvů pravidel.
 
 ![WAFMetrics](./media//waf-front-door-monitor/waf-frontdoor-metrics.png)
 
-## <a name="logs-and-diagnostics"></a>Protokolování a Diagnostika
+## <a name="logs-and-diagnostics"></a>Protokoly a diagnostika
 
-WAF s branou poskytuje podrobné generování sestav o každém útoky, které zjistí. Protokolování je integrované v protokolech diagnostiky Azure a výstrahy se zaznamenávají ve formátu JSON. Tyto protokoly je možné integrovat se službou [protokoly Azure monitoru](../azure-monitor/insights/azure-networking-analytics.md).
+WAF s předními dveřmi poskytuje podrobné hlášení o každé hrozbě, kterou detekuje. Protokolování je integrované v protokolech diagnostiky Azure a výstrahy se zaznamenávají ve formátu JSON. Tyto protokoly je možné integrovat s [protokoly Azure monitor](../azure-monitor/insights/azure-networking-analytics.md).
 
 ![WAFDiag](./media/waf-front-door-monitor/waf-frontdoor-diagnostics.png)
 
-FrontdoorAccessLog protokoluje všechny požadavky, které se předávají back EndY zákazníka. FrontdoorWebApplicationFirewallLog protokoluje všechny požadavky, které odpovídá pravidlu WAF.
+FrontdoorAccessLog zaznamená všechny požadavky, které se předají do back-endu zákazníků. FrontdoorWebApplicationFirewallLog zaznamená všechny požadavky, které odpovídají pravidlu WAF.
 
-Následující příklad dotazu získá protokolů WAF na blokované požadavky:
+Následující příklad dotazu získá v blokovaných požadavcích protokoly WAF:
 
 ``` WAFlogQuery
 AzureDiagnostics
@@ -46,7 +47,7 @@ AzureDiagnostics
 
 ```
 
-Následující příklad dotazu získá AccessLogs položky:
+Následující příklad dotazu získá položky AccessLogs:
 
 ``` AccessLogQuery
 AzureDiagnostics
@@ -57,5 +58,5 @@ AzureDiagnostics
 
 ## <a name="next-steps"></a>Další postup
 
-- Další informace o [branou](front-door-overview.md).
+- Přečtěte si další informace o [front](front-door-overview.md)-dveřích.
 

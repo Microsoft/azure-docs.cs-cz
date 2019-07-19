@@ -1,6 +1,6 @@
 ---
-title: Změnit nastavení FabricTransport v Azure Service Fabric actors | Dokumentace Microsoftu
-description: Další informace o konfiguraci nastavení komunikace s Azure Service Fabric actor.
+title: Změna nastavení FabricTransport v Azure Service Fabric Actors | Microsoft Docs
+description: Přečtěte si o konfiguraci nastavení komunikace v Azure Service Fabric actor.
 services: Service-Fabric
 documentationcenter: .net
 author: suchiagicha
@@ -13,28 +13,28 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/20/2017
-ms.author: suchiagicha
-ms.openlocfilehash: b6cff24e5a7812a88673d80476819e51e6f5da35
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: chackdan
+ms.openlocfilehash: 4170f79e8eaca44260e81c85c1a3a7571720ec7f
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62125064"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67876116"
 ---
-# <a name="configure-fabrictransport-settings-for-reliable-actors"></a>Konfigurace nastavení FabricTransport Reliable actors
+# <a name="configure-fabrictransport-settings-for-reliable-actors"></a>Konfigurace nastavení FabricTransport pro Reliable Actors
 
-Tady je nastavení, které můžete nakonfigurovat:
+Tady jsou nastavení, která můžete nakonfigurovat:
 - C#: [FabricTransportRemotingSettings](
 https://docs.microsoft.com/java/api/microsoft.servicefabric.services.remoting.fabrictransport.fabrictransportremotingsettings)
 - Java: [FabricTransportRemotingSettings](https://docs.microsoft.com/java/api/microsoft.servicefabric.services.remoting.fabrictransport.fabrictransportremotingsettings)
 
-Výchozí konfigurace FabricTransport můžete upravit následujícími způsoby.
+Výchozí konfiguraci nástroje FabricTransport můžete upravit následujícími způsoby.
 
-## <a name="assembly-attribute"></a>Atribut sestavení
+## <a name="assembly-attribute"></a>Atribut Assembly
 
-[FabricTransportActorRemotingProvider](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.actors.remoting.fabrictransport.fabrictransportactorremotingproviderattribute?redirectedfrom=MSDN) atributů je potřeba použít na klientovi objektu actor a sestavení služby objektu actor.
+Atribut [FabricTransportActorRemotingProvider](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.actors.remoting.fabrictransport.fabrictransportactorremotingproviderattribute?redirectedfrom=MSDN) musí být použit v sestaveních služby objektu actor a objektu actor.
 
-Následující příklad ukazuje, jak změnit výchozí hodnotu FabricTransport OperationTimeout nastavení:
+Následující příklad ukazuje, jak změnit výchozí hodnotu nastavení FabricTransport OperationTimeout:
 
   ```csharp
     using Microsoft.ServiceFabric.Actors.Remoting.FabricTransport;
@@ -50,17 +50,17 @@ Následující příklad ukazuje, jak změnit výchozí hodnotu FabricTransport 
 
 ## <a name="config-package"></a>Konfigurační balíček
 
-Můžete použít [konfigurační balíček](service-fabric-application-and-service-manifests.md) chcete změnit výchozí konfiguraci.
+K úpravě výchozí konfigurace můžete použít [konfigurační balíček](service-fabric-application-and-service-manifests.md) .
 
 > [!IMPORTANT]
-> Certifikáty na uzly s Linuxem, musí být ve formátu PEM. Další informace o vyhledání a konfigurace certifikátů pro Linux najdete v tématu [konfigurace certifikátů v Linuxu](./service-fabric-configure-certificates-linux.md). 
+> V uzlech se systémem Linux musí být certifikáty PEM ve formátu. Další informace o vyhledání a konfiguraci certifikátů pro Linux najdete v tématu [Konfigurace certifikátů v systému Linux](./service-fabric-configure-certificates-linux.md). 
 > 
 
-### <a name="configure-fabrictransport-settings-for-the-actor-service"></a>Konfigurace nastavení FabricTransport služba objektu actor
+### <a name="configure-fabrictransport-settings-for-the-actor-service"></a>Konfigurace nastavení FabricTransport pro službu objektu actor
 
-Přidáte oddíl TransportSettings v souboru settings.xml.
+Přidejte část TransportSettings do souboru Settings. XML.
 
-Ve výchozím nastavení, hledá kód objektu actor SectionName jako "&lt;ActorName&gt;TransportSettings". Pokud není nalezen, který, kontrole SectionName jako "TransportSettings".
+Ve výchozím nastavení kód objektu actor hledá položku sectionGroup jako "&lt;&gt;TransportSettings jméno". Pokud se tato možnost nenajde, zkontroluje se v části "TransportSettings".
 
   ```xml
   <Section Name="MyActorServiceTransportSettings">
@@ -77,9 +77,9 @@ Ve výchozím nastavení, hledá kód objektu actor SectionName jako "&lt;ActorN
    </Section>
   ```
 
-### <a name="configure-fabrictransport-settings-for-the-actor-client-assembly"></a>Konfigurace nastavení FabricTransport pro sestavení klienta objektu actor
+### <a name="configure-fabrictransport-settings-for-the-actor-client-assembly"></a>Konfigurace nastavení FabricTransport pro klientské sestavení objektu actor
 
-Pokud klient není spuštěna jako součást služby, můžete vytvořit "&lt;název souboru Exe klienta&gt;. settings.xml" soubor ve stejném umístění jako soubor .exe klienta. Pak přidejte TransportSettings části v tomto souboru. SectionName by měl být "TransportSettings".
+Pokud klient neběží jako součást služby, můžete vytvořit&lt;soubor Client exe name&gt;. Settings. XML ve stejném umístění jako soubor Client. exe. Pak do tohoto souboru přidejte část TransportSettings. Třída sectionGroup by měla být "TransportSettings".
 
   ```xml
   <?xml version="1.0" encoding="utf-8"?>
@@ -99,8 +99,8 @@ Pokud klient není spuštěna jako součást služby, můžete vytvořit "&lt;n�
   </Settings>
    ```
 
-* Konfigurace nastavení FabricTransport objektu zabezpečení Actor Service/klienta s sekundární certifikát.
-  Sekundární certifikát informace jde přidat tak, že přidáte parametr CertificateFindValuebySecondary.
+* Konfigurace nastavení FabricTransport pro službu nebo klienta Secure actor se sekundárním certifikátem
+  Informace o sekundárním certifikátu lze přidat přidáním parametru CertificateFindValuebySecondary.
   Níže je příklad pro TransportSettings naslouchacího procesu.
 
   ```xml
@@ -129,8 +129,8 @@ Pokud klient není spuštěna jako součást služby, můžete vytvořit "&lt;n�
   <Parameter Name="CertificateProtectionLevel" Value="EncryptAndSign" />
   </Section>
    ```
-  * Konfigurace nastavení FabricTransport pro zabezpečení Actor Service/klienta pomocí názvu subjektu.
-    Uživatel musí poskytnout findType jako FindBySubjectName, přidejte CertificateIssuerThumbprints a CertificateRemoteCommonNames hodnoty.
+  * Konfigurace nastavení FabricTransport pro zabezpečení služby/klienta actor pomocí názvu subjektu
+    Uživatel musí zadat findType jako FindBySubjectName, přidat hodnoty CertificateIssuerThumbprints a CertificateRemoteCommonNames.
     Níže je příklad pro TransportSettings naslouchacího procesu.
 
     ```xml

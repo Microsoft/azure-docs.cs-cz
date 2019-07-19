@@ -1,6 +1,6 @@
 ---
 title: Co je nového v Microsoft Azure Backup serveru
-description: Microsoft Azure Backup Server poskytuje rozšířené možnosti zálohování pro ochranu virtuálních počítačů, souborů a složek, úloh a další. Zjistěte, jak nainstalovat nebo upgradovat na Azure Backup Server V3.
+description: Microsoft Azure Backup Server poskytuje rozšířené možnosti zálohování pro ochranu virtuálních počítačů, souborů a složek, úloh a dalších. Přečtěte si, jak nainstalovat nebo upgradovat na Azure Backup Server v3.
 services: backup
 author: rayne-wiselman
 manager: carmonm
@@ -8,60 +8,60 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: adigan
-ms.openlocfilehash: 5718064994a80266c216ae6040746be29194adc9
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a858ac84ec9181cef4703c8fe236b9a3513af9f5
+ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60254712"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68234736"
 ---
 # <a name="whats-new-in-microsoft-azure-backup-server"></a>Co je nového v Microsoft Azure Backup serveru
 
-Microsoft Azure Backup serveru verze 3 (MABS V3) je nejnovější inovace a obsahuje důležité opravy chyb, podporu 2019 systému Windows Server, SQL 2017 – podpora a další funkce a vylepšení. Chcete-li zobrazit seznam opravy chyb a pokyny pro MABS V3, najdete v článku KB [4457852](https://support.microsoft.com/en-us/help/4457852/microsoft-azure-backup-server-v3).
+Nejnovější upgrade je Microsoft Azure Backup Server verze 3 (MABS V3) a zahrnuje kritické opravy chyb, podporu Windows serveru 2019, podporu SQL 2017 a další funkce a vylepšení. Pokud chcete zobrazit seznam opravených chyb a pokyny k instalaci pro MABS v3, přečtěte si článek znalostní báze [4457852](https://support.microsoft.com/en-us/help/4457852/microsoft-azure-backup-server-v3).
 
-Následující funkce jsou zahrnuté v MABS V3:
+MABS V3 obsahuje následující funkce:
 
-## <a name="volume-to-volume-migration"></a>Migrace svazek na svazku
-S moderním zálohování úložiště (MB) ve verzi V2 MABS, jsme oznámili, že úložištěm, kde konfigurovat některé úlohy zálohovat na konkrétní úložiště na základě úložiště vlastností. Po konfiguraci, však může být potřeba přesunout zálohy z některých zdrojů dat do jiného úložiště pro využití optimalizované prostředků. MABS V3 vám dává možnost migrovat vaše zálohy a konfigurovat je uloží do jiného svazku v [3 kroky](https://blogs.technet.microsoft.com/dpm/2017/10/24/storage-migration-with-dpm-2016-mbs/).
+## <a name="volume-to-volume-migration"></a>Migrace svazků na svazek
+S Moderní úložiště zálohování (MBS) ve službě MABS v2 jsme oznámili úložiště s podporou úloh, ve kterém nakonfigurujete určité úlohy, které se mají zálohovat do konkrétního úložiště, a to na základě vlastností úložiště. Po dokončení konfigurace ale může být potřeba přesunout zálohy určitých zdrojů dat do jiného úložiště, aby se vyoptimalizované využití prostředků vyhledalo. MABS V3 vám dává možnost migrovat zálohy a nakonfigurovat jejich uložení na jiný svazek ve [třech krocích](https://blogs.technet.microsoft.com/dpm/2017/10/24/storage-migration-with-dpm-2016-mbs/).
 
-## <a name="prevent-unexpected-data-loss"></a>Zabránit neočekávané ztráty dat
-V podnicích spravuje MABS tým správců. I když existují v úložišti, který se má použít pro zálohování svazku nesprávné věnovat MABS jako úložiště pro zálohování může vést ke ztrátě důležitých dat pokyny. Pro MABS V3, je možné zabránit takové scénáře tím, že nakonfigurujete tyto svazky jako ty, které nejsou k dispozici pro úložiště pomocí [tyto rutiny prostředí PowerShell](https://docs.microsoft.com/system-center/dpm/add-storage#volume-exclusion).
+## <a name="prevent-unexpected-data-loss"></a>Ochrana před neočekávanou ztrátou dat
+V podnicích je MABS spravován týmem správců. I když existují pokyny pro úložiště, které by se měly použít pro zálohování, nesprávný svazek MABS jako úložiště záloh může vést ke ztrátě důležitých dat. S MABS V3 můžete takové scénáře zabránit tak, že tyto svazky nakonfigurujete jako ty, které nejsou dostupné pro úložiště pomocí [těchto rutin PowerShellu](https://docs.microsoft.com/azure/backup/backup-mabs-add-storage).
 
-## <a name="custom-size-allocation"></a>Vlastní velikost přidělení
-Moderní úložiště zálohování (MB) využívá úložiště dynamicky podle potřeby. Uděláte to tak, MABS vypočítá množství dat zálohovaných, když je nakonfigurován pro ochranu. Nicméně pokud mnoho souborů a složek jsou zálohované společně, stejně jako v případě souborového serveru, výpočet velikosti může trvat dlouhou dobu. Pomocí MABS V3 lze nakonfigurovat MABS tak, aby přijímal velikost svazku jako výchozí, místo výpočet velikosti jednotlivých souborů, proto šetří čas.
+## <a name="custom-size-allocation"></a>Přidělení vlastní velikosti
+Moderní úložiště zálohování (MBS) spotřebovává úložiště dynamicky a v případě potřeby. Pokud to chcete udělat, MABS vypočítá velikost zálohovaných dat, když je nakonfigurovaná na ochranu. Pokud je však mnoho souborů a složek zálohováno společně, jako v případě souborového serveru, výpočet velikosti může trvat dlouhou dobu. Pomocí MABS V3 můžete nakonfigurovat MABS tak, aby přijímala velikost svazku jako výchozí místo výpočtu velikosti každého souboru, takže ušetří čas.
 
-## <a name="optimized-cc-for-rct-vms"></a>Optimalizované kopie RCT virtuálních počítačů
-MABS používá RCT (nativní sledování změn v Hyper-V), která snižuje potřebu časově náročných konzistence zkontroluje ve scénářích jako virtuální počítač, dojde k chybě. RCT nabízí lepší odolnost než sledování změn poskytované zálohy založené na snímek služby VSS. MABS V3 optimalizuje další využití sítě a úložiště a současný přechod jenom změněná data během žádné kontroly konzistence.
+## <a name="optimized-cc-for-rct-vms"></a>Optimalizované virtuální počítače CC pro RCT
+MABS používá RCT (nativní sledování změn v technologii Hyper-V), což snižuje nutnost časově náročné kontroly konzistence ve scénářích jako chyby virtuálních počítačů. RCT poskytuje lepší odolnost proti sledování změn, které poskytuje zálohování na základě snímků služby Stínová kopie svazku (VSS). MABS V3 optimalizuje využití sítě a úložiště tím, že během jakýchkoli kontrol konzistence přenáší jenom změněná data.
 
-## <a name="support-to-tls-12"></a>Podpora protokolu TLS 1.2
-Protokol TLS 1.2 je bezpečný způsob komunikace navrhované společností Microsoft s prvotřídní šifrování. MABS teď podporuje komunikaci TLS 1.2 MABS a chráněné servery pro ověřování pomocí certifikátu a pro cloudové zálohy.
+## <a name="support-to-tls-12"></a>Podpora pro TLS 1,2
+Protokol TLS 1,2 představuje zabezpečený způsob komunikace, kterou Microsoft navrhuje, s nejlepším šifrováním tříd. MABS teď podporuje komunikaci TLS 1,2 mezi MABS a chráněnými servery, ověřování založené na certifikátech a zálohování cloudu.
 
 ## <a name="vmware-vm-protection-support"></a>Podpora ochrany virtuálních počítačů VMware
-Zálohování virtuálních počítačů VMware se teď podporuje pro nasazení v produkčním prostředí. MABS V3 nabízejí pro ochranu virtuálního počítače VMware následující:
+Pro produkční nasazení se teď podporuje zálohování virtuálních počítačů VMware. MABS v3 nabízí pro ochranu virtuálních počítačů VMware následující:
 
--   Podpora pro vCenter a ESXi 6.5, společně s podporou pro 5.5 a 6.0.
-- Automatická ochrana virtuálních počítačů VMware do cloudu. Pokud do chráněné složky přidají nové virtuální počítače VMware, budou automaticky chráněny na disk a do cloudu.
-- Zlepšení efektivity obnovení pro obnovení do alternativního umístění VMware.
+-   Podpora pro vCenter a ESXi 6,5, společně s podporou pro 5,5 a 6,0.
+- Automatická ochrana virtuálních počítačů VMware do cloudu. Pokud jsou do chráněné složky přidány nové virtuální počítače VMware, budou automaticky chráněny na disk a Cloud.
+- Vylepšení efektivity obnovení pro obnovení alternativního umístění VMware.
 
-## <a name="sql-2017-support"></a>SQL 2017 – podpora
-MABS V3 lze nainstalovat pomocí SQL 2017 jako databáze MABS. Můžete při upgradování SQL serveru 2017 SQL z SQL 2016, nebo nainstalovat čerstvě. Můžete také zálohovat SQL 2017 úlohy pro obě v clusterovaných a neclusterovaných prostředí pro MABS V3.
+## <a name="sql-2017-support"></a>Podpora SQL 2017
+MABS V3 se dá nainstalovat pomocí SQL 2017 jako databáze MABS. SQL Server můžete upgradovat z SQL 2016 na SQL 2017 nebo si ho nainstalovat čerstvě. Zatížení SQL 2017 můžete zálohovat taky v clusterovém i neclusterovém prostředí s MABS v3.
 
 ## <a name="windows-server-2019-support"></a>Podpora systému Windows Server 2019
-MABS V3 lze nainstalovat na Windows Server 2019. Chcete-li pomocí WS2019 MABS V3, můžete Upgradujte svůj operační systém na WS2019 předtím, než instalace nebo upgrade na MABS V3, nebo můžete upgradovat operační systém po instalaci nebo upgrade V3 na WS2016.
+MABS V3 se dá nainstalovat na Windows Server 2019. Pokud chcete používat MABS v3 s WS2019, můžete buď upgradovat operační systém na WS2019 před instalací nebo upgradem na MABS v3, nebo můžete upgradovat svůj operační systém po instalaci/upgrade V3 na WS2016.
 
-MABS V3 je plné verzi a lze nainstalovat přímo na Windows serveru 2016, Windows Server 2019 nebo je možné upgradovat z verze 2 MABS. Před upgradováním na nebo instalace zálohování serveru V3, přečtěte si požadavky pro instalaci.
-Najít další informace o instalaci nebo upgradu kroků pro MABS [tady](https://docs.microsoft.com/azure/backup/backup-azure-microsoft-azure-backup#software-package).
+MABS v3 je plná verze, která se dá nainstalovat přímo na Windows Server 2016, Windows Server 2019 nebo se dá upgradovat z MABS v2. Před upgradem na nebo instalaci záložního serveru V3 si přečtěte informace o požadavcích na instalaci.
+Další informace o postupu instalace/upgradu pro MABS najdete [zde](https://docs.microsoft.com/azure/backup/backup-azure-microsoft-azure-backup#software-package).
 
 
 > [!NOTE]
-> 
-> MABS má stejný kód základní jako System Center Data Protection Manager. Je ekvivalentní k Data Protection Manager 1807 MABS v3.
+>
+> MABS má stejný základ kódu jako Data Protection Manager nástroje System Center. MABS v3 je ekvivalentem Data Protection Manager 1807.
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace o přípravě serveru nebo začít chránit úlohy:
+Přečtěte si, jak připravit server nebo začít chránit úlohu:
 - [Známé problémy v MABS V3](backup-mabs-release-notes-v3.md)
-- [Příprava úloh zálohování serveru](backup-azure-microsoft-azure-backup.md)
-- [Pomocí zálohování serveru k zálohování serveru VMware](backup-azure-backup-server-vmware.md)
-- [Pomocí zálohování serveru k zálohování SQL serveru](backup-azure-sql-mabs.md)
-- [Moderní úložiště záloh pomocí zálohování serveru](backup-mabs-add-storage.md)
+- [Příprava úloh záložního serveru](backup-azure-microsoft-azure-backup.md)
+- [Použití záložního serveru k zálohování serveru VMware](backup-azure-backup-server-vmware.md)
+- [Zálohování SQL Server pomocí záložního serveru](backup-azure-sql-mabs.md)
+- [Použití Moderní úložiště zálohování se záložním serverem](backup-mabs-add-storage.md)
