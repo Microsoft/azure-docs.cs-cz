@@ -8,14 +8,14 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 03/26/2019
 ms.author: lbosq
-ms.openlocfilehash: a56fab3f8f572f277c11dc566c7d74104226b4fc
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: dd7d8658b8f1fbe01a8928963e7f78d2adbe1d74
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66480573"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68325510"
 ---
-# <a name="quickstart-create-a-graph-database-in-azure-cosmos-db-using-the-java-sdk"></a>Rychlý start: Vytvořit databázi grafu ve službě Azure Cosmos DB pomocí sady Java SDK 
+# <a name="quickstart-create-a-graph-database-in-azure-cosmos-db-using-the-java-sdk"></a>Rychlý start: Vytvoření databáze grafů v Azure Cosmos DB pomocí sady Java SDK 
 
 > [!div class="op_single_selector"]
 > * [Konzola Gremlin](create-graph-gremlin-console.md)
@@ -150,13 +150,13 @@ Teď se vraťte na portál Azure, kde najdete informace o připojení, a zkop�
 
 2. V okně terminálu Git pomocí následujícího příkazu nainstalujte požadované balíčky Java.
 
-   ```
+   ```git
    mvn package
    ```
 
 3. V okně terminálu Git pomocí následujícího příkazu spusťte aplikaci v Javě.
     
-    ```
+    ```git
     mvn exec:java -D exec.mainClass=GetStarted.Program
     ```
 

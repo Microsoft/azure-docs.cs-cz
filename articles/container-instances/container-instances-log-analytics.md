@@ -1,24 +1,25 @@
 ---
-title: Protokolování instanci kontejneru s protokoly Azure monitoru
-description: Zjistěte, jak odeslat protokoly z Azure container instances protokoly Azure monitoru.
+title: Protokolování instance kontejneru s protokoly Azure Monitor
+description: Naučte se, jak odesílat protokoly z Azure Container Instances, abyste Azure Monitor protokoly.
 services: container-instances
 author: dlepow
+manager: gwallace
 ms.service: container-instances
 ms.topic: overview
 ms.date: 07/09/2019
 ms.author: danlep
-ms.openlocfilehash: cab0bc4d2d0491c70a1d2f11f3a5d5d831ade6cf
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 4099bc0b15f02faade02f47aeb00fb7c4b4a3332
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67722635"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68325888"
 ---
-# <a name="container-instance-logging-with-azure-monitor-logs"></a>Protokolování instanci kontejneru s protokoly Azure monitoru
+# <a name="container-instance-logging-with-azure-monitor-logs"></a>Protokolování instance kontejneru s protokoly Azure Monitor
 
-Pracovní prostory log Analytics poskytuje centralizovaného umístění pro ukládání a dotazování dat protokolu z nejen prostředků Azure, ale také místní prostředky a prostředky v jiných cloudech. Služba Azure Container Instances zahrnuje integrovanou podporu pro odesílání dat na protokoly Azure monitoru.
+Pracovní prostory Log Analytics poskytují centralizované umístění pro ukládání a dotazování dat protokolu z nejenom prostředků Azure, ale i místních prostředků a prostředků v jiných cloudech. Azure Container Instances obsahují integrovanou podporu pro posílání dat do protokolů Azure Monitor.
 
-Odeslat data instance kontejneru na protokoly Azure monitoru, musíte zadat klíč ID a pracovnímu prostoru pracovní prostor Log Analytics, při vytváření skupiny kontejnerů. Následující oddíly popisují vytvoření skupiny kontejnerů s povoleným protokolováním a dotazování protokolů.
+Chcete-li odeslat data instance kontejneru do protokolů Azure Monitor, je nutné při vytváření skupiny kontejnerů zadat Log Analytics ID a klíč pracovního prostoru. Následující oddíly popisují vytvoření skupiny kontejnerů s povoleným protokolováním a dotazování protokolů.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
@@ -33,10 +34,10 @@ Abyste mohli povolit protokolování ve vašich instancích kontejnerů, potřeb
 
 Služba Azure Container Instances potřebuje oprávnění k odesílání dat do pracovního prostoru služby Log Analytics. Abyste mohli udělit toto oprávnění a povolit protokolování, musíte při vytváření skupiny kontejnerů zadat ID pracovního prostoru služby Log Analytics a jeden z jeho klíčů (primární nebo sekundární).
 
-Postup získání ID pracovního prostoru log analytics a primární klíč:
+Získání ID a primárního klíče pracovního prostoru Log Analytics:
 
 1. Na webu Azure Portal přejděte do svého pracovního prostoru služby Log Analytics.
-1. V části **nastavení**vyberte **upřesňující nastavení**
+1. V části **Nastavení**vyberte **Upřesnit nastavení** .
 1. Vyberte **Připojené zdroje** > **Servery Windows** (nebo **Linuxové servery** – ID a klíče jsou pro obojí stejné).
 1. Poznamenejte si:
    * **ID PRACOVNÍHO PROSTORU**
@@ -44,13 +45,13 @@ Postup získání ID pracovního prostoru log analytics a primární klíč:
 
 ## <a name="create-container-group"></a>Vytvoření skupiny kontejnerů
 
-Teď, když máte ID pracovního prostoru log analytics a primární klíč, jste připraveni vytvořit skupinu povoleno protokolování kontejneru.
+Teď, když máte ID pracovního prostoru Log Analytics a primární klíč, jste připraveni vytvořit skupinu kontejnerů s podporou protokolování.
 
-Následující příklady znázorňují dva způsoby, jak vytvořit skupinu kontejnerů pomocí jediného [fluentd][fluentd] kontejneru: Azure CLI a rozhraní příkazového řádku Azure s využitím šablony YAML. Kontejner fluentd ve výchozí konfiguraci produkuje několik řádků výstupu. Tento výstup se odesílá do pracovního prostoru služby Log Analytics, takže se dobře hodí pro ukázku zobrazení a dotazování protokolů.
+Následující příklady znázorňují dva způsoby, jak vytvořit skupinu kontejnerů [s jedním][fluentd] mikrokontejnerem: Rozhraní příkazového řádku Azure a Azure CLI se šablonou YAML. Kontejner fluentd ve výchozí konfiguraci produkuje několik řádků výstupu. Tento výstup se odesílá do pracovního prostoru služby Log Analytics, takže se dobře hodí pro ukázku zobrazení a dotazování protokolů.
 
 ### <a name="deploy-with-azure-cli"></a>Nasazení s Azure CLI
 
-Chcete-li nasadit pomocí rozhraní příkazového řádku Azure, zadejte `--log-analytics-workspace` a `--log-analytics-workspace-key` parametry v [vytvořit az container][az-container-create] příkaz. Tyto dvě hodnoty pracovního prostoru nahraďte hodnotami, které jste získali v předchozím kroku (a aktualizujte název skupiny prostředků). Teprve potom spusťte následující příkaz.
+Pokud ho chcete nasadit pomocí Azure CLI, zadejte `--log-analytics-workspace` parametry `--log-analytics-workspace-key` a v příkazu [AZ Container Create][az-container-create] . Tyto dvě hodnoty pracovního prostoru nahraďte hodnotami, které jste získali v předchozím kroku (a aktualizujte název skupiny prostředků). Teprve potom spusťte následující příkaz.
 
 ```azurecli-interactive
 az container create \
@@ -90,7 +91,7 @@ tags: null
 type: Microsoft.ContainerInstance/containerGroups
 ```
 
-V dalším kroku spusťte následující příkaz pro nasazení skupiny kontejnerů. Nahraďte `myResourceGroup` u prostředku skupiny v rámci vašeho předplatného (nebo nejdřív vytvořte skupinu prostředků s názvem "myResourceGroup"):
+Potom spuštěním následujícího příkazu nasaďte skupinu kontejnerů. Nahraďte `myResourceGroup` skupinou prostředků ve vašem předplatném (nebo nejdřív vytvořte skupinu prostředků s názvem "myResourceGroup"):
 
 ```azurecli-interactive
 az container create --resource-group myResourceGroup --name mycontainergroup001 --file deploy-aci.yaml
@@ -98,22 +99,22 @@ az container create --resource-group myResourceGroup --name mycontainergroup001 
 
 Krátce po spuštění příkazu byste měli dostat odpověď z Azure s podrobnostmi o nasazení.
 
-## <a name="view-logs-in-azure-monitor-logs"></a>Zobrazení protokolů v protokoly Azure monitoru
+## <a name="view-logs-in-azure-monitor-logs"></a>Zobrazit protokoly v protokolu Azure Monitor
 
-Po nasazení skupiny kontejnerů může trvat několik minut (až 10), než se první položky protokolu objeví na webu Azure Portal. Chcete-li zobrazit protokoly pro skupinu kontejnerů:
+Po nasazení skupiny kontejnerů může trvat několik minut (až 10), než se první položky protokolu objeví na webu Azure Portal. Zobrazení protokolů skupiny kontejnerů:
 
 1. Na webu Azure Portal přejděte do svého pracovního prostoru služby Log Analytics.
-1. V části **Obecné**vyberte **protokoly**  
-1. Zadejte následující dotaz: `search *`
-1. Vyberte **spuštění**
+1. V části **Obecné**vyberte **protokoly** .  
+1. Zadejte následující dotaz:`search *`
+1. Vyberte **Spustit** .
 
-Mělo by se zobrazit několik výsledků dotazu `search *`. Pokud nejprve se nezobrazí žádné výsledky, počkejte několik minut a pak vyberte **spustit** tlačítko a spusťte dotaz znovu. Ve výchozím nastavení, se zobrazí položky protokolu v **tabulky** formátu. Pak můžete rozbalením řádku zobrazit obsah příslušné položky protokolu.
+Mělo by se zobrazit několik výsledků dotazu `search *`. Pokud nevidíte žádné výsledky, počkejte pár minut a pak znovu spusťte dotaz kliknutím na tlačítko **Spustit** . Ve výchozím nastavení se položky protokolu zobrazují ve formátu **tabulky** . Pak můžete rozbalením řádku zobrazit obsah příslušné položky protokolu.
 
 ![Výsledky hledání v protokolu na webu Azure Portal][log-search-01]
 
 ## <a name="query-container-logs"></a>Dotazování protokolů kontejnerů
 
-Protokoly Azure monitoru obsahuje rozsáhlý [dotazovací jazyk][query_lang] pro načítání informací z potenciálně tisíce řádků výstupu protokolu.
+Protokoly Azure Monitor obsahují obsáhlý [dotazovací jazyk][query_lang] pro přijímání informací z potenciálně tisíců výstupů protokolu.
 
 Agent protokolování služby Azure Container Instances odesílá položky do tabulky `ContainerInstanceLog_CL` v pracovním prostoru služby Log Analytics. Základní strukturu dotazu představuje zdrojová tabulka (`ContainerInstanceLog_CL`) následovaná řadou operátorů oddělených znakem svislé čáry (`|`). Zřetězením více operátorů můžete zúžit výsledky a provádět pokročilé funkce.
 
@@ -136,9 +137,9 @@ ContainerInstanceLog_CL
 
 ### <a name="azure-monitor-logs"></a>Protokoly služby Azure Monitor
 
-Další informace o dotazování protokolů a konfigurace upozornění protokolů Azure Monitor naleznete v tématu:
+Další informace o dotazování protokolů a konfiguraci výstrah v Azure Monitorch protokolech najdete v tématech:
 
-* [Principy prohledávání protokolů v protokoly Azure monitoru](../log-analytics/log-analytics-log-search.md)
+* [Principy prohledávání protokolů v Azure Monitorch protokolech](../log-analytics/log-analytics-log-search.md)
 * [Sjednocená upozornění ve službě Azure Monitor](../azure-monitor/platform/alerts-overview.md)
 
 

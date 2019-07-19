@@ -1,6 +1,6 @@
 ---
-title: Rychlý start Microsoft identity platform UPW pro Windows | Azure
-description: Zjistěte, jak získat přístupový token a volat rozhraní API chráněné službou Microsoft identity platform koncového bodu aplikace Universal Windows Platform (XAML).
+title: Microsoft Identity Platform Windows – rychlý Start pro Windows UWP | Azure
+description: Zjistěte, jak může aplikace Univerzální platforma Windows (XAML) získat přístupový token a volat rozhraní API chráněné koncovým bodem Microsoft Identity Platform.
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -13,51 +13,51 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/12/2019
+ms.date: 07/16/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 84da3ca512af30ad3b5d4fbc1182f5195366e1ae
-ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
+ms.openlocfilehash: 9955ea434f7a0e48f2d1f81d2a1f57cc3cd67dcb
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67565450"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68277885"
 ---
 # <a name="quickstart-call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>Rychlý start: Volání rozhraní Microsoft Graph API z aplikace pro univerzální platformu Windows (UPW)
 
-Tento rychlý Start obsahuje ukázku kódu, který ukazuje, jak aplikace univerzální platformy Windows (UPW) může přihlásit uživatele pomocí osobních účtů nebo pracovní a školní účty, získat přístupový token a volání rozhraní Microsoft Graph API.
+Tento rychlý Start obsahuje ukázku kódu, která předvádí, jak se aplikace Univerzální platforma Windows (UWP) může přihlašovat uživatelům pomocí osobních účtů nebo pracovních a školních účtů, získat přístupový token a volat rozhraní Microsoft Graph API.
 
-![Ukazuje, jak ukázková aplikace vygenerované v tomto rychlém startu funguje](media/quickstart-v2-uwp/uwp-intro.svg)
+![Ukazuje, jak ukázková aplikace vygenerovaná tímto rychlým startem funguje.](media/quickstart-v2-uwp/uwp-intro.svg)
 
 > [!div renderon="docs"]
 > ## <a name="register-and-download-your-quickstart-app"></a>Registrace a stažení aplikace pro rychlý start
 > [!div renderon="docs" class="sxs-lookup"]
 > Aplikaci pro rychlý start můžete spustit dvěma způsoby:
-> * [Express] [Možnost 1: Registrace a automaticky konfigurovat svoji aplikaci a pak si stáhnout ukázku kódu](#option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample)
-> * [Ruční] [Možnost 2: Registraci a ručně konfiguraci vaší aplikace a ukázku kódu](#option-2-register-and-manually-configure-your-application-and-code-sample)
+> * Express [Možnost 1: Zaregistrujte a automaticky nakonfigurujte svoji aplikaci a Stáhněte si ukázku kódu.](#option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample)
+> * Zásah [Možnost 2: Registrace a ruční konfigurace vaší aplikace a ukázky kódu](#option-2-register-and-manually-configure-your-application-and-code-sample)
 >
-> ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>Option 1: Registrace a automaticky konfigurovat svoji aplikaci a pak si stáhnout ukázku kódu
+> ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>Možnost 1: Zaregistrujte a automaticky nakonfigurujte svoji aplikaci a Stáhněte si ukázku kódu.
 >
-> 1. Přejděte k novému [portál Azure – registrace aplikací](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/UwpQuickstartPage/sourceType/docs) podokně.
+> 1. Přejít na nové podokno [Azure Portal-registrace aplikací](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/UwpQuickstartPage/sourceType/docs) .
 > 1. Zadejte název vaší aplikace a klikněte na **Zaregistrovat**.
 > 1. Postupujte podle pokynů ke stažení a automatické konfiguraci nové aplikace jedním kliknutím.
 >
-> ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>Option 2: Registraci a ručně konfiguraci vaší aplikace a ukázku kódu
+> ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>Možnost 2: Registrace a ruční konfigurace vaší aplikace a ukázky kódu
 > [!div renderon="docs"]
 > #### <a name="step-1-register-your-application"></a>Krok 1: Registrace vaší aplikace
 > Pokud chcete zaregistrovat aplikaci a přidat informace o registraci aplikace ke svému řešení, postupujte následovně:
 > 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účtu Microsoft.
 > 1. Pokud váš účet umožňuje přístup k více tenantům, vyberte svůj účet v pravém horním rohu a nastavte relaci portálu na požadovaného tenanta Azure AD.
-> 1. Přejděte na Microsoft identity platform pro vývojáře [registrace aplikací](https://aka.ms/MobileAppReg) stránky.
-> 1. Vyberte **registrace nové**.
+> 1. Přejděte na stránku [Registrace aplikací](https://aka.ms/MobileAppReg) Microsoft Identity Platform for Developers.
+> 1. Vyberte **Nová registrace**.
 > 1. Když se zobrazí stránka **Registrace aplikace**, zadejte registrační informace vaší aplikace:
 >      - V části **Název** zadejte smysluplný název aplikace, který se zobrazí uživatelům aplikace, například `UWP-App-calling-MsGraph`.
 >      - V části **Podporované typy účtu** vyberte **Účty v libovolném organizačním adresáři a osobní účty Microsoft (například Skype, Xbox, Outlook.com)** .
 >      - Výběrem možnosti **Registrovat** aplikaci vytvořte.
 > 1. V seznamu stránek pro aplikaci vyberte **Ověřování**.
-> 1. Rozbalte **plochy a zařízení** oddílu.  (Pokud **plochy a zařízení** se nezobrazuje, klikněte nejprve na horním banneru se zobrazit náhled zkušenosti s ověřováním)
-> 1. V části **identifikátor URI pro přesměrování** vyberte **přidejte identifikátor URI**.  Typ **urn: ietf:wg:oauth:2.0:oob**.
+> 1. Rozbalte část **plocha a zařízení** .  (Pokud není **plocha a zařízení** viditelná, nejdřív klikněte na banner s náhledem, abyste viděli prostředí pro ověřování ve verzi Preview.)
+> 1. V části **identifikátor URI pro přesměrování** vyberte **Přidat identifikátor URI**.  Zadejte **urn: IETF: WG: OAuth: 2.0: OOB**.
 > 1. Vyberte **Uložit**.
 
 > [!div renderon="portal" class="sxs-lookup"]
@@ -69,37 +69,37 @@ Tento rychlý Start obsahuje ukázku kódu, který ukazuje, jak aplikace univerz
 > > [!div id="appconfigured" class="alert alert-info"]
 > > ![Už nakonfigurované](media/quickstart-v2-uwp/green-check.png) Vaše aplikace je nakonfigurovaná s těmito atributy.
 
-#### <a name="step-2-download-your-visual-studio-project"></a>Krok 2: Stáhněte si svůj projekt sady Visual Studio
+#### <a name="step-2-download-your-visual-studio-project"></a>Krok 2: Stažení projektu sady Visual Studio
 
- - [Stáhněte si Visual Studio projekt](https://github.com/Azure-Samples/active-directory-dotnet-native-uwp-v2/archive/msal3x.zip)
+ - [Stažení projektu sady Visual Studio](https://github.com/Azure-Samples/active-directory-dotnet-native-uwp-v2/archive/msal3x.zip)
 
 #### <a name="step-3-configure-your-visual-studio-project"></a>Krok 3: Konfigurace projektu sady Visual Studio
 
 1. Extrahujte soubor zip do místní složky blízko ke kořenovému adresáři disku, například **C:\Azure-Samples**.
-1. Otevřete projekt v sadě Visual Studio. Vám může zobrazit výzva k instalaci UWP SDK. V takovém případě přijměte.
-1. Upravit **MainPage.Xaml.cs** a nahraďte hodnoty `ClientId` pole:
+1. Otevřete projekt v sadě Visual Studio. Může se zobrazit výzva k instalaci sady UWP SDK. V takovém případě přijměte.
+1. Upravte **MainPage.XAML.cs** a nahraďte hodnoty v `ClientId` poli:
 
     ```csharp
     private const string ClientId = "Enter_the_Application_Id_here";
     ```
 > [!div class="sxs-lookup" renderon="portal"]
 > > [!NOTE]
-> > Tento rychlý start podporuje Enter_the_Supported_Account_Info_Here.    
+> > Tento rychlý Start podporuje Enter_the_Supported_Account_Info_Here.    
 
 > [!div renderon="docs"]
 > Kde:
 > - `Enter_the_Application_Id_here` je ID aplikace, kterou jste zaregistrovali.
 >
 > > [!TIP]
-> > Najít hodnotu *ID aplikace*, přejděte **přehled** části portálu
+> > Pokud chcete zjistit hodnotu *ID aplikace*, přečtěte si část **Přehled** na portálu.
 
 #### <a name="step-4-run-your-application"></a>Krok 4: Spusťte aplikaci
 
-Pokud chcete vyzkoušet tento rychlý start na svém počítači s Windows:
+Pokud chcete vyzkoušet rychlý Start v počítači s Windows:
 
-1. Na panelu nástrojů sady Visual Studio zvolte platformu vpravo (pravděpodobně **x64** nebo **x86**, ne ARM).
-   > Podívejte se, že cílové zařízení se změní z *zařízení* k *místního počítače*
-1. Vyberte ladění | **Spustit bez ladění**
+1. Na panelu nástrojů sady Visual Studio vyberte správnou platformu (pravděpodobně **x64** nebo **x86**, ne ARM).
+   > Pozor, aby se cílové zařízení změnilo ze *zařízení* na *místní počítač*
+1. Vyberte ladit | **Spustit bez ladění**
 
 ## <a name="more-information"></a>Další informace
 
@@ -107,7 +107,7 @@ Tato část obsahuje další informace o tomto rychlém startu.
 
 ### <a name="msalnet"></a>MSAL.NET
 
-Knihovna MSAL ([Microsoft.Identity.Client](https://www.nuget.org/packages/Microsoft.Identity.Client)) je knihovna používaná k přihlášení uživatelů a požádat o tokeny zabezpečení. Tokeny zabezpečení používané pro přístup k rozhraní API chráněné službou Microsoft Identity platform pro vývojáře. MSAL můžete nainstalovat spuštěním následujícího příkazu v *Konzole Správce balíčků* v sadě Visual Studio:
+MSAL ([Microsoft. identity. Client](https://www.nuget.org/packages/Microsoft.Identity.Client)) je knihovna používaná k přihlašování uživatelů a žádosti o tokeny zabezpečení. Tokeny zabezpečení se používají pro přístup k rozhraní API chráněnému platformou Microsoft identity pro vývojáře. MSAL můžete nainstalovat spuštěním následujícího příkazu v *Konzole Správce balíčků* v sadě Visual Studio:
 
 ```powershell
 Install-Package Microsoft.Identity.Client -IncludePrerelease
@@ -121,7 +121,7 @@ Odkaz na knihovnu MSAL můžete přidat tak, že přidáte následující kód:
 using Microsoft.Identity.Client;
 ```
 
-Potom MSAL je inicializován pomocí následujícího kódu:
+Pak se MSAL inicializuje pomocí následujícího kódu:
 
 ```csharp
 public static IPublicClientApplication PublicClientApp;
@@ -135,15 +135,15 @@ PublicClientApp = new PublicClientApplicationBuilder.Create(ClientId)
 
 ### <a name="requesting-tokens"></a>Žádosti o tokeny
 
-Knihovna MSAL má dvě metody pro získávání tokenů v aplikaci UWP: `AcquireTokenInteractive` a `AcquireTokenSilent`.
+MSAL má dvě metody pro získání tokenů v aplikaci pro UWP: `AcquireTokenInteractive` a `AcquireTokenSilent`.
 
 #### <a name="get-a-user-token-interactively"></a>Interaktivní získání tokenu uživatele
 
-Některé situace vyžadují vynucení uživatelům interakci s Microsoft identity platform koncového bodu prostřednictvím automaticky otevíraném okně buď ověření přihlašovacích údajů nebo udělit souhlas. Možné příklady:
+Některé situace vyžadují, aby uživatelé vynutili interakci s koncovým bodem Microsoft Identity Platform prostřednictvím místního okna, aby ověřili své přihlašovací údaje nebo udělili souhlas. Možné příklady:
 
-- První uživatelé přihlašují k aplikaci
+- První přihlášení uživatelů do aplikace
 - Když je potřeba, aby uživatelé znovu zadali svoje přihlašovací údaje, protože vypršela platnost hesla
-- Pokud vaše aplikace požaduje přístup k prostředku, který uživatel musí vyjádřit souhlas
+- Když vaše aplikace požaduje přístup k prostředku, musí si uživatel udělit souhlas s
 - Když je nutné dvoufaktorové ověřování
 
 ```csharp
@@ -157,7 +157,7 @@ authResult = await App.PublicClientApp.AcquireTokenInteractive(scopes)
 
 #### <a name="get-a-user-token-silently"></a>Získání tokenu uživatele bez upozornění
 
-Použití `AcquireTokenSilent` metodu k získání tokenů pro přístup k chráněným prostředkům po počáteční `AcquireTokenAsync` metody. Nechcete vyžaduje, aby uživatel k ověření přihlašovacích údajů pokaždé, když potřebují přístup k prostředku. Ve většině případů budete chtít token pořízení a obnovení bez nutnosti zásahu uživatele
+Použijte metodu k získání tokenů pro přístup k chráněným prostředkům po `AcquireTokenInteractive` počáteční metodě. `AcquireTokenSilent` Nechcete vyžadovat, aby uživatel ověřoval své přihlašovací údaje pokaždé, když potřebují přístup k prostředku. Většina času, který požadujete získání a obnovení tokenu bez zásahu uživatele
 
 ```csharp
 var accounts = await App.PublicClientApp.GetAccountsAsync();
@@ -169,7 +169,7 @@ authResult = await App.PublicClientApp.AcquireTokenSilent(scopes, firstAccount)
 > |Kde: ||
 > |---------|---------|
 > | `scopes` | Obsahuje požadované obory, jako například `{ "user.read" }` pro Microsoft Graph nebo `{ "api://<Application ID>/access_as_user" }` pro vlastní webová rozhraní API. |
-> | `firstAccount` | Určuje první účet uživatele v mezipaměti (MSAL podporuje více uživatelů v jediné aplikaci) |
+> | `firstAccount` | Určuje první uživatelský účet v mezipaměti (MSAL podporuje více uživatelů v jedné aplikaci). |
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 

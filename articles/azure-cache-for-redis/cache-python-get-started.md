@@ -1,6 +1,6 @@
 ---
-title: Rychlý start k vytvoření aplikace v Pythonu, který používá Azure mezipaměti Redis | Dokumentace Microsoftu
-description: V tomto rychlém startu se dozvíte, jak vytvořit aplikaci Python, která používá mezipaměť Azure Redis
+title: Rychlý Start k vytvoření aplikace v Pythonu, která používá Azure cache pro Redis | Microsoft Docs
+description: V tomto rychlém startu se dozvíte, jak vytvořit aplikaci v Pythonu, která používá Azure cache pro Redis.
 services: cache
 documentationcenter: ''
 author: yegu-ms
@@ -15,38 +15,32 @@ ms.workload: tbd
 ms.date: 05/11/2018
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 73c14b3d3023dcca113589d63276216fcfdd17f1
-ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
+ms.openlocfilehash: 70a8e4cd694a90e83bf78e00a7c725a8c887b2eb
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67513438"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68324073"
 ---
-# <a name="quickstart-use-azure-cache-for-redis-with-python"></a>Rychlý start: Použití mezipaměti Azure pro Redis s Pythonem
+# <a name="quickstart-use-azure-cache-for-redis-with-python"></a>Rychlý start: Použití Azure cache pro Redis s Pythonem
 
-
-## <a name="introduction"></a>Úvod
-
-Tento rychlý start ukazuje, jak se připojit k Azure Cache pro Redis s Pythonem ke čtení a zápisu do mezipaměti. 
-
-![Dokončení testu Pythonu](./media/cache-python-get-started/cache-python-completed.png)
-
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+V tomto rychlém startu zahrňte Azure cache pro Redis do aplikace v Pythonu, abyste měli přístup k zabezpečené vyhrazené mezipaměti, která je přístupná z libovolné aplikace v Azure.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Nainstalované [prostředí Python 2 nebo Python 3](https://www.python.org/downloads/) s nástrojem [pip](https://pypi.org/project/pip/). 
+- Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
+- [Python 2 nebo 3](https://www.python.org/downloads/)
 
-## <a name="create-an-azure-cache-for-redis-on-azure"></a>Vytvoření Azure Cache pro Redis v Azure
+## <a name="create-an-azure-cache-for-redis-on-azure"></a>Vytvoření mezipaměti Azure pro Redis v Azure
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-create.md)]
 
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-access-keys.md)]
 
 ## <a name="install-redis-py"></a>Instalace redis-py
 
-[Redis-py](https://github.com/andymccurdy/redis-py) rozhraní Python pro mezipaměť Azure je pro Redis. Pomocí nástroje pro správu balíčků Pythonu *pip* nainstalujte balíček redis-py. 
+[Redis-py](https://github.com/andymccurdy/redis-py) je rozhraní Pythonu pro službu Azure cache pro Redis. Pomocí nástroje pro správu balíčků Pythonu *pip* nainstalujte balíček redis-py. 
 
-Následující příklad používá *pip3* pro pythonu3 redis-py balíček nainstalovat ve Windows 10 pomocí Visual Studio. 2019 příkazový řádek vývojáře spuštěná se zvýšenými oprávněními správce.
+Následující příklad používá *PIP3* pro python3 k instalaci balíčku Redis-py na Windows 10 pomocí příkazového řádku pro vývojáře sady Visual Studio 2019, který běží se zvýšenými oprávněními správce.
 
 ```python
     pip3 install redis
@@ -57,7 +51,7 @@ Následující příklad používá *pip3* pro pythonu3 redis-py balíček nains
 
 ## <a name="read-and-write-to-the-cache"></a>Čtení z mezipaměti a zápis do mezipaměti
 
-Spusťte Python a otestujte používání mezipaměti z příkazového řádku. Nahraďte `<Your Host Name>` a `<Your Access Key>` hodnotami pro Azure pro Redis Cache. 
+Spusťte Python a otestujte používání mezipaměti z příkazového řádku. `<Your Host Name>` Nahraďte `<Your Access Key>` a hodnotou pro mezipaměť Azure pro Redis. 
 
 ```python
 >>> import redis
@@ -70,13 +64,13 @@ b'bar'
 ```
 
 > [!IMPORTANT]
-> Pro Redis je verze 3.0 nebo vyšší, bude vynucovat Kontrola certifikátu SSL. ssl_ca_certs musí být explicitně nastaveny při připojování k úložišti Redis. V případě Linuxu RH ssl_ca_certs najdete v "/ etc/pki/tls/certs/ca-bundle.crt" certifikát modulu.
+> Pro Redis verze je 3,0 nebo vyšší, vynutila se ověření certifikátu SSL. ssl_ca_certs musí být explicitně nastavené při připojování k Redis. V případě systému RH Linux se ssl_ca_certs dá najít v modulu certifikátů "/etc/pki/tls/certs/ca-bundle.CRT".
 
 ## <a name="create-a-python-script"></a>Vytvoření skriptu Pythonu
 
 Vytvořte nový textový soubor skriptu *PythonApplication1.py*.
 
-Do souboru *PythonApplication1.py* přidejte následující skript a uložte ho. Tento skript otestuje přístup k mezipaměti. Nahraďte `<Your Host Name>` a `<Your Access Key>` hodnotami pro Azure pro Redis Cache. 
+Do souboru *PythonApplication1.py* přidejte následující skript a uložte ho. Tento skript otestuje přístup k mezipaměti. `<Your Host Name>` Nahraďte `<Your Access Key>` a hodnotou pro mezipaměť Azure pro Redis. 
 
 ```python
 import redis
@@ -127,13 +121,10 @@ Zobrazí se výzva k potvrzení odstranění skupiny prostředků. Potvrďte ods
 
 Po chvíli bude skupina prostředků včetně všech obsažených prostředků odstraněná.
 
-
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Vytvoření jednoduché webové aplikace v ASP.NET, která používá Azure Cache pro Redis.](./cache-web-app-howto.md)
-
-
+> [Vytvořte jednoduchou webovou aplikaci v ASP.NET, která používá Azure cache pro Redis.](./cache-web-app-howto.md)
 
 <!--Image references-->
 [1]: ./media/cache-python-get-started/redis-cache-new-cache-menu.png

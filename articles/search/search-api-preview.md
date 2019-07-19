@@ -1,6 +1,6 @@
 ---
-title: Náhled rozhraní REST API pro Azure Search 2019-05-06-Preview – Azure Search
-description: Azure Search REST pro službu 2019 verze rozhraní API-05-06-Preview zahrnuje seznámit s experimentálními funkcemi, jako je znalostní báze úložiště a klíče spravované zákazníkem šifrování.
+title: Verze Preview REST API Azure Search 2019-05-06 – Preview – Azure Search
+description: Služba Azure Search REST API verze 2019-05-06-Preview zahrnuje experimentální funkce, jako jsou úložiště znalostí a šifrovací klíče spravované zákazníkem.
 services: search
 author: HeidiSteen
 manager: cgronlun
@@ -10,50 +10,50 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: search
 ms.date: 05/02/2019
-ms.author: HeidiSteen
+ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 5374ff896613dd8f8563a2054be8a92103e63fbb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 29d079c4e21352ced5fdcde44acaee66b79f6af9
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65523901"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67876659"
 ---
-# <a name="azure-search-service-rest-api-version-2019-05-06-preview"></a>Služba Azure Search REST api-version. 2019-05-06-Preview
-Tento článek popisuje `api-version=2019-05-06-Preview` verze služby Azure Search REST API, nabízí seznámit s experimentálními funkcemi, které ještě není obecně k dispozici.
+# <a name="azure-search-service-rest-api-version-2019-05-06-preview"></a>Rozhraní REST API služby Azure Search – verze 2019-05-06 – Preview
+Tento článek popisuje `api-version=2019-05-06-Preview` verzi služby Azure Search REST API, která nabízí experimentální funkce, které ještě nejsou všeobecně dostupné.
 
 > [!NOTE]
-> Funkce ve verzi Preview jsou k dispozici pro testování a experimentování s cílem shromažďování zpětné vazby a můžou se změnit. Důrazně nedoporučujeme používání verze preview rozhraní API v aplikacích v produkčním prostředí.
+> Funkce ve verzi Preview jsou k dispozici pro testování a experimentování s cílem shromažďování názorů a mohou se změnit. Důrazně doporučujeme používat rozhraní API ve verzi Preview v produkčních aplikacích.
 
 
-## <a name="new-in-2019-05-06-preview"></a>Novinka v 2019-05-06-Preview
+## <a name="new-in-2019-05-06-preview"></a>Novinka ve verzi 2019-05-06 – Preview
 
-[**Znalostní báze úložiště** ](knowledge-store-concept-intro.md) je nový cíl kanál rozšíření založené na AI. Kromě indexu je teď možné zachovat naplněných daty strukturách vytvořených během indexování ve službě Azure storage. Můžete řídit fyzické struktury vašich dat pomocí prvků v dovedností, včetně jak budou data tvarovat, zda data jsou uložená v Blob storage nebo Table storage, a zda existuje několik zobrazení.
+[**Znalostní báze Knowledge Store**](knowledge-store-concept-intro.md) je nový cíl kanálu pro rozšíření na bázi AI. Kromě indexu teď můžete zachovat naplněné datové struktury vytvořené při indexování ve službě Azure Storage. Fyzické struktury dat můžete řídit prostřednictvím prvků v dovednosti, včetně způsobu, jakým jsou data uložená v úložišti tabulek nebo objektů blob, a to, jestli existuje více zobrazení.
 
-[**Klíče spravované zákazníkem šifrování** ](search-security-manage-encryption-keys.md) straně služby šifrování neaktivních je také nová funkce ve verzi preview. Kromě integrované šifrování neaktivních spravovaný microsoftem můžete použít další úroveň šifrování, kde jste jediným vlastníkem klíčů.
+[**Šifrovací klíče spravované zákazníkem**](search-security-manage-encryption-keys.md) pro šifrování na straně služby je také novou funkcí ve verzi Preview. Kromě integrovaného šifrování v klidovém formátu, které spravuje Microsoft, můžete použít další vrstvu šifrování, kde jste jediným vlastníkem klíčů.
 
-## <a name="other-preview-features"></a>Další funkce ve verzi preview
+## <a name="other-preview-features"></a>Další funkce ve verzi Preview
 
-Funkce, které jsme oznámili v dřívějších verzích Preview jsou stále ve verzi public preview. Pokud voláte rozhraní API z předchozích verzí preview rozhraní api –, můžete nadále používat tuto verzi nebo přepněte na `2019-05-06-Preview` beze změn očekávané chování.
+Funkce oznámené v předchozích verzích Preview jsou stále ve verzi Public Preview. Pokud voláte rozhraní API s dřívější verzí rozhraní API Preview, můžete tuto verzi dál používat nebo přepnout na `2019-05-06-Preview` bez jakýchkoli změn očekávaného chování.
 
-+ [parametr dotazu moreLikeThis](search-more-like-this.md) Vyhledá dokumenty, které souvisí s určitým dokumentem. Tato funkce byla v dřívějších verzích Preview. 
-* [Indexování objektů blob CSV](search-howto-index-csv-blobs.md) vytvoří jeden dokument na řádek, na rozdíl od jednoho dokumentu na textový objekt blob.
-* [Podpora rozhraní API MongoDB pro Cosmos DB indexery](search-howto-index-cosmosdb.md) je ve verzi preview.
++ [parametr dotazu moreLikeThis](search-more-like-this.md) vyhledá dokumenty, které jsou relevantní pro určitý dokument. Tato funkce je ve starších verzích Preview. 
+* [Indexování objektů BLOB ve formátu CSV](search-howto-index-csv-blobs.md) vytvoří jeden dokument na řádek, na rozdíl od jednoho dokumentu u objektu BLOB.
+* [Podpora MONGODB API pro indexery Cosmos DB](search-howto-index-cosmosdb.md) je ve verzi Preview.
 
 
-## <a name="how-to-call-a-preview-api"></a>Jak volat rozhraní API ve verzi preview
+## <a name="how-to-call-a-preview-api"></a>Jak volat rozhraní API pro verzi Preview
 
-Starší verze Preview jsou stále v provozu, ale jsou pak zastaralá v čase. Pokud váš kód volá `api-version=2016-09-01-Preview` nebo `api-version=2017-11-11-Preview`, tato volání jsou stále platné. Nicméně pouze nejnovější verzi preview se aktualizují s vylepšeními. 
+Starší verze Preview jsou pořád funkční, ale v průběhu času se stanou zastaralé. Pokud váš kód volá `api-version=2016-09-01-Preview` nebo `api-version=2017-11-11-Preview`, jsou tato volání stále platná. Jenom nejnovější verze Preview se ale aktualizuje s vylepšeními. 
 
-Následující příklad syntaxe znázorňuje volání na verzi preview rozhraní API.
+Následující příklad syntaxe znázorňuje volání rozhraní API verze Preview.
 
     GET https://[service name].search.windows.net/indexes/[index name]/docs?search=*&api-version=2019-05-06-Preview
 
-Služba Azure Search je dostupná ve více verzí. Další informace najdete v tématu [verze rozhraní API](search-api-versions.md).
+Služba Azure Search je dostupná ve více verzích. Další informace najdete v tématu [verze rozhraní API](search-api-versions.md).
 
 ## <a name="next-steps"></a>Další postup
 
-Projděte si referenční dokumentaci rozhraní REST API služby Azure Search. Pokud narazíte na potíže, požádat nás o pomoc na [StackOverflow](https://stackoverflow.com/) nebo [obraťte se na podporu](https://azure.microsoft.com/support/community/?product=search).
+Přečtěte si referenční dokumentaci ke službě Azure Search REST API. Pokud narazíte na problémy, požádejte nás o pomoc na [StackOverflow](https://stackoverflow.com/) nebo [kontaktujte podporu](https://azure.microsoft.com/support/community/?product=search).
 
 > [!div class="nextstepaction"]
-> [Vyhledávací služba Reference k rozhraní REST API](https://docs.microsoft.com/rest/api/searchservice/)
+> [Odkaz na REST API služby Search](https://docs.microsoft.com/rest/api/searchservice/)

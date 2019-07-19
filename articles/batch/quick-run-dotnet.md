@@ -3,21 +3,21 @@ title: Rychlý start Azure – spuštění úlohy služby Batch – .NET
 description: Úlohu a úkoly služby Batch lze rychle spustit pomocí klientské knihovny Batch .NET.
 services: batch
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 ms.service: batch
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 11/29/2018
 ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: b8d7556607cdb73c3e3ae19109bcbf34b72b0915
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.openlocfilehash: 37cd6fdd2f82af581e27f9341292c484b1cc601e
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65595342"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68322328"
 ---
-# <a name="quickstart-run-your-first-azure-batch-job-with-the-net-api"></a>Rychlý start: Spuštění první úlohy služby Azure Batch pomocí rozhraní API .NET
+# <a name="quickstart-run-your-first-azure-batch-job-with-the-net-api"></a>Rychlý start: Spuštění první Azure Batch úlohy pomocí rozhraní .NET API
 
 V rámci tohoto rychlého startu spustíte úlohu služby Azure Batch z aplikace C# sestavené pomocí rozhraní API .NET služby Azure Batch. Aplikace odešle několik vstupních datových souborů do služby Azure Storage a potom vytvoří *fond* výpočetních uzlů služby Batch (virtuálních počítačů). Potom vytvoří ukázkovou *úlohu*, která pomocí základního příkazu spouští *úkoly* pro zpracování jednotlivých vstupních souborů ve fondu. Po dokončení tohoto rychlého startu budete rozumět klíčovým konceptům služby Batch a budete moct službu Batch vyzkoušet ve větším měřítku s úlohami, které víc odpovídají realitě.
 
@@ -27,11 +27,11 @@ V rámci tohoto rychlého startu spustíte úlohu služby Azure Batch z aplikace
 
 ## <a name="prerequisites"></a>Požadavky
 
-* [Visual Studio 2017 nebo novější](https://www.visualstudio.com/vs), nebo [.NET Core 2.1](https://www.microsoft.com/net/download/dotnet-core/2.1) pro Linux, macOS nebo Windows. 
+* [Visual Studio 2017 nebo novější](https://www.visualstudio.com/vs)nebo [.NET Core 2,1](https://www.microsoft.com/net/download/dotnet-core/2.1) pro Linux, MacOS nebo Windows. 
 
 * Účet Batch a propojený účet Azure Storage. Informace o vytvoření těchto účtů prostřednictvím [webu Azure Portal](quick-create-portal.md) nebo [rozhraní Azure CLI](quick-create-cli.md) najdete v rychlém startu služby Batch. 
 
-## <a name="sign-in-to-azure"></a>Přihlásit se k Azure
+## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
 Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com).
 

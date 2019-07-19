@@ -6,14 +6,14 @@ author: richcar
 ms.service: expressroute
 ms.topic: article
 ms.date: 10/10/2016
-ms.author: richcar
+ms.author: ricarlse
 ms.custom: seodec18
-ms.openlocfilehash: a03ab7bbdadad2728f54127583583c22bd2ec07a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a3bd48f32dfcee1a666ff842cfcab2384a5459ec
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60367542"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67849266"
 ---
 # <a name="expressroute-for-cloud-solution-providers-csp"></a>Azure ExpressRoute pro poskytovatele Cloud Solution Provider
 Společnost Microsoft poskytuje pro tradiční prodejce a distributory (poskytovatele Cloud Solution Provider) hyperškálovatelné služby, aby mohli pro vaše zákazníky rychle zřizovat nové služby a řešení bez nutnosti investovat do vývoje těchto nových služeb. Aby měl poskytovatel Cloud Solution Provider (CSP) možnosti spravovat tyto služby přímo, poskytuje společnost Microsoft programy a rozhraní API umožňující poskytovateli CSP spravovat prostředky Microsoft Azure za své zákazníky. Jeden z těchto prostředků je ExpressRoute. ExpressRoute umožňuje poskytovateli CSP připojovat prostředky zákazníků ke službám Azure. ExpressRoute je vysokorychlostní propojení se službami v Azure, které zajišťuje privátní komunikaci. 
@@ -31,7 +31,7 @@ Množství služeb Microsoft Azure, které můžete nabídnout zákazníkům, se
 Společnost Microsoft nabízí poskytovatelům CSP rozhraní API pro správu předplatných Azure zákazníků, čímž umožňuje programovou integraci s vlastními systémy správy služeb. Podporované možnosti správy najdete [tady](https://msdn.microsoft.com/library/partnercenter/dn974944.aspx).
 
 ## <a name="microsoft-azure-resource-management"></a>Správa prostředků Microsoft Azure
-Způsob správy předplatného závisí na vaší smlouvě se zákazníkem. Poskytovatel CSP může přímo spravovat vytváření a správu prostředků, případně si může zákazník ponechat kontrolu nad předplatným Microsoft Azure a vytvářet prostředky Azure podle potřeby. Pokud zákazník spravuje vytváření prostředků v rámci svého předplatného Microsoft Azure, bude používat jeden ze dvou modelů: "*Connect-Through*" modelu, nebo "*Direct-To*" modelu. Tyto modely jsou podrobně popsány v následujících oddílech.  
+Způsob správy předplatného závisí na vaší smlouvě se zákazníkem. Poskytovatel CSP může přímo spravovat vytváření a správu prostředků, případně si může zákazník ponechat kontrolu nad předplatným Microsoft Azure a vytvářet prostředky Azure podle potřeby. Pokud zákazník spravuje vytváření prostředků v rámci svého Microsoft Azure předplatného, bude používat jeden ze dvou modelů: "*Connect-through*" nebo "*Direct-to*" model. Tyto modely jsou podrobně popsány v následujících oddílech.  
 
 ### <a name="connect-through-model"></a>Model s nepřímým připojením
 ![alternativní text](./media/expressroute-for-cloud-solution-providers/connect-through.png)  
@@ -88,7 +88,7 @@ Můžete být nápomocni při nastavování připojení a konfiguraci tras tak, 
 ## <a name="expressroute-routing-domains"></a>Domény směrování ExpressRoute
 ExpressRoute nabízí tři domény směrování: veřejnou, privátní partnerský vztah Microsoftu. Každá z domén směrování je konfigurována s použitím stejných směrovačů v rámci konfigurace aktivní-aktivní pro zajištění vysoké dostupnosti. Podrobnější informace o doménách směrování ExpressRoute najdete [tady](expressroute-circuit-peerings.md).
 
-Můžete definovat vlastní filtry tras a povolit pouze trasy, které chcete povolit nebo které potřebujete. Další informace nebo informace o tom, aby se tyto změny najdete v článku: [Vytvoření a úprava směrování pro okruh ExpressRoute pomocí prostředí PowerShell](expressroute-howto-routing-classic.md) podrobné informace o filtrech směrování.
+Můžete definovat vlastní filtry tras a povolit pouze trasy, které chcete povolit nebo které potřebujete. Další informace nebo informace o tom, jak tyto změny provést, najdete v článku: [Vytvoření a úprava směrování pro okruh ExpressRoute pomocí prostředí PowerShell](expressroute-howto-routing-classic.md) , kde najdete další podrobnosti o filtrech směrování.
 
 > [!NOTE]
 > Připojení s partnerským vztahem Microsoft nebo veřejným partnerským vztahem musí používat veřejnou IP adresu, kterou vlastní zákazník nebo poskytovatel CSP, a musí dodržovat veškerá definovaná pravidla. Další informace najdete na stránce [Požadavky služby ExpressRoute](expressroute-prerequisites.md).  
@@ -120,7 +120,7 @@ V závislosti na používaném modelu (přímé připojení nebo nepřímé při
 1. **Izolace zákazníka** – Platforma Azure poskytuje možnost izolace zákazníka tím, že ID zákazníka a informace o virtuální síti ukládá v zabezpečené databázi, která se používá k zapouzdření veškerého provozu zákazníka v tunelových propojeních GRE.
 2. Pravidla **skupina zabezpečení sítě (NSG)** slouží k definování povoleného příchozího a odchozího provozu pro podsítě v rámci virtuálních sítí v Azure. Ve výchozím nastavení skupiny zabezpečení sítě obsahují pravidla Blokovat pro blokování provozu z internetu do virtuální sítě a pravidla Povolit pro provoz v rámci virtuální sítě. Další informace o skupinách zabezpečení sítě najdete [tady](https://azure.microsoft.com/blog/network-security-groups/).
 3. **Vynutit tunelové propojení** – Tato možnost slouží k tomu, aby byl provoz z Azure do internetu přesměrován prostřednictvím připojení ExpressRoute do místního datového centra. Další informace o vynuceném tunelovém propojení najdete [tady](expressroute-routing.md#advertising-default-routes).  
-4. **Šifrování** – Přestože jsou okruhy ExpressRoute vyhrazeny pro konkrétního zákazníka, je možné, že dojde k prolomení zabezpečení u poskytovatele sítě a útočník pak bude moci zkoumat paketový provoz. Eliminovat tím, zákazník nebo poskytovatel CSP můžete šifrovat provoz prostřednictvím připojení definováním zásad režimu tunelového propojení IPSec pro veškerý provoz mezi místními prostředky a Azure na prostředky (viz část o volitelného režimu tunelového propojení IPSec pro zákazníka 1 na obrázku 5: Zabezpečení ExpressRoute výše). Druhou možností je použití zařízení brány firewall v každém koncovém bodu okruhu ExpressRoute. Tento postup bude vyžadovat instalaci dalších virtuálních počítačů či zařízení brány firewall jiných dodavatelů na obou koncích, aby se mohl šifrovat provoz v rámci okruhu ExpressRoute.
+4. **Šifrování** – Přestože jsou okruhy ExpressRoute vyhrazeny pro konkrétního zákazníka, je možné, že dojde k prolomení zabezpečení u poskytovatele sítě a útočník pak bude moci zkoumat paketový provoz. Pro vyřešení tohoto potenciálu může zákazník nebo CSP šifrovat provoz přes připojení definováním zásad tunelového režimu IPSec pro veškerý provoz mezi místními prostředky a prostředky Azure (odkazování na volitelný režim tunelového propojení IPSec pro zákazníka 1 na obrázku). čl Zabezpečení ExpressRoute výše). Druhou možností je použití zařízení brány firewall v každém koncovém bodu okruhu ExpressRoute. Tento postup bude vyžadovat instalaci dalších virtuálních počítačů či zařízení brány firewall jiných dodavatelů na obou koncích, aby se mohl šifrovat provoz v rámci okruhu ExpressRoute.
 
 ![alternativní text](./media/expressroute-for-cloud-solution-providers/expressroute-security.png)  
 

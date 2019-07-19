@@ -4,7 +4,7 @@ titlesuffix: Azure Load Balancer
 description: Ukázky Azure PowerShellu
 services: virtual-network
 documentationcenter: load-balancer
-author: KumudD
+author: asudbring
 ms.custom: seodec18
 ms.service: load-balancer
 ms.devlang: na
@@ -12,17 +12,17 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 12/10/2018
-ms.author: kumud
-ms.openlocfilehash: cf4e0346a93961df14afe48ec767e383f92eab3b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: allensu
+ms.openlocfilehash: cf984efdeb8c65f4f9d639e331c2dc07e2910479
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60507551"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68274076"
 ---
-# <a name="azure-powershell-samples-for-load-balancer"></a>Ukázky Azure Powershellu pro nástroj pro vyrovnávání zatížení
+# <a name="azure-powershell-samples-for-load-balancer"></a>Ukázky Azure PowerShell pro Load Balancer
 
-Následující tabulka obsahuje odkazy na skripty, které jsou vytvořené pomocí Azure Powershellu.
+Následující tabulka obsahuje odkazy na skripty vytvořené pomocí Azure PowerShell.
 
 | | |
 |-|-|

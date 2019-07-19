@@ -1,58 +1,59 @@
 ---
-title: Ručně zastavení nebo spuštění kontejnerů ve službě Azure Container Instances
-description: Zjistěte, jak ručně zastavit nebo spustit skupinu kontejnerů ve službě Azure Container Instances.
+title: Ruční zastavení nebo spuštění kontejnerů v Azure Container Instances
+description: Přečtěte si, jak ručně zastavit nebo spustit skupinu kontejnerů v Azure Container Instances.
 services: container-instances
 author: dlepow
+manager: gwallace
 ms.service: container-instances
 ms.topic: article
 ms.date: 04/15/2019
 ms.author: danlep
-ms.openlocfilehash: 8e62d106a42dfbec897e5e14cf68fd3d7fd823c4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c7d46ad8d935e28b5a24e48c85ac2464b55b2669
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65070817"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68325646"
 ---
-# <a name="manually-stop-or-start-containers-in-azure-container-instances"></a>Ručně zastavení nebo spuštění kontejnerů ve službě Azure Container Instances
+# <a name="manually-stop-or-start-containers-in-azure-container-instances"></a>Ruční zastavení nebo spuštění kontejnerů v Azure Container Instances
 
-[Zásady restartování](container-instances-restart-policy.md) nastavení skupiny kontejnerů Určuje, jak instance kontejneru, spuštění nebo zastavení ve výchozím nastavení. Můžete přepsat výchozí nastavení ručně zastavení nebo spuštění skupiny kontejnerů.
+Nastavení [zásad restartování](container-instances-restart-policy.md) skupiny kontejnerů určuje, jak se ve výchozím nastavení spouštějí a zastavují instance kontejnerů. Výchozí nastavení můžete přepsat ručním zastavením nebo spuštěním skupiny kontejnerů.
 
 ## <a name="stop"></a>Zastavit
 
-Ručně zastavte spuštěnou skupinu kontejnerů – například s použitím [az container stop] [ az-container-stop] příkaz nebo webu Azure portal. Pro některé úlohy kontejneru, můžete chtít zastavit skupiny kontejnerů dlouhotrvající po definované období a Šetřete na náklady. 
+Ručně zastavte spuštěnou skupinu kontejnerů – například pomocí příkazu [AZ Container stop][az-container-stop] nebo Azure Portal. U některých úloh kontejnerů můžete chtít zastavit dlouhodobou spuštěnou skupinu kontejnerů po definovaném období, aby se ušetřily náklady. 
 
-*Když skupiny kontejnerů přejde do stavu Zastaveno, ukončí a recykluje všechny kontejnery ve skupině. Stav kontejneru nezachová.*
+*Když skupina kontejnerů vstoupí do stavu Zastaveno, ukončí a recykluje všechny kontejnery ve skupině. Nechová stav kontejneru.*
 
-Po recyklaci, kontejnery [prostředky](container-instances-container-groups.md#resource-allocation) počítače uvolní a fakturaci zarážky pro skupinu kontejnerů.
+Po recyklaci kontejnerů jsou [prostředky](container-instances-container-groups.md#resource-allocation) uvolněny a pro skupinu kontejnerů se zastaví.
 
-Akce zastavení nemá žádný vliv, pokud již byla ukončena skupiny kontejnerů (je ve stavu úspěšné nebo neúspěšné). Například skupinu kontejnerů s úlohy spouštěné jednou kontejneru, které byly úspěšně spuštěny skončí ve stavu úspěch. Limitu pokusí zastavit skupině, stav se nezmění stav. 
+Akce zastavit nemá žádný vliv, pokud se skupina kontejnerů už ukončila (je v úspěšném nebo neúspěšném stavu). Například skupina kontejnerů s dokončenými úlohami kontejneru spustit po, která se úspěšně ukončila v úspěšném stavu. Pokusy o zastavení skupiny v tomto stavu nemění stav. 
 
-## <a name="start"></a>Start
+## <a name="start"></a>Spustit
 
-Když skupiny kontejnerů je zastavený – buď protože kontejnery ukončen na své vlastní nebo k ručnímu zastavení skupina – můžete spustit kontejnery. Například použít [az container start] [ az-container-start] příkaz nebo webu Azure portal ohledně ručního spuštění kontejnerů ve skupině. Pokud image kontejneru pro každý kontejner je aktualizován, je vyžádá novou bitovou kopii. 
+Když se skupina kontejnerů zastaví – buď z důvodu, že se kontejnery ukončily, nebo jste skupinu ručně zastavili – můžete spustit kontejnery. K ručnímu spuštění kontejnerů ve skupině použijte například příkaz [AZ Container Start][az-container-start] nebo Azure Portal. Pokud se aktualizuje image kontejneru pro libovolný kontejner, načte se nový obrázek. 
 
-Počáteční skupiny kontejnerů začne nové nasazení se stejnou konfigurací kontejneru. Tuto akci můžete rychle znovu použít konfiguraci skupiny známé kontejneru, která funguje podle očekávání. Není nutné vytvořit novou skupinu kontejnerů ke spuštění stejná úloha.
+Spuštění skupiny kontejnerů zahájí nové nasazení se stejnou konfigurací kontejneru. Tato akce vám pomůže rychle znovu použít známou konfiguraci skupiny kontejnerů, která funguje podle očekávání. Nemusíte vytvářet novou skupinu kontejnerů ke spuštění stejné úlohy.
 
-Spustí se všechny kontejnery ve skupině kontejnerů pomocí této akce. Nelze spustit konkrétní kontejner ve skupině.
+Tato akce spustí všechny kontejnery ve skupině kontejnerů. Ve skupině nemůžete spustit konkrétní kontejner.
 
-Po ruční spuštění nebo restartování skupiny kontejnerů, spuštění kontejneru skupiny podle nakonfigurované zásady restartování.
+Po ručním spuštění nebo restartování skupiny kontejnerů se skupina kontejnerů spustí podle nakonfigurovaných zásad restartování.
   
 ## <a name="restart"></a>Restart
 
-Během jejího běhu – například pomocí je možné restartovat skupinu kontejnerů [az container restartování] [ az-container-restart] příkazu. Tato akce restartuje všechny kontejnery ve skupině kontejnerů. Pokud image kontejneru pro každý kontejner je aktualizován, je vyžádá novou bitovou kopii. 
+Skupinu kontejnerů můžete restartovat, pokud je spuštěná – například pomocí příkazu [AZ Container restart][az-container-restart] . Tato akce restartuje všechny kontejnery ve skupině kontejnerů. Pokud se aktualizuje image kontejneru pro libovolný kontejner, načte se nový obrázek. 
 
-Restartování skupiny kontejnerů je užitečné, pokud chcete k vyřešení problému nasazení. Například pokud omezení dočasný prostředek, který brání kontejnery v úspěšném spuštění, restartování skupiny můžou tyto potíže vyřešit.
+Restartování skupiny kontejnerů je užitečné, pokud chcete řešit potíže s nasazením. Pokud třeba dočasné omezení prostředků zabrání v úspěšném spuštění vašich kontejnerů, může problém vyřešit restartováním skupiny.
 
-Touto akcí se restartují všechny kontejnery ve skupině kontejnerů. Nelze restartovat konkrétní kontejner ve skupině.
+Tato akce restartuje všechny kontejnery ve skupině kontejnerů. V této skupině nemůžete restartovat konkrétní kontejner.
 
-Po ruční restartování skupiny kontejnerů, spuštění kontejneru skupiny podle nakonfigurované zásady restartování.
+Po ručním restartování skupiny kontejnerů se skupina kontejnerů spustí podle nakonfigurovaných zásad restartování.
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace o [restartování nastavení zásad](container-instances-restart-policy.md) ve službě Azure Container Instances.
+Přečtěte si další informace o [nastavení zásad restartování](container-instances-restart-policy.md) v Azure Container Instances.
 
-Kromě ručně zastavení a spuštění skupiny kontejnerů s existující konfiguraci, můžete [aktualizovat nastavení](container-instances-update.md) spuštěné skupiny kontejnerů.
+Kromě ručního zastavení a spuštění skupiny kontejnerů s existující konfigurací můžete [aktualizovat nastavení](container-instances-update.md) spuštěné skupiny kontejnerů.
 
 <!-- LINKS - External -->
 

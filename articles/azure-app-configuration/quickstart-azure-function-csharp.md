@@ -1,6 +1,6 @@
 ---
-title: Rychlý start pro konfiguraci aplikací Azure s využitím Azure Functions | Dokumentace Microsoftu
-description: Rychlý start pro konfiguraci aplikací Azure pomocí Azure Functions.
+title: Rychlý Start pro konfiguraci aplikací Azure s Azure Functions | Microsoft Docs
+description: Rychlý Start pro použití konfigurace aplikace Azure s Azure Functions.
 services: azure-app-configuration
 documentationcenter: ''
 author: yegu-ms
@@ -14,58 +14,54 @@ ms.tgt_pltfrm: Azure Functions
 ms.workload: tbd
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: a4900964fb6feeb4c7cb0f147d3681031cac6a7b
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: 5eb9d0631a4d5f4221b5184198290a5109655408
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67798426"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68326586"
 ---
-# <a name="quickstart-create-an-azure-function-with-app-configuration"></a>Rychlý start: Vytvoření funkce Azure s konfigurací aplikace
+# <a name="quickstart-create-an-azure-function-with-azure-app-configuration"></a>Rychlý start: Vytvoření funkce Azure pomocí konfigurace aplikace Azure
 
-Konfigurace aplikace pro Azure je služba spravované konfigurace v Azure. Můžete ho snadno ukládat a spravovat nastavení aplikace na jednom místě, který je oddělen od kódu. V tomto rychlém startu se dozvíte, jak tuto službu začlenit do funkce Azure. 
-
-Provést kroky v tomto rychlém startu můžete použít libovolný editor kódu. [Visual Studio Code](https://code.visualstudio.com/) skvělou možnost je k dispozici ve Windows, macOS a Linux platformy.
-
-![Kompletní místní rychlý start](./media/quickstarts/dotnet-core-function-launch-local.png)
+V tomto rychlém startu zahrňte službu Azure App Configuration Service do funkce Azure, která bude centralizovat úložiště a správu všech nastavení vaší aplikace odděleně od vašeho kódu.
 
 ## <a name="prerequisites"></a>Požadavky
 
-V tomto rychlém startu provedete instalaci [Visual Studio 2019](https://visualstudio.microsoft.com/vs). Ujistěte se, že **vývoj pro Azure** je nainstalovaná úloha. Nainstalovat také [nejnovější nástroje Azure Functions](../azure-functions/functions-develop-vs.md#check-your-tools-version).
-
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+- Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
+- [Visual Studio 2019](https://visualstudio.microsoft.com/vs) s úlohou **vývoje Azure** .
+- [Nástroje Azure Functions](../azure-functions/functions-develop-vs.md#check-your-tools-version)
 
 ## <a name="create-an-app-configuration-store"></a>Vytvoření úložiště konfigurace aplikace
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. Vyberte **Průzkumník konfigurací** >  **+ vytvořit** přidáte následující páry klíč hodnota:
+6. Vyberte **Průzkumník** > konfigurace **+ vytvořit** a přidejte následující páry klíč-hodnota:
 
     | Klíč | Value |
     |---|---|
-    | TestApp:Settings:Message | Data z konfigurace aplikace Azure |
+    | TestApp: nastavení: zpráva | Data z konfigurace aplikace Azure |
 
-    Ponechte **popisek** a **typ obsahu** zatím prázdný.
+    V tuto chvíli ponechat **popisek** a **typ obsahu** prázdné.
 
 ## <a name="create-a-function-app"></a>Vytvoření Function App
 
 [!INCLUDE [Create a project using the Azure Functions template](../../includes/functions-vstools-create.md)]
 
-## <a name="connect-to-an-app-configuration-store"></a>Připojit k úložišti konfigurace aplikace
+## <a name="connect-to-an-app-configuration-store"></a>Připojení k úložišti konfigurace aplikace
 
-1. Klikněte pravým tlačítkem na projekt a vyberte **spravovat balíčky NuGet**. Na **Procházet** kartu, vyhledávání a přidejte následující balíčky NuGet do projektu. Pokud je nemůžete najít, vyberte **zahrnout předběžné verze** zaškrtávací políčko.
+1. Klikněte pravým tlačítkem na projekt a vyberte **Spravovat balíčky NuGet**. Na kartě **Procházet** vyhledejte a přidejte do svého projektu následující balíčky NuGet. Pokud je nemůžete najít, zaškrtněte políčko **zahrnout předběžné verze** .
 
     ```
     Microsoft.Extensions.Configuration.AzureAppConfiguration 2.0.0-preview-009200001-1437 or later
     ```
 
-2. Otevřít *Function1.cs*a přidejte odkaz na poskytovatele konfigurace pro aplikace .NET Core.
+2. Otevřete *function1.cs*a přidejte odkaz na poskytovatele konfigurace aplikace .NET Core.
 
     ```csharp
     using Microsoft.Extensions.Configuration.AzureAppConfiguration;
     ```
 
-3. Aktualizace `Run` používat konfiguraci aplikací pomocí volání metody `builder.AddAzureAppConfiguration()`.
+3. Aktualizujte `builder.AddAzureAppConfiguration()`metodu pro použití konfigurace aplikace voláním. `Run`
 
     ```csharp
     public static async Task<IActionResult> Run(
@@ -91,35 +87,35 @@ V tomto rychlém startu provedete instalaci [Visual Studio 2019](https://visuals
 
 ## <a name="test-the-function-locally"></a>Místní testování funkce
 
-1. Nastavte proměnnou prostředí s názvem **ConnectionString**a nastavte ho na přístupový klíč k úložišti konfigurace aplikace. Pokud používáte Windows příkazového řádku, spusťte následující příkaz a restartujte příkazového řádku umožňující změna se projeví:
+1. Nastavte proměnnou prostředí s názvem **ConnectionString**a nastavte ji na přístupový klíč na úložiště konfigurace aplikace. Použijete-li příkazový řádek systému Windows, spusťte následující příkaz a restartujte příkazový řádek, aby se změna projevila:
 
         setx ConnectionString "connection-string-of-your-app-configuration-store"
 
-    Pokud používáte prostředí Windows PowerShell, spusťte následující příkaz:
+    Pokud používáte Windows PowerShell, spusťte následující příkaz:
 
         $Env:ConnectionString = "connection-string-of-your-app-configuration-store"
 
-    Pokud používáte systému macOS nebo Linux, spusťte následující příkaz:
+    Pokud používáte macOS nebo Linux, spusťte následující příkaz:
 
         export ConnectionString='connection-string-of-your-app-configuration-store'
 
-2. Pokud chcete funkci otestovat, stiskněte F5. Po výzvě přijměte požadavek ze sady Visual Studio ke stažení a instalaci **Azure Functions Core (CLI)** nástroje. Může být také potřeba povolit výjimku brány firewall tak, aby nástroje mohly zpracovávat požadavky HTTP.
+2. Pokud chcete funkci otestovat, stiskněte F5. Pokud se zobrazí výzva, přijměte požadavek ze sady Visual Studio a stáhněte a nainstalujte nástroje **Azure Functions Core (CLI)** . Je také možné, že budete muset povolit výjimku brány firewall, aby nástroje mohly zpracovávat požadavky HTTP.
 
 3. Zkopírujte adresu URL vaší funkce z výstupu modulu runtime služby Azure Functions.
 
-    ![Rychlý start funkce ladění v sadě Visual Studio](./media/quickstarts/function-visual-studio-debugging.png)
+    ![Rychlé ladění funkcí v VS](./media/quickstarts/function-visual-studio-debugging.png)
 
-4. Vložte adresu URL pro požadavek HTTP do panelu adresy prohlížeče. Následující obrázek ukazuje odpověď v prohlížeči na místní požadavek GET vrácené funkcí.
+4. Vložte adresu URL pro požadavek HTTP do panelu adresy prohlížeče. Na následujícím obrázku je znázorněna odpověď v prohlížeči na místní požadavek GET vrácený funkcí.
 
-    ![Místní spuštění rychlý start – funkce](./media/quickstarts/dotnet-core-function-launch-local.png)
+    ![Rychlé spuštění funkce spustit místně](./media/quickstarts/dotnet-core-function-launch-local.png)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
 [!INCLUDE [azure-app-configuration-cleanup](../../includes/azure-app-configuration-cleanup.md)]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste vytvořili novým úložištěm konfigurace aplikace a použít ho pomocí funkce Azure. Další informace o tom, jak používat konfiguraci aplikací, pokračujte k dalšímu kurzu, který ukazuje ověření.
+V tomto rychlém startu jste vytvořili nové úložiště konfigurace aplikace a použili ho s funkcí Azure Functions. Další informace o tom, jak používat konfiguraci aplikací, najdete v dalším kurzu, který předvádí ověřování.
 
 > [!div class="nextstepaction"]
-> [Integrace spravovaných identit](./howto-integrate-azure-managed-service-identity.md)
+> [Spravovaná integrace identit](./howto-integrate-azure-managed-service-identity.md)

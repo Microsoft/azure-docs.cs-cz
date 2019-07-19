@@ -4,7 +4,7 @@ titlesuffix: Azure Load Balancer
 description: Zjistěte, jak vytvořit interní nástroj pro vyrovnávání zatížení pomocí šablony v Resource Manageru
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: asudbring
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -12,13 +12,13 @@ ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
-ms.author: kumud
-ms.openlocfilehash: 339183dabf67abb43d6fc99bbe5258a39f12b14a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: allensu
+ms.openlocfilehash: f05c90948fe95f204f268d84c01e1e8773bec468
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66122283"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68275385"
 ---
 # <a name="create-an-internal-load-balancer-using-a-template"></a>Vytvoření interního nástroje pro vyrovnávání zatížení pomocí šablony
 
@@ -45,7 +45,7 @@ Pokud chcete nasadit šablonu, kterou jste stáhli, pomocí prostředí PowerShe
 1. Pokud jste prostředí Azure PowerShell nikdy nepoužívali, přejděte na téma [Instalace a konfigurace prostředí Azure PowerShell](/powershell/azure/overview) a proveďte všechny pokyny, abyste se mohli přihlásit k Azure a vybrat své předplatné.
 2. Stáhněte si soubor parametrů na místní disk.
 3. Upravte soubor a uložte ho.
-4. Spustit **New-AzResourceGroupDeployment** rutina pro vytvoření skupiny prostředků pomocí šablony.
+4. Spuštěním rutiny **New-AzResourceGroupDeployment** vytvořte skupinu prostředků pomocí šablony.
 
     ```azurepowershell-interactive
     New-AzResourceGroupDeployment -Name TestRG -Location westus `
@@ -81,4 +81,4 @@ Pokud chcete nasadit šablonu pomocí rozhraní příkazového řádku Azure, po
 
 [Konfigurace nastavení časového limitu nečinnosti protokolu TCP pro nástroj pro vyrovnávání zatížení](load-balancer-tcp-idle-timeout.md)
 
-Syntaxi JSON a vlastnosti služby vyrovnání zatížení v šabloně najdete v tématu [Microsoft.Network/loadBalancers](/azure/templates/microsoft.network/loadbalancers).
+Syntaxi a vlastnosti služby Vyrovnávání zatížení v šabloně najdete v tématu [Microsoft. Network/loadBalancers](/azure/templates/microsoft.network/loadbalancers).

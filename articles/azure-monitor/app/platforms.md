@@ -1,6 +1,6 @@
 ---
-title: 'Application Insights: jazyky, platformy a integrace | Dokumentace Microsoftu'
-description: Jazyky, platformy a integrace, které jsou k dispozici pro službu Application Insights
+title: 'Application Insights: jazyky, platformy a integrace | Microsoft Docs'
+description: Jazyky, platformy a integrace dostupné pro Application Insights
 services: application-insights
 documentationcenter: ''
 author: mrbullwinkle
@@ -13,32 +13,36 @@ ms.topic: conceptual
 ms.date: 07/06/2019
 ms.reviewer: olegan
 ms.author: mbullwin
-ms.openlocfilehash: 100f1f8875dd53f954e99c50f0bc5b9cd3fee31b
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: db79f2b1d3857aac2f71d2e18a3949f068b746eb
+ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67617819"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67990058"
 ---
-# <a name="languages---officially-supported-by-application-insights-team"></a>Jazyky – oficiálně podporované týmem služby Application Insights
+# <a name="languages---officially-supported-by-application-insights-team"></a>Jazyky – oficiálně podporované týmem Application Insights
+
 * [C#|VB (.NET)](../../azure-monitor/app/asp-net.md)
 * [Java](../../azure-monitor/app/java-get-started.md)
 * [Webové stránky JavaScript](../../azure-monitor/app/javascript.md)
 * [Node.js](../../azure-monitor/app/nodejs.md)
 
-## <a name="languages---community-supported"></a>Jazyky – podporované komunitou
+## <a name="community-sdks"></a>Komunitní sady SDK
 
-Existuje mnoho komunitou podporované Application Insights sad SDK, z nichž byly původně vytvořeny společností Microsoft. Komunitou podporované sady SDK nejsou oficiálně spravován společností Microsoft a nejsme schopni poskytovat podporu pro všechny sady SDK, které nejsou na seznamu oficiálně podporované. Tyto sady SDK jsou považovány za experimentální a nedoporučujeme je pro použití v produkčním prostředí.
+Existuje několik komunit Azure Application Insights SDK, z nichž mnoho původně vytvořila společnost Microsoft. Komunitní sady SDK nejsou oficiálně spravované Microsoftem. Nepovedlo se nám poskytnout podporu pro sadu SDK, která není v oficiálně podporovaném seznamu. Tyto sady SDK se považují za experimentální a nedoporučují se pro produkční použití.
 
 ## <a name="platforms-and-frameworks"></a>Platformy a rozhraní
-* [ASP.NET](../../azure-monitor/app/asp-net.md)
+### <a name="instrumentation-for-already-deployed-applications-codeless-agent-based"></a>Instrumentace pro už nasazené aplikace (bez kódu, na základě agentů)
+* [Virtuální počítače Azure a Azure Virtual Machine Scale Sets](../../azure-monitor/app/azure-vm-vmss-apps.md)
+* [Azure App Service](../../azure-monitor/app/azure-web-apps.md)
 * [ASP.NET – pro aplikace, které jsou již nasazeny](../../azure-monitor/app/monitor-performance-live-website-now.md)
+* [Cloud Services Azure](../../azure-monitor/app/cloudservices.md), včetně webových rolí a rolí pracovních procesů
+* [Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-monitoring)
+### <a name="instrumentation-through-code-sdks"></a>Instrumentace prostřednictvím kódu (sady SDK)
+* [ASP.NET](../../azure-monitor/app/asp-net.md)
 * [ASP.NET Core](../../azure-monitor/app/asp-net-core.md)
 * [Android](../../azure-monitor/learn/mobile-center-quickstart.md) (App Center)
 * [Android](https://github.com/Microsoft/ApplicationInsights-Android) (App Center)
-* [Azure App Service](../../azure-monitor/app/azure-web-apps.md)
-* [Azure Cloud Services](../../azure-monitor/app/cloudservices.md) (webové a pracovní role)
-* [Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-monitoring)
 * [iOS](../../azure-monitor/learn/mobile-center-quickstart.md) (App Center)
 * [Java EE](../../azure-monitor/app/java-get-started.md)
 * [Node.js](https://www.npmjs.com/package/applicationinsights)

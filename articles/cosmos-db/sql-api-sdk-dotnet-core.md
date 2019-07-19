@@ -1,5 +1,5 @@
 ---
-title: 'Azure Cosmos DB: SQL API pro .NET Core, sady SDK a zdroje informací'
+title: 'Azure Cosmos DB: SQL .NET Core API, sada SDK & prostředky'
 description: Další informace o SQL API pro .NET Core a sady SDK, včetně data vydání, vyřazení dat a změny provedené mezi každou verzi sady Azure Cosmos DB .NET Core SDK.
 author: SnehaGunda
 ms.service: cosmos-db
@@ -8,18 +8,19 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/22/2018
 ms.author: sngun
-ms.openlocfilehash: 14350125f88c315a813eb64e3ce2b88dbec2aa24
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: de712d63fa2315a85c6c0eaf392d9c17758e4999
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67340198"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68226183"
 ---
-# <a name="azure-cosmos-db-net-core-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB .NET Core SDK pro rozhraní SQL API: Zpráva k vydání verze a prostředky
+# <a name="azure-cosmos-db-net-core-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB .NET Core SDK pro rozhraní SQL API: Poznámky k verzi a zdroje informací
 > [!div class="op_single_selector"]
+> * [.NET Core](sql-api-sdk-dotnet-core.md)
+> * [.NET Standard](sql-api-sdk-dotnet-standard.md)
 > * [.NET](sql-api-sdk-dotnet.md)
 > * [Kanál změn .NET](sql-api-sdk-dotnet-changefeed.md)
-> * [.NET Core](sql-api-sdk-dotnet-core.md)
 > * [Node.js](sql-api-sdk-node.md)
 > * [Async Java](sql-api-sdk-async-java.md)
 > * [Java](sql-api-sdk-java.md)
@@ -35,38 +36,32 @@ ms.locfileid: "67340198"
 |**Stažení sady SDK**| [NuGet](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.Core/)|
 |**Dokumentace k rozhraní API**|[Referenční dokumentace rozhraní API .NET](/dotnet/api/overview/azure/cosmosdb?view=azure-dotnet)|
 |**Ukázky**|[Ukázky kódu .NET](sql-api-dotnet-samples.md)|
-|**Začínáme**|[Začínáme s Azure Cosmos DB .NET Core SDK](sql-api-dotnet-core-get-started-preview.md)|
+|**Začínáme**|[Začínáme s rozhraním Azure Cosmos DB .NET](sql-api-sdk-dotnet.md)|
 |**Kurz vývoje webové aplikace**|[Vývoj webových aplikací pomocí služby Azure Cosmos DB](sql-api-dotnet-application.md)|
 |**Aktuální podporované architektury**|[.NET standard 1.6 a .NET Standard 1.5](https://www.nuget.org/packages/NETStandard.Library)|
 
 ## <a name="release-notes"></a>Poznámky k verzi
 
-Azure Cosmos DB .NET Core SDK má paritu funkcí s nejnovější verzí [.NET SDK služby Azure Cosmos DB](sql-api-sdk-dotnet.md).
-
-### <a name="a-name3001-preview3001-preview"></a><a name="3.0.0.1-preview"/>3.0.0.1-Preview
-* Ve verzi Preview 1 [verze 3.0.0](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/) sady .NET SDK pro verzi public preview.
-* Cíl .NET Standard, která podporuje 4.6.1+ rozhraní .NET framework a .NET Core 2.0 +
-* Nový model objektu, pomocí metod a nejvyšší úrovně CosmosClient rozdělit mezi relevantní CosmosDatabases, CosmosContainers a CosmosItems třídy.
-* Podpora pro datové proudy.
-* Aktualizované CosmosResponseMessage ze serveru vrátit stavový kód a pouze vyvolat výjimku, pokud není vrácena žádná odpověď.
+> [!NOTE]
+> Pokud používáte .NET Core, přečtěte si prosím nejnovější verzi 3. x sady [.NET SDK](sql-api-sdk-dotnet-standard.md), která cílí na .NET Standard. 
 
 ### <a name="a-name241241"></a><a name="2.4.1"/>2.4.1
 
-* Opravy trasování časování pro dotazy, které způsobily prázdné stránky
+* Opravuje podmínku sledování časování pro dotazy, které způsobily prázdné stránky.
 
 ### <a name="a-name240240"></a><a name="2.4.0"/>2.4.0
 
-* Verze SDK System.Net.Http odpovídá definovaná v balíčku NuGet.
-* Zvětšili velikost počet desetinných míst pro LINQ dotazy.
-* Přidání nové třídy CompositePath, CompositePathSortOrder, SpatialSpec, SpatialType a PartitionKeyDefinitionVersion
-* Přidání TimeToLivePropertyPath k DocumentCollection
-* Přidání CompositeIndexes a SpatialIndexes k IndexPolicy
+* Verze System .NET. http sady SDK se shoduje s tím, co je definováno v balíčku NuGet.
+* Zvýšená velikost desetinné přesnosti pro dotazy LINQ.
+* Přidání nových tříd CompositePath, CompositePathSortOrder, SpatialSpec, SpatialType a PartitionKeyDefinitionVersion
+* Přidání TimeToLivePropertyPath do souboru DocumentCollection
+* Přidání CompositeIndexes a SpatialIndexes do IndexPolicy
 * Přidání verze do PartitionKeyDefinition
-* Přidat žádný PartitionKey
+* Přidáno None do PartitionKey
 
 ### <a name="a-name230230"></a><a name="2.3.0"/>2.3.0
 
- * Přidání IdleTcpConnectionTimeout OpenTcpConnectionTimeout, MaxRequestsPerTcpConnection a MaxTcpConnectionsPerEndpoint k ConnectionPolicy.
+ * Do ConnectionPolicy přidejte IdleTcpConnectionTimeout, OpenTcpConnectionTimeout, MaxRequestsPerTcpConnection a MaxTcpConnectionsPerEndpoint.
  
 ### <a name="a-name223223"></a><a name="2.2.3"/>2.2.3
 
@@ -74,27 +69,27 @@ Azure Cosmos DB .NET Core SDK má paritu funkcí s nejnovější verzí [.NET SD
 
 ### <a name="a-name222222"></a><a name="2.2.2"/>2.2.2
 
-* Přidání nastavení proměnné prostředí "POCOSerializationOnly".
+* Bylo přidáno nastavení proměnné prostředí POCOSerializationOnly.
 
-* Odebrat DocumentDB.Spatial.Sql.dll a nyní součástí Microsoft.Azure.Documents.ServiceInterop.dll
+* Odebrali jsme DocumentDB. prostor. SQL. dll a teď je součástí Microsoft. Azure. Documents. ServiceInterop. dll.
 
 ### <a name="a-name221221"></a><a name="2.2.1"/>2.2.1
 
-* Zlepšení logika opakovaných pokusů během převzetí služeb při selhání pro uložené procedury StoredProcedure provést volání.
+* Vylepšení logiky opakování při převzetí služeb při selhání pro StoredProcedure volání.
 
-* Předložené DocumentClientEventSource jednotlivý prvek. 
+* Byl vytvořen DocumentClientEventSource typu singleton. 
 
-* Časový limit GatewayAddressCache není dodržením ConnectionPolicy RequestTimeout opravte.
+* Oprava GatewayAddressCache timeout nedodržuje ConnectionPolicy RequestTimeout.
 
 ### <a name="a-name220220"></a><a name="2.2.0"/>2.2.0
 
-* U přímé/TCP přenosu diagnostiky přidá TransportException, vnitřní výjimka typu sady SDK. Pokud je k dispozici v zprávy o výjimkách, vytiskne tento typ Další informace pro řešení problémů s připojením klienta.
+* Pro diagnostiku přímých/TCP přenosů přidejte TransportException, typ interní výjimky sady SDK. V případě zpráv výjimek tento typ tiskne Další informace pro řešení potíží s připojením klientů.
 
-* Přidání nové přetížení konstruktoru, který přebírá objekt HttpMessageHandler sada obslužných rutin HTTP pro odesílání požadavků HttpClient (například HttpClientHandler).
+* Bylo přidáno nové přetížení konstruktoru, které přijímá HttpMessageHandler, zásobník obslužných rutin HTTP, který se má použít pro odesílání požadavků HttpClient (např. HttpClientHandler).
 
-* Oprava chyby, kde záhlaví s hodnotami null nebyly zajišťující správné zpracování.
+* Oprava chyby, kdy hlavička s hodnotami null nebyla správně zpracována
 
-* Ověření mezipaměti vylepšené kolekce.
+* Vylepšené ověřování mezipaměti kolekce
 
 ### <a name="a-name213213"></a><a name="2.1.3"/>2.1.3
 
@@ -143,11 +138,11 @@ Azure Cosmos DB .NET Core SDK má paritu funkcí s nejnovější verzí [.NET SD
 ### <a name="a-name191191"></a><a name="1.9.1"/>1.9.1
 
 * Oprava keynotfoundexception – pro různé uspořádání oddílu na základě dotazů v krajních případech.
-* Oprava chyby, kde není respektováno JsonProperty atribut v klauzuli select dotazů LINQ.
+* Byla opravena chyba, kdy atribut JsonProperty v klauzuli SELECT pro dotazy LINQ nebyl dodržen.
 
 ### <a name="a-name182182"></a><a name="1.8.2"/>1.8.2
 
-* Oprava chyby, který je přístupů za určitých podmínek závodu, jehož výsledkem přerušované "Microsoft.Azure.Documents.NotFoundException: Další relace není k dispozici pro token vstupní relace"chyby při použití úrovně konzistence relace.
+* Opravená chyba, ke které dochází za určitých podmínek časování, což vede k občasnému "Microsoft. Azure. Documents. NotFoundException: Relace čtení není k dispozici pro chyby tokenu vstupní relace při použití úrovně konzistence relace.
 
 ### <a name="a-name181181"></a><a name="1.8.1"/>1.8.1
 
@@ -220,7 +215,7 @@ Azure Cosmos DB .NET Core SDK má paritu funkcí s nejnovější verzí [.NET SD
 
 ### <a name="a-name112112"></a><a name="1.1.2"/>1.1.2
 
-* Oprava problému, který občas způsobí, že o výjimku WebException: Vzdálený název nelze rozpoznat.
+* Oprava problému, který občas způsobí WebException: Vzdálený název se nedal přeložit.
 * Přidání podpory pro přímo tak, že přidáte nová přetížení ReadDocumentAsync rozhraní API pro čtení typu dokumentu.
 
 ### <a name="a-name111111"></a><a name="1.1.1"/>1.1.1
@@ -244,12 +239,12 @@ Azure Cosmos DB .NET Core SDK umožňuje vytváření rychlých a multiplatformn
 Azure Cosmos DB .NET Core ve verzi Preview SDK umožňuje vytváření rychlých a multiplatformní [ASP.NET Core](https://www.asp.net/core) a [.NET Core](https://www.microsoft.com/net/core#windows) aplikace pro Windows, Mac a Linux.
 
 Azure Cosmos DB .NET Core ve verzi Preview SDK má paritu funkcí s nejnovější verzí [.NET SDK služby Azure Cosmos DB](sql-api-sdk-dotnet.md) a podporuje následující:
-* Všechny [režimy připojení](performance-tips.md#networking): Režim brány, s přímým přístupem TCP a HTTPs s přímým přístupem.
-* Všechny [úrovně konzistence](consistency-levels.md): Silný, relace, omezená Neaktuálnost a konečný výsledek.
+* Všechny [režimy připojení](performance-tips.md#networking): Režim brány, přímý protokol TCP a přímý HTTPs.
+* Všechny [úrovně konzistence](consistency-levels.md): Silný, relace, ohraničená neaktuálnost a případné.
 * [Dělené kolekce](partition-data.md).
 * [Účty databáze ve více oblastech a geografická replikace](distribute-data-globally.md).
 
-Pokud máte dotazy související s touto sadou SDK, zveřejněte ji do [StackOverflow](https://stackoverflow.com/questions/tagged/azure-documentdb), nebo přidejte problém v [úložiště GitHub](https://github.com/Azure/azure-documentdb-dotnet/issues).
+Pokud máte dotazy související s touto sadou SDK, odešlete příspěvek do [StackOverflow](https://stackoverflow.com/questions/tagged/azure-documentdb)nebo zadáte problém v [úložišti GitHub](https://github.com/Azure/azure-documentdb-dotnet/issues).
 
 ## <a name="release--retirement-dates"></a>Verze & data vyřazení z provozu
 
@@ -259,9 +254,9 @@ Pokud máte dotazy související s touto sadou SDK, zveřejněte ji do [StackOve
 | [2.4.0](#2.4.0) |05. května 2019 |--- |
 | [2.3.0](#2.3.0) |04. dubna 2019 |--- |
 | [2.2.3](#2.2.3) |11. března 2019 |--- |
-| [2.2.2](#2.2.2) |06. února 2019 |--- |
-| [2.2.1](#2.2.1) |Prosinec 24. května 2018 |--- |
-| [2.2.0](#2.2.0) |07 prosince 2018 |--- |
+| [2.2.2](#2.2.2) |06 6. února 2019 |--- |
+| [2.2.1](#2.2.1) |24. prosince 2018 |--- |
+| [2.2.0](#2.2.0) |7\. prosince 2018 |--- |
 | [2.1.3](#2.1.3) |15. října 2018 |--- |
 | [2.1.2](#2.1.2) |04. října 2018 |--- |
 | [2.1.1](#2.1.1) |27. září 2018 |--- |

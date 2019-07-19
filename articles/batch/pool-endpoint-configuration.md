@@ -1,39 +1,39 @@
 ---
-title: Konfigurace koncových bodů uzlu ve fondu Azure Batch | Dokumentace Microsoftu
-description: Jak nastavit či vypnout přístup k portům SSH nebo RDP na výpočetních uzlech ve fondu služby Azure Batch.
+title: Konfigurace koncových bodů uzlu ve fondu Azure Batch | Microsoft Docs
+description: Jak nakonfigurovat nebo zakázat přístup k portům SSH nebo RDP na výpočetních uzlech ve fondu Azure Batch.
 services: batch
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 ms.service: batch
 ms.topic: article
 ms.date: 02/13/2018
 ms.author: lahugh
-ms.openlocfilehash: d788db9d554c6200316bb4e3f36640dac1925fc4
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: e6c7f2762a6742a1aff7a2c3aff977b5e3657349
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67341554"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68322460"
 ---
-# <a name="configure-or-disable-remote-access-to-compute-nodes-in-an-azure-batch-pool"></a>Nastavit či vypnout vzdálený přístup k výpočetní uzlům ve fondu služby Azure Batch
+# <a name="configure-or-disable-remote-access-to-compute-nodes-in-an-azure-batch-pool"></a>Konfigurace nebo zakázání vzdáleného přístupu k výpočetním uzlům ve fondu Azure Batch
 
-Ve výchozím nastavení, Batch umožňuje [uzel uživatele](/rest/api/batchservice/computenode/adduser) s připojením k síti externí připojení k výpočetnímu uzlu ve fondu služby Batch. Uživatel například může připojit pomocí RDP (Remote Desktop) na portu 3389 na výpočetním uzlu ve fondu Windows. Podobně ve výchozím nastavení, může uživatel připojit pomocí Secure Shell (SSH) na portu 22 na výpočetním uzlu ve fondu s Linuxem. 
+Ve výchozím nastavení služba Batch umožňuje, aby se [uživatel uzlu](/rest/api/batchservice/computenode/adduser) s připojením k síti připojoval externě k výpočetnímu uzlu ve fondu služby Batch. Uživatel se například může připojit pomocí vzdálené plochy (RDP) na portu 3389 k výpočetnímu uzlu ve fondu Windows. Podobně se ve výchozím nastavení může uživatel připojit pomocí Secure Shell (SSH) na portu 22 k výpočetnímu uzlu ve fondu Linux. 
 
-Ve vašem prostředí potřebujete omezit nebo zakázat tato výchozí nastavení pro externí přístup. Tato nastavení lze upravit pomocí rozhraní API služby Batch nastavit [PoolEndpointConfiguration](/rest/api/batchservice/pool/add#poolendpointconfiguration) vlastnost. 
+V prostředí může být nutné omezit nebo zakázat tato výchozí nastavení externího přístupu. Tato nastavení můžete změnit pomocí rozhraní API pro dávkování pro nastavení vlastnosti [PoolEndpointConfiguration](/rest/api/batchservice/pool/add#poolendpointconfiguration) . 
 
-## <a name="about-the-pool-endpoint-configuration"></a>Informace o konfiguraci koncového bodu fondu
-Konfigurace koncového bodu se skládá z jedné nebo více [sítě překladu adres](/rest/api/batchservice/pool/add#inboundnatpool) portů front-endu. (Nezaměňujte fond NAT s fondu výpočetních uzlů služby Batch.) Každý fond NAT nastavíte přepíší výchozí nastavení připojení ve fondu výpočetních uzlů. 
+## <a name="about-the-pool-endpoint-configuration"></a>O konfiguraci koncového bodu fondu
+Konfigurace koncového bodu se skládá z jednoho nebo více [fondů překládání adres (NAT)](/rest/api/batchservice/pool/add#inboundnatpool) portů front-endu. (Nepleťte si fond NAT s fondem dávkových uzlů služby Compute.) Nastavíte všechny fondy NAT, abyste přepsali výchozí nastavení připojení na výpočetních uzlech fondu. 
 
-Každá konfigurace fondu NAT zahrnuje jednu nebo více [pravidel zabezpečení skupiny (NSG) sítě](/rest/api/batchservice/pool/add#networksecuritygrouprule). Každé pravidlo skupiny zabezpečení sítě povoluje nebo odepírá provoz určité síti ke koncovému bodu. Můžete povolit nebo odepřít veškerý provoz, provoz identifikovaný [značka služby](../virtual-network/security-overview.md#service-tags) (jako je například "Internet"), nebo provoz z konkrétní IP adresy nebo podsítě.
+Každá konfigurace fondu NAT zahrnuje jedno nebo více [pravidel skupiny zabezpečení sítě (NSG)](/rest/api/batchservice/pool/add#networksecuritygrouprule). Každé pravidlo NSG povoluje nebo odmítá určitý síťový provoz do koncového bodu. Můžete zvolit, že chcete povolit nebo zakázat veškerý provoz, provoz identifikovaný [značkou služby](../virtual-network/security-overview.md#service-tags) (například Internet) nebo provoz z konkrétních IP adres nebo podsítí.
 
 ### <a name="considerations"></a>Požadavky
-* Konfigurace koncového bodu fondu je součástí fondu [konfigurace sítě](/rest/api/batchservice/pool/add#networkconfiguration). Konfigurace sítě může volitelně zahrnovat nastavení připojení fondu, aby [virtuální síť Azure](batch-virtual-network.md). Pokud jste nastavili fondu ve virtuální síti, můžete vytvořit pravidla NSG, které používají nastavení adresy ve virtuální síti.
-* Při konfiguraci fondu NAT, můžete nakonfigurovat víc pravidel skupiny zabezpečení sítě. Pravidla se kontrolují v pořadí podle priority. Jakmile se pravidlo aplikuje, u dalších pravidel se už shoda nekontroluje.
+* Konfigurace koncového bodu fondu je součástí [Konfigurace sítě](/rest/api/batchservice/pool/add#networkconfiguration)fondu. Konfigurace sítě může volitelně zahrnovat nastavení pro připojení fondu ke [službě Azure Virtual Network](batch-virtual-network.md). Pokud nastavíte fond ve virtuální síti, můžete vytvořit pravidla NSG, která používají nastavení adres ve virtuální síti.
+* Při konfiguraci fondu NAT můžete nakonfigurovat několik pravidel NSG. Pravidla jsou kontrolována v pořadí podle priority. Jakmile se pravidlo aplikuje, u dalších pravidel se už shoda nekontroluje.
 
 
 ## <a name="example-deny-all-rdp-traffic"></a>Příklad: Odepřít veškerý provoz protokolu RDP
 
-Následující C# fragment kódu ukazuje, jak nakonfigurovat koncový bod protokolu RDP na výpočetních uzlech ve fondu Windows chcete odepřít veškerý přenos v síti. Koncový bod používá front-endový fond v rozsahu portů *60000 60099*. 
+Následující C# fragment kódu ukazuje, jak nakonfigurovat koncový bod RDP na výpočetních uzlech ve fondu Windows tak, aby odepřel veškerý síťový provoz. Koncový bod používá front-end fond portů v rozsahu *60000 – 60099*. 
 
 ```csharp
 pool.NetworkConfiguration = new NetworkConfiguration
@@ -50,7 +50,7 @@ pool.NetworkConfiguration = new NetworkConfiguration
 
 ## <a name="example-deny-all-ssh-traffic-from-the-internet"></a>Příklad: Odepřít veškerý provoz SSH z Internetu
 
-Následující fragment kódu Python ukazuje, jak nakonfigurovat koncový bod SSH na výpočetní uzlech ve fondu s Linuxem chcete odepřít veškerý internetový provoz. Koncový bod používá front-endový fond v rozsahu portů *4000 4100*. 
+Následující fragment kódu Pythonu ukazuje, jak nakonfigurovat koncový bod SSH na výpočetních uzlech ve fondu Linux pro odepření veškerého internetového provozu. Koncový bod používá front-end fond portů v rozsahu *4000 – 4100*. 
 
 ```python
 pool.network_configuration = batchmodels.NetworkConfiguration(
@@ -74,9 +74,9 @@ pool.network_configuration = batchmodels.NetworkConfiguration(
 )
 ```
 
-## <a name="example-allow-rdp-traffic-from-a-specific-ip-address"></a>Příklad: Povolit provoz protokolu RDP z konkrétní IP adresy
+## <a name="example-allow-rdp-traffic-from-a-specific-ip-address"></a>Příklad: Povolení provozu protokolu RDP z konkrétní IP adresy
 
-Následující C# fragment kódu ukazuje, jak nakonfigurovat koncový bod protokolu RDP na výpočetní uzlech ve fondu Windows povoluje přístup protokolu RDP pouze z IP adresy *198.51.100.7*. Druhé pravidlo NSG odepření provozu, který neodpovídá IP adrese.
+Následující C# fragment kódu ukazuje, jak nakonfigurovat koncový bod RDP na výpočetních uzlech ve fondu Windows tak, aby přístup k protokolu RDP povoloval jenom z IP adresy *198.51.100.7*. Druhé pravidlo NSG zakazuje provoz, který se neshoduje s IP adresou.
 
 ```csharp
 pool.NetworkConfiguration = new NetworkConfiguration
@@ -92,9 +92,9 @@ pool.NetworkConfiguration = new NetworkConfiguration
 };
 ```
 
-## <a name="example-allow-ssh-traffic-from-a-specific-subnet"></a>Příklad: Přijímaly provoz SSH z konkrétní podsítě
+## <a name="example-allow-ssh-traffic-from-a-specific-subnet"></a>Příklad: Povolení provozu SSH z konkrétní podsítě
 
-Následující fragment kódu Python ukazuje, jak nakonfigurovat koncový bod SSH na výpočetní uzlech ve fondu s Linuxem pro povolení přístupu jenom z podsítě *192.168.1.0/24*. Druhé pravidlo NSG odepření provozu, který se neshoduje s podsítí.
+Následující fragment kódu Pythonu ukazuje, jak nakonfigurovat koncový bod SSH na výpočetních uzlech ve fondu Linux, aby povoloval přístup jenom z podsítě *192.168.1.0/24*. Druhé pravidlo NSG zakazuje provoz, který se neshoduje s podsítí.
 
 ```python
 pool.network_configuration = batchmodels.NetworkConfiguration(
@@ -125,7 +125,7 @@ pool.network_configuration = batchmodels.NetworkConfiguration(
 
 ## <a name="next-steps"></a>Další postup
 
-- Další informace o pravidlech NSG v Azure najdete v tématu [filtrování provozu sítě s použitím skupin zabezpečení sítě](../virtual-network/security-overview.md).
+- Další informace o pravidlech NSG v Azure najdete v tématu [filtrování síťového provozu pomocí skupin zabezpečení sítě](../virtual-network/security-overview.md).
 
-- Podrobný přehled služby Batch, najdete v části [vývoj rozsáhlých paralelních výpočetních řešení pomocí služby Batch](batch-api-basics.md).
+- Podrobný přehled služby Batch najdete v tématu [vývoj rozsáhlých paralelních výpočetních řešení pomocí služby Batch](batch-api-basics.md).
 

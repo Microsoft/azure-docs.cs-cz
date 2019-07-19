@@ -1,6 +1,6 @@
 ---
-title: Webové aktivity ve službě Azure Data Factory | Dokumentace Microsoftu
-description: Zjistěte, jak můžete pomocí webová aktivita, jeden z aktivity toku řízení podporovaných službou Data Factory, který má být vyvolán koncového bodu REST z kanálu.
+title: Aktivita webu v Azure Data Factory | Microsoft Docs
+description: Naučte se, jak můžete použít aktivitu webu, jednu z aktivit toku ovládacích prvků, které podporuje Data Factory, k vyvolání koncového bodu REST z kanálu.
 services: data-factory
 documentationcenter: ''
 author: sharonlo101
@@ -12,15 +12,18 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 12/19/2018
 ms.author: shlo
-ms.openlocfilehash: 7edaa4c673c2cb94dc5bd0245ce66c9fe6a7dd3c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f6153bf1162eaa1c7eab2c358977d754695b64fd
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60764284"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68325393"
 ---
-# <a name="web-activity-in-azure-data-factory"></a>Aktivita webu ve službě Azure Data Factory
+# <a name="web-activity-in-azure-data-factory"></a>Aktivita webu v Azure Data Factory
 Webová aktivita slouží k volání vlastního koncového bodu REST z kanálu služby Data Factory. Můžete předávat datové sady a propojené služby, které má aktivita používat a ke kterým má mít přístup.
+
+> [!NOTE]
+> Aktivita webu může volat pouze veřejně vystavené adresy URL. Pro adresy URL, které jsou hostované v privátní virtuální síti, se nepodporuje.
 
 ## <a name="syntax"></a>Syntaxe
 
@@ -59,40 +62,40 @@ Webová aktivita slouží k volání vlastního koncového bodu REST z kanálu s
 
 ```
 
-## <a name="type-properties"></a>Typ vlastnosti
+## <a name="type-properties"></a>Vlastnosti typu
 
-Vlastnost | Popis | Povolené hodnoty | Požaduje se
+Vlastnost | Popis | Povolené hodnoty | Požadováno
 -------- | ----------- | -------------- | --------
-name | Název aktivity webu | String | Ano
-type | Musí být nastaveno na **WebActivity**. | String | Ano
-method | Metoda REST API pro cílový koncový bod. | řetězec. <br/><br/>Podporované typy: "GET", "POST", "UMÍSTĚNÍ" | Ano
-url | Cílový koncový bod a cesty | Řetězec (nebo výraz s hodnotu resultType řetězec). Aktivita vyprší časový limit na 1 minutu s chybou, pokud neobdrží odpověď z koncového bodu. | Ano
-Záhlaví | Hlavičky, které se odesílají na požadavek. Například nastavení jazyka a typu na vyžádání: `"headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }`. | Řetězec (nebo výraz s hodnotu resultType řetězec) | Ano, vyžaduje se hlavička Content-type. `"headers":{ "Content-Type":"application/json"}`
-Text | Představuje datovou část, která je odeslána do koncového bodu.  | Řetězec (nebo výraz s hodnotu resultType řetězec). <br/><br/>Zobrazit schéma datové části požadavku v [schématu datové části požadavku](#request-payload-schema) oddílu. | Vyžaduje se pro metody POST a PUT.
-ověřování | Metodu ověřování pro volání koncového bodu. Podporované typy jsou "Basic nebo ClientCertificate." Další informace najdete v tématu [ověřování](#authentication) oddílu. Pokud se nevyžaduje ověřování, vylučte tuto vlastnost. | Řetězec (nebo výraz s hodnotu resultType řetězec) | Ne
-datasets | Seznam datových sad předaná koncovému bodu. | Pole odkazů na datovou sadu. Může být prázdné pole. | Ano
-linkedServices | Seznam propojených služeb předaná koncovému bodu. | Pole odkazů na propojenou službu. Může být prázdné pole. | Ano
+name | Název aktivity webu | Řetězec | Ano
+type | Musí být nastavená na **aktivitu webactivity**. | Řetězec | Ano
+– metoda | Metoda rozhraní REST API pro cílový koncový bod | Řetezce. <br/><br/>Podporované typy: "GET", "POST", "PUT" | Ano
+url | Cílový koncový bod a cesta | Řetězec (nebo výraz s hodnotou resultType řetězce). Pokud tato aktivita neobdrží odpověď od koncového bodu, bude časový limit 1 minuty s chybou. | Ano
+Záhlaví | Hlavičky, které se odesílají do žádosti Například pro nastavení jazyka a typu na žádost: `"headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }`. | Řetězec (nebo výraz s hodnotou resultType řetězce) | Ano, hlavička Content-Type je povinná. `"headers":{ "Content-Type":"application/json"}`
+těles | Představuje datovou část, která je odeslána do koncového bodu.  | Řetězec (nebo výraz s hodnotou resultType řetězce). <br/><br/>Podívejte se na schéma datové části požadavku v části [schéma datové části požadavku](#request-payload-schema) . | Vyžadováno pro metody POST/PUT.
+ověřování | Metoda ověřování používaná pro volání koncového bodu. Podporované typy jsou "Basic" nebo ClientCertificate ". Další informace najdete v části [ověřování](#authentication) . Pokud není vyžadováno ověření, vylučte tuto vlastnost. | Řetězec (nebo výraz s hodnotou resultType řetězce) | Ne
+datasets | Seznam datových sad předaných do koncového bodu. | Pole odkazů na datovou sadu Může být prázdné pole. | Ano
+linkedServices | Seznam propojených služeb předaných koncovému bodu | Pole odkazů na propojené služby Může být prázdné pole. | Ano
 
 > [!NOTE]
-> Koncové body REST, které vyvolá aktivitu webu musí vracet odpověď typu JSON. Aktivita vyprší časový limit na 1 minutu s chybou, pokud neobdrží odpověď z koncového bodu.
+> Koncové body REST, které vyvolává webová aktivita, musí vracet odpověď typu JSON. Pokud tato aktivita neobdrží odpověď od koncového bodu, bude časový limit 1 minuty s chybou.
 
-V následující tabulce jsou uvedeny požadavky pro obsah JSON:
+V následující tabulce jsou uvedeny požadavky na obsah JSON:
 
 | Typ hodnoty | Text požadavku | Text odpovědi |
 |---|---|---|
-|JSON – objekt | Podporováno | Podporováno |
-|Pole JSON | Podporováno <br/>(V současné době pole JSON nefungují v důsledku chyby. Oprava probíhá.) | Nepodporovaný |
+|Objekt JSON | Podporováno | Podporováno |
+|Pole JSON | Podporováno <br/>(V současné době pole JSON nefungují v důsledku chyby. Probíhá oprava.) | Nepodporovaný |
 | Hodnota JSON | Podporováno | Nepodporovaný |
-| Typ non-JSON | Nepodporovaný | Nepodporovaný |
+| Typ jiný než JSON | Nepodporovaný | Nepodporovaný |
 ||||
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Ověřování
 
-### <a name="none"></a>Žádný
-Pokud se nevyžaduje ověřování, nezahrnujte vlastnosti "ověřování".
+### <a name="none"></a>Žádné
+Pokud není vyžadováno ověřování, nezahrnujte vlastnost "ověřování".
 
 ### <a name="basic"></a>Basic
-Zadejte uživatelské jméno a heslo pro použití se základním ověřováním.
+Zadejte uživatelské jméno a heslo, které chcete použít se základním ověřováním.
 
 ```json
 "authentication":{
@@ -102,8 +105,8 @@ Zadejte uživatelské jméno a heslo pro použití se základním ověřováním
 }
 ```
 
-### <a name="client-certificate"></a>klientský certifikát
-Zadejte obsah souboru PFX a heslo s kódováním base64.
+### <a name="client-certificate"></a>Certifikát klienta
+Zadejte obsah souboru PFX a hesla zakódovaného ve formátu base64.
 
 ```json
 "authentication":{
@@ -115,7 +118,7 @@ Zadejte obsah souboru PFX a heslo s kódováním base64.
 
 ### <a name="managed-identity"></a>Spravovaná identita
 
-Zadejte identifikátor uri prostředku, pro kterou přístupový token bude vyžádána pomocí spravované identity služby data factory. Chcete-li volat rozhraní API pro správu prostředků Azure, použijte `https://management.azure.com/`. Pro další informace o tom, jak spravované identity funguje, najdete [spravovaných identit pro prostředky Azure stránka s přehledem](/azure/active-directory/managed-identities-azure-resources/overview).
+Zadejte identifikátor URI prostředku, pro který bude přístupový token vyžádán pomocí spravované identity pro datovou továrnu. K volání rozhraní API pro správu prostředků Azure použijte `https://management.azure.com/`. Další informace o tom, jak spravované identity fungují, najdete na [stránce s přehledem spravovaných identit pro prostředky Azure](/azure/active-directory/managed-identities-azure-resources/overview).
 
 ```json
 "authentication": {
@@ -125,7 +128,7 @@ Zadejte identifikátor uri prostředku, pro kterou přístupový token bude vyž
 ```
 
 ## <a name="request-payload-schema"></a>Schéma datové části požadavku
-Pokud použijete metodu POST a PUT, vlastnost text představuje datová část odeslaná do koncového bodu. Propojené služby a datové sady můžete předat jako součást datové části. Tady je schéma pro datové části:
+Při použití metody POST/PUT představuje vlastnost text datovou část, která je odeslána do koncového bodu. Propojené služby a datové sady můžete předat jako součást datové části. Tady je schéma pro datovou část:
 
 ```json
 {
@@ -147,8 +150,8 @@ Pokud použijete metodu POST a PUT, vlastnost text představuje datová část o
 }
 ```
 
-## <a name="example"></a>Příklad:
-V tomto příkladu volá webová aktivita v kanálu koncový bod REST. Předá propojené služby Azure SQL a datová sada služby Azure SQL do koncového bodu. Koncový bod REST používá připojovací řetězec Azure SQL pro připojení k serveru Azure SQL a vrátí název instance systému SQL server.
+## <a name="example"></a>Příklad
+V tomto příkladu webová aktivita v kanálu volá koncový bod REST. Předá do koncového bodu propojenou službu Azure SQL a datovou sadu Azure SQL. Koncový bod REST používá připojovací řetězec Azure SQL pro připojení k serveru SQL Azure a vrací název instance SQL serveru.
 
 ### <a name="pipeline-definition"></a>Definice kanálu
 
@@ -212,7 +215,7 @@ V tomto příkladu volá webová aktivita v kanálu koncový bod REST. Předá p
 
 ```
 
-### <a name="web-service-endpoint-code"></a>Koncový bod kódu webové služby
+### <a name="web-service-endpoint-code"></a>Kód koncového bodu webové služby
 
 ```csharp
 
@@ -241,8 +244,8 @@ public HttpResponseMessage Execute(JObject payload)
 
 ```
 
-## <a name="next-steps"></a>Další postup
-Zobrazit další aktivity toku řízení podporovaných službou Data Factory:
+## <a name="next-steps"></a>Další kroky
+Podívejte se na další aktivity toku řízení podporované Data Factory:
 
 - [Aktivita spuštění kanálu](control-flow-execute-pipeline-activity.md)
 - [Pro každou aktivitu](control-flow-for-each-activity.md)

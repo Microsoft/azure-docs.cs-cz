@@ -8,25 +8,24 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 05/21/2019
 ms.author: sngun
-ms.openlocfilehash: c97b974919c5aec4c902867604d207cda11e8594
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.openlocfilehash: d277ef51fd7f39ffab7ed4ace8848c682b28c383
+ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "66754297"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68001225"
 ---
-# <a name="quickstart-build-a-java-application-using-azure-cosmos-db-sql-api-account"></a>Rychlý start: Vytvoření aplikace Java pomocí účtu rozhraní SQL API služby Azure Cosmos DB
+# <a name="quickstart-build-a-java-application-using-azure-cosmos-db-sql-api-account"></a>Rychlý start: Vytvoření aplikace Java pomocí Azure Cosmos DB účtu rozhraní SQL API
 
 
 > [!div class="op_single_selector"]
 > * [.NET](create-sql-api-dotnet.md)
-> * [.NET (preview)](create-sql-api-dotnet-preview.md)
 > * [Java](create-sql-api-java.md)
 > * [Node.js](create-sql-api-nodejs.md)
 > * [Python](create-sql-api-python.md)
 > * [Xamarin](create-sql-api-xamarin-dotnet.md)
 
-V tomto rychlém startu se dozvíte, jak vytvářet a spravovat prostředky účtu rozhraní [SQL API](sql-api-introduction.md) služby Azure Cosmos DB pomocí aplikace v Javě. Nejprve pomocí webu Azure Portal vytvoříte účet rozhraní SQL API služby Azure Cosmos DB, pomocí sady [SQL Java SDK](sql-api-sdk-async-java.md) vytvoříte aplikaci v Javě a pomocí aplikace v Javě přidáte prostředky do svého účtu služby Cosmos DB. Pokyny v tomto rychlém startu platí pro všechny operační systémy, které podporují Javu. Po dokončení tohoto rychlého startu budete vědět, jak vytváření a úpravy databází Cosmos DB, kontejnery v uživatelském rozhraní nebo programově podle toho, co je dle požadavků.
+V tomto rychlém startu se dozvíte, jak vytvářet a spravovat prostředky účtu rozhraní [SQL API](sql-api-introduction.md) služby Azure Cosmos DB pomocí aplikace v Javě. Nejprve pomocí webu Azure Portal vytvoříte účet rozhraní SQL API služby Azure Cosmos DB, pomocí sady [SQL Java SDK](sql-api-sdk-async-java.md) vytvoříte aplikaci v Javě a pomocí aplikace v Javě přidáte prostředky do svého účtu služby Cosmos DB. Pokyny v tomto rychlém startu platí pro všechny operační systémy, které podporují Javu. Po dokončení tohoto rychlého startu budete obeznámeni s vytvářením a úpravou databází Cosmos DB, kontejnerů buď v uživatelském rozhraní, nebo programově, podle toho, co je vaše preference.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -48,7 +47,7 @@ Než budete moci vytvořit databázi dokumentů, je potřeba pomocí služby Azu
 
 [!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
 
-## <a name="add-a-container"></a>Přidání kontejneru
+## <a name="add-a-container"></a>Přidat kontejner
 
 [!INCLUDE [cosmos-db-create-collection](../../includes/cosmos-db-create-collection.md)]
 
@@ -75,7 +74,7 @@ Teď přejděme k práci s kódem. Naklonujeme aplikaci SQL API z GitHubu, nast
 
 Tento krok je volitelný. Pokud chcete zjistit, jak se v kódu vytvářejí prostředky databáze, můžete si prohlédnout následující fragmenty kódu. Jinak můžete přeskočit přímo k části [Spuštění aplikace](#run-the-app). 
 
-* Inicializace klienta `AsyncDocumentClient`. [AsyncDocumentClient](https://docs.microsoft.com/java/api/com.microsoft.azure.cosmosdb.rx.asyncdocumentclient) poskytuje na straně klienta logickou reprezentaci databázové služby Azure Cosmos. Tento klient slouží ke konfiguraci a provádění požadavků na službu.
+* Inicializace klienta `AsyncDocumentClient`. [AsyncDocumentClient](https://docs.microsoft.com/java/api/com.microsoft.azure.cosmosdb.rx.asyncdocumentclient) poskytuje logickou reprezentaci na straně klienta pro službu Azure Cosmos Database. Tento klient slouží ke konfiguraci a provádění požadavků na službu.
 
     ```java
     client = new AsyncDocumentClient.Builder()
@@ -204,7 +203,7 @@ Teď se vraťte zpět na web Azure Portal, kde najdete informace o připojovac�
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto rychlém startu jste zjistili, jak k vytvoření účtu Azure Cosmos, databáze dokumentů a kontejner pomocí Průzkumníku dat a spuštění aplikace, která to samé udělá programově. Teď můžete importovat další data do kontejneru Azure Cosmos. 
+V tomto rychlém startu jste se seznámili s postupem vytvoření účtu Azure Cosmos, databáze dokumentů a kontejneru pomocí Průzkumník dat a spuštění aplikace ke stejnému účelu prostřednictvím kódu programu. Teď můžete do svého kontejneru Azure Cosmos importovat další data. 
 
 > [!div class="nextstepaction"]
 > [Importování dat do služby Azure Cosmos DB](import-data.md)

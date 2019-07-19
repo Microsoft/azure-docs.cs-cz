@@ -1,6 +1,6 @@
 ---
-title: Plánování migrace prostředků IaaS z modelu classic na Azure Resource Manager | Dokumentace Microsoftu
-description: Plánování migrace prostředků IaaS z modelu classic na Azure Resource Manager
+title: Plánování migrace prostředků IaaS z modelu Classic na Azure Resource Manager | Microsoft Docs
+description: Plánování migrace prostředků IaaS z modelu Classic na Azure Resource Manager
 services: virtual-machines-windows
 documentationcenter: ''
 author: singhkays
@@ -15,111 +15,111 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/01/2017
 ms.author: kasing
-ms.openlocfilehash: 5e2790515e172ec14e2180f9dfcac6c97b2e135a
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 26766be8b2468da0df44fa42655db0ee04db45a2
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67723172"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68327071"
 ---
-# <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>Plánování migrace prostředků IaaS z modelu classic na Azure Resource Manager
-Zatímco Azure Resource Manager nabízí spoustu skvělých funkcí, je velmi důležité naplánovat, aby to bylo jistě hladký chod průběhu migrace. Plánování zbavuje čas zajistí, že není narazíte na problémy při provádění aktivity migrace.
+# <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>Plánování migrace prostředků IaaS z modelu Classic na Azure Resource Manager
+I když Azure Resource Manager nabízí spoustu funkcí, je důležité naplánovat cestu migrace, abyste se ujistili, že jsou všechno plynulé. Doba útraty při plánování zajistí, že při provádění aktivit migrace dojde k problémům.
 
 > [!NOTE]
-> Následující pokyny se výrazně přispěl Azure zákazníka poradní tým a architekty řešení Cloud práce s našimi zákazníky na migraci rozsáhlých prostředích. Jako takové tohoto dokumentu bude pokračovat na aktualizaci jako objeví nová schémata úspěch, proto zkontrolujte, od času na dobu, pokud jsou k dispozici žádná nová doporučení.
+> Následující pokyny byly silně přispěly na zákazníka poradenského týmu Azure a architekti cloudových řešení pracují se zákazníky při migraci velkých prostředí. Vzhledem k tomu, že tento dokument bude i nadále aktualizován jako nové vzory úspěchu, vraťte se z času na čas, abyste viděli, zda jsou k dispozici nová doporučení.
 
-Existují čtyři hlavní fáze průběh migrace:<br>
+Existují čtyři obecné fáze cesty migrace:<br>
 
 ![Fáze migrace](../media/virtual-machines-windows-migration-classic-resource-manager/plan-labtest-migrate-beyond.png)
 
 ## <a name="plan"></a>Plánování
 
-### <a name="technical-considerations-and-tradeoffs"></a>Technické aspekty a nevýhody
+### <a name="technical-considerations-and-tradeoffs"></a>Technické požadavky a kompromisy
 
-V závislosti na vaší velikosti technické požadavky, geografické oblasti a provozní postupy můžete chtít zvážit:
+V závislosti na velikosti svých technických požadavků, geografických oblastech a provozních postupech můžete zvážit:
 
-1. Proč se vyžaduje Azure Resource Manageru pro vaši organizaci?  Co jsou obchodní důvody pro migraci?
-2. Co jsou technických důvodů pro Azure Resource Manager?  Co (pokud existuje) další služby Azure byste chtěli využívat?
-3. Které aplikace (nebo sady virtuálních počítačů) je součástí migrace?
-4. Jaké scénáře jsou podporovány s migrací rozhraní API?  Zkontrolujte [nepodporované funkce a konfigurace](migration-classic-resource-manager-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#unsupported-features-and-configurations).
-5. Provozní týmy nyní podporuje aplikace nebo virtuální počítače v modelu Classic a Azure Resource Manageru?
-6. Jak (pokud vůbec) Azure Resource Manageru mění nasazení virtuálního počítače, správu, monitorování a vytváření sestav procesy?  Potřeba aktualizovat skripty nasazení?
-7. Co je komunikace v úmyslu upozorňovat účastníky (koncoví uživatelé, počet vlastníků aplikace a vlastníkům infrastruktury)?
-8. V závislosti na složitosti prostředí, mělo by být období údržby kde je aplikace není k dispozici koncovým uživatelům a vlastníkům aplikace?  Pokud ano, jak dlouho?
-9. Co je plán školení k zajištění, že zúčastněné strany jsou-li hlubší znalosti a zdatní v Azure Resource Manageru?
-10. Co je program management nebo řízení plánu projektu migrace?
-11. Co jsou časové osy pro migraci Azure Resource Manageru a další související technologie mapy?  Jsou optimálně odpovídají?
+1. Proč je Azure Resource Manager žádoucí pro vaši organizaci?  Jaké jsou obchodní důvody pro migraci?
+2. Jaké jsou technické důvody pro Azure Resource Manager?  Co (pokud existují) další služby Azure chcete využít?
+3. Která aplikace (nebo sady virtuálních počítačů) je součástí migrace?
+4. Které scénáře podporuje rozhraní API pro migraci?  Přečtěte si o [nepodporovaných funkcích a konfiguracích](migration-classic-resource-manager-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#unsupported-features-and-configurations).
+5. Budou vaše provozní týmy teď podporovat aplikace a virtuální počítače v klasickém i Azure Resource Manager?
+6. Jak (pokud vůbec) Azure Resource Manager mění procesy nasazení, správy, monitorování a vytváření sestav virtuálních počítačů?  Je potřeba aktualizovat skripty pro nasazení?
+7. Jaký je komunikační plán pro upozornění zúčastněných stran (koncoví uživatelé, vlastníci aplikací a vlastníci infrastruktury)?
+8. V závislosti na složitosti prostředí by měla existovat období údržby, ve kterém je aplikace nedostupná pro koncové uživatele a vlastníky aplikací?  Pokud ano, jak dlouho?
+9. Co je plán školení, který zajistí, že se účastníci budou vědomi a zdatní v Azure Resource Manager?
+10. Co je Správa programu nebo plán řízení projektu pro migraci?
+11. Jaké jsou časové osy pro Azure Resource Manager migraci a další související technologie silničních map?  Jsou optimálně zarovnané?
 
-### <a name="patterns-of-success"></a>Vzory úspěch
+### <a name="patterns-of-success"></a>Vzorce úspěchu
 
-Úspěšné zákazníkům podrobné plány, kde předchozí otázky popsáno, zdokumentované a řídí.  Zajistěte, aby že plány migrace se široce předávají sponzorů a zúčastněnými stranami.  Vybavení sami se znalostí o možnostech migrace; Doporučujeme přečtení dokumentu migrace nastavenou níže.
+Úspěšná zákazníci mají podrobné plány, kde jsou předchozí otázky diskutovány, dokumentovány a upraveny.  Zajistěte, aby plány migrace byly široce sdělovány sponzorům a zúčastněným stranám.  Seznamte se s poznatky o možnostech migrace; čtení v této sadě dokumentů migrace se důrazně doporučuje.
 
-* [Přehled o platformou podporované migraci prostředků IaaS z modelu classic na Azure Resource Manager](migration-classic-resource-manager-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [Přehled migrace prostředků IaaS podporovaných platformou z klasických na Azure Resource Manager](migration-classic-resource-manager-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 * [Podrobné technické informace o platformou podporované migraci z modelu Classic na Azure Resource Manager](migration-classic-resource-manager-deep-dive.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 * [Plánování migrace prostředků IaaS z nasazení Classic do Azure Resource Manageru](migration-classic-resource-manager-plan.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-* [Migrace prostředků IaaS z modelu classic na Azure Resource Manager pomocí Powershellu](migration-classic-resource-manager-ps.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-* [Migrace prostředků IaaS z modelu classic na Azure Resource Manageru pomocí rozhraní příkazového řádku](../linux/migration-classic-resource-manager-cli.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-* [Komunitní nástroje pro pomoc s migrací prostředků IaaS z modelu classic na Azure Resource Manager](migration-classic-resource-manager-community-tools.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [Použití PowerShellu k migraci prostředků IaaS z modelu Classic na Azure Resource Manager](migration-classic-resource-manager-ps.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [Migrace prostředků IaaS z modelu Classic na Azure Resource Manager pomocí rozhraní příkazového řádku](../linux/migration-classic-resource-manager-cli.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [Komunitní nástroje pro pomoc s migrací prostředků IaaS z modelu Classic na Azure Resource Manager](migration-classic-resource-manager-community-tools.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 * [Běžné chyby při migraci](migration-classic-resource-manager-errors.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-* [Projděte si nejčastější dotazy o migraci prostředků IaaS z modelu classic na Azure Resource Manager](migration-classic-resource-manager-faq.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [Přečtěte si nejčastější dotazy týkající se migrace prostředků IaaS z modelu Classic na Azure Resource Manager](migration-classic-resource-manager-faq.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
-### <a name="pitfalls-to-avoid"></a>Aby se zabránilo nástrahy
+### <a name="pitfalls-to-avoid"></a>Nástrah, abyste se vyhnuli
 
-- Chyba při plánování.  Jsou prověřené technologie kroků migrace a výsledkem je předvídatelný.
-- Předpokládáme, že platforma podporovaná rozhraní API migrace bude účet pro všechny scénáře. Přečtěte si [nepodporované funkce a konfigurace](migration-classic-resource-manager-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#unsupported-features-and-configurations) pochopit, jaké postupy se podporují.
-- Neplánuje potenciální výpadek aplikace pro koncové uživatele.  Naplánujte dostatek vyrovnávací paměti adekvátní upozornit koncoví uživatelé čas potenciálně není k dispozici aplikace.
+- Plánování nebylo úspěšné.  Technologické kroky této migrace jsou prověřené a výsledek je předvídatelný.
+- Předpokládá se, že rozhraní API pro migraci podporované platformou bude pohlížet na všechny scénáře. Přečtěte si [nepodporované funkce a konfigurace](migration-classic-resource-manager-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#unsupported-features-and-configurations) , které vám pomohou pochopit podporované scénáře.
+- Nepovedlo se naplánovat potenciální výpadek aplikace pro koncové uživatele.  Naplánujte dostatek vyrovnávací paměti pro odpovídající upozornění koncovým uživatelům potenciálně nedostupného času aplikace.
 
 
-## <a name="lab-test"></a>Testovací laboratoře
+## <a name="lab-test"></a>Test testovacího prostředí
 
-**Replikovat vaše prostředí a proveďte testovací migrace.**
+**Replikace prostředí a testování migrace**
   > [!NOTE]
-  > Přesné replikace do stávajícího prostředí provádí pomocí komunitou nástroj, který není oficiálně podporován Microsoft Support. Proto je **volitelné** kroku, ale je nejlepší způsob, jak zjistit problémy bez zásahu do produkčních prostředí. Pokud pomocí nástroje komunitou, není možné zvolit, pak si můžete přečtěte o ověření/přípravy nebo přerušení zkušební spuštění doporučení níže.
+  > Přesná replikace vašeho stávajícího prostředí se provádí pomocí nástroje vytvořeného komunitou, který podpora Microsoftu oficiálně nepodporuje. Proto je **volitelný** krok, ale je to nejlepší způsob, jak zjistit problémy bez zásahu do produkčního prostředí. Pokud použití nástroje vytvořeného komunitou není možnost, přečtěte si níže uvedené doporučení pro ověření/přípravu/přerušování za běhu.
   >
 
-  Provádění testu lab vašemu konkrétnímu scénáři (výpočetní, síťové a úložiště) je nejlepší způsob, jak zajistit hladký průběh migrace. To vám pomůže zajistit:
+  Nejlepším způsobem, jak zajistit bezproblémovou migraci, je testování testovacího prostředí pro přesný scénář (výpočetní prostředky, sítě a úložiště). To vám pomůže zajistit:
 
-- Zcela samostatné testovacího prostředí nebo existující neprodukčním prostředí pro testování. Doporučujeme, abyste zcela samostatné testovacího prostředí, které je možné migrovat opakovaně a lze destructively upravit.  Skripty pro shromažďování/hydrát metadata ze skutečných předplatná jsou uvedeny níže.
-- Je vhodné vytvořit testovací prostředí v samostatné předplatné. Důvodem je, že testovací prostředí se deaktivuje opakovaně a mít samostatné, izolované předplatného se sníží pravděpodobnost, že něco reálné získat omylem odstraní.
+- Zcela samostatné testovací prostředí nebo existující neprodukční prostředí, které se má testovat. Doporučujeme zcela samostatné testovací prostředí, které je možné opakovaně migrovat a které může být destruktivním upravováno.  Skripty pro shromažďování nebo Hydrate metadat z reálných předplatných jsou uvedeny níže.
+- V samostatném předplatném je vhodné vytvořit testovací prostředí. Důvodem je, že testovací prostředí se opakovaně rozděluje a bude mít samostatný izolovaný odběr snížení pravděpodobnosti, že se nějaké reálné omyly odstraní.
 
-  To lze provést pomocí nástroje AsmMetadataParser. [Další informace o tomto nástroji zde](https://github.com/Azure/classic-iaas-resourcemanager-migration/tree/master/AsmToArmMigrationApiToolset)
+  To lze provést pomocí nástroje AsmMetadataParser. [Další informace o tomto nástroji najdete tady.](https://github.com/Azure/classic-iaas-resourcemanager-migration/tree/master/AsmToArmMigrationApiToolset)
 
-### <a name="patterns-of-success"></a>Vzory úspěch
+### <a name="patterns-of-success"></a>Vzorce úspěchu
 
-Následující byly problémy zjištěné v mnoha větší migrace. Nejedná se o vyčerpávající seznam a by měla odkazovat na [nepodporované funkce a konfigurace](migration-classic-resource-manager-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#unsupported-features-and-configurations) další podrobnosti.  Může nebo nemusí mít tyto technické problémy, ale pokud to uděláte před provedením migrace řešení zajistí plynulost.
+Následující byly problémy zjištěné v řadě větších migrací. Nejedná se o vyčerpávající seznam a další informace najdete v tématu [nepodporované funkce a konfigurace](migration-classic-resource-manager-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#unsupported-features-and-configurations) .  K těmto technickým problémům může nebo nemusí dojít, ale pokud je před pokusem o migraci provedete, zajistěte, aby se zajistilo plynulejší prostředí.
 
-- **Proveďte ověření/přípravy nebo přerušení spuštění zkušební** – to je pravděpodobně nejdůležitější krok, kterým zajistíte modelu Classic na úspěšné provedení migrace Azure Resource Manageru. Migrace rozhraní API má tři hlavní kroky: Ověření, připravte a potvrďte. Ověření se načíst stav prostředí classic a vrátí výsledek všechny problémy. Ale vzhledem k tomu, že některé problémy mohou existovat v zásobníku Azure Resource Manageru, ověřit nezachytí všechno. Dalším krokem v procesu migrace Prepare vám pomůže vystavit těchto problémů. Připravte se přesunout metadat z modelu Classic na Azure Resource Manager, ale nebude potvrzení přesunu a se neodebere ani něco na straně Classic změnit. Spustit zkušební zahrnuje Příprava na migraci a přerušení (**není potvrzování**) Příprava na migraci. Cílem ověření/připravit/přerušení zkušební spuštění je chcete zobrazit všechna metadata v zásobníku Azure Resource Manageru, jej prozkoumat (*programově, nebo portál*) a ověřte, že všechno, co migruje správně a seznámení se základními technické problémy.  Také poskytne vám představu o dobou trvání migrace, odpovídajícím způsobem plánovat výpadku.  Ověřením/připravit/přerušení nezpůsobí žádné výpadky uživatele; je tedy nenarušující k použití aplikací.
-  - Položky dole potřeba vyřešit před spuštěním suchého, ale zkušební spuštění testu se také bezpečně vyprázdní si tyto přípravné kroky, pokud je provedena. Během migrace enterprise zjistili jsme zkušební spuštění bude bezpečný a neocenitelný při řízení způsob, jak zajistit přípravu migrace.
-  - Při přípravě běží, ovládací prvek roviny (operace Azure správy) uzamknou celé virtuální sítě, takže provedeny žádné změny můžou být metadata virtuálního počítače během ověření/připravit/přerušení.  Jinak, ale všechny funkce aplikace (VP, virtuální počítač využití atd.), zůstanou beze změn.  Uživatelé virtuálních počítačů nebude vědět, se provádí zkušební spuštění.
+- **Provedení operace ověření/přípravy/přerušení suchého běhu** – jedná se například o nejdůležitější krok k tomu, abyste zajistili, že bude migrace Classic Azure Resource Manager úspěšná. Rozhraní API pro migraci má tři hlavní kroky: Ověřte, připravte a potvrďte. Při ověřování se přečte stav klasického prostředí a vrátí se výsledek všech problémů. Vzhledem k tomu, že některé problémy mohou existovat v sadě Azure Resource Manager Stack, ověřování nebude zachytit vše. Dalším krokem v procesu migrace bude Příprava k vystavení těchto problémů. Příprava přesune metadata z klasického na Azure Resource Manager, ale nepotvrdí ani nemění žádné položky na klasické straně. Tento suchý běh zahrnuje přípravu migrace a pak se přerušuje (nejedná se o**potvrzení**) na Příprava migrace. Cílem ověření/přípravy/přerušení suchého běhu je zobrazit všechna metadata v sadě Azure Resource Manager Stack, prověřit je (*programově nebo na portálu*) a ověřit, zda je vše migrováno správně, a pracovat s technickými problémy.  Také vám poskytne představu o době trvání migrace, abyste mohli odpovídajícím způsobem naplánovat výpadky.  Operace ověřit/Příprava/přerušení nezpůsobí žádné výpadky uživatele; Proto je použití aplikace nerušivé.
+  - Níže uvedené položky budou muset být vyřešeny před sušením, ale při suchém testu se tyto přípravné kroky také bezpečně vyprázdní, pokud jsou vynechány. Během migrace do podnikové sítě jsme zjistili, že je suchý běh bezpečný a neužitečný způsob, jak zajistit připravenost na migraci.
+  - Když je příprava spuštěná, bude pro celou virtuální síť uzamčena Řídicí rovina (operace správy Azure), takže během operace ověřit/připravit nebo přerušit nebude možné provádět žádné změny v metadatech virtuálních počítačů.  V opačném případě bude neovlivněna žádná funkce aplikace (Vzdálená plocha, využití virtuálních počítačů atd.).  Uživatelé virtuálních počítačů nebudou mít jistotu, že je spuštěný suchý běh.
 
-- **Express okruhy směrování a síť VPN**. Aktuálně Express Route brány pomocí autorizačních odkazů se nedají migrovat bez výpadku. Alternativní řešení, najdete v části [migrace okruhů ExpressRoute a přidružených virtuálních sítí z klasického modelu nasazení Resource Manageru](../../expressroute/expressroute-migration-classic-resource-manager.md).
+- **Okruhy Express Route a síť VPN**. Brány Express Route s autorizačními odkazy se nedají migrovat bez výpadků. Alternativní řešení najdete v tématu [migrace okruhů ExpressRoute a přidružených virtuálních sítí z modelu nasazení Classic do modelu nasazení Správce prostředků](../../expressroute/expressroute-migration-classic-resource-manager.md).
 
-- **Rozšíření virtuálních počítačů** – rozšíření virtuálních počítačů jsou potenciálně jedním z největších problémů při migraci spuštěných virtuálních počítačů. Náprava rozšíření virtuálních počítačů může trvat upwards of 1 – 2 dny, tak podle toho naplánujte.  Pracovní agent služby Azure, je potřeba nahlásit stav rozšíření virtuálního počítače z běžících virtuálních počítačů. Pokud se stav vrátí zpět jako chybný ve spuštěném virtuálním počítači, tím se zastaví migrace. Samotný agent nemusí být v pořadí pracovní povolení migrace, ale pokud rozšíření ve virtuálním počítači, pak oba pracovní agenta a odchozí připojení k Internetu (s DNS) bude potřeba k migraci do posunout vpřed.
-  - Pokud během migrace, všechna rozšíření virtuálních počítačů s výjimkou BGInfo verze 1 dojde ke ztrátě připojení k serveru DNS. \* musí být nejprve odebrány ze všech virtuálních počítačů před připravit migraci a následně znovu přidat zpět k virtuálnímu počítači po migraci na Azure Resource Manageru.  **Toto je pouze pro virtuální počítače, na kterých běží.**  Pokud virtuální počítače se zastaví uvolnění, není potřeba odebrat rozšíření virtuálních počítačů.
+- **Rozšíření virtuálních počítačů** – rozšíření virtuálních počítačů jsou potenciálně jedním z největších překážek pro migraci spuštěných virtuálních počítačů. Náprava rozšíření virtuálních počítačů může trvat až 1-2 dnů, takže si to podle potřeby naplánujte.  K nahlášení stavu virtuálních počítačů na běžícím virtuálním počítači je potřeba pracovní agent Azure. Pokud se stav u spuštěného virtuálního počítače vrátí jako špatný, zastaví se migrace. Aby bylo možné migraci povolit, nemusí být samotný agent v pracovním řádu, pokud ale na virtuálním počítači existují rozšíření, bude potřeba, aby migrace přesunula vpřed jak funkční, tak i odchozí připojení k Internetu (s DNS).
+  - Pokud během migrace dojde ke ztrátě připojení k serveru DNS, všechna rozšíření virtuálních počítačů s výjimkou BGInfo verze 1. \* před přípravou migrace se musí nejdřív odebrat z každého virtuálního počítače a pak znovu přidat zpátky k virtuálnímu počítači po Azure Resource Manager migrace.  **Toto je jenom pro virtuální počítače, na kterých běží.**  Pokud jsou virtuální počítače zastavené, nemusíte odebírat rozšíření virtuálních počítačů.
 
   > [!NOTE]
-  > Mnoho rozšíření, jako je Azure diagnostics a security center monitorování bude přeinstalovat sami po migraci, je tak odeberete nepředstavuje žádný problém.
+  > Celá řada rozšíření, jako je Azure Diagnostics a monitoring Security Center, se po migraci znovu nainstaluje, takže jejich odebrání nepředstavuje problém.
 
-  - Kromě toho, ujistěte se, že skupiny zabezpečení sítě nejsou omezení odchozí internetový přístup. To může nastat několik konfigurací skupiny zabezpečení sítě. Odchozí přístup k Internetu (a DNS) je potřeba pro rozšíření virtuálních počítačů k migraci do Azure Resource Manageru.
-  - Dvě verze rozšíření BGInfo neexistuje a se nazývají verze 1 a 2.  
+  - Kromě toho zajistěte, aby skupiny zabezpečení sítě neomezily odchozí přístup k Internetu. K tomu může dojít v některých konfiguracích skupin zabezpečení sítě. Pro migraci rozšíření virtuálních počítačů do Azure Resource Manager je potřeba odchozí přístup k Internetu (a DNS).
+  - Existují dvě verze rozšíření BGInfo a nazývají se verze 1 a 2.  
 
-      - Pokud virtuální počítač používá rozšíření BGInfo verze 1, můžete nechat toto rozšíření je. Rozhraní API pro migraci přeskočí toto rozšíření. Je možné přidat rozšíření BGInfo po migraci.
-      - Pokud virtuální počítač používá rozšíření BGInfo založenými na JSON verze 2, virtuální počítač vytvořil, pomocí webu Azure portal. Migrace rozhraní API zahrnuje toto rozšíření při migraci do Azure Resource Manageru, předpokladu, že agent funguje a má odchozí přístup k Internetu (a DNS).
+      - Pokud virtuální počítač používá rozšíření BGInfo verze 1, můžete toto rozšíření ponechat tak, jak je. Rozhraní API pro migraci toto rozšíření přeskočí. Rozšíření BGInfo lze přidat po migraci.
+      - Pokud virtuální počítač používá rozšíření BGInfo verze 2 založené na formátu JSON, virtuální počítač byl vytvořen pomocí Azure Portal. Rozhraní API pro migraci zahrnuje toto rozšíření v migraci na Azure Resource Manager za předpokladu, že agent pracuje a má odchozí přístup k Internetu (a DNS).
 
-  - **1. možnost nápravy**. Pokud víte, že vaše virtuální počítače nebudou mít odchozí přístupem k Internetu, služba DNS práci a práce agenti Azure na virtuálních počítačích, odinstalujte všechny rozšíření virtuálních počítačů v rámci přípravy migraci, přeinstalujte rozšíření virtuálních počítačů po dokončení migrace.
-  - **2. možnost nápravy**. Pokud jsou příliš velký mezní rozšíření virtuálních počítačů, Další možností je vypnout a uvolnit všechny virtuální počítače před migrací. Migrace uvolněno virtuálních počítačů a pak je restartujte na straně Azure Resource Manageru. Výhody zde je, rozšíření virtuálních počítačů bude migrovat. Nevýhodou je, že se ztratí všechny veřejné směřující virtuálních IP adres (to může být jiné starter), a samozřejmě virtuální počítače vypne způsobí mnohem větší vliv na pracovní aplikace.
-
-    > [!NOTE]
-    > Pokud zásady služby Azure Security Center je nakonfigurovaný na spuštěné virtuální počítače migrované, zásady zabezpečení je potřeba zastavit před odebráním rozšíření, v opačném případě zabezpečení rozšíření monitorování bude automaticky znovu nainstalovány ve virtuálním počítači po odebrání.
-
-- **Skupiny dostupnosti** – pro virtuální síť (vNet) pro migraci do Azure Resource Manageru, virtuální počítače s omezením musí být v jedné skupině dostupnosti nasazení Classic (tj. Cloudová služba) nebo virtuální počítače nesmí být žádné skupiny dostupnosti. S více než jedné skupině dostupnosti v cloudové službě není kompatibilní s Azure Resource Managerem a migrace zastaví.  Kromě toho nemůže existovat několik virtuálních počítačů ve skupině dostupnosti a některé virtuální počítače nejsou ve skupině dostupnosti. Chcete-li tento problém vyřešit, je potřeba opravit nebo změnit pořadí cloudové služby.  Plánování odpovídajícím způsobem, jak to může být časově náročné.
-
-- **Nasazení webové nebo pracovní Role** -obsahující webové a pracovní role Cloud Services nejde migrovat na Azure Resource Manager. Webové a pracovní role musí být nejprve odebrány z virtuální sítě, před zahájením migrace.  Typické řešení je můžete data přesunout instance webové nebo pracovní role na samostatné klasická virtuální síť, která je také propojena k okruhu ExpressRoute, nebo migrovat kód novější PaaS App Services (této diskuse je nad rámec tohoto dokumentu). V předchozí případ znovu nasadit, vytvořit novou virtuální síť modelu Classic, přesunutí nebo opětovného nasazení webové nebo pracovní role, které chcete tuto novou virtuální síť a pak odstranit nasazení z virtuální sítě, který se přesouvá. Žádné požadované změny kódu. Nové [partnerské vztahy virtuálních sítí](../../virtual-network/virtual-network-peering-overview.md) funkce slouží k navázání partnerského vztahu mezi společně klasickou virtuální síť obsahující webové nebo pracovní role a dalším virtuálním sítím ve stejné oblasti Azure, jako je například virtuální síť se migrovat (**po dokončení migrace virtuální sítě jako partnerské virtuální sítě se nedají migrovat**), proto poskytuje stejné funkce bez ztráty výkonu a žádné snížení latence nebo šířka pásma. Zadaný přidání [partnerské vztahy virtuálních sítí](../../virtual-network/virtual-network-peering-overview.md), můžete nyní snadno minimalizovat nasazení webové nebo pracovní role a nedochází k blokování migrace do Azure Resource Manageru.
-
-- **Azure Resource Manageru kvóty** -oblasti Azure, které mají samostatné kvóty a omezení pro Classic a Azure Resource Manageru. I když ve scénáři migrace není spotřebovávanou nový hardware *(jsme už prohození existujících virtuálních počítačů z modelu Classic na Azure Resource Manager)* , stále potřebují být v místě s dostatečnou kapacitou před kvóty správce prostředků Azure migraci můžete začít. Tady jsou hlavní omezení, které jsme viděli způsobit problémy.  Otevření lístku podpory kvótu zvýšit limity.
+  - **Možnost opravy 1**. Pokud víte, že vaše virtuální počítače nebudou mít odchozí přístup k Internetu, fungující službu DNS a pracují agenty Azure na virtuálních počítačích, před přípravou Odinstalujte všechna rozšíření virtuálních počítačů a potom po migraci přeinstalujte rozšíření virtuálních počítačů.
+  - **Možnost opravy 2**. Pokud jsou rozšíření virtuálních počítačů příliš velká, je další možností vypnutí nebo zrušení přidělení všech virtuálních počítačů před migrací. Migrujte navrácené virtuální počítače a pak je restartujte na straně Azure Resource Manager. Výhodou je, že rozšíření virtuálního počítače se migrují. Nevýhodou je to, že se ztratí všechny veřejné virtuální IP adresy (může to být nepočáteční), a zjevně by se virtuální počítače vypnuly, což by způsobilo mnohem větší dopad na funkční aplikace.
 
     > [!NOTE]
-    > Tato omezení musí být vyvolána ve stejné oblasti jako vaše aktuální prostředí k migraci.
+    > Pokud jsou zásady Azure Security Center nakonfigurované proti migrování spuštěných virtuálních počítačů, je potřeba před odebráním rozšíření zastavit zásady zabezpečení. v opačném případě se rozšíření monitorování zabezpečení na virtuálním počítači po jeho odebrání znovu nainstaluje automaticky.
+
+- **Skupiny dostupnosti** – pro virtuální síť (vNet), která se má migrovat na Azure Resource Manager, musí mít nasazení Classic (tj. cloudová služba) všechny virtuální počítače v jedné skupině dostupnosti, jinak musí být virtuální počítače v žádné skupině dostupnosti. Používání více než jedné skupiny dostupnosti v cloudové službě není kompatibilní s Azure Resource Manager a zastaví migraci.  Kromě toho nemůžou být některé virtuální počítače ve skupině dostupnosti a některé virtuální počítače nejsou v sadě dostupnosti. Pokud to chcete vyřešit, budete muset svou cloudovou službu opravit nebo ji můžete znovu vymezit.  Naplánujte odpovídajícím způsobem, protože to může být časově náročné.
+
+- **Nasazení rolí webu nebo pracovní role** – Cloud Services obsahující webové a pracovní role nelze migrovat na Azure Resource Manager. Chcete-li migrovat obsah vaší webové a pracovní role, bude nutné migrovat samotný kód na novější PaaS App Services (Tato diskuze je nad rámec tohoto dokumentu). Pokud chcete opustit webové a pracovní role, jako je, ale migrovat klasické virtuální počítače do modelu nasazení Správce prostředků, musí být před spuštěním migrace nejdřív z virtuální sítě odebrané role Web/Worker.  Typickým řešením je pouze přesunout instance webových rolí a rolí pracovních procesů do samostatné klasické virtuální sítě, která je také propojena s okruhem ExpressRoute. V bývalém případě znovu nasaďte vytvořte novou klasickou virtuální síť, přesuňte nebo znovu nasaďte webové a pracovní role do této nové virtuální sítě a pak odstraňte nasazení z virtuální sítě, která se přesouvá. Nevyžadují se žádné změny kódu. Novou funkci [partnerského vztahu Virtual Network](../../virtual-network/virtual-network-peering-overview.md) lze použít pro partnerský vztah mezi klasickou virtuální sítí, která obsahuje webové a pracovní role a jiné virtuální sítě ve stejné oblasti Azure, jako je například migrace virtuální sítě (**po virtuální síti). migrace je dokončená, protože virtuální sítě s partnerským vztahem nelze migrovat**), a proto poskytují stejné možnosti bez ztráty výkonu a žádné pokuty týkající se latence a šířky pásma. Vzhledem k tomu, že se přidávají [Virtual Network partnerských vztahů](../../virtual-network/virtual-network-peering-overview.md), je teď možné snadno zmírnit omezení nasazení webových nebo pracovních rolí a neblokovat migraci do Azure Resource Manager.
+
+- **Kvóty Azure Resource Manager** – oblasti Azure mají samostatné kvóty a omezení pro klasické i Azure Resource Manager. I když ve scénáři migrace není spotřebován nový hardware *(odstraňujeme stávající virtuální počítače z klasického na Azure Resource Manager)* , Azure Resource Manager kvóty stále musí být na dosah dostatečně vysoké kapacity, aby bylo možné spustit migraci. Níže jsou uvedené hlavní limity, které jsme zjistili, že způsobují problémy.  Otevřete lístek podpory kvóty pro zvýšení limitu.
+
+    > [!NOTE]
+    > Tato omezení se musí vyhodnotit ve stejné oblasti jako vaše aktuální prostředí k migraci.
     >
 
   - Síťová rozhraní
@@ -130,98 +130,98 @@ Následující byly problémy zjištěné v mnoha větší migrace. Nejedná se 
   - Network Security Groups (Skupiny zabezpečení sítě)
   - Směrovací tabulky
 
-    Můžete zkontrolovat aktuální kvóty správce prostředků Azure pomocí následujících příkazů v nejnovější verzi Azure Powershellu.
+    Aktuální kvóty Azure Resource Manager můžete kontrolovat pomocí následujících příkazů s nejnovější verzí Azure PowerShell.
     
     [!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
-    **COMPUTE** *(počet jader, sady dostupnosti)*
+    **Výpočetní** prostředky *(Jádra, skupiny dostupnosti)*
 
     ```powershell
     Get-AzVMUsage -Location <azure-region>
     ```
 
-    **Síť** *(virtuálních sítí, statických veřejných IP adres, veřejné IP adresy nebo skupiny zabezpečení sítě, síťová rozhraní, nástrojů pro vyrovnávání zatížení, směrovací tabulky)*
+    **Síť** *(Virtuální sítě, statické veřejné IP adresy, veřejné IP adresy, skupiny zabezpečení sítě, síťová rozhraní, nástroje pro vyrovnávání zatížení, směrovací tabulky)*
 
     ```powershell
     Get-AzUsage /subscriptions/<subscription-id>/providers/Microsoft.Network/locations/<azure-region> -ApiVersion 2016-03-30 | Format-Table
     ```
 
-    **Úložiště** *(účet služby Storage)*
+    **Úložiště** *(Účet úložiště)*
 
     ```powershell
     Get-AzStorageUsage
     ```
 
-- **Rozhraní API Azure Resource Manageru limitů omezování** – Pokud máte dostatečně velký prostředí (např.) > 400 virtuálních počítačů ve virtuální síti), pravděpodobně dojde k rozhraní API výchozí omezení pro zápis (aktuálně `1200 writes/hour`) v Azure Resource Manageru. Před zahájením migrace, by měla vyvolat lístku podpory zvýšit tento limit pro vaše předplatné.
+- **Omezení omezování Azure Resource Manager API** – Pokud máte velké množství prostředí (např. virtuální počítače s > 400 ve virtuální síti) můžete dosáhnout výchozího limitu omezení pro zápisy (aktuálně `1200 writes/hour`) v Azure Resource Manager. Před zahájením migrace byste měli vyvolat lístek podpory pro zvýšení tohoto limitu vašeho předplatného.
 
 
-- **Došlo k vypršení časového limitu virtuálních počítačů Stav zřizování** – Pokud je jakýkoli virtuální počítač má stav `provisioning timed out`, to je potřeba vyřešit před migrací. Jediný způsob, jak to provést, je s výpadky zrušení zřízení/neukončil virtuálního počítače (delete, zachovat na disku a znovu vytvořte virtuální počítač).
+- **Stavu virtuálního počítače při zřizování vypršel časový** limit – Pokud má některý virtuální počítač `provisioning timed out`stav, je nutné ho vyřešit před migrací. Jediným způsobem, jak to provést, je zrušením zřízení/opětovného zřízení virtuálního počítače (jeho odstraněním, ponechání disku a vytvoření virtuálního počítače) bez výpadků.
 
-- **Neznámý stav virtuálního počítače** – Pokud migrace zastaví z důvodu `role state unknown` chybová zpráva, zkontrolujte virtuálního počítače pomocí portálu a ujistěte se, je spuštěna. Tato chyba obvykle zmizí své vlastní (nejsou požadována žádná náprava) za pár minut a často přechodný typ často dochází během virtuálního počítače `start`, `stop`, `restart` operace. **Doporučené postupy:** znovu zkuste migrovat znovu za pár minut.
+- **Stav virtuálního počítače neznámý** – Pokud se migrace zastaví z důvodu `role state unknown` chybové zprávy, zkontrolujte virtuální počítač pomocí portálu a ujistěte se, že je spuštěný. Tato chyba obvykle vznikne vlastní (bez potřeby nápravy) po několika minutách a často se jedná o přechodný typ, `start` `restart` který se často zobrazuje během virtuálního počítače, `stop`operace. **Doporučený postup:** zkuste migraci opakovat znovu za několik minut.
 
-- **Fabric Cluster neexistuje** – v některých případech některé virtuální počítače nejde migrovat z různých důvodů liché. Jedním z těchto případů známé je pokud byl virtuální počítač nedávno vytvořili (během posledního týdne, aby) a stalo objevil clusteru služby Azure, který ještě není vybaven pro úlohy Azure Resource Manageru.  Zobrazí se chybová zpráva `fabric cluster does not exist` a tento virtuální počítač nejde migrovat. Čekání na pár dní obvykle konkrétní problém vyřešíte podle clusteru se brzy zobrazí podporou Azure Resource Manageru. Však jeden okamžité alternativním řešením je `stop-deallocate` virtuální počítač, pak předat dál pokračovat v migraci, a spusťte virtuální počítač zálohovat v Azure Resource Manageru po migraci.
+- **Cluster prostředků infrastruktury neexistuje** – v některých případech je nemůžete migrovat některé virtuální počítače z různých lichých důvodů. Jedním z těchto známých případů je, že se virtuální počítač v poslední době vytvořil (během posledního týdne) a že se nacházel cluster Azure, který ještě není vybavený pro Azure Resource Manager úlohy.  Zobrazí se chyba oznamující `fabric cluster does not exist` , že virtuální počítač nelze migrovat. Při čekání na několik dní se obvykle vyřeší tento konkrétní problém, protože cluster brzy získá Azure Resource Manager povolenou. Jediným alternativním řešením je však, že `stop-deallocate` se k virtuálnímu počítači bude dál přenášet migrace a po migraci spustit virtuální počítač znovu v Azure Resource Manager.
 
-### <a name="pitfalls-to-avoid"></a>Aby se zabránilo nástrahy
+### <a name="pitfalls-to-avoid"></a>Nástrah, abyste se vyhnuli
 
-- Není klávesové zkratky a vynechat možnost ověřit/připravit/přerušení zkušební spuštění migrace.
-- Většina. Pokud ne, potenciálních problémů bude přinášet během kroků ověření/připravit/přerušení.
+- Nepoužívejte zástupce a vynechejte operace ověřování/Příprava/přerušení za běhu suché.
+- Většina, pokud ne všechny, z vašich potenciálních problémů bude při provádění kroků ověřit/Příprava/přerušení na ploše.
 
 ## <a name="migration"></a>Migrace
 
-### <a name="technical-considerations-and-tradeoffs"></a>Technické aspekty a nevýhody
+### <a name="technical-considerations-and-tradeoffs"></a>Technické požadavky a kompromisy
 
-Teď jste připraveni vzhledem k tomu, že jste už pracovali prostřednictvím známých problémů s vaším prostředím.
+Nyní jste připraveni, protože jste pracovali se známými problémy ve vašem prostředí.
 
-Pro skutečné migrace může být vhodné vzít v úvahu:
+Pro skutečné migrace můžete zvážit:
 
-1. Plánování a virtuální síť (nejmenší jednotka migrace) s zvýšení priority plánování.  Nejprve provést jednoduchý virtuální sítě a průběh s složitější virtuálními sítěmi.
-2. Většina zákazníků budou mít testovacím a produkčním prostředí.  Poslední naplánujte produkční.
-3. **(VOLITELNÉ)**  Naplánovat výpadek kvůli údržbě s dostatečným vyrovnávací paměti pro případ, neočekávané vzniku.
-4. Komunikovat a bylo v souladu s podpůrnými týmy v případě, že vzniknou problémy.
+1. Naplánujte a naplánujte virtuální síť (nejmenší Jednotková migrace) s rostoucí prioritou.  Udělejte nejdřív jednoduché virtuální sítě a probíhají se složitějšími virtuálními sítěmi.
+2. Většina zákazníků bude mít neprodukční a produkční prostředí.  Naplánujte si produkci jako poslední.
+3. **(Volitelné)** Naplánujte prostoje údržby s využitím dostatečné vyrovnávací paměti v případě neočekávaných problémů.
+4. V případě problémů komunikujte s týmy podpory a zarovnejte je s nimi.
 
-### <a name="patterns-of-success"></a>Vzory úspěch
+### <a name="patterns-of-success"></a>Vzorce úspěchu
 
-Technické pokyny z _testovací laboratoře_ oddílu by mělo být považována za a zmírnit před skutečné migrace.  Migrace s odpovídající testování, je ve skutečnosti událostmi.  Pro produkční prostředí může být užitečné mít další podporu, jako je například důvěryhodným partnerem Microsoftu nebo Microsoft Premier Support services.
+Technické pokyny z části _testovacího prostředí_ je třeba zvážit a zmírnit před skutečnou migrací.  Při dostatečném testování je migrace vlastně neevent.  V produkčních prostředích může být užitečné mít další podporu, jako je důvěryhodný partner Microsoftu nebo Microsoft Premier Services.
 
-### <a name="pitfalls-to-avoid"></a>Aby se zabránilo nástrahy
+### <a name="pitfalls-to-avoid"></a>Nástrah, abyste se vyhnuli
 
-Testování není plně může způsobit problémy a zpoždění při migraci.  
+Neúplné testování může způsobit problémy a zpoždění migrace.  
 
-## <a name="beyond-migration"></a>Nad rámec migrace
+## <a name="beyond-migration"></a>Rámec migrace
 
-### <a name="technical-considerations-and-tradeoffs"></a>Technické aspekty a nevýhody
+### <a name="technical-considerations-and-tradeoffs"></a>Technické požadavky a kompromisy
 
-Teď, když jste v Azure Resource Manageru, maximalizujte platformu.  Přečtěte si [přehled Azure Resource Manageru](../../azure-resource-manager/resource-group-overview.md) najdete informace o další výhody.
+Teď, když jste v Azure Resource Manager, maximalizujte platformu.  Přečtěte si [přehled Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md) a zjistěte další výhody.
 
-Co je třeba zvážit:
+Co je potřeba vzít v úvahu:
 
-- Sdružování migrace s ostatními aktivitami.  Většina zákazníků optimalizované pro okna údržby aplikace.  Pokud ano, můžete chtít povolit další možnosti Azure Resource Manageru, třeba šifrování a migrace na spravované disky pomocí tohoto výpadku.
-- Návštěvě technické a obchodní důvody pro Azure Resource Manageru; Povolte další služby k dispozici jenom v Azure Resource Manageru, které platí pro vaše prostředí.
-- Modernizace prostředí se službami PaaS.
+- Nasdružování migrace s ostatními aktivitami.  Většina zákazníků si vyžádá časový interval pro správu aplikací.  Pokud ano, můžete toto výpadky použít k povolení jiných Azure Resource Manager možností, jako je šifrování a migrace Managed Disks.
+- Přečtěte si technické a obchodní důvody pro Azure Resource Manager; Povolte další služby dostupné jenom pro Azure Resource Manager, které se vztahují k vašemu prostředí.
+- Modernizovat své prostředí pomocí služeb PaaS.
 
-### <a name="patterns-of-success"></a>Vzory úspěch
+### <a name="patterns-of-success"></a>Vzorce úspěchu
 
-Být výstižný, na které služby Chcete teď umožňují v Azure Resource Manageru.  Mnoho zákazníků níže atraktivních jejich prostředí Azure:
+Záměrné, jaké služby teď chcete v Azure Resource Manager povolit.  Spousta zákazníků pro svá prostředí Azure vyhledá méně závažná řešení:
 
-- [Řízení přístupu podle rolí](../../role-based-access-control/overview.md).
-- [Šablony Azure Resource Manageru pro snazší a víc řízené nasazení](../../azure-resource-manager/resource-group-overview.md#template-deployment).
+- [Access Control na základě rolí](../../role-based-access-control/overview.md).
+- [Šablony Azure Resource Manager pro snazší a lepší řízené nasazení](../../azure-resource-manager/resource-group-overview.md#template-deployment).
 - [Značky](../../azure-resource-manager/resource-group-using-tags.md).
-- [Aktivity řízení](../../azure-resource-manager/resource-group-audit.md)
+- [Řízení aktivit](../../azure-resource-manager/resource-group-audit.md)
 - [Zásady Azure](../../governance/policy/overview.md)
 
-### <a name="pitfalls-to-avoid"></a>Aby se zabránilo nástrahy
+### <a name="pitfalls-to-avoid"></a>Nástrah, abyste se vyhnuli
 
-Mějte na paměti, proč jste začali tento z modelu Classic do cesty k migraci do Azure Resource Manageru.  Jaké byly obchodních důvodů, proč původní? Dosáhnout obchodní důvod?
+Pamatujte na to, proč jste tento klasický začátek pro Azure Resource Manager cestu migrace.  Jaké byly původní obchodní důvody? Dosáhli jste obchodní důvod?
 
 
 ## <a name="next-steps"></a>Další postup
 
-* [Přehled o platformou podporované migraci prostředků IaaS z modelu classic na Azure Resource Manager](migration-classic-resource-manager-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [Přehled migrace prostředků IaaS podporovaných platformou z klasických na Azure Resource Manager](migration-classic-resource-manager-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 * [Podrobné technické informace o platformou podporované migraci z modelu Classic na Azure Resource Manager](migration-classic-resource-manager-deep-dive.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-* [Migrace prostředků IaaS z modelu classic na Azure Resource Manager pomocí Powershellu](migration-classic-resource-manager-ps.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-* [Migrace prostředků IaaS z modelu classic na Azure Resource Manageru pomocí rozhraní příkazového řádku](../linux/migration-classic-resource-manager-cli.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-* [Brána VPN z modelu classic do Resource Manageru migrace](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-classic-resource-manager-migration)
-* [Migrace okruhů ExpressRoute a přidružených virtuálních sítí z klasického modelu nasazení Resource Manageru](https://docs.microsoft.com/azure/expressroute/expressroute-migration-classic-resource-manager)
-* [Komunitní nástroje pro pomoc s migrací prostředků IaaS z modelu classic na Azure Resource Manager](migration-classic-resource-manager-community-tools.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [Použití PowerShellu k migraci prostředků IaaS z modelu Classic na Azure Resource Manager](migration-classic-resource-manager-ps.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [Migrace prostředků IaaS z modelu Classic na Azure Resource Manager pomocí rozhraní příkazového řádku](../linux/migration-classic-resource-manager-cli.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [Migrace VPN Gateway Classic na Správce prostředků](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-classic-resource-manager-migration)
+* [Migrace okruhů ExpressRoute a přidružených virtuálních sítí z modelu nasazení Classic do modelu nasazení Správce prostředků](https://docs.microsoft.com/azure/expressroute/expressroute-migration-classic-resource-manager)
+* [Komunitní nástroje pro pomoc s migrací prostředků IaaS z modelu Classic na Azure Resource Manager](migration-classic-resource-manager-community-tools.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 * [Běžné chyby při migraci](migration-classic-resource-manager-errors.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-* [Projděte si nejčastější dotazy o migraci prostředků IaaS z modelu classic na Azure Resource Manager](migration-classic-resource-manager-faq.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [Přečtěte si nejčastější dotazy týkající se migrace prostředků IaaS z modelu Classic na Azure Resource Manager](migration-classic-resource-manager-faq.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)

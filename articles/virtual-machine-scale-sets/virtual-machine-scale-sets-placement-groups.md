@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/9/2017
-ms.author: rajraj
-ms.openlocfilehash: 98032291d9b9d1b0885e7442b882a7f62f9ccd59
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: jeconnoc
+ms.openlocfilehash: 46ca46c99187b14974b78ccc4acc134a5f716b05
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60805984"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68326702"
 ---
 # <a name="working-with-large-virtual-machine-scale-sets"></a>Práce s velkými škálovacími sadami virtuálních počítačů
 Nyní můžete vytvořit [škálovací sady virtuálních počítačů](/azure/virtual-machine-scale-sets/) Azure s kapacitou až 1 000 virtuálních počítačů. V tomto dokumentu je _velká škálovací sada virtuálních počítačů_ definována jako škálovací sada umožňující škálování na více než 100 virtuálních počítačů. Tato funkce se nastavuje pomocí vlastnosti škálovací sady (_singlePlacementGroup=False_). 
@@ -42,7 +42,7 @@ Následující požadavky vám pomůžou rozhodnout, jestli vaše aplikace můž
 - Vyrovnávání zatížení úrovně 4 pomocí škálovacích sad, které se skládají z více skupin umístění, vyžaduje [skladovou položku služby Azure Load Balancer úrovně Standard](../load-balancer/load-balancer-standard-overview.md). Skladová položka služby Load Balancer úrovně Standard poskytuje další výhody, jako je například možnost vyrovnávat zatížení mezi několika škálovacími sadami. Standardní skladová položka také vyžaduje, aby škálovací sada byla přidružena ke skupině zabezpečení sítě, jinak fondy NAT nebudou správně fungovat. Pokud potřebujete použít skladovou položku služby Azure Load Balancer úrovně Basic, ujistěte se, že je škálovací sada nakonfigurována k používání jediné skupiny umístění, což je výchozí nastavení.
 - Vyrovnávání zatížení úrovně 7 pomocí služby Azure Application Gateway je podporováno pro všechny škálovací sady.
 - Škálovací sada je definována s jednou podsítí – ujistěte se, že má vaše podsíť dostatečně velký adresní prostor pro všechny požadované virtuální počítače. Škálovací sada ve výchozím nastavení provádí nadměrné zřizování (během nasazování nebo při horizontálním navyšováním kapacity vytváří virtuální počítače navíc, které se vám neúčtují) pro zvýšení spolehlivosti nasazení a výkonu. Počítejte s adresním prostorem o 20 % větším, než je počet virtuálních počítačů, na který plánujete škálovat.
-- Domény selhání a upgradovací domény jsou konzistentní pouze v rámci skupiny umístění. Tato architektura nemění celkovou dostupnost škálovací sady, protože virtuální počítače jsou rovnoměrně distribuované mezi rozdílný fyzický hardware. Znamená to ale, že pokud potřebujete zajistit, aby byly dva virtuální počítače na různém hardwaru, nesmíte je zapomenout umístit do různých domén selhání ve stejné skupině umístění. Další informace najdete na tomto odkazu: [Oblasti Azure a dostupnost](https://docs.microsoft.com/azure/virtual-machines/windows/regions-and-availability/). 
+- Domény selhání a upgradovací domény jsou konzistentní pouze v rámci skupiny umístění. Tato architektura nemění celkovou dostupnost škálovací sady, protože virtuální počítače jsou rovnoměrně distribuované mezi rozdílný fyzický hardware. Znamená to ale, že pokud potřebujete zajistit, aby byly dva virtuální počítače na různém hardwaru, nesmíte je zapomenout umístit do různých domén selhání ve stejné skupině umístění. Přečtěte si prosím tuto [možnost dostupnosti](/azure/virtual-machines/windows/availability)odkazů. 
 - Doména selhání a ID skupiny umístění jsou zobrazené v _zobrazení instance_ virtuálního počítače škálovací sady. Zobrazení instance virtuálního počítače škálovací sady můžete zobrazit v [Průzkumníku prostředků Azure](https://resources.azure.com/).
 
 ## <a name="creating-a-large-scale-set"></a>Vytvoření velké škálovací sady
@@ -61,7 +61,7 @@ Příkaz _vmss create_ použije určité výchozí konfigurační hodnoty, pokud
 az vmss create --help
 ```
 
-Pokud vytváříte velkou škálovací sadu s využitím šablony Azure Resource Manageru, ujistěte se, že šablona vytváří škálovací sadu založenou na Spravovaných discích Azure. Můžete nastavit _singlePlacementGroup_ vlastnost _false_ v _vlastnosti_ část _Microsoft.Compute/virtualMachineScaleSets_ prostředků. Následující fragment ve formátu JSON ukazuje začátek šablony škálovací sady, která zahrnuje nastavení kapacity na 1 000 virtuálních počítačů a nastavení vlastnosti _"singlePlacementGroup" : false_:
+Pokud vytváříte velkou škálovací sadu s využitím šablony Azure Resource Manageru, ujistěte se, že šablona vytváří škálovací sadu založenou na Spravovaných discích Azure. V části _Properties (vlastnosti_ ) prostředku _Microsoft. COMPUTE/virtualMachineScaleSets_ můžete nastavit vlastnost _singlePlacementGroup_ na _hodnotu false_ . Následující fragment ve formátu JSON ukazuje začátek šablony škálovací sady, která zahrnuje nastavení kapacity na 1 000 virtuálních počítačů a nastavení vlastnosti _"singlePlacementGroup" : false_:
 ```json
 {
   "type": "Microsoft.Compute/virtualMachineScaleSets",

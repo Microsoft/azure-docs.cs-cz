@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Spuštění úlohy Spark job v Azure Databricks pomocí šablony Resource Manageru '
+title: 'Rychlý start: Spuštění úlohy Sparku na Azure Databricks pomocí šablony Správce prostředků '
 description: Tento rychlý start ukazuje, jak pomocí šablony Azure Resource Manageru vytvořit pracovní prostor Azure Databricks a cluster Apache Spark a spustit úlohu Spark.
 services: azure-databricks
 ms.service: azure-databricks
@@ -9,25 +9,25 @@ ms.reviewer: jasonh
 ms.workload: big-data
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 11/12/2018
-ms.openlocfilehash: bee2be55ef34de90d7fec23844e5a2604e6a1294
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.date: 07/12/2019
+ms.openlocfilehash: 612c249abc3124e33badebd545f7220dd4cfc593
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62126711"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68311721"
 ---
-# <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-resource-manager-template"></a>Rychlý start: Spuštění úlohy Spark job v Azure Databricks pomocí šablony Azure Resource Manageru
+# <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-resource-manager-template"></a>Rychlý start: Spuštění úlohy Sparku na Azure Databricks pomocí šablony Azure Resource Manager
 
-V tomto rychlém startu se dozvíte, jak vytvořit pracovní prostor Azure Databricks pomocí šablony Azure Resource Manageru. Pracovní prostor použijete k vytvoření clusteru Apache Spark a spuštění úlohy Spark na clusteru Databricks. Další informace o službě Azure Databricks najdete v tématu [Co je Azure Databricks?](what-is-azure-databricks.md)
+V tomto rychlém startu použijete šablonu Azure Resource Manager k vytvoření pracovního prostoru Azure Databricks s Apache Sparkm clusterem. Úlohu spustíte v clusteru a pomocí vlastních grafů můžete vytvořit sestavy v reálném čase z bezplatného nebo placeného využití na základě demografických údajů.
 
-V tomto rychlém startu budete v rámci úlohy Spark analyzovat data o předplatných rozhlasových stanic, abyste získali přehled o bezplatném a placeném využití na základě demografických údajů.
+## <a name="prerequisites"></a>Požadavky
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+- Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
 
-> [!Note]
-> V tomto kurzu není možné provést pomocí **bezplatnou zkušební verzi předplatného Azure**.
-> Pokud chcete k vytvoření clusteru Azure Databricks použít bezplatný účet, přejděte na svůj profil a změňte své předplatné na **Průběžné platby**. Další informace najdete na stránce [bezplatného účtu Azure](https://azure.microsoft.com/free/).
+## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
+
+Přihlaste se k webu [Azure Portal](https://portal.azure.com). Tento kurz se nedá provést pomocí předplatného bezplatné zkušební verze Azure. Pokud chcete k vytvoření clusteru Azure Databricks použít bezplatný účet, přejděte na svůj profil a změňte své předplatné na **Průběžné platby**. Další informace najdete na stránce [bezplatného účtu Azure](https://azure.microsoft.com/free/).
 
 ## <a name="create-an-azure-databricks-workspace"></a>Vytvoření pracovního prostoru Azure Databricks
 
@@ -84,7 +84,7 @@ Další informace o vytváření clusterů najdete v tématu [Vytvoření cluste
 Než se pustíte do této části, je potřeba nejprve splnit následující požadavky:
 
 * [Vytvořte účet úložiště objektů blob v Azure](../storage/common/storage-quickstart-create-account.md).
-* Stáhněte si ukázkový soubor JSON [z Githubu](https://github.com/Azure/usql/blob/master/Examples/Samples/Data/json/radiowebsite/small_radio_json.json).
+* Stáhněte si ukázkový soubor JSON [z GitHubu](https://github.com/Azure/usql/blob/master/Examples/Samples/Data/json/radiowebsite/small_radio_json.json).
 * Nahrajte ukázkový soubor JSON do účtu úložiště objektů blob v Azure, který jste vytvořili. Soubory můžete nahrát pomocí [Průzkumníka služby Microsoft Azure Storage](../vs-azure-tools-storage-manage-with-storage-explorer.md).
 
 Provedením následujících úloh vytvořte ve službě Databricks poznámkový blok, nakonfigurujte ho na čtení dat z účtu služby Azure Blob Storage a potom na těchto datech spusťte úlohu Spark SQL.
@@ -108,7 +108,7 @@ Provedením následujících úloh vytvořte ve službě Databricks poznámkový
 
    V následujícím fragmentu kódu nahraďte `{YOUR CONTAINER NAME}` (Název vašeho kontejneru), `{YOUR STORAGE ACCOUNT NAME}` (Název vašeho účtu úložiště) a `{YOUR STORAGE ACCOUNT ACCESS KEY}` (Přístupový klíč vašeho účtu úložiště) odpovídajícími hodnotami pro váš účet Azure Storage. Vložte fragment kódu do prázdné buňky v poznámkovém bloku a stisknutím kláves SHIFT + ENTER buňku kódu spusťte.
 
-   * **Připojení účtu úložiště k systému souborů DBFS (doporučeno)**. V tomto fragmentu kódu se cesta k účtu Azure Storage připojí k cestě `/mnt/mypath`. Proto ve všech budoucích výskytech při přistupování k účtu Azure Storage už nemusíte zadávat úplnou cestu. Můžete použít jenom `/mnt/mypath`.
+   * **Připojení účtu úložiště k systému souborů DBFS (doporučeno)** . V tomto fragmentu kódu se cesta k účtu Azure Storage připojí k cestě `/mnt/mypath`. Proto ve všech budoucích výskytech při přistupování k účtu Azure Storage už nemusíte zadávat úplnou cestu. Můžete použít jenom `/mnt/mypath`.
 
           dbutils.fs.mount(
             source = "wasbs://{YOUR CONTAINER NAME}@{YOUR STORAGE ACCOUNT NAME}.blob.core.windows.net/",
@@ -151,7 +151,7 @@ Provedením následujících úloh vytvořte ve službě Databricks poznámkový
 
    ![Ukázková data JSON](./media/quickstart-create-databricks-workspace-resource-manager-template/databricks-sample-csv-data.png "Ukázková data JSON")
 
-   Vedle dalších podrobných informací ukázková data zachycují pohlaví posluchačů určité rozhlasové (název sloupce **pohlaví**) a zda je jejich předplatného bezplatné i placené (název sloupce **úroveň**).
+   Kromě dalších podrobností vzorová data zachycují pohlaví posluchačů rádiového kanálu (název sloupce, **pohlaví**) a zda je jejich předplatné bezplatné nebo placené (název sloupce, **úroveň**).
 
 7. Teď vytvoříte vizuální reprezentaci těchto dat, která bude znázorňovat, kolik uživatelů obou pohlaví má bezplatné účty a kolik je platících předplatitelů. Ve spodní části tabulkového výstupu klikněte na ikonu **Bar chart** (Pruhový graf) ikonu a potom na **Plot Options** (Možnosti grafu).
 
@@ -182,7 +182,7 @@ Pokud se cluster automaticky zastaví neukončíte ručně, k dispozici, jste vy
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto článku jste v Azure Databricks vytvořili cluster Spark a spustili úlohu Spark pomocí dat ve službě Azure Storage. Můžete si také projít článek [Zdroje dat Spark](https://docs.azuredatabricks.net/spark/latest/data-sources/index.html) a zjistit, jak do Azure Databricks importovat data z jiných zdrojů dat. Můžete si také prohlédnout šablonu Resource Manageru pro [Vytvoření pracovního prostoru Azure Databricks s vlastní adresou virtuální sítě](https://github.com/Azure/azure-quickstart-templates/tree/master/101-databricks-workspace-with-custom-vnet-address). Syntaxi JSON a vlastnosti, které chcete použít v šabloně najdete v tématu [Microsoft.Databricks/workspaces](/azure/templates/microsoft.databricks/workspaces) referenčními informacemi k šablonám.
+V tomto článku jste v Azure Databricks vytvořili cluster Spark a spustili úlohu Spark pomocí dat ve službě Azure Storage. Můžete si také projít článek [Zdroje dat Spark](https://docs.azuredatabricks.net/spark/latest/data-sources/index.html) a zjistit, jak do Azure Databricks importovat data z jiných zdrojů dat. Můžete si také prohlédnout šablonu Resource Manageru pro [Vytvoření pracovního prostoru Azure Databricks s vlastní adresou virtuální sítě](https://github.com/Azure/azure-quickstart-templates/tree/master/101-databricks-workspace-with-custom-vnet-address). Informace o syntaxi a vlastnostech JSON pro použití v šabloně najdete v referenčních informacích k šabloně [Microsoft. datacihly/pracovní prostory](/azure/templates/microsoft.databricks/workspaces) .
 
 V dalším článku se dozvíte, jak pomocí Azure Databricks provést operaci ETL (extrakce, transformace a načítání dat).
 

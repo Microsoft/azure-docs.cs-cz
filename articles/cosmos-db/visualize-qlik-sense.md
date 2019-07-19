@@ -1,83 +1,83 @@
 ---
-title: Připojení ke službě Azure Cosmos DB Qlik Sense a vizualizace dat
-description: Tento článek popisuje kroky potřebné pro připojení služby Azure Cosmos DB k Qlik Sense a vizualizace dat služby.
+title: Připojte Qlik smysl pro Azure Cosmos DB a vizualizaci dat
+description: Tento článek popisuje kroky potřebné k připojení Azure Cosmos DB k Qlik smyslům a vizualizaci dat.
 ms.service: cosmos-db
 author: SnehaGunda
 ms.author: sngun
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.reviewer: sngun
-ms.openlocfilehash: eea4366ca19c01af1f79566a5ca6bcae8805b6c3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3a955060eb5f19544860c1c97abe1577084bef24
+ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66242497"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67985549"
 ---
-# <a name="connect-qlik-sense-to-azure-cosmos-db-and-visualize-your-data"></a>Připojení ke službě Azure Cosmos DB Qlik Sense a vizualizace dat
+# <a name="connect-qlik-sense-to-azure-cosmos-db-and-visualize-your-data"></a>Připojte Qlik smysl pro Azure Cosmos DB a vizualizaci dat
 
-Qlik Sense je nástroj pro vizualizaci dat, která kombinuje data z různých zdrojů do jednoho zobrazení. Qlik Sense indexuje všech možných relací ve vašich datech, takže můžete získat okamžitý přehled k datům. S použitím Qlik Sense můžete vizualizovat data služby Azure Cosmos DB. Tento článek popisuje kroky potřebné pro připojení služby Azure Cosmos DB k Qlik Sense a vizualizace dat služby. 
+Qlik Sense je nástroj pro vizualizaci dat, který kombinuje data z různých zdrojů do jednoho zobrazení. Qlik Sense indexuje každou možnou relaci vašich dat, abyste mohli získat okamžité přehledy o datech. Azure Cosmos DB data můžete vizualizovat pomocí Qlikového rozpoznávání. Tento článek popisuje kroky potřebné k připojení Azure Cosmos DB k Qlik smyslům a vizualizaci dat. 
 
 > [!NOTE]
-> Připojení ke službě Azure Cosmos DB Qlik Sense aktuálně podporuje pro rozhraní API pro MongoDB účty pouze rozhraní SQL API a služby Azure Cosmos DB.
+> Připojení Qlikového smyslu k Azure Cosmos DB se v současnosti podporuje pro rozhraní SQL API a rozhraní Azure Cosmos DB API pro MongoDB pro účty.
 
-Můžete připojit Qlik Sense ke službě Azure Cosmos DB pomocí:
+Qlik je možné připojit k Azure Cosmos DB pomocí:
 
-* SQL API služby cosmos DB pomocí konektoru rozhraní ODBC.
+* Cosmos DB rozhraní SQL API pomocí konektoru ODBC.
 
-* Rozhraní API služby Azure Cosmos DB pro MongoDB pomocí konektoru Qlik Sense MongoDB (aktuálně ve verzi preview).
+* Rozhraní API pro MongoDB Azure Cosmos DB pomocí konektoru MongoDB Qlik (aktuálně ve verzi Preview).
 
-* Rozhraní API služby Azure Cosmos DB pro MongoDB a rozhraní SQL API pomocí rozhraní REST API konektoru v Qlik Sense.
+* Azure Cosmos DB rozhraní API pro MongoDB a SQL API pomocí konektoru REST API ve smyslu Qlik.
 
-* Cosmos DB rozhraní Mongodb API s využitím konektoru gRPC Qlik jádra.
-Tento článek popisuje podrobnosti o připojení k SQL API služby Cosmos DB pomocí konektoru rozhraní ODBC.
+* Cosmos DB rozhraní API Mongo DB pomocí konektoru gRPC pro Qlik Core.
+Tento článek popisuje podrobnosti o připojení k rozhraní Cosmos DB SQL API pomocí konektoru ODBC.
 
-Tento článek popisuje podrobnosti o připojení k SQL API služby Cosmos DB pomocí konektoru rozhraní ODBC.
+Tento článek popisuje podrobnosti o připojení k rozhraní Cosmos DB SQL API pomocí konektoru ODBC.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Před postupujte podle pokynů v tomto článku, ujistěte se, že máte připraveno následující prostředky:
+Než budete postupovat podle pokynů v tomto článku, ujistěte se, že máte připravené následující prostředky:
 
-* Stáhněte si [Qlik Sense Desktop](https://www.qlik.com/us/try-or-buy/download-qlik-sense) nebo nastavit Qlik Sense v Azure pomocí [instalace položky marketplace Qlik Sense](https://azuremarketplace.microsoft.com/marketplace/apps/qlik.qlik-sense).
+* Stáhněte si [desktopový Qlik](https://www.qlik.com/us/try-or-buy/download-qlik-sense) s smyslem nebo nastavte v Azure smysl Qlik tím, že [nainstalujete položku tržiště pro Qlik](https://azuremarketplace.microsoft.com/marketplace/apps/qlik.qlik-sense).
 
-* Stáhněte si [videohru data](https://www.kaggle.com/gregorut/videogamesales), je tato ukázková data ve formátu CSV. Bude ukládání těchto dat v účtu služby Cosmos DB a vizualizovat v Qlik Sense.
+* Stáhněte si [data](https://www.kaggle.com/gregorut/videogamesales)z videohry, Tato ukázková data jsou ve formátu CSV. Tato data budete ukládat do účtu Cosmos DB a vizualizujete je v Qlik smyslu.
 
-* Vytvoření účtu rozhraní SQL API služby Azure Cosmos DB pomocí kroků popsaných v [vytvořit účet](create-sql-api-dotnet.md#create-account) část tohoto článku rychlý start.
+* Vytvořte Azure Cosmos DB účet rozhraní SQL API pomocí postupu popsaného v části [Vytvoření účtu](create-sql-api-dotnet.md#create-account) v článku rychlý Start.
 
-* [Vytvořit databázi a kolekci](create-sql-api-dotnet.md#create-collection-database) – můžete použít hodnotu lze nastavit kolekci propustnosti na 1000 RU/s. 
+* [Vytvoření databáze a kolekce](create-sql-api-java.md#add-a-container) – můžete použít hodnotu nastavit propustnost kolekce na 1000 ru/s. 
 
-* Načtěte videohru ukázkových prodejních dat do účtu služby Cosmos DB. Můžete importovat data pomocí služby Azure Cosmos DB nástroj pro migraci dat, vám pomůžou [sekvenční](import-data.md#SQLSeqTarget) nebo [hromadný import](import-data.md#SQLBulkTarget) data. Trvá přibližně 3 až 5 minut, než se data určená k importu do účtu služby Cosmos DB.
+* Načtěte ukázková data pro video hry do účtu Cosmos DB. Data můžete importovat pomocí nástroje pro migraci dat Azure Cosmos DB a můžete provádět [sekvenční](import-data.md#SQLSeqTarget) nebo [Hromadný import](import-data.md#SQLBulkTarget) dat. Import dat do účtu Cosmos DB trvá přibližně 3-5 minut.
 
-* Stáhnout, nainstalovat a nakonfigurovat ovladač ODBC pomocí kroků v [připojit ke službě Cosmos DB pomocí ovladače ODBC](odbc-driver.md) článku. Data videohru jednoduché datové sady a není potřeba upravit schéma, použijte výchozí schéma mapování kolekce.
+* Stáhněte, nainstalujte a nakonfigurujte ovladač ODBC pomocí postupu v článku [připojení k Cosmos DB pomocí ovladače ODBC](odbc-driver.md) . Data hry pro video jsou jednoduchá sada dat a nemusíte upravovat schéma, stačí použít výchozí schéma mapování kolekce.
 
-## <a name="connect-qlik-sense-to-cosmos-db"></a>Připojení ke službě Cosmos DB Qlik Sense
+## <a name="connect-qlik-sense-to-cosmos-db"></a>Připojte Qlik smysl k Cosmos DB
 
-1. Otevřete Qlik Sense a vyberte **vytvořit novou aplikaci**. Zadejte název pro vaši aplikaci a vyberte **vytvořit**.
+1. Otevřete Qlik smysl a vyberte **vytvořit novou aplikaci**. Zadejte název vaší aplikace a vyberte **vytvořit**.
 
-   ![Vytvořit novou aplikaci Qlik Sense](./media/visualize-qlik-sense/create-new-qlik-sense-app.png)
+   ![Vytvoření nové aplikace pro rozpoznávání Qlik](./media/visualize-qlik-sense/create-new-qlik-sense-app.png)
 
-2. Po úspěšném vytvoření nové aplikace vyberte **otevřít aplikaci** a zvolte **přidat data ze souborů a dalších zdrojů**. 
+2. Po úspěšném vytvoření nové aplikace vyberte **otevřít aplikaci** a zvolte možnost **Přidat data ze souborů a dalších zdrojů**. 
 
-3. Ze zdroje dat vyberte **ODBC** otevřete nové okno nastavení připojení. 
+3. V části zdroje dat vyberte **ODBC** a otevřete tak nové okno nastavení připojení. 
 
-4. Přepnout na **uživatelské DSN** a zvolte připojení rozhraní ODBC, které jste vytvořili dříve. Zadejte název připojení a vyberte **vytvořit**. 
+4. Přepněte na **uživatelské DSN** a vyberte připojení ODBC, které jste vytvořili dříve. Zadejte název připojení a vyberte **vytvořit**. 
 
    ![Vytvoření nového připojení](./media/visualize-qlik-sense/create-new-connection.png)
 
-5. Po vytvoření připojení můžete vybrat databáze, kolekce, ve kterém se nachází data videohru a zobrazit jeho náhled.
+5. Po vytvoření připojení můžete zvolit databázi, kolekci, ve které se nachází data hry, a pak je zobrazíte ve verzi Preview.
 
-   ![Zvolte databázi a kolekci](./media/visualize-qlik-sense/choose-database-and-collection.png) 
+   ![Zvolit databázi a kolekci](./media/visualize-qlik-sense/choose-database-and-collection.png) 
 
-6. Dále vyberte **přidat data** k načítání dat do Qlik Sense. Po načtení dat do Qlik Sense můžete vygenerovat přehledy a provádět analýzu na datech. Můžete používat přehledy, nebo vytvořte svou vlastní aplikaci zkoumání videohry prodeje. Na následujícím obrázku 
+6. V dalším kroku vyberte **Přidat data** , aby se data načetla do Qlik. Po načtení dat do Qlikového rozpoznávání můžete vygenerovat přehledy a provádět analýzy dat. Můžete buď použít přehledy nebo sestavit vlastní aplikaci a prozkoumat si prodejní hry. Následující obrázek ukazuje 
 
    ![Vizualizace dat](./media/visualize-qlik-sense/visualize-data.png)
 
-### <a name="limitations-when-connecting-with-odbc"></a>Omezení při připojení k rozhraní ODBC 
+### <a name="limitations-when-connecting-with-odbc"></a>Omezení při připojování pomocí rozhraní ODBC 
 
-Cosmos DB je distribuované databáze bez schématu s ovladači modelovat kolem vývojáře potřebám. Ovladač ODBC vyžaduje, aby databáze se schématem k odvození sloupce, jejich datové typy a dalších vlastností. Pravidelné dotazů SQL nebo syntaxe DML s relační funkce není pro rozhraní SQL API služby Cosmos DB, protože rozhraní SQL API není ANSI SQL. Z tohoto důvodu jsou přeloženy SQL příkazy vydané prostřednictvím ovladače rozhraní ODBC do syntaxe SQL specifické pro službu Cosmos DB, který nemá ekvivalenty pro všechny konstruktory. Aby se zabránilo tyto potíže s překladem, musíte použít schéma při nastavování připojení ODBC. [Připojení pomocí ovladače ODBC](odbc-driver.md) článek nabízí návrhy a metody, které vám pomohou nakonfigurovat schématu. Ujistěte se, že k vytvoření tohoto mapování pro každou databázi a kolekci v rámci účtu služby Cosmos DB.
+Cosmos DB je distribuovaná databáze bez schématu s ovladači modelované pro potřeby vývojářů. Ovladač ODBC vyžaduje pro odvození sloupců, jejich datových typů a dalších vlastností databázi se schématem. Regulární dotaz SQL nebo syntaxe DML s relační schopností se nevztahují na Cosmos DB SQL API, protože rozhraní SQL API není ANSI SQL. Z tohoto důvodu jsou příkazy SQL vydané prostřednictvím ovladače ODBC přeloženy do syntaxe SQL specifické pro Cosmos DB, která nemá ekvivalenty pro všechny konstruktory. Chcete-li zabránit těmto potížím s překladem, je nutné při nastavování připojení ODBC použít schéma. Článek [připojit s ovladačem ODBC](odbc-driver.md) obsahuje návrhy a metody, které vám pomůžou s konfigurací schématu. Nezapomeňte toto mapování vytvořit pro každou databázi nebo kolekci v rámci Cosmos DB účtu.
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud používáte jiné vizualizace nástroje, jako je Power BI, můžete připojit k němu pomocí pokynů v následujícím dokumentu:
+Pokud používáte jiný nástroj pro vizualizaci, například Power BI, můžete se k němu připojit pomocí pokynů v následujícím dokumentu:
 
-* [Vizualizace dat služby Cosmos DB pomocí konektoru služby Power BI](powerbi-visualize.md)
+* [Vizualizace Cosmos DB dat pomocí konektoru Power BI](powerbi-visualize.md)

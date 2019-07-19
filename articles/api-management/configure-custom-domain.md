@@ -1,6 +1,6 @@
 ---
-title: Konfigurace vlastního názvu domény pro vaše instance Azure API Management | Dokumentace Microsoftu
-description: Toto téma popisuje postup konfigurace vlastního názvu domény pro vaše instance Azure API Management.
+title: Konfigurace vlastního názvu domény pro vaši instanci Azure API Management | Microsoft Docs
+description: Toto téma popisuje, jak nakonfigurovat vlastní název domény pro instanci Azure API Management.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -11,68 +11,78 @@ ms.workload: integration
 ms.topic: article
 ms.date: 07/01/2019
 ms.author: apimpm
-ms.openlocfilehash: 59b44dcc9ec3a1f7c274f426a19aa8ed2258db3e
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: 9eb03be5cd9704c3b124bfb16fd30c5c3466890d
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67509307"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68326142"
 ---
 # <a name="configure-a-custom-domain-name"></a>Konfigurace názvu vlastní domény
 
-Když vytvoříte instanci služby Azure API Management, Azure přiřadí, se subdoménou azure-api.net (například `apim-service-name.azure-api.net`). Však můžete zveřejnit koncové body rozhraní API Management pomocí vlastní název vlastní domény, například **contoso.com**. V tomto kurzu se dozvíte, jak mapovat existující vlastní název DNS ke koncovým bodům vystavené instance služby API Management.
+Když vytvoříte instanci služby Azure API Management, Azure mu přiřadí subdoménu azure-api.net (například `apim-service-name.azure-api.net`). Můžete ale zpřístupnit API Management koncových bodů pomocí vlastního názvu domény, například **contoso.com**. V tomto kurzu se dozvíte, jak namapovat stávající vlastní název DNS na koncové body vystavené instancí API Management.
 
 > [!WARNING]
-> Zákazníci, kteří chtěli používat Připnutí certifikátu pro zlepšení zabezpečení svých aplikací musí použít vlastní název domény > a certifikát, který řídí, ne výchozí certifikát. Zákazníci, kteří připnout výchozího certifikátu místo toho bude > tak pevné závislosti na vlastnostech certifikátu, nad kterými nemáte kontrolu, která není doporučený postup.
+> Zákazníci, kteří chtějí použít připnutí certifikátů ke zlepšení zabezpečení svých aplikací, musí používat vlastní název domény > a certifikát, který spravují, nikoli výchozí certifikát. Zákazníci, kteří připnout výchozí certifikát, místo toho budou > s ohledem na vlastnosti certifikátu, který neovládají, což není doporučený postup.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Chcete-li provést postup popsaný v tomto článku, budete potřebovat:
+K provedení kroků popsaných v tomto článku musíte mít:
 
 -   Aktivní předplatné Azure.
 
     [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
--   Instance služby API Management. Další informace najdete v tématu [vytvoření instance Azure API Management](get-started-create-service-instance.md).
--   Název vlastní domény, který vlastníte. Vlastní název domény, který chcete použít, musíte si opatřili samostatně a hostovaný na serveru DNS. Toto téma neposkytuje pokyny o tom, jak hostovat vlastní název domény.
--   Musíte mít platný certifikát s veřejným i privátním klíčem (. PFX). Subjektu nebo alternativní název subjektu (SAN) musí odpovídat názvu domény (díky tomu instanci služby API Management umožní bezpečně vystavit adresy URL přes protokol SSL).
+-   Instance API Management. Další informace najdete v tématu [vytvoření instance služby Azure API Management](get-started-create-service-instance.md).
+-   Vlastní název domény, který vlastníte. Vlastní název domény, který chcete použít, je nutné samostatně vyřídit a hostovat na serveru DNS. Toto téma neposkytuje pokyny k hostování vlastního názvu domény.
+-   Musíte mít platný certifikát s veřejným i privátním klíčem (. PFX). Alternativní název předmětu nebo subjektu (SAN) musí odpovídat názvu domény (to umožňuje API Management instance bezpečně vystavit adresy URL přes SSL).
 
-## <a name="use-the-azure-portal-to-set-a-custom-domain-name"></a>Nastavení vlastního názvu domény pomocí webu Azure portal
+## <a name="use-the-azure-portal-to-set-a-custom-domain-name"></a>Použijte Azure Portal k nastavení vlastního názvu domény.
 
-1. Přejděte do instance služby API Management v [webu Azure portal](https://portal.azure.com/).
+1. V [Azure Portal](https://portal.azure.com/)přejděte ke své instanci API Management.
 1. Vyberte **vlastní domény a SSL**.
 
-    Existuje několik koncových bodů, ke kterým přiřadíte vlastního názvu domény. V současné době jsou k dispozici následující koncové body:
+    K dispozici je několik koncových bodů, ke kterým můžete přiřadit vlastní název domény. V současné době jsou k dispozici následující koncové body:
 
-    - **Proxy** (výchozí hodnota je: `<apim-service-name>.azure-api.net`),
-    - **Portál** (výchozí hodnota je: `<apim-service-name>.portal.azure-api.net`),
-    - **Správa** (výchozí hodnota je: `<apim-service-name>.management.azure-api.net`),
-    - **Správce řízení služeb** (výchozí hodnota je: `<apim-service-name>.scm.azure-api.net`).
+    - **Proxy server** (výchozí hodnota je `<apim-service-name>.azure-api.net`:),
+    - **Portál** (výchozí hodnota je `<apim-service-name>.portal.azure-api.net`:),
+    - **Správa** (výchozí hodnota je `<apim-service-name>.management.azure-api.net`:),
+    - **SCM** (výchozí hodnota je `<apim-service-name>.scm.azure-api.net`:).
 
     > [!NOTE]
-    > Můžete aktualizovat všechny koncové body nebo některé z nich. Běžně, zákazníci provést aktualizaci **Proxy** (Tato adresa URL slouží k volání rozhraní API prostřednictvím API Management) a **portál** (portál pro vývojáře adresy URL). **Správa** a **SCM** koncové body se používá interně pouze vlastníci instance API Management a proto jsou méně často přiřazeny vlastního názvu domény. Ve většině případů lze nastavit pouze jeden vlastní název domény pro daný koncový bod. Ale **Premium** úroveň podporuje několik názvy hostitelů pro nastavení **Proxy** koncového bodu.
+    > Můžete aktualizovat všechny koncové body nebo některé z nich. Zákazníci aktualizují **proxy** (Tato adresa URL se běžně používá k volání rozhraní API vystaveného prostřednictvím API Management) a **portálu** (adresa URL portálu pro vývojáře). Koncové body **správy** a **SCM** se používají interně pouze vlastníky instance API Management, takže se jim pro vlastní název domény často přiřazují méně často. Ve většině případů lze pro daný koncový bod nastavit pouze jeden vlastní název domény. Úroveň **Premium** však podporuje nastavení více názvů hostitelů pro koncový bod **proxy serveru** .
 
 1. Vyberte koncový bod, který chcete aktualizovat.
-1. V okně na pravé straně, klikněte na tlačítko **vlastní**.
+1. V okně na pravé straně klikněte na **vlastní**.
 
-    - V **vlastní název domény**, zadejte název, který chcete použít. Například, `api.contoso.com`. Názvy domény se zástupnými znaky (například \*. uživatel@doména.com) jsou také podporovány.
-    - V **certifikát**, vyberte certifikát ze služby Key Vault. Můžete také nahrát platný. PFX souboru a zadejte jeho **heslo**v případě, že certifikát je chráněný heslem.
+    - Do pole **vlastní název domény**zadejte název, který chcete použít. Například, `api.contoso.com`. Podporují se i názvy domén se zástupnými znaky (například \*. domain.com).
+    - V části **certifikát**vyberte certifikát z Key Vault. Můžete také nahrát platnou hodnotu. Soubor PFX a zadejte **heslo**, pokud je certifikát chráněn heslem.
 
     > [!TIP]
-    > Doporučujeme používat Azure Key Vault pro správu certifikátů a nastavení na autorotate.
-    > Pokud používáte Azure Key Vault ke správě certifikát SSL pro vlastní doménu, ujistěte se, že certifikát je vložen do služby Key Vault [jako _certifikát_](https://docs.microsoft.com/rest/api/keyvault/CreateCertificate/CreateCertificate), nikoli _tajný klíč_.
+    > Doporučujeme použít Azure Key Vault pro správu certifikátů a jejich nastavení na automatické střídání.
+    > Pokud používáte Azure Key Vault ke správě vlastního certifikátu SSL domény, ujistěte se, že je certifikát vložen do Key Vault [jako _certifikát_](https://docs.microsoft.com/rest/api/keyvault/CreateCertificate/CreateCertificate), nikoli jako _tajný kód_.
     >
-    > Načíst certifikát protokolu SSL, API Management oprávnění seznamu get tajných kódů v Azure Key Vault, který obsahuje certifikát. Při použití webu Azure portal se automaticky dokončit všechny kroky nezbytné konfigurace. Při použití nástroje příkazového řádku nebo rozhraní API pro správu, musí být tato oprávnění udělena ručně. To se provádí ve dvou krocích. Nejprve pomocí spravované identity stránky na vaší instance služby API Management Ujistěte se, že je povolena Identity spravované a poznamenejte si id objektu zabezpečení, které jsou uvedené na této stránce. Za druhé poskytnout seznam oprávnění a zajistěte si oprávnění tajných kódů pro toto id objektu zabezpečení v Azure Key Vault, který obsahuje certifikát.
+    > Aby bylo možné načíst certifikát protokolu SSL, API Management musí mít v Azure Key Vault obsahujícím certifikát oprávnění Get tajných klíčů. Při použití Azure Portal všechny nezbytné kroky konfigurace se automaticky dokončí. Při použití nástrojů příkazového řádku nebo rozhraní API pro správu musí být tato oprávnění udělena ručně. To se provádí ve dvou krocích. Nejprve pomocí stránky spravované identity na vaší instanci API Management zajistěte, aby byla povolena spravovaná identita, a poznamenejte si ID objektu zabezpečení zobrazené na této stránce. Druhý, udělte seznam oprávnění a získejte přístup k tomuto ID objektu zabezpečení pro Azure Key Vault obsahující certifikát.
     >
-    > Pokud tento certifikát je nastavena na autorotate, API Management vyzvedne, až bude na nejnovější verzi automaticky bez odstávky do služby (Pokud je úroveň vaší správy rozhraní API se neuzavírá smlouva SLA – tj. ve všech úrovních, s výjimkou na úrovni Developer).
+    > Pokud je certifikát nastavený na automatické střídání, API Management se automaticky vybere nejnovější verze bez jakéhokoli výpadku služby (Pokud vaše API Management vrstva má smlouvu SLA – i. e. ve všech vrstvách kromě úrovně pro vývojáře).
 
-1. Kliknutím na tlačítko použít.
+1. Klikněte na použít.
 
     > [!NOTE]
-    > Proces přiřazení certifikátu může trvat 15 minut nebo déle v závislosti na velikosti nasazení. Vývojář skladová položka má výpadek, Basic a vyšších Skladových položek nemají výpadek.
+    > Proces přiřazení certifikátu může v závislosti na velikosti nasazení trvat 15 minut nebo déle. SKU pro vývojáře má výpadek, základní a vyšší SKU nevýpadek.
 
 [!INCLUDE [api-management-custom-domain](../../includes/api-management-custom-domain.md)]
 
-## <a name="next-steps"></a>Další postup
+## <a name="dns-configuration"></a>Konfigurace DNS
+
+Při konfiguraci DNS pro vlastní název domény máte dvě možnosti:
+
+- Nakonfigurujte záznam CNAME, který odkazuje na koncový bod vašeho nakonfigurovaného vlastního názvu domény.
+- Nakonfigurujte záznam A, který odkazuje na IP adresu brány API Management.
+
+> [!NOTE]
+> I když je IP adresa instance pro správu rozhraní API statická, může se v několika scénářích změnit. Z tohoto důvodu doporučujeme při konfiguraci vlastní domény použít CNAME. Při volbě metody konfigurace DNS Vezměte v úvahu. Další informace najdete v tématu [Nejčastější dotazy k rozhraní API Mananagement](https://docs.microsoft.com/azure/api-management/api-management-faq#is-the-api-management-gateway-ip-address-constant-can-i-use-it-in-firewall-rules).
+
+## <a name="next-steps"></a>Další kroky
 
 [Upgrade a škálování služby](upgrade-and-scale.md)

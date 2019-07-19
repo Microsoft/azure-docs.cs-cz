@@ -1,62 +1,62 @@
 ---
-title: Nastavení zotavení po havárii pro vícevrstvou aplikaci služby SharePoint pomocí služby Azure Site Recovery | Dokumentace Microsoftu
-description: Tento článek popisuje, jak nastavit zotavení po havárii pro vícevrstvou aplikaci služby SharePoint pomocí možností Azure Site Recovery.
+title: Nastavení zotavení po havárii pro vícevrstvou aplikaci SharePoint pomocí Azure Site Recovery | Microsoft Docs
+description: Tento článek popisuje, jak nastavit zotavení po havárii pro vícevrstvou aplikaci SharePoint pomocí možností Azure Site Recovery.
 author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 6/27/2019
 ms.author: sutalasi
-ms.openlocfilehash: 4b4edec43d01878bbc5899487f6ee1d2816eb135
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.openlocfilehash: bc6d9e7214d2b7cd009e7562357bed420e49f185
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67491832"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68325114"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-sharepoint-application-for-disaster-recovery-using-azure-site-recovery"></a>Nastavení zotavení po havárii pro vícevrstvou aplikaci SharePoint pro zotavení po havárii pomocí Azure Site Recovery
 
-Tento článek popisuje podrobně k ochraně aplikací SharePoint pomocí [Azure Site Recovery](site-recovery-overview.md).
+Tento článek podrobně popisuje, jak chránit aplikaci SharePoint pomocí [Azure Site Recovery](site-recovery-overview.md).
 
 
 ## <a name="overview"></a>Přehled
 
-Microsoft SharePoint je výkonné aplikace, které mohou pomoci skupiny nebo oddělení organizace, spolupráce a sdílení informací. SharePoint může poskytnout intranetu portálů, správy dokumentů a souborů, spolupráci, sociálních sítí, extranetů, weby, podnikové vyhledávání a business intelligence. Má také systémové integrace, integrace procesů a možnosti automatizace pracovního postupu. Obvykle organizace vezměte v úvahu to jako 1. úrovně aplikace citlivé na výpadky a ztráty dat.
+Microsoft SharePoint je výkonné aplikace, která může pomáhat skupině nebo oddělením organizovat, spolupracovat a sdílet informace. SharePoint nabízí intranetové portály, správu dokumentů a souborů, spolupráci, sociální sítě, extranety, weby, hledání v podniku a business intelligence. Má taky integraci systému, integraci procesů a možnosti automatizace pracovních postupů. Organizace je obvykle považují za aplikace vrstvy 1 citlivé na výpadky a ztráty dat.
 
-Microsoft SharePoint ještě dnes, neposkytuje žádné možnosti zotavení po havárii out-of-the-box. Bez ohledu na typ a škálování havárii obnovení zahrnuje použití pohotovostní datového centra, kterou můžete obnovit farmu, do. Pohotovostní datová centra jsou požadovány pro scénáře, kde místní systémy redundantní a zálohování nelze zotavení z výpadku v primárním datovém centru.
+V dnešní době neposkytuje Microsoft SharePoint žádné možnosti zotavení po havárii. Bez ohledu na typ a rozsah havárie vyžaduje obnovení použití pohotovostního datového centra, ve kterém můžete farmu obnovit. Pohotovostní datová centra se vyžadují pro scénáře, kdy se místní redundantní systémy a zálohy nemůžou v primárním datovém centru zotavit z výpadku.
 
-Řešení pro zotavení po havárii dobré by měla umožňovat modelování plány obnovení kolem komplexních aplikačních architektur, jako je SharePoint. Musí být také možnost přidávat vlastní postup zpracování aplikace mapování mezi různými úrovněmi a proto převzetí služeb při selhání jedním kliknutím poskytuje nižší RTO v případě havárie.
+Dobré řešení zotavení po havárii by mělo umožňovat modelování plánů obnovení okolo složitých aplikačních architektur, jako je třeba SharePoint. Měl by taky mít možnost přidat vlastní kroky pro zpracování mapování aplikací mezi různými úrovněmi a tím zajistit převzetí služeb při selhání jedním kliknutím a s nižší RTOou v případě havárie.
 
-Tento článek popisuje podrobně k ochraně aplikací SharePoint pomocí [Azure Site Recovery](site-recovery-overview.md). Tento článek se zabývá osvědčené postupy pro replikaci tři vrstvy aplikace služby SharePoint do Azure, jak zotavení po havárii a jak můžete převzetí služeb při selhání aplikace do Azure.
+Tento článek podrobně popisuje, jak chránit aplikaci SharePoint pomocí [Azure Site Recovery](site-recovery-overview.md). Tento článek se věnuje osvědčeným postupům pro replikaci aplikace služby SharePoint na tři vrstvy do Azure, jak můžete provést postup zotavení po havárii a jak můžete převzít služby při selhání do Azure.
 
-Můžete se podívat níže uvedené video o obnovení vícevrstvých aplikací do Azure.
+Můžete se podívat na následující video o obnovování vícevrstvé aplikace do Azure.
 
 > [!VIDEO https://channel9.msdn.com/Series/Azure-Site-Recovery/Disaster-Recovery-of-load-balanced-multi-tier-applications-using-Azure-Site-Recovery/player]
 
 
 ## <a name="prerequisites"></a>Požadavky
 
-Než začnete, ujistěte se, že rozumíte následující:
+Než začnete, ujistěte se, že rozumíte následujícímu:
 
 1. [Replikace virtuálního počítače do Azure](site-recovery-vmware-to-azure.md)
-2. Jak [návrh sítě pro zotavení](site-recovery-network-design.md)
-3. [Provádění testovací převzetí služeb při selhání do Azure](site-recovery-test-failover-to-azure.md)
-4. [Provádění převzetí služeb při selhání do Azure](site-recovery-failover.md)
-5. Jak [replikace řadiče domény](site-recovery-active-directory.md)
-6. Jak [replikace SQL serveru](site-recovery-sql.md)
+2. [Návrh sítě pro obnovení](site-recovery-network-design.md)
+3. [Test převzetí služeb při selhání do Azure](site-recovery-test-failover-to-azure.md)
+4. [Převzetí služeb při selhání do Azure](site-recovery-failover.md)
+5. Postup [replikace řadiče domény](site-recovery-active-directory.md)
+6. Postup [replikace SQL Server](site-recovery-sql.md)
 
 ## <a name="sharepoint-architecture"></a>Architektura služby SharePoint
 
-SharePoint je možné nasadit na jeden nebo více serverů pomocí vrstvené topologie a role serveru implementovat návrh farmy, který splňuje zvláštní cíle a úkoly. Typické velkých, vysoce žádané farmu služby SharePoint server, který podporuje velký počet souběžných uživatelů a velký počet položek obsahu pomocí služby seskupování jako součást své strategie škálovatelnost. Tento přístup zahrnuje spuštění služby na vyhrazené servery, seskupování tyto služby a potom horizontální navýšení kapacity na servery jako skupinu. Následující topologie znázorňuje služby a seskupení pro třívrstvou farmu serveru SharePoint server. Najdete dokumentaci k Sharepointu a architektury produktu řádku podrobné informace o různé topologie služby SharePoint. Můžete najít další podrobnosti o nasazení Sharepointu 2013 v [tento dokument](https://technet.microsoft.com/library/cc303422.aspx).
+Službu SharePoint lze nasadit na jeden nebo více serverů pomocí vrstvené topologie a role serveru pro implementaci návrhu farmy, který splňuje určité cíle a cíle. Typickou velkou, vysoce potřebnou farmou serveru SharePoint, která podporuje vysoký počet souběžných uživatelů a velký počet položek obsahu, používá seskupení služeb jako součást strategie škálovatelnosti. Tento přístup zahrnuje spuštěné služby na vyhrazených serverech, seskupovat tyto služby dohromady a potom škálovat servery jako skupinu. Následující topologie znázorňuje seskupení služeb a serverů pro farmu serveru SharePoint Server na třetí úrovni. Podrobné pokyny k různým topologiím SharePointu najdete v dokumentaci k SharePointu a architekturách produktového řádku. Další podrobnosti o nasazení SharePoint 2013 najdete v [tomto dokumentu](https://technet.microsoft.com/library/cc303422.aspx).
 
 
 
-![Model nasazení 1](./media/site-recovery-sharepoint/sharepointarch.png)
+![Vzor nasazení 1](./media/site-recovery-sharepoint/sharepointarch.png)
 
 
 ## <a name="site-recovery-support"></a>Podpora Site Recovery
 
-Pro vytvoření tohoto článku, byly použity virtuální počítače VMware s Windows Server 2012 R2 Enterprise. Byly použity SharePoint 2013 Enterprise edition a SQL server 2014 Enterprise edition. Flexibilní použití je replikace Site Recovery se očekává doporučení uvedená tady přidržte i následující scénáře.
+Pro vytvoření tohoto článku se použily virtuální počítače VMware s Windows Serverem 2012 R2 Enterprise. Používaly se SharePoint 2013 Enterprise Edition a SQL Server 2014 Enterprise Edition. Jelikož je replikace Site Recovery nezávislá aplikací, očekává se, že zde uvedená doporučení platí i pro následující scénáře.
 
 ### <a name="source-and-target"></a>Zdroj a cíl
 
@@ -67,144 +67,144 @@ Pro vytvoření tohoto článku, byly použity virtuální počítače VMware s 
 **Fyzický server** | Ano | Ano
 **Azure** | Není k dispozici | Ano
 
-### <a name="sharepoint-versions"></a>SharePoint Versions
+### <a name="sharepoint-versions"></a>Verze SharePointu
 Jsou podporovány následující verze serveru SharePoint.
 
-* SharePoint server 2013 Standard
-* SharePoint server 2013 Enterprise
-* SharePoint server 2016 Standard
-* SharePoint serveru 2016 Enterprise
+* SharePoint Server 2013 Standard
+* SharePoint Server 2013 Enterprise
+* SharePoint Server 2016 Standard
+* SharePoint Server 2016 Enterprise
 
 ### <a name="things-to-keep-in-mind"></a>Co je potřeba mít na paměti
 
-Pokud používáte sdílené založené na disku clusteru jako všechny úrovně ve vaší aplikaci pak nebude možné použít replikace Site Recovery k replikaci těchto virtuálních počítačů. Můžete použít nativní replikace poskytovaný aplikací a pak použít [plánu obnovení](site-recovery-create-recovery-plans.md) převzetí služeb při selhání všech úrovní.
+Pokud v aplikaci používáte sdílený cluster založený na discích jako libovolná úroveň, nebudete moct k replikaci těchto virtuálních počítačů použít replikaci Site Recovery. Můžete použít nativní replikaci poskytovanou aplikací a potom použít [plán obnovení](site-recovery-create-recovery-plans.md) pro převzetí služeb při selhání všech vrstev.
 
 ## <a name="replicating-virtual-machines"></a>Replikace virtuálních počítačů
 
-Postupujte podle [návod](site-recovery-vmware-to-azure.md) ke spuštění replikace virtuálního počítače do Azure.
+Podle [těchto pokynů](site-recovery-vmware-to-azure.md) spusťte replikaci virtuálního počítače do Azure.
 
-* Po dokončení replikace, ujistěte se, že přejdete do každého virtuálního počítače na jednotlivé vrstvy a vyberte stejné skupině dostupnosti "replikovaná položka > Nastavení > Vlastnosti > výpočty a síť". Například pokud vaše webové vrstvy 3 virtuální počítače, ujistěte se, že jsou 3 virtuální počítače nakonfigurované jako součást stejné skupině dostupnosti v Azure.
+* Po dokončení replikace se ujistěte, že jste přešli na všechny virtuální počítače každé úrovně, a v části replikovaná položka > Nastavení vyberte stejnou skupinu dostupnosti > Vlastnosti > COMPUTE a Network. Pokud má vaše webová vrstva například 3 virtuální počítače, zajistěte, aby všechny 3 virtuální počítače byly nakonfigurované jako součást stejné sady dostupnosti v Azure.
 
-    ![Sady dostupnosti](./media/site-recovery-sharepoint/select-av-set.png)
+    ![Set-Availability-set](./media/site-recovery-sharepoint/select-av-set.png)
 
-* Pokyny k ochraně služby Active Directory a DNS, najdete v tématu [ochrana služby Active Directory a DNS](site-recovery-active-directory.md) dokumentu.
+* Pokyny k ochraně služby Active Directory a DNS najdete v tématu [ochrana služby Active Directory a dokumentu DNS](site-recovery-active-directory.md) .
 
-* Informace o ochraně databázová vrstva spouštěný na SQL serveru najdete v tématu [chránit SQL Server](site-recovery-active-directory.md) dokumentu.
+* Pokyny k ochraně databázových vrstev běžících na SQL serveru najdete v tématu [ochrana SQL Server](site-recovery-active-directory.md) dokumentu.
 
 ## <a name="networking-configuration"></a>Konfigurace sítě
 
 ### <a name="network-properties"></a>Vlastnosti sítě
 
-* Pro aplikace a virtuální počítače webové vrstvy konfigurace nastavení sítě na webu Azure portal tak, aby virtuální počítače získat připojen ke správné síti zotavení po Havárii po převzetí služeb při selhání.
+* U virtuálních počítačů aplikace a webové vrstvy nakonfigurujte nastavení sítě v Azure Portal tak, aby se virtuální počítače po převzetí služeb při selhání připojily k pravé síti DR.
 
-    ![Vyberte síť](./media/site-recovery-sharepoint/select-network.png)
-
-
-* Pokud používáte statické IP adresy, zadejte IP adresu, která má virtuální počítač do **cílová IP adresa** pole
-
-    ![Nastavení statické IP adresy](./media/site-recovery-sharepoint/set-static-ip.png)
-
-### <a name="dns-and-traffic-routing"></a>DNS a směrování provozu
-
-U lokalit, směřujících do Internetu [vytvořit profil služby Traffic Manager typu "Priority"](../traffic-manager/traffic-manager-create-profile.md) v rámci předplatného Azure. A potom nakonfigurujte profil DNS a Traffic Manager následujícím způsobem.
+    ![Vybrat síť](./media/site-recovery-sharepoint/select-network.png)
 
 
-| **kde** | **Zdroj** | **Cíl**|
+* Pokud používáte statickou IP adresu, zadejte IP adresu, kterou má virtuální počítač převzít, do pole **cílová IP adresa** .
+
+    ![Nastavit statickou IP adresu](./media/site-recovery-sharepoint/set-static-ip.png)
+
+### <a name="dns-and-traffic-routing"></a>Směrování DNS a provozu
+
+Pro internetové weby vytvořte v předplatném Azure [profil Traffic Manager typu priorita](../traffic-manager/traffic-manager-create-profile.md) . Pak následujícím způsobem nakonfigurujte DNS a profil Traffic Manager.
+
+
+| **,** | **Zdroj** | **Cílové**|
 | --- | --- | --- |
-| Veřejná služba DNS | Veřejná služba DNS pro weby služby SharePoint <br/><br/> Příklad: sharepoint.contoso.com | Traffic Manager <br/><br/> contososharepoint.trafficmanager.net |
-| On-premises DNS | sharepointonprem.contoso.com | Veřejné IP adresy na farmě místní |
+| Veřejná služba DNS | Veřejné DNS pro weby služby SharePoint <br/><br/> Např.: sharepoint.contoso.com | Traffic Manager <br/><br/> contososharepoint.trafficmanager.net |
+| Místní DNS | sharepointonprem.contoso.com | Veřejná IP adresa v místní farmě |
 
 
-V profilu služby Traffic Manager [vytvoření koncových bodů primárními a obnovovacími](../traffic-manager/traffic-manager-configure-priority-routing-method.md). Použijte externí koncový bod pro místní koncový bod a veřejnou IP adresu pro koncový bod Azure. Ujistěte se, že je priorita nastavena tak, aby místní koncový bod.
+V profilu Traffic Manager [vytvořte primární koncové body a koncových bodů obnovení](../traffic-manager/traffic-manager-configure-priority-routing-method.md). Použijte externí koncový bod pro místní koncový bod a veřejnou IP adresu pro koncový bod Azure. Ujistěte se, že je priorita nastavená na hodnotu vyšší na místní koncový bod.
 
-Zkušební stránku na určitém portu (např. 800) hostovat ve webové vrstvě služby SharePoint v pořadí pro Traffic Manageru automaticky zjišťovat dostupnost příspěvek převzetí služeb při selhání. Toto je alternativní řešení v případě, že na žádném z webů služby SharePoint nelze povolit anonymní ověřování.
+Hostování testovací stránky na specifickém portu (například 800) ve webové vrstvě služby SharePoint, aby Traffic Manager automaticky zjišťoval dostupnost po převzetí služeb při selhání. Toto je alternativní řešení pro případ, že nemůžete povolit anonymní ověřování na žádném z vašich webů SharePointu.
 
-[Konfigurace profilu Traffic Manageru](../traffic-manager/traffic-manager-configure-priority-routing-method.md) se následující nastavení.
+[Nakonfigurujte profil Traffic Manager](../traffic-manager/traffic-manager-configure-priority-routing-method.md) s níže uvedeným nastavením.
 
-* Metody směrování – "Priority"
-* DNS hodnota time to live (TTL) – 30 sekund.
-* Nastavení sledování koncových bodů – Pokud povolíte anonymní ověřování, můžete zadat koncový bod konkrétního webu. Nebo můžete použít zkušební stránku na určitém portu (např. 800).
+* Metoda směrování – priorita
+* Hodnota TTL (Time to Live) pro DNS (TTL) – 30 sekund
+* Nastavení monitorování koncového bodu – Pokud můžete povolit anonymní ověřování, můžete dát konkrétnímu koncovému bodu webu. Nebo můžete použít testovací stránku na určitém portu (například 800).
 
-## <a name="creating-a-recovery-plan"></a>Vytváří se plán obnovení
+## <a name="creating-a-recovery-plan"></a>Vytvoření plánu obnovení
 
-Plán obnovení umožňuje pořadí převzetí služeb při selhání v různých vrstvách vícevrstvou aplikaci, proto zachování konzistence aplikace. Postupujte podle níže uvedený postup při vytváření plánu obnovení, který pro vícevrstvou webovou aplikaci. [Další informace o vytvoření plánu obnovení](site-recovery-runbook-automation.md#customize-the-recovery-plan).
+Plán obnovení umožňuje sekvencování převzetí služeb při selhání různých vrstev v vícevrstvé aplikaci, takže udržování konzistence aplikací. Při vytváření plánu obnovení vícevrstvé webové aplikace postupujte podle následujících kroků. [Přečtěte si další informace o vytvoření plánu obnovení](site-recovery-runbook-automation.md#customize-the-recovery-plan).
 
-### <a name="adding-virtual-machines-to-failover-groups"></a>Přidávání virtuálních počítačů do skupiny převzetí služeb při selhání
+### <a name="adding-virtual-machines-to-failover-groups"></a>Přidávání virtuálních počítačů do skupin s podporou převzetí služeb při selhání
 
-1. Vytvořte plán obnovení tak, že přidáte aplikace a virtuální počítače webové vrstvy.
-2. Klikněte na "Vlastní" seskupení virtuálních počítačů. Ve výchozím nastavení všechny virtuální počítače jsou součástí "Skupina 1".
+1. Vytvořte plán obnovení přidáním virtuálních počítačů aplikace a webové vrstvy.
+2. Pokud chcete seskupit virtuální počítače, klikněte na přizpůsobit. Ve výchozím nastavení jsou všechny virtuální počítače součástí skupiny 1.
 
     ![Přizpůsobení RP](./media/site-recovery-sharepoint/rp-groups.png)
 
-3. Vytvořit jinou skupinu (skupiny 2) a přesunout virtuální počítače webové vrstvy do nové skupiny. Vaše virtuální počítače vrstvy aplikace by měly být součástí skupiny 1' a virtuální počítače webové vrstvy musí být součástí "Skupina2". Toto je zajistit, aby spouštěcí virtuální počítače vrstvy aplikace si nejprve následovaný virtuální počítače webové vrstvy.
+3. Vytvořte další skupinu (skupinu 2) a přesuňte virtuální počítače webové vrstvy do nové skupiny. Virtuální počítače vrstvy aplikace by měly být součástí skupiny 1 a virtuální počítače webové vrstvy by měly být součástí skupiny 2. K tomu je potřeba zajistit, aby se virtuální počítače na úrovni aplikace nejdřív spouštěly, a potom virtuální počítače webové vrstvy.
 
 
 ### <a name="adding-scripts-to-the-recovery-plan"></a>Přidávání skriptů do plánu obnovení
 
-Nejčastěji používané skriptů Azure Site Recovery můžete nasadit do účtu Automation, kliknutím na tlačítko 'Nasadit do Azure' níže. Při použití všechny publikované skripty, zajistěte, aby že postupujte podle pokynů ve skriptu.
+Nejčastěji používané Azure Site Recovery skripty můžete nasadit do svého účtu Automation kliknutím na tlačítko nasadit do Azure níže. Při použití publikovaného skriptu se ujistěte, že budete postupovat podle pokynů ve skriptu.
 
 [![Nasazení do Azure](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/c4803408-340e-49e3-9a1f-0ed3f689813d.png)](https://aka.ms/asr-automationrunbooks-deploy)
 
-1. Přidáte skript akce před "Skupina 1" do skupiny dostupnosti SQL převzetí služeb při selhání. Pomocí skriptu "Azure Site Recovery-SQL-FailoverAG" publikované v ukázkových skriptech. Ujistěte se, postupujte podle pokynů ve skriptu a proveďte požadované změny ve skriptu odpovídajícím způsobem.
+1. Přidejte skript pre-Action do skupiny 1 pro převzetí služeb při selhání skupiny dostupnosti SQL. Použijte skript ASR-SQL-FailoverAG, který je publikovaný ve vzorových skriptech. Ujistěte se, že dodržujete pokyny ve skriptu a patřičně proveďte požadované změny ve skriptu.
 
     ![Add-AG-Script-Step-1](./media/site-recovery-sharepoint/add-ag-script-step1.png)
 
     ![Add-AG-Script-Step-2](./media/site-recovery-sharepoint/add-ag-script-step2.png)
 
-2. Přidat skript akce post připojit nástroj pro vyrovnávání zatížení se oproti virtuálním počítačům webová vrstva (2. skupina). Pomocí skriptu "Azure Site Recovery-AddSingleLoadBalancer" publikované v ukázkových skriptech. Ujistěte se, postupujte podle pokynů ve skriptu a proveďte požadované změny ve skriptu odpovídajícím způsobem.
+2. Přidejte skript akce post pro připojení nástroje pro vyrovnávání zatížení ve virtuálních počítačích převzetí služeb při selhání webové vrstvy (skupina 2). Použijte skript ASR-AddSingleLoadBalancer, který je publikovaný ve vzorových skriptech. Ujistěte se, že dodržujete pokyny ve skriptu a patřičně proveďte požadované změny ve skriptu.
 
     ![Add-LB-Script-Step-1](./media/site-recovery-sharepoint/add-lb-script-step1.png)
 
     ![Add-LB-Script-Step-2](./media/site-recovery-sharepoint/add-lb-script-step2.png)
 
-3. Přidejte ruční krok k aktualizaci záznamů DNS tak, aby odkazoval na nové farmě v Azure.
+3. Přidejte ruční krok, který aktualizuje záznamy DNS tak, aby odkazovaly na novou farmu v Azure.
 
-    * Pro internetové weby nejsou žádné aktualizace DNS požadovaný příspěvek převzetí služeb při selhání. Postupujte podle kroků popsaných v části "Síťové pokyny" Konfigurace Traffic Manageru. Pokud profil Traffic Manageru je nastavený podle popisu v předchozí části, přidejte skript, který otevře fiktivní port (800 v příkladu) ve virtuálním počítači Azure.
+    * Pro internetové weby nejsou nutné žádné aktualizace DNS po převzetí služeb při selhání. Postupujte podle kroků popsaných v části "doprovodné materiály k síti" a nakonfigurujte Traffic Manager. Pokud byl profil Traffic Manager nastavený jak je popsáno v předchozí části, přidejte skript pro otevření fiktivního portu (v příkladu 800) na virtuálním počítači Azure.
 
-    * Pro interní weby přístupné pro zákazníky přidejte provedení ručního kroku aktualizujte záznam DNS tak, aby odkazoval na nové webové vrstvy Virtuálního počítače IP adresu nástroje pro vyrovnávání zatížení.
+    * U interních webů přidejte ruční krok, který aktualizuje záznam DNS tak, aby odkazoval na novou IP adresu nástroje pro vyrovnávání zatížení virtuálního počítače webové vrstvy.
 
-4. Přidejte ruční krok vyhledávací aplikaci obnovení ze zálohy nebo spustit novou vyhledávací službu.
+4. Přidejte ruční krok k obnovení vyhledávací aplikace ze zálohy nebo spusťte novou vyhledávací službu.
 
-5. Pro aplikaci služby Search obnovení ze zálohy, postupujte podle následujících kroků.
+5. Chcete-li obnovit aplikaci Vyhledávací služby ze zálohy, postupujte podle následujících kroků.
 
-    * Tato metoda předpokládá, že zálohu aplikace Vyhledávací služby byla provedena před katastrofickými událostí a zda je záloha dostupná v lokalitě zotavení po Havárii.
-    * Toho lze dosáhnout snadné plánování zálohování (například jednou denně) a použitím procedury kopírování umístit zálohy v lokalitě zotavení po Havárii. Kopírování postupy mohou zahrnovat skriptované programů, jako jsou nástroje AzCopy (kopie Azure) nebo nastavení DFSR (distribuované služby replikace souborů).
-    * Teď, když je farma služby SharePoint spuštěna, přejděte centrální správy 'Zálohování a obnovení' a výběr obnovení. Obnovení interrogates zadané umístění zálohy (budete muset aktualizovat hodnotu). Vyberte zálohu aplikace služby Search, kterou chcete obnovit.
-    * Hledání se obnoví. Pamatujte, že obnovení očekává stejné topologie (stejný počet serverů) a stejné pevný disk písmena přiřazené na tyto servery. Další informace najdete v tématu [obnovení vyhledávací služby aplikace v Sharepointu 2013](https://technet.microsoft.com/library/ee748654.aspx) dokumentu.
+    * Tato metoda předpokládá, že záloha aplikace Search Service byla provedena před závažnou událostí a že záloha je k dispozici na webu DR.
+    * To je možné snadno dosáhnout naplánováním zálohování (například jednou za den) a použitím postupu kopírování k umístění zálohy na webu DR. Procedury kopírování můžou zahrnovat skriptované programy, jako je například AzCopy (Azure Copy) nebo nastavení služby DFSR (replikace distribuovaných souborových služeb).
+    * Teď, když je farma služby SharePoint spuštěná, přejděte do centrální správy, zálohování a obnovení a vyberte obnovit. Obnovení interrogates zadané umístění zálohy (možná budete muset hodnotu aktualizovat). Vyberte zálohu Search Service aplikace, kterou chcete obnovit.
+    * Hledání je obnoveno. Mějte na paměti, že obnovení očekává vyhledání stejné topologie (stejného počtu serverů) a stejných písmen pevného disku přiřazených k těmto serverům. Další informace najdete v dokumentu ["obnovení aplikace Vyhledávací služby v SharePoint 2013"](https://technet.microsoft.com/library/ee748654.aspx) .
 
 
-6. Pro spuštění pomocí nové aplikace služby vyhledávání, postupujte podle následujících kroků.
+6. Pokud chcete začít s novou aplikací Vyhledávací služby, postupujte podle následujících kroků.
 
-    * Tato metoda předpokládá, že zálohy databáze "Správa vyhledávání" je k dispozici v lokalitě zotavení po Havárii.
-    * Vzhledem k tomu, že ostatní databáze aplikace služby Search se nereplikují, musí být znovu vytvořena. Uděláte to tak, přejděte do centrální správy a odstraňte aplikaci Vyhledávací služby. Na všechny servery, které jsou hostiteli Index vyhledávání odstraňte soubory indexu.
-    * Znovu vytvořte aplikaci Vyhledávací služby a tím se znovu vytvoří databáze. Doporučujeme mít připravenou skript, který se znovu vytvoří tuto aplikaci služby, protože není možné provádět všechny akce prostřednictvím grafického uživatelského rozhraní. Například index umístění disku a konfiguraci topologie vyhledávání jsou možné pouze pomocí rutin prostředí PowerShell služby SharePoint. Použijte rutinu prostředí Windows PowerShell SPEnterpriseSearchServiceApplication obnovení a zadejte zasílání protokolů a replikované správy vyhledávání databázi, Search_Service__DB. Tato rutina poskytuje konfigurace vyhledávání, schéma, spravované vlastnosti, pravidla a zdroje a vytvoří výchozí sadu ostatní součásti.
-    * Jakmile aplikaci Vyhledávací služby je potřeba znovu vytvořit, je nutné spustit úplné procházení pro každý zdroj obsahu pro obnovení služby Search. Můžete přijít o některé informace analytics z místní farmy, jako je například hledat doporučení.
+    * Tato metoda předpokládá, že je na webu DR k dispozici záloha databáze pro hledání.
+    * Vzhledem k tomu, že ostatní databáze aplikace Search Service nejsou replikovány, je nutné je znovu vytvořit. Provedete to tak, že přejdete do centrální správy a odstraníte aplikaci Search Service. Na všech serverech, které jsou hostiteli indexu hledání, odstraňte soubory indexů.
+    * Opětovné vytvoření aplikace Search Service a tím znovu vytvoří databáze. Doporučuje se mít připravený skript, který znovu vytvoří tuto aplikaci služby, protože není možné provádět všechny akce prostřednictvím grafického uživatelského rozhraní. Například nastavení umístění jednotky indexu a konfigurace topologie hledání je možné pouze pomocí rutin PowerShellu pro SharePoint. Použijte rutinu Windows PowerShellu Restore-SPEnterpriseSearchServiceApplication a zadejte databázi pro správu s dodaným protokolem a replikovaným hledáním Search_Service__DB. Tato rutina poskytuje konfiguraci hledání, schéma, spravované vlastnosti, pravidla a zdroje a vytvoří výchozí sadu dalších součástí.
+    * Po opětovném vytvoření aplikace Search Service musíte spustit úplné procházení pro každý zdroj obsahu, aby se Search Service obnovil. Ztratíte některé informace o analýze z místní farmy, například doporučení pro hledání.
 
-7. Jakmile se dokončí všechny kroky, uložení plánu obnovení a plán konečného bude vypadat jako následující.
+7. Po dokončení všech kroků uložíte plán obnovení a konečný plán obnovení bude vypadat nějak takto.
 
-    ![Uložené RP](./media/site-recovery-sharepoint/saved-rp.png)
+    ![Uložený RP](./media/site-recovery-sharepoint/saved-rp.png)
 
-## <a name="doing-a-test-failover"></a>Provádění testovací převzetí služeb při selhání
-Postupujte podle [návod](site-recovery-test-failover-to-azure.md) provést testovací převzetí služeb.
+## <a name="doing-a-test-failover"></a>Test převzetí služeb při selhání
+Při provádění testovacího převzetí služeb při selhání postupujte podle [těchto pokynů](site-recovery-test-failover-to-azure.md) .
 
-1.  Přejděte na webu Azure portal a vyberte váš trezor služby Recovery Services.
-2.  Klikněte na tlačítko v plánu obnovení, který je vytvořen pro aplikaci služby SharePoint.
-3.  Klikněte na "Testovací převzetí služeb".
-4.  Vyberte bod obnovení a Azure virtual network, chcete-li spustit proces testovacího převzetí služeb při selhání.
-5.  Jakmile je sekundární prostředí, můžete provádět vaše ověření.
-6.  Po dokončení ověření můžete kliknout na 'Vyčištění testovacího převzetí služeb při selhání' v plánu obnovení a vyčistit testovací převzetí služeb při selhání prostředí.
+1.  Přejít na Azure Portal a vyberte svůj trezor služby Recovery Services.
+2.  Klikněte na plán obnovení vytvořený pro aplikaci SharePoint.
+3.  Klikněte na testovací převzetí služeb při selhání.
+4.  Vyberte bod obnovení a virtuální síť Azure a spusťte proces testovacího převzetí služeb při selhání.
+5.  Jakmile je sekundární prostředí nahoru, můžete provést své ověření.
+6.  Po dokončení ověření můžete kliknout na vyčistit testovací převzetí služeb při selhání v plánu obnovení a vyčistit prostředí testovacího převzetí služeb při selhání.
 
-Pokyny k provádění testovacího převzetí služeb při selhání pro službu AD a DNS, najdete [testovací převzetí služeb při selhání důležité informace týkající se AD a DNS](site-recovery-active-directory.md#test-failover-considerations) dokumentu.
+Pokyny k provádění testovacího převzetí služeb při selhání pro AD a DNS najdete v tématu [testování převzetí služeb při selhání](site-recovery-active-directory.md#test-failover-considerations) pro službu AD a dokument DNS.
 
-Pokyny k provádění testovacího převzetí služeb při selhání pro SQL vždy na skupiny dostupnosti, najdete v tématu [provádění aplikace zotavení po Havárii pomocí Azure Site Recovery a provedení testu převzetí služeb při selhání](site-recovery-sql.md#disaster-recovery-of-application) dokumentu.
+Pokyny k provádění testovacího převzetí služeb při selhání pro skupiny dostupnosti Always ON SQL serveru najdete v tématu věnovaném [provádění aplikace Dr s Azure Site Recovery a provádění testovacího](site-recovery-sql.md#disaster-recovery-of-an-application) souboru
 
-## <a name="doing-a-failover"></a>Převzetím služeb
-Postupujte podle [návod](site-recovery-failover.md) plnit převzetí služeb při selhání.
+## <a name="doing-a-failover"></a>Provedení převzetí služeb při selhání
+Postupujte podle [těchto pokynů](site-recovery-failover.md) pro převzetí služeb při selhání.
 
-1.  Přejděte na webu Azure portal a vyberte svůj trezor služby Recovery Services.
-2.  Klikněte na tlačítko v plánu obnovení, který je vytvořen pro aplikaci služby SharePoint.
-3.  Klikněte na "Převzetí služeb při selhání".
-4.  Vyberte bod obnovení, zahájíte proces převzetí služeb při selhání.
+1.  Přejít na Azure Portal a vybrat Recovery Services trezor.
+2.  Klikněte na plán obnovení vytvořený pro aplikaci SharePoint.
+3.  Klikněte na převzetí služeb při selhání.
+4.  Vyberte bod obnovení pro spuštění procesu převzetí služeb při selhání.
 
 ## <a name="next-steps"></a>Další postup
-Další informace o [replikace jiných aplikací](site-recovery-workload.md) pomocí služby Site Recovery.
+Další informace o [replikaci dalších aplikací](site-recovery-workload.md) pomocí Site Recovery najdete v.

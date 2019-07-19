@@ -3,21 +3,21 @@ title: Rychlý start Azure – spuštění úlohy služby Batch – rozhraní p�
 description: Můžete se rychle naučit, jak pomocí Azure CLI spustit úlohu služby Batch.
 services: batch
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 ms.service: batch
 ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 07/03/2018
 ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: df56fd00d5a5ff2f9e9000b39939d0f33b3737d5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 72c3244fbd9c8d547e35c31f0cd6e659e367e21a
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66127495"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68322494"
 ---
-# <a name="quickstart-run-your-first-batch-job-with-the-azure-cli"></a>Rychlý start: Spuštění první úlohy služby Batch pomocí rozhraní příkazového řádku Azure
+# <a name="quickstart-run-your-first-batch-job-with-the-azure-cli"></a>Rychlý start: Spuštění první úlohy služby Batch pomocí Azure CLI
 
 Azure CLI slouží k vytváření a správě prostředků Azure z příkazového řádku nebo ve skriptech. Tento rychlý start ukazuje, jak pomocí Azure CLI vytvořit účet Batch, *fond* výpočetních uzlů (virtuálních počítačů) a *úlohu*, která bude ve fondu spouštět *úkoly*. Každý ukázkový úkol spustí základní příkaz na jednom z uzlů fondu. Po dokončení tohoto rychlého startu budete rozumět klíčovým konceptům služby Batch a budete moct službu Batch vyzkoušet ve větším měřítku s úlohami, které víc odpovídají realitě.
 
@@ -95,7 +95,7 @@ az batch pool show --pool-id mypool \
 
 Dokud se stav fondu mění, pokračujte v následujících krocích pro vytváření úloh a úkolů. Fond je připravený ke spuštění úkolů v okamžiku, kdy stav přidělení je `steady` a všechny uzly jsou spuštěné. 
 
-## <a name="create-a-job"></a>Vytvoří úlohu
+## <a name="create-a-job"></a>Vytvoření úlohy
 
 Teď máte vytvořený fond a můžete vytvořit úlohu, která se v něm bude spouštět.  Úloha služby Batch je logická skupina jednoho nebo víc úkolů. Úloha zahrnuje nastavení společná všem úkolům, jako je priorita a fond, ve kterém se mají úkoly spouštět. Vytvořte úlohu služby Batch pomocí příkazu [az batch job create](/cli/azure/batch/job#az-batch-job-create). Následující příkaz vytvoří úlohu *myjob* ve fondu *mypool*. Na začátku úloha neobsahuje žádné úkoly.
 

@@ -1,24 +1,24 @@
 ---
-title: Rozhraní API a nástroje pro vývojáře – Azure Batch | Dokumentace Microsoftu
+title: Rozhraní API a nástroje pro vývojáře – Azure Batch | Microsoft Docs
 description: Přečtěte si o dostupných rozhraních API a nástrojích pro vývoj řešení pomocí služby Azure Batch.
 services: batch
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 ms.service: batch
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 912e3342b4e8031b4404dffb56f1add2cc705f8e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3eeb955d312e21f96f4b1029548c5e84b5e586ec
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60721755"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68323780"
 ---
 # <a name="overview-of-batch-apis-and-tools"></a>Přehled rozhraní API a nástrojů služby Batch
 
-Zpracování paralelních úloh službou Azure Batch se obvykle provádí programově pomocí jednoho z rozhraní API služby Batch. Vaše klientská aplikace nebo služba může používat rozhraní API služby Batch ke komunikaci se službou Batch. Pomocí rozhraní API služby Batch můžete vytvořit a spravovat fondy výpočetních uzlů – virtuální počítače nebo cloudové služby. Pak můžete plánovat úlohy a úkoly, které se mají v těchto uzlech spouštět. 
+Zpracování paralelních úloh pomocí Azure Batch se obvykle provádí programově pomocí jednoho z rozhraní API pro dávku. Vaše klientská aplikace nebo služba může používat rozhraní API služby Batch ke komunikaci se službou Batch. Pomocí rozhraní API služby Batch můžete vytvořit a spravovat fondy výpočetních uzlů – virtuální počítače nebo cloudové služby. Pak můžete plánovat úlohy a úkoly, které se mají v těchto uzlech spouštět. 
 
 Umožní vám to efektivně zpracovávat rozsáhlé úlohy pro vaši organizaci nebo poskytovat front-end služby zákazníkům, aby mohli spouštět úlohy a úkoly – na vyžádání nebo naplánované – na jednom, stovkách nebo tisících uzlů. Službu Azure Batch můžete také používat jako součást rozsáhlejšího pracovního postupu spravovaného nástroji, například [Azure Data Factory](../data-factory/transform-data-using-dotnet-custom-activity.md?toc=%2fazure%2fbatch%2ftoc.json).
 
@@ -31,48 +31,48 @@ Umožní vám to efektivně zpracovávat rozsáhlé úlohy pro vaši organizaci 
 Při vývoji řešení ve službě Batch používáte následující účty předplatného Azure:
 
 * **Účet Batch** – prostředky služby Azure Batch, včetně fondů, výpočetních uzlů, úloh a úkolů, jsou v Azure přidružené k [účtu Batch](batch-api-basics.md#account). Pokud vaše aplikace odešle požadavek na službu Batch, ověří se tato žádost pomocí názvu účtu Azure Batch, adresy URL účtu a přístupové klávesy, nebo tokenu Azure Active Directory. [Účet Batch můžete vytvořit](batch-account-create-portal.md) na webu Azure Portal nebo prostřednictvím kódu programu.
-* **Účet Storage** – Služba Batch zahrnuje integrovanou podporu pro práci se soubory ve službě [Azure Storage][azure_storage]. Téměř každý scénář služby Batch používá úložiště objektů blob v Azure – pro přípravu programů, které budou vaše úkoly spouštět, a dat, která budou zpracovávat, a také pro ukládání generovaných výstupních dat. Možnosti účtu úložiště ve službě Batch najdete v tématu [Přehled funkcí Batch](batch-api-basics.md#azure-storage-account).
+* **Účet úložiště** – služba Batch zahrnuje integrovanou podporu pro práci se soubory v [Azure Storage][azure_storage]. Téměř každý scénář služby Batch používá úložiště objektů blob v Azure – pro přípravu programů, které budou vaše úkoly spouštět, a dat, která budou zpracovávat, a také pro ukládání generovaných výstupních dat. Možnosti účtu úložiště ve službě Batch najdete v tématu [Přehled funkcí Batch](batch-api-basics.md#azure-storage-account).
 
 ## <a name="batch-service-apis"></a>Rozhraní API služby Batch
 
 Vaše aplikace a služby mohou provádět přímá volání rozhraní REST API nebo používat jednu nebo více následujících klientských knihoven ke spuštění a správě úloh služby Azure Batch.
 
-| Rozhraní API | API – referenční informace | Ke stažení | Kurz | Ukázky kódů | Další informace |
+| rozhraní API | API – referenční informace | Ke stažení | Kurz | Ukázky kódů | Další informace |
 | --- | --- | --- | --- | --- | --- |
-| **Batch REST** |[docs.microsoft.com][batch_rest] |neuvedeno |- |- | [Podporované verze](/rest/api/batchservice/batch-service-rest-api-versioning) |
+| **Batch REST** |[docs.microsoft.com][batch_rest] |Není k dispozici |- |- | [Podporované verze](/rest/api/batchservice/batch-service-rest-api-versioning) |
 | **Batch .NET** |[docs.microsoft.com][api_net] |[NuGet][api_net_nuget] |[Kurz](tutorial-parallel-dotnet.md) |[GitHub][api_sample_net] | [Poznámky k verzi](https://aka.ms/batch-net-dataplane-changelog) |
 | **Batch Python** |[docs.microsoft.com][api_python] |[PyPI][api_python_pypi] |[Kurz](tutorial-parallel-python.md)|[GitHub][api_sample_python] | [Soubor Readme](https://github.com/Azure/azure-sdk-for-python/blob/master/doc/batch.rst) |
-| **Batch Node.js** |[docs.microsoft.com][api_nodejs] |[npm][api_nodejs_npm] |[Kurz](batch-nodejs-get-started.md) |- | [Soubor Readme](https://github.com/Azure/azure-sdk-for-node/tree/master/lib/services/batch) |
+| **Batch Node.js** |[docs.microsoft.com][api_nodejs] |[NPM][api_nodejs_npm] |[Kurz](batch-nodejs-get-started.md) |- | [Soubor Readme](https://github.com/Azure/azure-sdk-for-node/tree/master/lib/services/batch) |
 | **Batch Java** |[docs.microsoft.com][api_java] |[Maven][api_java_jar] |- |[Soubor Readme][api_sample_java] | [Soubor Readme](https://github.com/Azure/azure-batch-sdk-for-java)|
 
 ## <a name="batch-management-apis"></a>Rozhraní API služby Batch Management
 
 Rozhraní API Azure Resource Manageru pro službu Batch poskytují programový přístup k účtům Batch. Pomocí těchto rozhraní API můžete prostřednictvím kódu programu spravovat účty Batch, kvóty, balíčky aplikací a další prostředky přes zprostředkovatele Microsoft.Batch.  
 
-| Rozhraní API | API – referenční informace | Ke stažení | Kurz | Ukázky kódů |
+| rozhraní API | API – referenční informace | Ke stažení | Kurz | Ukázky kódů |
 | --- | --- | --- | --- | --- |
-| **Správa služby Batch pomocí REST** |[docs.microsoft.com][api_rest_mgmt] |neuvedeno |- |[GitHub](https://github.com/Azure-Samples/batch-dotnet-manage-batch-accounts) |
+| **Správa služby Batch pomocí REST** |[docs.microsoft.com][api_rest_mgmt] |Není k dispozici |- |[GitHub](https://github.com/Azure-Samples/batch-dotnet-manage-batch-accounts) |
 | **Knihovna Batch Management .NET** |[docs.microsoft.com][api_net_mgmt] |[NuGet][api_net_mgmt_nuget] | [Kurz](batch-management-dotnet.md) |[GitHub][api_sample_net] |
 | **Správa služby Batch pomocí Pythonu** |[docs.microsoft.com][api_python_mgmt] |[PyPI][api_python_mgmt_pypi] |- |- |
-| **Správa služby Batch pomocí Node.js** |[docs.microsoft.com][api_nodejs_mgmt] |[npm][api_nodejs_mgmt_npm] |- |- | 
+| **Správa služby Batch pomocí Node.js** |[docs.microsoft.com][api_nodejs_mgmt] |[NPM][api_nodejs_mgmt_npm] |- |- | 
 | **Správa služby Batch pomocí Javy** |- |[Maven][api_java_mgmt_jar] |- |- |
 ## <a name="batch-command-line-tools"></a>Nástroje příkazového řádku služby Batch
 
 Tyto nástroje příkazového řádku poskytují stejné funkce jako rozhraní API služby Batch a služby Batch Management: 
 
-* [Rutiny prostředí PowerShell služby batch][batch_ps]: Rutiny služby Azure Batch v [prostředí Azure PowerShell](/powershell/azure/overview) modulu umožňují spravovat prostředky Batch v prostředí PowerShell.
-* [Azure CLI](/cli/azure): Rozhraní příkazového řádku Azure je sada nástrojů pro různé platformy, která poskytuje příkazy prostředí pro komunikaci s řadou služeb Azure, včetně služby Batch a služby Batch Management. Další informace o použití Azure CLI se službou Batch najdete v tématu [Správa prostředků služby Batch pomocí Azure CLI](batch-cli-get-started.md).
+* [Rutiny PowerShellu pro Batch][batch_ps]: Rutiny Azure Batch v modulu [Azure PowerShell](/powershell/azure/overview) umožňují spravovat prostředky Batch pomocí PowerShellu.
+* [Azure CLI](/cli/azure): Azure CLI je sada nástrojů pro různé platformy, která poskytuje příkazy prostředí pro komunikaci s řadou služeb Azure, včetně služby Batch a služby Batch Management. Další informace o použití Azure CLI se službou Batch najdete v tématu [Správa prostředků služby Batch pomocí Azure CLI](batch-cli-get-started.md).
 
 ## <a name="other-tools-for-application-development"></a>Další nástroje pro vývoj aplikací
 
 Tady je několik dalších nástrojů, které můžou být užitečné při sestavování a ladění aplikací a služeb Batch:
 
-* [Azure portal][portal]: Můžete vytvářet, monitorovat a odstraňovat fondy, úlohy a úlohy na webu Azure Portal. Zatímco spouštíte úlohy, můžete zobrazit informace o stavu těchto a dalších prostředků, a dokonce i stahovat soubory z výpočetních uzlů ve fondech. Například při řešení potíží si můžete stáhnout soubor `stderr.txt` neúspěšné úlohy. Můžete si také stáhnout soubory vzdálené plochy (RDP), které lze použít k přihlášení do výpočetních uzlů.
-* [Azure Batch Explorer][batch_labs]: (Dříve se označovaly jako BatchLabs) Průzkumníka služby batch je zdarma, bohatými funkcemi, samostatný klientský nástroj umožňující vytvářet, ladit a monitorovat aplikace Azure Batch. Můžete si stáhnout [instalační balíček](https://azure.github.io/BatchExplorer/) pro Mac, Linux nebo Windows.
-* [Služba Azure Batch loděnice](https://github.com/Azure/batch-shipyard): Batch loděnice je nástroj, který pomůže zřízení, spouštění a sledování založených na kontejnerech dávkové zpracování úloh a úloh HPC v Azure Batch.
-* [Průzkumník služby Azure Storage][storage_explorer]: Ačkoliv se nejedná vyloženě o nástroj služby Azure Batch Storage Explorer je dalším užitečným nástrojem při vývoji a ladění řešení Batch.
+* [Azure Portal][portal]: Můžete vytvářet, monitorovat a odstraňovat fondy, úlohy a úkoly Batch v Azure Portal. Zatímco spouštíte úlohy, můžete zobrazit informace o stavu těchto a dalších prostředků, a dokonce i stahovat soubory z výpočetních uzlů ve fondech. Například při řešení potíží si můžete stáhnout soubor `stderr.txt` neúspěšné úlohy. Můžete si také stáhnout soubory vzdálené plochy (RDP), které lze použít k přihlášení do výpočetních uzlů.
+* [Azure Batch Explorer][batch_labs]: Batch Explorer (dříve označované jako BatchLabs) je bezplatný a samostatný klientský nástroj s bohatými funkcemi, který vám umožní vytvářet, ladit a monitorovat Azure Batch aplikace. Můžete si stáhnout [instalační balíček](https://azure.github.io/BatchExplorer/) pro Mac, Linux nebo Windows.
+* [Azure Batch loděnice](https://github.com/Azure/batch-shipyard): Batch loděnice je nástroj, který umožňuje zřídit, spouštět a monitorovat dávkové zpracování na základě kontejneru a úlohy prostředí HPC na Azure Batch.
+* [Průzkumník služby Azure Storage][storage_explorer]: I když není výhradně nástroj Azure Batch, Průzkumník služby Storage je dalším užitečným nástrojem při vývoji a ladění řešení Batch.
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další zdroje
 
 - Informace o protokolování událostí z aplikace Batch najdete v tématu [Protokolování událostí pro diagnostické hodnocení a monitorování řešení Batch](batch-diagnostics.md). Referenční informace k událostem vyvolaným službou Batch najdete v tématu [Analýza služby Batch](batch-analytics.md).
 - Informace o proměnných prostředí pro výpočetní uzly najdete v tématu [Proměnné prostředí výpočetních uzlů služby Azure Batch](batch-compute-node-environment-variables.md).
@@ -81,7 +81,7 @@ Tady je několik dalších nástrojů, které můžou být užitečné při sest
 
 * Přečtěte si téma [Přehled funkcí Batch pro vývojáře](batch-api-basics.md), kde jsou základní informace pro každého, kdo se připravuje použít Batch. Článek obsahuje podrobné informace o prostředcích služby Batch, jako jsou fondy, uzly a úlohy, a mnoha funkcích rozhraní API, které můžete použít při vytváření aplikace Batch.
 * V kapitole [Začínáme s knihovnou Azure Batch pro .NET](tutorial-parallel-dotnet.md) zjistíte, jak použít C# a knihovnu Batch .NET ke spuštění jednoduché úlohy s použitím běžného pracovního postupu služby Batch. K dispozici jsou také verze tohoto kurzu pro [Python](tutorial-parallel-python.md) a [Node.js](batch-nodejs-get-started.md).
-* Stáhněte si [ukázky kódu na GitHubu][github_samples] a podívejte se, jak můžou jazyk C# i Python komunikovat přes rozhraní se službou Batch při plánování a zpracování ukázkových úloh.
+* Stáhněte si [ukázky kódu na GitHubu][github_samples] , abyste viděli C# , jak může i Python používat rozhraní se službou Batch k naplánování a zpracování ukázkových úloh.
 
 [azure_storage]: https://azure.microsoft.com/services/storage/
 [api_java]: /java/api/overview/azure/batch

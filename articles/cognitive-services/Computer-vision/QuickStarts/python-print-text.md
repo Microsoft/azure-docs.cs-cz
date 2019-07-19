@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Extrahovat tištěný text - REST, Python'
+title: 'Rychlý start: Extrakce vytištěného textu – REST, Python'
 titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu budete extrahovat tištěný text z obrázku pomocí rozhraní API pro počítačové zpracování obrazu a Pythonu.
 services: cognitive-services
@@ -11,14 +11,14 @@ ms.topic: quickstart
 ms.date: 07/03/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 94f73d323604fc49227b871d3419b2e48c25551b
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: a60d93b081637ca2be5ed0c6d1a21ce185e6cdbb
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67604207"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68321389"
 ---
-# <a name="quickstart-extract-printed-text-ocr-using-the-computer-vision-rest-api-and-python"></a>Rychlý start: Extrahovat tištěný text (OCR) pomocí rozhraní API pro počítačové zpracování obrazu REST a Python
+# <a name="quickstart-extract-printed-text-ocr-using-the-computer-vision-rest-api-and-python"></a>Rychlý start: Extrakce vytištěného textu (OCR) pomocí Počítačové zpracování obrazu REST API a Pythonu
 
 V tomto rychlém startu budete extrahovat tištěný text z obrázku pomocí optického rozpoznávání znaků (OCR) s využitím rozhraní REST API počítačového zpracování obrazu. Pomocí metody [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) můžete detekovat tištěný text v obrázku a extrahovat rozpoznané znaky do znakového proudu, který je strojově využitelný.
 
@@ -31,7 +31,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 ## <a name="prerequisites"></a>Požadavky
 
 - Pokud chcete spustit tuto ukázku v místním prostředí, musíte mít nainstalovaný jazyk [Python](https://www.python.org/downloads/).
-- Musíte mít klíč předplatného pro počítačové zpracování obrazu. Můžete získat bezplatné zkušební verze klíče z [zkuste služby Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Nebo, postupujte podle pokynů v [vytvoření účtu služeb Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) k přihlášení pro počítačové zpracování obrazu a získejte klíč.
+- Musíte mít klíč předplatného pro počítačové zpracování obrazu. Bezplatný zkušební klíč si můžete [vyzkoušet Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Případně postupujte podle pokynů v části [Vytvoření účtu Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) pro přihlášení k odběru počítačové zpracování obrazu a získání klíče.
 
 ## <a name="create-and-run-the-sample"></a>Vytvoření a spuštění ukázky
 
@@ -105,6 +105,21 @@ for word in word_infos:
     plt.text(origin[0], origin[1], text, fontsize=20, weight="bold", va="top")
 plt.axis("off")
 ```
+
+## <a name="upload-image-from-local-storage"></a>Nahrání image z místního úložiště
+
+Pokud chcete analyzovat místní bitovou kopii, nastavte hlavičku Content-Type na Application/oktet-Stream a místo dat JSON nastavte text požadavku na bajtové pole.
+
+```python
+image_path = "<path-to-local-image-file>"
+# Read the image into a byte array
+image_data = open(image_path, "rb").read()
+# Set Content-Type to octet-stream
+headers = {'Ocp-Apim-Subscription-Key': subscription_key, 'Content-Type': 'application/octet-stream'}
+# put the byte array into your post request
+response = requests.post(ocr_url, headers=headers, params=params, data = image_data)
+```
+
 
 ## <a name="examine-the-response"></a>Prozkoumání odpovědi
 
@@ -209,7 +224,7 @@ plt.axis("off")
 }
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Prozkoumejte aplikaci v Pythonu používající počítačové zpracování obrazu k optickému rozpoznávání znaků (OCR), vytváření chytře oříznutých miniatur, zjišťování, kategorizaci, označení a popis vizuálních prvků, včetně obličejů, v obrázku. Pokud chcete rychle vyzkoušet rozhraní API pro počítačové zpracování obrazu, vyzkoušejte [testovací konzolu Open API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console).
 

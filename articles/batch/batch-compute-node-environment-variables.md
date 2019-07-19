@@ -1,9 +1,9 @@
 ---
-title: Úloha proměnné prostředí runtime – Azure Batch | Dokumentace Microsoftu
-description: Úloh modulu runtime prostředí proměnné pokyny a referenční informace pro Azure Batch Analytics.
+title: Proměnné prostředí modulu runtime úkolu – Azure Batch | Microsoft Docs
+description: Doprovodné materiály k proměnnou prostředí modulu runtime úlohy a referenční informace pro Azure Batch Analytics.
 services: batch
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 ms.assetid: ''
 ms.service: batch
 ms.devlang: multiple
@@ -12,32 +12,32 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
 ms.date: 04/23/2019
 ms.author: lahugh
-ms.openlocfilehash: c46f75c447becc8b15d4a6b8f979330db7ab95c7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2b9d6832422b98c1064a4e9e99774c4788e801e5
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64575578"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68323656"
 ---
-# <a name="azure-batch-runtime-environment-variables"></a>Proměnné prostředí modulu runtime služby Azure Batch
+# <a name="azure-batch-runtime-environment-variables"></a>Proměnné prostředí Azure Batch runtime
 
-[Služby Azure Batch](https://azure.microsoft.com/services/batch/) nastaví následující proměnné prostředí na výpočetních uzlech. Vám může odkazovat na tyto proměnné prostředí na příkazových řádcích úkolů a v aplikacích a spustit skripty těmito příkazovými řádky.
+[Služba Azure Batch](https://azure.microsoft.com/services/batch/) v výpočetních uzlech nastaví následující proměnné prostředí. Na tyto proměnné prostředí můžete odkazovat na příkazových řádcích úkolů a v programech a skriptech spouštěných pomocí příkazových řádků.
 
-Další informace o použití proměnných prostředí pomocí služby Batch najdete v tématu [nastavení prostředí pro úkoly](https://docs.microsoft.com/azure/batch/batch-api-basics#environment-settings-for-tasks).
+Další informace o používání proměnných prostředí ve službě Batch najdete v tématu [nastavení prostředí pro úlohy](https://docs.microsoft.com/azure/batch/batch-api-basics#environment-settings-for-tasks).
 
 ## <a name="environment-variable-visibility"></a>Viditelnost proměnné prostředí
 
-Tyto proměnné prostředí jsou viditelné pouze v kontextu **uživatele úkolu**, uživatelský účet v uzlu, pod kterým je úkol spuštěn. *Neuvidíte je*, pokud se k výpočetnímu uzlu [vzdáleně připojíte](https://azure.microsoft.com/documentation/articles/batch-api-basics/#connecting-to-compute-nodes) prostřednictvím protokolu RDP (Remote Desktop) nebo Secure Shell (SSH) a vypíšete si seznam proměnných prostředí. Je to proto, že uživatelský účet, který se používá pro vzdálené připojení, není stejný jako účet, který je používán úkolem.
+Tyto proměnné prostředí jsou viditelné pouze v kontextu **uživatele úkolu**, uživatelský účet v uzlu, pod nímž je úloha spuštěna. *Neuvidíte je*, pokud se k výpočetnímu uzlu [vzdáleně připojíte](https://azure.microsoft.com/documentation/articles/batch-api-basics/#connecting-to-compute-nodes) prostřednictvím protokolu RDP (Remote Desktop) nebo Secure Shell (SSH) a vypíšete si seznam proměnných prostředí. Je to proto, že uživatelský účet, který se používá pro vzdálené připojení, není stejný jako účet, který je používán úkolem.
 
-Chcete-li získat aktuální hodnotu proměnné prostředí, spusťte `cmd.exe` na Windows, na výpočetním uzlu nebo `/bin/sh` uzlu Linux:
+Chcete-li získat aktuální hodnotu proměnné prostředí, spusťte `cmd.exe` program na výpočetním uzlu Windows nebo `/bin/sh` na uzlu Linux:
 
 `cmd /c set <ENV_VARIABLE_NAME>`
 
 `/bin/sh printenv <ENV_VARIABLE_NAME>`
 
-## <a name="command-line-expansion-of-environment-variables"></a>Příkazový řádek rozšíření proměnných prostředí
+## <a name="command-line-expansion-of-environment-variables"></a>Rozšíření proměnných prostředí z příkazového řádku
 
-Příkazové řádky provedených úloh na výpočetních uzlech nespouštějte v shellu. Proto tyto příkazové řádky nemůže nativně využívat funkce shellu, jako je například rozšíření proměnné prostředí (to zahrnuje `PATH`). Abyste mohli využívat funkce, je nutné **vyvolejte shell** na příkazovém řádku. Příklad: launch `cmd.exe` na Windows výpočetních uzlů nebo `/bin/sh` na uzly s Linuxem:
+Příkazové řádky spouštěné úkoly na výpočetních uzlech neběží v prostředí. Proto tyto příkazové řádky nemohou nativně využívat funkce prostředí, jako je například rozšíření proměnné prostředí (to zahrnuje i `PATH`). Chcete-li využít výhod těchto funkcí, je nutné **vyvolat prostředí** v příkazovém řádku. Například spusťte `cmd.exe` na výpočetních uzlech systému Windows nebo `/bin/sh` na uzlech se systémem Linux:
 
 `cmd /c MyTaskApplication.exe %MY_ENV_VAR%`
 
@@ -45,31 +45,31 @@ Příkazové řádky provedených úloh na výpočetních uzlech nespouštějte 
 
 ## <a name="environment-variables"></a>Proměnné prostředí
 
-| Název proměnné                     | Popis                                                              | Dostupnost | Příklad: |
+| Název proměnné                     | Popis                                                              | Dostupnost | Příklad |
 |-----------------------------------|--------------------------------------------------------------------------|--------------|---------|
-| AZ_BATCH_ACCOUNT_NAME           | Název účtu Batch, které úkol patří.                  | Všechny úlohy.   | mybatchaccount |
+| AZ_BATCH_ACCOUNT_NAME           | Název účtu Batch, ke kterému úkol patří                  | Všechny úlohy.   | mybatchaccount |
 | AZ_BATCH_ACCOUNT_URL            | Adresa URL účtu Batch. | Všechny úlohy. | `https://myaccount.westus.batch.azure.com` |
-| AZ_BATCH_APP_PACKAGE            | Předpona všech proměnných prostředí aplikace balíčku. Například když do fondu je nainstalovaná aplikace "Foo" verze "1", proměnná prostředí je AZ_BATCH_APP_PACKAGE_FOO_1. AZ_BATCH_APP_PACKAGE_FOO_1 odkazuje na umístění, které balíček byl stažen (složka). | Všechny úlohy s balíčkem přidružené aplikace. Také k dispozici pro všechny úlohy, pokud samotný uzel má balíčky aplikací. | AZ_BATCH_APP_PACKAGE_FOO_1 |
-| AZ_BATCH_AUTHENTICATION_TOKEN   | Ověřovací token, který uděluje přístup pro omezenou sadu operací služby Batch. Tato proměnná prostředí je k dispozici pouze pokud [authenticationTokenSettings](/rest/api/batchservice/task/add#authenticationtokensettings) jsou nastaveny, jakmile [se přidá úkol](/rest/api/batchservice/task/add#request-body). Hodnota tokenu se používá v rozhraní API služby Batch jako přihlašovací údaje k vytvoření klienta služby Batch, jako například v [BatchClient.Open() .NET API](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.batchclient.open#Microsoft_Azure_Batch_BatchClient_Open_Microsoft_Azure_Batch_Auth_BatchTokenCredentials_). | Všechny úlohy. | Přístupový token OAuth2 |
-| AZ_BATCH_CERTIFICATES_DIR       | Adresáře v rámci [pracovního adresáře úkolu] [ files_dirs] v které certifikáty jsou uloženy pro Linux výpočetních uzlů. Všimněte si, že tato proměnná prostředí se nedá použít u Windows výpočetních uzlů.                                                  | Všechny úlohy.   |  /mnt/batch/tasks/workitems/batchjob001/job-1/task001/certs |
-| AZ_BATCH_HOST_LIST              | Seznam uzlů, které jsou přiděleny [úkoly s více instancemi] [ multi_instance] ve formátu `nodeIP,nodeIP`. | Primární více instancemi a dílčí úkoly. | `10.0.0.4,10.0.0.5` |
-| AZ_BATCH_IS_CURRENT_NODE_MASTER | Určuje, zda je aktuální uzel hlavní uzel [úkoly s více instancemi][multi_instance]. Možné hodnoty jsou `true` a `false`.| Primární více instancemi a dílčí úkoly. | `true` |
-| AZ_BATCH_JOB_ID                 | Číslo ID úlohy, ke které úkol patří. | Všechny úlohy, s výjimkou spuštění úlohy. | batchjob001 |
-| AZ_BATCH_JOB_PREP_DIR           | Úplná cesta přípravy úlohy [adresáře úkolu] [ files_dirs] na uzlu. | Všechny úlohy s výjimkou spouštěcího úkolu a úkol přípravy úlohy. K dispozici pouze pokud jsou nakonfigurované úloha Úkol Příprava úlohy. | C:\user\tasks\workitems\jobprepreleasesamplejob\job-1\jobpreparation |
-| AZ_BATCH_JOB_PREP_WORKING_DIR   | Úplná cesta přípravy úlohy [pracovního adresáře úkolu] [ files_dirs] na uzlu. | Všechny úlohy s výjimkou spouštěcího úkolu a úkol přípravy úlohy. K dispozici pouze pokud jsou nakonfigurované úloha Úkol Příprava úlohy. | C:\user\tasks\workitems\jobprepreleasesamplejob\job-1\jobpreparation\wd |
-| AZ_BATCH_MASTER_NODE            | IP adresy a portu výpočetním uzlu, na kterém primární úlohy [úkoly s více instancemi] [ multi_instance] běží. | Primární více instancemi a dílčí úkoly. | `10.0.0.4:6000` |
-| AZ_BATCH_NODE_ID                | ID uzlu, který úkol je přidělen. | Všechny úlohy. | tvm-1219235766_3-20160919t172711z |
-| AZ_BATCH_NODE_IS_DEDICATED      | Pokud `true`, aktuální uzel je vyhrazených uzlů. Pokud `false`, jde [uzly s nízkou prioritou](batch-low-pri-vms.md). | Všechny úlohy. | `true` |
-| AZ_BATCH_NODE_LIST              | Seznam uzlů, které jsou přiděleny [úkoly s více instancemi] [ multi_instance] ve formátu `nodeIP;nodeIP`. | Primární více instancemi a dílčí úkoly. | `10.0.0.4;10.0.0.5` |
-| AZ_BATCH_NODE_ROOT_DIR          | Úplná cesta kořenového všech [Batch adresáře] [ files_dirs] na uzlu. | Všechny úlohy. | C:\user\tasks |
-| AZ_BATCH_NODE_SHARED_DIR        | Úplná cesta [sdíleného adresáře] [ files_dirs] na uzlu. Všechny úkoly, které jsou spouštěny na uzlu budou mít přístup pro čtení a zápis do tohoto adresáře. Úlohy, které jsou spouštěny na jiných uzlech nemají vzdálený přístup k tomuto adresáři (není adresář "sdílené"). | Všechny úlohy. | C:\user\tasks\shared |
-| AZ_BATCH_NODE_STARTUP_DIR       | Úplná cesta [start adresáře úkolu] [ files_dirs] na uzlu. | Všechny úlohy. | C:\user\tasks\startup |
+| AZ_BATCH_APP_PACKAGE            | Předpona všech proměnných prostředí balíčku aplikace. Například pokud je aplikace "foo" verze "1" nainstalována do fondu, je proměnná prostředí AZ_BATCH_APP_PACKAGE_FOO_1. AZ_BATCH_APP_PACKAGE_FOO_1 odkazuje na umístění, do kterého se balíček stáhl (složka). | Libovolný úkol s přidruženým balíčkem aplikace. K dispozici také pro všechny úlohy, pokud uzel obsahuje balíčky aplikací. | AZ_BATCH_APP_PACKAGE_FOO_1 |
+| AZ_BATCH_AUTHENTICATION_TOKEN   | Ověřovací token, který uděluje přístup k omezené sadě operací služby Batch. Tato proměnná prostředí je přítomna pouze v případě, že je [authenticationTokenSettings](/rest/api/batchservice/task/add#authenticationtokensettings) nastavena při [Přidání úkolu](/rest/api/batchservice/task/add#request-body). Hodnota tokenu se používá v rozhraních API dávky jako přihlašovací údaje k vytvoření klienta Batch, jako je například v rozhraní [.NET API BatchClient. Open ()](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.batchclient.open#Microsoft_Azure_Batch_BatchClient_Open_Microsoft_Azure_Batch_Auth_BatchTokenCredentials_). | Všechny úlohy. | Přístupový token OAuth2 |
+| AZ_BATCH_CERTIFICATES_DIR       | Adresář v [pracovním adresáři úkolu][files_dirs] , ve kterém jsou uloženy certifikáty pro výpočetní uzly Linux. Všimněte si, že tato proměnná prostředí se nevztahuje na výpočetní uzly Windows.                                                  | Všechny úlohy.   |  /mnt/batch/tasks/workitems/batchjob001/job-1/task001/certs |
+| AZ_BATCH_HOST_LIST              | Seznam uzlů, které jsou přiděleny úloze s [více instancemi][multi_instance] ve formátu `nodeIP,nodeIP`. | Primární a dílčí úkoly s více instancemi. | `10.0.0.4,10.0.0.5` |
+| AZ_BATCH_IS_CURRENT_NODE_MASTER | Určuje, zda je aktuální uzel hlavním uzlem pro [úlohu s více instancemi][multi_instance]. Možné hodnoty jsou `true` a `false`.| Primární a dílčí úkoly s více instancemi. | `true` |
+| AZ_BATCH_JOB_ID                 | Číslo ID úlohy, ke které úkol patří. | Všechny úlohy s výjimkou spouštěcího úkolu. | batchjob001 |
+| AZ_BATCH_JOB_PREP_DIR           | Úplná cesta [adresáře úkolu][files_dirs] přípravy úlohy na uzlu. | Všechny úlohy kromě úlohy spustit úlohu a příprava úlohy. K dispozici pouze v případě, že je úloha konfigurována s úlohou přípravy úlohy. | C:\user\tasks\workitems\jobprepreleasesamplejob\job-1\jobpreparation |
+| AZ_BATCH_JOB_PREP_WORKING_DIR   | Úplná cesta [pracovního adresáře úkolu][files_dirs] přípravy úlohy na uzlu | Všechny úlohy kromě úlohy spustit úlohu a příprava úlohy. K dispozici pouze v případě, že je úloha konfigurována s úlohou přípravy úlohy. | C:\user\tasks\workitems\jobprepreleasesamplejob\job-1\jobpreparation\wd |
+| AZ_BATCH_MASTER_NODE            | IP adresa a port výpočetního uzlu, na kterém se spouští primární úloha [úlohy s více instancemi][multi_instance] . | Primární a dílčí úkoly s více instancemi. | `10.0.0.4:6000` |
+| AZ_BATCH_NODE_ID                | ID uzlu, ke kterému je úkol přiřazen | Všechny úlohy. | tvm-1219235766_3-20160919t172711z |
+| AZ_BATCH_NODE_IS_DEDICATED      | Pokud `true`je aktuální uzel vyhrazený uzel. Je `false`-li, jedná se o [uzel s nízkou prioritou](batch-low-pri-vms.md). | Všechny úlohy. | `true` |
+| AZ_BATCH_NODE_LIST              | Seznam uzlů, které jsou přiděleny úloze s [více instancemi][multi_instance] ve formátu `nodeIP;nodeIP`. | Primární a dílčí úkoly s více instancemi. | `10.0.0.4;10.0.0.5` |
+| AZ_BATCH_NODE_ROOT_DIR          | Úplná cesta kořene všech [adresářů Batch][files_dirs] na uzlu. | Všechny úlohy. | C:\user\tasks |
+| AZ_BATCH_NODE_SHARED_DIR        | Úplná cesta ke sdílenému [adresáři][files_dirs] na uzlu. Všechny úlohy, které se spouštějí na uzlu, mají k tomuto adresáři přístup pro čtení a zápis. Úlohy, které se spouštějí na jiných uzlech, nemají vzdálený přístup k tomuto adresáři (nejedná se o sdílený síťový adresář). | Všechny úlohy. | C:\user\tasks\shared |
+| AZ_BATCH_NODE_STARTUP_DIR       | Úplná cesta k [adresáři spouštěcího úkolu][files_dirs] na uzlu. | Všechny úlohy. | C:\user\tasks\startup |
 | AZ_BATCH_POOL_ID                | Číslo ID fondu, ve kterém je spuštěn úkol. | Všechny úlohy. | batchpool001 |
-| AZ_BATCH_TASK_DIR               | Úplná cesta [adresáře úkolu] [ files_dirs] na uzlu. Tento adresář obsahuje `stdout.txt` a `stderr.txt` úkolu a AZ_BATCH_TASK_WORKING_DIR. | Všechny úlohy. | C:\user\tasks\workitems\batchjob001\job-1\task001 |
-| AZ_BATCH_TASK_ID                | Číslo ID aktuálního úkolu. | Všechny úlohy, s výjimkou spuštění úlohy. | task001 |
-| AZ_BATCH_TASK_SHARED_DIR | Cestu k adresáři, který je stejný jako primární úlohy a každý dílčí úkol [úkoly s více instancemi][multi_instance]. Cesta existuje na všech uzlech, na kterém více instancemi úloha běží a je pro čtení/zápis přístupné pro příkazy úlohy běžící na tomto uzlu (jak [koordinace příkaz] [ coord_cmd] a [ příkaz aplikace][app_cmd]). Dílčí úkoly nebo primární úkol spustit na jiných uzlech nemají vzdálený přístup k tomuto adresáři (není adresář "sdílené"). | Primární více instancemi a dílčí úkoly. | C:\user\tasks\workitems\multiinstancesamplejob\job-1\multiinstancesampletask |
-| AZ_BATCH_TASK_WORKING_DIR       | Úplná cesta [pracovního adresáře úkolu] [ files_dirs] na uzlu. Aktuálně spuštěná úloha má přístup pro čtení a zápis do tohoto adresáře. | Všechny úlohy. | C:\user\tasks\workitems\batchjob001\job-1\task001\wd |
-| CCP_NODES                       | Seznam uzlů a počet jader na uzel, který jsou přiděleny [úkoly s více instancemi][multi_instance]. Uzly a počet jader, které jsou uvedeny ve formátu `numNodes<space>node1IP<space>node1Cores<space>`<br/>`node2IP<space>node2Cores<space> ...`, kde počet uzlů následuje jedna nebo víc IP adres uzlu a počet jader pro každý. |  Primární více instancemi a dílčí úkoly. |`2 10.0.0.4 1 10.0.0.5 1` |
+| AZ_BATCH_TASK_DIR               | Úplná cesta k [adresáři úloh][files_dirs] na uzlu. Tento adresář obsahuje `stdout.txt` a `stderr.txt` pro úlohu a AZ_BATCH_TASK_WORKING_DIR. | Všechny úlohy. | C:\user\tasks\workitems\batchjob001\job-1\task001 |
+| AZ_BATCH_TASK_ID                | Číslo ID aktuálního úkolu. | Všechny úlohy s výjimkou spouštěcího úkolu. | task001 |
+| AZ_BATCH_TASK_SHARED_DIR | Cesta k adresáři, která je shodná s primární úlohou a každý dílčí úkol [úlohy][multi_instance] . The path exists on every node on which the multi-instance task runs, and is read/write accessible to the task commands running on that node (both the [coordination command][coord_cmd] s více instancemi a [příkazem aplikace][app_cmd]). Dílčí úkoly nebo primární úlohy, které se spouštějí na jiných uzlech, nemají vzdálený přístup k tomuto adresáři (nejedná se o sdílený síťový adresář). | Primární a dílčí úkoly s více instancemi. | C:\user\tasks\workitems\multiinstancesamplejob\job-1\multiinstancesampletask |
+| AZ_BATCH_TASK_WORKING_DIR       | Úplná cesta [pracovního adresáře úkolu][files_dirs] na uzlu. Aktuálně spuštěná úloha má k tomuto adresáři přístup pro čtení a zápis. | Všechny úlohy. | C:\user\tasks\workitems\batchjob001\job-1\task001\wd |
+| CCP_NODES                       | Seznam uzlů a počet jader na uzel, které jsou přiděleny k [úloze s více instancemi][multi_instance]. Uzly a jádra jsou uvedené ve formátu.`numNodes<space>node1IP<space>node1Cores<space>`<br/>`node2IP<space>node2Cores<space> ...`, kde je počet uzlů následován jednou nebo více IP adresami uzlu a počtem jader pro každý z nich. |  Primární a dílčí úkoly s více instancemi. |`2 10.0.0.4 1 10.0.0.5 1` |
 
 [files_dirs]: https://azure.microsoft.com/documentation/articles/batch-api-basics/#files-and-directories
 [multi_instance]: https://azure.microsoft.com/documentation/articles/batch-mpi/

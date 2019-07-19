@@ -1,5 +1,5 @@
 ---
-title: Co je služba Azure Event Hubs? -Služba pro ingestování velkého objemu dat | Dokumentace Microsoftu
+title: Co je služba Azure Event Hubs? – Služba pro příjem velkých objemů dat | Microsoft Docs
 description: Přečtěte si o Azure Event Hubs, což je streamovací služba pro velké objemy dat, která může ingestovat miliony událostí za sekundu.
 services: event-hubs
 documentationcenter: na
@@ -10,17 +10,17 @@ ms.topic: overview
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 7362bd5b4e15df516478ef4bef20d76fc46b326f
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 242f2fa9885f3f85439caddd061f650baafb8df4
+ms.sourcegitcommit: da0a8676b3c5283fddcd94cdd9044c3b99815046
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67275366"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68314419"
 ---
 # <a name="azure-event-hubs--a-big-data-streaming-platform-and-event-ingestion-service"></a>Azure Event Hubs – streamovací platforma pro velký objem dat a služba ingestování událostí
-Azure Event Hubs je velké objemy dat, platformy a události služba pro ingestování datových proudů. Může přijímat a zpracovávat miliony událostí za sekundu. Data odeslaná do centra událostí je možné transformovat a uložit pomocí libovolného poskytovatele analýz v reálném čase nebo adaptérů pro dávkové zpracování a ukládání.
+Azure Event Hubs je platforma pro streamování velkých objemů dat a služba pro příjem událostí. Může přijímat a zpracovávat miliony událostí za sekundu. Data odeslaná do centra událostí je možné transformovat a uložit pomocí libovolného poskytovatele analýz v reálném čase nebo adaptérů pro dávkové zpracování a ukládání.
 
-Některé scénáře, ve kterém můžete používat Event Hubs jsou následující scénáře:
+Následující scénáře jsou některé z scénářů, ve kterých můžete použít Event Hubs:
 
 - Detekce anomálií (podvody/odlehlé hodnoty)
 - Protokolování aplikací
@@ -29,46 +29,48 @@ Některé scénáře, ve kterém můžete používat Event Hubs jsou následují
 - Archivace dat
 - Zpracování transakcí
 - Zpracování telemetrie uživatelů
-- Streamování telemetrie zařízení 
+- Streamování telemetrie zařízení
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/45wgY-VSk9I" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ## <a name="why-use-event-hubs"></a>Proč používat Event Hubs
 
-Data jsou cenná tehdy, když se datové zdroje dají snadno zpracovat a dají se z nich získat včasné přehledy. Event Hubs poskytuje platformu zpracování datového proudu distribuované s nízkou latencí a bezproblémovou integraci se službami data a analýzy uvnitř i mimo Azure k vytvoření kanálu, dokončení velké objemy dat.
+Data jsou cenná tehdy, když se datové zdroje dají snadno zpracovat a dají se z nich získat včasné přehledy. Event Hubs poskytuje platformu pro zpracování distribuovaných datových proudů s nízkou latencí a bezproblémovou integrací s datovými a analytickými službami uvnitř a mimo Azure za účelem vytvoření kompletního kanálu s velkými objemy dat.
 
-Služba Event Hubs představuje „vstupní dveře“ pro kanál událostí, který se v architekturách řešení často nazývá *ingestor událostí*. Přijímač událostí je komponenta nebo služba, která se nachází mezi zdroji událostí a příjemci událostí a slouží k oddělení produkce datového proudu událostí od spotřeby těchto událostí. Event Hubs poskytuje jednotný streamovací platforma s vyrovnávací paměť doby uchovávání, oddělení producentů událostí z příjemci událostí. 
+Služba Event Hubs představuje „vstupní dveře“ pro kanál událostí, který se v architekturách řešení často nazývá *ingestor událostí*. Přijímač událostí je komponenta nebo služba, která se nachází mezi zdroji událostí a příjemci událostí a slouží k oddělení produkce datového proudu událostí od spotřeby těchto událostí. Event Hubs poskytuje jednotnou platformu pro streamování s vyrovnávací pamětí pro uchovávání času, odpojuje výrobce událostí od uživatelů událostí.
 
-Následující části popisují klíčové funkce služby Azure Event Hubs: 
+Následující části popisují klíčové funkce služby Azure Event Hubs:
 
-## <a name="fully-managed-paas"></a>PaaS (platforma jako služba) s plnou správou 
+## <a name="fully-managed-paas"></a>PaaS (platforma jako služba) s plnou správou
 
-Event Hubs je plně spravovanou platformu as-a-Service (PaaS) s nízkou režií konfigurace nebo správy, takže vám soustředit se na vaše obchodní řešení. [Služba Event Hubs pro ekosystémy Apache Kafka](event-hubs-for-kafka-ecosystem-overview.md) vám umožňuje využívat možnosti PaaS Kafka bez nutnosti spravovat, konfigurovat nebo mít spuštěné vaše clustery.
+Event Hubs je plně spravovaná platforma jako služba (PaaS) s nízkou režií v oblasti konfigurace nebo správy, takže se můžete soustředit na obchodní řešení. [Služba Event Hubs pro ekosystémy Apache Kafka](event-hubs-for-kafka-ecosystem-overview.md) vám umožňuje využívat možnosti PaaS Kafka bez nutnosti spravovat, konfigurovat nebo mít spuštěné vaše clustery.
 
 ## <a name="support-for-real-time-and-batch-processing"></a>Podpora zpracování v reálném čase a dávkového zpracování
 
-Ingestování, ukládání do vyrovnávací paměti, dlouhodobé ukládání a zpracování streamu je možné v reálném čase, takže můžete využívat užitečné přehledy hned. Služba Event Hubs využívá [modelu oddělených příjemců je pravidlo](event-hubs-scalability.md#partitions), povolení současně více aplikací ke zpracování datového proudu a umožňuje řídit rychlost zpracování.
+Ingestování, ukládání do vyrovnávací paměti, dlouhodobé ukládání a zpracování streamu je možné v reálném čase, takže můžete využívat užitečné přehledy hned. Event Hubs používá model koncového [uživatele](event-hubs-scalability.md#partitions), který umožňuje více aplikacím souběžně zpracovávat proud a umožnit vám řídit rychlost zpracování.
 
-[Zachycení](event-hubs-capture-overview.md) vašich dat v téměř reálném čase v [úložiště objektů Blob v Azure](https://azure.microsoft.com/services/storage/blobs/) nebo [Azure Data Lake Storage](https://azure.microsoft.com/services/data-lake-store/) pro dlouhodobé uchovávání dat nebo mikrodávek. zpracování. Toto chování pro stejný datový proud, který používáte pro odvození analýzy v reálném čase můžete dosáhnout. Nastavení sběru dat události je rychlé. Neexistují žádné administrativní náklady, aby běžel, a automaticky se škáluje s Event Hubs [jednotek propustnosti](event-hubs-scalability.md#throughput-units). Event Hubs vám umožní zaměřit se na zpracování dat a nikoli na sběr dat.
+Data můžete [zachytit](event-hubs-capture-overview.md) prakticky v reálném čase v [úložišti objektů BLOB v Azure](https://azure.microsoft.com/services/storage/blobs/) nebo [Azure Data Lake Storage](https://azure.microsoft.com/services/data-lake-store/) pro dlouhodobé uchovávání nebo zpracování mikrodávkování. Toto chování můžete dosáhnout na stejném datovém proudu, který používáte pro odvození analýz v reálném čase. Nastavení zachycení dat událostí je rychlé. Neexistují žádné náklady na správu, které by bylo možné spustit, a automaticky se škálují Event Hubs [jednotky propustnosti](event-hubs-scalability.md#throughput-units). Event Hubs vám umožní soustředit se na zpracování dat, nikoli na shromažďování dat.
 
 Azure Event Hubs se také dá integrovat s [Azure Functions](/azure/azure-functions/) jako architektura bez serveru.
 
-## <a name="scalable"></a>Škálovatelné 
+## <a name="scalable"></a>Škálovatelné
 
-Pomocí Event Hubs můžete začít se streamy v megabajtech a přejít na gigabajty nebo terabajty. Funkce [Automatické rozšiřování](event-hubs-auto-inflate.md) je jednou z mnoha dostupných možností škálování počtu jednotek propustnosti, aby to vyhovovalo vašim potřebám. 
+Pomocí Event Hubs můžete začít se streamy v megabajtech a přejít na gigabajty nebo terabajty. Funkce [Automatické rozšiřování](event-hubs-auto-inflate.md) je jednou z mnoha dostupných možností škálování počtu jednotek propustnosti, aby to vyhovovalo vašim potřebám.
 
 ## <a name="rich-ecosystem"></a>Ekosystém plný možností
 
-[Event Hubs pro Apache Kafka ekosystémů](event-hubs-for-kafka-ecosystem-overview.md) umožňuje [Apache Kafka (1.0 nebo novější)](https://kafka.apache.org/) klienty a aplikace komunikovat s Event Hubs. Není potřeba nastavit, nakonfigurovat a spravovat vlastní clustery Kafka.
- 
-Díky širokému ekosystému dostupnému v různých [jazycích (.NET, Java, Python, Go, Node.js)](https://github.com/Azure/azure-event-hubs) můžete snadno začít zpracovávat streamy ze služby Event Hubs. Všechny podporované jazyky klientů poskytují integraci na nízké úrovni. Ekosystému také poskytuje bezproblémovou integraci se službami Azure, jako je Azure Stream Analytics a Azure Functions a umožňuje tak vytvářet architektur bez serveru.
+[Event Hubs Apache Kafka ekosystémů](event-hubs-for-kafka-ecosystem-overview.md) umožňuje klientům a aplikacím [Apache Kafka (1,0 a novějším)](https://kafka.apache.org/) komunikovat s Event Hubs. Nemusíte nastavovat, konfigurovat a spravovat vlastní clustery Kafka.
+
+Díky širokému ekosystému dostupnému v různých [jazycích (.NET, Java, Python, Go, Node.js)](https://github.com/Azure/azure-event-hubs) můžete snadno začít zpracovávat streamy ze služby Event Hubs. Všechny podporované jazyky klientů poskytují integraci na nízké úrovni. Ekosystém taky poskytuje bezproblémovou integraci se službami Azure, jako jsou Azure Stream Analytics a Azure Functions, takže umožňuje vytvářet architektury bez serveru.
 
 ## <a name="key-architecture-components"></a>Klíčové komponenty architektury
 Event Hubs obsahuje následující [klíčové komponenty](event-hubs-features.md):
 
-- **Producentů událostí**: Každá entita, která odesílá data do centra událostí. Vydavatelé událostí můžou publikovat události pomocí protokolu HTTPS nebo AMQP 1.0 nebo Apache Kafka (1.0 nebo vyšší).
-- **Oddíly**: Každý příjemce četl jenom konkrétní podmnožinu nebo oddíl datového proudu zpráv.
-- **Skupiny příjemců**: Zobrazení (stavu, pozice nebo posunu) celého centra událostí. Příjemce skupiny povolit aplikacím mít samostatné zobrazení datového proudu událostí. Čtou datový proud nezávisle na sobě svým vlastním tempem a s použitím vlastních posunů.
-- **Jednotky propustnosti**: Předem zakoupené jednotky kapacity, které řídí kapacita propustnosti služby Event Hubs.
-- **Přijímače událostí**: Každá entita, která čte data událostí z centra událostí. Všichni příjemci služby Event Hubs připojují pomocí relace protokolu AMQP 1.0. Služba Event Hubs poskytuje události prostřednictvím relace, jakmile budou k dispozici. Všichni příjemci Kafka se připojují přes protokol Kafka 1.0 nebo novější.
+- **Výrobci událostí**: Každá entita, která odesílá data do centra událostí. Vydavatelé událostí můžou publikovat události pomocí protokolu HTTPS nebo AMQP 1.0 nebo Apache Kafka (1.0 nebo vyšší).
+- **Oddíly**: Každý příjemce přečte jenom určitou podmnožinu nebo oddíl datového proudu zpráv.
+- **Skupiny uživatelů**: Zobrazení (stav, pozice nebo posun) celého centra událostí. Skupiny uživatelů umožňují využívání aplikací pro každý z nich samostatné zobrazení datového proudu událostí. Čtou Stream nezávisle na vlastním tempu a s jejich vlastními posuny.
+- **Jednotky propustnosti**: Předem zakoupené jednotky kapacity, které řídí kapacitu propustnosti Event Hubs.
+- **Přijímače událostí**: Libovolná entita, která čte data událostí z centra událostí. Všichni Event Hubs spotřebitelé se připojují prostřednictvím relace AMQP 1,0. Služba Event Hubs doručuje události prostřednictvím relace, jakmile budou k dispozici. Všichni příjemci Kafka se připojují přes protokol Kafka 1.0 nebo novější.
 
 Následující obrázek znázorňuje architekturu zpracování datového proudu Event Hubs:
 
@@ -77,7 +79,7 @@ Následující obrázek znázorňuje architekturu zpracování datového proudu 
 
 ## <a name="next-steps"></a>Další postup
 
-Abyste mohli začít používat Event Hubs, najdete v článku **odesílat a přijímat události** kurzy: 
+Pokud chcete začít používat Event Hubs, přečtěte si kurzy pro **události odeslání a příjem** :
 
 - [.NET Core](event-hubs-dotnet-standard-getstarted-send.md)
 - [.NET Framework](event-hubs-dotnet-framework-getstarted-send.md)
@@ -85,8 +87,8 @@ Abyste mohli začít používat Event Hubs, najdete v článku **odesílat a př
 - [Python](event-hubs-python-get-started-send.md)
 - [Node.js](event-hubs-node-get-started-send.md)
 - [Go](event-hubs-go-get-started-send.md)
-- [C (pouze pro odesílání)](event-hubs-c-getstarted-send.md)
-- [Apache Storm (pouze přijímání)](event-hubs-storm-getstarted-receive.md)
+- [C (pouze odeslat)](event-hubs-c-getstarted-send.md)
+- [Apache Storm (pouze příjem)](event-hubs-storm-getstarted-receive.md)
 
 
 Další informace o službě Event Hubs najdete v následujících článcích:

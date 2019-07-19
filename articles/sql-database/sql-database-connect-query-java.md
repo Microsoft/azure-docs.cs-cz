@@ -1,6 +1,6 @@
 ---
 title: Použití Javy k dotazování služby Azure SQL Database | Dokumentace Microsoftu
-description: Ukazuje, jak pomocí Javy vytvořit program, který se připojí ke službě Azure SQL database a ji dotazovat s použitím příkazů T-SQL.
+description: Ukazuje, jak pomocí jazyka Java vytvořit program, který se připojí ke službě Azure SQL Database a provede dotaz pomocí příkazů T-SQL.
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
@@ -11,64 +11,63 @@ ms.author: andrela
 ms.reviewer: v-masebo
 manager: craigg
 ms.date: 03/25/2019
-ms.openlocfilehash: 2d9ce34d52d08b4dd38caaadfab48b7a69870e9a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: fcc1a093f8df87da24f9d7f7945c490d7b58c9bd
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61408975"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68320587"
 ---
 # <a name="quickstart-use-java-to-query-an-azure-sql-database"></a>Rychlý start: Použití Javy k dotazování databáze Azure SQL
 
-Tento článek ukazuje, jak používat [Java](/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server) pro připojení k databázi Azure SQL. Pak můžete použít příkazy jazyka T-SQL k dotazování dat.
+Tento článek ukazuje, jak se pomocí [Java](/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server) připojit k databázi SQL Azure. Pak můžete použít příkazy T-SQL k dotazování dat.
 
 ## <a name="prerequisites"></a>Požadavky
 
-K dokončení této ukázce, ujistěte se, že jsou splněné následující požadavky:
+K dokončení této ukázky se ujistěte, že máte následující požadavky:
 
-- Databázi Azure SQL. Jeden z těchto rychlých startech můžete vytvořit a potom nakonfigurovat databázi ve službě Azure SQL Database:
+- Databázi Azure SQL. K vytvoření a konfiguraci databáze v Azure SQL Database můžete použít jeden z těchto rychlých startů:
 
   || Izolovaná databáze | Spravovaná instance |
   |:--- |:--- |:---|
-  | Vytvořit| [Azure Portal](sql-database-single-database-get-started.md) | [Azure Portal](sql-database-managed-instance-get-started.md) |
+  | Create| [Azure Portal](sql-database-single-database-get-started.md) | [Azure Portal](sql-database-managed-instance-get-started.md) |
   || [Rozhraní příkazového řádku](scripts/sql-database-create-and-configure-database-cli.md) | [Rozhraní příkazového řádku](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
   || [PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) | [PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md) |
-  | Konfigurace | [pravidlo brány firewall na úrovni serveru IP](sql-database-server-level-firewall-rule.md)| [Připojení z virtuálního počítače](sql-database-managed-instance-configure-vm.md)|
-  |||[Připojení z na místě](sql-database-managed-instance-configure-p2s.md)
-  |Načtení dat|Společnosti Adventure Works načtených za rychlý start|[Obnovit Wide World Importers](sql-database-managed-instance-get-started-restore.md)
-  |||Obnovení nebo importovat společnosti Adventure Works z [BACPAC](sql-database-import.md) souboru z [Githubu](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works)|
-  |||
-
+  | Konfigurace | [Pravidlo brány firewall protokolu IP na úrovni serveru](sql-database-server-level-firewall-rule.md)| [Připojení z virtuálního počítače](sql-database-managed-instance-configure-vm.md)|
+  |||[Připojení z webu](sql-database-managed-instance-configure-p2s.md)
+  |Načtení dat|Načtený Adventure Works pro každý rychlý Start|[Obnovení celosvětových dovozců](sql-database-managed-instance-get-started-restore.md)
+  |||Obnovení nebo import Adventure Works ze souboru [BacPac](sql-database-import.md) z [GitHubu](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works)|
+  
   > [!IMPORTANT]
-  > Skripty v tomto článku se zapisují do použít databázi společnosti Adventure Works. S managed instance musíte importovat databázi společnosti Adventure Works do instance databáze nebo upravovat skripty v tomto článku pro používání databáze Wide World Importers.
+  > Skripty v tomto článku jsou určeny k používání databáze Adventure Works. Se spravovanou instancí musíte buď importovat databázi Adventure Works do databáze instance, nebo upravit skripty v tomto článku, aby používaly databázi World Importers.
 
-- S jazykem Java nainstalovaný software pro váš operační systém:
+- Software týkající se Java nainstalovaný pro váš operační systém:
 
-  - **MacOS**, nainstalujte Homebrew a Javu a potom nainstalujte Maven. Viz [kroky 1.2 a 1.3](https://www.microsoft.com/sql-server/developer-get-started/java/mac/).
+  - **MacOS**, nainstalujte homebrew a Java a pak nainstalujte Maven. Viz [kroky 1.2 a 1.3](https://www.microsoft.com/sql-server/developer-get-started/java/mac/).
 
-  - **Ubuntu**, nainstalujte Java, sady Java Development Kit, potom nainstalujte Maven. Viz [kroky 1.2, 1.3 a 1.4](https://www.microsoft.com/sql-server/developer-get-started/java/ubuntu/).
+  - **Ubuntu**, nainstalujte Java, Java Development Kit a pak nainstalujte Maven. Viz [kroky 1.2, 1.3 a 1.4](https://www.microsoft.com/sql-server/developer-get-started/java/ubuntu/).
 
-  - **Windows**, nainstalujte Java a potom nainstalujte Maven. Viz [kroky 1.2 a 1.3](https://www.microsoft.com/sql-server/developer-get-started/java/windows/).
+  - **Windows**, nainstalujte Java a pak nainstalujte Maven. Viz [kroky 1.2 a 1.3](https://www.microsoft.com/sql-server/developer-get-started/java/windows/).
 
-## <a name="get-sql-server-connection-information"></a>Získejte informace o připojení SQL serveru
+## <a name="get-sql-server-connection-information"></a>Získat informace o připojení k SQL serveru
 
-Získejte informace o připojení potřebné pro připojení k databázi Azure SQL. Nadcházející postupy budete potřebovat plně kvalifikovaný název serveru nebo název hostitele, název databáze a přihlašovací údaje.
+Získejte informace o připojení, které potřebujete pro připojení ke službě Azure SQL Database. Pro nadcházející postupy budete potřebovat plně kvalifikovaný název serveru nebo název hostitele, název databáze a přihlašovací údaje.
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
-2. Přejděte **databází SQL** nebo **spravované instance SQL** stránky.
+2. Přejděte na stránku **databáze SQL** nebo **spravované instance SQL** .
 
-3. Na **přehled** stránce si prohlédněte plně kvalifikovaný název vedle **název serveru** pro izolované databáze nebo serveru plně kvalifikovaný název vedle **hostitele** pro spravované instance. Zkopírujte název serveru nebo název hostitele, je ukazatel myši a vyberte **kopírování** ikonu. 
+3. Na stránce **Přehled** zkontrolujte plně kvalifikovaný název serveru vedle **názvu serveru** pro izolovanou databázi nebo plně kvalifikovaný název serveru vedle možnost **hostitel** pro spravovanou instanci. Pokud chcete zkopírovat název serveru nebo název hostitele, najeďte na něj ukazatelem myši a vyberte ikonu **kopírování** . 
 
 ## <a name="create-the-project"></a>Vytvoření projektu
 
-1. Z příkazového řádku, vytvořte nový projekt Maven s názvem *sqltest*.
+1. Z příkazového řádku vytvořte nový projekt Maven s názvem *sqltest*.
 
     ```bash
     mvn archetype:generate "-DgroupId=com.sqldbsamples" "-DartifactId=sqltest" "-DarchetypeArtifactId=maven-archetype-quickstart" "-Dversion=1.0.0" --batch-mode
     ```
 
-1. Změnit složku, do které *sqltest* a otevřete *pom.xml* v oblíbeném textovém editoru. Přidat **ovladač Microsoft JDBC pro SQL Server** na závislosti svého projektu pomocí následujícího kódu.
+1. Změňte složku na *sqltest* a otevřete *pom. XML* v oblíbeném textovém editoru. Přidejte **ovladač Microsoft JDBC pro SQL Server** do závislostí projektu pomocí následujícího kódu.
 
     ```xml
     <dependency>
@@ -89,13 +88,13 @@ Získejte informace o připojení potřebné pro připojení k databázi Azure S
 
 1. Soubor *pom.xml* uložte a zavřete.
 
-## <a name="add-code-to-query-database"></a>Přidejte kód pro dotaz na databázi
+## <a name="add-code-to-query-database"></a>Přidání kódu do databáze dotazů
 
-1. Měli byste už soubor s názvem *App.java* projektu v Mavenu umístění:
+1. V projektu Maven byste už měli mít soubor s názvem *App. Java* , který najdete tady:
 
-   *.\sqltest\src\main\java\com\sqldbsamples\App.java*
+   *..\sqltest\src\main\java\com\sqldbsamples\App.java*
 
-1. Soubor otevřete a nahraďte jeho obsah následujícím kódem. Přidejte příslušné hodnoty pro server, databázi, uživatele a heslo.
+1. Soubor otevřete a nahraďte jeho obsah následujícím kódem. Pak přidejte příslušné hodnoty pro váš server, databázi, uživatele a heslo.
 
     ```java
     package com.sqldbsamples;
@@ -153,7 +152,7 @@ Získejte informace o připojení potřebné pro připojení k databázi Azure S
     ```
 
    > [!NOTE]
-   > Příklad kódu používá **AdventureWorksLT** ukázkovou databázi SQL Azure.
+   > Příklad kódu používá ukázkovou databázi **AdventureWorksLT** pro Azure SQL.
 
 ## <a name="run-the-code"></a>Spuštění kódu
 
@@ -164,11 +163,11 @@ Získejte informace o připojení potřebné pro připojení k databázi Azure S
     mvn -q exec:java "-Dexec.mainClass=com.sqldbsamples.App"
     ```
 
-1. Ověření se vrátí prvních 20 řádků a zavřete okno aplikace.
+1. Ověřte, že se vrátí prvních 20 řádků a okno aplikace zavřete.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- [Návrh první databáze Azure SQL](sql-database-design-first-database.md)  
+- [Návrh první databáze SQL Azure](sql-database-design-first-database.md)  
 
 - [Ovladač Microsoft JDBC pro SQL Server](https://github.com/microsoft/mssql-jdbc)  
 

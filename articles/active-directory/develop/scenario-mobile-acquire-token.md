@@ -1,9 +1,9 @@
 ---
-title: Mobilní aplikace, že volání webových rozhraní API – získání tokenu pro aplikaci | Platforma identit Microsoft
-description: Informace o sestavení mobilní aplikace, která volá webové rozhraní API (při získávání tokenu pro aplikaci)
+title: Mobilní aplikace, která volá webová rozhraní API – získání tokenu pro aplikaci | Platforma Microsoft identity
+description: Naučte se, jak vytvořit mobilní aplikaci, která volá webová rozhraní API (získání tokenu pro aplikaci).
 services: active-directory
 documentationcenter: dev-center-name
-author: danieldobalian
+author: jmprieur
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
@@ -16,22 +16,22 @@ ms.author: jmprieur
 ms.reviwer: brandwe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 590184c25fa0aa3cb3219aa9c185a31e62090ba9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5c1ac880aa8274cc9a4ea554de84dcb46476236f
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67111144"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68320905"
 ---
-# <a name="mobile-app-that-calls-web-apis---get-a-token"></a>Mobilní aplikace, která volá webové rozhraní API – získání tokenu
+# <a name="mobile-app-that-calls-web-apis---get-a-token"></a>Mobilní aplikace, která volá webová rozhraní API – získá token.
 
-Před zahájením volání chráněného webového rozhraní API, aplikace potřebovat přístupový token. Tento článek vás provede procesem pro získání tokenu pomocí knihovny Microsoft Authentication Library (MSAL).
+Než budete moct začít volat chráněná webová rozhraní API, bude aplikace potřebovat přístupový token. Tento článek vás provede procesem získání tokenu pomocí knihovny Microsoft Authentication Library (MSAL).
 
-## <a name="scopes-to-request"></a>Obory žádosti
+## <a name="scopes-to-request"></a>Rozsahy k vyžádání
 
-Při žádosti o token, budete muset definovat obor. Obor určuje, jaká data vaše aplikace může mít přístup k.  
+Když vyžádáte token, budete muset definovat obor. Obor určuje, k jakým datům může aplikace přistupovat.  
 
-Nejjednodušší způsob je kombinování požadované webového rozhraní API `App ID URI` s oborem `.default`. To říká platforma identit Microsoft, který vaše aplikace vyžaduje, že všechny obory nastaven na portálu.
+Nejjednodušším řešením je kombinování požadovaného webového rozhraní API `App ID URI` s oborem `.default`. Tím se poradí platforma Microsoftu pro identitu, kterou vaše aplikace vyžaduje pro všechny obory nastavené na portálu.
 
 #### <a name="android"></a>Android
 ```Java
@@ -50,9 +50,9 @@ var scopes = new [] {"https://graph.microsoft.com/.default"};
 
 ## <a name="get-tokens"></a>Získat tokeny
 
-### <a name="via-msal"></a>Via MSAL
+### <a name="via-msal"></a>Přes MSAL
 
-MSAL umožňuje aplikacím získat tokeny, bez upozornění a interaktivně. Stačí tyto metody volat a MSAL vrátí přístupový token pro požadované obory. Správné vzor je k provedení bezobslužné požadavek a vrátit zpět k interaktivní žádosti.
+MSAL umožňuje aplikacím získat bez tichého a interaktivního získávání tokenů. Stačí zavolat tyto metody a MSAL vrátí přístupový token pro požadované obory. Správným vzorem je provedení tichého požadavku a návrat k interaktivnímu požadavku.
 
 #### <a name="android"></a>Android
 
@@ -161,13 +161,13 @@ catch(MsalUiRequiredException e)
 }
 ```
 
-### <a name="via-the-protocol"></a>Prostřednictvím protokolu
+### <a name="via-the-protocol"></a>Přes protokol
 
-Nedoporučujeme přímo pomocí protokolu. Pokud tak učiníte, aplikace nebudou podporovat některé jednotné přihlašování (SSO), správu zařízení a scénáře podmíněného přístupu.
+Nedoporučujeme používat přímo protokol. Pokud to uděláte, aplikace nebude podporovat některé možnosti jednotného přihlašování (SSO), správy zařízení a podmíněného přístupu.
 
-Pokud používáte protokol k získání tokenů pro mobilní aplikace, budete muset udělat dva požadavky: získání autorizačního kódu a exchange pro token.
+Když použijete protokol k získání tokenů pro mobilní aplikace, musíte provést dvě požadavky: získání autorizačního kódu a jeho výměna pro token.
 
-#### <a name="get-authorization-code"></a>Získání autorizačního kódu
+#### <a name="get-authorization-code"></a>Získat autorizační kód
 
 ```Text
 https://login.microsoftonline.com/{tenant}/oauth2/v2.0/authorize?
@@ -179,7 +179,7 @@ client_id=<CLIENT_ID>
 &state=12345
 ```
 
-#### <a name="get-access-and-refresh-token"></a>Získání tokenu přístupu a aktualizace
+#### <a name="get-access-and-refresh-token"></a>Získání přístupu a aktualizace tokenu
 
 ```Text
 POST /{tenant}/oauth2/v2.0/token HTTP/1.1

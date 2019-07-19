@@ -1,6 +1,6 @@
 ---
-title: Ochrana dat a úložiště služby Azure ve službě Azure Security Center | Dokumentace Microsoftu
-description: Tato dokument řeší doporučení ve službě Azure Security Center, které vám pomohou chránit data a služby Azure SQL a zůstaňte souladu se zásadami zabezpečení.
+title: Ochrana služby Azure data a úložiště v Azure Security Center | Microsoft Docs
+description: Tento dokument popisuje doporučení v Azure Security Center, která vám pomůžou chránit vaše data a službu Azure SQL a zůstat v souladu se zásadami zabezpečení.
 services: security-center
 documentationcenter: na
 author: monhaber
@@ -13,75 +13,75 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/19/2019
-ms.author: monhaber
-ms.openlocfilehash: 2ac0e4ebaafb8b0c9c79e885cecbefc5a65c1823
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.author: v-mohabe
+ms.openlocfilehash: 9e48114d0d4159d40006710f9c8194dea0d775f8
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67275336"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68295637"
 ---
-# <a name="protect-azure-data-and-storage-services-in-azure-security-center"></a>Ochrana dat a úložiště služby Azure ve službě Azure Security Center
-V tomto tématu se dozvíte, jak zobrazit a implementace doporučení zabezpečení pro data a prostředky úložiště. Azure Security Center najít tato doporučení při analýze stavu zabezpečení vašich prostředků Azure.
+# <a name="protect-azure-data-and-storage-services-in-azure-security-center"></a>Ochrana služby Azure data a úložiště v Azure Security Center
+V tomto tématu se dozvíte, jak zobrazit a implementovat doporučení zabezpečení pro prostředky dat a úložiště. Azure Security Center při analýze stavu zabezpečení vašich prostředků Azure našla tato doporučení.
 
 ## <a name="view-your-data-security-information"></a>Zobrazit informace o zabezpečení dat
 
-1. V **kontrolu zabezpečení prostředků** klikněte na tlačítko **Data a prostředky úložiště**.
+1. V části **hygiena zabezpečení prostředků** klikněte na **data a prostředky úložiště**.
 
-   ![Datové prostředky a prostředky úložiště](./media/security-center-monitoring/click-data.png)
+   ![Prostředky úložiště dat &](./media/security-center-monitoring/click-data.png)
 
-    **Zabezpečení dat** otevře se stránka s doporučeními pro datové prostředky.
+    Otevře se stránka **zabezpečení dat** s doporučeními pro datové prostředky.
 
      ![Datové prostředky](./media/security-center-monitoring/sql-overview.png)
 
 Na této stránce můžete:
 
-* Klikněte na tlačítko **přehled** karta obsahuje seznam všech doporučení zdroje dat chcete napravit. 
-* Kliknutí na jednotlivé karty a zobrazte doporučení podle typu prostředku.
+* Klikněte na kartu **Přehled** se seznamem všech doporučení k datovým prostředkům, která se mají opravit. 
+* Klikněte na jednotlivé karty a Prohlédněte si doporučení podle typu prostředku.
 
     > [!NOTE]
     > Další informace o šifrování úložiště najdete v tématu [Povolení šifrování účtu úložiště Azure v Azure Security Center](security-center-enable-encryption-for-storage-account.md).
 
 
-## <a name="remediate-a-recommendation-on-a-data-resource"></a>Opravovat doporučení na zdroj dat
+## <a name="remediate-a-recommendation-on-a-data-resource"></a>Náprava doporučení pro datový prostředek
 
-1. Z některého z karty prostředků klikněte na prostředek. Otevře se stránka informace o seznam doporučení, která napravit.
+1. Ze všech karet prostředků klikněte na prostředek. Otevře se stránka s informacemi o doporučeních, která se mají opravit.
 
-    ![Informace o prostředku.](./media/security-center-monitoring/sql-recommendations.png)
+    ![Informace o prostředku](./media/security-center-monitoring/sql-recommendations.png)
 
-2. Kliknutím na doporučení. Stránka doporučení se otevře a zobrazí **kroky k nápravě** implementovat doporučení.
+2. Klikněte na doporučení. Otevře se stránka s doporučením a zobrazí se **kroky** pro nápravu, které implementují doporučení.
 
-   ![Kroky pro odstranění problému](./media/security-center-monitoring/remediate1.png)
+   ![Postup odstranění problému](./media/security-center-monitoring/remediate1.png)
 
-3. Klikněte na tlačítko **provést akci**. Zobrazí se stránka nastavení prostředků.
+3. Klikněte na **provést akci**. Zobrazí se stránka nastavení prostředků.
 
-    ![Povolte doporučení](./media/security-center-monitoring/remediate2.png)
+    ![Povolit doporučení](./media/security-center-monitoring/remediate2.png)
 
-4. Postupujte podle **kroky k nápravě** a klikněte na tlačítko **Uložit**.
+4. Postupujte podle **kroků** pro nápravu a klikněte na **Uložit**.
 
 ## <a name="data-and-storage-recommendations"></a>Doporučení pro data a úložiště
 
 |Typ prostředku|Bezpečnostní skóre|Doporučení|Popis|
 |----|----|----|----|
-|Účet úložiště|20|Měla by se povolit zabezpečený přenos pro účty úložiště|Zabezpečený přenos je možnost, která vynutí účtu úložiště tak, aby přijímal požadavky jenom ze zabezpečeného připojení (HTTPS). HTTPS zajišťuje ověřování mezi serverem a služby a chrání přenášená data ze sítě vrstvy útoky man-in-the-middle, odposlouchávání a napadení relace.|
-|Redis|20|By měla být povolená pouze zabezpečená připojení k mezipaměti Redis|Povolte pouze připojení přes protokol SSL pro mezipaměť Azure Redis. Použití zabezpečeného připojení zajišťuje ověřování mezi serverem a služby a chrání přenášená data ze sítě vrstvy útoky man-in-the-middle, odposlouchávání a napadení relace.|
-|SQL|15|Měla by se povolit transparentní šifrování dat v databázích SQL|Povolte transparentní šifrování dat pro ochranu dat v klidovém stavu a splňovat požadavky na dodržování předpisů.|
-|SQL|15|Auditování služby SQL server by měla být povolená|Povolte auditování pro servery Azure SQL. (Pouze služby azure SQL. Nezahrnuje běžící na virtuálních počítačích SQL.)|
-|Data lake analytics|5|By měly být povolené diagnostické protokoly v Data Lake Analytics|Povolení protokolů a uchovávat až po roce. To umožňuje znovu vytvořit záznamy aktivit za účelem šetření, když dojde k incidentu zabezpečení nebo dojde k ohrožení vaší sítě. |
-|Data lake store|5|Protokoly diagnostiky v Azure Data Lake Store by měly být povolené.|Povolení protokolů a uchovávat až po roce. To umožňuje znovu vytvořit záznamy aktivit za účelem šetření, když dojde k incidentu zabezpečení nebo dojde k ohrožení vaší sítě. |
-|SQL|30|Měli napravit ohrožení zabezpečení na vašich databází SQL|Posouzení ohrožení zabezpečení SQL vyhledá vaší databáze na ohrožení zabezpečení a zpřístupňuje všechny odchylky od osvědčených postupů, jako jsou chybné konfigurace, nadměrná oprávnění a nechráněné citlivá data. Řešení zjištěná ohrožení zabezpečení může výrazně zlepšit vaše zásadní roli zabezpečení databáze.|
-|SQL|20|Zřízení správce Azure AD pro SQL server|Zřízení správce Azure AD pro SQL server povolit ověřování Azure AD. Ověřování Azure AD umožňuje správu oprávnění zjednodušené a centralizované identity management uživatelů databáze a dalším službám společnosti Microsoft.|
-|Účet úložiště|15|Přístup k účtům úložišť pomocí brány firewall a konfigurací virtuální sítě by mělo být omezeno|Audit neomezený přístup k síti v nastavení brány firewall na účtu úložiště. Místo toho nakonfigurujte pravidla sítě, abyste účtu úložiště můžou přistupovat jenom aplikace z povolených sítí. Povolit připojení z konkrétní Internet nebo klienty na místě, můžete udělit přístup k provoz z konkrétní služby Azure virtual networks a rozsahy adres veřejné internetové IP.|
-|Účet úložiště|1|Účty úložiště by se měly migrovat na nové prostředky Azure Resource Manageru|Použití nové verze 2 Azure Resource Manageru pro vaše účty úložiště kvůli vylepšení zabezpečení: silnější access control (RBAC), lepší auditování, nasazení založené na Resource Manageru a zásad správného řízení, přístup ke spravovaným identitám přístup k trezoru klíčů pro tajné kódy a Azure AD na základě ověřování a podpora značek a skupiny prostředků pro snadnější správu zabezpečení.|
+|Účet úložiště|20|Zabezpečený přenos do účtů úložiště by měl být povolený.|Zabezpečený přenos je možnost, která vynutí, aby váš účet úložiště přijímal požadavky jenom od zabezpečených připojení (HTTPS). Protokol HTTPS zajišťuje ověřování mezi serverem a službou a chrání přenášená data před útoky ze síťové vrstvy, jako jsou například útoky prostředníkem, odposlouchávání a napadení relace.|
+|Redis|20|Měla by být povolená jenom zabezpečená připojení k vašemu Redis Cache.|Povolte pro Redis jenom připojení přes SSL k Azure cache. Použití zabezpečených připojení zajišťuje ověřování mezi serverem a službou a chrání přenášená data před útoky ze síťové vrstvy, jako jsou například útoky prostředníkem, odposlouchávání a napadení relace.|
+|SQL|15|Je třeba povolit transparentní šifrování dat databází SQL.|Povolit transparentní šifrování dat pro ochranu neaktivních dat a splnění požadavků na dodržování předpisů.|
+|SQL|15|Auditování SQL serveru by mělo být povolené.|Povolte auditování pro servery SQL Azure. (Jenom Azure SQL Service. Nezahrnuje SQL běžící na vašich virtuálních počítačích.)|
+|Data Lake Analytics|5|Měly by být povolené diagnostické protokoly v Data Lake Analytics.|Povolení protokolů a uchovávat až po roce. To umožňuje znovu vytvořit záznamy aktivit za účelem šetření, když dojde k incidentu zabezpečení nebo dojde k ohrožení vaší sítě. |
+|Data Lake Store|5|Měly by být povolené diagnostické protokoly v Azure Data Lake Store.|Povolení protokolů a uchovávat až po roce. To umožňuje znovu vytvořit záznamy aktivit za účelem šetření, když dojde k incidentu zabezpečení nebo dojde k ohrožení vaší sítě. |
+|SQL|30|Ohrožení zabezpečení vašich databází SQL by mělo být opraveno|Posouzení ohrožení zabezpečení SQL prohledává chyby zabezpečení v databázi a zpřístupňuje jakékoli odchylky od osvědčených postupů, jako jsou například chyby konfigurace, nadměrné oprávnění a nechráněná citlivá data. Řešení zjištěných slabých míst může významně zlepšit stature zabezpečení databáze.|
+|SQL|20|Zřízení správce Azure AD pro SQL Server|Zřiďte správce Azure AD pro SQL Server, aby se povolilo ověřování Azure AD. Ověřování Azure AD umožňuje zjednodušenou správu oprávnění a centralizovanou správu identit uživatelů databáze a dalších služeb Microsoftu.|
+|Účet úložiště|15|Přístup k účtům úložiště pomocí brány firewall a konfigurací virtuální sítě by měl být omezený.|Auditujte neomezený přístup k síti v nastavení brány firewall účtu úložiště. Místo toho nakonfigurujte síťová pravidla, aby k účtu úložiště měly přístup jenom aplikace z povolených sítí. Pokud chcete povolit připojení z určitých internetových nebo místních klientů, můžete udělit přístup k provozu z konkrétních virtuálních sítí Azure nebo do rozsahů veřejných internetových IP adres.|
+|Účet úložiště|1|Účty úložiště by se měly migrovat na nové prostředky Azure Resource Manager.|Použijte novou Azure Resource Manager V2 pro účty úložiště k zajištění vylepšení zabezpečení, jako je: silnější řízení přístupu (RBAC), lepší auditování, nasazení Správce prostředků a zásady správného řízení, přístup ke spravovaným identitám, přístup k trezoru klíčů pro tajné kódy a ověřování založené na službě Azure AD a podpora pro značky a skupiny prostředků pro snadnější správu zabezpečení.|
 
-## <a name="see-also"></a>Další informace najdete v tématech
-Další informace o doporučení, které se vztahují na jiné typy prostředků Azure, najdete v následujících tématech:
+## <a name="see-also"></a>Viz také:
+Další informace o doporučeních, která se vztahují na jiné typy prostředků Azure, najdete v následujících tématech:
 
 * [Ochrana virtuálních počítačů pomocí Azure Security Center](security-center-virtual-machine-recommendations.md)
 * [Ochrana aplikací pomocí Azure Security Center](security-center-application-recommendations.md)
 * [Ochrana sítě pomocí Azure Security Center](security-center-network-recommendations.md)
 
-Další informace o službě Security Center, najdete v následujících tématech:
+Další informace o Security Center najdete v následujících tématech:
 
 * [Nastavení zásad zabezpečení v Azure Security Center](tutorial-security-policy.md) – Zjistěte, jak konfigurovat zásady zabezpečení pro svá předplatná Azure a skupiny prostředků.
 * [Správa a zpracování výstrah zabezpečení v Azure Security Center](security-center-managing-and-responding-alerts.md) – Zjistěte, jak spravovat výstrahy zabezpečení a reagovat na ně.

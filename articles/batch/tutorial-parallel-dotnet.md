@@ -3,7 +3,7 @@ title: Spuštění paralelní úlohy – Azure Batch .NET
 description: Kurz – Paralelní překódování multimediálních souborů pomocí aplikace ffmpeg ve službě Azure Batch s využitím klientské knihovny Batch .NET
 services: batch
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 ms.assetid: ''
 ms.service: batch
 ms.devlang: dotnet
@@ -11,14 +11,14 @@ ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: e450ca0ff2578c4ec2ce95c14a17735860044b59
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.openlocfilehash: 4350cc215c776317d3bde24c7561c317a31fb4c3
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65595242"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68321875"
 ---
-# <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-net-api"></a>Kurz: Spuštění paralelní úlohy pomocí služby Azure Batch pomocí rozhraní API .NET
+# <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-net-api"></a>Kurz: Spuštění paralelní úlohy s Azure Batch pomocí rozhraní .NET API
 
 Azure Batch umožňuje efektivně spouštět v Azure rozsáhlé paralelní dávkové úlohy a úlohy vysokovýkonného výpočetního prostředí (HPC). Tento kurz vás provede příkladem spuštění paralelní úlohy pomocí služby Batch v jazyce C#. Seznámíte se s běžným pracovním postupem aplikace Batch a způsobem práce s prostředky služby Batch a Storage prostřednictvím kódu programu. Získáte informace o těchto tématech:
 
@@ -37,13 +37,13 @@ V tomto kurzu pomocí open source nástroje [ffmpeg](https://ffmpeg.org/) parale
 
 ## <a name="prerequisites"></a>Požadavky
 
-* [Visual Studio 2017 nebo novější](https://www.visualstudio.com/vs), nebo [.NET Core 2.1](https://www.microsoft.com/net/download/dotnet-core/2.1) pro Linux, macOS nebo Windows.
+* [Visual Studio 2017 nebo novější](https://www.visualstudio.com/vs)nebo [.NET Core 2,1](https://www.microsoft.com/net/download/dotnet-core/2.1) pro Linux, MacOS nebo Windows.
 
 * Účet Batch a propojený účet Azure Storage. Informace o vytvoření těchto účtů prostřednictvím [webu Azure Portal](quick-create-portal.md) nebo [rozhraní Azure CLI](quick-create-cli.md) najdete v rychlém startu služby Batch.
 
-* [64bitová verze aplikace ffmpeg 3.4 pro Windows](https://ffmpeg.zeranoe.com/builds/win64/static/ffmpeg-3.4-win64-static.zip) (.zip). Stáhněte soubor zip na místní počítač. Pro účely tohoto kurzu potřebujete pouze soubor zip. Soubor nemusíte rozbalovat ani ho místně instalovat.
+* [64bitová verze aplikace ffmpeg 3.4 pro Windows](https://ffmpeg.zeranoe.com/builds/win64/static/ffmpeg-3.4-win64-static.zip) (.zip). Stáhněte soubor zip na místní počítač. Pro tento kurz potřebujete pouze soubor zip. Soubor nemusíte rozbalovat ani ho místně instalovat.
 
-## <a name="sign-in-to-azure"></a>Přihlásit se k Azure
+## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
 Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com).
 
@@ -153,7 +153,7 @@ CloudStorageAccount storageAccount = CloudStorageAccount.Parse(storageConnection
 CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
 ```
 
-K vytváření a správě fondů, úloh a úkolů ve službě Batch aplikace vytvoří objekt [BatchClient](/dotnet/api/microsoft.azure.batch.batchclient). Klient služby Batch v ukázce používá ověření pomocí sdíleného klíče. Batch podporuje také ověřování prostřednictvím [Azure Active Directory](batch-aad-auth.md) ověření jednotlivých uživatelů nebo bezobslužných aplikací.
+K vytváření a správě fondů, úloh a úkolů ve službě Batch aplikace vytvoří objekt [BatchClient](/dotnet/api/microsoft.azure.batch.batchclient). Klient služby Batch v ukázce používá ověření pomocí sdíleného klíče. Batch také podporuje ověřování prostřednictvím [Azure Active Directory](batch-aad-auth.md) k ověřování jednotlivých uživatelů nebo bezobslužné aplikace.
 
 ```csharp
 BatchSharedKeyCredentials sharedKeyCredentials = new BatchSharedKeyCredentials(BatchAccountUrl, BatchAccountName, BatchAccountKey);
@@ -175,8 +175,8 @@ Pak se do vstupního kontejneru nahrají soubory z místní složky `InputFiles`
 
 Na nahrávání souborů se podílejí dvě metody v souboru `Program.cs`:
 
-* `UploadResourceFilesToContainerAsync`: Vrátí kolekci objektů ResourceFile a interně volá `UploadResourceFileToContainerAsync` kvůli nahrání každého souboru, který je předán `inputFilePaths` parametru.
-* `UploadResourceFileToContainerAsync`: Nahraje jednotlivé soubory jako objekt blob do vstupního kontejneru. Po nahrání souboru získá sdílený přístupový podpis (SAS) objektu blob a vrátí objekt ResourceFile, který ho zastupuje.
+* `UploadResourceFilesToContainerAsync`: Vrátí kolekci objektů ResourceFile a interní volání `UploadResourceFileToContainerAsync` pro nahrání každého souboru, který je předán `inputFilePaths` v parametru.
+* `UploadResourceFileToContainerAsync`: Nahraje každý soubor jako objekt blob do vstupního kontejneru. Po nahrání souboru získá sdílený přístupový podpis (SAS) objektu blob a vrátí objekt ResourceFile, který ho zastupuje.
 
 ```csharp
 string inputPath = Path.Combine(Environment.CurrentDirectory, "InputFiles");
@@ -230,7 +230,7 @@ pool.ApplicationPackageReferences = new List<ApplicationPackageReference>
 await pool.CommitAsync();  
 ```
 
-### <a name="create-a-job"></a>Vytvoří úlohu
+### <a name="create-a-job"></a>Vytvoření úlohy
 
 Úloha služby Batch určí fond, ve kterém se budou spouštět úkoly, a volitelná nastavení, jako je priorita a plán práce. Ukázka vytvoří úlohu zavoláním metody `CreateJobAsync`. Tato definovaná metoda vytvoří úlohu ve vašem fondu pomocí metody [BatchClient.JobOperations.CreateJob](/dotnet/api/microsoft.azure.batch.joboperations.createjob).
 
@@ -248,7 +248,7 @@ await job.CommitAsync();
 
 Ukázka vytvoří v úloze úkoly zavoláním metody `AddTasksAsync`, která vytvoří seznam objektů [CloudTask](/dotnet/api/microsoft.azure.batch.cloudtask). Každý objekt `CloudTask` pomocí vlastnosti [CommandLine](/dotnet/api/microsoft.azure.batch.cloudtask.commandline) spouští aplikaci ffmpeg, která zpracuje vstupní objekt `ResourceFile`. Aplikace ffmpeg se na každý uzel nainstalovala dříve při vytváření fondu. Tady příkazový řádek spouští aplikaci ffmpeg kvůli převodu jednotlivých vstupních souborů MP4 (video) na soubory MP3 (zvuk).
 
-Ukázka po spuštění příkazového řádku vytvoří pro soubor MP3 objekt [OutputFile](/dotnet/api/microsoft.azure.batch.outputfile). Výstupní soubory všech úkolů (v tomto případě jednoho) se pomocí vlastnosti [OutputFiles](/dotnet/api/microsoft.azure.batch.cloudtask.outputfiles) nahrají do kontejneru v propojeném účtu úložiště. Dříve v ukázce kódu, adresu URL sdíleného přístupového podpisu (`outputContainerSasUrl`) byl získán poskytnout přístup pro zápis pro výstupní kontejner. Všimněte si podmínky nastavené v `outputFile` objektu. Výstupní soubor z úlohy je pouze nahraný do kontejneru po úspěšném dokončení úlohy (`OutputFileUploadCondition.TaskSuccess`). Zobrazí celý [vzorový kód](https://github.com/Azure-Samples/batch-dotnet-ffmpeg-tutorial) na Githubu pro další podrobnosti implementace.
+Ukázka po spuštění příkazového řádku vytvoří pro soubor MP3 objekt [OutputFile](/dotnet/api/microsoft.azure.batch.outputfile). Výstupní soubory všech úkolů (v tomto případě jednoho) se pomocí vlastnosti [OutputFiles](/dotnet/api/microsoft.azure.batch.cloudtask.outputfiles) nahrají do kontejneru v propojeném účtu úložiště. Dříve v ukázce kódu se získala adresa URL sdíleného přístupového`outputContainerSasUrl`podpisu (), která poskytuje přístup pro zápis do výstupního kontejneru. Poznamenejte si podmínky nastavené `outputFile` u objektu. Výstupní soubor z úlohy se do kontejneru nahraje až po úspěšném dokončení úlohy (`OutputFileUploadCondition.TaskSuccess`). Další podrobnosti o implementaci najdete v ukázce úplného [kódu](https://github.com/Azure-Samples/batch-dotnet-ffmpeg-tutorial) na GitHubu.
 
 Potom ukázka přidá úkoly do úlohy pomocí metody [AddTaskAsync](/dotnet/api/microsoft.azure.batch.joboperations.addtaskasync) a ta je zařadí do fronty ke spuštění ve výpočetních uzlech.
 
@@ -318,7 +318,7 @@ Aplikace po spuštění úkolů automaticky odstraní kontejner vstupního úlo�
 
 Pokud už je nepotřebujete, odstraňte skupinu prostředků, účet Batch a účet úložiště. Na webu Azure Portal to provedete tak, že vyberete skupinu prostředků účtu Batch a kliknete na **Odstranit skupinu prostředků**.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste se naučili tyto postupy:
 

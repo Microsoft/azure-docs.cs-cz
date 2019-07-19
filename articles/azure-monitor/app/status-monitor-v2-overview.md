@@ -1,6 +1,6 @@
 ---
-title: Přehled služby Azure Monitor stavu v2 | Dokumentace Microsoftu
-description: Přehled monitorování stavu v2. Sledování výkonu webu bez opětovného nasazení webu. Funguje s webové aplikace ASP.NET hostované místně, na virtuálních počítačích nebo v Azure.
+title: Přehled služby Azure Monitorování stavu v2 | Microsoft Docs
+description: Přehled Monitorování stavu v2. Monitorujte výkon webu bez nutnosti opětovného nasazení webu. Funguje s ASP.NET webovými aplikacemi hostovanými místně, na virtuálních počítačích nebo v Azure.
 services: application-insights
 documentationcenter: .net
 author: MS-TimothyMothra
@@ -12,42 +12,40 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: 2126408222433e6339723dc2da0d2611bb234fe8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 38359858d16a20f73cf845fa547899bdc5ee7fd3
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66734166"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68326232"
 ---
 # <a name="status-monitor-v2"></a>Monitorování stavu v2
 
-Stav monitorování v2 je publikován v modulu Powershellu [Galerie prostředí PowerShell](https://www.powershellgallery.com/packages/Az.ApplicationMonitor).
-Nahradí [monitorování stavu](https://docs.microsoft.com/azure/azure-monitor/app/monitor-performance-live-website-now).
-Tento modul obsahuje bez použití kódu instrumentace webových aplikací .NET hostovaných službou IIS.
-Se odesílají telemetrická data na portál Azure Portal, kde můžete [monitorování](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) vaší aplikace.
-
-> [!IMPORTANT]
-> Stav monitorování v2 je aktuálně ve verzi public preview.
-> Tato verze preview je k dispozici bez smlouvu o úrovni služeb, a to nedoporučujeme pro produkční úlohy. Některé funkce nemusí být podporované a některé můžou mít omezené možnosti.
-> Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+Monitorování stavu v2 je modul prostředí PowerShell publikovaný do [Galerie prostředí PowerShell](https://www.powershellgallery.com/packages/Az.ApplicationMonitor).
+Nahrazuje [monitorování stavu](https://docs.microsoft.com/azure/azure-monitor/app/monitor-performance-live-website-now).
+Modul poskytuje instrumentaci webových aplikací .NET, které jsou hostovány službou IIS, pomocí kódu.
+Telemetrii se pošle do Azure Portal, kde můžete [monitorovat](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) svoji aplikaci.
 
 ## <a name="powershell-gallery"></a>Galerie prostředí PowerShell
 
-Galerie prostředí PowerShell je umístěná tady: https://www.powershellgallery.com/packages/Az.ApplicationMonitor.
+Monitorování stavu v2 se nachází zde: https://www.powershellgallery.com/packages/Az.ApplicationMonitor.
+
+![Galerie prostředí PowerShell](https://img.shields.io/powershellgallery/v/Az.ApplicationMonitor.svg?color=Blue&label=Current%20Version&logo=PowerShell&style=for-the-badge)
 
 
 ## <a name="instructions"></a>Pokyny
-- Najdete v článku [pokyny Začínáme](status-monitor-v2-get-started.md) zobrazíte spuštění s ukázkami kódu stručné.
-- Zobrazit [podrobné pokyny](status-monitor-v2-detailed-instructions.md) podrobné informace o tom, jak začít pracovat.
+- Začínáme s ukázkami stručných ukázek kódu najdete v pokynech k zahájení [práce](status-monitor-v2-get-started.md) .
+- Projděte si [podrobné pokyny](status-monitor-v2-detailed-instructions.md) , jak v podrobně začít.
 
-## <a name="powershell-api-reference"></a>Reference k rozhraní API prostředí PowerShell
+## <a name="powershell-api-reference"></a>Reference k rozhraní PowerShell API
 - [Disable-ApplicationInsightsMonitoring](status-monitor-v2-api-disable-monitoring.md)
 - [Disable-InstrumentationEngine](status-monitor-v2-api-disable-instrumentation-engine.md)
 - [Enable-ApplicationInsightsMonitoring](status-monitor-v2-api-enable-monitoring.md)
-- [Povolit InstrumentationEngine](status-monitor-v2-api-enable-instrumentation-engine.md)
+- [Enable – InstrumentationEngine](status-monitor-v2-api-enable-instrumentation-engine.md)
 - [Get-ApplicationInsightsMonitoringConfig](status-monitor-v2-api-get-config.md)
 - [Get-ApplicationInsightsMonitoringStatus](status-monitor-v2-api-get-status.md)
 - [Set-ApplicationInsightsMonitoringConfig](status-monitor-v2-api-set-config.md)
+- [Spustit – ApplicationInsightsMonitoringTrace](status-monitor-v2-api-start-trace.md)
 
 ## <a name="troubleshooting"></a>Řešení potíží
 - [Odstraňování potíží](status-monitor-v2-troubleshoot.md)
@@ -56,18 +54,18 @@ Galerie prostředí PowerShell je umístěná tady: https://www.powershellgaller
 
 ## <a name="faq"></a>Nejčastější dotazy
 
-- Monitorování stavu v2 podporuje instalace proxy?
+- Podporuje Monitorování stavu v2 instalace proxy serveru?
 
-  *Ano*. Stáhnout monitorování stavu v2 několika způsoby. Pokud má počítač přístup k Internetu, je možné připojit v galerii prostředí PowerShell pomocí `-Proxy` parametry.
-Můžete také ručně stáhnout modul a buď ji nainstalujte na počítači nebo použijte přímo.
-Každá z těchto možností podle [podrobné pokyny](status-monitor-v2-detailed-instructions.md).
+  *Ano*. Existuje několik způsobů, jak stáhnout Monitorování stavu v2. Pokud má počítač přístup k Internetu, můžete k Galerie prostředí PowerShell připojit pomocí `-Proxy` parametrů.
+Můžete také ručně stáhnout modul a buď ho nainstalovat do počítače, nebo ho použít přímo.
+Každá z těchto možností je popsaná v [podrobných pokynech](status-monitor-v2-detailed-instructions.md).
   
-- Jak můžu ověřit, zda bylo úspěšně povolení?
+- Návody ověřit, zda bylo povolení úspěšné?
 
-   Neexistuje žádné rutiny k ověření, ale bylo úspěšné.
-Doporučujeme použít [Live Metrics](https://docs.microsoft.com/azure/azure-monitor/app/live-stream) a rychle tak určit Pokud vaše aplikace odesílá telemetrická data.
+   Neexistuje žádná rutina pro ověření zapnutí.
+K rychlému určení, jestli vaše aplikace posílá telemetrii, doporučujeme použít [živé metriky](https://docs.microsoft.com/azure/azure-monitor/app/live-stream) .
 
-   Můžete také použít [Log Analytics](../log-query/get-started-portal.md) vypsat všechny role v cloudových procesech právě odesílá telemetrická data:
+   [Log Analytics](../log-query/get-started-portal.md) můžete použít také k vypsání všech cloudových rolí, které aktuálně odesílají telemetrii:
    ```Kusto
    union * | summarize count() by cloud_RoleName, cloud_RoleInstance
    ```
@@ -76,14 +74,14 @@ Doporučujeme použít [Live Metrics](https://docs.microsoft.com/azure/azure-mon
 
 Zobrazení telemetrických dat:
 
-* [Zkoumání metrik](../../azure-monitor/app/metrics-explorer.md) pro monitorování výkonu a využití.
-* [Prohledávejte události a protokoly](../../azure-monitor/app/diagnostic-search.md) k diagnostice problémů.
-* [Použití analýzy](../../azure-monitor/app/analytics.md) pro pokročilejší dotazy.
+* [Prozkoumejte metriky](../../azure-monitor/app/metrics-explorer.md) pro monitorování výkonu a využití.
+* [Prohledejte události a protokoly](../../azure-monitor/app/diagnostic-search.md) a Diagnostikujte problémy.
+* K pokročilejším dotazům [použijte Analytics](../../azure-monitor/app/analytics.md) .
 * [Vytváření řídicích panelů](../../azure-monitor/app/overview-dashboard.md).
 
 Přidání další telemetrie:
 
-* [Vytvářejte webové testy](monitor-web-app-availability.md) k Ujistěte se, že web zůstává živý.
-* [Přidání telemetrie webového klienta](../../azure-monitor/app/javascript.md) pro zobrazení výjimek z kódu webové stránky a povolit trasování volání.
-* [Přidejte Application Insights SDK do kódu](../../azure-monitor/app/asp-net.md) abyste mohli vložit trasování a protokolování volání.
+* [Vytvářejte webové testy](monitor-web-app-availability.md) , abyste se ujistili, že vaše lokalita zůstane v provozu.
+* [Přidejte telemetrii webového klienta](../../azure-monitor/app/javascript.md) pro zobrazení výjimek z kódu webové stránky a umožnění volání trasování.
+* [Přidejte sadu Application Insights SDK do kódu](../../azure-monitor/app/asp-net.md) , abyste mohli vložit trasování a protokolování volání.
 

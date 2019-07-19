@@ -1,57 +1,58 @@
 ---
-title: Pochopit, jak funguje dobrovolné migračního nástroje Azure Monitor výstrah
-description: Pochopit, jak funguje nástroj pro migraci výstrahy a řešit problémy.
+title: Vysvětlení způsobu, jakým nástroj k dobrovolné migraci funguje pro Azure Monitor výstrahy
+description: Zjistěte, jak Nástroj pro migraci výstrah funguje a jak řešit problémy.
 author: snehithm
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 06/19/2019
+ms.date: 07/10/2019
 ms.author: snmuvva
 ms.subservice: alerts
-ms.openlocfilehash: 015000388c5629dbd8ed8833931a809ebd738bd6
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: f981c14e26c51c427dab6b418cab8df46b1bb026
+ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67295530"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68302250"
 ---
-# <a name="understand-how-the-migration-tool-works"></a>Pochopit, jak funguje nástroj pro migraci
+# <a name="understand-how-the-migration-tool-works"></a>Vysvětlení fungování nástroje pro migraci
 
-Jako [jsme oznámili už dřív](monitoring-classic-retirement.md), klasických upozornění ve službě Azure Monitor se vyřazuje podle dne 31. května 2019 (byla původně 30 června. května 2019). Migrační nástroj je dostupný na webu Azure Portal pro zákazníky používající klasický pravidla upozornění a který chcete spustit migrace sami.
+Jak [už](monitoring-classic-retirement.md)jsme oznámili, klasické výstrahy v Azure monitor jsou vyřazené z 31. srpna 2019 (původně od 30. června 2019). Nástroj pro migraci je k dispozici v Azure Portal zákazníkům, kteří používají pravidla pro klasické výstrahy a kteří chtějí aktivovat migraci sami.
 
-Tento článek vysvětluje, jak funguje nástroj pro migraci dobrovolná. Popisuje také nápravná opatření pro některé běžné problémy.
+Tento článek vysvětluje, jak nástroj k dobrovolné migraci funguje. Popisuje také nápravná opatření pro některé běžné problémy.
 
 > [!NOTE]
-> Datum vyřazení pro migraci klasických upozornění byla z důvodu zpoždění při uvádění nástroj pro migraci [rozšířená tak, aby 31. srpna 2019](https://azure.microsoft.com/updates/azure-monitor-classic-alerts-retirement-date-extended-to-august-31st-2019/) od původně oznámené data 30. června 2019.
+> Vzhledem k prodlevám při zavádění migračního nástroje pro migraci se datum vyřazení pro migraci klasických výstrah [rozšířila na 31. srpna 2019](https://azure.microsoft.com/updates/azure-monitor-classic-alerts-retirement-date-extended-to-august-31st-2019/) od původně oznámeného dne 30. června 2019.
 
-## <a name="classic-alert-rules-that-will-not-be-migrated"></a>Klasické pravidel upozornění, které se nebudou migrovat
+## <a name="classic-alert-rules-that-will-not-be-migrated"></a>Klasická pravidla výstrah, která se nebudou migrovat
 
 > [!IMPORTANT]
-> Upozornění protokolu aktivit (včetně výstrah stavu služby) a upozornění protokolů nejsou vliv migrace. Migrace se vztahuje pouze na klasické upozornění pravidel popsaných [tady](monitoring-classic-retirement.md#retirement-of-classic-monitoring-and-alerting-platform).
+> Migrace neovlivní výstrahy protokolu aktivit (včetně upozornění na stav služby) a výstrahy protokolu. Migrace se vztahuje pouze na pravidla pro klasické výstrahy, která jsou popsaná [zde](monitoring-classic-retirement.md#retirement-of-classic-monitoring-and-alerting-platform).
 
-Přestože nástroj můžete migrovat téměř všechny [classic pravidla upozornění](monitoring-classic-retirement.md#retirement-of-classic-monitoring-and-alerting-platform), existují některé výjimky. Následující pravidla upozornění se nemigruje s použitím nástroje (nebo při automatické migraci od září 2019):
+I když nástroj může migrovat téměř všechna [klasická pravidla výstrah](monitoring-classic-retirement.md#retirement-of-classic-monitoring-and-alerting-platform), existují výjimky. Následující pravidla upozornění nebudou migrována pomocí nástroje (nebo během automatické migrace od září 2019):
 
-- Klasické pravidla upozornění na metriky hosta virtuálního počítače (Windows nebo Linuxem). Zobrazit [pokyny k opětovnému vytváření těchto pravidel upozornění v nové upozornění na metriky](#guest-metrics-on-virtual-machines) dále v tomto článku.
-- Klasické pravidla upozornění na metriky klasického úložiště. Zobrazit [pokyny pro monitorování účtů klasického úložiště](https://azure.microsoft.com/blog/modernize-alerting-using-arm-storage-accounts/).
-- Klasické pravidla upozornění na některé metriky účtu úložiště. Zobrazit [podrobnosti](#storage-account-metrics) dále v tomto článku.
-- Klasické pravidla upozornění na některé metriky služby Cosmos DB. Podrobnosti o bude přidána v budoucí aktualizaci.
+- Klasická pravidla upozornění na metriky hostů virtuálních počítačů (Windows i Linux). Přečtěte si [pokyny k opětovnému vytvoření těchto pravidel upozornění v nových výstrahách metriky](#guest-metrics-on-virtual-machines) dále v tomto článku.
+- Klasická pravidla upozornění na klasických metrikách úložiště Podívejte se na [pokyny pro monitorování účtů klasického úložiště](https://azure.microsoft.com/blog/modernize-alerting-using-arm-storage-accounts/).
+- Klasická pravidla výstrah pro některé metriky účtu úložiště. Další informace najdete [v části dále](#storage-account-metrics) v tomto článku.
+- Pravidla pro klasické výstrahy pro některé metriky Cosmos DB. Další informace najdete [v části dále](#cosmos-db-metrics) v tomto článku.
+- Klasická pravidla pro upozornění na všechny klasické virtuální počítače a metriky Cloud Services (Microsoft. ClassicCompute/virtualMachines a Microsoft. ClassicCompute/domainNames/sloty/role). Další informace najdete [v části dále](#classic-compute-metrics) v tomto článku.
 
-Pokud vaše předplatné má tato pravidla classic, musíte je migrovat ručně. Protože neposkytujeme automatické migrace, všechny existující, klasického upozornění metrik z těchto typů budou nadále fungovat až do roku 2020 dne. Toto rozšíření nabízí vám čas přesunout do nové výstrahy. Však žádné nové výstrahy classic je možné vytvořit po srpnu 2019.
+Pokud má vaše předplatné nějaká pravidla klasického modelu, je nutné je ručně migrovat. Vzhledem k tomu, že nemůžeme poskytnout automatickou migraci, všechny existující klasické výstrahy metriky těchto typů budou i nadále fungovat do června 2020. Toto rozšíření vám dává čas přejít na nové výstrahy. Žádné nové klasické výstrahy však nelze vytvořit po 2019. srpna.
 
 > [!NOTE]
-> Kromě výše uvedených výjimky, pokud pravidel upozornění classic jsou neplatné například se nachází na [zastaralé metriky](#classic-alert-rules-on-deprecated-metrics) nebo prostředky, které se odstranily, se nemigruje během migrace dobrovolná. Při automatické migraci se stane, se odstraní všechna taková neplatný klasického pravidla upozornění.
+> Kromě výše uvedených výjimek, pokud jsou pravidla pro vaše Klasická upozornění neplatná, tj. se jedná o [zastaralé metriky](#classic-alert-rules-on-deprecated-metrics) nebo prostředky, které byly odstraněny, nebudou migrovány během dobrovolné migrace. Při automatické migraci dojde k odstranění všech takových neplatných pravidel upozornění na klasický čas.
 
-### <a name="guest-metrics-on-virtual-machines"></a>Metrik hosta na virtuálních počítačích
+### <a name="guest-metrics-on-virtual-machines"></a>Metriky hostů na virtuálních počítačích
 
-Než budete moct vytvořit nové upozornění na metriky týkající se metrik hosta, metrik hosta se musí odeslat na úložiště vlastních metrik Azure monitoru. Postupujte podle těchto pokynů a povolte jímka Azure monitoru v nastavení diagnostiky:
+Než budete moct vytvořit nové výstrahy metriky pro metriky hostů, musí se metriky hosta odeslat do úložiště vlastních metrik Azure Monitor. Postupujte podle těchto pokynů a povolte Azure Monitor jímka v nastavení diagnostiky:
 
-- [Zapnutí metrik hosta pro virtuální počítače s Windows](collect-custom-metrics-guestos-resource-manager-vm.md)
-- [Povolení metrik hosta pro virtuální počítače s Linuxem](collect-custom-metrics-linux-telegraf.md)
+- [Povolení metrik hosta pro virtuální počítače s Windows](collect-custom-metrics-guestos-resource-manager-vm.md)
+- [Povolení metrik hosta pro virtuální počítače se systémem Linux](collect-custom-metrics-linux-telegraf.md)
 
-Po dokončení těchto kroků můžete vytvořit nové upozornění na metriky týkající se metrik hosta. A po vytvoření nové upozornění na metriky, můžete odstranit upozornění classic.
+Po dokončení těchto kroků můžete pro metriky hostů vytvořit nové výstrahy metriky. A po vytvoření nových výstrah metriky můžete klasické výstrahy odstranit.
 
 ### <a name="storage-account-metrics"></a>Metriky účtu úložiště
 
-S výjimkou oznámení na tyto metriky se dají migrovat všechny klasických upozornění na účty úložiště:
+Všechny klasické výstrahy na účtech úložiště se dají migrovat s výjimkou upozornění na tyto metriky:
 
 - PercentAuthorizationError
 - PercentClientOtherError
@@ -64,143 +65,206 @@ S výjimkou oznámení na tyto metriky se dají migrovat všechny klasických up
 - SASThrottlingError
 - ThrottlingError
 
-Klasické výstraha pravidla na procenta metriky se musí migrovat na základě [mapování mezi metriky staré a nové úložiště](https://docs.microsoft.com/azure/storage/common/storage-metrics-migration#metrics-mapping-between-old-metrics-and-new-metrics). Bude nutné prahové hodnoty odpovídajícím způsobem upravit, protože nové metriky, které jsou k dispozici je některý z absolutní.
+Klasická pravidla upozornění na metriky v procentech se musí migrovat na základě [mapování mezi starými a novými metrikami úložiště](https://docs.microsoft.com/azure/storage/common/storage-metrics-migration#metrics-mapping-between-old-metrics-and-new-metrics). Prahové hodnoty bude nutné upravit odpovídajícím způsobem, protože nová dostupná metrika je absolutní.
 
-Klasické pravidla upozornění na AnonymousThrottlingError, SASThrottlingError a ThrottlingError musí rozdělit na dvě nové výstrahy, protože neexistuje žádný kombinované metriku, která poskytuje stejné funkce. Prahové hodnoty bude třeba ho upravit odpovídajícím způsobem.
+Klasická pravidla upozornění na AnonymousThrottlingError, SASThrottlingError a ThrottlingError musí být rozdělená na dvě nové výstrahy, protože neexistuje žádná kombinovaná metrika, která by poskytovala stejné funkce. Prahové hodnoty bude nutné upravit odpovídajícím způsobem.
 
-### <a name="classic-alert-rules-on-deprecated-metrics"></a>Klasické pravidla upozornění na zastaralé metriky
+### <a name="cosmos-db-metrics"></a>Metriky služby Cosmos DB
 
-Toto jsou classic pravidla upozornění na metriky, které byly dříve podporovány, ale nakonec byla vyřazena jako zastaralá. Malé procento zákazník může mít neplatný klasického pravidla upozornění na tyto metriky. Protože tato pravidla upozornění jsou neplatné, nebude se migrovat.
+U všech klasických upozornění na Cosmos DB metriky se dá migrovat s výjimkou upozornění na tyto metriky:
 
-| Typ prostředku| Počet metrik: zastaralé |
+- Průměrný počet požadavků za sekundu
+- Úrovně konzistence
+- Http 2xx
+- Http 3xx
+- HTTP 400
+- HTTP 401
+- Vnitřní chyba serveru
+- Maximální počet spotřebovaných RUPM za minutu
+- Maximální počet ru za sekundu
+- Neúspěšné požadavky počtu Mongo
+- Mongo odstranit neúspěšné žádosti
+- Mongo vložit neúspěšné žádosti
+- Mongo jiných neúspěšných žádostí
+- Mongo další poplatek za požadavek
+- Mongo další rychlost žádosti
+- Neúspěšné požadavky dotazu Mongo
+- Neúspěšné žádosti o aktualizaci Mongo
+- Pozorovaná latence čtení
+- Pozorovaná latence zápisu
+- Dostupnost služby
+- Kapacita úložiště
+- Omezené žádosti
+- Požadavky celkem
+
+Průměrný počet požadavků za sekundu, úroveň konzistence, maximální počet RUPM spotřebovaných za minutu, Max ru za sekundu, zjištěnou latenci čtení, pozorovaná latence zápisu, kapacita úložiště v současnosti není v [novém systému](metrics-supported.md#microsoftdocumentdbdatabaseaccounts)dostupná.
+
+Výstrahy na metrikách žádostí, jako je HTTP 2xx, http 3xx, HTTP 400, HTTP 401, interní chyba serveru, dostupnost služby, omezené žádosti a celkový počet požadavků, se nemigrují, protože způsob, jakým se počítají žádosti, se liší od klasických metrik a nových metrik. Výstrahy na těchto počítačích bude nutné ručně znovu vytvořit se upravenými mezními hodnotami.
+
+Výstrahy na metriky neúspěšných žádostí Mongo musí být rozdělené do několika výstrah, protože neexistuje žádná kombinovaná metrika, která by poskytovala stejné funkce. Prahové hodnoty bude nutné upravit odpovídajícím způsobem.
+
+### <a name="classic-compute-metrics"></a>Klasické výpočetní metriky
+
+Žádné výstrahy na klasických výpočetních metrikách nebudou migrovány pomocí nástroje pro migraci, protože klasické výpočetní prostředky se ještě nepodporují s novými výstrahami. Podpora nových výstrah u těchto typů prostředků se přidá do budoucna. Jakmile je tato skutečnost k dispozici, zákazníci musí znovu vytvořit nová ekvivalentní pravidla výstrah na základě jejich klasických pravidel upozornění do června 2020.
+
+### <a name="classic-alert-rules-on-deprecated-metrics"></a>Pravidla pro klasické výstrahy na zastaralých metrikách
+
+Jedná se o pravidla pro klasických výstrah pro metriky, které byly dříve podporovány, ale byly nakonec zastaralé. Malé procento zákazníků může mít pro takové metriky neplatná pravidla klasických výstrah. Vzhledem k tomu, že tato pravidla upozornění nejsou platná, nebudou migrována.
+
+| Typ prostředku| Zastaralé metriky |
 |-------------|----------------- |
 | Microsoft.DBforMySQL/servers | compute_consumption_percent, compute_limit |
 | Microsoft.DBforPostgreSQL/servers | compute_consumption_percent, compute_limit |
 | Microsoft.Network/publicIPAddresses | defaultddostriggerrate |
-| Microsoft.SQL/servers/databases | service_level_objective, storage_limit, storage_used, throttling, dtu_consumption_percent, storage_used |
+| Microsoft.SQL/servers/databases | service_level_objective, storage_limit, storage_used, omezování, dtu_consumption_percent, storage_used |
 | Microsoft.Web/hostingEnvironments/multirolepools | averagememoryworkingset |
-| Microsoft.Web/hostingEnvironments/workerpools | BytesReceived httpqueuelength |
+| Microsoft.Web/hostingEnvironments/workerpools | BytesReceived, httpqueuelength |
 
-## <a name="how-equivalent-new-alert-rules-and-action-groups-are-created"></a>Jak se vytvoří ekvivalentní nová pravidla upozornění a skupiny akcí
+## <a name="how-equivalent-new-alert-rules-and-action-groups-are-created"></a>Jak se vytvářejí ekvivalentní nová pravidla upozornění a skupiny akcí
 
-Nástroj pro migraci převede classic pravidel upozornění na ekvivalentní nová pravidla upozornění a skupin akcí. Pro většinu pravidel upozornění classic, ekvivalentní nová pravidla upozornění jsou na stejné metriky se stejnými vlastnostmi například `windowSize` a `aggregationType`. Existují však některé klasické výstrahy, pravidla se na metriky, které mají různé, ekvivalentní metriky v novém systému. Tyto zásady platí i pro migraci klasických upozornění není uvedeno v následující části:
+Nástroj pro migraci převede pravidla vašich klasických výstrah na ekvivalentní nová pravidla upozornění a skupiny akcí. Pro většinu klasických pravidel výstrah jsou stejná nová pravidla upozornění na stejné metrikě se stejnými vlastnostmi, jako `windowSize` jsou `aggregationType`a. Existují však některá klasická pravidla pro výstrahy, která mají jinou ekvivalentní metriku v novém systému. Následující zásady platí pro migraci klasických výstrah, pokud nejsou uvedené v následující části:
 
-- **Frekvence**: Definuje, jak často se kontroluje classic nebo nové pravidlo výstrahy pro podmínku. `frequency` v klasickém pravidla upozornění nebyl uživatelem konfigurovatelné a byla vždy 5 minut pro všechny typy prostředků kromě součásti Application Insights, u kterých bylo 1 min. Takže frekvence ekvivalentní pravidel je také nastavena na 5 minut a 1 min v uvedeném pořadí.
-- **Typ agregace**: Definuje, jak je metrika agregován v okně, které vás zajímají. `aggregationType` Je také stejný mezi nové výstrahy pro většinu metriky a upozornění classic. V některých případech, protože se liší mezi klasických upozornění a nové výstrahy, ekvivalentní metriku `aggregationType` nebo `primary Aggregation Type` definované pro metrika.
-- **Jednotky**: Vlastnost metrika, ke kterému se vytvoří výstraha. Některé ekvivalentní metriky mají různé jednotky. Prahová hodnota je odpovídajícím způsobem, podle potřeby upravit. Například pokud původní metrika má sekundy jako jednotky, ale má ekvivalentní novou metriku milisekund jako jednotky, původní prahová hodnota se vynásobí hodnotou 1000 zajistit stejné chování.
-- **Velikost okna**: Definuje okno, přes která metrika se data agregují k porovnání s prahovou hodnotou. Pro úroveň standard `windowSize` hodnoty jako 15mins 5 minut, 30 minut, 1 hodina, 3 hodiny, 6 hodin, 12 hodin, 1 den, není žádná změna pro ekvivalentní nové pravidlo upozornění. Pro ostatní hodnoty, která je nejblíže `windowSize` je se rozhodli použít. Pro většinu zákazníků nebude to mít žádný vliv díky této změně. Pro malé procento zákazníky může být potřeba upravit prahové hodnoty, chcete-li získat přesně stejné chování.
+- **Frekvence**: Definuje, jak často pravidlo klasického nebo nového upozornění kontroluje podmínku. Nastavení `frequency` v klasických pravidlech výstrah nebylo uživatelem konfigurovatelné a bylo vždy 5 minut pro všechny typy prostředků s výjimkou Application Insightsch komponent, pro které bylo 1 min. Frekvence ekvivalentních pravidel je také nastavená na 5 min a 1 min.
+- **Typ agregace**: Definuje, jak je metrika agregována nad oknem zájmu. `aggregationType` Je také totéž mezi klasickými výstrahami a novými výstrahami pro většinu metrik. V některých případech, protože se metrika liší mezi výstrahami Classic a novými výstrahami `aggregationType` , je `primary Aggregation Type` použita ekvivalentní nebo definovaná pro metriku.
+- **Jednotky**: Vlastnost metriky, na které je vytvořena výstraha. Některé ekvivalentní metriky mají různé jednotky. Prahová hodnota se podle potřeby upraví. Například pokud má původní metrika sekundy jako jednotky, ale ekvivalentní nová metrika má milisekundy jako jednotky, původní prahová hodnota se vynásobí 1000, aby se zajistilo stejné chování.
+- **Velikost okna**: Definuje okno, přes které se agreguje data metriky pro porovnání s prahovou hodnotou. U standardních `windowSize` hodnot, jako jsou 5mins, 15mins, 30mins, hodinového, 3hours, 6 hodin, 12 hodin, 1 den, se u ekvivalentního nového pravidla výstrahy neudělala žádná změna. Pro jiné hodnoty se vybere nejpodobnější `windowSize` , která se má použít. U většiny zákazníků neexistuje žádný vliv na tuto změnu. Pro malé procento zákazníků může být potřeba upravit prahovou hodnotu a získat tak přesně stejné chování.
 
-V následujících částech se budeme podrobně metriky, které mají různé, ekvivalentní metriky v novém systému. Jakékoliv metriky, které zůstává stejná pro klasický i nový pravidla upozornění není uvedený. Můžete najít seznam metrik, které jsou podporovány v novém systému [tady](metrics-supported.md).
+V následujících částech jsme podrobně nastavili metriky, které mají jinou ekvivalentní metriku v novém systému. Žádná metrika, která zůstává stejná pro klasický a nová pravidla upozornění, není uvedená. Seznam metrik podporovaných v novém systému najdete [tady](metrics-supported.md).
 
 ### <a name="microsoftstorageaccountsservices"></a>Microsoft.StorageAccounts/services
 
-Pro účet služby Storage jako objekt blob, tabulky, souboru a front následující metriky mapovaly na ekvivalentní metriky, jak je znázorněno níže:
+Pro služby účtu úložiště, jako je například blob, Table, File a Queue, jsou následující metriky namapovány na ekvivalentní metriky, jak je znázorněno níže:
 
-| Metrika v klasických upozornění | Ekvivalentní metriky v nové výstrahy | Komentáře|
+| Metrika v klasických výstrahách | Ekvivalentní metrika v nových výstrahách | Komentáře|
 |--------------------------|---------------------------------|---------|
-| AnonymousAuthorizationError| Transakce metriky s dimenzemi "Hodnotu ResponseType" = "AuthorizationError" a "Ověřování" = "Anonymní"| |
-| AnonymousClientOtherError | Transakce metriky s dimenzemi "Hodnotu ResponseType" = "ClientOtherError" a "Ověřování" = "Anonymní" | |
-| AnonymousClientTimeOutError| Transakce metriky s dimenzemi "Hodnotu ResponseType" = "ClientTimeOutError" a "Ověřování" = "Anonymní" | |
-| AnonymousNetworkError | Transakce metriky s dimenzemi "Hodnotu ResponseType" = "NetworkError" a "Ověřování" = "Anonymní" | |
-| AnonymousServerOtherError | Transakce metriky s dimenzemi "Hodnotu ResponseType" = "ServerOtherError" a "Ověřování" = "Anonymní" | |
-| AnonymousServerTimeOutError | Transakce metriky s dimenzemi "Hodnotu ResponseType" = "ServerTimeOutError" a "Ověřování" = "Anonymní" | |
-| AnonymousSuccess | Transakce metriky s dimenzemi "Hodnotu ResponseType" = "Success" a "Ověřování" = "Anonymní" | |
-| AuthorizationError | Transakce metriky s dimenzemi "Hodnotu ResponseType" = "AuthorizationError" | |
-| Hodnotu AverageE2ELatency | SuccessE2ELatency | |
-| AverageServerLatency | SuccessServerLatency | |
-| Kapacita | BlobCapacity | Použití `aggregationType` průměrné místo "last". Metrika platí jenom pro služby objektů Blob |
-| ClientOtherError | Transakce metriky s dimenzemi "Hodnotu ResponseType" = "ClientOtherError"  | |
-| ClientTimeoutError | Transakce metriky s dimenzemi "Hodnotu ResponseType" = "ClientTimeOutError" | |
-| ContainerCount | ContainerCount | Použití `aggregationType` průměrné místo "last". Metrika platí jenom pro služby objektů Blob |
-| NetworkError | Transakce metriky s dimenzemi "Hodnotu ResponseType" = "NetworkError" | |
-| ObjectCount | BlobCount| Použití `aggregationType` průměrné místo "last". Metrika platí jenom pro služby objektů Blob |
-| SASAuthorizationError | Transakce metriky s dimenzemi "Hodnotu ResponseType" = "AuthorizationError" a "Ověřování" = "SAS" | |
-| SASClientOtherError | Transakce metriky s dimenzemi "Hodnotu ResponseType" = "ClientOtherError" a "Ověřování" = "SAS" | |
-| SASClientTimeOutError | Transakce metriky s dimenzemi "Hodnotu ResponseType" = "ClientTimeOutError" a "Ověřování" = "SAS" | |
-| SASNetworkError | Transakce metriky s dimenzemi "Hodnotu ResponseType" = "NetworkError" a "Ověřování" = "SAS" | |
-| SASServerOtherError | Transakce metriky s dimenzemi "Hodnotu ResponseType" = "ServerOtherError" a "Ověřování" = "SAS" | |
-| SASServerTimeOutError | Transakce metriky s dimenzemi "Hodnotu ResponseType" = "ServerTimeOutError" a "Ověřování" = "SAS" | |
-| SASSuccess | Transakce metriky s dimenzemi "Hodnotu ResponseType" = "Success" a "Ověřování" = "SAS" | |
-| ServerOtherError | Transakce metriky s dimenzemi "Hodnotu ResponseType" = "ServerOtherError" | |
-| ServerTimeOutError | Transakce metriky s dimenzemi "Hodnotu ResponseType" = "ServerTimeOutError"  | |
-| Úspěch | Transakce metriky s dimenzemi "Hodnotu ResponseType" = "Success" | |
+| AnonymousAuthorizationError| Metrika transakcí s dimenzemi "ResponseType" = "AuthorizationError" a "Authentication" = "anonymous"| |
+| AnonymousClientOtherError | Metrika transakcí s dimenzemi "ResponseType" = "ClientOtherError" a "Authentication" = "anonymous" | |
+| AnonymousClientTimeOutError| Metrika transakcí s dimenzemi "ResponseType" = "ClientTimeOutError" a "Authentication" = "anonymous" | |
+| AnonymousNetworkError | Metrika transakcí s dimenzemi "ResponseType" = "NetworkError" a "Authentication" = "anonymous" | |
+| AnonymousServerOtherError | Metrika transakcí s dimenzemi "ResponseType" = "ServerOtherError" a "Authentication" = "anonymous" | |
+| AnonymousServerTimeOutError | Metrika transakcí s dimenzemi "ResponseType" = "ServerTimeOutError" a "Authentication" = "anonymous" | |
+| AnonymousSuccess | Metrika transakcí s dimenzemi "ResponseType" = "úspěch" a "ověřování" = "anonymní" | |
+| AuthorizationError | Metrika transakcí s dimenzemi "ResponseType" = "AuthorizationError" | |
+| Hodnotu averagee2elatency | SuccessE2ELatency | |
+| Hodnotu averageserverlatency | SuccessServerLatency | |
+| Kapacita | BlobCapacity | Použijte `aggregationType` ' Average ' místo ' Last '. Metrika se vztahuje pouze na služby BLOB Services. |
+| ClientOtherError | Metrika transakcí s dimenzemi "ResponseType" = "ClientOtherError"  | |
+| ClientTimeoutError | Metrika transakcí s dimenzemi "ResponseType" = "ClientTimeOutError" | |
+| ContainerCount | ContainerCount | Použijte `aggregationType` ' Average ' místo ' Last '. Metrika se vztahuje pouze na služby BLOB Services. |
+| NetworkError | Metrika transakcí s dimenzemi "ResponseType" = "NetworkError" | |
+| ObjectCount | BlobCount| Použijte `aggregationType` ' Average ' místo ' Last '. Metrika se vztahuje pouze na služby BLOB Services. |
+| SASAuthorizationError | Metrika transakcí s rozměry "ResponseType" = "AuthorizationError" a "ověřování" = "SAS" | |
+| SASClientOtherError | Metrika transakcí s rozměry "ResponseType" = "ClientOtherError" a "ověřování" = "SAS" | |
+| SASClientTimeOutError | Metrika transakcí s rozměry "ResponseType" = "ClientTimeOutError" a "ověřování" = "SAS" | |
+| SASNetworkError | Metrika transakcí s rozměry "ResponseType" = "NetworkError" a "ověřování" = "SAS" | |
+| SASServerOtherError | Metrika transakcí s rozměry "ResponseType" = "ServerOtherError" a "ověřování" = "SAS" | |
+| SASServerTimeOutError | Metrika transakcí s rozměry "ResponseType" = "ServerTimeOutError" a "ověřování" = "SAS" | |
+| SASSuccess | Metrika transakcí s dimenzemi "ResponseType" = "úspěch" a "ověřování" = "SAS" | |
+| ServerOtherError | Metrika transakcí s dimenzemi "ResponseType" = "ServerOtherError" | |
+| ServerTimeOutError | Metrika transakcí s dimenzemi "ResponseType" = "ServerTimeOutError"  | |
+| Úspěch | Metrika transakcí s dimenzemi "ResponseType" = "úspěch" | |
 | TotalBillableRequests| Transakce | |
 | TotalEgress | Výchozí přenos | |
-| TotalIngress | Příchozí přenos dat | |
+| Totalbillablerequests | Příchozí přenos dat | |
 | TotalRequests | Transakce | |
 
-### <a name="microsoftinsightscomponents"></a>Microsoft.insights/components
+### <a name="microsoftinsightscomponents"></a>Microsoft. Insights/Components
 
-Pro službu Application Insights jsou ekvivalentní metriky, jak je znázorněno níže:
+Pro Application Insights se používají ekvivalentní metriky, jak je znázorněno níže:
 
-| Metrika v klasických upozornění | Ekvivalentní metriky v nové výstrahy | Komentáře|
+| Metrika v klasických výstrahách | Ekvivalentní metrika v nových výstrahách | Komentáře|
 |--------------------------|---------------------------------|---------|
-| availability.availabilityMetric.value | availabilityResults/availabilityPercentage|   |
-| availability.durationMetric.value | availabilityResults/doba trvání| Vynásobte prahová hodnota původní hodnotou 1000 za jednotky klasické metriky jsou během několika sekund a u nových jeden jsou v milisekundách.  |
-| basicExceptionBrowser.count | výjimky a prohlížeče|  Použití `aggregationType` "počet" místo "sum". |
-| basicExceptionServer.count | výjimky/server| Použití `aggregationType` "počet" místo "sum".  |
-| clientPerformance.clientProcess.value | browserTimings/processingDuration| Vynásobte prahová hodnota původní hodnotou 1000 za jednotky klasické metriky jsou během několika sekund a u nových jeden jsou v milisekundách.  |
-| clientPerformance.networkConnection.value | browserTimings/networkDuration|  Vynásobte prahová hodnota původní hodnotou 1000 za jednotky klasické metriky jsou během několika sekund a u nových jeden jsou v milisekundách. |
-| clientPerformance.receiveRequest.value | browserTimings/receiveDuration| Vynásobte prahová hodnota původní hodnotou 1000 za jednotky klasické metriky jsou během několika sekund a u nových jeden jsou v milisekundách.  |
-| clientPerformance.sendRequest.value | browserTimings/sendDuration| Vynásobte prahová hodnota původní hodnotou 1000 za jednotky klasické metriky jsou během několika sekund a u nových jeden jsou v milisekundách.  |
-| clientPerformance.total.value | browserTimings/totalDuration| Vynásobte prahová hodnota původní hodnotou 1000 za jednotky klasické metriky jsou během několika sekund a u nových jeden jsou v milisekundách.  |
-| performanceCounter.available_bytes.value | čítače výkonu nebo memoryAvailableBytes|   |
+| Availability. availabilityMetric. Value | availabilityResults/availabilityPercentage|   |
+| Availability. durationMetric. Value | availabilityResults/doba trvání| Vynásobit původní prahovou hodnotu hodnotou 1000 jako jednotky pro klasickou metriku v sekundách a pro nové jsou v milisekundách.  |
+| basicExceptionBrowser.count | výjimky/prohlížeč|  Použijte `aggregationType` ' count ' místo ' Sum '. |
+| basicExceptionServer.count | výjimky/Server| Použijte `aggregationType` ' count ' místo ' Sum '.  |
+| clientPerformance.clientProcess.value | browserTimings/processingDuration| Vynásobit původní prahovou hodnotu hodnotou 1000 jako jednotky pro klasickou metriku v sekundách a pro nové jsou v milisekundách.  |
+| clientPerformance.networkConnection.value | browserTimings/networkDuration|  Vynásobit původní prahovou hodnotu hodnotou 1000 jako jednotky pro klasickou metriku v sekundách a pro nové jsou v milisekundách. |
+| clientPerformance.receiveRequest.value | browserTimings/receiveDuration| Vynásobit původní prahovou hodnotu hodnotou 1000 jako jednotky pro klasickou metriku v sekundách a pro nové jsou v milisekundách.  |
+| clientPerformance.sendRequest.value | browserTimings/sendDuration| Vynásobit původní prahovou hodnotu hodnotou 1000 jako jednotky pro klasickou metriku v sekundách a pro nové jsou v milisekundách.  |
+| clientPerformance.total.value | browserTimings/totalDuration| Vynásobit původní prahovou hodnotu hodnotou 1000 jako jednotky pro klasickou metriku v sekundách a pro nové jsou v milisekundách.  |
+| performanceCounter.available_bytes.value | Čítače výkonu/memoryAvailableBytes|   |
 | performanceCounter.io_data_bytes_per_sec.value | performanceCounters/processIOBytesPerSecond|   |
 | performanceCounter.number_of_exceps_thrown_per_sec.value | performanceCounters/exceptionsPerSecond|   |
-| performanceCounter.percentage_processor_time_normalized.value | čítače výkonu nebo processCpuPercentage|   |
-| performanceCounter.percentage_processor_time.value | čítače výkonu nebo processCpuPercentage| Bude nutné prahové hodnoty odpovídajícím způsobem změnit, protože byl původní metriky ze všech jader a nových metrik je normalizovány na jedno jádro. Nástroj pro migraci nedojde ke změně prahových hodnot.  |
-| performanceCounter.percentage_processor_total.value | čítače výkonu nebo processorCpuPercentage|   |
+| performanceCounter.percentage_processor_time_normalized.value | Čítače výkonu/processCpuPercentage|   |
+| performanceCounter.percentage_processor_time.value | Čítače výkonu/processCpuPercentage| Prahová hodnota bude muset být vhodně upravena, protože původní metrika byla napříč všemi jádry a nová metrika je normalizována na jednu jádro. Nástroj pro migraci nemění prahové hodnoty.  |
+| performanceCounter.percentage_processor_total.value | Čítače výkonu/processorCpuPercentage|   |
 | performanceCounter.process_private_bytes.value | performanceCounters/processPrivateBytes|   |
-| performanceCounter.request_execution_time.value | performanceCounters/requestExecutionTime|   |
+| performanceCounter.request_execution_time.value | Čítače výkonu/requestExecutionTime|   |
 | performanceCounter.requests_in_application_queue.value | performanceCounters/requestsInQueue|   |
 | performanceCounter.requests_per_sec.value | performanceCounters/requestsPerSecond|   |
-| request.duration | požadavky a doba trvání| Vynásobte prahová hodnota původní hodnotou 1000 za jednotky klasické metriky jsou během několika sekund a u nových jeden jsou v milisekundách.  |
-| Request.rate | požadavky a míra|   |
-| requestFailed.count | / Neúspěšné požadavky| Použití `aggregationType` "počet" místo "sum".   |
-| view.count | zobrazení stránky nebo count| Použití `aggregationType` "počet" místo "sum".   |
+| Request. Duration | žádosti/doba trvání| Vynásobit původní prahovou hodnotu hodnotou 1000 jako jednotky pro klasickou metriku v sekundách a pro nové jsou v milisekundách.  |
+| Request. Rate | žádosti/rychlost|   |
+| requestFailed.count | požadavky/selhání| Použijte `aggregationType` ' count ' místo ' Sum '.   |
+| Zobrazit. počet | pageViews/Count| Použijte `aggregationType` ' count ' místo ' Sum '.   |
 
-### <a name="how-equivalent-action-groups-are-created"></a>Jak se vytvoří skupiny ekvivalentní akci
+### <a name="microsoftdocumentdbdatabaseaccounts"></a>Microsoft. DocumentDB/databaseAccounts
 
-Klasické upozornění, že pravidla měl e-mailu, webhooku, logiku aplikace a runbook akce vázané na upozornění pravidla samotný. Nová upozornění pravidla použít skupiny akcí, které lze opětovně použít napříč více pravidel upozornění. Nástroj pro migraci vytvoří skupinu jednu akci pro stejné akce bez ohledu na to, kolik pravidel upozornění jsou pomocí akce. Skupiny akcí, které vytvořil nástroj pro migraci použijte formát názvů "Migrated_AG *".
+Pro Cosmos DB se používají ekvivalentní metriky, jak je znázorněno níže:
 
-## <a name="rollout-phases"></a>Fáze uvedení
+| Metrika v klasických výstrahách | Ekvivalentní metrika v nových výstrahách | Komentáře|
+|--------------------------|---------------------------------|---------|
+| AvailableStorage     |AvailableStorage|   |
+| Velikost dat | Využití datausage| |
+| Počet dokumentů | DocumentCount||
+| Velikost indexu | IndexUsage||
+| Poplatek za požadavek na počet Mongo| MongoRequestCharge s dimenzí "Command." = "Count"||
+| Frekvence požadavků na počet Mongo | MongoRequestsCount s dimenzí "Command." = "Count"||
+| Poplatek za žádost o odstranění Mongo | MongoRequestCharge s dimenzí "Command." = "Delete"||
+| Frekvence žádosti o odstranění Mongo | MongoRequestsCount s dimenzí "Command." = "Delete"||
+| Poplatek za požadavek na vložení Mongo | MongoRequestCharge s dimenzí "Command." = "Insert"||
+| Frekvence požadavků na vložení Mongo | MongoRequestsCount s dimenzí "Command." = "Insert"||
+| Poplatek za požadavek na dotaz na Mongo | MongoRequestCharge s dimenzí "Command." = "Find"||
+| Frekvence požadavků na dotaz Mongo | MongoRequestsCount s dimenzí "Command." = "Find"||
+| Poplatek za žádost o aktualizaci Mongo | MongoRequestCharge s dimenzí "Command." = "Update"||
+| Služba není k dispozici| ServiceAvailability||
+| TotalRequestUnits | TotalRequestUnits||
 
-Nástroj pro migraci zavádí ve fázích pro zákazníky, které používají klasický pravidla upozornění. Vlastníci předplatného obdrží e-mail, až bude předplatné připravené k migraci pomocí nástroje.
+### <a name="how-equivalent-action-groups-are-created"></a>Způsob vytvoření ekvivalentních skupin akcí
+
+Klasická pravidla výstrah obsahovala akce e-mailu, Webhooku, aplikace logiky a sady Runbook vázané na samotné pravidlo výstrahy. Nová pravidla upozornění používají skupiny akcí, které je možné použít v rámci více pravidel upozornění. Nástroj pro migraci vytvoří jednu skupinu akcí pro stejné akce bez ohledu na to, kolik pravidel upozornění tuto akci používá. Skupiny akcí vytvořené nástrojem pro migraci používají formát pojmenování "Migrated_AG *".
 
 > [!NOTE]
-> Protože nástroj je zavádění ve fázích, může se zobrazit, že některé z vašich předplatných ještě nejsou připravené k migraci v raných fázích.
+> Klasické výstrahy odesílají lokalizované e-maily na základě národního prostředí klasického správce při použití pro upozornění na role klasického správce. Nové e-maily výstrah jsou odesílány prostřednictvím skupin akcí a jsou pouze v angličtině.
 
-Většina předplatná jsou nyní označen jako připravený pro migraci. Pouze odběry, které mají klasických upozornění na následující typy prostředků jsou ještě není připravený k migraci.
+## <a name="rollout-phases"></a>Fáze zavedení
 
-- Microsoft.classicCompute/domainNames/slots/roles
-- Microsoft.documentDB/databases
-- Microsoft.insights/components
+Nástroj pro migraci probíhá ve fázích pro zákazníky, kteří používají pravidla pro klasických výstrah. Vlastníci předplatného obdrží e-mail, když je předplatné připravené k migraci pomocí tohoto nástroje.
 
-## <a name="who-can-trigger-the-migration"></a>Kdo může aktivovat migrace?
+> [!NOTE]
+> Vzhledem k tomu, že se nástroj zavádí v fázích, může se stát, že některá z vašich předplatných ještě nejsou připravené k migraci v počátečních fázích.
 
-Každý uživatel, který má předdefinovaná role Přispěvatel monitorování na úrovni předplatného můžete aktivovat migrace. Migraci můžete aktivovat také uživatelé, kteří mají vlastní roli s následujícími oprávněními:
+Většina předplatných je aktuálně označena jako připravená k migraci. Pouze předplatná, která mají klasické výstrahy na následujících typech prostředků, nejsou stále připravena k migraci.
 
-- \* / čtení
-- Microsoft.Insights/actiongroups/*
+- Microsoft. classicCompute/domainNames/sloty/role
+- Microsoft. Insights/Components
+
+## <a name="who-can-trigger-the-migration"></a>Kdo může migraci aktivovat?
+
+Migraci může aktivovat libovolný uživatel, který má integrovanou roli Přispěvatel monitorování na úrovni předplatného. Migrace může spustit i uživatelé, kteří mají vlastní roli s následujícími oprávněními:
+
+- */read
+- Microsoft. Insights/actiongroups/*
 - Microsoft.Insights/AlertRules/*
-- Microsoft.Insights/metricAlerts/*
+- Microsoft. Insights/metricAlerts/*
+- Microsoft. AlertsManagement/smartDetectorAlertRules/*
 
 > [!NOTE]
-> Kromě výše uvedených oprávnění by měla být vaše předplatné kromě zaregistrované u poskytovatele prostředků Microsoft.AlertsManagement. To je potřebné k úspěšné migraci výstrahy selhání anomálií v Application Insights. 
+> Kromě výše uvedených oprávnění by mělo být předplatné navíc zaregistrované u poskytovatele prostředků Microsoft. AlertsManagement. Tato chyba je nutná k úspěšné migraci upozornění na anomálii selhání na Application Insights. 
 
-## <a name="common-problems-and-remedies"></a>Běžné problémy a náhrad
+## <a name="common-problems-and-remedies"></a>Běžné problémy a nápravná opatření
 
-Poté co [aktivovat migrace](alerts-using-migration-tool.md), obdržíte e-mail na adresy, které jste zadali, které vás upozorní, že se migrace dokončí, nebo pokud není nutné provádět žádnou akci od vás. Tato část popisuje některé běžné problémy a řešení problémů s nimi.
+Po [aktivaci migrace](alerts-using-migration-tool.md)obdržíte e-mailovou adresu, kterou jste zadali, a upozorní vás, že migrace je dokončená, nebo jestli je potřeba provést nějakou akci. Tato část popisuje některé běžné problémy a jejich řešení.
 
-### <a name="validation-failed"></a>Ověření se nezdařilo
+### <a name="validation-failed"></a>Neúspěšné ověření
 
-Z důvodu některých nedávné změny classic pravidla výstrah v rámci vašeho předplatného není možné migrovat předplatné. Tento problém je dočasný. Migraci můžete restartovat po stavu migrace přesune zpět **připravený pro migraci** za několik dnů.
+Vzhledem k nějakým nedávným změnám pravidel výstrah v rámci vašeho předplatného není možné migrovat předplatné. Tento problém je dočasný. Po přesunutí stavu **migrace do několika** dnů můžete migraci restartovat znovu.
 
-### <a name="policy-or-scope-lock-preventing-us-from-migrating-your-rules"></a>Zásady nebo obor zámku nám brání migrace vašich pravidel
+### <a name="policy-or-scope-lock-preventing-us-from-migrating-your-rules"></a>Zámek zásady nebo oboru brání v migraci vašich pravidel.
 
-Jako součást migrace se vytvoří nová upozornění metrik a nové skupiny akcí a pak se odstraní classic pravidla upozornění. Je však zásad nebo obor zámku nám brání vytváření prostředků. V závislosti na zámek zásad nebo oboru nelze migrovat některá nebo všechna pravidla. Tento problém lze vyřešit dočasně odebráním zámku oboru nebo zásad a aktivuje migrovat znovu.
+V rámci migrace se vytvoří nové výstrahy metriky a nové skupiny akcí a pak se odstraní klasická pravidla výstrah. Je ale potřeba, aby nám zámek zásad nebo rozsahu zabránil vytváření prostředků. V závislosti na uzamčení zásady nebo oboru se některá nebo všechna pravidla nedala migrovat. Tento problém můžete vyřešit tak, že dočasně odeberete uzamčení oboru nebo zásadu a znovu aktivujete migraci.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- [Jak používat nástroj pro migraci](alerts-using-migration-tool.md)
+- [Způsoby použití nástroje pro migraci](alerts-using-migration-tool.md)
 - [Příprava na migraci](alerts-prepare-migration.md)

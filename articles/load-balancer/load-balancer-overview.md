@@ -4,7 +4,7 @@ titlesuffix: Azure Load Balancer
 description: Přehled funkcí, architektury a implementace Azure Load Balanceru. Zjistěte, jak Load Balancer funguje, a využijte ho v cloudu.
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: asudbring
 ms.service: load-balancer
 Customer intent: As an IT administrator, I want to learn more about the Azure Load Balancer service and what I can use it for.
 ms.devlang: na
@@ -13,13 +13,13 @@ ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/11/2019
-ms.author: kumud
-ms.openlocfilehash: c2f6a614524f0dfb242db11618fda94ce57e6e6a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: allensu
+ms.openlocfilehash: fb7c0c31ad91bfdb6ea360c1909a216f0779ebde
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60734855"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68274622"
 ---
 # <a name="what-is-azure-load-balancer"></a>Co je Azure Load Balancer?
 
@@ -29,7 +29,7 @@ Load Balancer na základě pravidel a sond stavu distribuuje nové příchozí t
 
 Veřejný Load Balancer navíc může zajišťovat odchozí připojení pro virtuální počítače ve vaší virtuální síti prostřednictvím překladu jejich privátních IP adres na veřejné IP adresy.
 
-Nástroj Azure Load Balancer je k dispozici ve dvou skladových položkách: Basic a Standard. Ty se liší škálováním, funkcemi a cenou. Jakýkoli scénář, který umožňuje Load Balancer úrovně Basic, je možné vytvořit také s použitím Load Balanceru úrovně Standard, ale postup se může mírně lišit. Při seznamování s Load Balancerem je důležité, abyste porozuměli základům a rozdílům mezi skladovými položkami.
+Azure Load Balancer je k dispozici ve dvou SKU: Basic a Standard. Ty se liší škálováním, funkcemi a cenou. Jakýkoli scénář, který umožňuje Load Balancer úrovně Basic, je možné vytvořit také s použitím Load Balanceru úrovně Standard, ale postup se může mírně lišit. Při seznamování s Load Balancerem je důležité, abyste porozuměli základům a rozdílům mezi skladovými položkami.
 
 ## <a name="why-use-load-balancer"></a>Proč používat Load Balancer? 
 
@@ -64,11 +64,11 @@ Load Balancer poskytuje pro aplikace TCP a UDP následující základní funkce:
 
     ![Distribuce na základě hodnoty hash](./media/load-balancer-overview/load-balancer-distribution.png)
 
-    *Obrázek: Na základě algoritmu hash distribuce*
+    *Obrázek Distribuce na základě hodnoty hash*
 
 * **Přesměrování portů**
 
-    S Load Balancerem můžete vytvořit příchozí pravidlo překladu adres (NAT) pro přesměrování portů u přenosů z určitého portu konkrétní front-endové IP adresy na určitý port konkrétní back-endové instance v rámci virtuální sítě. To se také provádí s využitím stejné distribuce na základě hodnoty hash jako vyrovnávání zatížení. Mezi běžné scénáře pro tuto funkci patří relace protokolu RDP (Remote Desktop Protocol) nebo SSH (Secure Shell) k jednotlivým instancím virtuálních počítačů v rámci virtuální sítě Azure. Na různé porty stejné front-endové IP adresy můžete mapovat více interních koncových bodů. IP adresy front-endu můžete použít ke vzdálené správě virtuálních počítačů prostřednictvím Internetu bez nutnosti další jump box.
+    S Load Balancerem můžete vytvořit příchozí pravidlo překladu adres (NAT) pro přesměrování portů u přenosů z určitého portu konkrétní front-endové IP adresy na určitý port konkrétní back-endové instance v rámci virtuální sítě. To se také provádí s využitím stejné distribuce na základě hodnoty hash jako vyrovnávání zatížení. Mezi běžné scénáře pro tuto funkci patří relace protokolu RDP (Remote Desktop Protocol) nebo SSH (Secure Shell) k jednotlivým instancím virtuálních počítačů v rámci virtuální sítě Azure. Na různé porty stejné front-endové IP adresy můžete mapovat více interních koncových bodů. IP adresy front-endu můžete použít k vzdálené správě virtuálních počítačů přes Internet, aniž by bylo potřeba další pole pro skok.
 
 * **Nezávislost na aplikaci a transparentnost**
 
@@ -88,7 +88,7 @@ Load Balancer poskytuje pro aplikace TCP a UDP následující základní funkce:
      
     Load Balancer poskytuje [různé typy sondy stavu](load-balancer-custom-probe-overview.md#types) pro koncové body TCP, HTTP a HTTPS.
 
-    Kromě toho při využívání cloudových služeb Classic, další typ je povolený:  [Agent hosta](load-balancer-custom-probe-overview.md#guestagent).  Tento typ by se měl považovat za sondu stavu poslední instance a neměl by se používat, pokud jsou k dispozici jiné možnosti.
+    Navíc při používání klasických cloudových služeb je povolen dodatečný typ:  [Agent hosta](load-balancer-custom-probe-overview.md#guestagent).  Tento typ by se měl považovat za sondu stavu poslední instance a neměl by se používat, pokud jsou k dispozici jiné možnosti.
     
 * **Odchozí připojení (SNAT)**
 
@@ -131,7 +131,7 @@ Následující obrázek znázorňuje koncový bod s vyrovnáváním zatížení 
 
 ![Příklad veřejného Load Balanceru](./media/load-balancer-overview/IC727496.png)
 
-*Obrázek: Služby Vyrovnávání zatížení webového provozu pomocí veřejného nástroje pro vyrovnávání zatížení*
+*Obrázek Vyrovnávání zatížení webového provozu pomocí veřejné Load Balancer*
 
 Když internetoví klienti odešlou požadavky na webovou stránku na veřejnou IP adresu webové aplikace na portu TCP 80, Azure Load Balancer distribuuje požadavky mezi tři virtuální počítače ve skupině s vyrovnáváním zatížení. Další informace o algoritmech Load Balanceru najdete v části [Funkce Load Balanceru](load-balancer-overview.md##fundamental-load-balancer-features) tohoto článku.
 
@@ -139,25 +139,25 @@ Azure Load Balancer ve výchozím nastavení rovnoměrně distribuuje síťový 
 
 ### <a name = "internalloadbalancer"></a>Interní Load Balancer
 
-Interní Load Balancer směruje provoz pouze k prostředkům, které jsou ve virtuální síti nebo které přistupují k infrastruktuře Azure prostřednictvím sítě VPN. V tomto ohledu se interní Load Balancer liší od veřejného Load Balanceru. Infrastruktura Azure omezuje přístup k front-endovým IP adresám virtuální sítě s vyrovnáváním zatížení. front-endové IP adresy a virtuální sítě jsou přístupné nesmí nikdy přímo do koncového bodu sítě internet. Interní obchodní aplikace se spouštějí v Azure a přistupuje se k nim v rámci Azure nebo z místních prostředků.
+Interní Load Balancer směruje provoz pouze k prostředkům, které jsou ve virtuální síti nebo které přistupují k infrastruktuře Azure prostřednictvím sítě VPN. V tomto ohledu se interní Load Balancer liší od veřejného Load Balanceru. Infrastruktura Azure omezuje přístup k front-endovým IP adresám virtuální sítě s vyrovnáváním zatížení. Front-endové IP adresy a virtuální sítě se nikdy přímo nezveřejňují na internetový koncový bod. Interní obchodní aplikace se spouštějí v Azure a přistupuje se k nim v rámci Azure nebo z místních prostředků.
 
 Interní Load Balancer umožňuje následující typy vyrovnávání zatížení:
 
-* **V rámci virtuální sítě**: Služby Vyrovnávání zatížení z virtuálních počítačů ve virtuální síti k sadě virtuálních počítačů, které se nacházejí ve stejné virtuální síti.
-* **Pro virtuální síť mezi různými místy**: Vyrovnávání zatížení z místního počítače na sadu virtuálních počítačů, které se nacházejí ve stejné virtuální síti. 
-* **Při vytváření víceúrovňových aplikací**: Vyrovnávání zatížení pro internetové vícevrstvé aplikace, kde úrovní back-end nejsou přístupem k Internetu. Back-endové vrstvy vyžadují vyrovnávání zatížení provozu z vrstvy s přístupem k internetu (viz další obrázek).
-* **Obchodních aplikací**: Vyrovnávání zatížení u-obchodních aplikací, které jsou hostované v Azure bez dalších zatížení vyrovnávání hardwaru nebo softwaru. Tento scénář zahrnuje místní servery, které se nachází ve skupině počítačů s vyrovnáváním zatížení provozu.
+* **V rámci virtuální sítě**: Vyrovnávání zatížení virtuálních počítačů ve virtuální síti se sadou virtuálních počítačů, které se nacházejí ve stejné virtuální síti.
+* **Pro virtuální síť mezi místními sítěmi**: Vyrovnávání zatížení z místních počítačů do sady virtuálních počítačů, které se nacházejí ve stejné virtuální síti. 
+* **Pro vícevrstvé aplikace**: Vyrovnávání zatížení pro vícevrstvé aplikace s přístupem k Internetu, kde back-endové vrstvy nejsou přístupné z Internetu. Back-endové vrstvy vyžadují vyrovnávání zatížení provozu z vrstvy s přístupem k internetu (viz další obrázek).
+* **Pro obchodní aplikace**: Vyrovnávání zatížení pro obchodní aplikace, které jsou hostované v Azure bez dalšího hardwaru nebo softwaru pro vyrovnávání zatížení. Tento scénář zahrnuje místní servery, které se nachází ve skupině počítačů s vyrovnáváním zatížení provozu.
 
 ![Příklad interního Load Balanceru](./media/load-balancer-overview/IC744147.png)
 
-*Obrázek: Vícevrstvé aplikace s použitím veřejné a vnitřní nástroj pro vyrovnávání zatížení pro vyrovnávání zatížení*
+*Obrázek Vyrovnávání zatížení vícevrstvých aplikací s využitím veřejného i interního Load Balancer*
 
 ## <a name="pricing"></a>Ceny
 
-Standardní použití nástroje pro vyrovnávání zatížení se účtuje.
+Účtuje se Standard Load Balancer využití.
 
-- Počet konfigurovat Vyrovnávání zatížení a odchozích pravidel (pravidla příchozího překladu adres nezapočítávají celkový počet pravidel)
-- Objem dat zpracovaných příchozích a odchozích bez ohledu na pravidlo. 
+- Počet konfigurovaných a odchozích pravidel vyrovnávání zatížení (příchozí pravidla překladu adres (NAT) se nepočítají na základě celkového počtu pravidel)
+- Množství zpracovaných příchozích a odchozích dat bez ohledu na pravidlo 
 
 Informace o cenách za Load Balancer úrovně Standard najdete na stránce s [cenami za Load Balancer](https://azure.microsoft.com/pricing/details/load-balancer/).
 

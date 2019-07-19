@@ -1,6 +1,6 @@
 ---
-title: Odolná služba Functions funkce – Azure Functions ve verzi preview.
-description: Další informace o funkce ve verzi preview pro Durable Functions.
+title: Funkce ve verzi Preview Durable Functions – Azure Functions
+description: Přečtěte si o funkcích verze Preview pro Durable Functions.
 services: functions
 author: cgillum
 manager: jeconnoc
@@ -10,33 +10,33 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 07/08/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 7101519aa4a87995dac3a7f11046eed84a2c09b6
-ms.sourcegitcommit: af31deded9b5836057e29b688b994b6c2890aa79
+ms.openlocfilehash: 7356541ed6288603a66d5caa43138284d8d4d918
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67812768"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68320473"
 ---
-# <a name="durable-functions-20-preview-azure-functions"></a>Náhled odolné Functions 2.0 (Azure Functions)
+# <a name="durable-functions-20-preview-azure-functions"></a>Durable Functions 2,0 Preview (Azure Functions)
 
-*Odolná služba Functions* je rozšířením [Azure Functions](../functions-overview.md) a [Azure WebJobs](../../app-service/web-sites-create-web-jobs.md) , který umožňuje zapisovat stavové funkce v prostředí bez serveru. Toto rozšíření za vás spravuje stav, kontrolní body a restartování. Pokud již nejste obeznámeni s Durable Functions, přečtěte si článek [přehled dokumentace](durable-functions-overview.md).
+*Durable Functions* je rozšíření [Azure Functions](../functions-overview.md) a [Azure WebJobs](../../app-service/web-sites-create-web-jobs.md) , které umožňuje psát stavové funkce v prostředí bez serveru. Toto rozšíření za vás spravuje stav, kontrolní body a restartování. Pokud ještě neznáte Durable Functions, přečtěte si [dokumentaci přehled](durable-functions-overview.md).
 
-Odolná služba Functions 1.x je funkce Azure Functions GA (obecně dostupné), ale také obsahuje několik tyto položky, které jsou aktuálně ve verzi public preview. Tento článek popisuje funkce nově vydané ve verzi preview a začnou podrobnosti o tom, jak fungují a jak můžete začít používat je.
+Durable Functions 1. x je funkce Azure Functions GA (všeobecně dostupná), ale také obsahuje několik dílčích funkcí, které jsou aktuálně ve verzi Public Preview. Tento článek popisuje nově vydané funkce verze Preview a obsahuje podrobnosti o tom, jak fungují a jak je můžete začít používat.
 
 > [!NOTE]
-> Tyto funkce verze preview jsou součástí vydání trvalý Functions 2.0, která je v současnosti **kvality verze preview** s několika nejnovější změny. Azure Functions trvalý balíček rozšíření sestavení můžete najít na nuget.org s verzí v podobě **2.0.0-betaX**. Tato sestavení nejsou určené pro produkční úlohy a následujících verzích mohou obsahovat další rozbíjející změny.
+> Tyto funkce verze Preview jsou součástí vydání Durable Functions 2,0, což je aktuálně **verze Preview** s několika zásadními změnami. Sestavení balíčku Azure Functions trvalého rozšíření lze najít v nuget.org s verzemi ve formě **2.0.0-betaX**. Tato sestavení nejsou určena pro produkční úlohy a následné verze mohou obsahovat další zásadní změny.
 
 ## <a name="breaking-changes"></a>Změny způsobující chyby
 
-Několik rozbíjející změny jsou uvedeny v trvalé Functions 2.0. Existující aplikace se neočekává kompatibilní s trvalý Functions 2.0 bez jakýchkoli změn kódu. Tato část uvádí některé změny:
+V Durable Functions 2,0 se zavádí několik přerušujících změn. Neočekává se, že existující aplikace budou kompatibilní s Durable Functions 2,0 bez změny kódu. V této části jsou uvedené některé změny:
 
-### <a name="hostjson-schema"></a>Schéma Host.JSON
+### <a name="hostjson-schema"></a>Schéma Host. JSON
 
-Následující fragment kódu ukazuje nové schéma pro host.json. Hlavní změny mít na paměti jsou nová témata:
+Následující fragment kódu ukazuje nové schéma pro Host. JSON. Hlavní změny, které je třeba znát, jsou nové pododdíly:
 
-* `"storageProvider"` (a `"azureStorage"` podčásti) pro konfigurace specifické pro úložiště
-* `"tracking"` pro sledování a konfiguraci protokolování
-* `"notifications"` (a `"eventGrid"` podčásti) pro konfiguraci oznámení event grid
+* `"storageProvider"`(a `"azureStorage"` dílčí část) pro konfiguraci specifickou pro úložiště
+* `"tracking"`pro sledování a konfiguraci protokolování
+* `"notifications"`(a `"eventGrid"` dílčí část) pro konfiguraci oznámení služby Event Grid
 
 ```json
 {
@@ -79,11 +79,11 @@ Následující fragment kódu ukazuje nové schéma pro host.json. Hlavní změn
 }
 ```
 
-Trvalý 2.0 funkce se stále stabilizovat a další změny budou zavedeny do `durableTask` části host.json. Další informace o těchto změnách najdete v tématu [tento problém Githubu](https://github.com/Azure/azure-functions-durable-extension/issues/641).
+Jak Durable Functions 2,0 pokračuje ve stabilizaci, do `durableTask` oddílu Host. JSON budou zavedeny další změny. Další informace o těchto změnách najdete v [tomto problému GitHubu](https://github.com/Azure/azure-functions-durable-extension/issues/641).
 
-### <a name="public-interface-changes"></a>Změny veřejné rozhraní
+### <a name="public-interface-changes"></a>Změny veřejného rozhraní
 
-Různé objekty "kontext" odolná služba Functions podporuje měly abstraktní základní třídy, které jsou určeny k použití v testování částí. Jako součást trvalý Functions 2.0 tyto abstraktní základní třídy se nahrazuje rozhraní. Kód funkce, která používá přímo na konkrétní typy nejsou ovlivněny.
+Různé "kontextové" objekty podporované Durable Functions měly abstraktní základní třídy určené pro použití při testování částí. Jako součást Durable Functions 2,0 byly tyto abstraktní základní třídy nahrazeny rozhraními. Kód funkce, který používá konkrétní typy přímo, není ovlivněn.
 
 Následující tabulka představuje hlavní změny:
 
@@ -93,15 +93,15 @@ Následující tabulka představuje hlavní změny:
 | DurableOrchestrationContextBase | IDurableOrchestrationContext |
 | DurableActivityContextBase | IDurableActivityContext |
 
-V případě, kde jsou obsaženy abstraktní základní třídy virtuální metody, jsme nahradili tyto virtuální metody rozšiřující metody definované v `DurableContextExtensions`.
+V případě, kdy abstraktní základní třída obsahovala virtuální metody, byly tyto virtuální metody nahrazeny metodami rozšíření definovanými `DurableContextExtensions`v.
 
-## <a name="entity-functions"></a>Funkce entity
+## <a name="entity-functions"></a>Funkce entit
 
-Funkce entity definování operací pro čtení a aktualizaci malých kousků stav, označuje jako *trvalý entity*. Podobně jako funkce nástroje orchestrator, funkce entity jsou funkce s typem speciální aktivační událost *entity trigger*. Na rozdíl od funkce nástroje orchestrator a funkce entity nemají omezeními konkrétního kódu. Funkce entity také spravovat stav explicitně místo implicitně představující stav prostřednictvím toku řízení.
+Funkce entit definují operace pro čtení a aktualizaci malých částí stavu, označovaných jako *odolné entity*. Podobně jako funkce nástroje Orchestrator jsou funkce entit funkce se speciálním typem triggeru, *triggerem entity*. Na rozdíl od funkcí Orchestrator nemají entity Functions žádná konkrétní omezení kódu. Funkce entit také spravují stav explicitně namísto implicitního reprezentace stavu prostřednictvím řízení toku.
 
-### <a name="net-programing-models"></a>Programovací modely .NET
+### <a name="net-programing-models"></a>Modely programování .NET
 
-Existují dva volitelné programovacích modelů pro vytváření odolných entity. Následující kód je jednoduchý příklad *čítač* entity, které jsou implementovány jako standardní funkci. Tato funkce definuje tři *operace*, `add`, `reset`, a `get`, každý z které působí na celočíselnou hodnotu stavu, `currentValue`.
+Existují dva volitelné programovací modely pro vytváření trvalých entit. Následující kód je příkladem jednoduché entity *čítače* implementované jako standardní funkce. Tato funkce definuje tři *operace*, `add` `reset`, a `get`, `currentValue`každý z nich pracuje s hodnotou celočíselného stavu.
 
 ```csharp
 [FunctionName("Counter")]
@@ -127,7 +127,7 @@ public static void Counter([EntityTrigger] IDurableEntityContext ctx)
 }
 ```
 
-Tento model je nejvhodnější pro jednoduchou entitu implementace nebo implementace, které obsahují dynamické sadu operací. Existuje ale také založené na třídě programovacího modelu, který je užitečné pro entity, které jsou statické, ale máte složitější implementace. Následující příklad je ekvivalentní provádění `Counter` entity pomocí .NET třídy a metody.
+Tento model funguje nejlépe pro jednoduché implementace entit nebo implementace, které mají dynamickou sadu operací. Existují však i programovací model založený na třídě, který je užitečný pro entity, které jsou statické, ale mají složitější implementace. Následující příklad je ekvivalentní implementace `Counter` entity pomocí tříd a metod .NET.
 
 ```csharp
 public class Counter
@@ -147,63 +147,63 @@ public class Counter
 }
 ```
 
-Model založený na třídy je podobná programovací model, který zpopularizoval [Orleans](https://www.microsoft.com/research/project/orleans-virtual-actors/). V tomto modelu typ entity, který je definován jako třída rozhraní .NET. Každá metoda třídy je operace, která lze vyvolat z externího klienta. Na rozdíl od Orleans divize ale rozhraní .NET jsou volitelné. Předchozí *čítač* příkladu nepoužívá rozhraní, ale jeho stále vyvolání prostřednictvím dalších funkcí nebo prostřednictvím volání protokolu HTTP rozhraní API.
+Model založený na třídě je podobný programovacímu modelu, který je oblíbený pomocí [Orleans](https://www.microsoft.com/research/project/orleans-virtual-actors/). V tomto modelu je typ entity definován jako třída .NET. Každá metoda třídy je operace, kterou může vyvolat externí klient. Na rozdíl od Orleans jsou však rozhraní .NET volitelná. Předchozí příklad *čítače* nepoužil rozhraní, ale může být stále vyvolán prostřednictvím jiných funkcí nebo prostřednictvím volání HTTP API.
 
-Entity *instance* jsou přístupné prostřednictvím jedinečný identifikátor *entity ID*. Entity ID je jednoduše dvojice řetězců, které jednoznačně identifikuje instanci entity. Skládá se z:
+K *instancím* entit se dostanete prostřednictvím jedinečného identifikátoru *ID entity*. ID entity je jednoduše dvojice řetězců, které jedinečně identifikují instanci entity. Skládá se z těchto:
 
-* **Název entity**: název, který identifikuje typ entity (například "Čítač").
-* **Klíč entity**: řetězec, který jednoznačně identifikuje entitu mezi všechny entity se stejným názvem (například identifikátor GUID).
+* **Název entity**: název, který identifikuje typ entity (například "čítač").
+* **Klíč entity**: řetězec, který jedinečně identifikuje entitu mezi všemi ostatními entitami stejného názvu (například GUID).
 
-Například *čítač* entity funkce může být použit pro zachování skóre v online hry. Každý výskyt hry budou mít ID jedinečné entity, jako například `@Counter@Game1`, `@Counter@Game2`, a tak dále.
+Například funkce entita *čítače* může být použita k udržení skóre v online hře. Každá instance hry bude mít jedinečné ID entity, například `@Counter@Game1`, `@Counter@Game2`a tak dále.
 
-### <a name="comparison-with-virtual-actors"></a>Porovnání s virtuální actors
+### <a name="comparison-with-virtual-actors"></a>Porovnání s virtuálními aktéry
 
-Návrh odolných entity je výrazně ovlivněno [model objektu actor](https://en.wikipedia.org/wiki/Actor_model). Pokud jste již obeznámeni s objektů actor, musí být známými koncepci trvanlivé entity. Zejména je podobný jako trvalý entity [virtuální actors](https://research.microsoft.com/projects/orleans/) mnoha způsoby:
+Návrh odolných entit je silně ovlivněn modelem objektu [actor](https://en.wikipedia.org/wiki/Actor_model). Pokud už jste obeznámeni s aktéry, měli byste znát koncepty za trvalými entitami. Konkrétně se odolné entity podobají virtuálním [aktérům](https://research.microsoft.com/projects/orleans/) mnoha způsoby:
 
-* Trvalý entity jsou adresovatelné prostřednictvím *entity ID*.
-* Trvalý entity operace spustí sériově, postupně, aby se zabránilo konfliktům časování.
-* Trvalý entity jsou vytvořeny automaticky, když se volá nebo signalizován.
-* Při provádění není operace, trvalý entity jsou tiše uvolněna z paměti.
+* Trvalé entity jsou adresovatelné prostřednictvím *ID entity*.
+* Trvalé operace s entitami se v jednom okamžiku spouštějí po jednom, aby se zabránilo konfliktům časování.
+* Trvalé entity jsou vytvořeny automaticky při jejich volání nebo při signalizaci.
+* Neprovádíte-li operace, odolné entity budou tiše odpojeny od paměti.
 
-Existuje několik důležitých rozdílů, ale které stojí za zmínku:
+Existují však některé důležité rozdíly, které je třeba zaznamenat:
 
-* Prioritizujte trvalý entity *odolnosti* přes *latence*a proto nemusí být vhodné pro aplikace s požadavky na latenci strict.
-* Zprávy odesílané mezi entitami jsou poskytována spolehlivě a v pořadí.
-* Trvalý entity lze použít ve spojení s orchestrací odolné a může sloužit jako distribuované zámky, které jsou popsány dále v tomto článku.
-* Žádost/odpověď vzory v entity jsou omezené na Orchestrace. Pro komunikaci entity entity jsou povoleny pouze jednosměrné zprávy (označované také jako "signalizace") jako v původním model objektu actor. Toto chování brání distribuované zablokování.
+* Odolné entity mají *přednost* před *latencí*, a proto nemusí být vhodná pro aplikace s přísnými požadavky na latenci.
+* Zprávy odesílané mezi entitami jsou spolehlivě doručovány a v daném pořadí.
+* Odolné entity lze použít ve spojení s trvalými orchestrací a mohou sloužit jako distribuované zámky, které jsou popsány dále v tomto článku.
+* Vzory požadavků a odpovědí v entitách jsou omezené na orchestrace. Pro komunikaci mezi entitami se povolují pouze jednosměrné zprávy (označované také jako "signalizace"), stejně jako v původním modelu actor. Toto chování brání distribuovaným zablokování.
 
-### <a name="durable-entity-net-apis"></a>Trvalý Entity rozhraní API pro .NET
+### <a name="durable-entity-net-apis"></a>Trvalá entita API .NET
 
-Entita podpora zahrnuje několik rozhraní API. Za prvé je nové rozhraní API pro definici funkce entity, jak je uvedeno výše, která zadejte, co se stane při vyvolání operace s entitou. Navíc stávajících rozhraní API pro klienty a Orchestrace byly aktualizovány s novými funkcemi pro interakci s entitami.
+Podpora entit zahrnuje několik rozhraní API. U jednoho je k dispozici nové rozhraní API pro definování funkcí entity, jak je uvedeno výše, které určují, co se má stát při vyvolání operace u entity. Stávající rozhraní API pro klienty a orchestrace se taky aktualizovala o nové funkce pro interakci s entitami.
 
-#### <a name="implementing-entity-operations"></a>Provádění operací entity
+#### <a name="implementing-entity-operations"></a>Implementace operací entit
 
-Provádění operací na entity můžete volat tyto členy objektu context (`IDurableEntityContext` v rozhraní .NET):
+Provedení operace s entitou může volat tyto členy objektu Context (`IDurableEntityContext` v rozhraní .NET):
 
-* **OperationName**: získá název operace.
-* **GetInput\<TInput >** : získá vstupu pro tuto operaci.
-* **GetState\<TState >** : získá aktuální stav entity.
-* **SetState**: aktualizuje stav entity.
-* **SignalEntity**: odešle jednosměrná zpráva do entity.
-* **Self**: získá ID entity.
-* **Vrátí**: vrací hodnotu, klienta nebo Orchestrace, která volá operace.
-* **IsNewlyConstructed**: vrátí `true` Pokud entita neexistuje před operaci.
-* **DestructOnExit**: Po dokončení operace odstraní entitu.
+* **Operace**: Získá název operace.
+* **GetInput\<TInput >** : Získá vstup pro operaci.
+* **GetState\<TState >** : Získá aktuální stav entity.
+* **Setstate**: aktualizuje stav entity.
+* **SignalEntity**: pošle jednosměrnou zprávu entitě.
+* **Samo**: Získá ID entity.
+* **Return**: vrátí hodnotu klientovi nebo orchestraci, která volala operaci.
+* **IsNewlyConstructed**: vrátí `true` , pokud entita neexistovala před touto operací.
+* **DestructOnExit**: odstraní entitu po dokončení operace.
 
-Operace omezeny méně než Orchestrace:
+Operace jsou méně omezené než orchestrace:
 
-* Operace může volat externí vstupně-výstupních operací, pomocí synchronní nebo asynchronní rozhraní API (vám doporučujeme používat pouze asynchronní ty).
-* Operace může být Nedeterministický. Například je bezpečné volat `DateTime.UtcNow`, `Guid.NewGuid()` nebo `new Random()`.
+* Operace můžou volat externí vstupně-výstupní operace pomocí synchronních nebo asynchronních rozhraní API (doporučujeme používat jenom ty asynchronní).
+* Operace mohou být nedeterministické. Například je bezpečné volat `DateTime.UtcNow` `Guid.NewGuid()` nebo `new Random()`.
 
-#### <a name="accessing-entities-from-clients"></a>Přístup k entity z klientů
+#### <a name="accessing-entities-from-clients"></a>Přístup k entitám z klientů
 
-Trvalý entity lze volat z běžné funkce prostřednictvím `orchestrationClient` vazby (`IDurableOrchestrationClient` v rozhraní .NET). Jsou podporovány následující metody:
+Trvalé entity lze vyvolat z běžných funkcí prostřednictvím `orchestrationClient` vazby (`IDurableOrchestrationClient` v rozhraní .NET). Podporovány jsou následující metody:
 
-* **ReadEntityStateAsync\<T >** : načte stav entity.
-* **SignalEntityAsync**: odešle jednosměrná zpráva do entity a čeká na jeho bude zařazených do fronty.
-* **SignalEntityAsync\<T >** : totéž jako `SignalEntityAsync` ale používá objekt proxy generovaný typ `T`.
+* **ReadEntityStateAsync\<T >** : přečte stav entity.
+* **SignalEntityAsync**: pošle jednosměrnou zprávu entitě a počká, až se zazařazuje do fronty.
+* **SignalEntityAsync\<T >** : totéž jako `SignalEntityAsync` ale používá vygenerovaný proxy objekt typu `T`.
 
-Předchozí `SignalEntityAsync` volání vyžaduje zadání názvu entity operace jako `string` a operace jako datové části `object`. Následující ukázkový kód je příkladem tohoto vzoru:
+Předchozí `SignalEntityAsync` volání vyžaduje zadání názvu operace entity `string` jako a datové části operace jako `object`. Následující vzorový kód je příkladem tohoto vzoru:
 
 ```csharp
 EntityId id = // ...
@@ -211,7 +211,7 @@ object amount = 5;
 context.SignalEntityAsync(id, "Add", amount);
 ```
 
-Je také možné generovat objekt proxy pro typově bezpečný přístup. Generovat proxy typově bezpečný, typu entity musí implementovat rozhraní. Předpokládejme například, že `Counter` implementované entita již bylo zmíněno dříve `ICounter` rozhraní, která je definovaná následujícím způsobem:
+Je také možné vygenerovat proxy objekt pro typově bezpečný přístup. Chcete-li vygenerovat typ proxy bezpečného typu, musí být pro typ entity implementováno rozhraní. Předpokládejme například, že `Counter` entita zmíněná dříve `ICounter` implementovala rozhraní, které je definováno následujícím způsobem:
 
 ```csharp
 public interface ICounter
@@ -227,7 +227,7 @@ public class Counter : ICounter
 }
 ```
 
-Klientský kód pak může použít `SignalEntityAsync<T>` a zadejte `ICounter` rozhraní jako parametr typu pro generování proxy typově bezpečné. Toto použití proxy servery zajišťující bezpečnost typů je znázorněn v následujícím příkladu kódu:
+Klientský kód pak může použít `SignalEntityAsync<T>` a `ICounter` zadat rozhraní jako parametr typu pro vygenerování proxy typu s bezpečným typem. Toto použití typu proxy bezpečného typu je znázorněno v následující ukázce kódu:
 
 ```csharp
 [FunctionName("UserDeleteAvailable")]
@@ -241,22 +241,22 @@ public static async Task AddValueClient(
 }
 ```
 
-V předchozím příkladu `proxy` parametr je dynamicky generovaný instanci `ICounter`, který interně překládá volání `Add` na odpovídající (netypová) volání `SignalEntityAsync`.
+V předchozím příkladu `proxy` je parametr dynamicky generovanou `ICounter`instancí, která interně `Add` překládá volání do do `SignalEntityAsync`ekvivalentního (netypového) volání.
 
 > [!NOTE]
-> Je důležité si uvědomit, že `ReadEntityStateAsync` a `SignalEntityAsync` metody `IDurableOrchestrationClient` upřednostnit výkonu přes konzistence. `ReadEntityStateAsync` může vrátit hodnotu zastaralé a `SignalEntityAsync` může vrátit před dokončením operace.
+> Je důležité si uvědomit, že `ReadEntityStateAsync` metody `IDurableOrchestrationClient` a `SignalEntityAsync` upřednostnit výkon nad konzistencí. `ReadEntityStateAsync`může vracet zastaralou hodnotu a `SignalEntityAsync` může vracet před dokončením operace.
 
-#### <a name="accessing-entities-from-orchestrations"></a>Přístup k entit na základě Orchestrace
+#### <a name="accessing-entities-from-orchestrations"></a>Přístup k entitám z orchestrace
 
-Orchestrace dostanete entit s využitím `IDurableOrchestrationContext` objektu. Můžete vybrat mezi jednosměrnou komunikaci (vypal a zapomeň) a obousměrnou komunikaci (požadavku a odpovědi). Příslušné metody jsou následující:
+Orchestrace mají přístup k entitám `IDurableOrchestrationContext` pomocí objektu. Můžou si vybrat komunikaci mezi jednosměrnou komunikací (požárem a zapomenoutm) a obousměrnou komunikací (žádost a odpověď). Příslušné metody jsou:
 
-* **SignalEntity**: odešle jednosměrná zpráva do entity.
-* **CallEntityAsync**: odešle zprávu do entity a čeká na odpověď označující, že operace byla dokončena.
-* **CallEntityAsync\<T >** : odešle zprávu do entity a čeká na odpověď obsahující výsledek typu T.
+* **SignalEntity**: pošle jednosměrnou zprávu entitě.
+* **CallEntityAsync**: pošle zprávu entitě a počká na odpověď oznamující, že se operace dokončila.
+* **CallEntityAsync\<T >** : pošle zprávu entitě a počká na odpověď obsahující výsledek typu T.
 
-Při použití obousměrnou komunikaci, zůstanou veškeré výjimky vyvolané při provádění operace jsou také odeslaných zpět do volajícího Orchestrace a znovu vyvolána. Naopak při použití fire a zapomenout, nejsou dodrženy výjimky.
+Při použití obousměrné komunikace jsou všechny výjimky vyvolané během provádění operace předány zpět do orchestrace volání a znovu vyvolány. Naopak při použití brány fire a zapomenutí nejsou výjimky pozorovány.
 
-Typově bezpečný přístup můžete vygenerovat Orchestrace funkce proxy servery založené na rozhraní. `CreateEntityProxy` Metody rozšíření lze použít pro tento účel:
+Pro typově bezpečný přístup mohou funkce orchestrace generovat proxy na základě rozhraní. Metodu `CreateEntityProxy` rozšíření lze použít pro tento účel:
 
 ```csharp
 public interface IAsyncCounter
@@ -266,7 +266,7 @@ public interface IAsyncCounter
     Task<int> GetAsync();
 }
 
-[FunctionName("CounterOrchestration)]
+[FunctionName("CounterOrchestration")]
 public static async Task Run(
     [OrchestrationTrigger] IDurableOrchestrationContext context)
 {
@@ -278,20 +278,20 @@ public static async Task Run(
 }
 ```
 
-V předchozím příkladu "čítač" entity se předpokládá, že existují, který implementuje `IAsyncCounter` rozhraní. Orchestraci bylo následně možné použít `IAsyncCounter` zadejte definici generovat typ proxy serveru pro synchronní interakci s entitou.
+V předchozím příkladu se předpokládá, že existuje entita "čítač", která implementuje `IAsyncCounter` rozhraní. Orchestrace potom dokázala použít `IAsyncCounter` definici typu k vygenerování proxy typu pro synchronní interakci s entitou.
 
-### <a name="locking-entities-from-orchestrations"></a>Uzamčení entity z Orchestrace
+### <a name="locking-entities-from-orchestrations"></a>Zamykání entit z orchestrací
 
-Orchestrace lze uzamčení entity. Tato funkce poskytuje jednoduchý způsob, jak zabránit nežádoucí bude pomocí *kritických oddílů*.
+Orchestrace můžou uzamknout entity. Tato funkce poskytuje jednoduchý způsob, jak zabránit nežádoucím racesům pomocí *důležitých oddílů*.
 
-Objekt kontextu poskytuje následující metody:
+Kontextový objekt poskytuje následující metody:
 
-* **LockAsync**: získá uzamčení na jeden nebo více entit.
-* **Islocked –** : vrací hodnotu true, pokud v současné době kritický oddíl, false v opačném případě.
+* **LockAsync**: Získá zámky pro jednu nebo více entit.
+* **Uzamknout**: vrátí hodnotu true, pokud je aktuálně v kritické sekci, jinak false.
 
-Kritická sekce skončí a všech zámků jsou uvolněny, při ukončení orchestraci. V rozhraní .NET `LockAsync` vrátí `IDisposable` , který končí kritický oddíl při uvolnění, což je možné společně s `using` klauzule syntaktické reprezentaci kritický oddíl.
+Kritická část končí a všechny zámky jsou uvolněny, jakmile orchestrace skončí. V rozhraní .NET `LockAsync` vrátí znak `IDisposable` , který ukončí kritickou část, je-li uvolněn, který lze použít společně `using` s klauzulí k získání syntaktické reprezentace důležité části.
 
-Například vezměte v úvahu Orchestrace, kterou je potřeba otestovat, jestli jsou k dispozici dva hráči a následně je přiřadit k hru. Tato úloha je možné implementovat pomocí kritický oddíl následujícím způsobem:
+Zvažte například orchestraci, která potřebuje otestovat, jestli jsou k dispozici dva přehrávače, a pak je přiřaďte ke hře. Tato úloha se dá implementovat pomocí oddílu kritického pro tyto kroky:
 
 ```csharp
 [FunctionName("Orchestrator")]
@@ -317,26 +317,26 @@ public static async Task RunOrchestrator(
 }
 ```
 
-V rámci kritický oddíl obě player entity jsou zamčené, což znamená, že jejich nejsou provádění jakékoli operace než ty, které se volají z v rámci kritický oddíl). Toto chování brání bude s konfliktními operacemi, jako je například hráči přiřazeny jiným hru nebo podpisové vypnuté.
+V části důležité jsou obě entity přehrávače uzamčené, což znamená, že neprovádějí žádné jiné operace než ty, které jsou volány v kritické části. Toto chování brání v Races s konfliktními operacemi, jako jsou například hráči přiřazené k jiné hře nebo odhlášení.
 
-Jsme několik omezení v části Jak kritické je možné. Tato omezení slouží k zabránit zablokování a konflikty vícenásobného přístupu.
+V případě, že je možné použít kritické oddíly, ukládáme několik omezení. Tato omezení slouží k tomu, aby se zabránilo zablokování a Vícenásobný přístup.
 
-* Kritické oddíly nelze vnořit.
-* Kritické oddíly nelze vytvořit suborchestrations.
-* Kritické oddíly mohou volat pouze entity, které mají uzamčen.
-* Kritické oddíly nelze volat stejné entity pomocí více paralelních volání.
-* Kritické oddíly mohou signalizovat pouze entity, které nebyly uzamčen.
+* Kritické oddíly nelze vnořovat.
+* Kritické oddíly nemůžou vytvářet podorchestry.
+* Kritické oddíly mohou volat pouze entity, které byly uzamčeny.
+* Kritické oddíly nemohou volat stejnou entitu pomocí více paralelních volání.
+* Kritické oddíly mohou signalizovat pouze entity, které nebyly uzamčeny.
 
-## <a name="alternate-storage-providers"></a>Poskytovatelé alternativní úložiště
+## <a name="alternate-storage-providers"></a>Alternativní poskytovatelé úložiště
 
-Trvalý Framework úkol podporuje několik poskytovatelů úložiště ještě dnes, včetně [služby Azure Storage](https://github.com/Azure/durabletask/tree/master/src/DurableTask.AzureStorage), [Azure Service Bus](https://github.com/Azure/durabletask/tree/master/src/DurableTask.ServiceBus), [emulátor v paměti](https://github.com/Azure/durabletask/tree/master/src/DurableTask.Emulator)a experimentální [Redis](https://github.com/Azure/durabletask/tree/redis/src/DurableTask.Redis) zprostředkovatele. Ale až doteď trvalý úloh rozšíření pro službu Azure Functions jen zprostředkovatele služby Azure Storage. Počínaje trvalý Functions 2.0, podporu pro poskytovatele alternativní úložiště přidáte, od poskytovatele Redis.
+Prostředí trvalého úkolu podporuje více poskytovatelů úložiště, včetně [Azure Storage](https://github.com/Azure/durabletask/tree/master/src/DurableTask.AzureStorage), [Azure Service Bus](https://github.com/Azure/durabletask/tree/master/src/DurableTask.ServiceBus), emulátoru [v paměti](https://github.com/Azure/durabletask/tree/master/src/DurableTask.Emulator)a experimentálního poskytovatele [Redis](https://github.com/Azure/durabletask/tree/redis/src/DurableTask.Redis) . Nicméně až do této chvíle bude rozšíření trvalé úlohy pro Azure Functions podporovalo pouze poskytovatele Azure Storage. Počínaje Durable Functions 2,0 se přidávají podpora alternativních poskytovatelů úložiště, počínaje poskytovatelem Redis.
 
 > [!NOTE]
-> Trvalý Functions 2.0 podporuje pouze .NET Standard 2.0 kompatibilní zprostředkovatelé. V době psaní zprostředkovatele služby Azure Service Bus nepodporuje .NET Standard 2.0 a není tedy k dispozici jako alternativní úložiště zprostředkovatele.
+> Durable Functions 2,0 podporuje pouze poskytovatele kompatibilního s .NET Standard 2,0. V době psaní nepodporují poskytovatel Azure Service Bus .NET Standard 2,0, a proto není k dispozici jako alternativní poskytovatel úložiště.
 
-### <a name="emulator"></a>Emulátor
+### <a name="emulator"></a>Hlavní
 
-[DurableTask.Emulator](https://www.nuget.org/packages/Microsoft.Azure.DurableTask.Emulator/) zprostředkovatele je místní paměti, hodí se pro místní scénáře testování poskytovatele krátkodobé úložiště. Můžete ji nakonfigurovat, použijte tento minimální **host.json** schématu:
+Zprostředkovatel [DurableTask. emulátoru](https://www.nuget.org/packages/Microsoft.Azure.DurableTask.Emulator/) je místní paměť, neodolný poskytovatel úložiště vhodný pro místní testovací scénáře. Dá se nakonfigurovat pomocí následujícího schématu minimale **Host. JSON** :
 
 ```json
 {
@@ -354,7 +354,7 @@ Trvalý Framework úkol podporuje několik poskytovatelů úložiště ještě d
 
 ### <a name="redis-experimental"></a>Redis (experimentální)
 
-[DurableTask.Redis](https://www.nuget.org/packages/Microsoft.Azure.DurableTask.Redis/) poskytovatele nevyřeší všechny stavy Orchestrace do konfigurovaného clusteru Redis.
+Poskytovatel [DurableTask. Redis](https://www.nuget.org/packages/Microsoft.Azure.DurableTask.Redis/) uchovává všechny stavy orchestrace v nakonfigurovaném clusteru Redis.
 
 ```json
 {
@@ -372,7 +372,7 @@ Trvalý Framework úkol podporuje několik poskytovatelů úložiště ještě d
 }
 ```
 
-`connectionStringName` Musí odkazovat na název proměnné aplikace nastavení nebo prostředí. Tato proměnná nastavení nebo prostředí aplikace by měl obsahovat hodnotu připojovacího řetězce Redis ve formě *server: port*. Například `localhost:6379` pro připojení k místnímu clusteru Redis.
+`connectionStringName` Musí odkazovat na název nastavení aplikace nebo proměnné prostředí. Toto nastavení aplikace nebo proměnná prostředí by měla obsahovat hodnotu připojovacího řetězce Redis ve formě *serveru: port*. Například `localhost:6379` pro připojení k místnímu clusteru Redis.
 
 > [!NOTE]
-> Zprostředkovatel Redis je aktuálně experimentální a podporuje pouze aplikace function App běží na jednom uzlu. Není zaručeno, že poskytovateli Redis někdy budou obecně dostupné, a může být v budoucí verzi odebrán.
+> Poskytovatel Redis je aktuálně experimentální a podporuje jenom aplikace Function App běžící na jednom uzlu. Není zaručeno, že poskytovatel Redis bude někdy zpřístupněn všeobecně k dispozici a bude možné ho v budoucí verzi odebrat.

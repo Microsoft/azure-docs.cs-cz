@@ -14,17 +14,17 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 07/07/2017
-ms.author: jdial
-ms.openlocfilehash: 6045cabdc97dad72a54e28a6f4fbee3126056d2e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: timlt
+ms.openlocfilehash: 5f33490a360089a301b28479b7707d4b62c7dd83
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60624033"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67875477"
 ---
 # <a name="filter-inbound-and-outbound-vm-network-traffic"></a>Filtrování příchozího a odchozího síťového provozu virtuálního počítače
 
-Tento ukázkový skript vytvoří virtuální síť s front-endovou a back-endovou podsítí. Příchozí síťový provoz do front-endové podsítě je omezený na HTTP, HTTPS a SSH, zatímco odchozí provoz do Internetu z back endové podsítě není omezený. Po spuštění skriptu budete mít jeden virtuální počítač se dvěma síťovými kartami. Obě síťové karty budou připojené k jiné podsíti.
+Tento ukázkový skript vytvoří virtuální síť s front-endovou a back-endovou podsítí. Příchozí síťový provoz do front-endové podsítě je omezený na HTTP, HTTPS a SSH, zatímco odchozí provoz do Internetu z back-endové podsítě není povolený. Po spuštění skriptu budete mít jeden virtuální počítač se dvěma síťovými kartami. Obě síťové karty budou připojené k jiné podsíti.
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
@@ -64,4 +64,4 @@ Tento skript k vytvoření skupiny prostředků, virtuální sítě a skupin zab
 
 Další informace o Azure CLI najdete v [dokumentaci k Azure CLI](/cli/azure).
 
-Další sítě ukázkové skripty rozhraní příkazového řádku najdete v [dokumentaci přehled sítě Azure](../cli-samples.md)
+Další informace o ukázkových skriptech rozhraní příkazového řádku najdete v [dokumentaci Přehled sítí Azure](../cli-samples.md) .

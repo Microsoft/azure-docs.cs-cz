@@ -1,71 +1,72 @@
 ---
-title: Použijte výchozí příkazový řádek ve službě Azure Container Instances
-description: Přepsat vstupního bodu, nakonfigurován v imagi kontejneru při nasazení Azure container instance
+title: Použití počátečního příkazového řádku v Azure Container Instances
+description: Přepsat parametr entryPoint nakonfigurovaný v imagi kontejneru při nasazení instance kontejneru Azure
 services: container-instances
 author: dlepow
+manager: gwallace
 ms.service: container-instances
 ms.topic: article
 ms.date: 04/15/2019
 ms.author: danlep
-ms.openlocfilehash: da94a4c79694f511d41e5c8dda8c786fc7049726
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 99440e22eb736522a25c2ee56bb07ef1d9967e66
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64569637"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68325654"
 ---
-# <a name="set-the-command-line-in-a-container-instance-to-override-the-default-command-line-operation"></a>Nastavení příkazového řádku v instanci kontejneru přepsat výchozí operace příkazového řádku
+# <a name="set-the-command-line-in-a-container-instance-to-override-the-default-command-line-operation"></a>Nastavení příkazového řádku v instanci kontejneru pro přepsání výchozí operace příkazového řádku
 
-Při vytváření instance kontejneru, Volitelně můžete zadejte příkaz přepsat výchozí instrukce příkazového řádku vloženými do image kontejneru. Toto chování je podobné `--entrypoint` argument příkazového řádku k `docker run`.
+Když vytváříte instanci kontejneru, můžete volitelně zadat příkaz pro přepsání výchozích instrukcí příkazového řádku vloženými do image kontejneru. Toto chování je podobné `--entrypoint` jako argument příkazového řádku pro. `docker run`
 
-Nastavení, jako jsou [proměnné prostředí](container-instances-environment-variables.md) pro container instances, určení počáteční příkazového řádku je užitečné pro úlohy batch kde je nutné připravit každý kontejner dynamicky pomocí konfigurace specifické pro úlohy.
+Podobně jako při nastavení [proměnných prostředí](container-instances-environment-variables.md) pro instance kontejnerů je zadání počátečního příkazového řádku užitečné pro dávkové úlohy, které je potřeba k dynamické přípravě každého kontejneru s konfigurací specifickou pro úlohy.
 
 ## <a name="command-line-guidelines"></a>Pokyny příkazového řádku
 
-* Ve výchozím nastavení, určuje příkazový řádek *jeden proces, který se spustí bez prostředí* v kontejneru. Například může příkazového řádku spustit Pythonovému skriptu nebo spustitelného souboru. 
+* Ve výchozím nastavení příkazový řádek určuje *jeden proces, který začíná bez prostředí* v kontejneru. Například příkazový řádek může spustit skript v jazyce Python nebo spustitelný soubor. 
 
-* Ke spuštění více příkazů, začněte tak, že nastavíte příkazové prostředí, který je podporovaný v operačním systému kontejneru příkazového řádku. Příklady:
+* Pokud chcete spustit více příkazů, spusťte příkazový řádek nastavením prostředí prostředí, které je podporované v operačním systému kontejneru. Příklady:
 
   |Operační systém  |Výchozí prostředí  |
   |---------|---------|
   |Ubuntu     |   `/bin/bash`      |
-  |Nástroj Alpine     |   `/bin/sh`      |
+  |Alpine     |   `/bin/sh`      |
   |Windows     |    `cmd`     |
 
-  Dodržují konvence prostředí kombinovat více příkazů ke spuštění v sekvenci.
+  Pokud chcete zkombinovat několik příkazů, které se mají spustit v posloupnosti, postupujte podle konvencí prostředí.
 
-* V závislosti na konfiguraci kontejneru můžete potřebovat nastavit úplná cesta k spustitelný soubor příkazového řádku nebo argumenty.
+* V závislosti na konfiguraci kontejneru možná budete muset nastavit úplnou cestu ke spustitelnému souboru nebo argumentům příkazového řádku.
 
-* Nastavte odpovídající [zásady restartování](container-instances-restart-policy.md) pro instance kontejneru, v závislosti na tom, jestli příkazového řádku určuje dlouho běžící úlohy nebo úlohy spouštěné jednou. Například, zásady restartování z `Never` nebo `OnFailure` se doporučuje pro úlohy spouštěné jednou. 
+* Nastavte vhodné [zásady restartování](container-instances-restart-policy.md) pro instanci kontejneru v závislosti na tom, zda příkazový řádek určuje dlouhodobě běžící úlohu nebo úlohu spuštění jednou. Například zásada restartování systému `Never` nebo `OnFailure` se doporučuje pro úlohu spuštění jednou. 
 
-* Pokud potřebujete informace o entrypoint výchozí nastavení v imagi kontejneru, použijte [kontrolovat image dockeru](https://docs.docker.com/engine/reference/commandline/image_inspect/) příkazu.
+* Pokud potřebujete informace o výchozí sadě EntryPoint v imagi kontejneru, použijte příkaz [Docker image prověřit](https://docs.docker.com/engine/reference/commandline/image_inspect/) .
 
 ## <a name="command-line-syntax"></a>Syntaxe příkazového řádku
 
-Syntaxe příkazového řádku se liší v závislosti na rozhraní API služby Azure nebo nástroj použitý k vytvoření instance. Pokud zadáte příkazové prostředí, podívejte se také konvencí syntaxe příkazového prostředí.
+Syntaxe příkazového řádku se liší v závislosti na rozhraní API nebo nástroji Azure, které jste použili k vytvoření instancí. Pokud zadáte prostředí prostředí, sledujte také konvence syntaxe příkazu Shell.
 
-* [Vytvoření kontejneru az] [ az-container-create] příkaz: Předat řetězec `--command-line` parametru. Příklad: `--command-line "python myscript.py arg1 arg2"`).
+* [AZ Container Create][az-container-create] Command: Předejte řetězec s `--command-line` parametrem. Příklad: `--command-line "python myscript.py arg1 arg2"`).
 
-* [Nový-AzureRmContainerGroup] [ new-azurermcontainergroup] rutiny Azure Powershellu: Předat řetězec `-Command` parametru. Příklad: `-Command "echo hello"`.
+* [New-AzureRmContainerGroup][new-azurermcontainergroup] Rutina Azure PowerShell: Předejte řetězec s `-Command` parametrem. Příklad: `-Command "echo hello"`.
 
-* Azure portal: V **příkaz přepsání** vlastnost konfigurace kontejneru, zadejte čárkou oddělený seznam řetězců, bez uvozovek. Příklad: `python, myscript.py, arg1, arg2`). 
+* Azure Portal: V vlastnosti **přepsání příkazu** konfigurace kontejneru Zadejte čárkami oddělený seznam řetězců bez uvozovek. Příklad: `python, myscript.py, arg1, arg2`). 
 
-* Šablony Resource Manageru nebo soubor YAML nebo jednu ze sad Azure SDK: Určete vlastnost příkazového řádku jako pole řetězců. Příklad: pole JSON `["python", "myscript.py", "arg1", "arg2"]` v šabloně Resource Manageru. 
+* Správce prostředků šablonu nebo soubor YAML nebo jednu ze sad Azure SDK: Zadejte vlastnost příkazového řádku jako pole řetězců. Příklad: pole `["python", "myscript.py", "arg1", "arg2"]` JSON v šabloně správce prostředků. 
 
-  Pokud jste obeznámeni s [soubor Dockerfile](https://docs.docker.com/engine/reference/builder/) syntaxe, tento formát je podobný *exec* formu instrukci CMD.
+  Pokud jste obeznámeni se syntaxí [souboru Dockerfile](https://docs.docker.com/engine/reference/builder/) , je tento formát podobný jako ve formě *exec* instrukce cmd.
 
 ### <a name="examples"></a>Příklady
 
 |    |  Azure CLI   | Portál | Šablona | 
 | ---- | ---- | --- | --- |
-| Jediným příkazem | `--command-line "python myscript.py arg1 arg2"` | **Příkaz přepsání**: `python, myscript.py, arg1, arg2` | `"command": ["python", "myscript.py", "arg1", "arg2"]` |
-| Více příkazů | `--command-line "/bin/bash -c 'mkdir test; touch test/myfile; tail -f /dev/null'"` |**Příkaz přepsání**: `/bin/bash, -c, mkdir test; touch test/myfile; tail -f /dev/null` | `"command": ["/bin/bash", "-c", "mkdir test; touch test/myfile; tail -f /dev/null"]` |
+| Jeden příkaz | `--command-line "python myscript.py arg1 arg2"` | **Přepsání příkazu**:`python, myscript.py, arg1, arg2` | `"command": ["python", "myscript.py", "arg1", "arg2"]` |
+| Více příkazů | `--command-line "/bin/bash -c 'mkdir test; touch test/myfile; tail -f /dev/null'"` |**Přepsání příkazu**:`/bin/bash, -c, mkdir test; touch test/myfile; tail -f /dev/null` | `"command": ["/bin/bash", "-c", "mkdir test; touch test/myfile; tail -f /dev/null"]` |
 
 ## <a name="azure-cli-example"></a>Příklad rozhraní příkazového řádku Azure
 
-Jako příklad změnit chování [microsoft/aci-wordcount] [ aci-wordcount] image kontejneru, která analyzuje text v prvku Shakespeare *obce* najít nejčastěji výskytu slova. Místo analýza *obce*, můžete nastavit příkazový řádek, který odkazuje na zdroj jiným textem.
+Jako příklad můžete změnit chování image kontejneru [Microsoft/ACI-WORDCOUNT][aci-wordcount] , která analyzuje text v Shakespeare *Hamlet* , aby našli nejčastěji se vyskytující slova. Místo analýzy *Hamlet*můžete nastavit příkazový řádek, který odkazuje na jiný zdroj textu.
 
-Pokud chcete zobrazit výstup [microsoft/aci-wordcount] [ aci-wordcount] kontejneru analyzuje výchozí text, spusťte následující [az container vytvořit] [ az-container-create] příkazu. Žádná spuštění příkazového řádku není zadán, takže bude možné spustit příkaz výchozí kontejner. Pro ilustraci se v tomto příkladu nastaví [proměnné prostředí](container-instances-environment-variables.md) najít první 3 slova, která jsou dlouhé aspoň pět písmena:
+Zobrazí výstup příkazu [Microsoft/ACI-WORDCOUNT][aci-wordcount] container when it analyzes the default text, run it with the following [az container create][az-container-create] . Není zadán žádný příkazový řádek pro spuštění, takže se spustí výchozí příkaz kontejneru. Pro ilustraci tento příklad nastaví [proměnné prostředí](container-instances-environment-variables.md) tak, aby našli první 3 slova, která jsou aspoň pět písmen dlouhá:
 
 ```azurecli-interactive
 az container create \
@@ -76,7 +77,7 @@ az container create \
     --restart-policy OnFailure
 ```
 
-Jakmile ukazovat stav kontejneru *ukončeno* (použijte [az container show] [ az-container-show] postup kontroly stavu), zobrazit protokol s [protokoly kontejneru az] [ az-container-logs] chcete zobrazit výstup.
+Jakmile se stav kontejneru zobrazí jako *ukončeno* , zobrazí se výstup pomocí [AZ Container show][az-container-show] to check state), display the log with [az container logs][az-container-logs] .
 
 ```azurecli-interactive
 az container logs --resource-group myResourceGroup --name mycontainer1
@@ -88,9 +89,9 @@ Výstup:
 [('HAMLET', 386), ('HORATIO', 127), ('CLAUDIUS', 120)]
 ```
 
-Nyní nastavte druhý příklad kontejner k analýze jiným textovým zadáním různých příkazového řádku. Spuštění kontejneru, skript v jazyce Python *wordcount.py*, adresu URL jako argument přijímá a zpracovává tuto stránku obsahu místo výchozího.
+Nyní vytvořte druhý vzorový kontejner pro analýzu jiného textu zadáním jiného příkazového řádku. Skript Pythonu spouštěný kontejnerem, *WORDCOUNT.py*, přijímá jako argument adresu URL a zpracovává obsah stránky místo výchozího.
 
-Například k určení horní 3 slova, které jsou alespoň pět písmena dlouho v *Valentýne a Juliet*:
+Například k určení prvních 3 slov, která jsou nejméně pět znaků dlouhá v *Romeo a Juliet*:
 
 ```azurecli-interactive
 az container create \
@@ -102,7 +103,7 @@ az container create \
     --command-line "python wordcount.py http://shakespeare.mit.edu/romeo_juliet/full.html"
 ```
 
-Znovu Jakmile bude kontejner *ukončeno*, zobrazte výstup zobrazením protokolů kontejneru:
+Jakmile se kontejner *ukončí*, zobrazte výstup zobrazením protokolů kontejneru:
 
 ```azurecli-interactive
 az container logs --resource-group myResourceGroup --name mycontainer2
@@ -116,7 +117,7 @@ Výstup:
 
 ## <a name="next-steps"></a>Další postup
 
-Scénáře založené na úlohách, jako jsou dávkové zpracování velkou datovou sadu s několika kontejnery, může přinést vlastní příkazové řádky za běhu. Další informace o spuštěné kontejnery založené na úlohách najdete v tématu [spouštění kontejnerizovaných úloh pomocí zásady restartování](container-instances-restart-policy.md).
+Scénáře založené na úlohách, například dávkové zpracování velké datové sady s několika kontejnery, můžou využívat vlastní příkazové řádky za běhu. Další informace o spuštění kontejnerů založených na úlohách najdete v tématu [spuštění kontejnerových úloh pomocí zásad restartování](container-instances-restart-policy.md).
 
 <!-- LINKS - External -->
 [aci-wordcount]: https://hub.docker.com/_/microsoft-azuredocs-aci-wordcount

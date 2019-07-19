@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý start: Extrahujte rukou psaný text - REST, Python'
+title: 'Rychlý start: Extrakce vytištěných a rukou psaných textu – REST, Python'
 titleSuffix: Azure Cognitive Services
-description: V tomto rychlém startu extrahujete rukou psaný text z obrázku pomocí rozhraní API pro počítačové zpracování obrazu a Pythonu.
+description: V tomto rychlém startu extrahujete vytištěný a rukou psaný text z obrázku pomocí rozhraní API pro počítačové zpracování obrazu v Pythonu.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,30 +11,30 @@ ms.topic: quickstart
 ms.date: 07/03/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: ec58617556ff54bd2273160bb4af80e473ac1693
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 729228b224bdf708fbcf9caf4742f9bb7ad5cff3
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67603566"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68311982"
 ---
-# <a name="quickstart-extract-handwritten-text-using-the-computer-vision-rest-api-and-python"></a>Rychlý start: Extrahujte rukou psaný text pomocí rozhraní API pro počítačové zpracování obrazu REST a Python
+# <a name="quickstart-extract-printed-and-handwritten-text-using-the-computer-vision-rest-api-and-python"></a>Rychlý start: Extrakce vytištěného textu a ručního textu pomocí Počítačové zpracování obrazu REST API a Pythonu
 
-V tomto rychlém startu extrahujete rukou psaný text z obrázku pomocí rozhraní REST API počítačového zpracování obrazu. S [čtení dávky](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) rozhraní API a [výsledek operace čtení](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d) rozhraní API, můžete zjistit rukou psaný text v obrázku a extrahovat rozpoznané znaky do datového proudu počítačově využitelný znaků.
+V tomto rychlém startu extrahujete vytištěný nebo ručně psaný text z obrázku pomocí REST API Počítačové zpracování obrazu. Pomocí metod [čtení](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) a čtení dávkových [operací](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d) Batch můžete detekovat text v obrázku a extrahovat rozpoznané znaky do datového proudu znaků, který je strojově čitelný. Rozhraní API určí, který model rozpoznávání se má použít pro každý řádek textu, takže podporuje obrázky s tištěným i psaným textem.
 
 > [!IMPORTANT]
-> Na rozdíl od [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) metody [čtení dávky](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) metoda běží asynchronně. Tato metoda nevrací žádné informace v textu úspěšné odpovědi. Místo toho čtení dávky metoda vrací identifikátor URI v hodnotě `Operation-Content` pole hlavičky odpovědi. Potom můžete zavolat tento identifikátor URI, který představuje [výsledek operace čtení](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d) rozhraní API, jak zkontrolovat stav a vrátí výsledky volání metody pro čtení služby Batch.
+> Na rozdíl od metody [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) se metoda [čtení dávky](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) spouští asynchronně. Tato metoda nevrací žádné informace v textu úspěšné odpovědi. Místo toho metoda čtení dávky vrátí identifikátor URI v hodnotě `Operation-Content` pole hlavičky odpovědi. Pak můžete zavolat tento identifikátor URI, který představuje rozhraní API [pro výsledek operace čtení](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d) , pro kontrolu stavu a vrácení výsledků volání metody čtení dávky.
 
 Tento rychlý start můžete spustit jako podrobný návod pomocí Jupyter Notebooku na webu [MyBinder](https://mybinder.org). Pokud chcete spustit Binder, vyberte následující tlačítko:
 
-[![Spouštěcí tlačítko vazače](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=VisionAPI.ipynb)
+[![Tlačítko pro spuštění pořadače](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=VisionAPI.ipynb)
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/try/cognitive-services/) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
 - Pokud chcete spustit tuto ukázku v místním prostředí, musíte mít nainstalovaný jazyk [Python](https://www.python.org/downloads/).
-- Musíte mít klíč předplatného pro počítačové zpracování obrazu. Můžete získat bezplatné zkušební verze klíče z [zkuste služby Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Nebo, postupujte podle pokynů v [vytvoření účtu služeb Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) k přihlášení pro počítačové zpracování obrazu a získejte klíč.
+- Musíte mít klíč předplatného pro počítačové zpracování obrazu. Bezplatný zkušební klíč si můžete [vyzkoušet Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Případně postupujte podle pokynů v části [Vytvoření účtu Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) pro přihlášení k odběru počítačové zpracování obrazu a získání klíče.
 
 ## <a name="create-and-run-the-sample"></a>Vytvoření a spuštění ukázky
 
@@ -44,10 +44,10 @@ Pokud chcete vytvořit a spustit ukázku, postupujte takto:
 1. Proveďte v kódu na příslušných místech následující změny:
     1. Hodnotu `subscription_key` nahraďte klíčem předplatného.
     1. Hodnotu `vision_base_url` nahraďte adresou URL koncového bodu prostředku počítačového zpracování obrazu z oblasti Azure, kde jste získali klíče předplatného, pokud je to potřeba.
-    1. Volitelně můžete hodnotu `image_url` nahradit adresou URL jiného obrázku, ze kterého chcete extrahovat rukou psaný text.
-1. Uložte kód jako soubor s příponou `.py`. Například, `get-handwritten-text.py`.
+    1. V případě potřeby nahraďte hodnotu `image_url` adresou URL jiného obrázku, ze kterého chcete extrahovat text.
+1. Uložte kód jako soubor s příponou `.py`. Například, `get-text.py`.
 1. Otevřete okno příkazového řádku.
-1. Ke spuštění ukázky na příkazovém řádku použijte příkaz `python`. Například, `python get-handwritten-text.py`.
+1. Ke spuštění ukázky na příkazovém řádku použijte příkaz `python`. Například, `python get-text.py`.
 
 ```python
 import requests
@@ -83,7 +83,7 @@ response = requests.post(
     text_recognition_url, headers=headers, json=data)
 response.raise_for_status()
 
-# Extracting handwritten text requires two API calls: One call to submit the
+# Extracting text requires two API calls: One call to submit the
 # image for processing, the other to retrieve the text found in the image.
 
 # Holds the URI used to retrieve the recognized text.
@@ -402,7 +402,7 @@ for polygon in polygons:
 }
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Prozkoumejte aplikaci v Pythonu používající počítačové zpracování obrazu k optickému rozpoznávání znaků (OCR), vytváření chytře oříznutých miniatur, zjišťování, kategorizaci, označení a popis vizuálních prvků, včetně obličejů, v obrázku. Pokud chcete rychle vyzkoušet rozhraní API pro počítačové zpracování obrazu, vyzkoušejte [testovací konzolu Open API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console).
 

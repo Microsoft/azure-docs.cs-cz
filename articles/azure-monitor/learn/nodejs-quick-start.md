@@ -5,17 +5,17 @@ services: application-insights
 keywords: ''
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 04/01/2019
+ms.date: 07/12/2019
 ms.service: application-insights
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: c6979ce5cade09d4daa4e6eddd79fb69175ec902
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d92a96f928c859fba056f1d98c07ee4852aad0f1
+ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60540224"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68002755"
 ---
 # <a name="start-monitoring-your-nodejs-web-application"></a>Zahájení monitorování webové aplikace Node.js
 
@@ -45,23 +45,22 @@ Application Insights může shromažďovat telemetrická data ze všech aplikac�
 
    ![Přidání prostředku Application Insights](./media/nodejs-quick-start/1createresourseappinsights.png)
 
-   ![Přidání prostředku Application Insights](./media/nodejs-quick-start/2createnodejs.png)
+   > [!NOTE]
+   >Pokud Application Insights prostředek vytvoříte poprvé, můžete si o tom přečíst další informace v dokumentu [vytvoření prostředku Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource) .
 
-
-   Zobrazí se konfigurační pole. K vyplnění vstupních polí použijte následující tabulku.
+   Zobrazí se stránka konfigurace; k vyplnění vstupních polí použijte následující tabulku. 
 
     | Nastavení        | Hodnota           | Popis  |
    | ------------- |:-------------|:-----|
    | **Název**      | Globálně jedinečná hodnota | Název identifikující aplikaci, kterou monitorujete |
    | **Typ aplikace** | Aplikace Node.js | Typ aplikace, kterou monitorujete |
-   | **Skupina prostředků**     | myResourceGroup      | Název pro novou skupinu prostředků, která bude hostovat data App Insights |
-   | **Umístění** | USA – východ | Vyberte umístění ve vaší blízkosti nebo v blízkosti místa, kde se vaše aplikace hostuje. |
+   | **Location** | East US | Vyberte umístění ve vaší blízkosti nebo v blízkosti místa, kde se vaše aplikace hostuje. |
 
 2. Klikněte na možnost **Vytvořit**.
 
 ## <a name="configure-app-insights-sdk"></a>Konfigurace sady App Insights SDK
 
-1. Vyberte **přehled** a zkopírujte vaší aplikace **Instrumentační klíč**.
+1. Vyberte **Přehled** a zkopírujte **klíč instrumentace**vaší aplikace.
 
    ![Formulář Nový prostředek App Insights](./media/nodejs-quick-start/3key.png)
 
@@ -93,7 +92,7 @@ Application Insights může shromažďovat telemetrická data ze všech aplikac�
 
    ![Mapa aplikace](./media/nodejs-quick-start/5appmap.png)
 
-3. Klikněte na **analýzy aplikací** ikonu ![ikona Mapa aplikace](./media/nodejs-quick-start/006.png) **zobrazit v Analytics**.  Otevře se **Application Insights – Analytics** s bohatým dotazovacím jazykem pro analýzu všech dat shromážděných službou Application Insights. V tomto případě jsme za vás vytvořili dotaz, který vykreslí počet požadavků ve formě grafu. Můžete psát své vlastní dotazy pro analýzu dalších dat.
+3. Klikněte na ![ikonu **Analýza** aplikace ikona mapa](./media/nodejs-quick-start/006.png) aplikace **Zobrazit v části analýzy**.  Otevře se **Application Insights – Analytics** s bohatým dotazovacím jazykem pro analýzu všech dat shromážděných službou Application Insights. V tomto případě jsme za vás vytvořili dotaz, který vykreslí počet požadavků ve formě grafu. Můžete psát své vlastní dotazy pro analýzu dalších dat.
 
    ![Graf analýzy uživatelských požadavků za časové období](./media/nodejs-quick-start/6analytics.png)
 
@@ -123,7 +122,7 @@ Application Insights může shromažďovat telemetrická data ze všech aplikac�
    </script>
    ```
 
-5. Na levém klikněte na **metriky**. Pomocí Průzkumníka metrik k prozkoumání stavu a využití vašich prostředků. Můžete kliknout na **Přidat nový graf** a vytvořit další vlastní zobrazení nebo vybrat **Upravit** a upravit existující typy grafů, jejich výšku, paletu barev, seskupení a metriky. Například můžete vytvořit graf, který zobrazuje čas načítání stránky prohlížeče průměrné výběrem "Doba načítání stránek prohlížečem" z metrik rozevíracího seznamu a "Avg" z agregace. Další informace o Průzkumníku metrik Azure návštěvě [Začínáme s Průzkumníkem metrik Azure](../../azure-monitor/platform/metrics-getting-started.md).
+5. Na levé straně klikněte na **metriky**. Pomocí Průzkumníka metrik můžete prozkoumat stav a využití vašeho prostředku. Můžete kliknout na **Přidat nový graf** a vytvořit další vlastní zobrazení nebo vybrat **Upravit** a upravit existující typy grafů, jejich výšku, paletu barev, seskupení a metriky. Můžete například vytvořit graf, který zobrazuje průměrnou dobu načítání stránek prohlížečem vynásobením možnosti doba načítání stránky prohlížeče z rozevírací nabídky metriky a "průměr" z agregace. Další informace o Azure Průzkumník metrik najdete [v článku Začínáme s azure Průzkumník metrik](../../azure-monitor/platform/metrics-getting-started.md).
 
    ![Graf metrik serveru](./media/nodejs-quick-start/8metrics.png)
 
@@ -131,7 +130,7 @@ Další informace o monitorování Node.js najdete v [další dokumentaci k Node
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Po dokončení testování, můžete odstranit skupinu prostředků a všechny související prostředky. Chcete proto podle následujících pokynů.
+Až budete s testováním hotovi, můžete odstranit skupinu prostředků a všechny související prostředky. Provedete to podle následujících kroků.
 
 1. Na webu Azure Portal v nabídce vlevo klikněte na **Skupiny prostředků** a pak na **myResourceGroup**.
 2. Na stránce skupiny prostředků klikněte na **Odstranit**, do textového pole zadejte **myResourceGroup** a pak klikněte na **Odstranit**.

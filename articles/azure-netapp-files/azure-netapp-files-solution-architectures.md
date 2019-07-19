@@ -1,6 +1,6 @@
 ---
-title: Architektury řešení pomocí služby soubory Azure NetApp | Dokumentace Microsoftu
-description: Poskytuje odkazy na osvědčené postupy pro architektury řešení pomocí služby soubory Azure NetApp.
+title: Architektury řešení pomocí Azure NetApp Files | Microsoft Docs
+description: Poskytuje odkazy na osvědčené postupy pro architektury řešení pomocí Azure NetApp Files.
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -14,26 +14,27 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/24/2019
 ms.author: b-juche
-ms.openlocfilehash: 89d6bd183d8cfc47915936e536f5ab9bf0ac258a
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: d4682ed375453cee4e5aa107d69c288e66cd11a7
+ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67454123"
+ms.lasthandoff: 07/13/2019
+ms.locfileid: "67867410"
 ---
 # <a name="solution-architectures-using-azure-netapp-files"></a>Architektury řešení s využitím Azure NetApp Files
-Tento článek obsahuje odkazy na osvědčené postupy, které vám pomůžou pochopit architektury řešení pro použití služby soubory Azure NetApp.  
+Tento článek poskytuje odkazy na osvědčené postupy, které vám pomůžou pochopit architektury řešení pro použití Azure NetApp Files.  
 
-## <a name="solutions-for-oracle-database"></a>Řešení pro databáze Oracle
+## <a name="solutions-for-oracle-database"></a>Řešení pro Oracle Database
 
-* [Oracle v Azure nasazení doporučené postupy při použití služby soubory Azure NetApp](https://www.netapp.com/us/media/tr-4780.pdf)
-* [Image virtuálních počítačů Oracle a jejich nasazení v Microsoft Azure: Možnosti konfigurace sdíleného úložiště](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/oracle-vm-solutions#shared-storage-configuration-options)
+* [Průvodce nasazením Oracle v Azure v praxi pomocí Azure NetApp Files](https://www.netapp.com/us/media/tr-4780.pdf)
+* [Image virtuálních počítačů Oracle a jejich nasazení na Microsoft Azure: Možnosti konfigurace sdíleného úložiště](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/oracle-vm-solutions#shared-storage-configuration-options)
 
 ## <a name="solutions-for-sap-applications"></a>Řešení pro aplikace SAP
 
-* [Aplikace SAP v Microsoft Azure pomocí služby soubory Azure NetApp](https://www.netapp.com/us/media/tr-4746.pdf)
-* [Vysoká dostupnost pro SAP NetWeaver na virtuálních počítačích Azure na SUSE Linux Enterprise serveru s Azure Files NetApp pro aplikace SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files)
+* [Aplikace SAP na Microsoft Azure s využitím Azure NetApp Files](https://www.netapp.com/us/media/tr-4746.pdf)
+* [Vysoká dostupnost pro SAP NetWeaver na virtuálních počítačích Azure na SUSE Linux Enterprise Server s Azure NetApp Files pro aplikace SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files)
+* [Vysoká dostupnost Azure Virtual Machines pro SAP NetWeaver v Red Hat Enterprise Linux s Azure NetApp Files pro aplikace SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-netapp-files)
 
-## <a name="talon-solutions"></a>Řešení talon 
+## <a name="talon-solutions"></a>Řešení Talon 
 
-[Sdílení souborů NetApp Azure a Talon FAST™ globálně distribuované podniky souborů](https://www.talonstorage.com/products/azure-netapp-files)
+[Globálně distribuované podnikové sdílení souborů s Azure NetApp Files a Talon FAST™](https://www.talonstorage.com/products/azure-netapp-files)

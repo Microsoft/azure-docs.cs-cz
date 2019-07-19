@@ -3,16 +3,17 @@ title: Osvědčené postupy ve službě Azure Container Registry
 description: Zjistěte, jak pomocí těchto osvědčených postupů efektivně používat službu Azure Container Registry.
 services: container-registry
 author: dlepow
+manager: gwallace
 ms.service: container-registry
 ms.topic: article
 ms.date: 09/27/2018
 ms.author: danlep
-ms.openlocfilehash: 2cf64c7c4f99a57c4a4a6cf03e68e8af803ceca9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a1ab010300d3f7bec3aeb5969a9a09fa9ee9a6a5
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60787352"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68309774"
 ---
 # <a name="best-practices-for-azure-container-registry"></a>Osvědčené postupy pro službu Azure Container Registry
 
@@ -46,15 +47,15 @@ contoso.azurecr.io/marketing/2017-fall/concertpromotions/campaign:218.42
 
 ## <a name="dedicated-resource-group"></a>Vyhrazená skupina prostředků
 
-Vzhledem k tomu, že registry kontejnerů jsou prostředky, které se používají napříč několika hostiteli kontejnerů, registru by měl být uložený ve vlastní skupině prostředků.
+Vzhledem k tomu, že registry kontejnerů jsou prostředky, které se používají na více hostitelích kontejnerů, měl by být registr umístěný ve vlastní skupině prostředků.
 
 I když můžete experimentovat s konkrétním typem hostitele, jako je služba Azure Container Instances, pravděpodobně budete chtít instanci kontejneru odstranit, jakmile budete hotovi. Můžete však také chtít zachovat kolekci imagí, které jste nasdíleli do služby Azure Container Registry. Umístěním registru do vlastní skupiny prostředků minimalizujete riziko nechtěného odstranění kolekce imagí v registru při odstraňování skupiny prostředků instance kontejneru.
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Ověřování
 
 Při ověřování ve službě Azure Container Registry existují dva primární scénáře: jednotlivé ověření a ověření služby (neboli bezobslužné ověření). Následující tabulka obsahuje stručný přehled těchto scénářů a doporučenou metodu ověřování pro každý z nich.
 
-| Type | Příklad scénáře | Doporučená metoda |
+| type | Příklad scénáře | Doporučená metoda |
 |---|---|---|
 | Jednotlivá identita | Vývojář přetahující image do svého vývojového počítače nebo sdílející image ze svého vývojového počítače. | [az acr login](/cli/azure/acr?view=azure-cli-latest#az-acr-login) |
 | Bezobslužné ověření/identita služby | Kanály sestavení a nasazení bez přímého zapojení uživatele. | [Instanční objekt](container-registry-authentication.md#service-principal) |
@@ -63,9 +64,9 @@ Podrobné informace o ověřování ve službě Azure Container Registry najdete
 
 ## <a name="manage-registry-size"></a>Správa velikosti registru
 
-Omezení úložiště pro každý [skladová položka registru kontejnerů] [ container-registry-skus] mají bylo v souladu s Typický scénář: **Základní** pro zahájení práce, **standardní** pro většinu produkčních aplikací, a **Premium** pro zajištění vysoce škálovatelného výkonu a [geografickou replikaci][container-registry-geo-replication]. Po celou dobu životnosti vašeho registru byste měli spravovat jeho velikost pravidelným odstraňováním nevyužívaného obsahu.
+Omezení úložiště každé skladové položky [registru kontejneru][container-registry-skus] mají být v souladu s běžným scénářem: **Basic** pro začátek, **Standard** pro většinu produkčních aplikací a **Premium** pro výkon a [geografickou replikaci][container-registry-geo-replication]na úrovni Hyper. Po celou dobu životnosti vašeho registru byste měli spravovat jeho velikost pravidelným odstraňováním nevyužívaného obsahu.
 
-Pomocí příkazu Azure CLI [az acr show-usage] [ az-acr-show-usage] zobrazíte aktuální velikost svého registru:
+Pomocí příkazu Azure CLI [AZ ACR show-Usage][az-acr-show-usage] zobrazte aktuální velikost registru:
 
 ```console
 $ az acr show-usage --resource-group myResourceGroup --name myregistry --output table
@@ -75,15 +76,15 @@ Size      536870912000  185444288        Bytes
 Webhooks  100                            Count
 ```
 
-Můžete také vyhledat aktuální úložiště využívané ve **přehled** vašeho registru na webu Azure Portal:
+Můžete také najít aktuální úložiště použité v **přehledu** registru v Azure Portal:
 
 ![Informace o využití registru na webu Azure Portal][registry-overview-quotas]
 
-### <a name="delete-image-data"></a>Odstranit data bitové kopie
+### <a name="delete-image-data"></a>Odstranit data obrázku
 
-Služba Azure Container Registry podporuje několik metod pro odstranění dat image z registru kontejneru. Odstranit Image podle klíčových slov nebo manifest hodnotou hash nebo odstranit celého úložiště.
+Azure Container Registry podporuje několik metod odstranění dat imagí z registru kontejneru. Můžete odstranit obrázky podle značky nebo výtahu manifestu nebo odstranit celé úložiště.
 
-Podrobnosti o odstranění dat image z registru, včetně bez příznaku (označovaného také jako "nepropojená" nebo "osamocené") Image, najdete v článku [odstranit Image kontejnerů ve službě Azure Container Registry](container-registry-delete.md).
+Podrobnosti o odstranění dat imagí z registru, včetně neoznačeného (někdy nazývaného "dangling" nebo "osamocené") imagí, najdete v tématu [odstranění imagí kontejneru v Azure Container Registry](container-registry-delete.md).
 
 ## <a name="next-steps"></a>Další postup
 

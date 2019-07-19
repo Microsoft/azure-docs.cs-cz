@@ -1,58 +1,58 @@
 ---
-title: Konfigurace tunelu Always On VPN pro VPN Gateway
+title: Konfigurace tunelového připojení VPN Always On pro VPN Gateway
 description: Postup konfigurace tunelu Always On VPN pro VPN Gateway
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
-ms.topic: conceptional
+ms.topic: conceptual
 ms.date: 07/09/2019
 ms.author: cherylmc
-ms.openlocfilehash: 81822297dcf9370fc8ce7f7ce0285689c31606ce
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 98d8c2f6870be16f3eb92219fc3d02f988390a41
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67695831"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68295471"
 ---
 # <a name="configure-an-always-on-vpn-device-tunnel"></a>Konfigurace tunelu zařízení VPN AlwaysOn
 
-Mezi nové funkce klienta Windows 10 virtuální privátní sítě (VPN) je schopnost zachovat připojení k síti VPN. Always On je funkce Windows 10, která umožňuje active profil sítě VPN pro připojení automaticky a zůstanou připojené založené na aktivačních událostí – konkrétně, přihlášení, změny stavu sítě nebo aktivní obrazovce zařízení.
+Jednou z nových funkcí klienta virtuální privátní sítě (VPN) Windows 10 je schopnost udržovat připojení VPN. Always On je funkce Windows 10, která umožňuje, aby se aktivní profil sítě VPN připojoval automaticky a zůstal připojený na triggerech – konkrétně přihlášení uživatele, změna stavu sítě nebo obrazovka zařízení aktivní.
 
-Branám virtuálních sítí Azure je možné s Windows 10 Always On k navázání tunely trvalá, jakož i tunely zařízení do Azure. Tento článek vám pomůže nakonfigurovat zařízení tunelové propojení sítě VPN Always ON.
+Brány virtuální sítě Azure je možné používat s Windows 10 vždy k navázání trvalých tunelů uživatelů i tunelů zařízení do Azure. Tento článek vám pomůže nakonfigurovat tunelové propojení zařízení VPN typu Always ON.
 
-Připojení Always On VPN zahrnují dva typy tunelová propojení:
+Připojení k síti VPN Always On zahrnuje dva typy tunelů:
 
-* **Tunelové propojení zařízení** předtím, než se uživatelé registrují zařízení se připojí k zadané servery sítě VPN. Scénáře připojení před přihlášením a účely správy zařízení pomocí tunelového připojení zařízení.
+* **Tunel zařízení** se připojí k ZADANÝM serverům VPN, než se uživatelé přihlásí k zařízení. Scénáře připojení před přihlášením a účely správy zařízení používají tunelování zařízení.
 
-* **Uživatel tunel** pouze po přihlášení uživatele zařízení připojí. Tunel uživatele umožňuje uživatelům přístup k prostředkům organizace pomocí serverů VPN.
+* **Tunelování uživatele** se připojí až po přihlášení uživatele k zařízení. Tunelové propojení uživatelů umožňuje uživatelům přístup k prostředkům organizace prostřednictvím serverů VPN.
 
-Tunelové propojení zařízení a uživatele tunel pracovat nezávisle na sobě s jejich profilů sítě VPN. Lze připojit současně a podle potřeby můžete použít různé metody ověřování a další nastavení konfigurace sítě VPN.
+Tunelové propojení zařízení i tunelové propojení uživatelů fungují nezávisle na svých profilech sítě VPN. Můžou být připojené ve stejnou dobu a můžou podle potřeby používat jiné metody ověřování a další nastavení konfigurace VPN.
 
 ## <a name="1-configure-the-gateway"></a>1. Konfigurace brány
 
-Konfigurace brány VPN pomocí IKEv2 a použití této funkce ověřování prostřednictvím certifikátu [point-to-site článku](vpn-gateway-howto-point-to-site-resource-manager-portal.md).
+Nakonfigurujte bránu VPN na používání protokolu IKEv2 a ověřování založeného na certifikátech pomocí tohoto [článku Point-to-site](vpn-gateway-howto-point-to-site-resource-manager-portal.md).
 
-## <a name="2-configure-the-user-tunnel"></a>2. Konfigurace uživatele tunelového propojení
+## <a name="2-configure-the-user-tunnel"></a>2. Konfigurace tunelového propojení uživatelů
 
-1. Nainstalujte klientské certifikáty na straně klienta Windows 10, jak je znázorněno v tomto [článku klienta VPN typu point-to-site](point-to-site-how-to-vpn-client-install-azure-cert.md). Certifikát musí být ve Store aktuálního uživatele
-2. Konfigurace klienta Always On VPN pomocí Powershellu, SCCM nebo Intune [tyto pokyny](https://docs.microsoft.com/windows-server/remote/remote-access/vpn/always-on-vpn/deploy/vpn-deploy-client-vpn-connections).
+1. Nainstalujte klientské certifikáty na klienta Windows 10, jak je znázorněno v tomto [článku klienta VPN typu Point-to-site](point-to-site-how-to-vpn-client-install-azure-cert.md). Certifikát musí být v úložišti aktuálního uživatele.
+2. Pomocí [těchto pokynů](https://docs.microsoft.com/windows-server/remote/remote-access/vpn/always-on-vpn/deploy/vpn-deploy-client-vpn-connections)NAKONFIGURUJTE klienta VPN Always On prostřednictvím PowerShellu, SCCM nebo Intune.
 
-## <a name="3-configure-the-device-tunnel"></a>3. Konfigurace zařízení tunelového propojení
+## <a name="3-configure-the-device-tunnel"></a>3. Konfigurace tunelového připojení zařízení
 
-Aby bylo možné úspěšně vytvořit tunelové propojení zařízení musí být splněny následující požadavky:
+Aby bylo možné úspěšně vytvořit tunelové zařízení, musí být splněny následující požadavky:
 
-* Zařízení musí být připojené k doméně počítač domény se systémem Windows 10 Enterprise nebo Education verze 1709 nebo novější.
-* Tunelové propojení pouze se dají konfigurovat pro integrované řešení VPN Windows a je vytvořeno pomocí ověřování certifikátů počítače IKEv2. 
-* Na zařízení se dá nakonfigurovat jenom jedno zařízení tunelu.
+* Zařízení musí být počítač připojený k doméně, na kterém běží Windows 10 Enterprise nebo vzdělávací verze 1709 nebo novější.
+* Tunelové propojení je konfigurovatelné pouze pro integrované řešení sítě VPN systému Windows a je vytvořeno pomocí protokolu IKEv2 s ověřováním certifikátů počítače. 
+* Pro každé zařízení se dá nakonfigurovat jenom jedno tunelové zařízení.
 
-1. Nainstalujte klientské certifikáty na straně klienta Windows 10, jak je znázorněno v tomto [článku klienta VPN typu point-to-site](point-to-site-how-to-vpn-client-install-azure-cert.md). Certifikát se musí být v úložišti místního počítače.
-1. Použití [tyto pokyny](https://docs.microsoft.com/windows-server/remote/remote-access/vpn/vpn-device-tunnel-config#vpn-device-tunnel-configuration) vytvoření profilu sítě VPN a konfigurace zařízení tunelu v kontextu účtu místního systému.
+1. Nainstalujte klientské certifikáty na klienta Windows 10, jak je znázorněno v tomto [článku klienta VPN typu Point-to-site](point-to-site-how-to-vpn-client-install-azure-cert.md). Certifikát musí být v úložišti místního počítače.
+1. Pomocí [těchto pokynů](https://docs.microsoft.com/windows-server/remote/remote-access/vpn/vpn-device-tunnel-config#vpn-device-tunnel-configuration) můžete vytvořit profil sítě VPN a nakonfigurovat tunel zařízení v kontextu místního systémového účtu.
 
-### <a name="configuration-example-for-device-tunnel"></a>Příklad konfigurace pro zařízení tunelového propojení
+### <a name="configuration-example-for-device-tunnel"></a>Příklad konfigurace pro tunelové zařízení
 
-Poté, co jste nakonfigurovali bránu virtuální sítě a nainstalovali klientský certifikát v úložišti místního počítače na klientovi Windows 10, použijte následující příklady konfigurace tunelu klienta zařízení.
+Po nakonfigurování brány virtuální sítě a instalaci klientského certifikátu v úložišti místního počítače na klientovi Windows 10 použijte následující příklady ke konfiguraci tunelu klientského zařízení.
 
-1. Zkopírujte následující text a uložte ho jako ***devicecert.ps1***.
+1. Zkopírujte následující text a uložte ho jako ***devicecert. ps1***.
 
    ```
    Param(
@@ -104,7 +104,7 @@ Poté, co jste nakonfigurovali bránu virtuální sítě a nainstalovali klients
    $Message = "Complete."
    Write-Host "$Message"
    ```
-1. Zkopírujte následující text a uložte ho jako ***VPNProfile.xml*** ve stejné složce jako **devicecert.ps1**. Upravte následující text, aby odpovídaly vašemu prostředí.
+1. Zkopírujte následující text a uložte ho jako ***VPNProfile. XML*** ve stejné složce jako **devicecert. ps1**. Upravte následující text tak, aby odpovídal vašemu prostředí.
 
    * `<Servers>azuregateway-1234-56-78dc.cloudapp.net</Servers>`
    * `<Address>192.168.3.5</Address>`
@@ -139,29 +139,29 @@ Poté, co jste nakonfigurovali bránu virtuální sítě a nainstalovali klients
    <RegisterDNS>true</RegisterDNS>
    </VPNProfile>
    ```
-1. Stáhněte si **PsExec** z [Sysinternals](https://docs.microsoft.com/sysinternals/downloads/psexec) a rozbalte soubory do **C:\PSTools**.
-1. Z příkazového řádku správce řádku spusťte PowerShell spuštěním:
+1. Stáhněte si **PsExec** ze společnosti [Sysinternals](https://docs.microsoft.com/sysinternals/downloads/psexec) a extrahujte soubory do **C:\PSTools**.
+1. Z příkazového řádku správce spusťte PowerShell spuštěním příkazu:
 
    ```
    C:\PsTools\PsExec.exe Powershell for 32-bit Windows
    C:\PsTools\PsExec64.exe Powershell for 64-bit Windows
    ```
 
-   ![Prostředí PowerShell](./media/vpn-gateway-howto-always-on-device-tunnel/powershell.png)
-1. V Powershellu přejděte do složky, kde **devicecert.ps1** a **VPNProfile.xml** nacházejí, a spusťte následující příkaz:
+   ![Prostředí](./media/vpn-gateway-howto-always-on-device-tunnel/powershell.png)
+1. V PowerShellu přejděte do složky, kde se nachází **devicecert. ps1** a **VPNProfile. XML** , a spusťte následující příkaz:
 
    ```powershell
    C:\> .\devicecert.ps1 .\VPNProfile.xml MachineCertTest
    ```
    
    ![MachineCertTest](./media/vpn-gateway-howto-always-on-device-tunnel/machinecerttest.png)
-1. Spustit **rasphone**.
+1. Spusťte **Rasphone**.
 
-   ![Rasphone](./media/vpn-gateway-howto-always-on-device-tunnel/rasphone.png)
-1. Hledat **MachineCertTest** položku a klikněte na tlačítko **připojit**.
+   ![Firma](./media/vpn-gateway-howto-always-on-device-tunnel/rasphone.png)
+1. Vyhledejte položku **MachineCertTest** a klikněte na **připojit**.
 
    ![Připojení](./media/vpn-gateway-howto-always-on-device-tunnel/connect.png)
-1. Pokud se připojování povede, restartujte počítač. Tunelové propojení se automaticky připojí.
+1. Pokud je připojení úspěšné, restartujte počítač. Tunel se automaticky připojí.
 
 ## <a name="cleanup"></a>Vyčištění
 
@@ -171,4 +171,4 @@ Chcete-li odebrat profil, spusťte následující příkaz:
 
 ## <a name="next-steps"></a>Další postup
 
-Řešení potíží, najdete v části [problémy s připojením Azure point-to-site](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md)
+Řešení potíží najdete v tématu [problémy s připojením Point-to-site v Azure](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md) .

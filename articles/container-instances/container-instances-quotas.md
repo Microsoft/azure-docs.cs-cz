@@ -1,24 +1,25 @@
 ---
 title: Kvóty a dostupnost oblastí pro Azure Container Instances
-description: Kvóty, limity a dostupnost oblastí služby Azure Container Instances.
+description: Kvóty, omezení a dostupnost oblastí služby Azure Container Instances.
 services: container-instances
 author: dlepow
+manager: gwallace
 ms.service: container-instances
 ms.topic: overview
 ms.date: 03/01/2019
 ms.author: danlep
-ms.openlocfilehash: c01243a33094a93da1b05ea3b58324b0f3cb2bf9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d78cb72e6aa10334e82032280b1253e6d4c92960
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60537879"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68325735"
 ---
 # <a name="quotas-and-limits-for-azure-container-instances"></a>Kvóty a omezení pro Azure Container Instances
 
 Všechny služby Azure zahrnují určitá výchozí omezení a kvóty pro prostředky a funkce. Tento článek podrobně popisuje výchozí kvóty a omezení pro Azure Container Instances.
 
-Dostupnost Azure Container Instances funkce a prostředky v oblastech Azure, najdete v části [dostupnost prostředků pro Azure Container Instances](container-instances-region-availability.md).
+Dostupnost funkcí Azure Container Instances a prostředků v oblastech Azure najdete v tématu [dostupnost prostředků pro Azure Container Instances](container-instances-region-availability.md).
 
 ## <a name="service-quotas-and-limits"></a>Kvóty a omezení služeb
 
@@ -26,7 +27,7 @@ Dostupnost Azure Container Instances funkce a prostředky v oblastech Azure, naj
 
 ## <a name="next-steps"></a>Další postup
 
-Některé výchozí limity a kvóty je možné zvýšit. Pokud si chcete vyžádat zvýšení jednoho nebo několika prostředků, které takové zvýšení podporují, odešlete prosím [žádost o podporu Azure][azure-support] (jako **typ problému** vyberte kvótu).
+Některé výchozí limity a kvóty je možné zvýšit. Pokud chcete požádat o zvýšení jednoho nebo více prostředků, které podporují takové zvýšení, odešlete prosím [žádost o podporu Azure][azure-support] (pro **typ problému**vyberte "kvóta").
 
 <!-- LINKS - External -->
 [azure-support]: https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest

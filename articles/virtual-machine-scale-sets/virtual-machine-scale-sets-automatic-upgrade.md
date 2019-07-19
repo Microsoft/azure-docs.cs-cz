@@ -1,6 +1,6 @@
 ---
-title: Škálovací sady automatické upgrady bitové kopie operačního systému pomocí virtuálních počítačů Azure | Dokumentace Microsoftu
-description: Zjistěte, jak automaticky aktualizovat image operačního systému na instancích virtuálních počítačů ve škálovací sadě
+title: Automatické upgrady imagí operačního systému pomocí Azure Virtual Machine Scale Sets | Microsoft Docs
+description: Přečtěte si, jak automaticky upgradovat image operačního systému na instancích virtuálních počítačů v sadě škálování.
 services: virtual-machine-scale-sets
 documentationcenter: ''
 author: mayanknayar
@@ -13,74 +13,86 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/25/2019
+ms.date: 07/16/2019
 ms.author: manayar
-ms.openlocfilehash: 007f2801efed8da4964808056563418dec7f64d5
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: eeb689f90197830dad98c213849b2e82ba43bbf1
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60328812"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68296351"
 ---
-# <a name="azure-virtual-machine-scale-set-automatic-os-image-upgrades"></a>Automatické upgrady bitové kopie operačního systému sady škálování virtuálních počítačů Azure
+# <a name="azure-virtual-machine-scale-set-automatic-os-image-upgrades"></a>Automatické upgrady bitových kopií operačního systému služby Azure Virtual Machine Scale set
 
-Povolení automatického image operačního systému se upgraduje na správu aktualizací pomáhá snadno vaše škálovací sada bezpečně a automaticky upgradujte disk s operačním systémem pro všechny instance ve škálovací sadě.
+Povolení automatických upgradů bitových kopií operačního systému v sadě škálování pomáhá zjednodušit správu aktualizací tím, že bezpečně a automaticky upgraduje disk s operačním systémem pro všechny instance v sadě škálování.
 
 Automatický upgrade operačního systému má následující vlastnosti:
 
-- Po nakonfigurování se automaticky použije nejnovější image operačního systému, publikováno vydavatelů imagí do škálovací sady, bez zásahu uživatele.
-- Upgraduje dávky instancí postupné způsobem pokaždé, když se publikuje nový image platformy vydavatele.
-- Se integruje s sond stavu aplikace a [stav aplikací – rozšíření](virtual-machine-scale-sets-health-extension.md).
-- Funguje pro všechny velikosti virtuálních počítačů a pro Image platformy Windows i Linuxem.
-- Automatické upgrady můžete zrušit kdykoli (upgrady operačního systému lze zahájit také ručně).
-- Disk s operačním systémem virtuálního počítače se nahradí nový Disk s operačním systémem vytvořené pomocí nejnovější verze image. Nakonfigurované rozšíření a vlastních dat skripty se spouštějí, při trvalých dat, které disky jsou zachovány.
-- [Nastavení posloupnosti rozšíření](virtual-machine-scale-sets-extension-sequencing.md) je podporována.
+- Po nakonfigurování se pro sadu škálování bez zásahu uživatele automaticky použije nejnovější bitová kopie operačního systému publikovaná vydavateli imagí.
+- Pokaždé, když vydavatel publikuje novou image platformy, upgraduje dávky instancí.
+- Integruje se s sondami stavu aplikace a s [rozšířením stavu aplikace](virtual-machine-scale-sets-health-extension.md).
+- Funguje pro všechny velikosti virtuálních počítačů a pro Image platformy Windows i Linux.
+- Automatické upgrady můžete kdykoli odhlásit (upgrady operačního systému je možné iniciovat také ručně).
+- Disk s operačním systémem virtuálního počítače se nahradí novým diskem s operačním systémem vytvořeným pomocí nejnovější verze image. Nakonfigurovaná rozšíření a vlastní datové skripty se spouštějí, zatímco jsou zachovány trvalé datové disky.
+- [Sekvence rozšíření](virtual-machine-scale-sets-extension-sequencing.md) je podporovaná.
+- Automatickou aktualizaci image operačního systému lze povolit v sadě škálování libovolné velikosti.
 
-## <a name="how-does-automatic-os-image-upgrade-work"></a>Jak funguje automatické operačního systému image upgradu práce?
+## <a name="how-does-automatic-os-image-upgrade-work"></a>Jak funguje automatická aktualizace image operačního systému?
 
-Upgrade funguje tak, že nahradíte nový disk vytvořené pomocí nejnovější verze image disku s operačním systémem virtuálního počítače. Žádné nakonfigurované rozšíření a vlastních dat skripty jsou spuštěny na disk s operačním systémem, při trvalých dat, které disky jsou zachovány. Aby se minimalizovaly výpadky aplikací, upgrady probíhat v dávkách, s více než 20 % škálovací sady, upgrade kdykoli. Můžete také integrovat sondu stavu aplikací Azure Load Balancer nebo [stav aplikací – rozšíření](virtual-machine-scale-sets-health-extension.md). Doporučené začlenění prezenční signál application jsme ověřit upgrade byl úspěšný pro jednotlivé dávky v procesu upgradu.
+Upgrade funguje tak, že nahradíte disk s operačním systémem virtuálního počítače novým diskem vytvořeným pomocí nejnovější verze image. Všechna nakonfigurovaná rozšíření a vlastní datové skripty se spouští na disku s operačním systémem, zatímco jsou zachovány trvalé datové disky. Aby se minimalizoval výpadek aplikace, upgrady probíhají v dávkách, a to bez více než 20% upgradu sady škálování v jednom okamžiku. Můžete také integrovat Azure Load Balancer testování stavu aplikace nebo [rozšíření stavu aplikace](virtual-machine-scale-sets-health-extension.md). Doporučujeme, abyste zavedli prezenční signál aplikace a ověřili úspěšnost upgradu pro každou dávku v procesu upgradu.
 
 Proces upgradu funguje takto:
-1. Před zahájením procesu upgradu, orchestrator zajistí, že více než 20 % instancí v celé škálovací sady nejsou v pořádku (z jakéhokoliv důvodu).
-2. Upgrade produktu orchestrator identifikuje batch instancí virtuálních počítačů k upgradu s jakékoli jednu dávku maximálně 20 % počet celkový počet instancí.
-3. Disk s operačním systémem vybrané dávky instancí virtuálních počítačů je nahrazen nový disk s operačním systémem vytvořené z nejnovější image a všechny zadané rozšíření a konfigurace v modelu škálovací sady se použijí u je upgradovaná instance.
-4. Pro škálovací sady pomocí sond stavu konfigurované aplikace nebo rozšíření stavu aplikace upgrade čeká, až 5 minut pro instanci se obnoví dobrý stav, než budete pokračovat k upgradu další dávku.
-5. Upgrade produktu orchestrator také sleduje procento instancí, které se stanou upgradu není v pořádku příspěvku. Upgrade zastaví, pokud více než 20 % upgradovaná Instance špatného během procesu upgradu.
-6. Výše uvedené proces pokračuje, dokud se neupgradují všechny instance ve škálovací sadě.
+1. Před zahájením procesu upgradu ověří Orchestrator, že v celé sadě škálování není v pořádku (z jakéhokoli důvodu více než 20% instancí).
+2. Upgrade Orchestrator identifikuje dávku instancí virtuálních počítačů, které se mají upgradovat, přičemž jakákoli jedna dávka má maximálně 20% celkového počtu instancí. Pro menší sady škálování s 5 nebo méně instancemi je velikost dávky pro upgrade jedna instance virtuálního počítače.
+3. Disk s operačním systémem vybrané dávky instancí virtuálních počítačů se nahradí novým diskem s operačním systémem vytvořeným z nejnovější bitové kopie. Všechna zadaná rozšíření a konfigurace v modelu sady škálování se aplikují na upgradovanou instanci.
+4. U sady škálování s nakonfigurovanými sondami stavu aplikace nebo rozšířením stavu aplikace čeká upgrade až 5 minut, než se instance stane v pořádku, než se přejde na upgrade další dávky. Pokud instance neobnoví svůj stav za 5 minut po upgradu, pak se ve výchozím nastavení obnoví předchozí disk s operačním systémem pro danou instanci.
+5. Upgrade Orchestrator také sleduje procento instancí, které se stanou špatnými po upgradu. Upgrade se zastaví, pokud během procesu upgradu dojde k nesprávnému více než 20% upgradovaných instancí.
+6. Výše uvedený proces pokračuje, dokud nebudou upgradovány všechny instance v sadě škálování.
 
-Škálovací sada operačního systému kontroly upgradu nástroje orchestrator pro celkového stavu škálovací sady před upgradem každou dávku. Při upgradu dávky, může být jiné souběžné plánované i neplánované údržby aktivity, které by mohlo mít vliv na stav instancím škálovací sady. V takových případech Pokud více než 20 % instancí škálovací sady špatného, pak škálovací sady upgradu zastaví na konci aktuální dávku.
+Nástroj Orchestrator pro upgrade operačního systému nástroje pro škálování před upgradem každé dávky kontroluje celkový stav sady škálování. Při upgradu dávky mohou existovat i jiné souběžné plánované nebo neplánované aktivity údržby, které by mohly ovlivnit stav instancí sady škálování. V takových případech, pokud se více než 20% instancí sady škálování stane špatným, se upgrade sady škálování zastaví na konci aktuální dávky.
 
-## <a name="supported-os-images"></a>Podporované Image operačního systému
-Aktuálně jsou podporovány pouze určité Image platformy operačního systému. Vlastní Image se momentálně nepodporují.
+## <a name="supported-os-images"></a>Podporované image operačních systémů
+V současné době jsou podporovány pouze některé image platformy operačního systému. Vlastní image se v tuto chvíli nepodporují.
 
-V současnosti jsou podporované následující skladové položky (a více příležitostně přidávat):
+V současné době jsou podporovány následující SKU (a jsou pravidelně přidávány):
 
-| Vydavatel               | Nabídka operačního systému      |  Skladová jednotka (SKU)               |
+| Vydavatel               | Nabídka OS      |  Skladová jednotka (SKU)               |
 |-------------------------|---------------|--------------------|
 | Canonical               | UbuntuServer  | 16.04-LTS          |
 | Canonical               | UbuntuServer  | 18.04-LTS          |
 | Neautorizovaný Wave (OpenLogic)  | CentOS        | 7.5                |
 | CoreOS                  | CoreOS        | Stable             |
 | Microsoft Corporation   | WindowsServer | 2012-R2-Datacenter |
-| Microsoft Corporation   | WindowsServer | 2016-Datacenter    |
+| Microsoft Corporation   | WindowsServer | 2016 – Datacenter    |
 | Microsoft Corporation   | WindowsServer | 2016-Datacenter-Smalldisk |
 | Microsoft Corporation   | WindowsServer | 2016-Datacenter-with-Containers |
-| Microsoft Corporation   | WindowsServer | 2019-Datacenter |
+| Microsoft Corporation   | WindowsServer | 2019 – Datacenter |
 | Microsoft Corporation   | WindowsServer | 2019-Datacenter-Smalldisk |
 | Microsoft Corporation   | WindowsServer | 2019-Datacenter-with-Containers |
 
 
-## <a name="requirements-for-configuring-automatic-os-image-upgrade"></a>Požadavky na konfiguraci automatický upgrade bitové kopie operačního systému
+## <a name="requirements-for-configuring-automatic-os-image-upgrade"></a>Požadavky na konfiguraci automatického upgradu imagí operačního systému
 
-- *Verze* vlastnost image platformy musí být nastavena na *nejnovější*.
-- Pomocí sond stavu aplikace nebo [stav aplikací – rozšíření](virtual-machine-scale-sets-health-extension.md) Service Fabric škálovací sad.
-- Ujistěte se, že externí prostředky zadané v modelu škálovací sady jsou k dispozici a aktualizované. Příklady zahrnují identifikátor URI SAS pro spuštění datové části ve vlastnostech rozšíření virtuálního počítače, datová část v účtu úložiště, odkazují k tajným kódům v modelu a další.
+- Vlastnost *Version* image platformy musí být nastavená na *nejnovější*.
+- Pro neService Fabricé sady škálování použijte sondy stavu aplikace nebo [rozšíření stavu aplikace](virtual-machine-scale-sets-health-extension.md) .
+- Použijte COMPUTE API verze 2018-10-01 nebo vyšší.
+- Ujistěte se, že jsou dostupné a aktualizované externí prostředky zadané v modelu sady škálování. Mezi příklady patří identifikátor URI SAS pro spouštěcí datovou část ve vlastnostech rozšíření virtuálního počítače, datovou část účtu úložiště, odkaz na tajné klíče v modelu a další.
+- Pro sady škálování s použitím virtuálních počítačů s Windows, počínaje výpočetním rozhraním API verze 2019-03-01, musí vlastnost *virtualMachineProfile. osProfile. windowsConfiguration. enableAutomaticUpdates* v modelu sady škálování nastavenou na *hodnotu false* . definition. Výše uvedená vlastnost umožňuje upgrady ve virtuálním počítači, kde "web Windows Update" aplikuje opravy operačního systému bez nahrazení disku s operačním systémem. Díky automatickým aktualizacím imagí operačního systému povoleným ve vaší sadě škálování se nevyžaduje další aktualizace prostřednictvím "web Windows Update".
 
-## <a name="configure-automatic-os-image-upgrade"></a>Konfigurovat automatický upgrade bitové kopie operačního systému
-Chcete-li konfigurovat automatický upgrade operačního systému image, ověřte, zda *automaticOSUpgradePolicy.enableAutomaticOSUpgrade* je nastavena na *true* v škálovací sady definice modelu.
+### <a name="service-fabric-requirements"></a>Service Fabric požadavky
+
+Pokud používáte Service Fabric, ujistěte se, že jsou splněné následující podmínky:
+-   [Úroveň odolnosti](../service-fabric/service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster) Service Fabric je stříbrná nebo zlatá a není bronzová.
+-   Rozšíření Service Fabric v definici modelu sady škálování musí mít TypeHandlerVersion 1,1 nebo vyšší.
+-   Úroveň odolnosti by měla být stejná jako u Service Fabric clusteru a rozšíření Service Fabric v definici modelu sady škálování.
+
+Zajistěte, aby se nastavení odolnosti neshodovalo s Service Fabric clusterem a rozšířením Service Fabric, protože v důsledku neshody dojde k chybám upgradu. Úrovně trvanlivosti se dají upravovat podle pokynů popsaných na [této stránce](../service-fabric/service-fabric-cluster-capacity.md#changing-durability-levels).
+
+## <a name="configure-automatic-os-image-upgrade"></a>Konfigurace automatického upgradu image operačního systému
+Pokud chcete nakonfigurovat automatický upgrade operačního systému, zajistěte, aby byla vlastnost *automaticOSUpgradePolicy. enableAutomaticOSUpgrade* v definici modelu sady škálování nastavená na *hodnotu true* .
 
 ### <a name="rest-api"></a>REST API
-Následující příklad popisuje, jak nastavit automatické upgrady operačního systému v modelu škálovací sady:
+Následující příklad popisuje, jak nastavit automatické upgrady operačního systému na modelu sady škálování:
 
 ```
 PUT or PATCH on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet?api-version=2018-10-01`
@@ -99,31 +111,31 @@ PUT or PATCH on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/p
 ```
 
 ### <a name="azure-powershell"></a>Azure PowerShell
-Použití [aktualizace AzVmss](/powershell/module/az.compute/update-azvmss) rutiny zkontrolujte historii upgradu operačního systému pro škálovací sadu. V následujícím příkladu nakonfigurujeme automatické upgrady pro škálovací sadu s názvem *myVMSS* ve skupině prostředků s názvem *myResourceGroup*:
+Pomocí rutiny [Update-AzVmss](/powershell/module/az.compute/update-azvmss) ověřte historii upgradu operačního systému pro vaši sadu škálování. Následující příklad konfiguruje automatické upgrady pro sadu škálování s názvem *myScaleSet* ve skupině prostředků s názvem *myResourceGroup*:
 
 ```azurepowershell-interactive
 Update-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -AutomaticOSUpgrade $true
 ```
 
 ### <a name="azure-cli-20"></a>Azure CLI 2.0
-Použití [az vmss update](/cli/azure/vmss#az-vmss-update) ke kontrole historie upgradu operačního systému pro škálovací sadu. Použití Azure CLI 2.0.47 nebo vyšší. V následujícím příkladu nakonfigurujeme automatické upgrady pro škálovací sadu s názvem *myVMSS* ve skupině prostředků s názvem *myResourceGroup*:
+Použijte [AZ VMSS Update](/cli/azure/vmss#az-vmss-update) a ověřte historii upgradu operačního systému pro vaši sadu škálování. Použijte rozhraní příkazového řádku Azure CLI 2.0.47 nebo vyšší. Následující příklad konfiguruje automatické upgrady pro sadu škálování s názvem *myScaleSet* ve skupině prostředků s názvem *myResourceGroup*:
 
 ```azurecli-interactive
-az vmss update --name myVMSS --resource-group myResourceGroup --set UpgradePolicy.AutomaticOSUpgradePolicy.EnableAutomaticOSUpgrade=true
+az vmss update --name myScaleSet --resource-group myResourceGroup --set UpgradePolicy.AutomaticOSUpgradePolicy.EnableAutomaticOSUpgrade=true
 ```
 
-## <a name="using-application-health-probes"></a>Stav aplikace pomocí sond
+## <a name="using-application-health-probes"></a>Používání sond stavu aplikace
 
-Během upgradu operačního systému se upgradovat instance virtuálních počítačů ve škálovací sadě jednu dávku najednou. Upgrade by měly pokračovat pouze, pokud zákazník aplikace je v pořádku na upgradovaných instancí virtuálních počítačů. Doporučujeme, abyste že aplikace poskytuje signálů stavu pro modul upgradu operačního systému škálovací sady. Ve výchozím nastavení během upgradu operačního systému platformy bere v úvahu stav napájení virtuálního počítače a k určení, zda instance virtuálního počítače je v pořádku po upgradu se stav zřizování rozšíření. Během upgradu operačního systému na instanci virtuálního počítače disk s operačním systémem na instancích virtuálních počítačů se nahradí nový disk založené na nejnovější verzi image. Po dokončení upgradu operačního systému, nakonfigurované rozšíření jsou spuštěny na tyto virtuální počítače. Aplikace se považuje za v pořádku, pouze v případě, že jsou všechna rozšíření na instance úspěšně nezřídí.
+Během upgradu operačního systému se instance virtuálních počítačů v sadě škálování upgradují po jednom okamžiku. Upgrade by měl pokračovat pouze v případě, že je aplikace zákazníka v dobrém stavu na upgradovaných instancích virtuálních počítačů. Doporučujeme, aby aplikace poskytovala stavové signály modulu pro upgrade operačního systému s možností škálování. Ve výchozím nastavení se během upgradování operačního systému pro platformu považuje stav napájení virtuálního počítače a stav zřizování rozšíření, aby bylo možné zjistit, jestli je instance virtuálního počítače po upgradu v pořádku. Během upgradu instance virtuálního počítače v operačním systému se disk s operačním systémem v instanci virtuálního počítače nahradí novým diskem na základě nejnovější verze image. Po dokončení upgradu operačního systému se na těchto virtuálních počítačích spouštějí nakonfigurovaná rozšíření. Aplikace se považuje za v pořádku jenom v případě, že se úspěšně zřídí všechna rozšíření instance.
 
-Škálovací sada může být volitelně nakonfigurovat s sondy stavu aplikace platformě poskytnout přesné informace o probíhající stav aplikace. Sondy stavu aplikace jsou vlastní zatížení vyrovnávání testy, které se používají jako signál o stavu. Aplikace běžící na instanci škálovací sady virtuálních počítačů může reagovat na externí žádosti protokolu HTTP nebo TCP určující, zda je v pořádku. Další informace o fungování vlastní načíst sondy nástroje pro vyrovnávání najdete v tématu [porozumění testům nástroje pro vyrovnávání zatížení](../load-balancer/load-balancer-custom-probe-overview.md). Stav aplikace testu není vyžadován pro škálovací sady Service Fabric, ale doporučuje. Bez Service Fabric škálovací sady vyžadují sondy stavu aplikace buď nástroj pro vyrovnávání zatížení nebo [stav aplikací – rozšíření](virtual-machine-scale-sets-health-extension.md).
+Sada škálování se dá volitelně nakonfigurovat s sondami stavu aplikace a poskytnout tak platformě přesné informace o průběžném stavu aplikace. Sondy stavu aplikace jsou vlastní Load Balancer sondy, které se používají jako signály stavu. Aplikace spuštěná v instanci virtuálního počítače sady škálování může reagovat na externí požadavky HTTP nebo TCP, které označují, jestli jsou v pořádku. Další informace o tom, jak vlastní Load Balancer sondy fungují, najdete v tématu [pochopení sond nástroje pro vyrovnávání zatížení](../load-balancer/load-balancer-custom-probe-overview.md). Pro Service Fabric sady škálování se nevyžaduje test stavu aplikace, ale doporučuje se to. Sady škálování bez Service Fabric vyžadují buď Load Balancer testování stavu aplikace, nebo [rozšíření stavu aplikace](virtual-machine-scale-sets-health-extension.md).
 
-Pokud škálovací sada je konfigurován pro použití více skupin umístění, sondy pomocí [Load balanceru úrovně Standard](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview) muset používat.
+Pokud je sada škálování nakonfigurovaná tak, aby používala více skupin umístění, je nutné použít testy pomocí [Standard Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview) .
 
-### <a name="configuring-a-custom-load-balancer-probe-as-application-health-probe-on-a-scale-set"></a>Konfigurují se vlastní zatížení sondy jako sondu stavu aplikaci na škálovací sadu
-Jako osvědčený postup vytvoření explicitně sondy nástroje pro vyrovnávání zatížení, pro škálovací sadu stavu. Můžete použít stejný koncový bod pro existující sondu protokolu HTTP nebo TCP testu, ale sondu stavu může vyžadovat různé chování z testu tradiční – nástroj pro vyrovnávání zatížení. Test nástroje pro vyrovnávání zatížení například může vrátit není v pořádku, pokud je příliš vysoké zatížení na instanci, ale, který by nebylo vhodné pro zjištění stavu instance během automatický upgrade operačního systému. Konfigurace testu a mají zjišťování vysoký méně než dvě minuty.
+### <a name="configuring-a-custom-load-balancer-probe-as-application-health-probe-on-a-scale-set"></a>Konfigurace vlastního testu Load Balancer jako sonda stavu aplikace na sadě škálování
+Osvědčeným postupem je vytvoření testu nástroje pro vyrovnávání zatížení pro stav nastavení škálování. Je možné použít stejný koncový bod pro existující sondu HTTP nebo test TCP, ale sonda stavu může vyžadovat odlišné chování z tradičního testu nástroje pro vyrovnávání zatížení. Například tradiční test nástroje pro vyrovnávání zatížení může vracet stav není v pořádku, pokud je zatížení instance příliš vysoké, ale to by nebylo vhodné při určování stavu instance během automatického upgradu operačního systému. Nakonfigurujte test tak, aby měl vysokou frekvenci zjišťování kratší než dvě minuty.
 
-Test paměti nástroje pro vyrovnávání zatížení můžete odkazovat *položky networkProfile* stupnice nastavit a může být přidružené buď interní nebo veřejný internetový – nástroj pro vyrovnávání zatížení následujícím způsobem:
+Na modul pro vyrovnávání zatížení se dá odkazovat v *networkProfile* sady škálování a dá se přidružit k internímu nebo veřejnému nástroji pro vyrovnávání zatížení následujícím způsobem:
 
 ```json
 "networkProfile": {
@@ -136,36 +148,36 @@ Test paměti nástroje pro vyrovnávání zatížení můžete odkazovat *polož
 ```
 
 > [!NOTE]
-> Pokud používáte automatické upgrady operačního systému s využitím Service Fabric, image nového operačního systému nasazení aktualizační doména podle aktualizačních domén udržet vysokou dostupnost služby spuštěné v Service Fabric. Aby se začala používat automatické upgrady operačního systému v Service Fabric musí být váš cluster nastavená úroveň Silver odolnosti nebo vyšší. Další informace o odolnosti charakteristiky clustery Service Fabric najdete v tématu [této dokumentace](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-durability-characteristics-of-the-cluster).
+> Pokud používáte automatické upgrady operačního systému pomocí Service Fabric, je nová image operačního systému zahrnutá v aktualizační doméně podle aktualizační domény, aby se zachovala vysoká dostupnost služeb běžících v Service Fabric. Pokud chcete použít automatické upgrady operačního systému v Service Fabric musíte cluster nakonfigurovat tak, aby používal úroveň odolnosti stříbra nebo vyšší. Další informace o vlastnostech odolnosti Service Fabric clusterech najdete v [této dokumentaci](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-durability-characteristics-of-the-cluster).
 
-### <a name="keep-credentials-up-to-date"></a>Aktualizovat přihlašovací údaje
-Pokud vaše škálovací sada používá žádné přihlašovací údaje pro přístup k externím prostředkům, například pokud je nakonfigurovaná rozšíření virtuálního počítače využívající SAS token pro účet úložiště, ujistěte se, že přihlašovací údaje se aktualizují. Pokud žádné přihlašovací údaje, včetně certifikátů a tokeny, vypršela platnost, se upgrade nezdaří a první dávku virtuálních počítačů zůstanou ve stavu selhání.
+### <a name="keep-credentials-up-to-date"></a>Udržování přihlašovacích údajů v aktuálním stavu
+Pokud vaše sada škálování používá pro přístup k externím prostředkům nějaké přihlašovací údaje, jako je třeba rozšíření virtuálního počítače nakonfigurované pro použití tokenu SAS pro účet úložiště, pak ověřte, že se přihlašovací údaje aktualizují. Pokud vypršela platnost jakýchkoli přihlašovacích údajů, včetně certifikátů a tokenů, upgrade selže a první dávka virtuálních počítačů zůstane ve stavu selhání.
 
-Doporučené kroky pro obnovení virtuálních počítačů a znovu povolte automatický upgrade operačního systému, pokud dojde k selhání ověřování prostředků jsou:
+Doporučený postup obnovení virtuálních počítačů a opětovného povolení automatického upgradu operačního systému, pokud dojde k selhání ověřování prostředků:
 
-* Znovu vygenerovat token (nebo jiné přihlašovací údaje) předaná do vašeho rozšíření.
-* Ujistěte se, že žádné přihlašovací údaje používané z uvnitř virtuálního počítače ke komunikaci s externí entity je aktuální.
-* Aktualizace rozšíření v modelu škálovací sady s všechny nové tokeny.
-* Nasazení aktualizované škálovací sady, která aktualizuje všechny instance virtuálních počítačů, včetně neúspěšných.
+* Znovu vygenerujte token (nebo jakékoli jiné přihlašovací údaje) předané do vašich rozšíření.
+* Ujistěte se, že všechny přihlašovací údaje, které se používají uvnitř virtuálního počítače pro komunikaci s externími entitami, jsou aktuální.
+* Aktualizace rozšíření v modelu sady škálování s novými tokeny.
+* Nasaďte aktualizovanou sadu škálování, která bude aktualizovat všechny instance virtuálních počítačů, včetně neúspěšných.
 
-## <a name="using-application-health-extension"></a>Pomocí rozšíření stavu aplikace
-Rozšíření stav aplikací – to je nasazený v instanci virtuálního počítače škálovací sady a sestavy o stavu virtuálních počítačů v rámci instance ve škálovací sadě. Můžete nakonfigurovat rozšíření na koncový bod aplikace pro zjišťování a aktualizovat stav žádosti pro tuto instanci. Tento stav instance se kontroluje Azure k určení, zda je instance vhodné k upgradu operations.
+## <a name="using-application-health-extension"></a>Používání rozšíření pro stav aplikace
+Rozšíření pro stav aplikace se nasadí do instance sady škálování virtuálních počítačů a sestavuje zprávy o stavu virtuálního počítače v rámci instance sady škálování. Můžete nakonfigurovat rozšíření na testování koncového bodu aplikace a aktualizovat stav aplikace v této instanci. Tento stav instance kontroluje Azure, aby zjistil, jestli je instance způsobilá pro operace upgradu.
 
-Jako rozšíření sestavy stavu z v rámci virtuálního počítače, rozšíření lze použít v situacích, kde externí testy, jako je například sondy stavu aplikace (které využívají vlastní Azure Load Balancer [sondy](../load-balancer/load-balancer-custom-probe-overview.md)) nelze použít.
+Jelikož rozšíření hlásí stav z virtuálního počítače, dá se použít v situacích, kdy nejde použít externí testy, jako je třeba sondy stavu aplikací (které využívají vlastní [testy](../load-balancer/load-balancer-custom-probe-overview.md)Azure Load Balancer).
 
-Existuje více způsobů nasazení stavu aplikace, jak je uvedeno v příkladech v Nastaví rozšíření škálovací [v tomto článku](virtual-machine-scale-sets-health-extension.md#deploy-the-application-health-extension).
+Rozšíření stavu aplikace můžete do sady škálování nasadit několika způsoby, jak je popsáno v příkladech v [tomto článku](virtual-machine-scale-sets-health-extension.md#deploy-the-application-health-extension).
 
-## <a name="get-the-history-of-automatic-os-image-upgrades"></a>Zobrazit historii automatické upgrady bitové kopie operačního systému
-Můžete zkontrolovat historii nejnovější upgrade operačního systému provést ve škálovací sadě pomocí Azure Powershellu, příkazového řádku Azure CLI 2.0 nebo rozhraní REST API. Zobrazit historii posledních pěti pokusů upgradu operačního systému v posledních dvou měsíců.
+## <a name="get-the-history-of-automatic-os-image-upgrades"></a>Získat historii automatických upgradů imagí operačního systému
+Historii nejnovějšího upgradu operačního systému, který se provádí v sadě škálování, můžete ověřit pomocí Azure PowerShell, Azure CLI 2,0 nebo rozhraní REST API. V posledních dvou měsících můžete získat historii za posledních pět pokusů o upgrade operačního systému.
 
 ### <a name="rest-api"></a>REST API
-Následující příklad používá [rozhraní REST API](/rest/api/compute/virtualmachinescalesets/getosupgradehistory) ke kontrole stavu pro škálovací sadu s názvem *myVMSS* ve skupině prostředků s názvem *myResourceGroup*:
+Následující příklad používá [REST API](/rest/api/compute/virtualmachinescalesets/getosupgradehistory) ke kontrole stavu sady škálování s názvem *myScaleSet* ve skupině prostředků s názvem *myResourceGroup*:
 
 ```
 GET on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet/osUpgradeHistory?api-version=2018-10-01`
 ```
 
-Vrátí volání GET vlastnosti podobně jako následující příklad výstupu:
+Volání GET vrátí vlastnosti podobné následujícímu příkladu výstupu:
 
 ```json
 {
@@ -203,22 +215,22 @@ Vrátí volání GET vlastnosti podobně jako následující příklad výstupu:
 ```
 
 ### <a name="azure-powershell"></a>Azure PowerShell
-Použití [Get-AzVmss](/powershell/module/az.compute/get-azvmss) rutiny zkontrolujte historii upgradu operačního systému pro škálovací sadu. Následující příklad podrobně popisuje, jak zkontrolovat stav upgradu operačního systému pro škálovací sadu s názvem *myVMSS* ve skupině prostředků s názvem *myResourceGroup*:
+Pomocí rutiny [Get-AzVmss](/powershell/module/az.compute/get-azvmss) ověřte historii upgradu operačního systému pro vaši sadu škálování. Následující příklad podrobně popisuje, jak zkontrolovat stav upgradu operačního systému pro sadu škálování s názvem *myScaleSet* ve skupině prostředků s názvem *myResourceGroup*:
 
 ```azurepowershell-interactive
-Get-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myVMSS" -OSUpgradeHistory
+Get-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -OSUpgradeHistory
 ```
 
 ### <a name="azure-cli-20"></a>Azure CLI 2.0
-Použití [az vmss get-os--Historie upgradů](/cli/azure/vmss#az-vmss-get-os-upgrade-history) ke kontrole historie upgradu operačního systému pro škálovací sadu. Použití Azure CLI 2.0.47 nebo vyšší. Následující příklad podrobně popisuje, jak zkontrolovat stav upgradu operačního systému pro škálovací sadu s názvem *myVMSS* ve skupině prostředků s názvem *myResourceGroup*:
+Pomocí [AZ VMSS Get-OS-Upgrade-History](/cli/azure/vmss#az-vmss-get-os-upgrade-history) ověřte historii upgradu operačního systému pro vaši sadu škálování. Použijte rozhraní příkazového řádku Azure CLI 2.0.47 nebo vyšší. Následující příklad podrobně popisuje, jak zkontrolovat stav upgradu operačního systému pro sadu škálování s názvem *myScaleSet* ve skupině prostředků s názvem *myResourceGroup*:
 
 ```azurecli-interactive
-az vmss get-os-upgrade-history --resource-group myResourceGroup --name myVMSS
+az vmss get-os-upgrade-history --resource-group myResourceGroup --name myScaleSet
 ```
 
-## <a name="how-to-get-the-latest-version-of-a-platform-os-image"></a>Jak získat nejnovější verzi image platformy operačního systému?
+## <a name="how-to-get-the-latest-version-of-a-platform-os-image"></a>Jak získat nejnovější verzi image operačního systému?
 
-Pro automatické operační systém upgradovat podporované skladové položky pomocí verze image získáte následující příklady:
+Dostupné verze bitových kopií pro automatické aktualizace operačního systému (SKU) můžete získat pomocí níže uvedených příkladů:
 
 ### <a name="rest-api"></a>REST API
 ```
@@ -235,11 +247,40 @@ Get-AzVmImage -Location "westus" -PublisherName "Canonical" -Offer "UbuntuServer
 az vm image list --location "westus" --publisher "Canonical" --offer "UbuntuServer" --sku "16.04-LTS" --all
 ```
 
+## <a name="manually-trigger-os-image-upgrades"></a>Ručně aktivovat upgrady imagí operačního systému
+Když je ve vaší sadě škálování povolený automatický upgrade image operačního systému, nemusíte v sadě škálování ručně spouštět aktualizace obrázků. Nástroj Orchestrator upgrade OS automaticky nainstaluje nejnovější dostupnou verzi image na instance sady škálování bez nutnosti ručního zásahu.
+
+Pro konkrétní případy, kdy nechcete čekat, až nástroj Orchestrator použije nejnovější bitovou kopii, můžete upgradovat bitovou kopii operačního systému ručně pomocí níže uvedených příkladů.
+
+> [!NOTE]
+> Ruční aktivační událost pro upgrady bitových kopií operačního systému neposkytuje funkce automatického vrácení zpět. Pokud instance po operaci upgradu neobnoví svůj stav, nebude možné obnovit předchozí disk s operačním systémem.
+
+### <a name="rest-api"></a>REST API
+Pomocí volání rozhraní API [Spustit upgrade operačního systému](/rest/api/compute/virtualmachinescalesetrollingupgrades/startosupgrade) můžete spustit postupný upgrade a přesunout všechny instance sady škálování virtuálních počítačů na nejnovější dostupnou verzi operačního systému image platformy. Instance, ve kterých je již spuštěna nejnovější dostupná verze operačního systému, nebudou ovlivněny. Následující příklad podrobně popisuje, jak můžete spustit upgrade operačního systému v rámci sady škálování s názvem *myScaleSet* ve skupině prostředků s názvem *myResourceGroup*:
+
+```
+POST on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet/osRollingUpgrade?api-version=2018-10-01`
+```
+
+### <a name="azure-powershell"></a>Azure PowerShell
+Pomocí rutiny [Start-AzVmssRollingOSUpgrade](/powershell/module/az.compute/Start-AzVmssRollingOSUpgrade) ověřte historii upgradu operačního systému pro vaši sadu škálování. Následující příklad podrobně popisuje, jak můžete spustit upgrade operačního systému v rámci sady škálování s názvem *myScaleSet* ve skupině prostředků s názvem *myResourceGroup*:
+
+```azurepowershell-interactive
+Start-AzVmssRollingOSUpgrade -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet"
+```
+
+### <a name="azure-cli-20"></a>Azure CLI 2.0
+Pokud chcete zjistit historii upgradu operačního systému pro vaši sadu škálování, použijte příkaz AZ VMSS provedený [upgrade Start](/cli/azure/vmss/rolling-upgrade#az-vmss-rolling-upgrade-start) . Použijte rozhraní příkazového řádku Azure CLI 2.0.47 nebo vyšší. Následující příklad podrobně popisuje, jak můžete spustit upgrade operačního systému v rámci sady škálování s názvem *myScaleSet* ve skupině prostředků s názvem *myResourceGroup*:
+
+```azurecli-interactive
+az vmss rolling-upgrade start --resource-group "myResourceGroup" --name "myScaleSet" --subscription "subscriptionId"
+```
+
 ## <a name="deploy-with-a-template"></a>Nasazení pomocí šablony
 
-Šablony můžete použít k nasazení škálovací sady s automatické upgrady operačního systému pro podporované Image, jako [Ubuntu 16.04-LTS](https://github.com/Azure/vm-scale-sets/blob/master/preview/upgrade/autoupdate.json).
+Pomocí šablon můžete nasadit sadu škálování s automatickými upgrady operačního systému pro podporované image, jako je například [Ubuntu 16,04-LTS](https://github.com/Azure/vm-scale-sets/blob/master/preview/upgrade/autoupdate.json).
 
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fvm-scale-sets%2Fmaster%2Fpreview%2Fupgrade%2Fautoupdate.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
 
 ## <a name="next-steps"></a>Další postup
-Další příklady o tom, jak používat automatické upgrady operačního systému se škálovacími sadami, přečtěte si [úložiště GitHub se vzorovými](https://github.com/Azure/vm-scale-sets/tree/master/preview/upgrade).
+Další příklady, jak používat automatické upgrady operačního systému se sadami škálování, najdete v [úložišti GitHub](https://github.com/Azure/vm-scale-sets/tree/master/preview/upgrade).

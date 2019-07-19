@@ -1,22 +1,22 @@
 ---
-title: Přesunout operace podpory podle typu prostředku Azure
-description: Seznam typů prostředků Azure, které lze přesunout do nové skupiny prostředků nebo předplatného.
+title: Přesunout podporu operace podle typu prostředku Azure
+description: Zobrazuje seznam typů prostředků Azure, které se dají přesunout do nové skupiny prostředků nebo předplatného.
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: reference
 ms.date: 7/9/2019
 ms.author: tomfitz
-ms.openlocfilehash: 093c20407cb6210125106189f36566f539de0dcc
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 22493ad7998e9014c88c79e6ac5eee3bf1216119
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67721114"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68226805"
 ---
-# <a name="move-operation-support-for-resources"></a>Přesunout operace podporu pro prostředky
-Tento článek uvádí, zda typ prostředku Azure podporuje operace přesunu. Poskytuje také informace o zvláštní podmínky, které je třeba zvážit při přesouvání prostředku.
+# <a name="move-operation-support-for-resources"></a>Přesunout podporu operací pro prostředky
+Tento článek uvádí, jestli typ prostředku Azure podporuje operaci přesunu. Poskytuje taky informace o zvláštních podmínkách, které je potřeba vzít v úvahu při přesunu prostředku.
 
-Přejít na obor názvů zprostředkovatele prostředků:
+Přejít na obor názvů poskytovatele prostředků:
 > [!div class="op_single_selector"]
 > - [Microsoft.AAD](#microsoftaad)
 > - [microsoft.aadiam](#microsoftaadiam)
@@ -29,7 +29,7 @@ Přejít na obor názvů zprostředkovatele prostředků:
 > - [Microsoft.Automation](#microsoftautomation)
 > - [Microsoft.AzureActiveDirectory](#microsoftazureactivedirectory)
 > - [Microsoft.AzureStack](#microsoftazurestack)
-> - [Microsoft.Backup](#microsoftbackup)
+> - [Microsoft. Backup](#microsoftbackup)
 > - [Microsoft.Batch](#microsoftbatch)
 > - [Microsoft.BatchAI](#microsoftbatchai)
 > - [Microsoft.BingMaps](#microsoftbingmaps)
@@ -77,7 +77,7 @@ Přejít na obor názvů zprostředkovatele prostředků:
 > - [Microsoft.EnterpriseKnowledgeGraph](#microsoftenterpriseknowledgegraph)
 > - [Microsoft.EventGrid](#microsofteventgrid)
 > - [Microsoft.EventHub](#microsofteventhub)
-> - [Microsoft.Genomics](#microsoftgenomics)
+> - [Microsoft. genomika](#microsoftgenomics)
 > - [Microsoft.HanaOnAzure](#microsofthanaonazure)
 > - [Microsoft.HDInsight](#microsofthdinsight)
 > - [Microsoft.HealthcareApis](#microsofthealthcareapis)
@@ -95,7 +95,7 @@ Přejít na obor názvů zprostředkovatele prostředků:
 > - [Microsoft.Logic](#microsoftlogic)
 > - [Microsoft.MachineLearning](#microsoftmachinelearning)
 > - [Microsoft.MachineLearningCompute](#microsoftmachinelearningcompute)
-> - [Microsoft.MachineLearningExperimentation](#microsoftmachinelearningexperimentation)
+> - [Microsoft. MachineLearningExperimentation](#microsoftmachinelearningexperimentation)
 > - [Microsoft.MachineLearningModelManagement](#microsoftmachinelearningmodelmanagement)
 > - [Microsoft.MachineLearningOperationalization](#microsoftmachinelearningoperationalization)
 > - [Microsoft.MachineLearningServices](#microsoftmachinelearningservices)
@@ -125,7 +125,7 @@ Přejít na obor názvů zprostředkovatele prostředků:
 > - [Microsoft.ServiceBus](#microsoftservicebus)
 > - [Microsoft.ServiceFabric](#microsoftservicefabric)
 > - [Microsoft.ServiceFabricMesh](#microsoftservicefabricmesh)
-> - [Microsoft.SignalRService](#microsoftsignalrservice)
+> - [Microsoft. SignalRService](#microsoftsignalrservice)
 > - [Microsoft.SiteRecovery](#microsoftsiterecovery)
 > - [Microsoft.Solutions](#microsoftsolutions)
 > - [Microsoft.Sql](#microsoftsql)
@@ -157,7 +157,7 @@ Přejít na obor názvů zprostředkovatele prostředků:
 ## <a name="microsoftaadiam"></a>microsoft.aadiam
 | Typ prostředku | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| Tenanti | Ne | Ne |
+| tenantů | Ne | Ne |
 
 ## <a name="microsoftalertsmanagement"></a>Microsoft.AlertsManagement
 | Typ prostředku | Resource group | Subscription |
@@ -184,10 +184,10 @@ Přejít na obor názvů zprostředkovatele prostředků:
 | ------------- | ----------- | ---------- |
 | apiapps | Ne | Ne |
 | appidentities | Ne | Ne |
-| gateways | Ne | Ne |
+| brány | Ne | Ne |
 
 > [!IMPORTANT]
-> Zobrazit [služby App Service přesunout pokyny](./move-limitations/app-service-move-limitations.md).
+> Přečtěte si téma [pokyny k přesunutí App Service](./move-limitations/app-service-move-limitations.md).
 
 ## <a name="microsoftauthorization"></a>Microsoft.Authorization
 | Typ prostředku | Resource group | Subscription |
@@ -198,11 +198,11 @@ Přejít na obor názvů zprostředkovatele prostředků:
 | Typ prostředku | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
 | automationaccounts | Ano | Ano |
-| automationaccounts/configurations | Ano | Ano |
-| automationaccounts/runbooks | Ano | Ano |
+| automationaccounts/konfigurace | Ano | Ano |
+| automationaccounts/Runbooky | Ano | Ano |
 
 > [!IMPORTANT]
-> Sady Runbook musí existovat ve stejné skupině prostředků jako účet služby Automation.
+> Runbooky musí existovat ve stejné skupině prostředků jako účet Automation.
 
 ## <a name="microsoftazureactivedirectory"></a>Microsoft.AzureActiveDirectory
 | Typ prostředku | Resource group | Subscription |
@@ -228,7 +228,7 @@ Přejít na obor názvů zprostředkovatele prostředků:
 | Typ prostředku | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
 | clusters | Ne | Ne |
-| fileservers | Ne | Ne |
+| servery | Ne | Ne |
 | jobs | Ne | Ne |
 | workspaces | Ne | Ne |
 
@@ -260,10 +260,10 @@ Přejít na obor názvů zprostředkovatele prostředků:
 ## <a name="microsoftcache"></a>Microsoft.Cache
 | Typ prostředku | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| redis | Ano | Ano |
+| Redis | Ano | Ano |
 
 > [!IMPORTANT]
-> Je-li ukládání do mezipaměti Azure pro instanci Redis je nakonfigurovaný s virtuální sítí, instance nelze přesunout do jiného předplatného. Zobrazit [virtuálních sítí přesunout omezení](./move-limitations/virtual-network-move-limitations.md).
+> Pokud je instance Azure cache for Redis nakonfigurovaná pomocí virtuální sítě, nedá se tato instance přesunout do jiného předplatného. Viz [omezení přesunu virtuálních sítí](./move-limitations/virtual-network-move-limitations.md).
 
 ## <a name="microsoftcdn"></a>Microsoft.Cdn
 | Typ prostředku | Resource group | Subscription |
@@ -277,7 +277,7 @@ Přejít na obor názvů zprostředkovatele prostředků:
 | certificateorders | Ano | Ano |
 
 > [!IMPORTANT]
-> Zobrazit [služby App Service přesunout pokyny](./move-limitations/app-service-move-limitations.md).
+> Přečtěte si téma [pokyny k přesunutí App Service](./move-limitations/app-service-move-limitations.md).
 
 ## <a name="microsoftclassiccompute"></a>Microsoft.ClassicCompute
 | Typ prostředku | Resource group | Subscription |
@@ -286,7 +286,7 @@ Přejít na obor názvů zprostředkovatele prostředků:
 | virtualmachines | Ano | Ne |
 
 > [!IMPORTANT]
-> Zobrazit [modelu nasazení Classic přesunout pokyny](./move-limitations/classic-model-move-limitations.md). Prostředků nasazení Classic můžete přesunout napříč předplatnými pomocí konkrétní operace pro tento scénář.
+> Viz [pokyny k přesunu klasického nasazení](./move-limitations/classic-model-move-limitations.md). Klasické prostředky nasazení se dají přesouvat mezi předplatnými s operací specifickou pro tento scénář.
 
 ## <a name="microsoftclassicnetwork"></a>Microsoft.ClassicNetwork
 | Typ prostředku | Resource group | Subscription |
@@ -296,7 +296,7 @@ Přejít na obor názvů zprostředkovatele prostředků:
 | virtualnetworks | Ne | Ne |
 
 > [!IMPORTANT]
-> Zobrazit [modelu nasazení Classic přesunout pokyny](./move-limitations/classic-model-move-limitations.md). Prostředků nasazení Classic můžete přesunout napříč předplatnými pomocí konkrétní operace pro tento scénář.
+> Viz [pokyny k přesunu klasického nasazení](./move-limitations/classic-model-move-limitations.md). Klasické prostředky nasazení se dají přesouvat mezi předplatnými s operací specifickou pro tento scénář.
 
 ## <a name="microsoftclassicstorage"></a>Microsoft.ClassicStorage
 | Typ prostředku | Resource group | Subscription |
@@ -304,7 +304,7 @@ Přejít na obor názvů zprostředkovatele prostředků:
 | storageaccounts | Ano | Ne |
 
 > [!IMPORTANT]
-> Zobrazit [modelu nasazení Classic přesunout pokyny](./move-limitations/classic-model-move-limitations.md). Prostředků nasazení Classic můžete přesunout napříč předplatnými pomocí konkrétní operace pro tento scénář.
+> Viz [pokyny k přesunu klasického nasazení](./move-limitations/classic-model-move-limitations.md). Klasické prostředky nasazení se dají přesouvat mezi předplatnými s operací specifickou pro tento scénář.
 
 ## <a name="microsoftcognitiveservices"></a>Microsoft.CognitiveServices
 | Typ prostředku | Resource group | Subscription |
@@ -320,7 +320,7 @@ Přejít na obor názvů zprostředkovatele prostředků:
 | galleries/images | Ne | Ne |
 | galleries/images/versions | Ne | Ne |
 | hostgroups | Ne | Ne |
-| hostgroups/hosts | Ne | Ne |
+| hostgroups/hostitelé | Ne | Ne |
 | images | Ano | Ano |
 | proximityplacementgroups | Ne | Ne |
 | restorepointcollections | Ne | Ne |
@@ -328,11 +328,11 @@ Přejít na obor názvů zprostředkovatele prostředků:
 | sharedvmimages/verze | Ne | Ne |
 | snapshots | Ano | Ano |
 | virtualmachines | Ano | Ano |
-| virtualmachines/extensions | Ano | Ano |
+| VirtualMachines/rozšíření | Ano | Ano |
 | virtualmachinescalesets | Ano | Ano |
 
 > [!IMPORTANT]
-> Zobrazit [virtuální počítače přesunout pokyny](./move-limitations/virtual-machines-move-limitations.md).
+> Přečtěte si téma [pokyny k přesunutí Virtual Machines](./move-limitations/virtual-machines-move-limitations.md).
 
 ## <a name="microsoftcontainer"></a>Microsoft.Container
 | Typ prostředku | Resource group | Subscription |
@@ -409,13 +409,13 @@ Přejít na obor názvů zprostředkovatele prostředků:
 ## <a name="microsoftdataexchange"></a>Microsoft.DataExchange
 | Typ prostředku | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| Balíčky | Ne | Ne |
-| Plány | Ne | Ne |
+| Zásilk | Ne | Ne |
+| plánují | Ne | Ne |
 
 ## <a name="microsoftdatafactory"></a>Microsoft.DataFactory
 | Typ prostředku | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| datafactories | Ano | Ano |
+| objekty DataFactory | Ano | Ano |
 | factories | Ano | Ano |
 
 ## <a name="microsoftdatalake"></a>Microsoft.DataLake
@@ -464,7 +464,7 @@ Přejít na obor názvů zprostředkovatele prostředků:
 | rollouts | Ano | Ano |
 | servicetopologies | Ano | Ano |
 | servicetopologies/services | Ano | Ano |
-| servicetopologies/services/serviceunits | Ano | Ano |
+| servicetopologies/služby/serviceunits | Ano | Ano |
 | kroky | Ano | Ano |
 
 ## <a name="microsoftdevices"></a>Microsoft.Devices
@@ -475,17 +475,17 @@ Přejít na obor názvů zprostředkovatele prostředků:
 | iothubs | Ano | Ano |
 | provisioningservices | Ano | Ano |
 
-## <a name="microsoftdevspaces"></a>Microsoft.DevSpaces
+## <a name="microsoftdevspaces"></a>Microsoft. DevSpaces
 | Typ prostředku | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| Kontrolery | Ne | Ne |
+| Kontrolou | Ne | Ne |
 
 ## <a name="microsoftdevtestlab"></a>Microsoft.DevTestLab
 | Typ prostředku | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
 | labcenters | Ne | Ne |
 | labs | Ano | Ne |
-| praktická cvičení nebo prostředími | Ano | Ano |
+| laboratoře/prostředí | Ano | Ano |
 | labs/servicerunners | Ano | Ano |
 | labs/virtualmachines | Ano | Ne |
 | schedules | Ano | Ano |
@@ -495,11 +495,11 @@ Přejít na obor názvů zprostředkovatele prostředků:
 | ------------- | ----------- | ---------- |
 | dnszones | Ne | Ne |
 | dnszones/a | Ne | Ne |
-| dnszones/aaaa | Ne | Ne |
-| dnszones/cname | Ne | Ne |
-| dnszones/mx | Ne | Ne |
-| dnszones/ptr | Ne | Ne |
-| dnszones/srv | Ne | Ne |
+| dnszones/AAAA | Ne | Ne |
+| dnszones/CNAME | Ne | Ne |
+| dnszones/MX | Ne | Ne |
+| dnszones/PTR | Ne | Ne |
+| dnszones/SRV | Ne | Ne |
 | dnszones/txt | Ne | Ne |
 | trafficmanagerprofiles | Ne | Ne |
 
@@ -530,7 +530,7 @@ Přejít na obor názvů zprostředkovatele prostředků:
 | clusters | Ano | Ano |
 | namespaces | Ano | Ano |
 
-## <a name="microsoftgenomics"></a>Microsoft.Genomics
+## <a name="microsoftgenomics"></a>Microsoft. genomika
 | Typ prostředku | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
 | accounts | Ne | Ne |
@@ -558,12 +558,12 @@ Přejít na obor názvů zprostředkovatele prostředků:
 ## <a name="microsofthybridcompute"></a>Microsoft.HybridCompute
 | Typ prostředku | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| počítače | Ne | Ne |
+| virtuální | Ne | Ne |
 
 ## <a name="microsofthybriddata"></a>Microsoft.HybridData
 | Typ prostředku | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| datamanagers | Ano | Ano |
+| datamanagery | Ano | Ano |
 
 ## <a name="microsoftimportexport"></a>Microsoft.ImportExport
 | Typ prostředku | Resource group | Subscription |
@@ -588,14 +588,14 @@ Přejít na obor názvů zprostředkovatele prostředků:
 | workbooks | Ano | Ano |
 
 > [!IMPORTANT]
-> Ujistěte se, že přesun do nového předplatného nepřekračuje [kvóty předplatných](../azure-subscription-service-limits.md#azure-monitor-limits).
+> Ujistěte se, že přesun do nového předplatného nepřekračuje [kvóty](../azure-subscription-service-limits.md#azure-monitor-limits)předplatného.
 
 ## <a name="microsoftiotcentral"></a>Microsoft.IoTCentral
 | Typ prostředku | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
 | iotapps | Ano | Ano |
 
-## <a name="microsoftiotspaces"></a>Microsoft.IoTSpaces
+## <a name="microsoftiotspaces"></a>Microsoft. IoTSpaces
 | Typ prostředku | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
 | checknameavailability | Ano | Ano |
@@ -608,7 +608,7 @@ Přejít na obor názvů zprostředkovatele prostředků:
 | vaults | Ano | Ano |
 
 > [!IMPORTANT]
-> Trezory klíčů pro šifrování disků nelze přesunout do skupiny prostředků v rámci stejného předplatného nebo napříč předplatnými.
+> Trezory klíčů použité pro šifrování disku nejde přesunout do skupiny prostředků v rámci stejného předplatného nebo napříč předplatnými.
 
 ## <a name="microsoftkusto"></a>Microsoft.Kusto
 | Typ prostředku | Resource group | Subscription |
@@ -651,7 +651,7 @@ Přejít na obor názvů zprostředkovatele prostředků:
 | ------------- | ----------- | ---------- |
 | operationalizationclusters | Ano | Ano |
 
-## <a name="microsoftmachinelearningexperimentation"></a>Microsoft.MachineLearningExperimentation
+## <a name="microsoftmachinelearningexperimentation"></a>Microsoft. MachineLearningExperimentation
 | Typ prostředku | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
 | accounts | Ne | Ne |
@@ -694,8 +694,8 @@ Přejít na obor názvů zprostředkovatele prostředků:
 ## <a name="microsoftmedia"></a>Microsoft.Media
 | Typ prostředku | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| mediaservices | Ano | Ano |
-| mediaservices/liveevents | Ano | Ano |
+| MediaServices | Ano | Ano |
+| MediaServices/liveevents | Ano | Ano |
 | mediaservices/streamingendpoints | Ano | Ano |
 
 ## <a name="microsoftmigrate"></a>Microsoft.Migrate
@@ -732,7 +732,7 @@ Přejít na obor názvů zprostředkovatele prostředků:
 | expressrouteports | Ne | Ne |
 | frontdoors | Ne | Ne |
 | frontdoorwebapplicationfirewallpolicies | Ne | Ne |
-| loadbalancers | Ano – základní SKU<br>Ne – standardní SKU | Ano – základní SKU<br>Ne – standardní SKU |
+| loadbalancers | Ano – základní SKU<br>No – standardní SKU | Ano – základní SKU<br>No – standardní SKU |
 | localnetworkgateways | Ano | Ano |
 | natgateways | Ano | Ano |
 | networkintentpolicies | Ano | Ano |
@@ -741,14 +741,14 @@ Přejít na obor názvů zprostředkovatele prostředků:
 | networksecuritygroups | Ano | Ano |
 | networkwatchers | Ano | Ano |
 | networkwatchers/connectionmonitors | Ano | Ano |
-| networkwatchers/přehledů | Ano | Ano |
+| networkwatchers/čočky | Ano | Ano |
 | networkwatchers/pingmeshes | Ano | Ano |
 | p2svpngateways | Ne | Ne |
 | privatednszones | Ano | Ano |
 | privatednszones/virtualnetworklinks | Ano | Ano |
 | privateendpoints | Ne | Ne |
 | privatelinkservices | Ne | Ne |
-| publicipaddresses | Ano – základní SKU<br>Ne – standardní SKU | Ano – základní SKU<br>Ne – standardní SKU |
+| publicipaddresses | Ano – základní SKU<br>No – standardní SKU | Ano – základní SKU<br>No – standardní SKU |
 | publicipprefixes | Ano | Ano |
 | routefilters | Ne | Ne |
 | routetables | Ano | Ano |
@@ -765,7 +765,7 @@ Přejít na obor názvů zprostředkovatele prostředků:
 | webapplicationfirewallpolicies | Ano | Ano |
 
 > [!IMPORTANT]
-> Zobrazit [virtuálních sítí přesunout pokyny](./move-limitations/virtual-network-move-limitations.md).
+> Přečtěte si doprovodné materiály k [přesunu virtuálních sítí](./move-limitations/virtual-network-move-limitations.md).
 
 ## <a name="microsoftnotificationhubs"></a>Microsoft.NotificationHubs
 | Typ prostředku | Resource group | Subscription |
@@ -779,7 +779,7 @@ Přejít na obor názvů zprostředkovatele prostředků:
 | workspaces | Ano | Ano |
 
 > [!IMPORTANT]
-> Ujistěte se, že přesun do nového předplatného nepřekračuje [kvóty předplatných](../azure-subscription-service-limits.md#azure-monitor-limits).
+> Ujistěte se, že přesun do nového předplatného nepřekračuje [kvóty](../azure-subscription-service-limits.md#azure-monitor-limits)předplatného.
 
 ## <a name="microsoftoperationsmanagement"></a>Microsoft.OperationsManagement
 | Typ prostředku | Resource group | Subscription |
@@ -791,7 +791,7 @@ Přejít na obor názvů zprostředkovatele prostředků:
 ## <a name="microsoftpeering"></a>Microsoft.Peering
 | Typ prostředku | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| partnerské vztahy | Ne | Ne |
+| Partnerské vztahy | Ne | Ne |
 
 ## <a name="microsoftportal"></a>Microsoft.Portal
 | Typ prostředku | Resource group | Subscription |
@@ -824,7 +824,7 @@ Přejít na obor názvů zprostředkovatele prostředků:
 | vaults | Ano | Ano |
 
 > [!IMPORTANT]
-> Zobrazit [služby Recovery Services přesunout pokyny](../backup/backup-azure-move-recovery-services-vault.md?toc=/azure/azure-resource-manager/toc.json).
+> Přečtěte si téma [pokyny k přesunutí Recovery Services](../backup/backup-azure-move-recovery-services-vault.md?toc=/azure/azure-resource-manager/toc.json).
 
 ## <a name="microsoftrelay"></a>Microsoft.Relay
 | Typ prostředku | Resource group | Subscription |
@@ -848,7 +848,7 @@ Přejít na obor názvů zprostředkovatele prostředků:
 | searchservices | Ano | Ano |
 
 > [!IMPORTANT]
-> Několik hledat prostředky nelze přesunout v různých oblastech v rámci jedné operace. Místo toho přesuňte je v samostatné operace.
+> V jedné operaci nemůžete přesouvat několik prostředků vyhledávání v různých oblastech. Místo toho je přesuňte do samostatných operací.
 
 ## <a name="microsoftsecurity"></a>Microsoft.Security
 | Typ prostředku | Resource group | Subscription |
@@ -858,7 +858,7 @@ Přejít na obor názvů zprostředkovatele prostředků:
 ## <a name="microsoftservermanagement"></a>Microsoft.ServerManagement
 | Typ prostředku | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| gateways | Ne | Ne |
+| brány | Ne | Ne |
 | uzlů | Ne | Ne |
 
 ## <a name="microsoftservicebus"></a>Microsoft.ServiceBus
@@ -883,12 +883,12 @@ Přejít na obor názvů zprostředkovatele prostředků:
 | ------------- | ----------- | ---------- |
 | applications | Ano | Ano |
 | containergroups | Ne | Ne |
-| gateways | Ano | Ano |
+| brány | Ano | Ano |
 | networks | Ano | Ano |
-| Tajné kódy | Ano | Ano |
+| záleží | Ano | Ano |
 | volumes | Ano | Ano |
 
-## <a name="microsoftsignalrservice"></a>Microsoft.SignalRService
+## <a name="microsoftsignalrservice"></a>Microsoft. SignalRService
 | Typ prostředku | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
 | signalr | Ano | Ano |
@@ -899,7 +899,7 @@ Přejít na obor názvů zprostředkovatele prostředků:
 | siterecoveryvault | Ne | Ne |
 
 > [!IMPORTANT]
-> Zobrazit [služby Recovery Services přesunout pokyny](../backup/backup-azure-move-recovery-services-vault.md?toc=/azure/azure-resource-manager/toc.json).
+> Přečtěte si téma [pokyny k přesunutí Recovery Services](../backup/backup-azure-move-recovery-services-vault.md?toc=/azure/azure-resource-manager/toc.json).
 
 ## <a name="microsoftsolutions"></a>Microsoft.Solutions
 | Typ prostředku | Resource group | Subscription |
@@ -913,9 +913,9 @@ Přejít na obor názvů zprostředkovatele prostředků:
 ## <a name="microsoftsql"></a>Microsoft.Sql
 | Typ prostředku | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| instancepools | Ano | Ano |
-| managedinstances | Ano | Ano |
-| managedinstances/databáze | Ano | Ano |
+| instancepools | Ne | Ne |
+| managedinstances | Ne | Ne |
+| managedinstances/databáze | Ne | Ne |
 | servers | Ano | Ano |
 | servers/databases | Ano | Ano |
 | servers/elasticpools | Ano | Ano |
@@ -930,7 +930,7 @@ Přejít na obor názvů zprostředkovatele prostředků:
 | sqlvirtualmachinegroups | Ano | Ano |
 | sqlvirtualmachines | Ano | Ano |
 
-## <a name="microsoftsqlvm"></a>Microsoft.SqlVM
+## <a name="microsoftsqlvm"></a>Microsoft. SqlVM
 | Typ prostředku | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
 | dwvm | Ne | Ne |
@@ -943,7 +943,7 @@ Přejít na obor názvů zprostředkovatele prostředků:
 ## <a name="microsoftstoragecache"></a>Microsoft.StorageCache
 | Typ prostředku | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| Mezipaměti | Ne | Ne |
+| mezipaměti | Ne | Ne |
 
 ## <a name="microsoftstoragesync"></a>Microsoft.StorageSync
 | Typ prostředku | Resource group | Subscription |
@@ -971,7 +971,7 @@ Přejít na obor názvů zprostředkovatele prostředků:
 | streamingjobs | Ano | Ano |
 
 > [!IMPORTANT]
-> Stream Analytics, které úlohy nelze přesunout, při spuštění v stavu.
+> Stream Analytics úlohy nelze přesunout, pokud je ve spuštěném stavu.
 
 ## <a name="microsoftstreamanalyticsexplorer"></a>Microsoft.StreamAnalyticsExplorer
 | Typ prostředku | Resource group | Subscription |
@@ -979,8 +979,8 @@ Přejít na obor názvů zprostředkovatele prostředků:
 | environments | Ne | Ne |
 | environments/eventsources | Ne | Ne |
 | instance | Ne | Ne |
-| instance nebo prostředími | Ne | Ne |
-| instance/prostředí/eventsources | Ne | Ne |
+| instance/prostředí | Ne | Ne |
+| instance/prostředí/EventSources | Ne | Ne |
 
 ## <a name="microsoftterraformoss"></a>Microsoft.TerraformOSS
 | Typ prostředku | Resource group | Subscription |
@@ -998,7 +998,7 @@ Přejít na obor názvů zprostředkovatele prostředků:
 ## <a name="microsofttoken"></a>Microsoft.Token
 | Typ prostředku | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| úložiště | Ne | Ne |
+| Store | Ne | Ne |
 
 ## <a name="microsoftvirtualmachineimages"></a>Microsoft.VirtualMachineImages
 | Typ prostředku | Resource group | Subscription |
@@ -1013,7 +1013,7 @@ Přejít na obor názvů zprostředkovatele prostředků:
 | account/project | Ano | Ano |
 
 > [!IMPORTANT]
-> Chcete-li změnit předplatné pro Azure DevOps, [změnit předplatné Azure použité pro účely fakturace](/azure/devops/organizations/billing/change-azure-subscription?toc=/azure/azure-resource-manager/toc.json).
+> Pokud chcete změnit předplatné služby Azure DevOps, přečtěte si téma [Změna předplatného Azure používaného pro fakturaci](/azure/devops/organizations/billing/change-azure-subscription?toc=/azure/azure-resource-manager/toc.json).
 
 ## <a name="microsoftvmwarecloudsimple"></a>Microsoft.VMwareCloudSimple
 | Typ prostředku | Resource group | Subscription |
@@ -1036,7 +1036,7 @@ Přejít na obor názvů zprostředkovatele prostředků:
 | sites/slots | Ano | Ano |
 
 > [!IMPORTANT]
-> Zobrazit [služby App Service přesunout pokyny](./move-limitations/app-service-move-limitations.md).
+> Přečtěte si téma [pokyny k přesunutí App Service](./move-limitations/app-service-move-limitations.md).
 
 ## <a name="microsoftwindowsiot"></a>Microsoft.WindowsIoT
 | Typ prostředku | Resource group | Subscription |
@@ -1050,11 +1050,11 @@ Přejít na obor názvů zprostředkovatele prostředků:
 | hostpools | Ne | Ne |
 | workspaces | Ne | Ne |
 
-## <a name="third-party-services"></a>Třeba služby třetích stran
+## <a name="third-party-services"></a>Služby třetích stran
 
-Třeba služby třetích stran aktuálně nepodporují operace přesunu.
+Služby třetích stran aktuálně nepodporují operaci přesunu.
 
 ## <a name="next-steps"></a>Další postup
-Příkazy pro přesun prostředky, najdete v části [přesunutí prostředků do nové skupiny prostředků nebo předplatného](resource-group-move-resources.md).
+Příkazy pro přesunutí prostředků najdete v tématu [Přesunutí prostředků do nové skupiny prostředků nebo](resource-group-move-resources.md)předplatného.
 
-Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhněte si [přesunout. podpora resources.csv](https://github.com/tfitzmac/resource-capabilities/blob/master/move-support-resources.csv).
+Pokud chcete získat stejná data jako soubor hodnot oddělených čárkami, Stáhněte si [Move-support-Resources. csv](https://github.com/tfitzmac/resource-capabilities/blob/master/move-support-resources.csv).
