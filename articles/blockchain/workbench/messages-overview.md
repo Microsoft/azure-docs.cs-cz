@@ -65,7 +65,7 @@ Blockchain Workbench vrátí odpověď se následující pole:
 |-----------------------|-----------------------------------------------------------------------------------------------------------------------------|
 | requestId             | Klientem poskytnutý identifikátor GUID |
 | userId                | ID uživatele, který byl vytvořen |
-| UserChainIdentifier   | Adresa uživatele, který byl vytvořen v síti blockchain. V Etherea, je adresa uživatele **v řetězu** adresu. |
+| userChainIdentifier   | Adresa uživatele, který byl vytvořen v síti blockchain. V Etherea, je adresa uživatele **v řetězu** adresu. |
 | connectionId          | Jedinečný identifikátor pro připojení k blockchainu|
 | messageSchemaVersion  | Zasílání zpráv verze schématu |
 | messageName           | **CreateUserUpdate** |
@@ -114,10 +114,10 @@ Požadavek vyžaduje následující pole:
 | **Název**             | **Popis**                                                                                                           |
 |----------------------|---------------------------------------------------------------------------------------------------------------------------|
 | requestId            | Klientem poskytnutý identifikátor GUID |
-| UserChainIdentifier  | Adresa uživatele, který byl vytvořen v síti blockchain. V Etherea, tato adresa je uživatele **v řetězu** adresu. |
+| userChainIdentifier  | Adresa uživatele, který byl vytvořen v síti blockchain. V Etherea, tato adresa je uživatele **v řetězu** adresu. |
 | applicationName      | Název aplikace |
 | version              | Verze aplikace Povinné, pokud máte více verzí aplikace povolena. V opačném případě verze je volitelné. Další informace o správy verzí aplikací, najdete v části [správy verzí aplikací Azure Blockchain Workbench](version-app.md). |
-| WorkflowName         | Název pracovního postupu |
+| workflowName         | Název pracovního postupu |
 | parameters           | Vstupní parametry pro vytvoření kontraktu |
 | connectionId         | Jedinečný identifikátor pro připojení k blockchainu |
 | messageSchemaVersion | Zasílání zpráv verze schématu |
