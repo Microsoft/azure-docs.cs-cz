@@ -1,56 +1,56 @@
 ---
-title: Plány údržby Azure (preview) | Dokumentace Microsoftu
-description: Plánování údržby umožňuje zákazníkům naplánovat události nezbytné plánované údržby, které služba Azure SQL Data Warehouse používá k zavedení nových funkcí, upgrady a opravy.
+title: Plány údržby Azure (Preview) | Microsoft Docs
+description: Plánování údržby umožňuje zákazníkům plánovat z nezbytných plánovaných událostí údržby, které služba Azure SQL Data Warehouse používá k zavedení nových funkcí, upgradů a oprav.
 services: sql-data-warehouse
 author: antvgski
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: design
-ms.date: 03/13/2019
+ms.date: 07/16/2019
 ms.author: anvang
 ms.reviewer: jrasnick
-ms.openlocfilehash: ab6efb858cc86495c687055ce3049cfc0cca7433
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 3875106e8c6301c95bc8d0fbce6a1c0400d07f78
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67807897"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68278110"
 ---
-# <a name="use-maintenance-schedules-to-manage-service-updates-and-maintenance"></a>Umožňuje spravovat aktualizace služby a údržbu a plány údržby
+# <a name="use-maintenance-schedules-to-manage-service-updates-and-maintenance"></a>Použití plánů údržby ke správě aktualizací a údržby služby
 
-Plány údržby jsou teď dostupné ve všech oblastech Azure SQL Data Warehouse. Tato funkce se integruje plánované údržby oznámení o stavu služby, zkontrolujte monitorování stavu prostředků a plánování služby Azure SQL Data Warehouse údržby.
+Plány údržby jsou nyní k dispozici ve všech oblastech Azure SQL Data Warehouse. Tato funkce integruje Service Health plánovaná oznámení o údržbě, Resource Health kontrolu monitorování a službu Azure SQL Data Warehouse plánování údržby.
 
-Použijete údržby plánování vybrat časový interval, když je vhodné pro příjem nových funkcí, upgrady a opravy. Vyberte primární a sekundární údržby v rámci sedm dnů. Příkladem je primární okno sobota 22:00 pro pondělí 01:00 a sekundární okno ze středu 19:00 do 22:00. Pokud datový sklad SQL nelze provést údržbu období primární údržby, pokusí znovu během období údržby sekundární údržbu. Údržba služby by mohlo dojít během primární a sekundární okna. Zajistit rychlé dokončení všech operací údržby DW400(c) a nižší úrovně datového skladu může dokončení údržby mimo určeného časového období údržby.
+Pomocí plánování údržby můžete zvolit časový interval, kdy je vhodné dostávat nové funkce, upgrady a opravy. V rámci sedmi dnů zvolíte primární a sekundární časové období údržby. Příkladem může být primární okno sobotu 22:00 až neděle 01:00 a sekundární okno z středy 19:00 až 22:00. Pokud SQL Data Warehouse nemůže provést údržbu během primárního okna údržby, pokusí se o údržbu znovu během sekundárního časového období údržby. Údržba služby může nastat jak v primárních, tak v sekundárních oknech. Aby se zajistilo rychlé dokončení všech operací údržby, DW400 (c) a nižší úrovně datového skladu mohou dokončit údržbu mimo určené časové období údržby.
 
-Všechny nově vytvořené Azure SQL Data Warehouse instance bude mít plán údržby definované v systému použity během nasazení. Plán se dá upravit co nejdříve po dokončení nasazení.
+Všechny nově vytvořené Azure SQL Data Warehouse instance budou mít během nasazování použit plán údržby definovaný systémem. Plán se dá upravit hned po dokončení nasazení.
 
-Každé časové období údržby, může být tři až osm hodin. Údržba může probíhat kdykoli v rámci okna. Jak služba nasadí nový kód do datového skladu, měli byste očekávat (BRIEF) ke ztrátě připojení.
+Každé okno údržby může být tři až osm hodin. K údržbě může dojít kdykoli v rámci okna. Při spuštění údržby se zruší všechny aktivní relace a nepotvrzené transakce se vrátí zpět. V připojení byste měli očekávat několik krátkých ztrát, protože služba do datového skladu nasadí nový kód. Po dokončení údržby na datovém skladu budete upozorněni okamžitě.
 
-Pokud chcete používat tuto funkci je potřeba určit primární a sekundární okna nejvyšší úrovně v samostatném rozsahů. Všechny operace údržby by měla dokončit během plánované údržby systému windows. Žádná údržba bude probíhat mimo zadanou údržbu bez předchozího upozornění. Pokud je váš datový sklad pozastavený během plánované údržby, bude aktualizována při operaci obnovit.  
+Chcete-li použít tuto funkci, je nutné určit primární a sekundární okno v rámci samostatného denního rozsahu. Všechny operace údržby by se měly dokončit v plánovaných oknech údržby. Žádná údržba se neprovádí mimo zadaná časová období údržby bez předchozího oznámení. Pokud je váš datový sklad pozastaven během plánované údržby, bude aktualizován během operace obnovení.  
 
-## <a name="alerts-and-monitoring"></a>Monitorování a výstrahy
+## <a name="alerts-and-monitoring"></a>Výstrahy a monitorování
 
-Integrace s oznámení o stavu služby a zkontrolujte monitorování stavu prostředků umožňuje zákazníkům tak neustále informováni brzké činnosti údržby. Nové služby automation využívá Azure Monitor. Můžete se rozhodnout, způsob, jak mají být informováni o nadcházejícím události údržby. Také rozhodněte, které automatizované toky vám může pomoct spravovat prostoje a minimalizovat dopad na vaše operace.
+Integrace s Service Healthmi oznámeními a monitorováním Resource Health kontroly umožňuje zákazníkům průběžně informovat o hrozící činnosti údržby. Nové automatické automatizace využívají Azure Monitor. Můžete rozhodnout, jak chcete být upozorňováni na hrozící události údržby. Také se rozhodněte, které automatizované toky vám pomohou spravovat výpadky a minimalizovat dopad na vaše operace.
 
-24 hodin předběžných oznámeních předchází všechny události údržby s aktuální výjimkou DW400c a nižší úrovně. Minimalizovat tak prostoje instance, ujistěte se, že váš datový sklad nemá žádné dlouhotrvající transakce před zvolený udržovací období. Při zahájení údržby, zruší se všechny aktivní relace. Bez potvrzené transakce bude vrácena zpět a datového skladu dojde k krátký ke ztrátě připojení. Ihned po dokončení údržby na váš datový sklad, budete upozorněni.
+24hodinové předběžné oznámení předchází všem událostem údržby s aktuální výjimkou DW400c a nižších úrovní. Chcete-li minimalizovat prostoje instance, ujistěte se, že datový sklad neobsahuje žádné dlouhotrvající transakce před zvoleným obdobím údržby.
 
 > [!NOTE]
-> V případě, že jsme se vyžaduje k nasazení čas důležitou aktualizaci, může výrazně snížit oznámení s týdenním časy.
+> V případě, že je nutné nasadit časově důležitou aktualizaci, může být rozšířená doba oznámení výrazně omezená.
 
-Pokud jste dostali předběžná oznámení, že údržba bude probíhat, ale SQL Data Warehouse nemůže provést údržbu během této doby, obdržíte oznámení o zrušení. Údržba se pak obnoví během dalšího období naplánované údržby.
+Pokud jste obdrželi předběžné oznámení, že se údržba provede, ale SQL Data Warehouse nemůže během této doby provádět údržbu, obdržíte oznámení o zrušení. Údržba pak bude pokračovat během příští plánované doby údržby.
 
-Zobrazí všechny události údržby aktivní v **Service Health – plánovanou údržbu** oddílu. Historie stavu služby zahrnuje celý záznam o minulých událostech. Údržba prostřednictvím služby Azure Service Health kontrola řídicímu panelu portálu můžete monitorovat během aktivní události.
+V části **Service Health-plánovaná údržba** se zobrazí všechny aktivní události údržby. Historie Service Health obsahuje úplný záznam minulých událostí. Údržbu můžete sledovat pomocí Azure Service Health řídicího panelu portálu během aktivní události.
 
 ### <a name="maintenance-schedule-availability"></a>Dostupnost plánu údržby
 
-I v případě plánování údržby není k dispozici ve vybrané oblasti, můžete zobrazit a upravit plánu údržby kdykoli. Při plánování údržby k dispozici ve vaší oblasti, identifikovaný plánu je okamžitě aktivní na váš datový sklad.
+I když ve zvolené oblasti není k dispozici plánování údržby, můžete plán údržby kdykoli zobrazit a upravit. Když bude plánování údržby k dispozici ve vaší oblasti, identifikovaný plán se okamžitě aktivuje v datovém skladu.
 
 ## <a name="next-steps"></a>Další postup
 
-- [Další informace](viewing-maintenance-schedule.md) o zobrazení plánu údržby.
-- [Další informace](changing-maintenance-schedule.md) o změně plánu údržby.
-- [Další informace](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitor-alerts-unified-usage) o vytváření, zobrazení a Správa výstrah pomocí Azure monitoru.
-- [Další informace](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitor-alerts-unified-log-webhook) akce webhooku pro pravidla upozornění protokolů.
-- [Další informace](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups) vytváření a Správa skupin akcí.
-- [Další informace](https://docs.microsoft.com/azure/service-health/service-health-overview) o Azure Service Health.
+- [Přečtěte si další informace](viewing-maintenance-schedule.md) o zobrazení plánu údržby.
+- [Přečtěte si další informace](changing-maintenance-schedule.md) o změně plánu údržby.
+- [Přečtěte si další informace](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitor-alerts-unified-usage) o vytváření, zobrazování a správě výstrah pomocí Azure monitor.
+- [Přečtěte si další informace](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitor-alerts-unified-log-webhook) o akcích Webhooku pro pravidla upozornění protokolů.
+- [Další informace](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups) Vytváření a Správa skupin akcí.
+- [Přečtěte si další informace](https://docs.microsoft.com/azure/service-health/service-health-overview) o Azure Service Health.

@@ -1,77 +1,77 @@
 ---
-title: Omezení služby Azure digitální dvojče veřejné ve verzi preview | Dokumentace Microsoftu
-description: Vysvětlení, že Azure digitální dvojče veřejné limity pro služby ve verzi preview.
+title: Omezení služby Azure Digital Service ve verzi Public Preview | Microsoft Docs
+description: Seznamte se s omezeními služby Azure Digital revlákens pro veřejné verze Preview.
 author: dwalthermsft
 manager: deshner
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 01/03/2019
-ms.author: dwalthermsft
-ms.openlocfilehash: cc873ad441c93a7fce54c275e9f7d52f0b044319
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: dwalther
+ms.openlocfilehash: f3239fa5d21078795e7b063cb0364e905cba25c1
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60927549"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67846626"
 ---
 # <a name="public-preview-service-limits"></a>Omezení služby ve verzi Public Preview
 
-Digitální dvojče Azure ve verzi public preview, má následující dočasné předplatné, instanci a omezení přenosové rychlosti.
+V rámci verze Public Preview má digitální vlákna Azure následující dočasné předplatné, instanci a omezení přenosové rychlosti.
 
-Existují tato omezení, která pomůže zjednodušit získání informací o nové službě a její mnoho funkcí.
+Tato omezení existují, pokud chcete zjednodušit učení o nové službě a jejich mnoha funkcích.
 
 > [!NOTE]
-> Tato omezení se zvýší nebo odebrání všeobecné dostupnosti (GA).
+> Tato omezení se zvýší nebo odeberou obecnou dostupností (GA).
 
-## <a name="per-subscription-limits"></a>Omezení na předplatné
+## <a name="per-subscription-limits"></a>Omezení pro předplatné
 
-Každé předplatné Azure ve verzi public preview, můžete vytvořit nebo spustit pouze jedna instance Azure digitální dvojče najednou.
+V rámci verze Public Preview může každé předplatné Azure vytvořit nebo spustit pouze jednu instanci digitálního vlákna Azure v jednom okamžiku.
 
 > [!TIP]
-> Pokud odstraníte instanci, můžete vytvořit nový.
+> Odstraníte-li instanci, můžete vytvořit novou.
 
-## <a name="per-instance-limits"></a>Limity pro jednotlivé instance
+## <a name="per-instance-limits"></a>Omezení podle instancí
 
-Každá instance Azure digitální dvojče zase může mít:
+Každá instance digitálního vlákna v Azure pak může mít:
 
-- Právě jeden vložený **IoTHub** prostředek, který se automaticky vytvoří během zřizování služby.
-- Přesně jeden **EventHub** koncový bod pro typ události **DeviceMessage**.
-- Až tři **EventHub**, **služby Service Bus**, nebo **EventGrid** koncové body typu události **SensorChange**, **SpaceChange** , **TopologyOperation**, nebo **UdfCustom**.
+- Právě jeden integrovaný prostředek **IoTHub** , který se vytvoří automaticky během zřizování služby.
+- Právě jeden koncový bod **EventHub** pro typ události **DeviceMessage**.
+- Až tři koncové body **EventHub**, **ServiceBus**nebo **EventGrid** typu události **SensorChange**, **SpaceChange**, **TopologyOperation**nebo **UdfCustom**.
 
 > [!NOTE]
-> Některé parametry, které jsou obvykle definovány při vytváření výše entit Azure IoT nejsou nutné ve verzi public preview.
-> - Najdete [Swagger referenční dokumentaci](./how-to-use-swagger.md) pro nejnovější specifikace rozhraní API.
+> Některé parametry, které jsou obvykle definovány při vytváření výše uvedených entit Azure IoT, nejsou ve verzi Public Preview požadovány.
+> - Nejnovější specifikace rozhraní API najdete v [referenční dokumentaci k Swagger](./how-to-use-swagger.md) .
 
-## <a name="azure-digital-twins-management-api-limits"></a>Omezení pro rozhraní API pro správu digitálních Dvojčat v Azure
+## <a name="azure-digital-twins-management-api-limits"></a>Omezení rozhraní API pro správu digitálních vláken Azure
 
-Omezení přenosové rychlosti žádost pro vaši digitální dvojče API pro správu Azure jsou:
+Omezení přenosové rychlosti požadavků pro rozhraní API pro správu digitálních vláken Azure je:
 
-- 100 požadavků za sekundu na digitální dvojče správy rozhraní API Azure.
-- Až 1 000 objektů vrácených podle jednoho dotazu Azure digitální dvojče rozhraní API pro správu.
+- 100 požadavků za sekundu rozhraní API pro správu digitálních vláken Azure.
+- Až 1 000 objektů vrácených jedním dotazem rozhraní API pro správu digitálních vláken Azure.
 
 > [!IMPORTANT]
-> Pokud překročíte limit 1 000 objektů, dojde k chybě a musí Zjednodušte dotaz.
+> Pokud překročíte limit 1 000 objektů, zobrazí se chybová zpráva a bude nutné dotaz zjednodušit.
 
-## <a name="user-defined-functions-rate-limits"></a>Uživatelem definované funkce omezení přenosové rychlosti
+## <a name="user-defined-functions-rate-limits"></a>Omezení rychlosti uživatelem definovaných funkcí
 
-Následující omezení nastavte celkový počet všech volání uživatelem definované funkce k vaší instanci Azure digitální dvojče:
+Následující omezení nastaví celkový počet všech volání uživatelsky definovaných funkcí provedených u vaší instance digitálního vlákna Azure:
 
-- 400 Klientská knihovna volání za sekundu
+- 400 volání klientské knihovny za sekundu
 - 100 **SendNotification** volání za sekundu
 
 > [!NOTE]
-> Následující akce může způsobit omezení přenosové rychlosti další dočasně použít:
-> - Úpravy metadat objektu topologie
-> - Aktualizace provedené k definici uživatelsky definované funkce
-> - Zařízení, které odesílají telemetrii poprvé
+> Následující akce mohou způsobit dočasné použití limitů dalších sazeb:
+> - Úpravy provedené v metadatech objektu topologie
+> - Aktualizace provedené v definici uživatelsky definované funkce
+> - Zařízení, která poprvé odesílají telemetrii
 
-## <a name="device-telemetry-limits"></a>Limity telemetrie zařízení
+## <a name="device-telemetry-limits"></a>Omezení telemetrie zařízení
 
-Následující omezení cap celkový počet všechny zprávy zasílané vašich zařízení k vaší instanci Azure digitální dvojče:
+Tato omezení omezují celkový počet všech zpráv, které vaše zařízení můžou odeslat do instance digitálních vláken Azure:
 
-- 100 zpráv za sekundu
+- zprávy 100 za sekundu
 
 ## <a name="next-steps"></a>Další postup
 
-- Vyzkoušejte si ukázkové digitální dvojče Azure, přejděte na [rychlý start se mají najít místnosti k dispozici](./quickstart-view-occupancy-dotnet.md).
+- Pokud si chcete vyzkoušet ukázku digitálních vláken Azure, [vyhledejte dostupné místnosti](./quickstart-view-occupancy-dotnet.md)v rychlém startu.

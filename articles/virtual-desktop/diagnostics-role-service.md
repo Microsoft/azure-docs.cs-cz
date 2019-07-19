@@ -1,169 +1,177 @@
 ---
-title: Identifikujte problémy s funkcí diagnostiky Windows Virtual Desktop Preview – Azure
-description: Popisuje funkce Diagnostika Preview virtuální plochy Windows a jak ji používat.
+title: Identifikujte problémy s funkcí diagnostiky ve verzi Preview virtuálních počítačů s Windows – Azure
+description: Popisuje funkci diagnostiky ve verzi Preview pro Windows Virtual Desktop a její použití.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: 747e177b0fbbfb9049959c3194ee39c3234bba50
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f5869cbb51cf1c968ee8ca1e2286416fd263d647
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65234028"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68224640"
 ---
 # <a name="identify-issues-with-the-diagnostics-feature"></a>Identifikace problémů pomocí diagnostické funkce
 
-Virtuální Desktop Preview Windows nabízí diagnostické funkce, která umožňuje správci umožní identifikovat problémy s pomocí jednoho rozhraní. Role virtuálního klienta Windows protokolování diagnostiky činnosti, pokaždé, když uživatel komunikuje s systému. Každý protokol obsahuje důležité informace, třeba virtuální plochy Windows role zapojené do transakce, chybové zprávy, informace o tenantovi a informace o uživateli. Diagnostické aktivity se vytvoří s koncovým uživatelem i akce správy a lze rozdělit do tří hlavních bloků:
+Virtuální počítač s Windows ve verzi Preview nabízí funkci diagnostiky, která umožňuje správcům identifikovat problémy přes jedno rozhraní. Role virtuálních klientů Windows protokolují diagnostické aktivity pokaždé, když uživatel komunikuje se systémem. Každý protokol obsahuje relevantní informace, jako jsou například role virtuálních klientských počítačů s Windows, které jsou součástí transakce, chybové zprávy, informace o tenantovi a informace o uživateli. Diagnostické aktivity jsou vytvářeny pomocí akcí koncového uživatele i správy a lze je rozdělit do tří hlavních intervalů:
 
-* Informační kanál aktivit předplatného: koncový uživatel spustí tyto aktivity při každém pokusu o připojení k jejich kanálu pomocí aplikace Vzdálená plocha od Microsoftu.
-* Připojení aktivity: koncový uživatel spustí tyto aktivity pokaždé, když se pokusí připojit k počítači nebo vzdálené aplikace RemoteApp prostřednictvím aplikace Vzdálená plocha od Microsoftu.
-* Aktivity správy: správce spustí tyto aktivity pokaždé, když se provádějí operace správy systému, jako je například vytvoření fondů hostitele, přiřazování uživatelů do skupiny aplikací a vytváření přiřazení rolí.
+* Aktivity předplatného informačního kanálu: koncový uživatel tyto aktivity aktivuje pokaždé, když se pokusí připojit k informačnímu kanálu prostřednictvím Vzdálená plocha Microsoftch aplikací.
+* Aktivity připojení: koncový uživatel tyto aktivity aktivuje pokaždé, když se pokusí připojit k desktopu nebo k vzdálené aplikaci RemoteApp prostřednictvím aplikace Vzdálená plocha Microsoft.
+* Správcovské aktivity: správce tyto aktivity aktivuje při provádění operací správy v systému, jako je vytváření fondů hostitelů, přiřazování uživatelů ke skupinám aplikací a vytváření přiřazení rolí.
   
-Připojení, která nedostanou virtuální plochy Windows nezobrazí ve výsledcích diagnostiky protože samotnou službu role Diagnostika je součástí virtuální plochy Windows. Problémy s připojením k virtuálnímu klientovi Windows může dojít, když koncový uživatel dochází k problémům se síťovým připojením.
+Připojení, která nedosáhnou virtuálního klienta Windows, se nezobrazí ve výsledcích diagnostiky, protože samotná služba role diagnostiky je součástí virtuálního klienta Windows. Problémy s připojením k virtuálnímu počítači s Windows se můžou vyskytnout, když koncový uživatel dochází k problémům se síťovým připojením.
 
-Abyste mohli začít, [stáhněte a naimportujte modul Powershellu virtuální plochy Windows](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview) použít v relaci Powershellu, pokud jste tak již neučinili.
+Pokud jste to ještě neudělali, [Stáhněte a importujte modul PowerShellu virtuálního počítače s Windows](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview) , který chcete použít v relaci PowerShellu.
 
-## <a name="diagnose-issues-with-powershell"></a>Diagnostikujte problémy pomocí Powershellu
+## <a name="diagnose-issues-with-powershell"></a>Diagnostika problémů s prostředím PowerShell
 
-Diagnostika virtuální plochy Windows používá pouze jeden rutiny Powershellu, ale obsahuje mnoho volitelné parametry, které vám pomůžou zúží a izolace potíží s. Rutiny můžete použít k diagnostice problémů v následujících částech. Většina filtrů lze použít společně. Hodnoty uvedené v závorkách, například `<tenantName>`, by měla být nahrazena hodnoty, které platí pro konkrétní situaci.
+Diagnostika virtuálních počítačů s Windows používá jenom jednu rutinu prostředí PowerShell, ale obsahuje mnoho volitelných parametrů, které vám pomůžou zúžit a izolovat problémy. V následujících částech jsou uvedeny rutiny, které můžete spustit pro diagnostiku problémů. Většinu filtrů lze použít společně. Hodnoty uvedené v závorkách, například `<tenantName>`, by měly být nahrazeny hodnotami, které se vztahují na vaši situaci.
 
-### <a name="retrieve-diagnostic-activities-in-your-tenant"></a>Získání diagnostiky aktivit ve vašem tenantovi
+### <a name="retrieve-diagnostic-activities-in-your-tenant"></a>Načtení diagnostických aktivit ve vašem tenantovi
 
-Diagnostické aktivity můžete načíst tak, že zadáte **Get-RdsDiagnosticActivities** rutiny. Tuto ukázkovou rutinu, vrátí se seznam diagnostických aktivit, seřazené od nejvíce nejstarší.
+Diagnostické aktivity můžete načíst zadáním rutiny **Get-RdsDiagnosticActivities** . Následující příklad rutiny vrátí seznam diagnostických aktivit seřazených z většiny na nejméně poslední.
 
 ```powershell
 Get-RdsDiagnosticActivities -TenantName <tenantName>
 ```
 
-Stejně jako ostatní rutiny Windows Powershellu virtuální plochy musíte použít **- TenantName** parametr k určení názvu tenanta, kterou chcete použít pro váš dotaz. Název tenanta platí pro téměř všechny dotazy diagnostických aktivity.
+Podobně jako jiné rutiny PowerShellu pro virtuální počítače s Windows musíte použít parametr **-tenant** a zadat tak název tenanta, kterého chcete pro dotaz použít. Název tenanta je použitelný pro téměř všechny dotazy na diagnostické aktivity.
 
-### <a name="retrieve-detailed-diagnostic-activities"></a>Načíst podrobné diagnostické aktivity
+### <a name="retrieve-detailed-diagnostic-activities"></a>Načtení podrobných diagnostických aktivit
 
-**-Podrobné** parametr poskytuje další podrobnosti pro každou diagnostických aktivitu vrátila. Formát pro každé aktivity se liší v závislosti na jeho typu aktivity. **-Podrobné** parametr je přidat k libovolnému **Get-RdsDiagnosticActivities** zjistit, jak je znázorněno v následujícím příkladu.
+Parametr **-detailed** poskytuje další podrobnosti pro každou vrácenou diagnostickou aktivitu. Formát každé aktivity se liší v závislosti na typu aktivity. Parametr **-detailed** lze přidat do jakéhokoli dotazu **Get-RdsDiagnosticActivities** , jak je znázorněno v následujícím příkladu.
 
 ```powershell
 Get-RdsDiagnosticActivities -TenantName <tenantName> -Detailed
 ```
 
-### <a name="retrieve-a-specific-diagnostic-activity-by-activity-id"></a>Načtení konkrétní diagnostické ID aktivity podle aktivity
+### <a name="retrieve-a-specific-diagnostic-activity-by-activity-id"></a>Načtení konkrétní diagnostické aktivity podle ID aktivity
 
-**- ActivityId** vrátí parametr konkrétní diagnostické aktivitu, pokud existuje, jak je znázorněno v následujícím příkladu rutiny.
+Parametr **-ActivityId** vrátí konkrétní diagnostickou aktivitu, pokud existuje, jak je znázorněno v následujícím příkladu rutiny.
 
 ```powershell
 Get-RdsDiagnosticActivities -TenantName <tenantName> -ActivityId <ActivityIdGuid>
 ```
 
-### <a name="filter-diagnostic-activities-by-user"></a>Filtrovat diagnostických aktivity podle uživatele
+### <a name="view-error-messages-for-a-failed-activity-by-activity-id"></a>Zobrazit chybové zprávy pro neúspěšnou aktivitu podle ID aktivity
 
-**- UserName** parametr vrátí seznam diagnostických aktivity iniciované příslušným uživatelem zadaný, jak je znázorněno v následujícím příkladu rutiny.
+Chcete-li zobrazit chybové zprávy pro aktivitu, která selhala, je nutné spustit rutinu s parametrem **-detailed** . Seznam chyb můžete zobrazit spuštěním rutiny **Select-Object** .
+
+```powershell
+Get-RdsDiagnosticActivities -TenantName <tenantname> -ActivityId <ActivityGuid> -Detailed | Select-Object -ExpandProperty Errors
+```
+
+### <a name="filter-diagnostic-activities-by-user"></a>Filtrovat diagnostické aktivity podle uživatele
+
+Parametr **-username** vrátí seznam diagnostických aktivit iniciované zadaným uživatelem, jak je znázorněno v následujícím příkladu rutiny.
 
 ```powershell
 Get-RdsDiagnosticActivities -TenantName <tenantName> -UserName <UserUPN>
 ```
 
-**- UserName** parametr může být spojen s další volitelné parametry filtrování.
+Parametr **-username** lze také kombinovat s dalšími volitelnými parametry filtrování.
 
-### <a name="filter-diagnostic-activities-by-time"></a>Filtrování podle času diagnostických aktivity
+### <a name="filter-diagnostic-activities-by-time"></a>Filtrovat diagnostické aktivity podle času
 
-Můžete filtrovat seznam vrácených diagnostických aktivit s **- StartTime** a **- EndTime** parametry. **- StartTime** parametr vrátí seznam diagnostických aktivit od konkrétní data, jak je znázorněno v následujícím příkladu.
+Můžete filtrovat seznam vrácených diagnostických aktivit s parametry **-čas_spuštění** a **-čas_ukončení** . Parametr **-StartTime** vrátí seznam diagnostických aktivit od konkrétního data, jak je znázorněno v následujícím příkladu.
 
 ```powershell
 Get-RdsDiagnosticActivities -TenantName <tenantName> -StartTime "08/01/2018"
 ```
 
-**- EndTime** můžete přidat parametr do rutiny s **- StartTime** parametr určit konkrétní dobu, kterou chcete zobrazit výsledky pro. Tuto ukázkovou rutinu, vrátí se seznam diagnostických aktivit, které srpna 1 a 10. srpna.
+Parametr **-čas_ukončení** lze přidat do rutiny s parametrem **-StartTime** pro určení konkrétního časového období, pro které chcete získat výsledky. Následující příklad rutiny vrátí seznam diagnostických aktivit od 1. srpna do 10.
 
 ```powershell
 Get-RdsDiagnosticActivities -TenantName <tenantName> -StartTime "08/01/2018" -EndTime "08/10/2018"
 ```
 
-**- StartTime** a **- EndTime** parametrů se dají kombinovat taky s další volitelné parametry filtrování.
+Parametry **-čas_spuštění** a **-čas_ukončení** lze také kombinovat s jinými volitelnými parametry filtrování.
 
-### <a name="filter-diagnostic-activities-by-activity-type"></a>Filtrovat podle typu aktivity diagnostických aktivity
+### <a name="filter-diagnostic-activities-by-activity-type"></a>Filtrovat diagnostické aktivity podle typu aktivity
 
-Můžete také filtrovat diagnostických aktivity podle typu aktivity s **- ActivityType** parametru. Následující rutina vrátí seznam připojení koncového uživatele:
+Diagnostické aktivity můžete také filtrovat podle typu aktivity s parametrem **-ActivityType** . Následující rutina vrátí seznam připojení koncových uživatelů:
 
 ```powershell
 Get-RdsDiagnosticActivities -TenantName <tenantName> -ActivityType Connection
 ```
 
-Následující rutina vrátí seznam úloh správy pro správce:
+Následující rutina vrátí seznam úloh správy správců:
 
 ```powershell
 Get-RdsDiagnosticActivities -TenantName <tenantName> -ActivityType Management
 ```
 
-**Get-RdsDiagnosticActivities** rutiny v současné době nepodporuje zadání kanálu jako ActivityType.
+Rutina **Get-RdsDiagnosticActivities** v současné době nepodporuje určení kanálu jako ActivityType.
 
-### <a name="filter-diagnostic-activities-by-outcome"></a>Filtrovat podle výsledku diagnostických aktivity
+### <a name="filter-diagnostic-activities-by-outcome"></a>Filtrovat diagnostické aktivity podle výsledku
 
-Seznam vrácených diagnostických aktivit můžete filtrovat podle výsledku s **– výsledek** parametru. Tuto ukázkovou rutinu, vrátí se seznam úspěšné diagnostických aktivity.
+Seznam vrácených diagnostických aktivit můžete filtrovat podle výsledku s parametrem **-výsledek** . Následující příklad rutiny vrátí seznam úspěšných diagnostických aktivit.
 
 ```powershell
 Get-RdsDiagnosticActivities -TenantName <tenantName> -Outcome Success
 ```
 
-Tuto ukázkovou rutinu, vrátí se seznam neúspěšných aktivit diagnostiky.
+Následující příklad rutiny vrátí seznam neúspěšných diagnostických aktivit.
 
 ```powershell
 Get-RdsDiagnosticActivities -TenantName <tenantName> -Outcome Failure
 ```
 
-**– Výsledek** parametr může být spojen s další volitelné parametry filtrování.
+Parametr **-výsledek** lze také kombinovat s jinými volitelnými parametry filtrování.
 
-## <a name="common-error-scenarios"></a>Běžné scénáře chyba
+## <a name="common-error-scenarios"></a>Běžné chybové scénáře
 
-Chyba scénáře jsou rozdělené do interní ke službě a externí virtuální plochy Windows.
+Scénáře chyb jsou rozdělené do kategorií interní pro službu a externí pro virtuální počítače s Windows.
 
-* Vnitřní problém: Určuje scénáře, které není možné řešit správcem tenanta a musí být vyřešeny automatickým problém podpory. Při poskytování zpětné vazby prostřednictvím [technické komunitě virtuální plochy Windows](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop), patří ID aktivity a jak časový rámec kdy došlo k problému.
-* Externí problém: se vztahují na scénáře, které se dají zmírnit na správce systému. Toto jsou externí vzhledem k virtuálnímu klientovi Windows.
+* Vnitřní problém: Určuje scénáře, které nelze zmírnit správcem tenanta a které je třeba vyřešit jako problém podpory. Při poskytování zpětné vazby prostřednictvím [odborné komunity pro virtuální počítače s Windows](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop)uveďte ID aktivity a přibližný časový rámec, kdy k problému došlo.
+* Externí problém: vztah ke scénářům, které může správce systému zmírnit. Jedná se o externí funkce pro virtuální počítače s Windows.
 
-V následující tabulce najdete běžné chyby, které vaši správci tyto problémy.
+V následující tabulce jsou uvedeny běžné chyby, ke kterým můžou správci běžet.
 
 >[!NOTE]
->Tato verze preview neobsahuje kompletní kategorizace chyb a budou aktualizovány v pravidelných intervalech. K zajištění, že máte nejnovější informace, nezapomeňte se podívat na tento článek alespoň jednou za měsíc.
+>Tato verze Preview neobsahuje úplnou kategorizaci chyb a aktualizuje se pravidelně. Abyste měli jistotu, že máte nejaktuálnější informace, nezapomeňte se vrátit k tomuto článku aspoň jednou za měsíc.
 
-### <a name="external-management-error-codes"></a>Kódy chyb externí správu
-
-|Číselný kód|Kód chyby|Navrhované řešení|
-|---|---|---|
-|3|UnauthorizedAccess|Uživatel, který se pokouší spustit rutinu prostředí PowerShell pro správu nemá oprávnění k tomu nebo chybně své uživatelské jméno.|
-|1000|TenantNotFound|Název tenanta, které jste zadali, neodpovídá žádné stávající klienty. Zkontrolujte název klienta pro překlepy a zkuste to znovu.|
-|1006|TenantCannotBeRemovedHasSessionHostPools|Klienta nejde odstranit, protože dlouho obsahuje objekty. Nejprve odstraňte hostitele fondy relaci a akci opakujte.|
-|2000|HostPoolNotFound|Zadaný název hostitele fondu neodpovídá všechny existující fondy hostitele. Zkontrolujte název hostitele fondu typo a zkuste to znovu.|
-|2005|HostPoolCannotBeRemovedHasApplicationGroups|Fond hostitele nelze odstranit, tak dlouho, dokud obsahuje objekty. Nejprve odeberte všechny skupiny aplikací ve fondu hostitele.|
-|2004|HostPoolCannotBeRemovedHasSessionHosts|Odebrání všech hostitelů relací nejprve před odstraněním fondu hostitele relace.|
-|5001|SessionHostNotFound|Hostitel relace, které jste pomocí dotazu může být offline. Zkontrolujte stav fondu hostitele.|
-|5008|SessionHostUserSessionsExist |Před spuštěním vašich aktivit zamýšlený správy musí odhlásit všechny uživatele na hostiteli relace.|
-|6000|AppGroupNotFound|Název skupiny aplikací, které jste zadali, neodpovídá žádné existující skupiny aplikací. Zkontrolujte název skupiny aplikací pro překlepy a zkuste to znovu.|
-|6022|RemoteAppNotFound|Zadaný název vzdálené aplikace RemoteApp neodpovídá žádné aplikace RemoteApp. Název vzdálené aplikace RemoteApp typo kontroly a zkuste to znovu.|
-|6010|PublishedItemsExist|Název prostředku, který se snažíte publikování je stejný jako prostředek, který již existuje. Změnit název prostředku a zkuste to znovu.|
-|7002|NameNotValidWhiteSpace|Nepoužívejte prázdné znaky v názvu.|
-|8000|InvalidAuthorizationRoleScope|Název role, které jste zadali neodpovídá žádné existující názvy rolí. Zkontrolujte název role pro překlepy a zkuste to znovu. |
-|8001|UserNotFound |Uživatelské jméno, které jste zadali, neodpovídá žádné existující uživatelská jména. Zkontrolujte název překlepy a zkuste to znovu.|
-|8005|UserNotFoundInAAD |Uživatelské jméno, které jste zadali, neodpovídá žádné existující uživatelská jména. Zkontrolujte název překlepy a zkuste to znovu.|
-|8008|TenantConsentRequired|Postupujte podle pokynů [tady](tenant-setup-azure-active-directory.md#grant-azure-active-directory-permissions-to-the-windows-virtual-desktop-preview-service) k poskytnutí souhlasu pro vašeho tenanta.|
-
-### <a name="external-connection-error-codes"></a>Kódy chyb externí připojení
+### <a name="external-management-error-codes"></a>Kódy chyb externí správy
 
 |Číselný kód|Kód chyby|Navrhované řešení|
 |---|---|---|
-|-2147467259|ConnectionFailedAdTrustedRelationshipFailure|Hostitel relace není správně připojený ke službě Active Directory.|
-|-2146233088|ConnectionFailedUserHasValidSessionButRdshIsUnhealthy|Připojení se nezdařila, protože hostitel relace není k dispozici. Zkontrolujte stav hostitele relace.|
-|-2146233088|ConnectionFailedClientDisconnect|Pokud tuto chybu vidíte často, ujistěte se, že počítač uživatele je připojen k síti.|
-|-2146233088|ConnectionFailedNoHealthyRdshAvailable|Relace, které hostitele uživatel se pokusil připojit k není v pořádku. Ladění virtuálního počítače.|
-|-2146233088|ConnectionFailedUserNotAuthorized|Uživatel nemá oprávnění pro přístup k publikované aplikaci nebo plochy. Chyba může zobrazit po odebrání správce publikovaných prostředků. Požádejte uživatele, aby aktualizace informačního kanálu ve vzdálené plochy aplikace.|
-|2|FileNotFound|Aplikace, kterou uživatel se pokusil o přístup je buď nesprávně nainstalovaná, nebo nastavte do nesprávné cesty.|
-|3|InvalidCredentials|Uživatelské jméno nebo heslo zadané uživatelem zadané informace neodpovídají žádné existující uživatelská jména a hesla. Zkontrolujte přihlašovací údaje pro překlepy a zkuste to znovu.|
-|8|ConnectionBroken|Připojení mezi klienta a brány nebo Server vyřadit. Pokud se stane neočekávaně vyžadována žádná akce.|
-|14|UnexpectedNetworkDisconnect|Připojení k síti vyřadit. Požádejte uživatele znovu připojit.|
-|24|ReverseConnectFailed|Hostitel virtuálního počítače nemá žádné přímé dohled Brána VP. Zkontrolujte, jestli se že dá vyřešit adresu IP brány.|
+|3|UnauthorizedAccess|Uživatel, který se pokusil spustit rutinu prostředí PowerShell pro správu, nemá oprávnění k tomu, aby to provedl nebo nedokázal zadat své uživatelské jméno.|
+|1000|TenantNotFound|Název tenanta, který jste zadali, se neshoduje s žádnými stávajícími klienty. Zkontrolujte název tenanta pro překlepy a zkuste to znovu.|
+|1006|TenantCannotBeRemovedHasSessionHostPools|Tenanta nemůžete odstranit, pokud obsahuje objekty. Nejprve odstraňte fondy hostitelů relací a potom akci opakujte.|
+|2000|HostPoolNotFound|Název fondu hostitelů, který jste zadali, se neshoduje s žádnými existujícími fondy hostitelů. Přečtěte si název fondu hostitelů pro překlepy a zkuste to znovu.|
+|2005|HostPoolCannotBeRemovedHasApplicationGroups|Fond hostitelů nemůžete odstranit, pokud obsahuje objekty. Odeberte nejprve všechny skupiny aplikací ve fondu hostitelů.|
+|2004|HostPoolCannotBeRemovedHasSessionHosts|Před odstraněním fondu hostitele relace odeberte nejprve všechny hostitele relací.|
+|5001|SessionHostNotFound|Hostitel relace, na který jste dotazováni, může být offline. Ověřte stav fondu hostitelů.|
+|5008|SessionHostUserSessionsExist |Před provedením zamýšlené aktivity správy musíte odhlásit všechny uživatele na hostiteli relace.|
+|6000|AppGroupNotFound|Název skupiny aplikací, který jste zadali, se neshoduje s žádnými stávajícími skupinami aplikací. Přečtěte si název skupiny aplikací pro překlepy a zkuste to znovu.|
+|6022|RemoteAppNotFound|Název aplikace RemoteApp, který jste zadali, se neshoduje s žádnými aplikacemi RemoteApp. Zkontrolujte překlepy v názvu aplikace RemoteApp a akci opakujte.|
+|6010|PublishedItemsExist|Název prostředku, který se pokoušíte publikovat, je stejný jako prostředek, který už existuje. Změňte název prostředku a zkuste to znovu.|
+|7002|NameNotValidWhiteSpace|V názvu nepoužívejte prázdné znaky.|
+|8000|InvalidAuthorizationRoleScope|Název role, kterou jste zadali, se neshoduje s žádnými stávajícími názvy rolí. Zkontrolujte název role pro překlepy a zkuste to znovu. |
+|8001|UserNotFound |Uživatelské jméno, které jste zadali, neodpovídá žádnému existujícímu uživatelskému jménu. Přečtěte si název pro překlepy a zkuste to znovu.|
+|8005|UserNotFoundInAAD |Uživatelské jméno, které jste zadali, neodpovídá žádnému existujícímu uživatelskému jménu. Přečtěte si název pro překlepy a zkuste to znovu.|
+|8008|TenantConsentRequired|Podle [zde](tenant-setup-azure-active-directory.md#grant-azure-active-directory-permissions-to-the-windows-virtual-desktop-preview-service) uvedených pokynů poskytněte souhlas pro vašeho tenanta.|
+
+### <a name="external-connection-error-codes"></a>Kódy chyb externího připojení
+
+|Číselný kód|Kód chyby|Navrhované řešení|
+|---|---|---|
+|-2147467259|ConnectionFailedAdTrustedRelationshipFailure|Hostitel relace není správně připojen ke službě Active Directory.|
+|-2146233088|ConnectionFailedUserHasValidSessionButRdshIsUnhealthy|Připojení se nezdařilo, protože hostitel relace není k dispozici. Ověřte stav hostitele relace.|
+|-2146233088|ConnectionFailedClientDisconnect|Pokud se tato chyba zobrazí často, ujistěte se, že je počítač uživatele připojený k síti.|
+|-2146233088|ConnectionFailedNoHealthyRdshAvailable|Relace, ke které se hostitelský uživatel pokusil připojit, není v pořádku. Ladit virtuální počítač.|
+|-2146233088|ConnectionFailedUserNotAuthorized|Uživatel nemá oprávnění pro přístup k publikované aplikaci nebo k ploše. Tato chyba se může zobrazit po odebrání publikovaných prostředků správcem. Požádejte uživatele, aby tento informační kanál aktualizoval v aplikaci Vzdálená plocha.|
+|2|FileNotFound|Aplikace, ke které se uživatel pokusil získat přístup, je buď nesprávně nainstalovaná, nebo nastavená na nesprávnou cestu.|
+|3|InvalidCredentials|Uživatelské jméno nebo heslo, které uživatel zadal, neodpovídá žádnému z existujících uživatelských jmen a hesel. Zkontrolujte přihlašovací údaje pro překlepy a zkuste to znovu.|
+|8|ConnectionBroken|Spojení mezi klientem a bránou nebo serverem bylo vyřazeno. Není nutná žádná akce, pokud dojde k neočekávanému chování.|
+|14|UnexpectedNetworkDisconnect|Připojení k síti bylo vyřazeno. Požádejte uživatele, aby se připojil znovu.|
+|24|ReverseConnectFailed|Hostitelský virtuální počítač nemá žádný přímý dohled, který by Brána VP. Zajistěte, aby se IP adresa brány mohla přeložit.|
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace o rolích v rámci virtuální plochy Windows najdete v tématu [prostředí Preview virtuální plochy Windows](environment-setup.md).
+Další informace o rolích v rámci virtuálních počítačů s Windows najdete v tématu [prostředí pro virtuální počítače s Windows ve verzi Preview](environment-setup.md).
 
-Pokud chcete zobrazit seznam dostupných rutin Powershellu pro virtuální plochy Windows, najdete v článku [referenční informace prostředí PowerShell](/powershell/windows-virtual-desktop/overview).
+Seznam dostupných rutin PowerShellu pro virtuální počítač s Windows najdete v referenčních informacích k [prostředí PowerShell](/powershell/windows-virtual-desktop/overview).

@@ -1,6 +1,6 @@
 ---
-title: Přehled Microsoft Azure StorSimple Data Manager | Dokumentace Microsoftu
-description: Poskytuje přehled služby Správce dat StorSimple
+title: Přehled Data Manager Microsoft Azure StorSimple | Microsoft Docs
+description: Poskytuje přehled služby StorSimple Data Manager.
 services: storsimple
 documentationcenter: NA
 author: vidarmsft
@@ -13,89 +13,89 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 05/21/2018
-ms.author: vidarmsft
-ms.openlocfilehash: c5ffe3ec2ec3cb06297df6be4ba7021f692633bf
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: alkohli
+ms.openlocfilehash: 2ffe17bf7ef4f01c18d2c26f4a045add7302272d
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60630643"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67876102"
 ---
-# <a name="storsimple-data-manager-solution-overview"></a>Přehled řešení StorSimple Data Manageru
+# <a name="storsimple-data-manager-solution-overview"></a>Přehled řešení StorSimple Data Manager
 
 ## <a name="overview"></a>Přehled
 
-Microsoft Azure StorSimple používá cloudové úložiště jako rozšíření místního řešení a automaticky úrovně dat napříč v místním úložišti a cloudu. Data se ukládají v cloudu ve formátu s odstraněnými duplicitami a komprimovaný maximální efektivitu a snížit náklady. Jak jsou data uložená ve formátu StorSimple, není snadno použitelné jiné cloudové aplikace, které chcete použít.
+Microsoft Azure StorSimple používá cloudové úložiště jako rozšíření místního řešení a automaticky využívá data napříč místním úložištěm a cloudem. Data jsou ukládána v cloudu v případě maximální efektivity a komprimovaného formátu pro maximální efektivitu a snížení nákladů. Vzhledem k tomu, že jsou data uložená ve formátu StorSimple, není možné je snadno použít pro jiné cloudové aplikace, které můžete chtít použít.
 
-Správce dat StorSimple umožňuje bez problémů přistupovat a používat StorSimple formátování dat v cloudu. Dělá to pomocí transformace formátu StorSimple na nativní objekty BLOB a soubory, které můžete použít s jinými službami, jako jsou Azure Media Services, Azure HDInsights a Azure Machine Learning.
+StorSimple Data Manager vám umožní bezproblémově přistupovat k StorSimple formátu dat v cloudu a používat je. Dělá to tak, že transformuje formát StorSimple do nativních objektů BLOB a souborů, které můžete použít s jinými službami, jako jsou Azure Media Services, Azure HDInsights a Azure Machine Learning.
 
-Tento článek obsahuje přehled řešení StorSimple Data Manageru. Také vysvětluje, jak lze pomocí této služby pro psaní aplikací, které používají StorSimple dat a dalšími službami Azure v cloudu.
+Tento článek poskytuje přehled řešení StorSimple Data Manager. Vysvětluje taky, jak můžete tuto službu použít k psaní aplikací, které používají StorSimple data a další služby Azure v cloudu.
 
 ## <a name="how-it-works"></a>Jak to funguje?
 
-Služba StorSimple Data Manager identifikuje datům StorSimple v cloudu zařízení StorSimple řady 8000 místní. StorSimple data v cloudu je zajištěná, komprimované StorSimple formátu. Služba Data Manager poskytuje rozhraní API extrahovat StorSimple formátu data a transformovali je do jiných formátů, jako objekty BLOB Azure a službou soubory Azure. To transformuje data je pak snadno využívaná Azure HDInsight a Azure Media services. Transformace dat umožňuje proto tyto služby pro zpracování Transformovaná data z StorSimple 8000 series místního zařízení StorSimple. Tento tok je znázorněn v následujícím diagramu.
+Služba StorSimple Data Manager identifikuje StorSimple data v cloudu z řady StorSimple 8000 na místním zařízení. StorSimple data v cloudu jsou deduplicitované, komprimovaný formát StorSimple. Služba Data Manager poskytuje rozhraní API pro extrakci dat formátu StorSimple a jejich transformaci do jiných formátů, jako jsou objekty blob Azure a soubory Azure. Tato transformovaná data pak budou snadno spotřebovaná službou Azure HDInsight a Azure Media Services. Transformace dat tak umožňuje, aby tyto služby pracovaly s transformovanými StorSimple daty z řady StorSimple 8000 na místním zařízení. Tento tok je znázorněný v následujícím diagramu.
 
-![Vysokoúrovňový diagram](./media/storsimple-data-manager-overview/storsimple-data-manager-overview2.png)
+![Diagram vysoké úrovně](./media/storsimple-data-manager-overview/storsimple-data-manager-overview2.png)
 
 
-## <a name="data-manager-use-cases"></a>Případy použití Správce dat
+## <a name="data-manager-use-cases"></a>Případy použití Data Manager
 
-Správce dat pomocí Azure Functions, Azure Automation a Azure Data Factory můžete mít pracovních postupů spuštěných na data po jejich vstupu do StorSimple. Můžete chtít zpracovat mediálního obsahu ukládat na StorSimple se službou Azure Media Services, nebo spustit algoritmus strojového učení na těchto datech nebo převést cluster Hadoop k analýze dat, které ukládáte na StorSimple. Pomocí velkého množství služeb, které jsou k dispozici v Azure v kombinaci s daty na StorSimple můžete odemknout sílu vaše data.
+Data Manager s Azure Functions, Azure Automation a Azure Data Factory můžete použít k tomu, aby byly pracovní postupy běžící na vašich datech, jak jsou součástí StorSimple. Můžete chtít zpracovat mediální obsah, který budete ukládat na StorSimple, pomocí Azure Media Services, nebo můžete pro tato data spustit algoritmus Machine Learning nebo vytvořit cluster Hadoop, který bude analyzovat data uložená v StorSimple. Díky rozsáhlému poli služeb, které jsou dostupné v Azure, v kombinaci s daty na StorSimple můžete odemknout sílu svých dat.
 
 
 ## <a name="region-availability"></a>Dostupnost v oblastech
 
-Správce dat StorSimple je dostupná v následujících 7 oblastech:
+StorSimple Data Manager je k dispozici v následujících 7 oblastech:
 
  - Jihovýchodní Asie
- - USA – východ
- - Západní USA
- - Západní USA 2
+ - East US
+ - USA – západ
+ - Západ USA 2
  - Západní střed USA
  - Severní Evropa
  - Západní Evropa
 
-Však správce dat StorSimple umožňuje transformovat data v těchto oblastech. 
+StorSimple Data Manager lze však použít k transformaci dat v následujících oblastech. 
 
-![Pro data dostupných oblastí](./media/storsimple-data-manager-overview/data-manager-job-definition-different-regions-m.png)
+![Oblasti dostupné pro data](./media/storsimple-data-manager-overview/data-manager-job-definition-different-regions-m.png)
 
-Tato sada je větší, protože je schopen spustit až proces transformace v nasazení prostředků v některém z výše uvedených oblastech pod oblastí. Ano tak dlouho, dokud máte data uložená v některém z 19 oblastí, můžete transformaci dat pomocí této služby.
+Tato sada je větší, protože nasazení prostředků v některé z výše uvedených oblastí podporuje proces transformace v níže uvedených oblastech. Takže pokud se vaše data nacházejí v některé z 19 oblastí, můžete data transformovat pomocí této služby.
 
 
 ## <a name="choosing-a-region"></a>Výběr oblasti
 
 Doporučujeme:
- - Váš účet úložiště zdroje (je přidružený k zařízení StorSimple) a cílový účet úložiště (ve kterém chcete daná data v nativním formátu) být ve stejné oblasti Azure.
- - Použijete v oblasti, která obsahuje účet úložiště StorSimple Data Manager a úlohy definice. Pokud to není možné přenést do Správce dat v nejbližší oblasti Azure a pak vytvořte definici úlohy ve stejné oblasti jako váš účet úložiště StorSimple. 
+ - Váš zdrojový účet úložiště (ten přidružený k vašemu zařízení StorSimple) a cílový účet úložiště (kde mají být data v nativním formátu) ve stejné oblasti Azure.
+ - Data Manager a definice úlohy se zobrazí v oblasti, která obsahuje účet úložiště StorSimple. Pokud to není možné, uveďte Data Manager v nejbližší oblasti Azure a pak vytvořte definici úlohy ve stejné oblasti jako účet úložiště StorSimple. 
 
-    Pokud váš účet úložiště StorSimple není v 26 oblastech, které podporují vytváření definice úlohy, doporučujeme, abyste jako uvidíte dlouhá latenci a potenciální poplatky za odchozí přenos nelze spustit Správce dat StorSimple.
+    Pokud váš účet úložiště StorSimple není v 26 oblastech, které podporují vytvoření definice úlohy, doporučujeme, abyste nespouštěli StorSimple Data Manager, jak uvidíte dlouhou latenci a potenciální náklady na výstup.
     
-Cílem Microsoftu je zasloužit k zajištění, že služby Azure vždy k dispozici ve všech oblastech. Ale neplánované výpadky může nastat krátká období v určité oblasti. V takových případech otevřete definici správce dat a úlohy v oblasti, která nemá vliv výpadek a spuštění úlohy transformace. Některé další latence v takové situaci může dojít, ale může to být strategii zotavení v nepravděpodobném případě regionálního výpadku.
+Microsoft usiluje o to, aby byly služby Azure vždycky dostupné ve všech oblastech. Neplánované výpadky služby se ale můžou vyskytnout pro krátká období v určité oblasti. V takových případech můžete uvést Data Manager a definici úlohy v oblasti, která není ovlivněná výpadkem, a spustit úlohu transformace. V takovém případě může dojít k nějaké další latenci, ale může to být vaše strategie obnovení ve vzácných případech v oblasti regionu výpadku.
 
 ## <a name="security-considerations"></a>Aspekty zabezpečení
 
-Správce dat StorSimple musí šifrovací klíč dat služby k transformaci z formátu StorSimple k nativním formátu. Šifrovací klíč dat služby se vygeneruje, když je první zařízení zaregistruje ve službě StorSimple. Další informace o tomto klíči najdete v části [zabezpečení zařízení StorSimple](storsimple-8000-security.md).
+StorSimple Data Manager potřebuje šifrovací klíč dat služby k transformaci z formátu StorSimple do nativního formátu. Šifrovací klíč dat služby se vygeneruje, když se první zařízení zaregistruje ve službě StorSimple. Další informace o tomto klíči najdete v [StorSimple Security](storsimple-8000-security.md).
 
-Šifrovací klíč dat služby k dispozici jako vstup je uložené v trezoru klíčů, který je vytvořen při vytváření Data Manager. Trezor se nachází ve stejné oblasti Azure jako správce dat StorSimple. Tento klíč je odstraněna při odstranění služby Správce Data.
+Šifrovací klíč dat služby, který jste zadali jako vstup, je uložený v trezoru klíčů, který se vytvoří při vytváření Data Manager. Trezor se nachází ve stejné oblasti Azure jako vaše StorSimple Data Manager. Tento klíč se odstraní při odstranění služby Data Manager.
 
-Tento klíč se používá ve výpočetní prostředky k provedení transformace. Tyto výpočetní prostředky jsou umístěny ve stejné oblasti Azure jako vaší definice úlohy. Tuto oblast může nebo nemusí být stejná jako oblast, kde přinesete si vaše Data Manager.
+Tento klíč se používá ve výpočetních prostředcích k provedení transformace. Tyto výpočetní prostředky se nachází ve stejné oblasti Azure jako vaše definice úlohy. Tato oblast může nebo nemusí být shodná s oblastí, ve které jste zavedli Data Manager.
 
-Pokud vaše oblast správce dat se liší od vaší oblasti definice úlohy, je důležité pochopit, jaká data nebo metadata se nachází v každém z těchto oblastí. Následující diagram znázorňuje vliv mají různé oblasti pro definici správce dat a úlohy.
+Pokud je vaše oblast Data Manager odlišná od oblasti definice úlohy, je důležité pochopit, jaká data nebo metadata se nacházejí v každé z těchto oblastí. Následující diagram znázorňuje účinek používání různých oblastí Data Manager a definice úlohy.
 
-![Definice služby a úlohy v různých oblastech](./media/storsimple-data-manager-overview/data-manager-job-different-regions.png)
+![Definice služeb a úloh v různých oblastech](./media/storsimple-data-manager-overview/data-manager-job-different-regions.png)
 
 ## <a name="managing-personal-information"></a>Správa osobních údajů
 
-StorSimple Data Manager neshromažďuje ani zobrazit žádné osobní údaje. Další informace najdete v Zásadách ochrany osobních údajů společnosti Microsoft v [Centru zabezpečení](https://www.microsoft.com/trustcenter).
+StorSimple Data Manager neshromažďuje ani nezobrazuje žádné osobní údaje. Další informace najdete v Zásadách ochrany osobních údajů společnosti Microsoft v [Centru zabezpečení](https://www.microsoft.com/trustcenter).
 
 ## <a name="known-limitations"></a>Známá omezení
 
-Službu aktuálně má následující omezení:
-- StorSimple Data Manager aktuálně nefunguje s svazky, které jsou šifrovaná nástrojem bitlocker. Selhání úlohy se zobrazí, pokud se pokusíte spustit službu s šifrované jednotce.
-- V Transformovaná data nebudou uchována některých metadat souborů (včetně seznamy ACL).
-- Tato služba funguje pouze s svazky systému souborů NTFS.
-- Délky cesty souboru musí být jiný méně než 256 znaků. úloha se nezdaří.
+Služba má v současnosti tato omezení:
+- StorSimple Data Manager aktuálně nepracuje se svazky, které jsou šifrovaný bitlockerem. Pokud se pokusíte spustit službu se zašifrovanou jednotkou, zobrazí se selhání úlohy.
+- Některá metadata souborů (včetně seznamů ACL) se nebudou uchovávat v transformovaných datech.
+- Tato služba funguje jenom se svazky NTFS.
+- Délka cesty k souboru musí být kratší než 256 znaků, jinak se úloha nezdaří.
 
 ## <a name="next-steps"></a>Další postup
 
-[Použití StorSimple Data Manager uživatelského rozhraní pro transformaci dat](storsimple-data-manager-ui.md).
+[K transformaci dat použijte StorSimple data Manager uživatelské rozhraní](storsimple-data-manager-ui.md).

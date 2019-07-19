@@ -12,17 +12,17 @@ ms.devlang: dotNet
 ms.topic: quickstart
 ms.tgt_pltfrm: NA
 ms.workload: azure-vs
-ms.date: 03/26/2018
+ms.date: 06/26/2019
 ms.author: mikhegn
 ms.custom: mvc, devcenter, vs-azure
-ms.openlocfilehash: d7c0f19d6680eef7492faaaab0d45e0c70011f01
-ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
+ms.openlocfilehash: 02c77d1a34a4dec8732b5fa2edb4d7a55e079c28
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66428080"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68225199"
 ---
-# <a name="quickstart-deploy-a-net-reliable-services-application-to-service-fabric"></a>Rychlý start: Nasazení aplikací .NET do Service Fabric reliable services
+# <a name="quickstart-deploy-a-net-reliable-services-application-to-service-fabric"></a>Rychlý start: Nasazení aplikace Reliable Services .NET pro Service Fabric
 
 Azure Service Fabric je platforma distribuovaných systémů pro nasazování a správu škálovatelných a spolehlivých mikroslužeb a kontejnerů.
 
@@ -33,7 +33,7 @@ Tento rychlý start ukazuje, jak nasadit první aplikaci .NET do Service Fabric.
 Pomocí této aplikace se naučíte:
 
 * Vytvoření aplikace pomocí .NET a Service Fabric
-* Použití ASP.NET jako webového front-endu
+* Použití ASP.NET Core jako webového front-endu
 * Ukládání dat aplikace do stavové služby
 * Místní ladění aplikace
 * Škálování aplikace na více instancí napříč několika uzly
@@ -43,7 +43,7 @@ Pomocí této aplikace se naučíte:
 
 K provedení kroků v tomto kurzu Rychlý start je potřeba:
 
-1. [Nainstalovat Visual Studio 2019](https://www.visualstudio.com/) s **vývoj pro Azure** a **vývoj pro ASP.NET a web** úlohy.
+1. [Nainstalujte Visual Studio 2019](https://www.visualstudio.com/) s úlohami vývoje pro vývoj a vývoj pro **Azure** a **vývoj pro web ASP.NET** .
 2. [Nainstalovat Git](https://git-scm.com/).
 3. [Nainstalovat sadu Microsoft Azure Service Fabric SDK](https://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-CoreSDK).
 4. Spusťte následující příkaz a povolte sadě Visual Studio nasazování do místního clusteru Service Fabric:
@@ -54,11 +54,11 @@ K provedení kroků v tomto kurzu Rychlý start je potřeba:
     
 ## <a name="build-a-cluster"></a>Sestavení clusteru
 
-Po instalaci modulu runtime, sady SDK, nástroje sady Visual Studio, Docker a mít spuštěnou Dockeru, vytvořte pěti uzly místního vývojového clusteru.
+Až nainstalujete modul runtime, sady SDK, nástroje sady Visual Studio, Docker a máte spuštěný Docker, vytvořte místní vývojový cluster s pěti uzly.
 
 > [!Note]
-> Důvodem pro Docker spuštěný při vytváření clusteru je tak, aby se vytvoření clusteru s povolenými funkcemi kontejneru. Pokud není spuštěný Docker, budete muset znovu vytvořit cluster k povolení funkcí kontejneru.
-> I když je nezbytné pro tento konkrétní rychlý start, instrukce pro Docker spuštěné při vytváření clusteru je součástí osvědčeného postupu.
+> Důvodem pro použití Docker při vytváření clusteru je to, že cluster je vytvořený s povolenými funkcemi kontejnerů. Pokud Docker není spuštěný, budete muset cluster znovu vytvořit, aby se povolily funkce kontejneru.
+> I když v tomto konkrétním rychlém startu není potřeba, pokyny k tomu, aby měl Docker spuštěný při vytváření clusteru, jsou zahrnuté jako osvědčené postupy.
 > Zkontrolujte, že je Dockeru spuštěný, otevřením okna terminálu a zadáním příkazu `docker ps`, abyste viděli, jestli došlo k chybě. Pokud odpověď neindikuje chybu, Docker je spuštěný a vy jste připravení vytvořit cluster.
 
 1. Jako správce otevřete nové okno PowerShellu se zvýšenými oprávněními.
@@ -67,7 +67,7 @@ Po instalaci modulu runtime, sady SDK, nástroje sady Visual Studio, Docker a m�
    ```powershell
    . "C:\Program Files\Microsoft SDKs\Service Fabric\ClusterSetup\DevClusterSetup.ps1"
    ```
-3. Spuštěním následujícího příkazu spusťte nástroj Správce místního clusteru:
+3. Spusťte následující příkaz, který spustí nástroj Správce místního clusteru:
 
    ```powershell
    . "C:\Program Files\Microsoft SDKs\Service Fabric\Tools\ServiceFabricLocalClusterManager\ServiceFabricLocalClusterManager.exe"
@@ -87,18 +87,18 @@ git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
 
 ## <a name="run-the-application-locally"></a>Místní spuštění aplikace
 
-Klikněte pravým tlačítkem na ikonu sady Visual Studio v nabídce Start a zvolte **Spustit jako správce**. Připojení ladicího programu k vašim službám, budete muset spustit sadu Visual Studio jako správce.
+Klikněte pravým tlačítkem na ikonu sady Visual Studio v nabídce Start a zvolte **Spustit jako správce**. Chcete-li připojit ladicí program k vašim službám, je nutné spustit aplikaci Visual Studio jako správce.
 
 Otevřete řešení sady Visual Studio **Voting.sln** z úložiště, které jste naklonovali.
 
-Ve výchozím nastavení je hlasovací aplikace naslouchá na portu 8080.  Port aplikace je nastavený v souboru */VotingWeb/PackageRoot/ServiceManifest.xml*.  Port aplikace můžete změnit aktualizací atributu **Port** elementu **Endpoint**.  Pokud chcete aplikaci nasadit a spustit místně, port aplikace musí být otevřený a dostupný na vašem počítači.  Pokud změníte port aplikace, nahraďte novou hodnotu portu aplikace pro "8080" v celém tomto článku.
+Ve výchozím nastavení hlasovací aplikace naslouchá na portu 8080.  Port aplikace je nastavený v souboru */VotingWeb/PackageRoot/ServiceManifest.xml*.  Port aplikace můžete změnit aktualizací atributu **Port** elementu **Endpoint**.  Pokud chcete aplikaci nasadit a spustit místně, port aplikace musí být otevřený a dostupný na vašem počítači.  Pokud změníte port aplikace, nahraďte novou hodnotu portu aplikace "8080" v rámci tohoto článku.
 
 Pokud chcete aplikaci nasadit, stiskněte **F5**.
 
 > [!NOTE]
-> V okně výstupu sady Visual Studio se zobrazí zpráva "Adresa URL aplikace není nastavena nebo není adresu URL protokolu HTTP/HTTPS, takže se do aplikace neotevře v prohlížeči."  Tato zpráva neznačí chybu, pouze informuje, že se prohlížeč nespustí automaticky.
+> V okně výstupu sady Visual Studio se zobrazí zpráva "adresa URL aplikace není nastavená, nebo se nejedná o adresu URL protokolu HTTP/HTTPS, takže prohlížeč nebude otevřen v aplikaci."  Tato zpráva neznačí chybu, pouze informuje, že se prohlížeč nespustí automaticky.
 
-Po dokončení nasazení spusťte prohlížeč a otevřete `http://localhost:8080` zobrazíte front-endu webové aplikace.
+Po dokončení nasazení spusťte prohlížeč a otevřete `http://localhost:8080` aplikaci, abyste zobrazili webový front-end aplikace.
 
 ![Front-end aplikace](./media/service-fabric-quickstart-dotnet/application-screenshot-new.png)
 
@@ -123,7 +123,7 @@ Při hlasování v aplikaci dojde k následujícím událostem:
 
 ## <a name="debug-in-visual-studio"></a>Ladění v sadě Visual Studio
 
-Aplikace by měla být spuštěná bez problémů, ale pomocí ladicího programu se můžete podívat, jak fungují klíčové části aplikace. Při ladění aplikace v sadě Visual Studio používáte místní vývojový cluster Service Fabric. Můžete upravit možnosti ladění pro váš scénář. V této aplikaci se data ukládají v back-end službě s použitím spolehlivého slovníku. Sada Visual Studio ve výchozím nastavení odebere aplikaci při zastavení ladicího programu. Odebrání aplikace způsobí i odebrání dat v back-end službě. Pokud chcete zachovat data mezi ladicími relacemi, můžete změnit **Režim ladění aplikace** ve vlastnosti projektu **Voting** v sadě Visual Studio.
+Aplikace by měla být spuštěná bez problémů, ale pomocí ladicího programu se můžete podívat, jak fungují klíčové části aplikace. Při ladění aplikace v aplikaci Visual Studio používáte místní vývojový Cluster Service Fabric. Můžete upravit možnosti ladění pro váš scénář. V této aplikaci se data ukládají v back-end službě s použitím spolehlivého slovníku. Sada Visual Studio ve výchozím nastavení odebere aplikaci při zastavení ladicího programu. Odebrání aplikace způsobí i odebrání dat v back-end službě. Pokud chcete zachovat data mezi ladicími relacemi, můžete změnit **Režim ladění aplikace** ve vlastnosti projektu **Voting** v sadě Visual Studio.
 
 Pokud se chcete podívat, co se děje v kódu, proveďte následující kroky:
 
@@ -132,7 +132,7 @@ Pokud se chcete podívat, co se děje v kódu, proveďte následující kroky:
 2. Otevřete soubor **/VotingData/Controllers/VoteDataController.cs** a nastavte zarážku v metodě **Put** tohoto webového rozhraní API (řádek 54).
 
 3. Vraťte se do prohlížeče a klikněte na některou možnost hlasování nebo přidejte novou. Dostanete se k první zarážce v kontroleru rozhraní API webového front-endu.
-   * Tento krok je, kde odešle požadavek do kontroleru webového rozhraní API ve front-end službě jazyka JavaScript v prohlížeči.
+   * V tomto kroku pošle JavaScript v prohlížeči požadavek na kontroler webového rozhraní API ve front-endové službě.
 
      ![Front-end služba pro přidání hlasu](./media/service-fabric-quickstart-dotnet/addvote-frontend.png)
 
@@ -142,7 +142,7 @@ Pokud se chcete podívat, co se děje v kódu, proveďte následující kroky:
 
 4. Pokračujte stisknutím **F5**.
    - Po zobrazení výzvy v prohlížeči udělte skupině ServiceFabricAllowedUsers oprávnění ke čtení a provádění v režimu ladění.
-   - Teď jste na zarážce v back-end služby.
+   - Nyní se nacházíte v bodě přerušení v back-endové službě.
 
      ![Back-end služba pro přidání hlasu](./media/service-fabric-quickstart-dotnet/addvote-backend.png)
 
@@ -167,9 +167,9 @@ Pokud chcete upgradovat aplikaci, postupujte následovně:
 6. Změňte například verzi elementu **Kód** v části **VotingWebPkg** na 2.0.0 a klikněte na **Uložit**.
 
     ![Dialogové okno pro změnu verze](./media/service-fabric-quickstart-dotnet/change-version.png)
-7. V **publikovat aplikaci Service Fabric** dialogového okna, zkontrolujte **upgradovat aplikaci zaškrtávací políčko**.
-8.  Změna **cílový profil** k **PublishProfiles\Local.5Node.xml** a ujistěte se, že **koncový bod připojení** je nastavena na **místní Cluster**. 
-9. Vyberte **upgradovat aplikaci**.
+7. V dialogovém okně **publikovat Service Fabric aplikaci** zaškrtněte políčko **upgradovat aplikaci**.
+8.  Změňte **cílový profil** na **PublishProfiles\Local.5Node.XML** a ujistěte se, že je **koncový bod připojení** nastavený na **místní cluster**. 
+9. Vyberte možnost **upgradovat aplikaci**.
 
     ![Dialogové okno pro publikování – nastavení upgradu](./media/service-fabric-quickstart-dotnet/upgrade-app.png)
 
@@ -183,12 +183,12 @@ Pokud chcete upgradovat aplikaci, postupujte následovně:
 
     Service Fabric zajišťuje bezpečné upgrady tím, že po upgradu služby na každém uzlu v clusteru dvě minuty počká. Počítejte s tím, že úplná aktualizace bude trvat přibližně osm minut.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto rychlém startu jste se naučili:
 
 * Vytvoření aplikace pomocí .NET a Service Fabric
-* Použití ASP.NET jako webového front-endu
+* Použití ASP.NET Core jako webového front-endu
 * Ukládání dat aplikace do stavové služby
 * Místní ladění aplikace
 * Škálování aplikace na více instancí napříč několika uzly

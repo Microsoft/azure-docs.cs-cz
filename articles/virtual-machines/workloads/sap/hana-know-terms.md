@@ -1,6 +1,6 @@
 ---
-title: Vědět podmínky SAP HANA v Azure (velké instance) | Dokumentace Microsoftu
-description: Vědět podmínky SAP HANA v Azure (velké instance).
+title: Poznejte SAP HANA v Azure (velké instance) | Microsoft Docs
+description: Seznamte se s podmínkami SAP HANA v Azure (velké instance).
 services: virtual-machines-linux
 documentationcenter: ''
 author: RicksterCDN
@@ -12,38 +12,41 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 11/20/2018
-ms.author: saghorpa
+ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c069203e94872452c11a7e6cebccd213e0af639c
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 2564e0d34383f7c1daff5b02a871778fb90546cc
+ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67706939"
+ms.lasthandoff: 07/13/2019
+ms.locfileid: "67868990"
 ---
 # <a name="know-the-terms"></a>Seznámení s podmínkami
 
-Několik běžných definice se běžně používají v architektury a technické příručce pro nasazení. Mějte na paměti následující termíny a jejich význam:
+V průvodci architekturou a technickým nasazením se často používá několik běžných definic. Všimněte si následujících podmínek a jejich významu:
 
 - **IaaS**: Infrastruktura jako služba.
 - **PaaS**: Platforma jako služba.
 - **SaaS**: Software jako služba.
-- **Komponenta SAP**: Jednotlivé SAP aplikace, jako je ERP ústřední součást (ECC), Business Warehouse (BW), správci řešení nebo Enterprise Portal (RP). Komponenty SAP může být založen na tradičních technologií ABAP a Java nebo jiných NetWeaver na základě aplikace, například pro obchodní objekty.
-- **Prostředí SAP**: Jeden nebo více komponent SAP logicky seskupeny provádět obchodní funkce, jako je vývoj, kontrola kvality, školení, zotavení po havárii nebo produkčního prostředí.
-- **Prostředí SAP**: Odkazuje na celý prostředky SAP v prostředí vašeho IT. Prostředí SAP zahrnuje všechny produkčního prostředí a neprodukční prostředí.
-- **Systém SAP**: Kombinace DBMS vrstvy a aplikaci vrstvu, třeba vývoj systému SAP ERP, SAP BW otestovat systém a produkční systém SAP CRM. Nasazení v Azure nepodporují dělení tyto dvě vrstvy mezi místními a Azure. Systém SAP je nasazená místně nebo je nasazené v Azure. Můžete nasadit různé systémy prostředí SAP do Azure nebo místně. Například můžete nasadit vývoj SAP CRM a systémů v Azure můžete testovat při nasazování SAP CRM produkční systém místní. Pro SAP HANA v Azure (velké instance) je určena hostujete aplikační vrstvě SAP systémů SAP na virtuálních počítačích a související instance SAP HANA na jednotce v SAP HANA v Azure (velké instance) razítko.
-- **Velké Instance razítka**: Zásobník hardware infrastruktury, který je certifikací pro SAP HANA TDI a vyhrazených ke spuštění instance systému SAP HANA v Azure.
-- **SAP HANA v Azure (velké instance):** Oficiální název nabídky v Azure ke spuštění instance HANA v certifikací pro SAP HANA TDI hardware, který je nasazený v velká Instance razítka v různých oblastech Azure. Související výraz *velká Instance HANA* je zkratka pro *SAP HANA v Azure (velké instance)* a se běžně používá v této příručce technického nasazení.
-- **Mezi různými místy**: Popisuje scénář, ve které jsou nasazené virtuální počítače s předplatným Azure, který má připojení Azure ExpressRoute mezi místní datová centra a Azure, site-to-site a multi-Site. Dokumentace v běžných Azure a tyto druhy nasazení jsou také popsány jako scénáře mezi různými místy. Důvod pro připojení je k rozšíření místních domén, místní Azure Active Directory/OpenLDAP a místní DNS do Azure. V místním prostředí je rozšířit na prostředky Azure z předplatných Azure. U tohoto rozšíření virtuální počítač může být součástí místní domény. 
+- **Součást SAP**: Jednotlivá aplikace SAP, jako je například součást ERP Central (ECC), obchodní sklad (ČERNOBÍLý), správce řešení nebo Enterprise Portal (EP). Komponenty SAP můžou být založené na tradičních technologiích ABAP a Java nebo na NetWeaver aplikaci, jako jsou třeba obchodní objekty.
+- **Prostředí SAP**: Jedna nebo více komponent SAP jsou logicky seskupeny k provádění obchodních funkcí, jako je vývoj, zabezpečování kvality, školení, zotavení po havárii nebo produkce.
+- **SAP na šířku**: Odkazuje na celé prostředky SAP na svém IT na svém IT oddělení. SAP na šířku zahrnuje všechna produkční a neprodukční prostředí.
+- **Systém SAP**: Kombinace vrstvy a aplikační vrstvy systému DBMS, například vývojového systému SAP ERP, SAP BW testovacího systému a produkčního systému SAP CRM. Nasazení Azure nepodporuje dělení těchto dvou vrstev mezi místními a Azure. Systém SAP je buď nasazený místně, nebo je nasazený v Azure. Můžete nasadit různé systémy SAP na šířku do Azure nebo do místního prostředí. Můžete například nasadit vývojové a testovací systémy SAP CRM do Azure, zatímco nasazujete produkční systém SAP CRM v místním prostředí. V případě SAP HANA v Azure (velké instance) je zamýšlená možnost hostování aplikace SAP pro systémy SAP na virtuálních počítačích a související instanci SAP HANA na jednotce v SAP HANA na platformě Azure (velké instance).
+- **Razítko velké instance**: Sada hardwarových infrastruktur, která je SAP HANA s certifikací TDI a vyhrazená ke spouštění SAP HANA instancí v rámci Azure.
+- **SAP HANA v Azure (velké instance):** Oficiální název nabídky v Azure, ve kterém se spouštějí instance HANA v SAP HANA hardwaru TDI, který je nasazený ve velkých názvech instancí v různých oblastech Azure. Související *Velká instance Hana* je krátká pro *SAP HANA v Azure (velké instance)* a v této technické příručce pro nasazení se používá často.
+- **Mezi různými**místy: Popisuje situaci, kdy se virtuální počítače nasazují do předplatného Azure, které má připojení typu Site-to-site nebo Azure ExpressRoute mezi místními datovými centry a Azure. V běžné dokumentaci k Azure jsou tyto typy nasazení popsány také jako mezi místními scénáři. Důvodem připojení je rozšiřování místních domén, místních Azure Active Directory/OpenLDAP a místní DNS do Azure. Místní orientace se rozšiřuje na prostředky Azure předplatných Azure. S tímto rozšířením můžou být virtuální počítače součástí místní domény. 
 
-   Domény uživatele z místní domény můžete přístup k serverům a spustit služby na těchto virtuálních počítačů (například systému DBMS služby). Místně nasadili komunikace a název řešení mezi virtuálními počítači a virtuálních počítačů nasazených Azure je možné. Tento scénář je typický pro způsob, ve které jsou nasazené prostředky většina SAP. Další informace najdete v tématu [Azure VPN Gateway](../../../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) a [vytvoření virtuální sítě s připojením site-to-site pomocí webu Azure portal](../../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
-- **Tenant**: Získá zákazník nasazené v razítku velká Instance HANA samostatný do *tenanta.* Tenant je izolovaný v oblasti sítí, úložiště a výpočetní vrstvy od ostatních tenantů. Úložiště a výpočetní jednotky přiřazená různých tenantech nelze zobrazit mezi sebou ani vzájemně komunikovat na úrovni razítko velká Instance HANA. Zákazník se může rozhodnout pro nasazení do různých tenantech. Dokonce i pak neexistuje žádná komunikace mezi klienty na úrovni razítko velká Instance HANA.
-- **Kategorie SKU**: Pro velká Instance HANA nabízíme následující dvě kategorie skladové položky:
-    - **Typ třídy I**: S72 S72m, S96, S144, S144m, S192, S192m a S192xm
-    - **Zadejte třídu II**: S384 S384m, S384xm, S384xxm, S576m, S576xm, S768m, S768xm a S960m
+   Uživatelé domény v místní doméně mají přístup k serverům a spouštějí služby na těchto virtuálních počítačích (například služby DBMS). Je možné komunikovat a překlad názvů mezi virtuálními počítači nasazenými místně a virtuálními počítači nasazenými v Azure. Tento scénář je typický pro způsob, jakým se nasazují většina prostředků SAP. Další informace najdete v tématu [Azure VPN Gateway](../../../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) a [vytvoření virtuální sítě s připojením typu Site-to-site pomocí Azure Portal](../../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+- **Tenant**: Zákazník nasazený v rámci razítka velké instance HANA získá izolaci do *tenanta.* Tenant je izolovaný v síti, úložišti a výpočetní vrstvě z jiných tenantů. Úložiště a výpočetní jednotky přiřazené různým klientům se nemůžou vzájemně zobrazit ani vzájemně komunikovat na úrovni razítka velké instance služby HANA. Zákazník se může rozhodnout, že mají nasazení v různých klientech. I potom neexistuje žádná komunikace mezi klienty na úrovni razítka velké instance HANA.
+- **Kategorie SKU**: Pro velkou instanci HANA jsou k dispozici tyto dvě kategorie SKU:
+    - **Třída Type I**: S72, S72m, S96, S144, S144m, S192, S192m a S192xm
+    - **Třída Type II**: S384, S384m, S384xm, S384xxm, S576m, S576xm, S768m, S768xm a S960m
+- **Razítko**: Definuje interní velikost nasazení od Microsoftu velkých instancí HANA. Než bude možné nasazovat velké jednotky instancí HANA, musí být v umístění datového centra nasazené razítko pro velké instance, které se skládá z výpočetních, síťových a úložných stojanů. Toto nasazení se nazývá razítko velkého výskytu instance HANA nebo revize 4 (viz níže) na základě použití alternativního **řádku velkých instancí** .
+- **Revize**: K dispozici jsou dvě různé revize razítek pro velká instance v HANA. Liší se v architektuře a blízkosti hostitelů virtuálních počítačů Azure.
+    - "Revize 3" (rev 3): je původní návrh, který byl nasazen ze polovině roku 2016
+    - "Revize 4" (Rev 4): je nový návrh, který může poskytnout užší blízkost hostitelům virtuálních počítačů Azure a tím snížit latenci sítě mezi virtuálními počítači Azure a jednotkami velkých instancí HANA. 
 
-
-Různé další zdroje informací jsou k dispozici pro nasazení úloh SAP v cloudu. Pokud budete chtít provést nasazení SAP Hana v Azure, musíte být zkušenosti s a nezná zásady Azure IaaS a nasazení úloh SAP v Azure IaaS. Než budete pokračovat, naleznete v tématu [řešení použití SAP na virtuálních počítačích Azure](get-started.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) Další informace. 
+K dispozici je celá řada dalších prostředků pro nasazení úlohy SAP v cloudu. Pokud máte v úmyslu spustit nasazení SAP HANA v Azure, musíte mít zkušenosti s principy Azure IaaS a nasazením úloh SAP na Azure IaaS. Než budete pokračovat, přečtěte si téma [použití řešení SAP na virtuálních počítačích Azure](get-started.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) , kde najdete další informace. 
 
 **Další postup**
-- Přečtěte si [HLI certifikace](hana-certification.md)
+- Reference k [certifikaci HLI](hana-certification.md)

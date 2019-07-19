@@ -1,22 +1,22 @@
 ---
 title: Co je Azure Disk Encryption?
-description: Tento článek obsahuje přehled služby Azure Disk Encryption
+description: Tento článek poskytuje přehled Azure Disk Encryption
 author: msmbaldwin
 ms.service: security
 ms.topic: article
 ms.author: mbaldwin
-ms.date: 06/05/2019
+ms.date: 07/17/2019
 ms.custom: seodec18
-ms.openlocfilehash: 58c5c8321e505fe2c1c7d19c58fe0d031b75b3e4
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: a67f19f0823827dad74e7aba15a92d696fbf580b
+ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67294865"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68304267"
 ---
-# <a name="azure-disk-encryption-overview"></a>Přehled služby Azure Disk Encryption
+# <a name="azure-disk-encryption-overview"></a>Přehled Azure Disk Encryption
 
-Azure Disk Encryption pomáhá zabezpečit a chránit vaše data, aby splňovala závazky vaší organizace zabezpečení a dodržování předpisů z hlediska. Používá [BitLocker](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-overview) funkce Windows a [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt) funkce Linux zajišťuje šifrování pro operační systém a datové disky virtuálních počítačů Azure (VM). Je integrovaná taky s [Azure Key Vault](https://azure.microsoft.com/documentation/services/key-vault/) umožňují řídit a spravovat klíče pro šifrování disků a tajné klíče a zajišťuje, že všechna data na discích virtuálních počítačů šifrování v klidovém stavu v úložišti Azure. Azure Disk Encryption pro Windows a virtuální počítače s Linuxem jsou obecně dostupné ve všech veřejných oblastech Azure a oblastech Azure Government pro standardní virtuální počítače a virtuální počítače se službou Azure Premium Storage. 
+Azure Disk Encryption pomáhá chránit a chránit vaše data, aby splňovala závazky zabezpečení vaší organizace a dodržování předpisů. Používá funkci [BitLocker](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-overview) systému Windows a funkci [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt) systému Linux k poskytování šifrování svazku pro operační systém a datové disky virtuálních počítačů Azure (VM). Integruje se také s [Azure Key Vault](https://azure.microsoft.com/documentation/services/key-vault/) , která vám usnadní kontrolu a správu klíčů a tajných kódů disku a zajišťuje, aby všechna data na discích virtuálních počítačů byla v klidovém stavu zašifrovaná v úložišti Azure Storage. Azure Disk Encryption pro virtuální počítače s Windows a Linux je všeobecně dostupná ve všech veřejných oblastech Azure a oblasti Azure Government pro standardní virtuální počítače a virtuální počítače s Azure Premium Storage. 
 
 Pokud používáte Azure Security Center, budete upozorněni, pokud máte virtuální počítače, které nejsou šifrovány. Zobrazit výstrahy jako vysokou závažností a doporučuje se pro šifrování tyto virtuální počítače.
 
@@ -28,71 +28,71 @@ Pokud používáte Azure Security Center, budete upozorněni, pokud máte virtu�
 
 ## <a name="encryption-scenarios"></a>Šifrovací scénáře
 
-S Azure Disk Encryption je vyřešit požadavky na dodržování předpisů a zabezpečení organizace díky zabezpečení vašich virtuálních počítačů Azure v klidovém stavu pomocí standardní šifrovací technologie. Můžete také nakonfigurovat virtuální počítače ke spuštění pod správou zákazníka klíče a zásady (BYOK) a auditovat využití klíčů v trezoru klíčů.
+Pomocí Azure Disk Encryption můžete řešit požadavky organizace na zabezpečení a dodržování předpisů díky zabezpečení virtuálních počítačů Azure v klidovém prostředí pomocí standardní šifrovací technologie v oboru. Virtuální počítače můžete také nakonfigurovat tak, aby se spouštěly v rámci klíčů a zásad řízených zákazníkem (BYOK), a auditovat používání těchto klíčů v trezoru klíčů.
 
-Azure Disk Encryption podporuje následující scénáře zákazníka:
+Azure Disk Encryption podporuje následující scénáře zákazníků:
 
-* Povolení a zákaz šifrování na nové virtuální počítače vytvořené z imagí podporovaných Galerie Azure.
-* Povolení a zákaz šifrování v existujících virtuálních počítačů, které běží v Azure.
-* Povolení a zákaz šifrování na nové virtuální počítače Windows vytvořené z předem šifrované virtuální pevný disk a šifrovacích klíčů.
-* Povolení a zákaz šifrování u škálování virtuálního počítače Windows nastaví.
-* Povolení a zákaz šifrování dat disků pro škálovací sady virtuálních počítačů Linux.
-* Povolení a zákaz šifrování spravovaného disku virtuální počítače.
-* Aktualizace nastavení šifrování existující šifrované Premium a Premium Storage VM.
+* Povolování a zakazování šifrování u nových virtuálních počítačů vytvořených z podporovaných imagí Galerie Azure.
+* Povolování a zakazování šifrování u stávajících virtuálních počítačů, které běží v Azure.
+* Povolování a zakazování šifrování pro nové virtuální počítače s Windows vytvořené z předem zašifrovaného virtuálního pevného disku a šifrovacích klíčů.
+* Povolení a zakázání šifrování ve Windows Virtual Machine Scale Sets.
+* Povolování a zakazování šifrování u datových jednotek pro systémy Linux Virtual Machine Scale Sets.
+* Povolení a zakázání šifrování virtuálních počítačů se spravovanými disky.
+* Aktualizuje se nastavení šifrování stávajícího šifrovaného a nePremium Storageho virtuálního počítače na úrovni Premium.
 * Zálohování a obnovení šifrovaných virtuálních počítačů.
-* Přineste vlastní šifrování (BYOE) a scénáře typu přineste si vlastní klíč (BYOK), ve kterých zákazníkům používat jejich vlastní šifrovací klíče a uložit je do služby Azure key vault.
+* Využijte vlastní šifrování (BYOE) a přineste si vlastní klíče (BYOK), ve kterých zákazníci používají vlastní šifrovací klíče a ukládají je do trezoru klíčů Azure.
 
-Také podporuje následující scénáře pro virtuální počítače při jsou povolena ve službě Microsoft Azure:
+Podporuje také následující scénáře pro virtuální počítače, pokud jsou povolené v Microsoft Azure:
 
 * Integrace se službou Azure Key Vault.
-* [Virtuální počítače úrovně standard](https://azure.microsoft.com/pricing/details/virtual-machines/) , které splňují [minimální požadovaná paměť](azure-security-disk-encryption-prerequisites.md#supported-vm-sizes). 
-* Povolení šifrování na Windows a virtuální počítače s Linuxem, spravovaný disk a škálovací sady virtuálních počítačů podporované Image Galerie Azure.
-* Zakazuje šifrování u operačního systému a datové disky pro virtuální počítače s Windows, škálování virtuální počítače a spravovaných disků virtuálních počítačů.
-* Zakázat šifrování na datových jednotkách pro virtuální počítače s Linuxem, škálování virtuální počítače a spravovaných disků virtuálních počítačů.
-* Povolení šifrování na virtuální počítače s klientským operačním systémem Windows.
-* Povolení šifrování na svazcích s cestami k připojení.
-* Povolení šifrování na virtuální počítače s Linuxem, které jsou nakonfigurované pro disk s použitím mdadm prokládání (RAID).
-* Povolení šifrování na virtuální počítače s Linuxem používající LVM pro datové disky.
-* Povolení šifrování na operační systém Linux virtuálního počítače a datové disky.
+* [Virtuální počítače úrovně Standard](https://azure.microsoft.com/pricing/details/virtual-machines/) , které splňují [minimální požadavky na paměť](azure-security-disk-encryption-prerequisites.md#supported-vm-sizes). 
+* Povolení šifrování na virtuálních počítačích s Windows a Linux, spravovaných discích a virtuálních počítačích sady škálování z podporovaných imagí Galerie Azure
+* Zakázání šifrování v operačních systémech a datových jednotkách pro virtuální počítače s Windows, virtuální počítače s nastavenou velikostí a virtuální počítače se spravovanými disky.
+* Zakážete šifrování na datových jednotkách pro virtuální počítače se systémem Linux, virtuální počítače s možností škálování a virtuální počítače se spravovanými disky.
+* Povoluje se šifrování na virtuálních počítačích, na kterých běží klientský operační systém Windows.
+* Povoluje se šifrování u svazků s cestami připojení.
+* Povolení šifrování pro virtuální počítače se systémem Linux, které jsou konfigurovány pomocí diskového disku RAID, pomocí mdadm.
+* Povolení šifrování u virtuálních počítačů se systémem Linux, které pro datové disky používají LVM
+* Povolení šifrování na discích s operačním systémem Linux a datových disků.
 
    > [!NOTE]
-   > Šifrování jednotky operačního systému u některých Linuxových distribucích se nepodporuje. Další informace najdete v tématu [Azure Disk Encryption podporované operační systémy: Linux](azure-security-disk-encryption-prerequisites.md#linux).
+   > Šifrování jednotky operačního systému u některých Linuxových distribucích se nepodporuje. Další informace najdete v [tématu Podporované operační systémy Azure Disk Encryption: Linux](azure-security-disk-encryption-prerequisites.md#linux).
    
-* Povolení šifrování na virtuálních počítačích, které mají nakonfigurované prostory úložiště Windows od verze Windows serveru 2016.
-* Zálohování a obnovení šifrovaných virtuálních počítačů pro scénáře bez KEK a šifrovací klíč klíče (KEK).
+* Povolení šifrování u virtuálních počítačů, které jsou nakonfigurované s prostory úložiště Windows počínaje Windows serverem 2016. Prostory úložiště s přímým přístupem (S2D) ještě není podporovaný.
+* Zálohování a obnovení šifrovaných virtuálních počítačů pro KEK (Key Encryption Key) i pro jiné scénáře než KEK.
 
-Azure Disk Encryption nefunguje pro následující scénáře, funkce a technologie:
+Azure Disk Encryption nefunguje v následujících scénářích, funkcích a technologiích:
 
-* Šifrování na úrovni basic virtuální počítač nebo virtuální počítače vytvořené prostřednictvím klasické metody vytvoření virtuálního počítače.
-* Zakázáním šifrování na disku operačního systému nebo datový disk virtuálního počítače s Linuxem při šifrované jednotky operačního systému.
-* Šifrování jednotky operačního systému pro škálovací virtuálních počítačů Linux nastaví.
-* Šifrování Windows virtuální počítače nakonfigurované systémy založené na softwaru diskového pole RAID.
-* Šifrování vlastních imagí na virtuální počítače s Linuxem.
-* Integrace s v místním systémem správy klíčů.
+* Šifrování virtuálních počítačů nebo virtuálních počítačů na úrovni Basic vytvořených prostřednictvím metody vytváření virtuálních počítačů
+* Zakázání šifrování na jednotce operačního systému nebo datové jednotce virtuálního počítače se systémem Linux, pokud je jednotka operačního systému zašifrovaná.
+* Šifrování jednotky operačního systému pro systém Linux Virtual Machine Scale Sets.
+* Šifrování virtuálních počítačů s Windows nakonfigurovaných s využitím softwarových systémů RAID.
+* Šifrování vlastních imagí na virtuálních počítačích se systémem Linux.
+* Integrace s místním systémem správy klíčů.
 * Soubory Azure (sdílený systém souborů).
 * Network File System (NFS).
 * Dynamické svazky.
 
 ## <a name="encryption-features"></a>Funkce šifrování
 
-Když povolíte a nasadíte Azure Disk Encryption pro virtuální počítače Azure, můžete nakonfigurovat následující funkce, aby byla povolená:
+Když povolíte a nasadíte Azure Disk Encryption pro virtuální počítače Azure, můžete nakonfigurovat následující funkce, které se mají povolit:
 
-* Šifrování svazku operačního systému k ochraně spouštěcího svazku v klidovém stavu ve službě storage.
-* Šifruje datové svazky k ochraně objemy dat v klidovém stavu ve službě storage.
-* Zakázáním šifrování na jednotkách operačního systému a dat pro virtuální počítače s Windows.
-* Zakázáním šifrování dat disky pro virtuální počítače s Linuxem (jenom v případě není zašifrovaný jednotky operačního systému).
-* Pomáhá chránit šifrovací klíče a tajné kódy ve vašem předplatném Azure Key Vault.
-* Hlásí stav šifrování šifrovaných virtuálních počítačů.
+* Šifrování svazku operačního systému pro ochranu spouštěcího svazku v klidovém úložišti.
+* Šifrování datových svazků pro ochranu datových svazků v klidovém úložišti.
+* Zákaz šifrování v operačním systému a datových jednotkách pro virtuální počítače s Windows
+* Zakázání šifrování na datových jednotkách pro virtuální počítače se systémem Linux (pouze v případě, že jednotka operačního systému není šifrovaná).
+* Ochrana šifrovacích klíčů a tajných kódů v předplatném Azure Key Vault.
+* Oznamuje se stav šifrování šifrovaného virtuálního počítače.
 * Odebírá se nastavení konfigurace šifrování disku z virtuálního počítače.
 * Zálohování a obnovení šifrovaných virtuálních počítačů pomocí služby Azure Backup.
 
-Zahrnuje řešení Azure Disk Encryption pro virtuální počítače pro Windows a Linux:
+Azure Disk Encryption pro virtuální počítače pro systémy Windows a Linux zahrnují:
 
-* [Rozšíření disk encryption pro Windows](../virtual-machines/extensions/azure-disk-enc-windows.md).
+* [Rozšíření šifrování disku pro systém Windows](../virtual-machines/extensions/azure-disk-enc-windows.md).
 * [Rozšíření šifrování disku pro Linux](../virtual-machines/extensions/azure-disk-enc-linux.md).
-* [Rutiny Powershellu disk encryption](/powershell/module/az.compute/set-azvmdiskencryptionextension?view=azps-2.2.0).
-* [Rutiny rozhraní příkazového řádku Azure disk encryption](/cli/azure/vm/encryption?view=azure-cli-latest).
-* [Šablony Azure Resource Manageru disk encryption](azure-security-disk-encryption-appendix.md#resource-manager-templates).
+* [Rutiny pro šifrování disků prostředí PowerShell](/powershell/module/az.compute/set-azvmdiskencryptionextension?view=azps-2.2.0).
+* [Rutiny pro šifrování disků v Azure CLI](/cli/azure/vm/encryption?view=azure-cli-latest).
+* [Šablony Azure Resource Manager Disk Encryption](azure-security-disk-encryption-appendix.md#resource-manager-templates).
 
 > [!NOTE]
 > Není k dispozici bez dalších poplatků k šifrování disků virtuálních počítačů pomocí Azure Disk Encryption. Standardní [cenách služby Key Vault](https://azure.microsoft.com/pricing/details/key-vault/) platí pro trezor klíčů, který se používá k ukládání šifrovacích klíčů. 
@@ -103,23 +103,23 @@ Pokud chcete povolit disk encryption pro Windows a virtuální počítače s Lin
 
 1. Přihlásit se k povolení šifrování disků pomocí šablony Azure Disk Encryption Resource Manageru, rutin prostředí PowerShell nebo rozhraní příkazového řádku Azure a zadejte požadovanou konfiguraci šifrování.
 
-   * Pro virtuální pevný disk scénář šifrované zákazníka nahrání šifrovaného virtuálního pevného disku do účtu úložiště a šifrovací klíče do trezoru klíčů. Potom zadejte konfiguraci šifrování pro povoluje šifrování na nový virtuální počítač.
-   * Pro nové virtuální počítače, které jsou vytvořené z imagí podporovaných galerie a stávající virtuální počítače, na kterých už běží v Azure zadejte konfiguraci šifrování pro povolení šifrování na virtuálním počítači.
+   * Pro virtuální pevný disk scénář šifrované zákazníka nahrání šifrovaného virtuálního pevného disku do účtu úložiště a šifrovací klíče do trezoru klíčů. Pak zadejte konfiguraci šifrování pro povolení šifrování u nového virtuálního počítače.
+   * Pro nové virtuální počítače, které jsou vytvořené z podporovaných imagí galerie, a stávající virtuální počítače, které už běží v Azure, poskytněte konfiguraci šifrování, aby se povolilo šifrování na virtuálním počítači.
 
-1. Udělte přístup na platformu Azure ke čtení materiál klíče šifrování (šifrovací klíče nástroje BitLocker systému Windows) a heslo pro Linux z trezoru klíčů na povolit šifrování na virtuálním počítači.
+1. Udělte platformě Azure přístup ke čtení materiálu šifrovacího klíče (šifrovací klíče BitLockeru pro systémy Windows a přístupové heslo pro Linux) z trezoru klíčů, aby se povolilo šifrování na VIRTUÁLNÍm počítači.
 
 1. Azure aktualizuje model služby virtuálního počítače s šifrováním a konfigurace služby key vault a nastaví šifrovaný virtuální počítač.
 
    ![Microsoft Antimalware v Azure](./media/azure-security-disk-encryption/disk-encryption-fig1.png)
 
 ## <a name="decryption-workflow"></a>Dešifrování pracovního postupu
-Pokud chcete zakázat šifrování disků pro virtuální počítače, proveďte následující postup vysoké úrovně:
+Pokud chcete zakázat šifrování disku pro virtuální počítače, proveďte následující kroky vysoké úrovně:
 
-1. Vybrat můžete zakázat šifrování (dešifrování) spuštěného virtuálního počítače v Azure a zadejte požadovanou konfiguraci dešifrování. Můžete vypnout pomocí šablony Azure Disk Encryption Resource Manageru, rutin prostředí PowerShell nebo rozhraní příkazového řádku Azure.
+1. Zvolte Zakázání šifrování (dešifrování) na běžícím virtuálním počítači v Azure a určete konfiguraci dešifrování. Můžete vypnout pomocí šablony Azure Disk Encryption Resource Manageru, rutin prostředí PowerShell nebo rozhraní příkazového řádku Azure.
 
-   Tento krok zakazuje šifrování operačního systému nebo objem dat nebo na spuštěný virtuální počítač Windows. Jak je uvedeno v předchozí části, zakazuje šifrování disku operačního systému Linux se nepodporuje. Dešifrování kroku je povoleno pouze pro datové jednotky na virtuální počítače s Linuxem jako disk s operačním systémem není šifrovaný.
+   Tento krok zakazuje šifrování operačního systému nebo datového svazku nebo obojího na spuštěném virtuálním počítači s Windows. Jak je uvedeno v předchozí části, zakazuje šifrování disku operačního systému Linux se nepodporuje. Dešifrování kroku je povoleno pouze pro datové jednotky na virtuální počítače s Linuxem jako disk s operačním systémem není šifrovaný.
 
-1. Aktualizace Azure modelu služby virtuálního počítače a virtuálního počítače je označena jako dešifrovat. Obsah virtuálního počítače už jsou v klidovém stavu zašifrovaná.
+1. Azure aktualizuje model služby virtuálních počítačů a virtuální počítač je označený jako dešifrovaný. Obsah virtuálního počítače už jsou v klidovém stavu zašifrovaná.
 
    > [!NOTE]
    > Operace šifrování zakázání nedojde k odstranění trezoru klíčů a šifrování klíče materiál (šifrovací klíče nástroje BitLocker systému Windows) nebo přístupové heslo pro Linux.
@@ -137,31 +137,31 @@ Novou verzi sady Azure Disk Encryption eliminuje nutnost poskytnout parametr apl
 
 1. Přihlásit se k povolení šifrování disků pomocí šablony Azure Disk Encryption Resource Manageru, rutin prostředí PowerShell nebo rozhraní příkazového řádku Azure a zadejte požadovanou konfiguraci šifrování.
 
-   * Pro virtuální pevný disk scénář šifrované zákazníka nahrání šifrovaného virtuálního pevného disku do účtu úložiště a šifrovací klíče do trezoru klíčů. Potom zadejte konfiguraci šifrování pro povoluje šifrování na nový virtuální počítač.
-   * Pro nové virtuální počítače, které jsou vytvořeny z webu Marketplace a stávající virtuální počítače, na kterých už běží v Azure zadejte konfiguraci šifrování pro povolit šifrování na virtuálním počítači.
+   * Pro virtuální pevný disk scénář šifrované zákazníka nahrání šifrovaného virtuálního pevného disku do účtu úložiště a šifrovací klíče do trezoru klíčů. Pak zadejte konfiguraci šifrování pro povolení šifrování u nového virtuálního počítače.
+   * Pro nové virtuální počítače, které jsou vytvořené z Marketplace a stávající virtuální počítače, které už běží v Azure, zadejte konfiguraci šifrování, která povolí šifrování na virtuálním počítači.
 
-1. Udělte přístup na platformu Azure ke čtení materiál klíče šifrování (šifrovací klíče nástroje BitLocker systému Windows) a heslo pro Linux z trezoru klíčů na povolit šifrování na virtuálním počítači.
+1. Udělte platformě Azure přístup ke čtení materiálu šifrovacího klíče (šifrovací klíče BitLockeru pro systémy Windows a přístupové heslo pro Linux) z trezoru klíčů, aby se povolilo šifrování na VIRTUÁLNÍm počítači.
 
-1. Poskytnout identitu aplikace služby Azure AD zapisovat materiálu k vašemu trezoru klíčů šifrovací klíč. Tento krok povoluje šifrování na virtuálním počítači pro scénáře uvedené v kroku 2.
+1. Poskytnout identitu aplikace služby Azure AD zapisovat materiálu k vašemu trezoru klíčů šifrovací klíč. Tento krok umožňuje šifrování na virtuálním počítači pro scénáře, které jsou uvedené v kroku 2.
 
 1. Azure aktualizuje model služby virtuálního počítače s šifrováním a konfigurace služby key vault a nastaví šifrovaný virtuální počítač.
 
 
 ## <a name="terminology"></a>Terminologie
-Následující tabulka definuje některé z běžných termínů používaných v dokumentaci k Azure disk encryption:
+Následující tabulka popisuje některé běžné výrazy používané v dokumentaci ke službě Azure Disk Encryption:
 
 | Terminologie | Definice |
 | --- | --- |
 | Azure AD | [Azure AD](https://azure.microsoft.com/documentation/services/active-directory/) účet se používá k ověření, ukládání a načítání tajných kódů z trezoru klíčů. |
 | Azure Key Vault | Key Vault je služba pro správu klíčů, kryptografické, který je založen na informace o zpracování normy FIPS (Federal) ověřených modulech hardwarového zabezpečení. Tyto normy pomáhají chránit kryptografické klíče a tajné kódy citlivé. Další informace najdete v tématu [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) dokumentaci. |
-| BitLocker |[Nástroj BitLocker](https://technet.microsoft.com/library/hh831713.aspx) je rozpoznán odvětví Windows svazku šifrovací technologie, která se používá k povolení šifrování disku na virtuálních počítačích s Windows. |
+| BitLocker |[BitLocker](https://technet.microsoft.com/library/hh831713.aspx) je rozpoznaná technologie pro šifrování svazků Windows, která se používá k povolení šifrování disku na virtuálních počítačích s Windows. |
 | BEK | Nástroj BitLocker šifrovacích klíčů (klíče BEK) se používají k zašifrování spouštěcí svazek s operačním systémem a datové svazky. BEKs jsou chráněné ve službě key vault jako tajné kódy. |
 | Azure CLI | [Rozhraní příkazového řádku Azure](/cli/azure/install-azure-cli) je optimalizovaná pro správu prostředků Azure z příkazového řádku.|
-| DM-Crypt |[DM-Crypt](https://gitlab.com/cryptsetup/cryptsetup/wikis/DMCrypt) je podsystém založených na Linuxu nebo transparentního šifrování disků, který se používá k povolení šifrování disků na virtuální počítače s Linuxem. |
-| Šifrovací klíč klíče (KEK) | Asymetrický klíč (RSA 2048), který vám pomůže chránit nebo zabalovat tajné kódy. Můžete zadat modulu hardwarového zabezpečení (HSM)-chráněný klíč, nebo klíč chráněný softwarem. Další informace najdete v tématu [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) dokumentaci. |
+| DM-Crypt |[Dm-crypt](https://gitlab.com/cryptsetup/cryptsetup/wikis/DMCrypt) je transparentní podsystém šifrování disku založený na systému Linux, který slouží k povolení šifrování disku na virtuálních počítačích se systémem Linux. |
+| Klíč šifrování klíče (KEK) | Asymetrický klíč (RSA 2048), který můžete použít k ochraně nebo zabalení tajného klíče. Můžete zadat modulu hardwarového zabezpečení (HSM)-chráněný klíč, nebo klíč chráněný softwarem. Další informace najdete v tématu [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) dokumentaci. |
 | Rutiny prostředí PowerShell | Další informace najdete v tématu [rutin prostředí Azure PowerShell](/powershell/azure/overview). |
 
 ## <a name="next-steps"></a>Další postup
 
-Abyste mohli začít, najdete v článku [požadavky Azure Disk Encryption](azure-security-disk-encryption-prerequisites.md).
+Informace o tom, jak začít, najdete v tématu [Azure Disk Encryption požadavky](azure-security-disk-encryption-prerequisites.md).
 

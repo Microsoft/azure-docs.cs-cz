@@ -1,70 +1,70 @@
 ---
-title: Mapování parametrů toku dat pro vytváření dat Azure
-description: Zjistěte, jak parametrizovat mapování toku dat z kanálů data factory
+title: Azure Data Factory parametry toku dat mapování
+description: Naučte se parametrizovat tok dat mapování z kanálů Data Factory.
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 06/10/2019
-ms.openlocfilehash: 0a7140f70db78c8511f3c4da00b2f9c11c368163
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 998f8080509e7ba18ea1a759dff2ed8b8742c910
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67477699"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68253106"
 ---
 # <a name="mapping-data-flow-parameters"></a>Mapování parametrů toku dat
 
 [!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
-Mapování toků dat ve službě Azure Data Factory podporují použití parametrů. Parametry můžete definovat uvnitř definice toku vaše data, které pak můžete použít v celé vaší výrazy. Volání kanál pomocí aktivity spustit tok dat lze nastavit hodnoty parametrů. Existují tři možnosti pro nastavení hodnot v toku dat aktivity výrazů:
+Mapování toků dat v Azure Data Factory podporuje použití parametrů. Parametry můžete definovat uvnitř definice toku dat, kterou pak můžete použít v celém výrazu. Hodnoty parametrů lze nastavit pomocí kanálu volání prostřednictvím aktivity spustit tok dat. Máte tři možnosti, jak nastavit hodnoty ve výrazech aktivity toku dat:
 
-* Použijte jazyk výrazů kanálu řízení toku pro nastavení dynamické hodnoty
-* Použijte jazyk výrazů toku dat pro nastavení dynamické hodnoty
-* Nastavení statické literálovou hodnotou pomocí jazyka pro výraz
+* Nastavení dynamické hodnoty pomocí jazyka Expression Flow řízení kanálu
+* Nastavení dynamické hodnoty pomocí jazyka výrazu data Flow
+* Pro nastavení hodnoty statického literálu použijte buď jazyk výrazů.
 
-Tuto funkci používejte, aby vaše toky dat pro obecné účely, flexibilní a opakovaně použitelné. Nastavení toku dat a výrazy s použitím těchto parametrů můžete parametrizovat.
+Využijte tuto možnost k tomu, aby vaše datové toky byly pro obecné účely, flexibilní a opakovaně použitelné. Pomocí těchto parametrů můžete parametrizovat nastavení toku dat a výrazů.
 
 > [!NOTE]
-> Použití kanálu řízení toku výrazů, parametr toku dat musí být typu String.
+> Chcete-li používat výrazy toku řízení kanálu, musí být parametr toku dat typu String.
 
-## <a name="create-parameters-in-mapping-data-flow"></a>Parametry vytvoření v mapování toku dat
+## <a name="create-parameters-in-mapping-data-flow"></a>Vytváření parametrů v toku dat mapování
 
-Chcete-li přidat parametry do vašeho toku dat, klikněte na prázdné místo plátna tok dat můžete zobrazit obecné vlastnosti. V podokně nastavení se zobrazí na kartě označované jako "Parametry". Kliknutím na tlačítko 'New' generovat nový parametr. Pro každý parametr musíte přiřadit název, vyberte typ a volitelně nastavit výchozí hodnotu.
+Pokud chcete do toku dat přidat parametry, klikněte na prázdnou část plátna toku dat a zobrazte obecné vlastnosti. V podokně nastavení se zobrazí karta s názvem Parameters. Kliknutím na tlačítko Nový vygenerujete nový parametr. Pro každý parametr musíte přiřadit název, vybrat typ a volitelně nastavit výchozí hodnotu.
 
-![Vytvoření toku dat parametry](media/data-flow/create-params.png "parametry vytvoření toku dat")
+![Vytvoření parametrů toku dat](media/data-flow/create-params.png "Vytvoření parametrů toku dat")
 
-Parametry lze využít v jakékoli výraz datového toku. Parametry začínají znakem $ a jsou neměnné. Najdete seznam dostupných parametrů v rámci Tvůrce na kartě "Parametrů".
+Parametry lze využít v jakémkoli výrazu toku dat. Parametry začínají na $ a jsou neměnné. Seznam dostupných parametrů se nachází uvnitř Tvůrce výrazů na kartě Parameters (parametry).
 
-![Výraz parametru toku dat](media/data-flow/parameter-expression.png "výraz parametru toku dat")
+![Výraz parametru toku dat](media/data-flow/parameter-expression.png "Výraz parametru toku dat")
 
-## <a name="use-parameters-in-your-data-flow"></a>Použití parametrů ve svém toku dat
+## <a name="use-parameters-in-your-data-flow"></a>Použití parametrů v toku dat
 
-* Hodnoty parametrů můžete použít ve výrazech transformace. V okně Tvůrce výrazů najdete seznam parametrů na parametry kartě. ![Použití parametrů se předávají Data](media/data-flow/params9.png "toku dat pomocí parametrů")
+* Hodnoty parametrů můžete použít ve výrazech transformace. Seznam parametrů najdete na kartě Parametry v Tvůrci výrazů. ![Použití parametrů toku dat](media/data-flow/params9.png "Použití parametrů toku dat")
 
-* Parametry jsou také použít pro konfiguraci dynamické hodnoty zdroje a jímky nastavení transformace. Po kliknutí na uvnitř konfigurovatelné pole, zobrazí se odkaz "Přidat dynamické contect" se zobrazí. Kliknutím zde přejdete na tvůrce výrazů kde parametry můžete použít dynamické hodnoty. ![Dynamický obsah toku dat](media/data-flow/params6.png "dynamický obsah toku dat")
+* Parametry slouží také ke konfiguraci dynamických hodnot pro nastavení transformace zdroje a jímky. Když kliknete do části konfigurovatelné pole, zobrazí se odkaz Přidat dynamický contect. Kliknutím přejdete na Tvůrce výrazů, kde můžete použít parametry k použití dynamických hodnot. ![Dynamický obsah toku dat](media/data-flow/params6.png "Dynamický obsah toku dat")
 
-## <a name="set-mapping-data-flow-parameters-from-pipeline"></a>Nastavit parametry mapování toku dat z kanálu
+## <a name="set-mapping-data-flow-parameters-from-pipeline"></a>Nastavení parametrů toku dat mapování z kanálu
 
-Po vytvoření toku dat s parametry, můžete je spustit z kanálu s aktivitou spuštění toku dat. Po přidání aktivity na plátno kanálu zobrazí s dostupnými daty parametry toku na kartě "Parametrů" aktivity.
+Jakmile vytvoříte tok dat s parametry, můžete ho spustit z kanálu s aktivitou spustit tok dat. Po přidání aktivity na plátno kanálu se zobrazí dostupné parametry toku dat na kartě Parametry aktivity.
 
-![Nastavení parametrů se předávají Data](media/data-flow/parameter-assign.png "nastavení parametru toku dat")
+![Nastavení parametru toku dat](media/data-flow/parameter-assign.png "Nastavení parametru toku dat")
 
-Pokud datový typ parametru je řetězec, po kliknutí na textové pole nastavit hodnoty parametrů, můžete zadat kanálu nebo datového toku výrazu. Pokud se rozhodnete výraz kanál, zobrazí se panel výrazu kanálu. Nezapomeňte zahrnout funkce kanálu uvnitř pomocí syntaxe interpolace řetězce: @{<expression>} ", například:
+Pokud je datovým typem parametru řetězec, po kliknutí na textové pole pro nastavení hodnot parametrů se můžete rozhodnout, že zadáte buď kanál, nebo výraz toku dat. Pokud zvolíte možnost výraz kanálu, zobrazí se panel výrazu kanálu. Nezapomeňte zahrnout funkce kanálu do syntaxe řetězcové interpolace pomocí `'@{<expression>}'`, například:
 
 ```'@{pipeline().RunId}'```
 
-Pokud parametr není typu String, vždy zobrazí Tvůrce výrazů datový tok. Tady můžete zadat libovolný výraz nebo hodnoty literálu, který chcete odpovídající datový typ parametru. Níže jsou příklady výraz datového toku a řetězcový literál z Tvůrce výrazů:
+Pokud váš parametr není typu řetězec, bude vždy zobrazen Tvůrce výrazů toku dat. Zde můžete zadat libovolný výraz nebo hodnoty literálu, které chcete, aby odpovídaly datovému typu parametru. Níže jsou uvedeny příklady výrazu toku dat a literálového řetězce v Tvůrci výrazů:
 
 * ```toInteger(Role)```
 * ```'this is my static literal string'```
 
-Každý datový tok mapování může mít libovolnou kombinaci kanál a datový výraz parametry toku. 
+Každý tok dat mapování může obsahovat libovolnou kombinaci parametrů výrazu kanálu a toku dat. 
 
-![Ukázková data pro parametry toku](media/data-flow/parameter-example.png "vzorek parametry toku dat")
+![Ukázka ukazatelů toku dat](media/data-flow/parameter-example.png "Ukázka ukazatelů toku dat")
 
 
 
-## <a name="next-steps"></a>Další postup
-* [Spuštění aktivity toku dat](control-flow-execute-data-flow-activity.md)
-* [Řízení toku výrazů](control-flow-expression-language-functions.md)
+## <a name="next-steps"></a>Další kroky
+* [Spustit aktivitu toku dat](control-flow-execute-data-flow-activity.md)
+* [Výrazy toku řízení](control-flow-expression-language-functions.md)

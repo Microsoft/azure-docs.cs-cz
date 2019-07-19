@@ -1,56 +1,56 @@
 ---
-title: Konfigurace-kompletního protokolu SSL pomocí Azure Application Gateway
-description: Tento článek popisuje, jak nakonfigurovat-kompletního protokolu SSL pomocí Azure Application Gateway pomocí Powershellu
+title: Konfigurace kompletního protokolu SSL s využitím Azure Application Gateway
+description: Tento článek popisuje, jak nakonfigurovat komplexní protokol SSL pomocí Azure Application Gateway pomocí prostředí PowerShell.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
 ms.date: 4/8/2019
 ms.author: victorh
-ms.openlocfilehash: d9851f6b3e32d0c7ab0d7774458ba5bc4d9ba823
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d7b909bf88fde2277aa2a285bbf36916191db1f3
+ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66729678"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67973395"
 ---
-# <a name="configure-end-to-end-ssl-by-using-application-gateway-with-powershell"></a>Konfigurace kompletního protokolu SSL pomocí Application Gateway pomocí Powershellu
+# <a name="configure-end-to-end-ssl-by-using-application-gateway-with-powershell"></a>Konfigurace koncového šifrování protokolu SSL pomocí Application Gateway s využitím PowerShellu
 
 ## <a name="overview"></a>Přehled
 
-Azure Application Gateway podporuje – koncové šifrování provozu. Služba Application Gateway ukončuje připojení protokolem SSL ve službě application gateway. Brána pak použije na provoz pravidla směrování, znovu zašifruje paket a předá tento paket k příslušnému back-end serveru, na základě pravidel směrování definované. Každá odpověď webového serveru prochází ke koncovému uživateli stejným procesem.
+Azure Application Gateway podporuje komplexní šifrování provozu. Application Gateway ukončí připojení SSL ve službě Application Gateway. Brána pak použije pravidla směrování na provoz, znovu zašifruje paket a přepošle paket na příslušný back-end Server na základě definovaných pravidel směrování. Každá odpověď webového serveru prochází ke koncovému uživateli stejným procesem.
 
-Služba Application Gateway podporuje, definování vlastních možností protokolu SSL. Podporuje také zakázání následujících verzí protokolu: **TLSv1.0**, **TLSv1.1**, a **TLSv1.2**a definování, které šifrovací sady používat a pořadí podle priority. Další informace o konfigurovatelných možností protokolu SSL, najdete v článku [přehled zásad protokolu SSL](application-gateway-SSL-policy-overview.md).
+Application Gateway podporuje definování vlastních možností protokolu SSL. Také podporuje zakázání následujících verzí protokolů: **Tlsv 1.0**, **Tlsv 1.1**a **tlsv 1.2**a také definujte, které šifrovací sady se mají použít a pořadí priorit. Další informace o konfigurovatelných možnostech SSL najdete v tématu [Přehled zásad protokolu SSL](application-gateway-SSL-policy-overview.md).
 
 > [!NOTE]
-> Protokol SSL 2.0 a protokol SSL 3.0 jsou ve výchozím nastavení zakázané a nejde povolit. Tyto považovány za nezabezpečené a nelze použít s Application Gateway.
+> SSL 2,0 a SSL 3,0 jsou ve výchozím nastavení zakázány a nelze je povolit. Jsou považovány za nezabezpečené a nelze je použít s Application Gateway.
 
-![scénář image][scenario]
+![Obrázek scénáře][scenario]
 
 ## <a name="scenario"></a>Scénář
 
-V tomto scénáři se dozvíte, jak vytvořit službu application gateway pomocí prostředí PowerShell-kompletního protokolu SSL.
+V tomto scénáři se dozvíte, jak vytvořit Aplikační bránu s využitím kompletního protokolu SSL s prostředím PowerShell.
 
 Tento scénář bude:
 
-* Vytvořte skupinu prostředků s názvem **appgw-rg**.
-* Vytvoření virtuální sítě s názvem **appgwvnet** s adresním prostorem **10.0.0.0/16**.
-* Vytvořit dvě podsítě, které volá **appgwsubnet** a **appsubnet**.
-* Vytvoření malou aplikaci brány podpůrné začátku do konce šifrování SSL tohoto omezení verze protokolu SSL a šifrovacích sad.
+* Vytvořte skupinu prostředků s názvem **appgw-RG**.
+* Vytvořte virtuální síť s názvem **appgwvnet** s adresním prostorem **10.0.0.0/16**.
+* Vytvořte dvě podsítě s názvem **appgwsubnet** a **appsubnet**.
+* Vytvořte malou Aplikační bránu, která bude podporovat komplexní šifrování SSL, které omezuje verze protokolu SSL a šifrovací sady.
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Ke konfiguraci-kompletního protokolu SSL s aplikační bránou, certifikát je vyžadován pro bránu a certifikáty jsou nutné k back-end serverů. Certifikát brány se používá k odvození symetrický klíč podle specifikace protokolu SSL. Symetrický klíč je pak používat zašifrování a dešifrování provoz odeslaný na bránu. Certifikát brány musí být ve formátu Personal Information Exchange (PFX). Tento formát souboru umožňuje exportovat soukromý klíč, který vyžaduje službu application gateway šifrování a dešifrování přenosů.
+Pro konfiguraci kompletního protokolu SSL s aplikační bránou se vyžaduje certifikát pro bránu a pro back-endové servery se vyžadují certifikáty. Certifikát brány se používá pro odvození symetrického klíče podle specifikace protokolu SSL. Symetrický klíč se pak použije k zašifrování a dešifrování provozu odeslaného do brány. Certifikát brány musí být ve formátu PFX (Personal Information Exchange). Tento formát souboru umožňuje exportovat privátní klíč, který služba Application Gateway vyžaduje k provádění šifrování a dešifrování provozu.
 
-Pro šifrování SSL začátku do konce musí explicitně povoleno back-end službou application gateway. Odešlete veřejný certifikát back-end serverů ke službě application gateway. Přidání certifikátu se zajistí, že službu application gateway komunikuje pouze se známými back endových instancí. To dále zabezpečuje komunikaci začátku do konce.
+Pro komplexní šifrování SSL musí být back-end výslovně povolen službou Application Gateway. Nahrajte veřejný certifikát back-end serverů do služby Application Gateway. Přidáním certifikátu zajistíte, aby brána Application Gateway komunikovala pouze se známými back-end instancemi. Tím se dále zabezpečuje koncová komunikace.
 
-Proces konfigurace je popsána v následujících částech.
+Proces konfigurace je popsaný v následujících částech.
 
 ## <a name="create-the-resource-group"></a>Vytvoření skupiny prostředků
 
-Tato část vás provede vytvořením skupinu prostředků, která obsahuje bránu application gateway.
+V této části se seznámíte s vytvořením skupiny prostředků, která obsahuje aplikační bránu.
 
 1. Přihlaste se ke svému účtu Azure.
 
@@ -72,31 +72,31 @@ Tato část vás provede vytvořením skupinu prostředků, která obsahuje brá
 
 ## <a name="create-a-virtual-network-and-a-subnet-for-the-application-gateway"></a>Vytvořte virtuální síť a podsíť pro aplikační bránu
 
-Následující příklad vytvoří virtuální síť a dvě podsítě. Jednu podsíť se používá k uložení application gateway. Další podsítě se používá pro back-endů, které jsou hostiteli webové aplikace.
+Následující příklad vytvoří virtuální síť a dvě podsítě. Jedna podsíť se používá k uchování aplikační brány. Druhá podsíť se používá pro back-endy, které hostují webovou aplikaci.
 
-1. Přiřaďte rozsah adres podsítě se použije pro službu application gateway.
+1. Přiřaďte rozsah adres pro podsíť, která se má použít pro aplikační bránu.
 
    ```powershell
    $gwSubnet = New-AzVirtualNetworkSubnetConfig -Name 'appgwsubnet' -AddressPrefix 10.0.0.0/24
    ```
 
    > [!NOTE]
-   > Podsítě konfigurované pro službu application gateway by měl být správnou velikost. Službu application gateway lze nakonfigurovat pro až 10 instancí. Každá instance vyžaduje jednu IP adresu z podsítě. Příliš malé podsítě, může nepříznivě ovlivnit horizontální navýšení kapacity pro službu application gateway.
+   > Podsítě nakonfigurované pro aplikační bránu by měly mít správnou velikost. Aplikační bránu je možné nakonfigurovat až na 10 instancí. Každá instance přebírá jednu IP adresu z podsítě. Příliš malá podsíť může negativně ovlivnit škálování aplikační brány.
    >
 
-2. Přiřaďte rozsah adres pro fond back endových adres.
+2. Přiřaďte rozsah adres, který se má použít pro fond back-end adres.
 
    ```powershell
    $nicSubnet = New-AzVirtualNetworkSubnetConfig  -Name 'appsubnet' -AddressPrefix 10.0.2.0/24
    ```
 
-3. Vytvořte virtuální síť s podsítí definovaných v předchozích krocích.
+3. Vytvořte virtuální síť s podsítěmi, které jsou definovány v předchozích krocích.
 
    ```powershell
    $vnet = New-AzvirtualNetwork -Name 'appgwvnet' -ResourceGroupName appgw-rg -Location "West US" -AddressPrefix 10.0.0.0/16 -Subnet $gwSubnet, $nicSubnet
    ```
 
-4. Načíst prostředek virtuální sítě a podsítě prostředky, který se má použít v následujících kroků.
+4. Načtěte prostředky prostředku virtuální sítě a podsítě, které se mají použít v následujících krocích.
 
    ```powershell
    $vnet = Get-AzvirtualNetwork -Name 'appgwvnet' -ResourceGroupName appgw-rg
@@ -106,47 +106,47 @@ Následující příklad vytvoří virtuální síť a dvě podsítě. Jednu pod
 
 ## <a name="create-a-public-ip-address-for-the-front-end-configuration"></a>Vytvoření veřejné IP adresy pro front-end konfiguraci
 
-Vytvořte prostředek veřejné IP se použije pro službu application gateway. Tato veřejná IP adresa se používá v jednom z následujících kroků.
+Vytvořte prostředek veřejné IP adresy, který se bude používat pro aplikační bránu. Tato veřejná IP adresa se používá v jednom z následujících kroků.
 
 ```powershell
 $publicip = New-AzPublicIpAddress -ResourceGroupName appgw-rg -Name 'publicIP01' -Location "West US" -AllocationMethod Dynamic
 ```
 
 > [!IMPORTANT]
-> Služba Application Gateway nepodporuje použijte veřejnou IP adresu vytvořenou s popiskem definované domény. Je podporován pouze veřejné IP adresy s popiskem dynamicky vytvořené domény. Pokud budete potřebovat popisný název DNS pro službu application gateway, doporučujeme že použít záznam CNAME jako alias.
+> Application Gateway nepodporuje použití veřejné IP adresy vytvořené s popiskem definované domény. Podporovaná je jenom veřejná IP adresa s názvem dynamicky vytvořenou doménou. Pokud pro aplikační bránu potřebujete popisný název DNS, doporučujeme použít záznam CNAME jako alias.
 
 ## <a name="create-an-application-gateway-configuration-object"></a>Vytvoření objektu konfigurace služby Application Gateway
 
-Všechny položky nastavené před vytvořením služby application gateway. Následující kroky slouží k vytvoření položek konfigurace potřebné pro prostředek služby Application Gateway.
+Všechny položky konfigurace jsou nastaveny před vytvořením aplikační brány. Následující kroky slouží k vytvoření položek konfigurace potřebné pro prostředek služby Application Gateway.
 
-1. Vytvoření konfigurace IP aplikační brány. Toto nastavení lze konfigurovat využívající podsítě application gateway. Při spuštění služby application gateway ji předá IP adresa z nakonfigurované podsítě a směrování síťového provozu na IP adresy v back endového fondu IP adres. Uvědomte si, že každá instance vyžaduje jednu IP adresu.
+1. Vytvořte konfiguraci protokolu IP brány Application Gateway. Toto nastavení určuje, které z podsítí aplikační brány používá. Když se Aplikační brána spustí, vytvoří IP adresu z nakonfigurované podsítě a směruje síťový provoz na IP adresy ve fondu back-end IP adres. Uvědomte si, že každá instance vyžaduje jednu IP adresu.
 
    ```powershell
    $gipconfig = New-AzApplicationGatewayIPConfiguration -Name 'gwconfig' -Subnet $gwSubnet
    ```
 
-2. Vytvořte konfiguraci front-end IP adresy. Namapuje se toto nastavení privátní nebo veřejnou IP adresu front-endu služby application gateway. Následující krok přiřadí veřejnou IP adresu v předchozím kroku s konfigurací front-end IP adresy.
+2. Vytvořte konfiguraci front-end IP adresy. Toto nastavení mapuje soukromou nebo veřejnou IP adresu na front-end aplikační brány. Následující krok přidruží veřejnou IP adresu v předchozím kroku s konfigurací front-end IP adresy.
 
    ```powershell
    $fipconfig = New-AzApplicationGatewayFrontendIPConfig -Name 'fip01' -PublicIPAddress $publicip
    ```
 
-3. Nakonfigurujte fond back-end IP adres s IP adresami serverů back endové webové. Tyto IP adresy jsou IP adresy, které přijímají síťový provoz, který přichází z koncového bodu front-end IP adresy. Nahraďte IP adresy ve vzorku s vlastními koncovými body IP adresy typu aplikace.
+3. Nakonfigurujte fond back-end IP adres s použitím IP adres back-endové webové servery. Tyto IP adresy jsou IP adresy, které přijímají síťový provoz, který přichází z koncového bodu front-end IP adresy. Nahraďte IP adresy v ukázce vlastními koncovými body IP adres aplikace.
 
    ```powershell
    $pool = New-AzApplicationGatewayBackendAddressPool -Name 'pool01' -BackendIPAddresses 1.1.1.1, 2.2.2.2, 3.3.3.3
    ```
 
    > [!NOTE]
-   > Použitím plně kvalifikovaného názvu domény (FQDN) je také platnou hodnotu oznamujícím IP adresu pro back-end serverů. Povolit pomocí **- BackendFqdns** přepnout. 
+   > Plně kvalifikovaný název domény (FQDN) je také platná hodnota pro použití místo IP adresy pro back-endové servery. Povolíte ji pomocí přepínače **-BackendFqdns** . 
 
-4. Nakonfigurujte port front-end IP pro koncový bod veřejné IP adresy. Tento port je port, který koncoví uživatelé připojit.
+4. Nakonfigurujte port front-end IP adresy pro koncový bod veřejné IP adresy. Tento port je port, ke kterému se koncoví uživatelé připojují.
 
    ```powershell
    $fp = New-AzApplicationGatewayFrontendPort -Name 'port01'  -Port 443
    ```
 
-5. Konfigurace certifikátu pro službu application gateway. Tento certifikát slouží k dešifrování a šifrovaly provozu ve službě application gateway.
+5. Nakonfigurujte certifikát pro aplikační bránu. Tento certifikát slouží k dešifrování a přešifrování provozu služby Application Gateway.
 
    ```powershell
    $passwd = ConvertTo-SecureString  <certificate file password> -AsPlainText -Force 
@@ -154,70 +154,70 @@ Všechny položky nastavené před vytvořením služby application gateway. Ná
    ```
 
    > [!NOTE]
-   > Tato vzorovým kódem se nakonfiguruje certifikát používaný pro připojení SSL. Certifikát se musí být ve formátu .pfx a heslo musí obsahovat 4 až 12 znaků.
+   > V této ukázce se nakonfiguruje certifikát používaný pro připojení SSL. Certifikát musí být ve formátu. pfx a heslo musí mít 4 až 12 znaků.
 
-6. Vytvořte naslouchací proces protokolu HTTP služby application gateway. Přiřadíte konfiguraci front-end IP adresy, portu a certifikát protokolu SSL se má použít.
+6. Vytvořte naslouchací proces HTTP pro službu Application Gateway. Přiřaďte konfiguraci front-end IP adresy, portu a certifikátu SSL, který chcete použít.
 
    ```powershell
    $listener = New-AzApplicationGatewayHttpListener -Name listener01 -Protocol Https -FrontendIPConfiguration $fipconfig -FrontendPort $fp -SSLCertificate $cert
    ```
 
-7. Nahrajte certifikát, který se použije na prostředky s podporou protokolu SSL back endového fondu.
+7. Nahrajte certifikát, který se má použít u prostředků fondu back-endu s povoleným protokolem SSL.
 
    > [!NOTE]
-   > Získá výchozí kontroly veřejný klíč z *výchozí* vazby SSL back endové IP adresy a porovná hodnotu veřejného klíče přijímá hodnotě veřejného klíče je tady zadáte. 
+   > Výchozí sonda získá veřejný klíč z *výchozí* vazby SSL na IP adrese back-endu a porovná hodnotu veřejného klíče, kterou přijme, k hodnotě veřejného klíče, kterou tady zadáte. 
    > 
-   > Pokud používáte hlavičky hostitele a indikace názvu serveru (SNI) na back-endu, nemusí být načtený veřejný klíč zamýšlená lokalita, na které přenosové toky. Pokud už máte pochybnosti, navštivte https://127.0.0.1/ na back-end servery, které chcete potvrdit, který certifikát se používá pro *výchozí* vazby SSL. V této části použijte veřejný klíč z tohoto požadavku. Pokud používáte hlavičky hostitele a SNI na vazby HTTPS a neobdržíte odpověď a certifikátu ze žádosti o ruční prohlížeče k https://127.0.0.1/ na back-end serverech, musíte nastavit výchozí vazbu SSL na na ně. Pokud to neprovedete, selhání sondy a back-end není na seznamu povolených.
+   > Pokud používáte hlavičky hostitele a Indikace názvu serveru (SNI) na back-endu, načtený veřejný klíč nemusí být zamýšlenou lokalitou, na kterou přenosové toky. Pokud nejste jistí, navštivte https://127.0.0.1/ back-endové servery a ověřte, který certifikát se používá pro *výchozí* vazbu SSL. Použijte veřejný klíč z tohoto požadavku v této části. Pokud používáte pro vazby https možnost https://127.0.0.1/ hostitel-Headers a sni a neobdržíte odpověď a certifikát od ručního požadavku prohlížeče na back-endové servery, musíte pro ně nastavit výchozí vazbu SSL. Pokud to neuděláte, sondy selžou a back-end není povolený.
 
    ```powershell
    $authcert = New-AzApplicationGatewayAuthenticationCertificate -Name 'allowlistcert1' -CertificateFile C:\cert.cer
    ```
 
    > [!NOTE]
-   > Certifikát zadaný v předchozím kroku by měl být veřejný klíč certifikátu .pfx, který je k dispozici na back-endu. Exportujte certifikát nainstalovaný na back endového serveru ve formátu deklarace identity, legitimaci a odůvodnění (CER) (nikoliv kořenový certifikát) a použít ho v tomto kroku. Tento krok seznamů povolených back-end pomocí služby application gateway.
+   > Certifikát, který jste zadali v předchozím kroku, by měl být veřejným klíčem certifikátu. pfx, který je přítomný v back-endu. Exportujte certifikát (nikoli kořenový certifikát) nainstalovaný na záložním serveru ve formátu deklarace identity, legitimace a důvod (CER) a použijte ho v tomto kroku. Tento krok připraví back-end k aplikační bráně.
 
-   Pokud používáte SKU v2 Application Gateway, vytvořte důvěryhodný kořenový certifikát namísto ověřovací certifikát. Další informace najdete v tématu [přehled koncového šifrování protokolu SSL pomocí Application Gateway](ssl-overview.md#end-to-end-ssl-with-the-v2-sku):
+   Pokud používáte SKU Application Gateway v2, pak místo ověřovacího certifikátu vytvořte důvěryhodný kořenový certifikát. Další informace najdete v tématu [Přehled koncového šifrování protokolu SSL s Application Gateway](ssl-overview.md#end-to-end-ssl-with-the-v2-sku):
 
    ```powershell
    $trustedRootCert01 = New-AzApplicationGatewayTrustedRootCertificate -Name "test1" -CertificateFile  <path to root cert file>
    ```
 
-8. Konfigurace nastavení protokolu HTTP pro application gateway back-endu. Přiřadíte certifikát nahraný v předchozím kroku, a nastavení HTTP.
+8. Nakonfigurujte nastavení HTTP pro back-end služby Application Gateway. Přiřaďte certifikát odeslaný v předchozím kroku nastavení HTTP.
 
    ```powershell
    $poolSetting = New-AzApplicationGatewayBackendHttpSettings -Name 'setting01' -Port 443 -Protocol Https -CookieBasedAffinity Enabled -AuthenticationCertificates $authcert
    ```
 
-   Pro SKU v2 Application Gateway použijte následující příkaz:
+   V případě SKU Application Gateway v2 použijte následující příkaz:
 
    ```powershell
    $poolSetting01 = New-AzApplicationGatewayBackendHttpSettings -Name “setting01” -Port 443 -Protocol Https -CookieBasedAffinity Disabled -TrustedRootCertificate $trustedRootCert01 -HostName "test1"
    ```
 
-9. Vytvořte pravidlo směrování pro vyrovnávání zatížení, které konfiguruje chování nástroje pro vyrovnávání zatížení. V tomto příkladu se vytvoří základní pravidlo kruhové dotazování.
+9. Vytvořte směrovací pravidlo nástroje pro vyrovnávání zatížení, které konfiguruje chování nástroje pro vyrovnávání zatížení. V tomto příkladu se vytvoří základní pravidlo kruhového dotazování.
 
    ```powershell
    $rule = New-AzApplicationGatewayRequestRoutingRule -Name 'rule01' -RuleType basic -BackendHttpSettings $poolSetting -HttpListener $listener -BackendAddressPool $pool
    ```
 
-10. Nakonfigurujte velikost instance služby Application Gateway. Dostupné velikosti jsou **standardní\_malé**, **standardní\_střední**, a **standardní\_velké**.  Pro kapacitu, jsou k dispozici hodnoty **1** prostřednictvím **10**.
+10. Nakonfigurujte velikost instance služby Application Gateway. Dostupné velikosti jsou **standardní\_malé**, **standardní\_střední**a **standardní\_** .  V případě kapacity mají dostupné hodnoty **1** až **10**.
 
     ```powershell
     $sku = New-AzApplicationGatewaySku -Name Standard_Small -Tier Standard -Capacity 2
     ```
 
     > [!NOTE]
-    > Pro účely testování můžete zvolit počet instancí 1. Je důležité vědět, že libovolný počet instancí v rámci dvou instancí nevztahuje Smlouva SLA a proto nedoporučujeme. Malé brány se mají použít pro vývoj testování a nikoli pro produkční účely.
+    > Pro účely testování lze zvolit počet instancí 1. Je důležité znát, že se smlouvou SLA nepokrývá žádný počet instancí pod dvěma instancemi a proto se nedoporučuje. Malé brány se použijí pro vývoj pro vývoj a ne pro produkční účely.
 
-11. Konfigurace zásad protokolu SSL, který se má použít ve službě application gateway. Služba Application Gateway podporuje možnost nastavit minimální verze pro verze protokolu SSL.
+11. Nakonfigurujte zásady SSL, které se mají používat ve službě Application Gateway. Application Gateway podporuje možnost nastavit minimální verzi pro verze protokolu SSL.
 
-    Seznam verzí protokolu, které lze definovat jsou následující hodnoty:
+    Následující hodnoty jsou seznam verzí protokolu, které lze definovat:
 
     - **TLSV1_0**
     - **TLSV1_1**
     - **TLSV1_2**
     
-    Následující příklad nastaví minimální protocol verze **TLSv1_2** a umožňuje **TLS\_ECDHE\_ECDSA\_WITH\_AES\_128\_GCM\_SHA256**, **TLS\_ECDHE\_ECDSA\_WITH\_AES\_256\_GCM\_SHA384**, a **TLS\_RSA\_WITH\_AES\_128\_GCM\_SHA256** pouze.
+    Následující příklad nastaví minimální verzi protokolu na **TLSv1_2** a povolí **\_TLS ECDH\_ECDSA\_s\_AES\_128\_\_GCM SHA256**, **TLS\_ECDHECDSAs\_AES 256 GCMSHA384\_a TLS RSA s\_\_\_\_** **\_\_\_ Jenom\_AES128\_GCM\_SHA256** .
 
     ```powershell
     $SSLPolicy = New-AzApplicationGatewaySSLPolicy -MinProtocolVersion TLSv1_2 -CipherSuite "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", "TLS_RSA_WITH_AES_128_GCM_SHA256" -PolicyType Custom
@@ -225,63 +225,69 @@ Všechny položky nastavené před vytvořením služby application gateway. Ná
 
 ## <a name="create-the-application-gateway"></a>Vytvoření služby Application Gateway
 
-Pomocí všech předchozích kroků vytvořte službu application gateway. Vytvoření brány je proces, který trvá dlouhou dobu pro spuštění.
+Pomocí všech předchozích kroků vytvořte Aplikační bránu. Vytvoření brány je proces, který trvá dlouhou dobu, než se spustí.
 
+Pro SKU v1 použijte následující příkaz.
 ```powershell
-$appgw = New-AzApplicationGateway -Name appgateway -SSLCertificates $cert -ResourceGroupName "appgw-rg" -Location "West US" -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting -FrontendIpConfigurations $fipconfig -GatewayIpConfigurations $gipconfig -FrontendPorts $fp -HttpListeners $listener -RequestRoutingRules $rule -Sku $sku -SSLPolicy $SSLPolicy -AuthenticationCertificates $authcert -Verbose
+$appgw = New-AzApplicationGateway -Name appgateway -SSLCertificates $cert -ResourceGroupName "appgw-rg" -Location "West US" -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting01 -FrontendIpConfigurations $fipconfig -GatewayIpConfigurations $gipconfig -FrontendPorts $fp -HttpListeners $listener -RequestRoutingRules $rule -Sku $sku -SSLPolicy $SSLPolicy -AuthenticationCertificates $authcert -Verbose
 ```
 
-## <a name="apply-a-new-certificate-if-the-back-end-certificate-is-expired"></a>Použití nového certifikátu, pokud vypršela platnost certifikátu back-end
+Pro SKU v2 použijte následující příkaz.
+```powershell
+$appgw = New-AzApplicationGateway -Name appgateway -SSLCertificates $cert -ResourceGroupName "appgw-rg" -Location "West US" -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting01 -FrontendIpConfigurations $fipconfig -GatewayIpConfigurations $gipconfig -FrontendPorts $fp -HttpListeners $listener -RequestRoutingRules $rule -Sku $sku -SSLPolicy $SSLPolicy -TrustedRootCertificate $trustedRootCert01 -Verbose
+```
 
-Pomocí tohoto postupu použít nový certifikát, pokud vypršela platnost certifikátu back-end.
+## <a name="apply-a-new-certificate-if-the-back-end-certificate-is-expired"></a>Použití nového certifikátu v případě vypršení platnosti back-endu certifikátu
 
-1. Získat application gateway se aktualizovat.
+Tento postup použijte, pokud chcete použít nový certifikát, pokud vypršela platnost back-endu certifikátu.
+
+1. Načtěte Aplikační bránu, která se má aktualizovat.
 
    ```powershell
    $gw = Get-AzApplicationGateway -Name AdatumAppGateway -ResourceGroupName AdatumAppGatewayRG
    ```
    
-2. Přidat nový prostředek certifikátu ze souboru .cer, který obsahuje veřejný klíč certifikátu a může být také stejný certifikát přidat k naslouchacímu procesu pro ukončení protokolu SSL ve službě application gateway.
+2. Přidejte nový prostředek certifikátu ze souboru. CER, který obsahuje veřejný klíč certifikátu, a může to být také stejný certifikát přidaný do naslouchacího procesu pro ukončení protokolu SSL ve službě Application Gateway.
 
    ```powershell
    Add-AzApplicationGatewayAuthenticationCertificate -ApplicationGateway $gw -Name 'NewCert' -CertificateFile "appgw_NewCert.cer" 
    ```
     
-3. Získejte nový certifikát objekt ověřování do proměnné (název typu: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayAuthenticationCertificate).
+3. Získejte nový objekt ověřovacího certifikátu do proměnné (TypeName: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayAuthenticationCertificate).
 
    ```powershell
    $AuthCert = Get-AzApplicationGatewayAuthenticationCertificate -ApplicationGateway $gw -Name NewCert
    ```
  
- 4. Přiřadit nový certifikát do **BackendHttp** nastavení a odkazovat pomocí proměnné $AuthCert. (Zadejte název nastavení protokolu HTTP, který chcete změnit.)
+ 4. Přiřaďte nový certifikát do nastavení **BackendHttp** a přečtěte ho pomocí proměnné $AuthCert. (Zadejte název nastavení HTTP, který chcete změnit.)
  
    ```powershell
    $out= Set-AzApplicationGatewayBackendHttpSetting -ApplicationGateway $gw -Name "HTTP1" -Port 443 -Protocol "Https" -CookieBasedAffinity Disabled -AuthenticationCertificates $Authcert
    ```
     
- 5. Potvrdit změnu do aplikační brány a předat novou konfiguraci do proměnné $out obsažené.
+ 5. Potvrďte změnu v aplikační bráně a předejte novou konfiguraci obsaženou v proměnné $out.
  
    ```powershell
    Set-AzApplicationGateway -ApplicationGateway $gw  
    ```
 
-## <a name="remove-an-unused-expired-certificate-from-http-settings"></a>Odebrat nepoužité certifikát s prošlou platností z nastavení HTTP
+## <a name="remove-an-unused-expired-certificate-from-http-settings"></a>Odebrat nepoužitý certifikát s vypršenou platností z nastavení HTTP
 
-Tímto postupem můžete odebrat nepoužívané certifikát s prošlou platností z nastavení protokolu HTTP.
+Pomocí tohoto postupu můžete z nastavení HTTP odebrat nepoužitý certifikát s vypršenou platností.
 
-1. Získat application gateway se aktualizovat.
+1. Načtěte Aplikační bránu, která se má aktualizovat.
 
    ```powershell
    $gw = Get-AzApplicationGateway -Name AdatumAppGateway -ResourceGroupName AdatumAppGatewayRG
    ```
    
-2. Uveďte název ověřovací certifikát, který chcete odebrat.
+2. Vypíše název ověřovacího certifikátu, který chcete odebrat.
 
    ```powershell
    Get-AzApplicationGatewayAuthenticationCertificate -ApplicationGateway $gw | select name
    ```
     
-3. Ověřovací certifikát odeberte ze služby application gateway.
+3. Odeberte ověřovací certifikát z aplikační brány.
 
    ```powershell
    $gw=Remove-AzApplicationGatewayAuthenticationCertificate -ApplicationGateway $gw -Name ExpiredCert
@@ -296,32 +302,32 @@ Tímto postupem můžete odebrat nepoužívané certifikát s prošlou platnost�
    
 ## <a name="limit-ssl-protocol-versions-on-an-existing-application-gateway"></a>Omezení verze protokolu SSL v existující aplikační bráně
 
-V předchozích krocích trvalo vás provedou vytvořením aplikace s protokolem SSL začátku do konce a zakázání určitých verzí protokolu SSL. Následující příklad zakazuje určitých zásad protokolu SSL v existující aplikační bráně.
+Předchozí kroky vás provedly vytvořením aplikace s koncovým protokolem SSL a zakázáním určitých verzí protokolu SSL. Následující příklad zakáže určité zásady SSL pro existující Aplikační bránu.
 
-1. Získat application gateway se aktualizovat.
+1. Načtěte Aplikační bránu, která se má aktualizovat.
 
    ```powershell
    $gw = Get-AzApplicationGateway -Name AdatumAppGateway -ResourceGroupName AdatumAppGatewayRG
    ```
 
-2. Definujte zásady protokolu SSL. V následujícím příkladu **TLSv1.0** a **TLSv1.1** jsou zakázána a šifrovacích sad **TLS\_ECDHE\_ECDSA\_WITH\_ AES\_128\_GCM\_SHA256**, **TLS\_ECDHE\_ECDSA\_WITH\_AES\_256\_GCM\_SHA384**, a **TLS\_RSA\_WITH\_AES\_128\_GCM\_SHA256** jsou pouze těch, které jsou povoleny.
+2. Definujte zásadu protokolu SSL. V následujícím příkladu jsou **tlsv 1.0** a **tlsv 1.1** zakázané a šifrovací sady **\_TLS ECDH\_ECDSA\_s\_AES\_128 GCM\_ \_ SHA256**, **TLS\_ECDH\_ECDSAsAES\_256 GCMSHA384\_a TLS RSA\_\_\_** **\_\_ V případěAES\_128\_GCMSHA256\_jsou povoleny pouze ty.\_**
 
    ```powershell
    Set-AzApplicationGatewaySSLPolicy -MinProtocolVersion TLSv1_2 -PolicyType Custom -CipherSuite "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", "TLS_RSA_WITH_AES_128_GCM_SHA256" -ApplicationGateway $gw
 
    ```
 
-3. Nakonec aktualizujte brány. Tento poslední krok je dlouho běžící úlohy. Po dokončení, je nakonfigurované – kompletního protokolu SSL ve službě application gateway.
+3. Nakonec aktualizujte bránu. Tento poslední krok je dlouhodobě spuštěný úkol. Až to bude hotové, na aplikační bráně se nakonfiguruje kompletní protokol SSL.
 
    ```powershell
    $gw | Set-AzApplicationGateway
    ```
 
-## <a name="get-an-application-gateway-dns-name"></a>Získejte název DNS aplikace brány
+## <a name="get-an-application-gateway-dns-name"></a>Získat název DNS služby Application Gateway
 
-Po vytvoření brány je dalším krokem konfigurace front-endu pro komunikaci. Application Gateway vyžaduje dynamicky přidělený název DNS, při použití veřejné IP adresy, které ale není popisný. K zajištění, že koncoví uživatelé mohli dostat application gateway, můžou použít záznam CNAME tak, aby odkazoval na veřejný koncový bod služby application gateway. Další informace najdete v tématu [konfigurace názvu vlastní domény v Azure](../cloud-services/cloud-services-custom-domain-name-portal.md). 
+Po vytvoření brány je dalším krokem konfigurace front-endu pro komunikaci. Application Gateway vyžaduje dynamicky přiřazený název DNS při použití veřejné IP adresy, která není uživatelsky přívětivá. Chcete-li zajistit, aby koncoví uživatelé mohli dosáhnout služby Application Gateway, můžete použít záznam CNAME, který odkazuje na veřejný koncový bod služby Application Gateway. Další informace najdete v tématu [Konfigurace vlastního názvu domény pro v Azure](../cloud-services/cloud-services-custom-domain-name-portal.md). 
 
-Konfigurace aliasu, načtěte podrobnosti o služby application gateway a název její přidružené IP adresy nebo DNS s využitím **PublicIPAddress** element připojený ke službě application gateway. Použijte službu application gateway název DNS vytvořit záznam CNAME, který ukazuje dvě webové aplikace na tento název DNS. Jsme není doporučujeme používat záznamy typu, protože virtuální IP adresu můžete změnit na restartování služby application gateway.
+Pokud chcete nakonfigurovat alias, načtěte podrobnosti o aplikační bráně a její přidružené IP adrese nebo názvu DNS pomocí elementu **PublicIPAddress** připojeného ke službě Application Gateway. Pomocí názvu DNS služby Application Gateway vytvořte záznam CNAME, který bude odkazovat na tyto dvě webové aplikace na tento název DNS. Nedoporučujeme používat záznam A – protože virtuální IP adresa se může změnit při restartování služby Application Gateway.
 
 ```powershell
 Get-AzPublicIpAddress -ResourceGroupName appgw-RG -Name publicIP01
@@ -351,6 +357,6 @@ DnsSettings              : {
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace o posílení zabezpečení webových aplikací pomocí firewallu webových aplikací pomocí Application Gateway najdete v tématu [přehled firewallu webových aplikací](application-gateway-webapplicationfirewall-overview.md).
+Další informace o posílení zabezpečení webových aplikací pomocí brány firewall webových aplikací prostřednictvím Application Gateway najdete v tématu [Přehled firewallu webových aplikací](application-gateway-webapplicationfirewall-overview.md).
 
 [scenario]: ./media/application-gateway-end-to-end-SSL-powershell/scenario.png

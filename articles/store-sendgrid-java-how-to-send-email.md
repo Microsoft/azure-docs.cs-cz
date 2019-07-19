@@ -1,6 +1,6 @@
 ---
-title: Jak používat e-mailové služby SendGrid (Java) | Dokumentace Microsoftu
-description: Zjistěte, jak poslat e-mailu pomocí e-mailové služby SendGrid v Azure. Ukázky kódu napsané v jazyce Java.
+title: Jak používat e-mailovou službu SendGrid (Java) | Microsoft Docs
+description: Přečtěte si, jak odeslat e-mail pomocí e-mailové služby SendGrid v Azure. Ukázky kódu napsané v jazyce Java.
 services: ''
 documentationcenter: java
 author: thinkingserious
@@ -13,36 +13,37 @@ ms.tgt_pltfrm: na
 ms.devlang: Java
 ms.topic: article
 ms.date: 10/30/2014
-ms.author: elmer.thomas@sendgrid.com; erika.berkland@sendgrid.com; vibhork
-ms.openlocfilehash: 0cb75c1acb731432ed524560698e3355699b2500
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: erikre
+ms.reviewer: elmer.thomas@sendgrid.com; erika.berkland@sendgrid.com; vibhork
+ms.openlocfilehash: 8ae948e9c79cff4cd0c896b250743fd9dc521752
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60931207"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67876512"
 ---
-# <a name="how-to-send-email-using-sendgrid-from-java"></a>Odesílání e-mailu pomocí SendGrid z Javy
-Tato příručka ukazuje, jak k provádění běžných programovacích úloh s e-mailové služby SendGrid v Azure. Ukázky jsou napsané v jazyce Java. Mezi popsané scénáře patří **vytváření e-mailu**, **odesílání e-mailů**, **přidávání příloh**, **pomocí filtrů**a **aktualizují se vlastnosti**. Další informace o SendGrid a odesílání e-mailu, najdete v článku [další kroky](#next-steps) oddílu.
+# <a name="how-to-send-email-using-sendgrid-from-java"></a>Odeslání e-mailu pomocí SendGrid z Java
+Tato příručka ukazuje, jak provádět běžné programovací úlohy pomocí e-mailové služby SendGrid v Azure. Ukázky jsou napsané v jazyce Java. Mezi zahrnuté scénáře patří **vytváření e-mailů**, **posílání e-mailů**, **přidávání příloh**, **používání filtrů**a **aktualizace vlastností**. Další informace o SendGrid a odesílání e-mailů najdete v části [Další kroky](#next-steps) .
 
-## <a name="what-is-the-sendgrid-email-service"></a>Co je e-mailové služby SendGrid?
-SendGrid je [založené na cloudu e-mailové služby] , která poskytuje spolehlivé [doručování transakční e-mailů], škálovatelnost a analýzy v reálném čase spolu s flexibilní API, která usnadňují vlastní integraci. Obvyklé scénáře použití SendGrid patří:
+## <a name="what-is-the-sendgrid-email-service"></a>Co je e-mailová služba SendGrid?
+SendGrid je [Cloudová e-mailová služba] , která poskytuje spolehlivé zasílání [transakčních e-mailů], škálovatelnost a analýzy v reálném čase spolu s flexibilními rozhraními API, která usnadňují vlastní integraci. Mezi běžné scénáře použití SendGrid patří:
 
-* Automatické odesílání oznámení pro zákazníky
-* Správa distribuce jsou uvedené pro odesílání zákazníkům měsíčních e letáků a speciální nabídky
-* Shromažďování metrik v reálném čase pro takové věci, jako jsou e-mailu blokovaný a odezvy zákazníků
-* Generování sestav vám pomůže identifikovat trendy
-* Předávání dotazy zákazníků
-* E-mailových oznámení z aplikace
+* Automatické odesílání účtenek zákazníkům
+* Správa distribučních seznamů pro posílání zákazníků měsíčně e-letáků a speciální nabídky
+* Shromažďování metrik v reálném čase pro věci, jako je Blokovaný e-mail a reakce zákazníků
+* Generování sestav, které vám pomůžou identifikovat trendy
+* Předávání dotazů zákazníkům
+* E-mailová oznámení z vaší aplikace
 
 Další informace naleznete v tématu <https://sendgrid.com>.
 
 ## <a name="create-a-sendgrid-account"></a>Vytvoření účtu SendGrid
 [!INCLUDE [sendgrid-sign-up](../includes/sendgrid-sign-up.md)]
 
-## <a name="how-to-use-the-javaxmail-libraries"></a>Postup: Použití knihovny javax.mail
-Získat javax.mail knihovny, například z <https://www.oracle.com/technetwork/java/javamail> a importujte je do vašeho kódu. Na hlavní proces pomocí knihovny javax.mail k odesílání e-mailu pomocí protokolu SMTP je provést následující kroky:
+## <a name="how-to-use-the-javaxmail-libraries"></a>Postup: Použití knihoven javax. mail
+Získejte knihovny javax. mail, například z <https://www.oracle.com/technetwork/java/javamail> a importujte je do kódu. K posílání e-mailů pomocí protokolu SMTP na nejvyšší úrovni je potřeba provést tyto kroky:
 
-1. Zadejte hodnoty SMTP, včetně serveru SMTP, který je pro SendGrid smtp.sendgrid.net.
+1. Zadejte hodnoty SMTP, včetně serveru SMTP, který pro SendGrid je smtp.sendgrid.net.
 
 ```
         import java.util.Properties;
@@ -68,7 +69,7 @@ Získat javax.mail knihovny, například z <https://www.oracle.com/technetwork/j
                  // …
 ```
 
-1. Rozšíření *javax.mail.Authenticator* třídy a ve vaší implementaci *getPasswordAuthentication* metody, vrátí SendGrid uživatelské jméno a heslo.  
+1. Rozšíříte třídu *javax. mail. Authenticator* a v implementaci metody *getPasswordAuthentication* vrátíte uživatelské jméno a heslo SendGrid.  
 
        private class SMTPAuthenticator extends javax.mail.Authenticator {
        public PasswordAuthentication getPasswordAuthentication() {
@@ -76,15 +77,15 @@ Získat javax.mail knihovny, například z <https://www.oracle.com/technetwork/j
           String password = SMTP_AUTH_PWD;
           return new PasswordAuthentication(username, password);
        }
-2. Vytvoření relace ověřený e-mailu prostřednictvím *javax.mail.Session* objektu.  
+2. Pomocí objektu *javax. mail. Session* vytvořte ověřenou e-mailovou relaci.  
 
        Authenticator auth = new SMTPAuthenticator();
        Session mailSession = Session.getDefaultInstance(properties, auth);
-3. Vytvořte zprávu a přiřadit **k**, **z**, **předmět** a obsah hodnoty. To je ukázáno [How To: Vytvořit e-mailu](#how-to-create-an-email) oddílu.
-4. Odeslat zprávu přes *javax.mail.Transport* objektu. To je ukázáno [How To: Odeslání e-mailu] [# postupy – odeslání-e-mailu] části.
+3. Vytvořte zprávu a přiřaďte **k**nim hodnoty, **od**, **Předmět** a obsah. To je znázorněno v [tématu Postupy: Část vytvoření e](#how-to-create-an-email) -mailu
+4. Odešle zprávu prostřednictvím objektu *javax. mail. Transport* . Zobrazuje se v části [postupy: Odeslání e-mailu] [#how-to-Send-e-mail].
 
-## <a name="how-to-create-an-email"></a>Postup: Vytvořit e-mailu
-Následující znázorňuje způsob zadávání hodnot pro e-mailu.
+## <a name="how-to-create-an-email"></a>Postup: Vytvoření e-mailu
+Následující příklad ukazuje, jak zadat hodnoty pro e-mail.
 
     MimeMessage message = new MimeMessage(mailSession);
     Multipart multipart = new MimeMultipart("alternative");
@@ -105,7 +106,7 @@ Následující znázorňuje způsob zadávání hodnot pro e-mailu.
     message.setContent(multipart);
 
 ## <a name="how-to-send-an-email"></a>Postup: Odeslání e-mailu
-Následující ukazuje, jak odeslat e-mailu.
+Následující příklad ukazuje, jak odeslat e-mail.
 
     Transport transport = mailSession.getTransport();
     // Connect the transport object.
@@ -130,10 +131,10 @@ Následující kód ukazuje, jak přidat přílohu.
     attachmentPart.setFileName(attachmentName);
     multipart.addBodyPart(attachmentPart);
 
-## <a name="how-to-use-filters-to-enable-footers-tracking-and-analytics"></a>Postup: Použití filtrů k povolení zápatí, sledování a analýza
-SendGrid umožňuje zajistit další e-mailové funkce prostřednictvím *filtry*. Toto jsou nastavení, které lze přidat do e-mailovou zprávu povolit konkrétní funkce, jako například povolení sledování kliknutí, Google analytics, předplatné, sledování a tak dále. Úplný seznam filtrů, naleznete v tématu [nastavení filtru][Filter Settings].
+## <a name="how-to-use-filters-to-enable-footers-tracking-and-analytics"></a>Postup: Použití filtrů k povolení zápatí, sledování a analýz
+SendGrid poskytuje další funkce e-mailu prostřednictvím použití *filtrů*. Jedná se o nastavení, která se dají přidat do e-mailové zprávy, aby se povolily konkrétní funkce, jako je povolení sledování kliknutí, Google Analytics, sledování předplatného atd. Úplný seznam filtrů najdete v tématu [nastavení filtru][Filter Settings].
 
-* Následující ukazuje, jak vložit zápatí filtr, který má za následek text HTML, které povolí, v dolní části odeslání e-mailu.
+* Následující příklad ukazuje, jak vložit filtr zápatí, který má za následek zobrazení textu HTML v dolní části odesílaného e-mailu.
 
       message.addHeader("X-SMTPAPI",
           "{\"filters\":
@@ -141,7 +142,7 @@ SendGrid umožňuje zajistit další e-mailové funkce prostřednictvím *filtry
           {\"settings\":
           {\"enable\":1,\"text/html\":
           \"<html><b>Thank you</b> for your business.</html>\"}}}}");
-* Dalším příkladem filtru je sledování kliknutí. Řekněme, že text e-mailu obsahuje hypertextový odkaz, jako je například následující příkaz, a chcete sledovat rychlost, klikněte na tlačítko:
+* Dalším příkladem filtru je kliknutí na sledování. Řekněme, že váš e-mailový text obsahuje hypertextový odkaz, například následující a chcete sledovat rychlost kliknutí:
 
       messagePart.setContent(
           "Hello,
@@ -149,7 +150,7 @@ SendGrid umožňuje zajistit další e-mailové funkce prostřednictvím *filtry
           <a href='http://www.contoso.com'>http://www.contoso.com</a>.</p>
           Thank you.",
           "text/html");
-* Pokud chcete povolit sledování kliknutí, použijte následující kód:
+* Chcete-li povolit sledování Click, použijte následující kód:
 
       message.addHeader("X-SMTPAPI",
           "{\"filters\":
@@ -158,9 +159,9 @@ SendGrid umožňuje zajistit další e-mailové funkce prostřednictvím *filtry
           {\"enable\":1}}}}");
 
 ## <a name="how-to-update-email-properties"></a>Postup: Aktualizovat vlastnosti e-mailu
-Některé vlastnosti e-mailu můžete přepsat pomocí **nastavit vlastnost** nebo připojených pomocí **přidat vlastnost**.
+Některé vlastnosti e-mailu lze přepsat pomocí **vlastnosti set** nebo pomocí možnosti **Přidat vlastnost**.
 
-Například, chcete-li určit **ReplyTo** adresy, použijte následující:
+Pokud například chcete zadat adresy **ReplyTo** , použijte následující:
 
     InternetAddress addresses[] =
         { new InternetAddress("john@contoso.com"),
@@ -168,21 +169,21 @@ Například, chcete-li určit **ReplyTo** adresy, použijte následující:
 
     message.setReplyTo(addresses);
 
-Chcete-li přidat **kopie** příjemce, použijte následující:
+Chcete-li přidat příjemce **CC** , použijte následující:
 
     message.addRecipient(Message.RecipientType.CC, new
     InternetAddress("john@contoso.com"));
 
-## <a name="how-to-use-additional-sendgrid-services"></a>Postup: Použít další služby SendGrid
-SendGrid nabízí rozhraní API založeného na webu, která vám umožní využívat další funkce SendGrid z aplikace Azure. Úplné podrobnosti najdete v tématu [dokumentace k rozhraní API SendGrid][SendGrid API documentation].
+## <a name="how-to-use-additional-sendgrid-services"></a>Postup: Použití dalších služeb SendGrid
+SendGrid nabízí webová rozhraní API, která můžete použít k využití dalších funkcí SendGrid z vaší aplikace Azure. Úplné podrobnosti najdete v [dokumentaci k rozhraní SendGrid API][SendGrid API documentation].
 
 ## <a name="next-steps"></a>Další postup
-Teď, když jste se naučili základy služby e-mailu Sendgridu, použijte tyto odkazy na další informace.
+Teď, když jste se seznámili se základy e-mailové služby SendGrid, získáte další informace na následujících odkazech.
 
-* Ukázka, která ukazuje, jak pomocí služby SendGrid v nasazení Azure: [Odesílání e-mailu pomocí SendGrid z Javy v nasazení Azure](store-sendgrid-java-how-to-send-email-example.md)
-* SendGrid Java SDK: <https://sendgrid.com/docs/Code_Examples/java.html>
-* Dokumentace k rozhraní API SendGrid: <https://sendgrid.com/docs/API_Reference/index.html>
-* SendGrid speciální nabídka pro zákazníky Azure: <https://sendgrid.com/windowsazure.html>
+* Ukázka, která ukazuje použití SendGrid v nasazení Azure: [Odeslání e-mailu pomocí SendGrid z Java v nasazení Azure](store-sendgrid-java-how-to-send-email-example.md)
+* SendGrid Java SDK:<https://sendgrid.com/docs/Code_Examples/java.html>
+* Dokumentace k rozhraní SendGrid API:<https://sendgrid.com/docs/API_Reference/index.html>
+* SendGrid speciální nabídka pro zákazníky Azure:<https://sendgrid.com/windowsazure.html>
 
 [https://sendgrid.com]: https://sendgrid.com
 [https://sendgrid.com/pricing.html]: https://sendgrid.com/pricing.html
@@ -192,5 +193,5 @@ Teď, když jste se naučili základy služby e-mailu Sendgridu, použijte tyto 
 [Filter Settings]: https://sendgrid.com/docs/API_Reference/Web_API/filter_settings.html
 [SendGrid API documentation]: https://sendgrid.com/docs/API_Reference/index.html
 [https://sendgrid.com/azure.html]: https://sendgrid.com/windowsazure.html
-[založené na cloudu e-mailové služby]: https://sendgrid.com/email-solutions
-[doručování transakční e-mailů]: https://sendgrid.com/transactional-email
+[Cloudová e-mailová služba]: https://sendgrid.com/email-solutions
+[transakčních e-mailů]: https://sendgrid.com/transactional-email

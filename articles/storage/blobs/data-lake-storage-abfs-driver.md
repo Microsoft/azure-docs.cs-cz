@@ -1,5 +1,5 @@
 ---
-title: Ovladač systému souborů objektů Blob v Azure pro Azure Data Lake Storage Gen2
+title: Ovladač systému souborů objektů BLOB v Azure pro Azure Data Lake Storage Gen2
 description: Ovladač systému souborů Hadoop ABFS
 services: storage
 author: normesta
@@ -9,59 +9,59 @@ ms.reviewer: jamesbak
 ms.date: 12/06/2018
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: abe3f67141011c765f9de93bcf51998ddae002cb
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 50d39aa3c6341e61e383c5584ab2992e3fea3189
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67696141"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68278089"
 ---
-# <a name="the-azure-blob-filesystem-driver-abfs-a-dedicated-azure-storage-driver-for-hadoop"></a>Ovladač systému souborů Azure Blob (ABFS): Vyhrazené ovladač Azure Storage pro Hadoop
+# <a name="the-azure-blob-filesystem-driver-abfs-a-dedicated-azure-storage-driver-for-hadoop"></a>Ovladač systému souborů objektů BLOB v Azure (ABFS): Vyhrazený ovladač Azure Storage pro Hadoop
 
-Jedním z primárních přístupové metody pro data ve službě Azure Data Lake Storage Gen2 je prostřednictvím [systému souborů Hadoop](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/filesystem/index.html). Data Lake Storage Gen2 umožňuje uživatelům přístupu úložiště objektů Blob v Azure nový ovladač ovladač systému souborů Azure Blob nebo `ABFS`. ABFS je součástí systému Apache Hadoop a je součástí mnoha komerčních distribuce hadoopu. Pomocí tohoto ovladače, mnoho aplikací a architektur můžou k datům ve službě Azure Blob Storage bez jakéhokoli kódu explicitně odkazující na Gen2 úložiště Data Lake.
+Jednou z primárních metod přístupu k datům v Azure Data Lake Storage Gen2 je prostřednictvím [systému Hadoop](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/filesystem/index.html). Data Lake Storage Gen2 umožňuje uživatelům Azure Blob Storage přístup k novému ovladači, ovladači systému souborů blob Azure nebo `ABFS`. ABFS je součástí Apache Hadoop a je součástí mnoha komerčních distribucí systému Hadoop. Pomocí tohoto ovladače můžou spousta aplikací a platforem získat přístup k datům v Azure Blob Storage bez explicitního odkazování na Data Lake Storage Gen2 kódu.
 
-## <a name="prior-capability-the-windows-azure-storage-blob-driver"></a>Předchozí funkce: Ovladače Windows Azure Storage Blob
+## <a name="prior-capability-the-windows-azure-storage-blob-driver"></a>Předchozí schopnost: Ovladač Azure Storage Blob Windows
 
-Ovladače Windows Azure Storage Blob nebo [WASB ovladač](https://hadoop.apache.org/docs/current/hadoop-azure/index.html) původní podporu pro úložiště objektů Blob v Azure k dispozici. Tento ovladač provádět složité úlohy systému souborů mapování sémantiku (podle potřeby pomocí rozhraní Hadoop systému souborů) na tento objekt uložení rozhraní se stylem podobným vystavený službou Azure Blob Storage. Tento ovladač i nadále podporuje tento model poskytuje vysoký výkon přístupu k datům uloženým v objektech BLOB, ale obsahuje značné množství kódu provádí toto mapování, kvůli tomu obtížné udržovat. Kromě toho některé operace, jako [FileSystem.rename()](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/filesystem/filesystem.html#boolean_renamePath_src_Path_d) a [FileSystem.delete()](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/filesystem/filesystem.html#boolean_deletePath_p_boolean_recursive) při použití do adresáře vyžadovat ovladač obrovské množství operací (vzhledem k absenci objektu úložiště Podpora pro adresáře) která často vede k snížení výkonu. Ovladač ABFS je navržená k překonání inherentní nedostatky WASB.
+Ovladač Windows Azure Storage Blob nebo [ovladač WASB](https://hadoop.apache.org/docs/current/hadoop-azure/index.html) poskytl původní podporu pro Azure Blob Storage. Tento ovladač provedl komplexní úlohu mapování sémantiky systému souborů (jak je požadováno rozhraním systému Hadoop) na rozhraní stylu úložiště objektů vystavené službou Azure Blob Storage. Tento ovladač nadále podporuje tento model a poskytuje vysoký výkon při přístupu k datům uloženým v objektech blob, ale obsahuje značný objem kódu, který provádí toto mapování, což ztěžuje jeho údržbu. Kromě toho některé operace, jako je například [FileSystem. Rename ()](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/filesystem/filesystem.html#boolean_renamePath_src_Path_d) a [FileSystem. Delete ()](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/filesystem/filesystem.html#boolean_deletePath_p_boolean_recursive) při použití v adresářích, vyžadují, aby ovladač prováděl velké množství operací (vzhledem k tomu, že úložiště neobsahují podporu adresářů), což často vede k tomu, že pro snížení výkonu. Ovladač ABFS byl navržen pro překonání nedostatků WASB.
 
-## <a name="the-azure-blob-file-system-driver"></a>Ovladač systému souborů Azure Blob
+## <a name="the-azure-blob-file-system-driver"></a>Ovladač systému souborů BLOB v Azure
 
-[Rozhraní Azure Data Lake Storage REST](https://docs.microsoft.com/rest/api/storageservices/data-lake-storage-gen2) je navržen pro podporu sémantiku systému souborů v Azure Blob Storage. Vzhledem k tomu, že systém souborů Hadoop je navržený tak, aby podporují stejnou sémantiku neexistuje žádný požadavek pro komplexní mapování v ovladači. Ovladač systému souborů Azure Blob (nebo ABFS) tedy překrytí pouhé klienta pro rozhraní REST API.
+[Rozhraní Azure Data Lake Storage REST](https://docs.microsoft.com/rest/api/storageservices/data-lake-storage-gen2) je navrženo tak, aby podporovalo sémantiku systému souborů přes Azure Blob Storage. Vzhledem k tom, že systém Hadoop je navržený tak, aby podporoval stejnou sémantiku, neexistuje žádný požadavek na komplexní mapování v ovladači. Proto je ovladač systému souborů objektů BLOB v Azure (nebo ABFS) pouhým překrytím klienta pro REST API.
 
-Existují však některé funkce, které ovladače musí i nadále provádět:
+Existují však některé funkce, které musí ovladač stále provádět:
 
 ### <a name="uri-scheme-to-reference-data"></a>Schéma identifikátoru URI pro referenční data
 
-Konzistentní s jinými implementacemi systému souborů v systému Hadoop, ovladač ABFS definuje vlastní schéma identifikátoru URI tak, aby (adresářů a souborů) může být výrazně materiály. Schéma identifikátoru URI je popsána v [použít identifikátor URI služby Azure Data Lake Storage Gen2](./data-lake-storage-introduction-abfs-uri.md). Struktura identifikátoru URI je: `abfs[s]://file_system@account_name.dfs.core.windows.net/<path>/<path>/<file_name>`
+Ovladač ABFS je v souladu s dalšími implementacemi systému souborů v rámci systému Hadoop a definuje vlastní schéma identifikátoru URI, aby bylo možné prostředky (adresáře a soubory) rozlišit. Schéma identifikátoru URI je popsáno v [části použití Azure Data Lake Storage Gen2 identifikátor URI](./data-lake-storage-introduction-abfs-uri.md). Struktura identifikátoru URI je:`abfs[s]://file_system@account_name.dfs.core.windows.net/<path>/<path>/<file_name>`
 
-Pomocí výše uvedených formát identifikátoru URI, standardní nástroje Hadoop a architektury je možné odkazovat na tyto prostředky:
+Pomocí výše uvedeného formátu identifikátoru URI se k odkazování na tyto prostředky dají použít standardní nástroje a architektury Hadoop:
 
 ```bash
 hdfs dfs -mkdir -p abfs://fileanalysis@myanalytics.dfs.core.windows.net/tutorials/flightdelays/data 
 hdfs dfs -put flight_delays.csv abfs://fileanalysis@myanalytics.dfs.core.windows.net/tutorials/flightdelays/data/ 
 ```
 
-Interně ovladač ABFS přeloží zadaný v identifikátoru URI k souborům a adresářům nebo prostředky a provede volání REST API služby Azure Data Lake Storage s odkazy.
+Ovladač ABFS interně překládá prostředky zadané v identifikátoru URI do souborů a adresářů a provádí volání REST API Azure Data Lake Storage s těmito odkazy.
 
 ### <a name="authentication"></a>Ověřování
 
-Ovladač ABFS podporuje dva typy ověřování tak, aby aplikaci Hadoop může zabezpečený přístup k prostředků obsažených v rámci účtu Data Lake Storage Gen2 podporuje. Úplné podrobnosti o dostupných ověřovací schémata jsou k dispozici v [Průvodci zabezpečením Azure Storage](../common/storage-security-guide.md). Jsou to tyto:
+Ovladač ABFS podporuje dvě formy ověřování, aby mohla aplikace Hadoop bezpečně přistupovat k prostředkům, které jsou obsaženy v účtu s podporou Data Lake Storage Gen2. Úplné podrobnosti o dostupných schématech ověřování jsou k dispozici v [Azure Storage příručce zabezpečení](../common/storage-security-guide.md). Jsou to tyto:
 
-- **Sdílený klíč:** To umožňuje uživatelům přístup ke všem prostředkům v účtu. Klíč je zašifrované a uložené v konfiguraci systému Hadoop.
+- **Sdílený klíč:** To umožňuje uživatelům přístup ke všem prostředkům v účtu. Klíč je zašifrovaný a uložený v konfiguraci Hadoop.
 
-- **Tokenu nosiče OAuth Azure Active Directory:** Azure AD nosné tokeny jsou získaných a aktualizovat ovladač pomocí buď identitě koncového uživatele nebo instančního objektu nakonfigurované. Pomocí tohoto modelu ověřování, autorizaci veškerý přístup na základě za volání pomocí identity přidružené k zadaného tokenu a vyhodnotit proti přiřazené POSIX přístupu ovládacího prvku seznam (ACL).
+- **Azure Active Directory nosný token OAuth:** Tokeny nosiče Azure AD se získávají a aktualizují pomocí ovladače buď prostřednictvím identity koncového uživatele, nebo nakonfigurovaného instančního objektu. Pomocí tohoto modelu ověřování je veškerý přístup autorizovaný pro jednotlivá volání pomocí identity přidružené k zadanému tokenu a vyhodnocený na základě přiřazeného seznamu Access Control POSIX (ACL).
 
 ### <a name="configuration"></a>Konfiguraci
 
-Všechny konfigurace pro ovladač ABFS je uložená v <code>core-site.xml</code> konfigurační soubor. V distribucích systému Hadoop s [Ambari](https://ambari.apache.org/), konfigurace může spravovat také pomocí webového portálu nebo rozhraní Ambari REST API.
+Všechny konfigurace pro ovladač ABFS jsou uložené v <code>core-site.xml</code> konfiguračním souboru. V distribucích Hadoop s [Ambari](https://ambari.apache.org/)může být konfigurace spravovaná taky pomocí webového portálu nebo Ambari REST API.
 
-Podrobnosti o všech položek podporované konfigurace, které jsou určené v [Hadoop oficiální dokumentaci](https://hadoop.apache.org/docs/current/hadoop-azure/index.html).
+Podrobnosti o všech podporovaných položkách konfigurace jsou uvedeny v [oficiální dokumentaci k systému Hadoop](https://hadoop.apache.org/docs/r3.2.0/hadoop-azure/abfs.html).
 
-### <a name="hadoop-documentation"></a>Dokumentace ke službě Hadoop
+### <a name="hadoop-documentation"></a>Dokumentace k Hadoop
 
-Ovladač ABFS je plně dokumentovány v článku [Hadoop oficiální dokumentaci](https://github.com/apache/hadoop/blob/trunk/hadoop-tools/hadoop-azure/src/site/markdown/abfs.md)
+Ovladač ABFS je plně popsán v [oficiální dokumentaci k Hadoop](https://hadoop.apache.org/docs/r3.2.0/hadoop-azure/abfs.html) .
 
 ## <a name="next-steps"></a>Další postup
 
-- [Vytvoření clusteru služby Azure Databricks](./data-lake-storage-quickstart-create-databricks-account.md)
+- [Vytvoření clusteru Azure Databricks](./data-lake-storage-quickstart-create-databricks-account.md)
 - [Azure Data Lake Storage Gen2 URI](./data-lake-storage-introduction-abfs-uri.md)

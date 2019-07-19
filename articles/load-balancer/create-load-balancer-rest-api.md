@@ -4,7 +4,7 @@ titlesuffix: Azure Load Balancer
 description: Zjistěte, jak vytvořit pomocí rozhraní REST API služby Azure Load Balancer.
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: asudbring
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -12,17 +12,17 @@ ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: load-balancer
 ms.date: 06/06/2018
-ms.author: kumud
-ms.openlocfilehash: 159fe9d6a891858d8d2cc2315e9544b79eb44cff
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: allensu
+ms.openlocfilehash: ae8fb4494d27d0c145963c9b32757bdb802e0cc7
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60884975"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68275543"
 ---
 # <a name="create-an-azure-basic-load-balancer-using-rest-api"></a>Vytvoření Azure Load balancer úrovně Basic pomocí rozhraní REST API
 
-Azure Load Balancer distribuuje nové příchozí toky, které přicházejí na front-endu nástroje pro vyrovnávání zatížení do fondu instancí back-endu, podle pravidel a sond stavu. Nástroje pro vyrovnávání zatížení je k dispozici ve dvou skladových položkách: Basic a Standard. Abyste pochopili rozdíl mezi dvě verze SKU, [SKU nástroje pro vyrovnávání zatížení porovnání](load-balancer-overview.md#skus).
+Azure Load Balancer distribuuje nové příchozí toky, které přicházejí na front-endu nástroje pro vyrovnávání zatížení do fondu instancí back-endu, podle pravidel a sond stavu. Load Balancer je k dispozici ve dvou SKU: Basic a Standard. Abyste pochopili rozdíl mezi dvě verze SKU, [SKU nástroje pro vyrovnávání zatížení porovnání](load-balancer-overview.md#skus).
  
 Tento návod ukazuje, jak vytvořit objekt pomocí Azure Load balancer úrovně Basic [rozhraní Azure REST API](/rest/api/azure/) zavádějí vyrovnávat příchozí požadavek na víc virtuálních počítačů v rámci virtuální sítě Azure. Úplnou referenční dokumentaci a další ukázky jsou k dispozici v [Reference k rozhraní REST nástroje pro vyrovnávání zatížení Azure](/rest/api/load-balancer/).
  
@@ -51,7 +51,7 @@ Jediný požadovaný parametr `location`. Pokud nedefinujete *SKU* verze, zákla
 | location | řetězec | Umístění prostředku. Získat aktuální seznam umístění s využitím [seznamu umístění](https://docs.microsoft.com/rest/api/resources/subscriptions/listlocations) operace. |
 
 
-## <a name="example-create-and-update-a-basic-load-balancer"></a>Příklad: Vytvoření a aktualizaci základní nástroje pro vyrovnávání zatížení
+## <a name="example-create-and-update-a-basic-load-balancer"></a>Příklad: Vytvoření a aktualizace základního Load Balancer
 
 V tomto příkladu nejdřív vytvoření Load Balanceru úrovně Basic spolu s jeho prostředky. Dále je nutné nakonfigurovat prostředky nástroje pro vyrovnávání zatížení, které zahrnují konfigurace protokolu IP front-endu, back-endový fond adres, pravidla, sondu stavu a příchozí pravidlo NAT Vyrovnávání zatížení.
 

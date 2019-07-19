@@ -1,6 +1,6 @@
 ---
-title: Image z Galerie sdílet mezi tenanty v Azure | Dokumentace Microsoftu
-description: Zjistěte, jak sdílet napříč Azure tenanty používající sdílený Image Galerie imagí virtuálních počítačů.
+title: Sdílení imagí Galerie napříč klienty v Azure | Microsoft Docs
+description: Naučte se sdílet image virtuálních počítačů napříč klienty Azure pomocí galerií sdílených imagí.
 services: virtual-machines-windows
 author: cynthn
 manager: gwallace
@@ -8,27 +8,27 @@ ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.topic: article
-ms.date: 04/05/2019
+ms.date: 07/15/2019
 ms.author: cynthn
-ms.openlocfilehash: c26abe948fa415c780d543c615c34af2091cfbc7
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: b921aabd8d71654d089c5f16aba27c286a1e91ec
+ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67709164"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68305041"
 ---
-# <a name="share-gallery-vm-images-across-azure-tenants"></a>Sdílet mezi tenanty Azure Galerie imagí virtuálních počítačů
+# <a name="share-gallery-vm-images-across-azure-tenants"></a>Sdílení imagí virtuálních počítačů galerie v klientech Azure
 
 [!INCLUDE [virtual-machines-share-images-across-tenants](../../../includes/virtual-machines-share-images-across-tenants.md)]
 
 
 > [!IMPORTANT]
-> Na portálu nelze použít k nasazení virtuálního počítače z image v jiném tenantovi azure. Vytvoření virtuálního počítače pomocí bitové kopie sdíleny mezi klienty, je nutné použít [rozhraní příkazového řádku Azure](../linux/share-images-across-tenants.md) nebo prostředí Powershell.
+> Portál nemůžete použít k nasazení virtuálního počítače z image v jiném tenantovi Azure. Pokud chcete vytvořit virtuální počítač z image sdílené mezi klienty, musíte použít [Azure CLI](../linux/share-images-across-tenants.md) nebo PowerShell.
 
-## <a name="create-a-vm-using-powershell"></a>Vytvoření virtuálního počítače pomocí Powershellu
+## <a name="create-a-vm-using-powershell"></a>Vytvoření virtuálního počítače pomocí PowerShellu
 
 
-Přihlásit se do obou tenanty s použitím ID aplikace ID tajný klíč a tenanta. 
+Přihlaste se do obou tenantů pomocí ID aplikace, tajného klíče a ID tenanta. 
 
 ```azurepowershell-interactive
 $applicationId = '<App ID>'
@@ -41,23 +41,48 @@ Connect-AzAccount -ServicePrincipal -Credential $cred  -Tenant "<Tenant 1 ID>"
 Connect-AzAccount -ServicePrincipal -Credential $cred -Tenant "<Tenant 2 ID>"
 ```
 
-Vytvoření virtuálního počítače ve skupině prostředků, který má oprávnění pro registraci aplikace. Informace v tomto příkladu nahraďte vlastními.
+Vytvořte virtuální počítač ve skupině prostředků, která má oprávnění k registraci aplikace. Informace v tomto příkladu nahraďte vlastními.
+
+
 
 ```azurepowershell-interactive
 $resourceGroup = "myResourceGroup"
+$location = "South Central US"
+$vmName = "myVMfromImage"
+
+# Set a variable for the image version in Tenant 1 using the full image ID of the shared image version
 $image = "/subscriptions/<Tenant 1 subscription>/resourceGroups/<Resource group>/providers/Microsoft.Compute/galleries/<Gallery>/images/<Image definition>/versions/<version>"
-New-AzVm `
-   -ResourceGroupName "myResourceGroup" `
-   -Name "myVMfromImage" `
-   -Image $image `
-   -Location "South Central US" `
-   -VirtualNetworkName "myImageVnet" `
-   -SubnetName "myImageSubnet" `
-   -SecurityGroupName "myImageNSG" `
-   -PublicIpAddressName "myImagePIP" `
-   -OpenPorts 3389
+
+# Create user object
+$cred = Get-Credential -Message "Enter a username and password for the virtual machine."
+
+# Create a resource group
+New-AzResourceGroup -Name $resourceGroup -Location $location
+
+# Networking pieces
+$subnetConfig = New-AzVirtualNetworkSubnetConfig -Name mySubnet -AddressPrefix 192.168.1.0/24
+$vnet = New-AzVirtualNetwork -ResourceGroupName $resourceGroup -Location $location `
+  -Name MYvNET -AddressPrefix 192.168.0.0/16 -Subnet $subnetConfig
+$pip = New-AzPublicIpAddress -ResourceGroupName $resourceGroup -Location $location `
+  -Name "mypublicdns$(Get-Random)" -AllocationMethod Static -IdleTimeoutInMinutes 4
+$nsgRuleRDP = New-AzNetworkSecurityRuleConfig -Name myNetworkSecurityGroupRuleRDP  -Protocol Tcp `
+  -Direction Inbound -Priority 1000 -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix * `
+  -DestinationPortRange 3389 -Access Allow
+$nsg = New-AzNetworkSecurityGroup -ResourceGroupName $resourceGroup -Location $location `
+  -Name myNetworkSecurityGroup -SecurityRules $nsgRuleRDP
+$nic = New-AzNetworkInterface -Name myNic -ResourceGroupName $resourceGroup -Location $location `
+  -SubnetId $vnet.Subnets[0].Id -PublicIpAddressId $pip.Id -NetworkSecurityGroupId $nsg.Id
+
+# Create a virtual machine configuration using the $image variable to specify the shared image
+$vmConfig = New-AzVMConfig -VMName $vmName -VMSize Standard_D1_v2 | `
+Set-AzVMOperatingSystem -Windows -ComputerName $vmName -Credential $cred | `
+Set-AzVMSourceImage -Id $image | `
+Add-AzVMNetworkInterface -Id $nic.Id
+
+# Create a virtual machine
+New-AzVM -ResourceGroupName $resourceGroup -Location $location -VM $vmConfig
 ```
 
 ## <a name="next-steps"></a>Další postup
 
-Můžete také vytvořit sdílené bitové kopie pomocí prostředků Galerie [webu Azure portal](shared-images-portal.md).
+Pomocí [Azure Portal](shared-images-portal.md)můžete také vytvořit prostředky galerie sdílených imagí.

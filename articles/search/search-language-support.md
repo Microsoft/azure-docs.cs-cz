@@ -1,74 +1,57 @@
 ---
-title: Indexování neanglických vícejazykového vyhledávacích dotazů – Azure Search
-description: Služba Azure Search podporuje 56 jazycích využitím jazykové analyzátory z technologie Lucene a zpracování přirozeného jazyka od Microsoftu.
+title: Indexování s více jazyky pro vyhledávací dotazy jiné než anglické verze – Azure Search
+description: Azure Search podporuje jazyky 56, což využívá analyzátory jazyka z aplikace Lucene a technologie pro zpracování přirozeného jazyka od Microsoftu.
 author: yahnoosh
 manager: jlembicz
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 05/02/2019
+ms.date: 07/11/2019
 ms.author: jlembicz
 ms.custom: seodec2018
-ms.openlocfilehash: cc9f271c1c79f34ba62fa22d6ce4fd6bf16738f1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 403febfcb54194602051aaebe2952265c0675e9d
+ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65025267"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67854390"
 ---
-# <a name="create-an-index-for-documents-in-multiple-languages-in-azure-search"></a>Vytvoření indexu pro dokumenty v několika jazycích ve službě Azure Search
-> [!div class="op_single_selector"]
->
-> * [Azure Portal](search-language-support.md)
-> * [REST](https://msdn.microsoft.com/library/azure/dn879793.aspx)
-> * [.NET](https://msdn.microsoft.com/library/azure/microsoft.azure.search.models.analyzername.aspx)
->
->
+# <a name="how-to-create-an-index-for-multiple-languages-in-azure-search"></a>Vytvoření indexu pro více jazyků v Azure Search
 
-Odemčení síly skryté v jazykové analyzátory je stejně jednoduché jako jednu vlastnost nastavení na prohledávatelném poli v definici indexu. Nyní můžete provést tento krok na portálu.
+Indexy mohou zahrnovat pole obsahující obsah z více jazyků, například vytváření jednotlivých polí pro řetězce specifické pro jazyk. Pro dosažení nejlepších výsledků při indexování a dotazování přiřaďte analyzátor jazyka, který poskytuje příslušná jazyková pravidla. 
 
-Níže jsou snímky obrazovky z oken webu Azure Portal pro Azure Search, které povoluje uživatelům definovat schématu indexu. Z tohoto okna můžete uživatelům vytvořit všechna pole a nastavte vlastnost analyzátor pro každý z nich.
+Azure Search nabízí velký výběr jazykových analyzátorů z aplikace Lucene i Microsoftu, které je možné přiřadit k jednotlivým polím pomocí vlastnosti Analyzer. Můžete také zadat analyzátor jazyka na portálu, jak je popsáno v tomto článku.
 
-> [!IMPORTANT]
-> Lze nastavit pouze analyzátor jazyka při definici pole, stejně jako při vytváření nového indexu zdola nahoru nebo při přidávání nového pole do stávajícího indexu. Ujistěte se, že zadáte plně všechny atributy, včetně analyzátoru, při vytváření pole. Nebudete moci upravit vlastnosti nebo změňte typ analyzátoru po uložení změn.
->
->
+## <a name="add-analyzers-to-fields"></a>Přidat analyzátory do polí
 
-## <a name="define-a-new-field-definition"></a>Definovat novou definici pole
-1. Přihlaste se k [webu Azure portal](https://portal.azure.com) a otevře se okno služby vaší služby search.
-2. Klikněte na tlačítko **přidat index** na panelu příkazů v horní části řídicího panelu služby ke spuštění nového indexu, nebo otevřete existující index k nastavení analyzátor na nová pole, které přidáváte do existujícího indexu.
-3. Zobrazí se okno polí, získáte možnosti pro definování schématu indexu, včetně kartě analyzátor používá pro výběr analyzátor jazyka.
-4. V polích začněte definici pole poskytnutí názvu, vyberete typ dat a nastavení atributů, které mají označení pole textu v plném znění prohledávatelné, retrievable ve výsledcích hledání, použitelné ve strukturách omezující vlastnost navigace, seřaditelné a podobně.
-5. Než budete pokračovat na další pole, otevřete **analyzátor** kartu.
+Analyzátor jazyka je určen při vytvoření pole. Přidáním analyzátoru do existující definice pole je třeba přepsat (a znovu načíst) index nebo vytvořit nové pole stejné jako původní, ale s přiřazením analyzátoru. Nepoužívané pole pak můžete odstranit na pohodlí.
 
-![][1]
-*Vyberte analyzátor, klikněte na kartu analýza v okně pole*
+1. Přihlaste se k [Azure Portal](https://portal.azure.com) a vyhledejte vyhledávací službu.
+1. Kliknutím na **Přidat index** na panelu příkazů v horní části řídicího panelu služby spustíte nový index nebo otevřete existující index pro nastavení analyzátoru pro nová pole, která přidáváte do existujícího indexu.
+1. Zahajte definici pole zadáním názvu.
+1. Vyberte datový typ EDM. String. Pouze řetězcová pole jsou fulltextově prohledávatelné.
+1. Nastavením atributu s **možností prohledávání** Povolte vlastnost Analyzer. Pole musí být založené na textu, aby bylo možné používat analyzátor jazyka.
+1. Vyberte jeden z dostupných analyzátorů. 
 
-## <a name="choose-an-analyzer"></a>Vyberte analyzátor
-1. Posuňte se k vyhledání pole, které definujete.
-2. Pokud jste neoznačili jako prohledávatelná pole, klikněte na zaškrtávací políčko hned a označte ji jako **Searchable**.
-3. Klikněte na oblast analyzátor zobrazíte seznam dostupných analyzátory.
-4. Vyberte analyzátor, který chcete použít.
+![Přiřazovat analyzátory jazyka během definice pole](media/search-language-support/select-analyzer.png "Přiřazovat analyzátory jazyka během definice pole")
 
-![][2]
-*Vyberte jednu z podporovaných analyzátory pro každé pole*
+Ve výchozím nastavení používají všechna hledaná pole [standardní analyzátor Lucene](https://lucene.apache.org/core/4_10_0/analyzers-common/org/apache/lucene/analysis/standard/StandardAnalyzer.html) , který je Language-nezávislá. Úplný seznam podporovaných analyzátorů najdete v tématu [Přidání analyzátorů jazyka do indexu Azure Search](index-add-language-analyzers.md).
 
-Ve výchozím nastavení, všechna prohledatelná pole použít [analyzátor Lucene standardní](https://lucene.apache.org/core/4_10_0/analyzers-common/org/apache/lucene/analysis/standard/StandardAnalyzer.html) což je jazykově nezávislé. Chcete-li zobrazit úplný seznam podporovaných analyzátory, naleznete v tématu [jazykovou podporu ve službě Azure Search](https://msdn.microsoft.com/library/azure/dn879793.aspx).
+V portálu se analyzátory mají použít tak, jak jsou. Pokud budete vyžadovat přizpůsobení nebo konkrétní konfiguraci filtrů a tokenizátory musíte nejdřív, měli byste v kódu [vytvořit vlastní analyzátor](index-add-custom-analyzers.md) . Portál nepodporuje výběr a konfiguraci vlastních analyzátorů.
 
-Po výběru analyzátoru jazyka pro pole, se použije spolu s každou žádostí indexování a vyhledávání pro toto pole. Při dotazu je vydaný pro více polí pomocí různých analyzátorů, dotaz se zpracuje nezávisle na sobě správné analyzátory pro každé pole.
+## <a name="query-language-specific-fields"></a>Konkrétní dotazovací jazyk – pole
 
-Mnoho webových a mobilních aplikací poskytovat uživatelům na celém světě používající různé jazyky. Je možné definovat index pro takovéhoto scénáře tím, že vytvoříte pole pro každý jazyk podporovaný.
+Jakmile je analyzátor jazyka vybrán pro pole, bude použit spolu s každou vydanou žádostí o indexování a hledání daného pole. Když je dotaz vydán pro více polí pomocí různých analyzátorů, dotaz se zpracuje nezávisle přiřazenými analyzátory pro každé pole.
 
-![][3]
-*Definice indexu pole Popis pro každý jazyk podporovaný*
+Pokud je znám jazyk agenta, který vydává dotaz, může být požadavek na hledání vymezen na konkrétní pole pomocí parametru dotazu **searchFields** . Následující dotaz se vydá jenom s popisem v polštině:
 
-Pokud jazyk agenta zadání dotazu je znám, žádost o vyhledávání se dají vymezit na konkrétní pole pomocí **searchFields** parametr dotazu. Následující dotaz bude vydaný pouze pro popis v polština:
+`https://[service name].search.windows.net/indexes/[index name]/docs?search=darmowy&searchFields=PolishContent&api-version=2019-05-06`
 
-`https://[service name].search.windows.net/indexes/[index name]/docs?search=darmowy&searchFields=description_pl&api-version=2019-05-06`
+Dotaz na index můžete z portálu pomocí [**Průzkumníka služby Search**](search-explorer.md) vložit do dotazu, který se podobá výše uvedenému.
 
-Indexu z portálu, můžete zadávat dotazy pomocí **Průzkumníka služby Search** vložit v podobně jako výše uvedeném dotazu. Průzkumník služby Search je dostupná na panelu příkazů v okně služby. Zobrazit [dotazování indexu Azure Search na portálu](search-explorer.md) podrobnosti.
+## <a name="boost-language-specific-fields"></a>Posílit pole specifická pro konkrétní jazyk
 
-Někdy není známý jazyk agenta zadání dotazu, v takovém případě dotazu může být vydaný pro všechna pole současně. V případě potřeby předvolby pro výsledky v určitém jazyce, lze definovat pomocí [profily skórování](https://msdn.microsoft.com/library/azure/dn798928.aspx). V následujícím příkladu se shody nalezený v popisu v angličtině vyšší skóre relativní vzhledem k shody v polština a Francouzština:
+Někdy není známý jazyk agenta, který vydává dotaz, a v takovém případě lze dotaz vydat pro všechna pole současně. V případě potřeby je možné pomocí [profilů vyhodnocování](index-add-scoring-profiles.md)definovat preference pro výsledky v určitém jazyce. V následujícím příkladu se shody zjištěné v popisu v angličtině budou v porovnání s výsledky v polštině a francouzštině vyhodnoceny jako vyšší:
 
     "scoringProfiles": [
       {
@@ -81,9 +64,6 @@ Někdy není známý jazyk agenta zadání dotazu, v takovém případě dotazu 
 
 `https://[service name].search.windows.net/indexes/[index name]/docs?search=Microsoft&scoringProfile=englishFirst&api-version=2019-05-06`
 
-Pokud jste vývojář .NET, mějte na paměti, že můžete nakonfigurovat pomocí jazykové analyzátory [Azure Search .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Search). Nejnovější vydaná verze zahrnuje podporu pro jazykové analyzátory Microsoft také.
+## <a name="next-steps"></a>Další postup
 
-<!-- Image References -->
-[1]: ./media/search-language-support/AnalyzerTab.png
-[2]: ./media/search-language-support/SelectAnalyzer.png
-[3]: ./media/search-language-support/IndexDefinition.png
+Pokud jste vývojářem rozhraní .NET, Všimněte si, že můžete nakonfigurovat jazykové analyzátory pomocí [sady Azure Search .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Search) a vlastnosti [Analyzer](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzer?view=azure-dotnet) . 

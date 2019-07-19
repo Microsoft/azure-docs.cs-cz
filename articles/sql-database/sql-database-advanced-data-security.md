@@ -1,80 +1,80 @@
 ---
-title: Rozšířené zabezpečení dat – Azure SQL Database | Dokumentace Microsoftu
-description: Další informace o funkcích pro zjišťování a klasifikace citlivá data, Správa ohrožení zabezpečení vaší databáze a detekuje neobvyklé aktivity, které může znamenat hrozbu pro vaše databáze Azure SQL.
+title: Rozšířené zabezpečení dat – Azure SQL Database | Microsoft Docs
+description: Přečtěte si o funkcích pro zjišťování a klasifikaci citlivých dat, správě ohrožení zabezpečení databáze a zjišťování aktivit neobvyklé, které by mohly poukazovat na hrozbu pro vaši databázi SQL Azure.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
 ms.devlang: ''
 ms.topic: conceptual
 author: monhaber
-ms.author: monhaber
+ms.author: v-mohabe
 ms.reviewer: vanto
 manager: craigg
 ms.date: 03/31/2019
-ms.openlocfilehash: a078ac38cef5b395a19481188c474c7f908160d5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ce02fee31041222c48d62ef8410b97fedf74dfdb
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61419472"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68297684"
 ---
-# <a name="advanced-data-security-for-azure-sql-database"></a>Pokročilé data zabezpečení pro službu Azure SQL Database
+# <a name="advanced-data-security-for-azure-sql-database"></a>Rozšířené zabezpečení dat pro Azure SQL Database
 
-Pokročilé datové zabezpečení je jednotný balíček pro pokročilé funkce zabezpečení SQL. Zahrnuje funkce pro zjišťování a klasifikace citlivá data, zpřístupnění a Zklidňující potenciální ohrožení zabezpečení databáze a detekuje neobvyklé aktivity, které může znamenat hrozbu pro vaše databáze. Poskytuje centrální místo pro povolování a správu těchto možností.
+Rozšířené zabezpečení dat je jednotný balíček pro pokročilé funkce zabezpečení SQL. Zahrnuje funkce pro zjišťování a klasifikaci citlivých dat, zpřístupněníí a zmírnění potenciálních ohrožení zabezpečení databáze a zjišťování aktivit neobvyklé, které by mohly znamenat hrozbu pro vaši databázi. Poskytuje centrální místo pro povolování a správu těchto možností.
 
 ## <a name="overview"></a>Přehled
 
-Zabezpečení dat pokročilé (reklamy) poskytuje sadu pokročilé funkce zabezpečení SQL, včetně dat zjišťování a klasifikace, posouzení ohrožení zabezpečení a Rozšířená ochrana před internetovými útoky.
+Služba ADS (Advanced Data Security) poskytuje sadu pokročilých funkcí zabezpečení SQL, včetně klasifikace dat & klasifikace, posouzení ohrožení zabezpečení a rozšířené ochrany před internetovými útoky.
 
-- [Zjišťování a klasifikace dat](sql-database-data-discovery-and-classification.md) (aktuálně ve verzi preview) poskytuje do Azure SQL Database integrované možnosti pro zjišťování, klasifikaci, označování popisky a ochranu citlivých dat ve vašich databázích. Může sloužit k poskytování přehledu o stavu klasifikace databáze a ke sledování přístupu k citlivým datům v databázi i mimo ni.
-- [Posouzení ohrožení zabezpečení](sql-vulnerability-assessment.md) je snadno konfigurovat službu, můžete zjistit, sledovat a umožňují náprava potenciálních ohrožení zabezpečení databáze. Poskytuje přehled o stavu zabezpečení a zahrnuje praktické kroky k vyřešení problémů se zabezpečením a zlepšení ochrany databáze.
-- [Rozšířená ochrana před internetovými útoky](sql-database-threat-detection-overview.md) detekuje neobvyklé aktivity a potenciálně nebezpečné pokusy o přístup nebo zneužití vaší databáze. Nepřetržitě monitoruje podezřelé aktivity v databázi a okamžitě poskytuje výstrahy zabezpečení týkající se potenciálních ohrožení zabezpečení, útoků prostřednictvím injektáže SQL a neobvyklých vzorů přístupu k databázi. Rozšířená ochrana před internetovými útoky výstrahy poskytují podrobnosti o podezřelé aktivitě a doporučení akce k prošetření a zmírnění hrozby.
+- [Klasifikace & Discovery Data](sql-database-data-discovery-and-classification.md) (aktuálně ve verzi Preview) nabízí funkce, které jsou integrované v Azure SQL Database pro zjišťování, klasifikaci a označování & ochrany citlivých dat ve vašich databázích. Může sloužit k poskytování přehledu o stavu klasifikace databáze a ke sledování přístupu k citlivým datům v databázi i mimo ni.
+- [Posouzení ohrožení zabezpečení](sql-vulnerability-assessment.md) je jednoduchá konfigurace služby, která může zjišťovat, sledovat a pomáhat při nápravě potenciálních ohrožení zabezpečení databáze. Poskytuje přehled o stavu zabezpečení a zahrnuje praktické kroky k vyřešení problémů se zabezpečením a zlepšení ochrany databáze.
+- [Rozšířená ochrana před internetovými útoky](sql-database-threat-detection-overview.md) detekuje aktivity neobvyklé, které označují neobvyklé a potenciálně škodlivé pokusy o přístup k databázi nebo jejím zneužití. Nepřetržitě monitoruje podezřelé aktivity v databázi a okamžitě poskytuje výstrahy zabezpečení týkající se potenciálních ohrožení zabezpečení, útoků prostřednictvím injektáže SQL a neobvyklých vzorů přístupu k databázi. Výstrahy rozšířené ochrany před internetovými útoky poskytují podrobné informace o podezřelé aktivitě a doporučuje akci, jak tuto hrozbu prozkoumat a zmírnit.
 
-REKLAMY SQL povolte, jakmile povolíte všechny z nich zahrnuty funkce. Jedním kliknutím můžete povolit služby Active Directory pro všechny databáze na serveru služby SQL Database nebo spravované instance. Povolení nebo správu nastavení služby Active Directory vyžaduje, který patří do [správce zabezpečení SQL](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-security-manager) role, role správce databáze SQL nebo role správce systému SQL server. 
+Pokud chcete povolit všechny tyto zahrnuté funkce, povolte reklamu SQL. Pomocí jednoho kliknutí můžete reklamu povolit pro všechny databáze na serveru SQL Database nebo spravované instanci. Povolení nebo Správa nastavení reklam vyžaduje, aby patřila do role [Správce zabezpečení SQL](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-security-manager) , role správce SQL Database nebo role správce systému SQL Server. 
 
-Ceny služby Active Directory v souladu s Azure Security Center úrovně standard, ve kterém každý chráněný server SQL Database nebo spravované instance se počítá jako jeden uzel. Nově chráněných prostředků nárok na bezplatnou zkušební verzi služby Security Center úrovně standard. Další informace najdete v tématu [stránce s cenami za Azure Security Center](https://azure.microsoft.com/pricing/details/security-center/).
+ADS vyrovnává ceny s Azure Security Center úrovně Standard, kde se každý chráněný SQL Database Server nebo spravovaná instance počítají jako jeden uzel. Nově chráněné prostředky mají nárok na bezplatnou zkušební verzi Security Center úrovně Standard. Další informace najdete na stránce s [cenami Azure Security Center](https://azure.microsoft.com/pricing/details/security-center/).
 
-## <a name="getting-started-with-ads"></a>Začínáme s reklamy
+## <a name="getting-started-with-ads"></a>Začínáme s REKLAMAmi
 
-Následující kroky vám pomůžou začít s reklamy.
+Následující kroky vám pomohou začít s REKLAMou.
 
-## <a name="1-enable-ads"></a>1. Povolení služby Active Directory
+## <a name="1-enable-ads"></a>1. Povolit reklamy
 
-Povolit REKLAMU tak, že přejdete do **rozšířené zabezpečení dat** pod **zabezpečení** záhlaví pro váš server SQL Database nebo spravovaných instancí. Pro všechny databáze na serveru databáze nebo spravované instance, klikněte na tlačítko Povolit služby Active Directory **povolit pokročilé zabezpečení dat na serveru**.
-
-> [!NOTE]
-> Účet úložiště je automaticky vytvořen a nakonfigurován pro ukládání vašich **sken posouzení ohrožení zabezpečení** výsledky kontroly. Pokud už jste povolili REKLAM pro jiný server ve stejné skupině prostředků a oblasti, použije se existující účet úložiště.
-
-![Povolení služby Active Directory](./media/sql-advanced-protection/enable_ads.png) 
+Povolte reklamu tak, že přejdete na **pokročilé zabezpečení dat** v záhlaví **zabezpečení** pro vaši instanci serveru SQL Database nebo spravovaných. Pokud chcete povolit reklamu pro všechny databáze na databázovém serveru nebo ve spravované instanci, klikněte na **Povolit rozšířená data zabezpečení na serveru**.
 
 > [!NOTE]
-> Náklady na služby Active Directory je v souladu s Azure Security Center úrovně standard ceny podle počtu uzlů, kde je uzel celý server SQL Database nebo spravované instance. Proto platíte jen jednou pro ochranu všech databází na serveru databáze nebo spravované instance pomocí služby Active Directory. Můžete vyzkoušet reklamy zpočátku s bezplatnou zkušební verzi.
+> Účet úložiště se automaticky vytvoří a nakonfiguruje tak, aby ukládal výsledky kontroly **posouzení ohrožení zabezpečení** . Pokud jste už povolili reklamu pro jiný server ve stejné skupině prostředků a oblasti, použije se existující účet úložiště.
 
-## <a name="2-start-classifying-data-tracking-vulnerabilities-and-investigating-threat-alerts"></a>2. Spustit klasifikaci dat, sledování chyb zabezpečení a vyšetřování upozornění na hrozby
+![Povolit reklamy](./media/sql-advanced-protection/enable_ads.png) 
 
-Klikněte na tlačítko **zjišťování a klasifikace dat** karty zobrazíte doporučené citlivé sloupce ke klasifikaci a klasifikaci dat pomocí popisků trvalé citlivosti. Klikněte na tlačítko **sken posouzení ohrožení zabezpečení** kartu k zobrazení a správa prověřování ohrožení zabezpečení a sestav a sledování vašich zásadní roli zabezpečení. Pokud byly přijaty výstrahy zabezpečení, klikněte na tlačítko **Advanced Threat Protection** kartu k zobrazení podrobností výstrah a zobrazíte souhrnnou zprávu na všechny výstrahy ve vašem předplatném Azure prostřednictvím stránky s upozorněními zabezpečení Azure Security Center .
+> [!NOTE]
+> Náklady na reklamu se zarovnají s Azure Security Centermi cenami na úrovni Standard na uzel, kde uzel je celý SQL Database Server nebo spravovaná instance. Proto platíte jenom jednou za ochranu všech databází na databázovém serveru nebo na spravované instanci pomocí reklam. S bezplatnou zkušební verzí můžete nejdřív vyzkoušet reklamu.
 
-## <a name="3-manage-ads-settings-on-your-sql-database-server-or-managed-instance"></a>3. Spravovat nastavení služby Active Directory na serveru služby SQL Database nebo spravované instance
+## <a name="2-start-classifying-data-tracking-vulnerabilities-and-investigating-threat-alerts"></a>2. Zahájení klasifikace dat, sledování slabých míst a vyšetřování výstrah hrozeb
 
-Pokud chcete zobrazit a spravovat nastavení služby Active Directory, přejděte na **rozšířené zabezpečení dat** pod **zabezpečení** záhlaví pro váš server SQL Database nebo spravované instance. Na této stránce můžete povolit nebo zakázat reklamy a upravovat ohrožení zabezpečení posouzení a nastavení rozšířené ochrany před internetovými útoky pro celý server SQL Database nebo spravované instance.
+Klikněte na kartu **klasifikace & zjišťování dat** , abyste viděli Doporučené citlivé sloupce pro klasifikaci a klasifikaci dat pomocí popisků trvalé citlivosti. Pokud chcete zobrazit a spravovat kontroly a sestavy ohrožení zabezpečení a sledovat stature zabezpečení, klikněte na kartu **posouzení ohrožení zabezpečení** . Pokud se přijaly výstrahy zabezpečení, klikněte na kartu **Rozšířená ochrana před internetovými útoky** , abyste si zobrazili podrobnosti o výstrahách a zobrazili jste konsolidovanou sestavu se všemi výstrahami ve vašem předplatném Azure prostřednictvím stránky Azure Security Center výstrahy zabezpečení.
+
+## <a name="3-manage-ads-settings-on-your-sql-database-server-or-managed-instance"></a>3. Správa nastavení reklam na vašem serveru SQL Database nebo spravované instanci
+
+Pokud chcete zobrazit a spravovat nastavení reklam, přejděte k **rozšířenému zabezpečení dat** pod hlavičkou **zabezpečení** pro váš SQL Database Server nebo spravovanou instanci. Na této stránce můžete povolit nebo zakázat reklamy a upravit nastavení posouzení ohrožení zabezpečení a rozšířené ochrany před internetovými útoky pro celý SQL Database Server nebo spravovanou instanci.
 
 ![nastavení serveru](./media/sql-advanced-protection/server_settings.png) 
 
-## <a name="4-manage-ads-settings-for-a-sql-database"></a>4. Správa nastavení služby Active Directory pro SQL database
+## <a name="4-manage-ads-settings-for-a-sql-database"></a>4. Správa nastavení reklam pro databázi SQL
 
-Chcete-li přepsat nastavení služby Active Directory pro určitou databázi, zkontrolujte **povolit pokročilé zabezpečení dat na úrovni databáze** zaškrtávací políčko. Tuto možnost použijte pouze v případě, že nemáte konkrétní požadavek samostatné výstrahy Advanced Threat Protection nebo výsledky posouzení ohrožení zabezpečení pro jednotlivé databáze, místo nebo kromě výstrahy a výsledky přijaté pro všechny databáze na databázový server nebo spravované instance.
+Pokud chcete přepsat nastavení reklam pro určitou databázi, zaškrtněte políčko **Povolit rozšířená zabezpečení dat v úrovni databáze** . Tuto možnost použijte jenom v případě, že máte konkrétní požadavek na získání samostatných výstrah rozšířené ochrany před internetovými útoky nebo výsledků posouzení ohrožení zabezpečení pro jednotlivé databáze, a to místo nebo kromě výstrah a výsledků přijatých pro všechny databáze na portálu. databázový server nebo spravovaná instance.
 
-Jakmile je políčko zaškrtnuté, můžete pak nakonfigurovat relevantní nastavení pro tuto databázi.
+Po zaškrtnutí políčka můžete nakonfigurovat relevantní nastavení pro tuto databázi.
  
-![Nastavení databáze a Rozšířená ochrana před internetovými útoky](./media/sql-advanced-protection/database_threat_detection_settings.png) 
+![Nastavení databáze a rozšířené ochrany před internetovými útoky](./media/sql-advanced-protection/database_threat_detection_settings.png) 
 
-Pokročilé datové nastavení zabezpečení pro databázový server nebo spravované instance můžete také dosažitelná z podokna databáze služby Active Directory. Klikněte na tlačítko **nastavení** v hlavním podokně reklamy a pak klikněte na tlačítko **nastavení zobrazit pokročilé zabezpečení dat serveru**. 
+Pokročilá nastavení zabezpečení dat pro váš databázový server nebo spravovanou instanci lze získat také z podokna databáze reklamy. V podokně hlavní reklamy klikněte na **Nastavení** a potom klikněte na **Zobrazit rozšířená nastavení serveru zabezpečení dat**. 
 
 ![Nastavení databáze](./media/sql-advanced-protection/database_settings.png) 
 
-## <a name="next-steps"></a>Další postup 
+## <a name="next-steps"></a>Další kroky 
 
-- Další informace o [zjišťování a klasifikace dat](sql-database-data-discovery-and-classification.md) 
-- Další informace o [sken posouzení ohrožení zabezpečení](sql-vulnerability-assessment.md) 
-- Další informace o [rozšířené ochrany před internetovými útoky](sql-database-threat-detection.md)
-- Další informace o [Azure security center](https://docs.microsoft.com/azure/security-center/security-center-intro)
+- Další informace o [klasifikaci & Discovery Data](sql-database-data-discovery-and-classification.md) 
+- Další informace o [posouzení ohrožení zabezpečení](sql-vulnerability-assessment.md) 
+- Další informace o [Rozšířené ochraně před internetovými útoky](sql-database-threat-detection.md)
+- Další informace o [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro)

@@ -1,71 +1,71 @@
 ---
-title: Řešení potíží s Hive pomocí Azure HDInsight
-description: Získejte odpovědi na běžné dotazy týkající se práce s Apache Hive nebo Azure HDInsight.
-keywords: HDInsight Hive, nejčastější dotazy k Azure, odstraňováním, nejčastější dotazy
+title: Řešení potíží s registrací pomocí Azure HDInsight
+description: Získejte odpovědi na běžné otázky týkající se práce s Apache Hive a Azure HDInsight.
+keywords: Azure HDInsight, podregistr, nejčastější dotazy, Průvodce odstraňováním potíží, běžné otázky
 ms.service: hdinsight
 author: dharmeshkakadia
-ms.author: dharmeshkakadia
+ms.author: dkakadia
 ms.topic: conceptual
 ms.date: 11/2/2017
-ms.openlocfilehash: 43886a132f2f3cf75f0ec7a0b2dc0680a0f69589
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 91e6803e0a1302a33a3bf176ad84d0b0e0c8c5b6
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64712474"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67875928"
 ---
 # <a name="troubleshoot-apache-hive-by-using-azure-hdinsight"></a>Řešení potíží s Apache Hive pomocí Azure HDInsight
 
-Další informace o častých dotazů a jejich řešení při práci s Apache Hive datové části v Apache Ambari.
+Přečtěte si o nejčastějších dotazech a jejich řešeních při práci s Apache Hivemi datovými částmi v Apache Ambari.
 
 
-## <a name="how-do-i-export-a-hive-metastore-and-import-it-on-another-cluster"></a>Jak export metastoru Hive a importovat na jiném clusteru?
+## <a name="how-do-i-export-a-hive-metastore-and-import-it-on-another-cluster"></a>Návody exportovat metastore Hive a naimportovat ho na jiný cluster?
 
 
 ### <a name="resolution-steps"></a>Postup řešení
 
 1. Připojení ke clusteru HDInsight pomocí klienta Secure Shell (SSH). Další informace najdete v tématu [další čtení](#additional-reading-end).
 
-2. Spusťte následující příkaz v clusteru HDInsight, ze kterého chcete exportovat úložiště metadat:
+2. Spusťte následující příkaz na clusteru HDInsight, ze kterého chcete exportovat metastore:
 
     ```apache
     for d in `hive -e "show databases"`; do echo "create database $d; use $d;" >> alltables.sql ; for t in `hive --database $d -e "show tables"` ; do ddl=`hive --database $d -e "show create table $t"`; echo "$ddl ;" >> alltables.sql ; echo "$ddl" | grep -q "PARTITIONED\s*BY" && echo "MSCK REPAIR TABLE $t ;" >> alltables.sql ; done; done
     ```
 
-   Tento příkaz vygeneruje soubor s názvem allatables.sql.
+   Tento příkaz vygeneruje soubor s názvem allatables. SQL.
 
-3. Zkopírujte soubor alltables.sql do nového clusteru HDInsight a pak spusťte následující příkaz:
+3. Zkopírujte soubor alltables. SQL do nového clusteru HDInsight a pak spusťte následující příkaz:
 
    ```apache
    hive -f alltables.sql
    ```
 
-Kód v kroků pro řešení předpokládá, že cesty k datům v novém clusteru jsou stejné jako cesty k datům v původním clusteru. Pokud cesty k datům se liší, můžete ručně upravit soubor generovaný alltables.sql tak, aby odrážela všechny změny.
+Kód v krocích řešení předpokládá, že cesty k datům v novém clusteru jsou stejné jako cesty k datům v původním clusteru. Pokud se cesty k datům liší, můžete ručně upravit vygenerovaný soubor alltables. SQL tak, aby odrážel všechny změny.
 
 ### <a name="additional-reading"></a>Další čtení
 
-- [Připojení ke clusteru služby HDInsight pomocí SSH](hdinsight-hadoop-linux-use-ssh-unix.md)
+- [Připojení ke clusteru HDInsight pomocí SSH](hdinsight-hadoop-linux-use-ssh-unix.md)
 
 
-## <a name="how-do-i-locate-hive-logs-on-a-cluster"></a>Kde najdu protokoly Hive v clusteru?
+## <a name="how-do-i-locate-hive-logs-on-a-cluster"></a>Návody najít v clusteru protokoly podregistru?
 
 ### <a name="resolution-steps"></a>Postup řešení
 
-1. Připojení ke clusteru HDInsight pomocí SSH. Další informace najdete v tématu **další čtení**.
+1. Připojte se ke clusteru HDInsight pomocí SSH. Další informace najdete v tématu **další čtení**.
 
-2. Pokud chcete zobrazit protokoly Hive klienta, použijte následující příkaz:
+2. Chcete-li zobrazit protokoly klienta podregistru, použijte následující příkaz:
 
    ```apache
    /tmp/<username>/hive.log 
    ```
 
-3. Pokud chcete zobrazit protokoly metastore Hive, použijte následující příkaz:
+3. Chcete-li zobrazit protokoly metastore Hive, použijte následující příkaz:
 
    ```apache
    /var/log/hive/hivemetastore.log 
    ```
 
-4. Pokud chcete zobrazit protokoly Hiveserver, použijte následující příkaz:
+4. Chcete-li zobrazit protokoly Hiveserver, použijte následující příkaz:
 
    ```apache
    /var/log/hive/hiveserver2.log 
@@ -73,26 +73,26 @@ Kód v kroků pro řešení předpokládá, že cesty k datům v novém clusteru
 
 ### <a name="additional-reading"></a>Další čtení
 
-- [Připojení ke clusteru služby HDInsight pomocí SSH](hdinsight-hadoop-linux-use-ssh-unix.md)
+- [Připojení ke clusteru HDInsight pomocí SSH](hdinsight-hadoop-linux-use-ssh-unix.md)
 
 
-## <a name="how-do-i-launch-the-hive-shell-with-specific-configurations-on-a-cluster"></a>Jak můžu spustit prostředí Hive s konkrétní konfigurací v clusteru?
+## <a name="how-do-i-launch-the-hive-shell-with-specific-configurations-on-a-cluster"></a>Návody spustit prostředí pro podregistr s konkrétní konfigurací v clusteru?
 
 ### <a name="resolution-steps"></a>Postup řešení
 
-1. Zadejte pár klíč hodnota konfigurace při spuštění prostředí Hive. Další informace najdete v tématu [další čtení](#additional-reading-end).
+1. Při spuštění prostředí podregistr zadejte dvojici klíč-hodnota konfigurace. Další informace najdete v tématu [další čtení](#additional-reading-end).
 
    ```apache
    hive -hiveconf a=b 
    ```
 
-2. Chcete-li vypsat všechny platné konfigurace v prostředí Hive, použijte následující příkaz:
+2. Pokud chcete zobrazit seznam všech efektivních konfigurací v prostředí s podregistry, použijte následující příkaz:
 
    ```apache
    hive> set;
    ```
 
-   Například použijte následující příkaz ke spuštění prostředí Hive s protokolováním ladění povoleno v konzole:
+   Pomocí následujícího příkazu můžete například spustit prostředí registru s povoleným protokolováním ladění v konzole nástroje:
 
    ```apache
    hive -hiveconf hive.root.logger=ALL,console 
@@ -100,15 +100,15 @@ Kód v kroků pro řešení předpokládá, že cesty k datům v novém clusteru
 
 ### <a name="additional-reading"></a>Další čtení
 
-- [Vlastnosti konfigurace Hive](https://cwiki.apache.org/confluence/display/Hive/Configuration+Properties)
+- [Vlastnosti konfigurace podregistru](https://cwiki.apache.org/confluence/display/Hive/Configuration+Properties)
 
 
-## <a name="how-do-i-analyze-tez-dag-data-on-a-cluster-critical-path"></a>Jak mohu analyzovat data Apache Tez DAG na clusteru kritickou cestu?
+## <a name="how-do-i-analyze-tez-dag-data-on-a-cluster-critical-path"></a>Návody analyzovat Apache Tez DAG data na cestě kritické pro cluster?
 
 
 ### <a name="resolution-steps"></a>Postup řešení
  
-1. K analýze Apache Tez orientovaného acyklického grafu (DAG) na clusteru pro chod grafu, připojení ke clusteru HDInsight pomocí SSH. Další informace najdete v tématu [další čtení](#additional-reading-end).
+1. Pokud chcete analyzovat Apache Tez acyklického Graph (DAG) v grafu kritickém pro cluster, připojte se ke clusteru HDInsight pomocí SSH. Další informace najdete v tématu [další čtení](#additional-reading-end).
 
 2. Na příkazovém řádku spusťte následující příkaz:
    
@@ -116,58 +116,58 @@ Kód v kroků pro řešení předpokládá, že cesty k datům v novém clusteru
    hadoop jar /usr/hdp/current/tez-client/tez-job-analyzer-*.jar CriticalPath --saveResults --dagId <DagId> --eventFileName <DagData.zip> 
    ```
 
-3. Seznam dalších analyzátorů, které můžete použít k analýze Tez DAG, použijte následující příkaz:
+3. K vypsání dalších analyzátorů, které se dají použít k analýze tez DAG, použijte následující příkaz:
 
    ```apache
    hadoop jar /usr/hdp/current/tez-client/tez-job-analyzer-*.jar
    ```
 
-   Ukázkový program je nutné zadat jako první argument.
+   Jako první argument musíte zadat vzorový program.
 
-   Program platné názvy patří:
-    - **ContainerReuseAnalyzer**: Vytisknout podrobnosti o opakované použití kontejneru ve skupině DAG
-    - **CriticalPath**: Najít kritické cesty DAG
-    - **LocalityAnalyzer**: Vytisknout podrobnosti lokality ve skupině DAG
-    - **ShuffleTimeAnalyzer**: Analýza podrobností o času shuffle ve skupině DAG
-    - **SkewAnalyzer**: Analýza zkosení podrobností ve skupině DAG
-    - **SlowNodeAnalyzer**: Vytisknout podrobnosti o uzlu ve skupině DAG
-    - **SlowTaskIdentifier**: Vytisknout podrobnosti pomalé úlohy ve skupině DAG
-    - **SlowestVertexAnalyzer**: Tisk nejpomalejší podrobnosti vrcholu ve skupině DAG
-    - **SpillAnalyzer**: Tisk přelití podrobností ve skupině DAG
-    - **TaskConcurrencyAnalyzer**: Tisk souběžnosti podrobnosti úlohy ve skupině DAG
-    - **VertexLevelCriticalPathAnalyzer**: Najít kritickou cestu na úrovni vrcholů ve skupině DAG
+   Platné názvy programů zahrnují:
+    - **ContainerReuseAnalyzer**: Tisk podrobností o opětovném použití kontejneru v DAG
+    - **CriticalPath**: Vyhledání kritické cesty k DAG
+    - **LocalityAnalyzer**: Tisk podrobností o národní prostředí v DAG
+    - **ShuffleTimeAnalyzer**: Analyzovat podrobnosti o čase náhodného přehrávání v DAG
+    - **SkewAnalyzer**: Analyzovat detaily zkosení v DAG
+    - **SlowNodeAnalyzer**: Tisk podrobností uzlu v DAG
+    - **SlowTaskIdentifier**: Tisk s pomalými podrobnostmi o úloze v DAG
+    - **SlowestVertexAnalyzer**: Tisk nejpomalejších detailů vrcholu v DAG
+    - **SpillAnalyzer**: Tisk podrobností o rozlití v DAG
+    - **TaskConcurrencyAnalyzer**: Tisk podrobností o souběžnosti úkolu ve DAG
+    - **VertexLevelCriticalPathAnalyzer**: Najde kritickou cestu na úrovni vrcholu v DAG.
 
 
 ### <a name="additional-reading"></a>Další čtení
 
-- [Připojení ke clusteru služby HDInsight pomocí SSH](hdinsight-hadoop-linux-use-ssh-unix.md)
+- [Připojení ke clusteru HDInsight pomocí SSH](hdinsight-hadoop-linux-use-ssh-unix.md)
 
 
-## <a name="how-do-i-download-tez-dag-data-from-a-cluster"></a>Jak stáhnout Tez DAG data z clusteru?
+## <a name="how-do-i-download-tez-dag-data-from-a-cluster"></a>Návody stáhnout data DAG z clusteru?
 
 
 #### <a name="resolution-steps"></a>Postup řešení
 
-Existují dva způsoby, jak shromažďovat data Tez DAG:
+Existují dva způsoby, jak shromažďovat data DAG tez:
 
 - Z příkazového řádku:
  
-    Připojení ke clusteru HDInsight pomocí SSH. Na příkazovém řádku spusťte následující příkaz:
+    Připojte se ke clusteru HDInsight pomocí SSH. Na příkazovém řádku spusťte následující příkaz:
 
   ```apache
   hadoop jar /usr/hdp/current/tez-client/tez-history-parser-*.jar org.apache.tez.history.ATSImportTool -downloadDir . -dagId <DagId> 
   ```
 
-- Použití zobrazení Ambari Tez:
+- Použijte zobrazení Ambari tez:
    
-  1. Přejdete na Ambari. 
-  2. Přejděte do zobrazení Tez (podle dlaždice ikonu v pravém horním rohu). 
-  3. Vyberte DAG, které chcete zobrazit.
+  1. Přejít na Ambari. 
+  2. V pravém horním rohu přejdete do zobrazení tez (pod ikonou dlaždice). 
+  3. Vyberte DAG, který chcete zobrazit.
   4. Vyberte **stáhnout data**.
 
 ### <a name="additional-reading-end"></a>Další čtení
 
-[Připojení ke clusteru služby HDInsight pomocí SSH](hdinsight-hadoop-linux-use-ssh-unix.md)
+[Připojení ke clusteru HDInsight pomocí SSH](hdinsight-hadoop-linux-use-ssh-unix.md)
 
 
 ### <a name="see-also"></a>Viz také

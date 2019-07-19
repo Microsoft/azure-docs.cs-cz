@@ -1,46 +1,47 @@
 ---
-title: Pomocí vkládání závislostí ve službě .NET Azure Functions
-description: Další informace o použití injektáž závislostí pro registraci a používání služeb ve funkcích rozhraní .NET
+title: Použití injektáže závislosti v rozhraní .NET Azure Functions
+description: Naučte se používat vkládání závislostí k registraci a používání služeb ve funkcích .NET.
 services: functions
 documentationcenter: na
 author: craigshoemaker
 manager: gwallace
-keywords: Azure functions, functions, architektury bez serveru
+keywords: Azure Functions, Functions, architektura bez serveru
 ms.service: azure-functions
 ms.devlang: dotnet
 ms.topic: reference
 ms.date: 05/28/2019
-ms.author: jehollan, cshoe
-ms.openlocfilehash: 781bcdc158cb362b7c46e1ba9771b6a92ebc56a8
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.author: cshoe
+ms.reviewer: jehollan
+ms.openlocfilehash: 1ebb2fd77830074648a580dddad98e05e10c9c75
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67479621"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67850022"
 ---
-# <a name="use-dependency-injection-in-net-azure-functions"></a>Pomocí vkládání závislostí ve službě .NET Azure Functions
+# <a name="use-dependency-injection-in-net-azure-functions"></a>Použití injektáže závislosti v rozhraní .NET Azure Functions
 
-Služba Azure Functions podporuje závislost vkládání (DI) software vzor návrhu, což je technika, abyste dosáhli [řízení IOC (Inversion)](https://docs.microsoft.com/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#dependency-inversion) mezi třídami a jejich závislosti.
+Azure Functions podporuje vzor návrhu pro vkládání závislostí (DI), což je technika pro dosažení [inverze řízení (IOC)](https://docs.microsoft.com/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#dependency-inversion) mezi třídami a jejich závislostmi.
 
-Služba Azure Functions je postavená funkce vkládání závislostí ASP.NET Core. Informovanost o služby, životnost a vzory návrhu [injektáž závislostí ASP.NET Core](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection) před použitím DI funkcí ve službě Azure Functions se doporučuje aplikace.
+Azure Functions sestaví nad ASP.NET Core funkcí injektáže závislostí. Doporučujeme, abyste si před použitím funkcí DI v aplikaci Azure Functions zvyklí na služby, životnosti a vzory návrhu pro [vkládání závislostí ASP.NET Core](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection) .
 
-Podpora pro vkládání závislostí začíná s využitím Azure Functions 2.x.
+Podpora vkládání závislostí začíná Azure Functions 2. x.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Před použitím injektáž závislostí, je třeba nainstalovat následující balíčky NuGet:
+Než budete moci použít vkládání závislostí, je nutné nainstalovat následující balíčky NuGet:
 
 - [Microsoft.Azure.Functions.Extensions](https://www.nuget.org/packages/Microsoft.Azure.Functions.Extensions/)
 
-- [Balíček Microsoft.NET.Sdk.Functions](https://www.nuget.org/packages/Microsoft.NET.Sdk.Functions/) verze 1.0.28 nebo novější
+- [Balíček Microsoft. NET. SDK. Functions](https://www.nuget.org/packages/Microsoft.NET.Sdk.Functions/) verze 1.0.28 nebo novější
 
-- Volitelné: [Microsoft.Extensions.Http](https://www.nuget.org/packages/Microsoft.Extensions.Http/) vyžaduje jenom u registrace HttpClient při spuštění
+- Volitelné: [Microsoft. Extensions. http](https://www.nuget.org/packages/Microsoft.Extensions.Http/) se vyžaduje jenom pro registraci HttpClient při spuštění.
 
-## <a name="register-services"></a>Registrace služeb
+## <a name="register-services"></a>Registrovat služby
 
-K registraci služeb, můžete vytvořit metodu ke konfiguraci a přidat k součásti `IFunctionsHostBuilder` instance.  Vytvoří instanci hostitele Azure Functions `IFunctionsHostBuilder` a předá ho přímo do vaší metody.
+Chcete-li registrovat služby, můžete vytvořit metodu konfigurace a přidání součástí do `IFunctionsHostBuilder` instance.  Hostitel Azure Functions vytvoří instanci `IFunctionsHostBuilder` a předá ji přímo do vaší metody.
 
-Chcete-li zaregistrovat metodu, přidejte `FunctionsStartup` během spouštění používá sestavení atribut, který určuje název typu. Také kód odkazuje na zkušební verzi [Microsoft.Azure.Cosmos](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/) na webu Nuget.
+Chcete-li zaregistrovat metodu, přidejte `FunctionsStartup` atribut Assembly, který určuje název typu použitý při spuštění. Kód také odkazuje na předběžnou verzi [Microsoft. Azure. Cosmos](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/) na NuGet.
 
 ```csharp
 using System;
@@ -68,9 +69,9 @@ namespace MyNamespace
 }
 ```
 
-## <a name="use-injected-dependencies"></a>Použití vloženého závislosti
+## <a name="use-injected-dependencies"></a>Použít vložené závislosti
 
-ASP.NET Core pomocí konstruktoru injektáž závislostí k dispozici pro vaši funkci. Následující příklad ukazuje, jak `IMyService` a `HttpClient` závislosti jsou vloženy do funkci aktivovanou protokolem HTTP.
+ASP.NET Core používá vkládání konstruktoru k zpřístupnění vašich závislostí vaší funkci. Následující příklad ukazuje, jak jsou `IMyService` tyto `HttpClient` závislosti vloženy do funkce aktivované protokolem HTTP.
 
 ```csharp
 using System;
@@ -111,43 +112,43 @@ namespace MyNamespace
 }
 ```
 
-Použití konstruktoru vkládání znamená, že statické funkce byste neměli používat, pokud chcete využít výhod vkládání závislostí.
+Použití injektáže konstruktoru znamená, že pokud chcete využít výhod vkládání závislostí, neměli byste používat statické funkce.
 
-## <a name="service-lifetimes"></a>Životnost služby
+## <a name="service-lifetimes"></a>Životnost služeb
 
-Aplikace Azure Function App, zadejte stejný životní cyklus služby jako [injektáž závislostí ASP.NET](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection#service-lifetimes): přechodné, s vymezeným oborem a typu singleton.
+Azure Functions aplikace poskytují stejné životnosti služeb jako [vkládání závislostí ASP.NET](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection#service-lifetimes): přechodné, vymezené a singleton.
 
-V aplikaci funkcí odpovídá doba platnosti vymezené služby životního cyklu spouštění funkce. Vymezené služby se vytvoří jednou za spuštění. Vyšší požadavky na tuto službu během provádění znovu použít existující instanci služby. Doba platnosti služby typu singleton odpovídá životního cyklu hostitelů a je opětovně použít napříč provádění funkcí v této instanci.
+V aplikaci Functions se rozsah životnosti služby shoduje s dobou trvání spuštění funkce. Oborové služby se pro každé spuštění vytvoří jednou. Pozdější požadavky na tuto službu během opakovaného použití existující instance služby. Doba životnosti služby typu Singleton odpovídá době životnosti hostitele a je znovu použita v rámci provádění funkcí v této instanci.
 
-Deklarace služeb typu singleton životnost se doporučují pro připojení a klientů, třeba `SqlConnection`, `CloudBlobClient`, nebo `HttpClient` instancí.
+Pro připojení a klienty jsou doporučovány služby životnosti singleton, `SqlConnection` `CloudBlobClient`například nebo `HttpClient` instance.
 
-Zobrazení nebo stažení [vzorek jinou službu životnosti](https://aka.ms/functions/di-sample) na Githubu.
+Zobrazit nebo stáhnout [ukázku různých životností služby](https://aka.ms/functions/di-sample) na GitHubu.
 
-## <a name="logging-services"></a>Protokolování služby
+## <a name="logging-services"></a>Protokolovací služby
 
-Pokud budete potřebovat poskytovatele protokolování, je doporučený postup registrace `ILoggerProvider` instance. Služba Azure Functions je automaticky přidán Application Insights.
+Pokud potřebujete vlastního zprostředkovatele protokolování, doporučuje se, abyste `ILoggerProvider` instanci zaregistrovali. Application Insights automaticky přidá Azure Functions.
 
 > [!WARNING]
-> Nepřidávejte `AddApplicationInsightsTelemetry()` ke kolekci služby jako jeho služby registrů konfliktu s služeb poskytovaných prostředím.
+> Nepřidávat `AddApplicationInsightsTelemetry()` do kolekce služeb při registraci služeb, které jsou v konfliktu se službami poskytovanými prostředím.
 
-## <a name="function-app-provided-services"></a>Aplikace, kterou poskytují služby – funkce
+## <a name="function-app-provided-services"></a>Poskytnuté služby Function App
 
-Funkce hostitele zaregistruje mnoho služeb. Tyto služby jsou bezpečné trvat v závislosti na vaší aplikace:
+Hostitel funkce registruje mnoho služeb. V rámci vaší aplikace je možné v aplikaci provést zabezpečení těchto služeb:
 
 |Typ služby|Životnost|Popis|
 |--|--|--|
 |`Microsoft.Extensions.Configuration.IConfiguration`|Singleton|Konfigurace modulu runtime|
-|`Microsoft.Azure.WebJobs.Host.Executors.IHostIdProvider`|Singleton|Odpovídají za poskytování ID instance hostitele|
+|`Microsoft.Azure.WebJobs.Host.Executors.IHostIdProvider`|Singleton|Zodpovídá za poskytnutí ID instance hostitele.|
 
-Pokud existují jiné služby, které chcete zavést závislost na, [vytvoření problému a navrhnout na Githubu](https://github.com/azure/azure-functions-host).
+Pokud existují další služby, na kterých chcete převzít závislost, [vytvořte problém a navrhněte je na GitHubu](https://github.com/azure/azure-functions-host).
 
-### <a name="overriding-host-services"></a>Přepsání hostitele služby
+### <a name="overriding-host-services"></a>Přepsání hostitelských služeb
 
-Přepsání služby poskytované hostitelem se aktuálně nepodporuje.  Pokud nejsou služby, kterou chcete přepsat, [vytvoření problému a navrhnout na Githubu](https://github.com/azure/azure-functions-host).
+Přepsání služeb poskytovaných hostitelem není aktuálně podporováno.  Pokud existují služby, které chcete přepsat, [vytvořte problém a navrhněte je na GitHubu](https://github.com/azure/azure-functions-host).
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace najdete v následujících materiálech:
+Další informace naleznete v následujících materiálech:
 
-- [Jak monitorovat aplikace function app](functions-monitoring.md)
-- [Osvědčené postupy pro službu functions](functions-best-practices.md)
+- [Jak monitorovat aplikaci Function App](functions-monitoring.md)
+- [Osvědčené postupy pro funkce](functions-best-practices.md)

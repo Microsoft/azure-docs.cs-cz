@@ -1,6 +1,6 @@
 ---
-title: Pro datové služby ve službě Azure Security Center detekce hrozeb | Dokumentace Microsoftu
-description: Toto téma představuje datových služeb výstrah k dispozici ve službě Azure Security Center.
+title: Detekce hrozeb pro datové služby v Azure Security Center | Microsoft Docs
+description: Toto téma představuje výstrahy datových služeb dostupné v Azure Security Center.
 services: security-center
 documentationcenter: na
 author: monhaber
@@ -13,60 +13,60 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 7/02/2019
-ms.author: monhaber
-ms.openlocfilehash: 87cfd2769e473d26c2dcae1b7b418f6fb1739915
-ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
+ms.author: v-mohabe
+ms.openlocfilehash: 1cafd8a3c766e57aed67634d7da8498c9a6ee120
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67626295"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68295822"
 ---
-# <a name="threat-detection-for-data-services-in-azure-security-center"></a>Detekce hrozeb pro datové služby ve službě Azure Security Center
+# <a name="threat-detection-for-data-services-in-azure-security-center"></a>Detekce hrozeb pro datové služby v Azure Security Center
 
- Security Center analyzuje protokoly služby úložiště dat a aktivují upozornění, když zjistí hrozbu pro vaše datové prostředky. Toto téma obsahuje seznam výstrah, které Security Center generuje následující služby:
+ Security Center analyzuje protokoly služeb úložiště dat a aktivuje výstrahy, když zjistí hrozbu pro vaše datové prostředky. V tomto tématu jsou uvedeny výstrahy, které Security Center generuje pro následující služby:
 
 * [Azure SQL Database a SQL Data Warehouse](#data-sql)
 * [Azure Storage](#azure-storage)
 
-## Azure SQL Database a SQL Data Warehouse <a name="data-sql"></a>
+## Azure SQL Database a SQL Data Warehouse<a name="data-sql"></a>
 
-Detekuje neobvyklé aktivity a potenciálně nebezpečné detekce hrozeb SQL pokusí o přístup k databázím nebo jejich zneužití. Security Center analyzuje protokoly auditu SQL a běží nativně v modulu SQL.
+Detekce hrozeb SQL detekuje aktivity neobvyklé, které ukazují neobvyklé a potenciálně škodlivé pokusy o přístup k databázím nebo jejich zneužití. Security Center analyzuje protokoly auditu SQL a spustí se nativně v modulu SQL.
 
 |Výstrahy|Popis|
 |---|---|
-|**Zranitelnost vůči útoku prostřednictvím injektáže SQL**|Aplikace v databázi vygeneruje Chybný příkaz SQL. Může to znamenat možnou zranitelnost vůči útokům prostřednictvím injektáže SQL. Existují dva možné důvody vygenerování chybného příkazu: Chyba v kódu aplikace, sestavit chybného příkazu SQL. Nebo kód aplikace nebo uložených procedur neměli neupravují uživatelský vstup při sestavování chybného příkazu SQL, který může být zneužit pro injektáž SQL.|
-|**Potenciální útok prostřednictvím injektáže SQL**|Došlo k výskytu aktivního zneužití na zjištěné aplikace zranitelné vůči útoku prostřednictvím injektáže SQL. To znamená, že útočník pokouší vložit škodlivé příkazy SQL s použitím zranitelného kódu aplikace nebo uložených procedur komponentami TableAdapter.|
-|**Přístup z neobvyklého umístění**|Došlo ke změně vzoru přístupu k systému SQL server, když někdo přihlásil k SQL serveru z neobvyklé geografické lokality. V některých případech výstraha detekuje legitimní akci (nová aplikace nebo údržba prováděná vývojářem). V jiných případech výstraha detekuje škodlivou akci (bývalý zaměstnanec, externí útočník).|
-|**Přístup z neznámého objektu zabezpečení**|Došlo ke změně vzoru přístupu k systému SQL server – někdo přihlásil k SQL serveru pomocí neobvyklého objektu zabezpečení (uživatel SQL). V některých případech výstraha detekuje legitimní akci (nová aplikace, údržba prováděná vývojářem). V jiných případech výstraha detekuje škodlivou akci (bývalý zaměstnanec, externí útočník).|
-|**Přístup z potenciálně škodlivé aplikace**|Pro přístup do databáze byla použita potenciálně škodlivá aplikace. V některých případech výstraha detekuje probíhající test průniku. V jiných případech výstraha detekuje útok pomocí běžných nástrojů útoku.|
-|**Přihlašovací údaje SQL útok hrubou silou**|Došlo k neobvykle vysoký počet neúspěšných přihlášení s jinými přihlašovacími údaji. V některých případech výstraha detekuje probíhající test průniku. V jiných případech výstraha detekuje útok hrubou silou.|
+|**Zranitelnost vůči injektáže SQL**|Aplikace vygenerovala v databázi chybný příkaz SQL. To může znamenat možnou zranitelnost vůči útokům prostřednictvím injektáže SQL. Existují dva možné důvody vygenerování chybného příkazu: Buď závada v kódu aplikace vytvořila chybný příkaz SQL. Nebo, kód aplikace nebo uložené procedury neopravily uživatelský vstup při vytváření chybného příkazu SQL, který může být zneužit pro vkládání SQL.|
+|**Potenciální injektáže SQL**|K aktivnímu zneužití došlo v případě, že je zjištěná aplikace zranitelná pomocí injektáže SQL. To znamená, že se útočník pokouší vložit škodlivé příkazy SQL pomocí ohroženého kódu aplikace nebo uložených procedur.|
+|**Přístup z neobvyklého umístění**|Došlo ke změně vzoru přístupu k serveru SQL Server, pokud se někdo přihlásil k systému SQL Server z neobvyklého zeměpisného umístění. V některých případech výstraha detekuje legitimní akci (nová aplikace nebo údržba prováděná vývojářem). V jiných případech výstraha detekuje škodlivou akci (bývalý zaměstnanec, externí útočník).|
+|**Přístup z neznámého objektu zabezpečení**|Došlo ke změně vzoru přístupu k serveru SQL Server – někdo se přihlásil k systému SQL Server pomocí neobvyklého objektu zabezpečení (uživatel SQL). V některých případech výstraha detekuje legitimní akci (nová aplikace, údržba prováděná vývojářem). V jiných případech výstraha detekuje škodlivou akci (bývalý zaměstnanec, externí útočník).|
+|**Přístup z potenciálně škodlivé aplikace**|Pro přístup k databázi byla použita potenciálně škodlivá aplikace. V některých případech výstraha detekuje probíhající test průniku. V jiných případech výstraha detekuje útok pomocí běžných nástrojů útoku.|
+|**Pověření hrubou silou SQL**|Došlo k neobvyklému vysokému počtu neúspěšných přihlášení s různými přihlašovacími údaji. V některých případech výstraha detekuje probíhající test průniku. V jiných případech výstraha detekuje útok hrubou silou.|
 
-Další informace o SQL hrozeb detekce výstrahy naleznete v tématu[detekce hrozeb Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview)a projděte si část výstrahy detekce hrozeb. Viz také [jak Azure Security Center pomáhá odhalit Cyberattack](https://azure.microsoft.com/blog/how-azure-security-center-helps-reveal-a-cyberattack/) Chcete-li zobrazit příklad použití škodlivých aktivit zjišťování SQL ke zjištění útoku v Security Center.
+Další informace o výstrahách detekce hrozeb SQL najdete v tématu[Azure SQL Database detekci hrozeb](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview)a v části výstrahy detekce hrozeb. Podívejte se také na to, [jak Azure Security Center pomáhá odhalit cyberattack](https://azure.microsoft.com/blog/how-azure-security-center-helps-reveal-a-cyberattack/) a zobrazit příklad toho, jak Security Center při zjišťování útoku používali škodlivou detekci aktivit SQL.
 
 ## Azure Storage<a name="azure-storage"></a>
 
 >[!NOTE]
-> Rozšířená ochrana před internetovými útoky pro Azure Storage je pouze aktuálně k dispozici pro úložiště objektů Blob. 
+> Rozšířená ochrana před internetovými útoky pro Azure Storage je aktuálně dostupná jenom pro Blob Storage. 
 
-Advanced Threat Protection pro Azure Storage poskytuje další vrstvu analytických nástrojů zabezpečení, která detekuje neobvyklé a potenciálně škodlivé pokusy o přístup nebo využití účtů úložiště. Tato úroveň ochrany lze řešení ohrožení bez nutnosti odborné zabezpečení a systémy pro monitorování zabezpečení.
+Advanced Threat Protection pro Azure Storage poskytuje další vrstvu analytických nástrojů zabezpečení, která detekuje neobvyklé a potenciálně škodlivé pokusy o přístup nebo využití účtů úložiště. Tato vrstva ochrany umožňuje řešit hrozby, aniž byste museli být odborníkem na zabezpečení, a spravovat systémy monitorování zabezpečení.
 
-Security Center analyzuje diagnostické protokoly pro čtení, zápisu a žádosti o odstranění do úložiště objektů Blob ke zjištění hrozeb a aktivují upozornění, když dojde k anomálie v aktivitě. Další informace najdete v tématu [konfigurace protokolování Storage Analytics](https://docs.microsoft.com/azure/storage/common/storage-monitor-storage-account#configure-logging) Další informace.
+Security Center analyzuje diagnostické protokoly žádostí o čtení, zápis a odstranění do úložiště objektů blob za účelem detekce hrozeb a aktivuje výstrahy při výskytu anomálií v aktivitě. Další informace najdete v tématu [Konfigurace protokolování analýza úložiště](https://docs.microsoft.com/azure/storage/common/storage-monitor-storage-account#configure-logging) pro další informace.
 
 > [!div class="mx-tableFixed"]
 
 |Výstrahy|Popis|
 |---|---|
-|**Neobvyklé umístění přístup anomálií**|Analýza provozu vzorky sítě zjistila neobvyklou odchozí komunikaci protokolu RDP (Remote Desktop) pocházející z prostředků ve vašem nasazení. Tato aktivita se považuje za neobvyklé pro toto prostředí a může naznačovat, že došlo k napadení vašeho prostředku, který se teď používá k útoku hrubou silou externí koncový bod protokolu RDP. Upozorňujeme, že tento typ aktivity může způsobit, že externí entity označí vaši IP adresu jako škodlivou.|
-|**Aplikace access anomálií**|Označuje, že neobvyklé aplikace přístup k tomuto účtu úložiště. Možnou příčinou je, že útočník má získat přístup k účtu úložiště pomocí nové aplikace.|
-|**Anonymní přístup anomálií**|Označuje, že dojde ke změně vzoru přístupu k účtu úložiště. Například účet byl otevřen anonymně (bez ověřování), což neočekávaný porovnává se vzorem poslední přístup na tento účet. Možnou příčinou je, že útočník zneužije veřejné oprávnění ke čtení pro kontejner, že obsahuje několika úložiště.|
-|**Data průsak ven anomálií**|Označuje, že má byly extrahovány neobvykle velký objem dat v porovnání s poslední aktivitu na tento kontejner úložiště. Možnou příčinou je, že útočník má extrahovat velké množství dat z kontejneru, že obsahuje několika úložiště.|
-|**Neočekávané odstranit anomálií**|Označuje, že jednu nebo více operací neočekávané odstranit došlo v účtu úložiště, ve srovnání s poslední aktivitu na tento účet. Možnou příčinou je, že útočník odstranila data z vašeho účtu úložiště.|
-|**Nahrát balíček cloudové služby Azure**|Označuje, že k Azure Cloud Service balíček (.cspkg soubor) se odeslal do účtu úložiště neobvyklým způsobem, ve srovnání s poslední aktivitu na tento účet. Možnou příčinou je, že útočník byla Příprava k nasazení škodlivý kód z vašeho účtu úložiště do cloudové služby Azure.|
-|**Oprávnění přístupu anomálií**|Označuje, že oprávnění tohoto kontejneru úložiště se změnily neobvyklým způsobem. Možnou příčinou je, že se změnila útočníka kontejneru oprávnění oslabit stav zabezpečení a získáte trvalosti.|
-|**Kontroly přístupu anomálií**|Označuje, že oprávnění přístupu k účtu úložiště byly podrobeny neobvyklým způsobem, ve srovnání s poslední aktivitu na tento účet. Možnou příčinou je, že útočník provedl rekognoskace pro budoucí útoku.|
-|**Anomálií zkoumání dat**|Označuje, že objekty BLOB nebo kontejnery v účtu úložiště byly uvedené neobvyklým způsobem, ve srovnání s poslední aktivitu na tento účet. Možnou příčinou je, že útočník provedl rekognoskace pro budoucí útoku.|
+|**Neobvyklá anomálie přístupu k poloze**|Byla zjištěna analýza síťového provozu neobvyklé odchozího přenosu protokol RDP (Remote Desktop Protocol) (RDP) pocházející z prostředku ve vašem nasazení. Tato aktivita se považuje za neobvyklou pro toto prostředí a může znamenat, že došlo k ohrožení zabezpečení prostředku a že se teď používá pro externí koncový bod protokolu RDP hrubou silou. Upozorňujeme, že tento typ aktivity může způsobit, že externí entity označí vaši IP adresu jako škodlivou.|
+|**Anomálie přístupu k aplikacím**|Indikuje, že se k tomuto účtu úložiště přistupovala neobvyklá aplikace. Možnou příčinou je, že útočník získal k účtu úložiště pomocí nové aplikace.|
+|**Anomálie anonymního přístupu**|Indikuje, že došlo ke změně vzoru přístupu k účtu úložiště. K účtu se například přistupuje anonymně (bez ověřování), které se ve srovnání s nedávným vzorem přístupu na tomto účtu neočekávalo. Možnou příčinou je, že útočník zneužije veřejný přístup pro čtení kontejneru, který obsahuje úložiště objektů BLOB (s).|
+|**Anomálie exfiltrace dat**|Indikuje, že se v porovnání s poslední aktivitou tohoto kontejneru úložiště extrahuje neobvykle velké množství dat. Možnou příčinou je, že útočník extrahuje velké množství dat z kontejneru, který obsahuje úložiště objektů BLOB (s).|
+|**Neočekávaná anomálie odstranění**|Označuje, že v účtu úložiště se vyskytla jedna nebo víc neočekávaných operací odstranění v porovnání s poslední aktivitou tohoto účtu. Možnou příčinou je, že útočník odstranil data z vašeho účtu úložiště.|
+|**Nahrání balíčku cloudové služby Azure**|Indikuje, že balíček Azure Cloud Service (soubor. cspkg) se neobvyklým způsobem nahrál do účtu úložiště, a to v porovnání s poslední aktivitou na tomto účtu. Možnou příčinou je to, že se útočník připravuje na nasazení škodlivého kódu z vašeho účtu úložiště do cloudové služby Azure.|
+|**Anomálie přístupu k oprávněním**|Indikuje, že oprávnění k přístupu tohoto kontejneru úložiště se změnila neobvyklým způsobem. Možnou příčinou je to, že útočník změnil oprávnění kontejneru pro oslabení stav zabezpečení nebo získání trvalosti.|
+|**Anomálie přístupu ke kontrole**|Označuje, že přístupová oprávnění účtu úložiště byla v porovnání s poslední aktivitou tohoto účtu prověřena neobvyklým způsobem. Možnou příčinou je, že útočník provedl rekognoskace k budoucímu útoku.|
+|**Anomálie průzkumu dat**|Označuje, že objekty blob nebo kontejnery v účtu úložiště jsou v porovnání s poslední aktivitou tohoto účtu vyhodnoceny neobvyklým způsobem. Možnou příčinou je, že útočník provedl rekognoskace k budoucímu útoku.|
 
 >[!NOTE]
->Rozšířená ochrana před internetovými útoky pro Azure Storage není aktuálně dostupná v oblastech suverénních cloudů a Azure government.
+>Rozšířená ochrana před internetovými útoky pro Azure Storage není v současnosti dostupná v oblastech cloudu Azure pro státní správu a svrchované oblasti.
 
-Další informace o výstrahách pro úložiště najdete v tématu [rozšířené ochrany před internetovými útoky pro Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-advanced-threat-protection) článku a projděte si část pojednávající o výstrahách ochrany.
+Další informace o výstrahách pro úložiště najdete v článku [Rozšířená ochrana před internetovými útoky pro Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-advanced-threat-protection) a přečtěte si část výstrahy ochrany.

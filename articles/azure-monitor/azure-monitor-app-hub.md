@@ -1,8 +1,8 @@
 ---
 layout: HubPage
 hide_bc: false
-title: Azure Monitor Application insights dokumentace k – kurzy, Reference k rozhraní API | Dokumentace Microsoftu
-description: Azure Application Monitor Insights poskytuje podrobné úrovni kódu application performance monitoring pro.
+title: Dokumentace k Azure Monitor Application Insights – kurzy, Reference k rozhraní API | Microsoft Docs
+description: Azure Monitor Application Insights poskytuje hloubkové monitorování výkonu aplikací na úrovni kódu.
 services: application-insights
 author: mrbullwinkle
 manager: carmonm
@@ -10,17 +10,17 @@ ms.service: application-insights
 ms.topic: landing-page
 ms.date: 01/15/2019
 ms.author: mbullwin
-ms.openlocfilehash: 451a2d6e658c08823d1629270bb7503ebd236c02
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5571f84de5c6dd4f5dffea5869c744b7e5c02e24
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66255686"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67875286"
 ---
 <div id="main" class="v2">
     <div class="container">
-        <h1>Dokumentace ke službě Azure Monitor Application Insights</h1>
-        <p>Azure Application Monitor Insights poskytuje podrobné úrovni kódu application performance monitoring pro.</p>
+        <h1>Dokumentace k Azure Monitor Application Insights</h1>
+        <p>Azure Monitor Application Insights poskytuje hloubkové monitorování výkonu aplikací na úrovni kódu.</p>
         <hr style="margin: 30px 0;" />
         <ul class="pivots">
             <li>
@@ -66,8 +66,9 @@ ms.locfileid: "66255686"
                                                     <div class="cardText">
                                                         <h3>Co je nového?</h3>
                                                         <p>
-                                                            <a href="./app/kubernetes.md">Monitorování aplikací v Kubernetes</a><br>
-                                                            <a href="./app/status-monitor-v2-overview.md">Stav monitorování v2 pro aplikace služby IIS</a><br>
+                                                            <a href="./app/azure-vm-vmss-apps.md">Monitorování bez kódu pro aplikace Azure pro škálování virtuálních počítačů a Azure Virtual Machine Scale set</a><br>
+                                                            <a href="./app/kubernetes.md">Monitorování aplikací Kubernetes</a><br>
+                                                            <a href="./app/status-monitor-v2-overview.md">Monitorování stavu v2 pro aplikace IIS</a><br>
                                                         </p>
                                                         <br><br>
                                                         <h3>Šablony Rychlý start</h3>
@@ -76,8 +77,8 @@ ms.locfileid: "66255686"
                                                             <a href="./learn/dotnetcore-quick-start.md">ASP.NET Core</a><br>
                                                             <a href="./learn/nodejs-quick-start.md">Node.js</a><br>
                                                             <a href="./learn/java-quick-start.md">Java</a><br>
-                                                            <a href="./learn/mobile-center-quickstart.md">Mobile</a><br>
-                                                            <a href="./app/website-monitoring.md">Prohlížeč/monitorování klientů</a>
+                                                            <a href="./learn/mobile-center-quickstart.md">Telefon</a><br>
+                                                            <a href="./app/website-monitoring.md">Monitorování v prohlížeči nebo na straně klienta</a>
                                                         </p>
                                                         <br><br>
                                                         <h3>Kurzy</h3>
@@ -85,8 +86,8 @@ ms.locfileid: "66255686"
                                                             <a href="./learn/tutorial-runtime-exceptions.md">Vyhledání a diagnostika běhových výjimek</a><br>
                                                             <a href="./learn/tutorial-performance.md">Vyhledání a diagnostika potíží s výkonem</a><br>
                                                             <a href="./learn/tutorial-alert.md">Monitorování a upozornění na stav aplikace</a><br>
-                                                            <a href="./learn/tutorial-users.md">Lepším porozuměním chování uživatelů</a><br>
-                                                            <a href="./learn/tutorial-app-dashboards.md">Vytvoření vlastních řídicích panelů</a>
+                                                            <a href="./learn/tutorial-users.md">Pochopení chování uživatelů</a><br>
+                                                            <a href="./learn/tutorial-app-dashboards.md">Vytváření vlastních řídicích panelů</a>
                                                             </p>
                                                         <br><br>
                                                         <h3>Distribuované trasování</h3>
@@ -94,25 +95,25 @@ ms.locfileid: "66255686"
                                                             <a href="./app/distributed-tracing.md">Co je distribuované trasování?</a><br>
                                                             <a href="./app/opencensus-python.md">OpenCensus for Python</a><br>
                                                             <a href="./app/opencensus-go.md">OpenCensus for Go</a><br>
-                                                            <a href="./app/opencensus-local-forwarder.md">Místní server pro předávání</a>
+                                                            <a href="./app/opencensus-local-forwarder.md">Místní server pro přeposílání</a>
                                                             </p>
                                                         <br><br>
-                                                        <h3>Automatické inteligentního zjišťování</h3>
+                                                        <h3>Automatické inteligentní zjišťování</h3>
                                                         <p>
                                                             <a href="./app/proactive-failure-diagnostics.md">Anomálie selhání</a><br>
                                                             <a href="./app/proactive-performance-diagnostics.md">Anomálie výkonu</a><br>
-                                                            <a href="./app/proactive-trace-severity.md">Snížení výkonnosti trasování</a><br>
-                                                            <a href="./app/proactive-exception-volume.md">Neobvyklé nárůsty výjimky</a><br>
+                                                            <a href="./app/proactive-trace-severity.md">Snížení úrovně trasování</a><br>
+                                                            <a href="./app/proactive-exception-volume.md">Neobvyklé nárůsty v výjimkách</a><br>
                                                             <a href="./app/proactive-potential-memory-leak.md">Nevracení paměti</a><br>
                                                             <a href="./app/proactive-low-utilization-cloud-resources.md">Nízké využití procesoru</a><br>
                                                             <a href="./app/proactive-application-security-detection-pack.md">Problémy se zabezpečením</a><br>
                                                             <a href="./app/proactive-cloud-services.md">Azure Cloud Services</a><br>
-                                                            <a href="./app/proactive-arm-config.md">Spravovat inteligentní zjišťování se šablonami</a>
+                                                            <a href="./app/proactive-arm-config.md">Správa inteligentního zjišťování pomocí šablon</a>
                                                         </p>
                                                         <br><br>
-                                                        <h3>Referenční informace</h3>
+                                                        <h3>Reference</h3>
                                                         <p>
-                                                            <a href="./app/auto-collect-dependencies.md">Závislost automatického sběru</a><br>
+                                                            <a href="./app/auto-collect-dependencies.md">Automatická kolekce závislostí</a><br>
                                                             <a href="./app/correlation.md">Korelace telemetrie</a><br>
                                                             <a href="./app/nuget.md">Balíčky NuGet</a><br>
                                                             <a href="./app/azure-functions-supported-features.md">Azure Functions</a>
@@ -127,49 +128,50 @@ ms.locfileid: "66255686"
                                             <div class="cardPadding">
                                                 <div class="card">
                                                     <div class="cardText">
-                                                        <h3>Aplikace v Javě</h3>
+                                                        <h3>Aplikace Java</h3>
                                                         <p>
-                                                            <a href="./app/java-get-started.md">Podrobná konfigurace monitorování</a><br>
-                                                            <a href="https://docs.microsoft.com/java/azure/spring-framework/configure-spring-boot-java-applicationinsights?view=azure-java-stable">Aplikace Spring Boot starter</a><br>
-                                                            <a href="./app/micrometer-java.md">Micrometer metriky</a><br>
+                                                            <a href="./app/java-get-started.md">Konfigurace podrobného monitorování</a><br>
+                                                            <a href="https://docs.microsoft.com/java/azure/spring-framework/configure-spring-boot-java-applicationinsights?view=azure-java-stable">Jaře Boot Starter</a><br>
+                                                            <a href="./app/micrometer-java.md">Metriky mikroměřiče</a><br>
                                                             <a href="./app/java-filter-telemetry.md">Filtrování telemetrických dat</a><br>
-                                                            <a href="./app/java-trace-logs.md">Protokolování trasování programu</a><br>
+                                                            <a href="./app/java-trace-logs.md">Protokolování trasování</a><br>
                                                             <a href="./app/java-agent.md">Konfigurace agenta pro sledování závislostí</a><br>
                                                             <a href="./app/api-custom-events-metrics.md">Vlastní události a metriky</a><br>
                                                             <a href="https://docs.microsoft.com/azure/azure-monitor/app/configuration-with-applicationinsights-config#channel-parameters-java
-">Konfigurace XML</a><br>
-                                                            <a href="https://github.com/Microsoft/ApplicationInsights-Java">Otevřete úložiště GitHub zdroj Java SDK</a>
+">Config. XML</a><br>
+                                                            <a href="https://github.com/Microsoft/ApplicationInsights-Java">Open Source úložiště GitHub SDK pro Java</a>
                                                         </p>
                                                         <br><br>
                                                         <h3>Aplikace .NET</h3>
                                                         <p>
-                                                            <a href="./app/asp-net.md">Podrobná konfigurace monitorování</a><br>
+                                                            <a href="./app/asp-net.md">Konfigurace podrobného monitorování</a><br>
                                                             <a href="./app/monitor-performance-live-website-now.md">Monitorování stavu</a><br>
-                                                            <a href="./app/azure-web-apps.md">Monitorování služby App Service</a><br>
+                                                            <a href="./app/azure-web-apps.md">Monitorování App Service</a><br>
+                                                            <a href="./app/azure-vm-vmss-apps.md">Monitorování aplikací pro škálování virtuálního počítače a virtuálního počítače</a><br>
                                                             <a href="./app/api-custom-events-metrics.md">Vlastní události a metriky</a><br>
-                                                            <a href="https://github.com/Microsoft/ApplicationInsights-dotnet">Otevřete úložiště GitHub zdroj .NET SDK</a>
+                                                            <a href="https://github.com/Microsoft/ApplicationInsights-dotnet">Open Source úložiště GitHub sady .NET SDK</a>
                                                         </p>
                                                         <br><br>
-                                                          <h3>Aplikace .NET core</h3>
+                                                          <h3>Aplikace .NET Core</h3>
                                                         <p>
-                                                            <a href="./app/asp-net-core.md">Podrobná konfigurace monitorování</a><br>
-                                                            <a href="./app/profiler-aspnetcore-linux.md">Profilace ASP.NET Core</a><br>
+                                                            <a href="./app/asp-net-core.md">Konfigurace podrobného monitorování</a><br>
+                                                            <a href="./app/profiler-aspnetcore-linux.md">ASP.NET Core profilace</a><br>
                                                             <a href="./app/api-custom-events-metrics.md">Vlastní události a metriky</a><br>
-                                                            <a href="https://github.com/Microsoft/ApplicationInsights-aspnetcore">Otevřete úložiště zdroje .NET Core SDK GitHub</a>
+                                                            <a href="https://github.com/Microsoft/ApplicationInsights-aspnetcore">Open Source .NET Core SDK úložiště GitHubu</a>
                                                         </p>
                                                         <br><br>
-                                                          <h3>Aplikace Node.js</h3>
+                                                          <h3>Aplikace Node. js</h3>
                                                         <p>
-                                                            <a href="./app/nodejs.md">Podrobná konfigurace monitorování</a><br>
+                                                            <a href="./app/nodejs.md">Konfigurace podrobného monitorování</a><br>
                                                             <a href="./app/api-custom-events-metrics.md">Vlastní události a metriky</a><br>
-                                                            <a href="https://github.com/Microsoft/ApplicationInsights-node.js">Otevřete úložiště GitHub zdrojového kódu Node.js SDK</a>
+                                                            <a href="https://github.com/Microsoft/ApplicationInsights-node.js">Open Source Node. js SDK GitHub úložiště</a>
                                                         </p>
                                                         <br><br>
-                                                        <h3>/ Prohlížeče monitorování klientů</h3>
+                                                        <h3>Monitorování na straně klienta nebo prohlížeče</h3>
                                                         <p>
-                                                            <a href="./app/javascript.md">Podrobná konfigurace monitorování</a><br>
+                                                            <a href="./app/javascript.md">Konfigurace podrobného monitorování</a><br>
                                                             <a href="./app/api-custom-events-metrics.md">Vlastní události a metriky</a><br>
-                                                            <a href="https://github.com/Microsoft/ApplicationInsights-JS">Otevřete úložiště Githubu zdrojového kódu jazyka JavaScript SDK</a><br>
+                                                            <a href="https://github.com/Microsoft/ApplicationInsights-JS">Open Source úložiště GitHub sady JavaScript SDK</a><br>
                                                         </p>
                                                     </div>
                                                 </div>
@@ -181,10 +183,10 @@ ms.locfileid: "66255686"
                                             <div class="cardPadding">
                                                 <div class="card">
                                                     <div class="cardText">
-                                                        <h3>Analýzu chování uživatelů</h3>
+                                                        <h3>Analýza chování uživatelů</h3>
                                                         <p>
                                                             <a href="./app/usage-overview.md">Přehled</a><br>
-                                                            <a href="./app/usage-send-user-context.md">Odeslání kontextu uživatele ID</a><br>
+                                                            <a href="./app/usage-send-user-context.md">Odeslat ID kontextů uživatele</a><br>
                                                             <a href="./app/usage-segmentation.md">Uživatelé, relace a události</a><br>
                                                             <a href="./app/usage-funnels.md">Trychtýře</a><br>
                                                             <a href="./app/usage-cohorts.md">Kohorty</a><br>
@@ -193,24 +195,24 @@ ms.locfileid: "66255686"
                                                             <a href="./app/usage-flows.md">Toky uživatelů</a>
                                                         </p>
                                                         <br><br>
-                                                        <h3>Monitorování v reálném čase<br> vizualizace, &amp; analýzy</h3>
+                                                        <h3>Sledování v reálném čase,<br> vizualizace &amp; , analýza</h3>
                                                         <p>
-                                                            <a href="./app/overview-dashboard.md">Řídicího panelu s přehledem &amp; řídicí panel aplikací</a><br>
-                                                            <a href="./app/monitor-web-app-availability.md">Sledování globální dostupnosti</a><br>
-                                                            <a href="./app/live-stream.md">Live metrics stream</a><br>
+                                                            <a href="./app/overview-dashboard.md">Přehled řídicího panelu aplikace v řídicím panelu &amp;</a><br>
+                                                            <a href="./app/monitor-web-app-availability.md">Monitorování globálních dostupnosti</a><br>
+                                                            <a href="./app/live-stream.md">Živý stream metrik</a><br>
                                                             <a href="./app/app-map.md">Mapování distribuované aplikace</a><br>
                                                             <a href="../monitoring-and-diagnostics/resource-group-insights.md">Monitorování na úrovni skupiny prostředků</a><br>
-                                                            <a href="./app/usage-workbooks.md">Vytváření interaktivních sestav</a><br>
+                                                            <a href="./app/usage-workbooks.md">Interaktivní vytváření sestav</a><br>
                                                             <a href="./app/export-power-bi.md">Integrace Power BI</a><br>
-                                                            <a href="https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-metric-charts">Zkoumání metrik</a>
+                                                            <a href="https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-metric-charts">Prozkoumat metriky</a>
                                                         </p>
                                                         <br><br>
-                                                        <h3>Ochrana osobních údajů, zabezpečení, využití &amp; náklady</h3>
+                                                        <h3>Ochrana osobních údajů, zabezpečení &amp; , náklady na využití</h3>
                                                         <p>
-                                                            <a href="https://docs.microsoft.com/azure/log-analytics/log-analytics-personal-data-mgmt">Manipulaci s osobními údaji</a><br>
-                                                            <a href="./app/data-retention-privacy.md">Shromažďování, uchovávání, &amp; úložiště</a><br>
+                                                            <a href="https://docs.microsoft.com/azure/log-analytics/log-analytics-personal-data-mgmt">Zpracování osobních údajů</a><br>
+                                                            <a href="./app/data-retention-privacy.md">Shromažďování, uchovávání a &amp; ukládání dat</a><br>
                                                             <a href="./app/resources-roles-access-control.md">Přístup na základě rolí</a><br>
-                                                            <a href="./app/ip-addresses.md">IP adresa &amp; výjimek brány firewall</a><br>
+                                                            <a href="./app/ip-addresses.md">Výjimky brány &amp; firewall pro IP adresy</a><br>
                                                             <a href="https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs">Využití a odhadované náklady</a>
                                                         </p>
                                                         <br><br>
@@ -223,7 +225,7 @@ ms.locfileid: "66255686"
                                                             <a href="./app/data-model-trace-telemetry.md">Trasování</a><br>
                                                             <a href="./app/data-model-event-telemetry.md">Události</a><br>
                                                             <a href="./app/data-model-metric-telemetry.md">Metrika</a><br>
-                                                            <a href="./app/data-model-context.md">Kontext</a>
+                                                            <a href="./app/data-model-context.md">Souvislost</a>
                                                             </p>
                                                         </p>
                                                     </div>

@@ -1,6 +1,6 @@
 ---
-title: Správa zastaralých zařízení ve službě Azure AD | Dokumentace Microsoftu
-description: Zjistěte, jak odebrat zastaralé zařízení z databáze, kterou registrovaná zařízení ve službě Azure Active Directory.
+title: Jak spravovat zastaralá zařízení v Azure AD | Microsoft Docs
+description: Přečtěte si, jak z databáze registrovaných zařízení z Azure Active Directory odebrat zastaralá zařízení.
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b64fd7efb00dabd1e1758ec631e6992d68bff2ab
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 8e9c11613a9bdcaedad1a69662b2d6bd7bfefc3b
+ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67481658"
+ms.lasthandoff: 07/13/2019
+ms.locfileid: "67867258"
 ---
 # <a name="how-to-manage-stale-devices-in-azure-ad"></a>Jak: Správa zastaralých zařízení ve službě Azure AD
 
@@ -43,7 +43,7 @@ Protože se zastaralé zařízení definuje jako registrované zařízení, kter
 
 Vyhodnocení časového razítka aktivity se aktivuje při pokusu o ověření zařízení. Služba Azure AD časové razítko aktivity vyhodnocuje, když:
 
-- Zásady podmíněného přístupu, které vyžadují [spravovaných zařízeních](../conditional-access/require-managed-devices.md) nebo [schválené klientské aplikace](../conditional-access/app-based-conditional-access.md) byla aktivována.
+- Aktivovaly se zásady podmíněného přístupu vyžadující [spravovaná zařízení](../conditional-access/require-managed-devices.md) nebo [schválené klientské aplikace](../conditional-access/app-based-conditional-access.md) .
 - Jsou v síti aktivní zařízení s Windows 10, která jsou připojená k Azure AD nebo hybridně připojená k Azure AD. 
 - Zařízení spravovaná přes Intune se přihlásí k této službě.
 
@@ -98,7 +98,7 @@ Zařízení hybridně připojená k Azure AD by měla dodržovat zásady pro spr
 Službu Azure AD uklidíte takto:
 
 - **Zařízení s Windows 10** – zakažte nebo odstraňte zařízení s Windows 10 v místní službě AD a nechejte nástroj Azure AD Connect synchronizovat stav změněných zařízení se službou Azure AD.
-- **Windows 7 a 8** – zakázání nebo odstranění Windows 7 a 8 zařízení ve službě Azure AD. K zakázání nebo odstranění zařízení s Windows 7/8 ve službě Azure AD nemůžete použít Azure AD Connect.
+- **Windows 7/8** – zakažte nebo odstraňte zařízení s Windows 7/8 ve službě Azure AD. K zakázání nebo odstranění zařízení s Windows 7/8 ve službě Azure AD nemůžete použít Azure AD Connect.
 
 ### <a name="azure-ad-joined-devices"></a>Zařízení připojená k Azure AD
 
@@ -129,7 +129,7 @@ Get-MsolDevice -all | select-object -Property Enabled, DeviceId, DisplayName, De
 mateLastLogonTimestamp | export-csv devicelist-summary.csv
 ```
 
-Pokud máte velký počet zařízení ve vašem adresáři, omezit počet vrácených zařízení pomocí časového razítka filtru. Všechna zařízení s časovým razítkem starším než určité datum a vrácená data uložíte do souboru CSV takto: 
+Pokud máte ve svém adresáři velký počet zařízení, použijte filtr časových razítek k zúžení počtu vrácených zařízení. Všechna zařízení s časovým razítkem starším než určité datum a vrácená data uložíte do souboru CSV takto: 
 
 ```PowerShell
 $dt = [datetime]’2017/01/01’
@@ -146,6 +146,13 @@ Get-MsolDevice -all -LogonTimeBefore $dt | select-object -Property Enabled, Devi
 
 Pokud je to nakonfigurováno, jsou klíče nástroje BitLocker pro zařízení s Windows 10 uložené v objektu zařízení služby Azure AD. Když odstraníte zastaralé zařízení, odstraníte také klíče nástroje Bitlocker, které jsou uložené v tomto zařízení. Před odstraněním zastaralého zařízení byste měli určit, jestli jsou zásady úklidu v souladu s životním cyklem zařízení. 
 
+### <a name="why-should-i-worry-about-windows-autopilot-devices"></a>Proč se mám starat o zařízení s Windows autopilotem?
+
+Když je zařízení Azure AD přidružené k objektu Windows autopilotu, můžou se následující tři scénáře vyskytnout, pokud se zařízení v budoucnu znovu vymění:
+- Díky uživatelsky nasazeným samoobslužným nasazením Windows bez použití prázdných šetrnější se vytvoří nové zařízení Azure AD, které ale nebude označené ZTDID.
+- S nasazením autopilotního režimu automatického nasazení Windows se nezdaří, protože nejde najít přidružení zařízení Azure AD.  (Toto je bezpečnostní mechanismus, který zajistí, že se zařízení bez jakýchkoli přihlašovacích údajů pokusí připojit k Azure AD.) Selhání bude označovat neshodu ZTDID.
+- S bílými šetrnější nasazeními Windows autopilotu se nezdaří, protože se nepovedlo najít přidružené zařízení Azure AD. (Na pozadí budou šetrnější nasazení používat stejný proces režimu samoobslužného nasazení, aby vynutila stejné mechanismy zabezpečení.)
+
 ### <a name="how-do-i-know-all-the-type-of-devices-joined"></a>Jak poznám všechny typy připojených zařízení?
 
 Další informace o různých typech najdete v [přehledu správy zařízení](overview.md).
@@ -158,6 +165,6 @@ Všechna ověřování, kdy se zařízení používá k ověřování vůči slu
 - **Zařízení připojená k Azure AD** – uživatelé nemůžou používat zařízení k přihlášení. 
 - **Mobilní zařízení** – uživatel nemá přístup k prostředkům Azure AD, jako je Office 365. 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Přehled správy zařízení na webu Azure Portal najdete v tématu věnovaném [správě zařízení pomocí webu Azure Portal](device-management-azure-portal.md).

@@ -4,7 +4,7 @@ titlesuffix: Azure Load Balancer
 description: Informace o vytvoření veřejného load balanceru s protokolem IPv6 pomocí rozhraní příkazového řádku Azure.
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: asudbring
 keywords: protokol IPv6, nástroje pro vyrovnávání zatížení azure, duálním zásobníkem, veřejné IP adresy, nativní protokol ipv6, mobilní zařízení, iot
 ms.service: load-balancer
 ms.devlang: na
@@ -13,13 +13,13 @@ ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/25/2018
-ms.author: kumud
-ms.openlocfilehash: 1caa8e7554024c3b2e3d86436d3d494d7995169a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: allensu
+ms.openlocfilehash: 0ee85a92753845e0e67fff22da894a048acb1b14
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60516677"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68274959"
 ---
 # <a name="create-a-public-load-balancer-with-ipv6-using-azure-cli"></a>Vytvoření veřejného load balanceru s protokolem IPv6 pomocí rozhraní příkazového řádku Azure
 
@@ -46,11 +46,11 @@ Následující kroky ukazují postup vytvoření veřejného load balanceru úro
 
 Pokud chcete nasadit nástroj pro vyrovnávání zatížení, vytvořte a nakonfigurujte následující objekty:
 
-* **Front-endové konfigurace protokolu IP**: Obsahuje veřejné IP adresy pro příchozí síťový provoz.
-* **Back endový fond adres**: Obsahuje síťová rozhraní (NIC) pro virtuální počítače přijímají síťový provoz z nástroje pro vyrovnávání zatížení.
-* **Pravidla Vyrovnávání zatížení**: Obsahuje pravidla, která mapují veřejný port v nástroji pro vyrovnávání zatížení na port ve fondu back endových adres.
-* **Příchozí pravidla NAT**: Obsahuje pravidel překladu adres (NAT), která mapují veřejný port v nástroji pro vyrovnávání zatížení na port konkrétního virtuálního počítače ve fondu back endových adres.
-* **Sondy**: Obsahuje testy stavu, které se používají ke kontrole dostupnosti instancí virtuálních počítačů ve fondu back endových adres.
+* **Konfigurace front-endové IP adresy**: Obsahuje veřejné IP adresy pro příchozí síťový provoz.
+* **Fond back-endové adresy**: Obsahuje síťová rozhraní (nic), ve kterých virtuální počítače přijímají síťový provoz z nástroje pro vyrovnávání zatížení.
+* **Pravidla vyrovnávání zatížení**: Obsahuje pravidla, která mapují veřejný port v nástroji pro vyrovnávání zatížení na port ve fondu back-end adres.
+* **Pravidla příchozího překladu adres (NAT)** : Obsahuje pravidla překladu síťových adres (NAT), která mapují veřejný port v nástroji pro vyrovnávání zatížení na port pro konkrétní virtuální počítač ve fondu back-end adres.
+* **Sondy**: Obsahuje sondy stavu, které slouží ke kontrole dostupnosti instancí virtuálních počítačů ve fondu back-end adres.
 
 ## <a name="set-up-azure-cli"></a>Nastavení rozhraní příkazového řádku Azure
 

@@ -1,77 +1,86 @@
 ---
-title: Připojení Symantec AWS dat Sentinelu ve verzi Preview Azure | Dokumentace Microsoftu
-description: Zjistěte, jak připojit data Symantec AWS do Azure Sentinelu.
+title: Připojení dat Symantec AWS k Azure Sentinel Preview | Microsoft Docs
+description: Naučte se připojit data Symantec AWS ke službě Azure Sentinel.
 services: sentinel
 documentationcenter: na
 author: rkarlin
 manager: rkarlin
 editor: ''
-ms.service: sentinel
+ms.service: azure-sentinel
+ms.subservice: azure-sentinel
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/04/2019
+ms.date: 07/10/2019
 ms.author: rkarlin
-ms.openlocfilehash: 214269bc5c854aa4d3bfd508b0adb5a53ec096df
-ms.sourcegitcommit: 80aaf27e3ad2cc4a6599a3b6af0196c6239e6918
+ms.openlocfilehash: 246d4cd7d64554ae575767cdba2e26066ad1720d
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67673970"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68295624"
 ---
-# <a name="connect-azure-sentinel-to-aws"></a>Připojení Azure Sentinel AWS
+# <a name="connect-azure-sentinel-to-aws-cloudtrail"></a>Připojení Azure Sentinel k AWS CloudTrail
 
-Streamování událostí CloudTrail v AWS do Azure Sentinelu pomocí konektoru AWS. Tento proces připojení pro Azure Sentinelu deleguje přístup k protokolům prostředků AWS, vytvoření vztahu důvěryhodnosti mezi CloudTrail v AWS a Azure Sentinelu. To se provádí v AWS tak, že vytvoříte roli, která poskytuje oprávnění k Azure Sentinelu pro přístup k protokolům AWS.
+Pomocí konektoru AWS můžete streamovat všechny události AWS CloudTrail do Azure Sentinel. Tento proces připojení deleguje delegáty přístupu pro Azure Sentinel do protokolů prostředků AWS a vytvoří vztah důvěryhodnosti mezi AWS CloudTrail a Azure Sentinel. To se provádí na AWS vytvořením role, která pro přístup k protokolům AWS uděluje oprávnění službě Azure Sentinel.
 
 ## <a name="prerequisites"></a>Požadavky
 
-V pracovním prostoru Azure Sentinelu musí mít oprávnění k zápisu.
+V pracovním prostoru Sentinel Azure musíte mít oprávnění k zápisu.
+
+> [!NOTE]
+> Sentinel Azure shromažďuje události CloudTrail ze všech oblastí. Doporučujeme nevytvářet streamování událostí z jedné oblasti do druhé.
 
 ## <a name="connect-aws"></a>Připojení AWS 
+
+
+1. V Azure Sentinel vyberte **datové konektory** a pak vyberte **Amazon Web Services** řádek v tabulce a v podokně AWS vpravo klikněte na **otevřít stránku konektoru**.
+
+1. Postupujte podle pokynů v části **Konfigurace** pomocí následujících kroků.
  
-1.  Na webu Amazon služby konzole v části **Security, Identity & Compliance**, klikněte na **IAM**.
+1.  V konzole Amazon Web Services v části **zabezpečení, identita & kompatibilita**vyberte **IAM**.
 
     ![AWS1](./media/connect-aws/aws-1.png)
 
-2.  Zvolte **role** a klikněte na tlačítko **vytvořit roli**.
+1.  Zvolte **role** a vyberte **vytvořit roli**.
 
     ![AWS2](./media/connect-aws/aws-2.png)
 
-3.  Zvolte **AWS jiný účet.** V **ID účtu** zadejte **ID účtu Microsoft** (**123412341234**), který najdete na stránce konektoru AWS na portálu Azure Sentinelu.
+1.  Vyberte **jiný účet AWS.** V poli **ID účtu** zadejte **ID účtu Microsoft** (**123412341234**), které najdete na stránce konektoru AWS na portálu Azure Sentinel.
 
     ![AWS3](./media/connect-aws/aws-3.png)
 
-4.  Ujistěte se, že **vyžadují externí ID** je vybrána a potom a zadat externí ID (ID pracovního prostoru) nalezeným na stránce konektoru AWS na portálu Azure Sentinelu.
+1.  Ujistěte se, že je vybraná možnost **vyžadovat externí ID** a pak zadejte externí ID (ID pracovního prostoru), které najdete na stránce KONEKTORu AWS na portálu Azure Sentinel.
 
     ![AWS4](./media/connect-aws/aws-4.png)
 
-5.  V části **připojit zásady oprávnění** vyberte **AWSCloudTrailReadOnlyAccess**.
+1.  V části **připojení zásady oprávnění** vyberte **AWSCloudTrailReadOnlyAccess**.
 
     ![AWS5](./media/connect-aws/aws-5.png)
 
-6.  Zadejte značky (volitelné).
+1.  Zadejte značku (volitelné).
 
     ![AWS6](./media/connect-aws/aws-6.png)
 
-7.  Potom zadejte **název Role** a klikněte na tlačítko **vytvořit roli** tlačítko.
+1.  Pak zadejte **název role** a klikněte na tlačítko **vytvořit roli** .
 
     ![AWS7](./media/connect-aws/aws-7.png)
 
-8.  V seznamu rolí vyberte roli, kterou jste vytvořili.
+1.  V seznamu role vyberte roli, kterou jste vytvořili.
 
     ![AWS8](./media/connect-aws/aws-8.png)
 
-9.  Kopírovat **Role ARN** a vložte ho do **Role pro přidání** pole Sentinelu portálu Azure.
+1.  Zkopírujte **ARN role**. Na portálu služby Azure Sentinel na obrazovce konektoru Amazon Web Services ji vložte do **role pro přidání** pole a klikněte na **Přidat**.
 
     ![AWS9](./media/connect-aws/aws-9.png)
 
-10. Chcete-li použít příslušné schéma v Log Analytics pro události AWS, vyhledejte **AWSCloudTrail**.
+1. Pokud chcete použít příslušné schéma v Log Analytics pro události AWS, vyhledejte **AWSCloudTrail**.
 
 
 
-## <a name="next-steps"></a>Další postup
-V tomto dokumentu jste zjistili, jak se připojit k Azure Sentinelu CloudTrail v AWS. Další informace o Azure Sentinelu, naleznete v následujících článcích:
-- Zjistěte, jak [umožňuje získat přehled vaše data a potenciální hrozby](quickstart-get-visibility.md).
-- Začínáme [detekuje hrozby s využitím Azure Sentinelu](tutorial-detect-threats.md).
+## <a name="next-steps"></a>Další kroky
+V tomto dokumentu jste zjistili, jak připojit AWS CloudTrail ke službě Azure Sentinel. Další informace o Sentinel Azure najdete v následujících článcích:
+- Naučte se [, jak získat přehled o vašich datech a potenciálních hrozbách](quickstart-get-visibility.md).
+- Začněte [s detekcí hrozeb pomocí služby Azure Sentinel](tutorial-detect-threats.md).
 

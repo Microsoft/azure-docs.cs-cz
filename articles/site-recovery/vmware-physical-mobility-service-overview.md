@@ -1,96 +1,96 @@
 ---
-title: Informace o službě Mobility pro zotavení po havárii virtuálních počítačů VMware a fyzických serverů s Azure Site Recovery | Dokumentace Microsoftu
-description: Další informace o agenta služby Mobility pro zotavení po havárii virtuálních počítačů VMware a fyzických serverů do Azure pomocí služby Azure Site Recovery.
+title: O službě mobility pro zotavení po havárii virtuálních počítačů VMware a fyzických serverů s Azure Site Recovery | Microsoft Docs
+description: Přečtěte si o agentovi služby mobility pro zotavení po havárii virtuálních počítačů VMware a fyzických serverů do Azure pomocí služby Azure Site Recovery.
 author: Rajeswari-Mamilla
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: ramamill
-ms.openlocfilehash: 929a4e4366c9e94ed4e1915406914991624f6baa
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c692b1c5b77b95e5487a847b46473906135c3d86
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60565557"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68261136"
 ---
-# <a name="about-the-mobility-service-for-vmware-vms-and-physical-servers"></a>Informace o službě Mobility pro virtuální počítače VMware a fyzické servery
+# <a name="about-the-mobility-service-for-vmware-vms-and-physical-servers"></a>O službě mobility pro virtuální počítače VMware a fyzické servery
 
-Při nastavení zotavení po havárii pro virtuální počítače VMware a fyzických serverů požíváním [Azure Site Recovery](site-recovery-overview.md), instalace služby Site Recovery Mobility na každý místní virtuální počítač VMware a fyzických serverů.  Služba Mobility zaznamenává datové zápisy na počítači a předává je na procesní server Site Recovery. Můžete nasadit službu Mobility pomocí následujících metod:
+Při nastavování zotavení po havárii pro virtuální počítače VMware a fyzické servery pomocí [Azure Site Recovery](site-recovery-overview.md)nainstalujete službu Site Recovery mobility na každý místní virtuální počítač VMware a fyzický server.  Služba mobility zachycuje zápisy dat na počítači a předá je na Site Recovery procesový Server. Službu mobility můžete nasadit pomocí následujících metod:
 
-- [Nabízená instalace](#push-installation): Při povolení ochrany prostřednictvím portálu Azure Site Recovery nainstaluje agenta mobility na serveru.
-- Ruční instalace: Můžete nainstalovat službu Mobility ručně na každém počítači prostřednictvím [uživatelského rozhraní](#install-mobility-agent-through-ui) nebo [příkazový řádek](#install-mobility-agent-through-command-prompt).
-- [Automatické nasazení](vmware-azure-mobility-install-configuration-mgr.md): Můžete automatizovat instalaci pomocí nástrojů pro nasazení softwaru jako je System Center Configuration Manager.
+- [Nabízená instalace](#push-installation): Site Recovery nainstaluje agenta mobility na server, pokud je ochrana povolená přes Azure Portal.
+- Ruční instalace: Službu mobility můžete nainstalovat ručně na každém počítači prostřednictvím [uživatelského rozhraní](#install-mobility-agent-through-ui) nebo [příkazového řádku](#install-mobility-agent-through-command-prompt).
+- [Automatizované nasazení](vmware-azure-mobility-install-configuration-mgr.md): Instalaci můžete automatizovat pomocí nástrojů pro nasazení softwaru, jako je System Center Configuration Manager.
 
-## <a name="anti-virus-on-replicated-machines"></a>Antivirový program replikované počítače
+## <a name="anti-virus-on-replicated-machines"></a>Antivirová ochrana na replikovaných počítačích
 
-Pokud chcete replikovat počítače aktivní antivirový software spuštěný, ujistěte se, vyloučit složky instalace služby Mobility z operace antivirový program (*C:\ProgramData\ASR\agent*). Tím se zajistí, že replikace pracuje podle očekávání.
+Pokud mají počítače, které chcete replikovat, spuštěné aktivní antivirový software, ujistěte se, že jste vyloučili instalační složku služby mobility z hlediska antivirové operace (*C:\ProgramData\ASR\agent*). Tím se zajistí, že replikace bude fungovat podle očekávání.
 
 ## <a name="push-installation"></a>Nabízená instalace
 
-Nabízená instalace je nedílnou součástí "[povolením replikace](vmware-azure-enable-replication.md#enable-replication)" úloha spuštěna na portálu. Po zvolení sadu virtuálních počítačů, které chcete chránit a aktivovat "Povolit replikaci" konfiguračního serveru agenta mobility k nim, nabízených oznámení, nainstaluje agenta a dokončení registrace agenta pomocí konfiguračního serveru. Pro úspěšné dokončení této operace
+Nabízená instalace je nedílnou součástí úlohy "[Povolení replikace](vmware-azure-enable-replication.md#enable-replication)" aktivované na portálu. Po výběru sady virtuálních počítačů, které chcete chránit, a aktivaci možnosti Povolit replikaci, konfigurační server vloží agenta mobility na servery, nainstaluje agenta a dokončí registraci agenta pomocí konfiguračního serveru. Pro úspěšné dokončení této operace
 
-- Ujistěte se, že všechny nabízená instalace [požadavky](vmware-azure-install-mobility-service.md) jsou splněny.
-- Ujistěte se, že všechny konfigurace serverů spadají pod [systém podpory replikace z VMware na scénář zotavení po Havárii Azure](vmware-physical-azure-support-matrix.md).
+- Ujistěte se, že jsou splněné všechny [požadavky](vmware-azure-install-mobility-service.md) na nabízenou instalaci.
+- Ujistěte se, že všechny konfigurace serverů spadají [do scénáře podpory pro VMware do Azure Dr](vmware-physical-azure-support-matrix.md).
 
-Podrobnosti o nabízenou instalaci pracovního postupu je popsán v následujících částech.
+Podrobnosti pracovního postupu nabízené instalace byly popsány v následujících částech.
 
-### <a name="from-923-versionhttpssupportmicrosoftcomen-inhelp4494485update-rollup-35-for-azure-site-recovery-onwards"></a>Z [9.23 verze](https://support.microsoft.com/en-in/help/4494485/update-rollup-35-for-azure-site-recovery) a vyšší
+### <a name="from-923-versionhttpssupportmicrosoftcomen-inhelp4494485update-rollup-35-for-azure-site-recovery-onwards"></a>Od [verze 9,23](https://support.microsoft.com/en-in/help/4494485/update-rollup-35-for-azure-site-recovery) a vyšší
 
-Během nabízená instalace agenta mobility následující kroky se provádějí
+Během nabízené instalace agenta mobility se provádí následující kroky.
 
-1. Agent nabízených oznámení na zdrojový počítač. Kopírování agenta do zdrojového počítače může selhat kvůli několika chybám prostředí. Navštivte [naše doprovodné materiály](vmware-azure-troubleshoot-push-install.md) k řešení potíží se selháním nabízené instalace.
-2. Poté, co agent byl úspěšně zkopírován do kontroly splnění podmínek na serveru se provádí na serveru. Instalace selže, pokud jeden nebo více následujících [požadavky](vmware-physical-azure-support-matrix.md) nejsou splněné. Pokud jsou splněny všechny požadavky, instalace se aktivuje.
-3. Azure Site Recovery VSS provider nainstalovaný na serveru jako součást instalace agenta Mobility. Tento zprostředkovatel slouží ke generování konzistentní body aplikací. V případě selhání instalace zprostředkovatele služby VSS, tento krok se přeskočí a bude pokračovat v instalaci agenta.
-4. Pokud bude úspěšné instalace agenta, ale instalace zprostředkovatele služby VSS se nezdaří, stav úlohy je označena jako "Upozornění". To ale nijak neovlivní generování body selhání konzistence.
+1. Vloží agenta do zdrojového počítače. Kopírování agenta do zdrojového počítače může selhat kvůli několika chybám v životním prostředí. Pokud chcete řešit chyby nabízených instalací, navštivte [naše pokyny](vmware-azure-troubleshoot-push-install.md) .
+2. Po úspěšném zkopírování agenta na kontrolu požadovaných součástí se na serveru provádí. Instalace se nezdařila, pokud není splněna jedna nebo více [požadavků](vmware-physical-azure-support-matrix.md) . Pokud jsou splněné všechny požadavky, spustí se instalace.
+3. V rámci instalace agenta mobility je na serveru nainstalovaný Azure Site Recovery poskytovatel služby VSS. Tento zprostředkovatel se používá ke generování bodů konzistentních vzhledem k aplikacím. Pokud instalace poskytovatele služby VSS selže, bude tento krok přeskočen a instalace agenta bude pokračovat.
+4. Pokud je instalace agenta úspěšná, ale instalace poskytovatele VSS selže, pak je stav úlohy označený jako upozornění. To nemá vliv na generování bodů konzistence selhání.
 
-    a. Generovat žádosti konzistentní body, najdete v tématu [naše doprovodné materiály](vmware-physical-manage-mobility-service.md#install-site-recovery-vss-provider-on-source-machine) pro dokončení instalace nástroje Site Recovery VSS provider ručně. </br>
-    b.  Pokud nechcete, aby byla konzistentní vzhledem k aplikacím body aplikace chcete vygenerovat, [zásady replikace změnit](vmware-azure-set-up-replication.md#create-a-policy) vypnout konzistentní body aplikací.
+    a. Pokud chcete vygenerovat body konzistentní vzhledem k aplikacím, přečtěte si [naše pokyny](vmware-physical-manage-mobility-service.md#install-site-recovery-vss-provider-on-source-machine) k ručnímu dokončení instalace Site Recovery poskytovatele služby Stínová kopie svazku. </br>
+    b.  Pokud nechcete, aby se vygenerovaly body konzistentní vzhledem k aplikacím, [upravte zásady replikace](vmware-azure-set-up-replication.md#create-a-policy) tak, aby byly vypnuté body konzistentní vzhledem k aplikacím.
 
-### <a name="before-922-versions"></a>Před 9.22 verze
+### <a name="before-922-versions"></a>Verze 9,22
 
-1. Agent nabízených oznámení na zdrojový počítač. Kopírování agenta do zdrojového počítače může selhat kvůli několika chybám prostředí. Navštivte [naše doprovodné materiály](vmware-azure-troubleshoot-push-install.md) k řešení potíží se selháním nabízené instalace.
-2. Poté, co agent byl úspěšně zkopírován do kontroly splnění podmínek na serveru se provádí na serveru. Instalace selže, pokud jeden nebo více následujících [požadavky](vmware-physical-azure-support-matrix.md) nejsou splněné. Pokud jsou splněny všechny požadavky, instalace se aktivuje.
-3. Azure Site Recovery VSS provider nainstalovaný na serveru jako součást instalace agenta Mobility. Tento zprostředkovatel slouží ke generování konzistentní body aplikací. V případě selhání instalace zprostředkovatele služby VSS se nezdaří instalace agenta. Chcete-li zabránit selhání instalace agenta mobility, použijte [9.23 verze](https://support.microsoft.com/en-in/help/4494485/update-rollup-35-for-azure-site-recovery) nebo vyšší konzistentní pro případ chyby body vygenerovat a nainstalovat poskytovatele služby VSS ručně.
+1. Vloží agenta do zdrojového počítače. Kopírování agenta do zdrojového počítače může selhat kvůli několika chybám v životním prostředí. Pokud chcete řešit chyby nabízených instalací, navštivte [naše pokyny](vmware-azure-troubleshoot-push-install.md) .
+2. Po úspěšném zkopírování agenta na kontrolu požadovaných součástí se na serveru provádí. Instalace se nezdařila, pokud není splněna jedna nebo více [požadavků](vmware-physical-azure-support-matrix.md) . Pokud jsou splněné všechny požadavky, spustí se instalace.
+3. V rámci instalace agenta mobility je na serveru nainstalovaný Azure Site Recovery poskytovatel služby VSS. Tento zprostředkovatel se používá ke generování bodů konzistentních vzhledem k aplikacím. Pokud instalace poskytovatele služby VSS selže, instalace agenta se nezdaří. Aby nedošlo k selhání instalace agenta mobility, použijte [verzi 9,23](https://support.microsoft.com/en-in/help/4494485/update-rollup-35-for-azure-site-recovery) nebo vyšší pro generování bodů konzistentních pro selhání a nainstalujte poskytovatele služby VSS ručně.
 
 ## <a name="install-mobility-agent-through-ui"></a>Instalace agenta mobility pomocí uživatelského rozhraní
 
 ### <a name="prerequisite"></a>Požadavek
 
-- Ujistěte se, že všechny konfigurace serverů spadají pod [systém podpory replikace z VMware na scénář zotavení po Havárii Azure](vmware-physical-azure-support-matrix.md).
-- [Vyhledejte instalační program](#locate-installer-files) založený na operačním systému serveru.
+- Ujistěte se, že všechny konfigurace serverů spadají [do scénáře podpory pro VMware do Azure Dr](vmware-physical-azure-support-matrix.md).
+- [Vyhledejte instalační program](#locate-installer-files) na základě operačního systému serveru.
 
 >[!IMPORTANT]
-> Pokud replikujete virtuální počítač Azure IaaS z jedné oblasti Azure do jiné, nepoužívejte tuto metodu. Místo toho použijte metodu instalace na základě na příkazovém řádku.
+> Pokud provádíte replikaci virtuálního počítače Azure IaaS z jedné oblasti Azure do jiné, nepoužívejte tuto metodu. Místo toho použijte metodu instalace založenou na příkazovém řádku.
 
-1. Zkopírujte instalační soubor do počítače a spustíme ji.
-2. V **možnost instalace**vyberte **nainstalovat službu mobility**.
-3. Zvolte umístění instalace > **nainstalovat**.
+1. Zkopírujte instalační soubor do počítače a spusťte ho.
+2. V **Možnosti instalace**vyberte **nainstalovat službu mobility**.
+3. Vyberte umístění instalace > **nainstalovat**.
 
-    ![Stránka možnost instalace služby mobility](./media/vmware-physical-mobility-service-install-manual/mobility1.png)
+    ![Stránka možností instalace služby mobility](./media/vmware-physical-mobility-service-install-manual/mobility1.png)
 
-4. Sledování instalace v **průběh instalace**. Po dokončení instalace, vybrat **pokračovat na konfiguraci** zaregistrovat službu s konfiguračním serverem.
+4. Sledujte instalaci v **průběhu instalace**. Po dokončení instalace vyberte **pokračovat ke konfiguraci** pro registraci služby na konfiguračním serveru.
 
-    ![Stránce pro registraci služby mobility](./media/vmware-physical-mobility-service-install-manual/mobility3.png)
+    ![Registrační stránka služby mobility](./media/vmware-physical-mobility-service-install-manual/mobility3.png)
 
-5. v **podrobnosti konfiguračního serveru**, zadejte IP adresu a heslo, které jste nakonfigurovali.  
+5. V části **Podrobnosti konfiguračního serveru**zadejte IP adresu a heslo, které jste nakonfigurovali.  
 
-    ![Stránce pro registraci služby mobility](./media/vmware-physical-mobility-service-install-manual/mobility4.png)
+    ![Registrační stránka služby mobility](./media/vmware-physical-mobility-service-install-manual/mobility4.png)
 
-6. Vyberte **zaregistrovat** dokončete registraci.
+6. Kliknutím na **Registrovat** dokončete registraci.
 
-    ![Poslední stránce pro registraci služby mobility](./media/vmware-physical-mobility-service-install-manual/mobility5.png)
+    ![Finální stránka registrace služby mobility](./media/vmware-physical-mobility-service-install-manual/mobility5.png)
 
-## <a name="install-mobility-agent-through-command-prompt"></a>Instalace agenta mobility prostřednictvím příkazového řádku
+## <a name="install-mobility-agent-through-command-prompt"></a>Instalace agenta mobility přes příkazový řádek
 
 ### <a name="prerequisite"></a>Požadavek
 
-- Ujistěte se, že všechny konfigurace serverů spadají pod [systém podpory replikace z VMware na scénář zotavení po Havárii Azure](vmware-physical-azure-support-matrix.md).
-- [Vyhledejte instalační program](#locate-installer-files) založený na operačním systému serveru.
+- Ujistěte se, že všechny konfigurace serverů spadají [do scénáře podpory pro VMware do Azure Dr](vmware-physical-azure-support-matrix.md).
+- [Vyhledejte instalační program](#locate-installer-files) na základě operačního systému serveru.
 
 ### <a name="on-a-windows-machine"></a>Na počítači s Windows
 
-- Zkopírujte instalační program k místní složce (třeba C:\Temp) na serveru, který chcete chránit.
+- Zkopírujte instalační program do místní složky (například C:\Temp) na serveru, který chcete chránit.
 
     ```
     cd C:\Temp
@@ -105,7 +105,7 @@ Během nabízená instalace agenta mobility následující kroky se provádějí
     UnifiedAgent.exe /Role "MS" /InstallLocation "C:\Program Files (x86)\Microsoft Azure Site Recovery" /Platform "VmWare" /Silent
     ```
 
-- Registrace agenta s konfiguračním serverem.
+- Zaregistrujte agenta u konfiguračního serveru.
 
     ```
     cd C:\Program Files (x86)\Microsoft Azure Site Recovery\agent
@@ -115,24 +115,24 @@ Během nabízená instalace agenta mobility následující kroky se provádějí
 #### <a name="installation-settings"></a>Nastavení instalace
 **Nastavení** | **Podrobnosti**
 --- | ---
-Využití | UnifiedAgent.exe/role < MS/MT > /InstallLocation  <Install Location> /silent "VmWare" / Platform
-Instalační protokoly | Under %ProgramData%\ASRSetupLogs\ASRUnifiedAgentInstaller.log.
-/ Role | Instalace povinných parametrů. Určuje, zda by měla nainstalovat služba Mobility (MS) nebo hlavní cíl (MT).
-/InstallLocation| Volitelný parametr. Určuje umístění instalace služby Mobility (libovolné složky).
-/ Platform | Povinné. Určuje platformu, na kterém je nainstalovaná služba Mobility. **VMware** pro virtuální počítače VMware a fyzických serverů. **Azure** pro virtuální počítače Azure.
-/ Silent| Volitelné. Určuje, jestli ke spuštění instalačního programu v bezobslužném režimu.
+Použití | UnifiedAgent. exe/role \<MS/MT >/INSTALLLOCATION \<umístění instalace >/Platform "VMware"/Silent
+Instalační protokoly | Pod%ProgramData%\ASRSetupLogs\ASRUnifiedAgentInstaller.log.
+/Role | Povinný parametr instalace Určuje, jestli má být nainstalovaná služba mobility (MS) nebo hlavní cíl (MT).
+/InstallLocation| Volitelný parametr. Určuje umístění instalace služby mobility (všechny složky).
+/Platform | Povinné. Určuje platformu, na které je nainstalovaná služba mobility. **VMware** pro virtuální počítače VMware/fyzické servery; **Azure** pro virtuální počítače Azure.
+/Silent| Volitelné. Určuje, jestli se má spustit instalační program v tichém režimu.
 
 #### <a name="registration-settings"></a>Nastavení registrace
 **Nastavení** | **Podrobnosti**
 --- | ---
-Využití | / Csendpoint UnifiedAgentConfigurator.exe \<CSIP >/passphrasefilepath \<PassphraseFilePath >
-Protokoly konfigurace agenta | V části % ProgramData%\ASRSetupLogs\ASRUnifiedAgentConfigurator.log.
-/CSEndPoint | Povinný parametr. Určuje IP adresu konfiguračního serveru. Použijte libovolná platná IP adresa.
-/PassphraseFilePath |  Povinné. Umístění přístupové heslo. Použijte libovolný platný název UNC nebo místní cesta k souboru.
+Použití | UnifiedAgentConfigurator. exe/CSEndPoint \<CSIP >/PassphraseFilePath \<PassphraseFilePath >
+Protokoly konfigurace agenta | Pod%ProgramData%\ASRSetupLogs\ASRUnifiedAgentConfigurator.log.
+/CSEndPoint | Povinný parametr. Určuje IP adresu konfiguračního serveru. Použijte jakoukoli platnou IP adresu.
+/PassphraseFilePath |  Povinné. Umístění přístupového hesla Použijte jakoukoli platnou cestu UNC nebo místní cestu k souboru.
 
-### <a name="on-a-linux-machine"></a>Na počítači s Linuxem
+### <a name="on-a-linux-machine"></a>V počítači se systémem Linux
 
-1. Zkopírujte instalační program do místní složky (například TMP) na serveru, který chcete chránit. V terminálu spusťte následující příkazy:
+1. Zkopírujte instalační program do místní složky (například adresáře/TMP) na serveru, který chcete chránit. V terminálu spusťte následující příkazy:
 
     ```
     cd /tmp ;
@@ -145,7 +145,7 @@ Protokoly konfigurace agenta | V části % ProgramData%\ASRSetupLogs\ASRUnifiedA
     sudo ./install -d <Install Location> -r MS -v VmWare -q
     ```
 
-3. Po dokončení instalace služby Mobility, musí být zaregistrovaná ke konfiguračnímu serveru. Spusťte následující příkaz pro registraci služby Mobility s konfiguračním serverem:
+3. Po dokončení instalace je potřeba službu mobility zaregistrovat na konfiguračním serveru. Spuštěním následujícího příkazu zaregistrujte službu mobility pomocí konfiguračního serveru:
 
     ```
     /usr/local/ASR/Vx/bin/UnifiedAgentConfigurator.sh -i <CSIP> -P /var/passphrase.txt
@@ -154,37 +154,37 @@ Protokoly konfigurace agenta | V části % ProgramData%\ASRSetupLogs\ASRUnifiedA
 #### <a name="installation-settings"></a>Nastavení instalace
 **Nastavení** | **Podrobnosti**
 --- | ---
-Využití | ./install -d <Install Location> -r <MS/MT> -v VmWare -q
--r | Instalace povinných parametrů. Určuje, zda by měla nainstalovat služba Mobility (MS) nebo hlavní cíl (MT).
--d | Volitelný parametr. Určuje umístění instalace služby Mobility: /usr/local/ASR.
--v | Povinné. Určuje platformu, na kterém je nainstalovaná služba Mobility. **VMware** pro virtuální počítače VMware a fyzických serverů. **Azure** pro virtuální počítače Azure.
--q | Volitelné. Určuje, jestli ke spuštění instalačního programu v bezobslužném režimu.
+Použití | ./Install-d \<umístění instalace >-r \<MS/MT >-v VMware-q
+-r | Povinný parametr instalace Určuje, jestli má být nainstalovaná služba mobility (MS) nebo hlavní cíl (MT).
+-d | Volitelný parametr. Určuje umístění instalace služby mobility:/usr/local/ASR.
+-v | Povinné. Určuje platformu, na které je nainstalovaná služba mobility. **VMware** pro virtuální počítače VMware/fyzické servery; **Azure** pro virtuální počítače Azure.
+-q | Volitelné. Určuje, jestli se má spustit instalační program v tichém režimu.
 
 #### <a name="registration-settings"></a>Nastavení registrace
 **Nastavení** | **Podrobnosti**
 --- | ---
-Využití | cd /usr/local/ASR/Vx/bin<br/><br/> UnifiedAgentConfigurator.sh -i \<CSIP> -P \<PassphraseFilePath>
--i | Povinný parametr. Určuje IP adresu konfiguračního serveru. Použijte libovolná platná IP adresa.
--P |  Povinné. Úplnou cestu souboru, ve kterém se heslo uloží. Použijte libovolnou platnou složku.
+Použití | /usr/local/ASR/Vx/bin CD<br/><br/> UnifiedAgentConfigurator.sh-i \<CSIP >-P \<PassphraseFilePath >
+– i | Povinný parametr. Určuje IP adresu konfiguračního serveru. Použijte jakoukoli platnou IP adresu.
+-P |  Povinné. Úplná cesta k souboru, ve kterém se heslo ukládá Použijte libovolnou platnou složku.
 
 ## <a name="azure-virtual-machine-agent"></a>Agent virtuálního počítače Azure
 
-- **Virtuální počítače s Windows**: Oproti 9.7.0.0 verzi služby Mobility [agenta virtuálního počítače Azure](../virtual-machines/extensions/features-windows.md#azure-vm-agent) nainstalovaného pomocí Instalační program služby Mobility. Tím se zajistí, že pokud je počítač převezme služby při selhání do Azure, virtuálního počítače Azure splňuje pro všechna rozšíření virtuálních počítačů pomocí požadovaných součástí instalace agenta.
-- **Virtuální počítače s Linuxem**: [WALinuxAgent](https://docs.microsoft.com/azure/virtual-machines/extensions/update-linux-agent) musí ručně doinstalovat na virtuálním počítači Azure po převzetí služeb při selhání.
+- **Virtuální počítače s Windows**: Z 9.7.0.0 verze služby mobility se [Agent virtuálního počítače Azure](../virtual-machines/extensions/features-windows.md#azure-vm-agent) nainstaluje pomocí instalačního programu služby mobility. Tím se zajistí, že při převzetí služeb při selhání počítače do Azure bude virtuální počítač Azure splňovat požadavky na instalaci agenta pro použití libovolného rozšíření virtuálního počítače.
+- **Virtuální počítače se systémem Linux**: Po převzetí služeb při selhání musí být [WALinuxAgent](https://docs.microsoft.com/azure/virtual-machines/extensions/update-linux-agent) na virtuálním počítači Azure nainstalovaná ručně.
 
-## <a name="locate-installer-files"></a>Vyhledejte soubory Instalační služby systému
+## <a name="locate-installer-files"></a>Vyhledání instalačních souborů
 
-Přejděte do složky %ProgramData%\ASR\home\svsystems\pushinstallsvc\repository na konfiguračním serveru. Zkontrolujte, které instalační program je nutné podle operačního systému. Následující tabulka shrnuje soubory instalačního programu pro každý virtuální počítač VMware a fyzických serverů operačního systému. Můžete zkontrolovat [podporované operační systémy](vmware-physical-azure-support-matrix.md#replicated-machines) před zahájením.
+Přejít na složku%ProgramData%\ASR\home\svsystems\pushinstallsvc\repository na konfiguračním serveru. Ověřte, který instalační program potřebujete na základě operačního systému. Následující tabulka shrnuje soubory instalačního programu pro každý virtuální počítač VMware a operační systém fyzického serveru. Než začnete, můžete zkontrolovat [podporované operační systémy](vmware-physical-azure-support-matrix.md#replicated-machines) .
 
-**Soubor Instalační služby systému** | **Operační systém (pouze 64bitové verze)**
+**Instalační soubor** | **Operační systém (pouze 64 bitů)**
 --- | ---
 Microsoft-ASR\_UA\*Windows\*release.exe | Windows Server 2016; Windows Server 2012 R2; Windows Server 2012; Windows Server 2008 R2 SP1
-Microsoft-ASR\_UA\*RHEL6-64\*release.tar.gz | Red Hat Enterprise Linux (RHEL) 6.* </br> CentOS 6.*
-Microsoft-ASR\_UA\*RHEL7-64\*release.tar.gz | Red Hat Enterprise Linux (RHEL) 7.* </br> CentOS 7.*
-Microsoft-ASR\_UA\*SLES12-64\*release.tar.gz | SUSE Linux Enterprise Server 12 SP1, SP2 SP3
+Microsoft-ASR\_UA\*RHEL6-64\*release.tar.gz | Red Hat Enterprise Linux (RHEL) 6. * </br> CentOS 6.*
+Microsoft-ASR\_UA\*RHEL7-64\*release.tar.gz | Red Hat Enterprise Linux (RHEL) 7. * </br> CentOS 7.*
+Microsoft-ASR\_UA\*SLES12-64\*release.tar.gz | SUSE Linux Enterprise Server 12 SP1, SP2, SP3
 Microsoft-ASR\_UA\*SLES11-SP3-64\*release.tar.gz| SUSE Linux Enterprise Server 11 SP3
 Microsoft-ASR\_UA\*SLES11-SP4-64\*release.tar.gz| SUSE Linux Enterprise Server 11 SP4
-Microsoft-ASR\_UA\*OL6-64\*release.tar.gz | Oracle Enterprise Linux 6.4, 6.5
+Microsoft-ASR\_UA\*OL6-64\*release.tar.gz | Oracle Enterprise Linux 6,4, 6,5
 Microsoft-ASR\_UA\*UBUNTU-14.04-64\*release.tar.gz | Ubuntu Linux 14.04
 Microsoft-ASR\_UA\*UBUNTU-16.04-64\*release.tar.gz | Ubuntu Linux 16.04 LTS server
 Microsoft-ASR_UA\*DEBIAN7-64\*release.tar.gz | Debian 7
@@ -192,4 +192,4 @@ Microsoft-ASR_UA\*DEBIAN8-64\*release.tar.gz | Debian 8
 
 ## <a name="next-steps"></a>Další postup
 
-[Nastavit nabízená instalace služby Mobility](vmware-azure-install-mobility-service.md).
+[Nastavte nabízenou instalaci služby mobility](vmware-azure-install-mobility-service.md).

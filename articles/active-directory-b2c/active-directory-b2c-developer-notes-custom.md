@@ -1,6 +1,6 @@
 ---
-title: Poznámky pro vývojáře pro vlastní zásady – Azure Active Directory B2C | Dokumentace Microsoftu
-description: Poznámky pro vývojáře na konfiguraci a správu Azure AD B2C s vlastními zásadami.
+title: Poznámky pro vývojáře pro vlastní zásady – Azure Active Directory B2C | Microsoft Docs
+description: Poznámky pro vývojáře při konfiguraci a údržbě Azure AD B2C s vlastními zásadami.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,131 +10,133 @@ ms.topic: conceptual
 ms.date: 03/18/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 1d0be4ec2ed8feb308839377e0494ef2f4b78368
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3f8d1ac217647ee292338da875671ef8bd3f79db
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66510215"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68227198"
 ---
 # <a name="developer-notes-for-custom-policies-in-azure-active-directory-b2c"></a>Poznámky pro vývojáře pro vlastní zásady v Azure Active Directory B2C
 
-Vlastní zásady konfigurace v Azure Active Directory B2C je teď obecně dostupná. Tato metoda konfigurace je cílená na pokročilé identity vývojáře, kteří vytvářejí řešení složitých identity. Vlastní zásady nutí sílu architekturu rozhraní identit k dispozici v Azure AD B2C tenanti. Pokročilé identity vývojáře, kteří používají vlastní zásady měli naplánovat investovat nějaký čas dokončení kurzy a referenční dokumenty pro čtení.
+Konfigurace vlastních zásad v Azure Active Directory B2C je teď všeobecně dostupná. Tato metoda konfigurace je cílem pokročilým vývojářům identity vytvářet složitá řešení identit. Vlastní zásady zpřístupňují výkon rozhraní identity Experience Framework v Azure AD B2Cch klientech.
+Pokročilí vývojáři identity, kteří používají vlastní zásady, by měli mít na úmysl investovat určitou dobu při dokončování procházení a čtení referenčních dokumentů.
 
-Zatímco většina možností vlastní zásady k dispozici jsou teď obecně dostupné, jsou základní funkce, jako jsou typy technický profil a obsahu definice rozhraní API, která jsou v různých fázích v životního cyklu softwaru. Mnoho dalších se chystá. Následující tabulka určuje úroveň dostupnosti na podrobnější úrovni.  
+I když je většina dostupných vlastních možností zásad všeobecně dostupná, existují základní možnosti, jako jsou například typy technických profilů a rozhraní API definice obsahu, které jsou v různých fázích životního cyklu softwaru. Mnoho dalších přicházejí. Následující tabulka určuje úroveň dostupnosti na podrobnější úrovni.
 
-## <a name="features-that-are-generally-available"></a>Funkce, které jsou obecně dostupné
+## <a name="features-that-are-generally-available"></a>Funkce, které jsou všeobecně dostupné
 
-- Vytvořit a nahrát vlastní ověřování uživatele jízdy pomocí vlastních zásad.  
-    - Popis cesty uživatele krok za krokem jako výměny mezi zprostředkovatelem deklarací identity.  
-    - Definuje podmíněné větvení v centrech uživatele.  
-- Spolupracovat s službám rozhraní REST API v centrech vaše vlastní ověřování uživatele.  
-- Vytvoření federace pomocí zprostředkovatelů identity, které jsou kompatibilní s protokolu OpenIDConnect.  
-- Vytvoření federace pomocí zprostředkovatelů identity, které používají protokol SAML 2.0.   
+- Vytváření a nahrávání vlastních cest uživatelů pro ověřování pomocí vlastních zásad.
+    - Popište cesty uživatelů krok za krokem jako výměny mezi poskytovateli deklarací identity.
+    - Definujte podmíněné větvení v cestě uživatele.
+- Spolupracuje se službami s podporou REST API ve vašich vlastních ověřovacích jízdách uživatele.
+- Federovat se zprostředkovateli identity, kteří jsou kompatibilní s protokolem OpenIDConnect.
+- Federovat se zprostředkovateli identity, kteří dodržují protokol SAML 2,0.
 
-## <a name="responsibilities-of-custom-policy-feature-set-developers"></a>Odpovědnosti vývojáře vlastních zásad pro sadu funkcí
+## <a name="responsibilities-of-custom-policy-feature-set-developers"></a>Zodpovědnosti funkce vlastní zásady – nastavení vývojářů
 
-Konfigurace zásad ruční uděluje přístup nižší úrovně k základní platformy Azure AD B2C a má za následek vytvoření jedinečné, architektura vztahu důvěryhodnosti. Mnoho možná bude připadat vlastních poskytovatelů identit, vztahy důvěryhodnosti, integraci s externími službami a podrobné pracovní postupy vyžadují metodický přístup k návrhu a konfigurace. 
+Ruční konfigurace zásad uděluje přístup na nižší úrovni k základní platformě Azure AD B2C a má za následek vytvoření jedinečného, důvěryhodného rozhraní. Mnoho možných permutací vlastních zprostředkovatelů identity, vztahů důvěryhodnosti, integrace s externími službami a podrobných pracovních postupů vyžaduje přístup k návrhu a konfiguraci.
 
-Vývojáři využívající sadu vlastních zásad pro funkce by měl splňovat následující pokyny:
+Vývojáři, kteří používají sadu funkcí vlastní zásady, by měli dodržovat následující pokyny:
 
-- Seznámení s jazykem configuration management vlastní zásady a klíči nebo tajnými kódy. Další informace najdete v tématu [TrustFrameworkPolicy](trustframeworkpolicy.md). 
-- Převzít vlastnictví scénáře a vlastní integraci. Zdokumentujte svou práci a informovat organizaci živého webu.  
-- Proveďte testování metodický scénář. 
-- Postupujte podle vývoj softwaru a přípravu, osvědčené postupy s minimálně jeden vývojové a testovací prostředí a jeden produkčního prostředí. 
-- Udržujte si přehled o novém vývoji ze zprostředkovatelů identity a služby, které můžete integrovat s. Například sledovat, změny v tajných kódů a z plánovaných a neplánovaných změny ve službě. 
-- Nastavit aktivní monitorování a monitorovat rychlost reakce produkční prostředí. Další informace o integraci se službou Application Insights najdete v tématu [Azure Active Directory B2C: Shromažďování protokolů](active-directory-b2c-custom-guide-eventlogger-appins.md). 
-- Udržujte si kontaktní e-mailové adresy v rámci předplatného Azure a aby byla schopná reagovat na e-mailů týmu živého webu společnosti Microsoft. 
-- Proveďte aktuální akci při doporučujeme to tak, že tým živého webu společnosti Microsoft.
+- Seznamte se s jazykem konfigurace vlastních zásad a správou klíčů a tajných kódů. Další informace najdete v tématu [TrustFrameworkPolicy](trustframeworkpolicy.md).
+- Převezměte vlastnictví scénářů a vlastních integrací. Zdokumentujte svou práci a informujte svou organizaci s živým webem.
+- Proveďte testování scénáře metod.
+- Dodržujte osvědčené postupy vývoje softwaru a přípravy s minimálním nasazením jednoho vývojového a testovacího prostředí a jednoho provozního prostředí.
+- Informujte se o novém vývoji od zprostředkovatelů identity a služeb, které do nástroje integrujete. Můžete například sledovat změny v tajných klíčích a naplánovaných a neplánovaných změnách služby.
+- Nastavte aktivní monitorování a sledujte rychlost odezvy v produkčním prostředí. Další informace o integraci s Application Insights najdete v tématu [Azure Active Directory B2C: Shromažďování protokolů](active-directory-b2c-custom-guide-eventlogger-appins.md).
+- Udržujte kontaktní e-mailové adresy aktuální v rámci předplatného Azure a zůstaňte reagovat na e-maily týmu živého webu společnosti Microsoft.
+- Využijte včasnou akci, kterou by to měl udělat tým Microsoftu pro živý Web.
 
-## <a name="terms-for-features-in-public-preview"></a>Podmínky pro funkce ve verzi public preview
+## <a name="terms-for-features-in-public-preview"></a>Výrazy pro funkce ve verzi Public Preview
 
-- Doporučujeme vám používat jenom pro účely hodnocení funkce ve verzi public preview. 
-- Smlouvy o úrovni služeb (SLA) se nevztahují na funkce ve verzi public preview.
-- Žádosti o podporu pro funkce ve verzi public preview můžete prostřednictvím kanálů podpory regulární podává. 
+- Doporučujeme používat funkce Public Preview jenom pro účely testování.
+- Smlouvy o úrovni služeb (SLA) se nevztahují na funkce verze Public Preview.
+- Žádosti o podporu pro veřejné funkce ve verzi Preview je možné dodávat prostřednictvím běžných kanálů podpory.
 
 ## <a name="features-by-stage-and-known-issues"></a>Funkce podle fáze a známé problémy
 
-Rozhraní prostředí pro vlastní zásady/identit. Tyto funkce jsou ve vývoji konstantní a rychlé. V následující tabulce je index funkce a dostupnost součásti.
+Možnosti architektury prostředí vlastních zásad a identit jsou v rámci stálého a rychlého vývoje. V následující tabulce je index funkcí a dostupnosti součástí.
 
-### <a name="identity-providers-tokens-protocols"></a>Poskytovatelé tokenů, protokoly identity
+### <a name="identity-providers-tokens-protocols"></a>Zprostředkovatelé identity, tokeny, protokoly
 
 | Funkce | Vývoj | Náhled | GA | Poznámky |
-|-------- | ----------- | ------- | -- | ----- |
+|-------- | :-----------: | :-------: | :--: | ----- |
 | IDP-OpenIDConnect |  |  | X | Například Google +.  |
-| IDP-OAUTH2 |  |  | X | Například Facebook.  |
-| IDP-OAUTH1 (twitter) |  | X |  | Například na Twitteru. |
+| IDP – OAUTH2 |  |  | X | Například Facebook.  |
+| IDP-OAUTH1 (Twitter) |  | X |  | Například Twitter. |
 | IDP-OAUTH1 (ex-twitter) |  |  |  | Nepodporuje se |
-| IDP-SAML |  |   | X | Například Salesforce, služby AD FS. |
+| IDP-SAML |  |   | X | Například Salesforce, ADFS. |
 | IDP-WSFED | X |  |  |  |
-| Předávající strany OAUTH1 |  |  |  | Nepodporuje se. |
-| Předávající strany OAUTH2 |  |  | X |  |
-| Předávající strany OIDC |  |  | X |  |
-| Přijímající strany SAML | X |  |  |  |
-| Předávající strany WSFED | X |  |  |  |
-| Rozhraní REST API služby Basic a ověřování certifikátů |  |  | X | Například Azure Logic Apps. |
+| OAUTH1 předávající strany |  |  |  | Nepodporuje se. |
+| OAUTH2 předávající strany |  |  | X |  |
+| OIDC předávající strany |  |  | X |  |
+| SAML předávající strany | X |  |  |  |
+| WSFED předávající strany | X |  |  |  |
+| REST API se základními a ověřovacími certifikáty |  |  | X | Například Azure Logic Apps. |
 
-### <a name="component-support"></a>Podpora součásti
+### <a name="component-support"></a>Podpora komponent
 
 | Funkce | Vývoj | Náhled | GA | Poznámky |
-| ------- | ----------- | ------- | -- | ----- |
+| ------- | :-----------: | :-------: | :--: | ----- |
 | Azure Multi Factor Authentication |  |  | X |  |
 | Azure Active Directory jako místní adresář |  |  | X |  |
-| Azure subsystém e-mailu pro ověření e-mailu |  |  | X |  |
+| Podsystém e-mailů Azure pro ověření e-mailu |  |  | X |  |
 | Podpora více jazyků|  |  | X |  |
-| Predikátu ověření |  |  | X | Například složitost hesla. |
-| Použití poskytovatelů služeb e-mailu třetích stran | X |  |  |  |
+| Ověřování predikátů |  |  | X | Například složitost hesla. |
+| Používání poskytovatelů e-mailových služeb třetích stran | X |  |  |  |
 
 ### <a name="content-definition"></a>Definice obsahu
 
 | Funkce | Vývoj | Náhled | GA | Poznámky |
-| ------- | ----------- | ------- | -- | ----- |
-| Chybové stránky, api.error |  |  | X |  |
-| Stránka výběru zprostředkovatele identity, api.idpselections |  |  | X |  |
-| Výběr zprostředkovatele identity pro registraci, api.idpselections.signup |  |  | X |  |
-| Zapomněli jste heslo, api.localaccountpasswordreset |  |  | X |  |
-| Místní účet přihlášení, api.localaccountsignin |  |  | X |  |
-| Místní účet pro zápis, api.localaccountsignup |  |  | X |  |
-| Stránka vícefaktorového ověřování, api.phonefactor |  |  | X |  |
-| Registrace, api.selfasserted s vlastním potvrzením účtu na sociální síti |  |  | X |  |
-| Samoobslužné s prohlašovanou aktualizace profilu api.selfasserted.profileupdate |  |  | X |  |
-| Sjednocené registrace nebo přihlášení stránce api.signuporsignin s parametrem "disableSignup" |  |  | X |  |
-| JavaScript / stránku smlouvy |  | X |  |  |
+| ------- | :-----------: | :-------: | :--: | ----- |
+| Chybová stránka, rozhraní API. Chyba |  |  | X |  |
+| IDP výběr stránky, API. idpselections |  |  | X |  |
+| IDP výběr pro registraci, API. idpselections. signup |  |  | X |  |
+| Zapomenuté heslo, API. localaccountpasswordreset |  |  | X |  |
+| Přihlášení k místnímu účtu, API. localaccountsignin |  |  | X |  |
+| Registrace místního účtu, API. localaccountsignup |  |  | X |  |
+| Stránka MFA, API. PhoneFactor |  |  | X |  |
+| Přihlášený účet sociální sítě s vlastním kontrolním účtem, API. selfasserted |  |  | X |  |
+| Aktualizace profilu s vlastním uplatněním, API. selfasserted. profileupdate |  |  | X |  |
+| Sjednocené registrační nebo přihlašovací stránka, API. signuporsignin s parametrem "disableSignup" |  |  | X |  |
+| Rozložení JavaScriptu/stránky |  | X |  |  |
 
-### <a name="app-ief-integration"></a>Integrace aplikace IEF
+### <a name="app-ief-integration"></a>Integrace aplikací – IEF
 
 | Funkce | Vývoj | Náhled | GA | Poznámky |
-| ------- | ----------- | ------- | -- | ----- |
-| Domain_hint parametr řetězce dotazu |  |  | X | K dispozici jako deklarace identity, může být předán zprostředkovatel identity. |
-| Login_hint parametr řetězce dotazu |  |  | X | K dispozici jako deklarace identity, může být předán zprostředkovatel identity. |
-| Příkaz Insert JSON UserJourney prostřednictvím client_assertion | X |  |  | Se přestanou používat. |
-| Vložit JSON do UserJourney jako id_token_hint |  | X |  | Přejít vpřed přístup k předání JSON. |
-| Předat TOKEN zprostředkovatele identity do aplikace |  | X |  | Například ze sítě Facebook pro aplikaci. |
+| ------- | :-----------: | :-------: | :--: | ----- |
+| Parametr řetězce dotazu domain_hint |  |  | X | K dispozici jako deklarace identity, se dají předat do IDP. |
+| Parametr řetězce dotazu login_hint |  |  | X | K dispozici jako deklarace identity, se dají předat do IDP. |
+| Vložení formátu JSON do UserJourney prostřednictvím client_assertion | X |  |  | Bude zastaralá. |
+| Vložení formátu JSON do UserJourney jako id_token_hint |  | X |  | Přejít k předávanému přístupu a předávat JSON. |
+| Předat TOKEN IDP aplikaci |  | X |  | Například z Facebooku do aplikace. |
 
 ### <a name="session-management"></a>Správa relací
 
 | Funkce | Vývoj | Náhled | GA | Poznámky |
-| ------- | ----------- | ------- | -- | ----- |
-| Poskytovatel relace jednotného přihlašování |  |  | X |  |
-| Zprostředkovatel relací externí přihlášení |  |  | X |  |
+| ------- | :-----------: | :-------: | :--: | ----- |
+| Zprostředkovatel relace jednotného přihlašování |  |  | X |  |
+| Externí zprostředkovatel přihlašovací relace |  |  | X |  |
 | Zprostředkovatel relací SAML SSO |  |  | X |  |
 | Výchozí zprostředkovatel relace jednotného přihlašování |  |  | X |  |
 
 ### <a name="security"></a>Zabezpečení
 
 | Funkce | Vývoj | Náhled | GA | Poznámky |
-|-------- | ----------- | ------- | -- | ----- |
-| Zásady klíče generovat, manuální, nahrávání |  |  | X |  |
-| Zásady klíče - RSA/Cert tajných kódů |  |  | X |  |
-| Nahrání zásad |  |  | X |  |
+|-------- | :-----------: | :-------: | :--: | ----- |
+| Klíče zásad – vygenerování, ruční, nahrání |  |  | X |  |
+| Klíče zásad – RSA/certifikát, tajné klíče |  |  | X |  |
+| Nahrávání zásad |  |  | X |  |
 
-### <a name="developer-interface"></a>Rozhraní pro vývojáře
+### <a name="developer-interface"></a>Vývojové rozhraní
 
 | Funkce | Vývoj | Náhled | GA | Poznámky |
-| ------- | ----------- | ------- | -- | ----- |
-| Azure Portal IEF uživatelského prostředí |  |  | X |  |
+| ------- | :-----------: | :-------: | :--: | ----- |
+| Portál Azure – IEF UX |  |  | X |  |
 | Application Insights UserJourney Logs |  | X |  | Používá se pro řešení potíží během vývoje.  |
-| Protokoly událostí Application Insights (pomocí kroků Orchestrace) |  | X |  | Používá k monitorování toky uživatelů v produkčním prostředí. |
+| Protokoly událostí Application Insights (prostřednictvím kroků orchestrace) |  | X |  | Slouží k monitorování toků uživatelů v produkčním prostředí. |
 
 ## <a name="next-steps"></a>Další postup
-[Další informace o vlastních zásad a rozdíl s toky uživatelů](active-directory-b2c-overview-custom.md).
+
+Přečtěte si další informace o [vlastních zásadách a rozdílech s toky uživatelů](active-directory-b2c-overview-custom.md).

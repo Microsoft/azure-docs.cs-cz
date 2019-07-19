@@ -1,24 +1,24 @@
 ---
-title: Vytvořit šablonu Image Builder pro Azure (preview)
-description: Zjistěte, jak vytvořit šablonu pro použití s Azure Image Builder.
+title: Vytvoření šablony Azure image Builder (Preview)
+description: Naučte se, jak vytvořit šablonu pro použití s nástrojem Azure image Builder.
 author: cynthn
 ms.author: cynthn
 ms.date: 05/10/2019
 ms.topic: article
 ms.service: virtual-machines-linux
 manager: gwallace
-ms.openlocfilehash: 16ad2a93c9ff035166a738edba40c99075a6e7ba
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 065962614d0b85c4c50f86bef0b610c9b3577e07
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67671457"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68248153"
 ---
-# <a name="preview-create-an-azure-image-builder-template"></a>Verze Preview: Vytvoření šablony Azure Image Builder 
+# <a name="preview-create-an-azure-image-builder-template"></a>Verze Preview: Vytvoření šablony Azure image Builder 
 
-Image Builder pro Azure používá k předávání informací do služby Image Builder soubor .json. V tomto článku jsme se nevede části souboru json, abyste mohli sestavit vlastní. Příklady úplná .json souborů najdete v tématu [Azure Image Builder Githubu](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts).
+Azure image Builder k předávání informací do služby tvůrce imagí používá soubor. JSON. V tomto článku se přejdou na oddíly souboru JSON, takže si můžete vytvořit vlastní. Příklady úplných souborů. JSON najdete v tématu věnovaném [nástroji Azure image Builder GitHub](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts).
 
-To je formát základní šablony:
+Toto je základní formát šablony:
 
 ```json
  { 
@@ -42,9 +42,9 @@ To je formát základní šablony:
 
 
 
-## <a name="type-and-api-version"></a>Verze typu a rozhraní API
+## <a name="type-and-api-version"></a>Typ a verze rozhraní API
 
-`type` Je typ prostředku, který musí být `"Microsoft.VirtualMachineImages/imageTemplates"`. `apiVersion` Se mění v čase podle změn rozhraní API, ale musí být `"2019-05-01-preview"` pro verzi preview.
+Je typ prostředku, který musí být `"Microsoft.VirtualMachineImages/imageTemplates"`. `type` V `apiVersion` průběhu času se změny rozhraní API změní, ale měla by být `"2019-05-01-preview"` pro verzi Preview.
 
 ```json
     "type": "Microsoft.VirtualMachineImages/imageTemplates",
@@ -53,7 +53,7 @@ To je formát základní šablony:
 
 ## <a name="location"></a>Location
 
-Umístění je oblast, ve kterém se vytvoří vlastní image. Pro Image Builder ve verzi preview se podporují těchto oblastech:
+Umístění je oblast, kde se vytvoří vlastní image. Pro náhled tvůrce imagí se podporují tyto oblasti:
 
 - East US
 - Východní USA 2
@@ -68,18 +68,18 @@ Umístění je oblast, ve kterém se vytvoří vlastní image. Pro Image Builder
     
 ## <a name="depends-on-optional"></a>Závisí na (volitelné)
 
-Tento volitelný oddíl je možné zajistit, že před pokračováním jsou dokončeny závislosti. 
+Tento volitelný oddíl lze použít k zajištění, aby byly před pokračováním dokončeny závislosti. 
 
 ```json
     "dependsOn": [],
 ```
 
-Další informace najdete v tématu [definovat závislosti prostředků](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-define-dependencies#dependson).
+Další informace najdete v tématu [Definování závislostí prostředků](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-define-dependencies#dependson).
 
 ## <a name="identity"></a>Identita
-Ve výchozím nastavení podporuje Image Builder pomocí skriptů nebo kopírování souborů z více míst, jako jsou GitHub a Azure storage. Pokud chcete použít, musí být veřejně přístupná.
+Ve výchozím nastavení podporuje tvůrce imagí použití skriptů nebo kopírování souborů z více umístění, jako je GitHub a Azure Storage. Aby je bylo možné použít, musí být veřejně přístupné.
 
-Můžete také Azure User-Assigned spravovaná identita, definované uživatelem, pokud chcete povolit přístup Image Builder pro Azure Storage, tak dlouho, dokud identity bylo uděleno minimálně 'Čtenář dat objektu Blob úložiště' účet Azure storage. To znamená, že nepotřebujete, aby objekty BLOB služby storage zvenku přístupný nebo tokeny SAS instalační program.
+Můžete také použít spravovanou identitu přiřazenou uživatelem Azure, kterou jste definovali, a zapnout tak přístup k tvůrci imagí Azure Storage, pokud mu byla v účtu úložiště Azure udělena minimální hodnota "úložiště BLOB data Reader". To znamená, že nemusíte mít externě přístup k objektům blob úložiště nebo nastavit tokeny SAS.
 
 
 ```json
@@ -91,28 +91,28 @@ Můžete také Azure User-Assigned spravovaná identita, definované uživatelem
         },
 ```
 
-Kompletní příklad naleznete v tématu [ pomocí Identity spravované Azure User-Assigned přístup k souborům ve službě Azure Storage](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts/7_Creating_Custom_Image_using_MSI_to_Access_Storage).
+Úplný příklad najdete v tématu [použití spravované identity přiřazené uživatelem Azure pro přístup k souborům v Azure Storage](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts/7_Creating_Custom_Image_using_MSI_to_Access_Storage).
 
-Image Builder podporu pro identitu User-Assigned: • podporuje jedinou identitu pouze • nepodporuje vlastní názvy domén
+Podpora tvůrce imagí pro uživatelem přiřazenou identitu: • podporuje jenom jednu identitu • nepodporuje vlastní názvy domén.
 
-Další informace najdete v tématu [co je spravované identity pro prostředky Azure?](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).
-Další informace o nasazení této funkce najdete v tématu [konfigurace spravovaných identit pro prostředky Azure na Virtuálním počítači Azure pomocí Azure CLI](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm#user-assigned-managed-identity).
+Další informace najdete v tématu [co jsou spravované identity pro prostředky Azure?](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).
+Další informace o nasazení této funkce najdete v tématu [Konfigurace spravovaných identit pro prostředky Azure na virtuálním počítači Azure pomocí Azure CLI](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm#user-assigned-managed-identity).
 
 ## <a name="properties-source"></a>Vlastnosti: zdroj
 
-`source` Část obsahuje informace o zdrojového obrázku, který se použije Image Builder.
+`source` Část obsahuje informace o zdrojové imagi, kterou bude používat Tvůrce imagí.
 
-Rozhraní API vyžaduje "SourceType", který definuje zdroj pro sestavení image, aktuálně existují tři typy:
-- ISO - využit, pokud je zdroj RHEL ISO.
-- PlatformImage - označil zdrojové image je Marketplace image.
-- ManagedImage – použijte ho, když se od pravidelných spravované image.
-- SharedImageVersion – používá se v případě, že se používá verzi image v galerii Imagí Shared jako zdroj.
+Rozhraní API vyžaduje typ SourceType, který definuje zdroj pro sestavení image, v současné době existují tři typy:
+- ISO – použijte tuto hodnotu, pokud je zdrojem RHEL ISO.
+- PlatformImage – indikuje, že zdrojová Image je image na webu Marketplace.
+- ManagedImage – Toto použijte při spuštění z obyčejné spravované image.
+- SharedImageVersion – používá se, pokud používáte verzi image v galerii sdílených imagí jako zdroj.
 
 ### <a name="iso-source"></a>Zdroj ISO
 
-Image Builder pro Azure podporuje pouze pomocí publikovaných Red Hat Enterprise Linux 7.x binární DVD soubory ISO, pro verzi preview. Image Builder podporuje:
+Azure image Builder podporuje pro náhled jenom použití publikované Red Hat Enterprise Linux 7. x Binary DVD soubory ISO. Nástroj image Builder podporuje:
 - RHEL 7.3 
-- RHEL 7.4 
+- RHEL 7,4 
 - RHEL 7.5 
  
 ```json
@@ -123,18 +123,18 @@ Image Builder pro Azure podporuje pouze pomocí publikovaných Red Hat Enterpris
 }
 ```
 
-Chcete-li získat `sourceURI` a `sha256Checksum` hodnoty, přejděte na `https://access.redhat.com/downloads` vyberte produkt, **Red Hat Enterprise Linux**a s podporovanou verzí. 
+Hodnoty `sourceURI` a `sha256Checksum` získáte tak, `https://access.redhat.com/downloads` že vyberete produkt **Red Hat Enterprise Linux**a podporovanou verzi. 
 
-V seznamu **instalační programy a bitových kopií pro Red Hat Enterprise Linux Server**, budete muset zkopírovat odkaz pro Red Hat Enterprise Linux 7.x binární DVD a kontrolního součtu.
+V seznamu instalačních **programů a imagí pro Red Hat Enterprise Linux Server**je nutné zkopírovat odkaz pro binární DVD Red Hat Enterprise Linux 7. x a kontrolní součet.
 
 > [!NOTE]
-> Přístupové tokeny odkazy se aktualizují v pravidelných intervalech, takže pokaždé, když chcete odeslat šablonu, musíte zkontrolovat, pokud odkaz RH adresy změnilo.
+> Přístupové tokeny těchto propojení se aktualizují v častých intervalech, takže pokaždé, když chcete odeslat šablonu, musíte ověřit, jestli se změnila adresa odkazu RH.
  
-### <a name="platformimage-source"></a>PlatformImage zdroje 
-Image Builder pro Azure podporuje následující Image Azure Marketplace:
+### <a name="platformimage-source"></a>PlatformImage zdroj 
+Azure image Builder podporuje následující image Azure Marketplace:
 * Ubuntu 18.04
 * Ubuntu 16.04
-* RHEL 7.6
+* RHEL 7,6
 * CentOS 7.6
 * Windows 2016
 * Windows 2019
@@ -150,18 +150,18 @@ Image Builder pro Azure podporuje následující Image Azure Marketplace:
 ```
 
 
-Vlastnosti Zde jsou stejné, které se používají k vytvoření Virtuálního počítače, pomocí AZ rozhraní příkazového řádku, spusťte níže zobrazíte vlastnosti: 
+Tady jsou vlastnosti, které se používají k vytvoření virtuálního počítače pomocí AZ CLI, pro získání vlastností použijte níže: 
  
 ```azurecli-interactive
 az vm image list -l westus -f UbuntuServer -p Canonical --output table –-all 
 ```
 
 > [!NOTE]
-> Verze nemůže být 'nejnovější', chcete-li získat číslo verze musí pomocí výše uvedeného příkazu. 
+> Verze nemůže být nejnovější, abyste získali číslo verze, musíte použít výše uvedený příkaz. 
 
-### <a name="managedimage-source"></a>ManagedImage zdroje
+### <a name="managedimage-source"></a>ManagedImage zdroj
 
-Nastaví zdrojového obrazu jako existující spravované image generalizovaného virtuálního pevného disku nebo virtuálního počítače. Spravované image zdroje musí být podporovaný operační systém a být ve stejné oblasti jako šablona Image Builder pro Azure. 
+Nastaví zdrojovou Image jako existující spravovanou bitovou kopii zobecněného virtuálního pevného disku nebo virtuálního počítače. Zdrojová image spravovaná musí být podporovaného operačního systému a musí být ve stejné oblasti jako šablona Azure image Builder. 
 
 ```json
         "source": { 
@@ -170,11 +170,11 @@ Nastaví zdrojového obrazu jako existující spravované image generalizovanéh
         }
 ```
 
-`imageId` By měl být ResourceId spravované image. Použití `az image list` na seznam dostupných imagí.
+`imageId` By měl být ResourceID spravované image. Slouží `az image list` k vypsání dostupných imagí.
 
 
-### <a name="sharedimageversion-source"></a>SharedImageVersion source
-Nastaví obrázek zdroj stávající verze image v galerii Imagí Shared. Verze bitové kopie musí být podporovaný operační systém a image se musí replikovat do stejné oblasti jako šablona Image Builder pro Azure. 
+### <a name="sharedimageversion-source"></a>SharedImageVersion zdroj
+Nastaví zdrojovou bitovou kopii existující verze image v galerii sdílených imagí. Verze bitové kopie musí být podporovaného operačního systému a bitová kopie musí být replikovaná do stejné oblasti jako šablona Azure image Builder. 
 
 ```json
         "source": { 
@@ -183,21 +183,21 @@ Nastaví obrázek zdroj stávající verze image v galerii Imagí Shared. Verze 
    } 
 ```
 
-`imageVersionId` By měl být ResourceId verze image. Použití [az sig verze image seznamu](/cli/azure/sig/image-version#az-sig-image-version-list) na seznamu verze image.
+`imageVersionId` Měla by být ResourceID verze image. K vypsání verzí imagí použijte příkaz [AZ SIG Image-Version list](/cli/azure/sig/image-version#az-sig-image-version-list) .
 
 ## <a name="properties-customize"></a>Vlastnosti: přizpůsobení
 
 
-Image Builder podporuje více "úpravcům přidávat nové". Jsou úpravcům přidávat nové funkce, které se používají k přizpůsobení image, jako je například spouštění skriptů nebo restartování serverů. 
+Image Builder podporuje několik "úprav". Vlastníci jsou funkce, které se používají k přizpůsobení image, jako je spouštění skriptů nebo restartování serverů. 
 
 Při použití `customize`: 
-- Můžete použít více úpravcům přidávat nové, ale musí mít jedinečnou `name`.
-- Úpravcům přidávat nové spuštění v pořadí, v této šabloně specifikovaný.
-- Pokud jeden modifikátor nezdaří, pak komponenta celý přizpůsobení se nezdaří a nahlásit chybu.
-- Zvažte, kolik času bitové kopie sestavení vyžadují a upravte vlastnost "buildTimeoutInMinutes" image builder pro vyhradit dostatek času k dokončení.
-- Důrazně doporučujeme důkladně testu skript před jeho použitím v šabloně. Ladění skriptů na vlastním virtuálním počítači bude jednodušší.
-- Neumisťujte citlivá data ve skriptech. 
-- Umístění skriptu musí být veřejně dostupný, pokud nepoužíváte [MSI](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts/7_Creating_Custom_Image_using_MSI_to_Access_Storage).
+- Můžete použít více úprav, ale musí mít jedinečné `name`.
+- Úpravci provádějí v pořadí zadaném v šabloně.
+- Pokud jeden z úprav selže, celá komponenta přizpůsobení selže a ohlásí chybu.
+- Vezměte v úvahu, kolik času vaše sestavení imagí bude potřebovat, a upravte vlastnost ' buildTimeoutInMinutes ' tak, aby tvůrce imagí měl dostatek času na dokončení.
+- Důrazně doporučujeme skript před jeho použitím v šabloně důkladně otestovat. Ladění skriptu na vlastním VIRTUÁLNÍm počítači bude snazší.
+- Do skriptů neumísťujte citlivá data. 
+- Pokud nepoužíváte [MSI](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts/7_Creating_Custom_Image_using_MSI_to_Access_Storage), musí být umístění skriptu veřejně přístupná.
 
 ```json
         "customize": [
@@ -218,12 +218,12 @@ Při použití `customize`:
 ```     
 
  
-Vlastní části je pole. Image Builder pro Azure se spustí prostřednictvím úpravcům přidávat nové v sekvenčním pořadí. Jakékoli neúspěchy v jakékoli úpravce systému selže proces sestavení. 
+Oddíl Customization je pole. Azure image Builder se spustí prostřednictvím úprav v sekvenčním pořadí. Jakékoli selhání v jakémkoliv úpravách způsobí selhání procesu sestavení. 
  
  
-### <a name="shell-customizer"></a>Modifikátor prostředí
+### <a name="shell-customizer"></a>Přizpůsobení prostředí
 
-Úpravce systému prostředí podporuje spouštění skriptů prostředí, ty musí být veřejně přístupný pro IB pro přístup k nim.
+Úpravce prostředí podporuje spouštění skriptů prostředí. Tyto skripty musí být veřejně přístupné pro přístup IB a k nim.
 
 ```json
     "customize": [ 
@@ -246,16 +246,16 @@ Podpora operačního systému: Linux
  
 Přizpůsobení vlastností:
 
-- **typ** – skořápce 
-- **název** – název přizpůsobení sledování 
-- **adresa_uri-skriptu** -URI k umístění souboru 
-- **vložené** -pole příkazy prostředí, oddělené čárkami.
+- **typ** – prostředí 
+- **název** – název pro sledování přizpůsobení 
+- **scriptUri** -URI do umístění souboru 
+- **vložené** – pole příkazů prostředí oddělené čárkami.
  
 > [!NOTE]
-> Při spuštění prostředí úpravce systému RHEL ISO zdrojem, je potřeba zajistit vaši první popisovače prostředí přizpůsobení registraci serveru Red Hat nároku před provedením jakéhokoli přizpůsobení. Po dokončení úprav skript by měl zrušit registraci k serveru nárok.
+> Když spustíte úpravce prostředí se zdrojem RHEL ISO, musíte zajistit, aby vaše první prostředí pro přizpůsobení způsobilo registraci na serveru s Red Hat nárokem, a to ještě před tím, než dojde k přizpůsobení. Po dokončení přizpůsobení by se měl skript na serveru nároků zrušit.
 
-### <a name="windows-restart-customizer"></a>Restartujte úpravce systému Windows 
-Modifikátor restartování umožňuje restartování virtuálního počítače s Windows a počkejte na její návratu do režimu online, umožňuje instalaci softwaru vyžadujícího restart.  
+### <a name="windows-restart-customizer"></a>Restart Windows – úprav 
+Úpravce restartování vám umožní restartovat virtuální počítač s Windows a počkat na jeho návrat do režimu online. to vám umožní nainstalovat software, který vyžaduje restart.  
 
 ```json 
      "customize": [ 
@@ -269,14 +269,14 @@ Modifikátor restartování umožňuje restartování virtuálního počítače 
 Podpora operačního systému: Windows
  
 Přizpůsobení vlastností:
-- **Typ**: WindowsRestart
-- **restartCommand** -příkaz k provedení restartu (volitelné). Výchozí hodnota je `'shutdown /r /f /t 0 /c \"packer restart\"'`.
-- **restartCheckCommand** – příkaz a zkontrolujte, pokud restartování proběhlo úspěšně (volitelné). 
-- **restartTimeout** – restartování časový limit zadaný jako řetězec velikosti a jednotku. Například `5m` (5 minut) nebo `2h` (2 hodiny). Výchozí hodnota je: "5 min.
+- **Zadejte**: WindowsRestart
+- **restartCommand** – příkaz pro spuštění restartování (volitelné). Výchozí hodnota je `'shutdown /r /f /t 0 /c \"packer restart\"'`.
+- **restartCheckCommand** – příkaz pro kontrolu úspěšnosti restartování (volitelné). 
+- **rečas_spuštění** – byl zadán časový limit restartování jako řetězec velikosti a jednotky. Například `5m` (5 minut) nebo `2h` (2 hodiny). Výchozí hodnota je: 5 min
 
 
-### <a name="powershell-customizer"></a>Modifikátor prostředí PowerShell 
-Modifikátor prostředí podporuje spouštění skriptů prostředí PowerShell a příkaz vložené, skripty musí být veřejně přístupný pro IB pro přístup k nim.
+### <a name="powershell-customizer"></a>Úpravám PowerShellu 
+Úpravce prostředí podporuje spouštění PowerShellových skriptů a vložených příkazů, skripty musí být veřejně přístupné, aby k nim měly přístup IB.
 
 ```json 
      "customize": [
@@ -298,14 +298,14 @@ Podpora operačního systému: Windows a Linux
 
 Přizpůsobení vlastností:
 
-- **typ** – prostředí PowerShell.
-- **adresa_uri-skriptu** -URI k umístění souboru skriptu Powershellu. 
-- **vložené** – vložené příkazy ke spuštění, oddělené čárkami.
-- **valid_exit_codes** – volitelné, příkaz platné kódy, které lze vrátit ze skriptu nebo vložené, tím se vyhnete ohlášené selhání příkazu skriptu/inline.
+- **typ** – PowerShell.
+- **scriptUri** -URI do umístění souboru skriptu PowerShellu. 
+- **vložené** – vložené příkazy, které mají být spuštěny, oddělené čárkami.
+- **valid_exit_codes** – volitelné, platné kódy, které lze vrátit z příkazu Script/inline, tím se vyhnete nahlášené chybě příkazu Script/inline.
 
-### <a name="file-customizer"></a>Úpravce systému souborů
+### <a name="file-customizer"></a>Úprav souborů
 
-Úpravce systému souborů umožňuje image builder pro stažení souboru z Githubu nebo služby Azure storage. Pokud máte kanál sestavení image, která závisí na artefakty sestavení, můžete pak nastavte úpravce systému souborů ke stažení ze sdílené složky sestavení a přesunout artefakty do bitové kopie.  
+Úpravou souboru se dá tvůrce imagí stáhnout soubor z GitHubu nebo Azure Storage. Máte-li kanál sestavení obrázku, který spoléhá na artefakty sestavení, můžete nastavit, aby se soubor úprav souborů stáhl ze sdílené složky sestavení a přesunul artefakty do bitové kopie.  
 
 ```json
      "customize": [ 
@@ -318,32 +318,32 @@ Přizpůsobení vlastností:
      ]
 ```
 
-Podpora operačního systému: Systémy Linux a Windows 
+Podpora operačního systému: Linux a Windows 
 
-Vlastnosti úpravce systému souborů:
+Vlastnosti úprav souborů:
 
-- **sourceUri** – koncový bod úložiště přístupné, může to být úložiště GitHub nebo v Azure. Můžete stáhnout jenom jeden soubor, nikoli celý adresář. Pokud budete muset stáhnout do adresáře, použijte komprimovaný soubor, pak dekomprimovat pomocí úpravcům přidávat nové prostředí nebo prostředí PowerShell. 
-- **určení** – Toto je název cílového úplnou cestu a název souboru. Žádné odkazovanou cestu a jeho podadresářích musí existovat, použít úpravcům přidávat nové prostředí nebo prostředí PowerShell k nastavení těchto předem. Úpravci skript můžete použít k vytvoření cesty. 
+- **SourceUri** – dostupný koncový bod úložiště, může to být GitHub nebo Azure Storage. Můžete stáhnout pouze jeden soubor, nikoli celý adresář. Pokud potřebujete stáhnout adresář, použijte komprimovaný soubor a pak ho dekomprimujte pomocí úprav prostředí nebo úprav prostředí PowerShell. 
+- **cíl** – jedná se o úplnou cestu k cíli a název souboru. Musí existovat všechny odkazované cesty a podadresáře, pomocí prostředí PowerShell nebo úprav prostředí PowerShell je nastavit předem. Pomocí úprav skriptů můžete vytvořit cestu. 
 
-To je podporována adresáře Windows a Linuxem cesty, ale existují určité rozdíly: 
-- Linux OS – pouze cesta Image builder můžou zapisovat do je tmp.
-- Windows – žádná omezení cesty, ale cesta musí existovat.
+To je podporováno v adresářích systému Windows a cestách pro Linux, ale existují několik rozdílů: 
+- Operační systém Linux – pouze nástroj pro tvůrce obrázků s cestou může zapisovat do/tmp.
+- Windows – žádné omezení cesty, ale cesta musí existovat.
  
  
-Pokud dojde k chybě pokusu o stažení souboru a vložit ho do zadaného adresáře vlastní krok se nezdaří a bude ve customization.log.
+Pokud při pokusu o stažení souboru nebo jeho umístění do zadaného adresáře dojde k chybě, krok přizpůsobení selže a bude v souboru Customization. log.
 
->> Poznámka:! Úpravce systému souborů je pouze vhodný pro malý soubor ke stažení, < 20MB. Pro větší stahování souborů pomocí skriptu nebo vložené příkazu, použít kód ke stažení souborů, jako je třeba Linux `wget` nebo `curl`, Windows, `Invoke-WebRequest`.
+>> Značte! Soubor úprav souborů je vhodný jenom pro stahování malých souborů, < 20MB. U větších souborů ke stažení použijte skript nebo vložený příkaz, ke stažení souborů, jako je Linux `wget` nebo `curl`Windows, `Invoke-WebRequest`použijte kód.
 
-Soubory v souboru úpravce systému si můžete stáhnout z Azure Storage pomocí [MSI](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts/7_Creating_Custom_Image_using_MSI_to_Access_Storage).
+Soubory v úpravách souborů je možné stáhnout z Azure Storage pomocí [MSI](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts/7_Creating_Custom_Image_using_MSI_to_Access_Storage).
 
 ### <a name="generalize"></a>Generalizovat 
-Ve výchozím nastavení bude Image Builder pro Azure také spustit kód "zrušení zřízení" na konci každé fáze přizpůsobení image, k zobecnění image. Zobecňuje se je proces, ve kterém na obrázku je nastavený tak můžete znovu použít k vytvoření několika virtuálních počítačů. Image Builder pro Azure pro virtuální počítače s Windows pomocí programu Sysprep. Pro Linux, Azure Image Builder spustí "waagent-zrušení zřízení". 
+Ve výchozím nastavení bude Azure image Builder na konci každé fáze přizpůsobení image taky spouštět kód zrušení zřízení, aby se image generalizoval. Generalizace je proces, ve kterém je image nastavená tak, aby se mohla znovu použít k vytvoření více virtuálních počítačů. Pro virtuální počítače s Windows používá Azure image Builder nástroj Sysprep. Pro Linux spustí Azure image Builder "waagent-disvision". 
 
-Příkazy Image Builder pro uživatele k zobecnění nemusí být vhodný pro každé situaci, takže Image Builder pro Azure vám umožní přizpůsobit tento příkaz, v případě potřeby. 
+Příkazy pro sestavování obrázků uživatelů do generalizace nemusí být vhodné pro každou situaci, takže Azure image Builder vám v případě potřeby umožní upravit tento příkaz. 
 
-Pokud migrujete existující přizpůsobení a používáte různé příkazy nástroje Sysprep/waagent, můžete pomocí obecných příkazů Image Builder a pokud se nezdaří vytváření virtuálních počítačů použít vlastní nástroje Sysprep nebo waagent příkazy.
+Pokud migrujete existující přizpůsobení a používáte jiné příkazy Sysprep/waagent, můžete použít obecné příkazy pro tvůrce imagí, a pokud se vytvoření virtuálního počítače nepovede, použijte vlastní příkazy Sysprep nebo waagent.
 
-Pokud Azure Image Builder úspěšně vytvoří vlastní image Windows a vytvoření virtuálního počítače z, a zjistíte, že vytvoření virtuálního počítače selže nebo úspěšně nedokončí, bude muset najdete v dokumentaci nástroje Sysprep systému Windows Server nebo žádost o podporu se Tým podpory služby Windows Server Sysprep zákazníků, kteří řešení problémů a upozorňují na správné použití programu Sysprep.
+Pokud Azure image Builder úspěšně vytvoří vlastní image Windows a z ní vytvoříte virtuální počítač, zjistíte, že vytvoření virtuálního počítače selže nebo že se neúspěšně nedokončí, budete si muset projít dokumentaci k nástroji Sysprep pro Windows Server nebo vyvolat žádost o podporu. Tým podpory Windows serveru Sysprep pro zákaznické služby, který může řešit problémy a radit se správným využitím nástroje Sysprep.
 
 
 #### <a name="default-sysprep-command"></a>Výchozí příkaz Sysprep
@@ -356,35 +356,35 @@ echo '>>> Sysprepping VM ...'
 if( Test-Path $Env:SystemRoot\\windows\\system32\\Sysprep\\unattend.xml ){ rm $Env:SystemRoot\\windows\\system32\\Sysprep\\unattend.xml -Force} & $Env:SystemRoot\\System32\\Sysprep\\Sysprep.exe /oobe /generalize /quiet /quit
 while($true) { $imageState = Get-ItemProperty HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Setup\\State | Select ImageState; if($imageState.ImageState -ne 'IMAGE_STATE_GENERALIZE_RESEAL_TO_OOBE') { Write-Output $imageState.ImageState; Start-Sleep -s 5  } else { break } }
 ```
-#### <a name="default-linux-deprovision-command"></a>Výchozí Linuxový příkaz zrušení zřízení
+#### <a name="default-linux-deprovision-command"></a>Výchozí příkaz pro zrušení zřízení pro Linux
 
 ```bash
 /usr/sbin/waagent -force -deprovision+user && export HISTSIZE=0 && sync
 ```
 
-#### <a name="overriding-the-commands"></a>Přepsání příkazy
-K přepsání příkazy, pomocí provisioners skript prostředí PowerShell nebo prostředí můžete vytvořit soubory příkazů s přesný název souboru a umístit je do správného adresáře:
+#### <a name="overriding-the-commands"></a>Přepsání příkazů
+Pokud chcete příkazy přepsat, použijte modul pro vytváření skriptů PowerShellu nebo prostředí k vytvoření souborů příkazů s přesným názvem souboru a vložte je do správných adresářů:
 
 * Windows: c:\DeprovisioningScript.ps1
-* Linux: /tmp/DeprovisioningScript.sh
+* Linux:/tmp/DeprovisioningScript.sh
 
-Image Builder bude číst tyto příkazy, ty jsou zapsané do protokolů AIB "customization.log". Zobrazit [řešení potíží s](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#collecting-and-reviewing-aib-logs) o tom, jak shromažďovat protokoly.
+Nástroj image Builder tyto příkazy přečte a zapíše se do protokolů AIB, "Customize. log". Podívejte se na téma [Poradce při potížích](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#collecting-and-reviewing-aib-logs) s postupem shromažďování protokolů.
  
 ## <a name="properties-distribute"></a>Vlastnosti: distribuce
 
-Image Builder pro Azure podporuje tři distribuce cíle: 
+Azure image Builder podporuje tři cíle distribuce: 
 
-- **managedImage** – spravované image.
-- **sharedImage** – sdílené Galerie obrázků.
-- **Virtuální pevný disk** -VHD v účtu úložiště.
+- Image spravovaná **managedImage**
+- Galerie sdílených imagí **sharedImage**
+- VHD **– VHD** v účtu úložiště
 
-Můžete distribuci image do obou typů cíl ve stejné konfiguraci, podívejte se prosím [příklady](https://github.com/danielsollondon/azvmimagebuilder/blob/7f3d8c01eb3bf960d8b6df20ecd5c244988d13b6/armTemplates/azplatform_image_deploy_sigmdi.json#L80).
+Můžete distribuovat obrázek do obou cílových typů ve stejné konfiguraci, viz [Příklady](https://github.com/danielsollondon/azvmimagebuilder/blob/7f3d8c01eb3bf960d8b6df20ecd5c244988d13b6/armTemplates/azplatform_image_deploy_sigmdi.json#L80).
 
-Jelikož můžete mít více než jeden cíl pro distribuci, Image Builder udržuje stav pro každý cíl distribuce, který je přístupný pomocí dotazu `runOutputName`.  `runOutputName` Je objekt můžete dát dotaz na příspěvek distribuce pro informace o příslušné distribuci. Například se můžete dotazovat umístění virtuálního pevného disku nebo oblastech, kde se verze image replikují do. To je součástí každého cíle rozdělení. `runOutputName` Musí být jedinečný pro každý cíl distribuce.
+Vzhledem k tomu, že můžete mít více než jeden cíl pro distribuci do nástroje, nástroj image Builder udržuje stav pro každý cíl distribuce, ke kterému lze `runOutputName`přistup pomocí dotazování na.  `runOutputName` Je objekt, který můžete odeslat dotazem na distribuci pro informace o této distribuci. Můžete například zadat dotaz na umístění virtuálního pevného disku nebo oblasti, do kterých byla verze bitové kopie replikována. Toto je vlastnost všech cílů distribuce. `runOutputName` Musí být jedinečný pro každý cíl distribuce.
  
-### <a name="distribute-managedimage"></a>Distribuce: managedImage
+### <a name="distribute-managedimage"></a>Distribuovat: managedImage
 
-Výstup image bude prostředek spravované image.
+Výstupem obrázku bude prostředek spravované image.
 
 ```json
 "distribute": [
@@ -400,28 +400,28 @@ Výstup image bude prostředek spravované image.
          }]
 ```
  
-Distribuujte vlastnosti:
+Vlastnosti distribuce:
 - **typ** – managedImage 
-- **ID obrázku** – ID prostředku cílového obrazu, očekával se formát: /subscriptions/<subscriptionId>/resourceGroups/<destinationResourceGroupName>/providers/Microsoft.Compute/images/<imageName>
+- **imageId** – ID prostředku cílového obrázku, očekávaný formát:/subscriptions/\<SubscriptionId >/resourceGroups/\<destinationResourceGroupName >/Providers/Microsoft.COMPUTE/images/\< imageName >
 - **umístění** – umístění spravované image.  
 - **runOutputName** – jedinečný název pro identifikaci distribuce.  
-- **artifactTags** -volitelné uživatel zadal značky pár klíč-hodnota.
+- **artifactTags** – volitelné uživatelsky definované páry klíč-hodnota.
  
  
 > [!NOTE]
 > Cílová skupina prostředků musí existovat.
-> Pokud chcete, aby bitová kopie distribuována do jiné oblasti, zvýší dobu nasazení. 
+> Pokud chcete bitovou kopii distribuovat do jiné oblasti, prodlouží se doba nasazení. 
 
-### <a name="distribute-sharedimage"></a>Distribuce: sharedImage 
-Galerie Imagí Azure Shared je nová služba Správa Imagí, které umožňuje správu replikace oblasti obrázku, Správa verzí a sdílení vlastních imagí. Image Builder pro Azure podporuje distribuce pomocí této služby, můžete k distribuci Image do oblastí nepodporuje sdílené bitové kopie galerie. 
+### <a name="distribute-sharedimage"></a>Distribuovat: sharedImage 
+Galerie sdílených imagí Azure je nová služba pro správu imagí, která umožňuje správu replikace oblasti imagí, správy verzí a sdílení vlastních imagí. Azure image Builder podporuje distribuci s touto službou, takže můžete distribuovat image do oblastí podporovaných galeriemi sdílených imagí. 
  
-Galerie obrázků sdílené se skládá ze: 
+Galerie sdílených imagí se skládá z těchto součástí: 
  
-- Galerie – kontejner pro více sdílené bitové kopie. Galerie bude nasazena v jedné oblasti.
-- Definice Image - koncepční seskupení pro bitové kopie. 
-- Verze Image – Toto je typ image použité k nasazení virtuálního počítače nebo škálovací sady. Verze Image je možné replikovat do jiných oblastí, kde je potřeba nasadit virtuální počítače.
+- Galerie – kontejner pro více sdílených imagí. Galerie je nasazená v jedné oblasti.
+- Definice obrázků – koncepční seskupení pro obrázky. 
+- Verze image – jedná se o typ image, který se používá k nasazení virtuálního počítače nebo sady škálování. Verze bitové kopie se dají replikovat do jiných oblastí, kde je potřeba nasadit virtuální počítače.
  
-Před distribucí do Galerie Imagí, musíte vytvořit galerie a definici image, najdete v článku [sdílené bitové kopie](shared-images.md). 
+Než budete moct distribuovat do galerie imagí, musíte vytvořit galerii a definici image, viz [sdílené image](shared-images.md). 
 
 ```json
 {
@@ -438,19 +438,19 @@ Před distribucí do Galerie Imagí, musíte vytvořit galerie a definici image,
     ]}
 ``` 
 
-Distribuujte vlastnosti Galerie sdílené bitové kopie:
+Distribuovat vlastnosti pro galerie sdílených imagí:
 
-- **typ** -sharedImage  
-- **galleryImageId** – ID galerii sdílené bitové kopie. Je ve formátu: /subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.Compute/galleries/<sharedImageGalleryName>/images/<imageGalleryName>.
+- **typ** – sharedImage  
+- **galleryImageId** – ID Galerie sdílených imagí \<Formát je:/subscriptions/SubscriptionId >/resourceGroups/\<resourceGroupName >/Providers/Microsoft.COMPUTE/Galleries/\<sharedImageGalleryName >/images/\< imageGalleryName >.
 - **runOutputName** – jedinečný název pro identifikaci distribuce.  
-- **artifactTags** -volitelné uživatel zadal značky pár klíč-hodnota.
-- **replicationRegions** -pole oblasti pro replikaci. Jednu z oblastí musí být oblast, ve kterém je nasazená v galerii.
+- **artifactTags** – volitelné uživatelsky definované páry klíč-hodnota.
+- **replicationRegions** – pole oblastí pro replikaci. Jedna z oblastí musí být oblast, ve které je galerie nasazena.
  
 > [!NOTE]
-> Image Builder pro Azure můžete použít v jiné oblasti v galerii, ale Image Builder pro Azure service bude nutné přenosu bitové kopie mezi datová centra a bude to trvat déle. Image Builder bude automaticky verzi image, podle monotónní celé číslo, je aktuálně nelze určit. 
+> Pro galerii můžete použít Azure image Builder v jiné oblasti, ale služba Azure image Builder bude potřebovat přenést image mezi datacentry a to bude trvat déle. Nástroj image Builder automaticky nastaví verzi obrázku na základě monotónní celého čísla, nemůžete ho aktuálně zadat. 
 
-### <a name="distribute-vhd"></a>Distribuujte: VHD  
-Zvládne výstup na virtuální pevný disk. Můžete zkopírovat virtuální pevný disk a použít k publikování na webu Azure MarketPlace, nebo pomocí služby Azure Stack.  
+### <a name="distribute-vhd"></a>Rozložení VIRTUÁLNÍHO  
+Můžete vytvořit výstup do virtuálního pevného disku. Pak můžete zkopírovat VHD a použít ho k publikování na webu Azure MarketPlace nebo použít s Azure Stack.  
 
 ```json
  { 
@@ -465,13 +465,13 @@ Zvládne výstup na virtuální pevný disk. Můžete zkopírovat virtuální pe
  
 Podpora operačního systému: Windows a Linux
 
-Distribuce virtuální pevný disk parametry:
+Distribuovat parametry VHD:
 
-- **typ** -virtuálního pevného disku.
+- **Zadejte** -VHD.
 - **runOutputName** – jedinečný název pro identifikaci distribuce.  
-- **značky** -volitelné uživatel zadal značky pár klíč-hodnota.
+- **značky** – volitelné uživatelsky definované páry klíč-hodnota.
  
-Image Builder pro Azure neumožňuje uživateli zadat umístění účtu úložiště, ale může dotaz na stav `runOutputs` na umístění.  
+Azure image Builder neumožňuje uživateli zadat umístění účtu úložiště, můžete ale zadat dotaz na stav `runOutputs` a získat tak umístění.  
 
 ```azurecli-interactive
 az resource show \
@@ -479,11 +479,11 @@ az resource show \
 ```
 
 > [!NOTE]
-> Po vytvoření virtuálního pevného disku, zkopírujte ho do jiného umístění, co nejdříve. Virtuální pevný disk uložený v účtu úložiště ve skupině dočasný prostředek, který vytvoří, když image šablony se odešle do služby Azure Image Builder. Pokud odstraníte image šablony, ztratíte virtuální pevný disk. 
+> Až se virtuální pevný disk vytvoří, zkopírujte ho do jiného umístění, co nejrychleji. Virtuální pevný disk je uložený v účtu úložiště v dočasné skupině prostředků vytvořené při odeslání šablony image do služby Azure image Builder. Pokud odstraníte šablonu image, ztratíte tím virtuální pevný disk. 
  
 ## <a name="next-steps"></a>Další postup
 
-Existují ukázkové soubory .json pro různé scénáře v [Azure Image Builder Githubu](https://github.com/danielsollondon/azvmimagebuilder).
+V GitHubu pro [Azure image Builder](https://github.com/danielsollondon/azvmimagebuilder)jsou k dispozici ukázkové soubory. JSON pro různé scénáře.
  
  
  

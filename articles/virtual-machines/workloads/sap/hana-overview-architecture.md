@@ -1,6 +1,6 @@
 ---
-title: Přehled systému SAP HANA v Azure (velké instance) | Dokumentace Microsoftu
-description: Přehled o tom, jak nasazovat SAP HANA v Azure (velké instance).
+title: Přehled SAP HANA v Azure (velké instance) | Microsoft Docs
+description: Přehled nasazení SAP HANA v Azure (velké instance).
 services: virtual-machines-linux
 documentationcenter: ''
 author: RicksterCDN
@@ -11,42 +11,52 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/04/2018
-ms.author: saghorpa
+ms.date: 07/12/2019
+ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a8662ef3aa7002ede0b183d72e7278d02c551c33
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: b2076778751161d5763d7bd0643cfe8f71a5f522
+ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67707348"
+ms.lasthandoff: 07/13/2019
+ms.locfileid: "67869201"
 ---
 #  <a name="what-is-sap-hana-on-azure-large-instances"></a>Co je SAP HANA ve velkých instancích Azure?
 
-SAP HANA v Azure (velké instance) je jedinečné řešení na Azure. Kromě toho, že virtuální počítače pro nasazování a spouštění SAP HANA, Azure vám nabízí možnost spouštět a nasazovat SAP HANA na holých serverů, které jsou vyhrazené. SAP HANA v Azure (velké instance) řešení je založena na nesdílený hostitele nebo server holého hardwaru, který je vám přiřazena. Hardware serveru je součástí větší razítek, které obsahují výpočty/server, sítí a infrastruktury úložiště. Jako kombinace je HANA přizpůsobené integrace System center data (TDI) certified. SAP HANA v Azure (velké instance) nabízí jiný server SKU nebo velikosti. Jednotky může mít 36 Intel Procesorových jader a o velikosti 768 GB paměti a přejděte do jednotky, které mají až 480 Intel Procesorových jader a až 24 TB paměti.
+SAP HANA v Azure (velké instance) je jedinečné řešení pro Azure. Kromě poskytování virtuálních počítačů pro nasazení a spouštění SAP HANA vám Azure nabízí možnost spouštět a nasazovat SAP HANA na holé servery, které jsou pro vás vyhrazené. Řešení SAP HANA v Azure (velké instance) sestavuje na nesdíleném hardwaru hosta/serveru, který vám byl přiřazen. Serverový hardware je vložený do větších razítek, která obsahují výpočetní výkon, server, síť a infrastrukturu úložiště. V kombinaci se jedná o certifikaci HANA (Data Center Integration) s certifikací. SAP HANA v Azure (velké instance) nabízí různé serverové SKU a velikosti. Jednotky můžou mít 36 procesory Intel a 768 GB paměti a můžou jít až o jednotky, které mají až 480 procesorů Intel a až 24 TB paměti.
 
-Izolace zákazníka v rámci razítka infrastruktury se provádí v tenantech, který bude vypadat takto:
+Izolace zákazníka v rámci razítka infrastruktury se provádí v klientech, což vypadá takto:
 
-- **Sítě**: Izolace zákazníků v rámci zásobníku infrastruktury prostřednictvím virtuálních sítí na zákazníka přiřazené tenanta. Tenant se přiřadí pro jediného zákazníka. Zákazník může mít více tenantů. Izolace sítě tenantů zakazuje síťové komunikace mezi klienty na úrovni razítka infrastruktury i v případě, že klienti patřit do stejné zákazníka.
-- **Úložiště komponent**: Izolace pomocí úložiště virtuálních počítačů, které mají svazky úložiště, které jsou jim přiřazeny. Svazky úložiště je přiřadit pouze jeden úložiště virtuálního počítače. Úložiště virtuálního počítače je exkluzivně přiřazená jedna jednoho tenanta v zásobníku certifikovaných infrastrukturu SAP HANA TDI. V důsledku toho svazky úložiště přiřazené k virtuálnímu počítači úložiště přístupné v jedné konkrétní a související tenanta pouze. Nejsou viditelné mezi různé nasazené tenanty.
-- **Server nebo hostitele**: Server nebo jednotku hostitele není sdílena mezi zákazníky nebo tenantů. Server nebo hostitele nasazený pro zákazníka, je jednotka atomic výpočetní úplné obnovení systému, který je přiřazen do jednoho jednoho tenanta. *Ne* dělení hardwarové nebo softwarové dělení se používá, který může způsobit sdílíte s odběratele jiného hostitele nebo server. Úložné svazky, které jsou přiřazeny k z konkrétního tenanta úložiště virtuálního počítače jsou připojené taková na server. Klient může mít jeden na mnoho server jednotek z různých skladových položkách exkluzivně přiřazená.
-- V rámci SAP HANA na razítku infrastruktury Azure (velké instance) mnoho různých tenantů se nasazují a izolované proti sobě základními pojmy tenanta na sítě, úložiště a výpočetní úrovně. 
-
-
-Tyto jednotky úplné obnovení systému server jsou podporovány pouze spuštění SAP HANA. Aplikační vrstvě SAP nebo úloh VMware střední vrstvy běží na virtuálních počítačích. Razítka infrastruktury, na kterých běží SAP HANA v Azure (velké instance) jednotky jsou připojené k páteřních služeb sítě Azure. Tímto způsobem je k dispozici připojení s nízkou latencí mezi virtuálními počítači a SAP HANA v Azure (velké instance) jednotky.
-
-Tento dokument je jednou z několika dokumenty, které se týkají SAP HANA v Azure (velké instance). Toto téma představuje základní architekturu, zodpovědnostech a služby poskytované řešení. Základní možnosti řešení jsou popsány také. Většinu ostatních oblastech, jako je například sítě a připojení čtyři další dokumenty, které pokrývají podrobnosti a informace o procházení. Dokumentace k systému SAP HANA v Azure (velké instance) nezahrnuje aspekty instalace SAP NetWeaver nebo nasazení SAP NetWeaver na virtuálních počítačích. SAP NetWeaver v Azure je zahrnutých v samostatných dokumentech nalezen ve stejném kontejneru dokumentace k Azure. 
+- **Síťové služby**: Izolace zákazníků v rámci služby infrastruktura prostřednictvím služby Virtual Networks na zákazníka přiřazeného zákazníka. Tenant je přiřazen jednomu zákazníkovi. Zákazník může mít více tenantů. Izolace sítě klientů zakazuje síťovou komunikaci mezi klienty v úrovni razítka infrastruktury, a to i v případě, že klienti patří stejnému zákazníkovi.
+- **Komponenty úložiště**: Izolace prostřednictvím virtuálních počítačů úložiště, ke kterým jsou přiřazené svazky úložiště. Svazky úložiště se dají přiřadit jenom k jednomu virtuálnímu počítači úložiště. Virtuální počítač úložiště se přiřazuje výhradně jednomu klientovi v SAP HANA TDI Certified Infrastructure Stack. V důsledku toho jsou svazky úložiště přiřazené k virtuálnímu počítači úložiště dostupné jenom v jednom konkrétním a souvisejícím tenantovi. Nejsou viditelné mezi různými nasazenými klienty.
+- **Server nebo hostitel**: Jednotka serveru nebo hostitele není sdílená mezi zákazníky nebo klienty. Server nebo hostitel, který je nasazený pro zákazníka, je atomická výpočetní jednotka, která je přiřazená jednomu jednomu tenantovi. Nepoužívají se *žádné* hardwarové oddíly ani softwarové dělení, což by mohlo mít za následek sdílení hostitele nebo serveru s jiným zákazníkem. Svazky úložiště, které jsou přiřazené k virtuálnímu počítači úložiště určitého tenanta, jsou připojené k tomuto serveru. Tenant může mít jednu z několika serverových jednotek různých SKU, které jsou výhradně přiřazeny.
+- V rámci SAP HANA na infrastruktuře infrastruktury Azure (velké instance) se nasazuje a izoluje mnoho různých tenantů, a to prostřednictvím konceptů tenanta na úrovni sítě, úložiště a výpočetní úrovně. 
 
 
-Jiné dokumenty velká Instance HANA pokyny zahrnují následující oblasti:
+Tyto jednotky holých serverů se podporují jenom pro spouštění SAP HANA. Na virtuálních počítačích se spouští vrstva aplikace SAP nebo vrstva pro střední brambory. Časová razítka infrastruktury, která spouštějí SAP HANA v Azure (velké instance), jsou připojená k nevykostěným síťovým službám Azure. Tímto způsobem je k dispozici připojení s nízkou latencí mezi SAP HANA jednotek Azure (velké instance) a virtuálními počítači.
 
-- [SAP HANA (velké instance) přehled a architektura v Azure](hana-overview-architecture.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-- [Infrastrukturu SAP HANA (velké instance) a možnosti připojení v Azure](hana-overview-infrastructure-connectivity.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+Od července 2019 rozlišujeme mezi dvěma různými revizemi razítek velkých instancí HANA a umístěním nasazení:
+
+- "Revize 3" (rev 3): Jsou razítka, která byla k dispozici pro zákazníka k nasazení do července 2019
+- "Revize 4" (Rev 4): Nový návrh razítka, který je nasazený v těsné blízkosti hostitelů virtuálních počítačů Azure a který je doposud vydaný v oblastech Azure v:
+    -  Západní USA 2 
+    -  East US 
+    -  Západní Evropa
+    -  Severní Evropa
+
+
+Tento dokument je jedním z několika dokumentů, které pokrývají SAP HANA v Azure (velké instance). V tomto dokumentu se zavádí základní architektura, zodpovědnosti a služby poskytované řešením. Jsou zde také popsány funkce vysoké úrovně řešení. Pro většinu ostatních oblastí, jako jsou například sítě a připojení, se na Další informace pokrývají další dokumenty a podrobné informace. Dokumentace SAP HANA v Azure (velké instance) nepokrývá aspekty instalace SAP NetWeaver ani nasazení SAP NetWeaver na virtuálních počítačích. SAP NetWeaver v Azure je popsaná v samostatných dokumentech, které se nacházejí ve stejném kontejneru dokumentace Azure. 
+
+
+Různé dokumenty s pokyny pro velké instance HANA se týkají těchto oblastí:
+
+- [Přehled a architektura v Azure SAP HANA (velké instance)](hana-overview-architecture.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+- [SAP HANA (velké instance) infrastruktury a připojení v Azure](hana-overview-infrastructure-connectivity.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 - [Instalace a konfigurace SAP HANA (velké instance) v Azure](hana-installation.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-- [SAP HANA (velké instance) vysokou dostupnost a zotavení po havárii v Azure](hana-overview-high-availability-disaster-recovery.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-- [Řešení potíží s SAP HANA (velké instance) a monitorování v Azure](troubleshooting-monitoring.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-- [Vysoká dostupnost v SUSE lze nastavit pomocí využitím techniky STONITH](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/ha-setup-with-stonith)
-- [Zálohování a obnovení operačního systému pro skladové položky typu II](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/os-backup-type-ii-skus)
+- [SAP HANA (velké instance) s vysokou dostupností a zotavením po havárii v Azure](hana-overview-high-availability-disaster-recovery.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+- [Řešení potíží a monitorování v Azure SAP HANA (velké instance)](troubleshooting-monitoring.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+- [Nastavení vysoké dostupnosti v SUSE pomocí STONITH](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/ha-setup-with-stonith)
+- [Zálohování a obnovení operačního systému pro SKU typu II u razítek revize 3](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/os-backup-type-ii-skus)
 
 **Další postup**
-- Přečtěte si [vědět podmínky](hana-know-terms.md)
+- Přečtěte si informace [o těchto pojmech](hana-know-terms.md)

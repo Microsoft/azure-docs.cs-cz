@@ -1,6 +1,6 @@
 ---
 title: Integrace služby API Management se Service Fabric v Azure | Microsoft Docs
-description: Zjistěte, jak rychle začít s Azure API Management a směrování provozu do back-end služby v Service Fabric.
+description: Naučte se rychle začít s Azure API Management a směrovat provoz do back-endové služby v Service Fabric.
 services: service-fabric
 documentationcenter: .net
 author: aljo-microsoft
@@ -12,21 +12,21 @@ ms.devlang: dotNet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 9/26/2018
+ms.date: 07/10/2019
 ms.author: aljo
 ms.custom: mvc
-ms.openlocfilehash: fc2c23d93a1800232b81c5eb2f861e8b71c3e437
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c290b13ccb65c68c32d63638b15e8a3f59ef8010
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66428068"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68228108"
 ---
-# <a name="integrate-api-management-with-service-fabric-in-azure"></a>Integraci služby API Management s využitím Service Fabric v Azure
+# <a name="integrate-api-management-with-service-fabric-in-azure"></a>Integrace API Management s Service Fabric v Azure
 
 Nasazení služby Azure API Management s využitím Service Fabric je pokročilý scénář.  Služba API Management je užitečná v případě, že potřebujete publikovat rozhraní API s bohatou sadou pravidel směrování pro vaše back-end služby Service Fabric. Cloudové aplikace obvykle potřebují front-end bránu, která poskytuje jediný bod příjmu příchozího přenosu od uživatelů, zařízení nebo dalších aplikací. V Service Fabric může být brána bezstavová služba navržená pro příjem provozu, například aplikace ASP.NET Core, služba Event Hubs, služba IoT Hub nebo služba Azure API Management.
 
-V tomto článku se dozvíte, jak nastavit [Azure API Management](../api-management/api-management-key-concepts.md) s využitím Service Fabric pro směrování provozu do back-end služby v Service Fabric.  Po dokončení budete mít nasazenou službu API Management ve virtuální síti a nakonfigurovanou operaci rozhraní API pro odesílání provozu do back-end bezstavové služby. Další informace o scénářích služby Azure API Management s využitím Service Fabric najdete v článku [Přehled](service-fabric-api-management-overview.md).
+V tomto článku se dozvíte, jak nastavit [API Management Azure](../api-management/api-management-key-concepts.md) pomocí Service Fabric pro směrování provozu do back-endové služby v Service Fabric.  Po dokončení budete mít nasazenou službu API Management ve virtuální síti a nakonfigurovanou operaci rozhraní API pro odesílání provozu do back-end bezstavové služby. Další informace o scénářích služby Azure API Management s využitím Service Fabric najdete v článku [Přehled](service-fabric-api-management-overview.md).
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -34,20 +34,20 @@ V tomto článku se dozvíte, jak nastavit [Azure API Management](../api-managem
 ## <a name="availability"></a>Dostupnost
 
 > [!IMPORTANT]
-> Tato funkce je dostupná v **Premium** a **Developer** podporu úrovních služby API Management kvůli požadované virtuální sítě.
+> Tato funkce je dostupná na úrovních úrovně **Premium** a **Developer** API Management v důsledku podpory požadované virtuální sítě.
 
 ## <a name="prerequisites"></a>Požadavky
 
 Než začnete:
 
 * Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* Nainstalujte [prostředí Azure Powershell](https://docs.microsoft.com/powershell/azure/install-Az-ps) nebo [rozhraní příkazového řádku Azure](/cli/azure/install-azure-cli).
-* Vytvoření zabezpečeného [clusteru Windows](service-fabric-tutorial-create-vnet-and-windows-cluster.md) ve skupině zabezpečení sítě.
-* Pokud nasadíte cluster s Windows, nastavte vývojové prostředí ve Windows. Nainstalujte [Visual Studio 2019](https://www.visualstudio.com) a **vývoj pro Azure**, **vývoj pro ASP.NET a web**, a **vývoj pro různé platformy .NET Core**úlohy.  Potom nastavte [vývojové prostředí .NET](service-fabric-get-started.md).
+* Nainstalujte [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps) nebo rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli).
+* Vytvořte zabezpečený [cluster se systémem Windows](service-fabric-tutorial-create-vnet-and-windows-cluster.md) ve skupině zabezpečení sítě.
+* Pokud nasadíte cluster s Windows, nastavte vývojové prostředí ve Windows. Nainstalujte [Visual Studio 2019](https://www.visualstudio.com) a vývojové úlohy pro vývoj pro **Azure**, **ASP.NET a**vývoj pro web a **.NET Core pro různé platformy** .  Potom nastavte [vývojové prostředí .NET](service-fabric-get-started.md).
 
 ## <a name="network-topology"></a>Síťová topologie
 
-Teď, když máte zabezpečené [clusteru Windows](service-fabric-tutorial-create-vnet-and-windows-cluster.md) v Azure, nasazení služby API Management k virtuální síti (VNET) v podsíti a skupině zabezpečení sítě určených pro službu API Management. Pro účely tohoto článku je nakonfigurovaná tak, aby používala názvy virtuální sítě, podsítě a skupiny zabezpečení sítě, které jste nastavili v šabloně API Management Resource Manager [kurzu ke clusteru Windows](service-fabric-tutorial-create-vnet-and-windows-cluster.md) Tento článek nasadí následující topologie do Azure, ve kterém Služba API Management a Service Fabric v podsítích stejné virtuální síti jsou:
+Teď, když máte zabezpečený [cluster Windows](service-fabric-tutorial-create-vnet-and-windows-cluster.md) v Azure, nasadíte API Management do virtuální sítě (VNET) v PODSÍTI a NSG určené pro API Management. Pro účely tohoto článku je šablona API Management Správce prostředků předem nakonfigurovaná tak, aby používala názvy virtuální sítě, podsítě a NSG, které jste nastavili v tématu [kurz Windows cluster](service-fabric-tutorial-create-vnet-and-windows-cluster.md) , v tomto článku se nasadí Tato topologie do Azure, ve které API Management a Service Fabric jsou v podsítích stejné Virtual Network:
 
  ![Popisek obrázku][sf-apim-topology-overview]
 
@@ -70,14 +70,14 @@ az account set --subscription <guid>
 
 Než ve službě API Management nakonfigurujete směrování provozu do back-end služby Service Fabric, potřebujete nejprve spuštěnou službu, která bude požadavky přijímat.  
 
-Vytvoření základní technologie ASP.NET Core spolehlivé bezstavové služby pomocí výchozí šablony projektu webového rozhraní API. Tím se pro vaši službu vytvoří koncový bod HTTP, který zveřejníte prostřednictvím služby Azure API Management.
+Pomocí výchozí šablony projektu webového rozhraní API vytvořte základní bezstavovou ASP.NET Core spolehlivou službu. Tím se pro vaši službu vytvoří koncový bod HTTP, který zveřejníte prostřednictvím služby Azure API Management.
 
 Spusťte sadu Visual Studio jako správce a vytvořte službu ASP.NET Core:
 
  1. V sadě Visual Studio vyberte Soubor -> Nový projekt.
  2. Vyberte šablonu aplikace Service Fabric v části Cloud a pojmenujte aplikaci **ApiApplication**.
  3. Vyberte šablonu bezstavové služby ASP.NET Core a pojmenujte projekt **WebApiService**.
- 4. Vyberte šablonu projektu webového rozhraní API v ASP.NET Core 2.0.
+ 4. Vyberte šablonu projektu Web API ASP.NET Core 2,1.
  5. Po vytvoření projektu otevřete soubor `PackageRoot\ServiceManifest.xml` a z konfigurace prostředku koncového bodu odeberte atribut `Port`:
 
     ```xml
@@ -88,7 +88,7 @@ Spusťte sadu Visual Studio jako správce a vytvořte službu ASP.NET Core:
     </Resources>
     ```
 
-    Odebrání portu umožní platformě Service Fabric určit port dynamicky z rozsahu portů aplikace otevřených prostřednictvím skupiny zabezpečení sítě v šabloně Cluster Resource Manager, povolit provoz příjem ze služby API Management.
+    Odebrání portu umožňuje Service Fabric dynamicky určovat port z rozsahu portů aplikace, který se otevřel přes skupinu zabezpečení sítě v šabloně clusteru Správce prostředků a umožňuje, aby do něj tok z API Management.
 
  6. Stisknutím klávesy F5 v sadě Visual Studio ověřte, že je webové rozhraní API místně dostupné.
 
@@ -108,10 +108,10 @@ Ve vašem clusteru Service Fabric v Azure by teď měla být spuštěná bezstav
 
 Stáhněte a uložte následující šablony Resource Manageru a soubor parametrů:
 
-* [network-apim.json][network-arm]
-* [network-apim.parameters.json][network-parameters-arm]
-* [apim.json][apim-arm]
-* [apim.parameters.json][apim-parameters-arm]
+* [Network-APIM. JSON][network-arm]
+* [Network-APIM. Parameters. JSON][network-parameters-arm]
+* [APIM. JSON][apim-arm]
+* [APIM. Parameters. JSON][apim-parameters-arm]
 
 Šablona *network-apim.json* do virtuální sítě, ve které je nasazený cluster Service Fabric, nasadí novou podsíť a skupinu zabezpečení sítě.
 
@@ -123,7 +123,7 @@ Následující části popisují prostředky definované šablonou *apim.json*. 
 
 ### <a name="microsoftapimanagementservicecertificates"></a>Microsoft.ApiManagement/service/certificates
 
-[Microsoft.ApiManagement/service/certificates](/azure/templates/microsoft.apimanagement/service/certificates) konfiguruje zabezpečení služby API Management. Aby byla služba API Management zjistitelná, musí se ve vašem clusteru Service Fabric ověřit pomocí klientského certifikátu s přístupem k vašemu clusteru. Tento článek používá stejný certifikát, který jste zadali dříve při vytváření [clusteru Windows](service-fabric-tutorial-create-vnet-and-windows-cluster.md#createvaultandcert_anchor), která ve výchozím nastavení je použít pro přístup k vašemu clusteru.
+[Microsoft.ApiManagement/service/certificates](/azure/templates/microsoft.apimanagement/service/certificates) konfiguruje zabezpečení služby API Management. Aby byla služba API Management zjistitelná, musí se ve vašem clusteru Service Fabric ověřit pomocí klientského certifikátu s přístupem k vašemu clusteru. Tento článek používá stejný certifikát, který jste zadali dříve při vytváření [clusteru Windows](service-fabric-tutorial-create-vnet-and-windows-cluster.md#createvaultandcert_anchor), který se ve výchozím nastavení dá použít pro přístup ke clusteru.
 
 Tento článek používá stejný certifikát pro ověřování klientů a zabezpečení mezi uzly clusteru. Pro přístup k vašemu clusteru Service Fabric můžete použít i samostatný klientský certifikát, pokud máte nějaký nakonfigurovaný. Zadejte **název**, **heslo** a **data** (řetězec s kódováním Base 64) souboru privátního klíče (.pfx) certifikátu clusteru, který jste zadali při vytváření clusteru Service Fabric.
 
@@ -137,18 +137,18 @@ V případě back-endů Service Fabric je místo konkrétní služby Service Fab
 
 [Microsoft.ApiManagement/service/products](/azure/templates/microsoft.apimanagement/service/products) vytvoří produkt. Ve službě Azure API Management obsahuje produkt jedno nebo více rozhraní API a také kvótu využití a podmínky použití. Jakmile je projekt publikovaný, vývojáři se můžou přihlásit k jeho odběru a začít používat jeho rozhraní API.
 
-Zadejte popisný zobrazovaný název (**displayName**) a popis (**description**) produktu. Pro účely tohoto článku se vyžaduje předplatné, ale schválení předplatného správcem není.  **Stav** tohoto produktu je „publikováno“ a produkt je viditelný pro předplatitele.
+Zadejte popisný zobrazovaný název (**displayName**) a popis (**description**) produktu. V tomto článku se vyžaduje předplatné, ale schválení předplatného pro správce není.  **Stav** tohoto produktu je „publikováno“ a produkt je viditelný pro předplatitele.
 
 ### <a name="microsoftapimanagementserviceapis"></a>Microsoft.ApiManagement/service/apis
 
 [Microsoft.ApiManagement/service/apis](/azure/templates/microsoft.apimanagement/service/apis) vytvoří rozhraní API. Rozhraní API ve službě API Management představuje sadu operací, které můžou vyvolat klientské aplikace. Po přidání operací se rozhraní API přidá do produktu a může se publikovat. Jakmile je rozhraní API publikované, vývojáři se můžou přihlásit k jeho odběru a začít ho používat.
 
-* **displayName** (zobrazovaný název) může být jakýkoli název vašeho rozhraní API. Pro účely tohoto článku použijte "Service Fabric App".
+* **displayName** (zobrazovaný název) může být jakýkoli název vašeho rozhraní API. V tomto článku použijte Service Fabric App.
 * **name** (název) představuje jedinečný a popisný název rozhraní API, například service-fabric-app. Tento název se zobrazí na portálech pro vývojáře a vydavatele.
-* **serviceUrl** (adresa URL služby) odkazuje na službu HTTP implementující toto rozhraní API. Služba API Management na tuto adresu směruje požadavky. Pro back-endy Service Fabric se tato hodnota adresy URL nepoužívá. Sem můžete zadat jakoukoli hodnotu. Pro účely tohoto článku, například "http:\//servicefabric".
+* **serviceUrl** (adresa URL služby) odkazuje na službu HTTP implementující toto rozhraní API. Služba API Management na tuto adresu směruje požadavky. Pro back-endy Service Fabric se tato hodnota adresy URL nepoužívá. Sem můžete zadat jakoukoli hodnotu. V tomto článku například "http:\//servicefabric".
 * **path** (cesta) se připojí k základní adrese URL služby API Management. Základní adresa URL je společná pro všechna rozhraní API hostovaná jednou instancí služby API Management. Služba API Management rozlišuje rozhraní API podle jejich přípony, proto musí být přípona jedinečná pro každé rozhraní API daného vydavatele.
-* **protocols** (protokoly) určuje, které protokoly je možné použít k přístupu k rozhraní API. Pro účely tohoto článku seznamu **http** a **https**.
-* **path** (cesta) je přípona rozhraní API. Pro účely tohoto článku použijte "aplikace".
+* **protocols** (protokoly) určuje, které protokoly je možné použít k přístupu k rozhraní API. V tomto článku vypíšete **http** a **https**.
+* **path** (cesta) je přípona rozhraní API. Pro tento článek použijte "myapp".
 
 ### <a name="microsoftapimanagementserviceapisoperations"></a>Microsoft.ApiManagement/service/apis/operations
 
@@ -156,9 +156,9 @@ Zadejte popisný zobrazovaný název (**displayName**) a popis (**description**)
 
 Pokud chcete přidat front-end operaci rozhraní API, vyplňte následující hodnoty:
 
-* **displayName** (zobrazovaný název) a **description** (popis) popisujíc operaci. Pro účely tohoto článku použijte "Hodnoty".
-* **method** (metoda) určuje příkaz HTTP.  Pro účely tohoto článku, zadejte **získat**.
-* **urlTemplate** (šablona adresy URL) se připojí k základní adrese URL rozhraní API a identifikuje jednu operaci HTTP.  Pro účely tohoto článku použijte `/api/values` Pokud jste přidali back-end službu v .NET nebo `getMessage` Pokud jste přidali back-end službu v Javě.  Zde zadaná cesta URL je ve výchozím nastavení cestou URL, která se odesílá do back-end služby Service Fabric. Pokud tady použijete stejnou cestu URL, jakou používá vaše služba, například /api/values, bude operace fungovat bez dalších úprav. Můžete tady zadat také jinou cestu URL, než kterou používá vaše back-end služba Service Fabric. V takovém případě je potřeba později také určit přepsání cesty v zásadách operace.
+* **displayName** (zobrazovaný název) a **description** (popis) popisujíc operaci. V tomto článku použijte "Values".
+* **method** (metoda) určuje příkaz HTTP.  V tomto článku zadejte **Get**.
+* **urlTemplate** (šablona adresy URL) se připojí k základní adrese URL rozhraní API a identifikuje jednu operaci HTTP.  V tomto článku použijte `/api/values` , pokud jste přidali službu back-end rozhraní .NET nebo `getMessage` jste přidali back-end službu Java.  Zde zadaná cesta URL je ve výchozím nastavení cestou URL, která se odesílá do back-end služby Service Fabric. Pokud tady použijete stejnou cestu URL, jakou používá vaše služba, například /api/values, bude operace fungovat bez dalších úprav. Můžete tady zadat také jinou cestu URL, než kterou používá vaše back-end služba Service Fabric. V takovém případě je potřeba později také určit přepsání cesty v zásadách operace.
 
 ### <a name="microsoftapimanagementserviceapispolicies"></a>Microsoft.ApiManagement/service/apis/policies
 
@@ -171,7 +171,7 @@ Pokud chcete přidat front-end operaci rozhraní API, vyplňte následující ho
 * Výběr replik pro stavové služby.
 * Podmínky opakování překladu, které umožňují zadat podmínky pro opakování překladu umístění služby a odeslání požadavku.
 
-**policyContent** (obsah zásady) je obsah XML zásady uvozený ve formátu JSON.  Pro účely tohoto článku vytvořte zásadu back-endu ke směrování požadavků přímo rozhraní .NET nebo Javě dříve nasazené bezstavové služby. Mezi příchozí zásady přidejte zásadu `set-backend-service`.  Nahraďte hodnotu *sf-service-instance-name* za `fabric:/ApiApplication/WebApiService`, pokud jste předtím nasadili back-end službu v .NET, nebo za `fabric:/EchoServerApplication/EchoServerService`, pokud jste nasadili službu v Javě.  *backend-id* odkazuje na prostředek back-endu, v tomto případě na prostředek `Microsoft.ApiManagement/service/backends` definovaný v šabloně *apim.json*. *backend-id* může odkazovat i na jiný prostředek back-endu vytvořený pomocí rozhraní API služby API Management. Pro účely tohoto článku nastavte *id back-endu* na hodnotu *service_fabric_backend_name* parametru.
+**policyContent** (obsah zásady) je obsah XML zásady uvozený ve formátu JSON.  V tomto článku Vytvořte zásady back-end pro směrování požadavků přímo do bezstavové služby .NET nebo Java nasazené dříve. Mezi příchozí zásady přidejte zásadu `set-backend-service`.  Nahraďte hodnotu *sf-service-instance-name* za `fabric:/ApiApplication/WebApiService`, pokud jste předtím nasadili back-end službu v .NET, nebo za `fabric:/EchoServerApplication/EchoServerService`, pokud jste nasadili službu v Javě.  *backend-id* odkazuje na prostředek back-endu, v tomto případě na prostředek `Microsoft.ApiManagement/service/backends` definovaný v šabloně *apim.json*. *backend-id* může odkazovat i na jiný prostředek back-endu vytvořený pomocí rozhraní API služby API Management. Pro účely tohoto článku nastavte *back-end-ID* na hodnotu parametru *service_fabric_backend_name* .
 
 ```xml
 <policies>
@@ -220,7 +220,7 @@ $b64 = [System.Convert]::ToBase64String($bytes);
 [System.Io.File]::WriteAllText("C:\mycertificates\sfclustertutorialgroup220171109113527.txt", $b64);
 ```
 
-V části *inbound_policy* nahraďte hodnotu *sf-service-instance-name* za `fabric:/ApiApplication/WebApiService`, pokud jste předtím nasadili back-end službu v .NET, nebo za `fabric:/EchoServerApplication/EchoServerService`, pokud jste nasadili službu v Javě. *backend-id* odkazuje na prostředek back-endu, v tomto případě na prostředek `Microsoft.ApiManagement/service/backends` definovaný v šabloně *apim.json*. *backend-id* může odkazovat i na jiný prostředek back-endu vytvořený pomocí rozhraní API služby API Management. Pro účely tohoto článku nastavte *id back-endu* na hodnotu *service_fabric_backend_name* parametru.
+V části *inbound_policy* nahraďte hodnotu *sf-service-instance-name* za `fabric:/ApiApplication/WebApiService`, pokud jste předtím nasadili back-end službu v .NET, nebo za `fabric:/EchoServerApplication/EchoServerService`, pokud jste nasadili službu v Javě. *backend-id* odkazuje na prostředek back-endu, v tomto případě na prostředek `Microsoft.ApiManagement/service/backends` definovaný v šabloně *apim.json*. *backend-id* může odkazovat i na jiný prostředek back-endu vytvořený pomocí rozhraní API služby API Management. Pro účely tohoto článku nastavte *back-end-ID* na hodnotu parametru *service_fabric_backend_name* .
 
 ```xml
 <policies>
@@ -288,7 +288,7 @@ Přímo na webu [Azure Portal](https://portal.azure.com) teď můžete do své b
 
 Cluster se kromě vlastního prostředku clusteru skládá z dalších prostředků Azure. Nejjednodušší způsob, jak odstranit cluster a všechny prostředky, které využívá, je odstranit příslušnou skupinu prostředků.
 
-Přihlaste se k Azure a vyberte ID předplatného, pomocí kterého chcete odebrat cluster.  Své ID předplatného můžete zjistit po přihlášení k webu [Azure Portal](https://portal.azure.com). Odstranit skupinu prostředků a všechny prostředky clusteru pomocí [rutiny Remove-AzResourceGroup](/en-us/powershell/module/az.resources/remove-azresourcegroup).
+Přihlaste se k Azure a vyberte ID předplatného, se kterým chcete cluster odebrat.  Své ID předplatného můžete zjistit po přihlášení k webu [Azure Portal](https://portal.azure.com). Odstraňte skupinu prostředků a všechny prostředky clusteru pomocí [rutiny Remove-AzResourceGroup](/en-us/powershell/module/az.resources/remove-azresourcegroup).
 
 ```powershell
 $ResourceGroupName = "sfclustertutorialgroup"
@@ -302,7 +302,7 @@ az group delete --name $ResourceGroupName
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace o používání [API Management](/azure/api-management/import-and-publish).
+Přečtěte si další informace o použití [API Management](/azure/api-management/import-and-publish).
 
 [azure-powershell]: https://azure.microsoft.com/documentation/articles/powershell-install-configure/
 

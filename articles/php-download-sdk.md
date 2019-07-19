@@ -1,6 +1,6 @@
 ---
 title: Stažení sady Azure SDK pro PHP
-description: Zjistěte, jak stáhnout a nainstalovat sadu Azure SDK pro jazyk PHP.
+description: Přečtěte si, jak stáhnout a nainstalovat sadu Azure SDK pro PHP.
 documentationcenter: php
 services: app-service\web
 author: allclark
@@ -13,45 +13,45 @@ ms.tgt_pltfrm: na
 ms.devlang: PHP
 ms.topic: article
 ms.date: 06/01/2016
-ms.author: allclark;yaqiyang
-ms.openlocfilehash: f6b21f288b94e06414fe66ff775ebb264368c0b8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: yaya
+ms.openlocfilehash: 9dd336ef973b603108aad62c90e4dab385d20317
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65411597"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67873897"
 ---
 # <a name="download-the-azure-sdk-for-php"></a>Stažení sady Azure SDK pro PHP
 
 ## <a name="overview"></a>Přehled
 
-Sada Azure SDK pro PHP obsahuje součásti, které umožňují vyvíjet, nasazovat a spravovat aplikace PHP pro Azure. Konkrétně sady Azure SDK pro PHP obsahuje následující:
+Sada Azure SDK pro PHP obsahuje komponenty, které umožňují vyvíjet, nasazovat a spravovat aplikace PHP pro Azure. Konkrétně sada Azure SDK pro PHP zahrnuje následující:
 
-* **Klientské knihovny PHP pro Azure**. Tyto knihovny tříd poskytují rozhraní pro přístup k funkcím Azure, jako je například služeb správy dat. a cloudové služby.
-* **Rozhraní příkazového řádku Azure pro Mac, Linux a Windows (Azure CLI)** . Toto je sadu příkazů pro nasazení a správu služeb Azure, jako jsou Azure Websites a Azure Virtual Machines. Rozhraní příkazového řádku Azure práci na všechny platformy včetně Windows, Mac a Linux.
-* **Prostředí Azure PowerShell (jenom Windows)** . To je sada rutin Powershellu pro nasazení a správu služeb Azure, jako je například Cloud Services a Virtual Machines.
-* **Emulátory Azure (jenom Windows)** . Emulátory výpočetní výkon a úložiště jsou místní emulátory cloudových služeb a služeb správy dat., které umožňují otestovat aplikaci místně. Emulátory Azure spustit jenom na Windows.
+* **Knihovny klienta php pro Azure**. Tyto knihovny tříd poskytují rozhraní pro přístup k funkcím Azure, jako jsou například služby správy dat a cloudové služby.
+* **Rozhraní příkazového řádku Azure pro Mac, Linux a Windows (Azure CLI)** . Toto je sada příkazů pro nasazení a správu služeb Azure, jako jsou Azure websites a Azure Virtual Machines. Rozhraní příkazového řádku Azure CLI funguje na libovolné platformě, včetně počítačů Mac, Linux a Windows.
+* **Azure PowerShell (pouze Windows)** . Toto je sada rutin PowerShellu pro nasazení a správu služeb Azure, například Cloud Services a Virtual Machines.
+* **Emulátory Azure (jenom Windows)** . Emulátory výpočtů a úložiště jsou místní emulátory cloudových služeb a služeb pro správu dat, které umožňují místní testování aplikace. Emulátory Azure se spouštějí jenom v systému Windows.
 
-Následující části popisují, jak stáhnout a nainstalovat komponenty popsané výše.
+Níže uvedené části popisují, jak stáhnout a nainstalovat komponenty popsané výše.
 
-Pokyny v tomto tématu se předpokládá, že máte [PHP] [ install-php] nainstalované.
+V pokynech v tomto tématu se předpokládá, že máte nainstalovaný [php][install-php] .
 
 > [!NOTE]
-> Musíte mít PHP 5.5 nebo novější pomocí klientských knihoven PHP pro Azure.
+> Abyste mohli používat klientské knihovny PHP pro Azure, musíte mít PHP 5,5 nebo vyšší.
 >
 >
 
 ## <a name="php-client-libraries-for-azure"></a>Klientské knihovny PHP pro Azure
 
-Klientské knihovny PHP pro Azure poskytuje rozhraní pro přístup k funkcím Azure, jako je například služeb správy dat. a cloudovým službám, ve všech operačních systémech. Tyto knihovny je možné nainstalovat přes autora.
+Klientské knihovny PHP pro Azure poskytují rozhraní pro přístup k funkcím Azure, jako jsou například služby správy dat a cloudové služby, z libovolného operačního systému. Tyto knihovny lze instalovat prostřednictvím skladatele.
 
-Informace o tom, jak pomocí klientských knihoven PHP pro Azure najdete v tématu [použití služby Blob Service][blob-service], [použití služby Table Service] [ table-service]a [jak používat fronty Service][queue-service].
+Informace o tom, jak používat klientské knihovny PHP pro Azure, najdete v tématech [Jak používat službu BLOB Service][blob-service] , [How to Use the Table Service][table-service] a [Jak používat službu Queue Service][Queue-Service].
 
-### <a name="install-via-composer"></a>Instalace přes Composer
+### <a name="install-via-composer"></a>Instalace prostřednictvím skladatele
 
-1. [Instalace Gitu][install-git]. Na Windows je také potřeba přidat spustitelný Git do proměnné prostředí PATH.
+1. [Nainstalovat Git][install-git]. Ve Windows budete taky muset do proměnné prostředí PATH přidat spustitelný soubor Git.
 
-2. Vytvořte soubor s názvem **composer.json** v kořenovém adresáři vašeho projektu a přidejte do ní následující kód:
+2. V kořenovém adresáři projektu vytvořte soubor s názvem **skladatel. JSON** a přidejte do něj následující kód:
 
         {
             "require": {
@@ -59,23 +59,23 @@ Informace o tom, jak pomocí klientských knihoven PHP pro Azure najdete v téma
             }
         }
 
-3. Stáhněte si **[composer.phar] [ composer-phar]** v kořenovém adresáři projektu.
+3. Stáhněte si **[skladatel. phar][composer-phar]** do kořenového adresáře projektu.
 
-4. Otevřete příkazový řádek a spustit v kořenovém adresáři projektu
+4. Otevřete příkazový řádek a spusťte ho v kořenovém adresáři projektu.
 
         php composer.phar install
 
-## <a name="azure-powershell-and-azure-emulators"></a>Emulátory Azure a Azure Powershellu
+## <a name="azure-powershell-and-azure-emulators"></a>Azure PowerShell a emulátory Azure
 
-Prostředí Azure PowerShell je sada rutin Powershellu pro nasazení a správu služeb Azure (třeba Cloud Services a Virtual Machines). Emulátory Azure jsou emulátory cloudových služeb a služeb správy dat., které umožňují otestovat aplikaci místně. Tyto součásti jsou podporovány pouze Windows.
+Azure PowerShell je sada rutin PowerShellu pro nasazení a správu služeb Azure (například Cloud Services a Virtual Machines). Emulátory Azure jsou emulátory služeb Cloud Services a správy dat, které umožňují místní testování aplikace. Tyto součásti jsou podporovány pouze v systému Windows.
 
-Doporučeným způsobem, jak nainstalovat Azure PowerShell a emulátory Azure je použít [instalačního programu webové platformy Microsoft][download-wpi]. Všimněte si, že můžete také nainstalovat další komponenty pro vývoj, jako je PHP, SQL Server, Drivers společnosti Microsoft pro systém SQL Server pro PHP a službě WebMatrix.
+Doporučený způsob, jak nainstalovat Azure PowerShell a emulátory Azure, je použití [Instalace webové platformy Microsoft][download-wpi]. Všimněte si, že můžete také nainstalovat další součásti pro vývoj, jako je PHP, SQL Server, ovladače Microsoftu pro SQL Server pro PHP a WebMatrix.
 
-Informace o tom, jak pomocí Azure Powershellu najdete v tématu [tom, jak pomocí Azure Powershellu][powershell-tools].
+Informace o tom, jak používat Azure PowerShell, najdete v tématu [Jak používat Azure PowerShell][powershell-tools].
 
 ## <a name="azure-cli"></a>Azure CLI
 
-Rozhraní příkazového řádku Azure je sadu příkazů pro nasazení a správu služeb Azure, jako jsou Azure Websites a Azure Virtual Machines. Informace o instalaci Azure CLI najdete v tématu [instalace rozhraní příkazového řádku Azure](cli-install-nodejs.md).
+Azure CLI je sada příkazů pro nasazení a správu služeb Azure, jako jsou Azure websites a Azure Virtual Machines. Informace o instalaci rozhraní příkazového řádku Azure CLI najdete v tématu [instalace rozhraní příkazového řádku Azure CLI](cli-install-nodejs.md).
 
 ## <a name="next-steps"></a>Další postup
 
