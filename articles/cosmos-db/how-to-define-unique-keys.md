@@ -1,43 +1,43 @@
 ---
-title: Definujte jedinečné klíče pro kontejner Azure Cosmos
-description: Další informace o definování jedinečné klíče pro kontejner Azure Cosmos
+title: Definování jedinečných klíčů pro kontejner Azure Cosmos
+description: Naučte se definovat jedinečné klíče pro kontejner Azure Cosmos.
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: sample
 ms.date: 05/23/2019
 ms.author: thweiss
-ms.openlocfilehash: fb9872d2fd41066899ff9198915d573bfb4a0b84
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 313dd07c2b8eeb5684310b57d74053d3cbc1b5e1
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66240971"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68356397"
 ---
-# <a name="define-unique-keys-for-an-azure-cosmos-container"></a>Definujte jedinečné klíče pro kontejner Azure Cosmos
+# <a name="define-unique-keys-for-an-azure-cosmos-container"></a>Definování jedinečných klíčů pro kontejner Azure Cosmos
 
-Tento článek představuje různé způsoby, jak definovat [jedinečné klíče](unique-keys.md) při vytváření kontejneru Azure Cosmos. Je aktuálně možné k provedení této operace s využitím webu Azure portal nebo pomocí jedné ze sad SDK.
+Tento článek nabízí různé způsoby definování jedinečných [klíčů](unique-keys.md) při vytváření kontejneru Azure Cosmos. Tuto operaci je teď možné provést buď pomocí Azure Portal nebo prostřednictvím jedné ze sad SDK.
 
 ## <a name="use-the-azure-portal"></a>Použití webu Azure Portal
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
-1. [Vytvořit nový účet Azure Cosmos](create-sql-api-dotnet.md#create-account) nebo vyberte existující.
+1. [Vytvořte nový účet Azure Cosmos](create-sql-api-dotnet.md#create-account) nebo vyberte nějaký existující.
 
-1. Otevřít **Průzkumník dat** podokně a vyberte kontejner, který chcete pracovat.
+1. Otevřete podokno **Průzkumník dat** a vyberte kontejner, na kterém chcete pracovat.
 
-1. Klikněte na **nový kontejner**.
+1. Klikněte na **Nový kontejner**.
 
-1. V **přidat kontejner** dialogového okna, klikněte na **+ přidat jedinečný klíč** přidáte položku jedinečný klíč.
+1. V dialogovém okně **Přidat kontejner** kliknutím na **+ přidat jedinečný klíč** přidejte jedinečnou položku klíče.
 
-1. Zadejte cesty omezení unique key
+1. Zadejte cesty k omezení jedinečného klíče.
 
-1. V případě potřeby přidejte další jedinečné klíče položky po kliknutí na **+ přidat jedinečný klíč**
+1. V případě potřeby přidejte více jedinečných klíčových položek kliknutím na **+ přidat jedinečný klíč** .
 
-![Snímek obrazovky omezení unique key položky na webu Azure portal](./media/how-to-define-unique-keys/unique-keys-portal.png)
+![Snímek obrazovky s jedinečnou položkou omezení klíčů v Azure Portal](./media/how-to-define-unique-keys/unique-keys-portal.png)
 
-## <a name="use-the-net-sdk-v2"></a>Používat .NET SDK V2
+## <a name="use-the-net-sdk-v2"></a>Použití sady .NET SDK v2
 
-Při vytváření nového kontejneru pomocí [sady .NET SDK v2](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/), `UniqueKeyPolicy` objekt lze použít k definování omezení jedinečných klíčů.
+Při vytváření nového kontejneru pomocí [.NET SDK v2](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/) `UniqueKeyPolicy` se dá objekt použít k definování jedinečných omezení klíčů.
 
 ```csharp
 client.CreateDocumentCollectionAsync(UriFactory.CreateDatabaseUri("database"), new DocumentCollection
@@ -56,7 +56,7 @@ client.CreateDocumentCollectionAsync(UriFactory.CreateDatabaseUri("database"), n
 
 ## <a name="use-the-java-sdk"></a>Použití sady Java SDK
 
-Při vytváření nového kontejneru pomocí [sady Java SDK](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb), `UniqueKeyPolicy` objekt lze použít k definování omezení jedinečných klíčů.
+Při vytváření nového kontejneru pomocí [sady Java SDK](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb), `UniqueKeyPolicy` lze objekt použít k definování jedinečných omezení klíčů.
 
 ```java
 // create a new DocumentCollection object
@@ -86,9 +86,9 @@ container.setUniqueKeyPolicy(uniqueKeyPolicy);
 client.createCollection(String.format("/dbs/%s", "database"), container, null);
 ```
 
-## <a name="use-the-nodejs-sdk"></a>Použití sady SDK pro Node.js
+## <a name="use-the-nodejs-sdk"></a>Použití sady Node. js SDK
 
-Při vytváření nového kontejneru pomocí [sady Node.js SDK](https://www.npmjs.com/package/@azure/cosmos), `UniqueKeyPolicy` objekt lze použít k definování omezení jedinečných klíčů.
+Při vytváření nového kontejneru pomocí [sady Node. js SDK](https://www.npmjs.com/package/@azure/cosmos) `UniqueKeyPolicy` lze objekt použít k definování jedinečných omezení klíčů.
 
 ```javascript
 client.database('database').containers.create({
@@ -102,17 +102,17 @@ client.database('database').containers.create({
 });
 ```
 
-## <a name="use-the-python-sdk"></a>Použít Python SDK
+## <a name="use-the-python-sdk"></a>Použití sady Python SDK
 
-Při vytváření nového kontejneru pomocí [Python SDK](https://pypi.org/project/azure-cosmos/), omezení jedinečných klíčů se dá nastavit jako součást slovníku předán jako parametr.
+Při vytváření nového kontejneru pomocí [sady Python SDK](https://pypi.org/project/azure-cosmos/)lze zadat omezení jedinečnosti klíčů jako součást slovníku předaného jako parametr.
 
 ```python
 client.CreateContainer('dbs/' + config['DATABASE'], {
     'id': 'container',
     'uniqueKeyPolicy': {
         'uniqueKeys': [
-            { 'paths': ['/firstName', '/lastName', '/emailAddress'] },
-            { 'paths': ['/address/zipCode'] }
+            {'paths': ['/firstName', '/lastName', '/emailAddress']},
+            {'paths': ['/address/zipCode']}
         ]
     }
 })
@@ -121,4 +121,4 @@ client.CreateContainer('dbs/' + config['DATABASE'], {
 ## <a name="next-steps"></a>Další postup
 
 - Další informace o [dělení](partition-data.md)
-- Prozkoumejte [jak funguje indexování](index-overview.md)
+- Prozkoumejte, [Jak funguje indexování](index-overview.md)

@@ -2,49 +2,59 @@
 author: wolfma61
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 09/13/2018
+ms.date: 07/05/2019
 ms.author: wolfma
-ms.openlocfilehash: afe6f1493c7fa8272c67f23d6708ad6e4eea9381
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 308ee2ef121648cb45152948926c5fd7fb934744
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67175300"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68362473"
 ---
-1. Spusťte Visual Studio 2017.
+1. Otevřete Visual Studio 2019.
 
-1. V panelu nabídek v sadě Visual Studio vyberte **nástroje > získat nástroje** a ujistěte se, že **vývoj desktopových aplikací .NET** úloh je k dispozici. Pokud zatížení není nainstalována, zaškrtněte políčko a potom klikněte na **změnit** spusťte instalaci. Může trvat pár minut a můžete stáhnout a nainstalovat.
+1. V okně Start vyberte **vytvořit nový projekt**. 
 
-   Pokud zaškrtávací políčko vedle **vývoj desktopových aplikací .NET** je vybrána, teď můžete zavřít dialogové okno.
+1. Vyberte **Konzolová aplikace (.NET Framework)** a pak vyberte **Další**.
 
-   ![Povolení Vývoje desktopových aplikací pomocí .NET](~/articles/cognitive-services/speech-service/media/sdk/vs-enable-net-desktop-workload.png)
+1. Do **název projektu**zadejte `helloworld`a pak vyberte **vytvořit**.
 
-1. V dalším kroku vytvoříme projektu. V panelu nabídky vyberte **soubor > Nový > projekt**. Když se zobrazí dialogové okno, na levém panelu rozbalit tyto oddíly **nainstalováno > Visual C# > Windows Desktop** a vyberte **Konzolová aplikace (.NET Framework)** . Pojmenujte tento projekt *helloworld*.
+1. Z panelu nabídek v aplikaci Visual Studio vyberte **nástroje** > **získat nástroje a funkce**a ověřte, zda je k dispozici úloha **vývoj pro desktopy .NET** . Pokud se úloha nenainstalovala, označte zaškrtávací políčko a kliknutím na tlačítko **změnit** spusťte instalaci. Stažení a instalace může trvat několik minut.
 
-    ![Vytvoření konzolové aplikace v jazyce Visual C# (.NET Framework)](~/articles/cognitive-services/speech-service/media/sdk/qs-csharp-dotnet-windows-01-new-console-app.png "Vytvoření konzolové aplikace v jazyce Visual C# (.NET Framework)")
+   Pokud je vybráno zaškrtávací políčko vedle funkce **vývoj desktopových** aplikací pro .NET, můžete nyní dialogové okno zavřít.
 
-1. Teď, když je nastaven projekt, musíme nainstalovat [balíček NuGet sady SDK pro řeč](https://aka.ms/csspeech/nuget) odkazovat v kódu. Vyhledejte v Průzkumníku řešení a klikněte pravým tlačítkem na helloworld. V nabídce vyberte **spravovat balíčky NuGet...** .
+   ![Povolení Vývoje desktopových aplikací pomocí .NET](../articles/cognitive-services/speech-service/media/sdk/vs-enable-net-desktop-workload.png)
 
-   ![Kliknutí pravým tlačítkem na Spravovat balíčky NuGet pro řešení](~/articles/cognitive-services/speech-service/media/sdk/qs-csharp-dotnet-windows-02-manage-nuget-packages.png "Spravovat balíčky NuGet pro řešení")
+Dalším krokem je instalace [balíčku NuGet sady Speech SDK](https://aka.ms/csspeech/nuget), abyste na něj mohli odkazovat v kódu.
 
-1. V pravém horním rohu Správce balíčků NuGet, vyhledejte **zdroj balíčku** rozevírací seznam a ujistěte se, že **nuget.org** zaškrtnuto. Vyberte **Procházet** , vyhledejte `Microsoft.CognitiveServices.Speech` balíček a nainstalujte nejnovější stabilní verzi.
+1. V Průzkumník řešení klikněte `helloworld`pravým tlačítkem myši a potom vyberte **Spravovat balíčky NuGet** , abyste zobrazili správce balíčků NuGet.
 
-   ![Instalace balíčku NuGet Microsoft.CognitiveServices.Speech](~/articles/cognitive-services/speech-service/media/sdk/qs-csharp-dotnet-windows-03-nuget-install-1.0.0.png "Instalace balíčku NuGet")
+   ![Správce balíčků NuGet](../articles/cognitive-services/speech-service/media/sdk/vs-nuget-package-manager.png)
 
-1. Přijměte všechny smlouvy a licencí ke spuštění instalace.
+1. V pravém horním rohu Najděte rozevírací seznam **zdroj balíčku** a ujistěte se, že je vybraná možnost **NuGet.org** .
 
-   ![Přijetí licence](~/articles/cognitive-services/speech-service/media/sdk/qs-csharp-dotnet-windows-04-nuget-license.png "Přijetí licence")
+1. V levém horním rohu vyberte **Procházet**.
 
-    Po instalaci balíčku se v konzole Správce balíčků zobrazí potvrzení.
+1. Do vyhledávacího pole zadejte `Microsoft.CognitiveServices.Speech` Package a stiskněte klávesu ENTER.
 
-1. Dalším krokem je vytvoření konfigurace platformy, která odpovídá architektuře počítače, které používáte k sestavení a spuštění aplikace konzoly. V panelu nabídky vyberte **sestavení** > **nástroje Configuration Manager...** .
+1. Vyberte `Microsoft.CognitiveServices.Speech`a pak vyberte **instalovat** a nainstalujte nejnovější stabilní verzi.
 
-    ![Spuštění Správce konfigurace](~/articles/cognitive-services/speech-service/media/sdk/qs-csharp-dotnet-windows-05-cfg-manager-click.png "Spuštění Správce konfigurace")
+   ![Nainstalovat balíček NuGet Microsoft. Cognitiveservices Account. Speech](../articles/cognitive-services/speech-service/media/sdk/qs-csharp-dotnet-windows-03-nuget-install-1.0.0.png)
 
-1. V **nástroje Configuration Manager** dialogové okno vyhledejte **platformou aktivního řešení** rozevíracího seznamu a vyberte **nový**.
+1. Přijetím všech smluv a licencí spusťte instalaci.
 
-    ![Přidání nové platformy pod oknem Správce konfigurace](~/articles/cognitive-services/speech-service/media/sdk/qs-csharp-dotnet-windows-06-cfg-manager-new.png "Přidání nové platformy pod oknem Správce konfigurace")
+   Po instalaci balíčku se v okně **konzoly Správce balíčků** zobrazí potvrzení.
 
-1. Pokud používáte systém Windows 64-bit, po zobrazení výzvy s **zadejte nebo vyberte novou platformu**, `x64`. Pokud používáte systém Windows 32-bit, vyberte `x86`. Jakmile budete hotovi, klikněte na tlačítko **OK**.
+Chcete-li nyní sestavit a spustit konzolovou aplikaci, vytvořte konfiguraci platformy, která odpovídá architektuře vašeho počítače.
 
-    ![Přidání nové platformy s názvem x64 na 64bitovém systému Windows](~/articles/cognitive-services/speech-service/media/sdk/qs-csharp-dotnet-windows-07-cfg-manager-add-x64.png "Přidání platformy x64")
+1. V řádku nabídek vyberte **sestavení** > **Configuration Manager**. **Nástroje Configuration Manager** zobrazí se dialogové okno.
+
+   ![Configuration Manager – dialogové okno](../articles/cognitive-services/speech-service/media/sdk/vs-configuration-manager-dialog-box.png)
+
+1. V rozevíracím seznamu **Aktivní platforma řešení** vyberte **Nový**. Zobrazí se dialogové okno **Nová platforma řešení** .
+
+1. V rozevíracím seznamu **Typ vyberte možnost Nová platforma** :
+   - Pokud používáte 64-bitové Windows, vyberte **x64**.
+   - Pokud používáte 32-bit Windows, vyberte **x86**.
+
+1. Vyberte **OK** a pak **Zavřít**.

@@ -1,50 +1,50 @@
 ---
-title: 'Rychlý start: Volání služby pro analýzu textu s využitím sady Azure SDK pro .NET aC#'
+title: 'Rychlý start: Volání služby Analýza textu pomocí sady Azure SDK pro .NET aC#'
 titleSuffix: Azure Cognitive Services
-description: Informace a ukázky kódu pro vám pomůže začít používat služby pro analýzu textu a C#.
+description: Informace a ukázky kódu, které vám pomůžou začít používat službu Analýza textu C#a.
 services: cognitive-services
 author: raymondl
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 05/28/2019
+ms.date: 07/18/2019
 ms.author: assafi
-ms.openlocfilehash: 82297842a56930cec2b4de90998b4ffb904543bb
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 09713528f51675f6e9d7f3073b6c81b095d23631
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67446969"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68356976"
 ---
-# <a name="quickstart-use-the-net-sdk-and-c-to-call-the-text-analytics-service"></a>Rychlý start: Použití sady .NET SDK a C# k volání služby pro analýzu textu
+# <a name="quickstart-use-the-net-sdk-and-c-to-call-the-text-analytics-service"></a>Rychlý start: Použití sady .NET SDK a C# volání služby analýza textu
 <a name="HOLTop"></a>
 
-V tomto rychlém startu umožňuje začít používat sadu Azure SDK pro .NET a C# k analýze jazyka. I když [rozhraní Text Analytics](//go.microsoft.com/fwlink/?LinkID=759711) rozhraní REST API je kompatibilní s Většina programovacích jazyků, sada SDK poskytuje snadný způsob, jak do svých aplikací integrovat službu.
+Tento rychlý Start vám pomůže začít používat sadu Azure SDK pro .NET C# a analyzovat jazyk. I když je REST API [Analýza textu](//go.microsoft.com/fwlink/?LinkID=759711) kompatibilní s většinou programovacích jazyků, poskytuje sada SDK snadný způsob, jak integrovat službu do vašich aplikací.
 
 > [!NOTE]
 > Zdrojový kód k této ukázce je dostupný na [Githubu](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/samples/TextAnalytics).
 
-Technické podrobnosti najdete v sadě SDK pro .NET [reference pro analýzy textu](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/textanalytics?view=azure-dotnet).
+Technické informace najdete v tématu Referenční informace k sadě SDK pro .NET [Analýza textu](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/textanalytics?view=azure-dotnet).
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Libovolná edice [visual studio 2017 nebo novější]
-* Rozhraní Text Analytics [sady SDK pro .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.TextAnalytics)
+* Libovolná edice sady [Visual Studio 2017 nebo novější]
+* [Sada SDK analýza textu pro .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.TextAnalytics)
 
 [!INCLUDE [cognitive-services-text-analytics-signup-requirements](../../../../includes/cognitive-services-text-analytics-signup-requirements.md)]
 
-Musíte také [koncový bod a přístupový klíč](../How-tos/text-analytics-how-to-access-key.md) , která byla vygenerována během registrace.
+Také potřebujete [koncový bod a přístupový klíč](../How-tos/text-analytics-how-to-access-key.md) , který jste vygenerovali během registrace.
 
 ## <a name="create-the-visual-studio-solution-and-install-the-sdk"></a>Vytvoření řešení sady Visual Studio a instalace sady SDK
 
-1. Vytvořte nový projekt konzolové aplikace (.NET Core). [Přístup k sadě Visual Studio](https://visualstudio.microsoft.com/vs/).
-1. Klikněte pravým tlačítkem na řešení a vyberte **spravovat balíčky NuGet pro řešení**.
-1. Vyberte kartu **Procházet**. Vyhledejte **Microsoft.Azure.CognitiveServices.Language.TextAnalytics**.
+1. Vytvořte nový projekt Konzolová aplikace (.NET Core). [Přístup k Visual Studiu](https://visualstudio.microsoft.com/vs/).
+1. Klikněte pravým tlačítkem na řešení a vyberte **Spravovat balíčky NuGet pro řešení**.
+1. Vyberte kartu **Procházet**. Vyhledejte **Microsoft. Azure. cognitiveservices Account. Language. TextAnalytics**.
 
-## <a name="authenticate-your-credentials"></a>Ověření vašich pověření
+## <a name="authenticate-your-credentials"></a>Ověření přihlašovacích údajů
 
-1. Přidejte následující `using` příkazy do souboru třídy hlavního (což je Program.cs ve výchozím nastavení).
+1. Do souboru hlavní `using` třídy přidejte následující příkazy (ve výchozím nastavení je to program.cs).
 
     ```csharp
     using System;
@@ -52,68 +52,55 @@ Musíte také [koncový bod a přístupový klíč](../How-tos/text-analytics-ho
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
-
     using Microsoft.Azure.CognitiveServices.Language.TextAnalytics;
     using Microsoft.Azure.CognitiveServices.Language.TextAnalytics.Models;
     using Microsoft.Rest;
     ```
 
-2. Vytvořte nový `ApiKeyServiceClientCredentials` třídy pro uložení přihlašovacích údajů a přidat je pro každý požadavek.
+2. Vytvořte novou `ApiKeyServiceClientCredentials` třídu pro uložení přihlašovacích údajů a přidejte ji pro každý požadavek.
 
     ```csharp
-    /// <summary>
-    /// Allows authentication to the API by using a basic apiKey mechanism
-    /// </summary>
     class ApiKeyServiceClientCredentials : ServiceClientCredentials
     {
-        private readonly string subscriptionKey;
+        private readonly string apiKey;
 
-        /// <summary>
-        /// Creates a new instance of the ApiKeyServiceClientCredentails class
-        /// </summary>
-        /// <param name="subscriptionKey">The subscription key to authenticate and authorize as</param>
-        public ApiKeyServiceClientCredentials(string subscriptionKey)
+        public ApiKeyServiceClientCredentials(string apiKey)
         {
-            this.subscriptionKey = subscriptionKey;
+            this.apiKey = apiKey;
         }
 
-        /// <summary>
-        /// Add the Basic Authentication Header to each outgoing request
-        /// </summary>
-        /// <param name="request">The outgoing request</param>
-        /// <param name="cancellationToken">A token to cancel the operation</param>
         public override Task ProcessHttpRequestAsync(HttpRequestMessage request, CancellationToken cancellationToken)
         {
             if (request == null)
             {
                 throw new ArgumentNullException("request");
             }
-
-            request.Headers.Add("Ocp-Apim-Subscription-Key", this.subscriptionKey);
+            request.Headers.Add("Ocp-Apim-Subscription-Key", this.apiKey);
             return base.ProcessHttpRequestAsync(request, cancellationToken);
         }
     }
     ```
 
-3. Aktualizace `Program` třídy. Přidáte člena konstanty pro váš klíč předplatného pro analýzu textu a druhý pro koncový bod služby. Nezapomeňte použít správný oblast Azure pro vaše předplatné pro analýzu textu.
+3. Aktualizujte `Program` třídu. Přidejte konstantního člena pro svůj rozhraní API pro analýzu textu klíč a druhý pro koncový bod služby. Nezapomeňte použít pro prostředek Analýza textu správné umístění Azure.
 
     ```csharp
-    private const string SubscriptionKey = "enter-your-key-here";
-
-    private const string Endpoint = "enter-your-service-endpoint-here"; // For example: "https://westus.api.cognitive.microsoft.com";
+    //Enter your Text Analytics (TA) API Key (available in Azure Portal -> your TA resource -> Keys)
+    private const string ApiKey = "enter-your-textanalytics-api-key-here";
+    //You can get the resource location from Azure Portal -> your TA resource -> Overview
+    private const string Endpoint = "enter-your-service-endpoint-here"; // For example: "https://<your-location>.api.cognitive.microsoft.com";
     ```
 > [!Tip]
-> Pro zvýšení zabezpečení tajné kódy v produkční systémy, doporučujeme použít [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/quick-create-net).
+> Pro zvýšení zabezpečení tajných kódů v produkčních systémech doporučujeme použít [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/quick-create-net).
 >
 
-## <a name="create-a-text-analytics-client"></a>Vytvoření klienta pro analýzu textu
+## <a name="create-a-text-analytics-client"></a>Vytvoření klienta Analýza textu
 
-V `Main` funkce projektu, zavolejte metodu vzorku, který chcete vyvolat. Předání `Endpoint` a `SubscriptionKey` parametry, které jste definovali.
+`Main` Ve funkci projektu zavolejte ukázkovou metodu, kterou chcete vyvolat. Předejte parametry `ApiKey`a, které jste definovali. `Endpoint`
 
 ```csharp
     public static void Main(string[] args)
     {
-        var credentials = new ApiKeyServiceClientCredentials(SubscriptionKey);
+        var credentials = new ApiKeyServiceClientCredentials(ApiKey);
         var client = new TextAnalyticsClient(credentials)
         {
             Endpoint = Endpoint
@@ -129,12 +116,12 @@ V `Main` funkce projektu, zavolejte metodu vzorku, který chcete vyvolat. Před�
     }
 ```
 
-Následující části popisují, jak volat jednotlivé funkce služby.
+Následující části popisují způsob volání jednotlivých funkcí služby.
 
-## <a name="perform-sentiment-analysis"></a>Proveďte analýzu subjektivního hodnocení
+## <a name="perform-sentiment-analysis"></a>Provést analýzu mínění
 
-1. Vytvořit novou funkci `SentimentAnalysisExample()` , která přijímá klienta, který jste vytvořili dříve.
-2. Vygeneruje seznam `MultiLanguageInput` objekty, které obsahuje dokumenty, které chcete analyzovat.
+1. Vytvořte novou funkci `SentimentAnalysisExample()` , která převezme klienta, kterého jste vytvořili dříve.
+2. Vygenerujte seznam `MultiLanguageInput` objektů, které obsahují dokumenty, které chcete analyzovat.
 
     ```csharp
     public static async Task SentimentAnalysisExample(TextAnalyticsClient client)
@@ -143,16 +130,13 @@ Následující části popisují, jak volat jednotlivé funkce služby.
         var inputDocuments = new MultiLanguageBatchInput(
             new List<MultiLanguageInput>
             {
-                new MultiLanguageInput("en", "1", "I had the best day of my life."),
-                new MultiLanguageInput("en", "2", "This was a waste of my time. The speaker put me to sleep."),
-                new MultiLanguageInput("es", "3", "No tengo dinero ni nada que dar..."),
-                new MultiLanguageInput("it", "4", "L'hotel veneziano era meraviglioso. È un bellissimo pezzo di architettura."),
+                new MultiLanguageInput("en", "1", "I had the best day of my life.")
             });
         //...
     }
     ```
 
-3. Ve stejné funkci volat `client.SentimentAsync()` a získat výsledek. Potom iterování přes výsledky. Tisk dokumentu skóre ID a mínění. Skóre, které je blížící se 0 označuje mínění negativní, zatímco skóre, které se blíží 1 označuje pozitivní mínění.
+3. Ve stejné funkci zavolejte `client.SentimentAsync()` a získejte výsledek. Pak projdete výsledky. Vytiskněte ID každého dokumentu a mínění skóre. Skóre, které je blízko 0, označuje negativní mínění, zatímco skóre, které je blíže 1, značí kladné mínění.
 
     ```csharp
     var result = await client.SentimentAsync(false, inputDocuments);
@@ -168,15 +152,12 @@ Následující části popisují, jak volat jednotlivé funkce služby.
 
 ```console
 Document ID: 1 , Sentiment Score: 0.87
-Document ID: 2 , Sentiment Score: 0.11
-Document ID: 3 , Sentiment Score: 0.44
-Document ID: 4 , Sentiment Score: 1.00
 ```
 
-## <a name="perform-language-detection"></a>Provádět rozpoznávání jazyka
+## <a name="perform-language-detection"></a>Provést detekci jazyka
 
-1. Vytvořit novou funkci `DetectLanguageExample()` , která přijímá klienta, který jste vytvořili dříve.
-2. Vygeneruje seznam `LanguageInput` objekty, které obsahuje vaše dokumenty.
+1. Vytvořte novou funkci `DetectLanguageExample()` , která převezme klienta, kterého jste vytvořili dříve.
+2. Vygeneruje seznam `LanguageInput` objektů, které obsahují vaše dokumenty.
 
     ```csharp
     public static async Task DetectLanguageExample(TextAnalyticsClient client)
@@ -186,15 +167,13 @@ Document ID: 4 , Sentiment Score: 1.00
         var inputDocuments = new LanguageBatchInput(
                 new List<LanguageInput>
                     {
-                        new LanguageInput(id: "1", text: "This is a document written in English."),
-                        new LanguageInput(id: "2", text: "Este es un document escrito en Español."),
-                        new LanguageInput(id: "3", text: "这是一个用中文写的文件")
+                        new LanguageInput(id: "1", text: "This is a document written in English.")
                     });
         //...
     }
     ```
 
-3. Ve stejné funkci volat `client.DetectLanguageAsync()` a získat výsledek. Potom iterování přes výsledky. Tisknout ID každé dokumentu a první vrácené jazyk.
+3. Ve stejné funkci zavolejte `client.DetectLanguageAsync()` a získejte výsledek. Pak projdete výsledky. Vytiskněte ID každého dokumentu a první vrácený jazyk.
 
     ```csharp
     var langResults = await client.DetectLanguageAsync(false, inputDocuments);
@@ -211,31 +190,27 @@ Document ID: 4 , Sentiment Score: 1.00
 ```console
 ===== LANGUAGE EXTRACTION ======
 Document ID: 1 , Language: English
-Document ID: 2 , Language: Spanish
-Document ID: 3 , Language: Chinese_Simplified
 ```
 
-## <a name="perform-entity-recognition"></a>Provádět rozpoznávání entit
+## <a name="perform-entity-recognition"></a>Provést rozpoznávání entit
 
-1. Vytvořit novou funkci `RecognizeEntitiesExample()` , která přijímá klienta, který jste vytvořili dříve.
-2. Vygeneruje seznam `MultiLanguageBatchInput` objekty, které obsahuje vaše dokumenty.
+1. Vytvořte novou funkci `RecognizeEntitiesExample()` , která převezme klienta, kterého jste vytvořili dříve.
+2. Vygeneruje seznam `MultiLanguageBatchInput` objektů, které obsahují vaše dokumenty.
 
     ```csharp
     public static async Task RecognizeEntitiesExample(TextAnalyticsClient client)
     {
-
         // The documents to be submitted for entity recognition. The ID can be any value.
         var inputDocuments = new MultiLanguageBatchInput(
             new List<MultiLanguageInput>
             {
-                new MultiLanguageInput("en", "1", "Microsoft was founded by Bill Gates and Paul Allen on April 4, 1975, to develop and sell BASIC interpreters for the Altair 8800."),
-                new MultiLanguageInput("es", "2", "La sede principal de Microsoft se encuentra en la ciudad de Redmond, a 21 kilómetros de Seattle.")
+                new MultiLanguageInput("en", "1", "Microsoft was founded by Bill Gates and Paul Allen on April 4, 1975, to develop and sell BASIC interpreters for the Altair 8800.")
             });
         //...
     }
     ```
 
-3. Ve stejné funkci volat `client.EntitiesAsync()` a získat výsledek. Potom iterování přes výsledky. Tisknout ID každé dokumentu. Pro každou zjištěnou entitu vytiskněte Wikipedia název a typ a podtypů (pokud existují) a také umístění původního textu.
+3. Ve stejné funkci zavolejte `client.EntitiesAsync()` a získejte výsledek. Pak projdete výsledky. Vytiskněte ID každého dokumentu. Pro každou zjištěnou entitu vytiskněte název Wikipedii a typ a podtypy (pokud existují) a také umístění v původním textu.
 
     ```csharp
     var entitiesResult = await client.EntitiesAsync(false, inputDocuments);
@@ -276,22 +251,12 @@ Document ID: 1
                         Offset: 89,     Length: 5,      Score: 0.800
                 Name: Altair 8800,      Type: Other,    Sub-Type: N/A
                         Offset: 116,    Length: 11,     Score: 0.800
-Document ID: 2
-         Entities:
-                Name: Microsoft,        Type: Organization,     Sub-Type: N/A
-                        Offset: 21,     Length: 9,      Score: 1.000
-                Name: Redmond (Washington),     Type: Location, Sub-Type: N/A
-                        Offset: 60,     Length: 7,      Score: 0.991
-                Name: 21 kilómetros,    Type: Quantity, Sub-Type: Dimension
-                        Offset: 71,     Length: 13,     Score: 0.800
-                Name: Seattle,  Type: Location, Sub-Type: N/A
-                        Offset: 88,     Length: 7,      Score: 1.000
 ```
 
-## <a name="perform-key-phrase-extraction"></a>Provedení extrakce klíčových frází
+## <a name="perform-key-phrase-extraction"></a>Provést extrakci klíčových frází
 
-1. Vytvořit novou funkci `KeyPhraseExtractionExample()` , která přijímá klienta, který jste vytvořili dříve.
-2. Vygeneruje seznam `MultiLanguageBatchInput` objekty, které obsahuje vaše dokumenty.
+1. Vytvořte novou funkci `KeyPhraseExtractionExample()` , která převezme klienta, kterého jste vytvořili dříve.
+2. Vygeneruje seznam `MultiLanguageBatchInput` objektů, které obsahují vaše dokumenty.
 
     ```csharp
     public static async Task KeyPhraseExtractionExample(TextAnalyticsClient client)
@@ -299,16 +264,13 @@ Document ID: 2
         var inputDocuments = new MultiLanguageBatchInput(
                     new List<MultiLanguageInput>
                     {
-                        new MultiLanguageInput("ja", "1", "猫は幸せ"),
-                        new MultiLanguageInput("de", "2", "Fahrt nach Stuttgart und dann zum Hotel zu Fu."),
-                        new MultiLanguageInput("en", "3", "My cat might need to see a veterinarian."),
-                        new MultiLanguageInput("es", "4", "A mi me encanta el fútbol!")
+                        new MultiLanguageInput("en", "1", "My cat might need to see a veterinarian.")
                     });
         //...
     }
     ```
 
-3. Ve stejné funkci volat `client.KeyPhrasesAsync()` a získat výsledek. Potom iterování přes výsledky. Tisknout ID každé dokumentu a všechny zjištěné klíčové fráze.
+3. Ve stejné funkci zavolejte `client.KeyPhrasesAsync()` a získejte výsledek. Pak projdete výsledky. Vytiskněte ID každého dokumentu a všechny zjištěné klíčové fráze.
 
     ```csharp
     var kpResults = await client.KeyPhrasesAsync(false, inputDocuments);
@@ -332,20 +294,8 @@ Document ID: 2
 ```console
 Document ID: 1
          Key phrases:
-                幸せ
-Document ID: 2
-         Key phrases:
-                Stuttgart
-                Hotel
-                Fahrt
-                Fu
-Document ID: 3
-         Key phrases:
                 cat
                 veterinarian
-Document ID: 4
-         Key phrases:
-                fútbol
 ```
 
 ## <a name="next-steps"></a>Další postup

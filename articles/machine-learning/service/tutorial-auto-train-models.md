@@ -1,7 +1,7 @@
 ---
-title: 'Regresní model kurzu: Automatizované strojové učení'
+title: 'Kurz regresního modelu: Automatizované strojové učení'
 titleSuffix: Azure Machine Learning service
-description: Zjistěte, jak generovat modelu strojového učení pomocí automatizovaných machine learningu. Azure Machine Learning můžete provádět předzpracování dat, výběr algoritmů a výběr hyperparameter v automatizovaný způsob, jak za vás. Potom pomocí služby Azure Machine Learning je nasazení finálního modelu.
+description: Naučte se generovat model strojového učení pomocí automatizovaného strojového učení. Azure Machine Learning může při automatizovaném způsobu provádět předběžné zpracování dat, výběr algoritmu a výběr parametrů. Konečný model se pak nasadí pomocí služby Azure Machine Learning Service.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,85 +11,85 @@ ms.author: nilesha
 ms.reviewer: trbye
 ms.date: 04/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8cedf7abf71a772a0b770dd2f82d9a5508f5dd75
-ms.sourcegitcommit: dda9fc615db84e6849963b20e1dce74c9fe51821
+ms.openlocfilehash: a49ee5720711bb23ec4770de38a408827c645b73
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67622380"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68360941"
 ---
-# <a name="tutorial-use-automated-machine-learning-to-build-your-regression-model"></a>Kurz: Automatizované machine learningu k vytváření regresní model
+# <a name="tutorial-use-automated-machine-learning-to-build-your-regression-model"></a>Kurz: Použití automatizovaného strojového učení k sestavení regresního modelu
 
 Tento kurz je **druhou částí z dvoudílné série kurzů**. V předchozím kurzu jste [přípravy dat taxislužby NYC pro modelování regrese](tutorial-data-prep.md).
 
-Nyní jste připraveni začít sestavovat modelu pomocí služby Azure Machine Learning. V této části kurzu se pomocí připravená data a automaticky generovat regresní model k předvídání cen tarif taxislužby. Pomocí automatizovaných strojového učení služby, definujete strojového učení cíle a omezení. Můžete spustit automatizované machine learning procesu. Potom povolte algoritmus výběru a hyperparameter ladění, která se provede za vás. Automatizované strojového učení techniku Iteruje přes mnoho kombinací algoritmy a hyperparameters, dokud nenajde nejlepší model založený na vaše kritéria.
+Nyní jste připraveni začít sestavovat model pomocí služby Azure Machine Learning. V této části kurzu použijete připravená data a automaticky vygenerujete regresní model pro předpověď cen taxislužby jízdné. Díky funkcím automatizovaného strojového učení ve službě můžete definovat cíle a omezení služby Machine Learning. Spouštíte automatizovaný proces strojového učení. Pak povolte výběr algoritmu a ladění s parametry, které budou provedeny za vás. Automatizovaná technika strojového učení projde více kombinací algoritmů a parametrů, dokud nenajde nejlepší model na základě vašeho kritéria.
 
-![Vývojový diagram](./media/tutorial-auto-train-models/flow2.png)
+![Diagram toku](./media/tutorial-auto-train-models/flow2.png)
 
-V tomto kurzu přečtěte si následující úkoly:
+V tomto kurzu se seznámíte s následujícími úlohami:
 
 > [!div class="checklist"]
-> * Nastavení prostředí Pythonu a importovat balíčky sady SDK.
-> * Konfigurovat pracovní prostor služby Azure Machine Learning service.
-> * Autotrain regresní model.
-> * Model spouštět místně pomocí vlastních parametrů.
+> * Nastavte prostředí Pythonu a importujte balíčky SDK.
+> * Nakonfigurujte pracovní prostor služby Azure Machine Learning.
+> * Přihlaste se k regresnímu modelu.
+> * Spusťte model místně s vlastními parametry.
 > * Prozkoumejte výsledky.
 
-Pokud nemáte předplatné Azure, vytvořte si bezplatný účet, před zahájením. Zkuste [bezplatné nebo placené verzi aplikace služby Azure Machine Learning](https://aka.ms/AMLFree) ještě dnes.
+Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před tím, než začnete. Vyzkoušení [bezplatné nebo placené verze služby Azure Machine Learning](https://aka.ms/AMLFree) dnes
 
 >[!NOTE]
-> S využitím Azure Machine Learning SDK verze 1.0.39 testovaný kód v tomto článku.
+> Kód v tomto článku byl testován pomocí sady Azure Machine Learning SDK 1.0.39 verze.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Přejděte k [nastavení vývojového prostředí](#start) číst kroky Poznámkový blok, nebo použijte níže uvedené pokyny k získání poznámkového bloku a spustit ho v poznámkových bloků Azure nebo vašeho vlastního serveru poznámkového bloku. Pokud chcete spustit Poznámkový blok, bude nutné:
+Přejděte k [Nastavení vývojového prostředí](#start) pro čtení v rámci kroků poznámkového bloku nebo použijte následující pokyny k získání poznámkového bloku a jeho spuštění na Azure Notebooks nebo na vlastním serveru poznámkového bloku. Pokud chcete spustit Poznámkový blok, budete potřebovat:
 
 * [Spustit kurz přípravy dat](tutorial-data-prep.md).
-* Server poznámkového bloku Python 3.6 s nainstalované tyto položky:
-    * Azure Machine Learning SDK pro Python s `automl` a `notebooks` funkce
+* Server Python 3,6 Poznámkový blok s následujícím nainstalovaným:
+    * Sada SDK Azure Machine Learning pro Python s `automl` a `notebooks` Extras
     * `matplotlib`
-* Výukový program Poznámkový blok
-* Pracovní prostor machine learning
-* Konfigurační soubor pro pracovní prostor ve stejném adresáři jako poznámkového bloku
+* Poznámkový blok kurzu
+* Pracovní prostor Machine Learning
+* Konfigurační soubor pro pracovní prostor ve stejném adresáři jako Poznámkový blok
 
-Získejte všechny tyto požadavky pomocí kteréhokoli z níže uvedených částech.
+Všechny tyto předpoklady získáte z některého z následujících částí.
 
-* Použití [server poznámkového bloku cloudu ve vašem pracovním prostoru](#azure) 
-* Použití [serveru poznámkového bloku](#server)
+* Použití [serveru cloudového poznámkového bloku v pracovním prostoru](#azure) 
+* Použití [vlastního serveru poznámkového bloku](#server)
 
-### <a name="azure"></a>Použít server poznámkového bloku cloudu ve vašem pracovním prostoru
+### <a name="azure"></a>Použití serveru cloudového poznámkového bloku v pracovním prostoru
 
-Je snadné začít s vlastním serverem založené na cloudu poznámkového bloku. [Azure Machine Learning SDK pro Python](https://aka.ms/aml-sdk) již nainstalován a nakonfigurován pro vás, když vytvoříte tento prostředek v cloudu.
+Začněte s vlastním cloudovým notebookovým serverem. [Sada SDK Azure Machine Learning pro Python](https://aka.ms/aml-sdk) je už po vytvoření tohoto cloudového prostředku nainstalovaná a nakonfigurovaná.
 
 [!INCLUDE [aml-azure-notebooks](../../../includes/aml-azure-notebooks.md)]
 
-* Po spuštění webové stránky Poznámkový blok, spusťte **kurzy/regrese – část2 automated-ml.ipynb** poznámkového bloku.
+* Po spuštění webové stránky poznámkového bloku spusťte Poznámkový blok **kurzy/Regression-part2-Automated-ml. ipynb** .
 
-### <a name="server"></a>Použít vlastní server poznámkového bloku Jupyter
+### <a name="server"></a>Použití vlastního serveru Jupyter notebook
 
-Pomocí těchto kroků můžete vytvořit místní aplikace Jupyter Notebook server ve vašem počítači.  Ujistěte se, že nainstalujete `matplotlib` a `automl` a `notebooks` funkce ve vašem prostředí.
+Pomocí těchto kroků můžete vytvořit místní aplikace Jupyter Notebook server ve vašem počítači.  Ujistěte se, že ve `matplotlib` svém prostředí `automl` nainstalujete a `notebooks` navíc.
 
 [!INCLUDE [aml-your-server](../../../includes/aml-your-server.md)]
 
-Po dokončení kroků, spusťte **kurzy/regrese – část2 automated-ml.ipynb** poznámkového bloku.
+Po dokončení kroků spusťte Poznámkový blok **kurzy/Regression-part2-Automated-ml. ipynb** .
 
 ## <a name="start"></a>Nastavení vývojového prostředí
 
-Veškeré nastavení pro vaši vývojovou práci se dá provést v poznámkovém bloku Pythonu. Instalační program obsahuje následující akce:
+Veškeré nastavení pro vaši vývojovou práci se dá provést v poznámkovém bloku Pythonu. Instalační program zahrnuje následující akce:
 
 * Instalace sady SDK
 * Import balíčků Pythonu
-* Konfigurujte váš pracovní prostor
+* Konfigurace pracovního prostoru
 
-### <a name="install-and-import-packages"></a>Nainstalujte a importujte balíčky
+### <a name="install-and-import-packages"></a>Instalace a import balíčků
 
-Pokud jste se v tomto kurzu ve prostředí Pythonu, použijte následující nainstalují potřebné balíčky.
+Pokud budete postupovat podle tohoto kurzu ve vlastním prostředí Pythonu, nainstalujte potřebné balíčky pomocí následujících pokynů.
 
 ```shell
 pip install azureml-sdk[automl,notebooks] matplotlib
 ```
 
-Importujte balíčky Pythonu, které v tomto kurzu potřebujete:
+Importujte balíčky Pythonu, které potřebujete v tomto kurzu:
 
 ```python
 import azureml.core
@@ -101,11 +101,11 @@ import os
 
 ### <a name="configure-workspace"></a>Konfigurace pracovního prostoru
 
-Vytvořte objekt pracovního prostoru z existujícího pracovního prostoru. A [pracovní prostor](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py) je třída, která přijímá údaje předplatného a prostředků Azure. Také vytvoří prostředek v cloudu pro monitorování a sledování vašich modelů spuštění.
+Vytvořte objekt pracovního prostoru z existujícího pracovního prostoru. [Pracovní prostor](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py) je třída, která přijímá vaše předplatné a informace o prostředcích Azure. Vytvoří také cloudový prostředek pro monitorování a sledování spuštění modelu.
 
 `Workspace.from_config()` přečte soubor **config.json** a načte podrobnosti do objektu s názvem `ws`.  `ws` se používá ve zbývající části kódu v tomto kurzu.
 
-Až budete mít objekt do pracovního prostoru, zadejte název experimentu. Vytvoření a registrace do místního adresáře s pracovním prostorem. Historie všechna spuštění je zaznamenán v rámci zadaného testu a v [webu Azure portal](https://portal.azure.com).
+Po vytvoření objektu pracovního prostoru zadejte název experimentu. Vytvořte a zaregistrujte místní adresář v pracovním prostoru. Historie všech běhů je zaznamenána v rámci zadaného experimentu a v [Azure Portal](https://portal.azure.com).
 
 
 ```python
@@ -128,7 +128,7 @@ pd.DataFrame(data=output, index=['']).T
 
 ## <a name="explore-data"></a>Zkoumání dat
 
-Použití objektu toku dat vytvořili v předchozím kurzu. Souhrnně řečeno, části 1 tohoto kurzu vyčistit data taxislužby NYC, aby mohl být použit v model strojového učení. Nyní používat různé funkce v sadě dat a povolit automatické modelu vytvářet relace mezi funkcí a cen cesty taxíkem. Otevření a spuštění toku dat a zkontrolovat výsledky kontroly:
+Použijte objekt toku dat, který jste vytvořili v předchozím kurzu. V rámci Shrnutí tohoto kurzu byla vyčištěna data NYC taxislužby, aby je bylo možné použít v modelu Machine Learning. Nyní použijete různé funkce ze sady dat a umožníte automatizovanému modelu sestavování vztahů mezi funkcemi a cenou taxislužby Trip. Otevřete a spusťte tok dat a zkontrolujte výsledky:
 
 
 ```python
@@ -144,26 +144,26 @@ dflow_prepared.get_profile()
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>Type</th>
+      <th>type</th>
       <th>Minimum</th>
       <th>Maximum</th>
       <th>Count</th>
-      <th>Chybí počet</th>
-      <th>Nechybí počet</th>
+      <th>Chybějící počet</th>
+      <th>Počet nechybějících</th>
       <th>Procento chybějících</th>
       <th>Počet chyb</th>
       <th>Prázdný počet</th>
-      <th>0,1 quantile %</th>
-      <th>quantile 1 %</th>
-      <th>quantile 5 %</th>
-      <th>25 % quantile</th>
-      <th>quantile 50 %</th>
-      <th>quantile 75 %</th>
-      <th>95 % quantile</th>
-      <th>99 % quantile</th>
-      <th>99,9 quantile %</th>
+      <th>0,1% Quantile</th>
+      <th>1% Quantile</th>
+      <th>5% Quantile</th>
+      <th>25% Quantile</th>
+      <th>50% Quantile</th>
+      <th>75% Quantile</th>
+      <th>95% Quantile</th>
+      <th>99% Quantile</th>
+      <th>99,9% Quantile</th>
       <th>střední hodnotu</th>
-      <th>Směrodatná odchylka</th>
+      <th>Standardní odchylka</th>
       <th>Odchylka</th>
       <th>Zešikmení</th>
       <th>Míra fluktuace</th>
@@ -615,16 +615,17 @@ dflow_prepared.get_profile()
   </tbody>
 </table>
 
-Příprava dat pro experiment přidáním sloupce do `dflow_x` bude funkce pro naše vytvoření modelu. Můžete definovat `dflow_y` bude náš hodnota předpovědi **náklady**:
+Příprava dat pro experiment přidáním sloupce do `dflow_x` bude funkce pro naše vytvoření modelu. Definujete `dflow_y` , že se jedná o naši předpověď hodnoty, **náklady**:
 
 ```python
-dflow_X = dflow_prepared.keep_columns(['pickup_weekday','pickup_hour', 'distance','passengers', 'vendor'])
+dflow_X = dflow_prepared.keep_columns(
+    ['pickup_weekday', 'pickup_hour', 'distance', 'passengers', 'vendor'])
 dflow_y = dflow_prepared.keep_columns('cost')
 ```
 
-### <a name="split-the-data-into-train-and-test-sets"></a>Rozdělení dat na trénování a testování sad
+### <a name="split-the-data-into-train-and-test-sets"></a>Rozdělení dat do vlakových a testovacích sad
 
-Nyní rozdělení dat na trénovací a testovací sady s použitím `train_test_split` fungovat v `sklearn` knihovny. Tato funkce odděluje data do x, **funkce**, datové sady pro trénování modelu a y, **hodnoty k předpovědi**, datové sady pro účely testování. `test_size` Parametr určuje procento dat pro přidělení k testování. `random_state` Parametr nastaví počáteční hodnotu pro generátor náhodných čísel, tak, že vaše rozdělí trénování a testování jsou vždy deterministické:
+Nyní rozdělíte data do školicích a testovacích sad pomocí `train_test_split` funkce `sklearn` v knihovně. Tato funkce odděluje data do x, **funkcí**, datové sady pro školení modelů a y, hodnoty pro **předpověď**, datovou sadu pro testování. `test_size` Parametr určuje procento dat pro přidělení k testování. `random_state` Parametr nastaví počáteční hodnotu pro generátor náhodných hodnot, aby vaše výukové testy byly vždy deterministické:
 
 ```python
 from sklearn.model_selection import train_test_split
@@ -632,72 +633,73 @@ from sklearn.model_selection import train_test_split
 x_df = dflow_X.to_pandas_dataframe()
 y_df = dflow_y.to_pandas_dataframe()
 
-x_train, x_test, y_train, y_test = train_test_split(x_df, y_df, test_size=0.2, random_state=223)
+x_train, x_test, y_train, y_test = train_test_split(
+    x_df, y_df, test_size=0.2, random_state=223)
 # flatten y_train to 1d array
 y_train.values.flatten()
 ```
 
-Účelem tohoto kroku je, aby datových bodů pro otestování dokončení modelu, které nebyly použity pro trénování modelu, aby bylo možné měření true přesnost. Jinými slovy, dobře trénovaného modelu by měl provádět přesně předpovědí z dat, že již není vidět. Teď máte potřebné balíčky a data připravena pro autotraining modelu.
+Účelem tohoto kroku je, aby bylo možné otestovat dokončený model, který se nepoužil k analýze modelu, aby se měřila skutečná přesnost. Jinými slovy, dobře vycvičený model by měl být schopný přesně předpovědi data z dat, která ještě nikdo neviděl. Nyní máte potřebné balíčky a data připravená pro další školení modelu.
 
 ## <a name="automatically-train-a-model"></a>Automaticky trénování modelu
 
-Chcete-li automaticky trénování modelu, proveďte následující kroky:
-1. Definujte nastavení pro běh experimentu. Připojit trénovacích dat do konfigurace a změnit nastavení, která řídí proces školení.
-1. Odeslání experimentu pro ladění modelu. Po odeslání experimentu procesu prochází různé algoritmy strojového učení a nastavení hyperparameter týkajícími se definovaná omezení. Model přizpůsobený zvolí optimalizací metriku přesnost.
+K automatickému učení modelu proveďte následující kroky:
+1. Definujte nastavení pro spuštění experimentu. Připojte školicí data ke konfiguraci a upravte nastavení, které řídí proces školení.
+1. Odešlete experiment pro vyladění modelu. Po odeslání experimentu se proces prochází pomocí různých algoritmů strojového učení a nastavení vlastních parametrů, které dodržuje vaše definovaná omezení. Vybírá model nejlépe vyhovující optimalizacim metriky přesnosti.
 
 ### <a name="define-settings-for-autogeneration-and-tuning"></a>Definovat nastavení pro automatické generování a ladění
 
-Definujte parametr experiment a nastavení pro ladění a automatické generování modelu. Zobrazit úplný seznam [nastavení](how-to-configure-auto-train.md). Odeslání experimentu s těmito nastaveními výchozí bude trvat přibližně 10 – 15 minut, ale pokud chcete, aby v kratší době spuštění snížit buď `iterations` nebo `iteration_timeout_minutes`.
+Definujte parametr experimentu a nastavení modelu pro automatického generování a ladění. Zobrazit úplný seznam [nastavení](how-to-configure-auto-train.md). Odeslání experimentu s těmito výchozími nastaveními bude trvat přibližně 10-15 min, ale pokud budete chtít kratší dobu běhu, snižte `iterations` buď `iteration_timeout_minutes`nebo.
 
 
 |Vlastnost| Hodnota v tomto kurzu |Popis|
 |----|----|---|
-|**iteration_timeout_minutes**|10|Časový limit během několika minut pro každou iteraci. Zmenšete tuto hodnotu a snížit celkové doby běhu.|
-|**iterations**|30|Počet iterací. V každé iteraci se trénuje nový model strojového učení s vašimi daty. Jedná se o primární hodnotu, která ovlivní celkové doby běhu.|
-|**primary_metric**| spearman_correlation | Metrika, kterou chcete optimalizovat Přizpůsobený modelu bude zvolen v závislosti na tuto metriku.|
-|**preprocess**| True | S použitím **True**, experiment můžete předběžně zpracovat vstupní data (zpracování chybí data, převod textu na číselné, atd.)|
+|**iteration_timeout_minutes**|10|Časový limit pro každou iteraci v minutách Snižte tuto hodnotu pro snížení celkové doby běhu.|
+|**iterations**|30|Počet iterací. V každé iteraci se nový model strojového učení vyškole s Vašimi daty. Toto je primární hodnota, která má vliv na celkovou dobu běhu.|
+|**primary_metric**| spearman_correlation | Metrika, kterou chcete optimalizovat Model nejlépe přizpůsoben se vybere na základě této metriky.|
+|**preprocess**| Pravda | Pomocí **true**může experiment předzpracovat vstupní data (zpracování chybějících dat, převod textu na číslo atd.).|
 |**Úroveň podrobností**| logging.INFO | Určuje úroveň protokolování.|
-|**n_cross_validations**|5|Počet rozdělí křížového ověření provést, pokud není zadána data pro ověření.|
+|**n_cross_validations**|5|Počet rozdělení křížového ověření, které se mají provést, pokud nejsou zadaná ověřovací data.|
 
 
 
 ```python
 automl_settings = {
-    "iteration_timeout_minutes" : 10,
-    "iterations" : 30,
-    "primary_metric" : 'spearman_correlation',
-    "preprocess" : True,
-    "verbosity" : logging.INFO,
+    "iteration_timeout_minutes": 10,
+    "iterations": 30,
+    "primary_metric": 'spearman_correlation',
+    "preprocess": True,
+    "verbosity": logging.INFO,
     "n_cross_validations": 5
 }
 ```
 
-Použít jako parametr pro nastavení definované školení `AutoMLConfig` objektu. Kromě toho určit trénovacích dat a typ modelu, který je `regression` v tomto případě.
+Použijte vaše definovaná nastavení školení jako parametr `AutoMLConfig` objektu. Dále určete vaše školicí údaje a typ modelu, který je `regression` v tomto případě.
 
 ```python
 from azureml.train.automl import AutoMLConfig
 
 # local compute
-automated_ml_config = AutoMLConfig(task = 'regression',
-                             debug_log = 'automated_ml_errors.log',
-                             path = project_folder,
-                             X = x_train.values,
-                             y = y_train.values.flatten(),
-                             **automl_settings)
+automated_ml_config = AutoMLConfig(task='regression',
+                                   debug_log='automated_ml_errors.log',
+                                   path=project_folder,
+                                   X=x_train.values,
+                                   y=y_train.values.flatten(),
+                                   **automl_settings)
 ```
 
 ### <a name="train-the-automatic-regression-model"></a>Trénování automatické regresní model
 
-Spusťte experiment místně. Předejte definovanou `automated_ml_config` objektu do experimentu. Nastavte výstup na `True` postup zobrazení průběhu během testu:
+Spusťte experiment místně. Předejte definovanému `automated_ml_config` objektu experiment. Nastavte výstup na `True` , aby se zobrazil průběh během experimentu:
 
 
 ```python
 from azureml.core.experiment import Experiment
-experiment=Experiment(ws, experiment_name)
+experiment = Experiment(ws, experiment_name)
 local_run = experiment.submit(automated_ml_config, show_output=True)
 ```
 
-Aktualizace výstupu live při spuštění testu. Pro každou iteraci zobrazí typ modelu, doba trvání běhu a přesnost školení. Pole `BEST` stopy s tím nejlepším skóre školení podle metriky typu.
+Výstup zobrazený v průběhu experimentu se aktualizuje v reálném čase. Pro každou iteraci vidíte typ modelu, dobu trvání běhu a přesnost školení. Pole `BEST` sleduje nejlepší průběžné školení na základě typu metriky.
 
     Parent Run ID: AutoML_02778de3-3696-46e9-a71b-521c8fca0651
     *******************************************************************************************
@@ -744,9 +746,9 @@ Aktualizace výstupu live při spuštění testu. Pro každou iteraci zobrazí t
 
 Prozkoumejte výsledky automatického školení s pomůckou Jupyter nebo prozkoumáním historie experimentu.
 
-### <a name="option-1-add-a-jupyter-widget-to-see-results"></a>Option 1: Přidat pomůcku Jupyter zobrazíte výsledky
+### <a name="option-1-add-a-jupyter-widget-to-see-results"></a>Možnost 1: Přidání widgetu Jupyter pro zobrazení výsledků
 
-Pokud používáte Poznámkový blok Jupyter, pomocí tohoto widgetu Poznámkový blok Jupyter zobrazíte graf a tabulku všechny výsledky:
+Pokud používáte Poznámkový blok Jupyter, můžete pomocí tohoto widgetu Jupyter poznámkového bloku zobrazit graf a tabulku všech výsledků:
 
 
 ```python
@@ -754,19 +756,20 @@ from azureml.widgets import RunDetails
 RunDetails(local_run).show()
 ```
 
-![Podrobnosti o spuštění Jupyter widgetu](./media/tutorial-auto-train-models/automl-dash-output.png)
-![Jupyter widgetu graf](./media/tutorial-auto-train-models/automl-chart-output.png)
+![Jupyter widget detail Run](./media/tutorial-auto-train-models/automl-dash-output.png)
+Details![Jupyter](./media/tutorial-auto-train-models/automl-chart-output.png)
 
-### <a name="option-2-get-and-examine-all-run-iterations-in-python"></a>Option 2: Získání a zkontrolovat všechny spuštění iterace v Pythonu
+### <a name="option-2-get-and-examine-all-run-iterations-in-python"></a>Možnost 2: Získání a kontrola všech iterací běhu v Pythonu
 
-Můžete také načíst historii každé experiment a prozkoumání jednotlivých metrik pro každé spuštění iterace. Prozkoumáním RMSE (root_mean_squared_error) pro každé jednotlivé modelu spustit uvidíte, že většina iterací jsou předpověď taxislužby veletrh náklady v rozumné okraj (3-4 USD).
+Můžete také získat historii každého experimentu a prozkoumat jednotlivé metriky pro každý běh iterace. Prověřením RMSE (root_mean_squared_error) pro každý jednotlivý model spouštíte, že většina iterací předpovídá náklady na taxislužby spravedlivou dobu v rozumném rozpětí ($ 3-4).
 
 ```python
 children = list(local_run.get_children())
 metricslist = {}
 for run in children:
     properties = run.get_properties()
-    metrics = {k: v for k, v in run.get_metrics().items() if isinstance(v, float)}
+    metrics = {k: v for k, v in run.get_metrics().items()
+               if isinstance(v, float)}
     metricslist[int(properties['iteration'])] = metrics
 
 rundata = pd.DataFrame(metricslist).sort_index(1)
@@ -1107,7 +1110,7 @@ rundata
 
 ## <a name="retrieve-the-best-model"></a>Načíst tento nejlepší model
 
-Vyberte nejlepší kanál z našich iterací. `get_output` Metodu na `automl_classifier` vrátí nejlepší spuštění a vybavené model pro poslední přizpůsobit vyvolání. Pomocí přetížení na `get_output`, můžete získat nejlepší spuštění a přihlášení vybavené model pro některé metriky nebo konkrétní iteraci:
+Vyberte nejlepší kanál z našich iterací. `get_output` Metodu na `automl_classifier` vrátí nejlepší spuštění a vybavené model pro poslední přizpůsobit vyvolání. Pomocí přetížení `get_output`můžete načíst nejlepší běh a namontovaný model pro všechny protokolované metriky nebo konkrétní iteraci:
 
 ```python
 best_run, fitted_model = local_run.get_output()
@@ -1117,14 +1120,14 @@ print(fitted_model)
 
 ## <a name="test-the-best-model-accuracy"></a>Testování osvědčených přesnost modelu
 
-Nejlepší model použijte ke spuštění předpovědi na základě testovací datové předpovědět tarify taxislužby. Funkce `predict` používá nejlepší model a predikuje hodnoty y, **dojít náklady**, z `x_test` datové sady. Tisk prvních 10 předpovědět hodnot z nákladů `y_predict`:
+Použijte nejlepší model pro spuštění předpovědi na testovací sadě pro předpověď taxislužby tarifs. Funkce `predict` využívá nejlepší model a předpovídá hodnoty y, **nákladů na cestu**z `x_test` datové sady. Vytiskněte prvních 10 předpokládaných hodnot nákladů z `y_predict`:
 
 ```python
 y_predict = fitted_model.predict(x_test.values)
 print(y_predict[:10])
 ```
 
-Vytvoření korelačního diagramu k vizualizaci hodnoty předpokládaných nákladů ve srovnání s hodnotami skutečné náklady. Následující kód používá `distance` funkce jako osu x a o jízdách `cost` jako osy y. Určený k porovnání odchylku předpokládaných nákladů na jednotlivé hodnoty vzdálenost o jízdách prvních 100 předpovídat a skutečné náklady jsou vytvořeny jako samostatné řady. Zkoumání vykreslení ukazuje, že je téměř lineárním relace vzdálenosti a náklady a náklady na předpokládané hodnoty jsou ve většině případů velmi blízko skutečné náklady hodnoty pro stejnou o jízdách vzdálenost.
+Vytvořte bodový graf pro vizualizaci předpokládaných hodnot nákladů v porovnání se skutečnými hodnotami nákladů. Následující kód používá `distance` funkci jako osu x a cestu `cost` jako osu y. K porovnání rozptylu předpokládaných nákladů na každé úrovni služební dráhy jsou první 100 předpovězené a skutečné náklady vytvořené jako samostatné řady. Prozkoumáním grafu se dozvíte, že vztah vzdálenosti a nákladů je skoro lineární a předpovězené hodnoty nákladů jsou ve většině případů velmi blízko skutečných hodnot nákladů pro stejnou vzdálenost na cestách.
 
 ```python
 %matplotlib inline
@@ -1137,8 +1140,10 @@ ax1 = fig.add_subplot(111)
 distance_vals = [x[4] for x in x_test.values]
 y_actual = y_test.values.flatten().tolist()
 
-ax1.scatter(distance_vals[:100], y_predict[:100], s=18, c='b', marker="s", label='Predicted')
-ax1.scatter(distance_vals[:100], y_actual[:100], s=18, c='r', marker="o", label='Actual')
+ax1.scatter(distance_vals[:100], y_predict[:100],
+            s=18, c='b', marker="s", label='Predicted')
+ax1.scatter(distance_vals[:100], y_actual[:100],
+            s=18, c='r', marker="o", label='Actual')
 
 ax1.set_xlabel('distance (mi)')
 ax1.set_title('Predicted and Actual Cost/Distance')
@@ -1149,9 +1154,9 @@ plt.rcParams.update({'font.size': 14})
 plt.show()
 ```
 
-![Predikce korelačního diagramu](./media/tutorial-auto-train-models/automl-scatter-plot.png)
+![Bodový graf předpovědi](./media/tutorial-auto-train-models/automl-scatter-plot.png)
 
-Vypočítat `root mean squared error` výsledků. Použití `y_test` datového rámce. Převeďte ji do seznamu k porovnání předpovězeným hodnotám. Funkce `mean_squared_error` má dvě pole hodnot a vypočítá průměrné kvadratická chyba mezi nimi. S ohledem druhou odmocninu výsledku vrátí chybu v stejné jednotky jako proměnnou y **náklady**. Označuje zhruba dole jsou předpovědi tarif taxislužby od skutečné tarify:
+`root mean squared error` Vypočítá výsledky. `y_test` Použijte datový rámec. Převeďte jej na seznam pro porovnání s předpokládanými hodnotami. Funkce `mean_squared_error` přebírá dvě pole hodnot a vypočítá průměrnou kvadratickou chybu mezi nimi. Výsledkem druhé odmocniny výsledku je chyba ve stejných jednotkách jako proměnná y, **náklady**. Uvádí zhruba, jak daleko se taxislužby tarif předpovědi ze skutečné ceny:
 
 ```python
 from sklearn.metrics import mean_squared_error
@@ -1163,7 +1168,7 @@ rmse
 
     3.2204936862688798
 
-Spusťte následující kód k výpočtu střední absolutní chyba procenta (MAPE) s použitím plně `y_actual` a `y_predict` datové sady. Tato metrika vypočítá absolutní rozdíl mezi každou předpokládané a skutečnou hodnotu a součty všech rozdíly. Pak vyjadřuje tento součet jako procentuální podíl celkového počtu skutečnými hodnotami:
+Spusťte následující kód, který vypočítá průměrnou absolutní procentuální chybu (mape) pomocí úplného `y_actual` a `y_predict` datových sad. Tato metrika vypočítá absolutní rozdíl mezi každou předpovězenou a skutečnou hodnotou a sečte všechny rozdíly. Pak vyjadřuje, že součet jako procento z celkového počtu skutečných hodnot:
 
 ```python
 sum_actuals = sum_errors = 0
@@ -1190,7 +1195,7 @@ print(1 - mean_abs_percent_error)
     Model Accuracy:
     0.8945484613043041
 
-Z metriky přesnosti konečné předpovědi uvidíte, že je velmi vhodný pro predikci taxislužby tarify z datové sady funkcí, obvykle v rámci + - $3.00 model. Tradiční strojového učení proces vývoje modelu je velmi náročná a vyžaduje investice významné domény znalostní báze a čas ke spuštění a porovnávat výsledky desítky modely. Pomocí automatizovaných machine learning je skvělý způsob, jak rychle otestovat mnoho různých modelů pro váš scénář.
+Z konečné metriky přesnosti předpovědi vidíte, že model je poměrně dobrý pro předpověď taxislužby tarifů z funkcí datové sady, obvykle v rámci +-$3,00. Tradiční strojového učení proces vývoje modelu je velmi náročná a vyžaduje investice významné domény znalostní báze a čas ke spuštění a porovnávat výsledky desítky modely. Používání automatizovaného strojového učení je skvělým způsobem, jak rychle testovat spoustu různých modelů pro váš scénář.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
@@ -1198,11 +1203,11 @@ Z metriky přesnosti konečné předpovědi uvidíte, že je velmi vhodný pro p
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto automatizované kurzu strojového učení jste provedli následující úlohy:
+V tomto kurzu automatizovaného strojového učení jste provedli následující úlohy:
 
 > [!div class="checklist"]
-> * Nakonfigurovaný pracovní prostor a připravená data experimentu.
-> * Školení s využitím automatizovaných regresní model místně pomocí vlastních parametrů.
-> * Školení prozkoumaných a přezkoumání výsledků.
+> * Nakonfigurovali jste pracovní prostor a připravené data pro experiment.
+> * Vyškoleno pomocí automatizovaného regresního modelu místně s vlastními parametry.
+> * Prozkoumání a přezkoumání výsledků školení.
 
 [Nasazení modelu](tutorial-deploy-models-with-aml.md) službou Azure Machine Learning.

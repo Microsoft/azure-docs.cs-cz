@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 06/28/2019
 ms.author: aahi
-ms.openlocfilehash: fdef4bc582a61033a45b88d2ab7dcf9da92a91f1
-ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
+ms.openlocfilehash: 69f22d92cc586942d3e368a164d6e95f52aa3eea
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68305500"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68356892"
 ---
 # <a name="quickstart-using-the-python-rest-api-to-call-the-text-analytics-cognitive-service"></a>Rychlý start: Použití REST API Pythonu k volání služby Analýza textu rozpoznávání 
 <a name="HOLTop"></a>
@@ -73,18 +73,18 @@ language_api_url = text_analytics_base_url + "languages"
 Datová část pro rozhraní API se skládá ze seznamu `documents`, který je řazenými kolekcemi členů `id` obsahující a `text` atributem. Atribut ukládá text, který má být analyzován, `id` a může být libovolná hodnota. `text` 
 
 ```python
-documents = { "documents": [
-    { "id": "1", "text": "This is a document written in English." },
-    { "id": "2", "text": "Este es un document escrito en Español." },
-    { "id": "3", "text": "这是一个用中文写的文件" }
+documents = {"documents": [
+    {"id": "1", "text": "This is a document written in English."},
+    {"id": "2", "text": "Este es un document escrito en Español."},
+    {"id": "3", "text": "这是一个用中文写的文件"}
 ]}
 ```
 
 K posílání dokumentů do rozhraní API použijte knihovnu požadavků. Přidejte do `Ocp-Apim-Subscription-Key` záhlaví klíč předplatného a odešlete žádost pomocí `requests.post()`. 
 
 ```python
-headers   = {"Ocp-Apim-Subscription-Key": subscription_key}
-response  = requests.post(language_api_url, headers=headers, json=documents)
+headers = {"Ocp-Apim-Subscription-Key": subscription_key}
+response = requests.post(language_api_url, headers=headers, json=documents)
 languages = response.json()
 pprint(languages)
 ```
@@ -142,19 +142,23 @@ sentiment_url = text_analytics_base_url + "sentiment"
 Stejně jako u příkladu detekce jazyka vytvořte slovník s `documents` klíčem, který se skládá ze seznamu dokumentů. Každý dokument je řazená kolekce členů skládající se z hodnot `id`, `text` (text, který se má analyzovat) a `language` (jazyk textu). 
 
 ```python
-documents = {"documents" : [
-  {"id": "1", "language": "en", "text": "I had a wonderful experience! The rooms were wonderful and the staff was helpful."},
-  {"id": "2", "language": "en", "text": "I had a terrible time at the hotel. The staff was rude and the food was awful."},  
-  {"id": "3", "language": "es", "text": "Los caminos que llevan hasta Monte Rainier son espectaculares y hermosos."},  
-  {"id": "4", "language": "es", "text": "La carretera estaba atascada. Había mucho tráfico el día de ayer."}
+documents = {"documents": [
+    {"id": "1", "language": "en",
+        "text": "I had a wonderful experience! The rooms were wonderful and the staff was helpful."},
+    {"id": "2", "language": "en",
+        "text": "I had a terrible time at the hotel. The staff was rude and the food was awful."},
+    {"id": "3", "language": "es",
+        "text": "Los caminos que llevan hasta Monte Rainier son espectaculares y hermosos."},
+    {"id": "4", "language": "es",
+     "text": "La carretera estaba atascada. Había mucho tráfico el día de ayer."}
 ]}
 ```
 
 K posílání dokumentů do rozhraní API použijte knihovnu požadavků. Přidejte do `Ocp-Apim-Subscription-Key` záhlaví klíč předplatného a odešlete žádost pomocí `requests.post()`. 
 
 ```python
-headers   = {"Ocp-Apim-Subscription-Key": subscription_key}
-response  = requests.post(sentiment_url, headers=headers, json=documents)
+headers = {"Ocp-Apim-Subscription-Key": subscription_key}
+response = requests.post(sentiment_url, headers=headers, json=documents)
 sentiments = response.json()
 pprint(sentiments)
 ```
@@ -191,7 +195,7 @@ Mínění skóre dokumentu je mezi 0,0 a 1,0 a s vyšším skóre, které signal
 
 <a name="KeyPhraseExtraction"></a>
 
-## <a name="extract-key-phrases"></a>Extrakce klíčových frází
+## <a name="extract-key-phrases"></a>Extrahovat klíčové fráze
  
 Pro extrakci klíčových frází ze sady dokumentů přidejte `keyPhrases` do základního koncového bodu analýza textu, aby bylo možné vytvořit adresu URL pro zjišťování jazyka. Příklad: `https://westcentralus.api.cognitive.microsoft.com/text/analytics/v2.1/keyPhrases`
     
@@ -202,19 +206,23 @@ keyphrase_url = text_analytics_base_url + "keyPhrases"
 Tato kolekce dokumentů se používá jako příklad analýzy mínění.
 
 ```python
-documents = {"documents" : [
-  {"id": "1", "language": "en", "text": "I had a wonderful experience! The rooms were wonderful and the staff was helpful."},
-  {"id": "2", "language": "en", "text": "I had a terrible time at the hotel. The staff was rude and the food was awful."},  
-  {"id": "3", "language": "es", "text": "Los caminos que llevan hasta Monte Rainier son espectaculares y hermosos."},  
-  {"id": "4", "language": "es", "text": "La carretera estaba atascada. Había mucho tráfico el día de ayer."}
+documents = {"documents": [
+    {"id": "1", "language": "en",
+        "text": "I had a wonderful experience! The rooms were wonderful and the staff was helpful."},
+    {"id": "2", "language": "en",
+        "text": "I had a terrible time at the hotel. The staff was rude and the food was awful."},
+    {"id": "3", "language": "es",
+        "text": "Los caminos que llevan hasta Monte Rainier son espectaculares y hermosos."},
+    {"id": "4", "language": "es",
+     "text": "La carretera estaba atascada. Había mucho tráfico el día de ayer."}
 ]}
 ```
 
 K posílání dokumentů do rozhraní API použijte knihovnu požadavků. Přidejte do `Ocp-Apim-Subscription-Key` záhlaví klíč předplatného a odešlete žádost pomocí `requests.post()`. 
 
 ```python
-headers   = {"Ocp-Apim-Subscription-Key": subscription_key}
-response  = requests.post(keyphrase_url, headers=headers, json=documents)
+headers = {"Ocp-Apim-Subscription-Key": subscription_key}
+response = requests.post(keyphrase_url, headers=headers, json=documents)
 key_phrases = response.json()
 pprint(key_phrases)
 ```
@@ -276,16 +284,16 @@ entities_url = text_analytics_base_url + "entities"
 Vytvořte kolekci dokumentů, jako v předchozích příkladech. 
 
 ```python
-documents = {"documents" : [
-  {"id": "1", "text": "Microsoft was founded by Bill Gates and Paul Allen on April 4, 1975, to develop and sell BASIC interpreters for the Altair 8800."}
+documents = {"documents": [
+    {"id": "1", "text": "Microsoft was founded by Bill Gates and Paul Allen on April 4, 1975, to develop and sell BASIC interpreters for the Altair 8800."}
 ]}
 ```
 
 K posílání dokumentů do rozhraní API použijte knihovnu požadavků. Přidejte do `Ocp-Apim-Subscription-Key` záhlaví klíč předplatného a odešlete žádost pomocí `requests.post()`.
 
 ```python
-headers   = {"Ocp-Apim-Subscription-Key": subscription_key}
-response  = requests.post(entities_url, headers=headers, json=documents)
+headers = {"Ocp-Apim-Subscription-Key": subscription_key}
+response = requests.post(entities_url, headers=headers, json=documents)
 entities = response.json()
 pprint(entities)
 ```
@@ -370,7 +378,7 @@ pprint(entities)
  'errors': []}
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
 > [Analýza textu s využitím Power BI](../tutorials/tutorial-power-bi-key-phrases.md)

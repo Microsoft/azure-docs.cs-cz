@@ -4,21 +4,21 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/29/2019
 ms.author: erhopf
-ms.openlocfilehash: 5f06ca04b0b6ea48ebb49952df71cb02946777fa
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: 22a95be43f06e95a6067b179b3023ba94ee5795d
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67333369"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68362484"
 ---
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Ověřování
 
-Každý požadavek vyžaduje také hlavičku ověřování. Tato tabulka ukazuje, které hlavičky jsou podporovány pro každou službu:
+Každá žádost vyžaduje autorizační hlavičku. Tato tabulka ukazuje, které hlavičky jsou podporovány pro každou službu:
 
 | Podporované autorizační hlavičky | Převod řeči na text | Převod textu na řeč |
 |------------------------|----------------|----------------|
 | OCP-Apim-Subscription-Key | Ano | Ne |
-| Autorizace: Nosiče | Ano | Ano |
+| udělován Nosný | Ano | Ano |
 
 Při použití `Ocp-Apim-Subscription-Key` záhlaví, je nutné pouze zadejte klíč předplatného. Příklad:
 
@@ -26,7 +26,7 @@ Při použití `Ocp-Apim-Subscription-Key` záhlaví, je nutné pouze zadejte kl
 'Ocp-Apim-Subscription-Key': 'YOUR_SUBSCRIPTION_KEY'
 ```
 
-Při použití `Authorization: Bearer` záhlaví, budete muset vytvořit žádost o `issueToken` koncového bodu. V této žádosti o výměnu váš klíč předplatného pro přístupový token, který je platný 10 minut. V následujících částech dozvíte, jak získat token a používá token.
+Při použití `Authorization: Bearer` záhlaví, budete muset vytvořit žádost o `issueToken` koncového bodu. V této žádosti o výměnu váš klíč předplatného pro přístupový token, který je platný 10 minut. V následujících částech se dozvíte, jak získat token a použít token.
 
 ### <a name="how-to-get-an-access-token"></a>Jak získat přístupový token
 
@@ -50,7 +50,7 @@ Content-type: application/x-www-form-urlencoded
 Content-Length: 0
 ```
 
-Text odpovědi obsahuje přístupový token ve formátu JSON Web Token (JWT).
+Tělo odpovědi obsahuje přístupový token ve formátu JSON Web Token (JWT).
 
 #### <a name="powershell-sample"></a>Ukázka PowerShellu
 
@@ -121,7 +121,7 @@ public class Authentication
 }
 ```
 
-#### <a name="python-sample"></a>Ukázky Pythonu
+#### <a name="python-sample"></a>Ukázka Pythonu
 
 ```python
 # Request module must be installed.
@@ -129,6 +129,7 @@ public class Authentication
 import requests
 
 subscription_key = 'REPLACE_WITH_YOUR_KEY'
+
 
 def get_token(subscription_key):
     fetch_token_url = 'https://westus.api.cognitive.microsoft.com/sts/v1.0/issueToken'

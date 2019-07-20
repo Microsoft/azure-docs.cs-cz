@@ -1,6 +1,6 @@
 ---
-title: Kurz – Stream Azure Active Directory protokolů do centra událostí Azure | Dokumentace Microsoftu
-description: Zjistěte, jak nastavit Azure Diagnostics tak, aby nabízel protokoly služby Azure Active Directory do centra událostí
+title: Kurz – Stream Azure Active Directory protokoly do centra událostí Azure | Microsoft Docs
+description: Přečtěte si, jak nastavit Azure Diagnostics pro odesílání Azure Active Directory protokolů do centra událostí.
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -17,16 +17,16 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 906da7ac6b0086e4efca7c38171668a08f687d19
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: bd55abac534407facd0cb416012767b9f2e39fd8
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60437213"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68360012"
 ---
-# <a name="tutorial-stream-azure-active-directory-logs-to-an-azure-event-hub"></a>Kurz: Stream protokolů služby Azure Active Directory do centra událostí Azure
+# <a name="tutorial-stream-azure-active-directory-logs-to-an-azure-event-hub"></a>Kurz: Streamování protokolů Azure Active Directory do centra událostí Azure
 
-V tomto kurzu se dozvíte, jak nastavit nastavení diagnostiky Azure Monitor k Azure Active Directory (Azure AD) streamování protokolů do služby Azure event hub. Tento mechanismus můžete použít k integraci svých protokolů s nástroji pro správu akcí a informací o zabezpečení (SIEM) třetích stran, jako je Splunk nebo QRadar.
+V tomto kurzu se naučíte nastavit Azure Monitor nastavení diagnostiky pro streamování protokolů Azure Active Directory (Azure AD) do centra událostí Azure. Tento mechanismus můžete použít k integraci svých protokolů s nástroji pro správu akcí a informací o zabezpečení (SIEM) třetích stran, jako je Splunk nebo QRadar.
 
 ## <a name="prerequisites"></a>Požadavky 
 
@@ -37,7 +37,7 @@ Pokud chcete používat tuto funkci, potřebujete tyto položky:
 * Uživatele, který je *globálním správcem* nebo *správcem zabezpečení* pro tohoto tenanta Azure AD.
 * Obor názvů služby Event Hubs a centrum událostí ve vašem předplatném Azure. Informace o tom, jak [vytvořit centrum událostí](https://docs.microsoft.com/azure/event-hubs/event-hubs-create).
 
-## <a name="stream-logs-to-an-event-hub"></a>Stream protokolů do centra událostí
+## <a name="stream-logs-to-an-event-hub"></a>Streamování protokolů do centra událostí
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). 
 
@@ -50,7 +50,7 @@ Pokud chcete používat tuto funkci, potřebujete tyto položky:
     * Pokud chcete přidat nové nastavení, vyberte **Přidat nastavení diagnostiky**.  
       Můžete mít až tři nastavení.
 
-      ![Export nastavení](./media/quickstart-azure-monitor-stream-logs-to-event-hub/ExportSettings.png)
+      ![Exportovat nastavení](./media/quickstart-azure-monitor-stream-logs-to-event-hub/ExportSettings.png)
 
 5. Zaškrtněte políčko **Streamovat do centra událostí** a pak vyberte **Centrum událostí / Konfigurovat**.
 
@@ -76,17 +76,21 @@ Pokud chcete používat tuto funkci, potřebujete tyto položky:
 Jakmile se data zobrazí v centru událostí, můžete k nim přistupovat a číst je dvěma způsoby:
 
 * **Konfigurace podporovaného nástroje SIEM**. Většina nástrojů vyžaduje ke čtení dat z centra událostí připojovací řetězec centra událostí a určitá oprávnění k vašemu předplatnému Azure. Mezi nástroje třetích stran, které se integrují se službou Azure Monitor, patří mimo jiné:
-    * **Splunk**: Další informace o integraci protokolů Azure AD s Splunk, naleznete v tématu [protokolů integrace Azure AD pomocí Splunk pomocí Azure monitoru](tutorial-integrate-activity-logs-with-splunk.md).
     
-    * **IBM QRadar**: DSM a Azure Event Hub protokolu jsou k dispozici ke stažení na [IBM podporu](https://www.ibm.com/support). Další informace o integraci s Azure najdete na webu [IBM QRadar Security Intelligence Platform 7.3.0](https://www.ibm.com/support/knowledgecenter/SS42VS_DSM/c_dsm_guide_microsoft_azure_overview.html?cp=SS42VS_7.3.0).
+    * **ArcSight**: Další informace o integraci protokolů služby Azure AD s Splunk najdete v tématu [integrace protokolů Azure Active Directory s ArcSight pomocí Azure monitor](howto-integrate-activity-logs-with-arcsight.md).
     
-    * **Logika sumo**: Pokud chcete nastavit Sumo logiky využívají data z centra událostí, přečtěte si [nainstalovat aplikaci Azure AD a zobrazit řídicí panely](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure_Active_Directory/Install_the_Azure_Active_Directory_App_and_View_the_Dashboards). 
+    * **Splunk**: Další informace o integraci protokolů služby Azure AD s Splunk najdete v tématu [integrace protokolů služby Azure AD s Splunk pomocí Azure monitor](tutorial-integrate-activity-logs-with-splunk.md).
+    
+    * **IBM QRadar**: Protokol DSM a centrum událostí Azure je k dispozici ke stažení na webu [IBM support](https://www.ibm.com/support). Další informace o integraci s Azure najdete na webu [IBM QRadar Security Intelligence Platform 7.3.0](https://www.ibm.com/support/knowledgecenter/SS42VS_DSM/c_dsm_guide_microsoft_azure_overview.html?cp=SS42VS_7.3.0).
+    
+    * **Sumo logika**: Pokud chcete nastavit logiku sumo a využívat data z centra událostí, přečtěte si téma [instalace aplikace Azure AD a zobrazení řídicích panelů](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure_Active_Directory/Install_the_Azure_Active_Directory_App_and_View_the_Dashboards). 
 
 * **Nastavení vlastních nástrojů**. Pokud diagnostika služby Azure Monitor ještě nepodporuje váš stávající nástroj SIEM, můžete pomocí rozhraní API služby Event Hubs nastavit vlastní nástroje. Další informace najdete v tématu [Začínáme s přijímáním zpráv z centra událostí](https://docs.microsoft.com/azure/event-hubs/event-hubs-dotnet-standard-getstarted-receive-eph).
 
 
 ## <a name="next-steps"></a>Další postup
 
+* [Integrace protokolů Azure Active Directory s využitím ArcSight pomocí Azure Monitor](howto-integrate-activity-logs-with-arcsight.md)
 * [Integrace protokolů Azure AD s nástrojem Splunk pomocí služby Azure Monitor](tutorial-integrate-activity-logs-with-splunk.md)
 * [Integrace protokolů Azure AD s nástrojem SumoLogic pomocí služby Azure Monitor](howto-integrate-activity-logs-with-sumologic.md)
 * [Interpretace schématu protokolů auditu ve službě Azure Monitor](reference-azure-monitor-audit-log-schema.md)
