@@ -4,12 +4,12 @@ ms.author: dapine
 ms.date: 06/26/2019
 ms.service: cognitive-services
 ms.topic: include
-ms.openlocfilehash: 9b1243760b3830830268cb386309254f8f0bd90a
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 71f81c23b63d6299e7f48ed9b7d9a6f70841f91f
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67704330"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68356983"
 ---
 > [!TIP]
 > Můžete použít [imagí dockeru](https://docs.docker.com/engine/reference/commandline/images/) příkazu zobrazte výpis imagí kontejnerů stažené. Například následující příkaz zobrazí seznam ID, úložiště a značka image každý stažený kontejneru, formátovaná jako tabulka:
@@ -17,6 +17,6 @@ ms.locfileid: "67704330"
 >  ```
 >  docker images --format "table {{.ID}}\t{{.Repository}}\t{{.Tag}}"
 >
->  IMAGE ID            REPOSITORY              TAG
->  <image-id>       <repository-path/name>         <tag-name>
+>  IMAGE ID         REPOSITORY                TAG
+>  <image-id>       <repository-path/name>    <tag-name>
 >  ```
