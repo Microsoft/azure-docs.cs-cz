@@ -110,7 +110,7 @@ V jazyce JavaScript [vazby](functions-triggers-bindings.md) se konfigurují a de
 
 ### <a name="inputs"></a>Vstupy
 Vstup dělí do dvou kategorií ve službě Azure Functions: jeden je vstup triggeru a druhý je další vstupy. Aktivační události a dalších vstupních vazeb (vazby `direction === "in"`) lze číst pomocí funkce třemi způsoby:
- - ** _[Doporučuje]_  Jako parametry předaný do funkce.** Jsou předávány do funkce ve stejném pořadí, ve kterém jsou definovány v *function.json*. `name` Vlastnosti definované v *function.json* nemusí odpovídat názvu parametru, přestože by měl.
+ - **_[Doporučuje]_  Jako parametry předaný do funkce.** Jsou předávány do funkce ve stejném pořadí, ve kterém jsou definovány v *function.json*. `name` Vlastnosti definované v *function.json* nemusí odpovídat názvu parametru, přestože by měl.
  
    ```javascript
    module.exports = async function(context, myTrigger, myInput, myOtherInput) { ... };
@@ -141,7 +141,7 @@ Výstupy (vazby `direction === "out"`) je možné zapisovat na funkci v několik
 
 Data můžete přiřadit výstupních vazeb v jednom z následujících způsobů (není sloučit tyto metody):
 
-- ** _[Doporučuje pro několik výstupů]_  Vrácení objektu.** Pokud používáte async/Promise vrácení funkce, můžete se vrátit objekt s přiřazenou výstupní data. V následujícím příkladu výstupních vazeb se pojmenují "httpResponse" a "queueOutput" *function.json*.
+- **_[Doporučuje pro několik výstupů]_  Vrácení objektu.** Pokud používáte async/Promise vrácení funkce, můžete se vrátit objekt s přiřazenou výstupní data. V následujícím příkladu výstupních vazeb se pojmenují "httpResponse" a "queueOutput" *function.json*.
 
   ```javascript
   module.exports = async function(context) {
@@ -156,7 +156,7 @@ Data můžete přiřadit výstupních vazeb v jednom z následujících způsob�
   ```
 
   Pokud používáte synchronní funkce, můžete se vrátit objekt pomocí [ `context.done` ](#contextdone-method) (viz příklad).
-- ** _[Doporučuje pro jeden výstup]_  Návratová hodnota přímo a pomocí názvu $return vazby.** Tento postup funguje pouze pro asynchronní/Promise vrácení funkce. Viz příklad v [export asynchronní funkce](#exporting-an-async-function). 
+- **_[Doporučuje pro jeden výstup]_  Návratová hodnota přímo a pomocí názvu $return vazby.** Tento postup funguje pouze pro asynchronní/Promise vrácení funkce. Viz příklad v [export asynchronní funkce](#exporting-an-async-function). 
 - **Přiřazování hodnot k `context.bindings`**  přímo do context.bindings můžete přiřadit hodnoty.
 
   ```javascript
@@ -397,9 +397,9 @@ Při práci s triggerů HTTP, můžete přístup k objektům HTTP požadavků a 
     ```javascript
     context.bindings.response = { status: 201, body: "Insert succeeded." };
     ```
-+ ** _[Pouze odpovědi]_  Voláním `context.res.send(body?: any)`.** Je vytvořen odpověď HTTP se vstupem `body` jako text odpovědi. `context.done()` je implicitně volána.
++ **_[Pouze odpovědi]_  Voláním `context.res.send(body?: any)`.** Je vytvořen odpověď HTTP se vstupem `body` jako text odpovědi. `context.done()` je implicitně volána.
 
-+ ** _[Pouze odpovědi]_  Voláním `context.done()`.** Speciálním typem vazby HTTP vrátí odpověď, která je předána `context.done()` metody. Následující HTTP výstupní vazby definuje `$return` výstupní parametr:
++ **_[Pouze odpovědi]_  Voláním `context.done()`.** Speciálním typem vazby HTTP vrátí odpověď, která je předána `context.done()` metody. Následující HTTP výstupní vazby definuje `$return` výstupní parametr:
 
     ```json
     {

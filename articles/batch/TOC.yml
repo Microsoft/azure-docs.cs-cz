@@ -61,6 +61,8 @@
           href: batch-account-create-portal.md
         - name: Správa účtů služby Batch pomocí rozhraní Batch Management .NET
           href: batch-management-dotnet.md
+        - name: Analýza nákladů a rozpočty
+          href: budget.md
     - name: Ověřování pomocí Azure AD
       items:
         - name: Azure AD se službou Batch
