@@ -220,7 +220,7 @@ Prvek system.version `speech.config` zpráva obsahuje verzi řeči SDK software 
 | Pole | Popis | Využití |
 |-|-|-|
 | os.platform | Operační systém platformy, který je hostitelem aplikace, například, Windows, Android, iOS nebo Linuxu |Požaduje se |
-| OS.Name | Název produktu operačního systému, například systému Debian nebo Windows 10 | Požaduje se |
+| os.name | Název produktu operačního systému, například systému Debian nebo Windows 10 | Požaduje se |
 | os.version | Verze operačního systému ve formě *major.minor.build.branch* | Požaduje se |
 
 ##### <a name="device-element"></a>Element zařízení
