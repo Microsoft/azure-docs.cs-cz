@@ -274,7 +274,7 @@
           items:
             - name: Přehled clusterů Azure
               href: service-fabric-azure-clusters-overview.md
-            - name: Typy uzlů a VM Scale Sets
+            - name: Typy uzlů a škálovací sady virtuálních počítačů
               href: service-fabric-cluster-nodetypes.md
             - name: Upgrade clusterů v Azure
               href: service-fabric-cluster-upgrade.md
@@ -547,8 +547,8 @@
           href: service-fabric-cloud-services-migration-worker-role-stateless-service.md
         - name: Doporučené postupy
           href: /azure/architecture/service-fabric/migrate-from-cloud-services
-        - name: Refaktoring migrované aplikace
-          href: /azure/architecture/service-fabric/refactor-migrated-app
+        - name: Modernizace vaší aplikace
+          href: /azure/architecture/service-fabric/modernize-app-azure-service-fabric
     - name: Správa životního cyklu aplikace
       items:
         - name: Balení aplikace

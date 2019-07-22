@@ -53,6 +53,8 @@
       href: functions-twitter-email.md
     - name: Vytvoření rozhraní API bez serveru
       href: functions-create-serverless-api.md
+    - name: Vývoj funkcí Pythonu s využitím editoru VS Code
+      href: tutorial-vs-code-serverless-python.md
     - name: Vytvoření definice OpenAPI
       href: functions-openapi-definition.md
     - name: Připojení k virtuální síti

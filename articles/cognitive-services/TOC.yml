@@ -31,9 +31,9 @@
           href: ../aks/tutorial-kubernetes-prepare-app.md
 - name: Šablony Rychlý start
   items:
-    - name: Vytvoření účtu na webu Azure Portal
+    - name: Vytvoření nového prostředku pomocí webu Azure Portal
       href: cognitive-services-apis-create-account.md
-    - name: Vytvoření účtu s využitím Azure CLI
+    - name: Vytvoření nového prostředku pomocí Azure CLI
       href: cognitive-services-apis-create-account-cli.md
     - name: Authentication
       href: authentication.md

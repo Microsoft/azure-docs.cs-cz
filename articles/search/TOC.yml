@@ -334,8 +334,6 @@
           href: cognitive-search-skill-keyphrases.md
         - name: Rozpoznávání jazyka
           href: cognitive-search-skill-language-detection.md
-        - name: Rozpoznávání pojmenovaných entit
-          href: cognitive-search-skill-named-entity-recognition.md
         - name: Rozpoznávání entit
           href: cognitive-search-skill-entity-recognition.md
         - name: Sloučení textu
@@ -344,6 +342,8 @@
           href: cognitive-search-skill-textsplit.md
         - name: Mínění
           href: cognitive-search-skill-sentiment.md
+        - name: Překlad textu (Preview)
+          href: cognitive-search-skill-text-translation.md
         - name: Analýza obrázků
           href: cognitive-search-skill-image-analysis.md
         - name: OCR
@@ -352,12 +352,15 @@
           href: cognitive-search-skill-shaper.md
         - name: Podmíněné
           href: cognitive-search-skill-conditional.md
-        - name: Zastaralé dovednosti
-          href: cognitive-search-skill-deprecated.md
     - name: Vlastní dovednosti
       items:
         - name: Vlastní webové rozhraní API
           href: cognitive-search-custom-skill-web-api.md
+    - name: Zastaralé dovednosti
+      href: cognitive-search-skill-deprecated.md
+      items:
+        - name: Rozpoznávání pojmenovaných entit
+          href: cognitive-search-skill-named-entity-recognition.md
 - name: Zdroje a prostředky
   items:
     - name: Podpora komunity Azure

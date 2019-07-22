@@ -29,6 +29,8 @@
       href: publish-service-catalog-app.md
     - name: Publikování aplikace Marketplace
       href: publish-marketplace-app.md
+    - name: Vytvoření spravované aplikace s využitím vlastního zprostředkovatele
+      href: tutorial-create-managed-app-with-custom-provider.md
 - name: Ukázky
   items:
     - name: Rozhraní příkazového řádku Azure
@@ -83,6 +85,14 @@
           href: custom-providers-proxy-cache-resource-endpoint-reference.md
         - name: Referenční informace ke koncovým bodům RESTful vlastních poskytovatelů
           href: reference-custom-providers-csharp-endpoint.md
+    - name: Artefakty aplikace
+      items:
+        - name: Prvky uživatelského rozhraní
+          href: reference-createuidefinition-artifact.md
+        - name: Šablona nasazení
+          href: reference-main-template-artifact.md
+        - name: Zobrazení definice
+          href: reference-view-definition-artifact.md
     - name: Azure CLI
       href: /cli/azure/managedapp
     - name: PowerShell
