@@ -56,8 +56,8 @@ Nebo, pokud už připojení existuje, zadejte informace potřebné pro aktivačn
    | Vlastnost | Požaduje se | Value | Popis |
    |----------|----------|-------|-------------|
    | Search Query | Ano | <*search-words*> | Zadejte hledaná klíčová slova, které chcete použít. |
-   | Market | Ano | <*Národní prostředí*> | Hledání národní prostředí. Výchozí hodnota je "en US", ale můžete vybrat jinou hodnotu. |
-   | Safe Search | Ano | <*úroveň hledání*> | Úroveň filtru pro vyloučení obsah pro dospělé. Výchozí hodnota je "Střední", ale vyberte jinou úroveň. |
+   | Market | Ano | <*Nlocale*> | Hledání národní prostředí. Výchozí hodnota je "en US", ale můžete vybrat jinou hodnotu. |
+   | Safe Search | Ano | <*search-level*> | Úroveň filtru pro vyloučení obsah pro dospělé. Výchozí hodnota je "Střední", ale vyberte jinou úroveň. |
    | Count | Ne | <*results-count*> | Vrátí zadaný počet výsledků. Výchozí hodnota je 20, ale můžete zadat jinou hodnotu. Skutečný počet vrácených výsledků může být nižší než zadané číslo. |
    | Offset | Ne | <*skip-value*> | Počet výsledků, chcete-li přeskočit před vrácením výsledky |
    |||||
