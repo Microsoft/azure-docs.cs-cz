@@ -11,12 +11,12 @@ ms.author: nilesha
 ms.reviewer: trbye
 ms.date: 04/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: a49ee5720711bb23ec4770de38a408827c645b73
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: bbb9653173925e1443504aa3f2e9c5e6edbfc486
+ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68360941"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68371031"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-build-your-regression-model"></a>Kurz: Použití automatizovaného strojového učení k sestavení regresního modelu
 
@@ -748,7 +748,7 @@ Prozkoumejte výsledky automatického školení s pomůckou Jupyter nebo prozkou
 
 ### <a name="option-1-add-a-jupyter-widget-to-see-results"></a>Možnost 1: Přidání widgetu Jupyter pro zobrazení výsledků
 
-Pokud používáte Poznámkový blok Jupyter, můžete pomocí tohoto widgetu Jupyter poznámkového bloku zobrazit graf a tabulku všech výsledků:
+Pokud používáte Poznámkový blok Jupyter, použijte tuto [pomůcku Jupyter](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py) k zobrazení grafu a tabulky všech výsledků:
 
 
 ```python
@@ -758,6 +758,13 @@ RunDetails(local_run).show()
 
 ![Jupyter widget detail Run](./media/tutorial-auto-train-models/automl-dash-output.png)
 Details![Jupyter](./media/tutorial-auto-train-models/automl-chart-output.png)
+
+Stejné výsledky jsou uloženy ve vašem pracovním prostoru.  Můžete získat odkaz na výsledky spuštění:
+
+```
+local_run.get_portal_url()
+```
+  
 
 ### <a name="option-2-get-and-examine-all-run-iterations-in-python"></a>Možnost 2: Získání a kontrola všech iterací běhu v Pythonu
 

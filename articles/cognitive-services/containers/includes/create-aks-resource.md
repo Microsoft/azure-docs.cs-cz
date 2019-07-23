@@ -1,7 +1,7 @@
 ---
-title: Vytvořte prostředek clusteru služby Azure Kubernetes
+title: Vytvoření prostředku clusteru služby Azure Kubernetes
 titleSuffix: Azure Cognitive Services
-description: Zjistěte, jak vytvořit prostředek Azure Kubernetes Service (AKS).
+description: Naučte se vytvořit prostředek služby Azure Kubernetes Service (AKS).
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -9,43 +9,43 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 7/3/2019
 ms.author: dapine
-ms.openlocfilehash: ab7ce8b4a538e6a286a00285069a22878c5d88d9
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 5e442f38a8e81170eeeac2f31f00a7d0eeb08d2b
+ms.sourcegitcommit: b49431b29a53efaa5b82f9be0f8a714f668c38ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67877458"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68377443"
 ---
-## <a name="create-an-azure-kubernetes-service-cluster-resource"></a>Vytvořte prostředek clusteru služby Azure Kubernetes
+## <a name="create-an-azure-kubernetes-service-cluster-resource"></a>Vytvoření prostředku clusteru služby Azure Kubernetes
 
-1. Přejděte na [Azure Kubernetes Service](https://ms.portal.azure.com/#create/microsoft.aks) a vyberte **vytvořit**.
+1. Přejít na [Azure Kubernetes Service](https://ms.portal.azure.com/#create/microsoft.aks)a vyberte **vytvořit**.
 
-1. Na **Základy** kartu, zadejte následující informace:
+1. Na kartě **základy** zadejte následující informace:
 
     |Nastavení|Value|
     |--|--|
-    |Subscription|Vyberte odpovídající předplatné|
-    |Resource group|Vyberte skupinu prostředků k dispozici|
-    |Název clusteru Kubernetes|Zadejte název (malá písmena)|
-    |Oblast|Vyberte nejbližší umístění|
-    |Verze Kubernetes|1.12.8 (výchozí)|
-    |Předpona názvu DNS|Vytvoří automaticky, ale můžete přepsat|
+    |Subscription|Vyberte odpovídající předplatné.|
+    |Resource group|Vyberte dostupnou skupinu prostředků.|
+    |Název clusteru Kubernetes|Zadejte název (malými písmeny).|
+    |Oblast|Vyberte okolní umístění.|
+    |Verze Kubernetes|1.12.8 (výchozí).|
+    |Předpona názvu DNS|Vytvoří se automaticky, ale můžete přepsat.|
     |Velikost uzlu|Standard DS2 v2:<br>`2 vCPUs`, `7 GB`|
-    |Počet uzlů|Ponechte výchozí hodnota posuvníku|
+    |Počet uzlů|Ponechte posuvník na výchozí hodnotu.|
 
-1. Na **škálování** kartu, ponechte **virtuální uzly** a **škálovacích sad virtuálních počítačů (preview)** nastavené na výchozí hodnoty.
-1. Na **ověřování** kartu, ponechte **instanční objekt služby** a **povolit RBAC** nastavené na výchozí hodnoty.
-1. Na **sítě** kartu, zadejte následující možnosti:
+1. Na kartě **škálování** ponechte **virtuální uzly** a **Virtual Machine Scale Sets (Preview)** nastavené na výchozí hodnoty.
+1. Na kartě **ověřování** ponechte **instanční objekt** a **povolte nastavení RBAC** na výchozí hodnoty.
+1. Na kartě **sítě** zadejte následující výběry:
 
     |Nastavení|Value|
     |--|--|
     |Směrování aplikace HTTP|Ne|
     |Konfigurace sítě|Basic|
 
-1. Na **monitorování** kartu, ujistěte se, že **povolit monitorování kontejnerů** je nastavena na **Ano**a nechat **pracovní prostor Log Analytics** jako Výchozí hodnota.
-1. Na **značky** kartu, zatím nechejte nastavené dvojice název/hodnota prázdná.
-1. Vyberte **zkontrolovat a vytvořit**.
-1. Jakmile úspěšně proběhne ověření, vyberte **vytvořit**.
+1. Na kartě **monitorování** se ujistěte, že je **možnost povolit sledování kontejneru** nastavená na **hodnotu Ano**, a jako výchozí hodnotu ponechte **Log Analytics pracovní prostor** .
+1. Na kartě **značky** ponechte páry název/hodnota prázdné pro nyní.
+1. Vyberte možnost **zkontrolovat a vytvořit**.
+1. Po úspěšném ověření vyberte **vytvořit**.
 
 > [!NOTE]
-> Pokud ověření selže, může to být kvůli chybě "Instančního objektu služby". Přejděte zpět **ověřování** kartu a pak zpátky **revize + vytvořit**, kde ověření by měl spustit a pak předejte.
+> Pokud ověření selhalo, může to být způsobeno chybou instančního objektu. Vraťte se na kartu **ověřování** a pak vraťte zpět na **kontrolu + vytvořit**, kde by se mělo ověřování spustit a pak předat.

@@ -52,8 +52,6 @@
           href: howto-provide-risk-event-feedback.md
         - name: Konfigurace zásady rizik
           href: howto-configure-risk-policies.md
-        - name: Vylepšení přesnosti rozpoznávání
-          href: howto-improve-detection-accuracy.md
         - name: Nejčastější dotazy a známé problémy
           href: known-issues.md
 - name: Referenční informace

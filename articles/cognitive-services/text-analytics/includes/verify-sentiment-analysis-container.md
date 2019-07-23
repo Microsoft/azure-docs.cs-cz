@@ -1,5 +1,5 @@
 ---
-title: Ověření instance kontejneru analýzu subjektivního hodnocení
+title: Ověření instance kontejneru analýzy mínění
 titleSuffix: Azure Cognitive Services
 description: Zjistěte, jak ověřit instanci kontejneru analýzy mínění.
 services: cognitive-services
@@ -9,23 +9,23 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 06/26/2019
 ms.author: dapine
-ms.openlocfilehash: f69d573e9e70a505018e94cca354f363097cc1b8
-ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
+ms.openlocfilehash: 1303d753b1cbfabe7ddd3442e0880b0bffe089b3
+ms.sourcegitcommit: b49431b29a53efaa5b82f9be0f8a714f668c38ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68229281"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68377446"
 ---
-## <a name="verify-the-sentiment-analysis-container-instance"></a>Ověření instance kontejneru analýzu subjektivního hodnocení
+## <a name="verify-the-sentiment-analysis-container-instance"></a>Ověření instance kontejneru analýzy mínění
 
-1. Vyberte **přehled** kartu a zkopírujte IP adresu.
-1. Otevře nová karta prohlížeče a zadejte IP adresu. For example, zadejte `http://<IP-address>:5000 (http://55.55.55.55:5000`). Zobrazí se domovská stránka kontejneru, oznamující, kontejner je spuštěná.
+1. Vyberte kartu **Přehled** a zkopírujte IP adresu.
+1. Otevřete novou kartu prohlížeče a zadejte IP adresu. Zadejte `http://<IP-address>:5000 (http://55.55.55.55:5000`například). Zobrazí se Domovská stránka kontejneru, která vám umožní zjistit, že je kontejner spuštěný.
 
-    ![Zobrazit domovskou stránku kontejneru a ověřte, zda je spuštěna](../media/how-tos/container-instance/swagger-docs-on-container.png).
+    ![Zobrazte domovskou stránku kontejneru a ověřte, že je spuštěný.](../media/how-tos/container-instance/swagger-docs-on-container.png).
 
-1. Vyberte **popis rozhraní API služby** odkaz přejděte na stránku swagger kontejneru.
+1. Kliknutím na odkaz **Popis rozhraní API služby** přejdete na stránku Swagger kontejneru.
 
-1. Vybrat kteroukoli z **příspěvek** rozhraní API a vyberte **vyzkoušet**.  Zobrazí se parametry, včetně tento příklad vstupu:
+1. Zvolte kterékoli rozhraní API pro **post** a vyberte **vyzkoušet**. Zobrazí se parametry, které obsahují tento příklad vstupu:
 
     ```json
     {
@@ -49,7 +49,7 @@ ms.locfileid: "68229281"
     }
     ```
 
-1. Nahraďte následující obsah JSON vstupu:
+1. Nahraďte vstup následujícím obsahem JSON:
 
     ```json
     {
@@ -63,13 +63,13 @@ ms.locfileid: "68229281"
     }
     ```
 
-1. Nastavte **showStats** na hodnotu true.
+1. Nastavte **showStats** na true.
 
-1. Vyberte **Execute** určit mínění textu.
+1. Výběrem příkazu **Execute** určete mínění textu.
 
-    Model, který je zabalený ve kontejneru vygeneruje skóre od 0 do 1, kde je záporná 0 a 1 je kladný.
+    Model, který je zabalen v kontejneru, vygeneruje skóre, které je v rozsahu od 0 do 1, kde 0 je záporné a 1 je kladné.
 
-    Odpověď JSON, který je vrácen obsahuje subjektivního hodnocení pro aktualizovaný textový vstup:
+    Vrácená odpověď JSON obsahuje mínění pro aktualizovaný textový vstup:
 
     ```json
     {
@@ -93,4 +93,4 @@ ms.locfileid: "68229281"
     }
     ```
 
-Nyní jsme mohli porovnat dokumentu `id` datové části odpovědi JSON dat do původního dokumentu datové části požadavku `id`. Můžeme vidět skóre z více než `.98`, určující velmi pozitivní mínění.
+Nyní můžeme sladit dokument `id` dat JSON datové části odpovědi s původním dokumentem `id`datové části požadavku. Skóre více než `.98` značí silně pozitivní mínění.

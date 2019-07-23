@@ -8,43 +8,41 @@ ms.author: sgilley
 manager: cgronlund
 ms.custom: include file
 ms.topic: include
-ms.date: 05/21/2019
-ms.openlocfilehash: 2ec45b67367198c14fc9d03cdb659a51aed8a504
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.date: 07/21/2019
+ms.openlocfilehash: 51bd3dfb33b1f445db8672e1b987ee6c6242e09c
+ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67841444"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68371007"
 ---
-1. Přihlaste se k [webu Azure portal](https://portal.azure.com/) pomocí přihlašovacích údajů pro předplatné Azure, které používáte. 
+1. Přihlaste se k [Azure Portal](https://portal.azure.com/) pomocí přihlašovacích údajů předplatného Azure, které používáte. 
 
-   ![portál Azure](./media/aml-create-in-portal/portal-dashboard-05-2019.png)
-
-1. V levém horním rohu portálu, vyberte **vytvořit prostředek**.
+1. V levém horním rohu portálu vyberte **vytvořit prostředek**.
 
    ![Vytvořit prostředek na webu Azure Portal](./media/aml-create-in-portal/portal-create-a-resource-07-2019.png)
 
-1. Pomocí panelu hledání vyberte **pracovní prostor služby Machine Learning**.
+1. Pomocí panelu hledání vyhledejte **Machine Learning pracovní prostor služby**.
 
-   ![Hledat pracovní prostor](./media/aml-create-in-portal/allservices-search.png)
+1. Vyberte **Machine Learning pracovní prostor služby**.
 
-1. V **pracovní prostor služby ML** vyberte **vytvořit** začít.
+1. V podokně **pracovní prostor služby ml** vyberte **vytvořit** a začněte.
 
-    ![Vytvoření tlačítka](./media/aml-create-in-portal/portal-create-button.png)
-
-1. V **pracovní prostor služby ML** podokně pracovní prostor.
+1. Nakonfigurujte nový pracovní prostor zadáním názvu pracovního prostoru, předplatného, skupiny prostředků a umístění.
 
     ![Vytvoření pracovního prostoru](./media/aml-create-in-portal/workspace-create-main-tab.png)
 
    Pole|Popis
    ---|---
-   Název pracovního prostoru |Zadejte jedinečný název, který identifikuje váš pracovní prostor. V tomto příkladu používáme **dokumentace ws**. Názvy musí být ve skupině prostředků jedinečné. Použijte název, který je snadné odvolání a odlišují jej od z pracovní prostory vytvořené jinými uživateli.  
+   Název pracovního prostoru |Zadejte jedinečný název, který identifikuje váš pracovní prostor. V tomto příkladu používáme **docs-WS**. Názvy musí být v rámci skupiny prostředků jedinečné. Použijte název, který se dá snadno vyvolat a odlišit z pracovních prostorů vytvořených jinými uživateli.  
    Subscription |Vyberte předplatné Azure, které chcete použít.
-   Resource group | Použít existující skupinu prostředků ve vašem předplatném nebo zadejte název pro vytvoření nové skupiny prostředků. Skupina prostředků obsahuje související prostředky pro řešení Azure. V tomto příkladu používáme **dokumentace aml**. 
-   Location | Vyberte umístění co nejblíže vašim uživatelům a datovým prostředkům. Toto umístění je, kde se vytvoří pracovní prostor.
+   Resource group | Ve svém předplatném použijte existující skupinu prostředků nebo zadejte název pro vytvoření nové skupiny prostředků. Skupina prostředků obsahuje související prostředky pro řešení Azure. V tomto příkladu používáme **docs-AML**. 
+   Location | Vyberte umístění, které je nejblíže vašim uživatelům a datovým prostředkům, abyste mohli vytvořit pracovní prostor.
 
-1. Zkontrolujte konfiguraci pracovního prostoru a vyberte **vytvořit**. Může trvat několik minut vytvořit pracovní prostor.
+1. Po dokončení konfigurace pracovního prostoru vyberte **vytvořit**. 
 
-1. Po dokončení procesu se zobrazí zpráva o úspěchu nasazení. Je také k dispozici v části oznámení. Chcete-li zobrazit nový pracovní prostor, vyberte **přejít k prostředku**.
+   Vytvořit pracovní prostor může chvíli trvat.
 
-   ![Stav vytváření pracovního prostoru](./media/aml-create-in-portal/notifications.png)
+   Po dokončení procesu se zobrazí zpráva o úspěšném nasazení. Je také k dispozici v části oznámení. Pokud chcete zobrazit nový pracovní prostor, vyberte **Přejít k prostředku**.
+
+   ![Stav vytvoření pracovního prostoru](./media/aml-create-in-portal/notifications.png)
