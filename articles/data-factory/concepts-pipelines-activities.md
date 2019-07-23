@@ -54,7 +54,7 @@ Aktivita transformace dat | Výpočetní prostředí
 [MapReduce](transform-data-using-hadoop-map-reduce.md) | HDInsight [Hadoop]
 [Streamování Hadoop](transform-data-using-hadoop-streaming.md) | HDInsight [Hadoop]
 [Spark](transform-data-using-spark.md) | HDInsight [Hadoop]
-[Aktivity Machine Learning: Dávkové spouštění a aktualizace prostředku](transform-data-using-machine-learning.md) | Virtuální počítač Azure
+[Aktivity Machine Learning: Dávkové spouštění a aktualizace prostředku](transform-data-using-machine-learning.md) | Azure VM
 [Uložená procedura](transform-data-using-stored-procedure.md) | Azure SQL, Azure SQL Data Warehouse nebo SQL Server
 [U-SQL](transform-data-using-data-lake-analytics.md) | Azure Data Lake Analytics
 [Vlastní kód](transform-data-using-dotnet-custom-activity.md) | Azure Batch
