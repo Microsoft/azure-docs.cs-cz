@@ -1,6 +1,6 @@
 ---
-title: Vytvoření clusteru Service Fabric s Windows v Azure | Dokumentace Microsoftu
-description: V tomto kurzu se dozvíte, jak nasadit cluster Windows Service Fabric do virtuální sítě Azure a skupinu zabezpečení sítě pomocí prostředí PowerShell.
+title: Vytvoření clusteru Service Fabric s Windows v Azure | Microsoft Docs
+description: V tomto kurzu se naučíte nasadit cluster Windows Service Fabric do virtuální sítě Azure a skupiny zabezpečení sítě pomocí PowerShellu.
 services: service-fabric
 documentationcenter: .net
 author: aljo-microsoft
@@ -12,31 +12,31 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 03/13/2019
+ms.date: 07/22/2019
 ms.author: aljo
 ms.custom: mvc
-ms.openlocfilehash: dabbefa8ca2073e30948f1c70782f730bceae030
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3e98b159443cec868040298d76e87a8de6b507ae
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66158095"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68385092"
 ---
-# <a name="tutorial-deploy-a-service-fabric-cluster-running-windows-into-an-azure-virtual-network"></a>Kurz: Nasazení clusteru Service Fabric s Windows do virtuální sítě Azure
+# <a name="tutorial-deploy-a-service-fabric-cluster-running-windows-into-an-azure-virtual-network"></a>Kurz: Nasazení clusteru Service Fabric se systémem Windows do virtuální sítě Azure
 
-Tento kurz je první částí série. Zjistíte, jak nasadit cluster Azure Service Fabric s Windows do [virtuální síť Azure](../virtual-network/virtual-networks-overview.md) a [skupinu zabezpečení sítě](../virtual-network/virtual-networks-nsg.md) pomocí Powershellu a šablony. Jakmile budete hotovi, máte cluster běží v cloudu, do kterého můžete nasazovat aplikace. Vytvoření clusteru s Linuxem, který používá Azure CLI najdete v tématu [vytvoření zabezpečeného clusteru s Linuxem v Azure](service-fabric-tutorial-create-vnet-and-linux-cluster.md).
+Tento kurz je první částí série. Naučíte se, jak nasadit cluster Azure Service Fabric se systémem Windows do [virtuální sítě Azure](../virtual-network/virtual-networks-overview.md) a [skupiny zabezpečení sítě](../virtual-network/virtual-networks-nsg.md) pomocí PowerShellu a šablony. Až budete hotovi, budete mít cluster spuštěný v cloudu, do kterého můžete nasazovat aplikace. Pokud chcete vytvořit cluster se systémem Linux, který používá rozhraní příkazového řádku Azure, přečtěte si téma [Vytvoření zabezpečeného clusteru Linux v Azure](service-fabric-tutorial-create-vnet-and-linux-cluster.md).
 
-Tento kurz popisuje produkční scénář. Pokud chcete vytvořit cluster menší pro účely testování, najdete v článku [vytvoření testovacího clusteru](./scripts/service-fabric-powershell-create-secure-cluster-cert.md).
+Tento kurz popisuje produkční scénář. Pokud chcete vytvořit menší cluster pro účely testování, přečtěte si téma [Vytvoření testovacího clusteru](./scripts/service-fabric-powershell-create-secure-cluster-cert.md).
 
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 > * Vytvoření virtuální sítě v Azure pomocí PowerShellu
 > * Vytvoření trezoru klíčů a nahrání certifikátu
-> * Nastavení ověřování Azure Active Directory
-> * Konfigurace shromažďování diagnostických dat
+> * Nastavení Azure Active Directory ověřování
+> * Konfigurace kolekce diagnostiky
 > * Nastavení služby Eventstoru
-> * Nastavte si protokoly Azure monitoru
+> * Nastavení protokolů Azure Monitor
 > * Vytvoření zabezpečeného clusteru Service Fabric v Azure PowerShellu
 > * Zabezpečení clusteru pomocí certifikátu X.509
 > * Připojení ke clusteru pomocí prostředí PowerShell
@@ -58,55 +58,55 @@ V této sérii kurzů se naučíte:
 Než začnete s tímto kurzem:
 
 * Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* Nainstalujte [Service Fabric SDK a modul Powershellu](service-fabric-get-started.md).
-* Nainstalujte [prostředí Azure Powershell](https://docs.microsoft.com/powershell/azure/install-Az-ps).
-* Projděte si klíčové koncepty [Azure clustery](service-fabric-azure-clusters-overview.md).
-* [Plánování a příprava](service-fabric-cluster-azure-deployment-preparation.md) pro produkční nasazení clusteru.
+* Nainstalujte [sadu Service Fabric SDK a modul prostředí PowerShell](service-fabric-get-started.md).
+* Nainstalujte [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps).
+* Přečtěte si klíčové koncepty [clusterů Azure](service-fabric-azure-clusters-overview.md).
+* [Naplánujte a připravte](service-fabric-cluster-azure-deployment-preparation.md) nasazení produkčního clusteru.
 
-Následující postupy vytvářejí sedm uzly clusteru Service Fabric. Použití [cenovou kalkulačku funkcí Azure](https://azure.microsoft.com/pricing/calculator/) vypočítat náklady vzniklé používáním clusteru Service Fabric v Azure.
+Následující postupy vytvoří cluster se sedmi uzly Service Fabric. Pomocí [cenové kalkulačky Azure](https://azure.microsoft.com/pricing/calculator/) Vypočítejte náklady vzniklé spuštěním Service Fabric clusteru v Azure.
 
 ## <a name="download-and-explore-the-template"></a>Stažení a prozkoumání šablony
 
-Stáhněte následující soubory šablon Azure Resource Manageru:
+Stáhněte následující soubory šablon Azure Resource Manager:
 
-* [azuredeploy.json][template]
-* [azuredeploy.parameters.json][parameters]
+* [azuredeploy. JSON][template]
+* [azuredeploy. Parameters. JSON][parameters]
 
-Tato šablona nasadí zabezpečený cluster sedmi virtuálních počítačů a tři typy uzlů do virtuální sítě a skupinu zabezpečení sítě.  Další ukázkové šablony najdete na [GitHubu](https://github.com/Azure-Samples/service-fabric-cluster-templates). [Azuredeploy.json] [ template] nasadí řadu prostředků včetně následujících.
+Tato šablona nasadí zabezpečený cluster sedmi virtuálních počítačů a tří typů uzlů do virtuální sítě a skupiny zabezpečení sítě.  Další ukázkové šablony najdete na [GitHubu](https://github.com/Azure-Samples/service-fabric-cluster-templates). [Azuredeploy. JSON][template] nasadí řadu prostředků včetně následujících.
 
 ### <a name="service-fabric-cluster"></a>Cluster Service Fabric
 
 V prostředku **Microsoft.ServiceFabric/clusters** se konfiguruje cluster s Windows s těmito charakteristikami:
 
 * Tři typy uzlů.
-* Pět uzlů primárního typu (možnost konfigurace v parametrech šablony) a jeden uzel v každém z ostatních typů dvěma uzly.
-* Operační systém: Windows Server 2016 Datacenter s kontejnery (možnost konfigurace v parametrech šablony).
-* Zabezpečení pomocí certifikátu (možnost konfigurace v parametrech šablony).
-* [Reverzní proxy server](service-fabric-reverseproxy.md) je povolená.
-* [Služba DNS](service-fabric-dnsservice.md) je povolená.
-* [Úroveň odolnosti](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster) bronzová (možnost konfigurace v parametrech šablony).
-* [Úroveň spolehlivosti](service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster) stříbrná (možnost konfigurace v parametrech šablony).
-* koncový bod připojení klienta: 19000 (možnost konfigurace v parametrech šablony).
-* Koncový bod brány HTTP: 19080 (možnost konfigurace v parametrech šablony).
+* Pět uzlů v primárním uzlu typ (konfigurovatelné v parametrech šablony) a jeden uzel v každém z dalších dvou typů uzlů.
+* Operační systém: Windows Server 2016 Datacenter s kontejnery (konfigurovatelné v parametrech šablony).
+* Zabezpečený certifikát (lze konfigurovat v parametrech šablony).
+* [Reverzní proxy](service-fabric-reverseproxy.md) je povolený.
+* [Služba DNS](service-fabric-dnsservice.md) je povolena.
+* Bronzová [úroveň odolnosti](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster) (konfigurovatelné v parametrech šablony)
+* [Úroveň spolehlivosti](service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster) stříbrného (konfigurovatelné v parametrech šablony).
+* koncový bod připojení klienta: 19000 (konfigurovatelné v parametrech šablony).
+* Koncový bod služby HTTP Gateway: 19080 (konfigurovatelné v parametrech šablony).
 
-### <a name="azure-load-balancer"></a>Nástroj pro vyrovnávání zatížení Azure
+### <a name="azure-load-balancer"></a>Azure Load Balancer
 
-V **Microsoft.Network/loadBalancers** prostředek, nástroj pro vyrovnávání zatížení je nakonfigurován. Sond a pravidel jsou nastavené pro následující porty:
+V prostředku **Microsoft. Network/loadBalancers** je nakonfigurován Nástroj pro vyrovnávání zatížení. Testy a pravidla se nastavují pro následující porty:
 
 * koncový bod připojení klienta: 19000
-* Koncový bod brány HTTP: 19080
-* port aplikací: 80
-* port aplikací: 443
-* Service Fabric reverzního proxy serveru: 19081
+* Koncový bod služby HTTP Gateway: 19080
+* Port aplikace: 80
+* Port aplikace: 443
+* Service Fabric reverzní proxy: 19081
 
-Pokud nejsou potřebné další porty aplikací, bude nutné upravit **Microsoft.Network/loadBalancers** prostředků a **Microsoft.Network/networkSecurityGroups** prostředek pro provoz.
+Pokud jsou potřeba další porty aplikací, budete muset upravit prostředek **Microsoft. Network/loadBalancers** a prostředek **Microsoft. Network/networkSecurityGroups** , aby se provoz povolil.
 
 ### <a name="virtual-network-subnet-and-network-security-group"></a>Virtuální síť, podsíť a skupina zabezpečení sítě
 
 Názvy virtuální sítě, podsítě a skupiny zabezpečení sítě jsou deklarované v parametrech šablony. Adresní prostory virtuální sítě a podsítě se taky deklarují v parametrech šablony a konfigurují v prostředku **Microsoft.Network/virtualNetworks**:
 
 * adresní prostor virtuální sítě: 172.16.0.0/20
-* Adresní prostor podsítě Service Fabric: 172.16.2.0/23
+* Service Fabric adresní prostor podsítě: 172.16.2.0/23
 
 V prostředku **Microsoft.Network/networkSecurityGroups** jsou povolená následující pravidla pro příchozí provoz. Hodnoty portů můžete změnit změnou proměnných šablony.
 
@@ -114,15 +114,15 @@ V prostředku **Microsoft.Network/networkSecurityGroups** jsou povolená násled
 * HttpGatewayEndpoint (HTTP/TCP): 19080
 * SMB: 445
 * Internodecommunication: 1025, 1026, 1027
-* Rozsah dočasných portů: 49152 až 65534 (potřebných alespoň 256 portů).
+* Rozsah dočasných portů: 49152 až 65534 (potřebujete minimálně porty 256).
 * Porty pro použití aplikací: 80 a 443
-* Rozsah portů aplikace: 49152 až 65534 (používají pro komunikace mezi službami. Jiné porty nejsou otevřené v nástroji pro vyrovnávání zatížení).
+* Rozsah portů aplikace: 49152 až 65534 (používá se pro komunikaci mezi službami. V nástroji pro vyrovnávání zatížení nejsou otevřeny jiné porty).
 * Všechny ostatní porty jsou blokované
 
-Pokud nejsou potřebné další porty aplikací, bude nutné upravit **Microsoft.Network/loadBalancers** prostředků a **Microsoft.Network/networkSecurityGroups** prostředek pro provoz.
+Pokud jsou potřeba další porty aplikací, budete muset upravit prostředek **Microsoft. Network/loadBalancers** a prostředek **Microsoft. Network/networkSecurityGroups** , aby se provoz povolil.
 
 ### <a name="windows-defender"></a>Windows Defender
-Ve výchozím nastavení [antivirový program Windows Defender](/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-on-windows-server-2016) je nainstalovaná a funkční v systému Windows Server 2016. Uživatelské rozhraní je nainstalované ve výchozím nastavení na některých jednotkách SKU, ale není povinné. Pro každý uzel typu/škálovací sady virtuálních počítačů deklarované v šabloně [Azure VM Antimalwarové rozšíření](/azure/virtual-machines/extensions/iaas-antimalware-windows) se používá k vyloučení adresáře Service Fabric a procesy:
+Ve výchozím nastavení je [antivirový program v programu Windows Defender](/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-on-windows-server-2016) nainstalovaný a funkční na Windows serveru 2016. Uživatelské rozhraní je ve výchozím nastavení nainstalováno u některých SKU, ale není vyžadováno. Pro každý typ uzlu/sadu škálování virtuálního počítače, který je v šabloně deklarovaný, se k vyloučení Service Fabric adresářů a procesů používá antimalwarové [rozšíření Azure VM](/azure/virtual-machines/extensions/iaas-antimalware-windows) :
 
 ```json
 {
@@ -152,38 +152,38 @@ Ve výchozím nastavení [antivirový program Windows Defender](/windows/securit
 
 ## <a name="set-template-parameters"></a>Nastavení parametrů šablony
 
-Soubor s parametry [azuredeploy.parameters.json][parameters] deklaruje mnoho hodnot používaných pro nasazení clusteru a přidružených prostředků. Následují parametry upravit pro vaše nasazení:
+Soubor parametrů [azuredeploy. Parameters. JSON][parameters] deklaruje mnoho hodnot, které se používají k nasazení clusteru a přidružených prostředků. Níže jsou uvedené parametry, které je potřeba upravit pro vaše nasazení:
 
-**Parametr** | **Příklad hodnoty** | **Poznámky** 
+**Parametr** | **Ukázková hodnota** | **Poznámky** 
 |---|---|---|
-|adminUserName|vmadmin| Uživatelské jméno správce pro virtuální počítače clusteru. [Požadavky na uživatelské jméno pro virtuální počítač](https://docs.microsoft.com/azure/virtual-machines/windows/faq#what-are-the-username-requirements-when-creating-a-vm). |
+|adminUserName|vmadmin| Uživatelské jméno správce pro virtuální počítače clusteru. [Požadavky na uživatelské jméno pro virtuální počítač](https://docs.microsoft.com/azure/virtual-machines/windows/faq#what-are-the-username-requirements-when-creating-a-vm) |
 |adminPassword|Password#1234| Heslo správce pro virtuální počítače clusteru. [Požadavky na heslo pro virtuální počítač](https://docs.microsoft.com/azure/virtual-machines/windows/faq#what-are-the-password-requirements-when-creating-a-vm).|
 |clusterName|mysfcluster123| Název clusteru. Může obsahovat jenom písmena a číslice. Může mít délku 3 až 23 znaků.|
 |location|southcentralus| Umístění clusteru. |
 |certificateThumbprint|| <p>Pokud vytváříte certifikát podepsaný svým držitelem nebo poskytujete soubor certifikátu, měla by být hodnota prázdná.</p><p>Pokud chcete použít existující certifikát, který se dříve odeslal do trezoru klíčů, vyplňte hodnotu kryptografického otisku certifikátu SHA1. Příklad: „6190390162C988701DB5676EB81083EA608DCCF3“.</p> |
-|certificateUrlValue|| <p>Pokud vytváříte certifikát podepsaný svým držitelem nebo poskytujete soubor certifikátu, měla by být hodnota prázdná. </p><p>Pokud chcete použít existující certifikát, který byl dříve odeslán do trezoru klíčů, vyplňte URL certifikátu. Například "https:\//mykeyvault.vault.azure.net:443/secrets/mycertificate/02bea722c9ef4009a76c5052bcbf8346".</p>|
+|certificateUrlValue|| <p>Pokud vytváříte certifikát podepsaný svým držitelem nebo poskytujete soubor certifikátu, měla by být hodnota prázdná. </p><p>Pokud chcete použít existující certifikát, který byl dříve odeslán do trezoru klíčů, vyplňte URL certifikátu. Například "https:\//mykeyvault.Vault.Azure.NET:443/Secrets/mycertificate/02bea722c9ef4009a76c5052bcbf8346".</p>|
 |sourceVaultValue||<p>Pokud vytváříte certifikát podepsaný svým držitelem nebo poskytujete soubor certifikátu, měla by být hodnota prázdná.</p><p>Pokud chcete použít existující certifikát, který byl dříve odeslán do trezoru klíčů, vyplňte hodnotu zdrojového trezoru. Například: /subscriptions/333cc2c84-12fa-5778-bd71-c71c07bf873f/resourceGroups/MyTestRG/providers/Microsoft.KeyVault/vaults/MYKEYVAULT</p>|
 
-## <a name="set-up-azure-active-directory-client-authentication"></a>Nastavení ověřování klienta služby Azure Active Directory
-Pro clustery Service Fabric nasazené ve veřejné síti hostované v Azure se doporučení pro vzájemné ověřování uzel klienta:
-* Použití Azure Active Directory pro identity klienta.
-* Použijte certifikát pro server identity a šifrování SSL komunikaci pomocí protokolu HTTP.
+## <a name="set-up-azure-active-directory-client-authentication"></a>Nastavení ověřování klienta Azure Active Directory
+U clusterů Service Fabric nasazených ve veřejné síti hostované v Azure je doporučení pro vzájemné ověřování mezi klientem a uzlem:
+* Pro identitu klienta použijte Azure Active Directory.
+* Použijte certifikát pro identitu serveru a šifrování SSL komunikace HTTP.
 
-Nastavení Azure Active Directory (Azure AD) k ověřování klientů pro cluster Service Fabric je třeba provést před [vytváření clusteru](#createvaultandcert). Azure AD umožňuje organizacím (označuje se jako tenantů) ke správě přístupu uživatelů k aplikacím. 
+Nastavení Azure Active Directory (Azure AD) pro ověřování klientů pro Service Fabric cluster se musí provést před vytvořením [clusteru](#createvaultandcert). Azure AD umožňuje organizacím (označovaným jako klienti) spravovat přístup uživatelů k aplikacím. 
 
-Cluster Service Fabric nabízí několik vstupních bodů do jeho funkce správy, včetně webová [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) a [sady Visual Studio](service-fabric-manage-application-in-visual-studio.md). Proto vytvoříte dvě aplikace Azure AD pro řízení přístupu ke clusteru: jeden webové aplikace a jedné nativní aplikace.  Po vytvoření aplikace můžete přiřadit uživatele jen pro čtení a role správce.
+Cluster Service Fabric nabízí několik vstupních bodů ke svým funkcím správy, včetně webových [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) a sady [Visual Studio](service-fabric-manage-application-in-visual-studio.md). V důsledku toho vytvoříte dvě aplikace Azure AD pro řízení přístupu ke clusteru: jednu webovou aplikaci a jednu nativní aplikaci.  Po vytvoření aplikací přiřadíte uživatele k rolím jen pro čtení a správcům.
 
 > [!NOTE]
-> Před vytvořením clusteru, musíte dokončit následující kroky. Vzhledem k tomu, že skripty očekávají názvů clusterů a koncových bodů, hodnoty plánování byste měli využít a ne hodnoty, že jste již vytvořili.
+> Před vytvořením clusteru je nutné provést následující kroky. Vzhledem k tomu, že skripty očekávají názvy a koncové body clusteru, hodnoty by měly být plánované a ne hodnoty, které jste již vytvořili.
 
-V tomto článku předpokládáme, že jste už vytvořili tenanta. Pokud jste tak dosud, začněte tím, že čtení [získání tenanta služby Azure Active Directory](../active-directory/develop/quickstart-create-new-tenant.md).
+V tomto článku předpokládáme, že jste už tenanta vytvořili. Pokud jste to ještě neudělali, začněte tím, že si přečtete [Azure Active Directory tenanta](../active-directory/develop/quickstart-create-new-tenant.md).
 
-Pokud chcete zjednodušit kroky při konfiguraci Azure AD s clusterem Service Fabric, jsme vytvořili sadu skriptů prostředí Windows PowerShell. [Stáhněte si skripty](https://github.com/robotechredmond/Azure-PowerShell-Snippets/tree/master/MicrosoftAzureServiceFabric-AADHelpers/AADTool) k vašemu počítači.
+Pro zjednodušení kroků týkajících se konfigurace služby Azure AD pomocí Service Fabricho clusteru jsme vytvořili sadu skriptů prostředí Windows PowerShell. [Stáhněte si skripty](https://github.com/robotechredmond/Azure-PowerShell-Snippets/tree/master/MicrosoftAzureServiceFabric-AADHelpers/AADTool) do svého počítače.
 
-### <a name="create-azure-ad-applications-and-assign-users-to-roles"></a>Vytvoření aplikace Azure AD a přiřazení uživatelů k rolím
-Vytvořit dvě aplikace Azure AD pro řízení přístupu ke clusteru: jeden webové aplikace a jedné nativní aplikace. Po vytvoření aplikace, které chcete představují vašeho clusteru, přiřaďte uživatele, aby [role podporuje Service Fabric](service-fabric-cluster-security-roles.md): jen pro čtení a správce.
+### <a name="create-azure-ad-applications-and-assign-users-to-roles"></a>Vytváření aplikací Azure AD a přiřazení uživatelů k rolím
+Vytvořte dvě aplikace Azure AD pro řízení přístupu ke clusteru: jednu webovou aplikaci a jednu nativní aplikaci. Po vytvoření aplikací, které reprezentují váš cluster, přiřaďte uživatele k rolím, které [podporuje Service Fabric](service-fabric-cluster-security-roles.md): jen pro čtení a správce.
 
-Spustit `SetupApplications.ps1`a zadat tenanta jako parametry ID, název clusteru a adresy URL odpovědi webové aplikace. Zadejte uživatelská jména a hesla pro uživatele. Příklad:
+Spusťte `SetupApplications.ps1`příkaz a jako parametry zadejte ID klienta, název clusteru a adresu URL odpovědi webové aplikace. Zadejte uživatelská jména a hesla pro uživatele. Příklad:
 
 ```powershell
 $Configobj = .\SetupApplications.ps1 -TenantId '<MyTenantID>' -ClusterName 'mysfcluster123' -WebApplicationReplyUrl 'https://mysfcluster123.eastus.cloudapp.azure.com:19080/Explorer/index.html' -AddResourceAccess
@@ -192,22 +192,22 @@ $Configobj = .\SetupApplications.ps1 -TenantId '<MyTenantID>' -ClusterName 'mysf
 ```
 
 > [!NOTE]
-> Pro národní cloudy (například Azure Government, Azure China, Azure Germany), zadejte `-Location` parametru.
+> Pro národní cloudy (například Azure Government, Azure Čína, Azure Německo) zadejte `-Location` parametr.
 
-Můžete najít vaše *TenantId*, nebo ID adresáře v [webu Azure portal](https://portal.azure.com). Vyberte **Azure Active Directory** > **vlastnosti** a zkopírujte **ID adresáře** hodnotu.
+*TenantId*nebo ID adresáře můžete najít v [Azure Portal](https://portal.azure.com). Vyberte **Azure Active Directory** > **vlastnosti** a zkopírujte hodnotu **ID adresáře** .
 
-*Název clusteru* používat jako předpona aplikací v Azure AD, které jsou vytvořeny skriptem. Nemusí přesně odpovídat skutečný název clusteru. Pouze usnadňuje mapování artefakty Azure AD do clusteru Service Fabric používá.
+*Název_clusteru* slouží k vytvoření předpony aplikací služby Azure AD, které jsou vytvořeny pomocí skriptu. Nemusí přesně odpovídat skutečnému názvu clusteru. Usnadňuje mapování artefaktů Azure AD na Service Fabric používaný cluster.
 
-*WebApplicationReplyUrl* je výchozí koncový bod, který Azure AD vrací uživatelům po jejich dokončení přihlašování. Nastavte jako koncový bod Service Fabric Exploreru pro váš cluster, který ve výchozím nastavení je tento koncový bod:
+*WebApplicationReplyUrl* je výchozí koncový bod, který Azure AD vrátí vašim uživatelům po dokončení přihlášení. Nastavte tento koncový bod jako koncový bod Service Fabric Explorer pro váš cluster, který je ve výchozím nastavení:
 
 https://&lt;cluster_domain&gt;:19080/Explorer
 
-Budete vyzváni k přihlášení k účtu, který má oprávnění správce pro tenanta Azure AD. Po přihlášení, skript vytvoří webové a nativní aplikace pro reprezentaci vašeho clusteru Service Fabric. Do vašeho tenanta aplikací [webu Azure portal](https://portal.azure.com), měli byste vidět dvě nové položky:
+Budete vyzváni k přihlášení k účtu, který má oprávnění správce pro tenanta Azure AD. Po přihlášení vytvoří skript webové a nativní aplikace, které reprezentují váš Service Fabric cluster. V aplikacích klienta v [Azure Portal](https://portal.azure.com)byste měli vidět dvě nové položky:
 
-   * *Název clusteru*\_clusteru
-   * *Název clusteru*\_klienta
+   * *Cluster název_clusteru*\_
+   * *Klient název_clusteru*\_
 
-Skript vypíše JSON šablony Resource Manageru vyžaduje při vytváření clusteru, takže je vhodné ponechat otevřené okno Powershellu.
+Skript vytiskne JSON vyžadovaný šablonou Správce prostředků při vytváření clusteru, takže je vhodné ponechat okno PowerShellu otevřené.
 
 ```json
 "azureActiveDirectory": {
@@ -217,8 +217,8 @@ Skript vypíše JSON šablony Resource Manageru vyžaduje při vytváření clus
 },
 ```
 
-### <a name="add-azure-ad-configuration-to-use-azure-ad-for-client-access"></a>Přidat konfiguraci Azure AD, které používají Azure AD pro klientský přístup
-V [azuredeploy.json][template], nakonfigurujte v Azure AD **Microsoft.ServiceFabric/clusters** části. Přidat parametry pro tenanta, ID aplikace ID clusteru a ID klienta aplikace.  
+### <a name="add-azure-ad-configuration-to-use-azure-ad-for-client-access"></a>Přidání konfigurace Azure AD pro použití Azure AD pro klientský přístup
+V [azuredeploy. JSON][template]NAKONFIGURUJTE Azure AD v části **Microsoft. ServiceFabric/clustery** . Přidejte parametry pro ID tenanta, ID aplikace clusteru a ID klientské aplikace.  
 
 ```json
 {
@@ -260,7 +260,7 @@ V [azuredeploy.json][template], nakonfigurujte v Azure AD **Microsoft.ServiceFab
 }
 ```
 
-Přidání hodnoty parametrů v [azuredeploy.parameters.json] [ parameters] soubor parametrů. Příklad:
+Přidejte hodnoty parametrů do souboru parametrů [azuredeploy. Parameters. JSON][parameters] . Příklad:
 
 ```json
 "aadTenantId": {
@@ -275,16 +275,16 @@ Přidání hodnoty parametrů v [azuredeploy.parameters.json] [ parameters] soub
 ```
 <a id="configurediagnostics" name="configurediagnostics_anchor"></a>
 
-## <a name="configure-diagnostics-collection-on-the-cluster"></a>Konfigurace shromažďování diagnostických dat v clusteru
-Když používáte cluster Service Fabric, je vhodné pro shromažďování protokolů ze všech uzlů v centrálním umístění. S protokoly v centrálním umístění vám pomáhají analyzovat a řešit problémy ve vašem clusteru nebo problémy v aplikace a služby běžící v tomto clusteru.
+## <a name="configure-diagnostics-collection-on-the-cluster"></a>Konfigurace kolekce diagnostiky v clusteru
+Pokud používáte Cluster Service Fabric, je vhodné shromáždit protokoly ze všech uzlů v centrálním umístění. Protokoly v centrálním umístění vám pomůžou analyzovat a řešit problémy v clusteru nebo problémy s aplikacemi a službami běžícími v tomto clusteru.
 
-Jedním ze způsobů shromažďování protokolů a nahrát je pomocí rozšíření Azure Diagnostics (WAD), nahraje protokoly do služby Azure Storage, který má také možnost odeslat protokoly do služby Azure Application Insights nebo Center událostí. Externí proces lze také použít ke čtení události ze služby storage a umístit je do o produkt poskytovaný analýzy platformy, jako jsou protokoly Azure monitoru nebo jiné řešení analýzy protokolů.
+Jedním ze způsobů, jak nahrávat a shromažďovat protokoly, je použít rozšíření Azure Diagnostics (WAD), které nahrává protokoly do Azure Storage a má také možnost odesílat protokoly do Azure Application Insights nebo Event Hubs. Můžete také použít externí proces ke čtení událostí z úložiště a jejich umístění do produktu Analysis Platform, jako jsou protokoly Azure Monitor nebo jiné řešení pro analýzu protokolů.
 
-Pokud jsou projdete tímto kurzem, shromažďování diagnostických dat je již nakonfigurován v [šablony][template].
+Pokud s tímto kurzem pracujete, kolekce diagnostiky je už v [šabloně][template]nakonfigurovaná.
 
-Pokud máte existující cluster, který nemá diagnostiky nasazený, můžete přidat nebo aktualizovat prostřednictvím šablona clusteru. Upravte šablonu Resource Manageru, který se používá k vytvoření stávajícího clusteru nebo stáhněte šablonu z portálu. Upravte soubor template.json provedením následujících úloh:
+Pokud máte existující cluster, který nemá nasazenou diagnostiku, můžete ho přidat nebo aktualizovat prostřednictvím šablony clusteru. Upravte šablonu Správce prostředků, která se používá k vytvoření existujícího clusteru, nebo stažení šablony z portálu. Upravte soubor Template. JSON prováděním následujících úloh:
 
-Přidáte nový prostředek úložiště do oddílu prostředků v šabloně:
+Přidejte nový prostředek úložiště do části Resources (prostředky) v šabloně:
 ```json
 "resources": [
 ...
@@ -305,7 +305,7 @@ Přidáte nový prostředek úložiště do oddílu prostředků v šabloně:
 ]
 ```
 
-V dalším kroku přidáte parametry pro název účtu úložiště a typ do části parametrů šablony. Nahraďte název účtu úložiště text zástupného symbolu platí, že se že tady s názvem úložiště účtu, který jste chtěli.
+Dále přidejte parametry pro název a typ účtu úložiště do části Parameters (parametry) v šabloně. Nahraďte zástupný text název účtu úložiště místo pro název účtu úložiště, který chcete.
 
 ```json
 "parameters": {
@@ -332,7 +332,7 @@ V dalším kroku přidáte parametry pro název účtu úložiště a typ do č�
 }
 ```
 
-V dalším kroku přidejte **IaaSDiagnostics** rozšíření k rozšíření pole **VirtualMachineProfile** vlastnosti každého **Microsoft.Compute/virtualMachineScaleSets** prostředek v clusteru.  Pokud používáte [Ukázková šablona][template], existují tři škálovací sady virtuálních počítačů (jeden pro každý typ uzlu v clusteru).
+Dále přidejte rozšíření **IaaSDiagnostics** do pole rozšíření vlastnosti **VirtualMachineProfile** každého prostředku **Microsoft. COMPUTE/virtualMachineScaleSets** v clusteru.  Pokud používáte [ukázkovou šablonu][template], existují tři služby Virtual Machine Scale Sets (jedna pro každý typ uzlu v clusteru).
 
 ```json
 "apiVersion": "2018-10-01",
@@ -404,15 +404,15 @@ V dalším kroku přidejte **IaaSDiagnostics** rozšíření k rozšíření pol
 <a id="configureeventstore" name="configureeventstore_anchor"></a>
 
 ## <a name="configure-the-eventstore-service"></a>Konfigurace služby Eventstoru
-Služba Eventstoru je možnosti monitorování v Service Fabric. Eventstoru poskytuje způsob, jak porozumět stavu clusteru nebo úloh v daném bodě v čase. Eventstoru je stavovou službu Service Fabric, který udržuje události z clusteru. Události jsou vystaveny prostřednictvím Service Fabric Explorer, REST a rozhraní API. Eventstoru dotazů clusteru přímo k získání diagnostických dat na entitu ve vašem clusteru a by měla sloužit ke:
+Služba Eventstoru je možnost monitorování v Service Fabric. Eventstoru poskytuje způsob, jak pochopit stav clusteru nebo úloh v daném časovém okamžiku. Eventstoru je stavová služba Service Fabric, která udržuje události z clusteru. Událost se zveřejňuje prostřednictvím Service Fabric Explorer, REST a rozhraní API. Eventstoru dotazuje cluster přímo, aby získal diagnostická data na jakékoli entitě v clusteru a měla by se používat k usnadnění:
 
-* Diagnostikujte problémy ve vývoj a testování, nebo kde může pomocí monitorování kanálu
-* Potvrďte, že správně zpracovává akce správy, které je možné ve vašem clusteru
-* Získat "snímek" jak dixons carphone Service Fabric s konkrétní entity
+* Diagnostikujte problémy při vývoji nebo testování nebo na místě, kde je možné používat sledovací kanál.
+* Ověřte, že se správně zpracovávají akce správy, které provedete v clusteru.
+* Získání "snímku" způsobu, jakým Service Fabric interakci s konkrétní entitou
 
 
 
-Pokud chcete povolit službu Eventstoru ve vašem clusteru, přidejte následující text do **nastavení fabricSettings** vlastnost **Microsoft.ServiceFabric/clusters** prostředků:
+Pokud chcete ve svém clusteru povolit službu Eventstoru, přidejte do vlastnosti **fabricSettings** prostředku **Microsoft. ServiceFabric/clustery** následující:
 
 ```json
 "apiVersion": "2018-02-01",
@@ -440,13 +440,13 @@ Pokud chcete povolit službu Eventstoru ve vašem clusteru, přidejte následuj�
 ```
 <a id="configureloganalytics" name="configureloganalytics_anchor"></a>
 
-## <a name="set-up-azure-monitor-logs-for-the-cluster"></a>Nastavte si protokoly Azure monitoru pro cluster
+## <a name="set-up-azure-monitor-logs-for-the-cluster"></a>Nastavení protokolů Azure Monitor pro cluster
 
-Protokoly služby Azure Monitor je naše doporučení pro monitorování událostí na úrovni clusteru. Chcete-li nastavit protokoly Azure monitoru ke sledování vašeho clusteru, musíte mít [diagnostiky povoleno zobrazení událostí úrovně clusteru](#configure-diagnostics-collection-on-the-cluster).  
+Protokoly Azure Monitor jsou naše doporučení pro monitorování událostí na úrovni clusteru. Chcete-li nastavit protokoly Azure Monitor pro monitorování clusteru, je nutné mít [povolenou diagnostiku pro zobrazení událostí na úrovni clusteru](#configure-diagnostics-collection-on-the-cluster).  
 
-Pracovní prostor se musí být připojen k diagnostická data z vašeho clusteru.  Tato data protokolu se ukládají v *applicationDiagnosticsStorageAccountName* účtu úložiště, WADServiceFabric * EventTable WADWindowsEventLogsTable a WADETWEventTable tabulky.
+Pracovní prostor se musí být připojen k diagnostická data z vašeho clusteru.  Tato data protokolu se ukládají v účtu úložiště *applicationDiagnosticsStorageAccountName* v tabulkách WADServiceFabric * Event, WADWindowsEventLogsTable a WADETWEventTable.
 
-Přidat pracovní prostor Azure Log Analytics a přidejte řešení do pracovního prostoru:
+Přidejte pracovní prostor Azure Log Analytics a přidejte řešení do pracovního prostoru:
 
 ```json
 "resources": [
@@ -536,7 +536,7 @@ Přidat pracovní prostor Azure Log Analytics a přidejte řešení do pracovní
 ]
 ```
 
-V dalším kroku přidejte parametry
+Dále přidejte parametry
 ```json
 "parameters": {
     ...
@@ -562,7 +562,7 @@ V dalším kroku přidejte parametry
 }
 ```
 
-V dalším kroku přidejte proměnné:
+Dále přidejte proměnné:
 ```json
 "variables": {
     ...
@@ -571,7 +571,7 @@ V dalším kroku přidejte proměnné:
 }
 ```
 
-Přidání Log Analytics rozšíření agenta do každého virtuálního počítače škálovací nastavit v clusteru a připojení agenta k pracovnímu prostoru Log Analytics. To umožňuje shromažďování diagnostická data o kontejnerech, aplikací a monitorování výkonu. Tak, že přidáte jako rozšíření k prostředku virtuálního počítače škálovací sady, Azure Resource Manageru se zajistí, že se nainstaluje na všech uzlech i při škálování clusteru.
+Přidejte rozšíření agenta Log Analytics do každé sady škálování virtuálního počítače v clusteru a připojte agenta k pracovnímu prostoru Log Analytics. To umožňuje shromažďovat diagnostická data o kontejnerech, aplikacích a monitorování výkonu. Když ho přidáte jako rozšíření prostředku sady škálování virtuálních počítačů, Azure Resource Manager zajistí, že se nainstalují na každý uzel, a to i při škálování clusteru.
 
 ```json
 "apiVersion": "2018-10-01",
@@ -608,13 +608,13 @@ Přidání Log Analytics rozšíření agenta do každého virtuálního počít
 
 ## <a name="deploy-the-virtual-network-and-cluster"></a>Nasazení virtuální sítě a clusteru
 
-Dále nastavte topologii sítě a nasaďte cluster Service Fabric. [Azuredeploy.json] [ template] šablony Resource Manageru se vytvoří virtuální síť, podsíť a skupinu zabezpečení sítě pro Service Fabric. Šablona také nasadí cluster s povoleným zabezpečením pomocí certifikátu. Pro produkční clustery používejte certifikát od certifikační autority jako certifikát clusteru. K zabezpečení testovacích clusterů můžete použít certifikát podepsaný svým držitelem.
+Dále nastavte topologii sítě a nasaďte cluster Service Fabric. Šablona Správce prostředků [azuredeploy. JSON][template] vytvoří virtuální síť, podsíť a skupinu zabezpečení sítě pro Service Fabric. Šablona také nasadí cluster s povoleným zabezpečením pomocí certifikátu. Pro produkční clustery použijte certifikát od certifikační autority jako certifikát clusteru. K zabezpečení testovacích clusterů můžete použít certifikát podepsaný svým držitelem.
 
-Šablona v tomto článku se nasadí cluster, který používá kryptografický otisk certifikátu pro identifikaci certifikátu clusteru. Žádné dva certifikáty můžou mít se stejným kryptografickým otiskem, což znesnadňuje správy certifikátů. Přepínání nasazeném clusteru z kryptografické otisky certifikátů k běžnému názvu certifikátu ve skupinách usnadňuje správu certifikátů. Zjistěte, jak aktualizovat cluster používat běžné názvy certifikátů pro správu certifikátů, přečtěte si téma [clusteru změnit na společný název správy certifikátů](service-fabric-cluster-change-cert-thumbprint-to-cn.md).
+Šablona v tomto článku nasadí cluster, který používá kryptografický otisk certifikátu k identifikaci certifikátu clusteru. Žádné dva certifikáty nemohou mít stejný kryptografický otisk, což ztěžuje správu certifikátů. Přepínání nasazeného clusteru z kryptografických otisků certifikátů na běžné názvy certifikátů usnadňuje správu certifikátů. Pokud se chcete dozvědět, jak cluster aktualizovat tak, aby používal běžné názvy certifikátů pro správu certifikátů, přečtěte si téma [Změna clusteru do společné správy názvů certifikátů](service-fabric-cluster-change-cert-thumbprint-to-cn.md).
 
-### <a name="create-a-cluster-by-using-an-existing-certificate"></a>Vytvoření clusteru s použitím existujícího certifikátu
+### <a name="create-a-cluster-by-using-an-existing-certificate"></a>Vytvoření clusteru pomocí existujícího certifikátu
 
-Následující skript pomocí [New-AzServiceFabricCluster](/powershell/module/az.servicefabric/New-azServiceFabricCluster) rutiny a šablony nasadí nový cluster v Azure. Rutina vytvoří v Azure nový trezor klíčů a odešle váš certifikát.
+Následující skript používá rutinu [New-AzServiceFabricCluster](/powershell/module/az.servicefabric/New-azServiceFabricCluster) a šablonu k nasazení nového clusteru v Azure. Rutina vytvoří v Azure nový trezor klíčů a odešle váš certifikát.
 
 ```powershell
 # Variables.
@@ -644,7 +644,7 @@ New-AzServiceFabricCluster  -ResourceGroupName $groupname -TemplateFile "$templa
 
 ### <a name="create-a-cluster-by-using-a-new-self-signed-certificate"></a>Vytvoření clusteru pomocí nového certifikátu podepsaného svým držitelem
 
-Následující skript pomocí [New-AzServiceFabricCluster](/powershell/module/az.servicefabric/New-azServiceFabricCluster) rutiny a šablony nasadí nový cluster v Azure. Rutina vytvoří v Azure nový trezor klíčů, přidá nový certifikát podepsaný svým držitelem do služby key vault a stáhne soubor certifikátu místně.
+Následující skript používá rutinu [New-AzServiceFabricCluster](/powershell/module/az.servicefabric/New-azServiceFabricCluster) a šablonu k nasazení nového clusteru v Azure. Rutina vytvoří nový trezor klíčů v Azure, přidá do trezoru klíčů nový certifikát podepsaný svým držitelem a stáhne soubor certifikátu místně.
 
 ```powershell
 # Variables.
@@ -676,7 +676,7 @@ New-AzServiceFabricCluster  -ResourceGroupName $groupname -TemplateFile "$templa
 
 ## <a name="connect-to-the-secure-cluster"></a>Připojení k zabezpečenému clusteru
 
-Připojení ke clusteru pomocí modulu Powershellu pro Service Fabric nainstalovaný v Service Fabric SDK.  Nejprve nainstalujte certifikát do osobního úložiště (Moje) aktuálního uživatele na počítači. Spusťte následující příkaz PowerShellu:
+Připojte se ke clusteru pomocí modulu Service Fabric PowerShellu nainstalovaného s Service Fabric SDK.  Nejprve nainstalujte certifikát do osobního úložiště (Moje) aktuálního uživatele na počítači. Spusťte následující příkaz PowerShellu:
 
 ```powershell
 $certpwd="q6D7nN%6ck@6" | ConvertTo-SecureString -AsPlainText -Force
@@ -685,11 +685,11 @@ Import-PfxCertificate -Exportable -CertStoreLocation Cert:\CurrentUser\My `
         -Password $certpwd
 ```
 
-Nyní jste připraveni připojit ke svému zabezpečenému clusteru.
+Nyní jste připraveni připojit se k zabezpečenému clusteru.
 
 Modul PowerShellu pro **Service Fabric** poskytuje řadu rutin pro správu clusterů Service Fabric, aplikací a služeb. Pomocí rutiny [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster) se připojte k zabezpečenému clusteru. Podrobnosti o kryptografickém otisku certifikátu SHA1 a koncovém bodu připojení se nacházejí ve výstupu z předchozího kroku.
 
-Pokud jste dříve nastavili ověření klienta služby Azure AD, spusťte následující příkaz: 
+Pokud jste dříve nastavili ověřování klienta služby Azure AD, spusťte následující příkaz: 
 ```powershell
 Connect-ServiceFabricCluster -ConnectionEndpoint mysfcluster123.southcentralus.cloudapp.azure.com:19000 `
         -KeepAliveIntervalInSec 10 `
@@ -697,7 +697,7 @@ Connect-ServiceFabricCluster -ConnectionEndpoint mysfcluster123.southcentralus.c
         -ServerCertThumbprint C4C1E541AD512B8065280292A8BA6079C3F26F10
 ```
 
-Pokud jste neměli nastavili ověření klienta služby Azure AD, spusťte následující příkaz:
+Pokud jste nenastavili ověřování klienta služby Azure AD, spusťte následující příkaz:
 ```powershell
 Connect-ServiceFabricCluster -ConnectionEndpoint mysfcluster123.southcentralus.cloudapp.azure.com:19000 `
           -KeepAliveIntervalInSec 10 `
@@ -706,7 +706,7 @@ Connect-ServiceFabricCluster -ConnectionEndpoint mysfcluster123.southcentralus.c
           -StoreLocation CurrentUser -StoreName My
 ```
 
-Zkontrolujte, že jste připojeni a cluster je v pořádku pomocí [Get-ServiceFabricClusterHealth](/powershell/module/servicefabric/get-servicefabricclusterhealth) rutiny.
+Pomocí rutiny [Get-ServiceFabricClusterHealth](/powershell/module/servicefabric/get-servicefabricclusterhealth) ověřte, že jste připojení a že cluster je v pořádku.
 
 ```powershell
 Get-ServiceFabricClusterHealth
@@ -714,25 +714,25 @@ Get-ServiceFabricClusterHealth
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-V dalších článcích v této sérii kurzů používá cluster, který jste vytvořili. Pokud nechcete ihned pokračovat dalším článkem, můžete [cluster odstranit](service-fabric-cluster-delete.md), aby se vám neúčtovaly poplatky.
+V dalších článcích v této sérii kurzů se používá cluster, který jste vytvořili. Pokud nechcete ihned pokračovat dalším článkem, můžete [cluster odstranit](service-fabric-cluster-delete.md), aby se vám neúčtovaly poplatky.
 
 ## <a name="next-steps"></a>Další postup
 
-Přejděte k následujícímu kurzu se naučíte škálování clusteru.
+Pokud se chcete dozvědět, jak škálovat cluster, přejděte k následujícímu kurzu.
 
 > [!div class="checklist"]
 > * Vytvoření virtuální sítě v Azure pomocí PowerShellu
 > * Vytvoření trezoru klíčů a nahrání certifikátu
-> * Nastavení ověřování Azure Active Directory
-> * Konfigurace shromažďování diagnostických dat
+> * Nastavení Azure Active Directory ověřování
+> * Konfigurace kolekce diagnostiky
 > * Nastavení služby Eventstoru
-> * Nastavte si protokoly Azure monitoru
+> * Nastavení protokolů Azure Monitor
 > * Vytvoření zabezpečeného clusteru Service Fabric v Azure PowerShellu
 > * Zabezpečení clusteru pomocí certifikátu X.509
 > * Připojení ke clusteru pomocí prostředí PowerShell
 > * Odebrání clusteru
 
-Teď přejděte k následujícímu kurzu se naučíte monitorovat svůj cluster.
+Potom přejděte k následujícímu kurzu, kde se dozvíte, jak monitorovat cluster.
 > [!div class="nextstepaction"]
 > [Monitorování clusteru](service-fabric-tutorial-monitor-cluster.md)
 

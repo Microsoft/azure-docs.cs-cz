@@ -56,7 +56,7 @@ Nebo, pokud už připojení existuje, zadejte informace potřebné pro aktivačn
    | Vlastnost | Požaduje se | Value | Popis |
    |----------|----------|-------|-------------|
    | Search Query | Ano | <*search-words*> | Zadejte hledaná klíčová slova, které chcete použít. |
-   | Market | Ano | <*Nlocale*> | Hledání národní prostředí. Výchozí hodnota je "en US", ale můžete vybrat jinou hodnotu. |
+   | Market | Ano | <*Národní prostředí*> | Hledání národní prostředí. Výchozí hodnota je "en US", ale můžete vybrat jinou hodnotu. |
    | Safe Search | Ano | <*search-level*> | Úroveň filtru pro vyloučení obsah pro dospělé. Výchozí hodnota je "Střední", ale vyberte jinou úroveň. |
    | Count | Ne | <*results-count*> | Vrátí zadaný počet výsledků. Výchozí hodnota je 20, ale můžete zadat jinou hodnotu. Skutečný počet vrácených výsledků může být nižší než zadané číslo. |
    | Offset | Ne | <*skip-value*> | Počet výsledků, chcete-li přeskočit před vrácením výsledky |
@@ -108,7 +108,7 @@ Ze seznamu akcí vyberte požadovanou akci.
    |----------|----------|-------|-------------|
    | Search Query | Ano | <*search-expression*> | Zadejte výraz pro dotazování na výsledky aktivační události. Můžete vybrat z polí v seznamu dynamického obsahu nebo vytvořte výraz s Tvůrce výrazů. |
    | Market | Ano | <*Národní prostředí*> | Hledání národní prostředí. Výchozí hodnota je "en US", ale můžete vybrat jinou hodnotu. |
-   | Safe Search | Ano | <*úroveň hledání*> | Úroveň filtru pro vyloučení obsah pro dospělé. Výchozí hodnota je "Střední", ale vyberte jinou úroveň. |
+   | Safe Search | Ano | <*search-level*> | Úroveň filtru pro vyloučení obsah pro dospělé. Výchozí hodnota je "Střední", ale vyberte jinou úroveň. |
    | Count | Ne | <*results-count*> | Vrátí zadaný počet výsledků. Výchozí hodnota je 20, ale můžete zadat jinou hodnotu. Skutečný počet vrácených výsledků může být nižší než zadané číslo. |
    | Offset | Ne | <*skip-value*> | Počet výsledků, chcete-li přeskočit před vrácením výsledky |
    |||||

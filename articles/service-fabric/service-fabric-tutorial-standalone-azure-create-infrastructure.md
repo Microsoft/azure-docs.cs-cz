@@ -1,6 +1,6 @@
 ---
-title: Kurz vytváření infrastruktury pro Service Fabric cluster na virtuálních počítačích Azure – Azure Service Fabric | Dokumentace Microsoftu
-description: V tomto kurzu se dozvíte, jak nastavit infrastrukturu virtuálních počítačů Azure pro spuštění clusteru Service Fabric.
+title: Kurz vytvoření infrastruktury pro Service Fabric cluster na virtuálních počítačích Azure – Azure Service Fabric | Microsoft Docs
+description: V tomto kurzu se naučíte nastavit infrastrukturu virtuálních počítačů Azure pro spuštění clusteru Service Fabric.
 services: service-fabric
 documentationcenter: .net
 author: v-vasuke
@@ -12,87 +12,87 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 3/25/2019
+ms.date: 07/22/2019
 ms.author: v-vasuke
 ms.custom: mvc
-ms.openlocfilehash: b5f2f77b3caed483aed1736bd510096d44329284
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: d9db71a1b64ea6bf2dc73500160ce8e5e6022ef6
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67276003"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68385024"
 ---
-# <a name="tutorial-create-azure-vm-infrastructure-to-host-a-service-fabric-cluster"></a>Kurz: Vytvoření infrastruktury virtuálního počítače Azure k hostování clusteru Service Fabric
+# <a name="tutorial-create-azure-vm-infrastructure-to-host-a-service-fabric-cluster"></a>Kurz: Vytvoření infrastruktury virtuálních počítačů Azure pro hostování Service Fabric clusteru
 
-Samostatné clustery Service Fabric nabízejí možnost volby vlastního prostředí a vytvoření clusteru v rámci přístupu Service Fabric „libovolný OS a libovolný cloud“. V této řadě kurzů vytvoření samostatného clusteru hostovaných na virtuálních počítačích Azure a nainstalovat aplikaci na něj.
+Samostatné clustery Service Fabric nabízejí možnost volby vlastního prostředí a vytvoření clusteru v rámci přístupu Service Fabric „libovolný OS a libovolný cloud“. V této sérii kurzů vytvoříte samostatný cluster hostovaný na virtuálních počítačích Azure a nainstalujete do něj aplikaci.
 
-Tento kurz je první částí série. V tomto článku se generování prostředků virtuálních počítačů Azure vyžaduje pro hostování vašeho samostatného clusteru Service Fabric. V dalších článcích bude třeba nainstalovat samostatnou sadu Service Fabric, nainstalovat do clusteru ukázkovou aplikaci a nakonec cluster vyčistit.
+Tento kurz je první částí série. V tomto článku vygenerujete prostředky virtuálních počítačů Azure, které jsou potřeba pro hostování samostatného clusteru Service Fabric. V dalších článcích bude třeba nainstalovat samostatnou sadu Service Fabric, nainstalovat do clusteru ukázkovou aplikaci a nakonec cluster vyčistit.
 
 V první části této série se naučíte:
 
 > [!div class="checklist"]
-> * Vytvořit sadu instancí AzureVM
+> * Vytvoření sady instancí AzureVM
 > * Úprava skupiny zabezpečení
 > * Přihlášení k jedné z instancí
 > * Příprava instance pro Service Fabric
 
 ## <a name="prerequisites"></a>Požadavky
 
-K dokončení tohoto kurzu potřebujete předplatné Azure.  Pokud ještě nemáte účet, přejděte [webu Azure portal](https://portal.azure.com) k jejímu vytvoření.
+K dokončení tohoto kurzu potřebujete předplatné Azure.  Pokud účet ještě nemáte, můžete ho vytvořit tak, že přejdete na [Azure Portal](https://portal.azure.com) .
 
-## <a name="create-azure-virtual-machine-instances"></a>Vytvoření instance virtuálních počítačů Azure
+## <a name="create-azure-virtual-machine-instances"></a>Vytvoření instancí virtuálních počítačů Azure
 
-1. Přihlaste se k Azure portal a vyberte **virtuálních počítačů** (ne virtuální počítače (classic)).
+1. Přihlaste se k Azure Portal a vyberte **virtuální počítače** (ne Virtual Machines (Classic)).
 
-   ![Azure portal virtuálního počítače][az-console]
+   ![Azure Portal virtuálního počítače][az-console]
 
-2. Vyberte **přidat** tlačítko, které se otevře **vytvoření virtuálního počítače** formuláře.
+2. Vyberte tlačítko **Přidat** , ve kterém se otevře formulář **vytvořit virtuální počítač** .
 
-3. V **Základy** kartu, zvolte předplatném a skupině prostředků můžete určit (pomocí nové skupiny prostředků je doporučeno).
+3. Na kartě **základy** si nezapomeňte zvolit předplatné a skupinu prostředků, které chcete (doporučuje se použít novou skupinu prostředků).
 
-4. Změnit **Image** typ, který **systému Windows Server 2016 Datacenter**. 
+4. Změňte typ **obrázku** na **Windows Server 2016 Datacenter**. 
  
-5. Změnit instanci **velikost** k **Standard DS2 v2**. Nastavte správce **uživatelské jméno** a **heslo**, poznamenat, že jsou.
+5. Změňte **Velikost** instance na **Standard DS2 v2**. Nastavte **uživatelské jméno** a **heslo**správce, které označuje, co jsou.
 
-6. Nechte **příchozí pravidla portů** blokované prozatím; nakonfigurujeme v další části.
+6. Nechejte teď blokovaná **pravidla portů pro příchozí provoz** ; v další části je nakonfigurujeme.
 
-7. V **sítě** kartu, vytvořte nový **virtuální sítě** a poznamenejte si její název.
+7. Na kartě **sítě** vytvořte novou **Virtual Network** a poznamenejte si její jméno.
 
-8. Dále nastavte **skupinu zabezpečení sítě NIC** k **Upřesnit**. Vytvořit novou skupinu zabezpečení, zobrazí jeho název a vytvořte následující pravidla pro umožnění provoz TCP z libovolného zdroje:
+8. V dalším kroku nastavte **skupinu zabezpečení sítě síťové karty** na **Upřesnit**. Vytvořte novou skupinu zabezpečení, která zaznamená její název, a vytvořte následující pravidla, která povolí přenos TCP z libovolného zdroje:
 
-   ![příchozí SF][sf-inbound]
+   ![SF – příchozí][sf-inbound]
 
-   * Port `3389`pro protokol RDP a protokol ICMP (základní připojení).
-   * Porty `19000-19003`, pro Service Fabric.
-   * Porty `19080-19081`, pro Service Fabric.
-   * Port `8080`, požadavky na webový prohlížeč.
+   * Port `3389`pro RDP a ICMP (základní připojení).
+   * Porty `19000-19003`pro Service Fabric.
+   * Porty `19080-19081`pro Service Fabric.
+   * Port `8080`pro požadavky webového prohlížeče.
 
    > [!TIP]
-   > Pro propojení virtuálních počítačů do Service Fabric je třeba, aby virtuální počítače hostující vaši infrastrukturu měly stejné přihlašovací údaje.  Existují dva běžné způsoby, jak zajistit konzistenci přihlašovacích údajů: připojení všech virtuálních počítačů do stejné domény nebo nastavení stejného hesla správce na každém počítači. Naštěstí vám Azure povolí všechny virtuální počítače ve stejném **virtuální síť** snadno připojit, takže jsme bude obsahovat všechny naše instance ve stejné síti.
+   > Pro propojení virtuálních počítačů do Service Fabric je třeba, aby virtuální počítače hostující vaši infrastrukturu měly stejné přihlašovací údaje.  Existují dva běžné způsoby, jak zajistit konzistenci přihlašovacích údajů: připojení všech virtuálních počítačů do stejné domény nebo nastavení stejného hesla správce na každém počítači. Naštěstí Azure umožňuje, aby se všechny virtuální počítače ve stejné **virtuální síti** snadno připojovaly, takže budeme mít jistotu, že všechny naše instance budou ve stejné síti.
 
-9. Přidáte jiné pravidlo. Nastavit zdroj, který má být **značka služby** a nastavte značka zdrojové služby **VirtualNetwork**. Service Fabric vyžaduje, aby následující porty otevřené pro komunikaci v rámci clusteru: 135,137-139,445,20001-20031,20606-20861.
+9. Přidejte další pravidlo. Nastavte zdroj jako **značku služby** a nastavte značku zdrojové služby na **VirtualNetwork**. Service Fabric vyžaduje, aby byly pro komunikaci v rámci clusteru otevřené následující porty: 135137-139, 445, 20 001-20031, 20606-20861.
 
-   ![příchozí virtuální sítě][vnet-inbound]
+   ![síť VNet – příchozí][vnet-inbound]
 
-10. Zbývající možnosti jsou přijatelné ve svém výchozím stavu. Zkontrolujte je, pokud chcete a pak spusťte virtuální počítač.
+10. Ostatní možnosti jsou přijatelné ve výchozím stavu. Zkontrolujte je, pokud chcete, a pak spusťte virtuální počítač.
 
-## <a name="creating-more-instances-for-your-service-fabric-cluster"></a>Vytvoření více instancí pro váš cluster Service Fabric
+## <a name="creating-more-instances-for-your-service-fabric-cluster"></a>Vytváření dalších instancí pro cluster Service Fabric
 
-Spusťte dvě další **virtuálních počítačů**, zkontrolujte, zda chcete zachovat stejné nastavení uvedených v předchozí části. Zvlášť zachovat stejné správce uživatelské jméno a heslo. **Virtuální sítě** a **skupinu zabezpečení sítě NIC** by neměl být znovu vytvořen, vyberte ty, které jste už vytvořili, z rozevírací nabídky. Může trvat několik minut, než se všechny vaše instance má být nasazen.
+Spusťte ještě dva **Virtual Machines**. Ujistěte se, že jste zachovali stejné nastavení, jak je popsáno v předchozí části. Zachovejte zejména stejné uživatelské jméno a heslo správce. Nepodařilo se znovu vytvořit skupinu zabezpečení **Virtual Network** a **síťový adaptér** . Vyberte ty, které jste už vytvořili z rozevírací nabídky. Nasazování všech instancí může trvat několik minut.
 
-## <a name="connect-to-your-instances"></a>Připojení k instancím
+## <a name="connect-to-your-instances"></a>Připojení k vašim instancím
 
-1. Vyberte jednu z instancí **virtuálního počítače** oddílu.
+1. V části **virtuální počítač** vyberte jednu z vašich instancí.
 
-2. V **přehled** kartu, poznamenejte si *privátní* IP adresu. Potom klikněte na **připojit**.
+2. Na kartě **Přehled** si poznamenejte *privátní* IP adresu. Pak klikněte na **připojit**.
 
-3. V **RDP** kartu, mějte na paměti, že používáme veřejnou IP adresu a port 3389, které konkrétně otevřeme dříve. Stáhněte soubor RDP.
+3. Na kartě **RDP** si všimněte, že používáme veřejnou IP adresu a port 3389, který jsme konkrétně otevřeli dřív. Stáhněte soubor RDP.
  
 4. Otevřete soubor RDP a po zobrazení výzvy zadejte uživatelské jméno a heslo, které jste zadali v nastavení virtuálního počítače.
 
-5. Po připojení k instanci, je potřeba ověřit, zda byl spuštěn vzdálený registr, povolit protokol SMB a otevřít nezbytné porty pro SMB a vzdáleného registru.
+5. Jakmile budete připojeni k instanci, je nutné ověřit, zda byl spuštěn vzdálený registr, povolit protokol SMB a otevřít požadované porty pro protokol SMB a vzdálený registr.
 
-   Pokud chcete povolit protokol SMB, to je příkaz prostředí PowerShell:
+   Pokud chcete povolit protokol SMB, jedná se o příkaz prostředí PowerShell:
 
    ```powershell
    netsh advfirewall firewall set rule group="File and Printer Sharing" new enable=Yes
@@ -104,13 +104,13 @@ Spusťte dvě další **virtuálních počítačů**, zkontrolujte, zda chcete z
    New-NetFirewallRule -DisplayName "Service Fabric Ports" -Direction Inbound -Action Allow -RemoteAddress LocalSubnet -Protocol TCP -LocalPort 135, 137-139, 445
    ```
 
-7. Tento postup opakujte pro další instance, znovu zobrazí privátní IP adresy.
+7. Tento postup opakujte pro své jiné instance a znovu se zaznamenáte o privátních IP adresách.
 
-## <a name="verify-your-settings"></a>Ověřte nastavení
+## <a name="verify-your-settings"></a>Ověřit nastavení
 
-1. Ověření základní konektivity, připojte k virtuálním počítačům pomocí protokolu RDP.
+1. Pokud chcete ověřit základní připojení, připojte se k některému z virtuálních počítačů pomocí protokolu RDP.
 
-2. Otevřete **příkazového řádku** z v rámci tohoto virtuálního počítače, pak pomocí příkazu ping připojit z jednoho virtuálního počítače do jiného, nahraďte následující IP adresu s jedním z privátních IP adres můžete jste si předtím poznamenali (ne IP adresu virtuálního počítače jste připojeni k již).
+2. Otevřete **příkazový řádek** z tohoto virtuálního počítače a pak pomocí příkazu příkazu pro připojení z jednoho virtuálního počítače k jinému nahraďte níže uvedenou IP adresu jednou z privátních IP adres, které jste si poznamenali dříve (ne IP adresa virtuálního počítače, ke kterému jste se už připojili).
 
    ```
    ping 172.31.20.163
@@ -127,14 +127,14 @@ Spusťte dvě další **virtuálních počítačů**, zkontrolujte, zda chcete z
    Výstupem by mělo být `Drive Z: is now connected to \\172.31.20.163\c$.`.
 
 
-   Vaše instance jsou teď správně připravena pro Service Fabric.
+   Teď jsou vaše instance správně připravené pro Service Fabric.
 
 ## <a name="next-steps"></a>Další postup
 
-V druhé části série jste zjistili, jak můžete spustit tři instance virtuálních počítačů Azure a je nakonfigurován pro instalaci Service Fabric:
+V první části série jste zjistili, jak spustit tři instance virtuálních počítačů Azure a jak je nakonfigurovat pro instalaci Service Fabric:
 
 > [!div class="checklist"]
-> * Vytvořit sadu instancí virtuálních počítačů Azure
+> * Vytvoření sady instancí virtuálních počítačů Azure
 > * Úprava skupiny zabezpečení
 > * Přihlášení k jedné z instancí
 > * Příprava instance pro Service Fabric

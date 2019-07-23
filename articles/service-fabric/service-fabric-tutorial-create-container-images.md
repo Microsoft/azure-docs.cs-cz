@@ -13,17 +13,17 @@ ms.service: service-fabric
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/15/2017
+ms.date: 07/22/2019
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: fe01d55b17c0f6f6dd6a621fbac0cf4d3a268ee3
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: b5dba1f7e71149c37edc909d2bb43d708192bdbb
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66306770"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68385223"
 ---
-# <a name="tutorial-create-container-images-on-a-linux-service-fabric-cluster"></a>Kurz: Vytváření imagí kontejneru v clusteru Service Fabric s Linuxem
+# <a name="tutorial-create-container-images-on-a-linux-service-fabric-cluster"></a>Kurz: Vytváření imagí kontejneru v clusteru Service Fabric se systémem Linux
 
 Tento kurz je součástí série kurzů, která demonstruje používání kontejnerů v clusteru Service Fabric s Linuxem. V tomto kurzu je pro použití s prostředkem Service Fabric připravena vícekontejnerová aplikace. V následujících kurzech jsou tyto image použity jako součást aplikace Service Fabric. V tomto kurzu se naučíte:
 
@@ -88,7 +88,7 @@ tiangolo/uwsgi-nginx-flask   python3.6           590e17342131        5 days ago 
 
 ## <a name="deploy-azure-container-registry"></a>Nasazení služby Azure Container Registry
 
-Při prvním spuštění **az login** příkaz pro přihlášení ke svému účtu Azure.
+Nejprve spuštěním příkazu **AZ Login** Přihlaste se ke svému účtu Azure.
 
 ```bash
 az login
@@ -116,9 +116,9 @@ az acr create --resource-group <myResourceGroup> --name <acrName> --sku Basic --
 
 V celé zbývající části tohoto kurzu používáme položku „acrName“ jako zástupný symbol pro název registru kontejneru, který jste zvolili. Poznamenejte si tuto hodnotu.
 
-## <a name="sign-in-to-your-container-registry"></a>Přihlaste se do vašeho registru kontejneru
+## <a name="sign-in-to-your-container-registry"></a>Přihlaste se ke svému registru kontejneru.
 
-Přihlaste se k vaší instanci služby ACR před nahráním Image do ní. Dokončete operaci pomocí příkazu **az acr login**. Uveďte jedinečný název zadaný pro registr kontejneru při jeho vytvoření.
+Před nahráním imagí do instance ACR se přihlaste. Dokončete operaci pomocí příkazu **az acr login**. Uveďte jedinečný název zadaný pro registr kontejneru při jeho vytvoření.
 
 ```bash
 az acr login --name <acrName>
@@ -208,7 +208,7 @@ Na konci kurzu byla image kontejneru uložena v privátní instanci služby Azur
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto kurzu byla z Githubu přijata aplikace a imagí kontejneru byly vytvořeny a nahrány do registru. Dokončili jste následující kroky:
+V tomto kurzu byla aplikace získána z GitHubu a image kontejneru se vytvořily a vložily do registru. Dokončili jste následující kroky:
 
 > [!div class="checklist"]
 > * Klonovat zdroj aplikace z GitHubu

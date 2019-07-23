@@ -1,6 +1,6 @@
 ---
 title: Kurz instalace aplikace na samostatný cluster Service Fabric – Azure Service Fabric | Microsoft Docs
-description: V tomto kurzu se dozvíte, jak chcete instalovat aplikace do samostatného clusteru Service Fabric.
+description: V tomto kurzu se dozvíte, jak nainstalovat aplikaci do samostatného Service Fabricho clusteru.
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
@@ -12,21 +12,21 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 05/11/2018
+ms.date: 07/22/2019
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: 58daa53dba8f18c3f73253008fe687ba8b0d0839
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 5e5260a2001d9cb0a38f4182e923a5416f76712b
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67274073"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68384997"
 ---
 # <a name="tutorial-deploy-an-application-on-your-service-fabric-standalone-cluster"></a>Kurz: Nasazení aplikace na samostatný cluster Service Fabric
 
-Samostatné clustery Service Fabric nabízejí možnost volby vlastního prostředí a vytvoření clusteru v rámci přístupu Service Fabric „libovolný OS a libovolný cloud“. V této řadě kurzů vytvoření samostatného clusteru hostovaných ve službě AWS a nasadit aplikaci do něj.
+Samostatné clustery Service Fabric nabízejí možnost volby vlastního prostředí a vytvoření clusteru v rámci přístupu Service Fabric „libovolný OS a libovolný cloud“. V této sérii kurzů vytvoříte samostatný cluster hostovaný na AWS a nasadíte do něj aplikaci.
 
-Tento kurz je třetí částí série.  Samostatné clustery Service Fabric nabízí možnost vybrat vlastní prostředí a vytvoření clusteru v rámci naší "Libovolný operační systém a všechny cloudy" přístup s využitím Service Fabric. V tomto kurzu se dozvíte, jak vytvořit infrastrukturu AWS potřebnou k hostování tohoto samostatného clusteru.
+Tento kurz je třetí částí série.  Service Fabric samostatné clustery nabízejí možnost zvolit si vlastní prostředí a vytvořit cluster jako součást libovolného operačního systému, jakéhokoli cloudu s přístupem k Service Fabric. V tomto kurzu se dozvíte, jak vytvořit infrastrukturu AWS potřebnou k hostování tohoto samostatného clusteru.
 
 Ve třetí části této série se naučíte:
 
@@ -38,7 +38,7 @@ Ve třetí části této série se naučíte:
 
 Než začnete s tímto kurzem:
 
-* [Nainstalovat Visual Studio 2019](https://www.visualstudio.com/) a nainstalujte **vývoj pro Azure** a **vývoj pro ASP.NET a web** úlohy.
+* [Nainstalujte Visual Studio 2019](https://www.visualstudio.com/) a nainstalujte úlohy vývoje pro vývoj a vývoj pro **Azure** a vývoj **webů** .
 * [Nainstalujte sadu Service Fabric SDK](service-fabric-get-started.md).
 
 ## <a name="download-the-voting-sample-application"></a>Stažení ukázkové hlasovací aplikace
@@ -61,7 +61,7 @@ Jakmile je aplikace stažená, můžete ji do clusteru nasadit přímo ze sady V
 
 4. V Průzkumníku řešení klikněte pravým tlačítkem na projekt aplikace `Voting` a zvolte **Publikovat**.
 
-5. Vyberte rozevírací seznam pro **Koncový bod připojení** a zadejte veřejný název DNS jednoho z uzlů v clusteru.  Například, `ec2-34-215-183-77.us-west-2.compute.amazonaws.com:19000`. Všimněte si, že v Azure, plně kvalifikovaný název domény (FQDN) není automaticky udělen, ale mohou snadno [nastavit na stránce Přehled virtuálních počítačů.](https://docs.microsoft.com/azure/virtual-machines/linux/portal-create-fqdn)
+5. Vyberte rozevírací seznam pro **Koncový bod připojení** a zadejte veřejný název DNS jednoho z uzlů v clusteru.  Například, `ec2-34-215-183-77.us-west-2.compute.amazonaws.com:19000`. Všimněte si, že v Azure se plně kvalifikovaný název domény (FQDN) neposkytuje automaticky, ale dá se snadno [nastavit na stránce s přehledem virtuálního počítače.](https://docs.microsoft.com/azure/virtual-machines/linux/portal-create-fqdn)
 
 6. Otevřete váš preferovaný prohlížeč a zadejte adresu clusteru (koncový bod připojení, tato aplikace se nasadí na port 8080 – například ec2-34-215-183-77.us-west-2.compute.amazonaws.com:8080).
 

@@ -12,19 +12,19 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/26/2018
+ms.date: 07/22/2019
 ms.author: aljo
 ms.custom: mvc
-ms.openlocfilehash: 0e5137a8183f378ee5960846e281222c6ecaaa47
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 660b8cc8ec142c1c0710480020f103215359987f
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66158076"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68385067"
 ---
-# <a name="tutorial-remove-a-service-fabric-cluster-running-in-azure"></a>Kurz: Odebrání clusteru Service Fabric běžící v Azure
+# <a name="tutorial-remove-a-service-fabric-cluster-running-in-azure"></a>Kurz: Odebrat Cluster Service Fabric se systémem v Azure
 
-V tomto kurzu je součástí pět série a ukazuje, jak odstranit cluster Service Fabric běžící v Azure. Pokud chcete cluster Service Fabric úplně odstranit, musíte odstranit také prostředky, které cluster používá. Máte dvě možnosti: buď odstranit skupinu prostředků, ve které se cluster nachází (čímž odstraníte tento prostředek clusteru a všechny další prostředky v této skupině), nebo jednotlivě odstranit daný prostředek clusteru a jeho přidružené prostředky (ale ne jiné prostředky v této skupině).
+Tento kurz je 5. část série a ukazuje, jak odstranit Cluster Service Fabric běžící v Azure. Pokud chcete cluster Service Fabric úplně odstranit, musíte odstranit také prostředky, které cluster používá. Máte dvě možnosti: buď odstranit skupinu prostředků, ve které se cluster nachází (čímž odstraníte tento prostředek clusteru a všechny další prostředky v této skupině), nebo jednotlivě odstranit daný prostředek clusteru a jeho přidružené prostředky (ale ne jiné prostředky v této skupině).
 
 V tomto kurzu se naučíte:
 
@@ -34,7 +34,7 @@ V tomto kurzu se naučíte:
 
 V této sérii kurzů se naučíte:
 > [!div class="checklist"]
-> * Vytvoření zabezpečeného [clusteru Windows](service-fabric-tutorial-create-vnet-and-windows-cluster.md) v Azure pomocí šablony
+> * Vytvoření zabezpečeného [clusteru s Windows](service-fabric-tutorial-create-vnet-and-windows-cluster.md) v Azure pomocí šablony
 > * [Monitorování clusteru](service-fabric-tutorial-monitor-cluster.md)
 > * [Horizontální snížení nebo navýšení kapacity clusteru](service-fabric-tutorial-scale-cluster.md)
 > * [Upgrade modulu runtime clusteru](service-fabric-tutorial-upgrade-cluster.md)
@@ -48,13 +48,13 @@ V této sérii kurzů se naučíte:
 Než začnete s tímto kurzem:
 
 * Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* Nainstalujte [prostředí Azure Powershell](https://docs.microsoft.com/powershell/azure//install-Az-ps) nebo [rozhraní příkazového řádku Azure](/cli/azure/install-azure-cli).
-* Vytvoření zabezpečeného [clusteru Windows](service-fabric-tutorial-create-vnet-and-windows-cluster.md) v Azure
+* Nainstalujte [Azure PowerShell](https://docs.microsoft.com/powershell/azure//install-Az-ps) nebo rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli).
+* Vytvoření zabezpečeného [clusteru s Windows](service-fabric-tutorial-create-vnet-and-windows-cluster.md) v Azure
 
 ## <a name="delete-the-resource-group-containing-the-service-fabric-cluster"></a>Odstranění skupiny prostředků obsahující cluster Service Fabric
 Nejjednodušší způsob, jak odstranit cluster a všechny prostředky, které využívá, je odstranit příslušnou skupinu prostředků.
 
-Přihlaste se k Azure a vyberte ID předplatného, pomocí kterého chcete odebrat cluster.  Své ID předplatného můžete zjistit po přihlášení k webu [Azure Portal](https://portal.azure.com). Odstranit skupinu prostředků a všechny prostředky clusteru pomocí [odebrat AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) rutiny nebo [odstranění skupiny az](/cli/azure/group?view=azure-cli-latest) příkazu.
+Přihlaste se k Azure a vyberte ID předplatného, se kterým chcete cluster odebrat.  Své ID předplatného můžete zjistit po přihlášení k webu [Azure Portal](https://portal.azure.com). Odstraňte skupinu prostředků a všechny prostředky clusteru pomocí rutiny [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) nebo příkazu [AZ Group Delete](/cli/azure/group?view=azure-cli-latest) .
 
 ```powershell
 Connect-AzAccount
@@ -119,5 +119,5 @@ V tomto kurzu jste se naučili:
 
 Teď když jste kurz dokončili, zkuste toto:
 * Zjistěte, jak zkontrolovat a spravovat cluster Service Fabric pomocí [Service Fabric Exploreru](service-fabric-visualizing-your-cluster.md).
-* Zjistěte, jak [opravovat operační systém Windows](service-fabric-patch-orchestration-application.md) uzlů clusteru.
-* Zjistěte, jak agregovat a shromažďování událostí [clustery Windows](service-fabric-diagnostics-event-aggregation-wad.md) a [nastavení Log Analytics](service-fabric-diagnostics-oms-setup.md) monitorovat události clusteru.
+* Přečtěte si, jak [opravit operační systém Windows](service-fabric-patch-orchestration-application.md) na uzlech clusteru.
+* Naučte se agregovat a shromažďovat události pro [clustery Windows](service-fabric-diagnostics-event-aggregation-wad.md) a [instalační Log Analytics](service-fabric-diagnostics-oms-setup.md) , abyste mohli monitorovat události clusteru.
