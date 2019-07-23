@@ -10,8 +10,6 @@
       href: virtual-wan-site-to-site-portal.md
     - name: Vytvoření připojení ExpressRoute
       href: virtual-wan-expressroute-portal.md
-    - name: Vytvoření připojení typu Point-to-Site
-      href: virtual-wan-point-to-site-portal.md
 - name: Koncepty
   items:
     - name: Informace o umístěních a partnerech

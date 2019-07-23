@@ -156,8 +156,8 @@
         - name: Rozhraní Train API
           href: 'https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/train'
       href: 'https://go.microsoft.com/fwlink/?linkid=2092179'
-    - name: Nejčastější dotazy
-      href: faqs.md
+    - name: Řešení potíží
+      href: troubleshooting.md
     - name: Omezení
       href: limits.md
     - name: Glosář
