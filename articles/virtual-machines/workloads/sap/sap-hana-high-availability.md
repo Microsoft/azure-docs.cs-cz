@@ -4,7 +4,7 @@ description: Vysoká dostupnost SAP HANA na virtuálních počítačích Azure n
 services: virtual-machines-linux
 documentationcenter: ''
 author: MSSedusch
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
 ms.devlang: NA
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 03/15/2019
 ms.author: sedusch
-ms.openlocfilehash: 3d59fc48f1f6f6931ca18e09a420fdbccc7d53dc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 78d14add09a89b7ec4d4844a12ffa0434d714b3a
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64922292"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67709102"
 ---
 # <a name="high-availability-of-sap-hana-on-azure-vms-on-suse-linux-enterprise-server"></a>Vysoká dostupnost SAP HANA na virtuálních počítačích Azure na SUSE Linux Enterprise Server
 
@@ -71,9 +71,9 @@ Přečtěte si následující poznámky SAP a Paper nejprve:
 * Poznámka SAP [401162] obsahuje informace o tom, jak zamezit "adresa už používá v" při nastavování HANA System Replication.
 * [WIKI komunity SAP](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes) má všechny požadované poznámky SAP pro Linux.
 * [SAP HANA s certifikací platformy IaaS](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)
-* [Azure Virtual Machines, plánování a implementace SAP na platformě Linux] [ planning-guide] průvodce.
-* [Nasazení virtuálních počítačů Azure pro SAP na platformě Linux] [ deployment-guide] (Tento článek).
-* [Nasazení Azure Virtual Machines DBMS pro SAP na platformě Linux] [ dbms-guide] průvodce.
+* [Azure Virtual Machines, plánování a implementace SAP na platformě Linux][planning-guide] průvodce.
+* [Nasazení virtuálních počítačů Azure pro SAP na platformě Linux][deployment-guide] (Tento článek).
+* [Nasazení Azure Virtual Machines DBMS pro SAP na platformě Linux][dbms-guide] průvodce.
 * [SUSE Linux Enterprise Server pro SAP aplikace 12 SP3 osvědčené postupy vodítka][sles-for-sap-bp]
   * Nastavení SAP HANA SR výkonu optimalizované infrastruktury (SLES pro SAP aplikace 12 SP1). V Průvodci najdete všechny informace potřebné k nastavení systémové replikace SAP HANA pro místní vývoj. Tento průvodce použijte jako základ.
   * Nastavení SAP HANA SR náklady optimalizované infrastruktury (SLES pro SAP aplikace 12 SP1)
@@ -101,8 +101,8 @@ Na webu Azure Marketplace obsahuje bitovou kopii operačního systému SUSE Linu
 Můžete použít některou ze šablon rychlý start, které jsou na Githubu nasadit všechny požadované prostředky. Šablona nasadí virtuální počítače, nástroj pro vyrovnávání zatížení, skupinu dostupnosti a tak dále.
 Pokud chcete nasadit šablonu, postupujte podle těchto kroků:
 
-1. Otevřít [databázové šablony] [ template-multisid-db] nebo [konvergované šablony] [ template-converged] na portálu Azure portal. 
-    Pravidla Vyrovnávání zatížení pro databázi pouze vytvoří šablona databáze. Konvergované Šablona také vytvoří pravidla Vyrovnávání zatížení pro ASCS/SCS a instance Lajících (pouze Linux). Pokud máte v plánu pro instalaci systému založené na systému SAP NetWeaver a chcete nainstalovat instanci ASCS/SCS na stejných počítačů, [konvergované šablony][template-converged].
+1. Otevřít [databázové šablony][template-multisid-db] or the [converged template][template-converged] on the Azure portal. 
+    The database template creates the load-balancing rules for a database only. The converged template also creates the load-balancing rules for an ASCS/SCS and ERS (Linux only) instance. If you plan to install an SAP NetWeaver-based system and you want to install the ASCS/SCS instance on the same machines, use the [converged template][template-converged].
 
 1. Zadejte následující parametry:
     - **ID systému SAP**: Zadejte ID systému SAP systému SAP, ve kterém chcete nainstalovat. ID se používá jako předpona pro prostředky, které jsou nasazené.
@@ -347,7 +347,7 @@ Instalace systémové replikace SAP HANA, postupujte podle kapitoly 4 [Průvodce
 
 1. **[A]**  Upgrade agenta hostitele SAP.
 
-   Stáhněte si nejnovější Agent hostitele SAP archiv z [centra softwaru SAP] [ sap-swcenter] a spusťte následující příkaz pro upgrade agenta. Cesta k archivu tak, aby odkazoval na soubor, který jste si stáhli nahradíte:
+   Stáhněte si nejnovější Agent hostitele SAP archiv z [centra softwaru SAP][sap-swcenter] a spusťte následující příkaz pro upgrade agenta. Cesta k archivu tak, aby odkazoval na soubor, který jste si stáhli nahradíte:
 
    <pre><code>sudo /usr/sap/hostctrl/exe/saphostexec -upgrade -archive &lt;path to SAP Host Agent SAR&gt;
    </code></pre>

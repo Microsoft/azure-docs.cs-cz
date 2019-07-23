@@ -4,7 +4,7 @@ description: Vytvoření vysoké dostupnosti SAP Hana na Azure virtual machines 
 services: virtual-machines-linux
 documentationcenter: ''
 author: MSSedusch
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
 ms.devlang: NA
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 03/15/2019
 ms.author: sedusch
-ms.openlocfilehash: 1eca9dd82bec120e5554627ade71688c82be7763
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 66e1e4603602835d6ed5be9af58eb09a24b00b63
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64922134"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67709105"
 ---
 # <a name="high-availability-of-sap-hana-on-azure-vms-on-red-hat-enterprise-linux"></a>Vysoká dostupnost SAP HANA na virtuálních počítačích Azure na Red Hat Enterprise Linux
 
@@ -101,7 +101,7 @@ Na webu Azure Marketplace obsahuje bitovou kopii pro Red Hat Enterprise Linux 7.
 Můžete použít některou ze šablon rychlý start, které jsou na Githubu nasadit všechny požadované prostředky. Šablona nasadí virtuální počítače, nástroj pro vyrovnávání zatížení, skupinu dostupnosti a tak dále.
 Pokud chcete nasadit šablonu, postupujte podle těchto kroků:
 
-1. Otevřít [databázové šablony] [ template-multisid-db] na portálu Azure portal.
+1. Otevřít [databázové šablony][template-multisid-db] na portálu Azure portal.
 1. Zadejte následující parametry:
     * **ID systému SAP**: Zadejte ID systému SAP systému SAP, ve kterém chcete nainstalovat. ID se používá jako předpona pro prostředky, které jsou nasazené.
     * **Typ operačního systému**: Vyberte jednu z Linuxových distribucí. V tomto příkladu vyberte **RHEL 7**.
@@ -335,7 +335,7 @@ Kroky v této části používají následující předpony:
 
 1. **[A]**  Upgrade agenta hostitele SAP.
 
-   Stáhněte si nejnovější Agent hostitele SAP archiv z [centra softwaru SAP] [ sap-swcenter] a spusťte následující příkaz pro upgrade agenta. Cesta k archivu tak, aby odkazoval na soubor, který jste si stáhli nahradíte:
+   Stáhněte si nejnovější Agent hostitele SAP archiv z [centra softwaru SAP][sap-swcenter] a spusťte následující příkaz pro upgrade agenta. Cesta k archivu tak, aby odkazoval na soubor, který jste si stáhli nahradíte:
 
    <pre><code>sudo /usr/sap/hostctrl/exe/saphostexec -upgrade -archive &lt;path to SAP Host Agent SAR&gt;
    </code></pre>
@@ -728,7 +728,7 @@ Resource Group: g_ip_HN1_03
     vip_HN1_03 (ocf::heartbeat:IPaddr2):       Started hn1-db-1
 </code></pre>
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Azure Virtual Machines, plánování a implementace SAP][planning-guide]
 * [Nasazení virtuálních počítačů pro SAP v Azure][deployment-guide]
