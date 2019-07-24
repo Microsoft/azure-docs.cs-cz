@@ -3,7 +3,7 @@ title: Nastavení vývojového prostředí ve Windows pro mikroslužby Azure | D
 description: Nainstalujte modul runtime, sadu SDK a nástroje a vytvořte místní vývojový cluster. Po dokončení této instalace a nastavení budete moci sestavovat aplikace ve Windows.
 services: service-fabric
 documentationcenter: .net
-author: aljo-microsoft
+author: peterpogorski
 manager: chackdan
 editor: ''
 ms.assetid: b94e2d2e-435c-474a-ae34-4adecd0e6f8f
@@ -12,14 +12,14 @@ ms.devlang: dotNet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 07/03/2019
+ms.date: 07/08/2019
 ms.author: aljo
-ms.openlocfilehash: 19f5d99fe95e1290cc30dedc8b8172e234bd4642
-ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
+ms.openlocfilehash: 0302d8950d10d2c606fad0582079ed0c77047fbf
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67566058"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68295530"
 ---
 # <a name="prepare-your-development-environment-on-windows"></a>Příprava vývojového prostředí ve Windows
 > [!div class="op_single_selector"]
@@ -29,7 +29,7 @@ ms.locfileid: "67566058"
 > 
 > 
 
-Sestavte a spusťte [aplikace Azure Service Fabric][1] na vývojovém počítači s Windows, nainstalujte modul runtime Service Fabric, sady SDK a nástrojů. Musíte také [povolit spouštění skriptů Windows PowerShellu](#enable-powershell-script-execution), které jsou součástí sady SDK.
+Pokud chcete vytvářet a spouštět [aplikace Service Fabric Azure][1] na vývojovém počítači s Windows, nainstalujte Service Fabric runtime, sadu SDK a nástroje. Musíte také [povolit spouštění skriptů Windows PowerShellu](#enable-powershell-script-execution), které jsou součástí sady SDK.
 
 ## <a name="prerequisites"></a>Požadavky
 ### <a name="supported-operating-system-versions"></a>Podporované verze operačních systémů
@@ -43,18 +43,18 @@ Pro vývoj jsou podporovány tyto verze operačních systémů:
 
 > [!NOTE]
 > Podpora Windows 7:
-> - Windows 7 ve výchozím nastavení obsahuje jenom prostředí Windows PowerShell 2.0 Rutiny prostředí PowerShell pro Service Fabric vyžadují PowerShell 3.0 nebo novější. Je možné [stáhnout prostředí Windows PowerShell 5.0][powershell5-download] z webu Microsoft Download Center.
+> - Windows 7 ve výchozím nastavení obsahuje jenom prostředí Windows PowerShell 2.0 Rutiny prostředí PowerShell pro Service Fabric vyžadují PowerShell 3.0 nebo novější. [Windows PowerShell 5,0][powershell5-download] si můžete stáhnout z webu Stažení softwaru.
 > - Reverzní proxy Service Fabric není ve Windows 7 k dispozici.
 >
 
 ## <a name="install-the-sdk-and-tools"></a>Instalace sady SDK a nástrojů
-Instalačního programu webové platformy (WebPI) je doporučeným způsobem, jak nainstalovat sadu SDK a nástroje. Pokud se zobrazí chyby za běhu pomocí instalace webové platformy, můžete také najít přímé odkazy na instalační programy v poznámkách k verzi pro konkrétní verzi Service Fabric. Zpráva k vydání verze můžete najít v oznámeních na různé verze na [blog týmu Service Fabric](https://blogs.msdn.microsoft.com/azureservicefabric/).
+Instalační program webové platformy (WebPI) je doporučeným způsobem, jak nainstalovat sadu SDK a nástroje. Pokud obdržíte chyby za běhu pomocí WebPI, můžete také najít přímé odkazy na instalační programy v poznámkách k verzi pro konkrétní verzi Service Fabric. Poznámky k verzi najdete v různých oznámeních k vydaným verzím na [blogu týmu Service Fabric](https://blogs.msdn.microsoft.com/azureservicefabric/).
 
 > [!NOTE]
-> Místní upgrady clusteru Service Fabric vývoj nejsou podporované.
+> Upgrade místních Service Fabric vývoje clusteru se nepodporuje.
 
-### <a name="to-use-visual-studio-2017"></a>Použití sady Visual Studio 2017
-Nástroje Service Fabric Tools jsou součástí sady funkcí Vývoj pro Azure v sadě Visual Studio 2017. Povolte tuto úlohu jako součást instalace sady Visual Studio.
+### <a name="to-use-visual-studio-2017-or-2019"></a>Použití sady Visual Studio 2017 nebo 2019
+Nástroje Service Fabric jsou součástí úlohy vývoje Azure v prostředí Visual Studio 2017 a 2019. Povolte tuto úlohu jako součást instalace sady Visual Studio.
 Kromě toho budete muset pomocí Instalace webové platformy nainstalovat sadu Microsoft Azure Service Fabric SDK a modul runtime.
 
 * [Nainstalovat sadu Microsoft Azure Service Fabric SDK][core-sdk].
@@ -69,15 +69,16 @@ Pokud potřebujete jenom sadu SDK, můžete nainstalovat tento balíček:
 * [Nainstalovat sadu Microsoft Azure Service Fabric SDK][core-sdk].
 
 Aktuální verze jsou:
-* Service Fabric SDK a nástroje 3.4.641
-* Modul runtime Service Fabric 6.5.641
-* Service Fabric Tools pro Visual Studio 2015 2.5.20615.1
-* Visual Studio 2017 15.9 obsahuje Service Fabric Tools for Visual Studio 2.4.11024.1 
+* 3\.4.641 SDK a nástroje pro Service Fabric
+* Service Fabric modulu runtime 6.5.641
+* Nástroje Service Fabric pro Visual Studio 2015 2.5.20615.1
+* Visual Studio 2017 15,9 zahrnuje Nástroje Service Fabric pro Visual Studio 2.4.11024.1 
+* Visual Studio 2019 16,1 zahrnuje Nástroje Service Fabric pro Visual Studio 2.5.20423.3
 
-Seznam podporovaných verzí najdete v tématu [verzí Service Fabric](service-fabric-versions.md)
+Seznam podporovaných verzí najdete v tématu [Service Fabric verze](service-fabric-versions.md) .
 
 > [!NOTE]
-> Upgraduje se jeden počítač pro aplikaci nebo clusteru se nepodporují clustery (OneBox); Odstranění clusteru OneBox a znovu jej vytvořte, pokud je potřeba provést inovaci clusteru nebo jakýchkoli problémů provádí upgrade aplikace. 
+> Clustery s jedním počítačem (OneBox) nejsou pro upgrady aplikací nebo clusterů podporovány; Odstraňte cluster OneBox a znovu ho vytvořte, pokud potřebujete provést upgrade clusteru nebo máte problémy s upgradem aplikace. 
 
 ## <a name="enable-powershell-script-execution"></a>Povolení spouštění skriptů prostředí PowerShell
 Platforma Service Fabric používá skripty prostředí Windows PowerShell k vytvoření místního vývojového clusteru a k nasazení aplikací ze sady Visual Studio. Systém Windows ve výchozím nastavení spouštění těchto skriptů blokuje. Pokud je chcete povolit, musíte upravit zásady spouštění prostředí PowerShell. Otevřete prostředí PowerShell jako správce a zadejte tento příkaz:
@@ -85,13 +86,13 @@ Platforma Service Fabric používá skripty prostředí Windows PowerShell k vyt
 ```powershell
 Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Force -Scope CurrentUser
 ```
-## <a name="install-docker-optional"></a>Nainstalujte Docker (volitelné)
-[Service Fabric je orchestrátor kontejnerů](service-fabric-containers-overview.md) pro nasazuje mikroslužby napříč clusterem počítačů. Ke spuštění aplikace typu kontejner Windows ve vašem místním vývojovém clusteru, musíte nejdřív nainstalovat Docker pro Windows. Získat [Docker CE pro Windows (stabilní verze)](https://store.docker.com/editions/community/docker-ce-desktop-windows?tab=description). Po nainstalování a spuštění Dockeru klikněte pravým tlačítkem myši na ikonu na hlavním panelu a vyberte **Switch to Windows containers** (Přepnout na kontejnery Windows). Tento krok se vyžaduje pro spuštění imagí Dockeru založených na Windows.
+## <a name="install-docker-optional"></a>Nainstalovat Docker (volitelné)
+[Service Fabric je kontejner Orchestrator](service-fabric-containers-overview.md) pro nasazení mikroslužeb napříč clusterem počítačů. Chcete-li spustit aplikace služby Windows Container v místním vývojovém clusteru, je nutné nejprve nainstalovat Docker for Windows. Získat [Docker CE for Windows (stabilní)](https://store.docker.com/editions/community/docker-ce-desktop-windows?tab=description) Po nainstalování a spuštění Dockeru klikněte pravým tlačítkem myši na ikonu na hlavním panelu a vyberte **Switch to Windows containers** (Přepnout na kontejnery Windows). Tento krok se vyžaduje pro spuštění imagí Dockeru založených na Windows.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Teď, když jste dokončili nastavení vývojového prostředí, můžete začít sestavovat a spouštět aplikace.
 
-* [Zjistěte, jak vytvářet, nasazovat a spravovat aplikace](service-fabric-tutorial-create-dotnet-app.md)
+* [Naučte se vytvářet, nasazovat a spravovat aplikace.](service-fabric-tutorial-create-dotnet-app.md)
 * [Seznamte se s programovacími modely: Reliable Services a Reliable Actors](service-fabric-choose-framework.md)
 * [Prohlédněte si ukázky kódu Service Fabric na GitHubu](https://aka.ms/servicefabricsamples)
 * [Vizualizujte cluster pomocí Service Fabric Exploreru](service-fabric-visualizing-your-cluster.md)

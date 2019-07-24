@@ -1,6 +1,6 @@
 ---
-title: Začínáme s Azure storage a Visual Studio připojené služby (webové úlohy projektů)
-description: Jak začít používat Azure Table storage v Azure WebJobs projektu v sadě Visual Studio po připojení k účtu úložiště pomocí sady Visual Studio připojené služby
+title: Začínáme se službou Azure Storage a připojenými službami sady Visual Studio (projekty WebJob)
+description: Jak začít používat službu Azure Table Storage v Azure WebJobs projektu v aplikaci Visual Studio po připojení k účtu úložiště pomocí připojených služeb sady Visual Studio
 services: storage
 author: ghogen
 manager: douge
@@ -12,27 +12,27 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: ghogen
-ms.openlocfilehash: a9a4475465fefb01ec53e6e0eb814f9b8f192a1b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 481c2f1eaf20e317c8efa4f21f337f4073af898f
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60390791"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68260750"
 ---
-# <a name="getting-started-with-azure-storage-azure-webjob-projects"></a>Začínáme s Azure Storage (webová úloha Azure projektů)
+# <a name="getting-started-with-azure-storage-azure-webjob-projects"></a>Začínáme s Azure Storage (projekty WebJob Azure)
 [!INCLUDE [storage-try-azure-tools-tables](../../includes/storage-try-azure-tools-tables.md)]
 
 ## <a name="overview"></a>Přehled
-Tento článek obsahuje ukázky kódu C#, které ukazují, jak pomocí sady Azure WebJobs SDK verze 1.x pomocí služby Azure table storage. Ukázky kódu použijte [sada WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki) verzi 1.x.
+Tento článek obsahuje C# ukázky kódu, které ukazují, jak používat sadu Azure WebJobs SDK verze 1. x se službou Azure Table Storage. Ukázky kódu používají [sadu WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki) verze 1. x.
 
-Služba Azure Table storage umožňuje ukládat velké objemy strukturovaných dat. Tato služba je úložiště dat typu NoSQL, která přijímá ověřených volání z uvnitř i mimo Azure cloud. Jsou ideální pro ukládání strukturovaných, nerelačních dat tabulky Azure.  Zobrazit [Začínáme s Azure Table storage pomocí .NET](../cosmos-db/tutorial-develop-table-dotnet.md#create-a-table) Další informace.
+Služba Azure Table Storage umožňuje ukládat velké objemy strukturovaných dat. Tato služba je úložiště dat typu NoSQL, která přijímá ověřených volání z uvnitř i mimo Azure cloud. Jsou ideální pro ukládání strukturovaných, nerelačních dat tabulky Azure.  Další informace najdete v tématu Začínáme [s Azure Table Storage pomocí rozhraní .NET](../cosmos-db/tutorial-develop-table-dotnet.md#create-a-table) .
 
-Některé z kódu fragmenty kódu ukazují **tabulky** atributu použitého v funkcí, které jsou volány ručně, to znamená, nikoli pomocí jeden z atributů aktivační události.
+Některé fragmenty kódu ukazují atribut **tabulky** používané ve funkcích, které jsou volány ručně, to znamená, že nepoužívají jeden z atributů triggeru.
 
-## <a name="how-to-add-entities-to-a-table"></a>Přidání entity do tabulky
-Pro přidání entity do tabulky, použijte **tabulky** atributem **ICollector<T>**  nebo **IAsyncCollector<T>**  parametr kde **T** určuje schématu entity, které chcete přidat. Konstruktor atributu má řetězcový parametr, který určuje název tabulky.
+## <a name="how-to-add-entities-to-a-table"></a>Postup přidání entit do tabulky
+Chcete-li přidat entity do tabulky, použijte atribut **tabulky** s parametrem **ICollector\<t >** nebo **IAsyncCollector\<t >** , kde **T** Určuje schéma entit, které chcete přidat. Konstruktor atributu přebírá řetězcový parametr, který určuje název tabulky.
 
-Následující příklad kódu přidá **osoba** entity do tabulky s názvem *příchozího přenosu dat*.
+Následující ukázka kódu přidá entity **osob** do tabulky s názvem příchozí příchozí *přenosy*.
 
         [NoAutomaticTrigger]
         public static void IngressDemo(
@@ -49,7 +49,7 @@ Následující příklad kódu přidá **osoba** entity do tabulky s názvem *p�
             }
         }
 
-Obvykle typ pomocí **ICollector** je odvozena z **TableEntity** nebo implementuje **ITableEntity**, ale nemusí to. Jednu z následujících **osoba** třídy práce s kódem zobrazeným v předchozím **příchozího přenosu dat** metody.
+Typ, který používáte s **ICollector** , je obvykle odvozen z **TableEntity** nebo implementuje **ITableEntity**, ale není nutné. Jedna z následujících tříd **Person** pracuje s kódem zobrazeným v předchozí metodě příchozího přenosu dat.
 
         public class Person : TableEntity
         {
@@ -63,25 +63,25 @@ Obvykle typ pomocí **ICollector** je odvozena z **TableEntity** nebo implementu
             public string Name { get; set; }
         }
 
-Pokud budete chtít pracovat přímo s úložištěm Azure API, můžete přidat **CloudStorageAccount** parametr do podpisu metody.
+Pokud chcete pracovat přímo s rozhraním API služby Azure Storage, můžete do signatury metody přidat parametr **CloudStorageAccount** .
 
-## <a name="real-time-monitoring"></a>Monitorování v reálném čase
-Protože funkce příchozího přenosu dat často zpracovávají velké objemy dat, sada WebJobs SDK řídicí panel poskytuje monitorování dat v reálném čase. **Protokol volání** části zjistíte, zda funkce stále běží.
+## <a name="real-time-monitoring"></a>Sledování v reálném čase
+Vzhledem k tomu, že funkce příchozího přenosu dat často zpracovávají velké objemy dat, řídicí panel sady WebJobs SDK poskytuje data monitorování v reálném čase. V části **protokol vyvolání** se dozvíte, jestli je funkce pořád spuštěná.
 
-![Spuštění funkce příchozího přenosu dat](./media/vs-storage-webjobs-getting-started-tables/ingressrunning.png)
+![Spuštěná funkce příchozího přenosu dat](./media/vs-storage-webjobs-getting-started-tables/ingressrunning.png)
 
-**Podrobnosti volání** stránka sestavy průběh zavináčem (počet entit, které jsou napsané) spuštěn a vám dává možnost ho přerušit.
+Na stránce **Podrobnosti o vyvolání** se zobrazí průběh funkce (počet zapsaných entit), který je spuštěný, a poskytuje příležitost k jejímu přerušení.
 
-![Spuštění funkce příchozího přenosu dat](./media/vs-storage-webjobs-getting-started-tables/ingressprogress.png)
+![Spuštěná funkce příchozího přenosu dat](./media/vs-storage-webjobs-getting-started-tables/ingressprogress.png)
 
-Po dokončení funkce **podrobnosti volání** stránka sestavy počet zapsaných řádků.
+Po dokončení funkce se na stránce **Podrobnosti o vyvolání** zobrazí počet zapsaných řádků.
 
-![Dokončené funkce příchozího přenosu dat](./media/vs-storage-webjobs-getting-started-tables/ingresssuccess.png)
+![Funkce příchozího přenosu byla dokončena](./media/vs-storage-webjobs-getting-started-tables/ingresssuccess.png)
 
-## <a name="how-to-read-multiple-entities-from-a-table"></a>Jak číst více entity z tabulky
-Další tabulky, použijte **tabulky** atributem **IQueryable<T>**  parametr typem **T** je odvozena z **TableEntity**nebo implementuje **ITableEntity**.
+## <a name="how-to-read-multiple-entities-from-a-table"></a>Čtení více entit z tabulky
+Chcete-li číst tabulku, použijte **atribut tabulky** s parametrem **IQueryable\<T >** , kde type **T** je odvozen z **TableEntity** nebo implementuje **ITableEntity**.
 
-Následující vzorový kód přečte a protokoluje všechny řádky z **příchozího přenosu dat** tabulky:
+Následující ukázka kódu čte a zapisuje všechny řádky z tabulky  příchozího přenosu dat:
 
         public static void ReadTable(
             [Table("Ingress")] IQueryable<Person> tableBinding,
@@ -95,10 +95,10 @@ Následující vzorový kód přečte a protokoluje všechny řádky z **přích
             }
         }
 
-### <a name="how-to-read-a-single-entity-from-a-table"></a>Informace o načtení jedné entity z tabulky
-Je **tabulky** konstruktor atributu se dvěma další parametry, které vám umožní zadat klíč oddílu a klíčem řádku, pokud chcete vytvořit vazbu na jedné tabulky entitu.
+### <a name="how-to-read-a-single-entity-from-a-table"></a>Jak načíst jednu entitu z tabulky
+K dispozici je konstruktor atributu **tabulky** se dvěma dalšími parametry, které umožňují určit klíč oddílu a klíč řádku, pokud chcete vytvořit propojení s jednou tabulkovou entitou.
 
-Následující vzorový kód přečte řádek tabulky pro **osoba** entity na základě oddílu klíč a řádek hodnot klíče doručení zpráv fronty:  
+Následující ukázka kódu přečte řádek tabulky pro entitu **Person** na základě hodnot klíče oddílu a klíče řádku přijaté ve zprávě fronty:  
 
         public static void ReadTableEntity(
             [QueueTrigger("inputqueue")] Person personInQueue,
@@ -118,12 +118,12 @@ Následující vzorový kód přečte řádek tabulky pro **osoba** entity na z�
         }
 
 
-**Osoba** třídy v tomto příkladu není nutné implementovat **ITableEntity**.
+Třída **Person** v tomto příkladu nemusí implementovat **ITableEntity**.
 
-## <a name="how-to-use-the-net-storage-api-directly-to-work-with-a-table"></a>Jak používat rozhraní API úložiště .NET přímo pro práci s tabulkou
-Můžete také použít **tabulky** atributem **CloudTable** objekt pro větší flexibilitu při práci s tabulkou.
+## <a name="how-to-use-the-net-storage-api-directly-to-work-with-a-table"></a>Jak používat rozhraní API pro úložiště .NET přímo pro práci s tabulkou
+Můžete také použít atribut **Table** s objektem **cloudu** pro větší flexibilitu při práci s tabulkou.
 
-Následující kód používá ukázkový **CloudTable** objektu, který chcete přidat do jedné entity *příchozího přenosu dat* tabulky.
+Následující ukázka kódu pomocí objektu **cloudu** přidá jednu entitu do tabulky příchozího přenosu  dat.
 
         public static void UseStorageAPI(
             [Table("Ingress")] CloudTable tableBinding,
@@ -139,11 +139,11 @@ Následující kód používá ukázkový **CloudTable** objektu, který chcete 
             tableBinding.Execute(insertOperation);
         }
 
-Další informace o tom, jak používat **CloudTable** objektu, najdete v článku [Začínáme s Azure Table storage pomocí .NET](../storage/storage-dotnet-how-to-use-tables.md).
+Další informace o používání objektu cloudu najdete  v tématu Začínáme [s úložištěm Azure Table pomocí rozhraní .NET](../storage/storage-dotnet-how-to-use-tables.md).
 
-## <a name="related-topics-covered-by-the-queues-how-to-article"></a>Související témata s postupy článku fronty
-Informace o tom, jak zpracovat zpracování tabulky aktivované zpráv fronty, nebo sada WebJobs SDK scénáře nejsou specifické pro zpracování tabulky, projděte si téma [Začínáme se službou Azure Queue storage a Visual Studio připojené služby (webové úlohy projektů) ](../storage/vs-storage-webjobs-getting-started-queues.md).
+## <a name="related-topics-covered-by-the-queues-how-to-article"></a>Související témata, která jsou popsaná v článku s postupy pro fronty
+Informace o tom, jak zpracovat zpracování tabulky aktivované zprávami ve frontě nebo ve scénářích služby WebJobs SDK, které nejsou specifické pro zpracování tabulek, najdete v tématu [Začínáme s Azure Queue Storage a připojenými službami sady Visual Studio (projekty WebJob)](../storage/vs-storage-webjobs-getting-started-queues.md).
 
 ## <a name="next-steps"></a>Další postup
-Tento článek poskytuje ukázek kódu, které ukazují, jak zvládnout běžné scénáře pro práci s tabulky Azure. Další informace o tom, jak používat Azure WebJobs a sada WebJobs SDK najdete v tématu [prostředků dokumentace Azure WebJobs](https://go.microsoft.com/fwlink/?linkid=390226).
+V tomto článku jsou uvedené ukázky kódu, které ukazují, jak zpracovávat běžné scénáře pro práci s tabulkami Azure. Další informace o tom, jak používat Azure WebJobs a sadu WebJobs SDK, najdete v [dokumentaci k prostředkům Azure WebJobs](https://go.microsoft.com/fwlink/?linkid=390226).
 

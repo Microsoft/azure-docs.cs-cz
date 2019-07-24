@@ -1,6 +1,6 @@
 ---
-title: Webovou aplikaci vlastní pravidlo brány firewall pro Azure branou
-description: Další informace o použití pravidel firewallu webových aplikací (WAF) vlastní chrání vaše webové aplikace před útoky se zlými úmysly.
+title: Vlastní pravidlo firewallu webových aplikací pro přední dveře Azure
+description: Naučte se používat vlastní pravidla firewallu webových aplikací (WAF), která chrání vaše webové aplikace před škodlivými útoky.
 author: KumudD
 ms.service: frontdoor
 ms.devlang: na
@@ -8,75 +8,76 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/07/2019
-ms.author: kumud;tyao
-ms.openlocfilehash: 744c6fb9235c9daa2d5239ef9fd13679db943650
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: kumud
+ms.reviewer: tyao
+ms.openlocfilehash: 02b335de7f105d768168d5f798ec9109136d7430
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61459704"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67846263"
 ---
-#  <a name="custom-rules-for-web-application-firewall-with-azure-front-door"></a>Vlastní pravidla pro firewall webových aplikací s Azure branou
-Firewall webových aplikací (WAF) s branou služby umožňuje řídit přístup k webovým aplikacím na základě podmínek, které definujete. Vlastní pravidlo WAF se skládá z priorita, typ pravidla, podmínky shody a akci. Existují dva typy vlastních pravidel: odpovídat pravidla a pravidla omezení přenosové rychlosti. Pravidla shody řídí přístup na základě porovnání podmínky, když pravidlo limit frekvence řídí přístup na základě porovnání podmínky a míry příchozí požadavky. Můžete zakázat vlastní pravidlo, které brání jeho právě vyhodnocuje, ale stále zachovat konfiguraci. Tento článek popisuje pravidla shody, založené na protokolu http parametry.
+#  <a name="custom-rules-for-web-application-firewall-with-azure-front-door"></a>Vlastní pravidla pro bránu firewall webových aplikací s využitím front-dveří Azure
+Firewall webových aplikací Azure (WAF) s front-Dvířk Service umožňují řídit přístup k webovým aplikacím na základě podmínek, které definujete. Vlastní pravidlo WAF se skládá z čísla priority, typu pravidla, podmínek shody a akce. Existují dva typy vlastních pravidel: pravidla shody a pravidla omezení přenosové rychlosti. Pravidlo shody řídí přístup na základě podmínek shody, zatímco pravidlo omezení četnosti řídí přístup na základě podmínek párování a sazeb příchozích požadavků. Můžete zakázat vlastní pravidlo, aby se zabránilo jeho vyhodnocování, ale i zachovat konfiguraci. Tento článek popisuje pravidla shody, která jsou založená na parametrech http.
 
-## <a name="priority-match-conditions-and-action-types"></a>Priorita, podmínky shody a typy akcí
-Můžete řídit přístup pomocí vlastního pravidla WAf, která definuje priorita, typ pravidla, podmínky shody a akci. 
+## <a name="priority-match-conditions-and-action-types"></a>Priority, podmínky shody a typy akcí
+Můžete řídit přístup pomocí vlastního pravidla WAf, které definuje číslo priority, typ pravidla, podmínky shody a akci. 
 
-- **Priorita:** je jedinečné celé číslo, které popisuje pořadí vyhodnocení pravidla firewallu webových aplikací. Pravidla s nižší hodnoty jsou vyhodnocovány dříve, než pravidla s vyššími hodnotami
+- **Priority:** je jedinečné celé číslo, které popisuje pořadí vyhodnocování pravidel WAF. Pravidla s nižšími hodnotami se vyhodnocují před pravidly s vyššími hodnotami.
 
-- **Akce:** definuje, jak směrovat žádost, pokud je nalezen odpovídající pravidlo WAF. Můžete zvolit jednu z následující akce při použití požadavek odpovídá vlastní pravidlo.
+- **Action:** definuje způsob směrování požadavku, pokud se shoduje pravidlo WAF. Můžete zvolit jednu z níže uvedených akcí, které se použijí, když požadavek odpovídá vlastnímu pravidlu.
 
-    - *Povolit* -WAF předá požadavek na back endu, zaznamená položku do protokolů WAF a ukončí.
-    - *Blok* -žádost se zablokovala, WAF odešle odpověď do klienta bez předání požadavku do back endu. WAF zapisuje položku do protokolů WAF.
-    - *Protokol* -protokolů WAF položky v WAF protokoly a pokračuje v vyhodnocení další pravidla.
-    - *Přesměrovat* -WAF přesměruje požadavek na zadaný identifikátor URI, zapisuje položku do protokolů WAF a ukončí.
+    - *Allow* -WAF přepošle do back-endu záznam, zaznamená položku do protokolů WAF a ukončí.
+    - *Blok* -požadavek je ZABLOKOVÁN, WAF odesílá odpověď klientovi bez předání požadavku back-endu. WAF zaprotokoluje záznam v protokolech WAF.
+    - *Log* -WAF zaznamená záznam v protokolech WAF a pokračuje v vyhodnocení dalšího pravidla.
+    - *Přesměrování* – WAF požadavek přesměrování na zadaný identifikátor URI, protokoluje záznam v protokolech WAF a ukončí.
 
-- **Odpovídají podmínce:** definuje proměnnou shoda, operátor a odpovídají hodnotě. Každé pravidlo může obsahovat více podmínek shody. Podmínku shody může být založeno na pod *odpovídat proměnné*:
+- **Podmínka shody:** definuje proměnnou shody, operátor a hodnotu shody. Každé pravidlo může obsahovat více podmínek shody. Podmínka shody může být založená na následujících *proměnných shody*:
     - RemoteAddr (IP adresa klienta)
     - requestMethod
     - Řetězec dotazu
     - PostArgs
-    - RequestUri
+    - requestUri
     - RequestHeader
-    - Includesearchresults: true
+    - Částmi
 
-- **Operátor:** patří následující:
-    - Žádné: se často používá k definování výchozí akci, pokud jsou neodpovídají žádná pravidla. Žádné je shoda všech operátor.
-    - IPMatch: omezení IP adres pro proměnnou RemoteAddr definovat
-    - GeoMatch: geografické filtrování pro proměnnou RemoteAddr definovat
-    - rovno
+- **Operator:** list obsahuje následující:
+    - Any: se často používá k definování výchozí akce, pokud se neshodují žádná pravidla. Any je operátor matched ALL.
+    - IPMatch: Definování omezení IP adres pro proměnnou RemoteAddr
+    - Geografické porovnávání: definování geografického filtrování pro proměnnou RemoteAddr
+    - Výši
     - Obsahuje
     - LessThan: omezení velikosti
     - GreaterThan: omezení velikosti
     - LessThanOrEqual: omezení velikosti
     - GreaterThanOrEqual: omezení velikosti
-    - Začíná na
+    - Filtr začíná na
      - endsWith
 
-Můžete nastavit *negovat* podmínku, která má být true, pokud by měl bude negovat výsledek podmínku.
+Podmínka negace  můžete nastavit na hodnotu true, pokud by výsledek podmínky měl být negace.
 
-*Odpovídající hodnotě* definuje seznam hodnot možnou shodu.
-Podporovaná metoda požadavku HTTP, který mezi hodnoty patří:
+*Hodnota Match* definuje seznam možných hodnot shody.
+Mezi podporované hodnoty metody požadavku HTTP patří:
 - GET
 - POST
 - PUT
-- HLAVNÍ
+- ZÁHLAVÍ
 - DELETE
-- ZÁMEK
-- ODEMKNUTÍ
-- PROFIL
+- ZÍSKÁTE
+- UZAMKNOUT
+- PROFILU
 - MOŽNOSTI
-- PROPFIND
+- SLOUŽÍ
 - PROPPATCH
 - MKCOL
-- KOPÍROVÁNÍ
-- PŘESUNUTÍ
+- KOPIÍ
+- PØESUNOUT
 
 ## <a name="examples"></a>Příklady
 
-### <a name="waf-custom-rules-example-based-on-http-parameters"></a>Příklad WAF vlastních pravidel na základě parametrů http
+### <a name="waf-custom-rules-example-based-on-http-parameters"></a>Příklad vlastních pravidel WAF na základě parametrů http
 
-Tady je příklad, který znázorňuje konfiguraci vlastního pravidla s dvě podmínky shody. Požadavky jsou z určené lokality dle odkazující server a řetězec dotazu neobsahuje "password".
+Tady je příklad, který ukazuje konfiguraci vlastního pravidla se dvěma podmínkami shody. Požadavky jsou ze zadané lokality podle definice odkazujícího serveru a řetězec dotazu neobsahuje "heslo".
 
 ```
 # http rules example
@@ -108,7 +109,7 @@ Tady je příklad, který znázorňuje konfiguraci vlastního pravidla s dvě po
 }
 
 ```
-Příklad konfigurace týkající se blokování "Vložit" metoda se zobrazí níže:
+Příklad konfigurace pro blokování metody PUT je znázorněna níže:
 
 ``` 
 # http Request Method custom rules
@@ -134,7 +135,7 @@ Příklad konfigurace týkající se blokování "Vložit" metoda se zobrazí n�
 
 ### <a name="size-constraint"></a>Omezení velikosti
 
-Může vytvářet vlastní pravidlo, které určuje omezení velikosti pro část příchozího požadavku. Například následující pravidlo blokuje adresu Url, která je delší než 100 znaků.
+Můžete vytvořit vlastní pravidlo, které určuje omezení velikosti v rámci příchozího požadavku. Například pravidlo níže blokuje adresu URL, která je delší než 100 znaků.
 
 ```
 # http parameters size constraint

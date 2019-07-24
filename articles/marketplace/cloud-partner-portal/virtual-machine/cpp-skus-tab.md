@@ -1,88 +1,93 @@
 ---
-title: Karta skladové položky virtuálních počítačů v portál partnerů cloudu pro Azure Marketplace
-description: Popisuje skladové položky karty použité při vytváření nabídky virtuálních počítačů na webu Azure Marketplace.
+title: Karta SKU virtuálního počítače v portál partnerů cloudu pro Azure Marketplace
+description: Popisuje kartu SKU, která se používá při vytváření nabídky virtuálního počítače v Azure Marketplace.
 services: Azure, Marketplace, Cloud Partner Portal, virtual machine
 author: v-miclar
 ms.service: marketplace
 ms.topic: article
 ms.date: 04/25/2019
 ms.author: pabutler
-ms.openlocfilehash: e1a110abf8e057034043da34455bf678277c6cb4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: dceb82af73061b91676ffb7061c7495995e76667
+ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65799947"
+ms.lasthandoff: 07/13/2019
+ms.locfileid: "67868709"
 ---
-# <a name="virtual-machine-skus-tab"></a>Karta skladové položky virtuálních počítačů
+# <a name="virtual-machine-skus-tab"></a>Karta SKU virtuálního počítače
 
-**SKU** karty **nová nabídka** stránka umožňuje vytvořit jeden nebo více skladové položky a přidružovat je k nové nabídky.  Různé skladové položky lze rozlišit řešení sady funkcí, typy imagí virtuálních počítačů, propustnost nebo škálovatelnost, modely fakturace nebo některé typické.
+Karta **SKU** na nové stránce **nabídky** umožňuje vytvořit jednu nebo více SKU a přidružit je k nové nabídce.  Různé SKU můžou řešení odlišit pomocí sad funkcí, typů imagí virtuálních počítačů, propustnosti nebo škálovatelnosti, modelů fakturace nebo některé jiné charakteristiky.
 
 
-## <a name="create-a-sku"></a>Vytvoří skladová jednotka
+## <a name="create-a-sku"></a>Vytvoření SKU
 
-Na začátku novou nabídku nebude mít žádné přidružené skladové položky, takže vytvoříte jeden kliknutím **novou skladovou Položku**.
+Zpočátku nová nabídka nebude mít žádné přidružené SKU, takže ji vytvoříte kliknutím na **Nová SKU**.
 
-![Tlačítko Nová skladovou Položku na kartě nová nabídka pro virtuální počítače](./media/publishvm_005.png)
+![Tlačítko Nová SKU na nové kartě Nabídka pro virtuální počítače](./media/publishvm_005.png)
 
 <br/>
 
-**Novou skladovou Položku** se zobrazí dialogové okno.  Zadejte identifikátor pro novou skladovou Položku a pak klikněte na tlačítko **OK**. (Viz níže pro identifikátor zásady vytváření názvů.)  **SKU** kartu se teď budou zobrazovat dostupná pole pro úpravy.    Připojený hvězdička (*) na název pole označuje, že je povinný.
+Zobrazí se dialogové okno **Nová SKU** .  Zadejte identifikátor pro novou SKLADOVOU položku a pak klikněte na **OK**. (Viz níže pro konvence pojmenování identifikátorů.)  Na kartě **SKU** se nyní zobrazí pole, která jsou k dispozici pro úpravy.    Připojená hvězdička (*) v názvu pole označuje, že je požadovaná.
 
 <!-- TD: This tab has been updated, now has "Old Pricing" and "Simplified Currency Pricing" sections"! -->
 
-![Skladová položka karty ve formuláři nová nabídka pro virtuální počítače](./media/publishvm_006.png)
+![Karta SKU na novém formuláři nabídky pro virtuální počítače](./media/publishvm_006.png)
 
-Následující tabulka popisuje účel, obsah a formátování z těchto polí.  Povinná pole jsou uvést hvězdičkou (*).
+Následující tabulka popisuje účel, obsah a formátování těchto polí.  Požadovaná pole jsou indicted hvězdičkou (*).
 
 <!-- TD: I took a new screenshot, and the fields differ somewhat from description in the VM Pub Guide.  Needs review. -->
 
 |  **Pole**       |     **Popis**                                                          |
 |  ---------       |     ---------------                                                          |
 |  *Nastavení SKU*   |    |
-| **SKU ID\***       | Identifikátor pro toto SKU.  Tento název může mít nejvýše 50 znaků, který se skládá z malé alfanumerické znaky nebo spojovníky (-), ale nemůže končit spojovníkem.  Nelze změnit po publikování nabídky.  |
-|  *Podrobné údaje SKU*   |  |
-| **Název\***        | Popisný název nabídky. pro zobrazení na webu Marketplace. Maximální délka 50 znaků. |
-| **Souhrn\***      | Stručný popis nabídky pro zobrazení na webu Marketplace. Delší než 100 znaků. |
-| **Popis\***  | Text popisu, který poskytuje podrobnější vysvětlení nabídky.  <!-- TD: max len/guidance? 3k characters -->  |
-| **Skrýt toto SKU\*** | Určuje, zda SKU by měl být viditelný na webu Marketplace pro zákazníky.  Můžete chtít skrýt skladovou Položku, pokud chcete pouze je k dispozici pouze prostřednictvím šablon řešení a není pro nákup jednotlivě.  Může být také užitečné pro počáteční testování nebo pro dočasné nebo sezónní nabídky. |
-| **Dostupnost cloudu\*** | Určuje, na cloudy, které by měly být dostupné SKU.  Výchozí hodnota je ve veřejné verzi Azure.  Microsoft Azure Government je cloud určený pro státní úřady s řízený přístup federální, stavu, místní nebo samosprávné instituce a jejich certifikovaných partnerů.  Další informace o cloudu pro státní správu, najdete v části [Vítá vás Azure Government](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome). |
-| **Je to privátní SKU?\*** | Určuje, zda SKU je privátní nebo veřejné. Výchozí hodnota je **ne** (veřejné).  Další informace najdete v tématu [veřejné a privátní SKU](../../cloud-partner-portal-orig/cloud-partner-portal-azure-private-skus.md). |
-| **Dostupnost země/oblast\*** | Určuje, které země nebo oblasti world budou dostupné ke koupi skladové jednotky. Vyberte alespoň jednu oblast nebo zemi. <!-- TD: Is this parameter an AMP visibility control or a contractual one, or both? --> |  
+| **ID SKU\***       | Identifikátor této SKU  Tento název má maximálně 50 znaků, který se skládá z malých alfanumerických znaků nebo pomlček (-), ale nemůže končit pomlčkou.  Po publikování nabídky nelze změnit.  |
+|  *Podrobnosti SKU*   |  |
+| **Hlava\***        | Popisný název nabídky pro zobrazení na webu Marketplace Maximální délka 50 znaků. |
+| **Shrnut\***      | Stručný popis nabídky pro zobrazení na webu Marketplace Maximální délka 100 znaků. |
+| **Název\***  | Popisný text, který poskytuje podrobnější vysvětlení nabídky.  <!-- TD: max len/guidance? 3k characters -->  |
+| **Skrýt tuto SKU\*** | Označuje, zda má být SKU na webu Marketplace viditelná pro zákazníky.  SKU můžete chtít skrýt, pokud chcete, aby byla k dispozici pouze prostřednictvím šablon řešení a nikoli pro jednotlivé nákupy.  Může to být užitečné i pro počáteční testování nebo pro dočasné nebo sezónní nabídky. |
+| **Dostupnost cloudu\*** | Určuje, které cloudy by měly být k dispozici ve SKLADových položkách.  Výchozím nastavením je veřejná verze Azure.  Microsoft Azure Government je Cloud pro státní správu, který má řízený přístup pro USA federální, státní, místní nebo samosprávnéové vlády a jejich certifikované partnery.  Další informace o cloudu pro státní správu najdete v tématu [Vítá vás Azure Government](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome). |
+| **Je to privátní SKU?\*** | Označuje, zda je SKU soukromá nebo veřejná. Výchozí hodnota není  (Public).  Další informace najdete v tématu [veřejné a soukromé SKU](../../cloud-partner-portal-orig/cloud-partner-portal-azure-private-skus.md). |
+| **Dostupnost země nebo oblasti\*** | Určuje, které země nebo světové oblasti budou vaše SKU dostupné k nákupu. Vyberte alespoň jednu oblast/zemi. <!-- TD: Is this parameter an AMP visibility control or a contractual one, or both? --> |  
 |  *Ceny*   |  |
-| **Licenční Model\***| Standardizované fakturační model se má použít.  Pokud vyberete **podle využití každý měsíc fakturovat SKU**, ovládacího prvku accordion části otevřete umožňující vám zadat podrobnosti o cenách za jádro a, jestli chcete nabídky bezplatné zkušební období.  Tato část také umožňuje exportovat a importovat do aplikace Excel tento cenový plán. Další informace najdete v tématu [možnosti fakturace na webu Azure Marketplace](../../billing-options-azure-marketplace.md). | 
+| **Model licence\***| Model normalizované fakturace, který se má použít.  Pokud vyberete **měsíční fakturovaná SKU na základě využití**, otevře se část pro poskytování služeb, která vám umožní zadat podrobnosti o cenách za jádro a jestli chcete nabídnout bezplatnou zkušební dobu.  Tato část také umožňuje exportovat a importovat tento cenový plán do aplikace Excel. Další informace najdete v tématu [Možnosti fakturace v Azure Marketplace](../../billing-options-azure-marketplace.md). | 
 |  *Image virtuálních počítačů*   |  |
-| **Řada operačních systémů\*** | Označuje, jestli řešení virtuálních počítačů založené na Windows nebo Linuxu. |
-| **Vyberte typ operačního systému** | Konkrétní dodavatele nebo verzi zadaný operační systém. |
-| **Popisný název OS\*** | Název operačního systému, který se má zobrazit pro zákazníky.  |
-| **Doporučené velikosti virtuálních počítačů\*** | Umožňuje výběr až šest doporučené velikosti virtuálních počítačů ze seznamu standardizované.  Tento seznam se předají na webu Azure portal a tržišť s řešeními Microsoftu.  První velikost virtuálního počítače v tomto seznamu, který je platný (u tohoto předplatného zákazníka, oblasti, zóny atd.) je nastavena jako výchozí pro tohoto potenciálního zákazníka.  Uživatel může změnit velikost na libovolné kompatibilní s touto imagí řešení. | 
-| **Otevření portů**| Porty otevřete a protokol pro podporu pro danou skladovou jednotku.  Tyto konfigurace se musí shodovat virtuální sítě, které jste nakonfigurovali pro síť virtuálních počítačů řešení. Tato nastavení vstoupí během nasazení virtuálního počítače. Však nastavení portu můžete změnit po publikování SKU. Další informace najdete v tématu [postup otevření portů k virtuálnímu počítači pomocí webu Azure portal](https://docs.microsoft.com/azure/virtual-machines/windows/nsg-quickstart-portal). <br/>Následující výchozí mapování sítě se přidají ke všem virtuálním počítačům. &emsp; Windows: 3389 -> 3389 TCP, 5986 -> 5986 TCP; &emsp; Linux: 22 -> 22, TCP (SSH). |
-| **Disková verze**  | Související řešení virtuálních počítačů, určené číslo verze disku a adresa URL disku. Verze disku musí být v [sémantickou verzi](https://semver.org/) formátu: `<major>.<minor>.<patch>`.  Adresa URL je sdílený přístupový podpis, který vytvořit identifikátor URI pro operační systém virtuálního pevného disku.  I když můžete přidat až 8 diskových verzí na SKU, pouze nejvyšší verze číslo disku SKU se zobrazí na webu Azure Marketplace. Jiné verze budou zobrazeny pouze prostřednictvím rozhraní API.  <!--TD: Add more specific link to API --> <br/> **Nový datový disk** ovládacího prvku accordion oddíl umožňuje vám připojit až 15 datových disků k virtuálnímu počítači.  Jakmile publikujete SKU s danou verzí virtuálních počítačů a přidružených datových disků, tuto konfiguraci nelze upravit.  Pokud pro danou skladovou jednotku nechejte se přidat další verze virtuálního počítače, musí taky podporovat stejný počet datových disků. <br/> Pokud jste ještě nevytvořili vaší Image virtuálního počítače založené na Azure, můžete přidat později aktualizovat toto pole.  Informace o vytváření přidružený prostředek virtuálního počítače najdete v části [technických prostředků vytvořit virtuální počítač](./cpp-create-technical-assets.md).  
+| **Řada operačních systémů\*** | Uvádí, zda je virtuální počítač řešení založený na systému Windows nebo Linux. |
+| **Vyberte typ operačního systému** | Konkrétní dodavatel nebo vydání zadaného operačního systému. |
+| **Popisný název operačního systému\*** | Název operačního systému, který se má zobrazit pro zákazníky.  |
+| **Doporučené velikosti virtuálních počítačů\*** | Umožňuje výběr až šesti doporučených velikostí virtuálních počítačů ze standardizovaného seznamu.  Tento seznam se předává spolu s Azure Portal a Microsoft Marketplace.  První velikost virtuálního počítače v tomto seznamu, která je platná (pro toto předplatné zákazníka, oblast, zónu atd.), je nastavená jako výchozí pro tohoto potenciálního zákazníka.  Uživatel může tuto velikost změnit na všechny kompatibilní s obrázkem řešení. | 
+| **Otevřené porty**| Porty pro otevření a protokol pro podporu pro SKU.  Tyto konfigurace se musí shodovat s virtuální sítí, kterou jste nakonfigurovali pro síť virtuálního počítače řešení. Tato nastavení vstoupí v platnost během nasazování virtuálního počítače. Nastavení portů však lze změnit po publikování SKU. Další informace najdete v tématu [Postup otevření portů na virtuálním počítači s Azure Portal](https://docs.microsoft.com/azure/virtual-machines/windows/nsg-quickstart-portal). <br/>Následující výchozí mapování sítě se přidá do všech virtuálních počítačů. &emsp;Systému 3389-> 3389 TCP, 5986-> 5986 TCP; &emsp; Linux: 22. > 22, TCP (SSH). |
+| **Verze disku**  | Virtuální počítač přidruženého řešení určený číslem verze disku a adresou URL disku Verze disku musí být ve formátu [sémantické verze](https://semver.org/) : `<major>.<minor>.<patch>`.  Adresa URL je identifikátor URI sdíleného přístupového podpisu, který jste vytvořili pro virtuální pevný disk s operačním systémem.  I když můžete přidat až osm verzí disků na SKU, v Azure Marketplace se zobrazí jenom nejvyšší číslo verze disku SKU. Ostatní verze budou viditelné pouze přes rozhraní API.  <!--TD: Add more specific link to API --> <br/> Nová část přidělení **datových disků** vám umožní připojit k virtuálnímu počítači až 15 datových disků.  Po publikování SKU pomocí dané verze virtuálního počítače a přidružených datových disků nejde tuto konfiguraci upravit.  Pokud se do SKU přidají další verze virtuálních počítačů, musí také podporovat stejný počet datových disků. <br/> Pokud jste nevytvořili image virtuálních počítačů založených na Azure, můžete později přidat aktualizaci tohoto pole.  Informace o vytvoření přidruženého prostředku virtuálního počítače najdete v části [Vytvoření technických prostředků virtuálního počítače](./cpp-create-technical-assets.md).  
 |  |  |
 
 <!-- TD: The CPP UX warning msg indicates that underscores are also supported in these SKU IDs. I suspect this might be true for other identifiers. --> 
 
-<br/> Klikněte na tlačítko **Uložit** uložte svůj postup. Na další kartě můžete zadat při podporuje vaši nabídku [Test Drive](./cpp-test-drive-tab.md).
+<br/> Kliknutím na **Uložit** uložte svůj průběh. Na další kartě určíte, jestli vaše nabídka podporuje [testovací jednotku](./cpp-test-drive-tab.md).
 
 
-## <a name="additional-pricing-considerations"></a>Další důležité informace o cenách
+## <a name="additional-pricing-considerations"></a>Další cenové doporučení
 
-Cenového modelu popsaného výše je základní popis.  Probíhá změny a mohou být ovlivněny daňové místní nebo místní předpisy a Microsoft ceny zásad. 
+Výše popsaným cenovým modelem je základní popis.  Změny se projeví a můžou být ovlivněné místními nebo regionálními daňovými předpisy a cenovými politikami Microsoftu. 
 
-### <a name="simplified-currency-pricing"></a>Ceny zjednodušené měny
+### <a name="new-core-sizes-added-on-722019"></a>Nové základní velikosti přidané v 7/2/2019
 
-Od 1. září 2018 se nazývá obsahují nový oddíl **zjednodušená ceny měny** přidá se k portálu. Microsoft je zjednodušení obchodních Azure Marketplace povolením více předvídatelné ceny a kolekce od svých zákazníků po celém světě. Toto zjednodušení bude obsahovat snížení počtu měny, ve kterých jsme vašim zákazníkům faktury.  Další informace najdete v tématu [aktualizace stávajícího virtuálního počítače nabízet na webu Azure Marketplace](./cpp-update-existing-offer.md).
+Vydavatelé virtuálních počítačů byli informováni 2. července 2019 o přidání nových cen pro nové velikosti virtuálních počítačů Azure (na základě počtu jader).  Nové ceny jsou pro základní velikosti 10, 44, 48, 60, 120, 208 a 416.  Pro existující virtuální počítač se automaticky vypočítaly nové ceny pro tyto velikosti jader na základě aktuálních cen.  Vydavatelé mají od 1. srpna 2019 kontrolu nad dalšími cenami a provádět požadované změny.  Po tomto datu se projeví automaticky vypočtené ceny pro tyto nové základní velikosti, pokud už je Vydavatel znovu Nepublikovaná.
 
 
-### <a name="additional-information-on-taxes-and-prices"></a>Další informace o daní a ceny
+### <a name="simplified-currency-pricing"></a>Ceny pro zjednodušenou měnu
 
-* Microsoft klasifikuje některých zemích nebo oblastech jako *daně uhrazené zemí*.  V těchto zemích nebo oblastech Microsoft shromažďuje daně od zákazníků, pak platí (vykazovány) daň vládě.  V jiných zemích nebo oblastech partnerů se většinou pojí shromažďování daně od svých zákazníků a platit daň vládě. Pokud chcete prodávat v druhém zemích nebo oblastech, musíte mít možnost Vypočítat a hradit daně, které místní.  <!-- TD: Find a good reference on taxing policies. The best I found was in the UWP section: https://docs.microsoft.com/windows/uwp/publish/tax-details-for-paid-apps -->
-* Ceny nejsou změnit, jakmile uvedete nabídky. Mohou však stále přidat nebo odebrat oblasti jsou podporované. 
-* Microsoft účtuje využití poplatky standardní virtuální počítač Azure zákazníka kromě vaše naplánované poplatků za skladové položky.
-* Ceny se nastavují pro všechny oblasti v místní měně na dostupné směnné kurzy v době nastavení cen.  <!-- TD: Meaning? - Offer created, published, other? -->
-* Cena každé oblasti nastavit samostatně, prosím cenovou tabulku exportovat, použití vlastních cen a potom importovat. 
+Od září 1 2018 se na portál přidá nový oddíl s názvem **zjednodušená měna** . Microsoft zjednodušuje Azure Marketplace podnikání tím, že umožňuje více předvídatelných cen a kolekcí od zákazníků po celém světě. Toto zjednodušení bude zahrnovat omezení počtu měn, ve kterých vaše zákazníky fakturují.  Další informace najdete v tématu [aktualizace existující nabídky virtuálních počítačů na Azure Marketplace](./cpp-update-existing-offer.md).
+
+
+### <a name="additional-information-on-taxes-and-prices"></a>Další informace o daních a cenách
+
+* Společnost Microsoft klasifikuje některé země nebo oblasti jako *daňové poukázané země*.  V takových zemích a oblastech společnost Microsoft shromažďuje daně od zákazníků a následně platí pro státní správu daně.  V jiných zemích nebo oblastech jsou partneři obvykle odpovědni za shromažďování daní ze svých zákazníků a vyplácení daní vládě. Pokud se rozhodnete prodávat v zemích nebo oblastech, musíte mít možnost počítat a platit místní daně.  <!-- TD: Find a good reference on taxing policies. The best I found was in the UWP section: https://docs.microsoft.com/windows/uwp/publish/tax-details-for-paid-apps -->
+* Ceny se po živé nabídce nemění. Přesto však můžete přidat nebo odebrat podporované oblasti. 
+* Společnost Microsoft se doúčtuje za standardní poplatky za využití virtuálních počítačů Azure pro zákazníky kromě vašich naplánovaných poplatků za SKU.
+* Ceny jsou nastavené pro všechny oblasti v místní měně v dostupných měnách v době nastavení cen.  <!-- TD: Meaning? - Offer created, published, other? -->
+* Pokud chcete nastavit cenu každé oblasti jednotlivě, exportujte prosím tabulku s cenami, použijte vlastní ceny a pak proveďte import. 
 
 
 ## <a name="next-steps"></a>Další postup
 
-Volitelně můžete zadat [Test Drive](./cpp-test-drive-tab.md) informace pokud podporujete tuto funkci; v opačném případě zadáte [marketplace](./cpp-marketplace-tab.md) data pro vaši nabídku.
+Pokud tuto funkci podporujete, můžete zadat i informace o [testovací jednotce](./cpp-test-drive-tab.md) . jinak zadáte data z [Marketplace](./cpp-marketplace-tab.md) pro vaši nabídku.

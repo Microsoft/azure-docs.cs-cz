@@ -1,6 +1,6 @@
 ---
-title: Informace o univerzální platformě Windows (knihovna Microsoft Authentication Library pro .NET) | Azure
-description: Další informace o konkrétní aspekty při používání univerzální platformu Windows s knihovna Microsoft Authentication Library pro .NET (MSAL.NET).
+title: Univerzální platforma Windows hlediska (Microsoft Authentication Library for .NET) | Azure
+description: Přečtěte si o konkrétních otázkách při použití Univerzální platforma Windows s knihovnou Microsoft Authentication Library pro .NET (MSAL.NET).
 services: active-directory
 documentationcenter: dev-center-name
 author: rwike77
@@ -12,39 +12,62 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/24/2019
+ms.date: 07/16/2019
 ms.author: ryanwi
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 83fb999b0cf66cfd8d96e82d23ed43626352a8aa
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2d78a64ee41e37fe53eba20eab6753c0b6eb8389
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65544139"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68277906"
 ---
-# <a name="universal-windows-platform-specific-considerations-with-msalnet"></a>Aspekty univerzální platformu Windows pomocí MSAL.NET
-V Xamarin pro iOS je třeba mít na paměti, které musí vzít v úvahu při použití MSAL.NET.
+# <a name="universal-windows-platform-specific-considerations-with-msalnet"></a>MSAL.NET s ohledem na konkrétní Univerzální platforma Windows
+U UWP máte několik důležitých informací, které je potřeba vzít v úvahu při používání MSAL.NET.
 
 ## <a name="the-usecorporatenetwork-property"></a>Vlastnost UseCorporateNetwork
-Na platformě WinRT `PublicClientApplication` má následující logickou vlastnost ``UseCorporateNetwork``. Tato vlastnost umožňuje aplikacím Win8.1 a UPW těžit z integrované ověřování Windows (a tedy jednotné přihlašování s uživatele přihlášeného s operačním systémem) Pokud je uživatel přihlášený pomocí účtu ve federované Azure AD tenanta. Využívá se při WAB (zprostředkovatel webového ověření). 
+V platformě `PublicClientApplication` WinRT má následující logickou vlastnost ``UseCorporateNetwork``. Tato vlastnost umožňuje aplikacím pro Win 8.1 a UWP těžit z integrovaného ověřování systému Windows (a proto SSO s přihlášeným uživatelem s operačním systémem), pokud je uživatel přihlášený pomocí účtu ve federovaném tenantovi služby Azure AD. Když nastavíte tuto vlastnost, MSAL.NET využívá WAB (Web Authentication Broker).
 
 > [!IMPORTANT]
-> Nastavení této vlastnosti na hodnotu true se předpokládá, že vývojář aplikace má povolené integrované ověřování Windows (IWA) v aplikaci. Pro toto:
-> - V ``Package.appxmanifest`` pro vaši aplikaci UPW v **možnosti** kartu, povolte následující možnosti:
+> Nastavení této vlastnosti na hodnotu true předpokládá, že vývojář aplikace povolil v aplikaci integrované ověřování systému Windows (IWA). Pro toto:
+> - V nástroji pro vaši aplikaci UWP povolte na kartě Možnosti následující možnosti:  ``Package.appxmanifest``
 >   - Podnikové ověřování
->   - Privátní sítě (klient a Server)
->   - Sdílené uživatelský certifikát
+>   - Privátní sítě (klient & Server)
+>   - Sdílený uživatelský certifikát
 
-IWA není ve výchozím nastavení povolené, protože aplikace vyžadující funkce podnikové ověřování nebo sdílené uživatelské certifikáty vyžadovat vyšší úroveň ověření na přijetí do Windows Store, a ne všechny vývojáře staví na provedení vyšší úroveň ověřování. 
+Služba IWA není ve výchozím nastavení povolená, protože aplikace požadující podnikové ověřování nebo uživatelské certifikáty sdílené uživatele vyžadují, aby se do Windows Storu přijala vyšší úroveň ověřování, a ne všichni vývojáři můžou chtít vyšší výkon. úroveň ověřování.
 
-Základní implementaci na platformě UPW (WAB) v podnikové scénáře, ve kterém byl povolený podmíněný přístup nefunguje správně. Příznakem je, že uživatel se pokusí přihlásit pomocí Windows hello a je navržené k zvolte certifikát, ale certifikát pro kód pin nebyl nalezen, nebo pokud uživatel vybere, ale nikdy zobrazit výzva k zadání kódu Pin. Alternativní řešení, je použít alternativní způsob (uživatelského jména a hesla a telefonního ověřování), ale není vhodné prostředí. 
+Základní implementace na platformě UWP (WAB) nefunguje správně v podnikových scénářích, ve kterých je povolený podmíněný přístup. Příznakem je, že se uživatel pokusí přihlásit pomocí Windows Hello a je navržený pro výběr certifikátu, ale:
+
+- certifikát pro PIN kód se nenašel,
+- nebo si ho uživatel zvolí, ale nikdy se mu nezobrazuje výzva k zadání kódu PIN.
+
+Alternativním řešením je použití alternativní metody (uživatelské jméno/heslo + ověřování pro telefon), ale toto prostředí není dobré.
+
+## <a name="troubleshooting"></a>Řešení potíží
+
+Někteří zákazníci oznámili, že v některých specifických podnikových prostředích došlo k následující chybě při přihlašování:
+
+```Text
+We can't connect to the service you need right now. Check your network connection or try this again later
+```
+
+vzhledem k tomu, že ví, že mají připojení k Internetu a kteří pracují s veřejnou sítí.
+
+Alternativním řešením je zajistit, aby systém WAB (podkladová součást systému Windows) umožňoval privátní síť. Můžete to udělat nastavením klíče registru:
+
+```Text
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\authhost.exe\EnablePrivateNetwork = 00000001
+```
+
+Podrobnosti najdete v tématu [zprostředkovatel webového ověřování – Fiddler](https://docs.microsoft.com/windows/uwp/security/web-authentication-broker#fiddler).
 
 ## <a name="next-steps"></a>Další postup
-Další podrobnosti jsou uvedeny v následující ukázky:
+Další podrobnosti jsou k dispozici v následujících ukázkách:
 
 Ukázka | Platforma | Popis 
 |------ | -------- | -----------|
-|[active-directory-dotnet-native-uwp-v2](https://github.com/azure-samples/active-directory-dotnet-native-uwp-v2) | UWP | Klientská aplikace univerzální platformy Windows pomocí msal.net, přístup k Microsoft Graphu k ověřování uživatelů pomocí koncového bodu Azure AD v2.0. <br>![Topologie](media/msal-net-uwp-considerations/topology-native-uwp.png)|
-|[https://github.com/Azure-Samples/active-directory-xamarin-native-v2](https://github.com/Azure-Samples/active-directory-xamarin-native-v2) | Xamarin iOS, Android, UWP | Jednoduchá aplikace Xamarin Forms která ukazuje použití MSAL k ověřování MSA a Azure AD prostřednictvím koncového bodu v2.0 AAD a přístup k Microsoft Graphu pomocí výsledný token. <br>![Topologie](media/msal-net-uwp-considerations/topology-xamarin-native.png)|
+|[active-directory-dotnet-native-uwp-v2](https://github.com/azure-samples/active-directory-dotnet-native-uwp-v2) | UWP | Klientská aplikace Univerzální platforma Windows využívající msal.net a přístup k Microsoft Graph pro uživatele, který ověřuje pomocí koncového bodu Azure AD v 2.0. <br>![Topologie](media/msal-net-uwp-considerations/topology-native-uwp.png)|
+|[https://github.com/Azure-Samples/active-directory-xamarin-native-v2](https://github.com/Azure-Samples/active-directory-xamarin-native-v2) | Xamarin iOS, Android, UWP | Jednoduchá aplikace Xamarin Forms předvádí, jak pomocí MSAL ověřovat MSA a Azure AD prostřednictvím koncového bodu AAD v 2.0 a přistupovat k Microsoft Graph s výsledným tokenem. <br>![Topologie](media/msal-net-uwp-considerations/topology-xamarin-native.png)|

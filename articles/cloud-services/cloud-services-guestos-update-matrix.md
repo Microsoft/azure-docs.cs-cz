@@ -1,6 +1,6 @@
 ---
-title: Seznamte se s nejnovější verzí hostovaného operačního systému Azure | Dokumentace Microsoftu
-description: Nejnovější verzi zprávy a Kompatibilita sady SDK pro Azure Cloud Services hostovaného operačního systému.
+title: Přečtěte si o nejnovějších verzích hostovaných operačních systémů Azure | Microsoft Docs
+description: Nejnovější novinky k vydání a kompatibilita SDK pro Azure Cloud Services hostovaný operační systém.
 services: cloud-services
 documentationcenter: na
 author: raiye
@@ -11,95 +11,95 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 7/8/2019
+ms.date: 7/18/2019
 ms.author: raiye
-ms.openlocfilehash: 88c3cd0e07e207a8b5ae1c07d39c8829a531c743
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
-ms.translationtype: MT
+ms.openlocfilehash: edf120fa7997cf2d0381dcb7cd3ee0d4e16dd72b
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67721124"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68321408"
 ---
-# <a name="azure-guest-os-releases-and-sdk-compatibility-matrix"></a>Azure verzí hostovaného operačního systému a matice kompatibility sady SDK
-Poskytuje že vám aktuální informace o nejnovější verzi operačního systému hosta Azure uvolní pro cloudové služby. Tyto informace pomohou při plánování způsob upgradu, než je zakázáno hostovaného operačního systému. Je-li konfigurovat vaše role používat *automatické* aktualizace hostovaného operačního systému, jak je popsáno v [nastavení aktualizace operačního systému hosta Azure][Azure Guest OS Update Settings], není důležité, abyste si přečetli tuto stránku.
+# <a name="azure-guest-os-releases-and-sdk-compatibility-matrix"></a>Verze hostovaného operačního systému Azure a tabulka kompatibility SDK
+Poskytuje aktuální informace o nejnovějších vydáních hostovaného operačního systému Azure pro Cloud Services. Tyto informace vám pomohou naplánovat cestu upgradu před zakázáním hostovaného operačního systému. Pokud vaše role nakonfigurujete tak, aby používaly *Automatické* aktualizace HOSTOVANÉHO operačního systému, jak je popsáno v tématu [aktualizace nastavení operačního systému hosta v Azure][Azure Guest OS Update Settings], není důležité tuto stránku číst.
 
 > [!IMPORTANT]
-> Tato stránka se vztahuje na webových a pracovních procesů cloudových služeb rolí, které běží nad hostovaného operačního systému. Provádí **se nedá použít** pro virtuální počítače IaaS.
+> Tato stránka se vztahuje na Cloud Services webové a pracovní role, které se spouštějí nad hostovaným operačním systémem. Nevztahuje se  na IaaS Virtual Machines.
 >
 >
 
 
 > [!TIP]
->  Přihlaste se k odběru [Informační kanál RSS aktualizací operačního systému hosta] nejnovější oznámení o všech změnách hostovaného operačního systému.
+>  Přihlaste se k odběru [Informační kanál RSS aktualizace operačního systému hosta] , abyste získali nejaktuálnější oznámení o všech změnách operačního systému hosta.
 >
 >
 
 > [!IMPORTANT]
-> Pouze nejnovější 2 verze hostovaného operačního systému bude podporované a dostupný na webu Azure Portal.
+> V Azure Portal bude podporována a k dispozici pouze nejnovější 2 verze hostovaného operačního systému.
 >
 >
 
-Informace o tom, jak aktualizovat vaše hostovaného operačního systému nejste si jistí? Zkontrolujte [to][cloud updates] navýšení kapacity.
+Nevíte, jak aktualizovat hostovaný operační systém? Podívejte se na [Toto][cloud updates] .
 
-## <a name="news-updates"></a>Aktualizace zprávy
+## <a name="news-updates"></a>Aktualizace zpráv
 
 ###### <a name="july-8-2019"></a>**8. července 2019**
-Hostovaný operační systém dne vydala.
+Hostovaný operační systém v červnu vydal.
 
 ###### <a name="june-6-2019"></a>**6. června 2019**
-Operačního systému hosta mohou vydala.
+Hostovaný operační systém může být uvolněn.
 
 ###### <a name="may-7-2019"></a>**7. května 2019**
-Hostovaný operační systém. dubna vydala.
+Hostovaný operační systém v dubnu byl uvolněn.
 
 ###### <a name="march-26-2019"></a>**26. března 2019**
-Hostovaný operační systém. března vydala.
+Hostovaný operační systém v březnu byl uvolněn.
 
 ###### <a name="march-12-2019"></a>**12. března 2019**
-Hostovaný operační systém. února vydala.
+Hostovaný operační systém v únoru vydal.
 
 ###### <a name="february-5-2019"></a>**5. února 2019**
-Hostovaný operační systém. ledna vydala.
+Hostovaný operační systém v lednu vydal.
 
 ###### <a name="january-24-2019"></a>**24. ledna 2019**
-Řada 6 hostovaného operačního systému (Windows Server 2019) vydala.
+Vydání hostovaného operačního systému řady 6 (Windows Server 2019).
 
 ###### <a name="january-7-2019"></a>**7. ledna 2019**
-Hostovaný operační systém prosince vydala.
+Hostovaný operační systém v prosinci byl vydán.
 
 ###### <a name="december-14-2018"></a>**14. prosince 2018**
-Hostovaný operační systém. listopadu vydala.
+Operační systém hosta v listopadu vydal.
 
 ###### <a name="november-8-2018"></a>**8. listopadu 2018**
-Hostovaný operační systém. října vydala.
+Hostovaný operační systém v říjnu vydal.
 
 ###### <a name="october-12-2018"></a>**12. října 2018**
-Hostovaný operační systém. září vydala.
+Hostovaný operační systém v září vydal.
 
 ## <a name="releases"></a>Vydání
 
-## <a name="family-6-releases"></a>Uvolní řady 6
+## <a name="family-6-releases"></a>Vydání řady 6
 **Windows Server 2019**
 
-Nainstalováno rozhraní .NET framework: 3.5, 4.7.2, 4.8
+.NET Framework nainstalován: 3.5, 4.7.2
 
 > [!NOTE]
-> Windows Azure SDK pro .NET – si můžete stáhnout 3.0 [tady][Windows Azure SDK].
+> Sadu Windows Azure SDK for .NET-3,0 si můžete stáhnout [tady][Windows Azure SDK].
 >
->Postup instalace:
->1. Odinstalujte všechny starší verze MicrosoftAzureAuthoringTools*.msi
->2. Nainstalujte [Azure SDK pro .NET – 3.0][Windows Azure SDK]
->3. Restartujte počítač
->4. Vytvořte nový projekt cloudové služby a přidejte jedné Role pracovního procesu
->5. Změňte řada operačního systému na 6 a vytvořit balíček
->6. Nasadit balíček do Azure pomocí webu Azure portal nebo Visual Studio
+>Kroky instalace:
+>1. Odinstalujte prosím všechny starší verze MicrosoftAzureAuthoringTools*. msi.
+>2. Instalace [sady Azure SDK pro .NET – 3,0][Windows Azure SDK]
+>3. Restartujte počítač.
+>4. Vytvořte nový projekt cloudové služby a přidejte jednu roli pracovního procesu.
+>5. Změna řady OS na 6 a sestavení balíčku
+>6. Nasazení balíčku do Azure pomocí Azure Portal nebo sady Visual Studio
 >
 
 
 | Konfigurační řetězec | Datum vydání | Zakázat datum |
 | --- | --- | --- |
-| WA-GUEST-OS-6.8_201906-01 |8\. července 2019 |Příspěvek 6.10 |
-| WA-GUEST-OS-6.7_201905-01 |6\. června 2019 |Příspěvek 6.9 |
+| WA-GUEST-OS-6.8_201906-01 |8\. července 2019 |Post 6,10 |
+| WA-GUEST-OS-6.7_201905-01 |6\. června 2019 |Post 6,9 |
 |~~WA-GUEST-OS-6.6_201904-01~~ |7\. května 2019 |8\. července 2019 |
 |~~WA-GUEST-OS-6.5_201903-01~~ |26. března 2019 |6\. června 2019 |
 |~~WA-GUEST-OS-6.4_201902-01~~ |12. března 2019 |7\. května 2019 |
@@ -107,20 +107,20 @@ Nainstalováno rozhraní .NET framework: 3.5, 4.7.2, 4.8
 |~~WA-GUEST-OS-6.2_201812-01~~ |24. ledna 2019 |12. března 2019 |
 |~~WA-GUEST-OS-6.1_201811-01~~ |24. ledna 2019 |5\. února 2019 |
 
-## <a name="family-5-releases"></a>Uvolní řady 5
+## <a name="family-5-releases"></a>Vydání řady 5
 **Windows Server 2016**
 
-Nainstalováno rozhraní .NET framework: 3.5, 4.6.2, 4.7.2, 4.8
+.NET Framework nainstalován: 3,5, 4.6.2, 4.7.2
 
 > [!NOTE]
-> Hesla protokolu RDP pro řadu OS 5 musí být minimálně 10 znaků.
+> Heslo protokolu RDP pro řadu OS 5 musí být minimálně 10 znaků.
 >
 
 
 | Konfigurační řetězec | Datum vydání | Zakázat datum |
 | --- | --- | --- |
-| WA-GUEST-OS-5.32_201906-01 |8\. července 2019 |Příspěvek 5.34 |
-| WA-GUEST-OS-5.31_201905-01 |6\. června 2019 |Příspěvek 5.33 |
+| WA-GUEST-OS-5.32_201906-01 |8\. července 2019 |Post 5,34 |
+| WA-GUEST-OS-5.31_201905-01 |6\. června 2019 |Post 5,33 |
 |~~WA-GUEST-OS-5.30_201904-01~~ |7\. května 2019 |8\. července 2019 |
 |~~WA-GUEST-OS-5.29_201903-01~~ |26. března 2019 |6\. června 2019 |
 |~~WA-GUEST-OS-5.28_201902-01~~ |12. března 2019 |7\. května 2019 |
@@ -130,15 +130,15 @@ Nainstalováno rozhraní .NET framework: 3.5, 4.6.2, 4.7.2, 4.8
 |~~WA-GUEST-OS-5.24_201810-01~~ |8\. listopadu 2018 |7\. ledna 2019 |
 |~~WA-GUEST-OS-5.23_201809-01~~ |12. října 2018 |14. prosince 2018 |
 
-## <a name="family-4-releases"></a>Uvolní řady 4
+## <a name="family-4-releases"></a>Verze 4 pro Family
 **Windows Server 2012 R2**
 
-Nainstalováno rozhraní .NET framework: 3.5, 4.5.1, 4.5.2
+.NET Framework nainstalován: 3.5, 4.5.1, 4.5.2
 
 | Konfigurační řetězec | Datum vydání | Zakázat datum |
 | --- | --- | --- |
-| WA-GUEST-OS-4.67_201906-01 |8\. července 2019 |Příspěvek 4.69 |
-| WA-GUEST-OS-4.66_201905-01 |6\. června 2019 |Příspěvek 4.68 |
+| WA-GUEST-OS-4.67_201906-01 |8\. července 2019 |Post 4,69 |
+| WA-GUEST-OS-4.66_201905-01 |6\. června 2019 |Post 4,68 |
 |~~WA-GUEST-OS-4.65_201904-01~~ |7\. května 2019 |8\. července 2019 |
 |~~WA-GUEST-OS-4.64_201903-01~~ |26. března 2019 |6\. června 2019 |
 |~~WA-GUEST-OS-4.63_201902-01~~ |12. března 2019 |7\. května 2019 |
@@ -148,15 +148,15 @@ Nainstalováno rozhraní .NET framework: 3.5, 4.5.1, 4.5.2
 |~~WA-GUEST-OS-4.59_201810-01~~ |8\. listopadu 2018 |7\. ledna 2019 |
 |~~WA-GUEST-OS-4.58_201809-01~~ |12. října 2018 |14. prosince 2018 |
 
-## <a name="family-3-releases"></a>Uvolní řady 3
+## <a name="family-3-releases"></a>Verze Family 3
 **Windows Server 2012**
 
-Nainstalováno rozhraní .NET framework: 3.5, 4.5
+.NET Framework nainstalován: 3.5, 4.5
 
 | Konfigurační řetězec | Datum vydání | Zakázat datum |
 | --- | --- | --- |
-| WA-GUEST-OS-3.74_201906-01 |8\. července 2019 |Příspěvek 3.76 |
-| WA-GUEST-OS-3.73_201905-01 |6\. června 2019 |Příspěvek je 3,75 operace |
+| WA-GUEST-OS-3.74_201906-01 |8\. července 2019 |Post 3,76 |
+| WA-GUEST-OS-3.73_201905-01 |6\. června 2019 |Post 3,75 |
 |~~WA-GUEST-OS-3.72_201904-01~~ |7\. května 2019 |8\. července 2019 |
 |~~WA-GUEST-OS-3.71_201903-01~~ |26. března 2019 |6\. června 2019 |
 |~~WA-GUEST-OS-3.70_201902-01~~ |12. března 2019 |7\. května 2019 |
@@ -166,15 +166,15 @@ Nainstalováno rozhraní .NET framework: 3.5, 4.5
 |~~WA-GUEST-OS-3.66_201810-01~~ |8\. listopadu 2018 |7\. ledna 2019 |
 |~~WA-GUEST-OS-3.65_201809-01~~ |12. října 2018 |14. prosince 2018 |
 
-## <a name="family-2-releases"></a>Uvolní řady 2
+## <a name="family-2-releases"></a>Verze Family 2
 **Windows Server 2008 R2 SP1**
 
-Nainstalováno rozhraní .NET framework: 3.5 (zahrnuje 2.0 a 3.0), 4.5
+.NET Framework nainstalován: 3,5 (zahrnuje 2,0 a 3,0), 4,5
 
 | Konfigurační řetězec | Datum vydání | Zakázat datum |
 | --- | --- | --- |
-| WA-GUEST-OS-2.87_201906-01 |8\. července 2019 |Příspěvek 2.89 |
-| WA-GUEST-OS-2.86_201905-01 |6\. června 2019 |Příspěvek 2,88 |
+| WA-GUEST-OS-2.87_201906-01 |8\. července 2019 |Post 2,89 |
+| WA-GUEST-OS-2.86_201905-01 |6\. června 2019 |Post 2,88 |
 |~~WA-GUEST-OS-2.85_201904-01~~ |7\. května 2019 |8\. července 2019 |
 |~~WA-GUEST-OS-2.84_201903-01~~ |26. března 2019 |6\. června 2019 |
 |~~WA-GUEST-OS-2.83_201902-01~~ |12. března 2019 |7\. května 2019 |
@@ -184,64 +184,64 @@ Nainstalováno rozhraní .NET framework: 3.5 (zahrnuje 2.0 a 3.0), 4.5
 |~~WA-GUEST-OS-2.79_201810-01~~ |8\. listopadu 2018 |7\. ledna 2019 |
 |~~WA-GUEST-OS-2.78_201809-01~~ |12. října 2018 |14. prosince 2018 |
 
-## <a name="msrc-patch-updates"></a>Aktualizace MSRC
-Seznam oprav, které jsou součástí jednotlivých vydání měsíční aktualizace operačního systému hosta je k dispozici [tady][patches].
+## <a name="msrc-patch-updates"></a>Aktualizace oprav MSRC
+Seznam oprav, které jsou součástí každé měsíční verze hostovaného operačního systému, je k dispozici [zde][patches].
 
-## <a name="sdk-support"></a>Podpora v sadě SDK
-I v případě, [zásady vyřazení z provozu pro sadu Azure SDK][retire policy sdk] označuje, že pouze verze nad 2.2 jsou podporované, konkrétní řady hostovaného operačního systému vám umožní použít starší verze. Vždy používejte nejnovější podporované SDK.
+## <a name="sdk-support"></a>Podpora sady SDK
+I když [zásada vyřazení pro sadu Azure SDK][retire policy sdk] uvádí, že jsou podporované jenom verze 2,2, konkrétní rodiny HOSTOVANÝCH operačních systémů vám umožní používat starší verze. Vždycky byste měli používat nejnovější podporovanou sadu SDK.
 
-| Řada operačního systému hosta | Kompatibilní verze sady SDK |
+| Řada hostovaných operačních systémů | Kompatibilní verze sady SDK |
 | --- | --- |
-| 6 |Verze 2.9.6+ |
-| 5 |Verze 2.9.5.1+ |
+| 6 |Verze 2.9.6 + |
+| 5 |Verze 2.9.5.1 + |
 | 4 |Verze 2.1 + |
-| 3 |Verze 1.8 a |
+| 3 |Verze 1.8 + |
 | 2 |Verze 1.3 + |
-| 1 |Verze 1.0 a |
+| 1 |Verze 1.0 + |
 
-## <a name="guest-os-release-information"></a>Informace o vydání hostovaného operačního systému
-Existují tři kalendářních dat, které jsou důležité pro verzí hostovaného operačního systému: **release** datum, **zakázané** data, a **vypršení platnosti** datum. Hostovaný operační systém se považuje za k dispozici, pokud je na portálu a lze vybrat jako cíl hostovaného operačního systému. Když se dosáhne hostovaného operačního systému **zakázané** datum, odebere se z Azure. Ale kteroukoli Cloudovou službu, která cílí na tuto hostovaného operačního systému bude pak stále fungovat jako obvykle.
+## <a name="guest-os-release-information"></a>Informace k vydání hostovaného operačního systému
+Existují tři kalendářní data, která jsou důležitá pro vydání hostovaných operačních systémů: datum **vydání** , datum **zakázání** a datum **vypršení platnosti** . Hostovaný operační systém se považuje za dostupný, když je na portálu a dá se vybrat jako cílový hostovaný operační systém. Když hostovaný operační systém dosáhne data **zakázání** , odebere se z Azure. Nicméně všechny cloudové služby, které cílí na hostovaný operační systém, budou i nadále fungovat jako normálně.
 
-V okně mezi **zakázané** datum a **vypršení platnosti** datum vám poskytne vyrovnávací paměť snadno přejít z jednoho hostovaného operačního systému do jednoho novější. Pokud používáte *automatické* jako vaše hostovaného operačního systému, vždy budete mít nejnovější verzi a nemusíte se starat o jeho platnost vyprší.
+Okno mezi zakázaným  datem a datem **vypršení platnosti** poskytuje vyrovnávací paměť, která umožňuje snadný přechod z jednoho hostovaného operačního systému na jeden novější. Pokud používáte *Automatické* použití jako hostovaný operační systém, budete mít vždycky na nejnovější verzi a nemusíte si dělat starosti s tím, že vyprší platnost.
 
-Když **vypršení platnosti** předá data, kteroukoli Cloudovou službu pořád používá tento hostovaného operačního systému se mohly zastavit, odstranit nebo muset upgradovat. Další informace o zásadách vyřazení [tady][retirepolicy].
+Po uplynutí data **vypršení platnosti** budou všechny cloudové služby, které tento hostovaný operační systém stále používají, zastaveny, odstraněny nebo vynuceny upgradovat. [Tady][retirepolicy]si můžete přečíst další informace o zásadách pro vyřazení.
 
-## <a name="guest-os-family-version-explanation"></a>Vysvětlení řady verze hostovaného operačního systému
-Řady hostovaného operačního systému jsou založeny na vydané verze systému Microsoft Windows Server. Hostovaný operační systém je základní operační systém spuštěný v Azure Cloud Services. Každý hostovaný operační systém má rodiny, verzi a vydání číslo.
+## <a name="guest-os-family-version-explanation"></a>Řada operačních systémů hosta – vysvětlení verze
+Řady hostovaných operačních systémů jsou založené na vydaných verzích systému Microsoft Windows Server. Hostovaný operační systém je základní operační systém, na kterém běží Azure Cloud Services. Každý hostovaný operační systém má řadu, verzi a číslo verze.
 
-* **Řada operačního systému hosta**  
-  Verze operačního systému Windows Server, založený na operačním systému hosta. Například *řady 3* je založená na Windows serveru 2012.
+* **Řada hostovaných operačních systémů**  
+  Verze operačního systému Windows Server, na kterém je založen hostovaný operační systém. Například *rodina 3* je založena na systému Windows Server 2012.
 * **Verze operačního systému hosta**  
-  Specifické pro rodinu bitovou kopii operačního systému hosta a relevantní [Microsoft Security Response Center (MSRC)][msrc] opravy, které jsou dostupné na datum vygenerované nová verze hostovaného operačního systému. Ne všechny opravy mohou být zahrnuty.
+  Specifická pro Image řady hostovaného operačního systému a příslušné opravy [služby Microsoft Security Response Center (MSRC)][msrc] , které jsou k dispozici v datu, kdy se vytvoří nová verze operačního systému hosta. Ne všechny opravy mohou být zahrnuty.
 
-    Čísla začínají hodnotou 0 a přírůstek na 1 pokaždé, když se přidá novou sadu aktualizací. Koncové nuly jsou uvedeny pouze pokud je to důležité. To znamená verze 2.10 je jiný, mnohem vyšší verze než verze 2.1.
-* **Vydání hostovaného operačního systému**  
-  Opětovné vydání verze hostovaného operačního systému. O opětovné vydání nastane, pokud Microsoft zjistí problémy během testování. vyžaduje změny. Nejnovější vydaná verze vždy nahrazuje jakékoli předchozí verze, veřejného nebo ne. Na webu Azure portal bude pouze uživatelům povolit vybrat nejnovější verzi pro danou verzi. Nasazení, které běží na předchozí verzi nejsou obvykle platnost upgradovat v závislosti na závažnosti chyby.
+    Čísla začínají na 0 a při každém přidání nové sady aktualizací se zvýší o 1. Koncové nuly jsou zobrazeny pouze v případě, že jsou důležité. To znamená, že verze 2,10 je odlišná, mnohem novější než verze 2,1.
+* **Verze operačního systému hosta**  
+  Opětovné vydání verze hostovaného operačního systému. K opětovnému vydání dojde v případě, že společnost Microsoft při testování najde problémy; vyžadování změn. Nejnovější verze vždycky nahrazuje všechny předchozí verze, veřejné nebo ne. Azure Portal umožní uživatelům vybrat nejnovější verzi pro danou verzi. Nasazení spuštěná v předchozí vydané verzi většinou nejsou vynuceně upgradována v závislosti na závažnosti chyby.
 
-V následujícím příkladu 2 je rodině, 12 je verze a "rel2" je verze.
+V následujícím příkladu je 2 Rodina, 12 je verze a "REL2" je verze.
 
-**Vydání hostovaného operačního systému** – 2.12 rel2
+**Vydání hostovaného operačního systému** – 2,12 REL2
 
-**Konfigurační řetězec pro tuto verzi** -WA-GUEST-operačního systému – 2.12_201208-02
+**Konfigurační řetězec pro tuto verzi** – WA-host-OS-2.12 _201208-02
 
-Konfigurační řetězec pro hostovaný operační systém obsahuje tytéž informace součástí, spolu s data zobrazení, které opravy MSRC byla zvážena pro tuto verzi. V tomto příkladu byla zvážena MSRC opravy vytvořil pro Windows Server 2008 R2 až a včetně srpen 2012 pro zahrnutí. Jsou zahrnuty pouze opravy konkrétně použití pro tuto verzi Windows serveru. Například pokud oprava MSRC platí pro Microsoft Office, nebude zahrnutý protože tento produkt není součástí základní image Windows serveru.
+Konfigurační řetězec pro hostovaný operační systém obsahuje stejné informace, které jsou v něm vložené, spolu s datem, který ukazuje, které opravy MSRC byly pro danou verzi zváženy. V tomto příkladu se za zahrnutí považují opravy MSRC vydané pro Windows Server 2008 R2 až do a včetně srpna 2012. Součástí jsou jenom opravy, které se konkrétně použijí pro tuto verzi Windows serveru. Pokud se třeba oprava MSRC vztahuje na systém Microsoft Office, nebude zahrnutá, protože tento produkt není součástí základní image Windows serveru.
 
 ## <a name="guest-os-system-update-process"></a>Proces aktualizace systému hostovaného operačního systému
-Tato stránka obsahuje informace o nadcházejících verzí hostovaného operačního systému. Zákazníci označili, že chtějí vědět, kdy vydané verzi dochází, protože jejich rolí cloudové služby se restartuje, pokud jsou nastavená na "Automatické" aktualizace. Verzí hostovaného operačního systému obvykle dochází 2 až 3 týdny poté, co MSRC aktualizovat verzi, ke které dojde k druhému úterý v každém měsíci. Nová verze zahrnují všechny příslušné opravy MSRC pro každou řadu hostovaného operačního systému.
+Tato stránka obsahuje informace o nadcházejících vydáních hostovaného operačního systému. Zákazníci uvedli, že chtějí znát, kdy k vydaným verzím dochází, protože jejich role cloudové služby se restartují, pokud jsou nastavené na automatické aktualizace. Verze hostovaného operačního systému se obvykle vyskytují 2-3 týdnů po vydání aktualizace MSRC, ke kterému dochází v druhém úterý v měsíci. Nové verze zahrnují všechny relevantní opravy MSRC pro každou rodinu operačních systémů.
 
-Microsoft Azure je neustále uvolnění aktualizace. Hostovaný operační systém je pouze jeden tyto aktualizace v kanálu. Verze může mít vliv celá řada faktorů, příliš mnoho, aby seznam tady. Kromě toho Azure běží v doslova stovky tisíc počítačů. To znamená, že je možné uvést přesné datum a čas, kdy se restartuje vaše role. Pracujeme na plán na omezení nebo čas restartování počítače.
+Microsoft Azure neustále uvolňuje aktualizace. Hostovaný operační systém je v kanálu jenom jedna aktualizace. Vydaná verze může být ovlivněná mnoha faktory, a to v seznamu je příliš mnoho. Kromě toho Azure běží na doslova stovek tisíc počítačů. To znamená, že není možné poskytnout přesné datum a čas, kdy se vaše role restartují. Pracujeme na tom, jak na základě plánu omezit nebo restartovat.
 
-Když se publikuje novou verzi hostovaného operačního systému, může trvat dobu plně rozšíří do Azure. Protože služby jsou aktualizované na novou hostovaného operačního systému, se restartují dodržením aktualizační domény. Služby nastaveno pro použití aktualizací "Automatické" se zobrazí první vydání verze. Po aktualizaci se zobrazí nová verze hostovaného operačního systému, které jsou uvedené pro vaši službu na portálu Azure portal. Během této doby může dojít k opakovaným vydáním. Některé verze mohou být nasazeny delší časová období a automatického upgradu restartování počítače nelze provádět mnoho týdny po datu oficiálním vydáním. Jakmile hostovaného operačního systému je k dispozici, pak explicitně můžete tuto verzi z portálu nebo v konfiguračním souboru.
+Když je publikovaná nová verze hostovaného operačního systému, může trvat déle, než se plně rozšíří napříč Azure. Jak jsou služby aktualizovány na nový hostovaný operační systém, restartují se tyto aktualizační domény. Služby nastavené na používání automatických aktualizací obdrží nejdřív vydání. Po aktualizaci se zobrazí nová verze hostovaného operačního systému uvedená pro vaši službu v Azure Portal. K opětovnému vydání může během této doby dojít. Některé verze se můžou nasadit za delší dobu a restartování automatického upgradu se nemusí vyskytnout po celou dobu oficiálního vydání. Jakmile je hostovaný operační systém k dispozici, můžete ho explicitně zvolit z portálu nebo v konfiguračním souboru.
 
-Značnou cenné informace o restartování a odkazy na další informace o technické podrobnosti aktualizace hosta a hostitelským operačním systémem, najdete v článku MSDN blogový příspěvek s názvem [Role Instance se restartuje kvůli upgrady operačního systému][restarts].
+Skvělé informace o restartech a ukazatelích na Další informace technické podrobnosti o aktualizacích operačních systémů host a Host najdete v blogovém příspěvku MSDN s názvem [instance role restart z důvodu upgradování operačního systému][restarts].
 
-Pokud ručně aktualizovat vaše hostovaného operačního systému, najdete v článku [zásady vyřazení z provozu pro hostovaný operační systém][retirepolicy] pro další informace.
+Pokud ručně aktualizujete hostovaný operační systém, další informace najdete v tématu [zásady pro vyřazení hostovaného operačního systému][retirepolicy] .
 
-## <a name="guest-os-supportability-and-retirement-policy"></a>Zásady podpory a vyřazení hostovaného operačního systému
-Vysvětlení zásad podpoře a vyřazení hostovaného operačního systému [tady][retirepolicy].
+## <a name="guest-os-supportability-and-retirement-policy"></a>Podpora hostovaného operačního systému a zásady vyřazení
+Zásady podpory hostovaného operačního systému a zásady vyřazení je vysvětleny [zde][retirepolicy].
 
 [cloud updates]: https://docs.microsoft.com/azure/cloud-services/cloud-services-update-azure-service
-[Informační kanál RSS aktualizací operačního systému hosta]: https://raw.githubusercontent.com/MicrosoftDocs/azure-cloud-services-files/master/GuestOS/GuestOSFeed.xml
+[Informační kanál RSS aktualizace operačního systému hosta]: https://raw.githubusercontent.com/MicrosoftDocs/azure-cloud-services-files/master/GuestOS/GuestOSFeed.xml
 [Install .NET on a Cloud Service Role]: https://azure.microsoft.com/documentation/articles/cloud-services-dotnet-install-dotnet/?WT.mc_id=azurebg_email_Trans_963_RevisedNET_Update
 [Azure Guest OS Update Settings]: cloud-services-how-to-configure-portal.md
 [ssl3 announcement]: https://azure.microsoft.com/blog/2014/12/09/azure-security-ssl-3-0-update/

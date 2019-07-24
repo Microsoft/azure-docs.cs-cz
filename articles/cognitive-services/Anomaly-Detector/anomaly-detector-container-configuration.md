@@ -1,7 +1,7 @@
 ---
-title: Konfigurace kontejneru pro rozhraní API detekce anomálií
+title: Postup konfigurace kontejneru pro rozhraní API detektoru anomálií
 titleSuffix: Azure Cognitive Services
-description: Běhové prostředí rozhraní API detekce anomálií kontejneru je nakonfigurovaný nástrojem `docker run` argumenty příkazu. Tento kontejner má několik požadovaná nastavení, společně s pár volitelná nastavení.
+description: Běhové prostředí kontejneru rozhraní API detektoru anomálií se `docker run` konfiguruje pomocí argumentů příkazu. Tento kontejner má několik požadovaných nastavení spolu s několika volitelnými nastaveními.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -10,16 +10,16 @@ ms.subservice: anomaly-detector
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: dapine
-ms.openlocfilehash: cb0a12df6696e76050d4c53bd75e07134b3dc27c
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 617a8fc823b7c40d047e5825dc31b095da132f29
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67721730"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68321450"
 ---
-# <a name="configure-anomaly-detector-containers"></a>Konfigurace kontejnery detekce anomálií
+# <a name="configure-anomaly-detector-containers"></a>Konfigurace kontejnerů detektoru anomálií
 
-**Detekce anomálií** kontejneru běhové prostředí je nakonfigurovaný nástrojem `docker run` argumenty příkazového. Tento kontejner má několik požadovaná nastavení, společně s pár volitelná nastavení. Několik [příklady](#example-docker-run-commands) příkazu jsou k dispozici. Nastavení kontejneru konkrétní jsou fakturace. 
+Běhové prostředí kontejneru **detektoru anomálií** se konfiguruje `docker run` pomocí argumentů příkazu. Tento kontejner má několik požadovaných nastavení spolu s několika volitelnými nastaveními. Několik [příklady](#example-docker-run-commands) příkazu jsou k dispozici. Nastavení fakturace jsou specifická pro kontejner. 
 
 # <a name="configuration-settings"></a>Nastavení konfigurace
 
@@ -32,7 +32,7 @@ Tento kontejner má následující nastavení:
 |Ano|[Billing](#billing-configuration-setting)|Určuje identifikátor URI koncového bodu prostředku služby v Azure.|
 |Ano|[Eula](#eula-setting)| Označuje, že jste přijali licenci pro kontejner.|
 |Ne|[Fluentd](#fluentd-settings)|Zápis protokolu a volitelně data metriky Fluentd server.|
-|Ne|[Http Proxy](#http-proxy-credentials-settings)|Konfigurace proxy serveru HTTP pro provedení odchozích požadavků.|
+|Ne|[Http Proxy](#http-proxy-credentials-settings)|Nakonfigurujte proxy server HTTP pro vytváření odchozích požadavků.|
 |Ne|[Logging](#logging-settings)|Poskytuje podporu protokolování ASP.NET Core pro váš kontejner. |
 |Ne|[Mounts](#mount-settings)|Čtení a zápis dat z hostitelského počítače do kontejneru a z kontejneru zpět do hostitelského počítače.|
 
@@ -41,11 +41,11 @@ Tento kontejner má následující nastavení:
 
 ## <a name="apikey-configuration-setting"></a>Nastavení konfigurace ApiKey
 
-`ApiKey` Nastavení určuje klíč prostředku Azure používá ke sledování fakturačních údajů pro kontejner. Musíte zadat hodnotu pro ApiKey a hodnota musí být platný klíč pro _detekce anomálií_ prostředek určený pro [ `Billing` ](#billing-configuration-setting) nastavení konfigurace.
+`ApiKey` Nastavení určuje klíč prostředku Azure používá ke sledování fakturačních údajů pro kontejner. Je nutné zadat hodnotu pro ApiKey a hodnota musí být platným klíčem pro prostředek _detektoru anomálií_ zadaný pro [`Billing`](#billing-configuration-setting) nastavení konfigurace.
 
-Toto nastavení najdete v následujícím místě:
+Toto nastavení najdete na následujícím místě:
 
-* Azure portal: **Detekce anomálií** správy prostředků v části **klíče**
+* Azure Portal: **Detektor anomálií** Správa prostředků, v části **klíče**
 
 ## <a name="applicationinsights-setting"></a>Nastavení ApplicationInsights
 
@@ -53,11 +53,11 @@ Toto nastavení najdete v následujícím místě:
 
 ## <a name="billing-configuration-setting"></a>Konfigurace nastavení fakturace
 
-`Billing` Nastavení, určuje identifikátor URI koncového bodu z _detekce anomálií_ prostředků v Azure umožňuje měřit fakturačních údajů pro kontejner. Musíte zadat hodnotu pro toto nastavení konfigurace, a hodnota musí být platný identifikátor URI koncového bodu pro _detekce anomálií_ prostředků v Azure.
+Nastavení určuje identifikátor URI koncového bodu prostředku detektoru anomálií v Azure, který se používá pro informace o fakturaci pro daný kontejner.  `Billing` Je nutné zadat hodnotu pro toto nastavení konfigurace a tato hodnota musí být platným identifikátorem URI koncového bodu  pro prostředek detektoru anomálií v Azure.
 
-Toto nastavení najdete v následujícím místě:
+Toto nastavení najdete na následujícím místě:
 
-* Azure portal: **Detekce anomálií** přehled s popiskem `Endpoint`
+* Azure Portal: **Detektor anomálií** Přehled, označený`Endpoint`
 
 |Požadováno| Název | Typ dat | Popis |
 |--|------|-----------|-------------|
@@ -84,36 +84,36 @@ Toto nastavení najdete v následujícím místě:
 
 Použití vazby připojí ke čtení a zápisu dat do a z kontejneru. Můžete určit vstupní připojení nebo připojení výstup tak, že zadáte `--mount` možnost [dockeru spustit](https://docs.docker.com/engine/reference/commandline/run/) příkazu.
 
-Detekce anomálií kontejnery nepoužívejte vstup nebo výstup připojí k uložení školení nebo dat služby. 
+Kontejnery detektoru anomálií nepoužívají vstupní ani výstupní připojení k ukládání dat o školeních nebo službách. 
 
-Syntaxe umístění hostitele připojení se liší v závislosti na operačním systému hostitele. Kromě toho [hostitelský počítač](anomaly-detector-container-howto.md#the-host-computer)na umístění připojení nemusí být přístupné z důvodu konfliktu mezi oprávnění používat účet služby Docker a hostiteli připojit umístění oprávnění. 
+Syntaxe umístění hostitele připojení se liší v závislosti na operačním systému hostitele. Kromě toho je možné, že umístění pro připojení k [hostitelskému počítači](anomaly-detector-container-howto.md#the-host-computer)není přístupné z důvodu konfliktu mezi oprávněními používanými účtem služby Docker a oprávněním pro umístění připojení hostitele. 
 
 |volitelná,| Name | Typ dat | Popis |
 |-------|------|-----------|-------------|
-|Nepovoleno| `Input` | Řetězec | Kontejnery detekce anomálií Nepoužívejte toto.|
-|volitelná,| `Output` | Řetězec | Cíl připojení výstupu. Výchozí hodnota je `/output`. Toto je umístění protokolů. To zahrnuje protokoly kontejneru. <br><br>Příklad:<br>`--mount type=bind,src=c:\output,target=/output`|
+|Nepovolené| `Input` | Řetězec | Kontejnery detektoru anomálií toto nepoužívají.|
+|volitelná,| `Output` | Řetězec | Cíl připojení výstupu. Výchozí hodnota je `/output`. Toto je umístění protokolů. To zahrnuje protokoly kontejnerů. <br><br>Příklad:<br>`--mount type=bind,src=c:\output,target=/output`|
 
 ## <a name="example-docker-run-commands"></a>Spusťte příkazy dockeru příklad 
 
 Následující příklady ukazují, jak napsat a použít pomocí nastavení konfigurace `docker run` příkazy.  Po spuštění kontejneru nadále běžel dokud [Zastavit](anomaly-detector-container-howto.md#stop-the-container) ho.
 
-* **Znak pro pokračování řádku**: Příkazy Dockeru v následujících částech použijte zpětné lomítko `\`, jako znak pro pokračování řádku pro prostředí bash. Nahraďte nebo odstraňte tuto podle požadavků vašeho hostitelského operačního systému. Například znak pro pokračování řádku pro windows je stříška, `^`. Nahraďte blikající kurzor o zpětné lomítko. 
-* **Pořadí argumentů**: Pořadí argumentů nezmění, pokud máte velmi zkušenosti s kontejnery Dockeru.
+* **Znak pro pokračování řádku**: Příkazy Docker v následujících částech používají zpětné lomítko `\`jako znak pro pokračování řádku pro prostředí bash shell. Nahraďte nebo odstraňte tuto podle požadavků vašeho hostitelského operačního systému. Například znak pro pokračování řádku pro systém Windows je stříška, `^`. Nahraďte zpětné lomítko znakem stříšky. 
+* **Pořadí argumentů**: Neměňte pořadí argumentů, pokud neznáte kontejnery Docker.
 
-Nahraďte hodnotu v závorkách, `{}`, vlastními hodnotami:
+Hodnotu v závorkách `{}`nahraďte vlastními hodnotami:
 
 | Zástupný symbol | Hodnota | Formát nebo příklad |
 |-------------|-------|---|
-|{BILLING_KEY} | Klíč koncového bodu resource detekce anomálií. |xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|
-|{BILLING_ENDPOINT_URI} | Fakturační hodnota koncového bodu, včetně oblasti.|`https://westus2.api.cognitive.microsoft.com`|
+|{API_KEY} | Klíč koncového bodu prostředku detektoru anomálií. |xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|
+|{ENDPOINT_URI} | Hodnota fakturačního koncového bodu, včetně oblasti|`https://westus2.api.cognitive.microsoft.com`|
 
 > [!IMPORTANT]
 > `Eula`, `Billing`, A `ApiKey` možnosti musí být zadán pro spuštění kontejneru; v opačném případě nebude spuštění kontejneru.  Další informace najdete v tématu [fakturace](anomaly-detector-container-howto.md#billing).
-> Hodnota ApiKey **klíč** ze stránky klíče na Azure Resource detekce anomálií. 
+> Hodnota ApiKey je **klíč** ze stránky klíče prostředků služby Azure anomálie detektor. 
 
-## <a name="anomaly-detector-container-docker-examples"></a>Příklady Docker kontejneru detekce anomálií
+## <a name="anomaly-detector-container-docker-examples"></a>Příklady Docker kontejneru detektoru anomálií
 
-Následující příklady Docker jsou pro kontejner detekce anomálií. 
+Následující příklady Docker jsou pro kontejner detektoru anomálií. 
 
 ### <a name="basic-example"></a>Základní příklad 
 
@@ -121,8 +121,8 @@ Následující příklady Docker jsou pro kontejner detekce anomálií.
   docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
   containerpreview.azurecr.io/microsoft/cognitive-services-anomaly-detector \
   Eula=accept \
-  Billing={BILLING_ENDPOINT_URI} \
-  ApiKey={BILLING_KEY} 
+  Billing={ENDPOINT_URI} \
+  ApiKey={API_KEY} 
   ```
 
 ### <a name="logging-example-with-command-line-arguments"></a>Příklad protokolování s argumenty příkazového řádku
@@ -131,6 +131,6 @@ Následující příklady Docker jsou pro kontejner detekce anomálií.
   docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
   containerpreview.azurecr.io/microsoft/cognitive-services-anomaly-detector \
   Eula=accept \
-  Billing={BILLING_ENDPOINT_URI} ApiKey={BILLING_KEY} \
+  Billing={ENDPOINT_URI} ApiKey={API_KEY} \
   Logging:Console:LogLevel:Default=Information
   ```

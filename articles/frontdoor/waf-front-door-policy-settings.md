@@ -1,6 +1,6 @@
 ---
-title: Nastavení zásad pro firewall webových aplikací s Azure branou
-description: Přečtěte si firewall webových aplikací (WAF).
+title: Nastavení zásad pro Firewall webových aplikací pomocí front-dveří Azure
+description: Zjistěte, jak Firewall webových aplikací (WAF).
 services: frontdoor
 author: KumudD
 ms.service: frontdoor
@@ -9,50 +9,51 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/08/2019
-ms.author: tyao;kumud
-ms.openlocfilehash: 4c2f070e9b3c972f063008df8880b196ddb069cc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: kumud
+ms.reviewer: tyao
+ms.openlocfilehash: 8f51cb6944221416b098a9b953db417053155f1e
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61459364"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67849109"
 ---
-# <a name="policy-settings-for-web-application-firewall-with-azure-front-door"></a>Nastavení zásad pro firewall webových aplikací s Azure branou
+# <a name="policy-settings-for-web-application-firewall-with-azure-front-door"></a>Nastavení zásad pro Firewall webových aplikací pomocí front-dveří Azure
 
-Zásady brány Firewall webových aplikací (WAF) umožňuje řídit přístup k webovým aplikacím pomocí sady pravidel pro vlastní a spravované. Název zásad WAF musí být jedinečný. Zobrazí se chyba ověření a pokud se pokusíte použít existující název. Existuje více úrovně nastavení zásad, které platí pro všechna pravidla zadaný pro tuto zásadu, jak je popsáno v tomto článku.
+Zásady firewallu webových aplikací (WAF) umožňují řídit přístup k webovým aplikacím pomocí sady vlastních a spravovaných pravidel. Název zásad WAF musí být jedinečný. Pokud se pokusíte použít stávající název, zobrazí se chyba ověřování. Pro všechna pravidla zadaná pro tuto zásadu platí více nastavení na úrovni zásad, jak je popsáno v tomto článku.
 
 ## <a name="waf-state"></a>Stav WAF
 
-Zásadu WAF pro vstupní brána lze v jednom z následujících dvou stavů:
-- **Povoleno:** Když je povolené zásady, WAF aktivně kontroluje příchozí požadavky a provede odpovídající akce podle definice pravidla
-- **Zakázáno:** – když se zásada je zakázána, kontroly WAF je pozastavená. Příchozí požadavky obejde WAF a jsou odeslány do back EndY založené na směrování branou.
+Zásady WAF pro přední dveře můžou být v jednom z následujících dvou stavů:
+- **Umožněn** Když je povolená zásada, WAF aktivně kontroluje příchozí žádosti a v souladu s definicemi pravidel provede odpovídající akce.
+- **Disabled:** – když je zásada zakázaná, WAF kontrola se pozastaví. Příchozí žádosti budou obejít WAF a budou odesílány do back-endu na základě směrování front dveří.
 
-## <a name="waf-mode"></a>Režim WAF
+## <a name="waf-mode"></a>WAF režim
 
-WAF zásad může být konfigurované pro běh v těchto dvou režimech:
+Zásady WAF je možné nakonfigurovat tak, aby běžely v následujících dvou režimech:
 
-- **Režim detekce** při spuštění v režimu detekce, WAF nepodporuje provádět žádné akce než monitorování a protokolovat žádosti a jeho odpovídající pravidlo WAF do protokolů WAF. Zapnutí protokolování diagnostiky pro branou (když používáte portál, jde tohoto dosáhnout tak, že přejdete **diagnostiky** části webu Azure Portal).
+- **Režim detekce** Při spuštění v režimu detekce WAF neprovede žádné jiné akce než monitorování a zaprotokoluje požadavek a odpovídající WAF pravidlo do protokolů WAF. Zapnout diagnostiku protokolování pro přední dveře (Pokud používáte portál, můžete to dosáhnout tak, že v Azure Portal  v části diagnostiku zadáte).
 
-- **Režim ochrany před únikem informací** při nakonfigurované na spouštění v režimu ochrany před únikem informací, WAF provede zadanou akci Pokud požadavek odpovídá pravidlu. Žádné odpovídající požadavky jsou také zaznamenána protokolů WAF.
+- **Režim prevence** Pokud je nakonfigurováno spuštění v režimu prevence, WAF provede zadanou akci, pokud požadavek odpovídá pravidlu. V protokolech WAF se zaznamenávají i všechny odpovídající požadavky.
 
-## <a name="waf-response-for-blocked-requests"></a>Odpověď WAF pro blokované požadavky
+## <a name="waf-response-for-blocked-requests"></a>WAF odpověď na blokované požadavky
 
-Ve výchozím nastavení, blokování WAF požadavek z důvodu odpovídající pravidlo, vrátí kód 403 stavu- **požadavek je blokován** zprávy. Pro protokolování je také vrácen řetězec odkazu.
+Ve výchozím nastavení, když WAF zablokuje požadavek z důvodu spárovaného pravidla, vrátí stavový kód 403 s- **požadavek je** zablokovaná zpráva. Pro protokolování se také vrátí řetězec odkazu.
 
-Stavový kód vlastní odpovědi a zprávy s odpovědí můžete definovat při požadavku je blokována WAF. Podporují se následující vlastní stavové kódy:
+Můžete definovat vlastní kód stavu odpovědi a zprávu odpovědi, pokud je požadavek zablokován nástrojem WAF. Podporují se tyto vlastní stavové kódy:
 
-- 200    OK
-- 403 Zakázáno
-- 405 Metoda není povolena
-- 406 není přijatelná
-- 429 příliš mnoho žádostí
+- 200 OK
+- 403 zakázané
+- Metoda 405 není povolená.
+- 406 není přijatelné
+- 429 příliš mnoho požadavků
 
-Zpráva stavu kódu a odpověď vlastní odpovědi je nastavení úrovně zásad. Jakmile se nakonfiguruje, všechny blokované požadavky získat stav stejné vlastní odpovědi a zprávy s odpovědí.
+Vlastní kód stavu odpovědi a zpráva odpovědi jsou nastavení úrovně zásad. Po nakonfigurování získá všechny blokované požadavky stejný stav vlastní odpovědi a zprávu s odpovědí.
 
-## <a name="uri-for-redirect-action"></a>Identifikátor URI pro přesměrování akce
+## <a name="uri-for-redirect-action"></a>Identifikátor URI pro akci přesměrování
 
-Je nutné definovat identifikátor URI pro přesměrování žádostí, když **PŘESMĚROVÁNÍ** akce je vybrán pro žádné z pravidel obsažená v zásadách WAF. Toto přesměrování identifikátor URI musí být platný web HTTP (S) a po nakonfigurování všech požadavků odpovídající pravidla s akcí "PŘESMĚROVÁNÍ" budete přesměrováni na konkrétní lokalitu.
+Je nutné definovat identifikátor URI pro přesměrování požadavků, pokud je vybrána akce **přesměrování** pro některá pravidla obsažená v zásadách WAF. Tento identifikátor URI pro přesměrování musí být platným serverem HTTP (S) a po nakonfigurování budou všechny požadavky, které odpovídají pravidlům "přesměrování", přesměrovány na zadanou lokalitu.
 
 
 ## <a name="next-steps"></a>Další postup
-- Další informace o definování WAF [vlastní odpovědi](waf-front-door-configure-custom-response-code.md)
+- Naučte se definovat [vlastní odpovědi](waf-front-door-configure-custom-response-code.md) WAF

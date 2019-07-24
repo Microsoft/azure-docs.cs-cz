@@ -1,6 +1,6 @@
 ---
 title: Připojení k systémům SAP – Azure Logic Apps
-description: Přístup a Správa prostředků SAP díky automatizaci pracovních postupů pomocí Azure Logic Apps
+description: Automatizace pracovních postupů pomocí Azure Logic Apps pro přístup k prostředkům SAP a jejich správa
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -10,170 +10,176 @@ ms.reviewer: divswa, LADocs
 ms.topic: article
 ms.date: 05/09/2019
 tags: connectors
-ms.openlocfilehash: 8232bf90b4dc160583959345a257846aaabad690
-ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
+ms.openlocfilehash: 9e46c51ae06920bd57f272248f06020dfad380e7
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67458932"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68326718"
 ---
-# <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Připojení k systémům SAP v Azure Logic Apps
+# <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Připojení k systémům SAP z Azure Logic Apps
 
-Tento článek popisuje, jak můžete přístup k prostředkům v místním SAP z uvnitř aplikace logiky s využitím konektoru SAP. Konektor funguje s verzí classic SAP, například R/3 a ECC systémy místní. Konektor také umožňuje integraci systémů SAP novější SAP HANA založené, jako je například s/4 HANA, ať už jsou hostované v místním nebo v cloudu. Konektor SAP podporuje integraci zpráv nebo dat do a z systémy SAP NetWeaver prostřednictvím zprostředkující dokumentu (IDoc), obchodní aplikace programovací rozhraní (BAPI) nebo vzdálené volání funkce (RFC).
+Tento článek ukazuje, jak můžete přistupovat k místním prostředkům SAP zevnitř aplikace logiky pomocí konektoru SAP. Konektor pracuje s klasickými verzemi SAP, jako jsou R/3 a systémy ECC místně. Konektor taky umožňuje integraci s novějšími systémy SAP založenými na HANA, jako je S/4 HANA, ať už jsou hostované místně nebo v cloudu. Konektor SAP podporuje integraci zpráv nebo dat do systémů a ze systému SAP NetWeaver prostřednictvím zprostředkujícího dokumentu (IDoc), rozhraní BAPI (Business Application Programming Interface) nebo vzdáleného volání funkce (RFC).
 
-Konektor SAP používá [knihovny .NET konektoru SAP (NCo)](https://support.sap.com/en/product/connectors/msnet.html) a poskytuje tyto operace nebo akce:
+Konektor SAP používá [knihovnu SAP .NET Connector (NCo)](https://support.sap.com/en/product/connectors/msnet.html) a poskytuje tyto operace nebo akce:
 
-* **Poslat SAP**: Odeslání IDoc tRFC, volání funkce BAPI přes RFC nebo volání RFC/tRFC systémů SAP vyhrazené.
-* **Přijímat od SAPU**: Přijímat IDoc přes tRFC, volání funkce BAPI přes tRFC nebo volání RFC/tRFC systémů SAP.
-* **Vygenerovat schémata**: Vygenerujte schémata pro SAP artefakty pro IDoc, BAPI nebo RFC.
+* **Odeslat do SAP**: Odešlete IDoc přes tRFC, zavolejte funkce BAPI přes RFC nebo zavolejte RFC/tRFC v systémech SAP.
+* **Přijmout z SAP**: Přijímat IDoc přes tRFC, volat funkce BAPI přes tRFC nebo volat RFC/tRFC v systémech SAP.
+* **Generovat schémata**: Generování schémat pro artefakty SAP pro IDoc, BAPI nebo RFC.
 
-Konektor SAP pro tyto operace podporuje základní ověřování prostřednictvím uživatelských jmen a hesel. Tento konektor podporuje také [zabezpečené komunikace sítě (SNC)](https://help.sap.com/doc/saphelp_nw70/7.0.31/e6/56f466e99a11d1a5b00000e835363f/content.htm?no_cache=true). SNC slouží pro SAP NetWeaver jednotné přihlašování (SSO), nebo pro zvýšení zabezpečení poskytované o produkt poskytovaný jako externí zabezpečení.
+Pro tyto operace konektor SAP podporuje základní ověřování prostřednictvím uživatelských jmen a hesel. Konektor podporuje také [zabezpečenou síťovou komunikaci (SNC)](https://help.sap.com/doc/saphelp_nw70/7.0.31/e6/56f466e99a11d1a5b00000e835363f/content.htm?no_cache=true). SNC se dá použít pro jednotné přihlašování SAP NetWeaver (SSO) nebo pro další funkce zabezpečení poskytované externím produktem zabezpečení.
 
-Konektor SAP se integruje s místními systémy SAP prostřednictvím [na místní bránu dat](../logic-apps/logic-apps-gateway-connection.md). Ve scénářích odeslat například při odeslání zprávy z aplikace logiky se systémem SAP brána dat funguje jako klient RFC a předává požadavky přijatými od aplikace logiky k SAP.
-Stejně tak v přijímat scénáře, brána dat funguje jako RFC server přijímá požadavky od SAPU a předává je do aplikace logiky.
+Konektor SAP se integruje s místními systémy SAP prostřednictvím místní [brány dat](../logic-apps/logic-apps-gateway-connection.md). Ve scénářích odeslání se například při odeslání zprávy z aplikace logiky do systému SAP chová brána dat jako klient RFC a přepošle žádosti přijaté z aplikace logiky do SAP. Obdobně platí, že brána data Gateway funguje jako server RFC, který přijímá žádosti od SAP a přesměruje je do aplikace logiky.
 
-Tento článek ukazuje, jak vytvořit příklad aplikace logiky, která se integrují s řešením SAP při pokrývající dříve popsaná integrační scénáře.
+V tomto článku se dozvíte, jak vytvořit ukázkové aplikace logiky, které se integrují s SAP a které pokrývají dříve popsané scénáře integrace.
 
 <a name="pre-reqs"></a>
 
 ## <a name="prerequisites"></a>Požadavky
 
-Chcete-li postupovat podle tohoto článku, budete potřebovat tyto položky:
+Pokud chcete postupovat podle tohoto článku, budete potřebovat tyto položky:
 
-* Předplatné Azure. Pokud nemáte ještě předplatné Azure [zaregistrovat si bezplatný účet Azure](https://azure.microsoft.com/free/).
-* Aplikace logiky, ze kterého má přístup k systému SAP a aktivační události, která spustí pracovní postup aplikace logiky. Pokud se službou logic Apps teprve začínáte, přečtěte si téma [co je Azure Logic Apps?](../logic-apps/logic-apps-overview.md) a [rychlý start: Vytvořte svou první aplikaci logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md).
-* Vaše [aplikační server SAP](https://wiki.scn.sap.com/wiki/display/ABAP/ABAP+Application+Server) nebo [server zpráv SAP](https://help.sap.com/saphelp_nw70/helpdata/en/40/c235c15ab7468bb31599cc759179ef/frameset.htm).
-* Stáhněte a nainstalujte nejnovější [na místní bránu dat](https://www.microsoft.com/download/details.aspx?id=53127) v libovolném v místním počítači. Ujistěte se, že nastavíte bránu na webu Azure Portal, než budete pokračovat. Brána umožňuje bezpečný přístup k místním datům a prostředkům. Další informace najdete v tématu [instalace místní brány dat pro Azure Logic Apps](../logic-apps/logic-apps-gateway-install.md).
-* Pokud používáte SNC s jednotným Přihlašováním, ujistěte se, že je brána spuštěná jako uživatel, který je namapovaný proti uživatelům SAP. Chcete-li změnit výchozí účet, vyberte **změnit účet**a zadejte přihlašovací údaje.
+* Předplatné Azure. Pokud ještě nemáte předplatné Azure, zaregistrujte [si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
-  ![Změna účtu brány](./media/logic-apps-using-sap-connector/gateway-account.png)
+* Aplikace logiky, ze které chcete získat přístup k systému SAP, a Trigger, který spouští pracovní postup vaší aplikace logiky. Pokud s Logic Apps začínáte, přečtěte si téma [co je Azure Logic Apps?](../logic-apps/logic-apps-overview.md) a [rychlý Start: Vytvořte svou první aplikaci](../logic-apps/quickstart-create-first-logic-app-workflow.md)logiky.
 
-* Pokud se o produkt poskytovaný jako externí zabezpečení povolíte SNC, zkopírujte knihovna SNC nebo soubory ve stejném počítači, kde je nainstalovaná brána. Některé příklady SNC produkty [sapseculib](https://help.sap.com/saphelp_nw74/helpdata/en/7a/0755dc6ef84f76890a77ad6eb13b13/frameset.htm), protokolu Kerberos a NTLM.
-* Stáhněte a nainstalujte klientské knihovny nejnovější SAP, která je aktuálně [konektoru SAP (NCo) 3.0.21.0 pro rozhraní Microsoft .NET Framework 4.0 a Windows 64 bit (x64)](https://softwaredownloads.sap.com/file/0020000001865512018), ve stejném počítači jako místní brána dat. Instalace této verze nebo novější z těchto důvodů:
+* [Aplikační Server SAP](https://wiki.scn.sap.com/wiki/display/ABAP/ABAP+Application+Server) nebo [Server zpráv SAP](https://help.sap.com/saphelp_nw70/helpdata/en/40/c235c15ab7468bb31599cc759179ef/frameset.htm).
 
-  * Starší verze SAP NCo může být zablokována při odeslání zprávy více než jeden IDoc ve stejnou dobu. Tato podmínka blokuje všechny novější zprávy, které se odesílají do cíle SAP, což způsobí, že zprávy do vypršení časového limitu.
-  * Místní brána dat se spustí pouze v 64bitových systémech. V opačném případě dojde k chybě "Chybný image", protože hostitelská služba Brána dat nepodporuje 32bitová sestavení instalujte.
-  * Hostitelská služba brány dat a SAP adaptér Microsoft pomocí rozhraní .NET Framework 4.5. NCo SAP pro rozhraní .NET Framework 4.0 funguje s procesy, které používají modul runtime rozhraní .NET 4.0 na 4.7.1. S procesy, které používají modul runtime rozhraní .NET 2.0 na 3.5, ale už funguje s nejnovější místní brána dat funguje NCo SAP pro rozhraní .NET Framework 2.0.
+* Stáhněte si a nainstalujte nejnovější místní [bránu dat](https://www.microsoft.com/download/details.aspx?id=53127) na libovolný místní počítač. Než budete pokračovat, ujistěte se, že jste si nastavili bránu v Azure Portal. Brána vám pomůže zabezpečený přístup k místním datům a prostředkům. Další informace najdete v tématu [instalace místní brány dat pro Azure Logic Apps](../logic-apps/logic-apps-gateway-install.md).
 
-* Obsah zprávy zasílané na server SAP, jako je například IDoc ukázkového souboru, musí být ve formátu XML a obsahoval obor názvů pro SAP akci, kterou chcete použít.
+* Pokud používáte SNC s SSO, ujistěte se, že je brána spuštěná jako uživatel, který je namapovaný na uživatele SAP. Chcete-li změnit výchozí účet, vyberte možnost **změnit účet**a zadejte přihlašovací údaje uživatele.
+
+  ![Změnit účet brány](./media/logic-apps-using-sap-connector/gateway-account.png)
+
+* Pokud SNC povolíte s externím produktem zabezpečení, zkopírujte knihovnu SNC nebo soubory do stejného počítače, ve kterém je brána nainstalovaná. Mezi příklady SNC produktů patří [sapseculib](https://help.sap.com/saphelp_nw74/helpdata/en/7a/0755dc6ef84f76890a77ad6eb13b13/frameset.htm), Kerberos a NTLM.
+
+* Stáhněte a nainstalujte nejnovější knihovnu klienta SAP, která je aktuálně [konektorem SAP (NCo 3,0) pro Microsoft .NET 3.0.22.0 zkompilované pomocí .NET Framework 4,0-Windows 64-bit (x64)](https://softwaredownloads.sap.com/file/0020000001000932019)na stejném počítači jako místní brána dat. Nainstalujte tuto verzi nebo novější z těchto důvodů:
+
+  * Starší verze SAP NCo můžou být zablokované, když se současně pošle víc než jedna zpráva IDoc. Tento stav blokuje všechny pozdější zprávy, které se odesílají do cíle SAP, což způsobí vypršení časového limitu zpráv.
+  
+  * Místní brána dat se spouští jenom v 64 systémech. V opačném případě se zobrazí chyba "chybná image", protože hostitelská služba brány dat nepodporuje 32 bitových sestavení.
+  
+  * Hostitelská služba brány dat i adaptér Microsoft SAP používají .NET Framework 4,5. SAP NCo for .NET Framework 4,0 funguje s procesy, které používají .NET Runtime 4,0 až 4.7.1. SAP NCo for .NET Framework 2,0 funguje s procesy, které používají .NET runtime 2,0 na 3,5, ale už nefungují s nejnovější místní bránou dat.
+
+* Obsah zprávy, který můžete odeslat na Server SAP, například vzorový soubor IDoc, musí být ve formátu XML a zahrnovat obor názvů pro akci SAP, kterou chcete použít.
 
 <a name="add-trigger"></a>
 
-## <a name="send-to-sap"></a>Poslat SAP
+## <a name="send-to-sap"></a>Odeslat do SAP
 
-Tento příklad používá aplikace logiky, který můžete aktivovat pomocí požadavku HTTP. Aplikace logiky odesílá IDoc serveru SAP a vrátí odpověď žadatel, který volá aplikaci logiky. 
+V tomto příkladu se používá aplikace logiky, kterou můžete aktivovat pomocí požadavku HTTP. Aplikace logiky pošle IDoc serveru SAP a vrátí odpověď žadateli, který se nazývá aplikace logiky. 
 
-### <a name="add-an-http-request-trigger"></a>Přidat aktivační událost požadavek HTTP
+### <a name="add-an-http-request-trigger"></a>Přidání triggeru požadavku HTTP
 
-V Azure Logic Apps, musí začínat každá aplikace logiky [aktivační událost](../logic-apps/logic-apps-overview.md#logic-app-concepts), který se aktivuje při určité události nebo když je splněna konkrétní podmínka. Pokaždé, když se trigger aktivuje, modul Logic Apps vytvoří instanci aplikace logiky a spustí pracovní postup vaší aplikace.
+V Azure Logic Apps musí každá aplikace logiky začínat [triggerem](../logic-apps/logic-apps-overview.md#logic-app-concepts), který se aktivuje, když dojde ke konkrétní události nebo když dojde ke splnění určité podmínky. Pokaždé, když se Trigger aktivuje, modul Logic Apps vytvoří instanci aplikace logiky a začne spouštět pracovní postup vaší aplikace.
 
-V tomto příkladu vytvoříte aplikaci logiky s koncovým bodem v Azure tak, aby mohlo odesílat *požadavků HTTP POST* do aplikace logiky. Pokud vaše aplikace logiky obdrží tyto požadavky HTTP, aktivuje se a spustí další krok v pracovním postupu.
+V tomto příkladu vytvoříte aplikaci logiky s koncovým bodem v Azure, abyste mohli odesílat *požadavky HTTP POST* do vaší aplikace logiky. Když aplikace logiky obdrží tyto požadavky HTTP, Trigger se aktivuje a spustí další krok v pracovním postupu.
 
-1. V [webu Azure portal](https://portal.azure.com), vytvoření prázdné aplikace logiky, otevře se návrhář aplikace logiky.
+1. V [Azure Portal](https://portal.azure.com)vytvořte prázdnou aplikaci logiky, která otevře návrháře aplikace logiky.
 
-1. Do vyhledávacího pole zadejte jako filtr "požadavek http". Z **triggery** seznamu vyberte **přijetí požadavku HTTP když**.
+1. Do vyhledávacího pole zadejte jako filtr "požadavek HTTP". V seznamu **triggery** vyberte, **kdy se přijme požadavek HTTP**.
 
-   ![Přidat aktivační událost požadavek HTTP](./media/logic-apps-using-sap-connector/add-trigger.png)
+   ![Přidat aktivační událost požadavku HTTP](./media/logic-apps-using-sap-connector/add-trigger.png)
 
-1. Nyní uložte aplikaci logiky tak, aby adresa URL koncového bodu můžete generovat pro svou aplikaci logiky. Na panelu nástrojů návrháře zvolte **Uložit**.
+1. Nyní uložte aplikaci logiky, abyste mohli vygenerovat adresu URL koncového bodu pro vaši aplikaci logiky. Na panelu nástrojů návrháře vyberte **Uložit**.
 
-   Koncový bod adresy URL se teď zobrazí v aktivační událost, například:
+   Adresa URL koncového bodu se teď zobrazí ve triggeru, například:
 
-   ![Generování adresy URL pro koncový bod](./media/logic-apps-using-sap-connector/generate-http-endpoint-url.png)
+   ![Vygenerovat adresu URL pro koncový bod](./media/logic-apps-using-sap-connector/generate-http-endpoint-url.png)
 
 <a name="add-action"></a>
 
-### <a name="add-an-sap-action"></a>Přidání akce SAP
+### <a name="add-an-sap-action"></a>Přidat akci SAP
 
-V Azure Logic Apps [akce](../logic-apps/logic-apps-overview.md#logic-app-concepts) je krok v pracovním postupu, který následuje aktivační události nebo jiné akce. Pokud trigger aplikace logiky zatím nepřidali a chcete postupujte podle tohoto příkladu [přidat aktivační události popisované v této části](#add-trigger).
+V Azure Logic Apps [Akce](../logic-apps/logic-apps-overview.md#logic-app-concepts) je krok v pracovním postupu, který následuje po triggeru nebo jiné akci. Pokud jste ještě nepřidali Trigger do aplikace logiky a chcete postupovat podle tohoto příkladu, [přidejte Trigger popsaný v této části](#add-trigger).
 
-1. V návrháři aplikace logiky pod triggerem zvolte **nový krok**.
+1. V návrháři aplikace logiky pod triggerem vyberte **Nový krok**.
 
-   ![Vyberte "Nové krok"](./media/logic-apps-using-sap-connector/add-action.png)
+   ![Vyberte nový krok.](./media/logic-apps-using-sap-connector/add-action.png)
 
-1. Do vyhledávacího pole zadejte jako filtr "sap". Z **akce** seznamu vyberte **odešle zprávu SAP**.
+1. Do vyhledávacího pole zadejte "SAP" jako filtr. V seznamu **Akce** vyberte **Odeslat zprávu do SAP**.
   
-   ![Výběr akce Odeslat SAP](media/logic-apps-using-sap-connector/select-sap-send-action.png)
+   ![Vybrat akci SAP odeslat](media/logic-apps-using-sap-connector/select-sap-send-action.png)
 
-   Nebo namísto hledání, zvolte **Enterprise** kartu a vyberte akci SAP.
+   Nebo místo hledání zvolte kartu **Enterprise** a pak vyberte akci SAP.
 
-   ![Výběr akce Odeslat SAP z karty Enterprise](media/logic-apps-using-sap-connector/select-sap-send-action-ent-tab.png)
+   ![Výběr možnosti SAP odeslat akci na kartě organizace](media/logic-apps-using-sap-connector/select-sap-send-action-ent-tab.png)
 
-1. Pokud se zobrazí výzva k zadání podrobností o připojení, vytvoření připojení k SAP nyní. Jinak Pokud připojení již existuje, pokračujte dalším krokem tak, že můžete nastavit akci SAP.
+1. Pokud se zobrazí výzva k zadání podrobností o připojení, vytvořte připojení SAP hned teď. Jinak, pokud vaše připojení už existuje, pokračujte dalším krokem, abyste mohli nastavit akci SAP.
 
-   **Vytvoření připojení k místní SAP**
+   **Vytvoření místního připojení SAP**
 
-    1. Zadání informací o připojení k serveru SAP. Pro **bránu Data Gateway** vlastnosti, vyberte bránu dat, který jste vytvořili na webu Azure Portal pro vaši instalaci brány.
+    1. Zadejte informace o připojení pro váš Server SAP. Pro vlastnost **Brána dat** vyberte bránu dat, kterou jste vytvořili v Azure Portal pro instalaci brány.
 
-         - Pokud **typ přihlášení** je nastavena na **aplikační Server**, tyto vlastnosti, které se obvykle zobrazují volitelné, jsou požadovány:
+         - Pokud je vlastnost **typ přihlášení** nastavená na **aplikační server**, vyžadují se tyto vlastnosti, které se obvykle zobrazují jako volitelné:
 
-            ![Vytvoření připojení k serveru aplikace SAP](media/logic-apps-using-sap-connector/create-SAP-application-server-connection.png)
+            ![Vytvořit připojení aplikačního serveru SAP](media/logic-apps-using-sap-connector/create-SAP-application-server-connection.png)
 
-         - Pokud **typ přihlášení** je nastavena na **skupiny**, tyto vlastnosti, které se obvykle zobrazují volitelné, jsou požadovány:
+         - Pokud je vlastnost **typ přihlášení** nastavená na **skupiny**, vyžadují se tyto vlastnosti, které se obvykle zobrazují jako volitelné:
 
-            ![Vytvoření připojení k serveru zpráv SAP](media/logic-apps-using-sap-connector/create-SAP-message-server-connection.png)
+            ![Vytvořit připojení k serveru zpráv SAP](media/logic-apps-using-sap-connector/create-SAP-message-server-connection.png)
 
-           Ve výchozím nastavení silné typování slouží ke kontrole neplatné hodnoty pomocí provádí ověření XML proti schématu. Toto chování vám může pomoci odhalit problémy dříve. **Bezpečné psaní** možnost je k dispozici kvůli zpětné kompatibilitě a pouze kontroluje délku řetězce. Další informace o [bezpečné psaní možnost](#safe-typing).
+           Ve výchozím nastavení se silné zadání používá ke kontrole neplatných hodnot prováděním ověřování XML proti schématu. Toto chování vám může přispět k detekci problémů dříve. Možnost **bezpečného psaní** je k dispozici pro zpětnou kompatibilitu a kontroluje pouze délku řetězce. Přečtěte si další informace o [možnosti bezpečného psaní](#safe-typing).
 
-    1. Jakmile budete hotovi, vyberte **vytvořit**.
+    1. Až budete hotovi, vyberte **vytvořit**.
 
-       Logic Apps vytvoří a otestuje připojení, abyste měli jistotu, že připojení funguje správně.
+       Logic Apps nastaví a otestuje připojení, aby se zajistilo správné fungování připojení.
 
 1. Nyní vyhledejte a vyberte akci ze serveru SAP.
 
-    1. V **SAP akce** , vyberte ikonu složky. Ze seznamu souborů vyhledejte a vyberte SAP zprávu, kterou chcete použít. Se orientovat v seznamu, použijte šipky.
+    1. V poli **Akce SAP** vyberte ikonu složky. V seznamu soubor vyhledejte a vyberte zprávu SAP, kterou chcete použít. Chcete-li procházet seznam, použijte šipky.
 
-       Tento příklad vybere IDoc s **objednávky** typu.
+       Tento příklad vybere IDoc s typem **objednávky** .
 
-       ![Vyhledání a výběr akce IDoc](./media/logic-apps-using-sap-connector/SAP-app-server-find-action.png)
+       ![Najít a vybrat akci IDoc](./media/logic-apps-using-sap-connector/SAP-app-server-find-action.png)
 
-       Pokud nemůžete najít požadovanou akci, můžete ručně zadat cestu, například:
+       Pokud požadovanou akci nemůžete najít, můžete zadat cestu ručně, například:
 
-       ![Ručně zadat cestu k IDoc akce](./media/logic-apps-using-sap-connector/SAP-app-server-manually-enter-action.png)
+       ![Ručně zadat cestu k IDoc akci](./media/logic-apps-using-sap-connector/SAP-app-server-manually-enter-action.png)
 
        > [!TIP]
-       > Zadejte hodnotu pro **SAP akce** prostřednictvím editoru výrazů. Díky tomu můžete použít stejnou akci pro různé typy zpráv.
+       > Zadejte hodnotu pro **akci SAP** prostřednictvím editoru výrazů. Tímto způsobem můžete použít stejnou akci u různých typů zpráv.
 
-       Další informace o operacích IDoc najdete v tématu [zprávy schémata pro operace IDOC](https://docs.microsoft.com/biztalk/adapters-and-accelerators/adapter-sap/message-schemas-for-idoc-operations).
+       Další informace o operacích IDoc najdete v tématu [schémata zpráv pro operace IDOC](https://docs.microsoft.com/biztalk/adapters-and-accelerators/adapter-sap/message-schemas-for-idoc-operations).
 
-    1. Klikněte do **vstupní zprávy** pole tak, aby zobrazil seznam dynamického obsahu. Z tohoto seznamu v části **přijetí požadavku HTTP když**, vyberte **tělo** pole.
+    1. Klikněte do pole **vstupní zpráva** , aby se zobrazil seznam dynamického obsahu. V tomto seznamu v části **když se přijme požadavek HTTP**, vyberte pole **body** .
 
-       Tento krok zahrnuje obsah textu z triggeru požadavku HTTP a odesílá, jehož výstupem k serveru SAP.
+       Tento krok zahrnuje obsah zprávy z triggeru požadavku HTTP a odesílá tento výstup do vašeho serveru SAP.
 
-       ![Vyberte pole "Body"](./media/logic-apps-using-sap-connector/SAP-app-server-action-select-body.png)
+       ![Vybrat pole "tělo"](./media/logic-apps-using-sap-connector/SAP-app-server-action-select-body.png)
 
        Až budete hotovi, vaše akce SAP bude vypadat jako v tomto příkladu:
 
-       ![Dokončení akce SAP](./media/logic-apps-using-sap-connector/SAP-app-server-complete-action.png)
+       ![Dokončit akci SAP](./media/logic-apps-using-sap-connector/SAP-app-server-complete-action.png)
 
-1. Uložte svou aplikaci logiky. Na panelu nástrojů návrháře zvolte **Uložit**.
+1. Uložte svou aplikaci logiky. Na panelu nástrojů návrháře vyberte **Uložit**.
 
 <a name="add-response"></a>
 
-### <a name="add-an-http-response-action"></a>Přidání akce odpovědi HTTP
+### <a name="add-an-http-response-action"></a>Přidat akci odpovědi HTTP
 
-Teď přidejte akci odpovědi do pracovního postupu aplikace logiky a zahrnutí výstupu z akce SAP. Tímto způsobem, vaše aplikace logiky vrátí výsledky z vašeho serveru SAP ho původnímu žadateli.
+Teď přidejte akci odpovědi do pracovního postupu aplikace logiky a zahrňte výstup z akce SAP. Vaše aplikace logiky tak vrátí výsledky ze serveru SAP původnímu žadateli.
 
-1. V návrháři aplikace logiky v rámci SAP akce, vyberte **nový krok**.
+1. V návrháři aplikace logiky v akci SAP vyberte **Nový krok**.
 
-1. Do vyhledávacího pole zadejte jako filtr "odpověď". Z **akce** seznamu vyberte **odpovědi**.
+1. Do vyhledávacího pole zadejte jako filtr "Response". V seznamu **Akce** vyberte možnost **odpověď**.
 
-1. Klikněte do **tělo** pole tak, aby zobrazil seznam dynamického obsahu. Z tohoto seznamu v části **odešle zprávu SAP**, vyberte **tělo** pole.
+1. Klikněte do pole **text** , aby se zobrazil seznam dynamického obsahu. V tomto seznamu v části **Odeslat zprávu do SAP**vyberte pole **text** .
 
-   ![Dokončení akce SAP](./media/logic-apps-using-sap-connector/select-sap-body-for-response-action.png)
+   ![Dokončit akci SAP](./media/logic-apps-using-sap-connector/select-sap-body-for-response-action.png)
 
 1. Uložte svou aplikaci logiky.
 
-### <a name="test-your-logic-app"></a>Otestujte aplikaci logiky
+### <a name="test-your-logic-app"></a>Testování aplikace logiky
 
-1. Pokud vaše aplikace logiky již není povolena, v nabídce aplikace logiky, vyberte **přehled**. Na panelu nástrojů vyberte **povolit**.
+1. Pokud vaše aplikace logiky ještě není povolená, vyberte v nabídce aplikace logiky **Přehled**. Na panelu nástrojů vyberte **Povolit**.
 
-1. Na panelu nástrojů návrháře zvolte **spustit**. Tímto krokem ručně spustíte svou aplikaci logiky.
+1. Na panelu nástrojů návrháře vyberte **Spustit**. Tento krok ručně spustí vaši aplikaci logiky.
 
-1. Aktivaci vaší aplikace logiky odesláním požadavku HTTP POST na adresu URL v triggeru požadavku HTTP.
-Zahrnout zprávy obsahu při zpracování požadavku. K odeslání požadavku můžete použít nástroj, jako [Postman](https://www.getpostman.com/apps).
+1. Aktivujte aplikaci logiky odesláním požadavku HTTP POST na adresu URL v triggeru požadavku HTTP.
+Přidejte obsah zprávy s vaším požadavkem. K odeslání žádosti můžete použít nástroj, jako je například [post](https://www.getpostman.com/apps).
 
-   Pro účely tohoto článku odešle požadavek IDoc soubor, který musí být ve formátu XML a obsahoval obor názvů pro SAP akci, kterou používáte, třeba:
+   V tomto článku požadavek pošle soubor IDoc, který musí být ve formátu XML a zahrnuje obor názvů pro akci SAP, kterou používáte, například:
 
    ``` xml
    <?xml version="1.0" encoding="UTF-8" ?>
@@ -184,184 +190,183 @@ Zahrnout zprávy obsahu při zpracování požadavku. K odeslání požadavku m�
    </Send>
    ```
 
-1. Po odeslání požadavku HTTP čekat na odpověď z vaší aplikace logiky.
+1. Až odešlete požadavek HTTP, počkejte na odpověď z vaší aplikace logiky.
 
    > [!NOTE]
-   > Aplikace logiky může být vypršení časového limitu, pokud nedokončíte všechny kroky potřebné pro odpověď v rámci [časový limit požadavku](./logic-apps-limits-and-config.md). Pokud k tomuto stavu dochází, požadavky zablokoval. Při diagnostice problémů, přečtěte si, jak [zkontrolujte a monitorování aplikací logiky](../logic-apps/logic-apps-monitor-your-logic-apps.md).
+   > Vaše aplikace logiky může vypršet, pokud všechny kroky požadované pro odpověď nekončí v rámci [časového](./logic-apps-limits-and-config.md)limitu požadavku. Pokud k tomuto stavu dojde, můžou se požadavky zablokovat. Pro usnadnění diagnostiky problémů se dozvíte, jak můžete [kontrolovat a monitorovat aplikace logiky](../logic-apps/logic-apps-monitor-your-logic-apps.md).
 
-Právě jste vytvořili aplikaci logiky, který může komunikovat se serverem SAP. Teď, když nastavíte připojení k SAP pro aplikace logiky, můžete prozkoumat další dostupné akce SAP, jako je například BAPI a v dokumentu RFC.
+Nyní jste vytvořili aplikaci logiky, která může komunikovat se serverem SAP. Teď, když jste nastavili připojení SAP pro vaši aplikaci logiky, můžete prozkoumat další dostupné akce SAP, například BAPI a RFC.
 
-## <a name="receive-from-sap"></a>Přijímat od SAPU.
+## <a name="receive-from-sap"></a>Příjem ze SAP
 
-Tento příklad používá aplikace logiky, která se aktivuje, když aplikace přijme zprávu z určitého systému SAP.
+V tomto příkladu se používá aplikace logiky, která se aktivuje, když aplikace obdrží zprávu ze systému SAP.
 
-### <a name="add-an-sap-trigger"></a>Přidat aktivační událost SAP
+### <a name="add-an-sap-trigger"></a>Přidání triggeru SAP
 
-1. Na webu Azure Portal vytvoření prázdné aplikace logiky, otevře se návrhář aplikace logiky.
+1. V Azure Portal vytvořte prázdnou aplikaci logiky, která otevře návrháře aplikace logiky.
 
-1. Do vyhledávacího pole zadejte jako filtr "sap". Z **triggery** seznamu vyberte **při příjmu zprávy z SAP**.
+1. Do vyhledávacího pole zadejte "SAP" jako filtr. V seznamu **triggery** vyberte, **kdy se má ze SAP přijmout zpráva**.
 
-   ![Přidání triggeru SAP](./media/logic-apps-using-sap-connector/add-sap-trigger.png)
+   ![Přidat aktivační událost SAP](./media/logic-apps-using-sap-connector/add-sap-trigger.png)
 
-   Nebo můžete přejít **Enterprise** kartu a vyberte trigger:
+   Nebo můžete přejít na kartu **Enterprise** a vybrat aktivační událost:
 
-   ![Přidání triggeru SAP z karty Enterprise](./media/logic-apps-using-sap-connector/add-sap-trigger-ent-tab.png)
+   ![Přidat aktivační událost SAP z karty Enterprise](./media/logic-apps-using-sap-connector/add-sap-trigger-ent-tab.png)
 
-1. Pokud se zobrazí výzva k zadání podrobností o připojení, vytvoření připojení k SAP nyní. Pokud už připojení existuje, pokračujte dalším krokem, můžete nastavit akci SAP.
+1. Pokud se zobrazí výzva k zadání podrobností o připojení, vytvořte připojení SAP hned teď. Pokud vaše připojení už existuje, pokračujte dalším krokem, abyste mohli nastavit akci SAP.
 
-   **Vytvoření připojení k místní SAP**
+   **Vytvoření místního připojení SAP**
 
-   - Zadání informací o připojení k serveru SAP. Pro **bránu Data Gateway** vlastnosti, vyberte bránu dat, který jste vytvořili na webu Azure Portal pro vaši instalaci brány.
+   - Zadejte informace o připojení pro váš Server SAP. Pro vlastnost **Brána dat** vyberte bránu dat, kterou jste vytvořili v Azure Portal pro instalaci brány.
 
-      - Pokud **typ přihlášení** je nastavena na **aplikační Server**, tyto vlastnosti, které se obvykle zobrazují volitelné, jsou požadovány:
+      - Pokud je vlastnost **typ přihlášení** nastavená na **aplikační server**, vyžadují se tyto vlastnosti, které se obvykle zobrazují jako volitelné:
 
-         ![Vytvoření připojení k serveru aplikace SAP](media/logic-apps-using-sap-connector/create-SAP-application-server-connection.png)
+         ![Vytvořit připojení aplikačního serveru SAP](media/logic-apps-using-sap-connector/create-SAP-application-server-connection.png)
 
-      - Pokud **typ přihlášení** je nastavena na **skupiny**, tyto vlastnosti, které se obvykle zobrazují volitelné, jsou požadovány:
+      - Pokud je vlastnost **typ přihlášení** nastavená na **skupiny**, vyžadují se tyto vlastnosti, které se obvykle zobrazují jako volitelné:
 
-          ![Vytvoření připojení k serveru zpráv SAP](media/logic-apps-using-sap-connector/create-SAP-message-server-connection.png)  
+          ![Vytvořit připojení k serveru zpráv SAP](media/logic-apps-using-sap-connector/create-SAP-message-server-connection.png)  
 
-      Ve výchozím nastavení silné typování slouží ke kontrole neplatné hodnoty pomocí provádí ověření XML proti schématu. Toto chování vám může pomoci odhalit problémy dříve. **Bezpečné psaní** možnost je k dispozici kvůli zpětné kompatibilitě a pouze kontroluje délku řetězce. Další informace o [bezpečné psaní možnost](#safe-typing).
+      Ve výchozím nastavení se silné zadání používá ke kontrole neplatných hodnot prováděním ověřování XML proti schématu. Toto chování vám může přispět k detekci problémů dříve. Možnost **bezpečného psaní** je k dispozici pro zpětnou kompatibilitu a kontroluje pouze délku řetězce. Přečtěte si další informace o [možnosti bezpečného psaní](#safe-typing).
 
-1. Zadejte požadované parametry, které jsou založené na konfiguraci systému SAP.
+1. Zadejte požadované parametry na základě konfigurace systému SAP.
 
-   Volitelně můžete zadat jednu nebo více akcí SAP. Tento seznam akcí Určuje zprávy, které aktivační událost přijme ze serveru SAP prostřednictvím brány data. Prázdný seznam určuje, že aktivační událost přijímá všechny zprávy. Pokud seznam obsahuje více než jedna zpráva, obdrží aktivační událost pouze zprávy uvedený v seznamu. Všechny ostatní zprávy odeslané ze serveru SAP odmítne brána.
+   Volitelně můžete zadat jednu nebo více akcí SAP. Tento seznam akcí určuje zprávy, které aktivační událost přijme ze serveru SAP prostřednictvím brány dat. Prázdný seznam určuje, že Trigger obdrží všechny zprávy. Pokud má seznam více než jednu zprávu, aktivační událost přijímá pouze zprávy uvedené v seznamu. Všechny ostatní zprávy odeslané z vašeho serveru SAP jsou bránou odmítnuté.
 
-   Můžete vybrat akci SAP z nástroje pro výběr souborů:
+   Akci SAP můžete vybrat z výběru souboru:
 
-   ![Vyberte akci SAP](media/logic-apps-using-sap-connector/select-SAP-action-trigger.png)  
+   ![Vybrat akci SAP](media/logic-apps-using-sap-connector/select-SAP-action-trigger.png)  
 
-   Nebo můžete ručně zadat akce:
+   Můžete také zadat akci ručně:
 
-   ![Ručně zadejte akce SAP](media/logic-apps-using-sap-connector/manual-enter-SAP-action-trigger.png) 
+   ![Zadat akci SAP ručně](media/logic-apps-using-sap-connector/manual-enter-SAP-action-trigger.png) 
 
-   Tady je příklad, který ukazuje, jak se zobrazí akce, když nastavíte aktivační událost pro příjem zprávy více než jeden.
+   Tady je příklad, který ukazuje, jak se akce zobrazí při nastavení triggeru pro příjem více než jedné zprávy.
 
-   ![Například aktivační událost](media/logic-apps-using-sap-connector/example-trigger.png)  
+   ![Příklad triggeru](media/logic-apps-using-sap-connector/example-trigger.png)  
 
-   Další informace o akci SAP najdete v tématu [zprávy schémata pro operace IDOC](https://docs.microsoft.com/biztalk/adapters-and-accelerators/adapter-sap/message-schemas-for-idoc-operations)
+   Další informace o akci SAP najdete v tématu [schémata zpráv pro IDOC operace](https://docs.microsoft.com/biztalk/adapters-and-accelerators/adapter-sap/message-schemas-for-idoc-operations) .
 
-1. Nyní uložení aplikace logiky, takže můžete začít přijímat zprávy ze systému SAP.
-Na panelu nástrojů návrháře zvolte **Uložit**.
+1. Nyní uložte aplikaci logiky, abyste mohli začít přijímat zprávy ze systému SAP.
+Na panelu nástrojů návrháře vyberte **Uložit**.
 
-Aplikace logiky je teď připravena přijímat zprávy ze systému SAP.
+Vaše aplikace logiky je teď připravená přijímat zprávy ze systému SAP.
 
 > [!NOTE]
-> Aktivační událost SAP není cyklického dotazování aktivační událost, ale místo toho je založené na webhoocích aktivační události. Aktivační události je volána z brány pouze v případě, že zpráva existuje, tak žádné cyklického dotazování je nezbytné.
+> Trigger SAP není Trigger cyklického dotazování, ale je místo toho Trigger založený na Webhooku. Trigger se volá z brány jenom v případě, že existuje zpráva, takže není potřeba žádné cyklické dotazování.
 
-### <a name="test-your-logic-app"></a>Otestujte aplikaci logiky
+### <a name="test-your-logic-app"></a>Testování aplikace logiky
 
-1. Spustit aplikaci logiky, odešlete zprávu ze systému SAP.
+1. Pokud chcete aktivovat aplikaci logiky, odešlete zprávu ze systému SAP.
 
-1. V nabídce aplikace logiky, vyberte **přehled**. Zkontrolujte **historie běhů** pro všechny nové běhy pro vaši aplikaci logiky.
+1. V nabídce aplikace logiky vyberte **Přehled**. Podívejte se na **historii spuštění** pro jakékoli nové běhy aplikace logiky.
 
-1. Otevřete posledního spuštění, který zobrazuje zpráva odeslaná z vašeho systému SAP v část Outputs následujícím aktivační události.
+1. Otevřete poslední spuštění, ve kterém se zobrazí zpráva odeslaná ze systému SAP v oddílu aktivační výstupy triggeru.
 
-## <a name="generate-schemas-for-artifacts-in-sap"></a>Vygenerovat schémata pro artefakty v SAP
+## <a name="generate-schemas-for-artifacts-in-sap"></a>Generování schémat pro artefakty v SAP
 
-Tento příklad používá aplikace logiky, který můžete aktivovat pomocí požadavku HTTP. Akce SAP odešle požadavek do systému SAP se vygenerovat schémata pro zadaný IDoc a BAPI. Schémata, která vrátit v odpovědi se nahrají do účtu pro integraci s použitím konektoru Azure Resource Manageru.
+V tomto příkladu se používá aplikace logiky, kterou můžete aktivovat pomocí požadavku HTTP. Akce SAP odešle požadavek do systému SAP, aby vygeneroval schémata pro zadané IDoc a BAPI. Schémata, která se vracejí v odpovědi, se nahrají na účet pro integraci pomocí konektoru Azure Resource Manager.
 
-### <a name="add-an-http-request-trigger"></a>Přidat aktivační událost požadavek HTTP
+### <a name="add-an-http-request-trigger"></a>Přidání triggeru požadavku HTTP
 
-1. Na webu Azure Portal vytvoření prázdné aplikace logiky, otevře se návrhář aplikace logiky.
+1. V Azure Portal vytvořte prázdnou aplikaci logiky, která otevře návrháře aplikace logiky.
 
-1. Do vyhledávacího pole zadejte jako filtr "požadavek http". Z **triggery** seznamu vyberte **přijetí požadavku HTTP když**.
+1. Do vyhledávacího pole zadejte jako filtr "požadavek HTTP". V seznamu **triggery** vyberte, **kdy se přijme požadavek HTTP**.
 
-   ![Přidat aktivační událost požadavek HTTP](./media/logic-apps-using-sap-connector/add-trigger.png)
+   ![Přidat aktivační událost požadavku HTTP](./media/logic-apps-using-sap-connector/add-trigger.png)
 
-1. Abyste mohli generovat adresu URL koncového bodu pro vaši aplikaci logiky uložte aplikaci logiky.
-Na panelu nástrojů návrháře zvolte **Uložit**.
+1. Nyní uložte aplikaci logiky, abyste mohli vygenerovat adresu URL koncového bodu pro vaši aplikaci logiky.
+Na panelu nástrojů návrháře vyberte **Uložit**.
 
-   Koncový bod adresy URL se teď zobrazí v aktivační událost, například:
+   Adresa URL koncového bodu se teď zobrazí ve triggeru, například:
 
-   ![Generování adresy URL pro koncový bod](./media/logic-apps-using-sap-connector/generate-http-endpoint-url.png)
+   ![Vygenerovat adresu URL pro koncový bod](./media/logic-apps-using-sap-connector/generate-http-endpoint-url.png)
 
 ### <a name="add-an-sap-action-to-generate-schemas"></a>Přidání akce SAP pro generování schémat
 
-1. V návrháři aplikace logiky pod triggerem zvolte **nový krok**.
+1. V návrháři aplikace logiky pod triggerem vyberte **Nový krok**.
 
-   ![Vyberte "Nové krok"](./media/logic-apps-using-sap-connector/add-action.png)
+   ![Vyberte nový krok.](./media/logic-apps-using-sap-connector/add-action.png)
 
-1. Do vyhledávacího pole zadejte jako filtr "sap". Z **akce** seznamu vyberte **vygenerovat schémata**.
+1. Do vyhledávacího pole zadejte "SAP" jako filtr. V seznamu **Akce** vyberte možnost **Generovat schémata**.
   
-   ![Výběr akce Odeslat SAP](media/logic-apps-using-sap-connector/select-sap-schema-generator-action.png)
+   ![Vybrat akci SAP odeslat](media/logic-apps-using-sap-connector/select-sap-schema-generator-action.png)
 
-   Nebo můžete také zvolit **Enterprise** kartu a vyberte akci SAP.
+   Nebo můžete také vybrat kartu **Enterprise** a pak vybrat akci SAP.
 
-   ![Výběr akce Odeslat SAP z karty Enterprise](media/logic-apps-using-sap-connector/select-sap-schema-generator-ent-tab.png)
+   ![Výběr možnosti SAP odeslat akci na kartě organizace](media/logic-apps-using-sap-connector/select-sap-schema-generator-ent-tab.png)
 
-1. Pokud se zobrazí výzva k zadání podrobností o připojení, vytvoření připojení k SAP nyní. Pokud už připojení existuje, pokračujte dalším krokem, můžete nastavit akci SAP.
+1. Pokud se zobrazí výzva k zadání podrobností o připojení, vytvořte připojení SAP hned teď. Pokud vaše připojení už existuje, pokračujte dalším krokem, abyste mohli nastavit akci SAP.
 
-   **Vytvoření připojení k místní SAP**
+   **Vytvoření místního připojení SAP**
 
-    1. Zadání informací o připojení k serveru SAP. Pro **bránu Data Gateway** vlastnosti, vyberte bránu dat, který jste vytvořili na webu Azure Portal pro vaši instalaci brány.
+   1. Zadejte informace o připojení pro váš Server SAP. Pro vlastnost **Brána dat** vyberte bránu dat, kterou jste vytvořili v Azure Portal pro instalaci brány.
 
-       - Pokud **typ přihlášení** je nastavena na **aplikační Server**, tyto vlastnosti, které se obvykle zobrazují volitelné, jsou požadovány:
+      - Pokud je vlastnost **typ přihlášení** nastavená na **aplikační server**, vyžadují se tyto vlastnosti, které se obvykle zobrazují jako volitelné:
 
-         ![Vytvoření připojení k serveru aplikace SAP](media/logic-apps-using-sap-connector/create-SAP-application-server-connection.png)
+        ![Vytvořit připojení aplikačního serveru SAP](media/logic-apps-using-sap-connector/create-SAP-application-server-connection.png)
 
-       - Pokud **typ přihlášení** je nastavena na **skupiny**, tyto vlastnosti, které se obvykle zobrazují volitelné, jsou požadovány:
+      - Pokud je vlastnost **typ přihlášení** nastavená na **skupiny**, vyžadují se tyto vlastnosti, které se obvykle zobrazují jako volitelné:
 
-         ![Vytvoření připojení k serveru zpráv SAP](media/logic-apps-using-sap-connector/create-SAP-message-server-connection.png)
+        ![Vytvořit připojení k serveru zpráv SAP](media/logic-apps-using-sap-connector/create-SAP-message-server-connection.png)
 
-        Ve výchozím nastavení silné typování slouží ke kontrole neplatné hodnoty pomocí provádí ověření XML proti schématu. Toto chování vám může pomoci odhalit problémy dříve. **Bezpečné psaní** možnost je k dispozici kvůli zpětné kompatibilitě a pouze kontroluje délku řetězce. Další informace o [bezpečné psaní možnost](#safe-typing).
+      Ve výchozím nastavení se silné zadání používá ke kontrole neplatných hodnot prováděním ověřování XML proti schématu. Toto chování vám může přispět k detekci problémů dříve. Možnost **bezpečného psaní** je k dispozici pro zpětnou kompatibilitu a kontroluje pouze délku řetězce. Přečtěte si další informace o [možnosti bezpečného psaní](#safe-typing).
 
-    1. Jakmile budete hotovi, vyberte **vytvořit**. 
+   1. Až budete hotovi, vyberte **vytvořit**. 
    
-       Logic Apps vytvoří a otestuje připojení, abyste měli jistotu, že připojení funguje správně.
+      Logic Apps nastaví a otestuje připojení, aby se zajistilo správné fungování připojení.
 
-1. Zadejte cestu na artefakt, pro kterou chcete vygenerovat schéma.
+1. Zadejte cestu k artefaktu, pro který chcete vytvořit schéma.
 
-   SAP akce můžete vybrat z nástroje pro výběr souborů:
+   Akci SAP můžete vybrat z výběru souboru:
 
-   ![Vyberte akci SAP](media/logic-apps-using-sap-connector/select-SAP-action-schema-generator.png)  
+   ![Vybrat akci SAP](media/logic-apps-using-sap-connector/select-SAP-action-schema-generator.png)  
 
-   Nebo můžete ručně zadat akce:
+   Nebo můžete ručně zadat tuto akci:
 
-   ![Ručně zadejte akce SAP](media/logic-apps-using-sap-connector/manual-enter-SAP-action-schema-generator.png)
+   ![Zadat akci SAP ručně](media/logic-apps-using-sap-connector/manual-enter-SAP-action-schema-generator.png)
 
-   K vygenerování schématu pro více než jeden artefakt, zadejte podrobnosti akce SAP pro každý artefakt, například:
+   Chcete-li generovat schémata pro více než jeden artefakt, zadejte podrobnosti o akci SAP pro každý artefakt, například:
 
-   ![Vyberte Přidat novou položku](media/logic-apps-using-sap-connector/schema-generator-array-pick.png)
+   ![Vyberte Přidat novou položku.](media/logic-apps-using-sap-connector/schema-generator-array-pick.png)
 
    ![Zobrazit dvě položky](media/logic-apps-using-sap-connector/schema-generator-example.png)
 
-   Další informace o akci SAP najdete v tématu [zprávy schémata pro operace IDOC](https://docs.microsoft.com/biztalk/adapters-and-accelerators/adapter-sap/message-schemas-for-idoc-operations).
+   Další informace o akci SAP najdete v tématu [schémata zpráv pro IDOC operace](https://docs.microsoft.com/biztalk/adapters-and-accelerators/adapter-sap/message-schemas-for-idoc-operations).
 
-1. Uložte svou aplikaci logiky. Na panelu nástrojů návrháře zvolte **Uložit**.
+1. Uložte svou aplikaci logiky. Na panelu nástrojů návrháře vyberte **Uložit**.
 
-### <a name="test-your-logic-app"></a>Otestujte aplikaci logiky
+### <a name="test-your-logic-app"></a>Testování aplikace logiky
 
-1. Na panelu nástrojů návrháře zvolte **spustit** aktivuje spuštění aplikace logiky.
+1. Na panelu nástrojů návrháře vyberte **Spustit** , aby se spustil běh aplikace logiky.
 
-1. Otevřete spustit a zkontrolovat výstupy pro **vygenerovat schémata** akce.
+1. Otevřete běh a podívejte se na výstupy pro akci **Generovat schémata** .
 
-   Zobrazit výstupy generované schémata pro zadaný seznam zpráv.
+   Výstupy zobrazují vygenerovaná schémata pro zadaný seznam zpráv.
 
-### <a name="upload-schemas-to-an-integration-account"></a>Nahrajte schémata do účtu pro integraci
+### <a name="upload-schemas-to-an-integration-account"></a>Nahrávání schémat na účet pro integraci
 
-Volitelně můžete stáhnout nebo uložit vygenerovaný schémata do úložiště, včetně objektů blob, úložiště nebo účet pro integraci. Účty pro integraci poskytovat prvotřídní prostředí s jinými akcemi XML, tak tento příklad ukazuje, jak nahrát schémata do účtu pro integraci pro stejnou aplikaci logiky s využitím konektoru Azure Resource Manageru.
+V případě potřeby můžete vygenerovaná schémata stáhnout nebo uložit v úložištích, jako je například objekt blob, úložiště nebo účet integrace. Účty pro integraci poskytují prvotřídní prostředí s dalšími akcemi XML, takže tento příklad ukazuje, jak nahrát schémata do účtu pro integraci pro stejnou aplikaci logiky pomocí konektoru Azure Resource Manager.
 
-1. V návrháři aplikace logiky pod triggerem zvolte **nový krok**.
+1. V návrháři aplikace logiky pod triggerem vyberte **Nový krok**.
 
-1. Do vyhledávacího pole zadejte jako filtr "Resource Manager". Vyberte **vytvořit nebo aktualizovat prostředek**.
+1. Do vyhledávacího pole zadejte jako filtr "Správce prostředků". Vyberte **vytvořit nebo aktualizovat prostředek**.
 
-   ![Zvolte akci Azure Resource Manageru](media/logic-apps-using-sap-connector/select-azure-resource-manager-action.png)
+   ![Vybrat Azure Resource Manager akci](media/logic-apps-using-sap-connector/select-azure-resource-manager-action.png)
 
-1. Zadejte podrobnosti pro akci, včetně předplatného Azure, skupinu prostředků Azure a účet pro integraci. Chcete-li přidat tokeny SAP do polí, klikněte do pole pro tato pole a vyberte ze seznamu dynamického obsahu, který se zobrazí.
+1. Zadejte podrobnosti o akci, včetně vašeho předplatného Azure, skupiny prostředků Azure a účtu pro integraci. Chcete-li do polí přidat tokeny SAP, klikněte do polí u těchto polí a vyberte ze seznamu dynamického obsahu, který se zobrazí.
 
-    1. Otevřít **přidat nový parametr** seznam a vyberte **umístění** a **vlastnosti** pole.
+   1. Otevřete seznam **Přidat nový parametr** a vyberte pole **umístění** a **vlastnosti** .
 
-    1. Zadejte podrobnosti pro tato nová pole, jak je znázorněno v tomto příkladu.
+   1. Zadejte podrobnosti pro tato nová pole, jak je znázorněno v tomto příkladu.
 
-       ![Zadejte podrobnosti pro akci Azure Resource Manageru](media/logic-apps-using-sap-connector/azure-resource-manager-action.png)
+      ![Zadat podrobnosti pro Azure Resource Manager akci](media/logic-apps-using-sap-connector/azure-resource-manager-action.png)
 
-   SAP **vygenerovat schémata** akce generuje schémat jako kolekce, takže návrhář automaticky přidá **pro každou** smyčky na akci. Tady je příklad, který ukazuje, jak se zobrazí tato akce:
+   Akce SAP **generující schémata** generuje schémata jako kolekci, takže Návrhář **pro každou** smyčku do akce přidá automaticky. Tady je příklad, který ukazuje, jak se tato akce zobrazuje:
 
-   ![Azure Resource Manageru akce s "pro každý" smyčka](media/logic-apps-using-sap-connector/azure-resource-manager-action-foreach.png)  
-
+   ![Akce Azure Resource Manager se smyčkou "for each"](media/logic-apps-using-sap-connector/azure-resource-manager-action-foreach.png)  
    > [!NOTE]
-   > Schémata pomocí formátu s kódováním base64. K nahrání schémata do účtu pro integraci, se musí dekódováno pomocí `base64ToString()` funkce. Tady je příklad, který se zobrazí kód `"properties"` element:
+   > Schémata používají formát v kódování Base64. Chcete-li odeslat schémata do účtu pro integraci, je nutné je dekódovat pomocí `base64ToString()` funkce. Zde je příklad, který ukazuje kód pro `"properties"` element:
    >
    > ```json
    > "properties": {
@@ -371,59 +376,59 @@ Volitelně můžete stáhnout nebo uložit vygenerovaný schémata do úložišt
    > }
    > ```
 
-1. Uložte svou aplikaci logiky. Na panelu nástrojů návrháře zvolte **Uložit**.
+1. Uložte svou aplikaci logiky. Na panelu nástrojů návrháře vyberte **Uložit**.
 
-### <a name="test-your-logic-app"></a>Otestujte aplikaci logiky
+### <a name="test-your-logic-app"></a>Testování aplikace logiky
 
-1. Na panelu nástrojů návrháře zvolte **spustit** k ruční aktivaci aplikace logiky.
+1. Na panelu nástrojů návrháře vyberte **Spustit** , aby se aktivovala aplikace logiky ručně.
 
-1. Po úspěšném spuštění, přejděte na účet pro integraci a zkontrolujte, že existují generované schémata.
+1. Po úspěšném spuštění přejdete na účet pro integraci a zkontrolujete, že vygenerovaná schémata existují.
 
-## <a name="enable-secure-network-communications"></a>Povolení zabezpečené síťové komunikace
+## <a name="enable-secure-network-communications"></a>Povolit zabezpečenou síťovou komunikaci
 
-Než začnete, ujistěte se, že je splněna dříve uvedených [požadavky](#pre-reqs):
+Než začnete, ujistěte se, že jste splnili výše uvedené [požadavky](#pre-reqs):
 
-* Místní brána dat je nainstalován na počítači, který je ve stejné síti jako systém SAP.
-* Pro jednotné přihlašování je brána spuštěná jako uživatel, který je namapovaný na uživatele služby SAP.
-* Knihovna SNC, který poskytuje funkce pro zvýšení zabezpečení je nainstalován ve stejném počítači jako na bránu data gateway. Mezi příklady patří [sapseculib](https://help.sap.com/saphelp_nw74/helpdata/en/7a/0755dc6ef84f76890a77ad6eb13b13/frameset.htm), protokolu Kerberos a NTLM.
+* Místní brána dat je nainstalovaná na počítači, který je ve stejné síti jako váš systém SAP.
+* Pro jednotné přihlašování je brána spuštěná jako uživatel, který je namapovaný na uživatele SAP.
+* Knihovna SNC, která poskytuje další funkce zabezpečení, je nainstalovaná na stejném počítači jako brána dat. Mezi příklady patří [sapseculib](https://help.sap.com/saphelp_nw74/helpdata/en/7a/0755dc6ef84f76890a77ad6eb13b13/frameset.htm), Kerberos a NTLM.
 
-Pokud chcete povolit SNC pro vaše požadavky do nebo ze systému SAP, vyberte **SNC použití** zaškrtněte políčko v připojení k SAP a zadejte tyto vlastnosti:
+   Pokud chcete povolit SNC pro vaše požadavky na systém SAP nebo z něj, zaškrtněte políčko **použít SNC** v připojení SAP a zadejte tyto vlastnosti:
 
-   ![Konfigurace SAP SNC v připojení](media/logic-apps-using-sap-connector/configure-sapsnc.png)
+   ![Konfigurace SAP SNC v souvislosti s připojením](media/logic-apps-using-sap-connector/configure-sapsnc.png)
 
    | Vlastnost | Popis |
    |----------| ------------|
-   | **Cesta knihovny SNC** | Název knihovny SNC nebo relativní umístění instalace NCo cestu nebo absolutní cesta. Mezi příklady patří `sapsnc.dll` nebo `.\security\sapsnc.dll` nebo `c:\security\sapsnc.dll`. |
-   | **SNC SSO** | Když se připojíte přes SNC SNC identity se obvykle používá pro ověřování volající. Další možností je přepsat tak, aby informace o uživateli a hesla je možné za účelem ověřování totožnosti volajícímu, ale řádku je šifrovaný. |
-   | **SNC moje jméno** | Ve většině případů lze tuto vlastnost vynechat. Nainstalované řešení SNC obvykle ví názvu SNC. Pouze pro řešení, které podporují více identit budete možná muset zadat identitě, kterou chcete použít pro tento konkrétní cíl nebo serveru. |
-   | **Název partnera SNC** | Název pro SNC back-end. |
-   | **SNC kvality ochrany** | Kvalita služby pro komunikaci SNC této konkrétní cílové nebo serveru. Výchozí hodnota je definována v back-end systému. Maximální hodnota je definována pro SNC zabezpečení produktu. |
+   | **Cesta ke knihovně SNC** | Název knihovny SNC nebo cesta relativní k umístění instalace NCo nebo absolutní cesta. Příklady jsou `sapsnc.dll` `.\security\sapsnc.dll` nebo.`c:\security\sapsnc.dll` |
+   | **JEDNOTNÉ PŘIHLAŠOVÁNÍ SNC** | Při připojení prostřednictvím SNC se obvykle používá identita SNC pro ověřování volajícího. Další možností je přepsat, aby se informace o uživateli a heslech mohly použít k ověřování volajícího, ale řádek je stále zašifrovaný. |
+   | **SNC moje jméno** | Ve většině případů může být tato vlastnost vynechána. Nainstalované řešení SNC obvykle zná vlastní název SNC. Pouze pro řešení, která podporují více identit, bude pravděpodobně nutné zadat identitu, která se má použít pro tento konkrétní cíl nebo server. |
+   | **Název partnera SNC** | Název back-endu SNC. |
+   | **SNC kvality ochrany** | Kvalita služby, která se má použít pro SNC komunikaci tohoto konkrétního cíle nebo serveru. Výchozí hodnota je definována back-end systémem. Maximální hodnota je definovaná produktem zabezpečení použitým pro SNC. |
    |||
 
    > [!NOTE]
-   > Není nastavit proměnné prostředí SNC_LIB a SNC_LIB_64 na počítači Pokud máte bránu dat a knihovna SNC. Pokud nastavíte, jejich přednost hodnotu knihovna SNC předat prostřednictvím konektoru.
+   > Nenastavte proměnné prostředí SNC_LIB a SNC_LIB_64 na počítači, kde máte bránu dat a knihovnu SNC. Pokud je nastaveno, mají přednost před hodnotou SNC knihovny předané prostřednictvím konektoru.
 
 <a name="safe-typing"></a>
 
-## <a name="safe-typing"></a>Bezpečné psaní
+## <a name="safe-typing"></a>Bezpečné zadání
 
-Ve výchozím nastavení při vytváření připojení k SAP silné typování slouží ke kontrole neplatné hodnoty pomocí provádí ověření XML proti schématu. Toto chování vám může pomoci odhalit problémy dříve. **Bezpečné psaní** možnost je k dispozici kvůli zpětné kompatibilitě a pouze kontroluje délku řetězce. Pokud se rozhodnete **bezpečné psaní**, typ dat a typ TIMS v SAP jsou zpracovávány jako řetězce, nikoli jako jejich ekvivalenty XML `xs:date` a `xs:time`, kde `xmlns:xs="http://www.w3.org/2001/XMLSchema"`. Bezpečné psaní má vliv na chování pro všechny generování schématu, posílání zpráv pro datovou část "byl odeslán" a "byla přijata" odpovědi a aktivační událost. 
+Ve výchozím nastavení se při vytváření připojení SAP používá silné psaní ke kontrole neplatných hodnot prováděním ověřování XML proti schématu. Toto chování vám může přispět k detekci problémů dříve. Možnost **bezpečného psaní** je k dispozici pro zpětnou kompatibilitu a kontroluje pouze délku řetězce. Pokud zvolíte možnost **bezpečného psaní**, typ dat a typ TIMS v SAP se považují za řetězce, nikoli jako jejich ekvivalenty XML `xs:date` , `xs:time`a, `xmlns:xs="http://www.w3.org/2001/XMLSchema"`kde. Bezpečné psaní má vliv na chování pro všechna generování schématu, zprávu Send pro datovou část "byla odeslána" a "přijatá" odpověď a Trigger. 
 
-Při použití silné typování (**bezpečné psaní** není povolena), mapuje schématu typy dat a TIMS jednodušší typy XML:
+Když se použije silné zadání (**bezpečné zadání** není povolené), schéma MAPUJE typy dat a TIMS na POKROČILEJŠÍ typy XML:
 
 ```xml
 <xs:element minOccurs="0" maxOccurs="1" name="UPDDAT" nillable="true" type="xs:date"/>
 <xs:element minOccurs="0" maxOccurs="1" name="UPDTIM" nillable="true" type="xs:time"/>
 ```
 
-Při odesílání zpráv pomocí silných typů dat a TIMS odpovědi splňuje odpovídající typ formátu XML:
+Když posíláte zprávy pomocí silného typování, odpověď TIMS a odpověď na data jsou v souladu s odpovídajícím formátem typu XML:
 
 ```xml
 <DATE>9999-12-31</DATE>
 <TIME>23:59:59</TIME>
 ```
 
-Když **bezpečné psaní** je povoleno, schéma mapuje definice virů a TIMS typy XML například pole s pouze omezení délky řetězce:
+Když je povoleno **bezpečné psaní** , schéma MAPUJE typy dat a TIMS na pole řetězce XML s omezením délky, například:
 
 ```xml
 <xs:element minOccurs="0" maxOccurs="1" name="UPDDAT" nillable="true">
@@ -442,29 +447,31 @@ Když **bezpečné psaní** je povoleno, schéma mapuje definice virů a TIMS ty
 </xs:element>
 ```
 
-Odeslání zprávy s **bezpečné psaní** povolena, dat a TIMS odpověď vypadá jako v tomto příkladu:
+Když se odesílají zprávy s  povoleným bezpečným typováním, TIMS odpověď dat a odpovědí bude vypadat jako v tomto příkladu:
 
 ```xml
 <DATE>99991231</DATE>
 <TIME>235959</TIME>
 ```
 
-
 ## <a name="known-issues-and-limitations"></a>Známé problémy a omezení
 
-Tady jsou aktuálně známé problémy a omezení pro konektor SAP:
+Tady jsou aktuálně známé problémy a omezení konektoru SAP:
 
-* Pouze jeden odeslat na SAP volání nebo zprávy funguje s tRFC. Vzor BAPI potvrzení, jako je například volání více tRFC ve stejné relaci, se nepodporuje.
-* Aktivační událost SAP nepodporuje přijímání batch Idoc od SAPU. Tato akce může způsobit RFC selhání připojení mezi systému SAP a bránou data gateway.
-* Aktivační událost SAP nepodporuje data clusterů bran. V některých případech převzetí služeb při selhání uzel brány dat, který komunikuje se systémem SAP mohou lišit od aktivního uzlu, což vede k neočekávanému chování. Clustery bran s data odeslat scénáře jsou podporovány.
-* Konektor SAP v současné době nepodporuje řetězce směrovačů SAP. Místní brána dat, musí existovat ve stejné síti jako systém SAP, kterou chcete připojit.
+* V tRFC funguje jenom jedno volání Send do SAP nebo zpráva. Vzor potvrzení BAPI, například provedení více volání tRFC ve stejné relaci, není podporován.
+
+* Aktivační událost SAP nepodporuje příjem služby Batch IDocs ze SAP. Tato akce může vést k selhání připojení RFC mezi systémem SAP a bránou dat.
+
+* Aktivační událost SAP nepodporuje clustery brány dat. V některých případech převzetí služeb při selhání se uzel brány dat, který komunikuje se systémem SAP, může lišit od aktivního uzlu, což vede k neočekávanému chování. Pro scénáře odeslání se podporují clustery služby data Gateway.
+
+* Konektor SAP aktuálně nepodporuje řetězce směrovače SAP. Místní brána dat musí existovat ve stejné síti LAN jako systém SAP, který chcete připojit.
 
 ## <a name="connector-reference"></a>Referenční informace ke konektorům
 
-Technické podrobnosti o omezení, akce a triggery, které jsou popsány pomocí konektoru OpenAPI (dříve Swagger) popis, zkontrolujte [konektoru referenční stránce](/connectors/sap/).
+Technické podrobnosti o aktivačních událostech, akcích a omezeních, které jsou popsány v popisu OpenAPI konektoru (dříve Swagger), najdete na [referenční stránce konektoru](/connectors/sap/).
 
 ## <a name="next-steps"></a>Další postup
 
-* [Připojení k místním systémům](../logic-apps/logic-apps-gateway-connection.md) z Azure Logic Apps.
-* Zjistěte, jak ověřit, transformaci a použijte jiné operace zprávu s [Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md).
-* Další informace o dalších [konektory Logic Apps](../connectors/apis-list.md).
+* [Připojte se k místním systémům](../logic-apps/logic-apps-gateway-connection.md) z Azure Logic Apps.
+* Naučte se, jak pomocí [Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md)ověřit, transformovat a používat jiné operace se zprávou.
+* Přečtěte si o dalších [konektorech Logic Apps](../connectors/apis-list.md).

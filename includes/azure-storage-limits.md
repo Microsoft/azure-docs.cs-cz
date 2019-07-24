@@ -8,41 +8,42 @@ ms.topic: include
 ms.date: 01/11/2018
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: e3cff54f49d40fb7da99dcafa9535349ccb70e09
-ms.sourcegitcommit: 6e6813f8e5fa1f6f4661a640a49dc4c864f8a6cb
-ms.translationtype: MT
+ms.openlocfilehash: 54050116f9894f9a7903dad53caf6b01228313b7
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67150476"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68326971"
 ---
-Následující tabulka popisuje výchozí limity pro Azure pro obecné účely v1, v2 a účty Blob storage. *Příchozího přenosu dat* limit odkazuje na všechna data z požadavků, které se odesílají na účet úložiště. *Odchozího přenosu dat* limit odkazuje na všechna data z odpovědi, které byly přijaty z účtu úložiště.
+Následující tabulka popisuje výchozí omezení pro účty úložiště Azure pro obecné účely V1, v2 a BLOB. Limit  příchozího přenosu dat odkazuje na všechna data z požadavků, které se odesílají do účtu úložiště. Limit *odchozího* přenosu dat odkazuje na všechna data z odpovědí, které jsou přijaty z účtu úložiště.
 
 | Resource | Výchozí omezení |
 | --- | --- |
-| Počet účtů úložiště na oblast a předplatné, včetně účtů standard a premium | 250 |
-| Maximální kapacita účtu | 2 PB pro USA a Evropě, 500 TB pro všechny ostatní oblasti, která zahrnuje Spojeném království |
-| Maximální počet kontejnerů objektů blob, objekty BLOB, sdílené složky, tabulky, fronty, entity nebo zpráv za účet úložiště | Bez omezení |
-| Maximální frekvence požadavků<sup>1</sup> jeden účet úložiště | 20 000 požadavků za sekundu |
-| Maximální příchozí přenos dat<sup>1</sup> jeden účet úložiště (oblastem v USA) | 10 GB/s Pokud je povolené RA-GRS/GRS, 20 GB/s pro LRS nebo ZRS<sup>2</sup> |
-| Maximální příchozí přenos dat<sup>1</sup> jeden účet úložiště (oblasti mimo USA) | 5 GB/s Pokud je povolené RA-GRS/GRS, 10 GB/s pro LRS nebo ZRS<sup>2</sup> |
-| Maximální odchozího přenosu dat pro obecné účely v2 a účty Blob storage (všechny oblasti) | 50 Gbps |
-| Maximální odchozího přenosu dat pro účty úložiště pro obecné účely v1 (oblastem v USA) | 20 GB/s Pokud je povolené RA-GRS/GRS, 30 GB/s pro LRS nebo ZRS<sup>2</sup> |
-| Maximální odchozího přenosu dat pro účty úložiště pro obecné účely v1 (oblasti mimo USA) | 10 GB/s Pokud je povolené RA-GRS/GRS, 15 GB/s pro LRS nebo ZRS<sup>2</sup> |
+| Počet účtů úložiště podle jednotlivých oblastí a předplatných, včetně účtů Standard a Premium | 250 |
+| Maximální kapacita účtu úložiště | 2 PB pro USA a Evropu a 500 TB pro všechny ostatní oblasti (včetně Spojené království) <sup>1</sup>|
+| Maximální počet kontejnerů objektů blob, objektů blob, sdílených složek, tabulek, front, entit nebo zpráv na účet úložiště | Bez omezení |
+| Maximální počet požadavků<sup>1</sup> na účet úložiště | počet požadavků 20 000 za sekundu |
+| Maximální příchozí<sup>1</sup> na účet úložiště (oblasti USA, Evropa) | 25 GB/s |
+| Maximální příchozí<sup>1</sup> na účet úložiště (jiné oblasti než USA a Evropa) | 5 GB/s, pokud je povolená možnost RA-GRS/GRS, 10 GB/s pro LRS/ZRS<sup>2</sup> |
+| Maximální výstup pro účty pro obecné účely v2 a BLOB Storage (všechny oblasti) | 50 GB/s |
+| Maximální výstup pro účty úložiště V1 pro obecné účely (oblasti USA) | 20 GB/s, pokud je povolená možnost RA-GRS/GRS, 30 GB/s pro LRS/ZRS<sup>2</sup> |
+| Maximální výstup pro účty úložiště pro obecné účely V1 (oblasti mimo USA) | 10 GB/s, pokud je povolená možnost RA-GRS/GRS, 15 GB/s pro LRS/ZRS<sup>2</sup> |
 
-<sup>1</sup>účty úložiště azure úrovně Standard podporovat vyšší limity pro příchozí přenos dat podle požadavku. Chcete-li požádat o zvýšení v omezení účtu pro příchozí přenos dat, obraťte se na [podpory Azure](https://azure.microsoft.com/support/faq/).
+<sup>1</sup> Účty Azure úrovně Standard podporují větší limity kapacity a vyšší limity pro příchozí zpracování žádostí. Pokud chcete požádat o zvýšení limitů pro příchozí přenos dat, obraťte se na [podporu Azure](https://azure.microsoft.com/support/faq/). Další informace najdete v tématu [oznamujeme větší, vyšší škálování účtů úložiště](https://azure.microsoft.com/blog/announcing-larger-higher-scale-storage-accounts/).
 
-<sup>2</sup> [replikace azure Storage](https://docs.microsoft.com/azure/storage/common/storage-redundancy) mezi možnosti patří:
-- **RA-GRS**: Geograficky redundantní úložiště jen pro čtení. Pokud je povolené RA-GRS, jsou stejné jako pro primární umístění cíle odchozího přenosu dat pro sekundární lokality.
+<sup>2</sup> [Azure Storage možnosti replikace](https://docs.microsoft.com/azure/storage/common/storage-redundancy) zahrnují:
+
+- **RA-GRS**: Geograficky redundantní úložiště s přístupem pro čtení. Pokud je povolené RA-GRS, cíle odchozího přenosu pro sekundární umístění jsou stejné jako u primárního umístění.
 - **GRS**: Geograficky redundantní úložiště.
-- **ZRS**: Zónově redundantní úložiště.
+- **ZRS**: Redundantní úložiště zóny
 - **LRS**: Místně redundantní úložiště.
 
 > [!NOTE]
-> Doporučujeme používat účet úložiště pro obecné účely verze 2 pro většinu scénářů. Pro obecné účely v1 nebo účet úložiště objektů Blob v Azure můžete snadno upgradovat na účet pro obecné účely v2 došlo k výpadku a bez nutnosti kopírovat data.
+> Pro většinu scénářů doporučujeme použít účet úložiště pro obecné účely v2. Účet Azure Blob Storage pro obecné účely v1 nebo Azure můžete snadno upgradovat na účet pro obecné účely v2 bez výpadků a bez nutnosti kopírovat data.
 >
-> Další informace o účtech Azure Storage najdete v tématu [účet úložiště – přehled](../articles/storage/common/storage-account-overview.md).
+> Další informace o účtech Azure Storage najdete v tématu [Přehled účtu úložiště](../articles/storage/common/storage-account-overview.md).
 
-Potřeb svojí aplikace překročení cíle škálovatelnosti z jednoho účtu úložiště, můžete vytvářet aplikace pomocí více účtů úložiště. Pak můžete dělit datové objekty mezi těmito účty úložiště. Informace o cenách najdete v tématu [ceny za Azure Storage](https://azure.microsoft.com/pricing/details/storage/).
+Pokud požadavky vaší aplikace překračují cíle škálovatelnosti jednoho účtu úložiště, můžete vytvořit aplikaci pro používání více účtů úložiště. Datové objekty pak můžete rozdělit do oddílů v rámci těchto účtů úložiště. Informace o cenách na svazcích najdete v tématu [Azure Storage ceny](https://azure.microsoft.com/pricing/details/storage/).
 
-Všechny účty úložiště spustit na ploché síťové topologie a podporu škálovatelnost a výkonnostní cíle, které jsou popsané v tomto článku, bez ohledu na to, když byly vytvořeny. Další informace o architektuře ploché sítě služby Azure Storage a na škálovatelnost, naleznete v tématu [Microsoft Azure Storage: Služby s vysokou dostupností cloudového úložiště se silnou konzistenci](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx).
+Všechny účty úložiště běží v ploché topologii sítě a podporují cíle škálovatelnosti a výkonu, které jsou uvedené v tomto článku, bez ohledu na to, kdy byly vytvořeny. Další informace o architektuře Azure Storage ploché sítě a o škálovatelnosti najdete v článku [Microsoft Azure Storage: Vysoce dostupná služba cloudového úložiště se silnými](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)konzistencí.
 

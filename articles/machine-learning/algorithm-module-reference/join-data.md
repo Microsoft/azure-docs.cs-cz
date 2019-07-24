@@ -1,72 +1,72 @@
 ---
-title: 'Připojte Data: Odkaz na modul'
+title: 'Připojit data: Odkaz na modul'
 titleSuffix: Azure Machine Learning service
-description: Další informace o použití připojení k modulu dat ve službě Azure Machine Learning sloučit datové sady.
+description: Naučte se používat datový modul Join join ve službě Azure Machine Learning ke sloučení datových sad.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
-ms.author: peterclu
+ms.author: peterlu
 ms.date: 06/01/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: 7e814f5ea4bd47ceb0697e860c946039ce39ae1f
-ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
+ms.openlocfilehash: 1022bdc26a340b6b54ad840d1fe47674509fa865
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67518011"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67871659"
 ---
 # <a name="join-data"></a>Spojení dat
 
-Tento článek popisuje způsob použití **spojení dat** modulu v rozhraní visual služby Azure Machine Learning, chcete-li sloučit dvě datové sady pomocí operace spojení stylu databáze.  
+Tento článek popisuje, jak použít modul **Join data** v vizuálním rozhraní služby Azure Machine Learning ke sloučení dvou datových sad pomocí operace join ve stylu databáze.  
 
-## <a name="how-to-configure-join-data"></a>Jak nakonfigurovat připojení dat
+## <a name="how-to-configure-join-data"></a>Postup konfigurace připojení k datům
 
-Pokud chcete provést spojení na dvě datové sady, by měl mít relace podle klíčový sloupec. Podporují také složené klíče pomocí více sloupců. 
+Chcete-li provést spojení se dvěma datovými sadami, měly by se vztahovat na klíčový sloupec. Podporují se také složené klíče využívající více sloupců. 
 
-1. Přidat datové sady, které chcete sloučit, a pak přetáhněte **připojení dat** modulu do svého experimentu. 
+1. Přidejte datové sady, které chcete zkombinovat, a pak přetáhněte modul **Join data** do experimentu. 
 
-    Můžete najít v modulu **transformace dat** kategorie v části **manipulaci s**.
+    Modul můžete najít v kategorii **transformace dat** v části **manipulace**.
 
-1. Připojit datové sady, které **připojení dat** modulu. 
+1. Připojte datové sady k modulu **Join data** . 
  
-1. Vyberte **spustit selektor sloupců** zvolit sloupce klíče. Nezapomeňte vybrat sloupce pro levé a pravé vstupy.
+1. Vyberte **Spustit selektor sloupců** a zvolte sloupce klíčů. Nezapomeňte zvolit sloupce pro vstupy vlevo a vpravo.
 
     Pro jeden klíč:
 
-    Vyberte jeden klíčový sloupec pro obě vstupy.
+    Vyberte jeden klíčový sloupec pro oba vstupy.
     
-    Složené klíče:
+    Pro složený klíč:
 
-    Vyberte všechny sloupce klíče z levým vstupem a pravým vstupem ve stejném pořadí. **Spojení dat** modulu se připojí k tabulky, když všechny klíčové sloupce odpovídají. Zaškrtněte možnost **povolit vynechávání duplicit a zachovat pořadí sloupců v výběru** Pokud pořadí sloupců není stejný jako původní tabulky. 
+    Vyberte všechny klíčové sloupce z levého vstupního a pravého vstupu ve stejném pořadí. Modul **Join data** se spojí s tabulkami, pokud se všechny klíčové sloupce shodují. Pokud pořadí sloupců není stejné jako původní tabulka, **Zachovejte v výběru možnost povolující duplicity a zachovejte pořadí sloupců** . 
 
-    ![selektor sloupců](media/module/join-data-column-selector.png)
+    ![výběr sloupců](media/module/join-data-column-selector.png)
 
 
-1. Vyberte **rozlišovat velikost písmen** možnost, pokud chcete zachovat rozlišování malých a velkých písmen na textový sloupec spojení. 
+1. Vyberte možnost **rozlišovat velká a malá písmena** , pokud chcete zachovat citlivost velkých a malých písmen u spojení s textovým sloupcem. 
    
-1. Použití **typ spojení** rozevírací seznam a určete, jak by měly být kombinované datové sady.  
+1. Pomocí rozevíracího seznamu **typ spojení** můžete určit, jak se mají datové sady kombinovat.  
   
-    * **Vnitřní spojení**: *Vnitřní spojení* je nejběžnější operace spojení. Vrátí kombinovanou řádky jenom v případě, že hodnoty klíčových sloupců odpovídat.  
+    * **Vnitřní spojení**: *Vnitřní spojení* je nejběžnější operace JOIN. Vrátí kombinované řádky pouze v případě, že se hodnoty klíčových sloupců shodují.  
   
-    * **Levé vnější spojení**: A *levé vnější spojení* vrátí připojený řádků pro všechny řádky z levé tabulky. Když řádek v levé tabulce neobsahuje žádné odpovídající řádky v pravé tabulce, vrácený řádek obsahuje chybějící hodnoty pro všechny sloupce, které pocházejí z pravé tabulky. Můžete také určit náhradní hodnotu pro chybějící hodnoty.  
+    * **Levé vnější spojení**: *Levé vnější spojení* vrátí připojené řádky pro všechny řádky z levé tabulky. Pokud řádek v levé tabulce nemá odpovídající řádky v pravé tabulce, vrácený řádek obsahuje chybějící hodnoty pro všechny sloupce, které pocházejí z pravé tabulky. Můžete také zadat náhradní hodnotu pro chybějící hodnoty.  
   
-    * **Úplné vnější spojení**: A *úplné vnější spojení* vrátí všechny řádky z levé tabulky (**Tabulka1**) a z pravé tabulky (**tabulka2**).  
+    * **Úplné vnější spojení**: *Úplné vnější spojení* vrátí všechny řádky z levé tabulky (**Tabulka1**) a z pravé tabulky (**Tabulka2**).  
   
-         Pro všechny řádky z obou tabulek, které mají žádné odpovídající řádky v jiném výsledek bude obsahovat řádek obsahující chybějící hodnoty.  
+         Pro každý z řádků v obou tabulkách, které nemají odpovídající řádky v druhé, výsledek zahrnuje řádek obsahující chybějící hodnoty.  
   
-    * **Left Join středníkem**: A *left join částečně* vrátí pouze hodnoty z levé tabulky, když odpovídají hodnot klíčových sloupců.  
+    * **Levé spojení**: *Levé spojení* vrátí jenom hodnoty z levé tabulky, když se hodnoty klíčových sloupců shodují.  
 
-1. Pro možnost **zachovat přímo klíčových sloupců v tabulce připojené k doméně**:
+1. Pro možnost **zachovat pravé klíčové sloupce v připojené tabulce**:
 
-    * Tuto možnost použijte k zobrazení klíče z obou vstupní tabulky.
-    * Zrušte výběr pro vrácení pouze klíčové sloupce z levým vstupem.
+    * Tuto možnost vyberte, pokud chcete zobrazit klíče z obou vstupních tabulek.
+    * Zrušte zaškrtnutí, pokud chcete vrátit pouze klíčové sloupce z levého vstupu.
 
-1. Spusťte experiment, nebo vyberte modul, dat a vybrané **spustit vybrané** k provedením příkazu join.
+1. Spusťte experiment nebo vyberte modul připojení dat a vybrané **spuštění** , aby se spojení provádělo.
 
-1. Zobrazit výsledky, klikněte pravým tlačítkem myši **připojení dat** > **datovou sadu výsledků** > **vizualizovat**.
+1. Pokud chcete zobrazit výsledky, klikněte pravým tlačítkem  > myši na**vizualizaci**datové**sady** > výsledků spojování.
 
 ## <a name="next-steps"></a>Další postup
 
-Zobrazit [sada modulů, které jsou k dispozici](module-reference.md) do služby Azure Machine Learning. 
+Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning služby. 

@@ -1,90 +1,114 @@
 ---
-title: Vysvětlení slevách na využití platformy Azure Reserved VM Instances | Dokumentace Microsoftu
-description: Zjistěte, jak se uplatňuje sleva ve výši rezervované Instance virtuálního počítače Azure ke spouštění virtuálních počítačů.
-documentationcenter: ''
+title: Pochopení Azure Reserved VM Instances slevy | Microsoft Docs
+description: Přečtěte si, jak se sleva na rezervované instance virtuálního počítače Azure používá pro běžící virtuální počítače.
 author: yashesvi
 manager: yashar
-editor: ''
 ms.service: billing
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/13/2019
+ms.date: 07/11/2019
 ms.author: banders
-ms.openlocfilehash: b112dd881d4b2e87e617111d00bc82c6151d7750
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 191160035f516d818d5537c5c47f9604998c46f7
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60370066"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67849990"
 ---
-# <a name="how-the-azure-reservation-discount-is-applied-to-virtual-machines"></a>Použití slevy na rezervaci Azure pro virtuální počítače
+# <a name="how-the-azure-reservation-discount-is-applied-to-virtual-machines"></a>Jak se na virtuální počítače použije sleva na rezervaci Azure
 
-Po nákupu rezervované Instance virtuálního počítače Azure sleva za rezervaci se automaticky využije na virtuální počítače, které odpovídají atributy a množství rezervace. Rezervace pokrývá náklady na výpočetní prostředky virtuálních počítačů.
+Po zakoupení rezervované instance virtuálního počítače Azure se sleva rezervace automaticky použije na virtuální počítače, které odpovídají atributům a množstvím rezervace. Rezervace pokrývá výpočetní náklady vašich virtuálních počítačů.
 
-Sleva za rezervaci se vztahuje na základní virtuální počítače, které jste zakoupili z Azure Marketplace.
+Sleva rezervace se vztahuje na základní virtuální počítače, které zakoupíte z Azure Marketplace.
 
-SQL Database vyhrazené kapacity najdete v části [slevy pochopit Azure Reserved Instances](billing-understand-reservation-charges.md).
+SQL Database vyhrazenou kapacitu najdete v tématu [vysvětlení slevy na rezervované instance Azure](billing-understand-reservation-charges.md).
 
-Následující tabulka ukazuje náklady na virtuální počítač po nákupu rezervované Instance virtuálního počítače. Ve všech případech se vám budou účtovány za úložiště a sítě za běžné sazby.
+Následující tabulka ukazuje náklady na virtuální počítač po zakoupení rezervované instance virtuálního počítače. Ve všech případech se vám budou účtovat poplatky za úložiště a síť za normálních sazeb.
 
-| Typ virtuálního počítače  | Poplatky se rezervované Instance virtuálního počítače |
+| Typ virtuálního počítače  | Poplatky s rezervovanou instancí virtuálního počítače |
 |-----------------------|--------------------------------------------|
-|Virtuální počítače s Linuxem bez další software | Rezervace pokrývá náklady na infrastrukturu virtuálních počítačů.|
-|Virtuální počítače s Linuxem s poplatky za software (například Red Hat) | Rezervace pokrývá náklady na infrastrukturu. Vám budou účtovány další software.|
-|Virtuální počítače s Windows bez další software |Rezervace pokrývá náklady na infrastrukturu. Za Windows software.|
-|Virtuální počítače s Windows s další software (například SQL server) | Rezervace pokrývá náklady na infrastrukturu. Vám budou účtovány softwaru Windows a další software.|
-|Virtuální počítače s Windows s [zvýhodněné hybridní využití Azure](../virtual-machines/windows/hybrid-use-benefit-licensing.md) | Rezervace pokrývá náklady na infrastrukturu. Náklady na software Windows se vztahují na program Azure Hybrid Benefit. Další software, se účtuje zvlášť.|
+|Virtuální počítače se systémem Linux bez dalšího softwaru | Rezervace pokrývá náklady na infrastrukturu virtuálních počítačů.|
+|Virtuální počítače se systémem Linux s poplatky za software (například Red Hat) | Tato rezervace pokrývá náklady na infrastrukturu. Účtuje se vám další software.|
+|Virtuální počítače s Windows bez dalšího softwaru |Tato rezervace pokrývá náklady na infrastrukturu. Účtuje se vám váš software pro Windows.|
+|Virtuální počítače s Windows a další software (třeba SQL Server) | Tato rezervace pokrývá náklady na infrastrukturu. Účtují se vám poplatky za software Windows a další software.|
+|Virtuální počítače s Windows s [zvýhodněné hybridní využití Azure](../virtual-machines/windows/hybrid-use-benefit-licensing.md) | Tato rezervace pokrývá náklady na infrastrukturu. Náklady na software systému Windows jsou pokryté Zvýhodněné hybridní využití Azure. Veškerý další software se účtuje samostatně.|
 
-## <a name="how-reservation-discount-is-applied"></a>Jak se uplatňuje sleva ve výši rezervace
+## <a name="how-reservation-discount-is-applied"></a>Jak se používá sleva rezervace
 
-Sleva za rezervaci se "*použití – it nebo ztratit – it*". Ano Pokud nemáte odpovídající prostředky pro hodinu, potom ztratíte množství rezervací pro určitou hodinu. Nelze provést vpřed nevyužité vyhrazené hodin.
+Slevou rezervace je "*použití-IT-nebo-ztráta-IT*". Pokud tedy za každou hodinu nesouhlasíte s prostředky, ztratíte množství rezervace za tuto hodinu. Nevyužité rezervované hodiny nemůžete přenést.
 
-Při vypínání prostředek sleva za rezervaci automaticky použije další odpovídající prostředek v zadaném oboru. Pokud systém nenašel žádné odpovídající prostředky v zadaném oboru, pak jsou vyhrazené hodin *ztráty*.
+Po vypnutí prostředku se sleva rezervace automaticky použije na jiný shodný prostředek v zadaném oboru. Pokud v zadaném oboru nebyly nalezeny žádné vyhovující prostředky, budou rezervované hodiny *ztraceny*.
 
-## <a name="reservation-discount-for-non-windows-vms"></a>Sleva za rezervaci pro Windows VMs
+## <a name="reservation-discount-for-non-windows-vms"></a>Zlevněná sleva pro virtuální počítače s jiným systémem než Windows
 
- Slevy na rezervaci Azure se použije ke spuštění instancí virtuálních počítačů po hodinách. Rezervace, které jste zakoupili budou odpovídat využití, protože ho vygeneroval spuštěných virtuálních počítačů použít sleva za rezervaci. Pro virtuální počítače, které se možná nespustí celou hodinu bude vyplněno rezervace z jiných virtuálních počítačů bez použití rezervaci, včetně souběžně běžících virtuálních počítačů. Na konec hodiny je uzamčen aplikace rezervované pro virtuální počítače za hodinu. V případě virtuální počítač nespustí je jedna hodina nebo souběžných virtuálních počítačů během hodiny nevyplní hodinu rezervace, rezervaci je historického pro určitou hodinu. Následující graf znázorňuje použití rezervace fakturovatelné využívání virtuálního počítače. Na obrázku je založen na nákup rezervace jeden a dvě odpovídající instance virtuálních počítačů.
+ Sleva za rezervované instance Azure se aplikuje na každou hodinu na spuštění instancí virtuálních počítačů. Rezervace, které jste zakoupili, odpovídají využití vygenerovaného běžícími virtuálními počítači za účelem uplatnění slevy rezervace. U virtuálních počítačů, které nemusí běžet celou hodinu, se rezervace vyplní jinými virtuálními počítači, které nepoužívají rezervaci, včetně souběžně spuštěných virtuálních počítačů. Na konci hodiny je aplikace rezervace pro virtuální počítače v dané hodiny uzamčena. V případě, že se virtuální počítač nespustí po hodinu nebo souběžných virtuálních počítačích v průběhu hodiny, neplní se za tuto hodinu tato rezervace. Následující graf znázorňuje použití rezervace k fakturovatelnámu využití virtuálních počítačů. Ilustrace je založena na jednom nákupu rezervace a dvou vyhovujících instancích virtuálních počítačů.
 
-![Snímek obrazovky jedna použité rezervace a dvě odpovídající instance virtuálních počítačů](./media/billing-reserved-vm-instance-application/billing-reserved-vm-instance-application.png)
+![Snímek obrazovky s jednou aplikovanou rezervací a dvěma vyhovujícími instancemi virtuálních počítačů](./media/billing-reserved-vm-instance-application/billing-reserved-vm-instance-application.png)
 
-1. Veškeré využití nad řádkem rezervace získá účtovat podle tarifů obvyklé průběžné sazby. Nejste se poplatky za jakékoliv využití pod řádkem rezervace, protože byl již placené při nákupu rezervace.
-2. Za 1 hodinu je spuštěna instance 1 0,75 hodin a spuštění instance 2 0,5 hodiny. Celkové využití za hodinu 1 je 1,25 hodin. Zbývající hodiny 0,25 vám budeme účtovat tarify průběžných plateb.
-3. Pro hodinu 2 a 3 hodiny obě instance spustila za 1 hodinu. Jedna instance se bude vztahovat rezervaci a druhý se účtují sazbami průběžných plateb.
-4. 4 hodiny je spuštěna instance 1 0,5 hodiny a spuštění instance 2 za 1 hodinu. Instance 1 je plně pokryta rezervace a které pokrývá 0,5 hodiny instance 2. Kurz s průběžnými platbami vám budeme účtovat zbývající 0,5 hodiny.
+1. Veškeré využití nad řádkem rezervace se účtuje podle standardních tarifů průběžných plateb. Za řádek rezervací se vám neúčtují žádné použití, protože už je zaplacená jako součást nákupu rezervací.
+2. Ve hodinu 1 je instance 1 spouštěna 0,75 hodin a instance 2 se spouští po dobu 0,5 hodin. Celkové využití pro hodinu 1 je 1,25 hodin. Za zbývající hodiny 0,25 se účtují sazby za průběžné platby.
+3. Pro hodinu 2 a hodinu 3 jsou obě instance spuštěné 1 hodina. Na jednu instanci se vztahuje rezervace a druhá se účtuje podle tarifů průběžných plateb.
+4. Ve hodinu 4 je instance 1 spouštěna 0,5 hodin a instance 2 se spustí po dobu 1 hodiny. Instance 1 je plně pokrytá rezervací a 0,5 hodin instance 2 je pokrytá. Za zbývající 0,5 hodiny se vám bude účtovat sazba průběžných plateb.
 
-K pochopení a zobrazení aplikace vaše rezervace Azure na fakturaci využití sestav, naleznete v tématu [porozumět používání rezervace](billing-understand-reserved-instance-usage-ea.md).
+Informace o používání Azure Reservations v sestavách využití fakturace najdete v tématu [vysvětlení použití rezervací](billing-understand-reserved-instance-usage-ea.md).
 
-## <a name="reservation-discount-for-windows-vms"></a>Sleva za rezervaci pro virtuální počítače s Windows
+## <a name="reservation-discount-for-windows-vms"></a>Sleva rezervované pro virtuální počítače s Windows
 
-Pokud máte spuštěnou instancí virtuálních počítačů Windows, se má rezervace použít na zahrnují náklady na infrastrukturu. Aplikace rezervace náklady na infrastrukturu virtuálních počítačů pro virtuální počítače s Windows je stejný jako u Windows VMs. Vám budeme účtovat samostatně softwaru Windows na základě na virtuální procesor. Zobrazit [náklady na software Windows s rezervace](billing-reserved-Instance-windows-software-costs.md). Může zahrnovat vaše Windows licenční náklady na s [programu Azure Hybrid Benefit pro Windows Server](../virtual-machines/windows/hybrid-use-benefit-licensing.md).
+Pokud používáte instance virtuálních počítačů s Windows, rezervace se aplikuje na pokrytí nákladů na infrastrukturu. Použití rezervace na náklady na infrastrukturu virtuálních počítačů pro virtuální počítače s Windows je stejné jako u virtuálních počítačů s jiným systémem než Windows. Poplatky za software systému Windows se účtují samostatně na základě vCPU. Viz [náklady na software systému Windows s rezervacemi](billing-reserved-Instance-windows-software-costs.md). Náklady na licencování Windows můžete pokrýt pomocí [zvýhodněné hybridní využití Azure pro Windows Server](../virtual-machines/windows/hybrid-use-benefit-licensing.md).
 
-## <a name="discount-can-apply-to-different-sizes"></a>Slevy můžete použít pro různé velikosti
+## <a name="discount-can-apply-to-different-sizes"></a>Sleva se může vztahovat na různé velikosti.
 
-Při nákupu rezervované Instance virtuálního počítače, pokud vyberete **optimalizovaná pro**: **instance velikost flexibilitu**, pokrytí slevy závisí na velikosti virtuálního počítače, vyberete. Rezervaci můžete použít velikosti virtuálních počítačů (VM) ve stejné skupině velikost series. Další informace najdete v tématu [flexibilitu velikost virtuálního počítače s rezervovanými instancemi virtuálních počítačů](../virtual-machines/windows/reserved-vm-instance-size-flexibility.md).
+Pokud si koupíte rezervovanou instanci virtuálního počítače, vyberete-li možnost **optimalizováno pro**: **flexibilita velikosti instance**, bude pokrytí slevy ZÁVISET na velikosti virtuálního počítače, kterou vyberete. Tato rezervace se může vztahovat na velikosti virtuálních počítačů ve stejné skupině řady. Další informace najdete v tématu [flexibilita velikosti virtuálních počítačů pomocí rezervovaných instancí virtuálních počítačů](../virtual-machines/windows/reserved-vm-instance-size-flexibility.md).
 
-## <a name="discount-applies-to-matching-servicetype-only"></a>Sleva na odpovídající ServiceType pouze
+## <a name="discount-applies-to-matching-servicetype-only"></a>Sleva se vztahuje jenom na spárování.
 
-Sleva za rezervaci se vztahuje pouze na využití virtuálních počítačů ve kterém `ServiceType` hodnota v `AdditionalInfo` odpovídá rezervace, které jste si koupili. Slev za rezervaci ignoruje měřiče, které používají pro virtuální počítače a pouze vyhodnocuje `ServiceType`. Vědět, zadejte, že jste si koupili virtuálního počítače pro službu. Vyměňujete-úrovně premium storage rezervaci virtuálních počítačů pro rezervaci úložiště úrovně premium, nebo obráceně.
+Sleva za rezervaci se vztahuje jenom na využití virtuálních počítačů, `ServiceType` kde `AdditionalInfo` hodnota odpovídá zadanému rezervovanému umístění. Aplikace slev pro rezervaci ignoruje měřič použitý pro virtuální počítače a jenom `ServiceType`vyhodnocuje. Zjistěte, pro který typ služby jste si virtuální počítač zakoupili. Můžete si vyměňovat rezervované úložiště nevyužívající službu Premium Storage pro rezervaci služby Premium Storage nebo opačným způsobem.
 
-## <a name="classic-vms-and-cloud-services"></a>Klasické virtuální počítače a cloudové služby
+## <a name="services-that-get-vm-reservation-discounts"></a>Služby, které získávají slevy na rezervaci virtuálních počítačů
 
-Instance virtuálních počítačů vyhrazené automaticky použít pro oba klasické virtuální počítače a cloudové služby, když je povolená velikost flexibilita instancí. Pro cloudové služby sleva za rezervaci platí jenom pro výpočetní náklady. Když sleva za rezervaci se použije ke cloudovým službám, poplatky za využívání jsou rozděleny do poplatky za výpočty (Linux měřiče) a cloudových služeb poplatky (cloud services management měřidla). Další informace najdete v tématu [jak sleva za rezervaci se vztahuje ke Cloudovým službám](billing-reserved-instance-windows-software-costs.md#cloud-services-software-meters-not-included-in-reservation-cost).
+Rezervace virtuálních počítačů se můžou vztahovat na využití virtuálních počítačů vysílaná z několika služeb – ne jenom pro nasazení virtuálních počítačů. Prostředky, které získávají slevy na rezervované instance, se mění v závislosti na nastavení flexibility velikosti instance.
 
-## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás
+### <a name="instance-size-flexibility-setting"></a>Nastavení flexibility velikosti instance
 
-Pokud máte otázky nebo potřebujete pomoc, [vytvořit žádost o podporu](https://go.microsoft.com/fwlink/?linkid=2083458).
+Nastavení flexibility velikosti instance Určuje, které služby získají slevy za rezervované instance.
+
+Bez ohledu na to, jestli je nastavení zapnuté nebo vypnuté, se slevy za rezervované automaticky  vztahují na `Microsoft.Compute`všechny vyhovující využití virtuálních počítačů, když je ConsumedService. Ověřte proto data o využití pro hodnotu *ConsumedService* . Možné příklady:
+
+- Virtuální počítače
+- Škálovací sady virtuálních počítačů
+- Služba kontejneru
+- Nasazení Azure Batch (v režimu předplatných uživatelů)
+- Azure Kubernetes Service (AKS)
+- Service Fabric
+
+Pokud je nastavení zapnuté, slevy rezervace se automaticky použijí na vyhovující využití virtuálních počítačů, pokud je *ConsumedService* některou z následujících položek:
+
+- Microsoft.Compute
+- Microsoft.ClassicCompute
+- Microsoft.Batch
+- Microsoft.MachineLearningServices
+- Microsoft.Kusto
+
+Zkontrolujte hodnotu *ConsumedService* v datech o využití a určete, jestli je využití opravňující pro slevy za rezervované slevy.
+
+Další informace o flexibilitě velikosti instancí najdete v tématu [flexibilita velikosti virtuálních počítačů pomocí rezervovaných instancí virtuálních počítačů](../virtual-machines/windows/reserved-vm-instance-size-flexibility.md).
+
+
+## <a name="need-help-contact-us"></a>Potřebujete pomoct? Kontaktujte nás
+
+Pokud máte dotazy nebo potřebujete pomoc, [vytvořte žádost o podporu](https://go.microsoft.com/fwlink/?linkid=2083458).
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace o rezervacích Azure, najdete v následujících článcích:
+Další informace o Azure Reservations najdete v následujících článcích:
 
 - [Co jsou rezervace pro Azure?](billing-save-compute-costs-reservations.md)
 - [Předplacení virtuálních počítačů se službou Azure Reserved VM Instances](../virtual-machines/windows/prepay-reserved-vm-instances.md)
 - [Předplacení výpočetních prostředků SQL Database se záložní kapacitou služby Azure SQL Database](../sql-database/sql-database-reserved-capacity.md)
 - [Správa rezervací pro Azure](billing-manage-reserved-vm-instance.md)
-- [Vysvětlení využití rezervace pro vaše předplatné s průběžnými platbami](billing-understand-reserved-instance-usage.md)
-- [Vysvětlení využití rezervaci u prováděcí smlouvy Enterprise](billing-understand-reserved-instance-usage-ea.md)
-- [Vysvětlení využití rezervace pro předplatná CSP](/partner-center/azure-reservations)
-- [Náklady na software Windows, které nejsou součástí rezervace](billing-reserved-instance-windows-software-costs.md)
+- [Vysvětlení využití rezervací pro předplatné s průběžnými platbami](billing-understand-reserved-instance-usage.md)
+- [Vysvětlení použití rezervací pro podnikovou registraci](billing-understand-reserved-instance-usage-ea.md)
+- [Vysvětlení použití rezervací pro odběry CSP](/partner-center/azure-reservations)
+- [Náklady na software systému Windows, které nejsou součástí rezervací](billing-reserved-instance-windows-software-costs.md)

@@ -1,6 +1,6 @@
 ---
-title: 'Azure AD Connect: Nakonfigurovat upřednostňované umístění dat pro prostředky služeb Office 365'
-description: Popisuje, jak uvést vaše prostředky uživatele Office 365 umístěný blízko uživatele pomocí služby Azure Active Directory Connect sync.
+title: 'Azure AD Connect: Konfigurace preferovaného umístění dat pro prostředky Office 365'
+description: V této části najdete popis postupu přepnutí uživatelských prostředků systému Office 365 uživateli pomocí Azure Active Directory Connect synchronizace.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -16,251 +16,253 @@ ms.date: 05/31/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 927987237b51a47d0c8b7c66054842b0a7ff09a7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ff74db14a1621cdcea1b1ae082d351ce6a3a52f6
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66473022"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68227408"
 ---
-# <a name="azure-active-directory-connect-sync-configure-preferred-data-location-for-office-365-resources"></a>Synchronizace Azure Active Directory Connect: Nakonfigurovat upřednostňované umístění dat pro prostředky služeb Office 365
-Účelem tohoto tématu je pro vás provedou postupem konfigurace atribut upřednostňované umístění dat ve službě Azure Active Directory (Azure AD) Connect sync. Při použití možnosti geografickým oblastem v Office 365, můžete použít tento atribut k určení geografické umístění dat uživatele v Office 365. (Podmínky *oblasti* a *geograficky* zaměňují.)
+# <a name="azure-active-directory-connect-sync-configure-preferred-data-location-for-office-365-resources"></a>Azure Active Directory Connect synchronizace: Konfigurace preferovaného umístění dat pro prostředky Office 365
+Účelem tohoto tématu je projít si, jak nakonfigurovat atribut pro preferované umístění dat v Azure Active Directory (Azure AD) Connect Sync. Pokud někdo používá pro Office 365 více geografických možností, použijte tento atribut k určení geografického umístění dat Office 365 uživatele. ( *Oblast* podmínek a *geografické* použití jsou zaměnitelné.)
 
-## <a name="enable-synchronization-of-preferred-data-location"></a>Povolení synchronizace hodnot upřednostňované umístění dat
-Ve výchozím nastavení Office 365 prostředky pro vaše uživatele jsou umístěny ve stejné zeměpisné oblasti jako váš tenant Azure AD. Například pokud váš tenant nachází v Severní Americe, pak poštovní schránky Exchange uživatele jsou také umístěny v Severní Americe. Pro mezinárodní organizace nemusí být optimální.
+## <a name="enable-synchronization-of-preferred-data-location"></a>Povolit synchronizaci umístění upřednostňovaného data
+Ve výchozím nastavení se prostředky Office 365 pro vaše uživatele nacházejí ve stejném geografickém stavu jako váš tenant Azure AD. Pokud se například váš tenant nachází v Severní Amerika, jsou poštovní schránky Exchange uživatele také umístěny v Severní Amerika. Pro nadnárodní organizaci to nemusí být optimální.
 
-Nastavením atributu **preferredDataLocation**, můžete definovat geograficky uživatele. Můžete mít uživatele Office 365 prostředky, jako jsou poštovní schránka a Onedrivu, v rámci stejné Geografie jako uživatel a stále máte jednoho tenanta pro celou organizaci.
+Nastavením atributu **preferredDataLocation**můžete definovat geografickou hodnotu uživatele. Můžete mít prostředky uživatele Office 365, jako je poštovní schránka a OneDrive, ve stejné geografické podobě jako uživatel a mít pro celou organizaci i jednoho tenanta.
 
 > [!IMPORTANT]
-> Geografickým oblastem je momentálně dostupný pro zákazníky s minimálně 2 500 předplatné služeb Office 365. Obraťte se prosím na zástupce společnosti Microsoft pro podrobnosti.
+> Služba multi-Geo je aktuálně dostupná pro zákazníky s minimálně 500 předplatnými sady Office 365. Podrobnosti získáte od zástupce Microsoftu.
 >
 >
 
-Seznam všech zeměpisných oblastech pro Office 365 najdete v [kde jsou vaše data umístěné?](https://aka.ms/datamaps).
+Seznam všech zeměpisných oblastech pro Office 365 najdete v části [kde se nacházejí vaše data?](https://aka.ms/datamaps).
 
-Se používají Geografie v Office 365, které jsou k dispozici pro geografickým oblastem:
+Zeměpisných oblastech v sadě Office 365 dostupné pro více geografických umístění jsou:
 
-| Zeměpisná oblast | Hodnota preferredDataLocation |
+| Zeměpisná oblast | hodnota preferredDataLocation |
 | --- | --- |
 | Asie a Tichomoří | APC |
-| Austrálie | AUS |
-| Kanada | CAN |
+| Austrálie | STŘEDNÍ |
+| Kanada | NEMŮŽE |
 | Evropská unie | EUR |
-| Francie | SADA FRA |
-| Indie | IND |
+| Francie | FRA |
+| Indie | NAJÍT |
 | Japonsko | JPN |
 | Jižní Korea | KOR |
+| Jižní Afrika | ZAF |
+| Spojené arabské emiráty | JSOU |
 | Spojené království | GBR |
 | Spojené státy | NAM |
 
-* Pokud zeměpisné oblasti není uveden v této tabulce (například Jižní Amerika), pak jej nelze použít pro geografickým oblastem.
+* Pokud geografická oblast není uvedená v této tabulce (například Jižní Amerika), nedá se použít pro více geografických oblastí.
 
-* Ne všechny úlohy Office 365 nepodporují nastavení geografické uživatele.
+* Ne všechny úlohy Office 365 podporují použití nastavení geografického uživatele.
 
-### <a name="azure-ad-connect-support-for-synchronization"></a>Podpora Azure AD Connect pro synchronizaci
+### <a name="azure-ad-connect-support-for-synchronization"></a>Azure AD Connect podpora synchronizace
 
-Azure AD Connect podporuje synchronizaci **preferredDataLocation** atribut pro **uživatele** objektů verze 1.1.524.0 nebo novější. Zejména:
+Azure AD Connect podporuje synchronizaci atributu **preferredDataLocation** pro **uživatelské** objekty ve verzi 1.1.524.0 a novější. Zejména:
 
-* Schéma typu objektu **uživatele** v konektoru Azure AD je rozšířit **preferredDataLocation** atribut. Atribut je typu, jedinou hodnotu řetězce.
-* Schéma typu objektu **osoba** v úložišti metaverse je rozšířit **preferredDataLocation** atribut. Atribut je typu, jedinou hodnotu řetězce.
+* Schéma typu objektu **uživatele** v konektoru služby Azure AD je rozšířené tak, aby zahrnovalo atribut **preferredDataLocation** . Atribut je typu, což je řetězec s jednou hodnotou.
+* Schéma objektu typu **osoba** v úložišti metaverse je rozšířeno tak, aby zahrnovalo atribut **preferredDataLocation** . Atribut je typu, což je řetězec s jednou hodnotou.
 
-Ve výchozím nastavení **preferredDataLocation** není povolená pro synchronizaci. Tato funkce je určená pro velké organizace. Atribut pro uložení geograficky Office 365 pro uživatele, musíte také identifikovat, protože neexistuje žádný **preferredDataLocation** atribut v místní službě Active Directory. To se bude lišit pro každou organizaci.
+Ve výchozím nastavení není **preferredDataLocation** povolená synchronizace. Tato funkce je určená pro větší organizace. Musíte také určit atribut, který bude pro uživatele uchovávat geografickou sadu Office 365, protože v místní službě Active Directory neexistuje žádný atribut **preferredDataLocation** . To se pro každou organizaci liší.
 
 > [!IMPORTANT]
-> Azure AD umožňuje **preferredDataLocation** atribut na **cloudové uživatelské objekty** přímo konfigurovat pomocí Azure AD PowerShell. Azure AD umožňuje už **preferredDataLocation** atribut na **synchronizované uživatelské objekty** přímo konfigurovat pomocí Azure AD PowerShell. Ke konfiguraci tohoto atributu na **synchronizované uživatelské objekty**, je nutné použít Azure AD Connect.
+> Azure AD umožňuje, aby byl atribut **preferredDataLocation** u **uživatelských objektů cloudového uživatele** přímo nakonfigurovaný pomocí Azure AD PowerShellu. Azure AD už neumožňuje, aby byl atribut **preferredDataLocation** u **synchronizovaných uživatelských objektů** přímo nakonfigurovaný pomocí Azure AD PowerShellu. Chcete-li nakonfigurovat tento atribut u **synchronizovaných uživatelských objektů**, je nutné použít Azure AD Connect.
 
 Než povolíte synchronizaci:
 
-* Rozhodněte, které místní služby Active Directory atribut má být použit jako zdrojový atribut. By měl být typu, **jednohodnotové řetězec**. V krocích, které následují, jeden z **extensionAttributes** se používá.
-* Pokud jste dříve nakonfigurovali **preferredDataLocation** atribut ve stávajících **synchronizované uživatelské objekty** ve službě Azure AD pomocí Azure AD Powershellu, musíte backport hodnotu atributu odpovídající **uživatele** objekty v místní službě Active Directory.
+* Rozhodněte, který místní atribut služby Active Directory se má použít jako zdrojový atribut. Měl by být typu **řetězec s jednou hodnotou**. V následujících krocích se používá jedna z **extensionAttributes** .
+* Pokud jste dříve nakonfigurovali atribut **preferredDataLocation** u stávajících **synchronizovaných uživatelských objektů** ve službě Azure AD pomocí Azure AD PowerShellu, musíte Backport hodnoty atributu k odpovídajícím objektům **uživatele** v. místní služba Active Directory.
 
     > [!IMPORTANT]
-    > Pokud neprovedete tyto hodnoty nejsou backport, Azure AD Connect odebere stávající hodnoty atributů ve službě Azure AD při synchronizaci pro **preferredDataLocation** atribut je povolen.
+    > Pokud tyto hodnoty nebackportte, Azure AD Connect odstraní existující hodnoty atributu v Azure AD, když je povolená synchronizace pro atribut **preferredDataLocation** .
 
-* Konfigurace zdrojového atributu na alespoň několik objektů místní uživatele Active Directory. Může být využit k ověření později.
+* Nakonfigurujte zdrojový atribut alespoň na několika místních uživatelských objektech služby Active Directory. Tuto možnost můžete použít pro ověření později.
 
-Následující části popisují postup povolení synchronizace hodnot **preferredDataLocation** atribut.
+Následující části obsahují postup pro povolení synchronizace atributu **preferredDataLocation** .
 
 > [!NOTE]
-> Kroky jsou popsány v rámci nasazení služby Azure AD s jednou doménovou strukturou topologie a bez vlastní synchronizační pravidla. Pokud máte topologie s více doménovými strukturami, vlastní synchronizační pravidla nakonfigurované nebo mít na testovacím serveru, byste měli odpovídajícím způsobem upravit kroky.
+> Tento postup je popsaný v kontextu nasazení Azure AD s topologií s jednou doménovou strukturou a bez vlastních synchronizačních pravidel. Pokud máte topologii s více doménovými strukturami, nakonfigurovali jste vlastní pravidla synchronizace nebo máte pracovní server, měli byste tyto kroky upravit odpovídajícím způsobem.
 
-## <a name="step-1-disable-sync-scheduler-and-verify-there-is-no-synchronization-in-progress"></a>Krok 1: Zakázat Plánovač synchronizace a ověřte, že není žádná probíhající synchronizace
-Aby se zabránilo neúmyslnému změny exportované do služby Azure AD, ujistěte se, že žádná synchronizace bude probíhat, když jste uprostřed aktualizují se pravidla synchronizace. Chcete-li zakázat plánovač integrované synchronizace:
+## <a name="step-1-disable-sync-scheduler-and-verify-there-is-no-synchronization-in-progress"></a>Krok 1: Zakázat Plánovač synchronizace a ověřit, zda neprobíhá žádná synchronizace
+Aby se zabránilo tomu, že se nezamýšlené změny exportují do služby Azure AD, zajistěte, aby žádná synchronizace neprobíhala v průběhu aktualizace synchronizačních pravidel. Zakázání integrovaného plánovače synchronizace:
 
-1. Spusťte relaci Powershellu na serveru služby Azure AD Connect.
-2. Zakažte plánované synchronizaci spuštěním této rutiny: `Set-ADSyncScheduler -SyncCycleEnabled $false`.
-3. Spustit **Synchronization Service Manager** tak, že přejdete do **START** > **synchronizační služba**.
-4. Vyberte **operace** kartu a potvrdit, neexistuje žádná operace se stavem *probíhá*.
+1. Spusťte relaci PowerShellu na Azure AD Connectovém serveru.
+2. Zakažte naplánovanou synchronizaci spuštěním této rutiny: `Set-ADSyncScheduler -SyncCycleEnabled $false`.
+3. Spusťte **Synchronization Service Manager**  > spuštěním**synchronizační služby**.
+4. Vyberte kartu **operace** a potvrďte, že neexistuje žádná operace s probíhajícím stavem.
 
-![Snímek obrazovky portálu Service Manager synchronizace](./media/how-to-connect-sync-feature-preferreddatalocation/preferreddatalocation-step1.png)
+![Snímek obrazovky s Synchronization Service Manager](./media/how-to-connect-sync-feature-preferreddatalocation/preferreddatalocation-step1.png)
 
-## <a name="step-2-add-the-source-attribute-to-the-on-premises-active-directory-connector-schema"></a>Krok 2: Přidejte zdrojový atribut schématu místní konektor služby Active Directory
-Ne všechny atributy služby Azure AD jsou importovány do místního prostoru konektoru služby Active Directory. Pokud vyberete použití atributu, který není synchronizován ve výchozím nastavení, musíte ho naimportovat. Přidání zdrojového atributu na seznam importovaných atributy:
+## <a name="step-2-add-the-source-attribute-to-the-on-premises-active-directory-connector-schema"></a>Krok 2: Přidání zdrojového atributu do místního schématu konektoru služby Active Directory
+Ne všechny atributy služby Azure AD se importují do místního prostoru konektoru služby Active Directory. Pokud jste vybrali použití atributu, který není ve výchozím nastavení synchronizovaný, musíte ho importovat. Chcete-li přidat zdrojový atribut do seznamu importovaných atributů:
 
-1. Vyberte **konektory** kartu v Synchronization Service Manager.
-2. Klikněte pravým tlačítkem na konektor pro místní Active Directory a vyberte **vlastnosti**.
-3. V místním dialogovém, přejděte **vybrat atributy** kartu.
-4. Ujistěte se, že je zaškrtnuto zdrojový atribut, který jste se rozhodli používat v seznamu atributů. Pokud nevidíte požadovaný atribut, vyberte **Zobrazit vše** zaškrtávací políčko.
-5. Chcete-li uložit, vyberte **OK**.
+1. Vyberte kartu **konektory** v Synchronization Service Manager.
+2. Klikněte pravým tlačítkem na místní konektor služby Active Directory a vyberte **vlastnosti**.
+3. V místním dialogovém okně přejdete na kartu **vybrat atributy** .
+4. Ujistěte se, že zdrojový atribut, který jste vybrali k použití, je zaškrtnuté v seznamu atributů. Pokud atribut nevidíte, zaškrtněte políčko **Zobrazit vše** .
+5. Pokud ho chcete uložit, vyberte **OK**.
 
-![Dialogové okno snímek obrazovky Synchronization Service Manager a vlastnosti](./media/how-to-connect-sync-feature-preferreddatalocation/preferreddatalocation-step2.png)
+![Snímek obrazovky dialogového okna Synchronization Service Manager a vlastnosti](./media/how-to-connect-sync-feature-preferreddatalocation/preferreddatalocation-step2.png)
 
-## <a name="step-3-add-preferreddatalocation-to-the-azure-ad-connector-schema"></a>Krok 3: Přidat **preferredDataLocation** schématu konektor služby Azure AD
-Ve výchozím nastavení **preferredDataLocation** atribut není importován do prostoru konektoru Azure AD. Přidejte do seznamu importované atributů:
+## <a name="step-3-add-preferreddatalocation-to-the-azure-ad-connector-schema"></a>Krok 3: Přidání **preferredDataLocation** do schématu konektoru služby Azure AD
+Ve výchozím nastavení se neimportuje atribut **preferredDataLocation** do prostoru konektoru služby Azure AD. Pro přidání do seznamu importovaných atributů:
 
-1. Vyberte **konektory** kartu v Synchronization Service Manager.
-2. Klikněte pravým tlačítkem na konektor služby Azure AD a vyberte **vlastnosti**.
-3. V místním dialogovém, přejděte **vybrat atributy** kartu.
-4. Vyberte **preferredDataLocation** atributem v seznamu.
-5. Chcete-li uložit, vyberte **OK**.
+1. Vyberte kartu **konektory** v Synchronization Service Manager.
+2. Klikněte pravým tlačítkem na konektor Azure AD a vyberte **vlastnosti**.
+3. V místním dialogovém okně přejdete na kartu **vybrat atributy** .
+4. V seznamu vyberte atribut **preferredDataLocation** .
+5. Pokud ho chcete uložit, vyberte **OK**.
 
-![Dialogové okno snímek obrazovky Synchronization Service Manager a vlastnosti](./media/how-to-connect-sync-feature-preferreddatalocation/preferreddatalocation-step3.png)
+![Snímek obrazovky dialogového okna Synchronization Service Manager a vlastnosti](./media/how-to-connect-sync-feature-preferreddatalocation/preferreddatalocation-step3.png)
 
-## <a name="step-4-create-an-inbound-synchronization-rule"></a>Krok 4: Vytvoření pravidla synchronizace příchozích dat
-Pravidlo příchozí synchronizace povoluje hodnotu atributu přejít ze zdrojového atributu v místní službě Active Directory do úložiště metaverse.
+## <a name="step-4-create-an-inbound-synchronization-rule"></a>Krok 4: Vytvořit pravidlo příchozí synchronizace
+Pravidlo příchozí synchronizace povoluje, aby hodnota atributu mohla přecházet ze zdrojového atributu v místní službě Active Directory do úložiště metaverse.
 
-1. Spustit **Editor pravidel synchronizace** tak, že přejdete do **START** > **Editor pravidel synchronizace**.
-2. Nastavení filtru hledání **směr** bude **příchozí**.
-3. Chcete-li vytvořit nové příchozí pravidlo, vyberte **přidat nové pravidlo**.
-4. V části **popis** kartu, zadejte následující konfiguraci:
+1. Spusťte **Editor pravidel synchronizace** kliknutím na **Spustit** > **Editor pravidel synchronizace**.
+2. Nastavte **směr** vyhledávacího filtru na **příchozí**.
+3. Pokud chcete vytvořit nové příchozí pravidlo, vyberte **Přidat nové pravidlo**.
+4. Na kartě **Popis** zadejte následující konfiguraci:
 
-    | Atribut | Hodnota | Podrobnosti |
+    | Atribut | Value | Podrobnosti |
     | --- | --- | --- |
-    | Name | *Zadejte název* | Například "v ze služby AD – uživatel preferredDataLocation" |
-    | Popis | *Zadejte vlastní popis* |  |
-    | Připojený systém | *Vyberte konektor služby Active Directory on-premises* |  |
-    | Typ objektu systému připojené | **Uživatel** |  |
-    | Typ objektu úložiště Metaverse | **Osoba** |  |
+    | Name | *Zadat název* | Například "in from AD – User preferredDataLocation" |
+    | Popis | *Zadejte vlastní popis.* |  |
+    | Připojený systém | *Výběr místního konektoru služby Active Directory* |  |
+    | Typ připojeného systémového objektu | **Uživatelský** |  |
+    | Typ objektu úložiště metaverse | **Uživateli** |  |
     | Typ odkazu | **Spojení** |  |
-    | Priorita | *Zvolte číslo v rozmezí 1 – 99* | 1 – 99 je vyhrazený pro vlastní synchronizační pravidla. Nelze vybrat hodnotu, která používá dalším synchronizačním pravidle. |
+    | Priorita | *Vyberte číslo v rozmezí 1 až 99.* | 1 – 99 je vyhrazeno pro vlastní pravidla synchronizace. Nevybírejte hodnotu, kterou používá jiné synchronizační pravidlo. |
 
-5. Zachovat **Scoping filtr** prázdný, chcete-li zahrnout všechny objekty. Jste možná bude nutné upravit filtr oborů podle vašeho nasazení služby Azure AD Connect.
-6. Přejděte **transformace kartu**a implementovat následující pravidla transformace:
+5. Pokud chcete zahrnout všechny objekty, nechejte **Filtr oboru** prázdný. Je možné, že budete muset upravit filtr oboru podle nasazení Azure AD Connect.
+6. Přejít na **kartu transformace**a implementovat následující pravidlo transformace:
 
-    | Typ toku | Cílový atribut | source | Použít jednou | Sloučit typu |
+    | Typ toku | Cílový atribut | Source | Použít jednou | Typ sloučení |
     | --- | --- | --- | --- | --- |
-    |Direct | preferredDataLocation | Vyberte zdrojový atribut | Není zaškrtnuto | Aktualizace |
+    |Direct | preferredDataLocation | Vyberte zdrojový atribut | není zaškrtnuto | Aktualizace |
 
-7. Chcete-li vytvořit příchozí pravidlo, vyberte **přidat**.
+7. Pokud chcete vytvořit příchozí pravidlo, vyberte **Přidat**.
 
-![Snímek obrazovky vytvoření pravidla synchronizace příchozích dat](./media/how-to-connect-sync-feature-preferreddatalocation/preferreddatalocation-step4.png)
+![Snímek obrazovky s pravidly vytvoření příchozí synchronizace](./media/how-to-connect-sync-feature-preferreddatalocation/preferreddatalocation-step4.png)
 
-## <a name="step-5-create-an-outbound-synchronization-rule"></a>Krok 5: Vytvořit pravidlo odchozí synchronizace
-Pravidlo odchozí synchronizace povoluje hodnotu atributu z úložiště metaverse na tok **preferredDataLocation** atributu ve službě Azure AD:
+## <a name="step-5-create-an-outbound-synchronization-rule"></a>Krok 5: Vytvoření pravidla odchozí synchronizace
+Pravidlo odchozí synchronizace povoluje, aby hodnota atributu byla z úložiště metaverse předávána do atributu **preferredDataLocation** v Azure AD:
 
-1. Přejděte **Editor synchronizačních pravidel**.
-2. Nastavení filtru hledání **směr** bude **odchozí**.
-3. Vyberte **přidat nové pravidlo**.
-4. V části **popis** kartu, zadejte následující konfiguraci:
+1. Umožňuje přejít do **editoru pravidel synchronizace**.
+2. Nastavte **směr** vyhledávacího filtru na **odchozí**.
+3. Vyberte **Přidat nové pravidlo**.
+4. Na kartě **Popis** zadejte následující konfiguraci:
 
-    | Atribut | Hodnota | Podrobnosti |
+    | Atribut | Value | Podrobnosti |
     | ----- | ------ | --- |
-    | Name | *Zadejte název* | Například "Out do služby Azure AD – uživatel preferredDataLocation" |
-    | Popis | *Zadejte popis* ||
-    | Připojený systém | *Vyberte konektor Azure AD* ||
-    | Typ objektu systému připojené | **Uživatel** ||
-    | Typ objektu úložiště Metaverse | **Osoba** ||
+    | Name | *Zadat název* | Například "odchozí do Azure AD – User preferredDataLocation" |
+    | Popis | *Zadejte popis.* ||
+    | Připojený systém | *Vyberte konektor Azure AD.* ||
+    | Typ připojeného systémového objektu | **Uživatelský** ||
+    | Typ objektu úložiště metaverse | **Uživateli** ||
     | Typ odkazu | **Spojení** ||
-    | Priorita | *Zvolte číslo v rozmezí 1 – 99* | 1 – 99 je vyhrazený pro vlastní synchronizační pravidla. Nelze vybrat hodnotu, která používá dalším synchronizačním pravidle. |
+    | Priorita | *Vyberte číslo v rozmezí 1 až 99.* | 1 – 99 je vyhrazeno pro vlastní pravidla synchronizace. Nevybírejte hodnotu, kterou používá jiné synchronizační pravidlo. |
 
-5. Přejděte **Scoping filtr** karta a přidat jednu skupinu filtr oborů s dvou klauzulí:
+5. Přejít na kartu **obor filtru** a přidejte jednu skupinu filtru oborů se dvěma klauzulemi:
 
-    | Atribut | Operátor | Hodnota |
+    | Atribut | Operator | Value |
     | --- | --- | --- |
-    | sourceObjectType | ROVNO | Uživatel |
-    | cloudMastered | NOTEQUAL | True |
+    | sourceObjectType | VÝŠI | Uživatel |
+    | cloudMastered | NOTEQUAL | Pravda |
 
-    Určuje filtr oborů, které toto pravidlo odchozí synchronizace se použije pro objekty Azure AD. V tomto příkladu použijeme stejný filtr oborů z "Na více instancí AD – identita uživatele" OOB (out-of-box) synchronizačního pravidla. To brání použití pro synchronizační pravidlo **uživatele** objekty, které nejsou synchronizované z místní služby Active Directory. Jste možná bude nutné upravit filtr oborů podle vašeho nasazení služby Azure AD Connect.
+    Filtr oboru určuje, na které objekty služby Azure AD se toto pravidlo odchozí synchronizace použije. V tomto příkladu používáme stejný filtr pro vytváření oborů z "odchozího pro AD – identita uživatele" OOB (dopředný) – pravidlo synchronizace. Zabraňuje použití synchronizačního pravidla pro **uživatelské** objekty, které nejsou synchronizované z místní služby Active Directory. Je možné, že budete muset upravit filtr oboru podle nasazení Azure AD Connect.
 
-6. Přejděte **transformace** kartu a implementovat následující pravidla transformace:
+6. Přejít na kartu **transformace** a implementovat následující pravidlo transformace:
 
-    | Typ toku | Cílový atribut | source | Použít jednou | Sloučit typu |
+    | Typ toku | Cílový atribut | Source | Použít jednou | Typ sloučení |
     | --- | --- | --- | --- | --- |
-    | Direct | preferredDataLocation | preferredDataLocation | Není zaškrtnuto | Aktualizace |
+    | Direct | preferredDataLocation | preferredDataLocation | není zaškrtnuto | Aktualizace |
 
-7. Zavřít **přidat** vytvoření odchozí pravidla.
+7. Pokud chcete vytvořit odchozí pravidlo, zavřete **Přidat** .
 
-![Snímek obrazovky vytvořit pravidlo odchozí synchronizace](./media/how-to-connect-sync-feature-preferreddatalocation/preferreddatalocation-step5.png)
+![Snímek obrazovky pro vytvoření pravidla odchozí synchronizace](./media/how-to-connect-sync-feature-preferreddatalocation/preferreddatalocation-step5.png)
 
-## <a name="step-6-run-full-synchronization-cycle"></a>Krok 6: Spustit úplnou synchronizaci cyklus
-Obecně platí úplná synchronizace cyklus je povinný. Toto je vzhledem k tomu, že jsme přidali nové atributy služby Active Directory a Azure AD Connector schématu a zavedl vlastní synchronizační pravidla. Ověřte změny před exportem do služby Azure AD. Následující kroky můžete ověřit změny, při ručním spuštěním kroky, které tvoří úplnou synchronizační cyklus.
+## <a name="step-6-run-full-synchronization-cycle"></a>Krok 6: Spustit úplný cyklus synchronizace
+Obecně je potřeba úplný cyklus synchronizace. Důvodem je to, že jste přidali nové atributy do schématu služby Active Directory a konektoru služby Azure AD a zavedli jste vlastní pravidla synchronizace. Před exportem do služby Azure AD ověřte změny. Pomocí následujících kroků můžete ověřit změny a ručně spustit kroky, které tvoří cyklus úplné synchronizace.
 
-1. Spustit **úplný import** na místní konektoru služby Active Directory:
+1. Spustit **úplný import** na místní konektor služby Active Directory:
 
-   1. Přejděte **operace** kartu v Synchronization Service Manager.
-   2. Klikněte pravým tlačítkem myši **místní konektor služby Active Directory**a vyberte **spustit**.
-   3. V dialogovém okně vyberte **úplný Import**a vyberte **OK**.
+   1. V Synchronization Service Manager otevřete kartu **operace** .
+   2. Klikněte pravým tlačítkem na **místní konektor služby Active Directory**a vyberte **Spustit**.
+   3. V dialogovém okně vyberte **úplný import**a vyberte **OK**.
    4. Počkejte na dokončení operace.
 
       > [!NOTE]
-      > Pokud zdrojový atribut je již součástí seznam importovaných atributy, můžete přeskočit úplný import na místní konektoru služby Active Directory. Jinými slovy můžete není nutné provádět změny během kroku 2 výše v tomto článku.
+      > Pokud je zdrojový atribut již obsažen v seznamu importovaných atributů, můžete přeskočit úplný import na místní konektor služby Active Directory. Jinými slovy, nemusíte provádět žádné změny během kroku 2 výše v tomto článku.
 
-2. Spustit **úplný import** v konektoru služby Azure AD:
+2. Spusťte **úplný import** na konektoru služby Azure AD:
 
-   1. Klikněte pravým tlačítkem myši **konektor služby Azure AD**a vyberte **spustit**.
-   2. V dialogovém okně vyberte **úplný Import**a vyberte **OK**.
+   1. Klikněte pravým tlačítkem na **konektor Azure AD**a vyberte **Spustit**.
+   2. V dialogovém okně vyberte **úplný import**a vyberte **OK**.
    3. Počkejte na dokončení operace.
 
-3. Ověření změny pravidel synchronizace na existujícím **uživatele** objektu.
+3. Ověřte změny synchronizačního pravidla u stávajícího objektu **uživatele** .
 
-   Zdrojový atribut ze služby Active Directory s místními a **preferredDataLocation** ze služby Azure AD se naimportovaly do každého prostoru příslušný konektor. Než budete pokračovat s krokem úplnou synchronizaci provést náhled na existujícím **uživatele** objekt v prostoru místní konektor služby Active Directory. Objekt, který jste vybrali by měl mít zdrojový atribut naplnit. Úspěšné ve verzi preview s **preferredDataLocation** v úložišti metaverse je vhodný indikátor, že nakonfigurujete synchronizaci pravidla správně. Informace o tom, jak provést ve verzi preview najdete v tématu [zkontrolujte změnu](how-to-connect-sync-change-the-configuration.md#verify-the-change).
+   Zdrojový atribut z místní služby Active Directory a **preferredDataLocation** z Azure AD se importoval do každého příslušného prostoru konektoru. Než budete pokračovat v kroku úplné synchronizace, udělejte ve verzi Preview existující objekt **uživatele** v prostoru konektoru služby Active Directory. Objekt, který jste vybrali, by měl mít naplněný zdrojový atribut. Úspěšná verze Preview s **preferredDataLocation** naplněná v úložišti metaverse je dobrým indikátorem, že jste správně nakonfigurovali pravidla synchronizace. Informace o tom, jak si prohlédnout verzi Preview, najdete v tématu [ověření změny](how-to-connect-sync-change-the-configuration.md#verify-the-change).
 
-4. Spustit **úplné synchronizace** na konektor on-premises služby Active Directory:
+4. Spusťte **úplnou synchronizaci** na místním konektoru služby Active Directory:
 
-   1. Klikněte pravým tlačítkem myši **místní konektor služby Active Directory**a vyberte **spustit**.
-   2. V dialogovém okně vyberte **úplnou synchronizaci**a vyberte **OK**.
+   1. Klikněte pravým tlačítkem na **místní konektor služby Active Directory**a vyberte **Spustit**.
+   2. V dialogovém okně vyberte možnost **Úplná synchronizace**a pak vyberte **OK**.
    3. Počkejte na dokončení operace.
 
-5. Ověřte **čekajících exportů** do služby Azure AD:
+5. Ověřit  nedokončené exporty do Azure AD:
 
-   1. Klikněte pravým tlačítkem myši **konektor služby Azure AD**a vyberte **Search Connector Space**.
-   2. V **Search Connector Space** dialogové okno:
+   1. Klikněte pravým tlačítkem na **konektor Azure AD**a vyberte **Hledat místo**v konektoru.
+   2. V dialogovém okně **Hledat místo konektoru** :
 
-        a. Nastavte **oboru** k **čekající na Export**.<br>
-        b. Zaškrtněte všechna tři políčka, včetně **přidat, upravit a odstranit**.<br>
-        c. Chcete-li zobrazit seznam objektů se změnami, které mají být exportovány, vyberte **hledání**. Přezkoumat změny pro daný objekt, dvakrát klikněte na objekt.<br>
-        d. Ověřte, že jsou očekávané změny.
+        a. Nastavte **Rozsah** na **Export čeká**na vyřízení.<br>
+        b. Zaškrtněte všechna tři zaškrtávací políčka, včetně **Přidat, upravit a odstranit**.<br>
+        c. Chcete-li zobrazit seznam objektů se změnami, které mají být exportovány, vyberte **Hledat**. Chcete-li prostudovat změny pro daný objekt, dvakrát klikněte na objekt.<br>
+        d. Ověřte, zda jsou tyto změny očekávány.
 
-6. Spustit **exportovat** na **konektoru služby Azure AD**
+6. Spuštění **exportu** v **konektoru služby Azure AD**
 
-   1. Klikněte pravým tlačítkem myši **konektor služby Azure AD**a vyberte **spustit**.
-   2. V **spuštění konektoru** dialogu **exportovat**a vyberte **OK**.
+   1. Klikněte pravým tlačítkem na **konektor Azure AD**a vyberte **Spustit**.
+   2. V dialogovém okně **Spustit konektor** vyberte **exportovat**a vyberte **OK**.
    3. Počkejte na dokončení operace.
 
 > [!NOTE]
-> Můžete si všimnout, že kroky neobsahují krok úplná synchronizace v konektoru služby Azure AD, nebo krok export na konektoru služby Active Directory. Kroky nejsou povinné, protože hodnoty atributů jsou vyplývající z místní služby Active Directory do služby Azure AD pouze.
+> Můžete si všimnout, že kroky nezahrnují krok úplné synchronizace na konektoru služby Azure AD nebo krok exportu v konektoru služby Active Directory. Kroky nejsou vyžadovány, protože hodnoty atributu jsou z místní služby Active Directory předávány pouze do služby Azure AD.
 
-## <a name="step-7-re-enable-sync-scheduler"></a>Krok 7: Povolte Plánovač synchronizace
-Povolte Plánovač integrované synchronizace:
+## <a name="step-7-re-enable-sync-scheduler"></a>Krok 7: Opětovné povolení plánovače synchronizace
+Opětovné povolení integrovaného plánovače synchronizace:
 
-1. Spusťte relaci Powershellu.
-2. Plánované synchronizaci znovu povolte spuštěním této rutiny: `Set-ADSyncScheduler -SyncCycleEnabled $true`
+1. Spusťte relaci PowerShellu.
+2. Spusťte tuto rutinu znovu, aby se naplánovala synchronizace:`Set-ADSyncScheduler -SyncCycleEnabled $true`
 
-## <a name="step-8-verify-the-result"></a>Krok 8: Ověřte výsledek
-Nyní je čas potřebný k ověření konfigurace nebo ji povolit pro vaše uživatele.
+## <a name="step-8-verify-the-result"></a>Krok 8: Ověřit výsledek
+Nyní je čas ověřit konfiguraci a povolit pro uživatele.
 
-1. Přidáte vybraný atribut uživatele zeměpisné oblasti. V této tabulce najdete seznam dostupných zeměpisných oblastech.  
-![Snímek obrazovky atribut AD přidat uživatele](./media/how-to-connect-sync-feature-preferreddatalocation/preferreddatalocation-adattribute.png)
-2. Počkejte, atributy, které mají být synchronizovány do Azure AD.
-3. Pomocí Powershellu v Exchangi Online, ověřte, že oblast poštovní schránky byla nastavena správně.  
-![Snímek obrazovky Powershellu v Exchangi Online](./media/how-to-connect-sync-feature-preferreddatalocation/preferreddatalocation-mailboxregion.png)  
-Za předpokladu, že byl označen tenanta mohli tuto funkci používat, poštovní schránku se přesune do správné zeměpisné oblasti. Můžete to ověřit pohledem na název serveru, kde se nachází poštovní schránku.
-4. Pokud chcete ověřit, že toto nastavení bylo efektivní za kolik poštovních schránek, použijte skript v [Galerie TechNet](https://gallery.technet.microsoft.com/office/PowerShell-Script-to-a6bbfc2e). Tento skript má také seznam předpon serveru ze všech datových center Office 365, a které geografické se nachází v. Můžete použít jako referenci v předchozím kroku ověření umístění poštovní schránky.
+1. Přidejte geografické rozhraní k vybranému atributu pro uživatele. Seznam dostupných zeměpisných oblastech najdete v této tabulce.  
+![Snímek obrazovky s atributem AD přidaným uživateli](./media/how-to-connect-sync-feature-preferreddatalocation/preferreddatalocation-adattribute.png)
+2. Počkejte, až se atribut synchronizuje do Azure AD.
+3. Pomocí Exchange Online PowerShellu ověřte, že je správně nastavená oblast poštovní schránky.  
+![Snímek obrazovky s Exchangem Online PowerShellem](./media/how-to-connect-sync-feature-preferreddatalocation/preferreddatalocation-mailboxregion.png)  
+Za předpokladu, že je váš tenant označený k tomu, aby mohl používat tuto funkci, se poštovní schránka přesune do správného geografického umístění. Můžete to ověřit tak, že si vyhledáte název serveru, kde se nachází poštovní schránka.
+4. Pokud chcete ověřit, že toto nastavení bylo v mnoha poštovních schránkách platné, použijte skript v [Galerii TechNet](https://gallery.technet.microsoft.com/office/PowerShell-Script-to-a6bbfc2e). Tento skript obsahuje taky seznam prefixů serveru pro všechna datová centra Office 365 a geografickou oblast, ve které se nachází. Dá se použít jako odkaz v předchozím kroku k ověření umístění poštovní schránky.
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace o geografickým oblastem v Office 365:
+Další informace o multi-geografické sadě Office 365:
 
-* [Geografickým oblastem semináře na konferenci Ignite](https://aka.ms/MultiGeoIgnite)
-* [Geografickým oblastem ve Onedrivu](https://aka.ms/OneDriveMultiGeo)
-* [Geografickým oblastem v Sharepointu Online](https://aka.ms/SharePointMultiGeo)
+* [Více geografických relací na Ignite](https://aka.ms/MultiGeoIgnite)
+* [Více geografických umístění na OneDrivu](https://aka.ms/OneDriveMultiGeo)
+* [Více geografických umístění v SharePointu Online](https://aka.ms/SharePointMultiGeo)
 
-Další informace o model konfigurace v modulu synchronizace:
+Další informace o modelu konfigurace v synchronizačním modulu:
 
-* Další informace o konfiguraci modelu v [Principy deklarativní zřizování](concept-azure-ad-connect-sync-declarative-provisioning.md).
-* Další informace o jazyk výrazů v [Principy výrazů deklarativního zřizování](concept-azure-ad-connect-sync-declarative-provisioning-expressions.md).
+* Přečtěte si další informace o modelu konfigurace v tématu [Principy deklarativního zřizování](concept-azure-ad-connect-sync-declarative-provisioning.md).
+* Přečtěte si další informace o jazyce výrazů v tématu [Principy deklarativních zřizovacích výrazů](concept-azure-ad-connect-sync-declarative-provisioning-expressions.md).
 
-Témata s přehledem:
+Témata přehledu:
 
 * [Synchronizace Azure AD Connect: Pochopení a přizpůsobení synchronizace](how-to-connect-sync-whatis.md)
 * [Integrování místních identit do služby Azure Active Directory](whatis-hybrid-identity.md)

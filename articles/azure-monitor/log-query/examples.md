@@ -1,6 +1,6 @@
 ---
-title: Příklady dotazů protokolu Azure Monitor | Dokumentace Microsoftu
-description: Příklady dotazů protokolu ve službě Azure Monitor pomocí dotazovacího jazyka Kusto.
+title: Příklady dotazů Azure Monitor protokolu | Microsoft Docs
+description: Příklady dotazů protokolu v Azure Monitor pomocí dotazovacího jazyka Kusto
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,42 +13,42 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/03/2018
 ms.author: bwren
-ms.openlocfilehash: 2c35bc4026c81cbc8b95225e688a3922bc320554
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d50a680ed2b054f87a9cf36e761bd16d79677fb3
+ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60759907"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68304697"
 ---
-# <a name="azure-monitor-log-query-examples"></a>Příklady dotazů protokolu Azure Monitor
-Tento článek obsahuje příklady různých [dotazy](log-query-overview.md) pomocí [Kusto dotazovací jazyk](/azure/kusto/query/) načíst různé typy dat protokolu z Azure monitoru. Různé metody slouží ke konsolidaci a analýzu dat, takže tyto ukázky můžete použít k identifikaci různé strategie, které můžete použít pro vaše požadavky.  
+# <a name="azure-monitor-log-query-examples"></a>Příklady dotazů Azure Monitor protokolu
+Tento článek obsahuje různé příklady [dotazů](log-query-overview.md) pomocí dotazovacího [jazyka Kusto](/azure/kusto/query/) k načtení různých typů dat protokolu z Azure monitor. Pro konsolidaci a analýzu dat se používají různé metody, takže tyto ukázky můžete použít k identifikaci různých strategií, které můžete použít pro vlastní požadavky.  
 
-Najdete v článku [referenční informace k jazyku Kusto](https://docs.microsoft.com/azure/kusto/query/) podrobnosti o jiná klíčová slova použít v těchto ukázek. Projděte si [lekce týkající se vytváření dotazů](get-started-queries.md) Pokud začínáte do Azure monitoru.
+Podrobnosti o různých klíčových slovech použitých v těchto ukázkách najdete v referenčních informacích k [jazyku Kusto](https://docs.microsoft.com/azure/kusto/query/) . Pokud jste Azure Monitor, Projděte si [lekci o vytváření dotazů](get-started-queries.md) .
 
 ## <a name="events"></a>Duration
 
-### <a name="search-application-level-events-described-as-cryptographic"></a>Vyhledávání událostí na úrovni aplikace popsat jako "Kryptografický"
-Tento příklad prohledá tabulku **události** a bude hledat záznamy, ve kterých **EventLog** je _Application_ a **RenderedDescription** obsahuje _cryptographic_. Obsahuje záznamy z posledních 24 hodin.
+### <a name="search-application-level-events-described-as-cryptographic"></a>Prohledat události na úrovni aplikace popsané jako "kryptografické"
+Tento příklad prohledá tabulku **události** a bude hledat záznamy, ve kterých **EventLog** je _Application_ a **RenderedDescription** obsahuje _cryptographic_. Obsahuje záznamy za posledních 24 hodin.
 
 ```Kusto
 Event
 | where EventLog == "Application" 
 | where TimeGenerated > ago(24h) 
-| where RenderedDescription == "cryptographic"
+| where RenderedDescription contains "cryptographic"
 ```
 
-### <a name="search-events-related-to-unmarshaling"></a>Hledat události související s unmarshaling
-Hledat tabulky **události** a **SecurityEvents** pro záznamů tento údaj _unmarshaling_.
+### <a name="search-events-related-to-unmarshaling"></a>Hledat události související s zařazováním
+**Události** a **SecurityEvents** vyhledávacích tabulek pro záznamy, které zmiňují zařazování.
 
 ```Kusto
 search in (Event, SecurityEvent) "unmarshaling"
 ```
 
-## <a name="heartbeat"></a>Prezenční signál
+## <a name="heartbeat"></a>Signály
 
-### <a name="chart-a-week-over-week-view-of-the-number-of-computers-sending-data"></a>Týden over týden zobrazení počtu počítačů odesílajících data grafu
+### <a name="chart-a-week-over-week-view-of-the-number-of-computers-sending-data"></a>Vytvoření grafu zobrazení počtu počítačů, které odesílají data z týdenního týdne
 
-Následující příklad grafy počet různých počítačů, které odeslaly prezenční signály, každý týden.
+Následující příklad vyjedná počet různých počítačů, které odeslaly prezenční signály, každý týden.
 
 ```Kusto
 Heartbeat
@@ -56,9 +56,9 @@ Heartbeat
 | summarize dcount(Computer) by endofweek(TimeGenerated) | render barchart kind=default
 ```
 
-### <a name="find-stale-computers"></a>Žádné zastaralé počítače
+### <a name="find-stale-computers"></a>Najít zastaralé počítače
 
-Následující příklad vyhledá počítače, které byly aktivní v poslední den, ale neodeslal prezenční signály za poslední hodinu.
+Následující příklad vyhledá počítače, které byly aktivní během posledního dne, ale během poslední hodiny neodeslaly prezenční signály.
 
 ```Kusto
 Heartbeat
@@ -68,18 +68,18 @@ Heartbeat
 | where LastHeartbeat < ago(1h)
 ```
 
-### <a name="get-the-latest-heartbeat-record-per-computer-ip"></a>Získat nejnovější záznam prezenčního signálu a IP adresu počítače
+### <a name="get-the-latest-heartbeat-record-per-computer-ip"></a>Získat nejnovější záznam prezenčního signálu na IP adresu počítače
 
-V tomto příkladu vrátí poslední záznam prezenčního signálu pro každou IP adresu počítače.
+Tento příklad vrátí poslední záznam prezenčního signálu pro každou IP adresu počítače.
 ```Kusto
 Heartbeat
 | summarize arg_max(TimeGenerated, *) by ComputerIP
 ```
 
-### <a name="match-protected-status-records-with-heartbeat-records"></a>Odpovídá chráněné stav záznamů se záznamy prezenčního signálu
+### <a name="match-protected-status-records-with-heartbeat-records"></a>Vyhledání chráněných záznamů o stavu pomocí záznamů prezenčního signálu
 
-Tento příklad vyhledá související ochrany stav záznamů a záznamy prezenčního signálu, odpovídá na počítači a čas.
-Poznámka: pole s časem se zaokrouhlí na nejbližší minutu. Výpočet bin runtime jsme použili na to: `round_time=bin(TimeGenerated, 1m)`.
+Tento příklad najde související záznamy stavu ochrany a záznamy prezenčního signálu, které odpovídají v počítači i v čase.
+Všimněte si, že pole čas se zaokrouhluje na nejbližší minutu. Použili jsme výpočet běhového přihrádky k tomu `round_time=bin(TimeGenerated, 1m)`, aby:.
 
 ```Kusto
 let protection_data = ProtectionStatus
@@ -89,10 +89,10 @@ let heartbeat_data = Heartbeat
 protection_data | join (heartbeat_data) on Computer, round_time
 ```
 
-### <a name="server-availability-rate"></a>Míra dostupnosti serveru
+### <a name="server-availability-rate"></a>Rychlost dostupnosti serveru
 
-Vypočítejte sazbu dostupnost serveru podle záznamy prezenčního signálu. Dostupnost se definuje jako "aspoň 1 prezenční signál za hodinu".
-Takže pokud server byla k dispozici 98 100 hodin, míra dostupnosti je 98 %.
+Vypočítá sazbu dostupnosti serveru na základě záznamů prezenčního signálu. Dostupnost je definována jako "minimálně 1 prezenční signál za hodinu".
+Takže pokud byl server dostupný 98 až 100 hodin, sazba dostupnosti je 98%.
 
 ```Kusto
 let start_time=startofday(datetime("2018-03-01"));
@@ -107,10 +107,10 @@ Heartbeat
 ```
 
 
-## <a name="multiple-data-types"></a>Více typů dat
+## <a name="multiple-data-types"></a>Více datových typů
 
-### <a name="chart-the-record-count-per-table"></a>Graf počet záznamů na tabulku
-Následující příklad počty, kolik záznamů se v každé tabulce a shromažďuje všechny záznamy všechny tabulky z posledních pět hodin. Výsledky jsou zobrazeny v časový graf.
+### <a name="chart-the-record-count-per-table"></a>Vytvoření grafu počtu záznamů na tabulku
+Následující příklad shromáždí všechny záznamy všech tabulek za posledních pět hodin a spočítá počet záznamů v každé tabulce. Výsledky se zobrazují v timechart.
 
 ```Kusto
 union withsource=sourceTable *
@@ -119,8 +119,8 @@ union withsource=sourceTable *
 | render timechart
 ```
 
-### <a name="count-all-logs-collected-over-the-last-hour-by-type"></a>Počítat všechny protokoly typu shromážděné za poslední hodinu
-V následujícím příkladu prohledává všechno, co hlášené za poslední hodinu a vrátí počet záznamů z každé tabulky podle **typ**. Výsledky se zobrazí v pruhovém grafu.
+### <a name="count-all-logs-collected-over-the-last-hour-by-type"></a>Spočítat všechny protokoly shromážděné za poslední hodinu podle typu
+Následující příklad vyhledá vše hlášené za poslední hodinu a spočítá záznamy jednotlivých tabulek podle **typu**. Výsledky se zobrazí v pruhovém grafu.
 
 ```Kusto
 search *
@@ -132,7 +132,7 @@ search *
 ## <a name="azurediagnostics"></a>AzureDiagnostics
 
 ### <a name="count-azure-diagnostics-records-per-category"></a>Počet záznamů diagnostiky Azure na kategorii
-V tomto příkladu vrátí všechny záznamy diagnostiky Azure pro každou kategorii jedinečný.
+Tento příklad počítá všechny záznamy diagnostiky Azure pro každou jedinečnou kategorii.
 
 ```Kusto
 AzureDiagnostics 
@@ -140,8 +140,8 @@ AzureDiagnostics
 | summarize count() by Category
 ```
 
-### <a name="get-a-random-record-for-each-unique-category"></a>Získat náhodné záznam pro každou jedinečnou kategorii
-Tento příklad načte záznam jeden náhodné diagnostiky Azure pro každou kategorii jedinečný.
+### <a name="get-a-random-record-for-each-unique-category"></a>Získat náhodný záznam pro každou jedinečnou kategorii
+Tento příklad načte jeden náhodný záznam Azure Diagnostics pro každou jedinečnou kategorii.
 
 ```Kusto
 AzureDiagnostics
@@ -149,8 +149,8 @@ AzureDiagnostics
 | summarize any(*) by Category
 ```
 
-### <a name="get-the-latest-record-per-category"></a>Získat nejnovější záznam na kategorii
-Tento příklad načte nejnovější záznam diagnostiky Azure v jednotlivých kategoriích jedinečný.
+### <a name="get-the-latest-record-per-category"></a>Získá nejnovější záznam na kategorii.
+Tento příklad načte nejnovější záznam Azure Diagnostics v každé jedinečné kategorii.
 
 ```Kusto
 AzureDiagnostics
@@ -160,8 +160,8 @@ AzureDiagnostics
 
 ## <a name="network-monitoring"></a>Monitorování sítě
 
-### <a name="computers-with-unhealthy-latency"></a>Počítače s latencí není v pořádku
-Tento příklad vytvoří seznam jedinečných počítačů s latencí není v pořádku.
+### <a name="computers-with-unhealthy-latency"></a>Počítače s nestavovou latencí
+Tento příklad vytvoří seznam různých počítačů s nestavovou latencí.
 
 ```Kusto
 NetworkMonitoring 
@@ -172,8 +172,8 @@ NetworkMonitoring
 
 ## <a name="performance"></a>Výkon
 
-### <a name="join-computer-perf-records-to-correlate-memory-and-cpu"></a>Připojte se k počítači záznamy výkonu ke korelaci paměti a procesoru
-V tomto příkladu koreluje určitého počítače **výkonu** záznamy a vytvoří dva grafy, průměrné využití procesoru a maximální velikost paměti.
+### <a name="join-computer-perf-records-to-correlate-memory-and-cpu"></a>Připojit záznamy o výkonu počítače ke korelaci paměti a procesoru
+Tento příklad koreluje záznamy **výkonu** konkrétního počítače a vytvoří dva časové grafy, průměrný procesor a maximální velikost paměti.
 
 ```Kusto
 let StartTime = now()-5d;
@@ -193,8 +193,8 @@ and TimeGenerated < EndTime
 | render timechart
 ```
 
-### <a name="perf-cpu-utilization-graph-per-computer"></a>Graf využití výkonu procesoru na jeden počítač
-Tento příklad vypočítá a grafy využití procesoru počítače, které začínají _Contoso_.
+### <a name="perf-cpu-utilization-graph-per-computer"></a>Graf využití výkonu procesoru na počítač
+Tento příklad vypočítá a segrafuje využití procesoru u počítačů, které začínají na _společnosti Contoso_.
 
 ```Kusto
 Perf
@@ -207,7 +207,7 @@ Perf
 
 ## <a name="protection-status"></a>Stav ochrany
 
-### <a name="computers-with-non-reporting-protection-status-duration"></a>Počítače s doba trvání stavu nehlásících ochrany
+### <a name="computers-with-non-reporting-protection-status-duration"></a>Počítače s dobou trvání stavu ochrany bez sestav
 Tento příklad zobrazí seznam počítačů, které měly stav ochrany _Not Reporting_ a doby, po které byly v tomto stavu.
 
 ```Kusto
@@ -219,9 +219,9 @@ ProtectionStatus
 | extend durationNotReporting = endNotReporting - startNotReporting
 ```
 
-### <a name="match-protected-status-records-with-heartbeat-records"></a>Odpovídá chráněné stav záznamů se záznamy prezenčního signálu
-Tento příklad vyhledá související ochrany stav záznamů a záznamy prezenčního signálu porovnáváno podle počítače i čas.
-Pole s časem se zaokrouhlí na nejbližší minutu pomocí **bin**.
+### <a name="match-protected-status-records-with-heartbeat-records"></a>Vyhledání chráněných záznamů o stavu pomocí záznamů prezenčního signálu
+Tento příklad najde související záznamy stavu ochrany a záznamy prezenčního signálu se shodují na počítači i v čase.
+Pole čas se zaokrouhluje na nejbližší minutu pomocí **přihrádky**.
 
 ```Kusto
 let protection_data = ProtectionStatus
@@ -234,11 +234,11 @@ protection_data | join (heartbeat_data) on Computer, round_time
 
 ## <a name="security-records"></a>Záznamy zabezpečení
 
-### <a name="count-security-events-by-activity-id"></a>Počet událostí zabezpečení pomocí ID aktivity
+### <a name="count-security-events-by-activity-id"></a>Počet událostí zabezpečení podle ID aktivity
 
 
-V tomto příkladu spoléhá na pevnou struktury **aktivity** sloupce: \<ID\>-\<název\>.
-Analyzuje **aktivity** hodnoty do dva nové sloupce a počet výskytů jednotlivých **activityID**.
+Tento příklad spoléhá na pevnou strukturu sloupce **aktivita** : \<Název\>-ID\<.\>
+Analyzuje hodnotu **aktivity** na dva nové sloupce a spočítá výskyt jednotlivých **ActivityId**.
 
 ```Kusto
 SecurityEvent
@@ -248,7 +248,7 @@ SecurityEvent
 | summarize count() by activityID
 ```
 
-### <a name="count-security-events-related-to-permissions"></a>Počet událostí zabezpečení souvisejících s oprávněními
+### <a name="count-security-events-related-to-permissions"></a>Spočítat události zabezpečení související s oprávněními
 Tento příklad ukazuje počet záznamů **securityEvent**, ve kterých sloupec **Activity** sloupec obsahuje celé období _Permissions_. Dotaz se vztahuje na záznamy vytvořené za posledních 30 minut.
 
 ```Kusto
@@ -257,8 +257,8 @@ SecurityEvent
 | summarize EventCount = countif(Activity has "Permissions")
 ```
 
-### <a name="find-accounts-that-failed-to-log-in-from-computers-with-a-security-detection"></a>Najít účty, které se nepodařilo přihlásit z počítačů s detekce zabezpečení
-Tento příklad vyhledá a počty účty, které se nepodařilo přihlásit z počítačů, na kterých uvedeme detekce zabezpečení.
+### <a name="find-accounts-that-failed-to-log-in-from-computers-with-a-security-detection"></a>Vyhledání účtů, kterým se nepodařilo přihlásit z počítačů s detekcí zabezpečení
+Tento příklad najde a spočítá účty, které selhaly při přihlášení z počítačů, ve kterých identifikujeme detekci zabezpečení.
 
 ```Kusto
 let detections = toscalar(SecurityDetection
@@ -268,8 +268,8 @@ SecurityEvent
 | summarize count() by Account
 ```
 
-### <a name="is-my-security-data-available"></a>Je k dispozici data zabezpečení?
-Spouští se data často zkoumání začíná Kontrola dostupnosti dat. Tento příklad ukazuje počet **SecurityEvent** záznamy za posledních 30 minut.
+### <a name="is-my-security-data-available"></a>Jsou k dispozici moje data zabezpečení?
+Spuštění průzkumu dat často začíná kontrolou dostupnosti dat. Tento příklad zobrazuje počet záznamů **SecurityEvent** za posledních 30 minut.
 
 ```Kusto
 SecurityEvent 
@@ -277,8 +277,8 @@ SecurityEvent
 | count
 ```
 
-### <a name="parse-activity-name-and-id"></a>Parsovat název aktivity a ID
-Následující dva příklady spoléhají na pevný struktury **aktivity** sloupce: \<ID\>-\<název\>. V prvním příkladu se používá **analyzovat** operátor přiřazení hodnoty k dva nové sloupce: **activityID** a **activityDesc**.
+### <a name="parse-activity-name-and-id"></a>Název a ID aktivity analýzy
+Následující dva příklady jsou závislé na pevné struktuře sloupce **aktivita** : \<Název\>-ID\<.\> První příklad používá operátor **Parse** k přiřazení hodnot dvěma novým sloupcům: **ActivityId** a **activityDesc**.
 
 ```Kusto
 SecurityEvent
@@ -287,7 +287,7 @@ SecurityEvent
 | parse Activity with activityID " - " activityDesc
 ```
 
-V tomto příkladu **rozdělit** operátor vytvoří pole ze samostatných hodnot
+V tomto příkladu se používá operátor **Split** k vytvoření pole samostatných hodnot.
 ```Kusto
 SecurityEvent
 | take 100
@@ -296,8 +296,8 @@ SecurityEvent
 | project Activity , activityArr, activityId=activityArr[0]
 ```
 
-### <a name="explicit-credentials-processes"></a>Explicitní přihlašovací údaje procesy
-Následující příklad ukazuje výsečový graf procesy, které používaly explicitní přihlašovací údaje za poslední týden
+### <a name="explicit-credentials-processes"></a>Explicitní procesy přihlašovacích údajů
+Následující příklad ukazuje výsečový graf procesů, které používaly explicitní přihlašovací údaje za poslední týden.
 
 ```Kusto
 SecurityEvent
@@ -308,9 +308,9 @@ SecurityEvent
 | render piechart 
 ```
 
-### <a name="top-running-processes"></a>Horní spuštěných procesů
+### <a name="top-running-processes"></a>Nejvyšší spuštěné procesy
 
-Následující příklad ukazuje časová osa aktivity pro pět nejčastěji používané procesy za poslední tři dny.
+Následující příklad znázorňuje časovou aktivitu pro pět nejběžnějších procesů za poslední tři dny.
 
 ```Kusto
 // Find all processes that started in the last three days. ID 4688: A new process has been created.
@@ -331,9 +331,9 @@ RunProcesses
 ```
 
 
-### <a name="find-repeating-failed-login-attempts-by-the-same-account-from-different-ips"></a>Najít s opakováním neúspěšných pokusů o přihlášení pomocí stejného účtu z různých IP adres
+### <a name="find-repeating-failed-login-attempts-by-the-same-account-from-different-ips"></a>Hledání opakujících se neúspěšných pokusů o přihlášení ze stejného účtu z různých IP adres
 
-Následující příklad vyhledá neúspěšných pokusů o přihlášení pomocí stejného účtu z více než pět různých IP adres za posledních šest hodin.
+Následující příklad vyhledá neúspěšné pokusy o přihlášení stejného účtu z více než pěti různých IP adres za posledních šest hodin.
 
 ```Kusto
 SecurityEvent 
@@ -343,8 +343,8 @@ SecurityEvent
 | sort by IPCount desc
 ```
 
-### <a name="find-user-accounts-that-failed-to-log-in"></a>Nalezení uživatelských účtů, které se nepodařilo přihlásit 
-Následující příklad určuje uživatelské účty, které se nepodařilo zaznamenat do protokolu ve víc než pětkrát za poslední den, a při jejich poslední pokus o přihlášení.
+### <a name="find-user-accounts-that-failed-to-log-in"></a>Vyhledání uživatelských účtů, u kterých se nezdařilo přihlášení 
+Následující příklad identifikuje uživatelské účty, u kterých se během posledního dne nepodařilo přihlásit více než pět časů a kdy se poslední pokus o přihlášení.
 
 ```Kusto
 let timeframe = 1d;
@@ -356,7 +356,7 @@ SecurityEvent
 | project-away Account1
 ```
 
-Pomocí **spojení**, a **nechat** příkazy lze kontrolujeme Pokud stejné podezřelé účty byly později moct úspěšně přihlásit.
+Pomocí příkazu **Join**a **nechejte** příkazy, které můžeme ověřit, zda byly stejné podezřelé účty později schopny úspěšně přihlásit.
 
 ```Kusto
 let timeframe = 1d;
@@ -381,12 +381,12 @@ let suspicious_users_that_later_logged_in =
 suspicious_users_that_later_logged_in
 ```
 
-## <a name="usage"></a>Využití
+## <a name="usage"></a>Použití
 
-### <a name="calculate-the-average-size-of-perf-usage-reports-per-computer"></a>Vypočítá průměrná velikost sestavy o výkonu využití na jeden počítač
+### <a name="calculate-the-average-size-of-perf-usage-reports-per-computer"></a>Vypočítat průměrnou velikost sestav využití výkonu na počítač
 
-Tento příklad vypočítá průměrná velikost sestavy o výkonu využití na jeden počítač, za poslední 3 hodiny.
-Výsledky jsou zobrazeny v pruhovém grafu.
+Tento příklad vypočítá průměrnou velikost sestav využití výkonu na počítač a za poslední 3 hodiny.
+Výsledky se zobrazí v pruhovém grafu.
 ```Kusto
 Usage 
 | where TimeGenerated > ago(3h)
@@ -397,9 +397,9 @@ Usage
 | render barchart
 ```
 
-### <a name="timechart-latency-percentiles-50-and-95"></a>50 až 95. percentily latence Promítnu
+### <a name="timechart-latency-percentiles-50-and-95"></a>Timechart percentily na latenci 50 a 95
 
-Tento příklad vypočítá a grafy 50. a 95. percentily hlášené **avgLatency** za hodinu za posledních 24 hodin.
+Tento příklad vypočítá a sehlásí hodnoty 50 a 95. percentilu vykázaného **avgLatencyu** za hodinu za posledních 24 hodin.
 
 ```Kusto
 Usage
@@ -408,8 +408,8 @@ Usage
 | render timechart
 ```
 
-### <a name="usage-of-specific-computers-today"></a>Použití určitých počítačích už dnes
-Tento příklad načte **využití** data z posledního dne pro názvy počítačů, která obsahuje řetězec _ContosoFile_. Výsledky jsou seřazeny podle **TimeGenerated**.
+### <a name="usage-of-specific-computers-today"></a>Využití konkrétních počítačů dnes
+Tento příklad načte data o **využití** za poslední den pro názvy počítačů, které obsahují řetězec _ContosoFile_. Výsledky jsou seřazené podle **TimeGenerated**.
 
 ```Kusto
 Usage
@@ -420,8 +420,8 @@ Usage
 
 ## <a name="updates"></a>Aktualizace
 
-### <a name="computers-still-missing-updates"></a>Počítače stále chybějící aktualizace
-Tento příklad zobrazí seznam počítačů, které byly chybí jeden nebo více důležitých aktualizací před pár dny a pořád chybí aktualizace.
+### <a name="computers-still-missing-updates"></a>Počítače pořád scházejí aktualizace
+V tomto příkladu se zobrazí seznam počítačů, ve kterých chybí jedna nebo několik důležitých aktualizací před několika dny a stále chybí aktualizace.
 
 ```Kusto
 let ComputersMissingUpdates3DaysAgo = Update
@@ -439,5 +439,5 @@ Update
 
 ## <a name="next-steps"></a>Další postup
 
-- Odkazovat [referenční informace k jazyku Kusto](/azure/kusto/query) o na jazyku.
-- Projít [lekci o psaní dotazů protokolu ve službě Azure Monitor](get-started-queries.md).
+- Podrobnosti o jazyku najdete v referenčních informacích k [jazyku Kusto](/azure/kusto/query) .
+- Projděte si [lekci o zápisu dotazů protokolu v Azure monitor](get-started-queries.md).

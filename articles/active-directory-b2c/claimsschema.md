@@ -1,5 +1,5 @@
 ---
-title: ClaimsSchema – Azure Active Directory B2C | Dokumentace Microsoftu
+title: ClaimsSchema-Azure Active Directory B2C | Microsoft Docs
 description: Zadejte element ClaimsSchema vlastní zásady v Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
@@ -10,18 +10,18 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: e09c4530fc6dce00e6d807908c7de598422a440b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 132dd91ba121fc5939a0f30194fe4abdd3755414
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66511851"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67847052"
 ---
 # <a name="claimsschema"></a>ClaimsSchema
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-**ClaimsSchema** element definuje typy deklarací identity, které může být odkazováno jako součást této zásady. Schéma deklarací identity je na místě, kde je deklarovat vaše deklarací identity. Deklarace může být křestní jméno, poslední název, zobrazovaný název, telefonní číslo a další. ClaimsSchema prvek obsahuje seznam **typu deklarace identity** elementy. **Typu deklarace identity** obsahuje element **Id** atributů, což je název deklarace identity. 
+Element **ClaimsSchema** definuje typy deklarací identity, na které se dá odkazovat v rámci zásad. Schéma deklarací identity je místo, kde deklarujete deklarace identity. Deklarace identity může být křestní jméno, příjmení, zobrazovaný název, telefonní číslo a další. Element ClaimsSchema obsahuje seznam elementů **ClaimType** . Element **ClaimType** obsahuje atribut **ID** , což je název deklarace identity.
 
 ```XML
 <BuildingBlocks>
@@ -40,41 +40,41 @@ ms.locfileid: "66511851"
 
 ## <a name="claimtype"></a>ClaimType
 
-**Typu deklarace identity** prvek obsahuje následující atribut:
+Element **ClaimType** obsahuje následující atribut:
 
 | Atribut | Požadováno | Popis |
 | --------- | -------- | ----------- |
-| ID | Ano | Identifikátor, který se používá pro typ deklarace identity. Další prvky můžete pomocí tohoto identifikátoru v zásadách. |
+| Id | Ano | Identifikátor, který se používá pro typ deklarace. Ostatní elementy můžou tento identifikátor v zásadách použít. |
 
-**Typu deklarace identity** prvek obsahuje následující prvky:
+Element **ClaimType** obsahuje následující prvky:
 
-| Element | Výskyty | Popis |
+| Prvek | Výskytů | Popis |
 | ------- | ----------- | ----------- |
-| displayName | 0:1 | Název, který se zobrazí uživatelům na různých obrazovkách. Hodnota může být [lokalizované](localization.md). |
-| DataType | 0:1 | Typ deklarace identity. Datové typy logická hodnota, date, dateTime, int, long, string, třída stringCollection, je možné alternativeSecurityIdCollection. |
-| DefaultPartnerClaimTypes | 0:1 | Výchozí partnerské deklarace typů, který chcete použít pro zadaný protokol. Hodnota se dají přepsat v **PartnerClaimType** zadané v poli **InputClaim** nebo **OutputClaim** elementy. Tento element slouží k určení výchozí název pro určitý protokol.  |
-| Maska | 0:1 | Volitelný řetězec maskování znaků, které mohou být použity při zobrazení deklarace identity. Například můžete jako XXX XXX-4343 maskována 324-232-4343 číslo telefonu. |
-| UserHelpText | 0:1 | Popis typu deklarace identity, které vám pomůžou uživatelům pochopit jeho účel. Hodnota může být [lokalizované](localization.md). |
-| UserInputType | 0:1 | Typ vstupního ovládacího prvku, který by měl být k dispozici pro uživatele, když ručně zadat data deklarace identity pro typ deklarace identity. Zobrazíte vstupní uživatelem definované později na této stránce. |
-| Omezení | 0:1 | Omezení hodnoty pro tato deklarace identity, jako je například regulárních výrazů (Regex) nebo seznam přijatelných hodnot. Hodnota může být [lokalizované](localization.md). |
-PredicateValidationReference| 0:1 | Odkaz na **PredicateValidationsInput** elementu. **PredicateValidationReference** prvky umožňují provádět proces ověření k zajištění, že se zadá jenom správně vytvořená data. Další informace najdete v tématu [predikáty](predicates.md). |
+| DisplayName | 0:1 | Název, který se zobrazí uživatelům na různých obrazovkách. Hodnota může být [lokalizována](localization.md). |
+| DataType | 0:1 | Typ deklarace identity. Lze použít datové typy Boolean, Date, dateTime, int, Long, String, StringCollection a alternativeSecurityIdCollection. |
+| DefaultPartnerClaimTypes | 0:1 | Výchozí typy deklarací partnerů, které se mají použít pro zadaný protokol. Hodnota může být přepsána v **PartnerClaimType** určeném v elementech **InputClaim** nebo **OutputClaim** . Tento prvek slouží k určení výchozího názvu protokolu.  |
+| Zrušit | 0:1 | Volitelné řetězce maskování znaků, které lze použít při zobrazení deklarace identity. Například telefonní číslo 324-232-4343 lze maskovat jako XXX-XXX-4343. |
+| UserHelpText | 0:1 | Popis typu deklarace, který může být užitečný pro uživatele, aby porozuměl jeho účelu. Hodnota může být [lokalizována](localization.md). |
+| UserInputType | 0:1 | Typ vstupního ovládacího prvku, který má být uživateli k dispozici, když ručně zadáte data deklarace pro daný typ deklarace identity. Podívejte se na typy vstupu uživatele definované dále na této stránce. |
+| Omezení | 0:1 | Omezení hodnoty pro tuto deklaraci identity, například regulární výraz (Regex) nebo seznam přijatelných hodnot. Hodnota může být [lokalizována](localization.md). |
+PredicateValidationReference| 0:1 | Odkaz na element **PredicateValidationsInput** . Prvky **PredicateValidationReference** umožňují provést proces ověření, aby bylo zajištěno, že budou zadána pouze správně vytvořená data. Další informace najdete v tématu [predikáty](predicates.md). |
 
 ### <a name="defaultpartnerclaimtypes"></a>DefaultPartnerClaimTypes
 
 **DefaultPartnerClaimTypes** může obsahovat následující element:
 
-| Element | Výskyty | Popis |
+| Prvek | Výskytů | Popis |
 | ------- | ----------- | ----------- |
-| Protocol | 0: n | Seznam protokolů s příslušným partnerem výchozí název typu deklarace. |
+| Protocol | 0: n | Seznam protokolů s výchozím názvem typu deklarace identity partnera. |
 
-**Protokol** prvek obsahuje následující atributy:
+Element **Protocol** obsahuje následující atributy:
 
 | Atribut | Požadováno | Popis |
 | --------- | -------- | ----------- |
-| Name | Ano | Název platný protokol podporovaný službou Azure AD B2C. Možné hodnoty:  OAuth1, OAuth2, typu SAML2, OpenIdConnect, WsFed nebo WsTrust. |
-| PartnerClaimType | Ano | Název typu deklarace identity se použije. |
+| Name | Ano | Název platného protokolu, který podporuje Azure AD B2C. Možné hodnoty jsou:  OAuth1, OAuth2, typu Saml2, OpenIdConnect, WsFed nebo WsTrust. |
+| PartnerClaimType | Ano | Název typu deklarace, který se má použít |
 
-V následujícím příkladu, při architekturu rozhraní identit interakci s zprostředkovatele identity typu SAML2 nebo aplikaci předávající strany **příjmení** deklarace identity se mapuje na `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`, OpenIdConnect a OAuth2, je deklarace identity mapovat na `family_name`.
+V následujícím příkladu, když architektura prostředí identity komunikuje s poskytovatelem identity typu Saml2 nebo s aplikací předávající strany, je přidaná deklarace  identity namapovaná na `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`, s OpenIdConnect a OAuth2, deklarace je namapovaná na `family_name` .
 
 ```XML
 <ClaimType Id="surname">
@@ -88,8 +88,8 @@ V následujícím příkladu, při architekturu rozhraní identit interakci s zp
 </ClaimType>
 ```
 
-V důsledku toho tokenu JWT vydaného službou Azure AD B2C, generuje `family_name` namísto názvu typu deklarace identity **příjmení**.
- 
+Výsledkem je, že token JWT vystavil Azure AD B2C a `family_name` místo něho vygeneruje jméno typu "název deklarace identity".
+
 ```JSON
 {
   "sub": "6fbbd70d-262b-4b50-804c-257ae1706ef2",
@@ -100,31 +100,31 @@ V důsledku toho tokenu JWT vydaného službou Azure AD B2C, generuje `family_na
 }
 ```
 
-### <a name="mask"></a>Maska
+### <a name="mask"></a>Zrušit
 
-**Maska** prvek obsahuje následující atributy:
+Element **Maske** obsahuje následující atributy:
 
 | Atribut | Požadováno | Popis |
 | --------- | -------- | ----------- |
-| `Type` | Ano | Typ deklarace identity masky. Možné hodnoty: `Simple` nebo `Regex`. `Simple` Hodnota označuje, že maska jednoduchý text platí pro přední části deklarace řetězec. `Regex` Hodnota značí, že regulární výraz se použije k deklaraci řetězec jako celek.  Pokud `Regex` není zadána hodnota, volitelný atribut musí být také definován pomocí regulárních výrazů používat. |
-| `Regex` | Ne | Pokud **`Type`** je nastavena na `Regex`, zadejte regulární výraz k použití.
+| `Type` | Ano | Typ masky deklarace identity. Možné hodnoty: `Simple` nebo `Regex`. `Simple` Hodnota označuje, že je použita jednoduchá textová maska pro úvodní část deklarace řetězce. `Regex` Hodnota označuje, že regulární výraz je použit na deklaraci řetězce jako celek.  Pokud je zadána hodnota, volitelný atribut musí být také definován s regulárním výrazem, který má být použit. `Regex` |
+| `Regex` | Ne | Pokud **`Type`** je nastaven na `Regex`, zadejte regulární výraz, který se má použít.
 
-Následující příklad nastaví **PhoneNumber** deklarace identity s `Simple` masky:
+Následující příklad konfiguruje deklaraci **PhoneNumber** s `Simple` maskou:
 
 ```XML
 <ClaimType Id="PhoneNumber">
   <DisplayName>Phone Number</DisplayName>
   <DataType>string</DataType>
-  <Mask Type="Simple">XXX-XXX-</Mask>  
+  <Mask Type="Simple">XXX-XXX-</Mask>
   <UserHelpText>Your telephone number.</UserHelpText>
 </ClaimType>
 ```
 
-Architekturu rozhraní identit vykreslí telefonní číslo při skrytí prvních šesti číslic:
+Architektura prostředí identity vykreslí telefonní číslo a skryje prvních šest číslic:
 
-![Typ s maskou pomocí deklarace.](./media/claimsschema/mask.png)
+![Deklarace identity telefonního čísla zobrazená v prohlížeči s prvních šesti číslicemi maskovánými x](./media/claimsschema/mask.png)
 
-Následující příklad nastaví **AlternateEmail** deklarace identity s `Regex` masky:
+Následující příklad konfiguruje deklaraci identity **AlternateEmail** pomocí `Regex` masky:
 
 ```XML
 <ClaimType Id="AlternateEmail">
@@ -135,37 +135,37 @@ Následující příklad nastaví **AlternateEmail** deklarace identity s `Regex
 </ClaimType>
 ```
 
-Architekturu rozhraní identit vykreslí pouze první písmeno e-mailovou adresu a název domény e-mailu:
+Architektura prostředí identity vykresluje jenom první písmeno e-mailové adresy a název e-mailové domény:
 
-![Typ s maskou pomocí deklarace.](./media/claimsschema/mask-regex.png)
+![Deklarace e-mailu zobrazená v prohlížeči se znaky maskovánými hvězdičkami](./media/claimsschema/mask-regex.png)
 
 
 ### <a name="restriction"></a>Omezení
 
-**Omezení** element může obsahovat následující atribut:
+Element **omezení** může obsahovat následující atribut:
 
 | Atribut | Požadováno | Popis |
 | --------- | -------- | ----------- |
-| MergeBehavior | Ne | Metoda použitá ke sloučení hodnoty výčtu s ClaimType v nadřazené zásady se stejným identifikátorem. Pomocí tohoto atributu při přepsání deklarace zadané v základních zásadách. Možné hodnoty: `Append`, `Prepend`, nebo `ReplaceAll`. `Append` Hodnota je kolekce dat, která má být připojen na konec kolekce zadaná v nadřazené zásady. `Prepend` Hodnota je kolekce dat, která by se měl přidat před kolekce zadaná v nadřazené zásady. `ReplaceAll` Hodnota je kolekce dat zadaná v nadřazené zásady, které mají být ignorovány. |
+| MergeBehavior | Ne | Metoda použitá ke sloučení hodnot výčtu se třídou ClaimType v nadřazené zásadě se stejným identifikátorem. Tento atribut použijte, pokud přepíšete deklaraci identity zadanou v základní zásadě. Možné hodnoty: `Append`, `Prepend`, nebo `ReplaceAll`. `Append` Hodnota je kolekce dat, která by se měla připojit na konec kolekce zadané v nadřazené zásadě. `Prepend` Hodnota je kolekce dat, která by se měla přidat před kolekce zadané v nadřazené zásadě. `ReplaceAll` Hodnota je kolekce dat zadaných v nadřazené zásadě, která by se měla ignorovat. |
 
-**Omezení** prvek obsahuje následující prvky:
+Element **omezení** obsahuje následující prvky:
 
-| Element | Výskyty | Popis |
+| Prvek | Výskytů | Popis |
 | ------- | ----------- | ----------- |
-| Výčet | 1: n | Dostupné možnosti v uživatelském rozhraní pro uživatele a vyberte deklaraci identity, jako jsou hodnoty v rozevíracího seznamu. |
-| Vzor | 1:1 | Regulární výraz k použití. |
+| Enumeration | 1: n | Dostupné možnosti v uživatelském rozhraní pro uživatele, kteří mají vybrat pro deklaraci identity, například hodnotu v rozevíracím seznamu. |
+| Vzor | 1:1 | Regulární výraz, který má být použit. |
 
-### <a name="enumeration"></a>Výčet
+### <a name="enumeration"></a>Enumeration
 
-**Výčet** prvek obsahuje následující atributy:
+Prvek **výčtu** obsahuje následující atributy:
 
 | Atribut | Požadováno | Popis |
 | --------- | -------- | ----------- |
-| Text | Ano | Řetězec zobrazení, která se zobrazí uživateli uživatelské rozhraní pro tuto možnost. |
-|Hodnota | Ano | Hodnota deklarace identity, která souvisí s výběrem této možnosti. |
-| SelectByDefault | Ne | Určuje, zda by měla být vybraná tato možnost ve výchozím nastavení v uživatelském rozhraní. Možné hodnoty: True nebo False. |
+| Text | Ano | Zobrazovaný řetězec, který je zobrazen uživateli v uživatelském rozhraní pro tuto možnost. |
+|Value | Ano | Hodnota deklarace identity, která je přidružená k výběru této možnosti. |
+| SelectByDefault | Ne | Určuje, zda má být tato možnost ve výchozím nastavení vybrána v uživatelském rozhraní. Možné hodnoty: True nebo False. |
 
-Následující příklad nastaví **Město** rozevírací seznam deklarací identity s výchozí nastavenou na `New York`:
+Následující příklad konfiguruje deklaraci identity rozevíracího seznamu **měst** s výchozí hodnotou nastavenou `New York`na:
 
 ```XML
 <ClaimType Id="city">
@@ -179,21 +179,21 @@ Následující příklad nastaví **Město** rozevírací seznam deklarací iden
   </Restriction>
 </ClaimType>
 ```
-Rozevírací seznam město s výchozí nastavenou na New York:
 
-![Rozevírací seznam Město](./media/claimsschema/dropdownsingleselect.png)
+Rozevírací seznam měst s výchozí hodnotou nastavenou na New York:
 
+![Ovládací prvek DropDown vykreslený v prohlížeči a zobrazení výchozí hodnoty](./media/claimsschema/dropdownsingleselect.png)
 
 ### <a name="pattern"></a>Vzor
 
-**Vzor** element může obsahovat následující atributy:
+Prvek **vzoru** může obsahovat následující atributy:
 
 | Atribut | Požadováno | Popis |
 | --------- | -------- | ----------- |
-| Regulární výraz | Ano | Regulární výraz, aby byla platná musí odpovídat deklarace identity tohoto typu. |
+| RegularExpression | Ano | Regulární výraz, který deklarace identity tohoto typu musí splňovat, aby byl platný. |
 | HelpText | Ne | Vzor nebo regulární výraz pro tuto deklaraci. |
 
-Následující příklad nastaví **e-mailu** deklarace identity s regulárním výrazem vstupní ověření a text nápovědy:
+V následujícím příkladu je nakonfiguruje deklarace **e-mailu** pomocí ověřování vstupu regulárního výrazu a textu v nápovědě:
 
 ```XML
 <ClaimType Id="email">
@@ -210,19 +210,19 @@ Následující příklad nastaví **e-mailu** deklarace identity s regulárním 
  </ClaimType>
 ```
 
-Architekturu rozhraní identit vykreslí deklarace identity e-mailové adresy s ověření vstupu formát e-mailu:
+Architektura prostředí identity vykreslí deklaraci identity e-mailové adresy pomocí ověřování vstupu formátu e-mailu:
 
-![Typ se vzorem pomocí deklarace.](./media/claimsschema/pattern.png)
+![Textové pole zobrazující chybovou zprávu aktivovaný omezením Regex](./media/claimsschema/pattern.png)
 
 ## <a name="userinputtype"></a>UserInputType
 
-Azure AD B2C podporuje různé typy vstupu uživatele, jako je textové pole, heslo a rozevírací seznam, který se dá použít při ručně zadat data deklarace identity pro typ deklarace identity. Je nutné zadat **UserInputType** při shromažďování informací od uživatele s využitím [držitelem s prohlašovanou technický profil](self-asserted-technical-profile.md).
+Azure AD B2C podporuje různé typy vstupu uživatele, jako je textové pole, heslo a rozevírací seznam, které se dají použít, když ručně zadáte data deklarace identity pro daný typ deklarace identity. Pokud shromažďujete informace od uživatele pomocí [technického profilu s vlastním uplatněním](self-asserted-technical-profile.md), musíte zadat **UserInputType** .
 
 ### <a name="textbox"></a>TextBox
 
-**TextBox** typ vstupu uživatele, používá k poskytování jednořádkové textové pole.
+Textové  pole pro zadání uživatelského rozhraní slouží k zadání jednořádkového textového pole.
 
-![Typ s textového pole pomocí deklarace.](./media/claimsschema/textbox.png)
+![Textové pole zobrazující vlastnosti zadané v typu deklarace](./media/claimsschema/textbox.png)
 
 ```XML
 <ClaimType Id="displayName">
@@ -235,9 +235,9 @@ Azure AD B2C podporuje různé typy vstupu uživatele, jako je textové pole, he
 
 ### <a name="emailbox"></a>EmailBox
 
-**EmailBox** typ vstupu uživatele se používá k poskytnutí vstupní pole základní e-mailu.
+Typ vstupu uživatele **EmailBox** se používá k poskytnutí základního pole pro zadání e-mailu.
 
-![Typ s emailbox pomocí deklarace.](./media/claimsschema/emailbox.png)
+![EmailBox zobrazující vlastnosti zadané v typu deklarace identity](./media/claimsschema/emailbox.png)
 
 ```XML
 <ClaimType Id="email">
@@ -253,9 +253,9 @@ Azure AD B2C podporuje různé typy vstupu uživatele, jako je textové pole, he
 
 ### <a name="password"></a>Heslo
 
-**Heslo** typ vstupu uživatele se používá k zaznamenání heslo zadané uživatelem.
+Typ vstupu uživatele **hesla** se používá k zaznamenání hesla zadaného uživatelem.
 
-![Typ s heslem pomocí deklarace.](./media/claimsschema/password.png)
+![Použití typu deklarace identity s heslem](./media/claimsschema/password.png)
 
 ```XML
 <ClaimType Id="password">
@@ -268,9 +268,9 @@ Azure AD B2C podporuje různé typy vstupu uživatele, jako je textové pole, he
 
 ### <a name="datetimedropdown"></a>DateTimeDropdown
 
-**DateTimeDropdown** typ vstupu uživatele, používá k poskytování sadu z rozevírací nabídky vyberte den, měsíc a rok. Predikáty a PredicateValidations prvky můžete řídit data minimální a maximální hodnoty. Další informace najdete v tématu **nakonfigurovat konkrétní období** část [predikáty a PredicateValidations](predicates.md).
+Typ vstupu uživatele **DateTimeDropdown** slouží k poskytnutí sady rozevíracích seznamu pro výběr dne, měsíce a roku. Pomocí predikátů a elementů PredicateValidations můžete řídit minimální a maximální hodnoty data. Další informace najdete v části predikáty **Konfigurace rozsahu kalendářních dat** v [predikátech a PredicateValidations](predicates.md).
 
-![Typ s datetimedropdown pomocí deklarace.](./media/claimsschema/datetimedropdown.png)
+![Použití typu deklarace identity s datetimedropdown](./media/claimsschema/datetimedropdown.png)
 
 ```XML
 <ClaimType Id="dateOfBirth">
@@ -283,9 +283,9 @@ Azure AD B2C podporuje různé typy vstupu uživatele, jako je textové pole, he
 
 ### <a name="radiosingleselect"></a>RadioSingleSelect
 
-**RadioSingleSelect** typ vstupu uživatele, používá k poskytování kolekce přepínače, který umožňuje uživateli vybrat jednu možnost.
+Typ vstupu uživatele **RadioSingleSelect** slouží k poskytnutí kolekce přepínačů, které umožňují uživateli vybrat jednu možnost.
 
-![Typ s radiodsingleselect pomocí deklarace.](./media/claimsschema/radiosingleselect.png)
+![Použití typu deklarace identity s radiodsingleselect](./media/claimsschema/radiosingleselect.png)
 
 ```XML
 <ClaimType Id="color">
@@ -297,14 +297,14 @@ Azure AD B2C podporuje různé typy vstupu uživatele, jako je textové pole, he
     <Enumeration Text="Green " Value="Green" SelectByDefault="false" />
     <Enumeration Text="Orange" Value="Orange" SelectByDefault="true" />
   </Restriction>
-</ClaimType>    
+</ClaimType>
 ```
 
 ### <a name="dropdownsingleselect"></a>DropdownSingleSelect
 
-**DropdownSingleSelect** typ vstupu uživatele, používá k poskytování rozevíracího seznamu, který umožňuje uživateli vybrat jednu možnost.
+Typ vstupu uživatele **DropdownSingleSelect** slouží k poskytnutí rozevíracího seznamu, který uživateli umožňuje vybrat jednu možnost.
 
-![Typ s dropdownsingleselect pomocí deklarace.](./media/claimsschema/dropdownsingleselect.png)
+![Použití typu deklarace identity s dropdownsingleselect](./media/claimsschema/dropdownsingleselect.png)
 
 ```XML
 <ClaimType Id="city">
@@ -321,9 +321,9 @@ Azure AD B2C podporuje různé typy vstupu uživatele, jako je textové pole, he
 
 ### <a name="checkboxmultiselect"></a>CheckboxMultiSelect
 
-**CheckboxMultiSelect** typ vstupu uživatele, používá k poskytování kolekce zaškrtávací políčka, která umožňuje uživateli vybrat více možností.
+Typ vstupu uživatele **CheckboxMultiSelect** slouží k poskytnutí kolekce zaškrtávacích políček, která uživateli umožní vybrat více možností.
 
-![Typ s checkboxmultiselect pomocí deklarace.](./media/claimsschema/checkboxmultiselect.png)
+![Použití typu deklarace identity s checkboxmultiselect](./media/claimsschema/checkboxmultiselect.png)
 
 ```XML
 <ClaimType Id="languages">
@@ -338,11 +338,11 @@ Azure AD B2C podporuje různé typy vstupu uživatele, jako je textové pole, he
 </ClaimType>
 ```
 
-### <a name="readonly"></a>jen pro čtení
+### <a name="readonly"></a>ReadOnly
 
-**Jen pro čtení** typ vstupu uživatele se používá k poskytnutí pole jen pro čtení pro zobrazení hodnoty a deklarace identity.
+Typ vstupu uživatele **jen pro čtení** se používá k zadání pole jen pro čtení, které zobrazí deklaraci identity a hodnotu.
 
-![Typ s jen pro čtení pomocí deklarace.](./media/claimsschema/readonly.png)
+![Použití typu deklarace identity s jen pro čtení](./media/claimsschema/readonly.png)
 
 ```XML
 <ClaimType Id="membershipNumber">
@@ -354,11 +354,11 @@ Azure AD B2C podporuje různé typy vstupu uživatele, jako je textové pole, he
 ```
 
 
-### <a name="paragraph"></a>Odstavec
+### <a name="paragraph"></a>Pododstavec
 
-**Odstavec** typ vstupu uživatele se používá k poskytnutí pole, která zobrazí text pouze do značky odstavce. Například &lt;p&gt;text&lt;/p&gt;.
+**Odstavcový** typ vstupu uživatele slouží k poskytnutí pole, které zobrazuje text pouze v označení odstavce. Například &lt;p&gt;text/p&lt;.&gt;
 
-![Typ s odstavec pomocí deklarace.](./media/claimsschema/paragraph.png)
+![Použití typu deklarace s odstavcem](./media/claimsschema/paragraph.png)
 
 ```XML
 <ClaimType Id="responseMsg">
@@ -375,4 +375,4 @@ Azure AD B2C podporuje různé typy vstupu uživatele, jako je textové pole, he
 </ClaimType>
 ```
 
-Chcete-li zobrazit jeden z **výčet** hodnoty v **responseMsg** deklarace identity, použijte `GetMappedValueFromLocalizedCollection` nebo `CreateStringClaim` transformace deklarací identity. Další informace najdete v tématu [transformace deklarací identity řetězců](string-transformations.md) 
+Chcete-li zobrazit jednu z hodnot **výčtu** v deklaraci **responseMsg** , `GetMappedValueFromLocalizedCollection` použijte `CreateStringClaim` transformaci nebo transformaci deklarací. Další informace najdete v tématu [transformace řetězcových deklarací](string-transformations.md) .

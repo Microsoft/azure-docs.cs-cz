@@ -1,5 +1,5 @@
 ---
-title: Průběžné nasazování – Azure App Service | Dokumentace Microsoftu
+title: Průběžné nasazování – Azure App Service | Microsoft Docs
 description: Naučte se povolit průběžné nasazování do služby Azure App Service.
 services: app-service
 documentationcenter: ''
@@ -12,151 +12,151 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/18/2019
-ms.author: cephalin;dariagrigoriu
+ms.author: cephalin
 ms.reviewer: dariac
 ms.custom: seodec18
-ms.openlocfilehash: 3a207f5513c24f2c33571df929f7490ec7f2eba5
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 3c4811d990cfe107bc3bc4e6d359659b1935c6a4
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67836838"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68297203"
 ---
-# <a name="continuous-deployment-to-azure-app-service"></a>Průběžné nasazování do služby Azure App Service
+# <a name="continuous-deployment-to-azure-app-service"></a>Průběžné nasazování do Azure App Service
 
-[Azure App Service](overview.md) umožňuje průběžné nasazování z Githubu, BitBucket, a [úložišť Azure](https://azure.microsoft.com/services/devops/repos/) úložišť stažením nejnovější aktualizace. Tento článek ukazuje, jak pomocí webu Azure portal průběžné nasazování vaší aplikace prostřednictvím služby build service Kudu nebo [kanály Azure](https://azure.microsoft.com/services/devops/pipelines/). 
+[Azure App Service](overview.md) umožňuje průběžné nasazování z GitHubu, BitBucket a [Azure Repos](https://azure.microsoft.com/services/devops/repos/) úložišť pomocí nejnovějších aktualizací. V tomto článku se dozvíte, jak používat Azure Portal k průběžné nasazování vaší aplikace prostřednictvím služby sestavení Kudu nebo [Azure Pipelines](https://azure.microsoft.com/services/devops/pipelines/). 
 
-Další informace o služba source control services najdete v tématu [vytvoření úložiště (GitHub)], [vytvoření úložiště (BitBucket)], nebo [vytvoření nového úložiště Git (úložiště Azure)].
+Další informace o službách správy zdrojového kódu najdete v tématech [Vytvoření úložiště (GitHub)], [Vytvoření úložiště (Bitbucket)]nebo [vytvoření nového úložiště Git (Azure Repos)].
 
-Jak ručně nakonfigurovat průběžné nasazování z cloudové úložiště, kterou portál nepodporuje přímo, jako například [GitLab](https://gitlab.com/), naleznete v tématu [nastavit průběžné nasazování pomocí vyžadováno provedení ručních kroků](https://github.com/projectkudu/kudu/wiki/Continuous-deployment#setting-up-continuous-deployment-using-manual-steps).
+Chcete-li ručně nakonfigurovat průběžné nasazování z cloudového úložiště, které portál přímo nepodporuje, například [GitLab](https://gitlab.com/), přečtěte si téma [Nastavení průběžného nasazování pomocí ručních kroků](https://github.com/projectkudu/kudu/wiki/Continuous-deployment#setting-up-continuous-deployment-using-manual-steps).
 
 [!INCLUDE [Prepare repository](../../includes/app-service-deploy-prepare-repo.md)]
 
-## <a name="authorize-azure-app-service"></a>Povolit službě Azure App Service 
+## <a name="authorize-azure-app-service"></a>Autorizovat Azure App Service 
 
-Pro použití úložiště Azure, ujistěte se, že vaše organizace Azure DevOps je propojený s předplatným Azure. Další informace najdete v tématu [nastavení účtu služby Azure DevOps, můžete nasadit do webové aplikace](https://github.com/projectkudu/kudu/wiki/Setting-up-a-VSTS-account-so-it-can-deploy-to-a-Web-App).
+Pokud chcete použít Azure Repos, ujistěte se, že je vaše organizace Azure DevOps propojená s vaším předplatným Azure. Další informace najdete v tématu [Nastavení účtu Azure DevOps Services, aby ho bylo možné nasadit do webové aplikace](https://github.com/projectkudu/kudu/wiki/Setting-up-a-VSTS-account-so-it-can-deploy-to-a-Web-App).
 
-Pro GitHub nebo Bitbucket Povolit službě Azure App Service pro připojení k úložišti. Stačí jednou autorizovat s službu správy zdrojových kódů. 
+V případě Bitbucket nebo GitHubu autorizujte Azure App Service pro připojení k úložišti. Pouze jednou je třeba autorizovat se službou správy zdrojového kódu. 
 
-1. Vyberte **App Services** v [webu Azure portal](https://portal.azure.com) levé navigaci a pak vyberte webovou aplikaci, kterou chcete nasadit. 
+1. V levém navigačním panelu vyberte **App Services** [Azure Portal](https://portal.azure.com) a pak vyberte webovou aplikaci, kterou chcete nasadit. 
    
-1. Na stránce aplikace vyberte **Deployment Center** v levé nabídce.
+1. Na stránce aplikace vyberte v nabídce vlevo možnost **centrum nasazení** .
    
-1. Na **Deployment Center** stránce **Githubu** nebo **Bitbucket**a pak vyberte **Authorize**. 
+1. Na stránce **centrum nasazení** vyberte **GitHub** nebo **Bitbucket**a potom vyberte autorizovat. 
    
-   ![Vyberte službu správy zdrojových kódů a potom vyberte Authorize.](media/app-service-continuous-deployment/github-choose-source.png)
+   ![Vyberte službu správy zdrojového kódu a potom vyberte autorizovat.](media/app-service-continuous-deployment/github-choose-source.png)
    
-1. Přihlaste se ke službě v případě potřeby a postupujte podle zobrazených výzev ověřování. 
+1. V případě potřeby se přihlaste ke službě a postupujte podle pokynů pro autorizaci. 
 
 ## <a name="enable-continuous-deployment"></a>Povolit průběžné nasazování 
 
-Jakmile povolíte službu správy zdrojových kódů, nakonfigurujte svou aplikaci pro průběžné nasazování prostřednictvím integrovaných [Kudu App Service buildovací server](#option-1-use-the-app-service-build-service), nebo prostřednictvím [kanály Azure](#option-2-use-azure-pipelines). 
+Po autorizaci služby správy zdrojového kódu nakonfigurujte aplikaci pro průběžné nasazování prostřednictvím integrovaného [Kudu App Service sestavovacího serveru](#option-1-use-the-app-service-build-service)nebo prostřednictvím [Azure Pipelines](#option-2-use-azure-pipelines). 
 
-### <a name="option-1-use-the-app-service-build-service"></a>Option 1: Používají sestavovací službu App Service
+### <a name="option-1-use-the-app-service-build-service"></a>Možnost 1: Použití sestavovací služby App Service
 
-Můžete použít integrované služby App Service Kudu buildovací server pro průběžné nasazování z Githubu, Bitbucket nebo úložiště Azure. 
+K průběžnému nasazování z GitHubu, Bitbucket nebo Azure Repos můžete použít vestavěný Kudu App Service Build Server. 
 
-1. Vyberte **App Services** v [webu Azure portal](https://portal.azure.com) levé navigaci a pak vyberte webovou aplikaci, kterou chcete nasadit. 
+1. V levém navigačním panelu vyberte **App Services** [Azure Portal](https://portal.azure.com) a pak vyberte webovou aplikaci, kterou chcete nasadit. 
    
-1. Na stránce aplikace vyberte **Deployment Center** v levé nabídce.
+1. Na stránce aplikace vyberte v nabídce vlevo možnost **centrum nasazení** .
    
-1. Vyberte váš poskytovatel správy zdrojů autorizované na **Deployment Center** stránku a vybrat **pokračovat**. Pro GitHub nebo Bitbucket můžete také vybrat **změnit účet** změnit oprávnění účtu. 
+1. Vyberte svého autorizovaného poskytovatele správy zdrojů na stránce **centrum nasazení** a vyberte **pokračovat**. V případě GitHubu nebo Bitbucket můžete také vybrat **změnit účet** a změnit autorizovaný účet. 
    
    > [!NOTE]
-   > Pro použití úložiště Azure, ujistěte se, že vaše organizace služby Azure DevOps je propojený s předplatným Azure. Další informace najdete v tématu [nastavení účtu služby Azure DevOps, můžete nasadit do webové aplikace](https://github.com/projectkudu/kudu/wiki/Setting-up-a-VSTS-account-so-it-can-deploy-to-a-Web-App).
+   > Pokud chcete použít Azure Repos, ujistěte se, že je vaše organizace Azure DevOps Services propojená s vaším předplatným Azure. Další informace najdete v tématu [Nastavení účtu Azure DevOps Services, aby ho bylo možné nasadit do webové aplikace](https://github.com/projectkudu/kudu/wiki/Setting-up-a-VSTS-account-so-it-can-deploy-to-a-Web-App).
    
-1. Pro GitHub nebo úložiště Azure na **sestavení zprostředkovatele** stránce **vytvořit službu App Service**a pak vyberte **pokračovat**. Bitbucket vždy používá sestavovací služba App Service.
+1. Pro GitHub nebo Azure Repos na stránce **poskytovatel sestavení** vyberte **App Service sestavovací služba**a pak vyberte **pokračovat**. Bitbucket vždy používá službu sestavení App Service.
    
-   ![Vyberte sestavovací služba App Service a potom vyberte pokračovat.](media/app-service-continuous-deployment/choose-kudu.png)
+   ![Vyberte App Service sestavovací služba a pak vyberte pokračovat.](media/app-service-continuous-deployment/choose-kudu.png)
    
-1. Na **konfigurovat** stránky:
+1. Na stránce **Konfigurace** :
    
-   - Pro GitHub, rozevírací seznam a vyberte **organizace**, **úložiště**, a **větev** chcete průběžné nasazování.
+   - V části GitHub rozbalte rozevírací seznam a vyberte **organizaci**, **úložiště**a **větev** , kterou chcete nasadit průběžně.
      
      > [!NOTE]
-     > Pokud nevidíte žádné úložiště, budete muset autorizovat službu Azure App Service na webu GitHub. Přejděte do vašeho úložiště GitHub a přejděte na **nastavení** > **aplikací** > **autorizované aplikace OAuth**. Vyberte **služby Azure App Service**a pak vyberte **udělení**.
+     > Pokud nevidíte žádná úložiště, možná budete muset autorizovat Azure App Service v GitHubu. Přejděte do úložiště GitHub a přejděte do **Nastavení** > **aplikace** > **autorizované aplikace OAuth**. Vyberte **Azure App Service**a pak vyberte **udělit**.
      
-   - Bitbucket, vyberte Bitbucketu **týmu**, **úložiště**, a **větev** chcete průběžné nasazování.
+   - Pro Bitbucket vyberte **tým**BitBucket, **úložiště**a **větev** , které chcete průběžně nasadit.
      
-   - Pro úložiště Azure, vyberte **organizace Azure DevOps**, **projektu**, **úložiště**, a **větev** chcete průběžné nasazování.
+   - V Azure Repos vyberte organizaci, **projekt**, **úložiště**a **větev** **Azure DevOps**, které chcete průběžně nasadit.
      
      > [!NOTE]
-     > Pokud není uvedená vaše organizace Azure DevOps, ujistěte se, že je propojený s předplatným Azure. Další informace najdete v tématu [nastavení účtu služby Azure DevOps, můžete nasadit do webové aplikace](https://github.com/projectkudu/kudu/wiki/Setting-up-a-VSTS-account-so-it-can-deploy-to-a-Web-App)...
+     > Pokud vaše organizace Azure DevOps není v seznamu uvedená, ujistěte se, že je propojená s vaším předplatným Azure. Další informace najdete v tématu [Nastavení účtu Azure DevOps Services, aby ho bylo možné nasadit do webové aplikace](https://github.com/projectkudu/kudu/wiki/Setting-up-a-VSTS-account-so-it-can-deploy-to-a-Web-App).
      
 1. Vyberte **pokračovat**.
    
    ![Vyplňte informace o úložišti a pak vyberte pokračovat.](media/app-service-continuous-deployment/configure-kudu.png)
    
-1. Po dokončení konfigurace poskytovatele sestavení, zkontrolujte nastavení na **Souhrn** stránce a pak vyberte **Dokončit**.
+1. Po konfiguraci poskytovatele sestavení zkontrolujte nastavení na stránce **Souhrn** a pak vyberte **Dokončit**.
    
-   Nová potvrzení změn vybrané úložiště a větev teď průběžné nasazování do vaší aplikace služby App Service. Potvrzení a nasazení můžete sledovat na **Deployment Center** stránky.
+   Nová potvrzení ve vybraném úložišti a větvi se teď do vaší aplikace App Service nasadí průběžně. Potvrzení a nasazení můžete sledovat na stránce **centra nasazení** .
    
-   ![Sledování, potvrzení a nasazení v Centru pro nasazení](media/app-service-continuous-deployment/github-finished.png)
+   ![Sledování potvrzení a nasazení v centru nasazení](media/app-service-continuous-deployment/github-finished.png)
 
-### <a name="option-2-use-azure-pipelines"></a>Option 2: Použití Azure Pipelines 
+### <a name="option-2-use-azure-pipelines"></a>Možnost 2: Použití Azure Pipelines 
 
-Pokud váš účet nemá potřebná oprávnění, můžete nastavit kanály Azure k průběžné nasazování z úložiště GitHub nebo úložiště Azure. Další informace o nasazení prostřednictvím kanálů Azure najdete v tématu [nasazení webové aplikace do Azure App Services](/azure/devops/pipelines/apps/cd/deploy-webdeploy-webapps).
+Pokud má váš účet potřebná oprávnění, můžete nastavit Azure Pipelines pro průběžné nasazování z GitHubu nebo Azure Repos úložišť. Další informace o nasazení prostřednictvím Azure Pipelines najdete v tématu [nasazení webové aplikace do Azure App Services](/azure/devops/pipelines/apps/cd/deploy-webdeploy-webapps).
 
-Pro Azure App Service a vytvářet kanály Azure průběžné doručování ve vaší organizaci Azure DevOps: 
+Azure App Service vytvořit průběžné doručování Azure Pipelines ve vaší organizaci Azure DevOps: 
 
-- Váš účet Azure musí mít oprávnění k zápisu do služby Azure Active Directory a vytvořte službu. 
+- Váš účet Azure musí mít oprávnění k zápisu do Azure Active Directory a vytvoření služby. 
   
-- Musí mít váš účet Azure **vlastníka** role ve vašem předplatném Azure.
+- Váš účet Azure musí mít ve svém předplatném Azure roli **vlastníka** .
 
-- Musíte být správcem v projektu Azure DevOps, které chcete použít.
+- Musíte být správce v projektu Azure DevOps, který chcete použít.
 
-Konfigurace kanálů Azure (Preview):
+Konfigurace Azure Pipelines (Preview):
 
-1. Vyberte **App Services** v [webu Azure portal](https://portal.azure.com) levé navigaci a pak vyberte webovou aplikaci, kterou chcete nasadit. 
+1. V levém navigačním panelu vyberte **App Services** [Azure Portal](https://portal.azure.com) a pak vyberte webovou aplikaci, kterou chcete nasadit. 
    
-1. Na stránce aplikace vyberte **Deployment Center** v levé nabídce.
+1. Na stránce aplikace vyberte v nabídce vlevo možnost **centrum nasazení** .
    
-1. Na **sestavení zprostředkovatele** stránce **kanály Azure (Preview)** a pak vyberte **pokračovat**. 
+1. Na stránce **poskytovatel sestavení** vyberte možnost **Azure Pipelines (Preview)** a pak vyberte **pokračovat**. 
    
-1. Na **konfigurovat** stránku, **kód** části:
+1. Na stránce **Konfigurace** v části **kód** :
    
-   - Pro GitHub, rozevírací seznam a vyberte **organizace**, **úložiště**, a **větev** chcete průběžné nasazování.
+   - V části GitHub rozbalte rozevírací seznam a vyberte **organizaci**, **úložiště**a **větev** , kterou chcete nasadit průběžně.
      
      > [!NOTE]
-     > Pokud nevidíte žádné úložiště, budete muset autorizovat službu Azure App Service na webu GitHub. Přejděte do vašeho úložiště GitHub a přejděte na **nastavení** > **aplikací** > **autorizované aplikace OAuth**. Vyberte **služby Azure App Service**a pak vyberte **udělení**.
+     > Pokud nevidíte žádná úložiště, možná budete muset autorizovat Azure App Service v GitHubu. Přejděte do úložiště GitHub a přejděte do **Nastavení** > **aplikace** > **autorizované aplikace OAuth**. Vyberte **Azure App Service**a pak vyberte **udělit**.
      
-   - Pro úložiště Azure, vyberte **organizace Azure DevOps**, **projektu**, **úložiště**, a **větev** chcete nasadit průběžně nebo nakonfigurujte novou organizaci Azure DevOps.
+   - V případě Azure Repos vyberte **organizaci Azure DevOps**, **projekt**, **úložiště**a **větev** , které chcete nasadit průběžně, nebo nakonfigurujte novou organizaci Azure DevOps.
      
      > [!NOTE]
-     > Pokud není uvedená vaše stávající organizace Azure DevOps, budete muset propojit se svým předplatným Azure. Další informace najdete v tématu [definovat kanál pro vydávání verzí CD](/azure/devops/pipelines/apps/cd/deploy-webdeploy-webapps#cd).
+     > Pokud vaše stávající organizace Azure DevOps není v seznamu uvedená, budete ji muset propojit s vaším předplatným Azure. Další informace najdete v tématu [definice kanálu verze CD](/azure/devops/pipelines/apps/cd/deploy-webdeploy-webapps#cd).
      
 1. Vyberte **pokračovat**.
    
-1. Pro úložiště Azure v **sestavení** nastavte jazyk rozhraní, kanály Azure byste měli používat ke spouštění úloh sestavení a pak vyberte **pokračovat**.
+1. Pro Azure Repos v části **sestavení** určete jazykovou architekturu, kterou má Azure Pipelines použít ke spouštění úloh sestavení a pak vyberte **pokračovat**.
    
-1. Na **testovací** zvolte, jestli se má povolit zátěžové testy a pak vyberte **pokračovat**.
+1. Na stránce **test** vyberte, zda chcete povolit zátěžové testy, a pak vyberte **pokračovat**.
    
-1. V závislosti na plánu služby App Service [cenovou úroveň](https://azure.microsoft.com/pricing/details/app-service/plans/), může se zobrazit **nasazení do přípravného prostředí** stránky. Zvolte, jestli se má [povolí sloty nasazení](deploy-staging-slots.md)a pak vyberte **pokračovat**.
+1. V závislosti na [cenové úrovni](https://azure.microsoft.com/pricing/details/app-service/plans/)plánu App Service se může zobrazit stránka **nasazení na přípravu** . Zvolte, jestli se mají [Povolit sloty nasazení](deploy-staging-slots.md), a pak vyberte **pokračovat**.
    
    > [!NOTE]
-   > Kanály Azure neumožňuje průběžného doručování na produkční slot. Smyslem tohoto omezení náhodných nasazení do produkčního prostředí. Nastavit průběžné doručování do přípravného slotu a ověřte změny tam pak Prohodit sloty, až budete připravení.
+   > Azure Pipelines nepovoluje průběžné doručování do produkčního slotu. Toto omezení zabrání neúmyslným nasazením do produkčního prostředí. Nastavte průběžné doručování do přípravného slotu, ověřte tyto změny a až budete připraveni, zaměňte sloty.
    
-1. Po dokončení konfigurace poskytovatele sestavení, zkontrolujte nastavení na **Souhrn** stránce a pak vyberte **Dokončit**.
+1. Po konfiguraci poskytovatele sestavení zkontrolujte nastavení na stránce **Souhrn** a pak vyberte **Dokončit**.
    
-   Nová potvrzení změn vybrané úložiště a větev teď průběžné nasazování do vaší aplikace služby App Service. Potvrzení a nasazení můžete sledovat na **Deployment Center** stránky.
+   Nová potvrzení ve vybraném úložišti a větvi se teď do vaší aplikace App Service nasadí průběžně. Potvrzení a nasazení můžete sledovat na stránce **centra nasazení** .
    
-   ![Sledování, potvrzení a nasazení v Centru pro nasazení](media/app-service-continuous-deployment/github-finished.png)
+   ![Sledování potvrzení a nasazení v centru nasazení](media/app-service-continuous-deployment/github-finished.png)
 
-## <a name="disable-continuous-deployment"></a>Zakázání průběžného nasazování
+## <a name="disable-continuous-deployment"></a>Zakázat průběžné nasazování
 
-Chcete-li zakázat průběžné nasazování, vyberte **odpojit** v horní části vaší aplikace **Centrum nasazení** stránky.
+Chcete-li zakázat průběžné nasazování, vyberte možnost **Odpojit** v horní části stránky **centra nasazení** vaší aplikace.
 
-![Zakázání průběžného nasazování](media/app-service-continuous-deployment/disable.png)
+![Zakázat průběžné nasazování](media/app-service-continuous-deployment/disable.png)
 
 [!INCLUDE [What happens to my app during deployment?](../../includes/app-service-deploy-atomicity.md)]
 
 ## <a name="additional-resources"></a>Další zdroje
 
-* [Zkoumání běžných problémů s průběžným nasazováním](https://github.com/projectkudu/kudu/wiki/Investigating-continuous-deployment)
+* [Prozkoumat běžné problémy s průběžným nasazováním](https://github.com/projectkudu/kudu/wiki/Investigating-continuous-deployment)
 * [Použití Azure Powershellu](/powershell/azureps-cmdlets-docs)
 * [Dokumentace pro Git](https://git-scm.com/documentation)
 * [Projekt Kudu](https://github.com/projectkudu/kudu/wiki)
 
 [Vytvoření úložiště (GitHub)]: https://help.github.com/articles/create-a-repo
 [Vytvoření úložiště (BitBucket)]: https://confluence.atlassian.com/get-started-with-bitbucket/create-a-repository-861178559.html
-[Vytvoření nového úložiště Git (úložiště Azure)]: /azure/devops/repos/git/creatingrepo
+[Vytvoření nového úložiště Git (Azure Repos)]: /azure/devops/repos/git/creatingrepo

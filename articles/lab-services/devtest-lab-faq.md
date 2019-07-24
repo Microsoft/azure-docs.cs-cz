@@ -1,6 +1,6 @@
 ---
-title: Nejčastější dotazy k Azure DevTest Labs | Dokumentace Microsoftu
-description: Najděte odpovědi na běžné dotazy týkající se Azure DevTest Labs.
+title: Nejčastější dotazy k Azure DevTest Labs | Microsoft Docs
+description: Získejte odpovědi na běžné otázky týkající se Azure DevTest Labs.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -12,104 +12,104 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/19/2019
+ms.date: 07/18/2019
 ms.author: spelluru
-ms.openlocfilehash: a46d816c04d9f5629c2ee9538016d42c53f9a331
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9f38502cc543f19855dbca32c4724a5651b1a3f2
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66244391"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68318109"
 ---
 # <a name="azure-devtest-labs-faq"></a>Nejčastější dotazy k Azure DevTest Labs
-Získejte odpovědi na některé nejběžnější otázky o Azure DevTest Labs.
+Získejte odpovědi na některé z nejběžnějších otázek o Azure DevTest Labs.
 
-## <a name="blog-post"></a>Blogový příspěvek
-Náš blog týmu DevTest Labs je vyřazený od 20. března 2019. 
+## <a name="blog-post"></a>Příspěvek na blogu
+Náš blog týmu DevTest Labs byl vyřazen od 20. března 2019. 
 
-### <a name="where-can-i-track-feature-updates-from-now-on"></a>Kde mohu od této chvíle sledovat aktualizace funkcí?
-Od této chvíle jsme budete mít účtování aktualizace funkcí a informativní blogových příspěvků na blogu Azure a Azure aktualizuje. Příspěvky na blogu také odkaz na dokumentaci bez ohledu na to povinné.
+### <a name="where-can-i-track-feature-updates-from-now-on"></a>Kde můžu sledovat aktualizace funkcí od teď?
+Od této chvíle budeme publikovat aktualizace funkcí a informativní blogové příspěvky na blogu Azure a na aktualizace Azure. Tyto blogové příspěvky budou také odkazovat na naši dokumentaci, kdykoli je to potřeba.
 
-Přihlaste se k odběru [blogu Azure DevTest Labs](https://azure.microsoft.com/blog/tag/azure-devtest-labs/) a [DevTest Labs Azure aktualizuje](https://azure.microsoft.com/updates/?product=devtest-lab) tak neustále informováni o nových funkcích ve službě DevTest Labs.
+Přihlaste se k odběru [blogu Azure pro DevTest Labs](https://azure.microsoft.com/blog/tag/azure-devtest-labs/) a [aktualizace DevTest Labs Azure](https://azure.microsoft.com/updates/?product=devtest-lab) , abyste měli přehled o nových funkcích v DevTest Labs.
 
-### <a name="what-happens-to-the-existing-blog-posts"></a>Co se stane v existující blogových příspěvcích?
-Aktuálně pracujeme na migraci stávajících blogových příspěvků (s výjimkou aktualizace výpadek) na naše [dokumentace k DevTest Labs](devtest-lab-overview.md). Když v blogu MSDN je zastaralý, jeho přesměrováni na přehled dokumentace pro DevTest Labs. Po přesměrování, můžete vyhledat článek, který hledáte, v názvu "Filtrování podle". Jsme ještě nebyly migrovány všechny příspěvky, ale má počítat od konce tohoto měsíce. 
+### <a name="what-happens-to-the-existing-blog-posts"></a>Co se stane s existujícími příspěvky na blogu?
+V současnosti pracujeme na migraci stávajících příspěvků na blogu (s výjimkou aktualizací výpadků) do naší [dokumentace k DevTest Labs](devtest-lab-overview.md). Pokud je blog MSDN zastaralý, bude přesměrován na přehled dokumentace pro DevTest Labs. Po přesměrování můžete vyhledat článek, který hledáte v názvu Filter by. Zatím jsme nemigrovali všechny příspěvky, ale měli byste to udělat na konci tohoto měsíce. 
 
 
-### <a name="where-do-i-see-outage-updates"></a>Kde se zobrazí aktualizace výpadku?
-Jsme budete mít účtování výpadek aktualizací pomocí našich popisovač Twitteru od tohoto okamžiku a vyšší. Sledujte nás na Twitteru, chcete-li získat nejnovější informace o výpadcích a známé chyby.
+### <a name="where-do-i-see-outage-updates"></a>Kde se zobrazují aktualizace výpadku?
+Pomocí naší služby Twitter vám budeme účtovat aktualizace výpadků, a to od teď až dál. Sledujte nás na Twitteru a získejte nejnovější aktualizace pro výpadky a známé chyby.
 
 ### <a name="twitter"></a>Twitter
-Naše popisovač Twitteru: [@azlabservices](https://twitter.com/azlabservices)
+Váš popisovač Twitteru:[@azlabservices](https://twitter.com/azlabservices)
 
 ## <a name="general"></a>Obecné
-### <a name="what-if-my-question-isnt-answered-here"></a>Co když můj dotaz zde nenalezl?
-Pokud zde není uveden váš dotaz, dejte nám vědět, abychom mohli pomoct najít odpověď.
+### <a name="what-if-my-question-isnt-answered-here"></a>Co když tady není odpověď na moji otázku?
+Pokud tady uvedený dotaz není, sdělte nám, abychom vám pomohli najít odpověď.
 
-- Odešlete dotaz na konci tyto Nejčastější dotazy. Spolupracujte s týmem Azure Cache a ostatních členů komunity o tomto článku.
-- K dosažení širší cílovou skupinu, odeslat dotaz na [fóra Azure DevTest Labs MSDN](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureDevTestLabs). Spolupracujte s týmem Azure DevTest Labs a ostatní členové komunity.
-- Pro žádosti o funkce odeslání žádosti a nápady, jak ho [Azure DevTest Labs User Voice](https://feedback.azure.com/forums/320373-azure-devtest-labs).
+- Na konci těchto nejčastějších dotazů si vystavte otázku. Zapojte se do týmu Azure cache a dalších členů komunity o tomto článku.
+- Pokud chcete oslovit širší cílovou skupinu, odešlete na [Azure DevTest Labs Fórum MSDN](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureDevTestLabs)otázku. Zapojte se do týmu Azure DevTest Labs a dalších členů komunity.
+- V případě žádostí o funkce odešlete žádosti a nápady [Azure DevTest Labs uživatelského hlasu](https://feedback.azure.com/forums/320373-azure-devtest-labs).
 
 ### <a name="what-is-a-microsoft-account"></a>Co je účet Microsoft?
-Účet Microsoft je účet, který používáte pro téměř vše, co dělat s Microsoft zařízení a služeb. Jde e-mailovou adresu a heslo, které používáte pro přihlášení na Skype, Outlook.com, OneDrive, Windows phone, Azure a Xbox Live. Jeden účet znamená, že soubory, fotografie, kontakty a nastavení můžete sledovat na libovolném zařízení.
+Účet Microsoft je účet, který použijete pro téměř všechno, co děláte se zařízeními a službami Microsoftu. Jedná se o e-mailovou adresu a heslo, které používáte k přihlášení ke službám Skype, Outlook.com, OneDrive, Windows Phone, Azure a Xbox Live. Jeden účet znamená, že vaše soubory, fotky, kontakty a nastavení vás můžou sledovat na jakémkoli zařízení.
  
 > [!NOTE]
-> Účet Microsoft používá říkalo Windows Live ID.
+> Účet Microsoft, který se používá pro volání Windows Live ID.
 
-### <a name="why-should-i-use-azure-devtest-labs"></a>Proč je vhodné použít Azure DevTest Labs?
-Azure DevTest Labs můžete uložit týmu čas i peníze. Vývojáři mohou vytvářet vlastní prostředí pomocí několika různých základů. Také použitím artefakty kvůli rychlému nasazení a konfigurace aplikací. Pomocí vlastních imagí a vzorců, můžete uložit jako šablony virtuálních počítačů (VM) a snadno reprodukovat napříč týmem. DevTest Labs také nabízí několik Konfigurovatelné zásady tohoto testovacího prostředí, které správcům umožňuje omezit Mrhání prostředky a spravovat prostředí týmu. Tyto zásady patří automatické vypnutí, prahové hodnoty nákladů, maximální virtuálních počítačů na uživatele a maximální velikost virtuálního počítače. Podrobnější vysvětlení DevTest Labs, najdete v článku [přehled](devtest-lab-overview.md) nebo [úvodní video](https://channel9.msdn.com/Blogs/Azure/what-is-azure-devtest-labs).
+### <a name="why-should-i-use-azure-devtest-labs"></a>Proč mám použít Azure DevTest Labs?
+Azure DevTest Labs může váš tým ušetřit čas i peníze. Vývojáři mohou vytvářet vlastní prostředí pomocí několika různých základů. Můžou také použít artefakty k rychlému nasazování a konfiguraci aplikací. Pomocí vlastních imagí a vzorců můžete virtuální počítače ukládat jako šablony a snadno je reprodukována v rámci týmu. DevTest Labs také nabízí několik konfigurovatelných zásad, které mohou správci testovacího prostředí využít ke snížení odpadu a správě prostředí týmu. Mezi tyto zásady patří automatické vypnutí, prahová hodnota nákladů, maximální počet virtuálních počítačů na uživatele a maximální velikost virtuálního počítače. Podrobnější vysvětlení DevTest Labs najdete v tématu [Přehled](devtest-lab-overview.md) nebo [úvodní video](https://channel9.msdn.com/Blogs/Azure/what-is-azure-devtest-labs).
 
-### <a name="what-does-worry-free-self-service-mean"></a>Co znamená "bez obav samoobslužné služby"?
-Bez obav samoobslužné funkce znamená, že vývojářům a testerům vytvářet vlastní prostředí podle potřeby. Správci mají zabezpečení vědomím, že DevTest Labs pomůže nastavit odpovídající přístup, minimalizovat ztráty a mít náklady pod kontrolou. Správci mohou určit, jaké velikosti virtuálních počítačů jsou povolené a maximální počet virtuálních počítačů, a virtuální počítače jsou při spuštění a vypnutí. DevTest Labs také umožňuje snadno monitorovat náklady a nastavení výstrah můžete zůstat vědět, jak se používají prostředky testovacího prostředí.
+### <a name="what-does-worry-free-self-service-mean"></a>Co znamená "Samoobslužná služba bez obav"?
+Samoobslužná služba bez obav znamená, že vývojáři a testeri si podle potřeby vytvářejí vlastní prostředí. Správci mají jistotu, že DevTest Labs vám pomůžou nastavit příslušný přístup a minimalizovat náklady na odpad a kontrolu. Správci mohou určit, jaké velikosti virtuálních počítačů jsou povoleny, maximální počet virtuálních počítačů a spuštění a vypnutí virtuálních počítačů. DevTest Labs také usnadňuje monitorování nákladů a nastavování výstrah, které vám pomůžou udržet informace o tom, jak se používají prostředky testovacího prostředí.
 
-### <a name="how-can-i-use-devtest-labs"></a>Použití DevTest Labs
-DevTest Labs je užitečná, když mají dev nebo testovací prostředí a chcete rychle reprodukovat nebo spravovat pomocí zásad hospodárnému.
-Tady je několik scénářů, které naši zákazníci využívat DevTest Labs pro:
+### <a name="how-can-i-use-devtest-labs"></a>Jak můžu používat DevTest Labs?
+DevTest Labs je užitečné kdykoli, když požadujete vývojové nebo testovací prostředí a chcete je rychle reprodukováni, nebo je můžete spravovat pomocí zásad úspory nákladů.
+Tady je několik scénářů, které naši zákazníci používají DevTest Labs pro:
 
-- Správa vývoje a testovacích prostředí na jednom místě. Používání zásad ke snížení nákladů a vytváření vlastních imagí sdílet sestavení napříč týmem.
-- Vývoj aplikace s využitím vlastní Image pro uložení stavu disku v průběhu fází vývoje.
-- Sledování nákladů ve vztahu k pokroku.
-- Vytvoření velkokapacitního testovací prostředí pro testování assurance kvality.
-- Použít artefakty a vzorce snadno nakonfigurovat a reprodukovat aplikace v různých prostředích.
-- Distribuce virtuální počítače pro hackathony (vývoj nebo testování týmovém) a potom snadno zrušit jejich zřízení až událost skončí.
+- Spravujte prostředí pro vývoj a testování na jednom místě. Pomocí zásad můžete snížit náklady a vytvořit vlastní image pro sdílení sestavení v celém týmu.
+- Vývoj aplikace pomocí vlastních imagí k uložení stavu disku v průběhu fází vývoje.
+- Sledujte náklady ve vztahu k průběhu.
+- Vytváření hromadných testovacích prostředí pro testování kvality zabezpečování.
+- Použití artefaktů a vzorců umožňuje snadnou konfiguraci a reprodukování aplikace v různých prostředích.
+- Distribuujte virtuální počítače pro hackathony (Týmová vývoj nebo testování práce) a pak je snadno oddělte, až událost skončí.
 
-### <a name="how-am-i-billed-for-devtest-labs"></a>Jak se fakturují DevTest Labs?
-DevTest Labs je bezplatná služba. Vytváření testovacích prostředí a konfiguraci zásad, šablon a artefaktů ve službě DevTest Labs je bezplatná. Platíte jenom za prostředky Azure používané v laboratořích, jako jsou virtuální počítače, účty úložiště a virtuální sítě. Další informace o nákladech prostředky testovacího prostředí naleznete v tématu [ceny Azure DevTest Labs](https://azure.microsoft.com/pricing/details/devtest-lab/).
+### <a name="how-am-i-billed-for-devtest-labs"></a>Jak se fakturuje DevTest Labs?
+DevTest Labs je bezplatná služba. Vytváření Labs a konfigurace zásad, šablon a artefaktů v DevTest Labs je zdarma. Platíte jenom za prostředky Azure používané v laboratořích, jako jsou virtuální počítače, účty úložiště a virtuální sítě. Další informace o nákladech na prostředky testovacího prostředí najdete v tématu [Azure DevTest Labs ceny](https://azure.microsoft.com/pricing/details/devtest-lab/).
 
 ## <a name="security"></a>Zabezpečení
 
-### <a name="what-are-the-different-security-levels-in-devtest-labs"></a>Co jsou úrovně zabezpečení ve službě DevTest Labs?
-Zabezpečení přístupu je určeno řízení přístupu na základě Role (RBAC). Informace o tom, jak funguje přístup, pomáhá další rozdíly mezi oprávnění, role a obor, jak jsou definovány pomocí RBAC.
+### <a name="what-are-the-different-security-levels-in-devtest-labs"></a>Jaké jsou různé úrovně zabezpečení v DevTest Labs?
+Přístup k zabezpečení je určený Access Control na základě rolí (RBAC). Pokud se chcete dozvědět, jak Access funguje, pomůže se naučit rozdíly mezi oprávněními, rolí a oborem definovaným pomocí RBAC.
 
-- **Oprávnění**: Oprávnění je definované přístup k určité akce. Oprávnění může být například přístup pro čtení pro všechny virtuální počítače.
-- **Role**: Role je sadu oprávnění, které mohou být seskupeny a přiřazená uživateli. Například uživatel s rolí vlastník předplatného má přístup ke všem prostředkům v rámci předplatného.
-- **Obor**: Obor je úroveň v hierarchii k prostředku Azure. Obor může být například skupinu prostředků, jednoho testovacího prostředí nebo celé předplatné.
+- **Oprávnění**: Oprávnění je definovaný přístup k určité akci. Oprávnění může být například přístup pro čtení ke všem virtuálním počítačům.
+- **Role**: Role je sada oprávnění, která se dají seskupovat a přiřazovat uživateli. Například uživatel s rolí vlastníka předplatného má přístup ke všem prostředkům v rámci předplatného.
+- **Rozsah**: Obor je úroveň v rámci hierarchie prostředku Azure. Oborem může být například skupina prostředků, jedna laboratoř nebo celé předplatné.
 
-V rámci oboru DevTest Labs existují dva typy rolí, které definují uživatelská oprávnění:
+V rámci rozsahu DevTest Labs existují dva typy rolí, které definují oprávnění uživatele:
 
-- **Vlastník testovacího prostředí**: Vlastník testovacího prostředí má přístup ke všem prostředkům v testovacím prostředí. Vlastník testovacího prostředí můžete upravovat zásady, čtení a zápis pro všechny virtuální počítače, změnit virtuální síť a podobně.
-- **Uživatele testovacího prostředí**: Uživatele testovacího prostředí můžete zobrazit všechny prostředky testovacího prostředí, jako jsou virtuální počítače, zásady a virtuální sítě. Uživatele testovacího prostředí. nelze však změnit zásady nebo všechny virtuální počítače, které byly vytvořené jinými uživateli.
+- **Vlastník testovacího prostředí**: Vlastník testovacího prostředí má přístup ke všem prostředkům v testovacím prostředí. Vlastník testovacího prostředí může měnit zásady, číst a zapisovat na všechny virtuální počítače, měnit virtuální síť a tak dále.
+- **Uživatel testovacího prostředí**: Uživatel testovacího prostředí může zobrazit všechny prostředky testovacího prostředí, jako jsou virtuální počítače, zásady a virtuální sítě. Uživatel testovacího prostředí ale nemůže měnit zásady nebo žádné virtuální počítače, které vytvořili jiní uživatelé.
 
-Můžete také vytvořit vlastní role ve službě DevTest Labs. Zjistěte, jak vytvořit vlastní role ve službě DevTest Labs, najdete v článku [udělení uživatelských oprávnění na určitém laboratorním zásady](devtest-lab-grant-user-permissions-to-specific-lab-policies.md).
+Můžete také vytvořit vlastní role v DevTest Labs. Informace o tom, jak vytvářet vlastní role v DevTest Labs, najdete v tématu [udělení uživatelských oprávnění konkrétním zásadám testovacího prostředí](devtest-lab-grant-user-permissions-to-specific-lab-policies.md).
 
-Protože obory jsou hierarchické, když má uživatel oprávnění v určitém rozsahu, uživateli je udělen těchto oprávnění v každé nižší úrovni oboru v oboru. Například pokud uživatel je přiřazena role vlastníka předplatného, má uživatel přístup ke všem prostředkům v rámci předplatného. Tyto prostředky zahrnují virtuální počítače, virtuální sítě a testovací prostředí. Vlastník předplatného automaticky dědí role vlastník testovacího prostředí. Ale opak není true. Vlastník testovacího prostředí má přístup k testovacím prostředí, které je obor nižší než úroveň předplatného. Vlastník testovacího prostředí tak, neuvidí virtuálních počítačů, virtuálních sítí nebo jiné prostředky, které jsou mimo testovacího prostředí.
+Vzhledem k tomu, že obory jsou hierarchické, pokud má uživatel oprávnění v určitém oboru, uživateli se tato oprávnění automaticky udělí v každém oboru nižší úrovně v oboru. Pokud je například uživateli přiřazena role vlastníka předplatného, má uživatel přístup ke všem prostředkům v rámci předplatného. Mezi tyto prostředky patří virtuální počítače, virtuální sítě a laboratoře. Vlastník předplatného automaticky zdědí roli vlastníka testovacího prostředí. Opak však není pravda. Vlastník testovacího prostředí má přístup k testovacímu prostředí, což je nižší obor než úroveň předplatného. Vlastník testovacího prostředí proto nemůže zobrazit virtuální počítače, virtuální sítě ani žádné další prostředky, které jsou mimo testovací prostředí.
 
-### <a name="how-do-i-define-role-based-access-control-for-my-devtest-labs-environments-to-ensure-that-it-can-govern-while-developerstest-can-do-their-work"></a>Jak definovat řízení přístupu na základě rolí pro moje DevTest Labs prostředí, abyste, který může IT řídit při vývojáři a testování můžete své práci?
-Neexistuje široké vzor, ale podrobností závisí na vaší organizaci.
+### <a name="how-do-i-define-role-based-access-control-for-my-devtest-labs-environments-to-ensure-that-it-can-govern-while-developerstest-can-do-their-work"></a>Návody pro prostředí DevTest Labs definovat řízení přístupu na základě rolí, aby se zajistilo, že se může řídit, zatímco vývojáři/testy můžou svou práci dělat?
+Existuje velký model, ale podrobnosti závisí na vaší organizaci.
 
-Centrální IT by měl vlastní nezbytné minimum a umožňuje týmům projektu a aplikace potřebné stupeň ovládacího prvku. Obvykle to znamená, že tento centrální IT vlastníkem předplatného a zpracovává základní IT funkcemi, jako je například konfigurace sítí. Sada **vlastníky** předplatného musí být malé. Tyto vlastníky můžete nominujte další vlastníky, když je potřeba, nebo použít zásady na úrovni předplatného, například "žádná veřejná IP adresa".
+Centrální IT oddělení by mělo mít pouze to, co je potřeba, a umožnit týmům projektu a aplikace, aby měli potřebnou úroveň řízení. Obvykle to znamená, že je ústřední IT vlastníkem předplatného a zpracovává základní funkce IT, jako jsou třeba síťové konfigurace. Sada vlastníků  předplatného musí být malá. Tito vlastníci můžou jmenovat další vlastníky, pokud je potřeba, nebo použít zásady na úrovni předplatného, například bez veřejné IP adresy.
 
-Může existovat podmnožinu uživatelů, které vyžadují přístup v rámci předplatného, jako je například podpora úrovně 1 nebo 2. V takovém případě vám doporučujeme, abyste udělili těmto uživatelům **Přispěvatel** přístup tak, aby nelze spravovat prostředky, ale poskytnout uživatelský přístup nebo úpravě zásad.
+Může existovat podmnožina uživatelů, kteří vyžadují přístup v rámci předplatného, jako je Tier1 nebo podpora vrstvy 2. V takovém případě doporučujeme těmto uživatelům udělit přístup přispěvatelům,  aby mohli spravovat prostředky, ale neposkytovali přístup k uživatelům nebo neupravují zásady.
 
-DevTest Labs prostředků musí být vlastněn vlastníky, kteří jsou blízko aplikace project/team. Je to proto, porozumět jejich požadavkům pro počítače a požadovaný software. Ve většině organizací vlastníka tohoto prostředku DevTest Labs je obvykle vedoucí projektu nebo vývoje. Tohoto vlastníka mohou spravovat uživatele a zásad v testovacím prostředí a můžete spravovat všechny virtuální počítače v prostředí DevTest Labs.
+Prostředek DevTest Labs by měl vlastnit vlastníci, kteří jsou blízko týmu projektu nebo aplikace. Je to proto, že rozumí jejich požadavkům na počítače a požadovaný software. Ve většině organizací je vlastníkem tohoto prostředku DevTest Labs obvykle vedoucí projektu nebo vývoje. Tento vlastník může spravovat uživatele a zásady v rámci testovacího prostředí a může spravovat všechny virtuální počítače v prostředí DevTest Labs.
 
-Členové týmu projektu/aplikace měla být přidána do **DevTest Labs uživatelé** role. Tito uživatelé můžou vytvářet virtuální počítače (v řádku pomocí testovacího prostředí a zásad na úrovni předplatného). Mohou také spravovat vlastní virtuální počítače. Jejich nemůže spravovat virtuální počítače, které patří jiným uživatelům.
+Členové týmu projektu nebo aplikace by měli být přidáni do role **Uživatelé DevTest Labs** . Tito uživatelé můžou vytvářet virtuální počítače (v souladu s zásadami testovacího prostředí a na úrovni předplatného). Můžou taky spravovat svoje vlastní virtuální počítače. Nemůžou spravovat virtuální počítače, které patří jiným uživatelům.
 
-Další informace najdete v tématu [Základní kostra Azure enterprise – zásady správného řízení dokumentaci předplatná](/azure/architecture/cloud-adoption/appendix/azure-scaffold).
+Další informace najdete v tématu základní informace o [službě Azure Enterprise lešení – dokumentace zásad správného řízení](/azure/architecture/cloud-adoption/appendix/azure-scaffold)předplatného.
 
 
-### <a name="how-do-i-create-a-role-to-allow-users-to-do-a-specific-task"></a>Jak vytvořit role umožňuje uživatelům provádět určitý úkol?
-Komplexní článek o tom, jak vytvořit vlastní role a přiřadit oprávnění k roli najdete v části [udělení uživatelských oprávnění na určitém laboratorním zásady](devtest-lab-grant-user-permissions-to-specific-lab-policies.md). Tady je příklad skriptu, který vytvoří roli **Advanced uživatel služby DevTest Labs**, který má oprávnění ke spuštění a zastavení všech virtuálních počítačů v testovacím prostředí:
+### <a name="how-do-i-create-a-role-to-allow-users-to-do-a-specific-task"></a>Návody vytvořit roli, která uživatelům umožní provést konkrétní úkol?
+Komplexní článek o vytváření vlastních rolí a přiřazování oprávnění k roli najdete v tématu [udělení uživatelských oprávnění konkrétním zásadám testovacího prostředí](devtest-lab-grant-user-permissions-to-specific-lab-policies.md). Tady je příklad skriptu, který vytváří pokročilého uživatele role **DevTest Labs**, který má oprávnění ke spouštění a zastavování všech virtuálních počítačů v testovacím prostředí:
 
 
 ```powershell
@@ -125,102 +125,102 @@ $policyRoleDef.Actions.Add("Microsoft.DevTestLab/labs/virtualMachines/Stop/actio
 $policyRoleDef = New-AzRoleDefinition -Role $policyRoleDef  
 ```
 
-### <a name="how-can-an-organization-ensure-corporate-security-policies-are-in-place"></a>Jak můžou organizace Ujistěte se, že firemním zásadám zabezpečení jsou na místě?
-Organizace mohou dosáhnout ji provedením následujících akcí:
+### <a name="how-can-an-organization-ensure-corporate-security-policies-are-in-place"></a>Jak může organizace zajistit, aby byly zásady zabezpečení společnosti zavedeny?
+Organizace ji může dosáhnout provedením následujících akcí:
 
-- Vývoj a publikování zásad zabezpečení. Zásady zabývá se výhodami pravidla podmínky použití spojené s na pomocí softwaru, cloudovým prostředím. Také definuje, co jasně porušuje zásady.
-- Vyvíjejte vlastní image, vlastních artefaktů a proces nasazení, která umožňuje orchestraci v rámci sféry zabezpečení, která je definována s active directory. Tento přístup vynucuje hranic firmy a nastaví společnou sadu ovládacích prvků prostředí. Tyto ovládací prvky pro prostředí Vývojář můžete zvážit při vyvíjejí a postupujte podle zabezpečené vývojového cyklu jako součást svých celkový proces. Cílem je také poskytuje prostředí, který není příliš omezující této může bránit vývoje, ale přiměřené sadu ovládacích prvků. Zásady skupiny na organizační jednotku (OU), který obsahuje testovací prostředí virtuálních počítačů může být podmnožinou zásady celkový skupiny, které se nacházejí v produkčním prostředí. Alternativně je možné další sadu chcete všechny zjištěné riziko omezit správně.
+- Vývoj a publikování komplexních zásad zabezpečení. Zásady překloubují pravidla přijatelného použití související s používáním softwaru, cloudových prostředků. Definuje také, co jasně narušuje zásady.
+- Vývoj vlastní image, vlastních artefaktů a procesu nasazení, který umožňuje orchestraci v rámci sféry zabezpečení, která je definovaná ve službě Active Directory. Tento přístup vynutil hranici společnosti a nastavuje společnou sadu ovládacích prvků pro životní prostředí. Tyto ovládací prvky pro prostředí může vývojář při vývoji brát v úvahu a v rámci celého procesu dodržujte životní cyklus bezpečného vývoje. Cílem je také poskytnout prostředí, které není příliš omezující, což může bránit vývoji, ale přiměřenou sadu ovládacích prvků. Zásady skupiny v organizační jednotce (OU), která obsahuje virtuální počítače testovacího prostředí, můžou být podmnožinou celkových zásad skupiny, které se nacházejí v produkčním prostředí. Alternativně může být další sada, která bude správně zmírnit všechna zjištěná rizika.
 
-### <a name="how-can-an-organization-ensure-data-integrity-to-ensure-that-remoting-developers-cant-remove-code-or-introduce-malware-or-unapproved-software"></a>Jak můžou organizace zajištění integrity dat k zajištění, že vývojáři vzdálené komunikace nelze odebrat kód nebo zavést malware nebo neschválených software?
-Existuje několik úrovní kontroly ke zmírnění hrozeb od externí konzultanty, smluvní pracovníci ani interní zaměstnance, kteří jsou vzdálené komunikace v ke spolupráci ve službě DevTest Labs.
+### <a name="how-can-an-organization-ensure-data-integrity-to-ensure-that-remoting-developers-cant-remove-code-or-introduce-malware-or-unapproved-software"></a>Jak může organizace zajistit integritu dat, aby vývojáři vzdálené komunikace nemohli odebrat kód nebo zavést malware nebo neschválený software?
+Existuje několik vrstev řízení pro zmírnění hrozby od externích konzultantů, dodavatelů nebo zaměstnanců, kteří pracují v DevTest Labs při spolupráci.
 
-Jak bylo uvedeno dříve, první krok musí mít zásady podmínky použití zpracovávány a definice, která bude jasně uvádět důsledky, když někdo porušuje zásady.
+Jak bylo uvedeno dříve, musí mít první krok v konceptu přijatelné zásady použití, které budou jasně vypsány a definovány tak, aby jasné, které důsledky porušují nějaké zásady.
 
-První vrstva ovládacích prvků pro vzdálený přístup, je použít zásady vzdáleného přístupu prostřednictvím připojení VPN, který není připojený přímo k testovacím prostředí.
+První vrstvou ovládacích prvků pro vzdálený přístup je použití zásady vzdáleného přístupu prostřednictvím připojení VPN, které není přímo připojené k testovacímu prostředí.
 
-Druhá vrstva ovládacích prvků, je použít sadu objektů zásad skupiny, které brání kopírování a vkládání přes vzdálenou plochu. Nepovolí odchozí z prostředí, jako je například FTP a služby protokolu RDP z prostředí může implementovat zásady sítě. Uživatelsky definované směrování může vynutit veškerý síťový provoz Azure zpět do místního, ale směrování nejde účet pro všechny adresy URL, které může povolit nahrávání dat, není-li řídit prostřednictvím proxy serveru k prohledání obsahu a relací. Veřejné IP adresy může být v rámci virtuální sítě podporuje DevTest Labs k přemostění externího síťového prostředku, aby s omezeným přístupem.
+Druhá vrstva ovládacích prvků je použít sadu objektů zásad skupiny, které zabraňují kopírování a vkládání prostřednictvím vzdálené plochy. Je možné implementovat zásady sítě, aby nepovolovaly odchozí služby z prostředí, jako jsou služby FTP a RDP, mimo prostředí. Uživatelem definované směrování může vynutit všechny síťové přenosy v Azure zpátky do místního prostředí, ale směrování nemohlo pro všechny adresy URL, které by mohly umožňovat nahrávání dat, nastavovat přenosy dat, pokud se neřídí proxy serverem pro skenování obsahu a relací. Veřejné IP adresy se můžou omezit v rámci virtuální sítě, které podporují DevTest Labs, aby nepovolovaly přemostění prostředků externí sítě.
 
-Nakonec stejný typ omezení musí být nastavení použilo pro organizace, které by účet pro všechny možné metody vyměnitelného média nebo externí adresy URL, které by mohl přijmout příspěvek obsahu. Poraďte se s profesionální ke kontrole a implementovat zásadu zabezpečení zabezpečení. Další doporučení, najdete v tématu [Microsoft Security Kybernetických](https://www.microsoft.com/security/default.aspx?&WT.srch=1&wt.mc_id=AID623240_SEM_sNYnsZDs).
+V konečném případě je třeba v rámci organizace použít stejný typ omezení, který by měl mít za všechny možné metody vyměnitelných médií nebo externích adres URL, které by mohly přijmout obsah. Pokud chcete zkontrolovat a implementovat zásady zabezpečení, obraťte se na svého odborníka na zabezpečení. Další doporučení najdete v tématu [Microsoft Internet Security](https://www.microsoft.com/security/default.aspx?&WT.srch=1&wt.mc_id=AID623240_SEM_sNYnsZDs).
 
 ## <a name="lab-configuration"></a>Konfigurace testovacího prostředí
 
-### <a name="how-do-i-create-a-lab-from-a-resource-manager-template"></a>Jak vytvořit testovací prostředí ze šablony Resource Manageru?
-Nabízíme [úložišti GitHub šablon Azure Resource Manageru prostředí](https://azure.microsoft.com/resources/templates/101-dtl-create-lab) , kterou můžete nasadit jako – nebo ho upravit k vytváření vlastních šablon pro vaše testovací prostředí. Každá šablona má odkaz na prostředí nasadit, protože je ve svém vlastním předplatném Azure. Nebo můžete přizpůsobit šablonu a [nasazení pomocí Powershellu nebo rozhraní příkazového řádku Azure](../azure-resource-manager/resource-group-template-deploy.md).
+### <a name="how-do-i-create-a-lab-from-a-resource-manager-template"></a>Návody vytvořit testovací prostředí ze šablony Správce prostředků?
+Nabízíme úložiště GitHubu šablon testovacího Azure Resource Manager prostředí, které můžete nasadit tak, jak jsou, nebo upravit a vytvořit vlastní šablony pro cvičení. Každá šablona obsahuje odkaz na nasazení testovacího prostředí, protože je ve vašem vlastním předplatném Azure. Nebo můžete šablonu přizpůsobit a [nasadit pomocí PowerShellu nebo Azure CLI](../azure-resource-manager/resource-group-template-deploy.md).
 
 
-### <a name="can-i-have-all-virtual-machines-to-be-created-in-a-common-resource-group-instead-having-each-machine-in-its-own-resource-group"></a>Může mít všechny virtuální počítače vytvořené v běžných skupinu prostředků, namísto nutnosti každý počítač ve vlastní skupině prostředků? 
-Ano, jako vlastník testovacího prostředí, můžete buď nechat lab zpracování přidělení skupiny prostředků pro vás nebo všechny virtuální počítače vytvořené ve skupině prostředků běžné, že zadáte. 
+### <a name="can-i-have-all-virtual-machines-to-be-created-in-a-common-resource-group-instead-having-each-machine-in-its-own-resource-group"></a>Můžu se všechny virtuální počítače vytvořit ve společné skupině prostředků, takže každý počítač má vlastní skupinu prostředků? 
+Ano, jako vlastník testovacího prostředí můžete buď nechat testovací prostředí zpracovat přidělení skupiny prostředků, nebo nechat všechny virtuální počítače vytvořené v rámci společné skupiny prostředků, kterou zadáte. 
 
-Scénář skupiny pro samostatný prostředek:
--   DevTest Labs vytvoří novou skupinu prostředků pro každý veřejného a privátního IP virtuálního počítače, které můžete aktivovat
--   DevTest Labs vytvoří skupinu prostředků pro sdílené počítače IP, které patří do stejné velikosti.
+Scénář samostatné skupiny prostředků:
+-   DevTest Labs vytvoří novou skupinu prostředků pro každý virtuální počítač s veřejnými a soukromými IP adresami, který jste vytočíi.
+-   DevTest Labs vytvoří skupinu prostředků pro sdílené IP počítače, které patří do stejné velikosti.
 
-Běžný scénář skupiny prostředků:
--   Všechny virtuální počítače jsou spuštěné v běžných skupinu prostředků, kterou zadáte. Další informace [přidělení skupiny prostředků pro testovací prostředí](https://aka.ms/RGControl). 
+Scénář běžných skupin prostředků:
+-   Všechny virtuální počítače se nastavují do společné skupiny prostředků, kterou zadáte. Přečtěte si další informace [o přidělování skupin prostředků pro testovací prostředí](https://aka.ms/RGControl). 
 
-### <a name="how-do-i-maintain-a-naming-convention-across-my-devtest-labs-environment"></a>Jak spravovat zásady vytváření názvů Moje prostředí DevTest Labs?
-Můžete rozšířit stávající konvence pojmenování enterprise na provoz Azure a zajištění konzistentní napříč prostředí DevTest Labs. Při nasazování DevTest Labs, doporučujeme, abyste měli určité výchozí zásady. Tyto zásady centrální skriptů a šablon JSON vynucovat konzistenci nasazujete. Pojmenování zásady je možné implementovat pomocí Azure zásady na úrovni předplatného. Ukázky JSON pro Azure Policy najdete v tématu [ukázek Azure Policy](../governance/policy/samples/index.md).
+### <a name="how-do-i-maintain-a-naming-convention-across-my-devtest-labs-environment"></a>Návody udržovat zásady vytváření názvů napříč prostředím DevTest Labs?
+Je možné, že budete chtít stávající podnikové zásady vytváření názvů v rámci Azure zvýšit a zajistit jejich konzistenci v prostředí DevTest Labs. Při nasazování DevTest Labs doporučujeme, abyste měli konkrétní počáteční zásady. Tyto zásady nasadíte pomocí centrálního skriptu a šablon JSON pro vymáhání konzistence. Zásady pojmenování se dají implementovat prostřednictvím zásad Azure použitých na úrovni předplatného. Ukázky JSON pro Azure Policy najdete v tématu [Azure Policy Samples](../governance/policy/samples/index.md).
 
-### <a name="how-many-labs-can-i-create-under-the-same-subscription"></a>Kolik testovacích prostředí můžete vytvořit pod stejné předplatné?
-Není k dispozici konkrétní limitu počtu testovacích prostředí, které je možné vytvořit jedno předplatné. Objem prostředků používá jedno předplatné je však omezená. Informace o [omezení a kvót pro předplatná Azure](../azure-subscription-service-limits.md) a [tom, jak tyto limity zvýšit](https://azure.microsoft.com/blog/azure-limits-quotas-increase-requests).
+### <a name="how-many-labs-can-i-create-under-the-same-subscription"></a>Kolik laboratoří mohu vytvořit v rámci stejného předplatného?
+Počet laboratoří, které se dají vytvořit pro každé předplatné, nemá konkrétní limit. Množství prostředků použitých v rámci předplatného je ale omezené. Můžete si přečíst o [omezeních a kvótách pro předplatná Azure](../azure-subscription-service-limits.md) a [o tom, jak tato omezení zvýšit](https://azure.microsoft.com/blog/azure-limits-quotas-increase-requests).
 
 
-### <a name="how-many-vms-can-i-create-per-lab"></a>Kolik virtuálních počítačů můžete vytvořit počet v testovacím prostředí
-Neexistuje žádná konkrétní omezení počtu virtuálních počítačů, které je možné vytvořit počet v testovacím prostředí. Prostředky (počet jader virtuálního počítače, veřejné IP adresy a tak dále), které se používají jsou však omezená na jedno předplatné. Informace o [omezení a kvót pro předplatná Azure](../azure-subscription-service-limits.md) a [tom, jak tyto limity zvýšit](https://azure.microsoft.com/blog/azure-limits-quotas-increase-requests).
+### <a name="how-many-vms-can-i-create-per-lab"></a>Kolik virtuálních počítačů je možné vytvořit pro testovací prostředí?
+Počet virtuálních počítačů, které se dají vytvořit pro každé testovací prostředí, není nijak omezený. Prostředky (jádra virtuálních počítačů, veřejné IP adresy atd.) se ale u každého předplatného omezí. Můžete si přečíst o [omezeních a kvótách pro předplatná Azure](../azure-subscription-service-limits.md) a [o tom, jak tato omezení zvýšit](https://azure.microsoft.com/blog/azure-limits-quotas-increase-requests).
 
-### <a name="how-do-i-determine-the-ratio-of-users-per-lab-and-the-overall-number-of-labs-that-are-needed-across-an-organization"></a>Jak zjistím, poměr uživatelé testovacího prostředí a celkového počtu testovacích prostředí, které jsou potřeba v rámci celé organizace?
-Doporučujeme vám, že jsou přidruženy stejném testovacího prostředí obchodním jednotkám a vývojářské skupiny, které jsou přidruženy stejném projektu vývoje. Umožňuje stejné typy zásad, obrázky a vypnutí zásad u obou skupin.
+### <a name="how-do-i-determine-the-ratio-of-users-per-lab-and-the-overall-number-of-labs-that-are-needed-across-an-organization"></a>Návody určit poměr uživatelů na testovací prostředí a celkový počet laboratorních cvičení potřebných v rámci organizace?
+Doporučujeme, aby obchodní jednotky a skupiny pro vývoj, které jsou přidruženy ke stejnému vývojovému projektu, byly přidruženy ke stejnému testovacímu prostředí. Umožňuje použít pro obě skupiny stejné typy zásad, obrázků a zásad vypnutí.
 
-Můžete také zvažte geografické hranice. Vývojáři v USA – sever – východ (USA) může například použít testovací prostředí zřízené ve východní USA 2. A mohou vývojáři v Dallasu, Texas a Liberci přesměrovány na prostředek v USA střed – jih. Při spolupráci s externí třetích stran může být přiřazen do testovacího prostředí, která není používána umožňuje interním vývojářům.
+Možná budete muset zvážit i geografické hranice. Například vývojáři v oblasti USA – východ USA (US) můžou používat testovací prostředí zřízené ve východní USA 2. A vývojáři v Dallasu, Texas a Denver můžou Coloradu směrovat na používání prostředků v USA (střed) – jih. Pokud se jedná o spolupráci s externí třetí stranou, mohla by být přiřazena testovacímu prostředí, které nepoužívá interní vývojáři.
 
-Můžete také použít testovací prostředí pro konkrétní projekt v rámci projektů Azure DevOps. Pak můžete použít zabezpečení prostřednictvím zadané skupiny Azure Active Directory, který umožňuje přístup k oběma sadu prostředků. Virtuální síť přiřazeny k testovacím prostředí může být jiné hranice pro konsolidaci uživatelů.
+Testovací prostředí můžete použít také pro konkrétní projekt v rámci Azure DevOps Projects. Pak můžete zabezpečení použít prostřednictvím zadané skupiny Azure Active Directory, která umožňuje přístup k oběma prostředkům. Pro konsolidaci uživatelů může být virtuální síť přiřazená k testovacímu prostředí jinou hranicí.
 
-### <a name="how-can-we-prevent-the-deletion-of-resources-within-a-lab"></a>Jak jsme zabránili odstranění prostředků v rámci testovacího prostředí?
-Doporučujeme nastavit příslušná oprávnění na úrovni prostředí tak, aby jenom Autorizovaní uživatelé můžete odstranit prostředky nebo změnit zásady testovacího prostředí. Vývojáři by měl být umístěn v rámci **DevTest Labs uživatelé** skupiny. Vedoucí vývojář nebo zájemce infrastruktury by měla být **DevTest Labs vlastníka**. Doporučujeme, že abyste měli jenom dva vlastníků testovacího prostředí. Tato zásada rozšiřuje na úložiště kódu, aby se zabránilo poškození. Uživatelé testovacího prostředí mají práva k používání prostředků, ale nelze aktualizovat zásady testovacího prostředí. Přečtěte si článek, který obsahuje seznam rolí a oprávnění, která má každý předdefinované skupiny v rámci testovacího prostředí: [Přidat vlastníky a uživatele ve službě Azure DevTest Labs](devtest-lab-add-devtest-user.md).
+### <a name="how-can-we-prevent-the-deletion-of-resources-within-a-lab"></a>Jak můžeme zabránit odstranění prostředků v testovacím prostředí?
+Doporučujeme, abyste na úrovni testovacího prostředí nastavili správná oprávnění, aby mohli odstraňovat prostředky nebo měnit zásady testovacího prostředí jenom autorizovaní uživatelé. Vývojáři by měli být uvedení do skupiny **uživatelů DevTest Labs** . Vedoucí vývojář nebo vedoucí infrastruktury by měli být **vlastníkem DevTest Labs**. Doporučujeme, abyste měli pouze dva vlastníky testovacího prostředí. Tato zásada rozšiřuje do úložiště kódu, aby nedocházelo k poškození. Uživatelé testovacího prostředí mají práva k používání prostředků, ale nemůžou aktualizovat zásady testovacího prostředí. Přečtěte si následující článek, který obsahuje seznam rolí a oprávnění, které každá integrovaná skupina obsahuje v rámci testovacího prostředí: [Přidejte vlastníky a uživatele v Azure DevTest Labs](devtest-lab-add-devtest-user.md).
 
-### <a name="how-do-i-share-a-direct-link-to-my-lab"></a>Jak se dá sdílet přímý odkaz na Moje testovací prostředí?
+### <a name="how-do-i-share-a-direct-link-to-my-lab"></a>Návody sdílet přímý odkaz na můj testovací prostředí?
 
-1. V [webu Azure portal](https://portal.azure.com), přejděte do testovacího prostředí.
-2. Kopírovat **adresu URL testovacího prostředí** z prohlížeče a potom ho sdílet s uživateli vašeho testovacího prostředí.
+1. V [Azure Portal](https://portal.azure.com)přejdete do testovacího prostředí.
+2. Zkopírujte **adresu URL testovacího prostředí** z prohlížeče a potom ho sdílejte s uživateli testovacího prostředí.
 
 > [!NOTE]
-> Pokud uživatele testovacího prostředí je to externí uživatel, kdo má účet Microsoft, ale který není členem instance Active Directory vaší organizace, uživatel může se zobrazit chybová zpráva při pokusu o přístup k sdílený odkaz. Pokud externí uživateli se zobrazí chybová zpráva, požádejte uživatele, aby nejdřív vyberte jeho jméno v pravém horním rohu webu Azure portal. Pak v sekci adresáře v nabídce, může uživatel vybrat adresáře, kde testovacím prostředí existuje.
+> Pokud je uživatel testovacího prostředí externí uživatel, který má účet Microsoft, ale není členem instance Active Directory vaší organizace, může se uživateli při pokusu o přístup ke sdílenému odkazu zobrazit chybová zpráva. Pokud externí uživatel uvidí chybovou zprávu, požádejte uživatele, aby nejdřív vybral jméno v pravém horním rohu Azure Portal. V části adresář v nabídce pak může uživatel vybrat adresář, ve kterém testovací prostředí existuje.
 
 ## <a name="virtual-machines"></a>Virtuální počítače
 
-### <a name="why-cant-i-see-vms-on-the-virtual-machines-page-that-i-see-in-devtest-labs"></a>Proč se nezobrazují virtuální počítače na stránce virtuální počítače, které se zobrazuje ve službě DevTest Labs?
-Při vytváření virtuálního počítače ve službě DevTest Labs, že zadané oprávnění pro přístup k tomuto virtuálnímu počítači. Můžete zobrazit na stránce labs a na virtuálním počítači **virtuálních počítačů** stránky. Uživatelé s **DevTest Labs vlastníka** role může zobrazit všechny virtuální počítače, které byly vytvořeny v testovacím prostředí cvičení **všechny virtuální počítače** stránky. Nicméně uživatelé, kteří mají **uživatel služby DevTest Labs** roli nejsou automaticky udělit oprávnění ke čtení na prostředky virtuálních počítačů, které jste vytvořili jiným uživatelům. Ano, tyto virtuální počítače nejsou zobrazeny na **virtuálních počítačů** stránky.
+### <a name="why-cant-i-see-vms-on-the-virtual-machines-page-that-i-see-in-devtest-labs"></a>Proč se na stránce Virtual Machines, kterou vidím v DevTest Labs, nezobrazily virtuální počítače?
+Při vytváření virtuálního počítače v DevTest Labs máte oprávnění pro přístup k tomuto virtuálnímu počítači. Virtuální počítač můžete zobrazit na stránce Labs a na stránce **Virtual Machines** . Uživatelé přiřazení k roli **vlastníka DevTest Labs** můžou zobrazit všechny virtuální počítače, které byly vytvořené v testovacím prostředí, na stránce **všechny Virtual Machines** testovacího prostředí. Uživatelům, kteří mají roli **uživatele DevTest Labs** , ale nemají automaticky udělený přístup pro čtení k prostředkům virtuálního počítače, které vytvořili jiní uživatelé. Tyto virtuální počítače proto nejsou zobrazené na stránce **Virtual Machines** .
 
 
-### <a name="how-do-i-create-multiple-vms-from-the-same-template-at-once"></a>Jak můžu vytvořit víc virtuálních počítačů ze stejné šablony najednou?
-Máte dvě možnosti, souběžně vytvoření více virtuálních počítačů ze stejné šablony:
+### <a name="how-do-i-create-multiple-vms-from-the-same-template-at-once"></a>Návody vytvořit více virtuálních počítačů ze stejné šablony najednou?
+Existují dvě možnosti pro současné vytvoření více virtuálních počítačů ze stejné šablony:
 
-- Můžete použít [rozšíření Azure DevOps úkolů](https://marketplace.visualstudio.com/items?itemName=ms-azuredevtestlabs.tasks).
-- Je možné [generovat šablony Resource Manageru](devtest-lab-add-vm.md#save-azure-resource-manager-template) při vytváření virtuálního počítače, a [nasazení šablony Resource Manageru z prostředí Windows PowerShell](../azure-resource-manager/resource-group-template-deploy.md).
-- Můžete také zadat více než jednu instanci počítače má být vytvořen při vytváření virtuálního počítače. Další informace o vytvoření více instancí virtuálních počítačů najdete v dokumentu na [vytváří se testovací virtuální počítač](devtest-lab-add-vm.md).
+- Můžete použít [rozšíření úlohy Azure DevOps](https://marketplace.visualstudio.com/items?itemName=ms-azuredevtestlabs.tasks).
+- Když vytváříte virtuální počítač, můžete [vygenerovat šablonu správce prostředků](devtest-lab-add-vm.md#save-azure-resource-manager-template) a [nasadit šablonu správce prostředků z Windows PowerShellu](../azure-resource-manager/resource-group-template-deploy.md).
+- Můžete také zadat více než jednu instanci počítače, který se má vytvořit během vytváření virtuálního počítače. Další informace o vytváření více instancí virtuálních počítačů najdete v dokumentu o [Vytvoření virtuálního počítače testovacího prostředí](devtest-lab-add-vm.md).
 
-### <a name="how-do-i-move-my-existing-azure-vms-into-my-devtest-labs-lab"></a>Jak můžu přesunout svoje existující virtuální počítače Azure do Moje testovací prostředí DevTest Labs?
-Kopírování existujících virtuálních počítačů k DevTest Labs:
+### <a name="how-do-i-move-my-existing-azure-vms-into-my-devtest-labs-lab"></a>Návody přesunout stávající virtuální počítače Azure do testovacího prostředí DevTest Labs?
+Zkopírování stávajících virtuálních počítačů do DevTest Labs:
 
-1.  Kopírování souboru virtuálního pevného disku existujícího virtuálního počítače pomocí [skript prostředí Windows PowerShell](https://github.com/Azure/azure-devtestlab/blob/master/samples/DevTestLabs/Scripts/CopyVirtualMachines/CopyAzVHDFromVMToLab.ps1).
-2.  Vytvořte [vlastní image](devtest-lab-create-template.md) uvnitř testovacího prostředí DevTest Labs.
-3.  Vytvoření virtuálního počítače v testovacím prostředí z vlastní image.
+1.  Zkopírujte soubor VHD existujícího virtuálního počítače pomocí [skriptu Windows PowerShellu](https://github.com/Azure/azure-devtestlab/blob/master/samples/DevTestLabs/Scripts/CopyVirtualMachines/CopyAzVHDFromVMToLab.ps1).
+2.  Vytvořte [vlastní image](devtest-lab-create-template.md) v testovacím prostředí DevTest Labs.
+3.  Vytvořte virtuální počítač v testovacím prostředí z vlastní image.
 
-### <a name="can-i-attach-multiple-disks-to-my-vms"></a>Můžete připojit několik disků do virtuálních počítačů?
+### <a name="can-i-attach-multiple-disks-to-my-vms"></a>Můžu k virtuálním počítačům připojit více disků?
 
-Ano, můžete připojit několik disků k vašim virtuálním počítačům.
+Ano, k virtuálním počítačům můžete připojit několik disků.
 
-### <a name="if-i-want-to-use-a-windows-os-image-for-my-testing-do-i-have-to-purchase-an-msdn-subscription"></a>Pokud chcete použít bitovou kopii operačního systému Windows pro testování, je nutné koupit předplatné MSDN?
-Použití imagí klienta operačního systému Windows (Windows 7 nebo novější) pro vývoj a testování v Azure, proveďte jednu z následujících kroků:
+### <a name="if-i-want-to-use-a-windows-os-image-for-my-testing-do-i-have-to-purchase-an-msdn-subscription"></a>Pokud chci pro svoje testování použít bitovou kopii operačního systému Windows, musím si koupit předplatné MSDN?
+Pokud chcete pro vývoj nebo testování v Azure použít image operačního systému Windows Client (Windows 7 nebo novější), proveďte jeden z následujících kroků:
 
-- [Koupit předplatné MSDN](https://www.visualstudio.com/products/how-to-buy-vs).
-- Pokud máte smlouvu Enterprise Agreement, vytvořte předplatné Azure s [nabídka Enterprise pro vývoj/testování](https://azure.microsoft.com/offers/ms-azr-0148p).
+- [Kupte si předplatné MSDN](https://www.visualstudio.com/products/how-to-buy-vs).
+- Pokud máte smlouva Enterprise, vytvořte si předplatné Azure pomocí [nabídky Enterprise pro vývoj/testování](https://azure.microsoft.com/offers/ms-azr-0148p).
 
-Další informace o kreditech Azure pro každou nabídku MSDN najdete v tématu [Azure měsíční kredit pro předplatitele sady Visual Studio](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/).
+Další informace o kreditech Azure pro jednotlivé nabídky MSDN najdete v tématu [měsíční kredit Azure pro předplatitele sady Visual Studio](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/).
 
 
-### <a name="how-do-i-automate-the-process-of-deleting-all-the-vms-in-my-lab"></a>Automatizace procesu odstranění všech virtuálních počítačů v Moje testovací prostředí
-Jako vlastník testovacího prostředí můžete odstranit virtuální počítače ve svém testovacím prostředí na webu Azure Portal. Také můžete odstranit všechny virtuální počítače ve vaší laboratoři pomocí skriptu prostředí PowerShell. V následujícím příkladu v části **hodnoty změnit** komentář, upravte hodnoty parametrů. ID předplatného, labResourceGroup a labName hodnoty můžete načíst z podokna testovacího prostředí na webu Azure Portal.
+### <a name="how-do-i-automate-the-process-of-deleting-all-the-vms-in-my-lab"></a>Návody automatizujete proces odstraňování všech virtuálních počítačů v mém testovacím prostředí?
+Jako vlastník testovacího prostředí můžete virtuální počítače z testovacího prostředí odstranit v Azure Portal. Všechny virtuální počítače v testovacím prostředí můžete také odstranit pomocí skriptu PowerShellu. V následujícím příkladu v části **hodnoty pro změnu** komentáře upravte hodnoty parametrů. Hodnoty subscriptionId, labResourceGroup a labName můžete načíst z podokna testovacího prostředí v Azure Portal.
 
 ```powershell
 # Delete all the VMs in a lab.
@@ -254,142 +254,155 @@ foreach($labVM in $labVMs)
 
 ## <a name="environments"></a>Prostředí 
 
-### <a name="how-can-i-use-resource-manager-templates-in-my-devtest-labs-environment"></a>Jak lze pomocí šablon Resource Manageru v mého prostředí DevTest Labs?
-Nasadit své šablony Resource Manageru prostředí v DevTest Labs pomocí kroků uvedených v [funkce prostředí v DevTest Labs](devtest-lab-test-env.md) článku. V podstatě, zkontrolujte své šablony Resource Manageru do úložiště Git (úložiště Azure nebo GitHub) a přidejte [soukromé úložiště k šablonám](devtest-lab-test-env.md) testovací prostředí. Tento scénář nemusejí být užitečné, pokud používáte DevTest Labs hostovat vývojové počítače, ale může být užitečné, pokud vytváříte pracovní prostředí, které je zástupce produkčního prostředí.
+### <a name="how-can-i-use-resource-manager-templates-in-my-devtest-labs-environment"></a>Jak můžu použít šablony Správce prostředků v prostředí DevTest Labs?
+Šablony Správce prostředků můžete nasadit do prostředí DevTest Labs pomocí kroků uvedených v tématu [funkce prostředí v článku DevTest Labs](devtest-lab-test-env.md) . V podstatě zkontrolujete šablony Správce prostředků do úložiště Git (buď Azure Repos nebo GitHub), a přidejte do testovacího prostředí [privátní úložiště pro vaše šablony](devtest-lab-test-env.md) . Tento scénář nemusí být užitečný, pokud používáte DevTest Labs k hostování vývojových počítačů, ale může být užitečný, pokud vytváříte pracovní prostředí, které je reprezentativní pro produkci.
 
-Je také vhodné poznamenat, že počet virtuálních počítačů podle testovacího prostředí nebo možnost uživatelů pouze omezí počet počítačů, které jsou vytvořené nativně v samotné testovací prostředí a ne všechny prostředí (šablon Resource Manageru).
+Také je potřeba poznamenat, že počet virtuálních počítačů na testovací prostředí nebo na uživatele omezuje jenom počet počítačů nativně vytvořených v testovacím prostředí, a ne žádné prostředí (Správce prostředků šablony).
 
 ## <a name="custom-images"></a>Vlastní image
 
-### <a name="how-can-i-set-up-an-easily-repeatable-process-to-bring-my-custom-organizational-images-into-a-devtest-labs-environment"></a>Jak nastavím snadno opakovatelné procesu uvést Moje vlastní organizační Image v prostředí DevTest Labs?
-Najdete v tomto [videa na objekt pro vytváření bitové kopie vzoru](https://sec.ch9.ms/ch9/8e8a/9ea0b8d4-b803-4f23-bca4-4808d9368e8a/dtlimagefactory_mid.mp4). Tento scénář je pokročilý scénář a skripty k dispozici jsou pouze ukázkové skripty. Pokud jsou vyžadovány žádné změny, musíte pro správu a údržbu skripty používané ve vašem prostředí.
+### <a name="how-can-i-set-up-an-easily-repeatable-process-to-bring-my-custom-organizational-images-into-a-devtest-labs-environment"></a>Jak můžu snadno opakovat a přenést vlastní organizační image do prostředí DevTest Labs?
+Podívejte se [na toto video ve vzoru pro vytváření imagí](https://sec.ch9.ms/ch9/8e8a/9ea0b8d4-b803-4f23-bca4-4808d9368e8a/dtlimagefactory_mid.mp4). Tento scénář je pokročilý scénář a poskytují se jenom ukázkové skripty. Pokud se vyžadují nějaké změny, budete muset spravovat a udržovat skripty používané ve vašem prostředí.
 
-Podrobné informace o vytvoření objektu pro vytváření image, najdete v části [vytvořte objekt pro vytváření vlastní image ve službě Azure DevTest Labs](image-factory-create.md). 
+Podrobné informace o vytvoření objektu pro vytváření imagí najdete [v tématu Vytvoření vlastní továrny imagí v Azure DevTest Labs](image-factory-create.md). 
 
-### <a name="what-is-the-difference-between-a-custom-image-and-a-formula"></a>Jaký je rozdíl mezi vlastní image a vzorce?
-Vlastní image je spravované image. Vzorec je bitovou kopii, která můžete nakonfigurovat další nastavení a poté uložit a reprodukovat. Vlastní image může být vhodnější, pokud chcete rychle vytvořit několik prostředí s využitím stejné základní, neměnné image. Vzorec může být lepší, pokud chcete reprodukovat konfigurace virtuálního počítače nejnovější pomůcky, v rámci virtuální sítě nebo podsítě, nebo jako virtuální počítač určité velikosti. Podrobnější vysvětlení najdete v tématu [porovnání vlastních imagí a vzorců ve službě DevTest Labs](devtest-lab-comparing-vm-base-image-types.md).
+### <a name="what-is-the-difference-between-a-custom-image-and-a-formula"></a>Jaký je rozdíl mezi vlastní obrázkou a vzorcem?
+Vlastní image je spravovaná bitová kopie. Vzorec je obrázek, který můžete konfigurovat s dalšími nastaveními a pak ho uložit a znovu vytvořit. Vlastní image může být vhodnější, pokud chcete rychle vytvořit několik prostředí pomocí stejné základní, neproměnlivé image. Vzorec může být lepší, pokud chcete znovu vytvořit konfiguraci virtuálního počítače s využitím nejnovějších bitů, jako součást virtuální sítě nebo podsítě, nebo jako virtuální počítač určité velikosti. Podrobnější vysvětlení najdete v tématu [porovnání vlastních imagí a vzorců v DevTest Labs](devtest-lab-comparing-vm-base-image-types.md).
 
-### <a name="when-should-i-use-a-formula-vs-custom-image"></a>Kdy použít vzorec vs. vlastní image?
-Obvykle rozhodujícím faktorem v tomto scénáři je nákladů a znovu použít. Pokud máte scénáře, kde mnoho uživatelů/testovacích prostředí vyžadují image s velkým množstvím softwaru nad základní image, může snížit náklady tím, že vytvoříte vlastní image. To znamená, že po vytvoření image. Snižuje čas nastavení virtuálního počítače a náklady, protože virtuální počítač spuštěn, když dojde k nastavení.
+### <a name="when-should-i-use-a-formula-vs-custom-image"></a>Kdy mám použít vzorec vs. vlastní image?
+Obvykle je rozhodující faktor v tomto scénáři náklady a znovu použít. Pokud máte scénář, ve kterém mnoho uživatelů/cvičení vyžaduje image s velkým množstvím softwaru nad základní imagí, pak můžete snížit náklady vytvořením vlastní image. Znamená to, že se image vytvoří jednou. Zkracuje dobu nastavení virtuálního počítače a náklady vzniklé v důsledku toho, že dojde k instalaci na virtuálním počítači.
 
-Dodatečný faktor si je ale frekvence změny vašeho softwarového balíčku. Pokud spustíte denní sestavení a vyžadovat, aby software na virtuálních počítačích uživatelů, zvažte použití vzorec namísto vlastní image.
+Dodatečný faktor k poznámení je ale frekvence změn balíčku softwaru. Pokud spouštíte každodenní sestavení a požadujete, aby byl software na virtuálních počítačích vašich uživatelů, zvažte použití vzorce místo vlastní image.
 
-Podrobnější vysvětlení najdete v tématu [porovnání vlastních imagí a vzorců](devtest-lab-comparing-vm-base-image-types.md) ve službě DevTest Labs.
+Podrobnější vysvětlení najdete v tématu [porovnání vlastních imagí a vzorců](devtest-lab-comparing-vm-base-image-types.md) v DevTest Labs.
 
-### <a name="how-do-i-automate-the-process-of-uploading-vhd-files-to-create-custom-images"></a>Automatizace procesu nahrávání souborů virtuálního pevného disku k vytváření vlastních imagí
+### <a name="how-do-i-automate-the-process-of-uploading-vhd-files-to-create-custom-images"></a>Návody automatizaci procesu nahrávání souborů VHD k vytváření vlastních imagí?
 
-Automatizace nahrávání souborů virtuálního pevného disku k vytváření vlastních imagí, máte dvě možnosti:
+K automatickému nahrávání souborů VHD pro vytváření vlastních imagí máte dvě možnosti:
 
-- Použití [AzCopy](../storage/common/storage-use-azcopy-v10.md) zkopírovat nebo nahrajte soubory virtuálního pevného disku do účtu úložiště, který je spojen s testovacím prostředí.
-- Použití [Průzkumníka služby Azure Storage](../vs-azure-tools-storage-manage-with-storage-explorer.md). Průzkumník služby Storage je samostatná aplikace, která běží na Windows, OS X a Linux.
+- Pomocí [AzCopy](../storage/common/storage-use-azcopy-v10.md) můžete kopírovat nebo nahrávat soubory VHD do účtu úložiště, který je přidružený k testovacímu prostředí.
+- Použijte [Průzkumník služby Azure Storage](../vs-azure-tools-storage-manage-with-storage-explorer.md). Průzkumník služby Storage je samostatná aplikace, která běží na Windows, OS X a Linux.
 
-Chcete-li najít cílový účet úložiště, který je spojen s testovacího prostředí:
+Pokud chcete najít cílový účet úložiště, který je přidružený k vašemu testovacímu prostředí:
 
 1.  Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2.  V nabídce vlevo vyberte **skupiny prostředků**.
-3.  Vyhledejte a vyberte skupinu prostředků, který je spojen s testovacího prostředí.
-4.  V části **přehled**, vyberte jeden z účtů úložiště.
+3.  Vyhledejte a vyberte skupinu prostředků, která je přidružená k vašemu testovacímu prostředí.
+4.  V části **Přehled**vyberte jeden z účtů úložiště.
 5.  Vyberte **Objekty blob**.
-6.  Vyhledejte nahrávání v seznamu. Pokud žádný neexistuje, vraťte se ke kroku 4 a zkuste použít jiný účet úložiště.
-7.  Použití **URL** jako cíl v příkazu AzCopy.
+6.  Vyhledejte v seznamu nahrávání. Pokud žádný neexistuje, vraťte se ke kroku 4 a zkuste použít jiný účet úložiště.
+7.  Použijte **adresu URL** jako cíl v příkazu AzCopy.
 
-Kdy použít image Azure Marketplace vs. vlastní organizační vlastní image?
+Kdy mám použít Azure Marketplace image vs. vlastní organizační image?
 
-### <a name="when-should-i-use-an-azure-marketplace-image-vs-my-own-custom-organizational-image"></a>Kdy použít image Azure Marketplace vs. vlastní organizační vlastní image?
-Pokud nemáte konkrétní otázky nebo požadavků organizace by měla sloužit ve výchozím nastavení Azure Marketplace. Mezi běžné příklady patří;
+### <a name="when-should-i-use-an-azure-marketplace-image-vs-my-own-custom-organizational-image"></a>Kdy mám použít Azure Marketplace image vs. vlastní organizační image?
+Azure Marketplace by se měla používat ve výchozím nastavení, pokud nemáte konkrétní obavy nebo organizační požadavky. Mezi běžné příklady patří:
 
-- Nastavení složitý software, který vyžaduje, aby aplikace byly zahrnuty základní image.
-- Instalace a nastavení aplikace může trvat mnoho hodin, které nejsou efektivní využití výpočetního času má být přidán do Image Azure Marketplace.
-- Vývojářům a testerům rychle vyžadují přístup k virtuálnímu počítači a chcete minimalizovat čas instalace nového virtuálního počítače.
-- Dodržování předpisů nebo právní podmínky (třeba zásady zabezpečení), které musí být splněné všechny počítače.
-- Použití vlastní Image by neměly být zahrnuté lehce. Přinášejí další složitost, protože nyní musíte spravovat soubory virtuálního pevného disku pro tyto podpůrné základní Image. Také je potřeba pravidelně oprava tyto základní Image s aktualizacemi softwaru. Tyto aktualizace zahrnují nové aktualizace operačního systému (OS) a všechny aktualizace nebo změny konfigurace, které jsou potřebné pro balíček softwaru, samotného.
+- Komplexní instalace softwaru, která vyžaduje, aby aplikace byla součástí základní image.
+- Instalace a nastavení aplikace může trvat mnoho hodin, což není efektivní využití výpočetního času k přidání na Azure Marketplace image.
+- Vývojáři a testeri vyžadují rychlý přístup k virtuálnímu počítači a chtějí minimalizovat dobu nastavení nového virtuálního počítače.
+- Podmínky dodržování předpisů nebo regulativní podmínky (například zásady zabezpečení), které musí být na místě pro všechny počítače.
+- Použití vlastních imagí by nemělo být považováno za lehce. Představují velmi složitost, protože teď musíte spravovat soubory VHD pro základní základní image. Také je potřeba rutinním pomocí aktualizací softwaru rutiny opravit. Tyto aktualizace zahrnují nové aktualizace operačního systému (OS) a všechny aktualizace nebo změny konfigurace, které jsou potřeba pro samotný softwarový balíček.
 
 ## <a name="artifacts"></a>Artefakty
 
-### <a name="what-are-artifacts"></a>Co se o artefakty?
-Artefakty jsou přizpůsobitelné prvky, které vám umožní nasazovat nejnovější části nebo nasazení nástroje pro vývojáře k virtuálnímu počítači. Při vytváření virtuálního počítače, připojte k vašemu virtuálnímu počítači artefakty. Po zřízení virtuálního počítače artefakty nasazení a konfigurace virtuálního počítače. Jsou k dispozici v různých artefaktů existující naše [veřejného úložiště GitHub](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts). Můžete také [vytváření vlastních artefaktů](devtest-lab-artifact-author.md).
+### <a name="what-are-artifacts"></a>Co jsou artefakty?
+Artefakty jsou přizpůsobitelné prvky, které můžete použít k nasazení nejnovějších bitů nebo nasazení vývojových nástrojů do virtuálního počítače. Když vytváříte virtuální počítač, připojte ke svému VIRTUÁLNÍmu počítači artefakty. Po zřízení virtuálního počítače nasadí artefakty a nakonfigurují váš virtuální počítač. V našem [veřejném úložišti GitHubu](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts)jsou k dispozici různé již existující artefakty. Můžete také [vytvářet vlastní artefakty](devtest-lab-artifact-author.md).
 
-### <a name="my-artifact-failed-during-vm-creation-how-do-i-troubleshoot-it"></a>Při vytváření virtuálního počítače se nezdařilo tento artefakt. Jak ji můžu vyřešit?
-Zjistěte, jak získat protokoly neúspěšných artefaktu, najdete v článku [Diagnostika selhání artefaktů ve službě DevTest Labs](devtest-lab-troubleshoot-artifact-failure.md).
+### <a name="my-artifact-failed-during-vm-creation-how-do-i-troubleshoot-it"></a>Během vytváření virtuálního počítače selhal můj artefakt. Návody je řešit?
+Informace o tom, jak získat protokoly pro artefakt, který selhal, najdete v tématu [postup diagnostiky selhání artefaktů v DevTest Labs](devtest-lab-troubleshoot-artifact-failure.md).
 
-### <a name="when-should-an-organization-use-a-public-artifact-repository-vs-private-artifact-repository-in-devtest-labs"></a>Kdy organizace použít veřejné úložiště artefaktů a úložiště privátního artefaktů ve službě DevTest Labs?
-[Veřejné úložiště artefaktů](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts) obsahuje počáteční sadu softwarové balíčky, které se běžně používají. Pomáhá s rychlým nasazením bez nutnosti investovat čas pro reprodukci běžné vývojářské nástroje a moduly. Je možné nasadit vlastní soukromé úložiště. Můžete použít veřejné a soukromé úložiště paralelně. Můžete také zakázat veřejného úložiště. Kritéria, která je nasadit do privátního úložiště by měl vycházet následující dotazy a důležité informace:
+### <a name="when-should-an-organization-use-a-public-artifact-repository-vs-private-artifact-repository-in-devtest-labs"></a>Kdy by organizace měla v DevTest Labs použít veřejné úložiště artefaktů a soukromé úložiště artefaktů?
+[Veřejné úložiště artefaktů](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts) poskytuje počáteční sadu softwarových balíčků, které se nejčastěji používají. Pomáhá s rychlým nasazením, aniž by bylo nutné investovat čas k reprodukování běžných vývojářských nástrojů a doplňků. Můžete si vybrat, že nasadíte vlastní privátní úložiště. Veřejné a privátní úložiště můžete používat paralelně. Můžete se také rozhodnout zakázat veřejné úložiště. Kritéria pro nasazení privátního úložiště by měla být založená na následujících otázkách a ohledech:
 
-- Má organizace potřeba, aby podnikové licencovaného softwaru jako součást své nabídky DevTest Labs? Pokud odpovíte Ano, pak by měly být vytvořeny v privátním úložišti.
-- Organizace vývoj vlastní software, který obsahuje konkrétní operací, který je vyžadován jako součást celkového během procesu zřizování? Pokud odpovíte Ano, by měly být nasazeny v privátním úložišti.
-- Pokud zásady zásad správného řízení organizace vyžaduje izolace a externí úložiště nejsou pod správou konfigurace s přímým přístupem v organizaci, by měly být nasazeny úložiště privátního artefaktů. Jako součást tohoto procesu je zkopírovat počáteční kopie veřejného úložiště a integrovat se na soukromé úložiště. Potom veřejného úložiště je možné zakázat tak, aby nikdo v rámci organizace můžete už přístup. Tento přístup všichni uživatelé v organizaci měli pouze jediné úložiště, které má schválený organizací vynutí a minimalizovat odchylky od konfigurace.
+- Má organizace požadavky na podnikový licencovaný software jako součást nabídky DevTest Labs? Pokud je odpověď ano, je třeba vytvořit privátní úložiště.
+- Vyvíjí organizace vlastní software, který poskytuje konkrétní operace, která je vyžadována jako součást celkového procesu zřizování? Pokud je odpověď ano, měli byste nasadit privátní úložiště.
+- Pokud zásady správného řízení organizace vyžadují izolaci a externí úložiště nejsou pod správou přímých konfigurací v organizaci, měla by být nasazené soukromé úložiště artefaktů. V rámci tohoto procesu je možné zkopírovat a integrovat počáteční kopii veřejného úložiště s privátním úložištěm. Veřejné úložiště pak můžete zakázat, aby k němu nikdo jiný nemohly získat přístup. Tento přístup vynutí, aby všichni uživatelé v organizaci měli jenom jedno úložiště schválené organizací a minimalizovali snížení konfigurace.
 
 
-### <a name="should-an-organization-plan-for-a-single-repository-or-allow-multiple-repositories"></a>Organizace by měly plánování jednoho úložiště nebo povolit více úložišť?
-Jako součást celkového zásad správného řízení vaší organizace a strategie správy konfigurace doporučujeme použít centralizované úložiště. Při použití více úložišť mohou být sila nespravované software čase. S centrálním úložišti můžete využívat více týmů artefakty z tohoto úložiště pro své projekty. Vynucuje normalizace, zabezpečení, snadnou správu a odstraňuje duplicity úsilí. Jako součást centralizovaného tyto akce jsou doporučené postupy pro dlouhodobé správy a udržitelnosti:
+### <a name="should-an-organization-plan-for-a-single-repository-or-allow-multiple-repositories"></a>Měl by se použít plán organizace pro jedno úložiště nebo povolení více úložišť?
+V rámci celkové strategie správy zásad správného řízení a konfigurace vaší organizace doporučujeme, abyste používali centralizované úložiště. Když použijete více úložišť, můžou se v průběhu času stát siloy nespravovaného softwaru. S centrálním úložištěm může více týmů využívat artefakty z tohoto úložiště pro své projekty. Vynutil standardizaci, zabezpečení, snadné řízení a eliminuje duplicity úsilí. V rámci centralizované správy jsou následující akce Doporučené postupy pro dlouhodobou správu a udržitelnost:
 
-- Úložiště Azure přidružení stejného tenanta služby Azure Active Directory, která je pro ověřování a autorizace pomocí předplatného Azure.
-- Vytvořte skupinu s názvem `All DevTest Labs Developers` ve službě Azure Active Directory, který je centrálně spravovat. Kterýkoli vývojář, který přispívá k rozvoji artefaktů by měl umístit do této skupiny.
-- Stejnou skupinu Azure Active Directory je možné poskytnout přístup k úložišti Azure úložišť a testovací prostředí.
-- V úložišti Azure, větvení nebo větvení by měla sloužit k úložišti samostatné v vývoj z primární produkční úložiště. Obsah je pouze přidán do hlavní větve s žádostí o přijetí změn po přezkoumání kódu správné. Jakmile kód revidující změnu schválí, hlavní vývojář, který zodpovídá za údržbu v hlavní větvi, sloučí aktualizovaný kód.
+- Přidružte Azure Repos ke stejnému Azure Active Directory tenanta, kterého předplatné Azure používá k ověřování a autorizaci.
+- Vytvořte skupinu s názvem `All DevTest Labs Developers` v Azure Active Directory centrálně spravovaná. Do této skupiny by měl být umístěn jakýkoli vývojář, který přispívá ke vývojům artefaktů.
+- Stejnou skupinu Azure Active Directory lze použít k poskytnutí přístupu k úložišti Azure Repos a testovacímu prostředí.
+- V Azure Repos by se měly použít větvení nebo rozvětvení do samostatného cloudového úložiště z primárního provozního úložiště. Obsah se přidá do hlavní větve s žádostí o přijetí změn po správné revizi kódu. Jakmile recenzent kódu schválí změnu, vývojář zájemce, který zodpovídá za údržbu hlavní větve, sloučí aktualizovaný kód.
 
 ## <a name="cicd-integration"></a>Integrace CI/CD
 
-### <a name="does-devtest-labs-integrate-with-my-cicd-toolchain"></a>Integrovat DevTest Labs se Moje sadou nástrojů CI/CD?
-Pokud používáte Azure DevOps, můžete použít [rozšíření DevTest Labs úloh](https://marketplace.visualstudio.com/items?itemName=ms-azuredevtestlabs.tasks) automatizace kanálu pro vydávání verzí ve službě DevTest Labs. Úlohy, které vám pomůžou s touto příponou patří:
+### <a name="does-devtest-labs-integrate-with-my-cicd-toolchain"></a>Integruje se DevTest Labs s CI/CD sada nástrojů?
+Pokud používáte Azure DevOps, můžete k automatizaci kanálu vydání v DevTest Labs použít [rozšíření úlohy DevTest Labs](https://marketplace.visualstudio.com/items?itemName=ms-azuredevtestlabs.tasks) . Mezi úlohy, které můžete s tímto rozšířením dělat, patří:
 
-- Vytvoření a nasazení virtuálního počítače automaticky. Také můžete nakonfigurovat virtuální počítač s nejnovější sestavení pomocí úloh Azure File Copy nebo prostředí PowerShell Azure DevOps služby.
-- Automaticky zachytávat stav virtuálního počítače po testování pro reprodukci chyby na stejný virtuální počítač pro další zkoumání.
-- Pokud už je nepotřebujete, odstraňte virtuální počítač na konci procesu vydávání verzí.
+- Vytvořte a nasaďte virtuální počítač automaticky. Virtuální počítač můžete nakonfigurovat také pomocí nejnovějšího buildu pomocí úloh Azure File Copy nebo PowerShellu Azure DevOps Services.
+- Po otestování automaticky Zachyťte stav virtuálního počítače, aby se reprodukovala chyba na stejném virtuálním počítači pro další šetření.
+- Odstraňte virtuální počítač na konci kanálu vydání, pokud už ho nepotřebujete.
 
-Následující příspěvky nabídka pokyny a informace o použití rozšíření Azure DevOps služby:
+Následující blogové příspěvky obsahují doprovodné materiály a informace o používání rozšíření Azure DevOps Services:
 
 - [DevTest Labs a rozšíření Azure DevOps](integrate-environments-devops-pipeline.md)
-- [Nasazení nového virtuálního počítače v existující testovací prostředí DevTest Labs ze služeb Azure DevOps](https://www.visualstudiogeeks.com/blog/DevOps/Deploy-New-VM-To-Existing-AzureDevTestLab-From-VSTS)
-- [Pomocí nástroje Azure DevOps služby release management pro průběžné nasazení na DevTest Labs](https://www.visualstudiogeeks.com/blog/DevOps/Use-VSTS-ReleaseManagement-to-Deploy-and-Test-in-AzureDevTestLabs)
+- [Nasazení nového virtuálního počítače v existujícím testovacím prostředí DevTest Labs z Azure DevOps Services](https://www.visualstudiogeeks.com/blog/DevOps/Deploy-New-VM-To-Existing-AzureDevTestLab-From-VSTS)
+- [Používání služby Azure DevOps Services Release Management pro kontinuální nasazování do DevTest Labs](https://www.visualstudiogeeks.com/blog/DevOps/Use-VSTS-ReleaseManagement-to-Deploy-and-Test-in-AzureDevTestLabs)
 
-Pro další kontinuální integrace (CI) / průběžné doručování (CD) sady nástrojů, které můžete dosáhnout stejné scénáře podle nasazení [šablon Azure Resource Manageru](https://azure.microsoft.com/resources/templates/) pomocí [rutin prostředí Azure PowerShell](../azure-resource-manager/resource-group-template-deploy.md) a [Sady .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.DevTestLabs/). Můžete také použít [rozhraní REST API pro DevTest Labs](https://aka.ms/dtlrestapis) integrovat sady nástrojů.
+Pro jiné průběžné integrace (CI)/continuous delivery (CD) sady nástrojů můžete dosáhnout stejných scénářů nasazením [Azure Resource Manager šablon](https://azure.microsoft.com/resources/templates/) pomocí [rutin Azure PowerShell](../azure-resource-manager/resource-group-template-deploy.md) a sady [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.DevTestLabs/). Pro integraci s sada nástrojů můžete také použít [rozhraní REST API pro DevTest Labs](https://aka.ms/dtlrestapis) .
 
 ## <a name="networking"></a>Sítě
 
-### <a name="when-should-i-create-a-new-virtual-network-for-my-devtest-labs-environment-vs-using-an-existing-virtual-network"></a>Kdy je vhodné vytvořit novou virtuální síť pro Moje prostředí DevTest Labs oproti použití existující virtuální sítě?
-Pokud vaše virtuální počítače potřebují komunikovat s stávající infrastruktury, zvažte použití existující virtuální sítě v prostředí DevTest Labs. Pokud používáte ExpressRoute, můžete chtít minimalizovat množství virtuálních sítí / podsítí tak, aby váš adresní prostor IP adres, který získá přiřazen pro použití v předplatných nejsou fragment. 
+### <a name="when-should-i-create-a-new-virtual-network-for-my-devtest-labs-environment-vs-using-an-existing-virtual-network"></a>Kdy je vhodné vytvořit novou virtuální síť pro prostředí DevTest Labs a použít stávající virtuální síť?
+Pokud vaše virtuální počítače potřebují pracovat se stávající infrastrukturou, zvažte použití existující virtuální sítě v prostředí DevTest Labs. Pokud používáte ExpressRoute, možná budete chtít minimalizovat množství virtuální sítě/podsítí, abyste nefragmentoval adresní prostor IP adres, který se přiřadí k použití v předplatných. 
 
-Zvažte použití vzoru partnerského vztahu virtuálních sítí tady ([centra s paprsky modelu](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)) příliš. Tento přístup umožňuje komunikaci virtuálních sítí/podsítí napříč předplatnými. Každé prostředí DevTest Labs, jinak může mít svůj vlastní virtuální sítě. 
+Zvažte také použití vzoru partnerského vztahu virtuálních sítí ([hvězdicové model](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)). Tento přístup umožňuje komunikaci mezi virtuálními sítěmi a podsítí v rámci předplatných. V opačném případě by každé prostředí DevTest Labs mohlo mít vlastní virtuální síť. 
 
-Existují [omezení](../azure-subscription-service-limits.md) na počet virtuálních sítí na jedno předplatné. Výchozí doba je 50, i když tento limit lze zvýšit na 100.
+Existují [omezení](../azure-subscription-service-limits.md) počtu virtuálních sítí na jedno předplatné. Výchozí hodnota je 50, i když tento limit lze vystoupl na 100.
 
-### <a name="when-should-i-use-a-shared-ip-vs-public-ip-vs-private-ip"></a>Kdy použít se sdílené IP Adresou a veřejnou IP adresu a privátní IP adresa?
+### <a name="when-should-i-use-a-shared-ip-vs-public-ip-vs-private-ip"></a>Kdy mám použít sdílenou IP adresu a veřejnou IP adresu a soukromou IP adresu?
  
-Pokud používáte síť VPN site-to-site nebo Expressroute, zvažte použití privátních IP adres tak, že vaše počítače jsou přístupné prostřednictvím vaší interní síti a nejsou přístupné prostřednictvím veřejného Internetu.
+Pokud používáte síť Site-to-Site VPN nebo Express Route, zvažte použití privátních IP adres, aby vaše počítače byly přístupné prostřednictvím interní sítě a nepřístupné přes veřejný Internet.
 
 > [!NOTE]
-> Vlastníků testovacího prostředí můžete změnit tyto zásady podsítě k zajištění, že nikdo omylem vytvoří veřejné IP adresy pro své virtuální počítače. Vlastník předplatného byste vytvořit zásady předplatného brání vytváření veřejné IP adresy.
+> Vlastníci testovacího prostředí můžou tyto zásady podsítě změnit, aby se zajistilo, že nikdo nechtěně nevytvoří veřejné IP adresy pro své virtuální počítače Vlastník předplatného by měl vytvořit zásady předplatného, které brání v vytváření veřejných IP adres.
 
-Při použití sdílené veřejné IP adresy, virtuální počítače v testovacím prostředí, sdílet veřejnou IP adresu. Tento přístup může být užitečné, když budete chtít zabránit porušení omezení pro veřejné IP adresy pro daný odběr.
+Při použití sdílených veřejných IP adres sdílí virtuální počítače v testovacím prostředí veřejnou IP adresu. Tento přístup může být užitečný v případě, že se potřebujete vyhnout porušení limitů u veřejných IP adres daného předplatného.
 
-### <a name="how-do-i-ensure-that-development-and-test-virtual-machines-are-unable-to-reach-the-public-internet-are-there-any-recommended-patterns-to-set-up-network-configuration"></a>Jak zajistit, že vývojové a testovací virtuální počítače se nám kontaktovat veřejného Internetu? Existují všechny doporučené způsoby nastavení konfigurace sítě?
+### <a name="how-do-i-ensure-that-development-and-test-virtual-machines-are-unable-to-reach-the-public-internet-are-there-any-recommended-patterns-to-set-up-network-configuration"></a>Návody zajistěte, aby vývojové a testovací virtuální počítače nedokázaly získat přístup k veřejnému Internetu? Existují nějaké Doporučené vzory pro nastavení konfigurace sítě?
 
-Ano. Existují dva aspekty ke zvážení – příchozí a odchozí provoz.
+Ano. K dispozici jsou dvě aspekty, které byste měli zvážit – příchozí a odchozí provoz.
 
-- **Příchozí provoz** – Pokud virtuální počítač nemá veřejnou IP adresu, pak nelze získat přístup k Internetu. Běžným přístupem je zajistit, že je nastavena zásady na úrovni předplatného, tak, že žádný uživatel můžete vytvořit veřejnou IP adresu.
-- **Odchozí provoz** – Pokud chcete zabránit virtuální počítače přímo přístup k veřejným Internetem a vynucení provozu prostřednictvím podnikové brány firewall, pak může směrovat provoz místních přes expressroute nebo VPN, pomocí vynucené směrování.
+- **Příchozí provoz** – Pokud virtuální počítač nemá veřejnou IP adresu, nepůjde k němu získat Internet. Běžným přístupem je zajistit, že jsou nastavené zásady na úrovni předplatného, takže žádný uživatel nemůže vytvořit veřejnou IP adresu.
+- **Odchozí provoz** – Pokud chcete zabránit tomu, aby virtuální počítače přistupovaly k veřejnému Internetu a vynutily provoz přes podnikovou bránu firewall, můžete směrovat provoz místně přes Express Route nebo VPN pomocí vynuceného směrování.
 
 > [!NOTE]
-> Pokud máte proxy server, která blokuje provoz bez nastavení proxy serveru, nezapomeňte přidat výjimky pro účet úložiště artefaktu testovacího prostředí.
+> Pokud máte proxy server, která blokuje provoz bez nastavení proxy serveru, nezapomeňte přidat výjimky do účtu úložiště artefaktu testovacího prostředí.
 
-Můžete také použít skupiny zabezpečení sítě pro virtuální počítače nebo podsítí. Tento krok přidává další vrstvu ochrany pro povolení / blokování provozu.
+Skupiny zabezpečení sítě můžete použít také pro virtuální počítače nebo podsítě. Tento krok přidá další vrstvu ochrany pro povolení/blokování provozu.
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
-### <a name="why-isnt-my-existing-virtual-network-saving-properly"></a>Není Proč moje stávající virtuální sítě ukládání správně?
-Jednou z možností je, že váš název virtuální sítě obsahuje období. Pokud ano, zkuste odebrat období nebo jejich náhradu za pomlčky. Poté se pokuste znovu uložit virtuální síť.
+### <a name="why-isnt-my-existing-virtual-network-saving-properly"></a>Proč se moje existující virtuální síť neukládá správně?
+Jednou z možností je, že název virtuální sítě obsahuje tečky. Pokud ano, zkuste odebrat období nebo je nahraďte pomlčkami. Pak zkuste znovu uložit virtuální síť.
 
-### <a name="why-do-i-get-a-parent-resource-not-found-error-when-i-provision-a-vm-from-powershell"></a>Proč se při zřizování virtuálního počítače z prostředí PowerShell získat chybu "Nadřazený prostředek nebyl nalezen"?
-Pokud jeden prostředek je nadřazený objekt na jiný prostředek, musí existovat nadřazený prostředek vytvořit podřízený prostředek. Pokud se nadřazený prostředek neexistuje, zobrazí **ParentResourceNotFound** zprávy. Pokud nezadáte závislost na nadřazený prostředek, podřízený prostředek může být nasazena nadřazeného objektu.
+### <a name="why-do-i-get-a-parent-resource-not-found-error-when-i-provision-a-vm-from-powershell"></a>Proč se při zřizování virtuálního počítače z PowerShellu zobrazí chyba "nadřazený prostředek nebyl nalezen"?
+Pokud je jeden prostředek nadřazený jinému prostředku, musí před vytvořením podřízeného prostředku existovat nadřazený prostředek. Pokud nadřazený prostředek neexistuje, zobrazí se zpráva **ParentResourceNotFound** . Pokud nezadáte závislost na nadřazeném prostředku, může se podřízený prostředek nasadit před nadřazeným objektem.
 
-Virtuální počítače jsou podřízené prostředky v rámci testovacího prostředí ve skupině prostředků. Při použití šablon Resource Manageru k nasazení virtuálních počítačů pomocí Powershellu, název skupiny prostředků, které jsou k dispozici v skriptu prostředí PowerShell by měl být název skupiny prostředků testovacího prostředí. Další informace najdete v tématu [řešení potíží s běžnými chybami nasazení Azure](../azure-resource-manager/resource-manager-common-deployment-errors.md).
+Virtuální počítače jsou podřízené prostředky v rámci testovacího prostředí ve skupině prostředků. Když použijete šablony Správce prostředků k nasazení virtuálních počítačů pomocí prostředí PowerShell, název skupiny prostředků zadaný ve skriptu PowerShellu by měl být název skupiny prostředků testovacího prostředí. Další informace najdete v tématu [řešení běžných chyb při nasazení Azure](../azure-resource-manager/resource-manager-common-deployment-errors.md).
 
-### <a name="where-can-i-find-more-error-information-if-a-vm-deployment-fails"></a>Kde najdu Další informace o chybě, pokud se nezdaří nasazení virtuálního počítače?
-Chyby nasazení virtuálního počítače zachyceny v protokolech aktivit. Testovací prostředí můžete najít protokoly aktivit virtuálního počítače v části **protokoly auditu** nebo **Diagnostika virtuálního počítače** v nabídce prostředků na stránce testovacího prostředí virtuálních počítačů (se zobrazí po výběru virtuálního počítače z seznam virtuálních počítačů).
+### <a name="where-can-i-find-more-error-information-if-a-vm-deployment-fails"></a>Kde najdu Další informace o chybě, pokud se nasazení virtuálního počítače nepodaří?
+Chyby nasazení virtuálních počítačů jsou zachyceny v protokolech aktivit. Protokoly aktivit virtuálních počítačů v testovacím prostředí najdete v části **protokoly auditu** nebo **Diagnostika virtuálního počítače** v nabídce prostředků na stránce virtuálního počítače testovacího prostředí (stránka se zobrazí po výběru virtuálního počítače ze seznamu Moje virtuální počítače).
 
-V některých případech nasazení dojde k chybě před zahájením nasazení virtuálního počítače. Příkladem je při překročení limitu předplatného pro prostředek, který byl vytvořen s virtuálním Počítačem. Podrobnosti o chybě v tomto případě jsou zachyceny v protokolech aktivit úrovni testovacího prostředí. Protokoly aktivit jsou umístěné v dolní části **konfigurace a zásad** nastavení. Další informace o používání aktivit protokoly v Azure, najdete v článku [zobrazení protokolů aktivit pro auditování akcí u prostředků](../azure-resource-manager/resource-group-audit.md).
+V některých případech dojde k chybě nasazení před zahájením nasazení virtuálního počítače. Příkladem je překročení limitu předplatného pro prostředek, který byl vytvořen s virtuálním počítačem. V tomto případě jsou podrobnosti o chybě zachyceny v protokolech aktivit na úrovni testovacího prostředí. Protokoly aktivit se nacházejí v dolní části nastavení **Konfigurace a zásady** . Další informace o používání protokolů aktivit v Azure najdete v tématu [zobrazení protokolů aktivit pro audit akcí u prostředků](../azure-resource-manager/resource-group-audit.md).
 
+### <a name="why-do-i-get-location-is-not-available-for-resource-type-error-when-trying-to-create-a-lab"></a>Proč se při pokusu o vytvoření testovacího prostředí zobrazí chyba "umístění není k dispozici pro typ prostředku"?
+Při pokusu o vytvoření testovacího prostředí se může zobrazit chybová zpráva podobná následující: 
 
+```
+The provided location 'australiacentral' is not available for resource type 'Microsoft.KeyVault/vaults'. List of available regions for the resource type is 'northcentralus,eastus,northeurope,westeurope,eastasia,southeastasia,eastus2,centralus,southcentralus,westus,japaneast,japanwest,australiaeast,australiasoutheast,brazilsouth,centralindia,southindia,westindia,canadacentral,canadaeast,uksouth,ukwest,westcentralus,westus2,koreacentral,koreasouth,francecentral,southafricanorth
+```
+
+Tuto chybu můžete vyřešit provedením jednoho z následujících kroků:
+
+#### <a name="option-1"></a>Možnost 1
+Ověřte dostupnost typu prostředku v oblastech Azure na stránce [produkty k dispozici podle oblasti](https://azure.microsoft.com/global-infrastructure/services/) . Pokud typ prostředku není v určité oblasti dostupný, DevTest Labs nepodporuje vytvoření testovacího prostředí v této oblasti. Při vytváření testovacího prostředí vyberte jinou oblast. 
+
+#### <a name="option-2"></a>Možnost 2
+Pokud je ve vaší oblasti dostupný typ prostředku, ověřte, jestli je ve vašem předplatném zaregistrovaný. Lze ji provést na úrovni vlastníka předplatného, jak je uvedeno v [tomto článku](../azure-resource-manager/resource-manager-supported-services.md). 
 
 

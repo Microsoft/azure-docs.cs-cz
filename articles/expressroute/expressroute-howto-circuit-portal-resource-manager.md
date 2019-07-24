@@ -1,19 +1,20 @@
 ---
-title: 'Vytvoření a úprava okruhu ExpressRoute – portál: Azure | Dokumentace Microsoftu'
+title: 'Vytvoření a úprava okruhu ExpressRoute – portál: Azure | Microsoft Docs'
 description: Vytvoření, zřízení, ověřte, aktualizovat, odstranit a zrušit zřízení okruhu ExpressRoute.
 services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: article
 ms.date: 10/20/2018
-ms.author: cherylmc;ganesr
+ms.author: cherylmc
+ms.reviewer: ganesr
 ms.custom: seodec18
-ms.openlocfilehash: ce6d64f1df7a91f68e4621189553c36b36709039
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: 25821f60f47b1279e70cba2574901cd5df3d327f
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67657229"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67846591"
 ---
 # <a name="create-and-modify-an-expressroute-circuit"></a>Vytvoření a úprava okruhu ExpressRoute
 
@@ -54,10 +55,10 @@ V prohlížeči přejděte na web [Azure Portal](https://portal.azure.com) a př
    ![Nakonfigurujte úroveň skladové položky a měření dat.](./media/expressroute-howto-circuit-portal-resource-manager/createcircuit.png)
 
    * **Úroveň** Určuje, zda je povolen ExpressRoute standard nebo doplněk ExpressRoute premium. Můžete zadat **standardní** získat standardní SKU nebo **Premium** pořídit si doplněk premium.
-   * **Data monitorování míry využívání** Určuje typ fakturace. Můžete zadat **Metered** pro tarif podle objemu dat a **Unlimited** pro tarif s neomezenými daty. Všimněte si, že můžete změnit typ fakturace z **Metered** k **Unlimited**.
+   * **Data monitorování míry využívání** Určuje typ fakturace. Můžete zadat **Metered** pro tarif podle objemu dat a **Unlimited** pro tarif s neomezenými daty. Všimněte si, že můžete změnit typ fakturace z **měření** na neomezeno.
 
      > [!IMPORTANT]
-     > Nelze změnit typ z **Unlimited** k **Metered**.
+     > Nemůžete změnit typ z **neomezené** na **měřený**.
 
    * **Umístění partnerského vztahu** je fyzického umístění, kde se partnerský vztah Microsoftu.
 
@@ -84,7 +85,7 @@ Na této stránce **stav poskytovatele** poskytuje informace o aktuálním stavu
 
 Při vytváření nového okruhu ExpressRoute, je okruh v následujícím stavu:
 
-Stav poskytovatele: Není zajišťováno<BR>
+Stav poskytovatele: Není zřízené<BR>
 Stav okruhu: Enabled
 
 ![Zahájení procesu zřizování](./media/expressroute-howto-circuit-portal-resource-manager/status.png)

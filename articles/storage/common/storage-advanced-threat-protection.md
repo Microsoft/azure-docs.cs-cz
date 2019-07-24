@@ -1,6 +1,6 @@
 ---
 title: Advanced Threat Protection pro Azure Storage
-description: Konfigurace Azure Storage Advanced Threat Protection detekovat anomálie v aktivitě účtu a upozornit vás na potenciálně nebezpečné pokusy o přístup k vašemu účtu.
+description: Nakonfigurujte Azure Storage pokročilou ochranu před internetovými útoky pro detekci anomálií v aktivitě účtu a upozorněte vás na potenciálně nebezpečné pokusy o přístup k vašemu účtu.
 services: storage
 author: tamram
 ms.service: storage
@@ -8,156 +8,166 @@ ms.topic: article
 ms.date: 04/03/2019
 ms.author: tamram
 ms.reviewer: cbrooks
-ms.openlocfilehash: 8cea4b3fb78f3430fdd92e40552d687501af4be8
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: fb221d774d9d00a5dc7b0d94edc35a5651443a5b
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67621961"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67874062"
 ---
 # <a name="advanced-threat-protection-for-azure-storage"></a>Advanced Threat Protection pro Azure Storage
 
-Advanced Threat Protection pro Azure Storage poskytuje další vrstvu analytických nástrojů zabezpečení, která detekuje neobvyklé a potenciálně škodlivé pokusy o přístup nebo využití účtů úložiště. Tato úroveň ochrany lze řešení ohrožení, aniž byste museli být odborné zabezpečení nebo spravovat systémy monitorování zabezpečení. 
+Advanced Threat Protection pro Azure Storage poskytuje další vrstvu analytických nástrojů zabezpečení, která detekuje neobvyklé a potenciálně škodlivé pokusy o přístup nebo využití účtů úložiště. Tato vrstva ochrany umožňuje řešit hrozby bez nutnosti být odborníkem na zabezpečení nebo spravovat systémy monitorování zabezpečení. 
 
-Pokud dojde k anomálie v aktivitě se aktivují upozornění zabezpečení.  Tyto výstrahy zabezpečení jsou integrované s [Azure Security Center](https://azure.microsoft.com/services/security-center/)a jsou také odesílány e-mailem správci předplatného s podrobnostmi o podezřelé aktivitě a doporučení o tom, jak vyšetřením a odstraněním hrozeb.
+Výstrahy zabezpečení se spouštějí při výskytu anomálií v aktivitě.  Tyto výstrahy zabezpečení jsou integrovány do [Azure Security Center](https://azure.microsoft.com/services/security-center/)a jsou také odesílány prostřednictvím e-mailu správcům předplatného s podrobnostmi o podezřelé aktivitě a doporučeních k tomu, jak tyto hrozby prozkoumat a opravit.
 
 > [!NOTE]
-> * Rozšířená ochrana před internetovými útoky pro Azure Storage je momentálně dostupná jenom pro úložiště objektů Blob.
-> * Cenové podrobnosti, včetně bezplatné 30denní zkušební, najdete v článku [stránce s cenami za Azure Security Center]( https://azure.microsoft.com/pricing/details/security-center/).
-> * Ochrana ATP v programu pro funkce Azure storage není aktuálně dostupná v oblastech suverénních cloudů a Azure government.
+> * Rozšířená ochrana před internetovými útoky pro Azure Storage je aktuálně dostupná jenom pro úložiště objektů BLOB.
+> * Podrobnosti o cenách, včetně bezplatné 30denní zkušební verze, najdete na [stránce s cenami Azure Security Center]( https://azure.microsoft.com/pricing/details/security-center/).
+> * Služba ATP pro službu Azure Storage není v současnosti dostupná v oblastech cloudu Azure pro státní správu a svrchované oblasti.
 
-Rozšířená ochrana před internetovými útoky pro Azure Storage ingestuje diagnostické protokoly pro čtení, zápisu a žádosti o odstranění do úložiště objektů Blob pro detekci hrozeb. K prozkoumání výstrahy z rozšířené ochrany před internetovými útoky, můžete zobrazit aktivitu související úložiště pomocí Storage Analytics protokolování. Další informace najdete v tématu Jak [konfigurace protokolování Storage Analytics](storage-monitor-storage-account.md#configure-logging).
+Rozšířená ochrana před internetovými útoky pro Azure Storage ingestuje diagnostické protokoly žádostí o čtení, zápis a odstranění do úložiště objektů BLOB pro detekci hrozeb. Pokud chcete prozkoumat výstrahy od rozšířené ochrany před internetovými útoky, můžete zobrazit související aktivitu úložiště pomocí Analýza úložiště protokolování. Další informace najdete v tématu [konfigurace analýza úložiště protokolování](storage-monitor-storage-account.md#configure-logging).
 
 ## <a name="set-up-advanced-threat-protection"></a>Nastavení rozšířené ochrany před internetovými útoky 
 
 ### <a name="using-the-portal"></a>Použití portálu
 
-1. Spuštění webu Azure portal na [ https://portal.azure.com ](https://portal.azure.com/).
+1. Spusťte Azure Portal v [https://portal.azure.com](https://portal.azure.com/).
 
-2. Přejděte na stránku konfigurace účtu služby Azure Storage, který chcete chránit. V **nastavení** stránce **Advanced Threat Protection**.
+2. Přejděte na stránku konfigurace Azure Storage účtu, který chcete chránit. Na stránce **Nastavení** vyberte **Rozšířená ochrana před internetovými útoky**.
 
-3. V **Advanced Threat Protection** okno Konfigurace
-    * Zapnout **ON** Advanced *před internetovými útoky*
-    * Klikněte na tlačítko **Uložit** nové nebo aktualizované zásady rozšířené ochrany před internetovými útoky uložit. (Ceny uvedené na obrázku jsou například pouze pro účely.)
+3. V okně konfigurace **rozšířené ochrany před internetovými útoky**
+    * Zapnout  rozšířenou *ochranu před internetovými útoky*
+    * Kliknutím na **Uložit** uložte nové nebo aktualizované zásady rozšířené ochrany před internetovými útoky. (Ceny v imagi jsou například jenom pro účely.)
 
-![Zapnout rozšířené ochrany před internetovými útoky Azure Storage](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-turn-on.png)
+![Zapnutí Azure Storage rozšířené ochrany před internetovými útoky](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-turn-on.png)
 
 ### <a name="using-azure-security-center"></a>Pomocí Azure Security Center
-Když se přihlásíte k odběru na úrovni Standard ve službě Azure Security Center, je nastavení rozšířené ochrany před internetovými útoky na vaše účty úložiště. Další informace najdete v části [upgradovat na Security Center úrovně Standard pro zvýšení zabezpečení](https://docs.microsoft.com/azure/security-center/security-center-pricing). (Ceny uvedené na obrázku jsou například pouze pro účely.)
 
-![Standardní úroveň v ASC](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-pricing.png)
+Když se přihlásíte k odběru úrovně Standard v Azure Security Center, Rozšířená ochrana před internetovými útoky se automaticky nastaví na všechny vaše účty úložiště. Rozšířenou ochranu před internetovými útoky pro účty úložiště v rámci určitého předplatného můžete povolit nebo zakázat následujícím způsobem:
 
-### <a name="using-azure-resource-manager-templates"></a>Pomocí šablon Azure Resource Manageru
+1. Spusťte **Azure Security Center** v [Azure Portal]([https://portal.azure.com).
+1. V hlavní nabídce klikněte na **ceny & nastavení**.
+1. Klikněte na předplatné, u kterého chcete povolit nebo zakázat ochranu před hrozbami pro své účty úložiště.
 
-Použití šablony Azure Resource Manageru k nasazení účtu služby Azure Storage s Advanced Threat Protection povolená.
-Další informace najdete v tématu [účet úložiště se Rozšířená ochrana před internetovými útoky](https://azure.microsoft.com/resources/templates/201-storage-advanced-threat-protection-create/).
+    ![Výběr předplatného](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-subscription.png)
 
-### <a name="using-azure-policy"></a>Pomocí zásad Azure
+1. Klikněte na **cenová úroveň**.
+1. V části **Vybrat cenovou úroveň podle typu prostředku** na řádku **účty úložiště** klikněte na **povoleno** nebo **zakázáno**.
 
-Pomocí služby Azure Policy se povolit rozšířenou ochranu před internetovými útoky v účtech úložiště v rámci konkrétní předplatné nebo skupinu prostředků.
+    ![Povolit ATP v Security Center](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-pricing2.png)
+1. Klikněte na **Uložit**.
 
-1. Něco Azure **zásady – definice** stránky.
+### <a name="using-azure-resource-manager-templates"></a>Používání šablon Azure Resource Manager
 
-1. Hledat **nasazení rozšířené ochrany před internetovými útoky na účty úložiště** zásad.
+Pomocí šablony Azure Resource Manager nasaďte účet Azure Storage s povolenou rozšířenou ochranou hrozeb. Další informace najdete v tématu [účet úložiště s pokročilou ochranou hrozeb](https://azure.microsoft.com/resources/templates/201-storage-advanced-threat-protection-create/).
 
-     ![Hledání zásad](./media/storage-advanced-threat-protection/storage-atp-policy-definitions.png)
+### <a name="using-azure-policy"></a>Použití Azure Policy
+
+Pomocí Azure Policy můžete povolit rozšířenou ochranu před internetovými útoky napříč účty úložiště v rámci konkrétního předplatného nebo skupiny prostředků.
+
+1. Na obědě stránku Azure **Policy-definitions** .
+
+1. Vyhledejte zásadu **nasazení rozšířené ochrany před internetovými útoky na účty úložiště** .
+
+     ![Zásady hledání](./media/storage-advanced-threat-protection/storage-atp-policy-definitions.png)
   
-1. Vyberte skupinu Azure předplatné nebo prostředek.
+1. Vyberte předplatné nebo skupinu prostředků Azure.
 
-    ![Vyberte předplatné nebo skupinu](./media/storage-advanced-threat-protection/storage-atp-policy2.png)
+    ![Vybrat předplatné nebo skupinu](./media/storage-advanced-threat-protection/storage-atp-policy2.png)
 
-1. Přiřazení zásad.
+1. Přiřaďte zásadu.
 
     ![Stránka definice zásad](./media/storage-advanced-threat-protection/storage-atp-policy1.png)
 
 ### <a name="using-rest-api"></a>Pomocí rozhraní REST API
-Příkazy rozhraní Rest API k vytvoření, aktualizaci nebo získat nastavení rozšířené ochrany před internetovými útoky pro konkrétnímu účtu úložiště.
+Pomocí příkazů rozhraní REST API můžete vytvořit, aktualizovat nebo získat nastavení rozšířené ochrany před internetovými útoky pro určitý účet úložiště.
 
 * [Rozšířená ochrana před internetovými útoky – vytvořit](https://docs.microsoft.com/rest/api/securitycenter/advancedthreatprotection/create)
-* [Rozšířená ochrana před internetovými útoky - Get](https://docs.microsoft.com/rest/api/securitycenter/advancedthreatprotection/get)
+* [Rozšířená ochrana před internetovými útoky – získání](https://docs.microsoft.com/rest/api/securitycenter/advancedthreatprotection/get)
 
 ### <a name="using-azure-powershell"></a>Použití Azure Powershell
 
-Pomocí následujících rutin prostředí PowerShell:
+Použijte následující rutiny PowerShellu:
 
-  * [Povolit rozšířené ochrany před internetovými útoky](https://docs.microsoft.com/powershell/module/az.security/enable-azsecurityadvancedthreatprotection)
-  * [Získáte tak rozšířené ochrany před internetovými útoky](https://docs.microsoft.com/powershell/module/az.security/get-azsecurityadvancedthreatprotection)
-  * [Zakázat rozšířené ochrany před internetovými útoky](https://docs.microsoft.com/powershell/module/az.security/disable-azsecurityadvancedthreatprotection)
+  * [Povolit rozšířenou ochranu před internetovými útoky](https://docs.microsoft.com/powershell/module/az.security/enable-azsecurityadvancedthreatprotection)
+  * [Získat rozšířenou ochranu před internetovými útoky](https://docs.microsoft.com/powershell/module/az.security/get-azsecurityadvancedthreatprotection)
+  * [Zakázat rozšířenou ochranu před internetovými útoky](https://docs.microsoft.com/powershell/module/az.security/disable-azsecurityadvancedthreatprotection)
 
-## <a name="explore-security-anomalies"></a>Prozkoumejte bezpečnostních anomálií
+## <a name="explore-security-anomalies"></a>Prozkoumejte anomálie zabezpečení
 
-Pokud dojde k úložiště zvláštností v činnosti, dostanete oznámení e-mailu s informacemi o podezřelé události zabezpečení. Podrobnosti o události patří:
+Když se vyskytnou anomálie aktivity úložiště, obdržíte e-mailové oznámení s informacemi o podezřelé události zabezpečení. Podrobnosti události zahrnují:
 
-* Povaha anomálii
+* Povaha anomálií
 * Název účtu úložiště
 * Čas události
 * Typ úložiště
-* Možné příčiny 
-* Kroky šetření
-* Nápravných kroků
+* Potenciální příčiny 
+* Kroky pro šetření
+* Postup odstranění problému
 
 
-E-mail také obsahuje podrobnosti o možných příčinách a doporučených akcích pro šetření a zmírnění potenciálního ohrožení.
+E-mail obsahuje také podrobnosti o možných příčinách a doporučené akce pro prošetření a zmírnění potenciální hrozby.
 
-![Úložiště Azure advanced threat protection e-mailové upozornění](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-alert-email.png)
+![Azure Storage e-mailové výstrahy rozšířené ochrany před internetovými útoky](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-alert-email.png)
 
-Můžete prohlížet a spravovat své aktuální výstrahy zabezpečení ze služby Azure Security Center [dlaždice výstrahy zabezpečení](../../security-center/security-center-managing-and-responding-alerts.md#managing-security-alerts). Kliknutím na konkrétní výstrahu poskytuje podrobnosti a akce pro zkoumání aktuální hrozby a adresování budoucími hrozbami.
+Aktuální výstrahy zabezpečení můžete zkontrolovat a spravovat z [dlaždice výstrahy zabezpečení](../../security-center/security-center-managing-and-responding-alerts.md#managing-security-alerts)Azure Security Center. Kliknutím na konkrétní výstrahu získáte podrobnosti a akce pro zkoumání aktuální hrozby a vyřešení budoucích hrozeb.
 
-![Úložiště Azure advanced threat protection e-mailové upozornění](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-alert.png)
+![Azure Storage e-mailové výstrahy rozšířené ochrany před internetovými útoky](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-alert.png)
 
-## <a name="protection-alerts"></a>Oznámení ochrany
+## <a name="protection-alerts"></a>Výstrahy ochrany
 
-Výstrahy jsou generovány a potenciálně nebezpečné pokusy o přístup nebo zneužití účtů úložiště. Tyto události můžete spustit následující upozornění:
+Výstrahy jsou generovány neobvyklými a potenciálně škodlivými pokusy o přístup k účtům úložiště nebo jejich zneužití. Tyto události mohou aktivovat následující výstrahy:
 
-### <a name="anomalous-access-pattern-alerts"></a>Neobvyklé přístup vzor výstrahy
+### <a name="anomalous-access-pattern-alerts"></a>Výstrahy vzoru přístupu neobvyklé
 
-* **Přístup z neobvyklého umístění**: Tato výstraha se aktivuje, když někdo získal přístup k účtu úložiště z neobvyklé geografické lokality.
+* **Přístup z neobvyklého umístění**: Tato výstraha se aktivuje, když někdo získal účet úložiště z neobvyklého zeměpisného umístění.
 Možné příčiny:
-   * Útočník získal přístup k účtu úložiště
-   * Oprávněný uživatel přístup k účtu úložiště z nového místa
+   * K vašemu účtu úložiště se získal útočník.
+   * Legitimní uživatel přistupoval k vašemu účtu úložiště z nového umístění.
  
-* **Aplikace anomálií**: Tato výstraha indikuje neobvyklou aplikace má získat přístup k tomuto účtu úložiště. Možné příčiny:
-   * Útočník má získat přístup k účtu úložiště pomocí nové aplikace.
-   * Oprávněný uživatel použil nové aplikace a prohlížeče pro přístup k účtu úložiště.
+* **Anomálie aplikace**: Tato výstraha indikuje, že k tomuto účtu úložiště se připojila neobvyklá aplikace. Možné příčiny:
+   * K vašemu účtu úložiště se připojil útočník pomocí nové aplikace.
+   * Legitimní uživatel použil pro přístup k vašemu účtu úložiště novou aplikaci nebo prohlížeč.
 
-* **Anonymní přístup**: Tato výstraha indikuje, že tento účet byl přistupovat anonymně (tj. bez ověřování), což neočekávaný porovnává se vzorem poslední přístup na tento účet.
+* **Anonymní přístup**: Tato výstraha indikuje, že k tomuto účtu byl přístup anonymní (tj. bez ověřování), který se ve srovnání s posledním vzorem přístupu na tomto účtu neočekával.
 Možné příčiny:
-   * Útočník zneužije veřejné oprávnění ke čtení pro kontejner.
-   * Veřejné oprávnění ke čtení pro kontejner se používá legitimní uživatel nebo aplikace.
+   * Útočník zneužije veřejný přístup pro čtení kontejneru.
+   * Legitimní uživatel nebo aplikace používaly veřejný přístup pro čtení ke kontejneru.
 
-* **Tor anomálií**: Tato výstraha indikuje, že tento účet je úspěšně přistupovat z IP adresy, která se označuje jako aktivní výstupní uzel sítě Tor (anonymizing proxy). Závažnost toto upozornění bude považovat za typ ověřování používaný (pokud existuje), a zda je toto první velikost písmen takový přístup.
+* **Anomálie pro mandát**: Tato výstraha indikuje, že byl tento účet úspěšně přidaný z IP adresy, která je známá jako aktivní odesílací uzel systému pro použití (proxy server anonymizace). Závažnost této výstrahy je považována za použitý typ ověřování (pokud existuje) a zda se jedná o první případ takového přístupu.
 Možné příčiny:
-   * Útočník má získat přístup k účtu úložiště pomocí sítě Tor.
-   * Oprávněný uživatel přístup k účtu úložiště pomocí sítě Tor.
+   * K vašemu účtu úložiště se připojil útočník pomocí systému.
+   * Legitimní uživatel získal k vašemu účtu úložiště pomocí systému pro práci.
 
 
-### <a name="anomalous-extractupload-alerts"></a>Výstrahy na neobvyklé extrahování a nahrávání
+### <a name="anomalous-extractupload-alerts"></a>Neobvyklé extrahování a odesílání výstrah
 
-* **Průsak dat ven**: Tato výstraha indikuje, že má byly extrahovány neobvykle velký objem dat v porovnání s poslední aktivitu na tento kontejner úložiště. Možné příčiny:
-   * Útočník má extrahovat velké množství dat z kontejneru. (Příklad: průsak ven dat nebo porušení zabezpečení, neoprávněné přenos dat)
-   * Oprávněné uživatele nebo aplikace má extrahovat neobvyklé množství dat z kontejneru. (Příklad: činnosti údržby)
+* **Exfiltrace dat**: Tato výstraha indikuje, že se v porovnání s poslední aktivitou tohoto kontejneru úložiště extrahuje neobvykle velké množství dat. Možné příčiny:
+   * Útočník extrahovali velké množství dat z kontejneru. (Například: exfiltrace nebo porušení dat, neoprávněný přenos dat)
+   * Legitimní uživatel nebo aplikace extrahovali z kontejneru neobvyklé množství dat. (Například: aktivita údržby)
 
-* **Neočekávané odstranit**: Tato výstraha indikuje, že jednu nebo více operací neočekávané odstranit došlo v účtu úložiště, ve srovnání s poslední aktivitu na tento účet. Možné příčiny:
-   * Útočník odstranila data z vašeho účtu úložiště.
-   * Oprávněný uživatel provedl neobvyklé odstranění.
+* **Neočekávané odstranění**: Tato výstraha indikuje, že v účtu úložiště se vyskytla jedna nebo víc neočekávaných operací odstranění v porovnání s poslední aktivitou tohoto účtu. Možné příčiny:
+   * Útočník odstranil data z vašeho účtu úložiště.
+   * Legitimní uživatel provedl neobvyklé odstranění.
 
-* **Nahrání balíčku Azure Cloud Service**: Tato výstraha indikuje, že k Azure Cloud Service balíček (.cspkg soubor) se odeslal do účtu úložiště neobvyklým způsobem, ve srovnání s poslední aktivitu na tento účet. Možné příčiny: 
-   * Útočník má se připravuje se nasazení škodlivý kód z vašeho účtu úložiště do cloudové služby Azure.
-   * Oprávněný uživatel byl Příprava na nasazení oprávněné služby.
+* **Nahrát balíček cloudové služby Azure**: Tato výstraha indikuje, že balíček Azure Cloud Service (soubor. cspkg) se neobvyklým způsobem nahrál do účtu úložiště, a to v porovnání s poslední aktivitou na tomto účtu. Možné příčiny: 
+   * Do cloudové služby Azure se připravoval útočník k nasazení škodlivého kódu z účtu úložiště.
+   * Legitimní uživatel se připravoval na legitimní nasazení služby.
 
-### <a name="suspicious-storage-activities-alerts"></a>Upozornění úložiště podezřelé aktivity
+### <a name="suspicious-storage-activities-alerts"></a>Upozornění na podezřelé aktivity úložiště
 
-* **Přístup k oprávnění změnit**: Tato výstraha indikuje, že oprávnění tohoto kontejneru úložiště se změnily neobvyklým způsobem. Možné příčiny: 
-   * Útočník má změnit oprávnění kontejneru na oslabit zabezpečení.
-   * Oprávněný uživatel změnil kontejneru oprávnění.
+* **Změna oprávnění pro přístup**: Tato výstraha indikuje, že oprávnění k přístupu tohoto kontejneru úložiště se změnila neobvyklým způsobem. Možné příčiny: 
+   * Útočník změnil oprávnění kontejneru pro oslabení zabezpečení.
+   * Oprávněný uživatel změnil oprávnění kontejneru.
 
-* **Přístup ke kontrole**: Tato výstraha indikuje, že oprávnění přístupu k účtu úložiště byly podrobeny neobvyklým způsobem, ve srovnání s poslední aktivitu na tento účet. Možné příčiny: 
-   * Útočník provedl rekognoskace pro budoucí útoku.
-   * Oprávněný uživatel provedl údržby v účtu úložiště.
+* **Kontrola přístupu**: Tato výstraha indikuje, že přístupová oprávnění účtu úložiště byla v porovnání s poslední aktivitou tohoto účtu prověřena neobvyklým způsobem. Možné příčiny: 
+   * Útočník provedl rekognoskace pro budoucí útok.
+   * V účtu úložiště se provedla údržba legitimního uživatele.
 
-* **Zkoumání dat**: Tato výstraha indikuje, že objekty BLOB nebo kontejnery v účtu úložiště byly uvedené neobvyklým způsobem, ve srovnání s poslední aktivitu na tento účet. Možné příčiny: 
-   * Útočník provedl rekognoskace pro budoucí útoku.
-   * Oprávněné uživatele nebo aplikace logiky má prozkoumat data v rámci účtu úložiště.
+* **Zkoumání dat**: Tato výstraha indikuje, že se objekty blob nebo kontejnery v účtu úložiště ve srovnání s poslední aktivitou na tomto účtu vyrovnaly neobvyklým způsobem. Možné příčiny: 
+   * Útočník provedl rekognoskace pro budoucí útok.
+   * Legitimní uživatel nebo logika aplikace vyzkoumala data v rámci účtu úložiště.
 
 
 
@@ -166,6 +176,6 @@ Možné příčiny:
 
 ## <a name="next-steps"></a>Další postup
 
-* Další informace o [protokoly v účtech Azure Storage](/rest/api/storageservices/About-Storage-Analytics-Logging)
+* Další informace o [protokolech v Azure Storage účtech](/rest/api/storageservices/About-Storage-Analytics-Logging)
 
 * Další informace o [Azure Security Center](../../security-center/security-center-intro.md)

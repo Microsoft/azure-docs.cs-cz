@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: sedusch
-ms.openlocfilehash: 46044c061cca24714d1a951e28cf01ca29f14a7e
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: cd377e78abe328814795bb1f75465b090a13e456
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67707206"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68228352"
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>Nastavení Pacemaker na SUSE Linux Enterprise Server v Azure
 
@@ -84,7 +84,7 @@ Spusťte následující příkazy na všech **iSCSI target virtuálních počít
 
 Spusťte následující příkazy na všech **iSCSI target virtuálních počítačů** vytvoření disků služby iSCSI pro clusterů, které jsou používány ve vašich systémů SAP. V následujícím příkladu se vytvoří SBD zařízení pro několik clusterů. To se dozvíte, jak byste použili jeden cílový server iSCSI pro několik clusterů. Zařízení SBD umísťují na disk s operačním systémem. Ujistěte se, že máte dostatek místa.
 
-**`nfs`** slouží k identifikaci clusteru systému souborů NFS **ascsnw1** slouží k identifikaci clusteru Asc **NW1**, **dbnw1** slouží k identifikaci databáze clusteru **NW1** , **systému souborů nfs 0** a **systému souborů nfs 1** jsou názvy hostitelů z uzlů clusteru systému souborů NFS **nw1-xscs-0** a **nw1 xscs 1**jsou názvy hostitelů **NW1** uzly, clusteru ASC a **nw1-db-0** a **nw1-db-1** názvy hostitelů databáze jsou uzly clusteru. Je nahraďte názvy hostitelů uzlů clusteru a identifikátor SID systému SAP.
+**`nfs`** slouží k identifikaci clusteru systému souborů NFS, **ascsnw1** se používá k identifikaci clusteru ASCS **NW1**, **dbnw1** se používá k identifikaci databázového clusteru **NW1**, **NFS-0** a **NFS-1** jsou názvy hostitelů uzlů **clusteru NFS. NW1-xscs-0** a **NW1-xscs-1** jsou názvy hostitelů uzlů clusterů  NW1 a **ASCS-DB-0** a **NW1-DB-1** jsou názvy hostitelů uzlů databázového clusteru. Je nahraďte názvy hostitelů uzlů clusteru a identifikátor SID systému SAP.
 
 <pre><code># Create the root folder for all SBD devices
 sudo mkdir /sbd
@@ -302,7 +302,7 @@ Následující položky jsou s předponou buď **[A]** – platí pro všechny u
    <b>SBD_WATCHDOG="yes"</b>
    </code></pre>
 
-   Vytvořte `softdog` konfiguračního souboru
+   `softdog` Vytvoření konfiguračního souboru
 
    <pre><code>echo softdog | sudo tee /etc/modules-load.d/softdog.conf
    </code></pre>
@@ -321,7 +321,7 @@ Následující položky jsou s předponou buď **[A]** – platí pro všechny u
    <pre><code>sudo zypper update
    </code></pre>
 
-1. **[A]**  Konfigurace operačního systému
+1. **[A]** konfigurace operačního systému
 
    V některých případech Pacemaker vytvoří velký počet procesů a tím vyčerpá povolený počet procesů. V takovém případě prezenčního signálu mezi uzly clusteru může selhat a vést k převzetí služeb při selhání z vašich prostředků. Doporučujeme zvýšit maximální povolené procesy tak, že nastavíte následující parametr.
 
@@ -348,9 +348,9 @@ Následující položky jsou s předponou buď **[A]** – platí pro všechny u
    vm.dirty_background_bytes = 314572800
    </code></pre>
 
-1. **[A]**  Konfigurace cloud-netconfig azure pro ověření stavu clusteru
+1. **[A]** konfigurace Cloud-netconfig – Azure pro cluster ha
 
-   Změňte konfigurační soubor pro síťové rozhraní, jak je znázorněno níže zabránit odebrání virtuální IP adresa (Pacemaker musí řídit přiřazení virtuálních IP adres) modul plug-in cloudové sítě. Další informace najdete v části [SUSE KB 7023633](https://www.suse.com/support/kb/doc/?id=7023633). 
+   Změňte konfigurační soubor pro síťové rozhraní, jak je vidět níže, aby modul plug-in cloudové sítě neodebral virtuální IP adresu (Pacemaker musí řídit přiřazení VIP). Další informace najdete v tématu [SUSE KB 7023633](https://www.suse.com/support/kb/doc/?id=7023633). 
 
    <pre><code># Edit the configuration file
    sudo vi /etc/sysconfig/network/ifcfg-eth0 
@@ -448,7 +448,7 @@ Následující položky jsou s předponou buď **[A]** – platí pro všechny u
    <pre><code>sudo vi /etc/corosync/corosync.conf
    </code></pre>
 
-   Pokud hodnoty nejsou zde nebo jiné, přidejte do souboru následující tučného písma obsahu. Ujistěte se, že chcete-li změnit token 30000 umožňující Údržba pro zachování paměti. Další informace najdete v tématu [tohoto článku pro Linux][virtual-machines-linux-maintenance] or [Windows][virtual-machines-windows-maintenance]. Ujistěte se také, chcete-li odebrat mcastaddr parametr.
+   Pokud hodnoty nejsou zde nebo jiné, přidejte do souboru následující tučného písma obsahu. Ujistěte se, že chcete-li změnit token 30000 umožňující Údržba pro zachování paměti. Další informace najdete v [tomto článku pro Linux][virtual-machines-linux-maintenance] or [Windows][virtual-machines-windows-maintenance]. Ujistěte se také, chcete-li odebrat mcastaddr parametr.
 
    <pre><code>[...]
      <b>token:          30000
@@ -495,17 +495,18 @@ Následující položky jsou s předponou buď **[A]** – platí pro všechny u
 
 Využitím techniky STONITH zařízení využívá instanční objekt služby k autorizaci s Microsoft Azure. Postupujte podle těchto kroků můžete vytvořit instanční objekt služby.
 
-1. Přejít na [https://portal.azure.com](https://portal.azure.com)
+1. Přejděte na <https://portal.azure.com>.
 1. Otevře se okno Azure Active Directory  
    Přejděte do vlastností a poznamenejte si ID adresáře. Toto je **ID tenanta**.
 1. Klikněte na možnost registrace aplikací
-1. Klikněte na tlačítko Přidat.
-1. Zadejte název, vyberte typ aplikace "Aplikace webového rozhraní API", zadejte přihlašovací adresu URL (třeba http\://localhost) a klikněte na tlačítko Vytvořit
-1. Adresa URL přihlašování se nepoužívá a může být jakákoliv platná adresa URL
-1. Vyberte novou aplikaci a na kartě nastavení klikněte na tlačítko klíče
-1. Zadejte popis pro nový klíč, vyberte "Je platné stále" a klikněte na Uložit
+1. Klikněte na nová registrace.
+1. Zadejte název, vyberte účty pouze v tomto adresáři organizace. 
+2. Vyberte typ aplikace "Web", zadejte adresu URL pro přihlášení (například http:\//localhost) a klikněte na Přidat.  
+   Adresa URL přihlašování se nepoužívá a může být jakákoliv platná adresa URL
+1. Vyberte certifikáty a tajné klíče a pak klikněte na nový tajný klíč klienta.
+1. Zadejte popis nového klíče, vyberte možnost "nikdy vyprší platnost" a klikněte na tlačítko Přidat.
 1. Poznamenejte si hodnotu. Používá se jako **heslo** pro instanční objekt
-1. Poznamenejte si ID aplikace. Se používá jako uživatelské jméno (**přihlašovací ID** v následujících krocích) instanční objekt služby
+1. Vyberte přehled. Poznamenejte si ID aplikace. Se používá jako uživatelské jméno (**přihlašovací ID** v následujících krocích) instanční objekt služby
 
 ### <a name="1-create-a-custom-role-for-the-fence-agent"></a>**[1]**  Vytvořit vlastní roli pro agent síťové izolace
 
@@ -533,11 +534,11 @@ Použijte následující obsah vstupního souboru. Je potřeba upravit obsah, kt
 }
 ```
 
-### <a name="a-assign-the-custom-role-to-the-service-principal"></a>**[A]**  Přiřazení vlastní role k Instančnímu objektu
+### <a name="a-assign-the-custom-role-to-the-service-principal"></a>**[A]** přiřazení vlastní role k instančnímu objektu
 
 Přiřazení vlastní role "Linux ohrazení agenta roli", který byl vytvořen v kapitole poslední k Instančnímu objektu. Už nepoužívají role vlastníka!
 
-1. Přejít na [https://portal.azure.com](https://portal.azure.com)
+1. Přejít na[https://portal.azure.com](https://portal.azure.com)
 1. Otevřete v okně všechny prostředky
 1. Vyberte virtuální počítač na prvním uzlu clusteru
 1. Klikněte na řízení přístupu (IAM)
@@ -576,16 +577,16 @@ sudo crm configure primitive <b>stonith-sbd</b> stonith:external/sbd \
    op monitor interval="15" timeout="15"
 </code></pre>
 
-## <a name="pacemaker-configuration-for-azure-scheduled-events"></a>Pacemaker konfiguraci pro Azure naplánované události
+## <a name="pacemaker-configuration-for-azure-scheduled-events"></a>Konfigurace Pacemaker pro plánované události Azure
 
-Azure nabízí [naplánované události](https://docs.microsoft.com/azure/virtual-machines/linux/scheduled-events). Naplánované události jsou k dispozici prostřednictvím služby metadata a nějakou dobu počkat aplikace přípravy na události, jako jsou vypnutí virtuálního počítače, opětovné nasazení virtuálního počítače, atd. Prostředek agenta **[akce azure](https://github.com/ClusterLabs/resource-agents/pull/1161)** monitory pro naplánovaných událostí Azure. Pokud jsou detekovány události, agent se pokusí zastavit všechny prostředky v ovlivněných virtuálních počítačů a přesuňte je do jiného uzlu v clusteru. Musí být nakonfigurovaný k dosažení této další Pacemaker prostředky. 
+Azure nabízí [naplánované události](https://docs.microsoft.com/azure/virtual-machines/linux/scheduled-events). Naplánované události se poskytují prostřednictvím služby meta-data Service a umožňují, aby se aplikace připravila na události, jako je třeba vypnutí virtuálního počítače, opětovné nasazení virtuálního počítače atd. Agenti prostředků **[Azure – monitorování událostí](https://github.com/ClusterLabs/resource-agents/pull/1161)** pro plánované události Azure Pokud se zjistí události, Agent se pokusí zastavit všechny prostředky na ovlivněném virtuálním počítači a přesunout je do jiného uzlu v clusteru. Aby bylo možné dosáhnout dalších prostředků Pacemaker, musí být nakonfigurovány. 
 
-1. **[A]**  Nainstalovat **akce azure** agenta. 
+1. **[A]** nainstalujte agenta **Azure-Events** . 
 
 <pre><code>sudo zypper install resource-agents
 </code></pre>
 
-2. **[1]**  V Pacemaker konfiguraci prostředků. 
+2. **[1]** nakonfigurujte prostředky v Pacemaker. 
 
 <pre><code>
 #Place the cluster in maintenance mode
@@ -600,17 +601,17 @@ sudo crm configure property maintenance-mode=false
 </code></pre>
 
    > [!NOTE]
-   > Po dokončení konfigurace Pacemaker prostředky pro agenta azure události, když umístíte clusteru nebo z režimu údržby, můžete obdržet upozornění jako:  
-     Upozornění: cib-bootstrap-options: Neznámý atribut "hostName_  <strong>hostname</strong>.  
-     Upozornění: cib-bootstrap-options: Neznámý atribut "azure events_globalPullState.  
-     Upozornění: cib-bootstrap-options: Neznámý atribut "hostName_ <strong>hostname</strong>.  
-   > Tyto zprávy upozornění můžete ignorovat.
+   > Po nakonfigurování prostředků Pacemaker pro agenta Azure-Events při umístění clusteru do režimu údržby nebo z něj dostanete varovné zprávy, jako například:  
+     Upozornění: CIB-Bootstrap-Options: neznámý atribut hostName_ <strong>hostname</strong>  
+     Upozornění: CIB-Bootstrap-Options: neznámý atribut ' Azure-events_globalPullState '  
+     Upozornění: CIB-Bootstrap-Options: neznámý atribut hostName_ <strong>hostname</strong>  
+   > Tyto zprávy upozornění je možné ignorovat.
 
 ## <a name="next-steps"></a>Další postup
 
-* [Azure Virtual Machines, plánování a implementace SAP][planning-guide]
-* [Nasazení virtuálních počítačů pro SAP v Azure][deployment-guide]
+* [Plánování a implementace Azure Virtual Machines pro SAP][planning-guide]
+* [Nasazení Azure Virtual Machines pro SAP][deployment-guide]
 * [Nasazení Azure Virtual Machines DBMS pro SAP][dbms-guide]
 * [Vysoká dostupnost pro NFS na virtuálních počítačích Azure na SUSE Linux Enterprise Server][sles-nfs-guide]
 * [Vysoká dostupnost pro SAP NetWeaver na virtuálních počítačích Azure na SUSE Linux Enterprise Server pro aplikace SAP][sles-guide]
-* Informace o vytvoření vysoké dostupnosti a plánování zotavení po havárii SAP Hana na virtuálních počítačích Azure najdete v tématu [vysoké dostupnosti systému SAP HANA v Azure Virtual Machines (VM)][sap-hana-ha]
+* Další informace o tom, jak vytvořit vysokou dostupnost a naplánovat zotavení po havárii SAP HANA na virtuálních počítačích Azure, najdete v tématu [Vysoká dostupnost SAP HANA na azure Virtual Machines (virtuální počítače)][sap-hana-ha] .

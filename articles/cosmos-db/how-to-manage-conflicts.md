@@ -6,20 +6,20 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 06/25/2019
 ms.author: mjbrown
-ms.openlocfilehash: eedb52dc58c28ad3f10e91835e5dda36902f2c2c
-ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
+ms.openlocfilehash: 96171d4729187ca03f1e9529551a7fb6a26c6976
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67986014"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68360376"
 ---
-# <a name="manage-conflict-resolution-policies-in-azure-cosmos-db"></a>Správa zásad řešení konfliktu ve službě Azure Cosmos DB
+# <a name="manage-conflict-resolution-policies-in-azure-cosmos-db"></a>Správa zásad řešení konfliktů v Azure Cosmos DB
 
-S více oblastí zápisu když víc klientů zapisuje do jedné položce, je v konfliktu může dojít. Když dojde ke konfliktu, lze vyřešit konflikt pomocí různých konflikt zásad řešení. Tento článek popisuje, jak spravovat zásady řešení konfliktů.
+V případě zápisů ve více oblastech může dojít ke konfliktům, pokud více klientů zapisuje ke stejné položce. Pokud dojde ke konfliktu, můžete konflikt vyřešit pomocí různých zásad řešení konfliktů. Tento článek popisuje, jak spravovat zásady řešení konfliktů.
 
-## <a name="create-a-last-writer-wins-conflict-resolution-policy"></a>Vytvořit zásadu řešení konfliktu poslední zápis
+## <a name="create-a-last-writer-wins-conflict-resolution-policy"></a>Vytvoření zásad řešení konfliktů pro poslední zápis a službu WINS
 
-Tyto ukázky předvádějí, jak vytvořit kontejner s zásada řešení konfliktů poslední zápis. Výchozí cesta pro poslední zápis je pole časového razítka nebo `_ts` vlastnost. To může být také nastaven na cestu pro číselný typ definovaný uživatelem. Ke konfliktu wins nejvyšší hodnota. Pokud cesta není nastavena nebo je neplatná, bude výchozí `_ts`. Konflikty byly vyřešeny tato zásada nezobrazí v informačním kanálu ke konfliktu. Tyto zásady můžete použít všechny rozhraní API.
+V těchto ukázkách se dozvíte, jak nastavit kontejner pomocí zásad řešení konfliktů pro poslední zápis a službu WINS. Výchozí cesta pro poslední zapisovač – WINS je pole časového razítka nebo `_ts` vlastnost. To může být také nastaveno na uživatelsky definovanou cestu pro číselný typ. V konfliktu je nejvyšší hodnota služba WINS. Pokud cesta není nastavena nebo je neplatná, nastaví se jako výchozí `_ts`. Konflikty vyřešené s touto zásadou se v informačním kanálu konfliktu nezobrazují. Tuto zásadu můžou používat všechna rozhraní API.
 
 ### <a id="create-custom-conflict-resolution-policy-lww-dotnet"></a>.NET SDK V2
 
@@ -89,33 +89,34 @@ const { container: lwwContainer } = await database.containers.createIfNotExists(
 
 ```python
 udp_collection = {
-                'id': self.udp_collection_name,
-                'conflictResolutionPolicy': {
-                    'mode': 'LastWriterWins',
-                    'conflictResolutionPath': '/myCustomId'
-                    }
-                }
-udp_collection = self.try_create_document_collection(create_client, database, udp_collection)
+    'id': self.udp_collection_name,
+    'conflictResolutionPolicy': {
+        'mode': 'LastWriterWins',
+        'conflictResolutionPath': '/myCustomId'
+    }
+}
+udp_collection = self.try_create_document_collection(
+    create_client, database, udp_collection)
 ```
 
-## <a name="create-a-custom-conflict-resolution-policy-using-a-stored-procedure"></a>Vytvořit zásadu rozlišení vlastní konflikt pomocí uložené procedury
+## <a name="create-a-custom-conflict-resolution-policy-using-a-stored-procedure"></a>Vytvoření vlastních zásad řešení konfliktů pomocí uložené procedury
 
-Tyto ukázky předvádějí, jak nastavit kontejner s vlastní zásadou řešení konfliktů s využitím uložené procedury, která konflikt vyřeší. Tyto konflikty nezobrazují v konfliktu informačního kanálu, pokud dojde k chybě v uložené proceduře. Po vytvoření zásady s kontejnerem, budete muset vytvořit uloženou proceduru. Ukázka sady .NET SDK níže ukazuje příklad. Tato zásada je podporována pouze na jádro (SQL) rozhraní Api.
+Tyto ukázky předvádějí, jak nastavit kontejner s vlastní zásadou řešení konfliktů s využitím uložené procedury, která konflikt vyřeší. Tyto konflikty se v informačním kanálu neprojeví, pokud se v uložené proceduře neobjeví chyba. Po vytvoření zásady s kontejnerem je potřeba vytvořit uloženou proceduru. Příklad obsahuje ukázku sady .NET SDK. Tato zásada se podporuje jenom v rozhraních API Core (SQL).
 
-### <a name="sample-custom-conflict-resolution-stored-procedure"></a>Ukázka vlastních konfliktů uložené procedury
+### <a name="sample-custom-conflict-resolution-stored-procedure"></a>Ukázka uložené procedury vlastního řešení konfliktů
 
-Vlastní konflikt řešení uložené procedury musí být implementovaná pomocí signatura funkce je uvedeno níže. Název funkce se nemusí shodovat s názvem používá při registraci uloženou proceduru s kontejnerem ale zjednodušit, pojmenování. Tady je popis parametrů, které je nutné implementovat pro tuto uloženou proceduru.
+Uložené procedury řešení Custom konfliktů by se měly implementovat pomocí signatury funkce uvedené níže. Název funkce se nemusí shodovat s názvem použitým při registraci uložené procedury s kontejnerem, ale zjednodušuje pojmenování. Zde je popis parametrů, které musí být pro tuto uloženou proceduru implementovány.
 
-- **incomingItem**: Položka se přidají nebo aktualizují v potvrzení, která generuje konflikty. Má hodnotu null pro operace odstranění.
-- **existingItem**: Aktuálně zabýváme položky. Tato hodnota je null v aktualizaci a hodnotu null pro vložení nebo odstraní.
-- **isTombstone**: Logická hodnota označující, pokud incomingItem je v konfliktu s dříve odstraněné položky. V případě hodnoty true, má také existingItem hodnotu null.
-- **conflictingItems**: Pole v potvrzené verzi všechny položky v kontejneru, které jsou v konfliktu s incomingItem na ID nebo jakékoli jiné vlastnosti jedinečný index.
+- **incomingItem**: Položka, která je vložena nebo aktualizována v potvrzení, které generuje konflikty. Má hodnotu null pro operace odstranění.
+- **existingItem**: Aktuálně potvrzená položka. Tato hodnota je v aktualizaci jiná než null a pro vložení nebo odstranění je null.
+- neplatnou: Logická hodnota označující, zda je incomingItem v konfliktu s dříve odstraněnou položkou. V případě hodnoty true je existingItem také null.
+- **conflictingItems**: Pole zapsané verze všech položek v kontejneru, které jsou v konfliktu s incomingItem na ID nebo jakékoli jiné jedinečné vlastnosti indexu.
 
 > [!IMPORTANT]
-> Stejně jako pomocí uložené procedury, postup řešení konfliktu vlastních můžete přístup k žádným datům se stejným klíčem oddílu a můžete provést všechny vložit, aktualizovat nebo odstranit operaci k řešení konfliktů.
+> Stejně jako u jakékoli uložené procedury má vlastní procedura řešení konfliktů přístup k jakýmkoli datům se stejným klíčem oddílu a může provést jakoukoli operaci vložení, aktualizace nebo odstranění pro vyřešení konfliktů.
 
 
-Tento postup ukázka uložených řeší konflikty tak, že vyberete nejnižší hodnotu z `/myCustomId` cestu.
+Tato ukázková uložená procedura vyřeší konflikty výběrem nejnižší hodnoty z `/myCustomId` cesty.
 
 ```javascript
 function resolver(incomingItem, existingItem, isTombstone, conflictingItems) {
@@ -222,7 +223,7 @@ collection.setConflictResolutionPolicy(policy);
 DocumentCollection createdCollection = client.createCollection(databaseUri, collection, null).toBlocking().value();
 ```
 
-Po vytvoření kontejneru, je nutné vytvořit `resolver` uložené procedury.
+Po vytvoření kontejneru je nutné vytvořit `resolver` uloženou proceduru.
 
 ### <a id="create-custom-conflict-resolution-policy-stored-proc-java-sync"></a>Java Sync SDK
 
@@ -235,7 +236,7 @@ udpCollection.setConflictResolutionPolicy(udpPolicy);
 DocumentCollection createdCollection = this.tryCreateDocumentCollection(createClient, database, udpCollection);
 ```
 
-Po vytvoření kontejneru, je nutné vytvořit `resolver` uložené procedury.
+Po vytvoření kontejneru je nutné vytvořit `resolver` uloženou proceduru.
 
 ### <a id="create-custom-conflict-resolution-policy-stored-proc-javascript"></a>Node.js/JavaScript/TypeScript SDK
 
@@ -254,27 +255,28 @@ const { container: udpContainer } = await database.containers.createIfNotExists(
 );
 ```
 
-Po vytvoření kontejneru, je nutné vytvořit `resolver` uložené procedury.
+Po vytvoření kontejneru je nutné vytvořit `resolver` uloženou proceduru.
 
 ### <a id="create-custom-conflict-resolution-policy-stored-proc-python"></a>Python SDK
 
 ```python
 udp_collection = {
-  'id': self.udp_collection_name,
-  'conflictResolutionPolicy': {
-      'mode': 'Custom',
-      'conflictResolutionProcedure': 'dbs/' + self.database_name + "/colls/" + self.udp_collection_name + '/sprocs/resolver'
-      }
-  }
-udp_collection = self.try_create_document_collection(create_client, database, udp_collection)
+    'id': self.udp_collection_name,
+    'conflictResolutionPolicy': {
+        'mode': 'Custom',
+        'conflictResolutionProcedure': 'dbs/' + self.database_name + "/colls/" + self.udp_collection_name + '/sprocs/resolver'
+    }
+}
+udp_collection = self.try_create_document_collection(
+    create_client, database, udp_collection)
 ```
 
-Po vytvoření kontejneru, je nutné vytvořit `resolver` uložené procedury.
+Po vytvoření kontejneru je nutné vytvořit `resolver` uloženou proceduru.
 
 
 ## <a name="create-a-custom-conflict-resolution-policy"></a>Vytvoření vlastní zásady řešení konfliktů
 
-Tyto ukázky předvádějí, jak nastavit kontejner s vlastní zásadou řešení konfliktů. Tyto konflikty se zobrazí v informačním kanálu ke konfliktu.
+Tyto ukázky předvádějí, jak nastavit kontejner s vlastní zásadou řešení konfliktů. Tyto konflikty se zobrazí v informačním kanálu o konfliktech.
 
 ### <a id="create-custom-conflict-resolution-policy-dotnet"></a>.NET SDK V2
 
@@ -342,17 +344,17 @@ const {
 ```python
 database = client.ReadDatabase("dbs/" + self.database_name)
 manual_collection = {
-                    'id': self.manual_collection_name,
-                    'conflictResolutionPolicy': {
-                          'mode': 'Custom'
-                        }
-                    }
+    'id': self.manual_collection_name,
+    'conflictResolutionPolicy': {
+        'mode': 'Custom'
+    }
+}
 manual_collection = client.CreateContainer(database['_self'], collection)
 ```
 
 ## <a name="read-from-conflict-feed"></a>Čtení z informačního kanálu konfliktů
 
-Tyto ukázky předvádějí, jak číst z informačního kanálu konfliktů kontejneru. Je v konfliktu se zobrazí v kanálu jenom v případě, že nebyly rozpoznány automaticky, nebo pokud používáte vlastní konflikt zásada konflikt.
+Tyto ukázky předvádějí, jak číst z informačního kanálu konfliktů kontejneru. Konflikty se v informačním kanálu zobrazí jenom v případě, že se nevyřešily automaticky nebo pokud používáte zásady vlastního konfliktu.
 
 ### <a id="read-from-conflict-feed-dotnet"></a>.NET SDK V2
 
@@ -422,14 +424,14 @@ while conflict:
     conflict = next(conflicts_iterator, None)
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Další informace o konceptech služby Azure Cosmos DB, následující:
+Přečtěte si o následujících konceptech Azure Cosmos DB:
 
-* [Globální distribuce - pod pokličkou](global-dist-under-the-hood.md)
-* [Jak nakonfigurovat více hlavních databází ve svých aplikacích](how-to-multi-master.md)
-* [Konfigurace klientů pro multihoming](how-to-manage-database-account.md#configure-multiple-write-regions)
-* [Přidat nebo odebrat oblasti ze svého účtu Azure Cosmos DB](how-to-manage-database-account.md#addremove-regions-from-your-database-account)
-* [Jak nakonfigurovat více hlavních databází ve svých aplikacích](how-to-multi-master.md).
+* [Globální distribuce – pod kapotou](global-dist-under-the-hood.md)
+* [Jak v aplikacích nakonfigurovat více hlavních serverů](how-to-multi-master.md)
+* [Konfigurace klientů pro vícedomé služby](how-to-manage-database-account.md#configure-multiple-write-regions)
+* [Přidat nebo odebrat oblasti z Azure Cosmos DB účtu](how-to-manage-database-account.md#addremove-regions-from-your-database-account)
+* [Jak v aplikacích nakonfigurovat více hlavních serverů](how-to-multi-master.md).
 * [Dělení a distribuce dat](partition-data.md)
-* [Indexování ve službě Azure Cosmos DB](indexing-policies.md)
+* [Indexování v Azure Cosmos DB](indexing-policies.md)

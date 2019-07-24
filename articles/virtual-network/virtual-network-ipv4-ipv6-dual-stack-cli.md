@@ -1,7 +1,7 @@
 ---
-title: Nasazení aplikace duálním zásobníkem IPv6 ve službě Azure virtual network – rozhraní příkazového řádku
+title: Nasazení aplikace s duálním zásobníkem IPv6 ve službě Azure Virtual Network – rozhraní příkazového řádku
 titlesuffix: Azure Virtual Network
-description: Tento článek ukazuje, jak nasadit aplikaci duálním zásobníkem IPv6 ve virtuální síti Azure pomocí Azure CLI.
+description: Tento článek ukazuje, jak nasadit aplikaci s duálním zásobníkem IPv6 ve službě Azure Virtual Network pomocí Azure CLI.
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -11,47 +11,49 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/22/2019
+ms.date: 07/08/2019
 ms.author: kumud
-ms.openlocfilehash: 9e591bdf2ff0b6493f092d666d02c2614c907700
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: cc89e9284e6dbb735aef08100c99a5a7fdb87549
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67798983"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68248850"
 ---
-# <a name="deploy-an-ipv6-dual-stack-application-in-azure-virtual-network---cli-preview"></a>Nasazení aplikace duálním zásobníkem IPv6 ve virtuální síti Azure - CLI (Preview)
+# <a name="deploy-an-ipv6-dual-stack-application-in-azure-virtual-network---cli-preview"></a>Nasazení aplikace s duálním zásobníkem IPv6 ve službě Azure Virtual Network – rozhraní příkazového řádku (Preview)
 
-V tomto článku se dozvíte, jak nasadit aplikaci duálním zásobníkem (IPv4 + IPv6) v Azure, která zahrnuje virtuální síť duálním zásobníkem s duálním zásobníkem podsítí, nástroj pro vyrovnávání zatížení s front-endové konfigurace dvou (IPv4 + IPv6), virtuální počítače se síťovými kartami, které mají duální konfigurace protokolu IP pravidla skupiny zabezpečení sítě duální a duální veřejné IP adresy.
+V tomto článku se dozvíte, jak nasadit aplikaci duálního zásobníku (IPv4 + IPv6) v Azure, která zahrnuje virtuální síť s duálním zásobníkem s podsítí duálního zásobníku, nástroj pro vyrovnávání zatížení s duálními konfiguracemi (IPv4 + IPv6), virtuální počítače se síťovými kartami, které mají konfiguraci s duálními IP adresami. pravidla skupiny zabezpečení duální sítě a duální veřejné IP adresy.
 
 > [!Important]
-> Duálním zásobníkem protokolu IPv6 pro Azure Virtual Network je aktuálně ve verzi public preview. Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje pro úlohy v produkčním prostředí. Některé funkce nemusí být podporované nebo můžou mít omezené možnosti. Podrobnosti najdete v [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Duální zásobník IPv6 pro Azure Virtual Network je momentálně ve verzi Public Preview. Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje pro úlohy v produkčním prostředí. Některé funkce nemusí být podporované nebo můžou mít omezené možnosti. Podrobnosti najdete v [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Pokud ještě nemáte předplatné Azure, vytvořte si teď [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku Azure místně místo toho tento rychlý start vyžaduje použití Azure CLI verze 2.0.49 nebo novější. Nainstalovanou verzi zjistíte spuštěním `az --version`. Zobrazit [instalace Azure CLI](/cli/azure/install-azure-cli) pro instalaci nebo upgradu informace.
+Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku Azure CLI místně, musíte použít Azure CLI verze 2.0.49 nebo novější. Pokud chcete najít nainstalovanou verzi, `az --version`spusťte příkaz. Informace o instalaci nebo upgradu najdete v tématu Instalace rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli) .
 
 ## <a name="prerequisites"></a>Požadavky
-Použití protokolu IPv6 pro funkci virtuální síť Azure, je nutné nakonfigurovat předplatné pomocí Azure Powershellu takto:
+Pokud chcete použít funkci IPv6 pro virtuální síť Azure, musíte předplatné nakonfigurovat pomocí Azure PowerShell následujícím způsobem:
 
 ```azurecli
 az feature register --name AllowIPv6VirtualNetwork --namespace Microsoft.Network
+az feature register --name AllowIPv6CAOnStandardLB --namespace Microsoft.Network
 ```
-Trvá až 30 minut, než funkce registraci dokončit. Spuštěním následujícího příkazu rozhraní příkazového řádku Azure, můžete zkontrolovat stav registrace:
+Dokončení registrace funkce trvá až 30 minut. Stav registrace můžete zjistit spuštěním následujícího příkazu rozhraní příkazového řádku Azure:
 
 ```azurelci
 az feature show --name AllowIPv6VirtualNetwork --namespace Microsoft.Network
+az feature show --name AllowIPv6CAOnStandardLB --namespace Microsoft.Network
 ```
-Po dokončení registrace, spusťte následující příkaz:
+Po dokončení registrace spusťte následující příkaz:
 
 ```azurelci
 az provider register --namespace Microsoft.Network
 ```
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-Než vytvoříte virtuální síť duální sadou protokolů, musíte vytvořit skupinu prostředků pomocí [vytvořit skupiny az](/cli/azure/group). Následující příklad vytvoří skupinu prostředků s názvem *myRGDualStack* v *eastus* umístění:
+Než budete moct vytvořit virtuální síť se dvěma zásobníky, musíte vytvořit skupinu prostředků pomocí [AZ Group Create](/cli/azure/group). Následující příklad vytvoří skupinu prostředků s názvem *myRGDualStack* v umístění *eastus* :
 
 ```azurecli
 az group create \
@@ -59,8 +61,8 @@ az group create \
 --location eastus
 ```
 
-## <a name="create-ipv4-and-ipv6-public-ip-addresses-for-load-balancer"></a>Vytvořit protokoly IPv4 a IPv6 veřejné IP adresy nástroje pro vyrovnávání zatížení
-Pro přístup k koncové body protokolu IPv4 a IPv6 v síti Internet, musíte protokoly IPv4 a IPv6 veřejné IP adresy nástroje pro vyrovnávání zatížení. Vytvořte veřejnou IP adresu pomocí příkazu [az network public-ip create](/cli/azure/network/public-ip). Následující příklad vytvoří IPv4 a IPv6 veřejnou IP adresu s názvem *dsPublicIP_v4* a *dsPublicIP_v6* v *myRGDualStack* skupina prostředků:
+## <a name="create-ipv4-and-ipv6-public-ip-addresses-for-load-balancer"></a>Vytvoření veřejných IP adres IPv4 a IPv6 pro nástroj pro vyrovnávání zatížení
+Pro přístup k koncovým bodům IPv4 a IPv6 na internetu potřebujete veřejné IP adresy protokolů IPv4 a IPv6 pro nástroj pro vyrovnávání zatížení. Vytvořte veřejnou IP adresu pomocí příkazu [az network public-ip create](/cli/azure/network/public-ip). Následující příklad vytvoří veřejnou IP adresu IPv4 a IPv6 s názvem *dsPublicIP_v4* a *dsPublicIP_v6* ve skupině prostředků *myRGDualStack* :
 
 ```azurecli
 # Create an IPV4 IP address
@@ -83,9 +85,9 @@ az network public-ip create \
 
 ```
 
-## <a name="create-public-ip-addresses-for-vms"></a>Vytvoření veřejné IP adresy pro virtuální počítače
+## <a name="create-public-ip-addresses-for-vms"></a>Vytváření veřejných IP adres pro virtuální počítače
 
-Vzdálený přístup k vaší virtuální počítače na Internetu, musíte pro virtuální počítače veřejné IP adresy IPv4. Vytvořte veřejnou IP adresu pomocí příkazu [az network public-ip create](/cli/azure/network/public-ip).
+Pro vzdálený přístup k virtuálním počítačům na internetu potřebujete pro virtuální počítače veřejné IP adresy IPv4. Vytvořte veřejnou IP adresu pomocí příkazu [az network public-ip create](/cli/azure/network/public-ip).
 
 ```azurecli
 az network public-ip create \
@@ -107,11 +109,11 @@ az network public-ip create \
 
 ## <a name="create-basic-load-balancer"></a>Vytvoření Load Balanceru úrovně Basic
 
-V této části nakonfigurujete duální front-endové IP adresy (IPv4 a IPv6) a fondu back endových adres nástroje pro vyrovnávání zatížení a pak vytvořte Load balanceru úrovně Basic.
+V této části nakonfigurujete pro nástroj pro vyrovnávání zatížení duální front-end IP adresu (IPv4 a IPv6) a fond back-endové adresy a pak vytvoříte základní Load Balancer.
 
 ### <a name="create-load-balancer"></a>Vytvoření nástroje pro vyrovnávání zatížení
 
-Vytvoření základního Vyrovnávání zatížení s [az network lb vytvořit](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest) s názvem **dsLB** , který obsahuje front-endový fond s názvem **dsLbFrontEnd_v4**, back-endový fond s názvem  **dsLbBackEndPool_v4** přidružený k veřejné IP adresy IPv4 **dsPublicIP_v4** , kterou jste vytvořili v předchozím kroku. 
+Vytvořte základní Load Balancer pomocí [AZ Network](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest) Create s názvem **dsLB** , který obsahuje fond front-endu s názvem **dsLbFrontEnd_v4**, back-end fond s názvem **dsLbBackEndPool_v4** , který je přidružený k veřejné IP adrese **IPv4. dsPublicIP_v4** , kterou jste vytvořili v předchozím kroku. 
 
 ```azurecli
 az network lb create \
@@ -124,9 +126,9 @@ az network lb create \
 --backend-pool-name dsLbBackEndPool_v4
 ```
 
-### <a name="create-ipv6-frontend"></a>Vytvoření front-endu IPv6
+### <a name="create-ipv6-frontend"></a>Vytvořit front-end IPv6
 
-Vytvoření front-endová IP protokolu IPV6 s [az sítě lb frontend-ip vytvořit](https://docs.microsoft.com/cli/azure/network/lb/frontend-ip?view=azure-cli-latest#az-network-lb-frontend-ip-create). Následující příklad vytvoří konfigurace IP adresy frontendu s názvem *dsLbFrontEnd_v6* a připojí *dsPublicIP_v6* adresa:
+Vytvořte IP front-endu protokolu IPV6 pomocí [AZ Network disendu-IP Create](https://docs.microsoft.com/cli/azure/network/lb/frontend-ip?view=azure-cli-latest#az-network-lb-frontend-ip-create). V následujícím příkladu se vytvoří konfigurace IP adresy front-endu s názvem *dsLbFrontEnd_v6* a připojí se adresa *dsPublicIP_v6* :
 
 ```azurepowershell-interactive
 az network lb frontend-ip create \
@@ -137,9 +139,9 @@ az network lb frontend-ip create \
 
 ```
 
-### <a name="configure-ipv6-back-end-address-pool"></a>Nakonfigurujte fond back endových adres IPv6
+### <a name="configure-ipv6-back-end-address-pool"></a>Konfigurace fondu adres back-endu protokolu IPv6
 
-Vytvoření fondů back endových adres IPv6 [az network lb-fondu adres vytvořte](https://docs.microsoft.com/cli/azure/network/lb/address-pool?view=azure-cli-latest#az-network-lb-address-pool-create). Následující příklad vytvoří back endový fond adres s názvem *dsLbBackEndPool_v6* zahrnout virtuální počítače s konfigurací síťové karty IPv6:
+Vytvořte fondy adres back-endu IPv6 pomocí [AZ Network disrovnává Address-Pool Create](https://docs.microsoft.com/cli/azure/network/lb/address-pool?view=azure-cli-latest#az-network-lb-address-pool-create). Následující příklad vytvoří back-end fond adres s názvem *dsLbBackEndPool_v6* , který zahrnuje virtuální počítače s KONFIGURACEMI síťových adaptérů IPv6:
 
 ```azurecli
 az network lb address-pool create \
@@ -152,7 +154,7 @@ az network lb address-pool create \
 
 Pravidlo nástroje pro vyrovnávání zatížení slouží k definování způsobu distribuce provozu do virtuálních počítačů. Definujte konfiguraci front-endových IP adres pro příchozí provoz, back-endový fond IP adres pro příjem provozu a také požadovaný zdrojový a cílový port. 
 
-Vytvořte pravidlo nástroje pro vyrovnávání zatížení pomocí příkazu [az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest#az-network-lb-rule-create). Následující příklad vytvoří pravidla nástroje pro vyrovnávání zatížení s názvem *dsLBrule_v4* a *dsLBrule_v6* a vyrovnává provozu na *TCP* port *80* do protokoly IPv4 a IPv6 front-endová konfigurace protokolu IP:
+Vytvořte pravidlo nástroje pro vyrovnávání zatížení pomocí příkazu [az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest#az-network-lb-rule-create). Následující příklad vytvoří pravidla nástroje pro vyrovnávání zatížení s názvem *dsLBrule_v4* a *dsLBrule_v6* a vyrovná provoz na portu *TCP* *80* pro konfigurace IP adresy front-endu IPv4 a IPv6:
 
 ```azurecli
 az network lb rule create \
@@ -179,11 +181,11 @@ az network lb rule create \
 ```
 
 ## <a name="create-network-resources"></a>Vytvoření síťových prostředků
-Než nasadíte několik virtuálních počítačů, je nutné vytvořit podpůrné síťové prostředky – skupina dostupnosti, skupiny zabezpečení sítě, virtuální síť a virtuální síťové karty. 
+Před nasazením některých virtuálních počítačů je nutné vytvořit podpůrné síťové prostředky – skupinu dostupnosti, skupinu zabezpečení sítě, virtuální síť a virtuální síťové karty. 
 ### <a name="create-an-availability-set"></a>Vytvoření skupiny dostupnosti
-Pokud chcete zlepšit dostupnost vaší aplikace, umístěte své virtuální počítače ve skupině dostupnosti.
+Pokud chcete zlepšit dostupnost vaší aplikace, umístěte virtuální počítače do skupiny dostupnosti.
 
-Vytvořte skupinu dostupnosti pomocí příkazu [az vm availability-set create](https://docs.microsoft.com/cli/azure/vm/availability-set?view=azure-cli-latest). Následující příklad vytvoří skupinu dostupnosti *dsAVset*:
+Vytvořte skupinu dostupnosti pomocí příkazu [az vm availability-set create](https://docs.microsoft.com/cli/azure/vm/availability-set?view=azure-cli-latest). Následující příklad vytvoří skupinu dostupnosti s názvem *dsAVset*:
 
 ```azurecli
 az vm availability-set create \
@@ -200,7 +202,7 @@ Vytvořte skupinu zabezpečení sítě pro pravidla, která budou řídit příc
 
 #### <a name="create-a-network-security-group"></a>Vytvoření skupiny zabezpečení sítě
 
-Vytvořte skupinu zabezpečení sítě pomocí [vytvořit az network nsg](https://docs.microsoft.com/cli/azure/network/nsg?view=azure-cli-latest#az-network-nsg-create)
+Vytvořte skupinu zabezpečení sítě pomocí [AZ Network NSG Create](https://docs.microsoft.com/cli/azure/network/nsg?view=azure-cli-latest#az-network-nsg-create) .
 
 
 ```azurecli
@@ -211,9 +213,9 @@ az network nsg create \
 
 ```
 
-#### <a name="create-a-network-security-group-rule-for-inbound-and-outbound-connections"></a>Vytvořte pravidlo skupiny zabezpečení sítě pro příchozí a odchozí připojení
+#### <a name="create-a-network-security-group-rule-for-inbound-and-outbound-connections"></a>Vytvoření pravidla skupiny zabezpečení sítě pro příchozí a odchozí připojení
 
-Vytvořte pravidlo skupiny zabezpečení sítě umožňující připojení RDP přes port 3389, připojení k Internetu přes port 80 a pro odchozí připojení s [az network nsg pravidlo vytvořte](https://docs.microsoft.com/cli/azure/network/nsg/rule?view=azure-cli-latest#az-network-nsg-rule-create).
+Vytvořte pravidlo skupiny zabezpečení sítě, které povolí připojení RDP přes port 3389, připojení k internetu přes port 80 a pro odchozí připojení pomocí [AZ Network NSG Rule Create](https://docs.microsoft.com/cli/azure/network/nsg/rule?view=azure-cli-latest#az-network-nsg-rule-create).
 
 ```azurecli
 # Create inbound rule for port 3389
@@ -288,7 +290,7 @@ az network vnet subnet create \
 
 ### <a name="create-nics"></a>Vytvoření síťových rozhraní
 
-Vytvořit virtuální síťové karty pro každý virtuální počítač s [az network nic vytvořit](https://docs.microsoft.com/cli/azure/network/nic?view=azure-cli-latest#az-network-nic-create). Následující příklad vytvoří virtuální síťovou kartu pro každý virtuální počítač. Každé síťové rozhraní se dvěma konfiguracemi IP (1 konfiguraci protokolu IPv4, 1 konfiguraci protokolu IPv6). Vytvořte konfiguraci protokolu IPV6 s [az network nic ip-config vytvořit](https://docs.microsoft.com/cli/azure/network/nic/ip-config?view=azure-cli-latest#az-network-nic-ip-config-create).
+Pro každý virtuální počítač vytvořte virtuální síťové adaptéry pomocí [AZ Network nic Create](https://docs.microsoft.com/cli/azure/network/nic?view=azure-cli-latest#az-network-nic-create). Následující příklad vytvoří virtuální síťovou kartu pro každý virtuální počítač. Každé síťové rozhraní má dvě konfigurace protokolu IP (1 konfigurace IPv4, 1 konfigurace IPv6). Konfiguraci protokolu IPV6 vytvoříte pomocí [AZ Network nic IP-config Create](https://docs.microsoft.com/cli/azure/network/nic/ip-config?view=azure-cli-latest#az-network-nic-ip-config-create).
  
 ```azurecli
 # Create NICs
@@ -339,9 +341,9 @@ az network nic ip-config create \
 
 ### <a name="create-virtual-machines"></a>Vytvoření virtuálních počítačů
 
-Vytvoření virtuálních počítačů s [az vm vytvořit](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest#az-vm-create). Následující příklad vytvoří dva virtuální počítače a požadované komponenty virtuální sítě, pokud ještě neexistují. 
+Vytvořte virtuální počítače pomocí [AZ VM Create](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest#az-vm-create). Následující příklad vytvoří dva virtuální počítače a požadované součásti virtuální sítě, pokud ještě neexistují. 
 
-Vytvoření virtuálního počítače *dsVM0* následujícím způsobem:
+*DsVM0* virtuálního počítače vytvoříte takto:
 
 ```azurecli
  az vm create \
@@ -350,9 +352,9 @@ Vytvoření virtuálního počítače *dsVM0* následujícím způsobem:
 --nics dsNIC0 \
 --size Standard_A2 \
 --availability-set dsAVset \
---image MicrosoftWindowsServer:WindowsServer:2016-Datacenter:latest  
+--image MicrosoftWindowsServer:WindowsServer:2019-Datacenter:latest  
 ```
-Vytvoření virtuálního počítače *dsVM1* následujícím způsobem:
+*DsVM1* virtuálního počítače vytvoříte takto:
 
 ```azurecli
 az vm create \
@@ -361,18 +363,18 @@ az vm create \
 --nics dsNIC1 \
 --size Standard_A2 \
 --availability-set dsAVset \
---image MicrosoftWindowsServer:WindowsServer:2016-Datacenter:latest 
+--image MicrosoftWindowsServer:WindowsServer:2019-Datacenter:latest 
 ```
 
-## <a name="view-ipv6-dual-stack-virtual-network-in-azure-portal"></a>Zobrazit virtuální sítě IPv6 duálním zásobníkem na webu Azure portal
-Virtuální sítě IPv6 duálním zásobníkem můžete zobrazit na webu Azure portal následujícím způsobem:
-1. Do panelu hledání na portálu, zadejte *dsVnet*.
-2. Jakmile se ve výsledcích hledání zobrazí virtuální síť **myVirtualNetwork**, vyberte ji. Tím se spustí **přehled** stránky duálním zásobníkem virtuální síť s názvem *dsVnet*. Virtuální síť duálním zásobníkem ukazuje dva síťové adaptéry s konfiguracemi protokolu IPv4 a IPv6 v duálním zásobníkem podsíť s názvem *dsSubnet*.
+## <a name="view-ipv6-dual-stack-virtual-network-in-azure-portal"></a>Zobrazení virtuální sítě s duálním zásobníkem IPv6 v Azure Portal
+Virtuální síť s duálním zásobníkem IPv6 se dá zobrazit v Azure Portal následujícím způsobem:
+1. Na panelu hledání na portálu zadejte *dsVnet*.
+2. Jakmile se ve výsledcích hledání zobrazí virtuální síť **myVirtualNetwork**, vyberte ji. Tím se spustí  Stránka s přehledem pro virtuální síť Dual stack s názvem *dsVnet*. Virtuální síť Dual Stack zobrazuje dvě síťové karty s konfiguracemi protokolů IPv4 i IPv6 umístěných v podsíti duálního zásobníku s názvem *dsSubnet*.
 
-  ![IPv6 duálním zásobníkem virtuální sítě v Azure](./media/virtual-network-ipv4-ipv6-dual-stack-powershell/dual-stack-vnet.png)
+  ![Virtuální síť s duálním zásobníkem IPv6 v Azure](./media/virtual-network-ipv4-ipv6-dual-stack-powershell/dual-stack-vnet.png)
 
 > [!NOTE]
-> Protokol IPv6 pro virtuální síť Azure je dostupný na webu Azure Portal v režimu jen pro čtení k této verzi preview.
+> Protokol IPv6 pro Azure Virtual Network je k dispozici v Azure Portal v této verzi Preview jen pro čtení.
 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
@@ -385,4 +387,4 @@ Pokud už je nepotřebujete, můžete k odebrání skupiny prostředků, virtuá
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto článku jste vytvořili základní nástroje pro vyrovnávání zatížení s duální front-endu konfigurací IP (IPv4 a IPv6). Také jste vytvořili dva virtuální počítače, které jsou zahrnuté síťové karty s duální konfigurací protokolu IP (IPV4 + IPv6), které byly přidány do back endového fondu nástroje pro vyrovnávání zatížení. Další informace o podpoře IPv6 ve virtuálních sítích Azure najdete v tématu [novinky protokolu IPv6 pro Azure Virtual Network?](ipv6-overview.md)
+V tomto článku jste vytvořili základní Load Balancer s duální konfigurací IP adresy front-endu (IPv4 a IPv6). Vytvořili jste také dva virtuální počítače, které obsahovaly síťové adaptéry s konfiguracemi duálních IP adres (IPV4 + IPv6), které byly přidány do fondu back-end nástroje pro vyrovnávání zatížení. Další informace o podpoře IPv6 ve virtuálních sítích Azure najdete v tématu [co je IPv6 pro Azure Virtual Network?](ipv6-overview.md)

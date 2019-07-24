@@ -1,10 +1,10 @@
 ---
-title: Azure Load balancer úrovně Standard a zóny dostupnosti
+title: Standard Load Balancer a Zóny dostupnosti Azure
 titlesuffix: Azure Load Balancer
 description: Load Balancer úrovně Standard a zóny dostupnosti
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: asudbring
 ms.custom: seodec18
 ms.service: load-balancer
 ms.devlang: na
@@ -12,55 +12,55 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/27/2018
-ms.author: kumud
-ms.openlocfilehash: 0820285555110e8e85bff814f4774d6da6443f69
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.author: allensu
+ms.openlocfilehash: 5ef7de148d5ef4727602b8287164f2aff9ccf822
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67491989"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68274503"
 ---
 # <a name="standard-load-balancer-and-availability-zones"></a>Load Balancer úrovně Standard a zóny dostupnosti
 
-Standardní skladová jednotka Azure Load Balancer podporuje [zóny dostupnosti](../availability-zones/az-overview.md) scénáře. Několik nových konceptů jsou k dispozici Load balanceru úrovně Standard, které umožňují vám umožní optimalizovat tak, že zarovnání prostředky se zónami a jejich distribuci napříč zónami dostupnosti ve vašem scénáři začátku do konce.  Kontrola [zóny dostupnosti](../availability-zones/az-overview.md) pokyny, co jsou zóny dostupnosti, ve kterých oblastech se aktuálně podporují zóny dostupnosti a druhý související koncepty a produkty. Zóny dostupnosti v kombinaci s Load balanceru úrovně Standard jsou sady funkce obsáhlém a flexibilní, můžete vytvořit mnoho různých scénářů.  Přečtěte si tento dokument, abyste umět nakonfigurovat [koncepty](#concepts) a základní scénář [pokyny k návrhu](#design).
+Standardní SKU Azure Load Balancer podporuje scénáře [zóny dostupnosti](../availability-zones/az-overview.md) . V Standard Load Balancer je k dispozici několik nových konceptů, které vám umožní optimalizovat dostupnost v celém koncovém scénáři tím, že se zarovnají prostředky a distribuují je mezi zónami.  Přečtěte si [zóny dostupnosti](../availability-zones/az-overview.md) , kde najdete pokyny k tomu, co zóny dostupnosti, které oblasti momentálně podporují zóny dostupnosti, a další související koncepty a produkty. Zóny dostupnosti v kombinaci s Standard Load Balancer jsou obsáhlém a flexibilní sada funkcí, která může vytvářet mnoho různých scénářů.  Přečtěte si tento dokument, abyste pochopili tyto [Koncepty](#concepts) a základní [pokyny k návrhu](#design)scénářů.
 
 >[!IMPORTANT]
->Kontrola [zóny dostupnosti](../availability-zones/az-overview.md) související témata, včetně žádné informace o konkrétní oblasti.
+>V tématu [zóny dostupnosti](../availability-zones/az-overview.md) najdete související témata, včetně informací o konkrétní oblasti.
 
-## <a name="concepts"></a> Koncepce zón dostupnosti u nástroje pro vyrovnávání zatížení
+## <a name="concepts"></a>Zóny dostupnosti koncepty použité pro Load Balancer
 
-Není žádný přímý vztah mezi prostředky nástroje pro vyrovnávání zatížení a infrastruktury skutečný; Vytvoření nástroje pro vyrovnávání zatížení nevytváří instanci. Prostředků nástroje pro vyrovnávání zatížení jsou objekty, ve kterém můžete vyjádřit, jak Azure by měl program jeho předem připravených víceklientské infrastruktury, scénář, který chcete vytvořit.  To je důležité v rámci zóny dostupnosti, protože jeden prostředek nástroje pro vyrovnávání zatížení můžete řídit programování infrastruktury v několika zónami dostupnosti, zatímco zónově redundantní služby se zobrazí jako jeden prostředek z hlediska zákazníků.
+Mezi prostředky Load Balancer a skutečnou infrastrukturou nejsou žádné přímé vztahy. Vytvoření Load Balancer instanci nevytvoří. Prostředky Load Balancer jsou objekty, ve kterých můžete vyjádřit, jak by měl Azure naprogramovat svou předem vytvořenou infrastrukturu více tenantů, aby dosáhli scénáře, který chcete vytvořit.  To je důležité v souvislosti s Zóny dostupnosti, protože jeden prostředek Load Balancer může řídit programování infrastruktury ve více Zóny dostupnosti, zatímco se služba redundantní v rámci zóny zobrazuje jako jeden prostředek z pohledu zákazníka.
 
-Funkce nástroje pro vyrovnávání zatížení prostředků jsou vyjádřeny jako front-end, pravidla, sondu stavu a definice fondu back-endu.
+Funkce prostředku Load Balancer se vyjadřují jako front-end, pravidlo, sonda stavu a definice fondu back-endu.
 
-V rámci zóny dostupnosti jsou popsané chování a vlastností prostředku nástroje pro vyrovnávání zatížení jako zónové a zónově redundantní.  Zónově redundantní a zónové popisují zonality vlastnost.  V rámci nástroje pro vyrovnávání zatížení, zónově redundantní vždy znamená, že *několika zónami* a zónové prostředky služby k izolování *jedné zóně*.
+V kontextu Zóny dostupnosti se chování a vlastnosti prostředku Load Balancer popisují jako redundantní nebo oblasti.  Redundantní zóna a oblast popisují zonality vlastnosti.  V souvislosti s Load Balancer se v zóně – redundantní vždy znamená, že *několik zón a oblastí* znamená izolaci služby do *jedné zóny*.
 
-Veřejné a vnitřní nástroj pro vyrovnávání zatížení podporují zónové a zónově redundantní scénáře a podle potřeby, jak může směrovat provoz mezi zónami (*Vyrovnávání zatížení mezi zónami*).
+Veřejné i interní Load Balancer podporují scénáře redundantních a oblastí a oba můžou směrovat provoz napříč zónami podle potřeby (vyrovnávání*zatížení mezi zónami*).
 
-Prostředek nástroje pro vyrovnávání zatížení, samotného je místní a nikdy oblastmi.  A virtuální sítě a podsítě jsou vždy místní a nikdy oblastmi.
+Prostředek Load Balancer sám o sobě není oblast.  A virtuální síť a podsíť jsou vždy oblastní a nikdy nepracují.
 
-### <a name="frontend"></a>Front-endu
+### <a name="frontend"></a>Endy
 
-Front-endu nástroje pro vyrovnávání zatížení je konfigurace IP front-endu na prostředek veřejné IP adresy nebo privátní IP adresu v rámci podsítě prostředku virtuální sítě.  Vymezuje koncový bod s vyrovnáváním zatížení, kde je vystaven vaší služby.
+Front-end Load Balancer je konfigurace IP adresy front-endu, která odkazuje buď na prostředek veřejné IP adresy, nebo na privátní IP adresu v rámci sítě virtuálního síťového prostředku.  Vytvoří koncový bod s vyrovnáváním zatížení, ve kterém je vaše služba vystavená.
 
-Prostředek nástroje pro vyrovnávání zatížení může obsahovat současně zónové a zónově redundantních front-endů. 
+Prostředek Load Balancer může obsahovat současně i zóny i redundantní front-endy. 
 
-Pokud prostředek veřejné IP adresy má byla zaručeno, že do zóny, zonality (nebo neexistenci) není měnitelný.  Pokud chcete změnit nebo vynechejte zonality veřejnou front-endovou IP, budete muset znovu vytvořit veřejnou IP adresu v příslušné oblasti.  
+Když je prostředek veřejné IP adresy zaručený pro zónu, zonality (nebo nejeho absence) není proměnlivý.  Pokud chcete změnit nebo vynechat zonality veřejné IP adresy front-endu, je nutné znovu vytvořit veřejnou IP adresu v příslušné zóně.  
 
-Odebráním a opětovné vytvoření front-endu, změna nebo vynechání zonality můžete změnit zonality front-end interního nástroje Load Balancer.
+Zonality front-endu interního Load Balancer můžete změnit tak, že odeberete a znovu vytvoříte front-end, změníte nebo vynecháte zonality.
 
-Pokud používáte několik front-endů, zkontrolujte [několik front-endů pro nástroj pro vyrovnávání zatížení](load-balancer-multivip-overview.md) důležité informace.
+Pokud používáte víc front-endu, Projděte si [několik front-endu pro Load Balancer](load-balancer-multivip-overview.md) s důležitými informacemi.
 
-#### <a name="zone-redundant-by-default"></a>Zónově redundantní ve výchozím nastavení
+#### <a name="zone-redundant-by-default"></a>Zóna redundantní ve výchozím nastavení
 
 >[!IMPORTANT]
->Kontrola [zóny dostupnosti](../availability-zones/az-overview.md) související témata, včetně žádné informace o konkrétní oblasti.
+>V tématu [zóny dostupnosti](../availability-zones/az-overview.md) najdete související témata, včetně informací o konkrétní oblasti.
 
-V oblasti se zónami dostupnosti se zónově redundantní ve výchozím nastavení front-end Load balanceru úrovně Standard.  IP adresa front-endu jeden přežijí selhání zóny a může být použité k dosažení všech členů fondu back-endu bez ohledu na to, zóna. Cesta k datům hitless neznamená to však reestablishment ani opakování proběhne úspěšně. Schémata redundance DNS se nevyžadují. Front-endu jednu IP adresu obsluhují současně více nezávislých infrastrukturu nasazení v několika zónami dostupnosti.  Zónově redundantní znamená, že všechny příchozí nebo odchozí toky obsluhuje více zón dostupnosti v oblasti současně používat jednu IP adresu.
+V oblasti s Zóny dostupnosti je Standard Load Balancer front-endu ve výchozím nastavení redundantní v zóně.  Jedna IP adresa front-endu může proběhnout při selhání zóny a dá se použít k přístupu ke všem členům back-end fondu bez ohledu na zónu. To neznamená hitless cestu k datům, ale všechny opakované pokusy nebo obnovení budou úspěšné. Schémata redundance DNS se nevyžadují. Jedna IP adresa front-endu je souběžně obsluhována několika nenezávislými nasazeními infrastruktury ve více Zóny dostupnosti.  Zóna – redundantní znamená, že všechny příchozí nebo odchozí toky jsou obsluhovány více Zóny dostupnosti v oblasti současně pomocí jediné IP adresy.
 
-Jeden nebo více zónách dostupnosti, i když selže na cestu k datům odolává tak dlouho, dokud jedna zóna v oblasti zůstane v dobrém stavu. Zónově redundantní konfigurace je výchozí a nevyžaduje žádné další akce.  
+Jeden nebo více Zóny dostupnosti může selhat a cesta k datům zůstává v pořádku, dokud jedna zóna v oblasti zůstane v dobrém stavu. Výchozí konfigurace zóny je redundantní a nevyžaduje žádné další akce.  
 
-Pomocí následujícího skriptu vytvořte zónově redundantní veřejnou IP adresu pro vaše interní Load balanceru úrovně Standard. Pokud používáte existující šablony Resource Manageru ve vaší konfiguraci, přidejte **sku** části tyto šablony.
+Použijte následující skript k vytvoření veřejné IP adresy redundantní zóny pro interní Standard Load Balancer. Pokud v konfiguraci používáte existující šablony Správce prostředků, přidejte k těmto šablonám oddíl **SKU** .
 
 ```json
             "apiVersion": "2017-08-01",
@@ -73,7 +73,7 @@ Pomocí následujícího skriptu vytvořte zónově redundantní veřejnou IP ad
             },
 ```
 
-Pomocí následujícího skriptu vytvořte zónově redundantních front-endovou IP adresu pro vaše interní Load balanceru úrovně Standard. Pokud používáte existující šablony Resource Manageru ve vaší konfiguraci, přidejte **sku** části tyto šablony.
+Pomocí následujícího skriptu vytvořte IP adresu redundantní zóny front-endu pro interní Standard Load Balancer. Pokud v konfiguraci používáte existující šablony Správce prostředků, přidejte k těmto šablonám oddíl **SKU** .
 
 ```json
             "apiVersion": "2017-08-01",
@@ -99,15 +99,15 @@ Pomocí následujícího skriptu vytvořte zónově redundantních front-endovou
                 ],
 ```
 
-#### <a name="optional-zone-isolation"></a>Izolace volitelné zóny
+#### <a name="optional-zone-isolation"></a>Volitelná izolace zóny
 
-Můžete zvolit, aby front-endu, zaručeno, že k jedné oblasti, což se označuje jako *zónové front-endu*.  To znamená, že se že všechny příchozí nebo odchozí tok je obsluhuje jednu zónu v oblasti.  Vaše front-endu sdílí pracuje s stavu zóny.  Cesta k datům není ovlivněn selhání v oblastech než ve kterém byla zaručená. Oblastmi front-endů můžete použít ke zveřejnění IP adresa na zónu dostupnosti.  Navíc můžete využívat oblastmi front-endů přímo nebo, když se skládá z veřejné IP adresy front-endu integrovat se službou Vyrovnávání zatížení produktu jako DNS [Traffic Manageru](../traffic-manager/traffic-manager-overview.md) a používat jeden název DNS, který se přeloží klienta více oblastmi IP adres.  To můžete použít ke zveřejnění na zóny s vyrovnáváním zatížení koncových bodech, které jednotlivě sledovat každou zónu.  Pokud chcete kombinovat tyto koncepty (zónově redundantní a zónové pro stejný back-end), přečtěte si [několik front-endů pro Azure Load Balancer](load-balancer-multivip-overview.md).
+Můžete zvolit, aby front-end byl zaručen pro jednu zónu, která se nazývá *oblast front-endu*.  To znamená, že jakýkoliv příchozí nebo odchozí tok je obsluhován jedinou zónou v oblasti.  Vaše sdílená složka front-endu sepravila se stavem zóny.  Cesta k datům není ovlivněná chybami v jiných zónách, než kde byla zaručena. K vystavení IP adresy na jednu zónu dostupnosti můžete použít oblast front-endu.  Kromě toho můžete využít front-endu přímo nebo, pokud se front-end skládá z veřejných IP adres, integrovat je s produktem pro vyrovnávání zatížení DNS, jako je [Traffic Manager](../traffic-manager/traffic-manager-overview.md) , a používat jeden název DNS, který klient bude překládat na více IP adres. .  Tuto možnost můžete použít také k vystavení koncovým bodům pro vyrovnávání zatížení zóny pro samostatné monitorování každé zóny.  Pokud chcete tyto koncepty (zóny redundantní a oblasti pro stejný back-end) kombinovat, Projděte si téma [více front-endu pro Azure Load Balancer](load-balancer-multivip-overview.md).
 
-Pro veřejný nástroj pro vyrovnávání zatížení front-end, přidáte *zóny* parametr na veřejnou IP adresu odkazuje front-endová konfigurace protokolu IP.  
+U veřejné Load Balancer front-endu přidejte parametr *Zones* k veřejné IP adrese, na kterou odkazuje konfigurace IP adresy front-endu.  
 
-Interní nástroj pro vyrovnávání zatížení front-endu, přidejte *zóny* parametrů pro vnitřní konfigurace protokolu IP front-endu nástroje pro vyrovnávání zatížení. Oblastmi front-endu způsobí, že nástroj pro vyrovnávání zatížení pro zajištění IP adresy v podsíti pro konkrétní zónu.
+U interního front-endu Load Balancer přidejte  do konfigurace protokolu IP front-endu interní Load Balancer parametr Zones. Oblast front-end způsobí, že Load Balancer garantuje IP adresu v podsíti s konkrétní zónou.
 
-Pomocí následujícího skriptu vytvořte oblastmi standardní veřejnou IP adresu v zóně 1 dostupnosti. Pokud používáte existující šablony Resource Manageru ve vaší konfiguraci, přidejte **sku** části tyto šablony.
+Pomocí následujícího skriptu vytvořte v Zóna 1 dostupnosti standardní veřejnou IP adresu pro oblast. Pokud v konfiguraci používáte existující šablony Správce prostředků, přidejte k těmto šablonám oddíl **SKU** .
 
 ```json
             "apiVersion": "2017-08-01",
@@ -121,9 +121,9 @@ Pomocí následujícího skriptu vytvořte oblastmi standardní veřejnou IP adr
             },
 ```
 
-Pomocí následujícího skriptu vytvořte interní nástroj pro vyrovnávání zatížení front-endem v zóně 1 dostupnosti.
+Pomocí následujícího skriptu vytvořte interní Standard Load Balancer front-end v Zóna 1 dostupnosti.
 
-Pokud používáte existující šablony Resource Manageru ve vaší konfiguraci, přidejte **sku** části tyto šablony. Navíc definovat **zóny** vlastnosti v konfiguraci protokolu IP front-endu pro podřízený prostředek.
+Pokud v konfiguraci používáte existující šablony Správce prostředků, přidejte k těmto šablonám oddíl **SKU** . Také definujte vlastnost **Zones** v konfiguraci protokolu IP front-endu pro podřízený prostředek.
 
 ```json
             "apiVersion": "2017-08-01",
@@ -152,78 +152,78 @@ Pokud používáte existující šablony Resource Manageru ve vaší konfiguraci
 
 ### <a name="cross-zone-load-balancing"></a>Vyrovnávání zatížení mezi zónami
 
-Vyrovnávání zatížení mezi zónami je schopnost služby Load Balancer oslovit koncový bod back-end v každé zóně a to nezávisle na front-endu a jeho zonality.
+Vyrovnávání zatížení mezi zónami je schopnost Load Balancer získat přístup ke koncovému bodu back-endu v libovolné zóně a nezávisle na front-endu a zonality.
 
-Pokud chcete zarovnat a zaručit nasazení v rámci jedné oblasti, zarovnání oblastmi front-endu a zónové back-endovým prostředkům do stejné zóny. Nevyžaduje se žádná další akce.
+Pokud chcete nasazovat a zaručit nasazení v rámci jedné zóny, zarovnejte prostředky back-end a rozmístění back-endu do stejné zóny. Nevyžaduje se žádná další akce.
 
-### <a name="backend"></a>Back-endu
+### <a name="backend"></a>Back-end
 
-Nástroj pro vyrovnávání zatížení funguje s virtuálními počítači.  Všech virtuálních počítačů v jedné virtuální sítě můžou být součástí fondu back-endu bez ohledu na to, zda byla zaručeno do zóny nebo zóně, ve které byla zaručeno, že.
+Load Balancer spolupracuje s Virtual Machines.  Libovolný virtuální počítač v jedné virtuální síti může být součástí back-endu fondu bez ohledu na to, jestli je nebo není zaručená zóna nebo která zóna byla zaručena.
 
-Pokud chcete zarovnat a zaručit front-endových a back-endu pomocí jedné oblasti, pouze umístíte virtuální počítače ve stejné zóně do příslušných back-endový fond.
+Pokud chcete zajistit, aby se front-end a back-end s jednou zónou rovnaly a zajistily, umístěte jenom virtuální počítače v rámci stejné zóny do příslušného back-endu.
 
-Pokud chcete adresy virtuálních počítačů napříč několika zónami, jednoduše umístěte virtuální počítače z několika zónami do stejného back-endový fond.  Pokud použijete virtuálního počítače škálovací sady, můžete umístit jeden nebo více škálovací sady virtuálních počítačů do stejného back-endový fond.  A každý z těchto škálovací sady virtuálních počítačů může být v jedné nebo několika zónami.
+Pokud chcete virtuální počítače adresovat v rámci více zón, Stačí umístit virtuální počítače z několika zón do stejného back-endu.  Při používání virtuálních počítačů Virtual Machine Scale Sets můžete do stejného back-endu umístit jednu nebo víc sad škálování virtuálního počítače.  Všechny tyto sady škálování virtuálních počítačů můžou být v jedné nebo několika zónách.
 
 ### <a name="outbound-connections"></a>Odchozí připojení
 
-[Odchozí připojení](load-balancer-outbound-connections.md) obsluhují všechny zóny a jsou automaticky zónově redundantní v oblasti se zónami dostupnosti, pokud virtuální počítač přidružený veřejný Load Balancer a zónově redundantních front-endu.  Odchozí připojení SNAT port přidělení selhání zóny.  
+[Odchozí připojení](load-balancer-outbound-connections.md) jsou obsluhována všemi zónami a jsou automaticky redundantní v zóně v oblasti s zóny dostupnosti, když je virtuální počítač přidružený k veřejnému Load Balancer a záložnímu front-endovému typu zóny.  Odchozí připojení port SNAT má za sebou selhání zóny.  
 
-Naopak pokud virtuální počítač je spojen s veřejný Load Balancer a zónové front-endu, odchozí připojení je zaručeno poskytovat podle jedné oblasti.  Odchozí připojení sdílet pracuje s stav příslušných zóny.
+Pokud je virtuální počítač přidružený k veřejnému Load Balancer a oblast front-endu, budou odchozí připojení zaručena jedinou zónou.  Odchozí připojení sdílí rozpad s příslušným stavem zóny.
 
-Předběžné přidělení SNAT portu a algoritmus je stejná s nebo bez zón.
+Předběžné přidělení portu SNAT a algoritmus jsou stejné jako u zón nebo bez nich.
 
 ### <a name="health-probes"></a>Sondy stavu
 
-Vaše existující definice sondy stavu zůstane tak, jak jsou, bez zón dostupnosti.  Ale jsme rozšířili modelu stavu na úrovni infrastruktury. 
+Vaše existující definice sondy stavu zůstávají beze Zóny dostupnosti.  Rozšířili jsme ale model stavu na úrovni infrastruktury. 
 
-Při použití zónově redundantních front-endů, nástroje pro vyrovnávání zatížení se rozšíří jeho vnitřního stavu modelu nezávisle na sobě testu dostupnosti virtuálního počítače z každá zóna dostupnosti a vypnout cest napříč zónami, které mohlo dojít k selhání bez zásahu zákazníka.  Pokud zadaná cesta není k dispozici z infrastruktury nástroje pro vyrovnávání zatížení jednu zónu na virtuální počítač v jiné zóně, nástroje pro vyrovnávání zatížení můžete zjišťovat a vyhnout se této chyby. Další zóny, kteří můžou kontaktovat tento virtuální počítač můžete nadále sloužit virtuálního počítače z jejich odpovídajících front-endů.  V důsledku toho je možné, že během události selhání každé zóně může mít distribuce mírně odlišný tok při ochraně celkový stav služby začátku do konce.
+Pokud používáte zóny s redundantními servery, Load Balancer rozbalí svůj interní stavový model tak, aby nezávisle provedl test dostupnosti virtuálního počítače z každé zóny dostupnosti, a vypnul cesty mezi zónami, které se mohly nezdařily, bez zásahu zákazníka.  Pokud daná cesta není k dispozici z Load Balancer infrastruktury jedné zóny k virtuálnímu počítači v jiné zóně, Load Balancer může tuto chybu detekovat a vyhnout se této chybě. Jiné zóny, které se můžou připojit k tomuto virtuálnímu počítači, můžou dál obsluhovat virtuální počítač ze svých front-endu.  V důsledku toho je možné, že během událostí selhání mohou mít každá zóna mírně odlišnou distribuci toků a současně chránit celkový stav komplexní služby.
 
-## <a name="design"></a> Aspekty návrhu
+## <a name="design"></a>Faktory návrhu
 
-Nástroj pro vyrovnávání zatížení je záměrně flexibilní v rámci zóny dostupnosti. Můžete také zarovnat zóny nebo můžete být zónově redundantní.  Zajištění vyšší dostupnosti můžete vrátit za cenu zvýšení složitosti a je třeba navrhnout dostupnosti pro zajištění optimálního výkonu.  Pojďme se podívat na některé důležité aspekty návrhu.
+Load Balancer je účelově flexibilní v kontextu Zóny dostupnosti. Můžete si vybrat, že se mají zarovnat do zón, nebo se můžete rozhodnout pro zónu – redundantní.  Vyšší dostupnost může zacházet z ceny zvýšené složitosti a je třeba navrhnout dostupnost pro zajištění optimálního výkonu.  Pojďme se podívat na důležité informace o návrhu.
 
-### <a name="automatic-zone-redundancy"></a>Automatické zálohování zóny
+### <a name="automatic-zone-redundancy"></a>Automatická redundance zóny
 
-Nástroj pro vyrovnávání zatížení usnadňuje mít jednu IP adresu jako zónově redundantních front-endu. Zónově redundantní IP adresa může bezpečně sloužit zónovým prostředkem v každé zóně a tak dlouho, dokud jednu zónu zůstane v dobrém stavu v rámci oblasti přežijí nejméně jednomu selhání zóny. Naopak oblastmi front-endu je snížení služby na jednu zónu a sdílené složky rozpadu příslušných zónu.
+Load Balancer usnadňuje jednu IP adresu jako front-redundantní front-end. Redundantní IP adresa v zóně může bezpečně obsluhovat prostředky oblastí v libovolné zóně a může zabývat jedné nebo více selhání zóny, pokud jedna zóna zůstane v dobrém stavu v oblasti. Naopak front-end je omezení služby na jednu zónu a podílí se na ní osud v příslušné zóně.
 
-Redundanci zón neznamená hitless datapath nebo rovina řízení;  je výslovně rovina dat. Zónově redundantní toků můžete použít všechny zóny a toků na základě budou používat všechny zóny v pořádku v oblasti. V případě selhání zóny přenosové toky pomocí v dobrém stavu zóny v daném okamžiku v čase vliv.  Přenosové toky pomocí zóny v době selhání zóna může mít vliv, ale můžete obnovit aplikací. Tyto toky můžete pokračovat ve zbývajících v dobrém stavu zóny v rámci oblasti opakovaný přenos zpráv nebo reestablishment, po Azure se sloučila kolem selhání zóny.
+Zóna – redundance neznamená hitlessou datacestu nebo rovinu ovládacího prvku;  rovina dat je Express. Neredundantní toky v zóně můžou používat libovolné zóny a toky zákazníka použijí všechny v pořádku zóny v oblasti. V případě selhání zóny nebudou ovlivněny provozní toky, které používají zóny v pořádku v daném časovém okamžiku.  Může to mít vliv na přenosové toky pomocí zóny v době selhání zóny, ale aplikace se můžou zotavit. Tyto toky můžou pokračovat ve zbývajících zónách v oblasti po opětovném přenosu nebo opětovném vytvoření, jakmile se Azure Sblíženo se selháním zóny.
 
-### <a name="xzonedesign"></a> Překračují hranice zóny
+### <a name="xzonedesign"></a>Hranice mezi zónami
 
-Je důležité pochopit, že kdykoli služby začátku do konce překročí zóny, sdílet pracuje s není jednu zónu, ale potenciálně několika zónami.  V důsledku toho začátku do konce služby nemusí získali jakékoli dostupnost přes-zónové nasazení.
+Je důležité si uvědomit, že při každém přechodu mezi koncovými službami procházejí všechny zóny, takže můžete sdílet rozpad bez jedné zóny, ale potenciálně více zón.  V důsledku toho vaše koncová služba pravděpodobně nezískala žádnou dostupnost v rámci nasazení mimo oblast.
 
-Vyhýbejte se nežádoucích závislosti mezi zónami, které se nezruší se tím zvýšení dostupnosti při použití zón dostupnosti.  Pokud vaše aplikace se skládá z několika součástí a chcete být odolné vůči selhání zóny, musí postará k zajištění přežití dostatečná kritických komponent v případě selhání zóny.  Například jeden zásadní součástí pro vaši aplikaci může ovlivnit celé aplikace existuje pouze v zóně než zbývající zóna nebo zóny.  Kromě toho se také zvažte obnovení zóny a jak se vaše aplikace sloučit. Pojďme zkontrolovat některé klíčové body a použijte je jako inspirace pro dotazy pečlivě promyslete váš konkrétní scénář.
+Vyhněte se představení nezamýšlených závislostí mezi zónami, které při použití Zóny dostupnosti nezruší zisky dostupnosti.  Pokud se vaše aplikace skládá z několika součástí a chcete být odolná vůči selhání zóny, musíte se ujistit, že v případě selhání zóny budete mít dostatečné kritické součásti.  Například jediná kritická součást vaší aplikace může mít vliv na celou aplikaci, pokud existuje pouze v jiné zóně než zóny, na kterých se nachází.  Kromě toho zvažte také obnovení zóny a způsob sblížení aplikace. Pojďme se podívat na některé klíčové body a použít je jako inspiraci pro otázky, jak si myslíte podle svého konkrétního scénáře.
 
-- Pokud aplikace obsahuje dvě komponenty, jako jsou IP adresy a virtuálních počítačů při použití spravovaného disku a jste zaručeno v zóně 1 a v zóně 2, při selhání vaší služby začátku do konce zóny 1 nebude překonat když zóna 1 se nezdaří.  Není napříč zóny, není-li plně chápete, že vytváříte režim potenciálně nebezpečné selhání.
+- Pokud má vaše aplikace dvě komponenty, jako je IP adresa a virtuální počítač se spravovaným diskem a jsou zaručené v zóně 1 a 2, v případě, že zóna 1 selže, nebude vaše koncová služba zachována, když zóna 1 selže.  Nevybírejte mezi zónami, pokud plně nerozumíte, že vytváříte potenciálně nebezpečný režim selhání.
 
-- Pokud vaše aplikace má dvě součásti, jako jsou IP adresy a virtuální počítač s spravovaný disk a je zaručena zónově redundantní a zóna 1, respektive, vaše služba začátku do konce přežije zkázu zóny selhání v zóně 2 pro, zóna 3, nebo obojí Pokud zóna 1 se nezdařilo.  Však ztratíte nějakou možnost argumentovat o stav vaší služby. Pokud vše, co se vyčistily dostupnosti front-endu.  Zvažte možnost zavedení rozsáhlejší modelu stavu a kapacity.  Můžete společně použít zónové a zónově redundantní koncepty rozbalte insight a zlepšit možnosti správy.
+- Pokud má vaše aplikace dvě komponenty, jako je IP adresa a virtuální počítač se spravovaným diskem, a zaručuje se, že vaše koncová služba bude zachována při selhání zóny 2, zóny 3 nebo obou, pokud se nezdařila zóna 1.  Nemůžete ale přijít o případnou schopnost vaší služby, pokud je všechno, co se vám právě vystavuje, dostupnost front-endu.  Zvažte vývoj rozsáhlejšího modelu stavu a kapacity.  K rozšíření přehledu a možností správy můžete využít koncepty a oblasti v zóně.
 
-- Pokud aplikace obsahuje dvě komponenty, jako jsou zónově redundantních front-endu nástroje pro vyrovnávání zatížení a škálovací sady virtuálních počítačů napříč zónami ve třech zónách, vaše prostředky v zónách není vliv selhání bude k dispozici, ale může mít snížený výkon vaší kapacity služby začátku do konce během selhání zóny. Z hlediska infrastruktury nasazení přežijí nejméně jednoho zóny, a to vyvolá na následující otázky:
-  - Chápete, jak vaše aplikace důvodů, proč o takové selhání a snížení kapacity?
-  - Je třeba mít bezpečnostní opatření ve své službě do páru oblastí v případě potřeby vynutit převzetí služeb při selhání?
-  - Jak se můžete sledovat, jejich detekci a zmírnění takový scénář? Je možné, že se můžete pomocí diagnostiky Load balanceru úrovně Standard k posílení monitorování výkonu vaší služby začátku do konce. Zvažte, co je k dispozici a rozšíření co možná bude nutné pro dokončení obrázek.
+- Pokud má vaše aplikace dvě komponenty, jako je například zóna redundantní Load Balancer front-endu a škálování virtuálního počítače mezi zónami ve třech zónách, budou k dispozici prostředky v zónách neovlivněné selháním, ale může dojít ke snížení výkonu vaší koncové kapacity služby. během selhání zóny. Z hlediska infrastruktury může vaše nasazení zamezit selhání jedné nebo více zón a tato akce vyvolá následující otázky:
+  - Porozumíte tomu, jak vaše aplikace vede k takovým selháním a snížení kapacity?
+  - Potřebujete v rámci služby zabezpečení a v případě potřeby vynutit převzetí služeb při selhání dvojici oblastí?
+  - Jak budete monitorovat, zjišťovat a zmírnit takový scénář? Je možné používat diagnostiku Standard Load Balancer k rozšíření monitorování komplexního výkonu služby. Zvažte, co je k dispozici a co může pro kompletní obrázek vyžadovat rozšíření.
 
-- Zónám lze chyby snadněji porozuměl jsem jim a obsažené.  Selhání zóny se ale nijak neliší od jiné chyby při rozhodování o koncepty, jako jsou časové limity, opakovaných pokusů a omezení rychlosti algoritmy. I když Azure Load Balancer poskytuje zónově redundantní cesty a pokusí se rychle, obnovení na úrovni paketů v reálném čase, opakovaných nebo reestablishments může dojít během mozkového onemocnění v chybě a je důležité pochopit, jak vaše aplikace copes s selhání. Přežije zkázu schéma služby Vyrovnávání zatížení, ale je potřeba naplánovat následující:
-  - Pokud zónu nezdaří, vaše služba začátku do konce chápe to a pokud dojde ke ztrátě stavu, jak se vám obnoví?
-  - Po návratu zónu, aplikace pochopit, jak bezpečně sloučit?
+- Zóny můžou chyby snadněji pochopit a zahrnout.  Selhání zóny se ale neliší od jiných selhání, když přichází k koncepcím, jako jsou časové limity, opakování a omezení rychlosti algoritmy. I když Azure Load Balancer poskytuje cesty redundantní v zóně a snaží se rychle obnovit na úrovni paketů v reálném čase, může dojít k opakovanému přenosu nebo opětovnému navázání. je důležité pochopit, jak se vaše aplikace kopiemi s úspěšně. Vaše schéma vyrovnávání zatížení bude zachováno, ale je třeba naplánovat následující:
+  - Pokud dojde k chybě zóny, bude vaše koncová služba rozumět této službě a pokud dojde ke ztrátě stavu, jak budete obnovovat?
+  - Když se zóna vrátí, aplikace porozumí, jak bezpečně konvergovat?
 
-### <a name="zonalityguidance"></a> Zónově redundantní a oblastmi
+### <a name="zonalityguidance"></a>Redundantní zóna mimo oblast
 
 >[!IMPORTANT]
->Kontrola [zóny dostupnosti](../availability-zones/az-overview.md) související témata, včetně žádné informace o konkrétní oblasti.
+>V tématu [zóny dostupnosti](../availability-zones/az-overview.md) najdete související témata, včetně informací o konkrétní oblasti.
 
-Zónově redundantní můžete zadat zónu nezávislá a na stejné možnosti čas odolné jednu IP adresu pro službu.  Pak ji lze omezit složitost.  Zónově redundantní také má mobility napříč zónami a lze jej bezpečně používat na prostředky v každé zóně.  Je také budoucnost v oblastech, které nemají zóny dostupnosti, které můžete omezit změny po oblast získat zóny dostupnosti.  Syntaxe konfigurace zónově redundantní IP adresu nebo front-endu úspěšná v libovolné oblasti, včetně těch, které nemají zóny dostupnosti.
+Redundantní zóna může poskytovat zónu – nezávislá a současně neodolnou možnost s jednou IP adresou pro službu.  Může to snížit složitost.  Redundantní zóna také nabízí mobilitu mezi zónami a může být bezpečně používána na prostředky v libovolné zóně.  Kromě toho je budoucí kontrola v oblastech bez Zóny dostupnosti, což může omezit změny požadované v případě, že oblast získá Zóny dostupnosti.  Syntaxe konfigurace redundantní IP adresy nebo front-endu v zóně se úspěšně provedla v jakékoli oblasti, včetně těch, které nejsou Zóny dostupnosti.
 
-Zónové může poskytnout explicitní záruka se zónou sdílení pracuje s stavu zóny. Přidružení oblastmi IP adresu nebo oblastmi front-endu nástroje pro vyrovnávání zatížení může být žádoucí nebo přiměřené atribut zejména v Pokud je připojené prostředků virtuálního počítače s oblastmi ve stejné zóně.  Nebo možná vaše aplikace vyžaduje explicitní znalosti o zóně, ve které je prostředek umístěn v a chcete explicitně odůvodnitelný v samostatných zón dostupnosti.  Můžete také zveřejnit několika oblastmi front-endů pro službu začátku do konce distribuované napříč zónami (tedy za zónu oblastmi front-endů pro více oblastmi virtuálního počítače škálovací sady).  Pokud vaše oblastmi front-endů jsou veřejné IP adresy, můžete pomocí těchto více oblastmi front-endů pro vystavení služby s [Traffic Manageru](../traffic-manager/traffic-manager-overview.md).  Nebo můžete použít několik front-endů zónové a získat za zónu přehledy stavu a výkonu prostřednictvím monitorování řešení třetích stran tak a zpřístupnit s zónově redundantních front-endové služby. Pouze by měla sloužit zónové prostředky s oblastmi front-endů zarovnán do stejné zóny a vyhnout potenciálně škodlivé napříč zónami scénáře pro zónové prostředky.  Zónové prostředky existují jenom v oblastech, kde existují zóny dostupnosti.
+Oblast může poskytnout explicitní záruku pro zónu a sdílet osud se stavem zóny. Přidružení hraniční IP adresy nebo oblasti Load Balancer front-endu může být vhodným nebo rozumným atributem, zejména v případě, že připojený prostředek je virtuální počítač ve stejné zóně.  Nebo možná vaše aplikace vyžaduje explicitní znalosti o tom, ve které zóně se prostředek nachází, a vy chcete důvodně získat informace o dostupnosti v samostatných zónách explicitně.  Můžete zvolit, aby se pro koncovou službu distribuovanou v různých zónách vystavilo několik front-endu (to znamená, že zóna má na front-endové služby pro víc virtuálních počítačů Scale Sets).  A pokud vaše oblast front-endu jsou veřejné IP adresy, můžete použít tyto více front-endu pro vystavení vaší služby s [Traffic Manager](../traffic-manager/traffic-manager-overview.md).  Nebo můžete použít více front-endu k získání informací o stavu jednotlivých zón a přehledy o výkonu prostřednictvím řešení monitorování třetích stran a zpřístupnit celkovou službu pomocí předávacího typu zóny redundantní. Měli byste používat jenom ty prostředky s oblastí front-endu zarovnané do stejné zóny a vyhnout se potenciálně škodlivým scénářům pro různé zóny pro oblasti prostředků.  Prostředky oblasti jsou k dispozici pouze v oblastech, kde Zóny dostupnosti existovat.
 
-Neexistuje žádné obecné pokyny, že jeden je vhodnější než ten druhý bez znalosti architektury služby.
+Neexistují žádné obecné pokyny, které je lepší volbou než druhá bez znalosti architektury služby.
 
 ## <a name="limitations"></a>Omezení
 
-- Zatímco dat roviny je plně zónově redundantní (Pokud byl zadán oblastmi se zárukou), operace roviny řízení nejsou plně zónově redundantní.
+- Zatímco rovina dat je zcela redundantní (není-li zaručena oblastce), provozní operace roviny nejsou plně v zóně redundantní.
 
 ## <a name="next-steps"></a>Další postup
 - Další informace o [zóny dostupnosti](../availability-zones/az-overview.md)
 - Další informace o [Load Balanceru úrovně Standard](load-balancer-standard-overview.md)
-- Zjistěte, jak [vyrovnávat zatížení virtuálních počítačů v rámci zóny pomocí Load balanceru úrovně Standard s oblastmi front-endu](load-balancer-standard-public-zonal-cli.md)
-- Zjistěte, jak [vyrovnávat zatížení virtuálních počítačů napříč zónami Load balanceru úrovně Standard pomocí zónově redundantních front-endu](load-balancer-standard-public-zone-redundant-cli.md)
+- Přečtěte si, jak [vyrovnávat zatížení virtuálních počítačů v rámci zóny pomocí Standard Load Balancer s oblastí front-endu](load-balancer-standard-public-zonal-cli.md) .
+- Přečtěte si, jak [vyrovnávat zatížení virtuálních počítačů napříč zónami pomocí Standard Load Balancer s frontou redundantním front-endu](load-balancer-standard-public-zone-redundant-cli.md)

@@ -1,7 +1,7 @@
 ---
-title: Vytvořit zásadu brány firewall webových aplikací pro Azure branou pomocí webu Azure portal
+title: Vytvoření zásady firewallu webových aplikací pro přední dveře Azure pomocí Azure Portal
 titlesuffix: Azure web application firewall
-description: Zjistěte, jak vytvořit zásadu brány firewall (WAF) webové aplikace pomocí webu Azure portal.
+description: Naučte se vytvářet zásady firewallu webových aplikací (WAF) pomocí Azure Portal.
 services: frontdoor
 documentationcenter: na
 author: KumudD
@@ -12,70 +12,71 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/31/2019
-ms.author: kumud;tyao
-ms.openlocfilehash: 15a80dac0e0601480e22ad960f2827f3d8f290c0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: kumud
+ms.reviewer: tyao
+ms.openlocfilehash: abaef0fb521d848134885a06591b0656c60c67e6
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66479058"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67846389"
 ---
-# <a name="create-a-waf-policy-for-azure-front-door-by-using-the-azure-portal"></a>Vytvořit zásadu WAF pro Azure branou pomocí webu Azure portal
+# <a name="create-a-waf-policy-for-azure-front-door-by-using-the-azure-portal"></a>Vytvoření zásady WAF pro přední dveře Azure pomocí Azure Portal
 
-Tento článek popisuje, jak vytvořit zásadu brány firewall (WAF) základní webové aplikace a použít ji pro front-endu hostitele v Azure branou.
+Tento článek popisuje, jak vytvořit základní zásadu firewallu webových aplikací Azure (WAF) a použít ji pro front-end hostitele v Azure front-endu.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Vytvoření profilu branou podle pokynů v tématu [rychlý start: Vytvoření profilu branou](quickstart-create-front-door.md). 
+Pomocí pokynů popsaných v [tématu rychlý Start vytvořte profil front-dveří: Vytvořte profil](quickstart-create-front-door.md)front-dveří. 
 
-## <a name="create-a-waf-policy"></a>Vytvořit zásadu WAF
+## <a name="create-a-waf-policy"></a>Vytvoření zásady WAF
 
-Nejprve vytvořte zásadu základní WAF s spravované výchozí pravidlo nastavte (DRS) pomocí portálu. 
+Nejdřív vytvořte základní zásadu WAF se sadou spravovaných výchozích pravidel (DRS) pomocí portálu. 
 
-1. V levém horním rohu obrazovky vyberte **vytvořit prostředek**> vyhledejte **WAF**> vyberte **firewallu webových aplikací (Preview)** > vyberte  **Vytvoření**.
-2. V **Základy** karty **vytvořit zásadu WAF** stránky, zadejte nebo vyberte následující informace, přijměte výchozí hodnoty pro zbývající nastavení a pak vyberte **revize + vytvořit**:
-
-    | Nastavení                 | Hodnota                                              |
-    | ---                     | ---                                                |
-    | Předplatné            |Vyberte název vašeho odběru branou.|
-    | Skupina prostředků          |Vyberte název skupiny prostředků branou.|
-    | Název zásady             |Zadejte jedinečný název pro zásadu WAF.|
-
-   ![Vytvořit zásadu WAF](./media/waf-front-door-create-portal/basic.png)
-
-3. V **přidružení** karty **vytvořit zásadu WAF** stránce **přidat hostitele front-endu**, zadejte následující nastavení a pak vyberte **přidat**:
+1. V levém horním rohu obrazovky vyberte **vytvořit prostředek**> hledat **WAF**> vyberte **Firewall webových aplikací (Preview)** > vyberte **vytvořit**.
+2. Na kartě **základy** na stránce **vytvořit zásadu WAF** zadejte nebo vyberte následující informace, u zbývajících nastavení přijměte výchozí hodnoty a pak vyberte **zkontrolovat + vytvořit**:
 
     | Nastavení                 | Hodnota                                              |
     | ---                     | ---                                                |
-    | Přední dveře              | Vyberte název svého profilu branou.|
-    | Hostitele front-endu           | Vyberte název hostitele vašeho branou a potom vyberte **přidat**.|
+    | Subscription            |Vyberte název předplatného pro přední dveře.|
+    | Resource group          |Vyberte název skupiny prostředků front dveří.|
+    | Název zásady             |Zadejte jedinečný název pro zásady WAF.|
+
+   ![Vytvoření zásady WAF](./media/waf-front-door-create-portal/basic.png)
+
+3. Na kartě **přidružení** na stránce **vytvořit zásadu WAF** vyberte **Přidat hostitele front-end**, zadejte následující nastavení a pak vyberte **Přidat**:
+
+    | Nastavení                 | Value                                              |
+    | ---                     | ---                                                |
+    | Přední dveře              | Vyberte název profilu front-dveří.|
+    | Hostitel s front-endu           | Vyberte název hostitele front-dveří a pak vyberte **Přidat**.|
     
     > [!NOTE]
-    > Pokud je hostitel front-endu přidružit k zásadě WAF, je zobrazeno jako zobrazena šedě. Musíte nejprve odeberte hostitele front-endu z přidružených zásad a znovu přidružit hostitele front-endu do nové zásady WAF.
-1. Vyberte **revize + vytvořit**a pak vyberte **vytvořit**.
+    > Pokud je hostitel se front-end přidružený k zásadám WAF, zobrazí se jako šedý. Nejdřív je potřeba odebrat hostitele front-end z přidružených zásad a pak znovu přidružit hostitele front-end k novým zásadám WAF.
+1. Vyberte **zkontrolovat + vytvořit**a pak vyberte **vytvořit**.
 
-## <a name="configure-waf-rules-optional"></a>Konfigurace pravidla firewallu webových aplikací (volitelné)
+## <a name="configure-waf-rules-optional"></a>Konfigurace pravidel WAF (volitelné)
 
-### <a name="change-mode"></a>Změnit režim
+### <a name="change-mode"></a>Režim změny
 
-Při vytváření zásad WAF ve WAF výchozí zásady je **detekce** režimu. V **detekce** režimu, waf služby nebrání žádné požadavky, místo toho se protokolují požadavky odpovídající pravidla firewallu webových aplikací na protokolů WAF.
-Chcete-li WAF se zobrazí v akci, můžete změnit nastavení režimu z **detekce** k **ochrany před únikem informací**. V **ochrany před únikem informací** režimu, požadavky, že shoda pravidla, které jsou definovány ve výchozí pravidlo nastavte (DRS) blokované a zaznamená při protokolů WAF.
+Když vytvoříte zásadu WAF, použije se výchozí zásada WAF v režimu **detekce** . V režimu **detekce** neblokuje WAF žádné požadavky, místo toho se protokolují požadavky, které odpovídají pravidlům WAF, do protokolů WAF.
+Pokud chcete zobrazit WAF v akci, můžete změnit nastavení režimu z **detekce** na **prevence**. V režimu **prevence** se požadavky, které odpovídají pravidlům definovaným ve výchozí sadě pravidel (DRS), zablokují a přihlásily v protokolech WAF.
 
- ![Režim zásad změn WAF](./media/waf-front-door-create-portal/policy.png)
+ ![Změnit režim zásad WAF](./media/waf-front-door-create-portal/policy.png)
 
 ### <a name="custom-rules"></a>Vlastní pravidla
 
-Vlastní pravidlo můžete vytvořit tak, že vyberete **přidat vlastní pravidlo** pod **vlastní pravidla** oddílu. Otevře se stránka Konfigurace vlastní pravidlo. Níže je příklad konfigurace vlastní pravidlo pro zablokování požadavku, pokud řetězec dotazu obsahuje **blockme**.
+Vlastní pravidlo můžete vytvořit tak, že v části **vlastní pravidla** vyberete **Přidat vlastní pravidlo** . Tím se spustí stránka Konfigurace vlastního pravidla. Níže je uveden příklad konfigurace vlastního pravidla pro blokování požadavku, pokud řetězec dotazu obsahuje **blockme**.
 
-![Režim zásad změn WAF](./media/waf-front-door-create-portal/customquerystring2.png)
+![Změnit režim zásad WAF](./media/waf-front-door-create-portal/customquerystring2.png)
 
 ### <a name="default-rule-set-drs"></a>Výchozí sada pravidel (DRS)
 
-Ve výchozím nastavení zapnutá spravované v Azure nastavit výchozí pravidlo. Zakázat jednotlivá pravidla v rámci skupiny pravidel, rozbalte položku pravidla v rámci dané pravidlo skupiny, vyberte **zaškrtávací políčko** před číslo pravidla a vyberte **zakázat** na kartě výše. Chcete-li změnit typy akcí pro jednotlivá pravidla v pravidle, zaškrtněte políčko u číslo pravidla a pak vyberte **změňte akci** nahoře kartu.
+Výchozí sada pravidel spravovaná v Azure je ve výchozím nastavení povolená. Pokud chcete v rámci skupiny pravidel zakázat jednotlivá pravidla, rozbalte pravidla v této skupině pravidel, zaškrtněte políčko před  číslem pravidla a na kartě výše vyberte **Zakázat** . Chcete-li změnit typy akcí pro jednotlivá pravidla v rámci sady pravidel, zaškrtněte políčko před číslem pravidla a potom vyberte kartu **Akce změny** výše.
 
  ![Změnit sadu pravidel WAF](./media/waf-front-door-create-portal/managed2.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- Další informace o [firewallu webových aplikací](waf-overview.md).
-- Další informace o [Azure branou](front-door-overview.md).
+- Přečtěte si o [bráně firewall webových aplikací Azure](waf-overview.md).
+- Přečtěte si další informace o [službě Azure front-dveří](front-door-overview.md).

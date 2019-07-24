@@ -1,6 +1,6 @@
 ---
-title: Autorizace vývojářských účtů pomocí OAuth 2.0 ve službě Azure API Management | Dokumentace Microsoftu
-description: Zjistěte, jak autorizovat uživatele, kteří používají OAuth 2.0 ve službě API Management.
+title: Autorizovat vývojářské účty pomocí OAuth 2,0 v Azure API Management | Microsoft Docs
+description: Naučte se, jak autorizovat uživatele pomocí OAuth 2,0 v API Management.
 services: api-management
 documentationcenter: ''
 author: mikebudzynski
@@ -13,119 +13,119 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/10/2018
 ms.author: apimpm
-ms.openlocfilehash: b195271edeea6cd5ea527454ad1615ac85a32138
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b7b003c588d7b079823bb046676a1226828fcae2
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60658592"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68249862"
 ---
-# <a name="how-to-authorize-developer-accounts-using-oauth-20-in-azure-api-management"></a>Autorizace vývojářských účtů pomocí OAuth 2.0 ve službě Azure API Management
+# <a name="how-to-authorize-developer-accounts-using-oauth-20-in-azure-api-management"></a>Jak autorizovat vývojářské účty pomocí OAuth 2,0 v Azure API Management
 
-Mnoho rozhraní API podporují [OAuth 2.0](https://oauth.net/2/) k zabezpečení rozhraní API a zajistěte, aby pouze oprávnění uživatelé mají přístup, a bude pouze přístup k prostředkům, ke kterým máte nárok. Aby bylo možné používat interaktivní konzole pro vývojáře Azure API Management pomocí těchto rozhraní API, služby umožňuje nakonfigurovat instanci služby pro práci s vaší OAuth 2.0 povolené rozhraní API.
+Mnoho rozhraní API podporuje [OAuth 2,0](https://oauth.net/2/) k zabezpečení rozhraní API a zajišťují, že přístup k nim mají jenom platní uživatelé a mají přístup jenom k prostředkům, ke kterým mají oprávnění. Aby bylo možné používat interaktivní konzolu pro vývojáře Azure API Management s těmito rozhraními API, služba vám umožní nakonfigurovat instanci služby tak, aby fungovala s rozhraním API s povoleným protokolem OAuth 2,0.
 
-## <a name="prerequisites"> </a>Požadované součásti
+## <a name="prerequisites"> </a>Požadavky
 
-Tato příručka ukazuje, jak nakonfigurovat instanci služby API Management používat autorizace OAuth 2.0 pro účty pro vývojáře, ale nezobrazuje postup konfigurace poskytovatele rozhraní OAuth 2.0. Konfigurace pro každého zprostředkovatele OAuth 2.0 se liší, i když kroky jsou podobné a požadované části informace použité při konfiguraci OAuth 2.0 ve vaší instanci služby API Management jsou stejné. Toto téma ukazuje příklad použití Azure Active Directory jako zprostředkovatele OAuth 2.0.
+V této příručce se dozvíte, jak nakonfigurovat instanci služby API Management, aby používala autorizaci OAuth 2,0 pro vývojářské účty, ale neukazuje, jak nakonfigurovat poskytovatele OAuth 2,0. Konfigurace pro každého poskytovatele OAuth 2,0 se liší, ale postup je podobný a požadované informace, které se používají při konfiguraci OAuth 2,0 ve vaší instanci služby API Management, jsou stejné. V tomto tématu se dozvíte o příkladech použití Azure Active Directory jako poskytovatele OAuth 2,0.
 
 > [!NOTE]
-> Další informace o konfiguraci OAuth 2.0 pomocí Azure Active Directory, najdete v článku [WebApp-GraphAPI-DotNet] [ WebApp-GraphAPI-DotNet] vzorku.
+> Další informace o konfiguraci OAuth 2,0 pomocí Azure Active Directory najdete v ukázce [WebApp-GraphAPI-dotnet][WebApp-GraphAPI-DotNet] .
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
-## <a name="step1"> </a>Konfigurace serveru autorizace OAuth 2.0 ve službě API Management
+## <a name="step1"> </a>Konfigurace autorizačního serveru OAuth 2,0 v API Management
 
 > [!NOTE]
-> Pokud jste instanci služby API Management ještě nevytvořili, přečtěte si téma [vytvoření instance služby API Management][Create an API Management service instance].
+> Pokud jste ještě nevytvořili instanci služby API Management, přečtěte si téma [vytvoření instance služby API Management][Create an API Management service instance].
 
-1. Klikněte na kartu OAuth 2.0 v nabídce na levé straně a klikněte na **+ přidat**.
+1. V nabídce na levé straně klikněte na kartu OAuth 2,0 a klikněte na **+ Přidat**.
 
-    ![Nabídka OAuth 2.0](./media/api-management-howto-oauth2/oauth-01.png)
+    ![Nabídka OAuth 2,0](./media/api-management-howto-oauth2/oauth-01.png)
 
-2. Zadejte název a volitelný popis v **název** a **popis** pole.
+2. Do polí **název** a **Popis** zadejte název a volitelný popis.
 
     > [!NOTE]
-    > Tato pole se používají k identifikaci serveru ověřování OAuth 2.0 v rámci aktuální instance služby API Management a jejich hodnoty nepochází ze serveru OAuth 2.0.
+    > Tato pole se používají k identifikaci autorizačního serveru OAuth 2,0 v rámci aktuální instance služby API Management a jejich hodnoty nepocházejí ze serveru OAuth 2,0.
 
-3. Zadejte **adresa URL stránky pro registraci klienta**. Tato stránka je, kde uživatelé můžou vytvářet a spravovat své účty a se liší v závislosti na zprostředkovateli OAuth 2.0 používat. **Adresa URL stránky pro registraci klienta** odkazuje na stránku, která uživatelům umožňuje vytvořit a nakonfigurovat své účty služby pro zprostředkovatele OAuth 2.0, které podporují správu uživatelů pro účty. Některé organizace nenakonfigurujete nebo tuto funkci použít i v případě, že ho zprostředkovatel OAuth 2.0 podporuje. Pokud zprostředkovateli OAuth 2.0 nemá správu uživatelů pro účty konfigurované, zadejte URL zástupný symbol tady například adresu URL vaší společnosti nebo adresy URL jako `https://placeholder.contoso.com`.
+3. Zadejte **adresu URL stránky pro registraci klienta**. Na této stránce můžou uživatelé vytvářet a spravovat svoje účty a liší se v závislosti na použitém poskytovateli OAuth 2,0. **Adresa URL stránky pro registraci klientů** odkazuje na stránku, kterou mohou uživatelé použít k vytvoření a konfiguraci vlastních účtů pro poskytovatele OAuth 2,0, kteří podporují správu uživatelských účtů. Některé organizace tuto funkci nekonfigurují ani nepoužívají, i když je poskytovatel OAuth 2,0 podporuje. Pokud váš poskytovatel OAuth 2,0 nemá nakonfigurovanou správu uživatelských účtů, zadejte sem adresu URL zástupného symbolu, například adresu URL vaší společnosti, nebo adresu URL, jako `https://placeholder.contoso.com`je například.
 
-    ![Nový server OAuth 2.0](./media/api-management-howto-oauth2/oauth-02.png)
+    ![Nový server OAuth 2,0](./media/api-management-howto-oauth2/oauth-02.png)
 
-4. Obsahuje následující části formuláře **typy udělení autorizace**, **adresu URL koncového bodu autorizace**, a **metoda žádosti o autorizaci** nastavení.
+4. V další části formuláře jsou **typy udělení autorizace**, **Adresa URL koncového bodu autorizace**a nastavení **metody autorizační žádosti** .
 
-    Zadejte **typy udělení autorizace** kontrolou požadované typy. **Autorizační kód** zadaný ve výchozím nastavení.
+    Určete **typy udělení autorizace** kontrolou požadovaných typů. Ve výchozím nastavení je zadán **autorizační kód** .
 
-    Zadejte **adresu URL koncového bodu autorizace**. Pro Azure Active Directory, tato adresa URL bude vypadat podobně jako následující adresu URL, kde `<client_id>` nahradí za id klienta, který identifikuje vaši aplikaci na server OAuth 2.0.
+    Zadejte **adresu URL koncového bodu autorizace**. V případě Azure Active Directory bude tato adresa URL podobná následující adrese URL, kde `<tenant_id>` se nahradí ID vašeho tenanta Azure AD.
 
-    `https://login.microsoftonline.com/<client_id>/oauth2/authorize`
+    `https://login.microsoftonline.com/<tenant_id>/oauth2/authorize`
 
-    **Metoda žádosti o autorizaci** Určuje, jak je odeslána žádost o autorizaci na server OAuth 2.0. Ve výchozím nastavení **získat** zaškrtnuto.
+    **Metoda autorizační požadavek** určuje, jak se žádost o autorizaci pošle na server OAuth 2,0. Ve výchozím nastavení je vybraná možnost **získat** .
 
-5. Potom **adresu URL koncového bodu Token**, **metody ověřování klientů**, **metoda posílání přístupového tokenu** a **výchozí obor** musí být zadat.
+5. Pak je nutné zadat **adresu URL koncového bodu tokenu**, **metody ověřování klienta**, **metodu odeslání přístupového tokenu** a **výchozí obor** .
 
-    ![Nový server OAuth 2.0](./media/api-management-howto-oauth2/oauth-03.png)
+    ![Nový server OAuth 2,0](./media/api-management-howto-oauth2/oauth-03.png)
 
-    Pro server Azure Active Directory OAuth 2.0 **adresu URL koncového bodu Token** bude mít následující formát, kde `<TenantID>` má formát `yourapp.onmicrosoft.com`.
+    U Azure Active Directory serveru OAuth 2,0 bude **Adresa URL koncového bodu tokenu** mít následující formát, kde `<TenantID>` `yourapp.onmicrosoft.com`má formát.
 
     `https://login.microsoftonline.com/<TenantID>/oauth2/token`
 
-    Výchozí nastavení pro **metody ověřování klientů** je **základní**, a **metoda posílání přístupového tokenu** je **autorizační hlavičky**. Tyto hodnoty jsou nakonfigurované v této části formuláře, spolu s **výchozí obor**.
+    Výchozí nastavení pro **metody ověřování klienta** je **Basic**a **Metoda odesílání přístupového tokenu** je **autorizační hlavičkou**. Tyto hodnoty jsou konfigurovány v této části formuláře společně s **výchozím oborem**.
 
-6. **Přihlašovací údaje pro klienta** oddíl obsahuje **ID klienta** a **tajný kód klienta**, které jsou získány během procesu vytváření a konfigurace serveru OAuth 2.0 . Jednou **ID klienta** a **tajný kód klienta** jsou určené **redirect_uri** pro **autorizační kód** je generován. Pomocí tohoto identifikátoru URI se používá ke konfiguraci příslušnou odpovědní adresu URL v konfiguraci serveru OAuth 2.0.
+6. Oddíl **přihlašovací údaje klienta** obsahuje **ID klienta** a **tajný klíč klienta**, které se získávají během procesu vytváření a konfigurace vašeho serveru OAuth 2,0. Po zadání **ID klienta** a **tajného klíče klienta** se vygeneruje **identifikátor redirect_uri** pro **autorizační kód** . Tento identifikátor URI se používá ke konfiguraci adresy URL odpovědi v konfiguraci serveru OAuth 2,0.
 
-    ![Nový server OAuth 2.0](./media/api-management-howto-oauth2/oauth-04.png)
+    ![Nový server OAuth 2,0](./media/api-management-howto-oauth2/oauth-04.png)
 
-    Pokud **typy udělení autorizace** je nastavena na **heslo vlastníka prostředku**, **přihlašovacího hesla vlastníka prostředku** použité k určení tyto přihlašovací údaje; v opačném případě je oddíl můžete jej můžete nechat prázdné.
+    Pokud jsou **typy autorizačních** oprávnění nastavené na **heslo vlastníka prostředku**, použije se k zadání těchto přihlašovacích údajů oddíl **hesla vlastníka prostředku** . v opačném případě je můžete nechat prázdné.
 
-    Po dokončení formuláře klikněte na tlačítko **vytvořit** uložte konfiguraci autorizační server API Management OAuth 2.0. Po uložení konfigurace serveru můžete nakonfigurovat rozhraní API pro použití této konfigurace, jak je znázorněno v následující části.
+    Po dokončení formuláře kliknutím na **vytvořit** uložte API Management konfiguraci autorizačního serveru OAuth 2,0. Po uložení konfigurace serveru můžete nakonfigurovat rozhraní API tak, aby používalo tuto konfiguraci, jak je znázorněno v následující části.
 
-## <a name="step2"> </a>Konfigurace rozhraní API používat autorizaci uživatelů OAuth 2.0
+## <a name="step2"> </a>Konfigurace rozhraní API pro použití autorizace uživatele OAuth 2,0
 
-1. Klikněte na tlačítko **rozhraní API** z **API Management** nabídky na levé straně.
+1. V nabídce **API Management** na levé straně klikněte na **rozhraní API** .
 
-    ![Rozhraní API OAuth 2.0](./media/api-management-howto-oauth2/oauth-05.png)
+    ![Rozhraní API OAuth 2,0](./media/api-management-howto-oauth2/oauth-05.png)
 
-2. Klikněte na název požadovaného rozhraní API a klikněte na tlačítko **nastavení**. Přejděte **zabezpečení** části a potom zaškrtněte políčko u **OAuth 2.0**.
+2. Klikněte na název požadovaného rozhraní API a klikněte na **Nastavení**. Přejděte do části **zabezpečení** a zaškrtněte políčko **OAuth 2,0**.
 
-    ![Nastavení OAuth 2.0](./media/api-management-howto-oauth2/oauth-06.png)
+    ![Nastavení OAuth 2,0](./media/api-management-howto-oauth2/oauth-06.png)
 
-3. Vyberte požadovaný **autorizační server** z rozevíracího seznamu a klikněte na **Uložit**.
+3. V rozevíracím seznamu vyberte požadovaný **autorizační Server** a klikněte na **Uložit**.
 
-    ![Nastavení OAuth 2.0](./media/api-management-howto-oauth2/oauth-07.png)
+    ![Nastavení OAuth 2,0](./media/api-management-howto-oauth2/oauth-07.png)
 
-## <a name="step3"> </a>Testování autorizaci uživatelů OAuth 2.0 na portálu pro vývojáře
+## <a name="step3"> </a>Testování autorizace uživatele OAuth 2,0 na portálu pro vývojáře
 
-Jakmile jste nakonfigurovali server autorizace OAuth 2.0 a nakonfigurovat server používat vaše rozhraní API, takže ji můžete otestovat tak, že přejdete na portál pro vývojáře a volání rozhraní API.  Klikněte na tlačítko **portál pro vývojáře** v horní nabídce z vaší instance Azure API Management **přehled** stránky.
+Jakmile nakonfigurujete server OAuth 2,0 a nakonfigurujete své rozhraní API tak, aby používalo tento server, můžete ho otestovat tak, že na portálu pro vývojáře kliknete a zavoláte rozhraní API.  V horní nabídce stránky s přehledem instance Azure API Management klikněte na  **portál pro vývojáře** .
 
 ![Portál pro vývojáře][api-management-developer-portal-menu]
 
-Klikněte na tlačítko **rozhraní API** v horní nabídce a vyberte **rozhraní Echo API**.
+V horní nabídce klikněte na **rozhraní API** a vyberte **echo API**.
 
 ![Echo API][api-management-apis-echo-api]
 
 > [!NOTE]
 > Pokud máte nakonfigurované jenom jedno rozhraní API nebo váš účet vidí jenom jedno, můžete kliknutím na rozhraní API přejít přímo na operace tohoto rozhraní.
 
-Vyberte **GET Resource** operace, klikněte na tlačítko **otevřete konzoly**a pak vyberte **autorizační kód** z rozevíracího seznamu.
+Vyberte operaci **získat prostředek** , klikněte na **otevřít konzolu**a potom z rozevíracího seznamu vyberte **autorizační kód** .
 
 ![Otevření konzoly][api-management-open-console]
 
-Když **autorizační kód** je zaškrtnuto, automaticky otevírané okno se zobrazí ve formuláři přihlášení zprostředkovatele OAuth 2.0. V tomto příkladu přihlašovací formulář poskytuje Azure Active Directory.
+Když je vybraný **autorizační kód** , zobrazí se automaticky otevírané okno s přihlašovacím formulářem zprostředkovatele OAuth 2,0. V tomto příkladu je přihlašovací formulář k dispozici pomocí Azure Active Directory.
 
 > [!NOTE]
-> Pokud máte automaticky otevíraná okna zakázané zobrazí výzva k povolení v prohlížeči. Povolíte-li je, vyberte **autorizační kód** znovu a zobrazí se přihlašovací formulář.
+> Pokud jste automaticky otevíraná okna zakázali, budete vyzváni, abyste je povolili v prohlížeči. Jakmile je povolíte, znovu vyberte **autorizační kód** a zobrazí se formulář pro přihlášení.
 
 ![Přihlášení][api-management-oauth2-signin]
 
-Až se zaregistrujete, **hlavičky požadavku** se naplní `Authorization : Bearer` hlavičku, která ověří požadavek.
+Jakmile se přihlásíte, **hlavičky žádosti** se naplní `Authorization : Bearer` hlavičkou, která žádost autorizuje.
 
-![Tokenu hlavičky žádosti][api-management-request-header-token]
+![Token hlavičky požadavku][api-management-request-header-token]
 
-V tomto okamžiku můžete nakonfigurovat požadované hodnoty pro zbývající parametry a odešlete žádost.
+V tomto okamžiku můžete nakonfigurovat požadované hodnoty pro zbývající parametry a odeslat žádost.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Další informace o použití OAuth 2.0 a API Management, najdete v následující video a doprovodných [článku](api-management-howto-protect-backend-with-aad.md).
+Další informace o použití OAuth 2,0 a API Management najdete v následujícím videu a doprovodném [článku](api-management-howto-protect-backend-with-aad.md).
 
 [api-management-oauth2-signin]: ./media/api-management-howto-oauth2/api-management-oauth2-signin.png
 [api-management-request-header-token]: ./media/api-management-howto-oauth2/api-management-request-header-token.png

@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: reference
 ms.date: 07/11/2019
 ms.author: tomfitz
-ms.openlocfilehash: 0b65c7a9b6d4f025c574c2dddace6fa45b77398c
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 7d967f0bb0b7a811d4db7836cdbffdad91088a2c
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67835788"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68311687"
 ---
 # <a name="resource-functions-for-azure-resource-manager-templates"></a>Prostředek funkce pro šablony Azure Resource Manageru
 
@@ -29,11 +29,11 @@ Chcete-li získat hodnoty z parametrů, proměnných nebo aktuální nasazení, 
 <a id="listkeys" />
 <a id="list" />
 
-## <a name="list"></a>seznam *
+## <a name="list"></a>seznamu
 
 `list{Value}(resourceName or resourceIdentifier, apiVersion, functionValues)`
 
-Syntaxe pro tuto funkci se liší podle názvu operace výpisu. Každá implementace vrátí hodnoty pro typ prostředku, který podporuje operaci seznamu. Název operace musí začínat znakem `list`. Jsou některé běžné použití `listKeys` a `listSecrets`. 
+Syntaxe této funkce se liší podle názvu operací seznamu. Každá implementace vrací hodnoty pro typ prostředku, který podporuje operaci list. Název operace musí začínat `list`na. Některé běžné použití jsou `listKeys` a. `listSecrets` 
 
 ### <a name="parameters"></a>Parametry
 
@@ -41,22 +41,22 @@ Syntaxe pro tuto funkci se liší podle názvu operace výpisu. Každá implemen
 |:--- |:--- |:--- |:--- |
 | resourceName nebo resourceIdentifier |Ano |řetězec |Jedinečný identifikátor prostředku. |
 | apiVersion |Ano |řetězec |Verze rozhraní API prostředku běhový stav. Obvykle ve formátu **rrrr mm-dd**. |
-| functionValues |Ne |objekt | Objekt, který obsahuje hodnoty pro funkci. Tento objekt poskytují pouze pro funkce, které podporují přijímá objekt s hodnotami parametrů, jako například **listAccountSas** v účtu úložiště. V tomto článku je uveden příklad předáním hodnoty funkcí. | 
+| functionValues |Ne |objekt | Objekt, který obsahuje hodnoty pro funkci. Tento objekt poskytují pouze pro funkce, které podporují přijímá objekt s hodnotami parametrů, jako například **listAccountSas** v účtu úložiště. Příklad předávání hodnot funkcí je uveden v tomto článku. | 
 
 ### <a name="implementations"></a>Implementace
 
-V následující tabulce jsou uvedeny možné použití seznamu *.
+Možná použití seznamu * jsou uvedena v následující tabulce.
 
 | Typ prostředku | Název funkce |
 | ------------- | ------------- |
 | Microsoft.AnalysisServices/servers | [listGatewayStatus](/rest/api/analysisservices/servers/listgatewaystatus) |
-| Microsoft.AppConfiguration/configurationStores | klíče Listkey |
-| Microsoft.Automation/automationAccounts | [klíče Listkey](/rest/api/automation/keys/listbyautomationaccount) |
+| Microsoft.AppConfiguration/configurationStores | Klíče listkey |
+| Microsoft. Automation/automationAccounts | [klíče Listkey](/rest/api/automation/keys/listbyautomationaccount) |
 | Microsoft.Batch/batchAccounts | [klíče listkey](/rest/api/batchmanagement/batchaccount/getkeys) |
-| Microsoft.BatchAI/workspaces/experiments/jobs | [listoutputfiles](/rest/api/batchai/jobs/listoutputfiles) |
-| Microsoft.Blockchain/blockchainMembers | [listApiKeys](/rest/api/blockchain/2019-06-01-preview/blockchainmembers/listapikeys) |
-| Microsoft.Blockchain/blockchainMembers/transactionNodes | [listApiKeys](/rest/api/blockchain/2019-06-01-preview/transactionnodes/listapikeys) |
-| Microsoft.BotService/botServices/channels | listChannelWithKeys |
+| Microsoft. BatchAI/pracovní prostory/experimenty/úlohy | [listoutputfiles](/rest/api/batchai/jobs/listoutputfiles) |
+| Microsoft. blockchain/blockchainMembers | [listApiKeys](/rest/api/blockchain/2019-06-01-preview/blockchainmembers/listapikeys) |
+| Microsoft. blockchain/blockchainMembers/transactionNodes | [listApiKeys](/rest/api/blockchain/2019-06-01-preview/transactionnodes/listapikeys) |
+| Microsoft. BotService/botServices/kanály | listChannelWithKeys |
 | Microsoft.Cache/redis | [klíče Listkey](/rest/api/redis/redis/listkeys) |
 | Microsoft.CognitiveServices/accounts | [klíče Listkey](/rest/api/cognitiveservices/accountmanagement/accounts/listkeys) |
 | Microsoft.ContainerRegistry/registries | [listBuildSourceUploadUrl](/rest/api/containerregistry/registries%20(tasks)/getbuildsourceuploadurl) |
@@ -71,75 +71,75 @@ V následující tabulce jsou uvedeny možné použití seznamu *.
 | Microsoft.ContainerService/managedClusters/accessProfiles | [listCredential](/rest/api/aks/managedclusters/getaccessprofile) |
 | Microsoft.DataBox/jobs | listCredentials |
 | Microsoft.DataFactory/datafactories/gateways | listauthkeys |
-| Microsoft.DataFactory/factories/integrationruntimes | [listauthkeys](/rest/api/datafactory/integrationruntimes/listauthkeys) |
-| Microsoft.DataLakeAnalytics/accounts/storageAccounts/Containers | [listSasTokens](/rest/api/datalakeanalytics/storageaccounts/listsastokens) |
-| Microsoft.Devices/iotHubs | [klíče listkey](/rest/api/iothub/iothubresource/listkeys) |
-| Microsoft.Devices/provisioningServices/keys | [klíče listkey](/rest/api/iot-dps/iotdpsresource/listkeysforkeyname) |
+| Microsoft. DataFactory/Factory/integrationruntimes | [listauthkeys](/rest/api/datafactory/integrationruntimes/listauthkeys) |
+| Microsoft. DataLakeAnalytics/Accounts/storageAccounts/Containers | [listSasTokens](/rest/api/datalakeanalytics/storageaccounts/listsastokens) |
+| Microsoft. Devices/iotHubs | [klíče listkey](/rest/api/iothub/iothubresource/listkeys) |
+| Microsoft. Devices/provisioningServices/Keys | [klíče listkey](/rest/api/iot-dps/iotdpsresource/listkeysforkeyname) |
 | Microsoft.Devices/provisioningServices | [klíče listkey](/rest/api/iot-dps/iotdpsresource/listkeys) |
 | Microsoft.DevTestLab/labs | [ListVhds](/rest/api/dtl/labs/listvhds) |
 | Microsoft.DevTestLab/labs/schedules | [ListApplicable](/rest/api/dtl/schedules/listapplicable) |
 | Microsoft.DevTestLab/labs/users/serviceFabrics | [ListApplicableSchedules](/rest/api/dtl/servicefabrics/listapplicableschedules) |
 | Microsoft.DevTestLab/labs/virtualMachines | [ListApplicableSchedules](/rest/api/dtl/virtualmachines/listapplicableschedules) |
-| Microsoft.DocumentDB/databaseAccounts | [listConnectionStrings](/rest/api/cosmos-db-resource-provider/databaseaccounts/listconnectionstrings) |
-| Microsoft.DocumentDB/databaseAccounts | [klíče Listkey](/rest/api/cosmos-db-resource-provider/databaseaccounts/listkeys) |
+| Microsoft. DocumentDB/databaseAccounts | [listConnectionStrings](/rest/api/cosmos-db-resource-provider/databaseaccounts/listconnectionstrings) |
+| Microsoft. DocumentDB/databaseAccounts | [klíče Listkey](/rest/api/cosmos-db-resource-provider/databaseaccounts/listkeys) |
 | Microsoft.DomainRegistration | [listDomainRecommendations](/rest/api/appservice/domains/listrecommendations) |
-| Microsoft.DomainRegistration/topLevelDomains | [listAgreements](/rest/api/appservice/topleveldomains/listagreements) |
-| Microsoft.EventGrid/domains | [klíče Listkey](/rest/api/eventgrid/domains/listsharedaccesskeys) |
+| Microsoft. DomainRegistration/topLevelDomains | [listAgreements](/rest/api/appservice/topleveldomains/listagreements) |
+| Microsoft. EventGrid/domény | [klíče Listkey](/rest/api/eventgrid/domains/listsharedaccesskeys) |
 | Microsoft.EventGrid/topics | [klíče Listkey](/rest/api/eventgrid/topics/listsharedaccesskeys) |
-| Microsoft.EventHub/namespaces/authorizationRules | [klíče listkey](/rest/api/eventhub/namespaces/listkeys) |
-| Microsoft.EventHub/namespaces/disasterRecoveryConfigs/authorizationRules | [klíče listkey](/rest/api/eventhub/disasterrecoveryconfigs/listkeys) |
-| Microsoft.EventHub/namespaces/eventhubs/authorizationRules | [klíče listkey](/rest/api/eventhub/eventhubs/listkeys) |
-| Microsoft.ImportExport/jobs | [listBitLockerKeys](/rest/api/storageimportexport/bitlockerkeys/list) |
-| Microsoft.LabServices/users | [ListEnvironments](/rest/api/labservices/globalusers/listenvironments) |
-| Microsoft.LabServices/users | [ListLabs](/rest/api/labservices/globalusers/listlabs) |
-| Microsoft.Logic/integrationAccounts/agreements | [listContentCallbackUrl](/rest/api/logic/agreements/listcontentcallbackurl) |
-| Microsoft.Logic/integrationAccounts/assemblies | [listContentCallbackUrl](/rest/api/logic/integrationaccountassemblies/listcontentcallbackurl) |
+| Microsoft. EventHub/obory názvů/autorizačních pravidel | [klíče listkey](/rest/api/eventhub/namespaces/listkeys) |
+| Microsoft. EventHub/obory názvů/disasterRecoveryConfigs/autorizačních pravidel | [klíče listkey](/rest/api/eventhub/disasterrecoveryconfigs/listkeys) |
+| Microsoft. EventHub/obory názvů/eventhubs/autorizačních pravidel | [klíče listkey](/rest/api/eventhub/eventhubs/listkeys) |
+| Microsoft. ImportExport/Jobs | [listBitLockerKeys](/rest/api/storageimportexport/bitlockerkeys/list) |
+| Microsoft. LabServices/uživatelé | [ListEnvironments](/rest/api/labservices/globalusers/listenvironments) |
+| Microsoft. LabServices/uživatelé | [ListLabs](/rest/api/labservices/globalusers/listlabs) |
+| Microsoft. Logic/integrationAccounts/Agreements | [listContentCallbackUrl](/rest/api/logic/agreements/listcontentcallbackurl) |
+| Microsoft. Logic/integrationAccounts/Assemblies | [listContentCallbackUrl](/rest/api/logic/integrationaccountassemblies/listcontentcallbackurl) |
 | Microsoft.Logic/integrationAccounts | [listCallbackUrl](/rest/api/logic/integrationaccounts/getcallbackurl) |
 | Microsoft.Logic/integrationAccounts | [listKeyVaultKeys](/rest/api/logic/integrationaccounts/listkeyvaultkeys) |
-| Microsoft.Logic/integrationAccounts/maps | [listContentCallbackUrl](/rest/api/logic/maps/listcontentcallbackurl) |
+| Microsoft. Logic/integrationAccounts/Maps | [listContentCallbackUrl](/rest/api/logic/maps/listcontentcallbackurl) |
 | Microsoft.Logic/integrationAccounts/partners | [listContentCallbackUrl](/rest/api/logic/partners/listcontentcallbackurl) |
 | Microsoft.Logic/integrationAccounts/schemas | [listContentCallbackUrl](/rest/api/logic/schemas/listcontentcallbackurl) |
 | Microsoft.Logic/workflows | [listCallbackUrl](/rest/api/logic/workflows/listcallbackurl) |
 | Microsoft.Logic/workflows | [listSwagger](/rest/api/logic/workflows/listswagger) |
-| Microsoft.Logic/workflows/triggers | [listCallbackUrl](/rest/api/logic/workflowtriggers/listcallbackurl) |
-| Microsoft.Logic/workflows/versions/triggers | [listCallbackUrl](/rest/api/logic/workflowversions/listcallbackurl) |
-| Microsoft.MachineLearning/webServices | [klíče listkey](/rest/api/machinelearning/webservices/listkeys) |
-| Microsoft.MachineLearning/Workspaces | listworkspacekeys |
-| Microsoft.MachineLearningServices/workspaces/computes | klíče Listkey |
-| Microsoft.MachineLearningServices/workspaces | klíče Listkey |
-| Microsoft.Maps/accounts | [klíče Listkey](/rest/api/maps-management/accounts/listkeys) |
-| Microsoft.Media/mediaservices/assets | [listContainerSas](/rest/api/media/assets/listcontainersas) |
-| Microsoft.Media/mediaservices/assets | [listStreamingLocators](/rest/api/media/assets/liststreaminglocators) |
-| Microsoft.Media/mediaservices/streamingLocators | [listContentKeys](/rest/api/media/streaminglocators/listcontentkeys) |
-| Microsoft.Media/mediaservices/streamingLocators | [listPaths](/rest/api/media/streaminglocators/listpaths) |
+| Microsoft. Logic/Workflows/Triggers | [listCallbackUrl](/rest/api/logic/workflowtriggers/listcallbackurl) |
+| Microsoft. Logic/Workflows/Versions/Triggers | [listCallbackUrl](/rest/api/logic/workflowversions/listcallbackurl) |
+| Microsoft. MachineLearning/WebServices | [klíče listkey](/rest/api/machinelearning/webservices/listkeys) |
+| Microsoft. MachineLearning/pracovní prostory | listworkspacekeys |
+| Microsoft. MachineLearningServices/pracovní prostory/výpočetní služby | Klíče listkey |
+| Microsoft.MachineLearningServices/workspaces | Klíče listkey |
+| Microsoft. Maps/Accounts | [klíče Listkey](/rest/api/maps-management/accounts/listkeys) |
+| Microsoft. Media/MediaServices/Assets | [listContainerSas](/rest/api/media/assets/listcontainersas) |
+| Microsoft. Media/MediaServices/Assets | [listStreamingLocators](/rest/api/media/assets/liststreaminglocators) |
+| Microsoft. Media/MediaServices/streamingLocators | [listContentKeys](/rest/api/media/streaminglocators/listcontentkeys) |
+| Microsoft. Media/MediaServices/streamingLocators | [listPaths](/rest/api/media/streaminglocators/listpaths) |
 | Microsoft.Network/applicationSecurityGroups | listIpConfigurations |
-| Microsoft.NotificationHubs/Namespaces/authorizationRules | [klíče listkey](/rest/api/notificationhubs/namespaces/listkeys) |
-| Microsoft.NotificationHubs/Namespaces/NotificationHubs/authorizationRules | [klíče listkey](/rest/api/notificationhubs/notificationhubs/listkeys) |
+| Microsoft. NotificationHubs/obory názvů/autorizačních pravidel | [klíče listkey](/rest/api/notificationhubs/namespaces/listkeys) |
+| Microsoft. NotificationHubs/obory názvů/NotificationHubs/autorizačních pravidel | [klíče listkey](/rest/api/notificationhubs/notificationhubs/listkeys) |
 | Microsoft.OperationalInsights/workspaces | [klíče Listkey](/rest/api/loganalytics/workspaces%202015-03-20/listkeys) |
-| Microsoft.Relay/namespaces/authorizationRules | [klíče listkey](/rest/api/relay/namespaces/listkeys) |
-| Microsoft.Relay/namespaces/disasterRecoveryConfigs/authorizationRules | klíče listkey |
-| Microsoft.Relay/namespaces/HybridConnections/authorizationRules | [klíče listkey](/rest/api/relay/hybridconnections/listkeys) |
-| Microsoft.Relay/namespaces/WcfRelays/authorizationRules | [klíče listkey](/rest/api/relay/wcfrelays/listkeys) |
+| Microsoft. Relay/obory názvů/autorizačních pravidel | [klíče listkey](/rest/api/relay/namespaces/listkeys) |
+| Microsoft. Relay/obory názvů/disasterRecoveryConfigs/autorizačních pravidel | klíče listkey |
+| Microsoft. Relay/obory názvů/HybridConnections/autorizačních pravidel | [klíče listkey](/rest/api/relay/hybridconnections/listkeys) |
+| Microsoft. Relay/obory názvů/WcfRelays/autorizačních pravidel | [klíče listkey](/rest/api/relay/wcfrelays/listkeys) |
 | Microsoft.Search/searchServices | [listAdminKeys](/rest/api/searchmanagement/adminkeys/get) |
 | Microsoft.Search/searchServices | [listQueryKeys](/rest/api/searchmanagement/querykeys/listbysearchservice) |
-| Microsoft.ServiceBus/namespaces/authorizationRules | [klíče listkey](/rest/api/servicebus/namespaces/listkeys) |
+| Microsoft. ServiceBus/obory názvů/autorizačních pravidel | [klíče listkey](/rest/api/servicebus/namespaces/listkeys) |
 | Microsoft.ServiceBus/namespaces/disasterRecoveryConfigs/authorizationRules | [klíče listkey](/rest/api/servicebus/disasterrecoveryconfigs/listkeys) |
-| Microsoft.ServiceBus/namespaces/queues/authorizationRules | [klíče listkey](/rest/api/servicebus/queues/listkeys) |
-| Microsoft.ServiceBus/namespaces/topics/authorizationRules | [klíče listkey](/rest/api/servicebus/topics/listkeys) |
-| Microsoft.SignalRService/SignalR | [klíče listkey](/rest/api/signalr/signalr/listkeys) |
+| Microsoft. ServiceBus/obory názvů/Queues/autorizačních pravidel | [klíče listkey](/rest/api/servicebus/queues/listkeys) |
+| Microsoft. ServiceBus/obory názvů/témata/autorizačních pravidel | [klíče listkey](/rest/api/servicebus/topics/listkeys) |
+| Microsoft. SignalRService/Signaler | [klíče listkey](/rest/api/signalr/signalr/listkeys) |
 | Microsoft.Storage/storageAccounts. | [listAccountSas](/rest/api/storagerp/storageaccounts/listaccountsas) |
 | Microsoft.Storage/storageAccounts. | [klíče listkey](/rest/api/storagerp/storageaccounts/listkeys) |
 | Microsoft.Storage/storageAccounts. | [listServiceSas](/rest/api/storagerp/storageaccounts/listservicesas) |
-| Microsoft.StorSimple/managers/devices | [listFailoverSets](/rest/api/storsimple/devices/listfailoversets) |
-| Microsoft.StorSimple/managers/devices | [listFailoverTargets](/rest/api/storsimple/devices/listfailovertargets) |
-| Microsoft.StorSimple/managers | [listActivationKey](/rest/api/storsimple/managers/getactivationkey) |
-| Microsoft.StorSimple/managers | [listPublicEncryptionKey](/rest/api/storsimple/managers/getpublicencryptionkey) |
-| Microsoft.Web/connectionGateways | ListStatus |
+| Microsoft. StorSimple/manažeři/zařízení | [listFailoverSets](/rest/api/storsimple/devices/listfailoversets) |
+| Microsoft. StorSimple/manažeři/zařízení | [listFailoverTargets](/rest/api/storsimple/devices/listfailovertargets) |
+| Microsoft. StorSimple/– manažeři | [listActivationKey](/rest/api/storsimple/managers/getactivationkey) |
+| Microsoft. StorSimple/– manažeři | [listPublicEncryptionKey](/rest/api/storsimple/managers/getpublicencryptionkey) |
+| Microsoft. Web/connectionGateways | ListStatus |
 | microsoft.web/connections | listconsentlinks |
 | Microsoft.Web/customApis | listWsdlInterfaces |
 | microsoft.web/locations | listwsdlinterfaces |
-| microsoft.web/apimanagementaccounts/apis/connections | listconnectionkeys |
-| microsoft.web/apimanagementaccounts/apis/connections | listsecrets |
+| Microsoft. Web/apimanagementaccounts/API/Connections | listconnectionkeys |
+| Microsoft. Web/apimanagementaccounts/API/Connections | listsecrets |
 | microsoft.web/sites/functions | [listsecrets](/rest/api/appservice/webapps/listfunctionsecrets) |
 | microsoft.web/sites/hybridconnectionnamespaces/relays | [klíče listkey](/rest/api/appservice/webapps/listhybridconnectionkeys) |
 | microsoft.web/sites | [listsyncfunctiontriggerstatus](/rest/api/appservice/webapps/listsyncfunctiontriggers) |
@@ -148,7 +148,7 @@ V následující tabulce jsou uvedeny možné použití seznamu *.
 Pokud chcete zjistit, které typy prostředků máte seznam operace, máte následující možnosti:
 
 * Zobrazení [operace REST API](/rest/api/) pro poskytovatele prostředků a najít seznamu operací. Například účty úložiště mají [klíče Listkey operace](/rest/api/storagerp/storageaccounts).
-* Použití [Get-AzProviderOperation](/powershell/module/az.resources/get-azprovideroperation) rutiny Powershellu. Následující příklad získá všechny seznam operací pro účty úložiště:
+* Použijte rutinu PowerShellu [Get-AzProviderOperation](/powershell/module/az.resources/get-azprovideroperation) . Následující příklad získá všechny seznam operací pro účty úložiště:
 
   ```powershell
   Get-AzProviderOperation -OperationSearchString "Microsoft.Storage/*" | where {$_.Operation -like "*list*"} | FT Operation
@@ -161,7 +161,7 @@ Pokud chcete zjistit, které typy prostředků máte seznam operace, máte násl
 
 ### <a name="return-value"></a>Návratová hodnota
 
-Seznam funkcí, které používáte, se liší vráceného objektu. Například klíče Listkey pro účet služby storage vrátí v následujícím formátu:
+Vrácený objekt se liší podle funkce seznamu, kterou používáte. Například klíče listkey pro účet úložiště vrátí následující formát:
 
 ```json
 {
@@ -184,15 +184,15 @@ Další seznam funkce mají různé formáty návratový. Pokud chcete zobrazit 
 
 ### <a name="remarks"></a>Poznámky
 
-Zadat zdroj podle použití názvu prostředku nebo [funkce resourceId](#resourceid). Při používání seznamu funkce do stejné šablony, který se nasazuje odkazovaných prostředků, použijte název prostředku.
+Zadat zdroj podle použití názvu prostředku nebo [funkce resourceId](#resourceid). Při použití funkce list ve stejné šabloně, která nasazuje odkazovaný prostředek, použijte název prostředku.
 
-Pokud používáte **seznamu** je funkce v prostředku, který je nasazený podmíněně, funkce vyhodnocena i v případě, že není nasazený prostředek. Pokud dojde k chybě **seznamu** funkce odkazuje na prostředek, který neexistuje. Použití **Pokud** funkce, která se ujistěte se, že je funkce vyhodnocena pouze při nasazení prostředku. Najdete v článku [Pokud funkce](resource-group-template-functions-logical.md#if) ukázkovou šablonu, která využívá Pokud a seznam s podmíněně nasazených prostředků.
+Použijete-li funkci **list** v prostředku, který je podmíněně nasazen, je funkce vyhodnocena i v případě, že prostředek není nasazen. Pokud funkce **seznamu** odkazuje na prostředek, který neexistuje, zobrazí se chyba. Použijte funkci **if** a ujistěte se, že je funkce vyhodnocena pouze při nasazení prostředku. Podívejte se na [funkci IF](resource-group-template-functions-logical.md#if) pro ukázkovou šablonu, která používá if a list s podmíněně nasazeným prostředkem.
 
 ### <a name="example"></a>Příklad
 
 Následující [Ukázková šablona](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/listkeys.json) ukazuje, jak vrátit primární a sekundární klíče z účtu úložiště v části výstupů. Také vrátí token SAS pro účet úložiště. 
 
-Pokud chcete získat SAS token, předejte objekt pro čas vypršení platnosti. Čas vypršení platnosti musí být v budoucnosti. Tento příklad je určen pro použití funkce seznamu. Obvykle můžete by pomocí tokenu SAS v hodnotě prostředků místo vrátit jako výstupní hodnoty. Výstupní hodnoty jsou uloženy v historii nasazení a nejsou zabezpečené.
+Chcete-li získat token SAS, předejte objekt pro čas vypršení platnosti. Čas vypršení platnosti musí být v budoucnosti. Tento příklad je určen pro použití funkce seznamu. Obvykle můžete by pomocí tokenu SAS v hodnotě prostředků místo vrátit jako výstupní hodnoty. Výstupní hodnoty jsou uloženy v historii nasazení a nejsou zabezpečené.
 
 ```json
 {
@@ -354,11 +354,13 @@ Každý typ prostředku vrátí různé vlastnosti pro odkaz na funkci. Funkce n
 
 Odkaz na funkci načte běhový stav již nasazený prostředek nebo prostředek nasazený v aktuální šablony. Tento článek ukazuje příklady pro oba scénáře. Při odkazování na prostředek v aktuální šablony, zadejte pouze název prostředku jako parametr. Při odkazování na prostředek už nasazenou, zadejte ID prostředku a verze rozhraní API pro prostředek. Můžete určit platná verze rozhraní API pro prostředek v [referenčními informacemi k šablonám](/azure/templates/).
 
-Odkaz na funkci jde použít jenom ve vlastnosti definice prostředku a část Outputs následujícím šablony nebo nasazení. Při použití s [vlastnost iterace](resource-group-create-multiple.md#property-iteration), můžete použít funkci odkaz pro `input` vzhledem k tomu, že výraz je přiřazená k vlastnosti prostředků. Nelze použít s `count` vzhledem k tomu, že počet musí být stanovena, bude vyřešený odkaz funkce.
+Odkaz na funkci jde použít jenom ve vlastnosti definice prostředku a část Outputs následujícím šablony nebo nasazení. Při použití s [iterací vlastnosti](resource-group-create-multiple.md#property-iteration)můžete použít referenční funkci pro `input` , protože výraz je přiřazen vlastnosti prostředku. Nelze jej použít s `count` , protože počet musí být určen před vyřešením Referenční funkce.
+
+V výstupech [vnořené šablony](resource-group-linked-templates.md#nested-template) nelze použít referenční funkci pro vrácení prostředku, který jste nasadili ve vnořené šabloně. Místo toho použijte [propojenou šablonu](resource-group-linked-templates.md#external-template-and-external-parameters).
 
 Pomocí funkce odkaz na implicitně deklarujete, jeden prostředek závisí na jiný prostředek, pokud je oba odkazované prostředky poskytnutém v rámci stejné šablony a reference na prostředek má název (není ID prostředku). Není nutné použít také vlastnost dependsOn. Funkce není vyhodnocen, dokud odkazované prostředky dokončení nasazení.
 
-Pokud používáte **odkaz** je funkce v prostředku, který je nasazený podmíněně, funkce vyhodnocena i v případě, že není nasazený prostředek.  Pokud dojde k chybě **odkaz** funkce odkazuje na prostředek, který neexistuje. Použití **Pokud** funkce, která se ujistěte se, že je funkce vyhodnocena pouze při nasazení prostředku. Najdete v článku [Pokud funkce](resource-group-template-functions-logical.md#if) pro ukázkovou šablonu, která využívá Pokud a odkaz se podmíněně nasazených prostředků.
+Použijete-li **referenční** funkci v prostředku, který je podmíněně nasazen, je funkce vyhodnocena i v případě, že prostředek není nasazen.  Pokud odkazovaná funkce odkazuje na  prostředek, který neexistuje, zobrazí se chyba. Použijte funkci **if** a ujistěte se, že je funkce vyhodnocena pouze při nasazení prostředku. Podívejte se na [funkci IF](resource-group-template-functions-logical.md#if) pro ukázkovou šablonu, která používá if a odkaz s podmíněně nasazeným prostředkem.
 
 Pokud chcete zobrazit názvy a hodnoty pro typ prostředku, vytvořte šablonu, která vrátí objekt v část outputs. Pokud máte existující prostředek tohoto typu, šablony vrátí objekt bez nutnosti nasazovat žádné nové prostředky. 
 
@@ -548,7 +550,7 @@ Vrácený objekt je v následujícím formátu:
 
 ### <a name="remarks"></a>Poznámky
 
-`resourceGroup()` Funkci nelze použít v šabloně, která je [nasazené na úrovni předplatného](deploy-to-subscription.md). To jde použít jenom v šablonách, které jsou nasazeny do skupiny prostředků.
+Funkci nelze použít v šabloně, která je nasazena [na úrovni](deploy-to-subscription.md)předplatného. `resourceGroup()` Dá se použít jenom v šablonách, které se nasazují do skupiny prostředků.
 
 K vytváření prostředků ve stejném umístění jako skupina prostředků se běžně používá funkci skupina prostředků. Následující příklad používá umístění skupiny prostředků přiřadit umístění pro webový server.
 
@@ -564,7 +566,9 @@ K vytváření prostředků ve stejném umístění jako skupina prostředků se
 ]
 ```
 
-### <a name="example"></a>Příklad:
+K použití značek ze skupiny prostředků na prostředek můžete také použít funkci Resource. Další informace najdete v tématu [použití značek ze skupiny prostředků](resource-group-using-tags.md#apply-tags-from-resource-group).
+
+### <a name="example"></a>Příklad
 
 Následující [Ukázková šablona](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/resourcegroup.json) vrátí vlastnosti skupiny prostředků.
 
@@ -621,7 +625,7 @@ Tento identifikátor se vrátí v následujícím formátu:
 
 ### <a name="remarks"></a>Poznámky
 
-Při použití s [nasazení na úrovni předplatného](deploy-to-subscription.md), `resourceId()` funkce se dá načíst jenom ID prostředků, které jsou nasazené na této úrovni. Například můžete získat ID definice zásady nebo definice role, ale ne ID účtu úložiště. Nasazení do skupiny prostředků opak má hodnotu true. Nelze získat ID prostředku prostředky nasazené na úrovni předplatného.
+Při použití s nasazením `resourceId()` na [úrovni](deploy-to-subscription.md)předplatného může funkce načíst jenom ID prostředků nasazených na dané úrovni. Můžete například získat ID definice zásady nebo definice role, ale ne ID účtu úložiště. U nasazení do skupiny prostředků má opak hodnotu true. Nemůžete získat ID prostředku nasazeného na úrovni předplatného.
 
 Hodnoty parametrů, které jste zadali závisí na tom, jestli prostředek je ve stejného předplatného a skupiny prostředků jako aktuální nasazení. Pokud chcete získat ID prostředku účtu úložiště ve stejném předplatném a skupině prostředků, použijte:
 
@@ -647,7 +651,7 @@ Chcete-li získat ID prostředku pro databázi v jiné skupině prostředků, po
 "[resourceId('otherResourceGroup', 'Microsoft.SQL/servers/databases', parameters('serverName'), parameters('databaseName'))]"
 ```
 
-Při nasazení v oboru předplatného, získejte ID prostředků prostředků na úrovni předplatného, použijte:
+Pokud chcete získat ID prostředku na úrovni předplatného při nasazení v oboru předplatného, použijte:
 
 ```json
 "[resourceId('Microsoft.Authorization/policyDefinitions', 'locationpolicy')]"

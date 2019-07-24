@@ -1,161 +1,165 @@
 ---
-title: Tabulek v Azure | Azure Marketplace
-description: Konfigurace správy potenciálních zákazníků pro Azure Table.
+title: Úložiště tabulek v Azure | Azure Marketplace
+description: Konfigurace správy zájemců ve službě Azure Table Storage.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: pabutler
-ms.openlocfilehash: 08f9d794822dfd7879efc7c4813ecc46f92f6a45
-ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.openlocfilehash: a53ed93813215655c4a165faa0bce36d9249e8e6
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67147905"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68227904"
 ---
-# <a name="lead-management-instructions-for-azure-table"></a>Průběžná správa pokyny, jak Azure Table
+# <a name="lead-management-instructions-for-table-storage"></a>Pokyny pro správu úložiště tabulek pro vedoucí služby
 
-Tento článek popisuje, jak nakonfigurovat tabulku Azure pro ukládání potenciálních zákazníků. Tabulka Azure umožňuje ukládat a upravit informace o zákaznících.
+Tento článek popisuje, jak nakonfigurovat službu Azure Table Storage pro správu zájemců prodeje. Table Storage pomáhá ukládat a upravovat informace o zákaznících.
 
+## <a name="configure-table-storage"></a>Konfigurace úložiště tabulek
 
-## <a name="how-to-configure-azure-table"></a>Postup konfigurace tabulek Azure
+1. Pokud nemáte účet Azure, [Vytvořte si bezplatný zkušební účet](https://azure.microsoft.com/pricing/free-trial/).
+1. Až bude váš účet aktivní, přihlaste se k [Azure Portal](https://portal.azure.com).
+1. V Azure Portal postupujte podle následujících kroků:  
+    1. V podokně na levé straně vyberte **+ vytvořit prostředek** . Otevře se **nové** podokno.
+    1. V podokně **Nový** vyberte **úložiště**. **Vybraný** seznam se otevře na pravé straně.
+    1. Vyberte **účet úložiště**. Pak postupujte podle pokynů v tématu [Vytvoření účtu úložiště](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal).
 
-1. Pokud nemáte účet Azure, můžete si [vytvořit Bezplatný zkušební účet](https://azure.microsoft.com/pricing/free-trial/).
-2. Poté, co je aktivní účet Azure, přihlaste se k [webu Azure portal](https://portal.azure.com).
-3. Na webu Azure Portal vytvořte účet úložiště pomocí následujícího postupu.  
-    1. Vyberte **+ vytvořit prostředek** v levém řádku nabídek.  **Nový** vpravo se zobrazí podokno (okno).
-    2. Vyberte **úložiště** v **nový** podokně.  A **doporučené** seznamu se zobrazí na pravé straně.
-    3. Vyberte **účtu úložiště** zahájíte vytváření účtů.  Postupujte podle pokynů v článku [vytvořit účet úložiště](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal).
+    ![Vytvoření účtu úložiště Azure](./media/cloud-partner-portal-lead-management-instructions-azure-table/azurestoragecreate.png)
 
-    ![Postup vytvoření účtu služby Azure storage](./media/cloud-partner-portal-lead-management-instructions-azure-table/azurestoragecreate.png)
+    Další informace o účtech úložiště najdete v [kurzech rychlý Start](https://docs.microsoft.com/azure/storage/). Informace o cenách najdete v tématu ceny za službu [Azure Storage](https://azure.microsoft.com/pricing/details/storage/).
 
-    Další informace o účtech úložiště, vyberte [rychlý úvodní kurz](https://docs.microsoft.com/azure/storage/).  Další informace o cenách služby storage, najdete v části [ceny za službu storage](https://azure.microsoft.com/pricing/details/storage/).
+1. Počkejte, než se zřídí účet úložiště, což obvykle trvá několik minut. Pak přejděte k účtu z domovské stránky Azure Portal: Vyberte **Zobrazit všechny prostředky** nebo **všechny prostředky** v navigačním podokně.
 
-4. Počkejte, až se vašeho účtu úložiště nepřidělí, proces, který obvykle trvá několik minut.  Pak přístup k účtu úložiště z **Domů** stránky na webu Azure Portal tak, že vyberete **zobrazte všechny prostředky** nebo tak, že vyberete **všechny prostředky** z levé navigace řádek nabídek na webu Azure portal.
+    ![Přístup k účtu služby Azure Storage](./media/cloud-partner-portal-lead-management-instructions-azure-table/azure-storage-access.png)
 
-    ![Přístup k vašemu účtu Azure storage](./media/cloud-partner-portal-lead-management-instructions-azure-table/azure-storage-access.png)
+1. V podokně účtu úložiště zkopírujte připojovací řetězec účtu úložiště pro tento klíč. Vložte ho do pole **připojovací řetězec** pro účet úložiště v portál partnerů cloudu.
 
-5. Z podokna účet úložiště, zkopírujte připojovací řetězec účtu úložiště pro klíč a vložte ho do **připojovací řetězec účtu úložiště** na portál partnerů cloudu. Je například připojení stingu:
+    Příklad připojovacího řetězce:
 
-```sql
-DefaultEndpointsProtocol=https;AccountName=myAccountName;AccountKey=myAccountKey;EndpointSuffix=core.windows.net
-```
+    ```sql
+    DefaultEndpointsProtocol=https;AccountName=myAccountName;AccountKey=myAccountKey;EndpointSuffix=core.windows.net
+    ```
 
-  ![Klíč úložiště Azure](./media/cloud-partner-portal-lead-management-instructions-azure-table/azurestoragekeys.png)
+      ![Klíč úložiště Azure](./media/cloud-partner-portal-lead-management-instructions-azure-table/azurestoragekeys.png)
 
-Můžete použít [Průzkumníka služby Azure storage](https://azurestorageexplorer.codeplex.com/) nebo jiný podobný nástroj k zobrazení dat v tabulce úložiště. Můžete také exportovat data z tabulky Azure.
+Data v úložišti tabulek můžete zobrazit pomocí [Průzkumník služby Azure Storage](https://azurestorageexplorer.codeplex.com/) nebo podobného nástroje. Můžete také exportovat data z ní.
 
+## <a name="use-microsoft-flow-with-table-storage-optional"></a>Použití Microsoft Flow s tabulkovým úložištěm (*volitelné*)
 
-## <a name="use-microsoft-flow-with-an-azure-table-optional"></a>Azure Table pomocí Microsoft Flow (*volitelné*) 
+[Microsoft Flow](https://docs.microsoft.com/flow/) můžete použít k automatickému odesílání oznámení při přidání zájemce do úložiště tabulky. Pokud nemáte účet Microsoft Flow, zaregistrujte si [bezplatný účet](https://flow.microsoft.com/).
 
-Můžete použít [Microsoft Flow](https://docs.microsoft.com/flow/) k automatizaci oznámení pokaždé, když se přidá nový zájemce do tabulek v Azure. Pokud účet nemáte, můžete si [zaregistrujte si bezplatný účet](https://flow.microsoft.com/).
+### <a name="lead-notification-example"></a>Příklad oznámení zájemce
 
-
-### <a name="lead-notification-example"></a>Příklad průběžná oznámení
-
-V tomto příkladu použijte jako vodítko k vytvoření základní tok, který automaticky odesílá e-mailové oznámení, když se přidá nový zájemce do tabulky Azure. Tento příklad nastaví počet opakování zasílání informací o zájemcích každou hodinu, pokud tabulka úložiště se aktualizuje.
+Tento příklad ukazuje, jak vytvořit základní tok. Tok automaticky pošle e-mailové oznámení, když se do úložiště tabulek přidají Noví zájemci.
 
 1. Přihlaste se ke svému účtu Microsoft Flow.
-2. V levém navigačním panelu vyberte **Moje toky**.
-3. Na horním navigačním panelu vyberte **+ nová**.  
-4. V rozevíracím seznamu vyberte **+ vytvořit z prázdné**
-5. V části Vytvoření toku od začátku, vyberte **vytvořit z prázdné**.
+1. V navigačním podokně na levé straně vyberte **Moje toky**.
+1. V horním navigačním panelu vyberte **+ Nový**.  
+1. Z rozevíracího seznamu vyberte **+ vytvořit z prázdné**.
+1. V části **vytvořit tok z prázdné**vyberte **vytvořit z prázdné**.
 
-   ![Vytvoření nového toku od začátku](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-create-from-blank.png)
+   ![Vytvořit nový tok z prázdného](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-create-from-blank.png)
 
-6. Na stránce konektory a triggery hledání, vyberte **triggery**.
-7. V části **triggery**vyberte **opakování**.
-8. V **opakování** okně ponechte výchozí nastavení 1 pro **Interval**. Z **frekvence** rozevíracího seznamu vyberte **hodinu**.
+1. Na stránce pro vyhledávání konektorů a triggerů vyberte triggery.
+1. V části triggery vyberte **opakování**.
+1. V okně **opakování** ponechte výchozí nastavení **1** pro **interval**. V rozevíracím seznamu **frekvence** vyberte **hodina**.
 
    >[!NOTE] 
-   >I když v tomto příkladu je interval 1 hodina, můžete vybrat interval a frekvenci, kterou je nejvhodnější pro vaše obchodní potřeby.
+   >V tomto příkladu je použit interval s jednou hodinou. Můžete ale vybrat interval a frekvenci, které nejlépe vyhovuje vašim obchodním potřebám.
 
    ![Nastavení četnosti 1 hodiny pro opakování](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-recurrence-dropdown.png)
 
-9. Vyberte **+ nový krok**.
-10. Vyhledejte "Get poslední čas" a pak vyberte **získat minulý čas** v části akce. 
+1. Vyberte **+ Nový krok**.
+1. Vyhledejte možnost **získat čas**a v části **Zvolte akci**vyberte **získat uplynulý čas** .
 
-    ![Vyhledejte a vyberte získat minulý čas akce](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-search-getpasttime.png)
+    ![Vyhledejte a vyberte akci "získat čas v minulosti".](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-search-getpasttime.png)
 
-11. V **získat minulý čas** okno, nastaveno **Interval** na hodnotu 1.  Z **časovou jednotku** rozevíracího seznamu vyberte **hodinu**.
+1. V okně **načíst minulý čas** nastavte **interval** na **1**.  V rozevíracím seznamu **Časová jednotka** vyberte **hodina**.
     >[!IMPORTANT] 
-    >Ujistěte se, že tato jednotka intervalu a času odpovídá Interval a frekvenci jste nakonfigurovali pro opakování.
+    >Ujistěte se, že **interval** a **Časová jednotka** odpovídají intervalu a frekvenci, kterou jste nakonfigurovali pro opakování (krok 8).
 
-    ![Získat sadu poslední časový interval](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-getpast-time.png)
+    ![Nastavení intervalu Get uplynulého času](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-getpast-time.png)
 
     >[!TIP] 
-    >Váš tok můžete zkontrolovat v každém okamžiku k ověření, že každý krok je správně nakonfigurovaný. Pokud chcete zkontrolovat svůj tok, vyberte **kontrola toku** z řádku nabídek Flow.
+    >Tok můžete kdykoli zkontrolovat, abyste ověřili, že je každý krok správně nakonfigurovaný: V řádku nabídek Flow vyberte možnost **Kontrola toku** .
 
-V následující sadu kroků se připojíte k Azure table a nastavte logika zpracování pro zpracování nových potenciálních zákazníků.
+V další sadě kroků se připojíte k tabulce úložiště a nastavíte logiku zpracování pro zpracování nových potenciálních zákazníků.
 
-1. Po Get za časový krok, vyberte **+ nový krok**a poté vyhledejte "Get"subjekty.
-2. V části **akce**vyberte **získat entity**a pak vyberte **zobrazit pokročilé možnosti**.
-3. V **získat entity** okno, zadejte informace pro následující pole:
+1. Po kroku **získat čas** vyberte **+ Nový krok**a pak vyhledejte **získat entity**.
+1. V části **Akce**vyberte **získat entity**a potom vyberte **Zobrazit upřesňující možnosti**.
+1. V okně **získat entity** vyplňte následující pole:
 
-   - **Tabulka** – zadejte název vašeho Azure Table Storage. Další snímek obrazovky ukazuje výzvu, při zadání "MarketPlaceLeads" v tomto příkladu se. 
+   - **Tabulka**: název úložiště tabulky. Následující obrázek ukazuje zadání "MarketPlaceLeads":
 
-     ![Vyberte vlastní hodnotu pro název tabulky Azure](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-getentities-table-name.png)
+     ![Vyberte vlastní hodnotu pro název tabulky Azure.](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-getentities-table-name.png)
 
-   - **Dotaz filtru** – klikněte na toto pole a **získat minulý čas** ikona se zobrazí v automaticky otevíraném okně. Vyberte **minulý čas** využít jako časové razítko pro filtrování dotazu. Alternativně můžete vložit následující funkci do pole: čas vytvoření `Timestamp gt datetime'@{body('Get_past_time')}'` 
+   - **Dotaz filtru**: Když vyberete toto pole, v překryvném okně se zobrazí ikona **získat čas v minulosti** . Vyberte **čas v čase** , kdy se má tato hodnota použít jako časové razítko pro filtrování dotazu. Nebo můžete do pole vložit následující funkci:
+   
+      `CreatedTime Timestamp gt datetime'@{body('Get_past_time')}'` 
 
-     ![Nastavit filtr dotazu – funkce](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-getentities-filterquery.png)
+     ![Nastavení funkce dotazu filtru](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-getentities-filterquery.png)
 
-4. Vyberte **nový krok** a přidáním podmínky, kontrola tabulku Azure pro nové zájemce.
+1. Vyberte **Nový krok** a přidejte podmínku pro kontrolu úložiště tabulek pro nové zájemce.
 
-   ![Přidejte podmínku, která skenování tabulek v Azure pomocí nového kroku](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-add-filterquery-new-step.png)
+   ![Pomocí příkazu "nový krok" přidáte podmínku pro skenování úložiště tabulek](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-add-filterquery-new-step.png)
 
-5. V **zvolte akci** okně **akce**a pak vyberte **podmínku** ovládacího prvku.
+1. V okně **Zvolte akci** vyberte **Akce**a pak vyberte **řízení podmínek**.
 
-     ![Přidat podmínku ovládací prvek](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-action-condition-control.png)
+     ![Přidat ovládací prvek podmínky](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-action-condition-control.png)
 
-6. V **podmínku** okna, vyberte **zvolit hodnotu** pole a pak vyberte **výraz** v automaticky otevíraném okně.
-7. Vložit `length(body('Get_entities')?['value'])` do ***fx*** pole. Vyberte **OK** přidání této funkce. Abychom mohli dokončit nastavování podmínky:
+1. V okně **Podmínka** vyberte možnost **zvolit hodnotu**a v automaticky otevíraném okně vyberte **výraz** .
+1. Vložte `length(body('Get_entities')?['value'])` do pole ***FX*** . Pro přidání této funkce vyberte **OK** . 
 
-   - Vyberte možnost "je větší než" z rozevíracího seznamu.
-   - Zadejte jako hodnotu 0 
+
 
      ![Přidání funkce do podmínky](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-condition-fx0.png)
 
-8. Nastavení akce provedou v závislosti na výsledek podmínky.
+1. Nastavte akci, která se má provést na základě výsledku podmínky.
 
-     ![Nastavení akce na základě výsledků podmínku](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-condition-pick-action.png)
+    1. Příkaz Select **je větší než** z rozevíracího seznamu.
+   1. Jako hodnotu zadejte **0** .
 
-9. Pokud se podmínka přeloží na **Pokud žádná**, nic nedělají. 
-10. Pokud se podmínka přeloží na **Pokud Ano**, aktivují akci, která se připojuje účtu Office 365 k odesílání e-mailu. Vyberte **přidat akci**.
-11. Vyberte **odeslat e-mailu**. 
-12. V **odeslat e-mailu** okno, zadejte informace pro následující pole:
+     ![Nastavení akce na základě výsledků podmínky](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-condition-pick-action.png)
 
-    - **K** – zadejte e-mailovou adresu pro všechny uživatele, který se zobrazí toto oznámení.
-    - **Předmět** – zadejte předmět e-mailu. Příklad: Nové zájemce!
-    - **Tělo**:   Text, který chcete zahrnout do každého e-mailu (volitelné) a potom vložit do těla `body('Get_entities')?['value']` jako funkci pro vložení informací o potenciálních zákazníků.
+1. Pokud se podmínka přeloží na "Pokud ne", neprovádějte nic.
 
-      >[!NOTE] 
-      >Můžete vložit další statických nebo dynamických datových bodů do těla tohoto e-mailu.
+    Pokud se podmínka přeloží na "Pokud ano", aktivuje se akce, která připojí váš účet Office 365 k odeslání e-mailu:
+   1. Vyberte **přidat akci**.
+   1. Vyberte **Odeslat e-mail**.
+   1. V okně **Odeslat e-mail** zadejte informace do následujících polí:
 
-      ![Nastavení e-mailu pro oznámení o potenciálních zákazníků](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-emailbody-fx.png)
+      - **Komu**: e-mailová adresa pro všechny uživatele, kteří obdrží oznámení.
+      - **Předmět**: předmět e-mailu. Příklad: *Noví zájemci!*
+      - **Tělo**: text, který chcete zahrnout do každého e-mailu (volitelné). Vložte `body('Get_entities')?['value']` také jako funkci pro vložení informací o zájemci.
 
-13. Vyberte **Uložit** uložte tok. Microsoft Flow bude automaticky testování tohoto toku pro chyby. Pokud nejsou k dispozici nějaké chyby, váš tok se spustí po uložení.
+        >[!NOTE] 
+        >Do těla e-mailu můžete vložit další statické nebo dynamické datové body.
 
-Následující snímek obrazovky ukazuje příklad vzhled konečné toku.
+      ![Nastavení e-mailu pro oznámení zájemce](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-emailbody-fx.png)
 
-[![Sekvence konečné toku](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-end-to-end-thmb.png)](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-end-to-end.png)
+1. Vyberte **Uložit** a tok se uloží. Microsoft Flow automaticky otestuje chyby. Pokud nedojde k žádným chybám, tok začne běžet po jeho uložení.
 
-(*Klepněte na ikonu zvětšení.* )
+    Následující obrázek ukazuje příklad toho, jak by měl konečný tok vypadat.
 
+    [![Finální sekvence toků](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-end-to-end-thmb.png)](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-end-to-end.png)
+
+    (*Vyberte obrázek, který chcete zvětšit.* )
 
 ### <a name="manage-your-flow"></a>Správa toku
 
-Správa toku po jeho spuštění je snadné.  Máte plnou kontrolu nad váš tok. Můžete ji zastavit, upravovat, najdete v historii spuštění a analýz. Další snímek obrazovky znázorňuje možnosti, které jsou dostupné pro správu toku. 
+Po spuštění můžete tok snadno spravovat. Máte plnou kontrolu nad vaším tokem. Můžete ho například zastavit, upravit, zobrazit historii spuštění a získat analýzy. Následující obrázek znázorňuje možnosti správy toku.
 
- ![Správa toku](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-manage-completed.png)
+ ![Možnosti správy toku](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-manage-completed.png)
 
-Tok běžel, dokud jej nezastavíte pomocí **vypnout tok** možnost.
+Tok zůstane spuštěný, dokud nevyberete možnost **vypnout tok**.
 
-Pokud se nezobrazují žádné zájemce e-mailová oznámení, znamená to, že nebyly přidány nové zájemce do tabulky Azure. Pokud neexistují žádné selhání toků, získáte podobný e-mail jako v příkladu v následující snímek obrazovky.
+Pokud nebudete dostávat žádná e-mailová oznámení o potenciálních zákaznících, do úložiště tabulek se nepřidaly žádní noví zájemci.
+Pokud dojde k selhání toku, dostanete e-mail jako v následujícím příkladu:
 
- ![Tok selhání e-mailové oznámení](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-failure-note.png)
-
+ ![E-mailové oznámení o selhání toku](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-failure-note.png)
 
 ## <a name="next-steps"></a>Další postup
 

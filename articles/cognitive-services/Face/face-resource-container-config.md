@@ -11,16 +11,16 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.author: dapine
-ms.openlocfilehash: d30c2218fe20d6b760f379caf52ca0bf97e1c750
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c5044428b6f9c7c8fd343c93b06c1774eba8e17f
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67071495"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68320506"
 ---
-# <a name="configure-face-docker-containers"></a>Konfigurace kontejnery Dockeru pro rozpoznávání tváře
+# <a name="configure-face-docker-containers"></a>Konfigurace kontejnerů Docker obličeje
 
-**Pro rozpoznávání tváře** kontejneru běhové prostředí je nakonfigurovaný nástrojem `docker run` argumenty příkazového. Tento kontejner má několik požadovaná nastavení, společně s pár volitelná nastavení. Několik [příklady](#example-docker-run-commands) příkazu jsou k dispozici. Nastavení kontejneru konkrétní jsou fakturace. 
+Běhové prostředí kontejneru **Face** se konfiguruje pomocí `docker run` argumentů příkazu. Tento kontejner má několik požadovaných nastavení spolu s několika volitelnými nastaveními. Několik [příklady](#example-docker-run-commands) příkazu jsou k dispozici. Nastavení fakturace jsou specifická pro kontejner. 
 
 ## <a name="configuration-settings"></a>Nastavení konfigurace
 
@@ -31,11 +31,11 @@ ms.locfileid: "67071495"
 
 ## <a name="apikey-configuration-setting"></a>Nastavení konfigurace ApiKey
 
-`ApiKey` Nastavení určuje klíč prostředku Azure používá ke sledování fakturačních údajů pro kontejner. Musíte zadat hodnotu pro ApiKey a hodnota musí být platný klíč pro _služeb Cognitive Services_ prostředek určený pro [ `Billing` ](#billing-configuration-setting) nastavení konfigurace.
+`ApiKey` Nastavení určuje klíč prostředku Azure používá ke sledování fakturačních údajů pro kontejner. Je nutné zadat hodnotu pro ApiKey a hodnota musí být platný klíč pro prostředek _Cognitive Services_ zadaný pro [`Billing`](#billing-configuration-setting) nastavení konfigurace.
 
-Toto nastavení najdete v následujícím místě:
+Toto nastavení najdete na následujícím místě:
 
-* Azure portal: **Služby cognitive Services** správy prostředků v části **klíče**
+* Azure Portal: **Cognitive Services** Správa prostředků, v části **klíče**
 
 ## <a name="applicationinsights-setting"></a>Nastavení ApplicationInsights
 
@@ -43,15 +43,15 @@ Toto nastavení najdete v následujícím místě:
 
 ## <a name="billing-configuration-setting"></a>Konfigurace nastavení fakturace
 
-`Billing` Nastavení, určuje identifikátor URI koncového bodu z _služeb Cognitive Services_ prostředků v Azure umožňuje měřit fakturačních údajů pro kontejner. Musíte zadat hodnotu pro toto nastavení konfigurace, a hodnota musí být platný identifikátor URI koncového bodu pro _služeb Cognitive Services_ prostředků v Azure. Sestavy využití kontejnerů o každých 10 až 15 minut.
+Nastavení určuje identifikátor URI koncového bodu Cognitive Services prostředku v Azure, který se používá pro informace o fakturaci pro daný kontejner.  `Billing` Je nutné zadat hodnotu pro toto nastavení konfigurace a tato hodnota musí být platným identifikátorem URI koncového bodu pro prostředek _Cognitive Services_ v Azure. Kontejner hlásí využití každých 10 až 15 minut.
 
-Toto nastavení najdete v následujícím místě:
+Toto nastavení najdete na následujícím místě:
 
-* Azure portal: **Služby cognitive Services** přehled s popiskem `Endpoint`
+* Azure Portal: **Cognitive Services** Přehled, označený`Endpoint`
 
-Nezapomeňte přidat _pro rozpoznávání tváře_ směrování na identifikátor URI koncového bodu, jak je znázorněno v příkladu. 
+Nezapomeňte přidat směrování _obličeje_ k identifikátoru URI koncového bodu, jak je znázorněno v příkladu. 
 
-|Požaduje se| Název | Typ dat | Popis |
+|Požadováno| Název | Typ dat | Popis |
 |--|------|-----------|-------------|
 |Ano| `Billing` | Řetězec | Identifikátor URI koncového bodu fakturace<br><br>Příklad:<br>`Billing=https://westcentralus.api.cognitive.microsoft.com/face/v1.0` |
 
@@ -73,10 +73,10 @@ Kontejner pro rozpoznávání tváře ukládá objekt blob, mezipaměť, metadat
   Všechny čtyři typy dat jsou uložené v paměti. Nejsou distribuovány ani jsou trvalé. Pokud je zastavena nebo odebrání kontejneru pro rozpoznávání tváře je zničen všechna data v úložišti pro tento kontejner.  
   Toto je výchozí scénář úložiště pro kontejner pro rozpoznávání tváře.
 * Azure  
-  Kontejner pro rozpoznávání tváře využívá Azure Storage a Azure Cosmos DB k distribuci tyto čtyři typy dat napříč trvalého úložiště. Zpracování dat objektů BLOB a fronty Azure Storage. Metadata a mezipaměti dat zařizuje služba Azure Cosmos DB. Pokud kontejner pro rozpoznávání tváře je zastavena nebo odebrán, všechna data v úložišti pro tento kontejner zůstane uložená v Azure Storage a Azure Cosmos DB.  
+  Kontejner pro rozpoznávání tváře využívá Azure Storage a Azure Cosmos DB k distribuci tyto čtyři typy dat napříč trvalého úložiště. Zpracování dat objektů BLOB a fronty Azure Storage. Metadata a data mezipaměti jsou zpracovávána nástrojem Azure Cosmos DB. Pokud kontejner pro rozpoznávání tváře je zastavena nebo odebrán, všechna data v úložišti pro tento kontejner zůstane uložená v Azure Storage a Azure Cosmos DB.  
   Prostředky využívané třídou scénáře služby Azure storage mají následující další požadavky
   * Prostředek služby Azure Storage, musíte použít StorageV2 druh účtu
-  * Prostředek služby Azure Cosmos DB musí používat rozhraní API Azure Cosmos DB pro MongoDB
+  * Prostředek Azure Cosmos DB musí používat rozhraní API Azure Cosmos DB pro MongoDB.
 
 Scénáře využití služby storage a související konfigurační nastavení jsou spravovány `Storage` objektu v oblasti `CloudAI` konfigurační oddíl. Jsou k dispozici v následujícím nastavením konfigurace `Storage` objektu:
 
@@ -118,36 +118,36 @@ Scénář úložiště je zpracovávat odděleně od připojení vstupní a výs
 
 Použití vazby připojí ke čtení a zápisu dat do a z kontejneru. Můžete určit vstupní připojení nebo připojení výstup tak, že zadáte `--mount` možnost [dockeru spustit](https://docs.docker.com/engine/reference/commandline/run/) příkazu.
 
-Kontejnery pro rozpoznávání tváře nepoužívejte vstup nebo výstup připojí k uložení školení nebo dat služby. 
+Kontejnery obličeje nepoužívají vstupní ani výstupní připojení k ukládání dat o školeních nebo službách. 
 
-Syntaxe umístění hostitele připojení se liší v závislosti na operačním systému hostitele. Kromě toho [hostitelský počítač](face-how-to-install-containers.md#the-host-computer)na umístění připojení nemusí být přístupné z důvodu konfliktu mezi oprávnění používat účet služby Docker a hostiteli připojit umístění oprávnění. 
+Syntaxe umístění hostitele připojení se liší v závislosti na operačním systému hostitele. Kromě toho je možné, že umístění pro připojení k [hostitelskému počítači](face-how-to-install-containers.md#the-host-computer)není přístupné z důvodu konfliktu mezi oprávněními používanými účtem služby Docker a oprávněním pro umístění připojení hostitele. 
 
-|Nepovinné| Name | Typ dat | Popis |
+|volitelná,| Name | Typ dat | Popis |
 |-------|------|-----------|-------------|
-|Nepovoleno| `Input` | String | Kontejnery pro rozpoznávání tváře Nepoužívejte toto.|
-|Nepovinné| `Output` | String | Cíl připojení výstupu. Výchozí hodnota je `/output`. Toto je umístění protokolů. To zahrnuje protokoly kontejneru. <br><br>Příklad:<br>`--mount type=bind,src=c:\output,target=/output`|
+|Nepovolené| `Input` | Řetězec | Kontejnery obličeje to nepoužívají.|
+|volitelná,| `Output` | Řetězec | Cíl připojení výstupu. Výchozí hodnota je `/output`. Toto je umístění protokolů. To zahrnuje protokoly kontejnerů. <br><br>Příklad:<br>`--mount type=bind,src=c:\output,target=/output`|
 
 ## <a name="example-docker-run-commands"></a>Spusťte příkazy dockeru příklad 
 
 Následující příklady ukazují, jak napsat a použít pomocí nastavení konfigurace `docker run` příkazy.  Po spuštění kontejneru nadále běžel dokud [Zastavit](face-how-to-install-containers.md#stop-the-container) ho.
 
-* **Znak pro pokračování řádku**: Příkazy Dockeru v následujících částech použijte zpětné lomítko `\`, jako znak pro pokračování řádku. Nahraďte nebo odstraňte tuto podle požadavků vašeho hostitelského operačního systému. 
-* **Pořadí argumentů**: Pořadí argumentů nezmění, pokud máte velmi zkušenosti s kontejnery Dockeru.
+* **Znak pro pokračování řádku**: Příkazy Docker v následujících částech používají zpětné lomítko, `\`jako znak pro pokračování řádku. Nahraďte nebo odstraňte tuto podle požadavků vašeho hostitelského operačního systému. 
+* **Pořadí argumentů**: Neměňte pořadí argumentů, pokud neznáte kontejnery Docker.
 
 Nahradit {_argument_name_} s vlastními hodnotami:
 
 | Zástupný symbol | Hodnota | Formát nebo příklad |
 |-------------|-------|---|
-|{BILLING_KEY} | Klíč koncového bodu prostředku služeb Cognitive Services. |xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|
-|{BILLING_ENDPOINT_URI} | Fakturační hodnota koncového bodu, včetně oblasti a směrování pro rozpoznávání tváře.|`https://westcentralus.api.cognitive.microsoft.com/face/v1.0`|
+|{API_KEY} | Klíč koncového bodu prostředku Cognitive Services. |xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|
+|{ENDPOINT_URI} | Hodnota koncového bodu, včetně směrování oblastí a obličeje.|`https://westcentralus.api.cognitive.microsoft.com/face/v1.0`|
 
 > [!IMPORTANT]
 > `Eula`, `Billing`, A `ApiKey` možnosti musí být zadán pro spuštění kontejneru; v opačném případě nebude spuštění kontejneru.  Další informace najdete v tématu [fakturace](face-how-to-install-containers.md#billing).
-> Hodnota ApiKey **klíč** Azure `Cognitive Services` stránka s materiály pro klíče. 
+> Hodnota ApiKey je **klíč** ze stránky klíče prostředků Azure `Cognitive Services` . 
 
-## <a name="face-container-docker-examples"></a>Příklady kontejneru Dockeru pro rozpoznávání tváře
+## <a name="face-container-docker-examples"></a>Příklady Docker kontejneru Face
 
-Následující příklady Docker jsou pro kontejner pro rozpoznávání tváře. 
+Následující příklady Docker jsou pro kontejner obličeje. 
 
 ### <a name="basic-example"></a>Základní příklad 
 
@@ -155,8 +155,8 @@ Následující příklady Docker jsou pro kontejner pro rozpoznávání tváře.
   docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
   containerpreview.azurecr.io/microsoft/cognitive-services-face \
   Eula=accept \
-  Billing={BILLING_ENDPOINT_URI} \
-  ApiKey={BILLING_KEY} 
+  Billing={ENDPOINT_URI} \
+  ApiKey={API_KEY} 
   ```
 
 ### <a name="logging-example"></a>Příklad protokolování 
@@ -164,10 +164,10 @@ Následující příklady Docker jsou pro kontejner pro rozpoznávání tváře.
   ```
   docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 containerpreview.azurecr.io/microsoft/cognitive-services-face \
   Eula=accept \
-  Billing={BILLING_ENDPOINT_URI} ApiKey={BILLING_KEY} \
+  Billing={ENDPOINT_URI} ApiKey={API_KEY} \
   Logging:Console:LogLevel:Default=Information
   ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Kontrola [instalace a spouštění kontejnerů](face-how-to-install-containers.md)

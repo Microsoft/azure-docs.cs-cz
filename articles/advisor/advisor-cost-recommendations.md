@@ -1,6 +1,6 @@
 ---
-title: Snižte náklady na službu pomocí Azure Advisoru | Dokumentace Microsoftu
-description: Použití Azure Advisoru optimalizovat náklady na nasazení v Azure.
+title: Snížení nákladů na službu pomocí Azure Advisor | Microsoft Docs
+description: Využijte Azure Advisor k optimalizaci nákladů na nasazení Azure.
 services: advisor
 documentationcenter: NA
 author: kasparks
@@ -8,61 +8,61 @@ ms.service: advisor
 ms.topic: article
 ms.date: 01/29/2019
 ms.author: kasparks
-ms.openlocfilehash: fef7b82e6969de16d1815250d2373c99021b0e86
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 96e939f8e3da58a123d9a6733b71b74c2ff0ba87
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66254725"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68311911"
 ---
-# <a name="reduce-service-costs-using-azure-advisor"></a>Snižte náklady na službu pomocí Azure Advisoru
+# <a name="reduce-service-costs-using-azure-advisor"></a>Snížení nákladů na službu pomocí Azure Advisor
 
-Advisor vám pomůže optimalizovat a snížit celkové Azure výdajů díky identifikaci nečinnosti a nedostatečně využité prostředky. Můžete získat nákladů doporučení **náklady** karty na řídicí panel služby Advisor.
+Poradce vám pomůže optimalizovat a snížit celkové výdaje na Azure tím, že identifikuje nečinné a nevyužité prostředky. Cenová doporučení můžete získat na kartě **náklady** na řídicím panelu poradce.
 
-## <a name="optimize-virtual-machine-spend-by-resizing-or-shutting-down-underutilized-instances"></a>Optimalizovat výdaje a prostřednictvím Změna velikosti nebo vypnutí nedostatečně využité instance virtuálního počítače 
+## <a name="optimize-virtual-machine-spend-by-resizing-or-shutting-down-underutilized-instances"></a>Optimalizace útraty virtuálních počítačů změnou velikosti nebo vypnutí nevyužitých instancí 
 
-I když některé scénáře aplikací může způsobit nízké využití podle návrhu, můžete často ušetřit peníze tím, že spravuje velikosti a počtu virtuálních počítačů. Advisor sleduje využívání virtuálních počítačů po dobu 7 dní a pak identifikuje nízké využití virtuálních počítačů. Virtuální počítače jsou považovány za využití s nízkou při využití výkonu procesoru 5 % nebo méně a jejich využití sítě je menší než 2 %, nebo pokud aktuální zatížení může být obslouženo menší velikost virtuálního počítače.
+I když některé scénáře aplikací můžou mít za následek nízké využití podle návrhu, můžete často ušetřit peníze tím, že spravujete velikost a počet virtuálních počítačů. Advisor monitoruje využití virtuálních počítačů po dobu 7 dní a pak identifikuje virtuální počítače s nízkým využitím. Virtuální počítače se považují za nízké využití, pokud jejich využití CPU je 5% nebo méně a jejich využití sítě je méně než 2%, nebo pokud je možné aktuální zatížení přizpůsobit menší velikosti virtuálního počítače.
 
-Advisor zobrazí odhadované náklady na pokračování v používání ve virtuálním počítači, takže je možné ho vypnout, nebo změňte jeho velikost.
+Advisor vám ukáže odhadované náklady na pokračování ve spouštění virtuálního počítače, takže se můžete rozhodnout ho vypnout nebo změnit jeho velikost.
 
-Pokud chcete být agresivní více na identifikaci nedostatečně využité virtuální počítače, můžete upravit průměrné využití procesoru pravidlo na bázi předplatného.
+Pokud chcete mít více agresivní při identifikaci nevyužitých virtuálních počítačů, můžete upravit pravidlo využití CPU pro každé předplatné.
 
-## <a name="reduce-costs-by-eliminating-unprovisioned-expressroute-circuits"></a>Snížení nákladů odstraněním nezajišťované okruhy ExpressRoute
+## <a name="reduce-costs-by-eliminating-unprovisioned-expressroute-circuits"></a>Snížení nákladů odstraněním nezajištěných okruhů ExpressRoute
 
-Advisor identifikuje okruhy ExpressRoute, které byly ve stavu poskytovatele *Nezřízeno* pro více než jeden měsíc a doporučuje odstraníte okruh, pokud se nechystáte okruh zřídit s možnostmi připojení Zprostředkovatel.
+Advisor identifikuje okruhy ExpressRoute, které byly ve stavu poskytovatele,  nezřízeny po dobu více než jednoho měsíce, a doporučuje odstranit okruh, pokud neplánujete zřídit okruh s poskytovatelem připojení.
 
-## <a name="reduce-costs-by-deleting-or-reconfiguring-idle-virtual-network-gateways"></a>Snížení nákladů odstraněním nebo překonfigurování nečinných bran virtuální sítě
+## <a name="reduce-costs-by-deleting-or-reconfiguring-idle-virtual-network-gateways"></a>Snížení nákladů odstraněním nebo změnou konfigurace nečinných bran virtuální sítě
 
-Advisor identifikuje bran virtuální sítě, které byly nečinné po dobu více než 90 dnů. Protože těchto bran se účtují po hodinách, měli byste zvážit opětovná konfigurace nebo pokud se nechystáte používat už jejich odstranění. 
+Poradce identifikuje brány virtuálních sítí, které byly po více než 90 dnech nečinné. Vzhledem k tomu, že se tyto brány účtují po hodinách, měli byste zvážit jejich opětovnou konfiguraci nebo odstranění, pokud je už nechcete používat. 
 
-## <a name="buy-reserved-virtual-machine-instances-to-save-money-over-pay-as-you-go-costs"></a>Nákup rezervované instance virtuálních počítačů ušetříte peníze, než byste platili s průběžnými platbami
+## <a name="buy-reserved-virtual-machine-instances-to-save-money-over-pay-as-you-go-costs"></a>Nákup rezervovaných instancí virtuálních počítačů za účelem úspory peněz nad náklady na průběžné platby
 
-Advisor bude zkontrolovat využívání virtuálních počítačů za posledních 30 dní a určit, pokud po zakoupení Azure rezervace můžete ušetřit peníze. Služby Advisor se dozvíte, oblasti a velikosti, ve kterém jste potenciálně většina úspory a zobrazí Odhadované úspory z nákupu rezervace. S Azure rezervace, předem pro můžete zakoupit základní náklady na virtuální počítače. Slevy automaticky použije nový nebo existující virtuální počítače, které mají stejné velikosti a oblasti jako vaše rezervace. [Další informace o Azure Reserved VM Instances.](https://azure.microsoft.com/pricing/reserved-vm-instances/)
+Služba Advisor zkontroluje využití virtuálního počítače za posledních 30 dní a určí, jestli můžete ušetřit peníze tím, že si zakoupíte rezervaci Azure. Advisor vám ukáže oblasti a velikosti, kde máte pravděpodobně nejvíc úspor, a zobrazí vám Odhadované úspory z nákupních rezervací. Pomocí rezervací Azure můžete předem zakoupit základní náklady na virtuální počítače. Slevy budou automaticky platit pro nové nebo existující virtuální počítače, které mají stejnou velikost a oblast jako vaše rezervace. [Přečtěte si další informace o Azure Reserved VM Instances.](https://azure.microsoft.com/pricing/reserved-vm-instances/)
 
-Advisor vám také oznámí rezervované instance, které máte, které vyprší během následujících 30 dní. Vám doporučí, nákupu nového rezervované instance, abyste neplatili ceny s průběžnými platbami.
+Advisor vám taky upozorní na rezervované instance, jejichž platnost vyprší během následujících 30 dnů. Doporučujeme, abyste si nakoupili nové rezervované instance, abyste se vyhnuli platbám za průběžné platby.
 
-## <a name="delete-unassociated-public-ip-addresses-to-save-money"></a>Odstranit nepřidružené veřejné IP adresy ušetříte peníze
+## <a name="delete-unassociated-public-ip-addresses-to-save-money"></a>Odstraní nepřidružené veřejné IP adresy, aby se ušetřily peníze.
 
-Advisor identifikuje veřejné IP adresy, které nejsou aktuálně přidružené k prostředkům Azure, jako jsou nástroje pro vyrovnávání zatížení nebo virtuální počítače. Tyto veřejné IP adresy, které jsou součástí nominální poplatek. Pokud nechcete používat, jejich odstranění může způsobit úspory nákladů.
+Advisor identifikuje veřejné IP adresy, které nejsou aktuálně přidružené k prostředkům Azure, jako jsou nástroje pro vyrovnávání zatížení nebo virtuální počítače. Tyto veřejné IP adresy se dodávají za nominální poplatek. Pokud je neplánujete použít, může jejich odstranění způsobit úspory nákladů.
 
-## <a name="delete-azure-data-factory-pipelines-that-are-failing"></a>Azure Data Factory kanálů, které se nedaří odstranit
+## <a name="delete-azure-data-factory-pipelines-that-are-failing"></a>Odstranění neúspěšných kanálů Azure Data Factory
 
-Azure Advisor zjistí kanálů Azure Data Factory, které opakovaně selhat a doporučujeme při řešení problémů nebo odstranit kanály selhání, pokud už nepotřebujete. Vám bude účtovat těchto kanálech i v případě, že i když jejich nejsou že vám během se nedaří. 
+Azure Advisor detekuje Azure Data Factory kanály, které opakovaně selžou, a doporučuje, abyste vyřešili problémy nebo odstranili neúspěšné kanály, pokud už je nepotřebujete. Tyto kanály se budou fakturovat i v případě, že vám nejsou zachovány. 
 
-## <a name="use-standard-snapshots-for-managed-disks"></a>Použít standardní snímky za spravované disky
-Pokud chcete uložit 60 % nákladů, doporučujeme ukládat vaše snímky ve standardním úložišti, bez ohledu na typ úložiště nadřazeného disku. Toto je výchozí možnost pro Managed Disks snímky. Azure Advisor bude identifikovat snímky, které jsou uloženy doporučujeme migraci snímek z úrovně Premium na úložiště úrovně Standard a Premium Storage. [Další informace o cenách služby Managed Disks](https://aka.ms/aa_manageddisksnapshot_learnmore)
+## <a name="use-standard-snapshots-for-managed-disks"></a>Pro Managed Disks použít standardní snímky
+Pokud chcete ušetřit 60% nákladů, doporučujeme ukládat snímky ve službě Storage úrovně Standard bez ohledu na typ úložiště nadřazeného disku. Toto je výchozí možnost pro Managed Disks snímky. Azure Advisor identifikuje snímky uložené Premium Storage a doporučuje migraci snímku z úrovně Premium na úložiště Standard. [Další informace o cenách spravovaného disku](https://aka.ms/aa_manageddisksnapshot_learnmore)
 
-## <a name="how-to-access-cost-recommendations-in-azure-advisor"></a>Jak získat přístup k doporučení k nákladům v Azure Advisoru
+## <a name="how-to-access-cost-recommendations-in-azure-advisor"></a>Přístup k cenovým doporučením v Azure Advisor
 
-1. Přihlaste se k [webu Azure portal](https://portal.azure.com)a pak otevřete [Advisor](https://aka.ms/azureadvisordashboard).
+1. Přihlaste se k [Azure Portal](https://portal.azure.com)a pak otevřete [Poradce](https://aka.ms/azureadvisordashboard).
 
-2.  Na řídicím panelu služby Advisor, klikněte na tlačítko **náklady** kartu.
+2.  Na řídicím panelu Advisor klikněte na kartu **náklady** .
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Další informace o doporučení Advisoru, naleznete v tématu:
-* [Úvod do služby Advisor](advisor-overview.md)
+Další informace o doporučení Advisoru najdete tady:
+* [Úvod do Advisoru](advisor-overview.md)
 * [Začínáme](advisor-get-started.md)
-* [Poradce doporučení k výkonu](advisor-cost-recommendations.md)
-* [Poradce doporučení k vysoké dostupnosti](advisor-cost-recommendations.md)
-* [Bezpečnostní doporučení advisoru](advisor-cost-recommendations.md)
+* [Doporučení pro výkon Advisoru](advisor-cost-recommendations.md)
+* [Doporučení pro vysokou dostupnost poradce](advisor-cost-recommendations.md)
+* [Doporučení pro zabezpečení Advisoru](advisor-cost-recommendations.md)

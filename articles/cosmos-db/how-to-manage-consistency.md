@@ -6,22 +6,22 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 07/08/2019
 ms.author: mjbrown
-ms.openlocfilehash: 511a12cd7f1e88a95342cf5129142791c6d50b31
-ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
+ms.openlocfilehash: 2617aba0d790209d83f410ee632ffad43c952d55
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68000888"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68356419"
 ---
 # <a name="manage-consistency-levels-in-azure-cosmos-db"></a>Správa úrovní konzistence ve službě Azure Cosmos DB
 
-Tento článek vysvětluje, jak spravovat úrovně konzistence ve službě Azure Cosmos DB. Zjistíte, jak nakonfigurovat výchozí úroveň konzistence, přepsat výchozí konzistence, ručně spravovat relace tokeny a pochopit metrika Probabilistically omezená Neaktuálnost (PBS).
+Tento článek vysvětluje, jak spravovat úrovně konzistence v Azure Cosmos DB. Naučíte se, jak nakonfigurovat výchozí úroveň konzistence, přepsat výchozí konzistenci, ručně spravovat tokeny relací a pochopit metriku služby PBS (probabilistically Bounded).
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="configure-the-default-consistency-level"></a>Konfigurace výchozí úrovně konzistence
 
-[Výchozí úroveň konzistence](consistency-levels.md) je úroveň konzistence, kterou klienti používají ve výchozím nastavení. Klienty můžete vždy přepsat.
+[Výchozí úroveň konzistence](consistency-levels.md) je úroveň konzistence, kterou klienti používají ve výchozím nastavení. Klienti je můžou vždycky přepsat.
 
 ### <a name="cli"></a>Rozhraní příkazového řádku
 
@@ -35,7 +35,7 @@ az cosmosdb update --name <name of Cosmos DB Account> --resource-group <resource
 
 ### <a name="powershell"></a>PowerShell
 
-Tento příklad vytvoří nový účet Azure Cosmos s využitím více oblastí zápisu povolené v oblastech USA – východ a USA – západ. Výchozí úroveň konzistence je nastavena na *relace* konzistence.
+Tento příklad vytvoří nový účet Azure Cosmos s povoleným více oblastmi zápisu v oblastech Východní USA a Západní USA. Výchozí úroveň konzistence je nastavená na konzistenci *relací* .
 
 ```azurepowershell-interactive
 $locations = @(@{"locationName"="East US"; "failoverPriority"=0},
@@ -61,13 +61,13 @@ New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
 
 ### <a name="azure-portal"></a>portál Azure
 
-Pokud chcete zobrazit nebo upravit výchozí úroveň konzistence, přihlaste se k webu Azure portal. Vyhledejte svůj účet Azure Cosmos a otevřít **výchozí konzistence** podokně. Vyberte úroveň konzistence jako nové výchozí nastavení a potom vyberte **Uložit**. Na webu Azure portal poskytuje také vizualizaci úrovní různých konzistence s poznámkami music. 
+Pokud chcete zobrazit nebo upravit výchozí úroveň konzistence, přihlaste se k Azure Portal. Vyhledejte účet Azure Cosmos a otevřete **výchozí** podokno konzistence. Vyberte požadovanou úroveň konzistence jako novou výchozí hodnotu a pak vyberte **Uložit**. Azure Portal také nabízí vizualizaci různých úrovní konzistence s hudebními poznámkami. 
 
-![Konzistence nabídky na webu Azure Portal](./media/how-to-manage-consistency/consistency-settings.png)
+![Nabídka konzistence v Azure Portal](./media/how-to-manage-consistency/consistency-settings.png)
 
 ## <a name="override-the-default-consistency-level"></a>Přepsání výchozí úrovně konzistence
 
-Klienti můžou přepsat výchozí úroveň konzistence nastavenou službou. Úroveň konzistence můžete nastavit na každý požadavek, který přepíše výchozí úroveň konzistence nastavenou na úrovni účtu.
+Klienti můžou přepsat výchozí úroveň konzistence nastavenou službou. Úroveň konzistence se dá nastavit pro každý požadavek, který přepíše výchozí úroveň konzistence nastavenou na úrovni účtu.
 
 ### <a id="override-default-consistency-dotnet"></a>.NET SDK V2
 
@@ -134,14 +134,15 @@ const { body } = await item.read({ consistencyLevel: ConsistencyLevel.Eventual }
 ```python
 # Override consistency at the client level
 connection_policy = documents.ConnectionPolicy()
-client = cosmos_client.CosmosClient(self.account_endpoint, {'masterKey': self.account_key}, connection_policy, documents.ConsistencyLevel.Eventual)
+client = cosmos_client.CosmosClient(self.account_endpoint, {
+                                    'masterKey': self.account_key}, connection_policy, documents.ConsistencyLevel.Eventual)
 ```
 
 ## <a name="utilize-session-tokens"></a>Využití tokenů relace
 
-Jednou z úrovní konzistence ve službě Azure Cosmos DB je *relace* konzistence. Toto je výchozí úroveň ve výchozím nastavení použít pro účty služby Cosmos. Při práci s *relace* konzistence, klient použije token relace interně spolu s každou žádostí pro čtení nebo dotaz k zajištění, že je udržovat nastavenou úroveň konzistence.
+Jednou z úrovní konzistence v Azure Cosmos DB je konzistence *relace* . Toto je výchozí úroveň, která se ve výchozím nastavení používá pro účty Cosmos. Při práci s konzistencí *relace* bude klient používat token relace interně s každou žádostí pro čtení/dotaz, aby bylo zajištěno, že se zachová nastavená úroveň konzistence.
 
-Tokeny relace spravovat ručně, získání tokenu relace z odpovědi a nastavit každý požadavek. Pokud není nutné ručně spravovat tokeny relace, není nutné používat tyto ukázky. Sada SDK uchovává informace o relaci tokeny automaticky. Pokud nenastavíte tokenu relace ručně, ve výchozím nastavení, sada SDK používá nejnovější tokenu relace.
+Chcete-li spravovat tokeny relace ručně, Získejte token relace z odpovědi a nastavte je na požadavek. Pokud nepotřebujete spravovat tokeny relací ručně, nemusíte tyto ukázky používat. Sada SDK automaticky sleduje tokeny relací. Pokud nenastavíte token relace ručně, použije sada SDK nejnovější token relace.
 
 ### <a id="utilize-session-tokens-dotnet"></a>.NET SDK V2
 
@@ -230,18 +231,18 @@ item = client.ReadItem(doc_link, options)
 
 ## <a name="monitor-probabilistically-bounded-staleness-pbs-metric"></a>Monitorování metriky Pravděpodobnostně omezená neaktuálnost (PBS)
 
-Jak konečný výsledek je konečné konzistence? Průměrná případech můžete nabízíme neaktuálnost hranice s ohledem na historii verzí a čas. [ **Probabilistically omezená Neaktuálnost (PBS)** ](https://pbs.cs.berkeley.edu/) metrika pokusí vyčíslení pravděpodobnost neaktuálnost a zobrazuje jako metriku. Pokud chcete zobrazit metriky PBS, přejděte k vašemu účtu Azure Cosmos na webu Azure Portal. Otevřít **metriky** podokně a vyberte **konzistence** kartu. Podívejte se na grafu s názvem **pravděpodobnost silně konzistentních čtení na základě vašich úloh (viz PBS)** .
+Jak co má být konečná konzistence? V případě průměrného případu můžeme nabídnout neplatnost hranic s ohledem na historii a čas verzí. Metrika služby [**PBS (probabilistically Bounded)** ](https://pbs.cs.berkeley.edu/) se pokusí vyčíslit pravděpodobnost neaktuálnosti a zobrazí ji jako metriku. Metriku služby PBS zobrazíte tak, že v Azure Portal přejdete na svůj účet Azure Cosmos. Otevřete podokno **metriky** a vyberte kartu konzistence  . Podívejte se na graf s názvem **pravděpodobnost silně konzistentních čtení na základě vašich úloh (viz PBS)** .
 
-![Graf PBS na webu Azure Portal](./media/how-to-manage-consistency/pbs-metric.png)
+![Graf PBS v Azure Portal](./media/how-to-manage-consistency/pbs-metric.png)
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
-Další informace o tom, jak spravovat konfliktů v datech, nebo přejít k další klíčovým konceptem ve službě Azure Cosmos DB. Viz následující články:
+Přečtěte si další informace o tom, jak spravovat konflikty dat, nebo přejděte k dalšímu klíčovému konceptu v Azure Cosmos DB. Viz následující články:
 
-* [Úrovně konzistence ve službě Azure Cosmos DB](consistency-levels.md)
+* [Úrovně konzistence v Azure Cosmos DB](consistency-levels.md)
 * [Správa konfliktů mezi oblastmi](how-to-manage-conflicts.md)
 * [Dělení a distribuce dat](partition-data.md)
-* [Konzistence kompromisy v návrhu systémy moderní distribuované databáze](https://www.computer.org/csdl/magazine/co/2012/02/mco2012020037/13rRUxjyX7k)
+* [Návrh moderních systémů distribuovaných databází – kompromisy v konzistenci](https://www.computer.org/csdl/magazine/co/2012/02/mco2012020037/13rRUxjyX7k)
 * [Vysoká dostupnost](high-availability.md)
 * [Azure Cosmos DB SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_2/)

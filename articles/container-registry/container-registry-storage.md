@@ -1,56 +1,57 @@
 ---
-title: Úložiště obrázků ve službě Azure Container Registry
-description: Podrobnosti o způsobu uložení imagí kontejnerů Dockeru v Azure Container Registry, včetně zabezpečení, redundance a kapacity.
+title: Úložiště imagí v Azure Container Registry
+description: Podrobnosti o tom, jak jsou image kontejnerů Docker uložené v Azure Container Registry, včetně zabezpečení, redundance a kapacity.
 services: container-registry
 author: dlepow
+manager: gwallace
 ms.service: container-registry
 ms.topic: article
 ms.date: 03/21/2018
 ms.author: danlep
-ms.openlocfilehash: 55c84907ab41f6da9d7a0989c68a1c1f90c5e424
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4517cc21ca0087358e750cd480288d4ec3718791
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60827268"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68310524"
 ---
-# <a name="container-image-storage-in-azure-container-registry"></a>Úložiště obrázků kontejneru ve službě Azure Container Registry
+# <a name="container-image-storage-in-azure-container-registry"></a>Úložiště imagí kontejneru v Azure Container Registry
 
-Každý [Basic, Standard a Premium](container-registry-skus.md) -klidové šifrování pro zabezpečení dat a geografické redundanci pro ochranu dat pomocí image, jako je Azure container registry výhody funkce Rozšířené úložiště Azure. Následující části popisují funkce a omezení úložiště obrázků v Azure Container Registry (ACR).
+Každá služba Azure Container Registry [Basic, Standard a Premium](container-registry-skus.md) přináší výhody pokročilých funkcí úložiště Azure, jako je šifrování v klidovém režimu pro zabezpečení dat imagí a geografická redundance pro ochranu imagí dat. V následujících částech najdete popis funkcí a omezení úložiště imagí v Azure Container Registry (ACR).
 
-## <a name="encryption-at-rest"></a>Šifrování v klidovém stavu
+## <a name="encryption-at-rest"></a>Šifrování v klidovém případě
 
-Všechny Image kontejneru v registru se šifrují při nečinnosti. Azure automaticky šifruje image před uložením a dešifruje ji v běhu při vám nebo vašim aplikacím a službám, stáhněte si image.
+Všechny Image kontejneru v registru jsou zašifrované v klidovém stavu. Azure automaticky zašifruje image před uložením a dešifruje je průběžně, když se nebo vaše aplikace a služby vyžádají z image.
 
 ## <a name="geo-redundant-storage"></a>Geograficky redundantní úložiště
 
-Azure používá schéma geograficky redundantní úložiště s přístupem pro ochranu před ztrátou imagí kontejnerů. Služba Azure Container Registry automaticky replikuje imagí kontejnerů do několika geograficky vzdáleném datových center, prevenci jejich ztrát v případě selhání místního úložiště.
+Azure používá geograficky redundantní schéma úložiště pro ochranu před ztrátou imagí kontejneru. Azure Container Registry automaticky replikuje image kontejneru do několika geograficky vzdálených datových center a brání jejich ztrátě v případě selhání místního úložiště.
 
 ## <a name="geo-replication"></a>Geografická replikace
 
-Pro scénáře vyžadující ještě větší jistotu vysokou dostupnost, zvažte použití [geografickou replikaci](container-registry-geo-replication.md) funkce registry úrovně Premium. Geografická replikace pomůže chránit proti ztrátě přístupu ke svému registru v *celkový* selhání v oblasti, ne jenom selhání úložiště. Geografická replikace přináší i další výhody, příliš, jako obrázku blízko sítě úložiště pro rychlejší nabízených oznámení a získává v distribuovaných scénářích, vývoj nebo nasazení.
+V případě scénářů, které vyžadují ještě větší záruku na vysokou dostupnost, zvažte použití funkce [geografické replikace](container-registry-geo-replication.md) v registrech úrovně Premium. Geografická replikace pomáhá chránit před ztrátou přístupu k vašemu registru v případě *celkové* regionální chyby, nikoli jenom při selhání úložiště. Geografická replikace poskytuje další výhody, jako je například úložiště imagí v síti, pro rychlejší nabízená oznámení a stahování v případě distribuovaných scénářů vývoje nebo nasazení.
 
-## <a name="image-limits"></a>Obrázek omezení
+## <a name="image-limits"></a>Omezení imagí
 
-Následující tabulka popisuje omezení úložiště a image kontejneru v místě pro Azure container Registry.
+Následující tabulka popisuje kapacitu kontejneru a omezení úložiště pro služby Azure Container Registry.
 
 | Resource | Omezení |
 | -------- | :---- |
 | Úložiště | Bez omezení |
 | Obrázky | Bez omezení |
-| Vrstvy | Bez omezení |
+| Úrovně | Bez omezení |
 | Tags | Bez omezení|
-| Úložiště | 5 TB |
+| Storage | 5 TB |
 
-Velmi vysoké počty značky a úložiště můžete mít vliv na výkon vašeho registru. Pravidelně jako součást vašeho registru údržby rutina Odstraňte nepoužívané úložišť, značky a obrázků. Odstranit registr prostředkům, jako jsou úložiště, obrázků a značek *nelze* po odstranění obnovit. Další informace o odstraňování registru prostředky, najdete v části [odstranit Image kontejnerů ve službě Azure Container Registry](container-registry-delete.md).
+Výkon vašeho registru může ovlivnit velmi vysoký počet úložišť a značek. V rámci rutiny údržby registru pravidelně odstraňujte nepoužívaná úložiště, značky a obrázky. Odstraněné prostředky registru, jako jsou úložiště, image  a značky, se po odstranění nedají obnovit. Další informace o odstraňování prostředků registru najdete v tématu [odstranění imagí kontejneru v Azure Container Registry](container-registry-delete.md).
 
 ## <a name="storage-cost"></a>Náklady na úložiště
 
-Úplné podrobnosti o cenách najdete v tématu [ceny Azure Container Registry][pricing].
+Úplné podrobnosti o cenách najdete v tématu [Azure Container Registry ceny][pricing].
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace o registru kontejneru různých Azure SKU (Basic, Standard, Premium), najdete v části [skladové jednotky Azure Container Registry](container-registry-skus.md).
+Další informace o různých Azure Container Registry SKU (Basic, Standard, Premium) najdete v tématu [Azure Container Registry SKU](container-registry-skus.md).
 
 <!-- IMAGES -->
 

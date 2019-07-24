@@ -1,6 +1,6 @@
 ---
-title: Instalace hlavního cílového serveru s Linuxem pro navrácení služeb po obnovení do místní lokality | Dokumentace Microsoftu
-description: Zjistěte, jak nastavit hlavní cílový server Linux pro navrácení služeb po obnovení do místní lokality během zotavení po havárii virtuálních počítačů VMware do Azure pomocí Azure Site Recovery.
+title: Instalace hlavního cílového serveru Linux pro navrácení služeb po obnovení do místní lokality | Microsoft Docs
+description: Přečtěte si, jak nastavit hlavní cílový server Linux pro navrácení služeb po obnovení do místní lokality během zotavení po havárii virtuálních počítačů VMware do Azure pomocí Azure Site Recovery.
 author: mayurigupta13
 services: site-recovery
 manager: rochakm
@@ -8,274 +8,274 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/06/2019
 ms.author: mayg
-ms.openlocfilehash: efb49db6cce7ba238d40bf80ddf87b2a1a83834f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 062ed5e408317e95b36d6d0dfa395311ed4afe7f
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66479987"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68261436"
 ---
-# <a name="install-a-linux-master-target-server-for-failback"></a>Instalace hlavního cílového serveru s Linuxem pro navrácení služeb po obnovení
-Po převzetí služeb při selhání virtuálních počítačů do Azure, které můžete navrácení služeb po obnovení virtuálních počítačů do místní lokality. K navrácení služeb po obnovení, budete muset znovu nastavit ochranu virtuálního počítače z Azure do místní lokality. Tento proces je nutné místní hlavní cílový server pro příjem provozu. 
+# <a name="install-a-linux-master-target-server-for-failback"></a>Instalace hlavního cílového serveru Linux pro navrácení služeb po obnovení
+Po převzetí služeb při selhání virtuálních počítačů do Azure můžete navrátit služby virtuálních počítačů na místní lokalitu. Pro navrácení služeb po obnovení musíte virtuální počítač znovu ochránit z Azure do místní lokality. Pro tento proces budete potřebovat místní hlavní cílový server pro příjem provozu. 
 
-Pokud se chráněný virtuální počítač je virtuální počítač s Windows, potřebujete hlavní cílový Windows. Pro virtuální počítač s Linuxem potřebujete hlavní cílový Linux. Přečtěte si následující kroky a zjistěte, jak vytvořit a nainstalovat Linux hlavní cíl.
+Pokud je váš chráněný virtuální počítač virtuálním počítačem s Windows, budete potřebovat hlavní cíl Windows. Pro virtuální počítač se systémem Linux budete potřebovat hlavní cíl pro Linux. Přečtěte si následující postup, kde se dozvíte, jak vytvořit a nainstalovat hlavní cíl pro Linux.
 
 > [!IMPORTANT]
-> Od verze 9.10.0 hlavní cílový server na nejnovější hlavní cílový server můžete nainstalovat jenom na serveru se systémem Ubuntu 16.04. Nové instalace nejsou povoleny na serverech CentOS6.6. Ale můžete dál upgrade původní hlavní cílový server pomocí 9.10.0 verze.
+> Od verze hlavního cílového serveru 9.10.0 se dá nejnovější hlavní cílový server nainstalovat jenom na server Ubuntu 16,04. Na serverech CentOS 6.6 nejsou povoleny nové instalace. Můžete ale dál upgradovat staré hlavní cílové servery pomocí verze 9.10.0.
 > Hlavní cílový server na LVM se nepodporuje.
 
 ## <a name="overview"></a>Přehled
-Tento článek obsahuje pokyny pro instalaci hlavního cílového systému Linux.
+Tento článek poskytuje pokyny k instalaci hlavního cíle systému Linux.
 
-Dotazy nebo připomínky můžete publikovat na konci tohoto článku nebo na [fóru Azure Recovery Services](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr).
+Komentáře nebo dotazy vystavte na konci tohoto článku nebo na [fóru Azure Recovery Services](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr).
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Zvolte hostitele, na které se má nasadit na hlavním cíli, zjistit, pokud navrácení služeb po obnovení bude do existujícího virtuálního počítače v místním nebo do nového virtuálního počítače. 
-    * Pro existující virtuální počítač hostitele na hlavním cíli mají mít přístup k úložišti dat virtuálního počítače.
-    * Pokud na místním virtuálním počítači (v případě obnovení alternativního umístění) neexistuje, vytvoří se navrácení služeb po obnovení virtuálního počítače na stejném hostiteli jako hlavní cíl. Můžete použít všechny hostitele ESXi za účelem instalace na hlavním cíli.
-* Na hlavním cíli by měl být v síti, který může komunikovat s procesovým serverem a konfiguračním serverem.
-* Verze hlavního cíle musí být větší nebo starší než verze procesového serveru a konfiguračního serveru. Například pokud konfiguračního serveru na verzi 9.4, verze hlavního cíle může být 9.4 nebo 9.3, ale ne 9.5.
-* Na hlavním cíli lze pouze virtuální počítač VMware, nikoli na fyzický server.
+* Chcete-li vybrat hostitele, do kterého chcete nasadit hlavní cíl, určete, zda bude navrácení služeb po obnovení na existující místní virtuální počítač nebo na nový virtuální počítač. 
+    * Pro existující virtuální počítač by měl mít hostitel hlavního cíle přístup k úložištím dat virtuálního počítače.
+    * Pokud místní virtuální počítač neexistuje (v případě obnovení do alternativního umístění), vytvoří se virtuální počítač navrácení služeb po obnovení na stejném hostiteli jako hlavní cíl. Pro instalaci hlavního cíle můžete zvolit libovolného hostitele ESXi.
+* Hlavní cíl by měl být v síti, která může komunikovat s procesovým serverem a konfiguračním serverem.
+* Verze hlavního cíle musí být stejná nebo nižší než verze procesového serveru a konfiguračního serveru. Pokud je například verze konfiguračního serveru 9,4, verze hlavního cíle může být 9,4 nebo 9,3, ale ne 9,5.
+* Hlavním cílem může být pouze virtuální počítač VMware, nikoli fyzický server.
 
-## <a name="sizing-guidelines-for-creating-master-target-server"></a>Pokyny pro nastavení velikosti pro vytvoření hlavního cílového serveru
+## <a name="sizing-guidelines-for-creating-master-target-server"></a>Pokyny pro změnu velikosti pro vytvoření hlavního cílového serveru
 
-Vytvořte na hlavním cíli v souladu s velikosti podle následujících pokynů:
-- **PAMĚŤ RAM**: 6 GB nebo více
-- **Velikost disku OS**: 100 GB nebo více (pro instalaci operačního systému)
-- **Další velikosti jednotky pro uchovávání dat**: 1 TB
-- **Jádra procesoru**: 4 jádra nebo více
+Vytvořte hlavní cíl podle následujících pokynů pro změnu velikosti:
+- **PAMĚŤ RAM**: minimálně 6 GB
+- **Velikost disku operačního systému**: 100 GB nebo více (pro instalaci operačního systému)
+- **Další velikost disku pro jednotku pro uchovávání informací**: 1 TB
+- **Jádra procesoru**: 4 jádra nebo víc
 
-Jsou podporovány následující jádrech Ubuntu.
+Podporovány jsou následující jádra Ubuntu.
 
 
-|Řada jádra  |Až  |
+|Řada jader  |Podpora až po  |
 |---------|---------|
-|4.4      |4.4.0-81-Generic         |
-|4.8      |4.8.0-56-Generic         |
-|4.10     |4.10.0-24-Generic        |
+|4.4      |4.4.0 – 81 – obecný         |
+|4.8      |4.8.0 – 56 – obecný         |
+|4.10     |4.10.0-24 – obecný        |
 
 
 ## <a name="deploy-the-master-target-server"></a>Nasazení hlavního cílového serveru
 
-### <a name="install-ubuntu-16042-minimal"></a>Nainstalujte Ubuntu 16.04.2 minimální
+### <a name="install-ubuntu-16042-minimal"></a>Minimální instalace Ubuntu 16.04.2
 
-Následující kroky pro instalaci operačního systému Ubuntu 16.04.2 64-bit.
+Proveďte následující kroky pro instalaci operačního systému Ubuntu 16.04.2 64.
 
-1.   Přejděte [odkaz ke stažení](http://old-releases.ubuntu.com/releases/16.04.2/ubuntu-16.04.2-server-amd64.iso), zvolte nejbližší zrcadlení a stáhnout soubor ISO se systémem Ubuntu 16.04.2 minimální 64-bit.
-Ponechat soubor ISO se systémem Ubuntu 16.04.2 minimální 64-bit do jednotky DVD a spuštění systému.
+1.   Přejít na [odkaz ke stažení](http://old-releases.ubuntu.com/releases/16.04.2/ubuntu-16.04.2-server-amd64.iso), zvolit nejbližší zrcadlo a stáhnout Ubuntu 16.04.2 s minimální 64 bitovou kopií ISO.
+V jednotce DVD ponechte Ubuntu 16.04.2 s minimální 64 bitovou kopií ISO a spusťte systém.
 
-1.  Vyberte **Angličtina** jako váš preferovaný jazyk a pak vyberte **Enter**.
+1.  Jako preferovaný jazyk vyberte **angličtinu** a pak vyberte **ENTER**.
     
     ![Výběr jazyka](./media/vmware-azure-install-linux-master-target/image1.png)
-1. Vyberte **instalace serveru Ubuntu**a pak vyberte **Enter**.
+1. Vyberte **instalovat server Ubuntu**a pak vyberte **ENTER**.
 
-    ![Vyberte možnost instalace serveru Ubuntu](./media/vmware-azure-install-linux-master-target/image2.png)
+    ![Výběr instalace serveru Ubuntu](./media/vmware-azure-install-linux-master-target/image2.png)
 
-1.  Vyberte **Angličtina** jako váš preferovaný jazyk a pak vyberte **Enter**.
+1.  Jako preferovaný jazyk vyberte **angličtinu** a pak vyberte **ENTER**.
 
-    ![Vybrat jako upřednostňovaný jazyk angličtina](./media/vmware-azure-install-linux-master-target/image3.png)
+    ![Vyberte angličtinu jako preferovaný jazyk.](./media/vmware-azure-install-linux-master-target/image3.png)
 
-1. Vyberte odpovídající možnost z **časové pásmo** seznam možností a pak vyberte **Enter**.
+1. V seznamu možnosti **časového pásma** vyberte vhodnou možnost a pak vyberte **zadat**.
 
     ![Vyberte správné časové pásmo.](./media/vmware-azure-install-linux-master-target/image4.png)
 
-1. Vyberte **ne** (výchozí možnost) a pak vyberte **Enter**.
+1. Vyberte **ne** (výchozí možnost) a pak vyberte **ENTER**.
 
-     ![Nakonfigurovat klávesnici](./media/vmware-azure-install-linux-master-target/image5.png)
-1. Vyberte **angličtinu (US)** jako země původu klávesnice a pak vyberte **Enter**.
+     ![Konfigurace klávesnice](./media/vmware-azure-install-linux-master-target/image5.png)
+1. Vyberte **angličtinu (USA)** jako zemi nebo oblast původu pro klávesnici a pak vyberte **ENTER**.
 
-1. Vyberte **angličtinu (US)** rozložení klávesnice, a pak vyberte **Enter**.
+1. Jako rozložení klávesnice vyberte **angličtinu (US)** a pak vyberte **ENTER**(spustit).
 
-1. Zadejte název hostitele pro váš server v **Hostname** a potom vyberte **pokračovat**.
+1. Do pole **název hostitele** zadejte název hostitele serveru a pak vyberte **pokračovat**.
 
 1. Chcete-li vytvořit uživatelský účet, zadejte uživatelské jméno a pak vyberte **pokračovat**.
 
       ![Vytvoření uživatelského účtu](./media/vmware-azure-install-linux-master-target/image9.png)
 
-1. Zadejte heslo pro nový uživatelský účet a potom vyberte **pokračovat**.
+1. Zadejte heslo pro nový uživatelský účet a pak vyberte **pokračovat**.
 
 1.  Potvrďte heslo pro nového uživatele a pak vyberte **pokračovat**.
 
-    ![Potvrzení hesla](./media/vmware-azure-install-linux-master-target/image11.png)
+    ![Potvrďte hesla](./media/vmware-azure-install-linux-master-target/image11.png)
 
-1.  V dalším výběru pro šifrování domovský adresář, vyberte **ne** (výchozí možnost) a pak vyberte **Enter**.
+1.  V dalším výběru pro šifrování domovského adresáře vyberte možnost **ne** (výchozí možnost) a pak vyberte **ENTER**.
 
-1. Pokud je časové pásmo, který se zobrazí správný, vyberte **Ano** (výchozí možnost) a pak vyberte **Enter**. Chcete-li změnit konfiguraci časového pásma, vyberte **ne**.
+1. Pokud je zobrazené časové pásmo správné, vyberte **Ano** (výchozí možnost) a pak vyberte **ENTER**. Pokud chcete změnit konfiguraci časového pásma, vyberte **ne**.
 
-1. Dělicí metoda možnosti, vyberte **s asistencí – použít celý disk**a pak vyberte **Enter**.
+1. Z možností použití oddílů vyberte **Průvodce – použít celý disk**a pak vyberte **ENTER**.
 
-     ![Vyberte možnost dělicí metody](./media/vmware-azure-install-linux-master-target/image14.png)
+     ![Vyberte možnost metody dělení.](./media/vmware-azure-install-linux-master-target/image14.png)
 
-1.  Vyberte příslušný disk z **vyberte disk do oddílu** možnosti a pak vyberte **Enter**.
+1.  Vyberte příslušný disk z možností **vybrat disk a rozdělit na oddíly** a pak vyberte **ENTER**.
 
-    ![Vyberte disk](./media/vmware-azure-install-linux-master-target/image15.png)
+    ![Vybrat disk](./media/vmware-azure-install-linux-master-target/image15.png)
 
-1.  Vyberte **Ano** se zapsat změny na disk a potom vyberte **Enter**.
+1.  Vyberte **Ano** , pokud chcete zapsat změny na disk a pak vyberte **ENTER**.
 
-    ![Vyberte výchozí možnost](./media/vmware-azure-install-linux-master-target/image16-ubuntu.png)
+    ![Vyberte výchozí možnost.](./media/vmware-azure-install-linux-master-target/image16-ubuntu.png)
 
-1.  Ve výběru konfigurace proxy serveru, vyberte možnost výchozí, vyberte **pokračovat**a pak vyberte **Enter**.
+1.  V okně Konfigurovat výběr proxy serveru vyberte výchozí možnost, vyberte **pokračovat**a potom vyberte **ENTER**.
      
-     ![Vyberte, jak spravovat upgrady](./media/vmware-azure-install-linux-master-target/image17-ubuntu.png)
+     ![Vyberte, jak se mají spravovat upgrady.](./media/vmware-azure-install-linux-master-target/image17-ubuntu.png)
 
-1.  Vyberte **žádné automatické aktualizace** možnost výběru pro správu inovace ve vašem systému a pak vyberte **Enter**.
+1.  Vyberte možnost **bez možnosti automatických aktualizací** ve výběru pro správu upgradů v systému a pak vyberte **ENTER**.
 
-     ![Vyberte, jak spravovat upgrady](./media/vmware-azure-install-linux-master-target/image18-ubuntu.png)
+     ![Vyberte, jak se mají spravovat upgrady.](./media/vmware-azure-install-linux-master-target/image18-ubuntu.png)
 
     > [!WARNING]
-    > Vzhledem k tomu, že hlavní cílový server Azure Site Recovery vyžaduje specifickou verzi Ubuntu, budete muset zajistit, aby jádra upgrady jsou zakázané pro virtuální počítač. Pokud se povolí, všechny pravidelné aktualizace způsobit hlavní cílový server fungovat správně. Ujistěte se, že jste vybrali **žádné automatické aktualizace** možnost.
+    > Vzhledem k tomu, že Azure Site Recovery hlavní cílový server vyžaduje velmi specifickou verzi Ubuntu, musíte zajistit, aby byly upgrady jádra pro virtuální počítač zakázané. Pokud jsou povolené, pak všechny běžné upgrady způsobí nefunkčnost hlavního cílového serveru. Ujistěte se, že jste vybrali možnost **bez automatických aktualizací** .
 
-1.  Vyberte výchozí možnosti. Pokud chcete openSSH připojení přes SSH, vyberte **OpenSSH server** a potom vyberte možnost **pokračovat**.
+1.  Vyberte výchozí možnosti. Pokud chcete openSSH pro SSH Connect, vyberte možnost **serveru openSSH** a pak vyberte **pokračovat**.
 
-    ![Vybraný software](./media/vmware-azure-install-linux-master-target/image19-ubuntu.png)
+    ![Vybrat software](./media/vmware-azure-install-linux-master-target/image19-ubuntu.png)
 
-1. Ve výběru pro instalaci GRUB spouštěcí zavaděč, vyberte **Ano**a pak vyberte **Enter**.
+1. Ve výběru pro instalaci zaváděcího nástroje GRUB spusťte výběr možnosti **Ano**a pak vyberte **ENTER**.
      
-    ![GRUB spuštění instalačního programu](./media/vmware-azure-install-linux-master-target/image20.png)
+    ![Instalační program GRUB Boot](./media/vmware-azure-install-linux-master-target/image20.png)
 
 
-1. Vyberte příslušné zařízení pro instalaci spouštěcí zavaděč (pokud možno **/dev/sda**) a pak vyberte **Enter**.
+1. Vyberte odpovídající zařízení pro instalaci spouštěcího zavaděče (nejlépe **/dev/sda**) a pak vyberte **ENTER**.
      
-    ![Vyberte odpovídající zařízení](./media/vmware-azure-install-linux-master-target/image21.png)
+    ![Vyberte vhodné zařízení.](./media/vmware-azure-install-linux-master-target/image21.png)
 
-1. Vyberte **pokračovat**a pak vyberte **Enter** pro dokončení instalace.
+1. Vyberte **pokračovat**a potom kliknutím na tlačítko **ENTER** dokončete instalaci.
 
-    ![Dokončení instalace](./media/vmware-azure-install-linux-master-target/image22.png)
+    ![Dokončete instalaci.](./media/vmware-azure-install-linux-master-target/image22.png)
 
-1. Po dokončení instalace se přihlaste k virtuálnímu počítači s novými pověřeními uživatele. (Odkazovat **krok 10** Další informace.)
+1. Po dokončení instalace se přihlaste k virtuálnímu počítači pomocí nových přihlašovacích údajů uživatele. (Další informace najdete v **kroku 10** .)
 
-1. Pomocí kroků, které jsou popsány v následující snímek obrazovky nastavení KOŘENOVÉ heslo uživatele. Pak se přihlaste jako uživatel ROOT.
+1. K nastavení hesla uživatele ROOT použijte postup, který je popsaný na následujícím snímku obrazovky. Pak se přihlaste jako uživatel ROOT.
 
-    ![Nastavte KOŘENOVÉ heslo uživatele](./media/vmware-azure-install-linux-master-target/image23.png)
+    ![Nastavení hesla uživatele ROOT](./media/vmware-azure-install-linux-master-target/image23.png)
 
 
-### <a name="configure-the-machine-as-a-master-target-server"></a>Nakonfigurujte počítač jako hlavní cílový server
+### <a name="configure-the-machine-as-a-master-target-server"></a>Konfigurace počítače jako hlavního cílového serveru
 
-Chcete-li získat ID pro každý SCSI pevný disk do virtuálního počítače s Linuxem **disku. EnableUUID = TRUE** parametr musí být povolená. Chcete-li tento parametr, proveďte následující kroky:
+Chcete-li získat ID pro každý pevný disk SCSI ve virtuálním počítači se systémem Linux, **disk.** Je nutné povolit parametr EnableUUID = true. Chcete-li povolit tento parametr, proveďte následující kroky:
 
-1. Vypnete virtuální počítač.
+1. Vypněte virtuální počítač.
 
-2. Klikněte pravým tlačítkem na položku pro virtuální počítač v levém podokně a pak vyberte **upravit nastavení**.
+2. V levém podokně klikněte pravým tlačítkem myši na položku pro virtuální počítač a pak vyberte **Upravit nastavení**.
 
-3. Vyberte **možnosti** kartu.
+3. Vyberte kartu **Možnosti** .
 
-4. V levém podokně vyberte **Upřesnit** > **Obecné**a pak vyberte **parametry konfigurace** tlačítko v pravé dolní části obrazovky.
+4. V levém podokně vyberte možnost **Upřesnit** > **Obecné**a potom v pravé dolní části obrazovky vyberte tlačítko **parametry konfigurace** .
 
-    ![Otevřete konfigurační parametr](./media/vmware-azure-install-linux-master-target/image24-ubuntu.png) 
+    ![Otevřít konfigurační parametr](./media/vmware-azure-install-linux-master-target/image24-ubuntu.png) 
 
-    **Parametry konfigurace** možnost není k dispozici, když na počítači běží. Chcete-li na této kartě aktivní, vypnete virtuální počítač.
+    Možnost **parametry konfigurace** není k dispozici, když je počítač spuštěný. Chcete-li nastavit tuto kartu jako aktivní, vypněte virtuální počítač.
 
-5. Zda řádek s **disku. EnableUUID** již existuje.
+5. Podívejte se, jestli řádek s diskem není **. EnableUUID** už existuje.
 
-   - Pokud hodnota existuje a je nastavená na **False**, změňte hodnotu na **True**. (Hodnoty nejsou malá a velká písmena.)
+   - Pokud hodnota existuje a je nastavená na **false**, změňte hodnotu na **true**. (Hodnoty nerozlišují velká a malá písmena.)
 
-   - Pokud hodnota existuje a je nastavená na **True**vyberte **zrušit**.
+   - Pokud hodnota existuje a je nastavená na **true**, vyberte **Zrušit**.
 
-   - Pokud hodnota neexistuje, vyberte **přidat řádek**.
+   - Pokud hodnota neexistuje, vyberte **Přidat řádek**.
 
-   - Ve sloupci Název přidat **disku. EnableUUID**a pak nastavte hodnotu na **TRUE**.
+   - Do sloupce název přidejte **disk. EnableUUID**a nastavte hodnotu na **true**.
 
-     ![Kontroluje, jestli disk. EnableUUID již existuje.](./media/vmware-azure-install-linux-master-target/image25.png)
+     ![Probíhá kontrola, zda disk. EnableUUID už existuje.](./media/vmware-azure-install-linux-master-target/image25.png)
 
 #### <a name="disable-kernel-upgrades"></a>Zakázat upgrady jádra
 
-Azure Site Recovery hlavní cílový server vyžaduje určitou verzi Ubuntu a ujistěte se, že je zakázáno upgrady jádra pro virtuální počítač. Pokud jsou povolené jádra upgrady, může to způsobit selhání hlavního cílového serveru.
+Azure Site Recovery hlavní cílový server vyžaduje specifickou verzi Ubuntu, ujistěte se, že jsou pro virtuální počítač zakázané upgrady jádra. Pokud jsou upgrady jádra povoleny, může to způsobit nefunkčnost hlavního cílového serveru.
 
-#### <a name="download-and-install-additional-packages"></a>Stáhnout a nainstalovat další balíčky
+#### <a name="download-and-install-additional-packages"></a>Stažení a instalace dalších balíčků
 
 > [!NOTE]
-> Ujistěte se, že máte připojení k Internetu stáhnout a nainstalovat další balíčky. Pokud nemáte připojení k Internetu, musíte ručně vyhledat tyto balíčky Deb a nainstalujte je.
+> Ujistěte se, že máte připojení k Internetu ke stažení a instalaci dalších balíčků. Pokud nemáte připojení k Internetu, musíte tyto balíčky deb vyhledat ručně a nainstalovat je.
 
  `apt-get install -y multipath-tools lsscsi python-pyasn1 lvm2 kpartx`
 
 ### <a name="get-the-installer-for-setup"></a>Získat instalační program pro instalaci
 
-Pokud se hlavní cíl je připojený k Internetu, můžete použít následující kroky pro stažení instalačního programu. V opačném případě můžete zkopírovat instalační program z procesového serveru a nainstalujte ji.
+Pokud má váš hlavní cíl připojení k Internetu, můžete instalační program stáhnout pomocí následujících kroků. V opačném případě můžete instalační program zkopírovat z procesového serveru a pak ho nainstalovat.
 
-#### <a name="download-the-master-target-installation-packages"></a>Stáhnout instalační balíčky hlavní cíl
+#### <a name="download-the-master-target-installation-packages"></a>Stažení instalačních balíčků hlavního cíle
 
-[Stáhněte si nejnovější bity instalace hlavního cíle Linuxu](https://aka.ms/latestlinuxmobsvc).
+[Stáhněte si nejnovější hlavní cílové instalační služby systému Linux](https://aka.ms/latestlinuxmobsvc).
 
-Chcete-li stáhnout pomocí Linuxu, zadejte:
+Pokud ho chcete stáhnout pomocí systému Linux, zadejte:
 
 `wget https://aka.ms/latestlinuxmobsvc -O latestlinuxmobsvc.tar.gz`
 
 > [!WARNING]
-> Ujistěte se, stáhněte a rozbalte instalační program ve svém domovském adresáři. Pokud rozbalte do **/usr/Local**, instalace selže.
+> Nezapomeňte stáhnout a rozbalit instalační program v domovském adresáři. Pokud jste **/usr/local**, instalace se nezdařila.
 
 
-#### <a name="access-the-installer-from-the-process-server"></a>Přístup k Instalační program z procesového serveru
+#### <a name="access-the-installer-from-the-process-server"></a>Přístup k instalačnímu programu z procesového serveru
 
-1. Na procesovém serveru, přejděte na **C:\Program Files (x86) \Microsoft Azure Site Recovery\home\svsystems\pushinstallsvc\repository**.
+1. Na procesovém serveru přejdete do **složky C:\Program Files (x86) \Microsoft Azure Site Recovery\home\svsystems\pushinstallsvc\repository**.
 
-2. Zkopírujte požadované instalační soubor z procesového serveru a uložte ho jako **latestlinuxmobsvc.tar.gz** ve svém domovském adresáři.
-
-
-### <a name="apply-custom-configuration-changes"></a>Použít změny vlastní konfigurace
-
-Chcete-li použít změny vlastní konfigurace, postupujte následovně:
+2. Z procesového serveru Zkopírujte požadovaný instalační soubor a uložte ho jako **latestlinuxmobsvc. tar. gz** do domovského adresáře.
 
 
-1. Spusťte následující příkaz, který untar binárního souboru.
+### <a name="apply-custom-configuration-changes"></a>Použít vlastní změny konfigurace
+
+Chcete-li použít vlastní změny konfigurace, použijte následující postup:
+
+
+1. Spusťte následující příkaz, který untar binární soubor.
 
     `tar -zxvf latestlinuxmobsvc.tar.gz`
 
-    ![Snímek obrazovky příkaz ke spuštění](./media/vmware-azure-install-linux-master-target/image16.png)
+    ![Snímek obrazovky příkazu, který se má spustit](./media/vmware-azure-install-linux-master-target/image16.png)
 
-2. Spusťte následující příkaz k udělení oprávnění.
+2. K udělení oprávnění spusťte následující příkaz.
 
     `chmod 755 ./ApplyCustomChanges.sh`
 
 
-3. Spusťte následující příkaz pro spuštění skriptu.
+3. Spuštěním následujícího příkazu spusťte skript.
     
     `./ApplyCustomChanges.sh`
 
 > [!NOTE]
-> Spusťte skript jenom jednou na serveru. Vypněte na serveru. Po přidání disku, jak je popsáno v další části, restartujte server.
+> Spusťte skript jenom jednou na serveru. Pak server vypněte. Po přidání disku restartujte server, jak je popsáno v následující části.
 
-### <a name="add-a-retention-disk-to-the-linux-master-target-virtual-machine"></a>Přidat disk pro uchování na hlavním cílovém virtuálním počítači s Linuxem
+### <a name="add-a-retention-disk-to-the-linux-master-target-virtual-machine"></a>Přidat disk pro uchovávání informací do cílového virtuálního počítače se systémem Linux
 
-Chcete-li vytvořit disk pro uchování postupujte následovně:
+K vytvoření disku pro uchovávání informací použijte následující postup:
 
-1. Připojit nový disk 1 TB na hlavním cílovém virtuálním počítači s Linuxem a potom počítač spustit.
+1. Připojte k virtuálnímu počítači s hlavním serverem Linux nový disk o 1 TB a spusťte počítač.
 
-2. Použití **více cest – vše** příkazu se dozvíte více cest ID disku pro uchování: **více cest – vše**
+2. Pomocí příkazu  s více cestami se dozvíte víc s ID disku pro uchovávání  informací: více cest
 
-    ![Funkce Multipath ID](./media/vmware-azure-install-linux-master-target/image27.png)
+    ![ID více cest](./media/vmware-azure-install-linux-master-target/image27.png)
 
-3. Formátování disku a poté vytvořit novou jednotku systému souborů: **mkfs.ext4 /dev/Mapovač/< více cest id disku uchování >** .
+3. Naformátujte jednotku a pak na nové jednotce vytvořte systém souborů: **mkfs. ext4/dev/Mapper/\<s více >.**
     
     ![Systém souborů](./media/vmware-azure-install-linux-master-target/image23-centos.png)
 
-4. Po vytvoření systému souborů, připojte disk pro uchování.
+4. Po vytvoření systému souborů připojte disk pro uchovávání.
 
     ```
     mkdir /mnt/retention
     mount /dev/mapper/<Retention disk's multipath id> /mnt/retention
     ```
 
-5. Vytvořte **fstab** položka připojit jednotka pro uchovávání dat pokaždé, když se spustí v systému.
+5. Vytvořte položku **fstab** pro připojení jednotky pro uchovávání při každém spuštění systému.
     
     `vi /etc/fstab`
     
-    Vyberte **vložit** zahájíte úpravou souboru. Vytvořit novou čáru a vložte následující text. Upravte více cest ID disku na základě Identifikátoru zvýrazněné více cest z předchozího příkazu.
+    Vyberte **Vložit** a začněte upravovat soubor. Vytvořte nový řádek a vložte následující text. Upravte na základě zvýrazněného IDENTIFIKÁTORu Multipath z předchozího příkazu více než na disku.
 
-    **/dev/Mapovač/\<uchování disky více cest id >/mnt/uchování ext4 rw 0 0**
+    **/dev/Mapper/\<pro uchovávání informací – Multipath ID >/mnt/retention ext4 RW 0 0**
 
-    Vyberte **Esc**a pak zadejte **: QW** (zápisu a ukončete) zavřete okno editoru.
+    Vyberte **ESC**a potom zadejte **: WQ** (Write and quit), čímž zavřete okno editoru.
 
-### <a name="install-the-master-target"></a>Instalace na hlavním cíli
+### <a name="install-the-master-target"></a>Instalace hlavního cíle
 
 > [!IMPORTANT]
-> Verze hlavního cílového serveru musí být větší nebo starší než verze procesového serveru a konfiguračního serveru. Pokud tato podmínka není splněna, úspěšné operace opětovného zapnutí ochrany, ale replikace selže.
+> Verze hlavního cílového serveru musí být stejná nebo nižší než verze procesového serveru a konfiguračního serveru. Pokud tato podmínka není splněná, bude znovu chráněna, ale replikace selže.
 
 
 > [!NOTE]
-> Před instalací hlavní cílový server zkontrolujte, že **/etc/hosts** soubor na virtuální počítač obsahuje položky, které mapují místní název hostitele na IP adresy, které jsou spojeny s všechny síťové adaptéry.
+> Než nainstalujete hlavní cílový server, ověřte, že soubor **/etc/hosts** ve virtuálním počítači obsahuje položky, které mapují místní název hostitele na IP adresy, které jsou přidružené ke všem síťovým adaptérům.
 
-1. Zkopírujte heslo ze **C:\ProgramData\Microsoft Azure Site Recovery\private\connection.passphrase** na konfiguračním serveru. Uložte ho jako **passphrase.txt** ve stejném adresáři místního spuštěním následujícího příkazu:
+1. Zkopírujte heslo z **C:\ProgramData\Microsoft Azure Site Recovery\private\connection.passphrase** na konfiguračním serveru. Pak ho uložte ve stejném místním adresáři jako **heslo. txt** , a to spuštěním následujícího příkazu:
 
     `echo <passphrase> >passphrase.txt`
 
@@ -284,7 +284,7 @@ Chcete-li vytvořit disk pro uchování postupujte následovně:
        `echo itUx70I47uxDuUVY >passphrase.txt`
     
 
-2. Poznamenejte si IP adresu konfiguračního serveru. Spusťte následující příkaz pro instalaci hlavního cílového serveru a registrace serveru u konfiguračního serveru.
+2. Poznamenejte si IP adresu konfiguračního serveru. Spusťte následující příkaz k instalaci hlavního cílového serveru a registraci serveru pomocí konfiguračního serveru.
 
     ```
     /usr/local/ASR/Vx/bin/UnifiedAgentConfigurator.sh -i <ConfigurationServer IP Address> -P passphrase.txt
@@ -296,26 +296,26 @@ Chcete-li vytvořit disk pro uchování postupujte následovně:
     /usr/local/ASR/Vx/bin/UnifiedAgentConfigurator.sh -i 104.40.75.37 -P passphrase.txt
     ```
 
-Počkejte na dokončení skriptu. Pokud na hlavním cíli úspěšně zaregistruje, na hlavním cíli je uvedený na **infrastruktura Site Recovery** stránky portálu.
+Počkejte, než se skript dokončí. Pokud se hlavní cíl úspěšně registruje, hlavní cíl se zobrazí na stránce **infrastruktura Site Recovery** na portálu.
 
 
-#### <a name="install-the-master-target-by-using-interactive-installation"></a>Instalace na hlavním cíli pomocí interaktivní instalace
+#### <a name="install-the-master-target-by-using-interactive-installation"></a>Instalace hlavního cíle pomocí interaktivní instalace
 
-1. Spusťte následující příkaz k instalaci na hlavním cíli. Pro roli agenta vyberte **hlavní cíl**.
+1. Spusťte následující příkaz, který nainstaluje hlavní cíl. U možnosti role agenta vyberte **hlavní cíl**.
 
     ```
     ./install
     ```
 
-2. Zvolte výchozí umístění pro instalaci a pak vyberte **Enter** pokračujte.
+2. Zvolte výchozí umístění pro instalaci a pak pokračujte výběrem **ENTER** .
 
-    ![Výběrem výchozí umístění pro instalaci hlavního cíle](./media/vmware-azure-install-linux-master-target/image17.png)
+    ![Výběr výchozího umístění pro instalaci hlavního cíle](./media/vmware-azure-install-linux-master-target/image17.png)
 
-Po dokončení instalace zaregistrujte konfigurační server pomocí příkazového řádku.
+Po dokončení instalace Zaregistrujte konfigurační server pomocí příkazového řádku.
 
 1. Poznamenejte si IP adresu konfiguračního serveru. Budete ho potřebovat v dalším kroku.
 
-2. Spusťte následující příkaz pro instalaci hlavního cílového serveru a registrace serveru u konfiguračního serveru.
+2. Spusťte následující příkaz k instalaci hlavního cílového serveru a registraci serveru pomocí konfiguračního serveru.
 
     ```
     ./install -q -d /usr/local/ASR -r MT -v VmWare
@@ -327,35 +327,35 @@ Po dokončení instalace zaregistrujte konfigurační server pomocí příkazov�
     /usr/local/ASR/Vx/bin/UnifiedAgentConfigurator.sh -i 104.40.75.37 -P passphrase.txt
     ```
 
-     Počkejte na dokončení skriptu. Pokud na hlavním cíli je úspěšně zaregistrovaný, na hlavním cíli je uvedený na **infrastruktura Site Recovery** stránky portálu.
+     Počkejte, než se skript dokončí. Pokud je hlavní cíl úspěšně zaregistrován, je hlavní cíl uveden na stránce **infrastruktura Site Recovery** na portálu.
 
 
-### <a name="install-vmware-tools--open-vm-tools-on-the-master-target-server"></a>Nainstalujte nástroje VMware tools / otevřít nástroje virtuální počítače na hlavním cílovém serveru
+### <a name="install-vmware-tools--open-vm-tools-on-the-master-target-server"></a>Instalace nástrojů VMware/otevřít-VM-Tools na hlavním cílovém serveru
 
-Je potřeba nainstalovat nástroje VMware nebo nástroje open virtuální počítače na hlavním cílovém, aby ji mohla zjistit úložišť dat. Pokud nejsou nainstalovány nástroje, není v úložištích dat, uvedené obrazovce operace opětovného zapnutí ochrany. Po instalaci nástrojů VMware budete muset restartovat.
+Je potřeba nainstalovat nástroje VMware nebo otevřít-VM-Tools na hlavním cíli, aby mohl vyhledat úložiště dat. Pokud nástroje nejsou nainstalovány, není obrazovka pro opětovné zapnutí ochrany uvedena v úložištích dat. Po instalaci nástrojů VMware je nutné restartovat počítač.
 
-### <a name="upgrade-the-master-target-server"></a>Upgradujte hlavní cílový server
+### <a name="upgrade-the-master-target-server"></a>Upgrade hlavního cílového serveru
 
-Spusťte instalační program. Automaticky zjišťuje, zda je agent nainstalovaný na hlavním cílovém. Chcete-li provést upgrade, vyberte **Y**.  Po dokončení instalace zkontrolujte verzi na hlavním cíli nainstalovali pomocí následujícího příkazu:
+Spusťte instalační program. Automaticky zjistí, že je agent nainstalovaný na hlavním cíli. Pokud chcete upgradovat, vyberte **Y**.  Po dokončení instalace ověřte, že je nainstalovaná verze hlavního cíle, a to pomocí následujícího příkazu:
 
 `cat /usr/local/.vx_version`
 
 
-Uvidíte, že **verze** pole obsahuje číslo verze na hlavním cíli.
+Uvidíte, že pole **verze** obsahuje číslo verze hlavního cíle.
 
 ## <a name="common-issues"></a>Běžné problémy
 
-* Zajistěte, aby že nezapínejte úložiště vMotion na jakékoli komponentami pro správu jako je hlavní cíl. Pokud se hlavní cíl přesune po úspěšné opětovné zapnutí ochrany, nelze odpojit disky virtuálního počítače (Vmdk). V takovém případě navrácení služeb po obnovení selže.
+* Ujistěte se, že jste vMotion úložiště nepnuli na žádné součásti pro správu, jako je například hlavní cíl. Pokud se hlavní cíl přesune po úspěšném opětovném zapnutí ochrany, disky virtuálních počítačů (VMDK) se nedají odpojit. V tomto případě se navrácení služeb po obnovení nezdařilo.
 
-* Na hlavním cíli by neměl mít všechny snímky virtuálního počítače. Pokud existují snímky, navrácení služeb po obnovení se nezdaří.
+* Hlavní cíl by neměl obsahovat žádné snímky na virtuálním počítači. Pokud existují snímky, navrácení služeb po obnovení selhalo.
 
-* Kvůli některé vlastní konfigurace síťové karty síťového rozhraní je zakázán během spouštění a hlavního cílového agenta nelze inicializovat. Ujistěte se, že jsou správně nastaveny následující vlastnosti. Zkontrolujte tyto vlastnosti v Ethernet karty souboru /etc/sysconfig/network-scripts/ifcfg-eth *.
+* Vzhledem k některým vlastním konfiguracím síťových adaptérů je síťové rozhraní při spuštění zakázané a hlavní cílový Agent se nedá inicializovat. Ujistěte se, že jsou správně nastavené následující vlastnosti. Tyto vlastnosti ověřte v/etc/sysconfig/Network-Scripts/ifcfg-ETH * souboru karty Ethernet.
     * BOOTPROTO=dhcp
-    * ONBOOT = Ano
+    * Při spuštění = Ano
 
 
 ## <a name="next-steps"></a>Další postup
-Po dokončení instalace a registrace hlavního cíle, zobrazí se hlavní cíl se zobrazí na **hlavní cílový** tématu **infrastruktura Site Recovery**, v části Konfigurace Přehled serveru.
+Po dokončení instalace a registrace hlavního cíle se zobrazí hlavní cíl v sekci **hlavní cíl** v **Site Recovery infrastruktury**v části Přehled konfiguračního serveru.
 
-Teď můžete přejít pomocí [opětovného nastavování ochrany](vmware-azure-reprotect.md)následovaný navrácení služeb po obnovení.
+Nyní můžete pokračovat v [reprotection](vmware-azure-reprotect.md)a potom navrácení služeb po obnovení.
 

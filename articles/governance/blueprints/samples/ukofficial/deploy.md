@@ -1,6 +1,6 @@
 ---
-title: Ukázka – UK-OFFICIAL a podrobný plán NHS UK - kroky nasazení
-description: Kroky UK-OFFICIAL a ukázky UK NHS podrobného plánu nasazení.
+title: Ukázka-UK oficiální a Velká Británie NHS Details-Deploy Steps
+description: Nasaďte kroky OFICIÁLNÍch a NHS podrobných plánů na Velká Británie.
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
@@ -8,107 +8,107 @@ ms.date: 06/26/2019
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 43aae882f27031d3e51ac8a4f5a68d243a973d6d
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: d720f220b8903d960e7bba2a75aa5a86bd0391ce
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67453200"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68225999"
 ---
-# <a name="deploy-the-uk-official-and-uk-nhs-blueprint-samples"></a>Nasazení ukázky UK NHS podrobného plánu a UK-OFFICIAL
+# <a name="deploy-the-uk-official-and-uk-nhs-blueprint-samples"></a>Nasazení ukázek pro Spojené království a ukázky pro Spojené království NHS podrobný plán
 
-Nasazení UK-OFFICIAL a ukázky podrobného plánu NHS Velká Británie, musí provést následující kroky:
+K nasazení ukázek pro Spojené království a NHS podrobného plánu je potřeba provést tyto kroky:
 
 > [!div class="checklist"]
-> - Vytvořit nový plán, podle kterého z ukázky
-> - Označte si kopii ukázky jako **publikováno**
-> - Přiřazení kopie podrobný plán k existujícímu předplatnému
+> - Vytvořit nový podrobný plán z ukázky
+> - Označení kopie ukázky jako **publikované**
+> - Přiřazení kopie podrobného plánu k existujícímu předplatnému
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free) před tím, než začnete.
 
 ## <a name="create-blueprint-from-sample"></a>Vytvořit podrobný plán z ukázky
 
-První tak, že vytvoříte nový plán ve vašem prostředí pomocí ukázky jako starter implementaci vzorku podrobného plánu.
+Nejdřív implementujte ukázku podrobného plánu vytvořením nového podrobného plánu ve vašem prostředí pomocí ukázky jako Starter.
 
-1. Vyberte **všechny služby** a vyhledejte a vyberte **zásady** v levém podokně. Na **zásady** stránce **plány**.
+1. Vyberte **všechny služby** a vyhledejte a v levém podokně vyberte **zásady** . Na stránce **zásady** vyberte **plány**.
 
-1. Z **Začínáme** stránky na levé straně, vyberte **vytvořit** tlačítko _vytvořit podrobný plán_.
+1. Na stránce **Začínáme** na levé straně vyberte v části _vytvořit podrobný plán_tlačítko **vytvořit** .
 
-1. Najít **UK-OFFICIAL** nebo **UK NHS** podrobného plánu ukázky v části _Další ukázky_ a vyberte **fungování této ukázky**.
+1. V části _Další ukázky_ Najděte oficiální nebo **NHS** podrobný plán na velká **Británie** a vyberte **použít tuto ukázku**.
 
-1. Zadejte _Základy_ vzorku podrobného plánu:
+1. Zadejte _základy_ ukázky podrobného plánu:
 
-   - **Název podrobného plánu**: Zadejte název pro vaši kopii ukázky podrobného plánu.
-   - **Umístění definice**: Použít na tři tečky a vyberte skupiny pro správu k uložení kopie vzorku.
+   - **Název**podrobného plánu: Zadejte název pro kopii ukázky podrobného plánu.
+   - **Umístění definice**: Použijte tři tečky a vyberte skupinu pro správu, do které chcete kopii ukázky Uložit.
 
-1. Vyberte _artefakty_ kartě v horní části stránky nebo **Další: Artefakty** v dolní části stránky.
+1. Vyberte kartu _artefakty_ v horní části stránky nebo **další: Artefakty** v dolní části stránky.
 
-1. Projděte si seznam artefakty, které tvoří vzorku podrobného plánu. Řada artefakty, které má parametry, které budeme definovat později. Vyberte **uložit koncept** až dokončíte revize vzorku podrobného plánu.
+1. Zkontrolujte seznam artefaktů, které tvoří ukázku podrobného plánu. Mnohé z artefaktů mají parametry, které budeme definovat později. Po dokončení kontroly ukázkového plánu vyberte **Uložit koncept** .
 
-## <a name="publish-the-sample-copy"></a>Publikování ukázkové kopírování
+## <a name="publish-the-sample-copy"></a>Publikovat ukázkovou kopii
 
-Vaši kopii ukázky podrobného plánu byla vytvořena ve vašem prostředí. Vytvoří se v **koncept** režimu a musí být **publikováno** předtím, než může být přiřazena a nasadit. Kopii ukázky podrobný plán lze přizpůsobit, aby vaše prostředí a požadavky, ale tato změna může přesunout mimo standardní.
+Vaše kopie ukázky podrobného plánu se teď vytvořila ve vašem prostředí. Je vytvořená v  režimu konceptu a musí  být publikována před tím, než bude možné ji přiřadit a nasadit. Kopii ukázky podrobného plánu můžete přizpůsobit vašemu prostředí a potřebám, ale tato změna se může přesunout mimo Standard.
 
-1. Vyberte **všechny služby** a vyhledejte a vyberte **zásady** v levém podokně. Na **zásady** stránce **plány**.
+1. Vyberte **všechny služby** a vyhledejte a v levém podokně vyberte **zásady** . Na stránce **zásady** vyberte **plány**.
 
-1. Vyberte **podrobný plán definice** na levé straně stránky. Pomocí filtru vyhledejte vaši kopii ukázky podrobného plánu a vyberte ji.
+1. Na levé straně vyberte stránku **definice** podrobného plánu. Pomocí filtrů Najděte kopii ukázky podrobného plánu a vyberte ji.
 
-1. Vyberte **publikovat podrobný plán** v horní části stránky. Nová stránka na pravé straně, zadejte **verze** vaši kopii ukázky podrobného plánu. Tato vlastnost je užitečná pro, pokud provedete změny později. Zadejte **změnit poznámky** jako "první verze publikovat podrobný plán ukázka UK OFFICIAL nebo NHS Velká Británie." Potom vyberte **publikovat** v dolní části stránky.
+1. V horní části stránky vyberte **publikovat podrobný plán** . Na stránce Nová na pravé straně zadejte **verzi** pro kopii ukázky podrobného plánu. Tato vlastnost je užitečná, pokud uděláte změnu později. Poskytněte **poznámky ke změnám** , jako je například "první verze publikovaná ze vzorové Británie nebo ukázky pro Velká Británie (NHS)." Potom v dolní části stránky vyberte **publikovat** .
 
-## <a name="assign-the-sample-copy"></a>Přiřazení kopie vzorku
+## <a name="assign-the-sample-copy"></a>Přiřadit ukázkovou kopii
 
-Jakmile kopii ukázky podrobný plán byl úspěšně **publikováno**, je možné přiřadit na předplatné v rámci se uložila do skupiny pro správu. Tento krok je, kde jsou k dispozici parametry aby každého nasazení kopii ukázky podrobného plánu jedinečný.
+Po úspěšném **publikování**kopie ukázky podrobného plánu je možné ji přiřadit k předplatnému v rámci skupiny pro správu, do které byl uložen. V tomto kroku je uvedeno, že jsou k dispozici parametry pro každé nasazení kopie ukázky podrobného plánu.
 
-1. Vyberte **všechny služby** a vyhledejte a vyberte **zásady** v levém podokně. Na **zásady** stránce **plány**.
+1. Vyberte **všechny služby** a vyhledejte a v levém podokně vyberte **zásady** . Na stránce **zásady** vyberte **plány**.
 
-1. Vyberte **podrobný plán definice** na levé straně stránky. Pomocí filtru vyhledejte vaši kopii ukázky podrobného plánu a vyberte ji.
+1. Na levé straně vyberte stránku **definice** podrobného plánu. Pomocí filtrů Najděte kopii ukázky podrobného plánu a vyberte ji.
 
-1. Vyberte **přiřazení podrobného plánu** v horní části stránky definice podrobného plánu.
+1. V horní části stránky definice podrobného plánu vyberte **přiřadit podrobný plán** .
 
 1. Zadejte hodnoty parametrů pro přiřazení podrobného plánu:
 
    - Základy
 
-     - **Předplatná:** Vyberte jednu nebo několik předplatných, které jsou ve skupině pro správu můžete uložit kopii ukázku podrobného plánu. Pokud vyberete více než jedno předplatné, vytvoří se pro každý pomocí zadaných parametrů přiřazení.
-     - **Název přiřazení**: Název je předem vyplněna za vás na základě názvu podrobný plán.
-       Nechte, jak je změnit podle potřeby.
-     - **Umístění**: Vyberte oblast pro spravovanou identitu, která má být vytvořen v. Podrobný plán Azure Blueprint používá tuto spravovanou identitu k aplikaci všech artefaktů v přiřazené podrobného plánu. Další informace najdete v tématu [Spravované identity pro zdroje Azure](../../../../active-directory/managed-identities-azure-resources/overview.md).
-     - **Verze definice podrobného plánu**: Vyberte **publikováno** verzi vaší kopii ukázky podrobného plánu.
+     - **Předplatná:** Vyberte jedno nebo více předplatných, které jsou ve skupině pro správu, do které jste uložili kopii ukázky podrobného plánu. Pokud vyberete více než jedno předplatné, vytvoří se pro každý pomocí zadaných parametrů přiřazení.
+     - **Název přiřazení**: Název je předem vyplněný pro vás na základě názvu podrobného plánu.
+       Změňte podle potřeby nebo ponechte tak, jak je.
+     - **Umístění**: Vyberte oblast, ve které se má spravovaná identita vytvořit. Podrobný plán Azure Blueprint používá tuto spravovanou identitu k aplikaci všech artefaktů v přiřazené podrobného plánu. Další informace najdete v tématu [Spravované identity pro zdroje Azure](../../../../active-directory/managed-identities-azure-resources/overview.md).
+     - **Verze definice**podrobného plánu: Vyberte **publikovanou** verzi vaší kopie ukázky podrobného plánu.
 
-   - Přiřazení zámku
+   - Zamknout přiřazení
 
-     Vyberte nastavení pro vaše prostředí zámek podrobného plánu. Další informace naleznete v tématu [uzamčení zdrojů plánu](../../concepts/resource-locking.md).
+     Vyberte nastavení zámku podrobného plánu pro vaše prostředí. Další informace naleznete v tématu [uzamčení zdrojů plánu](../../concepts/resource-locking.md).
 
    - Spravovaná identita
 
-     Ponechte výchozí nastavení _přiřazenou systémem_ spravované identity možnost.
+     Ponechte výchozí _systém přiřazenou_ možnost spravovaná identita.
 
    - Parametry artefaktu
 
-     Parametry definované v této části se vztahují na artefakt, pod kterým je definována. Tyto parametry jsou [dynamických parametrů](../../concepts/parameters.md#dynamic-parameters) protože máte definovaný během přiřazování podrobný plán. Úplný seznam nebo artefaktů parametry a jejich popis najdete v tématu [artefaktů parametry tabulky](#artifact-parameters-table).
+     Parametry definované v této části se vztahují na artefakt, ve kterém je definován. Tyto parametry jsou [dynamické parametry](../../concepts/parameters.md#dynamic-parameters) , protože jsou definovány během přiřazení podrobného plánu. Úplný seznam nebo parametry artefaktu a jejich popis najdete v tématu [tabulka parametrů artefaktů](#artifact-parameters-table).
 
-1. Po zadání všech parametrů se vyberte **přiřadit** v dolní části stránky. Přiřazení podrobného plánu se vytvoří a začne artefaktů nasazení. Nasazení trvá přibližně hodinu. Chcete-li zkontrolovat stav nasazení, otevřete přiřazení podrobného plánu.
+1. Po zadání všech parametrů vyberte v dolní části stránky **přiřadit** . Vytvoří se přiřazení podrobného plánu a spustí se nasazení artefaktu. Nasazení trvá zhruba hodinu. Chcete-li zjistit stav nasazení, otevřete přiřazení podrobného plánu.
 
 > [!WARNING]
-> Služba Azure plány a ukázky předdefinovaných podrobného plánu **zdarma**. Jsou prostředky Azure [ceny podle produktu](https://azure.microsoft.com/pricing/). Použití [cenové kalkulačky](https://azure.microsoft.com/pricing/calculator/) odhadnout náklady na provozování prostředky nasazené v tomto příkladu podrobného plánu.
+> Služba Azure modrotisky a předdefinované ukázky podrobného plánu jsou **zdarma**. Ceny prostředků Azure se účtují [podle produktu](https://azure.microsoft.com/pricing/). Pomocí [cenové kalkulačky](https://azure.microsoft.com/pricing/calculator/) můžete odhadnout náklady na provozované prostředky nasazené touto ukázkou podrobného plánu.
 
-## <a name="artifact-parameters-table"></a>Parametry tabulky artefaktu
+## <a name="artifact-parameters-table"></a>Tabulka parametrů artefaktů
 
-Následující tabulka obsahuje seznam podrobný plán artefaktů parametry:
+Následující tabulka uvádí seznam parametrů artefaktu podrobného plánu:
 
 Název artefaktu|Typ artefaktu|Název parametru|Popis|
 |-|-|-|-|
-|Podrobný plán iniciativy pro UK-OFFICIAL nebo NHS Velká Británie|Přiřazení zásad |Typy prostředků pro diagnostické protokoly auditu (zásad: Podrobný plán iniciativy pro UK-OFFICIAL nebo NHS Spojené království) |Seznam typů prostředků auditovat, pokud je nastavení diagnostický protokol Poznámka povolena.  Přípustné hodnoty, najdete v části [podporované služby, schémat a kategorie pro diagnostické protokoly Azure](../../../../azure-monitor/platform/diagnostic-logs-schema.md). |
-|[Preview]: Nasadit agenta Log Analytics pro virtuální počítače s Linuxem |Přiřazení zásad |Volitelné: Seznam imagí virtuálních počítačů, které mají podporovaný operační systém Linux pro přidání do oboru (zásady: [Preview]: Nasadit agenta Log Analytics pro virtuální počítače s Linuxem) |(Volitelné) Výchozí hodnota je _žádný_. Další informace najdete v tématu [vytvořit pracovní prostor Log Analytics na portálu Azure portal](../../../../azure-monitor/learn/quick-create-workspace.md). |
-|[Preview]: Nasadit agenta Log Analytics pro virtuální počítače s Windows |Přiřazení zásad |Volitelné: Seznam imagí virtuálních počítačů, které mají podporovaný operační systém Windows pro přidání do oboru (zásady: [Preview]: Nasadit agenta Log Analytics pro virtuální počítače s Windows) |(Volitelné) Výchozí hodnota je _žádný_. Další informace najdete v tématu [vytvořit pracovní prostor Log Analytics na portálu Azure portal](../../../../azure-monitor/learn/quick-create-workspace.md). |
+|Iniciativa pro Spojené království a oficiální nebo Velká Británie NHS|Přiřazení zásad |Typy prostředků pro audit diagnostických protokolů (zásady: Iniciativa podrobného plánu pro UK oficiální nebo Velká Británie NHS) |Seznam typů prostředků, které se mají auditovat, pokud je v nastavení diagnostického protokolu zapnutá možnost Poznámka  Přijatelné hodnoty najdete v tématu [podporované služby, schémata a kategorie pro diagnostické protokoly Azure](../../../../azure-monitor/platform/diagnostic-logs-schema.md). |
+|\[Verze\]Preview: Nasazení agenta Log Analytics pro virtuální počítače se systémem Linux |Přiřazení zásad |Volitelné: Seznam imagí virtuálních počítačů s podporovaným operačním systémem Linux, který se má přidat do oboru (zásady: \[Verze\]Preview: Nasazení agenta Log Analytics pro virtuální počítače se systémem Linux) |Volitelné Výchozí hodnota je _none_. Další informace najdete v tématu [Vytvoření pracovního prostoru Log Analytics v Azure Portal](../../../../azure-monitor/learn/quick-create-workspace.md). |
+|\[Verze\]Preview: Nasazení agenta Log Analytics pro virtuální počítače s Windows |Přiřazení zásad |Volitelné: Seznam imagí virtuálních počítačů s podporovaným operačním systémem Windows, který se má přidat do oboru (zásady: \[Verze\]Preview: Nasazení agenta Log Analytics pro virtuální počítače s Windows) |Volitelné Výchozí hodnota je _none_. Další informace najdete v tématu [Vytvoření pracovního prostoru Log Analytics v Azure Portal](../../../../azure-monitor/learn/quick-create-workspace.md). |
 
 ## <a name="next-steps"></a>Další postup
 
-Teď, když si kroky k nasazení UK-OFFICIAL a UK NHS podrobného plánu ukázky naleznete v následujících článcích se dozvíte o přehled a mapování ovládacích prvků:
+Teď, když jste si prohlédli kroky k nasazení ukázek OFICIÁLNÍch a NHS podrobných plánů na Velká Británie, najdete v následujících článcích informace o přehledu a mapování ovládacích prvků:
 
 > [!div class="nextstepaction"]
-> [Plány UK-OFFICIAL a UK NHS - přehled](./index.md)
-> [UK-OFFICIAL a plány NHS Velká Británie – ovládací prvek mapování](./control-mapping.md)
+> [Oficiální a NHS plány Spojené království – přehled](./index.md)
+> oficiálních a britských[NHS modrotisky – mapování ovládacích prvků](./control-mapping.md)
 
 Další články věnované podrobným plánům a postupu jejich využití:
 

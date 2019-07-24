@@ -1,44 +1,44 @@
 ---
-title: Řazení událostí připojení zařízení ze služby Azure IoT Hub pomocí služby Azure Cosmos DB | Dokumentace Microsoftu
-description: Tento článek popisuje, jak uspořádat a zaznamenávat události připojení zařízení ze služby Azure IoT Hub pomocí služby Azure Cosmos DB k údržbě nejnovější stav připojení
+title: Objednat události připojení zařízení z Azure IoT Hub pomocí Azure Cosmos DB | Microsoft Docs
+description: Tento článek popisuje, jak objednat a zaznamenat události připojení zařízení z Azure IoT Hub pomocí Azure Cosmos DB udržovat nejnovější stav připojení.
 services: iot-hub
 ms.service: iot-hub
 author: ash2017
 ms.topic: conceptual
 ms.date: 04/11/2019
 ms.author: asrastog
-ms.openlocfilehash: f4baab6e0909144efc613572207e7f24c4b4fe1f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a020221d841682d1e18d2b728a732ec4dfc35ef3
+ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66743273"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67988288"
 ---
-# <a name="order-device-connection-events-from-azure-iot-hub-using-azure-cosmos-db"></a>Objednat zařízení události připojení ze služby Azure IoT Hub pomocí služby Azure Cosmos DB
+# <a name="order-device-connection-events-from-azure-iot-hub-using-azure-cosmos-db"></a>Objednat události připojení zařízení z Azure IoT Hub pomocí Azure Cosmos DB
 
-Azure Event Grid umožňuje vytvářet aplikace založené na událostech a jednoduchá integrace událostí IoT v business solutions. Tento článek vás provede instalací, který slouží ke sledování a uložit nejnovější stav připojení zařízení do služby Cosmos DB. Společnost Microsoft použije pořadové číslo, které jsou k dispozici v událostech zařízení připojené a odpojené zařízení a nejnovější stav uložený ve službě Cosmos DB. Budeme používat uložené procedury, která je aplikační logiky, která se provede na kolekce v databázi Cosmos DB.
+Azure Event Grid vám pomůže sestavovat aplikace založené na událostech a snadno integrovat události IoT do obchodních řešení. Tento článek vás provede instalačním programem, který se dá použít ke sledování a ukládání nejnovějšího stavu připojení zařízení v Cosmos DB. Použijeme pořadové číslo dostupné v připojených zařízeních a událostech odpojených zařízení a uložíte nejnovější stav v Cosmos DB. Budeme používat uloženou proceduru, která je aplikační logikou spuštěnou pro kolekci v Cosmos DB.
 
-Pořadové číslo je řetězcové vyjádření šestnáctkového čísla. Porovnání řetězců můžete použít k identifikaci většímu počtu. Při převodu řetězce do šestnáctkové soustavy, číslo bude počet bitů na 256. Pořadové číslo výhradně roste a nejnovější událost může mít větší číslo než jiné události. To je užitečné, pokud máte časté zařízení připojí a odpojí a mít jistotu, že pouze nejnovější událost se používá k aktivaci podřízené akce, jako je Azure Event Grid nepodporuje řazení událostí.
+Pořadové číslo je řetězcové vyjádření šestnáctkového čísla. K identifikaci většího čísla můžete použít porovnání řetězců. Pokud řetězec převádíte na šestnáctkovou hodnotu, bude číslo 256. Pořadové číslo se přesně zvyšuje a poslední událost bude mít vyšší číslo než jiné události. To je užitečné v případě, že se zařízení často připojuje a odpojuje a chcete zajistit, aby se k aktivaci navazující akce používala jenom poslední událost, protože Azure Event Grid nepodporuje řazení událostí.
 
 ## <a name="prerequisites"></a>Požadavky
 
 * Aktivní účet Azure. Pokud žádný nemáte, můžete si [vytvořit bezplatný účet](https://azure.microsoft.com/pricing/free-trial/).
 
-* Aktivní účet rozhraní SQL API služby Azure Cosmos DB. Pokud ještě jeden ještě nevytvořili, přečtěte si téma [vytvoření databázového účtu](../cosmos-db/create-sql-api-dotnet.md#create-an-azure-cosmos-db-account) návod.
+* Aktivní Azure Cosmos DB účet rozhraní SQL API. Pokud jste ho ještě nevytvořili, přečtěte si téma [vytvoření databázového účtu](../cosmos-db/create-sql-api-java.md#create-a-database-account) pro návod.
 
-* Kolekce v databázi. Zobrazit [přidat kolekci](../cosmos-db/create-sql-api-dotnet.md#add-a-database-and-a-collection) návod. Když vytvoříte kolekci, použijte `/id` pro klíč oddílu.
+* Kolekce v databázi. Viz téma [Přidání kolekce](../cosmos-db/create-sql-api-java.md#add-a-container) pro návod. Při vytváření kolekce použijte `/id` pro klíč oddílu.
 
 * IoT Hub v Azure. Pokud jste si ještě žádné nevytvořili, přečtěte si téma [Začínáme se službou IoT Hub](iot-hub-csharp-csharp-getstarted.md), kde najdete návod.
 
-## <a name="create-a-stored-procedure"></a>Vytvoření uložené procedury
+## <a name="create-a-stored-procedure"></a>Vytvořit uloženou proceduru
 
-Nejprve vytvořte uloženou proceduru a nastavte ji do spustit logiku, která porovná čísla pořadí příchozích událostí a zaznamenává nejnovější událost za každou zařízení v databázi.
+Nejdřív vytvořte uloženou proceduru a nastavte ji tak, aby běžela logika, která porovnává pořadová čísla příchozích událostí a zaznamenává poslední událost na zařízení v databázi.
 
-1. V rozhraní SQL API Cosmos DB vyberte **Průzkumník dat** > **položky** > **novou uloženou proceduru**.
+1. V Cosmos DB rozhraní SQL API vyberte **Průzkumník dat** > **položky** > **Nová uložená procedura**.
 
    ![Vytvořit uloženou proceduru](./media/iot-hub-how-to-order-connection-state-events/create-stored-procedure.png)
 
-2. Zadejte **LatestDeviceConnectionState** pro ID uložené procedury a vložte následující **uložená procedura tělo**. Všimněte si, že tento kód by měl nahraďte existující kód v těle uloženou proceduru. Tento kód udržuje jeden řádek na ID zařízení a zaznamenává nejnovější stav připojení toto ID zařízení díky identifikaci nejvyšší pořadové číslo.
+2. Jako ID uložené procedury zadejte **LatestDeviceConnectionState** a vložte následující **text do textu uložené procedury**. Všimněte si, že tento kód by měl nahradit libovolný existující kód v těle uložené procedury. Tento kód udržuje jeden řádek na ID zařízení a zaznamenává nejnovější stav připojení ID zařízení, a to tak, že identifikuje nejvyšší pořadové číslo.
 
     ```javascript
     // SAMPLE STORED PROCEDURE
@@ -127,9 +127,9 @@ Nejprve vytvořte uloženou proceduru a nastavte ji do spustit logiku, která po
     }
     ```
 
-3. Uložte uložená procedura:
+3. Uložte uloženou proceduru:
 
-    ![uložit uložené procedury](./media/iot-hub-how-to-order-connection-state-events/save-stored-procedure.png)
+    ![Uložit uloženou proceduru](./media/iot-hub-how-to-order-connection-state-events/save-stored-procedure.png)
 
 ## <a name="create-a-logic-app"></a>Vytvoření aplikace logiky
 
@@ -137,28 +137,28 @@ Napřed vytvořte aplikaci logiky a přidejte trigger služby Event Grid, který
 
 ### <a name="create-a-logic-app-resource"></a>Vytvořte prostředek aplikace logiky
 
-1. V [webu Azure portal](https://portal.azure.com)vyberte **+ vytvořit prostředek**vyberte **integrace** a potom **aplikace logiky**.
+1. V [Azure Portal](https://portal.azure.com)vyberte **+ vytvořit prostředek**, vyberte **integrace** a pak **Aplikace logiky**.
 
    ![Vytvoření aplikace logiky](./media/iot-hub-how-to-order-connection-state-events/select-logic-app.png)
 
 2. Pojmenujte svoji aplikaci logiky jedinečným názvem v rámci vašeho předplatného a potom vyberte stejné předplatné, skupinu prostředků a umístění, jako má vaše centrum IoT.
 
-   ![Nové aplikace logiky](./media/iot-hub-how-to-order-connection-state-events/new-logic-app.png)
+   ![Nová aplikace logiky](./media/iot-hub-how-to-order-connection-state-events/new-logic-app.png)
 
-3. Vyberte **vytvořit** k vytvoření aplikace logiky.
+3. Vyberte **vytvořit** a vytvořte aplikaci logiky.
 
    Právě jste vytvořili prostředek Azure pro vaši aplikaci logiky. Až Azure nasadí aplikaci logiky, v Návrháři pro Logic Apps se zobrazí šablony pro obvyklé scénáře, abyste mohli začít rychleji.
 
    > [!NOTE]
-   > Chcete-li najít a znovu otevřete aplikaci logiky, vyberte **skupiny prostředků** a vyberte skupinu prostředků, kterou používáte pro tento návod. Pak vyberte svou novou aplikaci logiky. Otevře se návrhář aplikace logiky.
+   > Chcete-li znovu vyhledat a otevřít aplikaci logiky, vyberte skupiny **prostředků** a vyberte skupinu prostředků, kterou používáte pro tento postup. Pak vyberte svou novou aplikaci logiky. Otevře se Návrhář aplikace logiky.
 
-4. V návrháři aplikace logiky posuňte doprava, dokud se nezobrazí běžné triggery. V části **šablony**, zvolte **prázdná aplikace logiky** tak, že můžete vytvářet aplikace logiky úplně od začátku.
+4. V návrháři aplikace logiky se posuňte doprava, dokud neuvidíte běžné aktivační události. V části **šablony**vyberte **prázdná aplikace logiky** , abyste mohli vytvořit aplikaci logiky od začátku.
 
 ### <a name="select-a-trigger"></a>Výběr triggeru
 
 Trigger je konkrétní událost, která spustí aplikaci logiky. V tomto kurzu trigger, který spustí pracovní postup, přijímá žádost přes protokol HTTP.
 
-1. Konektory a triggery panelu hledání zadejte **HTTP** a stiskněte Enter.
+1. V panelu pro hledání konektorů a triggerů zadejte **http** a stiskněte ENTER.
 
 2. Vyberte jako trigger **Žádost – Při přijetí požadavku HTTP**.
 
@@ -166,7 +166,7 @@ Trigger je konkrétní událost, která spustí aplikaci logiky. V tomto kurzu t
 
 3. Vyberte **K vygenerování schématu použijte ukázkovou datovou část**.
 
-   ![K vygenerování schématu použít ukázkovou datovou část](./media/iot-hub-how-to-order-connection-state-events/sample-payload.png)
+   ![Vytvoření schématu pomocí ukázkové datové části](./media/iot-hub-how-to-order-connection-state-events/sample-payload.png)
 
 4. Do textového pole vložte následující ukázkový kód JSON a potom vyberte **Hotovo**:
 
@@ -192,55 +192,55 @@ Trigger je konkrétní událost, která spustí aplikaci logiky. V tomto kurzu t
    }]
    ```
 
-   ![Vložte ukázkovou datovou část JSON](./media/iot-hub-how-to-order-connection-state-events/paste-sample-payload.png)
+   ![Vložit ukázkovou datovou část JSON](./media/iot-hub-how-to-order-connection-state-events/paste-sample-payload.png)
 
 5. Můžete se zobrazit automaticky otevírané okno s oznámením **Nezapomeňte do svého požadavku přidat hlavičku Content-Type nastavenou na application/json**. Tento návrh můžete v klidu ignorovat a přejít k další části.
 
-### <a name="create-a-condition"></a>Vytvořit podmínku
+### <a name="create-a-condition"></a>Vytvoření podmínky
 
-V pracovního postupu aplikace logiky podmínek pomoci spustit konkrétní akce po předání této konkrétní podmínky. Když je splněna podmínka, lze definovat požadovanou akci. Pro účely tohoto kurzu je podmínka zkontroluje, jestli je typ eventType zařízení připojení nebo odpojení zařízení. Akce, budete moct spustit uloženou proceduru v databázi.
+V pracovním postupu aplikace logiky můžou podmínky po předání této konkrétní podmínky spustit konkrétní akce. Po splnění podmínky lze definovat požadovanou akci. V tomto kurzu je podmínka určena ke kontrole, jestli je typ eventType připojený k zařízení nebo zařízení odpojeno. Akce bude provádět uloženou proceduru ve vaší databázi.
 
-1. Vyberte **+ nový krok** pak **integrované**, vyhledejte a vyberte **podmínku**. Klikněte na tlačítko v **zvolit hodnotu** a objeví se pole zobrazují dynamický obsah – pole, která je možné vybrat. Vyplňte pole, jak je znázorněno níže na spustit pouze pro události zařízení připojené a odpojené zařízení:
+1. Vyberte **+ Nový krok** a potom **předdefinované**a pak najděte a vyberte **podmínku**. Klikněte na **vybrat hodnotu** a pole se zobrazí, aby se zobrazil dynamický obsah – pole, která se dají vybrat. Vyplňte pole, jak je uvedeno níže, aby se spustilo pouze pro události připojené k zařízení a odpojené zařízení:
 
-   * Zvolte hodnotu: **eventType** – tuto možnost vyberte, pokud z polí v seznamu dynamického obsahu, které se zobrazí po kliknutí na toto pole.
-   * Změna "je rovno" **končí**.
-   * Zvolte hodnotu: **nected**.
+   * Zvolte hodnotu: **EventType** – vyberte tuto položku z polí v dynamickém obsahu, která se zobrazí po kliknutí na toto pole.
+   * Změna "rovná se" na **končí**.
+   * Vyberte hodnotu: **nected**.
 
-     ![Zadejte podmínku](./media/iot-hub-how-to-order-connection-state-events/condition-detail.png)
+     ![Vyplnit podmínku](./media/iot-hub-how-to-order-connection-state-events/condition-detail.png)
 
-2. V **při hodnotě true** dialogového okna, klikněte na **přidat akci**.
+2. V dialogu **při hodnotě true** klikněte na **přidat akci**.
   
-   ![Přidání akce, pokud je true](./media/iot-hub-how-to-order-connection-state-events/action-if-true.png)
+   ![Přidat akci, pokud má hodnotu true](./media/iot-hub-how-to-order-connection-state-events/action-if-true.png)
 
-3. Vyhledání služby Cosmos DB a výběr **Azure Cosmos DB – spustit uloženou proceduru**
+3. Vyhledejte Cosmos DB a vyberte **uloženou proceduru Azure Cosmos DB-Execute** .
 
-   ![Vyhledávání pro službu cosmos DB](./media/iot-hub-how-to-order-connection-state-events/cosmosDB-search.png)
+   ![Hledat CosmosDB](./media/iot-hub-how-to-order-connection-state-events/cosmosDB-search.png)
 
-4. Vyplňte **cosmosdb-connection** pro **název připojení** a vyberte položku v tabulce a pak vyberte **vytvořit**. Zobrazí **spustit uloženou proceduru** panelu. Zadejte hodnoty pro pole:
+4. Vyplňte **cosmosdb – připojení** pro **název připojení** a vyberte položku v tabulce a pak vyberte **vytvořit**. Zobrazí se panel **Spustit uloženou proceduru** . Zadejte hodnoty pro pole:
 
    **ID databáze**: ToDoList
 
    **ID kolekce**: Položky
 
-   **Sproc ID**: LatestDeviceConnectionState
+   **ID sproc**: LatestDeviceConnectionState
 
-5. Vyberte **přidat nový parametr**. V rozevíracím seznamu, který se zobrazí, zaškrtněte políčka vedle **klíč oddílu** a **parametry pro uloženou proceduru**, klikněte kamkoli jinam na obrazovce, přidá pole pro hodnotu klíče oddílu a pole pro parametry pro uloženou proceduru.
+5. Vyberte **Přidat nový parametr**. V rozevíracím seznamu, který se zobrazí, zaškrtněte políčka **klíč oddílu** a **parametry pro uloženou proceduru**a pak klikněte kamkoli jinam na obrazovku. Přidá pole pro hodnotu klíče oddílu a pole pro parametry pro uloženou proceduru.
 
-   ![naplnění akce aplikace logiky](./media/iot-hub-how-to-order-connection-state-events/logicapp-stored-procedure.png)
+   ![naplnit akci aplikace logiky](./media/iot-hub-how-to-order-connection-state-events/logicapp-stored-procedure.png)
 
-6. Teď zadejte hodnotu klíče oddílu a parametry jak vidíte níže. Je nutné umístit závorky a uvozovky jak je znázorněno. Budete muset kliknout na **Přidat dynamický obsah** získat platné hodnoty, můžete zde použít.
+6. Nyní zadejte hodnotu a parametry klíče oddílu, jak je uvedeno níže. Nezapomeňte vložit do závorek a dvojité uvozovky, jak je znázorněno na obrázku. Možná budete muset kliknout na **Přidat dynamický obsah** a získat platné hodnoty, které zde můžete použít.
 
-   ![naplnění akce aplikace logiky](./media/iot-hub-how-to-order-connection-state-events/logicapp-stored-procedure-2.png)
+   ![naplnit akci aplikace logiky](./media/iot-hub-how-to-order-connection-state-events/logicapp-stored-procedure-2.png)
 
-7. V horní části podokna kde říká **pro každou**v části **vybrat výstup z předchozího postupu**, ujistěte se, že ho **text** zaškrtnuto.
+7. V horní části podokna, kde je **uvedeno, v**části **vyberte výstup z předchozích kroků**se ujistěte, že je vybráno **tělo** IT.
 
-   ![naplnění pro každou aplikaci logiky](./media/iot-hub-how-to-order-connection-state-events/logicapp-foreach-body.png)
+   ![naplnění aplikace logiky pro každý](./media/iot-hub-how-to-order-connection-state-events/logicapp-foreach-body.png)
 
 8. Uložte svou aplikaci logiky.
 
 ### <a name="copy-the-http-url"></a>Zkopírujte adresu URL protokolu HTTP
 
-Než odejdete z návrháře pro Logic Apps, zkopírujte adresu URL, kterou aplikace logiky naslouchá aktivační události. Pomocí této adresy URL nakonfigurujete Event Grid.
+Než necháte návrháře Logic Apps, zkopírujte adresu URL, ke které vaše aplikace logiky naslouchá pro aktivační událost. Pomocí této adresy URL nakonfigurujete Event Grid.
 
 1. Kliknutím rozbalte konfigurační pole triggeru **Při přijetí požadavku HTTP**.
 
@@ -264,15 +264,15 @@ V této části nakonfigurujete v IoT Hubu publikování událostí, když k nim
 
    ![Vytvoření nového odběru události](./media/iot-hub-how-to-order-connection-state-events/event-subscription.png)
 
-4. Vyplňte **Podrobnosti předplatného událostí**: Zadejte popisný název a vyberte **Event Grid schématu**.
+4. Vyplňte **Podrobnosti odběru události**: Zadejte popisný název a vyberte **Event Grid schéma**.
 
-5. Vyplňte **typy událostí** pole. V rozevíracím seznamu vyberte pouze **zařízení připojeno** a **odpojení zařízení** z nabídky. Klikněte kamkoli jinam na obrazovce seznamu zavřete a uložte svůj výběr.
+5. Vyplňte pole **typy událostí** . V rozevíracím seznamu vyberte v nabídce možnost **připojené zařízení** a **zařízení odpojeno** . Kliknutím kamkoli jinam na obrazovce zavřete seznam a uložíte vybrané možnosti.
 
-   ![Nastavte typy událostí hledání](./media/iot-hub-how-to-order-connection-state-events/set-event-types.png)
+   ![Nastavte typy událostí, které se mají hledat.](./media/iot-hub-how-to-order-connection-state-events/set-event-types.png)
 
-6. Pro **podrobnosti o koncovém bodu**, vyberte typ koncového bodu jako **Webhook** a klikněte na Vybrat koncový bod a vložte adresu URL, kterou jste zkopírovali z aplikace logiky a potvrďte výběr.
+6. V části **Podrobnosti o koncovém bodu**vyberte typ koncového bodu jako Webhook, klikněte na vybrat koncový bod a vložte adresu URL, kterou jste zkopírovali z aplikace logiky, a potvrďte výběr.
 
-   ![Vyberte adresu url koncového bodu](./media/iot-hub-how-to-order-connection-state-events/endpoint-select.png)
+   ![Vyberte adresu URL koncového bodu.](./media/iot-hub-how-to-order-connection-state-events/endpoint-select.png)
 
 7. Formulář by teď měl vypadat podobně jako v následujícím příkladu:
 
@@ -282,75 +282,75 @@ V této části nakonfigurujete v IoT Hubu publikování událostí, když k nim
 
 ## <a name="observe-events"></a>Sledovat události
 
-Teď, když je nastavení odběru události, můžeme otestovat připojení zařízení.
+Teď, když je vaše předplatné událostí nastavené, otestujeme připojení zařízení.
 
-### <a name="register-a-device-in-iot-hub"></a>Registrace zařízení ve službě IoT Hub
+### <a name="register-a-device-in-iot-hub"></a>Registrace zařízení v IoT Hub
 
 1. V centru IoT vyberte **Zařízení IoT**.
 
-2. Vyberte **+ přidat** v horní části podokna.
+2. V horní části podokna vyberte **+ Přidat** .
 
 3. Pro **ID zařízení** zadejte `Demo-Device-1`.
 
 4. Vyberte **Uložit**.
 
-5. Můžete přidat víc zařízení přes různé identifikátory zařízení.
+5. Můžete přidat několik zařízení s různými ID zařízení.
 
-   ![Zařízení do centra](./media/iot-hub-how-to-order-connection-state-events/AddIoTDevice.png)
+   ![Zařízení přidaná do centra](./media/iot-hub-how-to-order-connection-state-events/AddIoTDevice.png)
 
-6. Klikněte znovu; na zařízení Nyní se připojovací řetězce a klíče se nevyplní. Kopírovat **připojovací řetězec – primární klíč** pro pozdější použití.
+6. Znovu klikněte na zařízení; Nyní se naplní řetězce a klíče pro připojení. Zkopírujte **připojovací řetězec – primární klíč** pro pozdější použití.
 
-   ![Připojovací řetězec pro zařízení](./media/iot-hub-how-to-order-connection-state-events/DeviceConnString.png)
+   ![ConnectionString pro zařízení](./media/iot-hub-how-to-order-connection-state-events/DeviceConnString.png)
 
-### <a name="start-raspberry-pi-simulator"></a>Spusťte simulátor Raspberry Pi
+### <a name="start-raspberry-pi-simulator"></a>Spustit simulátor malinu PI
 
-Umožňuje použít webový simulátor Raspberry Pi pro simulaci zařízení připojení.
+Pojďme použít webový simulátor malinu pi k simulaci připojení zařízení.
 
-[Spusťte simulátor Raspberry Pi](https://azure-samples.github.io/raspberry-pi-web-simulator/#Getstarted)
+[Spustit simulátor malinu PI](https://azure-samples.github.io/raspberry-pi-web-simulator/#Getstarted)
 
-### <a name="run-a-sample-application-on-the-raspberry-pi-web-simulator"></a>Spustit ukázkovou aplikaci na webový simulátor Raspberry Pi
+### <a name="run-a-sample-application-on-the-raspberry-pi-web-simulator"></a>Spustit ukázkovou aplikaci ve webovém simulátoru malinu PI
 
-Tím se aktivuje událost připojené zařízení.
+Tím se aktivuje událost připojená k zařízení.
 
-1. V oblasti kódování nahraďte zástupný text v řádku 15 služby Azure IoT Hub, připojovací řetězec zařízení, který jste uložili na konci předchozí části.
+1. V oblasti kódování nahraďte zástupný text na řádku 15 pomocí připojovacího řetězce zařízení Azure IoT Hub, který jste uložili na konci předchozí části.
 
-   ![Vložte připojovací řetězec zařízení](./media/iot-hub-how-to-order-connection-state-events/raspconnstring.png)
+   ![Vložit do připojovacího řetězce zařízení](./media/iot-hub-how-to-order-connection-state-events/raspconnstring.png)
 
-2. Spusťte aplikaci tak, že vyberete **spustit**.
+2. Spusťte aplikaci výběrem možnosti **Spustit**.
 
-Vypadá podobně jako následující výstup, který zobrazuje data ze senzorů a zprávy, které se odesílají do služby IoT hub.
+Vidíte něco podobného jako v následujícím výstupu, který zobrazuje data snímače a zprávy, které se odesílají do služby IoT Hub.
 
    ![Spouštění aplikace.](./media/iot-hub-how-to-order-connection-state-events/raspmsg.png)
 
-   Klikněte na tlačítko **Zastavit** zastavit simulátor a aktivační události **odpojení zařízení** událostí.
+   Kliknutím na tlačítko **zastavit** můžete simulátor zastavit a aktivovat událost **odpojeného zařízení** .
 
-Nyní jste spustili ukázkovou aplikaci shromažďovat data ze senzorů a odesílat je do služby IoT hub.
+Teď jste spustili ukázkovou aplikaci, která shromáždí data ze senzorů a pošle ji do služby IoT Hub.
 
-### <a name="observe-events-in-cosmos-db"></a>Sledovat události ve službě Cosmos DB
+### <a name="observe-events-in-cosmos-db"></a>Sledování událostí v Cosmos DB
 
-Zobrazí se výsledky provést uloženou proceduru v dokumentu Cosmos DB. Zde je, jak to vypadá. Každý řádek obsahuje nejnovější stav připojení zařízení na zařízení.
+Výsledky spuštěné uložené procedury můžete zobrazit v dokumentu Cosmos DB. Vypadá to jako. Každý řádek obsahuje nejnovější stav připojení zařízení na jedno zařízení.
 
-   ![Jak výsledku](./media/iot-hub-how-to-order-connection-state-events/cosmosDB-outcome.png)
+   ![Postup pro výsledek](./media/iot-hub-how-to-order-connection-state-events/cosmosDB-outcome.png)
 
 ## <a name="use-the-azure-cli"></a>Použití Azure CLI
 
-Namísto použití [webu Azure portal](https://portal.azure.com), můžete provést kroky IoT Hubu pomocí rozhraní příkazového řádku Azure. Podrobnosti najdete na stránkách rozhraní příkazového řádku Azure pro [vytvoření odběru událostí](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription) a [vytvoření zařízení IoT](/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity#ext-azure-cli-iot-ext-az-iot-hub-device-identity-create).
+Místo používání [Azure Portal](https://portal.azure.com)můžete IoT Hub kroky provést pomocí rozhraní příkazového řádku Azure CLI. Podrobnosti najdete na stránkách Azure CLI pro [Vytvoření odběru událostí](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription) a [Vytvoření zařízení IoT](/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity#ext-azure-cli-iot-ext-az-iot-hub-device-identity-create).
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Tento kurz využívá prostředky, za které vám můžou být v předplatném Azure účtovány poplatky. Až budete hotovi vyzkoušet kurz a testování výsledky, zakázat nebo odstranit prostředky, které nechcete zachovat.
+Tento kurz využívá prostředky, za které vám můžou být v předplatném Azure účtovány poplatky. Až skončíte s vyzkoušením kurzu a otestujete výsledky, zakažte nebo odstraňte prostředky, které nechcete zachovat.
 
 Pokud nechcete přijít o práci na aplikaci logiky, místo odstranění ji zakažte.
 
 1. Přejděte do aplikace logiky.
 
-2. Na **přehled** okně vyberte **odstranit** nebo **zakázat**.
+2. V okně **Přehled** vyberte **Odstranit** nebo **Zakázat**.
 
     Každý odběr může mít jedno bezplatné centrum IoT. Pokud jste vytvořili bezplatné centrum pro účely tohoto kurzu, tak ho nemusíte odstraňovat, aby se vám nic neúčtovalo.
 
 3. Přejděte do svého centra IoT.
 
-4. Na **přehled** okně vyberte **odstranit**.
+4. V okně **Přehled** vyberte **Odstranit**.
 
     I když si centrum IoT necháte, bude vhodné odstranit odběr události, který jste vytvořili.
 
@@ -360,12 +360,12 @@ Pokud nechcete přijít o práci na aplikaci logiky, místo odstranění ji zaka
 
 7. Vyberte **Odstranit**.
 
-Pokud chcete odebrat účet služby Azure Cosmos DB na webu Azure Portal, klikněte pravým tlačítkem na název účtu a klikněte na tlačítko **odstranit účet**. Přečtěte si podrobné pokyny pro [odstranění účtu služby Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/manage-account).
+Pokud chcete účet Azure Cosmos DB z Azure Portal odebrat, klikněte pravým tlačítkem na název účtu a klikněte na **Odstranit účet**. Přečtěte si podrobné pokyny k [odstranění účtu Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/manage-account).
 
 ## <a name="next-steps"></a>Další postup
 
-* Další informace o [reakce na události služby IoT Hub s využitím služby Event Grid pro aktivaci akcí](../iot-hub/iot-hub-event-grid.md)
+* Přečtěte si další informace o tom [, jak IoT Hub události pomocí Event Grid aktivovat akce](../iot-hub/iot-hub-event-grid.md) .
 
-* [Projděte si kurz událostí služby IoT Hub](../event-grid/publish-iot-hub-events-to-logic-apps.md)
+* [Vyzkoušejte kurz IoT Hub události](../event-grid/publish-iot-hub-events-to-logic-apps.md)
 
-* Další informace o tom, co jiného vám pomůžou s [služby Event Grid](../event-grid/overview.md)
+* Další informace o tom, co dalšího můžete dělat s [Event Grid](../event-grid/overview.md)

@@ -1,10 +1,10 @@
 ---
-title: Velké instance Azure HANA řídit prostřednictvím webu Azure portal | Dokumentace Microsoftu
-description: Popisuje, jak způsob, jak můžete identifikovat a pracovat s velkých instancích HANA Azure prostřednictvím portálu
+title: Správa velkých instancí Azure HANA prostřednictvím Azure Portal | Microsoft Docs
+description: Popisuje způsob, jakým můžete pomocí portálu identifikovat a pracovat s velkými instancemi Azure HANA.
 services: virtual-machines-linux,virtual-machines-windows
 documentationcenter: ''
 author: msjuergent
-manager: patfilot
+manager: bburns
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -13,139 +13,148 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 04/02/2019
+ms.date: 07/15/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8240308b3e0955b1d4d3ef2e82cad215daf95b00
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2d64fe6c244ffcb6da2926dfea6efaa6da315727
+ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61482145"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68234457"
 ---
 # <a name="azure-hana-large-instances-control-through-azure-portal"></a>Řízení velkých instancí Azure HANA prostřednictvím webu Azure Portal
-Tento dokument popisuje způsob, jak [velkých instancích HANA](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) jsou uvedeny v [webu Azure portal](https://portal.azure.com) a jaké činnosti mohou být prováděna prostřednictvím webu Azure portal s jednotkami velká Instance HANA, které jsou pro vás nasazeny. Viditelnost velkých instancích HANA na webu Azure portal je k dispozici prostřednictvím poskytovatele prostředků Azure pro velké instance HANA, která je aktuálně ve verzi public preview
+Tento dokument popisuje způsob, jakým se v [Azure Portal](https://portal.azure.com) prezentují [velké instance Hana](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) a jaké aktivity je možné provádět prostřednictvím Azure Portal s velkými jednotkami instancí Hana, které jsou pro vás nasazené. Viditelnost velkých instancí HANA v Azure Portal k dispozici prostřednictvím poskytovatele prostředků Azure pro velké instance HANA, který je aktuálně ve verzi Public Preview.
 
-## <a name="register-hana-large-instance-resource-provider"></a>Registrace poskytovatele prostředků velká Instance HANA
-Vaše předplatné Azure, které jste používali pro velké Instance HANA nasazení je obvykle zaregistrované u poskytovatele prostředků HANA velké Instance. Ale pokud nevidíte, že jste nasadili velké Instance HANA jednotky, byste měli zaregistrovat poskytovatele prostředků ve vašem předplatném Azure. Existují dva způsoby, jak při registraci poskytovatele prostředků velké Instance HANA
+## <a name="register-hana-large-instance-resource-provider"></a>Registrovat poskytovatele prostředků velké instance HANA
+U vašeho předplatného Azure, které jste použili pro nasazení rozsáhlých instancí HANA, je obvykle zaregistrované pro poskytovatele prostředků rozsáhlých instancí HANA. Pokud ale nevidíte, že jste nasadili velké jednotky instancí HANA, měli byste zaregistrovat poskytovatele prostředků ve vašem předplatném Azure. Existují dva způsoby, jak registrovat poskytovatele prostředků velké instance HANA.
 
-### <a name="register-through-cli-interface"></a>Registrace přes rozhraní příkazového řádku
-Musíte být přihlášení na vaše předplatné Azure použité pro nasazení velká Instance HANA přes rozhraní příkazového řádku Azure. Můžete (re) registraci poskytovatele velké Instance HANA pomocí tohoto příkazu:
+### <a name="register-through-cli-interface"></a>Registrovat přes rozhraní CLI
+Musíte být přihlášeni k předplatnému Azure, které se používá pro nasazení rozsáhlých instancí HANA prostřednictvím rozhraní Azure CLI. Pomocí tohoto příkazu můžete (znovu) zaregistrovat poskytovatele velkých instancí HANA:
     
     az provider register --namespace Microsoft.HanaOnAzure
 
-Další informace najdete v článku [poskytovatelé a typy prostředků Azure](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services#azure-cli)
+Další informace najdete v článku poskytovatelé [a typy prostředků Azure](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services#azure-cli) .
 
 
-### <a name="register-through-azure-portal"></a>Registrace pomocí webu Azure portal
-Je to možné (re) registraci HANA velké Instance poskytovatele prostředků pomocí webu Azure portal. Budete muset seznamu vaše předplatné na webu Azure portal a dvakrát klikněte na předplatné, která byla použita k nasazení jednotek vaší velká Instance HANA. Jeden, ke kterému jste na stránce přehled vašeho předplatného vyberte "Poskytovatelů prostředků", jak je znázorněno níže a v okně hledání zadejte "HANA". 
+### <a name="register-through-azure-portal"></a>Registrovat prostřednictvím Azure Portal
+Můžete (znovu) zaregistrovat poskytovatele prostředků velké instance HANA prostřednictvím Azure Portal. Musíte si vypsat předplatné v Azure Portal a dvakrát kliknout na předplatné, které se použilo k nasazení velkých jednotek instancí HANA. Na stránce Přehled vašeho předplatného vyberte "poskytovatelé prostředků", jak vidíte níže, a do okna hledání zadejte "HANA". 
 
-![Zaregistrovat poskytovatele prostředků HLI prostřednictvím webu Azure portal](./media/hana-li-portal/portal-register-hli-rp.png)
+![Registrovat HLI RP prostřednictvím Azure Portal](./media/hana-li-portal/portal-register-hli-rp.png)
 
-Na snímku obrazovky je znázorněno byl už zaregistrovaný poskytovatel prostředků. V případě, že ještě není zaregistrovaný poskytovatel prostředků, stiskněte "přeregistrovat" nebo "register".
+Na zobrazeném snímku obrazovky již byl zaregistrován poskytovatel prostředků. V případě, že poskytovatel prostředků ještě není zaregistrovaný, stiskněte znovu registrovat nebo zaregistrovat.
 
-Další informace najdete v článku [poskytovatelé a typy prostředků Azure](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services#azure-powershell)
-
-
-## <a name="display-of-hana-large-instance-units-in-the-azure-portal"></a>Zobrazení jednotky velká Instance HANA na webu Azure Portal
-Při odesílání požadavku nasazení velká Instance HANA, zobrazí se výzva k určení, které se připojujete k velké instance HANA i předplatné Azure. Se doporučuje, používat stejné předplatné, které používáte k nasazení, který funguje na jednotky velká Instance HANA aplikační vrstvě SAP.
-Jako první se získávání nasazují velké instance HANA, nový [skupiny prostředků Azure](https://docs.microsoft.com/azure/azure-resource-manager/manage-resources-portal) se vytvoří v předplatném Azure, které jste odeslali v žádosti o nasazení pro váš velkých instancích HANA.  Nová skupina prostředků se zobrazí seznam všech vašich jednotek velká Instance HANA, které jste nasadili v rámci konkrétního předplatného.
-
-Pokud chcete zjistit novou skupinu prostředků Azure, můžete seznam skupiny prostředků ve vašem předplatném tak, že přejdete do levého navigačního podokna na webu Azure portal
-
-![Podokno navigace na webu Azure portal](./media/hana-li-portal/portal-resource-group.png)
-
-V seznamu skupin prostředků můžete se dostat na seznam, možná budete muset vyfiltrujete předplatné, které jste použili jste nasadili velké instance HANA
-
-![Filtrování skupin prostředků na webu Azure portal](./media/hana-li-portal/portal-filtering-subscription.png)
-
-Po filtrování se můžete správné předplatné, stále může mít dlouhý seznam skupin prostředků. Vyhledejte jednu se po opravě z **- Txxx** tam, kde "xxx" jsou tři číslice, jako jsou **-T050**. 
-
-Jak jste zjistili, skupinu prostředků, uveďte podrobnosti ho. Seznam, který jste dostali může vypadat:
-
-![Seznam HLI na webu Azure portal](./media/hana-li-portal/portal-hli-units-list.png)
-
-Všechny jednotky uvedené představují jednu jednotku velká Instance HANA, který byl nasazen v rámci vašeho předplatného. V takovém případě lze najít v osmi různých velká Instance HANA jednotkách, které byly nasazeny v rámci vašeho předplatného.
-
-Pokud jste nasadili několik tenantů velká Instance HANA pod stejné předplatné Azure, zjistíte více skupin prostředků Azure 
+Další informace najdete v článku poskytovatelé [a typy prostředků Azure](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services#azure-powershell) .
 
 
-## <a name="look-at-attributes-of-single-hli-unit"></a>Podívejte se na jednu jednotku HLI atributy
-V seznamu jednotek velká Instance HANA můžete kliknout na jednu jednotku a získat podrobné informace o jednu jednotku velká Instance HANA. 
+## <a name="display-of-hana-large-instance-units-in-the-azure-portal"></a>Zobrazení jednotek velkých instancí HANA v Azure Portal
+Při odesílání žádosti o nasazení velké instance HANA budete požádáni o zadání předplatného Azure, ke kterému se připojujete i s velkými instancemi HANA. Doporučujeme použít stejné předplatné, které používáte k nasazení vrstvy aplikace SAP, která funguje s jednotkami velkých instancí HANA.
+Když se nasadí první velký počet instancí HANA, vytvoří se v předplatném Azure, které jste odeslali v žádosti o nasazení pro velké instance HANA, novou [skupinu prostředků Azure](https://docs.microsoft.com/azure/azure-resource-manager/manage-resources-portal) .  V nové skupině prostředků se zobrazí seznam všech jednotek velkých instancí služby HANA, které jste nasadili v rámci konkrétního předplatného.
 
-Na obrazovce Přehled získáte prezentace jednotky, který bude vypadat takto:
+Pokud chcete najít novou skupinu prostředků Azure, vypište skupinu prostředků ve vašem předplatném procházením levého navigačního podokna Azure Portal.
 
-![Zobrazit přehled HLI jednotky](./media/hana-li-portal/portal-show-overview.png)
+![Navigační podokno v Azure Portal](./media/hana-li-portal/portal-resource-group.png)
 
-Pohledu na různé atributy, které jsou zobrazeny, tyto atributy vypadat po liší od atributů virtuálního počítače Azure. Na levé straně záhlaví ukazuje skupinu prostředků, oblast Azure, název předplatného a ID jakož i několik značek, které jste přidali. Velká Instance HANA jednotky mají ve výchozím nastavení žádné značky přiřazeny. Na pravé straně záhlaví je uveden název jednotky jako při nasazení bylo provedeno přiřazen. Operační systém se zobrazuje i IP adresu. Jako s virtuálními počítači HANA velké instance jednotku zadejte pomocí počet procesorů, vlákna a paměti se zobrazí také. Další informace o různých jednotek velká Instance HANA, můžete vidět tady:
+V seznamu skupin prostředků, které se zobrazí, možná budete muset filtrovat předplatné, které jste použili k nasazení velkých instancí HANA.
+
+![Filtrovat skupiny prostředků v Azure Portal](./media/hana-li-portal/portal-filtering-subscription.png)
+
+Po filtrování do správného předplatného může být stále dlouhý seznam skupin prostředků. Vyhledejte ho s následnou opravou **-TXXX** , kde xxx je tři číslice, např. **T050**. 
+
+Jak jste našli skupinu prostředků, uveďte podrobnosti. Seznam, který jste dostali, může vypadat takto:
+
+![Seznam HLI v Azure Portal](./media/hana-li-portal/portal-hli-units-list.png)
+
+Všechny uvedené jednotky představují jednu jednotku velkých instancí HANA, která byla nasazena v rámci vašeho předplatného. V takovém případě se můžete podívat na osm různých jednotek s velkými instancemi HANA, které byly nasazeny v rámci vašeho předplatného.
+
+Pokud jste v rámci stejného předplatného Azure nasadili několik tenantů rozsáhlých instancí HANA, najdete víc skupin prostředků Azure. 
+
+
+## <a name="look-at-attributes-of-single-hli-unit"></a>Podívejte se na atributy jedné jednotky HLI.
+V seznamu jednotek velkých instancí HANA můžete kliknout na jednu jednotku a získat podrobnosti o jedné jednotce velké instance HANA. 
+
+Na obrazovce Přehled se po kliknutí na Zobrazit další zobrazí prezentace jednotky, která vypadá takto:
+
+![Zobrazit přehled jednotky HLI](./media/hana-li-portal/portal-show-overview.png)
+
+V zobrazených různých atributech vypadají tyto atributy špatně, které se liší od atributů virtuálních počítačů Azure. V záhlaví na levé straně se zobrazuje skupina prostředků, oblast Azure, název předplatného a ID a také některé značky, které jste přidali. Ve výchozím nastavení nemají jednotky velkých instancí HANA přiřazenou značku. Na pravé straně hlavičky je název jednotky uveden jako přiřazený po dokončení nasazení. Zobrazí se operační systém i IP adresa. Stejně jako u virtuálních počítačů se zobrazuje i typ jednotky velkých instancí HANA s počtem vláken procesoru a paměti. Další podrobnosti o různých jednotkách velkých instancí HANA jsou uvedené tady:
 
 - [Dostupné skladové položky pro HLI](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-available-skus)
 - [Architektura úložiště SAP HANA (velké instance)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-storage-architecture) 
 
-Další pole v pravém sloupci hlavičky informuje o stavu napájení HANA velké instance jednotky.
+Další data na pravé dolní straně jsou revize razítka velké instance HANA. Možné hodnoty jsou:
+
+- Revize 3
+- Revize 4
+
+Revize 4 je nejnovější architektura vydaná pro velké instance HANA, která přináší větší vylepšení latence sítě mezi virtuálními počítači Azure a jednotkami velkých instancí HANA nasazenými v rámci revizních razítek nebo řádků.
+Další velmi důležité informace najdete v pravém dolním rohu přehledu s názvem skupiny umístění blízkosti Azure, která se automaticky vytvoří pro každou nasazenou jednotku velkých instancí HANA. Tato skupina umístění blízkosti musí být odkazována při nasazení virtuálních počítačů Azure, které hostují aplikační vrstvu SAP. Pomocí [skupiny umístění blízkosti Azure](https://docs.microsoft.com/azure/virtual-machines/linux/co-location) přidružené k jednotce velkých instancí Hana se ujistěte, že jsou virtuální počítače Azure nasazené v těsné blízkosti jednotky velkých instancí Hana. Způsob, jakým se dají skupiny umístění pro okolí použít k vyhledání aplikační vrstvy SAP ve stejném datovém centru Azure jako revize 4 jednotky velkých instancí HANA, jsou popsané v tématu [skupiny umístění pro Azure pro optimální latenci sítě s aplikacemi SAP. ](sap-proximity-placement-scenarios.md).
+
+Další pole v pravém sloupci záhlaví informuje o stavu napájení jednotky velkých instancí HANA.
 
 > [!NOTE]
-> Stav napájení popisuje, zda jednotku hardwaru využívá k zapnutí nebo vypnutí. Informace o operačním systému se nahoru a spouštění poskytnout. Během restartování jednotka velká Instance HANA bude probíhat (krátkodobé používání) čas, kdy se stav jednotky změní na **počáteční** k přesunutí do stavu **spuštěno**. Ve stavu **spuštěno** znamená, že se spouští operační systém nebo, že operační systém se zahájilo úplně. V důsledku toho po restartu jednotky, nemůžete očekávat, že okamžitě přihlásit do jednotky, poté, co se přepne do stavu **spuštěno**.
+> Stav napájení popisuje, zda je hardwarová jednotka zapnutá nebo vypnutá. Neposkytuje informace o tom, jak operační systém pracuje a je spuštěný. Při restartu velké jednotky instance HANA se zobrazí malý čas, kdy se stav jednotky změní na **zahájení** přechodu do stavu **zahájeno**. Ve stavu spuštěno znamená  , že se operační systém spouští nebo že byl operační systém zcela spuštěn. V důsledku toho po restartování jednotky Nemůžete očekávat, že se okamžitě přihlašujete k jednotce, jakmile se stav přepne na **zahájeno**.
 > 
 
+Pokud stisknete tlačítko Zobrazit další, zobrazí se další informace. Jednou z dalších informací se zobrazuje revize razítka velké instance HANA, jednotka byla nasazena v. Přečtěte si článek [co je SAP HANA v Azure (velké instance)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) pro různé revize rozsáhlých razítek instancí Hana.
 
-## <a name="check-activities-of-a-single-hana-large-instance-unit"></a>Kontrola činností celek velká Instance HANA 
-Nad rámec poskytuje základní informace o jednotkách velká Instance HANA, můžete zkontrolovat aktivity konkrétní jednotce. Protokol aktivit může vypadat:
+## <a name="check-activities-of-a-single-hana-large-instance-unit"></a>Kontrolovat aktivity jedné jednotky velkých instancí HANA 
+Kromě poskytnutí přehledu jednotek velkých instancí HANA můžete kontrolovat aktivity konkrétní jednotky. Protokol aktivit by mohl vypadat takto:
 
-![Podokno navigace na webu Azure portal](./media/hana-li-portal/portal-activity-list.png)
+![Navigační podokno v Azure Portal](./media/hana-li-portal/portal-activity-list.png)
 
-Mezi hlavní činnosti zaznamenané jsou jednotky se restartuje. Data uvedená obsahují stav aktivity, časové razítko je teď aktivuje aktivitu, ID předplatného z který aktivita obdržela aktivuje a Azure uživatele, který aktivoval aktivity. 
+Jedna z hlavních aktivit zaznamenaných je restart jednotky. Uvedená data zahrnují stav aktivity, časové razítko aktivované aktivity, ID předplatného, ze kterého se aktivita aktivovala, a uživatele Azure, který aktivitu aktivoval. 
 
-Jiné aktivity, které se nahrávají se změny jednotek v Azure metadata. Kromě restart zahájen, můžete vidět aktivitu **zápisu HANAInstances**. Tento typ aktivity provádí velká Instance HANA jednotku, samotného žádné změny, ale je jak dokumentovat změny metadat jednotky v Azure. V případě uvedené jsme přidali a odstranit značku (viz další část).
+Další zaznamenaná aktivita se změní na jednotku v metadatech Azure meta. Kromě iniciace restartování můžete zobrazit aktivitu **HANAInstances zápisu**. Tento typ aktivity neprovede žádné změny v samotné jednotce velké instance HANA, ale provádí změny v metadatech jednotky v Azure. V případě uvedeného případu jsme přidali a odstranili značku (viz další oddíl).
 
-## <a name="add-and-delete-an-azure-tag-to-a-hana-large-instance-unit"></a>Přidat a odstranit značku Azure na jednotku velká Instance HANA
-Další možností je nutné je přidat [značka](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags) na jednotku velká Instance HANA. Stejným způsobem jako získávání přiřazují značky se neliší od přiřazení značek k virtuálním počítačům. S virtuálními počítači značky existují v Azure metadat a pro velké instance HANA, jako mají stejná omezení jako značky pro virtuální počítače.
+## <a name="add-and-delete-an-azure-tag-to-a-hana-large-instance-unit"></a>Přidání a odstranění značky Azure pro jednotku velkých instancí HANA
+Další možností je přidat [značku](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags) do jednotky velkých instancí Hana. Způsob přiřazování značek se neliší od přiřazení značek k virtuálním počítačům. Stejně jako u virtuálních počítačů existují značky v metadatech Azure a u velkých instancí HANA mají stejná omezení jako značky pro virtuální počítače.
 
-Odstranění značek funguje stejným způsobem jako s virtuálními počítači. Zobrazí se obě aktivity, použití a odstranění značky v protokolu aktivit se konkrétní jednotka velká Instance HANA.
+Odstraňování značek funguje stejným způsobem jako u virtuálních počítačů. Obě aktivity, použití a odstranění značky budou uvedeny v protokolu aktivit příslušné jednotky velkých instancí HANA.
 
-## <a name="check-properties-of-a-hana-large-instance-unit"></a>Zkontrolujte vlastnosti jednotky velká Instance HANA
-V části **vlastnosti** obsahuje důležité informace, které získáte, když jsou instance předán vám. Je oddíl, kde získáte všechny informace, které by mohly vyžadovat podporu případů nebo který budete potřebovat při nastavování konfigurace úložiště snímků. V důsledku této části je kolekce dat kolem instanci, připojení k instanci Azure a back-endu úložiště. Horní části vypadá takto:
+## <a name="check-properties-of-a-hana-large-instance-unit"></a>Zkontroluje vlastnosti jednotky velkých instancí HANA.
+**Vlastnosti** oddílu obsahují důležité informace, které získáte, když jsou instance předány vám. Je to část, kde získáte všechny informace, které byste mohli vyžadovat v případech podpory nebo které potřebujete při nastavování konfigurace snímku úložiště. Vzhledem k tomu, že tato část je kolekcí dat kolem vaší instance, připojení instance k Azure a back-endu úložiště. Horní část oddílu vypadá takto:
 
 
-![horní část HLI vlastnosti na webu Azure portal](./media/hana-li-portal/portal-properties-top.png)
+![horní část vlastností HLI v Azure Portal](./media/hana-li-portal/portal-properties-top.png)
 
-První několik položek dat, jste viděli v okně Přehled již. Ale důležité část dat je ID okruh ExpressRoute, které jste získali jako první nasazené jednotky byly předán. V některých případech podpory se můžou získat dotaz pro tato data. Položka důležitá data se zobrazí v dolní části na snímku obrazovky. Data zobrazená je IP adresa hlavní úložiště systému souborů NFS, který izoluje úložiště vašeho **tenanta** v zásobníku velká Instance HANA. Tato IP adresa je také potřeba při úpravách [konfigurační soubor pro ukládání snímků zálohy](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-backup-restore#set-up-storage-snapshots). 
+První pár datových položek, které jste viděli na obrazovce Přehled, už. Ale důležitou částí dat je ID okruhu ExpressRoute, který jste získali jako první nasazené jednotky, které jste předali. V některých případech podpory se může zobrazit výzva k zadání těchto dat. Důležité zadání dat se zobrazí v dolní části obrazovky. Zobrazená data jsou IP adresa Head úložiště NFS, která izoluje vaše úložiště pro vašeho **tenanta** v zásobníku velkých instancí Hana. Tato IP adresa je potřeba také při úpravách [konfiguračního souboru pro zálohy snímků úložiště](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-backup-restore#set-up-storage-snapshots). 
 
-Jak se posunete dolů v podokně vlastností, získáte další data, jako je Identifikátor jedinečný prostředek pro velké Instance HANA jednotky nebo ID předplatného, které bylo přiřazeno k nasazení.
+Při procházení dolů v podokně vlastností získáte další data, jako je jedinečné ID prostředku pro jednotku velké instance HANA, nebo ID předplatného, které bylo přiřazeno k nasazení.
 
-## <a name="restart-a-hana-large-instance-unit-through-azure-portal"></a>Restartujte jednotku velká Instance HANA prostřednictvím webu Azure portal
-Zahajuje se restartování operačního systému Linux, byly různých situacích, kdy operační systém nelze dokončit restartování úspěšně. Pokud chcete vynutit restartování, potřebujete k otevření žádosti o službu má Microsoft operations provést restart power jednotky velká Instance HANA. Funkce power restartování jednotky velká Instance HANA je teď integrovaná v na webu Azure portal. Pokud jste v části Přehled velká Instance HANA jednotky, se zobrazí tlačítko pro restartování nad datové části
+## <a name="restart-a-hana-large-instance-unit-through-azure-portal"></a>Restartování velké jednotky instance HANA prostřednictvím Azure Portal
+Při inicializaci restartování operačního systému Linux došlo k různým situacím, kdy operační systém nemohl úspěšně dokončit restart. Aby bylo možné vynutit restartování, je nutné otevřít žádost o služby, aby se operace společnosti Microsoft prováděla při napájení jednotky velké instance HANA. Funkce napájení jednotky velkých instancí HANA je teď integrovaná do Azure Portal. Stejně jako část jednotky velkých instancí HANA se zobrazí tlačítko pro restart v části data.
 
-![Restartujte krok #1 na webu Azure portal](./media/hana-li-portal/portal-restart-first-step.png)
+![Restartovat krok #1 v Azure Portal](./media/hana-li-portal/portal-restart-first-step.png)
 
-Jako jsou stisknutí tlačítka restartování, zobrazí se výzva, jestli Opravdu chcete restartovat jednotky. Jak můžete to potvrďte klepnutím na tlačítko "Ano", jednotka se restartuje.
+Po stisknutí tlačítka restartovat se zobrazí dotaz, zda opravdu chcete jednotku restartovat. Jakmile ověříte, že stisknete tlačítko "Ano", jednotka se restartuje.
 
 > [!NOTE]
-> Probíhá restartování, bude probíhat (krátkodobé používání) čas, kdy se stav jednotky změní na **počáteční** k přesunutí do stavu **spuštěno**. Ve stavu **spuštěno** znamená, že se spouští operační systém nebo, že operační systém se zahájilo úplně. V důsledku toho po restartu jednotky, nemůžete očekávat, že okamžitě přihlásit do jednotky, poté, co se přepne do stavu **spuštěno**.
+> V procesu restartování se zobrazí malý čas, kdy se stav jednotky změní na **zahájení** přechodu do stavu **zahájeno**. Ve stavu spuštěno znamená  , že se operační systém spouští nebo že byl operační systém zcela spuštěn. V důsledku toho po restartování jednotky Nemůžete očekávat, že se okamžitě přihlašujete k jednotce, jakmile se stav přepne na **zahájeno**.
 
 > [!IMPORTANT]
-> Závisí na množství paměti v jednotky velká Instance HANA, restartování a restartování hardwaru a operačního systému může trvat až jednu hodinu
+> Závisí na velikosti paměti v jednotce velké instance služby HANA, restartování a restartování hardwaru a operační systém může trvat až jednu hodinu.
 
 
-## <a name="open-a-support-request-for-hana-large-instances"></a>Žádost o podporu pro velké instance HANA
-Z portálu Azure zobrazení velká Instance HANA jednotek můžete vytvořit žádosti o podporu speciálně pro HANA velké Instance jednotka také. Jak budete postupovat podle odkazu **nová žádost o podporu** 
+## <a name="open-a-support-request-for-hana-large-instances"></a>Otevření žádosti o podporu pro velké instance HANA
+Z Azure Portal zobrazení jednotek velkých instancí HANA můžete vytvořit i žádosti o podporu speciálně pro velké jednotky instancí HANA. Při sledování odkazu na **novou žádost o podporu** 
 
-![Spustit krok žádosti o služby #1 na webu Azure portal](./media/hana-li-portal/portal-initiate-support-request.png)
+![zahájit krok žádosti o službu #1 v Azure Portal](./media/hana-li-portal/portal-initiate-support-request.png)
 
-Zajistí služba programu velké instance SAP HANA uvedené na další obrazovce, musíte vybrat "všechny služby" jak je znázorněno níže
+Pokud chcete získat službu Velké instance SAP HANA uvedenou na další obrazovce, možná budete muset vybrat všechny služby, jak je znázorněno níže.
 
-![Vyberte všechny služby na webu Azure portal](./media/hana-li-portal/portal-create-service-request.png)
+![Vybrat všechny služby v Azure Portal](./media/hana-li-portal/portal-create-service-request.png)
 
-V seznamu služeb můžete najít službu **velkou instanci SAP HANA**. Při výběru této služby, můžete vybrat konkrétní problém typy, jak je znázorněno:
+V seznamu služeb můžete najít službu **SAP HANA velká instance**. Při výběru této služby můžete vybrat konkrétní typy problémů, jak je znázorněno níže:
 
 
-![Vyberte třídu problém na webu Azure portal](./media/hana-li-portal/portal-select-problem-class.png)
+![Vyberte třídu problému v Azure Portal](./media/hana-li-portal/portal-select-problem-class.png)
 
-V rámci jednotlivých typů jiný problém dostanete výběr podtypy problému je nutné vybrat, chcete-li charakterizovat váš problém dále. Po výběru podtyp, teď můžete pojmenovat předmět. Po dokončení procesu výběru můžete přesunout k dalšímu kroku vytvoření. V **řešení** části jste odkázáno dokumentaci kolem velkých instancích HANA, které poskytují ukazatele na řešení problému. Pokud nemůžete najít řešení pro váš problém v dokumentaci k navrhované, přejdete k dalšímu kroku. V dalším kroku budete vyzváni, zda je problém s virtuálními počítači nebo s jednotkami velká Instance HANA. Tyto informace pomáhají směrovat žádosti o podporu o správné odborníky. 
+V každém z různých typů problémů jste si nabídli výběr podtypů problémů, které je potřeba vybrat k dalšímu charakterizaci problému. Po výběru podtypu se teď dá předmět pojmenovat. Až budete s procesem výběru hotovi, můžete přejít na další krok vytvoření. V části **řešení** se odkazujete na dokumentaci týkající se velkých instancí Hana, která by mohla poskytnout ukazatel na řešení vašeho problému. Pokud nemůžete najít řešení pro váš problém v navrhované dokumentaci, přejdete k dalšímu kroku. V dalším kroku budete dotázáni, jestli se jedná o problém s virtuálními počítači nebo s jednotkami velkých instancí HANA. Tyto informace pomáhají směrovat žádost o podporu správným specialistům. 
 
-![Podrobnosti o případu podpory na webu Azure portal](./media/hana-li-portal/portal-support-request-details.png)
+![Podrobnosti případu podpory v Azure Portal](./media/hana-li-portal/portal-support-request-details.png)
 
-Jak jste odpověděli na otázky a poskytuje další podrobnosti, můžete přejít na další krok k žádosti o podporu a odeslat ji.
+Jak jste odpověděli na otázky a poskytli další podrobnosti, můžete přejít k dalšímu kroku, abyste si mohli prohlédnout žádost o podporu a odeslat ji.
 
 ## <a name="next-steps"></a>Další postup
 

@@ -1,6 +1,6 @@
 ---
-title: Analýzy hrozeb, zjišťování virtuálních počítačů a serverů v Azure Security Center | Dokumentace Microsoftu
-description: Toto téma představuje virtuální počítač a server výstrahy k dispozici ve službě Azure Security Center.
+title: Detekce hrozeb pro virtuální počítače & servery v Azure Security Center | Microsoft Docs
+description: V tomto tématu se zobrazí výstrahy virtuálního počítače a serveru, které jsou dostupné v Azure Security Center.
 services: security-center
 documentationcenter: na
 author: monhaber
@@ -13,110 +13,110 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 7/02/2019
-ms.author: monhaber
-ms.openlocfilehash: 5487b4f49f5dbf7b968cd45d40555c69b54c329a
-ms.sourcegitcommit: 1e347ed89854dca2a6180106228bfafadc07c6e5
+ms.author: v-mohabe
+ms.openlocfilehash: f23865fc0a1943a5157e4ff8eb8de10a71ef0883
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67571579"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68295798"
 ---
-# <a name="threat-detection-for-vms--servers-in-azure-security-center"></a>Detekce hrozeb pro virtuální počítače a servery ve službě Azure Security Center
+# <a name="threat-detection-for-vms--servers-in-azure-security-center"></a>Detekce hrozeb pro virtuální počítače & servery v Azure Security Center
 
-Toto téma představuje různé druhy metod detekce a výstrahy, které jsou k dispozici pro virtuální počítače a servery s následující operační systémy. Seznam podporovaných verzí najdete v tématu [platformy a funkcí podporovaných službou Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-os-coverage).
+V tomto tématu jsou uvedeny různé typy metod detekce a upozornění, která jsou k dispozici pro virtuální počítače a servery s následujícími operačními systémy. Seznam podporovaných verzí najdete v tématu [platformy a funkce podporované nástrojem Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-os-coverage).
 
 * [Windows](#windows-machines)
 * [Linux](#linux-machines)
 
 ## Windows <a name="windows-machines"></a>
 
-Security Center umožňuje integrací se službami Azure a monitorovat a chránit vaše počítače se systémem Windows.  Security Center nabízí výstrahy a nápravné návrhy ze všech těchto služeb ve formátu snadným ovládáním.
+Security Center se integruje se službami Azure za účelem monitorování a ochrany počítačů se systémem Windows.  Security Center prezentuje výstrahy a návrhy oprav ze všech těchto služeb ve snadno použitelném formátu.
 
-### Microsoft Server Defender ATP <a nanme="windows-atp"></a>
+### ATP pro Microsoft Server Defender<a nanme="windows-atp"></a>
 
-Azure Security Center rozšiřuje své cloudové platformy ochranu úloh díky integraci s Windows Defender Advanced Threat Protection (ATP). To nabízí rozsáhlé možnosti koncový bod zjišťování a odpovědi (EDR).
+Azure Security Center rozšiřuje svou cloudovou platformu ochrany díky integraci s rozšířenou ochranou před internetovými útoky v programu Windows Defender (ATP). Poskytuje komplexní možnosti detekce a odezvy koncových bodů (EDR).
 
 > [!NOTE]
-> Senzor ochrany ATP v programu Defender programu systému Windows Server se automaticky zapnulo Windows serverů, které jsou zapojený do služby Azure Security Center.
+> Senzor ATP v programu Windows Server Defender je automaticky povolen na serverech se systémem Windows, které jsou k dispozici pro Azure Security Center.
 
-Když Server programu Windows Defender ATP zjistí hrozbu, aktivuje výstrahu. Upozornění se zobrazí na řídicím panelu Security Center. Na řídicím panelu můžete vytvořit kontingenční ke konzole ochrany ATP v programu Windows Defender provádět podrobné zkoumání odhalit další obor útoku. Další informace o serveru programu Windows Defender ATP najdete v tématu [servery připojit ke službě ochrana ATP v programu Windows Defender](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/configure-server-endpoints).
+Když ochrana ATP v programu Windows Server Defender detekuje hrozbu, aktivuje výstrahu. Výstraha se zobrazí na řídicím panelu Security Center. Z řídicího panelu se můžete překlopit do konzoly ATP v programu Windows Defender a provést podrobné šetření, které odhalí rozsah útoku. Další informace o ochraně ATP v programu Windows Server Defender najdete v tématu připojení [serverů ke službě ochrany ATP v programu Windows Defender](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/configure-server-endpoints).
 
-### Při analýze výpisu stavu systému <a nanme="windows-dump"></a>
+### Analýza výpisu stavu systému<a nanme="windows-dump"></a>
 
 Pokud dojde k chybě softwaru, ve výpisu stavu systému se zaznamená část paměti v době selhání.
 
-Selhání může být způsobena malwaru nebo obsahují malware. Aby se zabránilo zjištění produkty zabezpečení, různé formy malwaru použít fileless útoku, který předchází zápisu na disku nebo šifrování softwarové komponenty na disk. Tento typ útoku je obtížné rozpoznat pomocí tradičních detekce založené na disku.
+Selhání mohlo být způsobeno malwarem nebo obsahem malwaru. Aby nedocházelo k detekci v produktech zabezpečení, různé formy malwaru používají útok bez souborů, což zabraňuje psaní na disk nebo šifrování softwarových součástí zapsaných na disk. Tento typ útoku se obtížně detekuje pomocí tradičních přístupů založených na disku.
 
-Tento druh útoku lze ale zjistit pomocí analýzy paměti. Díky analýze paměti ve výpisu, může Security Center zjišťovat techniky, které útoku používá zranitelností softwaru, přístup k důvěrným datům a nenápadně přetrvávají v napadeném počítači. To se provádí Security Center s back-endem minimální dopad na hostitelích výkon.
+Tento druh útoku se ale dá zjistit pomocí analýzy paměti. Díky analýze paměti ve výpisu stavu systému může Security Center detekovat techniky, které útok zneužije k zneužití ohrožení zabezpečení softwaru, přístupu k důvěrným datům a nenápadně trvalých v napadeném počítači. Tento postup provádí Security Center back-end s minimálním dopadem na výkon hostitele.
 
 > [!div class="mx-tableFixed"]
 
 |Výstrahy|Popis|
 |---|---|
-|**Zjištěna injektáž kódu**|Injektáž kódu představuje vložení spustitelných modulů do spuštěných procesů nebo vláken. Tato technika je používána malwarem pro přístup k datům, když úspěšně skrytí, aby se najít a odebrat. <br/>Tato výstraha znamená, že ve výpisu je injektovaný modul. K rozlišení mezi- škodlivé injektované moduly, Security Center kontroluje, jestli injektovaný modul odpovídá profilu podezřelého chování.|
-|**Podezřelý segment kódu zjištění**|Označuje, že segment kódu byla přidělena nestandardní metody, jako je například reflektivní injektáží a hloubením procesů. Výstraha poskytuje další charakteristiky segmentu kódu, které byly zpracovány poskytnout kontext pro funkce a chování segmentu ohlášené kódu.|
-|**Zjištěn skrytý spustitelný kód**|Skrytý spustitelný kód je datová část, která se spouští potom, co malware zneužije chybu zabezpečení softwaru.<br/>Tato výstraha indikuje, že při analýze výpisu stavu systému byl nalezen spustitelný kód, který vykazuje chování škodlivý software. I když software bez zlých mohou také provádět toto chování, není typický pro normální praktik vývoje.|
+|**Bylo zjištěno vkládání kódu**|Injektáž kódu představuje vložení spustitelných modulů do spuštěných procesů nebo vláken. Tento postup využije malware pro přístup k datům, přičemž se ale úspěšně skrývá, aby nedocházelo k jejich nalezení a odebrání. <br/>Tato výstraha znamená, že ve výpisu je injektovaný modul. Aby bylo možné odlišit škodlivé a neškodlivé vložené moduly, Security Center kontroluje, zda vložený modul odpovídá profilu podezřelého chování.|
+|**Zjištěn podezřelý segment kódu**|Označuje, že byl segment kódu přidělen pomocí nestandardních metod, jako je reflektování vkládání a zpracování prázdných procesů. Výstraha poskytuje další charakteristiky segmentu kódu, který byl zpracován, aby poskytoval kontext pro schopnosti a chování oznámeného segmentu kódu.|
+|**Zjištěné skrytý spustitelný kód**|Skrytý spustitelný kód je datová část, která se spouští potom, co malware zneužije chybu zabezpečení softwaru.<br/>Tato výstraha znamená, že při analýze výpisu stavu systému byl nalezen spustitelný kód, který vykazuje chování obvykle prováděné škodlivými datovými částmi. I když neškodlivý software může toto chování také provést, nejedná se o běžné postupy při vývoji softwaru.|
 
-### Detekce útoku fileless <a nanme="windows-fileless"></a>
+### Detekce útoků typu soubor<a nanme="windows-fileless"></a>
 
-V Azure vidíme pravidelně fileless útoky cílení na koncové body našich zákazníků.
+V Azure se pravidelně zobrazuje útoky bez souborů cílící na koncové body našich zákazníků.
 
-Aby se zabránilo detekce, vložit fileless útoky škodlivý software do paměti. Útočník datových částí přetrvávají v paměti ohrožených procesy a provádění široké škály škodlivých aktivit.
+Aby nedocházelo k detekci, útoky bez souborů vkládají do paměti škodlivá datová data. V paměti napadených procesů a při provádění široké škály škodlivých aktivit může dojít k trvalému uložení datových částí.
 
-S detekcí fileless útoku identifikaci forenzní metody automatizované paměti sady nástrojů fileless útoku, techniky a chování. Toto řešení pravidelně kontroluje váš počítač za běhu a extrahuje přehledy přímo z paměti procesy kritické pro zabezpečení.
+Díky detekci útoků bez souborů můžou automatizované techniky forenzní paměti identifikovat sady nástrojů, techniky a chování pro útoky bez souborů. Toto řešení pravidelně kontroluje počítač za běhu a extrahuje přehledy přímo z paměti důležitých procesů, které jsou kritické pro zabezpečení.
 
-Najde doklad o využívání, vkládání kódu a provádění škodlivý software. Fileless detekce útoku generuje výstrahy podrobné zabezpečení ke zrychlení třídění výstrah, korelace a podřízené odezvu. Tento přístup doplňuje řešení založeného na událostech EDR poskytuje větší rozsahu zjišťování.
+Najde důkazy o zneužití, vkládání kódu a spuštění škodlivých datových částí. Detekce útoků bez souborů generuje podrobné výstrahy zabezpečení, které urychlují jejich třídění, korelace a dobu odezvy za provozu. Tento přístup doplňuje řešení EDR založené na událostech, která poskytují lepší pokrytí detekce.
 
 > [!NOTE]
-> Upozornění Windows můžete simulovat stažením [Azure Security Center Playbook](https://gallery.technet.microsoft.com/Azure-Security-Center-0ac8a5ef): Výstrahy zabezpečení a postupujte podle pokynů na zadaný
+> Výstrahy Windows můžete simulovat stažením [Azure Security Center PlayBook](https://gallery.technet.microsoft.com/Azure-Security-Center-0ac8a5ef): Výstrahy zabezpečení a postupujte podle uvedených pokynů.
 
 > [!div class="mx-tableFixed"]
 
 |Výstrahy|Popis|
 |---|---|
-|**Zjištěna techniku fileless útoku**|Paměť procesu níže uvedených obsahuje sadu nástrojů fileless útoku: Meterpreter. Sady nástrojů fileless útoku obvykle nemají přítomnost v systému souborů, ztěžuje detekce pomocí tradiční antivirový program.|
+|**Zjištěna technika útoku s neoprávněnými soubory**|Paměť níže uvedeného procesu obsahuje sadu nástrojů pro útoky s neplatnými soubory: Meterpreter. Sady nástrojů pro útok bez souborů většinou nemají přítomnost v systému souborů, což usnadňuje detekci pomocí tradiční ochrany proti virům.|
 
 ### <a name="further-reading"></a>Další čtení
 
-Příklady a další informace o zjišťování Security Center:
+Příklady a další informace o detekci Security Center:
 
-* [Jak Azure Security Center automatizuje detekce kybernetických útoků](https://azure.microsoft.com/blog/leverage-azure-security-center-to-detect-when-compromised-linux-machines-attack/)
-* [Jak Azure Security Center detekuje ohrožení zabezpečení pomocí nástroje pro správu](https://azure.microsoft.com/blog/azure-security-center-can-detect-emerging-vulnerabilities-in-linux/)
+* [Jak Azure Security Center automatizuje detekci internetoví útoků](https://azure.microsoft.com/blog/leverage-azure-security-center-to-detect-when-compromised-linux-machines-attack/)
+* [Jak Azure Security Center detekuje chyby zabezpečení pomocí nástrojů pro správu](https://azure.microsoft.com/blog/azure-security-center-can-detect-emerging-vulnerabilities-in-linux/)
 
 ## Linux <a name="linux-machines"></a>
 
-Security Center shromažďuje záznamy z počítače s Linuxem pomocí auditu **démona auditd**, jeden z nejběžnějších Linux auditování architektury. démona auditd nabízí výhodu v podobě byla po dlouhou dobu a žijící v hlavní linii jádra. 
+Security Center shromažďuje záznamy auditu z počítačů se systémem Linux pomocí auditů, jeden z nejběžnějších rozhraní pro auditování Linux. Auditovaná výhoda má po dlouhou dobu a život v jádru hlavní. 
 
-### Linux démona auditd výstrahy a integrace služby Microsoft Monitoring Agent (MMA) <a name="linux-auditd"></a>
+### Integrace se systémem Linux audited Alerts a Microsoft Monitoring Agent (MMA)<a name="linux-auditd"></a>
 
-Systém démona auditd tvoří podsystému úrovni jádra, který je zodpovědný za monitorování systémových volání, filtrování podle dané sady pravidel a psaní zpráv pro ně k soketu. Security Center umožňuje integrací funkce z démona auditd balíčku v rámci Microsoft Monitoring Agent (MMA). Tato integrace umožňuje shromažďování událostí auditu ve všech podporovaných Linuxových distribucích bez všechny požadované součásti.  
+Auditované systémy se skládají z podsystému na úrovni jádra, který je zodpovědný za volání systému, filtrování podle dané sady pravidel a zápis zpráv pro ně do soketu. Security Center integruje funkce z auditovaného balíčku v rámci Microsoft Monitoring Agent (MMA). Tato integrace umožňuje shromažďování auditovaných událostí ve všech podporovaných distribucích systému Linux bez jakýchkoli požadavků.  
 
-záznamy auditu jsou shromažďovány, rozšiřují a agregují do události pomocí agenta MMA pro Linux. Security Center soustavně pracujeme na přidání nového analytics, že využívají Linux signál k detekci škodlivého chování v cloudu a místních počítačů s Linuxem. Podobně jako funkce Windows tyto analýzy pracovat nad více podezřelých procesů, pokusy o přihlášení. podezřelých, načtení modulu jádra a jiné činnosti, které označují počítače je buď terčem útoku nebo po porušení zabezpečení.  
+auditované záznamy se shromažďují, rozšiřují a agregují do událostí pomocí agenta MMA pro Linux. Security Center neustále pracuje na přidávání nových analýz, které využívají signály systému Linux k detekci škodlivého chování na cloudových a místních počítačích se systémem Linux. Podobně jako funkce Windows tyto analýzy přesahují podezřelé procesy, podezřelých pokusy o přihlášení, načítání modulů jádra a další aktivity, což značí, že je počítač buď napadený, nebo se porušil.  
 
-Níže je několik příkladů analýzy, které ukazují, jak budeme pracovat nad více různých fázích životního cyklu útoku.
+Níže jsou uvedeny některé příklady analýz, které ukazují, jak se v různých fázích životního cyklu útoku zavedlo.
 
 > [!div class="mx-tableFixed"]
 
 |Výstrahy|Popis|
 |---|---|
-|**Proces viděli neobvyklým způsobem přístupu k souboru autorizovaných klíčů SSH**|Soubor autorizovaných klíčů SSH někdo zobrazil během metody podobné známé malwarové kampaně. Tento přístup může znamenat, že se útočník pokouší získat trvalý přístup k počítači|
-|**Pokus o zjištěném trvalosti**|Analýza dat hostitele zjistil nainstaloval spouštěcí skript pro jednouživatelský režim. <br/>Protože je vzácné, že jakýkoli legitimní proces by bylo zapotřebí k provedení v tomto režimu, může to znamenat, že útočník přidal do všech úrovních spustit zaručit trvalost škodlivý proces.|
-|**Manipulace s naplánovaných úloh, zjištěn**|Analýza dat hostitele zjistil možné manipulaci s naplánovaných úloh. Útočníci často přidat do počítače, které jste k ohrožení k získání trvalého naplánované úlohy.|
-|**Změna časového razítka podezřelý soubor**|Analýza dat hostitele zjistila podezřelá časové razítko úpravy. Útočníci často zkopírujte časové razítko z existujících legitimních souborů do nové nástroje, aby se zabránilo detekce tyto nově přetažené soubory|
-|**Přidání nového uživatele do skupiny sudoers**|Analýza dat hostitele zjistil, že uživatel přidal do skupiny sudoers, která svým členům umožňuje spouštět příkazy s vysokou úrovní oprávnění.|
-|**Pravděpodobně zneužít ohrožení zabezpečení DynoRoot v klientovi dhcp**|Analýza dat hostitele zjistila provádění příkazu k neobvyklé pomocí nadřazeného procesu dhclient skriptu.|
-|**Zjištěno podezřelé jádra modul**|Analýza dat hostitele zjistila sdíleného objektu souboru načítání jako modulu jádra. Může to být legitimní aktivity nebo došlo k napadení jako ukazatel toho, že jedna z vašich počítačů.|
-|**Proces přidružený digitální měny dolování zjistil**|Analýza dat hostitele zjistila spuštění procesu, obvykle spojené s dolování digitální měny|
-|**Potenciální přesměrování portu na externí IP adresu**|Analýza dat hostitele zjistila zahájení port přesměrování na externí IP adresu.|
+|**Proces, při kterém se zobrazil přístup k souboru klíčů autorizovaným SSH, neobvyklým způsobem**|V metodě, která se podobá známým postupům malwaru, je přístup k souboru klíčů autorizovaných pro SSH. Tento přístup může znamenat, že se útočník pokouší získat trvalý přístup k počítači.|
+|**Zjištěn pokus o trvalosti**|Analýza dat hostitele zjistila, že byl nainstalován spouštěcí skript pro režim jednoho uživatele. <br/>Vzhledem k tomu, že je zřídka to, že by se v tomto režimu vyžadoval nějaký legitimní proces, může to znamenat, že útočník přidal škodlivý proces do každé úrovně spuštění, aby zaručil trvalost.|
+|**Zjištěna manipulace s naplánovanými úlohami**|Analýza dat hostitele zjistila možnou manipulaci s naplánovanými úlohami. Útočníci často přidávají naplánované úlohy do počítačů, které byly ohroženy, aby získali trvalost.|
+|**Podezřelá Změna časového razítka souboru**|Analýza dat hostitele zjistila podezřelou změnu časového razítka. Útočníci často kopírují časová razítka z existujících legitimních souborů do nových nástrojů, aby se předešlo detekci těchto nově vynechaných souborů.|
+|**Do skupiny sudoers se přidal nový uživatel.**|Analýza dat hostitele zjistila, že byl uživatel přidán do skupiny sudoers, která umožňuje jeho členům spouštět příkazy s vysokou úrovní oprávnění.|
+|**Pravděpodobná zneužití ohrožení zabezpečení DynoRoot v klientovi DHCP**|Analýza dat hostitele zjistila spuštění neobvyklého příkazu s nadřazeným procesem dhclient skriptu.|
+|**Zjistil se podezřelý modul jádra.**|Analýza dat hostitele zjistila, že se soubor sdíleného objektu načítá jako modul jádra. Může se jednat o legitimní aktivitu nebo indikaci, že jeden z vašich počítačů byl ohrožen.|
+|**Zjistil se proces přidružený k dolování v digitální měně.**|Analýza dat hostitele zjistila spuštění procesu normálně spojeného s dolováním v digitální měně.|
+|**Potenciální přeposílání portů na externí IP adresu**|Analýza dat hostitele zjistila zahájení předávání portů externí IP adrese.|
 
 > [!NOTE]
-> Upozornění Windows můžete simulovat stažením [Azure Security Center Playbook: Výstrahy zabezpečení](https://gallery.technet.microsoft.com/Azure-Security-Center-0ac8a5ef) a postupujte podle pokynů na zadaný.
+> Výstrahy Windows můžete simulovat stažením [Azure Security Center PlayBook: Výstrahy](https://gallery.technet.microsoft.com/Azure-Security-Center-0ac8a5ef) zabezpečení a postupujte podle uvedených pokynů.
 
 
 Další informace najdete v těchto článcích:  
 
-* [Využijte Azure Security Center, který zjistí ohrožení zabezpečení Linux stroje útoku](https://azure.microsoft.com/blog/leverage-azure-security-center-to-detect-when-compromised-linux-machines-attack/)
+* [Využití Azure Security Center k detekci napadení napadených počítačů se systémem Linux](https://azure.microsoft.com/blog/leverage-azure-security-center-to-detect-when-compromised-linux-machines-attack/)
 
-* [Azure Security Center můžete detekovat vznikající ohrožení zabezpečení v systému Linux](https://azure.microsoft.com/blog/azure-security-center-can-detect-emerging-vulnerabilities-in-linux/)
+* [Azure Security Center dokáže detekovat nově vznikající chyby zabezpečení v systému Linux](https://azure.microsoft.com/blog/azure-security-center-can-detect-emerging-vulnerabilities-in-linux/)
 
  

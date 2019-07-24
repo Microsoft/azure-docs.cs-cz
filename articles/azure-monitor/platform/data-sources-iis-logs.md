@@ -1,6 +1,6 @@
 ---
-title: Ukládání do protokolů IIS ve službě Azure Monitor | Dokumentace Microsoftu
-description: Internetové informační služby (IIS) ukládá aktivity uživatelů v souborech protokolů, které můžou shromažďovat službou Azure Monitor.  Tento článek popisuje, jak konfigurovat shromažďování protokolů služby IIS a podrobnosti o záznamy vytvořené ve službě Azure Monitor.
+title: Protokol IIS v Azure Monitor | Microsoft Docs
+description: Internetová informační služba (IIS) ukládá činnost uživatelů do souborů protokolu, které lze shromažďovat pomocí Azure Monitor.  Tento článek popisuje, jak nakonfigurovat kolekci protokolů služby IIS a podrobnosti o záznamech, které vytvoří v Azure Monitor.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,68 +13,68 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/28/2018
 ms.author: bwren
-ms.openlocfilehash: 5843ee11a615a2780e9fea2d89f7b18fb45706d8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 05d9dc8f676589dcb301c19b0a2e80e9fd4c1fa0
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65604355"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68249749"
 ---
-# <a name="collect-iis-logs-in-azure-monitor"></a>Shromažďování protokolů IIS ve službě Azure Monitor
-Internetové informační služby (IIS) ukládá aktivity uživatelů v souborech protokolů, které můžete shromážděná službou Azure Monitor a uložená jako [můžete vytvářet protokoly dat](data-platform.md).
+# <a name="collect-iis-logs-in-azure-monitor"></a>Shromažďovat protokoly IIS v Azure Monitor
+Internetová informační služba (IIS) ukládá činnost uživatelů do souborů protokolu, které lze shromažďovat pomocí Azure Monitor a uložených jako [data protokolu](data-platform.md).
 
 ![Protokoly IIS](media/data-sources-iis-logs/overview.png)
 
-## <a name="configuring-iis-logs"></a>Konfigurace služby IIS protokoly
-Azure Monitor provádí sběr položky ze souborů protokolů, které jsou vytvořené službou IIS, takže je potřeba [konfigurace služby IIS pro protokolování](https://technet.microsoft.com/library/hh831775.aspx).
+## <a name="configuring-iis-logs"></a>Konfigurace protokolů IIS
+Azure Monitor shromažďuje záznamy ze souborů protokolu vytvořených službou IIS, takže musíte [nakonfigurovat službu IIS pro protokolování](https://technet.microsoft.com/library/hh831775.aspx).
 
-Azure Monitor pouze podporuje uložit ve formátu W3C soubory protokolu služby IIS a nepodporuje vlastní pole nebo rozšířené protokolování internetové informační služby. Neshromažďuje protokoly ve formátu native NCSA nebo služby IIS.
+Azure Monitor podporuje jenom soubory protokolu IIS uložené ve formátu W3C a nepodporuje vlastní pole ani rozšířené protokolování služby IIS. Neshromažďuje protokoly ve formátu NCSA nebo IIS Native.
 
-Konfigurace protokolů IIS ve službě Azure Monitor z [nabídky Rozšířené nastavení](agent-data-sources.md#configuring-data-sources).  Není nutná žádná konfigurace jiné než výběrem **soubory protokolů IIS ve formátu W3C shromažďovat**.
+Nakonfigurujte protokoly IIS v Azure Monitor z [nabídky Upřesnit nastavení](agent-data-sources.md#configuring-data-sources).  Není vyžadována žádná konfigurace kromě výběru možnosti **shromažďovat soubory protokolů IIS ve formátu W3C**.
 
 
 ## <a name="data-collection"></a>Shromažďování dat
-Azure Monitor shromažďuje z každého agenta pokaždé, když je uzavřen do protokolu a nového vytvoření záznamů protokolu IIS. Tato četnost se řídí **plán změna souboru protokolu** nastavení pro web služby IIS, který je jednou za den ve výchozím nastavení. Například, pokud je nastavení **hodinové**, pak Azure Monitor shromáždí do protokolu každou hodinu.  Pokud je nastavení **denní**, pak Azure Monitor bude shromažďovat protokolu každých 24 hodin.
+Azure Monitor shromažďuje záznamy protokolu IIS od každého agenta při každém změně časového razítka protokolu nebo vytvoření nového souboru. Protokol je čten každých 5 minut. Frekvence nového vytváření souborů je řízena nastavením plánu změny **souboru protokolu** pro web služby IIS, který je ve výchozím nastavení jednou denně. Pokud z jakéhokoli důvodu služba IIS neaktualizuje časové razítko před časem změny, Azure Monitor bude každou hodinu shromažďovat protokol. Pokud je nastavení **denně**, Azure monitor shromáždí protokol každých 24 hodin.
 
 
-## <a name="iis-log-record-properties"></a>Vlastnosti záznamů protokolu IIS
-Záznamy protokolu IIS mají typ **W3CIISLog** a mít vlastnosti v následující tabulce:
+## <a name="iis-log-record-properties"></a>Vlastnosti záznamu protokolu IIS
+Záznamy protokolu služby IIS mají typ **W3CIISLog** a mají vlastnosti v následující tabulce:
 
 | Vlastnost | Popis |
 |:--- |:--- |
-| Computer |Název počítače, který událost byla shromážděna z. |
+| Computer |Název počítače, ze kterého byla událost shromážděna. |
 | cIP |IP adresa klienta. |
 | csMethod |Metoda požadavku, například GET nebo POST. |
-| csReferer |Lokalita, uživatele a potom odkaz z aktuální lokality. |
+| csReferer |Lokalita, ze které uživatel následoval odkaz z na aktuální web. |
 | csUserAgent |Typ prohlížeče klienta. |
-| csUserName |Jméno ověřeného uživatele, který přistupuje k serveru. Anonymní uživatelé se označují pomlčkou. |
-| csUriStem |Cíl požadavku, například na webové stránce. |
-| csUriQuery |Dotaz, pokud existuje, že se klient pokoušel vykonat. |
-| ManagementGroupName |Název skupiny pro správu pro agenty nástroje Operations Manager.  Pro ostatní agenty to je AOI -\<ID pracovního prostoru\> |
-| RemoteIPCountry |Zemi nebo oblast, IP adresu klienta. |
-| RemoteIPLatitude |Zeměpisná šířka IP adresu klienta. |
-| RemoteIPLongitude |Zeměpisná délka IP adresu klienta. |
+| csUserName |Jméno ověřeného uživatele, který se připojil k serveru. Anonymní uživatelé jsou označeni spojovníkem. |
+| csUriStem |Cíl žádosti, jako je například webová stránka. |
+| csUriQuery |Dotaz (pokud existuje), který klient prováděl při pokusu o provedení. |
+| ManagementGroupName |Název skupiny pro správu pro agenty Operations Manager.  Pro ostatní agenty to je AOI -\<ID pracovního prostoru\> |
+| RemoteIPCountry |Země nebo oblast IP adresy klienta. |
+| RemoteIPLatitude |Zeměpisná šířka IP adresy klienta. |
+| RemoteIPLongitude |Zeměpisná délka klientské IP adresy. |
 | scStatus |Stavový kód HTTP. |
-| scSubStatus |Podřízený stavový kód chyby. |
+| scSubStatus |Kód chyby dílčího stavu |
 | scWin32Status |Stavový kód Windows. |
 | sIP |IP adresa webového serveru. |
 | SourceSystem |OpsMgr |
-| sPort |Port na serveru klient připojen. |
+| sPort |Port na serveru, ke kterému je klient připojen. |
 | sSiteName |Název webu služby IIS. |
-| TimeGenerated |Datum a čas, kdy byla položka zapsána. |
-| timeTaken |Dlouhá doba zpracování požadavku v milisekundách. |
+| TimeGenerated |Datum a čas, kdy byla položka zaznamenána. |
+| timeTaken |Doba zpracování žádosti v milisekundách |
 
-## <a name="log-queries-with-iis-logs"></a>Protokol dotazů s protokoly IIS
-Následující tabulka obsahuje příklady různých dotazů na protokoly, které načítají záznamy protokolu IIS.
+## <a name="log-queries-with-iis-logs"></a>Protokolování dotazů s protokoly služby IIS
+Následující tabulka uvádí různé příklady dotazů protokolu, které načítají záznamy protokolu služby IIS.
 
 | Dotaz | Popis |
 |:--- |:--- |
-| W3CIISLog |Všechny záznamy protokolu IIS. |
-| W3CIISLog &#124; kde scStatus == 500 |Všechny záznamy protokolu IIS s návratový stav 500. |
-| W3CIISLog &#124; summarize count() by cIP |Počet IIS položky protokolu podle IP adresy klienta. |
-| W3CIISLog &#124; where csHost=="www\.contoso.com" &#124; summarize count() by csUriStem |Záznamy protokolu počet IIS podle adresy URL pro hostitele www\.contoso.com. |
-| W3CIISLog &#124; shrnout sum(csBytes) počítačem &#124; trvat 500000 |Celkový počet bajtů přijatých jednotlivými počítači IIS. |
+| W3CIISLog |Všechny záznamy protokolu služby IIS. |
+| W3CIISLog &#124; WHERE scStatus = = 500 |Všechny záznamy protokolu služby IIS se stavem vrácenými na 500. |
+| W3CIISLog &#124; summarize count() by cIP |Počet záznamů protokolu IIS podle IP adresy klienta |
+| W3CIISLog &#124; WHERE csHost = = "www\.contoso.com" &#124; sumarizace Count () od csUriStem |Počet záznamů protokolu IIS podle adresy URL pro hostitele www\.contoso.com |
+| W3CIISLog &#124; sumarizace Sum (csBytes) podle počítače &#124; , který přebere 500000 |Celkový počet bajtů přijatých jednotlivými počítači IIS. |
 
 ## <a name="next-steps"></a>Další postup
-* Konfigurace služby Azure Monitor ke shromažďování dalších [zdroje dat](agent-data-sources.md) pro analýzu.
+* Nakonfigurujte Azure Monitor pro shromažďování dalších [zdrojů dat](agent-data-sources.md) pro účely analýzy.
 * Další informace o [protokolu dotazy](../log-query/log-query-overview.md) analyzovat data shromážděná ze zdrojů dat a jejich řešení.

@@ -12,19 +12,19 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 05/11/2018
+ms.date: 07/22/2019
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: f978087a935bcf6ac78760fee5842573eb3a326e
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 82358f4d5548464f1304d77a846d71863ed9efa1
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67274118"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68385004"
 ---
 # <a name="tutorial-install-and-create-service-fabric-cluster"></a>Kurz: Instalace a vytvoření clusteru Service Fabric
 
-Samostatné clustery Service Fabric nabízejí možnost volby vlastního prostředí a vytvoření clusteru v rámci přístupu Service Fabric „libovolný OS a libovolný cloud“. V této řadě kurzů vytvoření samostatného clusteru hostované na Azure nebo v AWS a instalovat aplikace do něj.
+Samostatné clustery Service Fabric nabízejí možnost volby vlastního prostředí a vytvoření clusteru v rámci přístupu Service Fabric „libovolný OS a libovolný cloud“. V této sérii kurzů vytvoříte samostatný cluster hostovaný na AWS nebo Azure a nainstalujete do něj aplikaci.
 
 Tento kurz je druhá část série. Tento kurz vás provede kroky vytvoření samostatného clusteru Service Fabric.
 
@@ -37,7 +37,7 @@ Ve druhé části této série se naučíte:
 
 ## <a name="download-the-service-fabric-for-windows-server-package"></a>Stažení balíčku Service Fabric pro Windows Server
 
-Service Fabric nabízí instalační balíček pro vytváření samostatných clusterů Service Fabric.  [Stáhněte instalační balíček](https://go.microsoft.com/fwlink/?LinkId=730690) do místního počítače.  Jakmile byl úspěšně stažen zkopírovat připojení RDP k virtuálnímu počítači a vložte na ploše.
+Service Fabric nabízí instalační balíček pro vytváření samostatných clusterů Service Fabric.  [Stáhněte instalační balíček](https://go.microsoft.com/fwlink/?LinkId=730690) do místního počítače.  Po úspěšném stažení ho zkopírujte přes připojení RDP k vašemu VIRTUÁLNÍmu počítači a vložte ho na plochu.
 
 Vyberte soubor ZIP, otevřete místní nabídku a vyberte **Extrahovat vše** > **Extrahovat**.  Při extrahování souborů se na ploše vygeneruje složka se stejným názvem jako soubor ZIP.
 
@@ -129,13 +129,13 @@ Your cluster is successfully created! You can connect and manage your cluster us
 
 ### <a name="bring-up-service-fabric-explorer"></a>Vyvolání Service Fabric Exploreru
 
-Teď můžete připojit ke clusteru pomocí Service Fabric Exploreru buď přímo od jednoho z počítačů s podporou protokolu http:\//localhost:19080/Explorer/index.html nebo vzdáleně pomocí protokolu http:\/ /<  *IPAddressofaMachine*>: 19080/Explorer/index.html.
+Nyní se můžete připojit ke clusteru pomocí Service Fabric Explorer přímo z jednoho z počítačů pomocí protokolu HTTP\/:/localhost:19080/Explorer/index.html nebo vzdáleně pomocí protokolu http:\//<IPAddressofaMachine > : 19080/Explorer/index.html.
 
 ## <a name="add-and-remove-nodes"></a>Přidávání a odebírání uzlů
 
 Podle toho, jak se vaše obchodní potřeby mění, můžete uzly do samostatného clusteru Service Fabric přidávat nebo je z něj odebírat. Podrobné kroky najdete v tématu [Přidávání uzlů do samostatného clusteru Service Fabric nebo jejich odebírání](service-fabric-cluster-windows-server-add-remove-nodes.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V druhé části série jste se seznámili s paralelním nahráváním velkých objemů náhodných dat do účtu úložiště a naučili jste se například:
 

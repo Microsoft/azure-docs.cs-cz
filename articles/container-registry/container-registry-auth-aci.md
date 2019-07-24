@@ -1,38 +1,39 @@
 ---
 title: Ověřování pomocí Azure Container Registry z Azure Container Instances
-description: Zjistěte, jak poskytují přístup k obrázkům v váš privátní registr kontejnerů Azure Container Instances pomocí instančního objektu služby Azure Active Directory.
+description: Naučte se, jak poskytnout přístup k obrázkům v privátním registru kontejneru z Azure Container Instances pomocí instančního objektu služby Azure Active Directory.
 services: container-registry
 author: dlepow
+manager: gwallace
 ms.service: container-registry
 ms.topic: article
 ms.date: 04/23/2018
 ms.author: danlep
-ms.openlocfilehash: 8a2d19a09233e510055e147fa1cf95dd4471768b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d2099de9ad909b23b79a92a831d7730b1cf126e3
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61333572"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68311644"
 ---
 # <a name="authenticate-with-azure-container-registry-from-azure-container-instances"></a>Ověřování pomocí Azure Container Registry z Azure Container Instances
 
-Instanční objekt Azure Active Directory (Azure AD) můžete použít k zajištění přístupu k vaší registry privátní kontejnerů ve službě Azure Container Registry.
+K poskytnutí přístupu k registrům privátních kontejnerů v Azure Container Registry můžete použít instanční objekt služby Azure Active Directory (Azure AD).
 
-V tomto článku zjistíte, jak vytvořit a nakonfigurovat instanční objekt Azure AD s *o přijetí změn* oprávnění k vašemu registru. Potom spusťte kontejner v Azure Container Instances (ACI), která si přetáhne jeho image z privátního registru, pomocí instančního objektu pro ověřování.
+V tomto článku se naučíte, jak vytvořit a nakonfigurovat instanční objekt služby Azure AD s oprávněními pro *vyžádání* obsahu pro váš registr. Pak spustíte kontejner v Azure Container Instances (ACI), který načte jeho image z privátního registru, a to pomocí instančního objektu pro ověřování.
 
-## <a name="when-to-use-a-service-principal"></a>Kdy použít instanční objekt služby
+## <a name="when-to-use-a-service-principal"></a>Kdy použít instanční objekt
 
-Instanční objekt služby byste měli použít pro ověření od ACI v **bezobslužného scénáře**, například aplikace nebo služby, které vytvářejí instance kontejnerů bezobslužné způsobem automatizované nebo jinak.
+Pro ověřování z ACI v případě neintegrovaných scénářů byste měli použít instanční objekt, například v aplikacích nebo službách, které vytvářejí instance kontejnerů automatizovaným nebo jiným způsobem.
 
-Například, pokud máte automatizovaný skript, který spouští každou noc a vytvoří [instance založené na úlohách kontejneru](../container-instances/container-instances-restart-policy.md) ke zpracování nějaká data, může použít instanční objekt služby s vyžádanou oprávnění k ověření do registru. Potom můžete pravidelná Změna přihlašovacích údajů instančního objektu nebo odvolat přístup úplně bez ovlivnění dalších služeb a aplikací.
+Pokud máte například automatizovaný skript, který běží v noci, a vytvoří [instanci kontejneru založenou](../container-instances/container-instances-restart-policy.md) na úlohách pro zpracování některých dat, může použít instanční objekt s oprávněním pro vyžádání obsahu k ověření do registru. Pak můžete znovu otočit přihlašovací údaje instančního objektu nebo odvolat jeho úplný přístup, aniž by to ovlivnilo jiné služby a aplikace.
 
-Instanční objekty by mělo být také použít, pokud registru [uživatele s rolí správce](container-registry-authentication.md#admin-account) je zakázaná.
+Instanční objekty by se měly používat i v případě, že je [uživatel správce](container-registry-authentication.md#admin-account) registru zakázaný.
 
 [!INCLUDE [container-registry-service-principal](../../includes/container-registry-service-principal.md)]
 
 ## <a name="authenticate-using-the-service-principal"></a>Ověřování pomocí instančního objektu
 
-Spusťte kontejner ve službě Azure Container Instances pomocí instančního objektu, zadejte své ID pro `--registry-username`a heslo pro `--registry-password`.
+Pokud chcete spustit kontejner v Azure Container Instances pomocí instančního objektu, zadejte jeho ID pro `--registry-username`a heslo pro. `--registry-password`
 
 ```azurecli-interactive
 az container create \
@@ -46,17 +47,17 @@ az container create \
 
 ## <a name="sample-scripts"></a>Ukázkové skripty
 
-Předchozí ukázky skriptů pro rozhraní příkazového řádku Azure na Githubu najdete jako i verze pro prostředí Azure PowerShell:
+Předchozí ukázkové skripty pro Azure CLI najdete na GitHubu a také ve verzích pro Azure PowerShell:
 
 * [Azure CLI][acr-scripts-cli]
 * [Azure PowerShell][acr-scripts-psh]
 
 ## <a name="next-steps"></a>Další postup
 
-Následující články obsahují další podrobnosti o práci s instančních objektů a ACR:
+Následující články obsahují další podrobnosti o práci s instančními objekty a ACR:
 
-* [Ověřování služby Azure Container Registry pomocí instančních objektů](container-registry-auth-service-principal.md)
-* [Ověřování pomocí Azure Container Registry z Azure Kubernetes Service (AKS)](container-registry-auth-aks.md)
+* [Azure Container Registry ověřování pomocí instančních objektů](container-registry-auth-service-principal.md)
+* [Ověřování pomocí Azure Container Registry ze služby Azure Kubernetes (AKS)](container-registry-auth-aks.md)
 
 <!-- IMAGES -->
 

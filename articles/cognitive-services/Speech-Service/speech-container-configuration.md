@@ -1,5 +1,5 @@
 ---
-title: Konfigurace kontejnery řeči
+title: Konfigurace kontejnerů řeči
 titleSuffix: Azure Cognitive Services
 description: Kontejner řeči
 services: cognitive-services
@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/11/2019
 ms.author: dapine
-ms.openlocfilehash: 2dd1769d2d0a940176fb51954f44859cb42f30d9
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8a8b0e18c1db7a2e2fc08819aa2f2d64d650ded6
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67072444"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68321358"
 ---
-# <a name="configure-speech-service-containers"></a>Konfigurace Speech Service kontejnery
+# <a name="configure-speech-service-containers"></a>Konfigurace kontejnerů služby Speech
 
-Kontejnery řeči zákazníkům umožní vytvářet jeden architektura řeči aplikace, které je optimalizováno pro využití možnosti robustní Cloudová a hraniční umístění. Jsou dva řeči kontejnery nyní podporujeme **speech to text** a **převod textu na řeč**. 
+Díky kontejnerům pro rozpoznávání řeči můžou zákazníci vytvářet jednu architekturu aplikace pro rozpoznávání řeči, která je optimalizovaná tak, aby využila výhod robustních cloudových funkcí i možností Edge. K dvěma kontejnerům pro rozpoznávání řeči teď podporujeme **Převod řeči na text** a **Převod textu na řeč**. 
 
-**Řeči** kontejneru běhové prostředí je nakonfigurovaný nástrojem `docker run` argumenty příkazového. Tento kontejner má několik požadovaná nastavení, společně s pár volitelná nastavení. Několik [příklady](#example-docker-run-commands) příkazu jsou k dispozici. Nastavení kontejneru konkrétní jsou fakturace. 
+Prostředí modulu runtime kontejneru **řeči** se konfiguruje pomocí `docker run` argumentů příkazu. Tento kontejner má několik požadovaných nastavení spolu s několika volitelnými nastaveními. Několik [příklady](#example-docker-run-commands) příkazu jsou k dispozici. Nastavení fakturace jsou specifická pro kontejner. 
 
 # <a name="configuration-settings"></a>Nastavení konfigurace
 
@@ -32,11 +32,11 @@ Kontejnery řeči zákazníkům umožní vytvářet jeden architektura řeči ap
 
 ## <a name="apikey-configuration-setting"></a>Nastavení konfigurace ApiKey
 
-`ApiKey` Nastavení určuje klíč prostředku Azure používá ke sledování fakturačních údajů pro kontejner. Musíte zadat hodnotu pro ApiKey a hodnota musí být platný klíč pro _řeči_ prostředek určený pro [ `Billing` ](#billing-configuration-setting) nastavení konfigurace.
+`ApiKey` Nastavení určuje klíč prostředku Azure používá ke sledování fakturačních údajů pro kontejner. Je nutné zadat hodnotu pro ApiKey a hodnota musí být platným klíčem pro prostředek _řeči_ zadaný pro [`Billing`](#billing-configuration-setting) nastavení konfigurace.
 
-Toto nastavení najdete v následujícím místě:
+Toto nastavení najdete na následujícím místě:
 
-* Azure portal: **Převod řeči na** správy prostředků v části **klíče**
+* Azure Portal: **Řeč** Správa prostředků, v části **klíče**
 
 ## <a name="applicationinsights-setting"></a>Nastavení ApplicationInsights
 
@@ -44,13 +44,13 @@ Toto nastavení najdete v následujícím místě:
 
 ## <a name="billing-configuration-setting"></a>Konfigurace nastavení fakturace
 
-`Billing` Nastavení, určuje identifikátor URI koncového bodu z _řeči_ prostředků v Azure umožňuje měřit fakturačních údajů pro kontejner. Musíte zadat hodnotu pro toto nastavení konfigurace, a hodnota musí být platný identifikátor URI koncového bodu pro _řeči_ prostředků v Azure. Sestavy využití kontejnerů o každých 10 až 15 minut.
+Nastavení určuje identifikátor URI koncového bodu prostředku řeči v Azure, který se používá pro informace o fakturaci pro daný kontejner.  `Billing` Je nutné zadat hodnotu pro toto nastavení konfigurace a tato hodnota musí být platným identifikátorem URI koncového bodu pro prostředek _řeči_ v Azure. Kontejner hlásí využití každých 10 až 15 minut.
 
-Toto nastavení najdete v následujícím místě:
+Toto nastavení najdete na následujícím místě:
 
-* Azure portal: **Převod řeči na** přehled s popiskem `Endpoint`
+* Azure Portal: **Řeč** Přehled, označený`Endpoint`
 
-|Požaduje se| Název | Typ dat | Popis |
+|Požadováno| Název | Typ dat | Popis |
 |--|------|-----------|-------------|
 |Ano| `Billing` | Řetězec | Identifikátor URI koncového bodu fakturace<br><br>Příklad:<br>`Billing=https://westus.api.cognitive.microsoft.com/sts/v1.0` |
 
@@ -74,34 +74,34 @@ Toto nastavení najdete v následujícím místě:
 
 Použití vazby připojí ke čtení a zápisu dat do a z kontejneru. Můžete určit vstupní připojení nebo připojení výstup tak, že zadáte `--mount` možnost [dockeru spustit](https://docs.docker.com/engine/reference/commandline/run/) příkazu.
 
-Kontejnery řeči nepoužívejte vstup nebo výstup připojí k uložení školení nebo dat služby. 
+Kontejnery řeči nepoužívají vstupní ani výstupní připojení k ukládání dat o školeních nebo službách. 
 
 Syntaxe umístění hostitele připojení se liší v závislosti na operačním systému hostitele. Kromě toho [hostitelský počítač](speech-container-howto.md#the-host-computer)na umístění připojení nemusí být přístupné z důvodu konfliktu mezi oprávnění používat účet služby docker a hostiteli připojit umístění oprávnění. 
 
-|Nepovinné| Název | Typ dat | Popis |
+|volitelná,| Name | Typ dat | Popis |
 |-------|------|-----------|-------------|
-|Nepovoleno| `Input` | String | Kontejnery řeči Nepoužívejte toto.|
-|Nepovinné| `Output` | String | Cíl připojení výstupu. Výchozí hodnota je `/output`. Toto je umístění protokolů. To zahrnuje protokoly kontejneru. <br><br>Příklad:<br>`--mount type=bind,src=c:\output,target=/output`|
+|Nepovolené| `Input` | Řetězec | Kontejnery řeči toto nepoužívají.|
+|volitelná,| `Output` | Řetězec | Cíl připojení výstupu. Výchozí hodnota je `/output`. Toto je umístění protokolů. To zahrnuje protokoly kontejnerů. <br><br>Příklad:<br>`--mount type=bind,src=c:\output,target=/output`|
 
 ## <a name="example-docker-run-commands"></a>Spusťte příkazy dockeru příklad 
 
 Následující příklady ukazují, jak napsat a použít pomocí nastavení konfigurace `docker run` příkazy.  Po spuštění kontejneru nadále běžel dokud [Zastavit](speech-container-howto.md#stop-the-container) ho.
 
-* **Znak pro pokračování řádku**: Příkazy Dockeru v následujících částech použijte zpětné lomítko `\`, jako znak pro pokračování řádku. Nahraďte nebo odstraňte tuto podle požadavků vašeho hostitelského operačního systému. 
-* **Pořadí argumentů**: Pořadí argumentů nezmění, pokud máte velmi zkušenosti s kontejnery Dockeru.
+* **Znak pro pokračování řádku**: Příkazy Docker v následujících částech používají zpětné lomítko, `\`jako znak pro pokračování řádku. Nahraďte nebo odstraňte tuto podle požadavků vašeho hostitelského operačního systému. 
+* **Pořadí argumentů**: Neměňte pořadí argumentů, pokud neznáte kontejnery Docker.
 
 Nahradit {_argument_name_} s vlastními hodnotami:
 
 | Zástupný symbol | Hodnota | Formát nebo příklad |
 |-------------|-------|---|
-|{BILLING_KEY} | Klíč koncového bodu prostředku řeči. |xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|
-|{BILLING_ENDPOINT_URI} | Fakturační hodnota koncového bodu, včetně oblasti.|`https://westus.api.cognitive.microsoft.com/sts/v1.0`|
+|{API_KEY} | Klíč rozhraní API prostředku řeči |xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|
+|{ENDPOINT_URI} | Hodnota koncového bodu, včetně oblasti.|`https://westus.api.cognitive.microsoft.com/sts/v1.0`|
 
 > [!IMPORTANT]
 > `Eula`, `Billing`, A `ApiKey` možnosti musí být zadán pro spuštění kontejneru; v opačném případě nebude spuštění kontejneru.  Další informace najdete v tématu [fakturace](#billing-configuration-setting).
-> Hodnota ApiKey **klíč** ze stránky klíče na řeč prostředků Azure. 
+> Hodnota ApiKey je **klíč** ze stránky klíče prostředků Azure Speech. 
 
-## <a name="speech-container-docker-examples"></a>Příklady řeči kontejneru Dockeru
+## <a name="speech-container-docker-examples"></a>Příklady Docker kontejneru řeči
 
 Následující příklady Docker jsou pro kontejner řeči. 
 
@@ -111,8 +111,8 @@ Následující příklady Docker jsou pro kontejner řeči.
 docker run --rm -it -p 5000:5000 --memory 4g --cpus 2 \
 containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-text \
 Eula=accept \
-Billing={BILLING_ENDPOINT_URI} \
-ApiKey={BILLING_KEY}   
+Billing={ENDPOINT_URI} \
+ApiKey={API_KEY}
 ```
 
 ### <a name="basic-example-for-text-to-speech"></a>Základní příklad pro převod textu na řeč
@@ -121,8 +121,8 @@ ApiKey={BILLING_KEY}
 docker run --rm -it -p 5000:5000 --memory 4g --cpus 2 \
 containerpreview.azurecr.io/microsoft/cognitive-services-text-to-speech \
 Eula=accept \
-Billing={BILLING_ENDPOINT_URI} \
-ApiKey={BILLING_KEY}  
+Billing={ENDPOINT_URI} \
+ApiKey={API_KEY}
 ```
 
 ### <a name="logging-example-for-speech-to-text"></a>Příklad protokolování pro převod řeči na text
@@ -131,9 +131,9 @@ ApiKey={BILLING_KEY}
 docker run --rm -it -p 5000:5000 --memory 4g --cpus 2 \
 containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-text \
 Eula=accept \
-Billing={BILLING_ENDPOINT_URI} \
-ApiKey={BILLING_KEY}   
-  Logging:Console:LogLevel:Default=Information
+Billing={ENDPOINT_URI} \
+ApiKey={API_KEY} \
+Logging:Console:LogLevel:Default=Information
 ```
 
 ### <a name="logging-example-for-text-to-speech"></a>Příklad protokolování pro převod textu na řeč
@@ -142,9 +142,9 @@ ApiKey={BILLING_KEY}
 docker run --rm -it -p 5000:5000 --memory 4g --cpus 2 \
 containerpreview.azurecr.io/microsoft/cognitive-services-text-to-speech \
 Eula=accept \
-Billing={BILLING_ENDPOINT_URI} \
-ApiKey={BILLING_KEY}  
-  Logging:Console:LogLevel:Default=Information
+Billing={ENDPOINT_URI} \
+ApiKey={API_KEY} \
+Logging:Console:LogLevel:Default=Information
 ```
 
 ## <a name="next-steps"></a>Další postup

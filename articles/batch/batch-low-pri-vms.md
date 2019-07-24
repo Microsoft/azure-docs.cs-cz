@@ -1,9 +1,9 @@
 ---
-title: Spouštění úloh na nákladově efektivní virtuální počítače s nízkou prioritou – Azure Batch | Dokumentace Microsoftu
-description: Zjistěte, jak zřizovat virtuální počítače s nízkou prioritou, abyste snížili náklady na úlohy služby Azure Batch.
+title: Spouštění úloh na nákladově efektivních virtuálních počítačích s nízkou prioritou – Azure Batch | Microsoft Docs
+description: Naučte se zřizovat virtuální počítače s nízkou prioritou a snížit tak náklady na Azure Batch úlohy.
 services: batch
 author: mscurrell
-manager: jeconnoc
+manager: gwallace
 ms.assetid: dc6ba151-1718-468a-b455-2da549225ab2
 ms.service: batch
 ms.devlang: multiple
@@ -12,73 +12,73 @@ ms.workload: na
 ms.date: 03/19/2018
 ms.author: markscu
 ms.custom: seodec18
-ms.openlocfilehash: 17668470be3e997c215aacc4cc2c32c80de2dd81
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 90c8f3779283c23a98bac9d36fde2641c15afafe
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60776128"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68323465"
 ---
 # <a name="use-low-priority-vms-with-batch"></a>Použití virtuálních počítačů s nízkou prioritou se službou Batch
 
-Služba Azure Batch nabízí virtuální počítače s nízkou prioritou (VM), abyste snížili náklady na úlohy služby Batch. Virtuální počítače s nízkou prioritou vytvořit nové typy dávky úlohy je možné tím, že velké množství výpočetního výkonu má být použit pro velmi nízkých nákladech.
+Azure Batch nabízí virtuálním počítačům s nízkou prioritou snížit náklady na úlohy Batch. Virtuální počítače s nízkou prioritou vytvářejí nové typy úloh služby Batch, a to díky tomu, že umožňují použití velkého množství výpočetního výkonu pro velmi nízké náklady.
  
-Virtuální počítače s nízkou prioritou využít využívají nadbytečnou kapacitu v Azure. Při zadávání virtuálních počítačů s nízkou prioritou ve fondech Azure Batch můžete použít tento přebytek, pokud je k dispozici.
+Virtuální počítače s nízkou prioritou využívají nadbytečné kapacity v Azure. Když ve fondech zadáte virtuální počítače s nízkou prioritou, Azure Batch můžou tento přebytečný přístup použít, pokud je k dispozici.
  
-Kompromis pro použití virtuálních počítačů s nízkou prioritou je, že tyto virtuální počítače nemusí být možné přidělit nebo může dojít ke zrušení v okamžiku, v závislosti na dostupné kapacity. Z tohoto důvodu virtuální počítače s nízkou prioritou jsou nejvhodnější pro určité druhy úloh. Použití virtuálních počítačů s nízkou prioritou pro dávkové a asynchronní zpracování úloh, kde je flexibilní čas dokončení úlohy a pro úkony distribuované na více virtuálních počítačích.
+Kompromisy pro použití virtuálních počítačů s nízkou prioritou je, že tyto virtuální počítače nemusí být k dispozici, aby je bylo možné přidělit nebo kdykoli zrušit v závislosti na dostupné kapacitě. Z tohoto důvodu jsou virtuální počítače s nízkou prioritou vhodné pro určité typy úloh. Používejte virtuální počítače s nízkou prioritou pro úlohy dávkového a asynchronního zpracování, kde je čas dokončení úlohy flexibilní a práce se distribuuje napříč mnoha virtuálními počítači.
  
-Virtuální počítače s nízkou prioritou nabízí za výrazně sníženou cenu ve srovnání s vyhrazených virtuálních počítačích. Podrobnosti o cenách najdete v tématu [ceny služby Batch](https://azure.microsoft.com/pricing/details/batch/).
+Virtuální počítače s nízkou prioritou se v porovnání s vyhrazenými virtuálními počítači nabízejí výrazně snížené ceny. Podrobnosti o cenách najdete v tématu [ceny služby Batch](https://azure.microsoft.com/pricing/details/batch/).
 
 ## <a name="use-cases-for-low-priority-vms"></a>Případy použití pro virtuální počítače s nízkou prioritou
 
-Vzhledem k vlastnostem virtuálních počítačů s nízkou prioritou, co úlohy lze a nelze je použít? Obecně platí zpracování úloh služby batch skvěle hodí, úlohy se rozdělují do mnoho paralelních úloh a existuje mnoho úloh, které se škálovat na více systémů a distribuované napříč mnoha virtuálních počítačů.
+S ohledem na charakteristiky virtuálních počítačů s nízkou prioritou, které úlohy můžou a nemůžou používat? Obecně platí, že úlohy dávkového zpracování jsou vhodné, protože úlohy jsou rozdělené do mnoha paralelních úkolů nebo jsou v mnoha úlohách škálované a distribuované napříč mnoha virtuálními počítači.
 
--   Pokud chcete maximalizovat využití nadbytečné kapacity v Azure, můžete vhodný úlohy horizontální navýšení kapacity.
+-   Aby bylo možné maximalizovat využívání nadbytečné kapacity v Azure, můžete škálovat vhodné úlohy.
 
--   V některých virtuálních počítačů možná není k dispozici nebo zrušené, povede k snížení kapacity pro úlohy a může vést k přerušení úloh a opakování. Proto musí být flexibilní v době, kterou můžete využít ke spuštění úlohy.
+-   Občas virtuální počítače nemusí být k dispozici nebo jsou přerušeny, což má za následek sníženou kapacitu pro úlohy a může vést k přerušení a spuštění úloh. Úlohy musí být proto flexibilní v době, kdy mohou být spuštěny.
 
--   Úlohy s delší úlohy může mít vliv více, pokud dojde k přerušení. Pokud dlouho běžící úlohy implementovat vytváření kontrolních bodů průběhu si uložte, protože se provedou, se snižuje dopad přerušení. Úkoly s kratší dobu provádění obvykle fungují nejlépe s virtuálními počítači s nízkou prioritou, protože dopadu přerušení je mnohem méně.
+-   U úloh s delšími úkoly může být ovlivněno více, pokud je přerušeno. Pokud dlouhodobě běžící úlohy implementují kontrolní body, aby při jejich provádění ušetřily průběh, je dopad přerušení snížený. Úlohy s kratší dobou běhu nejlépe fungují s virtuálními počítači s nízkou prioritou, protože dopad přerušení je mnohem menší.
 
--   Dlouhotrvajících úloh MPI, které využívají více virtuálních počítačů nejsou vhodné pro použití virtuálních počítačů s nízkou prioritou, protože jeden virtuální počítač ke zrušení přidělením může vést k celé úlohy by bylo nutné znovu spustit.
+-   Dlouhotrvající MPI úlohy, které využívají více virtuálních počítačů, nejsou vhodné pro použití virtuálních počítačů s nízkou prioritou, protože jeden zrušený virtuální počítač může vést k celé úloze, která se musí spustit znovu.
 
-Příklady případů použití dávkové zpracování a vhodné k použití virtuálních počítačů s nízkou prioritou jsou:
+Některé příklady případů použití dávkového zpracování, vhodné pro použití virtuálních počítačů s nízkou prioritou:
 
--   **Vývoj a testování**: Zejména pokud velkých řešeních jsou, a proto produkt můžete realizovat výraznou slevu. Můžete využívat všechny druhy testování, ale ve velkém měřítku zátěžové testování a regresní testování jsou skvělé používá.
+-   **Vývoj a testování**: Zejména pokud vyvíjíte rozsáhlá řešení, je možné realizovat významné úspory. Všechny typy testování můžou využívat výhod, ale rozsáhlé zátěžové testování a regresní testování jsou skvělé.
 
--   **Doplnění kapacitou na vyžádání**: Virtuální počítače s nízkou prioritou lze použít k doplnění pravidelně vyhrazených virtuálních počítačů – Pokud je k dispozici, můžete škálovat a proto rychleji dokončit za nižší cenu; úlohy Pokud není k dispozici, zůstává k dispozici základní vyhrazených virtuálních počítačích.
+-   **Doplňování kapacity na vyžádání**: Virtuální počítače s nízkou prioritou se dají použít k doplnění běžných vyhrazených virtuálních počítačů – Pokud jsou k dispozici, úlohy se můžou škálovat a proto dokončí rychleji, aby se snížily náklady. Pokud není k dispozici, pak bude k dispozici standardní hodnota vyhrazených virtuálních počítačů.
 
--   **Čas spuštění úlohy flexibilní**: Pokud existuje určitá flexibilita v čase mají úlohy dokončí, pak potenciální drops kapacity může tolerovat; ale přidání virtuálních počítačů s nízkou prioritou často úloha rychleji a s nižšími náklady.
+-   **Flexibilní doba provádění úlohy**: Pokud je v časových úlohách flexibilita, může být možné tolerovat potenciální pokles kapacity; Nicméně při přidávání úloh virtuálních počítačů s nízkou prioritou často běží rychleji a za nižší náklady.
 
-Fondy služby batch lze nakonfigurovat pro použití virtuálních počítačů s nízkou prioritou několika různými způsoby v závislosti na flexibilitu v čase spuštění úlohy:
+Fondy Batch se dají nakonfigurovat tak, aby používaly virtuální počítače s nízkou prioritou, a to v závislosti na flexibilitě v době spuštění úlohy:
 
--   Virtuální počítače s nízkou prioritou lze použít pouze v rámci fondu. V takovém případě Batch obnoví všechny preempted kapacity, pokud je k dispozici. Tato konfigurace je nejlevnější způsob, jak spouštět úlohy, jako jsou virtuální počítače jenom s nízkou prioritou.
+-   Virtuální počítače s nízkou prioritou se můžou používat jedině ve fondu. V tomto případě bude dávka obnovovat jakoukoli nedostupnou kapacitu, pokud je k dispozici. Tato konfigurace představuje nejlevnější způsob, jak spouštět úlohy, protože se používají jenom virtuální počítače s nízkou prioritou.
 
--   Virtuální počítače s nízkou prioritou lze použít ve spojení s pevnou směrného plánu vyhrazených virtuálních počítačů. Pevný počet vyhrazených virtuálních počítačů zajistí, že budou vždy některé schopnost zachovat průběh úlohy.
+-   Virtuální počítače s nízkou prioritou se dají použít ve spojení s pevným směrným plánem vyhrazených virtuálních počítačů. Pevný počet vyhrazených virtuálních počítačů zajišťuje, že existuje vždy nějaká kapacita, aby bylo možné udržet průběh úloh.
 
--   Může být dynamické kombinaci s nízkou prioritou a vyhrazených virtuálních počítačů, tak, aby virtuální počítače levnější s nízkou prioritou se používají pouze pokud je k dispozici, ale úplné ceny vyhrazených virtuálních počítačů se v případě potřeby vertikálně navýšit. Tato konfigurace zajišťuje minimální množství kapacity k dispozici zachovat průběh úlohy.
+-   Může se jednat o dynamickou kombinaci vyhrazených virtuálních počítačů s nízkou prioritou, takže virtuální počítače s nízkou prioritou se použijí jenom v případě, že jsou k dispozici, ale plně náročné vyhrazené virtuální počítače se v případě potřeby škálují. Tato konfigurace zajišťuje minimální dostupnou kapacitu, aby se úlohy udržovaly v průběhu.
 
-## <a name="batch-support-for-low-priority-vms"></a>Podpora služby batch pro virtuální počítače s nízkou prioritou
+## <a name="batch-support-for-low-priority-vms"></a>Podpora služby Batch pro virtuální počítače s nízkou prioritou
 
-Azure Batch poskytuje několik funkcí, které usnadňují využití a těžit z virtuálních počítačů s nízkou prioritou:
+Azure Batch poskytuje několik funkcí, které usnadňují využívání virtuálních počítačů s nízkou prioritou a jejich výhody:
 
--   Fondy služby batch můžou obsahovat vyhrazených virtuálních počítačů a virtuálních počítačů s nízkou prioritou. Počty jednotlivých typů virtuálních počítačů lze zadat, pokud je fond vytvořen nebo změněnen kdykoli pro už existující fond, pomocí operace změny velikosti explicitní nebo použití automatického škálování. Odeslání úloh a může zůstat beze změny, bez ohledu na typy virtuálních počítačů ve fondu. Můžete také nakonfigurovat fond zcela používat virtuální počítače s nízkou prioritou ke spouštění úloh levně, ale aktivovat vyhrazených virtuálních počítačích, pokud kapacitu klesne pod minimální prahové hodnoty, aby spuštěné úlohy.
+-   Fondy dávek můžou obsahovat vyhrazené virtuální počítače i virtuální počítače s nízkou prioritou. Počet jednotlivých typů virtuálních počítačů, které se dají zadat, když se fond vytvoří nebo změní kdykoli pro existující fond, pomocí operace explicitní změny velikosti nebo automatického škálování. Odeslání úlohy a úkolu může zůstat beze změny bez ohledu na typy virtuálních počítačů ve fondu. Fond můžete také nakonfigurovat tak, aby plně používal virtuální počítače s nízkou prioritou ke spouštění úloh co nejmenším možným způsobem, ale využívaly vyhrazené virtuální počítače v případě, že kapacita klesne pod minimální prahovou hodnotu, aby se úlohy udržovaly spuštěné.
 
--   Fondy služby batch automaticky vyhledat cílový počet virtuálních počítačů s nízkou prioritou. Pokud zrušené virtuální počítače dávky pokusí nahradit ztracenou kapacitu a vrátíte se do cíle.
+-   Fondy Batch automaticky hledají cílový počet virtuálních počítačů s nízkou prioritou. Pokud dojde k přerušení virtuálních počítačů, potom se Batch pokusí nahradit ztracenou kapacitu a vrátit se k cíli.
 
--   Přerušení úloh služby Batch rozpozná a automaticky requeues úlohy spustit znovu.
+-   Po přerušení úlohy Batch detekuje a automaticky znovu zařadí úlohy, které se mají znovu spustit.
 
--   Virtuální počítače s nízkou prioritou mají kvótu samostatných virtuálních procesorů, které se liší od jedné vyhrazených virtuálních počítačích. 
-    Kvóta pro virtuální počítače s nízkou prioritou je vyšší než kvóta pro vyhrazené virtuální počítače, protože virtuální počítače s nízkou prioritou nižší náklady. Další informace najdete v tématu [Batch, kvóty a omezení služby](batch-quota-limit.md#resource-quotas).    
+-   Virtuální počítače s nízkou prioritou mají samostatnou vCPU kvótu, která se liší od jedné pro vyhrazené virtuální počítače. 
+    Kvóta pro virtuální počítače s nízkou prioritou je vyšší než kvóta vyhrazených virtuálních počítačů, protože virtuální počítače s nízkou prioritou jsou levnější. Další informace najdete v tématu [kvóty a omezení služby Batch](batch-quota-limit.md#resource-quotas).    
 
 > [!NOTE]
-> Virtuální počítače s nízkou prioritou nejsou aktuálně podporovány pro účty Batch vytvořené v [režimu předplatného uživatele](batch-api-basics.md#account).
+> Virtuální počítače s nízkou prioritou se v současné době nepodporují pro účty Batch vytvořené v [režimu předplatného uživatele](batch-api-basics.md#account).
 >
 
-## <a name="create-and-update-pools"></a>Vytvoření a aktualizaci fondy
+## <a name="create-and-update-pools"></a>Vytváření a aktualizace fondů
 
-Fond služby Batch můžou obsahovat virtuální počítače vyhrazené a s nízkou prioritou (také označované jako výpočetní uzly). Cílový počet výpočetních uzlů můžete nastavit pro virtuální počítače vyhrazené a s nízkou prioritou. Cílový počet uzlů určuje počet virtuálních počítačů, které chcete mít ve fondu.
+Fond dávek může obsahovat vyhrazené virtuální počítače i virtuální počítače s nízkou prioritou (označované také jako výpočetní uzly). Můžete nastavit cílový počet výpočetních uzlů pro virtuální počítače s nízkou prioritou. Cílový počet uzlů určuje počet virtuálních počítačů, které mají být ve fondu.
 
-Například k vytvoření fondu pomocí virtuálních počítačů Azure cloudových služeb s cílem 5 vyhrazených virtuálních počítačů a 20 virtuálních počítačů s nízkou prioritou:
+Například vytvoření fondu pomocí virtuálních počítačů cloudových služeb Azure s cílem 5 vyhrazených virtuálních počítačů a 20 virtuálních počítačů s nízkou prioritou:
 
 ```csharp
 CloudPool pool = batchClient.PoolOperations.CreatePool(
@@ -90,7 +90,7 @@ CloudPool pool = batchClient.PoolOperations.CreatePool(
 );
 ```
 
-Vytvoření fondu pomocí virtuálních počítačů Azure (v tomto případě virtuální počítače s Linuxem) s cílem 5 vyhrazené virtuální počítače a 20 virtuálních počítačů s nízkou prioritou:
+Vytvoření fondu pomocí virtuálních počítačů Azure (v tomto případě virtuálních počítačů se systémem Linux) s cílem 5 vyhrazených virtuálních počítačů a 20 virtuálních počítačů s nízkou prioritou:
 
 ```csharp
 ImageReference imageRef = new ImageReference(
@@ -111,26 +111,26 @@ pool = batchClient.PoolOperations.CreatePool(
     virtualMachineConfiguration: virtualMachineConfiguration);
 ```
 
-Pro virtuální počítače vyhrazené a s nízkou prioritou můžete získat aktuální počet uzlů:
+Aktuální počet uzlů pro virtuální počítače s nízkou prioritou můžete získat:
 
 ```csharp
 int? numDedicated = pool1.CurrentDedicatedComputeNodes;
 int? numLowPri = pool1.CurrentLowPriorityComputeNodes;
 ```
 
-Uzly fondu mají vlastnost umožňující označit, pokud uzel je virtuální počítač vyhrazený nebo s nízkou prioritou:
+Uzly fondu mají vlastnost, která určuje, jestli je uzel vyhrazený virtuální počítač s nízkou prioritou:
 
 ```csharp
 bool? isNodeDedicated = poolNode.IsDedicated;
 ```
 
-Při zrušené jeden nebo více uzlů ve fondu, vrátí operaci seznam uzlů ve fondu pořád těchto uzlů. Aktuální počet uzlů s nízkou prioritou se nezmění, ale ty uzly, mají jejich stav nastaven **přepnuto** stavu. Batch se pokusí najít náhradní virtuální počítače, a v případě úspěšného ověření uzly projít **vytváření** a potom **počáteční** státy, než se náplní k dispozici pro provádění úkolů, stejně jako nové uzly.
+Když dojde k přerušení jednoho nebo více uzlů ve fondu, operace výpisu uzlů ve fondu stále tyto uzly vrátí. Aktuální počet uzlů s nízkou prioritou zůstane beze změny, ale u těchto uzlů je stav nastaven na přerušený  stav. Batch se pokusí najít náhradní virtuální počítače a v případě úspěchu uzly procházejí **vytvořením** a následným **spuštěním** stavů, než se stane k dispozici pro spuštění úlohy, stejně jako u nových uzlů.
 
-## <a name="scale-a-pool-containing-low-priority-vms"></a>Škálování fondu obsahujících virtuální počítače s nízkou prioritou
+## <a name="scale-a-pool-containing-low-priority-vms"></a>Škálování fondu obsahujícího virtuální počítače s nízkou prioritou
 
-Jako s fondy výhradně skládající se z vyhrazených virtuálních počítačů, je možné škálovat fond obsahující virtuální počítače s nízkou prioritou, voláním metody změny velikosti nebo použití automatického škálování.
+Stejně jako u fondů, které se skládají výhradně z vyhrazených virtuálních počítačů, je možné škálovat fond obsahující virtuální počítače s nízkou prioritou voláním metody změny velikosti nebo pomocí automatického škálování.
 
-Operace změny velikosti fondu trvá druhý volitelný parametr, který aktualizuje hodnotu **targetLowPriorityNodes**:
+Operace změny velikosti fondu má druhý volitelný parametr, který aktualizuje hodnotu **targetLowPriorityNodes**:
 
 ```csharp
 pool.Resize(targetDedicatedComputeNodes: 0, targetLowPriorityComputeNodes: 25);
@@ -143,40 +143,40 @@ Vzorec automatického škálování fondu podporuje virtuální počítače s n�
 -   Můžete získat hodnotu proměnné definované službou **$CurrentLowPriorityNodes**.
 
 -   Můžete získat hodnotu proměnné definované službou **$PreemptedNodeCount**. 
-    Tato proměnná vrátí počet uzlů v preempted stavu a umožňuje vertikálně navyšovat nebo snižovat počet vyhrazených uzlů v závislosti na počtu ke zrušení přidělením uzly, které jsou k dispozici.
+    Tato proměnná vrátí počet uzlů v zastaveném stavu a umožňuje horizontální navýšení nebo snížení kapacity počtu vyhrazených uzlů v závislosti na počtu nedostupných uzlů, které nejsou k dispozici.
 
-## <a name="jobs-and-tasks"></a>Úlohy a úkoly
+## <a name="jobs-and-tasks"></a>Úlohy a úlohy
 
-Úlohy a úkoly vyžaduje trochu další konfigurace pro uzly s nízkou prioritou; podporují jenom vypadá takto:
+Úlohy a úlohy vyžadují pro uzly s nízkou prioritou trochu další konfiguraci. jediná podpora je následující:
 
--   Vlastnost JobManagerTask úlohy má nové vlastnosti **AllowLowPriorityNode**. 
-    Když tato vlastnost hodnotu true, úkol Správce úloh může být naplánována na vyhrazený nebo s nízkou prioritou uzlu. Pokud je tato vlastnost hodnotu false, úkol Správce úloh je naplánováno na vyhrazených uzlů.
+-   Vlastnost JobManagerTask úlohy má novou vlastnost **AllowLowPriorityNode**. 
+    Pokud má tato vlastnost hodnotu true, může být úkol správce úloh naplánován buď na vyhrazený, nebo na uzlu s nízkou prioritou. Pokud je tato vlastnost false, je úkol správce úloh naplánován pouze na vyhrazený uzel.
 
--   [Proměnnou prostředí](batch-compute-node-environment-variables.md) je k dispozici pro aplikaci úkolu, takže můžete určit, zda je spuštěn na uzlu s nízkou prioritou nebo vyhrazené. Proměnná prostředí je AZ_BATCH_NODE_IS_DEDICATED.
+-   [Proměnná prostředí](batch-compute-node-environment-variables.md) je k dispozici pro aplikaci úkolu, aby mohla zjistit, jestli je spuštěná v uzlu s nízkou prioritou nebo vyhrazeným uzlem. Proměnná prostředí je AZ_BATCH_NODE_IS_DEDICATED.
 
-## <a name="handling-preemption"></a>Přerušování zpracování
+## <a name="handling-preemption"></a>Přerušení zpracování
 
-Virtuálních počítačů může někdy dojít ke zrušení přidělením; Když se stane přerušení, Batch provede následující akce:
+Je možné, že virtuální počítače budou občas zrušené. Když dojde k přerušení, Batch provede toto:
 
--   Preempted virtuálních počítačů mají jejich stav aktualizuje na **přepnuto**.
--   Úkoly byly spuštěné na virtuálních počítačích ke zrušení přidělením uzel, úkoly se zařadí do fronty a spusťte znovu.
--   Virtuální počítač je skutečně odstraněn, což vede ke ztrátě všech dat uložených místně na virtuálním počítači.
--   Fond se průběžně pokusí kontaktovat cílový počet uzlů s nízkou prioritou dostupné. Po nalezení náhradní kapacity uzlů zachovat jejich ID, ale jsou opětovně inicializovány, prostřednictvím **vytváření** a **počáteční** stavy předtím, než jsou k dispozici pro plánování úloh.
--   Přerušení počty jsou k dispozici jako metriku na webu Azure Portal.
+-   Zrušené virtuální počítače mají stav aktualizace na přerušeno.
+-   Pokud úlohy běžely na virtuálních počítačích s přerušeným uzlem, tyto úlohy se znovu zařadí do fronty a znovu se spustí.
+-   Virtuální počítač se efektivně odstraní, což vede ke ztrátě všech dat uložených místně na VIRTUÁLNÍm počítači.
+-   Fond se neustále pokouší spojit s cílovým počtem dostupných uzlů s nízkou prioritou. Když se najde náhradní kapacita, uzly zachovají jejich ID, ale budou se znovu inicializovat, a to  tak, že procházejí vytvořením a **spuštěním** stavů, než budou k dispozici pro plánování úloh.
+-   Počty přerušení jsou k dispozici jako metrika v Azure Portal.
 
 ## <a name="metrics"></a>Metriky
 
-Jsou k dispozici v nové metriky [webu Azure portal](https://portal.azure.com) pro uzly s nízkou prioritou. Tyto metriky jsou:
+Nové metriky jsou k dispozici v [Azure Portal](https://portal.azure.com) pro uzly s nízkou prioritou. Tyto metriky jsou:
 
 - Počet uzlů s nízkou prioritou
 - Počet jader s nízkou prioritou 
-- Ke zrušení přidělením počet uzlů
+- Počet zrušených uzlů
 
-Pokud chcete zobrazit metriky na webu Azure Portal:
+Chcete-li zobrazit metriky v Azure Portal:
 
-1. Přejděte do svého účtu Batch na portálu a zobrazit nastavení pro účet Batch.
-2. Vyberte **metriky** z **monitorování** oddílu.
-3. Vyberte metriky, které očekáváte od **dostupné metriky** seznamu.
+1. Na portálu přejděte na účet Batch a zobrazte si nastavení účtu Batch.
+2. V části **monitorování** vyberte **metriky** .
+3. V seznamu **dostupné metriky** vyberte metriky, které si přejete.
 
 ![Metriky pro uzly s nízkou prioritou](media/batch-low-pri-vms/low-pri-metrics.png)
 

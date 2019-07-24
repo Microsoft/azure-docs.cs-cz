@@ -1,6 +1,6 @@
 ---
-title: StorSimple řady 8000 jako cíl zálohování s Veeam | Dokumentace Microsoftu
-description: Popisuje konfiguraci cíl zálohování StorSimple s Veeam.
+title: Řady StorSimple 8000 jako cíl zálohování s Veeam | Microsoft Docs
+description: Popisuje konfiguraci cíle zálohování StorSimple pomocí Veeam.
 services: storsimple
 documentationcenter: ''
 author: harshakirank
@@ -13,82 +13,82 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/06/2016
-ms.author: hkanna
-ms.openlocfilehash: e7659cca9081834d41f64ef0fbd8ea3686044bfd
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: matd
+ms.openlocfilehash: 3ebf464fed1480e7452f246f04f3906faf0dd219
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60633776"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67875304"
 ---
-# <a name="storsimple-as-a-backup-target-with-veeam"></a>StorSimple s Veeam jako cíl zálohování
+# <a name="storsimple-as-a-backup-target-with-veeam"></a>StorSimple jako cíl zálohování s Veeam
 
 ## <a name="overview"></a>Přehled
 
-Azure StorSimple je řešení hybridního cloudového úložiště od Microsoftu. StorSimple řeší složitosti exponenciálního nárůstu dat pomocí účtu služby Azure Storage jako rozšíření místního řešení a automaticky vrstvení dat napříč úložiště v místním a cloudovým úložištěm.
+Azure StorSimple je řešení hybridního cloudového úložiště od Microsoftu. StorSimple řeší složitosti exponenciálního nárůstu dat pomocí Azure Storage účtu jako rozšíření místního řešení a Automatické vrstvení dat napříč místním úložištěm a cloudovým úložištěm.
 
-V tomto článku se podíváme na integraci StorSimple s Veeam a osvědčené postupy pro integraci obou řešení. Doporučení Usnadňujeme také o tom, jak nastavit Veeam nejlépe integrovat StorSimple. Jsme smyslu můžete využít osvědčené postupy Veeam, zálohování architekty a správce pro nejlepší způsob, jak nastavit Veeam splňovat požadavky jednotlivých záloh a smlouvy o úrovni služeb (SLA).
+V tomto článku probereme integraci StorSimple s Veeam a osvědčenými postupy pro integraci obou řešení. Také jsme povedli doporučení, jak nastavit Veeam tak, aby se co nejlépe integroval s StorSimple. Neodkladně Veeam osvědčené postupy, architekty pro zálohování a správce, aby bylo možné nastavit Veeam tak, aby splňovaly jednotlivé požadavky na zálohování a smlouvy o úrovni služeb (SLA).
 
-I když jsme ukazují postup konfigurace a klíčových konceptů, tento článek není podrobný Průvodce konfigurace nebo instalace. Jsme předpokládají, že základní komponenty a infrastruktury ve funkčním stavu a připravena k podpoře koncepty, které jsme popsali.
+I když ilustrují konfigurační kroky a klíčové koncepty, Tento článek není nijak podrobných konfigurací nebo Průvodce instalací nástroje. Předpokládáme, že základní komponenty a infrastruktura jsou v pracovním řádu a připravené k podpoře konceptů, které popisujeme.
 
-### <a name="who-should-read-this"></a>Kdo by měl najdete v tomto?
+### <a name="who-should-read-this"></a>Kdo by se měl číst?
 
-Informace v tomto článku bude nejužitečnější zálohování správci, Správci úložiště a úložiště architekty, znalostmi úložiště, Windows Server 2012 R2, Ethernet, cloudových služeb a Veeam.
+Informace v tomto článku budou nejužitečnější pro správce zálohování, Správce úložiště a architekty úložiště, kteří mají zkušenosti s úložištěm, Windows Server 2012 R2, Ethernet, Cloud Services a Veeam.
 
 ### <a name="supported-versions"></a>Podporované verze
 
--   Sada Veeam 9 a novějších verzích
--   [StorSimple Update 3 a novějších verzích](storsimple-overview.md#storsimple-workload-summary)
+-   Veeam 9 a novější verze
+-   [StorSimple Update 3 a novější verze](storsimple-overview.md#storsimple-workload-summary)
 
 
 ## <a name="why-storsimple-as-a-backup-target"></a>Proč StorSimple jako cíl zálohování?
 
-StorSimple je dobrou volbou pro cíl zálohování, protože:
+StorSimple je vhodná volba pro cíl zálohování z těchto důvodů:
 
--   Poskytuje standardní, místní úložiště pro zálohování aplikací pro použití jako cíl pro rychlé zálohování, bez nutnosti jakkoli měnit. StorSimple taky můžete použít pro rychlé obnovení poslední zálohy.
--   Jeho cloudu ovládání datových vrstev na bezproblémově integruje s účtem úložiště Azure cloud používání nákladově efektivní úložiště Azure.
--   Automaticky poskytuje úložiště mimo pracoviště pro zotavení po havárii.
+-   Poskytuje standardní místní úložiště pro aplikace pro zálohování, které se mají použít jako cíl pro rychlé zálohování, a to bez jakýchkoli změn. StorSimple můžete použít také pro rychlé obnovení nedávných záloh.
+-   Jeho vrstva cloudu se bezproblémově integruje s účtem cloudového úložiště Azure, aby bylo možné využívat nákladově efektivní Azure Storage.
+-   Pro zotavení po havárii automaticky zajišťuje ukládání mimo lokalitu.
 
 
 ## <a name="key-concepts"></a>Klíčové koncepty
 
-Stejně jako u jakékoli řešení úložiště, pečlivě hodnocení výkonu úložiště řešení, smlouvy o úrovni služeb, počet změn a růstu potřeb kapacity je zásadní pro úspěch. Hlavním cílem je, že zavedením cloudovou vrstvu, čas přístupu a propustnosti na cloud play klíčovou roli v schopnost StorSimple fungovala správně.
+Stejně jako u jakéhokoli řešení úložiště je velmi důležité vyhodnotit výkon úložiště, SLA, rychlost změny a potřeby růstu kapacity. Hlavním nápadem je to, že když zavedete cloudovou vrstvu, vaše doba přístupu a propustnost do cloudu hrají základní roli, která může StorSimple provádět jeho úlohu.
 
-StorSimple je navržená k poskytování úložiště pro aplikace, které pracují na jasně definovaných pracovního sadě dat (horká data). V tomto modelu pracovní sadu dat je uložena v místních vrstvách a zbývající nepracovní/studeného nebo archivovat sadu dat je Vrstvená do cloudu. Tento model je vyjádřena na následujícím obrázku. Téměř stejné zelená čára představuje data uložená v místních vrstvách zařízení StorSimple. Červená čára představuje celkové množství dat uložených v řešení StorSimple ve všech vrstvách. Mezera mezi paušální zelenou čáru a exponenciální red křivky představuje celkové množství dat uložených v cloudu.
+StorSimple je navržený tak, aby poskytoval úložiště pro aplikace, které pracují s dobře definovanou pracovní sadou dat (Hot data). V tomto modelu se pracovní sada dat ukládá v místních vrstvách a zbývající nepracovní/studená a archivní sada dat je vrstvená do cloudu. Tento model je reprezentován na následujícím obrázku. Skoro plochá zelená čára představuje data uložená v místních vrstvách zařízení StorSimple. Červená čára představuje celkové množství dat uložených v řešení StorSimple napříč všemi úrovněmi. Prostor mezi plochou zelenou čárou a exponenciální červenou křivkou představuje celkové množství dat uložených v cloudu.
 
-**Ovládání datových vrstev na StorSimple**
-![diagram vrstev StorSimple](./media/storsimple-configure-backup-target-using-veeam/image1.jpg)
 
-Tato architektura v úvahu zjistíte, že StorSimple je ideální pro provoz jako cíl zálohování. Můžete používat StorSimple pro:
+Diagram vrstvení![StorSimple vrstev StorSimple](./media/storsimple-configure-backup-target-using-veeam/image1.jpg)
 
--   Nejčastěji se vyskytujících obnovení proveďte z místní pracovní sadu dat.
--   Použijte cloud pro zotavení po havárii mimo pracoviště a starší data, kde jsou méně časté zálohování.
+V této architektuře se dozvíte, že StorSimple je ideálním řešením pro provoz jako cíl zálohování. StorSimple můžete použít k těmto akcím:
+
+-   Proveďte nejčastější obnovení z místní pracovní sady dat.
+-   Využijte Cloud pro zotavení po havárii mimo lokalitu a starší data, kde obnovení je méně časté.
 
 ## <a name="storsimple-benefits"></a>Výhody StorSimple
 
-StorSimple poskytuje v místním řešení, která se bez problémů integruje s Microsoft Azure s využitím bezproblémový přístup k místním a cloudovém úložišti.
+StorSimple poskytuje místní řešení, které se bez problémů integruje s Microsoft Azure díky využití bezproblémového přístupu k místnímu a cloudovém úložišti.
 
-StorSimple využívá automatické vrstvení mezi místní zařízení, jehož zařízení SSD (Solid-State Drive) a sériově připojené úložiště SCSI (SAS) a Azure Storage. Automatické vrstvení udržuje často používaná data místní, vrstev SSD a SAS. Přesune zřídka používaná data do služby Azure Storage.
+StorSimple využívá automatické vrstvení mezi místním zařízením, které má úložiště SSD (Solid-State Device) a SAS (Serial-Attached SCSI), a Azure Storage. Automatické vrstvení uchovává často používaná data na úrovních SSD a SAS. Přesune zřídka používaná data na Azure Storage.
 
 StorSimple nabízí tyto výhody:
 
--   Jedinečné deduplikace a komprese algoritmy, které díky cloudu budete aplikace dosáhnout úrovně bezprecedentní odstranění duplicitních dat
+-   Jedinečné algoritmy pro odstranění duplicit a kompresi, které využívají Cloud k dosažení nepředchozích úrovní odstranění duplicit
 -   Vysoká dostupnost
--   Geografickou replikaci s použitím Azure geografické replikace
--   Integrace s Azure
+-   Geografická replikace pomocí geografické replikace Azure
+-   Integrace Azure
 -   Šifrování dat v cloudu
--   Zlepšení zotavení po havárii a dodržování předpisů
+-   Lepší zotavení po havárii a dodržování předpisů
 
-I když StorSimple v podstatě představuje dva scénáře nasazení hlavní (primární, záložní cíl a sekundární záložní cíl), je jednoduché, zařízení s blokovým úložištěm. StorSimple nemá všechny komprese a odstranění duplicit. Bez problémů odešle a načítá data mezi cloudem a aplikace a systém souborů.
+I když StorSimple představuje dva hlavní scénáře nasazení (primární cíl zálohování a sekundární cíl zálohování), v podstatě je to jednoduché, blokové úložné zařízení. StorSimple provádí všechna komprimaci a odstraňování duplicitních dat. Bez problémů odesílá a načítá data mezi cloudem a systémem souborů a aplikací.
 
-Další informace o StorSimple najdete v tématu [StorSimple řady 8000: Řešení hybridního cloudového úložiště](storsimple-overview.md). Navíc můžete zkontrolovat [technických specifikací řady StorSimple 8000](storsimple-technical-specifications-and-compliance.md).
+Další informace o StorSimple naleznete v tématu [StorSimple 8000 series: Řešení](storsimple-overview.md)hybridního cloudového úložiště Můžete si také projít specifikacemi [řady Technical StorSimple 8000](storsimple-technical-specifications-and-compliance.md).
 
 > [!IMPORTANT]
-> Použití StorSimple zařízení jako cíl zálohování je podporováno pouze pro StorSimple 8000 Update 3 a novějších verzích.
+> Použití zařízení StorSimple jako cíle zálohování je podporované jenom pro StorSimple 8000 Update 3 a novější verze.
 
 ## <a name="architecture-overview"></a>Přehled architektury
 
-Následující tabulky popisují základní pokyny k architektuře modelu zařízení.
+V následujících tabulkách jsou uvedeny úvodní pokyny k modelům zařízení-architektura.
 
 **StorSimple kapacity pro místní a cloudové úložiště**
 
@@ -97,203 +97,203 @@ Následující tabulky popisují základní pokyny k architektuře modelu zaří
 | Kapacita místního úložiště | &lt; 10 TiB\*  | &lt; 20 TiB\*  |
 | Kapacita cloudového úložiště | &gt; 200 TiB\* | &gt; 500 TiB\* |
 
-\* Velikost úložiště předpokládá bez odstranění duplicitních dat nebo kompresi.
+\*Velikost úložiště nepředpokládá žádné odstranění duplicit ani kompresi.
 
-**StorSimple kapacity pro primární a sekundární zálohování**
+**StorSimple kapacity pro primární a sekundární zálohy**
 
-| Zálohování scénář  | Kapacita místního úložiště  | Kapacita cloudového úložiště  |
+| Scénář zálohování  | Kapacita místního úložiště  | Kapacita cloudového úložiště  |
 |---|---|---|
-| Primární zálohu  | Poslední zálohy uložené v místním úložišti pro rychlé obnovení pro splnění cíle bodu obnovení (RPO) | Zálohy historie (RPO) vejde kapacity cloudu |
-| Sekundární zálohování | Sekundární kopii zálohovaných dat můžou být uložené v cloudu kapacity  | neuvedeno  |
+| Primární záloha  | Poslední zálohy uložené v místním úložišti pro rychlé obnovení, aby splňovaly cíl bodu obnovení (RPO) | Historie zálohování (RPO) se vejde do kapacity cloudu |
+| Sekundární zálohování | Sekundární kopie zálohovaných dat se dá ukládat do kapacity cloudu.  | Není k dispozici  |
 
 ## <a name="storsimple-as-a-primary-backup-target"></a>StorSimple jako primární cíl zálohování
 
-V tomto scénáři se zobrazí svazky zařízení StorSimple do zálohovací aplikace jako výhradní úložiště pro zálohy. Následující obrázek znázorňuje architekturu řešení, ve kterém všechna zálohování pomocí StorSimple vrstvené svazky pro zálohování a obnovení.
+V tomto scénáři se StorSimple svazky prezentují do zálohovací aplikace jako jediné úložiště pro zálohy. Následující obrázek ukazuje architekturu řešení, ve které všechny zálohy používají StorSimple vrstvené svazky pro zálohování a obnovení.
 
-![StorSimple jako primární, záložní cíl Logický diagram](./media/storsimple-configure-backup-target-using-veeam/primarybackuptargetlogicaldiagram.png)
+![StorSimple jako primární Logický diagram cíle zálohování](./media/storsimple-configure-backup-target-using-veeam/primarybackuptargetlogicaldiagram.png)
 
-### <a name="primary-target-backup-logical-steps"></a>Primární cíl zálohování logických kroků
+### <a name="primary-target-backup-logical-steps"></a>Logické kroky zálohování primárního cíle
 
-1.  Záložní server kontaktuje cílovém agentovi pro zálohování a zálohování agent odesílá data na záložní server.
-2.  Záložní server zapíše data do StorSimple vrstvené svazky.
-3.  Zálohování serveru aktualizuje databázi katalogu a pak dokončí úlohu zálohování.
-4.  Snímek skript spustí cloud snapshot Manageru zařízení StorSimple (spuštění nebo odstranění).
-5.  Záložní server Odstraní vypršela platnost záloh na základě zásad uchovávání informací.
+1.  Záložní server kontaktuje cílového agenta Zálohování a Agent zálohování přenáší data na záložní server.
+2.  Záložní server zapisuje data do vrstvených svazků StorSimple.
+3.  Záložní server aktualizuje databázi katalogu a pak dokončí úlohu zálohování.
+4.  Skript snímku spustí StorSimple Cloud Snapshot Manager (spustit nebo odstranit).
+5.  Záložní server odstraní zálohy s vypršenou platností na základě zásad uchovávání informací.
 
-### <a name="primary-target-restore-logical-steps"></a>Primární cíl obnovení logických kroků
+### <a name="primary-target-restore-logical-steps"></a>Logické kroky obnovení primárního cíle
 
-1.  Zálohování serveru spustí obnovení příslušná data z úložiště úložiště.
-2.  Agenta zálohování přijímá data ze zálohy serveru.
+1.  Záložní server začne obnovovat vhodná data z úložiště úložiště.
+2.  Agent zálohování obdrží data ze záložního serveru.
 3.  Záložní server dokončí úlohu obnovení.
 
-## <a name="storsimple-as-a-secondary-backup-target"></a>StorSimple jako sekundární záložní cíl
+## <a name="storsimple-as-a-secondary-backup-target"></a>StorSimple jako cíl sekundárního zálohování
 
-V tomto scénáři svazky zařízení StorSimple se používá především pro dlouhodobé uchovávání a archivaci.
+V tomto scénáři se StorSimple svazky primárně používají k dlouhodobému uchovávání nebo archivaci.
 
-Následující obrázek ukazuje architekturu, ve které prvotní zálohy a obnoví vysoce výkonné cílový svazek. Tyto zálohy jsou zkopírovány a archivovat do StorSimple vrstveného svazku podle nastaveného plánu.
+Následující obrázek ukazuje architekturu, ve které počáteční zálohy a obnovení cílí na svazek s vysokým výkonem. Tyto zálohy se zkopírují a archivují na StorSimple vrstvený svazek podle nastaveného plánu.
 
-Je důležité pro nastavení velikosti svazku výkonné tak, že dokáže zpracovat požadavky vaší uchování zásad kapacitu a výkon.
+Je důležité mít velikost vysoce výkonného svazku, aby mohla zvládnout požadavky na kapacitu a výkon zásad uchovávání informací.
 
-![StorSimple jako sekundární záložní cíl Logický diagram](./media/storsimple-configure-backup-target-using-veeam/secondarybackuptargetlogicaldiagram.png)
+![Logický diagram StorSimple jako sekundární cíl zálohování](./media/storsimple-configure-backup-target-using-veeam/secondarybackuptargetlogicaldiagram.png)
 
-### <a name="secondary-target-backup-logical-steps"></a>Sekundární cíl zálohování logických kroků
+### <a name="secondary-target-backup-logical-steps"></a>Logické kroky zálohování sekundárního cíle
 
-1.  Záložní server kontaktuje cílovém agentovi pro zálohování a zálohování agent odesílá data na záložní server.
-2.  Záložní server zapíše data do vysoce výkonné úložiště.
-3.  Zálohování serveru aktualizuje databázi katalogu a pak dokončí úlohu zálohování.
-4.  Záložní server zkopíruje do StorSimple na základě zásad uchovávání záloh.
-5.  Snímek skript spustí cloud snapshot Manageru zařízení StorSimple (spuštění nebo odstranění).
-6.  Záložní server Odstraní vypršela platnost záloh na základě zásad uchovávání informací.
+1.  Záložní server kontaktuje cílového agenta Zálohování a Agent zálohování přenáší data na záložní server.
+2.  Záložní server zapisuje data do úložiště s vysokým výkonem.
+3.  Záložní server aktualizuje databázi katalogu a pak dokončí úlohu zálohování.
+4.  Záložní server kopíruje zálohy do StorSimple na základě zásad uchovávání informací.
+5.  Skript snímku spustí StorSimple Cloud Snapshot Manager (spustit nebo odstranit).
+6.  Záložní server odstraní zálohy s vypršenou platností na základě zásad uchovávání informací.
 
-### <a name="secondary-target-restore-logical-steps"></a>Sekundární cíl obnovení logických kroků
+### <a name="secondary-target-restore-logical-steps"></a>Logické kroky obnovení sekundárního cíle
 
-1.  Zálohování serveru spustí obnovení příslušná data z úložiště úložiště.
-2.  Agenta zálohování přijímá data ze zálohy serveru.
+1.  Záložní server začne obnovovat vhodná data z úložiště úložiště.
+2.  Agent zálohování obdrží data ze záložního serveru.
 3.  Záložní server dokončí úlohu obnovení.
 
 ## <a name="deploy-the-solution"></a>Nasazení řešení
 
 Nasazení řešení vyžaduje tři kroky:
 
-1. Připravte síťové infrastruktury.
-2. Nasazení zařízení StorSimple jako cíl zálohování.
-3. Nasazení řešení Veeam.
+1. Připravte síťovou infrastrukturu.
+2. Nasaďte zařízení StorSimple jako cíl zálohování.
+3. Nasaďte Veeam.
 
-Jednotlivé kroky jsou popsány podrobně v následující části.
+Jednotlivé kroky jsou podrobně popsány v následujících částech.
 
 ### <a name="set-up-the-network"></a>Nastavit síť
 
-Protože StorSimple je řešení, která je integrovaná s Azure cloud, StorSimple vyžaduje aktivní a pracovní připojení ke cloudu Azure. Toto připojení se používá pro operace, jako je cloudové snímky, Správa dat a přenos metadata a na úroveň starší, méně používaná data do cloudového úložiště Azure.
+Vzhledem k tomu, že StorSimple je řešení, které je integrované s cloudem Azure, vyžaduje StorSimple aktivní a funkční připojení ke cloudu Azure. Toto připojení se používá pro operace, jako jsou cloudové snímky, Správa dat a přenos metadat, a to na úrovni starších a méně využitých dat do cloudového úložiště Azure.
 
-Řešení tak, aby fungoval optimálně doporučujeme, abyste postupovali podle těchto síťových osvědčených postupů:
+Aby se řešení provádělo optimálně, doporučujeme dodržovat tyto osvědčené postupy sítě:
 
--   Odkaz, který se připojuje k Azure StorSimple ovládání datových vrstev musí splňovat požadavky na šířku pásma. Můžete toho dosáhnout použitím potřebnou úroveň kvality služby (QoS) k vaší infrastruktuře čas přepínače tak, aby odpovídaly cíle bodu obnovení a obnovení smlouvy o úrovni služeb cíle (RTO).
--   Maximální latence přístupu k úložišti objektů Blob v Azure by měla být přibližně 80 ms.
+-   Odkaz, který připojuje vaše rozhraní StorSimple do Azure, musí splňovat požadavky na šířku pásma. Dosáhnete toho tím, že použijete potřebnou úroveň QoS (Quality of Service) na vaše přepínače infrastruktury tak, aby odpovídaly cíli RPO a času obnovení (RTO) SLA.
+-   Maximální počet latencí přístupu k úložišti objektů BLOB v Azure by měl být okolo 80 MS.
 
 ### <a name="deploy-storsimple"></a>Nasazení StorSimple
 
-Pokyny krok za krokem StorSimple nasazení najdete v tématu [nasazení zařízení StorSimple v místním](storsimple-deployment-walkthrough-u2.md).
+Podrobné pokyny k nasazení StorSimple najdete v tématu [nasazení místního zařízení StorSimple](storsimple-deployment-walkthrough-u2.md).
 
-### <a name="deploy-veeam"></a>Nasazení řešení Veeam
+### <a name="deploy-veeam"></a>Nasazení Veeam
 
-Osvědčené postupy instalace Veeam, naleznete v tématu [Veeam zálohování a osvědčené postupy replikace](https://bp.veeam.expert/), a přečtěte si uživatelskou příručku na [Centrum pro nápovědu Veeam (technické dokumentace)](https://www.veeam.com/documentation-guides-datasheets.html).
+Osvědčené postupy k instalaci Veeam najdete v článku [osvědčené postupy pro replikaci Veeam Backup &](https://bp.veeam.expert/)a přečtěte si uživatelskou příručku v [centru pro technickou dokumentaci pro Veeam](https://www.veeam.com/documentation-guides-datasheets.html).
 
 ## <a name="set-up-the-solution"></a>Nastavení řešení
 
-V této části ukážeme některé příklady konfigurace. Následující příklady a doporučení pro ilustraci nejvíce základní a základní implementaci. Tato implementace nemusí platit přímo k vašim konkrétním požadavkům zálohování.
+V této části předvádíme některé příklady konfigurace. Následující příklady a doporučení znázorňují základní a základní implementaci. Tato implementace se nemusí vztahovat přímo na vaše konkrétní požadavky na zálohování.
 
-### <a name="set-up-storsimple"></a>Nastavit StorSimple
+### <a name="set-up-storsimple"></a>Nastavení StorSimple
 
-| Úlohy nasazení StorSimple  | Další komentáře |
+| StorSimple úlohy nasazení  | Další komentáře |
 |---|---|
-| Nasazení místního zařízení StorSimple. | Podporované verze: Aktualizací Update 3 a novějších verzích. |
-| Zapněte cíl zálohování. | Pomocí těchto příkazů zapnout nebo vypnout režim cíl zálohování a získat stav. Další informace najdete v tématu [připojit vzdáleně k zařízení StorSimple](storsimple-remote-connect.md).</br> Zapnout režim zálohování: `Set-HCSBackupApplianceMode -enable`. </br> Chcete-li vypnout režim zálohování: `Set-HCSBackupApplianceMode -disable`. </br> Chcete-li získat aktuální stav nastavení režim zálohování: `Get-HCSBackupApplianceMode`. |
-| Vytvořte kontejner svazků běžné svazku, který uchovává zálohovaná data. Všechna data v kontejneru svazku se odstraňují duplicity. | Kontejnery svazků StorSimple definování domén odstranění duplicit.  |
-| Vytvořte svazky zařízení StorSimple. | Vytvořte svazky s velikostí jako blízko očekávané využití nejdříve, protože velikost svazku ovlivňuje dobu trvání snímku v cloudu. Informace o tom, jak upravit velikost svazku, přečtěte si informace o [zásady uchovávání informací](#retention-policies).</br> </br> Použití StorSimple vrstvené svazky a vyberte **použít tento svazek pro archivní data s méně častým** zaškrtávací políčko. </br> Použití pouze místně připojené svazky se nepodporuje. |
-| Vytvoření jedinečné zásady zálohování StorSimple pro všechny svazky, záložní cíl. | Zásady zálohování StorSimple definuje skupiny konzistence svazků. |
-| Zakážete plán vyprší snímky. | Snímky se spouštějí jako operaci následného zpracování. |
+| Nasaďte vaše místní zařízení StorSimple. | Podporované verze: Aktualizujte 3 a novější verze. |
+| Zapněte cíl zálohování. | Pomocí těchto příkazů můžete zapnout nebo vypnout režim cíle zálohování a získat stav. Další informace najdete v tématu [vzdálené připojení k zařízení StorSimple](storsimple-remote-connect.md).</br> Zapnutí režimu zálohování: `Set-HCSBackupApplianceMode -enable`. </br> Vypnutí režimu zálohování: `Set-HCSBackupApplianceMode -disable` </br> Získání aktuálního stavu nastavení režimu zálohování: `Get-HCSBackupApplianceMode`. |
+| Vytvořte pro svazek společný kontejner svazků, ve kterém jsou uložena data záloh. Všechna data v kontejneru svazků mají za následek odstranění duplicitních dat. | Kontejnery svazků StorSimple definují domény odstranění duplicit.  |
+| Vytvořte StorSimple svazky. | Vytvářejte svazky s velikostí co nejblíže předpokládanému využití, protože velikost svazku ovlivňuje dobu trvání snímku cloudu. Informace o tom, jak velikost svazku získat, najdete v tématu o [zásadách uchovávání informací](#retention-policies).</br> </br> Použijte StorSimple vrstvené svazky a zaškrtněte políčko **použít tento svazek pro archivní data, ke kterým se přistupuje méně často** . </br> Použití pouze místně připojených svazků není podporováno. |
+| Vytvořte jedinečné zásady zálohování StorSimple pro všechny cílové svazky zálohy. | Zásada zálohování StorSimple definuje skupinu konzistence svazku. |
+| Zakažte plán jako vypršení platnosti snímků. | Snímky se spouštějí jako operace následného zpracování. |
 
-### <a name="set-up-the-host-backup-server-storage"></a>Nastavení úložiště zálohování serveru hostitele
+### <a name="set-up-the-host-backup-server-storage"></a>Nastavení úložiště záložního serveru hostitele
 
-Nastavení úložiště zálohování serveru hostitele podle následujících pokynů:  
+Nastavte úložiště záložního serveru hostitele podle těchto pokynů:  
 
-- Nepoužívejte rozložené svazky (vytvořený ve správě disků Windows). Rozložené svazky nepodporují.
-- Formátujte svazky systému souborů NTFS pomocí velikosti 64 KB alokační jednotky.
-- Namapujte přímo na Veeam server svazky zařízení StorSimple.
-    - Pomocí iSCSI pro fyzické servery.
+- Nepoužívejte rozložené svazky (vytvořené pomocí správy disků systému Windows). Rozložené svazky se nepodporují.
+- Naformátujte svazky pomocí systému souborů NTFS s velikostí alokační jednotky 64-KB.
+- Namapujte StorSimple svazky přímo na server Veeam.
+    - Pro fyzické servery použijte iSCSI.
 
 
 ## <a name="best-practices-for-storsimple-and-veeam"></a>Osvědčené postupy pro StorSimple a Veeam
 
-Nastavení řešení podle pokynů v následujících částech.
+Nastavte své řešení podle pokynů v následujících částech.
 
-### <a name="operating-system-best-practices"></a>Osvědčené postupy operačního systému
+### <a name="operating-system-best-practices"></a>Osvědčené postupy pro operační systém
 
-- Zakážete šifrování Windows serveru a odstranění duplicitních dat pro systém souborů NTFS.
-- Zakážete defragmentace serveru systému Windows na svazky zařízení StorSimple.
-- Zakážete indexování serveru systému Windows na svazky zařízení StorSimple.
-- Spusťte antivirovou kontrolu na zdrojovém hostiteli (ne u svazků StorSimple).
-- Vypnout výchozí [údržby systému Windows Server](https://msdn.microsoft.com/library/windows/desktop/hh848037.aspx) ve Správci úloh. To lze proveďte v jednom z následujících způsobů:
-  - Vypněte configuratoru údržby v Plánovači úloh Windows.
-  - Stáhněte si [PsExec](https://technet.microsoft.com/sysinternals/bb897553.aspx) z webu Windows Sysinternals. Po stažení nástroje PsExec, spusťte prostředí Windows PowerShell jako správce a zadejte:
+- Zakažte šifrování a odstranění duplicitních dat Windows serveru pro systém souborů NTFS.
+- Zakažte defragmentaci Windows serveru na svazcích StorSimple.
+- Zakažte indexování Windows serveru na svazcích StorSimple.
+- Spusťte kontrolu antivirové ochrany na zdrojovém hostiteli (nikoli na svazcích StorSimple).
+- Vypněte výchozí [údržbu Windows serveru](https://msdn.microsoft.com/library/windows/desktop/hh848037.aspx) ve Správci úloh. Udělejte to jedním z následujících způsobů:
+  - Vypněte Konfigurátor údržby ve Windows Plánovač úloh.
+  - Stáhněte si [PsExec](https://technet.microsoft.com/sysinternals/bb897553.aspx) ze systému Windows Sysinternals. Po stažení PsExec spusťte Windows PowerShell jako správce a zadejte:
     ```powershell
     psexec \\%computername% -s schtasks /change /tn “MicrosoftWindowsTaskSchedulerMaintenance Configurator" /disable
     ```
 
 ### <a name="storsimple-best-practices"></a>Osvědčené postupy pro StorSimple
 
--   Ujistěte se, že zařízení StorSimple se aktualizuje na [s aktualizací Update 3 nebo novější](storsimple-install-update-3.md).
--   Izoluje přenosy iSCSI a cloudu. Použijte vyhrazený iSCSI připojení pro přenos dat mezi StorSimple a záložní server.
--   Ujistěte se, že zařízení StorSimple je vyhrazené cíl zálohování. Smíšené úlohy nejsou podporovány, protože ovlivňují RTO a RPO.
+-   Ujistěte se, že se zařízení StorSimple aktualizovalo na [aktualizaci 3 nebo novější](storsimple-install-update-3.md).
+-   Izolujte provoz iSCSI a Cloud. Pro přenosy mezi StorSimple a záložním serverem používejte vyhrazená připojení iSCSI.
+-   Ujistěte se, že vaše zařízení StorSimple je vyhrazený cíl zálohování. Smíšené úlohy se nepodporují, protože mají vliv na RTO a RPO.
 
-### <a name="veeam-best-practices"></a>Sada Veeam osvědčené postupy
+### <a name="veeam-best-practices"></a>Osvědčené postupy pro Veeam
 
--   Sada Veeam databáze by měla být místní pro server a není umístěný na svazek StorSimple.
--   Pro zotavení po havárii proveďte zálohu databáze Veeam na svazek StorSimple.
--   Podporujeme Veeam úplných a přírůstkových záloh pro toto řešení. Doporučujeme vám, nepoužívejte syntetické a rozdílové zálohy.
--   Zálohování datových souborů by mělo obsahovat pouze data pro konkrétní úlohu. Například žádné médium připojí přes různé úlohy jsou povoleny.
--   Vypněte úlohu ověření. V případě potřeby ověřování má být naplánováno po nejnovější úlohy zálohování. Je důležité pochopit, že tato úloha má vliv okno zálohování.
--   Zapněte předběžné přidělení média.
--   Ujistěte se, že je zapnutá paralelní zpracování.
+-   Databáze Veeam by měla být místní pro server a nesmí se nacházet na svazku StorSimple.
+-   V případě zotavení po havárii zálohujte databázi Veeam na svazku StorSimple.
+-   Podporujeme Veeam úplné a přírůstkové zálohování pro toto řešení. Doporučujeme nepoužívat syntetické a rozdílové zálohy.
+-   Soubory dat zálohy by měly obsahovat pouze data pro konkrétní úlohu. Například připojení k médiím v různých úlohách není povoleno.
+-   Vypněte ověřování úlohy. V případě potřeby by se mělo ověřování naplánovat po poslední úloze zálohování. Je důležité pochopit, že tato úloha má vliv na okno zálohování.
+-   Zapněte předběžné přidělování médií.
+-   Ujistěte se, že je zapnuté paralelní zpracování.
 -   Vypněte kompresi.
--   Vypněte odstranění duplicitních dat u úlohy zálohování.
--   Nastavit optimalizace na **cílové sítě LAN**.
--   Zapnout **vytvořit úplnou zálohu aktivní** (každé 2 týdny).
--   Úložiště zálohování, nastavení **použijte záložní soubory pro jednotlivé virtuální počítače**.
--   Nastavte **pomocí různých datových proudů nahrávání na úlohu** k **8** (je povoleno maximálně 16). Upravte tento počet navýšit nebo snížit kapacitu podle využití procesoru na zařízení StorSimple.
+-   Vypněte funkci odstranění duplicitních dat u úlohy zálohování.
+-   Nastavte optimalizaci na **cíl sítě LAN**.
+-   Zapněte **vytváření aktivních úplných záloh** (každé 2 týdny).
+-   V úložišti zálohování nastavte **použít záložní soubory pro jednotlivé virtuální počítače**.
+-   Nastavte **možnost použít více datových proudů pro nahrávání na úlohu** na **8** (maximálně 16). Upravte toto číslo nahoru nebo dolů na základě využití procesoru na zařízení StorSimple.
 
 ## <a name="retention-policies"></a>Zásady uchovávání informací
 
-Jeden z nejběžnějších typů zásad uchovávání záloh je zásada Dědečka ze strany otce a SYN (GFS). V zásadách GFS přírůstkové zálohy se provádí denně a úplné zálohy jsou prováděny každý týden a každý měsíc. Výsledkem zásad šest StorSimple vrstvené svazky: jeden svazek obsahuje Týdenní, měsíční a roční úplné zálohy. pět svazky ukládání denních přírůstkových záloh.
+Jedním z nejběžnějších typů zásad uchovávání záloh je zásada dědečka, otce a syn (GFS). V zásadách GFS se provádí přírůstkové zálohování každý den a úplné zálohování se provádí týdně a měsíčně. Výsledkem této zásady jsou šest StorSimple vrstvených svazků: jeden svazek obsahuje týdenní, měsíční a roční úplné zálohování. druhými pěti svazky se ukládají každodenní přírůstkové zálohování.
 
-V následujícím příkladu používáme GFS otočení. V příkladu se předpokládá následující:
+V následujícím příkladu používáme GFS otočení. Příklad předpokládá následující:
 
--   Bez zajištěná nebo komprimovaných dat se používá.
--   Úplné zálohování je 1 TB.
--   Každodenní přírůstkové zálohování je 500 GB.
--   Čtyři týdenní zálohy se uchovávají po dobu jednoho měsíce.
--   Dvanáct měsíční zálohy zůstanou po dobu jednoho roku.
--   Jeden roční zálohu uchovávají po dobu 10 let.
+-   Používají se neodstranění duplicit nebo komprimovaná data.
+-   Úplné zálohy jsou 1 TiB.
+-   Každodenní přírůstkové zálohování je 500 GiB.
+-   Čtyři týdenní zálohy se uchovávají po dobu měsíce.
+-   12 měsíčních záloh se uchovává po dobu roku.
+-   Jedna roční záloha se uchovává po dobu 10 let.
 
-Podle předchozí předpoklady, vytvořte 26-TiB StorSimple vrstveného svazku pro měsíční a roční úplné zálohování. Vytvoření 5 TiB StorSimple vrstveného svazku pro každý přírůstkové zálohování denně.
+Na základě předchozích předpokladů vytvořte TiB StorSimple vrstvený svazek pro měsíční a roční úplný počet záloh. Vytvořte TiB StorSimple vrstvený svazek pro každé přírůstkové denní zálohování.
 
-| Typ zálohování uchovávání | Velikost (TB) | Násobitel GFS\* | Celková kapacita (TB)  |
+| Uchování typu zálohování | Velikost (TiB) | Multiplikátor GFS\* | Celková kapacita (TiB)  |
 |---|---|---|---|
-| Týdenní úplné | 1 | 4  | 4 |
-| Každodenní přírůstkové | 0,5 | 20 (cykly stejný počet týdnů za měsíc) | 12 (2 pro další kvótu) |
-| Měsíční úplné | 1 | 12 | 12 |
-| Ročně úplné | 1  | 10 | 10 |
+| Týdně úplné | 1 | 4  | 4 |
+| Denní přírůstkový | 0,5 | 20 (počet cyklů s rovným počtem týdnů za měsíc) | 12 (2 pro další kvótu) |
+| Úplně měsíčně | 1 | 12 | 12 |
+| Celý rok na celé | 1  | 10 | 10 |
 | Požadavek GFS |   | 38 |   |
-| Další kvótu  | 4  |   | 42 celkový požadavek GFS  |
+| Dodatečná kvóta  | 4  |   | 42 celková GFS požadavek  |
 
-\* Násobitel GFS je počet kopií, které potřebujete k ochraně a uchovat pro splnění požadavků na zásady zálohování.
+\*Multiplikátor GFS je počet kopií, které je třeba chránit a které je potřeba zachovat, aby splňovaly požadavky zásad zálohování.
 
 ## <a name="set-up-veeam-storage"></a>Nastavení úložiště Veeam
 
 ### <a name="to-set-up-veeam-storage"></a>Nastavení úložiště Veeam
 
-1.  V konzole Veeam zálohování a replikace v **úložiště nástroje**, přejděte na stránku **infrastruktura zálohování**. Klikněte pravým tlačítkem na **úložišť zálohování**a pak vyberte **přidat úložiště zálohování**.
+1.  V konzole Veeam Backup a replikace v části **nástroje úložiště**přejít na **infrastruktura zálohování**. Klikněte pravým tlačítkem na **zálohovat**úložiště a pak vyberte **Přidat úložiště záloh**.
 
     ![Konzola pro správu Veeam, stránka úložiště zálohování](./media/storsimple-configure-backup-target-using-veeam/veeamimage1.png)
 
-2.  V **nové úložiště zálohování** dialogového okna zadejte název a popis pro úložiště. Vyberte **Další**.
+2.  V dialogovém okně **nové úložiště záloh** zadejte název a popis úložiště. Vyberte **Další**.
 
-    ![Sada Veeam správy konzoly, název a popis stránky](./media/storsimple-configure-backup-target-using-veeam/veeamimage2.png)
+    ![Veeam konzoly pro správu, název a popis](./media/storsimple-configure-backup-target-using-veeam/veeamimage2.png)
 
-3.  Pro typ, vyberte **Microsoft Windows server**. Vyberte server, Veeam. Vyberte **Další**.
+3.  Jako typ vyberte **Microsoft Windows Server**. Vyberte server Veeam. Vyberte **Další**.
 
-    ![Konzola pro správu Veeam, vyberte typ úložiště zálohování](./media/storsimple-configure-backup-target-using-veeam/veeamimage3.png)
+    ![Veeam konzoly pro správu vyberte typ úložiště zálohování.](./media/storsimple-configure-backup-target-using-veeam/veeamimage3.png)
 
-4.  Chcete-li určit **umístění**, procházet a vyberte svazek. Vyberte **omezení na maximální souběžných úloh:** zaškrtněte políčko a nastavte hodnotu na **4**. Tím se zajistí, že jsou zpracovávány pouze čtyři virtuální disky současně, zatímco se zpracuje každý virtuální počítač (VM). Vyberte **Upřesnit** tlačítko.
+4.  Chcete-li určit **umístění**, vyhledejte a vyberte svazek. Vyberte zaškrtávací políčko **omezit maximální počet souběžných úloh na:** a nastavte hodnotu na **4**. Tím se zajistí, že se souběžně zpracovávají jenom čtyři virtuální disky, zatímco se zpracovávají jednotlivé virtuální počítače (VM). Vyberte tlačítko **Upřesnit** .
 
-    ![Konzola pro správu Veeam, vyberte svazek](./media/storsimple-configure-backup-target-using-veeam/veeamimage4.png)
+    ![Veeam konzoly pro správu vyberte svazek.](./media/storsimple-configure-backup-target-using-veeam/veeamimage4.png)
 
 
-5.  V **nastavení kompatibility úložiště** dialogové okno, vyberte **použijte záložní soubory pro jednotlivé virtuální počítače** zaškrtávací políčko.
+5.  V dialogovém okně **nastavení kompatibility úložiště** zaškrtněte políčko **použít záložní soubory pro jednotlivé virtuální počítače** .
 
-    ![Konzola pro správu Veeam, nastavení kompatibility pro úložiště](./media/storsimple-configure-backup-target-using-veeam/veeamimage5.png)
+    ![Konzola pro správu Veeam, nastavení kompatibility úložiště](./media/storsimple-configure-backup-target-using-veeam/veeamimage5.png)
 
-6.  V **nové úložiště zálohování** dialogové okno, vyberte **povolte službu vPower systému souborů NFS na server připojit (doporučeno)** zaškrtávací políčko. Vyberte **Další**.
+6.  V dialogovém okně **nové úložiště záloh** vyberte zaškrtávací políčko **Povolit službu vPower NFS na serveru pro připojení (doporučeno)** . Vyberte **Další**.
 
     ![Konzola pro správu Veeam, stránka úložiště zálohování](./media/storsimple-configure-backup-target-using-veeam/veeamimage6.png)
 
@@ -301,222 +301,222 @@ Podle předchozí předpoklady, vytvořte 26-TiB StorSimple vrstveného svazku p
 
     ![Konzola pro správu Veeam, stránka úložiště zálohování](./media/storsimple-configure-backup-target-using-veeam/veeamimage7.png)
 
-    Úložiště se přidá do serveru Veeam.
+    Do serveru Veeam se přidá úložiště.
 
-## <a name="set-up-storsimple-as-a-primary-backup-target"></a>Nastavit StorSimple jako primární cíl zálohování
+## <a name="set-up-storsimple-as-a-primary-backup-target"></a>Nastavte StorSimple jako primární cíl zálohování.
 
 > [!IMPORTANT]
-> Rychlostí cloudu dojde k obnovení dat ze zálohy, která byla Vrstvená do cloudu.
+> Obnovení dat ze zálohy, která byla vrstvená do cloudu, probíhá při rychlosti cloudu.
 
-Následující obrázek znázorňuje mapování svazku typické pro úlohu zálohování. V takovém případě všechny týdenní zálohy namapovat na sobotu celého disku a mapování přírůstkové zálohování na disky přírůstkové pondělí až pátek. Všechno, co zálohování a obnovení jsou ze StorSimple vrstveného svazku.
+Následující obrázek ukazuje mapování typického svazku na úlohu zálohování. V tomto případě se všechny týdenní zálohy mapují na celý disk v sobotu a přírůstkové zálohy se mapují na přírůstkové disky v pondělí až pátek. Všechny zálohy a obnovení jsou ze StorSimple vrstveného svazku.
 
-![Primární cíl zálohování konfigurace Logický diagram](./media/storsimple-configure-backup-target-using-veeam/primarybackuptargetdiagram.png)
+![Logický diagram primární konfigurace cíle zálohování](./media/storsimple-configure-backup-target-using-veeam/primarybackuptargetdiagram.png)
 
-### <a name="storsimple-as-a-primary-backup-target-gfs-schedule-example"></a>StorSimple jako cíl zálohování primární GFS naplánovat příklad
+### <a name="storsimple-as-a-primary-backup-target-gfs-schedule-example"></a>Příklad plánu StorSimple jako primární cíl zálohování GFS
 
-Tady je příklad plánu otočení GFS čtyři týdny, měsíční nebo roční:
+Tady je příklad plánu GFS rotace na čtyři týdny, měsíčně a ročně:
 
-| Typ frekvence/zálohování | Úplná | Přírůstkové (1-5 dní)  |   
+| Frekvence/typ zálohování | Úplná | Přírůstkové (dny 1-5)  |   
 |---|---|---|
-| Každý týden (1 – 4 týdny) | Sobota | Pondělí – pátek |
+| Týdně (týdny 1-4) | Sobota | Pondělí – pátek |
 | Měsíční  | Sobota  |   |
-| Roční | Sobota  |   |
+| Rok | Sobota  |   |
 
 
-### <a name="assign-storsimple-volumes-to-a-veeam-backup-job"></a>Veeam úlohy zálohování přiřadit svazky zařízení StorSimple
+### <a name="assign-storsimple-volumes-to-a-veeam-backup-job"></a>Přiřazení svazků StorSimple k úloze zálohování Veeam
 
-Pro scénář primární, záložní cíl vytvořte každodenní úlohu s primární svazek StorSimple s Veeam. Pro scénář sekundární záložní cíl vytvořte každodenní úlohu pomocí přímé připojené úložiště (DAS), úložiště NAS (Network Attached) nebo pouze úložiště Bunch disky (JBOD).
+U primárního cílového scénáře zálohování vytvořte každodenní úlohu s primárním svazkem Veeam StorSimple. V případě sekundárního cílového scénáře zálohování vytvořte každodenní úlohu pomocí přímého připojeného úložiště (DAS), síťového připojeného úložiště (NAS) nebo pouze úložiště JBOD (disk of disks).
 
-#### <a name="to-assign-storsimple-volumes-to-a-veeam-backup-job"></a>Veeam úlohy zálohování přiřadit svazky zařízení StorSimple
+#### <a name="to-assign-storsimple-volumes-to-a-veeam-backup-job"></a>Přiřazení svazků StorSimple do úlohy zálohování Veeam
 
-1.  V konzole Veeam zálohování a replikaci vyberte **zálohování a replikace**. Klikněte pravým tlačítkem na **zálohování**a pak vyberte **VMware** nebo **Hyper-V**, v závislosti na vašem prostředí.
+1.  V konzole Veeam Backup a replikace vyberte **backup & replikace**. Klikněte pravým tlačítkem na **zálohovat**a pak v závislosti na vašem prostředí vyberte **VMware** nebo **Hyper-V**.
 
-    ![Konzola pro správu Veeam, novou úlohu zálohování](./media/storsimple-configure-backup-target-using-veeam/veeamimage8.png)
+    ![Konzola pro správu Veeam, nová úloha zálohování](./media/storsimple-configure-backup-target-using-veeam/veeamimage8.png)
 
-2.  V **novou úlohu zálohování** dialogového okna zadejte název a popis pro každodenní úlohu zálohování.
+2.  V dialogovém okně **Nová úloha zálohování** zadejte název a popis úlohy denního zálohování.
 
-    ![Konzola pro správu Veeam, nová stránka úlohy zálohování](./media/storsimple-configure-backup-target-using-veeam/veeamimage9.png)
+    ![Konzola pro správu Veeam, stránka nové úlohy zálohování](./media/storsimple-configure-backup-target-using-veeam/veeamimage9.png)
 
-3.  Vyberte virtuální počítač k zálohování.
+3.  Vyberte virtuální počítač pro zálohování.
 
-    ![Konzola pro správu Veeam, nová stránka úlohy zálohování](./media/storsimple-configure-backup-target-using-veeam/veeamimage10.png)
+    ![Konzola pro správu Veeam, stránka nové úlohy zálohování](./media/storsimple-configure-backup-target-using-veeam/veeamimage10.png)
 
-4.  Vyberte hodnoty, které chcete pro **zálohování proxy** a **úložiště zálohování**. Vyberte hodnotu pro **bodů obnovení můžete zachovat na disku** podle RPO a RTO definice pro vaše prostředí na místně připojené úložiště. Vyberte **Upřesnit**.
+4.  Vyberte hodnoty, které chcete pro **záložní proxy** a **úložiště zálohování**. Vyberte hodnotu pro **body obnovení, které se budou uchovávat na disku** na základě definic RPO a RTO pro vaše prostředí místně připojeného úložiště. Vyberte **Upřesnit**.
 
-    ![Konzola pro správu Veeam, nová stránka úlohy zálohování](./media/storsimple-configure-backup-target-using-veeam/veeamimage11.png)
+    ![Konzola pro správu Veeam, stránka nové úlohy zálohování](./media/storsimple-configure-backup-target-using-veeam/veeamimage11.png)
 
-5. V **Upřesnit nastavení** dialogovém okně **zálohování** kartu, vyberte možnost **přírůstkové**. Ujistěte se, že **pravidelně vytvářet syntetické úplné zálohy** zrušení zaškrtnutí políčka. Vyberte **pravidelně vytvářet aktivní úplné zálohy** zaškrtávací políčko. V části **aktivní úplná záloha**, vyberte **každý týden ve vybrané dny** zaškrtávací políčko pro sobota.
+5. V dialogovém okně **Upřesnit nastavení** na kartě **zálohování** vyberte **přírůstkové**. Ujistěte se, že je políčko **vytvořit syntetické úplné zálohování pravidelně** zaškrtnuté. Zaškrtněte políčko **vytvořit aktivní úplné zálohy pravidelně** . V části **aktivní úplná záloha**zaškrtněte políčko **týdně pro vybrané dny** pro sobotu.
 
-    ![Konzoly pro správu Veeam novou úlohu zálohování Upřesnit nastavení](./media/storsimple-configure-backup-target-using-veeam/veeamimage12.png)
+    ![Veeam konzoly pro správu, nové nastavení úlohy zálohování – stránka Upřesnit nastavení](./media/storsimple-configure-backup-target-using-veeam/veeamimage12.png)
 
-6. Na **úložiště** kartu, ujistěte se, že **povolení odstranění duplicitních dat vložené** zrušení zaškrtnutí políčka. Vyberte **vyloučení odkládací soubor bloky** zaškrtněte políčko a vybrat **vyloučení odstranit soubor bloky** zaškrtávací políčko. Nastavte **úroveň komprese** k **žádný**. Vyvážený výkonu a odstraňování duplicitních dat, nastavte **optimalizace úložiště** k **cílové sítě LAN**. Vyberte **OK**.
+6. Na kartě **úložiště** ověřte, že není zaškrtnuto políčko **Povolit vloženou datovou odstranění duplicitních dat** . Zaškrtněte políčko **vyloučit zaměnitelné bloky souborů** a zaškrtněte políčko **vyloučit odstraněné bloky souborů** . Nastavte **úroveň komprese** na **žádná**. Pro vyvážený výkon a odstranění duplicit nastavte **optimalizaci úložiště** na **cíl sítě LAN**. Vyberte **OK**.
 
-    ![Konzoly pro správu Veeam novou úlohu zálohování Upřesnit nastavení](./media/storsimple-configure-backup-target-using-veeam/veeamimage13.png)
+    ![Veeam konzoly pro správu, nové nastavení úlohy zálohování – stránka Upřesnit nastavení](./media/storsimple-configure-backup-target-using-veeam/veeamimage13.png)
 
-    Informace o nastavení odstraňování duplicitních dat a provádí kompresi, Veeam najdete v tématu [komprese dat a odstranění duplicit](https://helpcenter.veeam.com/backup/vsphere/compression_deduplication.html).
+    Informace o odstraňování duplicit a nastaveních komprese Veeam najdete v tématu [komprese a odstraňování duplicitních dat](https://helpcenter.veeam.com/backup/vsphere/compression_deduplication.html).
 
-7.  V **Upravit úlohu zálohování** dialogovém okně můžete vybrat **povolit s ohledem na aplikace zpracování** (volitelné) zaškrtněte políčko.
+7.  V dialogovém okně **Upravit úlohu zálohování** můžete zaškrtnout políčko **Povolit zpracování pomocí aplikace** (volitelné).
 
-    ![Konzola pro správu Veeam, nová stránka hosta zpracování úlohy zálohování](./media/storsimple-configure-backup-target-using-veeam/veeamimage14.png)
+    ![Konzola pro správu Veeam, stránka pro zpracování nového hosta úlohy zálohování](./media/storsimple-configure-backup-target-using-veeam/veeamimage14.png)
 
-8.  Nastavte plán pro spuštění jednou denně v době, můžete zadat.
+8.  Nastavte plán, který se má spustit jednou denně, v čase, který můžete zadat.
 
-    ![Konzola pro správu Veeam, nová stránka plán úlohy zálohování](./media/storsimple-configure-backup-target-using-veeam/veeamimage15.png)
+    ![Konzola pro správu Veeam, nová stránka plánování úlohy zálohování](./media/storsimple-configure-backup-target-using-veeam/veeamimage15.png)
 
-## <a name="set-up-storsimple-as-a-secondary-backup-target"></a>Nastavit službu StorSimple jako sekundární záložní cíl
+## <a name="set-up-storsimple-as-a-secondary-backup-target"></a>Nastavení StorSimple jako sekundárního cíle zálohování
 
 > [!NOTE]
-> Rychlostí cloudu dojde k obnovení dat ze zálohy, která byla Vrstvená do cloudu.
+> Data se obnoví ze zálohy, která byla vrstvená do cloudu, při rychlosti cloudu.
 
-V tomto modelu musí mít úložných médií (jiné než StorSimple) která bude sloužit jako dočasná mezipaměť. Například můžete použít redundantní pole nezávislých disků (RAID) svazek tak, aby vyhovovaly místa, vstupní a výstupní (I/O) a šířku pásma. Doporučujeme používat RAID 5, 50 a 10.
+V tomto modelu musíte mít úložné médium (jiné než StorSimple), které slouží jako dočasnou mezipaměť. Můžete například použít redundantní pole svazku RAID (RAID) k umístění, vstupu a výstupu (I/O) a šířce pásma. Doporučujeme použít RAID 5, 50 a 10.
 
-Následující obrázek ukazuje typické krátkodobé uchování místní (pro server) a dlouhodobé uchovávání archivu svazky. V tomto scénáři všechna zálohování spustit na místní (pro server) svazek RAID. Tyto zálohy jsou pravidelně duplicitní a archivovat do archivu svazku. Je důležité pro nastavení velikosti místní (pro server,) svazku RAID, takže zvládne krátkodobé uchování požadavky kapacitu a výkon.
+Následující obrázek ukazuje typické krátkodobé uchovávání místních dat (na server) a svazky archivu pro dlouhodobé uchovávání. V tomto scénáři se všechny zálohy spouštějí na místním svazku (na serveru) RAID. Tyto zálohy jsou pravidelně duplikovány a archivovány do svazku archivu. Je důležité nastavit velikost místního svazku (na server) RAID tak, aby mohla zvládnout vaše krátkodobé kapacity uchovávání a požadavky na výkon.
 
-![StorSimple jako sekundární záložní cíl Logický diagram](./media/storsimple-configure-backup-target-using-veeam/secondarybackuptargetdiagram.png)
+![Logický diagram StorSimple jako sekundární cíl zálohování](./media/storsimple-configure-backup-target-using-veeam/secondarybackuptargetdiagram.png)
 
-### <a name="storsimple-as-a-secondary-backup-target-gfs-example"></a>StorSimple jako příklad GFS sekundární záložní cíl
+### <a name="storsimple-as-a-secondary-backup-target-gfs-example"></a>StorSimple jako sekundární cíl zálohování – příklad GFS
 
-Následující tabulka ukazuje, jak nastavit zálohování pro místní i StorSimple disky. Obsahuje požadavky na kapacitu jednotlivých a celkový počet.
+Následující tabulka ukazuje, jak nastavit zálohování pro spouštění na místních a StorSimple discích. Zahrnuje individuální a celkové požadavky na kapacitu.
 
-| Typ zálohování a uchovávání | Úložiště | Velikost (TB) | Násobitel GFS | Celková kapacita\* (TB) |
+| Typ a uchování zálohy | Nakonfigurované úložiště | Velikost (TiB) | Multiplikátor GFS | Celková kapacita\* (TIB) |
 |---|---|---|---|---|
-| Týden 1 (úplných a přírůstkových) |Místní disk (krátkodobé)| 1 | 1 | 1 |
-| StorSimple týdnů 2 až 4 |StorSimple disku (dlouhodobé) | 1 | 4 | 4 |
-| Měsíční úplné |StorSimple disku (dlouhodobé) | 1 | 12 | 12 |
-| Ročně úplné |StorSimple disku (dlouhodobé) | 1 | 1 | 1 |
+| Týden 1 (úplný a přírůstkový) |Místní disk (krátkodobý)| 1 | 1 | 1 |
+| StorSimple týdny 2-4 |StorSimple disk (dlouhodobě) | 1 | 4 | 4 |
+| Úplně měsíčně |StorSimple disk (dlouhodobě) | 1 | 12 | 12 |
+| Celý rok na celé |StorSimple disk (dlouhodobě) | 1 | 1 | 1 |
 |Požadavek na velikost svazků GFS |  |  |  | 18*|
 
-\* Celková kapacita zahrnuje 17 TiB StorSimple disky a 1 TiB místní svazek RAID.
+\*Celková kapacita zahrnuje 17 TiB disků StorSimple a 1 TiB místního svazku RAID.
 
 
-### <a name="gfs-example-schedule"></a>GFS Příklad plánu
+### <a name="gfs-example-schedule"></a>GFS příklad plánu
 
-Otočení GFS týdenní, měsíční a roční plán
+GFS rotace týdně, měsíčně a ročního plánu
 
-| Týden | Úplná | Přírůstkové dne 1 | Přírůstkové den 2 | Přírůstkové den 3 | Přírůstkové den 4 | Přírůstková denně, 5 |
+| Týden | Úplná | Přírůstkový den 1 | Přírůstkový den 2 | Přírůstkový den 3 | Přírůstkový den 4 | Přírůstkový den 5 |
 |---|---|---|---|---|---|---|
-| 1 týden | Místní svazek RAID  | Místní svazek RAID | Místní svazek RAID | Místní svazek RAID | Místní svazek RAID | Místní svazek RAID |
-| Týdnu 2 | StorSimple týdnů 2 až 4 |   |   |   |   |   |
-| Týdnu 3 | StorSimple týdnů 2 až 4 |   |   |   |   |   |
-| Týdnu 4 | StorSimple týdnů 2 až 4 |   |   |   |   |   |
-| Měsíční | Každý měsíc StorSimple |   |   |   |   |   |
-| Roční | Každý rok StorSimple  |   |   |   |   |   |
+| Týden 1 | Místní svazek RAID  | Místní svazek RAID | Místní svazek RAID | Místní svazek RAID | Místní svazek RAID | Místní svazek RAID |
+| Týden 2 | StorSimple týdny 2-4 |   |   |   |   |   |
+| Týden 3 | StorSimple týdny 2-4 |   |   |   |   |   |
+| Týden 4 | StorSimple týdny 2-4 |   |   |   |   |   |
+| Měsíční | StorSimple měsíčně |   |   |   |   |   |
+| Rok | StorSimple ročně  |   |   |   |   |   |
 
-### <a name="assign-storsimple-volumes-to-a-veeam-copy-job"></a>Úloha kopírování Veeam přiřadit svazky zařízení StorSimple
+### <a name="assign-storsimple-volumes-to-a-veeam-copy-job"></a>Přiřazení svazků StorSimple k úloze kopírování Veeam
 
-#### <a name="to-assign-storsimple-volumes-to-a-veeam-copy-job"></a>Úloha kopírování Veeam přiřadit svazky zařízení StorSimple
+#### <a name="to-assign-storsimple-volumes-to-a-veeam-copy-job"></a>Přiřazení svazků StorSimple k úloze kopírování Veeam
 
-1.  V konzole Veeam zálohování a replikaci vyberte **zálohování a replikace**. Klikněte pravým tlačítkem na **zálohování**a pak vyberte **VMware** nebo **Hyper-V**, v závislosti na vašem prostředí.
+1.  V konzole Veeam Backup a replikace vyberte **backup & replikace**. Klikněte pravým tlačítkem na **zálohovat**a pak v závislosti na vašem prostředí vyberte **VMware** nebo **Hyper-V**.
 
-    ![Konzola pro správu Veeam, nová stránka projektu záložní kopii.](./media/storsimple-configure-backup-target-using-veeam/veeamimage16.png)
+    ![Konzola pro správu Veeam, stránka úloh vytvoření nové záložní kopie](./media/storsimple-configure-backup-target-using-veeam/veeamimage16.png)
 
-2.  V **novou úlohu zálohování kopírování** dialogového okna zadejte název a popis pro úlohu.
+2.  V dialogovém okně **Nová úloha zálohovacího kopírování** zadejte název a popis úlohy.
 
-    ![Konzola pro správu Veeam, nová stránka projektu záložní kopii.](./media/storsimple-configure-backup-target-using-veeam/veeamimage17.png)
+    ![Konzola pro správu Veeam, stránka úloh vytvoření nové záložní kopie](./media/storsimple-configure-backup-target-using-veeam/veeamimage17.png)
 
-3.  Vyberte virtuální počítače, které chcete zpracovat. Vyberte ze zálohy a pak vyberte denní zálohování, který jste vytvořili dříve.
+3.  Vyberte virtuální počítače, které chcete zpracovat. Vyberte možnost ze zálohy a potom vyberte denní zálohu, kterou jste vytvořili dříve.
 
-    ![Konzola pro správu Veeam, nová stránka projektu záložní kopii.](./media/storsimple-configure-backup-target-using-veeam/veeamimage18.png)
+    ![Konzola pro správu Veeam, stránka úloh vytvoření nové záložní kopie](./media/storsimple-configure-backup-target-using-veeam/veeamimage18.png)
 
-4.  Vyloučení objektů z úloh záložní kopii v případě potřeby.
+4.  V případě potřeby vylučte z úlohy záložní kopírování objekty.
 
-5.  Vyberte záložní úložiště a nastavte hodnotu **zachovat body obnovení**. Je nutné vybrat **zachovat následující body obnovení pro archivační účely** zaškrtávací políčko. Definovat frekvenci zálohování a pak vyberte **Upřesnit**.
+5.  Vyberte úložiště záloh a nastavte hodnotu pro **body obnovení, které mají být**zachovány. Nezapomeňte zaškrtnout políčko **ponechat následující body obnovení pro účely archivace** . Definujte četnost zálohování a pak vyberte **Upřesnit**.
 
-    ![Konzola pro správu Veeam, nová stránka projektu záložní kopii.](./media/storsimple-configure-backup-target-using-veeam/veeamimage19.png)
+    ![Konzola pro správu Veeam, stránka úloh vytvoření nové záložní kopie](./media/storsimple-configure-backup-target-using-veeam/veeamimage19.png)
 
 6.  Zadejte následující upřesňující nastavení:
 
-    * Na **údržby** kartu, vypněte úložiště úrovně poškození guard.
+    * Na kartě **Údržba** vypněte ochranu proti poškození úrovně úložiště.
 
-    ![Veeam Konzola pro správu, Nová úloha záložní kopie rozšířené nastavení stránky](./media/storsimple-configure-backup-target-using-veeam/veeamimage20.png)
+    ![Veeam – Konzola pro správu, stránka Rozšířená nastavení úlohy záložní kopie](./media/storsimple-configure-backup-target-using-veeam/veeamimage20.png)
 
-    * Na **úložiště** kartu, ujistěte se, že odstranění duplicitních dat a provádí kompresi, jsou vypnuté.
+    * Na kartě **úložiště** se ujistěte, že je odstranění duplicitních dat a komprese vypnuté.
 
-    ![Veeam Konzola pro správu, Nová úloha záložní kopie rozšířené nastavení stránky](./media/storsimple-configure-backup-target-using-veeam/veeamimage21.png)
+    ![Veeam – Konzola pro správu, stránka Rozšířená nastavení úlohy záložní kopie](./media/storsimple-configure-backup-target-using-veeam/veeamimage21.png)
 
-7.  Určete, že je přenos dat s přímým přístupem.
+7.  Určete, že přenos dat je přímý.
 
-8.  Definujte plán okno zálohy podle vašich potřeb a pak dokončete průvodce.
+8.  Podle vašich potřeb Definujte plán okna pro záložní kopírování a pak průvodce dokončete.
 
-Další informace najdete v tématu [vytvořit záložní kopii úlohy](https://helpcenter.veeam.com/backup/hyperv/backup_copy_create.html).
+Další informace najdete v tématu [Vytvoření úloh záložní kopie](https://helpcenter.veeam.com/backup/hyperv/backup_copy_create.html).
 
-## <a name="storsimple-cloud-snapshots"></a>Cloudové snímky StorSimple
+## <a name="storsimple-cloud-snapshots"></a>StorSimple cloudové snímky
 
-Cloudové snímky StorSimple chránit data uložená v zařízení StorSimple. Vytváří se snímek v cloudu je ekvivalentní přesouvání místní záložní pásky do zařízení mimo pracoviště. Pokud používáte geografické redundantní úložiště Azure, vytváří se snímek v cloudu je ekvivalentní přesouvání záložní pásky k více lokalitám. Pokud budete potřebovat obnovení po havárii zařízení, může být online jiného zařízení StorSimple a služeb při selhání. Po převzetí služeb při selhání bude mít přístup k datům (cloud rychlostí) z nejnovější snímek v cloudu.
+StorSimple cloudové snímky chrání data, která se nachází ve vašem zařízení StorSimple. Vytvoření snímku v cloudu je ekvivalentní k přenosu pásek místních záloh do zařízení mimo pracoviště. Pokud používáte geograficky redundantní úložiště Azure, vytvoření snímku v cloudu je ekvivalentní k přenosu pásek zálohování na více lokalit. Pokud po havárii potřebujete zařízení obnovit, můžete jiné zařízení StorSimple převést do online režimu a provést převzetí služeb při selhání. Po převzetí služeb při selhání byste měli získat přístup k datům (s rychlostí cloudu) z posledního snímku cloudu.
 
-Následující část popisuje, jak vytvořit krátké skript ke spuštění a odstranění StorSimple cloudové snímky během zálohování následného zpracování.
-
-> [!NOTE]
-> Snímky vytvořené ručně nebo programově podle zásad vypršení platnosti StorSimple snapshot. Tyto snímky musíte ručně nebo programově odstranit.
-
-### <a name="start-and-delete-cloud-snapshots-by-using-a-script"></a>Spuštění a odstranění cloudové snímky pomocí skriptu
+Následující část popisuje, jak vytvořit krátký skript pro spuštění a odstranění snímků StorSimple cloudu během následného zpracování zálohy.
 
 > [!NOTE]
-> Pečlivě vyhodnoťte dodržování předpisů a dopady uchování dat před odstraněním StorSimple snapshot. Další informace o způsobu spuštění předzálohovacího skriptu najdete v dokumentaci Veeam.
+> Ručně nebo programově vytvořené snímky nedodržují zásady vypršení platnosti snímku StorSimple. Tyto snímky je nutné ručně nebo programově odstranit.
+
+### <a name="start-and-delete-cloud-snapshots-by-using-a-script"></a>Spuštění a odstranění cloudových snímků pomocí skriptu
+
+> [!NOTE]
+> Před odstraněním snímku StorSimple pečlivě vyhodnoťte dodržování předpisů a uchování dat. Další informace o spuštění následného zálohovacího skriptu najdete v dokumentaci k Veeam.
 
 
-### <a name="backup-lifecycle"></a>Zálohování životního cyklu
+### <a name="backup-lifecycle"></a>Životní cyklus zálohování
 
-![Diagram zálohování životního cyklu](./media/storsimple-configure-backup-target-using-veeam/backuplifecycle.png)
+![Diagram životního cyklu zálohování](./media/storsimple-configure-backup-target-using-veeam/backuplifecycle.png)
 
 ### <a name="requirements"></a>Požadavky
 
--   Server, na kterém běží skriptu musí mít přístup k prostředkům cloudu Azure.
+-   Server, na kterém je spuštěný skript, musí mít přístup k prostředkům cloudu Azure.
 -   Uživatelský účet musí mít potřebná oprávnění.
--   Zásady zálohování StorSimple se přidružené svazky zařízení StorSimple musíte nastavit, ale není zapnutá.
--   Budete potřebovat název prostředku StorSimple, registrační klíč, ID zařízení zásadu název a zálohování.
+-   Zásady zálohování StorSimple s přidruženými svazky StorSimple musí být nastavené, ale nejsou zapnuté.
+-   Budete potřebovat název prostředku StorSimple, registrační klíč, název zařízení a ID zásad zálohování.
 
-### <a name="to-start-or-delete-a-cloud-snapshot"></a>Ke spuštění nebo odstranění snímek v cloudu
+### <a name="to-start-or-delete-a-cloud-snapshot"></a>Spuštění nebo odstranění snímku v cloudu
 
 1. [Nainstalujte prostředí Azure PowerShell](/powershell/azure/overview).
-2. Stažení a instalace [spravovat CloudSnapshots.ps1](https://github.com/anoobbacker/storsimpledevicemgmttools/blob/master/Manage-CloudSnapshots.ps1) skript prostředí PowerShell.
-3. Na serveru, na kterém běží, spuštění skriptu prostředí PowerShell jako správce. Zkontrolujte, jestli jste spustili skript s `-WhatIf $true` chcete zobrazit, co se změní skript provede. Po dokončení ověření předat `-WhatIf $false`. Spustit následující příkaz:
+2. Stáhněte a nastavte skript prostředí PowerShell [Manage-CloudSnapshots. ps1](https://github.com/anoobbacker/storsimpledevicemgmttools/blob/master/Manage-CloudSnapshots.ps1) .
+3. Na serveru, na kterém je spuštěný skript, spusťte PowerShell jako správce. Ujistěte se, že spouštíte skript `-WhatIf $true` s nástrojem, kde zjistíte, jaké změny bude skript provádět. Až se ověření dokončí, předejte `-WhatIf $false`. Spusťte následující příkaz:
    ```powershell
    .\Manage-CloudSnapshots.ps1 -SubscriptionId [Subscription Id] -TenantId [Tenant ID] -ResourceGroupName [Resource Group Name] -ManagerName [StorSimple Device Manager Name] -DeviceName [device name] -BackupPolicyName [backup policyname] -RetentionInDays [Retention days] -WhatIf [$true or $false]
    ```
-4. Chcete-li přidat skript pro vaši úlohu zálohování, upravit úlohu Veeam pokročilé možnosti.
+4. Pokud chcete přidat skript do úlohy zálohování, upravte rozšířené možnosti úlohy Veeam.
 
-    ![Karta skripty Veeam zálohování upřesňující nastavení](./media/storsimple-configure-backup-target-using-veeam/veeamimage22.png)
+    ![Veeam zálohování – karta Rozšířená nastavení skriptů](./media/storsimple-configure-backup-target-using-veeam/veeamimage22.png)
 
-Doporučujeme, abyste spustili zásady zálohování StorSimple cloudových snímků jako následného zpracování skriptu na konci vaší každodenní úlohy zálohování. Další informace o tom, jak zálohovat a obnovovat vaše aplikace pro zálohování prostředí, které pomáhá splnit i ty RPO a RTO, obraťte se na zálohování architect.
+Doporučujeme, abyste na konci každodenní úlohy zálohování spustili zásadu zálohování snímku StorSimple cloudu jako skript po zpracování. Další informace o tom, jak zálohovat a obnovit zálohovací prostředí aplikace, aby vám pomohly splnit požadavky RPO a RTO, najdete v rámci svého architekta zálohování.
 
 ## <a name="storsimple-as-a-restore-source"></a>StorSimple jako zdroj obnovení
 
-Obnoví ze pracovní zařízení StorSimple jako je obnovení z jakékoli zařízení s blokovým úložištěm. Rychlostí cloudu dojde k obnovení dat, která je Vrstvená do cloudu. Pro místní data dojde k obnovení rychlostí místní disk zařízení.
+Obnovení ze zařízení StorSimple funguje jako obnovení ze všech zařízení blokového úložiště. Obnovení dat, která jsou vrstvená do cloudu, probíhá při rychlosti cloudu. Pro místní data dojde k obnovení při rychlosti místního disku zařízení.
 
-S Veeam získáte rychlý, detailní a úrovni souboru obnovení prostřednictvím StorSimple prostřednictvím vestavěné explorer zobrazení v konzole Veeam. Průzkumníci Veeam použijte pro obnovení jednotlivých položek, jako jsou e-mailové zprávy, objektů služby Active Directory a položky služby SharePoint ze zálohy. Obnovení můžete udělat bez narušení místních virtuálních počítačů. Můžete také provést obnovení bodu v čase pro databáze Azure SQL Database a Oracle. Sada Veeam a Azure StorSimple je proces obnovení na úrovni položky z Azure, rychle a jednoduše. Informace o tom, jak provést obnovení, najdete v dokumentaci k Veeam:
+Díky Veeam získáte rychlé a podrobné obnovení na úrovni souborů prostřednictvím StorSimple prostřednictvím vestavěných zobrazení Průzkumníka v konzole Veeam. Pomocí Veeam Exploreru obnovte jednotlivé položky, jako jsou e-mailové zprávy, objekty služby Active Directory a položky SharePointu ze záloh. Obnovení je možné provést bez přerušení místního virtuálního počítače. Můžete také provést obnovení k bodu v čase pro databáze Azure SQL Database a Oracle. Veeam a StorSimple usnadňují proces obnovení na úrovni položek z Azure rychleji a snadno. Informace o tom, jak provést obnovení, najdete v dokumentaci k Veeam:
 
 - Pro [Exchange Server](https://www.veeam.com/microsoft-exchange-recovery.html)
-- Pro [služby Active Directory](https://www.veeam.com/microsoft-active-directory-explorer.html)
-- Pro [systému SQL Server](https://www.veeam.com/microsoft-sql-server-explorer.html)
-- Pro [služby SharePoint](https://www.veeam.com/microsoft-sharepoint-recovery-explorer.html)
+- Pro [službu Active Directory](https://www.veeam.com/microsoft-active-directory-explorer.html)
+- Pro [SQL Server](https://www.veeam.com/microsoft-sql-server-explorer.html)
+- Pro [SharePoint](https://www.veeam.com/microsoft-sharepoint-recovery-explorer.html)
 - Pro [Oracle](https://www.veeam.com/oracle-backup-recovery-explorer.html)
 
 
 ## <a name="storsimple-failover-and-disaster-recovery"></a>StorSimple převzetí služeb při selhání a zotavení po havárii
 
 > [!NOTE]
-> Pro zálohování cílové scénáře řešení StorSimple Cloud Appliance není podporováno jako cíl obnovení.
+> U scénářů cíle zálohování se StorSimple Cloud Appliance nepodporuje jako cíl obnovení.
 
-Havárii může být způsobeno různých faktorech. V následující tabulce jsou uvedeny běžné scénáře zotavení po havárii.
+Havárie může být způsobeno nejrůznějšími faktory. V následující tabulce je uveden seznam běžných scénářů zotavení po havárii.
 
 | Scénář | Dopad | Postup obnovení | Poznámky |
 |---|---|---|---|
-| Selhání zařízení StorSimple | Operace zálohování a obnovení je přerušeno. | Nahraďte neúspěšných zařízení a provádět [StorSimple převzetí služeb při selhání a zotavení po havárii](storsimple-device-failover-disaster-recovery.md). | Pokud potřebujete provést obnovení po obnovení zařízení, úplná data pracovní sady jsou načteny z cloudu do nového zařízení. Všechny operace jsou rychlostí cloudu. Index a katalog opětovná kontrola procesu může dojít k všechny zálohovacích skladů určených k zkontrolovat a získaná z vrstvy cloudu do úrovně místního zařízení, což může být časově náročný proces. |
-| Selhání serveru Veeam | Operace zálohování a obnovení je přerušeno. | Znovu sestavit server zálohování a obnovení databáze podle popisu v [centrum pro nápovědu Veeam (technické dokumentace)](https://www.veeam.com/documentation-guides-datasheets.html).  | Musíte znovu sestavit nebo obnovit Veeam serveru v lokalitě zotavení po havárii. Obnovení databáze do nejnovějšího bodu. Pokud není synchronizované s nejnovější úlohy zálohování obnovené databáze Veeam, je vyžadována indexování a katalogizace. Tento index a katalog opětovná kontrola procesu může dojít k všechny zálohovacích skladů určených k zkontrolovat a získaná z vrstvy cloudu do úrovně místního zařízení. To umožňuje dále náročné na čas. |
-| Selhání lokality, který vede ke ztrátě záložní server a StorSimple | Operace zálohování a obnovení je přerušeno. | Nejprve obnovit StorSimple a potom obnovte Veeam. | Nejprve obnovit StorSimple a potom obnovte Veeam. Pokud potřebujete provést obnovení po obnovení zařízení, úplná data pracovní sady jsou načteny z cloudu do nového zařízení. Všechny operace jsou rychlostí cloudu. |
+| Selhání zařízení StorSimple | Operace zálohování a obnovení jsou přerušeny. | Nahraďte neúspěšné zařízení a proveďte [převzetí služeb při selhání StorSimple a zotavení po havárii](storsimple-device-failover-disaster-recovery.md). | Pokud po obnovení zařízení potřebujete provést obnovení, všechny pracovní sady dat se načítají z cloudu do nového zařízení. Všechny operace jsou v cloudových rychlostech. Proces opakovaného prohledání indexu a katalogu může způsobit, že se všechny zálohovací sklady kontrolují a nastavují z vrstvy cloudu na úroveň místního zařízení, což může být časově náročný proces. |
+| Selhání serveru Veeam | Operace zálohování a obnovení jsou přerušeny. | Znovu sestavte záložní server a proveďte obnovení databáze podle podrobných [informace v centru Veeam Help Center (technická dokumentace)](https://www.veeam.com/documentation-guides-datasheets.html).  | Server Veeam je nutné znovu sestavit nebo obnovit na webu pro zotavení po havárii. Obnovte databázi do nejnovějšího bodu. Pokud obnovená databáze Veeam není synchronizovaná s nejnovějšími úlohami zálohování, je nutné indexování a vytváření katalogu. Tento index a proces opětovného prohledání katalogu může způsobit, že se všechny zálohovací sklady prohledají a nastavují z vrstvy cloudu na úroveň místního zařízení. Díky tomu je tato operace časově náročná. |
+| Selhání lokality, které vede ke ztrátě záložního serveru i StorSimple | Operace zálohování a obnovení jsou přerušeny. | Nejprve obnovte StorSimple a pak obnovte Veeam. | Nejprve obnovte StorSimple a pak obnovte Veeam. Pokud po obnovení zařízení potřebujete provést obnovení, všechny pracovní sady dat se z cloudu načtou do nového zařízení. Všechny operace jsou v cloudových rychlostech. |
 
 
 ## <a name="references"></a>Odkazy
 
-Pro účely tohoto článku bylo odkazováno v následujících dokumentech:
+Následující dokumenty byly odkazovány na tento článek:
 
-- [StorSimple více cest vstupně-výstupní operace instalace](storsimple-configure-mpio-windows-server.md)
-- [Scénáře využití služby Storage: dynamické zajišťování](https://msdn.microsoft.com/library/windows/hardware/dn265487.aspx)
-- [Pomocí GPT jednotky](https://msdn.microsoft.com/windows/hardware/gg463524.aspx#EHD)
+- [StorSimple instalaci funkce Multipath I/O](storsimple-configure-mpio-windows-server.md)
+- [Scénáře úložiště: Dynamické zajišťování](https://msdn.microsoft.com/library/windows/hardware/dn265487.aspx)
+- [Použití jednotek GPT](https://msdn.microsoft.com/windows/hardware/gg463524.aspx#EHD)
 - [Nastavení stínových kopií pro sdílené složky](https://technet.microsoft.com/library/cc771893.aspx)
 
 ## <a name="next-steps"></a>Další postup
 
-- Další informace o tom, jak [obnovení ze zálohovacího skladu](storsimple-restore-from-backup-set-u2.md).
-- Další informace o tom, jak provádět [zařízení převzetí služeb při selhání a zotavení po havárii](storsimple-device-failover-disaster-recovery.md).
+- Přečtěte si další informace o tom, jak [obnovit ze zálohovacího skladu](storsimple-restore-from-backup-set-u2.md).
+- Další informace o tom, jak provést [převzetí služeb při selhání a zotavení po havárii zařízení](storsimple-device-failover-disaster-recovery.md).

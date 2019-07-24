@@ -1,6 +1,6 @@
 ---
-title: 'Synchronizace Azure AD Connect: Principy výchozí konfigurace | Dokumentace Microsoftu'
-description: Tento článek popisuje výchozí konfigurace ve službě Azure AD Connect sync.
+title: 'Azure AD Connect synchronizace: Principy výchozí konfigurace | Microsoft Docs'
+description: Tento článek popisuje výchozí konfiguraci v Azure AD Connect synchronizaci.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -16,185 +16,185 @@ ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b42a6b667a8708aeb2edeb0c80a5ab747b6c60a9
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: bfaf3cc9b113ff10766f7a17bd7bf09ffa619a8e
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60246227"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68227424"
 ---
-# <a name="azure-ad-connect-sync-understanding-the-default-configuration"></a>Synchronizace Azure AD Connect: Principy výchozí konfigurace
-Tento článek vysvětluje, out-of-box konfigurační pravidla. Dokumentují pravidla a vliv těchto pravidel v konfiguraci. To vás také provede výchozí konfiguraci synchronizace Azure AD Connect. Cílem je, že čtečky rozumí fungováním konfigurační model s názvem deklarativní zřizování v reálný příklad. Tento článek předpokládá, že jste již nainstalovali a konfigurace synchronizace služby Azure AD Connect pomocí Průvodce instalací.
+# <a name="azure-ad-connect-sync-understanding-the-default-configuration"></a>Azure AD Connect synchronizace: Principy výchozí konfigurace
+Tento článek vysvětluje předem připravená konfigurační pravidla. Dokumentuje pravidla a způsob, jakým tato pravidla ovlivňují konfiguraci. Také vás provede výchozí konfigurací Azure AD Connect synchronizace. Cílem je, aby čtenář pochopil, jak model konfigurace s názvem deklarativní zřizování funguje v reálném příkladu. V tomto článku se předpokládá, že jste už nainstalovali a nakonfigurovali Azure AD Connect synchronizaci pomocí Průvodce instalací nástroje.
 
-Informace o tom podrobnosti o konfiguraci modelu, přečtěte si [Principy deklarativní zřizování](concept-azure-ad-connect-sync-declarative-provisioning.md).
+Chcete-li porozumět podrobnostem o modelu konfigurace, přečtěte si téma [Principy deklarativního zajišťování](concept-azure-ad-connect-sync-declarative-provisioning.md).
 
-## <a name="out-of-box-rules-from-on-premises-to-azure-ad"></a>Pravidla Out-of-box v místním do služby Azure AD
-Následující výrazy můžete najít v konfiguraci out-of-box.
+## <a name="out-of-box-rules-from-on-premises-to-azure-ad"></a>Dodaná pravidla z místního prostředí do Azure AD
+Následující výrazy se dají najít v konfiguraci dodaného pole.
 
-### <a name="user-out-of-box-rules"></a>Pravidla out-of-box uživatele
+### <a name="user-out-of-box-rules"></a>Předpřipravená pravidla uživatele
 Tato pravidla platí také pro typ objektu iNetOrgPerson.
 
-Objekt uživatele musí splňovat následující se dá provést synchronizace:
+Aby bylo možné synchronizovat objekt uživatele, musí splňovat následující požadavky:
 
 * Musí mít sourceAnchor.
-* Po vytvoření objektu ve službě Azure AD, nelze změnit sourceAnchor. Pokud je hodnota změněné v místním, objekt přestane synchronizace, dokud sourceAnchor se změní zpět na původní hodnotu.
-* Musí mít atribut accountEnabled (userAccountControl) naplněna. Tento atribut v místní službě Active Directory, jsou vždy k dispozici a mají údaj vyplněný.
+* Po vytvoření objektu ve službě Azure AD se sourceAnchor nedá změnit. Pokud je hodnota změněna místně, objekt se zastaví, dokud se sourceAnchor nezmění zpátky na předchozí hodnotu.
+* Musí mít naplněný atribut accountEnabled (pod ním). V případě místní služby Active Directory je tento atribut vždy přítomen a vyplněn.
 
-Následující objekty uživatele **není** synchronizovány se službou Azure AD:
+Následující objekty uživatele **nejsou synchronizované s** Azure AD:
 
-* `IsPresent([isCriticalSystemObject])`. Zajištění mnoho out-of-box objektů ve službě Active Directory, jako je předdefinovaný účet správce, nejsou synchronizovány.
-* `IsPresent([sAMAccountName]) = False`. Zkontrolujte, jestli nejsou synchronizované uživatelské objekty s žádný atribut sAMAccountName. Tento případ by mohlo dojít pouze prakticky v doméně upgradu ze systému Windows NT 4.
-* `Left([sAMAccountName], 4) = "AAD_"`, `Left([sAMAccountName], 5) = "MSOL_"`. Nesynchronizovat má účet služby používaný službou synchronizace Azure AD Connect a jeho staršími verzemi.
-* Nesynchronizovat účty serveru Exchange, které nebude fungovat v systému Exchange Online.
+* `IsPresent([isCriticalSystemObject])`. Zajistěte, aby se v Active Directory nesynchronizoval žádné objekty, jako je například integrovaný účet správce.
+* `IsPresent([sAMAccountName]) = False`. Ujistěte se, že objekty uživatele bez atributu sAMAccountName nejsou synchronizované. V takovém případě se v doméně, která je upgradována z NT4, stane jen prakticky.
+* `Left([sAMAccountName], 4) = "AAD_"`, `Left([sAMAccountName], 5) = "MSOL_"`. Nesynchronizujte účet služby používaný službou Azure AD Connect Sync a jejími předchozími verzemi.
+* Nesynchronizujte účty Exchange, které nefungují v Exchange Online.
   * `[sAMAccountName] = "SUPPORT_388945a0"`
   * `Left([mailNickname], 14) = "SystemMailbox{"`
   * `(Left([mailNickname], 4) = "CAS_" && (InStr([mailNickname], "}") > 0))`
   * `(Left([sAMAccountName], 4) = "CAS_" && (InStr([sAMAccountName], "}")> 0))`
-* Nesynchronizovat objekty, které nebude fungovat v systému Exchange Online.
+* Nesynchronizujte objekty, které nefungují v Exchangi Online.
   `CBool(IIF(IsPresent([msExchRecipientTypeDetails]),BitAnd([msExchRecipientTypeDetails],&H21C07000) > 0,NULL))`  
-  Tato bitová maska (& H21C07000) byste odfiltrovat následující objekty:
-  * Poštovní veřejné složce (v náhledu od verze 1.1.524.0)
-  * Odebrání dodatečné poštovní schránky systému
-  * Poštovní schránky databáze poštovní schránky (poštovní schránky systému)
-  * Univerzální skupina zabezpečení (pro uživatele se nedají použít, ale je k dispozici kvůli starším verzím)
-  * Non-univerzální skupiny (pro uživatele se nedají použít, ale je k dispozici kvůli starším verzím)
+  Tato bitová maska (& H21C07000) by vyfiltroval následující objekty:
+  * Veřejná složka s povoleným e-mailem (ve verzi Preview jako verze 1.1.524.0)
+  * Poštovní schránka System Attendant
+  * Poštovní schránka databáze poštovní schránky (systémová poštovní schránka)
+  * Univerzální skupina zabezpečení (neplatí pro uživatele, ale je k dispozici z původních důvodů)
+  * Neuniverzální skupina (neplatí pro uživatele, ale je k dispozici z původních důvodů)
   * Plán poštovní schránky
-  * Zjišťování poštovní schránky
-* `CBool(InStr(DNComponent(CRef([dn]),1),"\\0ACNF:")>0)`. Všechny objekty victim replikace nebude synchronizovat.
+  * Poštovní schránka zjišťování
+* `CBool(InStr(DNComponent(CRef([dn]),1),"\\0ACNF:")>0)`. Nesynchronizujte žádné objekty oběti replikace.
 
-Platí následující pravidla atribut:
+Platí následující pravidla atributu:
 
-* `sourceAnchor <- IIF([msExchRecipientTypeDetails]=2,NULL,..)`. Atribut sourceAnchor není uživatel z propojená poštovní schránka. Předpokládá se, že pokud byla nalezena propojená poštovní schránka, je skutečný účet později připojen.
-* Exchange týkající se atributy synchronizují jenom Pokud atribut **mailNickName** má hodnotu.
-* Po několika doménovými strukturami se atributy využité v tomto pořadí:
-  1. Atributy týkající se přihlášení (např. userPrincipalName) udělují z doménové struktury s povolený účet.
-  2. Atributy, které se mohou nacházet serveru Exchange GAL (globální seznam adres) udělují z doménové struktury s poštovní schránku systému Exchange.
-  3. Pokud se najdou se žádné poštovní schránky, tyto atributy mohou pocházet ze všech doménových strukturách.
-  4. Exchange týkající se udělují atributy (technické atributy nejsou viditelné v globálním seznamu adres) z doménové struktury kde `mailNickname ISNOTNULL`.
-  5. Pokud existuje více doménových struktur, které splňují jednu z těchto pravidel, pořadí (datum/čas) vytvoření konektorů (doménové struktury) slouží k určení, která doménová struktura přispívá atributy.
+* `sourceAnchor <- IIF([msExchRecipientTypeDetails]=2,NULL,..)`. Atribut sourceAnchor nepřispívá z propojené poštovní schránky. Předpokládá se, že pokud se našla propojená poštovní schránka, je skutečný účet připojený později.
+* Atributy související se systémem Exchange jsou synchronizovány pouze v případě, že atribut **mailNickname** má hodnotu.
+* Pokud existuje více doménových struktur, pak jsou atributy spotřebovány v následujícím pořadí:
+  1. Atributy související s přihlašováním (například userPrincipalName) jsou k dispozici z doménové struktury s povoleným účtem.
+  2. Atributy, které lze najít v globálním adresáři Exchange (globální seznam adres), jsou k dispozici z doménové struktury s poštovní schránkou Exchange.
+  3. Pokud nelze nalézt poštovní schránku, pak tyto atributy mohou pocházet z libovolné doménové struktury.
+  4. Atributy související se systémem Exchange (technické atributy, které nejsou viditelné v globálním seznamu), jsou `mailNickname ISNOTNULL`k dispozici v doménové struktuře, kde.
+  5. Pokud existuje více doménových struktur, které by splňovaly jedno z těchto pravidel, pak se pro určení doménové struktury, která tyto atributy přispívá, použije pořadí vytváření (datum/čas) konektorů (doménové struktury). První připojená doménová struktura bude první doménovou strukturou, která se bude synchronizovat. 
 
-### <a name="contact-out-of-box-rules"></a>Obraťte se na pravidla out-of-box
-Objekt kontaktu musí splňovat následující se dá provést synchronizace:
+### <a name="contact-out-of-box-rules"></a>Kontaktovat dodaná pravidla
+Aby bylo možné synchronizovat objekt kontaktu, musí splňovat následující požadavky:
 
-* Kontakt musí být s povoleným e-mailem. Je ověřený pomocí následujících pravidel:
-  * `IsPresent([proxyAddresses]) = True)`. Musí být vyplněno atributu proxyAddresses.
-  * Primární e-mailovou adresu najdete v atributu proxyAddresses nebo atribut pošty. Přítomnost \@ se používá k ověření, že obsah je e-mailovou adresu. Některé z těchto dvou pravidel musí být vyhodnocena na hodnotu True.
-    * `(Contains([proxyAddresses], "SMTP:") > 0) && (InStr(Item([proxyAddresses], Contains([proxyAddresses], "SMTP:")), "@") > 0))`. Je k dispozici položka se "SMTP:" a pokud neexistuje, můžete \@ nalezena v řetězci?
-    * `(IsPresent([mail]) = True && (InStr([mail], "@") > 0)`. Atribut mail vyplněný a pokud se jedná, můžete \@ nalezena v řetězci?
+* Kontakt musí být povolen poštou. Ověřuje se pomocí následujících pravidel:
+  * `IsPresent([proxyAddresses]) = True)`. Atribut proxyAddresses musí být vyplněn.
+  * Primární e-mailovou adresu lze najít buď v atributu proxyAddresses, nebo v atributu mail. K ověření, že \@ se jedná o e-mailovou adresu, se používá přítomnost. Jedno z těchto dvou pravidel musí být vyhodnoceno na hodnotu true.
+    * `(Contains([proxyAddresses], "SMTP:") > 0) && (InStr(Item([proxyAddresses], Contains([proxyAddresses], "SMTP:")), "@") > 0))`. Existuje položka s řetězcem "SMTP:" a pokud existuje, lze \@ v řetězci najít?
+    * `(IsPresent([mail]) = True && (InStr([mail], "@") > 0)`. Je naplněný atribut mail a pokud je, lze \@ v řetězci najít?
 
-Následující objekty kontaktní **není** synchronizovány se službou Azure AD:
+Následující objekty kontaktů **nejsou synchronizovány** do služby Azure AD:
 
-* `IsPresent([isCriticalSystemObject])`. Ujistěte se synchronizují žádné kontaktní objekty, které jsou označené jako důležité. Nesmí být žádné s výchozí konfigurací.
+* `IsPresent([isCriticalSystemObject])`. Ujistěte se, že nejsou synchronizovány žádné objekty kontaktů označené jako kritické. Neměl by být ve výchozí konfiguraci.
 * `((InStr([displayName], "(MSOL)") > 0) && (CBool([msExchHideFromAddressLists])))`.
-* `(Left([mailNickname], 4) = "CAS_" && (InStr([mailNickname], "}") > 0))`. Tyto objekty nebude fungovat v systému Exchange Online.
-* `CBool(InStr(DNComponent(CRef([dn]),1),"\\0ACNF:")>0)`. Všechny objekty victim replikace nebude synchronizovat.
+* `(Left([mailNickname], 4) = "CAS_" && (InStr([mailNickname], "}") > 0))`. Tyto objekty nefungují v Exchangi Online.
+* `CBool(InStr(DNComponent(CRef([dn]),1),"\\0ACNF:")>0)`. Nesynchronizujte žádné objekty oběti replikace.
 
-### <a name="group-out-of-box-rules"></a>Skupina pravidel out-of-box
-Objekt skupiny musí splňovat následující se dá provést synchronizace:
+### <a name="group-out-of-box-rules"></a>Seskupení předdefinovaných pravidel
+Aby bylo možné synchronizovat objekt skupiny, musí splňovat následující požadavky:
 
 * Musí mít méně než 50 000 členů. Tento počet je počet členů v místní skupině.
-  * Pokud má víc členů než poprvé spustí se synchronizace, není synchronizovaný skupině.
-  * Pokud počet členů růst od kdy byl původně vytvořen, pak když dosáhne 50 000 členů přestane synchronizace, dokud počet členství je menší než 50 000 znovu.
-  * Poznámka: Počet 50 000 členství je také vynucuje Azure AD. Nejste schopni synchronizovat skupiny s více členy, i když můžete upravit nebo odebrat toto pravidlo.
-* Pokud je skupina **distribuční skupiny**, pak musí také být pošty. Zobrazit [obraťte se na pravidla out-of-box](#contact-out-of-box-rules) pro toto pravidlo je vynuceno.
+  * Pokud má více členů před prvním zahájením synchronizace, Skupina nebude synchronizována.
+  * Pokud počet členů v době, kdy byl původně vytvořen, vzrostl, pak při dosažení 50 000 členů zastaví synchronizaci, dokud počet členů nebude znovu nižší než 50 000.
+  * Poznámka: Počet členství 50 000 se vynutil taky v Azure AD. Nemůžete synchronizovat skupiny s více členy, i když toto pravidlo upravíte nebo odeberete.
+* Pokud je skupina **distribuční skupinou**, musí být také povolená pošta. Pro toto pravidlo se vynutila pravidla pro kontaktování, která jsou v [seznamu](#contact-out-of-box-rules) .
 
-Následující objekty skupiny jsou **není** synchronizovány se službou Azure AD:
+Následující objekty skupiny **nejsou synchronizované s** Azure AD:
 
-* `IsPresent([isCriticalSystemObject])`. Zajištění mnoho out-of-box objektů ve službě Active Directory, jako je například předdefinované skupiny administrators, nejsou synchronizovány.
-* `[sAMAccountName] = "MSOL_AD_Sync_RichCoexistence"`. Starší verze skupina, která nástroj DirSync používá.
-* `BitAnd([msExchRecipientTypeDetails],&amp;H40000000)`. Skupiny rolí.
-* `CBool(InStr(DNComponent(CRef([dn]),1),"\\0ACNF:")>0)`. Všechny objekty victim replikace nebude synchronizovat.
+* `IsPresent([isCriticalSystemObject])`. Zajistěte, aby se v Active Directory nesynchronizoval žádné objekty, jako jsou například předdefinovaná skupina Administrators.
+* `[sAMAccountName] = "MSOL_AD_Sync_RichCoexistence"`. Starší skupina, kterou používá DirSync.
+* `BitAnd([msExchRecipientTypeDetails],&amp;H40000000)`. Skupina rolí.
+* `CBool(InStr(DNComponent(CRef([dn]),1),"\\0ACNF:")>0)`. Nesynchronizujte žádné objekty oběti replikace.
 
-### <a name="foreignsecurityprincipal-out-of-box-rules"></a>Pravidla out-of-box sady cizích objektů zabezpečení
-FSP jsou připojeny k "žádný" (\*) objektu v úložišti metaverse. Ve skutečnosti stane toto připojení pouze pro uživatele a skupiny zabezpečení. Tato konfigurace zajistí, že jsou ve skupinách mezi doménovými strukturami přeložit a správně reprezentovaná ve službě Azure AD.
+### <a name="foreignsecurityprincipal-out-of-box-rules"></a>ForeignSecurityPrincipal předpřipravená pravidla
+FSpS jsou připojené k libovolnému objektu (\*) v úložišti Metaverse. Ve skutečnosti tato připojení probíhá pouze pro uživatele a skupiny zabezpečení. Tato konfigurace zajišťuje, že se ve službě Azure AD vyřeší a správně reprezentují členství mezi doménovými strukturami.
 
-### <a name="computer-out-of-box-rules"></a>Pravidla out-of-box počítače
-Objekt počítače musí splňovat následující se dá provést synchronizace:
+### <a name="computer-out-of-box-rules"></a>Předpřipravená pravidla pro počítač
+Aby bylo možné synchronizovat objekt počítače, musí splňovat následující požadavky:
 
-* `userCertificate ISNOTNULL`. Pouze počítače s Windows 10 vyplnit tento atribut. Se synchronizují všechny objekty počítače s hodnotou v tomto atributu.
+* `userCertificate ISNOTNULL`. Tento atribut naplní pouze počítače se systémem Windows 10. Všechny objekty počítače s hodnotou v tomto atributu jsou synchronizovány.
 
-## <a name="understanding-the-out-of-box-rules-scenario"></a>Principy scénář pravidla out-of-box
-V tomto příkladu používáme nasazení jedné doménové struktury účtu (A), jednu doménovou strukturu prostředků (R) a jednoho adresáře služby Azure AD.
+## <a name="understanding-the-out-of-box-rules-scenario"></a>Princip scénáře předdefinovaných pravidel
+V tomto příkladu používáme nasazení s jednou doménovou strukturou účtů (A), jednu doménovou strukturou prostředků (R) a jedním adresářem služby Azure AD.
 
-![Obrázek s popis scénáře](./media/concept-azure-ad-connect-sync-default-configuration/scenario.png)
+![Obrázek s popisem scénáře](./media/concept-azure-ad-connect-sync-default-configuration/scenario.png)
 
-V této konfiguraci se předpokládá, že není povolený účet v doménové struktuře účtu a zakázaný účet v doménové struktuře prostředku s propojená poštovní schránka.
+V této konfiguraci předpokládáme, že je v doménové struktuře účtu povolený účet a v doménové struktuře prostředků je zakázaný účet s propojenou poštovní schránkou.
 
 Naším cílem s výchozí konfigurací je:
 
-* Atributy týkající se přihlašování se synchronizují z doménové struktury s povolený účet.
-* Atributy, které lze nalézt v GAL (globální seznam adres) se synchronizují z doménové struktury s poštovní schránku. Pokud se najdou se žádné poštovní schránky, se používá jiné doménové struktury.
-* Pokud je nalezen propojená poštovní schránka, propojený účet povolená musí najít pro objekt, který chcete exportovat do služby Azure AD.
+* Atributy související s přihlašováním se synchronizují z doménové struktury s povoleným účtem.
+* Atributy, které lze najít v globálním seznamu adres (globální seznam adres), jsou synchronizovány z doménové struktury s poštovní schránkou. Pokud nelze nalézt poštovní schránku, bude použita jiná doménová struktura.
+* Pokud se najde propojená poštovní schránka, pro objekt, který se má exportovat do Azure AD, se musí najít propojený povolený účet.
 
-### <a name="synchronization-rule-editor"></a>Synchronization Rule Editor
-Konfigurace můžete zobrazit a změnit pomocí nástroje Editor pravidel synchronizace (SRE) a najdete zástupce v nabídce start.
+### <a name="synchronization-rule-editor"></a>Editor pravidel synchronizace
+Konfigurace se dá zobrazit a změnit pomocí editoru pravidel synchronizace nástrojů (SRE) a zástupce je možné najít v nabídce Start.
 
-![Ikona Editor pravidel synchronizace](./media/concept-azure-ad-connect-sync-default-configuration/sre.png)
+![Ikona editoru pravidel synchronizace](./media/concept-azure-ad-connect-sync-default-configuration/sre.png)
 
-SRE je nástroj resource kit a je nainstalován pomocí synchronizace Azure AD Connect. Aby bylo možné jej spustit, musíte být členem skupiny ADSyncAdmins. Při spuštění, zobrazí vypadat přibližně takto:
+SRE je nástroj Resource Kit a je nainstalovaný s Azure AD Connect synchronizace. Abyste ho mohli spustit, musíte být členem skupiny ADSyncAdmins. Při spuštění se zobrazí něco podobného:
 
-![Příchozí pravidla synchronizace](./media/concept-azure-ad-connect-sync-default-configuration/syncrulesinbound.png)
+![Pravidla synchronizace příchozí](./media/concept-azure-ad-connect-sync-default-configuration/syncrulesinbound.png)
 
-V tomto podokně se zobrazí všechna synchronizační pravidla, které jsou vytvořené pro vaši konfiguraci. Každý řádek v tabulce je jeden synchronizační pravidlo. Na levé straně v části typy pravidel jsou uvedeny dva různé typy: Příchozí a odchozí. Příchozí a odchozí je z pohledu úložiště metaverse. Hlavně budete moct soustředit na příchozí pravidla v tomto přehledu. Skutečný seznam pravidel synchronizace závisí na zjištěné schématu ve službě AD. Na obrázku výše doménové struktury účtu (fabrikamonline.com) nemá žádné služby, jako je například Exchange a Lync, a žádná pravidla synchronizace byly vytvořeny pro tyto služby. Nicméně v doménové struktuře prostředku (res.fabrikamonline.com) zjistíte synchronizační pravidla pro tyto služby. Obsah pravidla se liší v závislosti na verzi zjištěna. Například v nasazení s Exchange 2013 existují další toky atributů, které jsou nakonfigurované než v systému Exchange 2010 nebo 2007.
+V tomto podokně uvidíte všechna synchronizační pravidla vytvořená pro vaši konfiguraci. Každý řádek v tabulce je jedno pravidlo synchronizace. Vlevo v části typy pravidel jsou uvedeny dva různé typy: Příchozí a odchozí. Příchozí a odchozí je ze zobrazení úložiště metaverse. Nebudete se primárně soustředit na pravidla příchozí v tomto přehledu. Skutečný seznam synchronizačních pravidel závisí na zjištěném schématu ve službě AD. Na obrázku výše nemá doménová struktura účtů (fabrikamonline.com) žádné služby, jako je třeba Exchange a Lync, a pro tyto služby se nevytvořila žádná pravidla synchronizace. V doménové struktuře prostředků (res.fabrikamonline.com) ale najdete pravidla synchronizace pro tyto služby. Obsah pravidel se liší v závislosti na zjištěné verzi. Například v nasazení s Exchange 2013 existují více toků atributů nakonfigurovaných než v Exchange 2010/2007.
 
 ### <a name="synchronization-rule"></a>Synchronizační pravidlo
-Synchronizační pravidlo je objekt konfigurace sadu atributů tok, když je splněna podmínka. Také se používá k popisu, jak je objekt v prostoru konektoru vztahujících se k objektu v úložišti metaverse, označované jako **spojení** nebo **odpovídat**. Synchronizační pravidla mají přednost před hodnotu, která udává, jak se vztahují k sobě navzájem. Synchronizační pravidlo s nižší číselnou hodnotu má vyšší prioritu a v došlo ke konfliktu toku atributů vyšší prioritu služby wins řešení konfliktů.
+Synchronizační pravidlo je objekt konfigurace se sadou atributů při splnění podmínky. Slouží také k popisu způsobu, jakým objekt v prostoru konektoru souvisí s objektem v úložišti Metaverse, označovaným jako **Join** nebo **Match**. Synchronizační pravidla mají hodnotu priority, která určuje, jak vzájemně souvisí. Synchronizační pravidlo s nižší číselnou hodnotou má vyšší prioritu a v konfliktu toku atributů má vyšší prioritu řešení konfliktů.
 
-Jako příklad, podívejte se na synchronizační pravidlo **v ze služby AD – uživatel AccountEnabled**. Označit tento řádek SRE a vyberte **upravit**.
+Podívejte se na pravidlo synchronizace **ve službě AD – uživatel AccountEnabled**. Označte tento řádek v SRE a vyberte **Upravit**.
 
-Toto pravidlo je pravidlo out-of-box, zobrazí se při otevření pravidlo upozornění. Neprovádějte žádné [změny pravidel out-of-box](how-to-connect-sync-best-practices-changing-default-configuration.md), takže budete vyzváni, jaké jsou vaše záměry. V takovém případě pouze chcete zobrazit pravidla. Vyberte **ne**.
+Vzhledem k tomu, že toto pravidlo je předem nastavené pravidlo, při otevření pravidla se zobrazí upozornění. Nemusíte dělat žádné [změny pravidel](how-to-connect-sync-best-practices-changing-default-configuration.md)dodaných na sebe, takže se zobrazí dotaz na to, co vaše záměry jsou. V takovém případě chcete pouze zobrazit pravidlo. Vyberte **ne**.
 
-![Synchronizační pravidla upozornění](./media/concept-azure-ad-connect-sync-default-configuration/warningeditrule.png)
+![Upozornění na pravidla synchronizace](./media/concept-azure-ad-connect-sync-default-configuration/warningeditrule.png)
 
-Synchronizační pravidlo obsahuje čtyři oddíly konfigurace: Popis, Scoping filtr, spojení pravidla a transformace.
+Synchronizační pravidlo má čtyři konfigurační oddíly: Popis, filtr oboru, pravidla spojování a transformace.
 
 #### <a name="description"></a>Popis
-První část obsahuje základní informace, jako je název a popis.
+První část uvádí základní informace, jako je název a popis.
 
-![Popis kartu editor pravidel synchronizace](./media/concept-azure-ad-connect-sync-default-configuration/syncruledescription.png)
+![Karta Popis v editoru pravidel synchronizace](./media/concept-azure-ad-connect-sync-default-configuration/syncruledescription.png)
 
-Můžete také najít informace, o které připojený systém se toto pravidlo vztahuje, kterých objekt v připojený systém, které se vztahuje na typ a typ objekt úložiště metaverse. Typ objektu úložiště metaverse je vždy osobě bez ohledu na to, když je typ zdrojového objektu uživatele, iNetOrgPerson nebo kontaktujte. Typ objektu úložiště metaverse by nikdy měnit, takže je vytvořena jako obecného typu. Typ odkazu můžete nastavit na spojení, StickyJoin nebo zřídit. Toto nastavení funguje společně s části pravidla pro připojení a se věnujeme později.
+Najdete zde také informace o tom, na kterém propojeném systému se toto pravidlo vztahuje, který typ objektu v připojeném systému se vztahuje a typ objektu Metaverse. Typ objektu metaverse je vždy osoba bez ohledu na to, kdy je typ zdrojového objektu uživatel, objekt iNetOrgPerson nebo kontakt. Typ objektu Metaverse by se nikdy neměl měnit, aby se vytvořil jako obecný typ. Typ odkazu je možné nastavit na JOIN, StickyJoin nebo zřídit. Toto nastavení spolupracuje s oddílem pravidla spojení a je zahrnuto později.
 
-Uvidíte také, že toto synchronizační pravidlo se používá pro synchronizaci hesel. Pokud je uživatel v oboru pro toto synchronizační pravidlo, heslo synchronizovaly z místní do cloudu (za předpokladu, že jste povolili funkce Synchronizace hesla).
+Můžete také zjistit, že se toto pravidlo synchronizace používá pro synchronizaci hesel. Pokud je uživatel v oboru pro toto pravidlo synchronizace, heslo je synchronizováno z místního prostředí do cloudu (za předpokladu, že jste povolili funkci synchronizace hesla).
 
-#### <a name="scoping-filter"></a>Filtr oborů
-Část Filtr vytváření oboru slouží ke konfiguraci uplatnění synchronizační pravidlo. Vzhledem k tomu, že název synchronizačního pravidla máte před sebou označuje měly použít pouze pro povolené uživatele, obor je nakonfigurovaná tak, že atribut AD **userAccountControl** nesmí nastaven bit 2. Při synchronizační modul Vyhledá uživatele ve službě AD, se vztahuje toto synchronizační pravidlo, když **userAccountControl** je nastavena na desítkovou hodnotu 512 (povoleného uživatele normální). Pokud má uživatel nevztahuje pravidlo **userAccountControl** nastavena na 514 (zakázaný uživatel normální).
+#### <a name="scoping-filter"></a>Filtr oboru
+Oddíl filtr oboru se používá ke konfiguraci, kdy se má pravidlo synchronizace vztahovat. Vzhledem k tomu, že název synchronizačního pravidla, které se chystáte, by měl být použit pouze pro povolené uživatele, je rozsah nakonfigurován tak, aby mohl uživatel **s atributem** AD bez tohoto nastavení obsahovat bit 2. Když synchronizační modul najde uživatele ve službě AD, použije toto pravidlo synchronizace, **Pokud je uživatel** nastavený na desítkovou hodnotu 512 (povoleno normálnímu uživateli). Toto pravidlo neplatí, pokud má uživatel nastaveno na **hodnotu 514** (zakázaný normální uživatel).
 
-![Zkoumání karta v editoru pravidel synchronizace](./media/concept-azure-ad-connect-sync-default-configuration/syncrulescopingfilter.png)
+![Karta obor v editoru pravidel synchronizace](./media/concept-azure-ad-connect-sync-default-configuration/syncrulescopingfilter.png)
 
-Filtr oborů má skupiny a klauzule, které mohou být vnořené. Všechny klauzule uvnitř skupiny musí být splněny pro synchronizační pravidlo použít. Když jsou definovány více skupin, alespoň jednu skupinu musí být splněny pro pravidlo použít. To znamená logický operátor OR vyhodnocen mezi skupinami a logické a vyhodnotit uvnitř skupiny. Příklad této konfigurace najdete v pravidla odchozí synchronizace **na AAD – připojte se k skupiny**. Existuje několik skupin synchronizace filtr, třeba jednoho pro skupiny zabezpečení (`securityEnabled EQUAL True`) a jeden pro distribuční skupiny (`securityEnabled EQUAL False`).
+Filtr oboru má skupiny a klauzule, které mohou být vnořené. Aby bylo možné použít synchronizační pravidlo, musí být splněny všechny klauzule uvnitř skupiny. Pokud je definováno více skupin, musí být pro pravidlo splněna aspoň jedna skupina. To znamená, že logická nebo je vyhodnocena mezi skupinami a logickou a je vyhodnocena uvnitř skupiny. Příklad této konfigurace najdete v odchozím synchronizačním pravidle z protokolu **AAD – připojení ke skupině**. Existuje několik skupin filtru synchronizace, například jeden pro skupiny zabezpečení (`securityEnabled EQUAL True`) a jeden pro distribuční skupiny (`securityEnabled EQUAL False`).
 
-![Zkoumání karta v editoru pravidel synchronizace](./media/concept-azure-ad-connect-sync-default-configuration/syncrulescopingfilterout.png)
+![Karta obor v editoru pravidel synchronizace](./media/concept-azure-ad-connect-sync-default-configuration/syncrulescopingfilterout.png)
 
-Toto pravidlo se používá k definování skupiny, které by mělo proběhnout zřízení do služby Azure AD. Distribuční skupiny musí být povolena synchronizace s Azure AD mail, ale pro skupiny zabezpečení e-mailu se nevyžaduje.
+Toto pravidlo slouží k definování skupin, které se mají zřídit do Azure AD. Distribuční skupiny musí mít povolený e-mail, aby je bylo možné synchronizovat se službou Azure AD, ale pro skupiny zabezpečení není vyžadován e-mail.
 
-#### <a name="join-rules"></a>Připojte se k pravidla
-Třetí části slouží ke konfiguraci, jak objekty v prostoru konektoru vztahují na objekty v úložišti metaverse. Pravidlo se podívat na dříve nemá žádnou konfiguraci pro připojení pravidla, takže místo toho chcete se podívat na **v ze služby AD – uživatel připojit**.
+#### <a name="join-rules"></a>Pravidla spojování
+Třetí část se používá ke konfiguraci způsobu, jakým objekty v prostoru konektoru souvisí s objekty v úložišti Metaverse. Pravidlo, které jste si prohlédli dříve, nemá žádnou konfiguraci pro pravidla spojení, takže místo toho se budete chtít podívat **ve službě AD – připojení uživatele**.
 
-![Karta pravidla zúčastnit editor pravidel synchronizace](./media/concept-azure-ad-connect-sync-default-configuration/syncrulejoinrules.png)
+![Karta pravidla připojení v editoru pravidel synchronizace](./media/concept-azure-ad-connect-sync-default-configuration/syncrulejoinrules.png)
 
-Obsah spojení pravidlo závisí na odpovídající možnosti vybrané v Průvodci instalací. Pro příchozí pravidlo hodnocení začíná objekt v prostoru konektoru zdroje a každou skupinu v pravidlech spojení se vyhodnocují v pořadí. Pokud zdrojový objekt je vyhodnoceno tak, aby odpovídaly právě jednoho objektu v úložišti metaverse pomocí některé z pravidel spojení, objekty jsou spojeny. Pokud není nalezena žádná shoda se vyhodnotily všechna pravidla, použije se typ odkazu na stránce popis. Pokud tuto konfiguraci je nastavená na **zřízení**, pak je vytvořen nový objekt v cílové úložiště metaverse. Nový objekt úložiště metaverse se také označuje jako k poskytování **projektu** objektu úložiště metaverse.
+Obsah pravidla spojení závisí na možnosti odpovídajícího výběru v Průvodci instalací nástroje. Pro příchozí pravidlo začíná hodnocení objektem v prostoru zdrojového konektoru a každá skupina v pravidlech spojení se vyhodnocuje v pořadí. Je-li zdrojový objekt vyhodnocen tak, aby odpovídal přesně jednomu objektu v úložišti Metaverse pomocí jednoho z pravidel spojení, jsou objekty spojeny. Pokud byla vyhodnocena všechna pravidla a neexistuje žádná shoda, je použit typ odkazu na stránce popis. Pokud je tato konfigurace nastavená na **zřizování**, vytvoří se nový objekt v úložišti Metaverse. Pro zřízení nového objektu do úložiště metaverse se také říká, že je  potřeba projektovat objekt do úložiště metaverse.
 
-Pravidla spojení se jenom vyhodnotí jednou. Když se připojí objekt prostoru konektoru a objektu úložiště metaverse, zůstanou připojené, je stále splněny rozsahu synchronizačního pravidla.
+Pravidla spojení jsou vyhodnocována pouze jednou. Když je připojen objekt prostoru konektoru a objekt úložiště metaverse, zůstanou spojeny, dokud je rozsah synchronizačního pravidla stále spokojen.
 
-Při vyhodnocování pravidel synchronizace, musí být pouze jeden synchronizační pravidlo s spojení pravidel definovaných v oboru. Pokud se najde více synchronizační pravidla, jejichž spojení pravidla pro jeden objekt, je vržena chyba. Z tohoto důvodu osvědčeným postupem je mít pouze jeden synchronizační pravidlo s spojení definován při více pravidel synchronizace jsou v oboru pro objekt. V konfiguraci out-of-box synchronizace Azure AD Connect, můžete tato pravidla se dá vyhledat dotazem podle názvu a najít ty, které mají slovo **připojení** na konci názvu. Synchronizační pravidlo bez definovaná nějaká pravidla spojení platí toky atributů při dalším synchronizačním pravidle propojeny objekty nebo zřídit nový objekt v cíli.
+Při vyhodnocování pravidel synchronizace musí být v oboru pouze jedno pravidlo synchronizace s definovanými pravidly spojení. Pokud je pro jeden objekt nalezeno více synchronizačních pravidel s pravidly spojení, je vyvolána chyba. Z tohoto důvodu se doporučuje mít pouze jedno pravidlo synchronizace s připojením, pokud je v oboru pro objekt definováno více synchronizačních pravidel. V dopředných konfiguracích pro Azure AD Connect synchronizaci můžete tato pravidla najít tak, že si podíváte na název a vyhledáte je pomocí Word **Join** na konci názvu. Pravidlo synchronizace bez definovaných pravidel spojení aplikuje toky atributů, pokud jiné synchronizační pravidlo spojilo objekty dohromady nebo zřídilo nový objekt v cíli.
 
-Když se podíváte na obrázku výše vidíte, že je pravidlo pokusu o připojení k **objectSID** s **msExchMasterAccountSid** (Exchange) a **msRTCSIP-OriginatorSid** (Lync) což je, co Očekáváme, že v doménovou strukturu účtu prostředku. Stejné pravidlo na všechny doménové struktury pro vás. Předpokladem je, že každá doménová struktura může být doménové struktury účtu nebo prostředků. Tato konfigurace funguje také pokud máte účty, které za provozu v jedné doménové struktury a nemusí být připojen.
+Pokud se podíváte na obrázek výše, vidíte, že se pravidlo snaží spojit s **objectSID** pomocí rozhraní **msExchMasterAccountSID** (Exchange) a **msRTCSIP-OriginatorSid** (Lync), což očekáváme v topologii doménové struktury prostředků. Stejné pravidlo najdete ve všech doménových strukturách. Předpokladem je, že každá doménová struktura může být buď účet, nebo doménová struktura prostředků. Tato konfigurace funguje také v případě, že máte účty, které jsou v jedné doménové struktuře živé a není nutné je připojit.
 
 #### <a name="transformations"></a>Transformace
-Transformace oddíl definuje všechny toky atributů, které se vztahují k cílovému objektu, když jsou připojené objekty a filtr rozsahu je splněna. Když se vrátíme ke **v ze služby AD – uživatel AccountEnabled** synchronizačního pravidla, vyhledejte následující transformace:
+Oddíl transformuje všechny toky atributů, které se vztahují na cílový objekt, když jsou objekty připojeny, a filtr oboru je splněn. Když se vrátíte zpět k části pravidlo synchronizace **v rámci AD – uživatel AccountEnabled** , najdete následující transformace:
 
-![Transformace kartu editor pravidel synchronizace](./media/concept-azure-ad-connect-sync-default-configuration/syncruletransformations.png)
+![Karta transformace v editoru pravidel synchronizace](./media/concept-azure-ad-connect-sync-default-configuration/syncruletransformations.png)
 
-Vložit tuto konfiguraci v kontextu, v nasazení doménové struktury prostředků účtu, očekává se najít povolený účet v doménové struktuře účtu a zakázaný účet v doménové struktuře prostředku s nastavením Exchange a Lync. Synchronizační pravidlo, které sledujete obsahuje atributy vyžadované pro přihlášení a tyto atributy jakým způsobem se předávají z doménové struktury ve kterých je povolený účet. Tyto toky atributů jsou umístěny společně v jedné synchronizační pravidlo.
+Chcete-li tuto konfiguraci vložit v kontextu nasazení doménové struktury prostředků, je nutné najít povolený účet v doménové struktuře účtu a zakázaný účet v doménové struktuře prostředků s nastavením Exchange a Lync. Synchronizační pravidlo, které se chystáte, obsahuje atributy vyžadované pro přihlášení a tyto atributy by měly být předávány z doménové struktury, ve které je povolený účet. Všechny tyto toky atributů jsou spojeny do jednoho synchronizačního pravidla.
 
-Transformace mohou mít různé typy: Konstanta, přímo a výraz.
+Transformace může mít různé typy: Konstanta, přímá a výraz.
 
-* Konstantní tok vždy toky pevně zakódované hodnotu. V případě výše, hodnota vždy nastaví **True** v atribut úložiště metaverze s názvem **accountEnabled**.
-* Tok s přímým přístupem vždy toky hodnotu atributu ve zdroji do cílového atributu jako-je.
-* To umožňuje pokročilejší konfigurace třetí typ toku je výraz.
+* Konstantní tok vždy přetéká hodnotu pevně zakódované. V případě výše uvedeného případu vždy nastaví hodnotu **true** v atributu Metaverse s názvem **accountEnabled**.
+* Přímý tok vždy natéká hodnotu atributu ve zdroji do cílového atributu tak, jak je.
+* Třetí typ toku je výraz a umožňuje pokročilejší konfigurace.
 
-Výraz jazyka je VBA (Visual Basic for Applications), takže uživatelé, kteří s prostředím systému Microsoft Office nebo VBScript rozpozná formát. Atributy jsou uzavřeny v hranatých závorkách [attributeName]. Názvy atributů a názvy funkcí jsou malá a velká písmena, ale Editor pravidel synchronizace vyhodnotí výrazy a zobrazit upozornění, pokud výraz není platný. Všechny výrazy jsou vyjádřeny na jednom řádku pomocí vnořených funkcí. Zobrazit sílu jazyka konfigurace, tady je tok pro pwdLastSet, ale s dalšími komentáři vložit:
+Expression Language je VBA (jazyk Visual Basic for Application), takže lidé, kteří mají zkušenosti s systém Microsoft Office nebo VBScript, budou formát rozpoznávat. Atributy jsou uzavřeny v hranatých závorkách [attributeName]. V názvech atributů a funkcích se rozlišují velká a malá písmena, ale editor synchronizačních pravidel vyhodnocuje výrazy a poskytuje upozornění, pokud výraz není platný. Všechny výrazy jsou vyjádřeny na jednom řádku s vnořenými funkcemi. Pokud chcete zobrazit sílu konfiguračního jazyka, je zde tok pro pwdLastSet, ale s vloženými dalšími komentáři:
 
 ```
 // If-then-else
@@ -208,32 +208,32 @@ NULL
 )
 ```
 
-Zobrazit [Principy výrazů deklarativního zřizování](concept-azure-ad-connect-sync-declarative-provisioning-expressions.md) Další informace o jazyk výrazů pro toky atributů.
+Další informace o jazyku výrazů pro toky atributů najdete v tématu [Principy deklarativních zřizovacích výrazů](concept-azure-ad-connect-sync-declarative-provisioning-expressions.md) .
 
 ### <a name="precedence"></a>Priorita
-Se teď podívat na některé jednotlivé synchronizační pravidla, ale pravidla spolupracují v konfiguraci. V některých případech hodnotu atributu přispět z více pravidel synchronizace na stejný atribut target. V takovém případě přednost atributu slouží k určení, který atribut wins. Jako příklad podívejte se na atribut sourceAnchor. Tento atribut je důležité atribut bude moct přihlásit ke službě Azure AD. Tok atributů, který můžete najít pro tento atribut v dvě různá pravidla synchronizace **v ze služby AD – uživatel AccountEnabled** a **v ze služby AD – běžné uživatele**. Z důvodu prioritu synchronizačního pravidla atribut sourceAnchor je přispět z doménové struktury s povolený účet nejprve po několik objektů spojeno do objektu úložiště metaverse. Pokud nejsou žádné povolené účty, pak synchronizační modul používá synchronizační pravidlo pokrývající vše **v ze služby AD – běžné uživatele**. Tato konfigurace zajistí, že i pro účty, které jsou zakázané, stále existuje sourceAnchor.
+Nyní jste si prohlédli některá jednotlivá pravidla synchronizace, ale pravidla společně v konfiguraci spolupracují. V některých případech je hodnota atributu popsána z více synchronizačních pravidel do stejného cílového atributu. V tomto případě se pro určení atributu WINS používá priorita atributů. Podívejte se na příklad atributu sourceAnchor. Tento atribut je důležitý, aby se mohl přihlásit k Azure AD. Tok atributů pro tento atribut můžete najít ve dvou různých synchronizačních pravidlech, **ve službě AD – User AccountEnabled** a **in from AD – User Common**. Kvůli prioritě synchronizačního pravidla je atribut sourceAnchor z doménové struktury s povoleným účtem, který je nejdřív k dispozici, když se k objektu úložiště metaverse připojí několik objektů. Pokud neexistují žádné povolené účty, synchronizační modul používá synchronizační pravidlo zachytit vše **v rámci služby AD – společný uživatel**. Tato konfigurace zajišťuje, že i v případě zakázaných účtů je stále k dispozici sourceAnchor.
 
-![Příchozí pravidla synchronizace](./media/concept-azure-ad-connect-sync-default-configuration/syncrulesinbound.png)
+![Pravidla synchronizace příchozí](./media/concept-azure-ad-connect-sync-default-configuration/syncrulesinbound.png)
 
-Priorita pro synchronizační pravidla nastavena ve skupinách pomocí Průvodce instalací. Všechna pravidla ve skupině mají stejný název, ale jsou připojené k různým adresářům připojené. Průvodce instalací poskytuje pravidlo **v ze služby AD – uživatel připojit** nejvyšší prioritu a Iteruje přes všechny připojené adresářů AD. Pak bude pokračovat s další skupiny pravidla v předdefinované pořadí. Ve skupině přidají pravidla v pořadí, ve kterém konektory byly přidány v průvodci. Pokud přidáte jiný konektor pomocí průvodce, přeuspořádají synchronizační pravidla a pravidla nový konektor jsou vloženy poslední v každé skupině.
+Priorita pro pravidla synchronizace je nastavena v části skupiny Průvodce instalací nástroje. Všechna pravidla ve skupině mají stejný název, ale jsou připojená k různým připojeným adresářům. Průvodce instalací poskytuje pravidlo **ve službě AD – nejvyšší prioritu připojení uživatele** a projde všemi připojenými adresáři služby AD. Pak pokračuje v dalších skupinách pravidel v předdefinovaném pořadí. V rámci skupiny se pravidla přidávají v pořadí, v jakém byly přidány konektory v průvodci. Pokud se pomocí Průvodce přidá jiný konektor, pravidla synchronizace se přeřadí a pravidla nového konektoru se do každé skupiny vloží jako poslední.
 
 ### <a name="putting-it-all-together"></a>Spojení všech součástí dohromady
-Teď už máte dostatek informací o pravidel tak, aby měli pochopit, jak služba konfigurace pracuje s různá pravidla synchronizace. Když se podíváte na uživatele a atributy, které se poskytly úložišti metaverse, pravidla se použijí v uvedeném pořadí:
+Nyní ví, že pravidla synchronizace jsou schopná pochopit, jak konfigurace funguje s různými synchronizačními pravidly. Pokud se podíváte na uživatele a atributy, které se podílejí do úložiště metaverse, pravidla se aplikují v tomto pořadí:
 
-| Název | Komentář |
+| Name | Komentář |
 |:--- |:--- |
-| V ze služby AD – připojení uživatele |Pravidla pro připojení k objekty prostor konektoru s úložiště metaverse. |
-| V ze služby AD – povolené uživatelské účty |Atributy vyžadované pro přihlášení ke službě Azure AD a Office 365. Chceme, aby tyto atributy z povolený účet. |
-| V ze služby AD – běžné uživatele ze serveru Exchange |Nebyly nalezeny atributy v globálním adresáři. Předpokládáme, že kvalita dat je nejlepší v doménové struktuře, ve kterém jsme našli poštovní schránky uživatele. |
-| V ze služby AD – běžné uživatele |Nebyly nalezeny atributy v globálním adresáři. V případě, že jsme nenašli poštovní schránku, jakýkoli jiný objekt připojené k doméně můžete přispívat hodnotu atributu. |
-| V ze služby AD – uživatelů Exchange |Existuje pouze pokud byl zjištěn Exchange. Vede všechny atributy Exchange infrastruktury. |
-| V ze služby AD – uživatel Lync |Existuje pouze pokud byl zjištěn Lync. Vede všechny atributy Lync infrastruktury. |
+| Ve službě AD – připojení uživatele |Pravidlo pro spojování objektů prostoru konektoru s úložištěm Metaverse |
+| V nástroji ze služby AD – UserAccount povoleno |Atributy vyžadované pro přihlášení k Azure AD a Office 365. Chceme tyto atributy z povoleného účtu. |
+| V nástroji ze služby AD – uživatel společný ze systému Exchange |V globálním seznamu adres byly nalezeny atributy. Předpokládáme, že kvalita dat je nejlepší v doménové struktuře, ve které jsme našli poštovní schránku uživatele. |
+| V nástroji ze služby AD – společná pro uživatele |V globálním seznamu adres byly nalezeny atributy. V případě, že jsme nenašli poštovní schránku, může hodnota atributu přispívat libovolný jiný připojený objekt. |
+| V nástroji ze služby AD – uživatel Exchange |Existuje pouze v případě, že byl zjištěn server Exchange. Natéká všechny atributy výměny infrastruktury. |
+| V nástroji ze služby AD – uživatel Lync |Existuje pouze v případě, že byla zjištěna Lync. Natéká všechny atributy infrastruktury Lyncu. |
 
-## <a name="next-steps"></a>Další postup
-* Další informace o konfiguraci modelu v [Principy deklarativní zřizování](concept-azure-ad-connect-sync-declarative-provisioning.md).
-* Další informace o jazyk výrazů v [Principy výrazů deklarativního zřizování](concept-azure-ad-connect-sync-declarative-provisioning-expressions.md).
-* Pokračujte ve čtení, jak funguje konfigurace out-of-box [Principy uživatelů a kontaktů](concept-azure-ad-connect-sync-user-and-contacts.md)
-* Informace o tom, aby praktické změnu pomocí deklarativní zřizování v [jak provést změnu výchozí konfigurace](how-to-connect-sync-change-the-configuration.md).
+## <a name="next-steps"></a>Další kroky
+* Přečtěte si další informace o modelu konfigurace v tématu [Principy deklarativního zřizování](concept-azure-ad-connect-sync-declarative-provisioning.md).
+* Přečtěte si další informace o jazyce výrazů v tématu [Principy deklarativních zřizovacích výrazů](concept-azure-ad-connect-sync-declarative-provisioning-expressions.md).
+* Pokračovat v čtení, jak dodaná konfigurace funguje při [porozumění uživatelům a kontaktům](concept-azure-ad-connect-sync-user-and-contacts.md)
+* Informace o tom, jak provést praktickou změnu pomocí deklarativního zajišťování, najdete v tématu [Postup provedení změny ve výchozí konfiguraci](how-to-connect-sync-change-the-configuration.md).
 
 **Témata s přehledem**
 

@@ -1,223 +1,216 @@
 ---
-title: Diagnostika Azure Load balancer úrovně Standard
+title: Diagnostika Azure Standard Load Balancer
 titlesuffix: Azure Load Balancer
-description: Použijte k dispozici metriky a informace o stavu diagnostiky pro Azure Load balancer úrovně Standard.
+description: Pro diagnostiku pro Azure Standard Load Balancer použijte dostupné metriky a informace o stavu.
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: asudbring
 ms.custom: seodec18
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/03/2019
-ms.author: Kumud
-ms.openlocfilehash: 08670c8aa6d5c9830ab84bc848bac38063bd41c0
-ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
+ms.date: 07/11/2019
+ms.author: allensu
+ms.openlocfilehash: e0329f5f975b67460796bf7dd9429752549a3483
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67550926"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68274478"
 ---
-# <a name="metrics-and-health-diagnostics-for-standard-load-balancer"></a>Metriky a stav diagnostiky pro Load balancer úrovně Standard
+# <a name="metrics-and-health-diagnostics-for-standard-load-balancer"></a>Metriky a Diagnostika stavu pro Standard Load Balancer
 
-Azure Load balancer úrovně Standard poskytuje Azure Load balancer úrovně Standard poskytuje následující možnosti diagnostiky prostředků:
-* **Vícedimenzionálních metrik**: Poskytuje nové multidimenzionální diagnostické možnosti prostřednictvím [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview) pro veřejné a vnitřní načtení konfigurace nástroje pro vyrovnávání. Můžete monitorovat, spravovat a řešení potíží s prostředky nástroje pro vyrovnávání zatížení.
+Azure Standard Load Balancer zveřejňuje Azure Standard Load Balancer poskytuje vašim prostředkům následující diagnostické možnosti:
+* **Multidimenzionální metriky**: Poskytuje nové multidimenzionální diagnostické možnosti prostřednictvím [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/overview) pro konfigurace veřejného i interního nástroje pro vyrovnávání zatížení. Můžete sledovat, spravovat a řešit potíže s prostředky nástroje pro vyrovnávání zatížení.
 
-* **Stav prostředků:** Na stránce nástroje pro vyrovnávání zatížení na webu Azure Portal a Resource Health stránky (v části monitorování) vystavit Resource Health část pro konfiguraci nástroje pro vyrovnávání zatížení veřejného Load balanceru úrovně Standard.
+* **Stav prostředků:** Stránka Load Balancer v Azure Portal a na stránce Resource Health (pod položkou monitor) zpřístupňuje oddíl Resource Health pro konfiguraci veřejného nástroje pro vyrovnávání zatížení Standard Load Balancer.
 
-Tento článek poskytuje stručný přehled těchto možností a nabízí způsoby, jak je používat pro Load balancer úrovně Standard.
+Tento článek poskytuje rychlou prohlídku těchto funkcí a nabízí způsoby jejich použití pro Standard Load Balancer.
 
-## <a name = "MultiDimensionalMetrics"></a>Vícedimenzionálních metrik
+## <a name = "MultiDimensionalMetrics"></a>Multidimenzionální metriky
 
-Nástroj Azure Load Balancer poskytuje nové vícedimenzionálních metrik přes nové metriky Azure na webu Azure Portal a pomůže vám získat diagnostické informace v reálném čase do zatížení prostředků nástroje pro vyrovnávání. 
+Azure Load Balancer poskytuje nové multidimenzionální metriky prostřednictvím nových metrik Azure v Azure Portal a pomáhá získat diagnostické přehledy v reálném čase do vašich prostředků nástroje pro vyrovnávání zatížení. 
 
-Různé konfigurace Load balanceru úrovně Standard poskytují následující metriky:
+Různé konfigurace Standard Load Balancer poskytují následující metriky:
 
-| Metrika | Typ prostředku | Popis | Doporučené agregace |
+| Metrika | Typ prostředku | Popis | Doporučená agregace |
 | --- | --- | --- | --- |
-| Cesta dostupnost dat (virtuální IP adresy dostupnost)| Veřejný load balancer | Load balanceru úrovně Standard průběžně uplatní na cestu k datům z v rámci oblasti zatížení vyrovnávání front-endu, až zásobník SDN, který podporuje váš virtuální počítač. Za předpokladu, zůstanou v dobrém stavu instance, měření se řídí stejnou cestu jako provoz s vyrovnáváním zatížení vaší aplikace. Na cestu k datům, která vaši zákazníci používají je také ověřován. Měření není viditelný pro vaši aplikaci a nebude v konfliktu s dalšími operacemi.| Průměr |
-| Stav testu (DIP dostupnost) |  Nástroj pro vyrovnávání zatížení veřejné a vnitřní | Nástroj pro vyrovnávání zatížení používá Distribuovaná služba zjišťování stavu, který sleduje stav vašeho koncového bodu aplikace podle nastavení konfigurace. Tato metrika poskytuje agregace nebo za koncový bod filtrované zobrazení každého koncového bodu instance ve fondu nástroje pro vyrovnávání zatížení. Uvidíte jak nástroj pro vyrovnávání zatížení zobrazení stavu aplikace, jak je uvedeno ve vaší konfiguraci sondy stavu. |  Průměr |
-| SYN (synchronizace) pakety |  Veřejný load balancer | Load balancer úrovně Standard není ukončit připojení protokolu TCP (Transmission Control) nebo pracovat s TCP nebo UDP paketů toky. Toky a jejich počet metod handshake jsou vždy mezi zdrojem a instanci virtuálního počítače. Lepší řešení potíží s scénáře protokol TCP, které můžete využít SYN čítače paketů o tom, kolik připojení TCP pokusy. Metrika hlásí počet TCP SYN pakety, které byly přijaty.| Průměr |
-| Připojení SNAT |  Veřejný Load Balancer |Load balancer úrovně Standard hlásí počet odchozích toků, které jsou masqueraded k veřejné IP adresy front-endu. Zdrojové síťové adresy překladu (SNAT) porty jsou vyčerpatelným prostředků. Tato metrika se mohou vyjádřit údaj o tom, jak často se aplikace spoléhá na SNAT pro odchozí toky s původem. Čítače pro úspěšné i neúspěšné odchozích toků SNAT označené a slouží k odstranění potíží a porozumět stavu vašich odchozích toků.| Průměr |
-| Čítače bajtů |  Nástroj pro vyrovnávání zatížení veřejné a vnitřní | Load balancer úrovně Standard sestavy dat zpracovaných za front-endu.| Průměr |
-| Čítače paketů |  Nástroj pro vyrovnávání zatížení veřejné a vnitřní | Load balancer úrovně Standard sestavy pakety zpracovaných za front-endu.| Průměr |
+| Dostupnost cesty k datům (VIP dostupnost)| Veřejný a interní nástroj pro vyrovnávání zatížení | Standard Load Balancer nepřetržitě vykonává cestu k datům z oblasti do front-endu nástroje pro vyrovnávání zatížení, a to až do zásobníku SDN, který podporuje váš virtuální počítač. Pokud zůstanou instance v pořádku, měření se řídí stejnou cestou jako provoz s vyrovnáváním zatížení vaší aplikace. Také se ověří cesta k datům, kterou používají vaši zákazníci. Měření je pro vaši aplikaci neviditelné a neovlivňuje jiné operace.| Average |
+| Stav sondy stavu (dostupnost DIP) | Veřejný a interní nástroj pro vyrovnávání zatížení | Standard Load Balancer používá distribuovanou službu pro zjišťování stavu, která monitoruje stav koncového bodu vaší aplikace podle nastavení konfigurace. Tato metrika poskytuje agregované zobrazení každého koncového bodu instance ve fondu nástroje pro vyrovnávání zatížení, které je filtrované podle počtu koncových bodů. Můžete zjistit, jak Load Balancer zobrazení stavu aplikace, jak je uvedeno v konfiguraci sondy stavu. |  Average |
+| SYN (synchronizace) paketů | Veřejný a interní nástroj pro vyrovnávání zatížení | Standard Load Balancer neukončuje připojení TCP (Transmission Control Protocol) ani interakci s toky paketů TCP nebo UDP. Toky a jejich metody handshake jsou vždy mezi zdrojem a instancí virtuálního počítače. K lepšímu řešení potíží se scénáři protokolu TCP můžete použít čítače paketů SYN, abyste pochopili, kolik pokusů o připojení TCP je prováděno. Metrika hlásí počet přijatých paketů TCP SYN.| Average |
+| Připojení SNAT | Veřejný Nástroj pro vyrovnávání zatížení |Standard Load Balancer oznamuje počet odchozích toků, které jsou maskované na front-endu veřejné IP adresy. Porty zdrojového překladu adres (SNAT) jsou prostředek exhaustible. Tato metrika vám může poskytnout informace o tom, jak intenzivně se aplikace spoléhá na SNAT pro odchozí vzniklé toky. Čítače pro úspěšné a neúspěšné odchozí toky SNAT jsou hlášeny a lze je použít k řešení potíží a pochopení stavu odchozích toků.| Average |
+| Čítače bajtů |  Veřejný a interní nástroj pro vyrovnávání zatížení | Standard Load Balancer oznamuje data zpracovaná za front-end.| Average |
+| Čítače paketů |  Veřejný a interní nástroj pro vyrovnávání zatížení | Standard Load Balancer hlásí zpracované pakety za front-end.| Average |
 
-### <a name="view-your-load-balancer-metrics-in-the-azure-portal"></a>Zobrazit metriky nástroje pro vyrovnávání zatížení na webu Azure Portal
+### <a name="view-your-load-balancer-metrics-in-the-azure-portal"></a>Zobrazit metriky nástroje pro vyrovnávání zatížení v Azure Portal
 
-Na webu Azure portal poskytuje metriky pro vyrovnávání zatížení prostřednictvím stránky metrik, která je k dispozici na stránce prostředků nástroje pro vyrovnávání zatížení pro určitý prostředek a na stránce Azure Monitor. 
+Azure Portal zpřístupňuje metriky nástroje pro vyrovnávání zatížení prostřednictvím stránky metriky, která je k dispozici na stránce prostředků nástroje pro vyrovnávání zatížení pro konkrétní prostředek a Azure Monitor stránku. 
 
-Pokud chcete zobrazit metriky pro vaše prostředky nástroje pro vyrovnávání zatížení:
-1. Přejděte na stránku pro metriky a proveďte jednu z následujících akcí:
-   * Na stránce prostředků nástroje pro vyrovnávání zatížení vyberte v rozevíracím seznamu Typ metriky.
+Chcete-li zobrazit metriky pro prostředky Standard Load Balancer:
+1. Přejít na stránku metriky a proveďte jednu z následujících akcí:
+   * Na stránce prostředek nástroje pro vyrovnávání zatížení vyberte v rozevíracím seznamu Typ metriky.
    * Na stránce Azure Monitor vyberte prostředek nástroje pro vyrovnávání zatížení.
-2. Nastavte typ odpovídající agregace.
-3. Volitelně můžete nakonfigurujte požadované filtrování a seskupování.
+2. Nastavte vhodný typ agregace.
+3. Volitelně můžete nakonfigurovat požadované filtrování a seskupování.
 
-    ![Metriky pro Load balancer úrovně Standard](./media/load-balancer-standard-diagnostics/lbmetrics1anew.png)
+    ![Metriky pro Standard Load Balancer](./media/load-balancer-standard-diagnostics/lbmetrics1anew.png)
 
-    *Obrázek: Data cesty dostupnosti metriky Load balanceru úrovně Standard*
+    *Obrázek Metrika dostupnosti datové cesty pro Standard Load Balancer*
 
-### <a name="retrieve-multi-dimensional-metrics-programmatically-via-apis"></a>Načíst vícedimenzionálních metrik přes rozhraní API prostřednictvím kódu programu
+### <a name="retrieve-multi-dimensional-metrics-programmatically-via-apis"></a>Načtěte multidimenzionální metriky prostřednictvím rozhraní API.
 
-Pokyny k rozhraní API pro získání definice vícerozměrné metriky a hodnoty, najdete v části [rozhraním API REST pro monitorování Azure návod](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-rest-api-walkthrough#retrieve-metric-definitions-multi-dimensional-api).
+Pokyny k rozhraní API pro načítání multidimenzionálních definic a hodnot naleznete v tématu [návod k Azure Monitoring REST API](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-rest-api-walkthrough#retrieve-metric-definitions-multi-dimensional-api).
 
-### <a name = "DiagnosticScenarios"></a>Běžné scénáře diagnostiky a doporučené zobrazení
+### <a name = "DiagnosticScenarios"></a>Běžné diagnostické scénáře a doporučená zobrazení
 
-#### <a name="is-the-data-path-up-and-available-for-my-load-balancer-vip"></a>Je na cestu k datům a k dispozici pro tento nástroj pro vyrovnávání zatížení virtuální IP adresy?
+#### <a name="is-the-data-path-up-and-available-for-my-load-balancer-vip"></a>Je cesta k datům dostupná a dostupná pro virtuální IP adresu služby Vyrovnávání zatížení?
 
-Metriky dostupnosti virtuálních IP adres popisuje stavu na cestu k datům v rámci oblasti na výpočetní prostředky hostitele, kde jsou umístěné vaše virtuální počítače. Metrika je odraz na stav infrastruktury Azure. Můžete použít metriky pro:
-- Monitoruje dostupnost externí služby
-- Podívejte se podrobněji a Beru na vědomí, zda je platforma, na kterém je vaše služba nasazená v pořádku nebo určuje, zda je v pořádku hostovaného operačního systému nebo instance aplikace.
-- Zjištění, jestli událost souvisí s vaší služby nebo Základní rovina dat. Nepleťte si tato metrika se sonda stavu ("vyhrazené IP adresy dostupnosti").
+Metrika dostupnosti VIP popisuje stav cesty k datům v rámci oblasti pro výpočetní hostitele, ve kterém se nachází vaše virtuální počítače. Metrika je odrazem stavu infrastruktury Azure. Metriku můžete použít k těmto akcím:
+- Monitorování externí dostupnosti vaší služby
+- Dig hlubší a zjistěte, jestli je platforma, na které je vaše služba nasazená, v dobrém stavu, nebo jestli je instance hostovaného operačního systému nebo aplikace v pořádku.
+- Izolujte, jestli událost souvisí se službou nebo základní rovinou dat. Nezaměňujte tuto metriku se stavem sondy stavu ("DIP dostupnost").
 
-Chcete-li získat cestu dostupnost dat pro vaše prostředky nástroje pro vyrovnávání zatížení:
-1. Ujistěte se, že je vybraný prostředek nástroje pro vyrovnávání zatížení správné. 
-2. V **metrika** rozevíracího seznamu vyberte **dostupnost dat cesta**. 
-3. V **agregace** rozevíracího seznamu vyberte **Avg**. 
-4. Kromě toho přidat filtr na front-endovou IP adresu nebo front-endový port jako dimenze požadované front-endovou IP adresu nebo front-end port a seskupíme je podle vybrané dimenze.
+Jak získat dostupnost cesty k datům pro prostředky Standard Load Balancer:
+1. Ujistěte se, že je vybrán správný prostředek nástroje pro vyrovnávání zatížení. 
+2. V rozevíracím seznamu **metrika** vyberte **dostupnost cesty k datům**. 
+3. V rozevíracím seznamu **agregace** vyberte **střední**. 
+4. Kromě toho přidejte filtr na front-end IP adresu nebo port front-endu jako dimenzi s požadovanou front-end IP adresou nebo front-end port a pak je seskupte podle vybrané dimenze.
 
-![Zjišťování virtuálních IP adres](./media/load-balancer-standard-diagnostics/LBMetrics-VIPProbing.png)
+![Zjišťování VIP](./media/load-balancer-standard-diagnostics/LBMetrics-VIPProbing.png)
 
-*Obrázek: Podrobnosti o zjišťování front-endu nástroje pro vyrovnávání zatížení*
+*Obrázek Podrobnosti o Load Balancer probingu ve frontě*
 
-Metrika je generován aktivní, integrované měření. Zjišťování služby v rámci oblasti mohou být provoz pro měření. Služba se aktivuje, jakmile vytvoříte nasazení s veřejnou front-endem a pokračuje až do odebrání front-endu. 
+Metrika je generována aktivním měřením v pásmu. Služba zjišťování v rámci této oblasti představuje provoz pro měření. Služba se aktivuje hned po vytvoření nasazení s veřejným front-end a bude pokračovat, dokud neodeberete front-end. 
 
->[!NOTE]
->Cesta dostupnost dat (virtuální IP adresy dostupnost) není k dispozici pro interní nástroj pro vyrovnávání zatížení front-endů. 
+Paket, který odpovídá front-end a pravidlu nasazení, se generuje pravidelně. Projde oblast ze zdroje na hostitele, kde se nachází virtuální počítač ve fondu back-end. Infrastruktura nástroje pro vyrovnávání zatížení provádí stejné operace vyrovnávání zatížení a překladu, protože funguje pro všechny ostatní přenosy. Tento test je v rámci vašeho koncového bodu s vyrovnáváním zatížení v pásmu. Po doručení testu do výpočetního hostitele, kde je umístěn zdravý virtuální počítač ve fondu back-end, vygeneruje výpočetní hostitel odpověď na službu zjišťování. Váš virtuální počítač tento provoz nevidí.
 
-Paket odpovídající front-endu vašeho nasazení a pravidlo se vygeneruje pravidelně. Přenosech oblast ze zdroje do hostitele ve kterém se nachází virtuální počítač v back endového fondu. Infrastruktura nástroje pro vyrovnávání zatížení provede stejné operace překlad a vyrovnávání zatížení, jak funguje pro všechny ostatní přenosy. Tento test je integrovaná na váš koncový bod s vyrovnáváním zatížení. Po testu dorazí na výpočetní prostředky hostitele, kde je umístěn v dobrém stavu virtuálního počítače v back endového fondu, generuje hostitele výpočetního odpověď pro službu zjišťování. Váš virtuální počítač nezobrazuje tento provoz.
-
-Dostupnost virtuálních IP adres se nezdaří z následujících důvodů:
-- Nasazení nemá žádné virtuální počítače v pořádku, zbývající ve fondu back-end. 
+Dostupnost virtuální IP adresy se nezdařila z následujících důvodů:
+- Vaše nasazení nemá ve fondu back-end žádné dobré virtuální počítače. 
 - Došlo k výpadku infrastruktury.
 
-Pro diagnostické účely můžete použít [metriku dostupnosti cesty dat spolu s sondy stavu](#vipavailabilityandhealthprobes).
+Pro účely diagnostiky můžete použít metriku [dostupnosti datových cest společně se stavem sondy stavu](#vipavailabilityandhealthprobes).
 
-Použití **průměrné** jako agregace pro většinu scénářů.
+Pro většinu scénářů použijte **průměr** jako agregaci.
 
-#### <a name="are-the-back-end-instances-for-my-vip-responding-to-probes"></a>Je back endových instancí pro moje virtuální IP adresy reagovat na požadavky sondy?
+#### <a name="are-the-back-end-instances-for-my-vip-responding-to-probes"></a>Reagují back-endové instance pro moje VIP k testům?
 
-Metriky stavu sondy stavu popisuje stav nasazení vaší aplikace, které nakonfiguroval můžete při konfiguraci sondy stavu nástroje pro vyrovnávání zatížení. Nástroje pro vyrovnávání zatížení používá k určení, kam chcete odeslat nové toky stav sondu stavu. Sondy stavu pocházejí z adresy infrastrukturu Azure a jsou viditelné v rámci hostovaného operačního systému virtuálního počítače.
+Metrika stavu sondy stavu popisuje stav nasazení aplikace, jak je nakonfigurován při konfiguraci sondy stavu nástroje pro vyrovnávání zatížení. Nástroj pro vyrovnávání zatížení využívá stav sondy stavu k určení, kam se mají posílat nové toky. Sondy stavu pocházejí z adresy infrastruktury Azure a jsou viditelné v hostovaném operačním systému virtuálního počítače.
 
-Pokud chcete získat sondy stavu vašich prostředků Load balanceru úrovně Standard:
-1. Vyberte **sběru dat stavu** metriky s **Avg** typ agregace. 
-2. Použijte filtr na požadované front-endovou IP adresu nebo port (nebo obojí).
+Postup získání stavu testu stavu pro prostředky Standard Load Balancer:
+1. Vyberte metriku **stavu sondy** stavu s **průměrem** typu agregace. 
+2. Použijte filtr na požadované IP adrese nebo portu front-endu (nebo obojí).
 
-Sondy stavu selhat z následujících důvodů:
-- Konfigurace sondy stavu na port, který neprobíhá naslouchání nebo neodpovídá nebo je pomocí nesprávného protokolu. Pokud vaše služba používá vrácení přímá odpověď ze serveru (žádosti PSÚ, nebo plovoucí IP Adresou) pravidla, ujistěte se, že služba naslouchá na IP adresu síťovou kartu Konfigurace protokolu IP a ne jen na zpětné smyčky, který je nakonfigurovaný s front-endových IP adres.
-- Váš test není povolena ve skupině zabezpečení sítě, brána firewall operačního systému hosta Virtuálního počítače nebo filtry vrstvy aplikace.
+Sondy stavu selžou z následujících důvodů:
+- Sondu stavu můžete nakonfigurovat na port, který nenaslouchá nebo nereaguje nebo používá nesprávný protokol. Pokud vaše služba používá pravidla přímého vrácení serveru (DSR nebo plovoucí IP adresy), ujistěte se, že služba naslouchá na IP adrese konfigurace protokolu IP síťové karty, a ne jenom na zpětné smyčce, která je nakonfigurovaná s front-end IP adresou.
+- Vaše sonda není povolená skupinou zabezpečení sítě, bránou firewall hostovaného operačního systému virtuálního počítače nebo filtry aplikační vrstvy.
 
-Použití **průměrné** jako agregace pro většinu scénářů.
+Pro většinu scénářů použijte **průměr** jako agregaci.
 
-#### <a name="how-do-i-check-my-outbound-connection-statistics"></a>Jak můžu ověřit, Moje statistiky odchozí připojení? 
+#### <a name="how-do-i-check-my-outbound-connection-statistics"></a>Návody se podívat na Statistika odchozího připojení? 
 
-Metrika připojení SNAT popisuje objem úspěšné i neúspěšné připojení pro [odchozích toků](https://aka.ms/lboutbound).
+Metrika připojení SNAT popisuje objem úspěšných a neúspěšných připojení pro [odchozí toky](https://aka.ms/lboutbound).
 
-Neúspěšná připojení svazku větší než nula znamená vyčerpání portů SNAT. Můžete třeba dalším šetřením určit co může být příčinou selhání. Vyčerpání portů SNAT manifesty jako selhání stanovit [odchozí tok](https://aka.ms/lboutbound). Přečtěte si článek o odchozích připojení pro pochopení scénáře a mechanismy v práci a na další informace o zmírnění a návrh pro zabránění vyčerpání portů SNAT. 
+Svazek neúspěšných připojení, který je větší než nula, indikuje vyčerpání portů SNAT. Abyste zjistili, co můžou tyto chyby způsobovat, musíte prozkoumat další. Manifesty vyčerpání portů SNAT jako neúspěšné navázání [odchozího toku](https://aka.ms/lboutbound). Přečtěte si článek o odchozích připojeních, abyste porozuměli scénářům a mechanismům v práci, a zjistili si, jak zmírnit a navrhovat, abyste se vyhnuli vyčerpání portů SNAT. 
 
-Pokud chcete získat statistiky připojení SNAT:
-1. Vyberte **připojení SNAT** typ metriky a **součet** jako agregace. 
-2. Seskupit podle **stav připojení** pro počty SNAT připojení úspěšné i neúspěšné, které jsou reprezentovány samostatné řádky. 
+Získání statistiky připojení SNAT:
+1. Vyberte **připojení SNAT** typ metriky a **součet** jako agregaci. 
+2. Seskupit podle **stavu připojení** pro úspěšné a neúspěšné počty připojení SNAT, které jsou reprezentovány různými řádky. 
 
 ![Připojení SNAT](./media/load-balancer-standard-diagnostics/LBMetrics-SNATConnection.png)
 
-*Obrázek: Počet připojení SNAT nástroje pro vyrovnávání zatížení*
+*Obrázek Počet připojení Load Balancer SNAT*
 
 
-#### <a name="how-do-i-check-inboundoutbound-connection-attempts-for-my-service"></a>Jak můžu zkontrolovat pokusy o příchozí/odchozí připojení pro svou službu?
+#### <a name="how-do-i-check-inboundoutbound-connection-attempts-for-my-service"></a>Návody kontrolovat pokusy o příchozí a odchozí připojení pro moji službu?
 
-Metrika pakety SYN popisuje objemu TCP SYN paketů, které jsme nebo byly odeslány (pro [odchozích toků](https://aka.ms/lboutbound)), které jsou spojeny s konkrétní front-endu. Tato metrika slouží k pochopení pokusy o připojení TCP ke službě.
+Metrika paketů SYN popisuje objem paketů TCP SYN, které byly doručeny nebo odeslány (pro [odchozí toky](https://aka.ms/lboutbound)), které jsou přidruženy k určitému front-endu. Tuto metriku můžete použít k porozumění pokusům o připojení TCP ke službě.
 
-Použití **celkový** jako agregace pro většinu scénářů.
+Pro většinu scénářů použijte **součet** jako agregaci.
 
-![SYN připojení](./media/load-balancer-standard-diagnostics/LBMetrics-SYNCount.png)
+![Připojení SYN](./media/load-balancer-standard-diagnostics/LBMetrics-SYNCount.png)
 
-*Obrázek: Počet SYN nástroje pro vyrovnávání zatížení*
+*Obrázek Load Balancer počet SYN*
 
 
-#### <a name="how-do-i-check-my-network-bandwidth-consumption"></a>Jak můžu zkontrolovat spotřebu šířky pásma sítě? 
+#### <a name="how-do-i-check-my-network-bandwidth-consumption"></a>Návody kontrolovat využití šířky pásma sítě? 
 
-Bajty a čítače paketů, Metrika popisuje objem bajtů a paketů, které jsou odeslány nebo přijaty pomocí služby na základě za front endu.
+Metriky čítače bajtů a paketů popisují objem bajtů a paketů, které vaše služba odesílá nebo přijímá, na front-endové bázi.
 
-Použití **celkový** jako agregace pro většinu scénářů.
+Pro většinu scénářů použijte **součet** jako agregaci.
 
-Pokud chcete získat statistiky počet bajtů nebo paketu:
-1. Vyberte **počet bajtů** a/nebo **počet paketů** typ metriky s **Avg** jako agregace. 
+Postup získání statistiky počtu bajtů nebo paketů:
+1. Vyberte typ metriky **počet bajtů** nebo **počet paketů** s průměrem jako  agregaci. 
 2. Proveďte jednu z následujících akcí:
-   * Použijte filtr na konkrétní front-endové IP adresy, front-end port, back endovou IP adresu nebo port back-end.
-   * Získání celkové statistiky pro váš prostředek nástroje pro vyrovnávání zatížení bez filtrování.
+   * Použijte filtr na konkrétní IP adresu front-endu, front-end port, back-end IP adresu nebo back-end port.
+   * Získejte celkové statistiky prostředku nástroje pro vyrovnávání zatížení bez jakéhokoli filtrování.
 
 ![Počet bajtů](./media/load-balancer-standard-diagnostics/LBMetrics-ByteCount.png)
 
-*Obrázek: Počet bajtů nástroje pro vyrovnávání zatížení*
+*Obrázek Počet Load Balancerch bajtů*
 
-#### <a name = "vipavailabilityandhealthprobes"></a>Jak se Diagnostika Moje nasazení nástroje pro vyrovnávání zatížení?
+#### <a name = "vipavailabilityandhealthprobes"></a>Návody diagnostikovat nasazení nástroje pro vyrovnávání zatížení?
 
-Pomocí kombinace dostupnosti virtuálních IP adres a metrik sondy stavu na jednom grafu můžete určit, kde hledat potíže a vyřešení problému. Můžete získat jistotu, že Azure pracuje správně a použít tyto znalosti jednoznačně určit, že je konfigurace nebo aplikace je hlavní příčinu.
+Když použijete kombinaci metrik dostupnosti virtuální IP adresy a sondy stavu v jednom grafu, můžete zjistit, kde najít problém a vyřešit problém. Můžete získat jistotu, že Azure pracuje správně, a pomocí tohoto vědomí jednoznačně určit, jestli je konfigurace nebo aplikace hlavní příčinou.
 
-Metriky sondu stavu můžete použít k pochopení, jak Azure zobrazí stav nasazení podle konfigurace, které jste zadali. Prohlížení sond stavu je vždy skvělým prvním krokem při monitorování a určení příčiny.
+Metriky stavu sondy můžete použít k pochopení, jak Azure zobrazuje stav vašeho nasazení podle konfigurace, kterou jste zadali. Prohlížení sond stavu je vždy skvělým prvním krokem při monitorování nebo určení příčiny.
 
-Může jít o krok dál a získat přehled o tom, jak zobrazení stavu základní rovině dat, který je zodpovědný za konkrétní nasazení v Azure pomocí metrik dostupnosti virtuálních IP adres. Když zkombinujete obě metriky, můžete izolovat, kde může být v době, jak je znázorněno v tomto příkladu:
+Můžete si to ještě krokovat a využít metriky dostupnosti VIP k získání přehledu o tom, jak Azure zobrazuje stav základní roviny dat, která je zodpovědná za vaše konkrétní nasazení. Když kombinujete obě metriky, můžete izolovat, kde může být chyba, jak je znázorněno v následujícím příkladu:
 
-![Kombinování metriky cesta dostupnost dat a sběru dat stavu](./media/load-balancer-standard-diagnostics/lbmetrics-dipnvipavailability-2bnew.png)
+![Kombinování metrik dostupnosti datových cest a stavu sondy stavu](./media/load-balancer-standard-diagnostics/lbmetrics-dipnvipavailability-2bnew.png)
 
-*Obrázek: Kombinování metriky cesta dostupnost dat a sběru dat stavu*
+*Obrázek Kombinování metrik dostupnosti datových cest a stavu sondy stavu*
 
-V grafu se zobrazují následující informace:
-- Infrastruktury hostování virtuálních počítačů byla nedostupná a na 0 procent na začátku grafu. Později byla infrastruktury v pořádku a virtuální počítače byly dostupné a více než jeden virtuální počítač byl umístěn v back-endu. Tyto informace je indikován modré trasování pro cestu dostupnosti dat (virtuální IP adresy dostupnost), byla novější na 100 procent. 
-- Sondy stavu (DIP dostupnost), indikován fialové trasování, je na 0 procent na začátku grafu. Oblasti v kroužku v zelené zvýraznění kde sondy stavu (DIP dostupnosti) se v pořádku, a na kterém bodu tak zákazníkovo nasazení se tak, aby přijímal nové toky.
+Graf zobrazuje následující informace:
+- Infrastruktura hostující vaše virtuální počítače nebyla k dispozici a na začátku grafu je 0 procent. Později je infrastruktura v pořádku a virtuální počítače byly dosažitelné a více než jeden virtuální počítač byl umístěný do back-endu. Tyto informace jsou označeny modrým trasováním dostupnosti datové cesty (dostupnost VIP), která byla později v 100 procentech. 
+- Stav sondy stavu (dostupnost DIP), který je označen fialovým trasováním, je na začátku grafu na 0 procent. KRUHOVÁ oblast ve zelených zvýrazněních, kde stav sondy stavu (DIP) se stal v pořádku, a v takovém případě bylo nasazení zákazníka schopné přijmout nové toky.
 
-Graf umožňuje zákazníkům řešení potíží s nasazení sami bez nutnosti uhodnout nebo požádejte podporu, zda dochází k další problémy. Službu nebylo k dispozici, protože sond stavu byly nepovedlo kvůli chybě konfigurace nebo aplikaci, která selhala.
+Graf umožňuje zákazníkům řešit vlastní řešení bez nutnosti odhadování nebo požádáte o podporu, jestli dochází k ostatním problémům. Služba není k dispozici, protože sondy stavu selhaly kvůli chybné konfiguraci nebo selhání aplikace.
 
-### <a name = "Limitations"></a>Omezení
+## <a name = "ResourceHealth"></a>Stav prostředku
 
-Dostupnost virtuálních IP adres je aktuálně k dispozici pouze pro veřejné front-endů.
-
-## <a name = "ResourceHealth"></a>Stav služby Resource health
-
-Stav prostředků Load balanceru úrovně Standard je zveřejněný prostřednictvím existující **Resource health** pod **sledování > Stav služby**.
+Stav prostředků Standard Load Balancer se zveřejňuje prostřednictvím stávajícího **stavu prostředků** v části **monitorování > Service Health**.
 
 >[!NOTE]
->Stav prostředku nástroje pro vyrovnávání zatížení je momentálně dostupná jenom veřejné konfigurace Load balanceru úrovně Standard. Služba resource health nezveřejňujte interního nástroje pro vyrovnávání prostředků nebo prostředky SKU nástroje Load balancer úrovně Basic.
+>Stav prostředku je pro Load Balancer aktuálně k dispozici pouze pro veřejnou konfiguraci pouze Standard Load Balancer. Prostředky interního nástroje pro vyrovnávání zatížení nebo základní SKU prostředků Load Balancer nezveřejňují stav prostředků.
 
-Chcete-li zobrazit stav svých prostředků veřejného Load balanceru úrovně Standard:
-1. Vyberte **monitorování** > **Service Health**.
+Zobrazení stavu prostředků veřejné Standard Load Balancer:
+1. Vyberte **monitor** > **Service Health**.
 
-   ![Stránka monitorování](./media/load-balancer-standard-diagnostics/LBHealth1.png)
+   ![Monitorovat stránku](./media/load-balancer-standard-diagnostics/LBHealth1.png)
 
-   *Obrázek: Stav služby odkaz na Azure monitoru*
+   *Obrázek Odkaz Service Health na Azure Monitor*
 
-2. Vyberte **Resource Health**a ujistěte se, že **ID předplatného** a **typ prostředku = nástroje pro vyrovnávání zatížení** jsou vybrány.
+2. Vyberte **Resource Health**a pak se ujistěte, že je vybraná možnost **ID** předplatného a **typ prostředku = Load Balancer** .
 
-   ![Stav služby Resource health](./media/load-balancer-standard-diagnostics/LBHealth3.png)
+   ![Stav prostředku](./media/load-balancer-standard-diagnostics/LBHealth3.png)
 
-   *Obrázek: Vyberte prostředek pro zobrazení stavu*
+   *Obrázek Vybrat prostředek pro zobrazení stavu*
 
-3. V seznamu vyberte prostředek nástroje pro vyrovnávání zatížení můžete zobrazit svého historické stavu.
+3. V seznamu vyberte prostředek Load Balancer pro zobrazení jeho historických stavů.
 
-    ![Stav služby Load Balancer stavu](./media/load-balancer-standard-diagnostics/LBHealth4.png)
+    ![Stav Load Balancer](./media/load-balancer-standard-diagnostics/LBHealth4.png)
 
-   *Obrázek: Zobrazení stavu prostředku nástroje pro vyrovnávání zatížení*
+   *Obrázek Load Balancer zobrazení stavu prostředků*
  
-Různé stavy stavu prostředků a jejich popisy jsou uvedeny v následující tabulce: 
+V následující tabulce jsou uvedeny různé stavy prostředků a jejich popisy: 
 
-| Stav služby Resource health | Popis |
+| Stav prostředku | Popis |
 | --- | --- |
-| K dispozici | Váš prostředek nástroje pro vyrovnávání veřejné standardního zatížení je v pořádku a k dispozici. |
-| Není dostupný | Váš prostředek nástroje pro vyrovnávání veřejné standardního zatížení není v pořádku. Diagnostika stavu tak, že vyberete **Azure Monitor** > **metriky**.<br>(*Není k dispozici* stav může také znamenat, že prostředek není spojena s vaší veřejného load balanceru úrovně standard.) |
-| Neznámé | Stav prostředků pro prostředek standardní veřejný nástroj pro vyrovnávání ještě není aktualizovaný.<br>(*Neznámý* stav může také znamenat, že prostředek není spojena s vaší veřejného load balanceru úrovně standard.)  |
+| K dispozici | Váš veřejný prostředek nástroje pro vyrovnávání zatížení je v pořádku a dostupný. |
+| Není dostupný | Váš veřejný prostředek nástroje pro vyrovnávání zatížení není v pořádku. Diagnostikujte stav tak, že vyberete **Azure monitor** > **metriky**.<br>(*Nedostupný* stav může také znamenat, že prostředek není připojený k vašemu veřejnému nástroji pro vyrovnávání zatížení.) |
+| Neznámé | Stav prostředku pro váš veřejný prostředek nástroje pro vyrovnávání zatížení se ještě neaktualizoval.<br>(*Neznámý* stav může také znamenat, že prostředek není připojen ke svému veřejnému nástroji pro vyrovnávání zatížení.)  |
 
 ## <a name="limitations"></a>Omezení 
 
-- Cesta dostupnost dat (virtuální IP adresy dostupnost) není k dispozici pro interní nástroj pro vyrovnávání zatížení front-endů.
+- Dostupnost cesty k datům (dostupnost virtuální IP adresy) není dostupná pro interní Load Balancer front-endu.
 
 ## <a name="next-steps"></a>Další postup
 
 - Další informace o [Load Balanceru úrovně Standard](load-balancer-standard-overview.md).
-- Další informace o vaší [odchozí připojení nástroje pro vyrovnávání zatížení](https://aka.ms/lboutbound).
-- Další informace o [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview).
-- Další informace o [REST API služby Azure Monitor](https://docs.microsoft.com/rest/api/monitor/) a [jak načíst metriky přes rozhraní REST API](/rest/api/monitor/metrics/list).
+- Přečtěte si další informace o [odchozím připojení k nástroji pro vyrovnávání zatížení](https://aka.ms/lboutbound).
+- Přečtěte si o [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/overview).
+- Přečtěte si o [Azure Monitor REST API](https://docs.microsoft.com/rest/api/monitor/) a [o tom, jak pomocí REST API načíst metriky](/rest/api/monitor/metrics/list).
 
 

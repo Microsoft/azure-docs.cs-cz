@@ -1,54 +1,54 @@
 ---
-title: Odebrání serverů a zakázání ochrany | Dokumentace Microsoftu
-description: Tento článek popisuje, jak zrušit registraci serverů z trezoru služby Site Recovery a zakažte ochranu pro virtuální počítače a fyzické servery.
+title: Odebrat servery a zakázat ochranu | Microsoft Docs
+description: Tento článek popisuje, jak zrušit registraci serverů z Site Recoveryového trezoru a zakázat ochranu pro virtuální počítače a fyzické servery.
 author: rajani-janaki-ram
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 06/18/2019
-ms.author: rajani-janaki-ram
-ms.openlocfilehash: 400ffaa9e6fed14ceabf34283cd5fa7c7a0336b8
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.author: rajanaki
+ms.openlocfilehash: a411fc9a95bef595a8fc49cad77189bb88fb7661
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67203398"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67875804"
 ---
 # <a name="remove-servers-and-disable-protection"></a>Odebrání serverů a zakázání ochrany
 
-Tento článek popisuje, jak zrušit registraci serverů z trezoru služby Recovery Services a jak zakázat ochranu pro počítače chráněné službou Site Recovery.
+Tento článek popisuje, jak zrušit registraci serverů z Recovery Servicesového trezoru a jak zakázat ochranu pro počítače chráněné pomocí Site Recovery.
 
 
 ## <a name="unregister-a--configuration-server"></a>Zrušení registrace konfiguračního serveru
 
-Pokud budete replikovat virtuální počítače VMware nebo fyzické servery Windows nebo Linuxem do Azure, můžete zrušit registraci nepřipojené konfigurační server z trezoru následujícím způsobem:
+Pokud virtuální počítače VMware nebo fyzické servery s Windows nebo Linux replikujte do Azure, můžete zrušit registraci nepřipojeného konfiguračního serveru z trezoru následujícím způsobem:
 
 1. [Zakažte ochranu virtuálních počítačů](#disable-protection-for-a-vmware-vm-or-physical-server-vmware-to-azure).
-2. [Zrušit nebo odstranit](vmware-azure-set-up-replication.md#disassociate-or-delete-a-replication-policy) zásady replikace.
-3. [Odstranění konfiguračního serveru](vmware-azure-manage-configuration-server.md#delete-or-unregister-a-configuration-server)
+2. [Zruší přidružení nebo odstranění](vmware-azure-set-up-replication.md#disassociate-or-delete-a-replication-policy) zásad replikace.
+3. [Odstranit konfigurační server](vmware-azure-manage-configuration-server.md#delete-or-unregister-a-configuration-server)
 
 ## <a name="unregister-a-vmm-server"></a>Zrušení registrace serveru VMM
 
-1. Zastavte replikaci virtuálních počítačů v cloudy na serveru VMM, který chcete odebrat.
-2. Odstraňte všechna mapování sítě používané cloudy na serveru VMM, který chcete odstranit. V **infrastruktura Site Recovery** > **pro System Center VMM** > **mapování sítě**, klikněte pravým tlačítkem na mapování sítě > **Odstranit**.
+1. Zastavte replikaci virtuálních počítačů v cloudech na serveru VMM, který chcete odebrat.
+2. Odstraňte všechna mapování sítě používaná cloudy na serveru VMM, který chcete odstranit. V **Site Recovery infrastruktury** > pro**mapování sítě** **nástroje System Center VMM** > klikněte pravým tlačítkem na mapování sítě > **Odstranit**.
 3. Poznamenejte si ID serveru VMM.
-4. Zrušit přidružení zásad replikace z cloudy na serveru VMM, který chcete odebrat.  V **infrastruktura Site Recovery** > **pro System Center VMM** >  **zásady replikace**, dvakrát klikněte na panel přidružené zásady. Klikněte pravým tlačítkem na cloudu > **zrušení spojení**.
-5. Odstraňte VMM server nebo aktivní uzel. V **infrastruktura Site Recovery** > **pro System Center VMM** > **servery VMM**, klikněte pravým tlačítkem na server > **odstranit** .
-6. Pokud váš server VMM v odpojeném stavu, pak si stáhnout a spustit [skript pro vyčištění](https://aka.ms/asr-cleanup-script-vmm) na serveru VMM. Otevřete prostředí PowerShell se službou **spustit jako správce** možnost, chcete-li změnit zásady spouštění pro obor výchozí (LocalMachine). Ve skriptu zadejte ID serveru VMM, který chcete odebrat. Tento skript odebere registraci a cloudové párování informace ze serveru.
-5. Spusťte skript vyčištění na žádném sekundárního serveru VMM.
-6. Spusťte skript vyčištění na všechny další pasivní uzly clusteru VMM, které mají nainstalovaný poskytovatel.
-7. Odinstalace poskytovatele ručně na serveru VMM. Pokud máte cluster, odeberte ze všech uzlů.
-8. Pokud vaše virtuální počítače byly replikaci do Azure, je potřeba odinstalovat agenta služeb zotavení Microsoft z hostitelů Hyper-V v cloudech odstraněné.
+4. Zrušte přidružení zásad replikace k cloudům na serveru VMM, který chcete odebrat.  V **Site Recovery infrastruktury** > pro**Zásady replikace** **System Center VMM** >  poklikejte na přidruženou zásadu. Klikněte pravým tlačítkem na Cloud > **zrušit přidružení**.
+5. Odstraňte server VMM nebo aktivní uzel. V **Site Recovery infrastruktury** > **pro servery System Center VMM** > **VMM**klikněte pravým tlačítkem na server > **Odstranit**.
+6. Pokud byl server VMM v odpojeném stavu, Stáhněte a spusťte [čisticí skript](https://aka.ms/asr-cleanup-script-vmm) na serveru VMM. Otevřete PowerShell pomocí možnosti **Spustit jako správce** a změňte zásady spouštění pro výchozí obor (LocalMachine). Ve skriptu zadejte ID serveru VMM, který chcete odebrat. Skript odebere ze serveru informace o párování registrace a cloudu.
+5. Spusťte čisticí skript na jakémkoli sekundárním serveru VMM.
+6. Spusťte čisticí skript na všech ostatních pasivních uzlech clusteru VMM, které mají nainstalovaného poskytovatele.
+7. Ručně odinstalujte zprostředkovatele na serveru VMM. Pokud máte cluster, odeberte ho ze všech uzlů.
+8. Pokud se virtuální počítače replikují do Azure, musíte agenta Microsoft Recovery Servicese odinstalovat z hostitelů Hyper-V v odstraněných cloudech.
 
-## <a name="unregister-a-hyper-v-host-in-a-hyper-v-site"></a>Zrušit registraci hostitele Hyper-v do lokality Hyper-V
+## <a name="unregister-a-hyper-v-host-in-a-hyper-v-site"></a>Zrušení registrace hostitele Hyper-V v lokalitě Hyper-V
 
-Hostitelé Hyper-V, které nejsou spravovány nástrojem VMM se shromažďují do lokality Hyper-V. Odeberte hostitele v lokalitě Hyper-V následujícím způsobem:
+Hostitelé Hyper-V, které nejsou spravovány nástrojem VMM, se shromažďují do lokality Hyper-V. Odeberte hostitele v lokalitě Hyper-V následujícím způsobem:
 
-1. Zakažte replikaci pro virtuální počítače Hyper-V na hostiteli.
-2. Zrušit přidružení zásad pro lokalitu Hyper-V. V **infrastruktura Site Recovery** > **pro servery Hyper-V** >  **zásady replikace**, dvakrát klikněte na panel přidružené zásady. Klikněte pravým tlačítkem na webu > **zrušení spojení**.
-3. Odstranění hostitele Hyper-V. V **infrastruktura Site Recovery** > **pro servery Hyper-V** > **hostitele Hyper-V**, klikněte pravým tlačítkem na server > **odstranit** .
-4. Odstraníte lokalitu Hyper-V po z něj byly odebrány všechny hostitele. V **infrastruktura Site Recovery** > **pro servery Hyper-V** > **lokalit Hyper-V**, klikněte pravým tlačítkem na webu > **odstranit** .
-5. Pokud se váš hostitel Hyper-v **odpojeno** stavu a pak spusťte následující skript na každém hostiteli Hyper-V, který jste odebrali. Skript vyčistí nastavení na serveru a zruší jeho registraci v trezoru.
+1. Zakažte replikaci pro virtuální počítače Hyper-V umístěné na hostiteli.
+2. Zruší přidružení zásad pro lokalitu Hyper-V. V **Site Recovery infrastruktury** > pro**Zásady replikace** >  **lokalit technologie Hyper-V**poklikejte na přidruženou zásadu. Klikněte pravým tlačítkem na lokalitu > **zrušit přidružení**.
+3. Odstraňte hostitele Hyper-V. V **Site Recovery infrastruktury** > pro > hostitele Hyper-v na serveru Hyper-v klikněte pravým tlačítkem myši na server > **Odstranit**.
+4. Po odebrání všech hostitelů odstraňte lokalitu Hyper-V. V **Site Recovery infrastruktury** > pro > weby Hyper-v v prostředí Hyper-v klikněte pravým tlačítkem myši na lokalitu > **Odstranit**.
+5. Pokud byl Hostitel Hyper-V v odpojeném  stavu, spusťte na každém hostiteli Hyper-v, který jste odebrali, následující skript. Skript vyčistí nastavení na serveru a zruší jeho registraci v trezoru.
 
 
 ```powershell
@@ -141,41 +141,41 @@ Hostitelé Hyper-V, které nejsou spravovány nástrojem VMM se shromažďují d
 ```
 
 
-## <a name="disable-protection-for-a-vmware-vm-or-physical-server-vmware-to-azure"></a>Zakažte ochranu pro virtuální počítač VMware nebo fyzický server (z VMware do Azure)
+## <a name="disable-protection-for-a-vmware-vm-or-physical-server-vmware-to-azure"></a>Zakázání ochrany pro virtuální počítač VMware nebo fyzický server (z VMware do Azure)
 
-1. V **chráněné položky** > **replikované položky**, klikněte pravým tlačítkem na počítač > **zakázat replikaci**.
-2. V **zakázat replikaci** stránky, vyberte jednu z těchto možností:
-    - **Zakázat replikaci a odebrat (doporučeno)** – tato možnost odebere replikovanou položku z Azure Site Recovery a replikace pro počítač se zastaví. Konfigurace replikace na konfiguračním serveru se vyčistí a zastaví se fakturace služby Site Recovery pro tento chráněný server. Všimněte si, že tuto možnost jde použít jenom při konfiguraci serveru v připojeném stavu.
-    - **Odebrat** – tato možnost by měla použít pouze v případě, že zdrojové prostředí je Odstraněná nebo není přístupný (nepřipojeno). To odebere replikovanou položku z Azure Site Recovery (účtování se ukončí). Konfigurace replikace na konfiguračním serveru **nebudou** vyčistit. 
-
-> [!NOTE]
-> V obou možností, které služba mobility neodinstaluje z chráněných serverů musíte odinstalovat ručně. Pokud budete chránit server znovu pomocí stejný konfigurační server, můžete přeskočit odinstalace služby mobility.
+1. V části **chráněné položky** > **replikované**položky klikněte pravým tlačítkem na počítač > **Zakázat replikaci**.
+2. Na stránce **Zakázat replikaci** vyberte jednu z těchto možností:
+    - **Zakázat replikaci a odebrat (doporučeno)** – Tato možnost odebere replikovanou položku z Azure Site Recovery a replikace pro tento počítač se zastaví. Konfigurace replikace na konfiguračním serveru se vyčistí a Site Recovery se fakturace pro tento chráněný Server zastavila. Všimněte si, že tuto možnost lze použít pouze v případě, že je konfigurační server v připojeném stavu.
+    - **Odebrat** – Tato možnost se má použít jenom v případě, že se zdrojové prostředí odstraní nebo není dostupné (Nepřipojeno). Tím se odebere replikovaná položka z Azure Site Recovery (fakturace je zastavená). Konfigurace replikace na konfiguračním serveru **se** nevyčistí. 
 
 > [!NOTE]
-> Pokud jste již převzetí služeb při selhání virtuálního počítače a běží v Azure, Všimněte si, že zakázání ochrany není odebrat / ovlivnit se selhání pro virtuální počítač.
-## <a name="disable-protection-for-a-azure-vm-azure-to-azure"></a>Zakažte ochranu pro virtuální počítač Azure (Azure do Azure)
-
--  V **chráněné položky** > **replikované položky**, klikněte pravým tlačítkem na počítač > **zakázat replikaci**.
-> [!NOTE]
-> Služba mobility neodinstaluje z chráněných serverů, je potřeba odinstalovat ručně. Pokud budete chránit server znovu, můžete přeskočit odinstalace služby mobility.
-
-## <a name="disable-protection-for-a-hyper-v-virtual-machine-hyper-v-to-azure"></a>Zakažte ochranu pro virtuální počítač Hyper-V (Hyper-V do Azure)
+> Ve službě mobility možností se z chráněných serverů neodinstaluje, budete je muset odinstalovat ručně. Pokud plánujete chránit server znovu pomocí stejného konfiguračního serveru, můžete přeskočit odinstalaci služby mobility.
 
 > [!NOTE]
-> Tento postup použijte, pokud provádíte replikaci virtuálních počítačů Hyper-V do Azure bez serveru VMM. Pokud replikujete virtuální počítače pomocí **System Center VMM do Azure** scénář a pak postupujte podle pokynů zakázání ochrany pro Hyper-V virtuálního počítače pomocí System Center VMM do Azure scénáře replikace
+> Pokud jste už provedli převzetí služeb při selhání virtuálního počítače, který je spuštěný v Azure, pamatujte na to, že zakázat ochranu neodebere nebo neovlivní virtuální počítač se službou převzít
+## <a name="disable-protection-for-a-azure-vm-azure-to-azure"></a>Zakázání ochrany pro virtuální počítač Azure (Azure do Azure)
 
-1. V **chráněné položky** > **replikované položky**, klikněte pravým tlačítkem na počítač > **zakázat replikaci**.
-2. V **zakázat replikaci**, můžete vybrat následující možnosti:
-   - **Zakázat replikaci a odebrat (doporučeno)** – tato možnost odebere replikovanou položku z Azure Site Recovery a replikace pro počítač se zastaví. Konfigurace replikace na místním virtuálním počítači se vyčistí a zastaví se fakturace služby Site Recovery pro tento chráněný server.
-   - **Odebrat** – tato možnost by měla použít pouze v případě, že zdrojové prostředí je Odstraněná nebo není přístupný (nepřipojeno). To odebere replikovanou položku z Azure Site Recovery (účtování se ukončí). Konfigurace replikace na virtuálním počítači s místními **nebudou** vyčistit. 
+-  V části **chráněné položky** > **replikované**položky klikněte pravým tlačítkem na počítač > **Zakázat replikaci**.
+> [!NOTE]
+> Služba mobility nebude odinstalována z chráněných serverů, je nutné ji odinstalovat ručně. Pokud plánujete Server chránit znovu, můžete přeskočit odinstalaci služby mobility.
+
+## <a name="disable-protection-for-a-hyper-v-virtual-machine-hyper-v-to-azure"></a>Zakázání ochrany pro virtuální počítač Hyper-V (Hyper-V do Azure)
+
+> [!NOTE]
+> Tento postup použijte v případě, že provádíte replikaci virtuálních počítačů Hyper-V do Azure bez serveru VMM. Pokud provádíte replikaci virtuálních počítačů pomocí scénáře **System Center VMM do Azure** , postupujte podle pokynů pro zakázání ochrany virtuálního počítače Hyper-V replikování pomocí nástroje System Center VMM do Azure.
+
+1. V části **chráněné položky** > **replikované**položky klikněte pravým tlačítkem na počítač > **Zakázat replikaci**.
+2. V části **Zakázat replikaci**můžete vybrat následující možnosti:
+   - **Zakázat replikaci a odebrat (doporučeno)** – Tato možnost odebere replikovanou položku z Azure Site Recovery a replikace pro tento počítač se zastaví. Konfigurace replikace na místním virtuálním počítači se vyčistí a Site Recovery se fakturace pro tento chráněný Server zastaví.
+   - **Odebrat** – Tato možnost se má použít jenom v případě, že se zdrojové prostředí odstraní nebo není dostupné (Nepřipojeno). Tím se odebere replikovaná položka z Azure Site Recovery (fakturace je zastavená). Konfigurace replikace na místním virtuálním počítači **se** nevyčistí. 
 
  > [!NOTE]
-     > Pokud jste zvolili **odebrat** možnost pak spusťte následující sadu skriptů a vyčistit nastavení replikace v místním serveru technologie Hyper-V.
+     > Pokud jste zvolili možnost **Odebrat** , spusťte následující sadu skriptů pro vyčištění nastavení replikace na místním serveru Hyper-V.
 
 > [!NOTE]
-> Pokud jste již převzetí služeb při selhání virtuálního počítače a běží v Azure, Všimněte si, že zakázání ochrany není odebrat / ovlivnit se selhání pro virtuální počítač.
+> Pokud jste už provedli převzetí služeb při selhání virtuálního počítače, který je spuštěný v Azure, pamatujte na to, že zakázat ochranu neodebere nebo neovlivní virtuální počítač se službou převzít
 
-1. Na zdrojovém Hyper-V hostitelském serveru, chcete-li odebrat replikaci pro virtuální počítač. Nahraďte názvem vašeho virtuálního počítače SQLVM1 a spusťte skript ze správy prostředí PowerShell
+1. Pro odebrání replikace virtuálního počítače na zdrojovém serveru hostitele Hyper-V. Nahraďte SQLVM1 názvem vašeho virtuálního počítače a spusťte skript z PowerShellu pro správu.
 
 ```powershell
     $vmName = "SQLVM1"
@@ -184,21 +184,21 @@ Hostitelé Hyper-V, které nejsou spravovány nástrojem VMM se shromažďují d
     $replicationService.RemoveReplicationRelationship($vm.__PATH)
 ```
 
-## <a name="disable-protection-for-a-hyper-v-virtual-machine-replicating-to-azure-using-the-system-center-vmm-to-azure-scenario"></a>Zakažte ochranu pro virtuální počítač Hyper-V, které se replikují do Azure pomocí nástroje System Center VMM do Azure scénáře
+## <a name="disable-protection-for-a-hyper-v-virtual-machine-replicating-to-azure-using-the-system-center-vmm-to-azure-scenario"></a>Zakázání ochrany pro virtuální počítač Hyper-V, který se replikuje do Azure, pomocí scénáře pro System Center VMM do Azure
 
-1. V **chráněné položky** > **replikované položky**, klikněte pravým tlačítkem na počítač > **zakázat replikaci**.
-2. V **zakázat replikaci**, vyberte jednu z těchto možností:
+1. V části **chráněné položky** > **replikované**položky klikněte pravým tlačítkem na počítač > **Zakázat replikaci**.
+2. V části **Zakázat replikaci**vyberte jednu z těchto možností:
 
-   - **Zakázat replikaci a odebrat (doporučeno)** – tato možnost odebere replikovanou položku z Azure Site Recovery a replikace pro počítač se zastaví. Konfigurace replikace na místním virtuálním počítači se vyčistí a zastaví se fakturace služby Site Recovery pro tento chráněný server.
-   - **Odebrat** – tato možnost by měla použít pouze v případě, že zdrojové prostředí je Odstraněná nebo není přístupný (nepřipojeno). To odebere replikovanou položku z Azure Site Recovery (účtování se ukončí). Konfigurace replikace na virtuálním počítači s místními **nebudou** vyčistit. 
+   - **Zakázat replikaci a odebrat (doporučeno)** – Tato možnost odebere replikovanou položku z Azure Site Recovery a replikace pro tento počítač se zastaví. Konfigurace replikace na místním virtuálním počítači se vyčistí a Site Recovery se fakturace pro tento chráněný Server zastavila.
+   - **Odebrat** – Tato možnost se má použít jenom v případě, že se zdrojové prostředí odstraní nebo není dostupné (Nepřipojeno). Tím se odebere replikovaná položka z Azure Site Recovery (fakturace je zastavená). Konfigurace replikace na místním virtuálním počítači **se** nevyčistí. 
 
      > [!NOTE]
-     > Pokud jste zvolili **odebrat** možnost, pak tyto skripty, které vyčistit nastavení replikace tun místní VMM Server.
-3. Tento skript spusťte na zdrojovém serveru VMM pomocí konzoly VMM pomocí Powershellu (vyžaduje oprávnění správce). Nahraďte zástupný text **SQLVM1** s názvem virtuálního počítače.
+     > Pokud jste zvolili možnost **Odebrat** , pak tun následující skripty a vyčistěte tak nastavení replikace na místním serveru VMM.
+3. Spusťte tento skript na zdrojovém serveru VMM pomocí PowerShellu (požadovaná oprávnění správce) z konzoly VMM. Nahraďte zástupné symboly **SQLVM1** názvem vašeho virtuálního počítače.
 
         $vm = get-scvirtualmachine -Name "SQLVM1"
         Set-SCVirtualMachine -VM $vm -ClearDRProtection
-4. Výše uvedené kroky zrušte nastavení replikace na serveru VMM. Pokud chcete zastavit replikaci pro virtuální počítač provozovaný na hostitelském serveru Hyper-V, spusťte tento skript. SQLVM1 nahraďte názvem vašeho virtuálního počítače a host01.contoso.com s názvem hostitelský server Hyper-V.
+4. Výše uvedené kroky vymažou nastavení replikace na serveru VMM. Pokud chcete zastavit replikaci pro virtuální počítač běžící na hostitelském serveru Hyper-V, spusťte tento skript. Nahraďte SQLVM1 názvem vašeho virtuálního počítače a host01.contoso.com názvem hostitelského serveru Hyper-V.
 
 ```powershell
     $vmName = "SQLVM1"
@@ -208,26 +208,26 @@ Hostitelé Hyper-V, které nejsou spravovány nástrojem VMM se shromažďují d
     $replicationService.RemoveReplicationRelationship($vm.__PATH)
 ```
 
-## <a name="disable-protection-for-a-hyper-v-virtual-machine-replicating-to-secondary-vmm-server-using-the-system-center-vmm-to-vmm-scenario"></a>Zakažte ochranu virtuálního počítače Hyper-V, které se replikují do sekundární Server VMM pomocí nástroje System Center VMM do VMM scénáře
+## <a name="disable-protection-for-a-hyper-v-virtual-machine-replicating-to-secondary-vmm-server-using-the-system-center-vmm-to-vmm-scenario"></a>Zakázání ochrany pro virtuální počítač s technologií Hyper-V, který se replikuje do sekundárního serveru VMM, pomocí scénáře pro System Center VMM do VMM
 
-1. V **chráněné položky** > **replikované položky**, klikněte pravým tlačítkem na počítač > **zakázat replikaci**.
-2. V **zakázat replikaci**, vyberte jednu z těchto možností:
+1. V části **chráněné položky** > **replikované**položky klikněte pravým tlačítkem na počítač > **Zakázat replikaci**.
+2. V části **Zakázat replikaci**vyberte jednu z těchto možností:
 
-   - **Zakázat replikaci a odebrat (doporučeno)** – tato možnost odebere replikovanou položku z Azure Site Recovery a replikace pro počítač se zastaví. Konfigurace replikace na místním virtuálním počítači se vyčistí a zastaví se fakturace služby Site Recovery pro tento chráněný server.
-   - **Odebrat** – tato možnost by měla použít pouze v případě, že zdrojové prostředí je Odstraněná nebo není přístupný (nepřipojeno). To odebere replikovanou položku z Azure Site Recovery (účtování se ukončí). Konfigurace replikace na virtuálním počítači s místními **nebudou** vyčistit. Spusťte následující sadu skriptů vyčistit nastavení replikace místních virtuálních počítačů.
+   - **Zakázat replikaci a odebrat (doporučeno)** – Tato možnost odebere replikovanou položku z Azure Site Recovery a replikace pro tento počítač se zastaví. Konfigurace replikace na místním virtuálním počítači se vyčistí a Site Recovery se fakturace pro tento chráněný Server zastavila.
+   - **Odebrat** – Tato možnost se má použít jenom v případě, že se zdrojové prostředí odstraní nebo není dostupné (Nepřipojeno). Tím se odebere replikovaná položka z Azure Site Recovery (fakturace je zastavená). Konfigurace replikace na místním virtuálním počítači **se** nevyčistí. Spusťte následující sadu skriptů pro vyčištění nastavení replikace místních virtuálních počítačů.
      > [!NOTE]
-     > Pokud jste zvolili **odebrat** možnost, pak tyto skripty, které vyčistit nastavení replikace tun místní VMM Server.
+     > Pokud jste zvolili možnost **Odebrat** , pak tun následující skripty a vyčistěte tak nastavení replikace na místním serveru VMM.
 
-3. Tento skript spusťte na zdrojovém serveru VMM pomocí konzoly VMM pomocí Powershellu (vyžaduje oprávnění správce). Nahraďte zástupný text **SQLVM1** s názvem virtuálního počítače.
+3. Spusťte tento skript na zdrojovém serveru VMM pomocí PowerShellu (požadovaná oprávnění správce) z konzoly VMM. Nahraďte zástupné symboly **SQLVM1** názvem vašeho virtuálního počítače.
 
         $vm = get-scvirtualmachine -Name "SQLVM1"
         Set-SCVirtualMachine -VM $vm -ClearDRProtection
-4. Na sekundárním serveru VMM spusťte tento skript k vyčištění nastavení pro sekundární virtuální počítač:
+4. Na sekundárním serveru VMM spuštěním tohoto skriptu vyčistěte nastavení pro sekundární virtuální počítač:
 
         $vm = get-scvirtualmachine -Name "SQLVM1"
         Remove-SCVirtualMachine -VM $vm -Force
-5. Na sekundárním serveru VMM aktualizujte virtuální počítač na hostitelském serveru Hyper-V, tak, aby sekundární virtuální počítač získá zjištěn v konzole VMM.
-6. Výše uvedené kroky zrušte nastavení replikace na serveru VMM. Pokud chcete zastavit replikaci pro virtuální počítač, spusťte následující skript ale primárního a sekundárního virtuálního počítače. SQLVM1 nahraďte názvem vašeho virtuálního počítače.
+5. Na sekundárním serveru VMM aktualizujte virtuální počítače na hostitelském serveru Hyper-V, aby se sekundární virtuální počítač znovu zjistil v konzole VMM.
+6. Výše uvedené kroky vymažou nastavení replikace na serveru VMM. Pokud chcete zastavit replikaci pro virtuální počítač, spusťte následující skript s primárním a sekundárním virtuálním počítačem. Nahraďte SQLVM1 názvem vašeho virtuálního počítače.
 
         Remove-VMReplication –VMName “SQLVM1”
 

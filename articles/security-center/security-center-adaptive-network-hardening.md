@@ -1,6 +1,6 @@
 ---
-title: Adaptivní sítě posílení zabezpečení v Azure Security Center | Dokumentace Microsoftu
-description: " Zjistěte, jak povolit adaptivní posílení zabezpečení sítě v Azure Security Center. "
+title: Adaptivní posílení zabezpečení sítě v Azure Security Center | Microsoft Docs
+description: " Naučte se, jak povolit adaptivní posílení zabezpečení sítě v Azure Security Center. "
 services: security-center
 documentationcenter: na
 author: monhaber
@@ -13,130 +13,130 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/24/2019
-ms.author: monhaber
-ms.openlocfilehash: f35f410ddc039ee264fa1de317e152cb03f391b5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: v-mohabe
+ms.openlocfilehash: 2f82f3fe6f5cb6808ba606125ee0869475a60274
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66241508"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68295893"
 ---
-# <a name="adaptive-network-hardening-in-azure-security-center"></a>Adaptivní sítě posílení zabezpečení v Azure Security Center
-Zjistěte, jak nakonfigurovat adaptivní posílení zabezpečení sítě v Azure Security Center.
+# <a name="adaptive-network-hardening-in-azure-security-center"></a>Adaptivní posílení zabezpečení sítě v Azure Security Center
+Přečtěte si, jak nakonfigurovat adaptivní posílení zabezpečení sítě v Azure Security Center.
 
 ## <a name="what-is-adaptive-network-hardening"></a>Co je adaptivní posílení zabezpečení sítě?
-Použití [zabezpečení skupiny (NSG) sítě](https://docs.microsoft.com/azure/virtual-network/security-overview) filtrovat provoz do a z prostředků, přispívá k lepšímu zabezpečení sítě. Však může i nadále existovat některých případech, ve kterých skutečný provoz pomocí skupiny zabezpečení sítě je podmnožinou pravidla NSG, které jsou definovány. V těchto případech zlepšit stav zabezpečení lze dosáhnout posílení zabezpečení pravidla NSG, na základě vzorců skutečný provoz.
+Použití [skupin zabezpečení sítě (NSG)](https://docs.microsoft.com/azure/virtual-network/security-overview) k filtrování provozu do prostředků a z nich vylepšuje zabezpečení sítě stav. Přesto však může být v některých případech, kdy je skutečný přenos toků přes NSG podmnožinou definovaných pravidel NSG. V těchto případech je možné zvýšit stav zabezpečení tím, že posílíte pravidla NSG, a to na základě skutečných schémat přenosů.
 
-Adaptivní posílení zabezpečení sítě obsahuje doporučení, která dál posiluje pravidla skupiny zabezpečení sítě. Pomocí strojového učení algoritmu, který faktory pro skutečný provoz, známé důvěryhodné konfigurace, analýze hrozeb a další ukazatele ohrožení zabezpečení, a pak poskytuje doporučení, která umožní provoz pouze z konkrétní IP adresa/port řazené kolekce členů.
+Adaptivní posílení zabezpečení sítě poskytuje doporučení k dalšímu posílení pravidel NSG. Používá algoritmus strojového učení, který má vliv na skutečný provoz, známou důvěryhodnou konfiguraci, analýzu hrozeb a další indikátory ohrožení a pak poskytuje doporučení k tomu, aby se provozoval jenom z konkrétních řazených kolekcí IP/portů.
 
-Řekněme například, že je existující pravidlo skupiny zabezpečení sítě umožňující provoz z 140.20.30.10/24 na portu 22. Doporučení adaptivní sítě posílení zabezpečení společnosti, na základě analýzy, bude zúžit rozsah a povolit provoz z 140.23.30.10/29 – tedy zúžit rozsah IP a odepřít veškerý provoz na daný port.
+Řekněme například, že stávající pravidlo NSG je povolit provoz z 140.20.30.10/24 na portu 22. Doporučení adaptivního posílení zabezpečení sítě, které je založené na analýze, by mělo omezit rozsah a povolit provoz z 140.23.30.10/29, což je úzký rozsah IP adres, a odepřít veškerý ostatní provoz na tento port.
 
 ![zobrazení posílení zabezpečení sítě](./media/security-center-adaptive-network-hardening/traffic-hardening.png)
 
 > [!NOTE]
-> Adaptivní doporučení pro posílení zabezpečení sítě jsou podporovány následující porty: 22, 3389, 21, 23, 445, 4333, 3306, 1433, 1434, 53, 20, 5985, 5986, 5432, 139, 66, 1128
+> Doporučení adaptivního posílení zabezpečení sítě jsou podporovaná na následujících portech: 22, 3389, 21, 23, 445, 4333, 3306, 1433, 1434, 53, 20, 5985, 5986, 5432, 139, 66, 1128
 
-## <a name="view-adaptive-network-hardening-alerts-and-rules"></a>Zobrazení výstrah adaptivní posílení zabezpečení sítě a pravidel
+## <a name="view-adaptive-network-hardening-alerts-and-rules"></a>Zobrazit výstrahy a pravidla adaptivního posílení zabezpečení sítě
 
-1. Ve službě Security Center vyberte **sítě** -> **adaptivní posílení zabezpečení sítě**. Sítě virtuálních počítačů jsou uvedeny ve třech samostatných kartách:
-   * **Není v pořádku prostředky**: Virtuální počítače, které aktuálně máte doporučení a výstrahy, které byly aktivovány spuštění algoritmu adaptivní posílení zabezpečení sítě. 
-   * **V pořádku prostředky**: Virtuální počítače bez upozornění a doporučení.
-   * **Nezkontrolované prostředky**: Virtuální počítače, které algoritmus adaptivní posílení zabezpečení sítě nelze spustit v z jednoho z následujících důvodů:
-      * **Virtuální počítače jsou klasické virtuální počítače**: Podporují se jenom virtuální počítače Azure Resource Manageru.
-      * **Nedostatek dat je k dispozici**: Aby se vygenerovala doporučení pro posílení přesné provoz, Security Center vyžaduje nejméně 30 dnů od data o provozu.
-      * **Virtuální počítač není chráněný standardem ASC**: Pouze virtuální počítače, které jsou nastaveny na Security Center na cenové úrovni Standard jsou vhodné pro tuto funkci.
+1. V Security Center vyberte **síť** -> **adaptivní posílení zabezpečení sítě**. Síťové virtuální počítače jsou uvedené v části tři samostatné karty:
+   * **Zdroje**, které nejsou v pořádku: Virtuální počítače, které mají v současné době doporučení a výstrahy aktivované spuštěním algoritmu adaptivního posílení sítě. 
+   * **Zdroje v pořádku**: Virtuální počítače bez výstrah a doporučení.
+   * **Nekontrolované prostředky**: Virtuální počítače, na kterých se algoritmus adaptivního posílení sítě nedá spustit kvůli jednomu z následujících důvodů:
+      * **Virtuální počítače jsou klasické virtuální počítače**: Podporují se jenom Azure Resource Manager virtuální počítače.
+      * **Není k dispozici dostatek dat**: Aby se vygenerovala přesná doporučení pro posílení provozu, Security Center vyžaduje aspoň 30 dní dat provozu.
+      * **Virtuální počítač není chráněný pomocí ASC Standard**: Pro tuto funkci mají nárok jenom virtuální počítače, které jsou nastavené na cenovou úroveň Standard Security Center.
 
-     ![prostředky není v pořádku](./media/security-center-adaptive-network-hardening/unhealthy-resources.png)
+     ![zdroje, které nejsou v pořádku](./media/security-center-adaptive-network-hardening/unhealthy-resources.png)
 
-2. Z **není v pořádku prostředky** kartu, vyberte virtuální počítač k zobrazení jeho výstrah a posílení zabezpečení doporučená pravidla použila.
+2. Na kartě **poškozené prostředky** vyberte virtuální počítač pro zobrazení výstrah a doporučená pravidla posílení zabezpečení.
 
-    ![výstrahy zabezpečení](./media/security-center-adaptive-network-hardening/hardening-alerts.png)
+    ![Upozornění posílení zabezpečení](./media/security-center-adaptive-network-hardening/hardening-alerts.png)
 
 
-## <a name="review-and-apply-adaptive-network-hardening-recommended-rules"></a>Zkontrolovat a použít adaptivní sítě posílení zabezpečení doporučená pravidla
+## <a name="review-and-apply-adaptive-network-hardening-recommended-rules"></a>Kontrola a aplikování doporučených pravidel adaptivního posílení sítě
 
-1. Z **není v pořádku prostředky** kartu, vyberte virtuální počítač. Výstrahy a doporučené posílení zabezpečení pravidla jsou uvedeny.
+1. Na kartě **poškozené prostředky** vyberte virtuální počítač. Zobrazí se upozornění a doporučená pravidla posílení zabezpečení.
 
      ![pravidla posílení zabezpečení](./media/security-center-adaptive-network-hardening/hardening-alerts.png)
 
    > [!NOTE]
-   > **Pravidla** karta obsahuje pravidla, která adaptivní posílení zabezpečení sítě doporučuje přidáte. **Výstrahy** karta obsahuje seznam výstrah, které byly generovány z důvodu provoz směřující do prostředku, který není v rozsahu IP povolený v doporučená pravidla.
+   > Na kartě **pravidla** jsou uvedená pravidla, která přidávají adaptivní posílení zabezpečení sítě. Karta **výstrahy** obsahuje seznam výstrah, které byly vygenerovány z důvodu provozu, do toku do prostředku, který není v povoleném rozsahu IP adres v doporučených pravidlech.
 
-2. Pokud chcete změnit některé z parametrů pravidlo, můžete ho upravit, jak je vysvětleno v [upravit pravidlo](#modify-rule).
+2. Pokud chcete změnit některé parametry pravidla, můžete je upravit, jak je vysvětleno v tématu [Úprava pravidla](#modify-rule).
    > [!NOTE]
-   > Můžete také [odstranit](#delete-rule) nebo [přidat](#add-rule) pravidlo.
+   > Můžete také [Odstranit](#delete-rule) nebo [Přidat](#add-rule) pravidlo.
 
-3. Vybrat pravidla, které chcete použít na skupiny zabezpečení sítě a klikněte na tlačítko **vynutit**.
+3. Vyberte pravidla, která chcete použít na NSG, a klikněte na vykonat .
 
       > [!NOTE]
-      > Vynucené pravidla se přidají do skupiny nsg ochranu virtuálního počítače. (Virtuální počítač může chránit skupinu NSG, která je přidružená k NIC, nebo podsíť, ve kterém se tento virtuální počítač nachází, nebo obojí)
+      > Vynutilná pravidla se přidají do NSG ochrany virtuálního počítače. (Virtuální počítač může být chráněný NSG, který je přidružený k jeho síťovému rozhraní, nebo podsíti, ve které se virtuální počítač nachází, nebo obojí)
 
-    ![vynucení pravidel](./media/security-center-adaptive-network-hardening/enforce-hard-rule2.png)
+    ![vymáhat pravidla](./media/security-center-adaptive-network-hardening/enforce-hard-rule2.png)
 
 
-### Upravit pravidlo  <a name ="modify-rule"> </a>
+### Úprava pravidla <a name ="modify-rule"></a>
 
-Můžete chtít změnit parametry pravidlo, které se doporučuje. Můžete například změnit doporučené rozsahy IP adres.
+Možná budete chtít upravit parametry pravidla, které se doporučuje. Můžete například chtít změnit Doporučené rozsahy IP adres.
 
-Některé důležité pokyny k úpravám pravidlo adaptivní posílení zabezpečení sítě:
+Některé důležité pokyny pro úpravu pravidla posílení adaptivní sítě:
 
-* Můžete změnit parametry "Povolit" pouze pravidla. 
-* Nelze změnit, pravidla se "Zakázat" pravidla "Povolit". 
+* Můžete upravit jenom pravidla "povoluje". 
+* Nemůžete změnit pravidla "Povolit", která se stanou "Odepřít". 
 
   > [!NOTE]
-  > Vytvoření a úprava "Zakázat" pravidel se provádí přímo na skupiny zabezpečení sítě pro další podrobnosti najdete v tématu [vytvořit, změnit nebo odstranit skupinu zabezpečení sítě](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group).
+  > Vytváření a úpravy pravidel "Odepřít" se provádí přímo na NSG. Další podrobnosti najdete v tématu [Vytvoření, změna nebo odstranění skupiny zabezpečení sítě](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group).
 
-* A **odepřít veškerý provoz** pravidlo je jediným typem "Zakázat" pravidlo, které by zde uvedeny, a nemůže být upraven. Můžete ho však odstranit (viz [odstranění pravidla](#delete-rule)).
+* Pravidlo **Odepřít všechna přenosová** pravidla jsou jediným typem pravidla odepřít, které by bylo uvedeno zde a nelze je upravit. Můžete ho ale odstranit (viz [odstranění pravidla](#delete-rule)).
   > [!NOTE]
-  > A **odepřít veškerý provoz** pravidlo se doporučuje při, v důsledku spuštění algoritmus, Security Center neidentifikuje provoz, který má být povolený, na základě existující konfigurace skupiny zabezpečení sítě. Doporučená pravidla je proto chcete odepřít veškerý provoz na zadaný port. Název tohoto typu pravidla se zobrazí jako "*generována*". Po vynucení toto pravidlo, jeho skutečný název v této skupině budou řetězec skládá z protokolu, směr přenosu, "Zakázat" a náhodné číslo.
+  > V důsledku spuštění algoritmu se doporučuje pravidlo **Odepřít všechna provozu** , Security Center neidentifikuje provoz, který by měl být povolený, a to na základě stávající konfigurace NSG. Proto je doporučené pravidlo Odepřít veškerý provoz na zadaný port. Název tohoto typu pravidla se zobrazí jako*generovaný systémem*. Po vynucení tohoto pravidla bude jeho skutečný název v NSG řetězec, který se skládá z protokolu, směru provozu, ZAMÍTNUTí a náhodného čísla.
 
-*Chcete-li upravit pravidlo adaptivní posílení zabezpečení sítě:*
+*Postup úpravy pravidla posílení adaptivní sítě:*
 
-1. Upravit některé parametry pravidla v **pravidla** kartu, klikněte na tři tečky (...) na konci řádku pravidlo a klikněte na tlačítko **upravit**.
+1. Pokud chcete změnit některé parametry pravidla, na kartě **pravidla** klikněte na tři tečky (...) na konci řádku pravidla a klikněte na **Upravit**.
 
    ![Upravit pravidlo](./media/security-center-adaptive-network-hardening/edit-hard-rule.png)
 
-1. V **upravit pravidlo** okně Aktualizovat podrobnosti, které chcete změnit a klikněte na tlačítko **Uložit**.
+1. V okně **Upravit pravidlo** aktualizujte podrobnosti, které chcete změnit, a klikněte na **Uložit**.
 
    > [!NOTE]
-   > Po kliknutí na tlačítko **Uložit**, úspěšně jste změnili pravidlo. *Však nebyly použity na skupiny zabezpečení sítě.* A provést tak, musíte v seznamu vyberte pravidlo a klikněte na tlačítko **vynutit** (jak je popsáno v dalším kroku).
+   > Po kliknutí na **Uložit**jste úspěšně změnili pravidlo. *Nepoužíváte ho však pro NSG.* Pokud ho chcete použít, musíte vybrat pravidlo v seznamu a kliknout na vykonat  (jak je vysvětleno v dalším kroku).
 
    ![Upravit pravidlo](./media/security-center-adaptive-network-hardening/edit-hard-rule3.png)
 
-3. Použít aktualizované pravidlo ze seznamu, vyberte aktualizovanou pravidlo a klikněte na tlačítko **vynutit**.
+3. Chcete-li použít aktualizované pravidlo, vyberte ze seznamu aktualizované pravidlo a klikněte na tlačítko **vykonat**.
 
-    ![Vynutit pravidla](./media/security-center-adaptive-network-hardening/enforce-hard-rule.png)
+    ![vymáhat pravidlo](./media/security-center-adaptive-network-hardening/enforce-hard-rule.png)
 
-### Přidat nové pravidlo <a name ="add-rule"> </a>
+### Přidat nové pravidlo <a name ="add-rule"></a>
 
-Můžete přidat pravidlo "Povolit", které se doporučuje služba Security Center.
+Můžete přidat pravidlo "Allow", které nedoporučuje Security Center.
 
 > [!NOTE]
-> Zde je možné přidat pouze "Povolit" pravidla. Pokud chcete přidat "Zakázat" pravidla, můžete provést přímo na skupiny zabezpečení sítě. Další podrobnosti najdete v tématu [vytvořit, změnit nebo odstranit skupinu zabezpečení sítě](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group).
+> Sem lze přidat pouze pravidla "povoleno". Pokud chcete přidat pravidla "Odepřít", můžete tak učinit přímo na NSG. Další podrobnosti najdete v tématu [Vytvoření, změna nebo odstranění skupiny zabezpečení sítě](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group).
 
-*Chcete-li přidat pravidlo adaptivní posílení zabezpečení sítě:*
+*Postup přidání pravidla posílení adaptivní sítě:*
 
-1. Klikněte na tlačítko **přidat pravidlo** (nachází se v levém horním rohu).
+1. Klikněte na **Přidat pravidlo** (nachází se v levém horním rohu).
 
    ![Přidat pravidlo](./media/security-center-adaptive-network-hardening/add-hard-rule.png)
 
-1. V **nové pravidlo** okno, zadejte podrobnosti a klikněte na tlačítko **přidat**.
+1. V okně **nové pravidlo** zadejte podrobnosti a klikněte na **Přidat**.
 
    > [!NOTE]
-   > Po kliknutí na tlačítko **přidat**, úspěšně jste přidali pravidlo a je uvedený s doporučená pravidla. Ale nebyly použity na skupiny zabezpečení sítě. Aktivovat, musíte v seznamu vyberte pravidlo a klikněte na tlačítko **vynutit** (jak je popsáno v dalším kroku).
+   > Po kliknutí na **Přidat**se pravidlo úspěšně přidalo a je uvedené s dalšími doporučenými pravidly. Nepoužíváte ho ale na NSG. Pokud ho chcete aktivovat, musíte v seznamu vybrat pravidlo a pak kliknout na **vykonat** (jak je vysvětleno v dalším kroku).
 
-3. Chcete-li použít nové pravidlo ze seznamu, vyberte nové pravidlo a klikněte na tlačítko **vynutit**.
+3. Chcete-li použít nové pravidlo, vyberte ze seznamu nové pravidlo a klikněte na tlačítko **vykonat**.
 
-    ![Vynutit pravidla](./media/security-center-adaptive-network-hardening/enforce-hard-rule.png)
+    ![vymáhat pravidlo](./media/security-center-adaptive-network-hardening/enforce-hard-rule.png)
 
 
-### Odstranit pravidlo <a name ="delete-rule"> </a>
+### Odstranění pravidla <a name ="delete-rule"></a>
 
-Pokud je to nezbytné, můžete odstranit doporučená pravidla. Například můžete určit, že použití navrhované pravidlo by mohla blokovat provoz legitimní.
+V případě potřeby můžete Doporučené pravidlo odstranit. Můžete například určit, že použití navrhovaného pravidla může blokovat legitimní provoz.
 
-*Chcete odstranit pravidlo adaptivní posílení zabezpečení sítě:*
+*Postup odstranění pravidla posílení adaptivní sítě:*
 
-1. V **pravidla** kartu, klikněte na tři tečky (...) na konci řádku pravidlo a klikněte na tlačítko **odstranit**.  
+1. Na kartě **pravidla** klikněte na tři tečky (...) na konci řádku pravidla a klikněte na **Odstranit**.  
 
     ![pravidla posílení zabezpečení](./media/security-center-adaptive-network-hardening/delete-hard-rule.png)
 

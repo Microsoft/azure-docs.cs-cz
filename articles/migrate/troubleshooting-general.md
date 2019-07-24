@@ -1,336 +1,270 @@
 ---
-title: Řešení potíží s Azure Migrate | Dokumentace Microsoftu
-description: Poskytuje základní informace o známých problémech ve službě Azure Migrate a Poradce při potížích pro běžné chyby.
+title: Řešení potíží s Azure Migrate | Microsoft Docs
+description: Poskytuje přehled známých problémů služby Azure Migrate a Rady pro odstraňování běžných chyb.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 03/13/2019
+ms.date: 07/17/2019
 ms.author: raynew
-ms.openlocfilehash: dff3c96cf3ac8eea7c1160ee1834cc70390c0333
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
-ms.translationtype: MT
+ms.openlocfilehash: 0e2a8f269a98babc17f36ceff209ee2f057e6911
+ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60533193"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68302315"
 ---
 # <a name="troubleshoot-azure-migrate"></a>Řešení problémů s Azure Migrate
 
-## <a name="troubleshoot-common-errors"></a>Odstraňování běžných chyb
+[Azure Migrate](migrate-services-overview.md) poskytuje centrum nástrojů Microsoftu pro účely posouzení a migrace a také nabídky nezávislého výrobce softwaru (ISV) od jiných výrobců. Tento dokument poskytuje pomoc při řešení chyb pomocí Azure Migrate Azure Migrate: Vyhodnocování a Azure Migrate serveru: Migrace serveru.
 
-[Azure Migrate](migrate-overview.md) posuzuje místní úlohy pro migraci do Azure. Pomocí tohoto článku řešení problémů při nasazování a používání Azure Migrate.
+## <a name="azure-migrate-project-issues"></a>Problémy s Azure Migrate projektu
 
-### <a name="i-am-using-the-ova-that-continuously-discovers-my-on-premises-environment-but-the-vms-that-are-deleted-in-my-on-premises-environment-are-still-being-shown-in-the-portal"></a>Používám soubor OVA, které průběžně zjistí Moje v místním prostředí, ale virtuální počítače, které jsou odstraněny do mého v místním prostředí stále se zobrazují na portálu.
+### <a name="i-am-unable-to-find-my-existing-azure-migrate-project"></a>Nedaří se mi najít existující Azure Migrate projekt.
 
-Zařízení pro průběžné zjišťování shromažďuje data o výkonu pouze průběžně a nezjistí žádné změny konfigurace v místním prostředí (tj. přidání nebo odstranění virtuálního počítače, přidání disku atd.). Pokud dojde ke změně konfigurace v místním prostředí, následujícím způsobem můžete zajistit, že se změny projeví na portálu:
+Existují [dvě verze](https://docs.microsoft.com/azure/migrate/migrate-services-overview#azure-migrate-versions) Azure Migrate. V závislosti na verzi, ve které jste projekt vytvořili, postupujte podle následujících kroků a vyhledejte projekt:
 
-- Přidání položek (virtuální počítače, disky, jádra atd.): Pokud chcete, aby se tyto změny projevily na webu Azure Portal, můžete na zařízení zastavit zjišťování a pak ho spustit znovu. Tím se zajistí, že se změny aktualizují v projektu Azure Migrate.
+1. Pokud hledáte projekt vytvořený s zkontrolují verzí (starým prostředím) Azure Migrate, vyhledejte projekt pomocí následujících kroků.
 
-   ![Zastavit zjišťování](./media/troubleshooting-general/stop-discovery.png)
+    1. Přejít na [Azure Portal](https://portal.azure.com), vyhledejte **Azure Migrate**.
+    2. Na řídicím panelu Azure Migrate se zobrazí banner s přístupem k starším projektům. Tento banner se zobrazí pouze v případě, že jste vytvořili projekt se starým prostředím. Klikněte na banner.
 
-- Odstranění virtuálních počítačů: Vzhledem ke způsobu, jakým je zařízení navržené, se odstranění virtuálních počítačů neprojeví ani v případě, že zastavíte a znovu spustíte zjišťování. Důvodem je, že se data z dalších zjišťování připojují ke starším zjišťováním, a nepřepisují se. V takovém případě můžete virtuální počítač na portálu jednoduše ignorovat tak, že ho odeberete ze své skupiny a přepočítáte posouzení.
+    ![Přístup ke stávajícím projektům](./media/troubleshooting-general/access-existing-projects.png)
 
-### <a name="deletion-of-azure-migrate-projects-and-associated-log-analytics-workspace"></a>Odstranění projektů Azure Migrate a přidružené pracovní prostor Log Analytics
+    3. Nyní se zobrazí seznam existujících projektů vytvořených v předchozí verzi Azure Migrate.
 
-Po odstranění projektu Azure Migrate, odstraní se projekt migrace skupin a posouzení. Ale pokud jste přiřadili pracovní prostor Log Analytics do projektu, neodstraní automaticky pracovní prostor Log Analytics. Je to proto, že stejný pracovní prostor Log Analytics může být použit pro více případů použití. Pokud chcete odstranit pracovní prostor Log Analytics i, je potřeba ji ručně.
+2. Pokud hledáte projekt, který byl vytvořen s aktuální verzí (nové prostředí), vyhledejte projekt pomocí následujících kroků.
 
-1. Přejděte do pracovního prostoru Log Analytics, které jsou přiřazeny k projektu.
-   a. Pokud ještě nebyly odstraněny projekt migrace, najdete odkaz do pracovního prostoru ze stránky přehledu projektu v části základní údaje.
+    1. Přejít na [Azure Portal](https://portal.azure.com), vyhledejte **Azure Migrate**.
+    2. Na řídicím panelu Azure Migrate přejděte na stránku **servery** v levém podokně a v pravém horním rohu vyberte **změnit** :
 
-   ![Pracovního prostoru LA](./media/troubleshooting-general/LA-workspace.png)
+    ![Přepnout na existující Azure Migrate projekt](./media/troubleshooting-general/switch-project.png)
 
-   b. Pokud jste již odstranili projekt migrace, klikněte na tlačítko **skupiny prostředků** v levém podokně webu Azure portal a přejděte do skupiny prostředků, ve kterém byla vytvořena pracovní prostor a pak na ni přejít pomocí.
-2. Postupujte podle pokynů [v tomto článku](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace) odstranit pracovní prostor.
+    3. Vyberte příslušné **předplatné** a **proveďte migraci projektu**.
 
-### <a name="migration-project-creation-failed-with-error-requests-must-contain-user-identity-headers"></a>Vytvoření projektu Migrace selhala s chybou *požadavky musí obsahovat hlavičky identity uživatele*
+### <a name="i-am-unable-to-create-a-second-azure-migrate-project"></a>Nedaří se mi vytvořit druhý Azure Migrate projekt.
 
-Tento problém může být uživatelé, kteří nemají přístup k tenantovi Azure Active Directory (Azure AD) organizace. Když uživatel přidá do tenanta služby Azure AD poprvé, učitelského obdrží e-mailová pozvánka k připojení klienta. Uživatelé musí přejít do e-mailu a přijmout pozvánku k získání úspěšně přidal do tenanta. Pokud jste e-mailu se nezobrazuje, kontaktujte uživatele, který už má přístup k tenantovi a požádejte ho, aby znovu odeslat pozvánku pro vás postupem zadaný [tady](https://docs.microsoft.com/azure/active-directory/b2b/add-users-administrator#resend-invitations-to-guest-users).
+Chcete-li vytvořit nový projekt Azure Migrate, postupujte podle následujících kroků.
 
-Po přijetí e-mailové pozvánce, budete muset otevřít e-mailu a klikněte na odkaz v e-mailu k přijetí pozvánky. Až to uděláte, budete muset odhlásit z webu Azure portal a přihlásit znovu, aktualizaci prohlížeče nebude fungovat. Potom můžete zkusit vytvořit projekt migrace.
+1. Přejít na [Azure Portal](https://portal.azure.com), vyhledejte **Azure Migrate**.
+2. Na řídicím panelu Azure Migrate přejděte na stránku **servery** v levém podokně a v pravém horním rohu vyberte **změnit** :
 
-### <a name="i-am-unable-to-export-the-assessment-report"></a>Nejde exportovat sestavu posouzení
+   ![Změnit Azure Migrate projekt](./media/troubleshooting-general/switch-project.png)
 
-Pokud nemůžete exportovat sestavu posouzení je z portálu, zkuste použít následující rozhraní REST API k získání adresy URL ke stažení pro sestavu hodnocení.
+3. Chcete-li vytvořit nový projekt, vyberte **možnost klikněte sem** , jak je znázorněno na následujícím snímku obrazovky:
 
-1. Nainstalujte *armclient* ve vašem počítači (Pokud nemáte je již nainstalována):
+   ![Vytvořit druhý Azure Migrate projekt](./media/troubleshooting-general/create-new-project.png)
 
-   a. V okně příkazového řádku správce spusťte následující příkaz: ```@powershell -NoProfile -ExecutionPolicy Bypass -Command "iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))" && SET "PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin"```
+### <a name="deletion-of-azure-migrate-projects-and-associated-log-analytics-workspace"></a>Odstranění Azure Migrate projektů a přidruženého pracovního prostoru Log Analytics
 
-   b. V okně Správce Windows PowerShell spusťte následující příkaz: ```choco install armclient```
+Když odstraníte Azure Migrate projekt, odstraní se i projekt migrace spolu s metadaty o zjištěných počítačích. Pokud jste ale k nástroji pro vyhodnocení serveru připojili Log Analytics pracovní prostor, automaticky se pracovní prostor Log Analytics neodstraní. Je to proto, že je možné použít stejný pracovní prostor Log Analytics pro více případů použití. Pokud chcete odstranit i pracovní prostor Log Analytics, musíte to provést ručně.
 
-2. Získat adresu URL pro stažení sestavy posouzení pomocí Azure Migrate rozhraní REST API
+1. Přejděte do pracovního prostoru Log Analytics připojeného k projektu.
+     1. Pokud jste ještě neodstranili projekt migrace, můžete najít odkaz na pracovní prostor na stránce Přehled posouzení serveru v části základy.
 
-   a.    V okně Správce Windows PowerShell spusťte následující příkaz: ```armclient login```
+     ![Pracovní prostor LA](./media/troubleshooting-general/loganalytics-workspace.png)
 
-        This opens the Azure login pop-up where you need to sign in to Azure.
+     2. Pokud jste už projekt migrace odstranili, v levém podokně Azure Portal vyberte **skupiny prostředků** . Přejděte do skupiny prostředků, ve které se pracovní prostor vytvořil, a pak ho vyhledejte.
+2. Pokud chcete pracovní prostor odstranit, postupujte podle pokynů [v tomto článku](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace) .
 
-   b.    Ve stejném okně prostředí PowerShell spusťte následující příkaz můžete získat adresu URL ke stažení pro sestavu hodnocení (nahradit níže požádat o parametry identifikátoru URI příslušnými hodnotami ukázkové rozhraní API)
+### <a name="migration-project-creation-failed-with-error-requests-must-contain-user-identity-headers"></a>Projekt migrace se nepovedlo vytvořit. požadavky na chyby *musí obsahovat hlavičky identity uživatele* .
 
-       ```armclient POST https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/projects/{projectName}/groups/{groupName}/assessments/{assessmentName}/downloadUrl?api-version=2018-02-02```
+K tomuto problému může dojít pro uživatele, kteří nemají přístup k tenantovi Azure Active Directory (Azure AD) organizace. Při prvním přidání uživatele do tenanta služby Azure AD obdrží pozvánku e-mailu, aby se připojil k tenantovi. Uživatelé musí přejít k e-mailu a přijmout pozvánku k úspěšnému přidání do tenanta. Pokud nemůžete tento e-mail zobrazit, obraťte se na uživatele, který už má přístup ke klientovi, a požádejte ho, aby pozvánku poslal znovu, a to pomocí kroků uvedených [tady](https://docs.microsoft.com/azure/active-directory/b2b/add-users-administrator#resend-invitations-to-guest-users).
 
-      Ukázka požadavku a výstup:
+Po přijetí e-mailu s pozvánkou musíte otevřít e-mail a kliknout na odkaz v e-mailu, abyste pozvánku přijali. Až to uděláte, musíte se odhlásit od Azure Portal a znovu se přihlásit, ale aktualizace prohlížeče nebude fungovat. Pak můžete zkusit projekt migrace vytvořit.
 
-      ```PS C:\WINDOWS\system32> armclient POST https://management.azure.com/subscriptions/8c3c936a-c09b-4de3-830b-3f5f244d72e9/r
-   esourceGroups/ContosoDemo/providers/Microsoft.Migrate/projects/Demo/groups/contosopayroll/assessments/assessment_11_16_2
-   018_12_16_21/downloadUrl?api-version=2018-02-02
-   {
-   "assessmentReportUrl": "https://migsvcstoragewcus.blob.core.windows.net/4f7dddac-f33b-4368-8e6a-45afcbd9d4df/contosopayrollassessment_11_16_2018_12_16_21?sv=2016-05-31&sr=b&sig=litQmHuwi88WV%2FR%2BDZX0%2BIttlmPMzfVMS7r7dULK7Oc%3D&st=2018-11-20T16%3A09%3A30Z&se=2018-11-20T16%3A19%3A30Z&sp=r",
-   "expirationTime": "2018-11-20T22:09:30.5681954+05:30"```
+## <a name="appliance-issues"></a>Problémy se zařízením
 
-3. Zkopírujte adresu URL z odpovědi a otevřít ji v prohlížeči si chcete stáhnout sestavu posouzení.
+### <a name="deployment-of-azure-migrate-appliance-for-vmware-failed-with-the-error-the-provided-manifest-file-is-invalid-invalid-ovf-manifest-entry"></a>Nasazení zařízení Azure Migrate pro VMware se nepovedlo kvůli této chybě: Zadaný soubor manifestu je neplatný: Neplatný záznam manifestu OVF
 
-4. Po stažení sestavy pomocí aplikace Excel přejděte do složky stažené a otevřete ho v aplikaci Excel k jeho zobrazení.
-
-### <a name="performance-data-for-cpu-memory-and-disks-is-showing-up-as-zeroes"></a>Údaje o výkonu pro využití procesoru, paměti a disky zobrazují jako nuly
-
-Azure Migrate průběžně profiluje místní prostředí a shromažďuje data o výkonu místních virtuálních počítačů. Pokud jste zjišťování ve svém prostředí právě spustili, musíte alespoň den počkat, než se dokončí shromažďování dat o výkonu. Pokud vytvoříte posouzení, aniž byste jeden den počkali, metriky výkonu se zobrazí jako nuly. Po uplynutí jednoho dne můžete vytvořit nové posouzení nebo pomocí možnosti Přepočítat v sestavě posouzení aktualizovat stávající posouzení.
-
-### <a name="i-specified-an-azure-geography-while-creating-a-migration-project-how-do-i-find-out-the-exact-azure-region-where-the-discovered-metadata-would-be-stored"></a>Zeměpisná oblast Azure, zadané při vytváření projektu migrace, jak zjistím přesné oblast Azure, kde budou uloženy zjištěná metadata?
-
-Můžete přejít na **Essentials** tématu **přehled** stránce projektu k identifikaci přesné umístění, kde je uložena metadata. Umístění je zvolena náhodně na území službou Azure Migrate a nelze jej upravovat. Pokud chcete vytvořit projekt v konkrétní oblasti, můžete vytvořit projekt migrace a předat požadované oblasti rozhraní REST API.
-
-   ![Umístění projektu](./media/troubleshooting-general/geography-location.png)
-
-## <a name="collector-issues"></a>Problémy s kolekcí
-
-### <a name="deployment-of-azure-migrate-collector-failed-with-the-error-the-provided-manifest-file-is-invalid-invalid-ovf-manifest-entry"></a>Nasazení služby Azure Migrate Collector se nezdařilo s chybou: Zadaný soubor manifestu je neplatný: Neplatná položka manifestu OVF.
-
-1. Ověření, pokud je soubor Azure Migrate Collector OVA správně stáhnout tak, že zkontrolujete jeho hodnotu hash. Informace o tom, jak zkontrolovat hodnotu hash, najdete v tomto [článku](https://docs.microsoft.com/azure/migrate/tutorial-assessment-vmware#verify-the-collector-appliance). Pokud hodnota hash neodpovídá, znovu stáhnout soubor OVA a pokusem o nasazení.
-2. Pokud se zase nepodaří a pokud nasazujete soubor OVF pomocí klienta VMware vSphere, zkuste ho nasadit pomocí webového klienta vSphere. Pokud stále nedaří, zkuste použít jiný webový prohlížeč.
-3. Pokud používáte webovém klientovi vSphere a chcete nasadit virtuální počítač na serveru vCenter Server verze 6.5 nebo 6.7, zkuste nasazení OVA přímo na hostiteli ESXi pomocí následujících následujících kroků:
-   - Připojení k hostiteli ESXi přímo (namísto serveru vCenter) pomocí webového klienta (https:// <*hostitele IP adresy*> /ui)
-   - Přejděte na domovskou stránku > inventáře
-   - Klikněte na soubor > šablony OVF nasazení > přejděte na soubor OVA a dokončit nasazení
+1. Zkontrolujte jeho hodnotu hash a ověřte, zda je soubor s Azure Migratemi VAJÍČKy zařízení správně stažen. Informace o tom, jak zkontrolovat hodnotu hash, najdete v tomto [článku](https://docs.microsoft.com/azure/migrate/tutorial-assessment-vmware#verify-the-collector-appliance). Pokud hodnota hash není shodná, Stáhněte si znovu soubor vajíček a zkuste nasazení zopakovat.
+2. Pokud se zase nepodaří a pokud nasazujete soubor OVF pomocí klienta VMware vSphere, zkuste ho nasadit pomocí webového klienta vSphere. Pokud se chyba stále nedaří, zkuste použít jiný webový prohlížeč.
+3. Pokud používáte webového klienta vSphere a pokusíte se ho nasadit na vCenter Server 6,5 nebo 6,7, zkuste nasadit VAJÍČKu přímo na hostiteli ESXi pomocí následujících kroků:
+   - Připojte se k hostiteli ESXi přímo (místo vCenter Server) pomocí webového klienta (https://<*IP adresa hostitele*>/UI).
+   - Přejít na inventáře **Domů** > 
+   - Klikněte na **soubor** > **nasadit šablonu OVF**. Přejděte k VAJÍČKám a dokončete nasazení.
 4. Pokud se nasazení stále nedaří, obraťte se na podporu Azure Migrate.
 
-### <a name="unable-to-select-the-azure-cloud-in-the-appliance-fails-with-error-azure-cloud-selection-failed"></a>Nepovedlo se vybrat Azure v cloudu v zařízení selže s chybovou zprávou "Azure v cloudu se nepodařilo vybrat."
+### <a name="appliance-is-not-able-to-connect-to-the-internet"></a>Zařízení se nemůže připojit k Internetu.
 
-Jedná se o známý problém a opravu je dostupná pro problém. Stáhněte si prosím [nejnovější upgradovat bits](https://docs.microsoft.com/azure/migrate/concepts-collector-upgrade#continuous-discovery-upgrade-versions) pro zařízení a aktualizace zařízení použít opravu.
+K tomu může dojít, když je počítač, který používáte, za proxy serverem. Ujistěte se, že přihlašovací údaje pro autorizaci zadáte, pokud je server proxy vyžaduje.
+Pokud k řízení odchozího připojení používáte proxy server brány firewall založený na adrese URL, nezapomeňte přidat tyto požadované adresy URL do seznamu povolených adres:
 
-### <a name="collector-is-not-able-to-connect-to-the-internet"></a>Kolekce není možné se připojit k Internetu
-
-To může nastat, pokud je počítač, který používáte za proxy serverem. Ujistěte se, že zadáte přihlašovací údaje pro ověření, pokud proxy server potřebuje jeden.
-Pokud používáte jakýkoli proxy server brány firewall na základě adresy URL k řízení odchozího připojení, nezapomeňte do seznamu povolených IP adres, že tyto požadované adresy URL:
-
-**Adresa URL** | **Účel**  
+Scénář | Seznam adres URL
 --- | ---
-*.portal.azure.com | Vyžaduje se ověřilo připojení ke službě Azure a ověřit synchronizaci času problémy.
-*.oneget.org | Vyžaduje se stáhnout powershell na základě vCenter PowerCLI modulu.
+Posouzení serveru pro VMware | [Tady](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#assessment-url-access-requirements)
+Posouzení serveru pro Hyper-V | [Tady](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-hyper-v#assessment-appliance-url-access)
+Migrace serveru pro VMware (bez agentů) | [Tady](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#agentless-migration-url-access-requirements)
+Migrace serveru pro VMware (založená na agentovi) | [Tady](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#replication-appliance-url-access)
+Migrace serveru pro Hyper-V | [Tady](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-hyper-v#migration-hyper-v-host-url-access)
 
-**Kolektor se nemůže připojit k Internetu kvůli selhání ověření certifikátu**
-
-To může nastat, pokud používáte prověřuje zachycovací proxy server pro připojení k Internetu, a pokud jste neimportovali certifikát proxy serveru na virtuálním počítači kolektoru. Můžete importovat certifikát proxy serveru pomocí podrobně popsané kroky [tady](https://docs.microsoft.com/azure/migrate/concepts-collector).
-
-**Kolektor se nemůže připojit k projektu pomocí ID projektu a klíče, které můžu zkopírovali z portálu.**
-
-Ujistěte se, že jste zkopírovat a vložit správné informace. Řešení potíží s, nainstalujte Microsoft Monitoring Agent (MMA) a ověřit, zda může agenta MMA připojit k projektu:
-
-1. Na virtuálním počítači kolektoru, stáhněte si [MMA](https://go.microsoft.com/fwlink/?LinkId=828603).
-2. Chcete-li spustit instalaci, poklikejte na stažený soubor.
-3. V instalačním programu na **úvodní** klikněte na **Další**. Na stránce **Licenční podmínky** kliknutím na **Souhlasím** přijměte licenci.
-4. V **cílovou složku**, udržovat nebo změnit výchozí instalační složku > **Další**.
-5. V **možnosti instalace agenta**vyberte **Azure Log Analytics** > **Další**.
-6. Klikněte na tlačítko **přidat** přidáte nový pracovní prostor Log Analytics. Vložte ID a klíč, který jste zkopírovali projektu. Pak klikněte na tlačítko **Další**.
-7. Ověřte, zda agent může připojit k projektu. Pokud ne, ověřte nastavení. Pokud může agent připojit, ale nemůže kolektoru, obraťte se na podporu.
-
+Pokud k připojení k Internetu používáte zachycení proxy serveru, budete muset importovat certifikát proxy serveru do virtuálního počítače zařízení. Certifikát proxy serveru můžete importovat pomocí postupu popsaného [tady](https://docs.microsoft.com/azure/migrate/concepts-collector).
 
 ### <a name="error-802-date-and-time-synchronization-error"></a>Chyba 802: Chyba synchronizace data a času
 
-Hodiny serveru může být mimo synchronizace s aktuálním časem o víc než pět minut. Změníte čas v kolekci virtuálních počítačů tak, aby odpovídaly aktuálního času, následujícím způsobem:
+Hodiny serveru můžou být nesynchronizovány s aktuálním časem více než pěti minutami. Změňte čas času na virtuálním počítači kolektoru tak, aby odpovídal aktuálnímu času, a to následujícím způsobem:
 
-1. Otevřete příkazový řádek správce ve virtuálním počítači.
-2. Ke kontrole časové pásmo, spusťte w32tm /tz.
-3. Chcete-li synchronizovat čas, spusťte w32tm/resync.
+1. Otevřete příkazový řádek správce na virtuálním počítači.
+2. Chcete-li kontrolovat časové pásmo, spusťte příkaz W32tm/TZ.
+3. Chcete-li synchronizovat čas, spusťte příkaz W32tm/Resync.
 
-### <a name="vmware-powercli-installation-failed"></a>Instalace VMware PowerCLI se nezdařila.
-
-Azure Migrate collector PowerCLI stáhne a nainstaluje na zařízení. Chyba při instalaci PowerCLI může být způsobeno nedostupný koncových bodů úložiště, které PowerCLI. Řešení potíží, zkuste použít ruční instalaci PowerCLI v následujícím způsobem virtuálního počítače kolektoru:
-
-1. Otevřete prostředí Windows PowerShell v režimu správce
-2. Přejděte do adresáře C:\ProgramFiles\ProfilerService\VMWare\Scripts\
-3. Spusťte skript InstallPowerCLI.ps1
-
-### <a name="error-unhandledexception-internal-error-occurred-systemiofilenotfoundexception"></a>Došlo k chybě k interní chybě UnhandledException: System.IO.FileNotFoundException
-
-Tomuto problému může dojít kvůli problému s instalací VMware PowerCLI. Postupujte podle níže uvedený postup k vyřešení daného problému:
-
-1. Pokud nejste na nejnovější verzi zařízení kolektoru [na nejnovější verzi, upgradujte Collector](https://aka.ms/migrate/col/checkforupdates) a zkontrolujte, jestli se problém vyřeší.
-2. Pokud už máte nejnovější verzi kolektoru, postupujte podle níže uvedených pokynů proveďte čistou instalaci nástroje PowerCLI:
-
-   a. Zavřete webový prohlížeč v zařízení.
-
-   b. Zastavte službu Azure Migrate Collector tak, že přejdete na Windows Service Manager (otevřít "Spustit" a zadejte příkaz services.msc otevřete Správce služby Windows). Klikněte pravým tlačítkem ve službě Azure Migrate Collector Service a klikněte na Zastavit.
-
-   c. Odstraňte všechny složky, počínaje "VMware" v následujících umístěních: C:\Program Files\WindowsPowerShell\Modules  
-        C:\Program Files (x86)\WindowsPowerShell\Modules
-
-   d. Restartujte službu Azure Migrate Collector na Windows portálu Service Manager (otevřít "Spustit" a zadejte příkaz services.msc otevřete Správce služby Windows). Klikněte pravým tlačítkem ve službě Azure Migrate Collector Service a klikněte na příkaz spustit.
-
-   e. Dvakrát klikněte na zástupce na ploše "Spustit kolektor" spustíte aplikaci kolektoru. Aplikaci kolektoru by měl automaticky stáhnout a nainstalovat požadované verze nástroje PowerCLI.
-
-3. Pokud výše problém nevyřeší, postupujte podle kroků c výše a potom ručně nainstalujte PowerCLI v zařízení pomocí následujících kroků:
-
-   a. Vyčistit všechny neúplné PowerCLI instalačních souborů pomocí následujících kroků #k #c v kroku 2 # výše.
-
-   b. Přejděte na začátku > spuštění > Otevřít PowerShell(x86) Windows v režimu správce
-
-   c. Spusťte příkaz:  Install-Module "VMWare.VimAutomation.Core" - RequiredVersion "6.5.2.6234650" (typ "A" požádá o potvrzení)
-
-   d. Restartujte službu Azure Migrate Collector na Windows portálu Service Manager (otevřít "Spustit" a zadejte příkaz services.msc otevřete Správce služby Windows). Klikněte pravým tlačítkem ve službě Azure Migrate Collector Service a klikněte na příkaz spustit.
-
-   e. Dvakrát klikněte na zástupce na ploše "Spustit kolektor" spustíte aplikaci kolektoru. Aplikaci kolektoru by měl automaticky stáhnout a nainstalovat požadované verze nástroje PowerCLI.
-
-4. Pokud se vám nedaří stáhnout modul v zařízení kvůli problémům s bránou firewall, stáhněte a nainstalujte modul na počítači, který má přístup k Internetu pomocí následujících kroků:
-
-    a. Vyčistit všechny neúplné PowerCLI instalačních souborů pomocí následujících kroků #k #c v kroku 2 # výše.
-
-    b. Přejděte na začátku > spuštění > Otevřít PowerShell(x86) Windows v režimu správce
-
-    c. Spusťte příkaz:  Install-Module "VMWare.VimAutomation.Core" - RequiredVersion "6.5.2.6234650" (typ "A" požádá o potvrzení)
-
-    d. Zkopírujte všechny moduly, počínaje "VMware" z "C:\Program Files (x86) \WindowsPowerShell\Modules" do stejného umístění na virtuálním počítači kolektoru.
-
-    e. Restartujte službu Azure Migrate Collector na Windows portálu Service Manager (otevřít "Spustit" a zadejte příkaz services.msc otevřete Správce služby Windows). Klikněte pravým tlačítkem ve službě Azure Migrate Collector Service a klikněte na příkaz spustit.
-
-    f. Dvakrát klikněte na zástupce na ploše "Spustit kolektor" spustíte aplikaci kolektoru. Aplikaci kolektoru by měl automaticky stáhnout a nainstalovat požadované verze nástroje PowerCLI.
 
 ### <a name="error-unabletoconnecttoserver"></a>Chyba UnableToConnectToServer
 
 Nejde se připojit k vCenter Serveru Servername.com:9443, protože došlo k chybě: Na https://Servername.com:9443/sdk nenaslouchal žádný koncový bod, který by mohl tuto zprávu přijmout.
 
-Zaškrtněte, pokud budete používat nejnovější verzi zařízení kolektoru a pokud ne, upgradovat zařízení, abyste [nejnovější verzi](https://docs.microsoft.com/azure/migrate/concepts-collector).
+Ověřte, jestli používáte nejnovější verzi zařízení kolektoru. Pokud ne, upgradujte zařízení na [nejnovější verzi](https://docs.microsoft.com/azure/migrate/concepts-collector).
 
-Pokud problém pořád probíhá na nejnovější verzi, je možné, protože počítače kolektor nedokáže vyřešit zadaný název serveru vCenter nebo zadaný port je chybný. Ve výchozím nastavení Pokud není port určen, kolekce se pokusí připojit k portu číslo 443.
+Pokud k problému dochází v nejnovější verzi, může to být způsobeno tím, že počítač kolektoru nemůže přeložit zadaný název vCenter Server nebo je zadaný port nesprávný. Ve výchozím nastavení se kolektor pokusí připojit k portu číslo 443, pokud není zadaný port.
 
-1. Zkuste příkaz ping Servername.com z počítače kolektor.
+1. Zkuste provést test Servername.com z sběrného počítače pomocí testu.
 2. Pokud krok 1 selže, zkuste se k serveru vCenter připojit přes IP adresu.
 3. Zjistěte správné číslo portu pro připojení k serveru vCenter.
 4. Nakonec zkontrolujte, jestli server vCenter je spuštěný.
 
-### <a name="antivirus-exclusions"></a>Výjimky antivirové ochrany
+## <a name="discovery-issues"></a>Problémy zjišťování
 
-Posilte zabezpečení zařízení Azure Migrate, budete muset z antivirové kontroly vyloučit následující složky v zařízení:
+### <a name="i-started-discovery-but-i-dont-see-the-discovered-vms-on-azure-portal-server-assessment-and-server-migrate-tiles-show-a-status-of-discovery-in-progress"></a>Zahájil (a) jsem zjišťování, ale zjištěné virtuální počítače se na Azure Portal nezobrazily. Dlaždice vyhodnocení serveru a migrace serveru zobrazují stav "Probíhá zjišťování".
+Po spuštění zjišťování ze zařízení počkejte určitou dobu, než se zjištěné počítače zobrazí na Azure Portal. Zjišťování VMware trvá přibližně 15 minut a přibližně 2 minuty na přidané hostitele pro zjišťování technologie Hyper-V. Pokud se vám nadále zobrazuje "zjišťování probíhá", a to i po tomto čase, klikněte na tlačítko **aktualizovat** na kartě **servery** . Mělo by se zobrazit počet zjištěných serverů na dlaždicích Server pro vyhodnocení a migraci serveru.
 
-- Složka, která obsahuje binární soubory pro služby Azure Migrate. Vylučte všechny podsložky.
-  %ProgramFiles%\ProfilerService  
-- Azure Migrate webové aplikace. Vylučte všechny podsložky.
-  %SystemDrive%\inetpub\wwwroot
-- Místní mezipaměť pro databáze a soubory protokolů. Azure migrate služba potřebuje čtení a zápis do této složky.
-  %SystemDrive%\Profiler
 
-## <a name="dependency-visualization-issues"></a>Problémy s vizualizace závislostí
+### <a name="i-am-using-the-appliance-that-continuously-discovers-my-on-premises-environment-but-the-vms-that-are-deleted-in-my-on-premises-environment-are-still-being-shown-in-the-portal"></a>Používám zařízení, které nepřetržitě zjišťuje místní prostředí, ale virtuální počítače, které jsou v místním prostředí odstraněny, se pořád zobrazují na portálu.
 
-### <a name="i-am-unable-to-find-the-dependency-visualization-functionality-for-azure-government-projects"></a>Nejde najít funkce vizualizace závislostí pro projekty Azure Government.
+Data zjišťování shromážděná zařízením zabere až 30 minut, než se na portálu projeví. Pokud nevidíte informace o aktuálním stavu ani po 30 minutách, vydejte aktualizaci dat pomocí následujících kroků:
 
-Azure Migrate závisí na řešení Service Map pro funkce vizualizace závislostí a Service Map je nyní k dispozici ve službě Azure Government, tato funkce není k dispozici ve službě Azure Government.
+1. Na serverech > Azure Migrate: Vyhodnocování serveru klikněte na **Přehled**.
+2. V části **Spravovat**klikněte na **Agent Health**
+3. Kliknutím na možnost **agenta aktualizujete**. V seznamu agentů se zobrazí následující možnost.
+4. Počkejte na dokončení operace aktualizace. Ověřte, že se vám na vašich virtuálních počítačích můžete podívat na aktuální informace.
 
-### <a name="i-installed-the-microsoft-monitoring-agent-mma-and-the-dependency-agent-on-my-on-premises-vms-but-the-dependencies-are-now-showing-up-in-the-azure-migrate-portal"></a>Nainstalovat Microsoft Monitoring Agent (MMA) a agenta závislostí na místních virtuálních počítačů, ale závislosti se teď zobrazují na portálu Azure Migrate.
+### <a name="i-dont-the-latest-information-on-the-on-premise-vms-on-the-portal"></a>Nedaří se mi získat nejnovější informace o místních virtuálních počítačích na portálu.
 
-Po instalaci agentů Azure Migrate obvykle trvá 15 – 30 minut. Chcete-li zobrazit závislosti na portálu. Pokud máte počkat déle než 30 minut, ujistěte se, že agenta MMA mohl komunikovat s pracovním prostorem OMS pomocí následujícího následujících kroků:
+Data zjišťování shromážděná zařízením zabere až 30 minut, než se na portálu projeví. Pokud nevidíte informace o aktuálním stavu ani po 30 minutách, vydejte aktualizaci dat pomocí následujících kroků:
 
-Pro virtuální počítač Windows:
-1. Přejděte na **ovládací panely** a spusťte **agenta Microsoft Monitoring Agent**
-2. Přejděte **Azure Log Analytics (OMS)** kartu v místní vlastnosti agenta MMA
-3. Ujistěte se, že **stav** pro pracovní prostor je zeleně.
-4. Pokud stav není v zelené, zkuste odebrat pracovní prostor a přidat ho znovu agenta MMA.
-        ![Stav agenta MMA](./media/troubleshooting-general/mma-status.png)
+1. Na serverech > Azure Migrate: Vyhodnocování serveru klikněte na **Přehled**.
+2. V části **Spravovat**klikněte na **Agent Health**
+3. Kliknutím na možnost **agenta aktualizujete**. Tato možnost se zobrazí pod seznamem agentů.
+4. Počkejte na dokončení operace aktualizace. Teď byste měli vidět aktuální informace na vašich virtuálních počítačích.
 
-Pro virtuální počítač s Linuxem Ujistěte se, že příkazy pro instalaci agenta MMA a závislostí se dokončila.
+### <a name="unable-to-connect-to-hosts-or-cluster-as-the-server-name-cannot-be-resolved-winrm-error-code-0x803381b9-error-id-50004"></a>Nepovedlo se připojit k hostitelům nebo clusteru, protože název serveru nejde přeložit. Kód chyby WinRM: 0x803381B9 (ID chyby: 50004)
+K této chybě dojde, pokud služba DNS obsluhující zařízení nemůže vyřešit zadaný název clusteru nebo hostitele. Pokud se tato chyba zobrazuje v clusteru, zkuste zadat plně kvalifikovaný název domény clusteru. 
 
-### <a name="what-are-the-operating-systems-supported-by-mma"></a>Co jsou operačních systémech podporovaných produktem MMA?
+Tato chyba se může zobrazit i pro hostitele v clusteru. V takovém případě se zařízení může připojit ke clusteru. Ale cluster vrátil názvy hostitelů, které nejsou plně kvalifikované názvy domén. 
 
-Seznam operačních systémů Windows nepodporuje agenta MMA [tady](https://docs.microsoft.com/azure/log-analytics/log-analytics-concept-hybrid#supported-windows-operating-systems).
-Seznam operačních systémů Linux podporuje MMA [tady](https://docs.microsoft.com/azure/log-analytics/log-analytics-concept-hybrid#supported-linux-operating-systems).
+Chcete-li tuto chybu vyřešit, aktualizujte soubor hostitelů na zařízení přidání mapování IP adresy a názvů hostitelů.
+1. Otevřete Poznámkový blok jako uživatel s oprávněními správce. Otevřete soubor C:\Windows\System32\Drivers\etc\hosts.
+2. Přidejte IP adresu a název hostitele do řádku. Opakujte pro každého hostitele nebo cluster, kde se zobrazí tato chyba.
+3. Uložte a zavřete soubor Hosts.
+4. Můžete zjistit, jestli se zařízení může připojit k hostitelům pomocí aplikace pro správu zařízení. Po 30 minutách byste si měli být schopni zobrazit nejnovější informace o těchto hostitelích na Azure Portal. 
 
-### <a name="what-are-the-operating-systems-supported-by-dependency-agent"></a>Co jsou operačních systémech podporovaných produktem agenta závislostí?
 
-Seznam operačních systémů Windows nepodporuje agenta závislostí je [tady](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#supported-windows-operating-systems).
-Seznam operačních systémů Linux podporuje agenta závislostí je [tady](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#supported-linux-operating-systems).
+## <a name="assessment-issues"></a>Problémy posouzení
 
-### <a name="i-am-unable-to-visualize-dependencies-in-azure-migrate-for-more-than-one-hour-duration"></a>Nejde mi vizualizace závislostí ve službě Azure Migrate déle než hodinu?
-Azure Migrate vám umožňuje vizualizovat závislosti pro dobu trvání až jednu hodinu. I když Azure Migrate můžete přejít zpět na konkrétní datum v historii pro až za poslední měsíc, je maximální doba trvání, pro kterou můžete vizualizovat závislosti až 1 hodinu. Například můžete použít funkci doba trvání na mapě závislostí, chcete-li zobrazit závislosti včerejška ale jenom ji mohou zobrazit okna jednu hodinu. Můžete však použít protokoly Azure monitoru a [zadávat dotazy na data závislostí](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies) za delší dobu.
+### <a name="azure-readiness-issues"></a>Problémy s připraveností na Azure
 
-### <a name="i-am-unable-to-visualize-dependencies-for-groups-with-more-than-10-vms"></a>Nejde mi vizualizace závislostí u skupin s více než 10 virtuálních počítačů?
-Je možné [vizualizace závislostí u skupin](https://docs.microsoft.com/azure/migrate/how-to-create-group-dependencies) , že mají až na 10 virtuálních počítačů, pokud máte skupinu s více než 10 virtuálních počítačů, doporučujeme rozdělit skupiny v menším skupinám a vizualizace závislostí.
-
-### <a name="i-installed-agents-and-used-the-dependency-visualization-to-create-groups-now-post-failover-the-machines-show-install-agent-action-instead-of-view-dependencies"></a>Můžu nainstalovat agenty a použít vizualizaci závislostí k vytvoření skupiny. Teď publikovat převzetí služeb při selhání, počítače zobrazit akci "Instalace agenta" místo "Zobrazit závislosti"
-* Příspěvek plánované nebo neplánované převzetí služeb při selhání, místní počítače jsou vypnuté a ekvivalentní počítače jsou spuštěné v Azure. Tyto počítače získat jinou adresu MAC. Získají může jinou IP adresu na základě na, jestli se uživatel rozhodl zachovat místní IP adresu, nebo ne. Pokud se systémem MAC a IP adresy liší, Azure Migrate nepřiřadí místních počítačů s daty závislostí Service Map a vyzve uživatele k instalaci agentů místo zobrazení závislostí.
-* Odeslat testovací převzetí služeb při selhání na místních počítačích zůstaly zapnuté podle očekávání. Ekvivalentní počítače spuštěné v Azure získat jinou adresu MAC a mohou získat jinou IP adresu. Pokud uživatele bloky odchozí Azure Monitor protokoly přenosů z těchto počítačů, Azure Migrate nepřiřadí místních počítačů s daty závislostí Service Map a vyzve uživatele k instalaci agentů místo zobrazení závislostí.
-
-## <a name="troubleshoot-azure-readiness-issues"></a>Řešení potíží s připravenost pro Azure
-
-**Problém** | **Oprava**
+Problém | Náprava
 --- | ---
-Nepodporovaný typ spuštění | Azure nepodporuje virtuální počítače s typem spuštění EFI. Doporučujeme převést typ spuštění BIOS, před zahájením migrace. <br/><br/>Můžete použít [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/tutorial-migrate-on-premises-to-azure) provedete migraci těchto virtuálních počítačů jako typ spuštění virtuálního počítače budou převedeny do systému BIOS během migrace.
-Podmíněně podporovaný operační systém Windows | Prošel konec nepodporuje operační systém a je třeba vlastní podpora smlouvy (CSA) pro [podporují v Azure](https://aka.ms/WSosstatement), zvažte možnost upgradovat operační systém před migrací do Azure.
-Nepodporovaná Windows operačního systému | Azure podporuje pouze [vybrané verze operačního systému Windows](https://aka.ms/WSosstatement), zvažte možnost upgradovat operační systém počítače před migrací do Azure.
-Podmíněně schválený operační systém Linux | Azure schvaluje pouze [vybrané verze operačního systému Linux](../virtual-machines/linux/endorsed-distros.md), zvažte možnost upgradovat operační systém počítače před migrací do Azure.
-Neschválený operační systém Linux | Počítač může spustit v Azure, ale Azure nenabízí žádnou podporu operačního systému, zvažte možnost upgradovat operační systém do [schválené pro Linux verze](../virtual-machines/linux/endorsed-distros.md) před migrací do Azure
-Neznámý operační systém | Operační systém virtuálního počítače byla zadána jako "Jiné" v systému vCenter Server, které Azure Migrate nemůže určit připravenost pro Azure virtuálního počítače. Ujistěte se, že operační systém, počítače [podporované](https://aka.ms/azureoslist) Azure před migrací počítače.
-Nepodporovaná bitová verze operačního systému | Virtuální počítače s operačním systémem 32-bit může spustit v Azure, ale doporučuje se upgradovat operační systém virtuálního počítače z 32bitové na 64-bit před migrací do Azure.
-Vyžaduje předplatné sady Visual Studio. | Počítače se Windows klientský operační systém běžící uvnitř ho, který se podporuje jenom v předplatných: Visual Studio.
-Virtuální počítač pro požadovaný výkon úložiště se nenašel. | Výkon úložiště (IOPS a propustnosti), vyžaduje se pro tento počítač překračuje podporu virtuálních počítačů Azure. Snížení požadavků na úložiště pro počítač před migrací.
-Virtuální počítač nebyl nalezen pro požadovaný výkon sítě. | Výkon sítě (vstup/výstup), vyžaduje se pro tento počítač překračuje podporu virtuálních počítačů Azure. Snížit požadavky na síť pro počítač.
-Virtuální počítač nebyl nalezen v zadaném umístění. | Použijte jiné cílové umístění, před migrací.
-Minimálně jeden nevhodný disk. | Jeden nebo více disků připojených k virtuálnímu počítači nesplňuje požadavky na Azure. U každého disku připojeného k virtuálnímu počítači Ujistěte se, že velikost disku < 4 TB, v opačném případě zmenšit velikost disku před migrací do Azure. Ujistěte se, že výkon (IOPS a propustnosti) vyžaduje každého disku se nepodporuje v Azure [spravované disky virtuálních počítačů](https://docs.microsoft.com/azure/azure-subscription-service-limits#storage-limits).   
-Minimálně jeden nevhodný síťový adaptér. | Odeberte nepoužívané síťové adaptéry z počítače před migrací.
-Počet disků překračuje limit | Odeberte nepoužívané disky z počítače před migrací.
-Velikost disku překračuje limit | Azure podporuje disky s až do velikosti 4 TB. Disky zmenšit na méně než 4 TB před migrací.
-Disk není k dispozici v zadaném umístění | Ujistěte se, že je disk v cílovém umístění, před migrací.
-Disk není k dispozici pro zadanou redundanci | Disk by měl použít typ redundance úložiště definované v nastavení posouzení (LRS ve výchozím nastavení).
-Není možné určit vhodnost disku z důvodu vnitřní chyby | Zkuste vytvořit nové posouzení pro skupinu.
-Virtuální počítač s požadovaný počtem jader a pamětí se nenašel | Azure nešlo jemné vhodný typ virtuálního počítače. Před migrací snížit velikost paměti a počet jader v místním počítači.
-Není možné určit vhodnost virtuálního počítače z důvodu vnitřní chyby. | Zkuste vytvořit nové posouzení pro skupinu.
-Možné určit vhodnost u minimálně jeden disk z důvodu vnitřní chyby. | Zkuste vytvořit nové posouzení pro skupinu.
-Není možné určit vhodnost pro jeden nebo více síťových adaptérů z důvodu vnitřní chyby. | Zkuste vytvořit nové posouzení pro skupinu.
+Nepodporovaný typ spuštění | Azure nepodporuje virtuální počítače s typem spouštění EFI. Před spuštěním migrace doporučujeme převést typ spouštění na systém BIOS. <br/><br/>K migraci takových virtuálních počítačů můžete použít migraci Azure Migrate serveru, protože při migraci převede typ spouštění virtuálního počítače na systém BIOS.
+Podmíněně podporované operační systémy Windows | Operační systém předal svůj konec platnosti a pro [podporu v Azure](https://aka.ms/WSosstatement)potřebuje vlastní smlouvu o podpoře (CSA). před migrací do Azure zvažte možnost upgradovat operační systém.
+Nepodporovaný operační systém Windows | Azure podporuje jenom [vybrané verze operačních systémů Windows](https://aka.ms/WSosstatement). před migrací do Azure zvažte možnost upgradovat operační systém počítače.
+Podmíněně schválené operační systémy Linux | Azure schválí jenom [vybrané verze operačního systému Linux](../virtual-machines/linux/endorsed-distros.md). před migrací do Azure zvažte možnost upgradovat operační systém počítače.
+Neschválený operační systém Linux | Počítač se může spustit v Azure, ale Azure neposkytuje žádnou podporu operačního systému. před migrací do Azure zvažte možnost upgradovat operační systém na [schválenou verzi systému Linux](../virtual-machines/linux/endorsed-distros.md) .
+Neznámý operační systém | Operační systém virtuálního počítače se ve vCenter Server zadal jako jiný, protože Azure Migrate nedokáže identifikovat připravenost virtuálního počítače Azure. Než počítač migrujete, ujistěte se, že Azure [podporuje](https://aka.ms/azureoslist) operační systém běžící v počítači.
+Nepodporované bitová verze OS | Virtuální počítače s 32 operačním systémem se můžou v Azure spustit, ale před migrací do Azure se doporučuje upgradovat operační systém virtuálního počítače z 32-bitů na 64.
+Vyžaduje předplatné sady Visual Studio. | Počítač má spuštěný klientský operační systém Windows, který je podporován pouze v rámci předplatného sady Visual Studio.
+Pro požadovaný výkon úložiště se nenašel žádný virtuální počítač. | Výkon úložiště (IOPS/propustnost) vyžadovaný pro tento počítač překračuje podporu virtuálních počítačů Azure. Před migrací snižte požadavky na úložiště pro daný počítač.
+Pro požadovaný výkon sítě nebyl nalezen virtuální počítač. | Výkon sítě (v/v) vyžadovaný pro tento počítač překračuje podporu virtuálních počítačů Azure. Snižte požadavky na síť pro daný počítač.
+Virtuální počítač se nenašel v zadaném umístění. | Před migrací použijte jiné cílové umístění.
+Jeden nebo více nevhodných disků. | Jeden nebo více disků připojených k virtuálnímu počítači nesplňuje požadavky Azure. U každého disku připojeného k virtuálnímu počítači zajistěte, aby velikost disku byla < 4 TB. Pokud ne, zmenšete velikost disku před migrací do Azure. Ujistěte se, že [disky virtuálních počítačů spravované](https://docs.microsoft.com/azure/azure-subscription-service-limits#storage-limits)službou Azure podporují výkon (IOPS/propustnost), který vyžaduje každý disk.   
+Jeden nebo více nevhodných síťových adaptérů. | Před migrací odeberte nepoužívané síťové adaptéry z počítače.
+Počet disků překračuje limit. | Před migrací z počítače odeberte nepoužívané disky.
+Velikost disku překračuje limit. | Azure podporuje disky o velikosti až 4 TB. Před migrací zmenšete disky na méně než 4 TB.
+Disk není v zadaném umístění k dispozici. | Před migrací zajistěte, aby byl disk v cílovém umístění.
+Disk není pro zadanou redundanci k dispozici. | Disk by měl používat typ úložiště redundance definovaný v nastavení hodnocení (ve výchozím nastavení LRS).
+Kvůli vnitřní chybě se nepovedlo určit vhodnost disku. | Zkuste vytvořit nové vyhodnocení pro skupinu.
+Virtuální počítač s požadovanými jádry a pamětí se nenašel. | Azure nemůže navýšit vhodný typ virtuálního počítače. Před migrací Snižte velikost paměti a počtu jader místního počítače.
+Kvůli vnitřní chybě se nepovedlo určit vhodnost virtuálního počítače. | Zkuste vytvořit nové vyhodnocení pro skupinu.
+Kvůli vnitřní chybě se nepovedlo určit vhodnost pro jeden nebo více disků. | Zkuste vytvořit nové vyhodnocení pro skupinu.
+Kvůli vnitřní chybě se nepovedlo určit vhodnost pro jeden nebo víc síťových adaptérů. | Zkuste vytvořit nové vyhodnocení pro skupinu.
 
+### <a name="i-am-unable-to-specify-enterprise-agreement-ea-as-an-azure-offer-in-the-assessment-properties"></a>Ve vlastnostech posouzení nejde zadat smlouva Enterprise (EA) jako nabídku Azure?
+Azure Migrate: Posouzení serveru v současné době nepodporuje ceny založené na smlouva Enterprise (EA). Alternativním řešením je použít jako nabídku Azure "průběžné platby" a použít vlastnost ' sleva ' k určení libovolné vlastní slevy, kterou dostanete. [Přečtěte si další informace o tom, jak můžete posouzení přizpůsobit](https://aka.ms/migrate/selfhelp/eapricing).
 
-## <a name="collect-logs"></a>Shromažďování protokolů
+### <a name="why-does-server-assessment-mark-my-linux-vms-conditionally-ready-is-there-anything-i-need-to-do-to-fix-this"></a>Proč vyhodnocování serveru označí moje virtuální počítače Linux jako podmíněně připravené. Je něco, co je potřeba vyřešit?
+V posuzování serveru je známá mezera, kde není možné detekovat podverzi operačního systému Linux nainstalovaného na místních virtuálních počítačích (například pro RHEL 6,10, aktuálně vyhodnocování serveru detekuje pouze RHEL 6 jako verzi operačního systému). Vzhledem k tomu, že Azure připravuje pouze konkrétní verze systému Linux, jsou virtuální počítače se systémem Linux v současnosti označeny jako podmíněně připravené v rámci posouzení serveru. Můžete ručně zkontrolovat, jestli je operační systém Linux běžící na místním virtuálním počítači schválen v Azure, v [dokumentaci podpory Azure Linux.](https://aka.ms/migrate/selfhost/azureendorseddistros). Jakmile ověříte schválené distribuce, můžete toto upozornění ignorovat.
 
-**Jak shromažďování protokolů na virtuální počítač kolektoru?**
+### <a name="the-vm-sku-recommended-by-server-assessment-has-more-number-of-cores-and-a-larger-memory-size-than-what-is-allocated-on-premises-why-is-that-so"></a>SKU virtuálního počítače doporučeného posouzením serveru má větší počet jader a větší velikost paměti než místní přidělení. Proč to znamená?
+Doporučení na SKU virtuálního počítače v posouzení serveru závisí na vlastnostech posouzení. V rámci posuzování serverů můžete vytvořit dva druhy hodnocení, "založené na výkonu" a "jako" místní "posouzení. U posouzení na základě výkonu považuje server hodnocení za využití dat z místních virtuálních počítačů (CPU, paměti, disku a sítě) k určení správné cílové SKU virtuálního počítače pro vaše místní virtuální počítače. Pro určení velikosti na základě výkonu je navíc faktor komfortu přihlédnuto k identifikaci efektivního využití. V případě, že se jedná o místní velikost, data o výkonu se neberou v úvahu a na základě toho, co se přiděluje místně, se doporučuje cílová skladová jednotka.
 
-Ve výchozím nastavení je povoleno protokolování. Protokoly jsou umístěny následovně:
+Řekněme například, že se jedná o místní virtuální počítač se 4 jádry a 8 GB paměti s 50% využitím procesoru a 50% využití paměti a že se v posouzení určí faktor komfortu 1,3. Pokud je kritérium změny velikosti posouzení stejné jako místní, doporučuje se SKU virtuálního počítače Azure se 4 jádry a 8 GB paměti. Pokud je ale kritérium změny velikosti založené na výkonu, vychází z efektivního využití procesoru a paměti (50% ze 4 jader × 1,3 = 2,6 jader a 50% 8 GB paměť * 1,3 = 5,3-GB paměti), doporučuje se SKU virtuálního počítače nejlevnější se čtyřmi jádry (nejbližší podporovaný počet jader) a 8 GB velikosti paměti (nejbližší podporovaná velikost paměti). [Přečtěte si další informace o tom, jak vyhodnocování serveru provádí změnu velikosti.](https://docs.microsoft.com/azure/migrate/concepts-assessment-calculation#sizing)
 
-- C:\Profiler\ProfilerEngineDB.sqlite
-- C:\Profiler\Service.log
-- C:\Profiler\WebApp.log
+### <a name="the-disk-sku-recommended-by-server-assessment-has-a-bigger-size-than-what-is-allocated-on-premises-why-is-that-so"></a>SKU disku, které doporučuje posouzení serveru, má větší velikost, než je přiděleno místně. Proč to znamená?
+Velikost disku v posuzování serveru závisí na dvou kritériích pro určení velikosti a typu úložiště. Pokud má kritérium změny velikosti hodnotu "na základě výkonu" a typ úložiště je nastaven na hodnotu automaticky, považují se hodnoty IOPS a propustnosti disku za účelem určení typu cílového disku (HDD úrovně Standard, SSD úrovně Standard a prémiových disků). Pak se doporučuje zvážit velikost jednotky disku v rámci typu disku, a to v úvahách o požadavcích na velikost místního disku. Pokud má kritérium změny velikosti hodnotu "na základě výkonu" a typ úložiště je Premium, doporučuje se skladová jednotka Premium v Azure na základě požadavků na vstupně-výstupní operace, propustnost a velikost na disku. Stejná logika se používá k určení velikosti disku, pokud je kritérium změny velikosti "as-premises" a typ úložiště je "HDD úrovně Standard", "SSD úrovně Standard" nebo "Premium".
 
-Shromažďovat události trasování pro Windows, postupujte takto:
+Například pokud máte místní disk s 32 GB paměti, ale agregované vstupně-výstupní operace čtení a zápisu pro disk je 800 IOPS, posouzení serveru doporučí typ disku Premium (z důvodu vyšších požadavků IOPS) a pak doporučí SKU disku, který může podporovat požadovaný počet vstupně-výstupních operací a velikosti. Nejbližší shoda v tomto příkladu bude P15 (256 GB, 1100 IOPS). Takže i když velikost požadovaná místním diskem byla 32 GB, vyhodnocování serveru doporučuje disk s větší velikostí v důsledku požadavků na vysoký počet IOPS na místním disku.
 
-1. Na virtuálním počítači kolektoru Otevřete příkazové okno Powershellu.
-2. Spustit **Get EventLog - název protokolu aplikací | export-csv eventlog.csv**.
+### <a name="is-the-os-license-cost-of-the-vm-included-in-the-compute-cost-estimated-by-server-assessment"></a>Jsou náklady na licenci na virtuální počítač zahrnuté do výpočetních nákladů na operační systém vyhodnocené vyhodnocením serveru?
+Posouzení serveru v současné době pouze zvažuje náklady na licenci na operační systém pro počítače se systémem Windows, náklady na licenci na operační systém pro počítače se systémem Linux nejsou v současnosti 
 
-**Jak se shromažďovat protokoly přenosů portálu sítě?**
+### <a name="what-impact-does-performance-history-and-percentile-utilization-have-on-the-size-recommendations"></a>Jaký dopad má využití historie výkonu a percentilu na velikost doporučení?
+Tyto vlastnosti jsou použitelné pouze pro změny velikosti na základě výkonu. Posouzení serveru průběžně shromažďuje data o výkonu místních počítačů a používá je k tomu, aby v Azure doporučila SKU virtuálního počítače a SKU disku. Níže je uveden způsob shromažďování údajů o výkonu pomocí posouzení serveru:
+- Zařízení Azure Migrate průběžně profiluje místní prostředí za účelem shromažďování dat o využití v reálném čase každých 20 sekund pro virtuální počítače VMware a každých 30 sekund pro virtuální počítače Hyper-V.
+- Zařízení shrnuje vzorek o 20/30 sekund, který vytvoří jeden datový bod každých 10 minut. Pokud chcete vytvořit jeden datový bod, zařízení vybere nejvyšší hodnotu ze všech ukázek s 20/30 sekund a pošle je do Azure.
+- Když vytvoříte posouzení v rámci posuzování serveru na základě hodnoty doby trvání a percentilu historie výkonu, bude identifikována hodnota reprezentativního využití. Například pokud je historie výkonu jeden týden a procento využití je 95., Azure Migrate bude řadit všechny 10 minutových vzorků za poslední týden ve vzestupném pořadí a pak jako hodnotu zástupce vybrat 95. percentil.
+Hodnota 95. percentilu zajišťuje, že budete ignorovat jakékoli odlehlé hodnoty, které mohou být zahrnuty, pokud vyberete percentil 99. Pokud chcete vybrat špičku pro období a nechcete vyznačit žádné odlehlé hodnoty, měli byste jako procento využití vybrat 99 percentil.
 
-1. Otevřete prohlížeč a přejděte a přihlaste se [k portálu](https://portal.azure.com).
-2. Stisknutím klávesy F12 ke spuštění nástroje pro vývojáře. V případě potřeby zrušte nastavení **Vymazat položky při navigaci**.
-3. Klikněte na tlačítko **sítě** kartu a spustit zachytávání síťového provozu:
-   - V prohlížeči Chrome, vyberte **zachovat protokolu**. Tento záznam má spustit automaticky. Červené kolečko označuje, že provoz probíhá zachytávání. Pokud se nezobrazí, klikněte na kruh černé spuštění
-   - V aplikaci Microsoft Edge/IE, záznam má spustit automaticky. Pokud tomu tak není, klikněte na zelené tlačítko Přehrát.
-4. Zkuste chybu reprodukovat.
-5. Poté, co jste došlo k chybě při nahrávání, zastavit záznam a uložit kopii zaznamenaná aktivita:
-   - V prohlížeči Chrome, klikněte pravým tlačítkem myši a klikněte na tlačítko **uložit jako HAR s obsahem**. To zips a exportuje protokoly jako soubor .har.
-   - V aplikaci Microsoft Edge/IE, klikněte **Export zachycené provoz** ikonu. To zips a exportuje do protokolu.
-6. Přejděte **konzoly** kartu zkontrolujte všechna upozornění a chyby. Uložení protokolu konzoly:
-   - V prohlížeči Chrome klikněte pravým tlačítkem na libovolné místo v protokolu konzoly. Vyberte **uložit jako**, abyste mohli exportovat a zip do protokolu.
-   - V aplikaci Microsoft Edge/IE, klikněte pravým tlačítkem na chyby a vyberte **Kopírovat vše**.
-7. Zavřít Developer Tools.
+## <a name="dependency-visualization-issues"></a>Problémy s vizualizací závislostí
 
-## <a name="collector-error-codes-and-recommended-actions"></a>Kódy chyb kolekcí a doporučené akce
+### <a name="i-am-unable-to-find-the-dependency-visualization-functionality-for-azure-government-projects"></a>Nedaří se mi najít funkci Vizualizace závislostí pro Azure Government projekty.
 
-| Kód chyby | Název chyby   | Message   | Možné příčiny | Doporučená akce  |
-| --- | --- | --- | --- | --- |
-| 601       | CollectorExpired               | Platnost kolektoru vypršela.                                                        | Platnost kolektoru vypršela.                                                                                    | Stáhněte si prosím novou verzi kolektoru a zkuste to znovu.                                                                                      |
-| 751       | UnableToConnectToServer        | Nelze se připojit k vCenter serveru: % Name;' z důvodu chyby: % ErrorMessage;     | Zkontrolujte chybovou zprávu pro další podrobnosti.                                                             | Vyřešte potíže a zkuste to znovu.                                                                                                           |
-| 752       | InvalidvCenterEndpoint         | Server: % Name;' není vCenter Server.                                  | Zadejte podrobnosti o serveru vCenter.                                                                       | Zkuste operaci zopakovat se správnými podrobnostmi vCenter serveru.                                                                                   |
-| 753       | InvalidLoginCredentials        | Nelze se připojit k vCenter serveru: % Name;' z důvodu chyby: % ErrorMessage; | Připojení k serveru vCenter se nezdařilo kvůli neplatným přihlašovacím údajům.                             | Ujistěte se, že zadané přihlašovací údaje jsou správné.                                                                                    |
-| 754       | NoPerfDataAvailable           | Není k dispozici údaje o výkonu.                                               | Zkontrolujte úroveň statistiky na vCenter serveru. By měla být nastavená na 3 údaje o výkonu k dispozici. | Změňte úroveň statistiky na 3 (po dobu 5 minut, 30 minut a 2 hodiny) a zkuste to za počkejte aspoň jeden den.                   |
-| 756       | NullInstanceUUID               | Vyskytl se počítač s null InstanceUUID                                  | systém vCenter Server může být nesprávný objekt.                                                      | Vyřešte potíže a zkuste to znovu.                                                                                                           |
-| 757       | VMNotFound                     | Virtuální počítač se nenašel.                                                  | Virtuální počítač je možná odstraněný: % VMID;                                                                | Ujistěte se, že virtuální počítače vybrané při určování oboru inventáře vCenter existovaly během zjišťování.                                      |
-| 758       | GetPerfDataTimeout             | Vypršel časový limit požadavku VCenter. Zpráva % Message;                                  | přihlašovací údaje k vCenter serveru nejsou správné                                                              | Zkontrolujte přihlašovací údaje k vCenter serveru a ujistěte se, že jestli je vCenter Server je dostupný. Zkuste operaci zopakovat. Pokud problém přetrvává, obraťte se na podporu. |
-| 759       | VmwareDllNotFound              | Nenašla se knihovna DLL VMWare.Vim.                                                     | PowerCLI není správně nainstalován.                                                                   | Zkontrolujte prosím, jestli je správně nainstalovaný PowerCLI. Zkuste operaci zopakovat. Pokud problém přetrvává, obraťte se na podporu.                               |
-| 800       | ServiceError                   | Služba Azure Migrate Collector není spuštěná.                               | Služba Azure Migrate Collector není spuštěná.                                                       | Pomocí modulu services.msc spusťte službu a zkuste operaci zopakovat.                                                                             |
-| 801       | PowerCLIError                  | Nepovedlo se nainstalovat VMware PowerCLI.                                          | Nepovedlo se nainstalovat VMware PowerCLI.                                                                  | Zkuste operaci zopakovat. Pokud se problém nevyřeší, nainstalujte ho ručně a zkuste operaci zopakovat.                                                   |
-| 802       | TimeSyncError                  | Čas není synchronizovaný s internetovým časovým serverem.                            | Čas není synchronizovaný s internetovým časovým serverem.                                                    | Ujistěte se, čas tohoto počítače přesně nastavený pro časové pásmo počítače a zkuste operaci zopakovat.                                 |
-| 702       | OMSInvalidProjectKey           | Zadán neplatný klíč projektu.                                                | Zadán neplatný klíč projektu.                                                                        | Zkuste operaci zopakovat se správným klíčem projektu.                                                                                              |
-| 703       | OMSHttpRequestException        | Při odesílání požadavku došlo k chybě. Zpráva % Message;                                | Zkontrolujte ID a klíč projektu a ujistěte se, že je tento koncový bod dostupný.                                       | Zkuste operaci zopakovat. Pokud potíže potrvají, kontaktujte prosím podporu Microsoftu.                                                                     |
-| 704       | OMSHttpRequestTimeoutException | Vypršel časový limit požadavku HTTP. Zpráva % Message;                                     | Zkontrolujte ID a klíč projektu a ujistěte se, že je tento koncový bod dostupný.                                       | Zkuste operaci zopakovat. Pokud potíže potrvají, kontaktujte prosím podporu Microsoftu.                                                                     |
+Azure Migrate závisí na Service Map funkce Vizualizace závislostí a protože Service Map aktuálně není v Azure Government k dispozici, tato funkce není k dispozici v Azure Government.
+
+### <a name="i-installed-the-microsoft-monitoring-agent-mma-and-the-dependency-agent-on-my-on-premises-vms-but-the-dependencies-are-now-showing-up-in-the-azure-migrate-portal"></a>Nainstaloval (a) jsem Microsoft Monitoring Agent (MMA) a Agent závislostí na místních virtuálních počítačích, ale závislosti se teď zobrazují na portálu Azure Migrate.
+
+Jakmile nainstalujete agenty, Azure Migrate k zobrazení závislostí na portálu obvykle trvá 15-30 minut. Pokud jste čekali na více než 30 minut, ujistěte se, že agent MMA může komunikovat s pracovním prostorem OMS pomocí následujících kroků:
+
+Pro virtuální počítače s Windows:
+1. Otevřete **Ovládací panely** a spusťte **Microsoft Monitoring Agent**.
+2. V automaticky otevíraném okně vlastností MMA přejít na kartu **Azure Log Analytics (OMS)** .
+3. Ujistěte se, že je **stav** pracovního prostoru zelený.
+4. Pokud stav není zelený, zkuste odebrat pracovní prostor a znovu ho přidat do MMA.
+        ![Stav MMA](./media/troubleshooting-general/mma-status.png)
+
+V případě virtuálního počítače se systémem Linux zajistěte, aby byly příkazy instalace pro MMA a agenta závislostí úspěšné.
+
+### <a name="what-are-the-operating-systems-supported-by-mma"></a>Jaké jsou operační systémy, které MMA podporuje?
+
+Seznam operačních systémů Windows, které podporuje MMA, [najdete tady](https://docs.microsoft.com/azure/log-analytics/log-analytics-concept-hybrid#supported-windows-operating-systems).
+[Tady](https://docs.microsoft.com/azure/log-analytics/log-analytics-concept-hybrid#supported-linux-operating-systems)je seznam operačních systémů Linux podporovaných nástrojem MMA.
+
+### <a name="what-are-the-operating-systems-supported-by-dependency-agent"></a>Jaké jsou operační systémy podporované agentem závislostí?
+
+[Tady](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#supported-windows-operating-systems)je seznam operačních systémů Windows podporovaných agentem závislostí.
+[Tady](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#supported-linux-operating-systems)je seznam operačních systémů Linux podporovaných agentem závislostí.
+
+### <a name="i-am-unable-to-visualize-dependencies-in-azure-migrate-for-more-than-one-hour-duration"></a>Nedaří se mi vizualizovat závislosti v Azure Migrate po dobu více než jedné hodiny?
+Azure Migrate umožňuje vizualizovat závislosti po dobu až jedné hodiny. I když vám Azure Migrate umožňuje přejít zpět k určitému datu v historii po dobu až posledních měsíců, maximální doba trvání, po kterou můžete vizualizovat závislosti, je až 1 hodina. Například můžete použít funkci časového trvání na mapě závislostí k zobrazení závislostí včera, ale lze je zobrazit pouze v jednom časovém intervalu. Můžete ale použít protokoly Azure Monitor k dotazování [dat závislosti](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies) v delší době trvání.
+
+### <a name="i-am-unable-to-visualize-dependencies-for-groups-with-more-than-10-vms"></a>Nedaří se mi vizualizovat závislosti pro skupiny s více než 10 virtuálními počítači?
+Můžete [vizualizovat závislosti pro skupiny](https://docs.microsoft.com/azure/migrate/how-to-create-group-dependencies) , které mají až 10 virtuálních počítačů. Pokud máte skupinu s víc než 10 virtuálními počítači, doporučujeme rozdělit skupinu do menších skupin a vizualizovat závislosti.
+
+### <a name="i-installed-agents-and-used-the-dependency-visualization-to-create-groups-now-post-failover-the-machines-show-install-agent-action-instead-of-view-dependencies"></a>Nainstaloval jsem agenty a pomocí Vizualizace závislostí vytvořil skupiny. Nyní po převzetí služeb při selhání se v počítačích místo zobrazení závislostí zobrazí akce instalovat agenta.
+* Po plánovaném nebo neplánovaném převzetí služeb při selhání jsou místní počítače vypnuté a v Azure se prosazuje ekvivalentní počítače. Tyto počítače získají jinou adresu MAC. Můžou získat jinou IP adresu na základě toho, jestli se uživatel rozhodl zachovat místní IP adresu, nebo ne. Pokud se adresa MAC i IP adresy liší, Azure Migrate nepřidruží místní počítače k žádným Service Map dat závislosti a požádá uživatele o instalaci agentů místo zobrazení závislostí.
+* Po testovacím převzetí služeb při selhání budou místní počítače zapnuté podle očekávání. Ekvivalentní počítače propracované v Azure získají jinou adresu MAC a můžou získat jinou IP adresu. Pokud uživatel neblokuje odchozí Azure Monitor protokoluje provoz z těchto počítačů, Azure Migrate nepřidruží místní počítače k žádným Service Map datům závislosti a požádá uživatele o instalaci agentů namísto zobrazení závislostí.
+
+## <a name="collect-azure-portal-logs"></a>Shromažďovat protokoly Azure Portal
+
+**Návody shromažďovat protokoly Azure Portal síťových přenosů?**
+
+1. Otevřete prohlížeč a přejděte [na portál](https://portal.azure.com)a přihlaste se.
+2. Stisknutím klávesy F12 spusťte Vývojářské nástroje. V případě potřeby zrušte zaškrtnutí políčka **vymazat položky při navigaci**.
+3. Klikněte na kartu **síť** a spusťte zachytávání síťového provozu:
+   - V části Chrome vyberte **zachovat protokol**. Záznam by se měl spustit automaticky. Červený kroužek indikuje, že probíhá zachycení provozu. Pokud se nezobrazí, začněte kliknutím na černý kroužek.
+   - V Microsoft Edge/IE se má záznam spustit automaticky. Pokud tomu tak není, klikněte na zelené tlačítko Přehrát.
+4. Zkuste reprodukování chyby.
+5. Po zjištění chyby při nahrávání, zastavení záznamu a uložení kopie zaznamenané aktivity:
+   - V Chrome klikněte pravým tlačítkem myši a klikněte na **Uložit jako Har s obsahem**. Tím se komprimují a vyexportují protokoly jako soubor. har.
+   - V Microsoft Edge/IE klikněte na ikonu **exportovat zaznamenaný přenos** . Tím se zkomprimuje a vyexportuje protokol.
+6. Přejděte na kartu **Konzola** a vyhledejte všechna upozornění a chyby. Uložení protokolu konzoly:
+   - V prohlížeči Chrome klikněte pravým tlačítkem myši kdekoli v protokolu konzoly. Vyberte **Uložit jako**, exportovat a protokol zip.
+   - V Microsoft Edge/IE klikněte pravým tlačítkem na chyby a vyberte **Kopírovat vše**.
+7. Zavřete Vývojářské nástroje.

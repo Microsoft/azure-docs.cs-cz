@@ -8,54 +8,54 @@ ms.author: zarhoads
 ms.date: 09/11/2018
 ms.topic: conceptual
 description: Rychlý vývoj na platformě Kubernetes s využitím kontejnerů a mikroslužeb v Azure
-keywords: 'Docker, Kubernetes, Azure, AKS, službě Azure Kubernetes, kontejnery, Helm, služby sítě, směrování sítě služby, kubectl, k8s '
-ms.openlocfilehash: 651ae9d9f9a622724e1ee606219ba940995aa555
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, síť pro služby, směrování sítě pro služby, kubectl, k8s '
+ms.openlocfilehash: 2434507ac89d631bb96ae9633403075801879a37
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67441750"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68277401"
 ---
 # <a name="troubleshooting-guide"></a>Průvodce odstraňováním potíží
 
 Tato příručka obsahuje informace o běžných problémů, možná bude při používání Azure Dev mezery.
 
-Pokud máte potíže při používání prostorů vývoj Azure, vytvořte [problém v úložišti GitHub Azure Dev prostory](https://github.com/Azure/dev-spaces/issues).
+Pokud máte problém s použitím Azure Dev Spaces, vytvořte [problém v úložišti Azure dev Spaces GitHubu](https://github.com/Azure/dev-spaces/issues).
 
 ## <a name="enabling-detailed-logging"></a>Povolení podrobného protokolování
 
-K odstraňování problémů efektivněji, může pomoct vytvořit podrobnější protokoly ke kontrole.
+Pokud chcete řešit problémy efektivněji, může vám pomoct vytvořit podrobnější protokoly pro kontrolu.
 
-Pro rozšíření sady Visual Studio, nastavte `MS_VS_AZUREDEVSPACES_TOOLS_LOGGING_ENABLED` proměnné prostředí na hodnotu 1. Je potřeba restartovat Visual Studio pro proměnné prostředí se projeví. Po povolení podrobných protokolů zapisován vaše `%TEMP%\Microsoft.VisualStudio.Azure.DevSpaces.Tools` adresáře.
+Pro rozšíření sady Visual Studio, nastavte `MS_VS_AZUREDEVSPACES_TOOLS_LOGGING_ENABLED` proměnné prostředí na hodnotu 1. Je potřeba restartovat Visual Studio pro proměnné prostředí se projeví. Po povolení budou do vašeho `%TEMP%\Microsoft.VisualStudio.Azure.DevSpaces.Tools` adresáře zapsány podrobné protokoly.
 
 V rozhraní příkazového řádku, můžete pomocí výstupní informace během provádění příkazu `--verbose` přepnout. Můžete také procházet podrobnější protokoly v `%TEMP%\Azure Dev Spaces`. Na počítači Mac, můžete najít svého adresáře TEMP spuštěním `echo $TMPDIR` z okna terminálu. Na počítači s Linuxem adresář TEMP je obvykle `/tmp`.
 
 ## <a name="debugging-services-with-multiple-instances"></a>Ladění služeb s více instancemi
 
-V současné době Azure Dev prostory funguje nejlépe při ladění jednu instanci nebo pod. Soubor azds.yaml obsahuje nastavení, *replicaCount*, určující počet podů Kubernetes spuštěné pro vaši službu. Pokud změníte replicaCount nakonfigurovat svoji aplikaci spouštět několik podů se pro dané služby, ladicí program připojí k první pod při uvedeny v abecedním pořadí. Ladicí program připojí k jiné pod dojde k recyklování původní pod, což může způsobit neočekávané chování.
+V současné době Azure Dev Spaces fungovat nejlépe při ladění jedné instance nebo pod. Soubor azds. yaml obsahuje nastavení *replicaCount*, které označuje počet lusků, které Kubernetes pro vaši službu spouští. Pokud změníte replicaCount a nakonfigurujete aplikaci tak, aby spouštěla více lusků pro danou službu, ladicí program se připojí k prvnímu pod, pokud je uveden abecedně. Ladicí program se připojí k jinému pod při recyklování původní pod, což může vést k neočekávanému chování.
 
 ## <a name="error-failed-to-create-azure-dev-spaces-controller"></a>Chyba "nepovedlo se vytvořit Azure Dev prostory kontroleru.
 
 ### <a name="reason"></a>Reason
-Tato chyba může zobrazit, když dojde k chybě při vytváření kontroleru. Pokud se jedná o přechodnou chybu, odstranit a znovu vytvořte kontroler ho opravit.
+Tato chyba může zobrazit, když dojde k chybě při vytváření kontroleru. Pokud se jedná o přechodnou chybu, odstraňte a znovu vytvořte kontroler, abyste ho opravili.
 
 ### <a name="try"></a>Vyzkoušení
 
-Odstraňte kontroleru:
+Odstraňte kontroler:
 
 ```bash
 azds remove -g <resource group name> -n <cluster name>
 ```
 
-Odstranit kontroler musíte použít rozhraní příkazového řádku Azure Dev mezery. Není možné odstranit kontroleru ze sady Visual Studio. Také nelze nainstalovat rozhraní příkazového řádku Azure Dev mezery ve službě Azure Cloud Shell, řadiči nelze odstranit z Azure Cloud Shell.
+K odstranění kontroleru je nutné použít Azure Dev Spaces CLI. Z aplikace Visual Studio není možné odstranit kontroler. Nemůžete také nainstalovat Azure Dev Spaces CLI do Azure Cloud Shell, takže nemůžete odstranit řadič z Azure Cloud Shell.
 
-Pokud nemáte Azure Dev prostory nainstalované rozhraní příkazového řádku, je nejprve nainstalujte ho pomocí následujícího příkazu potom odstranit řadiče:
+Pokud nemáte nainstalované rozhraní příkazového řádku Azure Dev Spaces, můžete ho nejdřív nainstalovat pomocí následujícího příkazu a pak odstranit kontroler:
 
 ```cmd
 az aks use-dev-spaces -g <resource group name> -n <cluster name>
 ```
 
-Opětovné vytvoření kontroleru můžete udělat v sadě Visual Studio nebo rozhraní příkazového řádku. Zobrazit [týmu vývoje](quickstart-team-development.md) nebo [vývoj s .NET Core](quickstart-netcore-visualstudio.md) rychlých startů pro příklady.
+Opětovné vytvoření kontroleru můžete udělat v sadě Visual Studio nebo rozhraní příkazového řádku. Příklady najdete v tématu věnovaném [vývoji týmu](quickstart-team-development.md) nebo vývoji pomocí Průvodce rychlým startem [.NET Core](quickstart-netcore-visualstudio.md) .
 
 ## <a name="error-service-cannot-be-started"></a>Chyba "službu nelze spustit."
 
@@ -79,7 +79,7 @@ V sadě Visual Studio:
     ![Možnosti nástrojů – snímek obrazovky dialogového okna](media/common/VerbositySetting.PNG)
     
 ### <a name="multi-stage-dockerfiles"></a>Vícefázové soubory Dockerfile:
-Zobrazí *službu nelze spustit* při použití souboru Dockerfile vícefázové došlo k chybě. V takovém případě podrobný výstup obsahuje následující text:
+Při použití souboru Dockerfile s více fázemi se zobrazí chyba, že se *Služba nedá spustit* . V takové situaci obsahuje podrobný výstup následující text:
 
 ```cmd
 $ azds up -v
@@ -94,10 +94,10 @@ Failed to build container image.
 Service cannot be started.
 ```
 
-K této chybě dochází, protože sestavení používají starší verzi dockeru, který nepodporuje vícefázové uzlů AKS. Aby se zabránilo vícefázových sestavení, přepište vašem souboru Dockerfile.
+K této chybě dochází, protože uzly AKS používají starší verzi Docker, která nepodporuje buildy ve více fázích. Chcete-li se vyhnout sestavením s více fázemi, přepište své souboru Dockerfile.
 
-### <a name="rerunning-a-service-after-controller-re-creation"></a>Opětovné spuštění služby po opětovné vytvoření kontroleru
-Zobrazí *službu nelze spustit* při pokusu o znovu spustit službu po odebrat a pak znovu vytvářejí řadičem Azure Dev prostory přidružené k tomuto clusteru došlo k chybě. V takovém případě podrobný výstup obsahuje následující text:
+### <a name="rerunning-a-service-after-controller-re-creation"></a>Opětovné spuštění služby po opětovném vytvoření kontroleru
+Po odebrání a opětovném vytvoření kontroleru Azure Dev Spaces přidruženého k tomuto clusteru se zobrazí chyba, že se *služba nemůže spustit* , když se pokusíte znovu spustit službu. V takové situaci obsahuje podrobný výstup následující text:
 
 ```cmd
 Installing Helm chart...
@@ -107,13 +107,13 @@ Helm install failed with exit code '1': Release "azds-33d46b-default-webapp1" do
 Error: release azds-33d46b-default-webapp1 failed: services "webapp1" already exists
 ```
 
-K této chybě dochází, protože odebrání řadiče Dev prostory neodebere služby dříve nainstalovala služba kontroleru. Opětovné vytvoření kontroleru a pak zkusíte ke spouštění služeb pomocí nového řadiče se nezdaří, protože staré služby jsou stále na místě.
+K této chybě dochází, protože odebráním kontroleru pro vývoj prostorů neodeberete služby dříve nainstalované tímto kontrolérem. Opětovné vytvoření kontroleru a pak zkusíte ke spouštění služeb pomocí nového řadiče se nezdaří, protože staré služby jsou stále na místě.
 
-Chcete-li tento problém vyřešit, použijte `kubectl delete` příkaz ručně odebrat starý služby z clusteru a pak znovu spusťte prostory Dev k instalaci nových služeb.
+Pokud chcete tento problém vyřešit, pomocí `kubectl delete` příkazu ručně odeberte staré služby z clusteru a pak znovu spusťte vývojové prostory a nainstalujte nové služby.
 
 ## <a name="dns-name-resolution-fails-for-a-public-url-associated-with-a-dev-spaces-service"></a>Překlad názvů DNS pro veřejnou adresu URL související se službou Dev prostory nezdaří
 
-Veřejný koncový bod adresy URL pro vaši službu můžete nakonfigurovat tak, že zadáte `--public` přepněte `azds prep` příkaz, nebo výběrem `Publicly Accessible` zaškrtávacího políčka v sadě Visual Studio. Při spuštění služby v prostorách Dev, se automaticky registruje veřejný název DNS. Pokud tento název DNS není zaregistrovaný, zobrazí se *nelze zobrazit stránku* nebo *lokalitě je nedostupné* chyby ve webovém prohlížeči při připojování k veřejnou adresu URL.
+Můžete nakonfigurovat koncový bod veřejné adresy URL pro vaši službu zadáním `--public` přepínače `azds prep` na příkaz nebo zaškrtnutím `Publicly Accessible` políčka v aplikaci Visual Studio. Veřejný název DNS se automaticky zaregistruje při spuštění služby ve vývojových prostorech. Pokud tento název DNS není zaregistrovaný, zobrazí se ve webovém prohlížeči při připojování k veřejné adrese URL *Stránka nemůžete zobrazit* nebo *se k webu nedá dostat* chyba.
 
 ### <a name="try"></a>Zkuste:
 
@@ -125,7 +125,7 @@ azds list-uris
 
 Pokud je adresa URL v *čekající* stavu, která znamená, že Dev prostory stále čeká registraci DNS pro dokončení. V některých případech trvá několik minut, než registraci dokončit. Vývoj prostory otevře také tunel localhost pro každou službu, kterou můžete použít při čekání na registraci DNS.
 
-Je-li adresy URL v *čekající* stavu po dobu více než 5 minut, může to znamenat problém s externí pod DNS, který vytvoří koncový bod veřejné nebo pod kontroleru příchozího přenosu dat nginx, která získá veřejný koncový bod. Pokud chcete odstranit tyto pody můžete použít následující příkazy. AKS automaticky znovu vytvoří odstraněné tyto pody.
+Pokud adresa URL zůstane v nevyřízeném stavu po dobu delší než 5 minut, může to znamenat problém s externím DNS pod tím, že vytvoří veřejný koncový bod nebo Nginx příchozí řadič domény pod tím, který získá veřejný koncový bod. Pokud chcete odstranit tyto pody můžete použít následující příkazy. AKS automaticky znovu vytvoří odstraněnou lusky.
 
 ```cmd
 kubectl delete pod -n kube-system -l app=addon-http-application-routing-external-dns
@@ -141,13 +141,13 @@ Chyba znamená, že tento azds.exe není v proměnné prostředí PATH, jak je v
 
 Spusťte VS Code z příkazového řádku, kde je správně nastavit proměnné prostředí PATH.
 
-## <a name="error-required-tools-to-build-and-debug-projectname-are-out-of-date"></a>Chyba "vyžaduje nástroje pro vytváření a ladění"projectname"jsou zastaralé."
+## <a name="error-required-tools-to-build-and-debug-projectname-are-out-of-date"></a>Chyba: požadované nástroje pro sestavení a ladění ProjectName jsou zastaralé.
 
-Pokud máte novější verzi rozšíření VS Codu pro Azure Dev mezery, ale starší verzi rozhraní příkazového řádku Azure Dev prostory se zobrazí tato chyba ve Visual Studio Code.
+Tato chyba se zobrazí v Visual Studio Code, pokud máte novější verzi rozšíření VS Code pro Azure Dev Spaces, ale starší verzi Azure Dev Spaces CLI.
 
 ### <a name="try"></a>Vyzkoušení
 
-Stáhněte a nainstalujte nejnovější verzi rozhraní příkazového řádku Azure Dev mezery:
+Stáhněte a nainstalujte si nejnovější verzi rozhraní příkazového řádku Azure Dev Spaces:
 
 * [Windows](https://aka.ms/get-azds-windows)
 * [Mac](https://aka.ms/get-azds-mac)
@@ -159,7 +159,7 @@ Pokud azds.exe není nainstalovaná nebo správně nakonfigurovaný, může se z
 
 ### <a name="try"></a>Zkuste:
 
-1. Zkontrolujte umístění %ProgramFiles%/Microsoft SDKs\Azure\Azure Dev prostory rozhraní příkazového řádku pro azds.exe. Pokud existuje, přidejte do proměnné prostředí PATH v tomto umístění.
+1. Ověřte umístění% ProgramFiles%/Microsoft SDKs\Azure\Azure dev Spaces CLI pro azds. exe. Pokud existuje, přidejte do proměnné prostředí PATH v tomto umístění.
 2. Pokud není nainstalovaná azds.exe, spusťte následující příkaz:
 
     ```cmd
@@ -169,10 +169,10 @@ Pokud azds.exe není nainstalovaná nebo správně nakonfigurovaný, může se z
 ## <a name="warning-dockerfile-could-not-be-generated-due-to-unsupported-language"></a>Upozornění "soubor Dockerfile se nepodařilo vygenerovat z důvodu nepodporovaný jazyk.
 Azure Dev prostory poskytuje nativní podporu pro C# nebo Node.js. Při spuštění *azds prep* do adresáře, který obsahuje kód napsaný v jednom z těchto jazyků, prostory vývoj Azure automaticky vytvoří odpovídající soubor Dockerfile za vás.
 
-Stále můžete Azure Dev prostory pomocí kódu napsaného v jiných jazycích, ale musíte ručně vytvořit soubor Dockerfile dřív, než spustíte *azds nahoru* poprvé.
+Azure Dev Spaces můžete dál používat s kódem napsaným v jiných jazycích, ale před prvním spuštěním *azds* musíte ručně vytvořit souboru Dockerfile.
 
 ### <a name="try"></a>Zkuste:
-Pokud vaše aplikace je napsán v jazyce, Azure Dev prostory nepodporuje nativně, budete muset zadat příslušný soubor Dockerfile pro sestavení image kontejneru, spouštění kódu. Docker nabízí [seznam osvědčených postupů pro psaní soubory Dockerfile](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/) a [odkaz na soubor Dockerfile](https://docs.docker.com/engine/reference/builder/) , které vám umožňují se píše soubor Dockerfile, který vyhovuje vašim potřebám.
+Pokud je vaše aplikace napsána v jazyce, který Azure Dev Spaces není nativně podporován, je nutné poskytnout odpovídající souboru Dockerfile k vytvoření image kontejneru, ve které je spuštěn váš kód. Docker poskytuje [seznam osvědčených postupů pro psaní fázemi](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/) a [souboru Dockerfile odkaz](https://docs.docker.com/engine/reference/builder/) , který vám může poznamenat psaní souboru Dockerfile, které vyhovuje vašim potřebám.
 
 Jakmile budete mít odpovídající soubor Dockerfile v místě, abyste mohli pokračovat spuštění *azds nahoru* ke spuštění aplikace v Azure Dev mezery.
 
@@ -186,9 +186,9 @@ Port kontejneru není k dispozici. Tomuto problému může dojít, protože:
 
 ### <a name="try"></a>Zkuste:
 1. Jestli je kontejner právě vytvořená/nasazuje, můžete počkejte 2-3 sekund a zkuste to znovu přístupu ke službě. 
-1. Zkontrolujte konfiguraci portů. Zadaný port čísla by měla být **identické** ve všech následujících prostředků:
-    * **Soubor Dockerfile:** Určená `EXPOSE` instrukce.
-    * **[Diagram helmu](https://docs.helm.sh):** Určená `externalPort` a `internalPort` hodnoty pro službu (nacházejí se často ve `values.yml` souboru),
+1. Zkontrolujte konfiguraci portů. Zadaná čísla portů by měla být **shodná** se všemi těmito prostředky:
+    * **Souboru Dockerfile** `EXPOSE` Určené instrukcí.
+    * **[Graf Helm](https://docs.helm.sh):** Určené hodnotami `internalPort` `values.yml` a pro službu (často se nachází v souboru), `externalPort`
     * Žádné porty se otevřely v kódu aplikace, například v Node.js: `var server = app.listen(80, function () {...}`
 
 
@@ -202,7 +202,7 @@ Je nutné spustit `azds up` z kořenového adresáře kódu, které chcete spust
 1. Do kořenové složky, která obsahuje kód služby změňte aktuální adresář. 
 1. Pokud nemáte _azds.yaml_ souboru ve složce kód spustit `azds prep` ke generování Docker, Kubernetes a Azure Dev prostory prostředky.
 
-## <a name="error-the-pipe-program-azds-exited-unexpectedly-with-code-126"></a>Chyba: "Cílového programu"azds"neočekávaně ukončil s kódem 126."
+## <a name="error-the-pipe-program-azds-exited-unexpectedly-with-code-126"></a>Chyba: ' Program kanálu ' azds ' se neočekávaně ukončil s kódem 126. '
 Spouští se ladicí program VS Code může někdy vést k této chybě.
 
 ### <a name="try"></a>Zkuste:
@@ -213,7 +213,7 @@ Spouští se ladicí program VS Code může někdy vést k této chybě.
 Spuštění ladicího programu VS Code zaznamená chybu: `Failed to find debugger extension for type:coreclr.`
 
 ### <a name="reason"></a>Důvod
-Rozšíření VS Codu pro jazyk C# nainstalována na vývojovém počítači nemáte. C# Rozšíření obsahuje podporu ladění pro .NET Core (CoreCLR).
+Rozšíření VS Codu pro jazyk C# nainstalována na vývojovém počítači nemáte. Toto C# rozšíření zahrnuje podporu ladění pro .NET Core (CoreCLR).
 
 ### <a name="try"></a>Zkuste:
 Nainstalujte [rozšíření VS Codu pro jazyk C#](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp).
@@ -239,7 +239,7 @@ Aktualizace `launch.json` soubor `.vscode` podadresář složky projektu. Změni
 ## <a name="the-type-or-namespace-name-mylibrary-could-not-be-found"></a>Název typu nebo oboru názvů 'Moje knihovna' nebyl nalezen
 
 ### <a name="reason"></a>Reason 
-Kontext sestavení na úrovni projektu nebo služby ve výchozím nastavení se proto projekt knihovny, které používáte nebyl nalezen.
+Kontext sestavení je ve výchozím nastavení na úrovni projektu nebo služby, proto nelze najít projekt knihovny, který používáte.
 
 ### <a name="try"></a>Zkuste:
 Co je potřeba udělat:
@@ -250,7 +250,7 @@ Co je potřeba udělat:
 Můžete najít na příklad https://github.com/sgreenmsft/buildcontextsample
 
 ## <a name="microsoftdevspacesregisteraction-authorization-error"></a>Chyba autorizace "Microsoft.DevSpaces/register/action.
-Potřebujete *vlastníka* nebo *Přispěvatel* přístup ve vašem předplatném Azure ke správě Azure Dev mezery. Tato chyba může zobrazit, pokud se snažíte Správa vývoje prostorů a není nutné *vlastníka* nebo *Přispěvatel* přístup k přidruženému předplatnému Azure.
+Ke správě Azure Dev Spaces potřebujete ve svém předplatném Azure přístup *vlastníka* nebo *přispěvatele* . Tato chyba se může zobrazit, pokud se pokoušíte spravovat vývojové prostory a nemáte oprávnění *vlastníka* nebo přispěvatele  k přidruženému předplatnému Azure.
 `The client '<User email/Id>' with object id '<Guid>' does not have authorization to perform action 'Microsoft.DevSpaces/register/action' over scope '/subscriptions/<Subscription Id>'.`
 
 ### <a name="reason"></a>Reason
@@ -263,12 +263,12 @@ Někdo s přístupem k roli vlastníka nebo přispěvatele k předplatnému Azur
 az provider register --namespace Microsoft.DevSpaces
 ```
 
-## <a name="dev-spaces-times-out-at-waiting-for-container-image-build-step-with-aks-virtual-nodes"></a>Vývoj prostory vyprší časový limit na *čekání na sestavení image kontejneru...*  krok s virtuálních uzlů AKS
+## <a name="dev-spaces-times-out-at-waiting-for-container-image-build-step-with-aks-virtual-nodes"></a>Při *čekání na sestavení image kontejneru* se vyprší doba vývojového prostoru... krok s AKS virtuálními uzly
 
 ### <a name="reason"></a>Reason
-Tento časový limit nastane, pokud se pokusíte použít Dev prostory ke spuštění služby, který je konfigurován pro běh [virtuálního uzlu AKS](https://docs.microsoft.com/azure/aks/virtual-nodes-portal). Vývoj prostory aktuálně nepodporuje sestavování nebo ladění služeb na virtuální uzly.
+K tomuto časovému limitu dojde, když se pokusíte použít vývojové prostory ke spuštění služby, která je nakonfigurovaná tak, aby běžela ve [virtuálním uzlu AKS](https://docs.microsoft.com/azure/aks/virtual-nodes-portal). Vývojové prostory aktuálně nepodporují vytváření ani ladění služeb na virtuálních uzlech.
 
-Pokud spustíte `azds up` s `--verbose` přepínač nebo povolit podrobné protokolování v sadě Visual Studio se zobrazí další podrobnosti:
+Pokud spustíte `azds up` `--verbose` s přepínačem nebo povolíte podrobné protokolování v aplikaci Visual Studio, zobrazí se další podrobnosti:
 
 ```cmd
 $ azds up --verbose
@@ -280,12 +280,12 @@ Streaming build container logs for service 'mywebapi' failed with: Timed out aft
 Container image build failed
 ```
 
-Výše uvedený příkaz ukazuje, že byl přiřazen služby pod *virtuální node-aci-linux*, což je virtuálního uzlu.
+Výše uvedený příkaz ukazuje, že je uzel Service přiřazený k *virtuálnímu uzlu-ACI-Linux*, který je virtuálním uzlem.
 
 ### <a name="try"></a>Zkuste:
-Aktualizace grafu Helm pro službu odstraňte přitom všechny *nodeSelector* a/nebo *tolerations* hodnoty, které umožňují bude služba spouštět ve virtuálním uzlu. Tyto hodnoty jsou obvykle definovány v grafu `values.yaml` souboru.
+Aktualizujte graf Helm, aby služba odstranila všechny hodnoty *nodeSelector* a/nebo *tolerovány* , které umožňují spuštění služby ve virtuálním uzlu. Tyto hodnoty jsou obvykle definovány v `values.yaml` souboru grafu.
 
-Stále můžete použít cluster AKS, který má funkci virtuální uzly povolena, pokud se službu, kterou chcete sestavení/ladění prostřednictvím prostorů Dev běží na uzlu virtuálního počítače. Toto je výchozí konfigurace.
+I nadále můžete používat cluster AKS s povolenou funkcí virtuálních uzlů, pokud služba, kterou chcete sestavit/ladit prostřednictvím vývojových prostorů, běží na uzlu virtuálního počítače. Toto je výchozí konfigurace.
 
 ## <a name="error-could-not-find-a-ready-tiller-pod-when-launching-dev-spaces"></a>"Chyba: Nelze nalézt připravený tiller pod" při spuštění vývoje prostorů
 
@@ -295,31 +295,31 @@ K této chybě dochází, pokud klient Helm může už sdělit pod Tiller spušt
 ### <a name="try"></a>Zkuste:
 Obvykle restartování agentské uzly v clusteru vyřeší tento problém.
 
-## <a name="error-release-azds-identifier-spacename-servicename-failed-services-servicename-already-exists-or-pull-access-denied-for-servicename-repository-does-not-exist-or-may-require-docker-login"></a>"Chyba: verze azds -\<identifikátor\>-\<spacename\>-\<servicename\> se nezdařilo: služeb\<servicename\>' již existuje "nebo" o přijetí změn přístup byl odepřen pro \<servicename\>, úložiště neexistuje, nebo můžou vyžadovat "docker login."
+## <a name="error-release-azds-identifier-spacename-servicename-failed-services-servicename-already-exists-or-pull-access-denied-for-servicename-repository-does-not-exist-or-may-require-docker-login"></a>"Chyba: Release azds-\<identifikátor\>-\<Space\>ServiceNamese\> nezdařil: služby"\<ServiceName-\<\>' už existuje "nebo" přístup k získání byl \<odepřen\>pro ServiceName, úložiště neexistuje nebo může vyžadovat "Docker login"
 
 ### <a name="reason"></a>Reason
-K těmto chybám může dojít, pokud je kombinovat s přímým přístupem příkazů Helm (, jako `helm install`, `helm upgrade`, nebo `helm delete`) pomocí příkazů Dev mezery (například `azds up` a `azds down`) uvnitř stejné místo vývoj. K nim dojde, protože prostory vývoj má svoji vlastní instanci Tiller, který je v konfliktu s vlastní instanci Tiller spuštěné ve stejném dev prostoru.
+K `helm install`těmto chybám může docházet v případě, že ve stejném vývojovém prostoru budete kombinovat spuštěné příkazy Helm (například, `helm upgrade`nebo `azds up` `helm delete`) `azds down`s příkazy pro vývoj prostorů (například a). K nim dochází, protože vývojové prostory mají svou vlastní instanci pokladny, která je v konfliktu s vaší vlastní instancí pokladny spuštěnou ve stejném vývojovém prostoru.
 
 ### <a name="try"></a>Zkuste:
-Můžete použít příkazy Helm a vývoj prostory příkazy spouštěly pro stejný cluster AKS, ale každého oboru názvů s povoleným Dev prostory by měl použít jeden z nich.
+Je možné použít příkazy Helm i příkazy pro vývoj v rámci stejného clusteru AKS, ale každý obor názvů s povoleným místem pro vývoj by měl použít buď jednu, nebo druhou.
 
-Předpokládejme například, že použijete ke spuštění celé aplikace v prostoru dev nadřazeného příkazu Helm. Můžete vytvořit podřízené dev prostory vypnout nadřazeného, použít vývoje prostorů ke spouštění jednotlivých služeb uvnitř podřízených prostory vývoj a testování služeb společně. Jakmile budete připraveni k vrácení zpět se změnami, pomocí příkazu Helm nasazení aktualizovaný kód do nadřazené dev prostoru. Nepoužívejte `azds up` aktualizované službu spustit v nadřazeném prvku dev místa, protože bude v konfliktu se službou zpočátku spustit pomocí Helm.
+Předpokládejme například, že použijete příkaz Helm ke spuštění celé aplikace v nadřazeném vývojovém prostoru. Můžete vytvořit podřízené vývojové prostory z této nadřazené položky, pomocí vývojových prostorů spouštět jednotlivé služby uvnitř podřízených vývojových prostorů a testovat služby společně. Až budete připraveni k vrácení změn se změnami, nasaďte aktualizovaný kód do nadřazeného vývojového prostoru pomocí příkazu Helm. Nepoužívejte `azds up` ke spuštění aktualizované služby v nadřazeném vývojovém prostoru, protože bude v konfliktu se službou nejprve spuštěna pomocí Helm.
 
 ## <a name="azure-dev-spaces-proxy-can-interfere-with-other-pods-running-in-a-dev-space"></a>Proxy služby Azure Dev mezer může narušovat dalších podů se spuštěnou v prostoru vývoj
 
 ### <a name="reason"></a>Důvod
-Když povolíte prostory vývoj oboru názvů v clusteru AKS, volá se kontejnerem Další _mindaro proxy_ je nainstalován ve všech pody spuštěné v tomto oboru názvů. Tento kontejner zachycuje volání služeb v podu, která je nedílnou součástí vývoje prostorů týmu vývojářských funkcí; Nicméně by mohl narušovat určité služby spuštěné v tyto pody. Je známo ovlivňovat podů běží mezipaměti Azure Redis, což připojení chyby a selhání ve primárního a sekundárního komunikace.
+Když povolíte prostory vývoj oboru názvů v clusteru AKS, volá se kontejnerem Další _mindaro proxy_ je nainstalován ve všech pody spuštěné v tomto oboru názvů. Tento kontejner zachycuje volání služeb v rozhraní pod, které je nedílnou součástí možností vývoje týmu pro vývojové prostory; může ale kolidovat s některými službami běžícími v těchto luskech. Je známo, že brání v luskech se spuštěnou mezipamětí Azure pro Redis, což způsobuje chyby a selhání připojení v primární nebo sekundární komunikaci.
 
 ### <a name="try"></a>Zkuste:
-Ovlivněné podů můžete přesunout do oboru názvů v clusteru, který nemá _není_ Dev prostory povolena. Zbytek aplikace můžete dál ke spouštění uvnitř oboru názvů s povoleným Dev mezery. Vývoj prostory nelze nainstalovat _mindaro proxy_ kontejneru uvnitř Dev prostory povolených oborů názvů.
+Ovlivněné lusky můžete přesunout do oboru názvů v clusteru, ve kterém _nejsou_ povolené vývojové prostory. Zbytek vaší aplikace může dál běžet v oboru názvů s povoleným vývojovým prostorem. Vývoj prostory nelze nainstalovat _mindaro proxy_ kontejneru uvnitř Dev prostory povolených oborů názvů.
 
 ## <a name="azure-dev-spaces-doesnt-seem-to-use-my-existing-dockerfile-to-build-a-container"></a>Azure Dev prostory vypadá, že nepodporuje použití Můj existující soubor Dockerfile k vytvoření kontejneru
 
 ### <a name="reason"></a>Důvod
-Azure Dev prostory můžete nakonfigurovat tak, aby odkazoval na konkrétní _soubor Dockerfile_ ve vašem projektu. Pokud se zdá, že nepoužívá prostory vývoj Azure _soubor Dockerfile_ očekáváte, že k vytvoření kontejnerů, bude pravděpodobně nutné explicitně zjistit prostory Azure Dev, které soubor Dockerfile používat. 
+Azure Dev prostory můžete nakonfigurovat tak, aby odkazoval na konkrétní _soubor Dockerfile_ ve vašem projektu. Pokud se zobrazí Azure Dev Spaces nepoužívá _souboru Dockerfile_ , kterou očekáváte k sestavování kontejnerů, možná budete muset explicitně sdělit Azure dev Spaces které souboru Dockerfile se mají použít. 
 
 ### <a name="try"></a>Zkuste:
-Otevřít _azds.yaml_ souboru této Azure Dev prostory vygenerováno v projektu. Použít *-> Konfigurace vývoj -> build -> soubor dockerfile* směrnice tak, aby odkazoval na soubor Dockerfile, který chcete použít:
+Otevřete soubor _azds. yaml_ , který Azure dev Spaces vygeneroval v projektu. Pomocí direktivy *Configuration-> vývoj-> Build-> souboru Dockerfile* nasměrujte na souboru Dockerfile, který chcete použít:
 
 ```
 ...
@@ -329,105 +329,105 @@ configurations:
       dockerfile: Dockerfile.develop
 ```
 
-## <a name="error-internal-watch-failed-watch-enospc-when-attaching-debugging-to-a-nodejs-application"></a>Chyby "vnitřní watch se nezdařilo: Podívejte se na ENOSPC" při připojování ladění aplikace v Node.js
+## <a name="error-internal-watch-failed-watch-enospc-when-attaching-debugging-to-a-nodejs-application"></a>Chyba "vnitřní kukátko se nezdařilo: Sledujte ENOSPC" při připojování ladění k aplikaci Node. js
 
 ### <a name="reason"></a>Reason
 
-Byla překročena uzlu spuštěn pod aplikaci Node.js se pokoušíte připojit se ladicí program *fs.inotify.max_user_watches* hodnotu. V některých případech [na výchozí hodnotu *fs.inotify.max_user_watches* pravděpodobně příliš malá pro zpracování, ladicí program se připojuje přímo k pod](https://github.com/Azure/AKS/issues/772).
+Uzel, na kterém je spuštěná aplikace Node. js, ke které se pokoušíte připojit pomocí ladicího programu, překročil hodnotu *_user_watches FS. inotify. Max* . V některých případech [může být výchozí hodnota *FS. inotify. Max _user_watches* příliš malá, aby bylo možné zpracovat připojení ladicího programu přímo k poli pod](https://github.com/Azure/AKS/issues/772).
 
 ### <a name="try"></a>Vyzkoušení
-Dočasným řešením tohoto problému je zvýšení hodnoty *fs.inotify.max_user_watches* na každém uzlu v clusteru a tento uzel restartovat, aby se změny projevily.
+Dočasným řešením tohoto problému je zvýšit hodnotu *FS. inotify. Max _user_watches* na každém uzlu v clusteru a restartovat tento uzel, aby se změny projevily.
 
-## <a name="new-pods-are-not-starting"></a>Nejsou od nových podů
+## <a name="new-pods-are-not-starting"></a>Nespouští se nové lusky.
 
 ### <a name="reason"></a>Reason
 
-Inicializátor Kubernetes nelze použít PodSpec pro nových podů z důvodu změny oprávnění RBAC *Správce clusteru* role v clusteru. Nová pod mohou mít i neplatný PodSpec, například účet služby přidružené k pod už neexistuje. Zobrazíte podů, které jsou v *čekající* stavu z důvodu problému inicializátor, použijte `kubectl get pods` příkaz:
+Inicializátor Kubernetes nemůže použít PodSpec pro nové lusky z důvodu změn oprávnění RBAC do role *Správce clusteru* v clusteru. Nový objekt pod může mít také neplatnou PodSpec, například účet služby spojený s objektem pod již neexistuje. Chcete-li zobrazit lusky, které jsou ve stavu *čekání* v důsledku problému s inicializátorem `kubectl get pods` , použijte příkaz:
 
 ```bash
 kubectl get pods --all-namespaces --include-uninitialized
 ```
 
-Tento problém může mít vliv na podů v *všechny obory názvů* v clusteru, včetně oborů názvů, ve kterém není povoleno Azure Dev prostory.
+Tento problém může mít vliv na lusky ve *všech oborech názvů* v clusteru včetně oborů názvů, kde není povolený Azure dev Spaces.
 
 ### <a name="try"></a>Vyzkoušení
 
-[Aktualizace na nejnovější verzi rozhraní příkazového řádku vývojáře prostory](./how-to/upgrade-tools.md#update-the-dev-spaces-cli-extension-and-command-line-tools) a její následné odstranění *azds InitializerConfiguration* z řadiče Azure Dev mezery:
+[Aktualizujte vývojové prostory CLI na nejnovější verzi](./how-to/upgrade-tools.md#update-the-dev-spaces-cli-extension-and-command-line-tools) a pak odstraňte *azds InitializerConfiguration* z kontroleru Azure dev Spaces:
 
 ```bash
 az aks get-credentials --resource-group <resource group name> --name <cluster name>
 kubectl delete InitializerConfiguration azds
 ```
 
-Po odebrání *azds InitializerConfiguration* z kontroleru Azure Dev mezery, použijte `kubectl delete` odebrat všechny podů v *čekající* stavu. Všechny čekající podů byly odebrány, pody znovu nasadit.
+Po odebrání *azds InitializerConfiguration* z kontroleru Azure dev Spaces použijte `kubectl delete` k odebrání všech lusků ve stavu čekání na vyřízení  . Po odebrání všech probíhajících lusků znovu nasaďte své lusky.
 
-Pokud nových podů jsou i nadále zablokované ve *čekající* stavu po nasazení si prohlédne použití `kubectl delete` odebrat všechny podů v *čekající* stavu. Po všech čekající podů byly odebrány, odstraňte kontroleru z clusteru a znovu ji nainstalujte:
+Pokud se nové lusky po opětovném  nasazení stále zablokují ve stavu čekání `kubectl delete` , použijte k odebrání všech lusků ve stavu *čekání* na vyřízení. Po odebrání všech probíhajících lusků odstraňte řadič z clusteru a znovu ho nainstalujte:
 
 ```bash
 azds remove -g <resource group name> -n <cluster name>
 azds controller create --name <cluster name> -g <resource group name> -tn <cluster name>
 ```
 
-Po přeinstalaci řadiče znovu nasaďte pody.
+Po opětovné instalaci kontroleru znovu nasaďte své lusky.
 
-## <a name="incorrect-rbac-permissions-for-calling-dev-spaces-controller-and-apis"></a>Nesprávná oprávnění RBAC pro volání Dev prostory kontroleru a rozhraní API
+## <a name="incorrect-rbac-permissions-for-calling-dev-spaces-controller-and-apis"></a>Nesprávná oprávnění RBAC pro volání řadiče pro vývoj prostorů a rozhraní API
 
 ### <a name="reason"></a>Reason
-Uživatele, kteří používají Azure Dev prostory kontroleru musí mít přístup ke čtení správce *kubeconfig* v clusteru AKS. Například je k dispozici v toto oprávnění [předdefinovaná Azure Kubernetes Service clusteru správce Role](../aks/control-kubeconfig-access.md#available-cluster-roles-permissions). Musí také mít uživatele, kteří používají Azure Dev prostory kontroleru *Přispěvatel* nebo *vlastníka* role RBAC pro kontroler.
+Uživatel, který přistupuje k řadiči Azure Dev Spaces, musí mít přístup, aby mohl číst *kubeconfig* správce v clusteru AKS. Toto oprávnění je například k dispozici v [předdefinované roli Správce clusteru služby Azure Kubernetes](../aks/control-kubeconfig-access.md#available-cluster-roles-permissions). Uživatel, který přistupuje k řadiči Azure Dev Spaces, musí mít  také roli přispěvatele nebo *vlastníka* RBAC pro kontroler.
 
 ### <a name="try"></a>Vyzkoušení
-Další podrobnosti o aktualizaci oprávnění uživatele pro AKS cluster jsou k dispozici [tady](../aks/control-kubeconfig-access.md#assign-role-permissions-to-a-user-or-group).
+Další podrobnosti o aktualizaci oprávnění uživatele pro cluster AKS jsou k dispozici [zde](../aks/control-kubeconfig-access.md#assign-role-permissions-to-a-user-or-group).
 
-Aktualizace uživatelské role RBAC pro kontroler:
+Aktualizace role uživatele RBAC pro kontroler:
 
 1. Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
-1. Přejděte do skupiny prostředků, který obsahuje kontroler, který je obvykle stejný jako AKS cluster.
-1. Povolit *zobrazit skryté typy* zaškrtávací políčko.
-1. Klikněte na kontroleru.
-1. Otevřít *řízení přístupu (IAM)* podokně.
-1. Klikněte na *přiřazení rolí* kartu.
-1. Klikněte na tlačítko *přidat* pak *přidat přiřazení role*.
-    * Pro *Role* vyberte buď *Přispěvatel* nebo *vlastníka*.
-    * Pro *přiřadit přístup k* vyberte *uživatele, skupinu nebo instanční objekt služby Azure AD*.
-    * Pro *vyberte* vyhledejte uživatele, kterému chcete udělit oprávnění.
+1. Přejděte do skupiny prostředků obsahující kontroler, který je obvykle stejný jako cluster AKS.
+1. Zaškrtněte políčko *Zobrazit skryté typy* .
+1. Klikněte na kontroler.
+1. Otevřete podokno *Access Control (IAM)* .
+1. Klikněte na kartu *přiřazení rolí* .
+1. Klikněte na *Přidat* a pak na *Přidat přiřazení role*.
+    * V případě *role* vyberte možnost *Přispěvatel* nebo *vlastník*.
+    * Pro *přiřazení přístupu k* výběru *uživatele, skupiny nebo instančního objektu služby Azure AD*.
+    * V poli *Vyberte* hledání pro uživatele, kterému chcete udělit oprávnění.
 1. Klikněte na *Uložit*.
 
-## <a name="controller-create-failing-due-to-controller-name-length"></a>Vytvoření kontroleru nedaří zálohovat z důvodu délka názvu kontroleru
+## <a name="controller-create-failing-due-to-controller-name-length"></a>Vytvoření kontroleru se nepodaří kvůli délce názvu kontroleru.
 
 ### <a name="reason"></a>Reason
-Řadič služby Azure Dev prostory název nemůže být delší než 31 znaků. Pokud název vašeho kontroleru překročí 31 znaků při povolení Dev mezery v clusteru AKS nebo vytvoříte řadič, zobrazí se chyba typu:
+Název kontroleru Azure Dev Spaces nemůže být delší než 31 znaků. Pokud je název vašeho kontroleru delší než 31 znaků, když povolíte vývojářské prostory v clusteru AKS nebo vytvoříte kontroler, zobrazí se chyba, například:
 
-*Nepovedlo se vytvořit řadič Dev prostory pro cluster "a-controller-name-that-is-way-too-long-aks-east-us": Název Azure Dev prostory Kontroleru 'a-controller-name-that-is-way-too-long-aks-east-us' je neplatný. Došlo k porušení omezení: Azure Dev prostory názvy lze pouze nejvýše 31 znaků.*
+*Nepovedlo se vytvořit kontroler pro vývoj prostorů pro cluster "a-Controller-Name---------Long-AKS-východ-US": Název kontroleru Azure Dev Spaces a-Controller-Name-to------------------Long-------AKS Porušení omezení: Názvy řadičů Azure Dev Spaces můžou být jenom nanejvýš 31 znaků dlouhé.*
 
 ### <a name="try"></a>Vyzkoušení
 
-Vytvoření kontroleru s alternativním názvem:
+Vytvořte kontroler s alternativním názvem:
 
 ```cmd
 azds controller create --name my-controller --target-name MyAKS --resource-group MyResourceGroup
 ```
 
-## <a name="enabling-dev-spaces-failing-when-windows-node-pools-are-added-to-an-aks-cluster"></a>Povolení prostorů vývoj služeb při selhání při fondy uzlů Windows se přidají do clusteru AKS
+## <a name="enabling-dev-spaces-failing-when-windows-node-pools-are-added-to-an-aks-cluster"></a>Povolení neúspěšných vývojových prostorů při přidání fondů uzlů Windows do clusteru AKS
 
 ### <a name="reason"></a>Reason
-V současné době Azure Dev prostory je určena pro spuštění na systému Linux podů a pouze uzly. Pokud máte cluster AKS pomocí fond uzlů Windows, musíte zajistit, že Azure Dev prostory podů naplánováno jenom na uzly s Linuxem. Pokud Azure Dev prostory pod je naplánováno ke spuštění na uzlech Windows, nebude spuštěna tohoto podu a povolení prostorů vývoj se nezdaří.
+V současné době je Azure Dev Spaces určen ke spouštění pouze v systémech Linux a pouze na uzlech. Pokud máte cluster AKS s fondem uzlů systému Windows, musíte zajistit, aby se Azure Dev Spaces lusky naplánovaly jenom na uzlech se systémem Linux. Pokud je naplánované spuštění Azure Dev Spaces pod uzlem v systému Windows, nespustí se ani povolení vývojových prostorů.
 
 ### <a name="try"></a>Vyzkoušení
-[Přidání změny chuti](../aks/operator-best-practices-advanced-scheduler.md#provide-dedicated-nodes-using-taints-and-tolerations) ke svému clusteru AKS zajistit Linux podů nejsou naplánovány ke spuštění na uzlech Windows.
+[Přidáním příchuti](../aks/operator-best-practices-advanced-scheduler.md#provide-dedicated-nodes-using-taints-and-tolerations) do clusteru AKS zajistěte, aby se na uzlu Windows neplánovalo spouštění oken Linux.
 
-## <a name="error-found-no-untainted-linux-nodes-in-ready-state-on-the-cluster-there-needs-to-be-at-least-one-untainted-linux-node-in-ready-state-to-deploy-pods-in-azds-namespace"></a>Chyba "nebyly nalezeny žádné untainted Linux uzly ve stavu připraveno na clusteru. Musí existovat alespoň jeden uzel untainted Linux ve stavu Připraveno k nasazení podů v oboru názvů "azds"."
+## <a name="error-found-no-untainted-linux-nodes-in-ready-state-on-the-cluster-there-needs-to-be-at-least-one-untainted-linux-node-in-ready-state-to-deploy-pods-in-azds-namespace"></a>Chyba: nenašly se žádné neobsahované uzly Linux ve stavu připraveno v clusteru. Aby bylo možné nasadit lusky v oboru názvů ' azds ', musí být v připraveném stavu aspoň jeden nev neaktivním uzlu Linux. "
 
 ### <a name="reason"></a>Reason
 
-Azure Dev prostory nelze vytvořit řadič ve vašem clusteru AKS, protože nemohl najít untainted uzel v *připravené* stavu naplánování podů na. Vyžaduje nejméně jeden uzel Linux v Azure Dev prostory *připravené* stavu, který umožňuje pro plánování podů bez zadání tolerations.
+Azure Dev Spaces ve vašem clusteru AKS nešlo vytvořit kontroler, protože v připraveném stavu nemohlo najít uzel, který  by byl v připraveném stavu, aby bylo možné naplánovat lusky. Azure Dev Spaces vyžaduje aspoň jeden uzel Linux v připraveném  stavu, který umožňuje plánování lusků bez určení tolerování.
 
 ### <a name="try"></a>Vyzkoušení
-[Aktualizujte konfiguraci barvu](../aks/operator-best-practices-advanced-scheduler.md#provide-dedicated-nodes-using-taints-and-tolerations) ve vašem clusteru AKS, aby aspoň jeden Linux umožňuje plánování podů bez zadání tolerations uzlu. Také se ujistěte, že je alespoň jeden uzel systému Linux, který umožňuje plánování podů bez zadání tolerations v *připravené* stavu. Pokud je uzel trvá příliš dlouho kontaktovat *připravené* stavu, můžete zkusit restartovat uzel.
+[Aktualizujte konfiguraci chuti](../aks/operator-best-practices-advanced-scheduler.md#provide-dedicated-nodes-using-taints-and-tolerations) v clusteru AKS, abyste zajistili, že alespoň jeden uzel pro Linux umožňuje plánování lusků bez určení jejich tolerovánosti. Také se ujistěte, že alespoň jeden uzel pro Linux, který umožňuje plánování v luskech bez určení tolerování, je ve stavu *připraveno* . Pokud bude mít váš uzel dlouhou dobu, než se dorazí na stav *připraveno* , můžete zkusit restartovat uzel.
 
-## <a name="error-azure-dev-spaces-cli-not-installed-properly-when-running-az-aks-use-dev-spaces"></a>Chyba "Azure Dev prostory rozhraní příkazového řádku není správně nainstalován" při spuštění `az aks use-dev-spaces`
+## <a name="error-azure-dev-spaces-cli-not-installed-properly-when-running-az-aks-use-dev-spaces"></a>Chyba "Azure Dev Spaces rozhraní příkazového řádku není správně nainstalováno" při spuštění`az aks use-dev-spaces`
 
 ### <a name="reason"></a>Reason
-Aktualizace rozhraní příkazového řádku Azure Dev prostory změnit cestu instalace. Pokud používáte verzi rozhraní příkazového řádku Azure starší než 2.0.63, může se zobrazit tato chyba. Pokud chcete zobrazit verzi rozhraní příkazového řádku Azure, použijte `az --version`.
+Aktualizace rozhraní příkazového řádku Azure Dev Spaces změnila jeho cestu instalace. Pokud používáte verzi Azure CLI starší než 2.0.63, může se zobrazit tato chyba. Pokud chcete zobrazit verzi rozhraní příkazového řádku Azure CLI `az --version`, použijte.
 
 ```bash
 $ az --version
@@ -435,7 +435,17 @@ azure-cli                         2.0.60 *
 ...
 ```
 
-Bez ohledu na chybová zpráva při spuštění `az aks use-dev-spaces` s verzí rozhraní příkazového řádku Azure před 2.0.63, instalace úspěšná. Můžete dál používat `azds` bez problémů.
+Bez ohledu na chybovou zprávu `az aks use-dev-spaces` při použití verze Azure CLI před 2.0.63 instalace proběhne úspěšně. Bez problémů můžete pokračovat v `azds` používání.
 
 ### <a name="try"></a>Vyzkoušení
-Aktualizovat vaši instalaci [rozhraní příkazového řádku Azure](/cli/azure/install-azure-cli?view=azure-cli-latest) 2.0.63 nebo novější. Vyřeší se chybová zpráva se zobrazí při spuštění `az aks use-dev-spaces`. Alternativně můžete dál používat vaší aktuální verzi rozhraní příkazového řádku Azure a rozhraní příkazového řádku Azure Dev mezery.
+Aktualizujte instalaci [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) na 2.0.63 nebo novější. Tím se vyřeší chybová zpráva, která se zobrazí při `az aks use-dev-spaces`spuštění. Případně můžete dál používat aktuální verzi rozhraní příkazového řádku Azure CLI a Azure Dev Spaces CLI.
+
+
+## <a name="horizontal-pod-autoscaling-not-working-in-a-dev-space"></a>Automatické škálování pod automatickým škálováním nefunguje ve vývojovém prostoru
+
+### <a name="reason"></a>Reason
+
+Když službu spustíte ve vývojovém prostoru, tato služba je [vložená s dalšími kontejnery pro instrumentaci](how-dev-spaces-works.md#prepare-your-aks-cluster). Tyto kontejnery nemají požadavky na prostředky nebo definované limity, což způsobí, že je v poli pod vypnuto automatické horizontální navýšení.
+
+### <a name="try"></a>Vyzkoušení
+Spustí automatické horizontální navýšení kapacity v oboru názvů, na kterém nejsou povolené vývojové prostory.

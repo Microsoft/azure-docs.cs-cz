@@ -1,6 +1,6 @@
 ---
-title: Integrace rozhraní REST API služby výměny deklarací identity na vaší cestě uživatele Azure Active Directory B2C | Dokumentace Microsoftu
-description: Integrace rozhraní REST API služby výměny deklarací identity na vaší cestě uživatele Azure AD B2C jako ověření vstupu uživatele.
+title: Integrace REST APIch deklarací identity v cestě uživatele Azure Active Directory B2C | Microsoft Docs
+description: Integrujte REST API vydaných výměn deklarací identity v cestě Azure AD B2C uživatele jako ověření vstupu uživatele.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,83 +10,83 @@ ms.topic: conceptual
 ms.date: 09/30/2017
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 466d5eff27d9a8105fb840ce4ba79571b6207092
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: ed26c4d90738e10f3eb5a9a486cd2734090abd0e
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67835512"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68227255"
 ---
-# <a name="integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-as-validation-of-user-input"></a>Integrace rozhraní REST API služby výměny deklarací identity na vaší cestě uživatele Azure AD B2C jako ověření vstupu uživatele
+# <a name="integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-as-validation-of-user-input"></a>Integrace REST APIch výměn deklarací identity v cestě uživatele Azure AD B2C jako ověření vstupu uživatele
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-S architekturu rozhraní identit, která je základem Azure Active Directory B2C (Azure AD B2C), můžete integrovat se službou rozhraní RESTful API v cestě uživatele. V tomto návodu se dozvíte, jak Azure AD B2C komunikuje pomocí rozhraní .NET Framework RESTful služby (webové rozhraní API).
+S architekturou prostředí identity, která je Azure Active Directory B2C (Azure AD B2C), můžete integrovat s rozhraním API RESTful v cestě uživatele. V tomto návodu se dozvíte, jak Azure AD B2C komunikuje s .NET Framework RESTful Services (webové rozhraní API).
 
 ## <a name="introduction"></a>Úvod
-S využitím Azure AD B2C, můžete přidat vlastní obchodní logiku do cesty uživatele voláním služby RESTful. Architekturu rozhraní identit odesílá data do služby RESTful v *vstupní deklarace identity* kolekce a přijímá data z RESTful v *výstupních deklarací identity* kolekce. Integrace služby RESTful vám umožní:
+Pomocí Azure AD B2C můžete přidat vlastní obchodní logiku k cestě uživatele voláním vlastní služby RESTful. Rozhraní identity Experience Framework odesílá data službě RESTful ve *vstupní kolekci deklarací* a přijímá data zpět z RESTful ve *výstupní kolekci deklarací* . S integrací služby RESTful můžete:
 
-* **Ověření vstupu dat uživatele**: Tato akce zabraňuje poškozených datových uložením do služby Azure AD. Pokud hodnota od uživatele není platná, vaše služba RESTful vrátí chybovou zprávu, která informuje uživatele k zadání položku. Ověřte například, že e-mailovou adresu, které zadal uživatel existuje v databázi vašeho zákazníka.
-* **Přepsat vstupními deklaracemi identity**: Například pokud uživatel zadá křestní jméno v všechna písmena malá nebo všechna velká písmena, lze formátovat název pouze první písmeno velké.
-* **Obohaťte uživatelská data další integraci s podnikovým aplikacím z podnikové**: Vaše služba RESTful může přijímat e-mailovou adresu uživatele, dotazy na databázi zákazníka a vrátí číslo věrnostní uživatele Azure AD B2C. Vrácení deklarací identity, můžou být uložené v účtu uživatele Azure AD, vyhodnocen v příštích *kroků Orchestrace*, nebo zahrnutý v přístupovém tokenu.
-* **Spuštění vlastní obchodní logiky**: Můžete odesílat nabízená oznámení, aktualizovat firemní databáze, spusťte proces migrace uživatelů, spravovat oprávnění, audit databáze a provádět jiné akce.
+* **Ověřit data vstupu uživatele**: Tato akce zabrání ukládání poškozených dat do služby Azure AD. Pokud hodnota od uživatele není platná, služba RESTful vrátí chybovou zprávu, která uživateli vydá pokyn k zadání položky. Můžete třeba ověřit, že e-mailová adresa zadaná uživatelem existuje v databázi vašeho zákazníka.
+* **Přepsat vstupní deklarace identity**: Pokud například uživatel zadá křestní jméno do všech malých a velkých písmen, můžete název naformátovat pouze na první písmeno.
+* **Rozšíření uživatelských dat o další integraci firemních podnikových aplikací**: Vaše služba RESTful může obdržet e-mailovou adresu uživatele, zadat dotaz na databázi zákazníka a získat věrnostní číslo uživatele Azure AD B2C. Vrácené deklarace identity můžou být uložené v účtu Azure AD uživatele, vyhodnocené v dalších *krocích orchestrace*nebo zahrnuté do přístupového tokenu.
+* **Spustit vlastní obchodní logiku**: Můžete odesílat nabízená oznámení, aktualizovat podnikové databáze, spouštět proces migrace uživatelů, spravovat oprávnění, auditovat databáze a provádět další akce.
 
-Integrace služby RESTful můžete navrhnout následujícími způsoby:
+Integraci s RESTful službami můžete navrhovat následujícími způsoby:
 
-* **Technický profil ověření**: Volání služby RESTful se stane v rámci ověření technický profil zadaný technického profilu. Technický profil ověření ověřuje uživatelsky zadaných dat před cesty uživatele pokračuje. Technický profil ověření můžete:
-   * Odeslání vstupních deklarací identity.
-   * Ověření mezi vstupními deklaracemi identity a vyvolat vlastní chybové zprávy.
-   * Odešlete deklarace identity back výstup.
+* **Technický profil ověření**: Volání služby RESTful se stává v rámci ověřovacího technického profilu zadaného technického profilu. Technický profil ověření ověřuje uživatelem poskytnutá data před tím, než se přesune uživatel do cesty. S technickým profilem ověření můžete:
+   * Odeslat vstupní deklarace identity.
+   * Ověří vstupní deklarace identity a vyvolá vlastní chybové zprávy.
+   * Odeslat zpět výstupní deklarace identity.
 
-* **Deklarace identity exchange**: Tento návrh se podobá technický profil ověření, ale to se stane, že v jednom z kroků Orchestrace. Tato definice je omezená na:
-   * Odeslání vstupních deklarací identity.
-   * Odešlete deklarace identity back výstup.
+* **Výměna deklarací identity**: Tento návrh se podobá technickému profilu ověření, ale k němu dojde v rámci kroku orchestrace. Tato definice je omezená na:
+   * Odeslat vstupní deklarace identity.
+   * Odeslat zpět výstupní deklarace identity.
 
-## <a name="restful-walkthrough"></a>RESTful návodu
-V tomto podrobném návodu vývoj rozhraní .NET Framework webového rozhraní API, která ověřuje vstup uživatele a poskytuje věrnostní číslo uživatele. Vaše aplikace může například udělit přístup k *platinum výhody* závisí na počtu věrnostních programů.
+## <a name="restful-walkthrough"></a>Názorný postup RESTful
+V tomto návodu vyvíjíte .NET Framework webové rozhraní API, které ověřuje vstup uživatele a poskytuje věrnostní číslo uživatele. Vaše aplikace může například udělit přístup k výhodám *Platinum* na základě věrnostního čísla.
 
 Přehled:
-* Vývoj služby RESTful (rozhraní .NET Framework webového rozhraní API).
+* Vývoj služby RESTful (.NET Framework Web API)
 * Použijte službu RESTful v cestě uživatele.
-* Odeslání vstupních deklarací identity a přečtěte si je ve vašem kódu.
-* Ověřte uživatelské jméno.
-* Odešlete zpět celou věrnostních programů.
-* Přidáte číslo loajalitu na JSON Web Token (JWT).
+* Odešlete vstupní deklarace identity a načtěte je ve svém kódu.
+* Ověřte jméno uživatele.
+* Pošle zpět věrnostní číslo.
+* Přidejte věrnostní číslo do JSON Web Token (JWT).
 
 ## <a name="prerequisites"></a>Požadavky
-Proveďte kroky v [Začínáme s vlastními zásadami](active-directory-b2c-get-started-custom.md) článku.
+Proveďte kroky popsané v článku [Začínáme s vlastními zásadami](active-directory-b2c-get-started-custom.md) .
 
-## <a name="step-1-create-an-aspnet-web-api"></a>Krok 1: Vytvoření webového rozhraní API ASP.NET
+## <a name="step-1-create-an-aspnet-web-api"></a>Krok 1: Vytvoření webového rozhraní API v ASP.NET
 
-1. V sadě Visual Studio vytvořte projekt tak, že vyberete **souboru** > **nový** > **projektu**.
+1. V aplikaci Visual Studio vytvořte projekt tak, že vyberete **soubor** > **Nový** > **projekt**.
 
-2. V **nový projekt** okně **Visual C#**  > **webové** > **webová aplikace ASP.NET (.NET Framework)** .
+2. V okně **Nový projekt** vyberte webová aplikace **Visual C#**   >  **Web** > **ASP.NET (.NET Framework)** .
 
-3. V **název** zadejte název aplikace (například *Contoso.AADB2C.API*) a pak vyberte **OK**.
+3. Do pole **název** zadejte název aplikace (například *contoso. AADB2C. API*) a pak vyberte **OK**.
 
-    ![Vytvoření nového projektu sady Visual Studio v sadě Visual Studio](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-create-project.png)
+    ![Vytvoření nového projektu sady Visual Studio v aplikaci Visual Studio](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-create-project.png)
 
-4. V **nová webová aplikace ASP.NET** okně **webového rozhraní API** nebo **aplikace Azure API** šablony.
+4. V okně **Nová webová aplikace ASP.NET** vyberte **Web API** nebo šablonu **aplikace API Azure** .
 
-    ![Výběr šablony webové rozhraní API v sadě Visual Studio](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-select-web-api.png)
+    ![Výběr šablony webového rozhraní API v aplikaci Visual Studio](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-select-web-api.png)
 
-5. Ujistěte, že ověřování je nastavena na **bez ověřování**.
+5. Ujistěte se, že je ověřování nastaveno na **bez ověřování**.
 
 6. Vyberte **OK** pro vytvoření projektu.
 
-## <a name="step-2-prepare-the-rest-api-endpoint"></a>Krok 2: Příprava koncový bod rozhraní REST API
+## <a name="step-2-prepare-the-rest-api-endpoint"></a>Krok 2: Příprava REST APIho koncového bodu
 
-### <a name="step-21-add-data-models"></a>Krok 2.1: Přidat datové modely
-Modely představují mezi vstupními deklaracemi identity a deklarací výstupní data ve službě RESTful. Váš kód načítá vstupní data pomocí deserializace modelu vstupních deklarací identity z řetězce JSON na objekt jazyka C# (modelu). ASP.NET web API automaticky deserializuje model deklarací výstupu zpět do formátu JSON a pak zapíše serializovaná data do textu zprávy s odpovědí HTTP.
+### <a name="step-21-add-data-models"></a>Krok 2,1: Přidat datové modely
+Modely reprezentují vstupní deklarace identity a výstupní data deklarací identity ve službě RESTful. Váš kód přečte vstupní data tím, že deserializace vstupního modelu deklarací identity z řetězce JSON C# do objektu (modelu). Webové rozhraní API ASP.NET automaticky deserializace výstupní model deklarací identity zpět do formátu JSON a potom zapisuje Serializovaná data do těla zprávy s odpovědí HTTP.
 
-Vytvoření modelu, který představuje vstupních deklarací identity s následujícím způsobem:
+Pomocí následujícího postupu vytvořte model reprezentující vstupní deklarace identity:
 
-1. Pokud Průzkumník řešení již není otevřen, vyberte **zobrazení** > **Průzkumníka řešení**.
+1. Pokud Průzkumník řešení ještě není otevřený, vyberte **Zobrazit** > **Průzkumník řešení**.
 2. V Průzkumníku řešení klikněte pravým tlačítkem na složku **Modely**, vyberte **Přidat** a pak vyberte **Třída**.
 
-    ![Přidání modelu](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-add-model.png)
+    ![Položka nabídky Přidat třídu vybraná v aplikaci Visual Studio](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-add-model.png)
 
-3. Název třídy `InputClaimsModel`a poté přidejte následující vlastnosti pro `InputClaimsModel` třídy:
+3. Pojmenujte `InputClaimsModel`třídu a přidejte `InputClaimsModel` do třídy následující vlastnosti:
 
     ```csharp
     namespace Contoso.AADB2C.API.Models
@@ -100,7 +100,7 @@ Vytvoření modelu, který představuje vstupních deklarací identity s násled
     }
     ```
 
-4. Vytvořit nový model `OutputClaimsModel`a poté přidejte následující vlastnosti pro `OutputClaimsModel` třídy:
+4. Vytvořte nový model `OutputClaimsModel`a přidejte `OutputClaimsModel` do třídy následující vlastnosti:
 
     ```csharp
     namespace Contoso.AADB2C.API.Models
@@ -112,7 +112,7 @@ Vytvoření modelu, který představuje vstupních deklarací identity s násled
     }
     ```
 
-5. Vytvořte jeden další model `B2CResponseContent`, který použijete k vyvolání ověření vstupu chybové zprávy. Přidejte následující vlastnosti pro `B2CResponseContent` třídy, zadejte chybějící odkazy a pak soubor uložte:
+5. Vytvořte jeden další model, `B2CResponseContent`který použijete k vyvolání chybových zpráv ověřování vstupu. Do `B2CResponseContent` třídy přidejte následující vlastnosti, zadejte chybějící odkazy a pak soubor uložte:
 
     ```csharp
     namespace Contoso.AADB2C.API.Models
@@ -133,24 +133,24 @@ Vytvoření modelu, který představuje vstupních deklarací identity s násled
     }
     ```
 
-### <a name="step-22-add-a-controller"></a>Krok 2.2: Přidání kontroleru
-Ve webovém rozhraní API _řadič_ je objekt, který zpracovává požadavky HTTP. Kontroler vrací výstup deklarací, nebo pokud křestní jméno není platné, vyvolá chybovou zprávu HTTP ke konfliktu.
+### <a name="step-22-add-a-controller"></a>Krok 2,2: Přidání kontroleru
+Ve webovém rozhraní API je _kontroler_ objekt, který zpracovává požadavky HTTP. Kontroler vrátí deklarace výstupů, nebo pokud jméno není platné, vyvolá chybovou zprávu protokolu HTTP v konfliktu.
 
 1. V Průzkumníku řešení klikněte pravým tlačítkem na složku **Kontrolery**, vyberte **Přidat** a pak vyberte **Kontroler**.
 
-    ![Přidání nového řadiče v sadě Visual Studio](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-add-controller-1.png)
+    ![Přidání nového kontroleru do sady Visual Studio](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-add-controller-1.png)
 
-2. V **přidat vygenerované uživatelské rozhraní** okně **Kontroleru webového rozhraní API – prázdný**a pak vyberte **přidat**.
+2. V okně **Přidat generování uživatelského** rozhraní vyberte možnost **KONTROLER webového rozhraní API – prázdné**a pak vyberte **Přidat**.
 
-    ![Výběr webového rozhraní API 2 prázdný kontroler – v sadě Visual Studio](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-add-controller-2.png)
+    ![Výběr kontroleru webového rozhraní API 2 – prázdné v aplikaci Visual Studio](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-add-controller-2.png)
 
-3. V **přidat kontroler** okna, názvu kontroleru **IdentityController**a pak vyberte **přidat**.
+3. V okně **Přidat kontrolér** pojmenujte kontrolér **IdentityController**a pak vyberte **Přidat**.
 
-    ![Zadání název řadiče v sadě Visual Studio](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-add-controller-3.png)
+    ![Zadání názvu kontroleru v aplikaci Visual Studio](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-add-controller-3.png)
 
-    Základní kostry aplikace vytvoří soubor s názvem *IdentityController.cs* v *řadiče* složky.
+    Generování uživatelského rozhraní vytvoří ve složce Controllers soubor s  názvem *IdentityController.cs* .
 
-4. Pokud *IdentityController.cs* soubor již není otevřen, poklepejte na něj a pak nahraďte kód v souboru následujícím kódem:
+4. Pokud soubor *IdentityController.cs* již není otevřen, poklikejte na něj a potom nahraďte kód v souboru následujícím kódem:
 
     ```csharp
     using Contoso.AADB2C.API.Models;
@@ -204,30 +204,30 @@ Ve webovém rozhraní API _řadič_ je objekt, který zpracovává požadavky HT
     ```
 
 ## <a name="step-3-publish-the-project-to-azure"></a>Krok 3: Publikování projektu do Azure
-1. V Průzkumníku řešení klikněte pravým tlačítkem myši **Contoso.AADB2C.API** projektu a pak vyberte **publikovat**.
+1. V Průzkumník řešení klikněte pravým tlačítkem myši na projekt **contoso. AADB2C. API** a pak vyberte **publikovat**.
 
-    ![Publikování do Microsoft Azure App Service pomocí sady Visual Studio](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-publish-to-azure-1.png)
+    ![Publikování Microsoft Azure App Service pomocí sady Visual Studio](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-publish-to-azure-1.png)
 
-2. V **publikovat** okně **Microsoft Azure App Service**a pak vyberte **publikovat**.
+2. V okně **publikovat** vyberte možnost **Microsoft Azure App Service**a pak vyberte **publikovat**.
 
-    ![Vytvořit novou službu Microsoft Azure App Service pomocí sady Visual Studio](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-publish-to-azure-2.png)
+    ![Vytvoření nové App Service Microsoft Azure pomocí sady Visual Studio](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-publish-to-azure-2.png)
 
-    **Vytvořit službu App Service** otevře se okno. V něm můžete vytvořit všechny prostředky Azure potřebné ke spuštění webové aplikace ASP.NET v Azure.
+    Otevře se okno **vytvořit App Service** . V tomto případě vytvoříte všechny potřebné prostředky Azure ke spuštění webové aplikace v ASP.NET v Azure.
 
     > [!NOTE]
-    >Další informace o tom, jak publikovat, naleznete v tématu [vytvoření webové aplikace ASP.NET v Azure](https://docs.microsoft.com/azure/app-service-web/app-service-web-get-started-dotnet).
+    >Další informace o tom, jak publikovat, najdete v tématu [Vytvoření webové aplikace v ASP.NET v Azure](https://docs.microsoft.com/azure/app-service-web/app-service-web-get-started-dotnet).
 
-3. V **název webové aplikace** zadejte jedinečný název aplikace (platné znaky jsou a – z, 0-9 a spojovníky (-). Adresa URL webové aplikace je http://<app_name>.azurewebsites.NET, kde *app_name* je název vaší webové aplikace. Můžete přijmout automaticky vygenerovaný název, který je jedinečný.
+3. Do pole **název webové aplikace** zadejte jedinečný název aplikace (platné znaky jsou a-z, 0-9 a spojovníky (-). Adresa URL webové aplikace je http://< APP_NAME >. azurewebsites. NET, kde *APP_NAME* je název vaší webové aplikace. Můžete přijmout automaticky vygenerovaný název, který je jedinečný.
 
-    ![Konfigurace vlastností služby App Service](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-publish-to-azure-3.png)
+    ![Konfigurace vlastností App Service](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-publish-to-azure-3.png)
 
-4. Chcete-li začít vytvářet prostředky Azure, vyberte **vytvořit**.
-    Po vytvoření webové aplikace ASP.NET, Průvodce publikuje ji do Azure a pak aplikaci spustí ve výchozím prohlížeči.
+4. Pokud chcete začít vytvářet prostředky Azure, vyberte **vytvořit**.
+    Po vytvoření webové aplikace v ASP.NET ji průvodce publikuje do Azure a pak aplikaci spustí ve výchozím prohlížeči.
 
 6. Zkopírujte adresu URL webové aplikace.
 
-## <a name="step-4-add-the-new-loyaltynumber-claim-to-the-schema-of-your-trustframeworkextensionsxml-file"></a>Krok 4: Přidejte nové `loyaltyNumber` deklaraci identity pro schéma souboru TrustFrameworkExtensions.xml
-`loyaltyNumber` Deklarace identity ještě není definovaná v našich schématu. Přidat definici v rámci `<BuildingBlocks>` elementu, které můžete vyhledat na začátku *TrustFrameworkExtensions.xml* souboru.
+## <a name="step-4-add-the-new-loyaltynumber-claim-to-the-schema-of-your-trustframeworkextensionsxml-file"></a>Krok 4: Přidat novou `loyaltyNumber` deklaraci identity do schématu souboru TrustFrameworkExtensions. XML
+`loyaltyNumber` Deklarace identity ještě není definovaná v našem schématu. Přidejte definici v rámci `<BuildingBlocks>` elementu, který najdete na začátku souboru *TrustFrameworkExtensions. XML* .
 
 ```xml
 <BuildingBlocks>
@@ -242,21 +242,21 @@ Ve webovém rozhraní API _řadič_ je objekt, který zpracovává požadavky HT
 ```
 
 ## <a name="step-5-add-a-claims-provider"></a>Krok 5: Přidat zprostředkovatele deklarací identity
-Každý zprostředkovatele deklarací identity, musí mít nejmíň jeden technické profily, které určíte, koncové body a protokoly, které jsou potřeba ke komunikaci s zprostředkovatele deklarací identity.
+Každý zprostředkovatel deklarací identity musí mít jeden nebo více technických profilů, které určují koncové body a protokoly potřebné ke komunikaci se zprostředkovatelem deklarací.
 
-Zprostředkovatel deklarací může mít více technické profily z různých důvodů. Například více technické profily mohou být definovány, protože více protokolů podporuje zprostředkovatel deklarací, koncové body mohou mít různé možnosti nebo vydané verze může obsahovat deklarace identity, které mají různé úrovně záruky. Může být přijatelný uvolnit citlivých deklarací identity v cestě jednoho uživatele, ale ne v jiném.
+Zprostředkovatel deklarací může mít více technických profilů z různých důvodů. Například může být definováno více technických profilů, protože zprostředkovatel deklarací podporuje více protokolů, koncové body mohou mít různé možnosti, nebo verze mohou obsahovat deklarace identity, které mají různé úrovně záruky. Může být přijatelné vydávat citlivé deklarace identity na jednu cestu uživatele, ale ne v jiném.
 
-Následující fragment kódu XML obsahuje uzel poskytovatele deklarací identity dva technické profily:
+Následující fragment kódu XML obsahuje uzel zprostředkovatele deklarací se dvěma technickými profily:
 
-* **TechnicalProfile Id="REST-API-SignUp"** : Definuje vaši službu RESTful.
-  * `Proprietary` je popsána jako protokol pro zprostředkovatele na základě RESTful.
-  * `InputClaims` definuje deklarace, které se odešlou do služby REST z Azure AD B2C.
+* **TechnicalProfile ID = "REST-API-SignUp"** : Definuje službu RESTful.
+  * `Proprietary`je popsána jako protokol pro poskytovatele založeného na RESTful.
+  * `InputClaims`definuje deklarace identity, které se budou odesílat z Azure AD B2C do služby REST.
 
-    V tomto příkladu obsah deklarace identity `givenName` odešle službě REST jako `firstName`, obsah se deklarace `surname` odešle službě REST jako `lastName`, a `email` odešle je. `OutputClaims` Element definuje deklarace identity, které jsou načteny z služba RESTful zpět do Azure AD B2C.
+    V tomto příkladu obsah deklarace identity `givenName` odešle službě REST jako `firstName`, obsah deklarace identity `surname` odešle službě REST jako `lastName`a `email` odešle jako. `OutputClaims` Prvek definuje deklarace identity, které jsou načteny ze služby RESTful zpět do Azure AD B2C.
 
-* **TechnicalProfile Id="LocalAccountSignUpWithLogonEmail"** : Technický profil ověření přidá do stávající technický profil (definováno v základních zásadách). Technický profil ověření během registrace cesty, vyvolá předchozí technický profil. Pokud služba RESTful vrátí chybu HTTP 409 (konflikt chyba), zobrazí se chybová zpráva pro uživatele.
+* **TechnicalProfile Id="LocalAccountSignUpWithLogonEmail"** : Přidá technický profil ověření do stávajícího technického profilu (definovaného v základních zásadách). Během cesty pro registraci vyvolal technický profil ověření předchozí technický profil. Pokud služba RESTful vrátí chybu protokolu HTTP 409 (chyba konfliktu), zobrazí se uživateli chybová zpráva.
 
-Vyhledejte `<ClaimsProviders>` uzel a potom přidejte následující fragment kódu XML v rámci `<ClaimsProviders>` uzlu:
+Vyhledejte uzel a přidejte následující fragment kódu XML `<ClaimsProviders>` pod uzel: `<ClaimsProviders>`
 
 ```xml
 <ClaimsProvider>
@@ -297,10 +297,10 @@ Vyhledejte `<ClaimsProviders>` uzel a potom přidejte následující fragment k�
 </ClaimsProvider>
 ```
 
-## <a name="step-6-add-the-loyaltynumber-claim-to-your-relying-party-policy-file-so-the-claim-is-sent-to-your-application"></a>Krok 6: Přidat `loyaltyNumber` deklaraci identity pro předávající strany soubor zásad, takže deklarace identity se odešlou do vaší aplikace
-Upravit vaše *SignUpOrSignIn.xml* předávající stranu souboru a změnit TechnicalProfile Id = "PolicyProfile" prvek a přidat následující: `<OutputClaim ClaimTypeReferenceId="loyaltyNumber" />`.
+## <a name="step-6-add-the-loyaltynumber-claim-to-your-relying-party-policy-file-so-the-claim-is-sent-to-your-application"></a>Krok 6: `loyaltyNumber` Přidejte deklaraci identity do souboru zásad předávající strany, aby byla deklarace identity odeslána do vaší aplikace.
+Upravte soubor *SignUpOrSignIn. XML* předávající strany (RP) a upravte element TechnicalProfile ID = "PolicyProfile" tak, aby přidal následující: `<OutputClaim ClaimTypeReferenceId="loyaltyNumber" />`.
 
-Po přidání nových deklarací identity, předávající strana kódu vypadá takto:
+Po přidání nové deklarace bude kód předávající strany vypadat takto:
 
 ```xml
 <RelyingParty>
@@ -323,39 +323,39 @@ Po přidání nových deklarací identity, předávající strana kódu vypadá 
 </TrustFrameworkPolicy>
 ```
 
-## <a name="step-7-upload-the-policy-to-your-tenant"></a>Krok 7: Odeslání zásady do vašeho tenanta
+## <a name="step-7-upload-the-policy-to-your-tenant"></a>Krok 7: Nahrajte zásady do svého tenanta.
 
-1. V [webu Azure portal](https://portal.azure.com), přepněte [kontextu vašeho tenanta Azure AD B2C](active-directory-b2c-navigate-to-b2c-context.md)a pak otevřete **Azure AD B2C**.
+1. V [Azure Portal](https://portal.azure.com)přepněte do [kontextu vašeho tenanta Azure AD B2C](active-directory-b2c-navigate-to-b2c-context.md)a pak otevřete **Azure AD B2C**.
 
-2. Vyberte **architekturu rozhraní identit**.
+2. Vyberte **architekturu prostředí identity**.
 
-3. Otevřít **všechny zásady**.
+3. Otevřete **všechny zásady**.
 
-4. Vyberte **nahrát zásady**.
+4. Vyberte **Odeslat zásadu**.
 
-5. Vyberte **přepsat zásady, pokud existuje** zaškrtávací políčko.
+5. Zaškrtněte políčko **přepsat zásadu, pokud existuje** .
 
-6. Nahrajte soubor TrustFrameworkExtensions.xml a ujistěte se, že projde úspěšně ověřovacím.
+6. Nahrajte soubor TrustFrameworkExtensions. XML a ujistěte se, že projde ověřením.
 
-7. Opakujte předchozí krok souborem SignUpOrSignIn.xml.
+7. Opakujte předchozí krok se souborem SignUpOrSignIn. XML.
 
-## <a name="step-8-test-the-custom-policy-by-using-run-now"></a>Krok 8: Testování vlastní zásady pomocí možnosti spustit hned
-1. Vyberte **nastavení Azure AD B2C**a pak přejděte na **architekturu rozhraní identit**.
+## <a name="step-8-test-the-custom-policy-by-using-run-now"></a>Krok 8: Otestujte vlastní zásady pomocí rutiny spustit hned
+1. Vyberte **nastavení Azure AD B2C**a pak navštivte **rozhraní identity Experience Framework**.
 
     > [!NOTE]
-    > **Spustit nyní** vyžaduje aspoň jednu aplikaci do být registrované u klienta. Informace o postupu registrace aplikací, najdete v tématu Azure AD B2C [Začínáme](active-directory-b2c-get-started.md) článku nebo [registrace aplikace](active-directory-b2c-app-registration.md) článku.
+    > **Spustit teď** vyžaduje, aby se v tenantovi předem zaregistrovala aspoň jedna aplikace. Informace o tom, jak zaregistrovat aplikace, najdete v článku Azure AD B2C [Začínáme](active-directory-b2c-get-started.md) nebo v článku věnovaném [registraci aplikace](active-directory-b2c-app-registration.md) .
 
-2. Otevřít **B2C_1A_signup_signin**, předávající stranu vlastní zásady, které jste nahráli a pak vyberte **spustit nyní**.
+2. Otevřete **B2C_1A_signup_signin**, vlastní zásady předávající strany (RP), které jste nahráli, a pak vyberte **Spustit nyní**.
 
-    ![Na stránce vlastní zásadu B2C_1A_signup_signin na webu Azure Portal](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-run.png)
+    ![Stránka vlastních zásad B2C_1A_signup_signin v Azure Portal](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-run.png)
 
-3. Testování procesu tak, že zadáte **testovací** v **křestní jméno** pole.
-    Azure AD B2C zobrazí chybovou zprávu v horní části okna.
+3. Otestujte proces zadáním příkazu **test** do **daného pole název** .
+    Azure AD B2C zobrazí v horní části okna chybovou zprávu.
 
-    ![Testování ověření vstupu křestní jméno na registrační stránku přihlášení](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-test.png)
+    ![Testování zadaného názvu ověření vstupu na přihlašovací stránce pro přihlášení](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-test.png)
 
-4. V **křestní jméno** zadejte název (jiné než "Test").
-    Azure AD B2C přihlásí uživatele a pak loyaltyNumber odesílá do vaší aplikace. Všimněte si čísla ve tento token JWT.
+4. Do pole **daný název** zadejte název (jiný než "test").
+    Azure AD B2C uživatele odhlásí a pak pošle loyaltyNumber vaší aplikaci. Poznamenejte si číslo v této tokenu JWT.
 
 ```
 {
@@ -378,10 +378,10 @@ Po přidání nových deklarací identity, předávající strana kódu vypadá 
 }
 ```
 
-## <a name="optional-download-the-complete-policy-files-and-code"></a>(Volitelné) Stažení kompletní zásady souborů a kódu
-* Po dokončení [začít pracovat s vlastními zásadami](active-directory-b2c-get-started-custom.md) návodu, doporučujeme vám vytvořit váš scénář s využitím vlastních zásad pro soubory. Pro srovnání si uvádíme [ukázkové soubory zásad](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-rest-api-netfw).
-* Můžete stáhnout kompletní kód z [řešení sady Visual Studio ukázkový pro referenci](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-rest-api-netfw/).
+## <a name="optional-download-the-complete-policy-files-and-code"></a>Volitelné Stažení úplných souborů a kódu zásad
+* Po dokončení návodu [Začínáme s vlastními zásadami](active-directory-b2c-get-started-custom.md) doporučujeme sestavit svůj scénář pomocí vlastních souborů zásad. Pro váš odkaz jsme zadali [ukázkové soubory zásad](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-rest-api-netfw).
+* Můžete si stáhnout kompletní kód z [ukázkového řešení sady Visual Studio pro referenci](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-rest-api-netfw/).
 
 ## <a name="next-steps"></a>Další postup
-* [Zabezpečení rozhraní RESTful API pomocí základního ověřování (uživatelské jméno a heslo)](active-directory-b2c-custom-rest-api-netfw-secure-basic.md)
-* [Zabezpečení rozhraní RESTful API pomocí klientských certifikátů](active-directory-b2c-custom-rest-api-netfw-secure-cert.md)
+* [Zabezpečení rozhraní API RESTful pomocí základního ověřování (uživatelské jméno a heslo)](active-directory-b2c-custom-rest-api-netfw-secure-basic.md)
+* [Zabezpečení rozhraní API RESTful pomocí klientských certifikátů](active-directory-b2c-custom-rest-api-netfw-secure-cert.md)

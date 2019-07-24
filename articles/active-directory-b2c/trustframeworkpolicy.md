@@ -1,6 +1,6 @@
 ---
-title: TrustFrameworkPolicy – Azure Active Directory B2C | Dokumentace Microsoftu
-description: Zadejte elementu TrustFrameworkPolicy vlastní zásady v Azure Active Directory B2C.
+title: TrustFrameworkPolicy-Azure Active Directory B2C | Microsoft Docs
+description: Zadejte element TrustFrameworkPolicy vlastní zásady v Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,18 +10,18 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 5a0ba48acf6ec3d221d9c4b5e95b380a2154171f
-ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
+ms.openlocfilehash: 904893d4881de6be2c9055fefa9a8267cb045afd
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67537042"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67849414"
 ---
 # <a name="trustframeworkpolicy"></a>TrustFrameworkPolicy
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Vlastní zásady je vyjádřena jako jeden nebo více ve formátu XML soubory, které odkazují navzájem v hierarchické řetězci. Elementy XML definice prvků zásad, například schématu deklarace identity, transformace deklarací, definic obsahu, zprostředkovatelem deklarací identity, technické profily, cesty uživatele a kroků Orchestrace. Každý soubor zásad je definována v rámci na nejvyšší úrovni **TrustFrameworkPolicy** element soubor zásad. 
+Vlastní zásady jsou reprezentovány jako jeden nebo více souborů ve formátu XML, které na sebe navzájem odkazují v hierarchickém řetězu. Prvky XML definují prvky zásad, například schéma deklarací identity, transformace deklarací identity, definice obsahu, zprostředkovatele deklarací, technické profily, cesty uživatelů a kroky orchestrace. Jednotlivé soubory zásad se definují v rámci souboru zásad na nejvyšší úrovni v **TrustFrameworkPolicy** elementu.
 
 ```XML
 <TrustFrameworkPolicy
@@ -36,20 +36,20 @@ Vlastní zásady je vyjádřena jako jeden nebo více ve formátu XML soubory, k
 ```
 
 
-**TrustFrameworkPolicy** prvek obsahuje následující atributy:
+Element **TrustFrameworkPolicy** obsahuje následující atributy:
 
 | Atribut | Požadováno | Popis |
 |---------- | -------- | ----------- |
-| PolicySchemaVersion | Ano | Verze schématu, která se má použít ke spuštění zásad. Hodnota musí být `0.3.0.0` |
-| TenantObjectId | Ne | Identifikátor tenanta Azure Active Directory (Azure AD) B2C jedinečný objekt. |
-| TenantId | Ano | Jedinečný identifikátor tenanta, ke kterému patří tato zásada. |
-| `PolicyId` | Ano | Jedinečný identifikátor zásad. Tento identifikátor musí mít předponu *B2C_1A_* |
-| PublicPolicyUri | Ano | Identifikátor URI pro zásady, které je kombinací ID tenanta a ID zásad. |
-| DeploymentMode | Ne | Možné hodnoty: `Production`, `Debugging`, nebo `Development`. `Production` je výchozí možnost. Tuto vlastnost použijte, chcete-li ladit vaše zásady. Další informace najdete v tématu [shromažďování protokolů](active-directory-b2c-troubleshoot-custom.md). |
-| UserJourneyRecorderEndpoint | Ne | Koncový bod, který se nepoužívá, pokud **DeploymentMode** je nastavena na `Development`. Hodnota musí být `urn:journeyrecorder:applicationinsights`. Další informace najdete v tématu [shromažďování protokolů](active-directory-b2c-troubleshoot-custom.md). |
+| PolicySchemaVersion | Ano | Verze schématu, která se má použít ke spuštění zásad. Hodnota musí být`0.3.0.0` |
+| TenantObjectId | Ne | Jedinečný identifikátor objektu pro klienta Azure Active Directory (Azure AD) B2C. |
+| TenantId | Ano | Jedinečný identifikátor tenanta, ke kterému patří tato zásada |
+| `PolicyId` | Ano | Jedinečný identifikátor pro zásady Tento identifikátor musí být předponou *B2C_1A_* . |
+| PublicPolicyUri | Ano | Identifikátor URI pro zásadu, která je kombinací ID tenanta a ID zásad. |
+| DeploymentMode | Ne | Možné hodnoty: `Production`, `Debugging`, nebo `Development`. `Production` je výchozí možnost. Tato vlastnost slouží k ladění zásad. Další informace najdete v tématu [shromažďování protokolů](active-directory-b2c-troubleshoot-custom.md). |
+| UserJourneyRecorderEndpoint | Ne | Koncový bod, který se používá  , pokud je DeploymentMode `Development`nastaveno na. Hodnota musí být `urn:journeyrecorder:applicationinsights`. Další informace najdete v tématu [shromažďování protokolů](active-directory-b2c-troubleshoot-custom.md). |
 
 
-Následující příklad ukazuje, jak určit **TrustFrameworkPolicy** element:
+Následující příklad ukazuje, jak zadat element **TrustFrameworkPolicy** :
 
 ``` XML
 <TrustFrameworkPolicy
@@ -64,37 +64,37 @@ Následující příklad ukazuje, jak určit **TrustFrameworkPolicy** element:
 
 ## <a name="inheritance-model"></a>Model dědičnosti
 
-Tyto typy souborů, zásady se obvykle používají v cestě uživatele:
+Tyto typy souborů zásad se obvykle používají v cestě uživatele:
 
-- A **Base** soubor, který obsahuje většinu definice. Usnadňující řešení problémů a dlouhodobé údržby zásad, doporučujeme vytvořit minimální počet změn do tohoto souboru.
-- **Rozšíření** soubor, který obsahuje změny jedinečnou konfiguraci pro vašeho tenanta. Tento soubor zásad je odvozen od základního souboru. Pomocí tohoto souboru můžete přidat nové funkce nebo přepsat existující funkce. Tento soubor můžete například použijte pro vytvoření federace s noví zprostředkovatelé identity.
-- A **předávající strany (RP)** souboru, který je jeden soubor zaměřený na úkol, který je vyvolán přímo z aplikace předávající strany, jako je například webových, mobilních a desktopových aplikací. Každý úkol jedinečné jako je například resetování hesla registrace nebo přihlašování, nebo úpravě profilu vyžaduje svůj vlastní soubor se zásadami předávající strany. Tento soubor zásad je odvozen ze souboru rozšíření. 
+- **Základní** soubor, který obsahuje většinu definic. Pro pomoc s řešením potíží a dlouhodobou údržbou zásad doporučujeme provést v tomto souboru minimální počet změn.
+- **Příponový** soubor, který obsahuje jedinečné změny konfigurace vašeho tenanta. Tento soubor zásad je odvozen ze základního souboru. Pomocí tohoto souboru můžete přidat nové funkce nebo přepsat existující funkce. Pomocí tohoto souboru můžete například federovat s novými zprostředkovateli identity.
+- Soubor **předávající strany (RP)** , který je jedním souborem zaměřeným na úlohy, který je vyvolán přímo pomocí aplikace předávající strany, jako jsou webové, mobilní nebo desktopové aplikace. Každý jedinečný úkol, jako je registrace nebo přihlášení, resetování hesla nebo úprava profilu, vyžaduje vlastní soubor zásad RP. Tento soubor zásad je odvozený od souboru rozšíření.
 
-Aplikace předávající strany volá souboru zásad RP pro spuštění konkrétního úkolu. Chcete-li například spustit tok přihlášení. Architekturu rozhraní identit v Azure AD B2C přidá všechny prvky první v od základního souboru a pak ze souboru rozšíření a nakonec ze souboru zásad předávající strany k sestavení aktuální zásady platit. Prvky stejného typu a název v souboru RP přepsat tyto prvky v rozšířeních a rozšíření přepíše Base. Následující diagram znázorňuje vztah mezi soubory zásad a aplikace předávající strany.
+Aplikace předávající strany volá soubor zásad RP, aby spustil konkrétní úlohu. Chcete-li například spustit tok přihlášení. Architektura prostředí identity v Azure AD B2C přidá všechny prvky nejprve ze základního souboru a potom ze souboru rozšíření a nakonec ze souboru zásad RP, aby se shromáždily aktuální zásady. Prvky stejného typu a názvu v souboru RP přepíšou tyto prvky v rozšířeních a přepíší základ přípon. Následující diagram znázorňuje vztah mezi soubory zásad a aplikacemi předávající strany.
 
-![Model dědičnosti](./media/trustframeworkpolicy/custom-policy-Inheritance-model.png)
+![Diagram znázorňující model dědičnosti zásad pro pravidlo důvěryhodnosti](./media/trustframeworkpolicy/custom-policy-Inheritance-model.png)
 
-Model dědičnosti vypadá takto:
+Model dědičnosti je následující:
 
-- Zásady nadřazená a podřízená zásada mají stejné schéma.
-- Podřízená zásada na libovolné úrovni může zdědit z nadřazené zásady a rozšířit přidáním nových elementů.
-- Neexistuje žádné omezení počtu zadaných úrovní.
+- Zásada nadřazené zásady a podřízenosti je stejného schématu.
+- Podřízená zásada na libovolné úrovni může dědit z nadřazené zásady a rozšiřuje ji přidáním nových elementů.
+- Počet úrovní není nijak omezený.
 
-Další informace najdete v tématu [začít pracovat s vlastními zásadami](active-directory-b2c-get-started-custom.md).
+Další informace najdete v tématu [Začínáme s vlastními zásadami](active-directory-b2c-get-started-custom.md).
 
 ## <a name="base-policy"></a>Základní zásady
 
-Dědit z jiné zásady, zásady **BasePolicy** elementu musí být deklarována v rámci **TrustFrameworkPolicy** prvek souboru zásad. **BasePolicy** element je odkaz na základní zásady, ze kterého je tato zásada odvozen.  
+Aby bylo možné dědit zásadu z jiné zásady, musí být deklarován element **BasePolicy** v rámci **TrustFrameworkPolicy** elementu souboru zásad. Element **BasePolicy** je odkaz na základní zásady, ze kterých je tato zásada odvozena.
 
-**BasePolicy** prvek obsahuje následující prvky:
+Element **BasePolicy** obsahuje následující prvky:
 
-| Element | Výskyty | Popis |
+| Prvek | Výskytů | Popis |
 | ------- | ----------- | --------|
-| TenantId | 1:1 | Identifikátor tenanta Azure AD B2C. |
-| `PolicyId` | 1:1 | Identifikátor nadřazené zásady. |
+| TenantId | 1:1 | Identifikátor vašeho tenanta Azure AD B2C. |
+| `PolicyId` | 1:1 | Identifikátor nadřazené zásady |
 
 
-Následující příklad ukazuje, jak zadat základní zásady. To **B2C_1A_TrustFrameworkExtensions** zásad je odvozen z **B2C_1A_TrustFrameworkBase** zásad. 
+Následující příklad ukazuje, jak zadat základní zásady. Tato zásada **B2C_1A_TrustFrameworkExtensions** je odvozená od zásad **B2C_1A_TrustFrameworkBase** .
 
 ``` XML
 <TrustFrameworkPolicy
@@ -114,13 +114,13 @@ Následující příklad ukazuje, jak zadat základní zásady. To **B2C_1A_Trus
 </TrustFrameworkPolicy>
 ```
 
-## <a name="policy-execution"></a>Zpracování zásad
+## <a name="policy-execution"></a>Spuštění zásad
 
-Aplikaci předávající strany, jako je například webových, mobilních a desktopových aplikací, která volá [předávající stranu zásad](relyingparty.md). Soubor zásad předávající strany, který provede určité úlohy, jako je například přihlašování, resetuje se heslo nebo úpravy profilu. Zásady RP konfigurují seznamu deklarace identit, které aplikaci předávající strana přijímá jako součást tokenu mechanismu, který je vydán. Více aplikací můžete použít stejné zásady. Všechny aplikace zobrazí stejný token díky deklaracím identity a uživatel prochází stejnou cestu uživatele. Jednu aplikaci můžete použít několik zásad.
+Aplikace předávající strany, jako je například webová, mobilní nebo desktopová aplikace, zavolá [zásadu předávající strany (RP)](relyingparty.md). Soubor zásad RP spustí konkrétní úlohu, jako je například přihlašování, resetování hesla nebo úprava profilu. Zásady RP nakonfigurují seznam deklarací, které aplikace předávající strany obdrží jako součást tokenu, který je vystavený. Stejné zásady můžou používat víc aplikací. Všechny aplikace přijímají stejný token s deklaracemi a uživatel projde stejnou cestou uživatele. Jedna aplikace může používat více zásad.
 
-V souboru zásad RP zadáte **DefaultUserJourney** element, který odkazuje na [UserJourney](userjourneys.md). Cesty uživatele je obvykle definováno v zásadách Base nebo rozšíření.
+V souboru zásad RP zadáte element **DefaultUserJourney** , který odkazuje na [UserJourney](userjourneys.md). Cesta uživatele je obvykle definovaná v zásadách základní nebo rozšíření.
 
-B2C_1A_signup_signin zásad:
+Zásady B2C_1A_signup_signin:
 
 ```XML
 <RelyingParty>
@@ -136,23 +136,23 @@ B2C_1A_TrustFrameWorkBase nebo B2C_1A_TrustFrameworkExtensionPolicy:
   ...
 ```
 
-Cesty uživatele definuje, co uživatel prochází obchodní logiky. Každé cesty uživatele je sada kroků Orchestrace, který provádí řadu akcí, v pořadí z hlediska informace o ověřování a kolekce. 
+Cesta uživatele definuje obchodní logiku, kterou uživatel prochází. Každou cestu uživatele tvoří sadu kroků orchestrace, které provádějí řadu akcí, a to v pořadí podle ověřování a shromažďování informací.
 
-**SocialAndLocalAccounts** soubor zásad v [starter pack](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-get-started-custom#download-starter-pack-and-modify-policies) obsahuje SignUpOrSignIn, ProfileEdit, jízdy PasswordReset uživatele. Můžete přidat další uživatele cesty pro jiné scénáře, jako je například změna e-mailovou adresu nebo propojení a rušení propojení účtu na sociální síti. 
+Soubor zásad **SocialAndLocalAccounts** v [úvodní](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-get-started-custom#download-starter-pack-and-modify-policies) sadě obsahuje cesty uživatelů v SignUpOrSignIn, ProfileEdit a PasswordReset. Můžete přidat další cesty uživatelů pro jiné scénáře, jako je například změna e-mailové adresy nebo propojení a odpojení účtu sociální sítě.
 
-Kroků Orchestrace může volat [technický profil](technicalprofiles.md). Technický profil poskytuje architekturu s předdefinovaný mechanismus pro komunikaci s různými typy stran. Technický profil můžete například provádět tyto akce mimo jiné:
+Kroky orchestrace můžou zavolat na [technický profil](technicalprofiles.md). Technický profil poskytuje rozhraní s integrovaným mechanismem pro komunikaci s různými typy stran. Technický profil může například provádět tyto akce mimo jiné:
 
-- Vykreslení uživatelské prostředí.
-- Povolit uživatelům přihlásit se přes sociální sítě nebo účet organizace, jako je Facebook, účet Microsoft, Google, Salesforce nebo jakýkoli jiný poskytovatel identity.
-- Nastavení ověření telefonem pro vícefaktorové ověřování.
-- Čtení a zápis dat do a z úložiště identit Azure AD B2C.
-- Volání vlastního rozhraní Restful API služby.
+- Vykreslete činnost koncového uživatele.
+- Umožněte uživatelům, aby se přihlásili pomocí sociálních nebo podnikových účtů, jako je Facebook, účet Microsoft, Google, Salesforce nebo jakýkoli jiný zprostředkovatel identity.
+- Nastavte ověřování na telefon pro MFA.
+- Čtení a zápis dat do a z Azure AD B2C úložiště identity.
+- Zavolejte vlastní službu RESTful API.
 
-![Zpracování zásad](./media/trustframeworkpolicy/custom-policy-execution.png)
+![Diagram znázorňující tok spuštění zásad](./media/trustframeworkpolicy/custom-policy-execution.png)
 
- **TrustFrameworkPolicy** prvek obsahuje následující prvky:
+ Element **TrustFrameworkPolicy** obsahuje následující prvky:
 
-- BasePolicy, jak je uvedeno výše
+- BasePolicy jak je uvedeno výše
 - [BuildingBlocks](buildingblocks.md)
 - [ClaimsProviders](claimsproviders.md)
 - [Userjourney](userjourneys.md)

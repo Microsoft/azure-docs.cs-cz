@@ -1,146 +1,167 @@
 ---
-title: Začínáme s vlastními zásadami – Azure Active Directory B2C | Dokumentace Microsoftu
-description: Zjistěte, jak začít pracovat s vlastními zásadami v Azure Active Directory B2C.
+title: Začínáme s vlastními zásadami – Azure Active Directory B2C
+description: Naučte se, jak začít pracovat s vlastními zásadami v Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/16/2019
+ms.date: 07/16/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 2929c033b4744ea89f8e3d711a5e2e0df6301c14
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 83269a5ae0d2e5fb7ae2651dbc27926c910a0e03
+ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66730016"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68302492"
 ---
 # <a name="get-started-with-custom-policies-in-azure-active-directory-b2c"></a>Začínáme s vlastními zásadami v Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-[Vlastní zásady](active-directory-b2c-overview-custom.md) jsou konfigurační soubory, které definují chování vašeho tenanta Azure Active Directory (Azure AD) B2C. V tomto článku vytvoříte vlastní zásadu, která podporuje místní účet registrace nebo přihlášení pomocí e-mailovou adresu a heslo. Také Příprava prostředí pro přidání poskytovatele identity.
+[Vlastní zásady](active-directory-b2c-overview-custom.md) jsou konfigurační soubory, které definují chování vašeho tenanta Azure Active Directory (Azure AD) B2C. V tomto článku vytvoříte vlastní zásadu, která podporuje registraci nebo přihlášení k místnímu účtu pomocí e-mailové adresy a hesla. Připravuje se také prostředí pro přidávání zprostředkovatelů identity.
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Pokud je nemáte, budete muset [vytvoření tenanta Azure AD B2C](tutorial-create-tenant.md) , který je propojený s předplatným Azure.
-- [Zaregistrujte si vaši aplikaci](tutorial-register-applications.md) v tenantovi, který jste vytvořili, tak, aby mohl komunikovat s Azure AD B2C.
+- Pokud ho ještě nemáte, musíte [vytvořit klienta Azure AD B2C](tutorial-create-tenant.md) , který je propojený s vaším předplatným Azure.
+- [Zaregistrujte svoji aplikaci](tutorial-register-applications.md) v tenantovi, kterou jste vytvořili, aby mohla komunikovat s Azure AD B2C.
 
-## <a name="add-signing-and-encryption-keys"></a>Přidejte klíče pro podepisování a šifrování
+## <a name="add-signing-and-encryption-keys"></a>Přidat podpisové a šifrovací klíče
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/) jako globální správce vašeho tenanta Azure AD B2C.
-2. Ujistěte se, že používáte adresáře, který obsahuje vašeho tenanta Azure AD B2C. Klikněte na tlačítko **filtr adresářů a předplatných** v horní nabídce a vyberte adresář, který obsahuje váš tenant. 
+2. Ujistěte se, že používáte adresář, který obsahuje vašeho tenanta Azure AD B2C. V horní nabídce klikněte na **Filtr adresář a odběr** a vyberte adresář, který obsahuje vašeho tenanta.
 3. Zvolte **Všechny služby** v levém horním rohu portálu Azure Portal a vyhledejte a vyberte **Azure AD B2C**.
-4. Na stránce s přehledem, vyberte **architekturu rozhraní identit**.
+4. Na stránce Přehled vyberte možnost **Architektura prostředí identity**.
 
 ### <a name="create-the-signing-key"></a>Vytvoření podpisového klíče
 
-1. Vyberte **klíče zásad** a pak vyberte **přidat**.
-2. Pro **možnosti**, zvolte `Generate`.
-3. V **název**, zadejte `TokenSigningKeyContainer`. Předpona, která `B2C_1A_` může být automaticky přidán.
-4. Pro **typ klíče**vyberte **RSA**.
-5. Pro **použití klíče**vyberte **podpis**.
+1. Vyberte **klíče zásad** a pak vyberte **Přidat**.
+2. Pro **Možnosti**vyberte `Generate`možnost.
+3. Do **název**zadejte `TokenSigningKeyContainer`. Předponu `B2C_1A_` lze přidat automaticky.
+4. Jako **typ klíče**vyberte **RSA**.
+5. V případě **použití klíče**vyberte možnost **podpis**.
 6. Klikněte na možnost **Vytvořit**.
 
-### <a name="create-the-encryption-key"></a>Vytvořit šifrovací klíč
+### <a name="create-the-encryption-key"></a>Vytvoření šifrovacího klíče
 
-1. Vyberte **klíče zásad** a pak vyberte **přidat**.
-2. Pro **možnosti**, zvolte `Generate`.
-3. V **název**, zadejte `TokenEncryptionKeyContainer`. Předpona, která `B2C_1A`_, mohou být přidány automaticky.
-4. Pro **typ klíče**vyberte **RSA**.
-5. Pro **použití klíče**vyberte **šifrování**.
+1. Vyberte **klíče zásad** a pak vyberte **Přidat**.
+2. Pro **Možnosti**vyberte `Generate`možnost.
+3. Do **název**zadejte `TokenEncryptionKeyContainer`. Předponu `B2C_1A`_ lze přidat automaticky.
+4. Jako **typ klíče**vyberte **RSA**.
+5. V případě **použití klíče**vyberte **šifrování**.
 6. Klikněte na možnost **Vytvořit**.
 
-### <a name="create-the-facebook-key"></a>Vytvoření klíče služby Facebook
+### <a name="create-the-facebook-key"></a>Vytvořit facebookový klíč
 
-Pokud už máte [tajný klíč aplikace pro Facebook](active-directory-b2c-setup-fb-app.md), přidejte jako klíče zásad do vašeho tenanta. V opačném případě vytvořte klíč s zástupnou hodnotu tak, aby vaše zásady projít ověřením.
+Pokud už máte [tajný kód aplikace Facebook](active-directory-b2c-setup-fb-app.md), přidejte ho jako klíč zásad do svého tenanta. V opačném případě je nutné klíč vytvořit se zástupnou hodnotou, aby vaše zásady prošly ověřením.
 
-1. Vyberte **klíče zásad** a pak vyberte **přidat**.
-2. Pro **možnosti**, zvolte `Manual`.
-3. Pro **název**, zadejte `FacebookSecret`. Předpona, která `B2C_1A_` může být automaticky přidán.
-4. V **tajný kód**, zadejte tajný klíč pro Facebook z developers.facebook.com nebo `0` jako zástupný symbol. Tato hodnota je tajný kód, nikoli ID aplikace.
-5. Pro **použití klíče**vyberte **podpis**.
+1. Vyberte **klíče zásad** a pak vyberte **Přidat**.
+2. Pro **Možnosti**vyberte `Manual`možnost.
+3. Jako **název**zadejte `FacebookSecret`. Předponu `B2C_1A_` lze přidat automaticky.
+4. V **tajných klíčích**zadejte svůj tajný kód Facebooku `0` z Developers.Facebook.com nebo jako zástupný symbol. Tato hodnota je tajný kód, nikoli ID aplikace.
+5. V případě **použití klíče**vyberte možnost **podpis**.
 6. Klikněte na možnost **Vytvořit**.
 
-## <a name="register-identity-experience-framework-applications"></a>Registrovat architekturu rozhraní identit aplikace
+## <a name="register-identity-experience-framework-applications"></a>Registrovat aplikace architektury identity Experience Framework
 
-Azure AD B2C, musíte k registraci dvě aplikace, které se používají k registraci a přihlašování uživatelů: IdentityExperienceFramework (webová aplikace) a delegovaná oprávnění z aplikace IdentityExperienceFramework ProxyIdentityExperienceFramework (nativní aplikace). Místní účty existují pouze ve vašem tenantovi. Vaši uživatelé zaregistrovat pomocí kombinace jedinečnou e-mailovou adresu a heslo pro přístup k aplikacím vašeho tenanta zaregistrované.
+Azure AD B2C vyžaduje, abyste zaregistrovali dvě aplikace, které se používají k registraci a přihlašování uživatelů: IdentityExperienceFramework (webová aplikace) a ProxyIdentityExperienceFramework (nativní aplikace) s delegovaným oprávněním z aplikace IdentityExperienceFramework. Místní účty existují jenom ve vašem tenantovi. Uživatelé si zaregistrují jedinečnou kombinaci e-mailové adresy a hesla pro přístup k aplikacím registrovaným v tenantovi.
 
 ### <a name="register-the-identityexperienceframework-application"></a>Registrace aplikace IdentityExperienceFramework
 
-1. Zvolte **všechny služby** v levém horním rohu webu Azure portal, vyhledejte a vyberte **Azure Active Directory**.
-2. V nabídce vyberte **registrace aplikací (starší verze)** .
-3. Vyberte **Registrace nové aplikace**.
-4. Pro **název**, zadejte `IdentityExperienceFramework`.
-5. Pro **typ aplikace**, zvolte **webové aplikace nebo rozhraní API**.
-6. Pro **přihlašovací adresa URL**, zadejte `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com`, kde `your-tenant-name` je název domény tenanta Azure AD B2C. Všechny adresy URL by měla nyní být pomocí [b2clogin.com](b2clogin.md).
-7. Klikněte na možnost **Vytvořit**. Po jeho vytvoření, zkopírujte ID aplikace a uložte ho pro pozdější použití.
+1. V levém horním rohu Azure Portal vyberte **všechny služby** .
+1. Do vyhledávacího pole zadejte `Azure Active Directory`.
+1. Ve výsledcích hledání vyberte **Azure Active Directory** .
+1. V části **Spravovat** v nabídce na levé straně vyberte **Registrace aplikací (starší verze)** .
+1. Vyberte **Registrace nové aplikace**.
+1. Jako **název**zadejte `IdentityExperienceFramework`.
+1. Jako **Typ aplikace**vyberte **Webová aplikace/rozhraní API**.
+1. Pro **přihlašovací adresu URL**zadejte `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com`, kde `your-tenant-name` je váš Azure AD B2C název domény tenanta. Všechny adresy URL by teď měly používat [b2clogin.com](b2clogin.md).
+1. Klikněte na možnost **Vytvořit**. Po vytvoření zkopírujte ID aplikace a uložte ho pro pozdější použití.
 
 ### <a name="register-the-proxyidentityexperienceframework-application"></a>Registrace aplikace ProxyIdentityExperienceFramework
 
-1. V **registrace aplikací (starší verze)** vyberte **registrace nové aplikace**.
-2. Pro **název**, zadejte `ProxyIdentityExperienceFramework`.
-3. Pro **typ aplikace**, zvolte **nativní**.
-4. Pro **identifikátor URI pro přesměrování**, zadejte `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com`, kde `your-tenant-name` je váš tenant Azure AD B2C.
-5. Klikněte na možnost **Vytvořit**. Po jeho vytvoření, zkopírujte ID aplikace a uložte ho pro pozdější použití.
-6. Na stránce Nastavení vyberte **požadovaná oprávnění**a pak vyberte **přidat**.
-7. Zvolte **vyberte rozhraní API**, vyhledejte a vyberte **IdentityExperienceFramework**a potom klikněte na tlačítko **vyberte**.
-9. Zaškrtněte políčko vedle položky **přístup IdentityExperienceFramework**, klikněte na tlačítko **vyberte**a potom klikněte na tlačítko **provádí**.
-10. Vyberte **udělit oprávnění**a potvrďte tak, že vyberete **Ano**.
+1. V **Registrace aplikací (starší verze)** vyberte možnost **Registrace nové aplikace**.
+2. Jako **název**zadejte `ProxyIdentityExperienceFramework`.
+3. Jako **Typ aplikace**vyberte možnost **nativní**.
+4. Jako **identifikátor URI přesměrování**zadejte `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com`, kde `your-tenant-name` je váš Azure AD B2C tenant.
+5. Klikněte na možnost **Vytvořit**. Po vytvoření zkopírujte ID aplikace a uložte ho pro pozdější použití.
+6. Na stránce nastavení vyberte **požadovaná oprávnění**a pak vyberte **Přidat**.
+7. Zvolte **Vybrat rozhraní API**, vyhledejte a vyberte **IdentityExperienceFramework**a potom klikněte na **Vybrat**.
+9. Zaškrtněte políčko vedle **přístupu k IdentityExperienceFramework**, klikněte na **Vybrat**a potom na Hotovo .
+10. Vyberte **udělit oprávnění**a pak potvrďte výběrem možnosti **Ano**.
 
-## <a name="download-starter-pack-and-modify-policies"></a>Úvodní sada stáhnout a upravit zásady
+## <a name="custom-policy-starter-pack"></a>Startovní sada vlastních zásad
 
-Vlastní zásady jsou sada souborů XML, které je třeba nahrát do vašeho tenanta Azure AD B2C. Sady Starter souborů jsou k dispozici pro zajištění rychlé zahájení práce. Každý starter pack v následujícím seznamu obsahuje nejmenší počet technické profily a jízdy uživatelů potřebné k dosažení popsané scénáře:
+Vlastní zásady jsou sada souborů XML, které nahrajete do svého tenanta Azure AD B2C, abyste mohli definovat technické profily a cesty uživatelů. Poskytujeme úvodní balíčky s několika předem sestavenými zásadami, abyste mohli rychle začít. Každá z těchto startovních sad obsahuje nejmenší počet technických profilů a cest uživatelů potřebných k dosažení popsaných scénářů:
 
-- LocalAccounts – umožňuje použití pouze místní účty.
-- SocialAccounts – umožňuje použití pouze účty sociálních sítí (nebo federované).
-- SocialAndLocalAccounts – umožňuje použití místních účtů a účtů v sociálních sítích.
-- SocialAndLocalAccountsWithMFA - umožňuje sociální sítě, místní a možnosti ověřování službou Multi-Factor Authentication.
+- **LocalAccounts** – povoluje pouze použití místních účtů.
+- **SocialAccounts** – povoluje pouze použití sociálních (nebo federovaných) účtů.
+- **SocialAndLocalAccounts** – povolí použití místních i sociálních účtů.
+- **SocialAndLocalAccountsWithMFA** – povolí možnosti pro sociální, místní a Multi-Factor Authentication.
 
-Každý starter pack obsahuje:
+Každá počáteční sada obsahuje:
 
-- Základní soubor. Několik změn nutných k základní třídě.
-- Soubor rozšíření.  Tento soubor je provedena většinu změn konfigurace.
-- Předávající strana soubory. Soubory specifické úkoly v aplikaci.
+- **Základní soubor** – pro základní se vyžaduje několik úprav. Příklad: *TrustFrameworkBase. XML*
+- **Soubor rozšíření** – tento soubor je tam, kde se provádí většina změn konfigurace. Příklad: *TrustFrameworkExtensions. XML*
+- **Soubory předávající strany** – soubory specifické pro úlohy, které jsou volány vaší aplikací. Příklady: *SignUpOrSignin. XML*, *ProfileEdit. XML*, *PasswordReset. XML*
 
->[!NOTE]
->Pokud XML editor podporuje ověřování, ověřte soubory proti schématu TrustFrameworkPolicy_0.3.0.0.xsd XML, který se nachází v kořenovém adresáři starter pack. Ověření schématu XML identifikuje chyby před odesláním.
+V tomto článku upravíte vlastní soubory zásad XML v **SocialAndLocalAccounts** Starter Pack. Pokud potřebujete editor XML, zkuste [Visual Studio Code](https://code.visualstudio.com/download), zjednodušený editor pro více platforem.
 
-1. [Stáhněte si soubor .zip](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/archive/master.zip) nebo spustit:
+### <a name="get-the-starter-pack"></a>Získat Startovní sadu
+
+Získejte vlastní úvodní sady zásad z GitHubu a pak aktualizujte soubory XML v SocialAndLocalAccounts Starter Pack pomocí názvu klienta Azure AD B2C.
+
+1. [Stáhněte si soubor. zip](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/archive/master.zip) nebo naklonujte úložiště:
 
     ```console
     git clone https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack
     ```
 
-2. Ve složce SocialAndLocalAccounts upravovat všechny soubory nahrazení `yourtenant` s názvem pro vašeho tenanta. Například, `contosoTenant.onmicrosoft.com`. Pokud potřebujete XML editor [nabídne Visual Studio Code](https://code.visualstudio.com/download), jednoduchý editor napříč platformami.
+1. Ve všech souborech v adresáři **SocialAndLocalAccounts** nahraďte řetězec `yourtenant` názvem vašeho tenanta Azure AD B2C.
 
-### <a name="add-application-ids-to-the-custom-policy"></a>ID aplikace přidat do vlastní zásady
+    Například pokud je název vašeho tenanta B2C *contosotenant*, všechny instance `yourtenant.onmicrosoft.com` se stanou `contosotenant.onmicrosoft.com`.
 
-ID aplikace přidejte do souboru rozšíření *TrustFrameworkExtensions.xml*.
+### <a name="add-application-ids-to-the-custom-policy"></a>Přidání ID aplikace do vlastních zásad
 
-1. Otevřít *TrustFrameworkExtensions.xml* souboru a najděte element `<TechnicalProfile Id="login-NonInteractive">`.
-2. Nahraďte oba výskyty `IdentityExperienceFrameworkAppId` s ID aplikace, architekturu rozhraní identit aplikace, kterou jste vytvořili dříve. Nahraďte oba výskyty `ProxyIdentityExperienceFrameworkAppId` s ID aplikace, architekturu rozhraní identit Proxy aplikace, kterou jste vytvořili dříve.
-3. Uložte soubor rozšíření.
+Přidejte ID aplikace do souboru rozšíření *TrustFrameworkExtensions. XML*.
 
-## <a name="upload-the-policies"></a>Nahrát zásady
+1. Otevřete `SocialAndLocalAccounts/` `<TechnicalProfile Id="login-NonInteractive">`a **vyhledejteelement.`TrustFrameworkExtensions.xml`**
+1. Nahraďte obě instance `IdentityExperienceFrameworkAppId` s ID aplikace aplikace IdentityExperienceFramework, kterou jste vytvořili dříve.
+1. Nahraďte obě instance `ProxyIdentityExperienceFrameworkAppId` s ID aplikace aplikace ProxyIdentityExperienceFramework, kterou jste vytvořili dříve.
+1. Uložte soubor.
 
-1. Na stránce vlastní zásady architekturu rozhraní identit vyberte **nahrát zásady**.
-1. V tomto pořadí, nahrajte *TrustFrameworkBase.xml*, *TrustFrameworkExtensions.xml*, *SignUpOrSignin.xml*, *ProfileEdit.xml* , a *PasswordReset.xml*. Když se nahraje soubor, název souboru zásad začíná `B2C_1A_`.
+## <a name="upload-the-policies"></a>Nahrajte zásady.
 
-## <a name="test-the-custom-policy"></a>Testování vlastní zásady
+1. V Azure Portal vyberte položku nabídky **rozhraní identity Experience Framework** v tenantovi B2C.
+1. Vyberte **Odeslat vlastní zásadu**.
+1. V tomto pořadí nahrajte soubory zásad:
+    1. *TrustFrameworkBase. XML*
+    1. *TrustFrameworkExtensions. XML*
+    1. *SignUpOrSignin. XML*
+    1. *ProfileEdit. XML*
+    1. *PasswordReset. XML*
 
-1. Na stránce vlastní zásady vyberte **B2C_1A_signup_signin**.
-2. Pro **vyberte aplikaci** na stránce Přehled vlastních zásad, vyberte webovou aplikaci s názvem *webapp1* , které jste dříve zaregistrovali. Ujistěte se, že **adresy URL odpovědi** je `https://jwt.ms`.
-3. Vyberte **spustit nyní**.
-4. Měli byste být schopni registrace pomocí e-mailovou adresu.
-5. Přihlaste se pomocí stejného účtu pro potvrzení, že máte správnou konfiguraci.
+Při nahrávání souborů Azure přidá předponu `B2C_1A_` do každého.
 
-## <a name="add-facebook-as-an-identity-provider"></a>Přidat jako zprostředkovatele identity Facebook
+> [!TIP]
+> Pokud editor XML podporuje ověřování, ověřte soubory oproti `TrustFrameworkPolicy_0.3.0.0.xsd` schématu XML, které se nachází v kořenovém adresáři úvodní sady. Ověřování schématu XML identifikuje chyby před odesláním.
 
-1. Konfigurace [aplikace Facebook](active-directory-b2c-setup-fb-app.md).
-2. V *TrustFrameworkExtensions.xml* souboru, nahraďte hodnotu `client_id` s ID aplikace pro Facebook:
+## <a name="test-the-custom-policy"></a>Testování vlastních zásad
+
+1. V části **vlastní zásady**vyberte **B2C_1A_signup_signin**.
+1. Pro **možnost vybrat aplikaci** na stránce Přehled v části vlastní zásady vyberte webovou aplikaci s názvem *WebApp1* , kterou jste předtím zaregistrovali.
+1. Ujistěte se, že **Adresa URL odpovědi** je `https://jwt.ms`.
+1. Vyberte **Spustit nyní**.
+1. Zaregistrujte se pomocí e-mailové adresy.
+1. Znovu vyberte **Spustit** .
+1. Přihlaste se pomocí stejného účtu, abyste měli jistotu, že máte správnou konfiguraci.
+
+## <a name="add-facebook-as-an-identity-provider"></a>Přidat Facebook jako zprostředkovatele identity
+
+1. Abyste mohli konfigurovat facebookovou aplikaci, proveďte kroky v části [Nastavení registrace a přihlášení pomocí účtu Facebook](active-directory-b2c-setup-fb-app.md) .
+1. V souboru nahraďte hodnotu hodnotou `client_id` ID aplikace Facebook: **`TrustFrameworkExtensions.xml`** `SocialAndLocalAccounts/`
 
    ```xml
    <TechnicalProfile Id="Facebook-OAUTH">
@@ -148,9 +169,13 @@ ID aplikace přidejte do souboru rozšíření *TrustFrameworkExtensions.xml*.
      <!--Replace the value of client_id in this technical profile with the Facebook app ID"-->
        <Item Key="client_id">00000000000000</Item>
    ```
-3. Nahrát *TrustFrameworkExtensions.xml* soubor do svého tenanta.
-4. Test s použitím **spustit nyní** nebo vyvoláním zásad přímo z registraci aplikace.
 
-## <a name="next-steps"></a>Další postup
+1. Nahrajte soubor *TrustFrameworkExtensions. XML* do svého tenanta.
+1. V části **vlastní zásady**vyberte **B2C_1A_signup_signin**.
+1. Vyberte **spustit hned** a vyberte Facebook pro přihlášení pomocí Facebooku a otestujte vlastní zásady. Nebo volejte zásadu přímo z registrované aplikace.
 
-- Přidáte Azure Active Directory jako zprostředkovatele identity. Základní soubor už používá v tato příručka Začínáme obsahuje některé obsahu, který je nutné pro přidání dalších poskytovatelů identit. Informace o nastavení přihlášení, najdete v článku [nastavení registrace a přihlášení pomocí účtu služby Azure Active Directory pomocí vlastních zásad Active Directory B2C](active-directory-b2c-setup-aad-custom.md) článku.
+## <a name="next-steps"></a>Další kroky
+
+Potom zkuste přidat Azure Active Directory (Azure AD) jako zprostředkovatele identity. Základní soubor použitý v této příručce Začínáme už obsahuje nějaký obsah, který potřebujete pro přidání dalších poskytovatelů identity, jako je Azure AD.
+
+Informace o nastavení služby Azure AD jako zprostředkovatele identity najdete v tématu [Nastavení registrace a přihlášení pomocí účtu Azure Active Directory s využitím Active Directory B2C vlastních zásad](active-directory-b2c-setup-aad-custom.md).

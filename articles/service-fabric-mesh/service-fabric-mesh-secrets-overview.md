@@ -1,35 +1,35 @@
 ---
-title: Ukládání a používání Azure Service Fabric mřížky tajných klíčů aplikací | Dokumentace Microsoftu
-description: Ukládání a používání služby prostředků infrastruktury sítě tajných kódů.
+title: Ukládání a používání Service Fabricch tajných klíčů aplikací pro síť Azure Microsoft Docs
+description: Ukládání a používání Service Fabricch tajných klíčů.
 services: service-fabric-mesh
-keywords: Tajné kódy
+keywords: záleží
 author: v-steg
-ms.author: v-steg
+ms.author: jeconnoc
 ms.date: 10/25/2018
 ms.topic: conceptual
 ms.service: service-fabric-mesh
-manager: jeanpaul.connock
-ms.openlocfilehash: 4268356db5f46e92862e19d6391cfe5a94511270
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+manager: jeconnoc
+ms.openlocfilehash: b5cfa93298222d914069b6ab63deb8ba8a9b59c3
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60810646"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67875345"
 ---
-# <a name="service-fabric-mesh-application-secrets"></a>Service Fabric mřížky tajných klíčů aplikací
-Sítě pro Service Fabric podporuje tajné kódy jako prostředky Azure. Tajný klíč služby prostředků infrastruktury sítě může být libovolné citlivé textové informace, jako je například úložiště připojovací řetězce, hesla nebo jiné hodnoty, které mají být uloženy a bezpečně přenášet.
+# <a name="service-fabric-mesh-application-secrets"></a>Service Fabricová tajná aplikace sítě
+Service Fabricová síť podporuje tajné klíče jako prostředky Azure. Service Fabric se může jednat o informace o citlivých textech, jako jsou například připojovací řetězce úložiště, hesla nebo jiné hodnoty, které by se měly bezpečně ukládat a přenášet.
 
-![Přehled sítě tajných kódů][sf-mesh-secrets-overview]
+![Přehled tajných klíčů][sf-mesh-secrets-overview]
 
-## <a name="mesh-secrets-resources"></a>Síť tajné kódy prostředků
-Aplikace sítě tajný kód se skládá ze:
-* A **tajných kódů** prostředků, což je kontejner, který uchovává tajné kódy text. Tajné kódy obsažené **tajných kódů** prostředků jsou uloženy a bezpečně přenášet.
-* Jeden nebo více **tajné klíče/hodnoty** prostředky, které jsou uloženy v **tajných kódů** kontejner prostředků. Každý **tajné klíče/hodnoty** prostředků se liší podle čísla verze.
+## <a name="mesh-secrets-resources"></a>Prostředky pro tajné klíče sítě
+Tajný kód aplikace sítě se skládá z těchto součástí:
+* Prostředek **tajných** kódů, což je kontejner, který ukládá text tajných kódů. Tajné kódy obsažené v  prostředku tajných kódů se ukládají a bezpečně odesílají.
+* Jeden nebo více prostředků **tajných klíčů a hodnot** , které jsou uloženy v kontejneru prostředků **tajných** kódů. Jednotlivé zdroje tajných kódů **a hodnot** jsou rozlišené číslem verze.
 
-## <a name="next-steps"></a>Další postup 
-Další informace o Service Fabric mřížky tajné kódy, naleznete v tématu:
-- [Správa tajných klíčů aplikací Service Fabric sítě](service-fabric-mesh-howto-manage-secrets.md)
-- [Úvod do modelu prostředků služby Service Fabric](service-fabric-mesh-service-fabric-resources.md)
+## <a name="next-steps"></a>Další kroky 
+Další informace o Service Fabricch tajných klíčů najdete v tématech:
+- [Správa tajných klíčů pro aplikace Service Fabric sítě](service-fabric-mesh-howto-manage-secrets.md)
+- [Seznámení s modelem Service Fabric prostředků](service-fabric-mesh-service-fabric-resources.md)
 
 <!-- pics -->
 [sf-mesh-secrets-overview]: ./media/service-fabric-mesh-secrets-overview/MeshAppSecretsOverview.png

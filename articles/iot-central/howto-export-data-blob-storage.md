@@ -1,112 +1,112 @@
 ---
-title: Exportovat data do úložiště objektů Blob v Azure | Dokumentace Microsoftu
-description: Jak exportovat data z Azure IoT Central aplikace do Azure Blob Storage
+title: Exportujte data do Azure Blob Storage | Microsoft Docs
+description: Jak exportovat data z aplikace Azure IoT Central do Azure Blob Storage
 services: iot-central
 author: viv-liu
 ms.author: viviali
-ms.date: 03/20/2019
+ms.date: 07/08/2019
 ms.topic: conceptual
 ms.service: iot-central
 manager: peterpr
-ms.openlocfilehash: 9ae57b8ab26780ea975ad74f3348a0deaf8c9cc8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: MT
+ms.openlocfilehash: 609d16994cf88f1777584243b1031368ddc79724
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65464630"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67849074"
 ---
-# <a name="export-your-data-to-azure-blob-storage"></a>Exportovat data do úložiště objektů Blob v Azure
+# <a name="export-your-data-to-azure-blob-storage"></a>Exportujte data do Azure Blob Storage
 
-*Toto téma se vztahuje na správce.*
+*Toto téma se týká správců.*
 
-Tento článek popisuje způsob použití souvislá datová funkce exportu v Azure IoT Central pravidelně exportovat data do vaší **účtu úložiště objektů Blob v Azure**. Můžete to taky **měření**, **zařízení**, a **šablon** na soubory ve formátu Apache Avro. Exportovaná data je možné pro studené cesty analytics jako trénování modelů ve službě Azure Machine Learning nebo dlouhodobé analýzy trendů v Microsoft Power BI.
+Tento článek popisuje, jak pomocí funkce pro export nepřetržitých dat v Azure IoT Central pravidelně exportovat data do svého **účtu služby Azure Blob Storage**. **Měření**, **zařízení**a **šablony zařízení** můžete exportovat do souborů ve formátu Apache Avro. Exportovaná data je možné použít pro analýzu studených cest, jako jsou školicí modely v Azure Machine Learning nebo dlouhodobé analýzy trendů v Microsoft Power BI.
 
 > [!Note]
-> Znovu až zapnete nepřetržitý export dat, zobrazí pouze data dále v tomto okamžiku. V současné době nelze načíst data po dobu, kdy byla nepřetržitý export dat vypnout. Pokud chcete zachovat dalších historických dat, zapněte nepřetržitý export dat již v rané fázi.
+> Po opětovném zapnutí průběžného exportu dat získáte od tohoto okamžiku pouze data. V současné době nelze data po vypnutí průběžného exportu dat načíst. Pokud chcete zachovat více historických dat, zapněte průběžný export dat.
 
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Musíte být správcem ve vaší aplikaci IoT Central
+- Musíte být správcem aplikace IoT Central.
 
 
 ## <a name="set-up-export-destination"></a>Nastavit cíl exportu
 
-Pokud nemáte existující úložiště pro export do, postupujte podle těchto kroků:
+Pokud nemáte existující úložiště pro export do, postupujte takto:
 
-## <a name="create-storage-account"></a>Vytvoření účtu úložiště
+## <a name="create-storage-account"></a>Vytvořit účet úložiště
 
-1. Vytvoření [nový účet úložiště na webu Azure Portal](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM). Další informace v [dokumentace služby Azure Storage](https://aka.ms/blobdocscreatestorageaccount).
-2. Pro typ účtu, vyberte **Obecné** nebo **úložiště objektů Blob**.
-3. Zvolte předplatné. 
+1. Vytvořte [nový účet úložiště v Azure Portal](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM). Další informace najdete v [dokumentaci Azure Storage](https://aka.ms/blobdocscreatestorageaccount).
+2. Jako typ účtu vyberte **obecné účely** nebo **úložiště objektů BLOB**.
+3. Vyberte předplatné. 
 
     > [!Note] 
-    > Teď můžete exportovat data do jiných předplatných, které jsou **není stejný** jako pro aplikace s průběžnými platbami IoT Central. Připojíte se v tomto případě pomocí připojovacího řetězce.
+    > Teď můžete exportovat data do jiných předplatných,  která se neshodují s touto aplikací pro IoT Central s průběžnými platbami. V tomto případě se připojíte pomocí připojovacího řetězce.
 
-4. Vytvoření kontejneru v účtu úložiště. Přejděte do účtu úložiště. V části **služby Blob Service**vyberte **procházet objekty BLOB**. Vyberte **+ kontejner** v horní části stránky vytvořte nový kontejner
+4. Vytvořte kontejner v účtu úložiště. Přejít na účet úložiště. V části **BLOB Service**vyberte **Procházet objekty blob**. Vybrat **+ kontejner** v horní části a vytvořit nový kontejner
 
 
-## <a name="set-up-continuous-data-export"></a>Nastavit nepřetržitý export dat
+## <a name="set-up-continuous-data-export"></a>Nastavení exportu průběžných dat
 
-Teď, když máte exportovat data do cílového úložiště, nastavit nepřetržitý export dat pomocí těchto kroků. 
+Teď, když máte cíl úložiště pro export dat, postupujte podle těchto kroků a nastavte průběžný export dat. 
 
-1. Přihlaste se do vaší aplikace IoT Central.
+1. Přihlaste se k aplikaci IoT Central.
 
-2. V nabídce vlevo vyberte **průběžný Export dat**.
+2. V nabídce vlevo vyberte průběžný **Export dat**.
 
     > [!Note]
-    > Pokud nevidíte průběžný Export dat v nabídce vlevo, nejste správcem ve vaší aplikaci. Obraťte se na správce nastavit export dat.
+    > Pokud v levé nabídce nevidíte průběžný export dat, nejste správcem vaší aplikace. Pokud chcete nastavit export dat, obraťte se na správce.
 
-    ![Vytvořit nový cde centra událostí](media/howto-export-data/export_menu1.png)
+    ![Vytvořit nové centrum událostí CDE](media/howto-export-data/export_menu1.png)
 
-3. Vyberte **+ nová** tlačítko v pravém horním rohu. Zvolte **Azure Blob Storage** jako cíl pro export. 
+3. V pravém horním rohu vyberte tlačítko **+ Nový** . Jako cíl exportu vyberte **Azure Blob Storage** . 
 
     > [!NOTE] 
     > Maximální počet exportů na aplikaci je pět. 
 
-    ![Vytvořit nový nepřetržitý export dat](media/howto-export-data/export_new1.png)
+    ![Vytvořit nový export průběžných dat](media/howto-export-data/export_new1.png)
 
-4. V rozevíracím seznamu vyberte vaše **obor názvů účtu úložiště**. V seznamu, který je můžete také vybrat jako poslední možnost **zadejte připojovací řetězec**. 
-
-    > [!NOTE] 
-    > Zobrazí se pouze účty úložiště obory názvů v **stejném předplatném jako aplikace IoT Central**. Pokud chcete exportovat do umístění mimo toto předplatné, zvolte **zadejte připojovací řetězec** a přejděte ke kroku 5.
+4. V rozevíracím seznamu vyberte svůj **obor názvů účtu úložiště**. Můžete také vybrat poslední možnost v seznamu a **zadat připojovací řetězec**. 
 
     > [!NOTE] 
-    > 7 dnů, zkušební verze aplikace, jediný způsob, jak nakonfigurovat průběžné data exportovat je do připojovacího řetězce. Je to proto 7denní zkušební verze aplikace nemusí k přidruženému předplatnému Azure.
+    > V rámci **stejného předplatného jako aplikace IoT Central**se zobrazí jenom obory názvů účtů úložiště. Pokud chcete exportovat do cílového umístění mimo toto předplatné, vyberte **zadat připojovací řetězec** a viz krok 5.
 
-    ![Vytvořit nový cde centra událostí](media/howto-export-data/export-create-blob.png)
+    > [!NOTE] 
+    > U 7 dní zkušebních aplikací je jediným způsobem konfigurace průběžného exportu dat prostřednictvím připojovacího řetězce. Důvodem je to, že 7 dní zkušebních aplikací nemá přidružené předplatné Azure.
 
-5. (Volitelné) Pokud jste zvolili **zadejte připojovací řetězec**, můžete vložit připojovací řetězec se zobrazí nové pole. Chcete-li získat připojovací řetězec pro váš:
-    - Účet úložiště, přejděte na účet úložiště na webu Azure Portal.
-        - V části **nastavení**vyberte **přístupové klíče**
-        - Zkopírujte připojovací řetězec key1 a key2 připojovací řetězec
+    ![Vytvořit nové centrum událostí CDE](media/howto-export-data/export-create-blob.png)
+
+5. Volitelné Pokud jste zvolili **zadat připojovací řetězec**, zobrazí se nové okno pro vložení připojovacího řetězce. Získání připojovacího řetězce pro:
+    - Účet úložiště, v Azure Portal přejít na účet úložiště.
+        - V části **Nastavení**vyberte **přístupové klíče** .
+        - Zkopírujte buď připojovací řetězec klíč1, nebo připojovací řetězec key2.
  
 6. V rozevíracím seznamu vyberte kontejner.
 
-7. V části **Data pro export**, určete každý typ hledaných dat exportovat na základě nastavení typu na **na**.
+7. V části **data, která chcete exportovat**, určete každý typ dat k exportu nastavením typ na **zapnuto**.
 
-6. Nepřetržitý export dat zapnout, ujistěte se, že **export dat** je **na**. Vyberte **Uložit**.
+6. Pokud chcete zapnout funkci průběžného exportu dat, ujistěte se, že je **Export dat** zapnutý. Vyberte **Uložit**.
 
-   ![Nepřetržitý export dat konfigurace](media/howto-export-data/export-list-blob.png)
+   ![Konfigurace průběžného exportu dat](media/howto-export-data/export-list-blob.png)
 
-7. Po několika minutách by se vaše data zobrazí v zvolený cíl.
+7. Po několika minutách se vaše data zobrazí ve zvoleném cíli.
 
 
-## <a name="export-to-azure-blob-storage"></a>Exportovat do úložiště objektů Blob v Azure
+## <a name="export-to-azure-blob-storage"></a>Exportovat do Azure Blob Storage
 
-Měření, zařízení a zařízení šablony data se vyexportují do vašeho účtu úložiště jednou za minutu, se každý soubor, který obsahuje batch změny od poslední exportovaný soubor. Exportovaná data se v [Apache Avro](https://avro.apache.org/docs/current/index.html) formátování a se exportují do tři složky v. Výchozí cesty ve vašem účtu úložiště jsou:
-- Zprávy: {container}/measurements/{hubname}/{YYYY}/{MM}/{dd}/{hh}/{mm}/{filename}.avro
-- Zařízení: {container}/devices/{YYYY}/{MM}/{dd}/{hh}/{mm}/{filename}.avro
-- Zařízení šablony: {container}/deviceTemplates/{YYYY}/{MM}/{dd}/{hh}/{mm}/{filename}.avro
+Data o měřeních, zařízeních a šablonách zařízení se exportují na účet úložiště jednou za minutu a každý soubor, který obsahuje dávku změn od posledního exportovaného souboru. Exportovaná data jsou ve formátu [Apache Avro](https://avro.apache.org/docs/current/index.html) a budou exportována do tří složek. Výchozí cesty v účtu úložiště jsou:
+- Zprávy: {Container}/measurements/{hubname}/{YYYY}/{MM}/{dd}/{hh}/{mm}/{filename}.avro
+- Zařízení: {Container}/devices/{YYYY}/{MM}/{dd}/{hh}/{mm}/{filename}.avro
+- Šablony zařízení: {Container}/deviceTemplates/{YYYY}/{MM}/{dd}/{hh}/{mm}/{filename}.avro
 
 ### <a name="measurements"></a>Měření
 
-Exportované měření data mají všechny nové zprávy přijaté službou IoT Central ze všech zařízení během této doby. Exportované soubory používají stejný formát jako soubory zpráv exportované sadou [směrování zpráv služby IoT Hub](https://docs.microsoft.com/azure/iot-hub/iot-hub-csharp-csharp-process-d2c) do úložiště objektů Blob.
+Data exportovaných měření mají všechny nové zprávy přijaté IoT Central ze všech zařízení během této doby. Exportované soubory používají stejný formát jako soubory zpráv exportované [IoT Hub směrováním zpráv](https://docs.microsoft.com/azure/iot-hub/iot-hub-csharp-csharp-process-d2c) do úložiště objektů BLOB.
 
 > [!NOTE]
-> Zařízení, které odesílají měření jsou reprezentovány v ID zařízení (viz následující části). Pokud chcete získat názvy zařízení, exportujte snímky zařízení. Porovnat všechny záznamy zpráv pomocí **connectionDeviceId** , který odpovídá **deviceId** záznamu zařízení.
+> Zařízení, která odesílají měření, jsou představována ID zařízení (viz následující části). Pokud chcete získat názvy zařízení, exportujte snímky zařízení. Proveďte korelaci každého záznamu zprávy pomocí **connectionDeviceId** , který odpovídá poli **deviceId** záznamu zařízení.
 
-Následující příklad ukazuje záznam v dekódovaný soubor Avro:
+Následující příklad ukazuje záznam v Dekódovatelné Avro souboru:
 
 ```json
 {
@@ -124,25 +124,25 @@ Následující příklad ukazuje záznam v dekódovaný soubor Avro:
 
 ### <a name="devices"></a>Zařízení
 
-Pokud je první nepřetržitý export dat zapnuté, se exportují jednoho snímku se všemi zařízeními. Každé zařízení zahrnuje:
-- `id` zařízení v IoT Central
-- `name` zařízení
-- `deviceId` z [Device Provisioning Service](https://aka.ms/iotcentraldocsdps)
+Pokud je nejprve zapnutý průběžný export dat, je exportován jeden snímek se všemi zařízeními. Každé zařízení zahrnuje:
+- `id`zařízení v IoT Central
+- `name`zařízení
+- `deviceId`ze [služby Device Provisioning Service](https://aka.ms/iotcentraldocsdps)
 - Informace o šabloně zařízení
 - Hodnoty vlastností
 - Nastavení hodnot
 
-Nový snímek se zapíše jednou za minutu. Snímek zahrnuje:
+Nový snímek se zapisuje jednou za minutu. Snímek obsahuje:
 
-- Od poslední snímek přidána nová zařízení.
-- Zařízení s změněných vlastností a nastavení hodnoty od poslední snímek.
+- Nová zařízení přidaná od posledního snímku.
+- Zařízení se změněnou vlastností a nastavením hodnot od posledního snímku.
 
 > [!NOTE]
-> Zařízení odstranit, protože poslední snímek se nebudou exportovat. V současné době snímky nemají ukazatele pro odstraněné zařízení.
+> Zařízení Odstraněná od posledního snímku se neexportují. V současné době snímky nemají indikátory pro Odstraněná zařízení.
 >
-> Šablonu zařízení, každé zařízení patří, je reprezentována ID zařízení šablony. Název šablony zařízení získáte exportujte šablonu snímky zařízení.
+> Šablona zařízení, do které patří každé zařízení, je reprezentovaná ID šablony zařízení. Pokud chcete získat název šablony zařízení, exportujte snímky šablony zařízení.
 
-Záznam v dekódovaný soubor Avro může vypadat:
+Záznam v Dekódovatelné Avro souboru může vypadat takto:
 
 ```json
 {
@@ -174,23 +174,23 @@ Záznam v dekódovaný soubor Avro může vypadat:
 
 ### <a name="device-templates"></a>Šablony zařízení
 
-Pokud nepřetržitý export dat zapnutý, je exportován jeden snímek pomocí všech zařízení šablon. Každá šablona zařízení obsahuje:
-- `id` šablony zařízení
-- `name` šablony zařízení
-- `version` šablony zařízení
+Pokud je nejprve zapnutý průběžný export dat, je exportován jeden snímek se všemi šablonami zařízení. Každá šablona zařízení zahrnuje:
+- `id`šablony zařízení
+- `name`šablony zařízení
+- `version`šablony zařízení
 - Měření datových typů a minimální/maximální hodnoty.
-- Vlastnost datové typy a výchozí hodnoty.
-- Nastavení datových typů a výchozí hodnoty.
+- Datové typy a výchozí hodnoty vlastností.
+- Nastavení datových typů a výchozích hodnot.
 
-Nový snímek se zapíše jednou za minutu. Snímek zahrnuje:
+Nový snímek se zapisuje jednou za minutu. Snímek obsahuje:
 
-- Nové šablony zařízení přidat, protože poslední snímek.
-- Zařízení šablony s změněné měření, vlastností a nastavení definice od poslední snímek.
+- Od posledního snímku se přidaly nové šablony zařízení.
+- Šablony zařízení se změněnými měřeními, vlastnostmi a definicemi nastavení od posledního snímku.
 
 > [!NOTE]
-> Šablony zařízení odstranit, protože poslední snímek se neexportují. V současné době snímky nemají ukazatele pro šablony odstraněné zařízení.
+> Šablony zařízení odstraněné od posledního snímku se neexportují. V současné době snímky nemají indikátory pro odstraněné šablony zařízení.
 
-Záznam v dekódovaný soubor Avro může vypadat například takto:
+Záznam v Dekódovatelné Avro souboru může vypadat takto:
 
 ```json
 {
@@ -268,18 +268,18 @@ Záznam v dekódovaný soubor Avro může vypadat například takto:
 
 ## <a name="read-exported-avro-files"></a>Čtení exportovaných souborů Avro
 
-Avro je binární formát, takže nelze číst soubory v jejich nezpracovaná stavu. Soubory můžete dekódovat do formátu JSON. Následující příklady ukazují, jak analyzovat měření, zařízení a zařízení šablony souborů Avro. V příkladech odpovídají příklady je popsáno v předchozí části.
+Avro je binární formát, takže soubory nelze číst v nezpracovaném stavu. Soubory lze dekódovat ve formátu JSON. Následující příklady znázorňují, jak analyzovat měření, zařízení a šablony zařízení Avro soubory. Příklady odpovídají příkladům popsaným v předchozí části.
 
-### <a name="read-avro-files-by-using-python"></a>Čtení souborů Avro s použitím jazyka Python
+### <a name="read-avro-files-by-using-python"></a>Čtení souborů Avro pomocí Pythonu
 
-#### <a name="install-pandas-and-the-pandavro-package"></a>Nainstalujte balíček pandavro a pandas
+#### <a name="install-pandas-and-the-pandavro-package"></a>Instalace PANDAS a balíčku pandavro
 
 ```python
 pip install pandas
 pip install pandavro
 ```
 
-#### <a name="parse-a-measurements-avro-file"></a>Analyzovat soubor Avro měření
+#### <a name="parse-a-measurements-avro-file"></a>Analýza Avro souboru měření
 
 ```python
 import json
@@ -343,7 +343,7 @@ def parse(filePath):
 
 ```
 
-#### <a name="parse-a-device-templates-avro-file"></a>Parsovat soubor Avro šablon zařízení
+#### <a name="parse-a-device-templates-avro-file"></a>Analyzovat soubor Avro šablon zařízení
 
 ```python
 import json
@@ -372,15 +372,15 @@ def parse(filePath):
     print(transformed)
 ```
 
-### <a name="read-avro-files-by-using-c"></a>Avro čtení souborů pomocíC#
+### <a name="read-avro-files-by-using-c"></a>Čtení souborů Avro pomocíC#
 
-#### <a name="install-the-microsofthadoopavro-package"></a>Nainstalovat balíček Microsoft.Hadoop.Avro
+#### <a name="install-the-microsofthadoopavro-package"></a>Instalace balíčku Microsoft. Hadoop. Avro
 
 ```csharp
 Install-Package Microsoft.Hadoop.Avro -Version 1.5.6
 ```
 
-#### <a name="parse-a-measurements-avro-file"></a>Analyzovat soubor Avro měření
+#### <a name="parse-a-measurements-avro-file"></a>Analýza Avro souboru měření
 
 ```csharp
 using Microsoft.Hadoop.Avro;
@@ -471,7 +471,7 @@ public static async Task Run(string filePath)
 
 ```
 
-#### <a name="parse-a-device-templates-avro-file"></a>Parsovat soubor Avro šablon zařízení
+#### <a name="parse-a-device-templates-avro-file"></a>Analyzovat soubor Avro šablon zařízení
 
 ```csharp
 using Microsoft.Hadoop.Avro;
@@ -515,15 +515,15 @@ public static async Task Run(string filePath)
 }
 ```
 
-### <a name="read-avro-files-by-using-javascript"></a>Čtení souborů Avro pomocí jazyka Javascript
+### <a name="read-avro-files-by-using-javascript"></a>Čtení souborů Avro pomocí JavaScriptu
 
-#### <a name="install-the-avsc-package"></a>Nainstalovat balíček avsc
+#### <a name="install-the-avsc-package"></a>Instalace balíčku AVSC
 
 ```javascript
 npm install avsc
 ```
 
-#### <a name="parse-a-measurements-avro-file"></a>Analyzovat soubor Avro měření
+#### <a name="parse-a-measurements-avro-file"></a>Analýza Avro souboru měření
 
 ```javascript
 const avro = require('avsc');
@@ -598,7 +598,7 @@ function load(filePath) {
 }
 ```
 
-#### <a name="parse-a-device-templates-avro-file"></a>Parsovat soubor Avro šablon zařízení
+#### <a name="parse-a-device-templates-avro-file"></a>Analyzovat soubor Avro šablon zařízení
 
 ```javascript
 const avro = require('avsc');
@@ -635,7 +635,7 @@ function load(filePath) {
 
 ## <a name="next-steps"></a>Další postup
 
-Teď, když víte, jak exportovat data, pokračujte k dalšímu kroku:
+Když teď víte, jak exportovat data, pokračujte k dalšímu kroku:
 
 > [!div class="nextstepaction"]
-> [Tom, jak vizualizace dat v Power BI](howto-connect-powerbi.md)
+> [Jak vizualizovat data v Power BI](howto-connect-powerbi.md)
