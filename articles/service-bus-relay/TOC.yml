@@ -48,8 +48,6 @@
       items:
         - name: Vytvoření oboru názvů
           href: relay-create-namespace-portal.md
-        - name: Použití služby WCF Relay ke zveřejnění služeb WCF pro externí klienty
-          href: relay-wcf-dotnet-get-started.md
         - name: Dostupná rozhraní API
           href: relay-api-overview.md
           items:

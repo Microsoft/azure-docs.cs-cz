@@ -8,21 +8,21 @@ ms.service: azure-databricks
 ms.custom: mvc
 ms.topic: tutorial
 ms.workload: Active
-ms.date: 06/21/2018
+ms.date: 07/23/2019
 ms.author: alehall
-ms.openlocfilehash: 1265a97b8902d69dd260d8e9e0191180f2eb4379
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 99197d0e2fb80d2774142238e9cd6b005a72699c
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60785467"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68443701"
 ---
 # <a name="tutorial-stream-data-into-azure-databricks-using-event-hubs"></a>Kurz: Streamování dat do Azure Databricks pomocí služby Event Hubs
 
 > [!IMPORTANT]
-> Vytvoření aplikace Twitter již není k dispozici prostřednictvím [apps.twitter.com](https://apps.twitter.com/). Tento kurz je právě aktualizují zahrnout rozhraní Twitter API.
+> Tento kurz spolupracuje s verzí Azure Databricks runtime 5,2.
 
-V tomto kurzu propojíte systém pro příjem dat s Azure Databricks, abyste mohli streamovat data do clusteru Apache Spark téměř v reálném čase. Pomocí služby Azure Event Hubs nastavíte systém pro příjem dat a pak ho připojíte k Azure Databricks, aby zpracovával přicházející zprávy. Pro přístup ke streamovaným datům použijete rozhraní Twitter API umožňující ingestování tweetů do služby Event Hubs. Jakmile budete mít data v Azure Databricks, můžete je dále analyzovat spouštěním analytických úloh. 
+V tomto kurzu propojíte systém pro příjem dat s Azure Databricks, abyste mohli streamovat data do clusteru Apache Spark téměř v reálném čase. Pomocí služby Azure Event Hubs nastavíte systém pro příjem dat a pak ho připojíte k Azure Databricks, aby zpracovával přicházející zprávy. Pro přístup ke streamovaným datům použijete rozhraní Twitter API umožňující ingestování tweetů do služby Event Hubs. Jakmile budete mít data v Azure Databricks, můžete je dále analyzovat spouštěním analytických úloh.
 
 Na konci tohoto kurzu budete umět streamovat tweety z Twitteru (které obsahují výraz Azure) a číst tyto tweety v Azure Databricks.
 
@@ -44,7 +44,7 @@ Tento kurz se zabývá následujícími úkony:
 Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 > [!Note]
-> V tomto kurzu není možné provést pomocí **bezplatnou zkušební verzi předplatného Azure**.
+> Tento kurz se nedá provést pomocí předplatného **Azure free zkušební verze**.
 > Pokud chcete k vytvoření clusteru Azure Databricks použít bezplatný účet, přejděte na svůj profil a změňte své předplatné na **Průběžné platby**. Další informace najdete na stránce [bezplatného účtu Azure](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Požadavky
@@ -57,7 +57,7 @@ Než začnete s tímto kurzem, ujistěte se, že splňujete následující poža
 
 Tyto požadavky můžete splnit dokončením kroků v článku [Vytvoření oboru názvů služby Azure Event Hubs a centra událostí](../event-hubs/event-hubs-create.md).
 
-## <a name="log-in-to-the-azure-portal"></a>Přihlášení k portálu Azure Portal
+## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
 Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
@@ -104,8 +104,10 @@ V této části vytvoříte pomocí portálu Azure pracovní prostor služby Azu
     Přijměte všechny výchozí hodnoty kromě následujících:
 
    * Zadejte název clusteru.
-   * Pro účely tohoto článku vytvořte cluster s modulem runtime verze **4.0**.
+   * V tomto článku vytvořte cluster s modulem runtime **5,2** .
    * Nezapomeňte zaškrtnout políčko **Terminate after \_\_ minutes of inactivity** (Ukončit po \_\_ minutách neaktivity). Zadejte dobu (v minutách), po které se má ukončit činnost clusteru, pokud se cluster nepoužívá.
+
+   Vyberte pracovní proces clusteru a velikost uzlu ovladače vhodné pro vaše technická kritéria a [rozpočet](https://azure.microsoft.com/en-us/pricing/details/databricks/).
 
      Vyberte **Vytvořit cluster**. Po spuštění clusteru můžete ke clusteru připojit poznámkové bloky a spouštět úlohy Spark.
 
@@ -113,15 +115,17 @@ V této části vytvoříte pomocí portálu Azure pracovní prostor služby Azu
 
 Pro příjem streamovaných tweetů je potřeba vytvořit aplikaci na Twitteru. Postupujte podle pokynů k vytvoření aplikace Twitter a poznamenejte si hodnoty, které potřebujete k dokončení tohoto kurzu.
 
-1. Ve webovém prohlížeči přejděte na stránku [Twitter Application Management](https://apps.twitter.com/) (Správa aplikací Twitter) a vyberte **Create New App** (Vytvořit novou aplikaci).
+1. Ve webovém prohlížeči klikněte na [Twitter pro vývojáře](https://developer.twitter.com/en/apps)a vyberte **vytvořit aplikaci**. Může se zobrazit zpráva oznamující, že je potřeba požádat o vývojářský účet pro Twitter. Nebojte se tak a po schválení vaší aplikace by se měl zobrazit potvrzovací e-mail. Schválení pro vývojářský účet může trvat několik dní.
 
-    ![Vytvoření aplikace Twitter](./media/databricks-stream-from-eventhubs/databricks-create-twitter-app.png "Vytvoření aplikace Twitter")
+    ![Potvrzení účtu vývojáře pro Twitter](./media/databricks-stream-from-eventhubs/databricks-twitter-dev-confirmation.png "Potvrzení účtu vývojáře pro Twitter")
 
 2. Na stránce **Create an application** (Vytvoření aplikace) zadejte podrobnosti o nové aplikaci a pak vyberte **Create your Twitter application** (Vytvořit aplikaci Twitter).
 
     ![Podrobnosti o aplikaci Twitter](./media/databricks-stream-from-eventhubs/databricks-provide-twitter-app-details.png "Podrobnosti o aplikaci Twitter")
 
-3. Na stránce aplikace vyberte kartu **Keys and Access Tokens** (Klíče a přístupové tokeny) a zkopírujte hodnoty **Consumer Key** (Uživatelský klíč) a **Consumer Secret** (Uživatelský tajný klíč). Kromě toho vyberte **Create my access token** (Vytvořit přístupový token) a vygenerujte přístupové tokeny. Zkopírujte hodnoty **Access Token** (Přístupový token) a **Access Token Secret** (Tajný klíč přístupového tokenu).
+    ![Podrobnosti o aplikaci Twitter](./media/databricks-stream-from-eventhubs/databricks-provide-twitter-app-details-create.png "Podrobnosti o aplikaci Twitter")
+
+3. Na stránce aplikace vyberte kartu **klíče a tokeny** a zkopírujte hodnoty **klíč rozhraní API příjemce** a **tajného klíče rozhraní API příjemce**. Pokud chcete generovat přístupové tokeny, vyberte také možnost **vytvořit** v části **přístupový token a tajný klíč přístupového tokenu** . Zkopírujte hodnoty **Access Token** (Přístupový token) a **Access Token Secret** (Tajný klíč přístupového tokenu).
 
     ![Podrobnosti o aplikaci Twitter](./media/databricks-stream-from-eventhubs/twitter-app-key-secret.png "Podrobnosti o aplikaci Twitter")
 
@@ -129,30 +133,30 @@ Uložte hodnoty, které jste načetli pro aplikaci Twitter. Tyto hodnoty budete 
 
 ## <a name="attach-libraries-to-spark-cluster"></a>Připojení knihoven ke clusteru Spark
 
-V tomto kurzu k odesílání tweetů do služby Event Hubs použijete rozhraní Twitter API. Použijete také [konektor služby Event Hubs pro Apache Spark](https://github.com/Azure/azure-event-hubs-spark) ke čtení a zápisu dat do služby Azure Event Hubs. Pokud chcete tato rozhraní API použít v rámci svého clusteru, přidejte je jako knihovny do Azure Databricks a pak je přidružte ke svému clusteru Spark. Následující pokyny ukazují, jak přidat knihovnu do složky **Sdílené** ve vašem pracovním prostoru.
+V tomto kurzu k odesílání tweetů do služby Event Hubs použijete rozhraní Twitter API. Použijete také [konektor služby Event Hubs pro Apache Spark](https://github.com/Azure/azure-event-hubs-spark) ke čtení a zápisu dat do služby Azure Event Hubs. Pokud chcete tato rozhraní API používat jako součást clusteru, přidejte je jako knihovny, abyste je Azure Databricks a přidružte je k vašemu clusteru Spark. Následující pokyny ukazují, jak přidat knihovnu.
 
-1. V pracovním prostoru Azure Databricks vyberte **Pracovní prostor** a pak klikněte pravým tlačítkem na **Sdílené**. V místní nabídce vyberte **Vytvořit** > **Knihovna**.
+1. V pracovním prostoru Azure Databricks vyberte **clustery**a vyberte svůj stávající cluster Spark. V nabídce cluster vyberte možnost **knihovny** a klikněte na možnost **nainstalovat novou**.
 
-   ![Dialogové okno Přidat knihovnu](./media/databricks-stream-from-eventhubs/databricks-add-library-option.png "Dialogové okno Přidat knihovnu")
+   ![Dialogové okno Přidat knihovnu](./media/databricks-stream-from-eventhubs/databricks-add-library-locate-cluster.png "Přidat knihovnu najít cluster")
 
-2. Na stránce Nová knihovna jako **Zdroj** vyberte **Souřadnice Maven**. V části **Souřadnice** zadejte souřadnice balíčku, který chcete přidat. Tady jsou souřadnice Maven pro knihovny použité v tomto kurzu:
+   ![Dialogové okno Přidat knihovnu](./media/databricks-stream-from-eventhubs/databricks-add-library-install-new.png "Přidat novou knihovnu pro instalaci")
 
-   * Konektor služby Event Hubs pro Spark – `com.microsoft.azure:azure-eventhubs-spark_2.11:2.3.1`
-   * Rozhraní Twitter API – `org.twitter4j:twitter4j-core:4.0.6`
+2. Na stránce Nová knihovna vyberte v části **zdroj** možnost **Maven**. Pro **souřadnici**klikněte na **Vyhledat balíčky** pro balíček, který chcete přidat. Tady jsou souřadnice Maven pro knihovny použité v tomto kurzu:
 
-     ![Zadání souřadnic Maven](./media/databricks-stream-from-eventhubs/databricks-eventhub-specify-maven-coordinate.png "Zadání souřadnic Maven")
+   * Konektor služby Event Hubs pro Spark – `com.microsoft.azure:azure-eventhubs-spark_2.11:2.3.10`
+   * Rozhraní Twitter API – `org.twitter4j:twitter4j-core:4.0.7`
 
-3. Vyberte **Vytvořit knihovnu**.
+     ![Zadání souřadnic Maven](./media/databricks-stream-from-eventhubs/databricks-add-library-search.png "Zadání souřadnic Maven")
 
-4. Vyberte složku, do které jste knihovnu přidali, a pak vyberte název knihovny.
+     ![Zadat souřadnice Maven](./media/databricks-stream-from-eventhubs/databricks-add-library-search-dialogue.png "Hledat souřadnice Maven")
 
-    ![Výběr knihovny k přidání](./media/databricks-stream-from-eventhubs/select-library.png "Výběr knihovny k přidání")
+3. Vyberte **Install** (Nainstalovat).
 
-5. Na stránce knihovny vyberte cluster, ve kterém chcete knihovnu použít. Po úspěšném přidružení knihovny ke clusteru se stav okamžitě změní na **Připojeno**.
+4. V nabídce cluster zajistěte, aby byly správně nainstalovány a připojeny obě knihovny.
 
-    ![Připojení knihovny ke clusteru](./media/databricks-stream-from-eventhubs/databricks-library-attached.png "Připojení knihovny ke clusteru")
+    ![Kontrolovat knihovny](./media/databricks-stream-from-eventhubs/databricks-add-library-check.png "Kontrolovat knihovny")
 
-6. Zopakujte tyto kroky pro balíček Twitteru `twitter4j-core:4.0.6`.
+6. Zopakujte tyto kroky pro balíček Twitteru `twitter4j-core:4.0.7`.
 
 ## <a name="create-notebooks-in-databricks"></a>Vytvoření poznámkových bloků v Databricks
 
@@ -175,13 +179,18 @@ V této části vytvoříte v pracovním prostoru Databricks dva poznámkové bl
 
 ## <a name="send-tweets-to-event-hubs"></a>Odeslání tweetů do služby Event Hubs
 
-V **SendTweetsToEventHub** Poznámkový blok, vložte následující kód a nahraďte zástupné symboly hodnotami pro váš obor názvů Event Hubs a aplikaci Twitter, kterou jste vytvořili dříve. Tento poznámkový blok v reálném čase streamuje tweety s klíčovým slovem Azure do služby Event Hubs.
+Do poznámkového bloku **SendTweetsToEventHub** vložte následující kód a nahraďte zástupné hodnoty hodnotami pro váš obor názvů Event Hubs a aplikaci Twitter, kterou jste vytvořili dříve. Tento poznámkový blok v reálném čase streamuje tweety s klíčovým slovem Azure do služby Event Hubs.
+
+> [!NOTE]
+> Rozhraní Twitter API má určitá omezení požadavků a [kvóty](https://developer.twitter.com/en/docs/basics/rate-limiting.html). Pokud nesplňujete standardní omezení rychlosti v rozhraní Twitter API, můžete v tomto příkladu vygenerovat textový obsah bez použití rozhraní Twitter API. Chcete-li to provést,  nastavte proměnnou `test` DataSource na `twitter` místo a naplňte seznam **testSource** s preferovaným vstupem testu.
 
 ```scala
-    import java.util._
     import scala.collection.JavaConverters._
     import com.microsoft.azure.eventhubs._
     import java.util.concurrent._
+    import scala.collection.immutable._
+    import scala.concurrent.Future
+    import scala.concurrent.ExecutionContext.Implicits.global
 
     val namespaceName = "<EVENT HUBS NAMESPACE>"
     val eventHubName = "<EVENT HUB NAME>"
@@ -193,56 +202,78 @@ V **SendTweetsToEventHub** Poznámkový blok, vložte následující kód a nahr
                 .setSasKeyName(sasKeyName)
                 .setSasKey(sasKey)
 
-    val pool = Executors.newFixedThreadPool(1)
+    val pool = Executors.newScheduledThreadPool(1)
     val eventHubClient = EventHubClient.create(connStr.toString(), pool)
 
-    def sendEvent(message: String) = {
+    def sleep(time: Long): Unit = Thread.sleep(time)
+
+    def sendEvent(message: String, delay: Long) = {
+      sleep(delay)
       val messageData = EventData.create(message.getBytes("UTF-8"))
       eventHubClient.get().send(messageData)
       System.out.println("Sent event: " + message + "\n")
     }
 
-    import twitter4j._
-    import twitter4j.TwitterFactory
-    import twitter4j.Twitter
-    import twitter4j.conf.ConfigurationBuilder
+    // Add your own values to the list
+    val testSource = List("Azure is the greatest!", "Azure isn't working :(", "Azure is okay.")
 
-    // Twitter configuration!
-    // Replace values below with yours
+    // Specify 'test' if you prefer to not use Twitter API and loop through a list of values you define in `testSource`
+    // Otherwise specify 'twitter'
+    val dataSource = "test"
 
-    val twitterConsumerKey = "<CONSUMER KEY>"
-    val twitterConsumerSecret = "<CONSUMER SECRET>"
-    val twitterOauthAccessToken = "<ACCESS TOKEN>"
-    val twitterOauthTokenSecret = "<TOKEN SECRET>"
+    if (dataSource == "twitter") {
 
-    val cb = new ConfigurationBuilder()
-      cb.setDebugEnabled(true)
-      .setOAuthConsumerKey(twitterConsumerKey)
-      .setOAuthConsumerSecret(twitterConsumerSecret)
-      .setOAuthAccessToken(twitterOauthAccessToken)
-      .setOAuthAccessTokenSecret(twitterOauthTokenSecret)
+      import twitter4j._
+      import twitter4j.TwitterFactory
+      import twitter4j.Twitter
+      import twitter4j.conf.ConfigurationBuilder
 
-    val twitterFactory = new TwitterFactory(cb.build())
-    val twitter = twitterFactory.getInstance()
+      // Twitter configuration!
+      // Replace values below with you
 
-    // Getting tweets with keyword "Azure" and sending them to the Event Hub in realtime!
+      val twitterConsumerKey = "<CONSUMER API KEY>"
+      val twitterConsumerSecret = "<CONSUMER API SECRET>"
+      val twitterOauthAccessToken = "<ACCESS TOKEN>"
+      val twitterOauthTokenSecret = "<TOKEN SECRET>"
 
-    val query = new Query(" #Azure ")
-    query.setCount(100)
-    query.lang("en")
-    var finished = false
-    while (!finished) {
-      val result = twitter.search(query)
-      val statuses = result.getTweets()
-      var lowestStatusId = Long.MaxValue
-      for (status <- statuses.asScala) {
-        if(!status.isRetweet()){
-          sendEvent(status.getText())
+      val cb = new ConfigurationBuilder()
+        cb.setDebugEnabled(true)
+        .setOAuthConsumerKey(twitterConsumerKey)
+        .setOAuthConsumerSecret(twitterConsumerSecret)
+        .setOAuthAccessToken(twitterOauthAccessToken)
+        .setOAuthAccessTokenSecret(twitterOauthTokenSecret)
+
+      val twitterFactory = new TwitterFactory(cb.build())
+      val twitter = twitterFactory.getInstance()
+
+      // Getting tweets with keyword "Azure" and sending them to the Event Hub in realtime!
+      val query = new Query(" #Azure ")
+      query.setCount(100)
+      query.lang("en")
+      var finished = false
+      while (!finished) {
+        val result = twitter.search(query)
+        val statuses = result.getTweets()
+        var lowestStatusId = Long.MaxValue
+        for (status <- statuses.asScala) {
+          if(!status.isRetweet()){
+            sendEvent(status.getText(), 5000)
+          }
+          lowestStatusId = Math.min(status.getId(), lowestStatusId)
         }
-        lowestStatusId = Math.min(status.getId(), lowestStatusId)
-        Thread.sleep(2000)
+        query.setMaxId(lowestStatusId - 1)
       }
-      query.setMaxId(lowestStatusId - 1)
+
+    } else if (dataSource == "test") {
+      // Loop through the list of test input data
+      while (true) {
+        testSource.foreach {
+          sendEvent(_,5000)
+        }
+      }
+
+    } else {
+      System.out.println("Unsupported Data Source. Set 'dataSource' to \"twitter\" or \"test\"")
     }
 
     // Closing connection to the Event Hub
@@ -271,15 +302,23 @@ Pokud chcete poznámkový blok spustit, stiskněte **SHIFT + ENTER**. Zobrazí s
 Do poznámkového bloku **ReadTweetsFromEventHub** vložte následující kód a nahraďte zástupné hodnoty hodnotami pro vaši službu Azure Event Hubs, kterou jste vytvořili dříve. Tento poznámkový blok čte tweety, které jste předtím streamovali do služby Event Hubs pomocí poznámkového bloku **SendTweetsToEventHub**.
 
 ```scala
+
     import org.apache.spark.eventhubs._
+    import com.microsoft.azure.eventhubs._
 
     // Build connection string with the above information
-    val connectionString = ConnectionStringBuilder("<EVENT HUBS CONNECTION STRING>")
-      .setEventHubName("<EVENT HUB NAME>")
-      .build
+    val namespaceName = "<EVENT HUBS NAMESPACE>"
+    val eventHubName = "<EVENT HUB NAME>"
+    val sasKeyName = "<POLICY NAME>"
+    val sasKey = "<POLICY KEY>"
+    val connStr = new com.microsoft.azure.eventhubs.ConnectionStringBuilder()
+                .setNamespaceName(namespaceName)
+                .setEventHubName(eventHubName)
+                .setSasKeyName(sasKeyName)
+                .setSasKey(sasKey)
 
     val customEventhubParameters =
-      EventHubsConf(connectionString)
+      EventHubsConf(connStr.toString())
       .setMaxEventsPerTrigger(5)
 
     val incomingStream = spark.readStream.format("eventhubs").options(customEventhubParameters.toMap).load()
@@ -388,7 +427,7 @@ V tomto kurzu jste se naučili:
 > * Odeslání tweetů do služby Event Hubs
 > * Čtení tweetů ze služby Event Hubs
 
-Pokračujte k dalšímu kurzu, kde se seznámíte s prováděním analýzy mínění na streamovaných datech pomocí Azure Databricks a [rozhraní API služeb Microsoft Cognitive Services](../cognitive-services/text-analytics/overview.md).
+Přejděte k dalšímu kurzu, kde se dozvíte, jak provádět analýzu mínění dat v datových proudech pomocí Azure Databricks a [COGNITIVE Services API](../cognitive-services/text-analytics/overview.md).
 
 > [!div class="nextstepaction"]
->[Analýza mínění na streamovaných datech pomocí Azure Databricks](databricks-sentiment-analysis-cognitive-services.md)
+>[Analýza mínění dat streamování pomocí Azure Databricks](databricks-sentiment-analysis-cognitive-services.md)

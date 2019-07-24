@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý start: Vytvoření webové aplikace, které spouští atraktivní prstůC#'
+title: 'Rychlý start: Vytvořte webovou aplikaci, která spustí moderní čtečku sC#'
 titlesuffix: Azure Cognitive Services
-description: V tomto rychlém startu vytvoření webové aplikace od začátku a přidejte funkce atraktivní čtečky rozhraní API.
+description: V tomto rychlém startu vytvoříte webovou aplikaci od začátku a přidáte funkce rozhraní API pro moderní čtečku.
 services: cognitive-services
 author: metanMSFT
 manager: nitinme
@@ -10,97 +10,150 @@ ms.subservice: immersive-reader
 ms.topic: quickstart
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: 3b408de6b60e7e7704ee228b52c399e5b80e3a9e
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 6386c22044483a0ac4a324397cf2f9d22e83b579
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67718415"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68442858"
 ---
-# <a name="quickstart-create-a-web-app-that-launches-the-immersive-reader-c"></a>Rychlý start: Vytvoření webové aplikace, které spouští atraktivní Reader (C#)
+# <a name="quickstart-create-a-web-app-that-launches-the-immersive-reader-c"></a>Rychlý start: Vytvoření webové aplikace, která spustí moderní čtečku (C#)
 
-[Atraktivní čtečky](https://www.onenote.com/learningtools) je (včetně) navržené nástroj, který implementuje osvědčené techniky zlepšit míru porozumění čtení.
+[Moderní čtečka](https://www.onenote.com/learningtools) je celkově navržený nástroj, který implementuje osvědčené techniky pro zlepšení porozumění čtení.
 
-V tomto rychlém startu vytvoření webové aplikace od začátku a integrovat atraktivní čtečky pomocí sady SDK atraktivní čtecí zařízení. Plně funkční ukázka v tomto rychlém startu je k dispozici [tady](https://github.com/microsoft/immersive-reader-sdk/tree/master/samples/quickstart-csharp).
+V tomto rychlém startu vytvoříte webovou aplikaci od začátku a integrujete moderní čtečku pomocí sady moderních čtenářů. Kompletní pracovní vzorek tohoto rychlého startu je k dispozici [zde](https://github.com/microsoft/immersive-reader-sdk/tree/master/samples/quickstart-csharp).
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
 * [Visual Studio 2017](https://visualstudio.microsoft.com/downloads)
-* Klíč předplatného pro atraktivní čtecí zařízení. Získejte ji pomocí následujících [tyto pokyny](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account).
+* Prostředek moderního čtecího zařízení nakonfigurovaný pro ověřování Azure Active Directory (Azure AD). Pomocí [těchto pokynů](./azure-active-directory-authentication.md) si můžete nastavit. Při konfiguraci ukázkových vlastností projektu budete potřebovat některé z hodnot, které jsou zde vytvořeny. Uložte výstup vaší relace do textového souboru pro budoucí referenci.
 
 ## <a name="create-a-web-app-project"></a>Vytvoření projektu webové aplikace
 
-Vytvoření nového projektu v sadě Visual Studio pomocí šablony webové aplikace ASP.NET Core s integrovanou Model-View-Controller.
+Vytvořte nový projekt v aplikaci Visual Studio pomocí šablony ASP.NET Core webové aplikace s integrovaným modelem zobrazení modelu.
 
 ![Nový projekt](./media/vswebapp.png)
 
-![Nová webová aplikace ASP.NET Core](./media/vsmvc.png)
+![Nová ASP.NET Core webové aplikace](./media/vsmvc.png)
 
-## <a name="acquire-an-access-token"></a>Získání přístupového tokenu
+## <a name="acquire-an-azure-ad-authentication-token"></a>Získání ověřovacího tokenu Azure AD
 
-Budete potřebovat předplatné key a koncového bodu pro tento další krok. Váš klíč předplatného najdete na stránce klíče atraktivní čtečky prostředku na webu Azure Portal. Vyhledání vašeho koncového bodu na stránce Přehled.
+Pro tuto část budete potřebovat některé hodnoty z kroku podmínka konfigurace ověřování Azure AD výše. Vraťte se zpět k textovému souboru, který jste si uložili do této relace.
 
-Klikněte pravým tlačítkem na projekt v _Průzkumníka řešení_ a zvolte **spravovat tajné klíče uživatelů**. Otevře se soubor s názvem _secrets.json_. Obsah tohoto souboru nahraďte následujícím kódem, včetně klíč předplatného a koncový bod, kde je to vhodné.
+````text
+TenantId     => Azure subscription TenantId
+ClientId     => Azure AD ApplicationId
+ClientSecret => Azure AD Application Service Principal password
+Subdomain    => Immersive Reader resource subdomain (resource 'Name' if the resource was created in the Azure portal, or 'CustomSubDomain' option if the resource was created with Azure CLI Powershell. Check the Azure portal for the subdomain on the Endpoint in the resource Overview page, for example, 'https://[SUBDOMAIN].cognitiveservices.azure.com/')
+````
+
+V _Průzkumník řešení_ klikněte pravým tlačítkem myši na projekt a vyberte možnost **spravovat tajné klíče uživatele**. Tím se otevře soubor s názvem tajných kódů. _JSON_. Obsah tohoto souboru nahraďte následujícím souborem a zadejte hodnoty vašich vlastních vlastností.
 
 ```json
 {
-  "SubscriptionKey": YOUR_SUBSCRIPTION_KEY,
-  "Endpoint": YOUR_ENDPOINT
+  "TenantId": YOUR_TENANT_ID,
+  "ClientId": YOUR_CLIENT_ID,
+  "ClientSecret": YOUR_CLIENT_SECRET,
+  "Subdomain": YOUR_SUBDOMAIN
 }
 ```
 
-Otevřít _Controllers\HomeController.cs_a nahraďte `HomeController` třídy následujícím kódem.
+Otevřete _souboru controllers\homecontroller.cs_a nahraďte soubor následujícím kódem.
 
 ```csharp
-public class HomeController : Controller
+using System;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Clients.ActiveDirectory;
+
+namespace QuickstartSampleWebApp.Controllers
 {
-    private readonly string SubscriptionKey;
-    private readonly string Endpoint;
-
-    public HomeController(Microsoft.Extensions.Configuration.IConfiguration configuration)
+    public class HomeController : Controller
     {
-        SubscriptionKey = configuration["SubscriptionKey"];
-        Endpoint = configuration["Endpoint"];
+        private readonly string TenantId;     // Azure subscription TenantId
+        private readonly string ClientId;     // Azure AD ApplicationId
+        private readonly string ClientSecret; // Azure AD Application Service Principal password
+        private readonly string Subdomain;    // Immersive Reader resource subdomain (resource 'Name' if the resource was created in the Azure portal, or 'CustomSubDomain' option if the resource was created with Azure CLI Powershell. Check the Azure portal for the subdomain on the Endpoint in the resource Overview page, for example, 'https://[SUBDOMAIN].cognitiveservices.azure.com/')
 
-        if (string.IsNullOrEmpty(Endpoint) || string.IsNullOrEmpty(SubscriptionKey))
+        public HomeController(Microsoft.Extensions.Configuration.IConfiguration configuration)
         {
-            throw new ArgumentNullException("Endpoint or subscriptionKey is null!");
-        }
-    }
+            TenantId = configuration["TenantId"];
+            ClientId = configuration["ClientId"];
+            ClientSecret = configuration["ClientSecret"];
+            Subdomain = configuration["Subdomain"];
 
-    public IActionResult Index()
-    {
-        return View();
-    }
-
-    [Route("token")]
-    public async Task<string> Token()
-    {
-        return await GetTokenAsync();
-    }
-
-    /// <summary>
-    /// Exchange your Azure subscription key for an access token
-    /// </summary>
-    private async Task<string> GetTokenAsync()
-    {
-        using (var client = new System.Net.Http.HttpClient())
-        {
-            client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", SubscriptionKey);
-            using (var response = await client.PostAsync(Endpoint, null))
+            if (string.IsNullOrWhiteSpace(TenantId))
             {
-                return await response.Content.ReadAsStringAsync();
+                throw new ArgumentNullException("TenantId is null! Did you add that info to secrets.json?");
             }
+
+            if (string.IsNullOrWhiteSpace(ClientId))
+            {
+                throw new ArgumentNullException("ClientId is null! Did you add that info to secrets.json?");
+            }
+
+            if (string.IsNullOrWhiteSpace(ClientSecret))
+            {
+                throw new ArgumentNullException("ClientSecret is null! Did you add that info to secrets.json?");
+            }
+
+            if (string.IsNullOrWhiteSpace(Subdomain))
+            {
+                throw new ArgumentNullException("Subdomain is null! Did you add that info to secrets.json?");
+            }
+        }
+
+        public IActionResult Index()
+        {
+            return View();
+        }
+
+        [Route("subdomain")]
+        public string GetSubdomain()
+        {
+            return Subdomain;
+        }
+
+        [Route("token")]
+        public async Task<string> GetToken()
+        {
+            return await GetTokenAsync();
+        }
+
+        /// <summary>
+        /// Get an Azure AD authentication token
+        /// </summary>
+        private async Task<string> GetTokenAsync()
+        {
+            string authority = $"https://login.windows.net/{TenantId}";
+            const string resource = "https://cognitiveservices.azure.com/";
+
+            AuthenticationContext authContext = new AuthenticationContext(authority);
+            ClientCredential clientCredential = new ClientCredential(ClientId, ClientSecret);
+
+            AuthenticationResult authResult = await authContext.AcquireTokenAsync(resource, clientCredential);
+
+            return authResult.AccessToken;
         }
     }
 }
 ```
 
-## <a name="add-sample-content"></a>Přidejte ukázkový obsah
+## <a name="add-the-microsoftidentitymodelclientsactivedirectory-nuget-package"></a>Přidejte balíček NuGet Microsoft. IdentityModel. clients. Active.
 
-Teď přidáme několik ukázkový obsah do téhle webové aplikace. Otevřít _Views\Home\Index.cshtml_ a automaticky generovaného kódu nahraďte tuto ukázku:
+Výše uvedený kód používá objekty z balíčku NuGet **Microsoft. IdentityModel. clients. Active Directory** , takže budete muset do svého projektu přidat odkaz na tento balíček.
+
+Otevřete konzolu Správce balíčků NuGet z **nástrojů – > správce balíčků NuGet – > konzolu Správce balíčků** a zadejte následující:
+
+```powershell
+    Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory -Version 5.1.0
+```
+
+## <a name="add-sample-content"></a>Přidat ukázkový obsah
+
+Teď přidáme do této webové aplikace nějaký ukázkový obsah. Otevřete _Views\Home\Index.cshtml_ a nahraďte automaticky generovaný kód touto ukázkou:
 
 ```html
 <h1 id='title'>Geography</h1>
@@ -111,9 +164,9 @@ Teď přidáme několik ukázkový obsah do téhle webové aplikace. Otevřít _
 <div class='immersive-reader-button' data-button-style='iconAndText' onclick='launchImmersiveReader()'></div>
 
 @section scripts {
-<script type='text/javascript' src='https://contentstorage.onenote.office.net/onenoteltir/immersivereadersdk/immersive-reader-sdk.0.0.1.js'></script>
-<script type='text/javascript' src='https://code.jquery.com/jquery-3.3.1.min.js'></script>
-<script type='text/javascript'>
+    <script type='text/javascript' src='https://contentstorage.onenote.office.net/onenoteltir/immersivereadersdk/immersive-reader-sdk.0.0.2.js'></script>
+    <script type='text/javascript' src='https://code.jquery.com/jquery-3.3.1.min.js'></script>
+    <script type='text/javascript'>
     function getImmersiveReaderTokenAsync() {
         return new Promise((resolve) => {
             $.ajax({
@@ -121,6 +174,18 @@ Teď přidáme několik ukázkový obsah do téhle webové aplikace. Otevřít _
                 type: 'GET',
                 success: token => {
                     resolve(token);
+                }
+            });
+        });
+    }
+
+    function getSubdomainAsync() {
+        return new Promise((resolve) => {
+            $.ajax({
+                url: '/subdomain',
+                type: 'GET',
+                success: subdomain => {
+                    resolve(subdomain);
                 }
             });
         });
@@ -136,25 +201,27 @@ Teď přidáme několik ukázkový obsah do téhle webové aplikace. Otevřít _
         };
 
         const token = await getImmersiveReaderTokenAsync();
-        ImmersiveReader.launchAsync(token, content, { uiZIndex: 1000000 });
+        var subdomain = await getSubdomainAsync();
+
+        ImmersiveReader.launchAsync(token, subdomain, content, { uiZIndex: 1000000 });
     }
-</script>
+    </script>
 }
 ```
 
 ## <a name="build-and-run-the-app"></a>Sestavení a spuštění aplikace
 
-V panelu nabídky vyberte **ladit > Spustit ladění**, nebo stiskněte klávesu **F5** ke spuštění aplikace.
+V řádku nabídek vyberte možnost **ladění > spustit ladění**, nebo stiskněte klávesu **F5** a spusťte aplikaci.
 
 V prohlížeči byste měli vidět:
 
 ![Ukázková aplikace](./media/quickstart-result.png)
 
-Když kliknete na tlačítko "Atraktivní čtečky", zobrazí se vám atraktivní čtecí modul spuštěn s obsahem na stránce.
+Po kliknutí na tlačítko "moderní čtečka" se zobrazí moderní čtečka, která se spustí s obsahem na stránce.
 
 ![Asistivní čtečka](./media/quickstart-immersive-reader.png)
 
 ## <a name="next-steps"></a>Další postup
 
-* Zobrazení [kurzu](./tutorial.md) chcete zobrazit, co dalšího vám pomůžou s moderním čtečky SDK
-* Prozkoumejte [atraktivní čtečky SDK](https://github.com/Microsoft/immersive-reader-sdk) a [atraktivní čtečky odkaz na sadu SDK](./reference.md)
+* Podívejte se na [kurz](./tutorial.md) , který vám umožní udělat si další informace, které můžete dělat v sadě moderní čtečky.
+* Prozkoumejte [sadu moderních čtenářů](https://github.com/Microsoft/immersive-reader-sdk) a [referenční materiály k sadě pro moderní čtečku](./reference.md)

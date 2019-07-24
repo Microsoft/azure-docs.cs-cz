@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý start: Hledání obrázků - SDK vyhledávání Bingu Image proC#'
-description: Pomocí tohoto rychlého startu můžete vytvořit své první vyhledávání obrázků pomocí sady SDK Vyhledávání obrázků Bingu, což je obálka pro rozhraní API a obsahuje stejné funkce. Tato jednoduchá aplikace C# posílá dotaz pro vyhledání obrázku, parsuje odpověď JSON a zobrazuje adresu URL prvního nalezeného obrázku.
+title: 'Rychlý start: Hledání imagí – Vyhledávání obrázků Bingu SDK proC#'
 titleSuffix: Azure Cognitive Services
+description: Pomocí tohoto rychlého startu můžete vytvořit své první vyhledávání obrázků pomocí sady SDK Vyhledávání obrázků Bingu, což je obálka pro rozhraní API a obsahuje stejné funkce. Tato jednoduchá aplikace C# posílá dotaz pro vyhledání obrázku, parsuje odpověď JSON a zobrazuje adresu URL prvního nalezeného obrázku.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,24 +11,24 @@ ms.topic: quickstart
 ms.date: 03/04/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 0a50ca8dfda1e51cdc27728975e40dcbf8ce6dbd
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: b45fbf551d17de499b5019e22a4b7174653d9eff
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66384214"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68423859"
 ---
-# <a name="quickstart-search-for-images-with-the-bing-image-search-sdk-for-c"></a>Rychlý start: Pro Image s SDK vyhledávání obrázků Bingu pro vyhledáváníC#
+# <a name="quickstart-search-for-images-with-the-bing-image-search-sdk-for-c"></a>Rychlý start: Hledání imagí pomocí sady Vyhledávání obrázků Bingu SDK proC#
 
 Pomocí tohoto rychlého startu můžete vytvořit své první vyhledávání obrázků pomocí sady SDK Vyhledávání obrázků Bingu, což je obálka pro rozhraní API a obsahuje stejné funkce. Tato jednoduchá aplikace C# posílá dotaz pro vyhledání obrázku, parsuje odpověď JSON a zobrazuje adresu URL prvního nalezeného obrázku.
 
 Zdrojový kód pro tuto ukázku je k dispozici na [GitHubu](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7/BingImageSearch) s dalším zpracováním chyb a poznámkami.
 
 ## <a name="prerequisites"></a>Požadavky
-* Libovolná edice [sady Visual Studio 2017 nebo novější](https://visualstudio.microsoft.com/vs/whatsnew/).
+* Libovolná edice sady [Visual Studio 2017 nebo novější](https://visualstudio.microsoft.com/vs/whatsnew/).
 * [Balíček NuGet Cognitive Image Search](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.ImageSearch/1.2.0)
 
-K instalaci sady SDK vyhledávání obrázků Bingu v sadě Visual Studio můžete použít **spravovat balíčky NuGet** možnost **Průzkumníka řešení**.
+Chcete-li nainstalovat sadu Vyhledávání obrázků Bingu SDK v sadě Visual Studio, použijte možnost **Spravovat balíčky NuGet** z **Průzkumník řešení**.
 
 [!INCLUDE [cognitive-services-bing-image-search-signup-requirements](../../../includes/cognitive-services-bing-image-search-signup-requirements.md)]
 

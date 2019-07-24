@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý start: Odeslat žádost o vyhledávání Bingu Entity REST API služby Search pomocí PHP'
-titlesuffix: Azure Cognitive Services
-description: V tomto rychlém startu můžete odeslat požadavek na rozhraní API Bingu entit Search REST pomocí PHP a přijetí odpovědi JSON.
+title: 'Rychlý start: Odeslání žádosti o vyhledávání do Vyhledávání entit Bingu REST API pomocí PHP'
+titleSuffix: Azure Cognitive Services
+description: Pomocí tohoto rychlého startu můžete odeslat požadavek do Vyhledávání entit Bingu REST API pomocí PHP a přijmout odpověď JSON.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,18 +10,18 @@ ms.subservice: bing-entity-search
 ms.topic: quickstart
 ms.date: 02/01/2019
 ms.author: aahi
-ms.openlocfilehash: 69624f7383b37b9d23f3fb8879f804e7169c1c29
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: b3db5d219a2785f936c692bdf49a23a483ab0cf5
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66384561"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68423994"
 ---
-# <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-php"></a>Rychlý start: Odeslat žádost o vyhledávání Bingu Entity REST API služby Search pomocí PHP
+# <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-php"></a>Rychlý start: Odeslání žádosti o vyhledávání do Vyhledávání entit Bingu REST API pomocí PHP
 
-V tomto rychlém startu můžete provést první volání do rozhraní API Bingu pro vyhledávání entit a zobrazit odpověď JSON. Tato jednoduchá aplikace PHP odešle dotaz vyhledávání zpráv na rozhraní API a zobrazí odpovědi. 
+Tento rychlý Start použijte k provedení prvního volání rozhraní API Bingu pro vyhledávání entit a zobrazení odpovědi JSON. Tato jednoduchá aplikace PHP pošle vyhledávací dotaz na zprávy do rozhraní API a zobrazí odpověď. 
 
-Zatímco tato aplikace je napsaný v jazyce PHP, je rozhraní API RESTful webová služba, která je kompatibilní s Většina programovacích jazyků.
+I když je tato aplikace napsaná v PHP, je rozhraní API webová služba RESTful kompatibilní s většinou programovacích jazyků.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -150,7 +150,7 @@ echo json_encode (json_decode ($result), JSON_PRETTY_PRINT);
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Vytvoření webové jednostránkové aplikace](../tutorial-bing-entities-search-single-page-app.md)
+> [Sestavení webové aplikace s jednou stránkou](../tutorial-bing-entities-search-single-page-app.md)
 
-* [Co je API pro vyhledávání entit Bingu?](../overview.md )
-* [Reference k rozhraní API vyhledávání entit Bingu](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference)
+* [Co je rozhraní API Bingu pro vyhledávání entit?](../overview.md )
+* [Odkaz na rozhraní API Bingu pro vyhledávání entit](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference)

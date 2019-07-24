@@ -1,7 +1,7 @@
 ---
-title: 'Kurz: Vytvoření jednostránkovou webovou aplikaci pomocí rozhraní API pro vyhledávání zpráv Bingu'
-titlesuffix: Azure Cognitive Services
-description: Pomocí tohoto kurzu můžete vytvářet jednostránkovou webovou aplikaci, která může posílat vyhledávací dotazy do rozhraní API Bingu zpráv a zobrazení výsledků v rámci webové stránky.
+title: 'Kurz: Vytvoření jednostránkové webové aplikace pomocí rozhraní API Bingu pro vyhledávání zpráv'
+titleSuffix: Azure Cognitive Services
+description: Tento kurz slouží k vytvoření jednostránkové webové aplikace, která může odesílat vyhledávací dotazy do rozhraní API služby Bing News a zobrazit výsledky v rámci webové stránky.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 07/12/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 10798b471012d53b5820b078b4be7c9c648d3233
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.openlocfilehash: 424fdc9fa0f31b3de664945ff49b119939488fed
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67868364"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68423604"
 ---
 # <a name="tutorial-create-a-single-page-web-app"></a>Kurz: Vytvoření jednostránkové webové aplikace
 
@@ -315,7 +315,7 @@ function renderResults(items) {
 ```
 Rozhraní API Bingu pro vyhledávání zpráv vrátí až čtyři různé druhy souvisejících výsledků, každý ve vlastním objektu nejvyšší úrovně. Jsou to tyto:
 
-|Relace|Popis|
+|Vztah|Popis|
 |-|-|
 |`pivotSuggestions`|Dotazy, které nahradí pivotové slovo v původním vyhledávání jiným. Pokud třeba vyhledáváte „červené květiny“, pivotové slovo může být „červené“ a pivotový návrh může být „žluté květiny“.|
 |`queryExpansions`|Dotazy, které původní hledání zúží přidáním dalších výrazů. Pokud třeba vyhledáváte „Microsoft Surface“, rozšíření dotazu může být „Microsoft Surface Pro“.|
@@ -397,7 +397,7 @@ Zásady zabezpečení prohlížeče (CORS) můžou bránit tomu, aby byla hlavi�
 > [!NOTE]
 > V produkční webové aplikaci byste měli požadavek provádět na straně serveru. Jinak musí být klíč rozhraní API pro vyhledávání Bingu součástí webové stránky, kde je k dispozici každému, kdo si zobrazí zdroj. Účtuje se vám veškeré využívání vašeho klíče předplatného rozhraní API, dokonce i požadavky provedené neoprávněnými stranami, proto je důležité klíč nezveřejňovat.
 
-Pro účely vývoje můžete požadavek na rozhraní API Bingu pro vyhledávání na webu provést prostřednictvím proxy serveru CORS. Odpověď od takový proxy server má `Access-Control-Expose-Headers` hlavičku, která umožňuje hlavičky odpovědi a zpřístupňuje je pro jazyk JavaScript.
+Pro účely vývoje můžete požadavek na rozhraní API Bingu pro vyhledávání na webu provést prostřednictvím proxy serveru CORS. Odpověď z takového serveru proxy má `Access-Control-Expose-Headers` záhlaví, které umožňuje použití hlaviček odpovědí a zpřístupňuje je pro JavaScript.
 
 Nainstalovat proxy server CORS a povolit naší ukázkové aplikaci přístup k hlavičce ID klienta je snadné. Nejdřív [nainstalujte Node.js](https://nodejs.org/en/download/), pokud jste to ještě neudělali. Pak zadejte v příkazovém okně tento příkaz:
 

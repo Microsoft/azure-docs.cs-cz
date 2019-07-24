@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý start: Hledání zpráv s využitím Node.js – rozhraní API REST vyhledávání zpráv Bingu'
-titlesuffix: Azure Cognitive Services
-description: V tomto rychlém startu můžete odeslat požadavek na Bingu News Search REST API pomocí Node.js a přijetí odpovědi JSON.
+title: 'Rychlý start: Proveďte hledání zpráv pomocí Node. js – Vyhledávání zpráv Bingu REST API'
+titleSuffix: Azure Cognitive Services
+description: Pomocí tohoto rychlého startu můžete odeslat žádost do Vyhledávání zpráv Bingu REST API pomocí Node. js a přijmout odpověď JSON.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,14 +11,14 @@ ms.topic: quickstart
 ms.date: 6/18/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 1fb2676fb1513ab4955ffa35c559b2ae36e0efd0
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 501ae6107232287011388bb67e64a1ae3fe5f7e3
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67203319"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68423721"
 ---
-# <a name="quickstart-perform-a-news-search-using-nodejs-and-the-bing-news-search-rest-api"></a>Rychlý start: Hledání zpráv pomocí Node.js a rozhraní API REST vyhledávání zpráv Bingu
+# <a name="quickstart-perform-a-news-search-using-nodejs-and-the-bing-news-search-rest-api"></a>Rychlý start: Proveďte hledání zpráv pomocí Node. js a Vyhledávání zpráv Bingu REST API
 
 V tomto rychlém startu poprvé zavoláte rozhraní API Bingu pro vyhledávání obrázků a dostanete odpověď ve formátu JSON. Tato jednoduchá aplikace JavaScriptu odesílá vyhledávací dotaz do rozhraní API a zobrazuje nezpracované výsledky.
 
@@ -30,7 +30,7 @@ Zdrojový kód k této ukázce je dostupný na [Githubu](https://github.com/Azur
 
 * Nejnovější verze [Node.js](https://nodejs.org/en/download/).
 
-* [Knihovna žádostí o jazyka JavaScript](https://github.com/request/request)
+* [Knihovna požadavků JavaScriptu](https://github.com/request/request)
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../includes/cognitive-services-bing-news-search-signup-requirements.md)]
 
@@ -71,7 +71,7 @@ Viz také [služeb Cognitive Services ceny – rozhraní API Bingu pro vyhledáv
         });
         ```
 
-    3. Když **end** signalizován příznak, JSON a záhlaví lze zobrazit.
+    3. Při signalizaci **koncového** příznaku se dají zobrazit JSON a hlavičky.
 
         ```javascript
         response.on('end', function () {

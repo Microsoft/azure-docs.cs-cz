@@ -1,7 +1,7 @@
 ---
-title: Odkaz na sadu SDK atraktivní čtečky
+title: Referenční dokumentace sady pro moderní čtečku
 titleSuffix: Azure Cognitive Services
-description: Referenční informace pro atraktivní čtečky SDK
+description: Referenční dokumentace k sadě pro moderní čtečku
 services: cognitive-services
 author: metanMSFT
 manager: nitinme
@@ -10,51 +10,51 @@ ms.subservice: immersive-reader
 ms.topic: reference
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: 485e8626af4266492e02d4f9fbe4af486e10c082
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 67da7d67a3165583a872c2b435c3cdca9763d4dd
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67718387"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68443808"
 ---
-# <a name="immersive-reader-sdk-reference"></a>Odkaz na sadu SDK atraktivní čtečky
+# <a name="immersive-reader-sdk-reference"></a>Referenční dokumentace sady pro moderní čtečku
 
-Atraktivní čtečky SDK je knihovna JavaScript, která umožňuje integrovat atraktivní čtečky do webové aplikace.
+Moderní čtečka SDK je knihovna JavaScriptu, která umožňuje integrovat moderní čtečku do vaší webové aplikace.
 
 ## <a name="functions"></a>Funkce
 
-Sada SDK poskytuje jedinou funkci `ImmersiveReader.launchAsync(token, resourceName, content, options)`.
+Sada SDK zpřístupňuje jednu funkci, `ImmersiveReader.launchAsync(token, subdomain, content, options)`.
 
 ### <a name="launchasync"></a>launchAsync
 
-Spustí atraktivní čtecí modul v rámci `iframe` ve webové aplikaci.
+Spustí moderní čtečku v rámci `iframe` ve vaší webové aplikaci.
 
 ```typescript
-launchAsync(token: string, resourceName: string, content: Content, options?: Options): Promise<HTMLDivElement>;
+launchAsync(token: string, subdomain: string, content: Content, options?: Options): Promise<HTMLDivElement>;
 ```
 
 #### <a name="parameters"></a>Parametry
 
 | Name | Typ | Popis |
 | ---- | ---- |------------ |
-| `token` | řetězec | Přístupový token získaných z volání `issueToken` koncového bodu. |
-| `resourceName` | řetězec | Vyhrazená. Musí být nastaveno na `null`. |
-| `content` | [Obsah](#content) | Objekt, který obsahuje obsah zobrazený v moderním čtečky. |
-| `options` | [Možnosti](#options) | Možnosti pro konfiguraci určitého chování, atraktivní čtecí zařízení. Volitelné. |
+| `token` | řetězec | Ověřovací token Azure AD. Podívejte se na [kurz ověřování Azure AD](./azure-active-directory-authentication.md). |
+| `subdomain` | řetězec | Vlastní subdoména prostředku pro moderní čtečku v Azure. Podívejte se na [postupy ověřování Azure AD](./azure-active-directory-authentication.md). |
+| `content` | [Obsah](#content) | Objekt obsahující obsah, který se má zobrazit v moderní čtečce. |
+| `options` | [Možnosti](#options) | Možnosti pro konfiguraci určitého chování moderního čtecího zařízení. Volitelné. |
 
 #### <a name="returns"></a>Vrací
 
-Vrátí `Promise<HTMLDivElement>` který řeší při načtení atraktivní čtečky. `Promise` Přeloží na `div` element, jehož jediným podřízeným je `iframe` element, který obsahuje stránku atraktivní čtečky.
+Vrátí, `Promise<HTMLDivElement>` který se vyřeší, když se nahraje moderní čtečka. Překládá na prvek, jehož jediným podřízeným prvkem `iframe` je prvek, který obsahuje stránku s moderní čtečkou. `div` `Promise`
 
 #### <a name="exceptions"></a>Výjimky
 
-Vrácený `Promise` budou odmítnuty [ `Error` ](#error) objektu, pokud se nepodaří načíst atraktivní čtečky. Další informace najdete v tématu [kódy chyb](#error-codes).
+Vrácený `Promise` [`Error`](#error) objekt se odmítne s objektem, pokud se nepovede načíst moderní čtecí zařízení. Další informace najdete v tématu [kódy chyb](#error-codes).
 
 ## <a name="types"></a>Typy
 
 ### <a name="content"></a>Obsah
 
-Obsahuje obsah zobrazený v moderním čtečky.
+Obsahuje obsah, který se zobrazí v moderní čtečce.
 
 ```typescript
 {
@@ -71,12 +71,12 @@ Obsahuje obsah zobrazený v moderním čtečky.
 
 | Typ MIME | Popis |
 | --------- | ----------- |
-| text/plain | Prostý text. |
-| aplikace/mathml + xml | Matematické Markup Language (MathML). [Další informace](https://developer.mozilla.org/en-US/docs/Web/MathML).
+| Text/prostý | Prostý text. |
+| Application/MathML + XML | Jazyk MathML (Matematická Markup Language). [Další informace](https://developer.mozilla.org/en-US/docs/Web/MathML).
 
 ### <a name="options"></a>Možnosti
 
-Obsahuje vlastnosti, které konfigurují určitého chování, atraktivní čtecí zařízení.
+Obsahuje vlastnosti, které konfigurují určité chování moderního čtecího zařízení.
 
 ```typescript
 {
@@ -89,7 +89,7 @@ Obsahuje vlastnosti, které konfigurují určitého chování, atraktivní čtec
 
 ### <a name="error"></a>Chyba
 
-Obsahuje informace o této chybě.
+Obsahuje informace o chybě.
 
 ```typescript
 {
@@ -102,13 +102,13 @@ Obsahuje informace o této chybě.
 
 | Kód | Popis |
 | ---- | ----------- |
-| BadArgument | Zadaný argument je neplatný, naleznete v tématu `message` podrobnosti. |
-| časový limit | Dokonalé čtecí modul se nepodařilo načíst v rámci zadaného časového limitu. |
-| TokenExpired| Platnost zadaného tokenu. |
+| BadArgument | Zadaný argument je neplatný. Podrobnosti `message` naleznete v tématu. |
+| časový limit | V rámci zadaného časového limitu se nepovedlo načíst moderní čtečku. |
+| TokenExpired| Platnost zadaného tokenu vypršela. |
 
-## <a name="launching-the-immersive-reader"></a>Spouští se atraktivní čtečky
+## <a name="launching-the-immersive-reader"></a>Spuštění moderního čtecího zařízení
 
-Sada SDK poskytuje výchozí styl tlačítka pro spouštění atraktivní čtečky. Použití `immersive-reader-button` atribut třídy, které chcete povolit tento styl.
+Sada SDK poskytuje výchozí styl pro tlačítko pro spuštění moderního čtecího zařízení. Pro povolení tohoto stylu použijte atribut Class.`immersive-reader-button`
 
 ```html
 <div class='immersive-reader-button'></div>
@@ -116,17 +116,17 @@ Sada SDK poskytuje výchozí styl tlačítka pro spouštění atraktivní čteč
 
 ### <a name="optional-attributes"></a>Volitelné atributy
 
-Konfigurace vzhledu a chování tlačítka použijte následující atributy.
+Pomocí následujících atributů můžete nakonfigurovat vzhled a chování tlačítka.
 
 | Atribut | Popis |
 | --------- | ----------- |
 | `data-button-style` | Nastaví styl tlačítka. Může být `icon`, `text`, nebo `iconAndText`. Výchozí hodnota je `icon`. |
-| `data-locale` | Nastaví národní prostředí, například `en-US`, `fr-FR`. Výchozí hodnota je angličtina. |
-| `data-icon-px-size` | Nastaví velikost ikony v pixelech. Výchozí hodnota je {20px. |
+| `data-locale` | Nastaví národní prostředí, např. `en-US`. `fr-FR` Výchozí hodnota je angličtina. |
+| `data-icon-px-size` | Nastaví velikost ikony v pixelech. Výchozí hodnota je 20px. |
 
 ## <a name="browser-support"></a>Podpora prohlížeče
 
-Pro dosažení co nejlepších výsledků atraktivní čtečkou pomocí nejnovější verze následujících prohlížečů.
+K dosažení nejlepšího prostředí pro moderní čtečku použijte nejnovější verze následujících prohlížečů.
 
 * Microsoft Edge
 * Internet Explorer 11
@@ -136,5 +136,5 @@ Pro dosažení co nejlepších výsledků atraktivní čtečkou pomocí nejnově
 
 ## <a name="next-steps"></a>Další postup
 
-* Prozkoumejte [atraktivní čtečky SDK na Githubu](https://github.com/Microsoft/immersive-reader-sdk)
-* [Rychlé zprovoznění: Vytvoření webové aplikace, které spouští atraktivní Reader (C#)](./quickstart.md)
+* Prozkoumejte [sadu moderních čtenářů na GitHubu](https://github.com/Microsoft/immersive-reader-sdk)
+* [Rychlé zprovoznění: Vytvoření webové aplikace, která spustí moderní čtečku (C#)](./quickstart.md)

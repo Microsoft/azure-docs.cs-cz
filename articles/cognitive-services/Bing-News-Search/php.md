@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý start: Vyhledávání zpráv pomocí PHP a rozhraní API REST vyhledávání zpráv Bingu'
-titlesuffix: Azure Cognitive Services
-description: V tomto rychlém startu můžete odeslat požadavek na Bingu News Search REST API pomocí PHP a přijetí odpovědi JSON.
+title: 'Rychlý start: Proveďte hledání zpráv pomocí PHP a Vyhledávání zpráv Bingu REST API'
+titleSuffix: Azure Cognitive Services
+description: Pomocí tohoto rychlého startu můžete odeslat požadavek do Vyhledávání zpráv Bingu REST API pomocí PHP a přijmout odpověď JSON.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,22 +11,22 @@ ms.topic: quickstart
 ms.date: 6/18/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 9fd03b433580444c2fc3f956dded6deb1a2be7f1
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: b905993c88bd4425215dd83962980d8e46a7b943
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67203336"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68423702"
 ---
-# <a name="quickstart-perform-a-news-search-using-php-and-the-bing-news-search-rest-api"></a>Rychlý start: Hledání zpráv pomocí PHP a rozhraní API REST vyhledávání zpráv Bingu
+# <a name="quickstart-perform-a-news-search-using-php-and-the-bing-news-search-rest-api"></a>Rychlý start: Proveďte hledání zpráv pomocí PHP a Vyhledávání zpráv Bingu REST API
 
 V tomto rychlém startu poprvé zavoláte rozhraní API Bingu pro vyhledávání obrázků a dostanete odpověď ve formátu JSON. Tato jednoduchá aplikace JavaScriptu odesílá vyhledávací dotaz do rozhraní API a zobrazuje nezpracované výsledky.
 
-Zatímco tato aplikace je napsaný v jazyce PHP, je rozhraní API RESTful webových služeb kompatibilní většina programovacích jazyků.
+I když je tato aplikace napsaná v PHP, je rozhraní API webová služba RESTful kompatibilní s většinou programovacích jazyků.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* PHP 5.6 nebo novější
+* PHP 5,6 nebo novější
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../includes/cognitive-services-bing-news-search-signup-requirements.md)]
 

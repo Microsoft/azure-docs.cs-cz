@@ -1,7 +1,6 @@
 ---
 title: Zálohování Windows Serveru do Azure
 description: Tento kurz podrobně popisuje zálohování místních Windows Serverů do trezoru služby Recovery Services.
-services: backup
 author: dcurwin
 manager: carmonm
 keywords: windows server back up; back up windows server; back up and disaster recovery
@@ -10,12 +9,12 @@ ms.topic: tutorial
 ms.date: 8/22/2018
 ms.author: dacurwin
 ms.custom: mvc
-ms.openlocfilehash: 907a10314f27428d4d4b867abb71e2046208650b
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 0a8a4795cf35402ebecbf6838aaeb5f17768aa06
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67273960"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68467034"
 ---
 # <a name="back-up-windows-server-to-azure"></a>Zálohování Windows Serveru do Azure
 
@@ -29,7 +28,7 @@ Pomocí služby Azure Backup můžete chránit svůj Windows Server před poško
 > * Provedení zálohování ad hoc
 
 
-## <a name="sign-in-to-azure"></a>Přihlásit se k Azure
+## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
 Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 
@@ -98,7 +97,7 @@ Agent služby Microsoft Azure Recovery Services (MARS) vytvoří přidružení m
  
 4. Po zobrazení výzvy zadejte šifrovací heslo pro šifrování záloh z Windows Serveru. Toto heslo uložte na bezpečném místě, protože ho Microsoft v případě ztráty nemůže obnovit.
 
-5. Klikněte na **Dokončit**. 
+5. Klikněte na tlačítko **Dokončit**. 
 
 ## <a name="configure-backup-and-retention"></a>Konfigurace zálohování a uchovávání
 

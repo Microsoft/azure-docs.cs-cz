@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 09/04/2018
 ms.author: glenga
-ms.openlocfilehash: c20f86fe7fdcfc7ecc940923a8c98fa1fbf4cf65
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: a2994602f857c2c8ff9f935b649a8d3e94c10dca
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67174783"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68444115"
 ---
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
@@ -21,4 +21,5 @@ Pokud nepoužíváte službu Cloud Shell, nejprve se přihlaste pomocí `az logi
 ```azurecli-interactive
 az group create --name myResourceGroup --location westeurope
 ```
-Obvykle budete svoji skupinu prostředků a prostředky vytvářet v oblasti, kterou máte blízko. Pokud chcete zobrazit všechna podporovaná umístění pro plány služby App Service, spusťte příkaz [az appservice list-locations](/cli/azure/appservice#az-appservice-list-locations).
+
+Obecně vytvoříte skupinu prostředků a prostředky v [oblasti](https://azure.microsoft.com/global-infrastructure/regions/) , která je blízko vás. 

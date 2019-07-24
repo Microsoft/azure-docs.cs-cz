@@ -7,14 +7,14 @@ author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 03/01/2019
+ms.date: 07/24/2019
 ms.author: erhopf
-ms.openlocfilehash: 0499b2ef25cc93615a72269bd64af689ebced01d
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: b69bd39e97cc97830142c8b1911f1116927643b2
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68333584"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68467518"
 ---
 # <a name="authenticate-requests-to-azure-cognitive-services"></a>Ověřování požadavků do Azure Cognitive Services
 
@@ -23,6 +23,7 @@ Každý požadavek na službu rozpoznávání Azure musí obsahovat hlavičku ov
 * [Ověřování pomocí klíče předplatného s jednou službou](#authenticate-with-a-single-service-subscription-key)
 * [Ověřování pomocí klíče předplatného s více službami](#authenticate-with-a-multi-service-subscription-key)
 * [Ověřování pomocí tokenu](#authenticate-with-an-authentication-token)
+* [Ověřování pomocí Azure Active Directory (AAD)](#authenticate-with-azure-active-directory)
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -158,8 +159,10 @@ curl -X POST 'https://api.cognitive.microsofttranslator.com/translate?api-versio
 --data-raw '[{ "text": "How much for the cup of coffee?" }]' | json_pp
 ```
 
+[!INCLUDE [](../../includes/cognitive-services-azure-active-directory-authentication.md)]
+
 ## <a name="see-also"></a>Viz také:
 
 * [Co je služba Cognitive Services?](welcome.md)
 * [Ceny služeb Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services/)
-* [Vytvoření účtu](cognitive-services-apis-create-account.md)
+* [Vlastní subdomény](cognitive-services-custom-subdomains.md)

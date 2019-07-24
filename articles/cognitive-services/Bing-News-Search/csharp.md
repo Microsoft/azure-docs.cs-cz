@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý start: Hledání zpráv s C# -REST rozhraní API pro vyhledávání zpráv Bingu'
-titlesuffix: Azure Cognitive Services
-description: V tomto rychlém startu můžete odeslat požadavek na rozhraní API REST vyhledávání zpráv Bingu pomocí C#a získejte odpověď ve formátu JSON.
+title: 'Rychlý start: Proveďte hledání zpráv s C# vyhledávání zpráv Bingu REST API'
+titleSuffix: Azure Cognitive Services
+description: Pomocí tohoto rychlého startu můžete odeslat žádost Vyhledávání zpráv Bingu REST API pomocí C#a přijmout odpověď JSON.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,22 +11,22 @@ ms.topic: quickstart
 ms.date: 6/18/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 30b93f0728579fca2c2db6bd56bd21f4e884ff57
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: c6b050a9637046a8703dd7aaf1d5ac7f1ad1a5da
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67206141"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68423799"
 ---
-# <a name="quickstart-search-for-news-using-c-and-the-bing-news-search-rest-api"></a>Rychlý start: Hledání zpráv pomocí C# a rozhraní API REST vyhledávání zpráv Bingu
+# <a name="quickstart-search-for-news-using-c-and-the-bing-news-search-rest-api"></a>Rychlý start: Hledání zpráv pomocí C# a vyhledávání zpráv Bingu REST API
 
-V tomto rychlém startu můžete provést první volání do rozhraní API pro vyhledávání zpráv Bingu a zobrazit odpověď JSON. Tento jednoduchý C# aplikace odešle zprávy vyhledávací dotaz do rozhraní API a zobrazí odpovědi. Úplný kód pro tuto ukázku můžete najít na [Githubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingNewsSearchv7.cs).
+Tento rychlý Start použijte k provedení prvního volání rozhraní API Bingu pro vyhledávání zpráv a zobrazení odpovědi JSON. Tato jednoduchá C# aplikace pošle vyhledávací dotaz na zprávy do rozhraní API a zobrazí odpověď. Úplný kód této ukázky najdete na [GitHubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingNewsSearchv7.cs).
 
 Aplikace je sice napsaná v C#, ale rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Libovolná edice [sady Visual Studio 2017 nebo novější](https://www.visualstudio.com/downloads/).
+* Libovolná edice sady [Visual Studio 2017 nebo novější](https://www.visualstudio.com/downloads/).
 * Rozhraní [Json.NET](https://www.newtonsoft.com/json), k dispozici jako balíček NuGet.
 * Pokud používáte Linux nebo MacOS, je možné tuto aplikaci spustit pomocí [Mono](https://www.mono-project.com/).
 
@@ -36,7 +36,7 @@ Viz také [služeb Cognitive Services ceny – rozhraní API Bingu pro vyhledáv
 
 ## <a name="create-and-initialize-a-project"></a>Vytvoření a inicializace projektu
 
-1. Vytvořte nový C# konzole řešení v sadě Visual Studio. Pak přidejte následující obory názvů do souboru hlavního kódu.
+1. Vytvořte nové C# řešení konzoly v aplikaci Visual Studio. Pak přidejte následující obory názvů do souboru hlavního kódu.
     
     ```csharp
     using System;
@@ -53,7 +53,7 @@ Viz také [služeb Cognitive Services ceny – rozhraní API Bingu pro vyhledáv
     const string uriBase = "https://api.cognitive.microsoft.com/bing/v7.0/news/search";
     const string searchTerm = "Microsoft";
     ```
-   ## <a name="create-a-struct-to-format-the-bing-news-search-response"></a>Vytvoření struktury formátovat odpověď pro vyhledávání zpráv Bingu
+   ## <a name="create-a-struct-to-format-the-bing-news-search-response"></a>Vytvoření struktury pro naformátování odezvy Vyhledávání zpráv Bingu
 
 1. Definujte strukturu `SearchResult` tak, aby obsahovala výsledky hledání obrázků, a informace v hlavičce JSON.
 
@@ -65,7 +65,7 @@ Viz také [služeb Cognitive Services ceny – rozhraní API Bingu pro vyhledáv
     }
     ```
 
-## <a name="create-and-handle-a-news-search-request"></a>Vytvořit a zpracovat žádost o vyhledávání zpráv
+## <a name="create-and-handle-a-news-search-request"></a>Vytvoření a zpracování žádosti o hledání zpráv
 
 Vytvořte metodu s názvem `BingNewsSearch`, která provede volání rozhraní API a nastaví typ vrácení na strukturu `SearchResult` vytvořenou dříve. V metodě proveďte následující kroky:
 

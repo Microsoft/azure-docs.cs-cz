@@ -5,6 +5,7 @@
     - name: Informace o službě Azure Digital Twins
       href: about-digital-twins.md
 - name: Šablony Rychlý start
+  expanded: true
   items:
     - name: Zjištění dostupných místností
       href: quickstart-view-occupancy-dotnet.md

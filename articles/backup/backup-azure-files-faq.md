@@ -1,19 +1,18 @@
 ---
 title: Nejčastější dotazy k zálohování Souborů Azure
 description: Tento článek obsahuje podrobnosti o ochraně sdílených složek Azure.
-services: backup
 author: dcurwin
 ms.author: dacurwin
 ms.date: 01/31/2019
 ms.topic: tutorial
 ms.service: backup
 manager: carmonm
-ms.openlocfilehash: 0c9e68a14aa18726a751709e99953d494c62308e
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: e3f94badb3af2e3f26a857f27f0b68a78338db92
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67275533"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68466313"
 ---
 # <a name="questions-about-backing-up-azure-files"></a>Dotazy týkající se zálohování Souborů Azure
 V tomto článku najdete odpovědi na běžné dotazy týkající se zálohování Souborů Azure. Některé odpovědi zahrnují odkazy na články obsahující komplexní informace. Otázky týkající se služby Azure Backup můžete také publikovat na [diskusním fóru](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup).
@@ -64,9 +63,9 @@ Zálohování sdílených složek Azure je aktuálně ve verzi Preview a je k di
 - Západní USA (WUS)
 - Střed USA – západ (WCUS)
 - Západní USA 2 (WUS 2)
-- US Gov Arizona (UGA)
+- US Gov – Arizona (UGA)
 - US Gov Texas (UGT)
-- US Gov Virginie (UGV)
+- US Gov – Virginie (UGV)
 
 Pokud potřebujete zálohování použít v konkrétní zeměpisné oblasti, která není uvedená výše, obraťte se na e-mail [AskAzureBackupTeam@microsoft.com](email:askazurebackupteam@microsoft.com).
 
@@ -76,7 +75,7 @@ Během období Preview můžete v jednom trezoru chránit sdílené složky Azur
 ### <a name="can-i-protect-two-different-file-shares-from-the-same-storage-account-to-different-vaults"></a>Můžu chránit dvě různé sdílené složky ze stejného účtu úložiště v jiných trezorech?
 Ne. Všechny sdílené složky v účtu úložiště je možné chránit pouze ve stejném trezoru.
 
-## <a name="backup"></a>Backup
+## <a name="backup"></a>Zálohovat
 
 ### <a name="how-many-on-demand-backups-can-i-take-per-file-share-br"></a>Kolik záloh na vyžádání jedné sdílené složky můžu vytvořit? <br/>
 V jakémkoli okamžiku můžete mít až 200 snímků jedné sdílené složky. Toto omezení zahrnuje snímky pořízené službou Azure Backup podle definice ve vašich zásadách. Pokud po dosažení omezení začne zálohování selhávat, zajistěte úspěch budoucích zálohování odstraněním bodů obnovení na vyžádání.
@@ -84,7 +83,7 @@ V jakémkoli okamžiku můžete mít až 200 snímků jedné sdílené složky. 
 ### <a name="after-enabling-virtual-networks-on-my-storage-account-the-backup-of-file-shares-in-the-account-started-failing-why"></a>Po povolení virtuálních sítí v účtu úložiště začalo při zálohování sdílených složek v tomto účtu docházet k chybám. Proč?
 Zálohování sdílených složek Azure nepodporuje účty úložiště s povolenými virtuálními sítěmi. Zakažte v účtech úložiště virtuální sítě, abyste umožnili úspěšné zálohování.
 
-## <a name="restore"></a>Obnovení
+## <a name="restore"></a>Obnovit
 
 ### <a name="can-i-recover-from-a-deleted-azure-file-share-br"></a>Můžu obnovit odstraněnou sdílenou složku Azure? <br/>
 Při odstraňování sdílené složky Azure se zobrazí seznam záloh, které se odstraní, a výzva k potvrzení. Odstraněnou sdílenou složku Azure není možné obnovit.
@@ -92,25 +91,25 @@ Při odstraňování sdílené složky Azure se zobrazí seznam záloh, které s
 ### <a name="can-i-restore-from-backups-if-i-stopped-protection-on-an-azure-file-share-br"></a>Můžu provést obnovení ze zálohy po zastavení ochrany sdílené složky Azure? <br/>
 Ano. Pokud jste při zastavování ochrany zvolili možnost **Zachovat zálohovaná data**, můžete provést obnovení ze všech stávajících bodů obnovení.
 
-### <a name="what-happens-if-i-cancel-an-ongoing-restore-job"></a>Co se stane, když zruším úlohu probíhající obnovení?
-Pokud dojde ke zrušení úlohy aktuálnímu obnovení, zastaví proces obnovení a všechny soubory obnovit před zrušením, budete mít všechno pod nakonfigurované cílové (původního nebo alternativního umístění) bez vrácení všech změn. 
+### <a name="what-happens-if-i-cancel-an-ongoing-restore-job"></a>Co se stane, když zruším probíhající úlohu obnovení?
+Pokud je probíhající úloha obnovení zrušena, proces obnovení se zastaví a všechny soubory obnovené před zrušením zůstávají v nakonfigurovaném cíli (původní nebo alternativní umístění) bez vrácení zpět. 
 
 
 ## <a name="manage-backup"></a>Správa zálohování
 
-### <a name="can-i-use-powershell-to-configuremanagerestore-backups-of-azure-file-shares-br"></a>Můžete použít PowerShell konfigurace a správa/obnovení záloh sdílených složek Azure? <br/>
-Ano. Najdete v podrobné dokumentaci popisující [zde](backup-azure-afs-automation.md)
+### <a name="can-i-use-powershell-to-configuremanagerestore-backups-of-azure-file-shares-br"></a>Můžu ke konfiguraci/správě a obnovení záloh sdílených složek Azure použít PowerShell? <br/>
+Ano. Informace najdete v [podrobné dokumentaci.](backup-azure-afs-automation.md)
 
 ### <a name="can-i-access-the-snapshots-taken-by-azure-backups-and-mount-it-br"></a>Můžu získat přístup ke snímkům pořízeným službou Azure Backup a připojit je? <br/>
 Přístup ke všem snímkům pořízeným službou Azure Backup je možný přes zobrazení snímků na portálu, v PowerShellu nebo v rozhraní příkazového řádku. Další informace o snímcích sdílených složek Azure najdete v tématu [Přehled snímků sdílených složek u souborů Azure (Preview)](../storage/files/storage-snapshots-files.md).
 
 ### <a name="what-is-the-maximum-retention-i-can-configure-for-backups-br"></a>Jakou maximální dobu uchovávání záloh můžu nakonfigurovat? <br/>
-Zálohování sdílených složek Azure nabízí možnost konfigurovat zásady uchovávání informací nahoru na 180 dnů. Avšak použití [možnost "zálohování na vyžádání" v prostředí PowerShell](backup-azure-afs-automation.md#trigger-an-on-demand-backup), vytvoření bodu obnovení můžete zachovat i po dobu 10 let.
+Zálohování sdílených složek Azure nabízí možnost konfigurovat zásady s uchováním až 180 dní. Pomocí [Možnosti zálohování na vyžádání v PowerShellu](backup-azure-afs-automation.md#trigger-an-on-demand-backup)ale můžete zachovat bod obnovení i po dobu 10 let.
 
 ### <a name="what-happens-when-i-change-the-backup-policy-for-an-azure-file-share-br"></a>Co se stane, když u sdílené složky Azure změním zásady zálohování? <br/>
 Pokud se pro sdílené složky použije nová zásada, plán a uchovávání se budou řídit touto novou zásadou. Pokud se doba uchovávání prodlouží, existující body obnovení se označí k zachování pro novou zásadu. Pokud se doba uchovávání zkrátí, označí se k vyřazení v rámci další úlohy čištění a budou odstraněny.
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také:
 Tyto informace se týkají pouze zálohování Souborů Azure. Další informace o dalších oblastech služby Azure Backup najdete v některém z těchto témat s nejčastějšími dotazy ke službě Backup:
 -  [Nejčastější dotazy k trezoru služby Recovery Services](backup-azure-backup-faq.md)
 -  [Nejčastější dotazy k zálohování virtuálních počítačů Azure](backup-azure-vm-backup-faq.md)

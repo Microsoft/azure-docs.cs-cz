@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý start: Odeslat žádost o vyhledávání Bingu Entity Search REST API pomocí Pythonu'
-titlesuffix: Azure Cognitive Services
-description: V tomto rychlém startu můžete odeslat požadavek na rozhraní Bing Entity REST API pro vyhledávání pomocí Pythonu a přijetí odpovědi JSON.
+title: 'Rychlý start: Odeslání žádosti o vyhledávání do Vyhledávání entit Bingu REST API pomocí Pythonu'
+titleSuffix: Azure Cognitive Services
+description: Pomocí tohoto rychlého startu můžete odeslat žádost Vyhledávání entit Bingu REST API pomocí Pythonu a přijmout odpověď JSON.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,28 +10,28 @@ ms.subservice: bing-entity-search
 ms.topic: quickstart
 ms.date: 02/01/2019
 ms.author: aahi
-ms.openlocfilehash: 43f01b39ed01e94fe21283997b5981e7fa49bde5
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: 1464204802b182e445d4ef9003d41005b33faa5f
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66384526"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68423940"
 ---
-# <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-python"></a>Rychlý start: Odeslat žádost o vyhledávání Bingu Entity Search REST API pomocí Pythonu
+# <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-python"></a>Rychlý start: Odeslání žádosti o vyhledávání do Vyhledávání entit Bingu REST API pomocí Pythonu
 
-V tomto rychlém startu můžete provést první volání do rozhraní API Bingu pro vyhledávání entit a zobrazit odpověď JSON. Tato jednoduchá aplikace Python odešle dotaz vyhledávání zpráv na rozhraní API a zobrazí odpovědi. Zdrojový kód k této ukázce je dostupný na [Githubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/python/Search/BingEntitySearchv7.py).
+Tento rychlý Start použijte k provedení prvního volání rozhraní API Bingu pro vyhledávání entit a zobrazení odpovědi JSON. Tato jednoduchá aplikace v Pythonu pošle vyhledávací dotaz na zprávy do rozhraní API a zobrazí odpověď. Zdrojový kód k této ukázce je dostupný na [Githubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/python/Search/BingEntitySearchv7.py).
 
 Aplikace je sice napsaná v Pythonu, ale rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* [Python](https://www.python.org/downloads/) 2.x nebo 3.x
+* [Python](https://www.python.org/downloads/) 2. x nebo 3. x
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../../includes/cognitive-services-bing-entity-search-signup-requirements.md)]
 
 ## <a name="create-and-initialize-the-application"></a>Vytvoření a inicializace aplikace
 
-1. Vytvořte nový soubor Pythonu ve vašich oblíbených prostředím IDE nebo editorem a přidejte následující importy. Vytváření proměnných pro váš klíč předplatného, koncový bod, trhu a vyhledávací dotaz. Vyhledání vašeho koncového bodu na řídicím panelu Azure.
+1. V oblíbených IDE nebo editoru vytvořte nový soubor Pythonu a přidejte následující importy. Vytvořte proměnné pro svůj klíč předplatného, koncový bod, trh a vyhledávací dotaz. Koncový bod najdete na řídicím panelu Azure.
 
     ```python
     import http.client, urllib.parse
@@ -44,18 +44,18 @@ Aplikace je sice napsaná v Pythonu, ale rozhraní API je webová služba RESTfu
     query = 'italian restaurants near me'
     ```
 
-2. Vytvořit žádost o adresu url připojením vašeho trhu proměnnou `?mkt=` parametru. Kódování URL dotazu a umožňuje připojení `&q=` parametru. 
+2. Vytvořte adresu URL požadavku připojením proměnné na trhu k `?mkt=` parametru. URL – zakódovat dotaz a připojit ho k `&q=` parametru. 
     
     ```python
     params = '?mkt=' + mkt + '&q=' + urllib.parse.quote (query)
     ```
 
-## <a name="send-a-request-and-get-a-response"></a>Odešle žádost a získejte odpověď
+## <a name="send-a-request-and-get-a-response"></a>Odeslat žádost a získat odpověď
 
-1. Vytvořit funkci s názvem `get_suggestions()`. Pak proveďte následující kroky.
-   1. Klíč předplatného. přidejte do slovníku s `Ocp-Apim-Subscription-Key` jako klíč.
-   2. Použití `http.client.HTTPSConnection()` k vytvoření objektu klienta HTTPS. Odeslat `GET` požadovat pomocí `request()` s informacemi o cestu a parametry a záhlaví.
-   3. Odpověď se Store `getresponse()`a vrátí `response.read()`.
+1. Vytvořte funkci s názvem `get_suggestions()`. Pak proveďte následující kroky.
+   1. Přidejte svůj klíč předplatného do slovníku `Ocp-Apim-Subscription-Key` s jako klíč.
+   2. Slouží `http.client.HTTPSConnection()` k vytvoření objektu klienta HTTPS. Odešlete `request()` požadavek pomocí cesty a parametrů a informací v hlavičce. `GET`
+   3. Uložte odpověď s a `getresponse()`vraťte `response.read()`se.
 
       ```python
       def get_suggestions ():
@@ -66,14 +66,14 @@ Aplikace je sice napsaná v Pythonu, ale rozhraní API je webová služba RESTfu
        return response.read()
       ```
 
-2. Volání `get_suggestions()`a tisku odpověď json.
+2. Zavolejte `get_suggestions()`a vytiskněte odpověď JSON.
 
     ```python
     result = get_suggestions ()
     print (json.dumps(json.loads(result), indent=4))
     ```
 
-## <a name="example-json-response"></a>Příklad JSON odpovědi
+## <a name="example-json-response"></a>Příklad odpovědi JSON
 
 Úspěšná odpověď se vrátí ve formátu JSON, jak je znázorněno v následujícím příkladu: 
 
@@ -138,10 +138,10 @@ Aplikace je sice napsaná v Pythonu, ale rozhraní API je webová služba RESTfu
 }
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Vytvoření webové jednostránkové aplikace](../tutorial-bing-entities-search-single-page-app.md)
+> [Sestavení webové aplikace s jednou stránkou](../tutorial-bing-entities-search-single-page-app.md)
 
-* [Co je API pro vyhledávání entit Bingu](../search-the-web.md)
-* [Reference k rozhraní API vyhledávání entit Bingu](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference)
+* [Co je rozhraní API Bingu pro vyhledávání entit](../search-the-web.md)
+* [Odkaz na rozhraní API Bingu pro vyhledávání entit](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference)

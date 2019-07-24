@@ -1,7 +1,6 @@
 ---
-title: Ukázkový skript Azure Powershellu – zálohování virtuálního počítače Azure | Dokumentace Microsoftu
-description: Ukázkový skript Azure Powershellu – zálohování virtuálního počítače Azure
-services: backup
+title: Ukázka skriptu Azure PowerShell – zálohování virtuálního počítače Azure | Microsoft Docs
+description: Ukázka skriptu Azure PowerShell – zálohování virtuálního počítače Azure
 documentationcenter: ''
 author: rayne-wiselman
 manager: carmonm
@@ -10,16 +9,16 @@ ms.topic: sample
 ms.date: 03/05/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 62d0c7a66e37d0796655bd20f780fa7e0847474c
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 84581dd4dfd1cc993476e0e85f804f32d28e8ab4
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65228685"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68467175"
 ---
-# <a name="back-up-an-encrypted-azure-virtual-machine-with-powershell"></a>Zálohování šifrovaných virtuálních počítačů Azure pomocí Powershellu
+# <a name="back-up-an-encrypted-azure-virtual-machine-with-powershell"></a>Zálohování šifrovaného virtuálního počítače Azure pomocí PowerShellu
 
-Tento skript vytvoří trezor služby Recovery Services s geograficky redundantní úložiště (GRS) pro šifrované virtuální počítač Azure. Výchozí zásada ochrany platí do trezoru. Zásady generuje denní zálohování pro virtuální počítač a každá záloha uchovává po dobu 30 dnů. Skript také aktivuje prvotní bod obnovení pro virtuální počítač a uchovává tento bod obnovení po dobu 365 dnů.
+Tento skript vytvoří Recovery Services trezor s geograficky redundantním úložištěm (GRS) pro šifrovaný virtuální počítač Azure. Výchozí zásady ochrany se aplikují na trezor. Zásada vygeneruje denní zálohu virtuálního počítače a uchová každou zálohu po dobu 30 dnů. Skript také aktivuje počáteční bod obnovení pro virtuální počítač a uchová tento bod obnovení po dobu 365 dnů.
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh.md)]
 
@@ -47,13 +46,13 @@ Tento skript pomocí následujících příkazů vytvoří nasazení. Každá po
 | Příkaz | Poznámky | 
 |---|---| 
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. | 
-| [New-AzRecoveryServicesVault](https://docs.microsoft.com/powershell/module/az.recoveryservices/new-azrecoveryservicesvault) | Vytvoří trezor služby recovery services k ukládání záloh. | 
-| [Set-AzRecoveryServicesBackupProperty](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupproperty) | Nastaví zálohování vlastnosti úložiště pro trezor služby Recovery Services. | 
-| [New-AzRecoveryServicesBackupProtectionPolicy](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupprotectionpolicy)| Vytvoří zásady ochrany pomocí zásady plánování a zásady uchovávání informací v trezoru služby Recovery Services. | 
+| [New-AzRecoveryServicesVault](https://docs.microsoft.com/powershell/module/az.recoveryservices/new-azrecoveryservicesvault) | Vytvoří trezor služby Recovery Services pro ukládání záloh. | 
+| [Set-AzRecoveryServicesBackupProperty](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupproperty) | Nastaví vlastnosti úložiště zálohování v trezoru Recovery Services. | 
+| [New-AzRecoveryServicesBackupProtectionPolicy](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupprotectionpolicy)| Vytvoří zásady ochrany pomocí zásad plánování a zásad uchovávání v Recovery Services trezoru. | 
 | [Set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy) | Nastaví oprávnění ke službě Key Vault tak, že instančnímu objektu udělí přístup k šifrovacím klíčům. | 
-| [Enable-AzRecoveryServicesBackupProtection](https://docs.microsoft.com/powershell/module/az.recoveryservices/enable-azrecoveryservicesbackupprotection) | Povolí zálohování pro položku zadané zásady ochrany zálohování. | 
-| [Set-AzRecoveryServicesBackupProtectionPolicy](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupprotectionpolicy)| Upraví stávající zásady ochrany zálohování. | 
-| [Backup-AzRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/backup-azrecoveryservicesbackupitem) | Spuštění zálohování pro chráněnou položku Azure Backup, která se neváže na plán zálohování. |
+| [Enable-AzRecoveryServicesBackupProtection](https://docs.microsoft.com/powershell/module/az.recoveryservices/enable-azrecoveryservicesbackupprotection) | Povolí zálohování položky se zadanými zásadami ochrany před zálohováním. | 
+| [Set-AzRecoveryServicesBackupProtectionPolicy](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupprotectionpolicy)| Upraví existující zásady ochrany záloh. | 
+| [Backup-AzRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/backup-azrecoveryservicesbackupitem) | Spustí zálohu pro chráněnou Azure Backup položku, která není vázaná na plán zálohování. |
 | [Wait-AzRecoveryServicesBackupJob](https://docs.microsoft.com/powershell/module/az.recoveryservices/wait-azrecoveryservicesbackupjob) | Čeká na dokončení úlohy Azure Backup. | 
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Odebere skupinu prostředků a všechny prostředky, které obsahuje. | 
 

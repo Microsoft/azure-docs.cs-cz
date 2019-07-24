@@ -5,6 +5,7 @@
     - name: Informace o Spatial Anchors
       href: overview.md
 - name: Šablony Rychlý start
+  expanded: true
   items:
     - name: Vytvoření aplikace Unity
       href: unity-overview.yml

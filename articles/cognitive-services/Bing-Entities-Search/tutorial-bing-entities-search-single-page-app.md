@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Webová aplikace Vyhledávání entit Bingu jednostránkového stránkování'
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: Ukazuje, jak používat rozhraní API Bingu pro vyhledávání entit v jednostránkové webové aplikaci.
 services: cognitive-services
 author: aahill
@@ -10,12 +10,12 @@ ms.subservice: bing-entity-search
 ms.topic: tutorial
 ms.date: 07/15/2019
 ms.author: aahi
-ms.openlocfilehash: 67aaf2a3b0c7de85283642795cc1a69e9c36aa37
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 5a8276f06207eb69ffec0e21c6d92794973f3b83
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68360571"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68423985"
 ---
 # <a name="tutorial-single-page-web-app"></a>Kurz: Jednostránková webová aplikace
 
@@ -543,7 +543,7 @@ Nakonec spusťte proxy server CORS pomocí tohoto příkazu:
 
 Při používání ukázkové aplikace nechte příkazové okno otevřené. Zavřením okna se zastaví proxy server. V rozbalitelné sekci hlaviček HTTP pod výsledky hledání teď uvidíte hlavičku `X-MSEdge-ClientID` (mimo jiné) a můžete zkontrolovat, jestli je stejná pro každý požadavek.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 > [Reference rozhraní API Bingu pro vyhledávání entit](//docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference)

@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý start: Vyhledávání zpráv pomocí Ruby a rozhraní API REST vyhledávání zpráv Bingu'
-titlesuffix: Azure Cognitive Services
-description: V tomto rychlém startu můžete odeslat požadavek na Bingu News Search REST API pomocí Ruby a přijetí odpovědi JSON.
+title: 'Rychlý start: Proveďte hledání zpráv pomocí Ruby a Vyhledávání zpráv Bingu REST API'
+titleSuffix: Azure Cognitive Services
+description: Pomocí tohoto rychlého startu můžete odeslat žádost do Vyhledávání zpráv Bingu REST API pomocí Ruby a přijmout odpověď JSON.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,22 +11,22 @@ ms.topic: quickstart
 ms.date: 6/19/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 5db8d9055ff973c3de1b995340d77004d889aa3d
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: ab16a54269c2afe820d9d17d1400152d078186ed
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67272726"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68423675"
 ---
-# <a name="quickstart-perform-a-news-search-using-ruby-and-the-bing-news-search-rest-api"></a>Rychlý start: Hledání zpráv pomocí Ruby a rozhraní API REST vyhledávání zpráv Bingu
+# <a name="quickstart-perform-a-news-search-using-ruby-and-the-bing-news-search-rest-api"></a>Rychlý start: Proveďte hledání zpráv pomocí Ruby a Vyhledávání zpráv Bingu REST API
 
-V tomto rychlém startu můžete provést první volání do rozhraní API pro vyhledávání zpráv Bingu a získejte odpověď ve formátu JSON. Tato jednoduchá aplikace JavaScript odešle vyhledávací dotaz na rozhraní API a zpracovává výsledky.
+Tento rychlý Start použijte k provedení prvního volání rozhraní API Bingu pro vyhledávání zpráv a přijetí odpovědi JSON. Tato jednoduchá aplikace JavaScriptu pošle vyhledávací dotaz do rozhraní API a zpracuje výsledky.
 
-Zatímco tato aplikace je napsaný v Pythonu, je rozhraní API RESTful webových služeb kompatibilní většina programovacích jazyků. Zdrojový kód k této ukázce je dostupný na [Githubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/ruby/Search/BingNewsSearchv7.rb).
+I když je tato aplikace napsaná v Pythonu, je rozhraní API webovou službou RESTful, která je kompatibilní s většinou programovacích jazyků. Zdrojový kód k této ukázce je dostupný na [Githubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/ruby/Search/BingNewsSearchv7.rb).
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Ruby [2.4 nebo vyšší](https://www.ruby-lang.org/en/downloads/)
+* Ruby [2,4 nebo novější](https://www.ruby-lang.org/en/downloads/)
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../includes/cognitive-services-bing-news-search-signup-requirements.md)]
 
@@ -42,7 +42,7 @@ Viz také [služeb Cognitive Services ceny – rozhraní API Bingu pro vyhledáv
     require 'json'
     ```
 
-2. Vytváření proměnných pro koncový bod rozhraní API, adresa URL pro hledání zpráv, váš klíč předplatného a hledané výrazy.
+2. Vytvořte proměnné pro koncový bod rozhraní API, adresu URL pro vyhledávání zpráv, klíč předplatného a hledaný termín.
 
     ```ruby
     accessKey = "enter key here"
@@ -64,9 +64,9 @@ response = Net::HTTP.start(uri.host, uri.port, :use_ssl => uri.scheme == 'https'
 end
 ```
 
-## <a name="process-and-print-the-json-response"></a>Zpracování a tisku odpověď JSON
+## <a name="process-and-print-the-json-response"></a>Zpracování a tisk odpovědi JSON
 
-Po přijetí odpovědi můžete analyzovat ve formátu JSON a tisk textu odpovědi a jeho záhlaví:
+Po přijetí odpovědi můžete analyzovat JSON a vytisknout text odpovědi i jeho hlavičky:
 
 ```ruby
 puts "\nRelevant Headers:\n\n"
@@ -179,4 +179,4 @@ puts JSON::pretty_generate(JSON(response.body))
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Vytvoření aplikace signle stránky](tutorial-bing-news-search-single-page-app.md)
+> [Vytvoření jednotné aplikace](tutorial-bing-news-search-single-page-app.md)

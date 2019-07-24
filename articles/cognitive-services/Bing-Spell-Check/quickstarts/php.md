@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý start: Kontrola pravopisu s PHP a rozhraní REST API kontrolu pravopisu Bingu'
-titlesuffix: Azure Cognitive Services
-description: Začněte používat API kontrola pravopisu Bingu pro kontrolu pravopisu a gramatiky.
+title: 'Rychlý start: Kontrola pravopisu pomocí Kontrola pravopisu Bingu REST API a PHP'
+titleSuffix: Azure Cognitive Services
+description: Začněte používat rozhraní API Bingu pro kontrolu pravopisu pro kontrolu pravopisu a gramatiky.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,20 +10,20 @@ ms.subservice: bing-spell-check
 ms.topic: quickstart
 ms.date: 02/20/2019
 ms.author: aahi
-ms.openlocfilehash: 38ec5fcc57482928024f8a5a1cd07100db3085e6
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: 15a550321c28703c7bb4d8155ffeb7791eafedc6
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66390153"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68423493"
 ---
-# <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-php"></a>Rychlý start: Kontrola pravopisu s PHP a rozhraní REST API kontrolu pravopisu Bingu
+# <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-php"></a>Rychlý start: Kontrola pravopisu pomocí Kontrola pravopisu Bingu REST API a PHP
 
-V tomto rychlém startu můžete provést první volání do rozhraní API Bingu pro kontrolu pravopisu zkontrolujte REST. Tato jednoduchá aplikace Python odešle žádost na rozhraní API a vrátí seznam navrhovaných oprav. Aplikace je sice napsaná v Pythonu, ale rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků.
+V tomto rychlém startu můžete provést první volání REST API Kontrola pravopisu Bingu. Tato jednoduchá aplikace v Pythonu pošle požadavek do rozhraní API a vrátí seznam navrhovaných oprav. Aplikace je sice napsaná v Pythonu, ale rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* [PHP 5.6.x](https://php.net/downloads.php)
+* [PHP 5.6. x](https://php.net/downloads.php)
 
 [!INCLUDE [cognitive-services-bing-spell-check-signup-requirements](../../../../includes/cognitive-services-bing-spell-check-signup-requirements.md)]
 
@@ -131,10 +131,10 @@ echo $json;
    ]
 }
 ```
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Vytvoření webové jednostránkové – aplikace](../tutorials/spellcheck.md)
+> [Vytvoření webové aplikace na jedné stránce](../tutorials/spellcheck.md)
 
-- [Co je API kontrola pravopisu Bingu?](../overview.md)
+- [Co je rozhraní API Bingu pro kontrolu pravopisu?](../overview.md)
 - [Referenční informace k rozhraní API pro kontrolu pravopisu Bingu v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference)

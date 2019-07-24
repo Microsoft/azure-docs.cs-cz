@@ -1,7 +1,7 @@
 ---
-title: 'Kurz: Spusťte atraktivní čtečky pomocí Node.js'
+title: 'Kurz: Spuštění moderního čtečky pomocí Node. js'
 titleSuffix: Azure Cognitive Services
-description: V tomto kurzu vytvoříte aplikaci Node.js, které spouští atraktivní čtečky.
+description: V tomto kurzu vytvoříte aplikaci Node. js, která spustí moderní čtečku.
 services: cognitive-services
 author: metanMSFT
 manager: nitinme
@@ -10,36 +10,36 @@ ms.subservice: immersive-reader
 ms.topic: tutorial
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: f8697042ed46e0ff333f736454346908d76cf039
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 7410240b0d8e6a63d39c90ead2875f315d995de0
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67718372"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68443799"
 ---
 # <a name="tutorial-launch-the-immersive-reader-nodejs"></a>Kurz: Spuštění Asistivní čtečky (Node.js)
 
-V [přehled](./overview.md), jste se dozvěděli o tom, co je atraktivní čtečky a způsob implementace osvědčené techniky zlepšit míru porozumění čtení pro jazyk inteligentních algoritmů, nově vznikající čtečky a studentům učení rozdíly. Tento kurz obsahuje postup pro vytvoření webové aplikace Node.js, která spustí atraktivní čtečky. V tomto kurzu se naučíte:
+V tomto [přehledu](./overview.md)jste se dozvěděli o tom, co je moderní čtečka a jak implementuje osvědčené techniky pro zlepšení porozumění čtení pro jazykové učení, vznikající čtenáři a studenty s rozdíly v učení. V tomto kurzu se dozvíte, jak vytvořit webovou aplikaci Node. js, která spustí moderní čtečku. V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Vytvoření webové aplikace v Node.js s Express
+> * Vytvoření webové aplikace v Node. js pomocí Expressu
 > * Získání přístupového tokenu
-> * Spusťte atraktivní čtečky s ukázkovým obsahem
-> * Zadejte jazyk obsahu
-> * Zadejte jazyk rozhraní atraktivní čtecího zařízení
-> * Spusťte atraktivní čtečky s obsahem math
+> * Spuštění moderního čtecího zařízení s ukázkovým obsahem
+> * Zadejte jazyk vašeho obsahu
+> * Zadejte jazyk rozhraní moderního čtecího zařízení.
+> * Spuštění moderního čtečky s využitím matematického obsahu
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Klíč předplatného pro atraktivní čtecí zařízení. Získejte ji pomocí následujících [tyto pokyny](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account).
-* [Node.js](https://nodejs.org/) a [Yarn](https://yarnpkg.com)
-* Integrované vývojové prostředí, jako [Visual Studio Code](https://code.visualstudio.com/)
+* Prostředek moderního čtecího zařízení nakonfigurovaný pro ověřování Azure Active Directory (Azure AD). Pomocí [těchto pokynů](./azure-active-directory-authentication.md) si můžete nastavit. Při konfiguraci vlastností prostředí budete potřebovat některé z hodnot, které jsou zde vytvořeny. Uložte výstup vaší relace do textového souboru pro budoucí referenci.
+* [Node. js](https://nodejs.org/) a [příze](https://yarnpkg.com)
+* Rozhraní IDE, jako je například [Visual Studio Code](https://code.visualstudio.com/)
 
-## <a name="create-a-nodejs-web-app-with-express"></a>Vytvoření webové aplikace v Node.js s Express
+## <a name="create-a-nodejs-web-app-with-express"></a>Vytvoření webové aplikace v Node. js pomocí Expressu
 
-Vytvoření webové aplikace v Node.js s `express-generator` nástroj.
+Pomocí `express-generator` nástroje vytvořte webovou aplikaci v Node. js.
 
 ```bash
 npm install express-generator -g
@@ -47,7 +47,7 @@ express --view=pug myapp
 cd myapp
 ```
 
-Instalace závislostí yarn a přidat závislosti `request` a `dotenv`, který se použije v pozdější části kurzu.
+Nainstalujte závislosti příze a přidejte závislosti `request` a `dotenv`, které se použijí později v tomto kurzu.
 
 ```bash
 yarn
@@ -55,60 +55,85 @@ yarn add request
 yarn add dotenv
 ```
 
-## <a name="acquire-an-access-token"></a>Získání přístupového tokenu
+## <a name="acquire-an-azure-ad-authentication-token"></a>Získání ověřovacího tokenu Azure AD
 
-Dále napište back-endového rozhraní API k načtení přístupového tokenu pomocí váš klíč předplatného. Budete potřebovat předplatné key a koncového bodu pro tento další krok. Váš klíč předplatného najdete na stránce klíče atraktivní čtečky prostředku na webu Azure Portal. Vyhledání vašeho koncového bodu na stránce Přehled.
+Potom napíšete back-end rozhraní API pro načtení ověřovacího tokenu Azure AD.
 
-Jakmile budete mít klíč předplatného a koncového bodu, vytvořte nový soubor s názvem _.env_a vložte následující kód do ní nahrazení `{YOUR_SUBSCRIPTION_KEY}` a `{YOUR_ENDPOINT}` se váš klíč předplatného a koncový bod, v uvedeném pořadí.
+Pro tuto část potřebujete od výše uvedeného kroku požadavků konfigurace ověřování Azure AD nějaké hodnoty. Vraťte se zpět k textovému souboru, který jste si uložili do této relace.
+
+````text
+TenantId     => Azure subscription TenantId
+ClientId     => Azure AD ApplicationId
+ClientSecret => Azure AD Application Service Principal password
+Subdomain    => Immersive Reader resource subdomain (resource 'Name' if the resource was created in the Azure portal, or 'CustomSubDomain' option if the resource was created with Azure CLI Powershell. Check the Azure portal for the subdomain on the Endpoint in the resource Overview page, for example, 'https://[SUBDOMAIN].cognitiveservices.azure.com/')
+````
+
+Jakmile máte tyto hodnoty, vytvořte nový soubor s názvem _. env_a vložte do něj následující kód a zadejte hodnoty vlastních vlastností z výše uvedeného.
 
 ```text
-SUBSCRIPTION_KEY={YOUR_SUBSCRIPTION_KEY}
-ENDPOINT={YOUR_ENDPOINT}
+TENANT_ID={YOUR_TENANT_ID}
+CLIENT_ID={YOUR_CLIENT_ID}
+CLIENT_SECRET={YOUR_CLIENT_SECRET}
+SUBDOMAIN={YOUR_SUBDOMAIN}
 ```
 
-Se ujistěte, že potvrzení tohoto souboru do správy zdrojového kódu, protože obsahuje tajné kódy, které by neměly být zveřejněny.
+Ujistěte se, že tento soubor nechcete potvrdit do správy zdrojových kódů, protože obsahuje tajné klíče, které by neměly být zveřejněny.
 
-Dále otevřete _app.js_ a na začátek souboru přidejte následující. Tento kód načte klíč předplatného a koncový bod jako proměnné prostředí do uzlu.
+V dalším kroku otevřete _App. js_ a na začátek souboru přidejte následující. Tím se načte vlastnosti definované v souboru. env jako proměnné prostředí do uzlu.
 
 ```javascript
 require('dotenv').config();
 ```
 
-Otevřít _routes\index.js_ Souborová služba a následující importu v horní části souboru:
+V horní části souboru otevřete soubor _routes\index.js_ a následující import:
 
 ```javascript
 var request = require('request');
 ```
 
-Dále přidejte následující kód přímo pod tento řádek. Tento kód vytvoří koncový bod rozhraní API, která získá přístupový token pomocí váš klíč předplatného a potom vrátí token.
+Dále přidejte následující kód přímo pod tento řádek. Tento kód vytvoří koncový bod rozhraní API, který získá ověřovací token Azure AD pomocí vašeho hesla instančního objektu a potom tento token vrátí. Pro načtení subdomény je k dispozici také druhý koncový bod.
 
 ```javascript
-router.get('/token', function(req, res, next) {
-  request.post({
-    headers: {
-        'Ocp-Apim-Subscription-Key': process.env.SUBSCRIPTION_KEY,
-        'content-type': 'application/x-www-form-urlencoded'
-    },
-    url: process.env.ENDPOINT
-  },
-  function(err, resp, token) {
-    return res.send(token);
-  });
+router.get('/getimmersivereadertoken', function(req, res) {
+  request.post ({
+          headers: {
+              'content-type': 'application/x-www-form-urlencoded'
+          },
+          url: `https://login.windows.net/${process.env.TENANT_ID}/oauth2/token`,
+          form: {
+              grant_type: 'client_credentials',
+              client_id: process.env.CLIENT_ID,
+              client_secret: process.env.CLIENT_SECRET,
+              resource: 'https://cognitiveservices.azure.com/'
+          }
+      },
+      function(err, resp, token) {
+          if (err) {
+              return res.status(500).send('CogSvcs IssueToken error');
+          }
+
+          return res.send(JSON.parse(token).access_token);
+      }
+  );
+});
+
+router.get('/subdomain', function (req, res) {
+    return res.send(process.env.SUBDOMAIN);
 });
 ```
 
-Tento koncový bod rozhraní API by měl být zabezpečený za nějakou formu ověřování (například [OAuth](https://oauth.net/2/)); že práce je nad rámec tohoto kurzu.
+Koncový bod rozhraní API **getimmersivereadertoken** by měl být zabezpečený za určitou formou ověřování (například [OAuth](https://oauth.net/2/)), aby se zabránilo neoprávněným uživatelům ve získávání tokenů k použití proti vaší službě s moderní čtečkou a fakturaci. Tato práce překračuje rámec tohoto kurzu.
 
-## <a name="launch-the-immersive-reader-with-sample-content"></a>Spusťte atraktivní čtečky s ukázkovým obsahem
+## <a name="launch-the-immersive-reader-with-sample-content"></a>Spuštění moderního čtecího zařízení s ukázkovým obsahem
 
-1. Otevřít _views\layout.pug_a přidejte následující kód `head` označit, než `body` značky. Tyto `script` načíst značky [atraktivní SDK čtečky](https://github.com/Microsoft/immersive-reader-sdk) a knihovnu jQuery.
+1. Otevřete _views\layout.pug_a přidejte následující kód pod `head` `body` značku před značku. Tyto `script` značky načtou [sadu pro moderní čtečku](https://github.com/Microsoft/immersive-reader-sdk) a jQuery.
 
     ```pug
-    script(src='https://contentstorage.onenote.office.net/onenoteltir/immersivereadersdk/immersive-reader-sdk.0.0.1.js')
+    script(src='https://contentstorage.onenote.office.net/onenoteltir/immersivereadersdk/immersive-reader-sdk.0.0.2.js')
     script(src='https://code.jquery.com/jquery-3.3.1.min.js')
     ```
 
-2. Otevřít _views\index.pug_a nahraďte jeho obsah následujícím kódem. Tento kód naplní stránku obsahem některé ukázky a přidá tlačítko, které spustí atraktivní čtečky.
+2. Otevřete _views\index.pug_a nahraďte jeho obsah následujícím kódem. Tento kód naplní stránku nějakým ukázkovým obsahem a přidá tlačítko, které spustí moderní čtečku.
 
     ```pug
     extends layout
@@ -118,43 +143,69 @@ Tento koncový bod rozhraní API by měl být zabezpečený za nějakou formu ov
       p(id='content') The study of Earth's landforms is called physical geography. Landforms can be mountains and valleys. They can also be glaciers, lakes or rivers.
       div(class='immersive-reader-button' data-button-style='iconAndText' data-locale='en-US' onclick='launchImmersiveReader()')
       script.
-        function launchImmersiveReader() {
-          // First, get a token using our /token endpoint
-          $.ajax('/token', { success: token => {
-            // Second, grab the content from the page
+
+        function getImmersiveReaderTokenAsync() {
+            return new Promise((resolve, reject) => {
+                $.ajax({
+                    url: '/getimmersivereadertoken',
+                    type: 'GET',
+                    success: token => {
+                        resolve(token);
+                    },
+                    error: err => {
+                        console.log('Error in getting token!', err);
+                        reject(err);
+                    }
+                });
+            });
+        }
+
+        function getSubdomainAsync() {
+            return new Promise((resolve, reject) => {
+                $.ajax({
+                    url: '/subdomain',
+                    type: 'GET',
+                    success: subdomain => { resolve(subdomain); },
+                    error: err => { reject(err); }
+                });
+            });
+        }
+
+        async function launchImmersiveReader() {
             const content = {
-              title: document.getElementById('title').innerText,
-              chunks: [ {
-                content: document.getElementById('content').innerText + '\n\n',
-                lang: 'en'
-              } ]
+                title: document.getElementById('title').innerText,
+                chunks: [{
+                    content: document.getElementById('content').innerText + '\n\n',
+                    lang: 'en'
+                }]
             };
 
-            // Third, launch the Immersive Reader
-            ImmersiveReader.launchAsync(token, content);
-          }});
+            const token = await getImmersiveReaderTokenAsync();
+            const subdomain = await getSubdomainAsync();
+
+            ImmersiveReader.launchAsync(token, subdomain, content);
         }
     ```
 
-3. Naše webové aplikace je teď připravený. Spusťte aplikaci spuštěním:
+3. Naše webová aplikace je teď připravená. Spusťte aplikaci spuštěním:
 
     ```bash
     npm start
     ```
 
-4. Otevřete prohlížeč a přejděte do _http://localhost:3000_ . Na stránce, měli byste vidět na obsah výše. Klikněte na tlačítko **atraktivní čtečky** tlačítko Spustit atraktivní čtečky s vaším obsahem.
+4. Otevřete prohlížeč a přejděte na _http://localhost:3000_ . Na stránce byste měli vidět výše uvedený obsah. Kliknutím na tlačítko pro **moderní čtečku** spustíte moderní čtečku s vaším obsahem.
 
-## <a name="specify-the-language-of-your-content"></a>Zadejte jazyk obsahu
+## <a name="specify-the-language-of-your-content"></a>Zadejte jazyk vašeho obsahu
 
-Dokonalé čtečky nabízí podporu mnoha různých jazyků. Pomocí následujícího postupu můžete určit jazyk obsahu.
+Moderní čtečka podporuje řadu různých jazyků. Jazyk vašeho obsahu můžete určit podle následujících kroků.
 
-1. Otevřít _views\index.pug_ a přidejte následující kód uvedený níže `p(id=content)` značku, kterou jste přidali v předchozím kroku. Tento kód přidá nějaký obsah Španělština obsah na stránku.
+1. Otevřete _views\index.pug_ a přidejte následující kód pod `p(id=content)` značku, kterou jste přidali v předchozím kroku. Tento kód přidá do stránky obsah pro španělštinu obsahu.
 
     ```pug
     p(id='content-spanish') El estudio de las formas terrestres de la Tierra se llama geografía física. Los accidentes geográficos pueden ser montañas y valles. También pueden ser glaciares, lagos o ríos.
     ```
 
-2. V kódu jazyka JavaScript přidejte následující kód nad volání `ImmersiveReader.launchAsync`. Tento kód předá Španělština obsah do atraktivní čtečky.
+2. V kódu JavaScriptu přidejte následující nad volání `ImmersiveReader.launchAsync`. Tento kód předá španělský obsah do moderního čtecího zařízení.
 
     ```pug
     content.chunks.push({
@@ -163,13 +214,13 @@ Dokonalé čtečky nabízí podporu mnoha různých jazyků. Pomocí následují
     });
     ```
 
-3. Přejděte do _http://localhost:3000_ znovu. Byste měli vidět Španělština text na stránce, a po kliknutí na **atraktivní čtečky**, se zobrazí v moderním Reader.
+3. Znovu přejděte _http://localhost:3000_ na. Na stránce byste měli vidět španělský text a když kliknete na **moderní čtečku**, zobrazí se i v moderní čtečce.
 
-## <a name="specify-the-language-of-the-immersive-reader-interface"></a>Zadejte jazyk rozhraní atraktivní čtecího zařízení
+## <a name="specify-the-language-of-the-immersive-reader-interface"></a>Zadejte jazyk rozhraní moderního čtecího zařízení.
 
-Ve výchozím nastavení jazyk rozhraní atraktivní Reader odpovídá nastavení jazyka prohlížeče. Můžete také určit jazyk rozhraní atraktivní čtečky následujícím kódem.
+Standardně se jazyk moderního čtecího rozhraní shoduje s nastavením jazyka prohlížeče. Jazyk moderního čtecího rozhraní lze také určit pomocí následujícího kódu.
 
-1. V _views\index.pug_, nahraďte volání `ImmersiveReader.launchAsync(token, content)` s následujícím kódem.
+1. V _views\index.pug_nahraďte volání `ImmersiveReader.launchAsync(token, content)` kódem níže.
 
     ```javascript
     const options = {
@@ -178,13 +229,13 @@ Ve výchozím nastavení jazyk rozhraní atraktivní Reader odpovídá nastaven�
     ImmersiveReader.launchAsync(token, content, options);
     ```
 
-2. Přejděte do _http://localhost:3000_ . Při spuštění atraktivní čtečky rozhraní se nezobrazí ve francouzštině.
+2. Přejděte na _http://localhost:3000_ . Při spuštění moderního čtecího zařízení se rozhraní zobrazí ve francouzštině.
 
-## <a name="launch-the-immersive-reader-with-math-content"></a>Spusťte atraktivní čtečky s obsahem math
+## <a name="launch-the-immersive-reader-with-math-content"></a>Spuštění moderního čtečky s využitím matematického obsahu
 
-Můžete zahrnout obsah matematické atraktivní čtečky pomocí [MathML](https://developer.mozilla.org/en-US/docs/Web/MathML).
+Do moderního čtecího zařízení můžete zahrnout matematický obsah pomocí formátu [MathML](https://developer.mozilla.org/en-US/docs/Web/MathML).
 
-1. Upravit _views\index.pug_ zahrnout následující kód nad volání `ImmersiveReader.launchAsync`:
+1. Upravte _views\index.pug_ tak, aby zahrnoval následující kód nad volání `ImmersiveReader.launchAsync`:
 
     ```javascript
     const mathML = '<math xmlns="https://www.w3.org/1998/Math/MathML" display="block"> \
@@ -209,9 +260,9 @@ Můžete zahrnout obsah matematické atraktivní čtečky pomocí [MathML](https
     });
     ```
 
-2. Přejděte do _http://localhost:3000_ . Když spustíte atraktivní čtečky a přejděte do dolní části, zobrazí se vám matematické vzorce.
+2. Přejděte na _http://localhost:3000_ . Když spustíte moderní čtečku a posuňte se k dolnímu okraji, uvidíte matematický vzorec.
 
 ## <a name="next-steps"></a>Další postup
 
-* Prozkoumejte [atraktivní čtečky SDK](https://github.com/Microsoft/immersive-reader-sdk) a [atraktivní čtečky odkaz na sadu SDK](./reference.md)
-* Zobrazit ukázky kódu na [Githubu](https://github.com/microsoft/immersive-reader-sdk/samples/advanced-csharp)
+* Prozkoumejte [sadu moderních čtenářů](https://github.com/Microsoft/immersive-reader-sdk) a [referenční materiály k sadě pro moderní čtečku](./reference.md)
+* Zobrazit ukázky kódu na [GitHubu](https://github.com/microsoft/immersive-reader-sdk/samples/advanced-csharp)

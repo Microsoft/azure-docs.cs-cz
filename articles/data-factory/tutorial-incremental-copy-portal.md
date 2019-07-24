@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/11/2018
 ms.author: yexu
-ms.openlocfilehash: 6a9d6ec651cd365995ce63a8dff6d60c8b23dec1
-ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
+ms.openlocfilehash: 52cb11b015bb231b91184a2270e333e4c9aa8303
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/21/2019
-ms.locfileid: "67312648"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68424291"
 ---
 # <a name="incrementally-load-data-from-an-azure-sql-database-to-azure-blob-storage"></a>Přírůstkové načtení dat z databáze Azure SQL do úložiště Azure Blob Storage
 V tomto kurzu vytvoříte službu Azure Data Factory s kanálem, který načítá rozdílová data z tabulky v databázi Azure SQL do úložiště Azure Blob Storage. 
@@ -32,7 +32,7 @@ V tomto kurzu provedete následující kroky:
 > * Vytvoření kanálu
 > * Spuštění kanálu
 > * Monitorování spuštění kanálu 
-> * Kontrola výsledků
+> * Zkontrolovat výsledky
 > * Přidání dalších dat do zdroje
 > * Opětovné spuštění kanálu
 > * Monitorování druhého spuštění kanálu
@@ -150,7 +150,7 @@ END
 ## <a name="create-a-data-factory"></a>Vytvoření datové továrny
 
 1. Spusťte webový prohlížeč **Microsoft Edge** nebo **Google Chrome**. Uživatelské rozhraní služby Data Factory podporují v současnosti jenom webové prohlížeče Microsoft Edge a Google Chrome.
-1. V nabídce vlevo vyberte **vytvořit prostředek** > **Data a analýzy** > **služby Data Factory**: 
+1. V nabídce vlevo vyberte **vytvořit prostředek** > **data a analýzy** > **Data Factory**: 
    
    ![Výběr datové továrny v podokně Nový](./media/quickstart-create-data-factory-portal/new-azure-data-factory-menu.png)
 
@@ -172,7 +172,7 @@ END
 5. Vyberte **umístění** pro datovou továrnu. V rozevíracím seznamu se zobrazí pouze podporovaná umístění. Úložiště dat (Azure Storage, Azure SQL Database atd.) a výpočetní prostředí (HDInsight atd.) používané datovou továrnou mohou být v jiných oblastech.
 6. Zaškrtněte **Připnout na řídicí panel**.     
 7. Klikněte na možnost **Vytvořit**.      
-8. Na řídicím panelu vidíte následující dlaždice se statusem: **Nasazování datové továrny**. 
+8. Na řídicím panelu se zobrazí následující dlaždice se stavem: **Nasazuje se objekt pro vytváření dat**. 
 
     ![nasazování dlaždice datové továrny](media/tutorial-incremental-copy-portal/deploying-data-factory.png)
 9. Po vytvoření se zobrazí stránka **Datová továrna**, jak je znázorněno na obrázku.
@@ -238,7 +238,7 @@ V tomto kurzu vytvoříte kanál se dvěma aktivitami vyhledávání, jednou akt
 
         ![Druhá aktivita vyhledávání – nová datová sada](./media/tutorial-incremental-copy-portal/source-dataset-connection.png)
 17. Přepněte na editor kanálu kliknutím na kartu kanálu v horní části nebo kliknutím na název kanálu ve stromovém zobrazení vlevo. V okně Vlastnosti aktivity **Vyhledávání** ověřte, že je v poli **Zdrojová datová sada** vybraná datová sada **SourceDataset**. 
-18. V poli **Použít dotaz** vyberte **Dotaz** a zadejte následující dotaz: vybíráte pouze maximální hodnotu **LastModifytime** z tabulky **tabulka_zdroje_dat**. Ujistěte se prosím, že mají také zaškrtnuté **pouze první řádek**.
+18. V poli **Použít dotaz** vyberte **Dotaz** a zadejte následující dotaz: vybíráte pouze maximální hodnotu **LastModifytime** z tabulky **tabulka_zdroje_dat**. Ujistěte se prosím, že jste taky zkontrolovali **jenom první řádek**.
 
     ```sql
     select MAX(LastModifytime) as NewWatermarkvalue from data_source_table
@@ -303,13 +303,13 @@ V tomto kurzu vytvoříte kanál se dvěma aktivitami vyhledávání, jednou akt
     ![Aktivita Uložená procedura – účet SQL](./media/tutorial-incremental-copy-portal/sp-activity-sql-account-settings.png)
 26. Přepněte na kartu **Uložená procedura** a proveďte následující kroky: 
 
-    1. Pro **název uložené procedury**vyberte **usp_write_watermark**. 
+    1. Jako **název uložené procedury**vyberte **usp_write_watermark**. 
     2. Pokud chcete zadat hodnoty parametrů uložené procedury, klikněte na **Importovat parametr** a zadejte následující hodnoty parametrů: 
 
-        | Název | Typ | Hodnota | 
+        | Name | Typ | Hodnota | 
         | ---- | ---- | ----- | 
-        | LastModifiedtime | DateTime | @{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue} |
-        | TableName | String | @{activity('LookupOldWaterMarkActivity').output.firstRow.TableName} |
+        | LastModifiedtime | Datetime | @{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue} |
+        | TableName | Řetězec | @{activity('LookupOldWaterMarkActivity').output.firstRow.TableName} |
 
     ![Aktivita Uložená procedura – nastavení uložené procedury](./media/tutorial-incremental-copy-portal/sproc-activity-stored-procedure-settings.png)
 27. Pokud chcete ověřit nastavení kanálu, klikněte na **Ověřit** na panelu nástrojů. Ověřte, že se nezobrazí žádné chyby ověření. Pokud chcete okno **Sestava ověření kanálu** zavřít, klikněte na >>.   
@@ -424,7 +424,7 @@ PersonID | Name | LastModifytime
 
 
      
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 V tomto kurzu jste provedli následující kroky: 
 
 > [!div class="checklist"]
@@ -435,7 +435,7 @@ V tomto kurzu jste provedli následující kroky:
 > * Vytvoření kanálu
 > * Spuštění kanálu
 > * Monitorování spuštění kanálu 
-> * Kontrola výsledků
+> * Zkontrolovat výsledky
 > * Přidání dalších dat do zdroje
 > * Opětovné spuštění kanálu
 > * Monitorování druhého spuštění kanálu

@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý start: Kontrola pravopisu pomocí rozhraní REST API kontrolu pravopisu Bingu a Node.js'
-titlesuffix: Azure Cognitive Services
-description: Začněte používat rozhraní API Bingu pro kontrolu pravopisu zkontrolujte REST pro kontrolu pravopisu a gramatiky.
+title: 'Rychlý start: Kontrola pravopisu pomocí Kontrola pravopisu Bingu REST API a Node. js'
+titleSuffix: Azure Cognitive Services
+description: Začněte používat REST API Kontrola pravopisu Bingu pro kontrolu pravopisu a gramatiky.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,27 +10,27 @@ ms.subservice: bing-spell-check
 ms.topic: quickstart
 ms.date: 04/02/2019
 ms.author: aahill
-ms.openlocfilehash: ba56f6d68df34fc9249d02c8aba9155ed41b5be8
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: c45e9e7743aca2d091b62caed6a7c5a724bacebf
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66388449"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68423499"
 ---
-# <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-nodejs"></a>Rychlý start: Kontrola pravopisu pomocí rozhraní REST API kontrolu pravopisu Bingu a Node.js
+# <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-nodejs"></a>Rychlý start: Kontrola pravopisu pomocí Kontrola pravopisu Bingu REST API a Node. js
 
-V tomto rychlém startu můžete provést první volání do rozhraní API Bingu pro kontrolu pravopisu zkontrolujte REST. Tento jednoduchý uzel aplikace odešle požadavek na rozhraní API a vrátí seznam slov, který nerozpozná, za nímž následuje navrhovaných oprav. Když je tato aplikace napsané v Node.js, je rozhraní API RESTful webová služba, která je kompatibilní s Většina programovacích jazyků. Zdrojový kód pro tuto aplikaci je k dispozici na [Githubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingSpellCheckv7.js).
+V tomto rychlém startu můžete provést první volání REST API Kontrola pravopisu Bingu. Tato jednoduchá aplikace uzlů pošle požadavek do rozhraní API a vrátí seznam slov, která nerozpoznala, a potom doporučované opravy. I když je tato aplikace napsaná v Node. js, je rozhraní API webová služba RESTful kompatibilní s většinou programovacích jazyků. Zdrojový kód této aplikace je k dispozici na [GitHubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingSpellCheckv7.js).
 
 ## <a name="prerequisites"></a>Požadavky
 
-* [Node.js 6](https://nodejs.org/en/download/) nebo novější.
+* [Node. js 6](https://nodejs.org/en/download/) nebo novější.
 
 [!INCLUDE [cognitive-services-bing-spell-check-signup-requirements](../../../../includes/cognitive-services-bing-spell-check-signup-requirements.md)]
 
 
 ## <a name="create-and-initialize-a-project"></a>Vytvoření a inicializace projektu
 
-1. Vytvořte nový soubor jazyka JavaScript v Oblíbené prostředí IDE nebo editoru. Nastavte přísnosti a vyžadují `https`. Potom vytvořte proměnné pro váš koncový bod rozhraní API hostitele, cestu a váš klíč předplatného.
+1. Vytvořte nový soubor JavaScriptu v oblíbeném integrovaném vývojovém prostředí (IDE) nebo editoru. Nastavte striktní a vyžadovat `https`. Pak vytvořte proměnné pro hostitele, cestu a klíč předplatného koncového bodu rozhraní API.
 
     ```javascript
     'use strict';
@@ -41,7 +41,7 @@ V tomto rychlém startu můžete provést první volání do rozhraní API Bingu
     let key = '<ENTER-KEY-HERE>';
     ```
 
-2. Vytváření proměnných pro parametry hledání a text, který chcete zkontrolovat. Připojit na trhu kódu po `mkt=`. Kód na trhu je země, které provedete žádost z. Navíc vaše režimu kontroly pravopisu po připojení `&mode=`. Režim je buď `proof` (zachytí většina pravopisné nebo gramatické chyby) nebo `spell` (zachycuje většinu pravopisu, ale ne tolik gramatické chyby).
+2. Vytvořte proměnné pro parametry vyhledávání a text, který chcete kontrolovat. Přidejte svůj kód na trhu `mkt=`po. Kód na trhu je země, ze které provedete požadavek. Také přidejte svůj režim kontroly pravopisu po `&mode=`. Režim je buď `proof` (catch nejvíc pravopisné/gramatické chyby `spell` ), nebo (catch nejvíc pravopisu, ale ne tolik gramatických chyb).
 
     ```javascript
     let mkt = "en-US";
@@ -50,9 +50,9 @@ V tomto rychlém startu můžete provést první volání do rozhraní API Bingu
     let query_string = "?mkt=" + mkt + "&mode=" + mode;
     ```
 
-## <a name="create-the-request-parameters"></a>Vytvořit žádost o parametry
+## <a name="create-the-request-parameters"></a>Vytvoření parametrů žádosti
 
-Vytvořit tak, že vytvoříte nový objekt s parametry požadavku `POST` metoda. Přidáte cestu k přidáním cesta ke koncovému bodu a řetězce dotazu. Přidat klíč předplatného. Chcete `Ocp-Apim-Subscription-Key` záhlaví.
+Vytvořte parametry žádosti vytvořením nového objektu s `POST` metodou. Přidejte cestu tak, že připojíte cestu ke koncovému bodu a řetězec dotazu. Přidejte do `Ocp-Apim-Subscription-Key` záhlaví klíč předplatného.
 
 ```javascript
 let request_params = {
@@ -69,7 +69,7 @@ let request_params = {
 
 ## <a name="create-a-response-handler"></a>Vytvoření obslužné rutiny odpovědi
 
-Vytvořit funkci s názvem `response_handler` využít odpověď JSON z rozhraní API a vytisknout. Vytvořte proměnnou pro text odpovědi. Přidat odpověď při `data` přijatých příznak pomocí `response.on()`. Když `end` přijetí příznak tisk text JSON do konzoly.
+Vytvořte funkci volanou `response_handler` k přijetí odpovědi JSON z rozhraní API a vytiskněte ji. Vytvořte proměnnou pro tělo odpovědi. Připojit odpověď, když `data` je přijat příznak, pomocí. `response.on()` Když se přijme příznak, vytiskněte tělo JSON do konzoly. `end`
 
 ```javascript
 let response_handler = function (response) {
@@ -87,9 +87,9 @@ let response_handler = function (response) {
 };
 ```
 
-## <a name="send-the-request"></a>Odeslání požadavku
+## <a name="send-the-request"></a>Odeslat žádost
 
-Volání rozhraní API pomocí `https.request()` s parametry požadavku a obslužné rutiny. Zápis textu do rozhraní API a end žádost později.
+Zavolejte rozhraní API pomocí `https.request()` parametrů s parametry žádosti a obslužnou rutinou odpovědi. Napište svůj text do rozhraní API a potom tento požadavek ukončete.
 
 ```javascript
 let req = https.request (request_params, response_handler);
@@ -97,7 +97,7 @@ req.write ("text=" + text);
 req.end ();
 ```
 
-## <a name="example-json-response"></a>Příklad JSON odpovědi
+## <a name="example-json-response"></a>Příklad odpovědi JSON
 
 Úspěšná odpověď se vrátí ve formátu JSON, jak je znázorněno v následujícím příkladu:
 
@@ -139,10 +139,10 @@ req.end ();
 }
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Vytvoření webové jednostránkové – aplikace](../tutorials/spellcheck.md)
+> [Vytvoření webové aplikace na jedné stránce](../tutorials/spellcheck.md)
 
-- [Co je API kontrola pravopisu Bingu?](../overview.md)
+- [Co je rozhraní API Bingu pro kontrolu pravopisu?](../overview.md)
 - [Referenční informace k rozhraní API pro kontrolu pravopisu Bingu v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference)

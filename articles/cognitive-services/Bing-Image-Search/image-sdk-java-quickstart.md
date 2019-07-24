@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý start: Hledání obrázků - Bingu Image Search SDK pro Javu'
-description: Pomocí tohoto rychlého startu můžete vytvořit své první vyhledávání obrázků pomocí sady SDK Vyhledávání obrázků Bingu, což je obálka pro rozhraní API a obsahuje stejné funkce. Tato jednoduchá aplikace Javy posílá dotaz pro vyhledání obrázku, parsuje odpověď JSON a zobrazuje adresu URL prvního nalezeného obrázku.
+title: 'Rychlý start: Hledání imagí – Vyhledávání obrázků Bingu SDK pro Java'
 titleSuffix: Azure Cognitive Services
+description: Pomocí tohoto rychlého startu můžete vytvořit své první vyhledávání obrázků pomocí sady SDK Vyhledávání obrázků Bingu, což je obálka pro rozhraní API a obsahuje stejné funkce. Tato jednoduchá aplikace Javy posílá dotaz pro vyhledání obrázku, parsuje odpověď JSON a zobrazuje adresu URL prvního nalezeného obrázku.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,14 +11,14 @@ ms.topic: quickstart
 ms.date: 02/12/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 991eae9a83325118caaea5c7e3fdb64c6caa1f16
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: 9b756d097f313179f4cc177a8cbe74419629317b
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66386616"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68423958"
 ---
-# <a name="quickstart-search-for-images-with-the-bing-image-search-sdk-for-java"></a>Rychlý start: Hledání obrázků sadou SDK vyhledávání obrázků Bingu pro Javu
+# <a name="quickstart-search-for-images-with-the-bing-image-search-sdk-for-java"></a>Rychlý start: Hledání imagí pomocí sady Vyhledávání obrázků Bingu SDK pro jazyk Java
 
 Pomocí tohoto rychlého startu můžete vytvořit své první vyhledávání obrázků pomocí sady SDK Vyhledávání obrázků Bingu, což je obálka pro rozhraní API a obsahuje stejné funkce. Tato jednoduchá aplikace Javy posílá dotaz pro vyhledání obrázku, parsuje odpověď JSON a zobrazuje adresu URL prvního nalezeného obrázku.
 
@@ -45,7 +45,7 @@ Nainstalujte si závislosti sady SDK Vyhledávání obrázků Bingu pomocí syst
 
 ## <a name="create-and-initialize-the-application"></a>Vytvoření a inicializace aplikace
 
-1. Vytvoření nového projektu v Javě v vaše oblíbené prostředím IDE nebo editorem a přidejte následující importy do implementace třídy:
+1. Vytvořte nový projekt Java v oblíbeném prostředí IDE nebo editoru a přidejte následující importy do vaší implementace třídy:
 
     ```java
     import com.microsoft.azure.cognitiveservices.search.imagesearch.BingImageSearchAPI;
@@ -63,7 +63,7 @@ Nainstalujte si závislosti sady SDK Vyhledávání obrázků Bingu pomocí syst
     BingImageSearchAPI client = BingImageSearchManager.authenticate(subscriptionKey);
     ```
 
-## <a name="send-a-search-request-to-the-api"></a>Odeslat žádost o vyhledávání do rozhraní API
+## <a name="send-a-search-request-to-the-api"></a>Odeslání žádosti o vyhledávání do rozhraní API
 
 1. Pomocí `bingImages().search()` odešlete požadavek HTTP obsahující vyhledávací dotaz. Uložte odpověď jako `ImagesModel`.
 
@@ -77,7 +77,7 @@ Nainstalujte si závislosti sady SDK Vyhledávání obrázků Bingu pomocí syst
 ## <a name="parse-and-view-the-result"></a>Parsování a zobrazení výsledku
 
 Parsujte výsledky obrázků vrácené v odpovědi.
-Pokud odpověď obsahuje výsledky hledání, uloží první výsledek a vytiskne jeho podrobnosti, jako je například miniatury adresa URL, původní adresu URL, společně s celkový počtem vrátil bitové kopie.  
+Pokud odpověď obsahuje výsledky hledání, uložte první výsledek a vytiskněte jeho podrobnosti, jako je například adresa URL miniatury, původní adresa URL a celkový počet vrácených imagí.  
 
 ```java
 if (imageResults != null && imageResults.value().size() > 0) {

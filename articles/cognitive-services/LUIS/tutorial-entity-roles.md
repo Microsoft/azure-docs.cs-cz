@@ -1,7 +1,7 @@
 ---
-title: Kontextové údaje s rolemi – Language Understanding
+title: Kontextová data s rolemi – Language Understanding
 titleSuffix: Azure Cognitive Services
-description: Vyhledejte související data na základě kontextu. Spolu například souvisí počáteční a cílová umístění pro fyzický přesun z jedné budovy a kanceláře do jiné.
+description: Najde související data na základě kontextu. Spolu například souvisí počáteční a cílová umístění pro fyzický přesun z jedné budovy a kanceláře do jiné.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,47 +11,47 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: a0ab928ef3b8551e3e20ff3c4b16533c80ee4b7d
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 061bd94a839d83f75566412ac546ab3208543780
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65149259"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68467632"
 ---
-# <a name="tutorial-extract-contextually-related-data-from-an-utterance"></a>Kurz: Extrahovat kontextově souvisejících dat ze utterance
+# <a name="tutorial-extract-contextually-related-data-from-an-utterance"></a>Kurz: Extrakce kontextově souvisejících dat z utterance
 
-V tomto kurzu vyhledáte související části dat na základě kontextu. Například zdroj a cíl umístění pro přenos z jedno z měst na jiný. Oba druhy dat může být nutné a se vztahují k sobě navzájem.  
+V tomto kurzu vyhledáte související části dat na základě kontextu. Například zdroj a cílové umístění pro přenos z jednoho města do druhého. Je možné, že obě části dat jsou nutné a jsou vzájemně propojené.  
 
-Roli můžete používat s libovolného typu předem připravená nebo vlastní entity a použít v příkladu projevy a vzory. 
+Roli lze použít pro libovolný předem sestavený nebo vlastní typ entity a používá se v obou příkladech projevy a Patterns. 
 
 **V tomto kurzu se naučíte:**
 
 > [!div class="checklist"]
 > * Vytvoření nové aplikace
 > * Přidat záměr 
-> * Získat informace o původu a cíle pomocí rolí
+> * Získání informací o původu a cíli pomocí rolí
 > * Trénování
 > * Publikování
-> * Získejte záměry a entity role z koncového bodu
+> * Získat záměry a role entit z koncového bodu
 
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
 ## <a name="related-data"></a>Související data
 
-Tato aplikace určuje, kam přesunout z původní město město cílové zaměstnance. Použije GeographyV2 předem připravených entit k identifikaci názvy měst a používá role k určení umístění typů (zdroj a cíl) v rámci utterance.
+Tato aplikace určuje, kam má být zaměstnanec přesunut od města původu do cílového města. Používá předem vytvořenou entitu GeographyV2 k identifikaci názvů měst a používá role k určení typů umístění (zdroj a cíl) v rámci utterance.
 
-Role by měl být použít, pokud data entity k extrakci:
+Role by se měla použít při extrakci dat entity:
 
-* Má vztah k sobě navzájem v kontextu utterance.
-* Volba určité slovo se používá k označení jednotlivé role. Mezi příklady těchto slov patří from/to (z/do), leaving/headed to (odstěhovat/nastěhovat), away from/toward (z kanceláře/do kanceláře).
-* Obě role jsou ve stejné utterance povolení LUIS Učte se od použití těchto častých kontextové často.
+* Se vzájemně souvisí v kontextu utterance.
+* Označuje jednotlivé role pomocí konkrétního výběru slova. Mezi příklady těchto slov patří from/to (z/do), leaving/headed to (odstěhovat/nastěhovat), away from/toward (z kanceláře/do kanceláře).
+* Obě role jsou často ve stejném utterance, což umožňuje LUIS získat informace z tohoto častého kontextového použití.
 * Musí být seskupeny a zpracovány klientskou aplikací jako jediná informace.
 
 ## <a name="create-a-new-app"></a>Vytvoření nové aplikace
 
 [!INCLUDE [Follow these steps to create a new LUIS app](../../../includes/cognitive-services-luis-create-new-app-steps.md)]
 
-## <a name="create-an-intent-to-move-employees-between-cities"></a>Vytvořit záměr pro přesun mezi měst, ve kterých zaměstnanci
+## <a name="create-an-intent-to-move-employees-between-cities"></a>Vytvoření záměru pro přesun zaměstnanců mezi městy
 
 1. [!INCLUDE [Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
@@ -65,55 +65,55 @@ Role by měl být použít, pokud data entity k extrakci:
 
     |Ukázkové promluvy|
     |--|
-    |Přesun Jan Macek W. opuštění Seattle směřují do Orlando|
-    |přenos Jill Jones ze Seattlu do Káhira|
-    |Místo Jan Jackson mimo Tampa, už pro Atlantu |
-    |Přesunutí Debra Doughtery Tulsa z Chicaga|
-    |MV Jill Jones byste museli opustit Cairo směřují do Tampa|
-    |Posunout Alice Anderson Oakland z Redmondu|
-    |Carl Chamerlin ze San Franciska do Redmondu|
-    |Steve Standish přenos v síti San Diegu směrem k Bellevue |
-    |výtah Nováková Thompson ze Kansas Město a shift do Chicaga|
+    |Přesunutí Jan W. Smith opouští Seattle s Orlandu|
+    |přenos Jill Novotný z Seattlu do Cairo|
+    |Umístění Jan Jacksonůvch z Tampaů, přicházejících do Brna |
+    |přesunout Debra Doughtery na Tulsa z Chicago|
+    |MV Jill, který opouští Cairo na Tampa|
+    |Posunutí Alice Anderson na Oakland z Redmond|
+    |Carl Chamerlin z San Francisco do Redmond|
+    |Přenos Steve Standish z San Diegu směrem k Bellevue |
+    |přezvednutí Tanner Václav z Kansas City a Shift na Chicago|
 
-    [![Snímek obrazovky služby LUIS s novou projevy v MoveEmployee záměr](./media/tutorial-entity-roles/hr-enter-utterances.png)](./media/tutorial-entity-roles/hr-enter-utterances.png#lightbox)
+    [![Snímek obrazovky s LUIS s novým projevy v MoveEmployee záměru](./media/tutorial-entity-roles/hr-enter-utterances.png)](./media/tutorial-entity-roles/hr-enter-utterances.png#lightbox)
 
-## <a name="add-prebuilt-entity-geographyv2"></a>Přidat geographyV2 předem připravených entit
+## <a name="add-prebuilt-entity-geographyv2"></a>Přidat předem sestavenou entitu geographyV2
 
-Předem připravených entit geographyV2, extrahuje informace o poloze, včetně názvy měst. Protože projevy mít dva názvy měst, vztahující se k sobě navzájem v kontextu, role můžete použijte k extrahování daného kontextu.
+Předem sestavená entita, geographyV2, extrahuje informace o poloze, včetně názvů měst. Vzhledem k tomu, že projevy mají dva názvy měst, které jsou v kontextu vzájemně související, použijte role k extrakci daného kontextu.
 
-1. Vyberte **entity** z levé navigace.
+1. Vyberte **entity** z navigace na levé straně.
 
-1. Vyberte **přidat předem připravených entit**a pak vyberte `geo` na panelu hledání k filtrování předem připravených entit. 
+1. Vyberte **Přidat**předem vytvořenou entitu a `geo` pak vyberte na panelu hledání, abyste mohli filtrovat předem připravené entity. 
 
-    ![Přidat geographyV2 předem připravených entit do aplikace](media/tutorial-entity-roles/add-geographyV2-prebuilt-entity.png)
-1. Zaškrtněte políčko a vyberte **provádí**.
-1. V **entity** seznamu, vyberte **geographyV2** otevřete novou entitu. 
-1. Přidat dvě role, `Origin`, a `Destination`. 
+    ![Přidat předem vytvořenou entitu geographyV2 do aplikace](media/tutorial-entity-roles/add-geographyV2-prebuilt-entity.png)
+1. Zaškrtněte políčko a vyberte **Hotovo**.
+1. V seznamu **entity** vyberte **geographyV2** a otevřete novou entitu. 
+1. Přidejte dvě role, `Origin`a. `Destination` 
 
-    ![Přidání rolí na předem připravených entit](media/tutorial-entity-roles/add-roles-to-prebuilt-entity.png)
-1. Vyberte **záměry** z levé navigace, vyberte **MoveEmployeeToCity** záměr. Všimněte si, že názvy měst jsou označeny pomocí předem připravených entit **geogrpahyV2**.
-1. V první utterance seznamu vyberte umístění, původu. Zobrazí se rozevírací nabídka. Vyberte **geographyV2** v seznamu, postupujte podle nabídce napříč vyberte **původu**.
-1. K označení všechny role, umístění v všechny projevy, použijte metodu z předchozího kroku. 
+    ![Přidání rolí k předem připravené entitě](media/tutorial-entity-roles/add-roles-to-prebuilt-entity.png)
+1. Vyberte **záměry** z navigace na levé straně a pak vyberte záměr **MoveEmployeeToCity** . Všimněte si, že názvy měst jsou označené předem vytvořenou entitou **geographyV2**.
+1. V prvním utterance seznamu vyberte umístění původu. Zobrazí se rozevírací nabídka. V seznamu vyberte **geographyV2** a potom podle nabídky vedle vyberte **počátek**.
+1. Pomocí metody z předchozího kroku označíte všechny role umístění ve všech projevy. 
 
 
-## <a name="add-example-utterances-to-the-none-intent"></a>Přidání projevů příklad na hodnotu None záměru 
+## <a name="add-example-utterances-to-the-none-intent"></a>Přidat příklad projevy k záměru None 
 
 [!INCLUDE [Follow these steps to add the None intent to the app](../../../includes/cognitive-services-luis-create-the-none-intent.md)]
 
-## <a name="train-the-app-so-the-changes-to-the-intent-can-be-tested"></a>Trénování aplikace, takže můžete otestovat změny k příslušnému záměru 
+## <a name="train-the-app-so-the-changes-to-the-intent-can-be-tested"></a>Výuka aplikace, aby se mohly testovat změny záměru 
 
 [!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
-## <a name="publish-the-app-so-the-trained-model-is-queryable-from-the-endpoint"></a>Publikování aplikace, tedy dotazovatelné z koncového bodu trénovaného modelu
+## <a name="publish-the-app-so-the-trained-model-is-queryable-from-the-endpoint"></a>Publikujte aplikaci, aby se Queryable z koncového bodu vyškolený model.
 
 [!INCLUDE [LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 
-## <a name="get-intent-and-entity-prediction-from-endpoint"></a>Získání předpovědi záměr a entity z koncového bodu
+## <a name="get-intent-and-entity-prediction-from-endpoint"></a>Získání záměru a předpovědi entit z koncového bodu
 
 1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
 
-1. Přejděte na konec adresy URL v panelu adresy a zadejte `Please move Carl Chamerlin from Tampa to Portland`. Poslední parametr řetězce dotazu je `q`, což je **dotaz** promluvy. Tato utterance není stejný jako některý z označených projevy tak, aby je dobrá a by měl vrátit `MoveEmployee` záměru s entitou extrahovat.
+1. Přejděte na konec adresy URL v panelu adresy a zadejte `Please move Carl Chamerlin from Tampa to Portland`. Poslední parametr řetězce dotazu je `q`, což je **dotaz** promluvy. Tento utterance není stejný jako žádný z označených projevy, takže je dobrým testem a měl by vracet `MoveEmployee` záměr s extrahovanou entitou.
 
     ```json
     {
@@ -151,7 +151,7 @@ Předem připravených entit geographyV2, extrahuje informace o poloze, včetně
     }
     ```
     
-    Shromážděno správné záměr a pole entity má původ a cílové role z odpovídajících **entity** vlastnost.
+    Je předpokládaná správná záměr a pole entity obsahuje zdrojové i cílové role ve vlastnosti odpovídajících **entit** .
     
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
@@ -159,17 +159,17 @@ Předem připravených entit geographyV2, extrahuje informace o poloze, včetně
 
 ## <a name="related-information"></a>Související informace
 
-* [Koncepty entity](luis-concept-entity-types.md)
-* [Koncepty role](luis-concept-roles.md)
+* [Koncepty entit](luis-concept-entity-types.md)
+* [Koncepty rolí](luis-concept-roles.md)
 * [Seznam předem připravených entit](luis-reference-prebuilt-entities.md)
-* [Trénování](luis-how-to-train.md)
+* [Postup výuky](luis-how-to-train.md)
 * [Jak publikovat](luis-how-to-publish-app.md)
-* [Testování v portálu služby LUIS](luis-interactive-test.md)
+* [Testování na portálu LUIS](luis-interactive-test.md)
 * [Role](luis-concept-roles.md)
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto kurzu nové záměr a přidá příklad projevy kontextově zjištěná data míst původu a cíle. Jakmile aplikaci vytrénujete a publikujete, klientská aplikace může tyto informace použít k vytvoření lístku přesunu s relevantními informacemi.
+V tomto kurzu jste vytvořili nový záměr a Přidali jste příklad projevy pro kontextové naučená data o původu a cílovém umístění. Jakmile aplikaci vytrénujete a publikujete, klientská aplikace může tyto informace použít k vytvoření lístku přesunu s relevantními informacemi.
 
 > [!div class="nextstepaction"] 
 > [Další informace o přidání složené entity](luis-tutorial-composite-entity.md) 

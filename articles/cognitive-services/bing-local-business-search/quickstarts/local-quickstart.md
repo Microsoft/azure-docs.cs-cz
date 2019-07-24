@@ -1,7 +1,7 @@
 ---
-title: Rychlý start – odeslat dotaz do API Bingu pro místní obchodní vyhledávání v C# | Dokumentace Microsoftu
+title: Rychlý Start – odeslání dotazu do rozhraní API Bingu pro vyhledávání místních obchodních aplikací vC#
 titleSuffix: Azure Cognitive Services
-description: Pomocí tohoto článku můžete začít používat API Bingu pro místní obchodní vyhledávání v C#.
+description: Pomocí tohoto článku můžete začít používat rozhraní API pro vyhledávání místních obchodních aplikací C#Bing v.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -9,29 +9,29 @@ ms.service: cognitive-services
 ms.topic: quickstart
 ms.date: 04/26/2019
 ms.author: rosh
-ms.openlocfilehash: 3b75d89720212149711c8aad9985267d72b8cecd
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 479429ff6354813468fb529029ca540a8ebc1b70
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67592785"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68423380"
 ---
-# <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-in-c"></a>Rychlý start: Odešle dotaz do API Bingu pro místní obchodní vyhledávání vC#
+# <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-in-c"></a>Rychlý start: Poslat dotaz na rozhraní API Bingu pro vyhledávání na místních obchodechC#
 
-V tomto rychlém startu můžete zahájit odesílání požadavků na místní firmy hledání rozhraní API Bingu, což je kognitivní služby Azure. Zatímco tato jednoduchá aplikace je napsána v C#, rozhraní API je RESTful webová služba, která je kompatibilní s libovolný programovací jazyk umožňuje zasílat požadavky HTTP a parsování formátu JSON.
+Tento rychlý Start vám umožní začít odesílat požadavky do rozhraní API Bingu pro vyhledávání v místním obchodu, což je služba pro rozpoznávání Azure. I když je tato jednoduchá aplikace napsaná v C#systému, rozhraní API je webová služba RESTful, která je kompatibilní s libovolným programovacím jazykem schopným vytvářet požadavky HTTP a analyzovat JSON.
 
-Tato ukázková aplikace získá data místní odpověď z rozhraní API pro vyhledávací dotaz `hotel in Bellevue`.
+Tato ukázková aplikace získá data místní odpovědi z rozhraní API vyhledávacího dotazu `hotel in Bellevue`.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Libovolná edice [Visual Studio 2019](https://www.visualstudio.com/downloads/).
+* Všechny edice sady [Visual Studio 2019](https://www.visualstudio.com/downloads/).
 * Pokud používáte Linux nebo MacOS, je možné tuto aplikaci spustit pomocí [Mono](https://www.mono-project.com/).
 
 Musíte mít [účet API Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) s přístupem k rozhraním API pro vyhledávání Bingu. Pro účely tohoto rychlého startu stačí [bezplatná zkušební verze](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api).  Viz také [služeb Cognitive Services ceny – rozhraní API Bingu pro vyhledávání](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
 
-## <a name="create-the-request"></a>Vytvořit požadavek 
+## <a name="create-the-request"></a>Vytvoření žádosti 
 
-Následující kód vytvoří `WebRequest`, nastaví hlavičku klíčů přístup a přidá řetězec dotazu pro "restaurace v Bellevue".  Potom požadavek odešle a přiřadí odpověď k řetězci obsahujícímu text JSON.
+Následující kód vytvoří `WebRequest`, nastaví hlavičku přístupového klíče a přidá řetězec dotazu pro restauraci v Bellevue.  Potom požadavek odešle a přiřadí odpověď k řetězci obsahujícímu text JSON.
 
 ```
     // Replace the accessKey string value with your valid access key.
@@ -51,12 +51,12 @@ Následující kód vytvoří `WebRequest`, nastaví hlavičku klíčů přístu
     string json = new StreamReader(response.GetResponseStream()).ReadToEnd();
 ```
 
-## <a name="run-the-complete-application"></a>Spusťte kompletní aplikace
+## <a name="run-the-complete-application"></a>Spuštění úplné aplikace
 
-Místní firmy hledání rozhraní API Bingu vrátí výsledky lokalizované vyhledávání z Bingu vyhledávací web.
+Rozhraní API pro místní vyhledávání Bingu vrací lokalizované výsledky hledání z vyhledávacího stroje Bingu.
 1. Vytvořte nové konzolové řešení v sadě Visual Studio (Community Edition je v pořádku).
 2. Nahraďte soubor Program.cs níže uvedeným kódem.
-3. Nahraďte hodnotu accessKey přístupový klíč platný pro vaše předplatné.
+3. Hodnotu accessKey nahraďte přístupovým klíčem platným pro vaše předplatné.
 4. Spusťte program.
 
 ```
@@ -208,6 +208,6 @@ namespace localSearch
 ```
 
 ## <a name="next-steps"></a>Další postup
-- [Rychlý start místní firmy hledání Java](local-search-java-quickstart.md)
-- [Rychlý start místní uzel hledat firmy](local-search-node-quickstart.md)
-- [Rychlý start místní firmy hledání Pythonu](local-search-python-quickstart.md)
+- [Rychlý Start pro místní vyhledávání v jazyce Java](local-search-java-quickstart.md)
+- [Rychlý Start uzlu místního hledání firmy](local-search-node-quickstart.md)
+- [Rychlý Start pro místní vyhledávání v Pythonu](local-search-python-quickstart.md)

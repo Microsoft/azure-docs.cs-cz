@@ -1,7 +1,7 @@
 ---
 title: Použití rozhraní API pro kontrolu pravopisu Bingu
-titlesuffix: Azure Cognitive Services
-description: Další informace o režimů pro kontrolu pravopisu Bingu, nastavení a další informace týkající se rozhraní API.
+titleSuffix: Azure Cognitive Services
+description: Přečtěte si o režimech Kontrola pravopisu Bingu, nastavení a dalších informacích týkajících se rozhraní API.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,41 +10,41 @@ ms.subservice: bing-spell-check
 ms.topic: overview
 ms.date: 02/20/2019
 ms.author: aahi
-ms.openlocfilehash: b847615e8440a8992c8130d12cd6111afe3d33d2
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: 7fd528b5f21622051bdad67c6ffcb6dd8500386a
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66390227"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68423644"
 ---
 # <a name="using-the-bing-spell-check-api"></a>Použití rozhraní API pro kontrolu pravopisu Bingu
 
-Další informace o použití rozhraní API Bingu pro kontrolu pravopisu zkontrolujte kontextové gramatiky a kontrola pravopisu pomocí tohoto článku. Zatímco většina pravopisu využívají sady pravidel na základě slovníku, kontrola pravopisu Bingu využívá strojové učení a statistické strojový překlad poskytnout přesné a kontextové opravy. 
+V tomto článku se dozvíte, jak používat rozhraní API Bingu pro kontrolu pravopisu k provádění kontextové gramatiky a kontroly pravopisu. I když většina pravopisných kontrol spoléhá na sady pravidel založených na slovníku, nástroj pro kontrolu pravopisu Bingu využívá strojové učení a statistické překlady strojového překladu, aby poskytoval přesné a kontextové opravy. 
 
 ## <a name="spell-check-modes"></a>Režimy kontroly pravopisu
 
 Rozhraní API podporuje dva režimy kontroly, `Proof` a `Spell`.  Příklady najdete [tady](https://azure.microsoft.com/services/cognitive-services/spell-check/).
 
-### <a name="proof---for-documents"></a>Testování – dokumenty 
+### <a name="proof---for-documents"></a>Kontrola dokumentů 
 
 Výchozí režim je `Proof`. Režim kontroly pravopisu `Proof` poskytuje během vytváření dokumentu nejkomplexnější kontroly, opravuje velká písmena, přidává základní interpunkci a další. Je ale k dispozici jenom pro trhy en-US (americká angličtina), es-ES (španělština) a pt-BR (portugalština). (Poznámka: Pro španělštinu a portugalštinu pouze v beta verzi.) Pro všechny ostatní trhy nastavte parametr režimu na Spell. 
 
 > [!NOTE]
-> Pokud délka textu dotazu je větší než 4096, bude zkrácen na 4 096 znaků, pak zpracovat. 
+> Pokud délka textu dotazu překročí 4096, bude zkrácena na 4096 znaků a pak bude zpracována. 
 
-### <a name="spell----for-web-searchesqueries"></a>Kontroly pravopisu – pro webové vyhledávání a dotazy
+### <a name="spell----for-web-searchesqueries"></a>Pravopis – vyhledávání na webu/dotazy
 
 Režim `Spell` je agresivnější a vrací lepší výsledky hledání. Režim `Spell` najde nejvíc pravopisných chyb, ale nedokáže najít některé gramatické chyby, které režim `Proof` zachytí, například použití malých a velkých písmen nebo opakovaná slova.
 
 > [!NOTE]
-> * Dotaz maximální podporovaná délka je menší než. Pokud dotaz překračuje maximální délku, dotaz a jeho výsledky se nezmění.
->    * 130 znaků pro následující kódy jazyků: en, de, es, fr, pl, pt, sv, ru, nl, nb, tr-tr, ho, zh, ko. 
+> * Maximální podporovaná délka dotazu je níže. Pokud dotaz překračuje maximální délku, dotaz a jeho výsledky se nezmění.
+>    * 130 znaků pro následující kódy jazyků: EN, de, ES, FR, pl, PT, sv, ru, NL, NB, TR-tr, IT, zh, Ko. 
 >    * 65 znaků pro všechny ostatní.
-> * Režim pravopisu nepodporuje hranaté závorky (`[` a `]`) v dotazech a může způsobit nekonzistentní výsledky. Doporučujeme, abyste je odeberete z vašich dotazů při použití režimu pravopisu.
+> * Režim pravopisu nepodporuje v dotazech hranaté závorky `]`(`[` a) a může způsobit nekonzistentní výsledky. Při použití režimu pravopisu je doporučujeme odebrat z vašich dotazů.
 
 ## <a name="market-setting"></a>Nastavení trhu
 
-A [uvedení na trh kód](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference#market-codes) by měl být zadaný pomocí `mkt` parametr v žádosti o dotazu. Rozhraní API bude používat jinak na trhu výchozí na základě požadavku IP adresy.
+V žádosti by se měl zadat [kód na trhu](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference#market-codes) s `mkt` parametrem dotazu. Rozhraní API bude jinak používat výchozí trh na základě IP adresy žádosti.
 
 
 ## <a name="http-post-and-get-support"></a>Podpora HTTP POST a GET
@@ -122,5 +122,5 @@ Pokud pole `type` má hodnotu RepeatedToken, měli byste stále nahradit token o
 
 ## <a name="next-steps"></a>Další postup
 
-- [Co je API kontrola pravopisu Bingu?](../overview.md)
+- [Co je rozhraní API Bingu pro kontrolu pravopisu?](../overview.md)
 - [Referenční informace k rozhraní API pro kontrolu pravopisu Bingu v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference)

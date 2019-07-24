@@ -1,7 +1,7 @@
 ---
 title: Co je rozhraní API Bingu pro vyhledávání zpráv?
-titlesuffix: Azure Cognitive Services
-description: Další informace o použití rozhraní API pro vyhledávání zpráv Bingu pro vyhledávání na webu pro aktuální titulky v kategoriích, včetně titulky a sledování trendů témata.
+titleSuffix: Azure Cognitive Services
+description: Naučte se používat rozhraní API Bingu pro vyhledávání zpráv k prohledávání webu pro aktuální titulky napříč kategoriemi, včetně titulků a témat trendů.
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
@@ -11,49 +11,49 @@ ms.topic: overview
 ms.date: 06/19/2019
 ms.author: scottwhi
 ms.custom: seodec2018
-ms.openlocfilehash: d4d8c35869fbfc13220aba037a97aadd3cea01c2
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 577ce53b4667928d7eb5a870f57ff7180caaf6f5
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67272716"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68423658"
 ---
 # <a name="what-is-the-bing-news-search-api"></a>Co je rozhraní API Bingu pro vyhledávání zpráv?
 
-Rozhraní API pro vyhledávání zpráv Bingu umožňuje snadno do svých aplikací integrovat funkce vyhledávání Bingu cognitive zprávy. Rozhraní API poskytuje podobné možnosti jako na [zprávy Bing](https://www.bing.com/news), že vám dovolí vyhledávací dotazy odesílat a přijímat relevantní novinky články.
+Rozhraní API Bingu pro vyhledávání zpráv usnadňuje integraci funkcí vyhledávání zpráv Bingu ve vašich aplikacích. Rozhraní API nabízí podobné možnosti [zpráv Bingu](https://www.bing.com/news), které vám umožní odeslat vyhledávací dotazy a získat relevantní články s novinkami.
 
-Mějte na paměti, že rozhraní API pro vyhledávání zpráv Bingu poskytuje jen výsledky hledání zpráv. Použití [API vyhledávání na webu Bingu](../bing-web-search/search-the-web.md), [API pro vyhledávání videí](../bing-video-search/search-the-web.md) a [API pro vyhledávání obrázků](../bing-image-search/overview.md) pro ostatní typy webového obsahu.
+Uvědomte si, že rozhraní API Bingu pro vyhledávání zpráv poskytuje pouze výsledky hledání zpráv. Pro jiné typy webového obsahu použijte [rozhraní API Bingu pro vyhledávání na webu](../bing-web-search/search-the-web.md) [vyhledávání videí API](../bing-video-search/search-the-web.md) a [rozhraní API vyhledávání obrázků](../bing-image-search/overview.md) .
 
-## <a name="bing-news-search-api-features"></a>Funkce rozhraní API pro vyhledávání zpráv Bingu
+## <a name="bing-news-search-api-features"></a>rozhraní API Bingu pro vyhledávání zpráv funkce
 
-Rozhraní API pro vyhledávání zpráv Bingu primárně najde a vrátí odpovídající vybrané články, poskytuje několik funkcí pro načítání zpráv inteligentní a cílené na webu.
+I když rozhraní API Bingu pro vyhledávání zpráv primárně najde a vrátí relevantní články s příspěvky, nabízí několik funkcí pro inteligentní a cílené načítání zpráv na webu.
 
 |Funkce  |Popis  |
 |---------|---------|
-|[Návrhy a pomocí hledané termíny](concepts/search-for-news.md#suggest-and-use-search-terms)     | Zlepšení možností vyhledávání pomocí [rozhraní API pro automatické návrhy Bingu](../bing-autosuggest/get-suggested-search-terms.md) zobrazíte navrhované hledané výrazy, jako jste zadali.         |
-|[Dostávat obecné informace](concepts/search-for-news.md#get-general-news)     | Hledání zpráv tak, že odesílání vyhledávací dotaz na rozhraní API pro vyhledávání zpráv Bingu a návrat seznam článků relevantní novinky.           |
-|[Dnešní hlavní zprávy](concepts/search-for-news.md#get-todays-top-news)      | Získání nejnovějších zpráv za den, ve všech kategoriích.       |
-|[Zprávy podle kategorie](concepts/search-for-news.md)     | Hledání zpráv v konkrétní kategorie.        | 
-|[Nadpis zprávy](concepts/search-for-news.md)     | Hledání hlavní titulky ve všech kategoriích.         |
+|[Navrhování a používání hledaných výrazů](concepts/search-for-news.md#suggest-and-use-search-terms)     | Vylepšete možnosti hledání pomocí [rozhraní API pro automatické návrhy Bingu](../bing-autosuggest/get-suggested-search-terms.md) k zobrazení navrhovaných hledaných výrazů při jejich psaní.         |
+|[Získat obecné novinky](concepts/search-for-news.md#get-general-news)     | Vyhledá novinky odesláním vyhledávacího dotazu na rozhraní API Bingu pro vyhledávání zpráv a vrátí seznam relevantních novinek.           |
+|[Dnešní hlavní novinky](concepts/search-for-news.md#get-todays-top-news)      | Získejte nejdůležitější novinky ve všech kategoriích.       |
+|[Zprávy podle kategorie](concepts/search-for-news.md)     | Hledání zpráv v konkrétních kategoriích.        | 
+|[Nadpis zprávy](concepts/search-for-news.md)     | Vyhledejte horních nadpisů ve všech kategoriích.         |
 
 ## <a name="workflow"></a>Pracovní postup
 
-Rozhraní API pro vyhledávání zpráv Bingu je RESTful webová služba, což usnadňuje volat z libovolného programovacího jazyka, který může vytvářet požadavky HTTP a parsování formátu JSON. Můžete použít službu pomocí rozhraní REST API nebo sady SDK.
+Rozhraní API Bingu pro vyhledávání zpráv je webová služba RESTful, která usnadňuje volání ze všech programovacích jazyků, které mohou provádět požadavky HTTP a analyzovat JSON. Službu můžete použít buď pomocí REST API, nebo pomocí sady SDK.
 
-1. Vytvoření účtu rozhraní API služeb Cognitive Services s přístupem k rozhraní API pro vyhledávání Bingu. Pokud nemáte předplatné Azure, můžete si [zdarma vytvořit účet](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-news-api).
+1. Vytvořte účet Cognitive Services rozhraní API s přístupem k rozhraní API pro vyhledávání Bingu. Pokud nemáte předplatné Azure, můžete si [účet zdarma vytvořit](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-news-api).
 
-2. Odeslat požadavek na rozhraní API pomocí platný vyhledávacího dotazu.
+2. Odešle požadavek do rozhraní API s platným vyhledávacím dotazem.
 
 3. Zpracujte odpověď rozhraní API parsováním vrácené zprávy JSON.
 
 ## <a name="next-steps"></a>Další postup
 
-Nejprve zkuste [interaktivní ukázka](https://azure.microsoft.com/services/cognitive-services/bing-news-search-api/) pro rozhraní API pro vyhledávání zpráv Bingu. Tato ukázka ukazuje, jak můžete rychle přizpůsobení vyhledávací dotaz a hledání zpráv na webu.
+Nejprve vyzkoušejte [interaktivní ukázku](https://azure.microsoft.com/services/cognitive-services/bing-news-search-api/) pro rozhraní API Bingu pro vyhledávání zpráv. Tato ukázka vám ukáže, jak rychle upravit vyhledávací dotaz a najít novinky na webu.
 
-Pokud chcete rychle začít s první žádosti o rozhraní API, vyzkoušejte si rychlé zprovoznění pro [rozhraní REST API](quickstart.md) nebo jeden z [sady SDK](sdk.md).
+Pokud chcete rychle začít s prvním požadavkem na rozhraní API, vyzkoušejte si rychlý Start pro [REST API](quickstart.md) nebo jednu ze [sad SDK](sdk.md).
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také:
 
-* [API Bingu pro vyhledávání zpráv v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference) odkaz na oddíl obsahuje definice a informace o koncových bodech, záhlaví, odpovědi rozhraní API a parametry dotazu, které slouží k vyžádání výsledky hledání založené na bitové kopii.
+* Oddíl Reference [rozhraní API Bingu pro vyhledávání zpráv v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference) obsahuje definice a informace o koncových bodech, hlavičkách, ODPOVĚDÍCH rozhraní API a parametrech dotazů, které můžete použít k vyžádání výsledků hledání na základě bitové kopie.
 
 * [Požadavky Bingu na zobrazení a použití](./useanddisplayrequirements.md) určují přijatelné způsoby použití obsahu a informací získaných prostřednictvím rozhraní API pro vyhledávání Bingu.

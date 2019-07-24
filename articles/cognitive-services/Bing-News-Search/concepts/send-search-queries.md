@@ -1,7 +1,7 @@
 ---
-title: Odesílání dotazů do rozhraní API pro vyhledávání zpráv Bingu
-titlesuffix: Azure Cognitive Services
-description: Přečtěte si o odesílání žádostí o hledání do rozhraní API pro vyhledávání zpráv Bingu.
+title: Odesílání dotazů do rozhraní API Bingu pro vyhledávání zpráv
+titleSuffix: Azure Cognitive Services
+description: Přečtěte si o posílání žádostí o hledání rozhraní API Bingu pro vyhledávání zpráv.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,20 +10,20 @@ ms.subservice: bing-news-search
 ms.topic: quickstart
 ms.date: 06/27/2019
 ms.author: aahi
-ms.openlocfilehash: ce3cada557c4e32fe8b0ba3a85e574fe049889f5
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.openlocfilehash: cfa9cd23e19788d847fd9177d70ee2af89c69272
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67542723"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68423824"
 ---
-# <a name="sending-queries-to-the-bing-news-search-api"></a>Odesílání dotazů do rozhraní API pro vyhledávání zpráv Bingu
+# <a name="sending-queries-to-the-bing-news-search-api"></a>Odesílání dotazů do rozhraní API Bingu pro vyhledávání zpráv
 
-Rozhraní API pro vyhledávání zpráv Bingu umožňuje hledat na webu pro relevantní novinky položky. Další informace o odesílání vyhledávacích dotazů na rozhraní API pomocí tohoto článku.
+Rozhraní API Bingu pro vyhledávání zpráv umožňuje vyhledat relevantní novinky v webu. V tomto článku se dozvíte víc o posílání vyhledávacích dotazů do rozhraní API.
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../../includes/cognitive-services-bing-news-search-signup-requirements.md)]
 
-## <a name="sending-a-request"></a>Odesílání požadavku
+## <a name="sending-a-request"></a>Odesílá se žádost.
 
 Pokud chcete získat výsledky hledání, které se týkají jenom zpráv, odešlete požadavek GET na následující koncový bod:
 
@@ -60,7 +60,7 @@ X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
 Host: api.cognitive.microsoft.com
 ```
 
-## <a name="bing-news-search-api-response"></a>Odpověď rozhraní API pro vyhledávání zpráv Bingu
+## <a name="bing-news-search-api-response"></a>rozhraní API Bingu pro vyhledávání zprávová odpověď
 
 Následující příklad ukazuje odpověď na předchozí požadavek. Příklad taky zobrazuje hlavičky odpovědi.
 
@@ -284,7 +284,7 @@ BingAPIs-Market: en-US
 
 ## <a name="next-steps"></a>Další postup
 
-* [Co je pro vyhledávání zpráv Bingu? ](../search-the-web.md). 
-* [Získat dnešní hlavní zprávy](search-for-news.md#get-todays-top-news)
-* [Dostávat informace o podle kategorie](search-for-news.md#get-news-by-category)
-* [Získat nejsledovanější zprávy](search-for-news.md#get-trending-news)
+* [Co je vyhledávání zpráv Bingu?](../search-the-web.md). 
+* [Získat dnešní hlavní novinky](search-for-news.md#get-todays-top-news)
+* [Získat zprávy podle kategorie](search-for-news.md#get-news-by-category)
+* [Získat zprávy o trendech](search-for-news.md#get-trending-news)

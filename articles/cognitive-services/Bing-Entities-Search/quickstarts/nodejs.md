@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý start: Odeslat žádost o vyhledávání Bingu Entity Search REST API pomocí Node.js'
-titlesuffix: Azure Cognitive Services
-description: V tomto rychlém startu můžete odeslat požadavek na pomocí API REST pro vyhledávání entit Bingu C#a získejte odpověď ve formátu JSON.
+title: 'Rychlý start: Odeslat požadavek hledání do Vyhledávání entit Bingu REST API pomocí Node. js'
+titleSuffix: Azure Cognitive Services
+description: Pomocí tohoto rychlého startu můžete odeslat žádost Vyhledávání entit Bingu REST API pomocí C#a přijmout odpověď JSON.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,24 +10,24 @@ ms.subservice: bing-entity-search
 ms.topic: quickstart
 ms.date: 02/01/2019
 ms.author: aahi
-ms.openlocfilehash: 177e0ef0adab3b683657a9b872300cb38185d795
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: 139f05e07060cc6dd958c19930e31b1b44e5d22a
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66384575"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68424032"
 ---
-# <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-nodejs"></a>Rychlý start: Odeslat žádost o vyhledávání Bingu Entity Search REST API pomocí Node.js
+# <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-nodejs"></a>Rychlý start: Odeslat požadavek hledání do Vyhledávání entit Bingu REST API pomocí Node. js
 
-V tomto rychlém startu můžete provést první volání do rozhraní API Bingu pro vyhledávání entit a zobrazit odpověď JSON. Tato jednoduchá aplikace JavaScript odešle dotaz vyhledávání zpráv na rozhraní API a zobrazí odpovědi. Zdrojový kód k této ukázce je dostupný na [Githubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingEntitySearchv7.js).
+Tento rychlý Start použijte k provedení prvního volání rozhraní API Bingu pro vyhledávání entit a zobrazení odpovědi JSON. Tato jednoduchá aplikace JavaScriptu pošle vyhledávací dotaz na zprávy do rozhraní API a zobrazí odpověď. Zdrojový kód k této ukázce je dostupný na [Githubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingEntitySearchv7.js).
 
-Zatímco tato aplikace je napsána v jazyce JavaScript, je rozhraní API RESTful webová služba, která je kompatibilní s Většina programovacích jazyků.
+I když je tato aplikace napsaná v JavaScriptu, rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků.
 
 ## <a name="prerequisites"></a>Požadavky
 
 * Nejnovější verze [Node.js](https://nodejs.org/en/download/).
 
-* [Knihovna žádostí o jazyka JavaScript](https://github.com/request/request)
+* [Knihovna požadavků JavaScriptu](https://github.com/request/request)
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../../includes/cognitive-services-bing-entity-search-signup-requirements.md)]
 
@@ -40,7 +40,7 @@ Zatímco tato aplikace je napsána v jazyce JavaScript, je rozhraní API RESTful
     let https = require ('https');
     ```
 
-2. Vytváření proměnných pro koncový bod rozhraní API, klíč předplatného a vyhledávací dotaz.
+2. Vytvořte proměnné pro koncový bod rozhraní API, klíč předplatného a vyhledávací dotaz.
 
     ```javascript
     let subscriptionKey = 'ENTER YOUR KEY HERE';
@@ -51,14 +51,14 @@ Zatímco tato aplikace je napsána v jazyce JavaScript, je rozhraní API RESTful
     let q = 'italian restaurant near me';
     ```
 
-3. Přidat vstup na trh a dotaz parametry řetězec s názvem `query`. Nezapomeňte si adresu url – kódování dotazu s `encodeURI()`.
+3. Přidejte svůj trh a parametry dotazu do řetězce s názvem `query`. Nezapomeňte dotaz zakódovat pomocí `encodeURI()`příkazu URL.
     ```javascript 
     let query = '?mkt=' + mkt + '&q=' + encodeURI(q);
     ```
 
 ## <a name="handle-and-parse-the-response"></a>Zpracování a parsování odpovědi
 
-1. definovat funkci s názvem `response_handler` , která přijímá volání protokolu HTTP, `response`, jako parametr. v rámci této funkce proveďte následující kroky:
+1. Definujte funkci s názvem `response_handler` , která přijímá volání http, `response`jako parametr. V rámci této funkce proveďte následující kroky:
 
     1. Definujte proměnnou, která bude obsahovat text odpovědi JSON.  
         ```javascript
@@ -74,7 +74,7 @@ Zatímco tato aplikace je napsána v jazyce JavaScript, je rozhraní API RESTful
         });
         ```
 
-    3. Když **koncové** signalizován příznak, analyzovat ve formátu JSON a vytisknout je.
+    3. Když je příznak **ukončení** signalizována, analyzujte JSON a vytiskněte ho.
 
         ```javascript
         response.on ('end', function () {
@@ -85,10 +85,10 @@ Zatímco tato aplikace je napsána v jazyce JavaScript, je rozhraní API RESTful
 
 ## <a name="send-a-request"></a>Odeslání požadavku
 
-1. Vytvořit funkci s názvem `Search` odeslat žádost o vyhledávání. V něm proveďte následující kroky.
+1. Vytvořte funkci volanou `Search` k odeslání žádosti o vyhledávání. V takovém případě proveďte následující kroky.
 
-   1. Vytvořit objekt JSON, který obsahuje parametry požadavku: použijte `Get` pro metodu a přidejte své informace o hostitele a cestu. Přidat klíč předplatného. Chcete `Ocp-Apim-Subscription-Key` záhlaví. 
-   2. Použití `https.request()` k odeslání žádosti s dříve vytvořenou obslužné rutiny a parametry hledání.
+   1. Vytvořte objekt JSON, který obsahuje parametry žádosti: použijte `Get` pro metodu a přidejte informace o hostiteli a cestě. Přidejte do `Ocp-Apim-Subscription-Key` záhlaví klíč předplatného. 
+   2. Použijte `https.request()` k odeslání požadavku s obslužnou rutinou odpovědi vytvořenou dříve a parametry hledání.
     
       ```javascript
       let Search = function () {
@@ -106,9 +106,9 @@ Zatímco tato aplikace je napsána v jazyce JavaScript, je rozhraní API RESTful
       }
       ```
 
-2. Volání `Search()` funkce.
+2. `Search()` Zavolejte funkci.
 
-## <a name="example-json-response"></a>Příklad JSON odpovědi
+## <a name="example-json-response"></a>Příklad odpovědi JSON
 
 Úspěšná odpověď se vrátí ve formátu JSON, jak je znázorněno v následujícím příkladu: 
 
@@ -176,7 +176,7 @@ Zatímco tato aplikace je napsána v jazyce JavaScript, je rozhraní API RESTful
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Vytvoření webové jednostránkové aplikace](../tutorial-bing-entities-search-single-page-app.md)
+> [Sestavení webové aplikace s jednou stránkou](../tutorial-bing-entities-search-single-page-app.md)
 
-* [Co je API pro vyhledávání entit Bingu?](../overview.md )
-* [Reference k rozhraní API vyhledávání entit Bingu](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference)
+* [Co je rozhraní API Bingu pro vyhledávání entit?](../overview.md )
+* [Odkaz na rozhraní API Bingu pro vyhledávání entit](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference)

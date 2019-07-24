@@ -12,16 +12,16 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 02/03/2019
-ms.openlocfilehash: 7a1132b5857cf6c54d0566ca29bb76ce1ef88513
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ad4706ce038feb316d238c1cabc12b27621c8085
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66150238"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68443336"
 ---
 # <a name="azure-cli-samples-for-azure-sql-database"></a>Ukázky v Azure CLI pro službu Azure SQL Database
 
-Azure SQL Database lze konfigurovat pomocí <a href="/cli/azure">rozhraní příkazového řádku Azure</a>.
+Azure SQL Database můžete nakonfigurovat pomocí <a href="/cli/azure">Azure CLI</a>.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -29,7 +29,7 @@ Azure SQL Database lze konfigurovat pomocí <a href="/cli/azure">rozhraní pří
 
 Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku (CLI) místně, musíte mít spuštěnou verzi Azure CLI 2.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli).
 
-## <a name="single-database--elastic-pools"></a>Izolované databáze a elastické fondy
+## <a name="single-database--elastic-pools"></a>Elastické fondy & jedné databáze
 
 Následující tabulka obsahuje odkazy na ukázkové skripty Azure CLI pro službu Azure SQL Database.
 
@@ -41,19 +41,21 @@ Následující tabulka obsahuje odkazy na ukázkové skripty Azure CLI pro služ
 |**Škálování izolované databáze a elastického fondu**||
 | [Škálování izolované databáze](scripts/sql-database-monitor-and-scale-database-cli.md?toc=%2fcli%2fazure%2ftoc.json) | Tento ukázkový skript rozhraní příkazového řádku škáluje izolovanou databázi Azure SQL na jinou velikost výpočetních prostředků po provedení dotazu na informace o velikosti databáze. |
 | [Škálování elastického fondu](scripts/sql-database-scale-pool-cli.md?toc=%2fcli%2fazure%2ftoc.json) | Tento skript rozhraní příkazového řádku škáluje elastický fond SQL na jinou velikost výpočetních prostředků.  |
+|**Skupiny převzetí služeb při selhání**||
+| [Přidat jednu databázi do skupiny převzetí služeb při selhání](scripts/sql-database-add-single-db-to-failover-group-cli.md?toc=%2fcli%2fazure%2ftoc.json)| Tento skript rozhraní příkazového řádku vytvoří databázi a skupinu převzetí služeb při selhání přidá databázi do skupiny převzetí služeb při selhání a otestuje převzetí služeb při selhání na sekundární server.|
 |||
 
-Další informace o [jediné databáze rozhraní API Azure CLI](sql-database-single-databases-manage.md#azure-cli-manage-sql-database-servers-and-single-databases).
+Přečtěte si další informace o [izolovaná databáze rozhraní příkazového řádku Azure CLI](sql-database-single-databases-manage.md#azure-cli-manage-sql-database-servers-and-single-databases).
 
 ## <a name="managed-instance"></a>MI
 
-Následující tabulka obsahuje odkazy na ukázkové skripty Azure CLI pro službu Azure SQL Database – Managed Instance.
+Následující tabulka obsahuje odkazy na ukázkové skripty Azure CLI pro Azure SQL Database spravované instance.
 
 | |  |
 |---|---|
-| [Vytvoření spravované instance](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../create-azure-sql-managed-instance-using-azure-cli/) | Tento skript rozhraní příkazového řádku ukazuje, jak vytvoříte Managed Instance. |
-| [Aktualizovat spravované Instance](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../modify-azure-sql-database-managed-instance-using-azure-cli/) | Tento skript rozhraní příkazového řádku ukazuje, jak aktualizovat Managed Instance. |
-| [Přesunutí databáze do jiné mi](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../cross-instance-point-in-time-restore-in-azure-sql-database-managed-instance/) | Tento skript rozhraní příkazového řádku ukazuje, jak obnovit zálohu databáze z jedné instance. |
+| [Vytvoření spravované instance](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../create-azure-sql-managed-instance-using-azure-cli/) | Tento skript rozhraní příkazového řádku ukazuje, jak vytvořit spravovanou instanci. |
+| [Aktualizace spravované instance](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../modify-azure-sql-database-managed-instance-using-azure-cli/) | Tento skript rozhraní příkazového řádku ukazuje, jak aktualizovat spravovanou instanci. |
+| [Přesunutí databáze do jiné spravované instance](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../cross-instance-point-in-time-restore-in-azure-sql-database-managed-instance/) | Tento skript rozhraní příkazového řádku ukazuje, jak obnovit zálohu databáze z jedné instance do druhé. |
 |||
 
-Další informace o [spravované Instance Azure CLI API](sql-database-managed-instance-create-manage.md#azure-cli-create-and-manage-managed-instances) a najít [Další příklady v tomto článku](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44).
+Přečtěte si další informace o [rozhraní Azure CLI API spravované instance](sql-database-managed-instance-create-manage.md#azure-cli-create-and-manage-managed-instances) a [Další příklady najdete tady](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44).

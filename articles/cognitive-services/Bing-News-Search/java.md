@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý start: Provádět vyhledávání na webu s C# – rozhraní API REST webové vyhledávání Bingu'
-titlesuffix: Azure Cognitive Services
-description: V tomto rychlém startu můžete odeslat požadavek na Bingu News Search REST API pomocí Javy a přijetí odpovědi JSON.
+title: 'Rychlý start: Hledání na webu pomocí C# -vyhledávání na webu Bingu REST API'
+titleSuffix: Azure Cognitive Services
+description: Pomocí tohoto rychlého startu můžete odeslat žádost Vyhledávání zpráv Bingu REST API pomocí jazyka Java a přijmout odpověď JSON.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,20 +11,20 @@ ms.topic: quickstart
 ms.date: 6/18/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 351bc71046df1bdd677d8c64411b6ae09dfc1ef1
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 414287b4a279ac76abf62d3721a51627380a8668
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67206122"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68423759"
 ---
-# <a name="quickstart-perform-a-news-search-using-java-and-the-bing-news-search-rest-api"></a>Rychlý start: Hledání zpráv pomocí Javy a rozhraní API REST vyhledávání zpráv Bingu
+# <a name="quickstart-perform-a-news-search-using-java-and-the-bing-news-search-rest-api"></a>Rychlý start: Proveďte hledání zpráv pomocí jazyka Java a Vyhledávání zpráv Bingu REST API
 
-V tomto rychlém startu můžete provést první volání do rozhraní API pro vyhledávání zpráv Bingu a zobrazit odpověď JSON. Tato jednoduchá aplikace Java odešle dotaz vyhledávání zpráv na rozhraní API a zobrazí odpovědi.
+Tento rychlý Start použijte k provedení prvního volání rozhraní API Bingu pro vyhledávání zpráv a zobrazení odpovědi JSON. Tato jednoduchá aplikace Java pošle vyhledávací dotaz na zprávy do rozhraní API a zobrazí odpověď.
 
 Aplikace je sice napsaná v Javě, ale rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků.
 
-Zdrojový kód pro tuto ukázku je k dispozici [na Githubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingNewsSearchv7.java) 
+Zdrojový kód pro tuto ukázku je k dispozici [na GitHubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingNewsSearchv7.java) . 
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -52,7 +52,7 @@ Viz také [služeb Cognitive Services ceny – rozhraní API Bingu pro vyhledáv
     import com.google.gson.JsonParser;
     ```
 
-2. Vytvořte novou třídu s proměnné pro koncový bod rozhraní API, váš klíč předplatného a hledané výrazy.
+2. Vytvořte novou třídu s proměnnými pro koncový bod rozhraní API, klíč předplatného a hledaný termín.
 
     ```java
     public static SearchResults SearchNews (String searchQuery) throws Exception {
@@ -64,7 +64,7 @@ Viz také [služeb Cognitive Services ceny – rozhraní API Bingu pro vyhledáv
     }
     ```
 
-## <a name="construct-the-search-request-and-receive-a-json-response"></a>Vytvořit žádost o vyhledávání a přijetí odpovědi JSON
+## <a name="construct-the-search-request-and-receive-a-json-response"></a>Sestavit požadavek hledání a přijmout odpověď JSON
 
 1. Pomocí proměnných z posledního kroku naformátujte vyhledávací adresu URL pro žádost rozhraní API. Hledaný termín musí být zakódovaný do adresy URL předtím, než se připojí k této žádosti.
 
@@ -77,7 +77,7 @@ Viz také [služeb Cognitive Services ceny – rozhraní API Bingu pro vyhledáv
     }
     ```
 
-2. Přijata odpověď JSON z rozhraní API pro vyhledávání zpráv Bingu a vytvořit objekt výsledku.
+2. Přijmout odpověď JSON z rozhraní API Bingu pro vyhledávání zpráv a vytvořit objekt výsledku.
 
     ```java
     // receive JSON body
@@ -87,9 +87,9 @@ Viz také [služeb Cognitive Services ceny – rozhraní API Bingu pro vyhledáv
     SearchResults results = new SearchResults(new HashMap<String, String>(), response);
     ```
 
-## <a name="process-the-json-response"></a>Zpracovat odpověď JSON
+## <a name="process-the-json-response"></a>Zpracování odpovědi JSON
 
-1. Oddělení hlavičky protokolu HTTP související Bingu od datové části JSON a ukončení datového proudu a vrátí odpověď rozhraní API.
+1. Oddělte hlavičky HTTP související se službou Bing od těla JSON, potom datový proud zavřete a vraťte odpověď rozhraní API.
     ```java
     // extract Bing-related HTTP headers
     Map<String, List<String>> headers = connection.getHeaderFields();
@@ -103,7 +103,7 @@ Viz také [služeb Cognitive Services ceny – rozhraní API Bingu pro vyhledáv
     return results;
     ```
 
-2. Vytvořte metodu k analýze a reserialize JSON
+2. Vytvoření metody pro analýzu a reserializaci JSON
     ```java
     // pretty-printer for JSON; uses GSON parser to parse and re-serialize
     public static String prettify(String json_text) {
@@ -114,7 +114,7 @@ Viz také [služeb Cognitive Services ceny – rozhraní API Bingu pro vyhledáv
     }
     ```
 
-3. V hlavní metodě vaší aplikace zavolejte metodu vyhledávání a zobrazení výsledků.
+3. V metodě Main vaší aplikace zavolejte metodu hledání a zobrazte výsledky.
     ```csharp
    public static void main (String[] args) {
        System.out.println("Searching the Web for: " + searchTerm);
