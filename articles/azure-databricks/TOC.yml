@@ -17,6 +17,8 @@
   items:
     - name: Dotazování SQL Serveru spuštěného v kontejneru Docker
       href: vnet-injection-sql-server.md
+    - name: Přístup k úložišti s využitím služby Azure Key Vault
+      href: store-secrets-azure-key-vault.md
     - name: Použití koncového bodu služby Cosmos DB
       href: service-endpoint-cosmosdb.md
     - name: Provádění operací ETL
