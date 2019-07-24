@@ -1,6 +1,6 @@
 ---
-title: 'Rychlý start: Navrhnout vyhledávací dotazy pomocí rozhraní API REST pro automatické návrhy Bingu a Ruby'
-titlesuffix: Azure Cognitive Services
+title: 'Rychlý start: Navrhněte vyhledávací dotazy pomocí Automatické návrhy Bingu REST API a Ruby.'
+titleSuffix: Azure Cognitive Services
 description: Získejte informace a ukázky kódu, které vám pomůžou rychle začít používat rozhraní API pro automatické návrhy Bingu.
 services: cognitive-services
 author: aahill
@@ -10,27 +10,27 @@ ms.subservice: bing-autosuggest
 ms.topic: quickstart
 ms.date: 02/20/2019
 ms.author: aahi
-ms.openlocfilehash: 56ad71d9a746f61e724c1f3b5c5c6be0a3318452
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: 3797e8b0d200bcb7f010afbf77f57cfc5cf6b5d1
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66390375"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68405200"
 ---
-# <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-ruby"></a>Rychlý start: Navrhnout vyhledávací dotazy pomocí rozhraní API REST pro automatické návrhy Bingu a Ruby
+# <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-ruby"></a>Rychlý start: Navrhněte vyhledávací dotazy pomocí Automatické návrhy Bingu REST API a Ruby.
 
-Použití v tomto rychlém startu zahájíte provádění volání rozhraní API pro automatické návrhy Bingu a získání odpovědi JSON. Tato jednoduchá aplikace v Ruby odešle částečné vyhledávací dotaz na rozhraní API a vrátí návrhů pro hledání. Aplikace je sice napsaná v Ruby, ale rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků.
+Pomocí tohoto rychlého startu můžete začít volat rozhraní API pro automatické návrhy Bingu a získat odpověď JSON. Tato jednoduchá aplikace v rámci Ruby pošle do rozhraní API částečný vyhledávací dotaz a vrátí návrhy pro hledání. Aplikace je sice napsaná v Ruby, ale rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků.
 
 
 ## <a name="prerequisites"></a>Požadavky
 
-* [Ruby 2.4](https://www.ruby-lang.org/en/downloads/) nebo novější.
+* [Ruby 2,4](https://www.ruby-lang.org/en/downloads/) nebo novější.
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../../includes/cognitive-services-bing-autosuggest-signup-requirements.md)]
 
 ## <a name="create-a-new-application"></a>Vytvoření nové aplikace
 
-1. Vytvořte nový soubor Ruby ve vaší oblíbené prostředí IDE nebo editoru. Přidejte následující požadavky:
+1. Vytvořte nový soubor Ruby v oblíbených IDE nebo editoru. Přidejte následující požadavky:
 
     ```ruby
     require 'net/https'
@@ -38,7 +38,7 @@ Použití v tomto rychlém startu zahájíte provádění volání rozhraní API
     require 'json'
     ```
 
-2. Vytváření proměnných pro rozhraní API hostitele a cestu, [uvedení na trh kód](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference#market-codes), částečné vyhledávacího dotazu.
+2. Vytvořte proměnné pro hostitele rozhraní API a cestu, [kód trhu](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference#market-codes), částečný vyhledávací dotaz.
 
     ```ruby
     subscriptionKey = 'enter your key here'
@@ -48,23 +48,23 @@ Použití v tomto rychlém startu zahájíte provádění volání rozhraní API
     query = 'sail'
     ```
 
-3. Vytvoření řetězce parametry přidáním kódu na trhu `?mkt=` parametr a připojení dotazu `&q=` parametru. Díky kombinaci hostitele rozhraní API, cestu a parametrů řetězce pak vytvořte váš identifikátor URI požadavku.
+3. Vytvořte řetězec parametrů připojením kódu na trhu k `?mkt=` parametru a připojením dotazu `&q=` k parametru. Pak vytvořte identifikátor URI žádosti kombinací hostitele rozhraní API, cesty a řetězce parametrů.
 
     ```ruby
     params = '?mkt=' + mkt + '&q=' + query
     uri = URI (host + path + params)
     ```
 
-## <a name="create-and-send-an-api-request"></a>Vytvoření a odeslání žádosti o rozhraní API
+## <a name="create-and-send-an-api-request"></a>Vytvoření a odeslání žádosti rozhraní API
 
-1. Vytvořte žádost se váš identifikátor URI a přidat váš klíč předplatného na `Ocp-Apim-Subscription-Key` záhlaví.
+1. Vytvořte žádost s identifikátorem URI a přidejte do `Ocp-Apim-Subscription-Key` hlavičky svůj klíč předplatného.
     
     ```ruby
     request = Net::HTTP::Get.new(uri)
     request['Ocp-Apim-Subscription-Key'] = subscriptionKey
     ```
 
-2. Odeslat požadavek a uložení odpovědi.
+2. Odešlete žádost a uložte odpověď.
     
     ```ruby
     response = Net::HTTP.start(uri.host, uri.port, :use_ssl => uri.scheme == 'https') do |http|
@@ -72,13 +72,13 @@ Použití v tomto rychlém startu zahájíte provádění volání rozhraní API
     end
     ```
 
-3. Tisk, odpověď JSON.
+3. Vytiskněte odpověď JSON.
     
     ```ruby
     puts JSON::pretty_generate (JSON (response.body))
     ```
 
-## <a name="example-json-response"></a>Příklad JSON odpovědi
+## <a name="example-json-response"></a>Příklad odpovědi JSON
 
 Úspěšná odpověď se vrátí ve formátu JSON, jak je znázorněno v následujícím příkladu:
 
@@ -151,7 +151,7 @@ Použití v tomto rychlém startu zahájíte provádění volání rozhraní API
 > [!div class="nextstepaction"]
 > [Vytvoření jednostránkové webové aplikace](../tutorials/autosuggest.md)
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také:
 
 - [Co jsou automatické návrhy Bingu?](../get-suggested-search-terms.md)
 - [Referenční materiály rozhraní API pro automatické návrhy Bingu verze 7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference)

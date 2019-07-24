@@ -1,33 +1,33 @@
 ---
 title: Řešení potíží s rozhraním Speech SDK – hlasové služby
 titleSuffix: Azure Cognitive Services
-description: Tento článek obsahuje informace, které vám pomůžou při řešení problémů, že se můžete setkat při použití sady SDK řeči.
+description: Tento článek poskytuje informace, které vám pomohou při řešení problémů, se kterými se můžete setkat při používání sady Speech SDK.
 services: cognitive-services
-author: wolfma61
+author: jhakulin
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/05/2019
-ms.author: wolfma
-ms.openlocfilehash: 8682cd8b91d17b16a56e401661856e141ac5f0c1
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.date: 07/23/2019
+ms.author: jhakulin
+ms.openlocfilehash: 99cb23afcdb40f74485a7dcec34435a46d0e7476
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606233"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68405904"
 ---
 # <a name="troubleshoot-the-speech-sdk"></a>Řešení potíží se sadou Speech SDK
 
-Tento článek obsahuje informace, které vám pomůžou při řešení problémů, že se můžete setkat při použití sady SDK řeči.
+Tento článek poskytuje informace, které vám pomohou při řešení problémů, se kterými se můžete setkat při používání sady Speech SDK.
 
-## <a name="error-websocket-upgrade-failed-with-an-authentication-error-403"></a>Chyba: Upgrade objektu WebSocket se nezdařilo s chybou ověřování (403)
+## <a name="error-websocket-upgrade-failed-with-an-authentication-error-403"></a>Chyba: Upgrade protokolu WebSocket se nezdařil s chybou ověřování (403)
 
 Může být nesprávné koncový bod pro oblast nebo službu. Zkontrolujte identifikátor URI, abyste měli jistotu, že je správný.
 
 Také, pravděpodobně došlo k potížím s klíč předplatného nebo autorizační token. Další informace najdete v další části.
 
-## <a name="error-http-403-forbidden-or-http-401-unauthorized"></a>Chyba: HTTP 403 Zakázáno nebo HTTP 401 Neautorizováno
+## <a name="error-http-403-forbidden-or-http-401-unauthorized"></a>Chyba: HTTP 403 zakázáno nebo HTTP 401 Neautorizováno
 
 Tato chyba často způsobuje problémy s ověřováním. Požadavky na připojení bez platného `Ocp-Apim-Subscription-Key` nebo `Authorization` záhlaví odmítají se stavem 403 nebo 401.
 
@@ -66,7 +66,7 @@ Můžete ověřit, že máte klíč platné předplatné spuštěním jednoho z 
     curl -v -X POST "https://YOUR_REGION.api.cognitive.microsoft.com/sts/v1.0/issueToken" -H "Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY" -H "Content-type: application/x-www-form-urlencoded" -H "Content-Length: 0"
     ```
 
-Pokud jste zadali klíč platným předplatným, příkaz vrátí autorizační token, jinak vrátí chybu.
+Pokud jste zadali platný klíč předplatného, příkaz vrátí autorizační token, jinak se vrátí chyba.
 
 ### <a name="validate-an-authorization-token"></a>Ověření tokenu autorizace
 
@@ -103,7 +103,7 @@ Pokud používáte autorizační token pro ověření, spusťte jeden z následu
     curl -v -X POST "https://YOUR_REGION.stt.speech.microsoft.com/speech/recognition/interactive/cognitiveservices/v1?language=en-US" -H "Authorization: Bearer YOUR_ACCESS_TOKEN" -H "Transfer-Encoding: chunked" -H "Content-type: audio/wav; codec=audio/pcm; samplerate=16000" --data-binary @YOUR_AUDIO_FILE
     ```
 
-Pokud jste zadali platný autorizační token, příkaz vrátí přepisu zvuku souboru, jinak vrátí chybu.
+Pokud jste zadali platný autorizační token, příkaz vrátí přepis pro váš zvukový soubor, jinak se vrátí chyba.
 
 ---
 
@@ -111,7 +111,7 @@ Pokud jste zadali platný autorizační token, příkaz vrátí přepisu zvuku s
 
 K této chybě obvykle dochází, když text požadavku obsahuje neplatnou zvuková data. Pouze WAV formát je podporován. Zkontrolujte taky, ujistěte se, že jste zadejte příslušné hodnoty pro záhlaví požadavku `Content-Type` a `Content-Length`.
 
-## <a name="error-http-408-request-timeout"></a>Chyba: Časový limit protokolu HTTP 408 žádosti
+## <a name="error-http-408-request-timeout"></a>Chyba: Časový limit požadavku HTTP 408
 
 Chyba pravděpodobně dochází, protože žádné zvukové dat je odesíláno do služby. Tato chyba může být také způsobena problémy se sítí.
 

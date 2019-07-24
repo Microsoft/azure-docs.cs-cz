@@ -7,7 +7,6 @@
     - name: Terminologické změny
       href: terminology.md
 - name: Šablony Rychlý start
-  expanded: true
   items:
     - name: Aplikace
       items:
@@ -96,9 +95,9 @@
           href: platform/personal-data-mgmt.md
         - name: 'Shromažďování, uchovávání a ukládání dat aplikací'
           href: app/data-retention-privacy.md
-    - name: Reakce na incidenty
+    - name: Výstrahy
       items:
-        - name: Výstrahy
+        - name: Přehled
           href: platform/alerts-overview.md
         - name: Klasická upozornění
           href: platform/alerts-classic.overview.md
@@ -114,8 +113,6 @@
           href: platform/alerts-action-rules.md
         - name: Inteligentní skupiny
           href: platform/alerts-smartgroups-overview.md
-        - name: Automatické škálování
-          href: platform/autoscale-overview.md
         - name: Analýza změn
           href: app/change-analysis.md
     - name: Vizualizace dat
@@ -954,6 +951,8 @@
       items:
         - name: Automatické škálování
           items:
+            - name: Přehled
+              href: platform/autoscale-overview.md
             - name: Názorný postup
               href: platform/autoscale-get-started.md
             - name: Nastavení

@@ -1,5 +1,5 @@
 ---
-title: Co je rozhraní API Bingu pro místní obchodní vyhledávání? | Dokumenty Microsoft
+title: Co je rozhraní API Bingu pro místní obchodní vyhledávání?
 titleSuffix: Azure Cognitive Services
 description: Rozhraní API Bingu pro místní obchodní vyhledávání je služba RESTful, která vašim aplikacím umožňuje vyhledávat informace o místních podnicích a sídlech, a to na základě vyhledávacích dotazů.
 services: cognitive-services
@@ -9,38 +9,38 @@ ms.service: cognitive-services
 ms.topic: article
 ms.date: 11/01/2018
 ms.author: rosh
-ms.openlocfilehash: 3cc9ed4dd108e76da6430a450876b709be514356
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2078e4842f6b8af11fcf56760579ce1ec77dd23f
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65796769"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68423375"
 ---
-# <a name="what-is-bing-local-business-search"></a>Co je místní firmy vyhledávání Bingu?
-Místní firmy API pro vyhledávání Bingu je služba RESTful, která umožňuje aplikace vyhledejte informace o místních firmách na základě dotazů vyhledávání. Například `q=<business-name> in Redmond, Washington`, nebo `q=Italian restaurants near me`. 
+# <a name="what-is-bing-local-business-search"></a>Co je vyhledávání v místním podnikání Bingu?
+Rozhraní API pro místní vyhledávání Bingu je služba RESTful, která umožňuje vašim aplikacím najít informace o místních firmách na základě vyhledávacích dotazů. Například `q=<business-name> in Redmond, Washington`, nebo `q=Italian restaurants near me`. 
 
 ## <a name="features"></a>Funkce
 | Funkce | Popis |  
 | -- | -- | 
-| [Najít místní firmy a umístění](quickstarts/local-quickstart.md) | Místní firmy API pro vyhledávání Bingu získá lokalizovaný výsledků z dotazu. Výsledky uvést adresu URL pro web společnosti a zobrazení textu, telefonní číslo a zeměpisnou polohu, včetně: Souřadnice GPS, Město, adresu |  
-| [Filtrovat výsledky místního s geografické hranice](specify-geographic-search.md) | Přidáte jako parametry hledání, chcete-li omezit rozsah výsledků na konkrétní geografické oblasti, zadaný kruhové oblasti nebo čtverec ohraničující rámeček. | 
-| [Filtrovat podle kategorie místní obchodních výsledků](local-categories.md) | Místní obchodních výsledků hledání podle kategorie. Tato volba používá reverzní poloha IP adresy nebo souřadnice GPS volajícího vrací lokalizovaný výsledky v různých kategoriích podnikání.|
+| [Najít místní firmy a umístění](quickstarts/local-quickstart.md) | Rozhraní API pro místní vyhledávání Bingu získá lokalizované výsledky dotazu. Výsledky zahrnují adresu URL webu firmy a zobrazený text, telefonní číslo a zeměpisnou polohu, včetně: Souřadnice GPS, město, adresa na ulici |  
+| [Filtrování místních výsledků s geografickými hranicemi](specify-geographic-search.md) | Přidáním souřadnic jako parametrů hledání můžete výsledky omezit na konkrétní geografickou oblast určenou kruhovou oblastí nebo čtvercovým ohraničovacím rámečkem. | 
+| [Filtrovat výsledky místních obchodních výsledků podle kategorií](local-categories.md) | Hledání místních obchodních výsledků podle kategorií Tato možnost používá k vrácení lokalizovaných výsledků do různých kategorií firmy reverzní umístění IP nebo souřadnice GPS volajícího.|
 
 ## <a name="workflow"></a>Pracovní postup
-Volání API Bingu pro místní obchodní vyhledávání z libovolného programovacího jazyka, který může vytvářet požadavky HTTP a parsovat odpovědi JSON. Tato služba je přístupná pomocí rozhraní REST API.
+Volejte rozhraní API pro místní vyhledávání Bingu z libovolného programovacího jazyka, který může vytvářet požadavky HTTP a analyzovat odpovědi JSON. Tato služba je přístupná pomocí REST API.
  
-1. Vytvoření [účet rozhraní API služeb Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) s přístupem k rozhraní API pro vyhledávání Bingu. Pokud nemáte předplatné Azure, můžete si [vytvořit bezplatný účet](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api).   
-2. Podmínky hledání pro kódování URL `q=""` parametr dotazu. Například `q=nearby+restaurant` nebo `q=nearby%20restaurant`. Stránkování, nastavte v případě potřeby. 
-3. Odeslat [požadavek místní firmy API pro vyhledávání Bingu](quickstarts/local-quickstart.md) 
+1. Vytvořte [účet Cognitive Services rozhraní API](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) s přístupem k rozhraní API pro vyhledávání Bingu. Pokud nemáte předplatné Azure, můžete si [vytvořit bezplatný účet](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api).   
+2. Adresa URL pro `q=""` parametr dotazu zakóduje hledané výrazy. Například `q=nearby+restaurant` nebo `q=nearby%20restaurant`. Nastavte také stránkování, pokud je to potřeba. 
+3. Odeslat [žádost do rozhraní API služby Bing pro hledání v místních obchodech](quickstarts/local-quickstart.md) 
 4. Analyzovat odpověď JSON 
 
 > [!NOTE]
-> V současné době podporuje místní firmy hledání pouze `en-US` na trhu. 
+> Místní vyhledávání v `en-US` současné době podporuje jenom trh. 
 > [!NOTE]
-> Místní firmy vyhledávání v současné době nepodporuje pro automatické návrhy. 
+> Místní vyhledávání v současné době nepodporuje automatické návrhy. 
 
 ## <a name="next-steps"></a>Další postup
-- [Dotazy a odpovědi](local-search-query-response.md)
-- [Rychlý start místní firmy vyhledávání](quickstarts/local-quickstart.md)
-- [Místní referenční rozhraní API pro obchodní vyhledávání](local-search-reference.md)
+- [Dotaz a odpověď](local-search-query-response.md)
+- [Rychlý start hledání místních obchodních obchodů](quickstarts/local-quickstart.md)
+- [Referenční informace k rozhraní API pro místní vyhledávání v obchodu](local-search-reference.md)
 - [Požadavky na použití a zobrazení](use-display-requirements.md)

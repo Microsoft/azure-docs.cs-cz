@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 07/18/2019
+ms.date: 07/22/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: b366352d19b3f1e03e32e5fbddf0cb2816fa1ba3
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: b90b4806e86ed0ba33500cf31a6ed892241ceabe
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68320291"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68423453"
 ---
 # <a name="qna-maker-knowledge-base-limits-and-boundaries"></a>Omezení nástroje QnA Maker znalostní báze knowledge base a hranice
 
@@ -60,7 +60,8 @@ Celkové limitů na obsah znalostní báze knowledge base:
 * Délka názvu souboru: 200
 * Podporované formáty souborů: "TSV", ".pdf", ".txt", ".docx", ".xlsx".
 * Maximální počet alternativních otázek: 300
-* Maximální počet párů otázek a odpovědí: Závisí na zvolených **[omezeních Azure Search úrovně](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity#document-limits)** . Pár otázek a odpovědí je dokument v indexu Azure Search. 
+* Maximální počet párů otázek a odpovědí: Závisí na zvolené **[úrovni Azure Search](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity#document-limits)** . Pár otázek a odpovědí se mapuje na dokument v indexu Azure Search. 
+* Adresa URL/stránka HTML: 1 000 000 znaků
 
 ## <a name="create-knowledge-base-call-limits"></a>Vytvoření znalostní báze volání omezení:
 Tyto představují vytvořit omezení pro každou akci znalostní báze; To znamená, že kliknete na *vytvořit KB* nebo volání rozhraní API CreateKnowledgeBase.

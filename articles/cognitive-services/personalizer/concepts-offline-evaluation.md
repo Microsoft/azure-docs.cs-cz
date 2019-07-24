@@ -1,7 +1,7 @@
 ---
-title: Testování offline – Personalizer
+title: Přizpůsobování offline vyhodnocení
 titleSuffix: Azure Cognitive Services
-description: Vytvořit smyčku zpětné vazby v tomto C# rychlý start ke službě Personalizer.
+description: Vytvořte smyčku zpětné vazby C# v tomto rychlém startu pomocí služby pro přizpůsobování.
 services: cognitive-services
 author: edjez
 manager: nitinme
@@ -10,57 +10,57 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 05/07/2019
 ms.author: edjez
-ms.openlocfilehash: 3fdedd1af9b683b221dfa4aebad7a30559b7abff
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 3d9415a99655c7866c1a6688d0e48fd0b236a63b
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67722485"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68423268"
 ---
 # <a name="offline-evaluation"></a>Offline vyhodnocení
 
-Metoda, která umožňuje testování a vyhodnocení účinnosti Personalizer služby bez změny kódu nebo by to ovlivnilo činnost koncového uživatele se vyžaduje vyhodnocení za offline. Offline vyhodnocení používá dříve, které jste provedli data odeslaná z aplikace API pořadí pro porovnání jak různé rozměry.
+Testování offline je metoda, která umožňuje testovat a vyhodnocovat efektivitu služby přizpůsobeného pomocí nástroje, aniž by došlo ke změně kódu nebo ovlivnění uživatelského prostředí. Offline testování používá minulá data odesílaná z vaší aplikace do rozhraní API pro řazení, aby bylo možné porovnat způsob, jakým bylo provedeno různé pořadí.
 
-Podle rozsahu dat se provádí v režimu offline hodnocení. Rozsah můžete dokončit tak pozdě, jak aktuální čas. Začátek rozsahu nemůže být delší než počet dní, zadaná pro [uchovávání dat](how-to-settings.md).
+V období data se provádí zkušební verze offline. Rozsah může být dokončený s aktuálním časem jako pozdě. Začátek rozsahu nemůže být větší než počet dní zadaný pro [uchovávání dat](how-to-settings.md).
 
-Offline hodnocení vám můžou dát odpověď na následující otázky:
+Testování offline vám může přispět k zodpovězení následujících otázek:
 
-* Jak efektivní jsou Personalizer pořadí pro přizpůsobení úspěšné?
-    * Co jsou průměrné odměny dosahuje Personalizer online strojového učení zásady?
-    * Jak Personalizer porovnání efektivitu jaké aplikace byste udělali ve výchozím nastavení?
-    * Co by byl srovnávací efektivitu náhodné volby pro přizpůsobení?
-    * Co by byl srovnávací účinnost zásad různých learning ručně zadáno?
-* Které funkce kontextu víc nebo míň přispívají k přizpůsobení úspěšné?
-* Které funkce akce víc nebo míň přispívají k úspěšné přizpůsobení?
+* Jak efektivní je přizpůsobování pro úspěšné přizpůsobení?
+    * Jaké jsou průměrné ceny dosažené zásadami pro strojové učení v režimu online?
+    * Jak se přizpůsobuje porovnávání s účinností, co by se aplikace ve výchozím nastavení provedla?
+    * Jaká byla poměrná efektivita náhodné volby pro přizpůsobení?
+    * Jaké by byly srovnávací efektivita různých zásad učení, které jsou zadané ručně?
+* Které funkce kontextu přispívat více nebo méně pro úspěšné přizpůsobení?
+* Které funkce akcí přispívají k úspěšnému přizpůsobení více nebo méně?
 
-Kromě toho Offline hodnocení je možné zjistit více optimalizované učení zásady, které Personalizer můžete použít ke zlepšení výsledků v budoucnu.
+Kromě toho je možné pomocí offline testování zjistit více optimalizovaných výukových zásad, které přizpůsobené můžou využít ke zlepšení výsledků v budoucnu.
 
-Offline hodnocení se neposkytuje pokyny ohledně procento událostí pro účely zkoumání.
+Offline vyhodnocení neposkytuje pokyny pro procento událostí, které se mají použít pro průzkum.
 
-## <a name="prerequisites-for-offline-evaluation"></a>Předpoklady pro offline hodnocení
+## <a name="prerequisites-for-offline-evaluation"></a>Předpoklady pro offline testování
 
-Tady jsou důležité pro vyhodnocení reprezentativních offline:
+Níže jsou uvedené důležité požadavky na zástupce pro offline testování:
 
-* K dispozici dostatek dat. Doporučená minimální hodnota je nejméně 50 000 událostí.
-* Shromažďovat data z období s chování reprezentativní uživatelů a provozu.
+* Má dostatek dat. Doporučené minimum je minimálně 50 000 událostí.
+* Shromažďování dat z období pomocí reprezentativního chování a provozu uživatelů
 
-## <a name="discovering-the-optimized-learning-policy"></a>Odhalování optimalizovaného learning zásad
+## <a name="discovering-the-optimized-learning-policy"></a>Zjišťují se zásady optimalizovaného učení.
 
-Personalizer můžete offline zkušebního automaticky zjistit více optimální learning zásad.
+Přizpůsobený modul může k automatickému zjišťování lepších výukových zásad využít proces vyhodnocení offline.
 
-Po provedení offline hodnocení, uvidíte srovnávací efektivitu Personalizer s touto novou zásadou ve srovnání s aktuální zásady pro online. Můžete použít tyto zásady učení k němu platit okamžitě v Personalizer nebo si ho stáhnout pro pozdější analýzu nebo použití.
+Po provedení testování offline se v porovnání s aktuálními zásadami online zobrazí srovnávací efektivita přizpůsobení s touto novou zásadou. Tuto zásadu učení pak můžete použít, chcete-li ji uplatnit hned v přizpůsobeném, a to tak, že ji stáhnete a nahrajete na panelu modely a zásady. Můžete si ho také stáhnout pro účely budoucí analýzy nebo použití.
 
-## <a name="understanding-the-relevance-of-offline-evaluation-results"></a>Principy relevance výsledků vyhodnocení offline
+## <a name="understanding-the-relevance-of-offline-evaluation-results"></a>Princip závažnosti offline vyhodnocení výsledků
 
-Při spuštění v režimu offline hodnocení je velmi důležité pro analýzu _spolehlivosti hranice_ výsledků. Pokud jsou široké, znamená to, že vaše aplikace neobdržel dostatek dat pro odhady reward být přesné nebo významné. Systém shromažďuje více dat a spustit v režimu offline hodnocení časových obdobích, se stanou užší intervalu spolehlivosti.
+Při spuštění testování offline je velmi důležité analyzovat _meze spolehlivosti_ výsledků. Pokud jsou velké, znamená to, že vaše aplikace nedostala dostatek dat, aby odhady odměna byly přesné nebo významné. Jelikož systém shromažďuje více dat a spouštíte offline vyhodnocení v delších obdobích, dojde k zúžení intervalů spolehlivosti.
 
-## <a name="how-offline-evaluations-are-done"></a>Jak v režimu offline provést vyhodnocení
+## <a name="how-offline-evaluations-are-done"></a>Jak se dokončí hodnocení offline
 
-Dokončení offline hodnocení pomocí jiné metody volá **Counterfactual vyhodnocení**. 
+Hodnocení offline se provádí pomocí metody s názvem **Counterfactual Evaluation**. 
 
-Personalizer vychází z předpokladu, že jsou možné předpovědět zpětně uživatelů chování (a tedy odměny) (Personalizer nemůže vědět, co bude mít se stalo, pokud uživatel měl ukázalo, že něco jiný než co uvedena) a jenom na Učte se od měřené odměny. 
+Přizpůsobená aplikace je postavená na předpokladu, že chování uživatelů (a tedy i jejich neprospěch) nebude možné předpovědět (přizpůsobení nemůže vědět, co se stalo, pokud byl uživatel zobrazen jinak, než to uvidí) a jenom se dozvědět měřené ceny 
 
-To je koncepční proces pro vyhodnocení:
+Toto je koncepční proces, který se používá pro vyhodnocení:
 
 ```
 [For a given _learning policy), such as the online learning policy, uploaded learning policies, or optimized candidate policies]:
@@ -81,21 +81,22 @@ To je koncepční proces pro vyhodnocení:
 }
 ```
 
-Offline vyhodnocení využívat jenom takové chování zjištěných uživatelů. Tento proces zahodí velké objemy dat, zejména v případě, že vaše aplikace pořadí volání s velkým počtem akce.
+Testování offline používá pouze pozorované chování uživatele. Tento proces zahodí velké objemy dat, zejména v případě, že vaše aplikace provádí pořadí volání s velkým počtem akcí.
 
 
-## <a name="evaluation-of-features"></a>Vyhodnocení funkce
+## <a name="evaluation-of-features"></a>Vyhodnocení funkcí
 
-Offline vyhodnocení může poskytnout informace o kolik specifické funkce pro akce nebo kontext jsou na miskách vah: pro vyšší odměny. Informace je vypočítán s použitím vyhodnocení proti dané časové období a data a času se může lišit.
+Online vyhodnocení můžou poskytovat informace o tom, kolik konkrétních funkcí pro akce nebo kontext se má zvážit pro vyšší ceny. Tyto informace jsou vypočítány pomocí vyhodnocení za dané časové období a data a mohou se lišit v čase.
 
-Doporučujeme, abyste ve vyhodnocení funkce a s dotazem:
+Doporučujeme, abyste provedli hodnocení funkcí a požádali:
 
-* Jaké funkce, které další, může vaše aplikace nebo systému poskytuje podle ty, které jsou efektivnější?
-* Jaké funkce můžete odebrat z důvodu efektivity s nízkou? Přidání funkce nízké efektivitu _šumu_ machine Learning.
-* Existují všechny funkce, které jsou neúmyslně zahrnuty? Příklady: identifikovatelné osobní údaje (PII), duplicitní ID atd.
-* Existují všechny nežádoucí funkce, které nesmějí být používány pro přizpůsobení z důvodu dodržování legislativních nebo zodpovědná použít požadavky? Jsou nějaké funkce, které by mohly proxy (to znamená, úzce zrcadlení nebo je možné korelovat s) nežádoucí funkce?
+* Další, další funkce, které může vaše aplikace nebo systém poskytovat na řádcích, které jsou efektivnější?
+* Jaké funkce je možné odebrat z důvodu nízké efektivity? Funkce s nízkou efektivitou přidávají do strojového učení _šum_ .
+* Jsou k dispozici nějaké funkce, které jsou omylem zahrnuty? Příklady těchto údajů: identifikovatelné osobní údaje (PII), duplicitní ID atd.
+* Existují nějaké nežádoucí funkce, které by se neměly používat k přizpůsobení v důsledku regulativního nebo zodpovědného použití. Jsou k dispozici funkce, které by mohly být proxy serverem (to znamená, že se jedná o těsné zrcadlení nebo korelace)?
 
 
 ## <a name="next-steps"></a>Další postup
 
-[Konfigurace Personalizer](how-to-settings.md)
+[Konfigurace](how-to-settings.md)přizpůsobeného[spuštění offline hodnocení](how-to-offline-evaluation.md) – pochopení [způsobu, jakým funkce přizpůsobuje práci](how-personalizer-works.md) 
+

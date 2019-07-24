@@ -1,7 +1,7 @@
 ---
-title: Konfigurace prostředí uživatelského rozhraní pro vlastní vyhledávání Bingu | Dokumentace Microsoftu
-titlesuffix: Azure Cognitive Services
-description: Tento článek slouží ke konfiguraci a integraci prostředí uživatelského rozhraní pro vlastní vyhledávání Bingu.
+title: Konfigurace hostovaného uživatelského rozhraní pro Vlastní vyhledávání Bingu | Microsoft Docs
+titleSuffix: Azure Cognitive Services
+description: Tento článek slouží ke konfiguraci a integraci hostovaného uživatelského rozhraní pro Vlastní vyhledávání Bingu.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,26 +10,26 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: aahi
-ms.openlocfilehash: 17c0d19ad0c4a846d5f75905fe9072f2fe0e0f78
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ae073e10331f07d9863da1d4ed97533f95b87c86
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66386772"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68405063"
 ---
-# <a name="configure-your-hosted-ui-experience"></a>Konfigurace prostředí uživatelského rozhraní
+# <a name="configure-your-hosted-ui-experience"></a>Konfigurace prostředí hostovaného uživatelského rozhraní
 
-Vlastní vyhledávání Bingu poskytuje hostované uživatelské rozhraní, které můžete snadno integrovat do webových stránek a webových aplikací jako fragment kódu jazyka JavaScript. Pomocí portálu pro vlastní vyhledávání Bingu, můžete konfigurovat rozložení, barvu a možnosti hledání uživatelského rozhraní.
+Vlastní vyhledávání Bingu poskytuje hostované uživatelské rozhraní, které můžete snadno integrovat do webových stránek a webových aplikací jako fragment kódu JavaScriptu. Pomocí portálu Vlastní vyhledávání Bingu můžete nakonfigurovat možnosti rozložení, barvy a hledání uživatelského rozhraní.
 
 
 
-## <a name="configure-the-custom-hosted-ui"></a>Konfigurace vlastního prostředí uživatelského rozhraní
+## <a name="configure-the-custom-hosted-ui"></a>Konfigurace vlastního hostovaného uživatelského rozhraní
 
-Ke konfiguraci prostředí uživatelského rozhraní pro vaše webové aplikace, postupujte podle těchto kroků. Při provádění změn, v podokně na pravé straně vám poskytne vaše uživatelské rozhraní ve verzi preview. Zobrazené výsledky nejsou skutečné výsledky pro vaši instanci.
+Pokud chcete nakonfigurovat hostované uživatelské rozhraní pro vaše webové aplikace, postupujte podle těchto kroků. Při provádění změn vám podokno na pravé straně poskytne náhled uživatelského rozhraní. Zobrazené výsledky hledání nejsou aktuálními výsledky pro vaši instanci.
 
-1. Přihlaste se k vlastní vyhledávání Bingu [portál](https://customsearch.ai).  
+1. Přihlaste se k [portálu](https://customsearch.ai)vlastní vyhledávání Bingu.  
   
-2. Vyberte instanci vlastního vyhledávání Bingu.
+2. Vyberte instanci Vlastní vyhledávání Bingu.
 
 3. Klikněte na kartu **Hostované uživatelské rozhraní**.  
   
@@ -37,30 +37,30 @@ Ke konfiguraci prostředí uživatelského rozhraní pro vaše webové aplikace,
 
     |  |  |
     |---------|---------|
-    |Panel hledání a výsledky (výchozí)    | Zobrazí vyhledávací pole s výsledky hledání pod ní.         |
-    |Pouze výsledky     | Zobrazí pouze výsledky hledání bez vyhledávací pole. Při použití toto rozložení, je nutné zadat vyhledávací dotaz (`&q=<query string>`). Přidáte parametr dotazu na adresu URL požadavku na fragment kódu jazyka JavaScript nebo koncový bod odkazu HTML.        |
-    |Pop-over     | Poskytuje vyhledávací pole a zobrazí výsledky hledání v posuvné překrytí.        |
+    |Panel hledání a výsledky (výchozí)    | Zobrazí vyhledávací pole s výsledky hledání pod ním.         |
+    |Pouze výsledky     | Zobrazí pouze výsledky hledání bez vyhledávacího pole. Při použití tohoto rozložení je nutné zadat vyhledávací dotaz (`&q=<query string>`). Přidejte parametr dotazu do adresy URL požadavku ve fragmentu kódu JavaScriptu nebo odkaz na koncový bod HTML.        |
+    |Překryvný     | Poskytuje vyhledávací pole a zobrazuje výsledky hledání v klouzavém překrytí.        |
     
-5. Vyberte barevný motiv. Můžete také přizpůsobit barvy podle vaší aplikace kliknutím **vlastní motiv**. Chcete-li změnit barvu, zadejte hodnotu barvy RGB HEX (například `#366eb8`), nebo klikněte na barvu ve verzi preview.
+5. Vyberte barevný motiv. Barvy můžete přizpůsobit tak, aby odpovídaly vaší aplikaci, kliknutím na **Přizpůsobit motiv**. Chcete-li změnit barvu, buď zadejte hexadecimální hodnotu RGB barvy (například `#366eb8`), nebo klikněte na Náhled barvy.
 
-   Můžete zobrazit náhled změn můžete zobrazit na pravé straně portálu. Kliknutím na **obnovit výchozí** se vrátit změny k výchozí barvy pro vybraný motiv.
+   Můžete zobrazit náhled změn na pravé straně portálu. Kliknutím na **obnovit do výchozího nastavení** dojde k vrácení změn na výchozí barvy pro vybraný motiv.
 
    > [!NOTE]
-   > Při výběru barvy, zvažte usnadnění přístupu.
+   > Při volbě barev zvažte přístupnost.
 
-6. V části **další konfigurace**, zadejte hodnoty jako vhodná pro vaši aplikaci. Tato nastavení jsou volitelná. Efekt použití nebo odstranění najdete v tématu podokno náhledu na pravé straně. Výběr dostupných možností konfigurace jsou:  
+6. V části **Další konfigurace**zadejte odpovídající hodnoty pro vaši aplikaci. Tato nastavení jsou volitelná. Pokud chcete zobrazit efekt použití nebo odebrání, přečtěte si v podokně náhledu na pravé straně. K dispozici jsou následující možnosti konfigurace:  
 
-7. Zadejte klíč předplatného vyhledávání nebo si vybrat jednoho z rozevíracího seznamu. V rozevíracím seznamu se vyplní klíčů z předplatného účtu Azure. Zobrazit [účet rozhraní API služeb Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account).  
+7. Zadejte klíč předplatného hledání nebo ho vyberte v rozevíracím seznamu. Rozevírací seznam se naplní klíči z předplatných vašeho účtu Azure. Viz [Cognitive Services účet rozhraní API](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account).  
 
-8. Pokud jste nepovolili automatické návrhy, zadejte klíč předplatného pro automatické návrhy nebo si vybrat jednoho z rozevíracího seznamu. V rozevíracím seznamu se vyplní klíčů z předplatného účtu Azure. Funkci vlastních automatických návrhů vyžaduje úroveň konkrétní předplatné, najdete v článku [ceny](https://azure.microsoft.com/pricing/details/cognitive-services/bing-custom-search/).
+8. Pokud jste povolili automatické návrhy, zadejte klíč předplatného pro automatické návrhy nebo ho vyberte z rozevíracího seznamu. Rozevírací seznam se naplní klíči z předplatných vašeho účtu Azure. Vlastní Automatický návrh vyžaduje konkrétní úroveň předplatného, viz [ceny](https://azure.microsoft.com/pricing/details/cognitive-services/bing-custom-search/).
 
 [!INCLUDE [publish or revert](./includes/publish-revert.md)]
 
-## <a name="consume-custom-ui"></a>Využívat vlastního uživatelského rozhraní
+## <a name="consume-custom-ui"></a>Využití vlastního uživatelského rozhraní
 
-Hostované uživatelského rozhraní, využívat buď: 
+Pro využití hostovaného uživatelského rozhraní: 
 
-- Zahrnout skriptu webové stránky  
+- Zahrnutí skriptu do webové stránky  
   
   ```html
   <html>
@@ -73,95 +73,95 @@ Hostované uživatelského rozhraní, využívat buď:
   </html>
   ```
 
-- Nebo můžete použít následující adresu URL ve webovém prohlížeči.   
+- Nebo použijte následující adresu URL ve webovém prohlížeči.   
   
   `https://ui.customsearch.ai/hosted?customConfig=YOUR-CUSTOM-CONFIG-ID`  
   
   > [!NOTE]
-  > Přidejte následující parametry dotazu k adrese URL podle potřeby. Informace o těchto parametrech naleznete v tématu [rozhraní API pro vlastní vyhledávání](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#query-parameters) odkaz.
+  > Podle potřeby přidejte do adresy URL následující parametry dotazu. Informace o těchto parametrech naleznete v tématu [rozhraní API pro vlastní vyhledávání](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#query-parameters) reference.
   >
   > - q
   > - mkt
-  > - safesearch
+  > - bezpečné hledání
   > - setlang
 
   > [!IMPORTANT]
-  > Na stránce nelze zobrazit zásady ochrany osobních údajů nebo jiné oznámení a podmínky. Vhodnosti pro používání se můžou lišit.  
+  > Stránka nemůže zobrazit vaše prohlášení o zásadách ochrany osobních údajů ani jiné oznámení a výrazy. Vhodnost pro vaše použití se může lišit.  
 
-Další informace, včetně vaší vlastní ID konfigurace, přejděte na **koncové body** pod **produkční** kartu.
+Další informace, včetně vlastního ID konfigurace, najdete v části **koncové body** na kartě **Výroba** .
 
 ## <a name="configuration-options"></a>Možnosti konfigurace
 
-Můžete provádět konfiguraci chování hostované uživatelském rozhraní kliknutím **další konfigurace**a poskytování hodnoty. Tato nastavení jsou volitelná. Efekt použití nebo odstranění najdete v tématu podokno náhledu na pravé straně. 
+Chování hostovaného uživatelského rozhraní můžete nakonfigurovat kliknutím na **Další konfigurace**a zadáním hodnot. Tato nastavení jsou volitelná. Pokud chcete zobrazit efekt použití nebo odebrání, přečtěte si v podokně náhledu na pravé straně. 
 
-### <a name="web-search-configurations"></a>Konfigurace webového vyhledávání
+### <a name="web-search-configurations"></a>Konfigurace hledání na webu
 
 |  |  |
 |---------|---------|
-|Výsledky z webu povolen    | Určuje, zda je povoleno pro vyhledávání na webu (zobrazí se karta Web v horní části stránky)        |
-|Povolit pro automatické návrhy     | Určuje Pokud vlastních automatických návrhů je povoleno (viz [ceny](https://azure.microsoft.com/pricing/details/cognitive-services/bing-custom-search/) jakýchkoli dalších nákladů).        |
-|Webových výsledků na stránku    | Počet výsledků hledání webových zobrazíte najednou (maximální délka je 50 výsledků na stránku).        |
-|Popisek obrázku   | Určuje, zda Image se zobrazí s výsledky hledání.|
+|Webové výsledky povoleny    | Určuje, zda je povoleno vyhledávání na webu (v horní části stránky se zobrazí karta web).        |
+|Povolit automatické návrhy     | Určuje, jestli je povolený vlastní Automatický návrh (viz [ceny](https://azure.microsoft.com/pricing/details/cognitive-services/bing-custom-search/) za další náklady).        |
+|Webové výsledky na stránce    | Počet výsledků hledání na webu, které se mají zobrazit v čase (maximální počet je 50 výsledků na stránku).        |
+|Titulek obrázku   | Určuje, zda se zobrazí obrázky s výsledky hledání.|
 
 
-Následující konfigurace se zobrazí, pokud kliknete **Zobrazit pokročilou konfiguraci**:
+Pokud kliknete na **Zobrazit pokročilé konfigurace**, zobrazí se následující konfigurace:
 
 
 |  | |
 |---------|---------|
-|Zvýrazňovat slova     | Určuje, zda se zobrazí výsledky s hledané termíny tučným písmem.         |
-|Cíl odkazu    |  Určuje, pokud webová stránka se otevře na nové kartě prohlížeče (prázdné) nebo na stejné kartě prohlížeče (vlastní) po kliknutí na výsledek hledání.        |
+|Zvýrazňovat slova     | Určuje, zda jsou zobrazeny výsledky s vyhledávanými výrazy tučným písmem.         |
+|Cíl propojení    |  Určuje, zda se webová stránka otevře na nové kartě prohlížeče (prázdné) nebo na stejné kartě prohlížeče (samo), když uživatel klikne na výsledek hledání.        |
 
 ### <a name="image-search-configurations"></a>Konfigurace hledání obrázků
 
 | | |
 |---------|---------|
-|Výsledky hledání obrázků, které jsou povolené     | Určuje, zda je povoleno pro vyhledávání obrázků (zobrazí se kartu Image v horní části stránky).            |
-|Obrázek výsledků na stránku     | Počet výsledků hledání obrázek zobrazíte v čase (maximální počet je 150 výsledků na stránku).          |
+|Výsledky obrázků povoleny     | Určuje, zda je povoleno vyhledávání obrázků (v horní části stránky se zobrazí karta obrázky).            |
+|Výsledky obrázků na stránku     | Počet výsledků hledání obrázků, které se mají zobrazit v čase (maximální počet je 150 výsledků na stránku).          |
 
-Následující konfigurace se zobrazí, pokud kliknete **Zobrazit pokročilou konfiguraci**.  
+Pokud kliknete na **Zobrazit pokročilé konfigurace**, zobrazí se následující konfigurace.  
   
 | | |
 |---------|---------|
-| Povolení filtrů     | Přidá filtry, které uživatel může použít k filtrování imagí, které Bing vrátí. Uživatel například můžete filtrovat výsledky pro pouze animované Gify.|
+| Povolit filtry     | Přidá filtry, které může uživatel použít k filtrování imagí, které Bing vrátí. Uživatel může například filtrovat výsledky pouze pro animované soubory GIF.|
 
-### <a name="video-search-configurations"></a>Konfigurace pro vyhledávání videí
+### <a name="video-search-configurations"></a>Konfigurace hledání videí
 
 |  | |
 |---------|---------|
-|Povolené výsledky videa.     | Určuje, zda je povoleno pro vyhledávání videí (zobrazí se karta videa v horní části stránky).           |
-|Video výsledků na stránku   | Počet výsledků hledání videí k zobrazení v čase (maximální počet je 150 výsledků na stránku).        |
+|Výsledky videa povoleny     | Určuje, zda je povoleno vyhledávání videí (v horní části stránky se zobrazí karta videa).           |
+|Výsledky videa na stránce   | Počet výsledků hledání videí, které se mají zobrazit v čase (maximální počet je 150 výsledků na stránku).        |
 
-Následující konfigurace se zobrazí, pokud kliknete **Zobrazit pokročilou konfiguraci**.  
+Pokud kliknete na **Zobrazit pokročilé konfigurace**, zobrazí se následující konfigurace.  
   
 |  | |
 |---------|---------|
-|Povolení filtrů    | Přidá filtry, které uživatel může použít k filtrování videa, která vrátí Bingu. Uživatele můžete například filtrovat výsledky pro videa pomocí konkrétního řešení nebo videa zjištěné za posledních 24 hodin.          |
+|Povolit filtry    | Přidá filtry, které může uživatel použít k filtrování videí, které Bing vrátí. Uživatel může například filtrovat výsledky videí pomocí konkrétního řešení nebo videí zjištěných za posledních 24 hodin.          |
 
 ### <a name="miscellaneous-configurations"></a>Různé konfigurace
 
 
 | |  |
 |---------|---------|
-|Nadpis stránky   | Text zobrazený v nadpisu stránka výsledků hledání (ne pro rozložení přes pop).        |
-|Panel nástrojů motiv    | Určuje barvu pozadí oblasti názvu stránku výsledků hledání. |
+|Název stránky   | Text zobrazený v oblasti nadpisu na stránce s výsledky hledání (ne pro rozložení překryvných oken)        |
+|Motiv panelu nástrojů    | Určuje barvu pozadí oblasti nadpisu stránky výsledků hledání. |
 
-Následující konfigurace se zobrazí, pokud kliknete **Zobrazit pokročilou konfiguraci**.  
+Pokud kliknete na **Zobrazit pokročilé konfigurace**, zobrazí se následující konfigurace.  
 
 |Sloupec1  |Column2  |
 |---------|---------|
-|Zástupný text pole hledání   | Text zobrazený ve vyhledávání předchozí pole k zadání.        |
-|Adresa url odkazu na nadpis    |Cíl pro název odkazu.         |
-|Adresa URL loga     | Obrázek zobrazený vedle názvu.         |
-|Favicon    | Ikona zobrazovaná ve výsledcích záhlaví okna prohlížeče.          |
+|Zástupný text pro text v poli hledání   | Text zobrazený v poli hledání před vstupem        |
+|Adresa URL odkazu na název    |Cíl odkazu na název         |
+|Adresa URL loga     | Obrázek zobrazený vedle názvu         |
+|Favicon    | Ikona zobrazená v záhlaví prohlížeče          |
 
-Následující konfigurace platí jenom v případě, že využívání rozhraní hostovaná prostřednictvím koncového bodu ve formátu HTML (nemohou být použity používáte javascriptový fragment kódu).
+Následující konfigurace platí pouze v případě, že používáte hostované uživatelské rozhraní prostřednictvím koncového bodu jazyka HTML (neplatí, pokud používáte fragment kódu JavaScriptu).
 
-- Nadpis stránky
-- Panel nástrojů motiv
-- Adresa URL odkazu na nadpis
+- Název stránky
+- Motiv panelu nástrojů
+- Adresa URL odkazu na název
 - Adresa URL loga
-- Faviicon URL  
+- Adresa URL Faviicon  
 
 ## <a name="next-steps"></a>Další postup
 

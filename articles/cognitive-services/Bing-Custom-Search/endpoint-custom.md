@@ -1,7 +1,7 @@
 ---
 title: Koncový bod Vlastního vyhledávání Bingu
-titlesuffix: Azure Cognitive Services
-description: Přehled rozhraní API pro vyhledávání Bingu vlastní koncový bod.
+titleSuffix: Azure Cognitive Services
+description: Souhrn rozhraní API pro vlastní vyhledávání Binguho koncového bodu
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,55 +10,55 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: aahi
-ms.openlocfilehash: bc33d65972e12591130389e0c3cb8697898d1da9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e3b544d8d655b653383cc999de233e2163433d85
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66390344"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68405071"
 ---
 # <a name="custom-search"></a>Vlastní vyhledávání
 Vlastní vyhledávání Bingu umožňuje vytvářet přizpůsobená vyhledávací prostředí pro témata, o která máte zájem. Uživatelům se budou zobrazovat výsledky hledání přizpůsobené obsahu, který je zajímá, a nebudou tak muset procházet výsledky hledání s irelevantním obsahem.
 
-## <a name="custom-search-endpoint"></a>Koncový bod pro vlastní vyhledávání
-Chcete-li získat výsledky pomocí rozhraní API pro vlastní vyhledávání Bingu, odeslat `GET` požadavek na následující koncový bod. Použijte k definování další specifikace hlaviček a parametrů adresy URL.
+## <a name="custom-search-endpoint"></a>Vlastní koncový bod hledání
+Chcete-li získat výsledky pomocí rozhraní API pro vlastní vyhledávání Bingu, odešlete `GET` požadavek do následujícího koncového bodu. K definování dalších specifikací použijte záhlaví a parametry URL.
 
-Koncový bod: Návrhy hledání vrátí jako výsledky JSON, které se týkají vstupu uživatele určené `?q=""`.
+Služba Vrátí návrhy hledání jako výsledky JSON, které jsou relevantní pro vstup uživatele definovaný pomocí `?q=""`.
 ```  
  GET https://api.cognitive.microsoft.com/bingcustomsearch/v7.0/search  
 ```
 
-Příklady, které popisují, jak vytvořit vlastní prohledávání zdrojů, najdete v článku [kurzu](https://docs.microsoft.com/azure/cognitive-services/bing-custom-search/tutorials/custom-search-web-page). Podrobnosti o záhlaví, parametry, kódy na trhu, objekty odpovědi, chyby dále, viz [API pro vlastní vyhledávání Bingu v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference) odkaz.
+Příklady, které popisují, jak nastavit vlastní zdroje vyhledávání, najdete v tomto [kurzu](https://docs.microsoft.com/azure/cognitive-services/bing-custom-search/tutorials/custom-search-web-page). Podrobnosti o hlavičkách, parametrech, kódech trhu, objektech odpovědí, chybách atd. naleznete v tématu [rozhraní API pro vlastní vyhledávání Bingu v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference) reference.
 
-## <a name="custom-search-response-json"></a>Vlastní vyhledávání odpověď JSON
-Žádost o vlastní hledání vrátí výsledky jako objekty JSON, naleznete v tématu [objekty odpovědi](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#response-objects). 
+## <a name="custom-search-response-json"></a>KÓD JSON odpovědi vlastního vyhledávání
+Vlastní požadavek na hledání vrátí výsledky jako objekty JSON, viz [objekty odezvy](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#response-objects). 
 
-## <a name="custom-autosuggest"></a>Vlastních automatických návrhů
-Rozhraní API pro automatické návrhy vlastní vám umožní odesílat hledaný termín dotazu do Bingu a seznam navrhovaných dotazů, jejichž konfigurací můžete získat zpět. Pomocí vlastních automatických návrhů přidejte návrhy vrácená rozhraním API a volitelně můžete zadat, jestli se má zahrnout návrhy generovaných Bingu.
+## <a name="custom-autosuggest"></a>Vlastní Automatický návrh
+Rozhraní API pro vlastní automatické návrhy vám umožní odeslat do Bingu výraz částečného vyhledávacího dotazu a získat zpět seznam navrhovaných dotazů, které můžete nakonfigurovat. S vlastním automatickým návrhem přidáte návrhy vracené rozhraním API a případně určíte, jestli se mají zahrnout návrhy vygenerované bingem.
 
 ## <a name="custom-autosuggest-endpoint"></a>Vlastní koncový bod pro automatické návrhy
-Požádat o vlastních dotazů, odeslat požadavek GET na:
+Pokud chcete požádat o vlastní návrhy dotazů, pošlete požadavek GET na:
 
 ```
 https://api.cognitive.microsoft.com/bingcustomsearch/v7.0/Suggestions
 ```  
 
-Informace o definování vlastního návrhy najdete v tématu [definovat vlastní vyhledávání návrhy](define-custom-suggestions.md).
+Informace o definování vlastních návrhů najdete v tématu [Definice vlastních návrhů vyhledávání](define-custom-suggestions.md).
 
-## <a name="custom-image-search"></a>Vlastní vyhledávání obrázků
-Rozhraní API pro vyhledávání obrázků vlastní umožňuje poslat dotaz vyhledávání Bingu a získat seznam určit prioritu relevantních obrázků z vaší instance vlastního vyhledávání.
+## <a name="custom-image-search"></a>Vlastní Vyhledávání obrázků
+Rozhraní API pro vlastní Vyhledávání obrázků umožňuje odeslat vyhledávací dotaz do Bingu a vrátit seznam relevantních imagí z vaší instance vlastního vyhledávání.
 
-## <a name="custom-image-search-endpoint"></a>Koncový bod vyhledávací vlastní Image
-K vyžádání imagí z vaší instance vlastního vyhledávání, odešlete požadavek GET na následující adresu URL:
+## <a name="custom-image-search-endpoint"></a>Vlastní koncový bod Vyhledávání obrázků
+Pokud chcete požádat o image z vlastní instance hledání, pošlete požadavek GET na následující adresu URL:
 
 ```
 https://api.cognitive.microsoft.com/bingcustomsearch/v7.0/images/search
 ```
 
-Informace o konfiguraci instanci vlastního vyhledávání najdete v tématu [nakonfigurovat prostředí pro vlastní vyhledávání](https://docs.microsoft.com/azure/cognitive-services/bing-custom-search/define-your-custom-view).
+Informace o konfiguraci vlastní instance vyhledávání najdete v tématu [Konfigurace vlastních možností vyhledávání](https://docs.microsoft.com/azure/cognitive-services/bing-custom-search/define-your-custom-view).
 
 ## <a name="next-steps"></a>Další postup
-**Bingu** rozhraní API podporují akce hledání, které vracejí výsledky podle jejich typu. Všechny koncové body hledání vrátí výsledky jako objekty JSON odpovědi.  Všechny koncové body podporují dotazy využívající vrátit konkrétní jazyk a/nebo umístění longitude, latitude a vyhledávání protokolu radius.
+Rozhraní API **Bing** podporují akce hledání, které vracejí výsledky podle jejich typu. Všechny koncové body hledání vrátí výsledky jako objekty odezvy JSON.  Všechny koncové body podporují dotazy, které vracejí konkrétní jazyk a umístění podle délky, zeměpisné šířky a poloměru hledání.
 
-Podrobnější informace o parametrech podporuje každý koncový bod najdete v referenčních stránkách pro jednotlivé typy.
-Příklady základní požadavky pomocí rozhraní API pro vlastní vyhledávání, najdete v článku [rychlé zprovoznění vlastního vyhledávání](https://docs.microsoft.com/azure/cognitive-services/bing-custom-search/)
+Úplné informace o parametrech podporovaných každým koncovým bodem naleznete na referenčních stránkách pro každý typ.
+Příklady základních požadavků využívajících rozhraní API pro vlastní vyhledávání najdete v tématu [rychlé zprovoznění vlastního vyhledávání](https://docs.microsoft.com/azure/cognitive-services/bing-custom-search/) .

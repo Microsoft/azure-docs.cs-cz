@@ -1,7 +1,7 @@
 ---
-title: Upgrade rozhraní API pro vyhledávání zpráv Bingu v5 pro v7
-titlesuffix: Azure Cognitive Services
-description: Identifikuje části aplikace, které je potřeba aktualizovat na použití verze 7.
+title: Upgrade rozhraní API Bingu pro vyhledávání zpráv V5 na v7
+titleSuffix: Azure Cognitive Services
+description: Určuje části aplikace, které je třeba aktualizovat, aby používaly verzi 7.
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
@@ -10,44 +10,44 @@ ms.subservice: bing-news-search
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: scottwhi
-ms.openlocfilehash: 235cc1c74c099a71d289d38369ebc10132564825
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1263e93b1e316cab4afb51cd828737a5bd087fed
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66383300"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68423842"
 ---
-# <a name="news-search-api-upgrade-guide"></a>Průvodce upgradem rozhraní API pro vyhledávání zpráv
+# <a name="news-search-api-upgrade-guide"></a>Průvodce upgradem rozhraní Vyhledávání zpráv API
 
-Tento průvodce upgradem identifikuje změny mezi verzí 5 a rozhraní API pro vyhledávání zpráv Bingu verze 7. Tento průvodce vám pomůže identifikovat části aplikace, které je potřeba aktualizovat na použití verze 7.
+Tento průvodce upgradem identifikuje změny mezi verzemi 5 a verze 7 rozhraní API Bingu pro vyhledávání zpráv. Tento průvodce vám pomůže identifikovat části aplikace, které potřebujete aktualizovat, aby používaly verzi 7.
 
 ## <a name="breaking-changes"></a>Změny způsobující chyby
 
 ### <a name="endpoints"></a>Koncové body
 
-- Číslo verze koncový bod se změní z v5 na v7. Například https://api.cognitive.microsoft.com/bing/ **v7.0**  /news/vyhledávání.
+- Číslo verze koncového bodu bylo změněno z verze 5 na v7. Například https://api.cognitive.microsoft.com/bing/ **v 7.0**/News/Search.
 
-### <a name="error-response-objects-and-error-codes"></a>Objekty odpovědi chyby a chybové kódy
+### <a name="error-response-objects-and-error-codes"></a>Objekty a chybové kódy pro odpověď na chybu
 
-- Všechny neúspěšné žádosti by teď měl obsahovat `ErrorResponse` objektu v textu odpovědi.
+- Všechny neúspěšné žádosti by nyní měly `ErrorResponse` obsahovat objekt v těle odpovědi.
 
-- Přidat následující pole `Error` objektu.  
-  - `subCode`&mdash;Oddíly kód chyby: do samostatných sad, tj. Pokud je to možné
-  - `moreDetails`&mdash;Další informace o chybě popsaných v `message` pole
+- Do `Error` objektu byla přidána následující pole.  
+  - `subCode`&mdash;Rozdělí kód chyby do diskrétních kontejnerů, pokud je to možné.
+  - `moreDetails`&mdash;Další informace o chybě popsané v `message` poli
 
-- Nahradí chybové kódy v5 následujícího `code` a `subCode` hodnoty.
+- Kódy chyb 5 nahradily následujícími možnými `code` hodnotami a. `subCode`
 
-|Kód|Podřízeného|Popis
+|Kód|Podřízeného kódu|Popis
 |-|-|-
-|ServerError|UnexpectedError<br/>ResourceError<br/>NotImplemented|Bing vrátí ServerError pokaždé, když dojde k některé z podmínek dílčí kód. Odpověď obsahuje tyto chyby, pokud je stavový kód HTTP 500.
-|InvalidRequest|ParameterMissing<br/>ParameterInvalidValue<br/>HttpNotAllowed<br/>Blokováno|Bing vrátí InvalidRequest pokaždé, když libovolnou část žádosti není platný. Například povinný parametr chybí nebo není platná hodnota parametru.<br/><br/>Pokud je chyba ParameterMissing nebo ParameterInvalidValue, je stavový kód HTTP 400.<br/><br/>Pokud je chyba HttpNotAllowed, stavový kód HTTP 410.
-|RateLimitExceeded||Bing vrátí RateLimitExceeded pokaždé, když překročíte dotazů za sekundu (QPS) nebo dotazů za měsíc (QPM) kvóty.<br/><br/>Bing vrátí stavový kód HTTP 429, pokud se překročí QPS a 403 překročení QPM.
-|InvalidAuthorization|AuthorizationMissing<br/>AuthorizationRedundancy|Bing vrátí InvalidAuthorization při Bingu se nemůže ověřit volající. Například `Ocp-Apim-Subscription-Key` záhlaví chybí nebo není platný klíč předplatného.<br/><br/>Redundance nastane, pokud zadáte více než jednu metodu ověřování.<br/><br/>Pokud je chyba InvalidAuthorization, je stavový kód HTTP 401.
-|InsufficientAuthorization|AuthorizationDisabled<br/>AuthorizationExpired|Bing vrátí InsufficientAuthorization volající nemá oprávnění k přístupu k prostředku. Tato situace může nastat, pokud klíč předplatného se zakázalo, nebo vypršela platnost. <br/><br/>Pokud je chyba InsufficientAuthorization, je stavový kód HTTP 403.
+|ServerError|UnexpectedError<br/>ResourceError<br/>Neimplementováno|Bing vrátí ServerError vždy, když dojde ke kterékoli z podmínek dílčího kódu. Odpověď zahrnuje tyto chyby, pokud je stavový kód HTTP 500.
+|InvalidRequest|ParameterMissing<br/>ParameterInvalidValue<br/>HttpNotAllowed<br/>Blokováno|Bing vrátí InvalidRequest, pokud jakákoli část požadavku není platná. Například povinný parametr chybí nebo hodnota parametru není platná.<br/><br/>Pokud se jedná o chybu ParameterMissing nebo ParameterInvalidValue, kód stavu HTTP je 400.<br/><br/>Pokud je chyba HttpNotAllowed, kód stavu HTTP 410.
+|RateLimitExceeded||Bing vrátí RateLimitExceeded vždy, když překročíte kvótu dotazů za sekundu (QPS) nebo dotazů za měsíc (QPM).<br/><br/>Bing vrátí stavový kód HTTP 429, pokud jste překročili QPS a 403, pokud jste překročili QPM.
+|InvalidAuthorization|AuthorizationMissing<br/>AuthorizationRedundancy|Bing vrátí InvalidAuthorization, když Bing nemůže ověřit volajícího. `Ocp-Apim-Subscription-Key` Hlavička například chybí nebo klíč předplatného není platný.<br/><br/>Redundance probíhá, pokud zadáte více než jednu metodu ověřování.<br/><br/>Pokud je chyba InvalidAuthorization, kód stavu HTTP je 401.
+|InsufficientAuthorization|AuthorizationDisabled<br/>AuthorizationExpired|Bing vrátí InsufficientAuthorization, pokud volající nemá oprávnění pro přístup k prostředku. Tato situace může nastat, pokud byl klíč předplatného zakázán nebo vypršela jeho platnost. <br/><br/>Pokud je chyba InsufficientAuthorization, kód stavu HTTP je 403.
 
-- Následující mapuje předchozích kódů chyb nové kódy. Pokud jste pořídili závislost na kódy chyb v5, aktualizujte svůj kód odpovídajícím způsobem.
+- Následující kód namapuje předchozí chybové kódy na nové kódy. Pokud jste se seznámili s kódy chyb V5, aktualizujte odpovídající kód.
 
-|Kód verze 5|Verze 7 code.subCode
+|Kód verze 5|Kód verze 7. Subcode
 |-|-
 |RequestParameterMissing|InvalidRequest.ParameterMissing
 RequestParameterInvalidValue|InvalidRequest.ParameterInvalidValue
@@ -55,39 +55,39 @@ ResourceAccessDenied|InsufficientAuthorization
 ExceededVolume|RateLimitExceeded
 ExceededQpsLimit|RateLimitExceeded
 Zakázáno|InsufficientAuthorization.AuthorizationDisabled
-UnexpectedError|ServerError.UnexpectedError
-DataSourceErrors|ServerError.ResourceError
+UnexpectedError|ServerError. UnexpectedError
+DataSourceErrors|ServerError. ResourceError
 AuthorizationMissing|InvalidAuthorization.AuthorizationMissing
 HttpNotAllowed|InvalidRequest.HttpNotAllowed
 UserAgentMissing|InvalidRequest.ParameterMissing
-NotImplemented|ServerError.NotImplemented
+Neimplementováno|ServerError. NotImplemented
 InvalidAuthorization|InvalidAuthorization
 InvalidAuthorizationMethod|InvalidAuthorization
 MultipleAuthorizationMethod|InvalidAuthorization.AuthorizationRedundancy
 ExpiredAuthorizationToken|InsufficientAuthorization.AuthorizationExpired
 InsufficientScope|InsufficientAuthorization
-Blokováno|InvalidRequest.Blocked
+Blokováno|InvalidRequest. Block
 
 ### <a name="object-changes"></a>Změny objektu
 
-- Přidá `contractualRules` pole [NewsArticle](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#newsarticle) objektu. `contractualRules` Pole obsahuje seznam pravidel, které je třeba dodržovat (například attribution článku). Přidělení podle musíte použít `contractualRules` namísto použití `provider`. Tento článek obsahuje `contractualRules` pouze tehdy, když [webové rozhraní API pro vyhledávání](../bing-web-search/search-the-web.md) odpověď obsahuje odpovědi na zprávy.
+- Pole se přidalo do objektu [NewsArticle.](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#newsarticle) `contractualRules` `contractualRules` Pole obsahuje seznam pravidel, která je nutné dodržovat (například přidělení článku). `contractualRules` Místo použití`provider`musíte použít zadané přidělení. Článek obsahuje `contractualRules` jenom v případě, že odpověď [vyhledávání na webu API](../bing-web-search/search-the-web.md) obsahuje odpověď na zprávy.
 
-## <a name="non-breaking-changes"></a>Nevýznamných změn
+## <a name="non-breaking-changes"></a>Neprůlomové změny
 
 ### <a name="query-parameters"></a>Parametry dotazu
 
-- Přidat produkty jako možná hodnota, která můžete nastavit [kategorie](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#category) parametr do dotazu. Zobrazit [kategorie trhy](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference).
+- Přidání produktů jako možné hodnoty, pro kterou můžete nastavit parametr dotazu [kategorie](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#category) . Podívejte se [na kategorie podle trhů](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference).
 
-- Přidá [SortBy](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#sortby) parametr dotazu, který vrátí seřazené podle data poslední prvních populárních témat.
+- Byl přidán parametr dotazu [sortby](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#sortby) , který vrátí témata pro trend seřazená podle data s nejnovějším prvním.
 
-- Přidá [od](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#since) parametr dotazu, které vrací populárních tématech, které byly zjištěny bingem na nebo za zadané časové razítko epocha Unix.
+- Přidal se parametr [od](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#since) parametru Query, který vrátí témata trendů zjištěná bingem na nebo po zadaném časovém razítku epocha systému UNIX.
 
 ### <a name="object-changes"></a>Změny objektu
 
-- Přidá `mentions` pole [NewsArticle](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#newsarticle) objektu. `mentions` Pole obsahuje seznam entit (osoby nebo místa), které nebyly nalezeny v následujícím článku.
+- Pole se přidalo do objektu [NewsArticle.](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#newsarticle) `mentions` `mentions` Pole obsahuje seznam entit (osob nebo míst), které byly nalezeny v článku.
 
-- Přidá `video` pole [NewsArticle](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#newsarticle) objektu. `video` Pole obsahuje video, které souvisí s zpravodajskému článku. Video je buď \<iframe\> , které můžete vložit nebo miniaturu pohybu.
+- Pole se přidalo do objektu [NewsArticle.](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#newsarticle) `video` `video` Pole obsahuje video, které se vztahuje k článku příspěvky. Video je buď \<prvek IFRAME\> , který můžete vložit nebo miniaturu pohybu.
 
-- Přidá `sort` pole [zpráv](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#news) objektu. `sort` Pole zobrazuje pořadí řazení článků. Například články jsou seřazené podle závažnosti (výchozí) nebo data.
+- Pole bylo přidáno do objektu [News.](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#news) `sort` V `sort` poli se zobrazí pořadí řazení článků. Například články jsou seřazené podle relevance (výchozí) nebo data.
 
-- Přidá [SortValue](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#sortvalue) objektu, který definuje pořadí řazení. `isSelected` Pole označuje, zda odpovědi používá pořadí řazení. Pokud **true**, odpověď používá pořadí řazení. Pokud `isSelected` je **false**, můžete použít na adresu URL v `url` pole, které chcete požádat o jiné pořadí řazení.
+- Byl přidán objekt [SortValue](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#sortvalue) , který definuje pořadí řazení. `isSelected` Pole označuje, zda odpověď použila pořadí řazení. Je-li **nastavena hodnota true**, odpověď použila pořadí řazení. Pokud `isSelected` je **hodnota false**, můžete použít adresu URL v `url` poli pro vyžádání jiného pořadí řazení.

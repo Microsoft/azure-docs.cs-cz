@@ -1,42 +1,42 @@
 ---
-title: Odesílání a pomocí místní firmy hledání rozhraní API Bingu pro dotazy a odpovědi | Dokumentace Microsoftu
+title: Odesílání a používání dotazů a odpovědí v rozhraní API Bingu pro vyhledávání místních obchodních hledání
 titleSuffix: Azure Cognitive Services
-description: Pomocí tohoto článku se naučíte odeslat a pomocí vyhledávacích dotazů místní firmy API pro vyhledávání Bingu.
+description: V tomto článku se dozvíte, jak odesílat a používat vyhledávací dotazy pomocí rozhraní API Bingu pro vyhledávání v místním obchodu.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
-ms.topic: article
+ms.topic: quickstart
 ms.date: 06/26/2018
 ms.author: rosh
-ms.openlocfilehash: cf622f658208ab85fe0a0670a0e034bd58a5047d
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: 5a26324f22ed46d0c06ecb0eb7ecaf74f589051e
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67849938"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68423439"
 ---
-# <a name="sending-and-using-bing-local-business-search-api-queries-and-responses"></a>Odesílání a pomocí místní firmy hledání rozhraní API Bingu pro dotazy a odpovědi
+# <a name="sending-and-using-bing-local-business-search-api-queries-and-responses"></a>Odesílání a používání dotazů a odpovědí v rozhraní API Bingu pro vyhledávání místních obchodních hledání
 
-Výsledky místního můžete získat z místní firmy hledání rozhraní API Bingu odesílání vyhledávací dotaz pro svůj koncový bod a včetně `Ocp-Apim-Subscription-Key` hlavičky, která je povinný. Spolu s dostupné [záhlaví](local-search-reference.md#headers) a [parametry](local-search-reference.md#query-parameters), vyhledávání můžete přizpůsobit tak, že zadáte [geografické hranice](specify-geographic-search.md) pro oblasti pro hledání a [kategorie](local-search-query-response.md) míst vrátila.
+Místní výsledky můžete získat z rozhraní API pro místní vyhledávání Bingu, a to tak, že odešlete vyhledávací dotaz na `Ocp-Apim-Subscription-Key` jeho koncový bod a zahrnete do něj hlavičku, která je povinná. Spolu s dostupnými [hlavičkami](local-search-reference.md#headers) a [parametry](local-search-reference.md#query-parameters)můžete vyhledávat pomocí geografických [hranic](specify-geographic-search.md) pro oblast, která má být prohledána, a [kategorií](local-search-query-response.md) vrácených míst.
 
 ## <a name="creating-a-request"></a>Vytvoření žádosti
 
-Chcete-li odeslat požadavek místní firmy API pro vyhledávání Bingu, přidejte hledaný termín pro `q=` parametr před přidáním do koncového bodu rozhraní API a včetně `Ocp-Apim-Subscription-Key` záhlaví. Příklad:
+Pokud chcete poslat požadavek do rozhraní API služby Bing pro vyhledávání v místním obchodu, před přidáním ho `q=` do koncového bodu rozhraní API přidejte hledaný termín a `Ocp-Apim-Subscription-Key` včetně hlavičky. Příklad:
 
 `https://api.cognitive.microsoft.com/bing/localbusinesses/v7.0/search?q=restaurant+in+Bellevue`
 
-Úplná syntaxe adresy URL je uveden níže. Zobrazit místní firmy hledání rozhraní API Bingu [rychlých startů](quickstarts/local-quickstart.md)a referenční obsah pro [záhlaví](local-search-reference.md#headers) a [parametry](local-search-reference.md#query-parameters) Další informace o odesílání požadavků. 
+Úplná syntaxe adresy URL požadavku je uvedena níže. Další informace o odesílání požadavků najdete v tématu [rychlý Start](quickstarts/local-quickstart.md)k rozhraní API Bingu pro vyhledávání místních obchodních funkcí a referenční obsah pro [záhlaví](local-search-reference.md#headers) a [parametry](local-search-reference.md#query-parameters) . 
 
-Informace o kategoriích místní hledání, najdete v části [hledat kategorie pro místní obchodní hledání rozhraní API Bingu](local-categories.md).
+Informace o místních kategoriích vyhledávání najdete v tématu [kategorie hledání pro rozhraní API Bingu pro vyhledávání místních obchodních aplikací](local-categories.md).
 
 ```
 https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search[?q][&localCategories][&cc][&mkt][&safesearch][&setlang][&count][&first][&localCircularView][&localMapView]
 ```
 
-## <a name="using-responses"></a>Pomocí odpovědí
+## <a name="using-responses"></a>Použití odpovědí
 
-Obsahují odpověďmi ve formátu JSON z místní firmy hledání rozhraní API Bingu `SearchResponse` objektu. Rozhraní API vrátí relevantní výsledky vyhledávání v `places` pole. Pokud se nenajdou žádné výsledky, `places` pole nebudou zahrnuty v odpovědi.
+Odpovědi JSON z rozhraní API služby Bing pro vyhledávání v místním `SearchResponse` obchodu obsahují objekt. Rozhraní API vrátí relevantní výsledky hledání v `places` poli. Pokud nejsou nalezeny žádné výsledky, `places` pole nebude zahrnuto do odpovědi.
 
 [!INCLUDE [cognitive-services-bing-url-note](../../../includes/cognitive-services-bing-url-note.md)]
 
@@ -51,29 +51,29 @@ Obsahují odpověďmi ve formátu JSON z místní firmy hledání rozhraní API 
 . . . 
 ```
 
-### <a name="search-result-attributes"></a>Atributy výsledek vyhledávání
+### <a name="search-result-attributes"></a>Atributy výsledků hledání
 
-Výsledky JSON vrácená rozhraním API obsahovat následující atributy:
+Výsledky JSON vracené rozhraním API obsahují tyto atributy:
 
 * _type
-* Adresa
+* adresa
 * entityPresentationInfo
 * geo
 * id
 * name
 * routeablePoint
-* Telefon
+* Link
 * url
 
-Obecné informace o záhlaví, parametry, kódy na trhu, objekty odpovědi, chyby dále, viz [místní API pro vyhledávání Bingu v7](local-search-reference.md) odkaz.
+Obecné informace o hlavičkách, parametrech, kódech trhu, objektech odpovědí, chybách atd. najdete v referenčních informacích k [rozhraní API Bingu pro vyhledávání v7](local-search-reference.md) .
 
 > [!NOTE]
-> Jste nebo třetích stran vaším jménem nemusí použít, zachovat, ukládat, ukládat do mezipaměti, sdílet, nebo distribuovat všechna data z místní rozhraní Search API pro účely testování, vývoje, školení, distribuci nebo zpřístupnění službám jiných společností než Microsoft nebo funkce. 
+> Vy nebo třetí strana vaším jménem nesmíte k testování, vývoji, školení, distribuci nebo zpřístupnění jakékoli služby nebo funkce od Microsoftu používat, uchovávat, ukládat, ukládat do mezipaměti, sdílet ani distribuovat žádná data z rozhraní API místního vyhledávání. 
 
 
-## <a name="example-json-response"></a>Příklad JSON odpovědi
+## <a name="example-json-response"></a>Příklad odpovědi JSON
 
-Následující odpověď JSON obsahuje výsledky hledání určenými v dotazu `?q=restaurant+in+Bellevue`.
+Následující odpověď JSON obsahuje výsledky hledání zadané dotazem `?q=restaurant+in+Bellevue`.
 
 ```json
 Vary: Accept-Encoding
@@ -146,7 +146,7 @@ Expires: Tue, 16 Oct 2018 16:25:15 GMT
 
 
 ## <a name="next-steps"></a>Další postup
-- [Rychlý start místní firmy vyhledávání](quickstarts/local-quickstart.md)
-- [Rychlý start místní firmy hledání Java](quickstarts/local-search-java-quickstart.md)
-- [Rychlý start místní uzel hledat firmy](quickstarts/local-search-node-quickstart.md)
-- [Rychlý start místní firmy hledání Pythonu](quickstarts/local-search-python-quickstart.md)
+- [Rychlý start hledání místních obchodních obchodů](quickstarts/local-quickstart.md)
+- [Rychlý Start pro místní vyhledávání v jazyce Java](quickstarts/local-search-java-quickstart.md)
+- [Rychlý Start uzlu místního hledání firmy](quickstarts/local-search-node-quickstart.md)
+- [Rychlý Start pro místní vyhledávání v Pythonu](quickstarts/local-search-python-quickstart.md)

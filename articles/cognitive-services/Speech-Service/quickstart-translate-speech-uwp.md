@@ -1,39 +1,38 @@
 ---
-title: 'Rychlý start: Překlad řeči, C# (UPW) – hlasové služby'
+title: 'Rychlý start: Přeložit Speech, C# (UWP) – hlasové služby'
 titleSuffix: Azure Cognitive Services
-description: V tomto rychlém startu vytvoříte jednoduchou aplikaci univerzální platformy Windows (UPW) zaznamenat uživatelské řeči, přeloží ji do jiného jazyka a panelem text do příkazového řádku. Tato příručka je určená pro uživatele Windows.
+description: V tomto rychlém startu vytvoříte jednoduchou aplikaci Univerzální platforma Windows (UWP) pro zachycení uživatelského řeči, překladu na jiný jazyk a výstup textu do příkazového řádku. Tato příručka je určená pro uživatele Windows.
 services: cognitive-services
-author: wolfma61
+author: lisaweixu
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.topic: quickstart
-ms.date: 07/05/2019
+ms.date: 07/23/2019
 ms.author: erhopf
-ms.openlocfilehash: 108edfeb7bfe24184219e0011f054c36c22c9890
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: dafcbd6bbe7f542d4eabc6b7cf858ac4871caae8
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67602773"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68404900"
 ---
-# <a name="quickstart-translate-speech-with-the-speech-sdk-for-c-uwp"></a>Rychlý start: Překlad řeči se sadou SDK pro řeč pro C# (UPW)
+# <a name="quickstart-translate-speech-with-the-speech-sdk-for-c-uwp"></a>Rychlý start: Převod řeči pomocí sady Speech SDK pro C# (UWP)
 
-Rychlí průvodci jsou také k dispozici pro [speech to text](quickstart-csharp-uwp.md), [převod textu na řeč](quickstart-text-to-speech-csharp-uwp.md) a [virtuálních asistentů hlasové první](quickstart-virtual-assistant-csharp-uwp.md).
+K dispozici jsou také rychlé starty pro [Převod řeči na text](quickstart-csharp-uwp.md), pro [Převod textu na řeč](quickstart-text-to-speech-csharp-uwp.md) a pro [hlasový vstup](quickstart-virtual-assistant-csharp-uwp.md).
 
-V tomto rychlém startu vytvoříte jednoduchou aplikaci univerzální platformy Windows (UPW), který zachycuje uživatele řeči z vašeho počítače mikrofonu, přeloží řeč a transcribes přeložený text do příkazového řádku v reálném čase. Tato aplikace je navržen pro spouštění na Windows 64-bit a využívá rozhraní [balíček NuGet sady SDK pro řeč](https://aka.ms/csspeech/nuget) a Microsoft Visual Studio 2017.
+V tomto rychlém startu vytvoříte jednoduchou aplikaci Univerzální platforma Windows (UWP), která zachycuje řeč uživatele z mikrofonu vašeho počítače, převede řeč a transcribes přeložený text do příkazového řádku v reálném čase. Tato aplikace je určená ke spuštění v 64 Windows a je sestavená pomocí [balíčku NuGet sady Speech SDK](https://aka.ms/csspeech/nuget) a Microsoft Visual Studio 2017.
 
-Úplný seznam jazyků, které jsou k dispozici pro překlad řeči, naleznete v tématu [jazykovou podporu](language-support.md).
+Úplný seznam jazyků dostupných pro překlad řeči najdete v tématu [Podpora jazyků](language-support.md).
 
 > [!NOTE]
-> UPW umožňuje vyvíjet aplikace, které běží na všech zařízeních, která podporuje Windows 10, včetně počítačů, Xbox, Surface Hubu a dalších zařízení.
+> UWP vám umožní vyvíjet aplikace, které běží na jakémkoli zařízení s podporou Windows 10, včetně počítačů, Xbox, Surface Hub a dalších zařízení.
 
 ## <a name="prerequisites"></a>Požadavky
 
 K tomuto rychlému startu potřebujete:
 
 * [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)
-* Klíč předplatného pro službu rozpoznávání řeči. [Získat zdarma](get-started.md).
+* Klíč předplatného Azure pro službu Speech Service. [Získejte je zdarma](get-started.md).
 
 ## <a name="create-a-visual-studio-project"></a>Vytvoření projektu ve Visual Studiu
 
@@ -41,7 +40,7 @@ K tomuto rychlému startu potřebujete:
 
 ## <a name="add-sample-code"></a>Přidání ukázkového kódu
 
-1. Uživatelské rozhraní aplikace je definované pomocí XAML. Otevřete `MainPage.xaml` v Průzkumníku řešení. V zobrazení návrháři XAML, vložte následující fragment kódu XAML mezi `<Grid>` a `</Grid>`.
+1. Uživatelské rozhraní aplikace je definované pomocí XAML. Otevřete `MainPage.xaml` v Průzkumníku řešení. V zobrazení jazyka XAML návrháře vložte následující fragment kódu XAML mezi `<Grid>` a. `</Grid>`
 
     [!code-xml[UI elements](~/samples-cognitive-services-speech-sdk/quickstart/speech-translation/csharp-uwp/helloworld/MainPage.xaml#StackPanel)]
 
@@ -76,9 +75,9 @@ K tomuto rychlému startu potřebujete:
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Prozkoumejte C# ukázky na Githubu](https://aka.ms/csspeech/samples)
+> [Prozkoumejte C# ukázky na GitHubu](https://aka.ms/csspeech/samples)
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také:
 
 - [Přizpůsobení akustických modelů](how-to-customize-acoustic-models.md)
 - [Přizpůsobení jazykových modelů](how-to-customize-language-model.md)

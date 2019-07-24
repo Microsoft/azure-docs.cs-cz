@@ -7,14 +7,14 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 07/18/2019
+ms.date: 07/23/2019
 ms.author: diberry
-ms.openlocfilehash: c99e5f9b810499dd67be55d137a2e451a59be0b6
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 15faacccfa1e0f7dd759f719c02e106918d735bb
+ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68386646"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68414690"
 ---
 # <a name="cognitive-services-and-machine-learning"></a>Cognitive Services a strojové učení
 
@@ -54,7 +54,7 @@ Služba rozpoznávání poskytuje součást nebo všechny komponenty v řešení
 
 ## <a name="how-are-cognitive-services-and-azure-machine-learning-aml-similar"></a>Jak jsou podobné Cognitive Services a Azure Machine Learning (AML)?
 
-Oba mají konečný cíl použít umělou Intelligence (AI) k vylepšení obchodních operací, i když to poskytuje příslušné nabídky odlišně. 
+Oba mají konečný cíl použít umělou Intelligence (AI) k vylepšení obchodních operací, i když každý z nich poskytuje příslušné nabídky. 
 
 Obecně platí, že se cílové skupiny liší:
 
@@ -117,6 +117,10 @@ Následující data kategorizují každou službu podle druhu dat, která povolu
  
 Služby se používají v jakékoli aplikaci, která může provádět REST API (s) nebo volání sady SDK. Mezi příklady aplikací patří weby, roboty, virtuální nebo smíšené reality, stolní a mobilní aplikace. 
 
+## <a name="how-is-cognitive-search-related-to-cognitive-services"></a>Jak je rozpoznávání vyhledávání související s Cognitive Services?
+
+K poskytnutí této funkce používá [Azure Search](../search/search-what-is-azure-search.md) Cognitive Services. Cognitive Services se zveřejňuje v Azure Search prostřednictvím [integrovaných dovedností](../search/cognitive-search-predefined-skills.md) , které zabalí jednotlivá rozhraní API. Pro návody můžete použít bezplatný prostředek, ale Naplánujte vytváření a připojování Fakturovatelné [prostředku](../search/cognitive-search-attach-cognitive-services.md) pro větší objemy.
+
 ## <a name="how-can-you-use-cognitive-services"></a>Jak můžete použít Cognitive Services?
 
 Každá služba poskytuje informace o vašich datech. Vzájemně můžete kombinovat služby a zřetězit řešení, jako je převod řeči (zvuk) na text, překlad textu do mnoha jazyků a následné použití přeložených jazyků k získání odpovědí ze znalostní báze. I když se Cognitive Services dá použít k vytváření inteligentních řešení na vlastní, můžou se taky kombinovat s tradičními projekty strojového učení, které doplňují modely nebo urychlují proces vývoje. 
@@ -125,10 +129,10 @@ Cognitive Services, které poskytují exportované modely pro jiné nástroje pr
 
 |Služba Cognitive Services|Informace o modelu|
 |--|--|
-|Custom Vision|Export pro Tensorflow pro Android, CoreML pro iOS11, ONNX pro Windows ML|
+|[Custom Vision](./custom-vision-service/home.md)|[Export](./Custom-Vision-Service/export-model-python.md) pro Tensorflow pro Android, CoreML pro IOS11, ONNX pro Windows ml|
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Vytvořte účet služby rozpoznávání v [Azure Portal](cognitive-services-apis-create-account.md) nebo pomocí [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli).
 * Přečtěte si, jak [ověřit](authentication.md) službu pro rozpoznávání.

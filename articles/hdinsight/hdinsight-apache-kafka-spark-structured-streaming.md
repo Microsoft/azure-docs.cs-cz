@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Strukturované streamování s využitím Apache Kafka – Azure HDInsight Apache Sparku'
+title: 'Kurz: Apache Spark strukturovaného streamování s využitím Apache Kafka-Azure HDInsight'
 description: Zjistěte, jak pomocí streamování Apache Sparku přenášet data do nebo ze systému Apache Kafka. V tomto kurzu budete streamovat data pomocí poznámkového bloku Jupyter ze Sparku ve službě HDInsight.
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -8,45 +8,45 @@ ms.custom: hdinsightactive,seodec18
 ms.topic: tutorial
 ms.date: 05/22/2019
 ms.author: hrasheed
-ms.openlocfilehash: 51f84234ac35be5f60d1aaa5dac661ad9ce5e0c2
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.openlocfilehash: da31b6a880344de918a3b3e0f89f60d985db2ce7
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66257907"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68406021"
 ---
-# <a name="tutorial-use-apache-spark-structured-streaming-with-apache-kafka-on-hdinsight"></a>Kurz: Použití strukturovaného streamování Apache Sparku s využitím Apache Kafka v HDInsight
+# <a name="tutorial-use-apache-spark-structured-streaming-with-apache-kafka-on-hdinsight"></a>Kurz: Použití strukturovaného streamování Apache Spark s Apache Kafka v HDInsight
 
-Tento kurz ukazuje, jak používat [strukturovaného streamování Apache Sparku](https://spark.apache.org/docs/latest/structured-streaming-programming-guide) ke čtení a zápisu dat pomocí [Apache Kafka](https://kafka.apache.org/) v Azure HDInsight.
+V tomto kurzu se dozvíte, jak pomocí [Apache Spark strukturovaného streamování](https://spark.apache.org/docs/latest/structured-streaming-programming-guide) číst a zapisovat data pomocí [Apache Kafka](https://kafka.apache.org/) v Azure HDInsight.
 
-Strukturované streamování Sparku je modul pro zpracování datových proudů založený na Spark SQL. Umožňuje zrychlit streamované i dávkové výpočty se statickými daty.  
+Strukturované streamování Spark je modul pro zpracování datových proudů založený na Spark SQL. Umožňuje zrychlit streamované i dávkové výpočty se statickými daty.  
 
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Pomocí šablony Azure Resource Manageru vytvoříte clustery
-> * Použití strukturovaného streamování Sparku se systémem Kafka
+> * Použití šablony Azure Resource Manager k vytváření clusterů
+> * Použití strukturovaného streamování Sparku s Kafka
 
 Jakmile budete hotovi s kroky v tomto dokumentu, nezapomeňte clustery odstranit, abyste se vyhnuli nadbytečným poplatkům.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* jq, příkazového řádku procesoru JSON.  Zobrazit [ https://stedolan.github.io/jq/ ](https://stedolan.github.io/jq/).
+* JQ, procesor JSON příkazového řádku.  Viz [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/).
 
-* Seznámení se s použitím [poznámkové bloky Jupyter](https://jupyter.org/) pomocí Spark v HDInsight. Další informace najdete v tématu [načtení dat a spouštění dotazů s Apache Spark v HDInsight](spark/apache-spark-load-data-run-query.md) dokumentu.
+* Seznamte se s používáním poznámkových [bloků Jupyter](https://jupyter.org/) s Sparkem ve službě HDInsight. Další informace najdete v tématu [načtení dat a spuštění dotazů s Apache Spark v dokumentu HDInsight](spark/apache-spark-load-data-run-query.md) .
 
 * Znalost programovacího jazyku [Scala](https://www.scala-lang.org/). Kód použitý v tomto kurzu je napsaný v jazyce Scala.
 
-* Znalost vytváření témat Kafka. Další informace najdete v tématu [Apache Kafka v HDInsight quickstart](kafka/apache-kafka-get-started.md) dokumentu.
+* Znalost vytváření témat Kafka. Další informace najdete v dokumentu [rychlý Start pro Apache Kafka v HDInsight](kafka/apache-kafka-get-started.md) .
 
 > [!IMPORTANT]  
 > Kroky v tomto dokumentu vyžadují skupinu prostředků Azure obsahující cluster Spark ve službě HDInsight i cluster Kafka ve službě HDInsight. Oba tyto clustery se nacházejí ve virtuální síti Azure, což umožňuje přímou komunikaci clusteru Spark s clusterem Kafka.
 > 
 > Pro usnadnění práce tento dokument odkazuje na šablonu, která může vytvořit všechny požadované prostředky Azure. 
 >
-> Další informace o použití služby HDInsight ve virtuální síti najdete v dokumentu [Rozšíření služby HDInsight pomocí virtuální sítě](hdinsight-extend-hadoop-virtual-network.md).
+> Další informace o používání služby HDInsight ve virtuální síti najdete v tématu Naplánování [služby Virtual Network for HDInsight](hdinsight-plan-virtual-network-deployment.md) .
 
-## <a name="structured-streaming-with-apache-kafka"></a>Strukturované streamování s využitím Apache Kafka
+## <a name="structured-streaming-with-apache-kafka"></a>Strukturované streamování s Apache Kafka
 
 Strukturované streamování Sparku je modul pro zpracování datových proudů založený na modulu Spark SQL. Při použití strukturovaného streamování můžete psát streamovací dotazy stejným způsobem jako dávkové dotazy.
 
@@ -88,17 +88,17 @@ kafkaStreamDF.select(from_json(col("value").cast("string"), schema) as "trip")
 
 V obou fragmentech kódu se data čtou ze systému Kafka a zapisují do souboru. Rozdíly mezi příklady jsou následující:
 
-| Balík | STREAMOVÁNÍ |
+| Batch | Streamování |
 | --- | --- |
 | `read` | `readStream` |
 | `write` | `writeStream` |
 | `save` | `start` |
 
-Streamování operace také používá `awaitTermination(30000)`, které zastaví stream po 30 000 ms. 
+Operace streamování také používá `awaitTermination(30000)`, což zastaví datový proud po 30 000 ms. 
 
 Pokud chcete použít strukturované streamování s využitím systému Kafka, váš projekt musí obsahovat závislost na balíčku `org.apache.spark : spark-sql-kafka-0-10_2.11`. Verze tohoto balíčku musí odpovídat verzi Sparku ve službě HDInsight. Pro Spark 2.2.0 (k dispozici ve službě HDInsight 3.6) můžete najít informace o závislostech pro různé typy projektů na adrese [https://search.maven.org/#artifactdetails%7Corg.apache.spark%7Cspark-sql-kafka-0-10_2.11%7C2.2.0%7Cjar](https://search.maven.org/#artifactdetails%7Corg.apache.spark%7Cspark-sql-kafka-0-10_2.11%7C2.2.0%7Cjar).
 
-Poznámkový blok Jupyter v tomto kurzu použít načte následující buňky tuto závislost balíčku:
+Pro Jupyter Notebook používané v tomto kurzu načte následující buňka tuto závislost balíčku:
 
 ```
 %%configure -f
@@ -140,10 +140,10 @@ K vytvoření virtuální sítě Azure a následnému vytvoření clusterů Kafk
 
 2. Pomocí následujících informací vyplňte položky v části **Přizpůsobená šablona**:
 
-    | Nastavení | Hodnota |
+    | Nastavení | Value |
     | --- | --- |
-    | Předplatné | Vaše předplatné Azure |
-    | Skupina prostředků | Skupina prostředků obsahující prostředky. |
+    | Subscription | Vaše předplatné Azure |
+    | Resource group | Skupina prostředků obsahující prostředky. |
     | Location | Oblast Azure, ve které se prostředky vytvoří. |
     | Název clusteru Spark | Název clusteru Spark. Prvních šest znaků se musí lišit od názvu clusteru Kafka. |
     | Název clusteru Kafka | Název clusteru Kafka. Prvních šest znaků se musí lišit od názvu clusteru Spark. |
@@ -163,9 +163,9 @@ K vytvoření virtuální sítě Azure a následnému vytvoření clusterů Kafk
 
 ## <a name="use-spark-structured-streaming"></a>Použití strukturovaného streamování Sparku
 
-Tento příklad ukazuje, jak pomocí strukturovaného streamování Sparku se systémem Kafka v HDInsight. Využívá data na cestách taxislužby města, které zajišťuje New York City.  Sada dat používá tento poznámkový blok je z [Data o jízdách taxislužby zelená 2016](https://data.cityofnewyork.us/Transportation/2016-Green-Taxi-Trip-Data/hvrh-b6nb).
+Tento příklad ukazuje, jak používat strukturované streamování Sparku s Kafka ve službě HDInsight. Používá data na cestách taxislužby, která jsou k dispozici v New Yorku City.  Datová sada použitá v tomto poznámkovém bloku je z [2016 zelených dat taxislužby](https://data.cityofnewyork.us/Transportation/2016-Green-Taxi-Trip-Data/hvrh-b6nb).
 
-1. Shromažďování informací o hostiteli. Použít curl a [jq](https://stedolan.github.io/jq/) získat vaše Kafka ZooKeeper a zprostředkovatel informace o hostitelích následujících příkazů. Příkazy jsou navržené pro příkazový řádek Windows, malé odchylky bude potřebovat další prostředí. Nahraďte `KafkaCluster` s názvem vašeho clusteru Kafka a `KafkaPassword` s přihlašovací heslo clusteru. Také nahraďte `C:\HDI\jq-win64.exe` s skutečné cesty k instalaci jq. Zadejte příkazy v příkazovém řádku Windows a uložte výstup pro použití v dalších krocích.
+1. Shromážděte informace o hostiteli. Pomocí níže uvedených příkazů složené a [JQ](https://stedolan.github.io/jq/) můžete získat informace o hostitelích Kafka Zookeeper a Broker. Příkazy jsou určeny pro příkazový řádek systému Windows. pro ostatní prostředí budou potřeba drobné variace. Nahraďte `KafkaCluster` názvem vašeho clusteru Kafka a `KafkaPassword` heslem pro přihlášení ke clusteru. Nahraďte `C:\HDI\jq-win64.exe` také skutečnou cestou k instalaci JQ. Zadejte příkazy do příkazového řádku Windows a uložte výstup pro použití v pozdějších krocích.
 
     ```cmd
     set CLUSTERNAME=KafkaCluster
@@ -182,9 +182,9 @@ Tento příklad ukazuje, jak pomocí strukturovaného streamování Sparku se sy
 
     Po zobrazení výzvy zadejte přihlašovací jméno (správce) a heslo clusteru, které jste použili při vytváření clusteru.
 
-3. Vyberte **nový > Spark** vytvoření poznámkového bloku.
+3. Pokud chcete vytvořit Poznámkový blok, vyberte **nový > Spark** .
 
-4. Načíst balíčky používané Poznámkový blok zadáním následujících informací v buňce poznámkového bloku. Spusťte příkaz s použitím **CTRL + ENTER**.
+4. Načíst balíčky používané poznámkovým blokem zadáním následujících informací v buňce s poznámkovým blokem. Spusťte příkaz pomocí **kombinace kláves CTRL + ENTER**.
 
     ```
     %%configure -f
@@ -196,7 +196,7 @@ Tento příklad ukazuje, jak pomocí strukturovaného streamování Sparku se sy
     }
     ```
 
-5. Vytvoří téma Kafka. Upravte následující příkaz tak, že nahradíte `YOUR_ZOOKEEPER_HOSTS` Zookeeper hostovat informace extrahované v prvním kroku. Zadejte příkaz upravených v poznámkovém bloku Jupyter pro vytvoření `tripdata` tématu.
+5. Vytvořte téma Kafka. Níže uvedený příkaz upravte nahrazením `YOUR_ZOOKEEPER_HOSTS` informací o hostiteli Zookeeper extrahovaných v prvním kroku. Pokud chcete vytvořit `tripdata` téma, zadejte do svého Jupyter notebook upravený příkaz.
 
     ```scala
     %%bash
@@ -205,7 +205,7 @@ Tento příklad ukazuje, jak pomocí strukturovaného streamování Sparku se sy
     /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --create --replication-factor 3 --partitions 8 --topic tripdata --zookeeper $KafkaZookeepers
     ```
 
-6. Načíst data taxislužby zkracuje dobu odezvy. Zadejte příkaz do další buňky načíst data taxislužby zkracuje dobu odezvy v New Yorku. Načtení dat do struktury dataframe a pak se zobrazí datového rámce jako výstup buňky.
+6. Načtěte data na taxislužby TRIPS. Zadáním příkazu do další buňky načtěte data na taxislužby TRIPS v New York City. Data jsou načtena do datového rámce a datový rámec se zobrazí jako výstup buňky.
 
     ```scala
     import spark.implicits._
@@ -221,7 +221,7 @@ Tento příklad ukazuje, jak pomocí strukturovaného streamování Sparku se sy
     taxiDF.show()
     ```
 
-7. Nastavte informace o hostiteli zprostředkovatele Kafka. Nahraďte `YOUR_KAFKA_BROKER_HOSTS` s informacemi o hostitelích zprostředkovatele jste extrahovali v kroku 1.  Zadejte příkaz upravených na další buňku Poznámkový blok Jupyter.
+7. Nastavte informace o hostitelích zprostředkovatele Kafka. Nahraďte `YOUR_KAFKA_BROKER_HOSTS` službou Broker informace o hostitelích, které jste extrahovali v kroku 1.  Do následujícího Jupyter Notebook buňky zadejte upravený příkaz.
 
     ```scala
     // The Kafka broker hosts and topic used to write to Kafka
@@ -231,7 +231,7 @@ Tento příklad ukazuje, jak pomocí strukturovaného streamování Sparku se sy
     println("Finished setting Kafka broker and topic configuration.")
     ```
 
-8. Odeslat data Kafka. V následujícím příkazu `vendorid` pole se používá jako hodnotu klíče pro zprávu Kafka. Používá se kafka při dělení dat. Všechna pole jsou uloženy ve zprávě Kafka jako hodnotu řetězce JSON. Zadejte následující příkaz v Jupyter pro uložení dat Kafka pomocí dotazů služby batch.
+8. Odešlete data do Kafka. V následujícím příkazu `vendorid` se pole používá jako hodnota klíče pro zprávu Kafka. Klíč používá Kafka při dělení dat. Všechna pole jsou uložena ve zprávě Kafka jako hodnota řetězce JSON. Zadáním následujícího příkazu v Jupyter uložíte data do Kafka pomocí dávkového dotazu.
 
     ```scala
     // Select the vendorid as the key and save the JSON string as the value.
@@ -240,7 +240,7 @@ Tento příklad ukazuje, jak pomocí strukturovaného streamování Sparku se sy
     println("Data sent to Kafka")
     ```
 
-9. Deklarujte schéma. Následující příkaz ukazuje, jak používat schéma při čtení dat JSON z platformy kafka. Zadejte příkaz vaše další buňky Jupyter.
+9. Deklaruje schéma. Následující příkaz ukazuje, jak použít schéma při čtení dat JSON z Kafka. Do další buňky Jupyter zadejte příkaz.
 
     ```scala
     // Import bits useed for declaring schemas and working with JSON data
@@ -276,7 +276,7 @@ Tento příklad ukazuje, jak pomocí strukturovaného streamování Sparku se sy
     println("Schema declared")
     ```
 
-10. Vyberte data a spusťte datového proudu. Následující příkaz ukazuje, jak načíst data z platformy kafka pomocí dotazů služby batch a pak vypsat výsledky do rozhraní HDFS v clusteru Spark. V tomto příkladu `select` načte zprávy (hodnota) z Kafka a odpovídá schématu. Data se pak zapsány do rozhraní HDFS (WASB nebo ADL) ve formátu parquet. Zadejte příkaz vaše další buňky Jupyter.
+10. Vyberte data a spusťte Stream. Následující příkaz ukazuje, jak načíst data z Kafka pomocí dávkového dotazu a pak zapsat výsledky do HDFS v clusteru Spark. V tomto příkladu `select` načte zprávu (pole hodnota) z Kafka a použije pro ni schéma. Data se pak zapíší do HDFS (WASB nebo ADL) ve formátu Parquet. Do další buňky Jupyter zadejte příkaz.
 
     ```scala
     // Read a batch from Kafka
@@ -288,14 +288,14 @@ Tento příklad ukazuje, jak pomocí strukturovaného streamování Sparku se sy
     println("Wrote data to file")
     ```
 
-11. Můžete ověřit, že soubory byly vytvořeny tak, že zadáte příkaz vaše další buňky Jupyter. Vypíše soubory v `/example/batchtripdata` adresáře.
+11. Zadáním příkazu do další buňky Jupyter můžete ověřit, že se soubory vytvořily. Obsahuje seznam souborů v `/example/batchtripdata` adresáři.
 
     ```scala
     %%bash
     hdfs dfs -ls /example/batchtripdata
     ```
 
-12. I když je předchozí příklad použít dotaz batch, následující příkaz ukazuje, jak to samé udělá použití streamování dotazu. Zadejte příkaz vaše další buňky Jupyter.
+12. Zatímco předchozí příklad použil dávkový dotaz, následující příkaz ukazuje, jak provést stejnou věc pomocí dotazu streamování. Do další buňky Jupyter zadejte příkaz.
 
     ```scala
     // Stream from Kafka
@@ -306,7 +306,7 @@ Tento příklad ukazuje, jak pomocí strukturovaného streamování Sparku se sy
     println("Wrote data to file")
     ```
 
-13. Spusťte následující buňky, chcete-li ověřit, že soubory byly vytvořeny podle streamování dotazu.
+13. Spusťte následující buňku a ověřte, zda byly soubory zapsány dotazem pro streamování.
 
     ```scala
     %%bash
@@ -330,7 +330,7 @@ Odebrání skupiny prostředků pomocí webu Azure Portal:
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto kurzu jste zjistili, jak používat [strukturovaného streamování Apache Sparku](https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html) pro zápis a čtení dat z [Apache Kafka](https://kafka.apache.org/) v HDInsight. Použijte tento odkaz na další informace o použití [Apache Storm](https://storm.apache.org/) s využitím systému Kafka.
+V tomto kurzu jste zjistili, jak pomocí [Apache Spark strukturovaného streamování](https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html) zapisovat a číst data z [Apache Kafka](https://kafka.apache.org/) v HDInsight. Pomocí následujícího odkazu se dozvíte, jak používat [Apache Storm](https://storm.apache.org/) s Kafka.
 
 > [!div class="nextstepaction"]
-> [Použití Apache Stormu s využitím Apache Kafka](hdinsight-apache-storm-with-kafka.md)
+> [Použití Apache Storm s Apache Kafka](hdinsight-apache-storm-with-kafka.md)

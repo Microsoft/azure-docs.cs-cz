@@ -1,7 +1,7 @@
 ---
-title: Získejte videa z vašeho vlastního zobrazení – vlastní vyhledávání Bingu
-titlesuffix: Azure Cognitive Services
-description: Základní přehled o použití pro vlastní vyhledávání Bingu k získání videa z vašeho vlastního zobrazení webu.
+title: Získat videa z vlastního zobrazení – Vlastní vyhledávání Bingu
+titleSuffix: Azure Cognitive Services
+description: Základní přehled o používání Vlastní vyhledávání Bingu k získání videí z vlastního zobrazení webu.
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
@@ -10,18 +10,18 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 09/10/2018
 ms.author: scottwhi
-ms.openlocfilehash: 9ddf89ab0c4c14743206b2baf207ec10fee033b4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 222256036a59c7df302546bbf82648c4d524d43f
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66390325"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68405094"
 ---
-# <a name="get-videos-from-your-custom-view"></a>Získejte videa z vašeho vlastního zobrazení
+# <a name="get-videos-from-your-custom-view"></a>Získat videa z vlastního zobrazení
 
-Vlastní vyhledávání videí Bingu umožňuje rozšířit vaše vlastní vyhledávací prostředí s využitím videí. Podobně jako webové výsledky podporuje vlastní vyhledávání i vyhledávání videí v seznamu webů vaší instance. Můžete získat videí pomocí rozhraní API Bingu pro vyhledávání videí pro vlastní nebo prostřednictvím uživatelského rozhraní hostované funkce. Pomocí funkcí hostované uživatelského rozhraní se snadno používá a doporučuje se pro vaše prostředí hledání zprovoznění v krátkém pořadí. Informace o konfiguraci vašeho uživatelského rozhraní hostované zahrnout videa najdete v tématu [hostované uživatelské rozhraní konfigurace](hosted-ui.md).
+Vlastní vyhledávání videí Bing umožňuje rozšířit vlastní možnosti hledání pomocí videí. Podobně jako webové výsledky podporuje vlastní vyhledávání i vyhledávání videí v seznamu webů vaší instance. Videa můžete získat pomocí rozhraní API pro vyhledávání vlastních videí Bingu nebo pomocí hostované funkce uživatelského rozhraní. Použití funkce hostovaného uživatelského rozhraní se snadno používá a doporučuje se k tomu, abyste mohli začít pracovat v krátkém pořadí. Informace o konfiguraci hostovaného uživatelského rozhraní pro zahrnutí videí najdete v tématu [Konfigurace prostředí hostovaného uživatelského rozhraní](hosted-ui.md).
 
-Pokud chcete mít větší kontrolu nad zobrazením výsledků hledání, můžete použít rozhraní API Bingu pro vyhledávání videí pro vlastní. Vzhledem k tomu, že volání rozhraní API je podobný volání API pro vyhledávání videí Bingu checkout [Bingu pro vyhledávání videí](../Bing-Video-Search/search-the-web.md) příklady volání rozhraní API. Ale předtím, než to uděláte, seznamte se s [referenční dokumentace rozhraní API pro vyhledávání videí vlastní](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-videos-api-v7-reference) obsah. Hlavní rozdíly jsou podporované parametry dotazu (musí obsahovat parametr dotazu customConfig) a odesílat požadavky na koncový bod.
+Pokud chcete mít větší kontrolu nad zobrazením výsledků hledání, můžete použít rozhraní API pro vyhledávání vlastních videí v Bingu. Vzhledem k tomu, že volání rozhraní API je podobné volání rozhraní API Bingu pro vyhledávání videí, [Vvyhledávání videí Bingu](../Bing-Video-Search/search-the-web.md) pro příklady volání rozhraní API. Než to uděláte, Seznamte se s referenčním obsahem [rozhraní API pro vyhledávání vlastních videí](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-videos-api-v7-reference) . Hlavní rozdíly jsou podporované parametry dotazu (musíte zahrnout parametr dotazu customConfig) a koncový bod, do kterého odesíláte požadavky.
 
 <!--
 ## Next steps

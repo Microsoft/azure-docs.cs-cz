@@ -1,134 +1,120 @@
 ---
-title: Sestavení klasifikátoru – Custom Vision Service
+title: Rychlý Start – vytvoření klasifikátoru – Custom Vision Service
 titlesuffix: Azure Cognitive Services
-description: Zjistěte, jak vytvořit model klasifikace obrázků pomocí webových stránek pro zpracování obrazu vlastní.
+description: V tomto rychlém startu se dozvíte, jak pomocí Custom Vision webu vytvořit model klasifikace imagí.
 services: cognitive-services
 author: anrothMSFT
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
-ms.topic: conceptual
-ms.date: 04/03/2019
+ms.topic: quickstart
+ms.date: 07/12/2019
 ms.author: anroth
-ms.openlocfilehash: 3cb67b57f406774b4bcaf57c24b8e7741068ced6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 748336dcea580cefaf7638c86c1466bf0c16a472
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66497313"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68423561"
 ---
-# <a name="how-to-build-a-classifier-with-custom-vision"></a>Sestavení klasifikátoru s Custom Vision
+# <a name="quickstart-how-to-build-a-classifier-with-custom-vision"></a>Rychlý start: Postup vytvoření klasifikátoru pomocí Custom Vision
 
-Pro účely služby Custom Vision Service klasifikace obrázků, musíte nejprve sestavení modelu třídění. V této příručce se dozvíte, jak sestavení klasifikátoru prostřednictvím webu Custom Vision.
+V tomto rychlém startu se dozvíte, jak vytvořit klasifikátor prostřednictvím webu Custom Vision. Jakmile sestavíte model třídění, můžete pro klasifikaci imagí použít službu Custom Vision.
+
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Platné předplatné Azure. [Vytvoření účtu](https://azure.microsoft.com/free/) zdarma.
-- Sadu imagí, které má klasifikátor trénovat. Níže najdete tipy k výběru Image.
+- Sada imagí, se kterými chcete své třídění proškolit. Tipy k výběru imagí najdete níže.
 
+## <a name="create-custom-vision-resources-in-the-azure-portal"></a>Vytvoření prostředků Custom Vision v Azure Portal
 
-## <a name="create-custom-vision-resources-in-the-azure-portal"></a>Vytvoření vlastní vizi prostředků na webu Azure Portal
-Pokud chcete používat službu Custom Vision Service, budete muset vytvořit vlastní zpracování obrazu trénování a Predikcí prostředky v [webu Azure portal](https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=microsoft_azure_cognitiveservices_customvision#create/Microsoft.CognitiveServicesCustomVision). Tím se vytvoří trénování a Predikcí prostředků. 
+Pokud chcete použít Custom Vision Service, budete muset vytvořit Custom Vision školení a předpovědi prostředků v Azure Portal. Vyplňte dialogové okno na stránce [vytvořit Custom Vision](https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=microsoft_azure_cognitiveservices_customvision#create/Microsoft.CognitiveServicesCustomVision) , abyste vytvořili prostředek pro školení i předpověď. 
 
 ## <a name="create-a-new-project"></a>Vytvoření nového projektu
 
-Ve webovém prohlížeči přejděte [Custom Vision webové stránky](https://customvision.ai) a vyberte __přihlášení__. Přihlaste se pomocí stejného účtu, který jste použili pro přihlášení na webu Azure portal.
+Ve webovém prohlížeči přejděte na [webovou stránku Custom Vision](https://customvision.ai) a vyberte __Přihlásit__se. Přihlaste se pomocí stejného účtu, který jste použili k přihlášení do Azure Portal.
 
 ![Obrázek přihlašovací stránky](./media/browser-home.png)
 
 
-1. Chcete-li vytvořit svůj první projekt, vyberte **nový projekt**. **Vytvořit nový projekt** se zobrazí dialogové okno.
+1. Chcete-li vytvořit svůj první projekt, vyberte možnost **Nový projekt**. Zobrazí se dialogové okno **vytvořit nový projekt** .
 
-    ![Dialogovém okně Nový projekt obsahuje pole pro název, popis a domén.](./media/getting-started-build-a-classifier/new-project.png)
+    ![Dialogové okno Nový projekt obsahuje pole pro název, popis a domény.](./media/getting-started-build-a-classifier/new-project.png)
 
-1. Zadejte název a popis pro projekt. Vyberte skupinu prostředků. Pokud je váš účet přihlášeného přidružené k účtu Azure, se zobrazí rozevírací seznam skupina prostředků, všechny vaše skupiny prostředků Azure, která obsahují vlastní prostředek služby pro zpracování obrazu. 
+1. Zadejte název a popis projektu. Pak vyberte skupinu prostředků. Pokud je přihlášený účet přidružený k účtu Azure, zobrazí se v rozevíracím seznamu Skupina prostředků všechny skupiny prostředků Azure, které zahrnují prostředek Custom Vision Service. 
 
    > [!NOTE]
-   > Pokud je k dispozici žádná skupina prostředků, zkontrolujte, že jste přihlášení [customvision.ai](https://customvision.ai) pod stejným účtem, jako jste použili k přihlášení do [webu Azure portal](https://portal.azure.com/). Také Zkontrolujte prosím, že vyberete stejné "Directory" portálu Custom Vision jako adresář na webu Azure Portal, kde se nachází vaše vize vlastní prostředky. V obou lokalitách můžete vybrat adresáře v rozevírací nabídce účtu v pravém horním rohu obrazovky. 
+   > Pokud není k dispozici žádná skupina prostředků, potvrďte prosím, že jste se k [customvision.AI](https://customvision.ai) přihlásili pomocí stejného účtu, jako jste použili k přihlášení do [Azure Portal](https://portal.azure.com/). Ověřte také, že jste na portálu Custom Vision vybrali stejný adresář jako adresář v Azure Portal, kde se nacházejí Custom Vision prostředky. V obou lokalitách můžete adresář vybrat v nabídce účtu rozevírací nabídky v pravém horním rohu obrazovky. 
 
-1. Vyberte __klasifikace__ pod __typy projektů__. Potom v části __typy klasifikace__, zvolte buď **Multilabel** nebo **Multiclass**, v závislosti na vašemu případu použití. Multilabel klasifikace se použije libovolný počet značek pro bitovou kopii (nula nebo více), zatímco klasifikace víc tříd seřadí bitové kopie do jedné kategorie (každý obrázek, které uvedete budou seřazeny do nejpravděpodobnější značky). Bude možné později změnit typ klasifikace, pokud chcete.
+1. V části __typy projektů__vyberte __klasifikace__ . Pak v části __typy klasifikací__zvolte v závislosti  na použitém případu použití buď více štítků, nebo více **tříd**. Klasifikace s více štítky aplikuje libovolný počet značek na obrázek (nula nebo více), zatímco klasifikace s více třídami řadí obrázky do jednoduchých kategorií (každý odeslaný obrázek bude seřazený do nejpravděpodobnější značky). V případě potřeby budete moci typ klasifikace později změnit.
 
-1. Potom vyberte jednu z dostupných domén. Každá doména optimalizuje třídění pro konkrétní typy obrázků, jak je popsáno v následující tabulce. Bude možné později změnit doménu, pokud chcete.
+1. V dalším kroku vyberte jednu z dostupných domén. Každá doména optimalizuje klasifikátor pro konkrétní typy imagí, jak je popsáno v následující tabulce. V případě potřeby budete moci doménu později změnit.
 
-    |Domain (Doména)|Účel|
+    |Doména|Účel|
     |---|---|
-    |__Obecné__| Optimalizovaná pro širokou škálu obrázek úlohy klasifikace. Pokud žádný z jiných domén není vhodné nebo si nejste jistí, ve které doméně zvolit, vyberte doménu, Obecné. |
-    |__Potravin__|Optimalizované pro fotografie si pochutnává, při které byste měli v nabídka restaurace. Pokud chcete klasifikovat fotografie jednotlivá ovoce nebo zeleniny, použijte potravin domény.|
-    |__Zajímavá__|Optimalizovaná pro rozpoznatelných památek, přirozené a umělé. Tato doména funguje nejlépe, když je památek jasně viditelný v fotografie. Tato doména funguje i v případě, že památek mírně nelze blokovat uživatelé před tímto prvkem.|
-    |__Maloobchodního prodeje__|Optimalizovaná pro bitové kopie, které se nacházejí v nákupní katalogu nebo nákupního webu. Pokud chcete vysokou přesnost klasifikace mezi šatů pants a košile, použijte tuto doménu.|
-    |__Kompaktní domén__| Optimalizovaná pro omezení v reálném čase klasifikace na mobilních zařízeních. Modely generované balíky compact domény je možné exportovat do spouštět místně.|
+    |__Obecněji__| Optimalizováno pro širokou škálu úloh klasifikace imagí. Pokud žádná z ostatních domén není vhodná nebo si nejste jisti, kterou doménu si zvolíte, vyberte obecnou doménu. |
+    |__Simulant__|Optimalizováno pro fotografie misek, jak byste je viděli v nabídce restaurace. Pokud chcete klasifikovat fotografie jednotlivých druhů ovoce a zeleniny, použijte doménu jídla.|
+    |__Památek__|Optimalizováno pro rozpoznatelný orientačních bodů, jak přirozené, tak umělé. Tato doména funguje nejlépe, když je ve fotografii jasně viditelný bod. Tato doména funguje i v případě, že je bod lehce překážkou pro lidi před ním.|
+    |__Prodejci__|Optimalizováno pro obrázky, které se nacházejí v nákupním katalogu nebo na nákupním webu. Pokud požadujete vysokou přesnost klasifikace mezi dresses, Pants a košile, použijte tuto doménu.|
+    |__Kompaktní domény__| Optimalizováno pro omezení klasifikace v reálném čase na mobilních zařízeních. Modely generované pomocí kompaktních domén lze exportovat pro místní spuštění.|
 
 1. Nakonec vyberte __vytvořit projekt__.
 
-## <a name="choose-training-images"></a>Zvolte trénovacích obrázků
+## <a name="choose-training-images"></a>Zvolit školicí obrázky
 
-Jako minimum doporučujeme že použít aspoň 30 obrázků na značky v sadě počáteční školení. Také budete chtít shromáždit několik dalších obrázků otestovat váš model, jakmile jsou trénovaná.
-
-K natrénování modelu efektivně, pomocí celé řady visual bitové kopie. Vyberte Image s, která se liší podle:
-* úhel kamery
-* osvětlení
-* Na pozadí
-* Vizuální styl
-* osoba nebo seskupené subject(s)
-* size
-* type
-
-Kromě toho Ujistěte se, že všechny trénovacích obrázků splňovat následující kritéria:
-* Formát JPG, PNG nebo BMP
-* menší než velikost (4MB pro předpověď Image) 6MB
-* menší než 256 pixelů na okraji nejkratší; všechny Image, která je kratší, než to se dá automaticky škálovat pomocí služby Custom Vision Service
+[!INCLUDE [choose training images](includes/choose-training-images.md)]
 
 ## <a name="upload-and-tag-images"></a>Nahrání a označení obrázků
 
-V této části se nahrát a ručně označit Image ke trénování třídění. 
+V této části nahrajete a ručně označíte obrázky, které vám pomůžou rozučit třídění. 
 
-1. Přidání bitové kopie, klikněte na tlačítko __přidávat image__ tlačítko a pak vyberte __procházet místní soubory__. Vyberte __otevřít__ přesunout do označení. Tag výběru se použijí pro celou skupinu imagí, které jste vybrali k nahrání, aby bylo snazší můžete nahrávat obrázky do samostatných skupin podle jejich požadované značky. Značky pro jednotlivé Image můžete také změnit poté, co se nahrály.
+1. Pokud chcete přidat obrázky, klikněte na tlačítko __Přidat image__ a pak vyberte __Procházet místní soubory__. Vyberte __otevřít__ a přejděte k označení. Výběr značek bude použit pro celou skupinu imagí, které jste vybrali k nahrání, takže je snazší nahrávat obrázky do samostatných skupin podle jejich požadovaných značek. Můžete také změnit značky pro jednotlivé obrázky po jejich nahrání.
 
-    ![Přidat ovládací prvek Image se zobrazí v levém horním rohu a jako tlačítko dole uprostřed.](./media/getting-started-build-a-classifier/add-images01.png)
+    ![Ovládací prvek přidat obrázky se zobrazí v levém horním rohu a jako tlačítko ve spodní části středu.](./media/getting-started-build-a-classifier/add-images01.png)
 
 
-1. Pokud chcete vytvořit značku, zadejte text do __značky__ pole a stiskněte klávesu Enter. Jestliže značky již existuje, zobrazí se v rozevírací nabídce. V multilabel projektu můžete přidat více než jeden tag Image, ale ve víc tříd projektu můžete přidat pouze jeden. Chcete-li dokončit nahrávání imagí, použijte __nahrávání souborů [číslo]__ tlačítko. 
+1. Chcete-li vytvořit značku, zadejte text do pole __Moje značky__ a stiskněte klávesu ENTER. Pokud značka již existuje, zobrazí se v rozevírací nabídce. V projektu s více štítky můžete do imagí přidat více než jednu značku, ale v projektu s více třídami můžete přidat pouze jeden. K dokončení nahrávání imagí použijte tlačítko __nahrát [číslo] soubory__ . 
 
-    ![Obrázek stránky značku a nahrávání](./media/getting-started-build-a-classifier/add-images03.png)
+    ![Obrázek stránky značek a nahrání](./media/getting-started-build-a-classifier/add-images03.png)
 
-1. Vyberte __provádí__ po bitové kopie byly nahrány.
+1. Po  nahrání imagí vyberte Hotovo.
 
-    ![Indikátor průběhu vám ukáže všechny úlohy dokončeny.](./media/getting-started-build-a-classifier/add-images04.png)
+    ![Indikátor průběhu zobrazuje všechny dokončené úkoly.](./media/getting-started-build-a-classifier/add-images04.png)
 
-K nahrání jinou sadu bitových kopií, vraťte se na začátku této části a opakujte kroky.
+Pokud chcete nahrát další sadu imagí, vraťte se na začátek této části a opakujte postup.
 
 ## <a name="train-the-classifier"></a>Trénování klasifikátoru
 
-K trénování třídění, vyberte **trénování** tlačítko. Třídění všech aktuálních imagí používá k vytvoření modelu, který identifikuje vizuální kvality jednotlivé značky.
+Chcete-li naučit třídění, vyberte tlačítko **výuka** . Klasifikátor používá všechny aktuální image k vytvoření modelu, který identifikuje vizuální vlastnosti jednotlivých značek.
 
-![Trénování tlačítko v horní části napravo od záhlaví nástrojů webové stránky](./media/getting-started-build-a-classifier/train01.png)
+![Tlačítko vlaku v pravém horním rohu panelu nástrojů záhlaví webové stránky](./media/getting-started-build-a-classifier/train01.png)
 
-Procesu trénování zabere jenom pár minut. Během této doby, zobrazí se informace o procesu trénování v **výkonu** kartu.
+Proces školení by měl trvat jen několik minut. Během této doby se na kartě **výkon** zobrazí informace o procesu školení.
 
-![Okno prohlížeče se dialogové okno školení v hlavní části](./media/getting-started-build-a-classifier/train02.png)
+![Okno prohlížeče s výukovým dialogem v hlavní části](./media/getting-started-build-a-classifier/train02.png)
 
-## <a name="evaluate-the-classifier"></a>Vyhodnocení třídění
+## <a name="evaluate-the-classifier"></a>Vyhodnotit klasifikátor
 
-Po dokončení trénování modelu výkonu odhad a zobrazit. Custom Vision Service používá imagí, které jste odeslali pro školení k výpočtu hodnot precision a Vzpomínáte, během procesu [k přeložení křížového ověření](https://en.wikipedia.org/wiki/Cross-validation_(statistics)). Přesnost a odvolání jsou dvě různé měření efektivity třídění:
+Po dokončení školení bude výkon modelu odhadnut a zobrazen. Custom Vision Service používá bitové kopie, které jste odeslali pro školení, aby bylo možné vypočítat přesnost a odvolání pomocí procesu nazývaného [křížové ověření k skládání](https://en.wikipedia.org/wiki/Cross-validation_(statistics)). Přesnost a odvolání jsou dvě odlišná měření efektivity klasifikátoru:
 
-- **Přesnost** označuje zlomek zjištěné klasifikace, které byly správně. Například pokud model identifikujete 100 bitové kopie jako psi a 99 z nich byly skutečně psů, pak přesnost by 99 %.
-- **Odvolat** označuje zlomek skutečné klasifikace, které byly identifikovány správně. Například pokud bylo ve skutečnosti 100 imagí jablka a modelu identifikované jako jablka 80, bude odvolání 80 %.
+- **Přesnost** označuje zlomek identifikovaných klasifikací, které byly správné. Například pokud model identifikoval 100 obrázků jako psi a 99 z nich byly ve skutečnosti psi, pak přesnost by byla 99%.
+- **Odvolání** indikuje zlomek skutečných klasifikací, které byly správně identifikovány. Pokud by například existovaly skutečné 100 bitové kopie jablek a model identifikoval 80 jako jablk, odvolání by bylo 80%.
 
-![Školení výsledky zobrazit celkový přesnosti a spojené s vracením a přesnost a stránkám znovu vyvolat pro jednotlivé značky v třídění.](./media/getting-started-build-a-classifier/train03.png)
+![Ve výsledcích školení se zobrazuje celková přesnost a odvolání a přesnost a odvolání jednotlivých značek v třídění.](./media/getting-started-build-a-classifier/train03.png)
 
 ### <a name="probability-threshold"></a>Prahová hodnota pravděpodobnosti
 
-Poznámka: **prahová hodnota pravděpodobnosti** posuvníku v levém podokně **výkonu** kartu. Toto je prahová hodnota pro předpokládané pravděpodobnost považovat správné při výpočtu přesnosti a odvolání.
+[!INCLUDE [probability threshold](includes/probability-threshold.md)]
 
-Interpretace prediktivních volání s prahovou hodnotou vysoká pravděpodobnost obvykle vracet výsledky s vysokou přesností na úkor spojené s vracením (nalezené klasifikace jsou správné, ale mnoho nebyly nalezeny); Prahová hodnota nízká pravděpodobnost provádí opak (většina skutečné klasifikace nebyly nalezeny, ale existují počet falešně pozitivních výsledků v rámci této sady). To na paměti měli byste nastavit prahová hodnota pravděpodobnosti podle potřeb vašeho projektu. Novější na straně klienta, byste měli použít stejnou prahová hodnota pravděpodobnosti jako filtr při příjmu výsledků předpovědí z modelu.
+## <a name="manage-training-iterations"></a>Spravovat iterace cvičení
 
-## <a name="manage-training-iterations"></a>Správa iterací školení
-
-Pokaždé, když je klasifikátor trénovat, vytvoříte nový _iterace_ s vlastní metriky výkonu aktualizované. V levém podokně můžete zobrazit všechny iterace **výkonu** kartu. V levém podokně můžete také najdou **odstranit** tlačítko, které vám umožní odstranit iteraci, pokud je zastaralý. Když odstraníte iterace, odstraňte všechny Image, jednoznačně spojených s ním.
+Pokaždé, když roznaučíte klasifikátor, vytvoříte novou _iteraci_ s vlastní aktualizovanou metrikou výkonu. Všechny své iterace můžete zobrazit v levém podokně karty **výkon** . V levém podokně se zobrazí také tlačítko **Odstranit** , které můžete použít k odstranění iterace, pokud je zastaralá. Odstraněním iterace odstraníte všechny bitové kopie, které s ní jsou jednoznačně přidružené.
 
 ## <a name="next-steps"></a>Další postup
 
-V této příručce jste zjistili, jak vytvořit a trénování modelu klasifikace obrázků na webu Custom Vision. V dalším kroku získáte další informace o iterativní proces zlepšit váš model.
+V tomto rychlém startu jste zjistili, jak vytvořit a naučit model klasifikace obrázků pomocí Custom Vision webu. Dále Získejte další informace o iterativním procesu zlepšení modelu.
 
-[Testování a přetrénování modelu](test-your-model.md)
+> [!div class="nextstepaction"]
+> [Testování a přetrénování modelu](test-your-model.md)
 

@@ -1,7 +1,7 @@
 ---
-title: 'Funkce: Akce a kontextu - Personalizer'
+title: 'Funkce: Akce a kontext – přizpůsobování'
 titleSuffix: Azure Cognitive Services
-description: Personalizer používá funkce, informace o akce a kontextu, a nabízí lepší návrhy hodnocení. Funkce mohou být velmi obecná nebo specifické položky.
+description: Přizpůsobení používá funkce, informace o akcích a kontextu k zajištění lepšího hodnocení návrhů. Funkce mohou být velmi obecné nebo specifické pro položku.
 services: cognitive-services
 author: edjez
 manager: nitinme
@@ -10,50 +10,50 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 06/24/2019
 ms.author: edjez
-ms.openlocfilehash: c317cbec02b82743c233bf36f743cea808c30c69
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 2dab7447e6051d4559f7f3985579cac9376ac7be
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68253588"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68423287"
 ---
-# <a name="features-are-information-about-actions-and-context"></a>Funkce jsou informace o akce a kontextu
+# <a name="features-are-information-about-actions-and-context"></a>Funkce jsou informace o akcích a kontextu.
 
-Služba Personalizer funguje tak, že učení, co vaše aplikace by se zobrazit uživatelům v daném kontextu.
+Služba pro přizpůsobování funguje tak, že se naučí, co by aplikace měla zobrazit uživatelům v daném kontextu.
 
-Používá personalizer **funkce**, což je informace o **aktuálního kontextu** zvolit nejlepší **akce**. Funkce představují všechny informace, které si myslíte, že může pomoct přizpůsobit, abyste dosáhli vyšší odměny. Funkce mohou být velmi obecná nebo specifické položky. 
+Přizpůsobení používá **funkce**, které jsou informace o **aktuálním kontextu** pro výběr nejlepší **Akce**. Tyto funkce reprezentují všechny informace, které si myslíte, abyste mohli dosáhnout vyšší ceny. Funkce mohou být velmi obecné nebo specifické pro položku. 
 
-Například můžete mít **funkce** o:
+Můžete mít například **funkci** o:
 
-* _Uživatele_ například `UserID`. 
-* _Obsah_ třeba když se na video `Documentary`, `Movie`, nebo `TV Series`, nebo zda maloobchodního prodeje položek je k dispozici v úložišti.
-* _Aktuální_ období dobu, jako je například den v týdnu je.
+* _Uživatel_ , jako je `UserID`například. 
+* _Obsah_ , jako je `Documentary` `Movie`například, pokud se jedná o, a, nebo zda je položka maloobchodního prodeje v obchodě k dispozici. `TV Series`
+* _Aktuální_ časové období, jako je například den v týdnu.
 
-Personalizer neuloží, omezit nebo opravit, jaké funkce můžete odeslat akce a kontextu:
+Přizpůsobené aplikace nepředepisuje, neomezuje ani neopravují funkce, které můžete odeslat pro akce a kontext:
 
-* Některé funkce pro některé akce a ne pro ostatní uživatele, můžete odeslat, pokud je nemáte. Například seriálu může mít atributy, které nemají videa.
-* Může mít některé funkce, které jsou k dispozici pouze v některých případech. Mobilní aplikace může například poskytují další informace, než na webové stránce. 
-* V průběhu času mohou přidávat a odebírat funkce o kontextu a akce. Personalizer i nadále poslechněte si dostupné informace.
-* Musí existovat alespoň jedna funkce pro daný kontext. Personalizer prázdnému kontextu nepodporuje. Při odeslání pouze dlouhodobý kontextu pokaždé, když, zvolí Personalizer akce pro hodnocení pouze týkající se funkcí v akcích. 
-* Personalizer se pokusí vybrat akce, které nejlépe vyhovuje všem uživatelům v každém okamžiku.
+* Některé funkce můžete pro některé akce Odeslat, a ne pro ostatní, pokud je nemáte. Například televizní série může mít atributy filmy.
+* Některé funkce mohou být k dispozici pouze několikrát. Například mobilní aplikace může poskytovat další informace než webová stránka. 
+* V průběhu času můžete přidat nebo odebrat funkce týkající se kontextu a akcí. Přizpůsobování se dál učí od dostupných informací.
+* Musí existovat alespoň jedna funkce pro daný kontext. Přizpůsobení nepodporuje prázdný kontext. Pokud zadáte pouze pevný kontext pokaždé, přichycení zvolí akci pro hodnocení pouze ohledně funkcí v akcích.
+* V případě funkcí kategorií nemusíte definovat možné hodnoty a nemusíte předem definovat rozsahy pro číselné hodnoty.
 
-## <a name="supported-feature-types"></a>Typy podporované funkce
+## <a name="supported-feature-types"></a>Podporované typy funkcí
 
-Personalizer podporuje funkce řetězec, číselných a logických typů.
+Přizpůsobení podporuje funkce typu String, numeric a Boolean.
 
-### <a name="how-choice-of-feature-type-affects-machine-learning-in-personalizer"></a>Jak ovlivňuje Machine Learning v Personalizer vybrat typ funkce
+### <a name="how-choice-of-feature-type-affects-machine-learning-in-personalizer"></a>Jak volba typu funkce ovlivní Machine Learning v přizpůsobování
 
-* **Řetězce**: Pro typy řetězců vytvoří pro každou kombinaci klíč a hodnotu nový váhy v Personalizer modelu strojového učení. 
-* **Číselné**: V případě počet by měl proporcionálně ovlivňují výsledek individuálního nastavení, měli byste použít číselné hodnoty. To je velmi scénář závislé. V zjednodušený příklad například při přizpůsobení maloobchodní prostředí, NumberOfPetsOwned může být funkce, která jsou číselná chcete ovlivnit přizpůsobení výsledek dvakrát nebo třikrát co s 1 pet osobám s mazlíčci 2 nebo 3. Funkce, které jsou založeny na číselná jednotek, ale pokud není lineární – například věk, teplota nebo osoba vyska - význam jsou nejlépe kódovány jako řetězce a kvalitu funkce lze obvykle vylepšit použití rozsahů. Například věk může být zakódován jako "Age": "0-5", "Age": "6-10" atd.
-* **Logická** hodnoty odeslané s hodnotou "false" act, jako kdyby jejich nebyl odeslán vůbec.
+* **Řetězce**: V případě typů řetězců každá kombinace klíče a hodnoty vytváří novou váhu v modelu strojového učení pro přizpůsobení. 
+* **Číselná**: Číselné hodnoty by měly být použity v případě, že číslo by mělo proporcionálně ovlivnit výsledek přizpůsobení. To je velmi závislé na scénáři. Ve zjednodušeném příkladu, například při přizpůsobení maloobchodního prostředí, může být NumberOfPetsOwned funkce, která je numerická, protože může chtít, aby lidé se dvěma nebo 3 domácími osobami ovlivnili výsledek přizpůsobení dvakrát nebo třikrát, a to v rozsahu 1 PET. Funkce, které jsou založené na číselných jednotkách, ale u kterých není význam lineární – například stáří, teplota nebo výška osoby – jsou nejlépe kódované jako řetězce a kvalita funkcí se může obvykle zlepšit pomocí rozsahů. Například stáří může být kódováno jako "stáří": "0-5", "stáří": "6-10" atd.
+* **Logické** hodnoty odeslané s hodnotou false fungují jako v případě, že jste byly odeslány vůbec.
 
-Funkce, které nejsou k dispozici vyloučeny z požadavku. Vyhněte se funkce s hodnotou null pro odesílání, protože ho budou zpracovány jako existující a s hodnotou "null" při cvičení modelu.
+Funkce, které nejsou k dispozici, by měly být z požadavku vynechány. Vyhněte se posílání funkcí s hodnotou null, protože se při výuce modelu zpracuje jako stávající a s hodnotou null.
 
-## <a name="categorize-features-with-namespaces"></a>Kategorizace funkce s obory názvů
+## <a name="categorize-features-with-namespaces"></a>Kategorizace funkcí s obory názvů
 
-Personalizer přijímá funkce, které jsou uspořádány do oborů názvů. Můžete určit, v aplikaci, pokud se používají obory názvů a co by měl být. Obory názvů slouží k seskupení funkce podobné tématu nebo funkce, které pocházejí z určitého zdroje.
+Přizpůsobování přebírá funkce uspořádané do oborů názvů. V aplikaci určíte, zda jsou obory názvů použity a co mají být. Obory názvů slouží k seskupení funkcí podobného tématu nebo funkcí, které pocházejí z určitého zdroje.
 
-Následují příklady funkce obory názvů používané aplikacemi:
+Následují příklady oborů názvů funkcí používaných aplikacemi:
 
 * User_Profile_from_CRM
 * Time
@@ -66,12 +66,12 @@ Následují příklady funkce obory názvů používané aplikacemi:
 * current_time
 * NewsArticle_TextAnalytics
 
-Funkce obory názvů vlastních konvencemi jako jsou platný klíčů JSON můžete pojmenovat. Obory názvů slouží k uspořádání funkce v různých skupinách a k rozlišení funkce s podobnými názvy. Si můžete představit obory názvů jako předponu"", který je přidán do názvů funkcí. Obory názvů nemůže být vnořený.
+Obory názvů funkcí můžete pojmenovat podle vlastních konvencí, pokud jsou platné klíče JSON. Obory názvů slouží k uspořádání funkcí do různých sad a k jednoznačnému využití funkcí s podobnými názvy. Obory názvů si můžete představit jako předponu, která je přidána do názvů funkcí. Obory názvů nemůžou být vnořené.
 
 
-V následujícím kódu JSON `user`, `state`, a `device` jsou funkce obory názvů. Poznámka: ve verzi Public Preview: Aktuálně důrazně doporučujeme použití názvů pro funkce obory názvů, které jsou na základě kódování UTF-8 a začněte s různá písmena. Například `user`, `state`, a `device` začínat `u`, `s`, a `d`. Momentálně se vyskytl oborů názvů se stejným první znaky by mohlo způsobit kolizí v indexy použité pro machine learning.
+V následujících JSON, `user` `state`, a `device` jsou obory názvů funkcí. Public Preview Poznámka: V současné době důrazně doporučujeme používat názvy pro obory názvů funkcí, které jsou založené na kódování UTF-8 a začínají s různými písmeny. `user`Například ,,`s`a začnětes`u` ,`d`a. `device` `state` V současné době by obory názvů se stejnými prvními znaky mohly způsobit kolizi v indexech použitých pro strojové učení.
 
-Objekty JSON může obsahovat vnořené objekty JSON a jednoduché vlastnosti a hodnoty. Pole může obsahovat pouze v případě, že jsou položky pole čísel. 
+Objekty JSON můžou zahrnovat vnořené objekty JSON a jednoduché vlastnosti nebo hodnoty. Pole lze zahrnout pouze v případě, že položky pole jsou čísla. 
 
 ```JSON
 {
@@ -98,109 +98,109 @@ Objekty JSON může obsahovat vnořené objekty JSON a jednoduché vlastnosti a 
 }
 ```
 
-## <a name="how-to-make-feature-sets-more-effective-for-personalizer"></a>Jak se funkce nastaví pro Personalizer zefektivnit?
+## <a name="how-to-make-feature-sets-more-effective-for-personalizer"></a>Jak nastavit efektivnější nastavení funkcí pro přizpůsobení
 
-Sada dobré funkcí pomáhá Personalizer zjistěte, jak předvídat akce, které vyvolají potřebu nejvyšší. 
+Dobrá sada funkcí pomáhá přizpůsobovat, jak předpovědět akci, která bude řídit nejvyšší odměnu. 
 
-Vezměte v úvahu odesílání funkce do rozhraní API pořadí Personalizer, postupujte podle následujících doporučení:
+Zvažte odeslání funkcí rozhraní API pro řazení přizpůsobeného rozhraní, které se řídí těmito doporučeními:
 
-* Nejsou k dispozici dostatek funkcí, které jednotky přizpůsobení. Čím více přesně obsahu musí být cílem, jsou potřeba další funkce.
+* K dispozici je dostatek funkcí pro přizpůsobení. Přesnější cílení obsahu vyžaduje, aby bylo potřeba víc funkcí.
 
-* Existuje dostatek funkcí z různých *hustoty*. Funkce je *dense* Pokud mnoho položek jsou seskupené v několika kontejnerů. Například můžete být tisíce videa jsou klasifikovány jako "Dlouhý" (více než 5 minut dlouhé) a "Krátký" (v části 5 minut dlouhé). Jde *velmi dense* funkce. Stejné tisíců položek na druhé straně může mít atribut s názvem "Title", který téměř nikdy má stejnou hodnotu z jedné položky do jiného. Jedná se velmi bez bohatém nebo *zhuštěné* funkce.  
+* Existuje dostatek funkcí různých *hustot*. Funkce je *zhuštěná* , pokud je v několika intervalech seskupeno mnoho položek. Například tisíce videí mohou být klasifikovány jako "Long" (více než 5 minut dlouhé) a "krátká" (méně než 5 minut). Toto je *velmi zhuštěná* funkce. Na druhé straně stejné tisíce položek mohou mít atribut nazvaný "title", který téměř nikdy nebude mít stejnou hodnotu z jedné položky do druhé. Toto je velmi nezhuštěná nebo zhuštěná  funkce.  
 
-Funkce s vysokou hustotou pomůže Personalizer potom údaje extrapolovat učení z jedné položky do jiného. Ale pokud existuje pouze několik funkcí, jsou příliš dense Personalizer se pokusí přesně cíl obsahu s pouze několika kontejnerů lze vybírat.
+Funkce vysoké hustoty pomáhá přizpůsobování odvodit z jedné položky do druhé. Pokud ale existuje jenom několik funkcí a jsou moc husté, přizpůsobené aplikace se pokusí přesně cílit na obsah, který se dá vybrat jenom v několika intervalech.
 
-### <a name="improve-feature-sets"></a>Vylepšení sady funkcí 
+### <a name="improve-feature-sets"></a>Vylepšení sad funkcí 
 
-Analýza chování uživatele tímto způsobem zkušební verzi v režimu Offline. Můžete se podívat na posledních dat a zjistit, co funkce silně přispíváte do kladnou odměny a ty, které přispívají menší. Můžete zjistit, co funkce pomáhají a bude až vás a vaše aplikace lépe funkcích odesílat Personalizer a dosáhnout ještě lepších výsledků.
+Proveďte analýzu chování uživatele provedením vyhodnocení offline. To vám umožní podívat se na minulá data a zjistit, jaké funkce jsou silně přispívající k kladným rozdílům, které přispívají méně. Můžete se podívat, jaké funkce vám pomáhají, a bude až do vaší aplikace, abyste našli lepší funkce pro odeslání do přizpůsobeného nástroje, aby bylo možné ještě víc zlepšit výsledky.
 
-Tyto následující části jsou běžné postupy pro zlepšení odesílat Personalizer funkce.
+Tyto části jsou běžné postupy pro vylepšení funkcí odesílaných na přizpůsobení.
 
-#### <a name="make-features-more-dense"></a>Ujistěte se, funkce více dense
+#### <a name="make-features-more-dense"></a>Udělejte větší zhuštěné funkce
 
-Je možné ke zlepšení vaší sady funkcí tak, že upravíte, aby byly větší a víc nebo míň dense.
+Je možné vylepšit sady funkcí jejich úpravou, aby byly větší a více nebo méně zhuštěné.
 
-Například na druhé časové razítko je velmi zhuštěné funkce. Ji může nastavit na hustém zefektivnit (?) tříděním časy do "ráno", "poledne", "odpoledne" atd.
+Například časové razítko dolů na druhou je velmi zhuštěná funkce. Je možné, že je možné provést více hustě (v platnosti) tím, že rozklasifikujete časy do "ráno", "poledne", "odpoledne" atd.
 
 
-#### <a name="expand-feature-sets-with-extrapolated-information"></a>Rozbalte sady funkcí extrapolované informacemi
+#### <a name="expand-feature-sets-with-extrapolated-information"></a>Rozbalení sad funkcí s použitím extrapolace informací
 
-Můžete také získat další funkce podle přemýšlet o neprozkoumaných atributy, které mohou být odvozeny z informací, které už máte. Například v seznamu individuálního nastavení fiktivní film, je možné, který pracovní den víkendu vs elicits různé chování uživatelů? Čas může mít atribut "víkendu" nebo "den v týdnu" rozšířit. Státních svátků v kulturní jednotka pozornost k určitým typům film? Například "Halloweenem" atribut je užitečné v místech, kde je relevantní. Je možné, že destivo počasí má významný dopad na řadu videa pro mnoho uživatelů? V čase a místě může poskytovat služby weather, informace a můžete ho přidat jako další funkce. 
+Můžete také získat více funkcí tak, že si myslíte neprozkoumatelné atributy, které mohou být odvozeny z informací, které už máte. Například v fiktivním přizpůsobení seznamu filmů je možné, že víkendový vs v týdnu zjistí různé chování od uživatelů? Čas se dá rozšířit tak, aby měl atribut "víkend" nebo "Weekday". Máte pozor na konkrétní typy filmů národní kulturní svátky? Například atribut "Halloweenem" je užitečný v místech, kde je relevantní. Je možné, že povětrnostní počasí má výrazný dopad na výběr filmu pro mnoho lidí? V čase a na místě může služba počasí poskytnout tyto informace a můžete ji přidat jako další funkci. 
 
-#### <a name="expand-feature-sets-with-artificial-intelligence-and-cognitive-services"></a>Rozbalte sady funkcí pomocí umělé inteligence a cognitive services
+#### <a name="expand-feature-sets-with-artificial-intelligence-and-cognitive-services"></a>Rozbalení sad funkcí s umělou logikou a rozpoznáváním služeb
 
-Umělá inteligence a Cognitive Services připravené ke spuštění může být velmi účinné přidání do Personalizer. 
+Umělá logika a Cognitive Services připravená ke spuštění můžou být velmi výkonným doplňkem k přizpůsobenému nástroji. 
 
-Předběžného zpracování položek pomocí služby umělé inteligence, můžete automaticky extrahovat informace, které by mohla být relevantní pro přizpůsobení.
+Díky předzpracování vašich položek pomocí umělých analytických služeb můžete automaticky extrahovat informace, které jsou pravděpodobně relevantní pro přizpůsobení.
 
 Příklad:
 
-* Můžete spustit film prostřednictvím [Video Indexer](https://azure.microsoft.com/services/media-services/video-indexer/) extrahovat prvky scény, text, mínění a mnoho dalších atributů. Tyto atributy lze pak provést více hustému tak, aby odrážely charakteristiky, které nebyly k dispozici původní metadata položky. 
-* Image je možné spustit prostřednictvím objektu zjišťování, tváří prostřednictvím mínění, atd.
-* Informace v textu se dají rozšířit tak, že extrahují entity, mínění, rozbalení entity, které Bing knowledge graphu a tak dál.
+* Můžete spustit filmový soubor prostřednictvím [video indexer](https://azure.microsoft.com/services/media-services/video-indexer/) k extrakci elementů scény, text, mínění a mnoha dalších atributů. Tyto atributy je pak možné odrážet tak, aby odrážely vlastnosti, které původní metadata položky neobsahovaly. 
+* Image je možné spouštět pomocí detekce objektů, plošek až po mínění atd.
+* Informace v textu lze rozšířit extrahováním entit, mínění, rozbalováním entit pomocí nástroje Bing Knowledge Graph atd.
 
-Můžete použít několik dalších [Azure Cognitive Services](https://www.microsoft.com/cognitive-services), třeba
+Můžete použít několik dalších [Cognitive Services Azure](https://www.microsoft.com/cognitive-services), například
 
-* [Rozhraní entity Linking](../entitylinking/home.md)
+* [Propojení entit](../entitylinking/home.md)
 * [Analýza textu](../text-analytics/overview.md)
 * [Rozpoznávání emocí](../emotion/home.md)
 * [Počítačové zpracování obrazu](../computer-vision/home.md)
 
-## <a name="actions-represent-a-list-of-options"></a>Akce představují seznam možností
+## <a name="actions-represent-a-list-of-options"></a>Akce reprezentují seznam možností.
 
 Každá akce:
 
-* Nemá identifikátor.
+* Má ID.
 * Obsahuje seznam funkcí.
-* Seznam funkcí může být velký (stovky), ale doporučujeme vyhodnotit funkce efektivitu odebrat funkce, které nejsou přispět k získání odměny. 
-* Funkce **akce** může nebo nemusí být jakákoli korelace s funkcemi v **kontextu** používané Personalizer.
-* Funkce pro akce mohou být přítomny v některé akce ale ne pro jiné. 
-* Funkce pro určité ID akce může být k dispozici jeden den, ale později přestanou být dostupné. 
+* Seznam funkcí může být velký (stovky), ale doporučujeme vyhodnotit efektivitu funkcí a odebrat funkce, které nepřispívají k získání neprospěchu. 
+* Funkce v akcích  mohou nebo nemusí mít žádnou korelaci s funkcemi v **kontextu** , který používá přizpůsobený modul.
+* V některých akcích se můžou vyskytovat funkce pro akce, které ne ostatní. 
+* Funkce pro konkrétní ID akce mohou být k dispozici po jednom dni, ale později v ní nejsou k dispozici. 
 
-Společnosti personalizer algoritmů strojového učení provede lépe, když jsou sady funkcí stabilní, ale pořadí volání nebude selhat, pokud tuto funkci nastavit změn v čase.
+Algoritmy strojového učení pro přizpůsobení budou lepší, když budou existovat stabilní sady funkcí, ale pokud se sada funkcí změní v průběhu času, volání pořadí se nezdaří.
 
-Neodesílat ve více než 50 akcí při hodnocení akce. Může se jednat stejné akce 50 pokaždé, když nebo může změnit. Například pokud máte 10 000 položek pro aplikaci elektronického obchodování katalog produktů, můžete použít doporučení nebo filtrování engine k určení horní 40 zákazník může a použít Personalizer a vyberte ten, který se bude generovat většina reward (například bude uživatel přidat do košíku) pro aktuální kontext.
+Neodesílat při akcích řazení více než 50 akcí. Může se jednat o stejné 50 akce pokaždé, když se můžou změnit. Například pokud máte katalog produktů s 10 000 položkami pro aplikaci pro elektronické obchodování, můžete použít modul pro vyfiltrování doporučení nebo filtrování k určení největšího 40 zákazníka, a k nalezení toho, který z nich vygeneruje největší odměnu, použijte individuální nastavení. (například , bude uživatel přidán do košíku) pro aktuální kontext.
 
 
 ### <a name="examples-of-actions"></a>Příklady akcí
 
-Akce, které odesíláte do rozhraní API pořadí bude záviset na co se pokoušíte přizpůsobit.
+Akce, které zadáte do rozhraní API řazení, budou záviset na tom, co se snažíte přizpůsobit.
 
 Následuje několik příkladů:
 
 |Účel|Action|
 |--|--|
-|Přizpůsobení, něž je zvýrazněn na webu zpráv.|Každá akce je potenciální zpravodajskému článku.|
-|Optimalizujte umístění ad na webu.|Každá akce bude rozložení nebo pravidla pro vytváření rozložení pro reklamu (například v horní části na správné, malé obrázky, velké obrázky).|
-|Zobrazte přizpůsobené hodnocení Doporučené položky na nákupního webu.|Každá akce je konkrétní produkt.|
-|Navrhněte prvky uživatelského rozhraní, jako jsou filtry, které platí pro konkrétní fotografie.|Každá akce může být jiný filtr.|
-|Zvolte chatovací robot odpovědi pro upřesnění záměru uživatele nebo v něm navrhnout akci.|Každá akce je možnost, jak interpretovat odpověď.|
-|Zvolte, co chcete zobrazit v horní části seznamu výsledků hledání|Každá akce je jedním z nejlepší několik výsledky hledání.|
+|Přizpůsobení článku, který je zvýrazněný na webu příspěvky|Každá akce je potenciálně novinkou.|
+|Optimalizujte umístění reklamy na webu.|Každá akce bude rozložení nebo pravidla, která vytvoří rozložení pro reklamy (například nahoře, malý obrázek a velké obrázky).|
+|Zobrazení individuálního hodnocení doporučených položek na nákupním webu.|Každá akce je konkrétní produkt.|
+|Navrhněte prvky uživatelského rozhraní, jako jsou filtry, které se mají použít pro konkrétní fotografii.|Každá akce může být jiný filtr.|
+|Vyberte odpověď robota pro chat k objasnění záměru uživatele nebo navrhnout akci.|Každá akce je možností, jak interpretovat odpověď.|
+|Vyberte, co se má zobrazit na začátku seznamu výsledků hledání.|Každá akce je jedním z nejdůležitějších výsledků hledání.|
 
 
 ### <a name="examples-of-features-for-actions"></a>Příklady funkcí pro akce
 
-Následující jsou dobrým příkladem funkcí pro akce. Toto bude záviset mnohem na každou aplikaci.
+Níže jsou uvedeny dobré příklady funkcí pro akce. Ty budou záviset na každé aplikaci.
 
-* Funkce s vlastnostmi akce. Například je filmu nebo řady tv?
-* Funkce, o jak uživatelé mohou mít interakci s touto akcí v minulosti. Například toto video je ve většině případů vidět lidí v demografické údaje A nebo B, je obvykle hraní více než jednou.
-* Funkce charakteristiky jak uživatel *vidí* akce. Například se plakát pro video ukazuje miniatur zahrnout tváří, autech nebo prostředí?
+* Funkce s charakteristikou akcí. Například jde o film nebo televizní seriál?
+* Funkce, jak uživatelé mohli s touto akcí pracovat v minulosti. Například tento film je většinou vidět lidem v demografických údajích A nebo B, obvykle se nehraje více než jednou.
+* Funkce týkající se vlastností, jak uživatel *uvidí* akce Například obrázek plakátu pro film zobrazený v miniatuře obsahuje obličeje, automobily nebo krajinu?
 
 ### <a name="load-actions-from-the-client-application"></a>Načíst akce z klientské aplikace
 
-Funkce z akcí může obvykle pocházejí z systémy správy obsahu, katalogy a doporučené systémy. Aplikace zodpovídá za načítání informace o akcích z příslušných databází a systémů, na které máte. Pokud vaše akce neměnit nebo znova načíst pokaždé, když má zbytečné dopad na výkon, můžete přidat logiky v aplikaci pro ukládání do mezipaměti tyto informace.
+K funkcím z akcí může typicky docházet ze systémů správy obsahu, katalogů a doporučených systémů. Vaše aplikace zodpovídá za načítání informací o akcích z příslušných databází a systémů, které máte. Pokud se vaše akce nezmění ani se nenačte, když má nepotřebný dopad na výkon, můžete do své aplikace přidat logiku pro ukládání těchto informací do mezipaměti.
 
-### <a name="prevent-actions-from-being-ranked"></a>Chránit proti akcím z řazené
+### <a name="prevent-actions-from-being-ranked"></a>Zabránit seřazení akcí
 
-V některých případech jsou akce, které nechcete zobrazit uživatelům. Nejlepší způsob, jak zabránit akci z řazené podle nejvyššího je nechcete zahrnout do seznamu akcí pořadí rozhraní API na prvním místě.
+V některých případech existují akce, které nechcete zobrazovat uživatelům. Nejlepším způsobem, jak zabránit řazení akce v pořadí podle nejvyšší úrovně, není jejich zahrnutí v seznamu akcí do rozhraní API řazení na prvním místě.
 
-V některých případech je určen pouze později v obchodní logiky Pokud výsledném _akce_ API pořadí volání je zobrazený uživateli. Pro tyto případy, byste měli použít _neaktivní události_.
+V některých případech se dá určit jenom později v obchodní logice, pokud by se uživateli zobrazila výsledná _Akce_ volání rozhraní API řazení. V těchto případech byste měli používat _neaktivní události_.
 
 ## <a name="json-format-for-actions"></a>Formát JSON pro akce
 
-Při volání metody pořadí, odešlete několik akcí na výběr:
+Při volání Rank budete odesílat několik akcí, které si můžete vybrat:
 
-Objekty JSON může obsahovat vnořené objekty JSON a jednoduché vlastnosti a hodnoty. Pole může obsahovat pouze v případě, že jsou položky pole čísel. 
+Objekty JSON můžou zahrnovat vnořené objekty JSON a jednoduché vlastnosti nebo hodnoty. Pole lze zahrnout pouze v případě, že položky pole jsou čísla. 
 
 ```json
 {
@@ -267,21 +267,21 @@ Objekty JSON může obsahovat vnořené objekty JSON a jednoduché vlastnosti a 
 
 ## <a name="examples-of-context-information"></a>Příklady informací o kontextu
 
-Informace o _kontextu_ závisí na každý případ použití, ale obvykle může obsahovat informace, jako:
+Informace pro _kontext_ závisí na každé aplikaci a v případu použití, ale obvykle mohou zahrnovat například tyto informace:
 
-* Profil a demografické informace o uživateli.
-* Informace o extrahují z hlavičky protokolu HTTP, jako je například uživatelského agenta nebo odvozený z HTTP informace, jako je reverzní geografické vyhledávání na základě IP adres.
-* Informace o aktuální čas, jako je například den v týdnu, víkendu nebo Ne, dopoledne nebo odpoledne svátcích nebo Ne, atd.
-* Informace získané z mobilních aplikací, jako je například umístění, přesouvání nebo stav baterie.
-* Historické agregace chování uživatelů – například jaké jsou žánry film tohoto uživatele nezobrazil na maximum.
+* Demografické a profilové informace o uživateli.
+* Informace extrahované z hlaviček protokolu HTTP, jako je například Agent pro uživatele, nebo odvozené z informací HTTP, jako jsou reverzní geografické vyhledávání na základě IP adres.
+* Informace o aktuálním čase, jako je například den v týdnu, víkend nebo not, ráno nebo odpoledne, svátky atd.
+* Informace extrahované z mobilních aplikací, jako je například poloha, pohyb nebo úroveň baterie.
+* Historické agregované hodnoty chování uživatelů – například to, jaké jsou filmové žánry, které tento uživatel zobrazil nejvíc.
 
-Aplikace zodpovídá za načítání informací o kontextu z příslušných databází, senzorů a systémů, které máte uzavřeny. Pokud nedojde ke změně informace o kontextu, můžete přidat logiky v aplikaci pro ukládání do mezipaměti tyto informace před odesláním do rozhraní API pro řazení.
+Vaše aplikace zodpovídá za načítání informací o kontextu z příslušných databází, senzorů a systémů, které jste pravděpodobně nastavili. Pokud se informace o kontextu nezmění, můžete do své aplikace přidat logiku pro ukládání těchto informací do mezipaměti, než ji odešlete do rozhraní API pro řazení.
 
 ## <a name="json-format-for-context"></a>Formát JSON pro kontext 
 
-Kontext je vyjádřena jako objekt JSON, který je odeslán do rozhraní API pořadí:
+Kontext je vyjádřen jako objekt JSON, který se odesílá do rozhraní API řazení:
 
-Objekty JSON může obsahovat vnořené objekty JSON a jednoduché vlastnosti a hodnoty. Pole může obsahovat pouze v případě, že jsou položky pole čísel. 
+Objekty JSON můžou zahrnovat vnořené objekty JSON a jednoduché vlastnosti nebo hodnoty. Pole lze zahrnout pouze v případě, že položky pole jsou čísla. 
 
 ```JSON
 {
@@ -311,4 +311,4 @@ Objekty JSON může obsahovat vnořené objekty JSON a jednoduché vlastnosti a 
 
 ## <a name="next-steps"></a>Další postup
 
-[Zpětnovazebnému učení](concepts-reinforcement-learning.md) 
+[Posílení učení](concepts-reinforcement-learning.md) 

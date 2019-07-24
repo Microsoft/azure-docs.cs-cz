@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Vytvoření vlastního vyhledávání webové stránky – vlastní vyhledávání Bingu'
-titlesuffix: Azure Cognitive Services
+title: 'Kurz: Vytvoření vlastní webové stránky vyhledávání – Vlastní vyhledávání Bingu'
+titleSuffix: Azure Cognitive Services
 description: Tento kurz popisuje postup konfigurace instance vlastního vyhledávání a její integrace do webové stránky.
 services: cognitive-services
 author: aahill
@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: tutorial
 ms.date: 03/04/2019
 ms.author: aahi
-ms.openlocfilehash: 0870983fe9f0ae64090652f02c526a370064b8ab
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.openlocfilehash: 3a8d6a831adf24212191a103dcf356bbe74d7962
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65595885"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68405227"
 ---
 # <a name="tutorial-build-a-custom-search-web-page"></a>Kurz: Vytvoření webové stránky pro vlastní vyhledávání
 
@@ -35,7 +35,7 @@ Probírají se tyto úlohy:
 ## <a name="prerequisites"></a>Požadavky
 
 - Abyste mohli postupovat podle tohoto kurzu, potřebujete klíč předplatného pro rozhraní API pro vlastní vyhledávání Bingu.  Postup, jak klíč získat, najdete v tématu [Zkuste služby Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search).
-- Pokud ještě nemáte Visual Studio 2017 nebo novější, můžete stáhnout a použít **bezplatné** [Visual Studio. 2019 Community Edition](https://www.visualstudio.com/downloads/).
+- Pokud ještě nemáte nainstalovanou aplikaci Visual Studio 2017 nebo novější, můžete si stáhnout a použít **bezplatnou** [edici Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/).
 
 ## <a name="create-a-custom-search-instance"></a>Vytvoření instance vlastního vyhledávání
 
@@ -127,10 +127,10 @@ Vlastní vyhledávání poskytuje hostované uživatelské rozhraní pro vykresl
 
 Hostované uživatelské rozhraní můžete používat dvěma způsoby.  
 
-- Option 1: Integrace zadaný fragment kódu jazyka JavaScript do vaší aplikace.
-- Option 2: Použití koncového bodu ve formátu HTML za předpokladu.
+- Možnost 1: Integrujte poskytnutý fragment kódu jazyka JavaScript do aplikace.
+- Možnost 2: Použijte zadaný koncový bod HTML.
 
-Zbývající část tohoto kurzu ukazuje **možnost 1: Fragment kódu jazyka JavaScript**.  
+Zbývající část tohoto kurzu ilustruje **možnost 1: Fragment kódu**JavaScriptu.  
 
 ## <a name="set-up-your-visual-studio-solution"></a>Nastavení řešení v sadě Visual Studio
 

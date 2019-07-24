@@ -1,7 +1,7 @@
 ---
-title: Odesílání požadavků na rozhraní API pro automatické návrhy Bingu
-titlesuffix: Azure Cognitive Services
-description: Zjistěte, jak posílat žádosti na rozhraní API pro automatické návrhy Bingu.
+title: Odesílání požadavků do rozhraní API pro automatické návrhy Bingu
+titleSuffix: Azure Cognitive Services
+description: Naučte se odesílat požadavky do rozhraní API pro automatické návrhy Bingu.
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
@@ -10,43 +10,43 @@ ms.subservice: bing-autosuggest
 ms.topic: quickstart
 ms.date: 06/27/2019
 ms.author: scottwhi
-ms.openlocfilehash: fe35901f7d084fd96cb4c164e957391bfe2346a9
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.openlocfilehash: 6ece70b78166578cd4ef391d761b0e4e478f4f04
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67542627"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68405356"
 ---
-# <a name="sending-requests-to-the-bing-autosuggest-api"></a>Odesílání požadavků na rozhraní API pro automatické návrhy Bingu.
+# <a name="sending-requests-to-the-bing-autosuggest-api"></a>Odesílání požadavků do rozhraní API pro automatické návrhy Bingu.
 
-Pokud vaše aplikace posílá dotazy na některý z rozhraní API pro vyhledávání Bingu, můžete zlepšit možnosti vašich uživatelů hledání rozhraní API pro automatické návrhy Bingu. Rozhraní API pro automatické návrhy Bingu vrátí seznam navrhovaných dotazů na základě řetězce dotazu částečné do vyhledávacího pole. Jak znaků se zadávají do vyhledávacího pole ve vaší aplikaci, můžete zobrazit návrhy v rozevíracím seznamu. Další informace o odesílání požadavků k tomuto rozhraní API pomocí tohoto článku. 
+Pokud vaše aplikace odesílá dotazy do některého z rozhraní API pro vyhledávání Bingu, můžete pomocí rozhraní API pro automatické návrhy Bingu vylepšit možnosti vyhledávání vašich uživatelů. Rozhraní API pro automatické návrhy Bingu vrátí seznam navrhovaných dotazů na základě částečného řetězce dotazu ve vyhledávacím poli. Do vyhledávacího pole ve vaší aplikaci se jako znaky zadávají v rozevíracím seznamu, kde můžete zobrazit návrhy. V tomto článku se dozvíte víc o odesílání požadavků do tohoto rozhraní API. 
 
-## <a name="bing-autosuggest-api-endpoint"></a>Koncový bod rozhraní API pro automatické návrhy Bingu
+## <a name="bing-autosuggest-api-endpoint"></a>rozhraní API pro automatické návrhy Bingu koncový bod
 
-**Rozhraní API pro automatické návrhy Bingu** zahrnuje jeden koncový bod, který vrátí seznam navrhovaných dotazů z hledaný termín.
+**Rozhraní API pro automatické návrhy Bingu** obsahuje jeden koncový bod, který vrací seznam navrhovaných dotazů z částečného hledaného výrazu.
 
-Chcete-li získat navrhované dotazy pomocí rozhraní API Bingu pro odeslání `GET` požadavek na následující koncový bod. Použijte k definování další specifikace hlaviček a parametrů adresy URL.
+Pokud chcete získat navrhované dotazy pomocí rozhraní API Bingu, `GET` odešlete požadavek na následující koncový bod. K definování dalších specifikací použijte záhlaví a parametry URL.
 
-**Koncový bod:** Návrhy hledání vrátí jako výsledky JSON, které se týkají vstupu uživatele určené `?q=""`.
+**Služba** Vrátí návrhy hledání jako výsledky JSON, které jsou relevantní pro vstup uživatele definovaný pomocí `?q=""`.
 
 ```http
 GET https://api.cognitive.microsoft.com/bing/v7.0/Suggestions 
 ```
 
-Podrobnosti o záhlaví, parametry, kódy na trhu, objekty odpovědi, chyby dále, viz [rozhraní API pro automatické návrhy Bingu v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference) odkaz.
+Podrobnosti o hlavičkách, parametrech, kódech trhu, objektech odpovědí, chybách atd. naleznete v tématu [rozhraní API pro automatické návrhy Bingu v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference) reference.
 
-**Bingu** rozhraní API podporují akce hledání, které vracejí výsledky podle jejich typu. Všechny koncové body hledání vrátí výsledky jako objekty JSON odpovědi.
-Všechny koncové body podporují dotazy využívající vrátit konkrétní jazyk a/nebo umístění longitude, latitude a vyhledávání protokolu radius.
+Rozhraní API **Bing** podporují akce hledání, které vracejí výsledky podle jejich typu. Všechny koncové body hledání vrátí výsledky jako objekty odezvy JSON.
+Všechny koncové body podporují dotazy, které vracejí konkrétní jazyk a umístění podle délky, zeměpisné šířky a poloměru hledání.
 
-Podrobnější informace o parametrech podporuje každý koncový bod najdete v referenčních stránkách pro jednotlivé typy.
-Příklady základní požadavky na používání rozhraní API pro automatické návrhy najdete v tématu [rychlých startů pro automatické návrhy](https://docs.microsoft.com/azure/cognitive-services/Bing-Autosuggest).
+Úplné informace o parametrech podporovaných každým koncovým bodem naleznete na referenčních stránkách pro každý typ.
+Příklady základních požadavků využívajících rozhraní API pro automatické návrhy najdete v tématu [rychlé starty](https://docs.microsoft.com/azure/cognitive-services/Bing-Autosuggest)pro automatické návrhy.
 
-## <a name="bing-autosuggest-api-requests"></a>Žádosti rozhraní API pro automatické návrhy Bingu
+## <a name="bing-autosuggest-api-requests"></a>rozhraní API pro automatické návrhy Bingu žádosti
 
 > [!NOTE]
 > * Požadavky na rozhraní API pro automatické návrhy Bingu musí používat protokol HTTPS.
 
-Doporučujeme, aby všechny požadavky pocházely ze serveru. Distribuce klíč v rámci klientské aplikace poskytuje další příležitosti škodlivým přístupem třetích stran. Kromě toho volání ze serveru poskytuje jediný bod upgradu pro budoucí aktualizace.
+Doporučujeme, aby všechny požadavky pocházely ze serveru. Při distribuci klíče jako součásti klientské aplikace je k dispozici více příležitostí ke škodlivému přístupu třetích stran. Kromě toho volání ze serveru poskytuje jeden bod upgradu pro budoucí aktualizace.
 
 Požadavek musí obsahovat parametr dotazu [q](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#query), který obsahuje částečný hledaný termín daného uživatele. Přestože je volitelný, měl by požadavek obsahovat také parametr dotazu [mkt](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#mkt), který identifikuje trh, ze kterého chcete obdržet výsledky. Seznam volitelných parametrů dotazu najdete v tématu [Parametry dotazu](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#query-parameters). Všechny hodnoty parametru dotazu musí mít kódování URL.
 
@@ -62,15 +62,15 @@ IP a hlavičky klienta jsou důležité pro vrácení obsahu závislého na umí
 Seznam všech hlaviček žádostí a odpovědí najdete v části s [hlavičkami](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#headers).
 
 > [!NOTE]
-> Při volání rozhraní API pro automatické návrhy Bingu z jazyka JavaScript v prohlížeči integrovaných funkcí zabezpečení může můžete zabránit v přístupu k hodnoty těchto hlaviček.
+> Při volání rozhraní API pro automatické návrhy Bingu z JavaScriptu, integrované funkce zabezpečení prohlížeče vám můžou zabránit v přístupu k hodnotám těchto hlaviček.
 
-Chcete-li tento problém vyřešit, můžete provést požadavek na rozhraní API pro automatické návrhy Bingu prostřednictvím proxy serveru CORS. Odpověď od takový proxy server má `Access-Control-Expose-Headers` záhlaví této hlavičky odpovědi seznamů povolených a zpřístupňuje je pro jazyk JavaScript.
+Pokud to chcete vyřešit, můžete žádost o rozhraní API pro automatické návrhy Bingu vytvořit prostřednictvím serveru proxy CORS. Odpověď z takového serveru proxy má `Access-Control-Expose-Headers` záhlaví, které obsahuje hlavičky odpovědí a zpřístupňuje je pro JavaScript.
 
-Je snadné k instalaci proxy CORS a povolit naše [ukázková aplikace](../tutorials/autosuggest.md) záhlaví volitelný klientský přístup. Nejdřív [nainstalujte Node.js](https://nodejs.org/en/download/), pokud jste to ještě neudělali. Potom zadejte následující příkaz z příkazového řádku.
+Je snadné nainstalovat proxy CORS, aby mohla naše [aplikace](../tutorials/autosuggest.md) získat přístup k volitelným hlavičkám klienta. Nejdřív [nainstalujte Node.js](https://nodejs.org/en/download/), pokud jste to ještě neudělali. Pak na příkazovém řádku zadejte následující příkaz.
 
     npm install -g cors-proxy-server
 
-V dalším kroku změňte v souboru HTML, aby koncový bod rozhraní API pro automatické návrhy Bingu:
+Dále změňte koncový bod rozhraní API pro automatické návrhy Bingu v souboru HTML na:
 
     http://localhost:9090/https://api.cognitive.microsoft.com/bing/v7.0/Suggestions
 
@@ -80,7 +80,7 @@ Nakonec spusťte proxy server CORS pomocí tohoto příkazu:
 
 Při používání ukázkové aplikace nechte příkazové okno otevřené. Zavřením okna se zastaví proxy server. V rozbalitelné sekci hlaviček HTTP pod výsledky hledání teď uvidíte hlavičku `X-MSEdge-ClientID` (mimo jiné) a můžete zkontrolovat, jestli je stejná pro každý požadavek.
 
-Požadavky by měl obsahovat všechny parametry navrhované dotazu a záhlaví. 
+Požadavky by měly zahrnovat všechny navrhované parametry dotazu a hlavičky. 
 
 Následující příklad ukazuje požadavek, který vrací navrhované řetězce dotazu pro *sail*.
 
@@ -95,11 +95,11 @@ Následující příklad ukazuje požadavek, který vrací navrhované řetězce
 
 Pokud voláte některé z rozhraní API Bingu poprvé, nezahrnujte do volání hlavičku ID klienta. Hlavičku ID klienta zahrňte pouze v případě, že jste již dříve volali rozhraní API Bingu a Bing vrátil ID klienta pro příslušnou kombinaci uživatele a zařízení.
 
-Následující návrhy skupinu webových je odpovědí na výše uvedený požadavek. Tato skupina obsahuje seznam návrhy hledání dotazu, s každou včetně návrhů `displayText`, `query`, a `url` pole.
+Následující skupina návrhů webu představuje odpověď na výše uvedený požadavek. Skupina obsahuje seznam návrhů vyhledávacích dotazů, přičemž každý návrh zahrnuje `displayText`pole, `query`a `url` .
 
 Pole `displayText` obsahuje navrhovaný dotaz, který můžete použít k vyplnění rozevíracího seznamu vašeho vyhledávacího pole. Musíte zobrazit všechny návrhy, které odpověď obsahuje, v uvedeném pořadí.  
 
-Pokud uživatel vybere z rozevíracího seznamu dotazu, můžete použít k volání jedné z [rozhraní API Bingu pro vyhledávání](https://docs.microsoft.com/azure/cognitive-services/bing-web-search/bing-api-comparison?toc=%2Fen-us%2Fazure%2Fcognitive-services%2Fbing-autosuggest%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json) a zobrazení výsledků nebo uživatele poslat na stránce výsledky Bingu pomocí vráceného `url` pole.
+Pokud uživatel vybere dotaz z rozevíracího seznamu, můžete jej použít k volání jedné z [rozhraní API pro vyhledávání Bingu](https://docs.microsoft.com/azure/cognitive-services/bing-web-search/bing-api-comparison?toc=%2Fen-us%2Fazure%2Fcognitive-services%2Fbing-autosuggest%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json) a zobrazení výsledků sami nebo můžete uživatele odeslat na stránku výsledků Bingu pomocí vráceného `url` pole.
 
 [!INCLUDE [cognitive-services-bing-url-note](../../../../includes/cognitive-services-bing-url-note.md)]
 
@@ -167,8 +167,8 @@ BingAPIs-Market: en-US
 }
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - [Co jsou automatické návrhy Bingu?](../get-suggested-search-terms.md)
 - [Referenční materiály rozhraní API pro automatické návrhy Bingu verze 7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference)
-- [Získávání navrhované hledané termíny z rozhraní API pro automatické návrhy Bingu](get-suggestions.md)
+- [Načítají se Doporučené hledané výrazy z rozhraní API pro automatické návrhy Bingu.](get-suggestions.md)

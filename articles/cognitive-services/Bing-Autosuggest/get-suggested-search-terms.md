@@ -1,6 +1,6 @@
 ---
 title: Co jsou Automatické návrhy Bingu?
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: Naučte se používat rozhraní API pro automatické návrhy Bingu.
 services: cognitive-services
 author: swhite-msft
@@ -10,38 +10,38 @@ ms.subservice: bing-autosuggest
 ms.topic: overview
 ms.date: 02/20/2019
 ms.author: scottwhi
-ms.openlocfilehash: 24f35d795b34e7d9c214a23c040791841b4a711b
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: 13606fa5a58106575648a39e5074507f5d3bf471
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66382562"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68405383"
 ---
 # <a name="what-is-bing-autosuggest"></a>Co jsou Automatické návrhy Bingu?
 
-Pokud vaše aplikace posílá dotazy na některý z rozhraní API pro vyhledávání Bingu, můžete zlepšit možnosti vašich uživatelů hledání rozhraní API pro automatické návrhy Bingu. Rozhraní API pro automatické návrhy Bingu vrátí seznam navrhovaných dotazů na základě řetězce dotazu částečné do vyhledávacího pole. Jak znaky do vyhledávacího pole, můžete zobrazit návrhy v rozevíracím seznamu.
+Pokud vaše aplikace odesílá dotazy do některého z rozhraní API pro vyhledávání Bingu, můžete pomocí rozhraní API pro automatické návrhy Bingu vylepšit možnosti vyhledávání vašich uživatelů. Rozhraní API pro automatické návrhy Bingu vrátí seznam navrhovaných dotazů na základě částečného řetězce dotazu ve vyhledávacím poli. Do vyhledávacího pole se jako znaky zadávají návrhy, které můžete zobrazit v rozevíracím seznamu.
 
-## <a name="bing-autosuggest-api-features"></a>Funkce rozhraní API pro automatické návrhy Bingu
+## <a name="bing-autosuggest-api-features"></a>rozhraní API pro automatické návrhy Bingu funkce
 
 | Funkce                                                                                                                                                                                 | Popis                                                                                                                                                            |
 |-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [Navrhování hledaných termínů v reálném čase](concepts/get-suggestions.md) | Vylepšit aplikaci pomocí rozhraní API pro automatické návrhy pro zobrazení navrhované hledané výrazy, jako jste zadali. |
+| [Navrhování hledaných termínů v reálném čase](concepts/get-suggestions.md) | Vylepšete prostředí vaší aplikace pomocí rozhraní API pro automatické návrhy, abyste zobrazili navrhované hledané výrazy při psaní. |
 
 ## <a name="workflow"></a>Pracovní postup
 
-Rozhraní API pro automatické návrhy Bingu je RESTful webová služba, volání z libovolného programovacího jazyka, který může vytvářet požadavky HTTP a parsování formátu JSON. 
+Rozhraní API pro automatické návrhy Bingu je webová služba RESTful, která se dá snadno volat ze všech programovacích jazyků, které mohou provádět požadavky HTTP a analyzovat JSON. 
 
 1. Vytvořte [účet rozhraní API služby Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) s přístupem k rozhraním API pro vyhledávání Bingu. Pokud nemáte předplatné Azure, můžete si zdarma [vytvořit účet](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api).
-2. Odešle žádost do tohoto rozhraní API pokaždé, když uživatel zadá znak nového vyhledávacího pole vaší aplikace.
+2. Pokaždé, když uživatel do vyhledávacího pole aplikace zadá nový znak, pošle se mu požadavek na toto rozhraní API.
 3. Zpracujte odpověď rozhraní API parsováním vrácené zprávy JSON.
 
-Obvykle by volat toto rozhraní API pokaždé, když uživatel zadá znak nového vyhledávacího pole vaší aplikace. Jako další znaky, rozhraní API vrátí relevantnější navrhované vyhledávací dotazy. Například může vrátit návrhy rozhraní API pro jeden `s` můžou mít méně závažné než těch, které jsou pro `sail`.
+Toto rozhraní API obvykle vyvoláte pokaždé, když uživatel zadá do vyhledávacího pole aplikace nový znak. Po zadání více znaků vrátí rozhraní API relevantnější navrhované vyhledávací dotazy. Například návrhy, které může rozhraní API vracet pro jednu `s` z nich, budou pravděpodobně méně relevantní než pro. `sail`
 
-Následující příklad ukazuje rozevíracího seznamu vyhledávací pole s navrhované výrazy z rozhraní API pro automatické návrhy Bingu.
+Následující příklad ukazuje rozevírací vyhledávací pole s navrhovanými výrazy dotazu z rozhraní API pro automatické návrhy Bingu.
 
 ![Rozevírací seznam vyhledávacího pole s automatickými návrhy](./media/cognitive-services-bing-autosuggest-api/bing-autosuggest-drop-down-list.PNG)
 
-Když uživatel vybere z rozevíracího seznamu návrh, můžete ji použít k zahájení hledání s jedním z rozhraní API pro vyhledávání Bingu nebo přímo přejít na stránku výsledků vyhledávání Bingu.
+Když uživatel vybere návrh z rozevíracího seznamu, můžete ho použít k zahájení hledání v jednom z rozhraní API pro vyhledávání Bingu, nebo přímo přejít na stránku výsledků hledání Bingu.
 
 ## <a name="next-steps"></a>Další postup
 

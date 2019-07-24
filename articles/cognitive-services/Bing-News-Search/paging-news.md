@@ -1,7 +1,7 @@
 ---
-title: Stránkování prostřednictvím výsledků vyhledávání zpráv Bingu
-titlesuffix: Azure Cognitive Services
-description: Zjistěte, jak stránkovat články o novinkách, které vrací rozhraní API pro vyhledávání zpráv Bingu.
+title: Postup stránky Vyhledávání zpráv Bingu výsledky
+titleSuffix: Azure Cognitive Services
+description: Naučte se, jak stránkovat prostřednictvím článků s novinkami, které rozhraní API Bingu pro vyhledávání zpráv vrací.
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
@@ -10,18 +10,18 @@ ms.subservice: bing-news-search
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: scottwhi
-ms.openlocfilehash: 1eab92dcc9c1890e82f9999e26e54378a3687c6d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e5f8dce1a03e44758eea737ad2da419fa67c36a2
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66390480"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68423746"
 ---
-# <a name="how-to-page-through-news-search-results"></a>Jak stránkovat výsledky hledání zpráv
+# <a name="how-to-page-through-news-search-results"></a>Jak stránkovat prostřednictvím zpráv výsledků hledání
 
-Při volání rozhraní API pro vyhledávání zpráv Bingu vrátí seznam výsledků, které jsou relevantní pro váš dotaz. Odhadované celkový počet dostupných výsledků získáte přístup k objektu odpovědi [totalEstimatedMatches](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#news-totalmatches) pole.  
+Když zavoláte rozhraní Vyhledávání zpráv API, Bing vrátí seznam výsledků, které jsou pro váš dotaz relevantní. K získání odhadovaného celkového počtu dostupných výsledků získáte přístup k poli [totalEstimatedMatches](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#news-totalmatches) objektu odpovědi.  
   
-Následující příklad ukazuje `totalEstimatedMatches` pole, která obsahuje zprávy odpovědi.  
+Následující příklad ukazuje `totalEstimatedMatches` pole, které obsahuje odpověď na zprávy.  
 
 ```json
 {  
@@ -32,17 +32,17 @@ Následující příklad ukazuje `totalEstimatedMatches` pole, která obsahuje z
 }  
 ```  
   
-Na stránce prostřednictvím články k dispozici, použijte [počet](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#count) a [posun](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#offset) parametrů dotazu.  
+K stránkám podle dostupných článků použijte parametry dotazu [Count](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#count) a [offset](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#offset) .  
  
 
 |Parametr  |Popis  |
 |---------|---------|
-|`count`     | Určuje počet výsledků vrátit v odpovědi. Maximální počet výsledků, které může vyžadovat v odpovědi je 100. Výchozí hodnota je 10. Skutečný počet doručení může být menší než požadovaný.        |
-|`offset`     | Určuje počet výsledků pro přeskočení. `offset` Je založený na nule a musí být menší než (`totalEstimatedMatches` - `count`).          |
+|`count`     | Určuje počet výsledků, které se mají vrátit v odpovědi. Maximální počet výsledků, které mohou být požadovány v odpovědi, je 100. Výchozí hodnota je 10. Skutečný počet dodaných hodnot může být menší, než je požadováno.        |
+|`offset`     | Určuje počet výsledků, které se mají přeskočit. Hodnota `offset` je počítána od nuly a měla by být menší`totalEstimatedMatches`než ( - `count`).          |
 
-Například pokud chcete zobrazit 20 článků na jedné stránce nastavíte `count` na 20 a `offset` na hodnotu 0, chcete-li získat první stránka výsledků. Pro každou stránku následné zvýšení `offset` 20 (například 20, 40).  
+Například pokud chcete zobrazit 20 článků na stránku, měli byste nastavit `count` na hodnotu 20 a `offset` na 0 a získat tak první stránku výsledků. Pro každou následnou stránku byste narůsti `offset` o 20 (například 20, 40).  
   
-Následující příklad požádá o 20 články o novinkách začínající na posunu 40.  
+Následující příklad vyžádá 20 novinek počínaje posunem 40.  
 
 ```
 GET https://api.cognitive.microsoft.com/bing/v7.0/news/search?q=sailing+dinghies&count=20&offset=40&mkt=en-us HTTP/1.1  
@@ -50,7 +50,7 @@ Ocp-Apim-Subscription-Key: 123456789ABCDE
 Host: api.cognitive.microsoft.com  
 ```  
   
-Pokud výchozí `count` hodnota funguje pro implementaci, zadejte pouze `offset` parametr dotazu, jak je znázorněno v následujícím příkladu:  
+Pokud výchozí `count` hodnota pro vaši implementaci funguje, zadejte `offset` pouze parametr dotazu, jak je znázorněno v následujícím příkladu:  
 
 ```  
 GET https://api.cognitive.microsoft.com/bing/v7.0/news/search?q=sailing+dinghies&offset=40&mkt=en-us HTTP/1.1  
@@ -59,7 +59,7 @@ Host: api.cognitive.microsoft.com
 ```  
 
 > [!NOTE]
-> Stránkování platí pouze pro vyhledávání zpráv (/ news/hledání) a nechcete populárních témat (/ news/trendingtopics) nebo nové kategorie (/ zpráv).
+> Stránkování se vztahuje pouze na hledání zpráv (/News/Search) a ne na témata týkající se trendů (/News/trendingtopics) nebo kategorií zpráv (/News).
 
 > [!NOTE]
-> `TotalEstimatedAnswers` Pole je odhad celkový počet výsledků hledání můžete načíst aktuálního dotazu.  Pokud nastavíte `count` a `offset` parametry, `TotalEstimatedAnswers` číslo může změnit. 
+> Toto `TotalEstimatedAnswers` pole představuje odhad celkového počtu výsledků hledání, které můžete načíst pro aktuální dotaz.  Při nastavení `count` parametrů `offset` asemůžečíslozměnit.`TotalEstimatedAnswers` 

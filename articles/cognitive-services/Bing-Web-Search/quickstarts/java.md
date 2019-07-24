@@ -1,26 +1,26 @@
 ---
-title: 'Rychlý start: Provádět vyhledávání na webu s využitím Javy – rozhraní API REST webové vyhledávání Bingu'
+title: 'Rychlý start: Použijte jazyk Java pro volání Vyhledávání na webu Bingu REST API'
 titleSuffix: Azure Cognitive Services
-description: Použít tento rychlý start k odesílání požadavků na rozhraní Web API vyhledávání Bingu REST pomocí Javy a přijetí odpovědi JSON
+description: Pomocí tohoto rychlého startu můžete posílat požadavky na Vyhledávání na webu Bingu REST API pomocí Java a přijímat odpověď JSON.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 03/12/2019
+ms.date: 07/22/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 8282838f778516e31080960400e5b1435f0b5673
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 469456a6893d7e220e4b3f356146dc394a75b4ea
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60648580"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68404845"
 ---
-# <a name="quickstart-search-the-web-using-the-bing-web-search-rest-api-and-java"></a>Rychlý start: Vyhledávání na webu pomocí API REST vyhledávání na webu Bingu a Java
+# <a name="quickstart-search-the-web-using-the-bing-web-search-rest-api-and-java"></a>Rychlý start: Hledání na webu pomocí Vyhledávání na webu Bingu REST API a Java
 
-V tomto rychlém startu můžete provést první volání do rozhraní API Bingu pro vyhledávání webu a přijetí odpovědi JSON. Tato aplikace v Javě odešle požadavek hledání do rozhraní API a ukázka odezvy. Aplikace je sice napsaná v Javě, ale rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků.
+Tento rychlý Start použijte k provedení prvního volání rozhraní API Bingu pro vyhledávání na webu a přijetí odpovědi JSON. Tato aplikace Java pošle do rozhraní API požadavek hledání a zobrazí odpověď. Aplikace je sice napsaná v Javě, ale rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -73,7 +73,7 @@ public class BingWebSearch {
 
 ## <a name="define-variables"></a>Definování proměnných
 
-Tento kód nastaví `subscriptionKey`, `host`, `path` a `searchTerm`. Ověřte správnost koncového bodu a nahraďte hodnotu `subscriptionKey` platným klíčem předplatného ze svého účtu Azure. Vyhledávací dotaz můžete přizpůsobit. Stačí místo `searchTerm` zadat jinou hodnotu. Nezapomeňte přidat tento kód `BingWebSearch` třídy, jak bylo uvedeno výše.
+Tento kód nastaví `subscriptionKey`, `host`, `path` a `searchTerm`. Ověřte správnost koncového bodu a nahraďte hodnotu `subscriptionKey` platným klíčem předplatného ze svého účtu Azure. Vyhledávací dotaz můžete přizpůsobit. Stačí místo `searchTerm` zadat jinou hodnotu. Nezapomeňte přidat tento kód do `BingWebSearch` třídy, jak je uvedeno výše.
 
 ```java
 // Enter a valid subscription key.

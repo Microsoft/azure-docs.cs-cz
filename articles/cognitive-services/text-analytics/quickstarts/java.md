@@ -1,26 +1,26 @@
 ---
-title: 'Rychlý start: Použití Javy k volání rozhraní Text Analytics API'
+title: 'Rychlý start: Použijte jazyk Java pro volání Analýza textu REST API'
 titleSuffix: Azure Cognitive Services
-description: Získat informace a ukázky kódu můžete rychle začít používat rozhraní API pro analýzu textu ve službě Azure Cognitive Services.
+description: Získejte informace a ukázky kódu, které vám pomůžou rychle začít s používáním rozhraní API pro analýzu textu ve službě Azure Cognitive Services.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 04/16/2019
+ms.date: 07/22/2019
 ms.author: aahi
-ms.openlocfilehash: fc848feb3f9a0e1160a8e36014ca4a469f792c96
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 72a3fd1220a5acf7429f0dac05133bc9852d8c5b
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60829340"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68404776"
 ---
-# <a name="quickstart-using-java-to-call-the-text-analytics-cognitive-service"></a>Rychlý start: Pomocí Javy k volání Text Analytics služby Cognitive Services
+# <a name="quickstart-using-java-to-call-the-text-analytics-cognitive-service"></a>Rychlý start: Volání služby Analýza textu pro rozpoznávání pomocí jazyka Java
 <a name="HOLTop"></a>
 
-Tento článek vám ukáže, jak k [rozpoznání jazyka](#Detect), [analýza sentimentu](#SentimentAnalysis), [extrakce klíčových frází](#KeyPhraseExtraction), a [identifikovat propojených entit](#Entities) pomocí  [rozhraní Text Analytics API](//go.microsoft.com/fwlink/?LinkID=759711) pomocí Javy.
+V tomto článku se dozvíte, jak [detekovat jazyk](#Detect), [analyzovat mínění](#SentimentAnalysis), [extrahovat klíčové fráze](#KeyPhraseExtraction)a [identifikovat propojené entity](#Entities) pomocí [rozhraní API](//go.microsoft.com/fwlink/?LinkID=759711) analýza textu v jazyce Java.
 
 Technickou dokumentaci pro tato rozhraní API najdete v [definicích rozhraní API](//go.microsoft.com/fwlink/?LinkID=759346).
 
@@ -32,16 +32,16 @@ Dále musíte mít [koncový bod a přístupový klíč](../How-tos/text-analyti
 
 <a name="Detect"></a>
 
-## <a name="detect-language"></a>Zjištění jazyka
+## <a name="detect-language"></a>Zjistit jazyk
 
-Rozhraní API pro detekci jazyk zjistí jazyk textu dokumentu, pomocí [rozpoznat jazyk metoda](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7).
+Rozhraní Rozpoznávání jazyka API detekuje jazyk textového dokumentu pomocí [metody zjišťování jazyka](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7).
 
-1. Vytvoření nového projektu v Javě v oblíbeném prostředí IDE (nebo novou složku na ploše). Vytvořte třídu s názvem `DetectLanguage.java`.
-1. Přidejte kód níže uvedený do vaší třídy.
-1. Nahradit `accessKey` hodnotu klíče z vašeho předplatného pro analýzu textu ve [Azure](https://ms.portal.azure.com).
+1. Vytvořte nový projekt Java v oblíbeném integrovaném vývojovém prostředí (nebo nové složce na ploše). Vytvořte třídu s názvem `DetectLanguage.java`.
+1. Přidejte níže uvedený kód do vaší třídy.
+1. Nahraďte hodnotu klíčem z předplatného analýza textu v [Azure.](https://ms.portal.azure.com) `accessKey`
 1. Nahraďte umístění v `host` (momentálně `westus`) oblastí, kterou jste si zaregistrovali.
-1. Ujistěte se, že máte [Gson](https://github.com/google/gson) nainstalovanou knihovnu.
-1. Spuštění programu v prostředí (IDE) nebo použijte příkazový řádek pro spuštění (pokynů v komentářích ke kódu).
+1. Ujistěte se, že máte nainstalovanou knihovnu [gson](https://github.com/google/gson) .
+1. Spusťte program v integrovaném vývojovém prostředí (IDE) nebo použijte příkazový řádek, který se má spustit (pokyny v komentářích kódu).
 
 ```java
 import java.io.*;
@@ -162,7 +162,7 @@ public class DetectLanguage {
 }
 ```
 
-### <a name="language-detection-response"></a>Odpověď detekce jazyka
+### <a name="language-detection-response"></a>Odezva na detekci jazyka
 
 Úspěšná odpověď se vrátí ve formátu JSON, jak je znázorněno v následujícím příkladu: 
 
@@ -212,12 +212,12 @@ public class DetectLanguage {
 
 Rozhraní API pro analýzu mínění rozpozná mínění sady textových záznamů pomocí [metody Sentiment](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9). Následující příklad vyhodnotí dva dokumenty, jeden v angličtině a druhý ve španělštině.
 
-1. Vytvoření nového projektu v Javě v oblíbeném prostředí IDE (nebo novou složku na ploše). Vytvoření třídy v něm s názvem `GetSentiment.java`.
-1. Přidejte kód níže uvedený do vaší třídy.
-1. Nahradit `accessKey` hodnotu klíče z vašeho předplatného pro analýzu textu ve [Azure](https://ms.portal.azure.com).
+1. Vytvořte nový projekt Java v oblíbeném integrovaném vývojovém prostředí (nebo nové složce na ploše). Vytvořte v něm třídu s názvem `GetSentiment.java`.
+1. Přidejte níže uvedený kód do vaší třídy.
+1. Nahraďte hodnotu klíčem z předplatného analýza textu v [Azure.](https://ms.portal.azure.com) `accessKey`
 1. Nahraďte umístění v `host` (momentálně `westus`) oblastí, kterou jste si zaregistrovali.
-1. Ujistěte se, že máte [Gson](https://github.com/google/gson) nainstalovanou knihovnu.
-1. Spuštění programu v prostředí (IDE) nebo použijte příkazový řádek pro spuštění (pokynů v komentářích ke kódu).
+1. Ujistěte se, že máte nainstalovanou knihovnu [gson](https://github.com/google/gson) .
+1. Spusťte program v integrovaném vývojovém prostředí (IDE) nebo použijte příkazový řádek, který se má spustit (pokyny v komentářích kódu).
 
 ```java
 import java.io.*;
@@ -340,7 +340,7 @@ public class GetSentiment {
 
 ### <a name="sentiment-analysis-response"></a>Odpověď analýzy mínění
 
-Výsledek se měří jako kladná, pokud se vypočítává se skóre blíž ke 1.0 a záporná Pokud je blíž skóre rovnou 0,0.
+Výsledek je měřen jako kladný, pokud je skóre zaokrouhleno na 1,0 a záporné, pokud se skóre přiblíží ke 0,0.
 Úspěšná odpověď se vrátí ve formátu JSON, jak je znázorněno v následujícím příkladu:
 
 ```json
@@ -361,16 +361,16 @@ Výsledek se měří jako kladná, pokud se vypočítává se skóre blíž ke 1
 
 <a name="KeyPhraseExtraction"></a>
 
-## <a name="extract-key-phrases"></a>Extrakce klíčových frází
+## <a name="extract-key-phrases"></a>Extrahovat klíčové fráze
 
 Rozhraní API pro extrakci klíčových frází extrahuje klíčové fráze z textového dokumentu pomocí [metody Key Phrases](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6). Následující příklad extrahuje klíčové fráze z anglického i španělského dokumentu.
 
-1. Vytvoření nového projektu v Javě v oblíbeném prostředí IDE (nebo novou složku na ploše). Vytvoření třídy v označovaných `GetKeyPhrases.java`.
-1. Přidejte kód níže uvedený do vaší třídy.
-1. Nahradit `accessKey` hodnotu klíče z vašeho předplatného pro analýzu textu ve [Azure](https://ms.portal.azure.com).
+1. Vytvořte nový projekt Java v oblíbeném integrovaném vývojovém prostředí (nebo nové složce na ploše). Vytvořte v něm třídu s názvem `GetKeyPhrases.java`.
+1. Přidejte níže uvedený kód do vaší třídy.
+1. Nahraďte hodnotu klíčem z předplatného analýza textu v [Azure.](https://ms.portal.azure.com) `accessKey`
 1. Nahraďte umístění v `host` (momentálně `westus`) oblastí, kterou jste si zaregistrovali.
-1. Ujistěte se, že máte [Gson](https://github.com/google/gson) nainstalovanou knihovnu.
-1. Spuštění programu v prostředí (IDE) nebo použijte příkazový řádek pro spuštění (pokynů v komentářích ke kódu).
+1. Ujistěte se, že máte nainstalovanou knihovnu [gson](https://github.com/google/gson) .
+1. Spusťte program v integrovaném vývojovém prostředí (IDE) nebo použijte příkazový řádek, který se má spustit (pokyny v komentářích kódu).
 
 ```java
 import java.io.*;
@@ -492,7 +492,7 @@ public class GetKeyPhrases {
 }
 ```
 
-### <a name="key-phrase-extraction-response"></a>Odpověď extrakce klíčových frází
+### <a name="key-phrase-extraction-response"></a>Odpověď na extrakci klíčových frází
 
 Úspěšná odpověď se vrátí ve formátu JSON, jak je znázorněno v následujícím příkladu:
 
@@ -535,14 +535,14 @@ public class GetKeyPhrases {
 
 ## <a name="identify-entities"></a>Identifikace entit
 
-Rozhraní API pro entity identifikuje dobře známé entity v textovém dokumentu pomocí [metody Entities](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/5ac4251d5b4ccd1554da7634). [Entity](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-entity-linking) extrahovat slova z textu, jako je "USA", pak zadejte typ a/nebo odkaz na wikipedii tato slova. Typ pro "USA" je `location`, zatímco je odkaz na wikipedii `https://en.wikipedia.org/wiki/United_States`.  Následující příklad identifikuje entity pro anglické dokumenty.
+Rozhraní API pro entity identifikuje dobře známé entity v textovém dokumentu pomocí [metody Entities](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/5ac4251d5b4ccd1554da7634). [Entity](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-entity-linking) extrahují slova z textu, jako je například "USA", a potom vám poskytne typ a/nebo Wikipedii odkaz na toto slovo (y). Typ pro "USA" je `location`, zatímco odkaz na Wikipedii je. `https://en.wikipedia.org/wiki/United_States`  Následující příklad identifikuje entity pro anglické dokumenty.
 
-1. Vytvoření nového projektu v Javě v oblíbeném prostředí IDE (nebo novou složku na ploše). Vytvoření třídy v něm s názvem `GetEntities.java`.
-1. Přidejte kód níže uvedený do vaší třídy.
-1. Nahradit `accessKey` hodnotu klíče z vašeho předplatného pro analýzu textu ve [Azure](https://ms.portal.azure.com).
+1. Vytvořte nový projekt Java v oblíbeném integrovaném vývojovém prostředí (nebo nové složce na ploše). Vytvořte v něm třídu s názvem `GetEntities.java`.
+1. Přidejte níže uvedený kód do vaší třídy.
+1. Nahraďte hodnotu klíčem z předplatného analýza textu v [Azure.](https://ms.portal.azure.com) `accessKey`
 1. Nahraďte umístění v `host` (momentálně `westus`) oblastí, kterou jste si zaregistrovali.
-1. Ujistěte se, že máte [Gson](https://github.com/google/gson) nainstalovanou knihovnu.
-1. Spuštění programu v prostředí (IDE) nebo použijte příkazový řádek pro spuštění (pokynů v komentářích ke kódu).
+1. Ujistěte se, že máte nainstalovanou knihovnu [gson](https://github.com/google/gson) .
+1. Spusťte program v integrovaném vývojovém prostředí (IDE) nebo použijte příkazový řádek, který se má spustit (pokyny v komentářích kódu).
 
 ```java
 import java.io.*;
@@ -716,7 +716,7 @@ public class GetEntities {
 > [!div class="nextstepaction"]
 > [Analýza textu s využitím Power BI](../tutorials/tutorial-power-bi-key-phrases.md)
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také:
 
  [Přehled rozhraní API pro analýzu textu](../overview.md)  
  [Nejčastější dotazy](../text-analytics-resource-faq.md)

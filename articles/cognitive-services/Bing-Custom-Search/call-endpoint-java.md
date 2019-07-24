@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý start: Volání vlastního vyhledávání Bingu koncový bod pomocí Javy | Dokumentace Microsoftu'
-titlesuffix: Azure Cognitive Services
-description: V tomto rychlém startu pomocí zahájíte si vyžádat výsledky hledání od vaší instance vlastního vyhledávání Bingu v jazyce Java.
+title: 'Rychlý start: Volání koncového bodu Vlastní vyhledávání Bingu pomocí jazyka Java | Microsoft Docs'
+titleSuffix: Azure Cognitive Services
+description: Pomocí tohoto rychlého startu můžete začít požadovat výsledky hledání z vaší instance Vlastní vyhledávání Bingu v jazyce Java.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,22 +10,22 @@ ms.subservice: bing-custom-search
 ms.topic: quickstart
 ms.date: 03/04/2019
 ms.author: aahi
-ms.openlocfilehash: fc1c7d2730d68fb8e3b51a39e0cb89b4098418d6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9af82ae8cff2e93c0456ed8b5a84414f98ba5b06
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60327373"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68405282"
 ---
-# <a name="quickstart-call-your-bing-custom-search-endpoint-using-java"></a>Rychlý start: Volání vlastního vyhledávání Bingu koncový bod pomocí Javy
+# <a name="quickstart-call-your-bing-custom-search-endpoint-using-java"></a>Rychlý start: Volání koncového bodu Vlastní vyhledávání Bingu pomocí jazyka Java
 
-V tomto rychlém startu můžete začít si vyžádat výsledky hledání od vaší instance vlastního vyhledávání Bingu. Zatímco tato aplikace je napsána v jazyce Java, rozhraní API pro vlastní vyhledávání Bingu je kompatibilní s Většina programovacích jazyků rozhraní RESTful webová služba. Zdrojový kód k této ukázce je dostupný na [Githubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingCustomSearchv7.java).
+Pomocí tohoto rychlého startu můžete začít požadovat výsledky hledání z vaší instance Vlastní vyhledávání Bingu. I když je tato aplikace napsaná v jazyce Java, rozhraní API pro vlastní vyhledávání Bingu je webová služba RESTful kompatibilní s většinou programovacích jazyků. Zdrojový kód k této ukázce je dostupný na [Githubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingCustomSearchv7.java).
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Instanci vlastního vyhledávání Bingu. Zobrazit [rychlý start: Vytvoření první instanci vlastního vyhledávání Bingu](quick-start.md) Další informace.
+- Instance Vlastní vyhledávání Bingu. Další [informace najdete v tématu rychlý Start: Pro další informace vytvořte první](quick-start.md) instanci vlastní vyhledávání Bingu.
 
-- Nejnovější [Java Development Kit](https://www.oracle.com/technetwork/java/javase/downloads/index.html)  
+- Nejnovější [sada Java Development Kit](https://www.oracle.com/technetwork/java/javase/downloads/index.html)  
 
 - [Knihovna Gson](https://github.com/google/gson)
 
@@ -50,7 +50,7 @@ V tomto rychlém startu můžete začít si vyžádat výsledky hledání od va�
     import com.google.gson.JsonParser;
     ```
 
-2. Vytvořte třídu s názvem `CustomSrchJava`, vytvářet proměnné pro váš klíč předplatného, koncový bod pro vlastní vyhledávání a ID search instance vlastní konfigurace 
+2. Vytvořte třídu s názvem `CustomSrchJava`a vytvořte proměnné pro klíč předplatného, vlastní koncový bod vyhledávání a ID vlastní konfigurace vaší instance hledání. 
     ```java
     public class CustomSrchJava {
         static String host = "https://api.cognitive.microsoft.com";
@@ -61,7 +61,7 @@ V tomto rychlém startu můžete začít si vyžádat výsledky hledání od va�
     ...
     ```
 
-3. Vytvořte další třídu s názvem `SearchResults` tak, aby obsahovala odpověď z vaší instance vlastního vyhledávání Bingu.
+3. Vytvořte další třídu s `SearchResults` názvem, aby obsahovala odpověď z vaší instance vlastní vyhledávání Bingu.
 
     ```csharp
     class SearchResults{
@@ -74,7 +74,7 @@ V tomto rychlém startu můžete začít si vyžádat výsledky hledání od va�
     }
     ```
 
-4. Vytvoření funkce s názvem `prettify()` formátovat odpověď JSON z rozhraní API pro vlastní vyhledávání Bingu.
+4. Vytvořte funkci nazvanou `prettify()` pro naformátování odpovědi JSON z rozhraní API pro vlastní vyhledávání Bingu.
 
     ```java
         // pretty-printer for JSON; uses GSON parser to parse and re-serialize
@@ -86,9 +86,9 @@ V tomto rychlém startu můžete začít si vyžádat výsledky hledání od va�
         }
     ```
 
-## <a name="send-and-receive-a-search-request"></a>Odeslat a přijmout žádost o vyhledávání 
+## <a name="send-and-receive-a-search-request"></a>Odeslání a přijetí žádosti o vyhledávání 
 
-1. Vytvoření funkce s názvem `SearchWeb()` , který odešle požadavek a vrátí `SearchResults` objektu. Vytvoření požadavku adresa url díky kombinaci ID vlastní konfigurace, dotaz a koncový bod informace. Přidat klíč předplatného. Chcete `Ocp-Apim-Subscription-Key` záhlaví.
+1. Vytvořte funkci s názvem `SearchWeb()` , která odešle požadavek a `SearchResults` vrátí objekt. Vytvořte adresu URL požadavku kombinováním vlastního ID konfigurace, dotazu a informací o koncovém bodu. Přidejte do `Ocp-Apim-Subscription-Key` záhlaví klíč předplatného.
 
     ```java
     public class CustomSrchJava {
@@ -101,7 +101,7 @@ V tomto rychlém startu můžete začít si vyžádat výsledky hledání od va�
     ...
     ```
 
-2. Vytvoření datového proudu a uložit v odpovědi JSON `SearchResults` objektu.
+2. Vytvořte datový proud a uložte odpověď JSON do `SearchResults` objektu.
 
     ```java
     public class CustomSrchJava {
@@ -120,7 +120,7 @@ V tomto rychlém startu můžete začít si vyžádat výsledky hledání od va�
         }
     ```
 
-3. V hlavní metodě vaší aplikace, zavolejte `SearchWeb()` se hledaný termín 
+3. V metodě Main vaší aplikace zavolejte `SearchWeb()` hledaný výraz, 
 
     ```java
     System.out.println("\nJSON Response:\n");
@@ -132,4 +132,4 @@ V tomto rychlém startu můžete začít si vyžádat výsledky hledání od va�
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Sestavení webové aplikace s vlastní vyhledávání](./tutorials/custom-search-web-page.md)
+> [Vytvoření vlastní vyhledávací webové aplikace](./tutorials/custom-search-web-page.md)

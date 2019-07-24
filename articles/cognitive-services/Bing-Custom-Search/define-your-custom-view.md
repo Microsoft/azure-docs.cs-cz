@@ -1,7 +1,7 @@
 ---
-title: Konfigurace prostředí pro vlastní vyhledávání Bingu | Dokumentace Microsoftu
-titlesuffix: Azure Cognitive Services
-description: Popisuje, jak vytvořit web a vertikální vyhledávací služby
+title: Konfigurace prostředí pro Vlastní vyhledávání Bingu | Microsoft Docs
+titleSuffix: Azure Cognitive Services
+description: Popisuje, jak vytvořit lokalitu a vertikálně vyhledávané služby.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,150 +10,150 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: aahi
-ms.openlocfilehash: e4799ca099d608c3b8ecd16612b790f5654df7dd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e4ed781544d3cd11e8494e40589676adf57a9c75
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66390423"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68405119"
 ---
-# <a name="configure-your-bing-custom-search-experience"></a>Konfigurace prostředí pro vlastní vyhledávání Bingu
+# <a name="configure-your-bing-custom-search-experience"></a>Konfigurace prostředí Vlastní vyhledávání Bingu
 
-Instanci vlastního vyhledávání umožňuje přizpůsobit možnosti vyhledávání zahrnout obsah jenom z webů, které vaši uživatelé záleží. Místo prohledávání celé webové vyhledává Bing pouze řezy webu, které vás zajímají. Pokud chcete vytvořit vlastní zobrazení webu, použijte [portál](https://customsearch.ai) Vlastní vyhledávání Bingu.
+Vlastní instance vyhledávání umožňuje přizpůsobit možnosti vyhledávání tak, aby zahrnovaly obsah jenom z webů, o kterých se uživatelé setkávají. Místo provádění vyhledávání v rámci webu Bing vyhledává pouze řezy webu, které vás zajímají. Pokud chcete vytvořit vlastní zobrazení webu, použijte [portál](https://customsearch.ai) Vlastní vyhledávání Bingu.
 
-Na portálu umožňuje vytvořit instanci hledání, který určuje řezy webu: domény, podstránky a webové stránky, které chcete Bingu pro vyhledávání, a ty, které nechcete, aby ji k prohledávání. Na portálu můžete také navrhnout obsah, který chcete zahrnout.
+Portál umožňuje vytvořit instanci hledání, která určuje řezy webu: domény, podstránky a webové stránky, které má Bing Hledat, a ty, které nechcete hledat. Portál může také navrhnout obsah, který budete chtít zahrnout.
 
-Při definování řezy z webu, použijte následující:
+Při definování řezů webu použijte následující:
 
 | Název řezu | Popis                                                                                                                                                                                                                                                                                                |
 |------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Domain (Doména)     | Řez domény zahrnuje veškerý obsah v rámci rozsahu internetové domény nebyl nalezen. Například, `www.microsoft.com`. Vynechání `www.` způsobí, že Bingu také hledat subdomény doméně. Pokud zadáte například `microsoft.com`, Bing také vrátí výsledky z `support.microsoft.com` nebo `technet.microsoft.com`. |
-| Podstránku    | Podstránku řez zahrnuje veškerý obsah v podstránku a cesty pod ní. V cestě můžete zadat maximálně dvě podstránky. Například `www.microsoft.com/en-us/windows/`.                                                                                                                       |
-| Webová stránka    | Řez webová stránka může obsahovat pouze webové stránce Vlastní vyhledávání. Volitelně můžete zadat, jestli se má zahrnout podstránky.                                                                                                                                                                                  |
+| Doména     | Řez domény zahrnuje veškerý obsah nacházející se v doméně Internet. Například, `www.microsoft.com`. Vynechání `www.` způsobí, že Bing bude prohledávat i subdomény domény. Pokud například zadáte `microsoft.com`, Bing také vrátí výsledky z `support.microsoft.com` nebo `technet.microsoft.com`. |
+| Podstránku    | Řez podstránky obsahuje veškerý obsah nacházející se na podstránce a v cestách pod ním. V cestě můžete zadat maximálně dvě podstránky. Například `www.microsoft.com/en-us/windows/`.                                                                                                                       |
+| Webová stránka    | Řez webové stránky může obsahovat jenom tuto webovou stránku ve vlastním hledání. Volitelně můžete určit, zda chcete zahrnout podstránky.                                                                                                                                                                                  |
 
 > [!IMPORTANT]
-> Všechny domény, podstránky a webové stránky, které zadáte, musí být veřejné a indexované bingem. Pokud máte licence, kterou chcete do hledání zahrnout veřejné lokality a Bing ještě indexovat jej, najdete v článku Bing [správce webového serveru dokumentaci](https://www.bing.com/webmaster/help/webmaster-guidelines-30fba23a) podrobnosti o tom, jak Bingu se. Podrobnosti o tom, jak Bingu aktualizovat procházené lokalitu, pokud je aktuální index také v dokumentaci správce webového serveru.
+> Všechny domény, podstránky a webové stránky, které zadáte, musí být veřejné a indexované pomocí Bingu. Pokud vlastníte veřejný web, který chcete zahrnout do hledání, a Bing ho neindexoval, přečtěte si téma [dokumentace správce](https://www.bing.com/webmaster/help/webmaster-guidelines-30fba23a) Bingu, kde najdete podrobnosti o tom, jak Bingu indexovat. Další informace o tom, jak zjistit, jestli je index neaktuální, najdete v dokumentaci správce webového serveru.
 
-## <a name="add-slices-of-the-web-to-your-custom-search-instance"></a>Přidání části webu do vaší instance vlastního vyhledávání
+## <a name="add-slices-of-the-web-to-your-custom-search-instance"></a>Přidání řezů webu do instance vlastního vyhledávání
 
-Při vytváření vaší instance vlastního hledání můžete určit řezy webu: domény, podstránky a webové stránky, které chcete zahrnout nebo blokován z výsledků vyhledávání. 
+Při vytváření vlastní instance hledání můžete určit řezy pro web: domény, podstránky a webové stránky, které chcete zahrnout do výsledků hledání nebo zablokovat. 
 
-Pokud víte, že řezy, které chcete zahrnout do vaší instance vlastního hledání, je přidat k vaší instanci **aktivní** seznamu. 
+Pokud znáte řezy, které chcete zahrnout do vlastní instance hledání, přidejte je do **aktivního** seznamu vaší instance. 
 
-Pokud si nejste jistí, řezy, které chcete zahrnout, můžete poslat dotazy vyhledávání Bingu ve **ve verzi Preview** podokně a vyberte řezy, které chcete. Použijte následující postup: 
+Pokud si nejste jistí, které řezy zahrnout, můžete odeslat vyhledávací dotazy do Bingu v podokně **náhledu** a vybrat požadované řezy. Použijte následující postup: 
 
-1. Vyberte z rozevíracího seznamu v podokně náhledu "Bingu" a zadejte vyhledávací dotaz
+1. v rozevíracím seznamu v podokně náhledu vyberte Bing a zadejte vyhledávací dotaz.
 
-2. Klikněte na tlačítko **přidat web** vedle výsledků, které chcete zahrnout. Klikněte na tlačítko OK.
+2. Klikněte na tlačítko **Přidat web** vedle výsledku, který chcete zahrnout. Klikněte na tlačítko OK.
 
 >[!NOTE]
 > [!INCLUDE[publish or revert](./includes/publish-revert.md)]
 
 <a name="active-and-blocked-lists"></a>
 
-### <a name="customize-your-search-experience-with-active-and-blocked-lists"></a>Přizpůsobit možnosti vyhledávání s aktivní a uzavřeno seznamy 
+### <a name="customize-your-search-experience-with-active-and-blocked-lists"></a>Přizpůsobení možností vyhledávání pomocí aktivních a blokovaných seznamů 
 
-Seznam aktivních a zablokování řezů se zpřístupní po kliknutí na **aktivní** a **blokováno** karty ve vaší instance vlastního hledání. Kolekce obsahuje nějaké řezy, které jsou přidány do seznamu aktivní bude součástí vašeho vlastního hledání. Blokované kolekce obsahuje nějaké řezy nebudou vyhledávána a nezobrazí se ve výsledcích hledání.
+Seznam aktivních a blokovaných řezů získáte tak, že ve vlastní instanci hledání kliknete na karty **aktivní** a **blokované** . Do vlastního vyhledávání budou zahrnuty řezy přidané do aktivního seznamu. Blokované řezy se nevyhledají a ve výsledcích hledání se nezobrazí.
 
-K určení řezy webu má Bingu pro vyhledávání, klikněte na tlačítko **aktivní** karta a přidat jeden nebo více adres URL. Upravit nebo odstranit adresy URL, pomocí možností v části **ovládací prvky** sloupce. 
+Chcete-li určit řezy webu, které má Bing prohledávat, klikněte na kartu **aktivní** a přidejte jednu nebo více adres URL. Chcete-li upravit nebo odstranit adresy URL, použijte možnosti ve sloupci **ovládací prvky** . 
 
-Při přidávání adresy URL **aktivní** seznamu můžete přidat adresy URL jednoho nebo více adres URL najednou tak, že nahrajete do textového souboru pomocí nahrát ikonu.
+Při přidávání adres URL do **aktivního** seznamu můžete přidat jednotlivé adresy URL nebo více adres URL najednou tak, že textový soubor nahrajete pomocí ikony nahrát.
 
-![Bing vlastní vyhledávání aktivní kartě](media/file-upload-icon.png)
+![Karta Vlastní vyhledávání Bingu aktivní](media/file-upload-icon.png)
 
-Pokud chcete nahrát soubor, vytvořte textový soubor a zadejte jednu doménu, podstránku nebo webové stránky na řádek. Váš soubor odmítne, pokud není správně naformátovaná.
+Pokud chcete nahrát soubor, vytvořte textový soubor a zadejte jednu doménu, podstránku nebo webovou stránku na řádek. Soubor bude odmítnut, pokud není správně naformátován.
 
 > [!NOTE]
-> * Můžete nahrát jenom soubor, který chcete **aktivní** seznamu. Nelze ho použít k přidání řezy, aby **blokováno** seznamu.  
-> * Pokud **blokováno** seznam obsahuje doménu, podstránku nebo webovou stránku, která jste zadali v souboru k odeslání, se odebere z **blokováno** seznamu a přidat do **aktivní** seznamu .
-> * Duplicitní položky v nahrání souboru se bude ignorovat ve vlastní vyhledávání Bingu. 
+> * Soubor můžete nahrát pouze do **aktivního** seznamu. Nemůžete ho použít k přidání řezů do  seznamu blokovaných.  
+> * Pokud seznam **blokovaných** součástí obsahuje doménu, podstránku nebo webovou stránku, kterou jste zadali v souboru odeslání, bude odebrána ze seznamu blokovaných  a přidána do seznamu **aktivních** .
+> * Duplicitní položky v souboru pro nahrání budou Vlastní vyhledávání Bingu ignorovány. 
 
-### <a name="get-website-suggestions-for-your-search-experience"></a>Získat návrhy webu pro vaše prostředí hledání
+### <a name="get-website-suggestions-for-your-search-experience"></a>Získání návrhů webů pro vyhledávání
 
-Po přidání oblasti web slice k **aktivní** seznamu, vlastní vyhledávání Bingu portálu vygeneruje návrhy webu a podstránku v dolní části karty. Toto jsou datové řezy, které vlastní vyhledávání Bingu předpokládá, že budete chtít zahrnout. Klikněte na tlačítko **aktualizovat** získat návrhy aktualizované po aktualizaci nastavení vaší instance vlastního hledání. Tato část je viditelné pouze pokud jsou k dispozici návrhy.
+Po přidání webových řezů do **aktivního** seznamu vlastní vyhledávání Bingu portál vygeneruje návrhy na webové stránky a podstránky v dolní části karty. Jedná se o řezy, které Vlastní vyhledávání Bingu považovat za vhodné zahrnutí. Kliknutím na **aktualizovat** získáte aktualizované návrhy po aktualizaci nastavení vlastní instance hledání. Tato část je viditelná pouze v případě, že jsou k dispozici návrhy.
 
-## <a name="search-for-images-and-videos"></a>Vyhledávání obrázků a videa
+## <a name="search-for-images-and-videos"></a>Hledání obrázků a videí
 
-Můžete vyhledat obrázky a videa podobně k webovému obsahu pomocí [API pro vyhledávání obrázků Bingu vlastní](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-images-api-v7-reference) nebo [API pro vyhledávání videí Bingu vlastní](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-videos-api-v7-reference). Můžete zobrazit tyto výsledky s [hostované uživatelského rozhraní](hosted-ui.md), nebo rozhraní API. 
+Obrázky a videa můžete hledat Podobně jako webový obsah pomocí [rozhraní API pro vlastní vyhledávání obrázků Bingu](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-images-api-v7-reference) nebo [vlastního rozhraní API bingu pro vyhledávání videí](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-videos-api-v7-reference). Tyto výsledky můžete zobrazit pomocí hostovaného [uživatelského rozhraní](hosted-ui.md)nebo rozhraní API. 
 
-Tato rozhraní API se podobně jako jiné vlastní [Bingu pro vyhledávání obrázků](../Bing-Image-Search/overview.md) a [Bingu pro vyhledávání videí](../Bing-Video-Search/search-the-web.md) rozhraní API, ale hledat celého webu a nevyžadují, aby `customConfig` parametr dotazu. Najdete v těchto sad dokumentace pro další informace o práci s obrázky a videa. 
+Tato rozhraní API jsou podobná rozhraním API, která nejsou vlastní [vyhledávání obrázků Bingu](../Bing-Image-Search/overview.md) a [Vvyhledávání videí Bingu](../Bing-Video-Search/search-the-web.md) , ale hledají celý web a nevyžadují `customConfig` parametr dotazu. Další informace o práci s obrázky a videem najdete v následujících sadách dokumentace. 
 
-## <a name="test-your-search-instance-with-the-preview-pane"></a>Testovat vaše hledání instance s podokno náhledu
+## <a name="test-your-search-instance-with-the-preview-pane"></a>Otestování instance hledání pomocí podokna náhledu
 
-Vaše hledání instance můžete otestovat pomocí podokna ve verzi preview na pravé straně na portálu posílat vyhledávací dotazy a zobrazit výsledky. 
+Můžete testovat instanci hledání pomocí podokna náhledu na pravé straně portálu pro odeslání vyhledávacích dotazů a zobrazení výsledků. 
 
-1. Pod vyhledávacím polem vyberte **Moje Instance**. Můžete porovnat výsledky z prostředí pro vyhledávání na Bingu, tak, že vyberete **Bingu**. 
-2. Výběr filtru bezpečného hledání a které uvedení na trh pro vyhledávání (viz [parametry dotazu](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#query-parameters)).
-3. Zadejte dotaz a stiskněte enter nebo klikněte na ikonu Hledat a zobrazit výsledky z aktuální konfiguraci. Můžete změnit typ hledání provedete kliknutím **webové**, **Image**, nebo **Video** zobrazíte odpovídající výsledky. 
+1. Pod vyhledávacím polem vyberte **Moje instance**. Výsledky hledání můžete porovnat s vyhledáváním v Bingu tak, že vyberete **Bing**. 
+2. Vyberte zabezpečený filtr hledání, který bude na trhu Hledat (viz [parametry dotazu](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#query-parameters)).
+3. Zadejte dotaz a stisknutím klávesy ENTER nebo kliknutím na ikonu hledání zobrazte výsledky z aktuální konfigurace. Můžete změnit typ hledání, který provedete kliknutím na **Web**, **Obrázek**nebo **video** , abyste získali odpovídající výsledky. 
 
 <a name="adjustrank"></a>
 
-## <a name="adjust-the-rank-of-specific-search-results"></a>Upravit pořadí výsledky hledání
+## <a name="adjust-the-rank-of-specific-search-results"></a>Úprava pořadí konkrétních výsledků hledání
 
-Na portálu můžete upravit pořadí hledání obsahu z konkrétní domény, podstránky a webové stránky. Po odeslání vyhledávacího dotazu v podokně náhledu, každý výsledek hledání obsahuje seznam úpravy provedené pro něj:  
+Portál umožňuje upravit pořadí hledání obsahu z konkrétních domén, podstránek a webových stránek. Po odeslání vyhledávacího dotazu v podokně náhledu obsahuje každý výsledek hledání seznam úprav, které můžete pro něj provést:  
 
 |            |                                                                                                                                                                      |
 |------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Zablokovat      | Přesune do seznamu blokovaných domény, podstránku nebo webové stránky. Bing vyloučí obsah z vybraného webu z zobrazování ve výsledcích hledání.                    |
-| Zvýšení výkonu      | Zvyšuje obsah z domény nebo podstránku vyšší ve výsledcích hledání.                                                                                        |
-| Snížení úrovně     | Sníží úroveň obsah z domény nebo podstránku nižší ve výsledcích hledání. Vyberte, jestli se má obsah z domény degradovat nebo podstránky, že webová stránka patří. |
-| Připnout nahoru | Přesune domény, podstránku nebo webové stránky **Pinned** seznamu. To přinutí webová stránka se zobrazí jako výsledek Nejvyhledávanější zadanému vyhledávacímu dotazu.                   |
+| Zablokovat      | Přesune doménu, podstránku nebo webovou stránku do seznamu blokovaných. Bing bude při zobrazení výsledků hledání vyloučit obsah z vybrané lokality.                    |
+| Zvýšení skóre      | Zvyšuje obsah z domény nebo podstránky tak, aby byl ve výsledcích hledání vyšší.                                                                                        |
+| Snížit úroveň     | Sníží úroveň obsahu z domény nebo podstránky ve výsledcích hledání. Můžete vybrat, jestli se má snížit úroveň obsahu z domény nebo podstránky, do které webová stránka patří. |
+| Připnout na začátek | Přesune doménu, podstránku nebo webovou stránku na **připnutý** seznam. To vynutí, aby se webová stránka zobrazila jako výsledek hledání v daném vyhledávacím dotazu.                   |
 
-Úprava pořadí není k dispozici pro obrázek nebo video hledání.
+Úprava pořadí není k dispozici pro hledání obrázků a videí.
 
-### <a name="boosting-and-demoting-search-results"></a>Zvýšení a snížení výsledky hledání
+### <a name="boosting-and-demoting-search-results"></a>Zvýšení a snížení úrovně výsledků hledání
 
-Můžete mimořádně zvýšit, zvýšit, nebo snížení úrovně do libovolné domény nebo podstránky v **aktivní** seznamu. Ve výchozím nastavení se přidají všechny řezy bez úprav hodnocení. Kolekce obsahuje nějaké řezy z webu, které jsou mimořádně boosted nebo Boosted jsou řazeny výše ve výsledcích hledání (s pořadím super boost vyšší než boost). Ve výsledcích hledání jsou hodnoceny nižší položky, které jsou interpretovány.
+V aktivním seznamu můžete zvýšit, zvýšit nebo snížit úroveň všech domén nebo podstránek. Ve výchozím nastavení jsou všechny řezy přidány bez úprav hodnocení. Řezy webu, které mají vysoký nárůst nebo zvýšení úrovně, jsou ve výsledcích hledání seřazené výše (s větším hodnocením zvýšení úrovně Super než zvýšení). Položky, které jsou ve výsledcích hledání nižší úrovně, jsou seřazené níže.
 
-Můžete mimořádně zvýšit, zvýšení nebo snížení úrovně položek s použitím **hodnocení upravit** ovládacích prvků v **aktivní** seznamu, nebo tím, že pomocí zvýšení a snížení úrovně ovládací prvky v podokně náhledu. Služba přidá do seznamu Active řezu a upraví hodnocení odpovídajícím způsobem.
+Můžete zvýšit, zvýšit nebo snížit úroveň položek pomocí **hodnocení upravit** ovládací prvky v aktivním seznamu nebo pomocí  ovládacích prvků zvýšení a snížení úrovně v podokně náhledu. Služba přidá řez do aktivního seznamu a odpovídajícím způsobem upraví pořadí.
 
 > [!NOTE] 
-> Zvýšení a snížení úrovně domén a podstránky je jednou z mnoha metod, které vlastní vyhledávání Bingu se používá k určení pořadí výsledky hledání. Z důvodu jiné faktory ovlivňující hodnocení jiný webový obsah se mohou lišit důsledcích nastavení pořadí. Podokno náhledu testovat účinky nastavení řazení výsledků hledání. 
+> Zvýšení a snížení úrovně domén a podstránek je jednou z mnoha metod, Vlastní vyhledávání Bingu používá k určení pořadí výsledků hledání. Vzhledem k jiným faktorům, které ovlivňují pořadí různého webového obsahu, se může lišit vliv úpravy pořadí. Pomocí podokna náhledu můžete testovat účinek úprav pořadí výsledků hledání. 
 
-Mimořádně zvýšit, zvýšení a snížení úrovně nejsou k dispozici pro image a videa hledání.
+Pro hledání obrázků a videí nejsou k dispozici zvýšení úrovně super, zvýšení a snížení úrovně.
 
-## <a name="pin-slices-to-the-top-of-search-results"></a>Kolekce obsahuje nějaké řezy PIN kód do horní části výsledků vyhledávání
+## <a name="pin-slices-to-the-top-of-search-results"></a>Připnout řezy na začátek výsledků hledání
 
-Na portálu také umožňuje Připnutí adresy URL do horní části výsledků vyhledávání pro konkrétní hledané výrazy pomocí **Pinned** kartu. Zadejte adresu URL a dotazů zadejte webovou stránku, která se zobrazí jako nejlepší výsledek. Všimněte si, že můžete připnout lze maximálně jedna webová stránka na vyhledávací dotaz a zobrazí se pouze indexovaná webové stránky v hledání. Připnutí výsledky není k dispozici pro obrázek nebo video hledání.
+Portál také umožňuje připnout adresy URL na začátek výsledků hledání konkrétních hledaných výrazů pomocí připnutých karet.  Zadejte adresu URL a dotaz pro určení webové stránky, která se zobrazí jako nejvyšší výsledek. Všimněte si, že můžete připnout maximálně jednu webovou stránku na vyhledávací dotaz a v hledání budou zobrazeny pouze indexované webové stránky. Výsledky připnutí nejsou k dispozici pro hledání obrázků a videí.
 
-Webová stránka na začátek si můžete připnout dvěma způsoby:
+Webovou stránku můžete připnout na začátek dvěma způsoby:
 
-* V **Pinned** kartu, zadejte adresu URL webové stránky pro Připnutí na horní a jeho odpovídající dotaz.
+* Na **připnuté** kartě zadejte adresu URL webové stránky, kterou chcete připnout k hornímu, a odpovídající dotaz.
 
-* V **ve verzi Preview** podokně, zadejte vyhledávací dotaz a klikněte na tlačítko Hledat. Webová stránka, kterou chcete připnout pro dotaz a klikněte na tlačítko Najít **PIN kód na začátek**. webové stránky a dotazů se přidají do **Pinned** seznamu.
+* V podokně **náhledu** zadejte vyhledávací dotaz a klikněte na tlačítko Hledat. Vyhledejte webovou stránku, kterou chcete pro svůj dotaz připnout, a klikněte na **Připnout na začátek**. Webová stránka a dotaz budou přidány do připnutého seznamu.
 
-### <a name="specify-the-pins-match-condition"></a>Zadejte podmínku shody PIN kód
+### <a name="specify-the-pins-match-condition"></a>Zadejte podmínku shody PIN kódu.
 
-Ve výchozím nastavení, se webové stránky pouze připnuté k hornímu okraji výsledky hledání při řetězce dotazu přesně odpovídal některé uvedené v **Pinned** seznamu. Toto chování můžete změnit zadáním jedné z následujících podmínek shody:
+Ve výchozím nastavení jsou webové stránky připnuté pouze na začátek výsledků hledání, když řetězec dotazu uživatele přesně odpovídá jednomu, který je uveden v seznamu **připnuté** . Toto chování můžete změnit zadáním jedné z následujících podmínek shody:
 
 > [!NOTE]
-> Všechna porovnání mezi uživatele vyhledávací dotaz a vyhledávání kódu pin jsou malá a velká písmena.
+> Všechna porovnání mezi vyhledávacím dotazem uživatele a vyhledávacím dotazem kódu PIN jsou nerozlišovat velká a malá písmena.
 
-| Hodnota | Popis                                                                          |
+| Value | Popis                                                                          |
 |---------------|----------------------------------------------------------------------------------|
-| začíná | Kód pin je nalezena shoda, pokud řetězec dotazu začíná řetězec dotazu PIN kódu |
-| končí   | Kód pin je nalezena shoda, pokud řetězec dotazu končí řetězcem dotazu PIN kódu.  |
-| Obsahuje    | Kód pin je nalezena shoda, pokud řetězec dotazu obsahuje řetězec dotazu PIN kódu.   |
+| začíná | PIN je shoda, pokud řetězec dotazu uživatele začíná řetězcem dotazu PIN. |
+| končí   | PIN je shoda, pokud řetězec dotazu uživatele končí řetězcem dotazu PIN.  |
+| Obsahuje    | PIN je shoda, pokud řetězec dotazu uživatele obsahuje řetězec dotazu PIN.   |
 
 
-Podmínka shody PIN kód změnit, klikněte na ikonu úprav PIN kódu. V **podmínce shody dotazu** sloupce, klikněte na rozevírací seznam a vyberte nové podmínky použití. Potom klikněte na uložit ikonu a uložte změny.
+Pokud chcete změnit podmínku shody PIN kódu, klikněte na ikonu pro úpravy kódu PIN. Ve sloupci **Podmínka shody dotazů** klikněte na rozevírací seznam a vyberte novou podmínku, kterou chcete použít. Potom kliknutím na ikonu Uložit uložte změnu.
 
-### <a name="change-the-order-of-your-pinned-sites"></a>Změna pořadí připnutých webech
+### <a name="change-the-order-of-your-pinned-sites"></a>Změna pořadí připnutéch webů
 
-Chcete-li změnit pořadí váš PIN kódy, můžete na ně přetažení myší, nebo upravit pořadového čísla kliknutím na ikonu pro "úpravy" v **ovládací prvky** sloupec **Pinned** seznamu.
+Chcete-li změnit pořadí kódů PIN, můžete je přetáhnout nebo upravit jejich číslo, a to kliknutím na ikonu Upravit ve sloupci **ovládací prvky** připnutého seznamu.
 
-Pokud víc PIN kódů splňují podmínky shody, bude používat vlastní vyhledávání Bingu je nejvyšší v seznamu.
+Pokud více kódů PIN vyhovuje podmínce shody, Vlastní vyhledávání Bingu použije v seznamu jeden nejvyšší.
 
-## <a name="view-statistics"></a>Zobrazení statistik
+## <a name="view-statistics"></a>Statistiky sledovanosti
 
-Pokud jste přihlášení k odběru vlastního vyhledávání na příslušné úrovni (najdete v článku [stránkách s cenami](https://azure.microsoft.com/pricing/details/cognitive-services/bing-custom-search/)), **statistiky** kartu se přidá do produkčních instancí. Statistiky karta zobrazuje podrobnosti o vašich koncových bodů vlastního vyhledávání používání, včetně objemy volání, nejčastější dotazy, geografické distribuce, kódy odpovědí a bezpečného hledání. Můžete filtrovat podrobně popisuje použití zadaný ovládací prvky.
+Pokud jste se přihlásili k odběru vlastního vyhledávání na příslušné úrovni (viz [stránky s cenami](https://azure.microsoft.com/pricing/details/cognitive-services/bing-custom-search/)), přidá se do vaší provozní instance karta **Statistika** . Na kartě statistika se zobrazují podrobnosti o tom, jak se používají vaše vlastní koncové body hledání, včetně objemu volání, hlavních dotazů, geografické distribuce, kódů odpovědí a bezpečného vyhledávání. Podrobnosti můžete filtrovat pomocí zadaných ovládacích prvků.
 
-## <a name="usage-guidelines"></a>Pokyny k používání
+## <a name="usage-guidelines"></a>Pokyny k použití
 
-- Pro každou instanci vlastního vyhledávání, maximální počet hodnocení úpravy, které může provádět **aktivní** a **blokováno** řezy je omezená na 400.
-- Přidání řezu na aktivní nebo Uzavřeno karty se počítá jako jeden hodnocení úpravy.
-- Zvýšení a snížení počtu jako dvě pořadí úpravy.
-- Pro každou instanci vlastního vyhledávání je maximální počet kódů PIN, které může být omezená na 200.
+- Pro každou vlastní instanci vyhledávání je maximální počet úprav řazení, které lze provést **aktivní** a **blokované** řezy, omezen na 400.
+- Přidání řezu na aktivní nebo blokované karty se počítá jako jedna úprava řazení.
+- Zvyšování a snižování úrovně jako dvou úprav řazení.
+- U každé vlastní instance vyhledávání je maximální počet kódů PIN, které lze provést, omezen na 200.
 
 ## <a name="next-steps"></a>Další postup
 

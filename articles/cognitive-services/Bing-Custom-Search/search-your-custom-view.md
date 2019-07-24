@@ -1,7 +1,7 @@
 ---
-title: Hledání vlastních zobrazení – vlastní vyhledávání Bingu
-titlesuffix: Azure Cognitive Services
-description: Popisuje, jak hledat vlastní zobrazení webu.
+title: Hledání vlastního zobrazení – Vlastní vyhledávání Bingu
+titleSuffix: Azure Cognitive Services
+description: V této části najdete popis postupu při hledání vlastního zobrazení webu.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,54 +10,54 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 05/09/2019
 ms.author: maheshb
-ms.openlocfilehash: 9c0c4fc21f6f4b23b14c8020ecd7e95c63dedcbf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 814f57d4011823da80e53cce41ffcb523fc0bf1b
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66388554"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68404998"
 ---
-# <a name="call-your-bing-custom-search-instance-from-the-portal"></a>Volání vaší instance vlastního vyhledávání Bingu z portálu
+# <a name="call-your-bing-custom-search-instance-from-the-portal"></a>Volání instance Vlastní vyhledávání Bingu z portálu
 
-Po dokončení konfigurace prostředí pro vlastní vyhledávání, takže ji můžete otestovat z v rámci vlastní vyhledávání Bingu [portál](https://customsearch.ai). 
+Po nakonfigurování vlastního vyhledávacího prostředí ho můžete otestovat na [portálu](https://customsearch.ai)vlastní vyhledávání Bingu. 
 
-![snímek obrazovky portálu pro vlastní vyhledávání Bingu](media/portal-search-screen.png)
-## <a name="create-a-search-query"></a>Vytvoření vyhledávací dotaz 
+![snímek obrazovky s portálem pro vlastní vyhledávání Bingu](media/portal-search-screen.png)
+## <a name="create-a-search-query"></a>Vytvoření vyhledávacího dotazu 
 
-Po přihlášení do vlastní vyhledávání Bingu [portál](https://customsearch.ai), vyberte instanci hledání a klikněte na tlačítko **produkční** kartu. V části **koncové body**, vyberte koncový bod rozhraní API (například webové rozhraní API). Předplatné Určuje, jaké koncové body jsou uvedeny.
+Po přihlášení k [portálu](https://customsearch.ai)vlastní vyhledávání Bingu vyberte svou instanci hledání a klikněte na kartu **Výroba** . V části **koncové body**vyberte koncový bod rozhraní API (například webové rozhraní API). Vaše předplatné určuje, jaké koncové body se zobrazí.
 
-Chcete-li vytvořit vyhledávací dotaz, zadejte hodnoty parametrů pro koncový bod služby. Všimněte si, že parametry, zobrazí na portálu může měnit v závislosti na koncový bod, kterou zvolíte. Zobrazit [referenční dokumentace rozhraní API pro vlastní vyhledávání](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#query-parameters) Další informace. Změnit předplatné, které používá vaše hledání instance, přidejte odpovídající předplatné klíč a upravte tyto parametry trhu a/nebo jazyk.
+Vyhledávací dotaz vytvoříte zadáním hodnot parametrů pro koncový bod. Všimněte si, že parametry zobrazené na portálu se můžou měnit v závislosti na koncovém bodu, který zvolíte. Další informace najdete v referenčních informacích k [rozhraní API pro vlastní vyhledávání](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#query-parameters) . Chcete-li změnit předplatné, které vaše instance vyhledávání používá, přidejte příslušný klíč předplatného a aktualizujte příslušné parametry trhu nebo jazyka.
 
-Některé důležité parametry jsou následující:
+Níže jsou uvedeny některé důležité parametry:
 
 
 |Parametr  |Popis  |
 |---------|---------|
-|Dotaz     | Hledaný termín, který chcete vyhledat. K dispozici jenom pro Web, Image, Video a pro automatické návrhy koncových bodů |
+|Dotaz     | Hledaný termín. K dispozici pouze pro koncové body webu, obrázku, videa a Automatický návrh |
 |ID vlastní konfigurace | ID konfigurace vybrané instance vlastního vyhledávání. Toto pole je jen pro čtení. |
-|Market     | Na trhu, která způsobí, že budou pocházet z. Dostupné jenom pro koncové body Web, Image, Video a hostované uživatelského rozhraní.        |
-|Klíč předplatného | Klíč předplatného pro testování. Můžete vybrat klíče z rozevíracího seznamu nebo zadat ručně.          |
+|Market     | Trh, ze kterého budou výsledky pocházet. K dispozici pouze pro koncové body webu, obrázku, videa a hostovaného uživatelského rozhraní.        |
+|Klíč předplatného | Klíč předplatného, pomocí kterého se má testovat. Můžete vybrat klíč z rozevíracího seznamu nebo ho zadat ručně.          |
 
-Kliknutím na **další parametry** odhalí následující parametry:  
+Kliknutím na **Další parametry** se odhalí následující parametry:  
 
 |Parametr  |Popis  |
 |---------|---------|
-|Safe Search     | Filtr, který se používá k filtrování webových stránek pro obsah pro dospělé. Dostupné jenom pro koncové body Web, Image, Video a hostované uživatelského rozhraní.        |
-|Jazyk uživatelského rozhraní    | Jazyk používaný pro uživatelské rozhraní řetězce. Pokud povolíte obrázky a videa v uživatelském rozhraní hostovaná, například **Image** a **Video** karet použít zadaný jazyk.        |
-|Počet     | Počet výsledků hledání vrátit v odpovědi. K dispozici pouze pro koncové body Web, Image a videa.         |
-|Offset    | Počet výsledků hledání pro přeskočení před vrácením výsledky. K dispozici pouze pro koncové body Web, Image a videa.        |
+|Safe Search     | Filtr použitý k filtrování webových stránek pro obsah určený pro dospělé K dispozici pouze pro koncové body webu, obrázku, videa a hostovaného uživatelského rozhraní.        |
+|Jazyk uživatelského rozhraní    | Jazyk používaný pro řetězce uživatelského rozhraní. Pokud například povolíte image a videa v hostovaném uživatelském rozhraní, na kartách **Obrázek** a **video** se použije zadaný jazyk.        |
+|Count     | Počet výsledků hledání, které se mají vrátit v odpovědi K dispozici pouze pro koncové body webu, obrázku a videa.         |
+|Offset    | Počet výsledků hledání, které se mají přeskočit před vrácením výsledků K dispozici pouze pro koncové body webu, obrázku a videa.        |
     
-Po zadání všechny nezbytné možnosti, klikněte na tlačítko **volání** zobrazíte odpověď JSON v pravém podokně. Pokud vyberete hostované uživatelského rozhraní koncového bodu, můžete otestovat vyhledávání v dolním podokně.
+Po zadání všech požadovaných možností klikněte na **zavolat** , aby se zobrazila odpověď JSON v pravém podokně. Pokud vyberete koncový bod hostovaného uživatelského rozhraní, můžete otestovat možnosti vyhledávání v dolním podokně.
 
-## <a name="change-your-bing-custom-search-subscription"></a>Změnit předplatné vlastní vyhledávání Bingu
+## <a name="change-your-bing-custom-search-subscription"></a>Změna předplatného Vlastní vyhledávání Bingu
 
-Můžete změnit předplatné spojené s vaší instancí vlastního vyhledávání Bingu bez vytvoření nové instance. Pokud chcete, aby volání rozhraní API, odeslání a účtovat si nové předplatné, vytvořte nový prostředek vlastní vyhledávání Bingu na webu Azure Portal. Používání nového klíče předplatného v požadavcích rozhraní API, spolu s ID vaší instance vlastní konfigurace.
+Předplatné přidružené k vaší instanci Vlastní vyhledávání Bingu můžete změnit bez vytvoření nové instance. Pokud chcete, aby se volání rozhraní API poslala a vyrovnala novému předplatnému, vytvořte v Azure Portal nový prostředek Vlastní vyhledávání Bingu. Použijte nový klíč předplatného v požadavcích rozhraní API spolu s ID vlastní konfigurace vaší instance.
 
 ## <a name="next-steps"></a>Další postup
 
-- [Volání vlastního zobrazení pomocí jazyka C#](./call-endpoint-csharp.md)
-- [Volání vlastního zobrazení pomocí Javy](./call-endpoint-java.md)
-- [Volání vlastního zobrazení s NodeJs](./call-endpoint-nodejs.md)
+- [Zavolejte vlastní zobrazení pomocíC#](./call-endpoint-csharp.md)
+- [Volání vlastního zobrazení pomocí Java](./call-endpoint-java.md)
+- [Volání vlastního zobrazení pomocí NodeJs](./call-endpoint-nodejs.md)
 - [Volání vlastního zobrazení pomocí Pythonu](./call-endpoint-python.md)
 
-- [Volání vlastního zobrazení pomocí sady SDK jazyka C#](./sdk-csharp-quick-start.md)
+- [Volání vlastního zobrazení pomocí C# sady SDK](./sdk-csharp-quick-start.md)

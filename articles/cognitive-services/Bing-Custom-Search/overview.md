@@ -1,7 +1,7 @@
 ---
 title: Co je rozhraní API pro vlastní vyhledávání Bingu?
-titlesuffix: Azure Cognitive Services
-description: Rozhraní API pro vlastní vyhledávání Bingu umožňuje vytvořit míru vyhledávací prostředí pro témata, které vás zajímají.
+titleSuffix: Azure Cognitive Services
+description: Rozhraní API pro vlastní vyhledávání Bingu vám umožní vytvářet prostředí s přizpůsobeným vyhledáváním pro témata, o kterých se zajímáte.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,33 +10,33 @@ ms.subservice: bing-custom-search
 ms.topic: overview
 ms.date: 06/27/2019
 ms.author: aahi
-ms.openlocfilehash: 067693c3c02d19f3bdab77f315c920b25078e7f5
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.openlocfilehash: 4b0b0d91af15912e1c64761351ba33acfd3e2725
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67542692"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68405152"
 ---
 # <a name="what-is-the-bing-custom-search-api"></a>Co je rozhraní API pro vlastní vyhledávání Bingu?
 
-Rozhraní API pro vlastní vyhledávání Bingu umožňuje vytvořit míru bez reklam vyhledávací prostředí pro témata, které vás zajímají. Můžete určit domén a webových stránek pro Bingu pro vyhledávání, jakož i kód pin, zvýšení nebo snížení úrovně konkrétnímu obsahu a vytvořit vlastní zobrazení webu pomáhají zajistit uživatelům rychle najít relevantní výsledky vyhledávání. 
+Rozhraní API pro vlastní vyhledávání Bingu vám umožní vytvářet uživatelsky přizpůsobené vyhledávací prostředí bez reklamy pro témata, o kterých se zajímáte. Můžete určit domény a webové stránky, které bude Bing Hledat, a také připnout, zvýšit nebo snížit konkrétní obsah, abyste mohli vytvořit vlastní zobrazení webu a pomáhat uživatelům rychle najít relevantní výsledky hledání. 
 
 ## <a name="features"></a>Funkce
 
 |Funkce  |Popis  |
 |---------|---------|
-|[Návrhy hledání vlastních v reálném čase](define-custom-suggestions.md)     | Pošlete nám návrhy hledání, které mohou být zobrazeny jako rozevíracího seznamu jako typ uživatele.       | 
-|[Možnosti hledání vlastní image](get-images-from-instance.md)     | Povolte uživatelům vyhledávání obrázků z domény a webů podle vaší instance vlastního hledání.        |        
-|[Prostředí pro vlastní vyhledávání videí](get-videos-from-instance.md)     | Umožní vašim uživatelům hledání videí z domény a weby určené ve vaší instance vlastního hledání.        |    
-|[Sdílet vaše instance vlastního vyhledávání](share-your-custom-search.md)     | Společně upravovat a testovat vaše hledání instance při sdílení se členy vašeho týmu.        | 
-|[Konfigurace uživatelského rozhraní pro aplikace a weby](hosted-ui.md)     | Společně upravovat a testovat vaše hledání instance při sdílení se členy vašeho týmu.        | 
+|[Vlastní návrhy hledání v reálném čase](define-custom-suggestions.md)     | Poskytněte návrhy hledání, které se dají jako typ uživatele zobrazovat jako rozevírací seznam.       | 
+|[Prostředí pro vlastní vyhledávání obrázků](get-images-from-instance.md)     | Umožněte uživatelům vyhledávat image z domén a webů zadaných ve vaší instanci vlastního vyhledávání.        |        
+|[Prostředí pro vlastní vyhledávání videí](get-videos-from-instance.md)     | Umožněte uživatelům hledat videa z domén a webů zadaných ve vaší instanci vlastního vyhledávání.        |    
+|[Sdílení vlastní instance hledání](share-your-custom-search.md)     | Spoluupravujte a otestujte vaši instanci hledání tak, že ji sdílíte se členy týmu.        | 
+|[Konfigurace uživatelského rozhraní pro aplikace a weby](hosted-ui.md)     | Spoluupravujte a otestujte vaši instanci hledání tak, že ji sdílíte se členy týmu.        | 
 ## <a name="workflow"></a>Pracovní postup
 
-Můžete vytvořit vlastní hledání instance pomocí [vlastní vyhledávání Bingu portál](https://customsearch.ai). Na portálu můžete vytvořit instanci vlastního vyhledávání, která určuje domén, webů a webových stránek, které chcete, aby Bingu pro vyhledávání, spolu s těmi, které nechcete, aby ji k prohledávání. Můžete taky použít portál pro: Seznámení s prostředím vyhledávání, upravte pořadí hledání, které poskytuje rozhraní API a volitelně nakonfigurujete prohledávatelná uživatelského rozhraní mají být vykresleny v k webům a aplikacím.
+Přizpůsobenou instanci hledání můžete vytvořit pomocí [portálu vlastní vyhledávání Bingu](https://customsearch.ai). Portál umožňuje vytvořit vlastní instanci hledání, která určuje domény, weby a webové stránky, které má Bing Hledat, spolu s těmi, které nechcete hledat. Portál můžete také použít pro: náhled vyhledávacího prostředí, upravit pořadí hledání, které poskytuje rozhraní API, a volitelně nakonfigurovat prohledávatelný uživatelský rozhraní, které bude vykresleno na vašich webech a v aplikacích.
 
-Po vytvoření instance vyhledávání, můžete integrovat ho (a případně uživatelské rozhraní) na webu nebo aplikaci pomocí volání rozhraní API pro vlastní vyhledávání Bingu:
+Po vytvoření instance vyhledávání ji můžete integrovat (a volitelně také pomocí uživatelského rozhraní) do svého webu nebo aplikace voláním rozhraní API pro vlastní vyhledávání Bingu:
 
-![Obrázek znázorňující, že se můžete připojit k prostřednictvím rozhraní API pro vlastní vyhledávání Bingu](media/BCS-Overview.png "funguje jak pro vlastní vyhledávání Bingu.")
+![Obrázek znázorňující, že se můžete připojit ke službě Bing vlastní vyhledávání prostřednictvím rozhraní API](media/BCS-Overview.png "Jak vlastní vyhledávání Bingu funguje.")
 
 
 ## <a name="next-steps"></a>Další postup
@@ -45,7 +45,7 @@ Pokud chcete rychle začít, přečtěte si téma [Vytvoření první instance V
 
 Podrobnosti o přizpůsobení instance vyhledávání najdete v tématu [Definice instance vlastního vyhledávání](define-your-custom-view.md).
 
-Nezapomeňte si přečíst [požadavky na zobrazení a použití Bingu](./use-and-display-requirements.md) pro práci s výsledky hledání do vaší služby a aplikace.
+Nezapomeňte si přečíst [požadavky na použití a zobrazení Bingu](./use-and-display-requirements.md) pro používání výsledků hledání ve vašich službách a aplikacích.
 
 Seznamte se s referenčním obsahem pro jednotlivé koncové body vlastního vyhledávání. Tyto referenční informace obsahují koncové body, hlavičky a parametry dotazů, které můžete použít při odesílání požadavků na výsledky hledání. Obsahují také definice objektů odpovědi.
 

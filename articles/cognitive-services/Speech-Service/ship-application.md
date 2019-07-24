@@ -3,20 +3,20 @@ title: Vyvíjejte aplikace s rozhraním Speech SDK – hlasové služby
 titleSuffix: Azure Cognitive Services
 description: Zjistěte, jak vytvářet aplikace s využitím sadou SDK pro řeč.
 services: cognitive-services
-author: wolfma61
+author: jhakulin
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/05/2019
-ms.author: wolfma
+ms.date: 07/23/2019
+ms.author: jhakulin
 ms.custom: seodec18
-ms.openlocfilehash: 7c698abb133c14f32b60b22acbbccc37a191a02e
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 8fc27002af4ebef0825b23c806cfedbe7adf9642
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67604847"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68404824"
 ---
 # <a name="ship-an-application"></a>Dodávejte aplikace
 
@@ -28,7 +28,7 @@ V závislosti na platformě existují různých závislostí ke spuštění vaš
 
 Cognitive Services SDK řeči je testován na Windows 10 a Windows serveru 2016.
 
-Cognitive Services řeči SDK vyžaduje [Microsoft Visual C++ Redistributable pro Visual Studio 2019](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads) v systému. Instalační programy pro nejnovější verzi si můžete stáhnout `Microsoft Visual C++ Redistributable for Visual Studio 2019` tady:
+Sada Cognitive Services Speech SDK vyžaduje sadu [Microsoft Visual C++ Redistributable pro Visual Studio 2019](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads) v systému. Instalační programy pro nejnovější verzi si můžete stáhnout `Microsoft Visual C++ Redistributable for Visual Studio 2019` tady:
 
 - [Win32](https://aka.ms/vs/16/release/vc_redist.x86.exe)
 - [x64](https://aka.ms/vs/16/release/vc_redist.x64.exe)
@@ -45,29 +45,29 @@ Požadované sadou SDK pro řeč soubory je možné nasadit ve stejném adresá�
 | `Microsoft.CognitiveServices.Speech.csharp.dll` | vyžaduje se pro spravované nasazení
 
 >[!NOTE]
-> Od verze 1.3.0 soubor `Microsoft.CognitiveServices.Speech.csharp.bindings.dll` (k dispozici v předchozích verzích) už není potřeba. Funkce je teď integrovaná v core SDK.
+> Počínaje verzí 1.3.0 soubor `Microsoft.CognitiveServices.Speech.csharp.bindings.dll` (dodán v předchozích verzích) už není potřeba. Tato funkce je teď integrovaná v základní sadě SDK.
 
 >[!NOTE]
-> Pro aplikace Windows Forms (.NET Framework) C# projektu, ujistěte se, že tyto knihovny jsou zahrnuty v nastavení projektu nasazení. Můžete zkontrolovat v části `Properties -> Publish Section`. Klikněte na tlačítko `Application Files` tlačítko a najít odpovídající knihovny z rozevíracího seznamu dolů. Ujistěte se, že hodnota je nastavena na `Included`. Visual Studio bude obsahovat soubor, pokud je projekt publikován nebo nasadí.
+> Pro projekt aplikace model Windows Forms App (.NET Framework C# ) se ujistěte, že jsou knihovny zahrnuté v nastavení nasazení vašeho projektu. Můžete to ověřit v části `Properties -> Publish Section`. Klikněte na `Application Files` tlačítko a v rozevíracím seznamu vyhledejte odpovídající knihovny. Ujistěte se, že je hodnota nastavená na `Included`. Visual Studio bude soubor zahrnovat při publikování nebo nasazení projektu.
 
 ## <a name="linux"></a>Linux
 
-Sadou SDK pro řeč aktuálně podporuje distribuce Ubuntu 16.04 a Ubuntu 18.04, Debian 9.
+Sada Speech SDK aktuálně podporuje distribuce Ubuntu 16,04, Ubuntu 18,04 a Debian 9.
 Pro nativní aplikaci, je třeba dodávat knihovně sadou SDK pro řeč `libMicrosoft.CognitiveServices.Speech.core.so`.
 Ujistěte se, zda že jste vybrali verzi (x86, x64), která odpovídá vaší aplikace. V závislosti na verzi systému Linux můžete také potřebovat zahrnout tyto závislosti:
 
 * Sdílené knihovny knihovna GNU C (včetně knihovny POSIX vlákna programování `libpthreads`)
-* Knihovny OpenSSL (`libssl.so.1.0.0` nebo `libssl.so.1.0.2`)
+* Knihovna OpenSSL (`libssl.so.1.0.0` nebo `libssl.so.1.0.2`)
 * Sdílená knihovna pro aplikace ALSA (`libasound.so.2`)
 
-V Ubuntu by měl knihovny GNU C již nainstalován ve výchozím nastavení. Poslední tři lze nainstalovat pomocí těchto příkazů:
+V Ubuntu by ve výchozím nastavení měly být knihovny GNU C nainstalované. Poslední tři lze nainstalovat pomocí těchto příkazů:
 
 ```sh
 sudo apt-get update
 sudo apt-get install libssl1.0.0 libasound2
 ```
 
-Na Debian 9 instalaci těchto balíčků:
+V Debian 9 nainstalujte tyto balíčky:
 
 ```sh
 sudo apt-get update
