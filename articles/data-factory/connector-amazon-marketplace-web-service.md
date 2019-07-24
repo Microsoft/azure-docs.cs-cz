@@ -46,7 +46,7 @@ Webová služba Amazon Marketplace propojené služby jsou podporovány následu
 |:--- |:--- |:--- |
 | type | Vlastnost type musí být nastavená na: **AmazonMWS** | Ano |
 | endpoint | Koncový bod serveru Amazon MWS (mws.amazonservices.com)  | Ano |
-| marketplaceID | Chcete načíst data z ID Amazon Marketplace. Načíst data z víc ID webu Marketplace, oddělte je středníkem (`,`). (to znamená A2EUQ1WTGCTBG2)  | Ano |
+| marketplaceID | Chcete načíst data z Amazon Marketplace ID. Načíst data z víc ID webu Marketplace, oddělte je středníkem (`,`). (to znamená A2EUQ1WTGCTBG2)  | Ano |
 | sellerID | ID Amazon prodejce.  | Ano |
 | mwsAuthToken | Ověřovací token Amazon MWS. Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
 | accessKeyId | Přístup klíč ID pro přístup k datům.  | Ano |
