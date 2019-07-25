@@ -100,6 +100,8 @@
               href: backup-mabs-unattended-install.md
         - name: Ochrana úloh
           items:
+            - name: Zálohování virtuálních počítačů Hyper-V
+              href: back-up-hyper-v-virtual-machines-mabs.md
             - name: Server VMware
               href: backup-azure-backup-server-vmware.md
             - name: Výměna

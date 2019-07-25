@@ -193,6 +193,18 @@
                   href: scenario-mobile-overview.md
                 - name: Registrace aplikací
                   href: scenario-mobile-app-registration.md
+                - name: Konfigurace kódu
+                  href: scenario-mobile-app-configuration.md
+                - name: Konfigurace specifická pro mobilní platformy
+                  items:
+                    - name: Xamarin Android
+                      href: msal-net-xamarin-android-considerations.md
+                    - name: Systémový prohlížeč v Androidu
+                      href: msal-net-system-browser-android-considerations.md
+                    - name: Xamarin iOS
+                      href: msal-net-xamarin-ios-considerations.md
+                    - name: Univerzální platforma Windows
+                      href: msal-net-uwp-considerations.md
                 - name: Získání tokenu pro aplikaci
                   href: scenario-mobile-acquire-token.md
                 - name: Volání webového rozhraní API
@@ -255,14 +267,6 @@
                   items:
                     - name: Webové prohlížeče
                       href: msal-net-web-browsers.md
-                    - name: Xamarin Android
-                      href: msal-net-xamarin-android-considerations.md
-                    - name: Systémový prohlížeč v Androidu
-                      href: msal-net-system-browser-android-considerations.md
-                    - name: Xamarin iOS
-                      href: msal-net-xamarin-ios-considerations.md
-                    - name: Univerzální platforma Windows
-                      href: msal-net-uwp-considerations.md
                 - name: MSAL.js
                   items:
                     - name: Důležité informace o využití IE

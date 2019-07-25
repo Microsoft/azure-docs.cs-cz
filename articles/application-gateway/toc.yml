@@ -122,10 +122,12 @@
               href: application-gateway-end-to-end-ssl-powershell.md
         - name: Správa certifikátů
           items:
-            - name: Vytváření certifikátů pro back-end zařazování na seznam povolených
+            - name: Certifikáty pro back-end
               href: certificates-for-backend-authentication.md
             - name: Obnovení certifikátů
               href: renew-certificates.md
+            - name: Generování certifikátů podepsaných svým držitelem
+              href: self-signed-certificates.md
         - name: Zásady SSL
           items:
             - name: Konfigurace zásad SSL

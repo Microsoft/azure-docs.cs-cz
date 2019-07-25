@@ -11,16 +11,16 @@ ms.topic: landing-page
 ms.date: 07/30/2018
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e73e089f0753f49233c75a5e55513ebaf7bf9c9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5a6908a26e1d513261094be28620c3c9a2d86b48
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60861799"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68383107"
 ---
 # <a name="user-help-for-authentication-apps-and-device-management"></a>Uživatelská nápověda pro ověřování, aplikace a správu zařízení
 
-Tento obsah jsme vytvořili, abychom vám pomohli s nastavením a použitím bezpečnostních údajů, dvoustupňovým ověřením, získáním informací o postupu při resetování hesla, nastavením a připojením zařízení Azure Active Directory a nastavením a použitím aplikace Microsoft Authenticator a portálu Moje aplikace.
+Tento obsah jsme vytvořili, abychom vám pomohli s nastavením a použitím bezpečnostních údajů, dvoustupňovým ověřením, resetování vlastních hesel, nastavením a připojením zařízení Azure Active Directory a nastavením a použitím aplikace Microsoft Authenticator a portálu Moje aplikace.
 
 |  |
 |--|
@@ -77,6 +77,7 @@ Tento obsah jsme vytvořili, abychom vám pomohli s nastavením a použitím bez
                         <a href="/azure/active-directory/user-help/security-info-setup-auth-app">Nastavení ověřovací aplikace</a><br/>
                         <a href="/azure/active-directory/user-help/security-info-setup-text-msg">Nastavení zasílání textových zpráv</a><br/>
                         <a href="/azure/active-directory/user-help/security-info-setup-phone-number">Nastavení telefonních hovorů</a><br/>
+                        <a href="/azure/active-directory/user-help/security-info-setup-security-key">Nastavení klíče zabezpečení</a><br/>
                         <a href="/azure/active-directory/user-help/user-help-sign-in">Jak se přihlásit</a>
                         </p>
                     </div>

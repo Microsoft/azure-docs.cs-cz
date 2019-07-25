@@ -98,8 +98,6 @@
           href: sisense.md
     - name: Spravovat
       items:
-        - name: Správa databázových oprávnění
-          href: manage-database-permissions.md
         - name: Kontrola stavu clusteru
           href: check-cluster-health.md
         - name: Výběr SKU clusterového virtuálního počítače
@@ -108,6 +106,10 @@
           href: manage-cluster-horizontal-scaling.md
         - name: Správa vertikálního škálování clusteru
           href: manage-cluster-vertical-scaling.md
+        - name: Správa zabezpečení clusteru
+          href: manage-cluster-security.md
+        - name: Správa databázových oprávnění
+          href: manage-database-permissions.md
         - name: Odstranění dat
           href: delete-data.md
         - name: Řešení duplicitních dat

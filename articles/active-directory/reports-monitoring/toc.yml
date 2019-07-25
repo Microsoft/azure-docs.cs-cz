@@ -27,6 +27,8 @@
       href: tutorial-azure-monitor-stream-logs-to-event-hub.md
 - name: Koncepty
   items:
+    - name: Plánování nasazení sestav a monitorování
+      href: plan-monitoring-and-reporting.md
     - name: Protokoly auditu
       href: concept-audit-logs.md
     - name: Protokoly přihlašování

@@ -74,6 +74,8 @@
           href: security-info-setup-text-msg.md
         - name: Nastavení telefonních hovorů
           href: security-info-setup-phone-number.md
+        - name: Nastavení klíče zabezpečení
+          href: security-info-setup-security-key.md
         - name: Nastavení e-mailu
           href: security-info-setup-email.md
         - name: Nastavení bezpečnostních otázek

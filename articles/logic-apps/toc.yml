@@ -303,10 +303,12 @@
           href: test-logic-apps-mock-data-static-results.md
     - name: Nasazení
       items:
+        - name: Přehled – automatizace nasazení aplikace logiky
+          href: logic-apps-azure-resource-manager-templates-overview.md
         - name: Vytváření šablon pro aplikace logiky
-          href: logic-apps-create-deploy-template.md
+          href: logic-apps-create-azure-resource-manager-templates.md
         - name: Nasazování šablon pro aplikace logiky
-          href: logic-apps-create-deploy-azure-resource-manager-templates.md
+          href: logic-apps-deploy-azure-resource-manager-templates.md
     - name: Monitorování
       items:
         - name: Monitorování aplikací logiky
@@ -377,7 +379,7 @@
     - name: Plány Azure do budoucna
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Fórum MSDN
-      href: 'https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=azurelogicapps'
+      href: 'https://social.msdn.microsoft.com/Forums/azure/home?forum=azurelogicapps'
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-logic-apps'
     - name: Twitter

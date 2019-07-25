@@ -1,108 +1,112 @@
 ### YamlMime:Landing
 title: Azure IoT Edge
-summary: 'Azure IoT Edge je služba Internetu věcí (IoT) postavená na službě IoT Hub. Tato služba je určená pro zákazníky, kteří chtějí analyzovat data na zařízeních nebo na hraničních zařízeních, a ne v cloudu. Díky přesunu částí úlohy do hraničních zařízení můžou vaše zařízení šetřit čas strávený odesíláním zpráv do cloudu a rychleji reagovat na události.'
+summary: Azure IoT Edge je služba Internetu věcí (IoT) postavená na službě IoT Hub. Tato služba je určená pro zákazníky, kteří chtějí analyzovat data na zařízeních nebo na hraničních zařízeních, a ne v cloudu. Díky přesunu částí úlohy do hraničních zařízení můžou vaše zařízení šetřit čas strávený odesíláním zpráv do cloudu a rychleji reagovat na události.
 metadata:
   ms.topic: landing-page
+  ms.openlocfilehash: 71589d66856b4f6d3a32da50252fadff564373ff
+  ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 07/23/2019
+  ms.locfileid: "68414419"
 landingContent:
-  - title: Vývoj pro zařízení s Linuxem
-    linkLists:
-      - linkListType: quickstart
-        links:
-          - text: Nasazení prvního modulu IoT Edge na zařízení s Linuxem
-            url: quickstart-linux.md
-      - linkListType: tutorial
-        links:
-          - text: Vývoj modulů IoT Edge pro zařízení s Linuxem
-            url: tutorial-develop-for-linux.md
-      - linkListType: how-to-guide
-        links:
-          - text: Použití editoru Visual Studio Code pro vývoj a ladění modulů
-            url: how-to-vs-code-develop-module.md
-  - title: Vývoj pro zařízení s Windows
-    linkLists:
-      - linkListType: quickstart
-        links:
-          - text: Nasazení prvního modulu IoT Edge na zařízení s Windows
-            url: quickstart.md
-      - linkListType: tutorial
-        links:
-          - text: Vývoj modulů IoT Edge pro zařízení s Windows
-            url: tutorial-develop-for-windows.md
-      - linkListType: how-to-guide
-        links:
-          - text: Použití sady Visual Studio 2017 pro vývoj a ladění modulů
-            url: how-to-visual-studio-develop-module.md
-  - title: Zřízení zařízení IoT Edge
-    linkLists:
-      - linkListType: how-to-guide
-        links:
-          - text: Instalace IoT Edge v systému Linux x64
-            url: how-to-install-iot-edge-linux.md
-          - text: Instalace IoT Edge v systému Linux ARM32
-            url: how-to-install-iot-edge-linux-arm.md
-          - text: Instalace IoT Edge v systému Windows x64
-            url: how-to-install-iot-edge-windows.md
-          - text: Automatické zřizování zařízení s Linuxem
-            url: how-to-auto-provision-simulated-device-linux.md
-          - text: Automatické zřizování zařízení s Windows
-            url: how-to-auto-provision-simulated-device-windows.md
-  - title: Spolupráce s opensourcovou komunitou
-    linkLists:
-      - linkListType: get-started
-        links:
-          - text: Úložiště IoT Edge
-            url: 'https://github.com/Azure/iotedge'
-          - text: Problémy s IoT Edge na GitHubu
-            url: 'https://github.com/Azure/iotedge/issues'
-          - text: Nejnovější vydané verze a protokoly změn
-            url: 'https://github.com/Azure/azure-iotedge/releases'
-  - title: Použití zařízení IoT Edge jako bran
-    linkLists:
-      - linkListType: concept
-        links:
-          - text: Jak se dá zařízení IoT Edge využít jako brána
-            url: iot-edge-as-gateway.md
-      - linkListType: how-to-guide
-        links:
-          - text: Konfigurace transparentní brány
-            url: how-to-create-transparent-gateway.md
-          - text: Ověření podřízeného zařízení pro Azure IoT Hub
-            url: how-to-authenticate-downstream-device.md
-          - text: Připojení podřízeného zařízení k bráně
-            url: how-to-connect-downstream-device.md
-  - title: Příprava pro produkční scénáře
-    linkLists:
-      - linkListType: concept
-        links:
-          - text: Principy automatického nasazení
-            url: module-deployment-monitoring.md
-          - text: Podpora platformy
-            url: support.md
-          - text: Kontrolní seznam pro produkční nasazení
-            url: production-checklist.md
-          - text: Principy využití certifikátů IoT Edge
-            url: iot-edge-certs.md
-          - text: Standardy zabezpečení pro IoT Edge
-            url: security.md
-      - linkListType: how-to-guide
-        links:
-          - text: Nasazení a monitorování ve velkém měřítku s využitím Azure CLI
-            url: how-to-deploy-monitor-cli.md
-          - text: Vytvoření kanálu CI/CD s využitím Azure Pipelines
-            url: how-to-ci-cd.md
-      - linkListType: deploy
-        links:
-          - text: REST API pro IoT Hub
-            url: 'https://docs.microsoft.com/rest/api/iothub/'
-  - title: Nasazení AI do hraničních zařízení
-    linkLists:
-      - linkListType: tutorial
-        links:
-          - text: Nasazení Azure Machine Learningu jako modulu IoT Edge
-            url: tutorial-deploy-machine-learning.md
-          - text: Klasifikace obrázků na hraničních zařízeních s využitím služby Custom Vision
-            url: tutorial-deploy-custom-vision.md
-      - linkListType: deploy
-        links:
-          - text: Hledání modulů Azure Cognitive Services na Azure Marketplace
-            url: 'https://azuremarketplace.microsoft.com/marketplace/apps/category/internet-of-things?subcategories=iot-edge-modules&search=azure%20cognitive%20services'
+- title: Vývoj pro zařízení s Linuxem
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Nasazení prvního modulu IoT Edge na zařízení s Linuxem
+      url: quickstart-linux.md
+  - linkListType: tutorial
+    links:
+    - text: Vývoj modulů IoT Edge pro zařízení s Linuxem
+      url: tutorial-develop-for-linux.md
+  - linkListType: how-to-guide
+    links:
+    - text: Použití editoru Visual Studio Code pro vývoj a ladění modulů
+      url: how-to-vs-code-develop-module.md
+- title: Vývoj pro zařízení s Windows
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Nasazení prvního modulu IoT Edge na zařízení s Windows
+      url: quickstart.md
+  - linkListType: tutorial
+    links:
+    - text: Vývoj modulů IoT Edge pro zařízení s Windows
+      url: tutorial-develop-for-windows.md
+  - linkListType: how-to-guide
+    links:
+    - text: Použití sady Visual Studio 2017 pro vývoj a ladění modulů
+      url: how-to-visual-studio-develop-module.md
+- title: Zřízení zařízení IoT Edge
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Instalace IoT Edge v Linuxu
+      url: how-to-install-iot-edge-linux.md
+    - text: Instalace IoT Edge ve Windows
+      url: how-to-install-iot-edge-windows.md
+    - text: Automatické zřizování zařízení s Linuxem
+      url: how-to-auto-provision-simulated-device-linux.md
+    - text: Automatické zřizování zařízení s Windows
+      url: how-to-auto-provision-simulated-device-windows.md
+- title: Spolupráce s opensourcovou komunitou
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: Úložiště IoT Edge
+      url: https://github.com/Azure/iotedge
+    - text: Problémy s IoT Edge na GitHubu
+      url: https://github.com/Azure/iotedge/issues
+    - text: Nejnovější vydané verze a protokoly změn
+      url: https://github.com/Azure/azure-iotedge/releases
+- title: Použití zařízení IoT Edge jako bran
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Jak se dá zařízení IoT Edge využít jako brána
+      url: iot-edge-as-gateway.md
+  - linkListType: how-to-guide
+    links:
+    - text: Konfigurace transparentní brány
+      url: how-to-create-transparent-gateway.md
+    - text: Ověření podřízeného zařízení pro Azure IoT Hub
+      url: how-to-authenticate-downstream-device.md
+    - text: Připojení podřízeného zařízení k bráně
+      url: how-to-connect-downstream-device.md
+- title: Příprava pro produkční scénáře
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Principy automatického nasazení
+      url: module-deployment-monitoring.md
+    - text: Podpora platformy
+      url: support.md
+    - text: Kontrolní seznam pro produkční nasazení
+      url: production-checklist.md
+    - text: Principy využití certifikátů IoT Edge
+      url: iot-edge-certs.md
+    - text: Standardy zabezpečení pro IoT Edge
+      url: security.md
+  - linkListType: how-to-guide
+    links:
+    - text: Nasazení a monitorování ve velkém měřítku s využitím Azure CLI
+      url: how-to-deploy-monitor-cli.md
+    - text: Vytvoření kanálu CI/CD s využitím Azure Pipelines
+      url: how-to-ci-cd.md
+  - linkListType: deploy
+    links:
+    - text: REST API pro IoT Hub
+      url: https://docs.microsoft.com/rest/api/iothub/
+- title: Nasazení AI do hraničních zařízení
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Nasazení Azure Machine Learningu jako modulu IoT Edge
+      url: tutorial-deploy-machine-learning.md
+    - text: Klasifikace obrázků na hraničních zařízeních s využitím služby Custom Vision
+      url: tutorial-deploy-custom-vision.md
+  - linkListType: deploy
+    links:
+    - text: Hledání modulů Azure Cognitive Services na Azure Marketplace
+      url: https://azuremarketplace.microsoft.com/marketplace/apps/category/internet-of-things?subcategories=iot-edge-modules&search=azure%20cognitive%20services

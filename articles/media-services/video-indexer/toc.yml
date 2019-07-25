@@ -21,6 +21,8 @@
       href: compare-video-indexer-with-media-services-presets.md
     - name: Správa několika klientů
       href: manage-multiple-tenants.md
+    - name: Model identifikace jazyka
+      href: language-identification-model.md
     - name: Přizpůsobení modelů obsahu
       items:
         - name: Přehled

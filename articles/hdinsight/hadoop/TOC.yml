@@ -421,11 +421,14 @@
       items:
         - name: Architektura virtuálních sítí HDInsight
           href: ../hdinsight-virtual-network-architecture.md
+        - name: Plánování virtuálních sítí pro HDInsight
+          href: ../hdinsight-plan-virtual-network-deployment.md
+        - name: Vytváření virtuálních sítí pro HDInsight
+          href: ../hdinsight-create-virtual-network.md
+        - name: Požadované IP adresy pro skupiny zabezpečení sítě a UDR
+          href: ../hdinsight-management-ip-addresses.md
         - name: Použití brány firewall k omezení odchozího provozu
           href: ../hdinsight-restrict-outbound-traffic.md
-        - name: HDInsight ve virtuální síti Azure
-          href: ../hdinsight-extend-hadoop-virtual-network.md
-          maintainContext: true
         - name: Připojení služby HDInsight k místní síti
           href: ../connect-on-premises-network.md
           maintainContext: true

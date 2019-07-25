@@ -32,8 +32,14 @@
       href: ../hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md
     - name: Síťový přístup
       items:
-        - name: HDInsight ve virtuální síti Azure
-          href: ../hdinsight-extend-hadoop-virtual-network.md
+        - name: Architektura virtuálních sítí HDInsight
+          href: ../hdinsight-virtual-network-architecture.md
+        - name: Plánování virtuálních sítí pro HDInsight
+          href: ../hdinsight-plan-virtual-network-deployment.md
+        - name: Vytváření virtuálních sítí pro HDInsight
+          href: ../hdinsight-create-virtual-network.md
+        - name: Požadované IP adresy pro skupiny zabezpečení sítě a UDR
+          href: ../hdinsight-management-ip-addresses.md
         - name: Připojení služby HDInsight k místní síti
           href: ../connect-on-premises-network.md
         - name: Vytvoření clusteru Apache HBase ve virtuální síti Azure
