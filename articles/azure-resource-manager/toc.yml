@@ -63,18 +63,18 @@
       href: template-best-practices.md
     - name: Šablony pro konzistenci cloudu
       href: templates-cloud-consistency.md
-    - name: Poskytovatelé a typy prostředků
-      href: resource-manager-supported-services.md
-    - name: Deployment Manager
-      displayName: adm
-      href: deployment-manager-overview.md
-    - name: Kontrola stavu Deployment Manageru
-      displayName: adm
-      href: deployment-manager-health-check.md
     - name: Režimy nasazení
       href: deployment-modes.md
     - name: Odstranění prostředku
       href: resource-group-delete.md
+    - name: Deployment Manager
+      items:
+        - name: Přehled
+          displayName: 'adm, deployment manager'
+          href: deployment-manager-overview.md
+        - name: Kontrola stavu
+          displayName: 'adm, deployment manager'
+          href: deployment-manager-health-check.md
     - name: Resource Manager a klasické nasazení
       href: resource-manager-deployment-model.md
     - name: Běžné atributy zabezpečení Azure
@@ -228,6 +228,8 @@
           href: resource-manager-sku-not-available-errors.md
         - name: Potíže s nasazením Windows
           href: ../virtual-machines/windows/troubleshoot-deploy-vm.md
+    - name: Poskytovatelé a typy prostředků
+      href: resource-manager-supported-services.md
     - name: Omezování požadavků
       href: resource-manager-request-limits.md
     - name: Sledování asynchronních operací

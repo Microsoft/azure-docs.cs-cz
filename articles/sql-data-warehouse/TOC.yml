@@ -127,11 +127,25 @@
           href: sql-data-warehouse-overview-develop.md
         - name: Osvědčené postupy
           href: sql-data-warehouse-best-practices-development.md
+        - name: JSON
+          items:
+            - name: JSON
+              href: /sql/t-sql/functions/json-functions-transact-sql?view=azure-sqldw-latest
+            - name: ISJSON
+              href: /sql/t-sql/functions/isjson-transact-sql?view=azure-sqldw-latest
+            - name: JSON_VALUE
+              href: /sql/t-sql/functions/json-value-transact-sql?view=azure-sqldw-latest
+            - name: JSON_QUERY
+              href: /sql/t-sql/functions/json-query-transact-sql?view=azure-sqldw-latest
+            - name: JSON_MODIFY
+              href: /sql/t-sql/functions/json-modify-transact-sql?view=azure-sqldw-latest
+            - name: OPENJSON
+              href: /sql/t-sql/functions/openjson-transact-sql?view=azure-sqldw-latest
         - name: Materializované zobrazení
           items:
-            - name: Příkaz Create Materialized View As Select (Transact-SQL)
+            - name: Vytvořit
               href: /sql/t-sql/statements/create-materialized-view-as-select-transact-sql
-            - name: Příkaz Alter Materialized View As Select (Transact-SQL)
+            - name: Příkaz Alter
               href: /sql/t-sql/statements/alter-materialized-view-transact-sql
         - name: Ukládání sady výsledků dotazu do mezipaměti
           href: /sql/t-sql/statements/set-result-set-caching-transact-sql
@@ -281,6 +295,16 @@
           href: sql-data-warehouse-manage-monitor.md
         - name: Monitorování mezipaměti Gen2
           href: sql-data-warehouse-how-to-monitor-cache.md
+    - name: Zálohování a obnovení
+      items:
+        - name: Vytvoření bodů obnovení
+          href: sql-data-warehouse-restore-points.md
+        - name: Obnovení stávajícího datového skladu
+          href: sql-data-warehouse-restore-active-paused-dw.md
+        - name: Obnovení odstraněného datového skladu
+          href: sql-data-warehouse-restore-deleted-dw.md
+        - name: Obnovení z geografické zálohy
+          href: sql-data-warehouse-restore-from-geo-backup.md
     - name: Integrace
       items:
         - name: Použití strojového učení

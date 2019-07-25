@@ -7,18 +7,19 @@ author: nitinme
 manager: nitinme
 ms.service: cognitive-services
 ms.author: nitinme
-ms.date: 06/20/2019
+ms.date: 07/22/2019
 ms.topic: hub-page
-ms.openlocfilehash: 1e78c31c19bdbc8ea223c504a53f1df73caa5d44
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: ad403b58a0f6aad37e9d8d547d269b9f45566559
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67295389"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68442817"
 ---
 <div id="main" class="v2">
 <h1>Dokumentace ke službě Azure Cognitive Services</h1>
         <p style="font-size: 1.12rem;margin-bottom: 1rem;">Naučte se, jak do vašich aplikací, webů a robotů integrovat inteligentní algoritmy, které umožní vidět a slyšet vaše zákazníky, mluvit s nimi a porozumět jejich požadavkům prostřednictvím přirozených způsobů komunikace. Kurzy, rychlá zprovoznění, reference k rozhraní API a příklady vám ukážou, jak na to.</p>
+        <p> Každá služba má svou vlastní <a href="/azure/cognitive-services/language-support">jazykovou podporu</a> a <a href="/azure/cognitive-services/cognitive-services-and-machine-learning#service-requirements-for-the-data-model">požadavky na datový model</a>, od plně vyškoleného modelu až po plně přizpůsobitelný model. 
 
 
 <h2>Rozhraní API služeb Cognitive Services</h2>
@@ -123,6 +124,25 @@ ms.locfileid: "67295389"
                             <div class="cardText">
                                 <h3>Co jsou služby Cognitive Services?</h3>
                                 <p>Přečtěte si o službách Azure Cognitive Services a o tom, jak pomocí různých rozhraní API vytvářet inteligentní aplikace.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </li>
+        <li>
+            <a href="/azure/cognitive-services/cognitive-services-and-machine-learning/">
+                <div class="cardSize">
+                    <div class="cardPadding">
+                        <div class="card">
+                            <div class="cardImageOuter">
+                                <div class="cardImage">
+                                    <img src="media/index/i_get-started.svg" alt="" />
+                                </div>
+                            </div>
+                            <div class="cardText">
+                                <h3>Cognitive Services a strojové učení</h3>
+                                <p>Projděte si víc o vztahu Azure Cognitive Services k ostatním nabídkám Azure pro strojové učení.</p>
                             </div>
                         </div>
                     </div>

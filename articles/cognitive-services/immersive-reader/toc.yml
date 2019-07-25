@@ -13,6 +13,10 @@
   items:
     - name: Spuštění Asistivní čtečky (Node.js)
       href: tutorial.md
+- name: Postupy
+  items:
+    - name: Ověřování pomocí Azure Active Directory
+      href: azure-active-directory-authentication.md
 - name: Referenční informace
   items:
     - name: Referenční informace k sadě SDK

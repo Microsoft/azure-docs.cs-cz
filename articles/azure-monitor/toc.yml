@@ -398,6 +398,8 @@
               items:
                 - name: Řízení přístupu
                   href: app/resources-roles-access-control.md
+                - name: Kolekce IP adres
+                  href: app/ip-collection.md
                 - name: Vzorkování
                   displayname: 'adaptive sampling, fixed rate sample, fixed sampling, ingestion sampling'
                   href: app/sampling.md

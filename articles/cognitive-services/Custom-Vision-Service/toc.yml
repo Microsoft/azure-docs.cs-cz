@@ -6,6 +6,12 @@
       href: home.md
 - name: Šablony Rychlý start
   items:
+    - name: Použití webového portálu
+      items:
+        - name: Sestavení klasifikátoru
+          href: getting-started-build-a-classifier.md
+        - name: Sestavení detektoru objektů
+          href: get-started-build-detector.md
     - name: S využitím .NET SDK
       items:
         - name: Klasifikace obrázků
@@ -42,8 +48,6 @@
       href: logo-detector-mobile.md
 - name: Návody
   items:
-    - name: Sestavení klasifikátoru
-      href: getting-started-build-a-classifier.md
     - name: Testování modelu
       href: test-your-model.md
     - name: Vylepšení klasifikátoru

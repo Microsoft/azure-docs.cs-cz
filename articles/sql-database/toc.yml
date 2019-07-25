@@ -19,7 +19,7 @@
       href: sql-database-managed-instance-quickstart-guide.md
     - name: Vytvořit
       items:
-        - name: Izolovaná databáze – portál
+        - name: Izolovaná databáze
           href: sql-database-single-database-get-started.md
         - name: Izolovaná databáze – šablona
           displayName: 'Azure Resource Manager template, ARM'
@@ -87,14 +87,22 @@
           href: sql-database-design-first-database.md
         - name: Návrh databází s využitím .NET
           href: sql-database-design-first-database-csharp.md
-    - name: Databáze Singleton
+    - name: Izolovaná databáze
       items:
         - name: Migrace do izolované databáze / databáze ve fondu s využitím DMS
           href: ../dms/tutorial-sql-server-to-azure-sql.md?toc=/azure/sql-database/toc.json
+        - name: Přidání do skupiny převzetí služeb při selhání
+          href: sql-database-single-database-failover-group-tutorial.md
         - name: Implementace geograficky distribuované databáze
           href: sql-database-implement-geo-distributed-database.md
+        - name: Konfigurace aktivní geografické replikace
+          href: sql-database-active-geo-replication-portal.md
         - name: Nastavení synchronizace dat SQL v Azure
           href: sql-database-get-started-sql-data-sync.md
+    - name: Elastický fond
+      items:
+        - name: Přidání do skupiny převzetí služeb při selhání
+          href: sql-database-elastic-pool-failover-group-tutorial.md
     - name: MI
       items:
         - name: Online migrace s využitím DMS
@@ -245,8 +253,6 @@
               href: sql-database-active-geo-replication.md
             - name: Skupiny automatického převzetí služeb při selhání
               href: sql-database-auto-failover-group.md
-            - name: Konfigurace aktivní geografické replikace – portál
-              href: sql-database-active-geo-replication-portal.md
             - name: Konfigurace zabezpečení pro repliky
               href: sql-database-geo-replication-security-config.md
         - name: Možnosti obnovení databáze
@@ -516,6 +522,8 @@
           href: sql-database-managed-instance-connect-app.md
     - name: Načtení a přesun dat
       items:
+        - name: Přesun prostředků do nové oblasti
+          href: sql-database-move-resources-across-regions.md
         - name: Kopírování databáze v rámci Azure
           href: sql-database-copy.md
         - name: Import databáze ze souboru BACPAC
