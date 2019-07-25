@@ -59,7 +59,7 @@ sections:
       - type: paragraph
         text: 'Naučíte se, jak nastavovat, spravovat, sestavovat a nasazovat aplikace s využitím Azure Spatial Anchors.'
       - type: list
-        style: ordered
+        style: unordered
         items:
           - html: <a href="/azure/spatial-anchors/tutorials/tutorial-share-anchors-across-devices">Sdílení v Unity</a>
           - html: <a href="/azure/spatial-anchors/tutorials/tutorial-use-cosmos-db-to-store-anchors">Sdílení v Unity s využitím Azure Cosmos DB</a>

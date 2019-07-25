@@ -11,6 +11,7 @@ metadata:
   ms.author: tarcher
   ms.topic: landing-page
   ms.date: 08/27/2018
+  ms.custom: seo-java-july2019
 abstract:
   description: 'Využijte opensourcový server Jenkins k sestavování aplikací v cloudu a jejich nasazení do Azure. Naučte se instalovat, konfigurovat a škálovat Jenkinse v Azure a prostřednictvím našich šablon Rychlý start, kurzů a ukázkových kanálů nastavte pro svoje aplikace průběžnou integraci (CI).'
   aside:

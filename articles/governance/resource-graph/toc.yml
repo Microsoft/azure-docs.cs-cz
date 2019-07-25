@@ -41,6 +41,9 @@
     - name: Získání změn prostředků
       displayName: 'resource, change, history, snapshot, details'
       href: ./how-to/get-resource-changes.md
+- name: Řešení potíží
+  displayName: 'errors, violation'
+  href: ./troubleshoot/general.md
 - name: Referenční informace
   items:
     - name: Azure CLI
