@@ -126,7 +126,7 @@ Ke zkopírování dat z Amazon Redshift, nastavte typ zdroje v aktivitě kopíro
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | Vlastnost type zdroje aktivity kopírování musí být nastavená na: **AmazonRedshiftSource** | Ano |
-| query |Použijte vlastní dotaz číst data. Příklad: vybrat * z MyTable. |Ne (když je "tableName" v datové sadě zadán) |
+| query |Použijte vlastní dotaz číst data. Příklad: select * from MyTable. |Ne (když je "tableName" v datové sadě zadán) |
 | redshiftUnloadSettings | Při použití uvolnění Amazon Redshift vlastnosti skupiny. | Ne |
 | s3LinkedServiceName | Pokud zadáte název propojené služby typu "AmazonS3" odkazuje na Amazon S3 k-be používané jako dočasné úložiště. | Ano, pokud používáte uvolnění z paměti |
 | bucketName | Označuje sadu S3 k uložení dat o dočasné. Pokud se nezadá, služby Data Factory vytvoří jej automaticky.  | Ano, pokud používáte uvolnění z paměti |
