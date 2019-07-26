@@ -16,12 +16,12 @@ ms.author: jmprieur
 ms.reviwer: brandwe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e1408c06570babfd93c46fdfc7a3c6754000bcbc
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 76f0cddfa889376d3795726e74d82e53417b31f1
+ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68320857"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68413575"
 ---
 # <a name="mobile-app-that-calls-web-apis---call-a-web-api"></a>Mobilní aplikace, která volá webová rozhraní API – volá webové rozhraní API.
 
@@ -114,17 +114,7 @@ Po získání přístupového tokenu je snadné volat webové rozhraní API. Va�
 
 ### <a name="xamarin"></a>Xamarin
 
-```CSharp
-httpClient = new HttpClient();
-
-// Put access token in HTTP request.
-httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", result.AccessToken);
-
-// Call Graph.
-HttpResponseMessage response = await _httpClient.GetAsync(apiUri);
-...
-}
-```
+[!INCLUDE [Call web API in .NET](../../../includes/active-directory-develop-scenarios-call-apis-dotnet.md)]
 
 ## <a name="making-several-api-requests"></a>Provádění několika požadavků rozhraní API
 
@@ -133,7 +123,41 @@ Pokud potřebujete volat stejné rozhraní API několikrát nebo pokud potřebuj
 - **Přírůstkový souhlas**: Platforma Microsoft Identity Platform umožňuje aplikacím získat souhlas uživatele, jak jsou potřeba oprávnění, a ne vše na začátku. Pokaždé, když je vaše aplikace připravená volat rozhraní API, měla by vyžadovat pouze rozsahy, které musí použít.
 - **Podmíněný přístup**: V některých scénářích můžete při provádění několika požadavků na rozhraní API získat další požadavky na podmíněný přístup. K tomu může dojít, pokud první požadavek nemá použité žádné zásady podmíněného přístupu a vaše aplikace se pokusí o tichý přístup k novému rozhraní API, které vyžaduje podmíněný přístup. Pro zpracování tohoto scénáře nezapomeňte zachytit chyby z tichých požadavků a připravit se na vytvoření interaktivního požadavku.  Další informace najdete v tématu [pokyny pro podmíněný přístup](conditional-access-dev-guide.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="calling-several-apis-in-xamarin-or-uwp---incremental-consent-and-conditional-access"></a>Volání několika rozhraní API v Xamarin nebo UWP – přírůstkový souhlas a podmíněný přístup
+
+Pokud pro stejného uživatele potřebujete zavolat několik rozhraní API, můžete po získání tokenu pro uživatele vyhnout opakovanému vyžádání přihlašovacích údajů, a to tak, že následně zavoláte `AcquireTokenSilent` k získání tokenu.
+
+```CSharp
+var result = await app.AcquireTokenXX("scopeApi1")
+                      .ExecuteAsync();
+
+result = await app.AcquireTokenSilent("scopeApi2")
+                  .ExecuteAsync();
+```
+
+Případy, kdy je interakce požadována, je:
+
+- Uživatel souhlasil s prvním rozhraním API, ale teď musí souhlasit s více obory (postupný souhlas).
+- První rozhraní API nevyžadovalo vícenásobné ověřování, ale ten další.
+
+```CSharp
+var result = await app.AcquireTokenXX("scopeApi1")
+                      .ExecuteAsync();
+
+try
+{
+ result = await app.AcquireTokenSilent("scopeApi2")
+                  .ExecuteAsync();
+}
+catch(MsalUiRequiredException ex)
+{
+ result = await app.AcquireTokenInteractive("scopeApi2")
+                  .WithClaims(ex.Claims)
+                  .ExecuteAsync();
+}
+```
+
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 > [Přesunout do produkčního prostředí](scenario-mobile-production.md)

@@ -1,8 +1,8 @@
 ---
 title: Připojení ke službě Azure SQL Data Warehouse pomocí sqlcmd | Dokumentace Microsoftu
-description: Pomocí nástroje příkazového řádku sqlcmd k připojení a dotazování Azure SQL Data Warehouse.
+description: Pomocí nástroje příkazového řádku Sqlcmd se můžete připojit k Azure SQL Data Warehouse a dotazovat se na ně.
 services: sql-data-warehouse
-author: XiaoyuL-Preview
+author: XiaoyuMSFT
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
@@ -10,12 +10,12 @@ ms.subservice: development
 ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 72760c5123703a664695c1be4d286a38e96ecc3f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f3b93660fb9f8f3b0bfdddc37105b9e998ed9eee
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65873325"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68479509"
 ---
 # <a name="connect-to-sql-data-warehouse-with-sqlcmd"></a>Připojení k SQL Data Warehouse pomocí sqlcmd
 > [!div class="op_single_selector"]
@@ -27,19 +27,19 @@ ms.locfileid: "65873325"
 > 
 > 
 
-Pomocí nástroje příkazového řádku [sqlcmd][sqlcmd] se můžete připojit a dotazovat službu Azure SQL Data Warehouse.  
+Pomocí nástroje příkazového řádku [Sqlcmd][sqlcmd] se můžete připojit k Azure SQL Data Warehouse a dotazovat se na ně.  
 
-## <a name="1-connect"></a>1. Připojení
+## <a name="1-connect"></a>1. Připojit
 Chcete-li začít s nástrojem [sqlcmd][sqlcmd], otevřete příkazový řádek a zadejte příkaz **sqlcmd** následovaný připojovacím řetězcem pro vaši databázi SQL Data Warehouse. Připojovací řetězec bude muset mít následující parametry:
 
-* **Server (-S):** Server ve formě `<`název serveru`>`. database.windows.net
+* **Server (-S):** Server v názvu`>`serveru `<`formuláře. Database.Windows.NET
 * **Databáze (-d):** Název databáze.
-* **Enable Quoted identifikátory (-I):** Identifikátory v uvozovkách musí být povoleno se připojit k instanci SQL Data Warehouse.
+* **Povolit identifikátory v uvozovkách (-I):** Aby bylo možné se připojit k instanci SQL Data Warehouse, musí být povolené identifikátory v uvozovkách.
 
 Chcete-li používat ověřování systému SQL Server, je třeba přidat parametry uživatelského jména a hesla:
 
-* **User (-U):** Uživatel serveru v následující podobě `<`uživatele`>`
-* **Heslo (-P):** Heslo přidružené k uživateli.
+* **Uživatel (-U):** Uživatel serveru ve formuláři `<``>`
+* **Heslo (-P):** Heslo přidružené k uživateli
 
 Připojovací řetězec může například vypadat následovně:
 
@@ -83,7 +83,7 @@ sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -U myuser -P myP@sswor
 ```
 
 ## <a name="next-steps"></a>Další postup
-Viz část [Dokumentace sqlcmd][sqlcmd], kde najdete další informace o možnostech dostupných v sqlcmd.
+Další informace o možnostech dostupných v Sqlcmd najdete v [dokumentaci k nástroji Sqlcmd][sqlcmd] .
 
 <!--Image references-->
 

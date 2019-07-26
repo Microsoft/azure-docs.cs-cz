@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 07/07/2019
+ms.date: 07/22/2019
 ms.author: raynew
-ms.openlocfilehash: f44cb90beb7c1c544cb135f277fc12f724769b65
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: 819b0f94f2dc8742b658dbd3aaa87108f204d2a7
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67846978"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68406082"
 ---
 # <a name="support-matrix-for-replicating-azure-vms-from-one-region-to-another"></a>Matice podpory pro replikaci virtuálních počítačů Azure z jedné oblasti do jiné
 
@@ -48,7 +48,7 @@ Virtuální počítače můžete replikovat a obnovovat mezi dvěma oblastmi v r
 -- | --
 Používaný | Kanada – východ, Kanada – střed, Střed USA – jih, Středozápadní USA, Východní USA, Východní USA 2, Západní USA, Západní USA 2, Střed USA, Střed USA – sever
 Evropa | Velká Británie – západ, Velká Británie – jih, Severní Evropa, Západní Evropa, Francie – střed, Francie – jih, Jižní Afrika – západ, Jižní Afrika – sever
-Asie | Jižní Indie, Střed Indie, jihovýchodní Asie, Východní Asie, Japonsko – východ, Japonsko – západ, Korea – střed, Jižní Korea
+Asie | Jižní Indie, Střed Indie, Západní Indie, jihovýchodní Asie, Východní Asie, Japonsko – východ, Japonsko – západ, Korea – střed, Korea – jih, střed USA (Spojené arabské emiráty), Spojené arabské emiráty sever
 Austrálie   | Austrálie – východ, Austrálie – jihovýchod, Austrálie – střed, Austrálie – střed 2
 Azure Government    | US GOV) – Virginia, US GOV Iowa, US GOV Arizona, US GOV Texas, US DOD – východ, US DOD – střed 
 Německo | Německo – střed, Německo – severovýchod
@@ -182,7 +182,7 @@ Tato tabulka shrnuje podporu pro disk s operačním systémem Azure VM, datový 
 --- | --- | ---
 Maximální velikost disku s operačním systémem | 2048 GB | [Přečtěte si další informace](../virtual-machines/windows/managed-disks-overview.md) o discích virtuálních počítačů.
 Dočasný disk | Nepodporuje se | Dočasný disk je vždy vyloučen z replikace.<br/><br/> Na dočasném disku neukládejte žádná trvalá data. [Další informace](../virtual-machines/windows/managed-disks-overview.md).
-Maximální velikost datového disku | 4095 GB |
+Maximální velikost datového disku | 8192 GB pro Managed disks<br></br>4095 GB pro nespravované disky|
 Minimální velikost datového disku | Neexistují žádná omezení pro nespravované disky. 2 GB pro spravované disky | 
 Maximální počet datových disků | Až 64, v souladu s podporou konkrétní velikosti virtuálního počítače Azure | [Přečtěte si další informace](../virtual-machines/windows/sizes.md) o velikostech virtuálních počítačů.
 Rychlost změny datového disku | Maximálně 10 MB/s na disk pro Premium Storage. Maximálně 2 MB/s na disk pro úložiště úrovně Standard. | Pokud je průměrná rychlost změny dat na disku nepřetržitě vyšší než maximální, replikace se nezachytí.<br/><br/>  Pokud je ale maximum překročeno zřídka, replikace může zachytit, ale mírně zpožděné body obnovení.
@@ -251,7 +251,7 @@ Ověřený proxy server | Nepodporuje se | Pokud virtuální počítač použív
 Připojení VPN typu Site-to-site k místnímu prostředí<br/><br/>(s ExpressRoute nebo bez něj)| Podporováno | Ujistěte se, že jsou udr a skupin zabezpečení sítě nakonfigurované tak, aby se provoz Site Recovery nesměroval do místního prostředí. [Víc se uč](site-recovery-azure-to-azure-networking-guidance.md)    
 Připojení virtuální sítě k virtuální síti | Podporováno | [Víc se uč](site-recovery-azure-to-azure-networking-guidance.md)  
 Koncové body služby virtuální sítě | Podporováno | Pokud omezíte přístup k virtuální síti k účtům úložiště, ujistěte se, že důvěryhodné služby Microsoftu mají povolený přístup k účtu úložiště.
-Urychlení sítě | Podporováno | Na zdrojovém virtuálním počítači musí být povolené urychlené síťové služby. [Další informace](azure-vm-disaster-recovery-with-accelerated-networking.md).
+Akcelerované síťové služby | Podporováno | Na zdrojovém virtuálním počítači musí být povolené urychlené síťové služby. [Další informace](azure-vm-disaster-recovery-with-accelerated-networking.md).
 
 
 

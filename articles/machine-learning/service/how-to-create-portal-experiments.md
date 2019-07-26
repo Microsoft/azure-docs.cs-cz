@@ -11,12 +11,12 @@ author: tsikiksr
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 05/02/2019
-ms.openlocfilehash: 5eb3e94ff65e8a8b74f357a4cb8a517fd3837c5a
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 1bfc415b2e4dbc66e2afeae73b78079fb027a60c
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67871813"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68358845"
 ---
 # <a name="create-and-explore-automated-machine-learning-experiments-in-the-azure-portal-preview"></a>Vytvářejte a zkoumejte automatizované experimenty strojového učení v Azure Portal (Preview)
 
@@ -60,7 +60,7 @@ Kliknutím na tlačítko vytvořit experiment naplňte následující formulář
 
     Pole|Popis
     ---|---
-    Název výpočtu| Zadejte jedinečný název, který identifikuje váš výpočetní kontext.
+    Název výpočetních prostředků služby Machine Learning| Zadejte jedinečný název, který identifikuje váš výpočetní kontext.
     Velikost virtuálního počítače| Vyberte velikost virtuálního počítače pro výpočetní výkon.
     Další nastavení| *Minimální uzel*: Zadejte minimální počet uzlů pro výpočetní výkon. Minimální počet uzlů pro výpočetní výkon AML je 0. Chcete-li povolit profilaci dat, je nutné mít nejméně jeden uzel. <br> *Maximální počet uzlů*: Zadejte maximální počet uzlů pro výpočetní výkon. Výchozí hodnota je 6 uzlů pro AML Compute.
 
@@ -105,7 +105,7 @@ Kliknutím na tlačítko vytvořit experiment naplňte následující formulář
     Primární metrika| Hlavní metrika použitá pro vyhodnocování modelu. [Přečtěte si další informace o metrikách modelů](how-to-configure-auto-train.md#explore-model-metrics).
     Výstupní kritéria| Pokud je splněno kterékoli z těchto kritérií, úloha školení skončí před úplným dokončením. <br> *Doba úlohy školení (minuty)* : Doba, po kterou je možné spustit úlohu školení.  <br> *Maximální počet iterací*: Maximální počet kanálů (iterací), které se mají testovat v úloze školení Úloha nebude spouštět více než zadaný počet iterací. <br> *Prahová hodnota skóre metriky*:  Minimální skóre metriky pro všechny kanály. Tím zajistíte, že pokud máte definovanou cílovou metriku, která má být dostupná, nebudete věnovat více času školicím úlohám, než je potřeba.
     Předzpracování| Tuto možnost vyberte, pokud chcete povolit nebo zakázat předzpracování prováděné automatizovaným strojovým učením. Předzpracování zahrnuje automatické čištění dat, přípravu a transformaci, které generují syntetické funkce. [Přečtěte si další informace o předzpracování](#preprocess).
-    Ověření| Vyberte jednu z možností vzájemného ověření, kterou chcete použít v úloze školení. [Další informace o vzájemném ověřování](how-to-configure-auto-train.md).
+    Ověřování| Vyberte jednu z možností vzájemného ověření, kterou chcete použít v úloze školení. [Další informace o vzájemném ověřování](how-to-configure-auto-train.md).
     Souběžnost| Vyberte omezení více jader, která chcete použít při použití COMPUTE s více jádry.
     Blokovaný algoritmus| Vyberte algoritmy, které chcete vyloučit z úlohy školení.
 
@@ -180,7 +180,7 @@ Po dokončení fáze přípravy experimentu se zobrazí obrazovka s podrobnostmi
 
 ### <a name="view-training-run-details"></a>Zobrazit podrobnosti o školicím běhu
 
-Projděte si podrobné informace o všech výstupních modelech a podívejte se na podrobnosti o školicích běhůch, jako jsou metriky výkonu a distribuční grafy. [Přečtěte si další informace o grafech](how-to-track-experiments.md#understanding-automated-ml-charts).
+Projděte si podrobné informace o všech výstupních modelech a podívejte se na podrobnosti o školicích běhůch, jako jsou metriky výkonu a distribuční grafy. [Přečtěte si další informace o grafech](how-to-understand-automated-ml.md).
 
 ![Podrobnosti iterace](media/how-to-create-portal-experiments/iteration-details.png)
 
@@ -213,7 +213,7 @@ Automatizované ML vám pomůže s nasazením modelu bez psaní kódu:
 
     Model můžete identifikovat podle jeho popisu, který bude obsahovat ID běhu, číslo iterace v následujícím formátu: *< Run_ID > _ < Iteration_number > _Model*
 
-    ![Vzor Vytvořit bitovou kopii](media/how-to-create-portal-experiments/model-create-image.png)
+    ![Modely: Vytvořit image](media/how-to-create-portal-experiments/model-create-image.png)
 
 1. Zadejte název obrázku. 
 1. Kliknutím na tlačítko **Procházet** vedle pole "soubor bodování" nahrajte soubor bodování (scoring.py), který jste předtím stáhli.
@@ -225,7 +225,7 @@ Automatizované ML vám pomůže s nasazením modelu bez psaní kódu:
       >[!Important]
       > Názvy souborů musí být pod 32 znaků a musí začínat a končit alfanumerickými znaky. Může obsahovat pomlčky, podtržítka, tečky a alfanumerické znaky mezi. Mezery nejsou povoleny.
 
-    ![Vytvořit bitovou kopii](media/how-to-create-portal-experiments/create-image.png)
+    ![Vytvořit image](media/how-to-create-portal-experiments/create-image.png)
 
 1. Kliknutím na tlačítko vytvořit spusťte vytvoření bitové kopie. Dokončení této akce bude trvat několik minut. po dokončení se zobrazí zpráva na horním panelu.
 1. Přejdete na kartu images, zaškrtněte políčko vedle image, kterou chcete nasadit, a vyberte vytvořit nasazení. [Přečtěte si další informace o nasazeních](how-to-deploy-and-where.md).
@@ -243,4 +243,5 @@ Automatizované ML vám pomůže s nasazením modelu bez psaní kódu:
 ## <a name="next-steps"></a>Další postup
 
 * [Přečtěte si další informace o automatizovaném strojovém učení](concept-automated-ml.md) a Azure Machine Learning.
+* [Pochopte automatizované výsledky strojového učení](how-to-understand-automated-ml.md).
 * [Naučte se využívat webovou službu](https://docs.microsoft.com/azure/machine-learning/service/how-to-consume-web-service).

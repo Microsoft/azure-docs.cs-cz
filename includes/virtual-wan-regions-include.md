@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 03/30/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 8ec5c39342f0477bd2b529da38fd4d1292476c93
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: e8ae2fd99ee57062a0bf99f0550e58a5bb4857a3
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67174913"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68426865"
 ---
-V následující tabulce jsou uvedeny dostupné oblasti jsou podporované pro funkce, které jsou obecné dostupnosti.
+V následující tabulce jsou uvedené dostupné podporované oblasti pro funkce, které jsou GA.
 
-|Geopolitická oblast | Oblast Azure|
+|Geopolitická oblast | Oblasti Azure|
 |---|---|
 |Severní Amerika | Východní USA, Západní USA, Východní USA 2, Západní USA 2, Střed USA, Střed USA – jih, Střed USA – sever, Střed USA – západ, Střední Kanada, Východní Kanada |
 |Jižní Amerika |Brazílie – jih |
@@ -25,10 +25,9 @@ V následující tabulce jsou uvedeny dostupné oblasti jsou podporované pro fu
 | Asie | Východní Asie, Jihovýchodní Asie |
 | Japonsko  | Japonsko – západ, Japonsko – východ |
 | Austrálie | Austrálie – jihovýchod, Austrálie – východ | 
-| Vlády Austrálie | Austrálie – střed, Austrálie – střed 2 |
+| Austrálie – státní správa | Austrálie – střed, Austrálie – střed 2 |
 | Indie | Indie – západ, Indie – střed, Indie – jih |
 | Jižní Korea | Jižní Korea – střed, Jižní Korea – jih |
-| Jižní Afrika | Jihoafrická republika – sever, Jihoafrická republika – západ |
+| Jižní Afrika | Jižní Afrika sever, Jižní Afrika – západ |
 
-* Informace o ExpressRoute ve verzi preview najdete v tématu [virtuální sítě WAN a ExpressRoute - preview](../articles/virtual-wan/virtual-wan-expressroute-portal.md#register).
-* Informace o verzi preview Point-to-site najdete v tématu [virtuální sítě WAN a Point-to-site – ve verzi preview](../articles/virtual-wan/virtual-wan-point-to-site-portal.md#register).
+* Informace o ExpressRoute ve verzi Preview najdete v tématu [Virtual WAN a ExpressRoute-Preview](../articles/virtual-wan/virtual-wan-expressroute-portal.md#register).

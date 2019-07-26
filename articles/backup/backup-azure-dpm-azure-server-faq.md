@@ -1,65 +1,64 @@
 ---
-title: Azure Backup serveru a aplikace DPM – nejčastější dotazy
-description: 'Odpovědi na běžné dotazy týkající se: Azure Backup serveru a aplikace DPM.'
-services: backup
+title: Nejčastější dotazy k Azure Backup Server a DPM
+description: 'Odpovědi na běžné otázky týkající se: Azure Backup Server a DPM.'
 author: srinathvasireddy
 manager: sivan
 ms.service: backup
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: srinathv
-ms.openlocfilehash: 7a598038ee435b67b9ad8f06bdec2490bc1c53c3
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 54727daa158172ae44379b847c70602ca998c65d
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67705107"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68466416"
 ---
-# <a name="azure-backup-server-and-dpm---faq"></a>Azure Backup Server a DPM – nejčastější dotazy
-Tento článek obsahuje odpovědi na nejčastější dotazy týkající se Azure Backup serveru a aplikace DPM.
+# <a name="azure-backup-server-and-dpm---faq"></a>Azure Backup Server a DPM – Nejčastější dotazy
+Tento článek obsahuje odpovědi na nejčastější dotazy týkající se Azure Backup Server a aplikace DPM.
 
 ### <a name="can-i-use-azure-backup-server-to-create-a-bare-metal-recovery-bmr-backup-for-a-physical-server-br"></a>Mohu použít server Azure Backup k vytvoření zálohy úplného obnovení (BMR) pro fyzický server? <br/>
 Ano.
 
-### <a name="can-i-register-the-server-to-multiple-vaults"></a>Můžete zaregistrovat server pro více trezorů?
-Ne. Na server DPM nebo Azure Backup lze zaregistrovat pouze pro jeden trezor.
+### <a name="can-i-register-the-server-to-multiple-vaults"></a>Můžu server zaregistrovat do více trezorů?
+Ne. Server DPM nebo Azure Backup lze zaregistrovat pouze do jednoho trezoru.
 
 
-### <a name="can-i-use-dpm-to-back-up-apps-in-azure-stack"></a>Můžete použít aplikace DPM k zálohování aplikace ve službě Azure Stack?
-Ne. Azure Backup můžete použít k ochraně služby Azure Stack, Azure Backup nepodporuje použití DPM k zálohování aplikace ve službě Azure Stack.
+### <a name="can-i-use-dpm-to-back-up-apps-in-azure-stack"></a>Můžu použít DPM k zálohování aplikací v Azure Stack?
+Ne. Azure Backup můžete použít k ochraně Azure Stack, Azure Backup nepodporuje použití DPM k zálohování aplikací v Azure Stack.
 
-### <a name="if-ive-installed-azure-backup-agent-to-protect-my-files-and-folders-can-i-install-system-center-dpm-to-back-up-on-premises-workloads-to-azure"></a>Pokud je nainstalován agent Azure Backup chránit soubory a složky, je možné nainstalovat System Center DPM k zálohování místních úloh do Azure?
-Ano. Ale doporučujeme nejprve nastavení aplikace DPM a potom nainstalovat agenta Azure Backup.  Instalují se součásti v tomto pořadí zajistí, že Azure Backup agent bude fungovat s DPM. Instalace agenta před instalací aplikace DPM se nedoporučuje nebo nepodporuje.
+### <a name="if-ive-installed-azure-backup-agent-to-protect-my-files-and-folders-can-i-install-system-center-dpm-to-back-up-on-premises-workloads-to-azure"></a>Je-li nainstalován agent Azure Backup pro ochranu souborů a složek, je možné nainstalovat aplikaci System Center DPM pro zálohování místních úloh do Azure?
+Ano. Měli byste ale nejdřív nastavit DPM a pak nainstalovat agenta Azure Backup.  Instalace součástí v tomto pořadí zajistí, že agent Azure Backup funguje s aplikací DPM. Instalace agenta před instalací aplikace DPM se nedoporučuje ani nepodporuje.
 
-### <a name="why-cant-i-add-an-external-dpm-server-after-installing-ur7-and-latest-azure-backup-agent"></a>Proč nelze přidat externí DPM server po instalaci UR7 a nejnovější verzi agenta Azure Backup?
-Pro servery aplikace DPM se zdroji dat, které jsou chráněné do cloudu (s použitím kumulativní aktualizace starší než kumulativní aktualizace 7), musíte počkat aspoň jeden den po instalaci UR7 a nejnovější verzi agenta Azure Backup, aby vám začali **přidat externí DPM server**. Jeden den časové období, je potřeba nahrát metadat skupiny ochrany DPM do Azure. Při prvním průchodu noční úlohu nahraje metadat skupiny ochrany.
+### <a name="why-cant-i-add-an-external-dpm-server-after-installing-ur7-and-latest-azure-backup-agent"></a>Proč po instalaci UR7 a nejnovějšího agenta Azure Backup nelze přidat externí server DPM?
+Pro servery DPM se zdroji dat, které jsou chráněny do cloudu (pomocí kumulativní aktualizace starší než je kumulativní aktualizace 7), musíte počkat alespoň jeden den po instalaci UR7 a nejnovějšího agenta Azure Backup, abyste mohli začít **Přidat externí server DPM**. Pro nahrání metadat skupin ochrany DPM do Azure je nutné jednorázové časové období. Metadata skupiny ochrany se nahrají poprvé prostřednictvím noční úlohy.
 
 ## <a name="vmware-and-hyper-v-backup"></a>Zálohování VMware a Hyper-V
 
 ### <a name="can-i-back-up-vmware-vcenter-servers-to-azure"></a>Je možné zálohovat servery VMware vCenter do Azure?
-Ano. Použití Azure Backup serveru k zálohování serveru VMware vCenter a ESXi do Azure.
+Ano. Pomocí Azure Backup Server můžete zálohovat hostitele VMware vCenter Server a ESXi do Azure.
 
-- [Další informace](backup-mabs-protection-matrix.md) informace o podporovaných verzích.
-- [Postupujte podle těchto kroků](backup-azure-backup-server-vmware.md) k zálohování serveru VMware.
+- [Přečtěte si další informace](backup-mabs-protection-matrix.md) o podporovaných verzích.
+- Při zálohování serveru VMware [postupujte podle těchto kroků](backup-azure-backup-server-vmware.md) .
 
-### <a name="do-i-need-a-separate-license-to-recover-a-full-on-premises-vmwarehyper-v-cluster"></a>Budu potřebovat samostatné licence služby obnovení úplné místní cluster VMware nebo Hyper-V?
-Není potřebujete samostatné licencování pro ochranu VMware nebo Hyper-V.
+### <a name="do-i-need-a-separate-license-to-recover-a-full-on-premises-vmwarehyper-v-cluster"></a>Potřebuji samostatnou licenci k obnovení celého místního clusteru VMware/Hyper-V?
+Pro ochranu VMware/Hyper-V nepotřebujete samostatnou licenci.
 
-- Pokud jste zákazníkem produktu System Center, použijte System Center Data Protection Manager (DPM) k ochraně virtuálních počítačů VMware.
-- Pokud si nejste zákazník System Center, můžete použít Azure Backup serveru (průběžné platby) k ochraně virtuálních počítačů VMware.
+- Pokud jste zákazníkem nástroje System Center, použijte k ochraně virtuálních počítačů VMware aplikaci System Center Data Protection Manager (DPM).
+- Pokud nejste zákazníkem nástroje System Center, můžete k ochraně virtuálních počítačů VMware použít Azure Backup Server (průběžné platby).
 
 
 ## <a name="sharepoint"></a>SharePoint
 
-### <a name="can-i-recover-a-sharepoint-item-to-the-original-location-if-sharepoint-is-configured-by-using-sql-alwayson-with-protection-on-disk"></a>Můžete obnovit Sharepointových položek do původního umístění, pokud je služba SharePoint nakonfigurována pomocí AlwaysOn serveru SQL (ochrana na disku)?
-Ano, položka je možné obnovit do původního webu služby SharePoint.
+### <a name="can-i-recover-a-sharepoint-item-to-the-original-location-if-sharepoint-is-configured-by-using-sql-alwayson-with-protection-on-disk"></a>Je možné obnovit položku SharePointu do původního umístění, pokud je server SharePoint nakonfigurován pomocí technologie AlwaysOn SQL (s ochranou na disku)?
+Ano, položku lze obnovit na původní web služby SharePoint.
 
-### <a name="can-i-recover-a-sharepoint-database-to-the-original-location-if-sharepoint-is-configured-by-using-sql-alwayson"></a>Můžete obnovit do původního umístění databáze služby SharePoint, pokud je služba SharePoint nakonfigurována s použitím SQL AlwaysOn?
-Protože SharePoint databází nakonfigurovaných v SQL AlwaysOn, jejich nelze upravit, pokud je skupina dostupnosti odebrána. Aplikace DPM v důsledku toho nelze obnovit databázi do původního umístění. Můžete obnovit databázi systému SQL Server na jinou instanci systému SQL Server.
+### <a name="can-i-recover-a-sharepoint-database-to-the-original-location-if-sharepoint-is-configured-by-using-sql-alwayson"></a>Je možné obnovit databázi služby SharePoint do původního umístění, pokud je server SharePoint nakonfigurován pomocí technologie AlwaysOn systému SQL?
+Vzhledem k tomu, že databáze služby SharePoint jsou nakonfigurovány v technologii SQL AlwaysOn, nelze je upravovat, pokud není odebrána skupina dostupnosti. V důsledku toho DPM nemůže obnovit databázi do původního umístění. Můžete obnovit databázi SQL Server do jiné instance SQL Server.
 
 ## <a name="next-steps"></a>Další postup
 
-Přečtěte si další nejčastější dotazy:
+Přečtěte si další Nejčastější dotazy:
 
-- [Další informace](backup-support-matrix-mabs-dpm.md) matice podpory o Azure Backup serveru a aplikace DPM.
-- [Další informace](backup-azure-mabs-troubleshoot.md) o Azure Backup serveru a aplikace DPM pokyny pro odstraňování potíží.
+- [Přečtěte si další informace](backup-support-matrix-mabs-dpm.md) o Azure Backup Server a matrici podpory aplikace DPM.
+- [Přečtěte si další informace](backup-azure-mabs-troubleshoot.md) o pokynech pro řešení potíží s Azure Backup Server a DPM.

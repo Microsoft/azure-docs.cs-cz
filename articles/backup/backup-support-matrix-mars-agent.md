@@ -1,60 +1,59 @@
 ---
-title: Matice podpory pro zálohování počítačů spuštěných pomocí služby Azure Backup agent Microsoft Azure Recovery Services (MARS)
-description: Tento článek shrnuje podporu Azure Backup při zálohování počítače, na kterých běží agent Microsoft Azure Recovery Services (MARS).
-services: backup
+title: Matice podpory pro zálohování počítačů, na kterých běží agent Microsoft Azure Recovery Services (MARS) s Azure Backup
+description: Tento článek shrnuje Azure Backup podporu při zálohování počítačů, na kterých běží agent služby Microsoft Azure Recovery Services (MARS).
 author: rayne-wiselman
 ms.service: backup
 ms.date: 02/17/2019
 ms.topic: conceptual
 ms.author: raynew
 manager: carmonm
-ms.openlocfilehash: 9799914cdabf1f64fccfd6bfd891f9498b860e39
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d9f3c9b94a093df539a6ca4660383837becf1709
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64923005"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68464848"
 ---
-# <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>Matice podpory pro zálohování pomocí agenta Microsoft Azure Recovery Services (MARS)
+# <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>Matice podpory pro zálohování s agentem Microsoft Azure Recovery Services (MARS)
 
-Můžete použít [služby Azure Backup](backup-overview.md) pro zálohování místních počítačů a aplikací a k zálohování virtuálních počítačů Azure (VM). Tento článek shrnuje podporu nastavení a omezení při použití agenta Microsoft Azure Recovery Services (MARS) k zálohování počítačů.
+[Službu Azure Backup](backup-overview.md) můžete použít k zálohování místních počítačů a aplikací a k zálohování virtuálních počítačů Azure (VM). Tento článek shrnuje nastavení a omezení podpory při použití agenta Microsoft Azure Recovery Services (MARS) k zálohování počítačů.
 
-## <a name="the-mars-agent"></a>Agenta MARS
+## <a name="the-mars-agent"></a>Agent MARS
 
-Azure Backup používá agenta MARS zálohovat data z místních počítačů a virtuálních počítačů Azure do trezoru služby Recovery Services zálohování v Azure. Agenta MARS provádět následující akce:
-- Spusťte na místních počítačích Windows tak, aby můžete zálohovat přímo na zálohování trezoru služby Recovery Services v Azure.
-- Spuštění na virtuálních počítačích s Windows tak, aby můžete zálohovat přímo do trezoru.
-- Spusťte na serveru System Center Data Protection Manager (DPM) nebo Microsoft Azure Backup Server (MABS). V tomto scénáři počítače a úlohy zálohování na DPM server nebo MABS. Agenta MARS tento server pak zálohuje do trezoru v Azure.
+Azure Backup používá agenta MARS k zálohování dat z místních počítačů a virtuálních počítačů Azure do trezoru služby Backup Recovery Services v Azure. Agent MARS může:
+- Spouštějte na místních počítačích s Windows, aby se mohly zálohovat přímo do trezoru služby Backup Recovery Services v Azure.
+- Spusťte na virtuálních počítačích s Windows, aby se mohly zálohovat přímo do trezoru.
+- Spusťte na serveru Microsoft Azure Backup (MABS) nebo na serveru System Center Data Protection Manager (DPM). V tomto scénáři se počítače a úlohy zálohují do MABS nebo na server DPM. Agent MARS pak zálohuje tento server do trezoru v Azure.
 
-Možnosti zálohování závisí na instalaci agenta. Další informace najdete v tématu [architektury Azure Backup pomocí agenta MARS](backup-architecture.md#architecture-direct-backup-of-on-premises-windows-server-machines-or-azure-vm-files-or-folders). Informace o zálohování architektura MABS a aplikace DPM najdete v tématu [zpět do DPM nebo MABS](backup-architecture.md#architecture-back-up-to-dpmmabs). Viz také [požadavky](backup-support-matrix-mabs-dpm.md) pro zálohování architekturu.
+Možnosti zálohování závisí na tom, kde je agent nainstalovaný. Další informace najdete v tématu [architektura Azure Backup pomocí agenta Mars](backup-architecture.md#architecture-direct-backup-of-on-premises-windows-server-machines-or-azure-vm-files-or-folders). Informace o architektuře zálohování MABS a DPM najdete v tématu [zálohování do DPM nebo MABS](backup-architecture.md#architecture-back-up-to-dpmmabs). Viz také [požadavky](backup-support-matrix-mabs-dpm.md) na architekturu zálohování.
 
 **Instalace** | **Podrobnosti**
 --- | ---
-Stáhněte si nejnovější verzi agenta MARS | Nejnovější verzi agenta si můžete stáhnout z trezoru, nebo [přímo stahovat](https://aka.ms/azurebackup_agent).
-Instalace přímo do počítače | Můžete nainstalovat agenta MARS přímo na Windows serveru v místním nebo na virtuálním počítači s Windows, na kterém běží některý [podporované operační systémy](https://docs.microsoft.com/azure/backup/backup-support-matrix-mabs-dpm#supported-mabs-and-dpm-operating-systems).
-Nainstalujte na záložní server | Při nastavování aplikace DPM nebo MABS zálohování do Azure, stáhněte a nainstalujte agenta MARS na serveru. Agenta můžete nainstalovat na [podporované operační systémy](backup-support-matrix-mabs-dpm.md#supported-mabs-and-dpm-operating-systems) v matici podpory zálohování serveru.
+Stáhnout nejnovějšího agenta MARS | Nejnovější verzi agenta si můžete stáhnout z trezoru nebo [si ho stáhnout přímo](https://aka.ms/azurebackup_agent).
+Instalace přímo na počítač | Agenta MARS můžete nainstalovat přímo na místní Windows Server nebo na virtuální počítač s Windows, na kterém běží některý z [podporovaných operačních systémů](https://docs.microsoft.com/azure/backup/backup-support-matrix-mabs-dpm#supported-mabs-and-dpm-operating-systems).
+Instalace na záložní server | Když nastavíte DPM nebo MABS pro zálohování do Azure, stáhnete a nainstalujete agenta MARS na server. Agenta můžete nainstalovat v [podporovaných operačních systémech](backup-support-matrix-mabs-dpm.md#supported-mabs-and-dpm-operating-systems) v matici podpory záložního serveru.
 
 > [!NOTE]
-> Ve výchozím nastavení mají virtuální počítače Azure, které jsou povolené pro zálohování Azure Backup instalace rozšíření. Toto rozšíření zálohuje celý virtuální počítač. Můžete nainstalovat a spustit agenta MARS na Virtuálním počítači Azure společně s rozšířením, pokud chcete zálohovat specifických složek a souborů, namísto kompletního virtuálního počítače.
-> Při spuštění agenta MARS na Virtuálním počítači Azure, zálohuje soubory nebo složky, které jsou v dočasné úložiště na virtuálním počítači. Zálohování se nezdaří, pokud soubory nebo složky se odeberou z dočasného úložiště nebo pokud je odebrán dočasné úložiště.
+> Ve výchozím nastavení mají virtuální počítače Azure s povoleným zálohováním instalaci rozšíření Azure Backup. Toto rozšíření zálohuje celý virtuální počítač. Můžete nainstalovat a spustit agenta MARS na virtuálním počítači Azure společně s příponou, pokud chcete zálohovat konkrétní složky a soubory, a ne celý virtuální počítač.
+> Když spustíte agenta MARS na virtuálním počítači Azure, zálohuje soubory nebo složky, které jsou v dočasném úložišti virtuálního počítače. Zálohování se nezdaří, pokud jsou soubory nebo složky odebrány z dočasného úložiště nebo pokud je dočasné úložiště odstraněno.
 
 
 ## <a name="cache-folder-support"></a>Podpora složky mezipaměti
 
-Při použití agenta MARS zálohovat data agenta pořídí snímek dat a ukládá ho do místní mezipaměť složky, před odesláním dat do Azure. Složka mezipaměti (začátku) má několik požadavků:
+Když použijete agenta MARS k zálohování dat, agent pořizuje snímek dat a uloží ho do složky místní mezipaměti předtím, než odešle data do Azure. Složka cache (Scratch) má několik požadavků:
 
 **Mezipaměť** | **Podrobnosti**
 --- | ---
-Velikost |  Volné místo ve složce mezipaměti by měla být alespoň 5 až 10 procent celkové velikosti zálohovaných dat.
-Location | Složka mezipaměti musí být místně uložené na počítač, který se zálohuje a musí být online. Složka mezipaměti by neměly být ve sdílené síťové složce, vyměnitelného média nebo svazek offline.
-Složka | Složka mezipaměti by se měla šifrovat na svazek s odstraněnou duplicitou nebo ve složce, která je komprimován, který je zhuštěn nebo, který má spojovací bod.
-Umístění změny | Zastavte modul zálohování můžete změnit umístění mezipaměti (`net stop bengine`) a kopírování složky mezipaměti k nové jednotce. (Zkontrolujte, že nový disk má dost volného místa.) Pak aktualizujte dvě položky registru v rámci **HKLM\SOFTWARE\Microsoft\Windows Azure Backup** (**Config/ScratchLocation** a **Config/CloudBackupProvider/ScratchLocation**) do nového umístění a restartujte modul.
+Size |  Volné místo ve složce mezipaměti by mělo být alespoň 5 až 10 procent celkové velikosti zálohovaných dat.
+Location | Složka mezipaměti musí být uložená místně na počítači, který se zálohuje, a musí být online. Složka mezipaměti by neměla být ve sdílené síťové složce, na vyměnitelném médiu nebo na svazku offline.
+Folder | Složka mezipaměti by měla být zašifrovaná na svazku s odstraněnými duplicitními daty nebo v komprimované složce, která je zhuštěná, nebo má bod rozboru.
+Změny umístění | Umístění mezipaměti můžete změnit zastavením zálohovacího stroje (`net stop bengine`) a zkopírováním složky mezipaměti do nové jednotky. (Zajistěte, aby na nové jednotce bylo dost místa.) Pak aktualizujte dvě položky registru v části **HKLM\SOFTWARE\Microsoft\Windows Azure Backup** (**config/ScratchLocation** a **config/CloudBackupProvider/ScratchLocation**) na nové místo a restartujte modul.
 
-## <a name="networking-and-access-support"></a>Podpora sítě a přístup
+## <a name="networking-and-access-support"></a>Podpora sítí a přístupu
 
-### <a name="url-access"></a>Přístup k adrese URL
+### <a name="url-access"></a>Přístup URL
 
-Agenta MARS potřebuje přístup k těmto adresám URL:
+Agent MARS potřebuje přístup k těmto adresám URL:
 
 - http://www.msftncsi.com/ncsi.txt
 - *.Microsoft.com
@@ -62,87 +61,87 @@ Agenta MARS potřebuje přístup k těmto adresám URL:
 - *.MicrosoftOnline.com
 - *.Windows.net
 
-### <a name="throttling-support"></a>Omezení podpory
+### <a name="throttling-support"></a>Podpora omezování
 
 **Funkce** | **Podrobnosti**
 --- | ---
-Řízení šířky pásma | Podporuje se. V agenta MARS pomocí **změnit vlastnosti** k úpravě šířky pásma.
-Omezení využití sítě | Není k dispozici pro zálohování počítače se systémem Windows Server 2008 R2, Windows Server 2008 SP2 nebo Windows 7.
+Řízení šířky pásma | Podporuje se. V agentovi MARS upravte šířku pásma pomocí **možnosti změnit vlastnosti** .
+Omezení sítě | Není k dispozici pro zálohované počítače se systémem Windows Server 2008 R2, Windows Server 2008 SP2 nebo Windows 7.
 
-## <a name="support-for-direct-backups"></a>Podpora pro přímé zálohování
+## <a name="support-for-direct-backups"></a>Podpora přímých záloh
 
-Vám pomůže agenta MARS zálohovat přímo do Azure v některých operačních systémech, které běží na místních počítačů a virtuálních počítačů Azure. Operační systémy musí být 64bitový a by měla být spuštěná nejnovější aktualizace Service Pack a aktualizace. V následující tabulce najdete souhrn těchto operačních systémů:
+Agenta MARS můžete použít k zálohování přímo do Azure v některých operačních systémech, které běží na místních počítačích a virtuálních počítačích Azure. Operační systémy musí být 64 bitů a měly by být spuštěny nejnovější aktualizace a aktualizace Service Pack. Následující tabulka shrnuje tyto operační systémy:
 
-**Operační systém** | **Soubory nebo složky** | **Stav systému**
+**Operační systém** | **Soubory/složky** | **Stav systému**
 --- | --- | ---
-Windows 10 (Enterprise, Pro, Home) | Ano | Ne
-Windows 8.1 (Enterprise, Pro)| Ano |Ne
+Windows 10 (Enterprise, pro, Home) | Ano | Ne
+Windows 8.1 (Enterprise, pro)| Ano |Ne
 Windows 8 (Enterprise, Pro) | Ano | Ne
-Windows 7 (Ultimate, Enterprise, Pro, kde je Premium nebo Basic, Starter) | Ano | Ne
+Windows 7 (Ultimate, Enterprise, pro, Home Premium/Basic, Starter) | Ano | Ne
 Windows Server 2016 (Standard, Datacenter, Essentials) | Ano | Ano
 Windows Server 2012 R2 (Standard, Datacenter, Foundation, Essentials) | Ano | Ano
-Windows Server 2012 (Standard, Datacenter, Foundation) | Ano | Ano
-Windows Server 2008 R2 (Standard, Enterprise, Datacenter, Foundation) | Ano | Ano
+Windows Server 2012 (Standard, Datacenter, základ) | Ano | Ano
+Windows Server 2008 R2 (Standard, Enterprise, Datacenter, základ) | Ano | Ano
 Windows Server 2008 SP2 (Standard, Datacenter, Foundation) | Ano | Ne
 Windows Storage Server 2016/2012 R2/2012 (Standard, Workgroup) | Ano | Ne
 
-Další informace najdete v tématu [operační systémy podporované MABS a aplikace DPM](backup-support-matrix-mabs-dpm.md#supported-mabs-and-dpm-operating-systems).
+Další informace najdete v tématu [podporované MABS a operační systémy DPM](backup-support-matrix-mabs-dpm.md#supported-mabs-and-dpm-operating-systems).
 
 ## <a name="backup-limits"></a>Omezení zálohování
 
-Azure Backup omezuje velikost souboru nebo složky zdroje dat, která se dají zálohovat. Položky, které zálohujete z jednoho svazku nesmí překročit velikost uvedené v této tabulce:
+Azure Backup omezuje velikost zdroje dat souboru nebo složky, které se dají zálohovat. Položky, které zálohujete z jednoho svazku, nemůžou překročit velikost shrnuté v této tabulce:
 
 **Operační systém** | **Omezení velikosti**
 --- | ---
 Windows Server 2012 nebo novější |  54 400 GB
-Windows Server 2008 R2 SP1 |    1,700 GB
-Windows Server 2008 SP2 | 1,700 GB
+Windows Server 2008 R2 SP1 |    1 700 GB
+Windows Server 2008 SP2 | 1 700 GB
 Windows 8 nebo novější  | 54 400 GB
-Windows 7   | 1,700 GB
+Windows 7   | 1 700 GB
 
 
 ## <a name="supported-file-types-for-backup"></a>Podporované typy souborů pro zálohování
 
 **Typ** | **Podpora**
 --- | ---
-Šifrované   | Podporuje se.
+Zašifrováno   | Podporuje se.
 Komprimované | Podporuje se.
 Řídké | Podporuje se.
-Komprimované a řídké | Podporuje se.
-Pevné odkazy  | Nepodporuje se. Vynecháno.
-Spojovací bod   | Nepodporuje se. Vynecháno.
-Šifrované a zhuštěné |  Nepodporuje se. Vynecháno.
-Komprimovaný datový proud   | Nepodporuje se. Vynecháno.
-Zhuštěný datový proud   | Nepodporuje se. Vynecháno.
-OneDrive (synchronizované soubory jsou datové proudy zhuštěné)  | Nepodporuje se.
+Komprimované a zhuštěné | Podporuje se.
+Pevné odkazy  | Nepodporuje se. Přeskočeno.
+Bod rozboru   | Nepodporuje se. Přeskočeno.
+Šifrované a zhuštěné |  Nepodporuje se. Přeskočeno.
+Komprimovaný datový proud   | Nepodporuje se. Přeskočeno.
+Zhuštěný datový proud   | Nepodporuje se. Přeskočeno.
+OneDrive (synchronizované soubory jsou zhuštěné streamy)  | Nepodporuje se.
 
 ## <a name="supported-drives-or-volumes-for-backup"></a>Podporované jednotky nebo svazky pro zálohování
 
-**Jednotce nebo svazku** | **Podpora** | **Podrobnosti**
+**Jednotka/svazek** | **Podpora** | **Podrobnosti**
 --- | --- | ---
 Svazky jen pro čtení   | Nepodporuje se | Služba Stínová kopie svazku (VSS) funguje pouze v případě, že svazek je zapisovatelný.
-Offline svazky | Nepodporuje se |   Služby VSS funguje pouze v případě, že svazek je online.
-Sdílené síťové složky   | Nepodporuje se |   Svazek musí být místní na serveru.
-Svazky chráněné nástrojem BitLocker | Nepodporuje se |   Před zahájením zálohování, musí být svazek odemčený.
-Identifikace systému souborů  | Nepodporuje se |   Je podporován pouze v systému souborů NTFS.
-Vyměnitelné médium | Nepodporuje se |   Musí mít všechny zdroje položek k zálohování *oprava* stav.
-S odstraněnými duplicitními daty jednotky | Podporováno | Azure Backup převede s odstraněnými duplicitními daty data na normální data. Ho optimalizuje, šifruje, ukládá a posílá ji do trezoru.
+Offline svazky | Nepodporuje se |   Služba Stínová kopie svazku funguje jenom v případě, že je svazek online.
+Sdílená síťová složka   | Nepodporuje se |   Svazek musí být na serveru místní.
+Svazky chráněné nástrojem BitLocker | Nepodporuje se |   Svazek musí být před zahájením zálohování odemčen.
+Identifikace systému souborů  | Nepodporuje se |   Podporován je pouze systém souborů NTFS.
+Vyměnitelná média | Nepodporuje se |   Všechny zdroje záložních položek musí mít *pevný* stav.
+Jednotky s odstraněnými duplicitními daty | Podporováno | Azure Backup převede data s odstraněnými duplicitními daty na normální data. Optimalizuje, šifruje, ukládá a odesílá data do trezoru.
 
-## <a name="support-for-initial-offline-backup"></a>Podpora pro počáteční offline zálohu
+## <a name="support-for-initial-offline-backup"></a>Podpora počátečního zálohování offline
 
-Azure Backup podporuje *offline předvyplnění* pro přenos počáteční zálohovací data do Azure s použitím disků. Tato podpora je užitečné v případě prvotní zálohování by mohla být v rozsahu velikost terabajtů (TB). Zálohování offline platí pro:
+Azure Backup podporuje *osazení offline* pro přenos počátečních zálohovaných dat do Azure pomocí disků. Tato podpora je užitečná v případě, že počáteční záloha bude pravděpodobně v rozsahu velikosti terabajtů (TBs). Zálohování offline je podporováno pro:
 
-- Přímé zálohování souborů a složek na místní počítače, na kterých běží agenta MARS.
+- Přímé zálohování souborů a složek na místních počítačích, na kterých je spuštěný agent MARS.
 - Zálohování úloh a souborů ze serveru DPM nebo MABS.
 
-Zálohování offline nelze použít pro soubory stavu systému.
+Offline zálohování nelze použít pro soubory stavu systému.
 
 ## <a name="support-for-data-restoration"></a>Podpora pro obnovení dat
 
-S použitím [rychlé obnovení](backup-instant-restore-capability.md) funkce služby Azure Backup můžete obnovit data předtím, než je zkopírován do trezoru. Musí být počítač zálohujete spuštěn rozhraní .NET Framework 4.5.2 nebo novější.
+Pomocí funkce [okamžitého obnovení](backup-instant-restore-capability.md) Azure Backup můžete data obnovit, než se zkopírují do trezoru. Počítač, který zálohujete, musí běžet .NET Framework 4.5.2 nebo novější.
 
-Zálohování není možné obnovit do cílového počítače, na kterém běží starší verze operačního systému. Například může být obnovena záloha provést z počítače se systémem Windows 7 na Windows 8 nebo novější. Ale zálohování provést z počítače se systémem Windows 8 nelze obnovit v počítači se systémem Windows 7.
+Zálohy nelze obnovit do cílového počítače, na kterém je spuštěna dřívější verze operačního systému. Například záloha pořízená z počítače se systémem Windows 7 se dá obnovit v systému Windows 8 nebo novějším. Zálohy pořízené z počítače se systémem Windows 8 nelze obnovit v počítači se systémem Windows 7.
 
-## <a name="next-steps"></a>Další postup
-- Další informace o [architekturu, která používá agenta MARS zálohovat](backup-architecture.md#architecture-direct-backup-of-on-premises-windows-server-machines-or-azure-vm-files-or-folders).
-- Zjistěte, co je podporovaná, až vám [spuštění agenta MARS na serveru aplikace DPM nebo MABS](backup-support-matrix-mabs-dpm.md).
+## <a name="next-steps"></a>Další kroky
+- Přečtěte si další informace o [architektuře zálohování, která používá agenta Mars](backup-architecture.md#architecture-direct-backup-of-on-premises-windows-server-machines-or-azure-vm-files-or-folders).
+- Zjistěte, co se podporuje při [spuštění agenta Mars v MABS nebo DPM serveru](backup-support-matrix-mabs-dpm.md).

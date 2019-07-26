@@ -1,6 +1,6 @@
 ---
-title: Získejte pomoc se sadou na portálu Moje aplikace – Azure Active Directory | Dokumentace Microsoftu
-description: Získejte pomoc s přihlašováním k a provádět běžné úkoly na portálu Moje aplikace.
+title: Získejte pomoc s portálem moje aplikace – Azure Active Directory | Microsoft Docs
+description: Získejte pomoc s přihlašováním a prováděním běžných úloh na portálu moje aplikace.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -13,73 +13,83 @@ ms.author: lizross
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a6e87ae0a8adf28176d9a97cbf1b78943179884a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 11a7376720661e13a03be65df4ee180e0bca20c3
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60475023"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68383073"
 ---
-# <a name="troubleshoot-problems-with-the-my-apps-portal"></a>Poradce při potížích s na portálu Moje aplikace
-Pokud máte problémy s přihlašováním k nebo pomocí **Moje aplikace** portál, zkuste tyto tipy pro řešení potíží než požádáte o pomoc helpdesk nebo správce.
+# <a name="troubleshoot-problems-with-the-my-apps-portal"></a>Řešení problémů s portálem moje aplikace
 
-## <a name="im-having-trouble-installing-the-my-apps-secure-sign-in-extension"></a>Mám potíže s instalací rozšíření Moje aplikace zabezpečené přihlášení
-Pokud máte potíže s instalací rozšíření Moje aplikace zabezpečené přihlášení:
+Pokud máte problémy s přihlašováním k nebo pomocí portálu **Moje aplikace** , zkuste tyto tipy k odstraňování potíží před kontaktováním helpdesku nebo správcem pro pomoc.
+
+## <a name="im-having-trouble-installing-the-my-apps-secure-sign-in-extension"></a>Mám potíže s instalací zabezpečeného přihlašovacího rozšíření moje aplikace
+
+Pokud máte problémy s instalací zabezpečeného přihlašovacího rozhraní pro moje aplikace:
 
 - Ujistěte se, že používáte podporovaný prohlížeč, včetně:
 
-    - **Microsoft Edge.** V systému Windows 10 Anniversary Edition nebo novějším.
-    - **Google Chrome.** V systému Windows 7 nebo později a v Mac OS X nebo novějším.
-    - **Mozilla Firefox 26.0 nebo novější.** V systému Windows XP SP2 nebo novější a na Mac OS X 10.6 nebo novějším.
-    - **Internet Explorer 11.** Běží na Windows 7 nebo novější (omezená podpora).
+    - **Microsoft Edge.** Běží v systému Windows 10 a novějších verzích.
 
-- Zkontrolujte, zda že jsou zapnuté nastavení rozšíření prohlížeče.
+    - **Google Chrome.** Běží v systému Windows 7 nebo novějším a v Mac OS X nebo novějším.
 
-- Akci restartování prohlížeče a přihlášením **Moje aplikace** portálu znovu.
+    - **Mozilla Firefox 26,0 nebo novější.** Běží v systému Windows XP SP2 nebo novějším a v Mac OS X 10,6 nebo novějším.
 
-- Vymažte soubory cookie v prohlížeči a potom restartujte a přihlaste se k **Moje aplikace** portálu znovu.
+    - **Internet Explorer 11.** Běží v systému Windows 7 nebo novějším (omezená podpora).
 
-## <a name="i-cant-sign-in-to-the-my-apps-portal"></a>Nemůžu se přihlásit k **Moje aplikace** portálu
-Pokud máte potíže s přihlášením **Moje aplikace** portálu, můžete vyzkoušet následující:
+- Ujistěte se, že je zapnuté nastavení rozšíření prohlížeče.
 
-- Ujistěte se, že používáte správné adresy URL. Měla by být https://myapps.microsoft.com nebo upravené stránky pro vaši organizaci, jako například https://myapps.microsoft.com/contoso.com.
+- Zkuste znovu spustit prohlížeč a přihlaste se k portálu **Moje aplikace** znovu.
 
-- Ujistěte se, že heslo je správné a nevypršela platnost. Další informace najdete v tématu [obnovit heslo pracovního nebo školního](active-directory-passwords-update-your-own-password.md).
+- Zkuste vymazat soubory cookie v prohlížeči a pak znovu spusťte a znovu se přihlaste k portálu **Moje aplikace** .
 
-- Ujistěte se, že vaše údaje ověření přesné a aktuální. Další informace najdete v tématu [Azure Multi-Factor Authentication význam pro mě nejlepší?](multi-factor-authentication-end-user.md) nebo [Změna metody informace o zabezpečení a informace o](security-info-add-update-methods-overview.md).
+## <a name="i-cant-sign-in-to-the-my-apps-portal"></a>Nemůžu se přihlásit k portálu **Moje aplikace**
 
-- Přidat **Moje aplikace** portál adresu URL **vlastnosti Internetu > zabezpečení > Důvěryhodné servery** nastavení.
+Pokud máte potíže s přihlášením k portálu **Moje aplikace** , můžete vyzkoušet následující:
 
-- Vymazat mezipaměť prohlížeče a zkuste se přihlásit znovu.
+- Ujistěte se, že používáte správnou adresu URL. Měla by to https://myapps.microsoft.com být nebo přizpůsobená stránka pro vaši organizaci, https://myapps.microsoft.com/contoso.com například.
 
-## <a name="my-password-isnt-working"></a>Heslo není funkční.
-Pokud zapomněli jste heslo nikdy nedostali některou z vaší organizace, jsou uzamčené z vašeho účtu nebo chcete změnit heslo, přečtěte si téma [Nápověda k zapomenutému heslu Azure AD](active-directory-passwords-update-your-own-password.md).
+- Ujistěte se, že heslo je správné a že nevypršela jeho platnost. Další informace najdete v tématu [resetování svého pracovního nebo školního hesla](active-directory-passwords-update-your-own-password.md).
 
-## <a name="i-want-to-be-able-to-reset-my-own-password"></a>Chci, aby mohli resetovat vlastní heslo
-Aby bylo možné resetovat vlastní heslo, správce musíte nejprve povolit funkce pro vaši organizaci, a pak musíte aktualizovat a ověřit svoje metody vyžaduje ověření. Další informace o tom, jak aktualizovat své metody ověřování najdete v tématu [registrace pro resetování hesla pomocí samoobslužné služby](active-directory-passwords-reset-register.md).
+- Ujistěte se, že jsou vaše ověřovací údaje aktuální a přesné. Další informace najdete v tématu [co znamená Azure Multi-Factor Authentication pro mě?](multi-factor-authentication-end-user.md) nebo [Změna metod a informací o zabezpečení](security-info-add-update-methods-overview.md).
 
-## <a name="im-getting-an-access-denied-message-when-i-start-an-app"></a>Při spuštění aplikace se zobrazuje zpráva o odepření přístupu
-Pokud se vám **přístup odepřen** zpráv po spuštění aplikace z **Moje aplikace** portálu, můžete vyzkoušet následující:
+- Přidejte adresu URL portálu **Moje aplikace** do **vlastností Internet > nastavení zabezpečení > důvěryhodných lokalit** .
 
-- Ujistěte se, že jste nainstalovali [Moje aplikace zabezpečené přihlašování rozšíření](my-apps-portal-end-user-access.md#download-and-install-the-my-apps-secure-sign-in-extension) a, který používáte [podporovaného prohlížeče](my-apps-portal-end-user-access.md#supported-browsers).
+- Vymažte mezipaměť prohlížeče a zkuste se znovu přihlásit.
 
-- Ujistěte se, že používáte správné adresy URL pro aplikaci a že je adresa URL na vaše **vlastnosti Internetu > zabezpečení > Důvěryhodné servery** seznamu.
+## <a name="my-password-isnt-working"></a>Moje heslo nefunguje
 
-- Ujistěte se, že heslo je správné a nevypršela platnost. Další informace najdete v tématu [obnovit heslo pracovního nebo školního](active-directory-passwords-update-your-own-password.md).
+Pokud jste zapomněli heslo, neobdrželi jste ho z vaší organizace, nedostali jste ho z vašeho účtu nebo chcete změnit heslo, přečtěte si téma [help, zapomenutí hesla služby Azure AD](active-directory-passwords-update-your-own-password.md).
 
-- Ujistěte se, že vaše údaje ověření přesné a aktuální. Další informace najdete v tématu [Azure Multi-Factor Authentication význam pro mě nejlepší?](multi-factor-authentication-end-user.md) nebo [Změna metody informace o zabezpečení a informace o](security-info-add-update-methods-overview.md).
+## <a name="i-want-to-be-able-to-reset-my-own-password"></a>Chci být schopni resetovat vlastní heslo
 
-- Vymazat mezipaměť prohlížeče a zkuste se přihlásit znovu.
+Aby bylo možné resetovat vaše vlastní heslo, správce musí nejdřív zapnout funkci pro vaši organizaci a pak musíte aktualizovat a ověřit požadované metody ověřování. Další informace o tom, jak aktualizovat metody ověřování, najdete v tématu [Registrace pro Samoobslužné resetování hesla](active-directory-passwords-reset-register.md).
 
-Pokud po pokusu o nich budete pořád nemáte přístup k vaší aplikace, musí vaše organizace helpdesku požádejte o pomoc.
+## <a name="im-getting-an-access-denied-message-when-i-start-an-app"></a>Při spuštění aplikace se mi zobrazuje zpráva o odepření přístupu
+
+Pokud se vám po spuštění aplikace z portálu **Moje aplikace** zobrazuje zpráva o **odepření přístupu** , můžete vyzkoušet následující:
+
+- Ujistěte se, že máte nainstalované [rozšíření pro zabezpečené přihlašování k aplikacím](my-apps-portal-end-user-access.md#download-and-install-the-my-apps-secure-sign-in-extension) a používáte [podporovaný prohlížeč](my-apps-portal-end-user-access.md#supported-browsers).
+
+- Ujistěte se, že používáte správnou adresu URL pro aplikaci a že adresa URL je ve **vlastnostech internetu > seznam důvěryhodných serverů > zabezpečení** .
+
+- Ujistěte se, že heslo je správné a že nevypršela jeho platnost. Další informace najdete v tématu [resetování svého pracovního nebo školního hesla](active-directory-passwords-update-your-own-password.md).
+
+- Ujistěte se, že jsou vaše ověřovací údaje aktuální a přesné. Další informace najdete v tématu [co znamená Azure Multi-Factor Authentication pro mě?](multi-factor-authentication-end-user.md) nebo [Změna metod a informací o zabezpečení](security-info-add-update-methods-overview.md).
+
+- Vymažte mezipaměť prohlížeče a zkuste se znovu přihlásit.
+
+Pokud po vyzkoušení těchto věcí stále nemáte přístup k aplikaci, je nutné, abyste se obrátili na technickou podporu vaší organizace.
 
 ## <a name="next-steps"></a>Další postup
-Po přihlášení k **Moje aplikace** portálu, můžete také aktualizovat váš profil a informace o účtu, informace o skupinách a přístup zkontrolujte informace (Pokud máte oprávnění).
 
-- [Přístup a používání aplikací na portálu Moje aplikace](my-apps-portal-end-user-access.md).
+Až se přihlásíte na portál **Moje aplikace** , můžete také aktualizovat informace o profilu a účtu, informace o skupině a informace o kontrole přístupu (Pokud máte oprávnění).
 
-- [Změnit informace z vašeho profilu](my-apps-portal-end-user-update-profile.md).
+- [Přístup k aplikacím a jejich používání na portálu moje aplikace](my-apps-portal-end-user-access.md)
 
-- [Zobrazit a aktualizovat vaše informace týkající se skupiny](my-apps-portal-end-user-groups.md).
+- [Změna informací o profilu](my-apps-portal-end-user-update-profile.md).
 
-- [Provést vlastní kontroly přístupu](my-apps-portal-end-user-access-reviews.md).
+- [Zobrazit a aktualizovat informace související se skupinami](my-apps-portal-end-user-groups.md).
+
+- [Proveďte vlastní kontroly přístupu](my-apps-portal-end-user-access-reviews.md).

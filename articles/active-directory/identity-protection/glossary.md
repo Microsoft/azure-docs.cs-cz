@@ -1,168 +1,162 @@
 ---
-title: Slovník ochrany identit Azure Active Directory | Dokumentace Microsoftu
-description: Slovník ochrany identit Azure Active Directory
+title: Glosář Azure Active Directory Identity Protection | Microsoft Docs
+description: Glosář Azure Active Directory Identity Protection
 services: active-directory
-keywords: Azure active directory identity protection, zjišťování cloudových aplikací, Správa aplikací, zabezpečení, rizika, úroveň rizika, ohrožení zabezpečení, zásady zabezpečení, Glosář
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: daveba
-ms.assetid: 833119a5-33d6-4482-adda-fa35218c72c3
 ms.service: active-directory
 ms.subservice: identity-protection
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: reference
 ms.date: 01/15/2018
 ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c371254f344b321969dcc9b3c36212b7536aa95a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6751fe74bfd9b8a07aec2263582d9f1a4bc0b2ac
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67109000"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68333984"
 ---
-# <a name="azure-active-directory-identity-protection-glossary"></a>Slovník ochrany identit Azure Active Directory
-### <a name="at-risk-user"></a>Riziko (uživatel)
-Uživatel se nejmíň jeden aktivní rizikové události. 
+# <a name="azure-active-directory-identity-protection-glossary"></a>Glosář Azure Active Directory Identity Protection
 
-### <a name="atypical-sign-in-location"></a>Neobvyklé přihlášení, místo
-U přihlášení z zeměpisné umístění, která není typický pro konkrétního uživatele, podobně jako uživatele nebo tenanta.
+### <a name="at-risk-user"></a>Ohroženo (uživatel)
+Uživatel s jednou nebo více aktivními rizikovými událostmi. 
+
+### <a name="atypical-sign-in-location"></a>Neobvyklý přihlašovací umístění
+Přihlášení z geografického umístění, které není typické pro konkrétního uživatele, podobné uživatele nebo tenanta.
 
 ### <a name="azure-ad-identity-protection"></a>Azure AD Identity Protection
-Modul zabezpečení služby Azure Active Directory, která poskytuje umožní získat přehled o rizikových událostech a potenciálních chybách zabezpečení dopadem na identity vaší organizace.
+Modul zabezpečení Azure Active Directory, který poskytuje konsolidované zobrazení rizikových událostí a potenciálních ohrožení zabezpečení, které mají vliv na identity organizace.
 
 ### <a name="conditional-access"></a>Podmíněný přístup
-Zásady pro zabezpečení přístupu k prostředkům. Pravidla podmíněného přístupu se ukládají ve službě Azure Active Directory a jsou vyhodnocovány pomocí služby Azure AD před udělením přístupu k prostředku.  Příklad pravidla zahrnují také omezení přístupu na základě umístění uživatele, stav zařízení nebo metody ověřování uživatele.
+Zásada pro zabezpečení přístupu k prostředkům. Pravidla podmíněného přístupu se ukládají v Azure Active Directory a před udělením přístupu k prostředku se vyhodnocují ve službě Azure AD.  Příklady pravidel zahrnují omezení přístupu na základě umístění uživatele, stavu zařízení nebo metody ověřování uživatelů.
 
-### <a name="credentials"></a>Přihlašovací údaje
-Informace, které zahrnuje identifikaci a ověření identifikace, která se používá k získání přístupu k místním a síťovým prostředkům. Příkladem přihlašovací údaje jsou uživatelská jména a hesla, čipové karty a certifikáty.
+### <a name="credentials"></a>Pověření
+Informace, které zahrnují identifikaci a ověření identifikace, která se používá k získání přístupu k místním a síťovým prostředkům. Příklady přihlašovacích údajů jsou uživatelská jména a hesla, čipové karty a certifikáty.
 
 ### <a name="event"></a>Událost
-Záznam aktivity ve službě Azure Active Directory.
+Záznam aktivity v Azure Active Directory.
 
 ### <a name="false-positive-risk-event"></a>Falešně pozitivní (riziková událost)
-Stav události rizika Identity Protection uživatelem, označující, že rizikové události se prověřit a byla nesprávně označena jako rizikovou událost, nastavit ručně.
+Stav rizikové události nastaven ručně uživatelem ochrany identity, což znamená, že riziková událost byla prozkoumána a byla nesprávně označena jako riziková událost.
 
 ### <a name="identity"></a>Identita
-Osoba nebo entita, která musí být ověřen pomocí ověřování na základě kritérií, jako je například heslo nebo certifikát.
+Osoba nebo entita, která musí být ověřena pomocí ověřování, na základě kritérií, jako je například heslo nebo certifikát.
 
-### <a name="identity-risk-event"></a>Události rizika identity
-Událost AAD, která byla označena jako neobvyklé služba Identity Protection a může znamenat, že došlo k napadení o identitu.
+### <a name="identity-risk-event"></a>Událost rizikové identity
+Událost AAD, která byla označena jako neobvyklé podle Identity Protection, může znamenat, že došlo k ohrožení identity.
 
-### <a name="ignored-risk-event"></a>Ignoruje (riziková událost)
-Stav události rizika Identity Protection uživatelem, která udává, že zavření rizikové události bez provedení nápravné akce nastavit ručně.
+### <a name="ignored-risk-event"></a>Ignorováno (riziková událost)
+Stav rizikové události nastavené ručně uživatelem ochrany identity, což značí, že je riziková událost uzavřená bez provedení nápravné akce.
 
-### <a name="impossible-travel-from-atypical-locations"></a>Neuskutečnitelná cesta od netypických míst
-Riziková událost aktivuje, když se zjistí dvě přihlášení pro stejného uživatele, kde alespoň jeden z nich je z neobvyklé místo přihlášení, a doba mezi přihlášení je kratší než minimální hodnota času, které by to obnášelo fyzicky projít mezi tato místa.  
+### <a name="impossible-travel-from-atypical-locations"></a>Nemožná cesta z netypických míst
+Riziková událost aktivovaná při zjištění dvou přihlášení stejného uživatele, kde aspoň jedna z nich pochází z neobvyklých přihlašovacích umístění a kde je doba mezi přihlášeními kratší než minimální čas, který by vyžadoval fyzické cestování mezi těmito umístěními.  
 
 ### <a name="investigation"></a>Šetření
-Proces kontroly aktivity, protokoly a další relevantní informace související s riziková událost se rozhodnout, zda jsou nezbytné kroky ke zmírnění nebo nápravy pochopit, pokud a jak došlo k ohrožení identity a seznamte se s jak k ohrožení identity byl použit.
+Proces kontroly aktivit, protokolů a dalších relevantních informací týkajících se rizikových událostí a rozhodování o tom, jestli jsou nezbytné kroky pro nápravu nebo zmírnění potíží, zjistěte, jestli a jak byla identita ohrožená, a porozumět tomu, jak ohrožená identita bylo použito.
 
 ### <a name="leaked-credentials"></a>Uniklé přihlašovací údaje
-Riziková událost aktivuje, když pověření aktuálního uživatele (uživatelské jméno a heslo) se nacházejí ve Dark web veřejně odeslány naše odborníky.
+Riziková událost aktivovaná v případě, že jsou aktuální přihlašovací údaje uživatele (uživatelské jméno a heslo) na tmavém webu naši výzkumníki k dispozici.
 
 ### <a name="mitigation"></a>Omezení rizik
-Akce omezení nebo vyloučení schopnost útočníka zneužít ohrožení zabezpečení identity nebo zařízení bez obnovení identity nebo zařízení do bezpečného stavu. Omezení rizik nevyřeší předchozí rizikové události související s identity nebo zařízení.
+Akce omezující nebo eliminující schopnost útočníka zneužít ohroženou identitu nebo zařízení bez obnovení identity nebo zařízení do bezpečného stavu. Zmírnění rizika neřeší předchozí rizikové události přidružené k identitě nebo zařízení.
 
-### <a name="multi-factor-authentication"></a>Ověřování pomocí služby Multi-Factor Authentication
-Metodu ověřování, dva nebo více metod ověřování, které mohou zahrnovat něco vyžaduje, aby uživatel má certifikátu; něco uživatel zná, například uživatelská jména, hesla nebo fráze pass; fyzické atributy, jako je například thumbprint; a osobní atributy, jako je například osobní podpis.
+### <a name="multi-factor-authentication"></a>Vícefaktorové ověřování
+Metoda ověřování, která vyžaduje dvě nebo víc metod ověřování, které můžou zahrnovat něco, co uživatel má, třeba certifikát; text, který zná uživatel, například uživatelská jména, hesla nebo fráze Pass. fyzické atributy, jako je například kryptografický otisk; a osobní atributy, jako je osobní podpis.
 
-### <a name="offline-detection"></a>Offline zjišťování
-Detekce anomálií a hodnocení rizik události, například pokus o přihlášení po jejich výskytu události, ke kterým už došlo.
+### <a name="offline-detection"></a>Detekce offline
+Detekci anomálií a hodnocení rizika události, jako je například pokus o přihlášení po faktu, pro událost, která již proběhla.
 
-### <a name="policy-condition"></a>Podmínky zásad
-Část zásad zabezpečení, která definuje entity (skupin, uživatelé, aplikace, platformy zařízení, stavy zařízení, rozsahy IP adres, typy klientů) v zásadách zahrnuty nebo vyloučeny z něj.
+### <a name="policy-condition"></a>Podmínka zásady
+Součást zásad zabezpečení, která definuje entity (skupiny, uživatele, aplikace, platformy zařízení, stavy zařízení, rozsahy IP adres, typy klientů) zahrnuté v zásadě nebo z ní vyloučené.
 
 ### <a name="policy-rule"></a>Pravidlo zásad
-Část zásad zabezpečení, která popisuje okolnosti, které aktivuje zásady a akce provede, když zásada se aktivuje.
+Část zásady zabezpečení, která popisuje okolnosti, které by tuto zásadu aktivovaly, a akce provedené při aktivaci zásady.
 
-### <a name="prevention"></a>Prevention (Prevence)
-Akce pro organizaci prostřednictvím zneužití identity nebo zařízení nedošlo k poškození vzbuzovat podezření na nebo znát u něho ohrožena bezpečnost. Akce ochrany před únikem informací nezabezpečuje zařízení nebo identitu a neodstraní předchozí rizikové události.
+### <a name="prevention"></a>Prevence
+Akce, která zabrání poškození v organizaci prostřednictvím zneužití identity nebo zařízení podezřelého z důvodu ohrožení bezpečnosti. Akce prevence nezabezpečuje zařízení nebo identitu a neřeší předchozí rizikové události.
 
-### <a name="privileged-user"></a>Privilegovaný (uživatel)
-Uživatel, který v době rizikové události, měl oprávnění správce trvalé nebo dočasné na jeden nebo více prostředků v Azure Active Directory, jako je například globální správce, správce fakturace, Správce služeb, Správce uživatelů a heslo správce. 
+### <a name="privileged-user"></a>Privilegované (uživatel)
+Uživatel, který je v okamžiku rizikové události, měl trvalá nebo dočasná oprávnění správce k jednomu nebo více prostředkům v Azure Active Directory, jako je globální správce, správce fakturace, správce služeb, Správce uživatelů a správce hesel. 
 
 ### <a name="real-time"></a>V reálném čase
-V tématu detekce v reálném čase.
+Viz zjišťování v reálném čase.
 
-### <a name="real-time-detection"></a>Detekce v reálném čase
-Detekce anomálií a hodnocení rizika, například pokus o přihlášení před událostí událost může pokračovat.
+### <a name="real-time-detection"></a>Zjišťování v reálném čase
+Detekce anomálií a vyhodnocení rizika události, jako je například pokus o přihlášení, než bude moci událost pokračovat.
 
-### <a name="remediated-risk-event"></a>Opravené (riziková událost)
-Stav události rizika nastaví automaticky podle Identity Protection, označující, že rizikové události nápravy pomocí standardní nápravné akce pro tento typ rizikové události. Například pokud je resetování hesel uživateli, mnoho rizikové události, které označují, že došlo k napadení předchozí hesla napravují automaticky.
+### <a name="remediated-risk-event"></a>Opraveno (riziková událost)
+Stav rizikové události, který je automaticky nastaven pomocí Identity Protection, což značí, že riziková událost byla opravena pomocí standardní nápravné akce pro tento typ rizikové události. Pokud je například resetování hesla uživatele, mnoho rizikových událostí, které signalizují, že předchozí heslo bylo ohroženo, bude automaticky opraveno.
 
 ### <a name="remediation"></a>Náprava
-Akci, kterou chcete zabezpečit identitu nebo zařízení, které byly dříve podezřelý nebo známé u něho ohrožena bezpečnost. Nápravné akce obnoví identity nebo zařízení do bezpečného stavu a odstraňuje předchozí rizikové události související s identity nebo zařízení.
+Akce zabezpečující identitu nebo zařízení, které byly dříve podezřelé nebo známé jako ohrožené. Nápravná akce obnoví identitu nebo zařízení do bezpečného stavu a vyřeší předchozí rizikové události přidružené k identitě nebo zařízení.
 
-### <a name="resolved-risk-event"></a>Vyřešeno (riziková událost)
-Stav události rizika Identity Protection uživatel nastavit ručně, označující, že by uživatel provedl akci odpovídajících nápravných mimo Identity Protection. proto, že by měly považovat za riziková událost uzavřen.
+### <a name="resolved-risk-event"></a>Vyřešené (riziková událost)
+Stav rizikové události nastavený ručně uživatelem ochrany identity, který indikuje, že uživatel trval příslušnou akci nápravy mimo ochranu identity a že by měla být tato riziková událost považována za uzavřenou.
 
-### <a name="risk-event-status"></a>Stav události rizik
-Vlastnost rizikovou událost, označující, zda je aktivní události a pokud zavřená, důvod zavření.
+### <a name="risk-event-status"></a>Stav rizikové události
+Vlastnost rizikové události, která označuje, jestli je událost aktivní, a pokud je uzavřená, důvod uzavření.
 
 ### <a name="risk-event-type"></a>Typ rizikové události
-Kategorie pro rizikové události, určující typ anomálií, aby bylo považováno za riziková událost způsobila.
+Kategorie pro rizikovou událost, která označuje typ anomálie, která způsobila, že se událost považuje za rizikové.
 
 ### <a name="risk-level-risk-event"></a>Úroveň rizika (riziková událost)
-Označení (vysoká, střední nebo nízká) závažnost rizikové události, k poskytování pomoci uživatelům Identity Protection stanovit priority akce, které přebírají aby se snížilo riziko jejich organizace. 
+Indikace (vysoká, střední nebo nízká úroveň) závažnosti rizikové události, která pomůže uživatelům ochrany totožnosti určit, jaké akce mají snížit riziko pro jejich organizaci. 
 
 ### <a name="risk-level-sign-in"></a>Úroveň rizika (přihlášení)
-Označení (vysoká, střední nebo nízká) pravděpodobnost, že pro u konkrétní přihlášení, někdo jiný se pokouší použít identitu uživatele.
+Indikace (vysoká, střední nebo nízká úroveň) pravděpodobnosti, že pro konkrétní přihlašování se někdo jiný pokouší použít identitu uživatele.
 
 ### <a name="risk-level-user-compromise"></a>Úroveň rizika (ohrožení zabezpečení uživatele)
-Označení (vysoká, střední nebo nízká) pravděpodobnost, že došlo k napadení o identitu.
+Indikace (vysoká, střední nebo nízká úroveň) pravděpodobnosti ohrožení identity.
 
-### <a name="risk-level-vulnerability"></a>Úroveň rizika (chyba)
-Označení (vysoká, střední nebo nízká) závažnost ohrožení zabezpečení, k poskytování pomoci uživatelům Identity Protection stanovit priority akce, které přebírají aby se snížilo riziko jejich organizace.
+### <a name="risk-level-vulnerability"></a>Úroveň rizika (ohrožení zabezpečení)
+Indikace (vysoká, střední nebo nízká) závažnost ohrožení zabezpečení, která uživatelům pomůže zajistit, aby se snížila rizika pro jejich organizaci.
 
-### <a name="secure-identity"></a>Zabezpečení (identity)
-Proveďte nápravné akce, jako je změna hesla nebo počítač, obnovení potenciálně ohroženými identity neohrožený stavu obnovování z Image.
+### <a name="secure-identity"></a>Zabezpečení (identita)
+Proveďte nápravné akce, jako je třeba Změna hesla nebo obnovení bitové kopie počítače, aby se obnovila potenciálně ohrožená identita v neohroženém stavu.
 
 ### <a name="security-policy"></a>Zásady zabezpečení
-Kolekce pravidel zásad a podmínky. Zásadu lze použít k entitám, například uživatelé, skupiny, aplikace, zařízení, platformy zařízení, stavy zařízení, rozsahy IP adres a Auth2.0 typy klientů. Když je povolené zásady, vyhodnotí se pokaždé, když se entita obsažena v zásadách vystaví token pro prostředek.
+Kolekce pravidel a podmínek zásad Zásady je možné použít u entit, jako jsou uživatelé, skupiny, aplikace, zařízení, platformy zařízení, stavy zařízení, rozsahy IP adres a typy klientů ověřování 2.0. Pokud je zásada povolená, vyhodnotí se vždy, když je entita, která je součástí zásady, vystavena tokenu pro prostředek.
 
-### <a name="sign-in-v"></a>Přihlaste se (v)
-K ověření identity ve službě Azure Active Directory.
+### <a name="sign-in-v"></a>Přihlásit (v)
+Ověření identity v Azure Active Directory.
 
 ### <a name="sign-in-n"></a>Přihlášení (n)
-Proces nebo akce ověřování identity v Azure Active Directory a události, která zachycuje tuto operaci.
+Proces nebo akce ověřování identity v Azure Active Directory a událost, která zachycuje tuto operaci.
 
 ### <a name="sign-in-from-anonymous-ip-address"></a>Přihlášení z anonymní IP adresy
-Riziková událost se aktivuje po u úspěšné přihlášení z IP adresy, která se identifikovala jako IP adresa anonymního proxy serveru.
+Riziková událost aktivovaná po úspěšném přihlášení z IP adresy, která byla identifikována jako IP adresa anonymního proxy serveru.
 
-### <a name="sign-in-from-infected-device"></a>Přihlášení z nakažených zařízení
-Riziková událost aktivuje v případě, že přihlášení pochází z IP adresy, který je označován použije jeden nebo více Ohrožená zařízení, které jsou aktivně pokusu o komunikaci se serverem bot.
+### <a name="sign-in-from-infected-device"></a>Přihlášení z nakaženého zařízení
+Riziková událost aktivovaná při přihlášení pocházející z IP adresy, která se používá pro jedno nebo více ohrožených zařízení, která se aktivně pokouší komunikovat se serverem bot.
 
 ### <a name="sign-in-from-ip-address-with-suspicious-activity"></a>Přihlášení z IP adresy s podezřelou aktivitou
-Riziková událost se aktivuje, když u úspěšné přihlášení z IP adres s vysokým počtem neúspěšných pokusů o přihlášení několika uživatelským účtům po krátkou dobu.
+Riziková událost aktivovaná po úspěšném přihlášení z IP adresy s vysokým počtem neúspěšných pokusů o přihlášení v rámci několika uživatelských účtů za krátkou dobu.
 
-### <a name="sign-in-from-unfamiliar-location"></a>Přihlášení z neznámého umístění
-Riziková událost aktivuje, když se uživatel úspěšně přihlásí z nového místa (IP, zeměpisné šířky a délky a číslo ASN).
+### <a name="sign-in-from-unfamiliar-location"></a>Přihlášení z neznámého místa
+Riziková událost aktivovaná v případě, že se uživatel úspěšně přihlásí z nového umístění (IP, zeměpisná šířka/zeměpisná délka a ASN).
 
 ### <a name="sign-in-risk"></a>Riziko přihlášení
-Zobrazit riziko úroveň (přihlášení)
+Zobrazit úroveň rizika (přihlášení)
 
 ### <a name="sign-in-risk-policy"></a>Zásady rizik přihlašování
-Zásady podmíněného přístupu, který vyhodnotí riziko pro konkrétní přihlášení a použije omezení rizik na základě předem definované podmínky a pravidla.
+Zásada podmíněného přístupu, která vyhodnotí riziko pro konkrétní přihlášení a aplikuje omezení na základě předdefinovaných podmínek a pravidel.
 
-### <a name="user-compromise-risk"></a>Riziko ohrožení zabezpečení pro uživatele
-Zobrazit riziko úroveň (ohrožení zabezpečení uživatele)
+### <a name="user-compromise-risk"></a>Riziko ohrožení uživatele
+Zobrazit úroveň rizika (ohrožení zabezpečení uživatele)
 
 ### <a name="user-risk"></a>Riziko uživatele
-Zobrazit riziko úroveň (ohrožení zabezpečení uživatele).
+Viz úroveň rizika (ohrožení zabezpečení uživatele).
 
 ### <a name="user-risk-policy"></a>Zásady rizik uživatelů
-Zásady podmíněného přístupu, který bere v úvahu přihlášení a použije omezení rizik na základě předem definované podmínky a pravidla.
+Zásady podmíněného přístupu, které přistupují k přihlášení a využívají omezení na základě předdefinovaných podmínek a pravidel.
 
 ### <a name="users-flagged-for-risk"></a>Uživatelé označení příznakem rizika
-Uživatelé, kteří mají rizikové události, které jsou aktivní nebo opravená
+Uživatelé, kteří mají rizikové události, které jsou buď aktivní, nebo opravené
 
-### <a name="vulnerability"></a>Ohrožení zabezpečení
-Konfigurace nebo stav ve službě Azure Active Directory, náchylné k zneužití nebo hrozby díky adresáři.
+### <a name="vulnerability"></a>Chyba zabezpečení
+Konfigurace nebo podmínka v Azure Active Directory, což umožňuje, aby byl adresář vnímav k zneužití nebo hrozbám.
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také:
 * [Azure Active Directory Identity Protection](../active-directory-identityprotection.md)
-

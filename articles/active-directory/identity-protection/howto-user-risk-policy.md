@@ -1,119 +1,105 @@
 ---
-title: Jak nakonfigurovat zásady rizik uživatelů v Azure Active Directory Identity Protection | Dokumentace Microsoftu
-description: Zjistěte, jak nakonfigurovat zásady rizik uživatelů Azure AD Identity Protection.
+title: Jak nakonfigurovat zásady rizik uživatelů v Azure Active Directory Identity Protection | Microsoft Docs
+description: Přečtěte si, jak nakonfigurovat Azure AD Identity Protection zásady rizik uživatelů.
 services: active-directory
-keywords: Azure active directory identity protection, zjišťování cloudových aplikací, Správa aplikací, zabezpečení, rizika, úroveň rizika, ohrožení zabezpečení, zásady zabezpečení
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: daveba
-ms.assetid: e7434eeb-4e98-4b6b-a895-b5598a6cccf1
 ms.service: active-directory
 ms.subservice: identity-protection
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 942f7e43a549b5aa1a21284949ffc12ef3c8d75f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fc7ea05497d69a7ca833cc783e7a2bc6bf1a8b07
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67108920"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68335440"
 ---
 # <a name="how-to-configure-the-user-risk-policy"></a>Jak: Konfigurace zásad rizik uživatelů
 
-S riziko uživatele Azure AD detekuje pravděpodobnost, že není uživatelský účet v bezpečí. Jako správce můžete nakonfigurovat riziko uživatele zásady podmíněného přístupu, automaticky reagovat na úroveň rizika konkrétního uživatele.
+V případě rizika uživatele služba Azure AD zjistí pravděpodobnost, že došlo k ohrožení zabezpečení uživatelského účtu. Jako správce můžete nakonfigurovat zásadu podmíněného přístupu pro uživatele, která bude automaticky reagovat na konkrétní úroveň rizika uživatele.
  
-Tento článek obsahuje informace, na kterých je nutné nakonfigurovat zásady rizik uživatelů.
+Tento článek poskytuje informace, které potřebujete ke konfiguraci zásad rizik uživatelů.
 
+## <a name="what-is-a-user-risk-policy"></a>Co je to zásady rizik uživatelů?
 
-## <a name="what-is-a-user-risk-policy"></a>Co je zásady rizik uživatelů?
+Azure AD analyzuje každé přihlášení uživatele. Cílem analýzy je rozpoznat podezřelé akce, které jsou k disjetí společně s přihlášením. V Azure AD se podezřelé akce, které může systém detekovat, označují také jako rizikové události. I když lze v reálném čase zjistit některé rizikové události, existují také rizikové události vyžadující více času. Například pro zjištění nemožného cestování do neobvyklých umístění systém vyžaduje počáteční období učení 14 dní, kde se dozvíte o běžném chování uživatele. Existuje několik možností, jak vyřešit zjištěné rizikové události. Jednotlivé rizikové události můžete například vyřešit ručně, nebo je můžete vyřešit pomocí rizika přihlašování nebo zásad podmíněného přístupu uživatele.
 
-Azure AD analyzuje každé přihlášení uživatele. Cílem analýzy je ke zjištění podezřelé akce, které společně přihlášení. Ve službě Azure AD jsou podezřelé akce, které systém může zjistit, označované také jako rizikové události. Zatímco některé rizikové události lze zjistit v reálném čase, jsou také rizikové události, které vyžadují delší dobu. Systém vyžaduje ke zjištění nemožná cesta do netypických míst, období učení 14 dnů se dozvíte o běžné chování uživatele. Existuje několik možností, jak vyřešit zjištěné rizikové události. Například je ručně vyřešit jednotlivé rizikových událostí nebo je vyřešit pomocí rizika přihlášení nebo riziko uživatele zásady podmíněného přístupu můžete získat.
-
-Všechny rizikové události, které byly zjištěny pro uživatele a nepovedlo se vyřešila jsou označovány jako aktivní rizikové události. Aktivní rizikové události, které jsou spojeny s uživatelem, jsou označovány jako uživatelského rizika. Azure AD podle rizika uživatele, vypočítá pravděpodobnost (nízká, střední, vysoká) ohrožené uživatele. Pravděpodobnost se nazývá úroveň rizika uživatele.
+Všechny rizikové události, které byly zjištěny pro uživatele a nebyly vyřešeny, se označují jako aktivní rizikové události. Aktivní rizikové události, které jsou přidruženy k uživateli, se označují jako riziko pro uživatele. V závislosti na riziku uživatele Azure AD vypočítá pravděpodobnost (nízká, střední, vysoká), že došlo k ohrožení uživatele. Pravděpodobnost se nazývá úroveň rizika uživatele.
 
 ![Rizika uživatele](./media/howto-user-risk-policy/1031.png)
 
-Zásady rizik uživatelů je automatické reakce, které můžete konfigurovat pro úroveň rizika konkrétního uživatele. Pomocí zásady rizik uživatelů můžete zablokovat přístup k vašim prostředkům nebo vyžadovat změnu hesla pro uživatelský účet návrat do čistého stavu.
+Zásady rizik uživatelů je automatizovaná odpověď, kterou můžete nakonfigurovat pro konkrétní úroveň rizika uživatele. Pomocí zásad rizika pro uživatele můžete zablokovat přístup k vašim prostředkům nebo vyžadovat změnu hesla, abyste získali uživatelský účet zpátky do čistého stavu.
 
-
-## <a name="how-do-i-access-the-user-risk-policy"></a>Jak získám přístup do zásady rizik uživatelů?
+## <a name="how-do-i-access-the-user-risk-policy"></a>Návody získat přístup k zásadám rizika pro uživatele?
    
-Zásady rizik přihlašování **konfigurovat** části na [stránku služby Azure AD Identity Protection](https://portal.azure.com/#blade/Microsoft_AAD_ProtectionCenter/IdentitySecurityDashboardMenuBlade/SignInPolicy).
+Zásady rizik přihlašování jsou v části **Konfigurace** na [stránce Azure AD Identity Protection](https://portal.azure.com/#blade/Microsoft_AAD_ProtectionCenter/IdentitySecurityDashboardMenuBlade/SignInPolicy).
    
 ![Zásady rizik uživatelů](./media/howto-user-risk-policy/1014.png)
 
-
-
 ## <a name="policy-settings"></a>Nastavení zásad
 
-Když konfigurujete zásady rizik přihlašování, budete muset nastavit:
+Když konfigurujete zásady pro rizikové přihlašování, musíte nastavit:
 
-- Uživatelé a skupiny, které zásady platí pro:
+- Uživatelé a skupiny, na které se zásady vztahují:
 
     ![Uživatelé a skupiny](./media/howto-user-risk-policy/11.png)
 
-- Úroveň rizika přihlášení, která aktivuje zásady:
+- Úroveň rizika přihlašování, která spouští zásady:
 
     ![Úroveň rizika uživatele](./media/howto-user-risk-policy/12.png)
 
-- Typ přístupu, kterou chcete vynutit, pokud byly splněny úroveň rizika přihlášení:  
+- Typ přístupu, který chcete vyhovět při splnění úrovně rizika přihlašování:  
 
     ![Access](./media/howto-user-risk-policy/13.png)
 
-- Stav zásad:
+- Stav zásady:
 
-    ![Vynucení zásad](./media/howto-user-risk-policy/14.png)
+    ![Vyhovět zásadám](./media/howto-user-risk-policy/14.png)
 
-Dialogové okno Konfigurace zásad vám poskytne možnost odhad dopadu vaší konfigurace.
+Dialogové okno Konfigurace zásad poskytuje možnost odhadnout dopad vaší konfigurace.
 
 ![Odhadovaný dopad](./media/howto-user-risk-policy/15.png)
 
 ## <a name="what-you-should-know"></a>Co byste měli vědět
 
-Můžete nastavit zásady zabezpečení rizik uživatelů k blokování uživatelů při přihlášení v závislosti na úrovni rizika.
+Můžete nastavit zásady zabezpečení rizik uživatelů pro blokování uživatelů při přihlášení v závislosti na úrovni rizika.
 
 ![Blokování](./media/howto-user-risk-policy/16.png)
 
+Blokování přihlášení:
 
-Blokování přihlašování se změnami:
-
-* Brání generování nového uživatele rizikové události pro ovlivněného uživatele
-* Správcům umožňuje ručně odstranit rizikové události by to ovlivnilo identitu uživatele a jeho obnovení stavu zabezpečení
+* Brání generování nových rizikových událostí uživatele pro ovlivněného uživatele.
+* Umožňuje správcům ručně opravit rizikové události, které mají vliv na identitu uživatele a obnoví je na zabezpečený stav.
 
 ## <a name="best-practices"></a>Osvědčené postupy
 
-Výběr **vysokou** prahová hodnota snižuje počet, kolikrát zásada se aktivuje a minimalizuje dopad na uživatele.
-Ale nezahrnuje **nízká** a **střední** uživatelů označených příznakem rizika ze zásad, které nemusí zabezpečit identity nebo zařízení, které byly dříve vzbuzovat podezření na nebo známé u něho ohrožena bezpečnost.
+Výběr **vysoké** prahové hodnoty snižuje počet aktivovaných zásad a minimalizuje dopad na uživatele.
+Nezahrnuje ale **malé** a **středně velké** uživatele označené příznakem rizika ze zásad, což nemusí zabezpečit identity nebo zařízení, která byla dříve podezřelá nebo známá k ohrožení.
 
-Při nastavování zásad,
+Při nastavování zásad
 
-* Vyloučit uživatele, kteří mohou generovat velké množství pozitivní hodnotu false (vývojáři, analytikům zabezpečení)
-* Vyloučit uživatele v národních prostředí, kde není praktické povolení zásad (například žádný přístup k technické podpory)
-* Použití **vysokou** prahové hodnoty během počáteční zásad uvádění, nebo pokud musíte minimalizovat problémy, koncový uživatel neuvidí.
-* Použití **nízká** prahovou hodnotu, pokud vaše organizace vyžaduje vyšší úroveň zabezpečení. Výběr **nízká** prahová hodnota představuje další uživatele přihlásit výzvy, ale zvýšené zabezpečení.
+* Vyloučení uživatelů, kteří mají nejspíš vygenerovat spoustu falešně pozitivních hodnot (vývojářům, analytikům zabezpečení)
+* Vylučte uživatele v místních prostředích, kde povolení zásad není praktické (například bez přístupu k helpdesku).
+* Při počátečním zavedení zásad použijte **vysokou** prahovou hodnotu nebo pokud potřebujete minimalizovat výzvy, které vidí koncoví uživatelé.
+* Pokud vaše organizace vyžaduje vyšší úroveň zabezpečení, použijte **nízkou** prahovou hodnotu. Výběr **nízké** prahové hodnoty zavádí další výzvy k přihlašování uživatelů, ale zvýšené zabezpečení.
 
-Doporučené výchozí nastavení pro většinu organizací je a nakonfigurujte pravidlo pro **střední** prahová hodnota hledají rovnováhu mezi použitelnost a zabezpečení.
+Doporučená výchozí hodnota pro většinu organizací je nakonfigurovat pravidlo pro **střední** prahovou hodnotu, aby se vyrovnalo rovnováhu mezi použitelností a zabezpečením.
 
-Přehled související uživatelské prostředí naleznete v tématu:
+Přehled souvisejícího uživatelského prostředí najdete v těchto tématech:
 
-* [Dojde k ohrožení bezpečnosti účtu obnovení toku](flows.md#compromised-account-recovery).  
-* [Dojde k ohrožení bezpečnosti účtu blokované tok](flows.md#compromised-account-blocked).  
+* [Narušený tok obnovení účtu](flows.md#compromised-account-recovery).  
+* [Napadený tok blokovaných účtů](flows.md#compromised-account-blocked).  
 
-**Chcete-li otevřít dialogové okno Konfigurace související**:
+**Otevření dialogového okna související konfigurace**:
 
-- Na **Azure AD Identity Protection** okno v **konfigurovat** klikněte na tlačítko **zásady rizik uživatelů**.
+- V okně **Azure AD Identity Protection** klikněte v části **Konfigurovat** na **zásady rizik uživatelů**.
 
-    ![Zásady rizik uživatelů](./media/howto-user-risk-policy/1009.png "zásady rizik uživatelů")
-
-
-
+    ![Zásady rizik uživatelů](./media/howto-user-risk-policy/1009.png "Zásady rizik uživatelů")
 
 ## <a name="next-steps"></a>Další postup
 
-Získejte přehled o Azure AD Identity Protection, najdete v článku [Přehled služby Azure AD Identity Protection](overview.md).
+Přehled Azure AD Identity Protection najdete v tématu [Azure AD Identity Protection Overview](overview.md).

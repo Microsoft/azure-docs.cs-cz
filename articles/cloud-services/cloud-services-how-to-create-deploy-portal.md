@@ -1,99 +1,93 @@
 ---
-title: Jak vytvořit a nasadit cloudovou službu | Dokumentace Microsoftu
-description: Zjistěte, jak vytvořit a nasadit cloudovou službu, pomocí webu Azure portal.
+title: Jak vytvořit a nasadit cloudovou službu | Microsoft Docs
+description: Naučte se vytvářet a nasazovat cloudovou službu pomocí Azure Portal.
 services: cloud-services
 documentationcenter: ''
-author: jpconnock
-manager: timlt
-editor: ''
-ms.assetid: 56ea2f14-34a2-4ed9-857c-82be4c9d0579
+author: georgewallace
 ms.service: cloud-services
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 05/18/2017
-ms.author: jeconnoc
-ms.openlocfilehash: a6cf2276da463f71f008c4bfb6eee4c232b18308
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: gwallace
+ms.openlocfilehash: 3d5b3f291eb42edc1f7999f33cf6c0879c33bcf4
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61433697"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68359131"
 ---
 # <a name="how-to-create-and-deploy-a-cloud-service"></a>Jak vytvořit a nasadit cloudovou službu
-Na webu Azure portal poskytuje dva způsoby, jak vám pomůže vytvořit a nasadit cloudovou službu: *Rychlé vytvoření* a *vytvořit vlastní*.
+Azure Portal poskytuje dva způsoby, jak vytvořit a nasadit cloudovou službu: *Rychlé vytvoření* a *vlastní vytvoření*.
 
-Tento článek vysvětluje, jak používat metodu rychlého vytvoření k vytvořit novou cloudovou službu a pak pomocí **nahrát** nahrát a nasadit balíček cloudové služby v Azure. Při použití této metody s portálem Azure je k dispozici užitečné odkazy pro dokončení všech požadavků, co využijete. Pokud jste připravení nasadit cloudovou službu, při vytváření, můžete mít obojí současně pomocí vytvořit vlastní.
+Tento článek vysvětluje, jak pomocí metody rychlého vytvoření vytvořit novou cloudovou službu a pak pomocí **nahrávání** nahrát a nasadit balíček cloudové služby v Azure. Když použijete tuto metodu, Azure Portal zpřístupňuje dostupné praktické odkazy pro dokončení všech požadavků. Pokud jste připravení nasadit cloudovou službu při jejím vytváření, můžete současně použít možnost vlastní vytvoření.
 
 > [!NOTE]
-> Pokud chcete publikovat vaše Cloudová služba z Azure DevOps, použijte funkci pro rychlé vytvoření a nastavení publikování Azure DevOps z tohoto rychlého startu Azure nebo na řídicím panelu. Další informace najdete v tématu [průběžné doručování do Azure s využitím Azure DevOps][TFSTutorialForCloudService], nebo si zobrazte nápovědu pro **rychlý Start** stránky.
+> Pokud máte v úmyslu publikovat cloudovou službu z Azure DevOps, použijte rychlé vytvoření a pak nastavte publikování Azure DevOps z rychlého startu Azure nebo řídicího panelu. Další informace najdete v tématu [průběžné doručování do Azure pomocí Azure DevOps][TFSTutorialForCloudService], případně v nápovědě pro stránku **rychlé zprovoznění** .
 >
 >
 
 ## <a name="concepts"></a>Koncepty
-Tři součásti jsou potřeba k nasazení aplikace jako cloudové služby v Azure:
+K nasazení aplikace jako cloudové služby v Azure se vyžadují tři komponenty:
 
 * **Definice služby**  
-  Definiční soubor cloudové služby (.csdef) definuje model služeb, včetně počtu rolí.
+  Definiční soubor cloudové služby (. csdef) definuje model služby, včetně počtu rolí.
 * **Konfigurace služby**  
-  Konfigurační soubor cloudové služby (.cscfg) obsahuje nastavení konfigurace pro cloud service a jednotlivé role, včetně počtu instancí rolí.
+  Konfigurační soubor cloudové služby (. cscfg) poskytuje nastavení konfigurace pro cloudovou službu a jednotlivé role, včetně počtu instancí rolí.
 * **Balíček služby**  
-  Balíček služby (.cspkg) obsahuje kód aplikace a konfigurace a definičního souboru služby.
+  Balíček služby (. cspkg) obsahuje kód a konfiguraci aplikace a soubor definice služby.
 
-Další informace o těchto a o tom, jak vytvořit balíček [tady](cloud-services-model-and-package.md).
+Další informace o těchto a o tom, jak vytvořit balíček, najdete [tady](cloud-services-model-and-package.md).
 
 ## <a name="prepare-your-app"></a>Příprava aplikace
-Než bude možné nasadit cloudovou službu, musíte vytvořit balíček cloudové služby (.cspkg) od kódu aplikace a konfigurační soubor cloudové služby (.cscfg). Sada Azure SDK poskytuje nástroje pro přípravu tyto soubory požadované nasazení. Můžete nainstalovat sadu SDK z [soubory ke stažení Azure](https://azure.microsoft.com/downloads/) stránky v jazyce, ve kterém chcete vyvíjíte kód aplikací.
+Než budete moct nasadit cloudovou službu, musíte vytvořit balíček cloudové služby (. cspkg) z kódu aplikace a konfiguračního souboru cloudové služby (. cscfg). Sada Azure SDK poskytuje nástroje pro přípravu požadovaných souborů nasazení. Sadu SDK můžete nainstalovat ze stránky [Azure downloads](https://azure.microsoft.com/downloads/) v jazyce, ve kterém dáváte přednost vývoji kódu aplikace.
 
-Tři cloudové služby funkce vyžadují zvláštní konfigurace před exportem balíčku služby:
+Před exportem balíčku služby vyžadují tři funkce cloudové služby speciální konfigurace:
 
-* Pokud chcete nasadit cloudovou službu, která používá vrstvy SSL (Secure Sockets) pro šifrování dat [nakonfigurovat svoji aplikaci](cloud-services-configure-ssl-certificate-portal.md#modify) pro protokol SSL.
-* Pokud chcete konfigurovat připojení ke vzdálené ploše instance role [konfiguraci rolí](cloud-services-role-enable-remote-desktop-new-portal.md) pro vzdálenou plochu.
-* Pokud chcete provést konfiguraci podrobné monitorování pro cloudové služby, povolení diagnostiky Azure pro cloudovou službu. *Minimální monitorování* (výchozí úroveň sledování) používá čítače výkonu shromážděné z hostitele operační systémy pro instance rolí (virtuální počítače). *Podrobné sledování* shromáždí další metriky na základě dat o výkonu v rámci instance rolí umožňuje podrobněji analyzovat problémy, ke kterým dochází při zpracování aplikace. Povolení diagnostiky Azure najdete v tématu [povolení diagnostiky v Azure](cloud-services-dotnet-diagnostics.md).
+* Pokud chcete nasadit cloudovou službu, která používá SSL (Secure Sockets Layer) (SSL) pro šifrování dat, [nakonfigurujte aplikaci](cloud-services-configure-ssl-certificate-portal.md#modify) pro protokol SSL.
+* Pokud chcete nakonfigurovat připojení vzdálené plochy k instancím rolí, [nakonfigurujte role](cloud-services-role-enable-remote-desktop-new-portal.md) pro vzdálenou plochu.
+* Pokud chcete pro cloudovou službu nakonfigurovat podrobné monitorování, povolte pro cloudovou službu Azure Diagnostics. *Minimální monitorování* (výchozí úroveň monitorování) využívá čítače výkonu shromážděné z hostitelských operačních systémů pro instance rolí (virtuální počítače). *Podrobné monitorování* shromažďuje další metriky založené na datech výkonu v rámci instancí rolí a umožňuje tak užší analýzu problémů, ke kterým dojde během zpracování aplikace. Postup povolení Azure Diagnostics najdete v tématu [Povolení diagnostiky v Azure](cloud-services-dotnet-diagnostics.md).
 
-Chcete-li vytvořit cloudovou službu s nasazení webové role nebo role pracovního procesu, musíte [vytvořit balíček služby](cloud-services-model-and-package.md#servicepackagecspkg).
+Chcete-li vytvořit cloudovou službu s nasazením webových rolí nebo rolí pracovního procesu, je nutné [vytvořit balíček služby](cloud-services-model-and-package.md#servicepackagecspkg).
 
-## <a name="before-you-begin"></a>Než začnete
-* Pokud jste nenainstalovali sadu Azure SDK, klikněte na tlačítko **nainstalujte sadu Azure SDK** otevřít [stránku soubory ke stažení Azure](https://azure.microsoft.com/downloads/)a pak si stáhnout sady SDK pro jazyk, ve kterém chcete vyvíjet váš kód. (Budete mít možnost to udělat později.)
-* Pokud všechny instance rolí v nástroji vyžadují certifikát, vytvořte certifikáty. Cloudové služby vyžadují soubor .pfx s privátním klíčem. Certifikáty můžete nahrát do Azure, jak vytvořit a nasadit cloudovou službu.
+## <a name="before-you-begin"></a>Před zahájením
+* Pokud jste sadu Azure SDK nenainstalovali, klikněte na **nainstalovat sadu Azure SDK** , otevřete [stránku Azure downloads](https://azure.microsoft.com/downloads/)a Stáhněte si sadu SDK pro jazyk, ve kterém dáváte přednost vývoji kódu. (Budete mít příležitost k tomu později.)
+* Pokud nějaké instance role vyžadují certifikát, vytvořte certifikáty. Cloud Services vyžadují soubor. pfx s privátním klíčem. Certifikáty můžete do Azure nahrát při vytváření a nasazení cloudové služby.
 
 ## <a name="create-and-deploy"></a>Vytváření a nasazování
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
-2. Klikněte na tlačítko **vytvořit prostředek > Compute**a potom přejděte dolů k položce a klikněte na tlačítko **Cloudovou službu**.
+2. Klikněte na **vytvořit prostředek > COMPUTE**, přejděte dolů na **cloudovou službu**a klikněte na ni.
 
-    ![Publikovat cloudovou službu](media/cloud-services-how-to-create-deploy-portal/create-cloud-service.png)
-3. Na novém **Cloudovou službu** podokně zadejte hodnotu **název DNS**.
-4. Vytvořte nový **skupiny prostředků** nebo vyberte existující.
+    ![Publikování cloudové služby](media/cloud-services-how-to-create-deploy-portal/create-cloud-service.png)
+3. V podokně nová **cloudová služba** zadejte hodnotu pro **název DNS**.
+4. Vytvořte novou **skupinu prostředků** nebo vyberte existující.
 5. Vyberte **Umístění**.
-6. Klikněte na tlačítko **balíčku**. Tím se otevře **nahrát balíček** podokně. Vyplňte požadovaná pole. Pokud některý z vašich rolí obsahuje jednu instanci, ujistěte se, **nasadit, i když jedna nebo víc rolí obsahuje jednu instanci** zaškrtnuto.
-7. Ujistěte se, že **spuštění nasazení** zaškrtnuto.
-8. Klikněte na tlačítko **OK** který bude ukončen **nahrát balíček** podokně.
-9. Pokud nemáte žádné certifikáty, které chcete přidat, klikněte na tlačítko **vytvořit**.
+6. Klikněte na **balíček**. Tím se otevře podokno **nahrát balíček** . Vyplňte požadovaná pole. Pokud některá z vašich rolí obsahuje jednu instanci, zajistěte nasazení i v případě, že je vybraná **jedna nebo víc rolí** , které obsahují jednu instanci.
+7. Ujistěte se, že je vybraná možnost **Spustit nasazení** .
+8. Klikněte na tlačítko **OK** , čímž se zavře podokno **nahrát balíček** .
+9. Pokud nemáte žádné certifikáty, které by se měly přidat, klikněte na **vytvořit**.
 
-    ![Publikovat cloudovou službu](media/cloud-services-how-to-create-deploy-portal/select-package.png)
+    ![Publikování cloudové služby](media/cloud-services-how-to-create-deploy-portal/select-package.png)
 
-## <a name="upload-a-certificate"></a>Nahrání certifikátu
-Pokud byl balíček pro nasazení [nakonfigurovaný tak, aby používali certifikáty](cloud-services-configure-ssl-certificate-portal.md#modify), teď můžete nahrát certifikát.
+## <a name="upload-a-certificate"></a>Nahrát certifikát
+Pokud byl balíček pro nasazení [nakonfigurovaný tak, aby používal certifikáty](cloud-services-configure-ssl-certificate-portal.md#modify), můžete ho teď nahrát.
 
-1. Vyberte **certifikáty**a na **přidat certifikáty** podokně, vyberte soubor PFX certifikátu SSL a potom zadejte **heslo** pro certifikát
-2. Klikněte na tlačítko **připojit certifikát**a potom klikněte na tlačítko **OK** na **přidat certifikáty** podokně.
-3. Klikněte na tlačítko **vytvořit** na **Cloudovou službu** podokně. Pokud bylo dosaženo nasazení **připravené** stav, můžete přejít k další kroky.
+1. Vyberte **certifikáty**a v podokně **Přidat certifikáty** vyberte soubor certifikát SSL. pfx a zadejte **heslo** pro certifikát.
+2. Klikněte na tlačítko **připojit certifikát**a potom v podokně **Přidat certifikáty** klikněte na tlačítko **OK** .
+3. V podokně cloudová **Služba** klikněte na **vytvořit** . Až nasazení dosáhne stavu připraveno  , můžete přejít k dalším krokům.
 
-    ![Publikovat cloudovou službu](media/cloud-services-how-to-create-deploy-portal/attach-cert.png)
+    ![Publikování cloudové služby](media/cloud-services-how-to-create-deploy-portal/attach-cert.png)
 
-## <a name="verify-your-deployment-completed-successfully"></a>Ověření vašeho nasazení byla úspěšně dokončena
+## <a name="verify-your-deployment-completed-successfully"></a>Ověřte, že nasazení bylo úspěšně dokončeno.
 1. Klikněte na instanci cloudové služby.
 
-    Stav by měl zobrazit, zda je služba **systémem**.
-2. V části **Essentials**, klikněte na tlačítko **adresa URL webu** ve webovém prohlížeči otevřít cloudové služby.
+    Stav by měl ukazovat na to, že je služba spuštěná.
+2. V části **základy**klikněte na **adresu URL webu** a otevřete tak cloudovou službu ve webovém prohlížeči.
 
     ![CloudServices_QuickGlance](./media/cloud-services-how-to-create-deploy-portal/running.png)
 
 [TFSTutorialForCloudService]: https://go.microsoft.com/fwlink/?LinkID=251796
 
-## <a name="next-steps"></a>Další postup
-* [Obecná konfigurace cloudové služby](cloud-services-how-to-configure-portal.md).
-* Konfigurace [vlastního názvu domény](cloud-services-custom-domain-name-portal.md).
-* [Správa cloudové služby](cloud-services-how-to-manage-portal.md).
-* Konfigurace [certifikáty ssl](cloud-services-configure-ssl-certificate-portal.md).
+## <a name="next-steps"></a>Další kroky
+* [Obecná konfigurace cloudové služby](cloud-services-how-to-configure-portal.md)
+* Nakonfigurujte [vlastní název domény](cloud-services-custom-domain-name-portal.md).
+* [Spravujte svou cloudovou službu](cloud-services-how-to-manage-portal.md).
+* Nakonfigurujte [certifikáty SSL](cloud-services-configure-ssl-certificate-portal.md).

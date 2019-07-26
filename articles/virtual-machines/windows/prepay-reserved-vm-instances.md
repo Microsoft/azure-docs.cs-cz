@@ -1,6 +1,6 @@
 ---
-title: Předem virtuálních počítačů Azure ušetříte peníze
-description: Informace o možnostech nákupu rezervované instance virtuálních počítačů Azure a Ušetřete na svých výpočetních nákladech.
+title: Platba za virtuální počítače Azure za účelem úspory peněz
+description: Naučte se, jak koupit Azure Reserved Virtual Machine Instances, abyste ušetřili náklady na výpočetní výkon.
 services: virtual-machines-windows
 author: yashar
 manager: yashar
@@ -9,13 +9,13 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 07/01/2019
+ms.date: 07/19/2019
 ms.author: banders
-ms.openlocfilehash: cc7248cfbd0f8ab4998b787086655c2d977fc183
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.openlocfilehash: 2d4f5b9ae7f39c4bdb47161ed5c895160e23f47f
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67489922"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68360435"
 ---
 [!INCLUDE [virtual-machines-buy-compute-reservations](../../../includes/virtual-machines-common-prepay-reserved-vm-instances.md)]

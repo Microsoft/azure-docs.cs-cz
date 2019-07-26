@@ -1,6 +1,6 @@
 ---
-title: Přístup a používání aplikací na portálu Moje aplikace – Azure Active Directory | Dokumentace Microsoftu
-description: Zjistěte, jak získat přístup k portálu Moje aplikace.
+title: Přístup k aplikacím a jejich používání na portálu moje aplikace – Azure Active Directory | Microsoft Docs
+description: Přečtěte si, jak získat přístup k portálu moje aplikace.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -13,144 +13,153 @@ ms.author: lizross
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eaed7357221f5b766bfb8b9e1a9031c08854ac9a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 901067e198616dba390e0e1162ec26a0b11768f1
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60477238"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68383134"
 ---
-# <a name="access-and-use-apps-on-the-my-apps-portal"></a>Přístup a používání aplikací na portálu Moje aplikace
-Můžete použít pracovní nebo školní účet s webovou **Moje aplikace** portál, zobrazit a spustit řadu aplikace vaší organizace založené na cloudu, chcete-li aktualizovat některé z vašeho profilu a účtu informace zobrazíte vaše **skupiny** informace a k provádění **kontrol přístupu** vašich aplikací a skupin. Pokud nemáte přístup k **Moje aplikace** portálu, musíte požádat o Helpdesk oprávnění.
+# <a name="access-and-use-apps-on-the-my-apps-portal"></a>Přístup k aplikacím a jejich používání na portálu moje aplikace
+
+Svůj pracovní nebo školní účet můžete použít s portálem web **Moje aplikace** , abyste mohli zobrazit a spustit spoustu cloudových aplikací vaší organizace, abyste mohli aktualizovat některé z vašich informací o profilu a účtu, abyste viděli informace o **skupinách** a mohli provádět  **kontroly přístupu** pro vaše aplikace a skupiny. Pokud nemáte přístup k portálu **Moje aplikace** , musíte se obrátit na helpdesk, aby vám udělil oprávnění.
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-my-apps-portal.md)]
 
 >[!Important]
->Tento obsah je určený pro uživatele. Pokud jste správce, najdete další informace o tom, jak nastavit a spravovat vaše cloudové aplikace v [aplikací](https://docs.microsoft.com/azure/active-directory/manage-apps).
+>Tento obsah je určený pro uživatele. Pokud jste správce, můžete najít další informace o tom, jak nastavit a spravovat cloudové aplikace v [dokumentaci pro správu aplikací](https://docs.microsoft.com/azure/active-directory/manage-apps).
 
 ## <a name="supported-browsers"></a>Podporované prohlížeče
-Můžete získat **Moje aplikace** portálu z některého z následujících webových prohlížečů:
+
+K portálu **Moje aplikace** se dostanete z libovolného z následujících webových prohlížečů:
 
 - Google Chrome
 
-- Mozilla Firefox, verze 26.0 nebo novější
+- Mozilla Firefox, verze 26,0 nebo novější
 
 - Microsoft Edge
 
 - Internet Explorer, verze 11 (omezená podpora)
 
-## <a name="download-and-install-the-my-apps-secure-sign-in-extension"></a>Stáhněte a nainstalujte rozšíření Moje aplikace zabezpečené přihlášení
-Stáhněte a nainstalujte rozšíření Moje aplikace zabezpečené přihlašování, pokud se vám výzva. Toto rozšíření vám pomůže spustit některý z cloudových aplikací vaší organizace, které vyžadují, abyste použili jeden proces přihlašování. Pokud vaše organizace má už nastavili jste pro jednotné přihlašování, rozšíření se instaluje automaticky a můžete tuto část přeskočit.
+## <a name="download-and-install-the-my-apps-secure-sign-in-extension"></a>Stažení a instalace zabezpečeného přihlašovacího rozhraní moje aplikace
 
-Toto rozšíření vám pomůže: 
+Pokud se zobrazí výzva, Stáhněte a nainstalujte si rozšíření pro zabezpečené přihlašování k aplikacím. Toto rozšíření vám pomůže začít používat cloudové aplikace vaší organizace, které vyžadují použití jednotného přihlašování. Pokud vaše organizace už nastavila jednotné přihlašování, rozšíření se nainstaluje automaticky a tuto část můžete přeskočit.
 
-- Přihlásit se k aplikacím přímo z přihlašovací stránky.
+Toto rozšíření vám pomůže:
 
-- Spuštění jakékoli aplikace s využitím **rychlého vyhledávání** funkce.
+- Přihlaste se přímo k aplikacím na přihlašovací stránce.
 
-- Zobrazit poslední aplikace, které jste použili v **naposledy použité** oddílu.
+- Spusťte všechny aplikace pomocí funkce **rychlého vyhledávání** .
 
-- Použijte interní firemní adresy URL při vzdálený [Proxy aplikací](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-get-started).
+- Podívejte se na poslední aplikace, které jste použili v části **naposledy použité** .
+
+- Používejte interní adresy URL společnosti při vzdáleném připojení k [proxy aplikací](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-get-started).
 
 ### <a name="to-download-and-install-the-extension"></a>Stažení a instalace rozšíření
-Stáhněte a nainstalujte rozšíření založené na prohlížeči, které používáte:
 
-- **Google Chrome.** Z webového Store Chrome, přejděte na [Moje aplikace zabezpečené přihlašování rozšíření](https://chrome.google.com/webstore/detail/my-apps-secure-sign-in-ex/ggjhpefgjjfobnfoldnjipclpcfbgbhl) běží na procesorech a pak vyberte **přidat do Chrome**.
+Stáhněte a nainstalujte rozšíření na základě prohlížeče, který používáte:
 
-- **Mozilla Firefox** z **doplňky Firefox** stránky, přejděte na [Moje aplikace zabezpečené přihlašování rozšíření](https://addons.mozilla.org/firefox/addon/access-panel-extension/) běží na procesorech a pak vyberte **přidat Firefox**.
+- **Google Chrome.** Z webu Chrome web Store, přejít na funkci [rozšíření pro zabezpečené přihlašování k aplikacím](https://chrome.google.com/webstore/detail/my-apps-secure-sign-in-ex/ggjhpefgjjfobnfoldnjipclpcfbgbhl) a pak vyberte **Přidat do Chrome**.
 
-- **Microsoft Edge** z the Microsoft Store, přejděte na [Moje aplikace zabezpečené přihlašování rozšíření](https://www.microsoft.com/p/my-apps-secure-sign-in-extension/9pc9sckkzk84?rtc=1&activetab=pivot%3Aoverviewtab) běží na procesorech a pak vyberte **získat**.
+- **Mozilla Firefox** Na stránce **Doplňky pro Firefox** otevřete funkci [rozšíření pro zabezpečené přihlašování k aplikacím](https://addons.mozilla.org/firefox/addon/access-panel-extension/) a pak vyberte **Přidat do Firefox**.
 
-Ikona se přidá napravo od vaší **adresu** panelu, tomu, že jste přihlášení a přizpůsobit rozšíření.
+- **Microsoft Edge** V Microsoft Store přejdete na funkci [rozšíření pro zabezpečené přihlašování k aplikacím](https://www.microsoft.com/p/my-apps-secure-sign-in-extension/9pc9sckkzk84?rtc=1&activetab=pivot%3Aoverviewtab) a pak vyberte **získat**.
 
-#### <a name="to-change-your-my-apps-portal-using-the-extension"></a>Chcete-li změnit pomocí rozšíření portálu Moje aplikace
-Můžete použít jak velký počet aplikací zobrazíte **naposledy použité** oddílu a rozhodování, jestli chce vaše organizace interní adresy URL pro přesměrování.
+Do pravé části adresního řádku se přidá ikona  , která vám umožní přihlášení a přizpůsobení rozšíření.
 
-1. Vyberte novou **Moje aplikace zabezpečené přihlašování rozšíření** ikonu ![ikon pro rozšíření](media/my-apps-portal/my-apps-portal-extension-icon.png) napravo od vaší **adresu** panelu a pak vyberte **přihlásit a získatZačínáme**.
+#### <a name="to-change-your-my-apps-portal-using-the-extension"></a>Změna portálu moje aplikace pomocí rozšíření
+V části **naposledy použité** můžete zvolit, kolik aplikací se má zobrazit, a rozhodnout se, jestli chcete, aby se mohly přesměrovat interní adresy URL vaší organizace.
 
-2. Klikněte pravým tlačítkem myši **nastavení** ikonu ![ikona nastavení](media/my-apps-portal/my-apps-portal-extension-settings-icon.png)a pak vyberte **nastavení**.
+1. Vyberte ikonu ![   rozšířenípříponanovépřihlašovacíhopřihlašováníkaplikacímnapravoodpaneluAdresaapotomvybertepřihlásit](media/my-apps-portal/my-apps-portal-extension-icon.png) **se a**začněte.
 
-3. V **nastavení** pole, vyberte číslo poslední aplikace, které chcete zobrazit na portálu a zda umožňuje vaší organizaci je interní adresy URL pro přesměrování, takže je můžete využít vzdálené.
+2. Klikněte pravým tlačítkem na ikonu ![](media/my-apps-portal/my-apps-portal-extension-settings-icon.png) **Nastavení ikona nastavení** a pak vyberte **Nastavení**.
 
-    ![Stránka nastavení rozšíření zobrazuje dostupné možnosti přizpůsobení](media/my-apps-portal/my-apps-portal-extension-settings-page.png)
+3. V poli **Nastavení** vyberte počet nedávných aplikací, které chcete zobrazit na portálu, a určete, jestli se mají u interních adres URL vaší organizace umožnit přesměrování, abyste je mohli používat vzdáleně.
 
-## <a name="access-and-use-the-my-apps-portal-by-device"></a>Přístup a používání portálu Moje aplikace pro zařízení
-Můžete přístup a použít na portálu Moje aplikace v počítači, ze Intune managed browseru nebo z mobilních zařízení s Androidem nebo iOS.
+    ![Stránka nastavení rozšíření, která zobrazuje dostupná vlastní nastavení](media/my-apps-portal/my-apps-portal-extension-settings-page.png)
 
-![Stránky aplikací na portálu Moje aplikace](media/my-apps-portal/my-apps-portal-apps-page.png)
+## <a name="access-and-use-the-my-apps-portal-by-device"></a>Přístup a používání portálu moje aplikace podle zařízení
+K portálu moje aplikace můžete přistupovat a používat na svém počítači, z prohlížeče spravovaného Intune nebo z mobilního zařízení se systémem iOS nebo Android.
 
-### <a name="access-and-use-the-my-apps-portal-on-your-computer"></a>Přístup a používání portálu Moje aplikace v počítači
-Pokud máte oprávnění k přístupu a použití cloudových aplikací vaší organizace, můžete získat k nim prostřednictvím **Moje aplikace** portálu.
+![Stránka aplikace na portálu moje aplikace](media/my-apps-portal/my-apps-portal-apps-page.png)
 
-1.  Přihlaste se ke svému pracovnímu nebo školnímu účtu.
+### <a name="access-and-use-the-my-apps-portal-on-your-computer"></a>Přístup a používání portálu moje aplikace na vašem počítači
+Pokud máte oprávnění pro přístup k cloudovým aplikacím vaší organizace a používat je, můžete k nim získat přístup prostřednictvím portálu **Moje aplikace** .
 
-2.  Otevřete webový prohlížeč a přejděte na https://myapps.microsoft.com, nebo použijte odkaz, poskytnuté vaší organizací. Například je může přesměrováni na upravené stránky pro vaši organizaci, jako https://myapps.microsoft.com/contoso.com.
+1. Přihlaste se ke svému pracovnímu nebo školnímu účtu.
 
-    **Aplikace** vlastněné vaší organizací a k dispozici pro použití se zobrazí stránka zobrazuje všechny cloudové aplikace.
+2. Otevřete webový prohlížeč a pokračujte na https://myapps.microsoft.com nebo použijte odkaz poskytovaný vaší organizací. Například můžete být přesměrováni na přizpůsobenou stránku vaší organizace, https://myapps.microsoft.com/contoso.com jako je například.
 
-3. Z **aplikace** vyberte aplikace, kterou chcete začít používat.
-    
-    Otevře se nová stránka aplikace, kde můžete přihlásit (v případě potřeby) nebo začít používat aplikace.
+    Zobrazí se stránka **aplikace** s informacemi o cloudových aplikacích vlastněných vaší organizací a k dispozici pro použití.
 
-### <a name="access-and-use-the-my-apps-portal-on-an-intune-managed-browser"></a>Přístup a použití na portálu Moje aplikace v prohlížeči službou spravovaných pomocí Intune
-Zobrazení a používání aplikace vaší organizace z Intune Managed Browser pro iOS a zařízení s Androidem.
+3. Na stránce **aplikace** vyberte aplikaci, kterou chcete začít používat.
 
-1. Na mobilním zařízení, stáhněte a nainstalujte aplikaci Intune Managed Browser [Apple App Store](https://itunes.apple.com/us/app/microsoft-intune-managed-browser/id943264951?mt=8) a [Google Play Store](https://play.google.com/store/apps/details?id=com.microsoft.intune.mam.managedbrowser).
+    Otevře se nová stránka aplikace, kde se můžete přihlásit (v případě potřeby) nebo začít používat aplikaci.
 
-2. Otevřete aplikaci Intune Managed Browser, přejděte na https://myapps.microsoft.com, nebo použijte odkaz, poskytnuté vaší organizací. Například je může přesměrováni na upravené stránky pro vaši organizaci, jako https://myapps.microsoft.com/contoso.com.
+### <a name="access-and-use-the-my-apps-portal-on-an-intune-managed-browser"></a>Přístup a používání portálu moje aplikace v prohlížeči spravovaném přes Intune
 
-    **Aplikace** vlastněné vaší organizací a k dispozici pro použití se zobrazí stránka zobrazuje všechny cloudové aplikace.
+Umožňuje zobrazit a používat aplikace vaší organizace z Intune Managed Browser na zařízeních s iOS a Androidem.
 
-3. Z **aplikace** vyberte aplikace, kterou chcete začít používat.
-    
-    Otevře se nová stránka aplikace, kde můžete přihlásit (v případě potřeby) nebo začít používat aplikace.
+1. Na mobilním zařízení Stáhněte a nainstalujte aplikaci Intune Managed Browser z [Apple App Storu](https://itunes.apple.com/us/app/microsoft-intune-managed-browser/id943264951?mt=8) a [obchod Google Play](https://play.google.com/store/apps/details?id=com.microsoft.intune.mam.managedbrowser).
 
-### <a name="access-and-use-the-my-apps-portal-on-an-ios-device"></a>Přístup a používání portálu Moje aplikace na zařízení s iOS
-Zobrazení a použití **Moje aplikace** portálu ze zařízení iPhone nebo iPad, používají systém iOS verze 7 nebo novější. Můžete také nainstalovat [Moje aplikace z mobilní aplikace](https://itunes.apple.com/us/app/my-apps-azure-active-directory/id824048653?mt=8) pro přístup k aplikacím vaší organizace na zařízeních s Iosem. 
+2. Otevřete aplikaci Intune Managed Browser, pokračujte na https://myapps.microsoft.com nebo použijte odkaz poskytovaný vaší organizací. Například můžete být přesměrováni na přizpůsobenou stránku vaší organizace, https://myapps.microsoft.com/contoso.com jako je například.
 
-1. Na mobilním zařízení spustí webovou aplikaci prohlížeče, jako je například Safari.
+    Zobrazí se stránka **aplikace** s informacemi o cloudových aplikacích vlastněných vaší organizací a k dispozici pro použití.
 
-2. Přejděte na https://myapps.microsoft.com, nebo použijte odkaz, poskytnuté vaší organizací. Například je může přesměrováni na upravené stránky pro vaši organizaci, jako https://myapps.microsoft.com/contoso.com.
+3. Na stránce **aplikace** vyberte aplikaci, kterou chcete začít používat.
 
-    **Aplikace** vlastněné vaší organizací a k dispozici pro použití se zobrazí stránka zobrazuje všechny cloudové aplikace.
+    Otevře se nová stránka aplikace, kde se můžete přihlásit (v případě potřeby) nebo začít používat aplikaci.
 
-3. Z **aplikace** vyberte aplikace, kterou chcete začít používat.
-    
-    Otevře se nová stránka aplikace, kde můžete přihlásit (v případě potřeby) nebo začít používat aplikace.
+### <a name="access-and-use-the-my-apps-portal-on-an-ios-device"></a>Přístup a používání portálu moje aplikace na zařízení se systémem iOS
 
-### <a name="access-and-use-the-my-apps-portal-on-an-android-device"></a>Přístup a používání portálu Moje aplikace na zařízení s Androidem
-Zobrazení a použití **Moje aplikace** portálu na zařízení s Androidem.
+Zobrazení a použití portálu **Moje aplikace** ze zařízení iPhone nebo iPad se systémem iOS verze 7 nebo novější. [Mobilní aplikaci Moje aplikace](https://itunes.apple.com/us/app/my-apps-azure-active-directory/id824048653?mt=8) můžete také nainstalovat pro přístup k aplikacím vaší organizace na zařízeních s iOS. 
 
-1. Na mobilním zařízení spustí webovou aplikaci prohlížeče, jako je například Google Chrome.
+1. Na mobilním zařízení spusťte aplikaci webového prohlížeče, například Safari.
 
-2. Přejděte na https://myapps.microsoft.com, nebo použijte odkaz, poskytnuté vaší organizací. Například je může přesměrováni na upravené stránky pro vaši organizaci, jako https://myapps.microsoft.com/contoso.com.
+2. Přejít na https://myapps.microsoft.com nebo použít odkaz poskytovaný vaší organizací. Například můžete být přesměrováni na přizpůsobenou stránku vaší organizace, https://myapps.microsoft.com/contoso.com jako je například.
 
-    **Aplikace** vlastněné vaší organizací a k dispozici pro použití se zobrazí stránka zobrazuje všechny cloudové aplikace.
+    Zobrazí se stránka **aplikace** s informacemi o cloudových aplikacích vlastněných vaší organizací a k dispozici pro použití.
 
-3. Z **aplikace** vyberte aplikace, kterou chcete začít používat.
-    
-    Otevře se nová stránka aplikace, kde můžete přihlásit (v případě potřeby) nebo začít používat aplikace.
+3. Na stránce **aplikace** vyberte aplikaci, kterou chcete začít používat.
 
-## <a name="add-a-new-app-to-the-my-apps-portal"></a>Přidání nové aplikace na portálu Moje aplikace
-Pokud váš správce udělil oprávnění, můžete přidat novou aplikaci, má **aplikace** stránky.
+    Otevře se nová stránka aplikace, kde se můžete přihlásit (v případě potřeby) nebo začít používat aplikaci.
 
-1. Z **aplikace** stránce **přidat aplikaci**.
+### <a name="access-and-use-the-my-apps-portal-on-an-android-device"></a>Přístup a používání portálu moje aplikace na zařízení s Androidem
 
-    **Přidat aplikace** se zobrazí stránka.
+Zobrazení a použití portálu **Moje aplikace** na zařízení s Androidem
 
-    ![Přidejte stránku aplikace na portálu Moje aplikace](media/my-apps-portal/my-apps-portal-add-apps-page.png)
+1. Na mobilním zařízení spusťte aplikaci webového prohlížeče, například Google Chrome.
 
-2. Vyberte aplikaci, kterou chcete přidat zadaného seznamu a pak vyberte **přidat**.
+2. Přejít na https://myapps.microsoft.com nebo použít odkaz poskytovaný vaší organizací. Například můžete být přesměrováni na přizpůsobenou stránku vaší organizace, https://myapps.microsoft.com/contoso.com jako je například.
 
-3. Aplikace se přidá do seznamu na **aplikace** stránky.
+    Zobrazí se stránka **aplikace** s informacemi o cloudových aplikacích vlastněných vaší organizací a k dispozici pro použití.
 
-    Některé aplikace může vyžadovat schválení správce přidán. V takovém případě nepřidá aplikaci do **aplikace** stránce, dokud ho buď schválí správce.
+3. Na stránce **aplikace** vyberte aplikaci, kterou chcete začít používat.
+
+    Otevře se nová stránka aplikace, kde se můžete přihlásit (v případě potřeby) nebo začít používat aplikaci.
+
+## <a name="add-a-new-app-to-the-my-apps-portal"></a>Přidání nové aplikace na portál moje aplikace
+
+Pokud vám správce udělil oprávnění, můžete na stránku **aplikace** přidat novou aplikaci.
+
+1. Na stránce **aplikace** vyberte **Přidat aplikaci**.
+
+    Zobrazí se stránka **Přidat aplikace** .
+
+    ![Stránka Přidat aplikace na portálu moje aplikace](media/my-apps-portal/my-apps-portal-add-apps-page.png)
+
+2. Z poskytnutého seznamu vyberte aplikaci, kterou chcete přidat, a pak vyberte **Přidat**.
+
+3. Aplikace se přidá do seznamu na stránce **aplikace** .
+
+    Některé aplikace můžou před přidáním vyžadovat schválení správcem. V takové situaci se aplikace nepřidá na stránku **aplikace** , dokud ji správce neschválí.
 
 ## <a name="next-steps"></a>Další postup
-Po získání k **aplikace** stránky, můžete provádět následující akce:
 
-- [Změnit informace z vašeho profilu](my-apps-portal-end-user-update-profile.md).
+Po zobrazení stránky **aplikace** můžete:
 
-- [Zobrazit a aktualizovat vaše informace týkající se skupiny](my-apps-portal-end-user-groups.md).
+- [Změna informací o profilu](my-apps-portal-end-user-update-profile.md)
 
-- [Provést vlastní kontroly přístupu](my-apps-portal-end-user-access-reviews.md).
+- [Zobrazit a aktualizovat informace související se skupinami](my-apps-portal-end-user-groups.md)
+
+- [Provedení vlastních kontrol přístupu](my-apps-portal-end-user-access-reviews.md)

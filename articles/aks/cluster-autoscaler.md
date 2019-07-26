@@ -1,38 +1,38 @@
 ---
 title: Použití automatického škálování clusteru ve službě Azure Kubernetes Service (AKS)
-description: Další informace o použití automatického škálování clusteru pro automatické škálování clusteru splňovat požadavky na aplikace v clusteru služby Azure Kubernetes Service (AKS).
+description: Naučte se, jak pomocí automatického škálování clusteru automaticky škálovat cluster tak, aby splňoval požadavky aplikace v clusteru Azure Kubernetes Service (AKS).
 services: container-service
 author: mlearned
 ms.service: container-service
 ms.topic: article
-ms.date: 07/08/2019
+ms.date: 07/18/2019
 ms.author: mlearned
-ms.openlocfilehash: 3ce080871ff2a38efcc75f6ff6b584af14014879
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 09610782f211b4cfb80a1291b73ab543328376a3
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67666004"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68424194"
 ---
-# <a name="preview---automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>Ve verzi Preview – automatické škálování clusteru, které splňují požadavky aplikace ve službě Azure Kubernetes Service (AKS)
+# <a name="preview---automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>Preview – automaticky škáluje cluster tak, aby splňoval požadavky aplikace ve službě Azure Kubernetes (AKS).
 
-Jak držet krok s požadavky na aplikace ve službě Azure Kubernetes Service (AKS), budete muset upravit počet uzlů, na kterých běží vaše úlohy. Součást automatického škálování clusteru můžete sledovat podů v clusteru, který se kvůli omezení prostředků se nedá naplánovat. Když se zjistí problémy, se zvýší počet uzlů pro splnění požadavků aplikace. Uzly jsou také pravidelně kontroluje nedostatku s podů, počet uzlů, pak sníží podle potřeby. Tato schopnost automaticky vertikálně navyšovat nebo snižovat počet uzlů v clusteru AKS vám umožní spustit cluster efektivní a cenově výhodný.
+Aby se zajistilo splnění požadavků aplikace ve službě Azure Kubernetes Service (AKS), možná budete muset upravit počet uzlů, které spouštějí vaše úlohy. Součást automatického škálování clusteru může ve vašem clusteru sledovat lusky, které není možné naplánovat z důvodu omezení prostředků. Při zjištění problémů se počet uzlů ve fondu uzlů zvyšuje, aby splňoval požadavek na aplikaci. Uzly jsou také pravidelně zkontrolovány na chybějící běžící lusky s počtem uzlů, které se pak v případě potřeby snížily. Díky této možnosti horizontálního navýšení nebo snížení počtu uzlů v clusteru AKS můžete spustit efektivní a cenově výhodné cluster.
 
-V tomto článku se dozvíte, jak povolit a spravovat automatického škálování clusteru v clusteru AKS. Automatického škálování clusteru by měl být testován pouze ve verzi preview v clusterech AKS s fondem jeden uzel.
+V tomto článku se dozvíte, jak povolit a spravovat automatické škálování clusteru v clusteru AKS. Automatické škálování clusteru by se mělo testovat jenom ve verzi Preview v clusterech AKS.
 
 > [!IMPORTANT]
-> Funkce AKS ve verzi preview jsou samoobslužných služeb, vyjádřit výslovný souhlas. Jsou poskytovány shromažďovat zpětnou vazbu a chyb z naší komunitě. Ve verzi preview nejsou tyto funkce určené k použití v produkčním prostředí. Funkce ve verzi public preview spadají pod "co možná nejlepší" podporu. Pomoc od týmů AKS technická podpora je k dispozici během pracovní doby tichomořské časové pásmo (PST) pouze. Další informace najdete v tématu následující články o podpoře:
+> Funkce služby AKS ve verzi Preview jsou samoobslužné a výslovný souhlas. Jsou k dispozici za účelem shromažďování názorů a chyb od naší komunity. Ve verzi Preview nejsou tyto funkce určeny pro použití v produkčním prostředí. Funkce ve verzi Public Preview spadají pod podporu nejlepšího úsilí. Pomoc od týmů technické podpory AKS je k dispozici pouze během pracovní doby tichomořského časového pásma (PST). Další informace najdete v následujících článcích podpory:
 >
 > * [Zásady podpory AKS][aks-support-policies]
 > * [Nejčastější dotazy k podpoře Azure][aks-faq]
 
 ## <a name="before-you-begin"></a>Před zahájením
 
-Tento článek vyžaduje použití Azure CLI verze 2.0.65 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][azure-cli-install].
+Tento článek vyžaduje, abyste spustili Azure CLI verze 2.0.65 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][azure-cli-install].
 
-### <a name="install-aks-preview-cli-extension"></a>Instalace rozšíření aks ve verzi preview rozhraní příkazového řádku
+### <a name="install-aks-preview-cli-extension"></a>Nainstalovat rozšíření CLI AKS-Preview
 
-Použití automatického škálování clusteru, musíte *aks ve verzi preview* CLI verze rozšíření 0.4.1 nebo vyšší. Nainstalujte *aks ve verzi preview* pomocí rozšíření Azure CLI [přidat rozšíření az][az-extension-add] command, then check for any available updates using the [az extension update][az-extension-update] příkaz::
+Pro použití automatického škálování clusteru potřebujete rozšíření *AKS-Preview* CLI verze 0.4.4 nebo vyšší. Nainstalujte rozšíření Azure CLI *AKS-Preview* pomocí příkazu [AZ Extension Add][az-extension-add] command, then check for any available updates using the [az extension update][az-extension-update] :
 
 ```azurecli-interactive
 # Install the aks-preview extension
@@ -42,24 +42,24 @@ az extension add --name aks-preview
 az extension update --name aks-preview
 ```
 
-### <a name="register-scale-set-feature-provider"></a>Registrace poskytovatele funkce škálovací sady
+### <a name="register-scale-set-feature-provider"></a>Registrovat poskytovatele funkcí sady škálování
 
-Vytvoření AKS, který používá škálovací sady, musíte také povolit příznak funkce v rámci předplatného. K registraci *VMSSPreview* příznak funkce, použijte [az funkce register][az-feature-register] příkaz, jak je znázorněno v následujícím příkladu:
+Pokud chcete vytvořit AKS, který používá sady škálování, musíte ve svém předplatném taky povolit příznak funkce. Chcete-li zaregistrovat příznak funkce *VMSSPreview* , použijte příkaz [AZ Feature Register][az-feature-register] , jak je znázorněno v následujícím příkladu:
 
 > [!CAUTION]
-> Při registraci funkce v rámci předplatného nelze nyní zrušit registraci této funkce. Po povolení některé funkce ve verzi preview se výchozí hodnoty lze pro všechny clustery AKS, pak jste vytvořili v rámci předplatného. Nepovolí funkce ve verzi preview na předplatná pro produkční prostředí. Testování funkce ve verzi preview a shromažďování zpětné vazby pomocí samostatné předplatné.
+> Když zaregistrujete funkci v rámci předplatného, nemůžete tuto funkci v tuto chvíli zrušit. Po povolení některých funkcí verze Preview se můžou použít výchozí hodnoty pro všechny clustery AKS vytvořené v rámci předplatného. Nepovolujte funkce ve verzi Preview u produkčních předplatných. Použijte samostatné předplatné k testování funkcí ve verzi Preview a získejte zpětnou vazbu.
 
 ```azurecli-interactive
 az feature register --name VMSSPreview --namespace Microsoft.ContainerService
 ```
 
-Trvá několik minut, než se stav zobrazíte *registrované*. Vy můžete zkontrolovat stav registrace pomocí [seznam funkcí az][az-feature-list] příkaz:
+Zobrazení stavu v *registraci*trvá několik minut. Stav registrace můžete zjistit pomocí příkazu [AZ Feature list][az-feature-list] :
 
 ```azurecli-interactive
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/VMSSPreview')].{Name:name,State:properties.state}"
 ```
 
-Až to budete mít, aktualizujte registraci *Microsoft.ContainerService* poskytovatele prostředků pomocí [az provider register][az-provider-register] příkaz:
+Až budete připraveni, aktualizujte registraci poskytovatele prostředků *Microsoft. ContainerService* pomocí příkazu [AZ Provider Register][az-provider-register] :
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.ContainerService
@@ -67,46 +67,46 @@ az provider register --namespace Microsoft.ContainerService
 
 ## <a name="limitations"></a>Omezení
 
-Při vytváření a správě AKS clustery, které pomocí automatického škálování clusteru se vztahují následující omezení:
+Při vytváření a správě clusterů AKS, které používají automatické škálování clusteru, platí následující omezení:
 
-* Doplněk směrování aplikace HTTP nelze použít.
+* Nelze použít doplněk směrování aplikace HTTP.
 
-## <a name="about-the-cluster-autoscaler"></a>O automatického škálování clusteru
+## <a name="about-the-cluster-autoscaler"></a>O automatickém škálování clusteru
 
-Chcete-li upravit na měnící se požadavky aplikace, jako je mezi workday a večer nebo o víkendu clustery často potřebují způsob, jak automatické škálování. Clustery AKS je možné škálovat dvěma způsoby:
+Pro úpravu požadavků aplikace, například mezi Workday a večer nebo na víkendu, clustery často potřebují způsob automatického škálování. Clustery AKS se můžou škálovat jedním ze dvou způsobů:
 
-* **Clusteru bylo** hodinky pro podů, které se nedají naplánovat na uzly z důvodu omezení prostředku. Cluster automaticky potom zvýší počet uzlů.
-* **Automatického škálování podů vodorovné** používá metrik serveru v clusteru Kubernetes pro monitorování prostředků poptávku pody. Pokud služba potřebuje více prostředků, se automaticky zvýší počet podů pro splnění těchto požadavků.
+* **Automatické škálování clusteru** sleduje lusky, které není možné naplánovat na uzlech z důvodu omezení prostředků. Cluster pak automaticky zvýší počet uzlů.
+* Horizontální navýšení **pod AutoScale** používá server metrik v clusteru Kubernetes k monitorování požadavků na prostředky v luskech. Pokud služba potřebuje více prostředků, počet lusků se automaticky zvýší, aby splňovala požadavky.
 
-![Automatického škálování clusteru a automatického škálování podů vodorovné často pracují společně pro podporu požadavků požadovanou aplikaci](media/autoscaler/cluster-autoscaler.png)
+![Automatické škálování clusteru a horizontální navýšení se často spolupracuje na podporu požadovaných požadavků aplikace.](media/autoscaler/cluster-autoscaler.png)
 
-Na vodorovné pod automatického škálování a automatického škálování clusteru také pak můžete snížit počet podů a uzlů podle potřeby. Automatického škálování clusteru snižuje počet uzlů, když bude zjištěna nevyužitou kapacitu pro určitou dobu. Podů na uzlu odeberou pomocí automatického škálování clusteru bezpečně naplánováno jinde v clusteru. Automatického škálování clusteru můžou být nelze můžete vertikálně snížit kapacitu, pokud nelze přesunout podů, například v těchto situacích:
+Automatické škálování pod a automatického škálováním na clusteru může také snížit počet lusků a uzlů podle potřeby. Automatické škálování clusteru snižuje počet uzlů v případě nevyužité kapacity v časovém intervalu. Lusky na uzlu, který se má odebrat pomocí automatického škálování clusteru, se bezpečně naplánovaly jinde v clusteru. V případě, že se nedá přesunout lusky, například v následujících situacích, není možné automatické škálování clusteru zmenšit.
 
-* Pod přímo vytvořeny a není podporovaný službou sadu objektu, takové nasazení nebo repliky řadiče.
-* Rozpočet pod přerušení (PDB) je příliš omezující a neumožňuje počet podů klesne pod určitou prahovou hodnotu.
-* Pod používá selektory uzlu nebo proti spřažení, který nemůže dodržet, pokud naplánováno na jiném uzlu.
+* Objekt, který je přímo vytvořený, a není zálohovaný objektem kontroleru, jako je například nasazení nebo sada replik.
+* Rozpočet přerušení pod přerušením (PDB) je příliš omezující a neumožňuje, aby počet lusků klesl pod určitou prahovou hodnotu.
+* Uzel pod používá selektory uzlů nebo spřažení, které nelze akceptovat, pokud je naplánováno na jiném uzlu.
 
-Další informace o tom, jak může být automatického škálování clusteru nelze můžete vertikálně snížit kapacitu, najdete v části [jaké druhy lusků může zabránit odebrání uzlu automatického škálování clusteru?][autoscaler-scaledown]
+Další informace o tom, jak se automatické škálování clusteru nedá škálovat, najdete v tématu [Jaké typy lusků můžou zabránit automatickému škálování clusteru v odebírání uzlu][autoscaler-scaledown] .
 
-Automatického škálování clusteru používá parametry spuštění pro takové věci, jako je časových intervalů mezi škálovací události a prahové hodnoty prostředků. Tyto parametry jsou definované platformou Azure a nejsou přístupné aktuálně si můžete upravit. Další informace o jaké parametry se používá automatického škálování clusteru naleznete v tématu [co jsou parametry automatického škálování clusteru?][autoscaler-parameters].
+Automatické škálování clusteru používá parametry spouštění pro věci, jako jsou časové intervaly mezi událostmi škálování a mezními hodnotami prostředků. Tyto parametry jsou definované platformou Azure a momentálně se nezveřejňují, abyste je mohli upravovat. Další informace o tom, jaké parametry používá nástroj pro automatické škálování clusteru, najdete v tématu [co jsou parametry automatického škálování clusteru?][autoscaler-parameters].
 
-Dvě autoscalers vzájemně spolupracují a často nasazených v clusteru. V kombinaci, automatického škálování podů vodorovné se zaměřuje na spuštění počet podů, požadováno pro splnění požadavků aplikace. Automatického škálování clusteru se zaměřuje na spuštění z počtu uzlů, které jsou potřebné k podpoře naplánované podů.
+Dvě funkce pro spoluškálovatelnosti můžou spolupracovat společně a často se obě nasazují v clusteru. V kombinaci se horizontální automatické škálování pod ním zaměřuje na spouštění počtu lusků potřebných pro splnění požadavků aplikace. Automatické škálování clusteru se zaměřuje na spouštění počtu uzlů potřebných k podpoře naplánovaných lusků.
 
 > [!NOTE]
-> Při použití automatického škálování clusteru je ruční škálování zakázané. Umožní automatického škálování clusteru určit požadovaný počet uzlů. Pokud chcete ručně škálování clusteru, [zakázání automatického škálování clusteru](#disable-the-cluster-autoscaler).
+> Ruční škálování je při použití automatického škálování clusteru zakázané. Určete požadovaný počet uzlů, aby měl automatické škálování clusteru. Pokud chcete cluster ručně škálovat, [zakažte automatické škálování clusteru](#disable-the-cluster-autoscaler).
 
 ## <a name="create-an-aks-cluster-and-enable-the-cluster-autoscaler"></a>Vytvoření clusteru AKS a povolení automatického škálování clusteru
 
-Pokud potřebujete k vytvoření clusteru AKS, použijte [az aks vytvořit][az-aks-create] příkazu. Zadejte *verze kubernetes –* , který splňuje nebo překračuje počet minimální verze vyžaduje, jak je uvedeno v předchozím [před zahájením](#before-you-begin) oddílu. Chcete-li povolit a konfigurovat automatického škálování clusteru, použijte *--enable clusteru-automatického škálování* parametr a určit uzel *– minimální počet* a *– maximální počet*.
+Pokud potřebujete vytvořit cluster AKS, použijte příkaz [AZ AKS Create][az-aks-create] . Pokud chcete zapnout a nakonfigurovat automatické škálování clusteru ve fondu uzlů pro cluster, použijte parametr *--Enable-cluster-* autoscaleer a určete uzel *--min-Count* a *--Max-Count*.
 
 > [!IMPORTANT]
-> Automatického škálování clusteru je součástí Kubernetes. I když clusteru AKS používá virtuálního počítače škálovací sady uzlů, není ručně povolit nebo upravit nastavení pro automatické škálování škálovací sady na webu Azure portal nebo pomocí rozhraní příkazového řádku Azure. Umožní automatického škálování clusteru Kubernetes, spravovat škálování požadované nastavení. Další informace najdete v tématu [můžete upravit AKS prostředky ve skupině prostředků uzel?](faq.md#can-i-modify-tags-and-other-properties-of-the-aks-resources-in-the-node-resource-group)
+> Automatické škálování clusteru je komponenta Kubernetes. I když cluster AKS používá pro uzly sadu škálování virtuálního počítače, nepovolujte ručně ani neupravujte nastavení automatického škálování sady škálování v Azure Portal nebo pomocí Azure CLI. Umožněte, aby modul automatického škálování clusteru Kubernetes spravoval požadovaná nastavení škálování. Další informace najdete v tématu [Změna prostředků AKS ve skupině prostředků uzlu?](faq.md#can-i-modify-tags-and-other-properties-of-the-aks-resources-in-the-node-resource-group)
 
-Následující příklad vytvoří AKS cluster pomocí škálovací sady virtuálních počítačů a automatického škálování clusteru povolena a používá minimálně *1* a maximální počet *3* uzly:
+Následující příklad vytvoří cluster AKS se sadou škálování virtuálních počítačů. Povoluje taky automatické škálování clusteru ve fondu uzlů pro cluster a nastavuje minimálně *1* a maximálně *3* uzly:
 
 ```azurecli-interactive
 # First create a resource group
-az group create --name myResourceGroup --location canadaeast
+az group create --name myResourceGroup --location eastus
 
 # Now create the AKS cluster and enable the cluster autoscaler
 az aks create \
@@ -119,61 +119,67 @@ az aks create \
   --max-count 3
 ```
 
-Trvá několik minut vytvořit cluster a konfigurovat nastavení automatického škálování clusteru.
+> [!NOTE]
+> Pokud při spuštění `az aks create`zadáte *--Kubernetes-Version* , musí tato verze splňovat minimální číslo verze, které je nutné, jak je uvedeno v předchozí části, [než začnete](#before-you-begin) .
 
-### <a name="enable-the-cluster-autoscaler-on-an-existing-aks-cluster"></a>Povolení automatického škálování clusteru v existujícím clusteru AKS
+Vytvoření clusteru a konfigurace nastavení automatického škálování clusteru trvá několik minut.
 
-Můžete povolit v existujícím clusteru AKS, který splňuje požadavky, jak je uvedeno v předchozím automatického škálování clusteru [před zahájením](#before-you-begin) oddílu. Použití [az aks aktualizovat][az-aks-update] příkazů a zvolit *--enable clusteru-automatického škálování*, zadejte uzel *– minimální počet* a *– maximální počet* . Následující příklad povolí automatického škálování clusteru v existujícím clusteru, který používá minimálně *1* a maximální počet *3* uzly:
+### <a name="enable-the-cluster-autoscaler-on-an-existing-node-pool-in-an-aks-cluster"></a>Povolení automatického škálování clusteru ve stávajícím fondu uzlů v clusteru AKS
+
+Automatické škálování clusteru můžete povolit ve fondu uzlů v rámci clusteru AKS, který splňuje požadavky uvedené v předchozí části, [než začnete](#before-you-begin) . Pomocí příkazu [AZ AKS nodepool Update][az-aks-nodepool-update] povolte pro fond uzlů automatické škálování clusteru.
 
 ```azurecli-interactive
-az aks update \
+az aks nodepool update \
   --resource-group myResourceGroup \
-  --name myAKSCluster \
+  --cluster-name myAKSCluster \
+  --name mynodepool \
   --enable-cluster-autoscaler \
   --min-count 1 \
   --max-count 3
 ```
 
-Pokud uzel minimální počet je větší než stávající počet uzlů v clusteru, trvá několik minut vytvořit další uzly.
+Výše uvedený příklad povoluje automatické škálování clusteru ve fondu uzlů *mynodepool* v *myAKSCluster* a nastavuje minimálně *1* a maximálně *3* uzly. Pokud je minimální počet uzlů větší než stávající počet uzlů ve fondu uzlů, vytvoření dalších uzlů trvá několik minut.
 
-## <a name="change-the-cluster-autoscaler-settings"></a>Změnit nastavení automatického škálování clusteru
+## <a name="change-the-cluster-autoscaler-settings"></a>Změna nastavení automatického škálování clusteru
 
-V předchozím kroku, a vytvořit nebo aktualizovat existující cluster AKS, byl nastaven clusteru bylo minimálního počtu uzlů na *1*, a maximální počet uzlů byla nastavena na *3*. Jako vaši aplikaci se změní požadavky, může být potřeba upravit počet uzlů clusteru automatického škálování.
+Pokud jste v předchozím kroku vytvořili cluster AKS nebo aktualizovali existující fond uzlů, byl minimální počet uzlů pro automatické škálování clusteru nastavený na *1*a maximální počet uzlů byl nastavený na *3*. Jak vaše aplikace vyžaduje změnu, možná budete muset upravit počet uzlů automatického škálování clusteru.
 
-Chcete-li změnit počet uzlů, použijte [az aks aktualizovat][az-aks-update] příkaz a zadejte minimální a maximální hodnotou. Následující příklad nastaví *– minimální počet* k *1* a *– maximální počet* k *5*:
+Chcete-li změnit počet uzlů, použijte příkaz [AZ AKS nodepool Update][az-aks-nodepool-update] .
 
 ```azurecli-interactive
-az aks update \
+az aks nodepool update \
   --resource-group myResourceGroup \
-  --name myAKSCluster \
+  --cluster-name myAKSCluster \
+  --name mynodepool \
   --update-cluster-autoscaler \
   --min-count 1 \
   --max-count 5
 ```
 
+Výše uvedený příklad aktualizuje automatické škálování clusteru v *mynodepool* fondu uzlů v *myAKSCluster* na minimálně *1* a maximálně *5* uzlů.
+
 > [!NOTE]
-> Ve verzi preview nelze nastavit vyšší počet minimální uzlů, než je aktuálně nastavený pro cluster. Například, pokud aktuálně máte minimální počet nastavena na *1*, nejde aktualizovat počet minut na *3*.
+> Během období Preview nemůžete nastavit vyšší minimální počet uzlů, než je aktuálně nastaveno pro fond uzlů. Pokud máte například v současné době minimální počet minut nastavenou na hodnotu *1*, nelze aktualizovat minimální počet na *3*.
 
-Monitorování výkonu aplikací a služeb a upravte počet uzlu clusteru automatického škálování tak, aby odpovídaly potřebný výkon.
+Monitorujte výkon svých aplikací a služeb a upravte počty uzlů automatického škálování clusteru tak, aby odpovídaly požadovanému výkonu.
 
-## <a name="disable-the-cluster-autoscaler"></a>Zakázání automatického škálování clusteru
+## <a name="disable-the-cluster-autoscaler"></a>Zakázat automatické škálování clusteru
 
-Pokud chcete už pomocí automatického škálování clusteru, můžete zakázat pomocí [az aks aktualizovat][az-aks-update] příkazu. Uzly se neodeberou, pokud je zakázán automatického škálování clusteru.
-
-Chcete-li odebrat automatického škálování clusteru, zadejte *--disable clusteru-automatického škálování* parametru, jak je znázorněno v následujícím příkladu:
+Pokud už nechcete používat automatické škálování clusteru, můžete ho zakázat pomocí příkazu [AZ AKS nodepool Update][az-aks-nodepool-update] a zadáním parametru *--Disable-cluster-* autoscaleer. Když je automatické škálování clusteru zakázané, uzly se neodeberou.
 
 ```azurecli-interactive
-az aks update \
+az aks nodepool update \
   --resource-group myResourceGroup \
-  --name myAKSCluster \
+  --cluster-name myAKSCluster \
+  --name mynodepool \
   --disable-cluster-autoscaler
 ```
 
-Můžete ručně škálovat cluster pomocí [az aks škálování][az-aks-scale] příkazu. Pokud používáte automatického škálování podů vodorovné, tuto funkci nadále běží s clusteru bylo zakázáno, ale podů uvíznout nemůže být naplánováno, pokud uzel prostředky se všechny používají.
+Cluster můžete ručně škálovat pomocí příkazu [AZ AKS Scale][az-aks-scale] . Použijete-li automatické škálování horizontálně pod, tato funkce bude nadále běžet se zakázaným autoškálou clusteru, ale v případě, že se prostředky uzlů používají, může dojít k neočekávanému ukončení.
 
 ## <a name="next-steps"></a>Další postup
 
-Tento článek vám ukázali, jak automaticky škálovat počet uzlů AKS. Můžete také horizontální pod automatického škálování má automaticky upravovat počet podů, na kterých běží vaše aplikace. Pokyny týkající se použití automatického škálování podů vodorovné, najdete v článku [škálování aplikací ve službě AKS][aks-scale-apps].
+Tento článek ukazuje, jak automaticky škálovat počet uzlů AKS. K automatickému nastavení počtu lusků, ve kterých běží vaše aplikace, můžete také použít horizontální automatické škálování pod automatickým příchodem. Postup při použití automatického škálování pod horizontálního navýšení najdete v tématu [škálování aplikací v AKS][aks-scale-apps].
 
 <!-- LINKS - internal -->
 [aks-upgrade]: upgrade-cluster.md
@@ -193,5 +199,6 @@ Tento článek vám ukázali, jak automaticky škálovat počet uzlů AKS. Můž
 
 <!-- LINKS - external -->
 [az-aks-update]: https://github.com/Azure/azure-cli-extensions/tree/master/src/aks-preview
+[az-aks-nodepool-update]: https://github.com/Azure/azure-cli-extensions/tree/master/src/aks-preview#enable-cluster-auto-scaler-for-a-node-pool
 [autoscaler-scaledown]: https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#what-types-of-pods-can-prevent-ca-from-removing-a-node
 [autoscaler-parameters]: https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#what-are-the-parameters-to-ca

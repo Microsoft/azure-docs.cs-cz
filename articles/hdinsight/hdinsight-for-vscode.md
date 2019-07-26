@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: 31f6c34089c1825eca21283b01eae181c8112216
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: da5cdd36e70166d274d50fcb093c0889cf534172
+ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68312198"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68489019"
 ---
 # <a name="use-spark--hive-tools-for-visual-studio-code"></a>Použití nástrojů pro podregistr Spark & pro Visual Studio Code
 
@@ -83,9 +83,9 @@ Než budete moct odesílat skripty do svých clusterů z Visual Studio Code, mus
 
 ## <a name="link-a-cluster"></a>Propojení clusteru
 
-### <a name="link-azure-hdinsight"></a>Propojit Azure HDInsight
+### <a name="link-azure-hdinsight"></a>Odkaz: Azure HDInsight
 
-Běžný cluster můžete propojit pomocí spravovaného uživatelského jména [Apache Ambari](https://ambari.apache.org/) nebo pomocí uživatelského jména domény propojit zabezpečený cluster Hadoop sady Security Pack (například: user1@contoso.com).
+Běžný cluster můžete propojit pomocí spravovaného uživatelského jména [Apache Ambari](https://ambari.apache.org/) nebo pomocí uživatelského jména domény propojit zabezpečený cluster Hadoop sady Security Pack (například: `user1@contoso.com`).
 
 1. V řádku nabídek přejděte k **zobrazení** > **paleta příkazů...** a zadejte **Spark/podregistr: Propojit cluster**.
 
@@ -109,7 +109,7 @@ Běžný cluster můžete propojit pomocí spravovaného uživatelského jména 
    > Propojené uživatelské jméno a heslo se použijí, pokud se cluster přihlásí do předplatného Azure i v propojeném clusteru.  
 
 
-### <a name="link-generic-livy-endpoint"></a>Propojit Obecný koncový bod Livy
+### <a name="link-generic-livy-endpoint"></a>Odkaz: Obecný koncový bod Livy
 
 1. V řádku nabídek přejděte k **zobrazení** > **paleta příkazů...** a zadejte **Spark/podregistr: Propojit cluster**.
 
@@ -208,7 +208,7 @@ Interaktivní dotazy PySpark můžete odesílat pomocí následujících kroků:
 
    ![interaktivní okno pyspark interaktivního Pythonu](./media/hdinsight-for-vscode/pyspark-interactive-python-interactive-window.png) 
 
-7. Zadejte **"%% info"** a potom stiskněte **SHIFT + ENTER** pro zobrazení informací o úloze. Volitelné
+7. Zadejte **"%% info"** a potom stiskněte **SHIFT + ENTER** pro zobrazení informací o úloze. (Volitelné)
 
    ![Zobrazit informace o úloze](./media/hdinsight-for-vscode/pyspark-interactive-view-job-information.png)
 
@@ -309,7 +309,7 @@ Odešlete soubor, Všimněte si, že složka. VSCode je automaticky přidána do
     | name | Název této relace | řetězec |
     | výrobku | Vlastnosti konfigurace Sparku | Mapa klíče = Val |
 
-    Tělo odpovědi   
+    Text odpovědi   
     Vytvořený objekt Batch.
 
     | name | description | type | 
@@ -317,7 +317,7 @@ Odešlete soubor, Všimněte si, že složka. VSCode je automaticky přidána do
     | id | ID relace | int | 
     | appId | ID aplikace této relace |  Řetězec |
     | appInfo | Podrobné informace o aplikaci | Mapa klíče = Val |
-    | Protokolu | Řádky protokolu | seznam řetězců |
+    | protokol | Řádky protokolu | seznam řetězců |
     | state |   Stav dávky | řetězec |
 
 >[!NOTE]

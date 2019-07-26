@@ -1,0 +1,294 @@
+---
+title: 'Kurz: Azure Active Directory integrace se službou Amazon Business | Microsoft Docs'
+description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Amazon Business.
+services: active-directory
+documentationCenter: na
+author: jeevansd
+manager: mtillman
+ms.reviewer: barbkess
+ms.assetid: b2597a66-afd9-4f11-b14b-646b597bb6c2
+ms.service: active-directory
+ms.subservice: saas-app-tutorial
+ms.workload: identity
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: tutorial
+ms.date: 07/16/2019
+ms.author: jeedes
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: d7ac085beaa85a7ddf3a6c3bfc61820e8e5a63ea
+ms.sourcegitcommit: 5604661655840c428045eb837fb8704dca811da0
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68496907"
+---
+# <a name="tutorial-integrate-amazon-business-with-azure-active-directory"></a>Kurz: Integrace Amazon Business s Azure Active Directory
+
+V tomto kurzu se naučíte integrovat organizaci Amazon Business pomocí Azure Active Directory (Azure AD). Když integrujete [organizaci Amazon Business](https://www.amazon.com/b2b/info/amazon-business?layout=landing) s Azure AD, můžete:
+
+* Řízení ve službě Azure AD, která má přístup k organizaci Amazon Business.
+* Umožněte uživatelům, aby se přihlásili k organizaci Amazon Business s jejich účty Azure AD.
+* Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
+
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+
+## <a name="prerequisites"></a>Požadavky
+
+Chcete-li začít, potřebujete následující položky:
+
+* Předplatné služby Azure AD. Pokud předplatné nemáte, můžete získat zdarma [bezplatnou zkušební verzi](https://azure.microsoft.com/pricing/free-trial/).
+* Předplatné Amazon Business Single Signing (SSO) s podporou jednotného přihlašování. Pokud chcete vytvořit obchodní účet Amazon, navštivte stránku [Amazon Business](https://www.amazon.com/business/register/org/landing?ref_=ab_reg_mlp) .
+
+## <a name="scenario-description"></a>Popis scénáře
+
+V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v existujícím obchodním účtu Amazon.
+
+* Amazon Business podporuje **aktualizace SP a IDP** iniciované jednotného přihlašování.
+* Amazon Business podporuje zřizování uživatelů **jenom v čase**
+
+## <a name="adding-amazon-business-from-the-gallery"></a>Přidává se společnost Amazon Business z galerie.
+
+Pokud chcete nakonfigurovat integraci Amazon Business do Azure AD, musíte do seznamu spravovaných aplikací pro SaaS přidat organizaci Amazon Business z galerie.
+
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účtu Microsoft.
+1. V levém navigačním podokně vyberte službu **Azure Active Directory** .
+1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace**.
+1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
+1. V části **Přidat z Galerie** do vyhledávacího pole zadejte **Amazon Business** .
+1. Z panelu výsledků vyberte **Amazon Business** a pak aplikaci přidejte. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
+
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
+
+Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí Amazon Business pomocí testovacího uživatele s názvem **B. Simon**.
+
+Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí Amazon Business, proveďte následující kroky sestavení:
+
+1. **[NAKONFIGURUJTE jednotné přihlašování Azure AD](#configure-azure-ad-sso)** – umožníte uživatelům používat tuto funkci.
+2. **[Nakonfigurujte Amazon Business SSO](#configure-amazon-business-sso)** – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
+3. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí B. Simon.
+4. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – Pokud chcete povolit B. Simon používat jednotné přihlašování Azure AD.
+5. **[Vytvořte uživatele Amazon Business Test User](#create-amazon-business-test-user)** – abyste měli protějšek B. Simon v Amazon Business, která je propojená s reprezentací uživatele v Azure AD.
+6. **[Test SSO](#test-sso)** – ověřte, zda konfigurace funguje.
+
+### <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování Azure AD
+
+Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal.
+
+1. V [Azure Portal](https://portal.azure.com/)na stránce integrace **Amazon Business** Application Integration, najděte část **Správa** a vyberte **jednotné přihlašování**.
+1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu Upravit/pero pro **základní konfiguraci SAML** a upravte nastavení.
+
+   ![Upravit základní konfiguraci SAML](common/edit-urls.png)
+
+1. V části **základní konfigurační oddíl SAML** , pokud chcete nakonfigurovat v režimu iniciované **IDP** , proveďte následující kroky:
+
+    1. Do textového pole **identifikátor (ID entity)** zadejte adresu URL pomocí jednoho z následujících vzorů:
+    
+       | | |
+       |-|-|
+       | `https://www.amazon.com`|
+       | `https://www.amazon.co.jp`|
+       | `https://www.amazon.de`|
+
+    1. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí jednoho z následujících vzorů:
+    
+       | | |
+       |-|-|
+       | `https://www.amazon.com/bb/feature/sso/action/3p_redirect?idpid={idpid}`|
+       | `https://www.amazon.co.jp/bb/feature/sso/action/3p_redirect?idpid={idpid}`|
+       | `https://www.amazon.de/bb/feature/sso/action/3p_redirect?idpid={idpid}`|
+
+       > [!NOTE]
+       > Hodnota adresy URL odpovědi není reálné číslo. Aktualizujte tuto hodnotu skutečnou adresou URL odpovědi. `<idpid>` Hodnotu získáte z oddílu Amazon Business SSO Configuration, který je vysvětlen dále v tomto kurzu. Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
+
+1. Klikněte na **nastavit další adresy URL** a proveďte následující krok, pokud chcete nakonfigurovat aplikaci v režimu iniciované **SP** :
+
+    Do textového pole **přihlašovací adresa URL** zadejte adresu URL:`https://www.amazon.com/`
+
+1. Následující snímek obrazovky ukazuje seznam výchozích atributů. Upravte atributy kliknutím na ikonu **Upravit** v části **atributy uživatele & deklarace identity** .
+
+    ![Atributy](media/amazon-business-tutorial/map-attribute3.png)
+
+1. Upravte atributy a zkopírujte hodnotu **oboru názvů** těchto atributů do poznámkového bloku.
+
+    ![Atributy](media/amazon-business-tutorial/map-attribute4.png)
+
+1. Kromě toho aplikace Amazon Business Application očekává, že se v odpovědi SAML zpátky vrátí několik atributů. V části **atributy uživatele & deklarace** v dialogovém okně **deklarace skupiny** proveďte následující kroky:
+
+    a. Klikněte na **pero** vedle **skupin vrácených v deklaraci identity**.
+
+    ![image](./media/amazon-business-tutorial/config04.png)
+
+    ![image](./media/amazon-business-tutorial/config05.png)
+
+    b. V seznamu přepínačů vyberte **všechny skupiny** .
+
+    c. Jako **zdrojový atribut**vyberte **ID skupiny** .
+
+    d. Zaškrtněte políčko **přizpůsobit název deklarace skupiny** a zadejte název skupiny podle požadavků vaší organizace.
+
+    e. Klikněte na **Uložit**.
+
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** Najděte **XML metadata** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do počítače.
+
+    ![Odkaz ke stažení certifikátu](common/metadataxml.png)
+
+1. V části **Nastavení organizace Amazon Business** zkopírujte příslušné adresy URL na základě vašeho požadavku.
+
+    ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
+
+### <a name="configure-amazon-business-sso"></a>Konfigurace Amazon Business SSO
+
+1. V jiném okně webového prohlížeče se přihlaste k webu Amazon Business Company jako správce.
+
+1. Klikněte na **Profil uživatele** a vyberte **Nastavení firmy**.
+
+    ![Profil uživatele](media/amazon-business-tutorial/user-profile.png)
+
+1. V průvodci **integrací systému** vyberte **jednotné přihlašování (SSO)** .
+
+    ![Jednotné přihlašování](media/amazon-business-tutorial/sso-settings.png)
+
+1. V průvodci **nastavením jednotného přihlašování** vyberte poskytovatele podle požadavků vaší organizace a klikněte na **Další**.
+
+    ![Výchozí skupina](media/amazon-business-tutorial/default-group1.png)
+
+1. V Průvodci vytvořením **nového uživatelského účtu** vyberte **výchozí skupinu** a pak v závislosti na roli uživatele ve vaší organizaci vyberte **výchozí nákupní roli** a klikněte na **Další**.
+
+    ![Výchozí skupina](media/amazon-business-tutorial/dafault-group2.png)
+
+1. V průvodci **nahrajte soubor metadat** klikněte na **Procházet** a nahrajte soubor **XML** s metadaty, který jste stáhli z Azure Portal, a klikněte na **nahrát**.
+
+    ![Data připojení](media/amazon-business-tutorial/connection-data1.png)
+
+1. Po nahrání staženého souboru metadat se pole v části **data připojení** naplní automaticky. Poté klikněte na tlačítko **Další**.
+
+    ![Data připojení](media/amazon-business-tutorial/connection-data2.png)
+
+1. V průvodci **odesláním příkazu atributu** klikněte na **Přeskočit**.
+
+    ![Atributy](media/amazon-business-tutorial/map-attribute1.png)
+
+1. V průvodci **mapováním atributů** přidejte pole požadavků kliknutím na možnost **+ Přidat pole** . Přidejte hodnoty atributu, včetně oboru názvů, který jste zkopírovali z části **atributy uživatele & deklarace identity** v Azure Portal do pole **SAML attributeName** a klikněte na **Další**.
+
+    ![Atributy](media/amazon-business-tutorial/map-attribute2.png)
+
+1. V průvodci pro **připojení Amazon data** klikněte na **Další**.
+
+    ![Připojení](media/amazon-business-tutorial/amazon-connect.png)
+
+1. Zkontrolujte **stav** nakonfigurovaných kroků a klikněte na **Spustit testování**.
+
+    ![Připojení](media/amazon-business-tutorial/sso-connection1.png)
+
+1. V průvodci **Test připojení SSO** klikněte na **test**.
+
+    ![Připojení](media/amazon-business-tutorial/sso-connection2.png)
+
+1. Před kliknutím na tlačítko **aktivovat**v průvodci **IDPou adresu URL** , zkopírujte hodnotu přiřazenou **idpid** a vložte ji do parametru **idpid** v **adrese URL odpovědi** v **základní části Konfigurace SAML** v Azure. bran.
+
+    ![Připojení](media/amazon-business-tutorial/sso-connection3.png)
+
+1. Na stránce jste **připraveni přepnout na aktivní jednotné přihlašování?** zaškrtněte políčko **mám plně testované jednotné přihlašování a** připravuje se na aktivní a klikněte na **Přepnout na aktivní**.
+
+    ![Připojení](media/amazon-business-tutorial/sso-connection4.png)
+
+1. Nakonec v části **Podrobnosti připojení SSO** se **stav** zobrazuje jako **aktivní**.
+
+    ![Připojení](media/amazon-business-tutorial/sso-connection5.png)
+
+### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
+
+V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
+
+> [!NOTE]
+> Správci potřebují v případě potřeby vytvářet testovací uživatele ve svém tenantovi. Následující kroky ukazují, jak vytvořit testovacího uživatele.
+
+1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. Vyberte **nového uživatele** v horní části obrazovky.
+1. Ve vlastnostech **uživatele** proveďte následující kroky:
+   1. Do pole **Název** zadejte `B.Simon`.  
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
+   1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
+   1. Klikněte na možnost **Vytvořit**.
+
+### <a name="create-an-azure-ad-security-group-in-the-azure-portal"></a>Vytvoření skupiny zabezpečení Azure AD v Azure Portal
+
+1. Klikněte na **Azure Active Directory > všechny skupiny**.
+
+    ![Vytvoření skupiny zabezpečení Azure AD](./media/amazon-business-tutorial/all-groups-tab.png)
+
+1. Klikněte na **Nová skupina**:
+
+    ![Vytvoření skupiny zabezpečení Azure AD](./media/amazon-business-tutorial/new-group-tab.png)
+
+1. Vyplňte pole **typ skupiny**, **název skupiny**, **Popis skupiny**, **typ členství**. Klikněte na šipku a vyberte členy, vyhledejte nebo klikněte na člen, který chcete přidat do skupiny. Kliknutím na **Vybrat** přidejte vybrané členy a pak klikněte na **vytvořit**.
+
+    ![Vytvoření skupiny zabezpečení Azure AD](./media/amazon-business-tutorial/group-information.png)
+
+### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
+
+V této části povolíte B. Simon pro použití jednotného přihlašování Azure tím, že udělíte přístup k organizaci Amazon Business.
+
+1. V Azure Portal vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. V seznamu aplikace vyberte **Amazon Business**.
+1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
+
+   ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
+
+1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
+
+    ![Odkaz Přidat uživatele](common/add-assign-user.png)
+
+1. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **B. Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+1. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+1. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
+
+    >[!NOTE]
+    > Pokud nepřiřadíte uživatele v Azure AD, zobrazí se následující chyba.
+
+    ![Odkaz Přidat uživatele](media/amazon-business-tutorial/assign-user.png)
+
+### <a name="assign-the-azure-ad-security-group-in-the-azure-portal"></a>Přiřaďte skupinu zabezpečení Azure AD v Azure Portal
+
+1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace**a pak vyberte **Amazon Business**.
+
+    ![Okno podnikových aplikací](common/enterprise-applications.png)
+
+2. V seznamu aplikace zadejte a vyberte **Amazon Business**.
+
+    ![Odkaz Amazon Business v seznamu aplikací](common/all-applications.png)
+
+3. V nabídce na levé straně vyberte **Uživatelé a skupiny**.
+
+    ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
+
+4. Klikněte na **Přidat uživatele**.
+
+    ![Podokno Přidat přiřazení](common/add-assign-user.png)
+
+5. Vyhledejte skupinu zabezpečení, kterou chcete použít, a potom ji kliknutím na skupinu přidejte do oddílu Vybrat členy. Klikněte na **Vybrat**a pak na **přiřadit**.
+
+    ![Hledat skupinu zabezpečení](./media/amazon-business-tutorial/assign-group.png)
+
+    > [!NOTE]
+    > Ověřte oznámení v řádku nabídek, abyste byli informováni o úspěšném přiřazení skupiny do podnikové aplikace v Azure Portal.
+
+### <a name="create-amazon-business-test-user"></a>Vytvořit uživatele Amazon Business test
+
+V této části se v Amazon Business vytvoří uživatel nazvaný B. Simon. Amazon Business podporuje zřizování uživatelů za běhu, což je ve výchozím nastavení povolené. V této části není žádná položka akce. Pokud uživatel ještě v Amazon Business neexistuje, vytvoří se po ověření nový.
+
+### <a name="test-sso"></a>Test SSO
+
+V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
+
+Po kliknutí na dlaždici Amazon Business na přístupovém panelu byste se měli automaticky přihlášeni k organizaci Amazon Business, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+
+## <a name="additional-resources"></a>Další prostředky
+
+- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+
+- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

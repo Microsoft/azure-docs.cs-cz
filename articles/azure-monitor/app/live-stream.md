@@ -1,6 +1,6 @@
 ---
-title: Live Metrics Stream vlastními metrikami a diagnostiku ve službě Azure Application Insights | Dokumentace Microsoftu
-description: Monitorování webové aplikace v reálném čase s použitím vlastních metrik a diagnostikovat problémy s živého kanálu chyby, trasování a události.
+title: Live Metrics Stream s vlastními metrikami a diagnostikami v Azure Application Insights | Microsoft Docs
+description: Monitorujte svou webovou aplikaci v reálném čase s vlastními metrikami a Diagnostikujte problémy s živým informačním kanálem o selháních, trasováních a událostech.
 services: application-insights
 documentationcenter: ''
 author: mrbullwinkle
@@ -13,113 +13,113 @@ ms.topic: conceptual
 ms.date: 04/22/2019
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: 607da7983cabe4c36c01171ba8d88c752b99ce3d
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: f8203cade1d2e34a9852e945df03dc2fddc1fbe5
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67303815"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68359411"
 ---
-# <a name="live-metrics-stream-monitor--diagnose-with-1-second-latency"></a>Live Metrics Stream: Monitorování a Diagnostika s latencí 1 sekundu
+# <a name="live-metrics-stream-monitor--diagnose-with-1-second-latency"></a>Live Metrics Stream: Monitorování & diagnostiky s využitím 1 sekundové latence
 
-Testovat srdce činnost do produkčního prostředí, živé webové aplikace pomocí Live Metrics Stream z [Application Insights](../../azure-monitor/app/app-insights-overview.md). Výběr a filtrování metriky a čítače výkonu ke sledování v reálném čase, bez narušení do vaší služby. Zkontrolujte trasování zásobníku z ukázky se nezdařilo žádosti a výjimky. Spolu s [Profiler](../../azure-monitor/app/profiler.md), [Snapshot debugger](../../azure-monitor/app/snapshot-debugger.md). Live Metrics Stream poskytuje výkonné a neinvazivní diagnostický nástroj pro živé webové stránky.
+Pomocí Live Metrics Stream z [Application Insights](../../azure-monitor/app/app-insights-overview.md)PROBE prezenčního srdce vaší živé webové aplikace v produkčním prostředí. Vyberte a filtrujte metriky a čítače výkonu pro sledování v reálném čase bez nutnosti zásahu do služby. Zkontrolujte trasování zásobníku z ukázkových neúspěšných žádostí a výjimek. Společně s [profilerem](../../azure-monitor/app/profiler.md), [Snapshot Debugger](../../azure-monitor/app/snapshot-debugger.md). Live Metrics Stream poskytuje výkonný a neinvazivní diagnostický nástroj pro váš živý Web.
 
-Live Metrics Stream můžete:
+Pomocí Live Metrics Stream můžete:
 
-* Ověření opravy při jejím oficiálním vydání Zhlédnutím počty výkonu a selhání.
-* Sledujte účinek testu zatížení a diagnostikovat problémy s live. 
-* Zaměřte se na relace určitého testu nebo odfiltrovat známých problémů, výběr a filtrování metriky, které chcete sledovat.
-* Získáte trasování výjimky, jak k nim dojde.
-* Experimentujte s filtry je možné najít relevantní klíčové ukazatele výkonu.
-* Monitorujte všechny Windows výkonu čítač live.
-* Snadno Identifikujte problémy a filtr, který všechny klíčový ukazatel výkonu/živého kanálu do právě tento server dochází k danému serveru.
+* Ověřte, že je oprava vydaná, a to sledováním výkonu a počtu selhání.
+* Sledujte účinek zátěže testu a Diagnostikujte problémy živě. 
+* Výběrem a filtrováním metrik, které chcete sledovat, se zaměřte na konkrétní testovací relace nebo vyfiltrujte známé problémy.
+* Získejte trasování výjimek, když k nim dojde.
+* Experimentujte s filtry, abyste našli nejrelevantnější klíčové ukazatele výkonu.
+* Monitorujte libovolný čítač výkonu systému Windows v reálném čase.
+* Snadno Identifikujte Server, u kterého dochází k problémům, a vyfiltrujte veškerý klíčový ukazatel výkonu a živý kanál jenom na tento server.
 
-[![Live Metrics Stream video](./media/live-stream/youtube.png)](https://www.youtube.com/watch?v=zqfHf1Oi5PY)
+[![Video Live Metrics Stream](./media/live-stream/youtube.png)](https://www.youtube.com/watch?v=zqfHf1Oi5PY)
 
-Živé metriky jsou aktuálně podporovány pro aplikace v ASP.NET, ASP.NET Core, Azure Functions, Javě a Node.js.
+Pro aplikace ASP.NET, ASP.NET Core, Azure Functions, Java a Node. js se aktuálně podporují živé metriky.
 
 ## <a name="get-started"></a>Začínáme
 
-1. Pokud jste tak ještě neučinili [nainstalujte službu Application Insights](../../azure-monitor/azure-monitor-app-hub.md) ve webové aplikaci, proveďte to nyní.
-2. Kromě standardních balíčků Application Insights [Microsoft.ApplicationInsights.PerfCounterCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.PerfCounterCollector/) povolit Live Metrics stream.
-3. **Aktualizace na nejnovější verzi** balíčku Application Insights. V sadě Visual Studio, klikněte pravým tlačítkem na projekt a zvolte **Správa balíčků Nuget**. Otevřít **aktualizace** kartu a vybrat všechny balíčky Microsoft.ApplicationInsights.*.
+1. Pokud jste ještě [nenainstalovali Application Insights](../../azure-monitor/azure-monitor-app-hub.md) ve vaší webové aplikaci, udělejte to teď.
+2. K povolení živého streamu metrik se vyžaduje kromě standardních Application Insights balíčků [Microsoft. ApplicationInsights. PerfCounterCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.PerfCounterCollector/) .
+3. **Aktualizujte na nejnovější verzi** balíčku Application Insights. V aplikaci Visual Studio klikněte pravým tlačítkem myši na projekt a vyberte možnost **Spravovat balíčky NuGet**. Otevřete kartu **aktualizace** a vyberte všechny balíčky Microsoft. ApplicationInsights. *.
 
     Znovu nasaďte aplikaci.
 
-3. V [webu Azure portal](https://portal.azure.com), otevřete prostředek Application Insights pro vaši aplikaci a pak otevřete Live Stream.
+3. V [Azure Portal](https://portal.azure.com)otevřete prostředek Application Insights pro vaši aplikaci a pak otevřete Live Stream.
 
-4. [Zabezpečený kanál ovládací prvek](#secure-the-control-channel) používáte může být citlivá data, jako jsou jména zákazníků v svoje filtry.
+4. [Zabezpečte řídicí kanál,](#secure-the-control-channel) Pokud ve svých filtrech používáte citlivá data, jako jsou názvy zákazníků.
 
 ### <a name="nodejs"></a>Node.js
 
-Použití Live Metrics s Node.js, je nutné aktualizovat na verzi 1,30 nebo větší sady SDK. Ve výchozím nastavení je zakázána Live Metrics v SDK pro Node.js. Chcete-li přidat Live Metrics `setSendLiveMetrics(true)` do vaší [metody konfigurace](https://github.com/Microsoft/ApplicationInsights-node.js#configuration) jako inicializujte sadu SDK.
+Chcete-li používat živé metriky s Node. js, je nutné aktualizovat sadu SDK na verzi 1,30 nebo vyšší. Ve výchozím nastavení jsou aktivní metriky v sadě Node. js SDK zakázané. Pokud chcete povolit živé metriky `setSendLiveMetrics(true)` , přidejte je do [metod konfigurace](https://github.com/Microsoft/ApplicationInsights-node.js#configuration) při inicializaci sady SDK.
 
-### <a name="no-data-check-your-server-firewall"></a>Žádná data? Zkontrolujte bránu firewall serveru
+### <a name="no-data-check-your-server-firewall"></a>Žádná data? Ověřit bránu firewall serveru
 
-Zkontrolujte [výchozí porty pro Live Metrics Stream](../../azure-monitor/app/ip-addresses.md#outgoing-ports) jsou otevřeny v bráně firewall vašich serverů. 
+Ověřte, že [Odchozí porty pro Live Metrics Stream](../../azure-monitor/app/ip-addresses.md#outgoing-ports) jsou otevřené v bráně firewall vašich serverů. 
 
-## <a name="how-does-live-metrics-stream-differ-from-metrics-explorer-and-analytics"></a>Jak Live Metrics Stream se liší od Průzkumníka metrik a Analytics?
+## <a name="how-does-live-metrics-stream-differ-from-metrics-explorer-and-analytics"></a>Jak se Live Metrics Stream liší od Průzkumník metrik a analýzy?
 
-| |Live Stream | Průzkumník metrik a Analytics |
+| |Live Stream | Průzkumník metrik a analýzy |
 |---|---|---|
-|Latence|Data zobrazená v rámci jedné sekundy|Agregován v minutách|
-|Žádné uchovávání informací|Data nevyřeší, zatímco je v grafu a potom je zahozen|[Data se uchovávají po dobu 90 dnů](../../azure-monitor/app/data-retention-privacy.md#how-long-is-the-data-kept)|
-|Na vyžádání|Streamování dat, zatímco otevřete Live Metrics|Data se odesílají pokaždé, když je nainstalován a povolen sady SDK|
-|Free|Neexistuje žádné poplatky za data Live Stream|Podléhají [ceny](../../azure-monitor/app/pricing.md)
-|Vzorkování|Všechny vybrané metriky a čítače přenosu. Chyby a trasování zásobníku jsou vzorkovány. TelemetryProcessors se nepoužijí.|Události mohou být [vzorkováno](../../azure-monitor/app/api-filtering-sampling.md)|
-|Řídicí kanál|Signály ovládací prvek filtru se odesílají do sady SDK. Doporučujeme, abyste že zabezpečení tohoto kanálu.|Komunikace je jednosměrná k portálu|
+|Latence|Data zobrazená během jedné sekundy|Agregované v průběhu minut|
+|Bez uchování|Data se v grafu přetrvají a pak se zahodí.|[Data zachovaná po 90 dnech](../../azure-monitor/app/data-retention-privacy.md#how-long-is-the-data-kept)|
+|Na vyžádání|Data se streamují při otevírání živých metrik.|Data se odesílají pokaždé, když je SDK nainstalovaná a povolená.|
+|Zdarma|Za Live Stream data se neúčtují žádné poplatky.|V souladu s [cenami](../../azure-monitor/app/pricing.md)
+|Vzorkování|Přenáší se všechny vybrané metriky a čítače. Navzorkují se chyby a trasování zásobníku. TelemetryProcessors se neaplikují.|Události se dají [vzorkovat](../../azure-monitor/app/api-filtering-sampling.md) .|
+|Řídicí kanál|Řídicí signály filtru se odesílají do sady SDK. Doporučujeme tento kanál zabezpečit.|Komunikace je jednosměrná, na portál.|
 
 ## <a name="select-and-filter-your-metrics"></a>Výběr a filtrování metriky
 
-(K dispozici s technologií ASP.NET, ASP.NET Core a Azure Functions (v2).)
+(K dispozici v ASP.NET, ASP.NET Core a Azure Functions (v2).)
 
-Vlastní klíčového ukazatele výkonu za provozu můžete monitorovat pomocí použití libovolného filtrů na žádnou telemetrii Application Insights z portálu. Klikněte na ovládací prvek filtru, který ukazuje, kdy jste myší nad žádné grafy. V následující tabulce je vykreslení vlastní počet požadavků klíčový ukazatel výkonu s filtry pro adresu URL a doba trvání atributy. Ověřte vaše filtry s oddílem Stream ve verzi Preview, která zobrazuje živého kanálu telemetrických dat, která by odpovídala kritériím, která jste zadali v libovolném bodě v čase. 
+Vlastní klíčový ukazatel výkonu můžete monitorovat tak, že použijete libovolné filtry na jakékoli Application Insights telemetrie z portálu. Klikněte na ovládací prvek filtru, který se zobrazí při přesunutí ukazatele myši na některý z grafů. Následující graf znázorňuje vlastní klíčový ukazatel výkonu počtu požadavků s filtry na atributy adresa URL a doba trvání. Ověřte filtry pomocí části Stream Preview, která zobrazuje živý informační kanál telemetrie, který odpovídá zadaným kritériím v libovolném časovém okamžiku. 
 
-![Vlastní požadavek klíčového ukazatele výkonu](./media/live-stream/live-stream-filteredMetric.png)
+![Klíčový ukazatel výkonu vlastního požadavku](./media/live-stream/live-stream-filteredMetric.png)
 
-Hodnota, která se liší od počtu můžete monitorovat. Možnosti závisí na typu datový proud, který může být žádnou telemetrii Application Insights: žádosti, závislosti, výjimky, trasování, události nebo metriky. Může být vlastní [vlastní měření](../../azure-monitor/app/api-custom-events-metrics.md#properties):
+Můžete monitorovat hodnotu odlišnou od počtu. Možnosti závisí na typu datového proudu, což může být jakákoli Application Insights telemetrie: požadavky, závislosti, výjimky, trasování, události nebo metriky. Může to být vlastní [měření](../../azure-monitor/app/api-custom-events-metrics.md#properties):
 
-![Hodnota možnosti](./media/live-stream/live-stream-valueoptions.png)
+![Možnosti hodnoty](./media/live-stream/live-stream-valueoptions.png)
 
-Kromě telemetrie Application Insights můžete také monitorovat všechny čítače výkonu Windows výběrem, který z možnosti datového proudu a poskytnutí názvu čítače výkonu.
+Kromě Application Insights telemetrie můžete také monitorovat libovolný čítač výkonu systému Windows, a to tak, že ho vyberete z možností datového proudu a zadáte název čítače výkonu.
 
-Živé metriky se agregují na dvou místech: místně na každém serveru a na všech serverech. Můžete změnit výchozí nastavení v buď výběrem jiné možnosti v příslušné rozevírací seznamy.
+Živé metriky jsou agregované ve dvou bodech: místně na každém serveru a pak napříč všemi servery. Můžete změnit výchozí nastavení buď výběrem dalších možností v příslušných rozevíracích seznamech.
 
-## <a name="sample-telemetry-custom-live-diagnostic-events"></a>Ukázková telemetrická data: Vlastní Live diagnostické události
-Ve výchozím nastavení zobrazuje živého kanálu událostí ukázky neúspěšných požadavků a volání závislosti, výjimky, události a trasování. Kliknutím na ikonu filtru zobrazíte použité kritéria v libovolném bodě v čase. 
+## <a name="sample-telemetry-custom-live-diagnostic-events"></a>Ukázková telemetrie: Vlastní diagnostické události živého vysílání
+Ve výchozím nastavení zobrazuje živý kanál událostí ukázky neúspěšných žádostí a volání závislostí, výjimky, události a trasování. Kliknutím na ikonu filtru můžete zobrazit použitá kritéria v jakémkoli časovém okamžiku. 
 
-![Výchozí živého kanálu](./media/live-stream/live-stream-eventsdefault.png)
+![Výchozí živý kanál](./media/live-stream/live-stream-eventsdefault.png)
 
-Jako s metrikami, můžete zadat libovolný libovolného kritéria pro některé typy telemetrie Application Insights. V tomto příkladu volíme konkrétního požadavku chyby, trasování a události. Také volíme všechny výjimky a chyby závislostí.
+Stejně jako u metrik můžete zadat jakákoli libovolná kritéria pro Application Insights typy telemetrie. V tomto příkladu vybíráme konkrétní chyby, trasování a události žádostí. Také vybereme všechny výjimky a chyby závislostí.
 
-![Vlastní živého kanálu](./media/live-stream/live-stream-events.png)
+![Vlastní živý kanál](./media/live-stream/live-stream-events.png)
 
-Poznámka: V současné době pro výjimku pomocí založenou na zprávách kritérií, zpráva o vnější výjimce. V předchozím příkladu, k filtrování neškodné výjimky se zpráva o vnitřní výjimce (následuje "<--" oddělovač) "Klient byl odpojen." použití zprávu not obsahuje kritéria "Chyba při čtení obsahu žádosti".
+Poznámka: V současné době pro kritéria založená na zprávách výjimky použijte zprávu o vnější výjimce. V předchozím příkladu pro odfiltrování neškodné výjimky se zprávou vnitřní výjimky (následuje oddělovač "<--") "klient odpojen". Použijte kritéria při čtení obsahu žádosti o zprávu Chyba.
 
-Kliknutím zobrazit podrobnosti položky v živého kanálu. Je možné pozastavit informačního kanálu, po kliknutí buď **pozastavit** nebo jednoduše procházet nebo kliknutím na položku. Živého kanálu bude pokračovat, až přejděte zpět do horní části nebo kliknutím Čítač položek shromážděných během byla pozastavena.
+Kliknutím zobrazíte podrobnosti položky v živém kanálu. Informační kanál můžete pozastavit buď kliknutím na tlačítko **pozastavit** nebo pouhým posouváním, nebo kliknutím na položku. Živý kanál bude pokračovat, až se posunete zpět na začátek, nebo kliknutím na čítač shromážděných položek v době, kdy byl pozastaven.
 
-![Vzorkováno živé selhání](./media/live-stream/live-metrics-eventdetail.png)
+![Ukázka neaktivních selhání](./media/live-stream/live-metrics-eventdetail.png)
 
 ## <a name="filter-by-server-instance"></a>Filtrovat podle instance serveru
 
-Pokud chcete monitorovat instance role konkrétní server, můžete filtrovat podle serveru.
+Pokud chcete monitorovat určitou instanci role serveru, můžete filtrovat podle serveru.
 
-![Vzorkováno živé selhání](./media/live-stream/live-stream-filter.png)
+![Ukázka neaktivních selhání](./media/live-stream/live-stream-filter.png)
 
-## <a name="sdk-requirements"></a>Požadavky na sadu SDK
-Vlastní Live Metrics Stream je k dispozici s verzí 2.4.0-beta2 nebo novější z [Application Insights SDK pro webové](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/). Nezapomeňte vybrat možnost "Zahrnout předprodejní verze" ze Správce balíčků NuGet.
+## <a name="sdk-requirements"></a>Požadavky sady SDK
+Vlastní Live Metrics Stream jsou k dispozici v rámci verze 2.4.0-beta2 nebo novější sady [Application Insights SDK pro web](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/). Nezapomeňte z správce balíčků NuGet vybrat možnost zahrnout předběžné verze.
 
-## <a name="secure-the-control-channel"></a>Zabezpečený kanál ovládacího prvku
-Vlastní kritéria filtry, které jste zadali odesílají zpět do komponenty Live Metrics v Application Insights SDK. Filtry můžou potenciálně obsahovat citlivé informace, jako je například customerIDs. Kanál můžete zabezpečit pomocí tajného klíče rozhraní API kromě Instrumentační klíč.
-### <a name="create-an-api-key"></a>Vytvořte klíč rozhraní API
+## <a name="secure-the-control-channel"></a>Zabezpečení řídicího kanálu
+Vlastní kritéria filtrů, která zadáte, se vrátí zpět na komponentu živých metrik v sadě Application Insights SDK. Filtry mohou potenciálně obsahovat citlivé informace, jako jsou například KódZákazníka. Kanál můžete nastavit jako zabezpečený pomocí tajného klíče rozhraní API, a to i pomocí klíče instrumentace.
+### <a name="create-an-api-key"></a>Vytvoření klíče rozhraní API
 
 ![Vytvořit klíč rozhraní API](./media/live-stream/live-metrics-apikeycreate.png)
 
-### <a name="add-api-key-to-configuration"></a>Klíč rozhraní API přidejte do konfigurace
+### <a name="add-api-key-to-configuration"></a>Přidat klíč rozhraní API do konfigurace
 
-### <a name="classic-aspnet"></a>Klasické ASP.NET
+### <a name="classic-aspnet"></a>Klasický ASP.NET
 
-V souboru applicationinsights.config přidejte AuthenticationApiKey QuickPulseTelemetryModule:
+V souboru ApplicationInsights. config přidejte AuthenticationApiKey do QuickPulseTelemetryModule:
 ``` XML
 
 <Add Type="Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.QuickPulse.QuickPulseTelemetryModule, Microsoft.AI.PerfCounterCollector">
@@ -127,7 +127,7 @@ V souboru applicationinsights.config přidejte AuthenticationApiKey QuickPulseTe
 </Add>
 
 ```
-Nebo v kódu, nastavte ho na QuickPulseTelemetryModule:
+Nebo v kódu ho nastavte na QuickPulseTelemetryModule:
 
 ```csharp
 using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.QuickPulse;
@@ -163,44 +163,44 @@ using Microsoft.ApplicationInsights.Extensibility;
 
 ```
 
-### <a name="azure-function-apps"></a>Aplikace Azure Function App
+### <a name="azure-function-apps"></a>Aplikace Function Azure
 
-Pro zabezpečení kanálu pomocí rozhraní API aplikace Azure Function (v2) klíč můžete provést pomocí proměnné prostředí. 
+U aplikací Azure Function App (v2) zabezpečení kanálu pomocí klíče rozhraní API se dá provést pomocí proměnné prostředí. 
 
-Vytvořte klíč rozhraní API z v rámci prostředku Application Insights a přejděte na **nastavení aplikace** pro vaši aplikaci Function App. Vyberte **přidat nové nastavení** a zadejte název `APPINSIGHTS_QUICKPULSEAUTHAPIKEY` a hodnotu, která odpovídá vašemu klíči rozhraní API.
+Vytvořte klíč rozhraní API z Application Insights prostředku a v **nastavení aplikace** pro Function App použijte. Vyberte **Přidat nové nastavení** a zadejte název `APPINSIGHTS_QUICKPULSEAUTHAPIKEY` a hodnotu, která odpovídá vašemu klíči rozhraní API.
 
-### <a name="aspnet-core-requires-application-insights-aspnet-core-sdk-230-beta-or-greater"></a>ASP.NET Core (2.3.0-beta vyžaduje ASP.NET Core sadu SDK Application Insights nebo vyšší)
+### <a name="aspnet-core-requires-application-insights-aspnet-core-sdk-230-beta-or-greater"></a>ASP.NET Core (vyžaduje Application Insights ASP.NET Core SDK 2.3.0-beta nebo vyšší)
 
 Upravte soubor startup.cs následujícím způsobem:
 
 Nejprve přidat
 
-``` C#
+```csharp
 using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.QuickPulse;
 ```
 
-Pak v rámci metody ConfigureServices přidejte:
+Potom v rámci metody ConfigureServices přidejte:
 
-``` C#
+```csharp
 services.ConfigureTelemetryModule<QuickPulseTelemetryModule> ((module, o) => module.AuthenticationApiKey = "YOUR-API-KEY-HERE");
 ```
 
-Pokud znáte a důvěřujete všechny propojené servery, můžete zkusit vlastní filtry bez ověření kanálu. Tato možnost je k dispozici po dobu šesti měsíců. Toto přepsání je požadovaná jednou každých novou relaci, nebo když nový server převede do režimu online.
+Pokud ale znáte všechny připojené servery a důvěřujete jim, můžete si vyzkoušet vlastní filtry bez ověřeného kanálu. Tato možnost je k dispozici po dobu šesti měsíců. Toto přepsání se vyžaduje po každé nové relaci, nebo když se nový server dostane do online režimu.
 
-![Volby živé metriky ověřování](./media/live-stream/live-stream-auth.png)
+![Možnosti ověřování živých metrik](./media/live-stream/live-stream-auth.png)
 
 >[!NOTE]
->Důrazně doporučujeme, abyste nastavili ověřeného kanál před zadáním potenciálně citlivé informace, jako je ID zákazníka v podmínce filtru.
+>Důrazně doporučujeme, abyste nastavili ověřený kanál před zadáním potenciálně citlivých informací, jako je například KódZákazníka v kritériích filtru.
 >
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
-Žádná data? Pokud je vaše aplikace v chráněné síti: Live Metrics Stream používá jiný IP adres než jiné telemetrie Application Insights. Ujistěte se, že [tyto IP adresy](../../azure-monitor/app/ip-addresses.md) jsou otevřeny v bráně firewall.
+Žádná data? Pokud je vaše aplikace v chráněné síti: Live Metrics Stream používá jiné IP adresy než jiné telemetrie Application Insights. Ujistěte se, že jsou [tyto IP adresy](../../azure-monitor/app/ip-addresses.md) v bráně firewall otevřené.
 
 
 
 ## <a name="next-steps"></a>Další postup
-* [Sledování využití pomocí Application Insights](../../azure-monitor/app/usage-overview.md)
-* [Pomocí vyhledávání diagnostiky](../../azure-monitor/app/diagnostic-search.md)
+* [Monitorování využití pomocí Application Insights](../../azure-monitor/app/usage-overview.md)
+* [Pomocí diagnostického vyhledávání](../../azure-monitor/app/diagnostic-search.md)
 * [Profiler](../../azure-monitor/app/profiler.md)
-* [Ladicí program snímků](../../azure-monitor/app/snapshot-debugger.md)
+* [Snapshot Debugger](../../azure-monitor/app/snapshot-debugger.md)

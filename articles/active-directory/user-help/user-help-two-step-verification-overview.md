@@ -12,12 +12,12 @@ ms.topic: overview
 ms.date: 07/30/2018
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 48a38b91cd17e2107fe85bfc77da8ead86196173
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d33a18aaca923bd49858671546ab053cf3fb21a3
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60472760"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68382142"
 ---
 # <a name="two-step-verification-overview"></a>Přehled dvoustupňového ověřování
 
@@ -30,9 +30,9 @@ Dvoustupňové ověřování je bezpečnější než pouhé heslo, protože se s
 
 |Článek |Popis |
 |------|------------|
-|[Prostředí pro nastavení](multi-factor-authentication-end-user-first-time.md) |Popisuje prvotní nastavení dvoustupňového ověřování.|
-|[Začínáme s dvoustupňovým ověřováním](multi-factor-authentication-end-user.md)|Popisuje, co pro vás dvoustupňové ověřování znamená.| 
-|[Jak se přihlásit](user-help-sign-in.md)|Popisuje, jak se přihlásit pomocí určené metody ověřování.|
-|[Změny nastavení](multi-factor-authentication-end-user-manage-settings.md) |Popisuje, jak změnit nastavení, jako je telefonní číslo nebo upřednostňovaná metoda registrace.|
-|[Nápověda k dvoustupňovému ověřování](multi-factor-authentication-end-user-troubleshoot.md) |Popisuje řešení běžných problémů s dvoustupňovým ověřováním.|
-|[Správa hesel aplikací](multi-factor-authentication-end-user-app-passwords.md) |Popisuje vytváření a používání hesel aplikací.|
+| [Prostředí pro nastavení](multi-factor-authentication-end-user-first-time.md) |Popisuje prvotní nastavení dvoustupňového ověřování.|
+| [Začínáme se dvěma kroky ověřování](multi-factor-authentication-end-user.md) ] Popisuje, co vám dvoustupňové ověřování znamená.| 
+| [Jak se přihlásit](user-help-sign-in.md) ] Popisuje, jak se přihlásit pomocí zadané metody ověřování.|
+| [Změny nastavení](multi-factor-authentication-end-user-manage-settings.md) |Popisuje, jak změnit nastavení, jako je telefonní číslo nebo upřednostňovaná metoda registrace.|
+| [Nápověda k dvoustupňovému ověřování](multi-factor-authentication-end-user-troubleshoot.md) |Popisuje řešení běžných problémů s dvoustupňovým ověřováním.|
+| [Správa hesel aplikací](multi-factor-authentication-end-user-app-passwords.md) |Popisuje vytváření a používání hesel aplikací.|

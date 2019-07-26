@@ -1,6 +1,6 @@
 ---
 title: Atributy zabezpečení pro služby Azure
-description: Kontrolní seznam běžných atributů zabezpečení pro vyhodnocení Service Fabric Azure
+description: Kontrolní seznam atributů zabezpečení pro vyhodnocení služeb Azure
 services: security
 documentationcenter: ''
 author: msmbaldwin
@@ -9,18 +9,27 @@ ms.service: security
 ms.topic: conceptual
 ms.date: 07/11/2019
 ms.author: mbaldwin
-ms.openlocfilehash: d45e28175412b574432adb59cf700568c9a7fb39
-ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
+ms.openlocfilehash: 0010273d41769c57144fdde63e47c528f313a228
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68304252"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68443354"
 ---
 # <a name="security-attributes-for-azure-services"></a>Atributy zabezpečení pro služby Azure
 
-Tento článek shromažďuje běžné atributy zabezpečení pro vybrané služby Azure. 
+Tento článek shromažďuje atributy zabezpečení pro vybrané služby Azure. Atribut zabezpečení je kvalita nebo funkce služby Azure. Přispívá k schopnostem služby zabránit, zjišťovat a reagovat na ohrožení zabezpečení.
 
-[!INCLUDE [Security Attributes Header](../../includes/security-attributes-header.md)]
+Atributy zabezpečení jsou kategorizované jako:
+* Preventivní
+* Segmentace sítě
+* Detekce
+* Podpora správy identit a přístupu
+* Záznam pro audit
+* Řízení přístupu (Pokud se používá)
+* Správa konfigurace (Pokud se používá)
+
+V každé kategorii zobrazujeme "Ano" nebo "ne" k označení toho, zda je atribut použit. U některých služeb se pro nepoužitý atribut zobrazuje "N/A". Můžete také zadat poznámku nebo odkaz na Další informace o atributu.
 
 ## <a name="api-managementapi-managementapi-management-security-attributesmd"></a>[API Management](../api-management/api-management-security-attributes.md)
 
@@ -44,7 +53,7 @@ Tento článek shromažďuje běžné atributy zabezpečení pro vybrané služb
 | Izolace sítě a podpora brány firewall| Ano | Používání skupin zabezpečení sítě (NSG) a Azure Application Gateway (nebo jiného softwarového zařízení). |
 | Podpora vynuceného tunelování| Ano | Sítě Azure poskytují vynucené tunelové propojení. |
 
-### <a name="detection"></a>Detection (Detekce)
+### <a name="detection"></a>Detekce
 
 | Atribut zabezpečení | Ano/Ne | Poznámky|
 |---|---|--|
@@ -75,7 +84,7 @@ Tento článek shromažďuje běžné atributy zabezpečení pro vybrané služb
 
 Tato část se týká běžných chyb zabezpečení, které neovlivňují Azure API Management.
 
-| Dochází               | Popis                                                                                                                                                                                                                                                                                                               |
+| Chyba zabezpečení               | Popis                                                                                                                                                                                                                                                                                                               |
 |-----------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Ticketbleed (CVE-2016-9244) | Ticketbleed je zranitelnost při implementaci rozšíření TLS SessionTicket, které najdete v některých produktech F5. Umožňuje únik ("vykrvení") až 31 bajtů dat z neinicializované paměti. To je způsobeno tím, že přeplňování zásobníku TLS předává ID relace předané z klienta s daty, aby byla 32 bitů dlouhá. |
 
@@ -101,7 +110,7 @@ Tato část se týká běžných chyb zabezpečení, které neovlivňují Azure 
 | Izolace sítě a podpora brány firewall| Ano | Pro účely App Service veřejné varianty pro více tenantů můžou zákazníci nakonfigurovat seznamy ACL sítě (omezení IP adres), aby se mohl zamknout povolený příchozí provoz.  Viz [omezení přístupu Azure App Service](../app-service/app-service-ip-restrictions.md).  Prostředí App Service se nasazují přímo do virtuálních sítí, takže je můžete zabezpečit pomocí skupin zabezpečení sítě. |
 | Podpora vynuceného tunelování| Ano | Prostředí App Service můžete nasadit do virtuální sítě zákazníka, ve které je nakonfigurované vynucené tunelování. Zákazníci musí postupovat podle pokynů v části [konfigurace App Service Environment s vynuceným tunelovým propojením](../app-service/environment/forced-tunnel-support.md). |
 
-### <a name="detection"></a>Detection (Detekce)
+### <a name="detection"></a>Detekce
 
 | Atribut zabezpečení | Ano/Ne | Poznámky|
 |---|---|--|
@@ -151,7 +160,7 @@ Tato část se týká běžných chyb zabezpečení, které neovlivňují Azure 
 | Izolace sítě a podpora brány firewall| Ne |  |
 | Podpora vynuceného tunelování| Ne |  |
 
-### <a name="detection"></a>Detection (Detekce)
+### <a name="detection"></a>Detekce
 
 | Atribut zabezpečení | Ano/Ne | Poznámky|
 |---|---|--|
@@ -200,7 +209,7 @@ Tato část se týká běžných chyb zabezpečení, které neovlivňují Azure 
 | Izolace sítě a podpora brány firewall| Ano | Pro zálohování virtuálního počítače se podporuje vynucené tunelování. Pro úlohy běžící uvnitř virtuálních počítačů se vynucené tunelování nepodporuje. |
 | Podpora vynuceného tunelování| Ne |  |
 
-### <a name="detection"></a>Detection (Detekce)
+### <a name="detection"></a>Detekce
 
 | Atribut zabezpečení | Ano/Ne | Poznámky|
 |---|---|--|
@@ -244,11 +253,11 @@ Tato část se týká běžných chyb zabezpečení, které neovlivňují Azure 
 | Atribut zabezpečení | Ano/Ne | Poznámky |
 |---|---|--|
 | Podpora koncového bodu služby| Ano |  |
-| Podpora vkládání virtuální sítě| Ano | Pomocí koncového bodu služby virtuální sítě můžete nakonfigurovat účet Azure Cosmos DB, aby povoloval přístup jenom z konkrétní podsítě virtuální sítě (VNet). Můžete také kombinovat přístup k virtuální síti pomocí pravidel brány firewall.  Viz [Azure Cosmos DB přístupu z virtuálních sítí](../cosmos-db/vnet-service-endpoint.md). |
+| Podpora vkládání virtuální sítě| Ano | Pomocí koncového bodu služby virtuální sítě můžete nakonfigurovat účet Azure Cosmos DB, aby povoloval přístup jenom z konkrétní podsítě virtuální sítě (VNet). Můžete také kombinovat přístup k virtuální síti pomocí pravidel brány firewall.  Viz [Azure Cosmos DB přístupu z virtuálních sítí](../cosmos-db/VNet-service-endpoint.md). |
 | Izolace sítě a podpora brány firewall| Ano | Díky podpoře brány firewall můžete účet Azure Cosmos nakonfigurovat tak, aby povoloval přístup jenom ze schválené sady IP adres, rozsahu IP adres a/nebo cloudových služeb. Viz [Konfigurace brány firewall protokolu IP v Azure Cosmos DB](../cosmos-db/how-to-configure-firewall.md).|
-| Podpora vynuceného tunelování | Ano | Dá se nakonfigurovat na straně klienta na virtuální síti, kde jsou umístěné virtuální počítače.   |
+| Podpora vynuceného tunelování| Ano | Dá se nakonfigurovat na straně klienta na virtuální síti, kde jsou umístěné virtuální počítače.   |
 
-### <a name="detection"></a>Detection (Detekce)
+### <a name="detection"></a>Detekce
 
 | Atribut zabezpečení | Ano/Ne | Poznámky|
 |---|---|--|
@@ -265,7 +274,7 @@ Tato část se týká běžných chyb zabezpečení, které neovlivňují Azure 
 
 | Atribut zabezpečení | Ano/Ne | Poznámky|
 |---|---|--|
-| Protokolování a audit plánů řízení a správy| Ano | Protokol aktivit Azure pro operace na úrovni účtu, jako jsou brány firewall, virtuální sítě, přístup k klíčům a IAM. |
+| Protokolování a audit roviny řízení a správy| Ano | Protokol aktivit Azure pro operace na úrovni účtu, jako jsou brány firewall, virtuální sítě, přístup k klíčům a IAM. |
 | Protokolování a audit roviny dat | Ano | Protokolování monitorování diagnostiky pro operace na úrovni kontejneru, jako je vytvoření kontejneru, zajištění propustnosti, zásady indexování a operace CRUD v dokumentech. |
 
 ### <a name="configuration-management"></a>Správa konfigurace
@@ -302,7 +311,7 @@ Tato část se týká běžných chyb zabezpečení, které neovlivňují Azure 
 | Izolace sítě a podpora brány firewall| Ano |  |
 | Podpora vynuceného tunelování| Ne |  |
 
-### <a name="detection"></a>Detection (Detekce)
+### <a name="detection"></a>Detekce
 
 | Atribut zabezpečení | Ano/Ne | Poznámky|
 |---|---|--|
@@ -351,7 +360,7 @@ Tato část se týká běžných chyb zabezpečení, které neovlivňují Azure 
 | Izolace sítě a podpora brány firewall| Ano | Každý zákazník je obsažen ve své vlastní doméně směrování a je připojen k jeho vlastní virtuální síti. |
 | Podpora vynuceného tunelování| Není k dispozici | Přes Border Gateway Protocol (BGP). |
 
-### <a name="detection"></a>Detection (Detekce)
+### <a name="detection"></a>Detekce
 
 | Atribut zabezpečení | Ano/Ne | Poznámky|
 |---|---|--|
@@ -400,7 +409,7 @@ Tato část se týká běžných chyb zabezpečení, které neovlivňují Azure 
 | Izolace sítě a podpora brány firewall| Ano | Používají se pravidla brány firewall virtuální sítě. |
 | Podpora vynuceného tunelování| Ne |  |
 
-### <a name="detection"></a>Detection (Detekce)
+### <a name="detection"></a>Detekce
 
 | Atribut zabezpečení | Ano/Ne | Poznámky|
 |---|---|--|
@@ -420,7 +429,7 @@ Tato část se týká běžných chyb zabezpečení, které neovlivňují Azure 
 | Protokolování a audit roviny řízení a správy| Ano | Použití Log Analytics. |
 | Protokolování a audit roviny dat| Ano | Použití Log Analytics. |
 
-### <a name="access-controls"></a>Řízení přístupu
+### <a name="access-controls"></a>Ovládací prvky přístupu
 
 | Atribut zabezpečení | Ano/Ne | Poznámky|
 |---|---|--|
@@ -448,7 +457,7 @@ Tato část se týká běžných chyb zabezpečení, které neovlivňují Azure 
 | Izolace sítě a podpora brány firewall| Není k dispozici |  |
 | Podpora vynuceného tunelování| Není k dispozici | |
 
-### <a name="detection"></a>Detection (Detekce)
+### <a name="detection"></a>Detekce
 
 | Atribut zabezpečení | Ano/Ne | Poznámky|
 |---|---|--|
@@ -495,7 +504,7 @@ Tato část se týká běžných chyb zabezpečení, které neovlivňují Azure 
 | Izolace sítě a podpora brány firewall| Ano (jenom úroveň Premium) |  |
 | Podpora vynuceného tunelování| Ne |  |
 
-### <a name="detection"></a>Detection (Detekce)
+### <a name="detection"></a>Detekce
 
 | Atribut zabezpečení | Ano/Ne | Poznámky|
 |---|---|--|
@@ -543,7 +552,7 @@ Tato část se týká běžných chyb zabezpečení, které neovlivňují Azure 
 | Izolace sítě a podpora brány firewall| Ne |  |
 | Podpora vynuceného tunelování| Není k dispozici | Relay je tunelové propojení TLS  |
 
-### <a name="detection"></a>Detection (Detekce)
+### <a name="detection"></a>Detekce
 
 | Atribut zabezpečení | Ano/Ne | Poznámky|
 |---|---|--|
@@ -589,7 +598,7 @@ Tato část se týká běžných chyb zabezpečení, které neovlivňují Azure 
 | Izolace sítě a podpora brány firewall| Ano | Používání skupin zabezpečení sítě (NSG). |
 | Podpora vynuceného tunelování| Ano | Sítě Azure poskytují vynucené tunelové propojení. |
 
-### <a name="detection"></a>Detection (Detekce)
+### <a name="detection"></a>Detekce
 
 | Atribut zabezpečení | Ano/Ne | Poznámky|
 |---|---|--|
@@ -638,7 +647,7 @@ SQL Database zahrnuje [jednu databázi](../sql-database/sql-database-single-inde
 | Izolace sítě a podpora brány firewall| Ano | Brána firewall na úrovni databáze i serveru. Izolace sítě je určena pouze pro [spravovanou instanci](../sql-database/sql-database-managed-instance.md) . |
 | Podpora vynuceného tunelování| Ano | [Spravovaná instance](../sql-database/sql-database-managed-instance.md) prostřednictvím sítě VPN [ExpressRoute](../expressroute/index.yml) |
 
-### <a name="detection"></a>Detection (Detekce)
+### <a name="detection"></a>Detekce
 
 | Atribut zabezpečení | Ano/Ne | Poznámky|
 |---|---|--|
@@ -694,7 +703,7 @@ SQL Database zahrnuje [jednu databázi](../sql-database/sql-database-single-inde
 | Izolace sítě a podpora brány firewall| Ano | |
 | Podpora vynuceného tunelování| Není k dispozici |  |
 
-### <a name="detection"></a>Detection (Detekce)
+### <a name="detection"></a>Detekce
 
 | Atribut zabezpečení | Ano/Ne | Poznámky|
 |---|---|--|
@@ -744,7 +753,7 @@ SQL Database zahrnuje [jednu databázi](../sql-database/sql-database-single-inde
 | Izolace sítě a podpora brány firewall| Ano |  |
 | Podpora vynuceného tunelování| Ano | Další informace najdete v tématu [Konfigurace vynuceného tunelování pomocí modelu nasazení Azure Resource Manager](/azure/vpn-gateway/vpn-gateway-forced-tunneling-rm). |
 
-### <a name="detection"></a>Detection (Detekce)
+### <a name="detection"></a>Detekce
 
 | Atribut zabezpečení | Ano/Ne | Poznámky|
 |---|---|--|
@@ -793,7 +802,7 @@ SQL Database zahrnuje [jednu databázi](../sql-database/sql-database-single-inde
 | Izolace sítě a podpora brány firewall| Ano | Brány VPN jsou vyhrazené instance virtuálních počítačů pro jednotlivé zákazníky Virtual Network  |
 | Podpora vynuceného tunelování| Ano |  |
 
-### <a name="detection"></a>Detection (Detekce)
+### <a name="detection"></a>Detekce
 
 | Atribut zabezpečení | Ano/Ne | Poznámky|
 |---|---|--|

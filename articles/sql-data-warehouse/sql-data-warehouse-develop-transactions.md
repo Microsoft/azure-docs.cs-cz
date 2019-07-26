@@ -1,8 +1,8 @@
 ---
-title: Použití transakcí ve službě Azure SQL Data Warehouse | Dokumentace Microsoftu
-description: Tipy pro provádění transakcí ve službě Azure SQL Data Warehouse pro vývoj řešení.
+title: Používání transakcí v Azure SQL Data Warehouse | Microsoft Docs
+description: Tipy pro implementaci transakcí v Azure SQL Data Warehouse pro vývoj řešení.
 services: sql-data-warehouse
-author: XiaoyuL-Preview
+author: XiaoyuMSFT
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
@@ -10,57 +10,57 @@ ms.subservice: development
 ms.date: 03/22/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: b6f95607c7cfc574d647be3046cef4a4b61906f6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7f00f8a25d0abf3af6d76b372b44145546a79879
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65861753"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68479606"
 ---
 # <a name="using-transactions-in-sql-data-warehouse"></a>Použití transakcí v SQL Data Warehouse
-Tipy pro provádění transakcí ve službě Azure SQL Data Warehouse pro vývoj řešení.
+Tipy pro implementaci transakcí v Azure SQL Data Warehouse pro vývoj řešení.
 
-## <a name="what-to-expect"></a>Co můžete očekávat
-Jak by jste očekávali, SQL Data Warehouse podporuje transakce jako součást úlohy datového skladu. Však zajistit, že výkon služby SQL Data Warehouse je udržován na úrovni škálovací některé funkce omezeny oproti serveru SQL Server. Tento článek zdůrazňuje rozdíly a uvádí ostatní. 
+## <a name="what-to-expect"></a>Co očekávat
+Podle očekávání SQL Data Warehouse podporuje transakce jako součást úlohy datového skladu. Pokud ale chcete mít jistotu, že se výkon SQL Data Warehouse udržuje ve velkém měřítku, jsou některé funkce v porovnání s SQL Server omezené. Tento článek popisuje rozdíly a seznam ostatních. 
 
 ## <a name="transaction-isolation-levels"></a>Úrovně izolace transakce
-SQL Data Warehouse implementuje transakce ACID. Úroveň izolace transakční podporu je však omezená na READ UNCOMMITTED; Tato úroveň se nedá změnit. Pokud READ UNCOMMITTED je důležitý, můžete implementovat řadu psaní kódu metod zabránit nepřesné data. Nejoblíbenější metody používají CTAS a přepínání oddílů tabulky (často označované jako posuvné okno vzor) uživatelům zabránit v dotazování na data, která se stále připravuje. Zobrazení, která předem filtrovat data jsou také oblíbené přístup.  
+SQL Data Warehouse implementuje transakce v KYSELINě. Úroveň izolace transakční podpory je však omezená na čtení bez potvrzení; tuto úroveň nelze změnit. Pokud je čtení nepotvrzeno, můžete implementovat řadu metod kódování, které zabrání nečistým čtením dat. Nejoblíbenější metody používají přepínání oddílů CTAS a Table (často označované jako posuvné okno), které uživatelům brání v dotazování na data, která stále připravují. Zobrazení, která předem filtrují data, jsou také oblíbeným přístupem.  
 
 ## <a name="transaction-size"></a>Velikost transakce
-Transakce změny jednoho datového má omezenou velikost. Omezení se použijí na distribuci. Proto bude celkový přidělený lze vypočítat vynásobením počtu distribučních limit. K přibližné maximální počet řádků v transakci dělení zakončení distribuce celková velikost každého řádku. Pro sloupce s proměnlivou délkou vezměte v úvahu trvá o délce hodnotu ze sloupce average spíš než maximální velikost.
+Jedna transakce změny dat má omezené velikosti. Limit se aplikuje na distribuci. Z tohoto důvodu může být celkové přidělení vypočítáno vynásobením omezení počtem distribucí. K aproximaci maximálního počtu řádků v transakci rozdělte velikost distribučního čísla celkové velikosti každého řádku. U sloupců s proměnlivou délkou zvažte použití průměrné délky sloupce, a ne omezení velikosti.
 
-V následující tabulce následujících předpokladů byly provedeny:
+V tabulce níže byly provedeny následující předpoklady:
 
-* Rovnoměrnou distribuci přenosu dat došlo k chybě. 
-* Průměrná délka řádku je 250 bajtů
+* Došlo k rovnoměrné distribuci dat. 
+* Průměrná délka řádku je 250 bajtů.
 
 ## <a name="gen2"></a>Gen2
 
-| [DWU](sql-data-warehouse-overview-what-is.md) | Limit na distribuci (GB) | Počet distribucí | MAXIMÁLNÍ velikost transakce (GB) | # Řádků na distribuci | Maximální počet řádků na transakci |
+| [DWU](sql-data-warehouse-overview-what-is.md) | Cap na distribuci (GB) | Počet distribucí | MAXIMÁLNÍ velikost transakce (GB) | Počet řádků na distribuci | Maximální počet řádků na transakci |
 | --- | --- | --- | --- | --- | --- |
 | DW100c |1 |60 |60 |4,000,000 |240,000,000 |
-| DW200c |1,5 |60 |90 |6 000 000 |360,000,000 |
+| DW200c |1.5 |60 |90 |6 000 000 |360,000,000 |
 | DW300c |2.25 |60 |135 |9,000,000 |540,000,000 |
 | DW400c |3 |60 |180 |12,000,000 |720,000,000 |
 | DW500c |3.75 |60 |225 |15,000,000 |900,000,000 |
 | DW1000c |7.5 |60 |450 |30,000,000 |1,800,000,000 |
 | DW1500c |11.25 |60 |675 |45,000,000 |2,700,000,000 |
 | DW2000c |15 |60 |900 |60,000,000 |3,600,000,000 |
-| DW2500c |18.75 |60 |1125 |75,000,000 |4,500,000,000 |
+| DW2500c |18,75 |60 |1125 |75 000 000 |4 500 000 000 |
 | DW3000c |22.5 |60 |1,350 |90,000,000 |5,400,000,000 |
-| DW5000c |37.5 |60 |2,250 |150,000,000 |9,000,000,000 |
+| DW5000c |37,5 |60 |2 250 |150 000 000 |9 000 000 000 |
 | DW6000c |45 |60 |2,700 |180,000,000 |10,800,000,000 |
-| DW7500c |56.25 |60 |3,375 |225,000,000 |13,500,000,000 |
-| DW10000c |75 |60 |4,500 |300 000 000 |18,000,000,000 |
-| DW15000c |112.5 |60 |6,750 |450,000,000 |27,000,000,000 |
-| DW30000c |225 |60 |13,500 |900,000,000 |54,000,000,000 |
+| DW7500c |56,25 |60 |3 375 |225 000 000 |13 500 000 000 |
+| DW10000c |75 |60 |4 500 |300 000 000 |18 000 000 000 |
+| DW15000c |112,5 |60 |6 750 |450 000 000 |27 000 000 000 |
+| DW30000c |225 |60 |13 500 |900,000,000 |54 000 000 000 |
 
 ## <a name="gen1"></a>Gen1
 
-| [DWU](sql-data-warehouse-overview-what-is.md) | Limit na distribuci (GB) | Počet distribucí | MAXIMÁLNÍ velikost transakce (GB) | # Řádků na distribuci | Maximální počet řádků na transakci |
+| [DWU](sql-data-warehouse-overview-what-is.md) | Cap na distribuci (GB) | Počet distribucí | MAXIMÁLNÍ velikost transakce (GB) | Počet řádků na distribuci | Maximální počet řádků na transakci |
 | --- | --- | --- | --- | --- | --- |
 | DW100 |1 |60 |60 |4,000,000 |240,000,000 |
-| DW200 |1,5 |60 |90 |6 000 000 |360,000,000 |
+| DW200 |1.5 |60 |90 |6 000 000 |360,000,000 |
 | DW300 |2.25 |60 |135 |9,000,000 |540,000,000 |
 | DW400 |3 |60 |180 |12,000,000 |720,000,000 |
 | DW500 |3.75 |60 |225 |15,000,000 |900,000,000 |
@@ -72,25 +72,25 @@ V následující tabulce následujících předpokladů byly provedeny:
 | DW3000 |22.5 |60 |1,350 |90,000,000 |5,400,000,000 |
 | DW6000 |45 |60 |2,700 |180,000,000 |10,800,000,000 |
 
-Omezení velikosti transakce se vztahují na transakci nebo operace. Není použita ve všech souběžných transakcí. Proto každou transakci je povolený zápis takové množství dat do protokolu. 
+Limit velikosti transakce je použit na transakci nebo operaci. Není aplikováno napříč všemi souběžnými transakcemi. Proto každá transakce má povoleno zapsat toto množství dat do protokolu. 
 
-A minimalizuje množství dat zapsaných do protokolu, najdete [transakce osvědčené postupy](sql-data-warehouse-develop-best-practices-transactions.md) článku.
+Pokud chcete optimalizovat a minimalizovat množství dat zapsaných do protokolu, přečtěte si článek věnované osvědčeným postupům pro [transakce](sql-data-warehouse-develop-best-practices-transactions.md) .
 
 > [!WARNING]
-> Velikost maximální transakce jde dosáhnout jenom pro hodnoty HASH nebo dokonce ROUND_ROBIN distribuované tabulky, kde rozšíření dat je. Pokud transakce zapisuje data výrazně nerovnoměrnou distribucí způsobem do distribuce limit je pravděpodobně dosáhl před transakce maximální velikost.
+> Maximální velikost transakce lze dosáhnout pouze pro distribuované tabulky HASH nebo ROUND_ROBIN, kde je rozprostření dat sudé. Pokud transakce zapisuje data šikmým způsobem na rozdělení, je pravděpodobně dosaženo limitu před maximální velikostí transakce.
 > <!--REPLICATED_TABLE-->
 > 
 > 
 
 ## <a name="transaction-state"></a>Stav transakce
-SQL Data Warehouse používá funkci XACT_STATE() oznámit neúspěšné transakce pomocí hodnoty -2. Tato hodnota znamená, že transakce se nezdařilo a je označen pro vrácení pouze.
+SQL Data Warehouse používá funkci XACT_STATE () k ohlášení neúspěšné transakce pomocí hodnoty 2. Tato hodnota znamená, že transakce se nezdařila a je označena pouze pro vrácení zpět.
 
 > [!NOTE]
-> Použití -2 XACT_STATE funkcí k označení selhání transakce představuje různé chování systému SQL Server. SQL Server používá k reprezentaci nezapsatelná transakce hodnotu -1. SQL Server může tolerovat možnost chybami v transakci, aniž by ji museli být označen jako nezapsatelná. Například `SELECT 1/0` by způsobit chybu, ale bez vynucení do stavu nezapsatelná transakce. SQL Server také umožňuje čtení v nezapsatelná transakce. Nicméně SQL Data Warehouse, nebudou vám s tím. Pokud dojde k chybě v transakci SQL Data Warehouse automaticky přejde do stavu-2 a nebude možné provést jakékoli další výběr příkazů, dokud příkaz byla vrácena zpět. Proto je důležité zkontrolovat, že kódu aplikace zobrazíte, pokud používá XACT_STATE() jako je třeba provést změny kódu.
+> Použití-2 funkcí XACT_STATE k označení neúspěšné transakce představuje odlišné chování pro SQL Server. SQL Server používá hodnotu-1 pro reprezentaci transakce nesvěřené. SQL Server může tolerovat některé chyby v transakci, aniž by bylo nutné je označit jako nepotvrzené. Například `SELECT 1/0` by došlo k chybě, ale nevynucují transakci do nepotvrzeného stavu. SQL Server také povoluje čtení v nesvěřené transakci. SQL Data Warehouse to ale neumožňuje. Pokud dojde k chybě uvnitř SQL Data Warehouse transakce, automaticky vstoupí do stavu-2 a dokud se příkaz nevrátí zpět, nebude možné provést žádné další příkazy SELECT. Proto je důležité zkontrolovat, zda kód aplikace používá XACT_STATE (), protože může být nutné provést úpravy kódu.
 > 
 > 
 
-V systému SQL Server se může zobrazit transakce, která vypadá takto:
+Například v SQL Server se může zobrazit transakce, která vypadá takto:
 
 ```sql
 SET NOCOUNT ON;
@@ -128,13 +128,13 @@ END
 SELECT @xact_state AS TransactionState;
 ```
 
-Předchozí kód poskytuje následující chybová zpráva:
+Předchozí kód obsahuje následující chybovou zprávu:
 
-Msg – 111233, Level 16, stav 1 řádek 1 111233; Aktuální transakce byla přerušena a všechny probíhající změny byly vráceny zpět. Příčina: Transakce ve stavu jen pro vrácení zpět nebyla vrácena explicitně před DDL, DML nebo příkazu SELECT.
+Msg 111233, úroveň 16, stav 1, řádek 1 111233; Aktuální transakce byla přerušena a všechny probíhající změny byly vráceny zpět. Příčina: Transakce ve stavu pouze pro vrácení zpět nebyla explicitně vrácena zpět před příkazem DDL, DML nebo SELECT.
 
-Nezískáte výstup funkce ERROR_ *.
+Nebudete mít výstup funkcí ERROR_ *.
 
-Ve službě SQL Data Warehouse musí být mírně změnit kód:
+V SQL Data Warehouse musí být kód mírně pozměněn:
 
 ```sql
 SET NOCOUNT ON;
@@ -171,32 +171,32 @@ END
 SELECT @xact_state AS TransactionState;
 ```
 
-Nyní se vyskytuje očekávané chování. Chyba v transakci spravuje a funkce ERROR_ * zadejte hodnoty, podle očekávání.
+Nyní je zjištěno očekávané chování. Chyba v transakci je spravovaná a funkce ERROR_ * poskytují hodnoty podle očekávání.
 
-Vše, co došlo ke změně je, že vrácení transakce museli stát před číst informace o chybě v bloku CATCH.
+Všechny, které se změnily, je, že vrácení transakce se musí nacházet před čtením informací o chybě v bloku CATCH.
 
-## <a name="errorline-function"></a>Error_Line() – funkce
-Je také vhodné poznamenat, že SQL Data Warehouse neimplementuje ani podporu ERROR_LINE() funkce. Pokud budete mít ve vašem kódu, budete muset odebrat bude kompatibilní s SQL Data Warehouse. Místo toho použijte k implementaci ekvivalentní funkce dotazu popisky ve vašem kódu. Další podrobnosti najdete v tématu [popisek](sql-data-warehouse-develop-label.md) článku.
+## <a name="errorline-function"></a>Error_Line () – funkce
+Je také potřeba poznamenat, že SQL Data Warehouse neimplementuje nebo nepodporuje funkci ERROR_LINE (). Pokud máte ve svém kódu, musíte ho odebrat, aby byl kompatibilní s SQL Data Warehouse. Místo toho použijte pro implementaci ekvivalentních funkcí popisky dotazů ve svém kódu. Další podrobnosti najdete v článku s [popisem](sql-data-warehouse-develop-label.md) .
 
-## <a name="using-throw-and-raiserror"></a>Použití vyvolání výjimky a RAISERROR
-Vyvolání výjimky je Modernější implementace pro vyvolání výjimek v SQL Data Warehouse, ale RAISERROR je také podporována. Existuje několik rozdílů, které stojí za to ale dejte pozor na.
+## <a name="using-throw-and-raiserror"></a>Použití THROW a RAISERROR
+THROW je moderní implementace pro vyvolávání výjimek v SQL Data Warehouse, ale také podporuje funkci RAISERROR. Existuje několik rozdílů, které jsou pro vás za platební pozornost.
 
-* Uživatelem definované chybové zprávy čísla nesmějí být v rozsahu 100 000 150 000 pro vyvolání výjimky
-* RAISERROR chybové zprávy jsou opraveny s 50 000
-* Použití systémových není podporováno.
+* Uživatelem definované chybové zprávy nemohou být v rozsahu 100 000-150 000 pro THROW.
+* Chybové zprávy RAISERROR jsou opraveny na 50 000
+* Použití sys. Messages se nepodporuje.
 
 ## <a name="limitations"></a>Omezení
-SQL Data Warehouse má několik omezení, které se týkají transakce.
+SQL Data Warehouse má několik dalších omezení, která se vztahují na transakce.
 
 Jsou následující:
 
-* Bez distribuované transakce
-* Žádné vnořené transakce povoleno
-* Bez uložení bodů povoleno
+* Žádné distribuované transakce
+* Nejsou povolené žádné vnořené transakce.
+* Nejsou povoleny žádné body ukládání.
 * Žádné pojmenované transakce
 * Žádné označené transakce
-* Žádná podpora pro DDL, jako je například vytvoření tabulky v uživatelské transakci
+* V uživatelsky definované transakci není žádná podpora elementu DDL, jako je CREATE TABLE.
 
 ## <a name="next-steps"></a>Další postup
-Další informace o optimalizaci transakce, naleznete v tématu [transakce osvědčené postupy](sql-data-warehouse-develop-best-practices-transactions.md). Další informace o dalších osvědčených postupech pro SQL Data Warehouse, najdete v článku [osvědčené postupy SQL Data Warehouse](sql-data-warehouse-best-practices.md).
+Další informace o optimalizaci transakcí naleznete v tématu [osvědčené postupy pro transakce](sql-data-warehouse-develop-best-practices-transactions.md). Další informace o dalších SQL Data Warehouse osvědčených postupech najdete v článku [SQL Data Warehouse osvědčené postupy](sql-data-warehouse-best-practices.md).
 

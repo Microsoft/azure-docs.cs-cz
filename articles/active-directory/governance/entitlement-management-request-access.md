@@ -1,10 +1,10 @@
 ---
-title: Požádat o přístup k balíčku přístup ve službě Azure AD oprávnění management (Preview) – Azure Active Directory
-description: Další informace o použití portálu Můj přístup požádáte o přístup k balíčku přístup ve službě Azure Active Directory management oprávnění (Preview).
+title: Požádat o přístup k balíčku přístupu ve správě nároků Azure AD (Preview) – Azure Active Directory
+description: Naučte se používat portál pro přístup k vyžádání přístupu k balíčku přístupu v Azure Active Directory správě nároků (Preview).
 services: active-directory
 documentationCenter: ''
-author: rolyon
-manager: mtillman
+author: msaburnley
+manager: daveba
 editor: mamtakumar
 ms.service: active-directory
 ms.workload: identity
@@ -13,88 +13,88 @@ ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
 ms.date: 04/19/2019
-ms.author: rolyon
+ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 39a50240b4360c5b4adcd6020c2b80b0f06315f7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 578f78d1853194cad000aa2e54b40d1ac5003544
+ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64541552"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68489049"
 ---
-# <a name="request-access-to-an-access-package-in-azure-ad-entitlement-management-preview"></a>Požádat o přístup k balíčku přístup ve správě služby Azure AD oprávnění (Preview)
+# <a name="request-access-to-an-access-package-in-azure-ad-entitlement-management-preview"></a>Požádat o přístup k balíčku přístupu ve správě nároků Azure AD (Preview)
 
 > [!IMPORTANT]
-> Správa nároků Azure Active Directory (Azure AD) je aktuálně ve verzi public preview.
+> Správa opravňujících k Azure Active Directory (Azure AD) je aktuálně ve verzi Public Preview.
 > Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti.
 > Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="sign-in-to-the-my-access-portal"></a>Přihlaste se k portálu Moje aplikace Access
+## <a name="sign-in-to-the-my-access-portal"></a>Přihlášení k portálu pro přístup
 
-Prvním krokem je pro přihlášení k portálu tento přístup, kde můžete požádat o přístup k balíčku přístup.
+Prvním krokem je přihlášení k portálu pro přístup, kde si můžete vyžádat přístup k balíčku přístupu.
 
-**Požadované role:** Žadatel
+**Požadovaná role:** Žadatel
 
-1. Hledejte e-mailu nebo zprávu ze správce projektu nebo firmy, které pracujete. E-mailu by měla obsahovat odkaz pro přístup k balíčku, který bude potřebovat přístup k. Bude začínat na odkaz:
+1. Vyhledejte e-mail nebo zprávu z projektu nebo obchodního manažera, se kterým pracujete. E-mail by měl obsahovat odkaz na balíček pro přístup, ke kterému budete potřebovat přístup. Odkaz bude začínat na:
 
     `https://myaccess.microsoft.com`
 
 1. Otevřete odkaz.
 
-1. Přihlaste se k portálu Můj přístup.
+1. Přihlaste se k portálu přístupu.
 
-    Ujistěte se, že pomocí účtu organizace. Pokud jste si jistí, obraťte se projekt nebo obchodní správce.
+    Ujistěte se, že používáte účet organizace. Pokud si nejste jistí, obraťte se na svého projektu nebo obchodní manažer.
 
-## <a name="request-an-access-package"></a>Žádost přístup k balíčku
+## <a name="request-an-access-package"></a>Vyžádání balíčku pro přístup
 
-Jakmile najdete balíček přístupu na portálu Moje přístup, může odeslat žádost.
+Po nalezení balíčku přístupu na portálu pro přístup můžete odeslat žádost.
 
-**Požadované role:** Žadatel
+**Požadovaná role:** Žadatel
 
-1. Kliknutím na značku zaškrtnutí k vybrání balíčku přístup.
+1. Klikněte na značku zaškrtnutí a vyberte balíček pro přístup.
 
-    ![Moje portál přístup – přístup k balíčkům](./media/entitlement-management-shared/my-access-access-packages.png)
+    ![Portál přístupu – přístupové balíčky](./media/entitlement-management-shared/my-access-access-packages.png)
 
-1. Klikněte na tlačítko **žádat o přístup** a otevřete tak podokno žádost o přístup.
+1. Kliknutím na **požádat o přístup** otevřete podokno žádosti o přístup.
 
-1. Pokud **obchodní odůvodnění** pole se zobrazí, zadejte odůvodnění, by potřebovali mít přístup.
+1. Pokud se zobrazí pole **obchodní odůvodnění** , zadejte odůvodnění přístupu pro potřebu přístupu.
 
-1. Pokud **vyžádat pro konkrétní období?** je povolen, vyberte **Ano** nebo **ne**.
+1. Pokud je **požadavek na určité období** povolený, vyberte **Ano** nebo **ne**.
 
-1. V případě potřeby zadejte datum zahájení a koncové datum.
+1. V případě potřeby zadejte počáteční a koncové datum.
 
-    ![Moje přístup k portálu – žádost o přístup](./media/entitlement-management-shared/my-access-request-access.png)
+    ![Můj portál přístupu – požádat o přístup](./media/entitlement-management-shared/my-access-request-access.png)
 
-1. Až budete hotovi, klikněte na tlačítko **odeslat** svou žádost odešlete.
+1. Po dokončení kliknutím na **Odeslat** odešlete žádost.
 
-1. Klikněte na tlačítko **historie žádostí** zobrazíte seznam požadavků a stav.
+1. Kliknutím na **Historie žádostí** zobrazíte seznam žádostí a stav.
 
-    Pokud balíček přístup vyžaduje schválení, žádost je nyní ve stavu čekající na schválení.
+    Pokud přístupový balíček vyžaduje schválení, je žádost nyní ve stavu čeká na schválení.
 
-## <a name="cancel-a-request"></a>Zrušit žádost
+## <a name="cancel-a-request"></a>Zrušení žádosti
 
-Je-li odeslat požadavek na přístup a požadavek je stále v **čekající na schválení** stavu, můžete je zrušit žádost.
+Pokud odešlete žádost o přístup a žádost zůstane stále ve stavu **čeká na schválení** , můžete žádost zrušit.
 
-**Požadované role:** Žadatel
+**Požadovaná role:** Žadatel
 
-1. Na portálu Moje přístup na levé straně, klikněte na tlačítko **historie žádostí** zobrazíte seznam požadavků a stav.
+1. Na portálu pro přístup na levé straně klikněte na **Historie žádostí** , abyste viděli seznam žádostí a stav.
 
-1. Klikněte na tlačítko **zobrazení** odkaz pro požadavek, chcete akci zrušit.
+1. Klikněte na odkaz **Zobrazit** u žádosti, kterou chcete zrušit.
 
-1. Pokud je stále v požadavku **čekající na schválení** stavu, můžete kliknout na **požadavek na zrušení** pro zrušení požadavku.
+1. Pokud je požadavek stále ve stavu **čekání na schválení** , můžete kliknout na **zrušit žádost** o zrušení žádosti.
 
-    ![Moje přístup k portálu – požadavek na zrušení.](./media/entitlement-management-request-access/my-access-cancel-request.png)
+    ![Portál pro přístup – zrušit požadavek](./media/entitlement-management-request-access/my-access-cancel-request.png)
 
-1. Klikněte na tlačítko **historie žádostí** potvrďte požadavek byl zrušen.
+1. Kliknutím na **Historie žádostí** potvrďte, že žádost byla zrušena.
 
 ## <a name="select-a-policy"></a>Výběr zásady
 
-Pokud se požaduje přístup k balíčku přístup, který má více zásad, které se vztahují, může být vyzváni k výběru zásady. Například může správce přístupu k balíčku nakonfigurovat balíček přístup s dvě zásady pro dvě skupiny interní zaměstnanci. První zásada může povolit přístup po dobu 60 dnů a vyžadují schválení. Druhá zásada může povolit přístup pro 2 dny a nevyžaduje schválení. Pokud narazíte na tento scénář, je nutné vybrat zásady, kterou chcete použít.
+Pokud požadujete přístup k balíčku přístupu, který má několik zásad, které platí, může se zobrazit výzva k výběru zásady. Správce balíčků pro přístup může například nakonfigurovat balíček přístupu se dvěma zásadami pro dvě skupiny interních zaměstnanců. První zásada může mít povolený přístup po 60 dnech a vyžaduje schválení. Druhá zásada může mít povolený přístup 2 dny a nemusí vyžadovat schválení. Pokud se setkáte s tímto scénářem, musíte vybrat zásadu, kterou chcete použít.
 
-**Požadované role:** Žadatel
+**Požadovaná role:** Žadatel
 
 ## <a name="next-steps"></a>Další postup
 
-- [Schválit nebo odmítnout žádosti o přístup](entitlement-management-request-approve.md)
-- [Požádat o procesu a e-mailových oznámení](entitlement-management-process.md)
+- [Schválení nebo zamítnutí žádostí o přístup](entitlement-management-request-approve.md)
+- [Žádost o proces a e-mailová oznámení](entitlement-management-process.md)

@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý start: Kontrola pravopisu pomocí rozhraní REST API kontrolu pravopisu Bingu a Ruby'
-titlesuffix: Azure Cognitive Services
-description: Začněte používat rozhraní API Bingu pro kontrolu pravopisu zkontrolujte REST pro kontrolu pravopisu a gramatiky.
+title: 'Rychlý start: Kontrola pravopisu pomocí Kontrola pravopisu Bingu REST API a Ruby'
+titleSuffix: Azure Cognitive Services
+description: Začněte používat REST API Kontrola pravopisu Bingu pro kontrolu pravopisu a gramatiky.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,27 +10,27 @@ ms.subservice: bing-spell-check
 ms.topic: quickstart
 ms.date: 02/20/2019
 ms.author: aahi
-ms.openlocfilehash: a3e65f9ad8e8a9c6876d1588ecaa94531206c6f4
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: 4c324bc013ccf339d19bb9dd7681909c4331db60
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66389709"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68500320"
 ---
-# <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-ruby"></a>Rychlý start: Kontrola pravopisu pomocí rozhraní REST API kontrolu pravopisu Bingu a Ruby
+# <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-ruby"></a>Rychlý start: Kontrola pravopisu pomocí Kontrola pravopisu Bingu REST API a Ruby
 
-V tomto rychlém startu můžete provést první volání do Bingu pravopisu zkontrolujte REST API pomocí Ruby. Tato jednoduchá aplikace odešle požadavek na rozhraní API a vrátí seznam slov, nerozpozná, za nímž následuje navrhovaných oprav. Aplikace je sice napsaná v Ruby, ale rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků. Zdrojový kód pro tuto aplikaci je k dispozici na [Githubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/ruby/Search/BingSpellCheckv7.rb)
+Pomocí tohoto rychlého startu můžete provést vaše první volání Kontrola pravopisu Bingu REST API pomocí Ruby. Tato jednoduchá aplikace pošle požadavek do rozhraní API a vrátí seznam slov, která nebyla rozpoznána, a za ním Doporučené opravy. Aplikace je sice napsaná v Ruby, ale rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků. Zdrojový kód této aplikace je k dispozici na [GitHubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/ruby/Search/BingSpellCheckv7.rb) .
 
 ## <a name="prerequisites"></a>Požadavky
 
-* [Ruby 2.4](https://www.ruby-lang.org/en/downloads/) nebo novější.
+* [Ruby 2,4](https://www.ruby-lang.org/en/downloads/) nebo novější.
 
 [!INCLUDE [cognitive-services-bing-spell-check-signup-requirements](../../../../includes/cognitive-services-bing-spell-check-signup-requirements.md)]
 
 
 ## <a name="create-and-initialize-the-application"></a>Vytvoření a inicializace aplikace
 
-1. Vytvořte nový soubor Ruby v oblíbeném editoru nebo prostředí IDE a přidejte následující požadavky. 
+1. V oblíbených editorech nebo v integrovaném vývojovém prostředí vytvořte nový soubor Ruby a přidejte následující požadavky. 
 
     ```javascript
     require 'net/http'
@@ -38,7 +38,7 @@ V tomto rychlém startu můžete provést první volání do Bingu pravopisu zko
     require 'json'
     ```
 
-2. Vytváření proměnných pro váš klíč předplatného, identifikátor URI koncového bodu a cestu. Vytvoření parametry požadavku připojením `mkt=` parametr uvedení na trh, a `&mode` k `proof` důkazu režimu.
+2. Vytvořte proměnné pro klíč předplatného, identifikátor URI a cestu koncového bodu. Vytvořte parametry žádosti připojením `mkt=` parametru k vašemu trhu a `&mode` `proof` režimu kontroly pravopisu.
 
     ```ruby
     key = 'ENTER YOUR KEY HERE'
@@ -49,7 +49,7 @@ V tomto rychlém startu můžete provést první volání do Bingu pravopisu zko
 
 ## <a name="send-a-spell-check-request"></a>Odeslat žádost o kontrolu pravopisu
 
-1. Vytvořte identifikátor URI z řetězce identifikátoru uri, cestu a parametry vašeho hostitele. Sada je dotaz, který obsahuje text, že který chcete kontrola pravopisu.
+1. Vytvořte identifikátor URI z identifikátoru URI hostitele, cesty a řetězce parametrů. Nastavte dotaz tak, aby obsahoval text, který chcete kontrolovat pravopis.
 
    ```ruby
    uri = URI(uri + path + params)
@@ -59,7 +59,7 @@ V tomto rychlém startu můžete provést první volání do Bingu pravopisu zko
    })
    ```
 
-2. Vytvořte žádost o použitím tohoto identifikátoru URI vytvořený výše. Přidejte klíč k `Ocp-Apim-Subscription-Key` záhlaví.
+2. Vytvořte žádost pomocí identifikátoru URI sestaveného výše. Přidejte svůj klíč do `Ocp-Apim-Subscription-Key` záhlaví.
 
     ```ruby
     request = Net::HTTP::Post.new(uri)
@@ -75,14 +75,14 @@ V tomto rychlém startu můžete provést první volání do Bingu pravopisu zko
     end
     ```
 
-4. Získání odpovědi JSON a vypíše do konzoly. 
+4. Získejte odpověď JSON a vytiskněte ji do konzoly. 
 
     ```ruby
     result = JSON.pretty_generate(JSON.parse(response.body))
     puts result
     ```
 
-## <a name="example-json-response"></a>Příklad JSON odpovědi
+## <a name="example-json-response"></a>Příklad odpovědi JSON
 
 Úspěšná odpověď se vrátí ve formátu JSON, jak je znázorněno v následujícím příkladu: 
 
@@ -127,7 +127,7 @@ V tomto rychlém startu můžete provést první volání do Bingu pravopisu zko
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Vytvoření webové jednostránkové – aplikace](../tutorials/spellcheck.md)
+> [Vytvoření webové aplikace na jedné stránce](../tutorials/spellcheck.md)
 
-- [Co je API kontrola pravopisu Bingu?](../overview.md)
+- [Co je rozhraní API Bingu pro kontrolu pravopisu?](../overview.md)
 - [Referenční informace k rozhraní API pro kontrolu pravopisu Bingu v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference)

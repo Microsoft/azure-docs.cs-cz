@@ -1,6 +1,6 @@
 ---
-title: Doba pro příjem dat protokolu ve službě Azure Monitor | Dokumentace Microsoftu
-description: Vysvětluje různé faktory, které mají vliv latence ve shromažďování dat protokolu ve službě Azure Monitor.
+title: Doba přijímání dat protokolu v Azure Monitor | Microsoft Docs
+description: Vysvětluje různé faktory, které mají vliv na latenci při shromažďování dat protokolu v Azure Monitor.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -10,122 +10,132 @@ ms.service: log-analytics
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/24/2019
+ms.date: 07/18/2019
 ms.author: bwren
-ms.openlocfilehash: d508ce217e3a97b3399435cb63295eb28965359a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cdd1c8348acac37acbe8ad15199f3953bfe95a8e
+ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65605601"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68370658"
 ---
-# <a name="log-data-ingestion-time-in-azure-monitor"></a>Čas příjem dat protokolu ve službě Azure Monitor
-Azure Monitor je služba vysokou škálovatelností dat, která slouží tisíce zákazníků odesílání terabajty dat měsíčně rostoucí tempem. Jsou často dotazy týkající se čas potřebný pro data protokolu k dispozici po shromáždění zpracovat. Tento článek vysvětluje různé faktory ovlivňující tuto latenci.
+# <a name="log-data-ingestion-time-in-azure-monitor"></a>Doba přijímání dat protokolu v Azure Monitor
+Azure Monitor je služba data ve velkém měřítku, která slouží tisícům zákazníků, kteří každý měsíc odesílají terabajty dat při rostoucím tempu. K dispozici jsou často dotazy týkající se času, po který se data protokolu budou k dispozici po shromáždění. Tento článek vysvětluje různé faktory, které mají vliv na tuto latenci.
 
-## <a name="typical-latency"></a>Typické latence
-Latence odkazuje na čas, který data se vytvoří v monitorovaném systému a čas, který je k dispozici pro analýzy ve službě Azure Monitor. Typické latence pro příjem dat protokolu je mezi 2 až 5 minut. Konkrétní latence pro všechna data, zejména se liší v závislosti na řadě faktorů, které je popsáno níže.
+## <a name="typical-latency"></a>Typická latence
+Latence odkazuje na čas, kdy jsou data v monitorovaném systému vytvořena, a čas, který je k dispozici pro analýzu v Azure Monitor. Obvyklá latence k ingestování dat protokolu je mezi 2 a 5 minutami. Konkrétní latence pro konkrétní data se bude lišit v závislosti na nejrůznějších faktorech, které jsou vysvětleny níže.
 
 
-## <a name="factors-affecting-latency"></a>Faktory ovlivňující latence
-Ingestování celkový čas pro konkrétní sadu data dají rozdělit do následujících oblastech vyšší úrovně. 
+## <a name="factors-affecting-latency"></a>Faktory ovlivňující latenci
+Celková doba příjmu konkrétní sady dat může být rozdělena do následujících oblastí vysoké úrovně. 
 
-- Agent čas – čas zjištění událost, shromažďování vyžadováno a následně je odeslat do Azure monitoru bodem ingestování jako záznam protokolu. Ve většině případů se tento proces zařizuje Služba agenta.
-- Čas kanálu – doba, kterou kanálu příjmu dat trvá zpracovat záznam protokolu. Jedná se o analýze vlastnosti události a potenciálně přidáním počítaných informací.
-- Indexování čas – čas strávený na příjem záznam protokolu do služby Azure Monitor ukládat velké objemy dat.
+- Čas agenta – čas k odhalení události, její shromáždění a odeslání do Azure Monitor bod ingestování jako záznam protokolu. Ve většině případů tento proces zpracovává agent.
+- Čas kanálu – doba, kterou kanálu příjmu dat trvá zpracovat záznam protokolu. To zahrnuje analýzu vlastností události a potenciálně Přidání počítaných informací.
+- Čas indexování – čas strávený přijímáním záznamu protokolu do Azure Monitor velkých objemů dat.
 
-Podrobnosti o různých latencí v tomto procesu jsou popsané níže.
+Podrobnosti o různých latencích zavedených v tomto procesu jsou popsány níže.
 
-### <a name="agent-collection-latency"></a>Latence kolekce agenta
-Agenti a řešení pro správu používají různé strategie ke shromažďování dat z virtuálního počítače, který může mít vliv na latenci. Některé konkrétní příklady patří:
+### <a name="agent-collection-latency"></a>Latence shromažďování agentů
+Agenti a řešení pro správu používají různé strategie ke shromažďování dat z virtuálního počítače. to může mít vliv na latenci. Mezi konkrétní příklady patří následující:
 
-- Okamžitě se shromažďují události Windows, události procesu syslog a metriky výkonu. Čítače výkonu systému Linux jsou dotazovat každých 30 sekund.
-- Jakmile se změní jejich časového razítka se shromažďují protokoly služby IIS a vlastní protokoly. Pro protokoly služby IIS, to je ovlivněno [nakonfigurovaný ve službě IIS plán výměny](data-sources-iis-logs.md). 
-- Řešení Active Directory replikace provede posouzení každých pět dní, během řešení Active Directory Assessment provádí týdenní hodnocení infrastruktury služby Active Directory. Agent bude shromažďovat protokoly pouze po dokončení hodnocení.
+- Události Windows, události syslog a metriky výkonu se shromažďují hned. Čítače výkonu pro Linux se dotazují v intervalu 30 sekund.
+- Protokoly služby IIS a vlastní protokoly jsou shromažďovány po změně jejich časového razítka. V případě protokolů služby IIS je to ovlivněno plánem změny [nastaveným ve službě IIS](data-sources-iis-logs.md). 
+- Řešení replikace Active Directory provádí posouzení každých pět dní, zatímco Active Directory Assessment řešení provádí týdenní hodnocení infrastruktury služby Active Directory. Agent bude tyto protokoly shromažďovat až po dokončení posouzení.
 
-### <a name="agent-upload-frequency"></a>Frekvence odesílání agenta
-K zajištění, že agenta Log Analytics je jednoduché, agent ukládá do vyrovnávací paměti protokoly a pravidelně odesílá je do Azure monitoru. Nahrát frekvence se pohybuje mezi 30 sekund a 2 minuty. záleží na typu dat. Většina dat je nahraný v části 1 minuta. Stavy sítě může mít nepříznivý vliv latence těchto dat k dosažení bodem ingestování Azure Monitor.
+### <a name="agent-upload-frequency"></a>Frekvence nahrávání agenta
+Chcete-li zajistit, aby byl agent Log Analytics odlehčený, Agent ukládá protokoly do vyrovnávací paměti a pravidelně je odesílá do Azure Monitor. Frekvence nahrávání se v závislosti na typu dat liší v rozmezí 30 sekund a 2 minut. Většina dat se nahrává za 1 minutu. Stav sítě může negativně ovlivnit latenci těchto dat, aby se dosáhlo Azure Monitor bodu pro přijímání.
 
 ### <a name="azure-activity-logs-diagnostic-logs-and-metrics"></a>Protokoly aktivit Azure, diagnostické protokoly a metriky
-Azure data přidá další čas k dispozici v Log Analytics ingestování okamžiku ke zpracování:
+Data Azure přidávají další čas, který je k dispozici na Log Analytics bod příjmu pro zpracování:
 
-- Data z diagnostické protokoly trvat 2 až 15 minut, v závislosti na službu Azure. Najdete v článku [dotazu níže](#checking-ingestion-time) ke kontrole latence ve vašem prostředí
-- Platforma Azure metriky trvat 3 minuty k odeslání do Log Analytics ingestování datových bodů.
-- Data protokolu aktivit, bude trvat přibližně 10 – 15 minutách k odeslání do Log Analytics ingestování datových bodů.
+- Data z diagnostických protokolů v závislosti na službě Azure zabírají 2-15 minut. Podívejte se na [následující dotaz](#checking-ingestion-time) a prověřte tuto latenci ve vašem prostředí.
+- Metrika platformy Azure trvá 3 minuty, než se pošle Log Analytics bodu pro přijímání.
+- Data protokolu aktivit budou trvat přibližně 10-15 minut, než se pošle Log Analytics bodu pro přijímání.
 
-Jakmile je k dispozici v okamžiku ingestování dat trvá dalších 2 až 5 minut k dispozici pro dotazování.
+Jakmile budou data v bodu příjmu k dispozici, budou data pro dotazování trvat dalších 2-5 minut.
 
-### <a name="management-solutions-collection"></a>Kolekce řešení správy
-Některá řešení neshromažďují svá data z agenta a mohou používat metodu kolekce, která zavádí další latenci. Některá řešení bez pokusu o kolekci téměř v reálném čase shromažďovat data v pravidelných intervalech. Konkrétní příklady patří:
+### <a name="management-solutions-collection"></a>Kolekce řešení pro správu
+Některá řešení neshromažďují svá data z agenta a můžou používat metodu shromažďování, která zavádí další latenci. Některá řešení shromažďují data v pravidelných intervalech bez pokusu o shromažďování téměř v reálném čase. Konkrétní příklady zahrnují následující:
 
-- Řešení pro Office 365 se dotazuje správu aktivity rozhraní API Office 365, který aktuálně neposkytuje záruky latence jakékoli téměř v reálném čase pomocí protokolů aktivit.
-- Řešení na denní frekvence shromažďuje data řešení (informace o kompatibilitě pro příklad) Windows Analytics.
+- Řešení pro Office 365 dotazuje protokoly aktivit pomocí rozhraní API pro správu sady Office 365, které v současné době neposkytuje žádné záruky téměř v reálném čase.
+- Řešení Windows Analytics (například Update Compliance) se shromažďují podle každodenní frekvence.
 
-Naleznete v dokumentaci pro každé řešení určit její interval shromažďování.
+Chcete-li zjistit četnost shromažďování dat, přečtěte si dokumentaci pro každé řešení.
 
-### <a name="pipeline-process-time"></a>Čas zpracování kanálu
-Jakmile jsou záznamy protokolu přijatých do kanálu Azure Monitor, jsou napsaná do dočasného úložiště zajistit izolaci klientů a ujistěte se, že data nejsou ztracena. Tento postup přidá obvykle 5 až 15 sekund. Některá řešení pro správu implementují těžší algoritmy ke shromáždění dat a vyvoďte z nich jako streamování dat v. Například monitorování výkonu sítě agreguje příchozích dat přes 3minutové intervaly efektivně přidání 3minutové latence. Jiný proces, který zvyšuje latenci je proces, který zpracuje vlastní protokoly. V některých případech může tento proces přidat několik minut, latenci na protokoly, které se shromažďují ze souborů pomocí agenta.
+### <a name="pipeline-process-time"></a>Kanál – čas procesu
+Po ingestování záznamů protokolu do kanálu Azure Monitor (jak je identifikované vlastností [_TimeReceived](log-standard-properties.md#_timereceived) ) se zapisují do dočasného úložiště, které zajistí izolaci tenanta a zajistěte, aby se data neztratila. Tento proces obvykle přidává 5-15 sekund. Některá řešení pro správu implementují těžší algoritmy pro agregaci dat a odvozují přehledy při streamování dat. Například monitorování výkonu sítě agreguje příchozí data v intervalech po dobu tří minut a efektivně přidá latenci na 3 minuty. Dalším procesem, který přidává latenci, je proces, který zpracovává vlastní protokoly. V některých případech může tento proces přidat několik minut latence do protokolů shromažďovaných ze souborů agentem.
 
-### <a name="new-custom-data-types-provisioning"></a>Nové vlastní datové typy zřizování
-Při vytvoření nového typu vlastních dat z [vlastního protokolu](data-sources-custom-logs.md) nebo [rozhraní API kolekce dat](data-collector-api.md), systém vytvoří kontejner vyhrazeného úložiště. Toto je jednorázová režijní náklady, ke které dochází pouze na první výskyt tento typ dat.
+### <a name="new-custom-data-types-provisioning"></a>Nové zřizování vlastních datových typů
+Když se vytvoří nový typ vlastních dat z [vlastního protokolu](data-sources-custom-logs.md) nebo [rozhraní API kolekce dat](data-collector-api.md), systém vytvoří vyhrazený kontejner úložiště. Jedná se o jednorázovou režii, která nastane pouze při prvním výskytu tohoto datového typu.
 
-### <a name="surge-protection"></a>Nárůst ochrany
-Hlavní prioritou služby Azure Monitor je zajistit, že žádná zákaznická data nejsou ztracena, tak systém obsahuje integrovanou ochranu pro data nárůstů. To zahrnuje vyrovnávací paměti k zajištění, že i v rámci obrovské zatížení, systém bude nadále funkční. Při normálním zatížení tyto ovládací prvky přidat méně než minutu, ale v extrémní podmínky a selhání, přidat spoustu času, zatímco je zajištěna dat je bezpečné.
+### <a name="surge-protection"></a>Ochrana proti přepětí
+Nejvyšší prioritou Azure Monitor je zajistit, že se neztratí žádná zákaznická data, takže systém má vestavěnou ochranu proti nárůstu dat. To zahrnuje vyrovnávací paměti, aby se zajistilo, že i v případě obrovské zátěže systém zůstane funkční. V rámci normálního zatížení tyto ovládací prvky přidávají méně než minutu, ale v extrémních podmínkách a selháních by mohly přidat značnou dobu, zatímco data jsou bezpečná.
 
-### <a name="indexing-time"></a>Indexování čas
-Je integrované vyrovnávání pro každou platformu pro velké objemy dat mezi analytics a na rozdíl od okamžitý přístup k datům poskytuje pokročilé vyhledávací funkce. Azure Monitor umožňuje spouštět výkonné dotazy na miliard záznamů a získání výsledků během pár sekund. To je provést je to možné, protože infrastruktury výrazně transformuje data během jeho ingestování a ukládá ho do struktury jedinečné compact. Systém ukládá do vyrovnávací paměti dat. dokud dost není k dispozici k vytvoření těchto struktur. Je nutné dokončit předtím, než se ve výsledcích hledání zobrazí záznam protokolu.
+### <a name="indexing-time"></a>Čas indexování
+Pro každou platformu pro velké objemy dat je k dispozici předdefinovaná bilance, která poskytuje analytické a rozšířené možnosti vyhledávání na rozdíl od poskytování okamžitého přístupu k datům. Azure Monitor umožňuje spouštět výkonné dotazy na miliardy záznamů a získat výsledky během několika sekund. To je možné, protože infrastruktura transformuje data významně během příjmu a ukládá je v jedinečných kompaktních strukturách. Systém ukládá data do vyrovnávací paměti, dokud není k dispozici dostatek pro vytvoření těchto struktur. To je nutné provést před zobrazením záznamu protokolu ve výsledcích hledání.
 
-Tento proces aktuálně trvá přibližně 5 minut. Pokud je malé množství dat, ale méně času na vyšší datové sazby. To zdá být neintuitivní, ale tento proces umožní optimalizace v případě velkého objemu produkční úlohy.
+Tento proces v současné době trvá přibližně 5 minut, když dojde k malým objemům dat, ale méně času při vyšších sazbách dat. To se jeví jako neintuitivní, ale tento proces umožňuje optimalizaci latence pro úlohy s vysokými objemy produkce.
 
 
 
-## <a name="checking-ingestion-time"></a>Kontrola ingestování času
-Ingestování doba může lišit pro různé prostředky za různých okolností. Protokol dotazů můžete použít k identifikaci konkrétní chování vašeho prostředí.
+## <a name="checking-ingestion-time"></a>Kontroluje se doba přijímání.
+Doba příjmu se může u různých prostředků v různých případech lišit. Pomocí dotazů protokolu můžete identifikovat konkrétní chování vašeho prostředí. Následující tabulka určuje, jak můžete určit různé časy pro záznam při jeho vytvoření a odeslání do Azure Monitor.
 
-### <a name="ingestion-latency-delays"></a>Zpoždění latence příjmu
-Můžete měření latence konkrétní záznam porovnáním výsledek [ingestion_time()](/azure/kusto/query/ingestiontimefunction) funkce _TimeGenerated_ pole. Tato data je možné pomocí různých agregacích najít chování latence příjmu dat. Prozkoumejte některé percentilu času ingestování získat přehledy pro velký objem dat. 
+| Krok | Vlastnost nebo funkce | Komentáře |
+|:---|:---|:---|
+| Záznam vytvořený ve zdroji dat | [TimeGenerated](log-standard-properties.md#timegenerated-and-timestamp) <br>Pokud zdroj dat tuto hodnotu nenastaví, bude nastaven na stejnou dobu jako _TimeReceived. |
+| Záznam přijatý Azure Monitor koncový bod pro ingestování | [_TimeReceived](log-standard-properties.md#_timereceived) | |
+| Záznam uložený v pracovním prostoru a dostupný pro dotazy | [ingestion_time()](/azure/kusto/query/ingestiontimefunction) | |
 
-Například následující dotaz zobrazí počítače, které má nejvyšší doba ingestování za aktuální den: 
+### <a name="ingestion-latency-delays"></a>Zpoždění latence přijímání
+Můžete změřit latenci konkrétního záznamu porovnáním výsledku funkce [ingestion_time ()](/azure/kusto/query/ingestiontimefunction) s vlastností _TimeGenerated_ . Tato data je možné použít s různými agregacemi k nalezení, jak se latence příjmu chová. Prověřte si určitý percentil doby příjmu, abyste získali přehled o velkém množství dat. 
+
+Například následující dotaz vám ukáže, které počítače měly nejvyšší čas příjmu v průběhu aktuálního dne: 
 
 ``` Kusto
 Heartbeat
 | where TimeGenerated > ago(8h) 
 | extend E2EIngestionLatency = ingestion_time() - TimeGenerated 
-| summarize percentiles(E2EIngestionLatency,50,95) by Computer 
-| top 20 by percentile_E2EIngestionLatency_95 desc  
+| extend AgentLatency = _TimeReceived - TimeGenerated 
+| summarize percentiles(E2EIngestionLatency,50,95), percentiles(AgentLatency,50,95) by Computer 
+| top 20 by percentile_E2EIngestionLatency_95 desc
 ```
  
-Pokud chcete k podrobnostem na příjem čas pro určitý počítač po určitou dobu, použijte následující dotaz, který také vizualizuje data v grafu: 
+Chcete-li přejít k podrobnostem o době příjmu určitého počítače v časovém intervalu, použijte následující dotaz, který také vizualizuje data v grafu: 
 
 ``` Kusto
 Heartbeat 
-| where TimeGenerated > ago(24h) and Computer == "ContosoWeb2-Linux"  
+| where TimeGenerated > ago(24h) //and Computer == "ContosoWeb2-Linux"  
 | extend E2EIngestionLatencyMin = todouble(datetime_diff("Second",ingestion_time(),TimeGenerated))/60 
-| summarize percentiles(E2EIngestionLatencyMin,50,95) by bin(TimeGenerated,30m) 
-| render timechart  
+| extend AgentLatencyMin = todouble(datetime_diff("Second",_TimeReceived,TimeGenerated))/60 
+| summarize percentiles(E2EIngestionLatencyMin,50,95), percentiles(AgentLatencyMin,50,95) by bin(TimeGenerated,30m) 
+| render timechart
 ```
  
-Chcete-li zobrazit čas ingestování počítače podle země nebo oblasti, že se nacházejí ve které je na základě jejich IP adresy použijte tento dotaz: 
+Pomocí následujícího dotazu Zobrazte čas ingestování počítačů podle země nebo oblasti, ve které se nacházejí, na základě jejich IP adresy: 
 
 ``` Kusto
 Heartbeat 
 | where TimeGenerated > ago(8h) 
 | extend E2EIngestionLatency = ingestion_time() - TimeGenerated 
-| summarize percentiles(E2EIngestionLatency,50,95) by RemoteIPCountry 
+| extend AgentLatency = _TimeReceived - TimeGenerated 
+| summarize percentiles(E2EIngestionLatency,50,95),percentiles(AgentLatency,50,95) by RemoteIPCountry 
 ```
  
-Různé datové typy, které pocházejí z agenta může mít různé ingestování čekací dobu, tak předchozí dotazy můžete použít jiné typy. Použijte tento dotaz k prozkoumání době příjmu různé služby Azure: 
+Různým datovým typům, které pocházejí od agenta, může být čekací doba příjmu, takže předchozí dotazy lze použít s jinými typy. Pomocí následujícího dotazu prověřte dobu příjmu různých služeb Azure: 
 
 ``` Kusto
 AzureDiagnostics 
 | where TimeGenerated > ago(8h) 
 | extend E2EIngestionLatency = ingestion_time() - TimeGenerated 
-| summarize percentiles(E2EIngestionLatency,50,95) by ResourceProvider
+| extend AgentLatency = _TimeReceived - TimeGenerated 
+| summarize percentiles(E2EIngestionLatency,50,95), percentiles(AgentLatency,50,95) by ResourceProvider
 ```
 
 ### <a name="resources-that-stop-responding"></a>Prostředky, které přestanou reagovat 
-V některých případech se může zastavit prostředku odesílá data. Vysvětlení, pokud prostředek je odesílání dat, nebo Ne, podívejte se na jeho poslední záznam, který lze identifikovat podle standardu _TimeGenerated_ pole.  
+V některých případech může prostředek přestat odesílat data. Pokud chcete zjistit, jestli prostředek odesílá data, nebo ne, podívejte se na jeho poslední záznam, který se dá identifikovat standardním polem _TimeGenerated_ .  
 
-Použití _prezenčního signálu_ tabulky ke kontrole dostupnosti virtuálního počítače, protože prezenční signál agentovi odesílají jednou za minutu. Použijte tento dotaz můžete vytvořit seznam aktivních počítačů, kteří nehlásili nedávno prezenčního signálu: 
+Pomocí tabulky _prezenčního signálu_ Ověřte dostupnost virtuálního počítače, protože Agent odesílá prezenční signál jednou za minutu. Následující dotaz použijte k vypsání aktivních počítačů, které v poslední době neohlásily prezenční signál: 
 
 ``` Kusto
 Heartbeat  
@@ -135,5 +145,5 @@ Heartbeat
 ```
 
 ## <a name="next-steps"></a>Další postup
-* Čtení [smlouvu o úrovni (SLA) služeb](https://azure.microsoft.com/support/legal/sla/log-analytics/v1_1/) pro Azure Monitor.
+* Přečtěte si [smlouva SLA (SLA)](https://azure.microsoft.com/support/legal/sla/log-analytics/v1_1/) pro Azure monitor.
 

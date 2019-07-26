@@ -1,5 +1,5 @@
 ---
-title: Jak používat fronty služby Azure Service Bus pomocí Javy | Dokumentace Microsoftu
+title: Jak používat Azure Service Bus fronty pomocí Java | Microsoft Docs
 description: Naučte se používat fronty Service Bus v Azure. Ukázky kódu napsané v jazyce Java.
 services: service-bus-messaging
 documentationcenter: java
@@ -14,36 +14,36 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 04/10/2019
 ms.author: aschhab
-ms.openlocfilehash: cd1db615b11259bcf1d8aff988d2817e08065ca2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a7e6e86be8b6fc901d9637c85794cdfe1f744fd4
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65991735"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68360804"
 ---
-# <a name="how-to-use-service-bus-queues-with-java"></a>Jak používat fronty služby Service Bus pomocí Javy
+# <a name="how-to-use-service-bus-queues-with-java"></a>Jak používat Service Bus fronty pomocí Java
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
-V tomto kurzu se dozvíte, jak vytvářet aplikace Java na odesílání a příjem zpráv z fronty Service Bus. 
+V tomto kurzu se naučíte vytvářet aplikace v jazyce Java pro posílání zpráv a příjem zpráv z fronty Service Bus. 
 
 > [!NOTE]
-> Ukázky v Javě můžete najít na Githubu v [úložiště azure-service-bus](https://github.com/Azure/azure-service-bus/tree/master/samples/Java).
+> Ukázky Java můžete najít na GitHubu v [úložišti Azure-Service-Bus](https://github.com/Azure/azure-service-bus/tree/master/samples/Java).
 
 ## <a name="prerequisites"></a>Požadavky
-1. Předplatné Azure. K dokončení tohoto kurzu potřebujete mít účet Azure. Můžete si aktivovat váš [výhody pro předplatitele MSDN](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) nebo si zaregistrovat [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
-2. Pokud nemáte k dispozici pro práci s frontou, postupujte podle kroků v [použijte Azure portal můžete vytvořit frontu služby Service Bus](service-bus-quickstart-portal.md) článku můžete vytvořit frontu.
-    1. Přečtěte si rychlé **přehled** služby Service Bus **fronty**. 
-    2. Vytvoření služby Service Bus **obor názvů**. 
-    3. Získejte **připojovací řetězec**.
-    4. Vytvoření služby Service Bus **fronty**.
-3. Nainstalujte [sadu Azure SDK pro Javu][Azure SDK for Java]. 
+1. Předplatné Azure. K dokončení tohoto kurzu potřebujete mít účet Azure. Můžete aktivovat výhody pro [předplatitele MSDN](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) nebo si zaregistrovat [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
+2. Pokud nemáte frontu, ve které byste mohli pracovat, postupujte podle kroků v tématu [použití Azure Portal k vytvoření fronty Service Bus](service-bus-quickstart-portal.md) .
+    1. Přečtěte si rychlý **přehled** Service Busch **front**. 
+    2. Vytvořte **obor názvů**Service Bus. 
+    3. Získá **připojovací řetězec**.
+    4. Vytvořte frontu Service Bus.
+3. Nainstalujte [sadu Azure SDK pro jazyk Java][Azure SDK for Java]. 
 
 
-## <a name="configure-your-application-to-use-service-bus"></a>Konfigurace aplikace pro použití služby Service Bus
-Ujistěte se, že jste nainstalovali [sady Azure SDK pro Javu] [ Azure SDK for Java] před vytvořením této ukázky. Pokud používáte Eclipse, můžete nainstalovat [sady Azure Toolkit pro Eclipse] [ Azure Toolkit for Eclipse] , který obsahuje sadu Azure SDK pro Javu. Poté můžete přidat **knihovny Microsoft Azure Libraries for Java** do projektu:
+## <a name="configure-your-application-to-use-service-bus"></a>Konfigurace aplikace pro použití Service Bus
+Ujistěte se, že máte nainstalovanou [sadu Azure SDK pro jazyk Java][Azure SDK for Java] before building this sample. If you are using Eclipse, you can install the [Azure Toolkit for Eclipse][Azure Toolkit for Eclipse] , která obsahuje sadu Azure SDK pro jazyk Java. Pak můžete přidat **knihovny Microsoft Azure pro jazyk Java** do projektu:
 
-![](./media/service-bus-java-how-to-use-queues/eclipselibs.png)
+![Snímek obrazovky s kartou knihovny, kde můžete přidat knihovny](./media/service-bus-java-how-to-use-queues/eclipselibs.png)
 
-Přidejte následující `import` příkazy do horní části souboru Java:
+Do horní části `import` souboru Java přidejte následující příkazy:
 
 ```java
 // Include the following imports to use Service Bus APIs
@@ -63,7 +63,7 @@ import org.apache.commons.cli.*;
 ```
 
 ## <a name="send-messages-to-a-queue"></a>Zasílání zpráv do fronty
-Pro odesílání zpráv do fronty Service Bus, vaše aplikace vytvoří instanci **QueueClient** objektu a odesílá zprávy asynchronně. Následující kód ukazuje, jak odeslat zprávu fronty, který byl vytvořen prostřednictvím portálu.
+Chcete-li odesílat zprávy do fronty Service Bus, aplikace vytvoří instanci objektu **QueueClient** a asynchronně odesílá zprávy. Následující kód ukazuje, jak odeslat zprávu pro frontu, která byla vytvořena prostřednictvím portálu.
 
 ```java
 public void run() throws Exception {
@@ -111,20 +111,20 @@ public void run() throws Exception {
 
 ```
 
-Zprávy odeslané a přijaté ze služby Service Bus jsou fronty instance [zpráva](/java/api/com.microsoft.azure.servicebus.message?view=azure-java-stable) třídy. Zpráva objekty mají sadu standardních vlastností (třeba popisek a hodnota TimeToLive), slovník používaný pro udržení vlastních vlastností specifické pro aplikace a tělo s libovolnými aplikačními daty. Aplikace může tělo zprávy nastavit tak předá jakýkoli serializovatelný objekt do konstruktoru zprávy a příslušný serializátor pak bude sloužit k serializaci objektu. Alternativně můžete zadat **java. VSTUPNĚ-VÝSTUPNÍCH OPERACÍ. InputStream** objektu.
+Zprávy odeslané do a přijaté z fronty Service Bus jsou instancemi třídy [Message](/java/api/com.microsoft.azure.servicebus.message?view=azure-java-stable) . Objekty zpráv mají sadu standardních vlastností (například Label a TimeToLive), slovník, který slouží k uložení vlastních vlastností specifických pro aplikaci a tělo libovolných aplikačních dat. Aplikace může tělo zprávy nastavit tak, že do konstruktoru zprávy předáte libovolný serializovatelný objekt a příslušný serializátor pak bude použit k serializaci objektu. Případně můžete zadat **jazyk Java. Operace. Objekt InputStream**
 
 
 Fronty Service Bus podporují maximální velikost zprávy 256 KB [na úrovni Standard](service-bus-premium-messaging.md) a 1 MB [na úrovni Premium](service-bus-premium-messaging.md). Hlavička, která obsahuje standardní a vlastní vlastnosti aplikace, může mít velikost až 64 KB. Počet zpráv držených ve frontě není omezený, ale celková velikost zpráv držených ve frontě omezená je. Velikost fronty se definuje při vytvoření, maximální limit je 5 GB.
 
-## <a name="receive-messages-from-a-queue"></a>Příjem zpráv z fronty
-Hlavní způsob, jak pro příjem zpráv z fronty je použití **ServiceBusContract** objektu. Přijaté zprávy můžete pracovat ve dvou různých režimech: **ReceiveAndDelete** a **PeekLock**.
+## <a name="receive-messages-from-a-queue"></a>Přijímání zpráv z fronty
+Hlavním způsobem, jak přijímat zprávy z fronty, je použít objekt **ServiceBusContract** . Přijaté zprávy mohou fungovat ve dvou různých režimech: **ReceiveAndDelete** a **PeekLock**.
 
-Při použití **ReceiveAndDelete** režimu přijímat je jednorázová operace – to znamená, když Service Bus přijme požadavek čtení zprávy ve frontě, označí zprávu jako spotřebovávanou a vrátí ji do aplikace. **ReceiveAndDelete** režimu (což je výchozí režim) je nejjednodušší model a funguje nejlépe pro scénáře, ve kterých aplikace může tolerovat možnost, zprávy v případě selhání. Pro lepší vysvětlení si představte scénář, ve kterém spotřebitel vyšle požadavek na přijetí, ale než ji může zpracovat, dojde v něm k chybě a ukončí se.
-Vzhledem k tomu, že Service Bus označil zprávu jako spotřebovávanou, pak když aplikace znovu spustí a začne znovu přijímat zprávy, byl vynechán zprávu, která se spotřebovala před pádem vynechá.
+Při použití režimu **ReceiveAndDelete** je přijetí jednorázová operace – to znamená, že když Service Bus přijme požadavek na čtení zprávy ve frontě, označí zprávu jako spotřebou a vrátí ji do aplikace. **ReceiveAndDelete** režim (což je výchozí režim) je nejjednodušší model a funguje nejlépe ve scénářích, ve kterých aplikace může tolerovat nezpracovávání zprávy v případě selhání. Pro lepší vysvětlení si představte scénář, ve kterém spotřebitel vyšle požadavek na přijetí, ale než ji může zpracovat, dojde v něm k chybě a ukončí se.
+Vzhledem k tomu, že Service Bus označila zprávu jako spotřebovaná, pak když se aplikace znovu spustí a začne znovu přijímat zprávy, vynechala zprávu, která byla spotřebována před selháním.
 
-V **PeekLock** režimu, zobrazí se stane dvoufázového operaci, která umožňuje podporuje aplikace, které nemůžou tolerovat vynechání zpráv. Když Service Bus přijme požadavek, najde zprávu, která je na řadě ke spotřebování, uzamkne ji proti spotřebování jinými spotřebiteli a vrátí ji do aplikace. Poté, co aplikace dokončí zpracování zprávy (nebo spolehlivě uloží pro pozdější zpracování), dokončení druhé fáze přijetí voláním **odstranit** na přijatou zprávu. Když Service Bus uvidí **odstranit** volání, označí zprávu jako spotřebovávanou a odebere ji z fronty.
+V režimu **PeekLock** se přijme operace se dvěma fázemi, která umožňuje podporovat aplikace, které nemůžou tolerovat chybějící zprávy. Když Service Bus přijme požadavek, najde zprávu, která je na řadě ke spotřebování, uzamkne ji proti spotřebování jinými spotřebiteli a vrátí ji do aplikace. Poté, co aplikace dokončí zpracování zprávy (nebo je uloží spolehlivě pro budoucí zpracování), dokončí druhou fázi procesu příjmu voláním **Delete** v přijaté zprávě. Když Service Bus uvidí volání při **odstranění** , označí zprávu jako spotřebou a odebere ji z fronty.
 
-Následující příklad ukazuje, jak lze přijímat zprávy a zpracovaná pomocí **PeekLock** režimu (není výchozím režimu). Následující příklad provede nekonečnou smyčku a zpracovávat zprávy, když dorazí do našich `TestQueue`:
+Následující příklad ukazuje, jak lze přijímat a zpracovávat zprávy pomocí režimu **PeekLock** (nikoli ve výchozím režimu). Následující příklad provádí nekonečnou smyčku a zpracovává zprávy, když dorazí `TestQueue`do naší:
 
 ```java
     public void run() throws Exception {
@@ -177,17 +177,17 @@ Následující příklad ukazuje, jak lze přijímat zprávy a zpracovaná pomoc
 ```
 
 ## <a name="how-to-handle-application-crashes-and-unreadable-messages"></a>Zpracování pádů aplikace a nečitelných zpráv
-Service Bus poskytuje funkce, které vám pomůžou se elegantně zotavit z chyb v aplikaci nebo vyřešit potíže se zpracováním zprávy. Pokud přijímající aplikace nedokáže zpracovat zprávu z nějakého důvodu, pak může volat **unlockMessage** metoda na přijatou zprávu (místo **deleteMessage** metoda). To způsobí, že Service Bus zprávu odemkne ve frontě a zpřístupní ji pro další přijetí, buďto stejnou spotřebitelskou aplikací nebo jinou spotřebitelskou aplikací.
+Service Bus poskytuje funkce, které vám pomůžou se elegantně zotavit z chyb v aplikaci nebo vyřešit potíže se zpracováním zprávy. Pokud aplikace příjemce z nějakého důvodu nemůže zprávu zpracovat, může zavolat metodu **unlockMessage** na přijatou zprávu (namísto metody **deleteMessage** ). To způsobí, že Service Bus zprávu odemkne ve frontě a zpřístupní ji pro další přijetí, buďto stejnou spotřebitelskou aplikací nebo jinou spotřebitelskou aplikací.
 
-K dispozici je také vypršení časového limitu přidružené zpráva uzamčená ve frontě, a pokud aplikace zprávu nezpracuje zámku vyprší časový limit (například pokud aplikace spadne), Service Bus zprávu automaticky odemkne a díky tomu k dispozici pro další přijetí.
+Je také časový limit přidružený ke zprávě uzamčený ve frontě a pokud aplikace nedokáže zpracovat zprávu před vypršením časového limitu zámku (například pokud aplikace selže), Service Bus automaticky odemkne zprávu a vytvoří ji. k dispozici pro opětovné přijetí.
 
-V případě, že aplikace spadne po zpracování zprávy, ale předtím, než **deleteMessage** požadavku a pak je víckrát do aplikace při restartování. Tomu se často říká *Zpracování nejméně jednou* – to znamená, že každá zpráva se zpracuje alespoň jednou, ale v některých situacích se může doručit víckrát. Pokud daný scénář nemůže tolerovat zpracování víc než jednou, vývojáři aplikace by měli přidat další logiku navíc pro zpracování víckrát doručené zprávy. To se často opírá **getMessageId** metoda zprávy, která zůstává konstantní pokusu o doručení.
+V případě, že aplikace po zpracování zprávy dojde k chybě, ale před vydáním žádosti **deleteMessage** , je zpráva po restartování znovu doručena do aplikace. Tomu se často říká *Zpracování nejméně jednou* – to znamená, že každá zpráva se zpracuje alespoň jednou, ale v některých situacích se může doručit víckrát. Pokud daný scénář nemůže tolerovat zpracování víc než jednou, vývojáři aplikace by měli přidat další logiku navíc pro zpracování víckrát doručené zprávy. To se často dosahuje pomocí metody **getMessageId** zprávy, která zůstává konstantní při pokusůch o doručení.
 
 > [!NOTE]
-> Můžete spravovat prostředky služby Service Bus s [Service Bus Exploreru](https://github.com/paolosalvatori/ServiceBusExplorer/). Service Bus Exploreru umožňuje uživatelům připojit k oboru názvů služby Service Bus a správě entit pro zasílání zpráv snadno způsobem. Tento nástroj nabízí pokročilé funkce, například funkce importu/exportu nebo možnost otestovat tématu, fronty, předplatná, služby pro přenos přes, notification hubs a centra událostí. 
+> Prostředky Service Bus můžete spravovat pomocí [Service Bus Exploreru](https://github.com/paolosalvatori/ServiceBusExplorer/). Service Bus Explorer umožňuje uživatelům připojit se k oboru názvů Service Bus a snadno spravovat entity zasílání zpráv. Tento nástroj poskytuje pokročilé funkce, jako jsou funkce importu a exportu, nebo možnost testovat témata, fronty, odběry, služby Relay, centra oznámení a centra událostí. 
 
 ## <a name="next-steps"></a>Další kroky
-Teď, když jste se seznámili se základy front Service Bus, najdete v článku [fronty, témata a odběry] [ Queues, topics, and subscriptions] Další informace.
+Teď, když jste se naučili základy Service Busch front, najdete další informace v tématu [fronty, témata a předplatná][Queues, topics, and subscriptions] .
 
 Další informace naleznete ve [Středisku pro vývojáře Java](https://azure.microsoft.com/develop/java/).
 

@@ -1,82 +1,68 @@
 ---
-title: Přehled zabezpečení služby Azure Active Directory (Azure AD) Identity Protection | Dokumentace Microsoftu
-description: Zjistěte, jak Přehled zabezpečení poskytuje přehled o stavu zabezpečení vaší organizace.
+title: Přehled zabezpečení služby Azure Active Directory (Azure AD) Identity Protection | Microsoft Docs
+description: Přečtěte si, jak Přehled zabezpečení poskytuje přehled o stav zabezpečení vaší organizace.
 services: active-directory
-keywords: Azure active directory identity protection, zjišťování cloudových aplikací, Správa aplikací, zabezpečení, rizika, úroveň rizika, ohrožení zabezpečení, zásady zabezpečení
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: mtillman
-ms.assetid: e7434eeb-4e98-4b6b-a895-b5598a6cccf1
 ms.service: active-directory
 ms.subservice: identity-protection
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/14/2018
 ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 610668768c7baca13cb60caf1d810cced31ebec3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b894f7020083dd6ca46c394ec2930a3da36bc76d
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60452929"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68335203"
 ---
-# <a name="azure-active-directory-identity-protection---security-overview"></a>Azure Active Directory Identity Protection – zabezpečení – přehled
+# <a name="azure-active-directory-identity-protection---security-overview"></a>Azure Active Directory Identity Protection – Přehled zabezpečení
 
-[Přehled zabezpečení](https://aka.ms/IdentityProtectionRefresh) získáte přehled o stavu zabezpečení vaší organizace. Pomáhá identifikovat potenciální útoky a pochopit účinnost zásad.
+[Přehled zabezpečení](https://aka.ms/IdentityProtectionRefresh) vám poskytne přehled o stav zabezpečení vaší organizace. Pomáhá identifikovat možné útoky a pochopit efektivitu vašich zásad.
 
-Přehled zabezpečení je široce rozdělený do dvou částí:
+Přehled zabezpečení je široce rozdělen do dvou částí:
 
-- Trendy, na levé straně, zadejte časovou osu rizik ve vaší organizaci.
-
-- Dlaždice na pravé straně, zvýrazněte klíčové aktuální problémy ve vaší organizaci a navrhnout jak rychle reagovat.
-
+- Trendy na levé straně poskytují časovou osu rizika ve vaší organizaci.
+- Dlaždice na pravé straně, zvýrazněte klíčové problémy ve vaší organizaci a navrhněte, jak rychle provést akci.
 
 ![Přehled zabezpečení](./media/security-overview/01.png)
   
 ## <a name="trends"></a>Trendy
 
-### <a name="new-risky-users-detected"></a>Zjištěn nový rizikový uživatel.
+### <a name="new-risky-users-detected"></a>Zjistili se noví rizikoví uživatelé
 
-Tento graf zobrazuje počet nové rizikové uživatele, které byly zjištěny v průběhu zvoleném časovém období. Můžete filtrovat zobrazení tohoto grafu podle uživatele úrovně rizika (nízké, střední, vysoká). Najeďte myší přírůstky datum UTC zobrazíte počet rizikových uživatelů pro daný den zjištěna. Klikněte na tento graf přejdete na sestavu "Rizikový uživatel". Oprava uživatelů, kteří jsou na riziko, zvažte možnost změnit své heslo.
+Tento graf znázorňuje počet nových rizikových uživatelů zjištěných ve zvoleném časovém období. Můžete filtrovat zobrazení tohoto grafu podle úrovně rizika uživatele (nízká, střední, vysoká). Najeďte ukazatelem myši na přírůstek data UTC, abyste viděli počet rizikových uživatelů zjištěných pro daný den. Kliknutím na tento graf vás přinesete do sestavy rizikové uživatele. Chcete-li opravit uživatele, kteří jsou ohroženi, zvažte možnost změnit heslo.
 
-### <a name="new-risky-sign-ins-detected"></a>Nová riziková přihlášení zjistil
+### <a name="new-risky-sign-ins-detected"></a>Zjistila se nová riziková přihlášení
 
-Tento graf zobrazuje počet rizikových přihlášení zjištěnými za zvoleném časovém období. Můžete filtrovat zobrazení tohoto grafu podle rizika přihlašování typu (v reálném čase nebo agregace) a úroveň rizika přihlášení (nízká, střední, vysoká). Nechráněné přihlášení jsou úspěšné v reálném čase rizika přihlášení, které nebylo probíhá ověřovací test MFA. (Poznámka: Sign-INS, které bývají offline detekce za riziková nedá chránit v: zásady rizik přihlašování v reálném čase). Najeďte myší přírůstky datum UTC zobrazíte počet přihlášení zjistil riziko pro daný den. Klikněte na tento graf přejdete na sestavu "Rizikových přihlášení".
+Tento graf znázorňuje počet rizikových přihlášení zjištěných ve zvoleném časovém období. Zobrazení tohoto grafu můžete filtrovat podle typu rizika přihlašování (v reálném čase nebo agregace) a úrovně rizika přihlašování (nízká, střední, vysoká). Nechráněná přihlášení jsou úspěšná přihlášení rizik v reálném čase, která neproběhla proti ověřování MFA. (Poznámka: Přihlášení, která jsou riziková, protože v reálném čase není možné v reálném čase chránit pomocí zásad pro rizikové přihlašování. Najeďte ukazatelem myši na přírůstek data UTC, abyste viděli počet přihlášení, která se v daném dni objevila v nebezpečí. Kliknutím na tento graf vás přinesete do sestavy rizikové přihlášení.
 
 ## <a name="tiles"></a>Dlaždice
  
-### <a name="high-risk-users"></a>Uživatelů s vysokým rizikem
+### <a name="high-risk-users"></a>Uživatelé s vysokým rizikem
 
-Dlaždice 'uživatelů s vysokým rizikem' zobrazuje nejnovější počet uživatelů s velkou pravděpodobností identita ohrozit zabezpečení. Tady by měly být nejvyšší prioritu pro šetření. Kliknutím na dlaždici 'uživatelů s vysokým rizikem' bude přesměrována na filtrované zobrazení "Rizikoví uživatelé" sestavu zobrazující pouze uživatelé s vysokou úroveň rizika. Pomocí této sestavy, můžete další informace a oprava těchto uživatelů s resetováním hesla.
+Na dlaždici uživatelé s vysokým rizikem se zobrazuje nejnovější počet uživatelů s vysokou pravděpodobností ohrožení identity. Ty by měly být nejvyšší prioritou pro šetření. Kliknutím na dlaždici s vysokým rizikovým uživatelům se přesměruje na filtrované zobrazení sestavy rizikové uživatele, která zobrazuje jenom uživatele s úrovní rizika vysoká. Pomocí této sestavy můžete získat další informace a opravit tyto uživatele s resetováním hesla.
 
 ![Přehled zabezpečení](./media/security-overview/02.png)
 
+### <a name="medium-risk-users"></a>Uživatelé se středním rizikem
+Dlaždice středně rizikové uživatele zobrazuje nejnovější počet uživatelů se střední pravděpodobností ohrožení identity. Kliknutím na dlaždici středně rizikové uživatele se přesměruje na filtrované zobrazení sestavy rizikové uživatele, která zobrazuje jenom uživatele, kteří mají úroveň rizika střední. Pomocí této sestavy můžete tyto uživatele dále prozkoumat a opravit.
 
-### <a name="medium-risk-users"></a>Střední riziko uživatele
-Na dlaždici 'střední riziko uživatele' zobrazují nejnovější počtu uživatelů s střední pravděpodobnosti ohrožení identity. Kliknutím na dlaždici 'střední riziko uživatele' bude přesměrována na filtrované zobrazení "Rizikoví uživatelé" sestavu zobrazující pouze uživatelé s úrovní rizika média. Pomocí této sestavy můžete dále prozkoumat a oprava těchto uživatelů.
+### <a name="unprotected-risky-sign-ins"></a>Nechráněná riziková přihlášení
 
-### <a name="unprotected-risky-sign-ins"></a>Nechráněné riziková přihlášení
-
-Dlaždice 'Nechráněné rizikových přihlášení' zobrazuje počet za poslední týden úspěšné, v reálném čase rizikových přihlášení, které byly ani blokované ani MFA vystaven zásady podmíněného přístupu, Identity Protection rizikem zásad nebo na uživatele MFA. Jedná se o potenciálně ohroženými přihlašovací údaje, které proběhly úspěšně a probíhá ověřovací test MFA není. K ochraně těchto přihlášení v budoucnosti, používejte zásady rizik přihlašování. Kliknutím na dlaždici "Nechráněné rizikových přihlášení" přesměruje do okna Konfigurace zásady rizik přihlašování ve kterém můžete nakonfigurovat zásady rizik přihlašování k vynucení vícefaktorového ověřování na Přihlaste se pomocí úroveň rizika zadané.
-
+Dlaždice "nechráněná riziková přihlášení" zobrazuje počet úspěšných rizikových přihlášení v reálném čase, které se neblokovaly ani MFA nezdařily pomocí zásad podmíněného přístupu, zásad rizika ochrany identity nebo MFA pro uživatele. To může mít za následek ohrožení přihlášení, která byla úspěšná, a ne MFA. K ochraně takových přihlášení v budoucnu použijte zásady pro rizikové přihlašování. Kliknutím na dlaždici nechráněná riziková přihlášení se přesměruje na okno Konfigurace zásad rizik přihlašování, kde můžete nakonfigurovat zásady rizik přihlašování a vyžadovat MFA na přihlášení se zadanou úrovní rizika.
 
 ### <a name="legacy-authentication"></a>Starší verze ověřování
 
-Dlaždice 'Starší verze ověřování' Zobrazí počet za poslední týden starší verze ověřování ve vaší organizaci. Protokoly pro ověřování na starší verze nepodporují metody moderní zabezpečení, jako jsou MFA. Pokud chcete zabránit starší verze ověřování, můžete použít zásady podmíněného přístupu. Kliknutím na dlaždici "Starší verze ověřování" verze vás přesměrují na "Identity zabezpečení skóre".
+Na dlaždici starší verze ověřování se zobrazuje počet starších verzí ověřování ve vaší organizaci v posledním týdnu. Starší protokoly ověřování nepodporují moderní metody zabezpečení, jako je MFA. Pokud chcete zabránit staršímu ověřování, můžete použít zásady podmíněného přístupu. Kliknutím na dlaždici starší verze ověřování vás přesměruje na "bezpečné skóre identity".
 
+### <a name="identity-secure-score"></a>Identity Secure Score
 
-### <a name="identity-secure-score"></a>Skóre zabezpečení identit
-
-Skóre zabezpečení Identity opatření a porovnává lepšímu zabezpečení vzorů odvětví. Pokud kliknete na dlaždici "Identita zabezpečení skóre (Preview)", přesměruje se do okna "Identity zabezpečení skóre (Preview)' Pokud podrobnější informace o stavu zabezpečení.
-
+Skóre identity Secure měří a porovnává stav zabezpečení s oborovými vzory. Pokud kliknete na dlaždici "identity Security reskore (Preview)", přesměruje se na okno "bezpečné skóre identity (Preview)", kde si můžete přečíst další informace o vylepšení stav zabezpečení.
 
 ## <a name="next-steps"></a>Další postup
 
-- [Kanál 9: Azure AD a Identity zobrazit: Identity Protection ve verzi Preview](https://channel9.msdn.com/Series/Azure-AD-Identity/Azure-AD-and-Identity-Show-Identity-Protection-Preview)
-
-- [Povolení služby Azure Active Directory Identity Protection](enable.md)
-
+- [Kanál 9: Azure AD a zobrazení identity: Identity Protection ve verzi Preview](https://channel9.msdn.com/Series/Azure-AD-Identity/Azure-AD-and-Identity-Show-Identity-Protection-Preview)
+- [Povolení Azure Active Directory Identity Protection](enable.md)

@@ -1,35 +1,35 @@
 ---
-title: Vytvoření a používání vlastních pravidel v2 Firewall Azure webových aplikací (WAF)
-description: Tento článek obsahuje informace o tom, jak vytvořit vlastní pravidla brány Firewall webových aplikací (WAF) v2 ve službě Azure Application Gateway.
+title: Vytvoření a použití vlastních pravidel firewallu webových aplikací Azure (WAF) v2
+description: Tento článek poskytuje informace o tom, jak vytvořit vlastní pravidla firewallu webových aplikací (WAF) V2 v Azure Application Gateway.
 services: application-gateway
 ms.topic: article
 author: vhorne
 ms.service: application-gateway
 ms.date: 6/18/2019
 ms.author: victorh
-ms.openlocfilehash: 86ddb0b608cd17814cbcbb902f0b2905fe61094a
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: dcfdec0a746406296616456f6e6b8c0eabddf4b5
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67164679"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68478588"
 ---
-# <a name="create-and-use-web-application-firewall-v2-custom-rules"></a>Vytvoření a používání vlastních pravidel brány Firewall webových aplikací v2
+# <a name="create-and-use-web-application-firewall-v2-custom-rules"></a>Vytvoření a použití vlastních pravidel pro webové aplikace firewall v2
 
-Azure Application Gateway Firewall webových aplikací (WAF) verze 2 poskytuje ochranu webových aplikací. Tato ochrana je k dispozici ve Open Web Application zabezpečení projektu (OWASP) základní pravidlo nastavte (CRS). V některých případech budete muset vytvořit vaše vlastní pravidla podle svých konkrétních potřeb. Další informace o vlastní pravidla firewallu webových aplikací najdete v tématu [webových vlastní aplikací – přehled pravidel brány firewall](custom-waf-rules-overview.md).
+Firewall webových aplikací v Azure Application Gateway (WAF) v2 poskytuje ochranu pro webové aplikace. Tuto ochranu poskytuje základní sada pravidel OWASP (Open Web Application Security) (počítačový systém). V některých případech možná budete muset vytvořit vlastní pravidla, která budou vyhovovat vašim konkrétním potřebám. Další informace o vlastních pravidlech WAF najdete v tématu [Přehled vlastních pravidel firewallu webových aplikací](custom-waf-rules-overview.md).
 
-Tento článek popisuje několik ukázkových vlastních pravidel, které můžete vytvořit a používat se svou bránu WAF v2. Informace o nasazení brány WAF pomocí vlastního pravidla pomocí Azure Powershellu najdete v tématu [vlastní pravidla konfigurace firewallu webových aplikací pomocí Azure Powershellu](configure-waf-custom-rules.md).
+Tento článek ukazuje několik ukázkových uživatelských pravidel, která můžete vytvořit a používat s WAF v2. Informace o tom, jak nasadit WAF pomocí vlastního pravidla pomocí Azure PowerShell, najdete v tématu [Konfigurace vlastních pravidel firewallu webových aplikací pomocí Azure PowerShell](configure-waf-custom-rules.md).
 
 >[!NOTE]
-> Pokud vaše brána application gateway úrovně WAF nepoužívá, možnost upgradovat na vrstvu waf služby application gateway se zobrazí v pravém podokně.
+> Pokud Aplikační brána nepoužívá úroveň WAF, v pravém podokně se zobrazí možnost upgradovat aplikační bránu na úroveň WAF.
 
 ![Povolit WAF][fig1]
 
 ## <a name="example-1"></a>Příklad 1
 
-Víte, že je robotů s názvem *evilbot* , že chcete blokovat z procházení vašeho webu. V takovém případě bude blokovat na User-Agent *evilbot* v hlavičce požadavku.
+Víte, že je k dispozici robot s názvem *evilbot* , který chcete blokovat procházení webu. V takovém případě se zablokuje *Evilbot* User-Agent v hlavičce požadavku.
 
-Logic: p
+Logika: p
 
 ```azurepowershell
 $variable = New-AzApplicationGatewayFirewallMatchVariable `
@@ -51,7 +51,7 @@ $rule = New-AzApplicationGatewayFirewallCustomRule `
    -Action Block
 ```
 
-A tady je odpovídající JSON:
+A tady je odpovídající kód JSON:
 
 ```json
   {
@@ -75,11 +75,11 @@ A tady je odpovídající JSON:
   }
 ```
 
-WAF nasazeným v rámci tohoto vlastního pravidla najdete v tématu [nakonfigurovat vlastní pravidlo brány Firewall webových aplikací pomocí Azure Powershellu](configure-waf-custom-rules.md).
+Pokud chcete zobrazit WAF nasazené pomocí tohoto vlastního pravidla, přečtěte si téma [Konfigurace vlastního pravidla firewallu webových aplikací pomocí Azure PowerShell](configure-waf-custom-rules.md).
 
 ### <a name="example-1a"></a>Příklad 1a
 
-Můžete provést totéž pomocí regulárního výrazu:
+Stejnou věc můžete dosáhnout pomocí regulárního výrazu:
 
 ```azurepowershell
 $variable = New-AzApplicationGatewayFirewallMatchVariable `
@@ -101,7 +101,7 @@ $rule = New-AzApplicationGatewayFirewallCustomRule `
    -Action Block
 ```
 
-A odpovídající JSON:
+A odpovídající kód JSON:
 
 ```json
   {
@@ -127,11 +127,11 @@ A odpovídající JSON:
 
 ## <a name="example-2"></a>Příklad 2
 
-Chcete blokovat všechny požadavky z IP adresy v rozsahu 198.168.5.4/24.
+Chcete blokovat všechny požadavky z IP adres v rozsahu 198.168.5.4/24.
 
-V tomto příkladu zablokujete veškeré přenosy, které pocházejí z rozsahu IP adres. Název pravidla je *Pravidlo_1* a priorita je nastavena na hodnotu 100.
+V tomto příkladu zablokujete veškerý provoz, který pochází z rozsahu IP adres. Název pravidla je *myrule1* a Priorita je nastavená na 100.
 
-Logic: p
+Logika: p
 
 ```azurepowershell
 $variable1 = New-AzApplicationGatewayFirewallMatchVariable `
@@ -151,7 +151,7 @@ $rule = New-AzApplicationGatewayFirewallCustomRule `
    -Action Block
 ```
 
-Tady je odpovídající JSON:
+Tady je odpovídající kód JSON:
 
 ```json
   {
@@ -175,13 +175,13 @@ Tady je odpovídající JSON:
   }
 ```
 
-Odpovídající pravidel CRS: `SecRule REMOTE_ADDR "@ipMatch 192.168.5.4/24" "id:7001,deny"`
+Odpovídající pravidlo pro počítačový počítač:`SecRule REMOTE_ADDR "@ipMatch 192.168.5.4/24" "id:7001,deny"`
 
 ## <a name="example-3"></a>Příklad 3
 
-V tomto příkladu chcete blokovat User-Agent *evilbot*a provoz v 192.168.5.4/24 rozsahu. K tomu můžete vytvořit dvě samostatné odpovídají podmínkám a umístit je do stejného pravidla. Tím se zajistí obě *evilbot* v záhlaví User-Agent **a** z 192.168.5.4/24 rozsah IP adres jsou zablokované.
+V tomto příkladu chcete blokovat *Evilbot*uživatelského agenta a provoz v rozsahu 192.168.5.4/24. K tomu můžete vytvořit dvě samostatné podmínky shody a umístit je do stejného pravidla. Tím se zajistí, že se obě *evilbot* v hlavičce uživatelského agenta **a** IP adresy z rozsahu 192.168.5.4/24 zablokují.
 
-Logika: p **a** q
+Logic: p **a** q
 
 ```azurepowershell
 $variable1 = New-AzApplicationGatewayFirewallMatchVariable `
@@ -212,7 +212,7 @@ $condition2 = New-AzApplicationGatewayFirewallCondition `
    -Action Block
 ```
 
-Tady je odpovídající JSON:
+Tady je odpovídající kód JSON:
 
 ```json
 { 
@@ -251,9 +251,9 @@ Tady je odpovídající JSON:
 
 ## <a name="example-4"></a>Příklad 4:
 
-V tomto příkladu chcete blokovat, pokud se žádost nachází mimo rozsah IP adres *192.168.5.4/24*, nebo není identifikační řetězec prohlížeče *chrome* (což znamená, že uživatel není použití prohlížeče Chrome). Protože se používá tuto logiku **nebo**, dvě podmínky jsou v samostatných pravidla, jak je znázorněno v následujícím příkladu. *Pravidlo_1* a *Pravidlo_2* obě musí odpovídat zamítne.
+V tomto příkladu chcete blokovat, pokud je požadavek mimo rozsah IP adres *192.168.5.4/24*, nebo pokud řetězec uživatelského agenta není *Chrome* (znamená to, že uživatel nepoužívá prohlížeč Chrome). Vzhledem k tomu, že tato logika používá **nebo**, jsou tyto dvě podmínky v samostatných pravidlech, jak je vidět v následujícím příkladu. *myrule1* a *myrule2* musí odpovídat na blokování provozu.
 
-Logika: **není** (p **a** q) = **není** p **nebo Ne** q.
+Logic: **Not** (p **a** q) = **Not** p **nebo not** q.
 
 ```azurepowershell
 $variable1 = New-AzApplicationGatewayFirewallMatchVariable `
@@ -291,7 +291,7 @@ $rule2 = New-AzApplicationGatewayFirewallCustomRule `
    -Action Block
 ```
 
-A odpovídající JSON:
+A odpovídající kód JSON:
 
 ```json
 {
@@ -338,9 +338,9 @@ A odpovídající JSON:
 
 ## <a name="example-5"></a>Příklad 5
 
-Chcete blokovat vlastní SQLI. Od logiky použít zde je **nebo**, a všechny hodnoty jsou *RequestUri*, všechny aplikace *MatchValues* může být v seznamu odděleném čárkami.
+Chcete blokovat vlastní SQLI. Vzhledem k tomu, že zde použitá logika je **nebo**a všechny hodnoty jsou v *RequestUri*, všechny *MatchValues* mohou být v seznamu odděleném čárkami.
 
-Logika: p **nebo** q **nebo** r
+Logic: p **,** q **nebo** r
 
 ```azurepowershell
 $variable1 = New-AzApplicationGatewayFirewallMatchVariable `
@@ -359,7 +359,7 @@ $rule1 = New-AzApplicationGatewayFirewallCustomRule `
    -Action Block
 ```
 
-Odpovídající JSON:
+Odpovídající kód JSON:
 
 ```json
   {
@@ -385,7 +385,7 @@ Odpovídající JSON:
   }
 ```
 
-Alternativní Azure Powershellu:
+Alternativní Azure PowerShell:
 
 ```azurepowershell
 $variable1 = New-AzApplicationGatewayFirewallMatchVariable `
@@ -436,7 +436,7 @@ $rule3 = New-AzApplicationGatewayFirewallCustomRule `
    -Action Block
 ```
 
-Odpovídající JSON:
+Odpovídající kód JSON:
 
 ```json
   {
@@ -493,16 +493,8 @@ Odpovídající JSON:
   }
 ```
 
-Příslušné pravidlo pro ModSecurity:
-
-`SecRule REQUEST_URI "@contains 1-1" "id:7001,deny"`
-
-`SecRule REQUEST_URI "@contains --" "id:7001,deny"`
-
-`SecRule REQUEST_URI "@contains drop tables" "id:7001,deny"`
-
 ## <a name="next-steps"></a>Další postup
 
-Jakmile vytvoříte vlastní pravidla, se dozvíte, jak si chcete zobrazit protokoly WAF. Další informace najdete v tématu [diagnostice služby Application Gateway](application-gateway-diagnostics.md#diagnostic-logging).
+Po vytvoření vlastních pravidel se můžete dozvědět, jak zobrazit protokoly WAF. Další informace najdete v tématu [diagnostika Application Gateway](application-gateway-diagnostics.md#diagnostic-logging).
 
 [fig1]: ./media/application-gateway-customize-waf-rules-portal/1.png

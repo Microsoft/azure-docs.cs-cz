@@ -1,5 +1,5 @@
 ---
-title: 'Zápis: Python SDK pro přípravu dat'
+title: 'Zápis: Příprava dat Python SDK'
 titleSuffix: Azure Machine Learning service
 description: Další informace o vytváření dat pomocí sady SDK služby Azure Machine Learning Data Prep. Můžete napsat data v libovolném bodě v toku dat a soubory v libovolné z našich podporovaných umístění (místního systému souborů Azure Blob Storage a Azure Data Lake Storage).
 services: machine-learning
@@ -12,20 +12,20 @@ manager: cgronlun
 ms.reviewer: jmartens
 ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6206ad1a7356221bf94134e5d293c27d778cc187
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6753be5613b10b64936cddaafbb9859aad837b02
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66752872"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68358641"
 ---
-# <a name="write-and-configure-data--with-the-azure-machine-learning-data-prep-sdk"></a>Zápis a konfigurace dat pomocí sady SDK pro Azure Machine Learning Data Prep
+# <a name="write-and-configure-data--with-the-azure-machine-learning-data-prep-sdk"></a>Zápis a konfigurace dat pomocí sady Azure Machine Learning data PREP SDK
 
-V tomto článku najdete informace k zápisu dat pomocí různých metod [Azure Machine Learning Data Prep Python SDK](https://aka.ms/data-prep-sdk) a konfigurace dat pro experimentování s využitím [Azure Machine Learning SDK pro Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py).  V libovolném bodě toku dat je možné zapsat výstupní data. Zápisy jsou přidány jako kroky pro výsledný toku dat a postup spustit pokaždé, když se data spouštění toků. Data se zapisují do více souborů oddíl umožňuje paralelní zápisy.
+V tomto článku se seznámíte s různými metodami pro zápis dat pomocí [sady Azure Machine Learning data PREP Python SDK](https://aka.ms/data-prep-sdk) a jak nakonfigurovat tato data pro experimentování s [Azure Machine Learning SDK pro Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py).  Výstupní data lze zapsat v jakémkoli okamžiku v toku dat. Zápisy jsou přidány jako kroky do výsledného toku dat a tyto kroky jsou spouštěny při každém spuštění toku dat. Data se zapisují do více souborů oddíl umožňuje paralelní zápisy.
 
 > [!Important]
-> Pokud vytváříte nové řešení, zkuste [datové sady Azure Machine Learning](how-to-explore-prepare-data.md) (preview) můžete transformovat data, data snímku a uložit definice verzí datové sady. Datové sady je další verze přípravy dat SDK nabízí rozšířené funkce pro správu datových sad v řešení AI.
-> Pokud používáte `azureml-dataprep` balíček pro vytváření toku dat s namísto použití transformace `azureml-datasets` balíček k vytvoření datové sady, nebudete moct později použít snímky nebo systémovou správou verzí datové sady.
+> Pokud vytváříte nové řešení, vyzkoušejte [Azure Machine Learning datové sady](how-to-explore-prepare-data.md) (Preview), abyste mohli transformovat data, data snímků a ukládat definice datových sad s verzemi. Datové sady jsou další verzí sady SDK pro přípravu dat, která nabízí rozšířené funkce pro správu datových sad v řešeních AI.
+> Použijete `azureml-dataprep` -li balíček k vytvoření datového toku s transformacemi namísto `azureml-datasets` použití balíčku k vytvoření datové sady, nebudete moci později použít snímky nebo datové sady s verzemi.
 
 Vzhledem k tomu, že neexistují žádná omezení, kolik zapsat kroky jsou v kanálu, můžete snadno přidat další zápis kroky k získání průběžné výsledky při odstraňování problémů nebo jiných kanálů.
 
@@ -37,7 +37,7 @@ Jsou podporovány následující formáty souborů
 -   Soubory s oddělovači (CSV, TSV, atd.)
 -   Soubory parquet
 
-Pomocí sady SDK Azure Machine Learning Data Prep Python, můžete zapsat data do:
+Pomocí sady Azure Machine Learning data PREP Python SDK můžete zapisovat data do:
 + místního systému souborů
 + Azure Blob Storage
 + Azure Data Lake Storage
@@ -52,7 +52,7 @@ Pro usnadnění práce je vygenerován sentinel soubor s názvem úspěch po dok
 
 ## <a name="example-write-code"></a>Příklad zápisu kódu
 
-V tomto příkladu začněte tím, že načítání dat do toku dat pomocí `auto_read_file()`. Je-li znovu použít tato data pomocí různých formátech.
+V tomto příkladu začněte načtením dat do toku dat pomocí `auto_read_file()`. Je-li znovu použít tato data pomocí různých formátech.
 
 ```python
 import azureml.dataprep as dprep
@@ -73,10 +73,10 @@ Příklad výstupu:
 
 ### <a name="delimited-file-example"></a>Příklad souboru s oddělovači
 
-Následující kód používá [ `write_to_csv()` ](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.dataflow#write-to-csv-directory-path--datadestination--separator--str--------na--str----na---error--str----error------azureml-dataprep-api-dataflow-dataflow) funkce k zápisu dat do souboru s oddělovači.
+Následující kód používá [`write_to_csv()`](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.dataflow#write-to-csv-directory-path--datadestination--separator--str--------na--str----na---error--str----error------azureml-dataprep-api-dataflow-dataflow) funkci pro zápis dat do souboru s oddělovači.
 
 ```python
-# Create a new data flow using `write_to_csv` 
+# Create a new data flow using `write_to_csv`
 write_t = t.write_to_csv(directory_path=dprep.LocalFileOutput('./test_out/'))
 
 # Run the data flow to begin the write operation.
@@ -101,7 +101,7 @@ V předchozím výstupu se zobrazí několik chyb v číselných sloupcích z d�
 Přidáte parametry jako součást vaší zápisu volání a specifikaci řetězec použitý k reprezentaci hodnoty null.
 
 ```python
-write_t = t.write_to_csv(directory_path=dprep.LocalFileOutput('./test_out/'), 
+write_t = t.write_to_csv(directory_path=dprep.LocalFileOutput('./test_out/'),
                          error='BadData',
                          na='NA')
 write_t.run_local()
@@ -121,11 +121,11 @@ Předchozí kód vytvoří tento výstup:
 
 ### <a name="parquet-file-example"></a>Příklad souboru parquet
 
-Podobně jako `write_to_csv()`, [ `write_to_parquet()` ](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.dataflow#write-to-parquet-file-path--typing-union--datadestination--nonetype----none--directory-path--typing-union--datadestination--nonetype----none--single-file--bool---false--error--str----error---row-groups--int---0-----azureml-dataprep-api-dataflow-dataflow) nového toku dat pomocí zápisu Parquet krok, který se spustí při spuštění toku dat vrátí funkce hodnotu.
+`write_to_csv()` [PodobnějakofunkcevrátífunkcenovýtokdatskrokemzápisuParquet,kterýsespustí`write_to_parquet()`](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.dataflow#write-to-parquet-file-path--typing-union--datadestination--nonetype----none--directory-path--typing-union--datadestination--nonetype----none--single-file--bool---false--error--str----error---row-groups--int---0-----azureml-dataprep-api-dataflow-dataflow) při spuštění toku dat.
 
 ```python
 write_parquet_t = t.write_to_parquet(directory_path=dprep.LocalFileOutput('./test_parquet_out/'),
-error='MiscreantData')
+                                     error='MiscreantData')
 ```
 
 Spuštění toku dat. Pokud chcete spustit operaci zápisu.
@@ -147,11 +147,11 @@ Předchozí kód vytvoří tento výstup:
 |3| 10013.0 | 99999.0 | MiscreantData | NO| NO| |   MiscreantData|    MiscreantData|    MiscreantData|
 |4| 10014.0 | 99999.0 | MiscreantData | NO| NO| ENSO|   59783.0|    5350.0| 500.0|
 
-## <a name="configure-data-for-automated-machine-learning-training"></a>Konfigurace dat pro trénování automatizované machine learning
+## <a name="configure-data-for-automated-machine-learning-training"></a>Konfigurace dat pro automatizované školení strojového učení
 
-Předejte souboru nově zapsaná data do [ `AutoMLConfig` ](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py#automlconfig) objektu při přípravě na školení automatizované machine learning. 
+Dodejte nově zapsaný datový soubor do [`AutoMLConfig`](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py#automlconfig) objektu v přípravě na automatizované školení služby Machine Learning. 
 
-Následující příklad kódu ukazuje, jak převést váš tok dat Pandas dataframe a následně ho rozdělte do učení a testovací datové sady pro trénování automatizované machine learning.
+Následující příklad kódu ukazuje, jak převést datový tok na PANDAS dataframe a následně ho rozdělit na školení a testování datových sad pro automatizované školení strojového učení.
 
 ```Python
 from azureml.train.automl import AutoMLConfig
@@ -180,7 +180,7 @@ automated_ml_config = AutoMLConfig(task = 'regression',
 
 ```
 
-Pokud nechcete, aby všechny přípravné kroky dočasných dat, jako je v předchozím příkladu, můžete předat přímo do vašeho toku `AutoMLConfig`.
+Pokud nepotřebujete žádné mezilehlé kroky přípravy dat, jako v předchozím příkladu, můžete předat datový tok přímo do `AutoMLConfig`.
 
 ```Python
 automated_ml_config = AutoMLConfig(task = 'regression', 
@@ -192,6 +192,6 @@ automated_ml_config = AutoMLConfig(task = 'regression',
                    )
 ```
 
-## <a name="next-steps"></a>Další postup
-* Sada SDK [přehled](https://aka.ms/data-prep-sdk) vzory návrhu a příklady použití 
-* Automatizované strojového učení najdete v článku [kurzu](tutorial-auto-train-models.md) příklad regresní model
+## <a name="next-steps"></a>Další kroky
+* Vzory návrhu a příklady použití najdete v [přehledu](https://aka.ms/data-prep-sdk) sady SDK. 
+* Příklad regresního modelu najdete v [kurzu](tutorial-auto-train-models.md) automatizovaného strojového učení.

@@ -1,6 +1,6 @@
 ---
-title: Azure Notification Hubs zabezpečené nabízená oznámení
-description: Zjistěte, jak k odesílání zabezpečených nabízených oznámení v Azure. Ukázky kódu jsou vytvořeny v C# s použitím .NET API.
+title: Azure Notification Hubs Secure push
+description: Naučte se odesílat zabezpečená nabízená oznámení v Azure. Ukázky kódu jsou vytvořeny v C# s použitím .NET API.
 documentationcenter: windows
 author: jwargo
 manager: patniko
@@ -14,14 +14,14 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/04/2019
 ms.author: jowargo
-ms.openlocfilehash: cf23ef5df3bdcaad23841da111fa06cc36b4cd57
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2f18b4793d205cfa019f501549dedfcd62f501e7
+ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61459159"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68348591"
 ---
-# <a name="securely-push-notifications-from-azure-notification-hubs"></a>Bezpečně nabízená oznámení ze služby Azure Notification Hubs
+# <a name="securely-push-notifications-from-azure-notification-hubs"></a>Zabezpečená nabízená oznámení z Azure Notification Hubs
 
 > [!div class="op_single_selector"]
 > * [Univerzální pro Windows](notification-hubs-aspnet-backend-windows-dotnet-wns-secure-push-notification.md)
@@ -30,39 +30,39 @@ ms.locfileid: "61459159"
 
 ## <a name="overview"></a>Přehled
 
-Podpora nabízená oznámení v Microsoft Azure umožňuje získat přístup k snadným ovládáním, multiplatformní a horizontálním navýšením kapacity škálovanou infrastrukturu, což výrazně zjednodušuje provádění nabízená oznámení pro zákaznické a podnikové aplikace pro mobilní zařízení platformy.
+Podpora nabízených oznámení v Microsoft Azure umožňuje přístup k infrastruktuře nabízených oznámení s více platformami a škálování na více platforem, která významně zjednodušuje implementaci nabízených oznámení pro příjemce i podnikové aplikace pro mobilní zařízení. platformu.
 
-Z důvodu dodržování legislativních nebo omezení zabezpečení, někdy aplikace může být vhodné zahrnout něco oznámení, který nemůže být přenesen prostřednictvím infrastrukturu standardní nabízených oznámení. Tento kurz popisuje, jak dosáhnout stejné prostředí tím, že odesílání citlivé informace přes zabezpečené ověřené připojení mezi klientským zařízením a back-endu aplikace.
+V důsledku regulativních nebo bezpečnostních omezení někdy může aplikace chtít v oznámení zahrnout něco, co nelze přenést pomocí standardní infrastruktury nabízených oznámení. V tomto kurzu se dozvíte, jak dosáhnout stejného prostředí odesláním citlivých informací prostřednictvím zabezpečeného a ověřeného připojení mezi klientským zařízením a back-endu aplikace.
 
-Na vysoké úrovni tok je následujícím způsobem:
+Tok je na vysoké úrovni následující:
 
 1. Back-end aplikace:
-   * Úložiště zabezpečené datové části v back-end databáze.
-   * ID tohoto oznámení se odešle do zařízení (se neodesílají žádné informace o zabezpečení).
-2. Aplikace na zařízení, když obdrží oznámení:
-   * Zařízení kontaktuje back endu, zabezpečené datové části požadavku.
-   * Aplikace můžete zobrazit datovou část jako oznámení na zařízení.
+   * Ukládá zabezpečenou datovou část do back-endové databáze.
+   * Odešle ID tohoto oznámení do zařízení (nejsou odesílány žádné zabezpečené informace).
+2. Aplikace v zařízení při příjmu oznámení:
+   * Zařízení kontaktuje back-end požadující zabezpečenou datovou část.
+   * Aplikace může datovou část zobrazit jako oznámení na zařízení.
 
-Je důležité si uvědomit, že v předchozím toku (a v tomto kurzu) předpokládáme, že zařízení ukládá ověřovací token v místním úložišti, po přihlášení uživatele. Zaručí se tak zcela hladce, jak zařízení můžete načíst zabezpečené pomocí tohoto tokenu datovou část v oznámení. Pokud vaše aplikace neukládá ověřovacích tokenů na zařízení nebo pokud můžete platnost těchto tokenů, aplikace pro zařízení, při přijetí oznámení by měl zobrazit obecné oznámení výzvou, aby uživatel ke spuštění aplikace. Aplikace pak ověří uživatele a zobrazuje datová část oznámení.
+Je důležité si uvědomit, že v předchozím toku (a v tomto kurzu) předpokládáme, že zařízení po přihlášení uživatele uloží ověřovací token do místního úložiště. To zaručuje zcela bezproblémové prostředí, protože zařízení může načíst zabezpečenou datovou část oznámení pomocí tohoto tokenu. Pokud vaše aplikace neukládá ověřovací tokeny na zařízení nebo pokud tato tokeny vypršela, měla by aplikace zařízení po přijetí oznámení zobrazit obecné oznámení s výzvou, aby uživatel spustil aplikaci. Aplikace pak uživatele ověří a zobrazí datovou část oznámení.
 
-V tomto kurzu zabezpečení nabízené ukazuje, jak bezpečně pošle nabízené oznámení. Tento kurz vychází [oznamování uživatelům pomocí](notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md) kurz, abyste měli dokončíte kroky uvedené v tomto kurzu nejprve.
+Tento kurz zabezpečeného nabízeného oznámení ukazuje, jak bezpečně odeslat nabízené oznámení. Kurz se sestaví v kurzu informování [uživatelů](notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md) , takže byste nejdřív měli provést kroky v tomto kurzu.
 
 > [!NOTE]
-> Tento kurz předpokládá, že jste vytvořili a konfiguraci centra oznámení, jak je popsáno v [Začínáme se službou Notification Hubs (Windows Store)](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md).
-> Všimněte si také, že Windows Phone 8.1 vyžaduje přihlašovací údaje Windows (ne Windows Phone) a úlohy na pozadí se nefungují na Windows Phone 8.0 nebo Silverlight 8.1. Pro aplikace Windows Store, můžete přijímat oznámení prostřednictvím úlohy na pozadí pouze v případě, že aplikace je povolená zamykací obrazovky (klikněte na zaškrtávací políčko v Appmanifest).
+> V tomto kurzu se předpokládá, že jste vytvořili a nakonfigurovali centrum oznámení, jak je popsáno v [Začínáme Notification Hubs (Windows Store)](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md).
+> Všimněte si také, že Windows Phone 8,1 vyžaduje pověření Windows (ne Windows Phone) a že úlohy na pozadí nefungují na Windows Phone 8,0 nebo Silverlight 8,1. Pro aplikace pro Windows Store můžete dostávat oznámení prostřednictvím úlohy na pozadí jenom v případě, že je aplikace zapnutá zamykací obrazovka (klikněte na zaškrtávací políčko v AppManifest).
 
 [!INCLUDE [notification-hubs-aspnet-backend-securepush](../../includes/notification-hubs-aspnet-backend-securepush.md)]
 
-## <a name="modify-the-windows-phone-project"></a>Upravit projekt Windows Phone
+## <a name="modify-the-windows-phone-project"></a>Úprava Windows Phoneho projektu
 
-1. V **NotifyUserWindowsPhone** projektu, přidejte následující kód do souboru App.xaml.cs registrace nabízených oznámení úlohy na pozadí. Přidejte následující řádek kódu na konec metody `OnLaunched()`:
+1. V projektu **NotifyUserWindowsPhone** přidejte následující kód pro App.XAML.cs k registraci úlohy Push na pozadí. Přidejte následující řádek kódu na konec metody `OnLaunched()`:
 
-    ```c#
+    ```csharp
     RegisterBackgroundTask();
     ```
-2. Stále v souboru App.xaml.cs přidejte následující kód bezprostředně po `OnLaunched()` metody:
+2. Stále v App.XAML.cs přidejte následující kód hned za `OnLaunched()` metodu:
 
-    ```c#
+    ```csharp
     private async void RegisterBackgroundTask()
     {
         if (!Windows.ApplicationModel.Background.BackgroundTaskRegistration.AllTasks.Any(i => i.Value.Name == "PushBackgroundTask"))
@@ -77,24 +77,24 @@ V tomto kurzu zabezpečení nabízené ukazuje, jak bezpečně pošle nabízené
         }
     }
     ```
-3. Přidejte následující `using` příkazů v horní části souboru App.xaml.cs:
+3. Do horní části `using` souboru App.XAML.cs přidejte následující příkazy:
 
-    ```c#
+    ```csharp
     using Windows.Networking.PushNotifications;
     using Windows.ApplicationModel.Background;
     ```
 4. Ve Visual Studiu zvolte v nabídce **Soubor** možnost **Uložit vše**.
 
-## <a name="create-the-push-background-component"></a>Vytvoření komponenty na pozadí nabízených oznámení
+## <a name="create-the-push-background-component"></a>Vytvoření komponenty na pozadí push
 
-Dalším krokem je vytvoření komponenty na pozadí nabízených oznámení.
+Dalším krokem je vytvoření komponenty na pozadí push.
 
-1. V Průzkumníku řešení klikněte pravým tlačítkem myši na uzel řešení na nejvyšší úrovni (**řešení SecurePush** v tomto případě), potom klikněte na tlačítko **přidat**, klikněte na **nový projekt**.
-2. Rozbalte **Store aplikace**, pak klikněte na tlačítko **aplikace Windows Phone**, klikněte na **součást prostředí Windows Runtime (Windows Phone)** . Pojmenujte projekt **PushBackgroundComponent**a potom klikněte na tlačítko **OK** pro vytvoření projektu.
+1. V Průzkumník řešení klikněte pravým tlačítkem myši na uzel nejvyšší úrovně řešení (**SecurePush řešení** v tomto případě), pak klikněte na **Přidat**a potom na **Nový projekt**.
+2. Rozbalte položku **aplikace pro Store**, klikněte na **Windows Phone aplikace**a pak klikněte na **součást prostředí Windows Runtime (Windows Phone)** . Pojmenujte projekt **PushBackgroundComponent**a kliknutím na tlačítko **OK** vytvořte projekt.
 
     ![][12]
-3. V Průzkumníku řešení klikněte pravým tlačítkem myši **PushBackgroundComponent (Windows Phone 8.1)** projektu a pak klikněte na **přidat**, klikněte na **třídy**. Pojmenujte novou třídu `PushBackgroundTask.cs`. Klikněte na tlačítko **přidat** ke generování třídy.
-4. Nahradí celý obsah `PushBackgroundComponent` definice oboru názvů následujícím kódem, kde nahradíte zástupný text `{back-end endpoint}` s koncovým bodem back-end získané při nasazování back endu:
+3. V Průzkumník řešení klikněte pravým tlačítkem na projekt **PushBackgroundComponent (Windows Phone 8,1)** , pak klikněte na **Přidat**a pak na **Třída**. Pojmenujte novou `PushBackgroundTask.cs`třídu. Pro vygenerování třídy klikněte na tlačítko **Přidat** .
+4. Celý obsah `PushBackgroundComponent` definice oboru názvů nahraďte následujícím kódem a nahraďte zástupný symbol `{back-end endpoint}` koncovým bodem back-end, který byl získán při nasazení back-endu:
 
     ```csharp
     public sealed class Notification
@@ -140,14 +140,14 @@ Dalším krokem je vytvoření komponenty na pozadí nabízených oznámení.
             }
         }
     ```
-5. V Průzkumníku řešení klikněte pravým tlačítkem myši **PushBackgroundComponent (Windows Phone 8.1)** projektu a pak klikněte na tlačítko **spravovat balíčky NuGet**.
+5. V Průzkumník řešení klikněte pravým tlačítkem na projekt **PushBackgroundComponent (Windows Phone 8,1)** a pak klikněte na **Spravovat balíčky NuGet**.
 6. Na levé straně klikněte na **Online**.
 7. Do pole **Hledat** zadejte **Http Client**.
-8. V seznamu výsledků klepněte na tlačítko **knihovny klienta HTTP Microsoft**a potom klikněte na tlačítko **nainstalovat**. Dokončete instalaci.
-9. Vraťte se do pole **Hledat** pro balíčky NuGet a zadejte **Json.net**. Nainstalujte **Json.NET** balíček a potom zavřete okno Správce balíčků NuGet.
-10. Přidejte následující `using` příkazů v horní části `PushBackgroundTask.cs` souboru:
+8. V seznamu výsledků klikněte na **klientské knihovny Microsoft http**a pak klikněte na **nainstalovat**. Dokončete instalaci.
+9. Vraťte se do pole **Hledat** pro balíčky NuGet a zadejte **Json.net**. Nainstalujte balíček **JSON.NET** a pak zavřete okno Správce balíčků NuGet.
+10. Na začátek `using` `PushBackgroundTask.cs` souboru přidejte následující příkazy:
 
-    ```c#
+    ```csharp
     using Windows.ApplicationModel.Background;
     using Windows.Networking.PushNotifications;
     using System.Net.Http;
@@ -157,25 +157,25 @@ Dalším krokem je vytvoření komponenty na pozadí nabízených oznámení.
     using Windows.UI.Notifications;
     using Windows.Data.Xml.Dom;
     ```
-11. V Průzkumníku řešení v **NotifyUserWindowsPhone (Windows Phone 8.1)** projektu, klikněte pravým tlačítkem na **odkazy**, pak klikněte na tlačítko **přidat odkaz...** . V dialogovém okně Správce odkazů, zaškrtněte políčko vedle položky **PushBackgroundComponent**a potom klikněte na tlačítko **OK**.
-12. V Průzkumníku řešení poklikejte na **Package.appxmanifest** v **NotifyUserWindowsPhone (Windows Phone 8.1)** projektu. V části **oznámení**, nastavte **podporuje informační zprávy** k **Ano**.
+11. V Průzkumník řešení projektu **NotifyUserWindowsPhone (Windows Phone 8,1)** klikněte pravým tlačítkem na **odkazy**a pak klikněte na **Přidat odkaz...** . V dialogovém okně Správce odkazů zaškrtněte políčko vedle **PushBackgroundComponent**a pak klikněte na **OK**.
+12. V Průzkumník řešení dvakrát klikněte na **Package. appxmanifest** v projektu **NotifyUserWindowsPhone (Windows Phone 8,1)** . V části **oznámení**nastavte **informační** zprávy s možností **Ano**.
 
     ![][3]
-13. Pořád ještě v **Package.appxmanifest**, klikněte na tlačítko **deklarace** nabídce v horní části. V **dostupné deklarace** rozevírací seznam, klikněte na tlačítko **úlohy na pozadí**a potom klikněte na tlačítko **přidat**.
-14. V **Package.appxmanifest**v části **vlastnosti**, zkontrolujte **nabízené oznámení**.
-15. V **Package.appxmanifest**v části **nastavení aplikace**, typ **PushBackgroundComponent.PushBackgroundTask** v **vstupní bod** pole.
+13. Pořád v **balíčku. appxmanifest**klikněte na nabídku **deklarace** v horní části. V rozevíracím seznamu **dostupné deklarace** klikněte na **úlohy na pozadí**a pak klikněte na **Přidat**.
+14. V **balíčku. appxmanifest**v části **vlastnosti**zaškrtněte **nabízené oznámení**.
+15. V **balíčku. appxmanifest**v části **nastavení aplikace**zadejte do pole **vstupní bod** **PushBackgroundComponent. PushBackgroundTask** .
 
     ![][13]
 16. V nabídce **Soubor** klikněte na **Uložit vše**.
 
 ## <a name="run-the-application"></a>Spuštění aplikace
 
-Pokud chcete spustit aplikaci, postupujte takto:
+Chcete-li spustit aplikaci, postupujte následovně:
 
-1. V sadě Visual Studio, spusťte **AppBackend** aplikace webového rozhraní API. Zobrazí se webová stránka ASP.NET.
-2. V sadě Visual Studio, spusťte **NotifyUserWindowsPhone (Windows Phone 8.1)** aplikace Windows Phone. Emulátor Windows Phone spuštěn a automaticky načte aplikaci.
-3. V **NotifyUserWindowsPhone** aplikace uživatelského rozhraní, zadejte uživatelské jméno a heslo. Mohou to být libovolný řetězec, ale musí být stejnou hodnotu.
-4. V **NotifyUserWindowsPhone** aplikace uživatelského rozhraní, klikněte na tlačítko **přihlášení a registraci**. Pak klikněte na tlačítko **odesílání nabízených oznámení**.
+1. V aplikaci Visual Studio spusťte aplikaci webového rozhraní API **projekt appbackend** . Zobrazí se webová stránka ASP.NET.
+2. V aplikaci Visual Studio spusťte aplikaci Windows Phone **NotifyUserWindowsPhone (Windows Phone 8,1)** . Emulátor Windows Phone se spustí a automaticky načte aplikaci.
+3. V uživatelském rozhraní aplikace **NotifyUserWindowsPhone** zadejte uživatelské jméno a heslo. Může se jednat o libovolný řetězec, ale musí se jednat o stejnou hodnotu.
+4. V uživatelském rozhraní aplikace **NotifyUserWindowsPhone** klikněte na **Přihlásit se a**Zaregistrujte se. Pak klikněte na **Odeslat nabízení**.
 
 [3]: ./media/notification-hubs-aspnet-backend-windows-dotnet-secure-push/notification-hubs-secure-push3.png
 [12]: ./media/notification-hubs-aspnet-backend-windows-dotnet-secure-push/notification-hubs-secure-push12.png

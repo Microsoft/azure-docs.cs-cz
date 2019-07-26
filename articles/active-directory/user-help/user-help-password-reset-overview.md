@@ -1,6 +1,6 @@
 ---
-title: Resetovat vlastní pracovní nebo školní přehled hesla – Azure Active Directory | Dokumentace Microsoftu
-description: Seznam odkazů na články o registraci a resetování hesla pracovního nebo školního bez pomoci správce.
+title: Přehled resetování vlastního pracovního nebo školního hesla – Azure Active Directory | Microsoft Docs
+description: Seznam odkazů na články o registraci a resetování svého pracovního nebo školního hesla bez pomoci správce.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -12,27 +12,27 @@ ms.topic: overview
 ms.date: 05/15/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f1dae1b8577c4f90211c3b377dbf88efe6907326
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 66cb7218b5217565529e1e15d875c23dff10e06f
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66243888"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68382265"
 ---
-# <a name="reset-your-own-work-or-school-password-overview"></a>Resetovat vlastní pracovní nebo školní přehled hesel
+# <a name="reset-your-own-work-or-school-password-overview"></a>Přehled resetování vlastního pracovního nebo školního hesla
 
-Pokud zapomněli jste heslo pracovního nebo školního nikdy máte heslo z vaší organizace nebo byla uzamčena mimo svůj účet, můžete použít své bezpečnostní údaje a vašeho mobilního zařízení resetovat své heslo pracovního nebo školního.
+Pokud jste zapomněli své pracovní nebo školní heslo, nikdy nebudete mít heslo z vaší organizace nebo jste jeho uzamčením nedostali svůj účet, můžete k resetování svého pracovního nebo školního hesla použít své bezpečnostní údaje a mobilní zařízení.
 
-Správce musí tuto funkci zapnout pro, abyste mohli zaregistrovat vaše informace a resetovat vlastní heslo. Pokud se nezobrazí **si vzpomenout na heslo** možnost, znamená to, že správce není zapnuté funkci pro vaši organizaci. Pokud si myslíte, že to není správné, obraťte se na vaše oddělení technické podpory.
+Správce musí tuto funkci zapnout, aby bylo možné zaregistrovat vaše informace a resetovat vlastní heslo. Pokud nevidíte možnost **zapomenuté heslo** , znamená to, že správce tuto funkci ve vaší organizaci nezapnul. Pokud se domníváte, že to není správné, obraťte se na helpdesk, kde najdete pomoc.
 
 >[!Important]
 >Tento obsah je určený pro uživatele. Pokud jste správce, najdete další informace o nastavení a správě vašeho prostředí Azure Active Directory (Azure AD) v [dokumentaci k Azure Active Directory](https://docs.microsoft.com/azure/active-directory).
 
-## <a name="reset-your-own-work-or-school-password-related-articles"></a>Resetovat vlastní pracovní nebo školní související s hesly články
+## <a name="reset-your-own-work-or-school-password-related-articles"></a>Resetování vlastních pracovních nebo školních článků souvisejících s heslem
 
-Podrobné informace a pokyny o tom, jak zaregistrovat si účet pro resetování hesla a jak resetovat svoje heslo, naleznete v následujících článcích:
+Podrobné informace a pokyny k registraci vašeho účtu pro resetování hesla a resetování hesla najdete v následujících článcích:
 
 |Článek |Popis |
 |------|------------|
-|[Registrace samoobslužného resetování hesla](active-directory-passwords-reset-register.md)| Pokyny ohledně toho, jak ověřit své metody ověřování a přihlašování až pro hesla pomocí samoobslužné služby obnovit tak, aby mohli resetovat vlastní heslo.|
-|[Resetování hesla](user-help-reset-password.md)| Pokyny ohledně toho, jak resetování nebo odemknutí hesla pro pracovní nebo školní účet.|
+| [Registrace pro Samoobslužné resetování hesla](active-directory-passwords-reset-register.md) ] Pokyny k ověření metod ověřování a registraci k samoobslužnému resetování hesla, abyste mohli resetovat vlastní heslo.|
+| [Resetování hesla](user-help-reset-password.md) ] Pokyny, jak resetovat nebo odemknout heslo pro pracovní nebo školní účet.|

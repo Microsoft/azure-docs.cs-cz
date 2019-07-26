@@ -1,6 +1,6 @@
 ---
-title: Jak používat s názvem hodnoty v zásadách Azure API Management
-description: Další informace o použití hodnoty s názvem v rámci zásad Azure API Management.
+title: Jak používat pojmenované hodnoty v zásadách Azure API Management
+description: Naučte se používat pojmenované hodnoty v zásadách Azure API Management.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -11,72 +11,72 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/25/2018
+ms.date: 07/22/2019
 ms.author: apimpm
-ms.openlocfilehash: 9e1b1953520c5502668fbbae70a37a140253b035
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 46f4e1b3df5f1c77a57d432297685d6d1a0a14a8
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66241691"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68405799"
 ---
-# <a name="how-to-use-named-values-in-azure-api-management-policies"></a>Jak používat s názvem hodnoty v zásadách Azure API Management
-Zásady služby API Management jsou vynikající funkcí systému, který chcete změnit chování rozhraní API prostřednictvím konfigurace webu Azure Portal. Zásady představují kolekci příkazů, které se postupně provádí na základě požadavku nebo odezvy z rozhraní API. Příkazy zásad lze sestavit pomocí literálu textové hodnoty. výrazy zásad a s názvem hodnoty. 
+# <a name="how-to-use-named-values-in-azure-api-management-policies"></a>Jak používat pojmenované hodnoty v zásadách Azure API Management
 
-Každá instance služby API Management má vlastnosti kolekce párů klíč/hodnota, která je volána s názvem hodnoty, které jsou globální instanci služby. Tyto hodnoty s názvem slouží ke správě konstantní řetězcové hodnoty na všech zásad a konfigurace rozhraní API. Každá vlastnost může mít následující atributy:
+Zásady API Management představují výkonnou schopnost systému, která umožňuje Azure Portal změnit chování rozhraní API prostřednictvím konfigurace. Zásady představují kolekci příkazů, které se postupně provádí na základě požadavku nebo odezvy z rozhraní API. Příkazy zásad lze vytvořit pomocí textových hodnot literálů, výrazů zásad a pojmenovaných hodnot.
 
-| Atribut | Type | Popis |
-| --- | --- | --- |
-| `Display name` |string |Alfanumerický řetězec, který se používá jako odkaz na vlastnost v zásadách |
-| `Value`        |string |Hodnota vlastnosti. Nesmí být prázdný nebo obsahovat jen mezerové znaky. |
-| `Secret`       |Boolean|Určuje, zda hodnota je tajný kód a měla šifrovat, nebo ne.|
-| `Tags`         |pole řetězce |Volitelné značky, pokud je zadaný, můžete použít k filtrování seznamu vlastností. |
+Každá instance API Management služby má kolekci vlastností párů klíč/hodnota, které se nazývají pojmenované hodnoty, které jsou globální pro instanci služby. Počet položek v kolekci není nijak omezen. Pojmenované hodnoty se dají použít ke správě konstantních řetězcových hodnot napříč všemi konfiguracemi a zásadami rozhraní API. Každá pojmenovaná hodnota může mít následující atributy:
+
+| Atribut      | type            | Popis                                                                                                                         |
+| -------------- | --------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
+| `Display name` | řetězec          | Používá se pro odkazování na vlastnost v zásadách. Řetězec o 1 až 256 znaků. Jsou povoleny pouze písmena, číslice, tečky a spojovníky. |
+| `Value`        | řetězec          | Skutečná hodnota. Nesmí být prázdný nebo obsahovat pouze prázdné znaky. Maximálně 4096 znaků.                                     |
+| `Secret`       | boolean         | Určuje, zda je hodnota tajná a měla by být zašifrovaná.                                                            |
+| `Tags`         | pole řetězce | Slouží k filtrování seznamu vlastností. Až 32 značek.                                                                                    |
 
 ![Pojmenované hodnoty](./media/api-management-howto-properties/named-values.png)
 
-Hodnoty vlastností můžou obsahovat řetězcových literálů a [výrazy zásad](/azure/api-management/api-management-policy-expressions). Například hodnota `ExpressionProperty` je výraz zásad, která vrací řetězec obsahující aktuální datum a čas. Vlastnost `ContosoHeaderValue` je označen jako tajný klíč, takže jeho hodnota se nezobrazí.
+Pojmenované hodnoty mohou obsahovat řetězce literálů a [výrazy zásad](/azure/api-management/api-management-policy-expressions). Například hodnota `Expression` je výraz zásady, který vrací řetězec obsahující aktuální datum a čas. Pojmenovaná `Credential` hodnota je označena jako tajná, takže její hodnota se ve výchozím nastavení nezobrazí.
 
-| Name | Value | Secret | Tags |
-| --- | --- | --- | --- |
-| ContosoHeader |TrackingId |False |Contoso |
-| ContosoHeaderValue |•••••••••••••••••••••• |True |Contoso |
-| ExpressionProperty |@(DateTime.Now.ToString()) |False | |
+| Name       | Value                      | Secret | Tags          |
+| ---------- | -------------------------- | ------ | ------------- |
+| Value      | 42                         | False  | důležitá – čísla |
+| Pověření | ••••••••••••••••••••••     | Pravda   | zabezpečení      |
+| Výraz | @(DateTime.Now.ToString()) | False  |               |
 
-## <a name="to-add-and-edit-a-property"></a>Přidávat a upravovat vlastnosti
+## <a name="to-add-and-edit-a-property"></a>Přidání a úprava vlastnosti
 
 ![Přidat vlastnost](./media/api-management-howto-properties/add-property.png)
 
 1. V části **API MANAGEMENT** vyberte **rozhraní API**.
 2. Vyberte **pojmenované hodnoty**.
-3. Stisknutím klávesy **+ přidat**.
+3. Stiskněte **+ Přidat**.
 
-   Název a hodnota jsou požadované hodnoty. Pokud je tato hodnota vlastnosti tajného klíče, zkontrolujte, zda že je tento tajný zaškrtávací políčko. Zadejte jeden nebo více volitelných značek Nápověda k uspořádání pojmenovaných hodnot, a klikněte na Uložit.
+    Název a hodnota jsou požadované hodnoty. Pokud je tato vlastnost tajná, zaškrtněte políčko Toto je tajné. Zadejte jednu nebo více volitelných značek, které vám pomůžou s uspořádáním pojmenovaných hodnot, a klikněte na Uložit.
+
 4. Klikněte na možnost **Vytvořit**.
 
-Jakmile se vytvoří vlastnost, můžete ho upravit kliknutím na vlastnost. Pokud změníte název vlastnosti, všechny zásady, které odkazují na tuto vlastnost se automaticky aktualizují na použití nového názvu.
+Jakmile je vlastnost vytvořena, můžete ji upravit kliknutím na vlastnost. Pokud změníte název vlastnosti, všechny zásady, které na tuto vlastnost odkazují, se automaticky aktualizují, aby používaly nový název.
 
-Informace o úpravě vlastností pomocí rozhraní REST API najdete v tématu [upravit vlastnost pomocí rozhraní REST API](/rest/api/apimanagement/2019-01-01/property?patch).
+Informace o úpravě vlastnosti pomocí REST API najdete v tématu [Úprava vlastnosti pomocí REST API](/rest/api/apimanagement/2019-01-01/property?patch).
 
-## <a name="to-delete-a-property"></a>Chcete-li odstranit vlastnost
+## <a name="to-delete-a-property"></a>Odstranění vlastnosti
 
-Chcete-li odstranit vlastnost, klikněte na tlačítko **odstranit** vedle vlastnosti, která má odstranit.
+Chcete-li odstranit vlastnost, klikněte na tlačítko **Odstranit** vedle vlastnosti, kterou chcete odstranit.
 
 > [!IMPORTANT]
-> Pokud se všechny zásady odkazuje vlastnost, nebude možné úspěšně ho odstranit, dokud neodeberete vlastnost ze všech zásad, které ji používají.
-> 
-> 
+> Pokud je na vlastnost odkazováno pomocí všech zásad, nebudete ji moci úspěšně odstranit, dokud neodeberete vlastnost ze všech zásad, které ji používají.
 
-Informace o odstranění vlastnosti pomocí rozhraní REST API najdete v tématu [odstranit vlastnost pomocí rozhraní REST API](/rest/api/apimanagement/2019-01-01/property/delete).
+Informace o odstranění vlastnosti pomocí REST API naleznete v tématu [odstranění vlastnosti pomocí REST API](/rest/api/apimanagement/2019-01-01/property/delete).
 
-## <a name="to-search-and-filter-named-values"></a>K vyhledávání a filtrování hodnot s názvem
+## <a name="to-search-and-filter-named-values"></a>Hledání a filtrování pojmenovaných hodnot
 
-**Pojmenované hodnoty** karta obsahuje vyhledávání a filtrování funkce, které pomáhají při správě pojmenovaných hodnot. Chcete-li vlastnost seznam můžete filtrovat podle názvu vlastnosti, zadejte hledaný termín v **hledat vlastnost** textového pole. Chcete-li zobrazit všechny pojmenované hodnoty, zrušte **hledat vlastnost** textového pole a stiskněte klávesu enter.
+Karta **pojmenované hodnoty** obsahuje možnosti vyhledávání a filtrování, které vám pomůžou se správou pojmenovaných hodnot. Chcete-li filtrovat seznam vlastností podle názvu vlastnosti, zadejte hledaný termín do textového pole **Vlastnosti hledání** . Chcete-li zobrazit všechny pojmenované hodnoty, zrušte zaškrtnutí pole **Vlastnosti hledání** a stiskněte klávesu ENTER.
 
-Chcete-li vlastnost seznam můžete filtrovat podle hodnoty značek, zadejte jednu nebo více značek do **filtr podle značek** textového pole. Chcete-li zobrazit všechny pojmenované hodnoty, zrušte **filtr podle značek** textového pole a stiskněte klávesu enter.
+Chcete-li filtrovat seznam vlastností podle hodnot značek, zadejte do textového pole **filtrovat podle značek** jednu nebo více značek. Chcete-li zobrazit všechny pojmenované hodnoty, zrušte zaškrtnutí políčka **filtrovat podle značek** a stiskněte klávesu ENTER.
 
-## <a name="to-use-a-property"></a>Chcete-li použít vlastnost
+## <a name="to-use-a-property"></a>Použití vlastnosti
 
-Pokud chcete použít vlastnost v zásadách, umístěte název vlastnosti uvnitř pár dvojitých složených závorek, jako je `{{ContosoHeader}}`, jak je znázorněno v následujícím příkladu:
+Chcete-li použít vlastnost v zásadě, umístěte název vlastnosti do dvojice dvojitých závorek jako `{{ContosoHeader}}`, jak je znázorněno v následujícím příkladu:
 
 ```xml
 <set-header name="{{ContosoHeader}}" exists-action="override">
@@ -84,11 +84,11 @@ Pokud chcete použít vlastnost v zásadách, umístěte název vlastnosti uvnit
 </set-header>
 ```
 
-V tomto příkladu `ContosoHeader` slouží jako název v záhlaví `set-header` zásady, a `ContosoHeaderValue` slouží jako hodnotu této hlavičky. Když tyto zásady se vyhodnotí během požadavku nebo odpovědi ke službě API Management gateway `{{ContosoHeader}}` a `{{ContosoHeaderValue}}` se nahradí jejich odpovídajícími hodnotami vlastností.
+V tomto příkladu `ContosoHeader` se používá jako název záhlaví `set-header` v zásadě a `ContosoHeaderValue` používá se jako hodnota této hlavičky. Pokud je tato zásada vyhodnocena během žádosti nebo odpovědi na bránu `{{ContosoHeader}}` API Management a `{{ContosoHeaderValue}}` jsou nahrazeny odpovídajícími hodnotami vlastností.
 
-Pojmenované hodnoty můžete použít jako kompletní atribut nebo element hodnoty, jak je znázorněno v předchozím příkladu, ale můžete také měly být vložen do nebo kombinaci s část textového literálu výrazu, jak je znázorněno v následujícím příkladu: `<set-header name = "CustomHeader{{ContosoHeader}}" ...>`
+Pojmenované hodnoty lze použít jako úplný atribut nebo hodnoty prvků, jak je znázorněno v předchozím příkladu, ale mohou být také vloženy do nebo kombinovány s částí textového výrazu literálu, jak je znázorněno v následujícím příkladu:`<set-header name = "CustomHeader{{ContosoHeader}}" ...>`
 
-Pojmenované hodnoty můžete také obsahovat výrazy zásad. V následujícím příkladu `ExpressionProperty` se používá.
+Pojmenované hodnoty mohou obsahovat také výrazy zásad. V následujícím příkladu `ExpressionProperty` je použit.
 
 ```xml
 <set-header name="CustomHeader" exists-action="override">
@@ -96,25 +96,25 @@ Pojmenované hodnoty můžete také obsahovat výrazy zásad. V následujícím 
 </set-header>
 ```
 
-Při vyhodnocování těchto zásad `{{ExpressionProperty}}` nahrazuje s hodnotou: `@(DateTime.Now.ToString())`. Vzhledem k tomu, že je hodnota výrazu zásady, je výraz vyhodnocen a zásady pokračuje v provádění.
+Když se tato zásada vyhodnotí, `{{ExpressionProperty}}` nahradí se její hodnotou:. `@(DateTime.Now.ToString())` Vzhledem k tomu, že hodnota je výrazem zásady, vyhodnocuje se výraz a zásada se provede s jeho spuštěním.
 
-Můžete ho otestovat si na portálu pro vývojáře pomocí volání operace, která má zásady s pojmenované hodnoty v rozsahu. V následujícím příkladu je volána operace s dvěma předchozí příklad `set-header` zásad pomocí pojmenovaných hodnot. Všimněte si, že odpověď obsahuje dva vlastní hlavičky, které byly konfigurovány pomocí zásad pojmenovaných hodnot.
+Tuto možnost můžete vyzkoušet na portálu pro vývojáře voláním operace, která má zásadu s pojmenovanými hodnotami v oboru. V následujícím příkladu je operace volána s použitím dvou předchozích ukázkových `set-header` zásad s pojmenovanými hodnotami. Všimněte si, že odpověď obsahuje dvě vlastní hlavičky, které byly nakonfigurovány pomocí zásad s pojmenovanými hodnotami.
 
-![Portál pro vývojáře][api-management-send-results]
+![Vývojářský portál][api-management-send-results]
 
-Když se podíváte na [trasování pro inspekci API](api-management-howto-api-inspector.md) volání, která zahrnuje předchozí dvě ukázkové zásady s pojmenované hodnoty, zobrazí se dvě `set-header` zásady s hodnotami vlastností vložen a také výraz zásady vyhodnocení vlastnosti, který obsahoval výraz zásady.
+Pokud se podíváte na [trasování rozhraní API](api-management-howto-api-inspector.md) pro volání, které obsahuje dvě předchozí ukázkové zásady s pojmenovanými hodnotami, můžete zobrazit dvě `set-header` zásady s vloženými hodnotami vlastností a vyhodnocením výrazu zásady pro vlastnost, která byl obsažen výraz zásad.
 
-![Trasování API Inspectoru][api-management-api-inspector-trace]
+![Trasování v inspektoru API][api-management-api-inspector-trace]
 
-Zatímco hodnoty vlastností mohou obsahovat výrazy zásad, hodnoty vlastností nesmí obsahovat jiné pojmenované hodnoty. Pokud text, který obsahuje odkaz na vlastnost se používá pro hodnotu vlastnosti, jako `Property value text {{MyProperty}}`, tento odkaz na vlastnost nenahradí a bude součástí hodnoty vlastnosti.
+I když hodnoty vlastností mohou obsahovat výrazy zásad, hodnoty vlastností nemohou obsahovat jiné pojmenované hodnoty. Pokud se text obsahující odkaz na vlastnost používá pro hodnotu vlastnosti, například `Property value text {{MyProperty}}`, tento odkaz na vlastnost nebude nahrazen a bude zahrnut jako součást hodnoty vlastnosti.
 
 ## <a name="next-steps"></a>Další postup
-* Další informace o práci se zásadami
-  * [Zásady ve službě API Management](api-management-howto-policies.md)
-  * [referenční příručce o zásadách](/azure/api-management/api-management-policies)
-  * [Výrazy zásad](/azure/api-management/api-management-policy-expressions)
+
+-   Další informace o práci se zásadami
+    -   [Zásady v API Management](api-management-howto-policies.md)
+    -   [referenční příručce o zásadách](/azure/api-management/api-management-policies)
+    -   [Výrazy zásad](/azure/api-management/api-management-policy-expressions)
 
 [api-management-send-results]: ./media/api-management-howto-properties/api-management-send-results.png
 [api-management-properties-filter]: ./media/api-management-howto-properties/api-management-properties-filter.png
 [api-management-api-inspector-trace]: ./media/api-management-howto-properties/api-management-api-inspector-trace.png
-

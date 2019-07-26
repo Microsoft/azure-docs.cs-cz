@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory ověřování typu služba-služba, které používá specifikaci konceptu OAuth 2.0 pro uživatele | Microsoft Docs
+title: Služba Azure AD pro ověřování OAuth 2.0 podle konceptu specifikace Microsoft Docs
 description: Tento článek popisuje, jak pomocí zpráv HTTP implementovat ověřování typu služba-služba s protokolem OAuth 2.0 za běhu.
 services: active-directory
 documentationcenter: .net
@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin, nacanuma
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eb64aa401838451191a830a5adbfb435ac5fdf25
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 7381a0dfb8f780900d8c2c8ba0637dcd232bdb9f
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68261939"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68380886"
 ---
 # <a name="service-to-service-calls-that-use-delegated-user-identity-in-the-on-behalf-of-flow"></a>Volání služeb pro službu, která používají delegovanou identitu uživatele v toku za jménem
 
@@ -111,13 +111,13 @@ Při použití sdíleného tajného klíče obsahuje požadavek na přístupový
 
 | Parametr |  | Popis |
 | --- | --- | --- |
-| grant_type |Požadovanou | Typ požadavku tokenu Požadavek OBO používá JSON Web Token (JWT), takže hodnota musí být **urn: IETF: params: OAuth: Grant-Type: JWT-nosič**. |
-| Neplatný |Požadovanou | Hodnota přístupového tokenu použitého v žádosti |
-| client_id |Požadovanou | ID aplikace přiřazené volající službě během registrace ve službě Azure AD. Chcete-li najít ID aplikace v Azure Portal, vyberte možnost **Active Directory**, zvolte adresář a pak vyberte název aplikace. |
-| client_secret |Požadovanou | Klíč zaregistrovaný pro volající službu ve službě Azure AD. Tato hodnota by se měla poznamenat v době registrace. |
-| resource |Požadovanou | Identifikátor URI ID aplikace přijímající služby (zabezpečeného prostředku) Identifikátor URI ID aplikace v Azure Portal najdete tak, že vyberete **Active Directory** a zvolíte adresář. Vyberte název aplikace, zvolte **všechna nastavení**a pak vyberte **vlastnosti**. |
-| requested_token_use |Požadovanou | Určuje, jak se má požadavek zpracovat. V toku musí být hodnota **on_behalf_of**. |
-| scope |Požadovanou | Mezerou oddělený seznam oborů pro požadavek na token. Pro OpenID Connect se musí zadat obor **OpenID** .|
+| grant_type |povinné | Typ požadavku tokenu Požadavek OBO používá JSON Web Token (JWT), takže hodnota musí být **urn: IETF: params: OAuth: Grant-Type: JWT-nosič**. |
+| Neplatný |povinné | Hodnota přístupového tokenu použitého v žádosti |
+| client_id |povinné | ID aplikace přiřazené volající službě během registrace ve službě Azure AD. Chcete-li najít ID aplikace v Azure Portal, vyberte možnost **Active Directory**, zvolte adresář a pak vyberte název aplikace. |
+| client_secret |povinné | Klíč zaregistrovaný pro volající službu ve službě Azure AD. Tato hodnota by se měla poznamenat v době registrace. |
+| resource |povinné | Identifikátor URI ID aplikace přijímající služby (zabezpečeného prostředku) Identifikátor URI ID aplikace v Azure Portal najdete tak, že vyberete **Active Directory** a zvolíte adresář. Vyberte název aplikace, zvolte **všechna nastavení**a pak vyberte **vlastnosti**. |
+| requested_token_use |povinné | Určuje, jak se má požadavek zpracovat. V toku musí být hodnota **on_behalf_of**. |
+| scope |povinné | Mezerou oddělený seznam oborů pro požadavek na token. Pro OpenID Connect se musí zadat obor **OpenID** .|
 
 #### <a name="example"></a>Příklad
 
@@ -145,14 +145,14 @@ Požadavek na přístupový token služby na službu s certifikátem obsahuje n�
 
 | Parametr |  | Popis |
 | --- | --- | --- |
-| grant_type |Požadovanou | Typ požadavku tokenu Požadavek OBO používá přístupový token JWT, takže hodnota musí být **urn: IETF: params: OAuth: Grant-Type: JWT-nosič**. |
-| Neplatný |Požadovanou | Hodnota tokenu použitého v požadavku. |
-| client_id |Požadovanou | ID aplikace přiřazené volající službě během registrace ve službě Azure AD. Chcete-li najít ID aplikace v Azure Portal, vyberte možnost **Active Directory**, zvolte adresář a pak vyberte název aplikace. |
-| client_assertion_type |Požadovanou |Hodnota musí být`urn:ietf:params:oauth:client-assertion-type:jwt-bearer` |
-| client_assertion |Požadovanou | JSON Web Token, kterou vytvoříte a podepíšete pomocí certifikátu, který jste zaregistrovali jako přihlašovací údaje pro vaši aplikaci. Informace o formátu kontrolního výrazu a o tom, jak svůj certifikát zaregistrovat, najdete v tématu [přihlašovací údaje k certifikátu](active-directory-certificate-credentials.md) .|
-| resource |Požadovanou | Identifikátor URI ID aplikace přijímající služby (zabezpečeného prostředku) Identifikátor URI ID aplikace v Azure Portal najdete tak, že vyberete **Active Directory** a zvolíte adresář. Vyberte název aplikace, zvolte **všechna nastavení**a pak vyberte **vlastnosti**. |
-| requested_token_use |Požadovanou | Určuje, jak se má požadavek zpracovat. V toku musí být hodnota **on_behalf_of**. |
-| scope |Požadovanou | Mezerou oddělený seznam oborů pro požadavek na token. Pro OpenID Connect se musí zadat obor **OpenID** .|
+| grant_type |povinné | Typ požadavku tokenu Požadavek OBO používá přístupový token JWT, takže hodnota musí být **urn: IETF: params: OAuth: Grant-Type: JWT-nosič**. |
+| Neplatný |povinné | Hodnota tokenu použitého v požadavku. |
+| client_id |povinné | ID aplikace přiřazené volající službě během registrace ve službě Azure AD. Chcete-li najít ID aplikace v Azure Portal, vyberte možnost **Active Directory**, zvolte adresář a pak vyberte název aplikace. |
+| client_assertion_type |povinné |Hodnota musí být`urn:ietf:params:oauth:client-assertion-type:jwt-bearer` |
+| client_assertion |povinné | JSON Web Token, kterou vytvoříte a podepíšete pomocí certifikátu, který jste zaregistrovali jako přihlašovací údaje pro vaši aplikaci. Informace o formátu kontrolního výrazu a o tom, jak svůj certifikát zaregistrovat, najdete v tématu [přihlašovací údaje k certifikátu](active-directory-certificate-credentials.md) .|
+| resource |povinné | Identifikátor URI ID aplikace přijímající služby (zabezpečeného prostředku) Identifikátor URI ID aplikace v Azure Portal najdete tak, že vyberete **Active Directory** a zvolíte adresář. Vyberte název aplikace, zvolte **všechna nastavení**a pak vyberte **vlastnosti**. |
+| requested_token_use |povinné | Určuje, jak se má požadavek zpracovat. V toku musí být hodnota **on_behalf_of**. |
+| scope |povinné | Mezerou oddělený seznam oborů pro požadavek na token. Pro OpenID Connect se musí zadat obor **OpenID** .|
 
 Tyto parametry jsou skoro stejné jako u žádosti pomocí sdíleného tajného klíče s tím rozdílem, že `client_secret parameter` je nahrazen dvěma parametry: `client_assertion_type` a `client_assertion`.
 
@@ -255,13 +255,13 @@ Požadavek služby na službu pro kontrolní výraz SAML obsahuje následující
 
 | Parametr |  | Popis |
 | --- | --- | --- |
-| grant_type |Požadovanou | Typ požadavku tokenu Pro požadavek, který používá JWT, musí být hodnota **urn: IETF: params: OAuth: Grant-Type: JWT-nosič**. |
-| Neplatný |Požadovanou | Hodnota přístupového tokenu použitého v žádosti|
-| client_id |Požadovanou | ID aplikace přiřazené volající službě během registrace ve službě Azure AD. Chcete-li najít ID aplikace v Azure Portal, vyberte možnost **Active Directory**, zvolte adresář a pak vyberte název aplikace. |
-| client_secret |Požadovanou | Klíč zaregistrovaný pro volající službu ve službě Azure AD. Tato hodnota by se měla poznamenat v době registrace. |
-| resource |Požadovanou | Identifikátor URI ID aplikace přijímající služby (zabezpečeného prostředku) Toto je prostředek, který bude cílovou skupinou tokenu SAML. Identifikátor URI ID aplikace v Azure Portal najdete tak, že vyberete **Active Directory** a zvolíte adresář. Vyberte název aplikace, zvolte **všechna nastavení**a pak vyberte **vlastnosti**. |
-| requested_token_use |Požadovanou | Určuje, jak se má požadavek zpracovat. V toku musí být hodnota **on_behalf_of**. |
-| requested_token_type | Požadovanou | Určuje typ požadovaného tokenu. Hodnota může být **urn: IETF: params: OAuth: token-Type: typu Saml2** nebo **urn: IETF: parametr: OAuth: token-Type: saml1** v závislosti na požadavcích na prostředek, který je k dispozici. |
+| grant_type |povinné | Typ požadavku tokenu Pro požadavek, který používá JWT, musí být hodnota **urn: IETF: params: OAuth: Grant-Type: JWT-nosič**. |
+| Neplatný |povinné | Hodnota přístupového tokenu použitého v žádosti|
+| client_id |povinné | ID aplikace přiřazené volající službě během registrace ve službě Azure AD. Chcete-li najít ID aplikace v Azure Portal, vyberte možnost **Active Directory**, zvolte adresář a pak vyberte název aplikace. |
+| client_secret |povinné | Klíč zaregistrovaný pro volající službu ve službě Azure AD. Tato hodnota by se měla poznamenat v době registrace. |
+| resource |povinné | Identifikátor URI ID aplikace přijímající služby (zabezpečeného prostředku) Toto je prostředek, který bude cílovou skupinou tokenu SAML. Identifikátor URI ID aplikace v Azure Portal najdete tak, že vyberete **Active Directory** a zvolíte adresář. Vyberte název aplikace, zvolte **všechna nastavení**a pak vyberte **vlastnosti**. |
+| requested_token_use |povinné | Určuje, jak se má požadavek zpracovat. V toku musí být hodnota **on_behalf_of**. |
+| requested_token_type | povinné | Určuje typ požadovaného tokenu. Hodnota může být **urn: IETF: params: OAuth: token-Type: typu Saml2** nebo **urn: IETF: parametr: OAuth: token-Type: saml1** v závislosti na požadavcích na prostředek, který je k dispozici. |
 
 Odpověď obsahuje token SAML kódovaný v UTF8 a Base64url.
 

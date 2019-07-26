@@ -2,8 +2,8 @@
   href: /azure/hdinsight
 - name: Přehled
   items:
-    - name: Co je Balíček zabezpečení podniku v HDInsightu?
-      href: apache-domain-joined-introduction.md
+    - name: Co je podnikové zabezpečení ve službě HDInsight?
+      href: hdinsight-security-overview.md
 - name: Kurzy
   items:
     - name: Apache HBase RBAC s Apache Rangerem

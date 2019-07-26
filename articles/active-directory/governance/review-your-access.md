@@ -1,9 +1,9 @@
 ---
-title: Zkontrolovat přístup skupinám nebo aplikacím v kontroly přístupu – Azure Active Directory | Dokumentace Microsoftu
-description: Zjistěte, jak kontrolovat svůj vlastní přístup skupinám nebo aplikacím v kontrol přístupu Azure Active Directory.
+title: Kontrola přístupu pro vlastní skupiny nebo aplikace v recenzích přístupu – Azure Active Directory | Microsoft Docs
+description: Naučte se kontrolovat vlastní přístup k skupinám nebo aplikacím v Azure Active Directory kontroly přístupu.
 services: active-directory
-author: rolyon
-manager: mtillman
+author: msaburnley
+manager: daveba
 editor: markwahl-msft
 ms.service: active-directory
 ms.workload: identity
@@ -12,79 +12,79 @@ ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
 ms.date: 05/21/2019
-ms.author: rolyon
+ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 22f12255bf14ca424a8a79107e7ca8e403552b62
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: d4b48e035476e5381104b442f87dcac03ac11778
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67471741"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68499677"
 ---
-# <a name="review-access-for-yourself-to-groups-or-applications-in-azure-ad-access-reviews"></a>Zkontrolovat přístup ke skupinám nebo aplikacím ve službě Azure AD kontroly přístupu
+# <a name="review-access-for-yourself-to-groups-or-applications-in-azure-ad-access-reviews"></a>Kontrola přístupu pro vlastní skupiny nebo aplikace v prohlídekch služby Azure AD
 
-Azure Active Directory (Azure AD) zjednodušuje podnikům správu přístupu k skupiny a aplikace ve službě Azure AD a zkontroluje ostatní Microsoft Online Services s funkci s názvem přístup služby Azure AD.
+Azure Active Directory (Azure AD) zjednodušuje způsob, jakým podniky spravují přístup ke skupinám nebo aplikacím v Azure AD a dalších online službách Microsoftu s funkcí nazvanou kontroly přístupu Azure AD.
 
-Tento článek popisuje, jak kontrolovat svůj vlastní přístup ke skupině nebo aplikaci.
+Tento článek popisuje, jak zkontrolovat vlastní přístup ke skupině nebo aplikaci.
 
 ## <a name="prerequisites"></a>Požadavky
 
 - Azure AD Premium P2
 
-Další informace najdete v tématu [kteří uživatelé musí mít licence?](access-reviews-overview.md#which-users-must-have-licenses).
+Další informace najdete v tématu o uživatelích, [kteří musí mít licence?](access-reviews-overview.md#which-users-must-have-licenses).
 
-## <a name="open-the-access-review"></a>Otevřete kontroly přístupu.
+## <a name="open-the-access-review"></a>Otevřít kontrolu přístupu
 
-Prvním krokem k provádění kontroly přístupu je k vyhledání a otevření kontroly přístupu.
+Prvním krokem k provedení kontroly přístupu je vyhledání a otevření kontroly přístupu.
 
-1. Vyhledejte e-mailu od Microsoftu, která vás vyzve k kontrolovat přístup. Tady je příklad e-mailu kontrolovat přístup ke skupině.
+1. Vyhledejte e-mail od Microsoftu, který vás vyzve ke kontrole přístupu. Tady je příklad e-mailu pro kontrolu přístupu ke skupině.
 
-    ![Příklad e-mailu od Microsoftu a kontrolovat přístup ke skupině](./media/review-your-access/access-review-email.png)
+    ![Příklad e-mailu od Microsoftu ke kontrole přístupu ke skupině](./media/review-your-access/access-review-email.png)
 
-1. Klikněte na tlačítko **kontrolovat přístup** odkaz k otevření kontroly přístupu.
+1. Kliknutím na odkaz **zkontrolovat přístup** otevřete kontrolu přístupu.
 
-Pokud nemáte k dispozici v e-mailu, zjistíte, že se čeká na přístup kontroly pomocí následujících kroků.
+Pokud e-maily nemáte, můžete najít své nedokončené kontroly přístupu pomocí následujících kroků.
 
-1. Přihlaste se k portálu MyApps na [ https://myapps.microsoft.com ](https://myapps.microsoft.com).
+1. Přihlaste se k portálu Mojeapl na [https://myapps.microsoft.com](https://myapps.microsoft.com)adrese.
 
-    ![Seznam aplikací, které máte oprávnění k portálu MyApps](./media/review-your-access/myapps-access-panel.png)
+    ![Seznam aplikací v portálu Mojeapl, pro které máte oprávnění](./media/review-your-access/myapps-access-panel.png)
 
 1. V pravém horním rohu stránky klikněte na symbol uživatele. Zobrazí se vaše jméno a výchozí organizace. Pokud se zobrazí více než jedna organizace, vyberte organizaci, která požádala o kontrolu přístupu.
 
-1. Na pravé straně stránky klikněte na tlačítko **kontrol přístupu** dlaždici zobrazíte seznam kontrol přístupu.
+1. Na pravé straně stránky klikněte na dlaždici kontroly **přístupu** , abyste viděli seznam nedokončených kontrol přístupu.
 
     Pokud se dlaždice nezobrazí, pro danou organizaci není potřeba provést žádné kontroly přístupu a v tuto chvíli se nevyžaduje žádná akce.
 
-    ![Seznam kontrol přístupu pro vaše aplikace a skupiny](./media/review-your-access/access-reviews-list.png)
+    ![Seznam nevyřízených kontrol přístupu pro vaše aplikace a skupiny](./media/review-your-access/access-reviews-list.png)
 
-1. Klikněte na tlačítko **začít kontrolu** odkaz pro kontroly přístupu, kterou chcete provést.
+1. Klikněte na odkaz **zahájit kontrolu** pro kontrolu přístupu, kterou chcete provést.
 
-## <a name="perform-the-access-review"></a>Provádění kontroly přístupu
+## <a name="perform-the-access-review"></a>Provést kontrolu přístupu
 
-Po spuštění kontroly přístupu, zobrazí se váš přístup.
+Po otevření kontroly přístupu uvidíte svůj přístup.
 
-1. Kontrolovat přístup a rozhodněte se, jestli stále potřebují přístup.
+1. Zkontrolujte svůj přístup a rozhodněte se, jestli stále potřebujete přístup.
 
-    Pokud žádost ke kontrole přístupu pro ostatní uživatele, bude stránka vypadat jiný. Další informace najdete v tématu [kontrolovat přístup skupinám nebo aplikacím](perform-access-review.md).
+    Pokud je žádost o kontrolu přístupu pro ostatní, stránka bude vypadat jinak. Další informace najdete v tématu [Kontrola přístupu ke skupinám nebo aplikacím](perform-access-review.md).
 
-    ![Kontrola otevřít přístupu s dotazem, jestli stále potřebují přístup ke skupině](./media/review-your-access/perform-access-review.png)
+    ![Otevřete kontrolu přístupu s dotazem, jestli stále potřebujete přístup ke skupině.](./media/review-your-access/perform-access-review.png)
 
-1. Klikněte na tlačítko **Ano** chcete zachovat přístup, nebo klikněte na tlačítko **ne** aby odebral váš přístup.
+1. Kliknutím na **Ano** zachováte přístup, nebo kliknutím na **ne** odeberte přístup.
 
-1. Vyberete-li **Ano**, možná budete muset zadat odůvodnění v **důvod** pole.
+1. Pokud kliknete na **Ano**, možná budete muset zadat odůvodnění v poli **důvod** .
 
-    ![Dokončení kontroly přístupu s dotazem, jestli stále potřebují přístup ke skupině](./media/review-your-access/perform-access-review-submit.png)
+    ![Dokončila se kontrola přístupu s dotazem, jestli stále potřebujete přístup ke skupině.](./media/review-your-access/perform-access-review-submit.png)
 
 1. Klikněte na **Submit** (Odeslat).
 
-    Odeslání svůj výběr a vrátíte se k portálu MyApps.
+    Váš výběr se odešle a vrátíte se na portál MyApp.
 
-    Pokud chcete změnit vaše odpověď, znovu otevřete stránku kontrol přístupu a aktualizujte vaše odpověď. Vaše odpověď můžete změnit kdykoli až do ukončení kontroly přístupu.
+    Pokud chcete změnit odpověď, otevřete znovu stránku kontroly přístupu a aktualizujte svou odpověď. Odpověď můžete kdykoli změnit, dokud se neukončí kontrola přístupu.
 
     > [!NOTE]
-    > Pokud jste určili, které už nepotřebujete přístup, se neodeberou okamžitě. Se odeberou, když kontrola skončila, nebo při zastavení revize správce.
+    > Pokud jste označili, že už nepotřebujete přístup, neodebere se okamžitě. Po ukončení recenze dojde k odebrání nebo když správce zastaví kontrolu.
 
 ## <a name="next-steps"></a>Další postup
 
-- [Dokončení kontroly přístupu skupiny nebo aplikace](complete-access-review.md)
+- [Dokončení kontroly přístupu skupin nebo aplikací](complete-access-review.md)

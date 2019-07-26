@@ -1,5 +1,5 @@
 ---
-title: BuildingBlocks – Azure Active Directory B2C | Dokumentace Microsoftu
+title: BuildingBlocks-Azure Active Directory B2C | Microsoft Docs
 description: Zadejte element BuildingBlocks vlastní zásady v Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
@@ -10,18 +10,18 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 67770661f0660b9a84d16bbbc7d86cfcbca2cfdf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5ab2b11749aa57065a1a4d688b02fed97731ab7c
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66511591"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68464752"
 ---
 # <a name="buildingblocks"></a>BuildingBlocks
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-**BuildingBlocks** prvek přidán uvnitř [TrustFrameworkPolicy](trustframeworkpolicy.md) elementu.
+Element **BuildingBlocks** je přidán uvnitř elementu [TrustFrameworkPolicy](trustframeworkpolicy.md) .
 
 ```XML
 <TrustFrameworkPolicy
@@ -55,21 +55,23 @@ ms.locfileid: "66511591"
  </BuildingBlocks>
 ```
 
-**BuildingBlocks** prvek obsahuje následující prvky, které musí být zadán v pořadí určeném:
+Element **BuildingBlocks** obsahuje následující prvky, které musí být zadány v definovaném pořadí:
 
-- [ClaimsSchema](claimsschema.md) – definuje typy deklarací identity, které může být odkazováno jako součást této zásady. Schéma deklarací identity je místo, kde deklarace typů deklarací identity. Typ deklarace identity se podobně jako na proměnnou v řadě jazyků prostřednictvím kódu programu. Můžete použít typ deklarace identity pro shromažďování dat od uživatele vaší aplikace, přijímat deklarace identity od zprostředkovatelů sociálních identit, odesílat a přijímat data z vlastního rozhraní API REST nebo ukládání interních datových používat vaše vlastní zásada vypadat. 
+- [ClaimsSchema](claimsschema.md) – definuje typy deklarací, na které se dá odkazovat v rámci zásad. Schéma deklarací identity je místo, kde deklarujete typy deklarací. Typ deklarace identity je podobný proměnné v mnoha programových jazycích. Typ deklarace identity můžete použít ke shromažďování dat od uživatele vaší aplikace, přijímání deklarací identity od zprostředkovatelů sociálních identit, posílání a přijímání dat z vlastních REST API nebo ukládání všech vnitřních dat používaných vašimi vlastními zásadami. 
 
-- [Predikáty a PredicateValidationsInput](predicates.md) – umožňuje provádět ověření procesu k zajištění, že se zadá jenom správně vytvořená data do deklarace identity.
+- [Predikáty a PredicateValidationsInput](predicates.md) – umožňují provést proces ověřování, aby bylo zajištěno, že do deklarace identity budou vložena pouze správně vytvořená data.
  
-- [ClaimsTransformations](claimstransformations.md) -obsahuje seznam transformace deklarací, které lze použít ve svojí zásadě.  Transformace deklarací identity převede jednu deklaraci identity do jiné. V transformaci deklarací identity jako například zadáte metodu transformace: 
-    - Změna velikosti písmen deklarace řetězec k zadanému. Například změna řetězec z malých na velká písmena.
-    - Porovnání dvou deklarací identity nebo deklaraci identity true určující odpovídající deklarace identity, v opačném případě vrací false.
-    - Vytvoření deklarace identity řetězec ze zadaného parametru v zásadách.
-    - Vytváří se náhodný řetězec za použití generátor náhodných čísel.
-    - Formátování deklaraci identity podle poskytnutý řetězec formátu. Tato transformace používá C# `String.Format` metody.
+- [ClaimsTransformations](claimstransformations.md) – obsahuje seznam transformací deklarací identity, které se dají použít v zásadách.  Transformace deklarací převede jednu deklaraci identity na jinou. V transformaci deklarací identity zadáte metodu transformace, například: 
+    - Změna velikosti řetězce deklarace identity na zadanou hodnotu. Například změna řetězce z malých písmen na velká.
+    - Porovnání dvou deklarací identity a vrácení deklarace identity s hodnotou true značí, že deklarace identity se shodují, jinak false.
+    - Vytváří se deklarace řetězce ze zadaného parametru v zásadách.
+    - Vytvoření náhodného řetězce pomocí generátoru náhodných čísel.
+    - Formátování deklarace identity podle poskytnutého formátovacího řetězce. Tato transformace používá C# `String.Format` metodu.
+    
+- InputValidation – tento prvek umožňuje provádění logických agregací, které jsou podobné *a* a *nebo*.
 
-- [ContentDefinitions](contentdefinitions.md) – obsahuje adresy URL pro HTML5, šablony, používat na vaší cestě uživatele. Ve vlastních zásadách definuje definici obsahu stránky HTML5 identifikátor URI, který slouží ke konkrétnímu kroku v cestě uživatele. Pro příklad, resetování hesla přihlášení nebo registraci nebo chybové stránky. Vzhled a chování můžete upravit tak, že přepíšete LoadUri pro soubor HTML5. Nebo můžete vytvořit nové definice obsahu podle vašich potřeb. Tento element může obsahovat odkaz lokalizované prostředky pomocí ID lokalizace.
+- [ContentDefinitions](contentdefinitions.md) – obsahuje adresy URL pro šablony HTML5, které se mají použít při cestě uživatele. V vlastní zásadě definice obsahu definuje identifikátor URI stránky HTML5, který se používá pro zadaný krok v cestě uživatele. Například přihlášení nebo registrace, resetování hesla nebo chybové stránky. Vzhled a chování můžete upravit přepsáním LoadUri pro soubor HTML5. Případně můžete vytvořit nové definice obsahu podle svých potřeb. Tento element může obsahovat odkaz na lokalizované prostředky pomocí ID lokalizace.
 
-- [Lokalizace](localization.md) – umožňuje zajistit podporu více jazyků. Podpora lokalizace v zásadách umožňuje nastavit seznam podporovaných jazyků v zásadách a vyberte výchozí jazyk. Jazykově specifické řetězce a kolekce jsou také podporovány.
+- [Lokalizace](localization.md) – umožňuje podporu více jazyků. Podpora lokalizace v zásadách umožňuje nastavit seznam podporovaných jazyků v zásadách a vybrat výchozí jazyk. Podporují se taky řetězce a kolekce specifické pro jazyk.
 
 

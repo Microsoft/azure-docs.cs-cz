@@ -1,154 +1,153 @@
 ---
-title: Řešení potíží se zálohováním databáze systému SQL Server s využitím Azure Backup | Dokumentace Microsoftu
-description: Informace o odstraňování potíží pro zálohování databází systému SQL Server běžící na virtuálních počítačích Azure s Azure Backup.
-services: backup
+title: Řešení potíží se zálohováním databáze SQL Server pomocí Azure Backup | Microsoft Docs
+description: Informace o řešení potíží při zálohování SQL Server databází běžících na virtuálních počítačích Azure s Azure Backup.
 author: anuragm
 manager: sivan
 ms.service: backup
 ms.topic: article
 ms.date: 06/18/2019
 ms.author: anuragm
-ms.openlocfilehash: b2822a3c7dfa23065f2cbd35ef4e506efae026f2
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: c601ecb6997834aa216de094e2809670833dd9cb
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67704845"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68464923"
 ---
-# <a name="troubleshoot-sql-server-database-backup-by-using-azure-backup"></a>Řešení potíží se zálohováním databáze systému SQL Server s využitím Azure Backup
+# <a name="troubleshoot-sql-server-database-backup-by-using-azure-backup"></a>Řešení potíží se zálohováním databáze SQL Server pomocí Azure Backup
 
-Tento článek obsahuje informace o odstraňování potíží pro databáze systému SQL Server běžící na virtuálních počítačích Azure.
+Tento článek poskytuje informace o řešení potíží pro SQL Server databáze běžící na virtuálních počítačích Azure.
 
-Další informace o procesu zálohování a omezení, najdete v části [zálohování serveru SQL Server na virtuálních počítačích Azure](backup-azure-sql-database.md#feature-consideration-and-limitations).
+Další informace o procesu zálohování a omezeních najdete v tématu [informace o SQL Server Backup ve virtuálních počítačích Azure](backup-azure-sql-database.md#feature-consideration-and-limitations).
 
-## <a name="sql-server-permissions"></a>Oprávnění SQL serveru
+## <a name="sql-server-permissions"></a>Oprávnění SQL Serveru
 
-Chcete-li konfigurovat ochranu pro databázi serveru SQL Server na virtuálním počítači, musíte nainstalovat **AzureBackupWindowsWorkload** rozšíření na tomto virtuálním počítači. Pokud se zobrazí chyba **UserErrorSQLNoSysadminMembership**, to znamená, že vaše instance systému SQL Server nemá požadovaná oprávnění pro zálohování. Chcete-li tuto chybu opravit, postupujte podle kroků v [virtuálního počítače nastavte oprávnění](backup-azure-sql-database.md#set-vm-permissions).
+Pokud chcete nakonfigurovat ochranu pro SQL Server databázi na virtuálním počítači, musíte na tomto virtuálním počítači nainstalovat rozšíření **AzureBackupWindowsWorkload** . Pokud se zobrazí chyba **UserErrorSQLNoSysadminMembership**, znamená to, že vaše instance SQL Server nemá požadovaná oprávnění k zálohování. Pokud chcete tuto chybu opravit, postupujte podle kroků v části [Nastavení oprávnění virtuálních počítačů](backup-azure-sql-database.md#set-vm-permissions).
 
 ## <a name="error-messages"></a>Chybové zprávy
 
-### <a name="backup-type-unsupported"></a>Nepodporovaný typ zálohování
+### <a name="backup-type-unsupported"></a>Typ zálohování se nepodporuje.
 
 | severity | Popis | Možné příčiny | Doporučená akce |
 |---|---|---|---|
-| Upozornění | Aktuální nastavení pro tuto databázi nepodporují některé typy zálohování v přidružené zásady. | <li>Pouze úplné zálohování lze provést v hlavní databázi. Rozdílová záloha ani zálohování protokolu transakcí není možné. </li> <li>Všechny databáze v jednoduchém modelu obnovení není povoleno pro zálohování protokolů transakcí.</li> | Změňte nastavení databáze tak, aby se podporují všechny typy zálohování v zásadách. Nebo změňte aktuální zásady zahrnout pouze podporované typy zálohování. V opačném případě se přeskočí nepodporované typy zálohování během naplánovaného zálohování nebo se nezdaří úlohy zálohování ad hoc záloha.
+| Upozornění | Aktuální nastavení této databáze nepodporují určité typy zálohování přítomné v přidružených zásadách. | <li>V hlavní databázi lze provést pouze úplnou operaci zálohování databáze. Není možné použít rozdílovou zálohu ani zálohování protokolu transakcí. </li> <li>Žádná databáze v jednoduchém modelu obnovení nepovoluje zálohování protokolů transakcí.</li> | Upravte nastavení databáze tak, aby všechny typy zálohování v těchto zásadách byly podporovány. Nebo můžete změnit aktuální zásady tak, aby zahrnovaly jenom podporované typy zálohování. V opačném případě se nepodporované typy zálohování při plánovaném Zálohování přeskočí, jinak se úloha zálohování neprovede pro zálohování ad hoc.
 
 
 ### <a name="usererrorsqlpodoesnotsupportbackuptype"></a>UserErrorSQLPODoesNotSupportBackupType
 
 | Chybová zpráva | Možné příčiny | Doporučená akce |
 |---|---|---|
-| Tato databáze SQL nepodporuje požadovaný typ zálohy. | Nastane, pokud je model obnovení databáze neumožňuje požadovaný typ zálohy. K chybě může dojít v následujících situacích: <br/><ul><li>Databázi, která se používá jednoduchý model obnovení není povolena zálohy protokolu.</li><li>Rozdílové zálohy a zálohy protokolů nejsou povolené pro hlavní databázi.</li></ul>Další podrobnosti najdete [modelů obnovení systému SQL Server](https://docs.microsoft.com/sql/relational-databases/backup-restore/recovery-models-sql-server) dokumentaci. | Pokud se nezdaří zálohování protokolu pro databázi v jednoduchém modelu obnovení, zkuste použijte jeden z těchto možností:<ul><li>Pokud se databáze nachází v režimu jednoduchého obnovení, zakažte zálohy protokolu.</li><li>Použití [dokumentaci k SQL serveru](https://docs.microsoft.com/sql/relational-databases/backup-restore/view-or-change-the-recovery-model-of-a-database-sql-server) změnit model obnovení databáze na úplný nebo hromadně protokolované. </li><li> Pokud nechcete změnit model obnovení, a vy musíte standardní zásady zálohování více databází, které nelze změnit, chybu ignorujte. Úplné a rozdílové zálohy budou fungovat podle plánu. Zálohy protokolů se přeskočí, který se očekává v tomto případě.</li></ul>Pokud je hlavní databázi a nakonfigurovali rozdílové nebo zálohování protokolů, použijte některou z následujících kroků:<ul><li>Chcete-li změnit plán zálohování zásad pro hlavní databázi, na hodnotu full pomocí portálu.</li><li>Pokud máte standardní zásady zálohování více databází, které nelze změnit, chybu ignorujte. Úplné zálohování bude fungovat podle plánu. Protokolu nebo rozdílové zálohy se neprovede, který se očekává v tomto případě.</li></ul> |
-| Operace zrušena, protože konfliktní operace již byla spuštěna ve stejné databázi. | Zobrazit [blogu o omezení zálohování a obnovení](https://blogs.msdn.microsoft.com/arvindsh/2008/12/30/concurrency-of-full-differential-and-log-backups-on-the-same-database) , které běží souběžně.| [Monitorování úlohy zálohování pomocí služby SQL Server Management Studio (SSMS)](manage-monitor-sql-database-backup.md). Jakmile se konfliktní operace nepovede, restartujte operaci.|
+| Tato databáze SQL nepodporuje požadovaný typ zálohování. | Vyvolá se v případě, že model obnovení databáze nepovoluje požadovaný typ zálohování. K této chybě může dojít v následujících situacích: <br/><ul><li>Databáze, která používá jednoduchý model obnovení, neumožňuje zálohování protokolů.</li><li>Pro hlavní databázi nejsou povoleny rozdílové zálohy a protokoly.</li></ul>Další podrobnosti najdete v dokumentaci k [modelům obnovení SQL Server](https://docs.microsoft.com/sql/relational-databases/backup-restore/recovery-models-sql-server) . | Pokud se zálohování protokolu pro databázi v jednoduchém modelu obnovení nepovede, zkuste jednu z těchto možností:<ul><li>Pokud se databáze nachází v režimu jednoduchého obnovení, zakažte zálohování protokolů.</li><li>Pomocí [dokumentace k SQL Server](https://docs.microsoft.com/sql/relational-databases/backup-restore/view-or-change-the-recovery-model-of-a-database-sql-server) můžete změnit model obnovení databáze na úplný nebo Hromadně protokolované. </li><li> Pokud nechcete změnit model obnovení a máte standardní zásady pro zálohování více databází, které nelze změnit, chybu ignorujte. Vaše úplné a rozdílové zálohy budou fungovat podle plánu. Zálohy protokolu se přeskočí, což je v tomto případě očekávané.</li></ul>Pokud se jedná o hlavní databázi a máte nakonfigurovanou rozdílovou zálohu nebo zálohování protokolu, použijte některý z následujících kroků:<ul><li>Pomocí portálu můžete změnit plán zásad zálohování hlavní databáze na úplný.</li><li>Pokud máte standardní zásady pro zálohování více databází, které nelze změnit, chybu ignorujte. Vaše úplné zálohování bude fungovat podle plánu. V tomto případě se v tomto případě očekávají rozdílové zálohování nebo zálohy protokolů.</li></ul> |
+| Operace se zrušila, protože ve stejné databázi už je spuštěná konfliktní operace. | Prohlédněte si [záznam blogu o omezeních zálohování a obnovení](https://blogs.msdn.microsoft.com/arvindsh/2008/12/30/concurrency-of-full-differential-and-log-backups-on-the-same-database) , která se spouštějí souběžně.| [Pomocí SQL Server Management Studio (SSMS) můžete monitorovat úlohy zálohování](manage-monitor-sql-database-backup.md). Po neúspěšném konfliktu operace restartujte operaci.|
 
 ### <a name="usererrorsqlpodoesnotexist"></a>UserErrorSQLPODoesNotExist
 
 | Chybová zpráva | Možné příčiny | Doporučená akce |
 |---|---|---|
-| Databáze SQL neexistuje. | Databáze byla odstraněna nebo přejmenována. | Zaškrtněte, pokud byla databáze omylem odstraněna nebo přejmenována.<br/><br/> Pokud byla databáze vymazána omylem, chcete-li pokračovat v zálohování, obnovení databáze do původního umístění.<br/><br/> Pokud jste odstranili databázi a není nutné budoucí zálohy v trezoru služby Recovery Services vyberte **Zastavit zálohování** s **zachovat zálohovaná Data** nebo **odstranit zálohovaná Data**. Další informace najdete v tématu [sledování a Správa databází SQL serveru zálohovaných](manage-monitor-sql-database-backup.md).
+| Databáze SQL neexistuje. | Databáze byla buď odstraněna, nebo přejmenována. | Ověřte, zda byla databáze omylem odstraněna nebo přejmenována.<br/><br/> Pokud se databáze nedopatřením odstranila, pokud chcete pokračovat v zálohování, obnovte databázi do původního umístění.<br/><br/> Pokud jste databázi odstranili a nepotřebujete budoucí zálohy, pak v Recovery Services trezoru vyberte **Zastavit zálohování** pomocí uchovávání zálohovaných **dat** nebo **odstranění zálohovaných dat**. Další informace najdete v tématu [Správa a sledování zálohovaných SQL Server databází](manage-monitor-sql-database-backup.md).
 
 ### <a name="usererrorsqllsnvalidationfailure"></a>UserErrorSQLLSNValidationFailure
 
 | Chybová zpráva | Možné příčiny | Doporučená akce |
 |---|---|---|
-| Řetěz protokolů je porušený. | Databáze nebo virtuální počítač zálohovaný do jiné řešení zálohování, která ořízne řetězec protokolu.|<ul><li>Zkontrolujte, zda jiné řešení zálohování nebo skriptu se používá. Pokud ano, přestat jiné řešení zálohování. </li><li>Pokud bylo zálohování zálohování ad hoc protokolu, aktivujte úplné zálohování spustit nový řetězec protokolu. Protokol naplánované zálohování není vyžadována žádná akce, protože služba Azure Backup automaticky spustí úplné zálohování, chcete-li vyřešit tento problém.</li>|
+| Řetěz protokolů je porušený. | Databáze nebo virtuální počítač se zálohují v jiném řešení zálohování, které zkrátí řetězec protokolu.|<ul><li>Ověřte, jestli se nepoužívá jiné řešení zálohování nebo skript. Pokud ano, zastavte další řešení zálohování. </li><li>Pokud se jedná o zálohu protokolu ad hoc, spusťte úplnou zálohu, aby se spustil nový řetěz protokolu. U plánovaných záloh protokolů není potřeba žádná akce, protože služba Azure Backup automaticky aktivuje úplnou zálohu pro vyřešení tohoto problému.</li>|
 
 ### <a name="usererroropeningsqlconnection"></a>UserErrorOpeningSQLConnection
 
 | Chybová zpráva | Možné příčiny | Doporučená akce |
 |---|---|---|
-| Azure Backup se nemůže připojit k instanci serveru SQL. | Azure Backup se nemůže připojit k instanci systému SQL Server. | Pomocí další podrobnosti v nabídce Azure portal chyba zúžit hlavní příčiny. Odkazovat na [SQL odstraňování potíží se zálohováním](https://docs.microsoft.com/sql/database-engine/configure-windows/troubleshoot-connecting-to-the-sql-server-database-engine) oprava chyby.<br/><ul><li>Pokud výchozí nastavení SQL neumožňuje vzdálená připojení, změňte nastavení. Naleznete v následujících článcích pro informace o změně nastavení:<ul><li>[MSSQLSERVER_-1](/previous-versions/sql/sql-server-2016/bb326495(v=sql.130))</li><li>[MSSQLSERVER_2](/sql/relational-databases/errors-events/mssqlserver-2-database-engine-error)</li><li>[MSSQLSERVER_53](/sql/relational-databases/errors-events/mssqlserver-53-database-engine-error)</li></ul></li></ul><ul><li>Pokud dojde k problémům přihlášení, použijte tyto odkazy a opravte je:<ul><li>[MSSQLSERVER_18456](/sql/relational-databases/errors-events/mssqlserver-18456-database-engine-error)</li><li>[MSSQLSERVER_18452](/sql/relational-databases/errors-events/mssqlserver-18452-database-engine-error)</li></ul></li></ul> |
+| Azure Backup se nemůže připojit k instanci SQL. | Azure Backup se nemůže připojit k instanci SQL Server. | Pomocí dalších podrobností v nabídce Azure Portal chyby můžete zúžit hlavní příčiny. Chybu opravíte v tématu [řešení potíží se zálohováním SQL](https://docs.microsoft.com/sql/database-engine/configure-windows/troubleshoot-connecting-to-the-sql-server-database-engine) .<br/><ul><li>Pokud výchozí nastavení SQL neumožňují vzdálená připojení, změňte nastavení. Informace o změně nastavení najdete v následujících článcích:<ul><li>[MSSQLSERVER_-1](/previous-versions/sql/sql-server-2016/bb326495(v=sql.130))</li><li>[MSSQLSERVER_2](/sql/relational-databases/errors-events/mssqlserver-2-database-engine-error)</li><li>[MSSQLSERVER_53](/sql/relational-databases/errors-events/mssqlserver-53-database-engine-error)</li></ul></li></ul><ul><li>Pokud dojde k problémům s přihlášením, opravte je pomocí těchto odkazů:<ul><li>[MSSQLSERVER_18456](/sql/relational-databases/errors-events/mssqlserver-18456-database-engine-error)</li><li>[MSSQLSERVER_18452](/sql/relational-databases/errors-events/mssqlserver-18452-database-engine-error)</li></ul></li></ul> |
 
 ### <a name="usererrorparentfullbackupmissing"></a>UserErrorParentFullBackupMissing
 
 | Chybová zpráva | Možné příčiny | Doporučená akce |
 |---|---|---|
-| Pro tento zdroj dat chybí první úplná záloha. | Chybí úplné zálohování pro databázi. Protokol a rozdílové zálohy rodičům, aby úplné zálohy, takže je potřeba provést úplnou zálohu před aktivací rozdílové nebo zálohu protokolu. | Aktivujte ad hoc úplné zálohování.   |
+| Pro tento zdroj dat chybí první úplná záloha. | Pro databázi chybí úplné zálohování. Protokoly a rozdílové zálohy jsou nadřazené k úplnému zálohování, proto nezapomeňte před aktivací rozdílových nebo protokolu zálohování provést úplné zálohování. | Aktivovat úplné zálohování ad hoc.   |
 
 ### <a name="usererrorbackupfailedastransactionlogisfull"></a>UserErrorBackupFailedAsTransactionLogIsFull
 
 | Chybová zpráva | Možné příčiny | Doporučená akce |
 |---|---|---|
-| Zálohu nejde vytvořit, protože transakční protokol pro zdroj dat je plný. | Místa transakčního protokolu databáze je plná. | Chcete-li opravit tento problém, přečtěte si [dokumentaci k SQL serveru](https://docs.microsoft.com/sql/relational-databases/errors-events/mssqlserver-9002-database-engine-error). |
+| Zálohování nelze provést, protože transakční protokol zdroje dat je plný. | Transakční místo transakčního protokolu databáze je zaplněno. | Chcete-li tento problém vyřešit, přečtěte si [dokumentaci k SQL Server](https://docs.microsoft.com/sql/relational-databases/errors-events/mssqlserver-9002-database-engine-error). |
 
 ### <a name="usererrorcannotrestoreexistingdbwithoutforceoverwrite"></a>UserErrorCannotRestoreExistingDBWithoutForceOverwrite
 
 | Chybová zpráva | Možné příčiny | Doporučená akce |
 |---|---|---|
-| Databáze se stejným názvem již existuje v cílovém umístění | Cíl obnovení cíl už obsahuje databáze se stejným názvem.  | <ul><li>Změňte název cílové databáze.</li><li>Nebo můžete použít možnost vynucení přepsání na stránce obnovení.</li> |
+| Databáze se stejným názvem už v cílovém umístění existuje. | Cílový cíl obnovení již obsahuje databázi se stejným názvem.  | <ul><li>Změňte název cílové databáze.</li><li>Nebo použijte možnost Vynutit přepsání na stránce obnovit.</li> |
 
 ### <a name="usererrorrestorefaileddatabasecannotbeofflined"></a>UserErrorRestoreFailedDatabaseCannotBeOfflined
 
 | Chybová zpráva | Možné příčiny | Doporučená akce |
 |---|---|---|
-| Obnovení selhalo, protože databázi nejde nastavit offline. | Když provádíte obnovení, cílová databáze je potřeba uvést do offline režimu. Azure Backup nelze uvést do režimu offline tato data. | Pomocí další podrobnosti v nabídce Azure portal chyba zúžit hlavní příčiny. Další informace najdete v tématu [dokumentaci k SQL serveru](https://docs.microsoft.com/sql/relational-databases/backup-restore/restore-a-database-backup-using-ssms). |
+| Obnovení selhalo, protože databázi nejde nastavit offline. | I když provádíte obnovení, musí být cílová databáze přepnuta do režimu offline. Azure Backup nemůže převést tato data do režimu offline. | Pomocí dalších podrobností v nabídce Azure Portal chyby můžete zúžit hlavní příčiny. Další informace najdete v dokumentaci k [SQL Server](https://docs.microsoft.com/sql/relational-databases/backup-restore/restore-a-database-backup-using-ssms). |
 
 ###  <a name="usererrorcannotfindservercertificatewiththumbprint"></a>UserErrorCannotFindServerCertificateWithThumbprint
 
 | Chybová zpráva | Možné příčiny | Doporučená akce |
 |---|---|---|
-| Nejde najít server certifikát s kryptografickým otiskem na cíli. | Hlavní databáze v cílové instanci nemá platný šifrovací kryptografického otisku. | Importujte platný kryptografický otisk používá v instanci zdroje v cílové instanci. |
+| V cíli nebyl nalezen certifikát serveru s kryptografickým otiskem. | Hlavní databáze v cílové instanci nemá platný šifrovací kryptografický otisk. | Importujte platný kryptografický otisk certifikátu použitý u zdrojové instance do cílové instance. |
 
 ### <a name="usererrorrestorenotpossiblebecauselogbackupcontainsbulkloggedchanges"></a>UserErrorRestoreNotPossibleBecauseLogBackupContainsBulkLoggedChanges
 
 | Chybová zpráva | Možné příčiny | Doporučená akce |
 |---|---|---|
-| Záloha protokolů použitá k obnovení obsahuje hromadně protokolované změny. Podle pokynů pro SQL ji nejde použít k zastavení v libovolném bodu v čase. | Pokud je databáze v režimu hromadně protokolovaného obnovení, data mezi hromadně protokolovaného transakce a další protokolu transakcí nelze obnovit. | Vyberte jiný bod v čase pro obnovení. [Další informace](https://docs.microsoft.com/previous-versions/sql/sql-server-2008-r2/ms186229(v=sql.105)).
+| Záloha protokolů použitá k obnovení obsahuje hromadně protokolované změny. Podle pokynů pro SQL ji nejde použít k zastavení v libovolném bodu v čase. | Když je databáze v režimu hromadného obnovení, data mezi hromadně protokolovanými transakcemi a další transakce protokolu se nedají obnovit. | Vyberte jiný bod v čase pro obnovení. [Další informace](https://docs.microsoft.com/previous-versions/sql/sql-server-2008-r2/ms186229(v=sql.105)).
 
 
 ### <a name="fabricsvcbackuppreferencecheckfailedusererror"></a>FabricSvcBackupPreferenceCheckFailedUserError
 
 | Chybová zpráva | Možné příčiny | Doporučená akce |
 |---|---|---|
-| Předvolbu zálohování pro skupinu dostupnosti SQL AlwaysOn není možné zajistit, protože některé uzly ve skupině dostupnosti nejsou zaregistrované. | Uzly, které jsou potřebné k zálohování není zaregistrované, nebo nejsou dostupné. | <ul><li>Ujistěte se, že všechny uzly potřebné k zálohování této databáze jsou zaregistrovaná a v pořádku a pak zkuste operaci zopakovat.</li><li>Změňte předvolby zálohování pro skupiny dostupnosti AlwaysOn SQL serveru.</li></ul> |
+| Předvolbu zálohování pro skupinu dostupnosti SQL AlwaysOn není možné zajistit, protože některé uzly ve skupině dostupnosti nejsou zaregistrované. | Uzly, které jsou potřebné k provedení zálohování, nejsou registrovány nebo jsou nedosažitelné. | <ul><li>Zajistěte, aby všechny uzly potřebné k provedení záloh této databáze byly registrovány a v pořádku, a potom operaci opakujte.</li><li>Změňte předvolby zálohování pro skupinu dostupnosti Always On SQL Server.</li></ul> |
 
 ### <a name="vmnotinrunningstateusererror"></a>VMNotInRunningStateUserError
 
 | Chybová zpráva | Možné příčiny | Doporučená akce |
 |---|---|---|
-| Virtuální počítač s SQL serverem je buď vypnutý a není k dispozici služba Azure Backup. | Virtuální počítač je vypnutý. | Ujistěte se, že je spuštěna instance serveru SQL Server. |
+| Virtuální počítač se systémem SQL Server je buď vypnutý, a není přístupný pro Azure Backup službu. | Virtuální počítač je vypnutý. | Ujistěte se, že je spuštěná instance SQL Server. |
 
 ### <a name="guestagentstatusunavailableusererror"></a>GuestAgentStatusUnavailableUserError
 
 | Chybová zpráva | Možné příčiny | Doporučená akce |
 |---|---|---|
-| Služba Azure Backup agent hosta virtuálního počítače Azure pomocí provádí zálohování, ale není k dispozici na cílovém serveru agenta hosta. | Agent hosta není povolena nebo je v chybném stavu. | [Nainstalujte agenta hosta virtuálního počítače](../virtual-machines/extensions/agent-windows.md) ručně. |
+| Služba Azure Backup pro zálohování používá agenta hosta virtuálního počítače Azure, ale Agent hosta není na cílovém serveru k dispozici. | Agent hosta není povolený nebo není v pořádku. | [Nainstalujte agenta hosta virtuálního počítače](../virtual-machines/extensions/agent-windows.md) ručně. |
 
 ### <a name="autoprotectioncancelledornotvalid"></a>AutoProtectionCancelledOrNotValid
 
 | Chybová zpráva | Možné příčiny | Doporučená akce |
 |---|---|---|
-| Záměr automatické ochrany byla buď odebrána nebo je více platný. | Když povolíte automatické ochrany na instanci systému SQL Server, **konfigurace zálohování** úloha pro všechny databáze v této instanci. Pokud zakážete automatickou ochranu jsou spuštěné úlohy, které pak bude **probíhá** zrušení úloh s tímto kódem chyby. | Povolte automatickou ochranu znovu k ochraně všech zbývajících databází. |
+| Záměr automatické ochrany byl buď odebrán, nebo již není platný. | Pokud povolíte automatickou ochranu na instanci SQL Server, nakonfigurujte úlohy **zálohování** spuštěné pro všechny databáze v této instanci. Pokud při spuštění úloh zakážete automatickou ochranu, **probíhající úlohy se** zruší s tímto kódem chyby. | Znovu povolte automatickou ochranu, aby bylo možné lépe chránit všechny zbývající databáze. |
 
-## <a name="re-registration-failures"></a>Opětovná registrace selhání
+## <a name="re-registration-failures"></a>Selhání opětovné registrace
 
-Před aktivací operace znovu zaregistrovat, zkontrolujte pro jeden nebo více z následujících příznaků:
+Než zahájíte operaci opětovného zápisu, proveďte kontrolu jednoho nebo více následujících příznaků:
 
-* Všechny operace (jako je zálohování, obnovení a konfiguraci zálohování) se nedaří na virtuálním počítači s jedním z následující kódy chyb: **WorkloadExtensionNotReachable**, **UserErrorWorkloadExtensionNotInstalled**, **WorkloadExtensionNotPresent**, **WorkloadExtensionDidntDequeueMsg**.
-* **Stav zálohování** zobrazující oblast zálohované položky **nedostupný**. Vyloučit všechny jiné příčiny, které mohou nastat ve stejném stavu:
+* Všechny operace (například zálohování, obnovení a konfigurace zálohování) selžou na virtuálním počítači s jedním z následujících kódů chyb: **WorkloadExtensionNotReachable**, **UserErrorWorkloadExtensionNotInstalled**, **WorkloadExtensionNotPresent**, **WorkloadExtensionDidntDequeueMsg**.
+* Stavová oblast **zálohování** pro zálohovanou položku se zobrazuje jako nedostupná. Vyloučí všechny ostatní příčiny, které by mohly mít za následek stejný stav:
 
-  * Nedostatečná oprávnění k provedení operace související se zálohování na virtuálním počítači  
-  * Vypnutí virtuálního počítače, aby zálohování nelze provést
+  * Nedostatečná oprávnění k provádění operací souvisejících se zálohováním virtuálního počítače  
+  * Vypnutí virtuálního počítače, takže zálohy nejdou uskutečnit.
   * Problémy se sítí  
 
-  !["Není dosažitelný" stav při opětovné registraci virtuálního počítače](./media/backup-azure-sql-database/re-register-vm.png)
+  ![Stav "nedostupný" při opětovné registraci virtuálního počítače](./media/backup-azure-sql-database/re-register-vm.png)
 
-* V případě skupiny dostupnosti Always On spustit zálohování po změně předvolby zálohování nebo po převzetí služeb při selhání.
+* V případě skupiny dostupnosti Always On se zálohování po změně předvolby zálohování nebo po převzetí služeb při selhání nedaří.
 
-Tyto příznaky mohou vzniknout pro jeden nebo více z následujících důvodů:
+K těmto potížím může dojít z některého z následujících důvodů:
 
-* Rozšíření byla odstraněna nebo odinstalována z portálu. 
-* Rozšíření byla odinstalována ze **ovládací panely** na virtuálním počítači v rámci **odinstalovat nebo změnit Program**.
-* Virtuální počítač se obnovila zpět v čase prostřednictvím obnovení místní disk.
-* Virtuální počítač byl vypnut delší dobu, proto konfiguraci rozšíření na jeho platnost.
-* Virtuální počítač byl odstraněn a jiný virtuální počítač vytvořila se stejným názvem a ve stejné skupině prostředků jako odstraněného virtuálního počítače.
-* Jeden z uzlů skupiny dostupnosti nedostali kompletní konfiguraci zálohování. To může nastat při skupina dostupnosti je zaregistrovaný do trezoru, nebo když je přidán nový uzel.
+* Rozšíření bylo na portálu odstraněno nebo odinstalováno. 
+* Rozšíření bylo z **ovládacích panelů** na virtuálním počítači odinstalováno při odinstalaci **nebo změně programu**.
+* Virtuální počítač se znovu obnovil v čase prostřednictvím místního obnovení disku.
+* Po delší dobu byl virtuální počítač vypnutý, takže platnost konfigurace rozšíření na něm vypršela.
+* Virtuální počítač se odstranil a vytvořil se jiný virtuální počítač se stejným názvem a ve stejné skupině prostředků jako odstraněný virtuální počítač.
+* Jeden z uzlů skupiny dostupnosti neobdržel úplnou konfiguraci zálohování. K tomu může dojít, když je skupina dostupnosti zaregistrovaná do trezoru nebo když se přidá nový uzel.
 
-V předchozích případech doporučujeme vám, že spustíte operaci přeregistrovat na virtuálním počítači. Prozatím se tato možnost je dostupná jenom přes PowerShell.
+V předchozích scénářích doporučujeme, abyste na virtuálním počítači aktivovali operaci opětovného zápisu. Teď je tato možnost dostupná jenom přes PowerShell.
 
 ## <a name="size-limit-for-files"></a>Omezení velikosti souborů
 
-Celkový počet řetězec velikost souborů závisí nejen na počet souborů, ale také na jejich názvy a cesty. Pro každý databázový soubor získejte logický název souboru a fyzickou cestu. Můžete pomocí tohoto dotazu SQL:
+Celková velikost řetězce souborů závisí nejen na počtu souborů, ale také na jejich názvech a cestách. Pro každý soubor databáze Získejte logický název souboru a fyzickou cestu. Tento dotaz SQL můžete použít:
 
 ```
 SELECT mf.name AS LogicalName, Physical_Name AS Location FROM sys.master_files mf
@@ -156,7 +155,7 @@ SELECT mf.name AS LogicalName, Physical_Name AS Location FROM sys.master_files m
                WHERE db.name = N'<Database Name>'"
 ```
 
-Nyní uspořádejte je v následujícím formátu:
+Nyní je uspořádejte v následujícím formátu:
 
 ```
 [{"path":"<Location>","logicalName":"<LogicalName>","isDir":false},{"path":"<Location>","logicalName":"<LogicalName>","isDir":false}]}
@@ -168,13 +167,13 @@ Tady je příklad:
 [{"path":"F:\\Data\\TestDB12.mdf","logicalName":"TestDB12","isDir":false},{"path":"F:\\Log\\TestDB12_log.ldf","logicalName":"TestDB12_log","isDir":false}]}
 ```
 
-Pokud řetězec velikost obsahu je větší než 20 000 bajtů, databázové soubory jsou uložena odlišným způsobem. Během obnovení nebudete moct nastavit cestu k cílovému souboru pro obnovení. Soubory se obnoví na výchozí cestu SQL poskytuje server SQL Server.
+Pokud velikost řetězce obsahu překračuje 20 000 bajtů, soubory databáze budou uloženy jinak. Během obnovení nebudete moci nastavit cestu k cílovému souboru pro obnovení. Soubory budou obnoveny do výchozí cesty SQL, kterou poskytuje SQL Server.
 
-### <a name="override-the-default-target-restore-file-path"></a>Přepsat výchozí cíl obnovení cestu k souboru
+### <a name="override-the-default-target-restore-file-path"></a>Přepsat výchozí cílovou cestu k souboru pro obnovení
 
-Cesta k cílovému obnovení souboru během operace obnovení můžete přepsat tak, že soubor JSON, který obsahuje mapování souboru databáze do cílové cesty obnovení. Vytvoření `database_name.json` souboru a jeho následné uložení umístění *C:\Program Files\Azure úlohy Backup\bin\plugins\SQL*.
+Cílovou cestu k souboru obnovení můžete během operace obnovení přepsat umístěním souboru JSON, který obsahuje mapování souboru databáze na cílovou cestu pro obnovení. Vytvořte soubor a umístěte ho do umístění *C:\Program Files\Azure úlohy Backup\bin\plugins\SQL.* `database_name.json`
 
-Obsah souboru by měla být v tomto formátu:
+Obsah souboru by měl být v tomto formátu:
 ```
 [
   {
@@ -207,7 +206,7 @@ Tady je příklad:
 ]
 ```
 
-V předchozím obsahu můžete získat logický název souboru databáze pomocí následujícího dotazu SQL:
+V předchozím obsahu můžete získat logický název databázového souboru pomocí následujícího dotazu SQL:
 
 ```
 SELECT mf.name AS LogicalName FROM sys.master_files mf
@@ -220,4 +219,4 @@ Tento soubor by měl být umístěn před aktivací operace obnovení.
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace o Azure Backup pro virtuální počítače s SQL serverem (public preview) najdete v tématu [Azure Backup pro virtuální počítače s SQL](../virtual-machines/windows/sql/virtual-machines-windows-sql-backup-recovery.md#azbackup).
+Další informace o Azure Backup pro virtuální počítače s SQL Server (Public Preview) najdete v tématu [Azure Backup pro virtuální počítače SQL](../virtual-machines/windows/sql/virtual-machines-windows-sql-backup-recovery.md#azbackup).

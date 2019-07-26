@@ -1,6 +1,6 @@
 ---
-title: Zpracování a extrahování text z obrázků v kognitivního vyhledávání – Azure Search
-description: Zpracování a extrahování textu a dalších informací z obrázků v cognitive hledání kanálů ve službě Azure Search.
+title: Zpracování a extrakce textu z obrázků při rozpoznávání vyhledávání – Azure Search
+description: Zpracování a extrakce textu a dalších informací z obrázků v prokanálech hledání rozpoznávání v Azure Search.
 services: search
 manager: pablocas
 author: luiscabrer
@@ -11,42 +11,42 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 8bea47467d141869b1a668668bc57451a882a54b
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 589f8c8f11138b4fb5c3c3096229e28c633efb0d
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67448451"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68423002"
 ---
-#  <a name="how-to-process-and-extract-information-from-images-in-cognitive-search-scenarios"></a>Postupy zpracování a extrahování informací z obrázků ve scénářích kognitivního vyhledávání
+#  <a name="how-to-process-and-extract-information-from-images-in-cognitive-search-scenarios"></a>Postup zpracování a extrakce informací z imagí ve scénářích hledání v rozpoznávání
 
-Kognitivní vyhledávání má několik funkcí pro práci s obrázky a soubory obrázků. Během hádání dokumentu, můžete použít *imageAction* parametr k extrakci textu z fotografie nebo obrázků obsahující text alfanumerické znaky, jako je například v znaménko stop slovo "STOP". Další scénáře zahrnují generování textové vyjádření image, jako je například "dandelion" fotografie dandelion nebo barvu "žlutý". Lze rovněž extrahovat metadata o imagi, jako je například jeho velikost.
+Rozpoznávání rozpoznávání má několik možností pro práci s obrázky a soubory obrázků. Během odhalující dokumentu můžete použít parametr *imageAction* k extrakci textu z fotek nebo obrázků obsahujících alfanumerický text, jako je například slovo "Stop" v znaménku stop. Mezi další scénáře patří generování textové reprezentace obrázku, jako je například "Dandelion" pro fotografii Dandelion nebo barva "žlutá". Můžete také extrahovat metadata o obrázku, jako je jeho velikost.
 
-Tento článek popisuje podrobněji pro zpracování obrázků a poskytuje pokyny pro práci s obrázky v kanálu kognitivního vyhledávání.
+Tento článek popisuje zpracování imagí podrobněji a poskytuje pokyny pro práci s imagemi v kanálu vyhledávání vnímání.
 
 <a name="get-normalized-images"></a>
 
-## <a name="get-normalized-images"></a>Získání normalizované obrázků
+## <a name="get-normalized-images"></a>Získat normalizované bitové kopie
 
-Jako součást hádání dokumentu jsou nová sada parametry konfigurace indexeru pro zpracování souborů obrázků nebo Image vložené v souborech. Normalizace bitových kopií pro další zpracování příjmu dat se používají tyto parametry. Normalizace imagí je mezi nimi vlastně jednotnější. Velké obrázky se změněnou velikostí maximální výšku a šířku tak, aby byly použitelné. Pro Image poskytování metadat na orientaci otočení obrázku se upraví pro vertikální načítání. Úpravy metadat jsou zachyceny v komplexní typ vytvoří pro každý obrázek. 
+V rámci odhalující dokumentu je k dispozici nová sada konfiguračních parametrů indexeru pro zpracování souborů obrázků nebo obrázků vložených do souborů. Tyto parametry slouží k normalizaci imagí pro další zpracování pro příjem dat. Normalizace imagí je díky nim jednotnější. Velikost velkých obrázků se změní na maximální výšku a šířku, aby byly příchodné. Pro obrázky, které poskytují metadata o orientaci, se při vertikálním načítání upraví otočení obrázku. Úpravy metadat jsou zachyceny v komplexním typu vytvořeném pro každý obrázek. 
 
-Normalizace image se nedá vypnout. Dovednosti, které iterují v imagí očekávat normalizované imagí. Povolení image normalizace pro indexer vyžaduje, že dovedností připojit k tento indexer.
+Normalizaci imagí nelze vypnout. Dovednosti, které iterují na obrázky, očekávají normalizované obrázky. Povolení normalizace imagí u indexeru vyžaduje, aby k tomuto indexeru byl připojen dovednosti.
 
-| Parametr konfigurace | Popis |
+| Konfigurační parametr | Popis |
 |--------------------|-------------|
-| imageAction   | Nastavte na "none", pokud žádná akce by měla být provedeny, když došlo k vložené obrázky nebo soubory obrázků. <br/>Nastavte na "generateNormalizedImages" generovat pole normalizované imagí jako součást analýzy dokumentu.<br/>Nastavte na "generateNormalizedImagePerPage" generovat pole normalizované imagí pro dokumenty PDF ve zdroji dat, kde jednotlivé stránky je vykresleno do jedné výstupní image.  Funkce je stejná jako "generateNormalizedImages" pro typy souborů – soubor PDF.<br/>U možnosti, které není "none", budou přístupné imagí v *normalized_images* pole. <br/>Výchozí hodnota je "none". Tato konfigurace je pouze relevantní do objektu blob zdroje dat, když "dataToExtract" je nastavena na "contentAndMetadata." <br/>Maximálně 1000 Image se budou extrahovat z daného dokumentu. Pokud existuje více než 1 000 obrázků v dokumentu, se budou extrahovat prvních 1000 a vygeneruje se upozornění. |
-|  normalizedImageMaxWidth | Maximální šířku (v pixelech) normalizované obrázky generované. Výchozí hodnota je 2000.|
-|  normalizedImageMaxHeight | Maximální výšku (v pixelech) normalizované obrázky generované. Výchozí hodnota je 2000.|
+| imageAction   | Nastavte na None, pokud by se při výskytu vložených obrázků nebo souborů obrázků neměla dělat žádná akce. <br/>Nastavte na "generateNormalizedImages", aby se vygenerovalo pole normalizovaných imagí jako součást odhalujícího dokumentu.<br/>Nastavte na "generateNormalizedImagePerPage", chcete-li generovat pole normalizovaných imagí, kde pro soubory PDF ve zdroji dat jsou jednotlivé stránky vykresleny do jedné výstupní image.  Funkce je stejná jako "generateNormalizedImages" pro typy souborů, které nejsou ve formátu PDF.<br/>V případě jakékoli možnosti, která není "none", budou obrázky zobrazeny v poli *normalized_images* . <br/>Výchozí hodnota je None. Tato konfigurace je relevantní pouze pro zdroje dat objektů blob, pokud je "dataToExtract" nastaven na "contentAndMetadata". <br/>Z daného dokumentu bude extrahováno maximálně 1000 imagí. Pokud je v dokumentu více než 1000 obrázků, bude extrahován první 1000 a bude vygenerováno upozornění. |
+|  normalizedImageMaxWidth | Maximální šířka (v pixelech) pro vygenerované normalizované bitové kopie. Výchozí hodnota je 2000.|
+|  normalizedImageMaxHeight | Maximální výška (v pixelech) pro vygenerované normalizované bitové kopie. Výchozí hodnota je 2000.|
 
 > [!NOTE]
-> Pokud jste nastavili *imageAction* vlastnost na jinou hodnotu než "none", nebude možné nastavit *parsingMode* vlastnost na jinou hodnotu než "Výchozí".  Pouze jednu z těchto dvou vlastností může nastavit vaše konfigurace indexeru na jiné než výchozí hodnotu.
+> Pokud nastavíte vlastnost *imageAction* na jinou hodnotu než None, nebudete moci nastavit vlastnost *parsingMode* na jinou hodnotu než "default".  V konfiguraci indexeru můžete nastavit jenom jednu z těchto dvou vlastností na jinou než výchozí hodnotu.
 
-Nastavte **parsingMode** parametr `json` (k indexování jednotlivých objektů blob jako jeden dokument) nebo `jsonArray` (Pokud objektů BLOB obsahovat pole JSON a je třeba každý prvek pole považován za samostatný dokumentu).
+Nastavte parametr **parsingMode** na `json` (Chcete-li indexovat každý objekt BLOB jako jeden dokument `jsonArray` ) nebo (Pokud objekty blob obsahují pole JSON a potřebujete, aby každý prvek pole byl považován za samostatný dokument).
 
-Výchozí hodnota pro normalizované imagí maximální šířku a výšku v pixelech 2000 je založen na maximální velikosti podporované [OCR dovednosti](cognitive-search-skill-ocr.md) a [obrázku analýzy dovednosti](cognitive-search-skill-image-analysis.md). Pokud zvýšíte na povolené maximum, zpracování může dojít při jeho větší obrázky.
+Výchozí hodnota 2000 pixelů pro normalizované maximální šířky a výšky obrázků je založena na maximální velikosti podporované [dovedností OCR](cognitive-search-skill-ocr.md) a [dovedností analýzy obrázků](cognitive-search-skill-image-analysis.md). Pokud zvýšíte maximální limity, zpracování na větších obrázcích by mohlo selhat.
 
 
-Zadejte imageAction ve vašich [definice indexeru](https://docs.microsoft.com/rest/api/searchservice/create-indexer) následujícím způsobem:
+ImageAction v [definici indexeru](https://docs.microsoft.com/rest/api/searchservice/create-indexer) zadáte následujícím způsobem:
 
 ```json
 {
@@ -62,17 +62,17 @@ Zadejte imageAction ve vašich [definice indexeru](https://docs.microsoft.com/re
 }
 ```
 
-Když *imageAction* nastaven na hodnotu jiných "none", nové *normalized_images* bude pole obsahovat celou řadu imagí. Každé image je komplexní typ, který má následující členy:
+Pokud je *imageAction* nastaveno na jinou hodnotu než "none", nové pole *normalized_images* bude obsahovat pole obrázků. Každý obrázek je komplexní typ, který má následující členy:
 
-| Člen bitové kopie       | Popis                             |
+| Člen obrázku       | Popis                             |
 |--------------------|-----------------------------------------|
-| data               | Řetězec normalizované obrázku ve formátu JPEG s kódováním BASE64.   |
-| Šířka              | Šířka normalizované obrázku v pixelech. |
-| Výška             | Výška normalizované obrázku v pixelech. |
-| originalWidth      | Původní šířka obrázku před normalizace. |
-| originalHeight      | Původní výška obrázku před normalizace. |
-| rotationFromOriginal |  Proti směru hodinových ručiček otočení ve stupních, ke kterým došlo k vytvoření této image normalizovaná. Hodnotu v rozmezí 0 stupňů až 360 stupňů. Tento krok načte metadata z obrázku, který je generován fotoaparát nebo skeneru. Obvykle více 90 stupňů. |
-| parametr ContentOffset rovný |Odsazení znaku v obsahu pole, ve kterém se image získané z. Toto pole platí pouze pro soubory s vložené obrázky. |
+| data               | Řetězec s kódováním BASE64 normalizovaného obrázku ve formátu JPEG.   |
+| Délk              | Šířka normalizované image v pixelech |
+| Výška             | Výška normalizované image v pixelech |
+| originalWidth      | Původní šířka obrázku před normalizací |
+| originalHeight      | Původní výška obrázku před normalizací |
+| rotationFromOriginal |  Rotace proti směru hodinových ručiček ve stupních, ve kterých došlo k vytvoření normalizované bitové kopie. Hodnota v rozmezí 0 stupňů až 360 stupňů. Tento krok přečte metadata z image, která je vygenerovaná fotoaparátem nebo skenerem. Obvykle násobek 90 stupňů. |
+| contentOffset |Posun znaku v rámci pole Content, ze kterého byl obrázek extrahován. Toto pole platí pouze pro soubory s vloženými obrázky. |
 
  Ukázková hodnota *normalized_images*:
 ```json
@@ -89,33 +89,31 @@ Když *imageAction* nastaven na hodnotu jiných "none", nové *normalized_images
 ]
 ```
 
-## <a name="image-related-skills"></a>Související s imagí dovednosti
+## <a name="image-related-skills"></a>Dovednosti související s obrázky
 
-Existují dvě integrované kognitivní dovednosti, které jako vstup přijímat imagí: [OCR](cognitive-search-skill-ocr.md) a [Analýza obrázků](cognitive-search-skill-image-analysis.md). 
+K dispozici jsou dvě integrované schopnosti pro rozpoznávání, které přijímají obrázky jako vstup: Analýza [OCR](cognitive-search-skill-ocr.md) a [obrázku](cognitive-search-skill-image-analysis.md). 
 
-V současné době předvedou dovednosti pracovat pouze s obrázky generované z kroku odhalující dokumentu. V důsledku toho je pouze podporované vstupní `"/document/normalized_images"`.
+V současné době tyto dovednosti fungují jenom s obrázky generovanými z kroku pro trhliny dokumentů. V takovém případě je `"/document/normalized_images"`jediným podporovaným vstupem.
 
-### <a name="image-analysis-skill"></a>Obrázek analýzy dovedností
+### <a name="image-analysis-skill"></a>Dovednost analýzy obrázků
 
-[Analýza obrázků dovednosti](cognitive-search-skill-image-analysis.md) extrahuje bohatou sadu funkcí visual na základě obsahu obrázku. Můžete například vygenerovat titulek z bitové kopie, generovat značky nebo identifikovat celebrit a památek.
+[Dovednost analýzy obrázků](cognitive-search-skill-image-analysis.md) extrahuje bohatou sadu vizuálních funkcí založenou na obsahu obrázku. Můžete například vygenerovat titulek z obrázku, generovat značky nebo identifikovat celebrit a orientačních bodů.
 
-### <a name="ocr-skill"></a>OCR dovedností
+### <a name="ocr-skill"></a>Dovednost OCR
 
-[OCR dovednosti](cognitive-search-skill-ocr.md) extrahuje text z obrazových souborů, jako je například formátu JPG využívá, PNG a rastrových obrázků. Může extrahovat text a také informace o rozložení. Informace o rozložení poskytuje ohraničující pole pro každý z řetězců identifikovat.
+[Dovednost optického rozpoznávání znaků](cognitive-search-skill-ocr.md) extrahuje text ze souborů obrázků, jako jsou JPGs, pngs a bitmapy. Může extrahovat text i informace o rozložení. Informace o rozložení poskytují ohraničující pole pro každý identifikovaný řetězec.
 
-OCR dovednosti můžete vybrat algoritmus použije pro zjišťování text vašich imagí. Aktuálně podporuje dva algoritmy, jeden pro tištěný text a druhý pro rukou psaný text.
+## <a name="embedded-image-scenario"></a>Scénář vložené image
 
-## <a name="embedded-image-scenario"></a>Scénář vložený obrázek
-
-Běžný scénář zahrnuje vytvoření jeden řetězec obsahující všechny obsah souboru, text a počátek obrázku textu, podle následujících kroků:  
+Běžný scénář zahrnuje vytvoření jednoho řetězce obsahujícího celý obsah souboru, textu textu i obrázku, a to provedením následujících kroků:  
 
 1. [Extrahovat normalized_images](#get-normalized-images)
-1. Spuštění pomocí technologie OCR dovednosti `"/document/normalized_images"` jako vstup
-1. Sloučit textová reprezentace těchto imagí s nezpracovaný text extrahovány ze souboru. Můžete použít [sloučení textu](cognitive-search-skill-textmerger.md) dovednosti ke sloučení obou textové bloky dat do jednoho velkého řetězce.
+1. Spustit dovednosti optického rozpoznávání `"/document/normalized_images"` znaků pomocí as Input
+1. Sloučí text reprezentující obrázky s nezpracovaným textem extrahovaným ze souboru. Dovednost [sloučení textu](cognitive-search-skill-textmerger.md) můžete použít k sloučení obou textových bloků do jednoho velkého řetězce.
 
-Následující příklad dovednosti vytvoří *merged_text* pole obsahující textový obsah dokumentu. Zahrnuje také OCRed text ze všech vložené obrázky. 
+Následující příklad dovednosti vytvoří pole *merged_text* obsahující textový obsah dokumentu. Zahrnuje také text OCRed z každého vloženého obrázku. 
 
-#### <a name="request-body-syntax"></a>Syntaxe tělo požadavku
+#### <a name="request-body-syntax"></a>Syntaxe textu žádosti
 ```json
 {
   "description": "Extract text from images and merge with content text to produce merged_text",
@@ -166,15 +164,15 @@ Následující příklad dovednosti vytvoří *merged_text* pole obsahující te
 }
 ```
 
-Teď, když máte merged_text pole, můžete ji namapovat jako prohledávatelném poli v definici indexeru. Veškerý obsah souborů, včetně textu, obrázků, bude možné prohledávat.
+Teď, když máte pole merged_text, můžete ho namapovat jako vyhledávací pole v definici indexeru. Veškerý obsah souborů, včetně textu obrázků, bude možné prohledávat.
 
-## <a name="visualize-bounding-boxes-of-extracted-text"></a>Vizualizujte ohraničující pole byl extrahován text
+## <a name="visualize-bounding-boxes-of-extracted-text"></a>Vizualizace ohraničujících polí extrahovaných textů
 
-Další z typických možností je vizualizace informace o rozložení výsledků hledání. Například můžete chtít zvýraznit, kde byla nalezena část textu v obrázku jako součást výsledků hledání.
+Dalším běžným scénářem je vizualizace informací o rozložení výsledků hledání. Například můžete chtít zvýraznit, kde byl nějaký text nalezen v obrázku jako součást výsledků hledání.
 
-Protože OCR krok se provádí u zobrazení normalizovaná, rozložení souřadnice jsou uváděny v prostoru normalizované image. Při zobrazení normalizovaná bitové kopie, přítomnost souřadnice většinou není problém, ale v některých případech můžete chtít zobrazit původní bitové kopie. V tomto případě každý souřadnice bodů v rozložení převeďte na původní systém souřadnic bitové kopie. 
+Vzhledem k tomu, že je krok OCR proveden na normalizovaných obrázcích, jsou souřadnice rozložení v normalizovaném prostoru obrázku. Při zobrazení normalizované bitové kopie není přítomnost souřadnic obecně problémem, ale v některých situacích může být vhodné zobrazit původní obrázek. V takovém případě převeďte všechny body souřadnic v rozložení na původní souřadnicový systém obrázku. 
 
-Pokud potřebujete transformovat normalizované souřadnice, kde původní souřadnicového prostoru, můžete jako pomocné rutiny, použít následující požadovaný algoritmus:
+Pokud potřebujete transformovat normalizované souřadnice na původní souřadnicový prostor, můžete jako pomocníka použít následující algoritmus:
 
 ```csharp
         /// <summary>
@@ -217,10 +215,10 @@ Pokud potřebujete transformovat normalizované souřadnice, kde původní souř
         }
 ```
 
-## <a name="see-also"></a>Další informace najdete v tématech
-+ [Vytvoření indexeru (REST)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)
-+ [Analýza obrázku dovedností](cognitive-search-skill-image-analysis.md)
-+ [OCR dovedností](cognitive-search-skill-ocr.md)
-+ [Dovednosti sloučení textu](cognitive-search-skill-textmerger.md)
-+ [Definování dovedností](cognitive-search-defining-skillset.md)
-+ [Způsob mapování polí bohatších možností](cognitive-search-output-field-mapping.md)
+## <a name="see-also"></a>Viz také:
++ [Vytvořit indexer (REST)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)
++ [Analyzovat dovednost obrazu](cognitive-search-skill-image-analysis.md)
++ [Dovednost OCR](cognitive-search-skill-ocr.md)
++ [Dovednost sloučení textu](cognitive-search-skill-textmerger.md)
++ [Jak definovat dovednosti](cognitive-search-defining-skillset.md)
++ [Jak mapovat obohacená pole](cognitive-search-output-field-mapping.md)

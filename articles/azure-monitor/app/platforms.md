@@ -10,28 +10,25 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 07/06/2019
+ms.date: 07/18/2019
 ms.reviewer: olegan
 ms.author: mbullwin
-ms.openlocfilehash: db79f2b1d3857aac2f71d2e18a3949f068b746eb
-ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
+ms.openlocfilehash: dd2fb0c9ef157e3706ca3d902f7feebaf4c2f279
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67990058"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68478910"
 ---
-# <a name="languages---officially-supported-by-application-insights-team"></a>Jazyky – oficiálně podporované týmem Application Insights
+# <a name="supported-languages"></a>Podporované jazyky
 
 * [C#|VB (.NET)](../../azure-monitor/app/asp-net.md)
 * [Java](../../azure-monitor/app/java-get-started.md)
-* [Webové stránky JavaScript](../../azure-monitor/app/javascript.md)
+* [JavaScript](../../azure-monitor/app/javascript.md)
 * [Node.js](../../azure-monitor/app/nodejs.md)
 
-## <a name="community-sdks"></a>Komunitní sady SDK
+## <a name="supported-platforms-and-frameworks"></a>Podporované platformy a architektury
 
-Existuje několik komunit Azure Application Insights SDK, z nichž mnoho původně vytvořila společnost Microsoft. Komunitní sady SDK nejsou oficiálně spravované Microsoftem. Nepovedlo se nám poskytnout podporu pro sadu SDK, která není v oficiálně podporovaném seznamu. Tyto sady SDK se považují za experimentální a nedoporučují se pro produkční použití.
-
-## <a name="platforms-and-frameworks"></a>Platformy a rozhraní
 ### <a name="instrumentation-for-already-deployed-applications-codeless-agent-based"></a>Instrumentace pro už nasazené aplikace (bez kódu, na základě agentů)
 * [Virtuální počítače Azure a Azure Virtual Machine Scale Sets](../../azure-monitor/app/azure-vm-vmss-apps.md)
 * [Azure App Service](../../azure-monitor/app/azure-web-apps.md)
@@ -59,3 +56,7 @@ Existuje několik komunit Azure Application Insights SDK, z nichž mnoho původn
 ## <a name="export-and-data-analysis"></a>Export a analýza dat
 * [Power BI](https://blogs.msdn.com/b/powerbi/archive/2015/11/04/explore-your-application-insights-data-with-power-bi.aspx)
 * [Stream Analytics](../../azure-monitor/app/export-power-bi.md)
+
+## <a name="unsupported-community-sdks"></a>Nepodporované sady SDK komunity
+
+Existuje několik sad SDK pro Application Insights komunity. Komunitní sady SDK nejsou oficiálně podporované nebo udržované Microsoftem. Nepovedlo se nám poskytnout podporu pro sadu SDK, která není v oficiálně podporovaném seznamu. 

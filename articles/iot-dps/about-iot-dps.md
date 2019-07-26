@@ -3,17 +3,17 @@ title: Přehled služby Azure IoT Hub Device Provisioning Service | Microsoft Do
 description: Popis zřizování zařízení v Azure pomocí služeb Device Provisioning a IoT Hub
 author: nberdy
 ms.author: nberdy
-ms.date: 12/05/2017
+ms.date: 04/04/2019
 ms.topic: overview
 ms.service: iot-dps
 services: iot-dps
 manager: briz
-ms.openlocfilehash: 89e0b6b5bedf36c89bf3a54f4baf42f7019625c0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8331161cde9e7717834dabd2228848de40f7be23
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60746043"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68360288"
 ---
 # <a name="provisioning-devices-with-azure-iot-hub-device-provisioning-service"></a>Zřizování zařízení pomocí služby Azure IoT Hub Device Provisioning Service
 Microsoft Azure poskytuje bohatou sadu integrovaných veřejných cloudových služeb pro všechny potřeby vašeho řešení IoT. IoT Hub Device Provisioning Service je pomocná služba pro IoT Hub. Umožňuje plně automatizované zřizování za běhu ve správném centru IoT, které nevyžaduje zásah člověka. Zákazníci tak můžou bezpečným a škálovatelným způsobem zřizovat miliony zařízení.
@@ -96,7 +96,7 @@ Služba Device Provisioning, stejně jako všechny služby Azure IoT, funguje na
 
 Pro operace služby podporuje služba Device Provisioning pouze připojení HTTPS.
 
-## <a name="regions"></a>Oblasti
+## <a name="regions"></a>Regions
 Služba Device Provisioning je dostupná v mnoha oblastech. Aktualizovaný seznam stávajících a nově ohlášených oblastí pro všechny služby najdete na stránce [Oblasti Azure](https://azure.microsoft.com/regions/). Dostupnost služby Device Provisioning můžete zkontrolovat na stránce [Stav Azure](https://azure.microsoft.com/status/).
 
 > [!NOTE]
@@ -108,8 +108,9 @@ Smlouva o úrovni služeb, kterou si můžete [přečíst](https://azure.microso
 ## <a name="quotas"></a>Kvóty
 Pro každé předplatné Azure platí výchozí omezení kvót, která můžou ovlivnit dosah vašeho řešení IoT. Aktuální omezení je 10 služeb Device Provisioning pro každé předplatné.
 
-Další podrobnosti o limitech kvót:
+[!INCLUDE [azure-iotdps-limits](../../includes/iot-dps-limits.md)]
 
+Další podrobnosti o limitech kvót:
 * [Omezení služeb v předplatném Azure](../azure-subscription-service-limits.md)
 
 ## <a name="related-azure-components"></a>Související komponenty Azure

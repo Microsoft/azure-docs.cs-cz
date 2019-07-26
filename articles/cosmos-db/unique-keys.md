@@ -1,59 +1,59 @@
 ---
-title: Použijte jedinečné klíče ve službě Azure Cosmos DB
-description: Další informace o použití jedinečné klíče v databázi Azure Cosmos
+title: Použití jedinečných klíčů v Azure Cosmos DB
+description: Naučte se používat v databázi Azure Cosmos jedinečné klíče.
 author: rimman
 ms.author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/23/2019
+ms.date: 07/23/2019
 ms.reviewer: sngun
-ms.openlocfilehash: af3c7771ce977cf248c5f1b61ba1c535a10ccd3c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e5b8eb4d5334eb198ff6699897c56b516ded069e
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66242516"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68467571"
 ---
-# <a name="unique-key-constraints-in-azure-cosmos-db"></a>Omezení jedinečných klíčů ve službě Azure Cosmos DB
+# <a name="unique-key-constraints-in-azure-cosmos-db"></a>Omezení jedinečnosti klíčů v Azure Cosmos DB
 
-Jedinečné klíče přidat vrstvu integrity dat do kontejneru Azure Cosmos. Vytvoříte zásady jedinečného klíče při vytváření kontejneru Azure Cosmos. S jedinečnými klíči Ujistěte se, že jedna nebo více hodnot v rámci logického oddílu je jedinečný. Můžete rovněž zaručují jedinečnost za [klíč oddílu](partition-data.md). 
+Jedinečné klíče přidávají vrstvu integrity dat do kontejneru Azure Cosmos. Při vytváření kontejneru Azure Cosmos vytvoříte jedinečnou zásadu klíčů. S jedinečnými klíči se ujistěte, že jedna nebo více hodnot v rámci logického oddílu je jedinečné. Můžete také zaručit jedinečnost na [klíč oddílu](partition-data.md). 
 
-Po vytvoření kontejneru s zásady jedinečného klíče, vytvoření nového nebo aktualizaci existující položky výsledkem je duplicitní v rámci logického oddílu je zabráněno, podle omezení unique key. Klíč oddílu, v kombinaci s jedinečný klíč zaručuje jedinečnost položky v rámci oboru kontejneru.
+Po vytvoření kontejneru s jedinečnou zásadou klíče se zabrání vytvoření nové nebo aktualizace existující položky, která má za následek duplikování v rámci logického oddílu, jak je určeno omezením jedinečného klíče. Klíč oddílu v kombinaci s jedinečným klíčem zaručuje jedinečnost položky v rámci rozsahu kontejneru.
 
-Představte si třeba kontejneru Azure Cosmos pomocí e-mailovou adresu jako omezení unique key a `CompanyID` jako klíč oddílu. Při konfiguraci e-mailovou adresu uživatele s jedinečný klíč, každá položka má jedinečnou e-mailovou adresu v rámci danou `CompanyID`. Duplicitní e-mailové adresy a stejnou hodnotu klíče oddílu nelze vytvořit dvě položky. 
+Představte si třeba kontejner Azure Cosmos s e-mailovou adresou jako omezení jedinečnosti klíče a `CompanyID` jako klíč oddílu. Když nakonfigurujete e-mailovou adresu uživatele s jedinečným klíčem, každá položka má v rámci dané `CompanyID`položky jedinečnou e-mailovou adresu. Nelze vytvořit dvě položky s duplicitními e-mailovými adresami a stejnou hodnotou klíče oddílu. 
 
-Vytvoření položek pomocí stejné e-mailové adresy, ale není stejné křestní jméno, příjmení a e-mailovou adresu, přidat další zásady jedinečného klíče. Místo vytváření jedinečné klíče založeného na pouze e-mailovou adresu, můžete také vytvořit jedinečný klíč s kombinací křestní jméno, příjmení a e-mailovou adresu. Tento klíč se označuje jako složený jedinečný klíč. V takovém případě se každá jedinečná kombinace tří hodnot v rámci danou `CompanyID` je povolen. 
+Pokud chcete vytvořit položky se stejnou e-mailovou adresou, ale ne se stejným křestním jménem, posledním jménem a e-mailovou adresou, přidejte další cesty k zásadě jedinečného klíče. Místo vytváření jedinečného klíče na základě e-mailové adresy můžete také vytvořit jedinečný klíč s kombinací křestního jména, příjmení a e-mailové adresy. Tento klíč je známý jako složený jedinečný klíč. V takovém případě je povolena každá jedinečná kombinace tří hodnot v rámci dané `CompanyID` položky. 
 
-Například kontejner může obsahovat položky s použitím následujících hodnot, kde každá položka respektuje omezení unique key.
+Kontejner může například obsahovat položky s následujícími hodnotami, kde každá položka respektuje omezení jedinečného klíče.
 
-|% CompanyID|Jméno|Příjmení|E-mailová adresa|
+|CompanyID|Jméno|Příjmení|E-mailová adresa|
 |---|---|---|---|
 |Contoso|Gaby|Duperre|gaby@contoso.com |
 |Contoso|Gaby|Duperre|gaby@fabrikam.com|
-|Společnost Fabrikam|Gaby|Duperre|gaby@fabrikam.com|
-|Společnost Fabrikam|Ivan|Duperre|gaby@fabrikam.com|
+|Zjistil|Gaby|Duperre|gaby@fabrikam.com|
+|Zjistil|Ivan|Duperre|gaby@fabrikam.com|
 |Fabrkam|   |Duperre|gaby@fabraikam.com|
 |Fabrkam|   |   |gaby@fabraikam.com|
 
-Pokud se pokusíte vložit jiná položka s kombinací uvedené v předchozí tabulce, zobrazí se chybová zpráva. Chyba udává, že omezení unique key nebyla splněna. Zobrazí se jedna `Resource with specified ID or name already exists` nebo `Resource with specified ID, name, or unique index already exists` jako návratovou zprávu. 
+Pokud se pokusíte vložit další položku s kombinacemi uvedenými v předchozí tabulce, zobrazí se chyba. Chyba indikuje, že omezení jedinečného klíče nebylo splněno. Zobrazí se buď `Resource with specified ID or name already exists` nebo `Resource with specified ID, name, or unique index already exists` jako návratová zpráva. 
 
-## <a name="define-a-unique-key"></a>Definovat jedinečný klíč
+## <a name="define-a-unique-key"></a>Definování jedinečného klíče
 
-Jedinečné klíče můžete definovat pouze v případě, že vytvoříte kontejner služby Azure Cosmos. Jedinečný klíč, který působí na logický oddíl. V předchozím příkladu Pokud kontejner podle PSČ, skončíte se duplicitní položky v každém logického oddílu. Při vytvoření jedinečné klíče, zvažte následující vlastnosti:
+Jedinečné klíče můžete definovat jenom v případě, že vytvoříte kontejner Cosmos Azure. Jedinečný klíč je vymezen na logický oddíl. Pokud v předchozím příkladu vytvoříte oddíly kontejneru založeného na PSČ, skončíte s duplicitními položkami v každém logickém oddílu. Při vytváření jedinečných klíčů Vezměte v úvahu následující vlastnosti:
 
-* Nelze aktualizovat existující kontejner používat jiný jedinečný klíč. Jinými slovy po vytvoření kontejneru s zásady jedinečného klíče nelze změnit zásady.
+* Existující kontejner nelze aktualizovat tak, aby používal jiný jedinečný klíč. Jinými slovy, po vytvoření kontejneru s jedinečnou zásadou klíče se zásady nedají změnit.
 
-* Pokud chcete nastavit jedinečný klíč pro existující kontejner, vytvořte nový kontejner s omezení unique key. Použijte nástroj pro migraci příslušná data pro přesun dat z existující kontejner do nového kontejneru. Pro kontejnery SQL, použijte [nástroj pro migraci dat](import-data.md) přesouvat data. Pro kontejnery MongoDB, použijte [mongoimport.exe nebo mongorestore.exe](mongodb-migrate.md) přesouvat data.
+* Chcete-li nastavit jedinečný klíč pro existující kontejner, vytvořte nový kontejner s omezením jedinečného klíče. Pomocí vhodného nástroje pro migraci dat přesuňte data z existujícího kontejneru do nového kontejneru. Pro kontejnery SQL použijte nástroj pro [migraci dat](import-data.md) k přesunutí dat. V případě kontejnerů MongoDB použijte [mongoimport. exe nebo mongorestore. exe](mongodb-migrate.md) k přesunu dat.
 
-* Zásady jedinečného klíče může mít maximálně 16 hodnoty cest. Například může být hodnoty `/firstName`, `/lastName`, a `/address/zipCode`. Každé zásady jedinečného klíče může mít maximálně 10 jedinečných klíčů omezení nebo kombinace. Kombinované cesty pro každé omezení jedinečný index nesmí překročit 60 bajtů. V předchozím příkladu křestní jméno, příjmení a e-mailovou adresu společně se jedno omezení. Toto omezení používá 3 z 16 možných cest.
+* Zásada jedinečného klíče může mít maximálně 16 hodnot cesty. Hodnoty mohou být `/firstName`například, `/lastName`a `/address/zipCode`. Každá zásada jedinečného klíče může mít maximálně 10 omezení nebo kombinací jedinečného klíče. Kombinované cesty pro každé omezení jedinečného indexu nesmí překročit 60 bajtů. V předchozím příkladu je jedno omezení jméno, příjmení a e-mailová adresa. Toto omezení využívá 3 z 16 možných cest.
 
-* Pokud kontejner má zásady jedinečného klíče, [jednotkách žádostí (RU)](request-units.md) poplatky, pokud chcete vytvořit, aktualizovat a odstraňovat položky jsou mírně vyšší.
+* Pokud má kontejner jedinečnou klíčovou zásadu, poplatky za [jednotku (ru)](request-units.md) pro vytvoření, aktualizaci a odstranění položky jsou mírně vyšší.
 
-* Zhuštěný jedinečné klíče nejsou podporovány. Pokud chybí některé hodnoty jedinečnou cestu, má zato, že hodnoty null, které jsou zahrnuty v omezení jedinečnosti. Z tohoto důvodu může být pouze jednu položku s hodnotou null pro toto omezení.
+* Zhuštěné jedinečné klíče se nepodporují. Pokud některé hodnoty jedinečné cesty chybí, považují se za hodnoty null, které se účastní omezení jedinečnosti. Z tohoto důvodu může být toto omezení splněno pouze pro jednu položku s hodnotou null.
 
-* Jedinečné názvy klíčů jsou malá a velká písmena. Představte si třeba kontejner s nastavena na omezení unique key `/address/zipcode`. Pokud data obsahují pole s názvem `ZipCode`, vloží se služby Azure Cosmos DB "null" jako jedinečný klíč protože `zipcode` není stejná jako `ZipCode`. Z důvodu tohoto rozlišování velikosti písmen nelze všechny záznamy s PSČ vložit, protože duplicitní "null" porušuje jedinečné omezení klíče.
+* V názvech jedinečných klíčů se rozlišují malá a velká písmena. Vezměte například kontejner s omezením jedinečnosti Key nastaveným na `/address/zipcode`. Pokud vaše data obsahují pole s názvem `ZipCode`, Azure Cosmos DB vloží "null" jako jedinečný klíč, protože `zipcode` není stejný jako `ZipCode`. Z důvodu citlivosti nelze všechny ostatní záznamy s PSČ vložit, protože duplicitní hodnota null je v rozporu s omezením jedinečného klíče.
 
 ## <a name="next-steps"></a>Další postup
 
 * Další informace o [logickými oddíly](partition-data.md)
-* Prozkoumejte [definování jedinečné klíče](how-to-define-unique-keys.md) při vytváření kontejneru
+* Prozkoumat [Definování jedinečných klíčů](how-to-define-unique-keys.md) při vytváření kontejneru

@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 07/18/2019
-ms.openlocfilehash: 174147aca75452dfaee02d20df5377fa1f6070c1
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: bd68909f51ff6cead8484ae4ab9f2557e9d6554e
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325098"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68443322"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Použití skupin automatického převzetí služeb při selhání k zajištění transparentního a koordinovaného převzetí služeb při selhání více databází
 
@@ -31,7 +31,7 @@ Pokud používáte skupiny s automatickým převzetím služeb při selhání se
 Pokud používáte skupiny s automatickým převzetím služeb při selhání se zásadami automatického převzetí služeb při selhání, dojde při jakémkoli výpadku, který ovlivňuje databáze na serveru SQL Database nebo spravované instanci, na automatické převzetí Skupinu automatického převzetí služeb při selhání můžete spravovat pomocí:
 
 - [Azure Portal](sql-database-implement-geo-distributed-database.md)
-- [PowerShell: Skupina převzetí služeb při selhání](scripts/sql-database-setup-geodr-failover-database-failover-group-powershell.md)
+- [PowerShell: Skupina převzetí služeb při selhání](scripts/sql-database-add-single-db-to-failover-group-powershell.md)
 - [REST API: Skupina](https://docs.microsoft.com/rest/api/sql/failovergroups)převzetí služeb při selhání.
 
 Po převzetí služeb při selhání zajistěte, aby byly požadavky na ověřování pro server a databázi nakonfigurovány na novém primárním serveru. Podrobnosti najdete v tématu [SQL Database Security po zotavení po havárii](sql-database-geo-replication-security-config.md).
@@ -310,7 +310,7 @@ Jak už bylo popsáno dříve, skupiny automatického převzetí služeb při se
 |  | |
 
 > [!IMPORTANT]
-> Vzorový skript najdete v tématu [Konfigurace a převzetí služeb při selhání pro skupinu převzetí služeb při selhání pro jednu databázi](scripts/sql-database-setup-geodr-failover-database-failover-group-powershell.md).
+> Vzorový skript najdete v tématu [Konfigurace a převzetí služeb při selhání pro skupinu převzetí služeb při selhání pro jednu databázi](scripts/sql-database-add-single-db-to-failover-group-powershell.md).
 >
 
 ### <a name="powershell-managing-failover-groups-with-managed-instances-preview"></a>PowerShell: Správa skupin převzetí služeb při selhání se spravovanými instancemi (Preview)
@@ -371,7 +371,7 @@ Jak už bylo popsáno dříve, skupiny automatického převzetí služeb při se
 - Ukázkové skripty najdete v těchto tématech:
   - [Konfigurace a převzetí služeb při selhání izolované databáze s využitím aktivní geografické replikace](scripts/sql-database-setup-geodr-and-failover-database-powershell.md)
   - [Konfigurace a převzetí služeb při selhání databáze ve fondu s využitím aktivní geografické replikace](scripts/sql-database-setup-geodr-and-failover-pool-powershell.md)
-  - [Konfigurace a převzetí služeb při selhání skupiny převzetí služeb při selhání pro izolovanou databázi](scripts/sql-database-setup-geodr-failover-database-failover-group-powershell.md)
+  - [Konfigurace a převzetí služeb při selhání skupiny převzetí služeb při selhání pro izolovanou databázi](scripts/sql-database-add-single-db-to-failover-group-powershell.md)
 - Přehled provozní kontinuity a scénářů najdete v tématu [Přehled provozní kontinuity](sql-database-business-continuity.md) .
 - Další informace o Azure SQL Database automatizovaných zálohách najdete v tématu [SQL Database automatizované zálohy](sql-database-automated-backups.md).
 - Další informace o použití automatizovaných záloh pro obnovení najdete v tématu [obnovení databáze ze zálohy iniciované službou](sql-database-recovery-using-backups.md).

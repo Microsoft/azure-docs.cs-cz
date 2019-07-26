@@ -1,5 +1,5 @@
 ---
-title: Publikování aplikace v samostatných sítích a umístění s využitím skupin konektoru v Proxy aplikace Azure AD | Dokumentace Microsoftu
+title: Publikování aplikací v samostatných sítích se skupinami konektorů proxy serveru Aplikace Azure AD | Microsoft Docs
 description: Popisuje, jak vytvářet a spravovat skupiny konektorů v Azure AD Application Proxy.
 services: active-directory
 author: msmimart
@@ -14,12 +14,12 @@ ms.date: 11/08/2018
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 574ce6def407f302439f6c53356fe69259240b2e
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: dae4eea3e08818d43482c995595cc9fbc3f91910
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67702486"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68381498"
 ---
 # <a name="publish-applications-on-separate-networks-and-locations-using-connector-groups"></a>Publikování aplikací na samostatných sítí a umístění s využitím skupiny konektorů
 
@@ -44,7 +44,7 @@ Pomocí těchto kroků můžete vytvořit libovolný počet skupin konektoru.
 1. Vyberte **Azure Active Directory** > **podnikové aplikace** > **proxy aplikací**.
 1. Vyberte **nová skupina konektorů**. Otevře se okno Nová skupina konektorů.
 
-   ![Zobrazí obrazovku a vyberte Nová skupina konektorů](./media/application-proxy-connector-groups/new-group.png)
+   ![Zobrazuje obrazovku pro výběr nové skupiny konektorů.](./media/application-proxy-connector-groups/new-group.png)
 
 1. Nová skupina konektorů pojmenujte a pak pomocí rozevírací nabídky vyberte, které konektory patří do této skupiny.
 1. Vyberte **Uložit**.
@@ -77,11 +77,11 @@ Skupiny konektorů pro aplikace nainstalované na IaaS pro přístup k cloudu, p
 
 Provést třeba, že organizace, která má několik virtuální počítače připojené k vlastní IaaS hostované virtuální sítě. Umožňuje uživatelům používat tyto aplikace jsou těchto privátních sítí připojené k podnikové síti prostřednictvím sítě site-to-site VPN. Nabízí kvalitní prostředí pro zaměstnance, kteří se nacházejí na místních. Ale nemusí být ideální pro vzdálení zaměstnanci, protože vyžaduje další místní infrastruktury pro směrování přístup, jak je vidět na následujícím diagramu:
 
-![Diagram, který znázorňuje sítě IaaS s nástrojem Azure AD](./media/application-proxy-connector-groups/application-proxy-iaas-network.png)
+![Diagram, který ilustruje síť Azure AD IaaS](./media/application-proxy-connector-groups/application-proxy-iaas-network.png)
   
 Pomocí skupiny konektorů Proxy aplikací Azure AD můžete povolit běžné služby k zabezpečení přístupu ke všem aplikacím bez vytvoření další závislosti ve vaší podnikové síti:
 
-![Dodavatele Cloudů IaaS více služby Azure AD](./media/application-proxy-connector-groups/application-proxy-multiple-cloud-vendors.png)
+![Dodavatelé více cloudů Azure AD IaaS](./media/application-proxy-connector-groups/application-proxy-multiple-cloud-vendors.png)
 
 ### <a name="multi-forest--different-connector-groups-for-each-forest"></a>Více doménových struktur – skupiny různých konektorů pro každou doménovou strukturu
 
@@ -108,7 +108,7 @@ Mezi příklady, které můžete implementovat, patří následující skupiny k
 
 Pokud nepoužíváte skupiny konektorů, bude konfigurace vypadat takto:
 
-![Příklad služby Azure AD bez skupiny konektorů](./media/application-proxy-connector-groups/application-proxy-sample-config-1.png)
+![Příklad služby Azure AD – žádné skupiny konektorů](./media/application-proxy-connector-groups/application-proxy-sample-config-1.png)
 
 Tato konfigurace je dostatečná pro malá nasazení a testů. Také bude fungovat, pokud má vaše organizace bez stromové struktury síťové topologie.
 
@@ -116,7 +116,7 @@ Tato konfigurace je dostatečná pro malá nasazení a testů. Také bude fungov
 
 Tato konfigurace je vývojem představ o výchozí hodnotu, ve kterém je konkrétní aplikaci, která běží v izolované síti jako jsou například IaaS, virtuální sítě:
 
-![Skupiny konektorů ne příklad služby Azure AD a izolované síti](./media/application-proxy-connector-groups/application-proxy-sample-config-2.png)
+![Příklad služby Azure AD žádné skupiny konektorů a izolované sítě](./media/application-proxy-connector-groups/application-proxy-sample-config-2.png)
 
 ### <a name="recommended-configuration--several-specific-groups-and-a-default-group-for-idle"></a>Doporučená konfigurace – několik konkrétních skupin a výchozí skupiny pro nečinnosti
 
@@ -124,7 +124,7 @@ Doporučenou konfiguraci pro velkých a složitých organizací je výchozí sku
 
 V následujícím příkladu společnost má dvě datová centra, A a B, s dva konektory, které každé lokality slouží. Každá lokalita má jiné aplikace, které běží na ní.
 
-![Příklad společnosti s 2 datovými centry a 2 konektory](./media/application-proxy-connector-groups/application-proxy-sample-config-3.png)
+![Příklad společnosti se dvěma datacentry a 2 konektory](./media/application-proxy-connector-groups/application-proxy-sample-config-3.png)
 
 ## <a name="next-steps"></a>Další postup
 

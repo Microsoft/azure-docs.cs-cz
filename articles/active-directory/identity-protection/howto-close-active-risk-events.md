@@ -1,110 +1,89 @@
 ---
-title: Postup zavření active rizikových událostí ve službě Azure Active Directory Identity Protection | Dokumentace Microsoftu
-description: Další informace o možnostech, že abyste měli zavřít aktivní rizikové události.
+title: Jak zavřít aktivní rizikové události v Azure Active Directory Identity Protection | Microsoft Docs
+description: Seznamte se s možnostmi zavření aktivních rizikových událostí.
 services: active-directory
-keywords: Azure active directory identity protection, zjišťování cloudových aplikací, Správa aplikací, zabezpečení, rizika, úroveň rizika, ohrožení zabezpečení, zásady zabezpečení
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: daveba
-ms.assetid: e7434eeb-4e98-4b6b-a895-b5598a6cccf1
 ms.service: active-directory
 ms.subservice: identity-protection
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 55c56674b04c4359fba741d10176fc91e3a991eb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f5e24c12b72852ee7009533c8dc24d231fe636f2
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67109031"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68333994"
 ---
 # <a name="how-to-close-active-risk-events"></a>Jak: Zavření aktivních rizikových událostí
 
-S [rizikových událostí](../reports-monitoring/concept-risk-events.md), Azure Active Directory zjistí ukazatele pro potenciálně ohrožení uživatelských účtů. Jako správce budete chtít získat všechny rizikové události jsou zavřené, tak, aby ovlivnění uživatelé se už riziku.
+V případě [rizikových událostí](../reports-monitoring/concept-risk-events.md)Azure Active Directory detekuje indikátory pro potenciálně ohrožené uživatelské účty. Jako správce chcete získat všechny rizikové události uzavřeně, aby postižení uživatelé již nehrozili.
 
-Tento článek obsahuje přehled dalších možností, budete muset zavřít aktivní rizikové události.
+Tento článek obsahuje přehled dalších možností, které je třeba uzavřít v případě aktivních rizikových událostí.
 
-## <a name="options-to-close-risk-events"></a>Možnosti pro zavření rizikových událostí 
+## <a name="options-to-close-risk-events"></a>Možnosti zavření rizikových událostí 
 
-Stav rizikové události je buď **aktivní** nebo **uzavřeno**. Všechny aktivní rizikové události přispívat k výpočtu hodnoty nazvané úroveň rizika uživatele. Úroveň rizika uživatele je indikátorem (nízká, střední, vysoká) pravděpodobnost, že není účet v bezpečí. 
+Stav rizikové události je buď **aktivní** , nebo uzavřený . Všechny aktivní rizikové události přispívají k výpočtu hodnoty s názvem úroveň rizika uživatele. Úroveň rizika uživatele je indikátorem (nízká, střední, vysoká) pro pravděpodobnost, že došlo k ohrožení bezpečnosti účtu. 
 
-Zavřít aktivní rizikových událostí, máte následující možnosti:
+Chcete-li zavřít aktivní rizikové události, máte následující možnosti:
 
-- Vyžadovat resetování hesla se zásady rizik uživatelů
+- Vyžadovat resetování hesla pomocí zásad rizik uživatelů
+- Ruční resetování hesla
+- Zavřít všechny rizikové události 
+- Ruční uzavření jednotlivých rizikových událostí
 
-- Resetování hesla ruční
- 
-- Skrýt všechny rizikové události 
+## <a name="require-password-reset-with-a-user-risk-policy"></a>Vyžadovat resetování hesla pomocí zásad rizik uživatelů
 
-- Ručně ukončete jednotlivé rizikových událostí
-
-
-
-## <a name="require-password-reset-with-a-user-risk-policy"></a>Vyžadovat resetování hesla se zásady rizik uživatelů
-
-Tím, že nakonfigurujete [riziko uživatele zásady podmíněného přístupu](howto-user-risk-policy.md), mohou vyžadovat změnu hesla, pokud byla automaticky zjištěna úroveň rizika zadaného uživatele. 
+Když nakonfigurujete [zásady podmíněného přístupu pro uživatele](howto-user-risk-policy.md), můžete vyžadovat změnu hesla, pokud byla zjištěna automaticky zadaná úroveň rizika uživatele. 
 
 ![Resetovat heslo](./media/howto-close-active-risk-events/13.png)
 
-Resetování hesla ukončí všechny aktivní rizika události související uživatele a přináší identitu zpátky do bezpečného stavu. Použití zásady rizik uživatelů je upřednostňovanou metodou zavřete aktivní rizikové události, protože tato metoda je automatické. Neexistuje žádná interakce potřebné mezi ovlivněné uživatele a pomoc HelpDesk nebo správce.
+Resetování hesla uzavře všechny aktivní události rizik souvisejícího uživatele a vrátí identitu zpátky do bezpečného stavu. Použití zásad rizik uživatelů je upřednostňovanou metodou pro zavření aktivních rizikových událostí, protože tato metoda je automatizovaná. Mezi postiženým uživatelem a pracovníky helpdesku ani správcem není vyžadována žádná interakce.
 
-Ale pomocí zásady rizik uživatelů není vždy použít. To se týká, například:
+Používání zásad rizik uživatelů však není vždy použitelné. To platí například pro:
 
-- Uživatelé, kteří se nezaregistrovali pro ověřování službou Multi-Factor Authentication (MFA).
-- Uživatelé s aktivní rizikové události, které byly odstraněny.
-- Šetření, který odhalí, že ohlášená riziková událost byla provedena legitimní uživatel.
+- Uživatelé, kteří nebyli registrováni pro službu Multi-Factor Authentication (MFA).
+- Uživatelé s aktivními rizikovými událostmi, které byly odstraněny.
+- Šetření, které odhalí, že oprávněný uživatel učinil oznámenou rizikovou událost.
 
+## <a name="manual-password-reset"></a>Ruční resetování hesla
 
-## <a name="manual-password-reset"></a>Resetování hesla ruční
-
-Pokud nutnost zadat heslo resetovat zásady rizik uživatelů není možné, můžete získat všechny rizikové události pro uživatele uzavřen heslo ruční resetování.
+Pokud se vyžaduje resetování hesla pomocí zásad rizik uživatelů, můžete získat všechny rizikové události pro uživatele uzavřené s ručním resetováním hesla.
 
 ![Resetovat heslo](./media/howto-close-active-risk-events/04.png)
 
-
-Dialogové okno související poskytuje dva různé způsoby vytvoření nového hesla:
+V souvisejícím dialogovém okně jsou k dispozici dvě různé metody resetování hesla:
 
 ![Resetovat heslo](./media/howto-close-active-risk-events/05.png)
 
+**Vygenerovat dočasné heslo** – generováním dočasného hesla můžete okamžitě převést identitu zpátky do bezpečného stavu. Tato metoda vyžaduje interakci s postiženými uživateli, protože potřebují znát, co je dočasné heslo. Můžete například poslat nové dočasné heslo na alternativní e-mailovou adresu uživatele nebo správce uživatele. Vzhledem k tomu, že je heslo dočasné, uživateli se zobrazí výzva, aby při příštím přihlášení změnil heslo.
 
-**Vygenerovat dočasné heslo** -podle vygenerovat dočasné heslo, můžete okamžitě použít identitu zpět do bezpečného stavu. Tato metoda vyžaduje interakci s ovlivnění uživatelé, protože potřebují vědět, co je dočasné heslo. Můžete například odeslat nové dočasné heslo na alternativní e-mailovou adresu uživatele nebo jeho manažerovi. Protože je dočasné heslo, bude uživatel vyzván při dalším přihlášení změnit heslo.
+**Vyžadovat, aby uživatel resetoval heslo** – vyžaduje, aby uživatelé resetování hesla povolili automatické obnovení bez kontaktování helpdesku nebo správce. Podobně jako v případě zásad rizik uživatelů se tato metoda vztahuje jenom na uživatele, kteří jsou zaregistrovaní pro MFA. Pro uživatele, kteří se ještě nezaregistrovali pro MFA, tato možnost není k dispozici.
 
+## <a name="dismiss-all-risk-events"></a>Zavřít všechny rizikové události
 
-**Vyžadovat, aby uživatel heslo** -samoobslužného obnovení by uživatelé museli resetování hesel umožňuje bez potřeby připojení technickou podporu nebo správce. Stejně jako v případě zásady rizik uživatelů, tato metoda platí jenom pro uživatele, které jsou registrovány pro vícefaktorové ověřování. Pro uživatele, které nebyly byla registrována pro vícefaktorové ověřování tato možnost není dostupná.
-
-
-## <a name="dismiss-all-risk-events"></a>Skrýt všechny rizikové události
-
-Pokud heslo resetovat není pro vás, může také skrýt všechny rizikové události. 
+Pokud resetování hesla není pro vás možnost, můžete také zavřít všechny rizikové události. 
 
 ![Resetovat heslo](./media/howto-close-active-risk-events/03.png)
 
-Po kliknutí na **zavřít všechny události**, jsou uzavřeny všechny události a ovlivněného uživatele už nejsou ohrožení. Ale vzhledem k tomu, že tato metoda nemá vliv na stávající heslo, to není vrácení souvisejících identity do bezpečného stavu. Případ použití upřednostňované pro tuto metodu je odstraněného uživatele pomocí aktivní rizikové události. 
+Když kliknete na **Zavřít všechny události**, všechny události se zavřou a ovlivněný uživatel už nehrozí. Vzhledem k tomu, že tato metoda nemá vliv na existující heslo, nepřinese související identitu zpátky do bezpečného stavu. Upřednostňovaným případem použití této metody je odstraněný uživatel s aktivními rizikovými událostmi. 
 
+## <a name="close-individual-risk-events-manually"></a>Ruční uzavření jednotlivých rizikových událostí
 
-## <a name="close-individual-risk-events-manually"></a>Ručně ukončete jednotlivé rizikových událostí
-
-Ručně, můžete zavřít jednotlivých rizikové události. Podle ručnímu zavření rizikových událostí, můžete snížit úroveň rizika pro uživatele. Rizikové události jsou obvykle uzavřít ručně v reakci na související šetření. Například upozorňovat uživatele odhalí, že aktivní riziková událost se nevyžaduje zobrazovat. 
+Jednotlivé rizikové události můžete uzavřít ručně. Při ručním uzavírání rizikových událostí můžete snížit úroveň rizika uživatele. Rizikové události jsou obvykle uzavřeny ručně v reakci na související šetření. Například při komunikaci s uživatelem se odhalí, že aktivní riziková událost již není požadována. 
  
-Při ruční zavření rizikové události, můžete provést některou z následujících akcí pro změnu stavu rizikové události:
+Při ručním uzavírání rizikových událostí můžete zvolit provedení libovolné z následujících akcí ke změně stavu rizikové události:
 
 ![Akce](./media/howto-close-active-risk-events/06.png)
 
-- **Vyřešit** – Pokud po prozkoumání rizikovou událost, trvalo odpovídajících nápravných akci mimo Identity Protection. proto si myslíte, že by měl za riziková událost zavřená, označte události jako vyřešenou. Vyřešené události se riziková událost stav nastaven na Uzavřeno a rizikové události se už přispívat do uživatelského rizika.
-
-- **Označit jako falešně pozitivní** – v některých případech můžete vyšetřovat rizikovou událost a zjistit, že byla nesprávně označena jako rizikové. Vám může pomoct snížit počet výskytů těchto označením riziková událost jako falešně pozitivní. To vám pomůže zlepšit klasifikace podobné události v budoucnu algoritmech strojového učení. Stav falešně pozitivní událostí je uzavřeno a budou už přispívat do uživatelského rizika.
-
-- **Ignorovat** – Pokud ještě nevstoupilo v libovolné akci nápravy, ale chcete riziková událost odebrat ze seznamu aktivní, můžete označit rizikové události ignorovat a bude uzavřeno stav události. Ignoruje události nepočítají do uživatelského rizika. Tato možnost by měla sloužit pouze v rámci neobvyklé okolnosti.
-
-- **Znovu aktivovat** -rizikových událostí, které nebyly uzavřeny ručně (výběrem vyřešit, falešně positivní nebo ignorovat) můžete znovu aktivovat, nastavení zpět na aktivní stav události. Opětovně rizikových událostí přispívat k výpočtu úroveň rizika uživatele. Rizikové události jsou zavřené prostřednictvím nápravy (například zabezpečené heslo resetovat) nelze aktivovat.
-  
+- **Vyřešit** – Pokud po prošetření rizikové události jste provedli vhodnou akci nápravy mimo ochranu identity, a domníváte se, že by se riziková událost měla brát v úvahu jako uzavřená, označte událost jako vyřešenou. Vyřešené události nastaví stav události rizika na uzavřeno a riziková událost již nebude přispívat k riziku uživatele.
+- **Označit jako falešně pozitivní** – v některých případech můžete prozkoumat rizikové události a zjistit, že byla nesprávně označena jako riziková. Počet takových výskytů můžete snížit označením rizikové události jako falešně pozitivní. To vám pomůže algoritmům strojového učení zlepšit klasifikaci podobných událostí v budoucnu. Stav falešně pozitivních událostí je uzavřen a již nebude přispívat k riziku uživatele.
+- **Ignore** – Pokud jste neučinili žádnou akci nápravy, ale chcete, aby se riziková událost odebrala ze seznamu aktivních, můžete označit riziko ignorování a stav události bude uzavřen. Ignorované události nepřispívají k riziku uživatele. Tato možnost by se měla používat jenom za neobvyklých okolností.
+- **Opětovná aktivace** – rizikové události, které se ručně zavřely (zaškrtnutím možnosti vyřešit, falešně pozitivní nebo ignorovat), se dají znovu aktivovat, a to tak, že se stav události nastaví zpátky na aktivní. Znovu aktivované rizikové události přispívají k výpočtu úrovně rizika uživatele. Rizikové události uzavřené prostřednictvím nápravy (například zabezpečené resetování hesla) nelze znovu aktivovat.
 
 ## <a name="next-steps"></a>Další postup
 
-Získejte přehled o Azure AD Identity Protection, najdete v článku [Přehled služby Azure AD Identity Protection](overview.md).
+Přehled Azure AD Identity Protection najdete v tématu [Azure AD Identity Protection Overview](overview.md).

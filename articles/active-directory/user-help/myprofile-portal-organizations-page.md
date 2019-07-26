@@ -1,6 +1,6 @@
 ---
-title: Správa vaší organizace na portálu Můj profil (preview) – Azure Active Directory | Dokumentace Microsoftu
-description: Základní přehled o stránce organizace na portálu Můj profil.
+title: Spravujte své organizace na portálu Můj profil (Preview) – Azure Active Directory | Microsoft Docs
+description: Podrobný přehled stránky organizace na portálu Můj profil
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -12,49 +12,52 @@ ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c6053313c6971f1bcf66bc447b4f4f5fe5817666
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 6a0ff4190a1712b91bf58fafd80a03fc2737e7a4
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60475454"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68382996"
 ---
-# <a name="manage-your-organizations-from-the-my-profile-preview-portal"></a>Správa vaší organizace na portálu Můj profil (preview)
-Můžete spravovat z vaší organizace **organizace** stránku **Můj profil** portálu.
+# <a name="manage-your-organizations-from-the-my-profile-preview-portal"></a>Spravujte své organizace na portálu Můj profil (Preview).
 
-Existují dva typy organizací, které je znázorněno na **organizace** stránky:
+Své organizace můžete spravovat na stránce **organizace** na portálu **můj profil** .
 
-- **Domovskou organizaci.** Domovskou organizaci je organizace, která vlastní pracovní nebo školní účet. Domovskou organizaci nemůžete opustit.
+Na stránce **organizace** se zobrazují dva typy organizací:
 
-- **Jiné organizace.** Další organizace jsou libovolná skupina, která jste přihlášení k dříve pomocí pracovního nebo školního účtu. Kdykoli můžete nechat některý z těchto organizací.
+- **Domovská organizace.** Vaše domovská organizace je organizace, která vlastní pracovní nebo školní účet. Nemůžete opustit svou domovskou organizaci.
+
+- **Jiné organizace.** Ostatní organizace jsou libovolná skupina, ke které jste se předtím přihlásili pomocí svého pracovního nebo školního účtu. Kterékoli z těchto organizací můžete kdykoli opustit.
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-myprofile.md)]
 
-## <a name="view-your-organizations"></a>Zobrazení vaší organizace
-1. Přihlaste se ke svému pracovnímu nebo školnímu účtu a potom přejděte k vaší https://myprofile.microsoft.com/ stránky.
+## <a name="view-your-organizations"></a>Zobrazit vaše organizace
 
-2. Vyberte **organizace** z levého navigačního podokna nebo vyberte **správu organizací** propojit **organizace** bloku.
+1. Přihlaste se ke svému pracovnímu nebo školnímu účtu a https://myprofile.microsoft.com/ pak přejít na stránku.
 
-    ![Stránka Moje profilu zobrazující zvýrazněný organizace odkazy](media/myprofile-portal/myprofile-portal-organizations.png)
+2. V levém navigačním podokně vyberte **organizace** nebo vyberte odkaz pro **správu organizací** z bloku **organizace** .
 
-3. Zkontrolovat informace o vaší **domovskou organizaci**. 
+    ![Stránka můj profil zobrazující odkazy na zvýrazněné organizace](media/myprofile-portal/myprofile-portal-organizations.png)
+
+3. Projděte si informace o vaší **domovské organizaci**. 
 
     ![Stránka organizace](media/myprofile-portal/myprofile-portal-organization-page.png)
 
-3. Zkontrolujte vaše další přidružené organizace, ujistěte se, že můžete rozpoznat všechny organizací, které jsou připojené k vašemu účtu.
+4. Projděte si další přidružené organizace a ujistěte se, že znáte všechny organizace, které jsou k vašemu účtu připojené.
 
 ## <a name="leave-an-organization"></a>Opuštění organizace
-Můžete nechat každou organizaci, která není organizaci Domovská stránka.
+
+Můžete opustit jakoukoli organizaci, která není vaší domovskou organizací.
 
 >[!Important]
->Pokud necháte organizace omylem, neexistuje žádný způsob, jak ji vrátit. Budete mít k organizaci znovu přidat.
+>Pokud necháte organizaci omylem, neexistuje žádný způsob, jak ji vrátit. Bude nutné znovu přidat organizaci.
 
-1. Přihlaste se ke svému účtu z **jinými organizacemi, můžu pracovat s** oblasti.
+1. Přihlaste se ke svému účtu z **jiných organizací** , které pracuji s oblastí.
 
-2. Vyberte **opustit organizaci**a pak vyberte **Ano** potvrďte chcete opustit organizaci.
+2. Vyberte **opustit organizaci**a pak vyberte **Ano** a potvrďte tak, že chcete organizaci opustit.
 
-    ![Organizace stránku s odkazem na zvýrazněný nechte organizace](media/myprofile-portal/myprofile-portal-organizations-leave.png)
+    ![Stránka organizace se zvýrazněným odkazem na organizaci](media/myprofile-portal/myprofile-portal-organizations-leave.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- Po zobrazení vaší organizace, můžete vybrat možnost zobrazovat a spravovat vaše [bezpečnostní údaje](user-help-security-info-overview.md), propojená [zařízení](myprofile-portal-devices-page.md), nebo zobrazení jak vaše organizace [používá data](myprofile-portal-privacy-page.md).
+- Po zobrazení svých organizací můžete vybrat možnost zobrazit nebo spravovat [informace o zabezpečení](user-help-security-info-overview.md), připojená [zařízení](myprofile-portal-devices-page.md)nebo zobrazit, jak vaše organizace [používá vaše data](myprofile-portal-privacy-page.md).

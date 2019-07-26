@@ -1,7 +1,7 @@
 ---
-title: Konfigurace Windows aplikace v Javě – služba Azure App Service | Dokumentace Microsoftu
-description: Zjistěte, jak nakonfigurovat aplikace v Javě pro spuštění na výchozí instance Windows ve službě Azure App Service.
-keywords: služby Azure app service, web Apps, windows, oss, java
+title: Konfigurace aplikací pro Windows Java – Azure App Service | Microsoft Docs
+description: Naučte se konfigurovat aplikace Java tak, aby běžely na výchozích instancích Windows v Azure App Service.
+keywords: Azure App Service, Web App, Windows, OSS, Java
 services: app-service
 author: jasonfreeberg
 manager: jeconnock
@@ -14,64 +14,64 @@ ms.date: 04/12/2019
 ms.author: jafreebe
 ms.reviewer: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 25434360bcc0155411451dbac065e0b7fad9c3bf
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: c1ea306d8a6b5c1876ac6a9288820e1592dbfda6
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67617472"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68498517"
 ---
-# <a name="configure-a-windows-java-app-for-azure-app-service"></a>Konfigurace Windows aplikace v Javě pro Azure App Service
+# <a name="configure-a-windows-java-app-for-azure-app-service"></a>Konfigurace aplikace pro Windows Java pro Azure App Service
 
-Azure App Service umožňuje vývojářům rychle sestavit, nasadit a škálovat své Tomcat v jazyce Java nebo Java Standard Edition (SE) zabalené webové aplikace na plně spravované služby založené na Windows. Nasazujte aplikace s moduly plug-in Maven z příkazového řádku nebo v editoru, jako je IntelliJ, Eclipse nebo Visual Studio Code.
+Azure App Service umožňuje vývojářům Java rychle sestavovat, nasazovat a škálovat balíčky webových aplikací standardu Java Standard (SE) na plně spravovanou službu pro Windows. Nasaďte aplikace pomocí modulů plug-in Maven z příkazového řádku nebo v editorech, jako je IntelliJ, zatmění nebo Visual Studio Code.
 
-Tato příručka obsahuje klíčové koncepty a pokyny pro vývojáře v Javě pomocí ve službě App Service. Pokud jste nikdy použili službu Azure App Service, byste si měli přečíst [Java quickstart](app-service-web-get-started-java.md) první. Obecné dotazy ohledně používání služby App Service, které nejsou specifické pro Java development v odpovědi [nejčastější dotazy týkající se App Service Windows](faq-configuration-and-management.md).
+Tato příručka poskytuje klíčové koncepty a pokyny pro vývojáře v jazyce Java, které využívají v App Service. Pokud jste nikdy Azure App Service nepoužili, měli byste si nejdřív projít modulem [rychlý Start Java](app-service-web-get-started-java.md) . Obecné otázky týkající se použití App Service, které nejsou specifické pro vývoj v jazyce Java, jsou zodpovězeny v tématu [Nejčastější dotazy k App Service Windows](faq-configuration-and-management.md).
 
 > [!NOTE]
-> Nemůžete najít, co hledáte? Podrobnosti najdete [nejčastější dotazy k Windows OSS](faq-configuration-and-management.md) nebo [Průvodce konfigurací Java Linux](containers/configure-language-java.md) informace o nasazení a zabezpečení vaší aplikace v Javě.
+> Nemůžete najít, co hledáte? Informace o nasazení a zabezpečení vaší aplikace Java najdete v části [Nejčastější dotazy k Windows OSS](faq-configuration-and-management.md) nebo v [příručce pro konfiguraci Java Linux](containers/configure-language-java.md) .
 
 ## <a name="configuring-tomcat"></a>Konfigurace Tomcat
 
-Chcete-li upravit Tomcatu `server.xml` nebo další konfigurační soubory, nejprve poznamenejte si váš hlavní verzi Tomcat na portálu.
+Pokud chcete upravit Tomcat `server.xml` nebo jiné konfigurační soubory, nejdřív si poznamenejte hlavní verzi Tomcat na portálu.
 
-1. Najít domovský adresář Tomcat pro vaši verzi spuštěním `env` příkazu. Vyhledejte proměnnou prostředí, který začíná `AZURE_TOMCAT`a odpovídá hlavní verze. Například `AZURE_TOMCAT85_HOME` odkazuje na adresář Tomcat pro Tomcat 8.5.
-1. Po zjištění domovský adresář Tomcat pro vaši verzi, zkopírujte konfigurační adresář k `D:\home`. Například pokud `AZURE_TOMCAT85_HOME` měla hodnotu `D:\Program Files (x86)\apache-tomcat-8.5.37`, úplná cesta zkopírovaný konfigurační adresář bude `D:\home\tomcat\conf`.
+1. Najděte domovský adresář Tomcat pro vaši verzi spuštěním `env` příkazu. Vyhledejte proměnnou prostředí, která začíná `AZURE_TOMCAT`a odpovídá vaší hlavní verzi. Například `AZURE_TOMCAT85_HOME` odkazuje na adresář Tomcat pro Tomcat 8,5.
+1. Po identifikaci domovského adresáře Tomcat pro vaši verzi zkopírujte konfigurační adresář do `D:\home`. Například pokud `AZURE_TOMCAT85_HOME` má `D:\Program Files (x86)\apache-tomcat-8.5.37`hodnotu, nová cesta kopírovaného adresáře `D:\home\apache-tomcat-8.5.37`bude.
 
-A konečně restartujte službu App Service. Nasazení se měli zúčastnit `D:\home\site\wwwroot\webapps` stejně jako v minulosti.
+Nakonec restartujte App Service. Vaše nasazení by mělo jít `D:\home\site\wwwroot\webapps` stejně jako dřív.
 
-## <a name="java-runtime-statement-of-support"></a>Java runtime prohlášení k podpoře
+## <a name="java-runtime-statement-of-support"></a>Příkaz Java Runtime pro podporu
 
-### <a name="jdk-versions-and-maintenance"></a>JDK verze a údržba
+### <a name="jdk-versions-and-maintenance"></a>Verze a údržba JDK
 
-Azure podporovaná Java Development Kit (JDK) je [Zulu](https://www.azul.com/downloads/azure-only/zulu/) zajišťována [Azul Systems](https://www.azul.com/).
+Podporovaná sada Java Development Kit (JDK) pro Azure je zajištěná [Zulu](https://www.azul.com/downloads/azure-only/zulu/) prostřednictvím [systémů Azul](https://www.azul.com/).
 
-Hlavní verze aktualizace bude poskytovat prostřednictvím nové možnosti modulu runtime ve službě Azure App Service pro Windows. Zákazníci, aktualizujte na tyto novější verze Javy podle konfigurace nasazení služby App Service a jsou zodpovědné za testování a zajištění hlavní aktualizace vyhovují jejich potřebám.
+Hlavní aktualizace verze se poskytnou prostřednictvím nových možností modulu runtime v Azure App Service pro Windows. Zákazníci aktualizují tyto novější verze Java tím, že nakonfigurují nasazení App Service a zodpovídá za testování a zajištění významné aktualizace, které vyhovují jejich potřebám.
 
-Podporované JDK jsou automaticky opravit čtvrtletně v lednu, dubnu, červenci a říjnu každý rok.
+Podporované sady JDK se na čtvrtletní bázi automaticky opravují v lednu, dubnu, červenci a říjnu každého roku.
 
 ### <a name="security-updates"></a>Aktualizace zabezpečení
 
-Opravy chyb a opravy pro chyby zabezpečení hlavní vydá Jakmile budou k dispozici od Azul Systems. "Hlavní" ohrožení zabezpečení je definována základní skóre 9.0 nebo vyšší na [NIST běžné ohrožení zabezpečení hodnocení systému, verze 2](https://nvd.nist.gov/cvss.cfm).
+Opravy a opravy pro hlavní slabá místa zabezpečení budou vydány, jakmile budou dostupné ze systémů Azul. "Hlavní" ohrožení zabezpečení je definováno základním skóre 9,0 nebo vyšším v [systému NIST Common zranitelnost Standard, verze 2](https://nvd.nist.gov/cvss.cfm).
 
 ### <a name="deprecation-and-retirement"></a>Vyřazení a vyřazení z provozu
 
-Pokud podporovaného modulu runtime Java se vyřadí z provozu, vývojáře v Azure pomocí ovlivněné runtime dostanou oznámení o zastarání aspoň šest měsíců před modul runtime byl vyřazen z provozu.
+Pokud bude vyřazení podporované běhové prostředí Java, budou se vývojáři Azure, kteří používají modul runtime, předávat oznámení o zastaralosti alespoň šest měsíců před vyřazením modulu runtime.
 
 ### <a name="local-development"></a>Místní vývoj
 
-Vývojáři mohou stáhnout produkční verzi z Azul Zulu Enterprise sadu JDK pro místní vývoj z [serveru pro stahování společnosti Azul](https://www.azul.com/downloads/azure-only/zulu/).
+Vývojáři mohou stáhnout provozní edici Azul Zulu Enterprise JDK pro místní vývoj z [webu pro stažení Azul](https://www.azul.com/downloads/azure-only/zulu/).
 
-### <a name="development-support"></a>Podpora vývoje
+### <a name="development-support"></a>Vývojová podpora
 
-Odborná pomoc pro [podporovaných systémem Azure Azul Zulu JDK](https://www.azul.com/downloads/azure-only/zulu/) je dostupné prostřednictvím společnosti Microsoft při vývoji pro Azure nebo [Azure Stack](https://azure.microsoft.com/overview/azure-stack/) s [kvalifikovaný plán podpory Azure](https://azure.microsoft.com/support/plans/).
+Podpora produktů pro [JDK Zulu s podporou Azure Azul](https://www.azul.com/downloads/azure-only/zulu/) je dostupná prostřednictvím Microsoftu při vývoji pro Azure nebo [Azure Stack](https://azure.microsoft.com/overview/azure-stack/) s kvalifikovaným [plánem podpory Azure](https://azure.microsoft.com/support/plans/).
 
 ### <a name="runtime-support"></a>Podpora modulu CLR
 
-Mohou vývojáři [otevřete problém](/azure/azure-supportability/how-to-create-azure-support-request) s JDK Azul Zulu prostřednictvím podpory Azure, pokud mají [plán podpory kvalifikovaný](https://azure.microsoft.com/support/plans/).
+Vývojáři mohou [otevřít problém](/azure/azure-supportability/how-to-create-azure-support-request) s Azul Zulu sady JDK prostřednictvím podpory Azure, pokud mají [kvalifikovaný plán podpory](https://azure.microsoft.com/support/plans/).
 
 ## <a name="next-steps"></a>Další postup
 
-Toto téma obsahuje modul Runtime Java prohlášení k podpoře pro Azure App Service ve Windows.
+Toto téma poskytuje příkaz Java Runtime, který podporuje Azure App Service ve Windows.
 
-- Další informace o hostování webových aplikací pomocí služby Azure App Service najdete v tématu [Přehled služby App Service](overview.md).
-- Informace o jazyce Java v Azure – vývoj naleznete v tématu [Azure pro vývojáře Java](https://docs.microsoft.com/java/azure/?view=azure-java-stable).
+- Další informace o hostování webových aplikací pomocí Azure App Service naleznete v tématu [App Service Overview](overview.md).
+- Informace o vývoji Java v prostředí Azure najdete v tématu [Azure for Java Dev Center](https://docs.microsoft.com/java/azure/?view=azure-java-stable).

@@ -17,12 +17,12 @@ ms.date: 07/16/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9955ea434f7a0e48f2d1f81d2a1f57cc3cd67dcb
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 0b89bd3992bd6249e0acd576fee7e1556968ad65
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68277885"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68334175"
 ---
 # <a name="quickstart-call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>Rychlý start: Volání rozhraní Microsoft Graph API z aplikace pro univerzální platformu Windows (UPW)
 
@@ -45,7 +45,7 @@ Tento rychlý Start obsahuje ukázku kódu, která předvádí, jak se aplikace 
 >
 > ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>Možnost 2: Registrace a ruční konfigurace vaší aplikace a ukázky kódu
 > [!div renderon="docs"]
-> #### <a name="step-1-register-your-application"></a>Krok 1: Registrace vaší aplikace
+> #### <a name="step-1-register-your-application"></a>Krok 1: Zaregistrujte svoji aplikaci.
 > Pokud chcete zaregistrovat aplikaci a přidat informace o registraci aplikace ke svému řešení, postupujte následovně:
 > 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účtu Microsoft.
 > 1. Pokud váš účet umožňuje přístup k více tenantům, vyberte svůj účet v pravém horním rohu a nastavte relaci portálu na požadovaného tenanta Azure AD.
@@ -93,7 +93,7 @@ Tento rychlý Start obsahuje ukázku kódu, která předvádí, jak se aplikace 
 > > [!TIP]
 > > Pokud chcete zjistit hodnotu *ID aplikace*, přečtěte si část **Přehled** na portálu.
 
-#### <a name="step-4-run-your-application"></a>Krok 4: Spusťte aplikaci
+#### <a name="step-4-run-your-application"></a>Krok 4: Spustit aplikaci
 
 Pokud chcete vyzkoušet rychlý Start v počítači s Windows:
 
@@ -179,3 +179,8 @@ Vyzkoušejte kurz pro plochu Windows, kde najdete podrobný návod k vytvářen�
 
 > [!div class="nextstepaction"]
 > [Kurz pro UWP – volání rozhraní Graph API](tutorial-v2-windows-uwp.md)
+
+Pomůžeme nám vylepšit platformu Microsoft identity. Řekněte nám, co si myslíte, díky krátkému průzkumu dvou dotazů.
+
+> [!div class="nextstepaction"]
+> [Microsoft Identity Platform Survey](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyKrNDMV_xBIiPGgSvnbQZdUQjFIUUFGUE1SMEVFTkdaVU5YT0EyOEtJVi4u)

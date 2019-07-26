@@ -1,101 +1,100 @@
 ---
 title: Zálohování virtuálního počítače Azure z nastavení virtuálního počítače pomocí služby Azure Backup
-description: Zjistěte, jak zálohovat virtuální počítač Azure pomocí služby Azure Backup
-services: backup
+description: Zjistěte, jak zálohovat virtuální počítač Azure pomocí služby Azure Backup.
 author: rayne-wiselman
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 06/13/2019
 ms.author: raynew
-ms.openlocfilehash: 80739fac8317014c74c6a86cef9aa23696cfb42e
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 994762098027f7051591b8bf89bfa5cb7c380373
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67442999"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68465280"
 ---
 # <a name="back-up-an-azure-vm-from-the-vm-settings"></a>Zálohování virtuálního počítače Azure z nastavení virtuálního počítače
 
-Tento článek vysvětluje, jak zálohovat virtuální počítače Azure s [Azure Backup](backup-overview.md) služby. Můžete zálohovat virtuální počítače Azure pomocí několika metod:
+Tento článek vysvětluje, jak zálohovat virtuální počítače Azure pomocí služby [Azure Backup](backup-overview.md) . Virtuální počítače Azure můžete zálohovat pomocí několika metod:
 
 - Jeden virtuální počítač Azure: Pokyny v tomto článku popisují, jak zálohovat virtuální počítač Azure přímo z nastavení virtuálního počítače.
-- Více virtuálních počítačích Azure: Můžete nastavit trezor služby Recovery Services a konfiguraci zálohování několika virtuálních počítačů Azure. Postupujte podle pokynů v [v tomto článku](backup-azure-arm-vms-prepare.md) pro tento scénář.
+- Několik virtuálních počítačů Azure: Můžete nastavit trezor Recovery Services a nakonfigurovat zálohování pro několik virtuálních počítačů Azure. Postupujte podle pokynů v [tomto článku](backup-azure-arm-vms-prepare.md) v tomto scénáři.
 
 
 
 ## <a name="before-you-start"></a>Než začnete
 
-1. [Přečtěte si](backup-architecture.md#how-does-azure-backup-work) fungování zálohování a [ověřte](backup-support-matrix.md#azure-vm-backup-support) požadavky na podporu.
-2. [Získejte přehled](backup-azure-vms-introduction.md) zálohování virtuálního počítače Azure.
+1. [Přečtěte si](backup-architecture.md#how-does-azure-backup-work) , jak zálohování funguje, a [Ověřte](backup-support-matrix.md#azure-vm-backup-support) požadavky na podporu.
+2. [Získejte přehled](backup-azure-vms-introduction.md) zálohování virtuálních počítačů Azure.
 
-### <a name="azure-vm-agent-installation"></a>Instalace agenta služby Azure VM
+### <a name="azure-vm-agent-installation"></a>Instalace agenta virtuálního počítače Azure
 
-K zálohování virtuálních počítačů Azure, Azure Backup nainstaluje rozšíření virtuálního počítače agenta spuštěného na počítači. Pokud byl váš virtuální počítač vytvořen z image Azure marketplace, agent bude spuštěn. V některých případech, například pokud vytváříte vlastní virtuální počítač nebo migrací z místního počítače. můžete potřebovat ručně nainstalovat agenta.
+Aby bylo možné zálohovat virtuální počítače Azure, Azure Backup nainstaluje rozšíření na agenta virtuálního počítače spuštěného v počítači. Pokud byl váš virtuální počítač vytvořený z image Azure Marketplace, Agent se spustí. V některých případech například vytvoříte vlastní virtuální počítač nebo migrujete počítač z místního prostředí. je možné, že budete muset agenta nainstalovat ručně.
 
-- Pokud potřebujete ručně nainstalovat agenta virtuálního počítače, postupujte podle pokynů pro [Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows) nebo [Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux) virtuálních počítačů.
-- Po instalaci agenta, když povolíte zálohování, Azure Backup nainstaluje rozšíření zálohování k agentovi. Aktualizace a opravy rozšíření bez zásahu uživatele.
+- Pokud potřebujete agenta virtuálního počítače nainstalovat ručně, postupujte podle pokynů pro virtuální počítače se [systémem Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows) nebo [Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux) .
+- Po instalaci agenta se při povolení zálohování Azure Backup nainstaluje rozšíření zálohování agenta. Aktualizuje a opraví rozšíření bez zásahu uživatele.
 
 ## <a name="back-up-from-azure-vm-settings"></a>Zálohování z nastavení virtuálního počítače Azure
 
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
-2. Klikněte na tlačítko **všechny služby** a do pole filtru zadejte **virtuálních počítačů**a potom klikněte na tlačítko **virtuálních počítačů**.
-3. Ze seznamu virtuálních počítačů vyberte virtuální počítač, které chcete zálohovat.
-4. V nabídce virtuálního počítače klikněte na tlačítko **zálohování**.
-5. V **trezor služby Recovery Services**, postupujte takto:
-   - Pokud už trezor máte, klikněte na tlačítko **vybrat existující**a vyberte trezor.
-   - Pokud nemáte trezoru, klikněte na tlačítko **vytvořit nový**. Zadejte název pro trezor. Vytvoří se v stejném oblasti a skupině prostředků jako virtuální počítač. Tato nastavení nelze změnit, když povolíte zálohování přímo z nastavení virtuálního počítače.
+2. Klikněte na **všechny služby** a ve filtru zadejte **virtuální počítače**a potom klikněte na **virtuální počítače**.
+3. V seznamu virtuálních počítačů vyberte virtuální počítač, který chcete zálohovat.
+4. V nabídce VM (virtuální počítač) klikněte na **zálohovat**.
+5. V **Recovery Services trezoru**postupujte takto:
+   - Pokud už máte trezor, klikněte na **Vybrat existující**a vyberte trezor.
+   - Pokud nemáte trezor, klikněte na **vytvořit nový**. Zadejte název trezoru. Vytvoří se ve stejné oblasti a skupině prostředků jako virtuální počítač. Tato nastavení nemůžete změnit, když povolíte zálohování přímo z nastavení virtuálního počítače.
 
    ![Průvodce povolením zálohování](./media/backup-azure-vms-first-look-arm/vm-menu-enable-backup-small.png)
 
-6. V **výběr zásady zálohování**, postupujte takto:
+6. V části **zvolit zásadu zálohování**udělejte toto:
 
-   - Ponechte výchozí zásady. Zálohuje virtuální počítač jednou denně v době zadané a uchovává zálohy v trezoru po dobu 30 dnů.
-   - Pokud nemáte, vyberte existující zásadu zálohování.
-   - Vytvořit nové zásady a nastavení zásad.  
+   - Ponechte výchozí zásadu. Tím se virtuální počítač zálohuje jednou denně v zadaném čase a zachovává zálohy v trezoru po dobu 30 dnů.
+   - Vyberte existující zásadu zálohování, pokud ji máte.
+   - Vytvořte novou zásadu a definujte nastavení zásad.  
 
    ![Výběr zásady zálohování](./media/backup-azure-vms-first-look-arm/set-backup-policy.png)
 
-7. Klikněte na tlačítko **povolit zálohování**. To přiřadí zásady zálohování virtuálního počítače.
+7. Klikněte na **Povolit zálohování**. Tím se přidruží zásady zálohování k virtuálnímu počítači.
 
     ![Tlačítko Povolit zálohování](./media/backup-azure-vms-first-look-arm/vm-management-menu-enable-backup-button.png)
 
-8. Můžete sledovat průběh konfigurace v oznámeních portálu.
-9. Po dokončení úlohy v nabídce virtuálního počítače, klikněte na tlačítko **zálohování**. Na stránce se zobrazuje stav zálohování pro virtuální počítač, informace o body obnovení, spuštěné úlohy a výstrahy, které jsou vydány.
+8. Průběh konfigurace můžete sledovat v oznámeních na portálu.
+9. Po dokončení úlohy klikněte v nabídce virtuální počítač na **zálohovat**. Stránka zobrazuje stav zálohování pro virtuální počítač, informace o vydaných bodech obnovení, spuštěných úlohách a výstrahách.
 
    ![Stav služby Backup](./media/backup-azure-vms-first-look-arm/backup-item-view-update.png)
 
-10. Po povolení zálohování, spuštění prvotního zálohování. Můžete okamžitě spustit prvotní zálohování, nebo počkejte, až se spustí podle plánu zálohování.
-    - Až do dokončení prvotní zálohy **stav poslední zálohy** ukazovat **upozornění (nedokončené prvotní zálohování)** .
-    - Pokud chcete zobrazit při příští plánované zálohování se spustí, klikněte na název zásady zálohování.
+10. Po povolení zálohování se spustí prvotní zálohování. Počáteční zálohu můžete spustit okamžitě nebo počkat, až začne v souladu s plánem zálohování.
+    - Až do dokončení počáteční zálohy se **Stav poslední zálohy** zobrazí jako **varování (čeká se na prvotní zálohování)** .
+    - Pokud chcete zjistit, kdy se spustí další naplánované zálohování, klikněte na název zásady zálohování.
 
 
 > [!NOTE]
-> Služba Azure Backup vytváří samostatné skupiny prostředků (než je skupina prostředků virtuálního počítače) k uložení snímku s formátem pojmenování **AzureBackupRG_geography_number** (Příklad: AzureBackupRG_northeurope_1). Data v této skupině prostředků se uchovají po dobu trvání ve dnech, jak je uvedeno v části "Doba uchování okamžité obnovení snímku" zásady zálohování virtuálních počítačů Azure. Použití zámek do této skupiny prostředků může způsobit selhání zálohování.<br>
-Tato skupina prostředků má být vyloučen z nějaká omezení název a značku také, jak zásadu omezení by blokovaly vytvoření kolekce bodů prostředků v ní znovu způsobující selhání zálohování.
+> Služba Azure Backup vytvoří samostatnou skupinu prostředků (jinou než skupinu prostředků virtuálního počítače) k uložení snímku s formátem názvů **AzureBackupRG_geography_number** (příklad: AzureBackupRG_northeurope_1). Data v této skupině prostředků se uchovávají po dobu ve dnech, jak je uvedeno v části uchování snímku okamžitého obnovení v zásadách zálohování virtuálních počítačů Azure. Použití zámku u této skupiny prostředků může způsobit selhání zálohování.<br>
+Tato skupina prostředků by se měla taky vyloučit z omezení podle názvů nebo značek, protože zásady omezení by zablokovaly vytváření kolekcí bodů prostředků v takovém případě, že způsobí selhání zálohování.
 
 
-## <a name="run-a-backup-immediately"></a>Spustit zálohování ihned
+## <a name="run-a-backup-immediately"></a>Okamžitě spustit zálohování
 
-1. Chcete-li spustit zálohování ihned, v nabídce virtuálního počítače, klikněte na tlačítko **zálohování** > **zálohovat nyní**.
+1. Pokud chcete spustit zálohování okamžitě, v nabídce VM (virtuální počítač) klikněte na **zálohovat** > **zálohování hned teď**.
 
-    ![Spustit zálohu](./media/backup-azure-vms-first-look-arm/backup-now-update.png)
+    ![Spustit zálohování](./media/backup-azure-vms-first-look-arm/backup-now-update.png)
 
-2. V **zálohovat nyní** pomocí ovládacího prvku kalendáře vyberte, až když bude uchovávat bod obnovení > a **OK**.
+2. V části **Zálohovat nyní** použijte ovládací prvek Kalendář k výběru do až do doby, kdy se bude bod obnovení uchovávat > a **OK**.
 
-    ![Den uchovávání záloh](./media/backup-azure-vms-first-look-arm/backup-now-blade-calendar.png)
+    ![Den uchování zálohy](./media/backup-azure-vms-first-look-arm/backup-now-blade-calendar.png)
 
-3. Portálu oznámení vám umožňují vědět, že došlo ke spuštění úlohy zálohování. Pokud chcete monitorovat průběh zálohování, klikněte na tlačítko **zobrazit všechny úlohy**.
-
-
+3. Oznámení na portálu vám pomůžou zjistit, že se spustila úloha zálohování. Pokud chcete monitorovat průběh zálohování, klikněte na **Zobrazit všechny úlohy**.
 
 
-## <a name="back-up-from-the-recovery-services-vault"></a>Zálohování z trezoru služby Recovery Services
 
-Postupujte podle pokynů v tomto článku a povolení zálohování pro virtuální počítače Azure s nastavením trezor služby Recovery Services zálohování Azure a povolení zálohování v trezoru.
+
+## <a name="back-up-from-the-recovery-services-vault"></a>Zálohování z trezoru Recovery Services
+
+Postupujte podle pokynů v tomto článku a povolte zálohování virtuálních počítačů Azure nastavením Recovery Services trezoru Azure Backup a povolením zálohování v trezoru.
 
 ## <a name="next-steps"></a>Další postup
 
-- Pokud máte potíže s libovolný postup v tomto článku, obraťte se [Průvodce odstraňováním potíží](backup-azure-vms-troubleshoot.md).
-- [Další informace o](backup-azure-manage-vms.md) správy zálohování.
+- Pokud máte problémy s některým z postupů v tomto článku, přečtěte si příručku k [odstraňování potíží](backup-azure-vms-troubleshoot.md).
+- [Přečtěte si o](backup-azure-manage-vms.md) správě záloh.

@@ -1,6 +1,6 @@
 ---
-title: Ověřování pomocí spravované identity – Azure Logic Apps | Dokumentace Microsoftu
-description: K ověření bez přihlášení, můžete vytvořit spravovanou identitu (dříve se označovaly jako identita spravované služby nebo MSI), aplikace logiky mít přístup k prostředkům v jiné služby Azure Active Directory (Azure AD) klienti bez přihlašovací údaje a tajné kódy
+title: Ověřování pomocí spravovaných identit – Azure Logic Apps | Microsoft Docs
+description: K ověření bez přihlášení můžete vytvořit spravovanou identitu (dřív označovanou jako Identita spravované služby nebo MSI), aby vaše aplikace logiky mohla přistupovat k prostředkům v jiných klientech Azure Active Directory (Azure AD) bez přihlašovacích údajů nebo tajných klíčů.
 author: kevinlam1
 ms.author: klam
 ms.reviewer: estfan, LADocs
@@ -9,66 +9,66 @@ ms.service: logic-apps
 ms.suite: integration
 ms.topic: article
 ms.date: 03/29/2019
-ms.openlocfilehash: 65fe89bf775a649d5654ce739d8d18e05d3048ca
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b157db5032bd62ab443209f201b4ceded6e44cb5
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65416124"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68385567"
 ---
-# <a name="authenticate-and-access-resources-with-managed-identities-in-azure-logic-apps"></a>Ověřování a přístup k prostředkům pomocí spravované identity v Azure Logic Apps
+# <a name="authenticate-and-access-resources-with-managed-identities-in-azure-logic-apps"></a>Ověřování a přístup k prostředkům se spravovanými identitami v Azure Logic Apps
 
-Přístup k prostředkům v jiných tenantů Azure Active Directory (Azure AD) a ověřit svou identitu i bez přihlášení, můžete použít svou aplikaci logiky [se identita spravované](../active-directory/managed-identities-azure-resources/overview.md) (dříve označované jako identita spravované služby nebo MSI), spíše než přihlašovací údaje nebo tajné kódy. Tato identita pro vás spravuje Platforma Azure a pomáhá zabezpečit svoje přihlašovací údaje, protože není nutné poskytovat nebo otočit tajných kódů. Tento článek popisuje, jak můžete nastavit a používat systém přiřadil spravovanou identitu pro vaši aplikaci logiky. Další informace o spravovaných identit najdete v tématu [co je spravované identity pro prostředky Azure?](../active-directory/managed-identities-azure-resources/overview.md)
+Pokud chcete získat přístup k prostředkům v jiných klientech Azure Active Directory (Azure AD) a ověřit vaši identitu bez přihlášení, vaše aplikace logiky může používat [spravovanou identitu](../active-directory/managed-identities-azure-resources/overview.md) (dřív označovanou jako identita spravované služby nebo MSI) místo přihlašovacích údajů nebo tajných kódů. Azure tuto identitu spravuje za vás a pomáhá zabezpečit vaše přihlašovací údaje, protože nemusíte zadávat ani otáčet tajné klíče. V tomto článku se dozvíte, jak můžete nastavit a používat spravovanou identitu přiřazenou systémem pro vaši aplikaci logiky. Další informace o spravovaných identitách najdete v tématu [co jsou spravované identity pro prostředky Azure?](../active-directory/managed-identities-azure-resources/overview.md)
 
 > [!NOTE]
-> Aplikace logiky pomocí spravované identity pouze konektory, které podporují spravované identity. V současné době podporuje pouze konektor HTTP spravované identity.
+> Vaše aplikace logiky může používat spravované identity pouze s konektory, které podporují spravované identity. V současné době pouze konektor HTTP podporuje spravované identity.
 >
-> Můžete je aktuálně mít až 10 pracovních postupů aplikace logiky s systém přiřadil spravovat identity v rámci předplatného Azure.
+> V každém předplatném Azure můžete v současnosti mít až 10 pracovních postupů aplikací logiky se spravovanými identitami přiřazenými systémem.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Předplatné Azure, nebo pokud nemáte předplatné, <a href="https://azure.microsoft.com/free/" target="_blank">zaregistrovat si bezplatný účet Azure</a>.
+* Předplatné Azure, nebo pokud předplatné nemáte, zaregistrujte si <a href="https://azure.microsoft.com/free/" target="_blank">bezplatný účet Azure</a>.
 
-* Identita spravované aplikace logiky, ve které chcete použít systém přiřadil. Pokud nemáte aplikace logiky, přečtěte si téma [vytvoření prvního pracovního postupu aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+* Aplikace logiky, ve které chcete použít spravovanou identitu přiřazenou systémem. Pokud nemáte aplikaci logiky, přečtěte si téma [Vytvoření prvního pracovního postupu aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
 <a name="enable-identity"></a>
 
-## <a name="enable-managed-identity"></a>Povolit spravované identity
+## <a name="enable-managed-identity"></a>Povolit spravovanou identitu
 
-Pro systém přiřadil spravovaných identit není nutné ručně vytvořit tuto identitu. Nastavit systém přiřadil spravovanou identitu pro vaši aplikaci logiky, můžete těmito způsoby: 
+Pro spravované identity přiřazené systémem nemusíte tuto identitu vytvářet ručně. Pokud chcete pro vaši aplikaci logiky nastavit spravovanou identitu přiřazenou systémem, můžete použít tyto způsoby: 
 
 * [Azure Portal](#azure-portal) 
-* [Šablony Azure Resource Manageru](#template) 
+* [Šablony Azure Resource Manager](#template) 
 * [Azure PowerShell](../active-directory/managed-identities-azure-resources/howto-assign-access-powershell.md) 
 
 <a name="azure-portal"></a>
 
 ### <a name="azure-portal"></a>portál Azure
 
-Chcete-li povolit systém přiřadil spravovanou identitu pro vaši aplikaci logiky na webu Azure portal, zapněte **přiřazenou systémem** nastavení v nastavení identit aplikace logiky.
+Pokud chcete pro vaši aplikaci logiky povolit spravovanou identitu přiřazenou systémem prostřednictvím Azure Portal, zapněte v nastavení identity vaší aplikace logiky nastavení **přiřazené systémem** .
 
-1. V [webu Azure portal](https://portal.azure.com), otevřete v návrháři aplikace logiky aplikace logiky.
+1. V [Azure Portal](https://portal.azure.com)otevřete aplikaci logiky v návrháři aplikace logiky.
 
-1. V nabídce aplikace logiky podle **nastavení**vyberte **Identity**. 
+1. V nabídce aplikace logiky v části **Nastavení**vyberte **Identita**. 
 
-1. V části **přiřazenou systémem** > **stav**, zvolte **na**. Potom kliknutím na možnost **Uložit** > **Ano**.
+1. V části**stav** **přiřazení** > systému vyberte **zapnuto**. Pak zvolte **Uložit** > **Ano**.
 
-   ![Zapnutí nastavení spravovaných identit](./media/create-managed-service-identity/turn-on-managed-service-identity.png)
+   ![Zapnout nastavení spravované identity](./media/create-managed-service-identity/turn-on-managed-service-identity.png)
 
-   Aplikace logiky teď má systém přiřadil spravované identity v Azure Active Directory:
+   Vaše aplikace logiky teď má v Azure Active Directory zaregistrovanou spravovanou identitu přiřazenou systémem:
 
    ![Identifikátory GUID pro ID objektu](./media/create-managed-service-identity/object-id.png)
 
-   | Vlastnost | Hodnota | Popis | 
+   | Vlastnost | Value | Popis | 
    |----------|-------|-------------| 
-   | **ID objektu** | <*identity-resource-ID*> | Globálně jedinečný identifikátor (GUID), který představuje systém přiřadil spravované identity pro vaše aplikace logiky v tenantovi Azure AD | 
+   | **ID objektu** | <*identity-resource-ID*> | Globálně jedinečný identifikátor (GUID), který představuje spravovanou identitu přiřazenou systémem pro vaši aplikaci logiky v tenantovi Azure AD. | 
    ||| 
 
 <a name="template"></a>
 
 ### <a name="azure-resource-manager-template"></a>Šablona Azure Resource Manageru
 
-Pokud chcete automatizovat vytváření a nasazování prostředků Azure jako jsou například aplikace logiky, můžete použít [šablon Azure Resource Manageru](../logic-apps/logic-apps-create-deploy-azure-resource-manager-templates.md). Chcete-li vytvořit systém přiřadil spravovanou identitu pro vaši aplikaci logiky pomocí šablony, přidejte `"identity"` elementu a `"type"` vlastnost na definici pracovního postupu aplikace logiky do šablony nasazení: 
+Pokud chcete automatizovat vytváření a nasazování prostředků Azure, jako jsou Logic Apps, můžete použít [šablony Azure Resource Manager](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md). Pokud chcete pro vaši aplikaci logiky vytvořit spravovanou identitu přiřazenou systémem pomocí šablony, přidejte `"identity"` do definice pracovního postupu aplikace logiky v šabloně nasazení element a `"type"` vlastnost: 
 
 ```json
 "identity": {
@@ -101,7 +101,7 @@ Příklad:
 }
 ```
 
-Když Azure vytvářet aplikace logiky, definice pracovního postupu vaší aplikace logiky zahrnuje tyto další vlastnosti:
+Když Azure vytvoří aplikaci logiky, tato definice pracovního postupu aplikace logiky zahrnuje tyto další vlastnosti:
 
 ```json
 "identity": {
@@ -111,92 +111,92 @@ Když Azure vytvářet aplikace logiky, definice pracovního postupu vaší apli
 }
 ```
 
-| Vlastnost | Hodnota | Popis | 
+| Vlastnost | Value | Popis | 
 |----------|-------|-------------|
-| **principalId** | <*principal-ID*> | Globálně jedinečný identifikátor (GUID), který představuje aplikace logiky v tenantovi Azure AD a někdy se zobrazí jako "ID objektu" nebo `objectID` | 
-| **ID Tenanta** | <*Azure-AD-tenant-ID*> | Globálně jedinečný identifikátor (GUID), který představuje tenanta Azure AD, kde aplikace logiky je teď členem. Instanční objekt v tenantovi Azure AD má stejný název jako instanci aplikace logiky. | 
+| **principalId** | <*ID objektu zabezpečení*> | Globálně jedinečný identifikátor (GUID), který představuje aplikaci logiky v tenantovi Azure AD a někdy se zobrazuje jako ID objektu nebo`objectID` | 
+| **tenantId** | <*Azure-AD-tenant-ID*> | Globálně jedinečný identifikátor (GUID), který představuje tenanta Azure AD, ve kterém je teď aplikace logiky členem. V tenantovi služby Azure AD má instanční objekt stejný název jako instance aplikace logiky. | 
 ||| 
 
 <a name="access-other-resources"></a>
 
 ## <a name="access-resources-with-managed-identity"></a>Přístup k prostředkům pomocí spravované identity
 
-Po vytvoření systém přiřadil spravovanou identitu pro vaši aplikaci logiky můžete [poskytnout tento přístup identit k další prostředky Azure](../active-directory/managed-identities-azure-resources/howto-assign-access-portal.md). Potom můžete tuto identitu pro ověřování, stejně jako jakýkoli jiný [instanční objekt služby](../active-directory/develop/app-objects-and-service-principals.md). 
+Po vytvoření spravované identity přiřazené systémem pro vaši aplikaci logiky můžete [této identitě udělit přístup k dalším prostředkům Azure](../active-directory/managed-identities-azure-resources/howto-assign-access-portal.md). Tuto identitu pak můžete použít pro ověřování podobně jako u jakéhokoli jiného [instančního objektu](../active-directory/develop/app-objects-and-service-principals.md). 
 
 > [!NOTE]
-> Systém přiřadil spravovanou identitu a prostředků, ve které chcete přiřadit přístup, musí mít stejné předplatné Azure.
+> Spravovaná identita přiřazená systémem i prostředek, ke kterému chcete přiřadit přístup, musí mít stejné předplatné Azure.
 
-### <a name="assign-access-to-managed-identity"></a>Přiřazení přístupu k spravovaná identita
+### <a name="assign-access-to-managed-identity"></a>Přiřazení přístupu ke spravované identitě
 
-Udělit přístup do jiného prostředku Azure pro svou aplikaci logiky, systém přiřadil spravovanou identitu, postupujte podle těchto kroků:
+Pokud chcete udělit přístup k jinému prostředku Azure pro spravovanou identitu přiřazenou vaší aplikaci logiky, postupujte takto:
 
-1. Na webu Azure Portal přejděte k prostředku Azure ve které chcete přiřadit přístup pro spravovanou identitu. 
+1. V Azure Portal přejděte do prostředku Azure, ke kterému chcete přiřadit přístup pro spravovanou identitu. 
 
-1. V nabídce prostředků vyberte **řízení přístupu (IAM)** . Na panelu nástrojů zvolte **přidat** > **přidat přiřazení role**.
+1. V nabídce prostředku vyberte **řízení přístupu (IAM)** . Na panelu nástrojů klikněte na **Přidat** > **přiřazení role přidat**.
 
-   ![Přidání přiřazení role](./media/create-managed-service-identity/add-permissions-logic-app.png)
+   ![Přidat přiřazení role](./media/create-managed-service-identity/add-permissions-logic-app.png)
 
-1. V části **přidat přiřazení role**, vyberte **Role** chcete použít pro identitu. 
+1. V části **Přidat přiřazení role**vyberte **roli** , kterou chcete pro identitu. 
 
-1. V **přiřadit přístup k** vlastnosti, vyberte **uživatele, skupinu nebo instanční objekt služby Azure AD**, pokud ještě není vybraná.
+1. V poli **přiřadit přístup k** vlastnosti vyberte možnost **uživatel, skupina nebo INSTANČNÍ objekt Azure AD**, pokud ještě není vybraný.
 
-1. V **vyberte** pole, počínaje první znak v názvu vaší aplikace logiky, zadejte název vaší aplikace logiky. Jakmile se zobrazí vaše aplikace logiky, vyberte aplikaci logiky.
+1. Do pole **Vybrat** počínaje prvním znakem v názvu vaší aplikace logiky zadejte název vaší aplikace logiky. Po zobrazení aplikace logiky vyberte aplikaci logiky.
 
-   ![Vyberte aplikaci logiky s využitím spravované identity](./media/create-managed-service-identity/add-permissions-select-logic-app.png)
+   ![Výběr aplikace logiky se spravovanou identitou](./media/create-managed-service-identity/add-permissions-select-logic-app.png)
 
 1. Jakmile budete hotoví, vyberte **Uložit**.
 
 ### <a name="authenticate-with-managed-identity-in-logic-app"></a>Ověřování pomocí spravované identity v aplikaci logiky
 
-Jakmile nastavíte aplikaci logiky s systém přiřadil se identita spravované a přidělený přístup k prostředku, který chcete použít pro tuto identitu, teď můžete použít tuto identitu pro ověřování. Můžete například použít akce HTTP tak, aby vaše aplikace logiky může odeslat požadavek HTTP nebo volání do tohoto prostředku. 
+Po nastavení aplikace logiky pomocí spravované identity přiřazené systémem a přiřazeného přístupu k prostředku, který chcete použít pro tuto identitu, teď můžete tuto identitu použít k ověřování. Můžete například použít akci HTTP, takže aplikace logiky může odeslat požadavek HTTP nebo zavolat tomuto prostředku. 
 
-1. V aplikaci logiky, přidejte **HTTP** akce.
+1. V aplikaci logiky přidejte akci **http** .
 
-1. Zadejte potřebné podrobnosti pro tuto akci, jako je například požadavek **metoda** a **URI** umístění prostředků, kterou chcete volat.
+1. Zadejte potřebné údaje pro tuto akci, například **metodu** žádosti a umístění identifikátoru **URI** pro prostředek, který chcete volat.
 
-   Předpokládejme například, že používáte ověřování Azure Active Directory (Azure AD) s [jednu z těchto služeb Azure, které podporují služby Azure AD](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication). 
-   V **URI** zadejte adresu URL koncového bodu pro tuto službu Azure. 
-   Ano, pokud používáte Azure Resource Manageru, zadejte tuto hodnotu v **URI** vlastnost:
+   Předpokládejme například, že používáte ověřování Azure Active Directory (Azure AD) s [jednou z těchto služeb Azure, které podporují službu Azure AD](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication). 
+   Do pole **identifikátor URI** zadejte adresu URL koncového bodu pro tuto službu Azure. 
+   Takže pokud používáte Azure Resource Manager, zadejte tuto hodnotu do vlastnosti **URI** :
 
    `https://management.azure.com/subscriptions/<Azure-subscription-ID>?api-version=2016-06-01`
 
-1. V akci HTTP zvolte **zobrazit pokročilé možnosti**.
+1. V akci HTTP vyberte **Zobrazit upřesňující možnosti**.
 
-1. Z **ověřování** seznamu vyberte **Identity spravované**. Po výběru tohoto ověřování **cílovou skupinu** vlastnost se zobrazí s výchozí hodnotou ID prostředku:
+1. V seznamu **ověřování** vyberte **spravovaná identita**. Po výběru tohoto ověřování se zobrazí vlastnost **cílová skupina** s výchozí hodnotou ID prostředku:
 
-   ![Vyberte "Spravované Identity"](./media/create-managed-service-identity/select-managed-service-identity.png)
+   ![Vyberte spravovanou identitu.](./media/create-managed-service-identity/select-managed-service-identity.png)
 
    > [!IMPORTANT]
    > 
-   > V **cílovou skupinu** vlastnost, hodnota ID prostředku musí přesně odpovídat hodnotám očekává Azure AD, včetně všech požadovaných koncových lomítek. 
-   > Tyto hodnoty ID prostředků najdete v tomto [tabulku popisující Azure services – Azure AD, které podporují](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication). 
-   > Například pokud používáte ID prostředku správce prostředků Azure, ujistěte se, že identifikátor URI má koncové lomítko.
+   > Hodnota ID prostředku ve vlastnosti **cílové skupiny** se musí přesně shodovat s tím, co očekává služba Azure AD, včetně všech požadovaných koncových lomítek. 
+   > Tyto hodnoty ID prostředků najdete v této [tabulce popisující služby Azure, které podporují Azure AD](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication). 
+   > Pokud například používáte ID prostředku Azure prostředků Manageru, ujistěte se, že identifikátor URI má koncové lomítko.
 
-1. Pokračujte v sestavování aplikace logiky požadovaným způsobem.
+1. Pokračujte v sestavování aplikace logiky způsobem, který požadujete.
 
 <a name="remove-identity"></a>
 
-## <a name="remove-managed-identity"></a>Odebrání spravované identity
+## <a name="remove-managed-identity"></a>Odebrat spravovanou identitu
 
-Systém přiřadil spravovanou identitu na svou aplikaci logiky zakázat, provedením kroků podobný nastavení identit prostřednictvím webu Azure portal, šablon nasazení Azure Resource Manageru nebo Azure Powershellu.
+Pokud chcete v aplikaci logiky zakázat spravovanou identitu přiřazenou systémem, můžete postupovat podle kroků, které jsou podobné způsobu nastavení identity prostřednictvím Azure Portal, Azure Resource Manager šablon nasazení nebo Azure PowerShell.
 
-Při odstranění aplikace logiky Azure automaticky odstraní vaší aplikace logiky systém přiřadil identitu ze služby Azure AD.
+Při odstranění aplikace logiky Azure automaticky odebere identitu přiřazenou systémem vaší aplikace logiky ze služby Azure AD.
 
 ### <a name="azure-portal"></a>portál Azure
 
-Chcete-li odebrat systém přiřadil spravovanou identitu pro vaši aplikaci logiky na webu Azure portal, vypněte **přiřazenou systémem** nastavení v nastavení identit aplikace logiky.
+Pokud chcete pro vaši aplikaci logiky pomocí Azure Portal odebrat spravovanou identitu přiřazenou systémem, vypněte nastavení **přiřazené systému** v nastavení identity vaší aplikace logiky.
 
-1. V [webu Azure portal](https://portal.azure.com), otevřete v návrháři aplikace logiky aplikace logiky.
+1. V [Azure Portal](https://portal.azure.com)otevřete aplikaci logiky v návrháři aplikace logiky.
 
-1. V nabídce aplikace logiky podle **nastavení**vyberte **Identity**. 
+1. V nabídce aplikace logiky v části **Nastavení**vyberte **Identita**. 
 
-1. V části **přiřazenou systémem** > **stav**, zvolte **vypnout**. Potom kliknutím na možnost **Uložit** > **Ano**.
+1. V části**stav** **přiřazení** > systému vyberte **vypnuto**. Pak zvolte **Uložit** > **Ano**.
 
-   ![Vypněte nastavení spravovaných identit](./media/create-managed-service-identity/turn-off-managed-service-identity.png)
+   ![Vypnout nastavení spravované identity](./media/create-managed-service-identity/turn-off-managed-service-identity.png)
 
-### <a name="deployment-template"></a>Nasazení šablony
+### <a name="deployment-template"></a>Šablona nasazení
 
-Pokud jste vytvořili aplikaci logiky, systém přiřadil spravovanou identitu se šablonou nasazení Azure Resource Manageru, nastavte `"identity"` elementu `"type"` vlastnost `"None"`. Tato akce také odstraní ID objektu zabezpečení z Azure AD.
+Pokud jste vytvořili spravovanou identitu přiřazenou systémem aplikace logiky pomocí šablony nasazení Azure Resource Manager, nastavte `"identity"` `"type"` vlastnost prvku na `"None"`hodnotu. Tato akce také odstraní ID objektu zabezpečení z Azure AD.
 
 ```json
 "identity": {

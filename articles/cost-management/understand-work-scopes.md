@@ -1,6 +1,6 @@
 ---
-title: Pochopení a práci s obory Azure Cost Management | Dokumentace Microsoftu
-description: Tento článek vám pomůže pochopit fakturaci a prostředků obory správy k dispozici v Azure a použití rozsahů Cost Management a rozhraní API.
+title: Pochopení a práce s obory Azure Cost Management | Microsoft Docs
+description: Tento článek vám pomůže pochopit rozsahy správy fakturace a prostředků, které jsou dostupné v Azure, a jak používat obory Cost Management a rozhraní API.
 services: cost-management
 keywords: ''
 author: bandersmsft
@@ -10,215 +10,227 @@ ms.topic: conceptual
 ms.service: cost-management
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: 699707953ae06afa9cbf3cc7286f94917ba0efca
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.openlocfilehash: 66bad9c9c647fe87fdcf6b99a8d17f319b1ef9fc
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67490115"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68479984"
 ---
 # <a name="understand-and-work-with-scopes"></a>Vysvětlení a práce s rozsahy
 
-Tento článek vám pomůže pochopit fakturaci a prostředků obory správy k dispozici v Azure a použití rozsahů Cost Management a rozhraní API.
+Tento článek vám pomůže pochopit rozsahy správy fakturace a prostředků, které jsou dostupné v Azure, a jak používat obory Cost Management a rozhraní API.
 
 ## <a name="scopes"></a>Obory
 
-A _oboru_ je uzel v hierarchii prostředků Azure, kde Azure AD uživatelům přístup k a spravovat služby. Většinu služeb Azure prostředky jsou vytvořené a nasazené do skupin prostředků, které jsou součástí předplatných. Microsoft taky nabízí dvěma hierarchiemi výše předplatného Azure, které specializovaný rolí ke správě fakturačních dat:
-- Fakturační údaje, jako je například plateb a faktury
-- Cloudové služby, jako je například náklady a zásady zásad správného řízení
+_Obor_ je uzel v hierarchii prostředků Azure, kde uživatelé Azure AD mají přístup ke službám a spravují je. Většina prostředků Azure se vytváří a nasazuje do skupin prostředků, které jsou součástí předplatných. Microsoft taky nabízí dvě hierarchie nad předplatnými Azure, které mají specializované role pro správu fakturačních údajů:
+- Fakturační údaje, například platby a faktury
+- Cloudové služby, jako je například náklady a řízení zásad
 
-Obory jsou kde spravovat fakturačních dat, mají konkrétní role k platbám, zobrazení faktur a provádět správu obecné účtu. Fakturace a účtu role se spravují odděleně od těch, které používá ke správě prostředků, kterou použít [Azure RBAC](../role-based-access-control/overview.md). Jasně rozlišovat záměr samostatné obory, včetně rozdílů řízení přístupu, tyto jsou označovány jako _fakturace obory_ a _RBAC obory_v uvedeném pořadí.
+Obory jsou místo, kde můžete spravovat fakturační data, mít role specifické pro platby, zobrazovat faktury a provádět Obecné řízení účtů. Role fakturace a účtu se spravují odděleně od těch, které se používají pro správu prostředků, které používají [Azure RBAC](../role-based-access-control/overview.md). K jasnému odlišení záměru samostatných oborů, včetně rozdílů v řízení přístupu, se tyto hodnoty označují jako _obory fakturace_ a _rozsahy RBAC_v uvedeném pořadí.
 
 ## <a name="how-cost-management-uses-scopes"></a>Jak Cost Management používá obory
 
-Cost Management funguje na všech rozsahy nad prostředky, které umožňuje organizacím spravovat náklady na úrovni, na které mají přístup, zda je celý fakturační účet nebo jedné skupiny prostředků. I když fakturační obory se liší v závislosti na vaší smlouvě Microsoft (typ předplatného), obory RBAC to nejde.
+Cost Management funguje ve všech oborech nad prostředky, aby organizace mohly spravovat náklady na úrovni, ke kterým mají přístup, a to bez ohledu na to, jestli je to celý fakturační účet nebo jedna skupina prostředků. I když se fakturační obory liší v závislosti na vaší smlouvě Microsoft (typu předplatného), obory RBAC ne.
 
 ## <a name="azure-rbac-scopes"></a>Obory Azure RBAC
 
-Azure podporuje tři obory pro řízení zdrojů. Každý obor podporuje správu přístupu a zásady správného řízení, včetně, ale mimo jiné, Správa nákladů.
+Azure podporuje tři obory pro správu prostředků. Každý obor podporuje správu přístupu a zásad správného řízení, včetně neomezeného řízení nákladů.
 
-- [**Skupiny pro správu** ](../governance/management-groups/index.md) – hierarchické kontejnery, až osm úrovní uspořádání předplatných Azure.
+- [**Skupiny pro správu**](../governance/management-groups/index.md) – hierarchické kontejnery, až osm úrovní, pro uspořádání předplatných Azure.
 
     Typ prostředku: [Microsoft.Management/managementGroups](/rest/api/resources/managementgroups)
 
 - **Předplatná** – primární kontejnery pro prostředky Azure.
 
-    Typ prostředku: [Microsoft.Resources/subscriptions](/rest/api/resources/subscriptions)
+    Typ prostředku: [Microsoft. Resources/Subscriptions](/rest/api/resources/subscriptions)
 
-- [**Skupiny prostředků** ](../azure-resource-manager/resource-group-overview.md#resource-groups) -logického seskupení souvisejících prostředků pro řešení Azure, které sdílejí stejný životní cyklus. Například prostředky, které se nasazují a odstraní společně.
+- [**Skupiny prostředků**](../azure-resource-manager/resource-group-overview.md#resource-groups) – logická seskupení souvisejících prostředků pro řešení Azure, která sdílejí stejný životní cyklus. Například prostředky, které se nasazují a odstraňují dohromady.
 
-    Typ prostředku: [Microsoft.Resources/subscriptions/resourceGroups](/rest/api/resources/resourcegroups)
+    Typ prostředku: [Microsoft. Resources/Subscriptions/resourceGroups](/rest/api/resources/resourcegroups)
 
-Skupiny pro správu umožňují organizaci předplatných do hierarchie. Například může vytvořit hierarchii logické uspořádání využitím skupin pro správu. Dejte týmy předplatná pro produkční a vývojové a testovací úlohy. A pak vytvořte skupiny prostředků v rámci předplatných pro správu jednotlivých subsystémů nebo komponenty.
+Skupiny pro správu umožňují organizovat odběry do hierarchie. Můžete například vytvořit hierarchii logických organizací pomocí skupin pro správu. Pak týmům přiřadí odběry pro produkční a vývojové a testovací úlohy. Pak vytvořte skupiny prostředků v předplatných, abyste mohli spravovat každý dílčí systém nebo komponentu.
 
-Vytváření organizační hierarchie umožňuje náklady a dodržování zásad souhrnné používání. Každý vedoucí pak můžete zobrazit a analyzovat jejich aktuálními náklady. A pak můžete vytvořit rozpočty omezení chybný útraty vzory a optimalizovat náklady pomocí doporučení Advisoru na nejnižší úrovni.
+Vytvoření hierarchie organizace umožňuje, aby byly požadavky a zásady dodržování předpisů zahrnuty v organizaci. Každý vedoucí pak může zobrazit a analyzovat své aktuální náklady. A pak mohou vytvářet rozpočty na omezení špatných výdajů a optimalizovat náklady pomocí doporučení poradce na nejnižší úrovni.
 
-Udělení přístupu k zobrazení nákladů a volitelně spravovat náklady na konfiguraci, například exporty, rozpočet a libovolný typ se provádí na zásady správného řízení rozsahy pomocí Azure RBAC. Použijte Azure RBAC pro udělení uživatelů Azure AD a skupiny přístup k provedení předdefinovanou sadu akcí, které jsou definovány v roli v konkrétním oboru a níže. Pro instanci role přiřazená k oboru skupiny pro správu uděluje také stejná oprávnění, aby vnořené předplatné a skupiny prostředků.
+Udělení přístupu k zobrazení nákladů a volitelně Správa konfigurace nákladů, jako jsou rozpočty a exporty, se provádí na oborech zásad správného řízení pomocí Azure RBAC. Pomocí Azure RBAC udělíte přístup k uživatelům a skupinám Azure AD k provedení předdefinované sady akcí, které jsou definované v roli v konkrétním oboru a níže. Například role přiřazená k oboru skupiny pro správu také uděluje stejným oprávněním pro vnořená předplatná a skupiny prostředků.
 
-Služba Cost Management podporuje následující předdefinované role pro každou z následujících oborů:
+Cost Management podporuje následující předdefinované role pro každý z následujících oborů:
 
-- [**Vlastník** ](../role-based-access-control/built-in-roles.md#owner) – můžete zobrazit náklady a spravovat všechno včetně konfigurace náklady.
-- [**Přispěvatel** ](../role-based-access-control/built-in-roles.md#contributor) – můžete zobrazit náklady a spravovat všechno včetně konfigurace náklady, s výjimkou řízení přístupu.
-- [**Čtečka** ](../role-based-access-control/built-in-roles.md#reader) – vše, včetně konfigurace a nákladech můžete zobrazit, ale nemůže provádět žádné změny.
-- [**Přispěvatel správy nákladů** ](../role-based-access-control/built-in-roles.md#cost-management-contributor) – můžete zobrazit náklady, spravovat náklady na konfiguraci a zobrazení doporučení.
-- [**Cost Management čtečky** ](../role-based-access-control/built-in-roles.md#cost-management-reader) – můžou zobrazovat data nákladů, náklady na konfiguraci a zobrazit doporučení.
+- [**Vlastník**](../role-based-access-control/built-in-roles.md#owner) – umožňuje zobrazit náklady a spravovat vše včetně konfigurace nákladů.
+- [**Přispěvatel**](../role-based-access-control/built-in-roles.md#contributor) – umožňuje zobrazit náklady a spravovat vše, včetně konfigurace nákladů, ale bez řízení přístupu.
+- [**Čtenář**](../role-based-access-control/built-in-roles.md#reader) – může zobrazit vše, včetně nákladových dat a konfigurace, ale nemůže provádět žádné změny.
+- [**Přispěvatel cost management**](../role-based-access-control/built-in-roles.md#cost-management-contributor) – může zobrazovat náklady, spravovat konfiguraci nákladů a zobrazovat doporučení.
+- [**Cost management Reader**](../role-based-access-control/built-in-roles.md#cost-management-reader) – může zobrazit data o nákladech, konfiguraci nákladů a zobrazit doporučení.
 
-Přispěvatel Cost Management je doporučená role nejnižších oprávnění. Umožňuje uživatelům přístup k vytváření a Správa rozpočtů a exportuje do více efektivně, monitorování a vytváření sestav na náklady. Náklady na správu přispěvatelé může také vyžadovat další role, které podporují scénáře správy náklady na začátku do konce. Zvažte následující scénáře:
+Cost Management Přispěvatel je doporučená role nejnižší úrovně oprávnění. Umožňuje lidem vytvářet a spravovat rozpočty a exporty a efektivně monitorovat a vykazovat náklady. Přispěvatelé Cost Management mohou také vyžadovat další role pro podporu scénářů pro komplexní správu nákladů. Vezměte v úvahu následující scénáře:
 
-- **Fungují při překročení rozpočty** – náklady na správu přispěvatelé také potřebují přístup k vytvořit a spravovat skupiny akcí automaticky reagovat na Nadlimitní využití. Zvažte možnost udělení [Přispěvatel monitorování](../role-based-access-control/built-in-roles.md#monitoring-contributor) do skupiny prostředků, která obsahuje skupiny akcí při překročení prahové hodnoty. Automatizace konkrétní akce vyžaduje další role pro určité služby, použití, například služby Automation a Azure Functions.
-- **Plánování nákladů export dat** – náklady na správu přispěvatelé také potřebovat přístup ke správě účtů úložiště naplánování export můžete kopírovat data do účtu úložiště. Zvažte možnost udělení [Přispěvatel účtů úložiště](../role-based-access-control/built-in-roles.md#storage-account-contributor) do skupiny prostředků, který obsahuje úložiště se exportuje účtu, kde informací o nákladech.
-- **Zobrazení doporučení nákladově úspornému** – náklady na správu čtenáři a přispěvatelé Cost Management mají přístup k *zobrazení* nákladů doporučení ve výchozím nastavení. Přístup tak, aby fungoval na doporučení k nákladům však vyžaduje přístup k jednotlivým prostředkům. Zvažte možnost udělení [specifickou pro službu role](../role-based-access-control/built-in-roles.md#built-in-role-descriptions) Pokud budete chtít pracovat s náklady na základě doporučení.
+- **Působit při překročení rozpočtu** – cost management přispěvatelé také potřebují přístup k vytvoření nebo správě skupin akcí, které automaticky reagují na překročení limitu. Zvažte udělení [přispěvatele monitorování](../role-based-access-control/built-in-roles.md#monitoring-contributor) skupině prostředků obsahující skupinu akcí, která se má použít při překročení prahových hodnot rozpočtu. Automatizace konkrétních akcí vyžaduje další role pro používané konkrétní služby, jako je například automatizace a Azure Functions.
+- **Plánování exportu dat s náklady** – cost management přispěvatelé také potřebují přístup ke správě účtů úložiště a naplánování exportu pro kopírování dat do účtu úložiště. Zvažte možnost udělit [přispěvateli účtu úložiště](../role-based-access-control/built-in-roles.md#storage-account-contributor) do skupiny prostředků, která obsahuje účet úložiště, do kterého se exportují nákladová data.
+- **Zobrazení doporučení pro úsporu nákladů** – cost management čtenářů a cost management přispěvatelé mají ve výchozím nastavení přístup k doporučením pro *zobrazení* nákladů. Přístup k tomuto doporučení na cenu ale vyžaduje přístup k jednotlivým prostředkům. Pokud chcete pracovat na doporučeních založených na ceně, zvažte udělení [role specifické pro danou službu](../role-based-access-control/built-in-roles.md#built-in-role-descriptions) .
 
-## <a name="enterprise-agreement-scopes"></a>Obory smlouvy Enterprise
+## <a name="enterprise-agreement-scopes"></a>Obory smlouva Enterprise
 
-Fakturační účty Enterprise Agreement (EA), také nazývané registrace, mají následující obory:
+Fakturační účty smlouva Enterprise (EA), označované taky jako registrace, mají následující obory:
 
-- [**Fakturační účet** ](../billing/billing-view-all-accounts.md) – představuje smlouvu EA enrollment. Faktury se generují v tomto oboru. Nákup, které nejsou podle použití, jako je například Marketplace a rezervace, jsou k dispozici pouze v tomto oboru. Se nenachází v oddělení nebo registračních účtů.
+- [**Fakturační účet**](../billing/billing-view-all-accounts.md) – představuje registraci EA. Faktury se generují v tomto oboru. Nákupy, které nejsou založené na využití, jako je například Marketplace a rezervace, jsou k dispozici pouze v tomto oboru. Nejsou reprezentovány v odděleních nebo účtech pro registraci.
 
-    Typ prostředku: `Microsoft.Billing/billingAccounts (accountType = Enrollment)`
+    Typ prostředku:`Microsoft.Billing/billingAccounts (accountType = Enrollment)`
 - **Oddělení** – volitelné seskupení registračních účtů.
 
-    Typ prostředku: `Billing/billingAccounts/departments`
+    Typ prostředku:`Billing/billingAccounts/departments`
 
-- **Registrace účtu** – představuje jeden účet vlastníka. Nepodporuje udělování přístupu k více lidí.
+- **Účet pro zápis** – představuje jednoho vlastníka účtu. Nepodporuje udělení přístupu více lidem.
 
-    Typ prostředku: `Microsoft.Billing/billingAccounts/enrollmentAccounts`
+    Typ prostředku:`Microsoft.Billing/billingAccounts/enrollmentAccounts`
 
-I když obory zásad správného řízení je vázána na jednom adresáři, nejsou fakturační obory EA. Fakturační účet EA může mít předplatné do libovolného počtu adresářů služby Azure AD.
+I když jsou rozsahy zásad správného řízení vázané na jeden adresář, fakturační obory EA nejsou. Fakturační účet EA může mít předplatné v jakémkoli počtu adresářů Azure AD.
 
 Fakturační obory EA podporují následující role:
 
-- **Podnikový správce** – můžete spravovat fakturační účet nastavení a přístup, můžete zobrazit náklady a můžete spravovat náklady na konfiguraci. Například s nižším rozpočtem a vyexportuje. Ve funkci, EA fakturace oboru je stejný jako [náklady na správu Přispěvatel Azure RBAC role](../role-based-access-control/built-in-roles.md#cost-management-contributor).
-- **Organizace uživatele jen pro čtení** – můžete zobrazit nastavení fakturační účet, datům služby cost a náklady na konfiguraci. Například s nižším rozpočtem a vyexportuje. Ve funkci, EA fakturace oboru je stejné jako [náklady na správu čtečky Azure RBAC role](../role-based-access-control/built-in-roles.md#cost-management-reader).
-- **Správce oddělení** – můžete spravovat nastavení oddělení, jako je například nákladové středisko, můžete přístup, zobrazit náklady a spravovat náklady na konfiguraci. Například s nižším rozpočtem a vyexportuje.  **DA zobrazit náklady** fakturace nastavení účtu musí být povoleno pro oddělení správci a uživatelé jen pro čtení zobrazit náklady. Pokud **DA zobrazit náklady** je zakázaná, oddělení uživatelé nevidí náklady na libovolné úrovni i v případě, že figurují jako vlastníci účtu nebo předplatného.
-- **Oddělení uživatele jen pro čtení** – můžete zobrazit nastavení oddělení, nákladech a náklady na konfiguraci. Například s nižším rozpočtem a vyexportuje. Pokud **DA zobrazit náklady** je zakázaná, oddělení uživatelé nevidí náklady na libovolné úrovni i v případě, že figurují jako vlastníci účtu nebo předplatného.
-- **Vlastník účtu** – můžete spravovat nastavení registrace účtu (například nákladové středisko), zobrazit náklady a spravovat náklady na konfiguraci (například rozpočet a libovolný typ exporty) pro účet pro zápis. **AO zobrazit náklady** fakturace nastavení účtu musí být povolena pro RBAC uživatelů a vlastníků účtu chcete zobrazit náklady.
+- **Enterprise Admin** – může spravovat nastavení fakturačního účtu a přístup, může zobrazit všechny náklady a může spravovat konfiguraci nákladů. Například rozpočty a exporty. V rámci funkce je obor fakturace EA stejný jako [cost management role Azure RBAC přispěvatele](../role-based-access-control/built-in-roles.md#cost-management-contributor).
+- **Uživatel jen pro čtení** – může zobrazit nastavení fakturačního účtu, nákladová data a konfiguraci nákladů. Například rozpočty a exporty. V rámci funkce je obor fakturace EA stejný jako [role Azure RBAC čtecího zařízení cost management Reader](../role-based-access-control/built-in-roles.md#cost-management-reader).
+- **Správce oddělení** – může spravovat nastavení oddělení, například nákladové středisko, může získat přístup, Zobrazit všechny náklady a spravovat konfiguraci nákladů. Například rozpočty a exporty.  Pro správce oddělení a pro uživatele s oprávněním jen pro čtení, aby viděli náklady, musí být nastavení fakturačního účtu pro **zobrazení da** zapnuté. Pokud jsou **poplatky za zobrazení da** zakázané, uživatelé oddělení neuvidí náklady na jakékoli úrovni, i když se jedná o účet nebo vlastníka předplatného.
+- **Uživatel jen pro čtení oddělení** – může zobrazit nastavení oddělení, nákladová data a konfiguraci nákladů. Například rozpočty a exporty. Pokud jsou **poplatky za zobrazení da** zakázané, uživatelé oddělení neuvidí náklady na jakékoli úrovni, i když se jedná o účet nebo vlastníka předplatného.
+- **Vlastník účtu** – může spravovat nastavení účtu pro zápis (například nákladové centrum), Zobrazit všechny náklady a spravovat konfiguraci nákladů (jako jsou rozpočty a exporty) pro účet registrace. Pro vlastníky účtů a uživatele RBAC se musí povolit nastavení fakturačního účtu pro **zobrazení Ao** , aby viděli náklady.
 
-EA fakturační účet uživatelé nemají přímý přístup k faktury. Faktury jsou k dispozici ze svazku externí licencování systému.
+Uživatelé fakturačního účtu EA nemají přímý přístup k fakturám. Faktury jsou dostupné z externího multilicenčního systému.
 
-Předplatná Azure jsou vnořené pod registračních účtů. Fakturace uživatelé mají přístup k datům služby cost pro předplatné a skupiny prostředků, které jsou v jejich příslušných oborech. Nemají přístup k zobrazit nebo spravovat prostředky na webu Azure Portal. Fakturace uživatelé mohou zobrazit náklady tak, že přejdete do **Správa nákladů a fakturace** v portálu Azure seznam služeb. Potom se můžete filtrovat náklady na konkrétní předplatné a skupiny prostředků, které potřebují k vytvoření sestavy.
+Předplatná Azure jsou vnořená v rámci registračních účtů. Uživatelé fakturace mají přístup k nákladům na předplatná a skupiny prostředků, které jsou v příslušných oborech. Nemají přístup pro zobrazení nebo správu prostředků v Azure Portal. Uživatelé fakturace můžou zobrazit náklady tím, že v seznamu Azure Portal služby přejdou na **cost management + fakturace** . Pak mohou filtrovat náklady na konkrétní předplatná a skupiny prostředků, které potřebují k sestavování.
 
-Fakturace uživatelé nemají přístup ke skupinám pro správu, protože není explicitně spadají pod konkrétní fakturační účet. Musí být udělen přístup ke skupinám pro správu explicitně. Souhrnné náklady ze všech vnořených předplatná skupin pro správu. Nicméně pouze patří mezi ně nákupy na základě využití. Patří mezi ně nemusíte nákupy například rezervace a nabídky na webu Marketplace třetích stran. Chcete-li zobrazit tyto náklady, použijte fakturačnímu účtu EA.
+Uživatelé fakturace nemají přístup ke skupinám pro správu, protože nespadají explicitně do konkrétního fakturačního účtu. Přístup ke skupinám pro správu musí být udělen explicitně. Skupiny pro správu mají za následek Souhrnné náklady ze všech vnořených předplatných. Zahrnují však pouze nákupy na základě využití. Nezahrnují nákupy, jako jsou rezervace a nabídky na webu Marketplace třetích stran. Pokud si chcete tyto náklady zobrazit, použijte fakturační účet EA.
 
-## <a name="individual-agreement-scopes"></a>Obory jednotlivých smlouvy
+## <a name="individual-agreement-scopes"></a>Jednotlivé obory smluv
 
-Předplatná Azure vytvořená z jednotlivých nabídek, jako jsou typy s průběžnými platbami a související jako bezplatnou zkušební verzi a nabízí pro vývoj/testování, nemáte výslovného oboru fakturační účet. Místo toho každé předplatné má vlastník účtu nebo správce účtu, jako je vlastník účtu EA.
+Předplatná Azure vytvořená z jednotlivých nabídek, jako jsou průběžné platby, a související typy, jako jsou bezplatné zkušební verze a nabídky pro vývoj a testování, nemají explicitní obor fakturačního účtu. U každého předplatného má například vlastníka účtu nebo správce účtu, jako je třeba vlastník účtu EA.
 
-- [**Fakturační účet** ](../billing/billing-view-all-accounts.md) – představuje jeden účet vlastníka pro jeden nebo více předplatných Azure. Je v současné době nepodporuje udělování přístupu k více lidí nebo přístup k zobrazení souhrnné náklady.
+- [**Fakturační účet**](../billing/billing-view-all-accounts.md) – představuje jednoho vlastníka účtu pro jedno nebo více předplatných Azure. V současné době nepodporuje udělení přístupu více lidem nebo přístup k agregovaným zobrazením nákladů.
 
-    Typ prostředku: Neuvedeno
+    Typ prostředku: Nelze použít
 
-Správci účtu samostatného předplatného Azure můžete zobrazit a spravovat fakturačních dat, jako je například faktury a platby, z [centra účtů Azure](https://account.azure.com/subscriptions). Nemůže však zobrazit datům služby cost nebo spravovat prostředky na webu Azure Portal. K udělení přístupu k účtu správce, používání rolí správy nákladů, již bylo zmíněno dříve.
+Jednotlivé účty pro správu předplatného Azure můžou z [centrum účtů Azure](https://account.azure.com/subscriptions)zobrazovat a spravovat fakturační data, jako jsou faktury a platby. Nemůžou ale zobrazovat nákladová data ani spravovat prostředky v Azure Portal. Pokud chcete udělit přístup správci účtu, použijte výše zmíněné role Cost Management.
 
-Na rozdíl od EA můžete předplatné Azure účtu správci uvidí jejich faktury na webu Azure Portal. Uvědomte si, že náklady na správu Čtenář a Přispěvatel náklady na správu role neposkytují přístup k faktury. Další informace najdete v tématu [jak udělit přístup na fakturách](../billing/billing-manage-access.md##give-read-only-access-to-billing).
+Na rozdíl od EA můžou jednotliví správci účtů předplatného Azure vidět své faktury v Azure Portal. Mějte na paměti, že Cost Management čtenář a Cost Management role přispěvatele neposkytují přístup k fakturám. Další informace najdete v tématu [jak udělit přístup k fakturám](../billing/billing-manage-access.md##give-read-only-access-to-billing).
 
-## <a name="microsoft-customer-agreement-scopes"></a>Obory smlouvy zákazníka se společností Microsoft
+## <a name="microsoft-customer-agreement-scopes"></a>Obory zákaznické smlouvy Microsoftu
 
-Smlouvy zákazníka se společností Microsoft fakturační účty mají následující obory:
+Fakturační účty Microsoft Customer Agreement mají tyto rozsahy:
 
-- **Fakturační účet** – představuje zákaznické smlouvy pro více produktů a služeb Microsoftu. Zákaznické smlouvy fakturační účty nejsou funkčně stejný jako Zaregistrovaných smluv Enterprise. Zaregistrovaných smluv Enterprise jsou lépe zarovnané s fakturační profily.
+- **Fakturační účet** – představuje zákaznickou smlouvu o několika produktech a službách společnosti Microsoft. Fakturační účty zákaznických smluv nejsou funkčně stejné jako registrace EA. Registrace EA jsou podrobněji zarovnané na profily fakturace.
 
-    Typ prostředku: `Microsoft.Billing/billingAccounts (accountType = Organization)`
+    Typ prostředku:`Microsoft.Billing/billingAccounts (accountType = Organization)`
 
-- **Fakturační profil** – definuje odběry, které jsou součástí faktury. Fakturace profily jsou ekvivalentní smlouvu EA enrollment, protože to je obor, který faktury se generují. Podobně nákup, které nejsou podle využití (například Marketplace a rezervace) jsou k dispozici pouze v tomto oboru. Nejsou zahrnuty v části faktury.
+- **Fakturační profil** – definuje předplatná, která jsou zahrnutá na faktuře. Fakturační profily jsou funkční ekvivalentem registrace EA, protože se jedná o obor, ve kterém se faktury generují. Podobně nákupy, které nejsou založené na využití (například Marketplace a rezervace), jsou k dispozici pouze v tomto oboru. Nejsou zahrnuté v sekcích faktury.
 
-    Typ prostředku: `Microsoft.Billing/billingAccounts/billingProfiles`
+    Typ prostředku:`Microsoft.Billing/billingAccounts/billingProfiles`
 
-- **Část faktury** – představuje skupinu předplatná v faktura nebo fakturační profil. Části faktury jsou podobné oddělení – několik lidí může mít přístup k oddílu faktury.
+- **Oddíl Invoice** – představuje skupinu předplatných v rámci faktury nebo fakturačního profilu. Části faktury jsou jako oddělení – více lidí může mít přístup k části faktury.
 
-    Typ prostředku: `Microsoft.Billing/billingAccounts/invoiceSections`
+    Typ prostředku:`Microsoft.Billing/billingAccounts/invoiceSections`
 
-Na rozdíl od EA fakturace obory, smlouvy zákazníka fakturační účty _jsou_ vázán na jednom adresáři a nemůže mít odběry napříč více adresářů Azure AD.
+Na rozdíl od fakturačních oborů EA _jsou_ fakturační účty zákaznických smluv vázány na jeden adresář a nemohou mít odběry v rámci více adresářů služby Azure AD.
 
-Fakturační obory smlouvy zákazníka podporují následující role:
+Obory fakturace zákaznických smluv podporují tyto role:
 
-- **Vlastník** – můžete spravovat nastavení fakturace a přístup, zobrazit náklady a náklady na konfiguraci můžete spravovat. Například s nižším rozpočtem a vyexportuje. Ve funkci této smlouvy zákazníka fakturace oboru je stejné jako [náklady na správu Přispěvatel Azure RBAC role](../role-based-access-control/built-in-roles.md#cost-management-contributor).
-- **Přispěvatel** – můžete spravovat nastavení fakturace kromě přístupu, zobrazit náklady a náklady na konfiguraci můžete spravovat. Například s nižším rozpočtem a vyexportuje. Ve funkci této smlouvy zákazníka fakturace oboru je stejné jako [náklady na správu Přispěvatel Azure RBAC role](../role-based-access-control/built-in-roles.md#cost-management-contributor).
-- **Čtečka** – můžete zobrazit fakturační nastavení, nákladech a konfigurace náklady. Například s nižším rozpočtem a vyexportuje. Ve funkci této smlouvy zákazníka fakturace oboru je stejné jako [náklady na správu čtečky Azure RBAC role](../role-based-access-control/built-in-roles.md#cost-management-reader).
-- **Správce faktur** – můžete zobrazit a zaplatit faktury a můžete zobrazit náklady dat a konfigurace. Například s nižším rozpočtem a vyexportuje. Ve funkci této smlouvy zákazníka fakturace oboru je stejné jako [náklady na správu čtečky Azure RBAC role](../role-based-access-control/built-in-roles.md#cost-management-reader).
-- **Předplatné Azure creator** – můžete vytvářet předplatná Azure, zobrazit náklady a náklady na konfiguraci můžete spravovat. Například s nižším rozpočtem a vyexportuje. Tento obor fakturační smlouvy zákazníka ve funkci, je stejný jako role vlastníka účtu EA registrace.
+- **Owner** – může spravovat nastavení fakturace a přístup, Zobrazit všechny náklady a spravovat konfiguraci nákladů. Například rozpočty a exporty. V rámci funkce je tento obor fakturace smlouvy o zákaznících stejný jako [role Azure RBAC přispěvatele cost management](../role-based-access-control/built-in-roles.md#cost-management-contributor).
+- **Přispěvatel** – může spravovat nastavení fakturace s výjimkou přístupu, Zobrazit všechny náklady a spravovat konfiguraci nákladů. Například rozpočty a exporty. V rámci funkce je tento obor fakturace smlouvy o zákaznících stejný jako [role Azure RBAC přispěvatele cost management](../role-based-access-control/built-in-roles.md#cost-management-contributor).
+- **Čtenář** – může zobrazit nastavení fakturace, nákladová data a konfiguraci nákladů. Například rozpočty a exporty. Ve funkci je tento obor fakturace smlouvy o zákaznících stejný jako [role Azure RBAC pro čtení cost management](../role-based-access-control/built-in-roles.md#cost-management-reader).
+- **Správce fakturace** – může zobrazovat a platit faktury a může si zobrazit data a konfiguraci nákladů. Například rozpočty a exporty. Ve funkci je tento obor fakturace smlouvy o zákaznících stejný jako [role Azure RBAC pro čtení cost management](../role-based-access-control/built-in-roles.md#cost-management-reader).
+- **Azure Subscription Creator** – může vytvářet předplatná Azure, zobrazovat náklady a spravovat konfiguraci nákladů. Například rozpočty a exporty. Ve funkci je tento obor fakturace smlouvy o zákaznících stejný jako role vlastníka účtu registrace EA.
 
-Předplatná Azure jsou vnořené v části faktury, třeba jak se v rámci smlouvy EA registračních účtů. Fakturace uživatelé mají přístup k datům služby cost pro předplatná a skupiny prostředků, které jsou v jejich příslušných oborech. Však nemají přístup k zobrazit nebo spravovat prostředky na webu Azure Portal. Fakturace uživatelé mohou zobrazit náklady tak, že přejdete do **Správa nákladů a fakturace** v portálu Azure seznam služeb. Vyfiltrujte náklady na konkrétní předplatné a skupiny prostředků, které potřebují k vytvoření sestavy.
+Předplatná Azure jsou vnořená v oddílech faktury, například v rámci účtů registrace EA. Uživatelé fakturace mají přístup k nákladům na předplatná a skupiny prostředků, které jsou v příslušných oborech. Nemají ale přístup k zobrazení nebo správě prostředků v Azure Portal. Uživatelé fakturace můžou zobrazit náklady tím, že v seznamu Azure Portal služby přejdou na **cost management + fakturace** . Pak vyfiltrujte náklady na konkrétní předplatná a skupiny prostředků, které potřebují k nahlášení.
 
-Fakturace uživatelé nemají přístup ke skupinám pro správu, protože není explicitně spadají pod fakturační účet. Ale pokud skupin pro správu jsou povolené pro organizaci, všechny náklady na předplatné se souhrnné fakturační účet a skupinu root management protože obě jsou omezeny na jeden adresář. Skupiny pro správu obsahovat pouze nákupy, které jsou založeny na využití. Nákup rezervace a nabídky na webu Marketplace třetích stran nejsou součástí skupiny pro správu. Fakturační účet a kořenové skupině pro správu tedy může hlásit různé součty. Chcete-li zobrazit tyto náklady, použijte fakturační účet nebo příslušné fakturační profil.
+Uživatelé fakturace nemají přístup ke skupinám pro správu, protože nespadají explicitně do fakturačního účtu. Pokud jsou však pro organizaci povoleny skupiny pro správu, budou všechny náklady na předplatné zahrnuty do fakturačního účtu a do kořenové skupiny pro správu, protože jsou omezeny na jeden adresář. Skupiny pro správu zahrnují jenom nákupy, které jsou založené na využívání. Nákupy jako rezervace a nabídky na webu Marketplace třetích stran nejsou zahrnuté do skupin pro správu. Proto fakturační účet a skupina pro správu root můžou nahlásit různé součty. Chcete-li tyto náklady zobrazit, použijte fakturační účet nebo příslušný Fakturační profil.
 
-## <a name="cloud-solution-provider-csp-scopes"></a>Obory cloud Solution Provider (CSP)
+## <a name="aws-scopes"></a>AWS rozsahy
 
-Partnery cloud Solution Provider (CSP) nejsou podporovány ve službě Cost Management ještě dnes. Místo toho můžete použít [partnerského centra](https://docs.microsoft.com/azure/cloud-solution-provider/overview/partner-center-overview).
+Po dokončení integrace AWS se podívejte na téma [instalace a konfigurace integrace AWS](aws-integration-set-up-configure.md). K dispozici jsou následující obory:
 
-## <a name="switch-between-scopes-in-cost-management"></a>Přepínání mezi obory ve službě Cost Management
+- **Externí fakturační účet** – představuje zákaznickou smlouvu s dodavatelem třetí strany. To se podobá fakturačnímu účtu EA.
 
-Zahrnout všechna zobrazení Cost Management na webu Azure Portal **oboru** obranné výběr v levé horní části zobrazení. Můžete rychle změnit obor. Klikněte na tlačítko **oboru** obranné otevřete výběr oboru. Zobrazuje fakturační účty, skupiny pro správu kořenového a pokud je jakékoliv předplatné, které nejsou vnořené pod skupinu root management. Chcete-li vybrat rozsah, klikněte na pozadí požadovanou položku zvýrazněte a pak klikněte na tlačítko **vyberte** v dolní části. Přejít do vnořené obory, jako jsou skupiny prostředků v předplatném, klikněte na odkaz název oboru. Pokud chcete vybrat nadřazený obor na libovolné úrovni vnořené, klikněte na tlačítko **tuto možnost vyberte, &lt;oboru&gt;**  v horní části Výběr oboru.
+    Typ prostředku:`Microsoft.CostManagement/externalBillingAccounts`
+    
+- **Externí předplatné** – představuje provozní účet zákazníka s dodavatelem jiného výrobce. To je podobné jako u předplatného Azure.
 
-## <a name="identify-the-resource-id-for-a-scope"></a>Určení ID prostředku pro obor
+    Typ prostředku:`Microsoft.CostManagement/externalSubscriptions`
 
-Při práci s rozhraními API služby Cost Management je vědět, že obor je velmi důležité. Tyto informace použijte k vytvoření oboru správný identifikátor URI pro rozhraní API pro správu nákladů.
+## <a name="cloud-solution-provider-csp-scopes"></a>Obory pro Cloud Solution Provider (CSP)
 
-### <a name="billing-accounts"></a>Účty fakturace
+Partneři poskytovatele Cloud Solution Provider (CSP) se v Cost Management ještě nepodporují. Místo toho můžete použít [Partnerské centrum](https://docs.microsoft.com/azure/cloud-solution-provider/overview/partner-center-overview).
 
-1. Otevřete na webu Azure portal a potom přejděte k **Správa nákladů a fakturace** v seznamu služeb.
-2. Vyberte **vlastnosti** v nabídce fakturační účet.
+## <a name="switch-between-scopes-in-cost-management"></a>Přepínání mezi obory v Cost Management
+
+Všechna zobrazení Cost Management v Azure Portal zahrnují výběr **oboru** v levém horním rohu zobrazení. Použijte ho k rychlé změně oboru. Kliknutím na ikonu **Rozsah** otevřete okno Výběr oboru. Zobrazuje fakturační účty, kořenovou skupinu pro správu a všechna předplatná, která nejsou vnořená do kořenové skupiny pro správu. Pokud chcete vybrat rozsah, zvýrazněte ho kliknutím na pozadí a potom v dolní části klikněte na **Vybrat** . Pokud chcete přejít na vnořené obory, jako jsou skupiny prostředků v rámci předplatného, klikněte na odkaz název oboru. Pokud chcete vybrat nadřazený obor na jakékoli vnořené úrovni, klikněte v horní části výběru oboru na **&lt;vybrat tento obor&gt;** .
+
+## <a name="identify-the-resource-id-for-a-scope"></a>Identifikace ID prostředku pro obor
+
+Při práci s rozhraními API Cost Management je důležité znát obor. Následující informace použijte k sestavení správného identifikátoru URI oboru pro rozhraní Cost Management API.
+
+### <a name="billing-accounts"></a>Fakturační účty
+
+1. Otevřete Azure Portal a pak v seznamu služeb přejděte na **cost management + fakturace** .
+2. V nabídce fakturační účet vyberte **vlastnosti** .
 3. Zkopírujte ID fakturačního účtu.
-4. Váš obor je: `"/providers/Microsoft.Billing/billingAccounts/{billingAccountId}"`
+4. Váš rozsah je:`"/providers/Microsoft.Billing/billingAccounts/{billingAccountId}"`
 
 ### <a name="billing-profiles"></a>Profily fakturace
 
-1. Otevřete na webu Azure portal a potom přejděte k **Správa nákladů a fakturace** v seznamu služeb.
-2. Vyberte **fakturace profily** v nabídce fakturační účet.
-3. Klikněte na název požadovaného fakturační profil.
-4. Vyberte **vlastnosti** v nabídce fakturační profil.
-5. Zkopírujte fakturační účet a fakturace ID profilu.
-6. Váš obor je: `"/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}"`
+1. Otevřete Azure Portal a pak v seznamu služeb přejděte na **cost management + fakturace** .
+2. V nabídce fakturační účet vyberte **profily fakturace** .
+3. Klikněte na název požadovaného fakturačního profilu.
+4. V nabídce Profil fakturace vyberte **vlastnosti** .
+5. Zkopírujte fakturační účet a ID fakturačního profilu.
+6. Váš rozsah je:`"/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}"`
 
-### <a name="invoice-sections"></a>Části faktury
+### <a name="invoice-sections"></a>Oddíly faktury
 
-1. Otevřete na webu Azure portal a potom přejděte k **Správa nákladů a fakturace** v seznamu služeb.
-2. Vyberte **fakturovat oddíly** v nabídce fakturační účet.
-3. Klikněte na název požadovaného faktury oddílu.
-4. Vyberte **vlastnosti** v nabídce části faktury.
-5. Zkopírujte fakturační účet a fakturace části identifikátory.
-6. Váš obor je: `"/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/invoiceSections/{invoiceSectionId}"`
+1. Otevřete Azure Portal a pak v seznamu služeb přejděte na **cost management + fakturace** .
+2. V nabídce účet pro fakturaci vyberte **oddíly faktury** .
+3. Klikněte na název oddílu požadované faktury.
+4. V nabídce oddíl faktury vyberte **vlastnosti** .
+5. Zkopírujte ID fakturačního účtu a části faktury.
+6. Váš rozsah je:`"/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/invoiceSections/{invoiceSectionId}"`
 
 ### <a name="ea-departments"></a>Oddělení EA
 
-1. Otevřete na webu Azure portal a potom přejděte k **Správa nákladů a fakturace** v seznamu služeb.
-2. Vyberte **oddělení** v nabídce fakturační účet.
+1. Otevřete Azure Portal a pak v seznamu služeb přejděte na **cost management + fakturace** .
+2. V nabídce fakturační účet vyberte **oddělení** .
 3. Klikněte na název požadovaného oddělení.
-4. Vyberte **vlastnosti** v nabídce oddělení.
-5. Zkopírujte ID fakturační účet a oddělení.
-6. Váš obor je: `"/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}"`
+4. V nabídce oddělení vyberte **vlastnosti** .
+5. Zkopírujte fakturační účet a ID oddělení.
+6. Váš rozsah je:`"/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}"`
 
-### <a name="ea-enrollment-account"></a>Registrace účtu EA
+### <a name="ea-enrollment-account"></a>Účet pro registraci EA
 
-1. Otevřete na webu Azure portal a přejděte do **Správa nákladů a fakturace** v seznamu služeb.
-2. Vyberte **registračních účtů** v nabídce fakturační účet.
-3. Klikněte na název požadovaného registrace účtu.
-4. Vyberte **vlastnosti** v nabídce účtu pro zápis.
-5. Zkopírujte fakturační účet a ID registrace účtu.
-6. Váš obor je: `"/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}"`
+1. Otevřete Azure Portal a v seznamu služeb přejděte na **cost management + fakturace** .
+2. V nabídce fakturační účet vyberte **účty pro zápis** .
+3. Klikněte na název požadovaného účtu pro zápis.
+4. V nabídce účet pro zápis vyberte **vlastnosti** .
+5. Zkopírujte účet pro fakturaci a ID účtu pro zápis.
+6. Váš rozsah je:`"/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}"`
 
 ### <a name="management-group"></a>Skupina pro správu
 
-1. Otevřete na webu Azure portal a přejděte do **skupin pro správu** v seznamu služeb.
-2. Přejděte ke skupině pro správu.
+1. Otevřete Azure Portal a v seznamu služeb přejděte do **skupiny pro správu** .
+2. Přejděte do požadované skupiny pro správu.
 3. Zkopírujte ID skupiny pro správu z tabulky.
-4. Váš obor je: `"/providers/Microsoft.Management/managementGroups/{id}"`
+4. Váš rozsah je:`"/providers/Microsoft.Management/managementGroups/{id}"`
 
-### <a name="subscription"></a>Předplatné
+### <a name="subscription"></a>Subscription
 
-1. Otevřete na webu Azure portal a přejděte do **předplatná** v seznamu služeb.
+1. Otevřete Azure Portal a v seznamu služeb  přejděte na předplatná.
 2. Zkopírujte ID předplatného z tabulky.
-3. Váš obor je: `"/subscriptions/{id}"`
+3. Váš rozsah je:`"/subscriptions/{id}"`
 
 ### <a name="resource-groups"></a>Skupiny prostředků
 
-1. Otevřete na webu Azure portal a přejděte do **skupiny prostředků** v seznamu služeb.
-2. Klikněte na název skupiny pro požadovaný prostředek.
-3. Vyberte **vlastnosti** v nabídce skupiny prostředků.
+1. Otevřete Azure Portal a v seznamu služeb přejděte do **skupin prostředků** .
+2. Klikněte na název požadované skupiny prostředků.
+3. V nabídce skupina prostředků vyberte **vlastnosti** .
 4. Zkopírujte hodnotu pole ID prostředku.
-5. Váš obor je: `"/subscriptions/{id}/resourceGroups/{name}"`
+5. Váš rozsah je:`"/subscriptions/{id}/resourceGroups/{name}"`
 
-Služba Cost Management je aktuálně podporován ve [Azure globální](https://management.azure.com) a [Azure Government](https://management.usgovcloudapi.net). Další informace o službě Azure Government najdete v tématu [koncových bodů rozhraní API Government a Azure globální](../azure-government/documentation-government-developer-guide.md#endpoint-mapping) _._
+Cost Management se aktuálně podporuje v [globálním](https://management.azure.com) a [Azure Government](https://management.usgovcloudapi.net)Azure. Další informace o Azure Government najdete v tématu [koncové body Azure Global a oficiálních rozhraní API](../azure-government/documentation-government-developer-guide.md#endpoint-mapping) _._
 
 ## <a name="next-steps"></a>Další postup
 

@@ -1,13 +1,13 @@
 ---
-title: Pokyny pro omezení spekulativního spouštění v Azure | Dokumentace Microsoftu
-description: Pokyny pro zmírnění chyby zabezpečení na straně kanálu spekulativního spouštění v Azure.
+title: Pokyny pro zmírnění spekulativního spuštění v Azure | Microsoft Docs
+description: Pokyny pro zmírnění spekulativních ohrožení zabezpečení na straně stran v Azure.
 services: cloud-services
 documentationcenter: ''
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
-keywords: chyby zabezpečení Spectre, meltdown, specter
+keywords: Spectre, Meltdown, Specter
 ms.service: cloud-services
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
@@ -15,13 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/21/2018
 ms.author: cynthn
-ms.openlocfilehash: 3382907cf3267bc5a326daca2131829e82e76371
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e669b3923a2019b071ae9abe2b78db299a24f572
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60613638"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68360670"
 ---
-# <a name="guidance-for-mitigating-speculative-execution-side-channel-vulnerabilities-in-azure"></a>Pokyny pro zmírnění chyby zabezpečení na straně kanálu spekulativního spouštění v Azure
+# <a name="guidance-for-mitigating-speculative-execution-side-channel-vulnerabilities-in-azure"></a>Pokyny pro zmírnění spekulativních ohrožení zabezpečení na straně stran v Azure
 
 [!INCLUDE [virtual-machines-common-mitigate-se](../../includes/virtual-machines-common-mitigate-se.md)]

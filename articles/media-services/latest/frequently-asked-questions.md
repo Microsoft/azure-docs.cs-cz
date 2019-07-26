@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 06/21/2019
 ms.author: juliako
-ms.openlocfilehash: 766208c01f27d2024025b7a202bc3724b4fc9fff
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: 28b9c8f343437c20e277d2f3ba53767afa45a5c2
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68311841"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68501256"
 ---
 # <a name="media-services-v3-frequently-asked-questions"></a>Nejčastější dotazy k Media Services V3
 
@@ -111,28 +111,6 @@ Zákazníci často investovali do serverové farmy licence buď ve své vlastní
 * Služba tokenů zabezpečení je potřeba vystavovat tokeny, které jsou přijatelné a dá ověřit pomocí licence serverové farmy. Servery licence Widevine poskytované Axinom například vyžadovat konkrétní token JWT, který obsahuje zprávu o oprávnění. Proto budete muset mít služby STS pro vydávání takový token JWT. 
 * Už je potřeba nakonfigurovat službu doručování licencí Media Services. Je potřeba zadat licence získání adresy URL (PlayReady, Widevine a FairPlay) při konfiguraci ContentKeyPolicies.
 
-### <a name="what-if-i-want-to-use-a-custom-sts"></a>Co když chci používat vlastní službu STS?
-
-Zákazník může rozhodnout použít vlastní službu STS poskytnout tokeny Jwt. Mezi důvody patří:
-
-* Zprostředkovatel identity využívaných zákazníkem nepodporuje službu tokenů zabezpečení. V takovém případě vlastních služeb STS, může být možnost.
-* Zákazník může být nutné flexibilní nebo užší ovládací prvek integrovat službu tokenů zabezpečení zákazníka odběratele fakturačním systémem. Například operátor MVPD mohou nabízet více balíčků OTT odběratele, jako je například premium, basic nebo sportu. Operátor může být vhodné tak, aby odpovídaly deklarací identity v tokenu s balíčkem předplatitele, tak, že jsou k dispozici pouze obsah v určitém balíčku. V takovém případě vlastních služeb STS nabízí potřebné flexibility a kontroly.
-
-Při použití vlastních služeb STS musí udělali dvě změny:
-
-* Když nakonfigurujete službu doručování licencí pro určitý prostředek, musíte zadat klíč zabezpečení použijí k ověření pomocí vlastních služeb STS místo platnost aktuálního klíče ze služby Azure AD. (Další podrobnosti podle.) 
-* Při vygenerování tokenu JTW klíč zabezpečení je zadán místo aktuální X509 privátní klíč certifikátu ve službě Azure AD.
-
-Existují dva typy bezpečnostních klíčů:
-
-* Symetrický klíč: Stejný klíč se používá ke generování a ověření tokenu JWT.
-* Asymetrický klíč: V certifikátu x509 se pomocí privátního klíče pro šifrování, vygenerování tokenu JWT a s veřejným klíčem k ověření tokenu používá pár klíčů veřejného privátního klíče.
-
-> [!NOTE]
-> Pokud používáte rozhraní .NET Framework a jazyka C# jako svou vývojovou platformu, X509 certifikát používaný pro asymetrické bezpečnostní klíč musí mít klíč délku aspoň 2048. Jde o požadavek třídy System.IdentityModel.Tokens.X509AsymmetricSecurityKey v rozhraní .NET Framework. V opačném případě je vyvolána následující výjimka:
-> 
-> IDX10630: Hodnota System. IdentityModel. Tokens. X509AsymmetricSecurityKey pro podpis nemůže být menší než 2048 bitů.
-
 ## <a name="media-services-v2-vs-v3"></a>Media Services V2 vs V3 
 
 ### <a name="can-i-use-the-azure-portal-to-manage-v3-resources"></a>Můžu Azure Portal použít ke správě prostředků V3?
@@ -149,6 +127,6 @@ Další informace najdete v tématu [migrace na Media Services V3](migrate-from-
 
 Doporučuje se použít šifrování úložiště na straně serveru (což je ve výchozím nastavení zapnuté). Další informace najdete v tématu [šifrování služby Azure Storage pro](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)neaktivní neaktivní data.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 [Přehled Media Services V3](media-services-overview.md)

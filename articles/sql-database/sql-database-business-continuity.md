@@ -13,12 +13,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 06/25/2019
-ms.openlocfilehash: 26b31781ae0056999eb222981b2eea3eb4595041
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: 361613c52c00b7a7e468eccbb52bf113b6adb434
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68228051"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68444516"
 ---
 # <a name="overview-of-business-continuity-with-azure-sql-database"></a>Přehled provozní kontinuity se službou Azure SQL Database
 
@@ -58,7 +58,23 @@ Automatické zálohování databáze můžete použít k obnovení databáze k u
 
 Pokud není maximální podporovaná doba uchovávání záloh pro obnovení k určitému bodu v čase (PITR) dostatečná pro vaši aplikaci, můžete ji prodloužit konfigurací zásad pro dlouhodobé uchovávání (LTR) pro databáze. Další informace najdete v tématu [dlouhodobé uchovávání záloh](sql-database-long-term-retention.md).
 
-## <a name="recover-a-database-to-another-azure-region"></a>Obnovení databáze do jiné oblasti Azure
+## <a name="compare-geo-replication-with-failover-groups"></a>Porovnání geografické replikace se skupinami převzetí služeb při selhání
+
+[Skupiny s automatickým převzetím služeb při selhání](sql-database-auto-failover-group.md#auto-failover-group-terminology-and-capabilities) zjednodušují nasazení a používání [geografické replikace](sql-database-active-geo-replication.md) a přidávají další možnosti, jak je popsáno v následující tabulce:
+
+|                                              | Geografická replikace | Skupiny převzetí služeb při selhání  |
+|:---------------------------------------------| :-------------- | :----------------|
+| Automatické převzetí služeb při selhání                           |     Ne          |      Ano         |
+| Převzetí služeb při selhání více databází současně  |     Ne          |      Ano         |
+| Po převzetí služeb při selhání aktualizovat připojovací řetězec      |     Ano         |      Ne          |
+| Spravovaná instance je podporovaná.                   |     Ne          |      Ano         |
+| Může být ve stejné oblasti jako primární             |     Ano         |      Ne          |
+| Více replik                            |     Ano         |      Ne          |
+| Podporuje čtení i škálování.                          |     Ano         |      Ano         |
+| &nbsp; | &nbsp; | &nbsp; |
+
+
+## <a name="recover-a-database-to-the-existing-server"></a>Obnovení databáze na existujícím serveru
 
 Přestože je taková situace výjimečná, i u datového centra Azure může dojít k výpadku. Při výpadku dojde k narušení provozu, které může trvat jen několik minut nebo až několik hodin.
 
@@ -70,7 +86,7 @@ Při vývoji plánu provozní kontinuity musíte pochopit maximální přijateln
 
 Různé metody obnovení nabízejí různé úrovně bodu RPO a RTO. Můžete zvolit konkrétní metodu obnovení nebo použít kombinaci metod k dosažení úplného obnovení aplikace. Následující tabulka porovnává RPO a RTO jednotlivých možností obnovení. Skupiny automatického převzetí služeb při selhání zjednodušují nasazení a využití geografické replikace a přidávají další možnosti, jak je popsáno v následující tabulce.
 
-| Metoda obnovení | RTO | OBNOVENÍ |
+| Metoda obnovení | RTO | Cíl bodu obnovení (RPO) |
 | --- | --- | --- | 
 | Geografické obnovení ze geograficky replikovaných záloh | 12 h | 1 h |
 | Skupiny automatického převzetí služeb při selhání | 1 h | 5 s |

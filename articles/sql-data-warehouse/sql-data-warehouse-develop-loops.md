@@ -1,8 +1,8 @@
 ---
-title: Pomocí smyček T-SQL ve službě Azure SQL Data Warehouse | Dokumentace Microsoftu
-description: Tipy pro pomocí smyček T-SQL a pro vývoj řešení pro nahrazení kurzory ve službě Azure SQL Data Warehouse.
+title: Použití smyček T-SQL v Azure SQL Data Warehouse | Microsoft Docs
+description: Tipy pro použití smyček T-SQL a nahrazování kurzorů v Azure SQL Data Warehouse pro vývoj řešení.
 services: sql-data-warehouse
-author: XiaoyuL-Preview
+author: XiaoyuMSFT
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
@@ -10,26 +10,26 @@ ms.subservice: development
 ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: c321bc4e493799a50ada4dd91faf2d2ebdee8aba
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e27edcc1383a235fbdb9513066e69e2f680ea2f9
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65850461"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68479625"
 ---
-# <a name="using-t-sql-loops-in-sql-data-warehouse"></a>Pomocí smyček T-SQL ve službě SQL Data Warehouse
-Tipy pro pomocí smyček T-SQL a pro vývoj řešení pro nahrazení kurzory ve službě Azure SQL Data Warehouse.
+# <a name="using-t-sql-loops-in-sql-data-warehouse"></a>Použití smyček T-SQL v SQL Data Warehouse
+Tipy pro použití smyček T-SQL a nahrazování kurzorů v Azure SQL Data Warehouse pro vývoj řešení.
 
-## <a name="purpose-of-while-loops"></a>Účelem smyček WHILE
+## <a name="purpose-of-while-loops"></a>Účel smyčky WHILe
 
-SQL Data Warehouse podporuje [při](/sql/t-sql/language-elements/while-transact-sql) smyčky pro opakované spuštění výkazu bloků. Tuto smyčku WHILE pokračuje, pokud jsou zadané podmínky nastavena hodnota true, nebo dokud kód konkrétně ukončí smyčku pomocí klíčového slova přerušení. Smyčky jsou užitečné pro nahrazení kurzory definované v kódu SQL. Naštěstí téměř všechny ukazatele, které jsou napsány v SQL kódu mají různé rychloposuv vpřed, jen pro čtení. Proto [a] jsou skvělou alternativou k nahrazení kurzory smyčky.
+SQL Data Warehouse podporuje smyčku [while](/sql/t-sql/language-elements/while-transact-sql) pro opakované provádění bloků příkazů. Tato smyčka WHILe pokračuje, dokud jsou zadané podmínky pravdivé nebo dokud kód konkrétně neukončí smyčku pomocí klíčového slova BREAK. Smyčky jsou užitečné pro nahrazování kurzorů definovaných v kódu SQL. Naštěstí jsou téměř všechny kurzory, které jsou napsány v kódu SQL, určeny pro rychlý posun, jen pro čtení. Proto jsou smyčky [WHILe] skvělou alternativou pro nahrazování kurzorů.
 
-## <a name="replacing-cursors-in-sql-data-warehouse"></a>Nahrazení kurzory ve službě SQL Data Warehouse
-Ale než se nejprve podíváme v hlavní vám by měl položte si otázku: následující otázky: "Měl by tento kurzor být přepsán používání založeným na set operace?." V mnoha případech odpověď je Ano a je často nejlepším řešením. Operace založeným na set často provádí rychleji než metodiky iterativní, řádek po řádku.
+## <a name="replacing-cursors-in-sql-data-warehouse"></a>Nahrazování kurzorů v SQL Data Warehouse
+Před začnete nejprve byste však měli klást následující otázky: "Je možné, že tento kurzor bude přepsán pro použití operací založených na sadě?." V mnoha případech je odpověď ano a často se jedná o nejlepší přístup. Operace založená na sadě často provádí rychlejší zpracování více než iterativního přístupu řádku.
 
-Rychloposuv vpřed jen pro čtení ukazatele lze snadno nahradit uvozuje konstruktor cyklu. Níže je jednoduchý příklad. Tento příklad kódu aktualizuje statistiku pro všechny tabulky v databázi. Pomocí provádí iterace tabulek ve smyčce, každý příkaz spouští v sekvenci.
+Rychlé dopředné kurzory, které jsou jen pro čtení, se dají snadno nahradit konstrukcí smyčky. Následuje jednoduchý příklad. Tento příklad kódu aktualizuje statistiku pro každou tabulku v databázi. Pomocí iterace v tabulkách ve smyčce se každý příkaz provede v pořadí.
 
-Nejprve vytvořte dočasné tabulky obsahující číslo jedinečném řádku použít k identifikaci jednotlivých příkazů:
+Nejdřív vytvořte dočasnou tabulku obsahující číslo jedinečného řádku, které slouží k identifikaci jednotlivých příkazů:
 
 ```
 CREATE TABLE #tbl
@@ -44,7 +44,7 @@ FROM    sys.tables
 ;
 ```
 
-Za druhé inicializujte proměnné potřebná k provedení smyčky:
+Za druhé inicializujte proměnné potřebné k provedení smyčky:
 
 ```
 DECLARE @nbr_statements INT = (SELECT COUNT(*) FROM #tbl)
@@ -52,7 +52,7 @@ DECLARE @nbr_statements INT = (SELECT COUNT(*) FROM #tbl)
 ;
 ```
 
-Nyní ve smyčce příkazy, které spouští jeden po druhém:
+Nyní Projděte přes příkazy, které je spouštějí po jednom v čase:
 
 ```
 WHILE   @i <= @nbr_statements
@@ -63,12 +63,12 @@ BEGIN
 END
 ```
 
-Nakonec vyřaďte dočasné tabulky vytvořené v prvním kroku
+Nakonec vyřaďte dočasnou tabulku vytvořenou v prvním kroku.
 
 ```
 DROP TABLE #tbl;
 ```
 
-## <a name="next-steps"></a>Další postup
-Další tipy pro vývoj najdete v části [přehled vývoje](sql-data-warehouse-overview-develop.md).
+## <a name="next-steps"></a>Další kroky
+Další tipy pro vývoj najdete v tématu [Přehled vývoje](sql-data-warehouse-overview-develop.md).
 

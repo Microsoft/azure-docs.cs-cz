@@ -1,5 +1,5 @@
 ---
-title: Přihlášení na jednu stránku pomocí implicitního toku – Azure Active Directory B2C | Microsoft Docs
+title: Přihlášení na jednu stránku pomocí implicitního toku – Azure Active Directory B2C
 description: Přečtěte si, jak přidat jednostránkové přihlašování pomocí implicitního toku OAuth 2,0 s Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
@@ -7,25 +7,25 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/16/2019
+ms.date: 07/19/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: ade9740d6c5e9edcda4a01c72b94c6f84686447d
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 1196f3b186abcd914c409db06b52654f82f4158b
+ms.sourcegitcommit: b49431b29a53efaa5b82f9be0f8a714f668c38ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68248793"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68377318"
 ---
 # <a name="single-page-sign-in-using-the-oauth-20-implicit-flow-in-azure-active-directory-b2c"></a>Přihlášení na jednu stránku pomocí implicitního toku OAuth 2,0 v Azure Active Directory B2C
 
-Mnoho moderních aplikací má front-end jednostránkové aplikace, který je primárně napsán v JavaScriptu. Často je aplikace napsaná pomocí architektury, jako je například reagují, úhlová nebo Vue. js. Jednostránkové aplikace a další aplikace JavaScriptu, které běží primárně v prohlížeči, mají nějaké další výzvy k ověření:
+Mnohé moderní aplikace mají front-end jednostránkové aplikace, který je napsán primárně v jazyce JavaScript. Často je aplikace napsaná pomocí architektury, jako je například reagují, úhlová nebo Vue. js. Jednostránkové aplikace a další aplikace JavaScriptu, které běží primárně v prohlížeči, mají nějaké další výzvy k ověření:
 
 - Bezpečnostní charakteristiky těchto aplikací se liší od tradičních webových aplikací založených na serveru.
 - Mnoho autorizačních serverů a zprostředkovatelů identity nepodporuje požadavky na sdílení prostředků mezi zdroji (CORS).
 - Přesměrování prohlížeče na celé stránce od aplikace může být náročné na uživatelské prostředí.
 
-Pro podporu těchto aplikací používá Azure Active Directory B2C (Azure AD B2C) implicitní tok OAuth 2,0. Tok udělení implicitního udělení autorizace OAuth 2,0 je popsaný v [části 4,2 specifikace OAuth 2,0](https://tools.ietf.org/html/rfc6749). V implicitním toku aplikace obdrží tokeny přímo z Azure Active Directory (Azure AD) autorizačního koncového bodu bez jakéhokoli serveru Exchange Server to-Server. Veškerá logika ověřování a zpracování relace se provádí úplně v klientovi JavaScript bez dalšího přesměrování stránky.
+Pro podporu těchto aplikací používá Azure Active Directory B2C (Azure AD B2C) implicitní tok OAuth 2,0. Tok udělení implicitního udělení autorizace OAuth 2,0 je popsaný v [části 4,2 specifikace OAuth 2,0](https://tools.ietf.org/html/rfc6749). V implicitním toku aplikace obdrží tokeny přímo z Azure Active Directory (Azure AD) autorizačního koncového bodu bez jakéhokoli serveru Exchange Server to-Server. Veškerá logika ověřování a zpracování relace se provádí zcela v klientovi JavaScriptu buď pomocí přesměrování stránky, nebo pomocí automaticky otevíraného okna.
 
 Azure AD B2C rozšiřuje implicitní tok standardu OAuth 2,0 na více než jednoduché ověřování a autorizaci. Azure AD B2C zavádí [parametr zásad](active-directory-b2c-reference-policies.md). Pomocí parametru zásad můžete pomocí OAuth 2,0 přidat zásady do vaší aplikace, jako je registrace, přihlašování a uživatelské toky správy profilů. V příkladech požadavků HTTP v tomto článku se jako příklad používá **fabrikamb2c.onmicrosoft.com** . Můžete nahradit `fabrikamb2c` názvem vašeho tenanta, pokud ho máte a máte vytvořeného toku uživatele.
 
@@ -129,7 +129,7 @@ error=access_denied
 
 | Parametr | Popis |
 | --------- | ----------- |
-| error | Kód používaný ke klasifikaci typů chyb, ke kterým došlo. |
+| chyba | Kód používaný ke klasifikaci typů chyb, ke kterým došlo. |
 | error_description | Konkrétní chybová zpráva, která vám může pomáhat identifikovat hlavní příčinu chyby ověřování. |
 | state | Pokud je `state` parametr zahrnut v žádosti, v odpovědi by se měla objevit stejná hodnota. Aplikace by měla ověřit, že `state` hodnoty v žádosti a odpovědi jsou identické.|
 
@@ -176,7 +176,6 @@ Teď, když jste uživatele podepsali do své jednostránkové aplikace, můžet
 V typickém toku webové aplikace byste měli požádat `/token` o koncový bod. Koncový bod ale nepodporuje žádosti CORS, takže volání jazyka AJAX k získání aktualizačního tokenu neumožňují nastavení. Místo toho můžete použít implicitní tok ve skrytém elementu HTML IFRAME a získat nové tokeny pro jiná webová rozhraní API. Tady je příklad s koncem řádku pro čitelnost:
 
 ```
-
 https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/oauth2/v2.0/authorize?
 client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 &response_type=token
@@ -186,8 +185,6 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 &state=arbitrary_data_you_can_receive_in_the_response
 &nonce=12345
 &prompt=none
-&domain_hint=organizations
-&login_hint=myuser@mycompany.com
 &p=b2c_1_sign_in
 ```
 
@@ -201,8 +198,8 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 | state |Doporučené |Hodnota obsažená v požadavku, která je vrácena v odpovědi tokenu.  Může to být řetězec libovolného obsahu, který chcete použít.  Obvykle se používá náhodně vygenerovaná jedinečná hodnota, která zabraňuje útokům proti padělání požadavků mezi lokalitami.  Stav se používá také ke kódování informací o stavu uživatele v aplikaci před tím, než k žádosti o ověření dojde. Například stránku nebo zobrazení, na kterých byl uživatel zapnutý. |
 | nonce |Požadováno |Hodnota obsažená v požadavku vygenerovaná aplikací, která je součástí výsledného tokenu ID jako deklarace identity.  Aplikace pak může tuto hodnotu ověřit a zmírnit tak útoky na opakované přehrání tokenů. Obvykle je hodnota náhodným, jedinečným řetězcem, který identifikuje původ požadavku. |
 | výzv |Požadováno |Chcete-li aktualizovat a získat tokeny ve skrytém `prompt=none` prvku IFRAME, použijte k zajištění toho, že prvek IFRAME nebude na přihlašovací stránce zablokovaný, a okamžitě se vrátí. |
-| login_hint |Požadováno |Chcete-li aktualizovat a získat tokeny ve skrytém prvku IFRAME, zahrňte do tohoto doporučení uživatelské jméno uživatele, které bude rozlišovat mezi více relacemi, které uživatel v daném okamžiku může mít. Uživatelské jméno můžete extrahovat z dřívějšího přihlášení pomocí `preferred_username` deklarace identity. |
-| domain_hint |Požadováno |Může být `consumers` nebo `organizations`.  Pokud chcete aktualizovat a získat tokeny ve skrytém prvku IFRAME `domain_hint` , uveďte hodnotu v žádosti.  Extrahujte `tid` deklaraci identity z tokenu ID dřívějšího přihlášení, abyste zjistili, která hodnota se má použít.  `domain_hint=consumers`Pokud je `9188040d-6c67-4c5b-b112-36a304b66dad`hodnota deklarace identity, použijte. `tid`  V opačném `domain_hint=organizations`případě použijte. |
+| login_hint |Požadováno |Chcete-li aktualizovat a získat tokeny ve skrytém prvku IFRAME, zahrňte do tohoto doporučení uživatelské jméno uživatele, které bude rozlišovat mezi více relacemi, které uživatel v daném okamžiku může mít. Můžete extrahovat uživatelské jméno z dřívějšího přihlášení pomocí `preferred_username` deklarace identity `profile` (obor je vyžadován, aby bylo možné tuto `preferred_username` deklaraci získat). |
+| domain_hint |Požadováno |Může být `consumers` nebo `organizations`.  Pokud chcete aktualizovat a získat tokeny ve skrytém prvku IFRAME `domain_hint` , uveďte hodnotu v žádosti.  Extrahujte `profile` `tid` deklaraci identity z tokenu ID dřívějšího přihlášení a určete, která hodnota se má použít (obor se vyžaduje pro získání deklarace). `tid` `domain_hint=consumers`Pokud je `9188040d-6c67-4c5b-b112-36a304b66dad`hodnota deklarace identity, použijte. `tid`  V opačném `domain_hint=organizations`případě použijte. |
 
 Nastavením `prompt=none` parametru je tato žádost buď úspěšná, nebo selže okamžitě a vrátí se do vaší aplikace.  Do vaší aplikace se pošle úspěšná odpověď v zadaném identifikátoru URI přesměrování pomocí metody zadané v `response_mode` parametru.
 
@@ -237,7 +234,7 @@ error=user_authentication_required
 
 | Parametr | Popis |
 | --- | --- |
-| error |Řetězec kódu chyby, který lze použít ke klasifikaci typů chyb, ke kterým došlo. Řetězec můžete také použít k reakci na chyby. |
+| chyba |Řetězec kódu chyby, který lze použít ke klasifikaci typů chyb, ke kterým došlo. Řetězec můžete také použít k reakci na chyby. |
 | error_description |Konkrétní chybová zpráva, která vám může pomáhat identifikovat hlavní příčinu chyby ověřování. |
 
 Pokud se tato chyba zobrazí v žádosti IFRAME, uživatel se musí znovu interaktivně přihlásit, aby získal nový token.
@@ -262,6 +259,17 @@ p=b2c_1_sign_in
 | post_logout_redirect_uri |Doporučené |Adresa URL, na kterou má být uživatel přesměrován po úspěšném přihlášení Pokud není zahrnutý, Azure AD B2C zobrazí uživateli obecnou zprávu. |
 
 > [!NOTE]
-> Uživatel, který přesměruje `end_session_endpoint` uživatele na, vymaže některé stavy jednotného přihlašování uživatele s Azure AD B2C. Nepodepisuje ale uživatele z relace sociální identity provider uživatele. Pokud uživatel vybere stejného poskytovatele identifikace během následného přihlášení, uživatel se znovu ověří bez zadání přihlašovacích údajů. Pokud se uživatel chce odhlásit z vaší Azure AD B2C aplikace, nemusí nutně znamenat, že by si chtěli úplně odhlásit z účtu Facebook. U místních účtů se ale relace uživatele ukončí správně.
+> Uživatel, který přesměruje `end_session_endpoint` uživatele na, vymaže některé stavy jednotného přihlašování uživatele s Azure AD B2C. Nepodepisuje ale uživatele z relace sociální identity provider uživatele. Pokud uživatel vybere stejného poskytovatele identity během následného přihlášení, uživatel se znovu ověří bez zadání přihlašovacích údajů. Pokud se uživatel chce odhlásit z vaší Azure AD B2C aplikace, nemusí nutně znamenat, že by si chtěli úplně odhlásit z účtu Facebook. U místních účtů se ale relace uživatele ukončí správně.
 >
 
+## <a name="next-steps"></a>Další postup
+
+### <a name="code-sample-hellojs-with-azure-ad-b2c"></a>Ukázka kódu: Hello. js s Azure AD B2C
+
+[Jednostránkové aplikace postavená na Hello. js s Azure AD B2C][github-hello-js-example] GitHubu
+
+Tato ukázka na GitHubu vám umožní začít pracovat s Azure AD B2C v jednoduché webové aplikaci založené na souboru Hello [. js][github-hello-js] a používat ověřování pomocí překryvných stylů.
+
+<!-- Links - EXTERNAL -->
+[github-hello-js-example]: https://github.com/azure-ad-b2c/apps/tree/master/spa/javascript-hellojs-singlepageapp-popup
+[github-hello-js]: https://github.com/MrSwitch/hello.js

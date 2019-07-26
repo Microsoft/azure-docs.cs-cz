@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/25/2019
-ms.openlocfilehash: 606cab09debf760d1b101390b2a19a1a090bb4c3
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
-ms.translationtype: HT
+ms.openlocfilehash: e749138cd28f7bd8faf10ca1087a73f323533a25
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68234565"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68335662"
 ---
 # <a name="delete-activity-in-azure-data-factory"></a>Odstranit aktivitu v Azure Data Factory
 
@@ -86,7 +86,7 @@ Tady je několik doporučení pro použití aktivity odstranit:
 | maxConcurrentConnections | Počet připojení, která se mají souběžně připojit k úložišti úložiště, pro odstraňování složek nebo souborů.   |  Ne. Výchozí hodnota je `1`. |
 | enablelogging | Určuje, zda je třeba zaznamenat název složky nebo souboru, které byly odstraněny. Je-li nastavena hodnota true, je třeba zadat účet úložiště pro uložení souboru protokolu, aby bylo možné sledovat chování aktivity odstranit pomocí čtení souboru protokolu. | Ne |
 | logStorageSettings | Platí pouze v případě, že EnableLogging = true.<br/><br/>Skupina vlastností úložiště, které se dají zadat, kam chcete uložit soubor protokolu obsahující název složky nebo souboru, který odstranila aktivita odstranit. | Ne |
-| linkedServiceName | Platí pouze v případě, že EnableLogging = true.<br/><br/>Propojená služba [Azure Storage](connector-azure-blob-storage.md#linked-service-properties), [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md#linked-service-properties)nebo [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#linked-service-properties) pro uložení souboru protokolu, který obsahuje název složky nebo souboru, který odstranila aktivita odstranit. | Ne |
+| linkedServiceName | Platí pouze v případě, že EnableLogging = true.<br/><br/>Propojená služba [Azure Storage](connector-azure-blob-storage.md#linked-service-properties), [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md#linked-service-properties)nebo [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#linked-service-properties) pro uložení souboru protokolu, který obsahuje název složky nebo souboru, který odstranila aktivita odstranit. Mějte na paměti, že je potřeba nakonfigurovat stejný typ Integration Runtime od toho, který používá aktivita odstranit k odstranění souborů. | Ne |
 | path | Platí pouze v případě, že EnableLogging = true.<br/><br/>Cesta k uložení souboru protokolu v účtu úložiště. Pokud cestu nezadáte, služba vytvoří kontejner. | Ne |
 
 ## <a name="monitoring"></a>Monitorování
@@ -117,10 +117,10 @@ Existují dvě místa, kde můžete zobrazit a monitorovat výsledky aktivity od
 
 | Name | Kategorie | Stav | Chyba |
 |:--- |:--- |:--- |:--- |
-| test1/yyy.json | File | Odstranění |  |
-| test2/hello789.txt | File | Odstranění |  |
-| test2/test3/hello000. txt | File | Odstranění |  |
-| test2/test3/zzz.json | File | Odstranění |  |
+| test1/yyy.json | File | Odstraněné |  |
+| test2/hello789.txt | File | Odstraněné |  |
+| test2/test3/hello000. txt | File | Odstraněné |  |
+| test2/test3/zzz.json | File | Odstraněné |  |
 
 ## <a name="examples-of-using-the-delete-activity"></a>Příklady použití aktivity odstranit
 
@@ -143,7 +143,7 @@ Nyní používáte aktivitu odstranit k odstranění složky nebo souborů kombi
 
 Můžete vytvořit kanál pro pravidelné vyčištění složky nebo souborů rozdělené do oddílů.  Například struktura složky je podobná: `/mycontainer/2018/12/14/*.csv`.  Systémovou proměnnou ADF můžete využít z triggeru Schedule k určení, které složky nebo soubory by se měly odstranit při každém spuštění kanálu. 
 
-#### <a name="sample-pipeline"></a>Vzorový kanál
+#### <a name="sample-pipeline"></a>Ukázkový kanál
 
 ```json
 {
@@ -263,7 +263,7 @@ Můžete vytvořit kanál pro pravidelné vyčištění složky nebo souborů ro
 
 Pomocí filtru atributu souboru můžete vytvořit kanál, který vyčistí staré soubory nebo soubory s vypršenou platností: "LastModified" v datové sadě.  
 
-#### <a name="sample-pipeline"></a>Vzorový kanál
+#### <a name="sample-pipeline"></a>Ukázkový kanál
 
 ```json
 {
@@ -328,7 +328,7 @@ Soubor můžete přesunout pomocí aktivity kopírování a potom aktivitu odstr
 > [!NOTE]
 > Pokud chcete přesunout celou složku tak, že definujete datovou sadu obsahující jenom cestu ke složce, a pak pomocí aktivity kopírování a aktivity odstranit odkaz na stejnou datovou sadu, která představuje složku, musíte být velmi opatrní. Je to proto, že je nutné zajistit, aby do složky mezi operacemi kopírování a odstraňování nedocházelo nové soubory.  Pokud se ve složce v okamžiku, kdy vaše aktivita kopírování právě dokončila úloha kopírování, přirazily nové soubory, ale aktivita odstranění nebyla postará, je možné, že aktivita odstranění odstraní tento nový doručený soubor, který se nezkopíroval do destinati. Tím se ještě odstraní celá složka. 
 
-#### <a name="sample-pipeline"></a>Vzorový kanál
+#### <a name="sample-pipeline"></a>Ukázkový kanál
 
 ```json
 {

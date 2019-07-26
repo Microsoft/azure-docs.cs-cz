@@ -1,62 +1,62 @@
 ---
 title: Úrovně konzistence a rozhraní API služby Cosmos DB
-description: Principy úrovní konzistence napříč rozhraní API ve službě Azure Cosmos DB.
+description: Principy úrovní konzistence napříč rozhraními API v Azure Cosmos DB.
 author: rimman
 ms.author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/22/2019
+ms.date: 07/23/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 1129152c1823fbffb3d6c9ec918d7b8cb4426bbd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 26cea6243a8b6d06c132325f0b2fe830c4030e9d
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66235628"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68467779"
 ---
 # <a name="consistency-levels-and-azure-cosmos-db-apis"></a>Úrovně konzistence a rozhraní API služby Cosmos DB
 
-Azure Cosmos DB poskytuje nativní podporu pro přenosový protokol kompatibilní rozhraní API pro oblíbené databáze. Patří mezi ně MongoDB, Apache Cassandra, Gremlin a Azure Table storage. Tyto databáze nenabízejí přesně definovaných modelů konzistence a záruky jištěná smlouva SLA pro úrovně konzistence. Obvykle poskytují pouze podmnožinu pět modelů konzistence nabízených službou Azure Cosmos DB. 
+Azure Cosmos DB poskytuje nativní podporu pro rozhraní API kompatibilní se síťovými protokoly pro oblíbené databáze. Patří mezi ně MongoDB, Apache Cassandra, Gremlin a Azure Table Storage. Tyto databáze pro úrovně konzistence nenabízejí přesně definované modely konzistence nebo záruky na základě smlouvy SLA. Obvykle poskytují pouze podmnožinu pěti modelů konzistence nabízených Azure Cosmos DB. 
 
-Při použití rozhraní SQL API, Gremlin API a rozhraní API tabulky, se používá výchozí úroveň konzistence nakonfigurovaný na účtu Azure Cosmos. 
+Při použití rozhraní API SQL, rozhraní Gremlin API a rozhraní API pro tabulky se používá výchozí úroveň konzistence nakonfigurovaná na účtu Azure Cosmos. 
 
-Při použití rozhraní Apache Cassandra API nebo Azure Cosmos DB: API pro MongoDB, získávání aplikací kompletní o úrovních konzistence nabízených databází Apache Cassandra a MongoDB, v uvedeném pořadí, s ještě přesvědčivější konzistence a záruky odolnosti. Tento dokument ukazuje odpovídající úrovně konzistence služby Azure Cosmos DB pro Apache Cassandra a úrovně konzistence MongoDB.
+Pokud používáte rozhraní API Cassandra nebo rozhraní API Azure Cosmos DB pro MongoDB, aplikace získají úplnou sadu úrovní konzistence nabízených Apache Cassandra a MongoDB, a to ještě silnější konzistence a záruky trvanlivosti. Tento dokument zobrazuje odpovídající Azure Cosmos DB úrovně konzistence pro úrovně konzistence Apache Cassandra a MongoDB.
 
 
 ## <a id="cassandra-mapping"></a>Mapování mezi úrovněmi konzistence Apache Cassandra a Azure Cosmos DB
 
-Na rozdíl od AzureCosmos databáze Apache Cassandra neposkytuje nativní přesně záruky konzistence definované.  Místo toho Apache Cassandra poskytuje úroveň konzistence zápisu a úroveň konzistence čtení, chcete povolit vysokou dostupnost, konzistence a latence kompromisy. Při použití služby Azure Cosmos DB Cassandra API: 
+Na rozdíl od AzureCosmos DB neposkytuje Apache Cassandra nativně přesně definované záruky konzistence.  Místo toho Apache Cassandra poskytuje úroveň konzistence pro zápis a úroveň konzistence pro čtení, aby bylo možné dosáhnout vysoké dostupnosti, konzistence a kompromisů latence. Při použití rozhraní API Cassandra Azure Cosmos DB: 
 
-* Úroveň konzistence zápisu Apache Cassandra je namapována na výchozí úroveň konzistence nakonfigurovaný na vašem účtu Azure Cosmos. 
+* Úroveň konzistence zápisu Apache Cassandra je namapovaná na výchozí úroveň konzistence nakonfigurovanou na vašem účtu Azure Cosmos. 
 
-* Azure Cosmos DB dynamicky namapuje úroveň konzistence čtení zadaný ovladač Cassandra klienta na jednu z úrovní konzistence služby Azure Cosmos DB dynamicky konfigurovat na žádost o čtení. 
+* Azure Cosmos DB bude dynamicky mapovat úroveň konzistence čtení určenou ovladačem klienta Cassandra na jednu z Azure Cosmos DB úrovní konzistence nakonfigurovaných dynamicky pro požadavek na čtení. 
 
-Následující tabulka ukazuje, jak nativní úrovně konzistence Cassandra jsou mapované na úrovně konzistence rozhraní Azure Cosmos DB při používání rozhraní Cassandra API:  
+Následující tabulka ukazuje, jak jsou nativní Cassandra úrovně konzistence mapovány na úrovně konzistence Azure Cosmos DB při použití rozhraní API Cassandra:  
 
 [![Mapování modelu konzistence Cassandra](./media/consistency-levels-across-apis/consistency-model-mapping-cassandra.png)](./media/consistency-levels-across-apis/consistency-model-mapping-cassandra.png#lightbox)
 
-## <a id="mongo-mapping"></a>Mapování mezi úrovněmi konzistence MongoDB a Azure Cosmos DB
+## <a id="mongo-mapping"></a>Mapování mezi MongoDB a Azure Cosmos DB úrovní konzistence
 
-Na rozdíl od služby Azure Cosmos DB neposkytuje nativní MongoDB přesně záruky konzistence definované. Místo toho nativní MongoDB umožňuje uživatelům konfigurovat následující záruky konzistence: žádný problém zápisu, čtení znepokojení a ismaster nebo direktivě - směrovat operace čtení na primární nebo sekundární repliky k dosažení úrovně požadovaného konzistence. 
+Na rozdíl od Azure Cosmos DB nativní MongoDB neposkytuje přesně definované záruky konzistence. Místo toho nativní MongoDB umožňuje uživatelům konfigurovat následující záruky konzistence: informace o zápisu, problém týkající se čtení a direktiva The-Master – k nasměrování operací čtení do primární nebo sekundární repliky za účelem dosažení požadované úrovně konzistence. 
 
-Při použití rozhraní API služby Azure Cosmos DB pro MongoDB, ovladač MongoDB považuje za oblast zápisu na primární repliku a všechny ostatní oblasti jsou repliky pro čtení. Můžete zvolit, které oblasti přidružené k účtu Azure Cosmos jako primární repliku. 
+Pokud používáte rozhraní API Azure Cosmos DB pro MongoDB, ovladač MongoDB považuje vaši oblast zápisu za primární repliku a všechny ostatní oblasti jsou repliky čtení. Můžete zvolit, která oblast je přidružená k vašemu účtu Azure Cosmos, jako primární repliku. 
 
-Při používání služby Azure Cosmos DB přes rozhraní API pro MongoDB:
+Při použití rozhraní API Azure Cosmos DB pro MongoDB:
 
-* Zápis zájmem je namapována na výchozí úroveň konzistence nakonfigurovaný na vašem účtu Azure Cosmos.
+* V části týkající se zápisu je namapována na výchozí úroveň konzistence nakonfigurovanou v účtu Azure Cosmos.
  
-* Azure Cosmos DB dynamicky namapuje čtení problém určené ovladače klienta MongoDB na jednu z úrovní konzistence služby Azure Cosmos DB, která je dynamicky nakonfigurovaná na žádost o čtení. 
+* Azure Cosmos DB bude k dis dynamicky mapovat obavy týkající se čtení určené ovladačem klienta MongoDB na jednu z Azure Cosmos DB úrovní konzistence nakonfigurovanou dynamicky pro žádost o čtení. 
 
-* Přidání poznámek ke konkrétní oblasti přidružené k účtu Azure Cosmos jako "Hlavní" tím, že oblast jako první zapisovatelný oblasti. 
+* Konkrétní oblast, která je přidružená k vašemu účtu Azure Cosmos, můžete označit jako "hlavní", a to tak, že ji nastavíte jako první zapisovatelnou oblast. 
 
-Následující tabulka ukazuje, jak nativní MongoDB zápisu/čtení otázky jsou mapovány na úrovně konzistence Azure Cosmos, při použití rozhraní API služby Azure Cosmos DB pro MongoDB:
+Následující tabulka ukazuje, jak se při použití rozhraní Azure Cosmos DB API pro MongoDB namapují nativní problémy zápisu a čtení nativního MongoDB na úrovně konzistence Azure Cosmos:
 
 [![Mapování modelu konzistence MongoDB](./media/consistency-levels-across-apis/consistency-model-mapping-mongodb.png)](./media/consistency-levels-across-apis/consistency-model-mapping-mongodb.png#lightbox)
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace o úrovních konzistence a kompatibilitu API služby Azure Cosmos DB pomocí rozhraní API pro open source. Viz následující články:
+Přečtěte si další informace o úrovních konzistence a kompatibilitě mezi Azure Cosmos DB API pomocí Open Source rozhraní API. Viz následující články:
 
 * [Dostupnost a výkon kompromisy pro různé úrovně konzistence](consistency-levels-tradeoffs.md)
-* [Funkce MongoDB podporovaných rozhraním API Azure Cosmos DB pro MongoDB](mongodb-feature-support.md)
-* [Apache Cassandra funkcí podporovaných službou Azure Cosmos DB Cassandra API](cassandra-support.md)
+* [MongoDB funkce podporované rozhraním API Azure Cosmos DB pro MongoDB](mongodb-feature-support.md)
+* [Funkce Apache Cassandra podporované Azure Cosmos DB rozhraní API Cassandra](cassandra-support.md)

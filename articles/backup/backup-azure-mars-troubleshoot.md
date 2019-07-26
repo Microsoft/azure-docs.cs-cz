@@ -1,19 +1,18 @@
 ---
 title: Řešení potíží s agentem Azure Backup
 description: Řešení potíží s instalací a registrací agenta Azure Backup
-services: backup
 author: saurabhsensharma
 manager: sivan
 ms.service: backup
 ms.topic: conceptual
 ms.date: 07/15/2019
 ms.author: saurse
-ms.openlocfilehash: a791773a3e9cc0b75c626b622070b29c9779c453
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 6dc56e4eccbad0de986551e055e877d3d051b145
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68249545"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68465971"
 ---
 # <a name="troubleshoot-the-microsoft-azure-recovery-services-mars-agent"></a>Řešení potíží s agentem Microsoft Azure Recovery Services (MARS)
 
@@ -194,7 +193,7 @@ Pokud máte na serveru nainstalovaný antivirový software, přidejte potřebná
 - Souboru cbengine. exe
 - CSC.exe
 
-## <a name="common-issues"></a>Běžné problémy
+## <a name="common-issues"></a>Běžné potíže
 Tato část se zabývá běžnými chybami, ke kterým dojde při použití agenta MARS.
 
 ### <a name="salchecksumstoreinitializationfailed"></a>SalChecksumStoreInitializationFailed
@@ -222,6 +221,6 @@ Chybová zpráva | Doporučená akce |
 Nepodařilo se najít změny v souboru. Důvodů může být několik. Zkuste operaci zopakovat. | Chcete-li tento problém vyřešit, ověřte níže uvedené kroky a opakujte operaci:<br/> - [Zajistěte, aby byl agent MARS nejnovější.](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409) <br/> - [Ověření a řešení problémů s úložištěm, které mají vliv na pomocné místo zálohy](#pre-requisites)
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 * Přečtěte si další podrobnosti o [tom, jak zálohovat Windows Server pomocí agenta Azure Backup](tutorial-backup-windows-server-to-azure.md).
 * Pokud potřebujete obnovit zálohu, přečtěte si téma [obnovení souborů do počítače s Windows](backup-azure-restore-windows-server.md).

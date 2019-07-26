@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 06/26/2019
 ms.author: hrasheed
-ms.openlocfilehash: a2b6cdf9fbdb27372b089a29c1a3c5d0f1c629c9
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: 32f5ff2ebc9d938b1936d7f2929af83d552a543d
+ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68442112"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68489864"
 ---
 # <a name="tutorial-use-azure-toolkit-for-intellij-to-create-apache-spark-applications-for-an-hdinsight-cluster"></a>Kurz: Použití Azure Toolkit for IntelliJ k vytvoření Apache Spark aplikací pro cluster HDInsight
 
@@ -171,7 +171,7 @@ Uživatel se může [přihlásit k předplatnému Azure](#sign-in-to-your-azure-
 
 ### <a name="link-a-cluster"></a>Propojení clusteru
 
-Cluster HDInsight můžete propojit pomocí spravovaného uživatelského jména Apache Ambari. Podobně v případě clusteru HDInsight připojeného k doméně můžete propojit s doménou a uživatelským jménem, jako user1@contoso.comje například. Také můžete propojit cluster služby Livy Service.
+Cluster HDInsight můžete propojit pomocí spravovaného uživatelského jména Apache Ambari. Podobně v případě clusteru HDInsight připojeného k doméně můžete propojit s doménou a uživatelským jménem, jako `user1@contoso.com`je například. Také můžete propojit cluster služby Livy Service.
 
 1. V řádku nabídek přejděte k **zobrazení** > **nástrojů Windows** > **Azure Explorer**.
 
@@ -183,7 +183,7 @@ Cluster HDInsight můžete propojit pomocí spravovaného uživatelského jména
 
     * **Cluster HDInsight**  
   
-        |Vlastnost |Hodnota |
+        |Vlastnost |Value |
         |----|----|
         |Typ prostředku propojení|Z rozevíracího seznamu vyberte **cluster HDInsight** .|
         |Název nebo adresa URL clusteru| Zadejte název clusteru.|
@@ -451,7 +451,7 @@ Pokud nebudete tuto aplikaci nadále používat, odstraňte cluster, který jste
 
 ![Odstranění clusteru HDInsight](./media/apache-spark-intellij-tool-plugin/hdinsight-azure-portal-delete-cluster.png "Odstranění clusteru HDInsight")
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste zjistili, jak používat modul plug-in Azure Toolkit for IntelliJ k vývoji Apache Spark aplikací napsaných v [Scala](https://www.scala-lang.org/)a pak je odeslat do clusteru HDInsight Spark přímo z integrovaného vývojového prostředí IntelliJ ( INTEGROVANÉ VÝVOJOVÉ PROSTŘEDÍ (IDE). V dalším článku zjistíte, jak se data, která jste zaregistrovali v Apache Spark můžete načíst do nástroje BI Analytics, jako je například Power BI.
 

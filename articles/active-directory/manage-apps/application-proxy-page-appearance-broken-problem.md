@@ -1,5 +1,5 @@
 ---
-title: Stránka aplikace se nezobrazuje správně pro aplikaci Proxy aplikací | Dokumentace Microsoftu
+title: Stránka aplikace se nezobrazuje správně pro aplikaci proxy aplikace | Microsoft Docs
 description: Pokyny, když stránka se nezobrazuje správně v aplikačního proxy serveru mají integrované s Azure AD
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.date: 05/21/2018
 ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 99c2c53f3bf723c1d45edf2e62cd404615924c9b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 13e73f0ed56648ce162f00d6df5e7b86a922ca01
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65783736"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68381425"
 ---
 # <a name="application-page-does-not-display-correctly-for-an-application-proxy-application"></a>Stránka aplikace se nezobrazuje správně pro aplikaci Proxy aplikací
 
@@ -29,7 +29,7 @@ Tento článek pomůže při odstraňování problémů s aplikacemi Azure Activ
 ## <a name="overview"></a>Přehled
 Když publikujete aplikaci Proxy aplikací, jsou přístupné pouze stránky v kořenovém adresáři, při přístupu k aplikaci. Pokud na stránce se nezobrazuje správně, kořenové interní adresa URL pro aplikaci můžou chybět některé prostředky stránky. Pokud chcete vyřešit, ujistěte se, že jste publikovali *všechny* prostředky pro stránku v rámci vaší aplikace.
 
-Můžete ověřit, zda chybějících prostředků je problém tak, že otevřete sledování vaší sítě (například Fiddler nebo F12 nástroje v Internet Explorer nebo Microsoft Edge), načítání stránky a hledáte chyby 404. Který určuje současné době nelze najít a je potřeba publikovat je.
+Můžete ověřit, jestli se u chybějících prostředků jedná o problém, a to tak, že otevřete sledování sítě (například Fiddler nebo nástroje F12 v aplikaci Internet Explorer/Microsoft Edge), nanačítáte stránku a vyhledáte chyby 404. Který určuje současné době nelze najít a je potřeba publikovat je.
 
 Jako příklad tento případ, se předpokládá jste publikovali aplikaci výdaje pomocí interní adresy URL `http://myapps/expenses`, ale aplikace používá šablony stylů `http://myapps/style.css`. V takovém případě šablony stylů není publikována ve vaší aplikaci, tak načítání aplikace výdaje vyvolat chybu 404 při pokusu o načtení style.css. V tomto příkladu se problém nevyřeší a publikujte aplikace s interní adresa URL `http://myapp/`.
 

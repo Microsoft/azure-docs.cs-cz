@@ -5,6 +5,8 @@
   items:
     - name: Co je služba Cognitive Services?
       href: Welcome.md
+    - name: Vlastní podřízené domény pro Cognitive Services
+      href: cognitive-services-custom-subdomains.md
     - name: Cognitive Services a strojové učení
       href: cognitive-services-and-machine-learning.md
     - name: Podpora jazyků

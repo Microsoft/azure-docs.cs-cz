@@ -1,6 +1,6 @@
 ---
-title: Připojení k systému Kafka pomocí virtuální sítě – Azure HDInsight
-description: Zjistěte, jak k přímému připojení k systému Kafka v HDInsight pomocí Azure Virtual Network. Zjistěte, jak se připojit k systému Kafka od vývoje klientů pomocí VPN gateway nebo od klientů ve vaší místní síti pomocí zařízení brány sítě VPN.
+title: Připojení k Kafka pomocí virtuálních sítí – Azure HDInsight
+description: Naučte se, jak se přímo připojit k Kafka v HDInsight prostřednictvím Azure Virtual Network. Přečtěte si, jak se připojit k Kafka z vývojářských klientů pomocí brány VPN nebo z klientů v místní síti pomocí zařízení brány VPN.
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,84 +8,84 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/28/2019
-ms.openlocfilehash: ddff9ffb00f4167cb8f64a75b129711467de739d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 395bb01247efde82dbb39733c1915bc989b1729d
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66297053"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68402778"
 ---
-# <a name="connect-to-apache-kafka-on-hdinsight-through-an-azure-virtual-network"></a>Připojení k Apache Kafka v HDInsight pomocí služby Azure Virtual Network
+# <a name="connect-to-apache-kafka-on-hdinsight-through-an-azure-virtual-network"></a>Připojení k Apache Kafka v HDInsight prostřednictvím Azure Virtual Network
 
-Zjistěte, jak se přímo připojit k Apache Kafka v HDInsight pomocí Azure Virtual Network. Tento dokument obsahuje informace o připojení k systému Kafka pomocí následující konfigurace:
+Naučte se, jak se přímo připojit k Apache Kafka v HDInsight přes Azure Virtual Network. Tento dokument poskytuje informace o připojení k Kafka pomocí následujících konfigurací:
 
-* Z prostředků v místní síti. Toto připojení prostřednictvím zařízení VPN (softwaru nebo hardwaru) ve vaší místní síti.
-* Z vývojového prostředí pomocí softwarového klienta sítě VPN.
+* Z prostředků v místní síti. Toto připojení je vytvořeno pomocí zařízení VPN (softwaru nebo hardwaru) v místní síti.
+* Z vývojového prostředí pomocí klientského softwaru sítě VPN.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="architecture-and-planning"></a>Plánování a architektura
+## <a name="architecture-and-planning"></a>Architektura a plánování
 
-HDInsight neumožňuje přímé připojení k systému Kafka přes veřejný internet. Místo toho klienti Kafka (producenti a spotřebitelé) musí používat jednu z následujících metod připojení:
+HDInsight neumožňuje přímé připojení k Kafka přes veřejný Internet. Místo toho musí Kafka klienti (producenti a spotřebitelé) používat jednu z následujících metod připojení:
 
-* Spustíte klienta ve stejné virtuální síti jako Kafka v HDInsight. Tato konfigurace se používá v [Začínáme s Apache Kafka v HDInsight](apache-kafka-get-started.md) dokumentu. Klient spustí přímo na uzlech clusteru HDInsight nebo na jiném virtuálním počítači ve stejné síti.
+* Spusťte klienta ve stejné virtuální síti jako Kafka ve službě HDInsight. Tato konfigurace se používá v dokumentu [Začínáme s Apache Kafka v HDInsight](apache-kafka-get-started.md) . Klient se spustí přímo na uzlech clusteru HDInsight nebo na jiném virtuálním počítači ve stejné síti.
 
-* Připojení privátní sítě, jako je vaše místní sítě k virtuální síti. Tato konfigurace umožňuje klientům ve vaší místní síti a pracovat přímo s využitím Kafka. Pokud chcete povolit tuto konfiguraci, proveďte následující úkoly:
-
-  1. Vytvořte virtuální síť.
-  2. Vytvoření brány VPN, který používá konfiguraci site-to-site. Konfigurace použitá v tomto dokumentu se připojí k zařízení brány sítě VPN v místní síti.
-  3. Vytvoření serveru DNS ve virtuální síti.
-  4. Konfigurace předávání mezi serverem DNS v každé síti.
-  5. Vytvořte systém Kafka na clusteru HDInsight ve virtuální síti.
-
-     Další informace najdete v tématu [připojení k Apache Kafka z místní sítě](#on-premises) oddílu. 
-
-* Připojení jednotlivých počítačů k virtuální síti pomocí sítě VPN gateway a klienta VPN. Pokud chcete povolit tuto konfiguraci, proveďte následující úkoly:
+* Připojte k virtuální síti privátní síť, jako je například vaše místní síť. Tato konfigurace umožňuje klientům v místní síti pracovat přímo s Kafka. Chcete-li povolit tuto konfiguraci, proveďte následující úlohy:
 
   1. Vytvořte virtuální síť.
-  2. Vytvoření brány VPN, který používá konfiguraci point-to-site. Tuto konfiguraci můžete použít s klienty Windows a MacOS.
-  3. Vytvořte systém Kafka na clusteru HDInsight ve virtuální síti.
-  4. Nakonfigurujte Kafka pro reklamní účely IP. Tato konfigurace umožňuje klientovi připojit pomocí zprostředkovatele IP adres místo názvů domény.
-  5. Stažení a použití klienta VPN ve vývojovém systému.
+  2. Vytvořte bránu VPN, která používá konfiguraci typu Site-to-site. Konfigurace použitá v tomto dokumentu se připojuje k zařízení brány VPN v místní síti.
+  3. Vytvořte ve virtuální síti server DNS.
+  4. Nakonfigurujte přesměrování mezi serverem DNS v každé síti.
+  5. Vytvořte ve virtuální síti cluster HDInsight Kafka.
 
-     Další informace najdete v tématu [připojit k Apache Kafka se službou klienta VPN](#vpnclient) oddílu.
+     Další informace najdete v části [připojení k Apache Kafka v místní síti](#on-premises) . 
+
+* Připojte jednotlivé počítače k virtuální síti pomocí brány VPN a klienta VPN. Chcete-li povolit tuto konfiguraci, proveďte následující úlohy:
+
+  1. Vytvořte virtuální síť.
+  2. Vytvořte bránu VPN, která používá konfiguraci Point-to-site. Tato konfigurace se dá použít u klientů s Windows i MacOS.
+  3. Vytvořte ve virtuální síti cluster HDInsight Kafka.
+  4. Nakonfigurujte Kafka pro reklamu protokolu IP. Tato konfigurace umožňuje klientovi, aby se připojovali pomocí IP adres zprostředkovatele místo názvů domén.
+  5. Stáhněte a používejte klienta VPN ve vývojovém systému.
+
+     Další informace najdete v části [připojení k Apache Kafka s klientem VPN](#vpnclient) .
 
      > [!WARNING]  
-     > Tato konfigurace se doporučuje jenom pro účely vývoje z důvodu následující omezení:
+     > Tato konfigurace se doporučuje pro účely vývoje z důvodu následujících omezení:
      >
-     > * Každý klient musí připojit pomocí softwarového klienta sítě VPN.
-     > * Klient VPN nepředává požadavky na název řešení do virtuální sítě, proto je nutné použít IP adres ke komunikaci se systémem Kafka. Komunikace IP vyžaduje další konfiguraci v clusteru Kafka.
+     > * Každý klient musí být připojen pomocí klientského softwaru sítě VPN.
+     > * Klient VPN neprojde požadavky na překlad IP adres do virtuální sítě, takže musíte ke komunikaci s Kafka použít přidělování IP adres. Komunikace IP vyžaduje další konfiguraci v clusteru Kafka.
 
-Další informace o používání HDInsight ve virtuální síti najdete v tématu [rozšířit HDInsight pomocí Azure Virtual Networks](../hdinsight-extend-hadoop-virtual-network.md).
+Další informace o používání služby HDInsight ve virtuální síti najdete v tématu [plánování virtuální sítě pro clustery Azure HDInsight](../hdinsight-plan-virtual-network-deployment.md).
 
-## <a id="on-premises"></a> Připojení k Apache Kafka z místní sítě
+## <a id="on-premises"></a>Připojení k Apache Kafka z místní sítě
 
-K vytvoření clusteru Kafka, který komunikuje s vaší místní sítí, postupujte podle kroků v [HDInsight připojit k místní síti](./../connect-on-premises-network.md) dokumentu.
+Pokud chcete vytvořit cluster Kafka, který komunikuje s vaší místní sítí, postupujte podle kroků v části [připojení HDInsight k](./../connect-on-premises-network.md) místní síťovému dokumentu.
 
 > [!IMPORTANT]  
-> Při vytváření clusteru HDInsight, vyberte __Kafka__ typ clusteru.
+> Při vytváření clusteru HDInsight vyberte typ clusteru __Kafka__ .
 
 Tyto kroky vytvoří následující konfiguraci:
 
 * Azure Virtual Network
-* Brány VPN typu Site-to-site
-* Účet služby Azure Storage (používané HDInsight)
+* Brána VPN typu Site-to-site
+* Účet Azure Storage (používaný službou HDInsight)
 * Kafka v HDInsightu
 
-Pokud chcete ověřit, Kafka klient může připojit ke clusteru v místním, postupujte podle kroků v [příkladu: Pythonového klienta](#python-client) oddílu.
+Pokud chcete ověřit, jestli se klient Kafka může připojit ke clusteru z místního prostředí, použijte postup v [příkladu: Oddíl klienta](#python-client) Pythonu.
 
-## <a id="vpnclient"></a> Připojení k Apache Kafka pomocí klienta VPN
+## <a id="vpnclient"></a>Připojení k Apache Kafka pomocí klienta VPN
 
-Postupujte podle kroků v této části vytvořte následující konfiguraci:
+Pomocí kroků v této části vytvoříte následující konfiguraci:
 
 * Azure Virtual Network
-* Brány VPN typu Point-to-site
-* Účet služby Azure Storage (používané HDInsight)
+* Brána sítě VPN typu Point-to-site
+* Účet Azure Storage (používaný službou HDInsight)
 * Kafka v HDInsightu
 
-1. Postupujte podle pokynů [práce s certifikáty podepsané svým držitelem pro připojení Point-to-site](../../vpn-gateway/vpn-gateway-certificates-point-to-site.md) dokumentu. Tento dokument vytvoří certifikáty potřebné pro bránu.
+1. Postupujte podle kroků v části [práce s certifikáty podepsanými svým držitelem pro dokument připojení Point-to-site](../../vpn-gateway/vpn-gateway-certificates-point-to-site.md) . Tento dokument vytvoří certifikáty potřebné pro bránu.
 
-2. Otevřete příkazový řádek Powershellu a přihlaste se ke svému předplatnému Azure pomocí následující kód:
+2. Otevřete příkazový řádek PowerShellu a pomocí následujícího kódu se přihlaste ke svému předplatnému Azure:
 
     ```powershell
     Connect-AzAccount
@@ -93,7 +93,7 @@ Postupujte podle kroků v této části vytvořte následující konfiguraci:
     #Select-AzSubscription -SubscriptionName "name of your subscription"
     ```
 
-3. Použijte následující kód k vytvoření proměnné, které obsahují informace o konfiguraci:
+3. Použijte následující kód k vytvoření proměnných, které obsahují informace o konfiguraci:
 
     ```powershell
     # Prompt for generic information
@@ -130,7 +130,7 @@ Postupujte podle kroků v této části vytvořte následující konfiguraci:
     $hdiType = "Kafka"
     ```
 
-4. Použijte následující kód k vytvoření skupiny prostředků Azure a virtuální sítě:
+4. Pomocí následujícího kódu vytvořte skupinu prostředků Azure a virtuální síť:
 
     ```powershell
     # Create the resource group that contains everything
@@ -188,9 +188,9 @@ Postupujte podle kroků v této části vytvořte následující konfiguraci:
     ```
 
     > [!WARNING]  
-    > Může trvat několik minut na dokončení tohoto procesu.
+    > Dokončení tohoto procesu může trvat několik minut.
 
-5. Použijte následující kód k vytvoření účtu Azure Storage a objektů blob v kontejneru:
+5. Pomocí následujícího kódu vytvořte Azure Storage účet a kontejner objektů BLOB:
 
     ```powershell
     # Create the storage account
@@ -213,7 +213,7 @@ Postupujte podle kroků v této části vytvořte následující konfiguraci:
         -Context $storageContext
     ```
 
-6. Použijte následující kód k vytvoření clusteru HDInsight:
+6. Pomocí následujícího kódu vytvořte cluster HDInsight:
 
     ```powershell
     # Create the HDInsight cluster
@@ -236,29 +236,29 @@ Postupujte podle kroků v této části vytvořte následující konfiguraci:
     ```
 
    > [!WARNING]  
-   > Tento proces trvá přibližně 15 minut.
+   > Dokončení tohoto procesu trvá přibližně 15 minut.
 
-### <a name="configure-kafka-for-ip-advertising"></a>Konfigurace Kafka pro reklamní účely IP
+### <a name="configure-kafka-for-ip-advertising"></a>Konfigurace Kafka pro reklamu protokolu IP
 
-Ve výchozím nastavení Apache Zookeeper vrátí název domény zprostředkovatelům systému Kafka klientům. Tuto konfiguraci nebude fungovat pomocí softwarového klienta sítě VPN, jak ho nelze použít překlad názvů pro entity ve virtuální síti. Pro tuto konfiguraci použijte ke konfiguraci Kafka inzerovat IP adres místo názvů domény následující kroky:
+Ve výchozím nastavení funkce Apache Zookeeper vrátí název domény pro zprostředkovatele Kafka na klienty. Tato konfigurace nefunguje s klientským softwarem sítě VPN, protože pro entity ve virtuální síti nelze použít překlad názvů. Pro tuto konfiguraci pomocí následujících kroků nakonfigurujte Kafka, aby inzerovala IP adresy místo názvů domén:
 
-1. Pomocí webového prohlížeče, přejděte na `https://CLUSTERNAME.azurehdinsight.net`. Nahraďte `CLUSTERNAME` s názvem Kafka v clusteru HDInsight.
+1. V případě webového prohlížeče, přejít na `https://CLUSTERNAME.azurehdinsight.net`. Nahraďte `CLUSTERNAME` názvem Kafka v clusteru HDInsight.
 
-    Po zobrazení výzvy použijte HTTPS uživatelské jméno a heslo pro cluster. Webové uživatelské rozhraní Ambari pro cluster se zobrazí.
+    Po zobrazení výzvy použijte uživatelské jméno a heslo HTTPS pro daný cluster. Zobrazí se webové uživatelské rozhraní Ambari pro cluster.
 
-2. Chcete-li zobrazit informace o Kafka, vyberte __Kafka__ ze seznamu na levé straně.
+2. Pokud chcete zobrazit informace o Kafka, vyberte v seznamu vlevo možnost __Kafka__ .
 
-    ![Zvýrazněný seznamu služeb s využitím Kafka](./media/apache-kafka-connect-vpn-gateway/select-kafka-service.png)
+    ![Seznam služeb s zvýrazněným Kafka](./media/apache-kafka-connect-vpn-gateway/select-kafka-service.png)
 
-3. Chcete-li zobrazit informace o konfiguraci Kafka, vyberte __Configs__ z nahoře uprostřed.
+3. Pokud chcete zobrazit konfiguraci Kafka, v horním __rohu vyberte konfigurace__ .
 
-    ![Konfigurace odkazů pro systém Kafka](./media/apache-kafka-connect-vpn-gateway/select-kafka-config.png)
+    ![Odkazy konfigurace pro Kafka](./media/apache-kafka-connect-vpn-gateway/select-kafka-config.png)
 
-4. Najít __kafka env__ konfigurace, zadejte `kafka-env` v __filtr__ pole v pravém horním rohu.
+4. Pokud chcete najít konfiguraci __Kafka-ENV__ , zadejte `kafka-env` do pole __filtru__ v pravém horním rohu.
 
-    ![Konfigurace Kafka, kafka env](./media/apache-kafka-connect-vpn-gateway/search-for-kafka-env.png)
+    ![Konfigurace Kafka pro Kafka-ENV](./media/apache-kafka-connect-vpn-gateway/search-for-kafka-env.png)
 
-5. Ke konfiguraci Kafka inzerovat IP adresy, přidejte následující text k dolní části __kafka env šablony__ pole:
+5. Pokud chcete nakonfigurovat Kafka pro inzerování IP adres, přidejte následující text do dolní části pole __Kafka-ENV-Template__ :
 
     ```
     # Configure Kafka to advertise IP addresses instead of FQDN
@@ -268,33 +268,33 @@ Ve výchozím nastavení Apache Zookeeper vrátí název domény zprostředkovat
     echo "advertised.listeners=PLAINTEXT://$IP_ADDRESS:9092" >> /usr/hdp/current/kafka-broker/conf/server.properties
     ```
 
-6. Pokud chcete nakonfigurovat rozhraní, které naslouchá Kafka, zadejte `listeners` v __filtr__ pole v pravém horním rohu.
+6. Chcete-li nakonfigurovat rozhraní, na kterém naslouchá Kafka, `listeners` zadejte do pole __filtru__ v pravém horním rohu.
 
-7. Ke konfiguraci Kafka tak, aby naslouchala na všech síťových rozhraních, změňte hodnotu v __naslouchacích procesů__ pole `PLAINTEXT://0.0.0.0:9092`.
+7. Chcete-li nakonfigurovat Kafka pro naslouchání na všech síťových rozhraních, změňte hodnotu v poli `PLAINTEXT://0.0.0.0:9092` __naslouchací procesy__ na.
 
-8. Chcete-li uložit změny konfigurace, použijte __Uložit__ tlačítko. Zadejte textovou zprávu s popisem změny. Vyberte __OK__ po změny se uložily.
+8. Chcete-li uložit změny konfigurace, použijte tlačítko __Uložit__ . Zadejte textovou zprávu popisující změny. Po uložení změn klikněte na __OK__ .
 
-    ![Konfigurace tlačítko Uložit](./media/apache-kafka-connect-vpn-gateway/save-button.png)
+    ![Tlačítko Uložit konfiguraci](./media/apache-kafka-connect-vpn-gateway/save-button.png)
 
-9. Chcete-li zabránit chybám při restartování Kafka, použijte __akce služby__ tlačítko a vyberte __zapnout v režimu údržby__. Klepněte na tlačítko OK pro dokončení této operace.
+9. Chcete-li zabránit chybám při restartování Kafka, použijte tlačítko __Akce služby__ a vyberte __zapnout režim údržby__. Kliknutím na tlačítko OK dokončete tuto operaci.
 
-    ![Akce služby s zapnout zvýrazněnou údržby](./media/apache-kafka-connect-vpn-gateway/turn-on-maintenance-mode.png)
+    ![Akce služby s zvýrazněnou možností zapnout údržbu](./media/apache-kafka-connect-vpn-gateway/turn-on-maintenance-mode.png)
 
-10. Chcete-li restartovat Kafka, použijte __restartovat__ tlačítko a vyberte __restartujte všechny ovlivněné__. Potvrďte restartování a pak použít __OK__ tlačítka po dokončení operace.
+10. Pokud chcete restartovat Kafka, použijte tlačítko __restartovat__ a vyberte __restartovat všechny ovlivněné__. Potvrďte restartování a potom po dokončení operace použijte tlačítko __OK__ .
 
-    ![Restartujte zvýrazněným tlačítkem s restartem vliv](./media/apache-kafka-connect-vpn-gateway/restart-button.png)
+    ![Tlačítko restartovat s zvýrazněnou možností restartovat všechny ovlivněné](./media/apache-kafka-connect-vpn-gateway/restart-button.png)
 
-11. Chcete-li zakázat režim údržby, použijte __akce služby__ tlačítko a vyberte __zapnout vypnout režim údržby__. Vyberte **OK** k dokončení této operace.
+11. Chcete-li zakázat režim údržby, použijte tlačítko __Akce služby__ a vyberte možnost __vypnout režim údržby__. Kliknutím na **tlačítko OK** dokončete tuto operaci.
 
 ### <a name="connect-to-the-vpn-gateway"></a>Připojení k bráně VPN
 
-Pro připojení ke službě VPN gateway, použijte __připojit se k Azure__ část [konfigurace připojení typu Point-to-Site](../../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md#connect) dokumentu.
+Pokud se chcete připojit k bráně VPN, použijte část __připojit k Azure__ v dokumentu [Konfigurace připojení typu Point-to-site](../../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md#connect) .
 
-## <a id="python-client"></a> Příklad: Pythonového klienta
+## <a id="python-client"></a>Případě Klient Pythonu
 
-K ověření připojení k systému Kafka, použijte následující postup k vytvoření a spuštění Pythonu producenta a konzumenta:
+Pokud chcete ověřit připojení k Kafka, pomocí následujícího postupu vytvořte a spusťte producenta Pythonu a příjemce:
 
-1. K načtení plně kvalifikovaný název domény (FQDN) a IP adresy uzlů v clusteru Kafka, použijte jednu z následujících metod:
+1. K načtení plně kvalifikovaného názvu domény (FQDN) a IP adresy uzlů v clusteru Kafka použijte jednu z následujících metod:
 
     ```powershell
     $resourceGroupName = "The resource group that contains the virtual network used with HDInsight"
@@ -316,17 +316,17 @@ K ověření připojení k systému Kafka, použijte následující postup k vyt
     az network nic list --resource-group <resourcegroupname> --output table --query "[?contains(name,'node')].{NICname:name,InternalIP:ipConfigurations[0].privateIpAddress,InternalFQDN:dnsSettings.internalFqdn}"
     ```
 
-    Tento skript předpokládá, že `$resourceGroupName` je název skupiny prostředků Azure, která obsahuje virtuální síť.
+    Tento skript předpokládá, `$resourceGroupName` že je název skupiny prostředků Azure, která obsahuje virtuální síť.
 
-    Uložte vrácené informace pro použití v dalších krocích.
+    V dalších krocích uložte vrácené informace pro použití.
 
-2. Pomocí následujícího postupu nainstalujte [kafka python](https://kafka-python.readthedocs.io/) klienta:
+2. K instalaci klienta [Kafka-Python](https://kafka-python.readthedocs.io/) použijte následující postup:
 
     ```bash
     pip install kafka-python
     ```
 
-3. K odesílání dat do Kafka, použijte následující kód Pythonu:
+3. K odeslání dat do Kafka použijte následující kód Pythonu:
 
    ```python
    from kafka import KafkaProducer
@@ -337,16 +337,16 @@ K ověření připojení k systému Kafka, použijte následující postup k vyt
       producer.send('testtopic', b'test message')
    ```
 
-    Nahradit `'kafka_broker'` položky s adresami vrácená z kroku 1 v této části:
+    Nahraďte `'kafka_broker'` položky adresami vrácenými z kroku 1 v této části:
 
-   * Pokud používáte __klientského softwaru VPN__, nahraďte `kafka_broker` položky s IP adresou navyšte kapacitu pracovních uzlů.
+   * Pokud používáte __softwarového klienta sítě VPN__, nahraďte `kafka_broker` položky IP adresou vašich pracovních uzlů.
 
-   * Pokud máte __povolen překlad názvů pomocí vlastního serveru DNS__, nahraďte `kafka_broker` položky s plně kvalifikovaný název domény uzlů pracovního procesu.
+   * Pokud jste __povolili překlad IP adres pomocí vlastního serveru DNS__, nahraďte `kafka_broker` položky názvem FQDN pracovních uzlů.
 
      > [!NOTE]
-     > Tento kód odešle řetězec `test message` do tématu `testtopic`. Výchozí konfigurace kafka v HDInsight se má vytvořit téma, pokud neexistuje.
+     > Tento kód odešle řetězec `test message` do tématu. `testtopic` Výchozí konfigurací Kafka ve službě HDInsight je vytvoření tématu, pokud neexistuje.
 
-4. Pokud chcete načíst zprávy z Kafka, použijte následující kód Pythonu:
+4. Chcete-li načíst zprávy ze Kafka, použijte následující kód Pythonu:
 
    ```python
    from kafka import KafkaConsumer
@@ -360,23 +360,23 @@ K ověření připojení k systému Kafka, použijte následující postup k vyt
      print (msg)
    ```
 
-    Nahradit `'kafka_broker'` položky s adresami vrácená z kroku 1 v této části:
+    Nahraďte `'kafka_broker'` položky adresami vrácenými z kroku 1 v této části:
 
-    * Pokud používáte __klientského softwaru VPN__, nahraďte `kafka_broker` položky s IP adresou navyšte kapacitu pracovních uzlů.
+    * Pokud používáte __softwarového klienta sítě VPN__, nahraďte `kafka_broker` položky IP adresou vašich pracovních uzlů.
 
-    * Pokud máte __povolen překlad názvů pomocí vlastního serveru DNS__, nahraďte `kafka_broker` položky s plně kvalifikovaný název domény uzlů pracovního procesu.
+    * Pokud jste __povolili překlad IP adres pomocí vlastního serveru DNS__, nahraďte `kafka_broker` položky názvem FQDN pracovních uzlů.
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace o používání HDInsight se službou virtual network, najdete v článku [rozšíření Azure HDInsight pomocí Azure Virtual Network](../hdinsight-extend-hadoop-virtual-network.md) dokumentu.
+Další informace o používání služby HDInsight s virtuální sítí najdete v dokumentu [Plánování nasazení virtuální sítě pro clustery Azure HDInsight](../hdinsight-plan-virtual-network-deployment.md) .
 
-Další informace o vytvoření služby Azure Virtual Network pomocí brány VPN typu Point-to-Site najdete v následujících dokumentech:
+Další informace o vytvoření Virtual Network Azure s bránou VPN typu Point-to-site najdete v následujících dokumentech:
 
-* [Konfigurace připojení typu Point-to-Site pomocí webu Azure portal](../../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md)
+* [Konfigurace připojení typu Point-to-site pomocí Azure Portal](../../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md)
 
-* [Konfigurace připojení typu Point-to-Site pomocí Azure Powershellu](../../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md)
+* [Konfigurace připojení typu Point-to-site pomocí Azure PowerShell](../../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md)
 
 Další informace o práci s Apache Kafka v HDInsight najdete v následujících dokumentech:
 
 * [Začínáme s Apache Kafka v HDInsight](apache-kafka-get-started.md)
-* [Použití zrcadlení s využitím Apache Kafka v HDInsight](apache-kafka-mirroring.md)
+* [Použití zrcadlení s Apache Kafka v HDInsight](apache-kafka-mirroring.md)

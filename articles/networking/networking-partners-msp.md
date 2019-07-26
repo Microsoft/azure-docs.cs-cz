@@ -1,56 +1,56 @@
 ---
-title: 'Partneři sítě: Sítě Azure | Dokumentace Microsoftu'
-description: Tento článek obsahuje seznam MSP sítě partnerů
+title: 'Partneři sítě: Sítě Azure | Microsoft Docs'
+description: Tento článek poskytuje seznam partnerských síťových partnerů MSP.
 services: networking
 author: skishen525
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 07/10/2019
+ms.date: 07/22/2019
 ms.author: sukishen
-ms.openlocfilehash: 922749591bdc9222e5f97b2bb6828c5660c0dbac
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: ffcfd48d9a93ee7c73e2597ff9bea704e0378440
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67840325"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68385214"
 ---
-# <a name="about-azure-networking-msp-partners"></a>Pro partnery programu MSP sítě Azure
+# <a name="about-azure-networking-msp-partners"></a>Informace o sítích Azure pro síťové služby MSP
 
-Partnerský Program Azure sítě spravované služby zprostředkovatele (MSP) umožňuje síťové – služby, zaměřuje účastníci programu MSP, Telcos a systémovým Integrátorům (SIs) nabízí Cloudová a hybridní síťové služby na celém portfoliu Azure síťových produktů a služby.
+Partnerský program pro poskytovatele spravovaných služeb sítě Azure (MSP) umožňuje síťové služby zaměřené na účastníci programu MSP, telcos a integrátory systémů (SIs), aby nabízely cloudové a hybridní síťové služby, které se centrují s portfoliom síťových produktů Azure. orgány.
 
-Azure Networking účastníci programu MSP jsou specializované sadu poskytovatelům spravovaných služeb, které řeší enterprise cloud síťové požadavky a problémy celé škále cloudových a hybridních sítí. Služby spravované sítě zahrnují jeden nebo více z následujících služeb: síťové architektury, plánování, nasazení, operations, údržby a optimalizace.
+Azure Networking účastníci programu MSP jsou specializovaná sada poskytovatelů spravovaných služeb, které řeší potřeby a problémy podnikového cloudového přístupu napříč všemi aspekty cloudových a hybridních sítí. Spravované síťové služby zahrnují jednu nebo více následujících služeb: architektura sítě, plánování, nasazení, provoz, údržba a optimalizace.
 
 ![MSP][0]
 
-Zákazníci si můžou koupit služby spravované MSP nabídky na webu Azure Marketplace, nebo přímo pomocí serveru proxy. Účastníci programu MSP můžete nasadit a spravovat Azure síťové prostředky v předplatných a skupin prostředků zákazníků s využitím Azure maják.
+Zákazníci si můžou koupit služby spravované MSP v Azure Marketplace nebo přímo z MSP. Účastníci programu MSP může nasadit a spravovat síťové prostředky Azure v předplatných zákazníků a skupinách prostředků pomocí Azure Lighthouse.
 
-## <a name="msp"></a>Partneři programu MSP
+## <a name="msp"></a>Partneři MSP
 
-Další informace o spravované cloudové sítě služeb, které partneři programu MSP sítě Azure, použijte odkazy v této části. Pokud váš partner služeb cloudové sítě není uvedené v následující části, máte poskytovatele, obraťte se na nás. Můžete nás kontaktovat na e-mailem ManagedVirtualWAN@microsoft.com. 
+Odkazy v této části použijte, pokud chcete získat další informace o službách spravovaného cloudu, které nabízejí partneři Azure sítě MSP. Pokud Váš partner cloudových síťových služeb není uveden v níže uvedené části, obraťte se na nás poskytovatele. Můžou nás kontaktovat odesláním e-mailu ManagedVirtualWAN@microsoft.comna adresu. 
 
-[Aryaka Networks](https://www.aryaka.com/)
+[Aryaka Networks sítě](https://www.aryaka.com/)
 
 [BT](https://www.bt.com/)
 
-[Dimenze dat](https://www.dimensiondata.com/)
+[Data dimenze](https://www.dimensiondata.com/)
 
 [Equinix](https://www.equinix.com/)
 
 [InterCloud](https://www.intercloud.com/)
 
-[IIJ](https://www.riverbed.com/go/steelconnect-azurewan.html)
+[IIJ](https://www.iij.ad.jp/en/)
 
 [Megaport](https://www.megaport.com/)
 
-[Tata Communications](https://www.tatacommunications.com/)
+[Tata komunikace](https://www.tatacommunications.com/)
 
 ## <a name="expressroute"></a>Partneři ExpressRoute
 
-Informace o partnerech najdete v tématu [ExpressRoute partneři a umístění](../expressroute/expressroute-locations-providers.md).
+Informace o partnerech najdete v tématu [partneři a umístění ExpressRoute](../expressroute/expressroute-locations-providers.md).
 
-## <a name="vwan"></a>Virtuální sítě WAN partnerů
+## <a name="vwan"></a>Virtuální partneři sítě WAN
 
-Informace o partnerech najdete v tématu [virtuální sítě WAN partnerům a poskytovatelům](../virtual-wan/virtual-wan-locations-partners.md).
+Informace o partnerech najdete v tématu [virtuální partneři a poskytovatelé sítě WAN](../virtual-wan/virtual-wan-locations-partners.md).
 
 <!--Image References-->
 [0]: ./media/networking-partners-msp/msp.png "Popis programu MSP"

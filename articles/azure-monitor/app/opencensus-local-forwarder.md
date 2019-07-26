@@ -1,6 +1,6 @@
 ---
-title: Azure Application Insights OpenCensus distribuované trasování místní předávání (Preview) | Dokumentace Microsoftu
-description: Dopředné OpenCensus distribuované trasování a časem ukončení jazyky, jako je Python a přejděte do služby Azure Application Insights
+title: Azure Application Insights OpenCensus distribuované trasování pro místní službu pro distribuci (Preview) | Dokumentace Microsoftu
+description: Předejte OpenCensus distribuované trasování a rozsahy z jazyků, jako je Python, a přejít na Azure Application Insights
 services: application-insights
 documentationcenter: ''
 author: mrbullwinkle
@@ -12,77 +12,77 @@ ms.topic: conceptual
 ms.date: 09/18/2018
 ms.reviewer: nimolnar
 ms.author: mbullwin
-ms.openlocfilehash: a7efe663a75fa29a31e7157c5eab24c2973a3758
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: aa64755b636005f4ed8ea5c074ffaada51fb8dd9
+ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60699299"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68348148"
 ---
-# <a name="local-forwarder-preview"></a>Místní server pro předávání (Preview)
+# <a name="local-forwarder-preview"></a>Místní server pro přeposílání (Preview)
 
-Místní služba předávání je agenta, který shromažďuje Application Insights nebo [OpenCensus](https://opencensus.io/) telemetrická data z nejrůznějších sad SDK a směruje je do služby Application Insights. Je schopný běžet pod Windows a Linux. Je také možné spouštět v systému macOS, ale není oficiálně podporován v tuto chvíli.
+Místní předávací server je agent, který shromažďuje Application Insights nebo [OpenCensus](https://opencensus.io/) telemetrie z nejrůznějších sad SDK a směruje je Application Insights. Dokáže běžet v systému Windows a Linux. Je možné, že ho budete moct spustit pod macOS, ale v tuto chvíli není oficiálně podporovaný.
 
-## <a name="running-local-forwarder"></a>Spuštění místní služby předávání
+## <a name="running-local-forwarder"></a>Spuštění místního serveru pro přeposílání
 
-Místní služba předávání je [projekt open source na Githubu](https://github.com/Microsoft/ApplicationInsights-LocalForwarder/releases). Existuje řada různých způsobů, jak spustit místní server pro předávání na více platformách.
+Místní server pro přeposílání je [otevřený zdrojový projekt na GitHubu](https://github.com/Microsoft/ApplicationInsights-LocalForwarder/releases). K dispozici je celá řada způsobů, jak spustit místní server pro přesměrování na různých platformách.
 
 ### <a name="windows"></a>Windows
 
-#### <a name="windows-service"></a>Windows Service
+#### <a name="windows-service"></a>Služba systému Windows
 
-Po instalaci se jako služba Windows je nejjednodušší způsob spouštění místní server pro předávání v části Windows. Spustitelný soubor Windows služby je součástí vydání (*WindowsServiceHost/Microsoft.LocalForwarder.WindowsServiceHost.exe*) která lze snadno dokument zaregistrovat u operačního systému.
+Nejjednodušší způsob, jak spustit místní službu pro překládání v systému Windows, je její instalace jako služba systému Windows. Verze se dodává se spustitelným souborem služby systému Windows (*WindowsServiceHost/Microsoft. LocalForwarder. WindowsServiceHost. exe*), který lze snadno zaregistrovat s operačním systémem.
 
 > [!NOTE]
-> Služba předávání místní vyžaduje minimálně rozhraní .NET Framework 4.7. Pokud nemáte rozhraní .NET Framework 4.7 služby bude instalace, ale nespustí. Pro přístup k nejnovější verzi rozhraní .NET Framework **[najdete na stránce pro stažení rozhraní .NET Framework](
+> Místní služba pro přeposílání vyžaduje minimálně .NET Framework 4,7. Pokud nemáte .NET Framework 4,7, služba se nainstaluje, ale nespustí se. Pro přístup k nejnovější verzi rozhraní .NET Framework **[najdete na stránce pro stažení rozhraní .NET Framework](
 https://www.microsoft.com/net/download/dotnet-framework-runtime/net472?utm_source=getdotnet&utm_medium=referral)** .
 
-1. Stáhněte si LF. Soubor WindowsServiceHost.zip z [stránce verzí místní předávání](https://github.com/Microsoft/ApplicationInsights-LocalForwarder/releases) na Githubu.
+1. Stáhněte si LF. Soubor WindowsServiceHost. zip ze [stránky pro vydání místního serveru](https://github.com/Microsoft/ApplicationInsights-LocalForwarder/releases) pro posílání na GitHubu.
 
-    ![Snímek obrazovky stránky pro stažení verze místní server pro předávání](./media/opencensus-local-forwarder/001-local-forwarder-windows-service-host-zip.png)
+    ![Snímek obrazovky se stránkou pro stažení místního serveru pro dopředné verze](./media/opencensus-local-forwarder/001-local-forwarder-windows-service-host-zip.png)
 
-2. V tomto příkladu pro snadné ukázku jsme právě extrahuje soubor ZIP do cesty `C:\LF-WindowsServiceHost`.
+2. V tomto příkladu je pro usnadnění ukázky pouze extrahování souboru zip do cesty `C:\LF-WindowsServiceHost`.
 
-    Registrovat službu a nakonfigurovat tak, aby při spuštění systému počítače spusťte následující příkaz z příkazového řádku jako správce:
+    Pokud chcete službu zaregistrovat a nakonfigurovat tak, aby se spouštěla při spuštění systému, spusťte na příkazovém řádku následující příkaz jako správce:
 
     ```
     sc create "Local Forwarder" binpath="C:\LF-WindowsServiceHost\Microsoft.LocalForwarder.WindowsServiceHost.exe" start=auto
     ```
     
-    Mělo by se zobrazit odpověď:
+    Měli byste obdržet odpověď na:
     
     `[SC] CreateService SUCCESS`
     
-    Prozkoumat nové služby pomocí grafického uživatelského rozhraní služby typu ``services.msc``
+    Prohlédnutí nové služby prostřednictvím typu grafického uživatelského rozhraní služeb``services.msc``
         
-     ![Snímek obrazovky služby předávání místní](./media/opencensus-local-forwarder/002-services.png)
+     ![Snímek obrazovky místní služby pro přeposílání](./media/opencensus-local-forwarder/002-services.png)
 
-3. **Klikněte pravým tlačítkem na** nové místní server pro předávání a vyberte **Start**. Vaše služba nyní zadáte do spuštěného stavu.
+3. Klikněte **pravým tlačítkem na** nový místní server pro směrování a vyberte **Spustit**. Vaše služba teď přejde do běžícího stavu.
 
-4. Ve výchozím nastavení je služba vytvořena bez jakékoli akce obnovení. Je možné **klikněte pravým tlačítkem na** a vyberte **vlastnosti** > **obnovení** nakonfigurovat automatické odpovědi na chybu služby.
+4. Ve výchozím nastavení je služba vytvořena bez jakýchkoli akcí obnovení. Můžete **kliknout pravým tlačítkem** **a vybrat možnost** > **obnovit** nastavení a nakonfigurovat automatické odezvy na selhání služby.
 
-    Nebo pokud chcete nastavit možnosti automatického obnovení prostřednictvím kódu programu pro, pokud dojde k selhání, můžete použít:
+    Pokud ale chcete nastavit automatické možnosti obnovení pro případ, že dojde k chybám, můžete použít:
 
     ```
     sc failure "Local Forwarder" reset= 432000 actions= restart/1000/restart/1000/restart/1000
     ```
 
-5. Ve stejném umístění jako váš ``Microsoft.LocalForwarder.WindowsServiceHost.exe`` soubor, který v tomto příkladu je ``C:\LF-WindowsServiceHost`` existuje soubor s názvem ``LocalForwarder.config``. Toto je soubor xml na základě, která vám umožní přizpůsobit konfiguraci vašeho localforwader a zadat Instrumentační klíč tohoto prostředku Application Insights má předávat data distribuované trasování. 
+5. Ve stejném umístění ``Microsoft.LocalForwarder.WindowsServiceHost.exe`` , ve kterém je ``C:\LF-WindowsServiceHost`` soubor, který v tomto příkladu je soubor s názvem ``LocalForwarder.config``. Jedná se o soubor založený na jazyce XML, který umožňuje upravit konfiguraci localforwader a zadat klíč instrumentace prostředku Application Insights, pro který chcete překládat data distribuovaného trasování. 
 
-    Po dokončení úprav ``LocalForwarder.config`` soubor přidat Instrumentační klíč, nezapomeňte restartovat **místní služby předávání** umožňující provedené změny projevily.
+    Po úpravě ``LocalForwarder.config`` souboru pro přidání klíče instrumentace nezapomeňte restartovat **místní službu pro** dodávání změn, aby se provedené změny projevily.
     
-6. Pokud chcete potvrdit, že požadovaná nastavení jsou na místě a, že místní služba předávání dat trasování jako očekávané kontrolu naslouchá ``LocalForwarder.log`` souboru. Měli byste vidět výsledky, podobně jako na obrázku níže v dolní části souboru:
+6. Pokud chcete potvrdit, že jsou nastavená vaše požadovaná nastavení a že místní předávací server naslouchá datům trasování podle očekávání, zkontrolujte ``LocalForwarder.log`` soubor. V dolní části souboru by se měly zobrazit podobné výsledky jako na obrázku:
 
-    ![Snímek obrazovky LocalForwarder.log souboru](./media/opencensus-local-forwarder/003-log-file.png)
+    ![Snímek obrazovky souboru LocalForwarder. log](./media/opencensus-local-forwarder/003-log-file.png)
 
 #### <a name="console-application"></a>Konzolová aplikace
 
-Pro určité případy použití, může být užitečné spustit místní server pro předávání jako konzolové aplikace. Verze obsahuje následující spustitelný soubor verze hostitele konzoly:
-* binární soubor .NET Core závisí na architektuře */ConsoleHost/publish/Microsoft.LocalForwarder.ConsoleHost.dll*. Tento binární soubor spuštění vyžaduje .NET Core runtime, který má být nainstalována. Přečtěte si tento soubor ke stažení [stránky](https://www.microsoft.com/net/download/dotnet-core/2.1) podrobnosti.
+V některých případech použití může být užitečné spustit místní server pro přeposílání jako konzolovou aplikaci. Verze je dodávána s následujícími spustitelnými verzemi hostitele konzoly:
+* binární */CONSOLEHOST/PUBLISH/Microsoft.LOCALFORWARDER.CONSOLEHOST.dll*.NET Core závislá na rozhraní. Spuštění tohoto binárního souboru vyžaduje, aby bylo možné nainstalovat modul runtime .NET Core. Podrobnosti najdete na této [stránce](https://www.microsoft.com/net/download/dotnet-core/2.1) ke stažení.
   ```batchfile
   E:\uncdrop\ConsoleHost\publish>dotnet Microsoft.LocalForwarder.ConsoleHost.dll
   ```
-* samostatná sada .NET Core, binární soubory pro x86 a x64 platformy. Ty nevyžadují .NET Core runtime pro spuštění. */ConsoleHost/win-x86/publish/Microsoft.LocalForwarder.ConsoleHost.exe*, */ConsoleHost/win-x64/publish/Microsoft.LocalForwarder.ConsoleHost.exe*.
+* samostatná sada binárních souborů .NET Core pro platformy x86 a x64. Ty nevyžadují, aby se spouštěl modul runtime .NET Core. */ConsoleHost/Win-x86/Publish/Microsoft.LocalForwarder.ConsoleHost.exe*, */ConsoleHost/Win-x64/Publish/Microsoft.LocalForwarder.ConsoleHost.exe*.
   ```batchfile
   E:\uncdrop\ConsoleHost\win-x86\publish>Microsoft.LocalForwarder.ConsoleHost.exe
   E:\uncdrop\ConsoleHost\win-x64\publish>Microsoft.LocalForwarder.ConsoleHost.exe
@@ -90,26 +90,26 @@ Pro určité případy použití, může být užitečné spustit místní serve
 
 ### <a name="linux"></a>Linux
 
-Stejně jako u Windows, verze obsahuje následující spustitelný soubor verze hostitele konzoly:
-* binární soubor .NET Core závisí na architektuře */ConsoleHost/publish/Microsoft.LocalForwarder.ConsoleHost.dll*. Tento binární soubor spuštění vyžaduje .NET Core runtime, který má být nainstalována. Přečtěte si tento soubor ke stažení [stránky](https://www.microsoft.com/net/download/dotnet-core/2.1) podrobnosti.
+Stejně jako ve Windows se verze dodává s následujícími spustitelnými verzemi hostitele konzoly:
+* binární */CONSOLEHOST/PUBLISH/Microsoft.LOCALFORWARDER.CONSOLEHOST.dll*.NET Core závislá na rozhraní. Spuštění tohoto binárního souboru vyžaduje, aby bylo možné nainstalovat modul runtime .NET Core. Podrobnosti najdete na této [stránce](https://www.microsoft.com/net/download/dotnet-core/2.1) ke stažení.
 
 ```batchfile
 dotnet Microsoft.LocalForwarder.ConsoleHost.dll
 ```
 
-* samostatná .NET Core je sada binární soubory pro linux-64. Ten nevyžaduje, aby modul runtime .NET Core pro spuštění. */ConsoleHost/linux-x64/publish/Microsoft.LocalForwarder.ConsoleHost*.
+* samostatná sada binárních souborů .NET Core pro Linux-64. Tento postup nevyžaduje spuštění modulu .NET Core Runtime. */ConsoleHost/Linux-x64/Publish/Microsoft.LocalForwarder.ConsoleHost*.
 
 ```batchfile
 user@machine:~/ConsoleHost/linux-x64/publish$ sudo chmod +x Microsoft.LocalForwarder.ConsoleHost
 user@machine:~/ConsoleHost/linux-x64/publish$ ./Microsoft.LocalForwarder.ConsoleHost
 ```
 
-Mnoho uživatelů Linuxu budou chtít spustit místní server pro předávání jako démon. V systémech Linux se dodává s širokou škálu řešení pro správu služeb, jako je Upstart, sysv nebo systemd. Všechno, co je konkrétní verzi, můžete ji spustit místní server pro předávání způsobem, který je pro váš scénář nejvhodnější.
+Mnoho uživatelů se systémem Linux bude chtít spustit místní server pro přesměrování jako démona. Systémy Linux jsou dodávány s nejrůznějšími řešeními pro správu služeb, jako je například spuštění, SYSV nebo systém. Bez ohledu na vaši konkrétní verzi ji můžete použít ke spuštění místního serveru pro směrování způsobem, který je nejvhodnější pro váš scénář.
 
-Jako příklad vytvoříme pomocí systemd služby démona. Použijeme verze závisí na architektuře, ale stejné lze provést samostatná jeden také.
+Jako příklad vytvoříte službu démon pomocí systému. Použijeme verzi závislou na rozhraní, ale totéž můžete udělat i pro sebe, která obsahuje.
 
-* Vytvořte následující soubor služby s názvem *localforwarder.service* a umístěte ho do */lib/systemd/system*.
-Tento příklad předpokládá své uživatelské jméno je SAMPLE_USER a zkopírování binárních souborů závisí na architektuře místní server pro předávání (z */ConsoleHost/publikovat*) k */home/SAMPLE_USER/LOCALFORWARDER_DIR*.
+* Vytvořte následující soubor služby s názvem *localforwarder. Service* a umístěte ho do */lib/systemd/System*.
+Tato ukázka předpokládá, že vaše uživatelské jméno je SAMPLE_USER a že jste zkopírovali binární soubory závislé na rozhraní pro směrování (z */ConsoleHost/Publish*) do */Home/SAMPLE_USER/LOCALFORWARDER_DIR*.
 
 ```
 # localforwarder.service
@@ -134,27 +134,27 @@ ExecStart=/usr/bin/env dotnet /home/SAMPLE_USER/LOCALFORWARDER_DIR/Microsoft.Loc
 WantedBy=multi-user.target
 ```
 
-* Spusťte následující příkaz, abyste instruovali systemd spustit místní server pro předávání v každém spuštění
+* Spusťte následující příkaz, který systému dá pokyn, aby při každém spuštění spouštěl místní server pro zakládání.
 
 ```
 systemctl enable localforwarder
 ```
 
-* Spusťte následující příkaz, abyste instruovali systemd chcete okamžitě spustit místní server pro předávání
+* Spusťte následující příkaz, který systému dá pokyn k okamžitému spuštění místního serveru pro přeposílání.
 
 ```
 systemctl start localforwarder
 ```
 
-* Monitorovat službu zkontrolováním * *.log* soubory v adresáři /home/SAMPLE_USER/LOCALFORWARDER_DIR.
+* Sledujte službu pomocí kontroly souborů * *. log* v adresáři/Home/SAMPLE_USER/LOCALFORWARDER_DIR.
 
 ### <a name="mac"></a>Mac
-Místní server pro předávání může fungovat v systému macOS, ale není aktuálně podporována oficiálně.
+Místní služba pro přeposílání může pracovat s macOS, ale aktuálně není oficiálně podporovaná.
 
-### <a name="self-hosting"></a>S vlastním hostováním
-Místní server pro předávání se také distribuuje jako balíček NuGet pro rozhraní .NET Standard, díky tomu umožňuje hostovat vlastní aplikace .NET.
+### <a name="self-hosting"></a>Samoobslužné hostování
+Místní server pro odesílání je také distribuován jako .NET Standard balíček NuGet, což umožňuje jeho hostování v rámci vlastní aplikace .NET.
 
-```C#
+```csharp
 using Library;
 ...
 Host host = new Host();
@@ -167,19 +167,19 @@ host.Run(config, TimeSpan.FromSeconds(5));
 host.Stop();
 ```
 
-## <a name="configuring-local-forwarder"></a>Konfigurace místní server pro předávání
+## <a name="configuring-local-forwarder"></a>Konfigurace místního serveru pro směrování
 
-* Když s některým z místní služby předávání vlastního hostitele (hostitele konzoly nebo hostitel služby Windows), zjistíte **LocalForwarder.config** umístěny vedle binárního souboru.
-* Při hostování na vlastním místním předávání NuGet v kódu musí být zadaná konfigurace stejný formát (viz část o s vlastním hostováním). Konfigurace syntaxe, zkontrolujte, [LocalForwarder.config](https://github.com/Microsoft/ApplicationInsights-LocalForwarder/blob/master/src/ConsoleHost/LocalForwarder.config) v úložišti GitHub. 
+* Pokud provozujete jednoho z vlastních hostitelů pro místní přeposílání (hostitele konzoly nebo hostitele služby Windows), najdete soubor **LocalForwarder. config** , který se nachází vedle binárního souboru.
+* Při samoobslužném hostování rozhraní NuGet pro místní předávací službu musí být v kódu uvedena konfigurace stejného formátu (viz oddíl na samoobslužném hostování). V části Syntaxe konfigurace se podívejte na soubor [LocalForwarder. config](https://github.com/Microsoft/ApplicationInsights-LocalForwarder/blob/master/src/ConsoleHost/LocalForwarder.config) v úložišti GitHub. 
 
 > [!NOTE]
-> Konfigurace může změnit z verzí, proto věnujte pozornost tomu, na kterou verzi používáte.
+> Konfigurace se může změnit z verze na verzi, takže věnujte pozornost verzi, kterou používáte.
 
-## <a name="monitoring-local-forwarder"></a>Monitorování místní server pro předávání
+## <a name="monitoring-local-forwarder"></a>Monitorování místního předávacího serveru
 
-Trasování jsou zapsané do systému souborů vedle spustitelný soubor, na kterém běží server pro předávání místní (vyhledejte * *.log* soubory). Můžete umístit soubor s názvem *NLog.config* vedle spustitelný soubor a zadejte vlastní konfiguraci místo výchozí hodnotu. Zobrazit [dokumentaci](https://github.com/NLog/NLog/wiki/Configuration-file#configuration-file-format) pro popis formátu.
+Trasování se zapisují do systému souborů vedle spustitelného souboru, který používá místní server pro překládání (hledání souborů * *. log* ). Můžete umístit soubor s názvem *nLOG. config* vedle spustitelného souboru a poskytnout tak vlastní konfiguraci místo výchozí. Popis formátu naleznete v [dokumentaci](https://github.com/NLog/NLog/wiki/Configuration-file#configuration-file-format) .
 
-Není-li žádný konfigurační soubor (což je výchozí hodnota), místní předávání použije výchozí konfigurace, který se nachází [tady](https://github.com/Microsoft/ApplicationInsights-LocalForwarder/blob/master/src/Common/NLog.config).
+Pokud není zadaný žádný konfigurační soubor (což je výchozí nastavení), místní server pro překládání použije výchozí konfiguraci, kterou najdete [tady](https://github.com/Microsoft/ApplicationInsights-LocalForwarder/blob/master/src/Common/NLog.config).
 
 ## <a name="next-steps"></a>Další postup
 

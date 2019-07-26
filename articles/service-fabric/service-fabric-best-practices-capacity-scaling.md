@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/25/2019
 ms.author: pepogors
-ms.openlocfilehash: fe0af4ca7b6860fff19f4df3165a975c42b54a03
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: d4daa7ae9c7e58c1949dfbe4427a154c389100d4
+ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68277783"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68348369"
 ---
 # <a name="capacity-planning-and-scaling-for-azure-service-fabric"></a>Plánování kapacity a škálování pro Azure Service Fabric
 
@@ -92,7 +92,7 @@ Horizontální škálování můžete provádět buď [ručně](https://docs.mic
 
 Horizontální navýšení kapacity Service Fabric clusteru zvýšením počtu instancí konkrétní sady škálování virtuálního počítače. Horizontální navýšení kapacity můžete navýšit pomocí `AzureClient` a ID požadované sady škálování a zvýšit tak kapacitu.
 
-```c#
+```csharp
 var scaleSet = AzureClient.VirtualMachineScaleSets.GetById(ScaleSetId);
 var newCapacity = (int)Math.Min(MaximumNodeCount, scaleSet.Capacity + 1);
 scaleSet.Update().WithCapacity(newCapacity).Apply(); 
@@ -134,7 +134,7 @@ Pokud chcete ručně škálovat, aktualizujte kapacitu ve vlastnosti SKU požado
 
 Je nutné připravit uzel na vypnutí, aby bylo možné programově škálovat. Vyhledejte uzel, který má být odebrán (nejvyšší uzel instance). Příklad:
 
-```c#
+```csharp
 using (var client = new FabricClient())
 {
     var mostRecentLiveNode = (await client.QueryManager.GetNodeListAsync())
@@ -151,7 +151,7 @@ using (var client = new FabricClient())
 
 Deaktivujte a odeberte uzel pomocí stejné `FabricClient` instance (`client` v tomto případě) a instance uzlu (`instanceIdString` v tomto případě), kterou jste použili v předchozím kódu:
 
-```c#
+```csharp
 var scaleSet = AzureClient.VirtualMachineScaleSets.GetById(ScaleSetId);
 
 // Remove the node from the Service Fabric cluster
@@ -233,7 +233,7 @@ Druhý prostředek je pod `nodeTypes` [prostředkem Microsoft. ServiceFabric/clu
 ]
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * Vytvoření clusteru na virtuálních počítačích nebo počítačích se systémem Windows Server: [Service Fabric vytvoření clusteru pro Windows Server](service-fabric-cluster-creation-for-windows-server.md).
 * Vytvoření clusteru na virtuálních počítačích nebo počítačích se systémem Linux: [Vytvořte cluster se systémem Linux](service-fabric-cluster-creation-via-portal.md).

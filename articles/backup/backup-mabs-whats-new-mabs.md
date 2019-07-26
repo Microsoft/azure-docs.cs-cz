@@ -1,19 +1,18 @@
 ---
 title: Co je nového v Microsoft Azure Backup serveru
 description: Microsoft Azure Backup Server poskytuje rozšířené možnosti zálohování pro ochranu virtuálních počítačů, souborů a složek, úloh a dalších. Přečtěte si, jak nainstalovat nebo upgradovat na Azure Backup Server v3.
-services: backup
 author: rayne-wiselman
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: adigan
-ms.openlocfilehash: a858ac84ec9181cef4703c8fe236b9a3513af9f5
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: 131f5ae31649bd1973a3048b8b52a451f27522b4
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68234736"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68465004"
 ---
 # <a name="whats-new-in-microsoft-azure-backup-server"></a>Co je nového v Microsoft Azure Backup serveru
 
@@ -57,7 +56,7 @@ Další informace o postupu instalace/upgradu pro MABS najdete [zde](https://doc
 >
 > MABS má stejný základ kódu jako Data Protection Manager nástroje System Center. MABS v3 je ekvivalentem Data Protection Manager 1807.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Přečtěte si, jak připravit server nebo začít chránit úlohu:
 - [Známé problémy v MABS V3](backup-mabs-release-notes-v3.md)
