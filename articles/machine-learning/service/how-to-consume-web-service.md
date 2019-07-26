@@ -1,7 +1,7 @@
 ---
-title: Vytvoření klienta pro nasazenou webovou službu využití
+title: Vytvořit klienta pro využívání nasazené webové služby
 titleSuffix: Azure Machine Learning service
-description: Informace o využívání webové služby, který se vygeneroval při modelu byla nasazena s model Azure Machine Learning. Webová služba zpřístupňuje rozhraní REST API. Vytvoření klientů pro toto rozhraní API s využitím programovacím jazyce podle vašeho výběru.
+description: Naučte se využívat webovou službu vygenerovanou při nasazení modelu s modelem Azure Machine Learning. Webová služba zpřístupňuje REST API. Vytvořte klienty pro toto rozhraní API pomocí programovacího jazyka dle vašeho výběru.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,31 +11,31 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 07/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 376be43a57783f537df81f0e97f005e2c46a710e
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: 070dd07aa6705e97a532bdc5f53a08a9abe0f83d
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67797624"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68361009"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Využití Azure Machine Learning model nasadit jako webovou službu
 
-Rozhraní REST API Azure Machine Learning modelu jako webové služby vytvoří. Můžete odesílat data do tohoto rozhraní API a přijímat předpovědi vrácený modelu. V tomto dokumentu, zjistěte, jak vytvořit klientů pro webovou službu pomocí C#, Go, Java nebo Python.
+Rozhraní REST API Azure Machine Learning modelu jako webové služby vytvoří. Můžete odesílat data do tohoto rozhraní API a přijímat předpovědi vrácený modelu. V tomto dokumentu se dozvíte, jak vytvořit klienty pro webovou službu pomocí C#, jazyka Java a Pythonu.
 
-Při nasazení image do Azure Container Instances, Azure Kubernetes Service nebo pole programmable gate Array (FPGA), vytvořit webovou službu. Vytvoření Image z registrované modely a soubory vyhodnocení. Získat identifikátor URI použitý pro přístup k webové službě s použitím [SDK služby Azure Machine Learning](https://aka.ms/aml-sdk). Pokud je povolené ověřování, můžete také použít sady SDK získat ověřovací klíče.
+Webovou službu můžete vytvořit, když nasadíte image do Azure Container Instances, služby Azure Kubernetes nebo polí FPGA (s programovatelnými poli brány). Můžete vytvářet bitové kopie z registrovaných modelů a souborů bodování. Identifikátor URI, který se používá pro přístup k webové službě, načtete pomocí [sady Azure Machine Learning SDK](https://aka.ms/aml-sdk). Pokud je povolené ověřování, můžete také použít sady SDK získat ověřovací klíče.
 
-Obecný pracovní postup pro vytvoření klienta, který se používá webovou službu machine learning je:
+Obecný pracovní postup pro vytvoření klienta, který používá webovou službu Machine Learning, je:
 
-1. Použití sady SDK k získání informací o připojení.
-1. Určete typ dat požadavku využívané modelem.
-1. Vytvoření aplikace, která volá webové služby.
+1. K získání informací o připojení použijte sadu SDK.
+1. Určete typ dat požadavku, který model používá.
+1. Vytvořte aplikaci, která bude volat webovou službu.
 
 ## <a name="connection-information"></a>Informace o připojení
 
 > [!NOTE]
-> Pomocí sady SDK Azure Machine Learning můžete získat informace o webových službách. Toto je Python SDK. K vytvoření klienta pro službu můžete používat jakýkoli jazyk.
+> K získání informací o webové službě použijte sadu SDK Azure Machine Learning. Toto je Python SDK. Pro vytvoření klienta pro službu můžete použít libovolný jazyk.
 
-[Azureml.core.Webservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py) třída poskytuje informace, které potřebujete k vytvoření klienta. Následující `Webservice` vlastnosti jsou užitečné při vytváření klientské aplikace:
+Třída [AzureML. Core. WebService](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py) poskytuje informace, které potřebujete k vytvoření klienta. Následující `Webservice` vlastnosti jsou užitečné při vytváření klientské aplikace:
 
 * `auth_enabled` – Pokud je povoleno ověřování, `True`; v opačném případě `False`.
 * `scoring_uri` Adresa – rozhraní REST API.
@@ -53,14 +53,14 @@ Existují tři způsoby pro načtení těchto informací pro nasazené webové s
     print(service.scoring_uri)
     ```
 
-* Můžete použít `Webservice.list` k načtení seznamu nasazené webové služby pro modely v pracovním prostoru. Můžete přidat filtry k zúžení seznamu vrácených informací. Další informace o tom, co je filtrovat na, najdete v článku [Webservice.list](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice.webservice?view=azure-ml-py) referenční dokumentaci.
+* Můžete použít `Webservice.list` k načtení seznamu nasazené webové služby pro modely v pracovním prostoru. Můžete přidat filtry k zúžení seznamu vrácených informací. Další informace o tom, co je možné filtrovat, najdete v dokumentaci ke službě [WebService. list](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice.webservice?view=azure-ml-py) .
 
     ```python
     services = Webservice.list(ws)
     print(services[0].scoring_uri)
     ```
 
-* Pokud znáte název v nasazované službě, můžete vytvořit novou instanci třídy `Webservice`a zadejte název pracovního prostoru a služby jako parametry. Nový objekt obsahuje informace o nasazené služby.
+* Pokud znáte název nasazené služby, můžete vytvořit novou instanci `Webservice`a zadat název pracovního prostoru a služby jako parametry. Nový objekt obsahuje informace o nasazené služby.
 
     ```python
     service = Webservice(workspace=ws, name='myservice')
@@ -69,12 +69,12 @@ Existují tři způsoby pro načtení těchto informací pro nasazené webové s
 
 ### <a name="authentication-key"></a>Ověřovací klíč
 
-Když povolíte ověřování pro nasazení, automaticky se vytvoří ověřovací klíče.
+Pokud povolíte ověřování pro nasazení, automaticky se vytvoří ověřovací klíče.
 
-* Ve výchozím nastavení je povoleno ověřování při nasazování do služby Azure Kubernetes Service.
-* Ve výchozím nastavení je zakázáno ověřování při nasazování do služby Azure Container Instances.
+* Ověřování je ve výchozím nastavení povolené při nasazení do služby Azure Kubernetes.
+* Ověřování je ve výchozím nastavení zakázáno při nasazení do Azure Container Instances.
 
-Pokud chcete nastavit ověřování, použijte `auth_enabled` parametr při vytváření nebo aktualizaci nasazení.
+Pro řízení ověřování použijte `auth_enabled` parametr při vytváření nebo aktualizaci nasazení.
 
 Pokud je ověřování zapnuté, můžete použít `get_keys` metody k získání primární a sekundární ověřovací klíč:
 
@@ -102,7 +102,7 @@ Rozhraní REST API očekává, že text žádosti jako dokument JSON s následuj
 > [!IMPORTANT]
 > Strukturu dat musí odpovídat jaké hodnoticí skript a modelu v expect služby. Hodnoticí skript může upravit data před předáním do modelu.
 
-Například modelu v [trénování v rámci poznámkového bloku](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb) příklad očekává, že pole 10 čísel. Hodnoticí skript v tomto příkladu vytvoří pole Numpy z požadavku a předává je do modelu. Následující příklad ukazuje data, která očekává, že tato služba:
+Například modelu v [trénování v rámci poznámkového bloku](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb) příklad očekává, že pole 10 čísel. Skript bodování pro tento příklad vytvoří pole numpy z požadavku a předá ho do modelu. Následující příklad ukazuje data, která očekává, že tato služba:
 
 ```json
 {
@@ -128,14 +128,16 @@ Webová služba může přijmout víc kopií dat v jedné žádosti. Vrátí dok
 
 ### <a name="binary-data"></a>Binární data
 
-Pokud váš model přijímá binárních dat, jako je například image, musíte změnit `score.py` soubor se používá pro své nasazení tak, aby přijímal nezpracovaná požadavky HTTP. Tady je příklad `score.py` , který přijímá binárních dat:
+Pokud váš model přijímá binárních dat, jako je například image, musíte změnit `score.py` soubor se používá pro své nasazení tak, aby přijímal nezpracovaná požadavky HTTP. Tady je příklad `score.py` , který přijímá binární data:
 
-```python 
-from azureml.contrib.services.aml_request  import AMLRequest, rawhttp
+```python
+from azureml.contrib.services.aml_request import AMLRequest, rawhttp
 from azureml.contrib.services.aml_response import AMLResponse
+
 
 def init():
     print("This is init()")
+
 
 @rawhttp
 def run(request):
@@ -147,9 +149,9 @@ def run(request):
         return AMLResponse(respBody, 200)
     elif request.method == 'POST':
         reqBody = request.get_data(False)
-        # For a real world solution, you would load the data from reqBody 
+        # For a real world solution, you would load the data from reqBody
         # and send to the model. Then return the response.
-        
+
         # For demonstration purposes, this example just returns the posted data as the response.
         return AMLResponse(reqBody, 200)
     else:
@@ -157,9 +159,9 @@ def run(request):
 ```
 
 > [!IMPORTANT]
-> `azureml.contrib` Oboru názvů změní často, protože pracujeme na vylepšení služby. V důsledku toho cokoli, co je v tomto oboru názvů by měl být považovány za verzi preview a nejsou plně podporovány společností Microsoft.
+> `azureml.contrib` Obor názvů se často mění, protože budeme pracovat na vylepšení služby. V takovém případě by se cokoli v tomto oboru názvů měly považovat za verzi Preview a společnost Microsoft je plně Nepodporovaná.
 >
-> Pokud je potřeba otestovat na místním vývojovém prostředí, můžete nainstalovat komponenty `contrib` oboru názvů pomocí následujícího příkazu:
+> Pokud potřebujete tuto možnost otestovat v místním vývojovém prostředí, můžete komponenty nainstalovat do `contrib` oboru názvů pomocí následujícího příkazu:
 > 
 > ```shell
 > pip install azureml-contrib-services
@@ -440,45 +442,44 @@ scoring_uri = '<your web service URI>'
 key = '<your key>'
 
 # Two sets of data to score, so we get two results back
-data = {"data": 
+data = {"data":
+        [
             [
-                [
-                    0.0199132141783263, 
-                    0.0506801187398187, 
-                    0.104808689473925, 
-                    0.0700725447072635, 
-                    -0.0359677812752396, 
-                    -0.0266789028311707, 
-                    -0.0249926566315915, 
-                    -0.00259226199818282, 
-                    0.00371173823343597, 
-                    0.0403433716478807
-                ],
-                [
-                    -0.0127796318808497, 
-                    -0.044641636506989, 
-                    0.0606183944448076, 
-                    0.0528581912385822, 
-                    0.0479653430750293, 
-                    0.0293746718291555, 
-                    -0.0176293810234174, 
-                    0.0343088588777263, 
-                    0.0702112981933102, 
-                    0.00720651632920303]
-            ]
+                0.0199132141783263,
+                0.0506801187398187,
+                0.104808689473925,
+                0.0700725447072635,
+                -0.0359677812752396,
+                -0.0266789028311707,
+                -0.0249926566315915,
+                -0.00259226199818282,
+                0.00371173823343597,
+                0.0403433716478807
+            ],
+            [
+                -0.0127796318808497,
+                -0.044641636506989,
+                0.0606183944448076,
+                0.0528581912385822,
+                0.0479653430750293,
+                0.0293746718291555,
+                -0.0176293810234174,
+                0.0343088588777263,
+                0.0702112981933102,
+                0.00720651632920303]
+        ]
         }
 # Convert to JSON string
 input_data = json.dumps(data)
 
 # Set the content type
-headers = { 'Content-Type':'application/json' }
+headers = {'Content-Type': 'application/json'}
 # If authentication is enabled, set the authorization header
-headers['Authorization']=f'Bearer {key}'
+headers['Authorization'] = f'Bearer {key}'
 
 # Make the request and display the response
-resp = requests.post(scoring_uri, input_data, headers = headers)
+resp = requests.post(scoring_uri, input_data, headers=headers)
 print(resp.text)
-
 ```
 
 Vrácené výsledky jsou podobné následující dokument JSON:
@@ -487,10 +488,10 @@ Vrácené výsledky jsou podobné následující dokument JSON:
 [217.67978776218715, 224.78937091757172]
 ```
 
-## <a name="consume-the-service-from-power-bi"></a>Využívat služby z Power BI
+## <a name="consume-the-service-from-power-bi"></a>Využívání služby od Power BI
 
-Power BI podporuje využití služby Azure Machine Learning web Services rozšířit data v Power BI s předpovědí. 
+Power BI podporuje využití webových služeb Azure Machine Learning k rozšíření dat v Power BI pomocí předpovědi. 
 
-Generovat webovou službu, která je podporována pro použití v Power BI, musí podporovat schématu formátu, který vyžaduje Power BI. [Zjistěte, jak vytvořit schéma Power BI nepodporuje](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-and-where#example-script-with-dictionary-input-support-consumption-from-power-bi).
+Pro vygenerování webové služby, která je podporována pro použití v Power BI, musí schéma podporovat formát vyžadovaný Power BI. [Naučte se vytvořit schéma podporované Power BI](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-and-where#example-script-with-dictionary-input-support-consumption-from-power-bi).
 
-Po nasazení webové služby je lze použít z toky dat Power BI. [Informace o využívání webové služby Azure Machine Learning z Power BI](https://docs.microsoft.com/power-bi/service-machine-learning-integration).
+Po nasazení webové služby je tato služba příchodná z Power BIch toků dat. [Naučte se využívat Azure Machine Learning webové služby od Power BI](https://docs.microsoft.com/power-bi/service-machine-learning-integration).

@@ -1,19 +1,18 @@
 ---
 title: Použití Azure Backup Server k zálohování úloh do Azure
 description: Pomocí Azure Backup Server můžete chránit nebo zálohovat úlohy do Azure Portal.
-services: backup
 author: kasinh
 manager: vvithal
 ms.service: backup
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: kasinh
-ms.openlocfilehash: 12ec1ce4a774178be621d7d8626ead7f1b106189
-ms.sourcegitcommit: 20bb149fe74459e59b648361235324b0674fe55b
+ms.openlocfilehash: bf0e964c46088947fa50d1eadbcc12b78978251f
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68298533"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68466374"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Instalace a upgrade Azure Backup Server
 > [!div class="op_single_selector"]
@@ -51,11 +50,11 @@ Pokud nechcete spustit základní server v Azure, můžete server spustit na vir
 
 | Operační systém | Platforma | SKU |
 |:--- | --- |:--- |
-| Windows Server. 2019 |64bitová verze |Standard, Datacenter, Essentials (MABS v3 a novější) |
-| Windows Server 2016 a nejnovější aktualizace service packu |64bitová verze |Standard, Datacenter, Essentials (MABS v2 a novější) |
-| Windows Server 2012 R2 a nejnovější aktualizace Service Packu |64bitová verze |Standard, Datacenter, Foundation |
+| Windows Server. 2019 |64bitový |Standard, Datacenter, Essentials (MABS v3 a novější) |
+| Windows Server 2016 a nejnovější aktualizace service packu |64bitový |Standard, Datacenter, Essentials (MABS v2 a novější) |
+| Windows Server 2012 R2 a nejnovější aktualizace Service Packu |64bitový |Standard, Datacenter, Foundation |
 | Windows Storage Server 2012 R2 a nejnovější aktualizace Service Packu |64bitová verze |Standard, Workgroup |
-| Windows Storage Server 2012 a nejnovější aktualizace Service Packu |64bitová verze |Standard, Workgroup |
+| Windows Storage Server 2012 a nejnovější aktualizace Service Packu |64bitový |Standard, Workgroup |
 
 Pomocí odstranění duplicitních dat systému Windows Server můžete odstranit duplicitu úložiště aplikace DPM. Přečtěte si další informace o tom [, jak aplikace DPM a odstraňování duplicitních dat](https://technet.microsoft.com/library/dn891438.aspx) při nasazení na virtuálních počítačích Hyper-V spolupracují.
 
@@ -274,7 +273,7 @@ Kromě toho musí být předplatné Azure v dobrém stavu. Pokud chcete zjistit 
 
 Jakmile budete znát stav připojení Azure a předplatného Azure, můžete pomocí následující tabulky zjistit dopad na nabízené funkce zálohování a obnovení.
 
-| Stav připojení | předplatné Azure | Zálohování do Azure | Zálohovat na disk | Obnovení z Azure | Obnovení z disku |
+| Stav připojení | Předplatné Azure | Zálohování do Azure | Zálohovat na disk | Obnovení z Azure | Obnovení z disku |
 | --- | --- | --- | --- | --- | --- |
 | Připojeno |Aktivní |Povoleno |Povoleno |Povoleno |Povoleno |
 | Připojeno |Vypršela platnost |Zastaveno |Zastaveno |Povoleno |Povoleno |
@@ -295,7 +294,7 @@ Pokud máte bránu firewall nebo proxy server, který brání přístupu k Azure
 Po obnovení připojení k Azure na Azure Backup Server počítač se operace, které jde provést, stanoví ve stavu předplatného Azure. Výše uvedená tabulka obsahuje podrobnosti o operacích, které jsou povolené, když je počítač připojený.
 
 ### <a name="handling-subscription-states"></a>Zpracování stavů předplatného
-Je možné přebírat předplatné Azure ze stavu, *jehož platnost vypršela* , nebo je stav *aktivní* . Nicméně to má vliv na chování produktu, zatímco stav není *aktivní*:
+Je možné přebírat předplatné Azure ze stavu, *jehož platnost vypršela* *, nebo je* stav *aktivní* . Nicméně to má vliv na chování produktu, zatímco stav není *aktivní*:
 
 * *Zrušení zřízené* předplatné ztratí funkčnost po dobu, kdy je zrušeno zřízení. Při zapínání na *aktivní*se funkce zálohování a obnovení obnovená. Záložní data na místním disku můžete také načíst, pokud byla držena s dostatečně velkým obdobím uchovávání. Data záloh v Azure se ale irretrievably ztratí, jakmile předplatné vstoupí do stavu *zrušeno* .
 * Předplatné, *jehož platnost vypršela* , pouze ztratí funkčnost, dokud nebude znovu *aktivováno* . U všech záloh naplánovaných po dobu, kdy *vypršela platnost* předplatného, se nespustí.

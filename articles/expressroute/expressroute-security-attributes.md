@@ -1,6 +1,6 @@
 ---
-title: Běžné atributy zabezpečení pro Azure ExpressRoute
-description: Kontrolní seznam společné atributy zabezpečení za vaše rozhodnutí vyzkoušet Azure ExpressRoute
+title: Atributy zabezpečení pro Azure ExpressRoute
+description: Kontrolní seznam atributů zabezpečení pro vyhodnocení Azure ExpressRoute
 services: expressroute
 ms.service: expressroute
 documentationcenter: ''
@@ -9,16 +9,16 @@ manager: barbkess
 ms.topic: conceptual
 ms.date: 06/05/2019
 ms.author: mbaldwin
-ms.openlocfilehash: d6156715fb87831d465197fd8eec59d245221e48
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c9a46497c18b99ad7774036fd92e63d024b47045
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67083272"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68442202"
 ---
-# <a name="common-security-attributes-for-azure-expressroute"></a>Běžné atributy zabezpečení pro Azure ExpressRoute
+# <a name="security-attributes-for-azure-expressroute"></a>Atributy zabezpečení pro Azure ExpressRoute
 
-Zabezpečení je integrované do všech oblastí služby Azure. Tento článek popisuje běžné atributy zabezpečení integrované do Azure ExpressRoute.
+Tento článek popisuje atributy zabezpečení integrované do Azure ExpressRoute.
 
 [!INCLUDE [Security Attributes Header](../../includes/security-attributes-header.md)]
 
@@ -26,44 +26,44 @@ Zabezpečení je integrované do všech oblastí služby Azure. Tento článek p
 
 | Atribut zabezpečení | Ano/Ne | Poznámky |
 |---|---|--|
-| Šifrování v klidovém stavu:<ul><li>Šifrování na straně serveru</li><li>Šifrování na straně serveru pomocí klíčů spravovaných zákazníkem</li><li>Další funkce šifrování (například klientů, funkce always encrypted, atd.)</ul>|  neuvedeno | ExpressRoute neukládá data zákazníků. |
-| Šifrování během přenosu:<ul><li>Express route šifrování</li><li>Ve virtuální síti šifrování</li><li>Šifrování virtuálními sítěmi</ul>| Ne | |
-| Šifrování klíče zpracování (CMK, BYOK, atd.)| neuvedeno |  |
-| Šifrování na úrovni sloupce (Azure Data Services)| neuvedeno | |
-| Šifrované volání rozhraní API| Ano | Prostřednictvím [Azure Resource Manageru](../azure-resource-manager/index.yml) a HTTPS. |
+| Šifrování v klidovém formátu (například šifrování na straně serveru, šifrování na straně serveru pomocí klíčů spravovaných zákazníkem a další funkce šifrování)|  Není k dispozici | ExpressRoute neukládá zákaznická data. |
+| Šifrování při přenosu (například šifrování ExpressRoute, šifrování virtuální sítě a šifrování virtuální sítě)| Ne | |
+| Zpracování šifrovacích klíčů (CMK, BYOK atd.)| Není k dispozici |  |
+| Šifrování na úrovni sloupce (Azure Data Services)| Není k dispozici | |
+| Zašifrovaná volání rozhraní API| Ano | Prostřednictvím [Azure Resource Manager](../azure-resource-manager/index.yml) a HTTPS. |
 
 ## <a name="network-segmentation"></a>Segmentace sítě
 
 | Atribut zabezpečení | Ano/Ne | Poznámky |
 |---|---|--|
-| Podpora koncového bodu služby| neuvedeno |  |
-| vkládání podpory virtuálních sítí| neuvedeno | |
-| Izolace sítě a podporu funkce brány firewall| Ano | Každý zákazník je součástí vlastní doménu směrování a tunelovým propojením do své vlastní virtuální sítě |
-| Vynucené tunelování podpory| neuvedeno | Prostřednictvím Border Gateway Protocol (BGP). |
+| Podpora koncového bodu služby| Není k dispozici |  |
+| Podpora vkládání virtuální sítě| Není k dispozici | |
+| Izolace sítě a podpora brány firewall| Ano | Každý zákazník je obsažen ve své vlastní doméně směrování a je připojen k jeho vlastní virtuální síti. |
+| Podpora vynuceného tunelování| Není k dispozici | Přes Border Gateway Protocol (BGP). |
 
-## <a name="detection"></a>Detection (Detekce)
+## <a name="detection"></a>Detekce
 
 | Atribut zabezpečení | Ano/Ne | Poznámky|
 |---|---|--|
-| Podpora (Log analytics, App insights atd.) pro monitorování Azure| Ano | Zobrazit [ExpressRoute monitorování, výstrahy a metriky](expressroute-monitoring-metrics-alerts.md).|
+| Podpora monitorování Azure (Log Analytics, App Insights atd.)| Ano | Viz [ExpressRoute monitoring, metriky a výstrahy](expressroute-monitoring-metrics-alerts.md).|
 
 ## <a name="identity-and-access-management"></a>Správa identit a přístupu
 
 | Atribut zabezpečení | Ano/Ne | Poznámky|
 |---|---|--|
-| Authentication| Ano | Účet služby pro bránu pro Microsoft (GWM) (správce); Za běhu (JIT) přístup pro účely vývoje a OP. |
-| Autorizace|  Ano |Účet služby pro bránu pro Microsoft (GWM) (správce); Za běhu (JIT) přístup pro účely vývoje a OP. |
+| Ověřování| Ano | Účet služby pro bránu Microsoft (GWM) (Controller); Přístup JIT (just in time) pro vývoj a OP. |
+| Authorization|  Ano |Účet služby pro bránu Microsoft (GWM) (Controller); Přístup JIT (just in time) pro vývoj a OP. |
 
 
 ## <a name="audit-trail"></a>Záznam pro audit
 
 | Atribut zabezpečení | Ano/Ne | Poznámky| 
 |---|---|--|
-| Ovládací prvek a správu roviny protokolování a auditování| Ano |  |
-| Protokolování roviny dat a auditu| Ne |   |
+| Protokolování a audit roviny řízení a správy| Ano |  |
+| Protokolování a audit roviny dat| Ne |   |
 
 ## <a name="configuration-management"></a>Správa konfigurace
 
 | Atribut zabezpečení | Ano/Ne | Poznámky|
 |---|---|--|
-| Podpora správy konfigurace (verze konfigurace atd.)| Ano | Prostřednictvím poskytovatele prostředků sítě (NRP). |
+| Podpora správy konfigurace (Správa verzí konfigurace atd.)| Ano | Přes poskytovatele síťových prostředků (NRP). |

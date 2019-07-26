@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 7/18/2019
 ms.author: raiye
-ms.openlocfilehash: edf120fa7997cf2d0381dcb7cd3ee0d4e16dd72b
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
-ms.translationtype: HT
+ms.openlocfilehash: 2dac76ef0d0d71c11291e63fdb3a7ce307638b50
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68321408"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68405555"
 ---
 # <a name="azure-guest-os-releases-and-sdk-compatibility-matrix"></a>Verze hostovaného operačního systému Azure a tabulka kompatibility SDK
 Poskytuje aktuální informace o nejnovějších vydáních hostovaného operačního systému Azure pro Cloud Services. Tyto informace vám pomohou naplánovat cestu upgradu před zakázáním hostovaného operačního systému. Pokud vaše role nakonfigurujete tak, aby používaly *Automatické* aktualizace HOSTOVANÉHO operačního systému, jak je popsáno v tématu [aktualizace nastavení operačního systému hosta v Azure][Azure Guest OS Update Settings], není důležité tuto stránku číst.
 
 > [!IMPORTANT]
-> Tato stránka se vztahuje na Cloud Services webové a pracovní role, které se spouštějí nad hostovaným operačním systémem. Nevztahuje se  na IaaS Virtual Machines.
+> Tato stránka se vztahuje na Cloud Services webové a pracovní role, které se spouštějí nad hostovaným operačním systémem. Nevztahuje se **na IaaS** Virtual Machines.
 >
 >
 
@@ -76,7 +76,7 @@ Hostovaný operační systém v říjnu vydal.
 ###### <a name="october-12-2018"></a>**12. října 2018**
 Hostovaný operační systém v září vydal.
 
-## <a name="releases"></a>Vydání
+## <a name="releases"></a>Vydané verze
 
 ## <a name="family-6-releases"></a>Vydání řady 6
 **Windows Server 2019**
@@ -110,7 +110,7 @@ Hostovaný operační systém v září vydal.
 ## <a name="family-5-releases"></a>Vydání řady 5
 **Windows Server 2016**
 
-.NET Framework nainstalován: 3,5, 4.6.2, 4.7.2
+.NET Framework nainstalován: 3,5, 4,6
 
 > [!NOTE]
 > Heslo protokolu RDP pro řadu OS 5 musí být minimálně 10 znaků.

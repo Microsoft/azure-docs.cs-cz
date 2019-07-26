@@ -12,12 +12,12 @@ ms.date: 07/17/2019
 ms.author: mimart
 ms.reviewer: arvindh, japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f3b23aa7db29390ef50a72f73fb153fef5301b92
-ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
+ms.openlocfilehash: ddbb233bb9d0970169f040e3040b44a0b75aa1f8
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68304838"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68477180"
 ---
 # <a name="single-sign-on-to-applications-in-azure-active-directory"></a>Jednotné přihlašování k aplikacím v Azure Active Directory
 
@@ -71,9 +71,9 @@ Založené na SAML jednotného přihlašování se podporuje pro aplikace, kter�
 - SAML 2.0
 - WS-Federation
 
-Konfigurace aplikace SaaS pro jednotné přihlašování založené na SAML najdete v tématu [Konfigurace jednotného přihlašování založené na SAML](configure-single-sign-on-portal.md). Mnoho aplikací SaaS (software jako služba) navíc obsahuje [kurz specifický pro aplikaci](../saas-apps/tutorial-list.md) , který vás provede konfigurací jednotného přihlašování založeného na SAML.
+Konfigurace aplikace SaaS pro jednotné přihlašování založené na SAML najdete v tématu [Konfigurace jednotného přihlašování založené na SAML](configure-single-sign-on-non-gallery-applications.md). Mnoho aplikací SaaS (software jako služba) navíc obsahuje [kurz specifický pro aplikaci](../saas-apps/tutorial-list.md) , který vás provede konfigurací jednotného přihlašování založeného na SAML.
 
-Pokud chcete nakonfigurovat aplikaci pro WS-Federation, řiďte se stejnými pokyny pro konfiguraci aplikace pro jednotné přihlašování založené na SAML, viz téma [Konfigurace jednotného přihlašování založené na SAML](configure-single-sign-on-portal.md). V kroku konfigurace aplikace tak, aby používala Azure AD, budete muset nahradit přihlašovací adresu URL Azure AD pro koncový bod `https://login.microsoftonline.com/<tenant-ID>/wsfed`WS-Federation.
+Pokud chcete nakonfigurovat aplikaci pro WS-Federation, řiďte se stejnými pokyny pro konfiguraci aplikace pro jednotné přihlašování založené na SAML, viz téma [Konfigurace jednotného přihlašování založené na SAML](configure-single-sign-on-non-gallery-applications.md). V kroku konfigurace aplikace tak, aby používala Azure AD, budete muset nahradit přihlašovací adresu URL Azure AD pro koncový bod `https://login.microsoftonline.com/<tenant-ID>/wsfed`WS-Federation.
 
 Pokud chcete nakonfigurovat místní aplikaci pro jednotné přihlašování založené na SAML, přečtěte si téma [jednotné přihlašování SAML pro místní aplikace s proxy aplikací](application-proxy-configure-single-sign-on-on-premises-apps.md).
 
@@ -100,7 +100,7 @@ Založené na heslech jednotného přihlašování se podporuje pro každou apli
 - Chrome ve Windows 7 nebo novější a v systému MacOS X nebo novější
 - Firefox 26.0 nebo novější, Windows XP SP2 nebo novější a na Mac OS X 10.6 nebo novější
 
-Konfigurování cloudové aplikace založené na heslech jednotné přihlašování, naleznete v tématu [konfigurace aplikace pro heslo jednotného přihlašování](application-sign-in-problem-password-sso-gallery.md#configure-the-app-for-password-sso).
+Pokud chcete nakonfigurovat cloudovou aplikaci pro jednotné přihlašování založené na heslech, přečtěte si téma [Konfigurace jednotného přihlašování pomocí hesla](configure-password-single-sign-on-non-gallery-applications.md).
 
 Pokud chcete nakonfigurovat místní aplikaci pro jednotné přihlašování prostřednictvím Proxy aplikací, najdete v článku [heslo vaulting pro jednotné přihlašování s Proxy aplikací](application-proxy-configure-single-sign-on-password-vaulting.md)
 
@@ -127,8 +127,7 @@ Když koncový uživatel spravuje přihlašovací údaje:
 - Správci budou mít pořád povolený nastavit nové přihlašovací údaje pro aplikaci.
 
 ## <a name="linked-sign-on"></a>Propojené přihlašování
-
-Propojené přihlašování umožňuje Azure AD za účelem poskytování jednotného přihlašování k aplikaci, která už je nakonfigurovaný pro jednotné přihlašování v jiné službě. Propojené aplikace může zobrazit koncovým uživatelům na portálu Office 365 nebo portálu Azure AD MyApps. Uživatele můžete například spustit aplikaci, která je nakonfigurovaná pro jednotné přihlašování v Active Directory Federation Services 2.0 (AD FS) z portálu Office 365. Další vytváření sestav je také k dispozici pro propojené aplikace, které jsou spouštěny z portálu Office 365 nebo portálu Azure AD MyApps.
+Propojené přihlašování umožňuje Azure AD za účelem poskytování jednotného přihlašování k aplikaci, která už je nakonfigurovaný pro jednotné přihlašování v jiné službě. Propojené aplikace může zobrazit koncovým uživatelům na portálu Office 365 nebo portálu Azure AD MyApps. Uživatele můžete například spustit aplikaci, která je nakonfigurovaná pro jednotné přihlašování v Active Directory Federation Services 2.0 (AD FS) z portálu Office 365. Další vytváření sestav je také k dispozici pro propojené aplikace, které jsou spouštěny z portálu Office 365 nebo portálu Azure AD MyApps. Pokud chcete nakonfigurovat aplikaci pro propojené přihlašování, přečtěte si téma [Konfigurace propojených přihlášení](configure-linked-sign-on.md).
 
 ### <a name="linked-sign-on-for-application-migration"></a>Propojené přihlašování pro migraci aplikace
 
@@ -189,8 +188,9 @@ Vzhledem k tomu, že tento scénář je nabízený prostřednictvím partnerstv�
 Další informace najdete v článku [Edice služby Azure Active Directory](../fundamentals/active-directory-whatis.md).
 
 ## <a name="related-articles"></a>Související články
-
-- [Kurzy integrace aplikací SaaS pomocí Azure Active Directory](../saas-apps/tutorial-list.md)
-- [Kurz ke konfiguraci jednotného přihlašování](configure-single-sign-on-portal.md)
-- [Úvod do správy přístupu k aplikacím](what-is-access-management.md)
-- Odkaz ke stažení: [Plán nasazení jednotného přihlašování](https://aka.ms/SSODeploymentPlan)
+* [Kurzy integrace aplikací SaaS pomocí Azure Active Directory](../saas-apps/tutorial-list.md)
+* [Konfigurace jednotného přihlašování založeného na SAML](configure-single-sign-on-non-gallery-applications.md)
+* [Konfigurace jednotného přihlašování založeného na heslech](configure-password-single-sign-on-non-gallery-applications.md)
+* [Konfigurace propojených přihlášení](configure-linked-sign-on.md)
+* [Úvod do správy přístupu k aplikacím](what-is-access-management.md)
+* Odkaz ke stažení: [Plán nasazení jednotného přihlašování](https://aka.ms/SSODeploymentPlan).

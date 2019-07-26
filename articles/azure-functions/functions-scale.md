@@ -1,11 +1,11 @@
 ---
-title: Azure Functions hostování a škálování | Dokumentace Microsoftu
-description: Zjistěte, jak si vybrat mezi plán Azure Functions Consumption a plán Premium.
+title: Azure Functions škálování a hostování | Microsoft Docs
+description: Naučte se vybírat mezi plánem Azure Functions spotřebu a plánem Premium.
 services: functions
 documentationcenter: na
 author: ggailey777
 manager: jeconnoc
-keywords: Azure funkce, funkce, plán consumption, plán premium, zpracování událostí, webhooky, dynamické výpočty, architektura bez serveru
+keywords: funkce Azure Functions, funkce, plán spotřeby, plán Premium, zpracování událostí, Webhooky, dynamická výpočetní funkce a architektura bez serveru
 ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
 ms.service: azure-functions
 ms.devlang: multiple
@@ -13,180 +13,177 @@ ms.topic: reference
 ms.date: 03/27/2019
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3253cc7e379ae63880d533f14bc76e7af5a4425a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 94ef85836ef524b34cd1c51e4eda83695bc70507
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67050552"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68443940"
 ---
-# <a name="azure-functions-scale-and-hosting"></a>Hostování a škálování Azure Functions
+# <a name="azure-functions-scale-and-hosting"></a>Azure Functions škálování a hostování
 
-Když vytvoříte aplikaci function app v Azure, musíte zvolit plán hostování pro vaši aplikaci. Pro službu Azure Functions k dispozici jsou tři plány hostování: [Plán consumption](#consumption-plan), [plán Premium](#premium-plan), a [plán služby App Service](#app-service-plan).
+Když vytvoříte aplikaci Function App v Azure, musíte zvolit plán hostování pro vaši aplikaci. Pro Azure Functions jsou k dispozici tři plány hostování: [Plán spotřeby](#consumption-plan), [Plán Premium](#premium-plan)a [plán App Service](#app-service-plan).
 
-Plán hostování, zvolíte určuje následující chování:
+Plán hostování, který zvolíte, bude určovat následující chování:
 
-* Jak se škálovat vaši aplikaci function app.
-* Prostředky dostupné pro každou instanci aplikace funkce.
-* Podpora pro pokročilé funkce, jako je například připojení k virtuální síti.
+* Jak se škáluje aplikace Function App
+* Prostředky dostupné pro jednotlivé instance aplikace Function App.
+* Podpora pro pokročilé funkce, jako je třeba připojení k virtuální síti.
 
-Plány Consumption a Premium automaticky přidat výpočetní výkon, když váš kód běží. Vaše aplikace je škálovat na více systémů v případě potřeby pro zpracování zátěže a kapacitu vertikálně snížit, když kód přestane fungovat. Pro plán Consumption také nemusíte platit za nečinných virtuálních počítačů nebo záložní kapacita předem.  
+Plány spotřeby i úrovně Premium automaticky přidávají výpočetní výkon, když je váš kód spuštěný. Vaše aplikace se škáluje v případě potřeby na zpracování zatížení a při zastavení kódu se škáluje dolů. Pro plán spotřeby také nemusíte platit za nečinné virtuální počítače nebo rezervovat kapacitu předem.  
 
-Plán Premium poskytuje další funkce, jako například premium výpočetních instancí, schopnost uchovat teplý instance po neomezenou dobu a připojení k virtuální síti.
+Plán Premium poskytuje další funkce, jako jsou výpočetní instance Premium, schopnost udržet instance na neomezenou dobu a připojení k virtuální síti.
 
-Plán služby App Service umožňuje využít výhod vyhrazená infrastruktura, která spravujete. Aplikace function app se neškáluje na základě událostí, což znamená, že se nikdy měřítka až k nule. (Vyžaduje, aby [vždy na](#always-on) je povolená.)
+App Service plán vám umožní využít výhod vyhrazené infrastruktury, kterou spravujete. Vaše aplikace Function App se škáluje na základě událostí, což znamená, že se nikdy neškáluje na nulu. (Vyžaduje, aby byla povolena možnost [vždy](#always-on) zapnuto.)
 
 > [!NOTE]
-> Můžete přepínat mezi plány Consumption a Premium změnou vlastnosti plánu prostředek aplikace funkce.
+> Můžete přepínat mezi plány spotřeby a Premium změnou vlastnosti plán prostředku Function App.
 
-## <a name="hosting-plan-support"></a>Podpora plán hostování
+## <a name="hosting-plan-support"></a>Podpora plánu hostování
 
-Podpora funkce spadá do následujících dvou kategorií:
+Podpora funkcí spadá do následujících dvou kategorií:
 
-* _Všeobecně dostupná (GA)_ : plně podporované a schválena pro použití v produkčním prostředí.
-* _Ve verzi Preview_: není dosud plně podporované a schválena pro použití v produkčním prostředí.
+* _Všeobecně dostupná (GA)_ : plně podporované a schválené pro použití v produkčním prostředí.
+* _Preview_: ještě není plně podporované a schválené pro použití v produkčním prostředí.
 
-Následující tabulka označuje aktuální úroveň podpory pro tři plány hostování při běžící ve Windows nebo Linuxu:
+Následující tabulka uvádí aktuální úroveň podpory pro tři plány hostování při použití v systému Windows nebo Linux:
 
 | | Plán Consumption | Plán Premium | Vyhrazený plán |
 |-|:----------------:|:------------:|:----------------:|
 | Windows | GA | preview | GA |
-| Linux | preview | neuvedeno | GA |
+| Linux | preview | preview | GA |
 
 ## <a name="consumption-plan"></a>Plán Consumption
 
-Pokud používáte plán Consumption, instance hostitele Azure Functions dynamicky přidávají nebo odebírají na základě počtu příchozích událostí. Tento plán bez serveru se automaticky škáluje. proto vám budou účtovány za výpočetní prostředky, pouze když vaše funkce běží. V plánu Consumption vyprší časový limit po nastaveném časovém nastavení provádění funkce.
+Pokud používáte plán spotřeby, instance Azure Functions hostitele se dynamicky přidávají a odstraňují na základě počtu příchozích událostí. Tento plán bez serveru se škáluje automaticky a účtují se vám poplatky za výpočetní prostředky jenom v případě, že jsou vaše funkce spuštěné. V plánu spotřeby vyprší doba spuštění funkce po konfigurovatelném časovém intervalu.
 
-Fakturace vychází z počtu spuštění, čas spuštění a paměť použitá. Fakturace se agreguje přes všechny funkce v rámci aplikace function app. Další informace najdete v tématu [stránce s cenami za Azure Functions](https://azure.microsoft.com/pricing/details/functions/).
+Fakturace vychází z počtu spuštění, času spuštění a využité paměti. Fakturace se agreguje napříč všemi funkcemi v rámci aplikace Function App. Další informace najdete na stránce s [cenami Azure Functions](https://azure.microsoft.com/pricing/details/functions/).
 
-Plán Consumption je výchozí plán hostování a nabízí následující výhody:
+Plán spotřeby je výchozím plánem hostování a nabízí následující výhody:
 
-* Platí, pouze když vaše funkce běží
-* Automatické horizontální navýšení kapacity, i během období vysoké zatížení
+* Plaťte jenom v případě, že jsou vaše funkce spuštěné.
+* Horizontální navýšení kapacity i během období vysokého zatížení
 
-Funkce ve stejné oblasti, je možné přiřadit do stejného plánu Consumption. Neexistuje žádné nevýhodou nebo dopad s tím, že více aplikací běžících v rámci stejného plánu Consumption. Přiřazení více aplikací do stejného plánu consumption nemá žádný vliv na pružnosti, škálovatelnosti nebo spolehlivost každou aplikaci.
+Aplikace Function App ve stejné oblasti se dají přiřadit ke stejnému plánu spotřeby. Neexistuje žádný nevýhodou ani dopad na to, aby ve stejném plánu spotřeby běželo víc aplikací. Přiřazení více aplikací ke stejnému plánu spotřeby nemá žádný vliv na odolnost, škálovatelnost nebo spolehlivost každé aplikace.
 
-## <a name="premium-plan"></a>Plán Premium (preview)
+## <a name="premium-plan"></a>Plán Premium (Preview)
 
-Pokud používáte plán Premium, instance hostitele Azure Functions přidávají nebo odebírají na základě počtu příchozích událostí stejně jako plánu Consumption.  Plán Premium podporuje následující funkce:
+Pokud používáte plán Premium, instance Azure Functions hostitele se přidají a odeberou na základě počtu příchozích událostí stejně jako u plánu spotřeby.  Plán Premium podporuje následující funkce:
 
-* Trvale vyzkoušeli instancí, aby všechny studený start
-* Připojení k virtuální síti
-* Doba trvání neomezený počet spuštění
-* Velikosti instancí úrovně Premium (jedno jádro, dvě jádra a čtyři jádra instance)
-* Více předvídatelné ceny
-* Aplikace s vysokou hustotou přidělení pro plány s více aplikacemi – funkce
+* Trvalé zahřívání instancí, aby nedocházelo k žádnému studenému startu
+* Připojení virtuální sítě
+* Neomezené trvání spuštění
+* Velikosti instancí Premium (jedna jádro, dvě jádro a čtyři základní instance)
+* Předvídatelné ceny
+* Přidělování aplikací s vysokou hustotou pro plány s více aplikacemi Function App
 
-Informace o tom, jak můžete nastavit tyto možnosti najdete v [dokument plánu premium Azure Functions](functions-premium-plan.md).
+Informace o tom, jak můžete tyto možnosti nakonfigurovat, najdete v [dokumentu plánu Azure Functions Premium](functions-premium-plan.md).
 
-Místo fakturace za spuštění a využitá paměť se fakturace za plán Premium podle počtu sekundy jader, doba spuštění a paměť použitá potřebné a rezervovaných instancí.  Nejméně jedna instance musí být teplé at celou dobu. To znamená, že je pevný měsíční poplatek za každý aktivního plánu, bez ohledu na počet spuštění.
+Místo fakturace za běhu a využité paměti je fakturace za plán Premium založená na počtu základních sekund, době provádění a paměti používané napříč potřebnými a rezervovanými instancemi.  Aspoň jedna instance musí být zadarmo. To znamená, že existují pevné měsíční náklady na aktivní plán, bez ohledu na počet spuštění.
 
-Vezměte v úvahu prémiové služby Azure Functions v následujících situacích:
+Vezměte v úvahu plán Azure Functions Premium v následujících situacích:
 
-* Vaše aplikace function App spouštět nepřetržitě téměř průběžně.
-* Budete potřebovat další možnosti procesoru nebo paměti, než poskytuje plánu Consumption.
-* Váš kód je potřeba spustit déle, než [maximální doba spuštění povolené](#timeout) v plánu Consumption.
-* Vyžadujete funkce, které jsou dostupné jenom na plán Premium, jako je například virtuální síť nebo VPN připojení.
+* Vaše aplikace Function App běží nepřetržitě nebo téměř nepřetržitě.
+* Budete potřebovat více možností procesoru nebo paměti, než jaké je k dispozici v plánu spotřeby.
+* Váš kód musí běžet delší dobu, než je [Maximální doba spuštění](#timeout) v plánu spotřeby.
+* Vyžadujete funkce, které jsou k dispozici pouze v plánu Premium, například připojení VNET/VPN.
 
-> [!NOTE]
-> Ve verzi preview plán premium aktuálně podporuje pouze Azure Functions na Windows.
+Při spouštění funkcí JavaScriptu na plánu Premium byste měli zvolit instanci, která má méně vCPU. Další informace najdete v tématu [Výběr plánů Premium s jedním jádrem](functions-reference-node.md#considerations-for-javascript-functions).  
 
-Při spuštění funkce jazyka JavaScript na plán Premium, měli byste zvolit instanci, která má menší počet virtuálních procesorů. Další informace najdete v tématu [zvolte plány Premium jednojádrový](functions-reference-node.md#considerations-for-javascript-functions).  
+## <a name="app-service-plan"></a>Vyhrazený plán (App Service)
 
-## <a name="app-service-plan"></a>Vyhrazené (plánu služby App Service)
+Aplikace Function App můžete spustit taky na stejných vyhrazených virtuálních počítačích, jako jsou jiné App Service aplikace (Basic, Standard, Premium a izolované SKU).
 
-Vaše aplikace function App můžete spustit také na stejné vyhrazených virtuálních počítačů jako ostatní aplikace služby App Service (Basic, Standard, Premium a izolované skladové položky).
+Vezměte v úvahu App Service plán v následujících situacích:
 
-Vezměte v úvahu plán služby App Service v těchto situacích:
+* Máte existující a nevyužité virtuální počítače, které již spouštějí jiné instance App Service.
+* Chcete zadat vlastní image, na které se mají spouštět vaše funkce.
 
-* Máte stávající, nedostatečně využité virtuální počítače, které jsou již spuštěny jiné instance služby App Service.
-* Chcete poskytnout vlastní image, ve kterém se spustí vaše funkce.
+Totéž platí pro aplikace Function App v plánu App Service, stejně jako u jiných prostředků App Service, jako jsou například webové aplikace. Podrobnosti o tom, jak plán App Service funguje, najdete v podrobném [přehledu Azure App Service plány](../app-service/overview-hosting-plans.md).
 
-Platíte stejné aplikace function App v plán služby App Service stejně jako pro ostatní prostředky App Service, jako jsou webové aplikace. Podrobnosti o tom, jak funguje plán služby App Service najdete v tématu [podrobný přehled plánů služby Azure App Service](../app-service/overview-hosting-plans.md).
+S plánem App Service můžete ručně škálovat přidáním dalších instancí virtuálních počítačů. Můžete také povolit automatické škálování. Další informace najdete v tématu [Ruční nebo automatické škálování počtu instancí](../azure-monitor/platform/autoscale-get-started.md?toc=%2fazure%2fapp-service%2ftoc.json). Horizontální navýšení kapacity můžete také škálovat tak, že vyberete jiný plán App Service. Další informace najdete v tématu [horizontální navýšení kapacity aplikace v Azure](../app-service/web-sites-scale.md). 
 
-S plánem služby App Service můžete se ručně škálovat přidáváním dalších instancí virtuálních počítačů. Můžete také povolit automatické škálování. Další informace najdete v tématu [ruční nebo automatické škálování počtu instancí](../azure-monitor/platform/autoscale-get-started.md?toc=%2fazure%2fapp-service%2ftoc.json). Také můžete škálovat výběrem jiný plán služby App Service. Další informace najdete v tématu [vertikální navýšení kapacity aplikace v Azure](../app-service/web-sites-scale.md). 
-
-Při spuštění funkce jazyka JavaScript na plán služby App Service, měli byste zvolit plán, který má menší počet virtuálních procesorů. Další informace najdete v tématu [zvolte plány služby App Service jednojádrový](functions-reference-node.md#choose-single-vcpu-app-service-plans). 
+Při spouštění funkcí JavaScriptu v plánu App Service byste měli zvolit plán, který má méně vCPU. Další informace najdete v tématu [Výběr plánů App Service s jedním jádrem](functions-reference-node.md#choose-single-vcpu-app-service-plans). 
 <!-- Note: the portal links to this section via fwlink https://go.microsoft.com/fwlink/?linkid=830855 --> 
 
-### <a name="always-on"></a> Always On
+### <a name="always-on"></a>Vždy zapnuto
 
-Pokud spustíte v plánu služby App Service, měli byste povolit **vždy na** nastavení tak, aby vaše aplikace function app běží správně. Plán služby App Service modul runtime služby functions začne nečinnosti, po několika minutách neaktivity, takže pouze triggerů HTTP bude "probuzení" vašich funkcí. Vždy v je dostupné jenom v plánu služby App Service. V plánu Consumption platformu automaticky aktivuje aplikace function App.
+Pokud spustíte v plánu App Service, měli byste povolit nastavení **vždycky zapnuto** , aby aplikace Function App běžela správně. V App Serviceovém plánu se modul runtime Functions po několika minutách nečinnosti neukončí, takže se vaše funkce vystaví jenom triggery HTTP. Always On je k dispozici pouze v plánu App Service. V plánu spotřeby platforma automaticky aktivuje aplikace funkcí.
 
 [!INCLUDE [Timeout Duration section](../../includes/functions-timeout-duration.md)]
 
 
-I s povolenou funkci Always On, se řídí časový limit spuštění pro jednotlivé funkce `functionTimeout` nastavení [host.json](functions-host-json.md#functiontimeout) souboru projektu.
+I když je funkce Always On zapnutá, časový limit spuštění pro jednotlivé funkce se `functionTimeout` řídí nastavením v souboru projektu [Host. JSON](functions-host-json.md#functiontimeout) .
 
-## <a name="determine-the-hosting-plan-of-an-existing-application"></a>Určete plán hostování existující aplikace
+## <a name="determine-the-hosting-plan-of-an-existing-application"></a>Určení plánu hostování existující aplikace
 
-K určení plánu hostování používají vaši aplikaci function app, naleznete v tématu **plán služby App Service / cenová úroveň** v **přehled** kartu pro odpovídající aplikaci function app [webu Azure portal](https://portal.azure.com). Pro plány služby App Service je také označena cenovou úroveň.
+Chcete-li určit plán hostování používaný vaší aplikací Function App, přečtěte si část **App Service plán/cenová úroveň** na kartě **Přehled** pro aplikaci Function App v [Azure Portal](https://portal.azure.com). V případě plánů App Service je cenová úroveň také uvedena.
 
 ![Zobrazit plán škálování na portálu](./media/functions-scale/function-app-overview-portal.png)
 
-Rozhraní příkazového řádku Azure můžete použít také k určení plánu, následujícím způsobem:
+Pomocí rozhraní příkazového řádku Azure můžete také určit plán následujícím způsobem:
 
 ```azurecli-interactive
 appServicePlanId=$(az functionapp show --name <my_function_app_name> --resource-group <my_resource_group> --query appServicePlanId --output tsv)
 az appservice plan list --query "[?id=='$appServicePlanId'].sku.tier" --output tsv
 ```  
 
-Pokud je výstup tohoto příkazu `dynamic`, aplikace function app je v plánu Consumption. Pokud je výstup tohoto příkazu `ElasticPremium`, aplikace function app je v plánu Premium. Všechny ostatní hodnoty určit různé úrovně plánu služby App Service.
+Když je `dynamic`výstup z tohoto příkazu, vaše aplikace Function App je v plánu spotřeby. Když je `ElasticPremium`výstup z tohoto příkazu, vaše aplikace Function App je v plánu Premium. Všechny ostatní hodnoty označují různé úrovně plánu App Service.
 
 ## <a name="storage-account-requirements"></a>Požadavky na účet úložiště
 
-Libovolný plán aplikace function app vyžaduje obecný účet úložiště Azure, které podporuje Azure Blob, fronty, soubory a Table storage. Je to proto, že funkce využívají služby Azure Storage pro operace, jako jsou Správa triggerů a protokolování provádění funkcí, ale některé účty úložiště nepodporují fronty a tabulky. Tyto účty, jako je například účty úložiště pouze objektů blob (včetně storage úrovně premium) a účty úložiště pro obecné účely s replikací zónově redundantní úložiště, jsou filtrované na více instancí ze stávajících **účtu úložiště** vybrané možnosti při vytváření aplikace funkcí.
+V jakémkoli plánu aplikace Function App vyžaduje účet obecné Azure Storage, který podporuje Azure Blob, Queue, soubory a Table Storage. Důvodem je to, že funkce spoléhají na Azure Storage pro operace, jako je Správa triggerů a spouštění funkcí protokolování, ale některé účty úložiště nepodporují fronty a tabulky. Tyto účty, které zahrnují účty úložiště jen pro objekty BLOB (včetně služby Premium Storage) a účty úložiště pro obecné účely s replikací zóny redundantního úložiště, se filtrují z existujících výběrů **účtu úložiště** při vytváření aplikace Function App
 
 <!-- JH: Does using a Premium Storage account improve perf? -->
 
-Další informace o typech účtů úložiště najdete v tématu [seznámení se službami Azure Storage](../storage/common/storage-introduction.md#azure-storage-services).
+Další informace o typech účtů úložiště najdete v tématu [představení služby Azure Storage Services](../storage/common/storage-introduction.md#azure-storage-services).
 
-## <a name="how-the-consumption-and-premium-plans-work"></a>Jak fungují plány consumption a premium
+## <a name="how-the-consumption-and-premium-plans-work"></a>Jak fungují plány spotřeby a Premium
 
-Ve spotřebě a plánech sazeb premium se škáluje infrastruktury Azure Functions tak, že přidáte další instance funkce hostitele, na základě počtu událostí, které její funkce se spouštějí na prostředky procesoru a paměti. Každá instance hostitele funkce v plánu consumption je omezená na 1,5 GB paměti a jeden procesor.  Instance hostitele je celé aplikace function app, to znamená všechny funkce v rámci prostředek funkce aplikace sdílení v rámci instance a škálování služby ve stejnou dobu. Aplikace Function App, které sdílejí stejného plánu consumption se škálovat nezávisle.  V plánu premium velikost vašeho plánu určí dostatek paměti a procesoru u všech aplikací v tomto plánu na příslušné instanci.  
+V plánech spotřeby a Premium Azure Functions infrastruktura škálovat prostředky procesoru a paměti přidáním dalších instancí hostitele Functions na základě počtu událostí, na kterých se funkce aktivuje. Každá instance hostitele Functions v plánu spotřeby je omezená na 1,5 GB paměti a jeden procesor.  Instance hostitele je celá aplikace Function App, což znamená, že všechny funkce v rámci aplikace Function App sdílejí prostředky v rámci instance a škálují ve stejnou dobu. Aplikace Function App, které sdílejí stejný plán spotřeby, se škálují nezávisle.  V plánu Premium bude velikost vašeho plánu určovat dostupnou paměť a procesor pro všechny aplikace v tomto plánu na této instanci.  
 
-Soubory kódu funkce jsou uložené na sdílených složek Azure v účtu úložiště hlavní funkce. Když odstraníte hlavní účet úložiště z aplikace function app, soubory kódu funkce se odstraní a nejde obnovit.
+Soubory s kódem funkce jsou uložené ve sdílených složkách služby soubory Azure na hlavním účtu úložiště funkce. Když odstraníte hlavní účet úložiště aplikace Function App, soubory s kódem funkce se odstraní a nelze je obnovit.
 
 > [!NOTE]
-> Pokud používáte aktivační událost objektů blob v plánu Consumption, může být až 10 minut zpoždění při zpracování nové objekty BLOB. Toto zpoždění nastane, pokud aplikace function app náramků RFID nečinnosti. Po spuštění aplikace function app, objekty BLOB jsou zpracovány okamžitě. Pokud chcete vyhnout tomuto zpoždění dochází úplné spuštění, použijte plán Premium, nebo [trigger služby Event Grid](functions-bindings-event-grid.md). Další informace najdete v tématu [článku odkaz vazby aktivační událost objektů blob](functions-bindings-storage-blob.md#trigger).
+> Při použití triggeru objektu BLOB v plánu spotřeby může při zpracování nových objektů BLOB docházet ke zpoždění až 10 minut. K tomuto zpoždění dochází, když se aplikace Function App nečinný. Po spuštění aplikace Function App se objekty blob zpracovávají okamžitě. Chcete-li se vyhnout této prodlevě při startu, použijte plán Premium nebo použijte [aktivační událost Event Grid](functions-bindings-event-grid.md). Další informace najdete v [článku odkaz na vazbu triggeru objektu BLOB](functions-bindings-storage-blob.md#trigger).
 
-### <a name="runtime-scaling"></a>Škálování prostředí runtime
+### <a name="runtime-scaling"></a>Škálování za běhu
 
-Služba Azure Functions využívá komponenty s názvem *měřítka řadiče* monitorovat frekvenci událostí a určit, zda má horizontální navýšení kapacity nebo horizontálně. Kontroler škálování pomocí heuristické metody pro každý typ aktivační události. Například pokud používáte aktivační událost Azure Queue storage, škáluje se na základě délky fronty a stáří nejstarší zprávy fronty.
+Azure Functions používá komponentu s názvem *kontroler škálování* pro monitorování míry událostí a určení, zda se má horizontální navýšení nebo škálování škálovat. Kontroler škálování používá heuristiky pro každý typ triggeru. Pokud například používáte Trigger služby Azure Queue Storage, škáluje se podle délky fronty a stáří nejstarší zprávy fronty.
 
-Jednotka škálování pro Azure Functions se aplikace function app. Aplikace function app horizontální navýšení kapacity se další prostředky se přidělují ke spouštění více instancí hostitele Azure Functions. Naopak jako výpočetní snížení poptávky, měřítka řadiče odebere instance hostitele funkce. Počet instancí, které je nakonec vertikálně snížit kapacitu na nulu spuštěné žádné funkce v rámci aplikace function app.
+Jednotka škálování pro Azure Functions je aplikace Function App. Při horizontálním navýšení kapacity aplikace Function App se přidělí další prostředky pro spuštění více instancí Azure Functionsho hostitele. V opačném případě dojde k omezení požadavků na výpočetní výkon, protože řadič škálování odebere instance hostitele funkcí. V případě, že v aplikaci Function App nejsou spuštěny žádné funkce, počet instancí je nakonec horizontální.
 
-![Škálování řadič událostech monitorování a vytváření instancí](./media/functions-scale/central-listener.png)
+![Škálování událostí monitorování řadiče a vytváření instancí](./media/functions-scale/central-listener.png)
 
-### <a name="understanding-scaling-behaviors"></a>Porozumění chování škálování
+### <a name="understanding-scaling-behaviors"></a>Principy chování škálování
 
-Škálování se může lišit na celé řadě faktorů a škálování různě v závislosti na triggeru a vybraný jazyk. Existuje několik složitými rozhraními škálování chování je potřeba vědět:
+Škálování se může u různých faktorů lišit a škáluje se různě na základě zvoleného triggeru a jazyka. Existuje několik složitými rozhraními chování škálování, která je potřeba znát:
 
-* Jedna aplikace funkcí se může škálovat maximálně na 200 instancí. Jednu instanci může zpracovat více než jeden zprávy nebo žádost o najednou, proto není k dispozici nastavte limit počtu souběžných spuštění.
-* Aktivace protokolu HTTP nové instance pouze se přidělí nejvýše jednou za každou 1 sekundu.
-* Aktivace jiným protokolem než HTTP nové instance pouze se přidělí maximálně každých 30 sekund.
+* Jedna aplikace funkcí se může škálovat maximálně na 200 instancí. Jedna instance může zpracovávat více než jednu zprávu nebo požádat současně, takže neexistuje nastavený limit počtu souběžných spuštění.
+* U triggerů HTTP se nové instance přiřazují jenom jednou za 1 sekundu.
+* U triggerů bez protokolu HTTP se nové instance přiřazují jenom každých 30 sekund.
 
-Jiné triggery mohou mít i jiné limity škálování, jakož i zdokumentovaných níže:
+Různé aktivační události mohou mít také různá omezení škálování a jsou popsány níže:
 
 * [Centrum událostí](functions-bindings-event-hubs.md#trigger---scaling)
 
-### <a name="best-practices-and-patterns-for-scalable-apps"></a>Osvědčené postupy a vzory pro škálovatelných aplikací
+### <a name="best-practices-and-patterns-for-scalable-apps"></a>Osvědčené postupy a vzory pro škálovatelné aplikace
 
-Existuje mnoho aspektů aplikace function app, která ovlivňují, jak dobře provede se škálování, včetně konfigurace hostitele, modul runtime nároky na místo a efektivity prostředků.  Další informace najdete v tématu [škálovatelnost část článku aspekty výkonu](functions-best-practices.md#scalability-best-practices). Musíte mít také přehled o tom, jak se připojení chovat jako vaše funkce škálování aplikace. Další informace najdete v tématu [Správa připojení v Azure Functions](manage-connections.md).
+Existuje mnoho aspektů aplikace Function App, které budou mít vliv na to, jak se bude škálovat, včetně konfigurace hostitele, běhového prostředí a efektivity prostředků.  Další informace najdete v [části věnované škálovatelnosti v článku věnovaném důležitým](functions-best-practices.md#scalability-best-practices)informacím o výkonu. Měli byste taky vědět, jak se připojení chovají, jak se vaše aplikace Function škáluje. Další informace najdete v tématu [Správa připojení v Azure Functions](manage-connections.md).
 
 ### <a name="billing-model"></a>Model fakturace
 
-Fakturace pro různé plány je podrobně popsaný na [stránce s cenami za Azure Functions](https://azure.microsoft.com/pricing/details/functions/). Využití se agregují na úrovni aplikace funkce a vrátí jenom při spuštění, který je proveden kód funkce. Tady jsou jednotky pro účely fakturace:
+Fakturace pro různé plány je podrobně popsána na [stránce s cenami Azure Functions](https://azure.microsoft.com/pricing/details/functions/). Použití je agregované na úrovni aplikace funkcí a počítá se pouze v době, kdy je spuštěn kód funkce. Níže jsou uvedené jednotky pro fakturaci:
 
-* **Spotřeba prostředků v gigabajtsekundách (GB-s)** . Vypočítat jako kombinace velikost paměti a dobu spuštění pro všechny funkce v rámci aplikace function app. 
-* **Spuštění**. Počítají při každém spuštění funkce v reakci na aktivační procedura událostí.
+* **Spotřeba prostředků v GB-s (GB-s)** . Vypočítáno jako kombinace velikosti paměti a doby provádění pro všechny funkce v rámci aplikace Function App. 
+* **Spuštění**. Počítá se pokaždé, když se funkce spustí v reakci na Trigger události.
 
-Můžete najít užitečné dotazy a informace o tom, jak vysvětlení faktury za spotřebu [na nejčastější dotazy týkající se fakturace](https://github.com/Azure/Azure-Functions/wiki/Consumption-Plan-Cost-Billing-FAQ).
+Užitečné dotazy a informace o tom, jak pochopit vyúčtování spotřeby, najdete [na stránce s nejčastějšími dotazy](https://github.com/Azure/Azure-Functions/wiki/Consumption-Plan-Cost-Billing-FAQ)k fakturaci.
 
 [Azure Functions pricing page]: https://azure.microsoft.com/pricing/details/functions
 
 ## <a name="service-limits"></a>Omezení služby
 
-Následující tabulka uvádí omezení, které se vztahují na aplikace function App, když běží v různých plány hostování:
+Následující tabulka uvádí omezení, která platí pro aplikace Function App při spuštění v různých plánech hostování:
 
 [!INCLUDE [functions-limits](../../includes/functions-limits.md)]

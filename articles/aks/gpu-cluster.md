@@ -1,6 +1,6 @@
 ---
-title: Použít GPU ve službě Azure Kubernetes Service (AKS)
-description: Informace o používání GPU pro vysokovýkonné výpočetní prostředí nebo úlohy náročné na grafiku ve službě Azure Kubernetes Service (AKS)
+title: Použití GPU ve službě Azure Kubernetes Service (AKS)
+description: Naučte se používat GPU pro vysoce výkonné úlohy náročné na výpočetní výkon nebo grafiku ve službě Azure Kubernetes Service (AKS).
 services: container-service
 author: zr-msft
 manager: jeconnoc
@@ -8,39 +8,39 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/16/2019
 ms.author: zarhoads
-ms.openlocfilehash: c92762b53b0f5b50ea08f2f78998a3ccecbed990
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 4eef31a050072c0413421a5490b35b765cb9557d
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67061066"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68381829"
 ---
-# <a name="use-gpus-for-compute-intensive-workloads-on-azure-kubernetes-service-aks"></a>Použití GPU pro úlohy náročné na výpočetní prostředky ve službě Azure Kubernetes Service (AKS)
+# <a name="use-gpus-for-compute-intensive-workloads-on-azure-kubernetes-service-aks"></a>Použití GPU pro úlohy náročné na výpočetní výkon ve službě Azure Kubernetes Service (AKS)
 
-Grafických procesorů (GPU) se často používají pro úlohy náročné na výpočetní prostředky, jako jsou grafiky a vizualizace úloh. AKS podporuje vytváření fondů uzlu s podporou grafického procesoru pro spuštění těchto úloh náročných na výpočetní v Kubernetes. Další informace o dostupných virtuálních počítačů s podporou grafického procesoru, naleznete v tématu [GPU optimalizované velikosti virtuálních počítačů v Azure][gpu-skus]. Pro uzly AKS, doporučujeme minimální velikost *Standard_NC6*.
+Grafické procesory (GPU) se často používají pro úlohy náročné na výpočetní výkon, jako jsou například úlohy grafiky a vizualizace. AKS podporuje vytváření fondů uzlů s podporou GPU pro spouštění těchto úloh náročných na výpočetní výkon v Kubernetes. Další informace o dostupných virtuálních počítačích s podporou GPU najdete [v tématu velikosti virtuálních počítačů optimalizované pro GPU v Azure][gpu-skus]. Pro uzly AKS doporučujeme minimální velikost *Standard_NC6*.
 
 > [!NOTE]
-> Virtuální počítače s podporou grafického procesoru obsahovat specializovaném hardwaru, který je v souladu s vyšší ceny a regionální dostupnosti. Další informace najdete v tématu [ceny] [ azure-pricing] nástroj a [dostupnost v oblastech][azure-availability].
+> Virtuální počítače s podporou GPU obsahují specializovaný hardware, který je předmětem vyšší ceny a dostupnosti oblastí. Další informace najdete v tématu [ceny][azure-pricing] tool and [region availability][azure-availability].
 
-V současné době pomocí fondy uzlů s podporou grafického procesoru je k dispozici pouze pro fondy Linux uzlů.
+V současné době jsou fondy uzlů s podporou GPU dostupné jenom pro fondy uzlů Linux.
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
-Tento článek předpokládá, že máte existující cluster AKS pomocí uzlů, které podporují GPU. AKS cluster musí používat Kubernetes 1.10 nebo novější. Pokud potřebujete cluster AKS, který splňuje tyto požadavky, najdete v první části tohoto článku [vytvoření clusteru AKS](#create-an-aks-cluster).
+V tomto článku se předpokládá, že máte existující cluster AKS s uzly, které podporují GPU. Cluster AKS musí běžet v Kubernetes 1,10 nebo novějším. Pokud potřebujete cluster AKS, který splňuje tyto požadavky, Projděte si první část tohoto článku a [vytvořte cluster AKS](#create-an-aks-cluster).
 
-Také nutné mít Azure CLI verze 2.0.64 nebo později nainstalované a nakonfigurované. Spustit `az --version` k vyhledání verze. Pokud potřebujete instalaci nebo upgrade, naleznete v tématu [instalace Azure CLI][install-azure-cli].
+Potřebujete také nainstalované a nakonfigurované rozhraní Azure CLI verze 2.0.64 nebo novější. Verzi `az --version` zjistíte spuštěním. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [instalace Azure CLI][install-azure-cli].
 
 ## <a name="create-an-aks-cluster"></a>Vytvoření clusteru AKS
 
-Pokud potřebujete AKS cluster, který splňuje minimální požadavky (s podporou grafického procesoru uzlu a Kubernetes verze 1.10 nebo novější), proveďte následující kroky. Pokud už máte cluster AKS, který splňuje tyto požadavky [přejděte k další části](#confirm-that-gpus-are-schedulable).
+Pokud potřebujete cluster AKS, který splňuje minimální požadavky (uzel s podporou GPU a Kubernetes verze 1,10 nebo novější), proveďte následující kroky. Pokud již máte cluster AKS, který splňuje tyto požadavky, [přejděte k další části](#confirm-that-gpus-are-schedulable).
 
-Nejprve vytvořte skupinu prostředků s využitím clusteru [vytvořit skupiny az] [ az-group-create] příkazu. Následující příklad vytvoří název skupiny prostředků *myResourceGroup* v *eastus* oblasti:
+Nejdřív vytvořte skupinu prostředků pro cluster pomocí příkazu [AZ Group Create][az-group-create] . Následující příklad vytvoří název skupiny prostředků *myResourceGroup* v oblasti *eastus* :
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
 ```
 
-Teď vytvořte cluster AKS pomocí [az aks vytvořit] [ az-aks-create] příkazu. Následující příklad vytvoří cluster s jeden uzel velikost `Standard_NC6`:
+Nyní vytvořte cluster AKS pomocí příkazu [AZ AKS Create][az-aks-create] . Následující příklad vytvoří cluster s jedním uzlem velikosti `Standard_NC6`:
 
 ```azurecli-interactive
 az aks create \
@@ -50,23 +50,23 @@ az aks create \
     --node-count 1
 ```
 
-Získat přihlašovací údaje pro váš cluster AKS pomocí [az aks get-credentials] [ az-aks-get-credentials] příkaz:
+Pomocí příkazu [AZ AKS Get-credentialss][az-aks-get-credentials] Získejte přihlašovací údaje pro váš cluster AKS:
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 ```
 
-## <a name="install-nvidia-drivers"></a>Instalace ovladačů nVidia
+## <a name="install-nvidia-drivers"></a>Nainstalovat ovladače nVidia
 
-Před použitím grafickými procesory v uzlech, je nutné nasadit DaemonSet pro modul plug-in NVIDIA zařízení. Tato DaemonSet spustí pod v každém uzlu a poskytovat požadované ovladače GPU.
+Než bude možné použít GPU v uzlech, je nutné nasadit DaemonSet pro modul plug-in zařízení NVIDIA. Tento DaemonSet spustí pod každým uzlem, aby poskytoval požadované ovladače pro GPU.
 
-Nejprve vytvořte obor názvů pomocí [kubectl vytvoření oboru názvů] [ kubectl-create] příkazu, jako například *gpu prostředky*:
+Nejprve vytvořte obor názvů pomocí příkazu [kubectl Create Namespace][kubectl-create] , například *GPU-* Resources:
 
 ```console
 kubectl create namespace gpu-resources
 ```
 
-Vytvořte soubor s názvem *nvidia zařízení modulu plug-in ds.yaml* a vložte následující YAML manifestu. Tento manifest se poskytuje jako součást [NVIDIA zařízení modul plug-in pro projekt Kubernetes][nvidia-github].
+Vytvořte soubor s názvem *NVIDIA-Device-plugin-DS. yaml* a vložte následující manifest YAML. Tento manifest je k dispozici jako součást [modulu plug-in zařízení NVIDIA pro projekt Kubernetes][nvidia-github].
 
 ```yaml
 apiVersion: extensions/v1beta1
@@ -111,7 +111,7 @@ spec:
             path: /var/lib/kubelet/device-plugins
 ```
 
-Teď použijte [použití kubectl] [ kubectl-apply] příkazu vytvořte DaemonSet a potvrdit, modul plug-in nVidia zařízení proběhne úspěšně, jak je znázorněno v následujícím příkladu výstupu:
+Nyní pomocí příkazu [kubectl Apply][kubectl-apply] vytvořte DaemonSet a potvrďte, že se modul plug-in zařízení NVIDIA úspěšně vytvořil, jak je znázorněno v následujícím příkladu výstupu:
 
 ```console
 $ kubectl apply -f nvidia-device-plugin-ds.yaml
@@ -119,9 +119,9 @@ $ kubectl apply -f nvidia-device-plugin-ds.yaml
 daemonset "nvidia-device-plugin" created
 ```
 
-## <a name="confirm-that-gpus-are-schedulable"></a>Ověřte, zda jsou plánovatelná GPU
+## <a name="confirm-that-gpus-are-schedulable"></a>Potvrďte, že jsou plánovatelná GPU.
 
-Se vytvoří cluster AKS ověřte, zda GPU plánovatelná v Kubernetes. Nejprve vypište uzly v clusteru pomocí [kubectl get uzly] [ kubectl-get] příkaz:
+S vytvořeným clusterem AKS ověřte, že GPU jsou plánovatelná v Kubernetes. Nejprve seznam uzlů v clusteru pomocí příkazu [kubectl Get Nodes][kubectl-get] :
 
 ```console
 $ kubectl get nodes
@@ -130,9 +130,9 @@ NAME                       STATUS   ROLES   AGE   VERSION
 aks-nodepool1-28993262-0   Ready    agent   13m   v1.12.7
 ```
 
-Teď pomocí [kubectl popisují uzel] [ kubectl-describe] příkazu ověřte, že jsou plánovatelná GPU. V části *kapacity* části GPU zveřejnit jako `nvidia.com/gpu:  1`.
+Nyní použijte příkaz [kubectl popsat uzel][kubectl-describe] a potvrďte, že GPU jsou plánovatelná. V části *kapacita* by měl grafický procesor vypsat jako `nvidia.com/gpu:  1`.
 
-Následujícímu zhuštěnému příkladu ukazuje, že je k dispozici na uzel s názvem grafického procesoru *aks nodepool1 18821093 0*:
+Následující zhuštěný příklad ukazuje, že grafický procesor je k dispozici na uzlu s názvem *AKS-nodepool1-18821093-0*:
 
 ```console
 $ kubectl describe node aks-nodepool1-28993262-0
@@ -182,14 +182,14 @@ Non-terminated Pods:         (9 in total)
 [...]
 ```
 
-## <a name="run-a-gpu-enabled-workload"></a>Spuštění úlohy s podporou grafického procesoru
+## <a name="run-a-gpu-enabled-workload"></a>Spuštění úlohy s povoleným GPU
 
-Zobrazíte GPU v akci Naplánujte úlohu s podporou grafického procesoru u žádosti odpovídající prostředek. V tomto příkladu, můžeme spustit [Tensorflow](https://www.tensorflow.org/versions/r1.1/get_started/mnist/beginners) úlohy proti [datovou sadu mnist ručně](http://yann.lecun.com/exdb/mnist/).
+Pokud chcete zobrazit GPU v akci, naplánujte úlohu s povoleným GPU pomocí příslušné žádosti o prostředky. V tomto příkladu spustíme úlohu [Tensorflow](https://www.tensorflow.org/) s [datovou sadou mnist ručně zapsaných](http://yann.lecun.com/exdb/mnist/).
 
-Vytvořte soubor s názvem *ukázky tf mnist ručně demo.yaml* a vložte následující YAML manifestu. Následující úloha manifest obsahuje omezení prostředků `nvidia.com/gpu: 1`:
+Vytvořte soubor s názvem *Samples-TF-mnist ručně zapsaných-demo. yaml* a vložte následující manifest YAML. Následující manifest úlohy zahrnuje omezení `nvidia.com/gpu: 1`prostředků:
 
 > [!NOTE]
-> Pokud se zobrazí chybová zpráva o neshodě verze při volání do ovladače, například verze ovladače CUDA není dostatečná pro verzi modulu runtime CUDA, podívejte se na nVidia ovladač matice kompatibility graf- [https://docs.nvidia.com/deploy/cuda-compatibility/index.html](https://docs.nvidia.com/deploy/cuda-compatibility/index.html)
+> Pokud při volání do ovladačů obdržíte chybu neshody verzí, například, verze ovladače CUDA není dostatečná pro verzi CUDA runtime, Projděte si graf kompatibility matice ovladače nVidia –[https://docs.nvidia.com/deploy/cuda-compatibility/index.html](https://docs.nvidia.com/deploy/cuda-compatibility/index.html)
 
 ```yaml
 apiVersion: batch/v1
@@ -215,15 +215,15 @@ spec:
       restartPolicy: OnFailure
 ```
 
-Použití [použití kubectl] [ kubectl-apply] příkaz ke spuštění úlohy. Tento příkaz analyzuje soubor manifestu a vytvoří definované objekty Kubernetes:
+Spusťte úlohu pomocí příkazu [kubectl Apply][kubectl-apply] . Tento příkaz analyzuje soubor manifestu a vytvoří definované objekty Kubernetes:
 
 ```console
 kubectl apply -f samples-tf-mnist-demo.yaml
 ```
 
-## <a name="view-the-status-and-output-of-the-gpu-enabled-workload"></a>Zobrazit výstup úlohy s podporou grafického procesoru a stav
+## <a name="view-the-status-and-output-of-the-gpu-enabled-workload"></a>Zobrazení stavu a výstupu úlohy s podporou GPU
 
-Sledovat průběh úlohy pomocí [kubectl get úlohy] [ kubectl-get] příkazů `--watch` argument. Může trvat několik minut na první o přijetí změn na obrázku a zpracovat datovou sadu. Když *dokončování* sloupec zobrazuje *1/1*, úloha byla úspěšně dokončena. Ukončení `kubetctl --watch` příkaz *Ctrl-C*:
+Sledujte průběh úlohy pomocí příkazu [kubectl získat úlohy][kubectl-get] s `--watch` argumentem. První načtení obrázku a zpracování datové sady může trvat několik minut. Když se ve sloupci *dokončení* zobrazí *1/1*, úloha se úspěšně dokončila. Ukončete příkaz pomocí *kombinace kláves CTRL-C:* `kubetctl --watch`
 
 ```console
 $ kubectl get jobs samples-tf-mnist-demo --watch
@@ -234,7 +234,7 @@ samples-tf-mnist-demo   0/1           3m29s      3m29s
 samples-tf-mnist-demo   1/1   3m10s   3m36s
 ```
 
-Podívat se na výstup úlohy s podporou grafického procesoru, nejdřív získejte název pod s [kubectl get pods] [ kubectl-get] příkaz:
+Pokud se chcete podívat na výstup úlohy s povoleným grafickým procesorem, nejdřív si načtěte název pod příkazem [kubectl Get lusks][kubectl-get] :
 
 ```console
 $ kubectl get pods --selector app=samples-tf-mnist-demo
@@ -243,7 +243,7 @@ NAME                          READY   STATUS      RESTARTS   AGE
 samples-tf-mnist-demo-mtd44   0/1     Completed   0          4m39s
 ```
 
-Teď použijte [kubectl protokoly] [ kubectl-logs] příkazu zobrazte protokoly pod. Následující příklad pod protokoly potvrďte, že příslušné zařízení GPU zjištění `Tesla K80`. Zadejte název pro vlastní podu:
+Nyní použijte příkaz [kubectl logs][kubectl-logs] k zobrazení protokolů pod. V následujícím příkladu se v protokolech potvrdí, že se zjistilo `Tesla K80`příslušné zařízení GPU. Zadejte název pro vlastní pod:
 
 ```console
 $ kubectl logs samples-tf-mnist-demo-smnr6
@@ -322,7 +322,7 @@ Adding run metadata for 499
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-K odebrání přidružené Kubernetes objekty vytvořené v tomto článku, použijte [kubectl odstranit úlohu] [ kubectl delete] takto:
+K odebrání přidružených objektů Kubernetes vytvořených v tomto článku použijte příkaz [kubectl Delete Job][kubectl delete] :
 
 ```console
 kubectl delete jobs samples-tf-mnist-demo
@@ -330,9 +330,9 @@ kubectl delete jobs samples-tf-mnist-demo
 
 ## <a name="next-steps"></a>Další postup
 
-Chcete-li spouštět úlohy Apache Sparku, přečtěte si téma [Apache Spark spuštění úloh v AKS][aks-spark].
+Pokud chcete spouštět úlohy Apache Spark, přečtěte si téma [spuštění úloh Apache Spark na AKS][aks-spark].
 
-Další informace o spouštění machine learning (ML) úloh v Kubernetes najdete v tématu [Kubeflow Labs][kubeflow-labs].
+Další informace o spouštění úloh strojového učení (ML) na Kubernetes najdete v tématu [Kubeflow Labs][kubeflow-labs].
 
 <!-- LINKS - external -->
 [kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply

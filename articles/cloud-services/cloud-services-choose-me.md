@@ -1,57 +1,51 @@
 ---
-title: Co je Azure Cloud Services | Dokumentace Microsoftu
-description: Další informace o tom, co je Azure Cloud Services.
+title: Co je Azure Cloud Services | Microsoft Docs
+description: Přečtěte si, co je Azure Cloud Services.
 services: cloud-services
-documentationcenter: ''
-author: jpconnock
-manager: timlt
-ms.assetid: ed7ad348-6018-41bb-a27d-523accd90305
+author: georgewallace
 ms.service: multiple
-ms.workload: multiple
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
-ms.author: jeconnoc
-ms.openlocfilehash: ce88dcaedf32f293fc121cda2a088388c99badee
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: gwallace
+ms.openlocfilehash: 61369d51056607d8176d301afa945c7c77895b12
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60337510"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68359701"
 ---
 # <a name="overview-of-azure-cloud-services"></a>Přehled služby Azure Cloud Services
-Azure Cloud Services je příkladem [platforma jako služba](https://azure.microsoft.com/overview/what-is-paas/) (PaaS). Stejně jako [služby Azure App Service](../app-service/overview.md), tato technologie je navržen pro podporu aplikací, které jsou škálovatelné, spolehlivé a mají levný provoz. Stejným způsobem, App Service je proto hostována na virtuálních počítačích (VM), je příliš Azure Cloud Services. Máte však větší kontrolu nad virtuálními počítači. Svůj vlastní software můžete nainstalovat na virtuálních počítačích, které používají Azure Cloud Services a které můžete přistupovat vzdáleně.
+Azure Cloud Services je příkladem [platformy jako služby](https://azure.microsoft.com/overview/what-is-paas/) (PaaS). Stejně jako [Azure App Service](../app-service/overview.md)je tato technologie navržena tak, aby podporovala aplikace, které jsou škálovatelné, spolehlivé a nenákladné pro provoz. Stejným způsobem, jako hostuje App Service na virtuálních počítačích, je to také Cloud Services Azure. Máte ale větší kontrolu nad virtuálními počítači. Na virtuální počítače, které používají Azure Cloud Services, můžete nainstalovat vlastní software a k nim můžete přistupovat vzdáleně.
 
-![Azure Cloud Services diagramu](./media/cloud-services-choose-me/diagram.png)
+![Diagram Cloud Services Azure](./media/cloud-services-choose-me/diagram.png)
 
-Další ovládací prvek také znamená méně snadnost použití. Pokud potřebujete větší kontrolu možnosti, je obvykle rychlejší a snadnější ke zprovoznění webové aplikace a spuštěná ve službě Web Apps funkce služby App Service ve srovnání s Azure Cloud Services.
+Další ovládací prvky také znamenají méně snadné použití. Pokud nepotřebujete další možnosti ovládacího prvku, je obvykle rychlejší a jednodušší získat webovou aplikaci v Web Apps funkce App Service v porovnání se službou Azure Cloud Services.
 
-Existují dva typy rolí Azure Cloud Services. Jediným rozdílem mezi těmito dvěma je, jak je vaše role hostovaných na virtuálních počítačích:
+Existují dva typy rolí Azure Cloud Services. Jediným rozdílem mezi těmito dvěma způsoby je to, jak je vaše role hostovaná na virtuálních počítačích:
 
-* **Webová role**: Automaticky nasadí a je hostitelem vaší aplikace prostřednictvím služby IIS.
+* **Webová role**: Automaticky nasadí a hostuje vaši aplikaci prostřednictvím služby IIS.
 
-* **Role pracovního procesu**: Nepoužívají služby IIS a spouští vaše samostatné aplikace.
+* **Role pracovního procesu**: Nepoužívá službu IIS a spouští samostatnou aplikaci.
 
-Jednoduchá aplikace může například použít právě jednu webovou roli, obsluhující Web. Složitější aplikaci může používat webové role ke zpracování příchozích požadavků od uživatelů a pak předejte tyto žádosti do role pracovního procesu pro zpracování. (Tato komunikace může použít [Azure Service Bus](../service-bus-messaging/service-bus-messaging-overview.md) nebo [Azure Queue storage](../storage/common/storage-introduction.md).)
+Například jednoduchá aplikace může používat jenom jednu webovou roli, která obsluhuje Web. Složitější aplikace může použít webovou roli ke zpracování příchozích požadavků od uživatelů a pak tyto požadavky předat do role pracovního procesu ke zpracování. (Tato komunikace může používat [Azure Service Bus](../service-bus-messaging/service-bus-messaging-overview.md) nebo [Azure Queue Storage](../storage/common/storage-introduction.md).)
 
-Na předchozím obrázku navrhuje, všechny virtuální počítače v jedné aplikaci jsou spuštěny v rámci stejné cloudové služby. Přístup uživatelů aplikace prostřednictvím jednu veřejnou IP adresu, s žádostmi o automaticky načíst vyvažují mezi virtuálních počítačů aplikaci. Platforma [dá škálovat a nasadí](cloud-services-how-to-scale-portal.md) virtuálních počítačů v aplikaci Azure Cloud Services tak, aby se vyhnete jediný bod selhání hardwaru.
+Jak ukazuje předchozí obrázek, všechny virtuální počítače v jedné aplikaci běží ve stejné cloudové službě. Uživatelé přistupují k aplikaci prostřednictvím jedné veřejné IP adresy, přičemž požadavky se automaticky vyrovnávají napříč virtuálními počítači aplikace. Platforma se [škáluje a nasadí](cloud-services-how-to-scale-portal.md) virtuální počítače v aplikaci Azure Cloud Services tak, aby nedocházelo k jednomu bodu selhání hardwaru.
 
-I když aplikace běží na virtuálních počítačích, je důležité pochopit, že poskytuje cloudové služby Azure PaaS, ne na infrastrukturu jako službu (IaaS). Tady je jeden ze způsobů zamyslete o něm. S modelem IaaS, jako jsou Azure Virtual Machines nejprve vytvořte a nakonfigurujte prostředí, ve kterém běží aplikace v. Potom nasaďte svoji aplikaci do tohoto prostředí. Zodpovídáte za správu velkou část tento svět věci, jako je nasazení nové verze verzi operačního systému do každého virtuálního počítače. V modelu PaaS naopak je jako prostředí už existuje. Všechno, co musíte udělat, je při nasazování aplikace. Správa platformy, na kterých se spouští, včetně nasazování nových verzí operačního systému se postará služba za vás.
+I když aplikace běží na virtuálních počítačích, je důležité pochopit, že Azure Cloud Services poskytuje PaaS, ne infrastrukturu jako službu (IaaS). Tady je jeden ze způsobů, jak si ho představit. V IaaS, jako je Azure Virtual Machines, nejprve vytvoříte a nakonfigurujete prostředí, ve kterém běží aplikace. Pak nasadíte aplikaci do tohoto prostředí. Zodpovídáte za správu mnoha z těchto světových věcí, jako je například nasazení nových opravených verzí operačního systému v každém virtuálním počítači. V PaaS naproti tomu je to, jako kdyby prostředí již existovalo. Stačí provést nasazení aplikace. Správa platformy, na které běží, včetně nasazení nových verzí operačního systému, je zpracována za vás.
 
 ## <a name="scaling-and-management"></a>Škálování a Správa
-S Azure Cloud Services nemusíte vytvářet virtuální počítače. Místo toho zadejte konfigurační soubor, který dává Azure pokyn, kolik jednotlivých by rádi používáte, jako je například "tři instance webové role" a "dvou instancí rolí pracovního procesu." Platformu je pak vytvoří za vás. Dál možnost [jakou velikost](cloud-services-sizes-specs.md) by měl být ty zálohování virtuálních počítačů, ale není explicitně je sami vytvoříte. Pokud vaše aplikace potřebuje ke zpracování větší zátěže, můžete požádat o další virtuální počítače a Azure vytvoří tyto instance. Pokud snížení zatížení, můžete vypnout tyto instance a zastavit platit za ně.
+S Azure Cloud Services nevytváříte virtuální počítače. Místo toho zadáte konfigurační soubor, který oznamuje, kolik každého z nich chcete, například "tři instance webové role" a "dvě instance role pracovního procesu". Platforma je pak vytvoří za vás. Pořád si zvolíte, [jakou velikost](cloud-services-sizes-specs.md) záložních virtuálních počítačů by měly být, ale nebudete je explicitně vytvářet sami. Pokud vaše aplikace potřebuje zvládnout větší zatížení, můžete požádat o další virtuální počítače a Azure tyto instance vytvoří. Pokud se zatížení sníží, můžete tyto instance vypnout a začlenit jejich platby.
 
-Aplikace Azure Cloud Services je obvykle k dispozici uživatelům přes dvoustupňový proces. Vývojář první [odešle aplikace](cloud-services-how-to-create-deploy-portal.md) do pracovní oblasti platformy. Když vývojář je připraven ke zpřístupnění aplikace live, používají na webu Azure portal se Prohodit pracovní s produkčním prostředí. To [přepínat mezi přípravným a produkčním prostředím](cloud-services-how-to-manage-portal.md#swap-deployments-to-promote-a-staged-deployment-to-production) lze provést bez výpadku provozu, které vám umožní spuštěné aplikaci bez narušení jeho uživatelé upgradovat na novou verzi.
+Aplikace Azure Cloud Services je obvykle k dispozici uživatelům prostřednictvím procesu se dvěma kroky. Vývojář nejdřív [nahraje aplikaci](cloud-services-how-to-create-deploy-portal.md) do pracovní oblasti platformy. Když je vývojář připravený k zajištění provozu aplikace, používá Azure Portal k prohození pracovní části s produkčním prostředím. Tento [přepínač mezi](cloud-services-how-to-manage-portal.md#swap-deployments-to-promote-a-staged-deployment-to-production) příchodem a výrobou se dá udělat bez výpadků, což umožňuje upgradování běžící aplikace na novou verzi bez narušení jejich uživatelů.
 
 ## <a name="monitoring"></a>Monitorování
-Azure Cloud Services také poskytuje monitorování. Jako jsou virtuální počítače zjistí selhání fyzického serveru a restartuje virtuální počítače, které byly spuštěny na tomto serveru na nový počítač. Ale Azure Cloud Services také detekuje selhání virtuálních počítačů a aplikací, ne jenom selhání hardwaru. Na rozdíl od virtuálních počítačů má agenta uvnitř jednotlivých webových a pracovních rolí a proto je možné spustit nové virtuální počítače a instance aplikace, když dojde k selhání.
+Azure Cloud Services také nabízí monitorování. Stejně jako Virtual Machines detekuje neúspěšný fyzický server a restartuje virtuální počítače, které na tomto serveru běžely na novém počítači. Ale Azure Cloud Services také detekuje neúspěšné virtuální počítače a aplikace, nikoli jenom selhání hardwaru. Na rozdíl od Virtual Machines má agent uvnitř každé webové a pracovní role, takže při selhání může začít nové virtuální počítače a instance aplikace.
 
-PaaS povaha cloudových služeb Azure má příliš ostatní důsledky. Jednou z vašich nejdůležitějších je, že aplikace založené na tuto technologii by měly být zapsány správně spustit, když selže všechny instance webové nebo pracovní role. Za tím účelem aplikaci Azure Cloud Services by neměl uchování stavu v systému souborů své vlastní virtuální počítače. Na rozdíl od virtuální počítače vytvořené pomocí virtuálních počítačů nejsou trvalé zápis provedené na virtuální počítače Azure Cloud Services. Neexistuje nic jako datového disku virtuálního počítače. Místo toho aplikace Azure Cloud Services by měl explicitně zápis všech stavů do Azure SQL Database, objekty BLOB, tabulek nebo jiné externí úložiště. Sestavování aplikací díky tomu je mezi nimi vlastně snáze škálovatelné a odolnější vůči selhání, které jsou obě důležité cíle cloudových služeb Azure.
+PaaS povaha Azure Cloud Services má i jiné důsledky. Jedním z nejdůležitějších z nich je, že aplikace postavené na této technologii by se měly zapsat ke správnému spuštění, když dojde k chybě jakékoli instance webové nebo pracovní role. Aby to bylo možné dosáhnout, aplikace Cloud Services Azure by neměla udržovat stav v systému souborů svých vlastních virtuálních počítačů. Na rozdíl od virtuálních počítačů vytvořených pomocí Virtual Machines nejsou zápisy do virtuálních počítačů Azure Cloud Services trvalé. K dispozici není žádný podobný Virtual Machines datový disk. Místo toho by měla aplikace Cloud Services v Azure explicitně zapisovat všechny stavy do Azure SQL Database, objektů blob, tabulek nebo některých jiných externích úložišť. Sestavování aplikací tímto způsobem usnadňuje škálování a odolnější selhání, což jsou důležité cíle Azure Cloud Services.
 
 ## <a name="next-steps"></a>Další postup
 * [Vytvoření aplikace cloudové služby v .NET](cloud-services-dotnet-get-started.md) 
-* [Vytvoření aplikace cloudové služby v Node.js](cloud-services-nodejs-develop-deploy-app.md) 
+* [Vytvoření aplikace cloudové služby v Node. js](cloud-services-nodejs-develop-deploy-app.md) 
 * [Vytvoření aplikace cloudové služby v PHP](../cloud-services-php-create-web-role.md) 
 * [Vytvoření aplikace cloudové služby v Pythonu](cloud-services-python-ptvs.md)
 

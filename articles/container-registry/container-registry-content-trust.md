@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: quickstart
 ms.date: 05/06/2019
 ms.author: danlep
-ms.openlocfilehash: 9cd2965e64806dded0e5c688b70d07dfcd763f46
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: d2132f060076aefe6ae0eccb6d5300c78c96ece5
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68309746"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68356545"
 ---
 # <a name="content-trust-in-azure-container-registry"></a>Důvěryhodnost obsahu ve službě Azure Container Registry
 
@@ -174,7 +174,7 @@ Jak je uvedeno ve výstupu příkazu `docker push` při odeslání první důvě
 ~/.docker/trust/private
 ```
 
-Zálohujte svůj kořenový klíč a klíč úložiště tím, že je zkomprimujete do archivu a bezpečně je uložíte v režimu offline (například na úložné zařízení USB). Příklad v prostředí Bash:
+Svůj kořenový klíč a klíče úložiště zálohujte tak, že je zkomprimujete v archivu a uložíte je na bezpečném místě. Příklad v prostředí Bash:
 
 ```bash
 umask 077; tar -zcvf docker_private_keys_backup.tar.gz ~/.docker/trust/private; umask 022
@@ -193,9 +193,11 @@ Pokud chcete pro svůj registr zakázat důvěryhodnost obsahu, přejděte do to
 
 ![Zakázání důvěryhodnosti obsahu pro registr na webu Azure Portal][content-trust-03-portal]
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
-Další informace o vztahu důvěryhodnosti obsahu najdete [v části důvěryhodnost obsahu v Docker][docker-content-trust] . Přestože se tento článek zabýval několika klíčovými body, důvěryhodnost obsahu je rozsáhlé téma, kterému se podrobněji věnuje dokumentace k Dockeru.
+* Další informace o vztahu důvěryhodnosti obsahu najdete [v části důvěryhodnost obsahu v Docker][docker-content-trust] . Přestože se tento článek zabýval několika klíčovými body, důvěryhodnost obsahu je rozsáhlé téma, kterému se podrobněji věnuje dokumentace k Dockeru.
+
+* Příklad použití vztahu důvěryhodnosti obsahu při sestavování a vložení image Docker najdete v dokumentaci k [Azure Pipelines](/azure/devops/pipelines/build/content-trust) .
 
 <!-- IMAGES> -->
 [content-trust-01-portal]: ./media/container-registry-content-trust/content-trust-01-portal.png

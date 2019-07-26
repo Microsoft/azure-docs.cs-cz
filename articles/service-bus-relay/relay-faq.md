@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/21/2018
 ms.author: spelluru
-ms.openlocfilehash: f9f182a459f9a38c96bdf923998d1cdfee8fc3ac
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 207f73bbf9a92d26be1791fc11ce81fe68252705
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68277958"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68422956"
 ---
 # <a name="azure-relay-faqs"></a>Nejčastější dotazy k Azure Relay
 
@@ -36,7 +36,7 @@ Tento článek obsahuje odpovědi na nejčastější dotazy týkající se [Azur
 [Obor názvů](relay-create-namespace-portal.md) je kontejner oboru, který můžete použít k adresování prostředků přenosu v rámci aplikace. Musíte vytvořit obor názvů pro použití Relay. Toto je jeden z prvních kroků při zahájení práce.
 
 ### <a name="what-happened-to-service-bus-relay-service"></a>Co se stalo s Service Bus Relay služby?
-Dříve pojmenovaná služba Service Bus Relay se nyní označuje jako [WCF Relay](relay-wcf-dotnet-get-started.md). Tuto službu můžete dál používat jako obvykle. Funkce Hybrid Connections je aktualizovaná verze služby, která je předaná z Azure BizTalk Services. WCF Relay a Hybrid Connections obojí i nadále podporovat.
+Dříve pojmenovaná služba Service Bus Relay se nyní označuje jako [WCF Relay](service-bus-relay-tutorial.md). Tuto službu můžete dál používat jako obvykle. Funkce Hybrid Connections je aktualizovaná verze služby, která je předaná z Azure BizTalk Services. WCF Relay a Hybrid Connections obojí i nadále podporovat.
 
 ## <a name="pricing"></a>Ceny
 Tato část obsahuje odpovědi na některé nejčastější dotazy týkající se cenové struktury přenosu. Také se můžete podívat na [Nejčastější dotazy k podpoře Azure](https://azure.microsoft.com/support/faq/) pro obecné informace o cenách Azure. Úplné informace o cenách přenosu najdete v tématu [Service Bus podrobnosti o cenách][Pricing overview].
@@ -80,7 +80,7 @@ Odeslání zprávy na Service Bus relay je považováno za "úplné prostřednic
 Přenosy, které jsou otevřeny pomocí vazby WCF **netTCPRelay** , považují zprávy za jednotlivé zprávy, ale jako proud dat přenášených systémem. Použijete-li tuto vazbu, pouze odesílatel a naslouchací proces budou mít přehled o rámcích jednotlivých odeslaných a přijímaných zpráv. U přenosů, které používají vazbu **netTCPRelay** , se všechna data považují za datový proud pro výpočet fakturovatelných zpráv. V takovém případě Service Bus vypočítá celkové množství dat odesílaných nebo přijatých prostřednictvím každého jednotlivého přenosu po dobu 5 minut. Pak rozdělí celkový objem dat o 64 KB, aby bylo možné určit počet fakturovaných zpráv pro tento přenos během daného časového období.
 
 ## <a name="quotas"></a>Kvóty
-| Název kvóty | Scope |  Poznámky | Hodnota |
+| Název kvóty | Scope |  Poznámky | Value |
 | --- | --- | --- | --- |
 | Souběžné naslouchací procesy na Relay |Entita |Následné žádosti o další připojení jsou odmítnuty a volající kód obdrží výjimku. |25 |
 | Souběžná připojení přenosu na všechny koncové body přenosu v oboru názvů služby |Obor názvů |- |5,000 |

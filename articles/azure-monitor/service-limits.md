@@ -1,6 +1,6 @@
 ---
-title: Omezení služby Azure Monitor | Dokumentace Microsoftu
-description: Obsahuje seznam omezení v různých oblastech služby Azure Monitor.
+title: Omezení služby Azure Monitor | Microsoft Docs
+description: Vypisuje omezení v různých oblastech Azure Monitor.
 author: bwren
 manager: carmonm
 editor: tysonn
@@ -12,18 +12,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/10/2019
 ms.author: bwren
-ms.openlocfilehash: be9d3a14d5b242ba8c331cdd1f4c558e7a080af5
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: 0386700c238c213fd9cde3ca1b49e5e598d05bfd
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67297274"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68405667"
 ---
 # <a name="azure-monitor-service-limits"></a>Omezení služby Azure Monitor
 
-Tento článek uvádí omezení v různých oblastech služby Azure Monitor.
+V tomto článku jsou uvedena omezení v různých oblastech Azure Monitor.
 
-## <a name="alerts"></a>Výstrahy
+## <a name="alerts"></a>Upozornění
 
 [!INCLUDE [monitoring-limits](../../includes/azure-monitor-limits-alerts.md)]
 
@@ -31,7 +31,11 @@ Tento článek uvádí omezení v různých oblastech služby Azure Monitor.
 
 [!INCLUDE [monitoring-limits](../../includes/azure-monitor-limits-action-groups.md)]
 
-## <a name="log-analytics-workspaces"></a>Pracovní prostory log Analytics
+## <a name="log-queries-and-language"></a>Dotazy a jazyky protokolu
+
+[!INCLUDE [monitoring-limits](../../includes/azure-monitor-limits-log-queries.md)]
+
+## <a name="log-analytics-workspaces"></a>Pracovní prostory Log Analytics
 
 [!INCLUDE [monitoring-limits](../../includes/azure-monitor-limits-workspaces.md)]
 
@@ -42,5 +46,5 @@ Tento článek uvádí omezení v různých oblastech služby Azure Monitor.
 ## <a name="next-steps"></a>Další kroky
 
 - [Ceny Azure Monitor](https://azure.microsoft.com/pricing/details/monitor/)
-- [Monitorování využití a odhadované náklady ve službě Azure Monitor](platform/usage-estimated-costs.md)
-- [Správa nákladů a využití pro službu Application Insights](app/pricing.md)
+- [Monitorování využití a odhadovaných nákladů v Azure Monitor](platform/usage-estimated-costs.md)
+- [Správa využití a nákladů pro Application Insights](app/pricing.md)

@@ -1,97 +1,78 @@
 ---
-title: Azure Active Directory Identity Protection rizikem události – referenční informace | Dokumentace Microsoftu
-description: Azure Active Directory Identity Protection rizikem události – referenční informace.
+title: Referenční informace o rizikových událostech Azure Active Directory Identity Protection | Microsoft Docs
+description: Azure Active Directory Identity Protection odkaz na rizikové události
 services: active-directory
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: mtillman
-ms.assetid: 14f7fc83-f4bb-41bf-b6f1-a9bb97717c34
 ms.service: active-directory
 ms.subservice: identity-protection
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: reference
 ms.date: 01/25/2018
 ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3973a35acb4cb95d3392a8daa59e7fd9a8c56eb1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 08e27052c3583ddea7a2fb6fe96fa6b48cd6c372
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65191528"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68333879"
 ---
-# <a name="azure-active-directory-identity-protection-risk-events-reference"></a>Azure Active Directory Identity Protection rizikem události – referenční informace
+# <a name="azure-active-directory-identity-protection-risk-events-reference"></a>Přehled Azure Active Directory Identity Protection rizikových událostí
 
-Většinu narušení zabezpečení se použijí při útočníci získají přístup k prostředí krádeží identity uživatele. Zjišťování ohrožení zabezpečení identit je žádný snadný úkol. Azure Active Directory používá algoritmy adaptivní strojového učení a heuristik ke zjištění podezřelé akce, které souvisejí s vašimi uživatelskými účty. Každé zjištěné podezřelé akce je uložen v záznamu volané rizikové události.
+Pokud útočníci získají přístup k prostředí tím, že ukrást identitu uživatele, dojde k převážné většině narušení zabezpečení. Zjišťování ohrožených identit není jednoduché. Azure Active Directory používá k detekci podezřelých akcí, které souvisejí s vašimi uživatelskými účty, algoritmus adaptivního strojového učení a heuristiky. Každá zjištěná podezřelá akce je uložená v záznamu s názvem riziková událost.
 
+## <a name="anonymous-ip-address"></a>Anonymní IP adresa
 
-## <a name="anonymous-ip-address"></a>Anonymní IP adresy
+**Typ detekce:** V reálném čase  
+**Starý název:** Přihlášení z anonymní IP adresy
 
-**Typ zjišťování:** V reálném čase  
-**Starý název:** Přihlášení z anonymních IP adres
+Tento typ rizikové události označuje přihlášení z anonymní IP adresy (například prohlížeč služby pro Anonymizer VPN).
+Tyto IP adresy obvykle používají aktéri, kteří chtějí skrýt svou telemetrii přihlašování (IP adresa, umístění, zařízení atd.) pro potenciálně škodlivý záměr.
 
+## <a name="atypical-travel"></a>Neobvyklá cesta
 
-Tento typ rizikové události označuje přihlášení z anonymní IP adresy (například Tor prohlížeč, programu anonymizer VPN).
-Tyto IP adresy jsou obvykle používány účastníky, kteří chtějí skrýt jejich přihlášení telemetrie (IP adresa, umístění, zařízení atd.) pro potenciálně škodlivým činnostem.
-
-
-## <a name="atypical-travel"></a>Atypické cesty
-
-**Typ zjišťování:** Offline  
+**Typ detekce:** Offline  
 **Starý název:** Nemožná cesta do netypických míst
 
+Tento typ rizikové události identifikuje dvě přihlášení pocházející z geograficky vzdálených umístění, kde aspoň jedno z umístění může být pro uživatele neobvyklá, a to s ohledem na minulé chování. Kromě několika dalších faktorů tento algoritmus strojového učení bere v úvahu čas mezi dvěma přihlášeními a časem, kdy by uživatel musel přejít z prvního umístění do druhé, což značí, že jiný uživatel používá stejné. přihlašovací údaje.
 
-Tento typ rizikové události identifikuje dvě přihlášení pocházející z geograficky vzdáleném umístění, kde aspoň jedno z umístění může být také netypických pro uživatele, daný za chování. Mezi několik dalších faktorů tohoto algoritmu strojového učení bere v úvahu čas mezi dvěma přihlášení a čas, kdy by trvalo pro uživatele k dopravě z první umístění do druhého, označující, že jiný uživatel používá stejný přihlašovací údaje.
+Algoritmus ignoruje zjevné "falešně pozitivní", které přispívají k nemožným cestovním podmínkám, jako jsou sítě VPN a lokality pravidelně používané jinými uživateli v organizaci. Systém má počáteční období učení nejstarších 14 dní nebo 10 přihlášení, během kterých se učí chování přihlášení nového uživatele.
 
-Algoritmus ignoruje zřejmé "počet falešně pozitivních výsledků" přispívání do podmínky neuskutečnitelná cesta, například sítě VPN a umístění pravidelně používat další uživatelé v organizaci. Systém má období učení z nejdřívější z 14 dnů a 10 přihlášení, během kterých se naučí nového uživatele přihlásit chování.
+## <a name="leaked-credentials"></a>Nevrácená pověření
 
-
-## <a name="leaked-credentials"></a>Úniku přihlašovacích údajů
-
-**Typ zjišťování:** Offline  
+**Typ detekce:** Offline  
 **Starý název:** Uživatelé s uniklými přihlašovacími údaji
 
-
-Tento typ rizikové události označuje, že byl úniku platné přihlašovací údaje uživatele.
-Když internetovým zločincům ohrozit platný hesla oprávněným uživatelům, pachatelů často sdílí své přihlašovací údaje. To se obvykle provádí zveřejněním je veřejně na tmavě web nebo vložit lokalit nebo obchodování nebo prodej přihlašovací údaje na černém trhu. Microsoft úniku přihlašovacích údajů služby získá uživatelské jméno / heslo dvojice monitorování veřejné a tmavé webů a práce s:
+Tento typ rizikové události indikuje, že byly Nevráceny platné přihlašovací údaje uživatele.
+Pokud cybercriminals ohrozit platná hesla legitimních uživatelů, zločiny často tyto přihlašovací údaje sdílejí. To se obvykle provádí publikováním veřejně na tmavém webu nebo vložením webů nebo obchodováním nebo prodejem přihlašovacích údajů na černém trhu. Služba nevrácených přihlašovacích údajů Microsoftu získává páry uživatelského jména a hesla, protože sleduje veřejné a tmavé weby a pracuje s těmito službami:
 
 - Výzkumní pracovníci
+- Vynucování zákonů
+- Týmy zabezpečení v Microsoftu
+- Jiné důvěryhodné zdroje
 
-- Vymáhání zákona
+Když služba získá přihlašovací údaje uživatele z tmavého webu, vloží weby nebo výše uvedené zdroje, porovná se s aktuálními platnými přihlašovacími údaji uživatelů Azure AD, aby našli platné shody.
 
-- Zabezpečení týmů v Microsoftu
+## <a name="malware-linked-ip-address"></a>IP adresy související s malwarem
 
-- Jiných důvěryhodných zdrojů
-
-Když služba získá přihlašovací údaje uživatele z dark web, vložit weby nebo výše uvedených zdrojů, jsou porovnávána s aktuální platná pověření uživatelů Azure AD se najít platný shody.
-
-
-## <a name="malware-linked-ip-address"></a>Malware propojené IP adresa
-
-**Typ zjišťování:** Offline  
+**Typ detekce:** Offline  
 **Starý název:** Přihlášení z nakažených zařízení
 
-
-Tento typ rizikové události označuje přihlášení z IP adresy napadený malwarem, který je známý aktivně komunikovat se serverem robota. To se určují podle korelace IP adresy zařízení uživatele s IP adresami, které byly kontaktu s bot serveru, zatímco bot server byl aktivní.
-
+Tento typ rizikové události indikuje přihlášení z IP adres nakažených malwarem, u kterých je známo, že aktivně komunikuje se serverem robot. To je určeno korelacemi IP adres zařízení uživatele proti IP adresám, které se nacházely v kontaktu se serverem robota, zatímco byl server robot aktivní.
 
 ## <a name="unfamiliar-sign-in-properties"></a>Neznámé vlastnosti přihlášení
 
-**Typ zjišťování:** V reálném čase  
+**Typ detekce:** V reálném čase  
 **Starý název:** Přihlášení z neznámých míst
 
+Tento typ rizikové události zvažuje minulou historii přihlášení (IP, zeměpisná šířka/délka a ASN), kde se hledají neobvyklé přihlášení. Systém ukládá informace o předchozích umístěních používaných uživatelem a považuje se za "známá" umístění. Riziková událost se aktivuje, když se přihlásí z umístění, které ještě není v seznamu známých umístění. Nově vytváře uživatelé budou v "výukovém režimu" po určitou dobu, během které se neznámé rizikové vlastnosti přihlašování vypnou, zatímco se naše algoritmy učí chování uživatele. Doba trvání výukového režimu je dynamická a závisí na tom, kolik času má algoritmus získat dostatek informací o vzorech přihlášení uživatele. Minimální doba trvání je pět dní. Uživatel se může po dlouhou době nečinnosti vrátit do výukového režimu. Systém také ignoruje přihlášení ze známých zařízení a umístění, která jsou geograficky blízko známého umístění. 
 
-Tento typ rizikové události bere v úvahu minulé historie přihlašování (IP, zeměpisné šířky / délky a čísla ASN) k vyhledání neobvyklou přihlašovací aktivitou. Systém uchovává informace o předchozí umístění použitá uživatelem a bere v úvahu tyto "známé" umístění. Riziková událost se aktivuje, dojde li přihlásit z umístění, které již není v seznamu známých umístění. Nově vytvořený uživatelé budou v "režimu learning" pro určitou dobu v neznámého přihlášení vlastnosti, které rizikové události se vypne při naše algoritmy přečtěte si chování uživatele. Studijní doba trvání režimu je dynamický a závisí na tom, jak dlouho trvá algoritmus shromáždit dostatek informací o vzory přihlašování uživatele. Minimální doba trvání je pět dní. Uživatele můžete přejít zpět do režimu učení po delší době nečinnosti. Systém také ignoruje přihlášení ze známé zařízení a umístění, které jsou geograficky umístěné blízko známé umístění. 
+Tuto detekci také spouštíme pro základní ověřování (nebo starší protokoly). Vzhledem k tomu, že tyto protokoly nemají moderní vlastnosti, jako je například ID klienta, je k dispozici omezená telemetrie k omezení falešně pozitivních hodnot. Zákazníkům doporučujeme, aby přešli na moderní ověřování.
 
-Můžeme také spustit toto zjišťování pro základní ověřování (nebo starších verzí protokolů). Protože tyto protokoly nejsou moderní vlastnosti, jako je ID klienta, je omezený telemetrických dat do snížil počet falešných poplachů. Doporučujeme, aby naše zákazníky, přesunout do moderního ověřování.
+## <a name="azure-ad-threat-intelligence"></a>Analýza hrozeb Azure AD
 
+**Typ detekce:** Offline <br>
+**Starý název:** Tato detekce se zobrazí ve starších verzích Azure AD Identity Protection (uživatelé s příznakem rizika, rizikové události) jako uživatelé s nevrácenými přihlašovacími údaji.
 
-## <a name="azure-ad-threat-intelligence"></a>Analýzy hrozeb v Azure AD
-
-**Typ zjišťování:** Offline <br>
-**Starý název:** Toto zjišťování se zobrazí v sestavách starší verze služby Azure AD Identity Protection (uživatelé označení příznakem rizika, rizikové události) jako "Uživatelé s uniklými přihlašovacími údaji.
-
-Tento typ rizikové události označuje aktivity uživatelů, který je pro daného uživatele neobvyklé nebo odpovídají známým vzorcům útoku podle zdroje intelligence interních a externích hrozeb od Microsoftu.
+Tento typ rizikové události označuje aktivitu uživatele, která je pro daného uživatele neobvyklá, nebo je konzistentní se známými vzory útoku na základě interních a externích zdrojů analýzy hrozeb Microsoftu.

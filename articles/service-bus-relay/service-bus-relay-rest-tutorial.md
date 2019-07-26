@@ -1,6 +1,6 @@
 ---
-title: Kurz REST pro použití Azure Relay | Dokumentace Microsoftu
-description: Sestavte jednoduchou hostitelskou aplikaci Azure Service Bus Relay, která vystavuje rozhraní založené na protokolu REST.
+title: Kurz REST, který používá Azure Relay | Microsoft Docs
+description: Vytvořte jednoduchou hostitelskou aplikaci Azure Service Bus Relay, která zpřístupňuje rozhraní založené na REST.
 services: service-bus-relay
 documentationcenter: na
 author: spelluru
@@ -14,25 +14,25 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/06/2018
 ms.author: spelluru
-ms.openlocfilehash: 4ed45e1ed18ad630831772997b1fc150882731bd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4e988724f842ff12cd599eba95c31006fe208fad
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62123395"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68422888"
 ---
-# <a name="azure-wcf-relay-rest-tutorial"></a>Kurz pro Azure WCF Relay REST
-Tento kurz popisuje, jak vytvořit jednoduchou hostitelskou aplikaci Azure Relay, která vystavuje rozhraní založené na protokolu REST. REST webovému klientovi, jako je třeba webový prohlížeč, umožňuje přístup k API pro Service Bus přes požadavky HTTP.
+# <a name="azure-wcf-relay-rest-tutorial"></a>Kurz k Azure WCF Relay REST
+V tomto kurzu se dozvíte, jak vytvořit jednoduchou hostitelskou aplikaci Azure Relay, která zpřístupňuje rozhraní založené na REST. REST webovému klientovi, jako je třeba webový prohlížeč, umožňuje přístup k API pro Service Bus přes požadavky HTTP.
 
-Tento kurz používá programovací model REST Windows Communication Foundation (WCF) k vytvoření služby v Azure Relay. Další informace najdete v dokumentaci [Programovací model Rest WCF](/dotnet/framework/wcf/feature-details/wcf-web-http-programming-model) a [Návrh a implementace služeb](/dotnet/framework/wcf/designing-and-implementing-services).
+V tomto kurzu se používá programovací model REST Windows Communication Foundation (WCF) k vytvoření služby REST na Azure Relay. Další informace najdete v dokumentaci [Programovací model Rest WCF](/dotnet/framework/wcf/feature-details/wcf-web-http-programming-model) a [Návrh a implementace služeb](/dotnet/framework/wcf/designing-and-implementing-services).
 
 V tomto kurzu provedete následující kroky:
 
 > [!div class="checklist"]
-> * Vytvořte obor názvů služby Relay.
-> * Definování kontraktu služby WCF na bázi REST
-> * Implementace kontraktu WCF na bázi REST
-> * Hostování a spuštění služby WCF na bázi REST
+> * Vytvořte obor názvů Relay.
+> * Definování kontraktu služby WCF založeného na REST
+> * Implementace kontraktu služby WCF založeného na REST
+> * Hostování a spuštění služby WCF založené na REST
 > * Spuštění a testování služby
 
 ## <a name="prerequisites"></a>Požadavky
@@ -41,19 +41,19 @@ Pro absolvování tohoto kurzu musí být splněné následující požadavky:
 
 - Předplatné Azure. Pokud ho nemáte, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 - [Sada Visual Studio 2015 nebo novější](https://www.visualstudio.com). V příkladech v tomto kurzu se používá sada Visual Studio 2017.
-- Azure SDK pro .NET. Nainstalujte ji z [stránky pro stažení sady SDK](https://azure.microsoft.com/downloads/).
+- Sada Azure SDK pro .NET Nainstalujte ji ze [stránky pro stažení sady SDK](https://azure.microsoft.com/downloads/).
 
-## <a name="create-a-relay-namespace"></a>Vytvořit obor názvů služby Relay
+## <a name="create-a-relay-namespace"></a>Vytvoření oboru názvů Relay
 
 Pokud chcete začít používat přenosové funkce v Azure, musíte nejdříve vytvořit obor názvů služby. Obor názvů poskytuje kontejner oboru pro adresování prostředků Azure v rámci vaší aplikace. Pokud chcete vytvořit obor názvů Relay, postupujte podle [těchto pokynů](relay-create-namespace-portal.md).
 
-## <a name="define-a-rest-based-wcf-service-contract-to-use-with-azure-relay"></a>Definování kontraktu služby WCF na bázi REST pro použití s Azure Relay
+## <a name="define-a-rest-based-wcf-service-contract-to-use-with-azure-relay"></a>Definování kontraktu služby WCF založeného na REST pro použití s Azure Relay
 
-Když vytvoříte službu WCF stylu REST, je nutné definovat kontrakt. Kontrakt určuje, které operace hostitel podporuje. Operaci služby se můžeme představit jako metodu webové služby. Kontrakty se vytvoří definováním základního rozhraní C++, C# nebo Visual Basic. Každá metoda v rozhraní odpovídá konkrétní operaci služby. Atribut [ServiceContractAttribute](/dotnet/api/system.servicemodel.servicecontractattribute) se musí použít na každé rozhraní a atribut [OperationContractAttribute](/dotnet/api/system.servicemodel.operationcontractattribute) se musí použít na každou operaci. Pokud metoda v rozhraní, které má atribut [ServiceContractAttribute](/dotnet/api/system.servicemodel.servicecontractattribute), nemá atribut [OperationContractAttribute](/dotnet/api/system.servicemodel.operationcontractattribute), taková metoda se nevystaví. Kód použitý pro tyto úlohy je v následujícím příkladu za postupem.
+Při vytváření služby ve stylu REST WCF musíte definovat kontrakt. Kontrakt určuje, které operace hostitel podporuje. Operaci služby se můžeme představit jako metodu webové služby. Kontrakty se vytvoří definováním základního rozhraní C++, C# nebo Visual Basic. Každá metoda v rozhraní odpovídá konkrétní operaci služby. Atribut [ServiceContractAttribute](/dotnet/api/system.servicemodel.servicecontractattribute) se musí použít na každé rozhraní a atribut [OperationContractAttribute](/dotnet/api/system.servicemodel.operationcontractattribute) se musí použít na každou operaci. Pokud metoda v rozhraní, které má atribut [ServiceContractAttribute](/dotnet/api/system.servicemodel.servicecontractattribute), nemá atribut [OperationContractAttribute](/dotnet/api/system.servicemodel.operationcontractattribute), taková metoda se nevystaví. Kód použitý pro tyto úlohy je v následujícím příkladu za postupem.
 
-Hlavní rozdíl mezi kontraktu WCF a kontraktem ve stylu REST je další vlastnost, která má [OperationContractAttribute](/dotnet/api/system.servicemodel.operationcontractattribute): [Funkce WebGetAttribute](/dotnet/api/system.servicemodel.web.webgetattribute). Tato vlastnost vám umožní mapovat metodu ve svém rozhraní k metodě na druhé straně rozhraní. V tomto příkladu [WebGetAttribute](/dotnet/api/system.servicemodel.web.webgetattribute) atribut k propojení metody na HTTP GET. To umožňuje služba Service Bus přesně získat a interpretovat příkazy odeslané na rozhraní.
+Hlavním rozdílem mezi smlouvou WCF a smlouvou ve stylu REST je přidání vlastnosti k [atributu OperationContractAttribute](/dotnet/api/system.servicemodel.operationcontractattribute): [WebGetAttribute](/dotnet/api/system.servicemodel.web.webgetattribute). Tato vlastnost vám umožní mapovat metodu ve svém rozhraní k metodě na druhé straně rozhraní. Tento příklad používá atribut [WebGetAttribute](/dotnet/api/system.servicemodel.web.webgetattribute) k propojení metody k HTTP GET. To umožňuje Service Bus přesně načíst a interpretovat příkazy odesílané do rozhraní.
 
-### <a name="to-create-a-contract-with-an-interface"></a>Vytvoření smlouvy s rozhraní
+### <a name="to-create-a-contract-with-an-interface"></a>Vytvoření kontraktu s rozhraním
 
 1. Spusťte Visual Studio jako správce: v nabídce **Start** klikněte na program pravým tlačítkem a vyberte možnost **Spustit jako správce**.
 2. Vytvořte nový projekt konzolové aplikace. Klikněte na nabídku **Soubor** a vyberte možnost **Nový**, a pak klikněte na **Projekt**. V dialogovém okně **Nový projekt** klikněte na **Visual C#** , vyberte šablonu **Konzolová aplikace** ta zadejte jí název **ImageListener**. Použijte výchozí **Umístění**. Klikněte na **OK**, tím vytvoříte projekt.
@@ -73,7 +73,7 @@ Hlavní rozdíl mezi kontraktu WCF a kontraktem ve stylu REST je další vlastno
     using System.IO;
     ```
    
-    [System.ServiceModel](/dotnet/api/system.servicemodel) je obor názvů, který umožňuje programový přístup k základním funkcím WCF. WCF Relay používá mnoho objektů a atributů WCF k definování kontraktů služby. Ve většině aplikací relay použijete tento obor názvů. Obdobně [System.ServiceModel.Channels](/dotnet/api/system.servicemodel.channels) pomáhá definovat kanál, což je objekt, přes který komunikujete se Azure Relay a klientským webovým prohlížečem. Nakonec [System.ServiceModel.Web](/dotnet/api/system.servicemodel.web) obsahuje typy, které vám umožní vytvořit webové aplikace.
+    [System.ServiceModel](/dotnet/api/system.servicemodel) je obor názvů, který umožňuje programový přístup k základním funkcím WCF. WCF Relay používá mnoho objektů a atributů WCF k definování kontraktů služby. Tento obor názvů budete používat ve většině vašich aplikací Relay. Podobně, [System. ServiceModel. Channels](/dotnet/api/system.servicemodel.channels) pomáhá definovat kanál, což je objekt, prostřednictvím kterého komunikujete s Azure Relay a klientským webovým prohlížečem. Nakonec [System.ServiceModel.Web](/dotnet/api/system.servicemodel.web) obsahuje typy, které vám umožní vytvořit webové aplikace.
 7. Přejmenujte obor názvů `ImageListener` na **Microsoft.ServiceBus.Samples**.
    
     ```csharp
@@ -108,18 +108,18 @@ Hlavní rozdíl mezi kontraktu WCF a kontraktem ve stylu REST je další vlastno
     }
     ```
     
-    To tedy umožňuje službě relay a směrovat požadavky HTTP GET na `GetImage`a překládat vrácené hodnoty `GetImage` do odpovědi HTTP GETRESPONSE. Později v tomto kurzu pomocí webového prohlížeče získáte přístup k této metodě a zobrazíte v prohlížeči obrázek.
+    Tím umožníte, aby předávací služba směrovala požadavky HTTP Get `GetImage`do a přeložila návratové `GetImage` hodnoty do odpovědi HTTP GETRESPONSE. Později v tomto kurzu pomocí webového prohlížeče získáte přístup k této metodě a zobrazíte v prohlížeči obrázek.
 11. Přímo po definici `IImageContract` deklarujte kanál, který zdědí vlastnosti z rozhraní `IImageContract` i `IClientChannel`.
     
     ```csharp
     public interface IImageChannel : IImageContract, IClientChannel { }
     ```
     
-    Kanál je objekt WCF, kterým si služba a klient navzájem posílají informace. Později vytvoříte kanál ve své hostitelské aplikaci. Azure Relay pak pomocí tohoto kanálu předá požadavky HTTP GET z prohlížeče do vaší **GetImage** implementace. Propojení taky pomocí tohoto kanálu provést **GetImage** vracet hodnotu a přeloží ji do HTTP GETRESPONSE pro klientský prohlížeč.
+    Kanál je objekt WCF, kterým si služba a klient navzájem posílají informace. Později vytvoříte kanál v hostitelské aplikaci. Azure Relay pak použije tento kanál k předání požadavků HTTP GET z prohlížeče do implementace GetImage  . Předávání také používá kanál k převzetí návratové  hodnoty GetImage a jeho překladu do http GETRESPONSE pro prohlížeč klienta.
 12. V nabídce **Sestavení** klikněte na **Sestavit řešení** a zkontrolujte přesnost své dosavadní práce.
 
-### <a name="example"></a>Příklad:
-Následující kód ukazuje základní rozhraní, který definuje kontrakt WCF Relay.
+### <a name="example"></a>Příklad
+Následující kód ukazuje základní rozhraní, které definuje kontrakt WCF Relay.
 
 ```csharp
 using System;
@@ -152,10 +152,10 @@ namespace Microsoft.ServiceBus.Samples
 }
 ```
 
-## <a name="implement-the-rest-based-wcf-service-contract"></a>Implementace kontraktu služby WCF na bázi REST
-Vytvoření služby WCF Relay REST – vizuální styl vyžaduje, abyste nejdřív vytvořili kontrakt, který se definuje pomocí rozhraní. Dalším krokem je implementace rozhraní. K tomu patří vytvoření třídy s názvem **ImageService**, která implementuje uživatelsky definované rozhraní **IImageContract**. Po implementaci kontraktu nakonfigurujete rozhraní pomocí souboru App.config. Konfigurační soubor obsahuje informace potřebné pro aplikaci, jako je název služby, název kontraktu a typ protokolu, který se používá ke komunikaci se službou relay. Kód použitý k těmto úlohám najdete v příkladu za postupem.
+## <a name="implement-the-rest-based-wcf-service-contract"></a>Implementace kontraktu služby WCF založeného na REST
+Vytváření WCF Relay služby ve stylu REST vyžaduje, abyste nejdřív vytvořili kontrakt, který se definuje pomocí rozhraní. Dalším krokem je implementace rozhraní. K tomu patří vytvoření třídy s názvem **ImageService**, která implementuje uživatelsky definované rozhraní **IImageContract**. Po implementaci kontraktu nakonfigurujete rozhraní pomocí souboru App.config. Konfigurační soubor obsahuje informace potřebné pro aplikaci, například název služby, název kontraktu a typ protokolu, který se používá ke komunikaci se službou Relay. Kód použitý k těmto úlohám najdete v příkladu za postupem.
 
-Stejně jako u předchozích krocích je jen malý rozdíl mezi implementací kontraktu ve stylu REST a kontraktu WCF Relay.
+Stejně jako v předchozích krocích existuje velmi malý rozdíl mezi implementací kontraktu ve stylu REST a kontraktu WCF Relay.
 
 ### <a name="to-implement-a-rest-style-service-bus-contract"></a>Implementace kontraktu Service Bus ve stylu REST
 1. Vytvořte novou třídu s názvem **ImageService** přímo po definování rozhraní **IImageContract**. Třída **ImageService** implementuje rozhraní **IImageContract**.
@@ -175,12 +175,12 @@ Stejně jako u předchozích krocích je jen malý rozdíl mezi implementací ko
     }
     ```
    
-    Jak jsme už zmínili, tento obor názvů není obvyklý obor názvů. Místo toho je součástí architektury WCF, která identifikuje kontrakt. Další informace najdete v tématu [názvy datových kontraktů](https://msdn.microsoft.com/library/ms731045.aspx) článek v dokumentaci WCF.
+    Jak jsme už zmínili, tento obor názvů není obvyklý obor názvů. Místo toho je součástí architektury WCF, která identifikuje kontrakt. Další informace najdete v článku o [názvech kontraktů dat](https://msdn.microsoft.com/library/ms731045.aspx) v dokumentaci k WCF.
 3. Přidejte do svého projekt obrázek ve formátu .jpg.  
    
     To je obrázek, který služba zobrazí ve webovém prohlížeči příjemce. Klikněte pravým tlačítkem na projekt a klikněte na **Přidat**. Pak klikněte na **Existující položka**. V dialogovém okně **Přidat existující položku** vyberte vhodný soubor .jpg a klikněte na **Přidat**.
    
-    Když přidáváte soubor, zkontrolujte, že je v rozbalovacím seznamu vedle pole**Název souboru:** vybraná možnost **Všechny soubory**. Zbytek tohoto kurzu předpokládá, že je název obrázku „image.jpg“. Pokud máte jiný soubor, musíte přejmenovat nebo změňte kód odpovídajícím způsobem upravit.
+    Když přidáváte soubor, zkontrolujte, že je v rozbalovacím seznamu vedle pole**Název souboru:** vybraná možnost **Všechny soubory**. Zbytek tohoto kurzu předpokládá, že je název obrázku „image.jpg“. Máte-li jiný soubor, je nutné přejmenovat obrázek nebo změnit kód k kompenzaci.
 4. Pokud chcete zkontrolovat, že běžící služba dokáže najít soubor obrázku, v **Průzkumníku řešení** klikněte pravým tlačítkem na soubor obrázku, pak klikněte na **Vlastnosti**. V podokně **Vlastnosti** nastavte **Kopírovat do výstupního adresáře** na **Kopírovat, pokud je novější**.
 5. Přidejte do projektu odkaz na sestavení **System.Drawing.dll** a taky přidejte následující přidružené příkazy `using`.  
    
@@ -226,7 +226,7 @@ Stejně jako u předchozích krocích je jen malý rozdíl mezi implementací ko
 ### <a name="to-define-the-configuration-for-running-the-web-service-on-service-bus"></a>Definování konfigurace pro spuštění webové služby v Service Bus
 1. V **Průzkumníku řešení** poklikejte na **App.config** a otevře se v editoru Visual Studio.
    
-    **App.config** soubor obsahuje název služby, koncový bod (to znamená, umístění Azure Relay vystaví pro klienty a hostitele vzájemně komunikovat) a vazbu (typ protokolu používaný pro komunikaci). Hlavní rozdíl spočívá v tom, nakonfigurovaný koncový bod služby odkazuje [WebHttpRelayBinding](/dotnet/api/microsoft.servicebus.webhttprelaybinding) vazby.
+    Soubor **App. config** obsahuje název služby, koncový bod (tj. umístění Azure Relay zveřejňuje klienty a hostitele ke vzájemné komunikaci) a vazbu (typ protokolu, který se používá pro komunikaci). Hlavní rozdíl je v tom, že nakonfigurovaný koncový bod služby odkazuje na vazbu [WebHttpRelayBinding](/dotnet/api/microsoft.servicebus.webhttprelaybinding) .
 2. XML element `<system.serviceModel>` je element WCF, který definuje jednu nebo víc služeb. Tady se používá k definování názvu služby a koncového bodu. Na konci elementu `<system.serviceModel>` (ale pořád ještě uvnitř `<system.serviceModel>`) přidejte element `<bindings>`, který má následující obsah. To definuje vazbu použitou v aplikaci. Můžete definovat víc vazeb, ale v tomto kurzu se definuje jen jedna.
    
     ```xml
@@ -240,7 +240,7 @@ Stejně jako u předchozích krocích je jen malý rozdíl mezi implementací ko
     </bindings>
     ```
    
-    Předcházející kód definuje WCF Relay [WebHttpRelayBinding](/dotnet/api/microsoft.servicebus.webhttprelaybinding) vazby s **relayClientAuthenticationType** nastavena na **žádný**. Toto nastavení naznačuje, že koncový bod, který používá tuto vazbu, nepotřebuje pověření klienta.
+    Předchozí kód definuje vazbu WCF Relay [WebHttpRelayBinding](/dotnet/api/microsoft.servicebus.webhttprelaybinding) s **relayClientAuthenticationType** nastavenou na **hodnotu None**. Toto nastavení naznačuje, že koncový bod, který používá tuto vazbu, nepotřebuje pověření klienta.
 3. Za element `<bindings>` přidejte element `<services>`. Podobně jako u vazeb můžete v jednom konfiguračním souboru definovat několik služeb. V tomto kurzu ale definujete jen jednu.
    
     ```xml
@@ -259,7 +259,7 @@ Stejně jako u předchozích krocích je jen malý rozdíl mezi implementací ko
     ```
    
     Tento krok konfiguruje službu, která použije předtím nastavenou výchozí vazbu **webHttpRelayBinding**. Taky používá výchozí ho poskytovatele **sbTokenProvider**, který se definuje v dalším kroku.
-4. Po `<services>` elementu, vytvořit `<behaviors>` element s následujícím obsahem, nahradí "SAS_KEY" s *sdílený přístupový podpis* jste předtím získali z klíč (SAS) [webuAzureportal] [Azure portal].
+4. Po elementu vytvořte element s následujícím obsahem a nahraďte "SAS_KEY" klíčem *sdíleného přístupového podpisu* (SAS), který jste dříve získali z [Azure Portal.][Azure portal] `<behaviors>` `<services>`
    
     ```xml
     <behaviors>
@@ -290,7 +290,7 @@ Stejně jako u předchozích krocích je jen malý rozdíl mezi implementací ko
     ```
 6. V nabídce **Sestavení** klikněte na **Sestavit řešení** a sestavte celé řešení.
 
-### <a name="example"></a>Příklad:
+### <a name="example"></a>Příklad
 Následující kód ukazuje implementaci kontraktu a služby pro službu založenou na REST, která běží ve službě Service Bus pomocí vazby **WebHttpRelayBinding**.
 
 ```csharp
@@ -446,11 +446,11 @@ Následující příklad ukazuje soubor App.config přidružený ke službě.
 </configuration>
 ```
 
-## <a name="host-the-rest-based-wcf-service-to-use-azure-relay"></a>Hostování služby WCF na bázi REST pro Azure Relay
+## <a name="host-the-rest-based-wcf-service-to-use-azure-relay"></a>Hostování služby WCF založené na REST pro použití Azure Relay
 Tento krok popisuje, jak spustit webovou službu pomocí konzolové aplikace s WCF Relay. Úplný kód napsaný v tomto kroku najdete v příkladu za postupem.
 
 ### <a name="to-create-a-base-address-for-the-service"></a>Vytvoření bázové adresy pro tuto službu
-1. V `Main()` deklaraci funkce, vytvořte proměnnou pro uložení oboru názvů vašeho projektu. Nezapomeňte nahradit `yourNamespace` s názvem obor názvů služby Relay kterou jste předtím vytvořili.
+1. V deklaraci `Main()` funkce Vytvořte proměnnou pro uložení oboru názvů vašeho projektu. Ujistěte se, že `yourNamespace` jste nahradili názvem oboru názvů přenosu, který jste předtím vytvořili.
    
     ```csharp
     string serviceNamespace = "yourNamespace";
@@ -492,7 +492,7 @@ Tento krok popisuje, jak spustit webovou službu pomocí konzolové aplikace s W
     host.Close();
     ```
 
-### <a name="example"></a>Příklad:
+### <a name="example"></a>Příklad
 Následující příklad obsahuje kontrakt a implementaci služby z předchozích kroků tohoto kurzu a hostuje službu v konzolové aplikaci. Zkompilujte následující kód do spustitelného souboru s názvem ImageListener.exe.
 
 ```csharp
@@ -574,10 +574,10 @@ Po sestavení řešení proveďte následující kroky pro spuštění aplikace:
 2. Zkopírujte a vložte adresu z příkazového řádku do prohlížeče, zobrazí se obrázek.
 3. Když skončíte, v okně příkazovém řádku stiskněte **Enter** a aplikace se zavře.
 
-## <a name="next-steps"></a>Další postup
-Teď, když jste sestavili aplikaci, která používá službu Azure Relay, najdete v následujících článcích se dozvíte více:
+## <a name="next-steps"></a>Další kroky
+Teď, když jste vytvořili aplikaci, která používá službu Azure Relay, najdete další informace v následujících článcích:
 
 * [Přehled služby Azure Relay](relay-what-is-it.md)
-* [Jak používat službu WCF relay v .NET](relay-wcf-dotnet-get-started.md)
+* [Jak používat službu WCF Relay s .NET](service-bus-relay-tutorial.md)
 
 [Azure portal]: https://portal.azure.com

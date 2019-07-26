@@ -1,5 +1,5 @@
 ---
-title: Konektor SAP LaMa pro Azure | Dokumentace Microsoftu
+title: Konektor SAP LaMa pro Azure | Microsoft Docs
 description: Správa systémů SAP v Azure pomocí SAP LaMa
 services: virtual-machines-linux,virtual-machines-windows
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 11/17/2018
 ms.author: sedusch
-ms.openlocfilehash: f09f66e81ec4878aedebfee9be4c0c67b75c8ad6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 28a3183114db206e55814d1b25eaef37a2819c1d
+ms.sourcegitcommit: 5604661655840c428045eb837fb8704dca811da0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61462965"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68494981"
 ---
 # <a name="sap-lama-connector-for-azure"></a>Konektor SAP LaMa pro Azure
 
@@ -30,6 +30,7 @@ ms.locfileid: "61462965"
 [2562184]: https://launchpad.support.sap.com/#/notes/2562184
 [2628497]: https://launchpad.support.sap.com/#/notes/2628497
 [2445033]: https://launchpad.support.sap.com/#/notes/2445033
+[2815988]: https://launchpad.support.sap.com/#/notes/2815988
 [Logo_Linux]:media/virtual-machines-shared-sap-shared/Linux.png
 [Logo_Windows]:media/virtual-machines-shared-sap-shared/Windows.png
 [dbms-guide]:dbms-guide.md
@@ -38,197 +39,197 @@ ms.locfileid: "61462965"
 [hana-ops-guide]:hana-vm-operations.md
 
 > [!NOTE]
-> Obecné podpoře: Vždy otevřete incident s řešením SAP na komponentě BC VCM LVM HYPERV Pokud potřebujete podporu pro SAP LaMa nebo konektoru služby Azure.
+> Obecný příkaz podpory: Pokud potřebujete podporu pro SAP LaMa nebo Azure Connector, vždy prosím otevřete incident s protokolem SAP v komponentě BC-VCM-LVM-HYPERV.
 
-Mnoho zákazníků k provozu a monitorovat jejich prostředí SAP používá SAP LaMa. Od verze SAP LaMa 3.0 SP05 dodává s konektorem k Azure ve výchozím nastavení. Tento konektor můžete použít k přidělení a spuštění virtuálních počítačů, kopírovat a přemístění spravované disky a odstranit spravované disky. Tyto základní operace můžete přemístit, zkopírovat, klonování a aktualizovat systémů SAP pomocí SAP LaMa.
+SAP LaMa používá mnoho zákazníků k provozování a monitorování jejich technologie SAP na šířku. Vzhledem k tomu, že SAP LaMa 3,0 SP05, je ve výchozím nastavení dodáván s konektorem do Azure. Pomocí tohoto konektoru můžete navrátit a spustit virtuální počítače, zkopírovat a přemístit spravované disky a odstranit spravované disky. Pomocí těchto základních operací můžete přemístit, kopírovat, klonovat a aktualizovat systémy SAP pomocí SAP LaMa.
 
-Tato příručka popisuje, jak nastavit Azure konektoru pro SAP LaMa, vytvořit virtuální počítače, které můžete použít k instalaci adaptivní systémů SAP a způsob jejich konfigurace.
+V této příručce se dozvíte, jak nastavit konektor Azure pro SAP LaMa, vytvořit virtuální počítače, které se dají použít k instalaci adaptivních systémů SAP a jak je nakonfigurovat.
 
 > [!NOTE]
-> Konektor je dostupná pouze v edici Enterprise LaMa SAP
+> Konektor je k dispozici pouze v edici SAP LaMa Enterprise.
 
 ## <a name="resources"></a>Zdroje a prostředky
 
-Následující poznámky SAP se vztahují na téma o LaMa SAP v Azure:
+Následující poznámky SAP souvisejí s tématem SAP LaMa v Azure:
 
-| Poznámka: číslo | Titul |
+| Číslo poznámky | Název |
 | --- | --- |
 | [2343511] |Konektor Microsoft Azure pro správu SAP na šířku (LaMa) |
-| [2350235] |SAP Landscape Management 3.0 – Enterprise edition |
+| [2350235] |SAP na šířku – Správa 3,0 – Enterprise Edition |
 
-Přečíst také [portálu nápovědy SAP pro SAP LaMa](https://help.sap.com/viewer/p/SAP_LANDSCAPE_MANAGEMENT_ENTERPRISE).
+Také si přečtěte [portál pro podporu SAP pro SAP Lama](https://help.sap.com/viewer/p/SAP_LANDSCAPE_MANAGEMENT_ENTERPRISE).
 
 ## <a name="general-remarks"></a>Obecné poznámky
 
-* Ujistěte se, že chcete povolit *automatické vytváření přípojný bod* v Nastavení -> Nastavení -> modul  
-  Pokud SAP LaMa připojí svazky s využitím rozšíření adaptivní SAP na virtuálním počítači, musí existovat přípojného bodu, pokud toto nastavení není povolené.
+* Ujistěte se, že jste povolili *Automatické vytváření přípojný bod* v nastavení-> nastavení – modul >  
+  Pokud SAP LaMa připojí svazky pomocí adaptivního rozšíření SAP na virtuálním počítači, musí přípojný bod existovat, pokud toto nastavení není povolené.
 
-* Použít samostatnou podsíť a použití dynamické IP adresy, aby se zabránilo IP nezabývá "zcizování", když nasazujete nové virtuální počítače a instance SAP neupravený  
-  Pokud používáte dynamické přidělování IP adres v podsíti, která se používá také podle LaMa SAP, Příprava systému SAP s LaMa SAP může selhat. Pokud systém SAP není připraven, nejsou rezervované IP adresy a může načíst přidělené k jiným virtuálním počítačům.
+* Použijte samostatnou podsíť a nepoužívejte dynamické IP adresy, abyste zabránili krádeži IP adresy při nasazení nových virtuálních počítačů a instance SAP nejsou připravené.  
+  Pokud použijete dynamické přidělování IP adres v podsíti, kterou používá i SAP LaMa, může dojít k selhání přípravy systému SAP pomocí SAP LaMa. Pokud je systém SAP nepřipravený, IP adresy nejsou rezervované a můžou se přidělit jiným virtuálním počítačům.
 
-* Pokud se přihlásíte na spravované hostitele, ujistěte se, že nedochází k blokování systémy souborů z právě odpojován  
-  Přihlaste se k virtuální počítače s Linuxem a změnu pracovního adresáře do jiného adresáře v přípojný bod, třeba /usr/sap/AH1/ASCS00/exe, svazku nemůže být odpojeny a přemístit nebo unprepare – selže.
+* Pokud se přihlásíte ke spravovaným hostitelům, nezapomeňte zabránit odpojení systémů souborů.  
+  Pokud se přihlásíte k virtuálním počítačům se systémem Linux a změníte pracovní adresář na adresář v přípojném bodu, například/usr/sap/AH1/ASCS00/exe, svazek nelze odpojit a operace přemístění nebo odpříprava se nezdařila.
 
-## <a name="set-up-azure-connector-for-sap-lama"></a>Nastavení konektoru služby Azure pro LaMa SAP
+## <a name="set-up-azure-connector-for-sap-lama"></a>Nastavení konektoru Azure pro SAP LaMa
 
-Konektor Azure je dodáván od SAP LaMa 3.0 SP05. Doporučujeme vždy nejprve nainstalovat nejnovější balíček pro podporu a opravy pro SAP LaMa 3.0. Konektor Azure používá instančního objektu k autorizaci s Microsoft Azure. Postupujte podle těchto kroků můžete vytvořit objekt služby pro správu SAP na šířku (LaMa).
+Konektor Azure se dodává jako SAP LaMa 3,0 SP05. Doporučujeme vždycky nainstalovat nejnovější balíček pro podporu a opravu pro SAP LaMa 3,0. Konektor Azure používá instanční objekt k autorizaci proti Microsoft Azure. Pomocí těchto kroků můžete vytvořit instanční objekt pro SAP na šířku Management (LaMa).
 
 1. Přejděte na https://portal.azure.com.
 1. Otevře se okno Azure Active Directory
-1. Klikněte na registrace aplikací
-1. Klikněte na Přidat
-1. Zadejte název, vyberte typ aplikace "Aplikace webového rozhraní API", zadejte přihlašovací adresu URL (třeba http:\//localhost) a klikněte na vytvořit
+1. Klikněte na Registrace aplikací
+1. Klikněte na Přidat.
+1. Zadejte název, vyberte typ aplikace webová aplikace/rozhraní API, zadejte adresu URL pro přihlášení (například http:\//localhost) a klikněte na vytvořit.
 1. Adresa URL přihlašování se nepoužívá a může být jakákoliv platná adresa URL
-1. Vyberte novou aplikaci a na kartě nastavení klikněte na tlačítko s klíči
-1. Zadejte popis pro nový klíč, vyberte "Je platné stále" a klikněte na Uložit.
-1. Poznamenejte si hodnotu. Používá se jako heslo pro instanční objekt
-1. Poznamenejte si ID aplikace. Používá se jako uživatelské jméno pro instanční objekt služby
+1. Vyberte novou aplikaci a na kartě nastavení klikněte na klíče.
+1. Zadejte popis nového klíče, vyberte možnost nikdy nevyprší a klikněte na Uložit.
+1. Poznamenejte si hodnotu. Používá se jako heslo instančního objektu.
+1. Poznamenejte si ID aplikace. Používá se jako uživatelské jméno objektu služby.
 
-Instanční objekt služby nemá oprávnění pro přístup k prostředkům Azure ve výchozím nastavení. Je potřeba udělit oprávnění instančního objektu pro přístup k nim.
+Instanční objekt služby nemá oprávnění pro přístup k prostředkům Azure ve výchozím nastavení. Pro přístup k nim musíte mít oprávnění instančního objektu.
 
 1. Přejděte na https://portal.azure.com.
 1. Otevřete okno skupiny prostředků.
-1. Vyberte skupinu prostředků, kterou chcete použít
+1. Vyberte skupinu prostředků, kterou chcete použít.
 1. Klikněte na řízení přístupu (IAM)
-1. Klikněte na Přidat přiřazení role
-1. Vyberte roli přispěvatele
+1. Klikněte na přidat přiřazení role.
+1. Vybrat přispěvatele rolí
 1. Zadejte název aplikace, kterou jste vytvořili výše
 1. Kliknutí na Uložit
-1. Krok 3 až 8 opakujte pro všechny skupiny prostředků, kterou chcete použít v LaMa SAP
+1. Opakujte krok 3 až 8 pro všechny skupiny prostředků, které chcete používat v SAP LaMa
 
-Otevřít web, který SAP LaMa a přejděte do infrastruktury. Přejděte na kartu Správce cloudu a klikněte na Přidat. Vyberte adaptér cloudu Microsoft Azure a klikněte na tlačítko Další. Zadejte následující informace:
+Otevřete web SAP LaMa a přejděte na infrastruktura. Přejděte na kartu cloudové správce a klikněte na Přidat. Vyberte Microsoft Azure Adaptér cloudu a klikněte na další. Zadejte následující informace:
 
-* Popisek: Zvolte název pro instanci konektoru
+* Popisek: Vyberte název instance konektoru.
 * Uživatelské jméno: ID aplikace instančního objektu
-* Heslo: Instanční objekt služby klíč nebo heslo
-* Adresa URL: Ponechat výchozí https://management.azure.com/
-* Monitorování Interval (sekundy): By měl být alespoň 300
+* Heslo: Klíč nebo heslo instančního objektu služby
+* URL: Zachovat výchozí https://management.azure.com/
+* Interval monitorování (sekundy): Měla by být aspoň 300.
 * ID předplatného: ID předplatného Azure
-* ID Tenanta Azure Active Directory: ID tenanta Active Directory
-* Proxy hostitele: Název hostitele proxy serveru, pokud SAP LaMa potřebuje pro připojení k Internetu proxy server
-* Port proxy serveru: TCP port proxy serveru
+* ID tenanta Azure Active Directory: ID tenanta služby Active Directory
+* Hostitel proxy: Název hostitele serveru proxy, pokud SAP LaMa potřebuje proxy server pro připojení k Internetu
+* Port proxy serveru: Port TCP serveru proxy
 
-Klikněte na konfigurace testů a ověřit svůj vstup. Měli byste vidět
+Kliknutím na test konfigurace Ověřte zadání. Měli byste vidět
 
-Úspěšné připojení: Připojení k Microsoft cloud bylo úspěšné. Najít 7 skupiny prostředků (požadované jenom 10 skupin)
+Připojení bylo úspěšné: Připojení k Microsoft cloudu bylo úspěšné. bylo nalezeno 7 skupin prostředků (je požadováno pouze 10 skupin).
 
-v dolní části tohoto webu.
+v dolní části webu.
 
-## <a name="provision-a-new-adaptive-sap-system"></a>Zřízení nového adaptivní systému SAP
+## <a name="provision-a-new-adaptive-sap-system"></a>Zřízení nového adaptivního systému SAP
 
-Ruční nasazení nového virtuálního počítače nebo použijte jednu z šablon Azure v [rychlém úložišti](https://github.com/Azure/azure-quickstart-templates). Obsahuje šablony pro [SAP NetWeaver ASCS](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-lama-ascs), [aplikační servery SAP NetWeaver](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-lama-apps)a [databáze](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-lama-database). Tyto šablony můžete použít také ke zřízení nového hostitele jako součást kopírování/klonu systému atd.
+Můžete ručně nasadit nový virtuální počítač nebo použít jednu ze šablon Azure v [úložišti rychlého](https://github.com/Azure/azure-quickstart-templates)startu. Obsahuje šablony pro [SAP NETWEAVER ASCS](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-lama-ascs), [SAP NetWeaver Application Servers](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-lama-apps)a [databázi](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-lama-database). Tyto šablony můžete také použít k zřizování nových hostitelů v rámci kopírování či klonování systému atd.
 
-Doporučujeme použít samostatnou podsíť pro všechny virtuální počítače, že chcete spravovat pomocí LaMa SAP a nepoužívejte dynamické IP adresy, aby se zabránilo IP adresa "zcizování" při nasazení nových virtuálních počítačů a instancí SAP neupravený.
+Doporučujeme použít samostatnou podsíť pro všechny virtuální počítače, které chcete spravovat pomocí SAP LaMa, a nepoužívat dynamické IP adresy k zabránění krádeži IP adresy při nasazení nových virtuálních počítačů a instancích SAP nejsou připravené.
 
 > [!NOTE]
-> Pokud je to možné odeberte všechna rozšíření virtuálních počítačů, protože by mohly způsobovat dlouho trvajícím spouštěním za účelem odpojení disku od virtuálního počítače.
+> Pokud je to možné, odeberte všechna rozšíření virtuálních počítačů, protože by mohla způsobit, že se odpojí disky z virtuálního počítače s dlouhou dobou běhu.
 
-Ujistěte se, že tento uživatel \<hanasid > adm, \<sapsid > adm a skupiny sapsys existovat v cílovém počítači se stejným ID a ID skupiny nebo pomocí protokolu LDAP. Povolení a spuštění serveru NFS na virtuálních počítačích, které se má použít pro spuštění SAP NetWeaver (A) SCS.
+Ujistěte se, že \<User hanasid > ADM \<, sapsid > ADM a sapsys skupiny existují na cílovém počítači se stejným ID a GID nebo použijte LDAP. Povolte a spusťte server NFS na virtuálních počítačích, které by měly být použity ke spuštění SAP NetWeaver (A) SCS.
 
 ### <a name="manual-deployment"></a>Ruční nasazení
 
-SAP LaMa komunikuje s virtuálním počítačem pomocí agenta hostitele SAP. Pokud nasadíte virtuální počítače ručně, nebo není pomocí šablony Azure Resource Manageru z úložiště rychlý start, ujistěte se, že k instalaci nejnovějšího agenta hostitele SAP a SAP adaptivní rozšíření. Další informace o úrovních požadované opravy pro Azure, viz poznámka SAP [2343511].
+SAP LaMa komunikuje s virtuálním počítačem pomocí agenta hostitele SAP. Pokud nasadíte virtuální počítače ručně nebo nepoužíváte šablonu Azure Resource Manager z úložiště pro rychlé zprovoznění, nezapomeňte nainstalovat nejnovějšího agenta hostitele SAP a adaptivní rozšíření SAP. Další informace o požadovaných úrovních opravy pro Azure najdete v tématu SAP Note [2343511].
 
-#### <a name="manual-deployment-of-a-linux-virtual-machine"></a>Ruční nasazení z virtuálního počítače s Linuxem
+#### <a name="manual-deployment-of-a-linux-virtual-machine"></a>Ruční nasazení virtuálního počítače se systémem Linux
 
-Vytvořit nový virtuální počítač s jedním z podporované operační systémy uvedené v Poznámka SAP [2343511]. Přidání dalších konfigurací protokolu IP pro instance SAP. Každá instance vyžaduje alespoň na IP adrese a musí být nainstalovaný pomocí virtuální název hostitele.
+Vytvořte nový virtuální počítač s jedním z podporovaných operačních systémů uvedených v části SAP Note [2343511]. Přidejte další konfigurace protokolu IP pro instance SAP. Každá instance potřebuje aspoň na IP adresu a musí se nainstalovat pomocí virtuálního hostitele.
 
-Instance SAP NetWeaver ASCS musí disky pro /sapmnt/\<SAPSID >, / USR/sap/\<SAPSID > a/usr/sap/trans/USR/sap/\<sapsid > adm. Aplikační servery SAP NetWeaver nepotřebují další disky. Opravdu všechno spojené s SAP instance musí být uložené na ASCS a exportuje přes systém souborů NFS. V opačném případě ho není možné přidat další aplikační servery SAP LaMa pomocí.
+Instance SAP NetWeaver ASCS potřebuje disky pro/sapmnt/\<SAPSID >,/usr/SAP/\<SAPSID >,/usr/SAP/trans a/usr/SAP/\<SAPSID > ADM. Aplikační servery SAP NetWeaver nepotřebují další disky. Všechno, co souvisí s instancí SAP, se musí ukládat na ASCS a exportovat přes systém souborů NFS. V opačném případě není nyní možné přidat další aplikační servery pomocí SAP LaMa.
 
-![SAP NetWeaver ASCS v Linuxu](media/lama/sap-lama-ascs-app-linux.png)
+![SAP NetWeaver ASCS v systému Linux](media/lama/sap-lama-ascs-app-linux.png)
 
 #### <a name="manual-deployment-for-sap-hana"></a>Ruční nasazení pro SAP HANA
 
-Vytvořit nový virtuální počítač s jedním z podporované operační systémy pro SAP HANA, jak je uvedeno v Poznámka SAP [2343511]. Přidejte jednu další konfiguraci protokolu IP pro SAP HANA a jeden do každého tenanta HANA.
+Vytvořte nový virtuální počítač s jedním z podporovaných operačních systémů pro SAP HANA, jak je uvedeno v části SAP Note [2343511]. Přidejte další konfiguraci IP adresy pro SAP HANA a jednoho tenanta na HANA.
 
-SAP HANA, musí mít disky /hana/shared, /hana/backup, /hana/data a /hana/log
+SAP HANA potřebuje disky pro/Hana/Shared,/Hana/Backup,/Hana/data a/Hana/log.
 
-![SAP HANA v Linuxu](media/lama/sap-lama-db-hana.png)
+![SAP HANA v systému Linux](media/lama/sap-lama-db-hana.png)
 
-#### <a name="manual-deployment-for-oracle-database-on-linux"></a>Ruční nasazení pro Oracle Database v Linuxu
+#### <a name="manual-deployment-for-oracle-database-on-linux"></a>Ruční nasazení pro Oracle Database v systému Linux
 
-Vytvořit nový virtuální počítač s jedním z podporované operační systémy pro databáze Oracle, jak je uvedeno v Poznámka SAP [2343511]. Přidáte jeden další konfiguraci IP adresy pro databázi Oracle.
+Vytvořte nový virtuální počítač s jedním z podporovaných operačních systémů pro databáze Oracle, jak je uvedeno v části SAP Note [2343511]. Přidejte další konfiguraci IP adresy pro databázi Oracle.
 
-Databáze Oracle vyžaduje disky pro /oracle /home/oraod1 a /home/oracle
+Databáze Oracle potřebuje disky pro/Oracle,/Home/oraod1 a/Home/Oracle.
 
-![Oracle database v Linuxu](media/lama/sap-lama-db-ora-lnx.png)
+![Oracle Database v systému Linux](media/lama/sap-lama-db-ora-lnx.png)
 
-#### <a name="manual-deployment-for-microsoft-sql-server"></a>Ruční nasazení pro systém Microsoft SQL Server
+#### <a name="manual-deployment-for-microsoft-sql-server"></a>Ruční nasazení pro Microsoft SQL Server
 
-Vytvořit nový virtuální počítač s jedním z podporované operační systémy pro Microsoft SQL Server, jak je uvedeno v Poznámka SAP [2343511]. Přidáte jeden další konfiguraci IP adresy pro instanci systému SQL Server.
+Vytvořte nový virtuální počítač s jedním z podporovaných operačních systémů pro Microsoft SQL Server, jak je uvedeno v části SAP Note [2343511]. Přidejte další konfiguraci IP adresy pro instanci SQL Server.
 
-Databázový server SQL Server potřebuje pro dat z databáze a soubory protokolů a disků pro c:\usr\sap disky.
+Server SQL Server Database potřebuje disky pro data databáze a soubory protokolů a disky pro c:\usr\sap.
 
-![Oracle database v Linuxu](media/lama/sap-lama-db-sql.png)
+![Oracle Database v systému Linux](media/lama/sap-lama-db-sql.png)
 
-Ujistěte se, že k instalaci podporovaných ovladač Microsoft ODBC pro SQL Server na virtuálním počítači, který chcete použít k přesunutí aplikační server SAP NetWeaver nebo jako cíl kopírování nebo klonování systému.
+Nezapomeňte nainstalovat podporovaný ovladač Microsoft ODBC pro SQL Server na virtuálním počítači, který chcete použít k přemístění aplikačního serveru SAP NetWeaver do nebo jako cíle kopírování/klonování systému.
 
-SAP LaMa nelze přemístit samotného SQL serveru, takže musí virtuální počítač, který chcete použít k přesunutí do instance databáze nebo jako cíl kopírování nebo klonování systému SQL Server a předinstalovaným.
+SAP LaMa nemůže přemístit SQL Server sám sebe, takže virtuální počítač, který chcete použít k přemístění instance databáze do nebo jako cíl pro kopírování/klonování systému, musí SQL Server předinstalované.
 
 ### <a name="deploy-virtual-machine-using-an-azure-template"></a>Nasazení virtuálního počítače pomocí šablony Azure
 
-Stažení nejnovější k dispozici následující archivuje z [Marketplace softwaru SAP](https://support.sap.com/swdc) operačního systému virtuálních počítačů:
+Stáhněte si z [webu SAP software Marketplace](https://support.sap.com/swdc) pro operační systém virtuálních počítačů následující nejnovější dostupné archivy:
 
-1. SAPCAR 7.21
-1. AGENT HOSTITELE SAP 7.21
-1. ADAPTIVNÍ ROZŠÍŘENÍ 1.0 EXT SAP
+1. SAPCAR 7,21
+1. AGENT HOSTITELE SAP 7,21
+1. ADAPTIVNÍ ROZŠÍŘENÍ SAP 1,0 – EXT
 
-Také stáhnout z následující součásti [Microsoft Download Center](https://www.microsoft.com/download)
+Stáhněte si také následující komponenty z [webu Microsoft Download Center](https://www.microsoft.com/download) .
 
-1. Microsoft Visual C++ 2010 Redistributable Package (x64) (jenom Windows)
-1. Ovladač Microsoft ODBC pro SQL Server (pouze Server SQL)
+1. Distribuovatelný balíček C++ Microsoft Visual 2010 (x64) (jenom Windows)
+1. Ovladač Microsoft ODBC pro SQL Server (jenom SQL Server)
 
-Součásti jsou potřeba k nasazení šablony. Nejjednodušší způsob, jak zpřístupnit v šabloně je nahrát do účtu služby Azure storage a vytvořit sdílený přístupový podpis (SAS).
+K nasazení šablony jsou nutné tyto součásti. Nejjednodušší způsob, jak je zpřístupnit pro šablonu, je odeslat je do účtu služby Azure Storage a vytvořit sdílený přístupový podpis (SAS).
 
 Šablony mají následující parametry:
 
-* sapSystemId: ID systému SAP Používá se k vytvoření disku rozložení (například/USR/sap/\<sapsid >).
+* sapSystemId: ID systému SAP. Slouží k vytvoření rozložení disku (například/usr/SAP/\<sapsid >).
 
-* název počítače: Název počítače na nový virtuální počítač. Tento parametr se používá také podle LaMa SAP. Při použití této šablony zřídit nový virtuální počítač jako součást kopie systému SAP LaMa počká, až se dá kontaktovat hostitele s tímto názvem počítače.
+* ComputerName Název počítače nového virtuálního počítače. Tento parametr je také používán SAP LaMa. Když použijete tuto šablonu k zřízení nového virtuálního počítače v rámci systémové kopie, SAP LaMa počká, dokud nebude dostupný hostitel s tímto názvem počítače.
 
-* osType: Typ operačního systému, kterou chcete nasadit.
+* OsType Typ operačního systému, který chcete nasadit.
 
-* Hodnota výčtu DbType: Typ databáze. Tento parametr slouží k určení, kolik dalších konfigurací protokolu IP je potřeba přidat a jak by měl vypadat rozložení disků.
+* DbType Typ databáze. Tento parametr slouží k určení počtu dalších konfigurací IP adres, které je třeba přidat, a způsobu, jakým by mělo vypadat rozložení disku.
 
-* sapSystemSize: Velikost systému SAP, kterou chcete nasadit. Používá se k určení typu instance virtuálního počítače a velikosti.
+* sapSystemSize: Velikost systému SAP, který chcete nasadit. Slouží k určení typu a velikosti instance virtuálního počítače.
 
 * adminUsername: Uživatelské jméno pro virtuální počítač.
 
 * adminPassword: Heslo pro virtuální počítač. Můžete také zadat veřejný klíč pro SSH.
 
-* sshKeyData: Veřejný klíč SSH pro virtuální počítače. Podporováno pouze pro operační systémy a Linux.
+* sshKeyData: Veřejný klíč SSH pro virtuální počítače. Podporováno pouze pro operační systémy Linux.
 
 * subnetId: ID podsítě, kterou chcete použít.
 
-* deployEmptyTarget: Pokud chcete využívat virtuální počítač jako cíl pro přemístit instance nebo podobné, můžete nasadit prázdný cíl. V tomto případě jsou připojeny žádné další disky nebo konfigurace protokolu IP.
+* deployEmptyTarget: Můžete nasadit prázdný cíl, pokud chcete virtuální počítač použít jako cíl pro opětovné umístění instance nebo podobné. V takovém případě nejsou připojené žádné další disky ani konfigurace IP adres.
 
-* sapcarLocation: Umístění pro sapcar aplikaci, která odpovídá operačnímu systému, který nasadíte. sapcar slouží k extrakci archivy, které zadáte v dalších parametrů.
+* sapcarLocation: Umístění aplikace sapcar, která odpovídá operačnímu systému, který nasazujete. sapcar se používá k extrakci archivů, které zadáte v jiných parametrech.
 
-* sapHostAgentArchiveLocation: Umístění archivu Agent hostitele SAP. Agent hostitele SAP je nasazen jako součást nasazení této šablony.
+* sapHostAgentArchiveLocation: Umístění archivu agenta hostitele SAP. Agent hostitele SAP je nasazený jako součást nasazení této šablony.
 
-* sapacExtLocation: Umístění adaptivní rozšíření SAP. Poznámka SAP [2343511] uvádí minimální úrovně oprav vyžadované pro Azure.
+* sapacExtLocation: Umístění adaptivních rozšíření SAP. V části SAP Note [2343511] je uvedena minimální úroveň opravy požadovaná pro Azure.
 
-* vcRedistLocation: Umístění modulu Runtime jazyka VC, které jsou potřebné k instalaci rozšíření adaptivní SAP. Tento parametr je pouze vyžadované pro Windows.
+* vcRedistLocation: Umístění modulu runtime VC, který je nutný k instalaci adaptivních rozšíření SAP. Tento parametr je vyžadován pouze pro systém Windows.
 
-* odbcDriverLocation: Umístění, které chcete nainstalovat ovladač ODBC. Je podporován pouze ovladač Microsoft ODBC pro SQL Server.
+* odbcDriverLocation: Umístění ovladače ODBC, který chcete nainstalovat. Podporuje se jenom ovladač Microsoft ODBC Driver for SQL Server.
 
 * sapadmPassword: Heslo pro uživatele sapadm.
 
-* sapadmId: ID uživatele Linuxu sapadm uživatele. Nevyžaduje se pro Windows.
+* sapadmId: ID uživatele pro Linux uživatele sapadm. Není vyžadováno pro Windows.
 
-* sapsysGid: ID skupiny Linux sapsys skupiny. Nevyžaduje se pro Windows.
+* sapsysGid: ID skupiny pro Linux skupiny sapsys Není vyžadováno pro Windows.
 
-* _artifactsLocation: Základní identifikátor URI, kde se nachází artefakty, které vyžadují tuto šablonu. Při nasazení šablony pomocí doprovodných skriptů použije privátního umístění v rámci předplatného a tato hodnota se automaticky vygeneruje. Potřeba pouze v případě nenasazujte šablony z Githubu.
+* _artifactsLocation: Základní identifikátor URI, kde jsou umístěny artefakty vyžadované touto šablonou. Při nasazení šablony pomocí doprovodných skriptů se použije privátní umístění v předplatném a tato hodnota se automaticky vygeneruje. Potřebuje se jenom v případě, že šablonu nasazujete z GitHubu.
 
-* _artifactsLocationSasToken: SasToken vyžadovaných pro přístup k _artifactsLocation. Při nasazení šablony pomocí doprovodných skriptů sasToken budou automaticky generovány. Potřeba pouze v případě nenasazujte šablony z Githubu.
+* _artifactsLocationSasToken: SasToken vyžaduje přístup k _artifactsLocation. Když se šablona nasadí pomocí doprovodných skriptů, sasToken se automaticky vygeneruje. Potřebuje se jenom v případě, že šablonu nasazujete z GitHubu.
 
 ### <a name="sap-hana"></a>SAP HANA
 
-V následujících příkladech předpokládáme instalace SAP HANA s ID HN1 systému a systém SAP NetWeaver v systému ID AH1. Názvy virtuálních hostitelů jsou hn1 db pro instance HANA ah1 db pro HANA tenanta používá systém SAP NetWeaver, ah1 ascs pro SAP NetWeaver ASCS a ah1-di-0 pro první aplikační server SAP Netweaveru.
+V níže uvedených příkladech předpokládáme, že nainstalujete SAP HANA se systémem ID HN1 a systémem SAP NetWeaver s ID systému AH1. Virtuální názvy hostitelů jsou HN1-DB pro instanci HANA, ah1-DB pro tenanta HANA používané systémem SAP NetWeaver, ah1-ASCS pro SAP NetWeaver ASCS a ah1-di-0 pro první aplikační Server SAP NetWeaver.
 
-#### <a name="install-sap-netweaver-ascs-for-sap-hana"></a>Instalace SAP NetWeaver ASCS pro SAP HANA
+#### <a name="install-sap-netweaver-ascs-for-sap-hana-using-azure-managed-disks"></a>Instalace SAP NetWeaver ASCS pro SAP HANA s využitím Azure Managed Disks
 
-Před zahájením SAP Software zřizování správce (SWPM), budete muset připojit IP adresu virtuální název hostitele ASC. Doporučený postup je použití sapacext. Pokud připojíte pomocí sapacext adresu IP, ujistěte se, že po restartování znovu připojit IP adresu.
+Než začnete se správcem SAP software Provisioning Manager (SWPM), musíte připojit IP adresu virtuálního hostitele ASCS. Doporučeným způsobem je použít sapacext. Pokud IP adresu připojíte pomocí sapacext, nezapomeňte po restartování připojit IP adresu znovu.
 
 ![Linux][Logo_Linux] Linux
 
@@ -244,19 +245,106 @@ Před zahájením SAP Software zřizování správce (SWPM), budete muset připo
 C:\Program Files\SAP\hostctrl\exe\sapacext.exe -a ifup -i "Ethernet 3" -h ah1-ascs -n 255.255.255.128
 ```
 
-Spusťte SWPM a použijte *ah1 ascs* pro *název hostitele Instance ASCS*.
+Spusťte SWPM a pro *název hostitele instance ASCS*použijte *ah1-ASCS* .
 
 ![Linux][Logo_Linux] Linux  
-Profil agenta hostitele SAP, které se nacházejí v /usr/sap/hostctrl/exe/host_profile přidejte následující parametr profilu. Další informace viz poznámka SAP [2628497].
+Do profilu agenta hostitele SAP, který se nachází na adrese/usr/SAP/hostctrl/exe/host_profile., přidejte následující parametr profilu. Další informace najdete v tématu SAP Note [2628497].
 ```
 acosprep/nfs_paths=/home/ah1adm,/usr/sap/trans,/sapmnt/AH1,/usr/sap/AH1
 ```
 
+#### <a name="install-sap-netweaver-ascs-for-sap-hana-on-azure-netappfiles-anf-beta"></a>Instalace SAP NetWeaver ASCS pro SAP HANA na Azure NetAppFiles (ANF) BETA verze
+
+> [!NOTE]
+> Tato funkce ještě není GA. Další informace najdete v tématu SAP Note [2815988] (viditelné pouze pro zákazníky ve verzi Preview).
+Otevřete incident SAP na komponentě BC-VCM-LVM-HYPERV a žádost o připojení k adaptéru úložiště LaMa pro verzi Preview služby Azure NetApp Files
+
+ANF poskytuje systém souborů NFS pro Azure. V kontextu SAP LaMa to zjednodušuje vytváření instancí ABAP Central Services (ASCS) a následnou instalaci aplikačních serverů. Dřív se ASCS instance musela jednat jako server systému souborů NFS a měl by se do host_profile Hostagent SAP přidat parametr acosprep/nfs_paths.
+
+#### <a name="anf-is-currently-available-in-these-regions"></a>ANF je v tuto chvíli k dispozici v těchto oblastech:
+
+Austrálie – východ, Střed USA, Východní USA, Východní USA 2, Severní Evropa, Střed USA – jih, Západní Evropa a Západní USA 2.
+
+#### <a name="network-requirements"></a>Požadavky na síť
+
+ANF vyžaduje delegovanou podsíť, která musí být součástí stejné virtuální sítě jako servery SAP. Tady je příklad pro takovou konfiguraci.
+Tato obrazovka ukazuje vytvoření virtuální sítě a první podsítě:
+
+![SAP LaMa vytvoření virtuální sítě pro Azure ANF ](media/lama/sap-lama-createvn-50.png)
+
+V dalším kroku se vytvoří delegovaná podsíť pro svazky Microsoft. NetApp/.
+
+![SAP LaMa přidat delegovanou podsíť ](media/lama/sap-lama-addsubnet-50.png)
+
+![Seznam podsítí SAP LaMa ](media/lama/sap-lama-subnets.png)
+
+Teď je potřeba vytvořit účet NetApp v rámci Azure Portal:
+
+![LaMa vytváření účtů NetApp SAP ](media/lama/sap-lama-create-netappaccount-50.png)
+
+![Vytvořil se účet SAP LaMa NetApp. ](media/lama/sap-lama-netappaccount.png)
+
+V rámci účtu NetApp rozsah kapacity určuje velikost a typ disků pro každý fond:
+
+![LaMa SAP vytvořit NetApp fond kapacit ](media/lama/sap-lama-capacitypool-50.png)
+
+![Fond kapacit SAP LaMa NetApp se vytvořil. ](media/lama/sap-lama-capacitypool-list.png)
+
+Svazky NFS se teď dají definovat. Vzhledem k tomu, že budou existovat svazky pro více systémů v jednom fondu, je třeba zvolit schéma pojmenování na základě sebe. Přidáním identifikátoru zabezpečení (SID) lze seskupit související svazky dohromady. Pro ASCS a instanci as jsou potřeba následující připojení:/sapmnt/\<SID\>,/usr/SAP/\<SID\> a/Home/\<SID\>ADM. Volitelné/usr/SAP/trans pro adresář centrálního přenosu, který se aspoň používá pro všechny systémy na jednom místě.
+
+> [!NOTE]
+> Během fáze BETA verze musí být názvy svazků v rámci předplatného jedinečné.
+
+![SAP LaMa vytvoření svazku 1 ](media/lama/sap-lama-createvolume-80.png)
+
+![SAP LaMa vytvořit svazek 2 ](media/lama/sap-lama-createvolume2-80.png)
+
+![SAP LaMa vytvořit svazek 3 ](media/lama/sap-lama-createvolume3-80.png)
+
+Tyto kroky je potřeba zopakovat i pro ostatní svazky.
+
+![Seznam vytvořených svazků SAP LaMa ](media/lama/sap-lama-volumes.png)
+
+Nyní je třeba tyto svazky připojit k systémům, kde bude provedena počáteční instalace pomocí SAP SWPM.
+
+Nejprve je třeba vytvořit přípojné body. V tomto případě je AN1 identifikátor SID, takže je potřeba provést následující příkazy:
+
+```bash
+mkdir -p /home/an1adm
+mkdir -p /sapmnt/AN1
+mkdir -p /usr/sap/AN1
+mkdir -p /usr/sap/trans
+```
+Další svazky ANF budou připojené k následujícím příkazům:
+
+```bash
+# sudo mount -t nfs -o rw,hard,rsize=65536,wsize=65536,vers=3,tcp 9.9.9.132:/an1-home-sidadm /home/an1adm
+# sudo mount -t nfs -o rw,hard,rsize=65536,wsize=65536,vers=3,tcp 9.9.9.132:/an1-sapmnt-sid /sapmnt/AN1
+# sudo mount -t nfs -o rw,hard,rsize=65536,wsize=65536,vers=3,tcp 9.9.9.132:/an1-usr-sap-sid /usr/sap/AN1
+# sudo mount -t nfs -o rw,hard,rsize=65536,wsize=65536,vers=3,tcp 9.9.9.132:/global-usr-sap-trans /usr/sap/trans
+```
+Příkazy Mount lze také odvodit z portálu. Body místního připojení je potřeba upravit.
+
+K ověření použijte příkaz df-h.
+
+![Úroveň operačního systému přípojných bodů SAP LaMa ](media/lama/sap-lama-mounts.png)
+
+Nyní je třeba provést instalaci pomocí SWPM.
+
+Stejný postup je třeba provést alespoň pro jednu instanci.
+
+Po úspěšné instalaci musí být systém zjištěn v rámci SAP LaMa.
+
+Přípojné body by měly vypadat jako v případě ASCS a instance AS:
+
+![Přípojné body SAP Lama v Lama ](media/lama/sap-lama-ascs.png) (Toto je příklad. IP adresy a cesta exportu se liší od těch, které se použily před).
+
+
 #### <a name="install-sap-hana"></a>Instalace SAP HANA
 
-Pokud nainstalujete SAP HANA pomocí hdblcm nástroj příkazového řádku, pomocí parametru--název hostitele zadejte virtuální název hostitele. Budete muset přidat IP adresu virtuální název hostitele databáze do síťové rozhraní. Doporučený postup je použití sapacext. Pokud připojíte pomocí sapacext adresu IP, ujistěte se, že po restartování znovu připojit IP adresu.
+Pokud instalujete SAP HANA pomocí nástroje příkazového řádku hdblcm, použijte k zadání virtuálního hostitele parametr--hostname. Musíte přidat IP adresu virtuálního hostitele databáze do síťového rozhraní. Doporučeným způsobem je použít sapacext. Pokud IP adresu připojíte pomocí sapacext, nezapomeňte po restartování připojit IP adresu znovu.
 
-Přidejte další název virtuálního hostitele a IP adresa pro název, který používá aplikační servery pro připojení k HANA tenanta.
+Přidejte další virtuální název hostitele a IP adresu pro název, který používají aplikační servery pro připojení k tenantovi HANA.
 
 ```bash
 # /usr/sap/hostctrl/exe/sapacext -a ifup -i <network interface> -h <virtual hostname or IP address> -n <subnet mask>
@@ -264,11 +352,11 @@ Přidejte další název virtuálního hostitele a IP adresa pro název, který 
 /usr/sap/hostctrl/exe/sapacext -a ifup -i eth0 -h ah1-db -n 255.255.255.128
 ```
 
-Spusťte instalaci instance databáze SWPM na virtuální počítač pro server aplikace, nikoli na virtuální počítač HANA. Použití *ah1 db* pro *hostitele databáze* v dialogovém okně *databáze systému SAP*.
+Spusťte instalaci instance databáze SWPM na virtuálním počítači aplikačního serveru, ne na virtuálním počítači HANA. Použijte *ah1-DB* pro *hostitele databáze* v dialogovém okně *databáze pro systém SAP*.
 
-#### <a name="install-sap-netweaver-application-server-for-sap-hana"></a>Instalace aplikační Server SAP NetWeaver pro SAP HANA
+#### <a name="install-sap-netweaver-application-server-for-sap-hana"></a>Instalace aplikačního serveru SAP NetWeaver pro SAP HANA
 
-Než začnete SAP Software zřizování správce (SWPM), budete muset připojit IP adresu virtuální název hostitele serveru aplikace. Doporučený postup je použití sapacext. Pokud připojíte pomocí sapacext adresu IP, ujistěte se, že po restartování znovu připojit IP adresu.
+Před spuštěním Správce SAP software Provisioning (SWPM) musíte připojit IP adresu virtuálního hostitele aplikačního serveru. Doporučeným způsobem je použít sapacext. Pokud IP adresu připojíte pomocí sapacext, nezapomeňte po restartování připojit IP adresu znovu.
 
 ![Linux][Logo_Linux] Linux
 
@@ -284,14 +372,14 @@ Než začnete SAP Software zřizování správce (SWPM), budete muset připojit 
 C:\Program Files\SAP\hostctrl\exe\sapacext.exe -a ifup -i "Ethernet 3" -h ah1-di-0 -n 255.255.255.128
 ```
 
-Doporučujeme použít SAP NetWeaver profilu parametr databází/hdb/hdb_use_ident nastavit identitu, která se používá k vyhledání klíč v objektu userstore HDB. Můžete ručně přidat tento parametr po instalaci instance databáze s SWPM nebo spustit SWPM s
+Pro nastavení identity, která se používá k vyhledání klíče v HDB userStore, se doporučuje použít parametr profilu SAP NetWeaver databáze/HDB/hdb_use_ident. Tento parametr můžete přidat ručně po instalaci instance databáze s SWPM nebo spuštěním SWPM s
 
 ```bash
 # from https://blogs.sap.com/2015/04/14/sap-hana-client-software-different-ways-to-set-the-connectivity-data/
 /sapdb/DVDs/IM_LINUX_X86_64/sapinst HDB_USE_IDENT=SYSTEM_COO
 ```
 
-Pokud ji nastavíte ručně, musíte také vytvořit nové položky HDB objektu userstore.
+Pokud ho nastavíte ručně, budete také muset vytvořit nové položky userStore HDB.
 
 ```bash
 # run as <sapsid>adm
@@ -300,182 +388,182 @@ Pokud ji nastavíte ručně, musíte také vytvořit nové položky HDB objektu 
 /usr/sap/AH1/hdbclient/hdbuserstore SET DEFAULT ah1-db:35041@AH1 SAPABAP1 <password>
 ```
 
-Použití *ah1-di-0* pro *název hostitele Instance Pa adresy* v dialogovém okně *primární instanci serveru aplikace*.
+Pro *název hostitele instance služby pas* v dialogu *instance primárního aplikačního serveru*použijte *ah1-di-0* .
 
 #### <a name="post-installation-steps-for-sap-hana"></a>Kroky po instalaci pro SAP HANA
 
-Ujistěte se, že pro zálohování SYSTEMDB a všech databázích tenantů před pokusem o kopii tenanta, tenanta přesunout nebo vytvořit systémové replikace.
+Nezapomeňte zálohovat SYSTEMDB a všechny databáze tenantů před tím, než se pokusíte provést kopii tenanta, přesunout klienta nebo vytvořit replikaci systému.
 
 ### <a name="microsoft-sql-server"></a>Microsoft SQL Server
 
-V následujících příkladech předpokládáme instalace systému SAP NetWeaver systémem ID AS1. Názvy virtuálních hostitelů jsou as1 db pro instanci systému SQL Server používá systém SAP NetWeaver, as1 ascs pro SAP NetWeaver ASCS a as1-di-0 pro první aplikační server SAP Netweaveru.
+V níže uvedených příkladech předpokládáme, že instalujete systém SAP NetWeaver s ID systému AS1. Virtuální názvy hostitelů jsou AS1-DB pro instanci SQL Server, kterou používá systém SAP NetWeaver, AS1-ASCS pro SAP NetWeaver ASCS a AS1-di-0 pro první aplikační Server SAP NetWeaver.
 
 #### <a name="install-sap-netweaver-ascs-for-sql-server"></a>Instalace SAP NetWeaver ASCS pro SQL Server
 
-Před zahájením SAP Software zřizování správce (SWPM), budete muset připojit IP adresu virtuální název hostitele ASC. Doporučený postup je použití sapacext. Pokud připojíte pomocí sapacext adresu IP, ujistěte se, že po restartování znovu připojit IP adresu.
+Než začnete se správcem SAP software Provisioning Manager (SWPM), musíte připojit IP adresu virtuálního hostitele ASCS. Doporučeným způsobem je použít sapacext. Pokud IP adresu připojíte pomocí sapacext, nezapomeňte po restartování připojit IP adresu znovu.
 
 ```bash
 # C:\Program Files\SAP\hostctrl\exe\sapacext.exe -a ifup -i <network interface> -h <virtual hostname or IP address> -n <subnet mask>
 C:\Program Files\SAP\hostctrl\exe\sapacext.exe -a ifup -i "Ethernet 3" -h as1-ascs -n 255.255.255.128
 ```
 
-Spusťte SWPM a použijte *as1 ascs* pro *název hostitele Instance ASCS*.
+Spusťte SWPM a pro *název hostitele instance ASCS*použijte *AS1-ASCS* .
 
-#### <a name="install-sql-server"></a>Instalace systému SQL Server
+#### <a name="install-sql-server"></a>Nainstalovat SQL Server
 
-Budete muset přidat IP adresu virtuální název hostitele databáze do síťové rozhraní. Doporučený postup je použití sapacext. Pokud připojíte pomocí sapacext adresu IP, ujistěte se, že po restartování znovu připojit IP adresu.
+Musíte přidat IP adresu virtuálního hostitele databáze do síťového rozhraní. Doporučeným způsobem je použít sapacext. Pokud IP adresu připojíte pomocí sapacext, nezapomeňte po restartování připojit IP adresu znovu.
 
 ```bash
 # C:\Program Files\SAP\hostctrl\exe\sapacext.exe -a ifup -i <network interface> -h <virtual hostname or IP address> -n <subnet mask>
 C:\Program Files\SAP\hostctrl\exe\sapacext.exe -a ifup -i "Ethernet 3" -h as1-db -n 255.255.255.128
 ```
 
-Spusťte instalaci instance databáze SWPM na virtuálním počítači SQL serveru. Použít SAPINST_USE_HOSTNAME =*as1 db* přepsání název hostitele pro připojení k serveru SQL Server. Pokud jste nasadili virtuální počítač pomocí šablony Azure Resource Manageru, je nutné nastavit adresář použít pro datové soubory databáze do *C:\sql\data* a soubor protokolu databáze do *C:\sql\log*.
+Spusťte instalaci instance databáze SWPM na virtuálním počítači SQL serveru. Pomocí SAPINST_USE_HOSTNAME =*AS1-DB* přepište název hostitele, který se používá pro připojení k SQL Server. Pokud jste virtuální počítač nasadili pomocí šablony Azure Resource Manager, ujistěte se, že jste nastavili adresář, který se používá pro datové soubory databáze, do *C:\sql\data* a soubor protokolu databáze na *C:\SQL\LOG*.
 
-Ujistěte se, že uživatel *NT AUTHORITY\SYSTEM* má přístup k SQL serveru a role serveru *sysadmin*. Další informace viz poznámka SAP [1877727] a [2562184].
+Ujistěte se, že uživatel *NT AUTHORITY\SYSTEM* má přístup k SQL Server a má roli role serveru *sysadmin*. Další informace najdete v tématu SAP Note [1877727] a [2562184].
 
-#### <a name="install-sap-netweaver-application-server"></a>Instalace aplikační Server SAP NetWeaver
+#### <a name="install-sap-netweaver-application-server"></a>Instalace aplikačního serveru SAP NetWeaver
 
-Než začnete SAP Software zřizování správce (SWPM), budete muset připojit IP adresu virtuální název hostitele serveru aplikace. Doporučený postup je použití sapacext. Pokud připojíte pomocí sapacext adresu IP, ujistěte se, že po restartování znovu připojit IP adresu.
+Před spuštěním Správce SAP software Provisioning (SWPM) musíte připojit IP adresu virtuálního hostitele aplikačního serveru. Doporučeným způsobem je použít sapacext. Pokud IP adresu připojíte pomocí sapacext, nezapomeňte po restartování připojit IP adresu znovu.
 
 ```bash
 # C:\Program Files\SAP\hostctrl\exe\sapacext.exe -a ifup -i <network interface> -h <virtual hostname or IP address> -n <subnet mask>
 C:\Program Files\SAP\hostctrl\exe\sapacext.exe -a ifup -i "Ethernet 3" -h as1-di-0 -n 255.255.255.128
 ```
 
-Použití *as1-di-0* pro *název hostitele Instance Pa adresy* v dialogovém okně *primární instanci serveru aplikace*.
+Pro *název hostitele instance služby pas* v dialogu *instance primárního aplikačního serveru*použijte *AS1-di-0* .
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
-### <a name="errors-and-warnings-during-discover"></a>Chyby a upozornění během zjišťování
+### <a name="errors-and-warnings-during-discover"></a>Chyby a varování během zjišťování
 
-* Vyberte oprávnění bylo odepřeno
-  * [Microsoft] [Ovladač ODBC SQL Server] [SQL Server] Vyberte oprávnění bylo odepřeno na objekt log_shipping_primary_databases, databázi msdb, schématu dbo. [SOAPFaultException]  
-  Vyberte oprávnění bylo odepřeno na objekt log_shipping_primary_databases, databázi msdb, schématu dbo.
+* Oprávnění SELECT bylo odepřeno.
+  * Microsoft [Ovladač SQL Server ODBC] [SQL Server] Oprávnění SELECT bylo odepřeno pro objekt ' log_shipping_primary_databases ', databázi ' msdb ', schéma ' dbo '. [SOAPFaultException]  
+  Oprávnění SELECT bylo odepřeno pro objekt ' log_shipping_primary_databases ', databázi ' msdb ', schéma ' dbo '.
   * Řešení  
-    Ujistěte se, že *NT AUTHORITY\SYSTEM* má přístup k SQL serveru. Viz poznámka SAP [2562184]
+    Ujistěte se, že má přístup k SQL Server *NT AUTHORITY\SYSTEM* . Viz SAP Note [2562184]
 
 
-### <a name="errors-and-warnings-for-instance-validation"></a>Chyby a upozornění pro instanci ověření
+### <a name="errors-and-warnings-for-instance-validation"></a>Chyby a upozornění pro ověřování instance
 
-* Došlo k výjimce v ověřování HDB úložiště userstore  
-  * Zobrazit Log Vieweru.  
-    com.sap.nw.lm.aci.monitor.api.validation.RuntimeValidationException: Výjimka ve validátoru s ID "RuntimeHDBConnectionValidator" (ověření: "VALIDATION_HDB_USERSTORE"): Nepovedlo se načíst hdbuserstore  
-    Úložiště userstore HANA není ve správném umístění
+* Při ověřování HDB userStore byla vyvolána výjimka.  
+  * viz Log Viewer  
+    com.sap.nw.lm.aci.monitor.api.validation.RuntimeValidationException: Výjimka ve validátoru s ID ' RuntimeHDBConnectionValidator ' (ověření: 'VALIDATION_HDB_USERSTORE'): Nepovedlo se načíst hdbuserstore.  
+    HANA userStore není ve správném umístění.
   * Řešení  
-    Ujistěte se, že tento /usr/sap/AH1/hdbclient/install/installation.ini je správný
+    Ujistěte se, že je/usr/sap/AH1/hdbclient/install/installation.ini správné
 
-### <a name="errors-and-warnings-during-a-system-copy"></a>Chyby a upozornění během kopie systému
+### <a name="errors-and-warnings-during-a-system-copy"></a>Chyby a varování během kopírování ze systému
 
-* Došlo k chybě při ověřování systému zřizování kroku
-  * Způsobené: com.sap.nw.lm.aci.engine.base.api.util.exception.HAOperationException volání "/ usr/sap/hostctrl/exe/sapacext - a ShowHanaBackups -m HN1 -f 50 - h hn1-db - o úroveň = 0\;stav = 5\;port = 35013 pf = / usr/sap/hostctrl / exe/host_profile -R -u -T dev_lvminfo SYSTEM -p zavěšení - r. | /USR/SAP/hostctrl/exe/sapacext - a ShowHanaBackups -m 50 - h -f HN1 hn1-db - o úroveň = 0\;stav = 5\;port = 35013 pf = / usr/sap/hostctrl/exe/host_profile - R -u -T dev_lvminfo SYSTEM -p zavěšení - r
+* Při ověřování kroku zřizování systému došlo k chybě.
+  * Příčinou je: com. SAP. NW. LM. ACI. Engine. Base. API. util. Exception. HAOperationException call '/usr/SAP/hostctrl/exe/sapacext-a ShowHanaBackups-m HN1-f 50-h HN1-DB-o Level = 0\;status = 5\;port = 35013 PF =/usr/SAP/hostctrl /exe/host_profile-R-T dev_lvminfo-u SYSTEM-p Hook-R | /usr/SAP/hostctrl/exe/sapacext-a ShowHanaBackups-m HN1-f 50-h HN1-DB-o Level = 0\;status = 5\;port = 35013 PF =/usr/SAP/hostctrl/exe/host_profile-R-T dev_lvminfo-u System-p Hook-r
   * Řešení  
-    Vytvořit zálohu všech databází ve zdroji systém HANA
+    Pořídit zálohu všech databází ve zdrojovém systému HANA
 
-* Krok kopie systému *Start* instance databáze
-  * Operace agenta hostitele '000D3A282BC91EE8A1D76CF1F92E2944' se nezdařila (OperationException. FaultCode: "127", zpráva: "Spuštění příkazu se nezdařilo. : [Microsoft] [SQL Server ovladače ODBC] [SQL Server] uživatel nemá oprávnění změnit databázi 'AS2', databáze neexistuje nebo databáze není ve stavu umožňujícím kontroly přístupu. ")
+* Systémový *začátek* Krok kopírování instance databáze
+  * Operace agenta hostitele 000D3A282BC91EE8A1D76CF1F92E2944 se nezdařila (OperationException. FaultCode: ' 127 ', zpráva: Příkaz spuštění příkazu se nezdařil. : [Microsoft] [ODBC SQL Server Driver] [SQL Server] uživatel nemá oprávnění ke změně databáze AS2, databáze neexistuje nebo databáze není ve stavu, který umožňuje kontroly přístupu. ')
   * Řešení  
-    Ujistěte se, že *NT AUTHORITY\SYSTEM* má přístup k SQL serveru. Viz poznámka SAP [2562184]
+    Ujistěte se, že má přístup k SQL Server *NT AUTHORITY\SYSTEM* . Viz SAP Note [2562184]
 
-### <a name="errors-and-warnings-during-a-system-clone"></a>Chyby a upozornění během klonování systému
+### <a name="errors-and-warnings-during-a-system-clone"></a>Chyby a varování během klonování systému
 
-* Došlo k chybě při pokusu o registraci instance agenta v kroku *vynucené registrace a spuštění agenta Instance* aplikačního serveru nebo ASC
-  * Při pokusu o registraci instance agenta došlo k chybě. (RemoteException: "Nepovedlo se načíst instance data z profilu"\\as1 ascs\sapmnt\AS1\SYS\profile\AS1_D00_as1 di 0':  Nelze získat přístup k profilu "\\as1 ascs\sapmnt\AS1\SYS\profile\AS1_D00_as1 di 0': Žádný odpovídající soubor nebo adresář. ")
+* Došlo k chybě při pokusu o registraci agenta instance v kroku *vynucené registrace a spuštění agenta instance* aplikačního serveru nebo ASCS.
+  * Při pokusu o registraci agenta instance došlo k chybě. (RemoteException: Nepovedlo se načíst data instance z profilu\\AS1-ascs\sapmnt\AS1\SYS\profile\AS1_D00_as1-di-0:  Nelze získat přístup k\\profilu ' AS1-ascs\sapmnt\AS1\SYS\profile\AS1_D00_as1-di-0 ': Žádný takový soubor nebo adresář. ')
   * Řešení  
-   Ujistěte se, že sapmnt sdílené složky na ASCS/SCS má plný přístup pro SAP_AS1_GlobalAdmin
+   Ujistěte se, že sdílená složka sapmnt na ASCS/SCS má plný přístup pro SAP_AS1_GlobalAdmin.
 
-* Chyba v kroku *povolení ochrany po spuštění pro klon*
-  * Nepovedlo se otevřít soubor "\\as1 ascs\sapmnt\AS1\SYS\profile\AS1_D00_as1 di 0' příčina: Soubor nebo adresář neexistuje
+* Chyba v kroku *Povolení ochrany při spuštění pro klon*
+  * Nepovedlo se otevřít\\soubor AS1-ascs\sapmnt\AS1\SYS\profile\AS1_D00_as1-di-0. Příčina: Soubor nebo adresář neexistuje
   * Řešení  
-    Účet počítače serveru aplikace potřebuje oprávnění k zápisu do profilu
+    Účet počítače aplikačního serveru potřebuje k profilu přístup pro zápis.
 
-### <a name="errors-and-warnings-during-create-system-replication"></a>Chyby a upozornění při vytváření systémové replikace
+### <a name="errors-and-warnings-during-create-system-replication"></a>Chyby a varování během vytváření replikace systému
 
-* Výjimka při kliknutí na vytvořit systémové replikace
-  * Způsobené: com.sap.nw.lm.aci.engine.base.api.util.exception.HAOperationException volání "/ usr/sap/hostctrl/exe/sapacext - a ShowHanaBackups -m HN1 -f 50 - h hn1-db - o úroveň = 0\;stav = 5\;port = 35013 pf = / usr/sap/hostctrl / exe/host_profile -R -u -T dev_lvminfo SYSTEM -p zavěšení - r. | /USR/SAP/hostctrl/exe/sapacext - a ShowHanaBackups -m 50 - h -f HN1 hn1-db - o úroveň = 0\;stav = 5\;port = 35013 pf = / usr/sap/hostctrl/exe/host_profile - R -u -T dev_lvminfo SYSTEM -p zavěšení - r
+* Výjimka při kliknutí na vytvoření systémové replikace
+  * Příčinou je: com. SAP. NW. LM. ACI. Engine. Base. API. util. Exception. HAOperationException call '/usr/SAP/hostctrl/exe/sapacext-a ShowHanaBackups-m HN1-f 50-h HN1-DB-o Level = 0\;status = 5\;port = 35013 PF =/usr/SAP/hostctrl /exe/host_profile-R-T dev_lvminfo-u SYSTEM-p Hook-R | /usr/SAP/hostctrl/exe/sapacext-a ShowHanaBackups-m HN1-f 50-h HN1-DB-o Level = 0\;status = 5\;port = 35013 PF =/usr/SAP/hostctrl/exe/host_profile-R-T dev_lvminfo-u System-p Hook-r
   * Řešení  
-    Test Pokud sapacext můžete provést, protože `<hanasid`> adm
+    Test, zda lze sapacext spustit jako `<hanasid`> ADM
 
-* Chyba při úplné kopie není povolena v kroku úložiště
-  * Došlo k chybě při hlášení zprávu atribut kontextu pro cestu IStorageCopyData.storageVolumeCopyList:1 a targetStorageSystemId pole
+* Chyba v případě, že v kroku úložiště není povolené úplné kopírování
+  * Došlo k chybě při vytváření zprávy atributu kontextu pro cestu IStorageCopyData. storageVolumeCopyList: 1 a pole targetStorageSystemId
   * Řešení  
-    Ignorovat upozornění v kroku a zkuste to znovu. Tento problém bude opraven v nové podpory balíčku nebo opravu z LaMa SAP.
+    Ignorujte upozornění v kroku a zkuste to znovu. Tento problém bude opravený v novém balíčku nebo opravě podpory SAP LaMa.
 
-### <a name="errors-and-warnings-during-relocate"></a>Chyby a upozornění během přemístit
+### <a name="errors-and-warnings-during-relocate"></a>Chyby a varování během přemístění
 
-* Cesta "/ usr/sap/AH1" není povolena pro reexports systému souborů nfs.
-  * Zkontrolujte poznámky SAP [2628497] podrobnosti.
+* Pro přeexporty NFS není povolená cesta/usr/sap/AH1.
+  * Podrobnosti najdete v poznámce ke SAP Note [2628497] .
   * Řešení  
-    Přidáte že ASCS exportuje ASCS HostAgent profilu. Viz poznámka SAP [2628497]
+    Přidejte exporty ASCS do profilu HostAgent ASCS. Viz SAP Note [2628497]
 
-* Není implementováno po přemístění ASCS – funkce
-  * Výstup příkazu: exportfs: hostitele: / usr/sap/AX1: Funkce není implementována
+* Funkce není implementována při přemístění ASCS
+  * Výstup příkazu: exportfs: Host:/usr/SAP/AX1: Funkce není implementovaná.
   * Řešení  
-    Ujistěte se, že je na cílovém virtuálním počítači přemístit povolená služba server systému souborů NFS
+    Ujistěte se, že je na cílovém virtuálním počítači povolená služba serveru NFS.
 
-### <a name="errors-and-warnings-during-application-server-installation"></a>Chyby a upozornění během instalace serveru aplikace
+### <a name="errors-and-warnings-during-application-server-installation"></a>Chyby a upozornění při instalaci aplikačního serveru
 
 * Chyba při provádění kroku SAPinst: getProfileDir
-  * CHYBA: (Poslední Chyba hlášená kroku: Zachycené ESAPinstException ve volání modulu: Program pro ověření kroku ' | NW_DI | ajít | ajít | ajít | ajít | 0 | 0 | NW_GetSidFromProfiles | ajít | ajít | ajít | ajít | getSid | 0 | NW_readProfileDir | ajít | ajít | ajít | ajít | readProfile | 0 | getProfileDir "oznámil chybu: Uzel \\\as1-ascs\sapmnt\AS1\SYS\profile neexistuje. Spusťte v interaktivním režimu pro vyřešení tohoto problému SAPinst)
+  * CHYBA: (Poslední chyba hlášená krokem: Zachycená ESAPinstException v modulu volání: Validátor kroku | NW_DI | najít | najít | najít | 0 | 0 | NW_GetSidFromProfiles | najít | najít | najít | getSid | 0 | NW_readProfileDir | možnost | najít | zaznamenalo | zareadProfile | 0 | getProfileDir ohlásila chybu: Uzel \\\as1-ascs\sapmnt\AS1\SYS\profile neexistuje. Pokud chcete tento problém vyřešit, spusťte v interaktivním režimu SAPinst.)
   * Řešení  
-    Ujistěte se, že SWPM je spuštěn jako uživatel, který má přístup k profilu. Dá se tento uživatel v Průvodci instalací serveru aplikace
+    Ujistěte se, že je SWPM spuštěný s uživatelem, který má přístup k tomuto profilu. Tento uživatel se dá nakonfigurovat v Průvodci instalací aplikačního serveru.
 
 * Chyba při provádění kroku SAPinst: askUnicode
-  * CHYBA: (Poslední Chyba hlášená kroku: Zachycené ESAPinstException ve volání modulu: Program pro ověření kroku ' | NW_DI | ajít | ajít | ajít | ajít | 0 | 0 | NW_GetSidFromProfiles | ajít | ajít | ajít | ajít | getSid | 0 | NW_getUnicode | ajít | ajít | ajít | ajít | unicode | 0 | askUnicode "oznámil chybu: Spusťte v interaktivním režimu pro vyřešení tohoto problému SAPinst)
+  * CHYBA: (Poslední chyba hlášená krokem: Zachycená ESAPinstException v modulu volání: Validátor kroku | NW_DI | najít | najít | najít | 0 | 0 | NW_GetSidFromProfiles | najít | najít | najít | getSid | 0 | NW_getUnicode | možnost | najít | zaznamenala | zakódování | | 0 | askUnicode ohlásila chybu: Pokud chcete tento problém vyřešit, spusťte v interaktivním režimu SAPinst.)
   * Řešení  
-    Pokud používáte novější jádro SAP, SWPM nelze určit, zda je systém unicode systému už server zpráv ascs. Viz poznámka SAP [2445033] další podrobnosti.  
-    Tento problém bude opraven v nové podpory balíčku nebo opravu z LaMa SAP.  
-    Nastavte profil parametr OS_UNICODE = uc ve výchozím profilu systému SAP a chcete tento problém vyřešit.
+    Pokud používáte nedávné jádro SAP, SWPM nemůže určit, jestli systém je systémem kódování Unicode, který už používá server zpráv ASCS. Další podrobnosti najdete v tématu SAP Note [2445033] .  
+    Tento problém bude opravený v novém balíčku nebo opravě podpory SAP LaMa.  
+    Pokud chcete tento problém obejít, nastavte parametr profilu OS_UNICODE = UC ve výchozím profilu systému SAP.
 
 * Chyba při provádění kroku SAPinst: dCheckGivenServer
-  * Chyba při provádění kroku SAPinst: dCheckGivenServer "verze ="1.0"Chyba: (Poslední Chyba hlášená krok: \<p > Instalace byla zrušena uživatelem. \</p>
+  * Při provádění kroku SAPinst došlo k chybě: dCheckGivenServer "Version =" 1.0 "ERROR: (Poslední chyba hlášená krokem: \<p > instalace byla zrušena uživatelem. \</p>
   * Řešení  
-    Ujistěte se, že SWPM je spuštěn jako uživatel, který má přístup k profilu. Dá se tento uživatel v Průvodci instalací serveru aplikace
+    Ujistěte se, že je SWPM spuštěný s uživatelem, který má přístup k tomuto profilu. Tento uživatel se dá nakonfigurovat v Průvodci instalací aplikačního serveru.
 
 * Chyba při provádění kroku SAPinst: checkClient
-  * Chyba při provádění kroku SAPinst: checkClient "verze ="1.0"Chyba: (Poslední Chyba hlášená krok: \<p > Instalace byla zrušena uživatelem. \</p>)
+  * Při provádění kroku SAPinst došlo k chybě: checkClient "Version =" 1.0 "ERROR: (Poslední chyba hlášená krokem: \<p > instalace byla zrušena uživatelem. \</p>)
   * Řešení  
-    Ujistěte se, že ovladač Microsoft ODBC pro SQL Server je nainstalovaný na virtuálním počítači, na kterém chcete nainstalovat aplikační server
+    Ujistěte se, že je na virtuálním počítači, na který chcete nainstalovat aplikační server, nainstalovaný ovladač Microsoft ODBC Driver for SQL Server.
 
 * Chyba při provádění kroku SAPinst: copyScripts
-  * Poslední chybu v kroku: Došlo k chybě. PODROBNOSTI: Chyba 13 (0x0000000d) (oprávnění odepřeno) při provádění systému volání 'fopenU"s parametrem (\\\as1-ascs/sapmnt/AS1/SYS/exe/uc/NTAMD64/strdbs.cmd, w), řádek (494) v souboru (\bas/bas/749_REL/bc_749_REL/src/ins/SAPINST/impl/src/syslib / filesystem/syxxcfstrm2.cpp), trasování zásobníku:  
-  CThrThread.cpp: 85: CThrThread::threadFunction()  
+  * Poslední chyba hlášená krokem: Volání systému se nezdařilo. ZOBRAZÍ Chyba 13 (0x0000000d) (zamítnuté oprávnění) při provádění systémového volání "fopenU" s parametrem\\(\ AS1-ASCS/sapmnt/AS1/sys/exe/UC/NTAMD64/strdbs. cmd, w), řádek (494) v souboru (\ Bas/Bas/749_REL/bc_749_REL/src/ins/SAPINST/impl/src/SysLib /FileSystem/syxxcfstrm2.cpp), trasování zásobníku:  
+  CThrThread. cpp: 85: CThrThread::threadFunction()  
   CSiServiceSet.cpp: 63: CSiServiceSet::executeService()  
   CSiStepExecute.cpp: 913: CSiStepExecute::execute()  
   EJSController.cpp: 179: EJSControllerImpl::executeScript()  
-  JSExtension.hpp: 1136: CallFunctionBase::call()  
-  iaxxcfile.cpp: 183: iastring CIaOsFileConnect::callMemberFunction (iastring const & název, args_t const & args)  
-  iaxxcfile.cpp: 1849: iastring CIaOsFileConnect::newFileStream (args_t const & _args)  
+  JSExtension.hpp: 1136: CallFunctionBase:: Call () – volání ()  
+  iaxxcfile.cpp: 183: iastring CIaOsFileConnect:: callMemberFunction (iastring const & Name, args_t const & args)  
+  iaxxcfile.cpp: 1849: iastring CIaOsFileConnect:: newFileStream (args_t const & _args)  
   iaxxbfile.cpp: 773: CIaOsFile::newFileStream_impl(4)  
   syxxcfile.cpp: 233: CSyFileImpl::openStream(ISyFile::eFileOpenMode)  
   syxxcfstrm.cpp: 29: CSyFileStreamImpl::CSyFileStreamImpl(CSyFileStream*,iastring,ISyFile::eFileOpenMode)  
   syxxcfstrm.cpp: 265: CSyFileStreamImpl::open()  
-  syxxcfstrm2.cpp: 58: CSyFileStream2Impl::CSyFileStream2Impl(const CSyPath & \\\aw1-ascs/sapmnt/AW1/SYS/exe/uc/NTAMD64/strdbs.cmd, 0x4)  
+  syxxcfstrm2.cpp: 58: CSyFileStream2Impl:: CSyFileStream2Impl (Cons CSyPath & \\\ AW1-ASCS/sapmnt/AW1/sys/exe/UC/NTAMD64/strdbs. cmd, 0x4)  
   syxxcfstrm2.cpp: 456: CSyFileStream2Impl::open()
   * Řešení  
-    Ujistěte se, že SWPM je spuštěn jako uživatel, který má přístup k profilu. Dá se tento uživatel v Průvodci instalací serveru aplikace
+    Ujistěte se, že je SWPM spuštěný s uživatelem, který má přístup k tomuto profilu. Tento uživatel se dá nakonfigurovat v Průvodci instalací aplikačního serveru.
 
 * Chyba při provádění kroku SAPinst: askPasswords
-  * Poslední chybu v kroku: Došlo k chybě. PODROBNOSTI: Chyba 5 (0x00000005) (přístup byl odepřen.) při provádění volání systému "NetValidatePasswordPolicy" s parametrem (...), řádek (359) v souboru (\bas/bas/749_REL/bc_749_REL/src/ins/SAPINST/impl/src/syslib/account/synxcaccmg.cpp), trasování zásobníku:  
-  CThrThread.cpp: 85: CThrThread::threadFunction()  
+  * Poslední chyba hlášená krokem: Volání systému se nezdařilo. ZOBRAZÍ Chyba 5 (0x00000005) (přístup byl odepřen.) při provádění systémového volání "NetValidatePasswordPolicy" s parametrem (...), řádkem (359) v souboru (\ Bas/Bas/749_REL/bc_749_REL/src/ins/SAPINST/impl/src/SysLib/Account/synxcaccmg. cpp), trasování zásobníku:  
+  CThrThread. cpp: 85: CThrThread::threadFunction()  
   CSiServiceSet.cpp: 63: CSiServiceSet::executeService()  
   CSiStepExecute.cpp: 913: CSiStepExecute::execute()  
   EJSController.cpp: 179: EJSControllerImpl::executeScript()  
-  JSExtension.hpp: 1136: CallFunctionBase::call()  
+  JSExtension.hpp: 1136: CallFunctionBase:: Call () – volání ()  
   CSiStepExecute.cpp: 764: CSiStepExecute::invokeDialog()  
   DarkModeGuiEngine.cpp: 56: DarkModeGuiEngine::showDialogCalledByJs()  
   DarkModeDialog.cpp: 85: DarkModeDialog::submit()  
   EJSController.cpp: 179: EJSControllerImpl::executeScript()  
-  JSExtension.hpp: 1136: CallFunctionBase::call()  
-  iaxxcaccount.cpp: 107: iastring CIaOsAccountConnect::callMemberFunction (iastring const & název, args_t const & args)  
-  iaxxcaccount.cpp: 1186: iastring CIaOsAccountConnect::validatePasswordPolicy (args_t const & _args)  
+  JSExtension.hpp: 1136: CallFunctionBase:: Call () – volání ()  
+  iaxxcaccount.cpp: 107: iastring CIaOsAccountConnect:: callMemberFunction (iastring const & Name, args_t const & args)  
+  iaxxcaccount.cpp: 1186: iastring CIaOsAccountConnect:: validatePasswordPolicy (args_t const & _args)  
   iaxxbaccount.cpp: 430: CIaOsAccount::validatePasswordPolicy_impl()  
-  synxcaccmg.cpp: 297: ISyAccountMgt::PasswordValidationMessage CSyAccountMgtImpl::validatePasswordPolicy(saponazure,*****) const )
+  synxcaccmg.cpp: 297: ISyAccountMgt::P asswordValidationMessage CSyAccountMgtImpl:: validatePasswordPolicy (saponazure, * * * * *) const)
   * Řešení  
-    Ujistěte se, že přidáte pravidlo hostitele v kroku *izolace* umožňující navázat komunikaci z virtuálního počítače pro řadič domény
+    Nezapomeňte přidat pravidlo hostitele v rámci *izolace* krok za účelem povolení komunikace z virtuálního počítače s řadičem domény.
 
-## <a name="next-steps"></a>Další postup
-* [SAP HANA v Azure Provozní příručka][hana-ops-guide]
-* [Azure Virtual Machines, plánování a implementace SAP][planning-guide]
-* [Nasazení virtuálních počítačů pro SAP v Azure][deployment-guide]
+## <a name="next-steps"></a>Další kroky
+* [Průvodce provozem SAP HANA v Azure][hana-ops-guide]
+* [Plánování a implementace Azure Virtual Machines pro SAP][planning-guide]
+* [Nasazení Azure Virtual Machines pro SAP][deployment-guide]
 * [Nasazení Azure Virtual Machines DBMS pro SAP][dbms-guide]

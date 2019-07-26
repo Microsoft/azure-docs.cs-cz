@@ -1,80 +1,75 @@
 ---
-title: Aplikace Node.js pomocí Socket.io – Azure
-description: Zjistěte, jak pomocí socket.io v aplikaci node.js hostované v Azure.
+title: Aplikace Node. js s využitím Socket.io-Azure
+description: Naučte se používat socket.io v aplikaci Node. js hostované v Azure.
 services: cloud-services
 documentationcenter: nodejs
-author: jpconnock
-manager: timlt
-editor: ''
-ms.assetid: 7f9435e0-7732-4aa1-a4df-ea0e894b847f
+author: georgewallace
 ms.service: cloud-services
-ms.workload: tbd
-ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
 ms.date: 08/17/2017
-ms.author: jeconnoc
-ms.openlocfilehash: cd0bceae770182e778410d8065d34dfeed055acc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: gwallace
+ms.openlocfilehash: 251fd8ec3708ed154e12b0511be24eb776a48fbf
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61433133"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68359072"
 ---
-# <a name="build-a-nodejs-chat-application-with-socketio-on-an-azure-cloud-service"></a>Vytvoření chatovací aplikace v Node.js pomocí Socket.IO na cloudové službě Azure
+# <a name="build-a-nodejs-chat-application-with-socketio-on-an-azure-cloud-service"></a>Vytvoření chatovací aplikace Node. js pomocí Socket.IO v cloudové službě Azure
 
-Socket.IO nabízí komunikaci v reálném čase mezi node.js serverem a klienty. Tento kurz vás provede hostování soketu. Vstupně-výstupních operací na základě chatovací aplikace v Azure. Další informace o Socket.IO najdete v tématu [socket.io](https://socket.io).
+Socket.IO zajišťuje komunikaci v reálném čase mezi serverem a klienty Node. js. Tento kurz vás provede hostováním soketu. Aplikace v/v v Azure na základě konverzace Další informace o Socket.IO najdete v tématu [Socket.IO](https://socket.io).
 
-Snímek obrazovky dokončené aplikace je nižší než:
+Snímek obrazovky dokončené aplikace je níže:
 
-![Okno prohlížeče zobrazující služby hostované v Azure][completed-app]  
+![Okno prohlížeče zobrazující službu hostovanou v Azure][completed-app]  
 
 ## <a name="prerequisites"></a>Požadavky
-Ujistěte se, že jsou nainstalované následující produktů a verzí k úspěšnému dokončení příkladu v tomto článku:
+Ujistěte se, že jsou nainstalovány následující produkty a verze, aby bylo možné úspěšně dokončit příklad v tomto článku:
 
 * Nainstalovat [Visual Studio](https://www.visualstudio.com/en-us/downloads/download-visual-studio-vs.aspx)
 * Instalovat [Node.js](https://nodejs.org/download/)
-* Nainstalujte [Python verze 2.7.10](https://www.python.org/)
+* Instalace [Pythonu verze 2.7.10](https://www.python.org/)
 
-## <a name="create-a-cloud-service-project"></a>Vytvořit projekt cloudové služby
-Následujícím postupem se vytvoří projekt cloudové služby, který bude hostitelem aplikace Socket.IO.
+## <a name="create-a-cloud-service-project"></a>Vytvoření projektu cloudové služby
+Následující kroky vytvoří projekt cloudové služby, který bude hostovat aplikaci Socket.IO.
 
-1. Z **nabídky Start** nebo **úvodní obrazovku**, vyhledejte **prostředí Windows PowerShell**. A konečně, klikněte pravým tlačítkem na **prostředí Windows PowerShell** a vyberte **spustit jako správce**.
+1. V **nabídce Start** nebo na **obrazovce Start**vyhledejte **Windows PowerShell**. Nakonec klikněte pravým tlačítkem myši na **Windows PowerShell** a vyberte **Spustit jako správce**.
    
-    ![Ikona Azure Powershellu][powershell-menu]
-2. Vytvořte adresář s názvem **c:\\uzel**. 
+    ![Ikona Azure PowerShell][powershell-menu]
+2. Vytvořte adresář nazvaný **\\c: node**. 
    
         PS C:\> md node
-3. Přejděte do adresáře **c:\\uzel** adresáře
+3. Změňte adresáře na adresář **c:\\Node.**
    
         PS C:\> cd node
-4. Zadejte následující příkazy k vytvoření nového řešení s názvem **chatapp** a role pracovního procesu s názvem **WorkerRole1**:
+4. Zadáním následujících příkazů vytvořte nové řešení s názvem **chatapp** a roli pracovního procesu s názvem **WorkerRole1**:
    
         PS C:\node> New-AzureServiceProject chatapp
         PS C:\Node> Add-AzureNodeWorkerRole
    
     Zobrazí se následující odpověď:
    
-    ![Výstup nové azureservice a přidat azurenodeworkerrolecmdlets](./media/cloud-services-nodejs-chat-app-socketio/socketio-1.png)
+    ![Výstup New-azureservice a Add-azurenodeworkerrolecmdlets](./media/cloud-services-nodejs-chat-app-socketio/socketio-1.png)
 
-## <a name="download-the-chat-example"></a>Stáhnout příklad chatu
-Pro tento projekt, použijeme příklad chat z [úložiště Socket.IO GitHub]. Proveďte následující kroky stáhnout příklad a přidat do projektu, který jste předtím vytvořili.
+## <a name="download-the-chat-example"></a>Příklad stažení chatu
+Pro tento projekt použijeme příklad chatu z [úložiště GitHub Socket.IO]. Provedením následujících kroků stáhněte příklad a přidejte ho do projektu, který jste vytvořili dříve.
 
-1. Vytvořit místní kopii úložiště pomocí **klonování** tlačítko. Můžete také použít **ZIP** tlačítko a stáhněte si projektu.
+1. Vytvořte místní kopii úložiště pomocí tlačítka **klonování** . K stažení projektu můžete použít také tlačítko **zip** .
    
-   ![Zobrazení okna prohlížeče https://github.com/LearnBoost/socket.io/tree/master/examples/chat, zvýrazněnou ikonou stahování ZIP](./media/cloud-services-nodejs-chat-app-socketio/socketio-22.png)
-2. Až přijedete přejděte struktury adresářů v místním úložišti **příklady\\chat** adresáře. Kopírovat obsah tohoto adresáře **C:\\uzel\\chatapp\\WorkerRole1** adresář vytvořený dříve.
+   ![Zobrazení https://github.com/LearnBoost/socket.io/tree/master/examples/chat okna prohlížeče se zvýrazněnou ikonou stažení souboru ZIP](./media/cloud-services-nodejs-chat-app-socketio/socketio-22.png)
+2. Přejděte do adresářové struktury místního úložiště, dokud se nedostanete do **adresáře\\příkladů chatu** . Zkopírujte obsah tohoto adresáře do adresáře **C:\\\\Node chatapp\\WorkerRole1** , který jste vytvořili dříve.
    
-   ![Průzkumník zobrazení obsahu v příkladech\\chat directory extrahují z archivu][chat-contents]
+   ![Průzkumník a zobrazení obsahu adresáře příkladů\\chatu extrahované z archivu][chat-contents]
    
-   Souborům zkopírovaným ze jsou zvýrazněné položky ve výše uvedeném snímku obrazovky **příklady\\chat** adresáře
-3. V **C:\\uzel\\chatapp\\WorkerRole1** adresáře, odstranit **server.js** souboru a potom přejmenujte **app.js** do souboru **server.js**. Tato operace odebere výchozí **server.js** souboru vytvořené dříve **přidat AzureNodeWorkerRole** rutiny a nahradí soubor aplikace z příkladu konverzace.
+   Zvýrazněné položky na snímku obrazovky jsou soubory zkopírované z adresáře **příkladů\\chatu** .
+3. V adresáři **C:\\node\\chatapp\\WorkerRole1** odstraňte soubor **Server. js** a potom přejmenujte soubor **App. js** na **Server. js**. Tím se odebere výchozí soubor **Server. js** vytvořený pomocí rutiny **Add-AzureNodeWorkerRole** a nahradí ho souborem aplikace z příkladu chatu.
 
-### <a name="modify-serverjs-and-install-modules"></a>Upravit Server.js a nainstalujte moduly
-Před testováním aplikace spustila v emulátoru Azure, musíte Usnadňujeme malými změnami. Proveďte následující kroky v souboru server.js:
+### <a name="modify-serverjs-and-install-modules"></a>Upravit server. js a nainstalovat moduly
+Před testováním aplikace v emulátoru Azure je nutné provést několik menších úprav. V souboru Server. js proveďte následující kroky:
 
-1. Otevřít **server.js** souboru v sadě Visual Studio nebo libovolného textového editoru.
-2. Najít **závislostí modulů** na začátku server.js a u řádku obsahujícím operátor **sio = require('.. //.. lib//Socket.IO ")** k **sio = require('socket.io')** jak je znázorněno níže:
+1. Otevřete soubor **Server. js** v aplikaci Visual Studio nebo jakýkoli textový editor.
+2. Vyhledejte část **závislosti modulu** na začátku souboru Server. js a změňte řádek obsahující **SIO = vyžadovat ('.. //.. lib//Socket. IO ')** do **SIO = vyžadovat (' Socket. IO ')** , jak je znázorněno níže:
    
        var express = require('express')
          , stylus = require('stylus')
@@ -82,7 +77,7 @@ Před testováním aplikace spustila v emulátoru Azure, musíte Usnadňujeme ma
        //, sio = require('..//..//lib//socket.io'); //Original
          , sio = require('socket.io');                //Updated
          var port = process.env.PORT || 3000;         //Updated
-3. Pokud chcete mít jistotu, aplikace naslouchá na správný port, otevřete server.js v programu Poznámkový blok nebo svém oblíbeném editoru a potom změňte následující řádek tak, že nahradíte **3000** s **process.env.port** jak je znázorněno níže:
+3. Chcete-li zajistit, aby aplikace naslouchala na správném portu, otevřete Server. js v programu Poznámkový blok nebo ve vašem oblíbeném editoru a pak změňte následující řádek tak, že nahradíte **3000** s **procesem. env. port** , jak je uvedeno níže:
    
        //app.listen(3000, function () {            //Original
        app.listen(process.env.port, function () {  //Updated
@@ -90,66 +85,66 @@ Před testováním aplikace spustila v emulátoru Azure, musíte Usnadňujeme ma
          console.log('   app listening on http://' + addr.address + ':' + addr.port);
        });
 
-Po uložení změn **server.js**, postupujte následovně pro instalaci požadované moduly a otestujte aplikaci v emulátoru Azure:
+Po uložení změn do **serveru Server. js**pomocí následujících kroků nainstalujte požadované moduly a pak otestujte aplikaci v emulátoru Azure:
 
-1. Pomocí **prostředí Azure PowerShell**, přejděte do adresáře **C:\\uzel\\chatapp\\WorkerRole1** adresáře a použijte zadáním následujícího příkazu nainstalujte moduly vyžaduje tato aplikace:
+1. Pomocí **Azure PowerShell**změňte adresáře na adresář **C\\:\\node\\chatapp WorkerRole1** a pomocí následujícího příkazu nainstalujte moduly požadované touto aplikací:
    
        PS C:\node\chatapp\WorkerRole1> npm install
    
-   Tím se nainstaluje moduly uvedené v souboru package.json. Po dokončení příkazu byste měli vidět výstup podobný následujícímu:
+   Tím se nainstalují moduly uvedené v souboru Package. JSON. Po dokončení příkazu byste měli vidět výstup podobný následujícímu:
    
-   ![Příkaz instalovat výstup z npm][The-output-of-the-npm-install-command]
-2. Protože v tomto příkladu byla původně součástí úložiště Socket.IO GitHub a přímo odkazovanými Socket.IO knihovny pomocí relativní cesty, Socket.IO neexistuje odkaz v souboru package.json, proto jsme musí nainstalovat pomocí následujícího příkazu:
+   ![Výstup příkazu pro instalaci npm][The-output-of-the-npm-install-command]
+2. Vzhledem k tomu, že tento příklad byl původně součástí úložiště GitHubu Socket.IO a přímo odkazoval na knihovnu Socket.IO podle relativní cesty, Socket.IO v souboru Package. JSON se neodkazuje, takže je potřeba ho nainstalovat vyvoláním následujícího příkazu:
    
        PS C:\node\chatapp\WorkerRole1> npm install socket.io --save
 
 ### <a name="test-and-deploy"></a>Testování a nasazení
-1. Spusťte emulátor pomocí následujícího příkazu:
+1. Spusťte emulátor vyvoláním následujícího příkazu:
    
        PS C:\node\chatapp\WorkerRole1> Start-AzureEmulator -Launch
    
    > [!NOTE]
-   > Pokud narazíte na problémy se spuštěním emulátor, např.: Start-AzureEmulator: Došlo k neočekávané chybě.  Podrobnosti: Došlo k neočekávané chybě objekt komunikace, System.ServiceModel.Channels.ServiceChannel, nelze použít pro komunikaci, protože je v chybovém stavu.
+   > Pokud narazíte na problémy s emulátorem spouštění, například: Začátek – AzureEmulator: Došlo k neočekávané chybě.  Podrobnosti: Došlo k neočekávané chybě. objekt komunikace, System. ServiceModel. Channels. kanálu ServiceChannel, nelze použít pro komunikaci, protože je ve stavu Faulted.
    > 
-   > znovu nainstalujte AzureAuthoringTools v 2.7.1 a AzureComputeEmulator v 2.7 – Ujistěte se, že odpovídá této verzi.
+   > Přeinstalujte AzureAuthoringTools v 2.7.1 a AzureComputeEmulator v 2,7 – zajistěte shodu verzí.
 
-2. Otevřete prohlížeč a přejděte do **http://127.0.0.1** .
-3. Když se otevře okno prohlížeče, zadat přezdívku a pak stiskněte enter.
-   To vám umožní publikovat zprávy jako konkrétní přezdívku. K otestování funkce více uživatelů, otevřete další okna prohlížeče pomocí stejné adresy URL a zadejte jiné zástupné názvy.
+2. Otevřete prohlížeč a přejděte na **http://127.0.0.1** .
+3. Po otevření okna prohlížeče zadejte přezdívku a potom stiskněte klávesu ENTER.
+   To vám umožní publikovat zprávy jako konkrétní přezdívku. Chcete-li otestovat funkci více uživatelů, otevřete další okna prohlížeče pomocí stejné adresy URL a zadejte jiné přezdívky.
    
-   ![Zobrazení zprávy chatu z uživatel1, uživatel2 tak dvě okna prohlížeče](./media/cloud-services-nodejs-chat-app-socketio/socketio-8.png)
-4. Po otestování aplikace, zastavte emulátor vydání následujícího příkazu:
+   ![Dvě okna prohlížeče zobrazující zprávy chatu od uživatele User1 a uživatel2](./media/cloud-services-nodejs-chat-app-socketio/socketio-8.png)
+4. Po otestování aplikace zastavte emulátor vydáním následujícího příkazu:
    
        PS C:\node\chatapp\WorkerRole1> Stop-AzureEmulator
-5. Chcete-li nasadit aplikaci do Azure, použijte **Publish-AzureServiceProject** rutiny. Příklad:
+5. Pokud chcete nasadit aplikaci do Azure, použijte rutinu **Publish-AzureServiceProject** . Příklad:
    
        PS C:\node\chatapp\WorkerRole1> Publish-AzureServiceProject -ServiceName mychatapp -Location "East US" -Launch
    
    > [!IMPORTANT]
-   > Nezapomeňte použít jedinečný název, jinak se proces publikování nezdaří. Po dokončení nasazení se v prohlížeči otevřete a přejděte do nasazené služby.
+   > Nezapomeňte použít jedinečný název, jinak se proces publikování nezdaří. Po dokončení nasazení se otevře prohlížeč a přejde na nasazenou službu.
    > 
-   > Pokud obdržíte chybu s informacemi o tom, že název zadaného předplatného neexistuje v profilu publikování importované, musíte stáhnout a naimportovat profil publikování pro vaše předplatné před nasazením do Azure. Najdete v článku **nasazení aplikace do Azure** část [sestavovat a nasazovat aplikace v Node.js do cloudové služby Azure](https://azure.microsoft.com/develop/nodejs/tutorials/getting-started/)
+   > Pokud se zobrazí chyba s oznámením, že zadaný název předplatného neexistuje v importovaném publikačním profilu, musíte si před nasazením do Azure stáhnout a importovat profil publikování pro vaše předplatné. Viz část **nasazení aplikace do Azure** v tématu [sestavení a nasazení aplikace Node. js do cloudové služby Azure](https://azure.microsoft.com/develop/nodejs/tutorials/getting-started/) .
    > 
    > 
    
-   ![Okno prohlížeče zobrazující služby hostované v Azure][completed-app]
+   ![Okno prohlížeče zobrazující službu hostovanou v Azure][completed-app]
    
    > [!NOTE]
-   > Pokud obdržíte chybu s informacemi o tom, že název zadaného předplatného neexistuje v profilu publikování importované, musíte stáhnout a naimportovat profil publikování pro vaše předplatné před nasazením do Azure. Najdete v článku **nasazení aplikace do Azure** část [sestavovat a nasazovat aplikace v Node.js do cloudové služby Azure](https://azure.microsoft.com/develop/nodejs/tutorials/getting-started/)
+   > Pokud se zobrazí chyba s oznámením, že zadaný název předplatného neexistuje v importovaném publikačním profilu, musíte si před nasazením do Azure stáhnout a importovat profil publikování pro vaše předplatné. Viz část **nasazení aplikace do Azure** v tématu [sestavení a nasazení aplikace Node. js do cloudové služby Azure](https://azure.microsoft.com/develop/nodejs/tutorials/getting-started/) .
    > 
    > 
 
-Vaše aplikace je nyní spuštěna v Azure a může přenášet zprávy chatu mezi různé klienty pomocí Socket.IO.
+Vaše aplikace je teď spuštěná v Azure a může přenášet zprávy konverzace mezi různými klienty pomocí Socket.IO.
 
 > [!NOTE]
-> Pro jednoduchost je omezený na konverzace mezi uživateli, které jsou připojené do stejné instance této ukázce. To znamená, že pokud cloudovou službu vytvoří dvě instance role pracovního procesu, uživatele pouze by se do konverzace s ostatními připojené do stejné instance role pracovního procesu. Škálování aplikace pro práci s více instancemi role, můžete použít technologie, jako je Service Bus ke sdílení ukládání stavu Socket.IO napříč instancemi. Příklady najdete v ukázkách využití fronty služby Service Bus a témat v [sady Azure SDK pro úložiště Node.js GitHub](https://github.com/WindowsAzure/azure-sdk-for-node).
+> Pro zjednodušení je tato ukázka omezená na konverzaci mezi uživateli připojenými ke stejné instanci. To znamená, že pokud cloudová služba vytvoří dvě instance role pracovního procesu, budou moct uživatelé hovořit jenom s ostatními připojenými ke stejné instanci role pracovního procesu. Pokud chcete aplikaci škálovat tak, aby fungovala s více instancemi role, můžete použít technologii, jako je Service Bus ke sdílení stavu úložiště Socket.IO napříč instancemi. Příklady najdete v tématu ukázky použití Service Bus fronty a témata v [sadě Azure SDK pro úložiště GitHub Node. js](https://github.com/WindowsAzure/azure-sdk-for-node).
 > 
 > 
 
 ## <a name="next-steps"></a>Další postup
-V tomto kurzu jste zjistili, jak vytvořit základní chatovací aplikaci hostované v cloudové službě Azure. Zjistěte, jak hostovat tuto aplikaci na webu Azure, najdete v článku [sestavení aplikace Chat v Node.js pomocí Socket.IO na webu Azure][chatwebsite].
+V tomto kurzu jste zjistili, jak vytvořit základní chatovací aplikaci hostovanou v cloudové službě Azure. Informace o tom, jak hostovat tuto aplikaci na webu Azure, najdete v tématu [sestavení chatovací aplikace Node. js pomocí Socket.IO na webu Azure][chatwebsite].
 
-Další informace najdete v tématu taky [středisko pro vývojáře Node.js](https://docs.microsoft.com/javascript/azure/?view=azure-node-latest).
+Další informace najdete v tématu také [středisko pro vývojáře Node. js](https://docs.microsoft.com/javascript/azure/?view=azure-node-latest).
 
 [chatwebsite]: https://docs.microsoft.com/azure/cloud-services/cloud-services-nodejs-develop-deploy-app
 
@@ -158,7 +153,7 @@ Další informace najdete v tématu taky [středisko pro vývojáře Node.js](ht
 [completed-app]: ./media/cloud-services-nodejs-chat-app-socketio/socketio-10.png
 [Azure SDK for Node.js]: https://www.windowsazure.com/develop/nodejs/
 [Node.js Web Application]: https://www.windowsazure.com/develop/nodejs/tutorials/getting-started/
-[Úložiště Socket.IO GitHub]: https://github.com/LearnBoost/socket.io/tree/0.9.14
+[Úložiště GitHub Socket.IO]: https://github.com/LearnBoost/socket.io/tree/0.9.14
 [Azure Considerations]: #windowsazureconsiderations
 [Hosting the Chat Example in a Worker Role]: #hostingthechatexampleinawebrole
 [Summary and Next Steps]: #summary

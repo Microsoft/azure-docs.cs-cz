@@ -1,81 +1,82 @@
 ---
-title: Správa agenta Mobility na servery pro zotavení po havárii virtuálních počítačů VMware a fyzických serverech pomocí Azure Site Recovery | Dokumentace Microsoftu
-description: Správa agenta služby Mobility pro zotavení po havárii virtuálních počítačů VMware a fyzických serverů do Azure pomocí služby Azure Site Recovery.
+title: Správa agenta mobility na serverech pro zotavení po havárii virtuálních počítačů VMware a fyzických serverů s Azure Site Recovery | Microsoft Docs
+description: Spravujte agenta služby mobility pro zotavení po havárii virtuálních počítačů VMware a fyzických serverů do Azure pomocí služby Azure Site Recovery.
 author: Rajeswari-Mamilla
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: ramamill
-ms.openlocfilehash: 69b8e1c533747d1bade69949911ea43f299f49e9
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 7cd555f66bb6f65f498f9b3e5db9bbeda0505a8f
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66117331"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68384968"
 ---
-# <a name="manage-mobility-agent-on-protected-machines"></a>Správa agenta mobility na chráněné počítače
+# <a name="manage-mobility-agent-on-protected-machines"></a>Správa agenta mobility na chráněných počítačích
 
-Můžete nastavit agenta mobility na serveru při použití Azure Site Recovery pro zotavení po havárii virtuálních počítačů VMware a fyzických serverů do Azure. Mobility agent koordinuje komunikaci mezi chráněného počítače, konfigurační server/horizontální navýšení kapacity procesového serveru a spravuje replikaci dat. Tento článek shrnuje běžné úlohy správy agenta mobility po nasazení.
+Na serveru můžete nastavit agenta mobility, když používáte Azure Site Recovery pro zotavení po havárii virtuálních počítačů VMware a fyzických serverů do Azure. Agent mobility koordinuje komunikaci mezi vaším chráněným počítačem, konfiguračním serverem nebo procesovým serverem se škálováním na více systémů a spravuje replikaci dat. Tento článek shrnuje běžné úlohy pro správu agenta mobility po jeho nasazení.
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="update-mobility-service-from-azure-portal"></a>Aktualizace služby mobility z webu Azure portal
+## <a name="update-mobility-service-from-azure-portal"></a>Aktualizovat službu mobility z Azure Portal
 
-1. Před zahájením zkontrolujte, že konfigurační server, horizontální navýšení kapacity procesových serverů a všechny hlavní cílové servery, které jsou součástí vašeho nasazení jsou aktualizované před aktualizací služby Mobility na chráněné počítače.
-2. Na portálu otevřete trezor > **replikované položky**.
-3. Pokud je konfigurační server na nejnovější verzi, se zobrazí oznámení, který čte "je k dispozici nová aktualizace agenta replikace Site recovery. Klikněte na tlačítko nainstalovat."
+1. Než začnete aktualizovat službu mobility na chráněných počítačích, ujistěte se, že se konfigurační server, procesové servery se škálováním na více instancí a všechny hlavní cílové servery, které jsou součástí vašeho nasazení, aktualizují.
+2. Na portálu otevřete trezor > replikované **položky**.
+3. Pokud má konfigurační server nejnovější verzi, zobrazí se oznámení, že je k dispozici nová aktualizace agenta replikace služby Site Recovery. Kliknutím nainstalujete.
 
      ![Okno replikované položky](./media/vmware-azure-install-mobility-service/replicated-item-notif.png)
 
-4. Klikněte na oznámení a v **aktualizace agenta**, vyberte počítače, na kterých chcete provést upgrade služby Mobility. Pak klikněte na **OK**.
+4. Klikněte na oznámení a v části **aktualizace agenta**vyberte počítače, na kterých chcete upgradovat službu mobility. Pak klikněte na **OK**.
 
-     ![Replikované položky seznamu virtuálních počítačů](./media/vmware-azure-install-mobility-service/update-okpng.png)
+     ![Seznam virtuálních počítačů replikovaných položek](./media/vmware-azure-install-mobility-service/update-okpng.png)
 
-5. Úloha aktualizace služby Mobility se spustí pro všechny vybrané počítače.
+5. Spustí se úloha aktualizace služby mobility pro všechny vybrané počítače.
 
-## <a name="update-mobility-service-through-powershell-script-on-windows-server"></a>Aktualizace služby Mobility pomocí skriptu prostředí powershell na Windows serveru
+## <a name="update-mobility-service-through-powershell-script-on-windows-server"></a>Aktualizace služby mobility prostřednictvím skriptu PowerShellu na Windows serveru
 
-Pomocí následujícího skriptu pro upgrade služby mobility na serveru pomocí rutiny power shell
+Pomocí následujícího skriptu upgradujte službu mobility na serveru pomocí rutiny Power Shell.
 
 ```azurepowershell
 Update-AzRecoveryServicesAsrMobilityService -ReplicationProtectedItem $rpi -Account $fabric.fabricSpecificDetails.RunAsAccounts[0]
 ```
 
-## <a name="update-account-used-for-push-installation-of-mobility-service"></a>Aktualizovat účet použitý pro nabízenou instalaci služby Mobility
+## <a name="update-account-used-for-push-installation-of-mobility-service"></a>Aktualizace účtu používaného pro nabízenou instalaci služby mobility
 
-Při nasazení Site Recovery, aby nabízená instalace služby Mobility, zadat účet, který použije procesový server Site Recovery pro přístup k počítačům a instalaci služby po povolení replikace pro počítač. Pokud chcete aktualizovat přihlašovací údaje pro tento účet, postupujte podle [tyto pokyny](vmware-azure-manage-configuration-server.md#modify-credentials-for-mobility-service-installation).
+Když nasadíte Site Recovery a povolíte nabízenou instalaci služby mobility, zadali jste účet, který Site Recovery procesový Server používá pro přístup k počítačům a instalaci služby, pokud je pro tento počítač povolená replikace. Pokud chcete aktualizovat přihlašovací údaje pro tento účet, postupujte podle [těchto pokynů](vmware-azure-manage-configuration-server.md#modify-credentials-for-mobility-service-installation).
 
-## <a name="uninstall-mobility-service"></a>Odinstalujte službu Mobility
+## <a name="uninstall-mobility-service"></a>Odinstalace služby mobility
 
 ### <a name="on-a-windows-machine"></a>Na počítači s Windows
 
 Odinstalujte z uživatelského rozhraní nebo z příkazového řádku.
 
-- **V uživatelském rozhraní**: V ovládacím panelu počítače vyberte **programy**. Vyberte **Microsoft Azure Site Recovery Mobility Service/hlavní cílový server** > **odinstalovat**.
-- **Z příkazového řádku**: Otevřete okno příkazového řádku jako správce na počítači. Spusťte následující příkaz: 
+- **Z uživatelského rozhraní**: V ovládacím panelu počítače vyberte **programy**. Vyberte **Microsoft Azure odinstalace služby mobility Site Recovery nebo hlavního cílového serveru** > .
+- **Z příkazového řádku**: Otevřete okno příkazového řádku jako správce v počítači. Spusťte následující příkaz: 
     ```
     MsiExec.exe /qn /x {275197FC-14FD-4560-A5EB-38217F80CBD1} /L+*V "C:\ProgramData\ASRSetupLogs\UnifiedAgentMSIUninstall.log"
     ```
 
-### <a name="on-a-linux-machine"></a>Na počítači s Linuxem
-1. Na počítači s Linuxem, přihlaste se jako **kořenové** uživatele.
-2. V terminálu přejděte do /user/local/ASR.
+### <a name="on-a-linux-machine"></a>V počítači se systémem Linux
+1. Na počítači se systémem Linux se přihlaste jako uživatel **root** .
+2. V terminálu přejděte na/user/local/ASR.
 3. Spusťte následující příkaz:
     ```
     uninstall.sh -Y
+   ```
+   
+## <a name="install-site-recovery-vss-provider-on-source-machine"></a>Nainstalovat zprostředkovatele služby VSS Site Recovery na zdrojovém počítači
 
-## Install Site Recovery VSS provider on source machine
+Pro generování bodů konzistence aplikací je na zdrojovém počítači vyžadován zprostředkovatel služby Stínová kopie svazku Azure Site Recovery. Pokud se instalace zprostředkovatele nezdařila prostřednictvím nabízené instalace, postupujte podle pokynů uvedených níže v těchto pokynech k ruční instalaci.
 
-Azure Site Recovery VSS provider is required on the source machine to generate application consistency points. If the installation of the provider didn't succeed through push installation, follow the below given guidelines to install it manually.
+1. Otevřete okno Správce-cmd.
+2. Přejděte do umístění instalace služby mobility. (Např. C:\Program Files (x86) \Microsoft Azure Site Recovery\agent)
+3. Spusťte skript InMageVSSProvider_Uninstall. cmd. Tato akce odinstaluje službu, pokud již existuje.
+4. Spusťte skript InMageVSSProvider_Install. cmd pro ruční instalaci poskytovatele služby VSS.
 
-1. Open admin cmd window.
-2. Navigate to the mobility service installation location. (Eg - C:\Program Files (x86)\Microsoft Azure Site Recovery\agent)
-3. Run the script InMageVSSProvider_Uninstall.cmd . This will uninstall the service if it already exists.
-4. Run the script InMageVSSProvider_Install.cmd to install the VSS provider manually.
+## <a name="next-steps"></a>Další postup
 
-## Next steps
-
-- [Set up disaster recovery for VMware VMs](vmware-azure-tutorial.md)
-- [Set up disaster recovery for physical servers](physical-azure-disaster-recovery.md)
+- [Nastavení zotavení po havárii pro virtuální počítače VMware](vmware-azure-tutorial.md)
+- [Nastavení zotavení po havárii pro fyzické servery](physical-azure-disaster-recovery.md)

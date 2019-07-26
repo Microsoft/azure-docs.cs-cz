@@ -1,40 +1,33 @@
 ---
-title: Připojte Cloudovou službu k vlastnímu řadiči domény | Dokumentace Microsoftu
-description: Zjistěte, jak připojit své webové a pracovní role na vlastní doménu AD pomocí prostředí PowerShell a příponou domény služby AD
+title: Připojení cloudové služby k vlastnímu řadiči domény | Microsoft Docs
+description: Naučte se připojit své webové a pracovní role k vlastní doméně služby AD pomocí prostředí PowerShell a rozšíření domény AD.
 services: cloud-services
-documentationcenter: ''
-author: jpconnock
-manager: timlt
-editor: ''
-ms.assetid: 1e2d7c87-d254-4e7a-a832-67f84411ec95
+author: georgewallace
 ms.service: cloud-services
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
-ms.author: jeconnoc
-ms.openlocfilehash: 8bee2e2038ee39c777e1ca09994ad21872d2029a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: gwallace
+ms.openlocfilehash: 97a24720e65539a68745a5a1bb3f13ce1cafb9be
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60337336"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68359181"
 ---
-# <a name="connecting-azure-cloud-services-roles-to-a-custom-ad-domain-controller-hosted-in-azure"></a>Připojení k řadiči domény AD hostované v Azure vlastní role Azure Cloud Services
-Nejprve nastavíme virtuální síť (VNet) v Azure. Potom přidáme Active Directory řadiče domény (hostované na virtuálním počítači Azure) do virtuální sítě. Dále jsme se přidat existující role cloudové služby na předem vytvořené virtuální síti a potom připojit k řadiči domény.
+# <a name="connecting-azure-cloud-services-roles-to-a-custom-ad-domain-controller-hosted-in-azure"></a>Připojení rolí Azure Cloud Services k vlastnímu řadiči domény služby AD hostovanému v Azure
+Napřed nastavíme Virtual Network (VNet) v Azure. Pak do virtuální sítě přidáte řadič Doména služby Active Directory (hostovaný na virtuálním počítači Azure). V dalším kroku přidáme existující role cloudové služby do předem vytvořené virtuální sítě a pak je připojíte k řadiči domény.
 
-Než začneme, několik věcí, abyste mějte na paměti:
+Než začneme, mějte na paměti několik věcí, které je potřeba vzít v úvahu:
 
-1. Tento kurz používá prostředí PowerShell, proto se ujistěte, že máte nainstalované a připravené k použití prostředí Azure PowerShell. Chcete-li získat nápovědu k nastavení prostředí Azure PowerShell, najdete v článku [instalace a konfigurace Azure Powershellu](/powershell/azure/overview).
-2. Řadič domény AD a Web/Worker Role instance musí být ve virtuální síti.
+1. V tomto kurzu se používá PowerShell, takže se ujistěte, že máte Azure PowerShell nainstalované a připravené k použití. Pokud potřebujete pomoc s nastavením Azure PowerShell, přečtěte si téma [Jak nainstalovat a nakonfigurovat Azure PowerShell](/powershell/azure/overview).
+2. Váš řadič domény služby AD a instance webové služby nebo role pracovního procesu musí být ve virtuální síti.
 
-Tento podrobný návod a pokud narazíte na nějaké problémy, napište nám komentář na konci tohoto článku. Někdo bude se vám ozvat (Ano, můžeme načíst komentáře).
+Postupujte podle tohoto podrobného průvodce a pokud narazíte na nějaké problémy, ponechte nám na konci tohoto článku komentář. Někdo se vrátí zpět (Ano, poznámky pro čtení).
 
-Síť, na který odkazuje cloudové služby musí být **klasickou virtuální síť**.
+Síť, na kterou se odkazuje přes cloudovou službu, musí být **klasický virtuální síť**.
 
-## <a name="create-a-virtual-network"></a>Vytvoření virtuální sítě
-Můžete vytvořit virtuální síť v Azure pomocí webu Azure portal nebo Powershellu. V tomto kurzu se používá PowerShell. Vytvoření virtuální sítě pomocí webu Azure portal najdete v tématu [vytvoření virtuální sítě](../virtual-network/quick-create-portal.md). Tento článek popisuje vytvoření virtuální sítě (Resource Manager), ale musíte vytvořit virtuální síť (Classic) pro cloudové služby. Provedete to tak, že na portálu vyberte **vytvořit prostředek**, typ *virtuální sítě* v **hledání** pole a potom stiskněte klávesu **Enter**. Ve výsledcích hledání podle **všechno, co**vyberte **virtuální síť**. V části **vybrat model nasazení**vyberte **Classic**a pak vyberte **vytvořit**. Můžete pak postupujte podle kroků v článku.
+## <a name="create-a-virtual-network"></a>Vytvoření Virtual Network
+Virtual Network můžete v Azure vytvořit pomocí Azure Portal nebo PowerShellu. V tomto kurzu se používá PowerShell. Pokud chcete vytvořit virtuální síť pomocí Azure Portal, přečtěte si téma [vytvoření virtuální sítě](../virtual-network/quick-create-portal.md). Tento článek se zabývá vytvořením virtuální sítě (Správce prostředků), ale musíte pro Cloud Services vytvořit virtuální síť (Classic). Provedete to tak, že na portálu vyberete **vytvořit prostředek**, do **vyhledávacího** pole zadáte *virtuální síť* a pak stisknete **ENTER**. Ve výsledcích hledání vyberte v části **vše**možnost **virtuální síť**. V části **Vybrat model nasazení**vyberte **Classic**a pak vyberte **vytvořit**. Pak můžete postupovat podle kroků v článku.
 
 ```powershell
 #Create Virtual Network
@@ -63,10 +56,10 @@ $vnetConfigPath = "<path-to-vnet-config>"
 Set-AzureVNetConfig -ConfigurationPath $vnetConfigPath
 ```
 
-## <a name="create-a-virtual-machine"></a>Vytvoření virtuálního počítače
-Po dokončení nastavení virtuální sítě, je potřeba vytvořit řadič domény AD. Pro účely tohoto kurzu jsme budou nastavovat řadič domény služby AD na virtuálním počítači Azure.
+## <a name="create-a-virtual-machine"></a>Vytvořit virtuální počítač
+Po dokončení nastavení Virtual Network budete muset vytvořit řadič domény služby AD. V tomto kurzu budeme na virtuálním počítači Azure nastavovat řadič domény služby AD.
 
-Vytvořte virtuální počítač prostřednictvím prostředí PowerShell pomocí následujících příkazů:
+Provedete to tak, že vytvoříte virtuální počítač přes PowerShell pomocí následujících příkazů:
 
 ```powershell
 # Initialize variables
@@ -85,20 +78,20 @@ $affgrp = '<your- affgrp>'
 New-AzureQuickVM -Windows -ServiceName $vmsvc1 -Name $vm1 -ImageName $imgname -AdminUsername $username -Password $password -AffinityGroup $affgrp -SubnetNames $subnetname -VNetName $vnetname
 ```
 
-## <a name="promote-your-virtual-machine-to-a-domain-controller"></a>Zvýšení úrovně virtuálního počítače s řadičem domény
-Pokud chcete nakonfigurovat virtuální počítač jako řadič domény služby AD, musíte přihlásit k virtuálnímu počítači a nakonfigurujte ho.
+## <a name="promote-your-virtual-machine-to-a-domain-controller"></a>Zvýšení úrovně virtuálního počítače na řadič domény
+Pokud chcete virtuální počítač nakonfigurovat jako řadič domény služby AD, musíte se přihlásit k VIRTUÁLNÍmu počítači a nakonfigurovat ho.
 
-Přihlásit se k virtuálnímu počítači, můžete získat soubor RDP pomocí Powershellu, pomocí následujících příkazů:
+Pokud se chcete přihlásit k virtuálnímu počítači, můžete získat soubor RDP prostřednictvím PowerShellu, a to pomocí následujících příkazů:
 
 ```powershell
 # Get RDP file
 Get-AzureRemoteDesktopFile -ServiceName $vmsvc1 -Name $vm1 -LocalPath <rdp-file-path>
 ```
 
-Po přihlášení k virtuálnímu počítači nastavit virtuální počítač jako řadič domény služby AD podle podrobného průvodce [jak nastavit váš zákazník řadič domény služby AD](https://social.technet.microsoft.com/wiki/contents/articles/12370.windows-server-2012-set-up-your-first-domain-controller-step-by-step.aspx).
+Jakmile se přihlásíte k virtuálnímu počítači, nastavte svůj virtuální počítač jako řadič domény služby AD pomocí podrobného průvodce pro [nastavení řadiče domény služby AD DS](https://social.technet.microsoft.com/wiki/contents/articles/12370.windows-server-2012-set-up-your-first-domain-controller-step-by-step.aspx).
 
-## <a name="add-your-cloud-service-to-the-virtual-network"></a>Přidání cloudové služby do virtuální sítě
-Dále je třeba přidat vaše nasazení cloudové služby do nové sítě VNet. K tomuto účelu upravte přidáním v příslušných částech pro vaše cscfg pomocí sady Visual Studio nebo editoru podle vašeho výběru cscfg vaší cloudové služby.
+## <a name="add-your-cloud-service-to-the-virtual-network"></a>Přidání cloudové služby do Virtual Network
+Dál je potřeba přidat nasazení cloudové služby do nové virtuální sítě. Provedete to tak, že v aplikaci Visual Studio přidáte relevantní oddíly s použitím sady Visual Studio nebo editoru podle vašeho výběru.
 
 ```xml
 <ServiceConfiguration serviceName="[hosted-service-name]" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration" osFamily="[os-family]" osVersion="*">
@@ -129,10 +122,10 @@ Dále je třeba přidat vaše nasazení cloudové služby do nové sítě VNet. 
 </ServiceConfiguration>
 ```
 
-Vedle sestavit projekt cloudové služby a nasadit ho do Azure. Chcete-li získat nápovědu k nasazování váš balíček cloudové služby na Azure, najdete v článku [jak vytvořit a nasadit Cloudovou službu](cloud-services-how-to-create-deploy-portal.md)
+Dále Sestavte projekt cloudových služeb a nasaďte ho do Azure. Pokud chcete získat pomoc s nasazením balíčku Cloud Services do Azure, přečtěte si téma [Vytvoření a nasazení cloudové služby](cloud-services-how-to-create-deploy-portal.md) .
 
-## <a name="connect-your-webworker-roles-to-the-domain"></a>Připojení k doméně webové nebo pracovní role
-Po nasazení se projekt cloudové služby v Azure, připojte vaše instance rolí k vlastní doméně AD pomocí rozšíření domény AD. Přidat rozšíření domény AD stávající nasazení cloud services a připojte se k vlastní doméně, spusťte následující příkazy v prostředí PowerShell:
+## <a name="connect-your-webworker-roles-to-the-domain"></a>Připojte své webové a pracovní role k doméně.
+Po nasazení projektu cloudové služby v Azure připojte instance rolí k vlastní doméně služby AD pomocí rozšíření domény služby AD. Pokud chcete přidat rozšíření domény AD do stávajícího nasazení Cloud Services a připojit se k vlastní doméně, spusťte v PowerShellu následující příkazy:
 
 ```powershell
 # Initialize domain variables
@@ -148,9 +141,9 @@ $dmcred = New-Object System.Management.Automation.PSCredential ($dmuser, $dmspwd
 Set-AzureServiceADDomainExtension -Service <your-cloud-service-hosted-service-name> -Role <your-role-name> -Slot <staging-or-production> -DomainName $domain -Credential $dmcred -JoinOption 35
 ```
 
-A to je všechno.
+A to je vše.
 
-Cloudové služby mají být připojené k vaší vlastní domény kontroleru. Pokud chcete získat další informace o tom, jak nakonfigurovat rozšíření domény AD možnosti různých, použijte nápovědu prostředí PowerShell. Pár příkladů, postupujte podle:
+Vaše cloudové služby by měly být připojené k vlastnímu řadiči domény. Pokud chcete získat další informace o různých možnostech, které jsou k dispozici pro konfiguraci rozšíření domény služby AD, použijte nápovědu prostředí PowerShell. Následuje několik příkladů:
 
 ```powershell
 help Set-AzureServiceADDomainExtension

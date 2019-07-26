@@ -1,6 +1,6 @@
 ---
-title: Aktualizujte informace vašeho profilu a účtu na portálu Moje aplikace – Azure Active Directory | Dokumentace Microsoftu
-description: Zjistěte, jak aktualizovat váš profil a váš pracovní nebo školní účet, informace, včetně změnit heslo, zapnutí resetování hesla, aktualizuje vaše metody ověření zabezpečení, zobrazení vaší organizace podmínkami použití a odhlášení od všude, kde jste přihlášení pomocí svého pracovního nebo školního účtu.
+title: Aktualizace informací o profilu a účtu na portálu moje aplikace – Azure Active Directory | Microsoft Docs
+description: Naučte se aktualizovat svůj profil a informace o pracovním nebo školním účtu, včetně změny hesla, zapnutí resetování hesla, aktualizaci metod ověření zabezpečení, zobrazení podmínek použití vaší organizace a odhlášení z všude, co jste přihlášeni pomocí svého pracovního nebo školního účtu.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -13,118 +13,131 @@ ms.author: lizross
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cf8484cdadcdb368c00351ca68e42652b475a7d4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 14146be73de309a7119f5c7b416c4e02f3bb4285
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66305422"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68383081"
 ---
-# <a name="update-your-profile-and-account-info-from-the-my-apps-portal"></a>Aktualizujte informace vašeho profilu a účtu na portálu Moje aplikace
-Můžete použít pracovní nebo školní účet s webovou **Moje aplikace** portál, zobrazit a spustit řadu aplikace vaší organizace založené na cloudu, chcete-li aktualizovat některé z vašeho profilu a účtu informace zobrazíte vaše **skupiny** informace a k provádění **kontrol přístupu** vašich aplikací a skupin. Pokud nemáte přístup k **Moje aplikace** portálu, musíte požádat o Helpdesk oprávnění.
+# <a name="update-your-profile-and-account-info-from-the-my-apps-portal"></a>Aktualizace informací o profilu a účtu na portálu moje aplikace
+
+Svůj pracovní nebo školní účet můžete použít s portálem web **Moje aplikace** , abyste mohli zobrazit a spustit spoustu cloudových aplikací vaší organizace, abyste mohli aktualizovat některé z vašich informací o profilu a účtu, abyste viděli informace o **skupinách** a mohli provádět  **kontroly přístupu** pro vaše aplikace a skupiny. Pokud nemáte přístup k portálu **Moje aplikace** , musíte se obrátit na helpdesk, aby vám udělil oprávnění.
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-my-apps-portal.md)]
 
 >[!Important]
->Tento obsah je určený pro uživatele. Pokud jste správce, najdete další informace o tom, jak nastavit a spravovat vaše cloudové aplikace v [aplikací](https://docs.microsoft.com/azure/active-directory/manage-apps).
+>Tento obsah je určený pro uživatele. Pokud jste správce, můžete najít další informace o tom, jak nastavit a spravovat cloudové aplikace v [dokumentaci pro správu aplikací](https://docs.microsoft.com/azure/active-directory/manage-apps).
 
-## <a name="view-your-organization-related-profile-information"></a>Zobrazit související organizace profilové informace
-V závislosti na tom, co vaše organizace má se rozhodli umístit na vaše **profilu** stránku **Moje aplikace** portálu, může se zobrazit váš konkrétní podrobnosti související s prací, spolu s vaším zařízením a aktivity a některé Další organizace, do kterých patříte.
+## <a name="view-your-organization-related-profile-information"></a>Zobrazit informace o profilu souvisejícím s vaší organizací
 
-### <a name="to-view-your-profile-information"></a>Chcete-li zobrazit informace z vašeho profilu
-1.  Přihlaste se ke svému pracovnímu nebo školnímu účtu, [přejděte **Moje aplikace** portál](my-apps-portal-end-user-access.md).
+V závislosti na tom, co vaše organizace zvolila k zahrnutí na stránce **profilu** na portálu **Moje aplikace** , se vám můžou zobrazit konkrétní podrobnosti o práci společně s vašimi zařízeními a aktivitou a dalšími organizacemi, ke kterým patříte.
 
-2. Z **aplikace** stránky, vyberte váš profilový obrázek v pravém horním rohu, kde říká vaše jméno a vaší organizaci, a pak vyberte **profilu**.
+### <a name="to-view-your-profile-information"></a>Zobrazení informací o profilu
 
-    **Profilu** se zobrazí stránka zobrazující informace z vašeho profilu.
+1. Přihlaste se ke svému pracovnímu nebo školnímu účtu, [přejdete na portál **Moje aplikace** ](my-apps-portal-end-user-access.md).
 
-    ![Profil stránce zobrazuje všechny dostupné informace](media/my-apps-portal/my-apps-portal-profile-page.png)
+2. Na stránce **aplikace** vyberte profilový obrázek v pravém horním rohu, kde uvádí vaše jméno a vaši organizaci, a pak vyberte **profil**.
 
-3. Z **profilu** stránky, můžete:
+    Zobrazí se stránka **profil** , kde najdete informace o vašem profilu.
 
-    - **Projděte si vaše organizace související podrobnosti.** Zobrazte fotky, název, název, přidružené e-mailové adresy a informace o sadě office. Tyto informace je spravována vaší organizací a nebude možné ho změnit. Pokud se zobrazí chyba, obraťte se na Helpdesk.
+    ![Stránka profil zobrazující všechny dostupné informace](media/my-apps-portal/my-apps-portal-profile-page.png)
 
-    - **Zkontrolujte zařízení a aktivita**. Zajistěte, aby že každé zařízení dobře znáte a jsou správně připojené k vaší organizaci. Pokud zařízení není povědomý, vyberte **zakázat zařízení** k odstranění přidružení s vaším účtem. Po zakázání zařízení se odebere z této stránky.
+3. Na stránce **profil** můžete:
 
-    - **Projděte si vaše organizace.** Ujistěte se, že můžete i nadále fungovat s každým zadané organizací. Pokud již pracujete s organizací, důrazně doporučujeme, že vyberete **přihlášení chcete opustit organizaci**. Po opuštění organizace, odebere se z této stránky.
+    - **Projděte si podrobnosti týkající se vaší organizace.** Zobrazit fotografii, název, název, přidružené e-mailové adresy a informace o Office Tyto informace spravuje vaše organizace a nebudete je moct změnit. Pokud se zobrazí chyba, obraťte se na helpdesk.
 
-## <a name="manage-your-work-or-school-account-information"></a>Spravovat váš pracovní nebo školní informace o účtu
-Aktualizovat a spravovat váš pracovní nebo školní informace o účtu ze **profilu** stránku **Moje aplikace** portálu. Tato stránka vám umožní:
+    - **Zkontrolujte svá zařízení & aktivity**. Ujistěte se, že je každé zařízení známé a správně připojené k vaší organizaci. Pokud zařízení neznáte, výběrem **zakázat zařízení** odeberte přidružení k vašemu účtu. Když zařízení zakážete, odebere se z této stránky.
 
-- Změnit váš pracovní nebo školní účet.
+    - **Projděte si své organizace.** Ujistěte se, že stále pracujete se všemi konkrétními organizacemi. Pokud už s organizací nepracujete, důrazně doporučujeme vybrat možnost **Přihlásit se a opustit organizaci**. Po opuštění organizace ji odebereme z této stránky.
 
-- Zapněte (pokud správce má tato funkce zapnutá) pro vytvoření nového hesla.
+## <a name="manage-your-work-or-school-account-information"></a>Správa informací o pracovním nebo školním účtu
 
-- Zadejte informace o další bezpečnostní ověření.
+Aktualizujte a spravujte informace o pracovním nebo školním účtu na stránce **profil** na portálu **Moje aplikace** . Tato stránka vám pomůže:
 
-- Přečtěte podmínky použití vaší organizace.
+- Změňte heslo pracovního nebo školního účtu.
 
-- Odhlásit všude.
+- Zapnout resetování hesla (Pokud správce tuto funkci zapnul).
+
+- Zadejte další informace o ověření zabezpečení.
+
+- Přečtěte si, jaké jsou podmínek použití vaší organizace.
+
+- Odhlaste se od všude.
 
 ## <a name="change-your-password"></a>Změna hesla
-Pokud chcete změnit heslo pro svůj pracovní nebo školní účet, můžete vybrat **změnit heslo** z **spravovat účet** oblasti **profilu** stránky.
 
-### <a name="to-change-your-password"></a>Chcete-li změnit heslo
-1. Z **spravovat účet** oblasti **profilu** stránce **změnit heslo**.
+Pokud chcete změnit heslo pro svůj pracovní nebo školní účet, můžete vybrat **změnit heslo** v oblasti **Spravovat účet** na stránce **profilu** .
 
-2. Na **změnit heslo** stránce, ověřte správnost ID uživatele a pak zadejte svoje staré heslo a nové heslo do polí.
+### <a name="to-change-your-password"></a>Změna hesla
+
+1. V oblasti **Spravovat účet** na stránce **profil** vyberte **změnit heslo**.
+
+2. Na stránce **změnit heslo** zkontrolujte, jestli je ID uživatele správné, a pak do polí zadejte svoje staré heslo a nové heslo.
 
     ![Stránka pro změnu hesla](media/my-apps-portal/my-apps-portal-change-password-page.png)
 
 3. Vyberte **odeslat**.
 
-    Heslo je změněno. Budete muset přihlásit k žádné aplikace, které jste dříve přihlášení pomocí pracovního nebo školního účtu.
+    Vaše heslo se změnilo. Budete se muset přihlásit ke všem aplikacím, ke kterým jste se předtím přihlásili pomocí pracovního nebo školního účtu.
 
-## <a name="set-up-and-use-password-reset"></a>Nastavit a používat resetování hesla
-Pokud zapomněli jste heslo nikdy jej obdržela od firemní podpory nebo byla uzamčena mimo svůj účet, můžete resetovat vlastní heslo.
+## <a name="set-up-and-use-password-reset"></a>Nastavení a použití resetování hesla
+
+Pokud jste zapomněli heslo, neobdrželi jste ho od firemní podpory nebo jste ho z vašeho účtu zazamkli, můžete resetovat vlastní heslo.
 
 >[!Important]
->Správce musí tuto funkci zapnout a je nutné zaregistrovat k účasti. Podrobnosti o registraci a resetování hesla najdete v tématu [zaregistrovat pro resetování hesla pomocí samoobslužné služby](active-directory-passwords-reset-register.md) a [obnovit heslo pracovního nebo školního](user-help-reset-password.md).
+>Správce musí tuto funkci zapnout a musíte se zaregistrovat, abyste se účastnili. Podrobnosti o tom, jak se zaregistrovat a jak resetovat heslo, najdete v tématu [Registrace pro Samoobslužné resetování hesla](active-directory-passwords-reset-register.md) a [resetování svého pracovního nebo školního hesla](user-help-reset-password.md).
 
 ## <a name="change-your-security-verification-information"></a>Změnit informace o ověření zabezpečení
-Pokud vaše organizace vyžaduje, abyste použili dvojúrovňové ověřování, můžete přidat, aktualizovat a odstranit informace o přidružené zabezpečení z **dalšího ověření zabezpečení** stránky.
 
-Dvoufaktorové ověřování vyžaduje, abyste používat dva druhy informací o ověření, jako jsou hesla a kódu PIN, než se ponoříte do vašeho účtu nebo informace o vaší organizaci. Další informace o dvojúrovňové ověřování, najdete v článku [nastavit účtu pro dvoustupňové ověřování](multi-factor-authentication-end-user-first-time.md).
+Pokud vaše organizace vyžaduje, abyste použili dvojúrovňové ověřování, můžete na stránce **Další ověření zabezpečení** přidat, aktualizovat a odstranit související informace o zabezpečení.
 
-### <a name="to-change-your-security-information"></a>Chcete-li změnit informace o zabezpečení
-1. Z **spravovat účet** oblasti **profilu** stránce **dalšího ověření zabezpečení**.
+Dvojúrovňové ověřování vyžaduje, abyste předtím, než se dostanete k účtu nebo k informacím vaší organizace, používali dvě části ověřovacích informací, jako je třeba heslo a PIN kód. Další informace o dvojúrovňovém ověřování najdete v tématu [Nastavení účtu pro dvoustupňové ověřování](multi-factor-authentication-end-user-first-time.md).
 
-    ![Další bezpečnostní ověření stránky](media/my-apps-portal/my-apps-portal-additional-verification-page.png)
+### <a name="to-change-your-security-information"></a>Změna informací o zabezpečení
 
-2. Na **dalšího ověření zabezpečení** stránky, můžete přidat, změnit nebo odstranit následující informace:
+1. V oblasti **Spravovat účet** na stránce **profil** vyberte **Další ověření zabezpečení**.
 
-    - **Výchozí možností ověření.** Vyberte výchozí sekundární způsob pro použití při dvojúrovňového ověřování. Tato metoda se používá automaticky pokaždé, když zadáte uživatelské jméno a heslo vyžádáním dvoufaktorového ověřování.
+    ![Stránka dodatečného ověření zabezpečení](media/my-apps-portal/my-apps-portal-additional-verification-page.png)
 
-    - **Přidání, aktualizace nebo odebrání způsobů ověřování.** Můžete přidat nové, aktualizovat existující nebo odstranit zastaralé informace, která už neplatí.
+2. Na stránce **Další ověření zabezpečení** můžete přidat, změnit nebo odstranit následující informace:
 
-    - **Nastavte aplikaci Microsoft Authenticator.** Můžete nastavit aplikaci Microsoft Authenticator fungovat jako metodu ověřování. Další informace o aplikaci Microsoft Authenticator, naleznete v tématu [co je aplikace Microsoft Authenticator?](user-help-auth-app-overview.md)
+    - **Výchozí možnost ověřování.** Vyberte výchozí sekundární metodu pro použití dvojúrovňového ověřování. Tato metoda je automaticky používána kdykoli po zadání uživatelského jména a hesla k tomu, že je vyžadováno dvojúrovňové ověřování.
+
+    - **Přidejte, aktualizujte nebo odeberte metody ověřování.** Můžete přidat nové, aktualizovat existující nebo odstranit staré informace, které již nejsou použity.
+
+    - **Nastavte aplikaci Microsoft Authenticator.** Můžete zvolit nastavení aplikace Microsoft Authenticator, aby fungovala jako metoda ověřování. Další informace o aplikaci Microsoft Authenticator najdete v tématu [co je Microsoft Authenticator aplikace?](user-help-auth-app-overview.md)
 
 3. Vyberte **Uložit** uložte provedené změny.
 
-## <a name="review-your-organizations-terms-of-use-statement"></a>Přečtěte si podmínky vaší organizace pomocí příkazu
-Můžete vaší organizaci podmínky použití příkazu, pokud je k dispozici.
+## <a name="review-your-organizations-terms-of-use-statement"></a>Kontrola podmínek použití v rámci vaší organizace
 
-1. Z **spravovat účet** oblasti **profilu** stránce **přečíst podmínky použití**.
+V případě, že je k dispozici, můžete si vybrat, jestli chcete zkontrolovat použití podmínek použití vaší organizace.
 
-2. Přečíst podmínky použití a vyberte vaše organizace **přijmout** potvrďte, že jste jste přečetl(a) a rozumím jí podmínky použití pro vaši organizaci.
+1. V oblasti **Spravovat účet** na stránce **profil** vyberte možnost **Zobrazit podmínek použití**.
 
-    ![Podmínky použití stránky na portálu Moje aplikace](media/my-apps-portal/my-apps-portal-tou-page.png)
+2. Zkontrolujte podmínky použití vaší organizace a vyberte **přijmout** a ověřte si, že jste si přečetli podmínky použití pro vaši organizaci a rozumíte jim.
 
-    Pokud vaše organizace nemá podmínky použití, můžete si vybrat **provádí** se vraťte do **profilu** stránky.
+    ![Podmínky použití stránka na portálu moje aplikace](media/my-apps-portal/my-apps-portal-tou-page.png)
 
-## <a name="sign-out-of-everywhere"></a>Odhlásit všude
-Můžete se odhlásit všude, kde jste aktuálně přihlášení pomocí pracovního nebo školního účtu. To zahrnuje všechny aplikace a zařízení.
+    Pokud vaše organizace nemá žádné podmínkami použití, můžete vybrat Hotovo a  vrátit se na stránku **profilu** .
 
-### <a name="to-sign-out-of-everywhere"></a>Odhlásit všude
-1. Z **spravovat účet** oblasti **profilu** stránce **odhlásit všude**.
+## <a name="sign-out-of-everywhere"></a>Odhlásit se z všude
 
-2. V **odhlásit všude** potvrzovacím okně vyberte **Ano** potvrďte, že chcete odhlásit se ze všech relací a zařízení. Vyberte **ne** Pokud změníte své rozhodnutí.
+Můžete se rozhodnout, že se chcete odhlásit z všude, kde jste aktuálně přihlášeni pomocí svého pracovního nebo školního účtu. To zahrnuje všechny aplikace a zařízení.
+
+### <a name="to-sign-out-of-everywhere"></a>Odhlášení z všude
+
+1. V oblasti **Spravovat účet** na stránce **profil** vyberte možnost Odhlásit **všude**.
+
+2. V poli pro potvrzení **Odhlásit všude** vyberte **Ano** a potvrďte tak, že se chcete odhlásit ze všech svých relací a zařízení. Pokud změníte své rozhodnutí, vyberte možnost **ne** .
 
 ## <a name="next-steps"></a>Další postup
-Po dokončení aktualizace **profilu** stránky, můžete:
 
-- [Přístup a používání aplikací na portálu Moje aplikace](my-apps-portal-end-user-access.md).
+Po dokončení aktualizací na stránce **profilu** můžete:
 
-- [Zobrazit a aktualizovat vaše informace týkající se skupiny](my-apps-portal-end-user-groups.md).
+- [Přístup k aplikacím a jejich používání na portálu moje aplikace](my-apps-portal-end-user-access.md)
 
-- [Provést vlastní kontroly přístupu](my-apps-portal-end-user-access-reviews.md).
+- [Zobrazit a aktualizovat informace související se skupinami](my-apps-portal-end-user-groups.md).
+
+- [Proveďte vlastní kontroly přístupu](my-apps-portal-end-user-access-reviews.md).

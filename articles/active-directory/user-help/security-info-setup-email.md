@@ -1,6 +1,6 @@
 ---
-title: Nastavení informací zabezpečení (preview) pro použití e-mailová adresa – Azure Active Directory | Dokumentace Microsoftu
-description: Jak nastavit své bezpečnostní údaje ověřit svoji identitu pomocí e-mailovou adresu.
+title: Nastavte bezpečnostní údaje (Preview), aby se použila vaše e-mailová adresa – Azure Active Directory | Microsoft Docs
+description: Jak nastavit bezpečnostní údaje pro ověření vaší identity pomocí vaší e-mailové adresy.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -12,83 +12,89 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 720aafac79a67f64b0974dba0dd60c6aa24a8c54
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ec93574a8da051b5cf77a37af1030d0c22dfc4a9
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60480596"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68382899"
 ---
-# <a name="set-up-security-info-preview-to-use-your-email-address"></a>Nastavení informací zabezpečení (preview) pro použití e-mailovou adresu
-Můžete následujícím postupem přidáte, že vaše heslo resetováno metoda. Po nastavení tím prvním, můžete se vrátit k **bezpečnostní údaje** stránku chcete přidat, aktualizovat nebo odstranit informace o zabezpečení.
+# <a name="set-up-security-info-preview-to-use-your-email-address"></a>Nastavte bezpečnostní údaje (Preview), abyste mohli používat vaši e-mailovou adresu.
 
-Po nastavení vaše heslo resetováno metodu, musíte také nastavit vaše metoda dvojúrovňového ověřování pomocí [ověřovací aplikaci](security-info-setup-auth-app.md), [zasílání textových zpráv](security-info-setup-text-msg.md), nebo [telefonního hovoru](security-info-setup-phone-number.md).
+Pomocí těchto kroků můžete přidat metodu resetování hesla. Po prvním nastavení se můžete vrátit na stránku **bezpečnostní údaje** a přidat, aktualizovat nebo odstranit informace o zabezpečení.
+
+Po nastavení metody resetování hesla musíte také nastavit metodu dvou metod ověřování pomocí [ověřovací aplikace](security-info-setup-auth-app.md), [zasílání zpráv SMS](security-info-setup-text-msg.md)nebo [telefonního hovoru](security-info-setup-phone-number.md).
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-security-info.md)]
 
-## <a name="set-up-your-email-address-from-the-security-info-page"></a>Nastavení e-mailovou adresu, na stránce informace o zabezpečení
-V závislosti na nastavení vaší organizace je možné použít e-mailovou adresu jako jeden z vašich metodách informace o zabezpečení.
+## <a name="set-up-your-email-address-from-the-security-info-page"></a>Nastavení e-mailové adresy na stránce bezpečnostní údaje
+
+V závislosti na nastaveních vaší organizace možná budete moci používat vaši e-mailovou adresu jako jednu z vašich metod bezpečnostních údajů.
 
 >[!Note]
->Doporučujeme používat e-mailovou adresu, která nevyžaduje, aby síťové heslo pro přístup k. Pokud nevidíte možnost e-mailu, je možné, že vaše organizace nepovoluje použití e-mailu k ověření. Pokud je to tento případ, budete muset zvolit jinou metodu, nebo požádejte správce o další pomoc.
+>Doporučujeme použít e-mailovou adresu, která nevyžaduje pro přístup k vašemu síťovému heslu. Pokud nevidíte možnost e-mailu, je možné, že vaše organizace neumožňuje použít k ověření e-mail. Pokud se jedná o tento případ, budete muset zvolit jinou metodu, nebo požádejte správce o další nápovědu.
 
-### <a name="to-set-up-your-email-address"></a>Nastavení e-mailovou adresu
+### <a name="to-set-up-your-email-address"></a>Nastavení e-mailové adresy
 
-1. Přihlaste se ke svému pracovnímu nebo školnímu účtu a potom přejděte k vaší https://myprofile.microsoft.com/ stránky.
+1. Přihlaste se ke svému pracovnímu nebo školnímu účtu a https://myprofile.microsoft.com/ pak přejít na stránku.
 
-    ![Můj profil stránky zobrazující zvýrazněný odkazy informace o zabezpečení](media/security-info/securityinfo-myprofile-page.png)
+    ![Stránka můj profil zobrazující odkazy na zvýrazněné informace o zabezpečení](media/security-info/securityinfo-myprofile-page.png)
 
-2. Vyberte **bezpečnostní údaje** v levém navigačním podokně nebo z odkazu v **bezpečnostní údaje** blokovat a pak vyberte **přidejte metodu** z **bezpečnostní údaje**  stránky.
+2. V levém navigačním podokně nebo na odkaz v bloku **informací o** zabezpečení vyberte možnost **informace o zabezpečení** a pak vyberte **Přidat metodu** ze stránky **bezpečnostní údaje** .
 
-    ![Stránka informace o zabezpečení s zvýrazněnou možností přidat – metoda](media/security-info/securityinfo-myprofile-addmethod-page.png)
+    ![Stránka informace o zabezpečení se zvýrazněnou možností přidat metodu](media/security-info/securityinfo-myprofile-addmethod-page.png)
 
-3. Na **přidejte metodu** stránce **e-mailu** z rozevíracího seznamu a pak vyberte **přidat**.
+3. Na stránce **Přidat metodu** vyberte v rozevíracím seznamu možnost **e-mail** a pak vyberte **Přidat**.
 
-    ![Přidat metodu pole pomocí e-mailu vybraný](media/security-info/securityinfo-myprofile-addemail.png)
+    ![Pole přidat metodu s vybraným e-mailem](media/security-info/securityinfo-myprofile-addemail.png)
 
-4. Na **e-mailu** zadejte e-mailovou adresu (například alain@gmail.com) a pak vyberte **Další**.
+4. Na stránce **e-mail** zadejte svou e-mailovou adresu (například alain@gmail.com) a pak vyberte **Další**.
 
-    ![Přidat telefonní číslo a zvolte možnost telefonní hovory](media/security-info/securityinfo-myprofile-emailaddress.png)
+    ![Přidat telefonní číslo a vybrat telefonní hovory](media/security-info/securityinfo-myprofile-emailaddress.png)
 
     >[!Important]
-    >Tato e-mailová adresa nemůže být pracovní nebo školní e-mailu.
+    >Tato e-mailová adresa nemůže být vaším pracovním nebo školním e-mailem.
 
-5. Zadejte kód poslaný na zadaný e-mailovou adresu a pak vyberte **Další**.
+5. Zadejte kód odeslaný na zadanou e-mailovou adresu a pak vyberte **Další**.
 
-    ![Přidat telefonní číslo a zvolte text zprávy](media/security-info/securityinfo-myprofile-emailcode.png)
+    ![Přidat telefonní číslo a zvolit textové zprávy](media/security-info/securityinfo-myprofile-emailcode.png)
 
-    Vaše bezpečnostní údaje se aktualizuje a e-mailovou adresu můžete použít k ověření vaší identity při použití resetování hesla.
+    Vaše bezpečnostní údaje se aktualizují a k ověření vaší identity při použití resetování hesla můžete použít svou e-mailovou adresu.
 
-## <a name="delete-your-email-address-from-your-security-info-methods"></a>Odstranit e-mailovou adresu z vaší metody informace o zabezpečení
-Pokud nechcete použít e-mailovou adresu jako metodu informace o zabezpečení, můžete ho odebrat **bezpečnostní údaje** stránky.
+## <a name="delete-your-email-address-from-your-security-info-methods"></a>Odstraňte svou e-mailovou adresu z metod zabezpečení
+
+Pokud už svou e-mailovou adresu nechcete používat jako metodu bezpečnostního údaje, můžete ji odebrat ze stránky **bezpečnostní údaje** .
 
 >[!Important]
->Pokud omylem odstraníte e-mailovou adresu, neexistuje žádný způsob, jak ji vrátit. Budete muset znovu, přidejte metodu podle kroků v [nastavení e-mailovou adresu](#set-up-your-email-address-from-the-security-info-page) části tohoto článku.
+>Pokud e-mailovou adresu odstraníte omylem, neexistuje žádný způsob, jak ji vrátit. Tuto metodu budete muset znovu přidat podle kroků v části [Nastavení e-mailové adresy](#set-up-your-email-address-from-the-security-info-page) v tomto článku.
 
-### <a name="to-delete-your-email-address"></a>Chcete-li odstranit e-mailovou adresu
+### <a name="to-delete-your-email-address"></a>Odstranění e-mailové adresy
 
-1. Na **bezpečnostní údaje** stránky, vyberte **odstranit** odkaz **e-mailu** možnost.
+1. Na stránce **informace o zabezpečení** vyberte odkaz **Odstranit** vedle možnosti **e-mail** .
 
-    ![Odkaz na metodu phone odstranit z bezpečnostní údaje](media/security-info/securityinfo-myprofile-emaildelete.png)
+    ![Odkaz pro odstranění metody Phone z bezpečnostních údajů](media/security-info/securityinfo-myprofile-emaildelete.png)
 
-2. Vyberte **Ano** ze seznamu potvrzení odstranění **e-mailu** účtu. Po e-mailový účet se odstraní, odebere se ze svých bezpečnostních údajů a dané zařízení zmizí z **bezpečnostní údaje** stránky.
+2. Pokud chcete **e-mailový** účet odstranit, vyberte v potvrzovacím poli možnost **Ano** . E-mailový účet se odstraní z bezpečnostních údajů a zmizí ze stránky **bezpečnostní údaje** .
 
-## <a name="additional-security-info-methods"></a>Další bezpečnostní údaje metody
-Máte další možnosti pro jak kontakty vaší organizace k ověření své identity na základě toho, co jste se snažíte udělat. Mezi možnosti patří:
+## <a name="additional-security-info-methods"></a>Další metody zabezpečení
 
-- **Ověřovací aplikaci.** Stáhnout a použít ověřovací aplikaci získat oznámení o schválení nebo kódu náhodně generované schválení pro dvoustupňové ověření nebo heslo resetovat. Podrobné pokyny o tom, jak nastavit a začít používat aplikaci Microsoft Authenticator, naleznete v tématu [nastavení bezpečnostní údaje pro použití ověřovací aplikaci](security-info-setup-auth-app.md).
+Máte k dispozici další možnosti, jak vaše organizace kontaktuje vaši identitu na základě toho, co se you're snaží. Mezi možnosti patří:
 
-- **Text mobilní zařízení.** Zadejte číslo svého mobilního zařízení a dostat zprávu SMS, kód budete používat pro dvoustupňové ověřování nebo heslo resetovat. Podrobné pokyny o tom, jak ověřit vaši identitu pomocí textové zprávy (SMS), najdete v části [upravit informace o zabezpečení tak, aby pomocí textové zprávy (SMS)](security-info-setup-text-msg.md).
+- **Ověřovací aplikace** Stáhněte a použijte ověřovací aplikaci k získání oznámení o schválení nebo náhodně generovaného kódu schválení pro dvoustupňové ověřování nebo resetování hesla. Podrobné pokyny k nastavení a používání aplikace Microsoft Authenticator najdete v tématu [Nastavení bezpečnostních údajů pro použití ověřovací aplikace](security-info-setup-auth-app.md).
 
-- **Mobilní zařízení nebo pracovní telefonní hovor.** Zadejte číslo svého mobilního zařízení a získat telefonní hovor pro dvoustupňové ověření nebo heslo resetovat. Podrobné pokyny o tom, jak ověřit vaši identitu s telefonním číslem, naleznete v tématu [nastavení bezpečnostní údaje pro použití telefonní hovory](security-info-setup-phone-number.md).
+- **Text mobilního zařízení** Zadejte číslo mobilního zařízení a získejte text jako kód, který budete používat pro dvoustupňové ověřování nebo resetování hesla. Podrobné pokyny, jak ověřit identitu pomocí textové zprávy (SMS), najdete v tématu [Nastavení bezpečnostních údajů pro použití zasílání textových zpráv (SMS)](security-info-setup-text-msg.md).
 
-- **Bezpečnostní otázky.** Odpověď na nějakou bezpečnostní otázky vytvořený vaším správcem ve vaší organizaci. Tato možnost je pouze k dispozici pro resetování hesla a ne pro dvoustupňové ověřování. Podrobné pokyny o tom, jak nastavit své bezpečnostní otázky, najdete v článku [nastavení bezpečnostní údaje na použít bezpečnostní otázky](security-info-setup-questions.md) článku.
-    
+- **Mobilní zařízení nebo pracovní telefonní hovor.** Zadejte číslo mobilního zařízení a získejte telefonní hovor pro dvoustupňové ověřování nebo resetování hesla. Podrobné pokyny, jak ověřit identitu pomocí telefonního čísla, najdete v tématu [Nastavení bezpečnostních údajů pro použití telefonních hovorů](security-info-setup-phone-number.md).
+
+- **Bezpečnostní klíč** Zaregistrujte svůj bezpečnostní klíč kompatibilní s Microsoftem a použijte ho spolu s kódem PIN pro dvoustupňové ověřování nebo resetování hesla. Podrobné pokyny, jak ověřit identitu pomocí bezpečnostního klíče, najdete v tématu [Nastavení bezpečnostních údajů pro použití bezpečnostního klíče](security-info-setup-security-key.md).
+
+- **Bezpečnostní otázky.** Odpovězte na některé bezpečnostní otázky, které vytvořil správce vaší organizace. Tato možnost je k dispozici pouze pro resetování hesla a nikoli pro dvoustupňové ověřování. Podrobné pokyny k nastavení bezpečnostních otázek najdete v článku [Nastavení bezpečnostních informací pro použití bezpečnostních otázek](security-info-setup-questions.md) .
+
     >[!Note]
-    >Pokud chybí některé z těchto možností, je pravděpodobně, protože vaše organizace nepovoluje tyto metody. Pokud je to tento případ, budete muset zvolit metodu k dispozici nebo požádejte správce o další pomoc.
+    >Pokud některé z těchto možností chybí, je to pravděpodobně proto, že vaše organizace tyto metody nepovoluje. Pokud se jedná o tento případ, budete muset zvolit dostupnou metodu nebo požádat správce o další nápovědu.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- Resetování hesla, pokud jste ztratíte nebo zapomenete, z [portál pro resetování hesel](https://passwordreset.microsoftonline.com/) nebo postupujte podle kroků v [obnovit heslo pracovního nebo školního](user-help-reset-password.md) článku.
+- Resetujte heslo, pokud jste ho ztratili nebo zapomněli z [portálu pro resetování hesla](https://passwordreset.microsoftonline.com/) , nebo postupujte podle pokynů v článku [resetování svého pracovního nebo školního hesla](user-help-reset-password.md) .
 
-- Získejte řešení potíží, tipy a nápovědu pro problémy s přihlášením v [nemůžete se přihlásit ke svému účtu Microsoft](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant) článku.
+- Získejte tipy pro řešení potíží a nápovědu k problémům s přihlášením v tématu se nemůžete [přihlásit k vašemu účet Microsoft](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant) .

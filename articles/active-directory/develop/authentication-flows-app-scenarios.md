@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/15/2019
+ms.date: 07/25/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3d50019e8de1daf3d69342dcaf9eeecfba493a83
-ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
+ms.openlocfilehash: c3d9f96f0b61129a0f881c8fe8676bd5df7376ad
+ms.sourcegitcommit: 5604661655840c428045eb837fb8704dca811da0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68302459"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68494583"
 ---
 # <a name="authentication-flows-and-application-scenarios"></a>Toky ověřování a scénáře aplikací
 
@@ -80,6 +80,14 @@ Tokeny zabezpečení lze získat z několika typů aplikací. Aplikace jsou obvy
 
 Koncový bod platformy Microsoft identity podporuje ověřování pro nejrůznější architektury aplikací: jednostránkové aplikace, webové aplikace, webová rozhraní API, mobilní a nativní aplikace a démony a aplikace na straně serveru.  Aplikace používají různé toky ověřování k přihlašování uživatelů a získání tokenů pro volání chráněných rozhraní API.
 
+### <a name="single-page-application"></a>Jednostránková aplikace
+
+Mnohé moderní webové aplikace jsou sestavené jako jednostránkové aplikace na straně klienta napsané pomocí JavaScriptu nebo rozhraní zabezpečeného hesla, jako je například úhlový Vue. js, a reagují. js. Tyto aplikace běží ve webovém prohlížeči a mají různé charakteristiky ověřování než tradiční webové aplikace na straně serveru. Platforma Microsoft Identity Platform umožňuje aplikacím s jednou stránkou přihlašovat uživatele a získat tokeny pro přístup k back-endové službě nebo k webovým rozhraním API.
+
+![Jednostránková aplikace](media/scenarios/spa-app.svg)
+
+Další informace najdete v [jednostránkovéch aplikacích](scenario-spa-overview.md).
+
 ### <a name="web-application-signing-in-a-user"></a>Přihlášení k webové aplikaci – uživatel
 
 ![Přihlašování uživatelů k webové aplikaci](media/scenarios/scenario-webapp-signs-in-users.svg)
@@ -90,67 +98,72 @@ Chcete-li **chránit webovou aplikaci** (přihlašování uživatele), použijte
 
 - Pokud vyvíjíte v Node. js, budete používat Passport. js.
 
-Podrobnosti najdete v tématu [Webová aplikace, která se přihlásí uživatelům](scenario-web-app-sign-user-overview.md) .
+Další informace najdete v článku [Webová aplikace, která](scenario-web-app-sign-user-overview.md)přihlašuje uživatele.
 
 ### <a name="web-application-signing-in-a-user-and-calling-a-web-api-on-behalf-of-the-user"></a>Přihlášení k webové aplikaci – uživatel a volání webového rozhraní API jménem uživatele
 
 ![Webová aplikace volá webová rozhraní API.](media/scenarios/web-app.svg)
 
-Z webové aplikace pro **volání webového rozhraní API** jménem uživatele použijete MSAL `ConfidentialClientApplication`. Použijete tok autorizačního kódu, který uloží získaný token do mezipaměti tokenů. Pak kontroler získá v případě potřeby tokeny v tichém režimu z mezipaměti. MSAL aktualizuje token v případě potřeby.
+Z webové aplikace můžete **zavolat webové rozhraní API** jménem uživatele pomocí MSAL `ConfidentialClientApplication`. Použijete tok autorizačního kódu, který uloží získaný token do mezipaměti tokenů. Pak kontroler získá v případě potřeby tokeny v tichém režimu z mezipaměti. MSAL aktualizuje token v případě potřeby.
 
-Podrobnosti najdete v tématu [Webová aplikace volá webová rozhraní API](scenario-web-app-call-api-overview.md) .
+Další informace najdete v tématu [Webová aplikace volá rozhraní API pro web](scenario-web-app-call-api-overview.md).
 
 ### <a name="desktop-application-calling-a-web-api-on-behalf-of-the-signed-in-user"></a>Aplikace klasické pracovní plochy, která jménem přihlášeného uživatele volá webové rozhraní API
 
-Chcete-li volat webové rozhraní API z desktopové aplikace, která přihlašuje uživatele, budete používat metody získání interaktivních tokenů PublicClientApplication's MSAL. Tyto interaktivní metody umožňují řídit prostředí uživatelského rozhraní pro přihlašování. K povolení této interakce MSAL využívá webový prohlížeč.
+Chcete-li volat webové rozhraní API z desktopové aplikace, která přihlašuje uživatele, použijte metody získání interaktivního tokenu PublicClientApplication's MSAL. Tyto interaktivní metody umožňují řídit prostředí uživatelského rozhraní pro přihlašování. Aby bylo možné tuto interakci povolit, MSAL využívá webový prohlížeč.
 
 ![Desktop](media/scenarios/desktop-app.svg)
 
-Pro aplikace hostované v systému Windows běžící na počítačích připojených k doméně systému Windows nebo AAD jsou k dispozici další možnosti. Můžou získat bez tichého získání tokenu pomocí [integrovaného ověřování systému Windows](https://aka.ms/msal-net-iwa) .
+Pro aplikace hostované v systému Windows běžící na počítačích připojených k doméně systému Windows nebo AAD jsou k dispozici další možnosti. Pomocí [integrovaného ověřování systému Windows](https://aka.ms/msal-net-iwa)můžou tyto aplikace v tichém získání tokenu.
 
 Aplikace spuštěné v zařízení bez prohlížeče budou nadále moci volat rozhraní API jménem uživatele. Aby se uživatel mohl ověřit, musí se přihlásit na jiném zařízení, které má webový prohlížeč. Pokud chcete tento scénář povolit, budete muset použít [tok kódu zařízení](https://aka.ms/msal-net-device-code-flow) .
 
 ![Tok kódu zařízení](media/scenarios/device-code-flow-app.svg)
 
-A konečně, i když se to nedoporučuje, můžete použít [uživatelské jméno/heslo](https://aka.ms/msal-net-up) ve veřejných klientských aplikacích. Tento tok je stále potřeba v některých scénářích (například DevOps), ale Upozorňujeme, že jeho použití způsobí omezení pro vaši aplikaci. Například aplikace, které používají tento tok, se nebudou moct přihlašovat uživateli, který potřebuje službu Multi-Factor Authentication (podmíněný přístup). Neumožní vaší aplikaci těžit z libovolného jednotného přihlašování. Je také na principech moderního ověřování a je poskytována pouze z původních důvodů.
+A konečně, i když se to nedoporučuje, můžete použít [uživatelské jméno a heslo](https://aka.ms/msal-net-up) ve veřejných klientských aplikacích. Tento tok je stále potřeba v některých scénářích (například DevOps), ale Upozorňujeme, že jeho použití způsobí omezení pro vaši aplikaci. Například aplikace, které používají tento tok, se nebudou moct přihlašovat uživateli, který potřebuje službu Multi-Factor Authentication (podmíněný přístup). Neumožní vaší aplikaci těžit z libovolného jednotného přihlašování. Ověřování pomocí uživatelského jména a hesla přechází na zásady moderního ověřování a je poskytováno pouze z původních důvodů.
 
 Pokud chcete, aby byla mezipaměť tokenu trvalá, měli byste v aplikacích klasické pracovní plochy [přizpůsobit serializaci mezipaměti tokenů](https://aka.ms/msal-net-token-cache-serialization). Pomocí předchozích generací knihoven ověřování (ADAL.NET 3. x a 4. x) můžete dokonce pomocí implementace [serializace mezipaměti](https://aka.ms/msal-net-dual-cache-serialization)s duálním tokenem povolit i zpětná a dopředně kompatibilní mezipaměť tokenů.
 
-Podrobnosti najdete v tématu [aplikace klasické pracovní plochy, která volá webová rozhraní API](scenario-desktop-overview.md) .
+Pro další informace si přečtěte [desktopovou aplikaci, která volá webová rozhraní API](scenario-desktop-overview.md).
 
 ### <a name="mobile-application-calling-a-web-api-on-behalf-of-the-user-whos-signed-in-interactively"></a>Mobilní aplikace, která volá webové rozhraní API jménem uživatele, který je přihlášený interaktivně
 
+Podobně jako aplikace klasické pracovní plochy mobilní aplikace k získání tokenu pro volání webového rozhraní API použije metody získání interaktivního tokenu PublicClientApplication's MSAL.
+
 ![Mobilní zařízení](media/scenarios/mobile-app.svg)
 
-Podobně jako u desktopových aplikací můžete získat token pro volání webového rozhraní API, ale mobilní aplikace použije MSAL metody získání interaktivních tokenů PublicClientApplication's. V systémech iOS a Android MSAL ve výchozím nastavení používá webový prohlížeč systému. Můžete ho ale směrovat na použití vloženého webového zobrazení. V závislosti na mobilní platformě se liší: (UWP, iOS, Android).
+MSAL iOS a MSAL Android ve výchozím nastavení používají webový prohlížeč systému. Můžete ji ale také směrovat na použití vloženého webového zobrazení. V závislosti na mobilní platformě se liší: (UWP, iOS, Android).
+
 Některé scénáře, zahrnující podmíněný přístup související s ID zařízení nebo registrované zařízení, vyžadují, aby byl na zařízení nainstalovaný [zprostředkovatel](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/leveraging-brokers-on-Android-and-iOS) . Příklady zprostředkovatelů jsou portál společnosti Microsoftu (na Androidu), Microsoft Authenticator (Android a iOS). MSAL je teď schopný spolupracovat se zprostředkovateli.
 
 > [!NOTE]
 > Mobilní aplikace (pomocí MSAL. iOS, MSAL. V Androidu nebo MSAL.NET/Xamarin) můžou být použité zásady ochrany aplikací (například brání uživateli zkopírovat nějaký chráněný text). [Spravuje ho Intune](https://docs.microsoft.com/intune/app-sdk) a jako spravovanou aplikaci ho rozpozná Intune. [Intune SDK](https://docs.microsoft.com/intune/app-sdk-get-started) je oddělená od knihoven MSAL a mluví se svým vlastním AAD.
 
-Podrobnosti najdete v tématu [mobilní aplikace, která volá webová rozhraní API](scenario-mobile-overview.md) .
+Další informace najdete v [mobilní aplikaci, která volá webová rozhraní API](scenario-mobile-overview.md).
 
 ### <a name="protected-web-api"></a>Chráněné webové rozhraní API
 
 Pomocí koncového bodu Microsoft Identity Platform můžete zabezpečit webové služby, například webové rozhraní API RESTful vaší aplikace. Chráněné webové rozhraní API se volá pomocí přístupového tokenu, který zabezpečuje jeho data a ověřuje příchozí požadavky. Volající webového rozhraní API připojí přístupový token v autorizační hlavičce požadavku HTTP. Pokud chcete chránit ASP.NET nebo ASP.NET Core webového rozhraní API, bude nutné ověřit přístupový token. V takovém případě použijete middleware ASP.NET JWT. V digestoři se ověřování provádí pomocí [rozšíření IdentityModel pro knihovnu .NET](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/wiki) , nikoli MSAL.NET
 
-Podrobnosti najdete v tématu [chráněné webové rozhraní API](scenario-protected-web-api-overview.md) .
+Další informace najdete v [chráněném webovém rozhraní API](scenario-protected-web-api-overview.md)pro čtení.
 
 ### <a name="web-api-calling-another-downstream-web-api-on-behalf-of-the-user-for-whom-it-was-called"></a>Webové rozhraní API volá jiné podřízené webové rozhraní API jménem uživatele, pro kterého se zavolalo.
 
 Pokud navíc chcete, aby vaše ASP.NET nebo ASP.NET Core chráněné webové rozhraní API zavolalo jiné webové rozhraní API jménem uživatele, bude muset aplikace získat token pro webové rozhraní API pro příjem dat pomocí metody ConfidentialClientApplication, která získá token [jménem uživatel](https://aka.ms/msal-net-on-behalf-of): Tento postup se také nazývá volání služeb.
 Webová rozhraní API, která volají jiné webové rozhraní API, budou muset také poskytovat vlastní serializaci mezipaměti.
 
-  ![Web API](media/scenarios/web-api.svg)
+  ![Webové rozhraní API](media/scenarios/web-api.svg)
 
-Podrobnosti najdete v tématu [webové rozhraní API, které volá webová rozhraní API](scenario-web-api-call-api-overview.md) .
+Další informace najdete v tématu [webové rozhraní API, které volá rozhraní API pro web](scenario-web-api-call-api-overview.md).
 
 ### <a name="desktopservice-or-web-daemon-application-calling-web-api-without-a-user-in-its-own-name"></a>Aplikace Desktop/Service nebo webového démona volající webové rozhraní API bez uživatele (ve vlastním názvu)
 
-Aplikace, které mají dlouhotrvající procesy nebo které fungují bez interakce s uživatelem, potřebují také způsob, jak přistupovat k zabezpečeným webovým rozhraním API. Tyto aplikace můžou ověřovat a získávat tokeny pomocí identity aplikace namísto delegované identity uživatele. Prokazují jejich identitu pomocí tajného klíče klienta nebo certifikátu.
+Aplikace, které mají dlouhotrvající procesy nebo které fungují bez zásahu uživatele, potřebují také způsob, jak přistupovat k zabezpečeným webovým rozhraním API. Tyto aplikace můžou ověřovat a získávat tokeny pomocí identity aplikace namísto delegované identity uživatele. Prokazují jejich identitu pomocí tajného klíče klienta nebo certifikátu.
 Takové aplikace můžete napsat (aplikace démon), která pro aplikaci získá token, a to pomocí metod získání přihlašovacích [údajů klienta](https://aka.ms/msal-net-client-credentials) ConfidentialClientApplication's MSAL. Předpokládá se, že aplikace dříve zaregistrovala tajný klíč (heslo aplikace nebo certifikát nebo kontrolní výraz klienta) pomocí služby Azure AD, kterou pak sdílí s tímto voláním.
 
 ![Aplikace démona](media/scenarios/daemon-app.svg)
+
+Další informace najdete v tématu [aplikace démona pro čtení, která volá webová rozhraní API](scenario-daemon-overview.md).
 
 ## <a name="scenarios-and-supported-authentication-flows"></a>Scénáře a podporované toky ověřování
 
@@ -183,6 +196,8 @@ Ne každý typ aplikace je k dispozici na všech platformách. K sestavování a
 | [Mobilní aplikace, která volá webová rozhraní API](scenario-mobile-overview.md) <br/> [![Mobilní aplikace, která volá webová rozhraní API](media/scenarios/mobile-app.svg)](scenario-mobile-overview.md) | ![UWP](media/sample-v2-code/logo_windows.png) MSAL.NET ![Xamarin](media/sample-v2-code/logo_xamarin.png) MSAL.NET | | | ![iOS/objektivní C nebo SWIFT](media/sample-v2-code/logo_iOS.png) MSAL. iOS | ![Android](media/sample-v2-code/logo_Android.png) MSAL. Svém
 | [Aplikace démon](scenario-daemon-overview.md) <br/> [![Aplikace démon](media/scenarios/daemon-app.svg)](scenario-daemon-overview.md) | ![.NET](media/sample-v2-code/logo_NET.png) MSAL.NET ![.NET Core](media/sample-v2-code/logo_NETcore.png)MSAL.NET ![MSAL Java](media/sample-v2-code/logo_java.png) msal4j ![MSAL Python](media/sample-v2-code/logo_python.png) MSAL Python| ![.NET Core](media/sample-v2-code/logo_NETcore.png) MSAL.NET ![MSAL Java](media/sample-v2-code/logo_java.png) msal4j ![MSAL Python](media/sample-v2-code/logo_python.png) MSAL Python| ![.NET Core](media/sample-v2-code/logo_NETcore.png)MSAL.NET ![MSAL Java](media/sample-v2-code/logo_java.png) msal4j ![MSAL Python](media/sample-v2-code/logo_python.png) MSAL Python
 | [Webové rozhraní API, které volá webová rozhraní API](scenario-web-api-call-api-overview.md) <br/> [![Webové rozhraní API, které volá webová rozhraní API](media/scenarios/web-api.svg)](scenario-web-api-call-api-overview.md) | ![.NET](media/sample-v2-code/logo_NET.png) <br/> ASP.NET + MSAL.NET ![.NET Core](media/sample-v2-code/logo_NETcore.png) <br/> ASP.NET Core + MSAL.NET| ![.NET Core](media/sample-v2-code/logo_NETcore.png) <br/> ASP.NET Core + MSAL.NET| ![.NET Core](media/sample-v2-code/logo_NETcore.png)<br/> ASP.NET Core + MSAL.NET
+
+Viz také [knihovny podporované společností Microsoft podle operačního systému/jazyka](reference-v2-libraries.md#microsoft-supported-libraries-by-os--language)
 
 ## <a name="next-steps"></a>Další postup
 Přečtěte si další informace o [základech ověřování](authentication-scenarios.md) a [přístupových tokenech](access-tokens.md).

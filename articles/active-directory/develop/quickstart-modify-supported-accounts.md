@@ -1,5 +1,5 @@
 ---
-title: Úprava účtů podporovaných aplikací zaregistrované na platformě Microsoft Identity Platform |Azure
+title: Upravit Microsoft Identifikujte účty aplikací platformy | Azure
 description: Konfigurací aplikace zaregistrované na platformě Microsoft Identity Platform můžete změnit, kdo (jaké účty) může k aplikaci přistupovat.
 services: active-directory
 documentationcenter: ''
@@ -17,14 +17,14 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: aragra, lenalepa, sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 00d99ae48abfcb3e4d4abc0d63565994df45f746
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: be62dabc01e00465fa5227c5531fa18a16cf10a9
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65545730"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68380777"
 ---
-# <a name="quickstart-modify-the-accounts-supported-by-an-application"></a>Rychlý start: Upravit účty podporované aplikace
+# <a name="quickstart-modify-the-accounts-supported-by-an-application"></a>Rychlý start: Úprava účtů podporovaných aplikací
 
 Při registraci aplikace na platformě Microsoft Identity Platform možná budete chtít svou aplikaci zpřístupnit pouze uživatelům ve vaší organizaci. Alternativně můžete chtít aplikaci zpřístupnit také uživatelům v externích organizacích nebo uživatelům v externích organizacích i uživatelům, kteří nutně nejsou součástí žádné organizace (osobní účty).
 
@@ -44,7 +44,7 @@ Než budete moct nakonfigurovat aplikaci, postupujte podle těchto kroků:
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účtu Microsoft.
 1. Pokud váš účet umožňuje přístup k více tenantům, vyberte svůj účet v pravém horním rohu a nastavte relaci portálu na požadovaného tenanta Azure AD.
-1. V levém navigačním podokně, vyberte **Azure Active Directory** služby a potom vyberte **registrace aplikací**.
+1. V levém navigačním podokně vyberte službu **Azure Active Directory** a pak vyberte **Registrace aplikací**.
 1. Vyhledejte a vyberte aplikaci, kterou chcete nakonfigurovat. Jakmile vyberete aplikaci, zobrazí se stránka **Přehled** neboli hlavní stránka registrace dané aplikace.
 1. Postupujte podle pokynů a [změňte registraci aplikace tak, aby podporovala různé účty](#change-the-application-registration-to-support-different-accounts).
 1. Pokud máte jednostránkovou aplikaci, [povolte implicitní udělení OAuth 2.0](#enable-oauth-20-implicit-grant-for-single-page-applications).

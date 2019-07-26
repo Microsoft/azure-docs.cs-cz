@@ -1,21 +1,21 @@
 ---
-title: Použití Javy k připojení k Azure Database for PostgreSQL – jeden Server
-description: V tomto rychlém startu najdete vzorový kód Java, které můžete použít k připojení a dotazování dat ze služby Azure Database for PostgreSQL – jeden Server.
+title: Použití jazyka Java pro připojení k Azure Database for PostgreSQL – jeden server
+description: V tomto rychlém startu najdete ukázku kódu Java, který můžete použít k připojení a dotazování dat z Azure Database for PostgreSQL na jednom serveru.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.custom: mvc
 ms.devlang: java
 ms.topic: quickstart
-ms.date: 5/6/2019
-ms.openlocfilehash: 33d127c25fdb38071f44f21257df9b74b69dfa2e
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.date: 05/06/2019
+ms.openlocfilehash: 6984cd456c0c119e86fec0960160e93e79d4d361
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65067375"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68359345"
 ---
-# <a name="azure-database-for-postgresql---single-server-use-java-to-connect-and-query-data"></a>Azure Database for PostgreSQL – jeden Server: Použití Javy k připojení a dotazování dat
+# <a name="azure-database-for-postgresql---single-server-use-java-to-connect-and-query-data"></a>Azure Database for PostgreSQL – jeden server: Připojení a dotazování dat pomocí jazyka Java
 Tento rychlý start ukazuje, jak se připojit ke službě Azure Database for PostgreSQL pomocí aplikace jazyka Java. Ukazuje, jak pomocí příkazů jazyka SQL dotazovat, vkládat, aktualizovat a odstraňovat data v databázi. Kroky v tomto článku předpokládají, že máte zkušenosti s vývojem pomocí Javy a teprve začínáte pracovat se službou Azure Database for PostgreSQL.
 
 ## <a name="prerequisites"></a>Požadavky

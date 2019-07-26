@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 9c05f3cf9a4c6fc916f1c9578de7aee6d0190ee5
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 6a41830dcb7f681713db7a7802ab430581dc844f
+ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68327140"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68371150"
 ---
 # <a name="deploy-azure-file-sync"></a>Nasazení Synchronizace souborů Azure
 Pomocí Azure File Sync můžete centralizovat sdílené složky ve vaší organizaci ve službě soubory Azure a zároveň udržet flexibilitu, výkon a kompatibilitu místního souborového serveru. Azure File Sync transformuje Windows Server na rychlou mezipaměť sdílené složky Azure. Pro místní přístup k datům můžete použít libovolný protokol, který je dostupný na Windows serveru, včetně SMB, NFS a FTPS. Můžete mít tolik mezipamětí, kolik potřebujete po celém světě.
@@ -357,18 +357,19 @@ if ($cloudTieringDesired) {
 
 ---
 
-## <a name="configure-firewall-and-vnet-settings"></a>Konfigurace nastavení brány firewall a virtuální sítě
+## <a name="configure-firewall-and-virtual-network-settings"></a>Konfigurace nastavení brány firewall a virtuální sítě
 
 ### <a name="portal"></a>Portál
 Pokud chcete službu Azure File Sync nakonfigurovat tak, aby fungovala s nastavením brány firewall a virtuální sítě, udělejte toto:
 
 1. Z Azure Portal přejděte na účet úložiště, který chcete zabezpečit.
-1. V nabídce LeftHand vyberte tlačítko **brány firewall a virtuální sítě** .
+1. V nabídce vlevo vyberte tlačítko **brány firewall a virtuální sítě** .
 1. Vyberte **vybrané sítě** v části **Povolení přístupu z**.
 1. Ujistěte se, že jsou servery IP nebo virtuální síť uvedené v příslušné části.
 1. Ujistěte se, že je zaškrtnuté políčko **umožnit důvěryhodným službám Microsoftu přístup k tomuto účtu úložiště** .
 1. Vyberte **Uložit** a uložte nastavení.
 
+![Konfigurace nastavení brány firewall a virtuální sítě pro práci se službou Azure File Sync](media/storage-sync-files-deployment-guide/firewall-and-vnet.png)
 
 ## <a name="onboarding-with-azure-file-sync"></a>Připojování pomocí Azure File Sync
 Doporučený postup při zapínání na Azure File Sync pro první s nulovým prostojem při zachování úplné věrnosti souborů a seznamu řízení přístupu (ACL) jsou následující:

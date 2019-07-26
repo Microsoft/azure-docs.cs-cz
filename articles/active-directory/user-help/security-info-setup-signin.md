@@ -1,6 +1,6 @@
 ---
-title: Nastavte informace o zabezpečení (preview) z vaší přihlášení řádku – Azure Active Directory | Dokumentace Microsoftu
-description: Jak nastavit bezpečnostní údaje pro váš pracovní nebo školní účet, pokud se zobrazí výzva k z přihlašovací stránku vaší organizace.
+title: Nastavení informací o zabezpečení (Preview) z příkazového řádku pro přihlášení – Azure Active Directory | Microsoft Docs
+description: Nastavení bezpečnostních údajů pro svůj pracovní nebo školní účet, pokud se zobrazí výzva na přihlašovací stránce vaší organizace.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -12,106 +12,109 @@ ms.topic: overview
 ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f9c6faff10f68d720bc3c86a191e4cd1b1f9abdc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c20256fb712d9381ba2adc90e2e68ce4fdc8911a
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60475171"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68382778"
 ---
-# <a name="set-up-your-security-info-preview-from-the-sign-in-page-prompt"></a>Nastavení bezpečnostních údajů (ve verzi preview) z příkazového řádku přihlašovací stránky
-Pokud se zobrazí výzva k nastavení bezpečnostních údajů ihned po přihlášení ke svému pracovnímu nebo školnímu účtu, můžete následujícím postupem.
+# <a name="set-up-your-security-info-preview-from-the-sign-in-page-prompt"></a>Nastavení informací o zabezpečení (Preview) na příkazovém řádku přihlašovací stránky
 
-Tato výzva zobrazí jenom Pokud jste nenastavili bezpečnostní údaje, které vaše organizace vyžaduje. Pokud jste dříve nastavili svoje bezpečnostní údaje, ale chcete provést změny, provedením kroků v různých články s postupy založených na volání metody. Další informace najdete v tématu [přidat nebo aktualizovat vaše informace o zabezpečení – přehled](security-info-add-update-methods-overview.md).
+Pokud se zobrazí výzva k nastavení bezpečnostních údajů hned po přihlášení ke svému pracovnímu nebo školnímu účtu, můžete postupovat podle těchto kroků.
+
+Tato výzva se zobrazí jenom v případě, že jste nenastavili bezpečnostní údaje vyžadované vaší organizací. Pokud jste si dříve nastavili bezpečnostní údaje, ale chcete provést změny, můžete postupovat podle kroků v různých článcích o postupech založených na metodách. Další informace najdete v tématu věnovaném [Přidání nebo aktualizaci informací o zabezpečení](security-info-add-update-methods-overview.md).
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-security-info.md)]
 
-## <a name="sign-in-to-your-work-or-school-account"></a>Přihlaste se ke svému pracovnímu nebo školnímu účtu
-Po přihlášení ke svému pracovnímu nebo školnímu účtu, zobrazí se vám výzva s dotazem, abychom vám poskytli informace předtím, než umožňuje přístup k vašemu účtu.
+## <a name="sign-in-to-your-work-or-school-account"></a>Přihlaste se ke svému pracovnímu nebo školnímu účtu.
 
-![Výzva s dotazem, další informace](media/security-info/securityinfo-prompt.png)
+Po přihlášení ke svému pracovnímu nebo školnímu účtu se zobrazí výzva s výzvou k zadání dalších informací, než vám umožní přístup k vašemu účtu.
 
-## <a name="set-up-your-security-info-using-the-wizard"></a>Nastavte si svoje bezpečnostní údaje, pomocí Průvodce
-Postupujte podle těchto pokynů nastavte si svoje bezpečnostní údaje pro váš pracovní nebo školní účet z příkazového řádku.
+![Dotaz na Další informace](media/security-info/securityinfo-prompt.png)
+
+## <a name="set-up-your-security-info-using-the-wizard"></a>Nastavení bezpečnostních údajů pomocí Průvodce
+
+Postupujte podle těchto kroků a nastavte bezpečnostní údaje pro svůj pracovní nebo školní účet z příkazového řádku.
 
 >[!Important]
->Toto je pouze příklad procesu. V závislosti na požadavcích vaší organizace může mít správce nastavit jinou ověřovací metody, které je potřeba nastavit během tohoto procesu. V tomto příkladu jsme se vyžaduje dvě metody, aplikaci Microsoft Authenticator a číslo mobilního telefonu pro ověření za přijaté hovory nebo textové zprávy.
+>Toto je pouze příklad procesu. V závislosti na požadavcích vaší organizace může správce nastavit různé metody ověřování, které budete muset během tohoto procesu nastavit. V tomto příkladu vyžadujeme dvě metody, Microsoft Authenticator aplikace a mobilní telefonní číslo pro ověřovací hovory nebo textové zprávy.
 
-1. Po výběru **Další** z příkazového řádku, **zachovat Průvodce zabezpečený účet** zobrazí první metoda správce a organizace vyžadují, abyste nastavení. V tomto příkladu je aplikace Microsoft Authenticator.
+1. Až na příkazovém řádku vyberete **Další** , zobrazí se **Průvodce zabezpečením vašeho účtu** , ve kterém se zobrazí první metoda, kterou váš správce a organizace vyžaduje, abyste si je nastavili. V tomto příkladu je to aplikace Microsoft Authenticator.
 
    > [!Note]
-   > Pokud chcete použít aplikaci authenticator než aplikace Microsoft Authenticator, vyberte **chci používat jinou ověřovací aplikaci** odkaz.
-   > 
-   > Pokud vaše organizace vám umožní vybrat si jinou metodu kromě ověřovací aplikaci, můžete vybrat **budu chtít nastavit odkazem na jinou metodu**.
+   > Pokud chcete použít jinou ověřovací aplikaci než aplikaci Microsoft Authenticator, vyberte možnost **Chci použít jiný ověřovací odkaz aplikace** .
+   >
+   > Pokud vaše organizace umožňuje vybrat jinou metodu než ověřovací aplikace, můžete vybrat, že **chcete nastavit jiný odkaz na metodu**.
 
-    ![Zachovat Průvodce zabezpečený účet, stránkou ověřování aplikace ke stažení](media/security-info/securityinfo-prompt-get-auth-app.png)
+    ![Ponechte si Průvodce zabezpečením účtu a zobrazí se stránka pro stažení aplikace ověřování.](media/security-info/securityinfo-prompt-get-auth-app.png)
 
-2. Vyberte **Stáhnout** chcete stáhnout a nainstalovat aplikaci Microsoft Authenticator na vašem mobilním zařízení a potom vyberte **Další**. Další informace o tom, jak stáhnout a nainstalovat aplikaci najdete v tématu [stáhněte a nainstalujte aplikaci Microsoft Authenticator](user-help-auth-app-download-install.md).
+2. Vyberte **Stáhnout** a stáhněte a nainstalujte aplikaci Microsoft Authenticator do svého mobilního zařízení a pak vyberte **Další**. Další informace o tom, jak stáhnout a nainstalovat aplikaci, najdete v tématu [Stažení a instalace aplikace Microsoft Authenticator](user-help-auth-app-download-install.md).
 
-    ![Zachovat Průvodce zabezpečený účet, zobrazuje authenticator sady stránku vašeho účtu](media/security-info/securityinfo-prompt-auth-app-setup-acct.png)
+    ![Ponechte si Průvodce zabezpečením účtu a zobrazí se stránka s informacemi o nastavení účtu.](media/security-info/securityinfo-prompt-auth-app-setup-acct.png)
 
-3. Zůstat na **nastavili svůj účet** stránce během nastavení aplikace Microsoft Authenticator na vašem mobilním zařízení.
+3. Při nastavování aplikace Microsoft Authenticator na mobilním zařízení zůstat na stránce **Nastavení účtu** .
 
-4. Otevřete aplikaci Microsoft Authenticator, výběrem ji povolte oznámení (Pokud se zobrazí výzva), vyberte **přidat účet** z **přizpůsobení a řízení** ikonu v pravém horním rohu a pak vyberte **pracovní nebo školní účet**.
+4. Otevřete aplikaci Microsoft Authenticator, vyberte, jestli se mají zobrazovat oznámení (Pokud se zobrazí výzva), vyberte **Přidat účet** z ikony **přizpůsobení a řízení** v pravém horním rohu a pak vyberte **pracovní nebo školní účet**.
 
-5. Zpět **nastavili svůj účet** stránky ve vašem počítači a potom vyberte **Další**.
+5. Vraťte se na váš počítač na stránku **Nastavení účtu** a pak vyberte **Další**.
 
-    **Naskenovat kód QR** se zobrazí stránka.
+    Zobrazí se stránka **Kontrola kódu QR** .
 
-    ![Skenování kódu QR pomocí ověřovací aplikace](media/security-info/securityinfo-prompt-auth-app-qrcode.png)
+    ![Naskenování kódu QR pomocí ověřovací aplikace](media/security-info/securityinfo-prompt-auth-app-qrcode.png)
 
-6. Naskenujte poskytnutý kód pomocí čtečky kódu aplikace QR Microsoft Authenticator, která se nacházela na svém mobilním zařízení po vytvoření pracovní nebo školní účet v kroku 5.
+6. Vyhledejte zadaný kód pomocí čtečky kódu QR Microsoft Authenticator App, která se objevila na vašem mobilním zařízení po vytvoření pracovního nebo školního účtu v kroku 5.
 
-    Aplikace authenticator by měla úspěšně přidat váš pracovní nebo školní účet bez nutnosti jakýchkoli dalších informací od vás. Nicméně pokud kód nelze číst čtečka kód QR, můžete vybrat **nejde kontrolovat na odkaz kódu QR** a ručně zadat kód a adresu URL do aplikace Microsoft Authenticator. Další informace o ručním přidání kód, naleznete v tématu [ručně přidat účet do aplikace](user-help-auth-app-add-account-manual.md).
+    Aplikace ověřovatele by měla úspěšně přidat svůj pracovní nebo školní účet bez nutnosti jakýchkoli dalších informací. Nicméně pokud čtecí modul QR Code nemůže přečíst kód, můžete vybrat **odkaz Nekontrolovat kód QR** a ručně zadat kód a adresu URL do aplikace Microsoft Authenticator. Další informace o ručním přidání kódu najdete v tématu [Ruční přidání účtu do aplikace](user-help-auth-app-add-account-manual.md).
 
-7. Vyberte **Další** na **naskenovat kód QR** stránky ve vašem počítači.
+7. V počítači vyberte **Další** na stránce **Kontrola kódu QR** .
 
-    Oznámení odesílat do aplikace Microsoft Authenticator na vašem mobilním zařízení, otestovat svůj účet.
+    Do aplikace Microsoft Authenticator na vašem mobilním zařízení se pošle oznámení, aby se Váš účet otestoval.
 
-    ![Testování účtu v ověřovací aplikaci](media/security-info/securityinfo-prompt-test-app.png)
+    ![Testování účtu pomocí ověřovací aplikace](media/security-info/securityinfo-prompt-test-app.png)
 
 8. Schvalte oznámení v aplikaci Microsoft Authenticator a pak vyberte **Další**.
 
-    ![Oznámením o úspěšné připojení aplikace a váš účet](media/security-info/securityinfo-prompt-auth-app-success.png).
+    ![Oznámení o úspěšnosti, připojení aplikace a účtu](media/security-info/securityinfo-prompt-auth-app-success.png).
 
-    Vaše bezpečnostní údaje se aktualizuje a použít aplikaci Microsoft Authenticator ve výchozím nastavení při použití dvoustupňové ověření nebo heslo resetovat ověřit vaši identitu.
+    Vaše bezpečnostní údaje se aktualizují tak, aby ve výchozím nastavení používaly aplikaci Microsoft Authenticator k ověření vaší identity při použití dvoustupňového ověřování nebo resetování hesla.
 
-9. Na **Phone** stránky nastavení, vyberte, jestli chcete obdržet textovou zprávu nebo telefonní hovor a pak vyberte **Další**. Pro účely tohoto příkladu používáme textových zpráv, takže je nutné použít telefonní číslo zařízení, které můžou přijímat textové zprávy.
+9. Na stránce nastavení **telefonu** zvolte, jestli chcete dostávat textovou zprávu nebo telefonní hovor, a pak vyberte **Další**. Pro účely tohoto příkladu používáme textové zprávy, takže musíte použít telefonní číslo zařízení, které může přijímat textové zprávy.
 
-    ![Zahajte nastavení své telefonní číslo pro zasílání textových zpráv](media/security-info/securityinfo-prompt-text-msg.png)
+    ![Zahájení nastavování telefonního čísla pro zasílání textových zpráv](media/security-info/securityinfo-prompt-text-msg.png)
 
-    Na vaše telefonní číslo je odeslána textová zpráva. Pokud chcete získat telefonní hovor, proces je stejný. Ale obdržíte telefonický hovor s pokyny, nikoli textovou zprávu.
+    Do vašeho telefonního čísla se pošle textová zpráva. Pokud by to chtělo získat telefonní hovor, proces je stejný. Místo textové zprávy se ale zobrazí telefonní hovor s pokyny.
 
-10. Zadejte kód poskytuje textová zpráva byla odeslána na vaše mobilní zařízení a pak vyberte **Další**.
+10. Zadejte kód poskytnutý textovou zprávou odeslanou do mobilního zařízení a pak vyberte **Další**.
 
-    ![Testovat váš účet pomocí textové zprávy.](media/security-info/securityinfo-prompt-text-msg-enter-code.png)
+    ![Testování účtu pomocí textové zprávy](media/security-info/securityinfo-prompt-text-msg-enter-code.png)
 
-11. Zkontrolujte oznámením o úspěšné a pak vyberte **provádí**.
+11. Přečtěte si oznámení o úspěšnosti a potom vyberte Hotovo.
 
-    ![Oznámením o úspěšné](media/security-info/securityinfo-prompt-call-answered-success.png)
+    ![Oznámení o úspěchu](media/security-info/securityinfo-prompt-call-answered-success.png)
 
-    Vaše bezpečnostní údaje se aktualizuje a ověřit vaši identitu, při použití dvoustupňové ověření nebo heslo resetovat pomocí textové zprávy jako záložní metodu.
+    Vaše bezpečnostní údaje se aktualizují, aby používaly textové zasílání zpráv jako metodu zálohování k ověření vaší identity při použití dvoustupňového ověřování nebo resetování hesla.
 
-12. Zkontrolujte **úspěch** stránce ověřit, že jste úspěšně nastavili aplikaci Microsoft Authenticator a Telefon (textovou zprávu nebo telefonní hovor) metody pro vaše bezpečnostní údaje a pak vyberte **provádí** .
+12. Zkontrolujte stránku **úspěch** a ověřte, že jste úspěšně nastavili aplikaci Microsoft Authenticator a telefon (buď textovou zprávu nebo telefonní hovor) pro vaše bezpečnostní údaje, a pak vyberte Hotovo.
 
-    ![Stránka průvodce úspěšně dokončila.](media/security-info/securityinfo-prompt-setup-success.png)
+    ![Stránka průvodce byla úspěšně dokončena.](media/security-info/securityinfo-prompt-setup-success.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- Chcete-li změnit, odstranit, nebo výchozí zabezpečení informace o metodách aktualizace najdete:
+- Informace o tom, jak změnit, odstranit nebo aktualizovat výchozí bezpečnostní údaje, najdete v těchto tématech:
 
-    - [Nastavte si bezpečnostní údaje pro ověřovací aplikaci](security-info-setup-auth-app.md).
+    - [Nastavte bezpečnostní údaje pro ověřovací aplikaci](security-info-setup-auth-app.md).
 
-    - [Nastavte si bezpečnostní údaje pro zasílání textových zpráv](security-info-setup-text-msg.md).
+    - [Nastavte bezpečnostní údaje pro zasílání textových zpráv](security-info-setup-text-msg.md).
 
-    - [Nastavení informací o zabezpečení pro použití telefonní hovory](security-info-setup-phone-number.md).
+    - [Nastavte bezpečnostní údaje pro použití telefonních hovorů](security-info-setup-phone-number.md).
 
-    - [Nastavení informací o zabezpečení pro použití e-mailu](security-info-setup-email.md).
+    - [Nastavte bezpečnostní údaje pro použití e-mailu](security-info-setup-email.md).
 
-    - [Nastavte si bezpečnostní údaje použít předdefinované bezpečnostní otázky](security-info-setup-questions.md).
+    - [Nastavte bezpečnostní údaje pro použití předem definovaných bezpečnostních otázek](security-info-setup-questions.md).
 
-- Informace o tom, jak se přihlásit pomocí zadanou metodu naleznete v tématu [přihlášení](user-help-sign-in.md).
+- Informace o tom, jak se pomocí zadané metody přihlásit, najdete v tématu [jak se přihlásit](user-help-sign-in.md).
 
-- Resetování hesla, pokud jste ztratíte nebo zapomenete, z [portál pro resetování hesel](https://passwordreset.microsoftonline.com/) nebo postupujte podle kroků v [obnovit heslo pracovního nebo školního](user-help-reset-password.md) článku.
+- Resetujte heslo, pokud jste ho ztratili nebo zapomněli z [portálu pro resetování hesla](https://passwordreset.microsoftonline.com/) , nebo postupujte podle pokynů v článku [resetování svého pracovního nebo školního hesla](user-help-reset-password.md) .
 
-- Získejte řešení potíží, tipy a nápovědu pro problémy s přihlášením v [nemůžete se přihlásit ke svému účtu Microsoft](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant) článku.
+- Získejte tipy pro řešení potíží a nápovědu k problémům s přihlášením v tématu se nemůžete [přihlásit k vašemu účet Microsoft](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant) .
