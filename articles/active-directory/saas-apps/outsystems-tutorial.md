@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory s Azure AD OutSystems | Dokumentace Microsoftu'
-description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a OutSystems Azure AD.
+title: 'Kurz: Azure Active Directory integrace s předsystémy Azure AD | Microsoft Docs'
+description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a subsystémy Azure AD.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,135 +13,135 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 05/30/2019
+ms.date: 07/18/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c5c689c6624a47a01e8e85c8aec33b956459981f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7f631a641ab63d33d27d1e4520a000b4b01132be
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67095372"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68478567"
 ---
-# <a name="tutorial-integrate-outsystems-azure-ad-with-azure-active-directory"></a>Kurz: Integrace OutSystems Azure AD se službou Azure Active Directory
+# <a name="tutorial-integrate-outsystems-azure-ad-with-azure-active-directory"></a>Kurz: Integrace subsystémů Azure AD s Azure Active Directory
 
-V tomto kurzu se dozvíte, jak integrovat OutSystems Azure AD se službou Azure Active Directory (Azure AD). Když integrujete OutSystems Azure AD službou Azure AD, můžete:
+V tomto kurzu se dozvíte, jak integrovat Azure AD s Azure Active Directory (Azure AD). Když integrujete subsystémy Azure AD s Azure AD, můžete:
 
-* Ovládací prvek ve službě Azure AD, který má přístup k OutSystems Azure AD.
-* Aby uživatelé mohli být automaticky přihlášeni k OutSystems Azure AD pomocí svých účtů služby Azure AD.
-* Správa účtů v jednom centrálním místě – na webu Azure portal.
+* Řízení ve službě Azure AD, která má přístup k předsystémům Azure AD.
+* Umožněte, aby se vaši uživatelé automaticky přihlásili k předplatnému Azure AD s jejich účty Azure AD.
+* Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-Další informace o integraci aplikací SaaS v Azure AD, najdete v článku [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Abyste mohli začít, potřebujete následující položky:
+Chcete-li začít, potřebujete následující položky:
 
 * Předplatné služby Azure AD. Pokud předplatné nemáte, můžete získat [bezplatný účet](https://azure.microsoft.com/free/).
-* OutSystems Azure AD jednotné přihlašování (SSO) povolené předplatné.
+* Předchází předplatnému služby Azure AD s povoleným jednotným přihlašováním (SSO).
 
 ## <a name="scenario-description"></a>Popis scénáře
 
-V tomto kurzu nakonfigurovat a otestovat jednotné přihlašování služby Azure AD v testovacím prostředí. OutSystems Azure AD podporuje **SP a zprostředkovatele identity** iniciované jednotné přihlašování a podporuje **JIT** zřizování uživatelů.
+V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí. Služba Azure AD podporuje **aktualizace SP a IDP** , která iniciovala jednotné přihlašování, a podporuje **pouze dobu** zřizování uživatelů.
 
-## <a name="adding-outsystems-azure-ad-from-the-gallery"></a>Přidání OutSystems Azure AD z Galerie
+## <a name="adding-outsystems-azure-ad-from-the-gallery"></a>Přidání subsystémů Azure AD z Galerie
 
-Pokud chcete nakonfigurovat integraci OutSystems Azure AD do služby Azure AD, budete muset přidat OutSystems Azure AD z Galerie na váš seznam spravovaných aplikací SaaS.
+Pokud chcete nakonfigurovat integraci subsystémů Azure AD do Azure AD, musíte do seznamu spravovaných aplikací pro SaaS přidat z Galerie službu Azure AD.
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účtu Microsoft.
-1. V levém navigačním podokně, vyberte **Azure Active Directory** služby.
-1. Přejděte do **podnikové aplikace** a pak vyberte **všechny aplikace**.
-1. Chcete-li přidat novou aplikaci, **novou aplikaci**.
-1. V **přidat z Galerie** části, zadejte **OutSystems Azure AD** do vyhledávacího pole.
-1. Vyberte **OutSystems Azure AD** z výsledků panelu a pak přidat aplikaci. Počkejte několik sekund, zatímco aplikace se přidá do vašeho tenanta.
+1. V levém navigačním podokně vyberte službu **Azure Active Directory** .
+1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace**.
+1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
+1. V části **Přidat z Galerie** do vyhledávacího pole zadejte **"Azure AD"** .
+1. Z panelu výsledků vyberte možnost podsystémy **Azure AD** a pak aplikaci přidejte. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
 
-Nakonfigurovat a otestovat jednotné přihlašování služby Azure AD s názvem Azure AD pomocí testovacího uživatele OutSystems **B. Simon**. Pro jednotné přihlašování pro práci budete muset vytvořit vztah odkazu mezi uživatele služby Azure AD a související uživatel v OutSystems Azure AD.
+Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí služby Azure AD s využitím testovacího uživatele s názvem **B. Simon**. Aby jednotné přihlašování fungovalo, je potřeba vytvořit propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v systému Azure AD.
 
-Nakonfigurovat a otestovat jednotné přihlašování služby Azure AD s OutSystems Azure AD, proveďte následující stavebních bloků:
+Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí služby Azure AD, dokončete následující stavební bloky:
 
-1. **[Konfigurace jednotného přihlašování k Azure AD](#configure-azure-ad-sso)**  aby uživatelé mohli tuto funkci používat.
-2. **[Konfigurace služby Azure AD OutSystems](#configure-outsystems-azure-ad)**  ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
-3. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  k otestování služby Azure AD jednotné přihlašování s B. Simon.
-4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  umožňující B. Simon používat Azure AD jednotného přihlašování.
-5. **[Vytvořit testovacího uživatele Azure AD OutSystems](#create-outsystems-azure-ad-test-user)**  mít protějšek B. Simon OutSystems Azure AD, který je propojený s Azure AD reprezentace uživatele.
-6. **[Otestovat jednotné přihlašování](#test-sso)**  ověřit, jestli funguje v konfiguraci.
+1. **[NAKONFIGURUJTE jednotné přihlašování Azure AD](#configure-azure-ad-sso)** , aby vaši uživatelé mohli používat tuto funkci.
+2. **[Konfigurace podsystémů Azure AD](#configure-outsystems-azure-ad)** pro konfiguraci nastavení jednotného přihlašování na straně aplikace
+3. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** pro testování jednotného přihlašování Azure AD pomocí B. Simon.
+4. Pokud chcete povolit B. Simon používat jednotné přihlašování Azure AD, **[přiřaďte testovacímu uživateli Azure AD](#assign-the-azure-ad-test-user)** .
+5. **[Vytvořte si testovacího uživatele Azure AD](#create-outsystems-azure-ad-test-user)** , který bude mít protějšek B. Simon v systému Azure AD, který je propojený s reprezentací uživatele Azure AD.
+6. **[Otestujte jednotné přihlašování](#test-sso)** a ověřte, jestli konfigurace funguje.
 
-### <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování k Azure AD
+### <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování Azure AD
 
-Použijte následující postup povolení jednotného přihlašování Azure AD na webu Azure Portal.
+Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal.
 
-1. V [webu Azure portal](https://portal.azure.com/)na **OutSystems Azure AD** stránky integrace aplikací, najdete **spravovat** a vyberte **jednotného přihlašování**.
-1. Na **vybrat jedinou metodu přihlašování** stránce **SAML**.
-1. Na **nastavte si jednotné přihlašování pomocí SAML** stránky, klikněte na ikonu úprav/pera **základní konfiguraci SAML** můžete upravit nastavení.
+1. V [Azure Portal](https://portal.azure.com/)na stránce **Azure AD** Application Integration najděte část **Správa** a vyberte **jednotné přihlašování**.
+1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu Upravit/pero pro **základní konfiguraci SAML** a upravte nastavení.
 
-   ![Upravit konfiguraci základní SAML](common/edit-urls.png)
+   ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
-1. Na **základní konfiguraci SAML** části, pokud chcete nakonfigurovat aplikace v **IDP** iniciované režimu, proveďte následující kroky:
+1. Pokud chcete nakonfigurovat aplikaci v režimu iniciované **IDP** , proveďte v **základní části Konfigurace SAML** následující kroky:
 
-    a. V **identifikátor** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `http://<YOURBASEURL>/IdP`
+    a. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru:`http://<YOURBASEURL>/IdP`
 
-    b. V **adresy URL odpovědi** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://<YOURBASEURL>/IdP/SSO.aspx`
+    b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru:`https://<YOURBASEURL>/IdP/SSO.aspx`
 
-1. Klikněte na tlačítko **nastavit další adresy URL** a provést následující krok, pokud chcete nakonfigurovat aplikace v **SP** iniciované režimu:
+1. Klikněte na **nastavit další adresy URL** a proveďte následující krok, pokud chcete nakonfigurovat aplikaci v režimu iniciované **SP** :
 
-    V **přihlašovací adresa URL** textové pole, zadejte adresu URL, pomocí následujícího vzorce:  `https://<YOURBASEURL>`
+    Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://<YOURBASEURL>`
 
     > [!NOTE]
-    > Tyto hodnoty nejsou skutečný. Aktualizujte tyto hodnoty skutečnou adresu URL identifikátor, adresa URL odpovědi a přihlašování. Kontakt [tým podpory OutSystems klienta](mailto:support@outsystems.com) k získání těchto hodnot. Můžete také odkazovat na tyto vzory se dají ukazuje **základní konfiguraci SAML** části webu Azure Portal.
+    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným identifikátorem, adresou URL odpovědi a přihlašovací adresou URL. Pokud chcete získat tyto hodnoty, obraťte se na [tým podpory pro klienty](mailto:support@outsystems.com) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
-1. Na **nastavte si jednotné přihlašování pomocí SAML** stránku, **podpisový certifikát SAML** části, Najít **kód XML metadat federace** a vyberte **Stáhnout** stáhněte certifikát a uložte ho do počítače.
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** Najděte **XML metadata federace** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do svého počítače.
 
    ![Odkaz ke stažení certifikátu](common/metadataxml.png)
 
-1. Na **nastavení OutSystems Azure AD** tématu, zkopírujte příslušné adresy URL na základě vašich požadavků.
+1. V části **nastavení systému Azure AD** zkopírujte příslušné adresy URL na základě vašeho požadavku.
 
-   ![Zkopírování adresy URL konfigurace](common/copy-configuration-urls.png)
+   ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
 
-### <a name="configure-outsystems-azure-ad"></a>Konfigurace OutSystems Azure AD
+### <a name="configure-outsystems-azure-ad"></a>Konfigurace subsystémů Azure AD
 
-Ke konfiguraci jednotného přihlašování na **OutSystems** straně, je nutné odeslat na stažený **kód XML metadat federace** a vhodné zkopírovaný adresy URL z webu Azure portal [OutSystems týmpodpory](mailto:support@outsystems.com). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
+Ke konfiguraci jednotného přihlašování na straně systému je potřeba stáhnout komponentu [IDP zfalšovat](https://www.outsystems.com/forge/component-overview/599/idp) , nakonfigurovat ji tak, jak je uvedeno v [pokynech](https://success.outsystems.com/Documentation/Development_FAQs/How_to_configure_OutSystems_to_use_identity_providers_using_SAML#Configure_your_application_to_use_IdP_connector). Po instalaci komponenty a provedení potřebných změn kódu nakonfigurujte službu Azure AD stažením federačních metadat XML z Azure Portal a nahráním do komponenty IdP v systému, podle následujících [pokynů](https://success.outsystems.com/Documentation/Development_FAQs/How_to_configure_OutSystems_to_use_identity_providers_using_SAML#Azure_AD_.2F_ADFS).
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
 
-V této části vytvoříte testovacího uživatele na webu Azure Portal volá B. Simon.
+V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
-1. V levém podokně webu Azure Portal vyberte **Azure Active Directory**vyberte **uživatelé**a pak vyberte **všichni uživatelé**.
+1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
 1. Vyberte **nového uživatele** v horní části obrazovky.
-1. V **uživatele** vlastností, postupujte podle těchto kroků:
+1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B. Simon`.  
-   1. V **uživatelské jméno** zadejte username@companydomain.extension. Například, `BrittaSimon@contoso.com`.
-   1. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí **heslo** pole.
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `BrittaSimon@contoso.com`.
+   1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
    1. Klikněte na možnost **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
-V této části povolíte B. Simon používat jednotné přihlašování Azure díky udělení přístupu k OutSystems Azure AD.
+V této části povolíte B. Simon používat jednotné přihlašování pomocí Azure tím, že udělíte přístup k předsystémům Azure AD.
 
-1. Na webu Azure Portal, vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
-1. V seznamu aplikací vyberte **OutSystems Azure AD**.
-1. Na stránce Přehled aplikace najít **spravovat** a vyberte **uživatelů a skupin**.
+1. V Azure Portal vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. V seznamu aplikace vyberte možnost podsystémy **Azure AD**.
+1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
 
    ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
 
-1. Vyberte **přidat uživatele**a pak vyberte **uživatelů a skupin** v **přidat přiřazení** dialogového okna.
+1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
     ![Odkaz Přidat uživatele](common/add-assign-user.png)
 
-1. V **uživatelů a skupin** dialogového okna, vyberte **B. Simon** ze seznamu uživatelů, klikněte **vyberte** tlačítko v dolní části obrazovky.
-1. Pokud očekáváte libovolná hodnota role v kontrolní výraz SAML v **vybrat roli** dialogového okna, vyberte vhodnou roli pro uživatele ze seznamu a klikněte **vyberte** tlačítko v dolní části obrazovky.
-1. V **přidat přiřazení** dialogového okna, klikněte na tlačítko **přiřadit** tlačítko.
+1. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **B. Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+1. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+1. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
 
-### <a name="create-outsystems-azure-ad-test-user"></a>Vytvořit testovacího uživatele OutSystems Azure AD
+### <a name="create-outsystems-azure-ad-test-user"></a>Vytvoření subsystémů Azure AD Test User
 
-V této části se vytvoří uživateli Britta Simon v OutSystems. OutSystems podporuje zřizování uživatelů v čase, který je ve výchozím nastavení povolené. Neexistuje žádná položka akce pro vás v této části. Pokud uživatel již neexistuje mezi OutSystems, vytvoří se nový po ověření.
+V této části se v podsystémech vytvoří uživatel s názvem B. Simon. V systému je podporováno zřizování uživatelů za běhu, což je ve výchozím nastavení povoleno. V této části není žádná položka akce. Pokud uživatel v podsystémech ještě neexistuje, vytvoří se po ověření nový.
 
 ### <a name="test-sso"></a>Test SSO
 
-Když vyberete dlaždici OutSystems Azure AD na přístupovém panelu, vám by měl být automaticky přihlášeni k OutSystems Azure AD, u kterého nastavíte jednotné přihlašování. Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když na přístupovém panelu vyberete dlaždici služby Azure AD, měli byste být automaticky přihlášeni k systému Azure AD, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další zdroje
 
 - [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

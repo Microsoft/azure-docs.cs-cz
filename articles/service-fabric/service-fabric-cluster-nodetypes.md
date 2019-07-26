@@ -1,6 +1,6 @@
 ---
-title: Typy uzlů Service Fabric a Azure virtuálního počítače škálovací sady | Dokumentace Microsoftu
-description: Zjistěte, jak sady uzlů Azure Service Fabric, které se týkají typů škálování virtuálního počítače a jak pro vzdálené připojení ke škálovací sadu instance nebo uzel clusteru.
+title: Typy uzlů Service Fabric Azure a Virtual Machine Scale Sets | Microsoft Docs
+description: Přečtěte si, jak se typy uzlů Service Fabric Azure vztahují k sadám škálování virtuálních počítačů, a o tom, jak se vzdáleně připojit k instanci sady škálování nebo uzlu clusteru.
 services: service-fabric
 documentationcenter: .net
 author: ChackDan
@@ -14,34 +14,34 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/23/2018
 ms.author: chackdan
-ms.openlocfilehash: a5f8735df2b230de2b0ddcdcccff09430bada9e3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f33b25112b5c4ee77f1f7d2a419ffb8e926a27d9
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64684690"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68501361"
 ---
-# <a name="azure-service-fabric-node-types-and-virtual-machine-scale-sets"></a>Typy uzlů Service Fabric a Azure virtuálního počítače škálovací sady
-[Škálovací sady virtuálních počítačů](/azure/virtual-machine-scale-sets) jsou tedy výpočetní prostředek Azure. Škálovací sady můžete použít k nasazení a správě kolekce virtuálních počítačů jako sady. Každý typ uzlu, který definujete v clusteru Azure Service Fabric nastaví samostatné škálování.  Modul runtime Service Fabric nainstalovaný na každém virtuálním počítači ve škálovací sadě pomocí rozšíření Microsoft.Azure.ServiceFabric virtuálního počítače. Můžete nezávisle na sobě horizontální i vertikální škálování každého typu uzlu, změnit skladová položka operačního systému, které běží na všech uzlech clusteru, mají různé sady otevřených portů a použít různé metriky kapacity.
+# <a name="azure-service-fabric-node-types-and-virtual-machine-scale-sets"></a>Typy uzlů Service Fabric Azure a Virtual Machine Scale Sets
+Služby [Virtual Machine Scale Sets](/azure/virtual-machine-scale-sets) jsou výpočetním prostředkem Azure. Sady škálování můžete použít k nasazení a správě kolekce virtuálních počítačů jako sady. Každý typ uzlu, který definujete v clusteru Azure Service Fabric, nastaví samostatné škálování.  Modul runtime Service Fabric nainstalovaný na každém virtuálním počítači ve škále nastaveném rozšířením virtuálního počítače Microsoft. Azure. ServiceFabric. Můžete nezávisle škálovat jednotlivé typy uzlů nahoru nebo dolů, měnit skladovou jednotku operačního systému spuštěnou na každém uzlu clusteru, mít různé sady portů otevřené a používat jiné metriky kapacity.
 
-Následující obrázek znázorňuje cluster, který má dva typy uzlů s názvem front-endových a back-endu. Každý typ uzlu s pěti uzly.
+Následující obrázek ukazuje cluster, který má dva typy uzlů s názvem front-end a back-end. Každý typ uzlu má pět uzlů.
 
 ![Cluster, který má dva typy uzlů][NodeTypes]
 
-## <a name="map-virtual-machine-scale-set-instances-to-nodes"></a>Mapování instancí škálovací sady virtuálních počítačů do uzlů
-Jak je znázorněno na předchozím obrázku, instancí škálovací sady spuštění na instanci 0 a poté zvýšit o 1. Číslování se projeví v uzlu názvy. Například uzel BackEnd_0 je 0 instance škálovací sady back-endu. Tento konkrétní škálovací sady má pět instancí, s názvem BackEnd_0 BackEnd_1, BackEnd_2, BackEnd_3 a BackEnd_4.
+## <a name="map-virtual-machine-scale-set-instances-to-nodes"></a>Mapování instancí sady škálování virtuálního počítače na uzly
+Jak je znázorněno na předchozím obrázku, škálované instance sad se spustí v instanci 0 a pak se zvýší o 1. Číslování se projeví v názvech uzlů. Například Node BackEnd_0 je instance 0 sady škálování back-endu. Tato konkrétní sada škálování má pět instancí s názvem BackEnd_0, BackEnd_1, BackEnd_2, BackEnd_3 a BackEnd_4.
 
-Když vertikálně navýšit kapacitu škálovací sady, je vytvořena nová instance. Nový název instance škálovací sady je obvykle škálovací sady názvu plus číslo další instance. V našem příkladu je BackEnd_5.
+Při horizontálním navýšení kapacity se vytvoří nová instance. Nový název instance sady škálování je obvykle název sady škálování a další číslo instance. V našem příkladu je to BackEnd_5.
 
-## <a name="map-scale-set-load-balancers-to-node-types-and-scale-sets"></a>Mapování nástroje pro vyrovnávání zatížení škálovací sady na typy uzlů a škálovací sady
-Pokud váš cluster na webu Azure Portal nasadit nebo použít ukázkové šablony Azure Resource Manageru, jsou uvedeny všechny prostředky ve skupině prostředků. Můžete zobrazit nástroje pro vyrovnávání zatížení pro každou škálovací sady nebo uzel typu. Název nástroje pro vyrovnávání zatížení používá následující formát: **LB -&lt;název typu uzlu&gt;** . Příkladem je LB-sfcluster4doc-0, jak je znázorněno na následujícím obrázku:
+## <a name="map-scale-set-load-balancers-to-node-types-and-scale-sets"></a>Škálování mapy – nastavení nástrojů pro vyrovnávání zatížení na typy uzlů a sady škálování
+Pokud jste cluster nasadili v Azure Portal nebo jste použili ukázkovou šablonu Azure Resource Manager, zobrazí se všechny prostředky v rámci skupiny prostředků. Nástroje pro vyrovnávání zatížení můžete zobrazit pro jednotlivé sady škálování nebo typy uzlů. Název nástroje pro vyrovnávání zatížení používá následující formát: **&lt;Názevtypuv-9,1&gt;** . Příklad je sfcluster4doc-0, jak je znázorněno na následujícím obrázku:
 
 ![Zdroje a prostředky][Resources]
 
-## <a name="service-fabric-virtual-machine-extension"></a>Rozšíření virtuálních počítačů Service Fabric
-Rozšíření virtuálních počítačů Service Fabric umožňuje spustit Service Fabric pro Azure Virtual Machines a konfigurace zabezpečení uzlu.
+## <a name="service-fabric-virtual-machine-extension"></a>Service Fabric rozšíření virtuálního počítače
+Service Fabric rozšíření virtuálního počítače se používá ke spuštění Service Fabric do Azure Virtual Machines a konfiguraci zabezpečení uzlů.
 
-Fragment kódu rozšíření virtuálních počítačů Service Fabric je následující:
+Následuje fragment Service Fabric rozšíření virtuálního počítače:
 
 ```json
 "extensions": [
@@ -60,6 +60,7 @@ Fragment kódu rozšíření virtuálních počítačů Service Fabric je násle
          "durabilityLevel": "Silver",
          "enableParallelJobs": true,
          "nicPrefixOverride": "[variables('subnet0Prefix')]",
+         "dataPath": "D:\\\\SvcFab",
          "certificate": {
            "commonNames": [
              "[parameters('certificateCommonName')]"
@@ -72,29 +73,30 @@ Fragment kódu rozšíření virtuálních počítačů Service Fabric je násle
    },
 ```
 
-Následují popisy vlastností:
+Níže jsou uvedeny popisy vlastností:
 
 | **Název** | **Povolené hodnoty** | ** --- ** | **Doprovodné materiály nebo krátký popis** |
 | --- | --- | --- | --- |
-| name | string | --- | Jedinečný název pro rozšíření |
-| type | "ServiceFabricLinuxNode" nebo "ServiceFabricWindowsNode | --- | Identifikuje se na spuštění operačního systému Service Fabric |
-| autoUpgradeMinorVersion | PRAVDA nebo NEPRAVDA | --- | Povolit automatický Upgrade modulu Runtime SF podverze |
-| publisher | Microsoft.Azure.ServiceFabric | --- | Název vydavatele rozšíření Service Fabric |
-| clusterEndpont | string | --- | URI:port ke koncovému bodu správy |
-| nodeTypeRef | string | --- | Název nodeType |
-| durabilityLevel | bronzová, silver, zlatá, platinum | --- | čas, moct pozastavit neměnná infrastruktura Azure |
-| enableParallelJobs | PRAVDA nebo NEPRAVDA | --- | Odebrání virtuálního počítače a pak virtuální počítač ve stejné škálovací sadě paralelně, jako jsou výpočetní ParallelJobs povolit |
-| nicPrefixOverride | string | --- | Předpona podsítě jako "10.0.0.0/24" |
-| commonNames | řetězec] | --- | Běžné názvy certifikátů nainstalovaných clusteru |
-| x509StoreName | string | --- | Název Store, ve kterém se nachází certifikát nainstalovaný clusteru |
-| typeHandlerVersion | 1.1 | --- | Verze rozšíření. 1.0 klasickou verzi rozšíření se doporučuje upgradovat na hodnotu 1.1 |
+| name | řetězec | --- | jedinečný název pro rozšíření |
+| type | "ServiceFabricLinuxNode" nebo "ServiceFabricWindowsNode" | --- | Identifikuje Service Fabric operačního systému. |
+| autoUpgradeMinorVersion | true nebo false | --- | Povolit automatický upgrade dílčích verzí SF modulu runtime |
+| publisher | Microsoft.Azure.ServiceFabric | --- | název vydavatele rozsahu Service Fabric |
+| clusterEndpont | řetězec | --- | Identifikátor URI: PORT pro koncový bod správy |
+| nodeTypeRef | řetězec | --- | název nodeType |
+| durabilityLevel | bronzová, stříbrná, zlatá, Platinum | --- | doba, po kterou je možné pozastavit neproměnlivou infrastrukturu Azure |
+| enableParallelJobs | true nebo false | --- | Povolte výpočetní ParallelJobs, jako je například odebrat virtuální počítač a restartovat virtuální počítač ve stejné sadě škálování paralelně. |
+| nicPrefixOverride | řetězec | --- | Předpona podsítě jako 10.0.0.0/24 |
+| commonNames | řetězec [] | --- | Běžné názvy instalovaných certifikátů clusteru |
+| x509StoreName | řetězec | --- | Název úložiště, ve kterém je umístěný nainstalovaný certifikát clusteru |
+| typeHandlerVersion | 1.1 | --- | Verze rozšíření pro upgrade na 1,1 se doporučuje používat klasickou verzi 1,0. |
+| Cesta k DataPath | řetězec | --- | Cesta k jednotce, která slouží k uložení stavu pro Service Fabric systémových služeb a dat aplikací. 
 
 ## <a name="next-steps"></a>Další postup
-* Zobrazit [Přehled funkce "Nasazení kdekoli" a porovnání s využitím clusterů Azure managed](service-fabric-deploy-anywhere.md).
-* Další informace o [clusteru zabezpečení](service-fabric-cluster-security.md).
-* [Vzdálené připojení](service-fabric-cluster-remote-connect-to-azure-cluster-node.md) k instanci konkrétní škálovací sady
-* [Aktualizace hodnot rozsahu portů RDP](./scripts/service-fabric-powershell-change-rdp-port-range.md) v clusteru virtuální počítače po nasazení
-* [Změnit uživatelské jméno admin a heslo](./scripts/service-fabric-powershell-change-rdp-user-and-pw.md) pro virtuální počítače clusteru
+* Podívejte se na [Přehled funkce nasazení kamkoli a porovnání s clustery spravovanými Azure](service-fabric-deploy-anywhere.md).
+* Přečtěte si o [zabezpečení clusteru](service-fabric-cluster-security.md).
+* [Vzdálené připojení](service-fabric-cluster-remote-connect-to-azure-cluster-node.md) ke konkrétní instanci sady škálování
+* [Aktualizace hodnot rozsahu portů RDP](./scripts/service-fabric-powershell-change-rdp-port-range.md) na virtuálních počítačích clusteru po nasazení
+* [Změna uživatelského jména a hesla správce](./scripts/service-fabric-powershell-change-rdp-user-and-pw.md) pro virtuální počítače clusteru
 
 <!--Image references-->
 [NodeTypes]: ./media/service-fabric-cluster-nodetypes/NodeTypes.png

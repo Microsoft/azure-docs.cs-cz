@@ -1,24 +1,24 @@
 ---
-title: Dostupnost a výkon kompromisy pro různé úrovně konzistence ve službě Azure Cosmos DB
-description: Dostupnost a výkon kompromisy pro různé úrovně konzistence ve službě Azure Cosmos DB.
+title: Kompromisy týkající se dostupnosti a výkonu pro různé úrovně konzistence v Azure Cosmos DB
+description: Kompromisy týkající se dostupnosti a výkonu pro různé úrovně konzistence v Azure Cosmos DB.
 author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/21/2019
+ms.date: 07/23/2019
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: 09777a9980e4576a5d00123516e33696e845dcac
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2d80e291b3c054fec92b169c8a216a7189e24b79
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65990225"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68384199"
 ---
 # <a name="consistency-availability-and-performance-tradeoffs"></a>Kompromisy mezi konzistencí, dostupností a výkonem 
 
-Distribuované databáze, které závisí na replikaci pro vysokou dostupnost a nízkou latencí musíte dělat kompromisy. Nevýhody jsou mezi konzistence čtení a dostupnosti, latence a propustnosti.
+Distribuované databáze, které spoléhají na replikaci při vysoké dostupnosti, nízké latenci nebo obojí, musí dělat kompromisy. Mezi kompromisy patří konzistence čtení oproti dostupnosti, latenci a propustnosti.
 
-Azure Cosmos DB blíží konzistence dat jako celé spektrum od volby. Tento přístup zahrnuje více možností než dvěma extrémy silné a konečné konzistence. Můžete vybrat z pěti jasně definované modely na spektra konzistence. Od nejsilnější do nejslabší, modely jsou:
+Azure Cosmos DB přistupuje k konzistenci dat jako spektrum možností. Tento přístup zahrnuje více možností než dvě extrémní silná a konečná konzistence. Pro spektrum konzistence si můžete vybrat z pěti dobře definovaných modelů. Od nejpřísnější až nejslabších jsou modely:
 
 - *Silné*
 - *Omezená neaktuálnost*
@@ -26,47 +26,47 @@ Azure Cosmos DB blíží konzistence dat jako celé spektrum od volby. Tento př
 - *Konzistentní předpona*
 - *Konečný výsledek*
 
-Každý model poskytuje dostupnost a výkon kompromisy a je zajištěná komplexní smlouvy SLA.
+Každý model poskytuje kompromisy k dostupnosti a výkonu a je zajištěný ucelenou SLA.
 
 ## <a name="consistency-levels-and-latency"></a>Úrovně konzistence a latence
 
-Latence čtení pro všechny úrovně konzistence je vždycky zaručená být kratší než 10 milisekund na 99. percentilu. Latence čtení je zajištěná smlouva SLA. Průměrná latence na 50. percentil, čtení, je obvykle 2 MS nebo nižší. Účty služby Azure Cosmos span několik oblastí, jež jsou nakonfigurovány s silná konzistence se výjimky této záruky.
+Latence čtení pro všechny úrovně konzistence je vždycky zaručená za méně než 10 milisekund na 99. percentilu. Tato latence čtení se zálohuje smlouvou SLA. Průměrná latence čtení v 50. percentilu má obvykle 2 milisekundy nebo méně. Účty Azure Cosmos, které jsou v několika oblastech a jsou nakonfigurované se silnými konzistencí, představují výjimku z této záruky.
 
-Latence zápisu pro všechny úrovně konzistence je vždycky zaručená být kratší než 10 milisekund na 99. percentilu. Latence zápisu je zajištěná smlouva SLA. Zápis průměrnou latenci, na 50. percentil, je obvykle 5 MS nebo nižší.
+Latence zápisu pro všechny úrovně konzistence je vždycky zaručená za méně než 10 milisekund na 99. percentilu. Tato latence zápisu se zálohuje smlouvou SLA. Průměrná latence zápisu na 50. percentilu je obvykle 5 milisekund nebo méně.
 
-Pro účty služby Azure Cosmos nakonfigurovanou silná konzistence s více než jedné oblasti latence zápisu je zaručeno, že bude menší než dvěma časy odezvy doba mezi dvěma oblastmi nejvíce plus 10 milisekund na 99. percentilu.
+U účtů Azure Cosmos nakonfigurovaných se silnou konzistencí s více než jednou oblastí je latence zápisu zaručená, aby byla kratší než dvojnásobná doba odezvy (RTT) mezi kteroukoli ze dvou nejvzdálenějších oblastí plus 10 milisekund na 99 percentilu.
 
-Přesné čekací doba požadavku je funkce rychlostí světla vzdálenosti a topologii sítě Azure. Sítě Azure neposkytuje žádné latence smlouvy o úrovni služeb pro požadavku mezi všechny dvou oblastech Azure. Pro váš účet Azure Cosmos latenci replikace se zobrazují na webu Azure Portal. Na webu Azure portal (přejděte do okna metrik) můžete použít ke sledování latence replikace mezi různými oblastmi, které jsou přidružené k vašemu účtu Azure Cosmos.
+Přesná latence RTT je funkce rychlosti a topologie sítě Azure. Azure Networking neposkytuje žádnou latenci SLA pro dobu odezvy mezi dvěma oblastmi Azure. Pro váš účet Azure Cosmos se latence replikace zobrazují v Azure Portal. K monitorování latencí replikace mezi různými oblastmi, které jsou přidružené k vašemu účtu Azure Cosmos, můžete použít Azure Portal (Přejít na okno metriky).
 
-## <a name="consistency-levels-and-throughput"></a>Úrovně konzistence a propustnosti
+## <a name="consistency-levels-and-throughput"></a>Úrovně konzistence a propustnost
 
-- Pro stejný počet jednotek žádostí zadejte asi dvakrát propustnost čtení při porovnání s silná, ohraničená odolnost relace, konzistentní Předpona a úrovně konzistence typu případné.
+- Stejný počet jednotek žádostí, relaci, konzistenci a konečné úrovně konzistence poskytují přibližně dvojnásobek propustnosti čtení ve srovnání se silnými a ohraničenými neaktuálními hodnotami.
 
-- Pro daný typ operace zápisu, jako jsou insert, replace, funkcí upsert a delete zápis propustnost za jednotky žádosti je shodné pro všechny úrovně konzistence.
+- Pro daný typ operace zápisu, například INSERT, Replace, Upsert a DELETE, je propustnost zápisu pro jednotky požadavků stejná pro všechny úrovně konzistence.
 
-## <a id="rto"></a>Konzistence úrovně a data odolnosti
+## <a id="rto"></a>Úrovně konzistence a trvanlivost dat
 
-V prostředí s globálně distribuovanou databázi je přímý vztah mezi konzistence odolnosti úroveň a dat za přítomnosti výpadku celé oblasti. Při vývoji plánu provozní kontinuity musíte pochopit maximální přijatelnou dobu, než úplného obnovení aplikace po ničivé události. Čas potřebný pro aplikaci k plnému obnovení se označuje jako **plánovaná doba obnovení** (**RTO**). Také musíte pochopit maximální období posledních aktualizací dat aplikace může tolerovat možnost ztráty při obnovení po ničivé události. Časové období aktualizací, které si může dovolit přijít o se označuje jako **cíl bodu obnovení** (**cíle bodu obnovení**).
+V globálně distribuovaném databázovém prostředí existuje přímý vztah mezi úrovní konzistence a odolností s daty v oblasti výpadku v rámci oblasti. Při vývoji plánu provozní kontinuity musíte pochopit maximální přijatelnou dobu, než se aplikace kompletně obnoví po přerušení události. Čas potřebný k úplnému obnovení aplikace je známý jako **cíl doby obnovení** (**RTO**). Také je potřeba porozumět maximálnímu intervalu nedávných aktualizací dat, které může aplikace tolerovat při obnovování po přerušení události. Časové období aktualizací, které můžete chtít ztratit, se označuje jako **cíl bodu obnovení** (**RPO**).
 
-Následující tabulka definuje vztahy mezi konzistence modelu a datům odolnosti za přítomnosti široké výpadku oblasti. Je důležité si uvědomit, že v distribuovaném systému i přes silná konzistence, není možné mít distribuované databáze s RPO a RTO nula kvůli věty. Další informace o tom, proč najdete v tématu [úrovně konzistence ve službě Azure Cosmos DB](consistency-levels.md).
+Následující tabulka definuje vztah mezi modelem konzistence a odolností dat při výpadku oblasti v oblasti výpadku v síti. Je důležité si uvědomit, že v distribuovaném systému, a to i se silnou konzistencí, není možné mít distribuovanou databázi s cílem RPO a RTO nula z důvodu věta CAP. Další informace o tom, proč najdete [v tématu úrovně konzistence v Azure Cosmos DB](consistency-levels.md).
 
-|**Položky nakoupené**|**Režim replikace**|**Úrovně konzistence**|**CÍL BODU OBNOVENÍ**|**RTO**|
+|**Oblast (y)**|**Režim replikace**|**Úrovně konzistence**|**OBNOVENÍ**|**RTO**|
 |---------|---------|---------|---------|---------|
-|1|Jednoho nebo několika hlavními databázemi|Všechny úrovně konzistence|< 240 minut|< 1 týden|
-|>1|Single Master|Relace, konzistentní předpona, konečný výsledek|< 15 minut|< 15 minut|
-|>1|Single Master|Omezená neaktuálnost|*K* & *T*|< 15 minut|
-|>1|Single Master|Silné|0|< 15 minut|
-|>1|Více hlavních databází|Relace, konzistentní předpona, konečný výsledek|< 15 minut|0|
-|>1|Více hlavních databází|Omezená neaktuálnost|*K* & *T*|0|
+|1|Jedna nebo více hlavních serverů|Jakákoli úroveň konzistence|< 240 minut|< 1 týden|
+|>1|Jedna hlavní|Relace, konzistentní předpona, případný|< 15 minut|< 15 minut|
+|>1|Jedna hlavní|Omezená neaktuálnost|*K* & *T*|< 15 minut|
+|>1|Jedna hlavní|Silné|0|< 15 minut|
+|>1|Vícenásobný hlavní|Relace, konzistentní předpona, případný|< 15 minut|0|
+|>1|Vícenásobný hlavní|Omezená neaktuálnost|*K* & *T*|0|
 
-*K* = počet *"K"* verze (například aktualizace) položky.
+*K* = počet verzí *"K"* (tj. aktualizace) položky.
 
-*T* = časový interval *"T"* od poslední aktualizace.
+*T* = časový interval *"t"* od poslední aktualizace.
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace o globální distribuci a obecné konzistence kompromisů v distribuovaných systémech. Viz následující články:
+Přečtěte si další informace o globální distribuci a obecných kompromisech konzistence v distribuovaných systémech. Viz následující články:
 
-- [Konzistence kompromisy v návrhu systémy moderní distribuované databáze](https://www.computer.org/csdl/magazine/co/2012/02/mco2012020037/13rRUxjyX7k)
+- [Návrh moderních systémů distribuovaných databází – kompromisy v konzistenci](https://www.computer.org/csdl/magazine/co/2012/02/mco2012020037/13rRUxjyX7k)
 - [Vysoká dostupnost](high-availability.md)
 - [Azure Cosmos DB SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_2/)

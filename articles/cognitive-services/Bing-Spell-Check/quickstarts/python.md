@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý start: Kontrola pravopisu pomocí rozhraní REST API kontrolu pravopisu Bingu a Pythonu.'
-titlesuffix: Azure Cognitive Services
-description: Začněte používat rozhraní API Bingu pro kontrolu pravopisu zkontrolujte REST pro kontrolu pravopisu a gramatiky.
+title: 'Rychlý start: Kontrola pravopisu pomocí Kontrola pravopisu Bingu REST API a Pythonu'
+titleSuffix: Azure Cognitive Services
+description: Začněte používat REST API Kontrola pravopisu Bingu pro kontrolu pravopisu a gramatiky.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,16 +10,16 @@ ms.subservice: bing-spell-check
 ms.topic: quickstart
 ms.date: 02/20/2019
 ms.author: aahi
-ms.openlocfilehash: e74cc01d9104ed4f26d857f3a99eb21e312a7f59
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: 90d026c12007d74de176d222e11b48d15c174855
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66389736"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68500978"
 ---
-# <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-python"></a>Rychlý start: Kontrola pravopisu pomocí rozhraní REST API kontrolu pravopisu Bingu a Pythonu.
+# <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-python"></a>Rychlý start: Kontrola pravopisu pomocí Kontrola pravopisu Bingu REST API a Pythonu
 
-V tomto rychlém startu můžete provést první volání do rozhraní API Bingu pro kontrolu pravopisu zkontrolujte REST. Tato jednoduchá aplikace Python odešle žádost na rozhraní API a vrátí seznam navrhovaných oprav. Aplikace je sice napsaná v Pythonu, ale rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků. Zdrojový kód pro tuto aplikaci je k dispozici na [Githubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/python/Search/BingEntitySearchv7.py)
+V tomto rychlém startu můžete provést první volání REST API Kontrola pravopisu Bingu. Tato jednoduchá aplikace v Pythonu pošle požadavek do rozhraní API a vrátí seznam navrhovaných oprav. Aplikace je sice napsaná v Pythonu, ale rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků. Zdrojový kód této aplikace je k dispozici na [GitHubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/python/Search/BingEntitySearchv7.py) .
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -29,14 +29,14 @@ V tomto rychlém startu můžete provést první volání do rozhraní API Bingu
 
 ## <a name="initialize-the-application"></a>Inicializace aplikace
 
-1. Vytvořte nový soubor Pythonu ve vašich oblíbených prostředím IDE nebo editorem a přidejte následující příkaz importu.
+1. Vytvořte nový soubor Pythonu v oblíbeném prostředí IDE nebo editoru a přidejte následující příkaz import.
 
    ```python
    import requests
    import json
    ```
 
-2. Vytváření proměnných pro text, který má napsat kontrolu, váš klíč předplatného a váš koncový bod pro kontrolu pravopisu Bingu.
+2. Vytvořte proměnné pro text, který chcete kontrolovat pravopis, klíč předplatného a váš koncový bod Kontrola pravopisu Bingu.
 
     ```python
     api_key = "<ENTER-KEY-HERE>"
@@ -44,15 +44,15 @@ V tomto rychlém startu můžete provést první volání do rozhraní API Bingu
     endpoint = "https://api.cognitive.microsoft.com/bing/v7.0/SpellCheck"
     ```
 
-## <a name="create-the-parameters-for-the-request"></a>Parametry pro žádost o vytvoření
+## <a name="create-the-parameters-for-the-request"></a>Vytvoření parametrů pro požadavek
 
-1. Vytvořit nový slovník s `text` jako klíč a text jako hodnotu.
+1. Vytvořte nový slovník s `text` jako klíč a text jako hodnotu.
 
     ```python
     data = {'text': example_text}
     ```
 
-2. Přidáte parametry pro vaši žádost. Připojit na trhu kódu po `mkt=`. Kód na trhu je země, které provedete žádost z. Navíc vaše režimu kontroly pravopisu po připojení `&mode=`. Režim je buď `proof` (zachytí většina pravopisné nebo gramatické chyby) nebo `spell` (zachycuje většinu pravopisu, ale ne tolik gramatické chyby).
+2. Přidejte parametry pro vaši žádost. Přidejte svůj kód na trhu `mkt=`po. Kód na trhu je země, ze které provedete požadavek. Také přidejte svůj režim kontroly pravopisu po `&mode=`. Režim je buď `proof` (catch nejvíc pravopisné/gramatické chyby `spell` ), nebo (catch nejvíc pravopisu, ale ne tolik gramatických chyb).
 
     ```python
     params = {
@@ -61,7 +61,7 @@ V tomto rychlém startu můžete provést první volání do rozhraní API Bingu
         }
     ```
 
-3. Přidat `Content-Type` záhlaví a klíč předplatného. Chcete `Ocp-Apim-Subscription-Key` záhlaví.
+3. Přidejte do `Ocp-Apim-Subscription-Key` záhlaví hlavičkuaklíčpředplatného.`Content-Type`
 
     ```python
     headers = {
@@ -70,22 +70,22 @@ V tomto rychlém startu můžete provést první volání do rozhraní API Bingu
         }
     ```
 
-## <a name="send-the-request-and-read-the-response"></a>Odeslat požadavek a čtení odpovědi
+## <a name="send-the-request-and-read-the-response"></a>Odeslat požadavek a přečíst odpověď
 
-1. Odešlete požadavek POST pomocí knihovny požadavky.
+1. Odešlete požadavek POST pomocí knihovny požadavků.
 
     ```python
     response = requests.post(endpoint, headers=headers, params=params, data=data)
     ```
 
-2. Získání odpovědi JSON a vytisknout je.
+2. Získejte odpověď JSON a vytiskněte ji.
 
     ```python
     json_response = response.json()
     print(json.dumps(json_response, indent=4))
     ```
 
-## <a name="example-json-response"></a>Příklad JSON odpovědi
+## <a name="example-json-response"></a>Příklad odpovědi JSON
 
 Úspěšná odpověď se vrátí ve formátu JSON, jak je znázorněno v následujícím příkladu:
 
@@ -130,7 +130,7 @@ V tomto rychlém startu můžete provést první volání do rozhraní API Bingu
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Vytvoření webové jednostránkové – aplikace](../tutorials/spellcheck.md)
+> [Vytvoření webové aplikace na jedné stránce](../tutorials/spellcheck.md)
 
-- [Co je API kontrola pravopisu Bingu?](../overview.md)
+- [Co je rozhraní API Bingu pro kontrolu pravopisu?](../overview.md)
 - [Referenční informace k rozhraní API pro kontrolu pravopisu Bingu v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference)

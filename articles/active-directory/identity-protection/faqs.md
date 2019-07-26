@@ -1,52 +1,46 @@
 ---
-title: Azure Active Directory Identity Protection – nejčastější dotazy | Dokumentace Microsoftu
-description: Nejčastější dotazy k Azure AD Identity Protection
+title: Nejčastější dotazy k Azure Active Directory Identity Protection | Microsoft Docs
+description: Nejčastější dotazy týkající se Azure AD Identity Protection
 services: active-directory
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: daveba
-ms.assetid: 14f7fc83-f4bb-41bf-b6f1-a9bb97717c34
 ms.service: active-directory
 ms.subservice: identity-protection
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 11/03/2017
 ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1bea455371938ccc4d512bdb7ffddd72eb9508da
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: cc02b8b5dccbec106e90430fc1714253df6ad847
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60454505"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68334017"
 ---
-# <a name="azure-active-directory-identity-protection-faq"></a>Azure Active Directory Identity Protection – nejčastější dotazy
+# <a name="azure-active-directory-identity-protection-faq"></a>Nejčastější dotazy k Azure Active Directory Identity Protection
 
-Tento článek obsahuje odpovědi na nejčastější dotazy týkající se Azure Active Directory (Azure AD) Identity Protection. Další informace najdete v tématu [Azure Active Directory Identity Protection](../active-directory-identityprotection.md). 
+Tento článek obsahuje odpovědi na nejčastější dotazy týkající se služby Azure Active Directory (Azure AD) Identity Protection. Další informace najdete v tématu [Azure Active Directory Identity Protection](../active-directory-identityprotection.md). 
 
+## <a name="why-do-some-risk-events-have-closed-system-status"></a>Proč některé rizikové události mají stav Uzavřeno (systém)?
 
-## <a name="why-do-some-risk-events-have-closed-system-status"></a>Proč se některé rizikové události mají stav "Uzavřeno (systém)"
-
-**Odpověď:** Došlo ke zjištění služba Identity Protection a později zavřít, protože události byly nelze nadále považovat za riziková tyto rizikové události. Tyto události není započítávat úroveň rizika uživatele. 
-
----
-
-## <a name="do-i-need-to-be-a-global-admin-to-use-identity-protection-in-the-azure-portal"></a>Je nutné být globálním správcem pro použití ochrany identit na portálu Azure portal?
-**Odpověď:** Ne. Může být buď Čtenář zabezpečení, správce zabezpečení nebo globální správce pro službu Identity Protection.
+**Odpověď:** Tyto rizikové události byly zjištěny ochranou identity a později uzavřeny, protože události již nebyly považovány za rizikové. Tyto události se nepočítají směrem k úrovni rizika uživatele. 
 
 ---
 
-## <a name="how-do-i-get-identity-protection"></a>Jak získat Identity Protection?
-
-**Odpověď:** Zobrazit [Začínáme se službou Azure Active Directory Premium](../fundamentals/active-directory-get-started-premium.md) pro odpověď na tuto otázku.
+## <a name="do-i-need-to-be-a-global-admin-to-use-identity-protection-in-the-azure-portal"></a>Je nutné být globálním správcem pro použití Identity Protection v Azure Portal?
+**Odpověď:** Ne. K používání ochrany identit můžete mít buď čtecí modul zabezpečení, správce zabezpečení nebo globální správce.
 
 ---
 
-## <a name="how-can-i-sort-users-in-users-flagged-for-risk"></a>Jakým způsobem lze řadit uživatelů v "Uživatelé označení příznakem rizika"?
+## <a name="how-do-i-get-identity-protection"></a>Návody získat Identity Protection?
 
-**Odpověď:** Stažení uživatelů označených příznakem rizika sestavy kliknutím **Stáhnout** v horní **uživatelé označení příznakem rizika** stránky. Potom můžete seřadit stažených dat na základě dostupných polí, včetně poslední aktualizace (UTC).
+**Odpověď:** Odpověď na tuto otázku najdete v tématu [Začínáme s Azure Active Directory Premium](../fundamentals/active-directory-get-started-premium.md) .
+
+---
+
+## <a name="how-can-i-sort-users-in-users-flagged-for-risk"></a>Jak mohu seřadit uživatele v části Uživatelé označení příznakem rizika?
+
+**Odpověď:** Stáhněte si sestavu uživatelé označení příznakem rizika kliknutím na **Stáhnout** v horní části stránky **Uživatelé označení příznakem rizika** . Stažená data pak můžete seřadit na základě dostupných polí včetně Poslední aktualizace (UTC).
 
 ---

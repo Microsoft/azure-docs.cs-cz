@@ -1,6 +1,6 @@
 ---
-title: Aktualizovat údaje skupiny z portálu Moje aplikace – Azure Active Directory | Dokumentace Microsoftu
-description: Zjistěte, jak zobrazit a aktualizovat skupiny související informace, včetně zobrazení skupin, které vlastníte, vytváření nových skupin, zobrazení skupin, ke kterým jste již členem a připojení k žádné skupiny ještě nejsou součástí.
+title: Aktualizujte informace o skupinách z portálu moje aplikace – Azure Active Directory | Microsoft Docs
+description: Naučte se, jak zobrazit a aktualizovat informace související se skupinami, včetně zobrazení skupin, které vlastníte, vytváření nových skupin, zobrazení skupin, do kterých už jste členem, a připojení ke skupinám, do kterých už jste členem.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -13,160 +13,172 @@ ms.author: lizross
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 578ca5fa1de338a92280e2dc7cc252fb616e2111
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a11b43d040dec838de350c23614ae42b6756ec6e
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64706695"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68383167"
 ---
-# <a name="update-your-groups-info-from-the-my-apps-portal"></a>Aktualizovat údaje skupiny z portálu Moje aplikace
-Můžete použít pracovní nebo školní účet s webovou **Moje aplikace** portál, zobrazit a spustit řadu aplikace vaší organizace založené na cloudu, chcete-li aktualizovat některé z vašeho profilu a účtu informace zobrazíte vaše **skupiny** informace a k provádění **kontrol přístupu** vašich aplikací a skupin. Pokud nemáte přístup k **Moje aplikace** portálu, musíte požádat o Helpdesk oprávnění.
+# <a name="update-your-groups-info-from-the-my-apps-portal"></a>Aktualizace informací o skupinách z portálu moje aplikace
+
+Svůj pracovní nebo školní účet můžete použít s portálem web **Moje aplikace** , abyste mohli zobrazit a spustit spoustu cloudových aplikací vaší organizace, abyste mohli aktualizovat některé z vašich informací o profilu a účtu, abyste viděli informace o **skupinách** a mohli provádět  **kontroly přístupu** pro vaše aplikace a skupiny. Pokud nemáte přístup k portálu **Moje aplikace** , musíte se obrátit na helpdesk, aby vám udělil oprávnění.
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-my-apps-portal.md)]
 
 >[!Important]
->Tento obsah je určený pro uživatele. Pokud jste správce, najdete další informace o tom, jak nastavit a spravovat vaše cloudové aplikace v [aplikací](https://docs.microsoft.com/azure/active-directory/manage-apps).
+>Tento obsah je určený pro uživatele. Pokud jste správce, můžete najít další informace o tom, jak nastavit a spravovat cloudové aplikace v [dokumentaci pro správu aplikací](https://docs.microsoft.com/azure/active-directory/manage-apps).
 
 ## <a name="view-your-groups-information"></a>Zobrazit informace o skupinách
-Pokud vám správce udělil oprávnění k zobrazení **skupiny** dlaždice, můžete:
 
-- **Jako člena skupiny.** Zobrazit podrobnosti nebo nechte libovolnou skupinu.
+Pokud vám správce udělil oprávnění k zobrazení dlaždice **skupiny** , můžete:
 
-- **Jako vlastníka skupiny.** Zobrazit podrobnosti, vytvořte novou skupinu, přidat nebo odebrat členy nebo odstraňte vaši skupinu.
+- **Jako člen skupiny.** Zobrazit podrobnosti nebo opustit libovolnou skupinu.
 
-### <a name="to-view-your-groups-information"></a>Chcete-li zobrazit informace o skupinách
+- **Jako vlastník skupiny.** Zobrazit podrobnosti, vytvořit novou skupinu, přidat nebo odebrat členy nebo odstranit skupinu.
 
-1.  Přihlaste se ke svému pracovnímu nebo školnímu účtu.
+### <a name="to-view-your-groups-information"></a>Zobrazení informací o skupinách
 
-2.  Otevřete webový prohlížeč a přejděte na https://myapps.microsoft.com, nebo použijte odkaz, poskytnuté vaší organizací. Například je může přesměrováni na upravené stránky pro vaši organizaci, jako https://myapps.microsoft.com/contoso.com.
+1. Přihlaste se ke svému pracovnímu nebo školnímu účtu.
 
-    **Aplikace** vlastněné vaší organizací a k dispozici pro použití se zobrazí stránka zobrazuje všechny cloudové aplikace.
+2. Otevřete webový prohlížeč a pokračujte na https://myapps.microsoft.com nebo použijte odkaz poskytovaný vaší organizací. Například můžete být přesměrováni na přizpůsobenou stránku vaší organizace, https://myapps.microsoft.com/contoso.com jako je například.
 
-    ![Stránky aplikací na portálu Moje aplikace](media/my-apps-portal/my-apps-portal-apps-page-groups-tile.png)
+    Zobrazí se stránka **aplikace** s informacemi o cloudových aplikacích vlastněných vaší organizací a k dispozici pro použití.
 
-3. Vyberte **skupiny** dlaždici zobrazíte informace týkající se skupiny.
+    ![Stránka aplikace na portálu moje aplikace](media/my-apps-portal/my-apps-portal-apps-page-groups-tile.png)
 
-    ![Stránce skupiny v rámci vlastní a členské skupiny](media/my-apps-portal/my-apps-portal-groups-page.png)
+3. Kliknutím na dlaždici **skupiny** zobrazíte informace související se skupinami.
 
-4. V závislosti na vašem oprávnění, můžete využít **skupiny** stránce:
+    ![Stránka skupin s vlastními a skupinami členů](media/my-apps-portal/my-apps-portal-groups-page.png)
 
-    - **Zkontrolujte skupiny, které vlastníte.** Zobrazit informace o všech skupin, které vlastní v rámci vaší organizace z **skupiny moje** oblasti. Vyberte název určité skupiny poskytuje další podrobnosti o skupiny, včetně typ skupiny, počet členů, zásady připojení a seznam aktivních členů.
+4. Na základě vašich oprávnění můžete použít stránku **skupiny** k těmto akcím:
 
-    - **Vytvořte novou skupinu.** Vytvořte novou skupinu jako vlastníka z s vámi **skupiny moje** oblasti. Konkrétní pokyny najdete v článku [vytvořte novou skupinu](#create-a-new-group) části tohoto článku.
+    - **Zkontrolujte skupiny, které vlastníte.** Zobrazte si informace o všech skupinách, které ve vaší organizaci vlastníte, ze **skupin** , které vlastníte v oblasti. Výběrem konkrétního názvu skupiny získáte další podrobnosti o skupině, včetně typu skupiny, počtu členů, zásad spojení a seznamu aktivních členů.
 
-    - **Upravte existující skupinu.** Upravte podrobnosti pro všechny vlastní skupiny. Konkrétní pokyny najdete v článku [upravit existující skupinu](#edit-an-existing-group) části tohoto článku.
+    - **Vytvořte novou skupinu.** Vytvořte novou skupinu s vámi jako vlastníkem z oblasti vlastníci **skupiny** . Konkrétní postup najdete v části [Vytvoření nové skupiny](#create-a-new-group) v tomto článku.
 
-    - **Přidat nebo odebrat členy.** Přidat nebo odebrat členy skupin, které vlastníte. Konkrétní pokyny najdete v článku [přidat nebo odebrat člena](#add-or-remove-a-member) části tohoto článku.
+    - **Úprava existující skupiny.** Upravte podrobnosti pro kteroukoli z vašich vlastních skupin. Konkrétní postup najdete v části [Úprava existující skupiny](#edit-an-existing-group) v tomto článku.
 
-    - **Prodlužte platnost skupiny Office 365.** Pokud vaše organizace umožňuje, můžete obnovit vaše skupiny Office 365. Konkrétní pokyny najdete v článku [obnovit skupinu Office 365](#renew-an-office-365-group) části tohoto článku. 
+    - **Přidat nebo odebrat členy.** Přidejte nebo odeberte členy pro skupiny, které vlastníte. Konkrétní postup najdete v části [Přidání nebo odebrání člena](#add-or-remove-a-member) v tomto článku.
 
-    - **Odstraňte skupinu.** Odstraňte všechny skupiny, které vlastníte. Konkrétní pokyny najdete v článku [odstranit skupinu](#delete-a-group) části tohoto článku.
+    - **Obnoví skupinu Office 365.** Pokud to vaše organizace umožňuje, můžete obnovit skupiny Office 365. Konkrétní postup najdete v části [obnovení skupiny Office 365](#renew-an-office-365-group) v tomto článku. 
 
-    - **Zkontrolujte, že jste součástí skupiny.** Zobrazit názvy skupin, které jste členem z **skupiny ve** oblasti. Vyberte název určité skupiny poskytuje další podrobnosti o skupiny, včetně typ skupiny, počet členů, zásady připojení a seznam aktivních členů.
+    - **Odstraní skupinu.** Odstraňte všechny skupiny, které vlastníte. Konkrétní postup najdete v části [odstranění skupiny](#delete-a-group) v tomto článku.
 
-    - **Připojte se k skupinu.** Připojte se k existující skupinu, pro který ještě nejste členem, z **skupiny ve** oblasti. Konkrétní pokyny najdete v článku [připojit k existující skupině](#join-an-existing-group).
+    - **Zkontrolujte skupiny, ve kterých jste součástí.** Zobrazí názvy všech skupin, do kterých jste členem, ze skupin, které jsem **v** oblasti. Výběrem konkrétního názvu skupiny získáte další podrobnosti o skupině, včetně typu skupiny, počtu členů, zásad spojení a seznamu aktivních členů.
+
+    - **Připojte se ke skupině.** Připojte se ke stávající skupině, pro kterou ještě nejste členem, ze skupin, které jsem v oblasti jsem právě **v** oblasti. Konkrétní postup najdete v tématu [připojení k existující skupině](#join-an-existing-group).
 
 ## <a name="create-a-new-group"></a>Vytvoření nové skupiny
-1. Na **skupiny** stránce **vytvořte skupinu** z **skupiny moje** oblasti.
 
-    **Vytvořit skupinu** se zobrazí okno.
+1. Na stránce **skupiny** vyberte **vytvořit skupinu** z **vlastní oblasti skupiny** .
+
+    Zobrazí se okno **vytvořit skupinu** .
 
     ![Vytvořit skupinový rámeček](media/my-apps-portal/my-apps-portal-create-group-page.png)
 
 2. Zadejte požadované informace:
 
     - **Typ skupiny:**
-        
+
         - **Zabezpečení.** Slouží ke správě členů a přístupu počítače ke sdíleným prostředkům u skupiny uživatelů. Můžete například vytvořit skupinu zabezpečení pro konkrétní zásady zabezpečení. Tímto způsobem můžete udělit sadu oprávnění všem členům najednou a nemusíte přidávat oprávnění členům jednotlivě.
 
         - **Office 365.** Poskytuje možnosti spolupráce tím, že umožňuje členům přístup ke sdílené poštovní schránce, kalendáři, souborům, sharepointovému webu a dalším prostředkům. Tato možnost vám také umožňuje udělit přístup ke skupině lidem mimo vaši organizaci.
 
     - **Název skupiny.** Přidejte název skupiny. Zvolte název, který si zapamatujete a který bude dávat smysl.
 
-    - **Popis skupiny (nepovinné).** Volitelně můžete přidat také popis skupiny.
+    - **Popis skupiny (volitelné).** Volitelně můžete přidat také popis skupiny.
 
-    - **Zásady skupiny.** Zvolte, aby umožnit všem uživatelům připojit ke skupině nebo Povolit jenom vlastník skupiny pro přidání členů.
+    - **Zásady skupiny.** Tuto možnost vyberte, pokud chcete, aby se všichni mohli připojovat ke skupině, nebo jenom vlastníkovi skupiny přidávají členy.
 
 3. Vyberte **Vytvořit**.
 
-    Bude vytvořena nová skupina s vámi jako vlastník a zobrazí se ve vaší **skupiny moje** seznamu. Protože jste vlastníkem, tato skupina se zobrazí také v **skupiny ve** seznamu.
+    Vytvoří se nová skupina s vámi jako vlastník a zobrazí se v seznamu **vlastní skupiny** . Vzhledem k tomu, že jste vlastníkem, tato skupina se zobrazí také v seznamu skupiny, které jsem **v** seznamu.
 
-## <a name="edit-an-existing-group"></a>Upravit existující skupinu
-Po vytvoření skupiny můžete upravit jeho podrobnosti, včetně všechny stávající informace o aktualizaci.
+## <a name="edit-an-existing-group"></a>Úprava existující skupiny
 
-### <a name="to-edit-your-details"></a>Chcete-li upravit podrobnosti o vašem
-1. Vyberte skupinu, kterou chcete upravit z **skupiny** stránce a pak vyberte **upravit podrobnosti** na *&lt;group_name&gt;* stránky.
+Po vytvoření skupiny můžete upravit její podrobnosti, včetně aktualizace jakýchkoli stávajících informací.
 
-    **Upravit podrobnosti** se zobrazí okno a aktualizujete informace, které jste přidali, když jste původně vytvořili skupinu.
+### <a name="to-edit-your-details"></a>Úprava podrobností
 
-2. Proveďte všechny změny a pak vyberte **aktualizace**.
+1. Na stránce **skupiny** vyberte skupinu, kterou chcete upravit, a pak na *&lt;stránce group_name&gt;* vyberte **Upravit podrobnosti** .
+
+    Zobrazí se okno **Upravit podrobnosti** , ve kterém můžete aktualizovat informace, které jste přidali při počátečním vytvoření skupiny.
+
+2. Proveďte všechny změny a pak vyberte **aktualizovat**.
 
 ## <a name="add-or-remove-a-member"></a>Přidat nebo odebrat člena
-Můžete přidat nebo odebrat členy pro všechny vlastní skupiny.
 
-### <a name="to-add-or-remove-a-member"></a>Chcete-li přidat nebo odebrat člena
-1. Vyberte skupinu, kterou chcete přidat členy do a pak vyberte **+** na *&lt;group_name&gt;* stránky.
+Můžete přidat nebo odebrat členy pro libovolnou z vašich vlastních skupin.
 
-    ![Přidat člena skupiny s + zvýrazněnou přihlašování](media/my-apps-portal/my-apps-portal-add-member-link.png)
+### <a name="to-add-or-remove-a-member"></a>Přidání nebo odebrání člena
 
-2. Hledání pro člena, které chcete přidat, ze **přidat členy** a potom vyberte **přidat**.
+1. Vyberte skupinu, do které chcete přidat členy, a pak vyberte **+** *&lt;na stránce group_name.&gt;*
 
-    ![Přidat členy pole s přidáte nového člena](media/my-apps-portal/my-apps-portal-add-member-page.png)
+    ![Přidat člena skupiny se zvýrazněným znaménkem +](media/my-apps-portal/my-apps-portal-add-member-link.png)
 
-    Pozvánku posílá do nového člena, abyste mohli začít, kteří přistupují k aplikacím organizace.
+2. Vyhledejte člena, kterého chcete přidat, v poli **přidat členy** a pak vyberte **Přidat**.
 
-3. Pokud jste přidali člen omylem nebo pokud Člen opustil organizaci, můžete odebrat člena výběrem **člena odebrat** u názvu člena *&lt;group_name&gt;* stránky.
+    ![Přidat pole členů s novým členem, který se má přidat](media/my-apps-portal/my-apps-portal-add-member-page.png)
 
-    ![Odebrat člena, se zvýrazněným odkazem odebrání](media/my-apps-portal/my-apps-portal-remove-member-link.png)
+    Novému členovi se pošle pozvánka, aby bylo možné začít přistupovat k aplikacím organizace.
+
+3. Pokud jste člena přidali omylem nebo pokud člen opustil vaši organizaci, můžete člena odebrat tak, že na  *&lt;stránce&gt; group_name* vyberete **odebrat člena** vedle názvu člena.
+
+    ![Odebrání člena s zvýrazněným odkazem na odebrání](media/my-apps-portal/my-apps-portal-remove-member-link.png)
 
 ## <a name="renew-an-office-365-group"></a>Obnovit skupinu Office 365
-Pokud vaše organizace umožňuje, můžete obnovit skupinu Office 365, rozšíří vaše datum vypršení platnosti.
 
-### <a name="to-renew-a-group"></a>Chcete-li obnovit skupinu
-1. Vyberte skupinu Office 365, kterou chcete obnovit a pak vyberte **obnovit skupinu**.
+Pokud to vaše organizace umožňuje, můžete obnovit skupinu Office 365 a prodloužit datum vypršení platnosti.
 
-    ![Obnovit skupinu Office 365, rozšíření datum vypršení platnosti](media/my-apps-portal/my-apps-portal-renew-group-link.png)
+### <a name="to-renew-a-group"></a>Obnovení skupiny
 
-2. Klikněte na tlačítko **OK** potvrzovací zprávu zavřete.
+1. Vyberte skupinu Office 365, kterou chcete obnovit, a pak vyberte **obnovit skupinu**.
 
-    Po aktualizaci stránky uvidíte aktualizovaný **poslední obnovit** a **skupině vypršení platnosti** kalendářní data.
+    ![Prodloužit platnost skupiny Office 365 a prodloužit datum vypršení platnosti](media/my-apps-portal/my-apps-portal-renew-group-link.png)
+
+2. Kliknutím na tlačítko **OK** zavřete potvrzovací zprávu.
+
+    Po aktualizaci stránky se zobrazí aktualizovaná datum **poslední obnovy** a datum **vypršení platnosti skupiny** .
 
 ## <a name="delete-a-group"></a>Odstranění skupiny
-Kdykoli můžete odstranit jakékoli vlastní skupiny. Nicméně pokud omylem odstraníte skupinu budete mít a vytvořte ho znovu přidat členy.
 
-### <a name="to-delete-the-group"></a>Pokud chcete odstranit skupinu
-1. Vyberte skupinu, kterou chcete trvale odstranit a pak vyberte **odstranit skupinu** na *&lt;group_name&gt;* stránky.
+Jakékoli vlastní skupiny můžete kdykoli odstranit. Pokud však odstraníte skupinu omylem, budete ji muset vytvořit a znovu přidat členy.
 
-    ![< Group_name > stránka se zvýrazněným odkazem skupiny Delete](media/my-apps-portal/my-apps-portal-delete-group-link.png)
+### <a name="to-delete-the-group"></a>Odstranění skupiny
 
-2. Vyberte **Ano** v potvrzovací zprávě.
+1. Vyberte skupinu, kterou chcete trvale odstranit, a pak na  *&lt;stránce&gt; group_name* vyberte **Odstranit skupinu** .
 
-    Skupiny je trvale odstraněn. 
-    
-## <a name="join-an-existing-group"></a>Připojte se k existující skupinu
-Již existující skupiny z se můžete zapojit **skupiny** stránky.
+    ![stránka > < Group_name s zvýrazněným odkazem odstranit skupinu](media/my-apps-portal/my-apps-portal-delete-group-link.png)
 
-### <a name="to-join-or-leave-a-group"></a>Připojit nebo opuštění skupiny
+2. V potvrzovací zprávě vyberte **Ano** .
 
-1. Na **skupiny** stránce **připojit se ke skupině** z **skupiny ve** oblasti.
+    Skupina se trvale odstraní.
 
-    **Připojte skupiny** se zobrazí stránka.
+## <a name="join-an-existing-group"></a>Připojit se k existující skupině
 
-    ![Připojte se k stránce skupiny, se zvýrazněným tlačítkem skupiny spojení](media/my-apps-portal/my-apps-portal-join-group-link.png)
+Existující skupinu můžete připojit ze stránky **skupiny** .
 
-2. Na **připojte skupiny** stránky, vyberte název skupiny, které chcete připojit, zobrazit podrobnosti o přidruženou skupinu a vyberte Pokud je k dispozici, skupina **připojit se ke skupině**.
+### <a name="to-join-or-leave-a-group"></a>Připojení nebo opuštění skupiny
 
-    Pokud skupina vyžaduje vlastníka skupiny členství schválit, budete požádáni o zadání obchodní odůvodnění, proč je potřeba připojit ke skupině a vyberte **požádat o**. Pokud skupinu nevyžaduje schválení, můžete ihned přidané jako člen a skupina se zobrazí v vaše **skupiny ve** seznamu.
+1. Na stránce **skupiny** vyberte **připojit skupinu** ze skupin, které jsem v oblasti jsem **v** oblasti.
 
-3. Pokud jste se zapojili skupiny omylem nebo pokud už nepotřebujete mít jeho součástí, můžete vybrat název skupiny z **připojte skupiny** stránce a pak vyberte **opustit skupinu**.
+    Zobrazí se stránka **spojení skupin** .
 
-    ![Připojte se k stránce skupiny, se zvýrazněným tlačítkem skupiny ponechejte tuto položku](media/my-apps-portal/my-apps-portal-leave-group-link.png)    
+    ![Stránka spojení skupin se zvýrazněným tlačítkem připojit ke skupině](media/my-apps-portal/my-apps-portal-join-group-link.png)
+
+2. Na stránce **spojovací skupiny** vyberte název skupiny, ke které se chcete připojit, zobrazte podrobnosti přidružené skupiny a pak pokud je skupina k dispozici, vyberte **připojit se ke skupině**.
+
+    Pokud skupina vyžaduje, aby vlastník skupiny schválil členství, zobrazí se výzva, abyste zadali obchodní odůvodnění, proč se ke skupině potřebujete připojit, a pak vyberte **požadavek**. Pokud skupina nevyžaduje schválení, budete hned přidáni jako člen a skupina se zobrazí ve skupinách, které jsem **v** seznamu.
+
+3. Pokud jste se připojili ke skupině omylem nebo pokud už nemusíte být součástí této skupiny, můžete na stránce **spojovací skupiny** vybrat název skupiny a pak vybrat **opustit skupinu**.
+
+    ![Stránka spojit skupiny se zvýrazněným tlačítkem opustit skupinu](media/my-apps-portal/my-apps-portal-leave-group-link.png)    
 
 ## <a name="next-steps"></a>Další postup
 
-- [Přístup a používání aplikací na portálu Moje aplikace](my-apps-portal-end-user-access.md).
+- [Přístup k aplikacím a jejich používání na portálu moje aplikace](my-apps-portal-end-user-access.md)
 
-- [Změnit informace z vašeho profilu](my-apps-portal-end-user-update-profile.md).
+- [Změna informací o profilu](my-apps-portal-end-user-update-profile.md).
 
-- [Provést vlastní kontroly přístupu](my-apps-portal-end-user-access-reviews.md).
+- [Proveďte vlastní kontroly přístupu](my-apps-portal-end-user-access-reviews.md).

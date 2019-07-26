@@ -1,6 +1,6 @@
 ---
-title: 'Azure portal: Vytvoření izolované databáze – Azure SQL Database | Dokumentace Microsoftu'
-description: Vytvoření a dotazování izolované databáze ve službě Azure SQL Database pomocí webu Azure portal.
+title: Vytvoření jedné databáze – Azure SQL Database | Microsoft Docs
+description: Vytvořte a Dotazujte izolovanou databázi v Azure SQL Database pomocí Azure Portal, PowerShellu a rozhraní příkazového řádku Azure.
 services: sql-database
 ms.service: sql-database
 ms.subservice: single-database
@@ -12,99 +12,47 @@ ms.author: ninarn
 ms.reviewer: carlrab, sstein
 manager: craigg
 ms.date: 04/23/2019
-ms.openlocfilehash: 1c24c8a10e35c0cf8979538c67fa8fb71b712741
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 470dca235b9a3212c09052f7535fa90d076fe4d3
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67070172"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68444475"
 ---
-# <a name="quickstart-create-a-single-database-in-azure-sql-database-using-the-azure-portal"></a>Rychlý start: Vytvoření izolované databáze ve službě Azure SQL Database pomocí webu Azure portal
+# <a name="quickstart-create-a-single-database-in-azure-sql-database-using-the-azure-portal-powershell-and-azure-cli"></a>Rychlý start: Vytvoření izolované databáze v Azure SQL Database pomocí Azure Portal, PowerShellu a rozhraní příkazového řádku Azure
 
-Vytváření [izolované databáze](sql-database-single-database.md) je možnost nejrychlejší a nejjednodušší nasazení pro vytvoření databáze ve službě Azure SQL Database. V tomto rychlém startu se dozvíte, jak vytvořit a potom dotazování izolované databáze pomocí webu Azure portal.
+Vytvoření [jedné databáze](sql-database-single-database.md) je nejrychlejší a nejjednodušší možnost nasazení pro vytvoření databáze v Azure SQL Database. V tomto rychlém startu se dozvíte, jak vytvořit a pak zadat dotaz na izolovanou databázi pomocí Azure Portal.
 
 Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/).
 
-Pro všechny kroky v tomto rychlém startu, přihlaste se k [webu Azure portal](https://portal.azure.com/).
+Pro všechny kroky v tomto rychlém startu se přihlaste k [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-a-single-database"></a>Vytvoření izolované databáze
 
-Izolované databáze můžete vytvořit buď v zřízená nebo bez serveru úrovně výpočetních (preview).
+Jednu databázi je možné vytvořit buď ve výpočetní úrovni zřízené, nebo bez serveru (Preview).
 
-- Izolované databáze na úrovni zřízených výpočetních má definovaný počet předběžně přidělit výpočetní prostředky a sadu prostředky paměti a úložiště pomocí jednoho ze dvou [zakoupení modely](sql-database-purchase-models.md).
-- Izolované databáze na úrovni výpočetní prostředí má celou řadu výpočetní prostředky, které jsou automaticky škálovaných plus zadanou velikost paměti na jádro a zadaného množství prostředků úložiště a je dostupná jenom [založený na virtuálních jádrech zakoupení modelů ](sql-database-service-tiers-vcore.md).
+- Jedna databáze v zřízené výpočetní úrovni má definovanou velikost předem přidělených výpočetních prostředků a sadu paměťových a úložných prostředků pomocí jednoho ze dvou [nákupních modelů](sql-database-purchase-models.md).
+- Izolovaná databáze na výpočetní úrovni bez serveru má řadu výpočetních prostředků, které se automaticky škálují a zadanou velikost paměti na jádro a zadané množství prostředků úložiště je dostupné jenom v [nákupních modelech založených na Vcore](sql-database-service-tiers-vcore.md).
 
-Při vytvoření izolované databáze také definovat [serveru služby SQL Database](sql-database-servers.md) ho spravovat a umístěte ji v rámci [skupiny prostředků Azure](../azure-resource-manager/resource-group-overview.md) v určité oblasti.
+Když vytvoříte izolovanou databázi, nadefinujete taky [SQL Database Server](sql-database-servers.md) , který budete spravovat a umístit do [skupiny prostředků Azure](../azure-resource-manager/resource-group-overview.md) v zadané oblasti.
 
 > [!NOTE]
-> Tento rychlý start využívá [nákupní model založený na virtuálních jádrech](sql-database-service-tiers-vcore.md) a [bez serveru](sql-database-serverless.md) výpočetní úroveň, ale [nákupní model založený na DTU](sql-database-service-tiers-DTU.md) je také k dispozici.
+> Tento rychlý Start používá [nákupní model založený na Vcore](sql-database-service-tiers-vcore.md) a výpočetní úroveň bez [serveru](sql-database-serverless.md) , ale je k dispozici i [nákupní model založený na DTU](sql-database-service-tiers-DTU.md) .
 
-Vytvoření izolované databáze s ukázkovými daty AdventureWorksLT:
+Vytvoření samostatné databáze obsahující ukázková data AdventureWorksLT:
 
-1. V levém horním rohu webu Azure Portal vyberte **Vytvořit prostředek**.
-2. Vyberte **databází** a pak vyberte **SQL Database** otevřít **vytvořit databázi SQL** stránky.
+[!INCLUDE [sql-database-create-single-database](includes/sql-database-create-single-database.md)]
 
-   ![Vytvoření izolované databáze](./media/sql-database-get-started-portal/create-database-1.png)
+## <a name="query-the-database"></a>Dotazování databáze
 
-3. Na **Základy** kartě **Project Details** části, zadejte nebo vyberte následující hodnoty:
+Teď, když jste vytvořili databázi, použijte integrovaný nástroj pro dotazování v Azure Portal pro připojení k databázi a dotazování na data.
 
-   - **Předplatné**: Rozevírací seznam a vyberte správné předplatné, pokud se nezobrazí.
-   - **Skupina prostředků**: Vyberte **vytvořit nový**, typ `myResourceGroup`a vyberte **OK**.
+1. Na stránce **SQL Database** pro vaši databázi v nabídce vlevo vyberte **Editor dotazů (Preview)** .
 
-     ![Nová databáze SQL – základní kartu](media/sql-database-get-started-portal/new-sql-database-basics.png)
-
-4. V **podrobnosti databáze** části, zadejte nebo vyberte následující hodnoty:
-
-   - **Název databáze**: Zadejte `mySampleDatabase`.
-   - **Server**: Vyberte **vytvořit nový** a zadejte následující hodnoty a pak vyberte **vyberte**.
-       - **Název serveru**: Typ `mysqlserver`; spolu s některá čísla jedinečný.
-       - **Přihlašovací jméno správce serveru**: Zadejte `azureuser`.
-       - **Heslo**: Zadejte složité heslo, které splňuje požadavky na heslo.
-       - **Umístění**: Zvolte umístění z rozevírací nabídky, jako například `West US 2`.
-
-         ![Nový server](media/sql-database-get-started-portal/new-server.png)
-
-      > [!IMPORTANT]
-      > Nezapomeňte si poznamenat přihlašovací jméno správce serveru a heslo, takže se můžete přihlásit k serveru a databáze pro tuto a další rychlé starty. Pokud zapomenete přihlašovací jméno nebo heslo, můžete získat přihlašovací jméno nebo heslo na **systému SQL server** stránky. Chcete-li otevřít **systému SQL server** vyberte název serveru v databázi, **přehled** stránku po vytvoření databáze.
-
-        ![Podrobnosti o SQL Database](media/sql-database-get-started-portal/sql-db-basic-db-details.png)
-
-   - **Chcete použít elastický fond SQL**: Vyberte **ne** možnost.
-   - **Výpočetní prostředky a úložiště**: Vyberte **databáze konfigurovat** a pro účely tohoto rychlého startu vyberte **založený na virtuálních jádrech možnosti nákupu**
-
-     ![Možnosti nákupu na základě virtuálních jader](media/sql-database-get-started-portal/create-database-vcore.png)
-
-   - Vyberte **bez serveru**.
-
-     ![úroveň výpočetní prostředí](media/sql-database-get-started-portal/create-database-serverless.png)
-
-   - Zkontrolujte nastavení pro **maximálního počtu virtuálních jader**, **virtuálních jader Min**, **automatického pozastavení zpoždění**, a **Data maximální velikost**. Tyto podle potřeby změňte.
-   - Přijměte podmínky verze preview a klikněte na tlačítko **OK**.
-   - Vyberte **Použít**.
-
-5. Vyberte **další nastavení** kartu. 
-6. V **zdroj dat** pod **využívat existující data**vyberte `Sample`. 
-
-   ![Další nastavení SQL DB](media/sql-database-get-started-portal/create-sql-database-additional-settings.png)
-
-   > [!IMPORTANT]
-   > Je nutné vybrat **ukázka (AdventureWorksLT)** dat, takže můžete postupovat podle snadno tato a další rychlé starty Azure SQL Database, která tato data použít.
-
-7. Ponechejte zbývající hodnoty jako výchozí a vyberte **revize + vytvořit** v dolní části formuláře.
-8. Zkontrolujte poslední nastavení a vyberte **vytvořit**.
-
-9. Na **SQL Database** formuláře, vyberte **vytvořit** k nasazení a zřizování skupiny prostředků, server a databáze.
-
-## <a name="query-the-database"></a>Dotaz na databázi
-
-Teď, když jste vytvořili databázi, použijte integrovaný dotazovací nástroj na webu Azure Portal pro připojení k databázi a zadávat dotazy na data.
-
-1. Na **SQL Database** stránce pro vaši databázi, vyberte **editor dotazů (preview)** v levé nabídce.
-
-   ![Přihlaste se k dotazování editoru](./media/sql-database-get-started-portal/query-editor-login.png)
+   ![Přihlášení k editoru dotazů](./media/sql-database-get-started-portal/query-editor-login.png)
 
 2. Zadejte přihlašovací údaje a vyberte **OK**.
-3. Zadejte následující dotaz **editoru dotazů** podokně.
+3. Do podokna **Editoru dotazů** zadejte následující dotaz.
 
    ```sql
    SELECT TOP 20 pc.Name as CategoryName, p.name as ProductName
@@ -113,28 +61,28 @@ Teď, když jste vytvořili databázi, použijte integrovaný dotazovací nástr
    ON pc.productcategoryid = p.productcategoryid;
    ```
 
-4. Vyberte **spustit**a pak zkontrolujte výsledky dotazu v **výsledky** podokně.
+4. Vyberte **Spustit**a potom zkontrolujte výsledky dotazu v podokně **výsledků** .
 
-   ![výsledky editoru dotazů](./media/sql-database-get-started-portal/query-editor-results.png)
+   ![Výsledky editoru dotazů](./media/sql-database-get-started-portal/query-editor-results.png)
 
-5. Zavřít **editoru dotazů** stránku a vybrat **OK** po zobrazení výzvy zahoďte neuložené změny.
+5. Zavřete stránku **Editor dotazů** a po zobrazení výzvy k zahození neuložených úprav vyberte **OK** .
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud chcete přejít na zachovat tuto skupinu prostředků, serveru databáze a izolované databáze [další kroky](#next-steps). Následující kroky ukazují, jak k připojení a dotazování databáze pomocí různých metod.
+Pokud chcete přejít k [dalším krokům](#next-steps), zachovejte tuto skupinu prostředků, databázový server a samostatnou databázi. Následující kroky ukazují, jak se připojit k databázi a dotazovat se na ni pomocí různých metod.
 
-Jakmile budete hotovi, tyto prostředky používá, můžete je odstranit následujícím způsobem:
+Po dokončení používání těchto prostředků je můžete odstranit následujícím způsobem:
 
-1. V nabídce vlevo na webu Azure Portal vyberte **skupiny prostředků**a pak vyberte **myResourceGroup**.
-2. Na stránce skupiny prostředků, vyberte **odstranit skupinu prostředků**.
-3. Zadejte *myResourceGroup* v poli a pak vyberte **odstranit**.
+1. V nabídce vlevo v Azure Portal vyberte **skupiny prostředků**a pak vyberte **myResourceGroup**.
+2. Na stránce skupiny prostředků vyberte **Odstranit skupinu prostředků**.
+3. Do pole zadejte *myResourceGroup* a pak vyberte **Odstranit**.
 
 ## <a name="next-steps"></a>Další postup
 
-- Vytvořte pravidlo brány firewall na úrovni serveru pro připojení k izolované databáze z místní nebo vzdálené nástroje. Další informace najdete v tématu [vytvořit pravidlo brány firewall na úrovni serveru](sql-database-server-level-firewall-rule.md).
-- Po vytvoření pravidla brány firewall na úrovni serveru, [připojení a dotazování](sql-database-connect-query.md) vaší databáze pomocí několika různých nástrojů a jazyků.
+- Vytvořte pravidlo brány firewall na úrovni serveru pro připojení k izolované databázi z místních nebo vzdálených nástrojů. Další informace najdete v tématu [Vytvoření pravidla brány firewall na úrovni serveru](sql-database-server-level-firewall-rule.md).
+- Po vytvoření pravidla brány firewall na úrovni serveru se [připojte a Dotazujte](sql-database-connect-query.md) databázi pomocí několika různých nástrojů a jazyků.
   - [Připojení a dotazování pomocí SQL Server Management Studia](sql-database-connect-query-ssms.md)
   - [Připojení a dotazování pomocí Azure Data Studia](https://docs.microsoft.com/sql/azure-data-studio/quickstart-sql-database?toc=/azure/sql-database/toc.json)
-- Vytvoření izolované databáze na úrovni zřízených výpočetních pomocí Azure CLI najdete v tématu [ukázky v Azure CLI](sql-database-cli-samples.md).
-- Vytvoření izolované databáze na úrovni zřízených výpočetních pomocí Azure Powershellu najdete v tématu [ukázky Azure Powershellu](sql-database-powershell-samples.md).
-- Vytvoření izolované databáze na úrovni výpočetní prostředí pomocí Azure Powershellu najdete v tématu [bez serveru vytvořit databázi](sql-database-serverless.md#create-new-database-in-serverless-compute-tier).
+- Informace o vytvoření izolované databáze v zřízené výpočetní úrovni pomocí Azure CLI najdete v [ukázkách Azure CLI](sql-database-cli-samples.md).
+- Pokud chcete vytvořit izolovanou databázi v zřízené výpočetní úrovni pomocí Azure PowerShell, přečtěte si téma [Azure PowerShell Samples](sql-database-powershell-samples.md).
+- Pokud chcete vytvořit izolovanou databázi na výpočetní úrovni bez serveru pomocí Azure PowerShellu, přečtěte si téma [Vytvoření databáze bez serveru](sql-database-serverless.md#create-new-database-in-serverless-compute-tier).

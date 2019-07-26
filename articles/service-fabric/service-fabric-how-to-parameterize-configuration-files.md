@@ -1,6 +1,6 @@
 ---
-title: Parametrizovat konfiguračních souborů v Azure Service Fabric | Dokumentace Microsoftu
-description: Zjistěte, jak parametrizovat konfigurační soubory v Service Fabric.
+title: Parametrizovat konfigurační soubory v Azure Service Fabric | Microsoft Docs
+description: Naučte se, jak parametrizovat konfigurační soubory v Service Fabric.
 documentationcenter: .net
 author: mikkelhegn
 manager: msfussell
@@ -12,23 +12,23 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/09/2018
 ms.author: mikhegn
-ms.openlocfilehash: 6ed626dddddb8f2b434d6a7acebc5381607b7d3d
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: dad497978de7187177998524db3b2f2ee448c717
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67304240"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68464787"
 ---
 # <a name="how-to-parameterize-configuration-files-in-service-fabric"></a>Jak parametrizovat konfigurační soubory v Service Fabric
 
-Tento článek ukazuje, jak parametrizovat konfiguračním souboru v Service Fabric.  Pokud si nejste již znáte základní koncepty správy aplikací pro víc prostředí, přečtěte si [Správa aplikací pro víc prostředí](service-fabric-manage-multiple-environment-app-configuration.md).
+V tomto článku se dozvíte, jak parametrizovat konfigurační soubor v Service Fabric.  Pokud ještě nejste obeznámeni se základními koncepty správy aplikací pro více prostředí, přečtěte si téma [Správa aplikací pro více prostředí](service-fabric-manage-multiple-environment-app-configuration.md).
 
-## <a name="procedure-for-parameterizing-configuration-files"></a>Postup pro parametrizaci konfiguračních souborů
+## <a name="procedure-for-parameterizing-configuration-files"></a>Postup pro konfigurační soubory Parametrizace
 
-V tomto příkladu je přepsat hodnotu konfigurace pomocí parametrů v nasazení vaší aplikace.
+V tomto příkladu přepíšete konfigurační hodnotu pomocí parametrů ve vašem nasazení aplikace.
 
-1. Otevřít  *\<Moje_služba > \PackageRoot\Config\Settings.xml* souboru v projektu služby.
-1. Nastavte název konfiguračního parametru a hodnota, například velikost mezipaměti roven 25, přidáním následující kód XML:
+1. V projektu služby otevřete soubor  *mojesluzba>\PackageRoot\Config\Settings.XML.\<*
+1. Přidáním následujícího kódu XML nastavte název a hodnotu konfiguračního parametru, například velikost mezipaměti rovnou 25.
 
    ```xml
     <Section Name="MyConfigSection">
@@ -37,15 +37,15 @@ V tomto příkladu je přepsat hodnotu konfigurace pomocí parametrů v nasazen�
    ```
 
 1. Uložte soubor a zavřete ho.
-1. Otevřít  *\<MyApplication > \ApplicationPackageRoot\ApplicationManifest.xml* souboru.
-1. V souboru ApplicationManifest.xml deklarovat parametr a výchozí hodnotu v `Parameters` elementu.  Doporučuje se, že název parametru obsahuje název služby (například "Moje_služba").
+1. Otevřete soubor MyApplication > \ApplicationPackageRoot\ApplicationManifest.XML.  *\<*
+1. V souboru souboru ApplicationManifest. XML deklarujte parametr a výchozí hodnotu v `Parameters` elementu.  Doporučuje se, aby název parametru obsahoval název služby (například "Mojesluzba").
 
    ```xml
     <Parameters>
       <Parameter Name="MyService_CacheSize" DefaultValue="80" />
     </Parameters>
-  ```
-1. V `ServiceManifestImport` oddílu v souboru ApplicationManifest.xml přidat `ConfigOverrides` a `ConfigOverride` element odkazující na konfigurační balíček, v části a parametr.
+   ```
+1. V části souboru souboru ApplicationManifest. XML `ConfigOverrides` přidejte element and `ConfigOverride` , který odkazuje na konfigurační balíček, část a parametr. `ServiceManifestImport`
 
    ```xml
     <ConfigOverrides>
@@ -60,9 +60,9 @@ V tomto příkladu je přepsat hodnotu konfigurace pomocí parametrů v nasazen�
    ```
 
 > [!NOTE]
-> V případě, kde můžete přidávat ConfigOverride vždy vybere Service Fabric parametry aplikace nebo výchozí hodnota zadaná v manifestu aplikace.
+> V případě, že přidáte ConfigOverride, Service Fabric vždy zvolí parametry aplikace nebo výchozí hodnotu zadanou v manifestu aplikace.
 >
 >
 
 ## <a name="next-steps"></a>Další postup
-Informace o dalších možnostech správy aplikací, které jsou k dispozici v sadě Visual Studio najdete v tématu [Správa aplikací Service Fabric v sadě Visual Studio](service-fabric-manage-application-in-visual-studio.md).
+Informace o dalších možnostech správy aplikací, které jsou k dispozici v sadě Visual Studio, najdete v tématu [Správa aplikací Service Fabric v sadě Visual Studio](service-fabric-manage-application-in-visual-studio.md).

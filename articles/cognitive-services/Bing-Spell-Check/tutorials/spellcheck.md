@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Získávání pravopisu zkontrolujte výsledky pomocí API kontrola pravopisu Bingu'
-titlesuffix: Azure Cognitive Services
+title: 'Kurz: Získávání výsledků Kontrola pravopisu pomocí rozhraní API Bingu pro kontrolu pravopisu'
+titleSuffix: Azure Cognitive Services
 description: Ukazuje postup používání rozhraní API pro kontrolu pravopisu Bingu.
 services: cognitive-services
 author: aahill
@@ -10,16 +10,16 @@ ms.subservice: bing-spell-check
 ms.topic: tutorial
 ms.date: 02/20/2019
 ms.author: aahi
-ms.openlocfilehash: 0a7b8637ae3ca7342a04f6bf3f8a808539d980eb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: dc3a30418615d1c6b30ca4059292425076327f00
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60863406"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68500791"
 ---
-# <a name="tutorial-build-a-web-page-spell-check-client"></a>Kurz: Vytvoření klienta pro kontrolu pravopisu webové stránky
+# <a name="tutorial-build-a-web-page-spell-check-client"></a>Kurz: Sestavení webové stránky Kontrola pravopisu klientovi
 
-V tomto kurzu vytvoříme webovou stránku, která uživatelům umožňuje zadávat dotazy do rozhraní API Bingu pro kontrolu pravopisu. Zdrojový kód pro tuto aplikaci je k dispozici na [Githubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/Tutorials/BingSpellCheckApp.html).
+V tomto kurzu vytvoříme webovou stránku, která uživatelům umožňuje zadávat dotazy do rozhraní API Bingu pro kontrolu pravopisu. Zdrojový kód této aplikace je k dispozici na [GitHubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/Tutorials/BingSpellCheckApp.html).
 
 V tomto kurzu získáte informace o následujících postupech:
 

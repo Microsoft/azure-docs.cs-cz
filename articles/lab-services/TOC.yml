@@ -255,6 +255,8 @@
               href: devtest-lab-guidance-prescriptive-adoption.md
             - name: Referenční architektura
               href: devtest-lab-reference-architecture.md
+            - name: Zajištění testování konceptu
+              href: deliver-proof-concept.md
             - name: Vertikální navýšení kapacity nasazení DevTest Labs
               href: devtest-lab-guidance-scale.md
             - name: Orchestrace implementace DevTest Labs

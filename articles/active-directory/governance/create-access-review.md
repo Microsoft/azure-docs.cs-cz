@@ -1,9 +1,9 @@
 ---
-title: Vytvoření kontroly přístupu skupiny nebo aplikace – Azure Active Directory | Dokumentace Microsoftu
-description: Zjistěte, jak vytvořit kontrolu přístupu členů skupiny nebo přístupu k aplikacím v kontrol přístupu Azure Active Directory.
+title: Vytvoření kontroly přístupu skupin nebo aplikací – Azure Active Directory | Microsoft Docs
+description: Naučte se, jak vytvořit kontrolu přístupu pro členy skupiny nebo přístup k aplikacím v Azure Active Directory kontroly přístupu.
 services: active-directory
-author: rolyon
-manager: mtillman
+author: msaburnley
+manager: daveba
 editor: markwahl-msft
 ms.service: active-directory
 ms.workload: identity
@@ -12,128 +12,128 @@ ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
 ms.date: 05/21/2019
-ms.author: rolyon
+ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c83a38b68fcc2e70b4e17bd62e11ac429dd32950
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 230fb40c8e3a100d2fdfa0af6b40c93c3e5b47d2
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67471907"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68499724"
 ---
-# <a name="create-an-access-review-of-groups-or-applications-in-azure-ad-access-reviews"></a>Vytvoření kontroly přístupu skupin nebo kontrol přístupu aplikací ve službě Azure AD
+# <a name="create-an-access-review-of-groups-or-applications-in-azure-ad-access-reviews"></a>Vytvoření kontroly přístupu skupin nebo aplikací v kontrolách přístupu ke službě Azure AD
 
-Přístup k skupin a aplikací pro zaměstnance a hosté mění v průběhu času. Chcete-li snížit riziko spojené s přiřazení zastaralé přístupu, mohou správci služby Azure Active Directory (Azure AD) k vytvoření kontroly přístupu pro členy skupiny nebo přístupu k aplikacím. Pokud je potřeba pravidelně kontrolujte přístup, můžete také vytvořit opakované kontroly přístupu. Další informace o těchto scénářích najdete v tématu [spravovat přístup uživatelů](manage-user-access-with-access-reviews.md) a [spravovat přístup hosta](manage-guest-access-with-access-reviews.md).
+Přístup k skupinám a aplikacím pro zaměstnance a hosty se v průběhu času mění. Aby se snížilo riziko spojené s nezastaralým přiřazením přístupu, můžou správci pomocí služby Azure Active Directory (Azure AD) vytvářet kontroly přístupu pro členy skupiny nebo přístup k aplikacím. Pokud potřebujete rutinní kontrolu přístupu, můžete také vytvořit opakované recenze přístupu. Další informace o těchto scénářích najdete v tématech [Správa přístupu uživatelů](manage-user-access-with-access-reviews.md) a [Správa přístupu hostů](manage-guest-access-with-access-reviews.md).
 
-Tento článek popisuje, jak vytvořit jeden nebo více kontroly přístupu pro členy skupiny nebo přístupu k aplikacím.
+Tento článek popisuje, jak vytvořit jednu nebo více kontrol přístupu pro členy skupiny nebo přístup k aplikaci.
 
 ## <a name="prerequisites"></a>Požadavky
 
 - Azure AD Premium P2
 - Globální správce nebo Správce uživatelů
 
-Další informace najdete v tématu [kteří uživatelé musí mít licence?](access-reviews-overview.md#which-users-must-have-licenses).
+Další informace najdete v tématu o uživatelích, [kteří musí mít licence?](access-reviews-overview.md#which-users-must-have-licenses).
 
-## <a name="create-one-or-more-access-reviews"></a>Vytvořte jeden nebo více kontroly přístupu
+## <a name="create-one-or-more-access-reviews"></a>Vytvoření jedné nebo více kontrol přístupu
 
-1. Přihlaste se k Azure portal a otevřete [stránka zásady správného řízení identit](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/).
+1. Přihlaste se k Azure Portal a otevřete [stránku zásad správného řízení identity](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/).
 
-1. V nabídce vlevo klikněte na tlačítko **kontrol přístupu**.
+1. V nabídce vlevo klikněte na **recenze přístupů**.
 
-1. Klikněte na tlačítko **nová kontrola přístupu** k vytvoření nové kontroly přístupu.
+1. Kliknutím na **Nová kontrola přístupu** vytvořte novou kontrolu přístupu.
 
-    ![Podokno v zásady správného řízení identit kontroly přístupu](./media/create-access-review/access-reviews.png)
+    ![Podokno kontroly přístupu v nástroji pro řízení identit](./media/create-access-review/access-reviews.png)
 
-1. Název kontroly přístupu. Kontrola volitelně zadejte popis. Název a popis se zobrazí pro revidující.
+1. Pojmenujte kontrolu přístupu. Volitelně můžete zadat popis revize. Název a popis se zobrazí kontrolorům.
 
-    ![Vytvoření kontroly přístupu – zkontrolujte název a popis](./media/create-access-review/name-description.png)
+    ![Vytvoření kontroly přístupu – kontrola názvu a popisu](./media/create-access-review/name-description.png)
 
-1. Nastavte **počáteční datum**. Ve výchozím nastavení kontroly přístupu akce proběhne jednou, spustí stejné chvíli, kdy je vytvořen a končí na jeden měsíc. Můžete změnit počáteční a koncové datum měli přístup zkontrolujte start v budoucnu a poslední představ počtu dnů.
+1. Nastavte **počáteční datum**. Ve výchozím nastavení proběhne kontrola přístupu jednou, začíná ve stejnou dobu, kdy je vytvořena, a končí v jednom měsíci. Počáteční a koncové datum můžete změnit tak, aby byla kontrola přístupu zahájena v budoucnosti a poslední, ale kolik dní potřebujete.
 
     ![Vytvoření kontroly přístupu – počáteční a koncové datum](./media/create-access-review/start-end-dates.png)
 
-1. Chcete-li opakování kontroly přístupu, změnit **frekvence** nastavení z **jednou** k **týdenní**, **měsíční**,  **Čtvrtletní** nebo **každoročně**. Použití **doba trvání** posuvník nebo textového pole k definování, kolik dní budou každou recenzi řady opakovaných otevřete pro vstup od recenzentů. Maximální doba, po kterou můžete nastavit měsíční kontroly je například 27 dní na překrývající se kontroly.
+1. Chcete-li provést opakované kontroly přístupu, změňte nastavení **frekvence** od **jednoho** na **týdně**, **měsíčně**, **čtvrtletně** nebo **ročně**. Pomocí posuvníku **Trvání** nebo textového pole můžete definovat, kolik dní bude každá revize opakujících se řad otevřená pro vstup od revidujících. Například maximální doba, kterou můžete nastavit pro měsíční revizi, je 27 dní, aby se předešlo překrývání recenzí.
 
-1. Použití **End** nastavení můžete určit způsob ukončení opakování přístupu zkontrolujte řady. Série můžete ukončit třemi způsoby: běží nepřetržitě spuštění kontrol po neomezenou dobu, dokud k určitému datu nebo po dokončení definovaný počet výskytů. Můžete, jiného uživatele správce nebo jiného globálního správce můžete zastavit řady po vytvoření změnou datum v **nastavení**tak, aby ho k tomuto datu ukončení.
+1. Pomocí nastavení **konec** určete, jak se má ukončit řada kontroly opakovaného přístupu. Série může končit třemi způsoby: průběžně spouští recenze na neomezenou dobu, až do konkrétního data nebo po dokončení definovaného počtu výskytů. Vy, jiný správce nebo jiný globální správce může série po vytvoření zastavit změnou data v **Nastavení**, takže skončí k tomuto datu.
 
-1. V **uživatelé** části, zadejte uživatele, pro které platí kontroly přístupu. Kontroly přístupu lze pro členy skupiny nebo uživatelé, kteří byly přiřazeny k aplikaci. Můžete dále obor přístupu pouze kontroly kontrola uživatelů typu Host kteří jsou členy (nebo přiřazené k aplikaci), namísto kontroly všech uživatelů, kteří jsou členy nebo kteří mají přístup k aplikaci.
+1. V části **Uživatelé** Určete uživatele, pro které platí tato kontrola přístupu. Kontroly přístupu mohou být pro členy skupiny nebo pro uživatele, kteří byli přiřazeni k aplikaci. Můžete dále určit rozsah kontroly přístupu a zkontrolovat pouze uživatele typu Host, kteří jsou členy (nebo jsou přiřazeni k aplikaci), a ne kontrolovat všechny uživatele, kteří jsou členy nebo kteří mají k aplikaci přístup.
 
     ![Vytvoření kontroly přístupu – uživatelé](./media/create-access-review/users.png)
 
-1. V **skupiny** vyberte jednu nebo více skupin, které chcete zkontrolovat členství.
+1. V části **Skupina** vyberte jednu nebo více skupin, u kterých chcete zkontrolovat členství.
 
     > [!NOTE]
-    > Výběr více než jedné skupině vytvoří více kontroly přístupu. Například výběrem pět skupin vytvoří pět samostatnou přístupovou revize.
+    > Výběr více než jedné skupiny vytvoří více kontrol přístupu. Když například vyberete pět skupin, vytvoří se pět samostatných kontrol přístupu.
     
-    ![Vytvoření kontroly přístupu – vyberte skupinu](./media/create-access-review/select-group.png)
+    ![Vytvoření kontroly přístupu – výběr skupiny](./media/create-access-review/select-group.png)
 
-1. V **aplikací** části (Pokud jste vybrali **přidružených k aplikaci** v kroku 8), vyberte aplikace, které chcete kontrolovat přístup k.
+1. V části **aplikace** (Pokud jste v kroku 8 vybrali možnost **přiřazeno k aplikaci** ) vyberte aplikace, pro které chcete zkontrolovat přístup.
 
     > [!NOTE]
-    > Výběr více než jednu aplikaci vytvoří více kontroly přístupu. Například výběrem pět aplikace vytvoří pět samostatnou přístupovou revize.
+    > Když vyberete víc než jednu aplikaci, vytvoří se víc kontrol přístupu. Když například vyberete pět aplikací, vytvoří se pět samostatných revizí přístupu.
     
-    ![Vytvoření kontroly přístupu - výběr aplikace](./media/create-access-review/select-application.png)
+    ![Vytvoření kontroly přístupu – výběr aplikace](./media/create-access-review/select-application.png)
 
-1. V **revidující** vyberte jeden nebo více lidem zkontrolovat všechny uživatele v oboru. Nebo můžete mít členy kontrolovat svůj vlastní přístup. Pokud prostředek je skupina, můžete požádat vlastníci skupiny ke kontrole. Také můžete vyžadovat, aby revidující zadejte důvod, proč při jejich schválit přístup.
+1. V části **revidující** vyberte jednu nebo více lidí pro kontrolu všech uživatelů v oboru. Nebo můžete vybrat, aby členové zkontrolovali svůj vlastní přístup. Pokud je prostředek skupinou, můžete požádat vlastníka skupiny, aby si je zkontrolovali. Také můžete vyžadovat, aby kontroloři při schvalování přístupu zadali důvod.
 
     ![Vytvoření kontroly přístupu – kontroloři](./media/create-access-review/reviewers.png)
 
-1. V **programy** vyberte program, který chcete použít. **Výchozí Program** je vždy k dispozici.
+1. V části **programy** vyberte program, který chcete použít. **Výchozí program** je vždy přítomen.
 
     ![Vytvoření kontroly přístupu – programy](./media/create-access-review/programs.png)
 
-    Jak sledovat a shromažďovat kontroly přístupu pro různé účely jejich uspořádáním do programů může zjednodušit. Každý kontroly přístupu lze propojit do programu. Potom při přípravě sestavy pro auditor můžete soustředit na kontroly přístupu v oboru pro konkrétní iniciativy. Programy a výsledky kontroly přístupu jsou viditelné pro uživatele v globální správce, Správce uživatelů, správce zabezpečení nebo roli Čtenář zabezpečení.
+    Můžete zjednodušit sledování a shromažďování kontrol přístupu pro různé účely jejich uspořádáním do programů. Každou kontrolu přístupu můžete propojit s programem. Po přípravě sestav pro auditora se můžete soustředit na kontroly přístupu v oboru pro konkrétní iniciativu. Programy a výsledky kontroly přístupu jsou viditelné uživatelům v roli globální správce, správce uživatele, správce zabezpečení nebo čtenáře zabezpečení.
 
-    Pokud chcete zobrazit seznam aplikací, přejít na úroveň kontroly stránky a vyberte **programy**. Pokud jste globální správce nebo role uživatele správce, můžete vytvořit další programy. Například můžete mít jeden program pro každou dodržování předpisů iniciativy nebo obchodní cíle. Pokud už nepotřebujete programu a nemá žádné ovládací prvky na sebe, můžete ho odstranit.
+    Chcete-li zobrazit seznam programů, přejděte na stránku kontroly přístupu a vyberte **programy**. Pokud se nacházíte v roli globálního správce nebo Správce uživatelů, můžete vytvořit další programy. Můžete například zvolit, aby měl jeden program pro každou iniciativu dodržování předpisů nebo obchodní cíl. Pokud už program nepotřebujete a k němu nejsou připojené žádné ovládací prvky, můžete ho odstranit.
 
 ### <a name="upon-completion-settings"></a>Nastavení činností po dokončení
 
-1. Chcete-li určit, co se stane po se kontrola dokončí, rozbalte **nastavení činností po dokončení** oddílu.
+1. Chcete-li určit, co se stane po dokončení kontroly, rozbalte část **nastavení po dokončení** .
 
-    ![Vytvoření kontroly přístupu – nastavení činností po dokončení](./media/create-access-review/upon-completion-settings.png)
+    ![Vytvoření kontroly přístupu s nastavením při dokončování](./media/create-access-review/upon-completion-settings.png)
 
-1. Pokud nechcete automaticky odebrat přístup pro uživatele, kteří se zamítla nastavte **automaticky zavést výsledky do prostředku** k **povolit**. Pokud chcete aplikovat ručně výsledky, až se kontrola dokončí, nastavte přepínač na **zakázat**.
+1. Pokud chcete automaticky odebrat přístup pro uživatele, kterým bylo odepřeno, nastavte **automatické použití výsledků na prostředek** , aby **bylo možné povolit**. Pokud chcete výsledky použít ručně po dokončení kontroly, nastavte přepínač na **Zakázat**.
 
-1. Použití **by neměly odpovídat kontrolor** seznamu k určení, co se stane, že pro uživatele, kteří nejsou zkontrolované recenzentem během období vyhodnocování. Toto nastavení nemá vliv na uživatele, kteří byly zkontrolovány podle revidující ručně. Pokud poslední revidující rozhodnutí je Deny přístup uživatele se odebere.
+1. Seznam **by měl kontrolor bez odpovědi** použít k určení toho, co se stane pro uživatele, kteří kontrolor v rámci období revize nekontroloval. Toto nastavení nemá vliv na uživatele, kteří byli zkontrolováni ručně. Pokud je posledním rozhodnutím kontrolora zamítnutí, bude přístup uživatele odebrán.
 
-    - **Žádná změna** – nechte beze změny přístupu uživatele
-    - **Odebrat přístup** – odebrání přístupu uživatele
-    - **Schválit přístup** -schválit přístup uživatelů
-    - **Přijmout doporučení** – využijte doporučení v systému se zamítnout nebo schválení uživatele je nadále přístup
+    - **Žádná změna** – opuštění přístupu uživatele nezměněné
+    - **Odebrání přístupu** – odebrání přístupu uživatele
+    - **Schválit přístup** – schválení přístupu uživatele
+    - **Využijte doporučení** – Vezměte v úvahu doporučení systému při odepření nebo schvalování trvalého přístupu uživatele.
 
-### <a name="advanced-settings"></a>Upřesnit nastavení
+### <a name="advanced-settings"></a>Pokročilá nastavení
 
-1. K zadání dalších nastavení, rozbalte **upřesňující nastavení** oddílu.
+1. Chcete-li zadat další nastavení, rozbalte oddíl **Upřesnit nastavení** .
 
-    ![Vytvoření kontroly přístupu – nastavení](./media/create-access-review/advanced-settings.png)
+    ![Vytvoření kontroly přístupu – Pokročilá nastavení](./media/create-access-review/advanced-settings.png)
 
-1. Nastavte **zobrazení doporučení** k **povolit** zobrazíte revidující systému doporučení na základě daného uživatele přístup k informacím.
+1. Nastavením **Zobrazit doporučení** umožníte **, aby se** recenzenti zobrazovala doporučení k systému na základě informací o přístupu uživatele.
 
-1. Nastavte **vyžadovat důvod při schválení** k **povolit** chcete požadovat, aby kontrolor odůvodnil schválení.
+1. Nastavte **vyžadovat důvod schválení** **, aby mohl** uživatel vyžadovat, aby kontrolor zadal důvod schválení.
 
-1. Nastavte **Mail notifications** k **povolit** s Azure AD posílala e-mailová oznámení kontrolorům, když začne kontrola přístupu a správcům, když se kontrola dokončí.
+1. Nastavte e- **mailová oznámení** , která **umožní** , aby služba Azure AD odesílala e-mailová oznámení kontrolorům při zahájení kontroly přístupu a správcům, když se kontrola dokončí.
 
-1. Nastavte **připomenutí** k **povolit** bude Azure AD posílala připomenutí kontroly přístupu v průběhu kontrolorům, kteří nedokončili svoji kontrolu.
+1. Nastavením **připomenutí** **umožníte** , aby služba Azure AD odesílala připomenutí kontrol přístupu, která nedokončila jejich kontrolu.
 
     Ve výchozím nastavení Azure AD automaticky pošle připomenutí revidujícím, kteří ještě neodpověděli, po uplynutí poloviny času.
 
-## <a name="start-the-access-review"></a>Zahájení kontroly přístupu
+## <a name="start-the-access-review"></a>Spustit kontrolu přístupu
 
-Po zadání nastavení pro kontroly přístupu, klikněte na tlačítko **Start**. Kontroly přístupu se zobrazí v seznamu se indikátor stavu.
+Po zadání nastavení pro kontrolu přístupu klikněte na **Spustit**. Kontrola přístupu se zobrazí v seznamu s indikátorem jeho stavu.
 
-![Seznam kontrol přístupu a jejich stav](./media/create-access-review/access-reviews-list.png)
+![Seznam revizí přístupu a jejich stav](./media/create-access-review/access-reviews-list.png)
 
-Ve výchozím nastavení Azure AD pošle e-mail revidující krátce po spuštění kontroly. Pokud se rozhodnete odeslat e-mailu se službou Azure AD, nezapomeňte informovat revidující, které čeká na všesměrově jejich dokončení kontroly přístupu. Je možné zobrazit pokyny k [kontrolovat přístup skupinám nebo aplikacím](perform-access-review.md). Pokud kontrolu pro hosty kontrolovat svůj vlastní přístup, je zobrazit pokyny k [zkontrolujte přístup skupinám nebo aplikacím](review-your-access.md).
+Ve výchozím nastavení Azure AD pošle e-mail kontrolorům krátce po zahájení kontroly. Pokud se rozhodnete Neodesílat e-maily Azure AD, nezapomeňte informovat kontrolory, které čekají na dokončení kontroly přístupu. Můžete jim Ukázat pokyny, jak [zkontrolovat přístup ke skupinám nebo aplikacím](perform-access-review.md). Pokud je vaše kontrola pro hosty, aby zkontrolovala svůj vlastní přístup, zobrazte si pokyny, jak [kontrolovat přístup pro vlastní skupiny nebo aplikace](review-your-access.md).
 
-Pokud jste přiřadili hosté jako revidující a jejich nepřijali pozvánku, se nebude vzhledem k tomu, musí nejdřív přijmout pozvánku před revizí přijde e-mail od kontroly přístupu.
+Pokud jste přidělili hosty jako kontroloři a nepřijali pozvánku, neobdrží e-mail z kontroly přístupu, protože před přezkoumáním musí nejdřív pozvání přijmout.
 
-## <a name="create-reviews-via-apis"></a>Vytvoření kontroly prostřednictvím rozhraní API
+## <a name="create-reviews-via-apis"></a>Vytváření recenzí prostřednictvím rozhraní API
 
-Můžete také vytvořit kontrolu přístupu pomocí rozhraní API. K čemu ke správě přístupu zkontroluje skupin a uživatelů aplikace na webu Azure Portal je možné provést pomocí rozhraní Microsoft Graph API. Další informace najdete v tématu [kontroly přístupu Azure AD, reference k rozhraní API](https://docs.microsoft.com/graph/api/resources/accessreviews-root?view=graph-rest-beta). Ukázku kódu naleznete v tématu [kontroly příklad načítání přístup služby Azure AD prostřednictvím Microsoft Graphu](https://techcommunity.microsoft.com/t5/Azure-Active-Directory/Example-of-retrieving-Azure-AD-access-reviews-via-Microsoft/m-p/236096).
+Můžete také vytvořit kontroly přístupu pomocí rozhraní API. K tomu, jak spravovat kontroly přístupu skupin a uživatelů aplikací v Azure Portal lze také použít rozhraní API Microsoft Graph. Další informace najdete v referenčních informacích k [rozhraní API kontroly přístupu Azure AD](https://docs.microsoft.com/graph/api/resources/accessreviews-root?view=graph-rest-beta). Ukázku kódu najdete v tématu [příklad načtení kontrol přístupu služby Azure AD prostřednictvím Microsoft Graph](https://techcommunity.microsoft.com/t5/Azure-Active-Directory/Example-of-retrieving-Azure-AD-access-reviews-via-Microsoft/m-p/236096).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- [Zkontrolovat přístup do skupiny nebo aplikace](perform-access-review.md)
-- [Zkontrolovat přístup do skupiny nebo aplikace](review-your-access.md)
-- [Dokončení kontroly přístupu skupiny nebo aplikace](complete-access-review.md)
+- [Kontrola přístupu ke skupinám nebo aplikacím](perform-access-review.md)
+- [Kontrola přístupu pro vlastní skupiny nebo aplikace](review-your-access.md)
+- [Dokončení kontroly přístupu skupin nebo aplikací](complete-access-review.md)

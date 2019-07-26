@@ -1,6 +1,6 @@
 ---
-title: Postup převzetí služeb při selhání HANA po havárii serveru pro SAP HANA v Azure (velké instance) | Dokumentace Microsoftu
-description: Jak provést převzetí služeb při selhání do lokality pro zotavení po havárii pro SAP HANA v Azure (velké instance)
+title: Postup převzetí služeb při selhání HANA na lokalitu po havárii pro SAP HANA v Azure (velké instance) | Microsoft Docs
+description: Jak provést převzetí služeb při selhání na lokalitu pro zotavení po havárii pro SAP HANA v Azure (velké instance)
 services: virtual-machines-linux
 documentationcenter: ''
 author: saghorpa
@@ -14,112 +14,112 @@ ms.workload: infrastructure
 ms.date: 04/22/2019
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6454c82e3d9c73d1b5a4b2224abf1ab63a798355
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: ad7cfbac1dffdab4af7afc26c98c0582bc376c99
+ms.sourcegitcommit: 5604661655840c428045eb837fb8704dca811da0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67709633"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68494341"
 ---
 # <a name="disaster-recovery-failover-procedure"></a>Postup převzetí služeb při selhání pro zotavení po havárii
 
 
 >[!IMPORTANT]
->Tento článek není náhradou za dokumentaci správu SAP HANA nebo SAP poznámky. Očekáváme, že máte důkladného porozumění a odborných znalostí v SAP HANA správu a provoz, zejména pro zálohování, obnovení, vysokou dostupnost a zotavení po havárii (DR). V tomto článku se zobrazí snímky obrazovky ze SAP HANA Studio. Obsah, struktura a povaze obrazovky nástroje pro správu SAP a nástrojů, samotné se mohou změnit ze SAP HANA verzí.
+>Tento článek není náhradou za dokumentaci pro správu SAP HANA ani pro poznámky ke službě SAP. Očekáváme, že budete mít plnou znalost a odbornosti v SAP HANA správě a operacích, zejména pro zálohování, obnovení, vysokou dostupnost a zotavení po havárii (DR). V tomto článku se zobrazí snímky obrazovky z SAP HANA studia. Obsah, struktura a povaha obrazovek nástrojů pro správu SAP a samotných nástrojů se můžou v SAP HANA vydání verze změnit.
 
-Existují dva případy, které je třeba zvážit při převzetí služeb při selhání pro zotavení po Havárii serveru:
+Při převzetí služeb při selhání na lokalitu DR je třeba vzít v úvahu dva případy:
 
-- Budete potřebovat databázi SAP HANA se vrátíte do stavu nejnovější data. V takovém případě je samoobslužné skript, pomocí kterého můžete provádět převzetí služeb při selhání, aniž byste museli kontaktovat společnost Microsoft. Pro navrácení služeb po obnovení musíte spolupracovat s Microsoftem.
-- Chcete obnovit na snímek úložiště, který není nejnovější replikované snímku. V takovém případě musíte spolupracovat s Microsoftem. 
+- K tomu, abyste se mohli vrátit k nejnovějšímu stavu dat, potřebujete databázi SAP HANA. V tomto případě je k dispozici samoobslužný skript, pomocí kterého můžete převzetí služeb při selhání provést bez nutnosti kontaktovat společnost Microsoft. Pro navrácení služeb po obnovení musíte pracovat s Microsoftem.
+- Chcete obnovit snímek úložiště, který není posledním replikovaným snímkem. V takovém případě potřebujete spolupracovat s Microsoftem. 
 
 >[!NOTE]
->Následující kroky je nutné provést na jednotce velká Instance HANA, která představuje jednotku zotavení po Havárii. 
+>Následující kroky je nutné provést na jednotce velké instance HANA, která představuje jednotku DR. 
  
-Pokud chcete obnovit nejnovější replikované úložiště snímků, postupujte podle kroků v "Provést úplné obnovení po Havárii převzetí služeb při selhání – azure_hana_dr_failover" v [Microsoft snapshot nástroje pro SAP HANA v Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.0/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.0.pdf). 
+Pokud chcete provést obnovení na nejnovější replikované snímky úložiště, postupujte podle kroků v tématu "úplné převzetí služeb při selhání v nástroji DR – azure_hana_dr_failover" v [nástrojích Microsoft Snapshot Tools pro SAP HANA v Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.1/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.1.pdf). 
 
-Pokud chcete mít více instancí SAP HANA převzetí služeb při selhání, spusťte příkaz azure_hana_dr_failover několikrát. Při požadavku na, zadejte SID SAP HANA má převzetí služeb při selhání a obnovení. 
+Pokud chcete více instancí SAP HANA převzít při selhání, spusťte příkaz azure_hana_dr_failover několikrát. V případě vyžádání zadejte identifikátor SID SAP HANA, který chcete převzít a obnovit. 
 
 
-Také můžete otestovat převzetí služeb při selhání zotavení po Havárii bez dopadu na vztah skutečné replikace. Pokud chcete provést testovací převzetí služeb, postupujte podle "Provést testovací převzetí služeb při selhání zotavení po Havárii – azure_hana_test_dr_failover" v [Microsoft snapshot nástroje pro SAP HANA v Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.0/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.0.pdf). 
+Převzetí služeb při selhání můžete testovat i bez dopadu na skutečný vztah replikace. Pokud chcete provést test převzetí služeb při selhání, postupujte podle kroků v tématu "provedení testu DR Failover to azure_hana_test_dr_failover" v tématu [Microsoft Snapshot Tools for SAP HANA v Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.1/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.1.pdf). 
 
 >[!IMPORTANT]
->Proveďte *není* spouštět jakékoli transakce produkční instance, kterou jste vytvořili v lokalitě zotavení po Havárii procesem **testování převzetí služeb při selhání**. Příkaz azure_hana_test_dr_failover vytvoří sadu svazky, které nemají žádný vztah k primární lokalitě. V důsledku toho se synchronizace zpět do primární lokality *není* je to možné. 
+>Nespouštějte *žádné* provozní transakce v instanci, kterou jste vytvořili v lokalitě Dr, prostřednictvím procesu testování převzetí **služeb při selhání**. Příkaz azure_hana_test_dr_failover vytvoří sadu svazků, které nemají žádný vztah k primární lokalitě. V důsledku toho *není* možné synchronizaci zpět do primární lokality. 
 
-Pokud chcete mít více instancí SAP HANA, pokud chcete otestovat, spusťte skript několikrát. Při požadavku na, zadejte identifikátor SID SAP HANA instanci, kterou chcete testovat převzetí služeb při selhání. 
+Pokud chcete otestovat více instancí SAP HANA, spusťte skript několikrát. V případě vyžádání zadejte identifikátor SID SAP HANA instance, kterou chcete otestovat pro převzetí služeb při selhání. 
 
 >[!NOTE]
->Pokud je potřeba k lokalitě zotavení po Havárii zachránit nějaká data, která byla odstraněna hodinami, a potřebují mít možnost zotavení po Havárii svazky, které chcete nastavit na předchozí snímek převzetí služeb při selhání, tento postup platí. 
+>Pokud potřebujete převzít služby při selhání na webu DR, abyste mohli zachránit některá data, která byla před hodinami Odstraněná, a potřebujete nastavit svazky DR na dřívější snímek, použije se tento postup. 
 
-1. Vypnutí instance neprovozním Hana na jednotce velkých instancích HANA, který používáte pro zotavení po havárii. Je neaktivní instance HANA produkčních předinstalována.
-1. Ujistěte se, že jsou spuštěny žádné procesy SAP HANA. Použijte následující příkaz k této kontrole:
+1. Vypněte nevýrobní instanci HANA na jednotce zotavení po havárii velkých instancí HANA, které používáte. Nainstalují se neaktivní provozní instance HANA.
+1. Ujistěte se, že nejsou spuštěné žádné SAP HANA procesy. Pro tuto kontrolu použijte následující příkaz:
 
       `/usr/sap/hostctrl/exe/sapcontrol –nr <HANA instance number> - function GetProcessList`.
 
-      Výstup by měl zobrazit **hdbdaemon** zpracovat v zastaveném stavu a žádné další procesy HANA ve stavu spuštěná nebo spuštěna.
-1. Určení, které název snímku nebo ID zálohování SAP HANA chcete obnovit lokalitu pro obnovení po havárii. V případech, obnovení po havárii skutečné tento snímek je obvykle nejnovější snímek. Pokud je potřeba obnovení ztracených dat, vyberte předchozí snímek.
-1. Obraťte se na podporu Azure prostřednictvím žádosti o podporu s vysokou prioritou. Požádejte o obnovení tohoto snímku s názvem a datum snímku nebo ID HANA zálohy v lokalitě zotavení po Havárii. Výchozí hodnota je, že na straně operace obnoví/hana/datový svazek pouze. Pokud chcete mít svazky logbackups/hana/příliš, musíte výslovně uvádějí, že. *Neobnovujte /hana/shared svazku.* Místo toho zvolte konkrétní soubory, jako je global.ini z celkového počtu **.snapshot** adresáři a jeho podadresářích po opětovném připojení/hana/sdílený svazek pro PRD. 
+      Výstup by měl Ukázat **hdbdaemon** proces v zastaveném stavu a žádné další procesy Hana ve spuštěném nebo spuštěném stavu.
+1. Určete, který název snímku nebo ID zálohy SAP HANA chcete obnovit lokalitu pro zotavení po havárii. V reálných případech zotavení po havárii je tento snímek obvykle posledním snímkem. Pokud potřebujete obnovit ztracená data, vyberte předchozí snímek.
+1. Kontaktujte podporu Azure prostřednictvím vysoce prioritní žádosti o podporu. Požádejte o obnovení tohoto snímku s názvem a datem snímku nebo ID zálohy HANA na webu DR. Ve výchozím nastavení se na straně operace obnoví pouze svazek/Hana/data. Pokud chcete, aby svazky/Hana/logbackups byly také, je nutné, abyste je konkrétně nastavili. *Neobnovujte svazek/Hana/Shared.* Místo toho můžete po opětovném připojení svazku/Hana/Shared pro PRD zvolit konkrétní soubory, jako je soubor Global. ini, z adresáře **. Snapshot** a jeho podadresáře. 
 
-   Na straně operace jsou provedeny následující kroky:
+   Na straně operací dojde k následujícím krokům:
 
-   a. Replikace snímků z objem výroby svazky pro obnovení po havárii je zastavená. Toto narušení může již došlo při výpadku lokality produkčním prostředí z důvodu, že je potřeba provést postup pro zotavení po havárii.
+   a. Replikace snímků z produkčního objemu do svazků pro zotavení po havárii je zastavena. K tomuto přerušení mohlo dojít, pokud je výpadek v provozní lokalitě důvodem, proč je nutné provést postup zotavení po havárii.
    
-   b. Úložiště název snímku nebo pořízení snímku s ID zálohy jste zvolili, je obnovena na svazcích pro zotavení po havárii.
+   b. Název snímku nebo snímek úložiště s ID zálohy, který jste zvolili, je obnoven na svazcích pro zotavení po havárii.
    
-   c. Po obnovení je možné připojit s jednotkami velká Instance HANA v oblasti pro zotavení po havárii svazky pro obnovení po havárii.
+   c. Po obnovení jsou svazky pro zotavení po havárii k dispozici, aby byly v oblasti zotavení po havárii připojené k jednotkám velkých instancí HANA.
       
-1. Připojte svazky pro obnovení po havárii k jednotce velká Instance HANA v lokalitě zotavení po havárii. 
-1. Spuštění neaktivní produkční instance SAP HANA.
-1. Pokud jste zvolili pro kopírování protokolů transakcí zálohování protokolů zkrátit čas cíle bodu obnovení, sloučit do adresáře logbackups nově připojené zotavení po Havárii/hana/zálohy transakčního protokolu. Nepřepisujte stávající zálohy. Zkopírujte novější zálohy, které se replikují pomocí nejnovější replikace úložiště snímku.
-1. Můžete také obnovit jednotlivé soubory mimo snímky, které se replikují do svazku /hana/shared/PRD v oblasti zotavení po Havárii Azure.
+1. Připojte svazky zotavení po havárii k jednotce velkých instancí HANA v lokalitě pro obnovení po havárii. 
+1. Spusťte instanci neaktivní SAP HANA výroby.
+1. Pokud jste se rozhodli Kopírovat protokoly zálohování protokolu transakcí, aby se snížil čas bodu obnovení, slučte zálohy protokolu transakcí do nově připojeného adresáře/Hana/logbackups DR. Nepřepisujte stávající zálohy. Zkopírujte novější zálohy, které nebyly replikovány s poslední replikací snímku úložiště.
+1. Z snímků, které se nereplikují do svazku/hana/shared/PRD v oblasti Azure, můžete také obnovit jednotlivé soubory.
 
-Následující kroky ukazují, jak obnovit produkční instance SAP HANA na základě snímek obnovené úložiště a zálohování protokolů transakcí, které jsou k dispozici.
+Následující kroky ukazují, jak obnovit SAP HANA instanci výroby na základě obnoveného snímku úložiště a záloh protokolu transakcí, které jsou k dispozici.
 
-1. Změnit umístění zálohy pro **/hana/logbackups** s použitím sady Studio SAP HANA.
+1. Umístění zálohy můžete změnit na **/Hana/logbackups** pomocí nástroje SAP HANA Studio.
 
-   ![Změna umístění zálohy pro zotavení po Havárii](./media/hana-overview-high-availability-disaster-recovery/change_backup_location_dr1.png)
+   ![Změna umístění zálohy pro obnovení po havárii](./media/hana-overview-high-availability-disaster-recovery/change_backup_location_dr1.png)
 
-1. SAP HANA prohledává umístění zálohování souborů a navrhne nejnovější zálohy protokolu transakcí obnovení. Kontrola může trvat několik minut, dokud na obrazovce jako se zobrazí následující:
+1. SAP HANA prohledává umístění záložních souborů a navrhuje poslední zálohu protokolu transakcí, do které se má obnovení provést. Kontrola může trvat několik minut, než se zobrazí obrazovka podobná této:
 
-   ![Seznam zálohy transakčního protokolu pro zotavení po Havárii](./media/hana-overview-high-availability-disaster-recovery/backup_list_dr2.PNG)
+   ![Seznam záloh protokolu transakcí pro zotavení po havárii](./media/hana-overview-high-availability-disaster-recovery/backup_list_dr2.PNG)
 
-1. Upravte některé výchozí nastavení:
+1. Upravte některá výchozí nastavení:
 
-      - Vymazat **pomocí rozdílových záloh**.
-      - Vyberte **inicializovat protokol oblasti**.
+      - Zrušte zaškrtnutí políčka **použít rozdílové zálohy**.
+      - Vyberte možnost **inicializovat oblast protokolu**.
 
-   ![Nastavení oblasti inicializace protokolu](./media/hana-overview-high-availability-disaster-recovery/initialize_log_dr3.PNG)
+   ![Nastavení oblasti inicializovat protokol](./media/hana-overview-high-availability-disaster-recovery/initialize_log_dr3.PNG)
 
 1. Vyberte **Finish** (Dokončit).
 
-   ![Dokončení obnovení zotavení po Havárii](./media/hana-overview-high-availability-disaster-recovery/finish_dr4.PNG)
+   ![Dokončení obnovení DR](./media/hana-overview-high-availability-disaster-recovery/finish_dr4.PNG)
 
-Průběh, jako je popsaný tady, by se zobrazit. Mějte na paměti, že v příkladu je obnovení pro zotavení po havárii konfigurace škálování na více instancí SAP HANA třemi uzly.
+Okno průběh, podobně jako v tomto příkladu, by se mělo zobrazit. Mějte na paměti, že tento příklad je obnovení konfigurace SAP HANA horizontálního navýšení kapacity se třemi uzly.
 
-![Průběh obnovení](./media/hana-overview-high-availability-disaster-recovery/restore_progress_dr5.PNG)
+![Průběh obnovování](./media/hana-overview-high-availability-disaster-recovery/restore_progress_dr5.PNG)
 
-Pokud obnovení přestane reagovat na **Dokončit** obrazovky a nemá zobrazit obrazovka průběhu, ověřte, zda jsou spuštěny všechny instance SAP HANA na pracovních uzlech. V případě potřeby spusťte ručně instance systému SAP HANA.
+Pokud obnovení přestane reagovat na obrazovce **dokončení** a nezobrazuje obrazovku průběh, zkontrolujte, zda jsou spuštěny všechny instance SAP HANA v pracovních uzlech. V případě potřeby spusťte instance SAP HANA ručně.
 
 
-## <a name="failback-from-a-dr-to-a-production-site"></a>Navrácení služeb po obnovení z zotavení po Havárii pro produkční lokality
-Může selhat obnovení z zotavení po Havárii pro produkční lokality. Podívejme se na scénář, ve kterém se způsobilo převzetí služeb při selhání do lokality pro obnovení po havárii problémy v produkčním prostředí oblasti Azure a ne potřebou obnovení ztracených dat. 
+## <a name="failback-from-a-dr-to-a-production-site"></a>Navrácení služeb po obnovení z zotavení po havárii do provozní lokality
+Navrácení služeb po obnovení z programu zotavení po havárii do provozní lokality. Pojďme se podívat na scénář, ve kterém se převzetí služeb při selhání v lokalitě pro zotavení po havárii způsobilo v produkční oblasti Azure, a ne na tom, co by bylo nutné obnovovat ztracená data. 
 
-Běží vaše produkční úlohy SAP nějakou dobu v lokalitě zotavení po havárii. Jako jsou vyřešené problémy v produkční lokality, chcete po obnovení zpět na svůj provozní server. Vzhledem k tomu, že nemůže dojít ke ztrátě dat, krok zpátky do produkční lokality zahrnuje několik kroků a úzké spolupráci s SAP HANA v Azure provozního týmu. To je na vás k aktivaci provozní tým zahájení synchronizace zpět na pracoviště, jakmile jsou vyřešeny problémy.
+V lokalitě pro obnovení po havárii jste provozoval provozní úlohy SAP pro určitou dobu. V případě, že jsou problémy v produkčním webu vyřešeny, budete chtít provést navrácení služeb po obnovení do produkčního webu. Vzhledem k tomu, že nemůžete přijít o data, krok zpátky do produkční lokality zahrnuje několik kroků a uzavře spolupráci s SAP HANA v rámci Azure Operations Team. Můžete aktivovat provozní tým, aby po vyřešení problémů zahájil synchronizaci zpět do produkční lokality.
 
 Postupujte následovně:
 
-1. SAP HANA v Azure provozní tým získá aktivační událost synchronizace produkční svazky úložiště ze svazků úložiště obnovení po havárii, které nyní představují provozního stavu. V tomto stavu je vypnout velká Instance HANA jednotku v produkční lokality.
-1. SAP HANA v Azure provozní tým sleduje replikace a zajišťuje, že to je zachycena předtím, než vás informovat.
-1. Vypnutí aplikace, které používají produkční HANA Instance v lokalitě zotavení po havárii. Pak provést zálohování protokolu transakcí HANA. V dalším kroku zastavení instance HANA, která běží na velká Instance HANA jednotky v lokalitě zotavení po havárii.
-1. Po ukončení instance HANA, na kterém běží v jednotce velká Instance HANA v lokalitě zotavení po havárii, provozní tým ruční synchronizaci diskové svazky.
-1. SAP HANA v Azure provozní tým znovu spustí velká Instance HANA jednotek v produkční lokality. Jejich předat vám. Ujistěte se, že instance SAP HANA je ve stavu vypnutí v době spuštění jednotky velká Instance HANA.
-1. Provedete stejný postup obnovení databáze, které jste použili při dříve převzetí služeb při selhání do lokality pro obnovení po havárii.
+1. Služba SAP HANA v rámci Azure Operations Team získá Trigger, který synchronizuje úložné svazky úložiště od svazků úložiště pro zotavení po havárii, které teď reprezentují stav výroby. V tomto stavu je jednotka velkých instancí HANA v produkčním webu vypnutá.
+1. SAP HANA v Azure Operations týmu sleduje replikaci a zajišťuje, aby se zachytila předtím, než vás informují.
+1. Vypínáte aplikace, které používají instanci provozní HANA, na webu pro zotavení po havárii. Pak provedete zálohování protokolu transakcí HANA. V dalším kroku zastavíte instanci HANA, která je spuštěná v jednotkách velkých instancí HANA, na webu pro zotavení po havárii.
+1. Po ukončení instance HANA, která je spuštěná v jednotce velké instance služby HANA v lokalitě pro obnovení po havárii, bude provozní tým ručně synchronizovat svazky disku znovu.
+1. V SAP HANA v rámci Azure Operations Team se znovu spustí jednotka velká instance HANA v produkčním webu. Předají se vám na vás. Ujistěte se, že je instance SAP HANA v době spuštění jednotky velkých instancí HANA ve stavu vypnutí.
+1. Provedete stejné kroky obnovení databáze, které jste provedli při převzetí služeb při selhání v lokalitě pro obnovení po havárii.
 
-## <a name="monitor-disaster-recovery-replication"></a>Monitorování replikace pro zotavení po havárii
+## <a name="monitor-disaster-recovery-replication"></a>Monitorování replikace zotavení po havárii
 
-Pokud chcete monitorovat stav průběhu replikace úložiště, spusťte skript `azure_hana_replication_status`. Tento příkaz musí spustit z jednotky, na kterém běží v umístění pro obnovení po havárii fungovat podle očekávání. Příkaz funguje bez ohledu na to, zda je replikace aktivní. Tento příkaz lze spustit pro každou jednotku velká Instance HANA vašeho tenanta v umístění pro obnovení po havárii. Nelze získat informace o spouštěcím svazku. 
+Pokud chcete monitorovat stav procesu replikace úložiště, spusťte skript `azure_hana_replication_status`. Tento příkaz musí být spuštěn z jednotky, která je spuštěna v umístění zotavení po havárii, aby fungovala podle očekávání. Příkaz nefunguje bez ohledu na to, jestli je replikace aktivní. Příkaz se dá spustit pro každou jednotku velkých instancí v tenantovi v umístění pro zotavení po havárii. Nedá se použít k získání podrobných informací o spouštěcím svazku. 
 
-Další informace o příkazu a její výstup, najdete v části "Získat stav replikace pro DR - azure_hana_replication_status" v [Microsoft snapshot nástroje pro SAP HANA v Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.0/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.0.pdf).
+Další informace o příkazu a jeho výstupu najdete v tématu "získání stavu replikace DR – azure_hana_replication_status" v [nástrojích Microsoft Snapshot Tools pro SAP HANA v Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.0/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.0.pdf).
 
 
 ## <a name="next-steps"></a>Další postup
-- Zobrazit [monitorování a řešení potíží s ze strany HANA](hana-monitor-troubleshoot.md).
+- Podívejte [se na téma monitorování a řešení potíží ze strany Hana](hana-monitor-troubleshoot.md).

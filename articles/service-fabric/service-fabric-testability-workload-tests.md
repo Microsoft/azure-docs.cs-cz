@@ -1,6 +1,6 @@
 ---
-title: Simulace chyb v aplikacích Azure Service Fabric | Dokumentace Microsoftu
-description: Popisuje, jak posílit ochranu proti selhání bezproblémové a vynuceném vašich služeb.
+title: Simulace chyb v Azure Service Fabricch aplikacích | Microsoft Docs
+description: Jak posílit vaše služby před řádnými a nedarovanými chybami.
 services: service-fabric
 documentationcenter: .net
 author: anmolah
@@ -14,25 +14,25 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/15/2017
 ms.author: anmola
-ms.openlocfilehash: ceb6ad1a6a1182d78c473b8b0387c365eb660065
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bbb89b66231c949627c7ffbf99ebe9b5dd379ca2
+ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60865268"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68348717"
 ---
 # <a name="simulate-failures-during-service-workloads"></a>Simulace chyb během zatížení služeb
-Scénářů testovatelnosti v Azure Service Fabric umožňují vývojářům bez starostí o práci s jednotlivých chyb. Existují scénáře, ale pokud explicitní prokládání úlohy klientů a selhání může být potřeba. Prokládání klienta úloh a chyb zajistí, že služba ve skutečnosti provádí určitou akci při dojde k selhání. Udělená úroveň ovládací prvek, který poskytuje možnosti testování, může se jednat na přesné bodů provádění úlohy. Tato indukční chyb v různých stavech v aplikaci můžete vyhledat chyby a vylepšit kvalitu.
+Scénáře testování v Azure Service Fabric umožňují vývojářům bez obav řešit jednotlivé chyby. Existují však situace, kdy může být potřeba explicitní prokládání úloh a selhání klienta. Prokládání zatížení a chyb klienta zajišťuje, že služba skutečně provádí určitou akci, když dojde k selhání. Vzhledem k úrovni řízení, které poskytuje testování, by mohly být v přesném bodě provádění úlohy. Tento počet chyb v různých stavech aplikace může najít chyby a zlepšit kvalitu.
 
-## <a name="sample-custom-scenario"></a>Ukázkový scénář pro vlastní
-Tento test představuje scénář, který předřadí obchodní úlohy s [selhání bezproblémové a vynuceném](service-fabric-testability-actions.md#graceful-vs-ungraceful-fault-actions). Chyby by měl vyvolaných uprostřed operace služby nebo výpočetní prostředky pro dosažení co nejlepších výsledků.
+## <a name="sample-custom-scenario"></a>Ukázka vlastního scénáře
+Tento test znázorňuje scénář, který ponechá pracovní úlohu s [řádnými a](service-fabric-testability-actions.md#graceful-vs-ungraceful-fault-actions)nedarovanými chybami. Chyby by se měly vystavit za provozu služeb nebo výpočetních prostředků pro dosažení nejlepších výsledků.
 
-Projděme si příklad služby, která poskytuje čtyři úlohy: A, B, C a D. Každá odpovídající sadě pracovních postupů a může být výpočetní prostředky, úložiště nebo kombinace. Z důvodu zjednodušení jsme se abstraktní navýšení kapacity úloh v našem příkladu. Jsou různé chyby spuštění v tomto příkladu:
+Pojďme si projít příkladem služby, která zveřejňuje čtyři úlohy: A, B, C a D. Každá z nich odpovídá sadě pracovních postupů a může být COMPUTE, úložiště nebo kombinace. V zájmu jednoduchosti se v našem příkladu vyčerpá úlohy. K různým chybám provedeným v tomto příkladu patří:
 
-* RestartNode: Vynuceném selhání simulujte restartování počítače.
-* RestartDeployedCodePackage: Dojde k chybě vynuceném selhání pro simulaci hostitelského procesu služby.
-* RemoveReplica: Bezproblémové selhání pro simulaci odstranění repliky.
-* MovePrimary: Bezproblémové selhání pro simulaci repliky přesune aktivovaných pomocí služby Vyrovnávání zatížení Service Fabric.
+* RestartNode: Nedarovaná chyba pro simulaci restartování počítače.
+* RestartDeployedCodePackage: Nedarovaná chyba pro simulaci selhání procesu hostitele služby.
+* RemoveReplica: Řádné selhání pro simulaci odebrání repliky.
+* MovePrimary: Plynulá chyba pro simulaci přesunutí repliky spouštěného nástrojem Service Fabric Load Balancer.
 
 ```csharp
 // Add a reference to System.Fabric.Testability.dll and System.Fabric.dll.
@@ -116,7 +116,7 @@ class Test
             // Run the selected random fault.
             await RunFaultAsync(applicationName, fault, replicaSelector, fabricClient);
             // Validate the health and stability of the service.
-            await fabricClient.ServiceManager.ValidateServiceAsync(serviceName, maxServiceStabilizationTime);
+            await fabricClient.TestManager.ValidateServiceAsync(serviceName, maxServiceStabilizationTime);
 
             // Wait for the workload to finish successfully.
             await workloadTask;
@@ -128,16 +128,16 @@ class Test
         switch (fault)
         {
             case ServiceFabricFaults.RestartNode:
-                await client.ClusterManager.RestartNodeAsync(selector, CompletionMode.Verify);
+                await client.FaultManager.RestartNodeAsync(selector, CompletionMode.Verify);
                 break;
             case ServiceFabricFaults.RestartCodePackage:
-                await client.ApplicationManager.RestartDeployedCodePackageAsync(applicationName, selector, CompletionMode.Verify);
+                await client.FaultManager.RestartDeployedCodePackageAsync(applicationName, selector, CompletionMode.Verify);
                 break;
             case ServiceFabricFaults.RemoveReplica:
-                await client.ServiceManager.RemoveReplicaAsync(selector, CompletionMode.Verify, false);
+                await client.FaultManager.RemoveReplicaAsync(selector, CompletionMode.Verify, false);
                 break;
             case ServiceFabricFaults.MovePrimary:
-                await client.ServiceManager.MovePrimaryAsync(selector.PartitionSelector);
+                await client.FaultManager.MovePrimaryAsync(selector.PartitionSelector);
                 break;
         }
     }

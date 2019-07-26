@@ -4,15 +4,15 @@ description: Tento článek popisuje, jak Azure Cosmos DB poskytuje vysokou dost
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 06/28/2019
+ms.date: 07/23/2019
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 38629ed2246f4eb67e4183354fe4feaaaee16805
-ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
-ms.translationtype: HT
+ms.openlocfilehash: 4dde41479c05151fa4e14c9fe4b534b9f7edf9b4
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68305450"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68467741"
 ---
 # <a name="high-availability-with-azure-cosmos-db"></a>Vysoká dostupnost s Azure Cosmos DB
 
@@ -49,9 +49,9 @@ Oblastní výpadky nejsou nijak neobvyklé a služba Azure Cosmos DB zajišťuje
 - Účty s více oblastmi nakonfigurované s oblastí s vícenásobným zápisem budou vysoce dostupné pro zápis i čtení. Místní převzetí služeb při selhání je okamžité a nevyžaduje žádné změny aplikace.
 
 - **Účty s více oblastmi s jednou oblastí zápisu (výpadek oblasti zápisu):** 
-  * Během výpadku oblasti zápisu zůstanou tyto účty vysoce dostupné pro čtení. Pro zápisy ale musíte **Povolit automatické převzetí služeb při** selhání v účtu Cosmos, abyste ovlivnili ovlivněnou oblast do jiné oblasti. K převzetí služeb při selhání dojde v pořadí podle priority oblasti, kterou jste zadali. 
-  * Když je ovlivněná oblast zpět online, nereplikovaná data přítomná v oblasti ovlivněného zápisu během výpadku budou k dispozici prostřednictvím [kanálu konfliktů](how-to-manage-conflicts.md#read-from-conflict-feed). Aplikace mohou číst kanál konfliktů, řešit konflikty na základě logiky specifické pro aplikaci a podle potřeby zapisovat aktualizovaná data zpátky do kontejneru Cosmos. 
-  * Jakmile se výše ovlivněné oblasti zápisu napřed mění, bude automaticky dostupná jako oblast pro čtení. Můžete přejít zpátky do obnovené oblasti jako oblast zápisu. Oblasti můžete přepínat pomocí rozhraní příkazového [řádku Azure CLI nebo Azure Portal](how-to-manage-database-account.md#manual-failover). Před ručním převzetím služeb při selhání nebo po něm nedochází **ke ztrátě dostupnosti dat nebo dostupnosti** . Vaše aplikace bude i nadále vysoce dostupná. 
+  * Během výpadku oblasti zápisu zůstanou tyto účty vysoce dostupné pro čtení. Aby požadavky na zápis byly úspěšné, musíte zapnout možnost **Povolit automatické převzetí služeb při selhání** v účtu Azure Cosmos. Povolením této možnosti dojde k převzetí služeb při selhání ovlivněné oblasti v jiné oblasti v pořadí podle priority oblasti. 
+  * Když je dříve ovlivněná oblast zpět online, všechna data zápisu, která byla nereplikována v případě selhání oblasti, jsou zpřístupněna prostřednictvím [kanálu konfliktů](how-to-manage-conflicts.md#read-from-conflict-feed). Aplikace mohou číst kanál konfliktů, řešit konflikty na základě logiky specifické pro aplikaci a podle potřeby zapisovat aktualizovaná data zpátky do kontejneru Azure Cosmos. 
+  * Jakmile se výše ovlivněné oblasti zápisu napřed mění, bude automaticky dostupná jako oblast pro čtení. Můžete přejít zpátky do obnovené oblasti jako oblast zápisu. Oblasti můžete přepínat pomocí rozhraní příkazového [řádku Azure CLI nebo Azure Portal](how-to-manage-database-account.md#manual-failover). Neexistují **žádná data ani ztráta dostupnosti** před, během nebo po přepnutí oblasti zápisu a aplikace bude dál vysoce dostupná. 
 
 - **Účty s více oblastmi s jednou oblastí zápisu (výpadek při čtení oblasti):** 
   * Při výpadku oblasti čtení zůstanou tyto účty vysoce dostupné pro čtení a zápis. 

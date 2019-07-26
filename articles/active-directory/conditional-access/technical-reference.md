@@ -1,6 +1,6 @@
 ---
-title: Referenční informace k nastavení Azure Active Directory podmíněného přístupu | Dokumentace Microsoftu
-description: Získejte přehled o podporovaných nastavení v zásadách Azure Active Directory podmíněného přístupu.
+title: Odkaz na nastavení Azure Active Directory podmíněného přístupu | Microsoft Docs
+description: Získejte přehled o podporovaných nastaveních ve Azure Active Directory zásadách podmíněného přístupu.
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -11,83 +11,83 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 535842989ef49ee13a5ddee7c4349a3b819f741c
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: 316c5b6b52c30b51fb2f177a0ae2bd9758fc91d9
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67797842"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68442465"
 ---
-# <a name="azure-active-directory-conditional-access-settings-reference"></a>Referenční informace k nastavení Azure Active Directory podmíněného přístupu
+# <a name="azure-active-directory-conditional-access-settings-reference"></a>Odkaz na nastavení Azure Active Directory podmíněného přístupu
 
-Můžete použít [podmíněného přístupu Azure Active Directory (Azure AD)](../active-directory-conditional-access-azure-portal.md) řídit jak oprávněným uživatelům můžete přístup k vašim prostředkům.
+Pomocí podmíněného [přístupu Azure Active Directory (Azure AD)](../active-directory-conditional-access-azure-portal.md) můžete řídit, jak můžou autorizovaní uživatelé přistupovat k vašim prostředkům.
 
-Tento článek obsahuje informace o podpoře pro následující možnosti konfigurace zásad podmíněného přístupu:
+V tomto článku najdete informace o podpoře pro následující možnosti konfigurace v zásadách podmíněného přístupu:
 
-- Přiřazení aplikací cloudu
+- Přiřazení cloudových aplikací
 - Podmínka platformy zařízení
-- Stav klienta aplikace
-- Požadavek schválené klientské aplikace
+- Podmínka klientských aplikací
+- Požadavek na schválenou aplikaci klienta
 
-Pokud to není informace, které hledáte, uveďte ji v poznámce na konci tohoto článku.
+Pokud se nejedná o informace, které hledáte, ponechte prosím na konci tohoto článku komentář.
 
-## <a name="cloud-apps-assignments"></a>Přiřazení aplikací cloudu
+## <a name="cloud-apps-assignments"></a>Přiřazení cloudových aplikací
 
-Díky zásadám podmíněného přístupu můžete řídit, jak vaši uživatelé přístup k vaší [cloudové aplikace](conditions.md#cloud-apps-and-actions). Při konfiguraci zásad podmíněného přístupu musíte vybrat aspoň jednu aplikaci v cloudu. 
+Pomocí zásad podmíněného přístupu můžete řídit, jak uživatelé přistupují k vašim [cloudovým aplikacím](conditions.md#cloud-apps-and-actions). Když konfigurujete zásady podmíněného přístupu, musíte vybrat aspoň jednu cloudovou aplikaci. 
 
-![Vyberte cloudové aplikace zásady](./media/technical-reference/09.png)
+![Vyberte cloudové aplikace pro vaše zásady.](./media/technical-reference/09.png)
 
 ### <a name="microsoft-cloud-applications"></a>Cloudové aplikace Microsoftu
 
-Zásady podmíněného přístupu můžete přiřadit následující cloudové aplikace od Microsoftu:
+Zásady podmíněného přístupu můžete přiřadit k těmto cloudovým aplikacím od Microsoftu:
 
 - Azure Analysis Services
 - Azure DevOps
-- Azure SQL Database a Data Warehouse – [Další informace](https://docs.microsoft.com/azure/sql-database/sql-database-conditional-access)
+- Azure SQL Database a datový sklad – další [informace](https://docs.microsoft.com/azure/sql-database/sql-database-conditional-access)
 - Dynamics CRM Online
-- Microsoft Application Insights Analytics
-- Microsoft Azure Information Protection – [Další informace](https://docs.microsoft.com/azure/information-protection/faqs#i-see-azure-information-protection-is-listed-as-an-available-cloud-app-for-conditional-accesshow-does-this-work)
-- Microsoft Azure Management – [Další informace](https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management)
+- Analýzy Microsoft Application Insights
+- Microsoft Azure Information Protection – další [informace](https://docs.microsoft.com/azure/information-protection/faqs#i-see-azure-information-protection-is-listed-as-an-available-cloud-app-for-conditional-accesshow-does-this-work)
+- Správa Microsoft Azure – další [informace](https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management)
 - Správa předplatného Microsoft Azure
 - Microsoft Cloud App Security
-- Nástroje Microsoft Commerce Portal řízení přístupu
-- Služba ověřování nástroje Microsoft Commerce
+- Portál Microsoft Commerce Tools Access Control Portal
+- Služba Microsoft Commerce Tools Authentication Service
 - Microsoft Flow
 - Microsoft Forms
 - Microsoft Intune
 - Registrace v Microsoft Intune
 - Aplikace Microsoft Planner
-- Microsoft Power BI
 - Microsoft PowerApps
-- Vyhledávání v Bingu
+- Hledání ve službě Bing
 - Microsoft StaffHub
 - Microsoft Stream
 - Microsoft Teams
 - Office 365 Exchange Online
 - Office 365 SharePoint Online
 - Office 365 Yammer
-- Office Delve
+- Office – Delvu
 - Office Sway
 - Outlook Groups
+- Služba Power BI
 - Project Online
 - Online Skype pro firmy
 - Virtuální privátní síť (VPN)
 - Visual Studio App Center
-- Ochrana ATP v programu Windows Defender
+- Windows Defender ATP
 
 ### <a name="other-applications"></a>Další aplikace
 
-Kromě cloudové aplikace Microsoftu můžete přiřadit zásadu podmíněného přístupu pro následující typy cloudových aplikací:
+Kromě cloudových aplikací Microsoftu můžete přiřadit zásady podmíněného přístupu k těmto typům cloudových aplikací:
 
-- Aplikace Azure AD připojení
-- Předem integrované federované aplikace software jako služba (SaaS)
-- Aplikace, které používají heslo jednotné přihlašování (SSO)
+- Aplikace připojené k Azure AD
+- Předem integrovaná aplikace federovaného softwaru jako služby (SaaS)
+- Aplikace, které používají jednotné přihlašování pomocí hesla (SSO)
 - Obchodní aplikace
-- Aplikace, které používají Azure AD Application Proxy
+- Aplikace, které používají Azure Proxy aplikací služby AD
 
 ## <a name="device-platform-condition"></a>Podmínka platformy zařízení
 
-V zásadách podmíněného přístupu můžete nakonfigurovat podmínku platformu zařízení a jejich zapojení zásady tak, aby operační systém na klientovi. Podmíněný přístup Azure AD podporuje tyto platformy zařízení:
+V zásadách podmíněného přístupu můžete nakonfigurovat podmínku pro platformu zařízení, aby zásady provázána s operačním systémem klienta. Podmíněný přístup Azure AD podporuje tyto platformy zařízení:
 
 - Android
 - iOS
@@ -95,29 +95,31 @@ V zásadách podmíněného přístupu můžete nakonfigurovat podmínku platfor
 - Windows
 - macOS
 
-![Tie zásady přístupu na klientský operační systém](./media/technical-reference/41.png)
+![Propojení zásad přístupu k operačnímu systému klienta](./media/technical-reference/41.png)
 
-## <a name="client-apps-condition"></a>Stav klienta aplikace
+Pokud zablokujete starší ověřování pomocí podmínky **ostatních klientů** , můžete také nastavit podmínku pro platformu zařízení.
 
-Ve své zásady podmíněného přístupu můžete nakonfigurovat [klientské aplikace](conditions.md#client-apps) podmínku a jejich zapojení zásady tak, aby klientská aplikace, který inicioval pokus o přístup. Nastavení klienta aplikace podmínku udělit nebo blokovat přístup, když je proveden pokus o přístup z následujících typů klientských aplikací:
+## <a name="client-apps-condition"></a>Podmínky klientských aplikací
+
+V rámci zásad podmíněného přístupu můžete nakonfigurovat podmínku pro [klientské aplikace](conditions.md#client-apps) tak, aby zásady provedla pro klientskou aplikaci, která iniciovala pokus o přístup. Nastavte podmínku pro klientské aplikace tak, aby při pokusu o přístup z následujících typů klientských aplikací udělily nebo blokovaly přístup:
 
 - Browser
-- Mobilní aplikace a desktopové aplikace
+- Mobilní aplikace a aplikace klasické pracovní plochy
 
-![Řízení přístupu pro klientské aplikace.](./media/technical-reference/03.png)
+![Řízení přístupu pro klientské aplikace](./media/technical-reference/03.png)
 
 ### <a name="supported-browsers"></a>Podporované prohlížeče
 
-Ve své zásady podmíněného přístupu můžete vybrat **prohlížeče** jako klientskou aplikaci.
+V zásadách podmíněného přístupu můžete jako klientskou aplikaci vybrat možnost **prohlížeče** .
 
 ![Řízení přístupu pro podporované prohlížeče](./media/technical-reference/05.png)
 
-Toto nastavení funguje u všech prohlížečů. Tím se uspokojí zásady pro zařízení, jako je zařízení kompatibilní s požadavkem, následující operační systémy a prohlížeče jsou však podporovány:
+Toto nastavení funguje ve všech prohlížečích. Pokud ale chcete splnit zásadu zařízení, třeba požadavky na vyhovující zařízení, podporují se tyto operační systémy a prohlížeče:
 
 | OS                     | Prohlížeče                                      |
 | :--                    | :--                                           |
 | Windows 10             | Internet Explorer, Microsoft Edge, Chrome     |
-| Windows 8 nebo 8.1        | Internet Explorer, Chrome                     |
+| Windows 8/8,1        | Internet Explorer, Chrome                     |
 | Windows 7              | Internet Explorer, Chrome                     |
 | iOS                    | Safari, Microsoft Edge, Intune Managed Browser |
 | Android                | Chrome, Microsoft Edge, Intune Managed Browser |
@@ -128,80 +130,82 @@ Toto nastavení funguje u všech prohlížečů. Tím se uspokojí zásady pro z
 | Windows Server 2008 R2 | Internet Explorer, Chrome                     |
 | macOS                  | Chrome, Safari                                |
 
-#### <a name="why-do-i-see-a-certificate-prompt-in-the-browser"></a>Proč vidím certifikát výzvu v prohlížeči
+#### <a name="why-do-i-see-a-certificate-prompt-in-the-browser"></a>Proč se v prohlížeči zobrazí výzva k zadání certifikátu
 
-Azure AD ve Windows 7, iOS, Android a macOS Určuje zařízení používají klientský certifikát, který je zřízený, když je zařízení zaregistrované ve službě Azure AD.  Když uživatel poprvé přihlásí pomocí prohlížeče bude uživatel vyzván k výběru certifikátu. Než začnete používat prohlížeč, musí uživatel vybrat tento certifikát.
+V systému Windows 7, iOS, Android a macOS Azure AD identifikuje zařízení pomocí klientského certifikátu, který se zřídí při registraci zařízení ve službě Azure AD.  Když se uživatel poprvé přihlásí prostřednictvím prohlížeče, zobrazí se uživateli výzva k výběru certifikátu. Uživatel musí před použitím prohlížeče tento certifikát vybrat.
 
 #### <a name="chrome-support"></a>Podpora Chrome
 
-Chrome podpoře v **Windows 10 Creators Update (verze 1703)** nebo později, nainstalujte [účty systému Windows 10 rozšíření](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji). Toto rozšíření je povinné, když zásady podmíněného přístupu vyžaduje konkrétní podrobnosti o zařízení.
+V případě podpory pro Chrome ve **Windows 10 Creators Update (verze 1703)** nebo novější nainstalujte [rozšíření účtů Windows 10](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji). Toto rozšíření se vyžaduje, když zásada podmíněného přístupu vyžaduje podrobnosti konkrétního zařízení.
 
-Toto rozšíření automaticky nasazovat do prohlížečů Chrome, vytvořte následující klíč registru:
+Pokud chcete toto rozšíření automaticky nasadit do prohlížečů Chrome, vytvořte následující klíč registru:
 
 |    |    |
 | --- | --- |
 | `Path` | HKEY_LOCAL_MACHINE\Software\Policies\Google\Chrome\ExtensionInstallForcelist |
 | Name | 1 |
-| type | REG_SZ (String) |
-| Data | ppnbnpeolgkicgegkbkbjmhlideopiji; https://clients2.google.com/service/update2/crx |
+| type | REG_SZ (řetězec) |
+| Data | ppnbnpeolgkicgegkbkbjmhlideopiji; https\://clients2.Google.com/Service/Update2/CRX |
 
-Chrome podpoře v **Windows 8.1 a 7**, vytvořte následující klíč registru:
+V případě podpory Chrome v **Windows 8.1 a 7**vytvořte následující klíč registru:
 
 |    |    |
 | --- | --- |
 | `Path` | HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome\AutoSelectCertificateForUrls |
 | Name | 1 |
-| type | REG_SZ (String) |
-| Data | {"vzor": "https://device.login.microsoftonline.com filtr","": {"VYSTAVITELE": {"CN": "MS-organizace přístup"}}} |
+| type | REG_SZ (řetězec) |
+| Data | {"vzor": "https://device.login.microsoftonline.com", "Filter": {"Issuer": {"CN": "MS-Organization-Access"}}} |
 
-Tyto prohlížeče podporují ověřování zařízení umožňuje identifikovat a ověřovat na zásady zařízení. Kontrola zařízení selže, pokud je spuštěn prohlížeč v privátním režimu.
+Tyto prohlížeče podporují ověřování zařízení, což umožňuje, aby se zařízení identifikovalo a ověřilo na základě zásad. Pokud je prohlížeč spuštěný v privátním režimu, neproběhne jeho ověření.
 
-### <a name="supported-mobile-applications-and-desktop-clients"></a>Podporovaná mobilní aplikace a desktopoví klienti
+### <a name="supported-mobile-applications-and-desktop-clients"></a>Podporované mobilní aplikace a desktopové klienty
 
-Ve své zásady podmíněného přístupu můžete vybrat **mobilní aplikace a desktopoví klienti** jako klientskou aplikaci.
+V zásadách podmíněného přístupu můžete jako klientskou aplikaci vybrat **mobilní aplikace a klienty klasické pracovní plochy** .
 
-![Řízení přístupu pro podporované mobilní aplikace a desktopoví klienti](./media/technical-reference/06.png)
+![Řízení přístupu pro podporované mobilní aplikace nebo desktopové klienty](./media/technical-reference/06.png)
 
-Toto nastavení nemá vliv na pokusy o přístup z následující mobilní aplikace a desktopoví klienti:
+Toto nastavení má vliv na pokusy o přístup uskutečněné z následujících mobilních aplikací a klientů klasické pracovní plochy:
 
-| Klientské aplikace. | Cílová služba | Platforma |
+| Klientské aplikace | Cílová služba | Platforma |
 | --- | --- | --- |
 | Aplikace Dynamics CRM | Dynamics CRM | Windows 10, Windows 8.1, iOS a Android |
-| E-mailu nebo kalendáře/lidí aplikace Outlook 2016, Outlook 2013 (s moderním ověřováním)| Office 365 Exchange Online | Windows 10 |
-| Zásady MFA a polohy pro aplikace. Zařízení na základě zásad nejsou podporovány.| Všechny služby app service pro Moje aplikace| Zařízení s androidem a iOS |
-| Microsoft Teams služby – tato volba určuje všechny služby, které podporují Microsoft Teams a všechny jeho klientské aplikace – Windows Desktop, iOS, Android, webové části a webový klient | Microsoft Teams | Windows 10, Windows 8.1, Windows 7, iOS, Android a macOS |
-| Synchronizovat klientských aplikací Office 2016, Office 2013 (s moderním ověřováním), OneDrive (viz [poznámky](https://support.office.com/en-US/article/Azure-Active-Directory-conditional-access-with-the-OneDrive-sync-client-on-Windows-028d73d7-4b86-4ee0-8fb7-9a209434b04e)) | Office 365 SharePoint Online | Windows 8.1, Windows 7 |
-| Aplikace pro Office 2016, Office univerzální aplikace, Office 2013 (s moderním ověřováním), synchronizačního klienta Onedrivu (naleznete v tématu [poznámky](https://support.office.com/en-US/article/Azure-Active-Directory-conditional-access-with-the-OneDrive-sync-client-on-Windows-028d73d7-4b86-4ee0-8fb7-9a209434b04e)), do budoucna plánujeme přidat podpora skupin Office, do budoucna plánujeme přidat podpora aplikací služby SharePoint | Office 365 SharePoint Online | Windows 10 |
-| Office 2016 (Word, Excel, PowerPoint, OneNote pouze). OneDrive pro firmy podpora do budoucna plánujeme přidat| Office 365 SharePoint Online| macOS|
+| Aplikace Pošta/kalendář/lidé, Outlook 2016, Outlook 2013 (s moderním ověřováním)| Office 365 Exchange Online | Windows 10 |
+| Zásady vícefaktorového ověřování a umístění pro aplikace Zásady založené na zařízeních se nepodporují.| Všechny moje aplikace App Service| Android a iOS |
+| Microsoft Team Services – řídí všechny služby, které podporují Microsoft teams a všechny jeho klientské aplikace – desktopové aplikace pro Windows, iOS, Android, WP a webový klient. | Microsoft Teams | Windows 10, Windows 8.1, Windows 7, iOS, Android a macOS |
+| Aplikace Office 2016, Office 2013 (s moderním ověřováním), klient synchronizace OneDrive (viz [poznámky](https://support.office.com/en-US/article/Azure-Active-Directory-conditional-access-with-the-OneDrive-sync-client-on-Windows-028d73d7-4b86-4ee0-8fb7-9a209434b04e)) | Office 365 SharePoint Online | Windows 8.1, Windows 7 |
+| Aplikace Office 2016, univerzální aplikace Office, Office 2013 (s moderním ověřováním), synchronizační klient OneDrivu (viz [poznámky](https://support.office.com/en-US/article/Azure-Active-Directory-conditional-access-with-the-OneDrive-sync-client-on-Windows-028d73d7-4b86-4ee0-8fb7-9a209434b04e)), podpora skupin Office je pro budoucnost plánována. Podpora aplikací SharePoint je pro budoucnost budoucí. | Office 365 SharePoint Online | Windows 10 |
+| Office 2016 (jenom Word, Excel, PowerPoint, OneNote) Podpora OneDrivu pro firmy plánovaná pro budoucnost| Office 365 SharePoint Online| macOS|
 | Office 2019| Office 365 SharePoint Online | Windows 10, macOS |
 | Mobilní aplikace Office | Office 365 SharePoint Online | Android, iOS |
-| Aplikace Yammer pro Office | Office 365 Yammer | Windows 10, iOS, Android |
+| Aplikace Office Yammer | Office 365 Yammer | Windows 10, iOS, Android |
 | Outlook 2019 | Office 365 SharePoint Online | Windows 10, macOS |
 | Outlook 2016 (Office pro macOS) | Office 365 Exchange Online | macOS |
 | Outlook 2016, Outlook 2013 (s moderním ověřováním), Skype pro firmy (s moderním ověřováním) | Office 365 Exchange Online | Windows 8.1, Windows 7 |
 | Mobilní aplikace Outlook | Office 365 Exchange Online | Android, iOS |
-| Aplikace Power BI | Služba Power BI | Windows 10, Windows 8.1, Windows 7, Android a iOS |
+| Aplikace Power BI | služba Power BI | Windows 10, Windows 8.1, Windows 7, Android a iOS |
 | Skype pro firmy | Office 365 Exchange Online| Android, IOS |
-| Visual Studio Team Services aplikace | Visual Studio Team Services | Windows 10, Windows 8.1, Windows 7, iOS a Android |
+| Aplikace Visual Studio Team Services | Visual Studio Team Services | Windows 10, Windows 8.1, Windows 7, iOS a Android |
 
 ## <a name="support-for-legacy-authentication"></a>Podpora pro starší verze ověřování
 
-Výběrem **ostatní klienty**, určíte podmínku, která má vliv na aplikace, které používají základní ověřování pomocí protokolů e-mailu, jako jsou IMAP, MAPI, POP, SMTP a starší aplikace Office, které nepoužívají moderní ověřování.  
+Výběrem **jiných klientů**můžete určit podmínku, která bude mít vliv na aplikace, které používají základní ověřování, s poštovními protokoly, jako jsou IMAP, MAPI, pop, SMTP a starší aplikace Office, které nepoužívají moderní ověřování.  
 
 ![Ostatní klienti](./media/technical-reference/11.png)
 
 Další informace najdete v tématu [klientské aplikace](conditions.md#client-apps).
 
-## <a name="approved-client-app-requirement"></a>Požadavek schválené klientské aplikace
+## <a name="approved-client-app-requirement"></a>Požadavek na schválenou aplikaci klienta
 
-Ve své zásady podmíněného přístupu můžete vyžadovat, že přístup pokusí vybrané cloudové aplikace musí být provedeny z schválenou klientskou aplikací. 
+V zásadách podmíněného přístupu můžete vyžadovat, aby byl pokus o přístup k vybraným cloudovým aplikacím vytvořen ze schválené klientské aplikace. 
 
-![Řízení přístupu pro schválené klientské aplikace.](./media/technical-reference/21.png)
+![Řízení přístupu ke schváleným klientským aplikacím](./media/technical-reference/21.png)
 
 Toto nastavení platí pro následující klientské aplikace:
 
 - Microsoft Azure Information Protection
 - Microsoft Bookings
+- Microsoft Cortana
+- Microsoft Dynamics 365
 - Microsoft Edge
 - Microsoft Excel
 - Microsoft Flow
@@ -228,31 +232,34 @@ Toto nastavení platí pro následující klientské aplikace:
 
 **Poznámky**
 
-- Schválené klientské aplikace podporují funkce správy mobilních aplikací Intune.
-- **Vyžadovat klientem schválenou aplikaci** požadavek:
-   - Podporuje jenom pro iOS a Android pro [podmínku platformy zařízení](#device-platform-condition).
+- Schválené klientské aplikace podporují funkci správy mobilních aplikací Intune.
+- Požadavek na **vyžadování schválené aplikace klienta** :
+   - Podporuje jenom [podmínku platformy](#device-platform-condition)iOS a Android pro zařízení.
 
-## <a name="app-protection-policy-requirement"></a>Požadavek zásady ochrany aplikací 
+## <a name="app-protection-policy-requirement"></a>Požadavek na zásady ochrany aplikací 
 
-Ve své zásady podmíněného přístupu můžete vyžadovat, že zásady ochrany aplikací nacházet v klientské aplikaci předtím, než je k dispozici pro vybraný cloud aplikace přístup. 
+V rámci zásad podmíněného přístupu můžete vyžadovat, aby se v klientské aplikaci nacházely zásady ochrany aplikací, než bude přístup k vybraným cloudovým aplikacím k dispozici. 
 
 ![Řízení přístupu pomocí zásad ochrany aplikací](./media/technical-reference/22.png)
 
 Toto nastavení platí pro následující klientské aplikace:
 
+- Microsoft Cortana
+- Microsoft Edge
 - Microsoft OneDrive
 - Microsoft Outlook
+- Aplikace Microsoft Planner
 
 **Poznámky**
 
-- Aplikace pro zásady ochrany aplikací podporují funkce správy mobilních aplikací Intune pomocí zásad ochrany.
-- **Vyžadovat zásady ochrany aplikací** požadavky:
-    - Podporuje jenom pro iOS a Android pro [podmínku platformy zařízení](#device-platform-condition).
+- Aplikace pro zásady ochrany aplikací podporují funkci správy mobilních aplikací Intune s ochranou zásad.
+- Požadavky na **zásady pro vyžadování zásad ochrany aplikací** :
+    - Podporuje jenom [podmínku platformy](#device-platform-condition)iOS a Android pro zařízení.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
-- Přehled podmíněného přístupu najdete v tématu [co je podmíněný přístup v Azure Active Directory?](../active-directory-conditional-access-azure-portal.md)
-- Pokud jste připraveni ke konfiguraci zásad podmíněného přístupu ve vašem prostředí, najdete v článku [doporučené postupy pro podmíněný přístup v Azure Active Directory](best-practices.md).
+- Přehled podmíněného přístupu najdete [v tématu Co je podmíněný přístup v Azure Active Directory?](../active-directory-conditional-access-azure-portal.md)
+- Pokud jste připraveni ke konfiguraci zásad podmíněného přístupu ve vašem prostředí, přečtěte si [Doporučené postupy pro podmíněný přístup v Azure Active Directory](best-practices.md).
 
 <!--Image references-->
 [1]: ./media/technical-reference/01.png

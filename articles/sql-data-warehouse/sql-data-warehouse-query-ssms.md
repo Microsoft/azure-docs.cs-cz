@@ -1,8 +1,8 @@
 ---
-title: Připojení k Azure SQL Data Warehouse – SSMS | Dokumentace Microsoftu
-description: Připojení a dotazování Azure SQL Data Warehouse pomocí SQL Server Management Studio (SSMS).
+title: Připojení k Azure SQL Data Warehouse – SSMS | Microsoft Docs
+description: Pomocí SQL Server Management Studio (SSMS) se můžete připojit k Azure SQL Data Warehouse a dotazovat se na ně.
 services: sql-data-warehouse
-author: XiaoyuL-Preview
+author: XiaoyuMSFT
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
@@ -10,12 +10,12 @@ ms.subservice: development
 ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 64ea7c175b733f974eba6c081ee2c98814cbcda2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 67707b64bb6018b322ba980535651c126a526eb7
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65873706"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68479535"
 ---
 # <a name="connect-to-sql-data-warehouse-with-sql-server-management-studio-ssms"></a>Připojení k SQL Data Warehouse pomocí SQL Server Management Studio (SSMS)
 > [!div class="op_single_selector"]
@@ -27,18 +27,18 @@ ms.locfileid: "65873706"
 > 
 > 
 
-Připojení a dotazování Azure SQL Data Warehouse pomocí SQL Server Management Studio (SSMS). 
+Pomocí SQL Server Management Studio (SSMS) se můžete připojit k Azure SQL Data Warehouse a dotazovat se na ně. 
 
 ## <a name="prerequisites"></a>Požadavky
 Chcete-li použít tento kurz, potřebujete:
 
 * Existující SQL Data Warehouse. Pokud chcete jeden vytvořit, podívejte se na téma [Vytvoření SQL Data Warehouse][Create a SQL Data Warehouse].
-* SQL Server Management Studio (SSMS) nainstalovaný. [Instalace aplikace SSMS] [ Install SSMS] zdarma, pokud ještě nemáte ho.
+* SQL Server Management Studio (SSMS) nainstalováno. [Nainstalujte si SSMS][Install SSMS] zdarma, pokud ho ještě nemáte.
 * Plně kvalifikovaný název serveru SQL. Ten zjistíte v části [Připojení k SQL Data Warehouse][Connect to SQL Data Warehouse].
 
 ## <a name="1-connect-to-your-sql-data-warehouse"></a>1. Připojení k vaší službě SQL Data Warehouse
 1. Otevřete aplikaci SSMS.
-2. Otevřete Průzkumník objektů. Chcete-li to provést, vyberte **souboru** > **připojit Průzkumník objektů**.
+2. Otevřete Průzkumník objektů. Provedete to tak, že vyberete **soubor** > **Připojit Průzkumník objektů**.
    
     ![Průzkumník objektů systému SQL Server][1]
 3. Vyplňte pole v okně pro připojení k serveru.
@@ -65,9 +65,9 @@ Teď, když jste si vytvořili připojení k databázi, můžete napsat dotaz.
     ```sql
     SELECT COUNT(*) FROM dbo.FactInternetSales;
     ```
-4. Spusťte dotaz. Chcete-li to provést, klikněte na tlačítko `Execute` nebo použijte následující klávesovou zkratku: `F5`.
+4. Spusťte dotaz. Pokud to chcete provést, `Execute` klikněte nebo použijte následující klávesovou `F5`zkratku:.
    
-    ![Spuštění dotazu][5]
+    ![Spustit dotaz][5]
 5. Podívejte se na výsledky dotazu. V tomto příkladě má tabulka FactInternetSales 60 398 řádků.
    
     ![Výsledky dotazu][6]
@@ -75,7 +75,7 @@ Teď, když jste si vytvořili připojení k databázi, můžete napsat dotaz.
 ## <a name="next-steps"></a>Další postup
 Teď, když se můžete připojit a můžete zadávat dotazy, můžete si vyzkoušet [vizualizaci dat pomocí PowerBI][visualizing the data with PowerBI].
 
-Informace o tom, jak nakonfigurovat prostředí pro ověřování služby Azure Active Directory, najdete v části [Ověřování pro SQL Data Warehouse][Authenticate to SQL Data Warehouse].
+Informace o tom, jak nakonfigurovat prostředí pro ověřování služby Azure Active Directory naleznete v části [Ověřování pro SQL Data Warehouse][Authenticate to SQL Data Warehouse].
 
 <!--Arcticles-->
 [Connect to SQL Data Warehouse]: sql-data-warehouse-connect-overview.md

@@ -1,5 +1,5 @@
 ---
-title: Pomocí řešení Service Map v Azure | Dokumentace Microsoftu
+title: Používání řešení Service Map v Azure | Microsoft Docs
 description: Service Map je řešení v Azure, které automaticky zjišťuje komponenty aplikací v systémech Windows a Linux a mapuje komunikace mezi těmito službami. Tento článek obsahuje podrobnosti o nasazení řešení Service Map ve vašem prostředí a jejich použití v různých scénářích.
 services: azure-monitor
 documentationcenter: ''
@@ -11,402 +11,442 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/28/2018
+ms.date: 07/24/2019
 ms.author: magoedte
-ms.openlocfilehash: 09755922da78a3e856c491c01ce9f34f50063d71
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1f06345995e30f4d7f165230f4292c560c89e2e8
+ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65606503"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68489767"
 ---
-# <a name="using-service-map-solution-in-azure"></a>Pomocí řešení Service Map v Azure
+# <a name="using-service-map-solution-in-azure"></a>Použití řešení Service Map v Azure
 Service Map automaticky rozpozná komponenty aplikace v systémech Windows a Linux a mapuje komunikaci mezi službami. Služba Service Map poskytuje zobrazení vašich serverů tak, jak si je představujete – jako vzájemně propojené systémy, které zajišťují důležité služby. Service Map zobrazuje propojení mezi servery, procesy, latenci příchozích a odchozích připojení a porty napříč libovolnou architekturou propojenou protokolem TCP. Nevyžaduje se přitom žádná konfigurace kromě instalace agenta.
 
-Tento článek popisuje podrobnosti o zařazení do systému a použitím řešení Service Map. Informace o konfiguraci řešení Service Map a připojováním agentů najdete v tématu [řešení Service Map konfigurace v Azure]( service-map-configure.md).
+Tento článek popisuje podrobnosti o připojování a používání Service Map. Informace o konfiguraci požadavků pro toto řešení najdete v tématu [Povolení přehledu Azure monitor pro virtuální počítače](vminsights-enable-overview.md#prerequisites). Pro Shrnutí budete potřebovat následující:
+
+* Log Analytics pracovní prostor pro povolení tohoto řešení.
+
+* Agent Log Analytics nainstalovaný na počítači s Windows nebo na serveru Linux nakonfigurovaný tak, aby nahlásil stejný pracovní prostor, ve kterém jste řešení povolili.
+
+* Agent závislostí nainstalovaný na počítači s Windows nebo na serveru se systémem Linux.
 
 >[!NOTE]
->Pokud jste už nasadili řešení Service Map, můžete také prohlédnout vaše mapy ve službě Azure Monitor pro virtuální počítače, který obsahuje další funkce, které chcete sledovat výkon a stav virtuálního počítače. Další informace najdete v tématu [monitorování Azure pro virtuální počítače](../../azure-monitor/insights/vminsights-overview.md).
+>Pokud jste už nasadili Service Map, můžete teď také zobrazit vaše mapy v Azure Monitor pro virtuální počítače, které obsahují další funkce pro monitorování stavu a výkonu virtuálních počítačů. Další informace najdete v tématu [přehled Azure monitor pro virtuální počítače](../../azure-monitor/insights/vminsights-overview.md). Další informace o rozdílech mezi funkcí Service Map řešení a mapa Azure Monitor pro virtuální počítače najdete v následujících nejčastějších [dotazech](vminsights-faq.md#how-is-azure-monitor-for-vms-map-feature-different-from-service-map).
 
+## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-## <a name="sign-in-to-azure"></a>Přihlásit se k Azure
 Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com).
 
-## <a name="enable-service-map"></a>Povolení řešení Service Map
-1. Na webu Azure Portal, klikněte na tlačítko **+ vytvořit prostředek**.
-2. Na panelu hledání zadejte **Service Map** a stiskněte klávesu **Enter**.
-3. Na stránce výsledků hledání marketplace vyberte **Service Map** ze seznamu.<br><br> ![Vyberte řešení Service Map z Azure Marketplace výsledků hledání](./media/service-map/marketplace-search-results.png)<br>
-4. Na **Service Map** podokně s přehledem, projděte si podrobnosti o řešení a potom klikněte na **vytvořit** k zahájení procesu registrace do pracovního prostoru Log Analytics.<br><br> ![Začlenění řešení Service Map](./media/service-map/service-map-onboard.png).
-5. V **konfigurace řešení** podokně, vyberte existující nebo vytvořte nový pracovní prostor Log Analytics.  Další informace o tom, jak vytvořit nový pracovní prostor, najdete v části [vytvořit pracovní prostor Log Analytics na portálu Azure portal](../../azure-monitor/learn/quick-create-workspace.md). Po zadání požadovaných informací, klikněte na tlačítko **vytvořit**.  
+## <a name="enable-service-map"></a>Povolit Service Map
 
-Během ověřování informací a řešení nasadit, můžete sledovat jeho průběh **oznámení** z nabídky. 
+1. Povolte řešení Service Map z [webu Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ServiceMapOMS?tab=Overview) nebo pomocí procesu popsaného v tématu [Přidání řešení monitorování z galerie řešení](solutions.md).
+1. [Nainstalujte agenta závislostí do systému Windows](vminsights-enable-hybrid-cloud.md#install-the-dependency-agent-on-windows) nebo [nainstalujte agenta závislostí na Linux](vminsights-enable-hybrid-cloud.md#install-the-dependency-agent-on-linux) do každého počítače, kde chcete získat data. Závislý agent dokáže monitorovat připojení k bezprostředním sousedům, takže nepotřebujete mít agenta na každém počítači.
 
-Přístup k mapě služby na webu Azure Portal z pracovního prostoru Log Analytics a vyberte možnost **řešení** v levém podokně.<br><br> ![Vyberte možnost řešení v pracovním prostoru](./media/service-map/select-solution-from-workspace.png).<br> Seznam řešení, vyberte **ServiceMap(workspaceName)** a v Service Map řešení Přehled stránky klikněte na dlaždici souhrnu Service Map.<br><br> ![Řešení Service Map souhrnnou dlaždici](./media/service-map/service-map-summary-tile.png).
+Přístup k Service Map v Azure Portal z pracovního prostoru Log Analytics a v levém podokně vyberte **řešení** možností.<br><br> ![V pracovním prostoru](./media/service-map/select-solution-from-workspace.png)vyberte možnost řešení.<br> V seznamu řešení vyberte **ServiceMap (pracovní prostor)** a na stránce přehled řešení Service map klikněte na dlaždici Service map souhrn.<br><br> ![Dlaždice](./media/service-map/service-map-summary-tile.png)souhrnu Service map
 
-## <a name="use-cases-make-your-it-processes-dependency-aware"></a>Případy použití: Ujistěte se, vaši IT procesy závislost vědět
+## <a name="use-cases-make-your-it-processes-dependency-aware"></a>Případy použití: Zajistěte, aby vaše IT procesy v závislosti na závislosti
 
 ### <a name="discovery"></a>Zjišťování
-Řešení Service Map automaticky vytvoří common odkaz mapování závislostí napříč servery, procesy a služby třetích stran. Zjišťuje a mapuje všechny závislosti TCP, identifikace překvapením, že připojení, vzdálené systémy třetích stran, závisí na a závislosti pro tradiční tmavě oblasti sítě, jako je Active Directory. Řešení Service Map zjistí selhání síťového připojení, která spravovaných systémech se pokoušíte provést, díky tomu můžete identifikovat potenciální chybnou konfiguraci serveru, výpadku služeb a problémy se sítí.
+
+Service Map automaticky vytvoří společnou referenční mapu závislostí napříč vašimi servery, procesy a službami třetích stran. Zjišťuje a mapuje všechny závislosti TCP, identifikaci neohlášených připojení, vzdálených systémů třetích stran, na kterých jsou závislé, a závislostí na tradičních tmavých oblastech vaší sítě, jako je například služba Active Directory. Service Map zjistí neúspěšná síťová připojení, která se snaží provést vaše spravované systémy, a pomůže vám identifikovat potenciální chybnou konfiguraci serveru, výpadku služby a problémy se sítí.
 
 ### <a name="incident-management"></a>Správa incidentů
-Řešení Service Map pomáhá eliminovat izolovat problémy znázorňující, jak jsou připojené systémy a vzájemného ovlivnění. Kromě identifikace neúspěšná připojení, pomáhá identifikovat nástroje pro vyrovnávání zatížení nesprávně nakonfigurované, překvapivé nebo nadměrného zatížení kritických služeb a podvodné klientů, jako jsou počítače pro vývojáře s produkčními systémy. S použitím integrované pracovní postupy s Change Tracking, můžete také zjistit, jestli událost změny na počítači s back-end nebo služba vysvětluje původní příčinu incidentu.
 
-### <a name="migration-assurance"></a>Migrace assurance
-S použitím řešení Service Map, můžete efektivně plánování, zrychlení a ověření migrace do Azure, který pomáhá zajistit, že nic se zachovají a není dojde k výpadku překvapení. Je možné vyhledat všechny vzájemně závislých systémů, které je potřeba migrovat společně, posuzuje konfiguraci systému a kapacity a zjistit, jestli spuštěný systém stále poskytuje uživatelům nebo je kandidátem pro vyřazení z provozu místo migrace. Po dokončení přesunutí, můžete zkontrolovat na zatížení klienta a identit k ověření, že se připojujete testovací systémy a zákazníky. Pokud definic podsítí plánování a brány firewall mají problémy, neúspěšná připojení v rámci služby maps Service Map odkazovat na systémy, které je třeba připojení.
+Service Map pomáhá eliminovat přibližnou přibližnou izolaci problémů tím, že ukazuje, jak jsou systémy propojeny a vzájemně ovlivněny. Kromě identifikace neúspěšných připojení pomáhá identifikovat nesprávně nakonfigurované nástroje pro vyrovnávání zatížení, překvapivé nebo nadměrné zatížení v důležitých službách a podvodné klienty, jako jsou vývojářské počítače, které mluví s produkčními systémy. Pomocí integrovaných pracovních postupů s Change Tracking můžete také zjistit, jestli událost změny na back-endovém počítači nebo službě vysvětluje hlavní příčinu incidentu.
+
+### <a name="migration-assurance"></a>Záruka migrace
+
+Pomocí Service Map můžete efektivně plánovat, zrychlit a ověřovat migrace do Azure, což pomáhá zajistit, aby nic nezůstalo a nedocházelo k výpadkům. Můžete zjistit všechny vzájemně závislé systémy, které se musí migrovat společně, vyhodnocovat konfiguraci a kapacitu systému a určit, jestli operační systém stále obsluhuje uživatele, nebo je kandidátem na vyřazení z provozu místo migrace. Po dokončení přesunu můžete zkontrolovat zatížení a identitu klienta a ověřit tak, že se zkušební systémy a zákazníci připojují. Pokud má vaše podsíť definice plánování a brány firewall problémy, neúspěšná připojení v Service Map mapách ukazují na systémy, které vyžadují připojení.
 
 ### <a name="business-continuity"></a>Kontinuita podnikových procesů
-Pokud používáte Azure Site Recovery a potřebujete pomoc definování posloupnosti obnovení pro vaše prostředí aplikací, řešení Service Map automaticky poznáte, jak systémy spoléhají na sobě. Ujistěte se, že je spolehlivé plánu obnovení. Výběrem možnosti důležitého serveru nebo skupiny a zobrazení jeho klienty, můžete určit, které front-endové systémy pro obnovení po obnovena a k dispozici serveru. Naopak zobrazením kritické servery back-end závislosti, můžete určit, které systémy na zotavení, než se obnoví vašich systémů fokus.
+
+Pokud používáte Azure Site Recovery a potřebujete nápovědu definující sekvenci obnovení pro prostředí aplikace, Service Map vám může automaticky Ukázat, jak se systémy vzájemně spoléhají, aby se zajistilo, že je váš plán obnovení spolehlivý. Výběrem důležitého serveru nebo skupiny a zobrazením klientů můžete určit, které klientské systémy se mají obnovit po obnovení a zpřístupnění serveru. V opačném případě si prohlédněte kritické závislosti back-endu serverů, které vám pomůžou zjistit, které systémy se mají obnovit, než se obnoví vaše Fokusové systémy.
 
 ### <a name="patch-management"></a>Správa oprav
-Řešení Service Map zlepšuje využití posouzení aktualizace systému ukazuje, které další týmy a servery závisí na vaší služby, tak může upozornit předem předtím, než přejdete dolů vašich systémů pro opravy. Řešení Service Map také rozšiřuje správu oprav ukazuje, zda služby jsou k dispozici a je správně připojená po jsou opravit a restartovat.
+
+Service Map zdokonaluje používání posouzení aktualizací systému tím, že ukazuje, které jiné týmy a servery na vaší službě závisí, abyste je mohli předem informovat před tím, než zaberete systémy na opravy. Service Map taky vylepšuje správu oprav tím, že vám ukáže, jestli jsou vaše služby k dispozici a správně připojené po opravě a restartu.
 
 ## <a name="mapping-overview"></a>Přehled mapování
-Řešení Service Map agentů získat informace o všechny procesy připojené protokolem TCP na serveru, kde už nainstalovaný a podrobnosti o příchozích a odchozích připojení pro každý proces.
 
-V seznamu v levém podokně můžete vybrat počítače nebo skupiny, které mají Service Map agentů k vizualizaci jejich závislosti za zadané časové období. Závislost počítače mapuje se zaměřují na konkrétní počítač, a zobrazí všechny počítače, které jsou s přímým přístupem TCP klientech nebo serverech tohoto počítače.  Skupina počítačů mapy zobrazit sady serverů a jejich závislosti.
+Agenti Service Map shromažďují informace o všech procesech propojených s protokolem TCP na serveru, kde jsou nainstalovány, a obsahují podrobnosti o příchozích a odchozích připojeních pro jednotlivé procesy.
 
-![Přehled řešení Service Map](media/service-map/service-map-overview.png)
+V seznamu v levém podokně můžete vybrat počítače nebo skupiny, které Service Map agenti, aby vizualizují své závislosti v zadaném časovém rozsahu. Mapování závislostí počítačů se soustředí na konkrétní počítač a zobrazí všechny počítače, které jsou přímými klienty TCP nebo servery tohoto počítače.  Mapy skupin počítačů zobrazují sady serverů a jejich závislosti.
 
-Počítače lze rozšířit na mapě zobrazíte spuštění zpracování skupiny a procesy s aktivními síťovými připojeními během vybraného časového úseku. Když vzdálený počítač s agentem Service Map rozbalen a zobrazuje podrobnosti o procesu, jsou uvedeny pouze procesy, které komunikují s počítačem fokus. Počet počítačů bez agentů front-endu, které se připojují k počítači fokus je uvedené na levé straně procesy, které se připojují. Pokud počítač fokus je při připojování k počítači s back-end, který nemá žádný agent, back endového serveru je zahrnutý do skupiny portu serveru, společně s další připojení ke stejné číslo portu.
+![Přehled Service Map](media/service-map/service-map-overview.png)
 
-Ve výchozím nastavení řešení Service Map mapy zobrazit posledních 30 minut informací o závislostech. Pomocí ovládacích prvků času v levém horním rohu se můžete dotazovat mapování pro historické časových rozsahů až jednu hodinu, než ukazují, jak závislosti hledá v minulosti (například během incident nebo předtím, než došlo ke změně). Řešení Service Map data se ukládají po dobu 30 dnů v placených pracovních prostorů a po dobu 7 dní v bezplatné pracovní prostory.
+Počítače lze v mapě rozbalit a zobrazit spuštěné skupiny procesů a procesy s aktivními síťovými připojeními v průběhu vybraného časového rozsahu. Když je vzdálený počítač s agentem Service Map rozbalený tak, aby zobrazoval podrobnosti procesu, zobrazují se jenom ty procesy, které komunikují s vybraným počítačem. Počet počítačů front-endu bez agentů, které se připojují k počítači Focus, je uvedený na levé straně procesů, ke kterým se připojují. Pokud se fokus stane připojením k back-endovému počítači, který nemá žádného agenta, je back-end Server součástí skupiny portů serveru spolu s dalšími připojeními ke stejnému číslu portu.
 
-## <a name="status-badges-and-border-coloring"></a>Stav oznámení a barvy ohraničení
-V dolní části každého serveru v objektu map lze seznam oznámení stavu takzvané stavové informace o serveru. Odznáčky naznačují, že některé důležité informace pro server z jednoho z řešení integrace. Kliknutím oznámení "BADGE" přejdete přímo na podrobnosti o stavu v pravém podokně. Odznáčky aktuálně k dispozici stav zahrnují výstrahy, oddělení služeb, změny, zabezpečení a aktualizace.
+Ve výchozím nastavení Service Map Maps zobrazuje posledních 30 minut informací o závislostech. Pomocí ovládacích prvků pro čas v levém horním rohu se můžete dotazovat na mapování historických časových rozsahů po dobu až jedné hodiny, abyste viděli, jak se závislosti prohlédly v minulosti (například během incidentu nebo před změnou). Data Service Map se ukládají po dobu 30 dnů v placených pracovních prostorech a 7 dní v bezplatných pracovních prostorech.
 
-V závislosti na závažnosti odznáčků stav počítače uzlu ohraničení lze barevné červené (kritická), žlutém (varování) nebo modré (informativní). Barva představuje stav nejzávažnější odznáčků stav. Šedé ohraničení označuje uzel, který nemá žádné indikátory stavu.
+## <a name="status-badges-and-border-coloring"></a>Označení stavu a zvýraznění ohraničení
 
-![Stav oznámení](media/service-map/status-badges.png)
+V dolní části každého serveru na mapě může být seznam stavových zpráv, které oznamují informace o stavu serveru. Označení označují, že pro server existují nějaké relevantní informace z jedné z integrací řešení. Kliknutím na označení se dostanete přímo k podrobnostem o stavu v pravém podokně. V aktuálně dostupných označeních stavu jsou výstrahy, oddělení služeb, změny, zabezpečení a aktualizace.
 
-## <a name="process-groups"></a>Zpracování skupin
-Zpracování skupin kombinovat procesy, které jsou spojeny s common produkt nebo službu do skupiny procesů.  Při rozbalení uzlu počítače zobrazí samostatné procesy spolu s skupin procesů.  Pokud příchozí a odchozí připojení k procesu v rámci skupiny procesu se nezdařilo pak připojení je zobrazen jako neúspěch pro skupinu celý proces.
+V závislosti na závažnosti stavových znaků můžou být hranice uzlu počítače barevně červené (kritické), žlutou (varovnou) nebo modrou (informativní). Barva představuje nejzávažnější stav kterékoli ze stavových oznámení. Šedé ohraničení označuje uzel, který nemá žádné indikátory stavu.
+
+![Označení stavového znaku](media/service-map/status-badges.png)
+
+## <a name="process-groups"></a>Skupiny procesů
+
+Skupiny procesů spojují procesy, které jsou přidruženy ke společnému produktu nebo službě, do skupiny procesů.  Když je uzel počítače rozbalený, zobrazí se samostatné procesy společně se skupinami procesů.  Pokud se nezdařila příchozí a odchozí připojení k procesu v rámci skupiny procesů, je připojení zobrazeno jako neúspěšné pro celou skupinu procesů.
 
 ## <a name="machine-groups"></a>Skupiny počítačů
-Skupiny počítačů vám umožňují zobrazit mapování zaměřená na skupinu serverů, nikoli pouze jeden, zobrazí se všichni členové clusteru vícevrstvé aplikace nebo serveru v jedné mapy.
 
-Uživatelé vybrat, které servery patří do skupiny k sobě a zvolte název pro skupinu.  Pak můžete zobrazit skupiny se všemi jeho procesy a připojení, nebo zobrazení s procesy a připojení přímo související se členy skupiny.
+Skupiny počítačů vám umožní zobrazit mapy, které se provedly na základě sady serverů, ne jenom jednoho, abyste viděli všechny členy vícevrstvé aplikace nebo serverového clusteru v jedné mapě.
+
+Uživatelé si můžou vybrat, které servery patří do skupiny dohromady, a zvolit název skupiny.  Pak se můžete rozhodnout zobrazit skupinu se všemi jejími procesy a připojeními, nebo je zobrazit jenom pomocí procesů a připojení, která přímo souvisejí s ostatními členy skupiny.
 
 ![Skupina počítačů](media/service-map/machine-group.png)
 
-### <a name="creating-a-machine-group"></a>Vytvořit skupinu počítačů
-Pokud chcete vytvořit skupinu, vyberte počítače nebo počítače chcete, aby na počítačích seznamu a klikněte na tlačítko **přidat do skupiny**.
+### <a name="creating-a-machine-group"></a>Vytvoření skupiny počítačů
+
+Pokud chcete vytvořit skupinu, vyberte počítače nebo počítače, které chcete v seznamu počítače, a klikněte na **Přidat do skupiny**.
 
 ![Vytvořit skupinu](media/service-map/machine-groups-create.png)
 
-Tam si můžete zvolit **vytvořit nový** a zadejte název skupiny.
+Zde můžete zvolit **vytvořit nové** a zadat název skupiny.
 
-![Název skupiny](media/service-map/machine-groups-name.png)
+![Skupina názvů](media/service-map/machine-groups-name.png)
 
 >[!NOTE]
 >Skupiny počítačů jsou omezené na 10 serverů.
 
 ### <a name="viewing-a-group"></a>Zobrazení skupiny
-Po vytvoření některé skupiny, můžete je zobrazit výběrem na kartě skupiny.
 
-![Karty skupiny](media/service-map/machine-groups-tab.png)
+Po vytvoření některých skupin si je můžete zobrazit tak, že kliknete na kartu skupiny.
 
-Vyberte název skupiny, chcete-li zobrazit mapu pro tuto skupinu počítačů.
-![Skupina počítačů](media/service-map/machine-group.png) počítačů, které patří do skupiny jsou uvedeny v bílé v objektu map.
+![Karta skupiny](media/service-map/machine-groups-tab.png)
 
-Rozbalení skupiny se zobrazí seznam počítačů, které tvoří skupinu počítačů.
+Pak vyberte název skupiny, chcete-li zobrazit mapu pro tuto skupinu počítačů.
+![Skupina](media/service-map/machine-group.png) počítačů: počítače, které patří do této skupiny, jsou v mapě uvedené bíle.
 
-![Počítače seskupit počítače](media/service-map/machine-groups-machines.png)
+Rozbalením skupiny se zobrazí seznam počítačů, které tvoří skupinu počítačů.
+
+![Počítače skupiny počítačů](media/service-map/machine-groups-machines.png)
 
 ### <a name="filter-by-processes"></a>Filtrovat podle procesů
-Můžete přepínat mezi zobrazením všech procesů a připojení ve skupině a pouze ty, které se týkají přímo do skupiny počítačů zobrazení mapy.  Výchozí zobrazení je k zobrazení všech procesů.  Zobrazení můžete změnit kliknutím na ikonu filtru nad mapou.
 
-![Skupinu filtrů](media/service-map/machine-groups-filter.png)
+Zobrazení mapy můžete přepínat mezi zobrazením všech procesů a připojení ve skupině a jenom těch, které se přímo vztahují k této skupině počítačů.  Výchozím zobrazením je zobrazení všech procesů.  Zobrazení můžete změnit kliknutím na ikonu filtru nad mapou.
 
-Když **všechny procesy** je vybrána, mapa bude obsahovat všechny procesy a připojení na všech počítačích ve skupině.
+![Skupina filtru](media/service-map/machine-groups-filter.png)
 
-![Zpracuje všechny skupiny počítačů](media/service-map/machine-groups-all.png)
+Když je vybraná možnost **všechny procesy** , bude mapa zahrnovat všechny procesy a připojení na každém z počítačů ve skupině.
 
-Pokud změníte zobrazení na pouze **procesy ve skupině**, na mapě se zúží pouze procesy a připojení, které jsou připojené přímo k jiným počítačům ve skupině, vytváření zjednodušené zobrazení.
+![Všechny procesy skupiny počítačů](media/service-map/machine-groups-all.png)
 
-![Skupina počítačů filtrovat procesy](media/service-map/machine-groups-filtered.png)
+Pokud změníte zobrazení tak, aby zobrazovalo pouze **procesy spojené s skupinou**, bude tato mapa zúžena pouze na procesy a připojení, která jsou přímo připojena k ostatním počítačům ve skupině, což vytvoří zjednodušené zobrazení.
+
+![Filtrované procesy skupiny počítačů](media/service-map/machine-groups-filtered.png)
  
-### <a name="adding-machines-to-a-group"></a>Přidání počítačů do skupiny
-Chcete-li přidat počítače do existující skupiny, zaškrtněte políčka vedle počítače a potom klikněte na **přidat do skupiny**.  Zvolte skupinu, kterou chcete přidat počítače do.
- 
-### <a name="removing-machines-from-a-group"></a>Odebrání počítače ze skupiny
-V seznamu skupiny rozbalte název skupiny seznam počítačů ve skupině počítačů.  Potom klikněte na tlačítko se třemi tečkami nabídku vedle počítače, kterou chcete odebrat a zvolte **odebrat**.
+### <a name="adding-machines-to-a-group"></a>Přidávání počítačů do skupiny
 
-![Odebrání počítače ze skupiny](media/service-map/machine-groups-remove.png)
+Pokud chcete přidat počítače do existující skupiny, zaškrtněte políčka vedle počítačů, které chcete, a pak klikněte na **Přidat do skupiny**.  Pak vyberte skupinu, do které chcete počítače přidat.
+ 
+### <a name="removing-machines-from-a-group"></a>Odebírání počítačů ze skupiny
+
+V seznamu skupiny rozbalte název skupiny a seznam počítačů ve skupině počítačů.  Pak klikněte na nabídku se třemi tečkami vedle počítače, který chcete odebrat, a zvolte **Odebrat**.
+
+![Odebrat počítač ze skupiny](media/service-map/machine-groups-remove.png)
 
 ### <a name="removing-or-renaming-a-group"></a>Odebrání nebo přejmenování skupiny
-Klikněte na tlačítko se třemi tečkami nabídku vedle názvu skupiny v seznamu skupin.
+
+V seznamu skupin klikněte na nabídku se třemi tečkami vedle názvu skupiny.
 
 ![Nabídka skupiny počítačů](media/service-map/machine-groups-menu.png)
 
 
-## <a name="role-icons"></a>Role ikony
-Některé procesy poskytovat konkrétní role na počítačích: webové servery, aplikační servery, databáze a tak dále. Řešení Service Map označí procesu a strojově polí s ikonami role vám pomůže identifikovat na první pohled role procesu nebo serveru jde skvěle dohromady.
+## <a name="role-icons"></a>Ikony rolí
+
+Některé procesy obsluhují konkrétní role na počítačích: webové servery, aplikační servery, databáze a tak dále. Service Map v oknech procesu a počítače s ikonami rolí, které vám pomůžou identifikovat na první pohled roli a proces, který server hraje.
 
 | Ikona role | Popis |
 |:--|:--|
 | ![Webový server](media/service-map/role-web-server.png) | Webový server |
 | ![Aplikační server](media/service-map/role-application-server.png) | Aplikační server |
 | ![Databázový server](media/service-map/role-database.png) | Databázový server |
-| ![LDAP server](media/service-map/role-ldap.png) | LDAP server |
-| ![Server s protokolem SMB](media/service-map/role-smb.png) | Server s protokolem SMB |
+| ![Server LDAP](media/service-map/role-ldap.png) | Server LDAP |
+| ![Server SMB](media/service-map/role-smb.png) | Server SMB |
 
-![Role ikony](media/service-map/role-icons.png)
+![Ikony rolí](media/service-map/role-icons.png)
 
 
 ## <a name="failed-connections"></a>Neúspěšná připojení
-Neúspěšná připojení jsou uvedeny v rámci služby maps Service Map pro procesy a počítače, s přerušovanou červenou čáru indikující, že klientský systém nemůže kontaktovat procesu nebo port. Neúspěšná připojení jsou hlášeny z jakéhokoli systému s nasazenou agentem Service Map, pokud daný systém je pokusu o připojení se nezdařilo. Řešení Service Map měří tento proces pozorováním sockety TCP, které se nepodařilo navázat připojení. Tato chyba může být výsledkem bránu firewall, chybnou konfigurací v klientovi nebo serveru nebo vzdálené služby není k dispozici.
+
+Neúspěšná připojení se zobrazují v Service Map mapách pro procesy a počítače se přerušovanou červenou čárou, která značí, že se klientský systém nedaří připojit k procesu nebo portu. Neúspěšná připojení se oznamují z libovolného systému pomocí nasazeného agenta Service Map, pokud je tento systém jedním pokusem o připojení, které selhalo. Service Map měří tento proces pomocí soketů TCP, u kterých se nepodaří navázat připojení. K této chybě mohlo dojít z brány firewall, chybné konfigurace klienta nebo serveru nebo vzdálené služby, která není k dispozici.
 
 ![Neúspěšná připojení](media/service-map/failed-connections.png)
 
-Principy neúspěšná připojení může pomoci při řešení potíží, ověření migrace, analýzu zabezpečení a porozumění celkové architektury. Neúspěšná připojení jsou někdy neškodné, ale často ukazují přímo na problém, jako je převzetí služeb při selhání prostředí náhle stane nedostupný, nebo dvou aplikačních vrstev se nebude moct komunikovat po migrace do cloudu.
+Porozumění neúspěšným připojením může pomáhat při řešení potíží, ověřování migrace, analýze zabezpečení a celkovém porozumění architektuře. Neúspěšná připojení jsou někdy neškodná, ale často přímo odkazují na problém, například prostředí s podporou převzetí služeb při selhání se náhle stane nedosažitelné, nebo dvě aplikační vrstvy, které nemůžou mluvit po migraci do cloudu.
 
-## <a name="client-groups"></a>Skupin klientů
-Skupiny klientů jsou pole na mapě, které představují klientské počítače, které nemají agenti závislosti. Jedné skupiny klientů reprezentuje klienty pro jednotlivé procesy nebo počítač.
+## <a name="client-groups"></a>Skupiny klientů
 
-![Skupin klientů](media/service-map/client-groups.png)
+Skupiny klientů jsou pole na mapě, která představuje klientské počítače, které nemají agenty závislosti. Jedna skupina klientů představuje klienty pro jednotlivý proces nebo počítač.
 
-Pokud chcete zobrazit IP adresy serverů ve skupině klientů, vyberte skupinu. Obsah skupiny jsou uvedeny v **vlastnosti skupiny klientů** podokně.
+![Skupiny klientů](media/service-map/client-groups.png)
+
+Pokud chcete zobrazit IP adresy serverů ve skupině klientů, vyberte skupinu. Obsah skupiny je uveden v podokně **Vlastnosti skupiny klientů** .
 
 ![Vlastnosti skupiny klientů](media/service-map/client-group-properties.png)
 
-## <a name="server-port-groups"></a>Port serveru skupiny
-Port serveru skupiny jsou pole, které představují porty serveru na serverech, které nemají agenti závislosti. Do pole obsahuje port serveru a počet serverů s připojením k tomuto portu. Rozbalte pole se zobrazí jednotlivé servery a připojení. Pokud v poli je pouze jeden server, je uvedený název nebo IP adresu.
+## <a name="server-port-groups"></a>Skupiny portů serveru
 
-![Port serveru skupiny](media/service-map/server-port-groups.png)
+Skupiny portů serveru jsou pole, která představují porty serveru na serverech, které nemají agenty závislosti. Pole obsahuje port serveru a počet serverů s připojením k tomuto portu. Rozbalením okna zobrazíte jednotlivé servery a připojení. Pokud je v poli jenom jeden server, zobrazí se název nebo IP adresa.
+
+![Skupiny portů serveru](media/service-map/server-port-groups.png)
 
 ## <a name="context-menu"></a>Místní nabídka
-Kliknutím na tři tečky (...) v horní pravé části jakéhokoli serveru zobrazí místní nabídku pro tento server.
+
+Kliknutím na tlačítko se třemi tečkami (...) v pravém horním rohu kteréhokoli serveru se zobrazí místní nabídka pro tento server.
 
 ![Neúspěšná připojení](media/service-map/context-menu.png)
 
-### <a name="load-server-map"></a>Načíst serverovou mapu
-Kliknutím na **načíst serverovou mapu** vás přesměruje na mapu s novým s vybraným serverem jako nový počítač fokus.
+### <a name="load-server-map"></a>Načíst mapu serveru
 
-### <a name="show-self-links"></a>Zobrazit odkazy na sebe sama
-Kliknutím na **zobrazit Self-Links** překreslí uzlu serveru, včetně všech odkazů na sebe sama, které jsou připojení TCP, které začínají i končí na procesy v rámci serveru. Pokud odkazů na sebe sama se zobrazí změny příkaz nabídky **skrýt Self-Links**, takže je můžete vypnout.
+Kliknutím na **Načíst mapu serveru** přejdete k nové mapě s vybraným serverem jako s novým vybraným počítačem.
 
-## <a name="computer-summary"></a>Souhrn počítače
-**Počítač Souhrn** podokně jsou základní informace o operační systém serveru, počet závislostí a data z jiných řešení. Tato data zahrnují metriky výkonu, lístky podpory, řešení change tracking, zabezpečení a aktualizace.
+### <a name="show-self-links"></a>Zobrazit odkazy na sebe
 
-![Souhrn počítače](media/service-map/machine-summary.png)
+Kliknutím na možnost **Zobrazit odkazy na sebe** překreslí uzel serveru, včetně všech odkazů na sebe, což jsou připojení TCP, která začínají a končí na procesech v rámci serveru. Pokud se zobrazují odkazy na sebe, příkaz nabídky se změní, aby se **skryly odkazy na sebe**, abyste je mohli vypnout.
+
+## <a name="computer-summary"></a>Shrnutí počítače
+
+Podokno **Souhrn počítače** obsahuje přehled operačního systému serveru, počty závislostí a data z jiných řešení. Taková data zahrnují metriky výkonu, lístky oddělení služeb, sledování změn, zabezpečení a aktualizace.
+
+![Podokno Souhrn počítače](media/service-map/machine-summary.png)
 
 ## <a name="computer-and-process-properties"></a>Vlastnosti počítače a procesu
-Při přechodu mapu Service Map, můžete vybrat počítače a procesy, abyste získali další kontext o svých vlastnostech. Počítače poskytují informace o DNS název, IPv4 adresy, procesoru a paměti kapacitu, typ virtuálních počítačů, operační systém a verze, poslední restartování čas a ID jejich agenty OMS a Service Map.
+
+Když přejdete na mapu Service Map, můžete vybrat počítače a procesy a získat další kontext o jejich vlastnostech. Počítače poskytují informace o názvu DNS, adresách IPv4, kapacitě procesoru a paměti, typu virtuálního počítače, operačním systému a verzi, času posledního restartování a ID jejich agentů OMS a Service Map.
 
 ![Podokno vlastností počítače](media/service-map/machine-properties.png)
 
-Podrobnosti o procesu bude možné shromažďovat z operačního systému metadata o spuštěných procesech, včetně název procesu, popis procesu, uživatelské jméno a doménu (na Windows), název společnosti, název produktu, verze produktu, pracovní adresář, příkazového řádku a procesu čas spuštění.
+Podrobnosti o procesu můžete shromáždit z metadat operačního systému o spuštěných procesech, včetně názvu procesu, popisu procesu, uživatelského jména a domény (ve Windows), názvu společnosti, názvu produktu, verze produktu, pracovního adresáře, příkazového řádku a procesu. čas spuštění.
 
 ![Podokno vlastností procesu](media/service-map/process-properties.png)
 
-**Souhrn procesů** podokno obsahuje další informace o připojení k procesu, včetně jeho vázaných portů, příchozí a odchozí připojení a připojení se nezdařilo.
+Podokno **Souhrn procesu** obsahuje další informace o připojení procesu, včetně jeho vázaných portů, příchozích a odchozích připojení a neúspěšných připojení.
 
-![Souhrn procesu](media/service-map/process-summary.png)
+![Podokno souhrnu procesu](media/service-map/process-summary.png)
 
 ## <a name="alerts-integration"></a>Integrace výstrah
-Řešení Service Map se integruje s Azure Alerts zobrazíte aktivovaná upozornění pro vybraný server ve vybraném časovém rozsahu. Na serveru zobrazuje ikonu, pokud aktuální výstrahy a **výstrahy počítače** podokně je seznam výstrah.
 
-![Podokno oznámení počítače](media/service-map/machine-alerts.png)
+Service Map se integruje s výstrahami Azure, aby se zobrazily aktivované výstrahy pro vybraný server ve vybraném časovém rozsahu. Pokud jsou k dispozici aktuální výstrahy a v podokně **výstrahy počítače** jsou uvedeny výstrahy, Server zobrazí ikonu.
 
-Pokud chcete povolit řešení Service Map zobrazíte příslušné výstrahy, vytvoření pravidla upozornění, který se aktivuje pro určitý počítač. Chcete-li vytvořit správné výstrahy:
-- Obsahovat klauzuli do skupiny podle počítače (například **počítače interval 1 minuta**).
-- Vyberte výstrahy založené na základě měření metriky.
+![Podokno upozornění počítače](media/service-map/machine-alerts.png)
 
-## <a name="log-events-integration"></a>Integrace protokolů událostí
-Řešení Service Map se integruje s prohledáváním protokolů zobrazíte počet všech dostupných protokolu událostí pro vybraný server během vybraného časového úseku. Můžete kliknout na libovolný řádek v seznamu počty událostí přejít k prohledávání protokolů a zobrazte jednotlivé protokolu událostí.
+Pokud chcete povolit Service Map zobrazovat relevantní výstrahy, vytvořte pravidlo upozornění, které se aktivuje pro konkrétní počítač. Vytvoření správných výstrah:
+- Zahrňte klauzuli pro seskupení podle počítače (například **podle intervalu počítače 1 minuty**).
+- Vyberte výstrahu na základě měření metriky.
 
-![Podokno počítače události protokolu](media/service-map/log-events.png)
+## <a name="log-events-integration"></a>Integrace událostí protokolu
+
+Service Map se integruje s prohledáváním protokolů a zobrazuje počet všech dostupných událostí protokolu pro vybraný server během vybraného časového rozsahu. Můžete kliknout na libovolný řádek v seznamu počtů událostí a přejít tak na prohledávání protokolu a zobrazit jednotlivé události protokolu.
+
+![Podokno události protokolu počítače](media/service-map/log-events.png)
 
 ## <a name="service-desk-integration"></a>Integrace oddělení služeb
-Integrace řešení Service Map se IT Service Management Connector je automatické, pokud obě řešení jsou povolené a nakonfigurované ve vašem pracovním prostoru Log Analytics. Integrace v Service Map je označené jako "Služby podpory." Další informace najdete v tématu [centrálně spravovat pracovní položky ITSM pomocí IT Service Management Connector](https://docs.microsoft.com/azure/log-analytics/log-analytics-itsmc-overview).
 
-**Oddělení služeb Machine** podokno zobrazuje všechny události správy služeb IT pro vybraný server ve vybraném časovém rozsahu. Na serveru zobrazuje ikonu, pokud nejsou aktuální položky a v podokně oddělení služeb Machine seznamy je.
+Service Map integrace s konektorem pro správu služby IT je automaticky, pokud jsou obě řešení ve vašem pracovním prostoru Log Analytics povolená a nakonfigurovaná. Integrace v Service Map je označená jako oddělení služeb. Další informace najdete v tématu [centrálně spravovat pracovní položky ITSM pomocí konektoru správy služeb IT](https://docs.microsoft.com/azure/log-analytics/log-analytics-itsmc-overview).
 
-![Podokno počítače oddělení služeb](media/service-map/service-desk.png)
+Podokno **Služba Machine Service** obsahuje seznam všech událostí správy služeb IT pro vybraný server ve vybraném časovém rozsahu. Server zobrazí ikonu, pokud jsou k dispozici aktuální položky a podokno služba Machine Service.
 
-Položky v připojených řešení ITSM, klikněte na tlačítko **zobrazit pracovní položku**.
+![Pracovní podokno služby počítače](media/service-map/service-desk.png)
 
-Chcete-li zobrazit podrobnosti o položce v prohledávání protokolu, klikněte na tlačítko **zobrazit v hledání v protokolu**.
-Metrik připojení se zapisují do dvou nových tabulek ve službě Log Analytics 
+Chcete-li otevřít položku v připojeném řešení ITSM, klikněte na tlačítko **Zobrazit pracovní položku**.
 
-## <a name="change-tracking-integration"></a>Změnit integrace sledování
-Integrace mapy služeb pomocí řešení Change Tracking je automatické, pokud jsou obě řešení povolené a nakonfigurované ve vašem pracovním prostoru Log Analytics.
+Chcete-li zobrazit podrobnosti o položce v hledání v protokolu, klikněte na možnost **Zobrazit v hledání v protokolu**.
+Metriky připojení jsou v Log Analytics zapsány do dvou nových tabulek. 
 
-**Počítač řešení Change Tracking** podokno obsahuje všechny změny s nejnovější první, spolu s odkazem k podrobnostem a prohledávání protokolů pro další podrobnosti.
+## <a name="change-tracking-integration"></a>Integrace Change Tracking
 
-![Podokno počítač řešení Change Tracking](media/service-map/change-tracking.png)
+Service Map integrace s Change Tracking je automatická, pokud jsou obě řešení povolená a nakonfigurovaná v pracovním prostoru Log Analytics.
 
-Na následujícím obrázku je podrobné zobrazení ConfigurationChange událost, která může dojít po výběru **zobrazení v Log Analytics**.
+V podokně **Change Tracking počítače** jsou uvedeny všechny změny, s nejnovějšími posledními, spolu s odkazem pro přechod k podrobnostem o hledání v protokolu, kde najdete další podrobnosti.
 
-![ConfigurationChange události](media/service-map/configuration-change-event-01.png)
+![Počítač Change Tracking – podokno](media/service-map/change-tracking.png)
+
+Následující obrázek je detailní zobrazení události ConfigurationChange, která se může zobrazit po výběru možností **Zobrazit v Log Analytics**.
+
+![Událost ConfigurationChange](media/service-map/configuration-change-event-01.png)
 
 ## <a name="performance-integration"></a>Integrace výkonu
-**Výkonu počítačů** podokně se zobrazí standardních metrik výkonu pro vybraný server. Metriky zahrnují využití CPU, využití paměti, odeslané a Přijaté bajty v síti a seznam důležitých procesů podle odeslané a Přijaté bajty v síti.
+
+V podokně **výkon počítače** se zobrazí standardní metriky výkonu pro vybraný server. Metriky zahrnují využití CPU, využití paměti, odeslané a přijímané síťové bajty a seznam nejčastějších procesů podle bajtů odesílaných a přijímaných v síti.
 
 ![Podokno výkon počítače](media/service-map/machine-performance.png)
 
-Pokud chcete zobrazit údaje o výkonu, budete muset [povolit příslušné čítače výkonu Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-data-sources-performance-counters).  Čítače, které budete chtít povolit:
+Chcete-li zobrazit údaje o výkonu, bude pravděpodobně nutné [Povolit příslušné čítače výkonu Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-data-sources-performance-counters).  Čítače, které budete chtít povolit:
 
 Windows:
-- Procesor(*)\\čas procesoru v %
-- Paměť\\% využívání svěřených bajtů
-- Sítě Adapter(*)\\odeslané bajty/s
-- Sítě Adapter(*)\\přijaté bajty/s
+- Procesor (*)\\% času procesoru
+- Paměť\\% používaných potvrzených bajtů
+- Síťový adaptér (*)\\odeslané bajty/s
+- Síťový adaptér (*)\\přijaté bajty/s
 
 Linux:
-- Procesor(*)\\čas procesoru v %
-- Memory(*)\\% využité paměti
-- Sítě Adapter(*)\\odeslané bajty/s
-- Sítě Adapter(*)\\přijaté bajty/s
+- Procesor (*)\\% času procesoru
+- Paměť (*)\\% využité paměti
+- Síťový adaptér (*)\\odeslané bajty/s
+- Síťový adaptér (*)\\přijaté bajty/s
 
-Pokud chcete získat data o výkonu sítě, musíte také povolíte řešení Wire Data 2.0 ve vašem pracovním prostoru.
+Chcete-li získat údaje o výkonu sítě, musíte také povolit řešení Wire Data 2.0 ve vašem pracovním prostoru.
  
 ## <a name="security-integration"></a>Integrace zabezpečení
-Integrace řešení Service Map se zabezpečení a Audit je automatické, pokud obě řešení jsou povolené a nakonfigurované ve vašem pracovním prostoru Log Analytics.
 
-**Zabezpečení počítačů** podokně zobrazí data z řešení zabezpečení a Audit pro vybraný server. V podokně obsahuje souhrnný seznam problémů nezpracovaných zabezpečení pro server během vybraného časového úseku. Některé problémy postupů zabezpečení kliknutí až na prohledávání protokolu podrobnosti o nich.
+Service Map integrace s Security and Audit je automatická, pokud jsou obě řešení povolená a nakonfigurovaná v pracovním prostoru Log Analytics.
+
+Podokno **zabezpečení počítače** zobrazuje data z řešení Security and Audit pro vybraný server. V podokně se zobrazí souhrn všech nevyřešených problémů zabezpečení serveru během vybraného časového rozsahu. Kliknutím na některý z problémů se zabezpečením přejdete k podrobnostem o prohledávání protokolu.
 
 ![Podokno zabezpečení počítače](media/service-map/machine-security.png)
 
-## <a name="updates-integration"></a>Aktualizace integrace
-Řešení Service Map integrace se správu aktualizací je automatické, pokud jsou obě řešení povolené a nakonfigurované ve vašem pracovním prostoru Log Analytics.
+## <a name="updates-integration"></a>Integrace aktualizací
 
-**Aktualizace počítače** podokně se zobrazí data z řešení Update Management pro vybraný server. V podokně obsahuje souhrnný seznam všechny chybějící aktualizace pro server během vybraného časového úseku.
+Service Map integrace s Update Management je automatická, pokud jsou obě řešení povolená a nakonfigurovaná v pracovním prostoru Log Analytics.
 
-![Podokno počítač řešení Change Tracking](media/service-map/machine-updates.png)
+Podokno **aktualizace počítače** zobrazuje data z řešení Update Management pro vybraný server. V podokně jsou uvedeny souhrnné informace o chybějících aktualizacích serveru během vybraného časového rozsahu.
+
+![Počítač Change Tracking – podokno](media/service-map/machine-updates.png)
 
 ## <a name="log-analytics-records"></a>Záznamy služby Log Analytics
-Data inventáře počítače a procesu Service Map je k dispozici pro [hledání](../../azure-monitor/log-query/log-query-overview.md) v Log Analytics. Tato data můžete použít scénáře, které zahrnují plánování migrace, kapacitu analýza, zjišťování a řešení potíží s výkonem na vyžádání.
 
-Jeden záznam se vygeneruje za hodinu pro každý počítač jedinečné a proces, kromě záznamy, které jsou generovány, pokud proces nebo počítače spustí nebo je zprovozněný do Service Map. Tyto záznamy mají vlastnosti v následujících tabulkách. Pole a hodnoty v událostech ServiceMapComputer_CL mapují na pole počítače zdroje v rozhraní API Azure Resource Manageru ServiceMap. Pole a hodnoty v událostech ServiceMapProcess_CL mapují na pole v rozhraní API Azure Resource Manageru ServiceMap prostředku procesu. Pole ResourceName_s odpovídá poli Název odpovídající prostředku Resource Manageru. 
+Data inventáře Service Map počítačů a procesů jsou k dispozici pro [vyhledávání](../../azure-monitor/log-query/log-query-overview.md) v Log Analytics. Tato data můžete použít ve scénářích, které zahrnují plánování migrace, analýzu kapacity, zjišťování a řešení potíží s výkonem na vyžádání.
+
+Jeden záznam je vygenerován za hodinu pro každý jedinečný počítač a proces, kromě záznamů, které jsou generovány při spuštění nebo zprovoznění procesu nebo počítače na Service Map. Tyto záznamy obsahují vlastnosti v následujících tabulkách. Pole a hodnoty v událostech ServiceMapComputer_CL se mapují na pole prostředku počítače v rozhraní API pro ServiceMap Azure Resource Manager. Pole a hodnoty v událostech ServiceMapProcess_CL se mapují na pole prostředku procesu v rozhraní API pro ServiceMap Azure Resource Manager. Pole ResourceName_s se shoduje s polem název v odpovídajícím prostředku Správce prostředků. 
 
 >[!NOTE]
->Podle toho funkce Service Map, jak tato pole se mohou změnit.
+>Jak Service Mapch funkcí roste, tato pole se mohou změnit.
 
-Existují interně vygenerovanému vlastnosti, které můžete použít k identifikaci jedinečný procesy a počítače:
+K dispozici jsou interně generované vlastnosti, které můžete použít k identifikaci jedinečných procesů a počítačů:
 
-- Počítač: Použití *ResourceId* nebo *ResourceName_s* k jednoznačné identifikaci počítače v rámci pracovního prostoru Log Analytics.
-- Proces: Použití *ResourceId* k jednoznačné identifikaci procesu v rámci pracovního prostoru Log Analytics. *ResourceName_s* je jedinečný v rámci počítače, na kterém je proces spuštěn (MachineResourceName_s) 
+- Počítač Pomocí *ResourceID* nebo *ResourceName_s* můžete jedinečně identifikovat počítač v rámci Log Analytics pracovního prostoru.
+- Proces: Použijte *ResourceID* k jednoznačné identifikaci procesu v rámci Log Analytics pracovního prostoru. *ResourceName_s* je jedinečný v rámci kontextu počítače, na kterém je spuštěný proces (MachineResourceName_s). 
 
-Vzhledem k tomu, že pro zadaný proces a počítač v zadaném časovém rozmezí může existovat více záznamů, dotazy mohou vracet víc než jeden záznam pro stejný počítač nebo procesu. Chcete-li zahrnout pouze poslední záznam, přidejte "| Při odstraňování duplicitních dat ResourceId"v dotazu.
+Vzhledem k tomu, že pro zadaný proces a počítač v zadaném časovém rozsahu může existovat více záznamů, můžou dotazy vracet více než jeden záznam pro stejný počítač nebo proces. Pokud chcete zahrnout jenom poslední záznam, přidejte | odstranění duplicitních dat ResourceId do dotazu.
 
 ### <a name="connections"></a>Připojení
-Metrik připojení se zapisují do nové tabulky ve službě Log Analytics – VMConnection. Tato tabulka obsahuje informace o připojení pro počítač (příchozí a odchozí). Metrik připojení jsou přístupné také pomocí rozhraní API, která poskytují způsob, jak získat určité metriky během časového intervalu.  Připojení TCP vyplývající z "*přijmout*- ing naslouchání soketu se příchozí při vytvořených *připojení*- ing k dané IP adresy a portu jsou odchozí. Směr připojení je reprezentována vlastnost směr, který může být nastaven na hodnotu **příchozí** nebo **odchozí**. 
 
-Z data, která agenta závislostí se generují záznamy v těchto tabulkách. Každý záznam představuje hodnotu v časovém intervalu jedné minuty. Vlastnost TimeGenerated označuje začátek časového intervalu. Každý záznam obsahuje informace k identifikaci příslušné entity, to znamená, připojení nebo port, jakož i metriky, které jsou přidružené k dané entitě. V současné době se hlásí pouze síťové aktivity, ke které dojde, pomocí protokolu TCP přes protokol IPv4.
+Metriky připojení se zapisují do nové tabulky v Log Analytics-VMConnection. Tato tabulka poskytuje informace o připojeních pro určitý počítač (příchozí a odchozí). Metriky připojení jsou také vystaveny rozhraním API, která poskytují prostředky pro získání konkrétní metriky během časového intervalu.  Připojení TCP vyplývající z "*přijetí*-změn na naslouchajícím soketu jsou příchozí, zatímco ta vytvořená *připojením*k dané IP adrese a portu jsou odchozí. Směr připojení je reprezentován vlastností Direction, která může být nastavena na hodnotu **příchozí** nebo **odchozí**. 
 
-Pokud chcete spravovat náklady a složitost, záznamy o připojení nepředstavují jednotlivých fyzických síťových připojení. Víc fyzických síťových připojení jsou seskupeny do logických připojení, který je pak v příslušné tabulce.  Význam, zaznamená *VMConnection* tabulce představují logické seskupení a nikoli jednotlivé fyzické připojení, která jsou sledována. Fyzické síťové připojení, které sdílejí stejnou hodnotu pro následující atributy během intervalu daném jedné minuty se agregují do jednoho logického záznamu v *VMConnection*. 
+Záznamy v těchto tabulkách jsou generovány z dat hlášených agentem závislosti. Každý záznam představuje pozorování během jednoho minutového časového intervalu. Vlastnost TimeGenerated označuje začátek časového intervalu. Každý záznam obsahuje informace, které identifikují příslušnou entitu, připojení nebo port a také metriky přidružené k dané entitě. V současné době je hlášena pouze síťová aktivita, která se používá pomocí TCP přes IPv4.
+
+Pro správu nákladů a složitost nepředstavuje záznam o připojení jednotlivá fyzická síťová připojení. Několik fyzických síťových připojení se seskupí do logického připojení, které se pak odrazí v příslušné tabulce.  To znamená, že záznamy v tabulce *VMConnection* představují logické seskupení, nikoli jednotlivá fyzická připojení, která jsou pozorována. Připojení fyzické sítě sdílející stejnou hodnotu pro následující atributy během daného intervalu minut, jsou agregovány do jednoho logického záznamu v *VMConnection*. 
 
 | Vlastnost | Popis |
 |:--|:--|
-| `Direction` |Směr připojení, je hodnota *příchozí* nebo *odchozí* |
+| `Direction` |Směr připojení, hodnota je *příchozí* nebo *odchozí* |
 | `Machine` |Plně kvalifikovaný název domény počítače |
-| `Process` |Identita procesu nebo skupin procesů, inicializace a přijímá připojení |
+| `Process` |Identita procesu nebo skupin procesů, zahájení/přijetí připojení |
 | `SourceIp` |IP adresa zdroje |
-| `DestinationIp` |Cílové IP adresy |
-| `DestinationPort` |Číslo portu cíle |
-| `Protocol` |Protokol použitý pro připojení.  Hodnoty *tcp*. |
+| `DestinationIp` |IP adresa cíle |
+| `DestinationPort` |Číslo portu cílového umístění |
+| `Protocol` |Protokol použitý pro připojení  Hodnoty jsou *TCP*. |
 
-Aby se zohlednily dopadu seskupení, informace o počtu seskupených fyzických připojení najdete v následující vlastnosti záznamu:
+Informace o počtu skupinových fyzických připojení, které se mají přihlédnout k dopadu seskupení, najdete v následujících vlastnostech záznamu:
 
 | Vlastnost | Popis |
 |:--|:--|
-| `LinksEstablished` |Počet fyzických síťových připojení, které se vytvořily časovém období vytváření sestav |
-| `LinksTerminated` |Počet fyzických síťových připojení, která byla ukončena časovém období vytváření sestav |
-| `LinksFailed` |Počet fyzických síťových připojení, které selhaly časovém období vytváření sestav. Tyto informace jsou aktuálně k dispozici pouze pro odchozí připojení. |
-| `LinksLive` |Počet fyzických síťových připojení, které se otevřelo na konci generování sestav časový interval|
+| `LinksEstablished` |Počet fyzických síťových připojení, která byla vytvořena v časovém intervalu generování sestav |
+| `LinksTerminated` |Počet fyzických síťových připojení, které byly ukončeny během časového intervalu generování sestav |
+| `LinksFailed` |Počet fyzických síťových připojení, u kterých došlo k chybě v časovém intervalu generování sestav. Tyto informace jsou aktuálně k dispozici pouze pro odchozí připojení. |
+| `LinksLive` |Počet fyzických síťových připojení otevřených na konci časového intervalu generování sestav|
 
 #### <a name="metrics"></a>Metriky
 
-Kromě metrik počet připojení informace o objemu dat odeslaných a přijatých na dané logické propojení nebo síťový port jsou také uvedené v následující vlastnosti záznamu:
+Kromě metriky počtu připojení jsou do následujících vlastností záznamu zahrnuty také informace o objemu dat odesílaných a přijatých na daném logickém připojení nebo síťovém portu:
 
 | Vlastnost | Popis |
 |:--|:--|
-| `BytesSent` |Celkový počet bajtů, které byly odeslány časovém období vytváření sestav |
-| `BytesReceived` |Celkový počet bajtů, které byly přijaty časovém období vytváření sestav |
-| `Responses` |Počet odpovědí zjištěnými časovém období vytváření sestav. 
-| `ResponseTimeMax` |Maximální doba odezvy (milisekundy) zjištěnými časovém období vytváření sestav.  Pokud žádná hodnota vlastnosti je prázdná.|
-| `ResponseTimeMin` |Minimální doba odezvy (milisekundy) zjištěnými časovém období vytváření sestav.  Pokud žádná hodnota vlastnosti je prázdná.|
-| `ResponseTimeSum` |Součet všech doby odezvy (milisekundy) zjištěnými časovém období vytváření sestav.  Pokud žádná hodnota, vlastnost je prázdné|
+| `BytesSent` |Celkový počet bajtů, které byly odeslány během časového intervalu generování sestav |
+| `BytesReceived` |Celkový počet bajtů přijatých během časového intervalu generování sestav |
+| `Responses` |Počet odpovědí zaznamenaných v časovém intervalu generování sestav. 
+| `ResponseTimeMax` |Největší doba odezvy (v milisekundách) zjištěná během časového intervalu generování sestav.  Pokud není žádná hodnota, vlastnost je prázdná.|
+| `ResponseTimeMin` |Nejmenší doba odezvy (v milisekundách) zjištěná během časového intervalu generování sestav.  Pokud není žádná hodnota, vlastnost je prázdná.|
+| `ResponseTimeSum` |Součet všech dob odezvy (milisekund) zjištěných během časového intervalu generování sestav.  Pokud není žádná hodnota, vlastnost bude prázdná.|
 
-Doba odezvy je třetí typ dat ohlašovaný – jak dlouho volající věnovat časový limit na žádosti zaslané prostřednictvím připojení ke zpracování a reagovalo oddělení vzdálený koncový bod. Doba odezvy hlášené je odhad doby odezvy true na základním protokolu aplikace. To je vypočítán s použitím heuristické metody založené na sledování tok dat mezi zdrojovou a cílovou konec připojení k fyzické síti. Koncepčně je rozdíl mezi časem poslední bajt požadavku opouští odesílatele a čas při přijetí posledního bajtu odpovědi k němu. Tyto dva časové razítko se používají od sebe odděluje událostí žádostí a odpovědí na jedno fyzické připojení. Rozdíl mezi nimi představuje doba odezvy jedné žádosti. 
+Třetí typ vykázaných dat je doba odezvy – jak dlouho bude volající čekat na zpracování požadavku odeslaného přes připojení a na něj reagovat vzdáleným koncovým bodem. Hlášená doba odezvy je odhadem skutečné doby odezvy základního aplikačního protokolu. Počítá se pomocí heuristiky na základě pozorování toku dat mezi zdrojovým a cílovým koncem fyzického síťového připojení. V koncepčním případě je to rozdíl mezi časem, kdy poslední bajt žádosti opustí odesílatele, a čas, kdy se do něj vrátí poslední bajt odpovědi. Tato dvě časová razítka slouží k vymezení událostí požadavků a odpovědí v daném fyzickém připojení. Rozdíl mezi nimi představuje dobu odezvy jednoho požadavku. 
 
-V tomto prvním vydání této funkce je naše algoritmus přibližný, které může fungovat pro různé míře úspěšnosti v závislosti na skutečné aplikace protokol použitý pro připojení k dané síti. Například aktuální přístup funguje dobře pro žádost odpověď na základě protokolů jako jsou HTTP (S), ale pomocí jednosměrné nebo nefunguje protokolů založených na frontě zpráv.
+V této první vydané verzi této funkce je náš algoritmus aproximace, která může fungovat s proměnlivým stupněm úspěšnosti v závislosti na skutečném aplikačním protokolu používaném pro dané síťové připojení. Aktuální přístup například funguje v závislosti na protokolech založených na odpovědích, jako je HTTP (S), ale nepracuje s jednosměrným protokolem nebo protokoly založenými na frontě zpráv.
 
-Tady jsou některé důležité body ke zvážení:
+Tady jsou některé důležité body, které je potřeba vzít v úvahu:
 
-1. Pokud proces akceptuje připojení na stejnou IP adresu, ale přes několik síťových rozhraní, uvádět bude samostatný záznam pro každé rozhraní. 
-2. Záznamů se zástupnými znaky IP bude obsahovat žádná aktivita. Jsou zahrnuty představují skutečnost, že port na počítači je otevřená pro příchozí provoz.
-3. Pokud chcete snížit úroveň podrobností a objem dat, záznamů se zástupnými znaky IP budou vypuštěny po odpovídající záznam (pro stejný proces, port a protokol) s konkrétní IP adresu. Pokud záznam IP zástupných znaků je vynechán, vlastnost záznamu IsWildcardBind s konkrétní IP adresu, bude nastavena na hodnotu "True" k označení, že port, který je přístupný přes každých rozhraní vytváření sestav počítačů.
-4. Porty, které jsou vázány pouze na určité rozhraní mají IsWildcardBind nastavena na hodnotu "False".
+1. Pokud proces přijme připojení na stejné IP adrese, ale přes více síťových rozhraní, nahlásí se samostatný záznam pro každé rozhraní. 
+2. Záznamy s IP adresou se zástupnými znaky nebudou obsahovat žádné aktivity. Jsou zahrnuty k vyjádření faktu, že je port v počítači otevřený pro příchozí provoz.
+3. Aby se snížila úroveň podrobností a objem dat, budou záznamy se zástupnými adresami IP vynecháné, pokud existuje shodný záznam (pro stejný proces, port a protokol) s konkrétní IP adresou. Je-li vynechán záznam IP adresy se zástupnými znaky, bude vlastnost IsWildcardBind záznamu s konkrétní IP adresou nastavena na hodnotu "true", která označuje, že port je vystaven pro každé rozhraní počítače pro vytváření sestav.
+4. Porty, které jsou vázány pouze na konkrétní rozhraní, mají IsWildcardBind nastavenou na hodnotu false (NEPRAVDA).
 
-#### <a name="naming-and-classification"></a>Zásady vytváření názvů a klasifikace
-Pro usnadnění práce IP adresu ke konci vzdáleného připojení je součástí RemoteIp vlastnost. Pro příchozí připojení, RemoteIp je stejný jako SourceIp, zatímco pro odchozí připojení, je stejný jako DestinationIp. Vlastnost RemoteDnsCanonicalNames představuje hlášených počítači pro RemoteIp canonical názvy DNS. Vlastnosti RemoteDnsQuestions a RemoteClassification jsou vyhrazené pro budoucí použití. 
+#### <a name="naming-and-classification"></a>Pojmenovávání a klasifikace
 
-#### <a name="geolocation"></a>Geografická poloha
-*VMConnection* obsahuje také informace o zeměpisné poloze informace o vzdáleným koncem záznamech připojení ve vlastnostech následující záznam: 
+Pro usnadnění práce se do vlastnosti RemoteIp zahrne IP adresa vzdáleného konce připojení. U příchozích připojení je RemoteIp stejná jako SourceIp, zatímco u odchozích připojení je stejná jako DestinationIp. Vlastnost RemoteDnsCanonicalNames představuje kanonické názvy DNS hlášené počítačem pro RemoteIp. Vlastnosti RemoteDnsQuestions a RemoteClassification jsou vyhrazené pro budoucí použití. 
+
+#### <a name="geolocation"></a>Zeměpisná poloha
+
+*VMConnection* také obsahuje informace o geografickém umístění pro vzdálené konce každého záznamu připojení v následujících vlastnostech záznamu: 
 
 | Vlastnost | Popis |
 |:--|:--|
-| `RemoteCountry` |Název země/oblasti, který je hostitelem RemoteIp.  Například *USA* |
-| `RemoteLatitude` |Zeměpisná poloha, zeměpisná šířka.  Například *47.68* |
-| `RemoteLongitude` |Informace o zeměpisné poloze délky.  Například *-122.12* |
+| `RemoteCountry` |Název země nebo oblasti hostující RemoteIp.  Například *USA* |
+| `RemoteLatitude` |Zeměpisná šířka zeměpisné polohy.  Například *47,68* |
+| `RemoteLongitude` |Zeměpisná délka zeměpisné polohy.  Například *-122,12* |
 
 #### <a name="malicious-ip"></a>Škodlivá IP adresa
-Každá vlastnost RemoteIp v *VMConnection* tabulky je porovnávána s sadu IP adres pomocí známých škodlivých aktivit. Pokud se zjistí, RemoteIp jako škodlivý naplní se následující vlastnosti (jsou prázdné, pokud IP adresa se považuje za škodlivou) v záznamu následující vlastnosti:
+
+Každá vlastnost RemoteIp v tabulce *VMConnection* je kontrolována na základě sady IP adres se známou škodlivou aktivitou. Pokud je RemoteIp identifikovaný jako škodlivý, budou se naplnit následující vlastnosti (Pokud se IP adresa nepovažuje za škodlivou) v následujících vlastnostech záznamu:
 
 | Vlastnost | Popis |
 |:--|:--|
-| `MaliciousIp` |Vzdálená adresa IP adres |
-| `IndicatorThreadType` |Indikátor hrozeb zjistila je jeden z následujících hodnot *Botnet*, *C2*, *CryptoMining*, *Darknet*, *před útoky DDos* , *MaliciousUrl*, *Malware*, *Phishing*, *Proxy*, *PUA*, *Seznamu ke zhlédnutí*.   |
-| `Description` |Popis zjištěných hrozeb. |
-| `TLPLevel` |Úroveň protokolu semaforu (algoritmus TLP) je jedna z definovaných hodnot *prázdné*, *zelená*, *žlutou*, *Red*. |
+| `MaliciousIp` |Adresa RemoteIp |
+| `IndicatorThreadType` |Zjištěného indikátoru hrozby je jedna z následujících hodnot: *botnetu*, *C2*, *CryptoMining*, *adres darknetu*, *DDos*, *MaliciousUrl*, *malware*, *phishing*, *proxy*, *PUA*,  *Seznamu ke zhlédnutí*.   |
+| `Description` |Popis pozorované hrozby. |
+| `TLPLevel` |Úroveň TLP (provoz Light Protocol) je jedna z definovaných hodnot, *bílá*, *zelená*, *oranžová*a *červená*. |
 | `Confidence` |Hodnoty jsou *0 – 100*. |
-| `Severity` |Hodnoty jsou *0 – 5*, kde *5* je nejzávažnější a *0* není natolik vůbec. Výchozí hodnota je *3*.  |
-| `FirstReportedDateTime` |První zprostředkovatel ohlásil indikátoru. |
-| `LastReportedDateTime` |Čas posledního ukazatele viděla Interflow. |
-| `IsActive` |Označuje deaktivují se s indikátory *True* nebo *False* hodnotu. |
-| `ReportReferenceLink` |Obsahuje odkazy na sestavy související se daný pozorovat. |
-| `AdditionalInformation` |Poskytuje další informace, pokud je k dispozici informace o zjištěných hrozeb. |
+| `Severity` |Hodnoty jsou *0 – 5*, přičemž *5* je nejzávažnější a *0* není u sebe závažná. Výchozí hodnota je *3*.  |
+| `FirstReportedDateTime` |První, kdy zprostředkovatel nahlásil ukazatel. |
+| `LastReportedDateTime` |Čas posledního výskytu indikátoru v rámci přetečení. |
+| `IsActive` |Označuje, že indikátory jsou dezaktivovány hodnotou *true* nebo *false* . |
+| `ReportReferenceLink` |Odkazuje na sestavy související s daným pozorovatelem. |
+| `AdditionalInformation` |Poskytuje další informace, pokud je to možné, o zjištěné hrozbě. |
 
-### <a name="servicemapcomputercl-records"></a>ServiceMapComputer_CL records
-Záznamy typu *ServiceMapComputer_CL* mít data inventáře pro servery s agenty řešení Service Map. Tyto záznamy mají vlastnosti v následující tabulce:
+### <a name="servicemapcomputercl-records"></a>Záznamy ServiceMapComputer_CL
+
+Záznamy s typem *ServiceMapComputer_CL* obsahují data inventáře pro servery s Service map agenty. Tyto záznamy mají vlastnosti v následující tabulce:
 
 | Vlastnost | Popis |
 |:--|:--|
 | `Type` | *ServiceMapComputer_CL* |
 | `SourceSystem` | *OpsManager* |
-| `ResourceId` | Jedinečný identifikátor pro počítač v pracovním prostoru |
-| `ResourceName_s` | Jedinečný identifikátor pro počítač v pracovním prostoru |
+| `ResourceId` | Jedinečný identifikátor počítače v pracovním prostoru |
+| `ResourceName_s` | Jedinečný identifikátor počítače v pracovním prostoru |
 | `ComputerName_s` | Plně kvalifikovaný název domény počítače |
-| `Ipv4Addresses_s` | Seznam serveru IPv4 adres |
-| `Ipv6Addresses_s` | Seznam serveru IPv6 adres |
+| `Ipv4Addresses_s` | Seznam adres IPv4 serveru |
+| `Ipv6Addresses_s` | Seznam IPv6 adres serveru |
 | `DnsNames_s` | Pole názvů DNS |
 | `OperatingSystemFamily_s` | Windows nebo Linux |
 | `OperatingSystemFullName_s` | Úplný název operačního systému  |
-| `Bitness_s` | Bitová verze počítače (32bitová nebo 64bitová verze)  |
+| `Bitness_s` | Bitová verze počítače (32-bit nebo 64)  |
 | `PhysicalMemory_d` | Fyzická paměť v MB |
 | `Cpus_d` | Počet procesorů |
 | `CpuSpeed_d` | Rychlost procesoru v MHz|
-| `VirtualizationState_s` | *Neznámý*, *fyzické*, *virtuální*, *hypervisoru* |
-| `VirtualMachineType_s` | *Hyper-v*, *vmware*, a tak dále |
-| `VirtualMachineNativeMachineId_g` | ID virtuálního počítače přiřazené službou jeho hypervisoru |
+| `VirtualizationState_s` | *Neznámý*, *fyzický*, *virtuální*, *hypervisor* |
+| `VirtualMachineType_s` | *Hyper*-v, *VMware*atd. |
+| `VirtualMachineNativeMachineId_g` | ID virtuálního počítače přiřazené hypervisorem |
 | `VirtualMachineName_s` | Název virtuálního počítače |
 | `BootTime_t` | Čas spuštění |
 
-### <a name="servicemapprocesscl-type-records"></a>Typ ServiceMapProcess_CL záznamů
-Záznamy typu *ServiceMapProcess_CL* mít data inventáře pro procesy připojené protokolem TCP na serverech s agenty řešení Service Map. Tyto záznamy mají vlastnosti v následující tabulce:
+### <a name="servicemapprocesscl-type-records"></a>Záznamy typu ServiceMapProcess_CL
+
+Záznamy s typem *ServiceMapProcess_CL* mají data inventáře pro procesy připojené k protokolu TCP na serverech s agenty Service map. Tyto záznamy mají vlastnosti v následující tabulce:
 
 | Vlastnost | Popis |
 |:--|:--|
 | `Type` | *ServiceMapProcess_CL* |
 | `SourceSystem` | *OpsManager* |
-| `ResourceId` | Jedinečný identifikátor procesu v rámci pracovního prostoru |
-| `ResourceName_s` | Jedinečný identifikátor procesu v počítači, na kterém je spuštěná|
+| `ResourceId` | Jedinečný identifikátor procesu v pracovním prostoru |
+| `ResourceName_s` | Jedinečný identifikátor procesu v počítači, na kterém je spuštěný|
 | `MachineResourceName_s` | Název prostředku počítače |
-| `ExecutableName_s` | Název spustitelného souboru procesu |
-| `StartTime_t` | Čas spuštění procesu fondu |
-| `FirstPid_d` | První identifikátor PID ve fondu procesů |
+| `ExecutableName_s` | Název spustitelného procesu |
+| `StartTime_t` | Čas spuštění fondu procesů |
+| `FirstPid_d` | První PID ve fondu procesů |
 | `Description_s` | Popis procesu |
 | `CompanyName_s` | Název společnosti |
 | `InternalName_s` | Interní název |
@@ -416,42 +456,53 @@ Záznamy typu *ServiceMapProcess_CL* mít data inventáře pro procesy připojen
 | `CommandLine_s` | Příkazový řádek |
 | `ExecutablePath _s` | Cesta ke spustitelnému souboru |
 | `WorkingDirectory_s` | Pracovní adresář |
-| `UserName` | Účet, pod kterým je spuštěn proces |
-| `UserDomain` | Domény, pod kterým je spuštěn proces |
+| `UserName` | Účet, pod kterým se proces spouští |
+| `UserDomain` | Doména, pod kterou je prováděn proces |
 
 ## <a name="sample-log-searches"></a>Ukázky hledání v protokolech
 
-### <a name="list-all-known-machines"></a>Seznam všech známých počítačů
-ServiceMapComputer_CL | shrnutí arg_max(TimeGenerated, *) podle ID prostředku
+### <a name="list-all-known-machines"></a>Zobrazit seznam všech známých počítačů
 
-### <a name="list-the-physical-memory-capacity-of-all-managed-computers"></a>Seznam kapacita fyzické paměti všech spravovaných počítačů.
-ServiceMapComputer_CL | shrnutí arg_max(TimeGenerated, *) podle ID prostředku | Projekt PhysicalMemory_d, ComputerName_s
+ServiceMapComputer_CL | shrnout arg_max (TimeGenerated, *) podle ResourceId
 
-### <a name="list-computer-name-dns-ip-and-os"></a>Název počítače seznamu, DNS, IP a operačního systému.
-ServiceMapComputer_CL | shrnutí arg_max(TimeGenerated, *) podle ID prostředku | Projekt ComputerName_s OperatingSystemFullName_s, DnsNames_s, Ipv4Addresses_s
+### <a name="list-the-physical-memory-capacity-of-all-managed-computers"></a>Vypíše kapacitu fyzické paměti pro všechny spravované počítače.
 
-### <a name="find-all-processes-with-sql-in-the-command-line"></a>Najít všechny procesy s "sql" v příkazovém řádku
-ServiceMapProcess_CL | kde CommandLine_s contains_cs "sql" | shrnutí arg_max(TimeGenerated, *) podle ID prostředku
+ServiceMapComputer_CL | shrnout arg_max (TimeGenerated, *) podle ResourceId | projekt PhysicalMemory_d, ComputerName_s
 
-### <a name="find-a-machine-most-recent-record-by-resource-name"></a>Najít počítač (poslední záznam) podle názvu prostředku
-hledání v (ServiceMapComputer_CL) "m-4b9c93f9-bc37-46df-b43c-899ba829e07b" | shrnutí arg_max(TimeGenerated, *) podle ID prostředku
+### <a name="list-computer-name-dns-ip-and-os"></a>Vypíše název počítače, DNS, IP adresu a operační systém.
 
-### <a name="find-a-machine-most-recent-record-by-ip-address"></a>Najít počítač (poslední záznam) podle IP adresy
-hledání v (ServiceMapComputer_CL) "10.229.243.232" | shrnutí arg_max(TimeGenerated, *) podle ID prostředku
+ServiceMapComputer_CL | shrnout arg_max (TimeGenerated, *) podle ResourceId | projekt ComputerName_s, OperatingSystemFullName_s, DnsNames_s, Ipv4Addresses_s
 
-### <a name="list-all-known-processes-on-a-specified-machine"></a>Seznam všech známých procesů v zadaném počítači
-ServiceMapProcess_CL | kde MachineResourceName_s == "m-559dbcd8-3130-454d-8d1d-f624e57961bc" | shrnutí arg_max(TimeGenerated, *) podle ID prostředku
+### <a name="find-all-processes-with-sql-in-the-command-line"></a>Najde všechny procesy pomocí SQL na příkazovém řádku.
 
-### <a name="list-all-computers-running-sql"></a>Seznam všech počítačů s SQL
-ServiceMapComputer_CL | kde ResourceName_s v ((vyhledávání v (ServiceMapProcess_CL) "\*sql\*" | odlišné MachineResourceName_s)) | odlišné ComputerName_s
+ServiceMapProcess_CL | kde CommandLine_s contains_cs "SQL" | shrnout arg_max (TimeGenerated, *) podle ResourceId
 
-### <a name="list-all-unique-product-versions-of-curl-in-my-datacenter"></a>Zobrazí seznam všech verzí produktu jedinečné nástroje curl do svého datacentra
-ServiceMapProcess_CL | kde ExecutableName_s == "curl" | DISTINCT ProductVersion_s
+### <a name="find-a-machine-most-recent-record-by-resource-name"></a>Vyhledání počítače (nejaktuálnější záznam) podle názvu prostředku
 
-### <a name="create-a-computer-group-of-all-computers-running-centos"></a>Vytvořit skupinu počítačů všechny počítače se systémem CentOS
+Hledat v (ServiceMapComputer_CL) "m-4b9c93f9-bc37-46df-b43c-899ba829e07b" | shrnout arg_max (TimeGenerated, *) podle ResourceId
+
+### <a name="find-a-machine-most-recent-record-by-ip-address"></a>Vyhledání počítače (nejaktuálnější záznam) podle IP adresy
+
+Hledat v (ServiceMapComputer_CL) "10.229.243.232" | shrnout arg_max (TimeGenerated, *) podle ResourceId
+
+### <a name="list-all-known-processes-on-a-specified-machine"></a>Vypíše všechny známé procesy v zadaném počítači.
+
+ServiceMapProcess_CL | kde MachineResourceName_s = = "m-559dbcd8-3130-454d-8d1d-f624e57961bc" | shrnout arg_max (TimeGenerated, *) podle ResourceId
+
+### <a name="list-all-computers-running-sql"></a>Vypsat všechny počítače se systémem SQL
+
+ServiceMapComputer_CL | kde ResourceName_s in (((ServiceMapProcess_CL) "\*SQL\*" | DISTINCT MachineResourceName_s) | DISTINCT ComputerName_s
+
+### <a name="list-all-unique-product-versions-of-curl-in-my-datacenter"></a>Vypíše všechny jedinečné verze produktu ve vaší datacentru.
+
+ServiceMapProcess_CL | kde ExecutableName_s = = "kudrlinkou" | jedinečné ProductVersion_s
+
+### <a name="create-a-computer-group-of-all-computers-running-centos"></a>Vytvoření skupiny počítačů na všech počítačích se systémem CentOS
+
 ServiceMapComputer_CL | where OperatingSystemFullName_s contains_cs "CentOS" | distinct ComputerName_s
 
-### <a name="summarize-the-outbound-connections-from-a-group-of-machines"></a>Shrnutí odchozí připojení ze skupiny počítačů
+### <a name="summarize-the-outbound-connections-from-a-group-of-machines"></a>Shrnutí odchozích připojení ze skupiny počítačů
+
 ```
 // the machines of interest
 let machines = datatable(m: string) ["m-82412a7a-6a32-45a9-a8d6-538354224a25"];
@@ -494,21 +545,26 @@ let remoteMachines = remote | summarize by RemoteMachine;
 ```
 
 ## <a name="rest-api"></a>REST API
-Všechna data serveru, proces a závislosti v Service Map je k dispozici prostřednictvím [rozhraní REST API služby mapy](https://docs.microsoft.com/rest/api/servicemap/).
+
+Všechna data serveru, procesu a závislostí v Service Map jsou k dispozici prostřednictvím [REST API Service map](https://docs.microsoft.com/rest/api/servicemap/).
 
 ## <a name="diagnostic-and-usage-data"></a>Diagnostická data a data použití
-Microsoft automaticky shromažďuje data o využití a výkonu prostřednictvím vašeho používání služby Service Map. Tato data Microsoft používá k poskytování a vylepšování kvality, zabezpečení a integrity služby mapa služby. Pokud chcete poskytnout přesné a efektivní možnosti pro odstraňování potíží, data obsahují informace o konfiguraci vašeho softwaru, jako je operační systém a verze, IP adresu, název DNS a název pracovní stanice. Společnost Microsoft neshromažďuje jména, adresy ani jiné kontaktní údaje.
+
+Microsoft automaticky shromažďuje data o využití a výkonu prostřednictvím vašeho používání služby Service Map. Tato data Microsoft používá k poskytování a vylepšování kvality, zabezpečení a integrity služby mapa služby. Aby poskytovaly přesné a efektivní možnosti odstraňování potíží, obsahují data informace o konfiguraci softwaru, jako je například operační systém a verze, IP adresa, název DNS a název pracovní stanice. Společnost Microsoft neshromažďuje jména, adresy ani jiné kontaktní údaje.
 
 Další informace o shromažďování a používání dat najdete v článku [prohlášení o ochraně osobních údajů Microsoft Online Services](https://go.microsoft.com/fwlink/?LinkId=512132).
 
 
 ## <a name="next-steps"></a>Další postup
-Další informace o [prohledávání protokolů](../../azure-monitor/log-query/log-query-overview.md) v Log Analytics data, která shromažďují Service Map.
+
+Přečtěte si další informace o [hledání v protokolu](../../azure-monitor/log-query/log-query-overview.md) v Log Analytics k načtení dat shromažďovaných pomocí Service map.
 
 
 ## <a name="troubleshooting"></a>Řešení potíží
-Zobrazit [řešení potíží s konfigurací řešení Service Map dokumentu v části]( service-map-configure.md#troubleshooting).
+
+Další informace najdete v [části řešení potíží v dokumentu konfigurace Service map]( service-map-configure.md#troubleshooting).
 
 
-## <a name="feedback"></a>Váš názor
-Máte jakoukoli zpětnou vazbu pro nás o mapy služeb nebo v této dokumentaci?  Navštivte naše [User Voice stránky](https://feedback.azure.com/forums/267889-log-analytics/category/184492-service-map), kde můžete navrhnout funkce nebo hlasovat do existujících návrhů.
+## <a name="feedback"></a>Zpětná vazba
+
+Máte pro nás informace o Service Map nebo této dokumentaci?  Navštivte naši [hlasovou stránku uživatele](https://feedback.azure.com/forums/267889-log-analytics/category/184492-service-map), kde můžete navrhovat funkce nebo hlasovat o stávajících návrzích.

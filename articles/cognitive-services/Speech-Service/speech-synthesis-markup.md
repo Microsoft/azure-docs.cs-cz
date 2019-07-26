@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: dd535f96c60a3f9259a108f3e8aff643eed1870d
-ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
+ms.openlocfilehash: e2b1e02a622dfe4ae488e372e44c8440f20d7034
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68414706"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68501151"
 ---
 # <a name="speech-synthesis-markup-language-ssml"></a>Jazyk SSML (Speech Synthesis Markup Language)
 
@@ -285,10 +285,10 @@ Vzhledem k tomu, že se hodnoty atributů Prozodický předěl můžou v rámci 
 
 | Atribut | Popis | Povinné / volitelné |
 |-----------|-------------|---------------------|
-| teče | Určuje rozteč účaří pro text. Rozteč můžete vyjádřit jako:<ul><li>Absolutní hodnota vyjádřená jako číslo následovaný "Hz" (Hz). Například 600Hz.</li><li>Relativní hodnota vyjádřená jako číslo před "+" nebo "-" a následována "Hz" nebo "St", která určuje velikost pro změnu rozteči. Například: + 80Hz nebo-2st. "St" značí, že se jednotka změny semitone, což je polovina tónu (poloviční krok) na standardním diatonic škále.</li><li>Konstantní hodnota:<ul><li>x – nízká</li><li>nízká</li><li>středně silné</li><li>Maximální</li><li>x-vysoká</li><li>default</li></ul></li></ul>. | volitelná, |
+| teče | Určuje rozteč účaří pro text. Rozteč můžete vyjádřit jako:<ul><li>Absolutní hodnota vyjádřená jako číslo následovaný "Hz" (Hz). Například 600Hz.</li><li>Relativní hodnota vyjádřená jako číslo před "+" nebo "-" a následována "Hz" nebo "St", která určuje velikost pro změnu rozteči. Například: + 80Hz nebo-2st. "St" značí, že se jednotka změny semitone, což je polovina tónu (poloviční krok) na standardním diatonic škále.</li><li>Konstantní hodnota:<ul><li>x – nízká</li><li>nízká</li><li>středně silné</li><li>maximální</li><li>x-vysoká</li><li>default</li></ul></li></ul>. | volitelná, |
 | nesmí | Pro hlasy neuronové se nepodporuje obrys. Obrys představuje změny v rozteči pro obsah mluveného slova jako pole cílů v zadaných časových pozicích ve výstupu řeči. Každý cíl je definován sadami dvojic parametrů. Příklad: <br/><br/>`<prosody contour="(0%,+20Hz) (10%,-2st) (40%,+10Hz)">`<br/><br/>První hodnota v každé sadě parametrů určuje umístění změny sklonu v procentech doby trvání textu. Druhá hodnota určuje velikost, která má zvýšit nebo snížit rozteč, pomocí relativní hodnoty nebo hodnoty výčtu pro rozteč (viz `pitch`). | volitelná, |
 | oblasti  | Hodnota, která představuje rozsah roztečí textu. Můžete vyjádřit `range` použití stejných absolutních hodnot, relativních hodnot nebo hodnot výčtu používaných k popisu `pitch`. | volitelná, |
-| Kmitočt  | Určuje míru projevení textu. Můžete vyjádřit `rate` jako:<ul><li>Relativní hodnota vyjádřená jako číslo, které funguje jako násobitel výchozí hodnoty. Například hodnota *1* má za následek nezměněnou sazbu. Hodnota *0,5* vede k poloviční míře. Hodnota *3* má za následek cestu k této sazbě.</li><li>Konstantní hodnota:<ul><li>x – pomalé</li><li>pomalé</li><li>středně silné</li><li>Světl</li><li>x – Fast</li><li>default</li></ul></li></ul> | volitelná, |
+| kmitočt  | Určuje míru projevení textu. Můžete vyjádřit `rate` jako:<ul><li>Relativní hodnota vyjádřená jako číslo, které funguje jako násobitel výchozí hodnoty. Například hodnota *1* má za následek nezměněnou sazbu. Hodnota *0,5* vede k poloviční míře. Hodnota *3* má za následek cestu k této sazbě.</li><li>Konstantní hodnota:<ul><li>x – pomalé</li><li>pomalé</li><li>středně silné</li><li>světl</li><li>x – Fast</li><li>default</li></ul></li></ul> | volitelná, |
 | duration  | Časový interval, který by měl uplynout, zatímco služba rozpoznávání řeči (TTS) čte text v sekundách nebo milisekundách. Například *2S* nebo *1800ms*. | volitelná, |
 | svazek  | Určuje úroveň hlasitosti mluveného hlasu. Svazek můžete vyjádřit jako:<ul><li>Absolutní hodnota vyjádřená jako číslo v rozsahu od 0,0 do 100,0, od Tichého po  nahlasu . Například 75. Výchozí hodnota je 100,0.</li><li>Relativní hodnota vyjádřená jako číslo začínající znakem "+" nebo "-", která určuje velikost pro změnu svazku. Například + 10 nebo-5,5.</li><li>Konstantní hodnota:<ul><li>tich</li><li>× – měkké</li><li>Pohyblivý</li><li>středně silné</li><li>rovnává</li><li>x-nahlas</li><li>default</li></ul></li></ul> | volitelná, |
 
@@ -351,6 +351,78 @@ Změny v rozteči je možné použít u standardních hlasů na úrovni slova ne
         <prosody contour="(80%,+20%) (90%,+30%)" >
             Good morning.
         </prosody>
+    </voice>
+</speak>
+```
+
+## <a name="add-recorded-audio"></a>Přidat zaznamenaný zvuk
+
+`audio`je volitelný prvek, který umožňuje vložit zvuk MP3 do dokumentu SSML. Tělo zvukového prvku může obsahovat prostý text nebo SSML poznámky, které jsou mluvené, pokud je zvukový soubor nedostupný nebo nezobrazitelný. `audio` Kromě toho element může obsahovat text a následující prvky: `phoneme` `p` `audio`, `break`,, `s`,, `prosody` `say-as` ,`sub`a.
+
+Libovolný zvuk zahrnutý v dokumentu SSML musí splňovat tyto požadavky:
+
+* MP3 musí být hostovaný na koncovém bodu HTTPS, který je přístupný pro Internet. Je vyžadován protokol HTTPS a doména hostující soubor MP3 musí představovat platný důvěryhodný certifikát SSL.
+* MP3 musí být platný soubor MP3 (MPEG v2).
+* Přenosová rychlost musí být 48 KB/s.
+* Vzorkovací frekvence musí být 16000 Hz.
+* Celková celková doba pro všechny textové a zvukové soubory v jedné odpovědi nesmí překročit 90 (90) sekund.
+* MP3 nesmí obsahovat žádné informace specifické pro zákazníka nebo jiné citlivé informace.
+
+**Syntaxe**
+
+```xml
+<audio src="string"/></audio>
+```
+
+**Atributy**
+
+| Atribut | Popis | Povinné / volitelné |
+|-----------|-------------|---------------------|
+| src | Určuje umístění nebo adresu URL zvukového souboru. | Požadováno při použití prvku zvuk v dokumentu SSML. |
+
+**Příklad**
+
+```xml
+<speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">
+    <p>
+        <audio src="https://contoso.com/opinionprompt.wav"/>
+        Thanks for offering your opinion. Please begin speaking after the beep.
+        <audio src="https://contoso.com/beep.wav">
+        Could not play the beep, please voice your opinion now. </audio>
+    </p>
+</speak>
+```
+
+## <a name="add-background-audio"></a>Přidat zvuk na pozadí
+
+`mstts:backgroundaudio` Element umožňuje přidat do dokumentů SSML zvuk na pozadí (nebo míchat zvukový soubor s převodem textu na řeč). Díky `mstts:backgroundaudio` tomu můžete na pozadí zacyklovat zvukový soubor, mizet na začátku převodu textu na řeč a zeslabit na konci převodu textu na řeč.
+
+Pokud je zadaný zvuk na pozadí kratší než převod textu na řeč nebo zeslabit, smyčka se spustí. Pokud je delší než převod textu na řeč, zastaví se, až se rozzvolna dokončí.
+
+V SSML dokumentu je povolen pouze jeden zvukový soubor na pozadí. Můžete `audio` však`voice` v rámci elementu doplnit značky přidáním dalšího zvuku do dokumentu SSML.
+
+**Syntaxe**
+
+```XML
+<mstts:backgroundaudio src="string" volume="string" fadein="string" fadeout="string"/>
+```
+
+**Atributy**
+
+| Atribut | Popis | Povinné / volitelné |
+|-----------|-------------|---------------------|
+| src | Určuje umístění nebo adresu URL zvukového souboru na pozadí. | Vyžaduje se, pokud v dokumentu SSML používáte zvuk na pozadí. |
+| svazek | Určuje hlasitost zvukového souboru na pozadí. **Přijaté hodnoty**: `0` na `100` včetně Výchozí hodnota je `1`. | volitelná, |
+| fadein | Určuje dobu, po kterou se bude objevovat zvuk na pozadí. **Přijaté hodnoty**: `0` na `10000` včetně  | volitelná, |
+| zeslabení | Určuje dobu, po kterou se má zvuk na pozadí rozmizet. **Přijaté hodnoty**: `0` na `10000` včetně  | volitelná, |
+
+**Příklad**
+
+```xml
+<speak version="1.0" xml:lang="en-US" xmlns:mstts="http://www.w3.org/2001/mstts">
+    <mstts:backgroundaudio src="https://contoso.com/sample.wav" volume="0.7" fadein="3000" fadeout="4000"/>
+    <voice name="Microsoft Server Speech Text to Speech Voice (en-US, Jessa24kRUS)">
+        The text provided in this document will be spoken over the background audio.
     </voice>
 </speak>
 ```

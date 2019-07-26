@@ -1,6 +1,6 @@
 ---
 title: Řešení Update Management v Azure
-description: Tento článek je určený k vám pomohou pochopit, jak používat řešení Azure Update Management ke správě aktualizací pro počítače s Windows a Linuxem.
+description: Tento článek vám pomůže pochopit, jak používat řešení Azure Update Management ke správě aktualizací pro počítače se systémem Windows a Linux.
 services: automation
 ms.service: automation
 ms.subservice: update-management
@@ -9,75 +9,81 @@ ms.author: robreed
 ms.date: 05/22/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 3bfec413430de588be6c4423702d41779a8426d0
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 4bd0b6f0652f49c16bd67bbca5a89d19e17a8b2c
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67477981"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68498419"
 ---
 # <a name="update-management-solution-in-azure"></a>Řešení Update Management v Azure
 
-Řešení Update Management ve službě Azure Automation můžete použít ke správě aktualizací operačního systému pro počítače s Windows a Linuxem v Azure, místním prostředí nebo jiných poskytovatelů cloudových služeb. Můžete rychle vyhodnotit stav dostupných aktualizací na všech počítačích agenta a spravovat proces instalace požadovaných aktualizací pro servery.
+Řešení Update Management v Azure Automation můžete použít ke správě aktualizací operačního systému pro počítače se systémem Windows a Linux v Azure, v místních prostředích nebo v jiných poskytovatelích cloudu. Můžete rychle vyhodnotit stav dostupných aktualizací na všech počítačích agenta a spravovat proces instalace požadovaných aktualizací pro servery.
 
-Můžete povolit správu aktualizací pro virtuální počítače přímo ze svého účtu Azure Automation. Informace o povolení správy aktualizací pro virtuální počítače ve svém účtu Automation najdete v tématu [Správa aktualizací pro několik virtuálních počítačů](manage-update-multi.md). Můžete také povolit správu aktualizací pro virtuální počítač z virtuálního počítače stránky na webu Azure Portal. Tento scénář je k dispozici pro [Linux](../virtual-machines/linux/tutorial-monitoring.md#enable-update-management) a [Windows](../virtual-machines/windows/tutorial-monitoring.md#enable-update-management) virtuálních počítačů.
+Můžete povolit Update Management pro virtuální počítače přímo z účtu Azure Automation. Informace o tom, jak povolit Update Management pro virtuální počítače z vašeho účtu Automation, najdete v tématu [Správa aktualizací pro několik virtuálních počítačů](manage-update-multi.md). Můžete také povolit Update Management pro virtuální počítač ze stránky virtuálního počítače v Azure Portal. Tento scénář je k dispozici pro virtuální počítače se systémy [Linux](../virtual-machines/linux/tutorial-monitoring.md#enable-update-management) a [Windows](../virtual-machines/windows/tutorial-monitoring.md#enable-update-management) .
+
+> [!NOTE]
+> Řešení Update Management vyžaduje propojení pracovního prostoru Log Analytics s vaším účtem Automation. Konečný seznam podporovaných oblastí naleznete v tématu [./how-to/region-Mappings.MD]. Mapování oblastí neovlivňují možnost spravovat virtuální počítače v samostatné oblasti, než je váš účet Automation.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="solution-overview"></a>Přehled řešení
 
-Počítače, které se spravují přes Update Management použít k provedení vyhodnocení a nasazení aktualizací následující konfigurace:
+Počítače spravované pomocí Update Management pro vyhodnocení a nasazení aktualizací používají následující konfigurace:
 
 * Microsoft Monitoring Agent (MMA) pro Windows nebo Linux
 * Konfiguraci požadovaného stavu (DSC) PowerShellu pro Linux
 * Funkci Hybrid Runbook Worker služby Automation
-* Microsoft Update nebo Windows Server Update Services (WSUS) pro počítače s Windows
+* Microsoft Update nebo Windows Server Update Services (WSUS) pro počítače se systémem Windows
 
-Následující diagram znázorňuje konceptuální zobrazení chování a toku dat s jak toto řešení vyhodnocuje a aplikuje aktualizace zabezpečení na všechny připojené systémy Windows Server a počítačů s Linuxem v pracovním prostoru:
+Následující diagram znázorňuje koncepční zobrazení chování a toku dat s tím, jak řešení vyhodnocuje a aplikuje aktualizace zabezpečení na všechny připojené počítače s Windows serverem a Linux v pracovním prostoru:
 
-![Proces správy aktualizací](./media/automation-update-management/update-mgmt-updateworkflow.png)
+![Tok procesu Update Management](./media/automation-update-management/update-mgmt-updateworkflow.png)
 
-Správa aktualizací umožňuje nativně připojit počítače v několika předplatných ve stejném tenantovi.
+Update Management lze použít k nativně zprovoznění počítačů ve více předplatných ve stejném tenantovi.
 
-Po vydání balíčku, trvá 2 – 3 hodiny pro opravu se zobrazí pro počítače s Linuxem pro posouzení. Pro počítače s Windows trvá 12 až 15 hodin pro opravu zobrazení pro posouzení po byla uvolněna.
+Po uvolnění balíčku trvá 2-3 hodin, než se oprava zobrazí pro počítače se systémem Linux pro posouzení. U počítačů s Windows trvá 12-15 hodin, než se oprava zobrazí až po jejím vydání.
 
-Po dokončení kontroly dodržování předpisů pro aktualizace do počítače agenta předává informace hromadné protokoly Azure monitoru. Na počítači s Windows se kontrola dodržování předpisů ve výchozím nastavení spouští každých 12 hodin.
+Když počítač dokončí kontrolu shody aktualizací, agent přepošle informace hromadně do Azure Monitor protokolů. V počítači se systémem Windows se kontrola kompatibility ve výchozím nastavení spouští každých 12 hodin.
 
-Mimo plán kontrol je zahájeno kontroly dodržování předpisů pro aktualizace do 15 minut po restartování, před instalací aktualizací a po instalaci aktualizací agenta MMA.
+Kromě plánu vyhledávání se kontrola kompatibility aktualizací zahájila do 15 minut od restartování MMA, před instalací aktualizace a po instalaci aktualizace.
 
-Pro počítač s Linuxem se kontrola dodržování předpisů ve výchozím nastavení provádí každou hodinu. Pokud restartování agenta MMA, kontroly dodržování předpisů je zahájeno do 15 minut.
+U počítače se systémem Linux se kontrola dodržování předpisů provádí ve výchozím nastavení každou hodinu. Pokud se agent MMA restartuje, zahájí se kontrola kompatibility do 15 minut.
 
-Řešení podá zprávu o aktuálnosti počítače podle jakým zdrojem je nakonfigurované na synchronizaci se službou. Pokud počítač Windows je nakonfigurovaný tak, že sestavy do služby WSUS, podle toho, když WSUS poslední synchronizaci se službou Microsoft Update, výsledky mohou lišit od co ukazuje Microsoft Updates. Toto chování je stejná pro počítače s Linuxem, které jsou nakonfigurované k ukládání dat do místního úložiště namísto do veřejného úložiště.
+Řešení informuje o tom, jak aktuální počítač vychází ze zdroje, se kterým jste nakonfigurovali synchronizaci. Pokud je počítač s Windows nakonfigurovaný tak, aby hlásil službu WSUS, v závislosti na tom, kdy se služba WSUS naposledy synchronizoval s Microsoft Update, se výsledky můžou lišit od toho, co Microsoft Update zobrazuje. Toto chování je stejné pro počítače se systémem Linux, které jsou nakonfigurovány k hlášení do místního úložiště místo do veřejného úložiště.
 
 > [!NOTE]
-> Správně sestavy ve službě správy aktualizací vyžaduje určitých adres URL a portů, aby byla povolená. Další informace o těchto požadavcích najdete v tématu [sítě plánování pro hybridní pracovní procesy](automation-hybrid-runbook-worker.md#network-planning).
+> Aby bylo možné řádně ohlásit službu, Update Management vyžaduje, aby byly povoleny určité adresy URL a porty. Další informace o těchto požadavcích najdete v tématu [Plánování sítě pro hybridní pracovní procesy](automation-hybrid-runbook-worker.md#network-planning).
 
-Na počítače, které vyžadují aktualizace softwaru, můžete tyto aktualizace nasadit a nainstalovat tak, že vytvoříte plánované nasazení. Aktualizace klasifikované jako *volitelné* nejsou zahrnuté do oboru nasazení pro počítače s Windows. Pouze požadované aktualizace jsou součástí rozsahu nasazení.
+Na počítače, které vyžadují aktualizace softwaru, můžete tyto aktualizace nasadit a nainstalovat tak, že vytvoříte plánované nasazení. Aktualizace klasifikované jako *volitelné* nejsou zahrnuty v oboru nasazení pro počítače se systémem Windows. V rozsahu nasazení jsou zahrnuté jenom požadované aktualizace.
 
-Plánované nasazení definuje, které cílové počítače obdrží použitelné aktualizace, buď tak, že počítače explicitně zadáte, nebo tak, že vyberete [skupinu počítačů](../azure-monitor/platform/computer-groups.md) , který je založen na prohledávání protokolů konkrétní sady počítačů, nebo [Azure dotazu](#azure-machines) , která dynamicky vybere virtuálních počítačů Azure na základě zadaných kritérií. Tyto skupiny se liší od [konfiguraci oboru](../azure-monitor/insights/solution-targeting.md), který se používá jenom k určení, které počítače získat sady management Pack, které umožňují řešení. 
+Plánované nasazení definuje, které cílové počítače obdrží příslušné aktualizace, buď explicitním zadáním počítačů, nebo výběrem [skupiny počítačů](../azure-monitor/platform/computer-groups.md) , která je založená na hledání protokolu konkrétní sady počítačů, nebo pomocí [dotazu Azure](#azure-machines) . Tím se dynamicky vybraly virtuální počítače Azure na základě zadaných kritérií. Tyto skupiny se liší od [Konfigurace oboru](../azure-monitor/insights/solution-targeting.md), která se používá pouze k určení, které počítače získávají sady Management Pack umožňující řešení.
 
-Zadáte také plán pro schválení a nastavení určitou dobu, během které se můžou aktualizace instalovat. Tuto dobu se nazývá časové období údržby. Deset minut časového období údržby je vyhrazený pro restartování počítače, pokud je potřeba restartovat počítač a vyberete možnost odpovídající restartování. Pokud opravy trvá déle, než se očekávalo a je menší než deset minut časového období údržby, nedojde k restartování.
+Také zadáte plán, který schválíte a nastavíte časový úsek, během kterého lze aktualizace nainstalovat. Tato doba se nazývá časový interval pro správu a údržbu. Pokud je restartování nutné a vybrali jste vhodnou možnost restartování, je v časovém intervalu pro správu a údržbu vyrezervováno deset minut. Pokud provádění oprav trvá déle, než bylo očekáváno, a v časovém intervalu údržby je méně než deset minut, nebude k dispozici restart.
 
-Aktualizace se instalují podle runbooků ve službě Azure Automation. Nelze zobrazit tyto sady runbook a runbook nevyžadují žádnou konfiguraci. Při vytvoření nasazení aktualizace nasazení aktualizace vytvoří plán, který se spustí hlavní runbook aktualizace v zadanou dobu pro zahrnuté počítače. Hlavní runbook spouští podřízený runbook na každém agentovi k instalaci požadovaných aktualizací.
+Aktualizace se instalují podle runbooků ve službě Azure Automation. Tyto Runbooky nemůžete zobrazit a runbooky nevyžadují žádnou konfiguraci. Když se vytvoří nasazení aktualizace, vytvoří nasazení aktualizace plán, který spustí v zadaném čase pro zahrnuté počítače sadu Master Update Runbook. Hlavní runbook spouští podřízený Runbook na každém agentovi pro instalaci požadovaných aktualizací.
 
-Datum a čas zadaný v nasazení aktualizací cílové počítače paralelně spustit nasazení. Před instalací Chcete-li ověřit, že se aktualizace stále vyžadují spuštění kontroly. U klientských počítačů služby WSUS Pokud nejsou aktualizace schválené ve službě WSUS, nasazení aktualizace se nezdaří.
+V datu a čase zadaném v nasazení aktualizace spustí cílové počítače paralelně nasazení. Před instalací se spustí Kontrola, aby se ověřilo, že se aktualizace pořád vyžadují. V případě klientských počítačů služby WSUS, pokud aktualizace nejsou schváleny ve službě WSUS, nasazení aktualizace se nezdařilo.
 
-Máte na počítači registrován pro správu aktualizací ve více než jeden pracovní prostory Log Analytics (vícenásobné navádění) se nepodporuje.
+Počítač zaregistrovaný pro Update Management ve více než jednom pracovním prostoru Log Analytics (více domovských) se nepodporuje.
 
 ## <a name="clients"></a>Klienti
 
 ### <a name="supported-client-types"></a>Podporované klientské typy
 
-Následující tabulka uvádí seznam podporovaných operačních systémů:
+V následující tabulce je uveden seznam podporovaných operačních systémů:
 
 |Operační systém  |Poznámky  |
 |---------|---------|
-|Windows Server 2008, Windows Server 2008 R2 RTM    | Podporuje pouze aktualizovat posouzení.         |
-|Windows Server 2008 R2 SP1 a novější (včetně Windows serveru 2012 a 2016)    |Rozhraní .NET framework 4.5.1 nebo novější je povinný. ([Stáhnout rozhraní .NET Framework](/dotnet/framework/install/guide-for-developers))<br/> Vyžaduje se Windows PowerShell 4.0 nebo novější. ([Stáhnout WMF 4.0](https://www.microsoft.com/download/details.aspx?id=40855))<br/> Windows PowerShell 5.1 se doporučuje pro zvýšení spolehlivosti.  ([Stáhnout WMF 5.1](https://www.microsoft.com/download/details.aspx?id=54616))        |
-|CentOS 6 (x86/x64) a 7 (x64)      | Agenty Linux musí mít přístup k úložišti aktualizací. Podle klasifikace opravy vyžaduje "yumu" vrátit data zabezpečení, které CentOS nemá úprav. Další informace o klasifikaci založené na CentOS použití dílčích oprav, naleznete v tématu [aktualizace klasifikací v Linuxu](#linux-2)          |
+|Windows Server 2008, Windows Server 2008 R2 RTM    | Podporuje pouze posouzení aktualizací.         |
+|Windows Server 2008 R2 SP1 a novější.  |Vyžaduje se .NET Framework 4.5.1 nebo novější. ([Stáhnout .NET Framework](/dotnet/framework/install/guide-for-developers))<br/> Je vyžadován Windows PowerShell 4,0 nebo novější. ([Stáhnout WMF 4,0](https://www.microsoft.com/download/details.aspx?id=40855))<br/> Pro zvýšení spolehlivosti se doporučuje prostředí Windows PowerShell 5,1.  ([Stáhnout WMF 5,1](https://www.microsoft.com/download/details.aspx?id=54616))        |
+|CentOS 6 (x86/x64) a 7 (x64)      | Agenty Linux musí mít přístup k úložišti aktualizací. Oprava založená na klasifikaci vyžaduje, aby příkaz "Yumu" vracel data zabezpečení, která CentOS nejsou v poli. Další informace o opravách na základě klasifikace v CentOS najdete v tématu [klasifikace aktualizací v systému Linux](#linux-2) .          |
 |Red Hat Enterprise 6 (x86/x64) a 7 (x64)     | Agenty Linux musí mít přístup k úložišti aktualizací.        |
 |SUSE Linux Enterprise Server 11 (x86/x64) a 12 (x64)     | Agenty Linux musí mít přístup k úložišti aktualizací.        |
-|Ubuntu 14.04 LTS, 16.04 LTS a 18.04 (x86/x64)      |Agenty Linux musí mít přístup k úložišti aktualizací.         |
+|Ubuntu 14,04 LTS, 16,04 LTS a 18,04 (x86/x64)      |Agenty Linux musí mít přístup k úložišti aktualizací.         |
+
+> [!NOTE]
+> Sady škálování virtuálních počítačů Azure je možné spravovat pomocí Update Management. Update Management pracuje na samotných instancích a ne na základní imagi. Aktualizace budete muset naplánovat přírůstkově, protože neaktualizujete všechny instance virtuálních počítačů najednou.
 
 ### <a name="unsupported-client-types"></a>Nepodporované klientské typy
 
@@ -92,58 +98,58 @@ Následující tabulka uvádí operační systémy, které nejsou podporovány:
 
 #### <a name="windows"></a>Windows
 
-Agenti Windows musí být nakonfigurován pro komunikaci se serverem WSUS nebo musí mít přístup ke službě Microsoft Update. Update Management můžete použít s nástrojem System Center Configuration Manager. Další informace o scénářích integrace najdete v tématu [integrace System Center Configuration Manager s Update managementem](oms-solution-updatemgmt-sccmintegration.md#configuration). [Agenta Windows](../azure-monitor/platform/agent-windows.md) je povinný. Agent se nainstaluje automaticky, pokud jste připojení virtuálního počítače Azure.
+Agenti systému Windows musí být nakonfigurováni pro komunikaci se serverem WSUS nebo musí mít přístup k Microsoft Update. Update Management můžete použít s System Center Configuration Manager. Další informace o integračních scénářích najdete v tématu věnovaném [integraci System Center Configuration Manager s Update Management](oms-solution-updatemgmt-sccmintegration.md#configuration). [Agent pro Windows](../azure-monitor/platform/agent-windows.md) je povinný. Pokud se připojujete k virtuálnímu počítači Azure, Agent se nainstaluje automaticky.
 
 #### <a name="linux"></a>Linux
 
-Pro Linux musí mít tento počítač přístup k úložišti aktualizací. Úložiště aktualizací může být privátní nebo veřejné. K interakci s Update managementem se vyžaduje protokol TLS 1.1 a TLS 1.2. Toto řešení nepodporuje agenta Log Analytics pro Linux, který je nakonfigurovaný k ukládání dat do více než jeden pracovní prostory Log Analytics.
+Pro Linux musí mít počítač přístup k úložišti aktualizací. Úložiště aktualizací může být privátní nebo veřejné. K interakci s Update Management je potřeba protokol TLS 1,1 nebo TLS 1,2. V tomto řešení se nepodporuje agent Log Analytics pro Linux, který je nakonfigurovaný tak, aby hlásil do více než jednoho pracovního prostoru Log Analytics.
 
-Informace o instalaci agenta Log Analytics pro Linux a stáhněte si nejnovější verzi najdete v tématu [agenta Log Analytics pro Linux](https://github.com/microsoft/oms-agent-for-linux). Informace o tom, jak nainstalovat Log Analytics agenta pro Windows najdete v tématu [Microsoft Monitoring Agent pro Windows](../log-analytics/log-analytics-windows-agent.md).
+Informace o tom, jak nainstalovat agenta Log Analytics pro Linux a stáhnout nejnovější verzi, najdete v tématu [Log Analytics Agent pro Linux](https://github.com/microsoft/oms-agent-for-linux). Informace o tom, jak nainstalovat agenta Log Analytics pro Windows, najdete v tématu [Microsoft Monitoring Agent pro Windows](../log-analytics/log-analytics-windows-agent.md).
 
 ## <a name="permissions"></a>Oprávnění
 
-K vytváření a správě nasazení aktualizací, budete potřebovat určitá oprávnění. Další informace o těchto oprávnění najdete v tématu [přístupu podle rolí - Update Management](automation-role-based-access-control.md#update-management).
+Chcete-li vytvořit a spravovat nasazení aktualizací, potřebujete specifická oprávnění. Další informace o těchto oprávněních najdete v tématu [přístup na základě rolí – Update Management](automation-role-based-access-control.md#update-management).
 
 ## <a name="solution-components"></a>Součásti řešení
 
-Řešení se skládá z následujících prostředků. Prostředky se přidají do vašeho účtu Automation. Jsou to buď přímo připojených agentů nebo ve skupině pro správu Operations Manageru připojené.
+Řešení se skládá z následujících zdrojů. Prostředky se přidají do vašeho účtu Automation. Jsou buď přímo připojení agenti, nebo ve skupině pro správu připojené Operations Manager.
 
 ### <a name="hybrid-worker-groups"></a>Skupiny Hybrid Worker
 
-Když povolíte toto řešení, všechny Windows, na kterém je přímo připojený k pracovnímu prostoru Log Analytics se automaticky nakonfiguruje jako Hybrid Runbook Worker, aby podporoval runbooky, které jsou součástí tohoto řešení.
+Po povolení tohoto řešení se všechny počítače se systémem Windows, které jsou přímo připojené k vašemu pracovnímu prostoru Log Analytics, automaticky nakonfigurují jako Hybrid Runbook Worker pro podporu runbooků, které jsou součástí tohoto řešení.
 
-Každý počítač Windows, který je spravovaný tímto řešením je uveden v **skupiny hybridních pracovních procesů** podokně jako **skupina hybridních pracovních procesů systému** pro účet Automation. Řešení použít zásady vytváření názvů *název_hostitele FQDN_GUID*. Nelze cílit tyto skupiny se sadami runbook ve vašem účtu. Selžou, pokud se pokusíte. Tyto skupiny jsou určené pro podporu pouze do řešení pro správu.
+Každý počítač se systémem Windows, který je spravován řešením, je uveden v podokně **Hybrid Worker** Groups jako **systémová skupina hybridních pracovních procesů** pro účet Automation. Řešení používají konvenci pojmenování *názvu hostitele FQDN_GUID*. Tyto skupiny nemůžete cílit na tyto sady Runbook ve vašem účtu. Při pokusu dojde k chybě. Tyto skupiny jsou určené pro podporu pouze řešení pro správu.
 
-Počítače s Windows můžete přidat do skupiny Hybrid Runbook Worker ve vašem účtu Automation pro podporu runbooků Automation, pokud používáte stejný účet pro řešení a členství ve skupině Hybrid Runbook Worker. Tato funkce přidané ve verzi 7.2.12024.0 Hybrid Runbook Worker.
+Počítače s Windows můžete přidat do skupiny Hybrid Runbook Worker v účtu Automation, abyste mohli podporovat Runbooky Automation, pokud použijete stejný účet pro řešení i pro členství v Hybrid Runbook Worker skupině. Tato funkce se přidala do 7.2.12024.0 verze Hybrid Runbook Worker.
 
 ### <a name="management-packs"></a>Sady Management Pack
 
-Pokud vaší skupině pro správu System Center Operations Manageru je připojený k pracovnímu prostoru Log Analytics, nainstaluje se následující sady management Pack v nástroji Operations Manager. Tyto sady management Pack jsou také nainstalované na přímo připojené počítače s Windows, poté, co přidáte řešení. Není nutné konfigurovat ani spravovat tyto sady management Pack.
+Pokud je vaše skupina pro správu System Center Operations Manager připojená k pracovnímu prostoru Log Analytics, v Operations Manager se nainstalují následující sady Management Pack. Tyto sady Management Pack jsou také nainstalovány na přímo připojené počítače se systémem Windows po přidání řešení. Tyto sady Management Pack nemusíte konfigurovat ani spravovat.
 
 * Aktualizace Microsoft System Center Advisor Update Assessment Intelligence Pack (Microsoft.IntelligencePacks.UpdateAssessment)
 * Microsoft.IntelligencePack.UpdateAssessment.Configuration (Microsoft.IntelligencePack.UpdateAssessment.Configuration)
 * Aktualizace sady pro správu nasazení
 
 > [!NOTE]
-> Pokud máte skupinu pro správu Operations Manageru 1807 s agenty, nakonfigurována na úrovni skupiny pro správu chcete přidružit k pracovní prostor, aktuální řešení zobrazíte jejich zobrazení je k přepsání **IsAutoRegistrationEnabled** do **True** v **Microsoft.IntelligencePacks.AzureAutomation.HybridAgent.Init** pravidlo.
+> Pokud máte skupinu pro správu Operations Manager 1807 s agenty nakonfigurovanými na úrovni skupiny pro správu, které se mají přidružit k pracovnímu prostoru, aktuální alternativní řešení, které se zobrazí, je přepsat **IsAutoRegistrationEnabled** na **hodnotu true** v Pravidlo **Microsoft. IntelligencePacks. AzureAutomation. HybridAgent. init** .
 
-Další informace o způsobu aktualizace sad management Pack řešení najdete v tématu [připojení Operations Manageru do Azure monitoru protokoly](../azure-monitor/platform/om-agents.md).
+Další informace o tom, jak se aktualizují sady Management Pack řešení, najdete v tématu [připojení Operations Manager k Azure monitor protokolů](../azure-monitor/platform/om-agents.md).
 
 > [!NOTE]
-> Pro systémy s agentem Operations Manageru abyste mohli plně spravovat pomocí správy aktualizací, je zapotřebí agenta aktualizovat tak, aby Microsoft Monitoring Agent. Zjistěte, jak aktualizovat agenta, najdete v článku [postup upgradu agenta nástroje Operations Manager](https://docs.microsoft.com/system-center/scom/deploy-upgrade-agents). Pro prostředí pomocí nástroje Operations Manager, je vyžadován, že používáte System Center Operations Manager 2012 R2 UR 14 nebo novější.
+> Pro systémy s agentem Operations Manageru, které je možné plně spravovat pomocí Update Management, musí být agent aktualizovaný na Microsoft Monitoring Agent. Informace o tom, jak aktualizovat agenta, najdete v tématu [Postup upgradu agenta Operations Manager](https://docs.microsoft.com/system-center/scom/deploy-upgrade-agents). V prostředích, která používají Operations Manager, je potřeba, abyste spustili System Center Operations Manager 2012 R2 UR 14 nebo novějším.
 
-## <a name="onboard"></a>Povolení řešení Update Management
+## <a name="onboard"></a>Povolit Update Management
 
-Pokud chcete začít, opravami systémů, je potřeba povolit řešení Update Management. Existuje mnoho způsobů, jak připojit počítače k Update Management. Následující jsou doporučené a podporované způsoby začlenění řešení:
+Aby bylo možné začít opravovat systémy, je nutné povolit řešení Update Management. Existuje mnoho způsobů, jak počítače připojit k Update Management. Níže jsou doporučené a podporované způsoby připojení řešení:
 
 * [Z virtuálního počítače](automation-onboard-solutions-from-vm.md)
-* [Z procházení více počítačů](automation-onboard-solutions-from-browse.md)
-* [Ve svém účtu Automation](automation-onboard-solutions-from-automation-account.md)
-* [Pomocí runbooku Azure Automation](automation-onboard-solutions.md)
-  
-### <a name="confirm-that-non-azure-machines-are-onboarded"></a>Ověřte, zda připojení počítače mimo Azure
+* [Z prohlížení více počítačů](automation-onboard-solutions-from-browse.md)
+* [Z účtu Automation](automation-onboard-solutions-from-automation-account.md)
+* [S Azure Automation sadou Runbook](automation-onboard-solutions.md)
 
-Potvrďte, že jsou přímo připojené počítače nekomunikují s protokoly Azure monitoru, po několika minutách můžete spustit jeden následující prohledávání protokolů.
+### <a name="confirm-that-non-azure-machines-are-onboarded"></a>Potvrďte, že jsou připojené počítače mimo Azure.
+
+Pokud chcete potvrdit, že přímo připojené počítače komunikují s protokoly Azure Monitor, můžete po několika minutách spustit jednu z následujících možností prohledávání protokolu.
 
 #### <a name="linux"></a>Linux
 
@@ -159,22 +165,22 @@ Heartbeat
 | where OSType == "Windows" | summarize arg_max(TimeGenerated, *) by SourceComputerId | top 500000 by Computer asc | render table
 ```
 
-Na počítači s Windows můžete zkontrolovat ověřit připojení agenta k Azure Monitor protokoly následující informace:
+Na počítači s Windows můžete zkontrolovat následující informace a ověřit připojení agenta s protokoly Azure Monitor:
 
-1. V Ovládacích panelech otevřete **agenta Microsoft Monitoring Agent**. Na **Azure Log Analytics** agenta na kartě se zobrazí následující zpráva: **Microsoft Monitoring Agent se úspěšně připojila k Log Analytics**.
-2. Otevřete protokol událostí Windows. Přejděte na **Application and Services Logs\Operations Manager** a vyhledejte ID události 3000 a 5002 ID události ze zdroje **konektoru služby**. Tyto události značí, že počítač je zaregistrovaná s pracovním prostorem Log Analytics a přijímá konfiguraci.
+1. V Ovládacích panelech otevřete **Microsoft Monitoring Agent**. Na kartě **Azure Log Analytics** se v agentovi zobrazí následující zpráva: **Microsoft Monitoring Agent se úspěšně připojil k Log Analytics**.
+2. Otevřete protokol událostí systému Windows. V části **Application and Services Logs\Operations Manager** vyhledejte události ID 3000 a id události 5002 ze zdrojového **konektoru služby**. Tyto události signalizují, že je počítač zaregistrován v pracovním prostoru Log Analytics a přijímá konfiguraci.
 
-Pokud agent nemůže komunikovat se službou protokoly Azure monitoru a agent je nakonfigurován pro komunikaci s Internetem prostřednictvím brány firewall nebo proxy serveru, potvrďte, brána firewall nebo proxy serveru správně nakonfigurovaný. Zjistěte, jak ověřit správnou konfiguraci brány firewall nebo proxy serveru, najdete v článku [konfiguraci sítě pro agenta Windows](../azure-monitor/platform/agent-windows.md) nebo [konfigurace sítě pro linuxového agenta](../log-analytics/log-analytics-agent-linux.md).
+Pokud Agent nemůže komunikovat s protokoly Azure Monitor a Agent je nakonfigurován pro komunikaci s internetem prostřednictvím brány firewall nebo proxy server, ověřte, zda je správně nakonfigurována brána firewall nebo proxy server. Informace o tom, jak ověřit, jestli je brána firewall nebo proxy server správně nakonfigurovaná, najdete v tématu [Konfigurace sítě pro agenta Windows](../azure-monitor/platform/agent-windows.md) nebo [konfiguraci sítě pro agenta Linux](../log-analytics/log-analytics-agent-linux.md).
 
 > [!NOTE]
-> Pokud jsou vaše Linuxové systémy nakonfigurován pro komunikaci pomocí serveru proxy nebo brány Log Analytics a připojujete toto řešení, aktualizace *proxy.conf* oprávnění udělit skupině omiuser udělili oprávnění ho číst pomocí Následující příkazy:
+> Pokud jsou vaše systémy Linux nakonfigurované pro komunikaci s proxy serverem nebo Log Analytics bránou a připojujete se k tomuto řešení, aktualizujte *proxy. conf* oprávnění, které skupině omiuser udělí oprávnění ke čtení souboru pomocí následujících příkazů:
 >
 > `sudo chown omsagent:omiusers /etc/opt/microsoft/omsagent/proxy.conf`
 > `sudo chmod 644 /etc/opt/microsoft/omsagent/proxy.conf`
 
-Zobrazit stav nově přidaných agentů systému Linux **aktualizované** po provedení vyhodnocení. Tento proces může trvat až 6 hodin.
+Nově přidaní agenti Linux zobrazují po provedení posouzení stav **aktualizovaný** . Tento proces může trvat až 6 hodin.
 
-Pokud chcete potvrdit, že skupiny pro správu Operations Manageru komunikuje s protokoly Azure monitoru, naleznete v tématu [Operations Manageru ověřit integrace s protokoly Azure monitoru](../azure-monitor/platform/om-agents.md#validate-operations-manager-integration-with-azure-monitor).
+Pokud chcete ověřit, že skupina pro správu Operations Manager komunikuje s protokoly Azure Monitor, přečtěte si téma [ověření Operations Manager integrace s protokoly Azure monitor](../azure-monitor/platform/om-agents.md#validate-operations-manager-integration-with-azure-monitor).
 
 ## <a name="data-collection"></a>Shromažďování dat
 
@@ -184,64 +190,64 @@ Následující tabulka popisuje připojené zdroje, které podporují toto řeš
 
 | Připojený zdroj | Podporováno | Popis |
 | --- | --- | --- |
-| Agenti systému Windows |Ano |Řešení shromažďuje informace o aktualizacích systému pro agenty Windows a poté zahájí instalaci požadovaných aktualizací. |
-| Agenti systému Linux |Ano |Řešení shromažďuje informace o aktualizacích systému od agentů systému Linux a pak zahajuje instalaci požadovaných aktualizací v podporovaných distribucích. |
-| Skupina pro správu Operations Manageru |Ano |Řešení shromažďuje informace o aktualizacích systému z agentů v připojené skupině pro správu.<br/>Přímé připojení z agenta nástroje Operations Manager do protokolů Azure Monitor není povinné. Data se přesměrovávají ze skupiny pro správu do pracovního prostoru Log Analytics. |
+| Agenti systému Windows |Ano |Řešení shromažďuje informace o aktualizacích systému z agentů systému Windows a poté inicializuje instalaci požadovaných aktualizací. |
+| Agenti systému Linux |Ano |Řešení shromažďuje informace o aktualizacích systému od agentů systému Linux a následně inicializuje instalaci požadovaných aktualizací v podporovaných distribucích. |
+| Skupina pro správu Operations Manageru |Ano |Řešení shromažďuje informace o aktualizacích systému z agentů v připojené skupině pro správu.<br/>Přímé připojení od agenta Operations Manager do Azure Monitor protokolů není vyžadováno. Data se přesměrovávají ze skupiny pro správu do pracovního prostoru Log Analytics. |
 
 ### <a name="collection-frequency"></a>Četnost shromažďování dat
 
-Kontrola provádí dvakrát za den pro každý spravovaný počítač s Windows. Každých 15 minut se volá rozhraní Windows API dotazu na čas poslední aktualizace k určení, jestli se změnil stav. Pokud došlo ke změně stavu, zahájí se kontrola kompatibility.
+U každého spravovaného počítače se systémem Windows se kontrola provádí dvakrát denně. Každých 15 minut se volá rozhraní Windows API, které se dotazuje na čas poslední aktualizace, aby se zjistilo, jestli se změnil stav. Pokud se stav změnil, je zahájeno prohledávání dodržování předpisů.
 
-Kontrola provádí každou hodinu pro každý spravovaný počítač s Linuxem.
+Kontrola se provádí každou hodinu každého spravovaného počítače se systémem Linux.
 
-Může trvat 30 minut až 6 hodin na řídicím panelu zobrazí aktualizovaná data ze spravovaných počítačů.
+Může trvat 30 minut a 6 hodin, než se na řídicím panelu zobrazí aktualizovaná data ze spravovaných počítačů.
 
-Průměrné využití dat protokoly Azure monitoru pro počítače s pomocí správy aktualizací je přibližně 25MB za měsíc. Tato hodnota je pouze přibližný a může se změnit podle vašeho prostředí. Doporučuje se, že monitorovat vaše prostředí a přesně na používání, které máte.
+Průměrná Azure Monitor využití dat v protokolu pro počítač používající Update Management je přibližně 25 MB JAVASCRIPTOVÉHO měsíčně. Tato hodnota je pouze aproximace a podléhá změnám v závislosti na vašem prostředí. Doporučujeme vám monitorovat prostředí, abyste viděli přesné využití, které máte.
 
-## <a name="viewing-update-assessments"></a>Zobrazení posouzení aktualizací
+## <a name="viewing-update-assessments"></a>Zobrazit posouzení aktualizací
 
-Ve vašem účtu Automation vyberte **Update Management** zobrazíte stav svých počítačů.
+V účtu Automation vyberte **Update Management** a zobrazte stav vašich počítačů.
 
-Toto zobrazení poskytuje informace o počítačích, chybí aktualizace, nasazení aktualizací a plánovaná aktualizace nasazení. V **dodržování předpisů sloupec**, zobrazí se při posledním byl použit k vyhodnocení na počítači. V **aktualizovat připravenost agenta** sloupce, můžete zobrazit, pokud se stav aktualizace agenta. Pokud dochází k nějakému problému, vyberte na odkaz přejděte k řešení potíží s dokumentace, která může pomoci, že zjistíte, jaké kroky pro odstranění problému.
+Toto zobrazení poskytuje informace o vašich počítačích, chybějících aktualizacích, nasazeních aktualizací a plánovaných nasazeních aktualizací. Ve **sloupci dodržování předpisů**si můžete prohlédnout čas, kdy byl počítač naposledy vyhodnocen. Ve sloupci **připravenosti agenta aktualizace** můžete zjistit, zda stav agenta aktualizace. Pokud dojde k nějakému problému, vyberte odkaz pro řešení potíží, které vám pomůžou zjistit, jaké kroky je potřeba k vyřešení tohoto problému.
 
-Spustit hledání v protokolu, který vrací informace o počítači, aktualizace nebo nasazení, vyberte položku v seznamu. **Prohledávání protokolů** pomocí dotazu pro vybranou položku se otevře podokno:
+Pokud chcete spustit prohledávání protokolů, které vrátí informace o počítači, aktualizaci nebo nasazení, vyberte položku v seznamu. Otevře se podokno **prohledávání protokolu** s dotazem na vybranou položku:
 
-![Výchozí zobrazení Správa aktualizací](media/automation-update-management/update-management-view.png)
+![Update Management výchozí zobrazení](media/automation-update-management/update-management-view.png)
 
-## <a name="install-updates"></a>Instalace aktualizací
+## <a name="install-updates"></a>Instalovat aktualizace
 
-Po aktualizace se vyhodnocuje pro všechny systémy Linux a Windows počítače ve vašem pracovním prostoru, můžete nainstalovat požadované aktualizace vytvořením *nasazení aktualizací*. Pro vytvoření nasazení aktualizace, musí mít přístup pro zápis do účtu Automation a přístup pro zápis pro všechny virtuální počítače Azure, která je určená v nasazení. Nasazení aktualizací je plánovaná instalace požadovaných aktualizací pro jeden nebo více počítačů. Zadáte datum a čas pro nasazení a počítač nebo skupinu počítačů, které chcete zahrnout do oboru nasazení. Další informace o skupinách počítačů najdete v tématu [skupiny počítačů v Azure Monitor protokoly](../azure-monitor/platform/computer-groups.md).
+Po posouzení aktualizací pro všechny počítače se systémem Linux a Windows ve vašem pracovním prostoru můžete požadované aktualizace nainstalovat vytvořením *nasazení aktualizace*. Pokud chcete vytvořit nasazení aktualizace, musíte mít oprávnění k zápisu do účtu Automation a přístup pro zápis do všech virtuálních počítačů Azure, které jsou cílené na nasazení. Nasazení aktualizace je naplánovaná instalace požadovaných aktualizací pro jeden nebo více počítačů. Zadejte datum a čas nasazení a počítače nebo skupiny počítačů, které chcete zahrnout do rozsahu nasazení. Další informace o skupinách počítačů najdete v tématu [skupiny počítačů v protokolu Azure monitor](../azure-monitor/platform/computer-groups.md).
 
-Když do svého nasazení aktualizací zahrnete skupiny počítačů, členství ve skupině se vyhodnotí jenom jednou, v době vytvoření plánu. Následné změny ve skupině se neprojeví. K orientaci použijte [dynamické skupiny](#using-dynamic-groups), tyto skupiny jsou vyřešené v době nasazení a jsou definované v dotazu pro virtuální počítače Azure nebo uložené výsledky hledání pro virtuální počítače mimo Azure.
+Při zahrnutí skupin počítačů do nasazení aktualizace se členství ve skupině vyhodnotí pouze jednou, a to v době vytváření plánu. Následné změny skupiny se neprojeví. Pokud se chcete vyhnout tomuto používání [dynamických skupin](#using-dynamic-groups), jsou tyto skupiny vyřešeny v době nasazení a jsou definovány dotazem pro virtuální počítače Azure nebo uloženým hledáním pro virtuální počítače mimo Azure.
 
 > [!NOTE]
-> Windows virtuálních počítačů nasazených z Azure Marketplace ve výchozím nastavení jsou nastaveny na přijímání automatických aktualizací ze služby Windows Update. Toto chování se při přidání tohoto řešení nebo přidat virtuální počítače Windows do pracovního prostoru nezmění. Pokud aktualizace není aktivně spravovat pomocí tohoto řešení, použije se výchozí chování (Automatické aktualizace).
+> Virtuální počítače s Windows, které jsou nasazené z Azure Marketplace ve výchozím nastavení, jsou nastavené na příjem automatických aktualizací ze služby web Windows Update. Toto chování se nemění, když přidáte toto řešení nebo do svého pracovního prostoru přidáte virtuální počítače s Windows. Pokud nespravujete aktivně aktualizace pomocí tohoto řešení, platí výchozí chování (pro automatické použití aktualizací).
 
-Vyhněte se aktualizace používaly mimo časové období údržby v Ubuntu, změňte konfiguraci balíčku Unattended-Upgrade tak, aby automatické aktualizace. Informace o tom, jak nakonfigurovat balíček najdete v tématu [téma automatické aktualizace v příručce k Ubuntu serveru](https://help.ubuntu.com/lts/serverguide/automatic-updates.html).
+Pokud nechcete, aby se aktualizace používaly mimo časové období údržby v Ubuntu, překonfigurujte balíček bezobslužné aktualizace tak, aby nedocházelo k automatickým aktualizacím. Informace o tom, jak nakonfigurovat balíček, najdete [v tématu věnovaném automatickým aktualizacím v příručce k serveru Ubuntu](https://help.ubuntu.com/lts/serverguide/automatic-updates.html).
 
-Virtuální počítače vytvořené z imagí Red Hat Enterprise Linux (RHEL) na vyžádání, které jsou k dispozici na webu Azure Marketplace jsou registrované pro přístup [Red Hat Update Infrastructure (RHUI)](../virtual-machines/virtual-machines-linux-update-infrastructure-redhat.md) , která je nasazena v Azure. Všechny ostatní distribuce musí být aktualizované z úložiště online souborů distribuce podle podporované metody distribuce.
+Virtuální počítače vytvořené z imagí RHEL (na Red Hat Enterprise Linux vyžádání), které jsou k dispozici v Azure Marketplace, se registrují pro přístup k [infrastruktuře RHUI (Red Hat Update Infrastructure)](../virtual-machines/virtual-machines-linux-update-infrastructure-redhat.md) , která je nasazená v Azure. Jakákoli jiná distribuce systému Linux musí být aktualizována z online úložiště souborů distribuce pomocí podporovaných metod distribuce.
 
-Chcete-li vytvořit nové nasazení aktualizace, vyberte **naplánovat nasazení aktualizací**. **Nové nasazení aktualizace** otevře se stránka. Zadejte hodnoty vlastností popsaných v následující tabulce a potom klikněte na tlačítko **vytvořit**:
+Pokud chcete vytvořit nové nasazení aktualizace, vyberte **naplánovat nasazení aktualizací**. Otevře se stránka **nové nasazení aktualizace** . Zadejte hodnoty vlastností popsaných v následující tabulce a pak klikněte na **vytvořit**:
 
 | Vlastnost | Description |
 | --- | --- |
-| Název |Jedinečný název pro identifikaci nasazení aktualizace. |
+| Name |Jedinečný název pro identifikaci nasazení aktualizace. |
 |Operační systém| Linux nebo Windows|
-| Skupiny aktualizace |Pro počítače v Azure definujte dotaz na základě kombinace předplatného, skupiny prostředků, míst a značky vytvářet dynamické skupiny virtuálních počítačů Azure má zahrnout do vašeho nasazení. </br></br>Pro počítače mimo Azure vyberte existující uložené výsledky hledání a vyberte skupinu počítačů mimo Azure zahrnout do nasazení. </br></br>Další informace najdete v tématu [dynamické skupiny](automation-update-management.md#using-dynamic-groups)|
-| Počítače k aktualizaci |Vyberte uložená hledání, importované skupiny, nebo vybrat počítač z rozevíracího seznamu a vyberte jednotlivé počítače. Pokud zvolíte možnost **Počítače**, ve sloupci **PŘIPRAVENOST AGENTA AKTUALIZACE** se zobrazí připravenost počítačů.</br> Další informace o různých způsobech vytvoření skupiny počítačů v Azure Monitor protokolů, najdete v článku [skupiny počítačů v protokoly Azure monitoru](../azure-monitor/platform/computer-groups.md) |
-|Klasifikacích aktualizací|Vyberte všechny klasifikace aktualizací, které potřebujete|
-|Zahrnout nebo vyloučit aktualizace|Tím se otevře **zahrnout/vyloučit** stránky. Aktualizace, které se mají zahrnout nebo vyloučit jsou na samostatných kartách. Další informace o zpracování zařazení, naleznete v tématu [zahrnutí chování](automation-update-management.md#inclusion-behavior) |
-|Nastavení plánu|Vyberte čas spuštění a vyberte buď jednou nebo opakovaně pro opakování|
-| Předběžné skripty a pozálohovacích skriptů|Vyberte skripty spouštěné před a po nasazení|
-| Časové období údržby |Počet minut pro aktualizace. Hodnota nemůže být menší než 30 minut a maximálně 6 hodin |
-| Restartovat ovládacího prvku| Určuje, jak by měl být zpracována restartování počítače. Dostupné možnosti jsou:</br>Restartovat v případě potřeby (výchozí)</br>Vždy restartovat</br>Nikdy nerestartovat</br>Pouze restartovat – nenainstalují se aktualizace|
+| Skupiny, které se mají aktualizovat |V případě počítačů Azure definujte dotaz založený na kombinaci předplatného, skupin prostředků, umístění a značek, abyste vytvořili dynamickou skupinu virtuálních počítačů Azure, které chcete zahrnout do nasazení. </br></br>V případě počítačů mimo Azure vyberte existující uložené hledání a vyberte skupinu počítačů mimo Azure, které chcete zahrnout do nasazení. </br></br>Další informace najdete v tématu [dynamické skupiny](automation-update-management.md#using-dynamic-groups) .|
+| Počítače, které se mají aktualizovat |V rozevíracím seznamu vyberte uložené hledání, importovanou skupinu nebo vyberte možnost počítač a vyberte jednotlivé počítače. Pokud zvolíte možnost **Počítače**, ve sloupci **PŘIPRAVENOST AGENTA AKTUALIZACE** se zobrazí připravenost počítačů.</br> Další informace o různých metodách vytváření skupin počítačů v protokolu Azure Monitor najdete v tématu [skupiny počítačů v protokolech Azure monitor](../azure-monitor/platform/computer-groups.md) |
+|Klasifikace aktualizací|Vyberte všechny klasifikace aktualizací, které potřebujete.|
+|Zahrnout nebo vyloučit aktualizace|Tím se otevře stránka **zahrnutí/vyloučení** . Aktualizace, které se mají zahrnout nebo vyloučit jsou na samostatných kartách. Další informace o způsobu zpracování zahrnutí najdete v tématu věnovaném [chování při zahrnutí](automation-update-management.md#inclusion-behavior) . |
+|Nastavení plánu|Vyberte čas, kdy se má spustit, a pro opakování vyberte buď jednou, nebo opakovanou.|
+| Pre-Scripts + post-Scripts|Vyberte skripty, které se spustí před nasazením a po něm.|
+| Časové období údržby |Počet minut, po které se nastaví aktualizace. Hodnota nesmí být kratší než 30 minut a maximálně 6 hodin. |
+| Restartovat ovládací prvek| Určuje, jak by se mělo zpracovat restartování. Dostupné možnosti jsou:</br>Restartovat v případě potřeby (výchozí)</br>Vždy restartovat</br>Nikdy nerestartovat</br>Pouze restartovat – nenainstalují se aktualizace|
 
-Nasazení aktualizací můžete vytvořit také prostřednictvím kódu programu. Informace o vytvoření nasazení aktualizace pomocí rozhraní REST API najdete v tématu [vytvoření konfigurace aktualizace softwaru -](/rest/api/automation/softwareupdateconfigurations/create). Je také ukázkové sady runbook, který slouží k vytvoření týdenní aktualizace nasazení. Další informace o této sady runbook najdete v tématu [vytvořte týdenní nasazení aktualizací pro jeden nebo více virtuálních počítačů ve skupině prostředků](https://gallery.technet.microsoft.com/scriptcenter/Create-a-weekly-update-2ad359a1).
+Nasazení aktualizací lze také vytvořit programově. Informace o tom, jak vytvořit nasazení aktualizace pomocí REST API, najdete v tématu [Konfigurace aktualizací softwaru-vytvořit](/rest/api/automation/softwareupdateconfigurations/create). K dispozici je také Ukázková sada Runbook, kterou lze použít k vytvoření týdenního nasazení aktualizací. Další informace o této sadě Runbook najdete v tématu [Vytvoření týdenního nasazení aktualizací pro jeden nebo více virtuálních počítačů ve skupině prostředků](https://gallery.technet.microsoft.com/scriptcenter/Create-a-weekly-update-2ad359a1).
 
-### <a name="multi-tenant"></a>Nasazení aktualizací napříč tenanty
+### <a name="multi-tenant"></a>Nasazení aktualizací mezi klienty
 
-Pokud máte počítače v jiném tenantovi Azure, vytváření sestav správy aktualizací, které potřebujete k opravě, budete muset použít následující alternativní řešení zobrazíte je naplánované. Můžete použít [New-AzureRmAutomationSchedule](/powershell/module/azurerm.automation/new-azurermautomationschedule) rutiny s přepínačem `-ForUpdate` vytvoření plánu a použití [AzureRmAutomationSoftwareUpdateConfiguration nový](/powershell/module/azurerm.automation/new-azurermautomationsoftwareupdateconfiguration
-) rutiny a předejte mu v druhém tenantovi pro počítače `-NonAzureComputer` parametru. Následující příklad ukazuje příklad o tom, jak to udělat:
+Pokud máte počítače v jiném tenantovi Azure, které vám Update Management, že je potřeba opravit, musíte k jejich naplánování použít následující alternativní řešení. K vytvoření plánu můžete použít rutinu [New-AzureRmAutomationSchedule](/powershell/module/azurerm.automation/new-azurermautomationschedule) s `-ForUpdate` přepínačem a použít [rutinu New-AzureRmAutomationSoftwareUpdateConfiguration](/powershell/module/azurerm.automation/new-azurermautomationsoftwareupdateconfiguration
+) a předat počítače do druhé. do `-NonAzureComputer` parametru tenant. Následující příklad ukazuje příklad toho, jak to provést:
 
 ```azurepowershell-interactive
 $nonAzurecomputers = @("server-01", "server-02")
@@ -255,57 +261,57 @@ New-AzureRmAutomationSoftwareUpdateConfiguration  -ResourceGroupName $rg -Automa
 
 ## <a name="view-missing-updates"></a>Zobrazit chybějící aktualizace
 
-Vyberte **chybějící aktualizace** zobrazíte seznam aktualizací, které nebyly nalezeny z vašich počítačů. Jednotlivé aktualizace je uvedena v seznamu a lze vybrat. Informace o počtu počítačů, které vyžadují aktualizace, operační systém a odkaz Další informace se zobrazí. **Prohledávání protokolů** podokně se zobrazí další podrobnosti o aktualizacích.
+Vyberte **chybějící aktualizace** a zobrazte tak seznam aktualizací, které na vašich počítačích chybí. Každá aktualizace je uvedena a je možné ji vybrat. Zobrazí se informace o počtu počítačů, které vyžadují aktualizaci, o operačním systému a o odkazech. V podokně **prohledávání protokolu** se zobrazí další podrobnosti o aktualizacích.
 
-## <a name="view-update-deployments"></a>Zobrazení nasazení aktualizace
+## <a name="view-update-deployments"></a>Zobrazit nasazení aktualizací
 
-Vyberte **nasazení aktualizace** kartu, chcete-li zobrazit seznam existujících nasazení aktualizace. Vyberte některou z nasazení aktualizací v tabulce, čímž otevřete **aktualizovat spuštění nasazení** podokno pro toto nasazení aktualizace. Protokoly úlohy jsou uloženy pro mít délku maximálně 30 dnů.
+Vyberte kartu **nasazení aktualizací** , abyste zobrazili seznam existujících nasazení aktualizací. Vyberte libovolné nasazení aktualizací v tabulce a otevřete tak podokno **aktualizace nasazení aktualizací** pro toto nasazení aktualizace. Protokoly úloh se ukládají na maximum po dobu 30 dnů.
 
-![Přehled výsledků nasazení aktualizace](./media/automation-update-management/update-deployment-run.png)
+![Přehled výsledků nasazení aktualizací](./media/automation-update-management/update-deployment-run.png)
 
-Nasazení aktualizací z rozhraní REST API najdete v tématu [spuštění konfigurace aktualizace softwaru](/rest/api/automation/softwareupdateconfigurationruns).
+Pokud chcete zobrazit nasazení aktualizace z REST API, přečtěte si téma [spuštění konfigurace aktualizací softwaru](/rest/api/automation/softwareupdateconfigurationruns).
 
-## <a name="update-classifications"></a>Klasifikacích aktualizací
+## <a name="update-classifications"></a>Klasifikace aktualizací
 
-Klasifikacích aktualizací v Update Management s definicí pro každou klasifikaci v následujících tabulkách.
+V následujících tabulkách jsou uvedeny klasifikace aktualizací v Update Management s definicí pro každou klasifikaci.
 
 ### <a name="windows"></a>Windows
 
 |Klasifikace  |Popis  |
 |---------|---------|
-|Důležité aktualizace     | Aktualizaci pro určitý problém, která řeší kritickou nesouvisející zabezpečení chybu.        |
-|Aktualizace zabezpečení     | Aktualizaci pro problém se související se zabezpečením určitého produktu.        |
-|Kumulativní aktualizace     | Kumulativní sadu oprav hotfix spojených do balíčku pro snadné nasazení.        |
-|Balíčky funkcí     | Nové funkce produktu, distribuované mimo vydání produktu.        |
-|Aktualizace Service Pack     | Kumulativní sadu oprav hotfix, které se použijí pro aplikaci.        |
-|Aktualizace definic     | Aktualizace virů či jiných souborů definic.        |
-|Nástroje     | Nástroj nebo funkci sloužící dokončení jedné nebo několika úloh.        |
-|Aktualizace     | Aktualizace aplikace nebo souboru, který je nainstalován.        |
+|Důležité aktualizace     | Aktualizace pro určitý problém, která řeší kritickou chybu nesouvisející se zabezpečením.        |
+|Aktualizace zabezpečení     | Aktualizace pro problém související se zabezpečením určitého produktu.        |
+|Kumulativní aktualizace     | Kumulativní sada oprav hotfix, které jsou zabaleny dohromady pro snadné nasazení.        |
+|Balíčky funkcí     | Nové funkce produktu distribuované mimo vydání produktu.        |
+|Aktualizace Service Pack     | Kumulativní sada oprav hotfix, které se aplikují na aplikaci.        |
+|Aktualizace definic     | Aktualizace virů nebo jiných definičních souborů.        |
+|Nástroje     | Nástroj nebo funkce, které pomáhají dokončit jednu nebo více úloh.        |
+|Aktuální zprávy     | Aktualizace aplikace nebo souboru, který je aktuálně nainstalován.        |
 
-### <a name="linux"></a>Linux
+### <a name="linux-2"></a>Linux
 
 |Klasifikace  |Popis  |
 |---------|---------|
-|Důležité aktualizace a aktualizace zabezpečení     | Aktualizace pro určitý problém nebo problém se související se zabezpečením určitého produktu.         |
-|Další aktualizace     | Všechny další aktualizace, které nejsou zásadně důležité ze své podstaty nebo nejsou aktualizace zabezpečení.        |
+|Důležité aktualizace a aktualizace zabezpečení     | Aktualizace pro konkrétní problém nebo problém související se zabezpečením určitého produktu.         |
+|Další aktualizace     | Všechny ostatní aktualizace, které nejsou v podstatě důležité nebo nejsou aktualizace zabezpečení.        |
 
-Pro Linux, můžete správu aktualizací rozlišovat mezi důležité a aktualizace zabezpečení v cloudu a současně zobrazením dat hodnocení z důvodu rozšiřování dat v cloudu. Pro používání dílčích oprav, správu aktualizací závisí na klasifikaci dat na počítači k dispozici. Na rozdíl od jiné distribuce CentOS není nutné tyto informace k dispozici ihned. Pokud máte počítače CentOS nakonfigurované tak, aby vrátit data zabezpečení pro následující příkaz, správu aktualizací budou moci oprava podle klasifikace.
+V případě systému Linux může Update Management rozlišovat mezi kritickými a bezpečnostními aktualizacemi v cloudu a současně zobrazovat data posouzení z důvodu obohacení dat v cloudu. Pro opravy Update Management spoléhá na data klasifikace, která jsou k dispozici v počítači. Na rozdíl od jiných distribucí nemá CentOS k dispozici tyto informace v poli. Pokud máte počítače CentOS nakonfigurované tak, aby vracely data zabezpečení pro následující příkaz, Update Management bude možné provést opravy na základě klasifikací.
 
 ```bash
 sudo yum -q --security check-update
 ```
 
-Aktuálně neexistuje žádná metoda podporovaná metoda Povolit nativní klasifikace dat dostupnost na CentOS. V tuto chvíli je podporované jenom best effort pro zákazníky, kteří mohou povolili to sami.
+V tuto chvíli není podporovaná metoda, která umožňuje povolit nativní klasifikaci – dostupnost dat v CentOS. V tuto chvíli se zákazníkům, kteří si ji sami povolili, poskytne jenom osvědčená podpora.
 
-## <a name="firstparty-predownload"></a>Upřesňující nastavení
+## <a name="firstparty-predownload"></a>Rozšířená nastavení
 
-Správa aktualizací spoléhá na webu Windows Update ke stažení a instalaci aktualizací Windows. V důsledku toho respektujeme řadu nastavení aktualizace Windows. Pokud nastavení použijete, aby povolovala aktualizace mimo Windows, správu aktualizací, spravovat a tyto aktualizace. Pokud chcete povolit stahování aktualizace, než dojde k nasazení aktualizací, nasazení aktualizací můžete začít pracovat rychleji a méně pravděpodobné překročení časového období údržby.
+Update Management spoléhá na web Windows Update stažení a instalaci aktualizací Windows. V důsledku toho respektuje mnohá nastavení, která používá web Windows Update. Pokud použijete nastavení k povolení aktualizací jiných než Windows, Update Management bude tyto aktualizace spravovat taky. Pokud chcete povolit stahování aktualizací ještě před tím, než dojde k nasazení aktualizace, nasazení aktualizací může rychlejší a méně pravděpodobně překročit časový interval pro správu a údržbu.
 
-### <a name="pre-download-updates"></a>Náhled stahování aktualizací
+### <a name="pre-download-updates"></a>Předběžné stažení aktualizací
 
-Konfigurace automaticky stahování aktualizací v zásadách skupiny, můžete nastavit [nastavení konfigurace automatických aktualizací](/windows-server/administration/windows-server-update-services/deploy/4-configure-group-policy-settings-for-automatic-updates##configure-automatic-updates) k **3**. Stáhne aktualizace potřeba na pozadí, ale neinstaluje je. To zajišťuje Správa aktualizací v ovládacím prvku plánů, ale povolit aktualizace stáhnout mimo časové období údržby Update Management. To může zabránit **překročilo se časové období údržby** chyby v Update Management.
+Pokud chcete konfigurovat automatické stahování aktualizací v Zásady skupiny, můžete nastavit [nastavení konfigurace automatických aktualizací](/windows-server/administration/windows-server-update-services/deploy/4-configure-group-policy-settings-for-automatic-updates##configure-automatic-updates) na **3**. Tím se stáhnou aktualizace potřebné na pozadí, ale neinstalují se. Tím se zachovává Update Management kontroly plánů, ale aktualizace se můžou stahovat mimo Update Management časový interval pro správu a údržbu. To může zabránit tomu, aby časový **interval pro správu a údržbu překročil** chyby v Update Management.
 
-Můžete to také nastavit pomocí prostředí PowerShell, spusťte následující příkaz Powershellu v systému, které chcete automaticky – stahování aktualizací.
+Můžete ho také nastavit pomocí PowerShellu, spustit následující PowerShell v systému, ve kterém chcete automaticky stahovat aktualizace.
 
 ```powershell
 $WUSettings = (New-Object -com "Microsoft.Update.AutoUpdate").Settings
@@ -313,9 +319,9 @@ $WUSettings.NotificationLevel = 3
 $WUSettings.Save()
 ```
 
-### <a name="disable-automatic-installation"></a>Zakázat automatické instalace
+### <a name="disable-automatic-installation"></a>Zakázat automatickou instalaci
 
-Virtuální počítače Azure mají automatickou instalaci aktualizací ve výchozím nastavení povolená. To může způsobit předtím, než je možné nainstalovat Update Management naplánovat instalaci aktualizací. Toto chování lze zakázat nastavením `NoAutoUpdate` klíč registru, který `1`. Následující fragment kódu Powershellu ukazuje jeden způsob, jak to provést.
+Virtuální počítače Azure mají automatickou instalaci aktualizací, které jsou ve výchozím nastavení povolené. To může způsobit, že se aktualizace nainstalují předtím, než je naplánujete jejich instalaci pomocí Update Management. Toto chování můžete zakázat nastavením `NoAutoUpdate` klíče registru na. `1` Následující fragment kódu prostředí PowerShell vám ukáže jeden ze způsobů, jak to provést.
 
 ```powershell
 $AutoUpdatePath = "HKLM:SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU"
@@ -324,7 +330,7 @@ Set-ItemProperty -Path $AutoUpdatePath -Name NoAutoUpdate -Value 1
 
 ### <a name="enable-updates-for-other-microsoft-products"></a>Povolit aktualizace pro ostatní produkty Microsoftu
 
-Ve výchozím nastavení aktualizace Windows pouze poskytuje aktualizace pro Windows. Pokud povolíte **nabízet aktualizace pro ostatní produkty Microsoftu při aktualizaci Windows**, jsou součástí aktualizace ostatních produktů, včetně oprav zabezpečení pro SQL Server nebo jiný software první strany. Tuto možnost nelze konfigurovat pomocí zásad skupiny. Spusťte následující příkaz Powershellu v systémech, které chcete povolit jiné první strany opravy na a Update Management se případném dalším sdílení dodržovat tato nastavení.
+Ve výchozím nastavení web Windows Update poskytuje pouze aktualizace pro Windows. Pokud při **aktualizaci systému Windows povolíte aktualizace pro další produkty společnosti Microsoft**, máte k dispozici aktualizace pro další produkty, včetně oprav zabezpečení pro SQL Server nebo jiný software první strany. Tato možnost se nedá nakonfigurovat pomocí Zásady skupiny. Spusťte následující PowerShell v systémech, u kterých chcete povolit opravy na základě první strany, a Update Management bude toto nastavení akceptovat.
 
 ```powershell
 $ServiceManager = (New-Object -com "Microsoft.Update.ServiceManager")
@@ -333,42 +339,42 @@ $ServiceID = "7971f918-a847-4430-9279-4a52d1efe18d"
 $ServiceManager.AddService2($ServiceId,7,"")
 ```
 
-## <a name="third-party"></a> Opravy třetích stran ve Windows
+## <a name="third-party"></a>Opravy třetích stran ve Windows
 
-Správa aktualizací spoléhá na úložiště místně nakonfigurované aktualizací na opravu podporované systémy Windows. Toto je WSUS nebo Windows Update. Nástroje, jako je [System Center Updates Publisher](/sccm/sum/tools/updates-publisher
-) (Updates Publisher) umožní publikovat vlastní aktualizace do služby WSUS. Tento scénář umožňuje aktualizovat správu počítačů opravy, které pomocí System Center Configuration Manager jako jejich úložiště aktualizací se softwarem třetích stran. Informace o konfiguraci nástroje Updates Publisher najdete v tématu [nainstalovat Updates Publisher](/sccm/sum/tools/install-updates-publisher).
+Update Management spoléhá na místně nakonfigurované úložiště aktualizací, které opraví podporované systémy Windows. Toto je buď služba WSUS, nebo web Windows Update. Nástroje, [jako](/sccm/sum/tools/updates-publisher
+) je System Center Updates Publisher (Updates Publisher), umožňují publikovat vlastní aktualizace služby WSUS. Tento scénář umožňuje Update Management opravit počítače, které používají System Center Configuration Manager jako úložiště aktualizací se softwarem třetích stran. Informace o tom, jak nakonfigurovat aplikaci Updates Publisher, najdete v tématu [install Updates Publisher](/sccm/sum/tools/install-updates-publisher).
 
 ## <a name="ports"></a>Plánování sítě
 
-Tyto adresy jsou požadovány speciálně pro správu aktualizací. Probíhá komunikace na tyto adresy přes port 443.
+Následující adresy jsou vyžadovány konkrétně pro Update Management. Komunikace s těmito adresami probíhá přes port 443.
 
-|Azure Public  |Azure Government  |
+|Veřejné Azure  |Azure Government  |
 |---------|---------|
 |*.ods.opinsights.azure.com     |*.ods.opinsights.azure.us         |
 |*.oms.opinsights.azure.com     | *.oms.opinsights.azure.us        |
 |*.blob.core.windows.net|*.blob.core.usgovcloudapi.net|
-|*.azure-automation.net|*.azure-automation.us|
+|*.azure-automation.net|*. azure-automation.us|
 
-Další informace o portech, které vyžaduje, aby Hybrid Runbook Worker, naleznete v tématu [porty role Hybrid Worker](automation-hybrid-runbook-worker.md#hybrid-worker-role).
+Další informace o portech, které Hybrid Runbook Worker vyžaduje, najdete v tématu [porty rolí Hybrid Worker](automation-hybrid-runbook-worker.md#hybrid-worker-role).
 
-Doporučuje se použít adresy, které uvedete při definování výjimky. Pro IP adresy, které si můžete stáhnout [Microsoft Azure rozsahů IP adres Datacentra](https://www.microsoft.com/download/details.aspx?id=41653). Tento soubor se každý týden aktualizuje a zobrazuje aktuálně nasazené rozsahy a všechny nadcházející změny rozsahů IP adres.
+Doporučuje se používat adresy uvedené při definování výjimek. Pro IP adresy můžete stáhnout [Microsoft Azure rozsahy IP adres datového centra](https://www.microsoft.com/download/details.aspx?id=41653). Tento soubor se aktualizuje týdně a odráží aktuálně nasazené rozsahy a všechny nadcházející změny rozsahu IP adres.
 
-## <a name="search-logs"></a>Hledání protokolů
+## <a name="search-logs"></a>Hledat protokoly
 
-Kromě podrobností, které jsou k dispozici na webu Azure Portal můžete provést hledání v protokolech. Na stránce řešení vyberte **Log Analytics**. **Prohledávání protokolů** se otevře podokno.
+Kromě podrobností, které jsou k dispozici v Azure Portal, můžete hledat v protokolech. Na stránkách řešení vyberte **Log Analytics**. Otevře se podokno **prohledávání protokolu** .
 
-Můžete se také dozvíte, jak upravit dotazy nebo je používat od různých klientů a víc návštěvou:  [Dokumentace k rozhraní API hledání log Analytics](
-https://dev.loganalytics.io/).
+Můžete se také seznámit s postupem přizpůsobení dotazů nebo jejich použití od různých klientů a dalších návštěv:  [Dokumentace k](
+https://dev.loganalytics.io/)rozhraní API pro hledání Log Analytics.
 
 ### <a name="sample-queries"></a>Ukázkové dotazy
 
-Ukázkové dotazy protokolu pro záznamy aktualizace shromážděné tímto řešením v následujících částech:
+V následujících částech najdete ukázky dotazů na protokoly aktualizací, které jsou shromážděné tímto řešením:
 
-#### <a name="single-azure-vm-assessment-queries-windows"></a>Dotazy na jeden posouzení virtuálních počítačů Azure (Windows)
+#### <a name="single-azure-vm-assessment-queries-windows"></a>Dotazy na vyhodnocení pro jeden virtuální počítač Azure (Windows)
 
-Nahraďte hodnotu VMUUID identifikátor GUID virtuálního počítače z virtuálního počítače, který dotazujete. Můžete najít VMUUID, který se má použít spuštěním následujícího dotazu v protokolech Azure Monitor: `Update | where Computer == "<machine name>" | summarize by Computer, VMUUID`
+Hodnotu VMUUID nahraďte identifikátorem GUID virtuálního počítače, na který se dotaz provádí. VMUUID, která se má použít, můžete najít spuštěním následujícího dotazu v protokolech Azure Monitor:`Update | where Computer == "<machine name>" | summarize by Computer, VMUUID`
 
-##### <a name="missing-updates-summary"></a>Chybějící aktualizace souhrnu
+##### <a name="missing-updates-summary"></a>Chybějící souhrn aktualizací
 
 ```loganalytics
 Update
@@ -393,12 +399,12 @@ Update
 | project-away ClassificationWeight, InformationId, InformationUrl
 ```
 
-#### <a name="single-azure-vm-assessment-queries-linux"></a>Posouzení dotazy jeden virtuální počítač Azure (Linux)
+#### <a name="single-azure-vm-assessment-queries-linux"></a>Dotazy na posuzování virtuálních počítačů Azure (Linux)
 
-U některých distribucích systému Linux existuje [endianitou](https://en.wikipedia.org/wiki/Endianness) neshoda s VMUUID hodnotu, která pochází z Azure Resource Manageru a co je uložené v protokolech Azure Monitor. Následující dotaz vyhledává shoda s buď ukládání významných bajtů. Nahraďte hodnoty VMUUID formát big-endian a little endian formát čísla GUID správně vrátit výsledky. Můžete najít VMUUID, který se má použít spuštěním následujícího dotazu v protokolech Azure Monitor: `Update | where Computer == "<machine name>"
+U některých Linux distribuce se [neshoduje](https://en.wikipedia.org/wiki/Endianness) s hodnotou VMUUID, která pochází z Azure Resource Manager a co je uložená v protokolech Azure monitor. Následující dotaz vyhledá shodu na základě typu endian. Vyměňte hodnoty VMUUID pomocí formátu big-endian a little endian identifikátoru GUID, aby byly výsledky vráceny správně. VMUUID, která se má použít, můžete najít spuštěním následujícího dotazu v protokolech Azure Monitor:`Update | where Computer == "<machine name>"
 | summarize by Computer, VMUUID`
 
-##### <a name="missing-updates-summary"></a>Chybějící aktualizace souhrnu
+##### <a name="missing-updates-summary"></a>Chybějící souhrn aktualizací
 
 ```loganalytics
 Update
@@ -424,7 +430,7 @@ Update
 
 ```
 
-#### <a name="multi-vm-assessment-queries"></a>Dotazy posouzení více virtuálních počítačů
+#### <a name="multi-vm-assessment-queries"></a>Dotazy k vyhodnocení pro více virtuálních počítačů
 
 ##### <a name="computers-summary"></a>Souhrn počítačů
 
@@ -468,7 +474,7 @@ on SourceComputerId
 
 ```
 
-##### <a name="missing-updates-summary"></a>Chybějící aktualizace souhrnu
+##### <a name="missing-updates-summary"></a>Chybějící souhrn aktualizací
 
 ```loganalytics
 Update
@@ -567,86 +573,86 @@ Update
 | project-away ClassificationWeight, InformationId, InformationUrl
 ```
 
-## <a name="using-dynamic-groups"></a>Používat dynamické skupiny
+## <a name="using-dynamic-groups"></a>Používání dynamických skupin
 
-Správa aktualizací umožňuje cílit na dynamické skupiny Azure nebo virtuální počítače mimo Azure pro nasazení aktualizací. Tyto skupiny jsou vyhodnoceny v době nasazení, takže není potřeba upravit vaše nasazení se přidat počítače.
+Update Management poskytuje možnost cílit na dynamickou skupinu virtuálních počítačů Azure nebo mimo Azure pro nasazení aktualizací. Tyto skupiny jsou vyhodnocovány v době nasazení, takže není nutné upravovat nasazení, aby bylo možné přidat počítače.
 
 > [!NOTE]
-> Při vytvoření nasazení aktualizace, musí mít příslušná oprávnění. Další informace najdete v tématu [instalovat aktualizace](#install-updates).
+> Při vytváření nasazení aktualizace musíte mít správná oprávnění. Další informace najdete v tématu [instalace aktualizací](#install-updates).
 
 ### <a name="azure-machines"></a>Počítače Azure
 
-Tyto skupiny jsou definované v dotazu po zahájení nasazení aktualizací, členové této skupiny jsou vyhodnocovány. Dynamické skupiny nefungují s klasické virtuální počítače. Při definování vašeho dotazu, následující položky lze použít společně a naplnit dynamickou skupinu
+Tyto skupiny jsou definovány dotazem, když je zahájeno nasazení aktualizace, členové této skupiny budou vyhodnocováni. Dynamické skupiny nefungují s klasickými virtuálními počítači. Při definování dotazu lze společně použít následující položky k naplnění dynamické skupiny.
 
-* Předplatné
+* Subscription
 * Skupiny prostředků
 * Umístění
 * Tags
 
-![Vybrat skupiny](./media/automation-update-management/select-groups.png)
+![Výběr skupin](./media/automation-update-management/select-groups.png)
 
-Zobrazení náhledu na výsledky dynamické skupiny, klikněte na tlačítko **ve verzi Preview** tlačítko. Tento náhled zobrazuje členství ve skupině v tuto chvíli v tomto příkladu jsme se hledaný pro počítače se značkou **Role** rovná **BackendServer**. Pokud se tato značka přidá mají další počítače, budou přidány pro všechny budoucí nasazení pro tuto skupinu.
+Chcete-li zobrazit náhled výsledků dynamické skupiny, klikněte na tlačítko **Náhled** . V této verzi Preview se v této době zobrazuje členství ve skupině. v tomto příkladu hledáme počítače s **rolí** značek, které se rovnají **BackendServer**. Pokud se tato značka přidá do dalších počítačů, přidají se do všech budoucích nasazení v této skupině.
 
-![skupiny ve verzi Preview](./media/automation-update-management/preview-groups.png)
+![skupiny náhledu](./media/automation-update-management/preview-groups.png)
 
 ### <a name="non-azure-machines"></a>Počítače mimo Azure
 
-Pro mimo Azure počítače uložená hledání také označuje jako skupiny počítačů se používají k vytvoření dynamické skupiny. Zjistěte, jak vytvořit uložené výsledky hledání, najdete v článku [vytvořit skupinu počítačů](../azure-monitor/platform/computer-groups.md#creating-a-computer-group). Po vytvoření skupiny ho můžete vybrat ze seznamu uložených hledání. Klikněte na tlačítko **ve verzi Preview** na počítačích v uložené výsledky hledání v tuto chvíli ve verzi preview.
+Pro počítače, které nejsou v Azure, se při vytváření dynamické skupiny používají taky uložená hledání, která se označují jako skupiny počítačů. Informace o tom, jak vytvořit uložené hledání, najdete v tématu [Vytvoření skupiny počítačů](../azure-monitor/platform/computer-groups.md#creating-a-computer-group). Po vytvoření skupiny ji můžete vybrat ze seznamu uložených hledání. Kliknutím na **Náhled** zobrazíte v daném čase počítače v uloženém hledání.
 
-![Vybrat skupiny](./media/automation-update-management/select-groups-2.png)
+![Výběr skupin](./media/automation-update-management/select-groups-2.png)
 
 ## <a name="integrate-with-system-center-configuration-manager"></a>Integrace se System Center Configuration Managerem
 
-Zákazníci, kteří investovali do System Center Configuration Manager pro správu počítačů, serverů a mobilních zařízení také využívají sílu a další přednosti nástroje Configuration Manager k usnadnění správy aktualizací softwaru. Nástroj Configuration Manager je součástí jejich software cyklu správy aktualizací (SUM).
+Zákazníci, kteří investovali do System Center Configuration Manager pro správu počítačů, serverů a mobilních zařízení, spoléhají také na sílu a splatnost Configuration Manager, které jim pomohou při správě aktualizací softwaru. Configuration Manager je součástí cyklu správy aktualizací softwaru (SUM).
 
-Zjistěte, jak integrovat do řešení pro správu pomocí nástroje System Center Configuration Manager, najdete v článku [integrace System Center Configuration Manager s Update managementem](oms-solution-updatemgmt-sccmintegration.md).
+Informace o tom, jak integrovat řešení pro správu pomocí System Center Configuration Manager, najdete v tématu věnovaném [integraci System Center Configuration Manager s Update Management](oms-solution-updatemgmt-sccmintegration.md).
 
-## <a name="inclusion-behavior"></a>Zahrnutí chování
+## <a name="inclusion-behavior"></a>Chování při zahrnutí
 
-Zahrnutí aktualizací můžete zadat konkrétní aktualizace použít. Jsou nainstalované opravy nebo balíčky, které jsou zahrnuty. Při balíčky nebo opravy jsou součástí a klasifikaci je také vybrána, nainstaluje se zahrnuté položky i položky, které splňují klasifikace.
+Zařazení aktualizace umožňuje zadat konkrétní aktualizace, které se mají použít. Jsou nainstalovány opravy nebo balíčky, které jsou součástí produktu. Když jsou zahrnuté opravy nebo balíčky a zároveň se vybere klasifikace, nainstalují se i zahrnuté položky a položky, které odpovídají této klasifikaci.
 
-Je důležité vědět, že vyloučení přepsat zahrnutí. Například pokud definujete pravidla vyloučení z `*`, pak žádné opravy nebo balíčky jsou nainstalovány jako že jsou všechny vyloučené. Vyloučené opravy stále zobrazují jako chybějící z počítače. Pro počítače s Linuxem v případě, že balíček je součástí, ale má závislý balíček, který byl vyloučen, že balíček není nainstalovaný.
+Je důležité, abyste věděli, že vyloučení přepisují. Pokud například definujete pravidlo `*`vyloučení, nebudou nainstalovány žádné opravy ani balíčky, protože všechny jsou vyloučené. Vyloučené opravy se pořád na počítači zobrazují jako chybějící. Pro počítače se systémem Linux, pokud je zahrnut balíček, ale obsahuje závislý balíček, který byl vyloučen, není balíček nainstalován.
 
-## <a name="patch-linux-machines"></a>Počítače s Linuxem opravy
+## <a name="patch-linux-machines"></a>Oprava počítačů se systémem Linux
 
-Následující části popisují možné problémy s Linuxem opravy.
+Následující části vysvětlují možné problémy s opravami systému Linux.
 
 ### <a name="unexpected-os-level-upgrades"></a>Neočekávané upgrady na úrovni operačního systému
 
-Na některé varianty Linuxu, jako je Red Hat Enterprise Linux může dojít k upgradu na úrovni operačního systému prostřednictvím balíčků. Může to vést ke spuštění správy aktualizací ve kterém se mění číslo verze operačního systému. Protože Update Management používá stejné metody aktualizovat balíčky, které správce byste použili místně na počítači s Linuxem, toto chování je záměrné.
+U některých variant systému Linux, například Red Hat Enterprise Linux, může dojít k upgradům na úrovni operačního systému prostřednictvím balíčků. To může vést k tomu, Update Management spustí, kde se změní číslo verze operačního systému. Vzhledem k tomu, že Update Management používá stejné metody k aktualizaci balíčků, které by správce použil místně na počítači se systémem Linux, je toto chování záměrné.
 
-Pokud chcete vyhnout, aktualizace verze operačního systému pomocí správy aktualizací spuštění, použijte **vyloučení** funkce.
+Chcete-li se vyhnout aktualizaci verze operačního systému pomocí Update Management spuštění, použijte funkci **vyloučení** .
 
-V Red Hat Enterprise Linux je název balíčku pro vyloučení redhat-release-server.x86_64.
+V Red Hat Enterprise Linux je název balíčku, který se má vyloučit, RedHat-Release-Server. x86_64.
 
-![Balíčky pro vyloučení pro Linux](./media/automation-update-management/linuxpatches.png)
+![Balíčky, které se mají vyloučit pro Linux](./media/automation-update-management/linuxpatches.png)
 
-### <a name="critical--security-patches-arent-applied"></a>Kritické / opravy zabezpečení se nepoužijí.
+### <a name="critical--security-patches-arent-applied"></a>Důležité opravy/opravy zabezpečení nejsou aplikovány
 
-Když nasazujete aktualizace do počítače s Linuxem, můžete vybrat klasifikace aktualizací. Tím se vyfiltrují aktualizace, které se použijí pro počítače, které splňují zadaná kritéria. Tento filtr je použit místně na počítači, při nasazení aktualizace.
+Když nasadíte aktualizace na počítač se systémem Linux, můžete vybrat možnost klasifikace aktualizací. Tím se vyfiltrují aktualizace, které se aplikují na počítač, který splňuje zadaná kritéria. Tento filtr se použije lokálně na počítači při nasazení aktualizace.
 
-Protože Update Management se provede aktualizace rozšíření v cloudu, některé aktualizace může být označen jako v Update Management tak, že má dopad na zabezpečení, i když v místním počítači nemá těchto informací. V důsledku toho pokud použijete důležité aktualizace pro počítač s Linuxem, může existovat aktualizace, které nejsou označeny tak, že má dopad na zabezpečení, počítači a aktualizace se nepoužijí.
+Vzhledem k tomu, že Update Management provádí obohacení aktualizace v cloudu, můžou být některé aktualizace příznakem v Update Management s dopadem na zabezpečení, a to i v případě, že místní počítač tyto informace nemá. V důsledku toho, pokud použijete důležité aktualizace na počítači se systémem Linux, může dojít k aktualizacím, které nejsou označeny jako bezpečnostní dopad na tento počítač a aktualizace se nepoužijí.
 
-Update Management však stále hlásit tohoto počítače, jako je nedodržují předpisy, protože obsahuje další informace o příslušné aktualizace.
+Update Management ale přesto může tento počítač ohlásit jako nevyhovující předpisům, protože obsahuje další informace o příslušné aktualizaci.
 
-Nasazení aktualizací podle klasifikace aktualizací nebude fungovat na CentOS úprav. Správně nasazení aktualizací pro CentOS, vyberte všechny klasifikace k zajištění, že se mají aktualizace instalovat. Pro SUSE vyberete *pouze* jiné aktualizace klasifikace může vést k některé zabezpečení aktualizuje také nainstalované Pokud aktualizace zabezpečení související s zypperu (Správce balíčků) nebo jeho závislosti jsou požadovány nejprve. Toto chování se o omezení zypperu. V některých případech je může být nutné znovu spustit nasazení aktualizace. Pokud chcete ověřit, zkontrolujte protokol aktualizace.
+Nasazení aktualizací podle klasifikace aktualizací nefunguje na CentOS. Pokud chcete správně nasadit aktualizace pro CentOS, vyberte všechny klasifikace, abyste měli jistotu, že se aktualizace aplikují. Pro SUSE vyberte *jenom* jiné aktualizace, protože klasifikace může vést k tomu, že se nainstalují taky některé aktualizace zabezpečení, pokud se jako první vyžaduje aktualizace zabezpečení související s zypperu (Správce balíčků) nebo její závislosti. Toto chování je omezení zypperu. V některých případech může být nutné znovu spustit nasazení aktualizace. Chcete-li ověřit, zkontrolujte protokol aktualizace.
 
-## <a name="remove-a-vm-from-update-management"></a>Odebrání virtuálního počítače ze správy aktualizací
+## <a name="remove-a-vm-from-update-management"></a>Odebrání virtuálního počítače z Update Management
 
-Odebrání virtuálního počítače ze správy aktualizací:
+Odebrání virtuálního počítače z Update Management:
 
-* V pracovním prostoru Log Analytics, odeberte virtuální počítač z uloženého hledání pro konfiguraci oboru `MicrosoftDefaultScopeConfig-Updates`. Uložená hledání najdete v části **Obecné** ve vašem pracovním prostoru.
-* Odeberte [Microsoft Monitoring agent](../azure-monitor/learn/quick-collect-windows-computer.md#clean-up-resources) nebo [agenta Log Analytics pro Linux](../azure-monitor/learn/quick-collect-linux-computer.md#clean-up-resources).
+* Ve vašem pracovním prostoru Log Analytics odeberte virtuální počítač z uloženého hledání pro konfiguraci `MicrosoftDefaultScopeConfig-Updates`oboru. Uložená hledání najdete v části **Obecné** v pracovním prostoru.
+* Odeberte [agenta Microsoft Monitoring Agent](../azure-monitor/learn/quick-collect-windows-computer.md#clean-up-resources) nebo [agenta Log Analytics pro Linux](../azure-monitor/learn/quick-collect-linux-computer.md#clean-up-resources).
 
 ## <a name="next-steps"></a>Další postup
 
-Pokračujte ke kurzu se naučíte spravovat aktualizace pro virtuální počítače s Windows.
+Přejděte k kurzu, kde se dozvíte, jak spravovat aktualizace pro virtuální počítače s Windows.
 
 > [!div class="nextstepaction"]
 > [Správa aktualizací a oprav pro virtuální počítače Azure s Windows](automation-tutorial-update-management.md)
 
-* Použijte hledání v protokolu [protokoly Azure monitoru](../log-analytics/log-analytics-log-searches.md) k zobrazení podrobných údajů o aktualizaci.
-* [Vytvořit upozornění](automation-tutorial-update-management.md#configure-alerts) stav nasazení aktualizace.
+* K zobrazení podrobných dat aktualizace použijte prohledávání protokolů v protokolu [Azure monitor](../log-analytics/log-analytics-log-searches.md) .
+* [Vytvořte výstrahy](automation-tutorial-update-management.md#configure-alerts) pro stav nasazení aktualizace.
 
-* Zjistěte, jak pracovat s Update managementem přes rozhraní REST API, najdete v článku [konfigurace aktualizace softwaru](/rest/api/automation/softwareupdateconfigurations)
-* Zjistěte, jak řešení Update Management, najdete v článku [řešení potíží se správou aktualizací](troubleshoot/update-management.md)
+* Další informace o tom, jak pracovat s Update Management přes REST API, najdete v tématu [Konfigurace aktualizací softwaru](/rest/api/automation/softwareupdateconfigurations) .
+* Další informace o řešení potíží s Update Management najdete v tématu [řešení potíží Update Management](troubleshoot/update-management.md)

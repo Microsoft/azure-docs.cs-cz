@@ -1,41 +1,36 @@
 ---
-title: Azure Cloud Services Def. Schéma LoadBalancerProbe | Dokumentace Microsoftu
+title: Azure Cloud Services def. LoadBalancerProbe schéma | Microsoft Docs
 ms.custom: ''
 ms.date: 04/14/2015
 services: cloud-services
-ms.reviewer: ''
 ms.service: cloud-services
-ms.suite: ''
-ms.tgt_pltfrm: ''
 ms.topic: reference
-ms.assetid: 113374a8-8072-4994-9d99-de391a91e6ea
 caps.latest.revision: 14
-author: jpconnock
-ms.author: jeconnoc
-manager: timlt
-ms.openlocfilehash: de365de7bf93c0a612f102b3ec2b25c79d1c3d18
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+author: georgewallace
+ms.author: gwallace
+ms.openlocfilehash: 6f82406772f650b4565f2c9240efe580545dcad9
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60613860"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68360600"
 ---
-# <a name="azure-cloud-services-definition-loadbalancerprobe-schema"></a>Azure Cloud Services Definition LoadBalancerProbe Schema
-Test paměti nástroje pro vyrovnávání zatížení je sondu stavu definované odběratele koncové body protokolu UDP a koncových bodů v instancích rolí. `LoadBalancerProbe` Není samostatný prvek; se zkombinuje s webovou roli nebo roli pracovního procesu v definičním souboru služby. A `LoadBalancerProbe` mohou být využívána více než jednu roli.
+# <a name="azure-cloud-services-definition-loadbalancerprobe-schema"></a>LoadBalancerProbe schéma definice Azure Cloud Services
+Test nástroje pro vyrovnávání zatížení je sonda stavu definovaná zákazníkem koncových bodů a koncových bodů UDP v instancích rolí. `LoadBalancerProbe` Nejedná se o samostatný element; v kombinaci s webovou rolí nebo rolí pracovního procesu v definičním souboru služby. `LoadBalancerProbe` Může být použit více než jednou rolí.
 
-Výchozí přípona pro definiční soubor služby je .csdef.
+Výchozí přípona souboru definice služby je. csdef.
 
-## <a name="the-function-of-a-load-balancer-probe"></a>Funkce kontroly nástroje pro vyrovnávání zatížení
-Nástroj pro vyrovnávání zatížení Azure zodpovídá za směrování příchozího provozu vaší instancí rolí. Nástroje pro vyrovnávání zatížení Určuje, která instance může přijímat provoz pravidelně zjišťováním pokaždé, aby bylo možné určit stav této instance. Nástroje pro vyrovnávání zatížení sondy každá instance více než jednou za minutu. Existují dvě různé možnosti pro poskytování stavu instance nástroji pro vyrovnávání zatížení – výchozí kontroly nástroje pro vyrovnávání zatížení, nebo nástroj pro vyrovnávání zatížení vlastní sondy, které je implementováno definováním LoadBalancerProbe v souboru .csdef.
+## <a name="the-function-of-a-load-balancer-probe"></a>Funkce testu nástroje pro vyrovnávání zatížení
+Azure Load Balancer zodpovídá za směrování příchozího provozu do instancí rolí. Nástroj pro vyrovnávání zatížení určuje, které instance můžou přijímat přenosy pravidelným zjišťováním jednotlivých instancí, aby bylo možné určit stav této instance. Nástroj pro vyrovnávání zatížení vyhledá každou instanci víckrát za minutu. Existují dvě různé možnosti pro poskytování stavu instance nástroji pro vyrovnávání zatížení – výchozí sondu pro vyrovnávání zatížení nebo vlastní test nástroje pro vyrovnávání zatížení, který je implementován definováním LoadBalancerProbe v souboru. csdef.
 
-Výchozí kontroly nástroje pro vyrovnávání zatížení využívá Agent hosta ve virtuálním počítači, který naslouchá a jako odpověď vrátí odpověď HTTP 200 OK pouze v případě, instance je ve stavu připraveno (např. když instance není v zaneprázdněno, recyklace, zastavení, stavy atd.). Pokud Agent hosta přestane reagovat s HTTP 200 OK, nástroje pro vyrovnávání zatížení Azure označí instance jako reagovat a zastaví odesílání provozu do této instance. Azure Load Balancer i nadále odešlete zprávu ping na instanci a pokud Agent hosta odpoví HTTP 200, nástroje pro vyrovnávání zatížení Azure odesílá provoz do této instance znovu. Při použití webová role webu kódu obvykle běží v w3wp.exe který není monitorován pomocí prostředků infrastruktury Azure nebo agenta hosta, což znamená, že selhání v w3wp.exe (např.) Odpovědi HTTP 500) není hlášena na zatížení a agent hosta nástroje pro vyrovnávání neví, abyste mohli tuto instanci ze smyčky.
+Výchozí sonda nástroje pro vyrovnávání zatížení využívá agenta hosta uvnitř virtuálního počítače, který naslouchá a reaguje s odpovědí HTTP 200 OK pouze v případě, že instance je ve stavu připraveno (například když instance není v zaneprázdněném stavu, recyklace, zastavení atd.). Pokud Agent hosta přestane reagovat pomocí protokolu HTTP 200 OK, Azure Load Balancer označí instanci jako nereagující a zastaví odesílání provozu do této instance. Azure Load Balancer nadále instanci příkazového testu a Agent hosta odpoví HTTP 200, Azure Load Balancer odesílá provoz do této instance znovu. Při použití webové role váš kód webu obvykle běží v W3wp. exe, který nesleduje agent Azure Fabric nebo host, což znamená chyby v souboru w3wp. exe (například. K agentovi hosta není hlášena odpověď HTTP 500 a nástroj pro vyrovnávání zatížení neví, že tuto instanci převezme mimo rotaci.
 
-Test paměti nástroje pro vyrovnávání zatížení vlastní přepíše výchozí kontroly agenta hosta a umožňuje vytvářet vlastní logiky určit stav role instance. Nástroje pro vyrovnávání zatížení pravidelně sondy váš koncový bod (každých 15 sekund, ve výchozím nastavení) a instance je považovat za v oběhu Pokud odpoví TCP ACK nebo HTTP 200 v časovém limitu (výchozí hodnoty 31 sekund). To může být užitečné implementovat vlastní logiku k odebrání instance oběhu nástroje pro vyrovnávání zatížení, například vrací stav než 200, pokud instance je víc než 90 % využití procesoru. V případě webových rolí pomocí w3wp.exe to také znamená, že získáte automatické monitorování vašeho webu, protože chyby v kódu webu návratový stav než 200 pro test paměti nástroje pro vyrovnávání zatížení. Pokud nedefinujete v souboru .csdef LoadBalancerProbe, pak je výchozí chování nástroje pro vyrovnávání zatížení (výše popsané) použít.
+Vlastní test nástroje pro vyrovnávání zatížení přepíše výchozí test hostovaného agenta a umožní vám vytvořit vlastní logiku, která určí stav instance role. Nástroj pro vyrovnávání zatížení pravidelně kontroluje váš koncový bod (ve výchozím nastavení každých 15 sekund) a instance se považuje za rotaci, pokud odpoví protokolem TCP ACK nebo HTTP 200 v rámci časového limitu (výchozí nastavení je 31 sekund). To může být užitečné při implementaci vlastní logiky k odebrání instancí z rotace nástroje pro vyrovnávání zatížení, například vrácení stavu, který není 200, pokud je instance vyšší než 90% CPU. U webových rolí využívajících W3wp. exe to také znamená, že získáte automatické monitorování webu, protože chyby ve vašem kódu webu vrátí do testu nástroje pro vyrovnávání zatížení stav, který není 200. Pokud v souboru. csdef nedefinujete LoadBalancerProbe, použije se výchozí chování nástroje pro vyrovnávání zatížení (jak je popsáno výše).
 
-Pokud používáte sondy nástroje pro vyrovnávání zatížení vlastní, musíte zajistit, že svoji logiku vezme v úvahu RoleEnvironment.OnStop metoda. Při použití výchozí kontroly nástroje pro vyrovnávání zatížení, instance je vyřazen ze smyčky před OnStop volána, ale můžete dál sondy nástroje pro vyrovnávání zatížení vlastní vrátit 200 OK během události OnStop. Pokud používáte OnStop událostí k vyčištění mezipaměti, zastavte službu nebo jinak provádění změn, které můžou ovlivnit chování za běhu služby, je potřeba zajistit, že svoji logiku sondy nástroje pro vyrovnávání zatížení vlastní odebere instanci snadné vyřadit z provozu.
+Pokud používáte vlastní test nástroje pro vyrovnávání zatížení, je nutné zajistit, aby vaše logika porovnala metodu RoleEnvironment. stop. Při použití výchozího testu nástroje pro vyrovnávání zatížení se instance před zavoláním metody převezme mimo špičku, ale vlastní test nástroje pro vyrovnávání zatížení může v případě události při zastavení pokračovat v vracení 200 OK. Pokud k vyčištění mezipaměti, zastavení služby nebo jinak provádění změn, které mohou ovlivnit chování služby za běhu, používáte událost při zastavení, je nutné zajistit, aby vaše vlastní logika testu vyrovnávání zátěže odebrala instanci z rotace.
 
-## <a name="basic-service-definition-schema-for-a-load-balancer-probe"></a>Služby na úrovni Basic definice schématu pro test nástroje pro vyrovnávání zatížení
- Základní formát souboru definice služby obsahující test nástroje pro vyrovnávání zatížení je následujícím způsobem.
+## <a name="basic-service-definition-schema-for-a-load-balancer-probe"></a>Základní schéma definice služby pro test nástroje pro vyrovnávání zatížení
+ Základní formát definičního souboru služby obsahující test nástroje pro vyrovnávání zatížení je následující.
 
 ```xml
 <ServiceDefinition …>
@@ -46,27 +41,27 @@ Pokud používáte sondy nástroje pro vyrovnávání zatížení vlastní, mus�
 ```
 
 ## <a name="schema-elements"></a>Prvky schématu
-`LoadBalancerProbes` Element definičního souboru služby obsahuje následující prvky:
+`LoadBalancerProbes` Element definičního souboru služby zahrnuje následující prvky:
 
-- [LoadBalancerProbes Element](#LoadBalancerProbes)
-- [LoadBalancerProbe Element](#LoadBalancerProbe)
+- [Element LoadBalancerProbes](#LoadBalancerProbes)
+- [Element LoadBalancerProbe](#LoadBalancerProbe)
 
-##  <a name="LoadBalancerProbes"></a> LoadBalancerProbes – Element
-`LoadBalancerProbes` Element popisuje kolekci testům nástroje pro vyrovnávání zatížení. Tento element je nadřazeného elementu [LoadBalancerProbe Element](#LoadBalancerProbe). 
+##  <a name="LoadBalancerProbes"></a>Element LoadBalancerProbes
+`LoadBalancerProbes` Element popisuje kolekci sond nástroje pro vyrovnávání zatížení. Tento prvek je nadřazeným prvkem [elementu LoadBalancerProbe](#LoadBalancerProbe). 
 
-##  <a name="LoadBalancerProbe"></a> LoadBalancerProbe Element
-`LoadBalancerProbe` Element definuje sondu stavu modelu. Můžete definovat více testům nástroje pro vyrovnávání zatížení. 
+##  <a name="LoadBalancerProbe"></a>Element LoadBalancerProbe
+`LoadBalancerProbe` Prvek definuje sondu stavu pro model. Můžete definovat několik sond nástroje pro vyrovnávání zatížení. 
 
-Následující tabulka popisuje atributy `LoadBalancerProbe` element:
+Následující tabulka popisuje atributy `LoadBalancerProbe` prvku:
 
-|Atribut|Type|Popis|
+|Atribut|type|Popis|
 | ------------------- | -------- | -----------------|
-| `name`              | `string` | Povinná hodnota. Název sondy nástroje pro vyrovnávání zatížení. Název musí být jedinečný.|
-| `protocol`          | `string` | Povinná hodnota. Určuje protokol koncového bodu. Možné hodnoty jsou `http` nebo `tcp`. Pokud `tcp` není zadána, přijatý ACK, je třeba test proběhne úspěšně. Pokud `http` je zadaná, odpověď 200 OK ze zadaného identifikátoru URI, je třeba test proběhne úspěšně.|
-| `path`              | `string` | Identifikátor URI použitý pro posílání požadavků na stav z virtuálního počítače. `path` je vyžadována, pokud `protocol` je nastavena na `http`. V opačném případě není povoleno.<br /><br /> Neexistuje žádná výchozí hodnota.|
-| `port`              | `integer` | Volitelné. Port pro komunikaci se test paměti. Tato položka je nepovinná pro libovolný koncový bod, protože stejný port pak bude sloužit pro test paměti. Můžete nastavit jiný port pro jejich zjišťování, také. Možné hodnoty rozsahu od 1 do 65535 (včetně).<br /><br /> Výchozí hodnota je nastavena pomocí koncového bodu.|
-| `intervalInSeconds` | `integer` | Volitelné. Interval v sekundách, jak často probe koncový bod pro stav. Interval obvykle je o něco méně než půl přidělený časový limit (v sekundách) umožňující dvě úplné sondy před přepnutím instance ze smyčky.<br /><br /> Výchozí hodnota je 15, minimální hodnota je 5.|
-| `timeoutInSeconds`  | `integer` | Volitelné. Časový limit v sekundách, použít pro test, pokud žádná odpověď způsobí zastavení další provoz z musí doručit do koncového bodu. Tato hodnota umožňuje koncové body, které mají být provedeny ze smyčky vyšší nebo nižší než typické doby použít v Azure (což je výchozí nastavení).<br /><br /> Výchozí hodnota je 31, 11 je minimální hodnota.|
+| `name`              | `string` | Povinný parametr. Název testu nástroje pro vyrovnávání zatížení. Název musí být jedinečný.|
+| `protocol`          | `string` | Povinný parametr. Určuje protokol koncového bodu. Možné hodnoty jsou `http` nebo `tcp`. Je `tcp` -li parametr zadán, je pro úspěšné dokončení testu vyžadováno přijaté potvrzení. Je `http` -li zadán parametr, je k úspěšnému dokončení testu nutná odpověď 200 OK ze zadaného identifikátoru URI.|
+| `path`              | `string` | Identifikátor URI, který se používá pro vyžádání stavu z virtuálního počítače. `path`je vyžadováno, `protocol` Pokud je nastaven `http`na. V opačném případě není povolena.<br /><br /> Neexistuje žádná výchozí hodnota.|
+| `port`              | `integer` | Volitelné. Port pro komunikaci sondy. To je volitelné pro libovolný koncový bod, protože stejný port se pak použije pro test. Pro své zjišťování můžete také nakonfigurovat jiný port. Možné hodnoty jsou v rozsahu od 1 do 65535, včetně.<br /><br /> Výchozí hodnota je nastavená koncovým bodem.|
+| `intervalInSeconds` | `integer` | Volitelné. Interval (v sekundách), jak často se má testovat koncový bod pro stav. Interval je typicky menší než polovina přiděleného časového limitu (v sekundách), který umožňuje dvě úplné sondy před převzetím instance mimo rotaci.<br /><br /> Výchozí hodnota je 15, minimální hodnota je 5.|
+| `timeoutInSeconds`  | `integer` | Volitelné. Časový limit (v sekundách), který se použije na test, kdy žádná odpověď nevede k zastavení dalšího provozu v doručení do koncového bodu. Tato hodnota umožňuje, aby koncové body byly rychlejší nebo pomalejší než běžné časy používané v Azure (což jsou výchozí nastavení).<br /><br /> Výchozí hodnota je 31, minimální hodnota je 11.|
 
 ## <a name="see-also"></a>Viz také
-[Cloudové služby (klasické) schématu definice](schema-csdef-file.md)
+[Schéma definice cloudové služby (Classic)](schema-csdef-file.md)

@@ -1,7 +1,7 @@
 ---
-title: Apache Sqoop s Apache Hadoopu – Azure HDInsight
-description: Další informace o použití Apache Sqoop k importu a exportu mezi Apache Hadoop v HDInsight a Azure SQL Database.
-keywords: hadoop, sqoop, sqoop
+title: Apache Sqoop s Apache Hadoop – Azure HDInsight
+description: Naučte se používat Apache Sqoop k importu a exportu mezi Apache Hadoop v HDInsight a Azure SQL Database.
+keywords: Hadoop Sqoop, Sqoop
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,67 +9,67 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 04/15/2019
-ms.openlocfilehash: 02b4eb6c367510e8994aa7723fe3fdd3e43af0e6
-ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
+ms.openlocfilehash: c839aeae77d7e75fb30d82c410c331d21f5868ae
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67462178"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68406040"
 ---
-# <a name="use-apache-sqoop-to-import-and-export-data-between-apache-hadoop-on-hdinsight-and-sql-database"></a>Použití Apache Sqoop k importu a exportu dat mezi Apache Hadoop v HDInsight a databází SQL
+# <a name="use-apache-sqoop-to-import-and-export-data-between-apache-hadoop-on-hdinsight-and-sql-database"></a>Použití Apache Sqoop k importu a exportu dat mezi Apache Hadoop ve službě HDInsight a SQL Database
 
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]
 
-Další informace o použití Apache Sqoop k importu a exportu mezi cluster Apache Hadoop v Azure HDInsight a databází Azure SQL Database nebo Microsoft SQL Server. Kroky v tomto dokumentu pomocí `sqoop` přímo z hlavního uzlu clusteru Hadoop. Použití SSH pro připojení k hlavnímu uzlu a spusťte příkazy v tomto dokumentu. V tomto článku je pokračování [použití Apache Sqoop se systémem Hadoop v HDInsight](./hdinsight-use-sqoop.md).
+Naučte se používat Apache Sqoop k importu a exportu mezi Apache Hadoopm clusterem v Azure HDInsight a v databázi Azure SQL Database nebo Microsoft SQL Server. Kroky v tomto dokumentu používají `sqoop` příkaz přímo z hlavnímu uzlu clusteru Hadoop. Pomocí SSH se připojíte k hlavnímu uzlu a spustíte příkazy v tomto dokumentu. Tento článek je pokračováním [v použití Apache Sqoop se systémem Hadoop ve službě HDInsight](./hdinsight-use-sqoop.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Dokončení [nastavit testovací prostředí](./hdinsight-use-sqoop.md#create-cluster-and-sql-database) z [použití Apache Sqoop se systémem Hadoop v HDInsight](./hdinsight-use-sqoop.md).
+* Dokončení [Nastavení testovacího prostředí](./hdinsight-use-sqoop.md#create-cluster-and-sql-database) [pro použití Apache Sqoop se systémem Hadoop ve službě HDInsight](./hdinsight-use-sqoop.md).
 
-* Klient k dotazování Azure SQL database. Zvažte použití [SQL Server Management Studio](../../sql-database/sql-database-connect-query-ssms.md) nebo [Visual Studio Code](../../sql-database/sql-database-connect-query-vscode.md).
+* Klient pro dotazování databáze SQL Azure. Zvažte použití [SQL Server Management Studio](../../sql-database/sql-database-connect-query-ssms.md) nebo [Visual Studio Code](../../sql-database/sql-database-connect-query-vscode.md).
 
-* Klient SSH. Další informace najdete v tématu [připojení k HDInsight (Apache Hadoop) pomocí protokolu SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
+* Klient SSH. Další informace najdete v tématu [připojení ke službě HDInsight (Apache Hadoop) pomocí SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
-## <a name="sqoop-export"></a>Export Sqoopu
+## <a name="sqoop-export"></a>Export Sqoop
 
-Z Hive k systému SQL Server.
+Z podregistru do SQL Server.
 
-1. Pomocí SSH se připojte ke clusteru HDInsight. Nahraďte `CLUSTERNAME` s názvem vašeho clusteru, zadejte příkaz:
+1. Pomocí SSH se připojte ke clusteru HDInsight. Nahraďte `CLUSTERNAME` názvem vašeho clusteru a pak zadejte příkaz:
 
     ```cmd
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-2. Nahraďte `MYSQLSERVER` s názvem serveru SQL Server. Chcete-li ověřit, že Sqoop uvidí vaše databáze SQL, zadejte následující příkaz v otevření připojení SSH. Zadejte heslo pro přihlašovací jméno SQL serveru po zobrazení výzvy. Tento příkaz vrátí seznam databází.
+2. Nahraďte `MYSQLSERVER` názvem vašeho SQL Server. Pokud chcete ověřit, že Sqoop uvidí vaše SQL Database, zadejte níže uvedený příkaz v otevřeném připojení SSH. Po zobrazení výzvy zadejte heslo pro SQL Server přihlašovací jméno. Tento příkaz vrátí seznam databází.
 
     ```bash
     sqoop list-databases --connect jdbc:sqlserver://MYSQLSERVER.database.windows.net:1433 --username sqluser -P
     ```
 
-3. Nahraďte `MYSQLSERVER` s názvem serveru SQL Server a `MYDATABASE` s názvem vaší databáze SQL. Export dat z Hive `hivesampletable` tabulky `mobiledata` tabulky ve službě SQL Database, zadejte následující příkaz v otevření připojení SSH. Zadejte heslo pro přihlašovací jméno SQL serveru po zobrazení výzvy
+3. Nahraďte `MYSQLSERVER` názvem vaší SQL Server a `MYDATABASE` názvem vaší databáze SQL. Pokud chcete exportovat data z tabulky `hivesampletable` podregistru `mobiledata` do tabulky v SQL Database, zadejte níže uvedený příkaz v otevřeném připojení SSH. Po zobrazení výzvy zadejte heslo pro SQL Server přihlášení.
 
     ```bash
     sqoop export --connect 'jdbc:sqlserver://MYSQLSERVER.database.windows.net:1433;database=MYDATABASE' --username sqluser -P -table 'mobiledata' --hcatalog-table hivesampletable
     ```
 
-4. Pokud chcete ověřit, že se data vyexportovala, použijte následující dotazy z vašeho klienta SQL exportovaná data zobrazíte:
+4. Chcete-li ověřit, zda byla data exportována, použijte následující dotazy z klienta SQL k zobrazení exportovaných dat:
 
     ```sql
     SELECT COUNT(*) FROM [dbo].[mobiledata] WITH (NOLOCK);
     SELECT TOP(25) * FROM [dbo].[mobiledata] WITH (NOLOCK);
     ```
 
-## <a name="sqoop-import"></a>Sqoop import
+## <a name="sqoop-import"></a>Import Sqoop
 
-Z SQL serveru do úložiště Azure.
+Z SQL Server do úložiště Azure.
 
-1. Nahraďte `MYSQLSERVER` s názvem serveru SQL Server a `MYDATABASE` s názvem vaší databáze SQL. Zadejte následující příkaz Otevřít připojení SSH k importu dat z `mobiledata` do tabulky ve službě SQL Database `wasb:///tutorials/usesqoop/importeddata` adresáře v HDInsight. Zadejte heslo pro přihlašovací jméno SQL serveru po zobrazení výzvy. Pole v datech jsou oddělené tabulátorem a řádky jsou ukončeny znak nového řádku.
+1. Nahraďte `MYSQLSERVER` názvem vaší SQL Server a `MYDATABASE` názvem vaší databáze SQL. Zadejte níže uvedený příkaz v otevřeném připojení SSH, abyste importovali data `mobiledata` z tabulky v SQL Database `wasb:///tutorials/usesqoop/importeddata` do adresáře v HDInsight. Po zobrazení výzvy zadejte heslo pro SQL Server přihlašovací jméno. Pole v datech jsou oddělena znakem tabulátoru a řádky jsou zakončeny znakem nového řádku.
 
     ```bash
     sqoop import --connect 'jdbc:sqlserver://MYSQLSERVER.database.windows.net:1433;database=MYDATABASE' --username sqluser -P --table 'mobiledata' --target-dir 'wasb:///tutorials/usesqoop/importeddata' --fields-terminated-by '\t' --lines-terminated-by '\n' -m 1
     ```
 
-2. Po dokončení importu, zadejte následující příkaz v otevření připojení SSH do seznamu dat v novém adresáři:
+2. Po dokončení importu zadejte následující příkaz v otevřeném připojení SSH, abyste mohli zobrazit data v novém adresáři:
 
     ```bash
     hdfs dfs -text /tutorials/usesqoop/importeddata/part-m-00000
@@ -77,26 +77,26 @@ Z SQL serveru do úložiště Azure.
 
 ## <a name="limitations"></a>Omezení
 
-* Hromadné export - s Linuxovým systémem HDInsight, Sqoop konektor používaný k exportu dat Microsoft SQL Server nebo Azure SQL Database nepodporuje operace hromadného vložení.
+* Hromadný export – pomocí HDInsight se systémem Linux, konektor Sqoop, který slouží k exportu dat do Microsoft SQL Server nebo Azure SQL Database nepodporuje hromadné vložení.
 
-* Dávkování – s Linuxovým systémem HDInsight při použití `-batch` přepnout při provádění operace vložení, Sqoop díky více vloží místo dávkování operace vložení.
+* Dávkování – pomocí HDInsight se systémem Linux při použití `-batch` přepínače při vkládání provede Sqoop vícenásobné vkládání místo dávkování operací vložení.
 
 ## <a name="important-considerations"></a>Důležité informace
 
-* HDInsight a SQL Server musí být ve stejné virtuální síti Azure.
+* HDInsight i SQL Server musí být na stejném Virtual Network Azure.
 
-    Příklad najdete v tématu [HDInsight připojit k místní síti](./../connect-on-premises-network.md) dokumentu.
+    Příklad najdete v tématu [připojení HDInsight k](./../connect-on-premises-network.md) místní síťovému dokumentu.
 
-    Další informace o používání HDInsight se službou Azure Virtual Network, najdete v článku [rozšířit HDInsight s Azure Virtual Network](../hdinsight-extend-hadoop-virtual-network.md) dokumentu. Další informace o Azure Virtual Network, najdete v článku [Přehled služby Virtual Network](../../virtual-network/virtual-networks-overview.md) dokumentu.
+    Další informace o používání služby HDInsight s Virtual Network Azure najdete v dokumentu věnovaném [rozšiřování HDInsight s azure Virtual Network](../hdinsight-plan-virtual-network-deployment.md) . Další informace o Azure Virtual Network najdete v dokumentu [přehled Virtual Network](../../virtual-network/virtual-networks-overview.md) .
 
-* SQL Server musí být nakonfigurované pro umožnění ověřování SQL. Další informace najdete v tématu [volba režimu ověřování](https://msdn.microsoft.com/ms144284.aspx) dokumentu.
+* SQL Server musí být nakonfigurovaná tak, aby povolovala ověřování SQL. Další informace naleznete v dokumentu [zvolit režim ověřování](https://msdn.microsoft.com/ms144284.aspx) .
 
-* Bude pravděpodobně nutné nakonfigurovat SQL Server tak, aby přijímal vzdálená připojení. Další informace najdete v tématu [postupy řešení potíží s připojením k databázovému stroji SQL serveru](https://social.technet.microsoft.com/wiki/contents/articles/2102.how-to-troubleshoot-connecting-to-the-sql-server-database-engine.aspx) dokumentu.
+* Možná budete muset nakonfigurovat SQL Server, aby přijímala vzdálená připojení. Další informace najdete v tématu [řešení potíží s připojením k dokumentu SQL Server databázového stroje](https://social.technet.microsoft.com/wiki/contents/articles/2102.how-to-troubleshoot-connecting-to-the-sql-server-database-engine.aspx) .
 
 ## <a name="next-steps"></a>Další postup
 
-Nyní jste se naučili, jak použít Sqoop. Další informace naleznete v tématu:
+Nyní jste se naučili, jak používat Sqoop. Další informace naleznete v tématu:
 
-* [Použití Apache Oozie s HDInsight](../hdinsight-use-oozie-linux-mac.md): Pomocí Sqoop akce v pracovním postupu Oozie.
-* [Analýza zpoždění letů pomocí HDInsight](../interactive-query/interactive-query-tutorial-analyze-flight-data.md): Použití interaktivního dotazu k analýze zpoždění letů a potom použít Sqoop k exportování dat do Azure SQL database.
-* [Nahrání dat do HDInsight](../hdinsight-upload-data.md): Najdete další metody pro nahrávání dat do HDInsight nebo Azure Blob storage.
+* [Použití Apache Oozie se službou HDInsight](../hdinsight-use-oozie-linux-mac.md): Použijte akci Sqoop v pracovním postupu Oozie.
+* [Analýza dat zpoždění letu pomocí HDInsight](../interactive-query/interactive-query-tutorial-analyze-flight-data.md): Pomocí interaktivního dotazu můžete analyzovat data zpoždění letu a pak pomocí Sqoop exportovat data do databáze SQL Azure.
+* [Nahrát data do HDInsight](../hdinsight-upload-data.md): Najděte další metody pro nahrávání dat do služby HDInsight/Azure Blob Storage.

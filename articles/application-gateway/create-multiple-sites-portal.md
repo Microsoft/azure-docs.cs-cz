@@ -1,29 +1,29 @@
 ---
-title: Kurz – vytvoření služby application gateway, který je hostitelem více webů pomocí webu Azure portal
-description: V tomto kurzu se dozvíte, jak vytvořit službu application gateway, který je hostitelem více webů pomocí webu Azure portal.
+title: Kurz – vytvoření aplikační brány, která hostuje několik webů pomocí Azure Portal
+description: V tomto kurzu se naučíte, jak vytvořit Aplikační bránu, která hostuje několik webů pomocí Azure Portal.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: tutorial
-ms.date: 4/18/2019
+ms.date: 07/26/2019
 ms.author: victorh
-ms.openlocfilehash: 3e27a79c7a6e3d39679118f532dd464a32463d69
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 73a313a6244971b65ba89fb7b676610d88acabfa
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62122257"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68498454"
 ---
-# <a name="tutorial-create-and-configure-an-application-gateway-to-host-multiple-web-sites-using-the-azure-portal"></a>Kurz: Vytvoření a konfigurace aplikační brány pro hostování více webů pomocí webu Azure portal
+# <a name="tutorial-create-and-configure-an-application-gateway-to-host-multiple-web-sites-using-the-azure-portal"></a>Kurz: Vytvoření a konfigurace aplikační brány pro hostování více webů pomocí Azure Portal
 
-Můžete použít na webu Azure portal [konfigurace hostování několika webů s](multiple-site-overview.md) při vytváření [služba application gateway](overview.md). V tomto kurzu definujte fondy adres back-end pomocí služby virtual machines. Pak na základě domén, které vám patří, nakonfigurujete naslouchací procesy a pravidla, aby se webový provoz přesměroval na příslušné servery ve fondech. V tomto kurzu se předpokládá, že vlastníte několik domén, a jako příklady se používají domény *www.contoso.com* a *www.fabrikam.com*.
+Můžete použít Azure Portal ke [konfiguraci hostování více](multiple-site-overview.md) webů při vytváření [aplikační brány](overview.md). V tomto kurzu nadefinujete fondy adres back-endu pomocí virtuálních počítačů. Pak na základě domén, které vám patří, nakonfigurujete naslouchací procesy a pravidla, aby se webový provoz přesměroval na příslušné servery ve fondech. V tomto kurzu se předpokládá, že vlastníte několik domén, a jako příklady se používají domény *www.contoso.com* a *www.fabrikam.com*.
 
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 > * Vytvoření služby Application Gateway
-> * Vytvoření virtuálního počítače pro back-end serverů
-> * Vytvoření back-endové fondy s back-end serverů
+> * Vytváření virtuálních počítačů pro back-end servery
+> * Vytváření back-end fondů se servery back-end
 > * Vytvořit back-endové naslouchací procesy
 > * Vytvořit pravidla směrování
 > * Vytvořit záznam CNAME v doméně
@@ -32,142 +32,190 @@ V tomto kurzu se naučíte:
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="sign-in-to-azure"></a>Přihlásit se k Azure
+## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
 Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com).
 
 ## <a name="create-an-application-gateway"></a>Vytvoření služby Application Gateway
 
-Virtuální sítě je potřeba ke komunikaci mezi prostředky, které vytvoříte. V tomto příkladu jsou vytvořeny dvě podsítě: jedna pro aplikační bránu a druhá pro back-endové servery. Virtuální síť můžete vytvořit současně s aplikační bránou.
+1. V levé nabídce Azure Portal vyberte **vytvořit prostředek** . Zobrazí se **nové** okno.
 
-1. Klikněte na tlačítko **nový** v levém horním rohu webu Azure portal.
-2. Vyberte **Sítě** a potom v seznamu Doporučené vyberte **Application Gateway**.
-3. Pro aplikační bránu zadejte tyto hodnoty:
+2. Vyberte **sítě** a v seznamu **Doporučené** vyberte **Application Gateway** .
 
-   - *myAppGateway* – tuto hodnotu zadejte jako název aplikační brány.
-   - *myResourceGroupAG* – tuto hodnotu zadejte jako skupinu prostředků.
+### <a name="basics-tab"></a>Karta základy
 
-     ![Vytvoření nové aplikační brány](./media/create-multiple-sites-portal/application-gateway-create.png)
+1. Na kartě **základy** zadejte tyto hodnoty pro následující nastavení služby Application Gateway:
 
-4. U ostatních nastavení ponechejte výchozí hodnoty a potom klikněte na **OK**.
-5. Klikněte na tlačítko **zvolit virtuální síť**, klikněte na tlačítko **vytvořit nový**a potom zadejte tyto hodnoty pro virtuální síť:
+   - **Skupina prostředků**: Jako skupinu prostředků vyberte **myResourceGroupAG** . Pokud neexistuje, vyberte **vytvořit novou** a vytvořte ji.
+   - **Název aplikační brány**: Jako název služby Application Gateway zadejte *myAppGateway* .
 
-   - *myVNet* – tuto hodnotu zadejte jako název virtuální sítě.
-   - *10.0.0.0/16* – tuto hodnotu zadejte jako adresní prostor virtuální sítě.
-   - *myBackendSubnet* – tuto hodnotu zadejte jako název podsítě.
-   - *10.0.0.0/24* – tuto hodnotu zadejte jako adresní prostor podsítě.
+     ![Vytvořit novou aplikační bránu: Základní informace](./media/application-gateway-create-gateway-portal/application-gateway-create-basics.png)
 
-     ![Vytvoření virtuální sítě](./media/create-multiple-sites-portal/application-gateway-vnet.png)
+2.  Aby mohl Azure komunikovat mezi prostředky, které vytvoříte, potřebuje virtuální síť. Můžete buď vytvořit novou virtuální síť, nebo použít existující. V tomto příkladu vytvoříte novou virtuální síť ve stejnou chvíli, kdy vytvoříte Aplikační bránu. Instance Application Gateway se vytvářejí v oddělených podsítích. V tomto příkladu vytvoříte dvě podsítě: jednu pro aplikační bránu a druhou pro back-end servery.
 
-6. Kliknutím na **OK** vytvořte virtuální síť a podsíť.
-7. Klikněte na tlačítko **zvolte veřejnou IP adresu**, klikněte na tlačítko **vytvořit nový**a potom zadejte název veřejné IP adresy. V tomto příkladu se veřejná IP adresa nazývá *myAGPublicIPAddress*. U ostatních nastavení ponechejte výchozí hodnoty a potom klikněte na **OK**.
-8. Přijměte výchozí hodnoty pro konfiguraci naslouchacího procesu, nechat zakázané brány firewall webových aplikací a pak klikněte na **OK**.
-9. Zkontrolujte nastavení na stránce Souhrn a pak klikněte na tlačítko **OK** k vytvoření síťových prostředků a aplikační brány. Může trvat několik minut, než pro službu application gateway, chcete-li vytvořit, počkejte na úspěšné dokončení nasazení přejde k další části.
+    V části **Konfigurovat virtuální síť**vyberte **vytvořit novou** a vytvořte novou virtuální síť. V okně **vytvořit virtuální síť** , které se otevře, zadejte následující hodnoty pro vytvoření virtuální sítě a dvě podsítě:
 
-### <a name="add-a-subnet"></a>Přidání podsítě
+    - **Název**: Jako název virtuální sítě zadejte *myVNet* .
 
-1. V nabídce nalevo klikněte na **Všechny prostředky** a potom v seznamu prostředků klikněte na **myVNet**.
-2. Klikněte na tlačítko **podsítě**a potom klikněte na tlačítko **podsítě**.
+    - **Název podsítě** (Application Gateway podsíť): V mřížce **podsítě** se zobrazí podsíť s názvem *výchozí*. Změňte název této podsítě na *myAGSubnet*.<br>Podsíť aplikační brány může obsahovat jenom aplikační brány. Žádné další prostředky nejsou povoleny.
 
-    ![Vytvoření podsítě](./media/create-multiple-sites-portal/application-gateway-subnet.png)
+    - **Název podsítě** (podsíť back-end serveru): Ve druhém řádku mřížky **podsítě** zadejte *myBackendSubnet* do sloupce **název podsítě** .
 
-3. Jako název podsítě zadejte *myBackendSubnet* a potom klikněte na **OK**.
+    - **Rozsah adres** (podsíť back-end serveru): V druhém řádku mřížky **podsítě** zadejte rozsah adres, který se nepřekrývá s rozsahem adres *myAGSubnet*. Pokud má například rozsah adres *myAGSubnet* 10.0.0.0/24, zadejte pro rozsah adres *myBackendSubnet* *10.0.1.0/24* .
 
-## <a name="create-virtual-machines"></a>Vytvoření virtuálních počítačů
+    Výběrem **OK** zavřete okno **vytvořit virtuální síť** a uložte nastavení virtuální sítě.
 
-V tomto příkladu vytvoříte dva virtuální počítače, které se použijí jako servery back-end pro aplikační bránu. Také nainstalujte IIS na virtuálních počítačích, chcete-li ověřit, že je správně směrování provozu.
+     ![Vytvořit novou aplikační bránu: virtuální síť](./media/application-gateway-create-gateway-portal/application-gateway-create-vnet.png)
+    
+3. Na kartě **základy** přijměte výchozí hodnoty pro ostatní nastavení a potom vyberte **další: Front-endové.**
 
-1. Klikněte na možnost **Nové**.
-2. Klikněte na tlačítko **Compute** a pak vyberte **systému Windows Server 2016 Datacenter** v seznamu vybrané.
-3. Zadejte pro virtuální počítač tyto hodnoty:
+### <a name="frontends-tab"></a>Karta front-endu
 
-    - *názvy contosoVM* – název virtuálního počítače.
-    - *azureuser* – uživatelské jméno správce.
-    - *Azure123456!* – heslo.
-    - Vyberte **Použít existující** a pak vyberte *myResourceGroupAG*.
+1. Na kartě **front-endu** ověřte, že **typ IP adresy front-end** je nastavený na **veřejné**. <br>Front-end IP adresu můžete nakonfigurovat tak, aby byla veřejná nebo soukromá jako na základě vašeho případu použití. V tomto příkladu zvolíte veřejnou front-end IP adresu.
+   > [!NOTE]
+   > V případě SKU Application Gateway v2 můžete zvolit jenom **veřejnou** konfiguraci IP adresy front-endu. V tuto chvíli není u této SKU verze V2 povolená soukromá konfigurace IP adresy front-endu.
 
-4. Klikněte na **OK**.
-5. Vyberte velikost virtuálního počítače **DS1_V2** a klikněte na **Vybrat**.
-6. Zkontrolujte, že u virtuální sítě je vybrána možnost **myVNet** a u podsítě **myBackendSubnet**. 
-7. Kliknutím na **Zakázáno** zakažte diagnostiku spouštění.
-8. Klikněte na **OK**, na stránce souhrnu zkontrolujte nastavení a pak klikněte na **Vytvořit**.
+2. Zvolte **vytvořit nový** pro **veřejnou IP adresu** a jako název veřejné IP adresy zadejte *myAGPublicIPAddress* a pak vyberte **OK**. 
 
-### <a name="install-iis"></a>Instalace služby IIS
+     ![Vytvořit novou aplikační bránu: front-endové](./media/application-gateway-create-gateway-portal/application-gateway-create-frontends.png)
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+3. Vyberte **další: Back-** endy.
 
-1. Otevřete interaktivní prostředí a zkontrolujte, že je nastaveno na **PowerShell**.
+### <a name="backends-tab"></a>Karta back-endy
 
-    ![Instalace vlastního rozšíření](./media/create-multiple-sites-portal/application-gateway-extension.png)
+Back-end fond slouží ke směrování požadavků na servery back-end, které obsluhují požadavek. Back-endové fondy můžou být síťové adaptéry, sady škálování virtuálních počítačů, veřejné IP adresy, interní IP adresy, plně kvalifikované názvy domény (FQDN) a back-endy pro více tenantů, jako je Azure App Service. V tomto příkladu vytvoříte prázdný back-end fond s aplikační bránou a potom přidáte cíle back-end do fondu back-end.
+
+1. Na kartě back- **endy** vyberte **+ Přidat back-end fond**.
+
+2. V okně **Přidat fond back-end** , které se otevře, zadejte následující hodnoty a vytvořte prázdný back-end fond:
+
+    - **Název**: Jako název back-end fondu zadejte *contosoPool* .
+    - **Přidat back-end fond bez cílů**: Vyberte **Ano** , pokud chcete vytvořit fond back-end bez cílů. Po vytvoření aplikační brány přidáte cíle back-endu.
+
+3. V okně **Přidat fond back-endu** vyberte **Přidat** a uložte konfiguraci fondu back-end a vraťte se na kartu back- **endy** .
+4. Teď přidejte další back-end fond s názvem *fabrikamPool*.
+
+     ![Vytvořit novou aplikační bránu: back-endy](./media/create-multiple-sites-portal/backend-pools.png)
+
+4. Na kartě **back-endy** vyberte **další: Konfigurace**.
+
+### <a name="configuration-tab"></a>Karta Konfigurace
+
+Na kartě **Konfigurace** propojíte front-endové a back-endové fondy, které jste vytvořili pomocí pravidla směrování.
+
+1. Ve sloupci **pravidla směrování** vyberte **Přidat pravidlo** .
+
+2. V okně **Přidat pravidlo směrování** , které se otevře, jako **název pravidla**zadejte *contosoRule* .
+
+3. Pravidlo směrování vyžaduje naslouchací proces. Na kartě **naslouchací proces** v okně **Přidat pravidlo směrování** zadejte následující hodnoty pro naslouchací proces:
+
+    - **Název naslouchacího procesu**: Jako název naslouchacího procesu zadejte *contosoListener* .
+    - **IP adresa front-endu**: Vyberte **veřejné** a zvolte veřejnou IP adresu, kterou jste vytvořili pro front-end.
+
+   V části **Další nastavení**:
+   - **Typ naslouchacího procesu**: Více lokalit
+   - **Název hostitele**: **www.contoso.com**
+
+   Přijměte výchozí hodnoty pro ostatní nastavení na kartě **naslouchací proces** a potom vyberte kartu cílení na **back-end** a nakonfigurujte zbývající část pravidla směrování.
+
+   ![Vytvoření nové aplikační brány: naslouchací proces](./media/create-multiple-sites-portal/routing-rule.png)
+
+4. Na kartě **cílení na server back-end** vyberte **ContosoPool** pro **cíl back-endu**.
+
+5. Pro **Nastavení http**vyberte **vytvořit novou** a vytvořte nové nastavení http. Nastavením protokolu HTTP se určí chování pravidla směrování. V okně **Přidat nastavení protokolu HTTP** , které se otevře, zadejte *contosoHTTPSetting* pro **název nastavení http**. Přijměte výchozí hodnoty pro ostatní nastavení v okně **Přidat nastavení http** a pak vyberte **Přidat** a vraťte se do okna **Přidat pravidlo směrování** . 
+
+6. V okně **Přidat pravidlo směrování** vyberte **Přidat** a uložte pravidlo směrování a vraťte se na kartu **Konfigurace** .
+7. Vyberte **Přidat pravidlo** a přidejte podobné pravidlo, naslouchací proces, cíl back-endu a nastavení HTTP pro Fabrikam.
+
+     ![Vytvoření nové aplikační brány: pravidlo směrování](./media/create-multiple-sites-portal/fabrikamRule.png)
+
+7. Vyberte **další: Značky** a potom **další: Zkontrolovat + vytvořit**.
+
+### <a name="review--create-tab"></a>Revize + vytvořit kartu
+
+Zkontrolujte nastavení na kartě **Revize + vytvořit** a pak vyberte **vytvořit** k vytvoření virtuální sítě, veřejné IP adresy a aplikační brány. Vytvoření služby Application Gateway v Azure může trvat několik minut.
+
+Před přechodem k další části počkejte na úspěšné dokončení nasazení.
+
+## <a name="add-backend-targets"></a>Přidat cíle back-endu
+
+V tomto příkladu budete jako cílový back-end používat virtuální počítače. Můžete buď použít stávající virtuální počítače, nebo vytvořit nové. Vytvoříte dva virtuální počítače, které Azure používá jako servery back-end pro službu Application Gateway.
+
+Pokud chcete přidat cíle back-endu, postupujte takto:
+
+1. Vytvořte dva nové virtuální počítače, *contosoVM* a *fabrikamVM*, které se budou používat jako servery back-end.
+2. Nainstalujte službu IIS na virtuální počítače, abyste ověřili, že se služba Application Gateway úspěšně vytvořila.
+3. Přidejte servery back-end do back-endu fondů.
+
+### <a name="create-a-virtual-machine"></a>Vytvoření virtuálního počítače
+
+1. V Azure Portal vyberte **vytvořit prostředek**. Zobrazí se **nové** okno.
+2. Vyberte **COMPUTE** a potom v seznamu **oblíbených** vyberte **Windows Server 2016 Datacenter** . Zobrazí se stránka **vytvořit virtuální počítač** .<br>Application Gateway může směrovat provoz na libovolný typ virtuálního počítače, který se používá v jeho fondu back-endu. V tomto příkladu použijete Windows Server 2016 Datacenter.
+3. Zadejte tyto hodnoty na kartě **základy** pro následující nastavení virtuálního počítače:
+
+    - **Skupina prostředků**: Jako název skupiny prostředků vyberte **myResourceGroupAG** .
+    - **Název virtuálního počítače**: Jako název virtuálního počítače zadejte *contosoVM* .
+    - **Uživatelské jméno**: Jako uživatelské jméno správce zadejte *azureuser* .
+    - **Heslo**: Enter *Azure123456!* pro heslo správce.
+4. Přijměte ostatní výchozí hodnoty a potom **vyberte Další: Disky**.  
+5. Přijměte výchozí hodnoty na kartě **disky** a **potom vyberte Další: Sítě**.
+6. Na kartě **sítě** ověřte, že je pro **virtuální síť** vybraný **myVNet** a že **podsíť** je nastavená na **myBackendSubnet**. Přijměte ostatní výchozí hodnoty a potom **vyberte Další: Správa**.<br>Application Gateway může komunikovat s instancemi mimo virtuální síť, ve které je, ale je potřeba zajistit připojení k IP adrese.
+7. Na kartě **Správa** nastavte diagnostiku **spouštění** na **vypnuto**. Přijměte ostatní výchozí hodnoty a pak vyberte **zkontrolovat + vytvořit**.
+8. Na kartě **Revize + vytvořit** zkontrolujte nastavení, opravte chyby ověřování a potom vyberte **vytvořit**.
+9. Než budete pokračovat, počkejte na dokončení vytváření virtuálního počítače.
+
+### <a name="install-iis-for-testing"></a>Nainstalovat službu IIS pro testování
+
+V tomto příkladu nainstalujete službu IIS na virtuální počítače jenom k úspěšnému ověření, že se brána Application Gateway úspěšně vytvořila.
+
+1. Otevřete [Azure PowerShell](https://docs.microsoft.com/azure/cloud-shell/quickstart-powershell). Provedete to tak, že v horním navigačním panelu Azure Portal vyberete **Cloud Shell** a v rozevíracím seznamu vyberete **PowerShell** . 
+
+    ![Instalace vlastního rozšíření](./media/application-gateway-create-gateway-portal/application-gateway-extension.png)
 
 2. Spuštěním následujícího příkazu nainstalujte službu IIS na virtuální počítač: 
 
     ```azurepowershell-interactive
-    $publicSettings = @{ "fileUris" = (,"https://raw.githubusercontent.com/Azure/azure-docs-powershell-samples/master/application-gateway/iis/appgatewayurl.ps1");  "commandToExecute" = "powershell -ExecutionPolicy Unrestricted -File appgatewayurl.ps1" }
     Set-AzVMExtension `
       -ResourceGroupName myResourceGroupAG `
-      -Location eastus `
       -ExtensionName IIS `
       -VMName contosoVM `
       -Publisher Microsoft.Compute `
       -ExtensionType CustomScriptExtension `
       -TypeHandlerVersion 1.4 `
-      -Settings $publicSettings
+      -SettingString '{"commandToExecute":"powershell Add-WindowsFeature Web-Server; powershell Add-Content -Path \"C:\\inetpub\\wwwroot\\Default.htm\" -Value $($env:computername)"}' `
+      -Location EastUS
     ```
 
-3. Vytvoření druhého virtuálního počítače a instalace služby IIS pomocí kroky, které jste právě dokončili. Zadejte názvy *fabrikamVM* pro název a hodnotu VMName v sadě AzVMExtension.
+3. Vytvořte druhý virtuální počítač a nainstalujte službu IIS pomocí dříve dokončených kroků. Pro název virtuálního počítače a pro nastavení **VMName** rutiny **set-AzVMExtension** použijte *fabrikamVM* .
 
-## <a name="create-backend-pools-with-the-virtual-machines"></a>Vytvoření back-endové fondy s virtuálními počítači
+### <a name="add-backend-servers-to-backend-pools"></a>Přidání back-end serverů do back-endovéch fondů
 
-1. Klikněte na tlačítko **všechny prostředky** a potom klikněte na tlačítko **myAppGateway**.
-2. Klikněte na tlačítko **back-endové fondy**a potom klikněte na tlačítko **přidat**.
-3. Zadejte název *contosoPool* a přidejte *contosoVM* pomocí **přidat cíl**.
+1. Vyberte **všechny prostředky**a pak vyberte **myAppGateway**.
 
-    ![Přidání back-endových serverů](./media/create-multiple-sites-portal/application-gateway-multisite-backendpool.png)
+2. V nabídce vlevo vyberte **back-endové fondy** .
 
-4. Klikněte na **OK**.
-5. Klikněte na tlačítko **back-endové fondy** a potom klikněte na tlačítko **přidat**.
-6. Vytvořte *fabrikamPool* s *fabrikamVM* pomocí kroků, které jste právě dokončili.
+3. Vyberte **contosoPool**.
 
-## <a name="create-backend-listeners"></a>Vytvořit back-endové naslouchací procesy
+4. V části **cíle**vyberte v rozevíracím seznamu možnost **virtuální počítač** .
 
-1. Klikněte na tlačítko **naslouchacích procesů** a potom klikněte na tlačítko **Multi-Site**.
-2. Zadejte tyto hodnoty pro naslouchací proces:
-    
-   - *contosoListener* – název naslouchacího procesu.
-   - *www.contoso.com* – v tomto příkladu název hostitele nahraďte název vaší domény.
+5. V části **virtuální počítač** a **Síťová rozhraní**vyberte virtuální počítač **contosoVM** a toto přidružené síťové rozhraní v rozevíracích seznamech.
 
-3. Klikněte na **OK**.
-4. Vytvoření druhého naslouchací proces, pomocí názvu *fabrikamListener* a používání názvů domén vaší druhé. V tomto příkladu *www.fabrikam.com* se používá.
+    ![Přidání back-endových serverů](./media/create-multiple-sites-portal/edit-backend-pool.png)
 
-![naslouchací procesy mult-site](media/create-multiple-sites-portal/be-listeners.png)
+6. Vyberte **Uložit**.
+7. Opakujte pro přidání *fabrikamVM* a rozhraní do *fabrikamPool*.
 
-## <a name="create-routing-rules"></a>Vytvořit pravidla směrování
+Než budete pokračovat k dalšímu kroku, počkejte na dokončení nasazení.
 
-Pravidla se zpracovávají v pořadí, v kterém jsou uvedena, a provoz se směruje pomocí prvního odpovídajícího pravidla bez ohledu na specifickou podobu. Pokud máte například na stejném portu pravidlo založené na základním naslouchacím procesu a pravidlo založené na naslouchacím procesu pro více webů, musí být pravidlo s naslouchacím procesem pro více webů uvedeno před pravidlem se základním naslouchacím procesem, aby fungovalo podle očekávání. 
+## <a name="create-a-www-a-record-in-your-domains"></a>Vytvoření záznamu webové A ve vašich doménách
 
-V tomto příkladu vytvoříte dvě nová pravidla a odstranit výchozí pravidlo vytvořené při vytvoření aplikační brány.
+Po vytvoření služby Application Gateway s veřejnou IP adresou můžete získat IP adresu a použít ji k vytvoření záznamu A v doménách. 
 
-1. Klikněte na tlačítko **pravidla** a potom klikněte na tlačítko **základní**.
-2. Zadejte *contosoRule* pro název.
-3. Vyberte *contosoListener* pro naslouchací proces.
-4. Vyberte *contosoPool* pro back-endový fond.
+1. Klikněte na **všechny prostředky**a pak klikněte na **myAGPublicIPAddress**.
 
-    ![Vytvořit pravidlo na základě cest](./media/create-multiple-sites-portal/application-gateway-multisite-rule.png)
+    ![Zaznamenat adresu DNS brány Application Gateway](./media/create-multiple-sites-portal/public-ip.png)
 
-5. Klikněte na **OK**.
-6. Vytvořením druhého pravidla pomocí názvů *fabrikamRule*, *fabrikamListener*, a *fabrikamPool*.
-7. Odstranit výchozí pravidlo s názvem *pravidla 1* kliknutím ji a pak levým na **odstranit**.
-
-## <a name="create-a-cname-record-in-your-domain"></a>Vytvořit záznam CNAME v doméně
-
-Jakmile vytvoříte aplikační bránu s veřejnou IP adresou, získáte adresu DNS, kterou můžete použít k vytvoření záznamu CNAME ve své doméně. Použití záznamů typu A se nedoporučuje, protože virtuální IP adresa se při restartování aplikační brány může změnit.
-
-1. Klikněte na tlačítko **všechny prostředky**a potom klikněte na tlačítko **myAGPublicIPAddress**.
-
-    ![Služba application gateway záznam DNS adresy](./media/create-multiple-sites-portal/application-gateway-multisite-dns.png)
-
-2. Zkopírujte adresu serveru DNS a použijte ji jako hodnotu pro nový záznam CNAME ve vaší doméně.
+2. Zkopírujte IP adresu a použijte ji jako hodnotu nového záznamu na *webové* stránce ve vašich doménách.
 
 ## <a name="test-the-application-gateway"></a>Otestování aplikační brány
 
@@ -181,16 +229,16 @@ Jakmile vytvoříte aplikační bránu s veřejnou IP adresou, získáte adresu 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud už nepotřebujete prostředky, které jste vytvořili ve službě application gateway, odeberte skupinu prostředků. Odstraněním skupiny prostředků je taky odebrat application gateway a všechny související prostředky.
+Pokud už nepotřebujete prostředky, které jste vytvořili v rámci služby Application Gateway, odeberte skupinu prostředků. Když odeberete skupinu prostředků, odeberete také aplikační bránu a všechny související prostředky.
 
-K odebrání skupiny prostředků:
+Odebrání skupiny prostředků:
 
-1. V nabídce vlevo na webu Azure portal vyberte **skupiny prostředků**.
-2. Na **skupiny prostředků** stránky, vyhledejte **myResourceGroupAG** v seznamu, vyberte ji.
-3. Na **stránce skupiny prostředků**vyberte **odstranit skupinu prostředků**.
-4. Zadejte *myResourceGroupAG* pro **zadejte název skupiny prostředků** a pak vyberte **odstranit**
+1. V levé nabídce Azure Portal vyberte **skupiny prostředků**.
+2. Na stránce **skupiny prostředků** vyhledejte v seznamu **myResourceGroupAG** a pak ho vyberte.
+3. Na **stránce skupina prostředků**vyberte **Odstranit skupinu prostředků**.
+4. Zadejte *myResourceGroupAG* pro **typ název skupiny prostředků** a pak vyberte **Odstranit** .
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Další informace o tom, co můžete dělat pomocí služby Azure Application Gateway](application-gateway-introduction.md)
+> [Další informace o tom, co můžete dělat s Azure Application Gateway](application-gateway-introduction.md)

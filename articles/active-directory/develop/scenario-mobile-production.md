@@ -16,12 +16,12 @@ ms.author: jmprieur
 ms.reviwer: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4e778e55bd87e325b3dcf14a8c9f1616157a420b
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 67788dd9257a0a4685313dce44c6a3dfb5e514df
+ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68320894"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68413603"
 ---
 # <a name="mobile-app-that-calls-web-apis---move-to-production"></a>Mobilní aplikace, která volá webová rozhraní API – přesun do produkčního prostředí
 
@@ -44,6 +44,8 @@ Chcete-li diagnostikovat problémy ve vaší aplikaci, pomůže shromažďovat d
 - Uživatelé můžou požádat o pomoc, když nastanou problémy. Osvědčeným postupem je zachytit a dočasně ukládat protokoly a zadat umístění, kam je uživatelé můžou odeslat. MSAL poskytuje rozšíření protokolování pro zachycení podrobných informací o ověřování.
 - Pokud je k dispozici, povolte telemetrii prostřednictvím MSAL ke shromáždění dat o tom, jak se uživatelé přihlásí k vaší aplikaci.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 [!INCLUDE [Move to production common steps](../../../includes/active-directory-develop-scenarios-production.md)]
+
+Vyzkoušejte další ukázky, které jsou k dispozici v [ukázkách | Desktopové a mobilní veřejné klientské aplikace](sample-v2-code.md#desktop-and-mobile-public-client-apps)

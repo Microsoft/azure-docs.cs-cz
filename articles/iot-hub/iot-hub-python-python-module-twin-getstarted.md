@@ -1,6 +1,6 @@
 ---
-title: Začínáme s Azure IoT Hub identit a modul dvojče zařízení (Python) | Dokumentace Microsoftu
-description: Zjistěte, jak vytvořit modul identity a aktualizovat dvojče zařízení pomocí sad IoT SDK pro Python.
+title: Začínáme s identitou modulu Azure IoT Hub a s nevlákenou modulu (Python) | Microsoft Docs
+description: Přečtěte si, jak vytvořit identitu modulu a aktualizovat modul s dvojitou identitou pomocí sad IoT SDK pro Python.
 author: chrissie926
 ms.service: iot-hub
 services: iot-hub
@@ -8,44 +8,50 @@ ms.devlang: python
 ms.topic: conceptual
 ms.date: 04/26/2018
 ms.author: menchi
-ms.openlocfilehash: f887fbd4f82e59c02d6a5b69d0d5b43b426a39bc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 428f13c1c70171404da4cbb6f731d95056813914
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61441202"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68402347"
 ---
-# <a name="get-started-with-iot-hub-module-identity-and-module-twin-using-python-back-end-and-python-device"></a>Začínáme s IoT Hub identit a modul dvojče zařízení pomocí back-end Python a zařízení Python
+# <a name="get-started-with-iot-hub-module-identity-and-module-twin-using-python-back-end-and-python-device"></a>Začínáme s identitou modulu IoT Hub a modulem s dvojitým zprovozněním pomocí back-endu Pythonu a zařízení Pythonu
 
 > [!NOTE]
 > [Identity modulů a dvojčata modulů](iot-hub-devguide-module-twins.md) se podobají identitě zařízení a dvojčeti zařízení služby Azure IoT Hub, ale poskytují větší úroveň členitosti. Zatímco identita zařízení a dvojče zařízení služby Azure IoT Hub umožňují back-endové aplikaci konfigurovat zařízení a poskytují vhled do stavu zařízení, identita modulu a dvojče modulu poskytují tyto možnosti pro jednotlivé součásti zařízení. Na způsobilých zařízeních s několika součástmi, jako jsou zařízení s operačním systémem nebo zařízení s firmwarem, to umožňuje izolovanou konfiguraci a vhled do stavu jednotlivých součástí.
 >
 
-Na konci tohoto kurzu budete mít dvě aplikace v Pythonu:
+Na konci tohoto kurzu máte dvě aplikace v Pythonu:
 
 * Aplikaci **CreateIdentities**, která vytvoří identitu zařízení, identitu modulu a přidružený klíč zabezpečení pro připojení klientů zařízení a modulu.
 
 * Aplikaci **UpdateModuleTwinReportedProperties**, která do služby IoT Hub odešle aktualizované hlášené vlastnosti dvojčete modulu.
 
 > [!NOTE]
-> Informace o Azure IoT SDK, který vám pomůže vytvářet aplikace, které poběží v zařízení a back-endem řešení najdete v tématu [sad SDK Azure IoT](iot-hub-devguide-sdks.md).
+> Informace o sadách Azure IoT SDK, které můžete použít k vytváření aplikací pro spouštění na zařízeních a back-endu vašeho řešení, najdete v tématu sady [SDK Azure IoT](iot-hub-devguide-sdks.md).
 >
 
 Pro absolvování tohoto kurzu potřebujete:
 
-* Aktivní účet Azure. (Pokud účet nemáte, můžete vytvořit [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/) během několika minut.)
+* Aktivní účet Azure. (Pokud účet nemáte, můžete si během několika minut vytvořit [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/) .)
 
-* An IoT Hub.
+* Nainstalujte nejnovější [sadu SDK pro Python](https://github.com/Azure/azure-iot-sdk-python).
 
-* Nainstalujte nejnovější [Python SDK](https://github.com/Azure/azure-iot-sdk-python).
+## <a name="create-an-iot-hub"></a>Vytvoření centra IoT
 
-Nyní jste vytvořili službu IoT Hub a máte název hostitele a připojovací řetězec služby IoT Hub, které potřebujete k dokončení kurzu.
+[!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
-## <a name="create-a-device-identity-and-a-module-identity-in-iot-hub"></a>Vytvoření identity zařízení a modul identity ve službě IoT Hub
+## <a name="get-the-iot-hub-connection-string"></a>Získání připojovacího řetězce centra IoT Hub
 
-V této části vytvoříte aplikaci v Pythonu, která v registru identit ve službě IoT hub vytvoří identitu zařízení a modul identity. Zařízení nebo modul je možné připojit k centru IoT, pouze pokud má záznam v registru identit. Další informace najdete v části "Registr identit" [Příručka vývojáře pro IoT Hub](iot-hub-devguide-identity-registry.md). Když spustíte tuto konzolovou aplikaci, vygeneruje jedinečné ID a klíč zařízení i modulu. Vaše zařízení a modul použijí tyto hodnoty k vlastní identifikaci při odesílání zpráv typu zařízení-cloud do služby IoT Hub. V ID se rozlišují malá a velká písmena.
+[!INCLUDE [iot-hub-howto-module-twin-shared-access-policy-text](../../includes/iot-hub-howto-module-twin-shared-access-policy-text.md)]
 
-Přidejte následující kód do souboru Pythonu:
+[!INCLUDE [iot-hub-include-find-registryrw-connection-string](../../includes/iot-hub-include-find-registryrw-connection-string.md)]
+
+## <a name="create-a-device-identity-and-a-module-identity-in-iot-hub"></a>Vytvoření identity zařízení a identity modulu v IoT Hub
+
+V této části vytvoříte aplikaci v Pythonu, která v registru identit ve službě IoT Hub vytvoří identitu zařízení a identitu modulu. Zařízení nebo modul je možné připojit k centru IoT, pouze pokud má záznam v registru identit. Další informace najdete v části registr identit v [příručce pro vývojáře IoT Hub](iot-hub-devguide-identity-registry.md). Když spustíte tuto konzolovou aplikaci, vygeneruje jedinečné ID a klíč zařízení i modulu. Vaše zařízení a modul použijí tyto hodnoty k vlastní identifikaci při odesílání zpráv typu zařízení-cloud do služby IoT Hub. V ID se rozlišují malá a velká písmena.
+
+Do souboru Pythonu přidejte následující kód:
 
 ```python
 import sys
@@ -64,34 +70,38 @@ try:
     primary_key = ""
     secondary_key = ""
     auth_method = IoTHubRegistryManagerAuthMethod.SHARED_PRIVATE_KEY
-    new_device = iothub_registry_manager.create_device(DEVICE_ID, primary_key, secondary_key, auth_method)
-    print("new_device <" + DEVICE_ID + "> has primary key = " + new_device.primaryKey)
+    new_device = iothub_registry_manager.create_device(
+        DEVICE_ID, primary_key, secondary_key, auth_method)
+    print("new_device <" + DEVICE_ID +
+          "> has primary key = " + new_device.primaryKey)
 
     # CreateModule
-    new_module = iothub_registry_manager.create_module(DEVICE_ID, primary_key, secondary_key, MODULE_ID, auth_method)
-    print("device/new_module <" + DEVICE_ID + "/" + MODULE_ID + "> has primary key = " + new_module.primaryKey)
+    new_module = iothub_registry_manager.create_module(
+        DEVICE_ID, primary_key, secondary_key, MODULE_ID, auth_method)
+    print("device/new_module <" + DEVICE_ID + "/" + MODULE_ID +
+          "> has primary key = " + new_module.primaryKey)
 
 except IoTHubError as iothub_error:
-    print ( "Unexpected error {0}".format(iothub_error) )
+    print("Unexpected error {0}".format(iothub_error))
 except KeyboardInterrupt:
-    print ( "IoTHubRegistryManager sample stopped" )
+    print("IoTHubRegistryManager sample stopped")
 ```
 
-Tato aplikace vytvoří identitu zařízení s ID **myFirstDevice** a identity modul s ID **myFirstModule** zařízení **myFirstDevice**. (Pokud toto ID modulu již v registru identit existuje, kód jednoduše načte informace o stávajícím modulu.) Aplikace pak zobrazí primární klíč pro danou identitu. Tento klíč v aplikaci simulovaného modulu slouží k připojení k centru IoT.
+Tato aplikace vytvoří identitu zařízení s ID **myFirstDevice** a identitou modulu s ID **MyFirstModule** v části **myFirstDevice**zařízení. (Pokud toto ID modulu již v registru identit existuje, kód jednoduše načte informace o stávajícím modulu.) Aplikace pak zobrazí primární klíč pro danou identitu. Tento klíč v aplikaci simulovaného modulu slouží k připojení k centru IoT.
 
 > [!NOTE]
-> V registru identit služby IoT Hub se uchovávají identity zařízení a modulů pouze za účelem bezpečného přístupu k centru IoT. Registr identit ukládá ID zařízení a klíče pro použití jako bezpečnostních pověření. Registr identit také ukládá povolené a zakázané příznaky pro jednotlivá zařízení, pomocí kterých můžete zakázat přístup pro dané zařízení. Pokud aplikace potřebuje pro zařízení ukládat další metadata, měla by používat úložiště pro konkrétní aplikaci. Pro identity modulů neexistuje žádný příznak povoleno/zakázáno. Další informace najdete v tématu [Příručka vývojáře pro IoT Hub](iot-hub-devguide-identity-registry.md).
+> V registru identit služby IoT Hub se uchovávají identity zařízení a modulů pouze za účelem bezpečného přístupu k centru IoT. Registr identit ukládá ID zařízení a klíče pro použití jako bezpečnostních pověření. Registr identit také ukládá povolené a zakázané příznaky pro jednotlivá zařízení, pomocí kterých můžete zakázat přístup pro dané zařízení. Pokud aplikace potřebuje pro zařízení ukládat další metadata, měla by používat úložiště pro konkrétní aplikaci. Pro identity modulů neexistuje žádný příznak povoleno/zakázáno. Další informace najdete v tématu [IoT Hub příručka pro vývojáře](iot-hub-devguide-identity-registry.md).
 >
 
-## <a name="update-the-module-twin-using-python-device-sdk"></a>Aktualizovat dvojče zařízení Python SDK
+## <a name="update-the-module-twin-using-python-device-sdk"></a>Aktualizujte modul s dvojitou sadou pomocí sady SDK pro zařízení Pythonu.
 
-V této části vytvoříte Python aplikace na zařízení s Simulovaná, která aktualizuje dvojčete modulu ohlášené vlastnosti.
+V této části vytvoříte aplikaci v Pythonu na simulovaném zařízení, které aktualizuje nedokončené hlášené vlastnosti modulu.
 
-1. **Získání připojovacího řetězce modulu** – nyní, pokud se přihlásíte [webu Azure portal](https://portal.azure.com/). Přejděte do vaší služby IoT Hub a klikněte na Zařízení IoT. Najít myFirstDevice, otevřít a zobrazit myFirstModule byl úspěšně vytvořen. Zkopírujte připojovací řetězec modulu. Budete ho potřebovat v dalším kroku.
+1. **Získání připojovacího řetězce modulu** – nyní Pokud se přihlásíte k [Azure Portal](https://portal.azure.com/). Přejděte do vaší služby IoT Hub a klikněte na Zařízení IoT. Najděte myFirstDevice, otevřete ho a uvidíte, že myFirstModule se úspěšně vytvořil. Zkopírujte připojovací řetězec modulu. Budete ho potřebovat v dalším kroku.
 
    ![Podrobnosti o modulu na webu Azure Portal](./media/iot-hub-python-python-module-twin-getstarted/module-detail.png)
 
-2. **Create UpdateModuleTwinReportedProperties app**
+2. **Vytvoření aplikace UpdateModuleTwinReportedProperties**
 
    Do horní části souboru **Program.cs** přidejte následující příkazy `using`:
 
@@ -129,7 +139,7 @@ Tento vzorový kód ukazuje, jak načíst dvojče modulu a aktualizovat hlášen
 
 ## <a name="get-updates-on-the-device-side"></a>Získat aktualizace na straně zařízení
 
-Kromě výše uvedeného kódu můžete přidat následující blok kódu, aktualizace dvojčete zpráv na vašem zařízení.
+Kromě výše uvedeného kódu můžete přidat níže uvedený blok kódu, který na zařízení získá zprávu o zdvojené aktualizaci.
 
 ```python
 import random
@@ -141,26 +151,28 @@ from iothub_client import IoTHubModuleClient, IoTHubClientError, IoTHubTransport
 PROTOCOL = IoTHubTransportProvider.AMQP
 CONNECTION_STRING = ""
 
+
 def module_twin_callback(update_state, payload, user_context):
-    print ("")
-    print ("Twin callback called with:")
-    print ("updateStatus: %s" % update_state )
-    print ("context: %s" % user_context )
-    print ("payload: %s" % payload )
+    print("")
+    print("Twin callback called with:")
+    print("updateStatus: %s" % update_state)
+    print("context: %s" % user_context)
+    print("payload: %s" % payload)
+
 
 try:
     module_client = IoTHubModuleClient(CONNECTION_STRING, PROTOCOL)
     module_client.set_module_twin_callback(module_twin_callback, 1234)
 
-    print ("Waiting for incoming twin messages.  Hit Control-C to exit.")
+    print("Waiting for incoming twin messages.  Hit Control-C to exit.")
     while True:
 
         time.sleep(1000000)
 
 except IoTHubError as iothub_error:
-    print ( "Unexpected error {0}".format(iothub_error) )
+    print("Unexpected error {0}".format(iothub_error))
 except KeyboardInterrupt:
-    print ( "module client sample stopped" )
+    print("module client sample stopped")
 ```
 
 ## <a name="next-steps"></a>Další postup

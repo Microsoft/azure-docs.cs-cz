@@ -11,19 +11,19 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 79f5eba18e34f65f7bc8a625babca92b86e06b4c
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.openlocfilehash: ad2f25aac7f74c74eb63fd4666c5184ae751ec1f
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67867335"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68499937"
 ---
 # <a name="enable-passwordless-sign-in-for-azure-ad-preview"></a>Povolení přihlášení neheslem pro Azure AD (Preview)
 
 ## <a name="requirements"></a>Požadavky
 
-* Azure Multi-Factor Authentication
-* Kombinovaná registrace – náhled
+* Služba Azure Multi-Factor Authentication
+* Kombinovaná registrace ve verzi Preview s povolenými uživateli pro SSPR
 * FIDO2 Security Key Preview vyžaduje kompatibilní klíče zabezpečení FIDO2.
 * Operace WebAuthN vyžaduje Microsoft Edge ve Windows 10 verze 1809 nebo vyšší.
 * Přihlášení systému Windows založené na FIDO2 vyžaduje Windows 10 připojená k Azure AD verze 1809 nebo vyšší.
@@ -59,7 +59,7 @@ Pokud chcete cílit na konkrétní skupiny zařízení a povolit poskytovatele p
       1. Název: Zapnout přihlášení k Windows FIDO klíče zabezpečení
       1. OMA-URI:./Device/Vendor/MSFT/PassportForWork/SecurityKey/UseSecurityKeyForSignin
       1. Datový typ: Integer
-      1. Osa 1 
+      1. Hodnota: 1 
 1. Tato zásada se dá přiřadit konkrétním uživatelům, zařízením nebo skupinám. Další informace najdete v článku [přiřazení profilů uživatelů a zařízení v Microsoft Intune](https://docs.microsoft.com/intune/device-profile-assign).
 
 ![Vytvoření vlastní zásady konfigurace zařízení v Intune](./media/howto-authentication-passwordless-enable/intune-custom-profile.png)
@@ -171,7 +171,7 @@ Informace o přihlášení pomocí aplikace Microsoft Authenticator najdete v č
 
 Ve verzi Public Preview není k dispozici zřízení a zrušení zřizování správců klíčů zabezpečení.
 
-#### <a name="hybrid-azure-ad-join"></a>Hybridní připojení k Azure AD
+#### <a name="hybrid-azure-ad-join"></a>Připojení k hybridní službě Azure AD
 
 Uživatelé, kteří se spoléhají na jednotné přihlašování, které používá spravované přihlašovací údaje, jako jsou FIDO2 zabezpečovací klíče nebo přihlašování bez hesla pomocí aplikace Microsoft Authenticator, potřebují ke hybridnímu připojení ve Windows 10 a získat výhody jednotného přihlašování. Bezpečnostní klíče ale fungují jenom pro teď Azure Active Directory připojené počítače. Doporučujeme, abyste si pro zamykací obrazovku Windows na počítačích s čistým Azure Active Directoryi vyzkoušeli jenom bezpečnostní klíče pro FIDO2. Toto omezení se nevztahuje na web.
 
@@ -179,7 +179,7 @@ Uživatelé, kteří se spoléhají na jednotné přihlašování, které použ�
 
 Pracujeme na podpoře funkce, která umožňuje změnit hlavní název uživatele (UPN) na hybridních AADJ a AADJ zařízeních. Pokud se změní hlavní název uživatele (UPN), nebudete už moct měnit bezpečnostní klíče FIDO2 k tomuto účtu. Jediným přístupem je resetování zařízení a uživatel se musí znovu zaregistrovat.
 
-### <a name="authenticator-app"></a>Ověřovací aplikace
+### <a name="authenticator-app"></a>Aplikace Authenticator
 
 #### <a name="ad-fs-integration"></a>Integrace AD FS
 

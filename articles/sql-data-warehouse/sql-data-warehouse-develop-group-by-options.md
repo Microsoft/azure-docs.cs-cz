@@ -1,8 +1,8 @@
 ---
-title: Skupiny pomocí možnosti v Azure SQL Data Warehouse | Dokumentace Microsoftu
-description: Tipy pro implementaci skupinu podle možnosti ve službě Azure SQL Data Warehouse pro vývoj řešení.
+title: Použití možností Group by v Azure SQL Data Warehouse | Microsoft Docs
+description: Tipy pro implementaci skupin podle možností v Azure SQL Data Warehouse pro vývoj řešení.
 services: sql-data-warehouse
-author: XiaoyuL-Preview
+author: XiaoyuMSFT
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
@@ -10,30 +10,30 @@ ms.subservice: query
 ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: b158048929d3db8672d76027666331448a91a0a8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2f6614f32c31338c9cf4f00307c475db4e02f553
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65861803"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68479636"
 ---
-# <a name="group-by-options-in-sql-data-warehouse"></a>Seskupit podle možnosti ve službě SQL Data Warehouse
-Tipy pro implementaci skupinu podle možnosti ve službě Azure SQL Data Warehouse pro vývoj řešení.
+# <a name="group-by-options-in-sql-data-warehouse"></a>Seskupit podle možností v SQL Data Warehouse
+Tipy pro implementaci skupin podle možností v Azure SQL Data Warehouse pro vývoj řešení.
 
-## <a name="what-does-group-by-do"></a>GROUP BY k čemu slouží?
+## <a name="what-does-group-by-do"></a>Co dělá GROUP BY?
 
-[Group](/sql/t-sql/queries/select-group-by-transact-sql) klauzule T-SQL agreguje data do souhrnu sady řádků. GROUP BY obsahuje některé možnosti, které SQL Data Warehouse nepodporuje. Tyto možnosti mají alternativní řešení.
+Klauzule [Group by](/sql/t-sql/queries/select-group-by-transact-sql) T-SQL agreguje data na souhrnnou sadu řádků. GROUP BY obsahuje některé možnosti, které SQL Data Warehouse nepodporuje. Tyto možnosti mají alternativní řešení.
 
 Tyto možnosti jsou
 
-* Klauzule GROUP BY souhrn
-* GROUPING SETS
-* Klauzule GROUP BY datové KRYCHLE
+* Seskupit podle se SOUHRNem
+* SADY SESKUPENÍ
+* Seskupit podle s datovou krychlí
 
-## <a name="rollup-and-grouping-sets-options"></a>Rollup a grouping sets možnosti
-Je nejjednodušší možnost UNION ALL místo toho použít k provedení této kumulativní nespoléhat se na explicitní syntaxe. Výsledkem je přesně tatáž
+## <a name="rollup-and-grouping-sets-options"></a>Možnosti sady možností Shrnutí a seskupení
+Nejjednodušší možností je použít místo toho SJEDNOCENí, aby se souhrn prováděl místo spoléhání na explicitní syntaxi. Výsledek je přesně stejný
 
-Následující příklad pomocí příkazu GROUP BY s souhrn možností:
+Následující příklad používá příkaz GROUP BY s možností ROLLUP:
 ```sql
 SELECT [SalesTerritoryCountry]
 ,      [SalesTerritoryRegion]
@@ -47,13 +47,13 @@ GROUP BY ROLLUP (
 ;
 ```
 
-Pomocí souhrnné požadavků v předchozím příkladu následující agregace:
+Pomocí SOUHRNu si předchozí příklad vyžádá následující agregace:
 
-* Země a oblasti
-* Země
+* Země a oblast
+* Country
 * Celkový součet
 
-Nahraďte KUMULATIVNÍ a vrátí stejné výsledky, můžete použít UNION ALL a explicitně určit požadovanou agregaci:
+Chcete-li nahradit souhrn a vrátit stejné výsledky, můžete použít příkaz UNION ALL a explicitně zadat požadované agregace:
 
 ```sql
 SELECT [SalesTerritoryCountry]
@@ -80,14 +80,14 @@ FROM  dbo.factInternetSales s
 JOIN  dbo.DimSalesTerritory t     ON s.SalesTerritoryKey       = t.SalesTerritoryKey;
 ```
 
-Nahradit GROUPING SETS, ukázkové zásady platí. Potřebujete vytvořit unií všechny oddíly úrovních agregace, které chcete zobrazit.
+Chcete-li nahradit sady seskupení, použije se princip ukázky. Pro úrovně agregace, které chcete zobrazit, stačí vytvořit pouze oddíly SJEDNOCENí.
 
 ## <a name="cube-options"></a>Možnosti datové krychle
-Je možné vytvořit SKUPINU podle s datovou KRYCHLI UNION ALL přístup. Problém je, že kód může být náročné a nepraktické. Pokud chcete tento problém zmírnit, můžete použít toto rozšířené přístup.
+Je možné vytvořit skupinu pomocí datové krychle s použitím přístupu UNION ALL. Problémem je to, že kód může být rychle náročný a nepraktický. Pro zmírnění tohoto problému můžete použít tento pokročilejší přístup.
 
-Použijeme výše uvedený příklad.
+Pojďme použít výše uvedený příklad.
 
-Prvním krokem je definování "datové krychle", který definuje všechny úrovně seskupení, který chcete vytvořit. Je důležité si poznamenejte křížové spojení dvou odvozených tabulek. Tím se vygeneruje všechny úrovně pro nás. Zbývající část kódu je ve skutečnosti pro formátování.
+Prvním krokem je definování datové krychle, která definuje všechny úrovně agregace, které chceme vytvořit. Je důležité si povšimnout VZÁJEMNÉho spojení dvou odvozených tabulek. Tím se vygeneruje všechny úrovně pro nás. Zbytek kódu je opravdu pro formátování.
 
 ```sql
 CREATE TABLE #Cube
@@ -118,11 +118,11 @@ SELECT Cols
 FROM GrpCube;
 ```
 
-Následuje ukázka výsledky příkazu CTAS:
+Následující příklad ukazuje výsledky CTAS:
 
-![Seskupit datové krychle](media/sql-data-warehouse-develop-group-by-options/sql-data-warehouse-develop-group-by-cube.png)
+![Seskupit podle datové krychle](media/sql-data-warehouse-develop-group-by-options/sql-data-warehouse-develop-group-by-cube.png)
 
-Druhým krokem je určit cílovou tabulku pro ukládání dočasné výsledků:
+Druhým krokem je zadání cílové tabulky pro uložení dočasných výsledků:
 
 ```sql
 DECLARE
@@ -145,7 +145,7 @@ WITH
 ;
 ```
 
-Je třetí krok k vytvoření smyčky přes naše datová krychle sloupců provádí agregaci. Dotaz se spustí jednou pro každý řádek v dočasné tabulce #Cube a ukládání výsledků do dočasné tabulky #Results
+Třetí krok je smyčka nad naši datovou krychlí sloupců, které provádí agregaci. Dotaz se spustí jednou pro každý řádek v #Cube dočasné tabulce a výsledky se uloží do dočasné tabulky #Results
 
 ```sql
 SET @nbr =(SELECT MAX(Seq) FROM #Cube);
@@ -169,7 +169,7 @@ BEGIN
 END
 ```
 
-A konečně můžete se vrátit výsledky podle jednoduše čtení z dočasné tabulky #Results
+Nakonec můžete vracet výsledky pouhým čtením z #Results dočasné tabulky.
 
 ```sql
 SELECT *
@@ -178,8 +178,8 @@ ORDER BY 1,2,3
 ;
 ```
 
-Kód rozdělení do oddílů a generování uvozuje konstruktor cyklu, kód stane spravovatelné a udržovatelný.
+Poškozením kódu v sekcích a generováním konstrukce smyčky se kód bude lépe spravovat a udržovatelný.
 
 ## <a name="next-steps"></a>Další postup
-Další tipy pro vývoj najdete v části [přehled vývoje](sql-data-warehouse-overview-develop.md).
+Další tipy pro vývoj najdete v tématu [Přehled vývoje](sql-data-warehouse-overview-develop.md).
 

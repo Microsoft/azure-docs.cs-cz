@@ -1,5 +1,5 @@
 ---
-title: Integrace Security Center s produkty zabezpečení Azure | Microsoft Docs
+title: Integrace produktů zabezpečení Azure v Azure Security Center | Microsoft Docs
 description: Tato témata představují produkty zabezpečení Azure integrované s Azure Security Center.
 services: security-center
 documentationcenter: na
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 7/02/2019
 ms.author: v-mohabe
-ms.openlocfilehash: 64a636cc4452de1ef4a2d0e94629e7d8e3a5878d
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: 847748d1c56221119d8f74a2aee716ee08448e28
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68295741"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68335815"
 ---
-# <a name="security-center-integration-with-azure-security-products-in-asc"></a>Integrace Security Center s produkty zabezpečení Azure v ASC
+# <a name="integration-of-azure-security-products-in-azure-security-center"></a>Integrace produktů zabezpečení Azure v Azure Security Center
 
 Security Center nabízí zákazníkům s dalšími licencemi Microsoftu k zaregistrování svých nálezů, aby je Security Center a provedli konsolidovaným způsobem.
 

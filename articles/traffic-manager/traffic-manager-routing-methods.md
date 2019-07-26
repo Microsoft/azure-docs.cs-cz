@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: allensu
-ms.openlocfilehash: dd4b9f88e61396003a209b1b8edabb8c1564c761
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
-ms.translationtype: HT
+ms.openlocfilehash: 305f24fc274ad48f5c60762223b7bf4e970fe083
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68320092"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68333733"
 ---
 # <a name="traffic-manager-routing-methods"></a>Metody směrování Traffic Manageru
 
@@ -28,7 +28,7 @@ V Traffic Manager jsou k dispozici následující metody směrování provozu:
 * **[Výkon](#performance):** Vyberte možnost **výkon** , pokud máte koncové body v různých geografických umístěních a chcete, aby koncoví uživatelé používali "nejbližší" koncový bod z hlediska nejnižší latence sítě.
 * **[Geografické](#geographic):** Vyberte **geografické** , aby byli uživatelé přesměrováni na konkrétní koncové body (Azure, External nebo Nested) na základě geografického umístění, ze kterého jejich dotaz DNS pochází. To umožňuje Traffic Manager zákazníkům povolit scénáře, ve kterých je důležité, aby znali geografickou oblast uživatele a mohli je směrovat na základě důležitosti. Mezi příklady patří dodržování pověření k suverenitě dat, lokalizace obsahu & uživatelského prostředí a měření provozu z různých oblastí.
 * **S více [hodnotami](#multivalue):** Vyberte možnost **vícehodnotové** pro profily Traffic Manager, které mohou mít jako koncové body pouze adresy IPv4/IPv6. Při přijetí dotazu pro tento profil jsou vráceny všechny funkční koncové body.
-* **[Podsíť](#subnet):** Vyberte  způsob směrování provozu, který umožňuje mapovat sady rozsahů IP adres koncových uživatelů na konkrétní koncový bod v rámci profilu Traffic Manager. Po přijetí žádosti se vrátí koncový bod, který je namapován pro zdrojovou IP adresu této žádosti. 
+* **[Podsíť](#subnet):** Vyberte **způsob** směrování provozu, který umožňuje mapovat sady rozsahů IP adres koncových uživatelů na konkrétní koncový bod v rámci profilu Traffic Manager. Po přijetí žádosti se vrátí koncový bod, který je namapován pro zdrojovou IP adresu této žádosti. 
 
 
 Všechny profily Traffic Manager zahrnují monitorování stavu koncových bodů a automatického převzetí služeb při selhání koncového bodu. Další informace najdete v tématu [Traffic Manager monitorování koncového bodu](traffic-manager-monitoring.md). Jeden profil Traffic Manager může používat jenom jednu metodu směrování provozu. Pro váš profil můžete kdykoli vybrat jinou metodu směrování provozu. Změny se uplatní během jedné minuty a neúčtují se žádné výpadky. Metody směrování provozu lze kombinovat pomocí vnořených Traffic Manager profilů. Vnořování umožňuje sofistikované a flexibilní konfigurace směrování provozu, které splňují potřeby větších, složitých aplikací. Další informace najdete v tématu [vnořené Traffic Manager profily](traffic-manager-nested-profiles.md).
@@ -119,7 +119,7 @@ Traffic Manager přečte zdrojovou IP adresu dotazu DNS a rozhodnete, z jakých 
     >Důrazně doporučujeme, aby zákazníci, kteří používají geografickou metodu směrování, spojili s vnořenými koncovými body, které mají podřízené profily obsahující alespoň dva koncové body v každé z nich.
 - Pokud se najde shoda koncového bodu a tento koncový bod je  ve stavu Zastaveno, Traffic Manager vrátí odpověď na data. V takovém případě se v hierarchii geografických oblastí nezvýší žádná další hledání. Toto chování platí také pro vnořené typy koncových bodů, pokud je podřízený profil v **zastaveném** nebo **zakázaném** stavu.
 - Pokud koncový bod zobrazí **zakázaný** stav, nebude zahrnutý v rámci procesu odpovídajícího regionu. Toto chování platí také pro vnořené typy koncových bodů, pokud je koncový bod  v zakázaném stavu.
-- Pokud dotaz pochází z geografické oblasti, která nemá v tomto profilu žádné mapování, Traffic Manager vrátí odpověď na DATA. Proto se důrazně doporučuje, aby zákazníci používali geografické směrování s jedním koncovým bodem, a to v ideálním případě typu vnořeného s alespoň dvěma koncovými body  v rámci podřízeného profilu s oblastí, která je k ní přiřazená. Tím se také zajistí, že se zpracují všechny IP adresy, které nejsou namapované na oblast.
+- Pokud dotaz pochází z geografické oblasti, která nemá v tomto profilu žádné mapování, Traffic Manager vrátí odpověď na DATA. Proto se důrazně doporučuje, aby zákazníci používali geografické směrování s jedním koncovým bodem, a to v ideálním případě typu vnořeného s alespoň dvěma koncovými body v rámci podřízeného profilu **s oblastí,** která je k ní přiřazená. Tím se také zajistí, že se zpracují všechny IP adresy, které nejsou namapované na oblast.
 
 Jak je vysvětleno, [jak Traffic Manager funguje](traffic-manager-how-it-works.md), Traffic Manager nepřijímá dotazy DNS přímo od klientů. Místo toho pocházejí dotazy DNS z rekurzivní služby DNS, které jsou nakonfigurovány pro použití. Proto IP adresa, která se používá k určení oblasti, není IP adresa klienta, ale jedná se o IP adresu rekurzivní služby DNS. V praxi je tato IP adresa pro klienta dobrým proxy serverem.
 
@@ -146,7 +146,15 @@ Jak je vysvětleno, [jak Traffic Manager funguje](traffic-manager-how-it-works.m
 * [Existují nějaká omezení verze rozhraní API, která podporuje tento typ směrování?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#are-there-any-restrictions-on-the-api-version-that-supports-this-routing-type)
 
 ## <a name = "multivalue"></a>Vyhodnotit metodu směrování provozu
-Metoda  vynásobení přenosu provozu umožňuje v jedné odpovědi na dotaz DNS získat několik zdravých koncových bodů. To umožňuje volajícímu provádět opakované pokusy na straně klienta s jinými koncovými body v případě, že vrácený koncový bod nereaguje. Tento model může zvýšit dostupnost služby a snížit latenci spojenou s novým dotazem DNS a získat dobrý koncový bod. Metoda směrování s více hodnotami funguje pouze v případě, že jsou všechny koncové body typu External a jsou zadány jako adresy IPv4 nebo IPv6. Při přijetí dotazu pro tento profil jsou vráceny všechny funkční koncové body a podléhají konfigurovatelnému maximálnímu počtu vrácených položek.
+Metoda vynásobení **přenosu provozu** umožňuje v jedné odpovědi na dotaz DNS získat několik zdravých koncových bodů. To umožňuje volajícímu provádět opakované pokusy na straně klienta s jinými koncovými body v případě, že vrácený koncový bod nereaguje. Tento model může zvýšit dostupnost služby a snížit latenci spojenou s novým dotazem DNS a získat dobrý koncový bod. Metoda směrování s více hodnotami funguje pouze v případě, že jsou všechny koncové body typu External a jsou zadány jako adresy IPv4 nebo IPv6. Při přijetí dotazu pro tento profil jsou vráceny všechny funkční koncové body a podléhají konfigurovatelnému maximálnímu počtu vrácených položek.
+
+### <a name="faqs"></a>Nejčastější dotazy
+
+* [Jaké jsou případy použití, ve kterých je vhodné použít směrování s více hodnotami?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-are-some-use-cases-where-multivalue-routing-is-useful)
+
+* [Kolik koncových bodů se vrátí při použití směrování s více hodnotami?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-many-endpoints-are-returned-when-multivalue-routing-is-used)
+
+* [Získá se stejná sada koncových bodů, když se použije směrování s více hodnotami?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#will-i-get-the-same-set-of-endpoints-when-multivalue-routing-is-used)
 
 ## <a name = "subnet"></a>Přenos podsítí – Metoda směrování
 Metoda směrování provozu v **podsíti** umožňuje namapovat skupinu rozsahů IP adres koncového uživatele na konkrétní koncové body v profilu. Pokud Traffic Manager obdrží dotaz DNS pro tento profil, zkontroluje zdrojovou IP adresu tohoto požadavku (ve většině případů to bude odchozí IP adresa překladače DNS používaného volajícím), určení, ke kterému koncového bodu je namapován, a vrátí t Hat Endpoint v odpovědi na dotaz 
@@ -155,6 +163,19 @@ IP adresa, která se má namapovat na koncový bod, se dá zadat jako rozsahy CI
 Pokud definujete koncový bod bez rozsahu adres, tato funkce funguje jako záložní a převezme provoz ze všech zbývajících podsítí. Pokud není součástí žádného záložního koncového bodu, Traffic Manager odešle odpověď na DATA pro všechny nedefinované rozsahy. Důrazně doporučujeme, abyste buď definovali záložní koncový bod, nebo jinak zajisti, že všechny možné rozsahy IP adres jsou zadané v rámci koncových bodů.
 
 Směrování podsítí se dá využít k poskytování různých možností pro uživatele, kteří se připojují z konkrétního ADRESního prostoru. Například při použití směrování podsítě může zákazník provádět směrování všech žádostí z firemní kanceláře na jiný koncový bod, kde můžou testovat pouze interní verzi jejich aplikace. Dalším scénářem je, že chcete pro uživatele, kteří se připojují z konkrétního poskytovatele internetových služeb, získat jiné zkušenosti (například zablokovat uživatele z daného poskytovatele internetových služeb).
+
+### <a name="faqs"></a>Nejčastější dotazy
+
+* [Jaké jsou případy použití, kde je směrování podsítě užitečné?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-are-some-use-cases-where-subnet-routing-is-useful)
+
+* [Jak Traffic Manager znát IP adresu koncového uživatele?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-does-traffic-manager-know-the-ip-address-of-the-end-user)
+
+* [Jak lze při používání směrování podsítí zadat IP adresy?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-can-i-specify-ip-addresses-when-using-subnet-routing)
+
+* [Jak můžu při používání směrování podsítí zadat záložní koncový bod?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-can-i-specify-a-fallback-endpoint-when-using-subnet-routing)
+
+* [Co se stane, když je v profilu typu směrování podsítě zakázán koncový bod?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-happens-if-an-endpoint-is-disabled-in-a-subnet-routing-type-profile)
+
 
 ## <a name="next-steps"></a>Další kroky
 
