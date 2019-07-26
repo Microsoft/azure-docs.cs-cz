@@ -1,6 +1,6 @@
 ---
-title: Řešení potíží – řešení potíží s konfigurací branou služby Azure | Dokumentace Microsoftu
-description: V tomto kurzu se dozvíte, jak k samoobslužné řešení běžných problémů, které mohou nastat pro vaše branou.
+title: Řešení potíží – řešení potíží s konfigurací služby front-dveří pro Azure | Microsoft Docs
+description: V tomto kurzu se naučíte, jak sami řešit některé běžné problémy, které se dají pro vaše přední dveře vytvářet.
 services: frontdoor
 documentationcenter: ''
 author: sharad4u
@@ -12,61 +12,61 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/22/2018
 ms.author: sharadag
-ms.openlocfilehash: 7a261d65a7bd3eea150dd764c65b94ddd47466b3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 420d7afe0d825da9149f2cb2ae1540a2805b357c
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60736118"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68335881"
 ---
-# <a name="troubleshooting-common-routing-issues"></a>Řešení běžných potíží směrování
-Tento článek popisuje, jak řešení běžných problémů směrování, které mohou nastat pro vaši konfiguraci služby Azure branou. 
+# <a name="troubleshooting-common-routing-issues"></a>Řešení běžných potíží se směrováním
+Tento článek popisuje, jak řešit některé běžné problémy s směrováním, které se můžou u konfigurace služby front-dveří pro Azure provést. 
 
-## <a name="hostname-not-routing-to-backend-and-returns-400-status-code"></a>Název hostitele není směrování do back-end a vrátí stavový kód 400
+## <a name="hostname-not-routing-to-backend-and-returns-400-status-code"></a>Název hostitele nesměruje do back-endu a vrátí stavový kód 400.
 
-
-### <a name="symptom"></a>Příznak
-- Přední dveře jste vytvořili, ale požadavek na hostitele front-endu vrací stavový kód HTTP 400.
-
-  - Jste vytvořili DNS mapování z vlastní domény pro hostování front-endu jste nakonfigurovali. Ale odesílá požadavek na název hostitele vlastní domény vrátí stavový kód HTTP 400 a zřejmě směrovat backend(s) nakonfigurovali.
-
-### <a name="cause"></a>Příčina
-- K tomuto problému může dojít, pokud jste nenakonfigurovali pravidlo směrování pro vlastní doménu, ke které jste přidali jako hostitele front-endu. Pravidlo směrování musí být explicitně přidán pro tohoto hostitele front-endu i v případě, že již byla nakonfigurována pro hostitele front-endu v rámci branou subdoménu (*. azurefd.net), vaše vlastní doména má mapování DNS.
-
-### <a name="troubleshooting-steps"></a>Řešení potíží
-- Přidáte pravidlo směrování z vlastní domény do požadované back-endový fond.
-
-## <a name="request-to-frontend-hostname-returns-404-status-code"></a>Požadavek na názvu hostitele front-endu stavový kód 404 vrátí
 
 ### <a name="symptom"></a>Příznak
-- Vytvoření branou a nakonfigurovat hostitele front-endu, back-endový fond s aspoň jeden back-endem v něm a pravidel směrování, která se připojuje hostitele front-endu do back-endový fond. Váš obsah se nezdá být k dispozici při odesílání požadavku do hostitele nakonfigurovaného front-endu, protože se vrátí stavový kód HTTP 404.
+- Vytvořili jste přední dveře, ale požadavek na hostitele front-end vrací stavový kód HTTP 400.
+
+  - Vytvořili jste mapování DNS z vlastní domény na hostitele front-endu, kterého jste nakonfigurovali. Odesláním žádosti o název hostitele vlastní domény ale vrátí stavový kód HTTP 400 a nezobrazuje se směrování na back-endové servery, které jste nakonfigurovali.
 
 ### <a name="cause"></a>Příčina
-Existuje několik možných příčin pro tento příznak:
- - Back-end není veřejný internetový back-endu a není viditelný pro službu branou.
+- K tomuto problému může dojít, pokud jste nenakonfigurovali pravidlo směrování pro vlastní doménu, kterou jste přidali jako hostitele s front-endu. Pravidlo směrování se musí explicitně přidat pro tohoto hostitele front-endu, a to i v případě, že už je nakonfigurovaný pro hostitele front-end v rámci subdomény front-endu (*. azurefd.net), na kterou má vaše vlastní doména mapování DNS.
 
-- Back-end není správně nakonfigurovaný, který je příčinou branou služby umožňující odesílání chybného požadavku (to znamená, back-endu přijímá jenom HTTP, ale ne není zaškrtnuto, což požadavky HTTPS, takže branou se pokouší předávat HTTPS).
-- Back-endu zamítá hlavičku hostitele, která byla předána s požadavkem na back-end.
-- Konfigurace back-endu nebyla ještě nasazena plně.
+### <a name="troubleshooting-steps"></a>Postup řešení potíží
+- Přidejte pravidlo směrování z vlastní domény do požadovaného back-end fondu.
 
-### <a name="troubleshooting-steps"></a>Řešení potíží
+## <a name="request-to-frontend-hostname-returns-404-status-code"></a>Požadavek na název hostitele front-endu vrátí stavový kód 404.
+
+### <a name="symptom"></a>Příznak
+- Vytvořili jste přední dvířka a nakonfigurovali hostitele front-endu, back-end fond s alespoň jedním back-end serverem a pravidlo směrování, které připojuje hostitele front-end k back-endovému fondu. Váš obsah nemusí být k dispozici při odesílání žádosti do nakonfigurovaného hostitele front-endu, protože je vrácen stavový kód HTTP 404.
+
+### <a name="cause"></a>Příčina
+U tohoto příznaku existuje několik možných příčin:
+ - Back-end není veřejným přístupem k back-endu a není viditelný pro službu front-dveří.
+
+- Back-end je nesprávně nakonfigurovaný, což způsobuje, že služba front-endu odesílá nesprávný požadavek (to znamená, že back-end přijímá pouze protokol HTTP, ale nejste u něj nezkontrolovali povolení protokolu HTTPS, aby se při pokusu o přeposílání požadavků HTTPS předaly dveře.
+- Back-end odmítá hlavičku hostitele předanou žádostí do back-endu.
+- Konfigurace pro back-end ještě není plně nasazená.
+
+### <a name="troubleshooting-steps"></a>Postup řešení potíží
 1. Čas nasazení
-    - Ujistěte se, že mají čekat přibližně 10 minut, než se konfigurace mají být nasazeny.
+    - Před nasazením konfigurace se ujistěte, že jste čekali přibližně 10 minut.
 
-2. Zkontrolujte nastavení back-endu
-   - Přejděte do back-endový fond, který požadavek by měl směrování (závisí na tom, jak máte nakonfigurované pravidlo směrování) a ověřte, zda _typ hostitele back-endu_ a název hostitele back-end jsou správné. Pokud back-end je vlastního hostitele, ujistěte se, že jste zadali správně. 
+2. Kontrolovat nastavení back-endu
+   - Přejděte do fondu back-end, do kterého se má žádost směrovat (závisí na tom, jak máte nakonfigurované pravidlo směrování), a ověřte, že _typ hostitele back-endu_ a název hostitele back-endu jsou správné. Pokud je back-end vlastním hostitelem, ujistěte se, že je správně napsaný. 
 
-   - Zkontrolujte vaše portech HTTP a HTTPS. Ve většině případů 80 a 443 (v uvedeném pořadí), jsou správné a se nevyžaduje žádné změny. Ale je pravděpodobné, že back-endu není nakonfigurována tímto způsobem a naslouchá na jiném portu.
+   - Ověřte porty HTTP a HTTPS. Ve většině případů jsou 80 a 443 (v uvedeném pořadí) správné a nevyžadují se žádné změny. Existuje však možnost, že back-end není nakonfigurován tímto způsobem a naslouchá na jiném portu.
 
-     - Zkontrolujte _hlavičku hostitele back-endu_ nakonfigurovaný pro back-EndY, který by měl směrování hostitele front-endu. Ve většině případů toto záhlaví by měl být stejný jako _název hostitele back-endu_. Nesprávná hodnota však může způsobit různé stavové kódy HTTP 4xx, pokud back-end očekává, že něco jiného. Pokud zadáte IP adresu vaší back-end, je nutné nastavit _hlavičku hostitele back-endu_ na název hostitele z back-endu.
+     - Ověřte _hlavičku hostitele back-end_ nakonfigurovanou pro back-endy, do kterých se má hostitel front-endu směrovat. Ve většině případů by tato hlavička měla být stejná jako _název hostitele back-endu_. Nesprávná hodnota ale může způsobit různé stavové kódy 4xx HTTP, pokud back-end očekává něco jiného. Pokud zadáte IP adresu vašeho back-endu, možná budete muset nastavit _hlavičku hostitele back-end_ na název hostitele back-endu.
 
 
-3. Zkontrolujte nastavení pravidla směrování
-     - Přejděte na pravidlo směrování, který by měl směrovat z dotyčný názvu hostitele front-endu do back-endový fond. Ujistěte se, že jsou správně nakonfigurované přijaté protokoly nebo pokud ne, ujistěte se, že je správně nakonfigurovaný protokol, který branou bude používat při předání požadavku. _Přijato protokoly_ Určuje, který požaduje branou by měla přijímat a _předávání protokolu_ pod _Upřesnit_ kartu Určuje, který protokol branou používejte k předání požadavku do back-endu.
-          - Například pokud back-endu přijímá pouze požadavky HTTP následující konfigurace by platné:
-               - _Přijata protokoly_ jsou HTTP a HTTPS. _Předávání protokolu_ je HTTP. Shoda požadavek nebude fungovat, protože je povolený protokol HTTPS a pokud se žádost o byli zaznamenáni v jako protokol HTTPS, branou mistranslation: předat dál pomocí protokolu HTTPS.
+3. Ověřte nastavení pravidla směrování.
+     - Přejděte do pravidla směrování, které by mělo směrovat z daného názvu hostitele front-endu do back-endového fondu. Zajistěte, aby byly přijaté protokoly správně nakonfigurované, nebo pokud ne, zajistěte, aby se při předávání žádosti správně nakonfigurovala Tato dvířka protokolu. _Přijaté protokoly_ určují, které požadavky musí přední dveře přijmout, a _protokol předávání_ určuje, jaké přední dveře protokolu mají použít k předání požadavku do back-endu.
+          - Příklad: Pokud back-end akceptuje pouze požadavky HTTP, budou platné následující konfigurace:
+               - _Přijaté protokoly_ jsou HTTP a HTTPS. _Protokol předávání_ je http. Požadavek shody nebude fungovat, protože HTTPS je povolený protokol, a pokud požadavek přišel jako HTTPS, přední dveře se pokusí o přeposlání pomocí protokolu HTTPS.
 
-               - _Přijata protokoly_ protokol HTTP. _Předávání protokolu_ je buď odpovídá požadavku nebo HTTPS.
+               - _Přijaté protokoly_ jsou http. _Protokol předávání_ buď odpovídá požadavku, nebo protokolu HTTPS.
 
-   - Klikněte na _Upřesnit_ kartě v horní části podokna směrování konfigurační pravidla. _Přepisování adres URL_ je ve výchozím nastavení zakázán a toto pole by měly používat jenom Pokud chcete-li zúžit rozsah back-end hostovaný prostředky, které mají být dostupné. Pokud je zakázán, předá branou stejnou cestu požadavku, které obdrží. Je možné, že je špatně nakonfigurovaný. Toto pole a branou žádá o prostředku z back-endu, který není k dispozici, proto vrátí stavový kód HTTP 404.
+   - _Přepsání adresy URL_ je ve výchozím nastavení zakázáno a toto pole byste měli použít pouze v případě, že chcete zúžit rozsah prostředků hostovaných hostovaným serverem, které mají být k dispozici. Pokud je tato akce zakázána, předá přední dveře stejnou cestu požadavku, kterou obdrží. Je možné, že toto pole je špatně nakonfigurované a přední dveře vyžadují prostředek z back-endu, který není k dispozici, a vrátí stavový kód HTTP 404.
 

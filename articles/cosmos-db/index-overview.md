@@ -1,29 +1,29 @@
 ---
-title: Indexování ve službě Azure Cosmos DB
-description: Zjistěte, jak funguje indexování ve službě Azure Cosmos DB.
+title: Indexování v Azure Cosmos DB
+description: Pochopte, jak funguje indexování v Azure Cosmos DB.
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/23/2019
+ms.date: 07/22/2019
 ms.author: thweiss
-ms.openlocfilehash: 633d0f619132ee93951cfe0dc329a7514a38ef57
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c8e21ea89f3e23709d636ab8af4716bff76d7217
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66240738"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68479292"
 ---
-# <a name="indexing-in-azure-cosmos-db---overview"></a>Indexování ve službě Azure Cosmos DB – přehled
+# <a name="indexing-in-azure-cosmos-db---overview"></a>Indexování v Azure Cosmos DB – přehled
 
-Azure Cosmos DB je nezávislý na schématu databáze, která umožňuje iterovat aplikace bez nutnosti schéma nebo správu indexů. Ve výchozím nastavení, služby Azure Cosmos DB automaticky indexuje každou vlastnost pro všechny položky ve vaší [kontejneru](databases-containers-items.md#azure-cosmos-containers) aniž byste museli definovat žádné schéma nebo nakonfigurovat sekundární indexy.
+Azure Cosmos DB je databáze nezávislá schématu, která umožňuje iterovat na aplikaci bez nutnosti zabývat se správou schématu nebo indexu. Ve výchozím nastavení Azure Cosmos DB automaticky indexuje všechny vlastnosti pro všechny položky ve vašem [kontejneru](databases-containers-items.md#azure-cosmos-containers) bez nutnosti definovat nějaké schéma nebo nakonfigurovat sekundární indexy.
 
-Cílem tohoto článku je vysvětlují, jak službu Azure Cosmos DB indexuje data a způsob používání mechanismu indexy pro zlepšení výkonu dotazů. Doporučujeme projít tento oddíl prozkoumáte přizpůsobení [zásadám indexování](index-policy.md).
+Cílem tohoto článku je vysvětlit, jak Azure Cosmos DB indexovat data a jak používá indexy ke zlepšení výkonu dotazů. Před zkoumáním způsobu přizpůsobení [zásad indexování](index-policy.md)doporučujeme projít si tuto část.
 
-## <a name="from-items-to-trees"></a>Z položky na stromy
+## <a name="from-items-to-trees"></a>Z položek do stromů
 
-Pokaždé, když je položka uložená v kontejneru, jeho obsah je promítat jako dokument JSON a potom převést na strom reprezentace. To znamená, že každé vlastnosti této položky získá reprezentována jako uzel ve stromu. Kořenový uzel pseudo se vytvoří jako nadřazená k vlastnostem na první úrovni položky. Uzly typu list obsahovat skutečná skalárních hodnot provést u položky.
+Pokaždé, když je položka uložená v kontejneru, její obsah se prochází jako dokument JSON a pak se převede do reprezentace stromu. To znamená, že všechny vlastnosti této položky se reprezentují jako uzel ve stromové struktuře. Pseudo kořenový uzel je vytvořen jako nadřazený pro všechny vlastnosti první úrovně položky. Uzly list obsahují skutečné skalární hodnoty přenesené položkou.
 
-Jako příklad vezměte v úvahu tuto položku:
+Zvažte například tuto položku:
 
     {
         "locations": [
@@ -37,17 +37,17 @@ Jako příklad vezměte v úvahu tuto položku:
         ]
     }
 
-Bude reprezentovat stromu následující:
+Bude reprezentovaná následujícím stromem:
 
-![Předchozí položka reprezentována jako strom](./media/index-overview/item-as-tree.png)
+![Předchozí položka reprezentovaná jako strom](./media/index-overview/item-as-tree.png)
 
-Všimněte si, jak jsou pole kódovány ve stromové struktuře: Každá položka v poli získá zprostředkující uzel s názvem s indexem tuto položku v poli (0, 1 atd.).
+Všimněte si, jak jsou pole kódována ve stromové struktuře: Každá položka v poli získá zprostředkující uzel označený indexem této položky v poli (0, 1 atd.).
 
-## <a name="from-trees-to-property-paths"></a>Ze stromů cesty vlastností
+## <a name="from-trees-to-property-paths"></a>Ze stromů na cesty vlastností
 
-Důvod, proč Azure Cosmos DB transformuje položky do stromové struktury totiž umožňuje vlastnosti se nesmí odkazovat pomocí jeho cest v rámci stromů. K získání cesty pro vlastnost, můžeme procházení stromu od kořenového uzlu s danou vlastností a zřetězit popisky každého procházený uzlu.
+Důvod, proč Azure Cosmos DB transformuje položky do stromů, je, že umožňuje, aby v rámci těchto stromů byly odkazy na vlastnosti odkazovány pomocí jejich cest. Chcete-li získat cestu k vlastnosti, můžeme procházet stromovou strukturu z kořenového uzlu do této vlastnosti a zřetězit popisky jednotlivých procházených uzlů.
 
-Tady jsou cesty pro každou vlastnost z příklad položky popsané výše:
+Tady jsou cesty pro jednotlivé vlastnosti z ukázkové položky popsané výše:
 
     /locations/0/country: "Germany"
     /locations/0/city: "Berlin"
@@ -58,64 +58,79 @@ Tady jsou cesty pro každou vlastnost z příklad položky popsané výše:
     /exports/0/city: "Moscow"
     /exports/1/city: "Athens"
 
-Při zápisu položky služby Azure Cosmos DB efektivně indexuje každou vlastnost cesty a jeho odpovídající hodnota.
+Při zápisu položky Azure Cosmos DB efektivně indexuje cestu každé vlastnosti a její odpovídající hodnotu.
 
-## <a name="index-kinds"></a>Index typy
+## <a name="index-kinds"></a>Typy indexů
 
-Azure Cosmos DB v současné době podporuje dva druhy indexů:
+Azure Cosmos DB aktuálně podporuje tři druhy indexů:
 
-**Rozsah** typ indexu se používá pro:
+Typ indexu **rozsahu** se používá pro:
 
-- dotazy na rovnost: 
+- Dotazy na rovnost:
 
-   ```sql SELECT * FROM container c WHERE c.property = 'value'```
+    ```sql
+   SELECT * FROM container c WHERE c.property = 'value'
+    ```
 
-- Dotazy na rozsah: 
+- Dotazy na rozsah:
 
-   ```sql SELECT * FROM container c WHERE c.property > 'value'``` (funguje pro `>`, `<`, `>=`, `<=`, `!=`)
+   ```sql
+   SELECT * FROM container c WHERE c.property > 'value'
+   ``` 
+  (funguje pro `>`, `<`, `>=` ,`<=`, )`!=`
 
-- `ORDER BY` dotazy:
+- `ORDER BY`odešle
 
-   ```sql SELECT * FROM container c ORDER BY c.property```
+   ```sql 
+   SELECT * FROM container c ORDER BY c.property
+   ```
 
-- `JOIN` dotazy: 
+- `JOIN`odešle
 
-   ```sql SELECT child FROM container c JOIN child IN c.properties WHERE child = 'value'```
+   ```sql
+   SELECT child FROM container c JOIN child IN c.properties WHERE child = 'value'
+   ```
 
-Rozsah indexů lze na skalární hodnoty (řetězec nebo číslo).
+Indexy rozsahu lze použít na skalárních hodnotách (String nebo Number).
 
-**Prostorových** typ indexu se používá pro:
+Druh **prostorového** indexu se používá pro:
 
-- geoprostorové dotazy vzdálenost: 
+- Dotazy na geoprostorové vzdálenosti: 
 
-   ```sql SELECT * FROM container c WHERE ST_DISTANCE(c.property, { "type": "Point", "coordinates": [0.0, 10.0] }) < 40```
+   ```sql
+   SELECT * FROM container c WHERE ST_DISTANCE(c.property, { "type": "Point", "coordinates": [0.0, 10.0] }) < 40
+   ```
 
-- geoprostorové v rámci dotazů: 
+- Geoprostorové v rámci dotazů: 
 
-   ```sql SELECT * FROM container c WHERE ST_WITHIN(c.property, {"type": "Point", "coordinates": [0.0, 10.0] } })```
+   ```sql
+   SELECT * FROM container c WHERE ST_WITHIN(c.property, {"type": "Point", "coordinates": [0.0, 10.0] } })
+   ```
 
-Prostorové indexy jde použít na správný formát [GeoJSON](geospatial.md) objekty. LineStrings bodů a mnohoúhelníků jsou aktuálně podporovány.
+Prostorové indexy lze použít na správně formátovaných objektech typu [injson](geospatial.md) . Body, LineStrings a mnohoúhelníky se momentálně podporují.
 
-**Složené** typ indexu se používá pro:
+Typ **složeného** indexu se používá pro:
 
-- `ORDER BY` dotazy na více vlastností: 
+- `ORDER BY`dotazy na více vlastností: 
 
-   ```sql SELECT * FROM container c ORDER BY c.firstName, c.lastName```
+   ```sql
+   SELECT * FROM container c ORDER BY c.firstName, c.lastName
+   ```
 
 ## <a name="querying-with-indexes"></a>Dotazování s indexy
 
-Cesty extrahovat názvy při indexování dat usnadňují vyhledání index při zpracování dotazu. To provede spárováním odpovídajících `WHERE` klauzule dotazu se seznamem indexované cesty, je možné k identifikaci položky, které odpovídají predikátu dotazu velmi rychle.
+Cesty extrahované při indexování dat usnadňují vyhledání indexu při zpracování dotazu. Porovnáním `WHERE` klauzule dotazu se seznamem indexovaných cest je možné identifikovat položky, které odpovídají predikátu dotazu velmi rychle.
 
-Zvažte například následující dotaz: `SELECT location FROM location IN company.locations WHERE location.country = 'France'`. Predikátu dotazu (filtrování položek, kde libovolného umístění má "France" jako jeho země) by odpovídala cestě zvýrazněný červenou barvou níže:
+Zvažte například následující dotaz: `SELECT location FROM location IN company.locations WHERE location.country = 'France'`. Predikát dotazu (filtrování položek, kde jakékoli umístění má "France" jako země), by odpovídala cestě zvýrazněné červeně:
 
-![Odpovídající konkrétní cestě v rámci stromu](./media/index-overview/matching-path.png)
+![Odpovídá konkrétní cestě v rámci stromu.](./media/index-overview/matching-path.png)
 
 > [!NOTE]
-> `ORDER BY` Klauzuli, která řadí podle jedné vlastnosti *vždy* potřebuje rozsah indexu a selže, pokud cesta odkazuje na nemá. Podobně s více `ORDER BY` dotazu *vždy* potřebuje složeném indexu.
+> Klauzule, která má ORDER by jedna vlastnost, vždy potřebuje index rozsahu a nezdaří se, pokud cesta, na kterou odkazuje, nemá jednu.  `ORDER BY` Podobně dotaz s více `ORDER BY` dotazy *vždy* potřebuje složený index.
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace o indexování v následujících článcích:
+Další informace o indexování najdete v následujících článcích:
 
 - [Zásady indexování](index-policy.md)
 - [Jak spravovat zásady indexování](how-to-manage-indexing-policy.md)

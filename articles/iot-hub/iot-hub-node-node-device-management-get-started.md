@@ -1,6 +1,6 @@
 ---
-title: Začínáme se správou zařízení Azure IoT Hub (Node) | Dokumentace Microsoftu
-description: Jak zahajte restartování vzdálené zařízení pomocí správy zařízení služby IoT Hub. Implementace aplikace simulovaného zařízení, která obsahuje metodu s přímým přístupem a app service, která vyvolá přímou metodu pomocí sady Azure IoT SDK pro Node.js.
+title: Začínáme se správou zařízení Azure IoT Hub (Node) | Microsoft Docs
+description: Použití správy zařízení IoT Hub k zahájení restartování vzdáleného zařízení. Pomocí sady Azure IoT SDK pro Node. js implementujete aplikaci simulovaného zařízení, která obsahuje přímou metodu a aplikaci služby, která volá přímou metodu.
 author: wesmc7777
 manager: philmea
 ms.author: wesmc
@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 08/25/2017
-ms.openlocfilehash: 9bc34110b85119c7b8b303774b585d03ce9d3a0f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 868df2c8d1e14000f743686dcb6d4174d851be86
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65596642"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68403233"
 ---
 # <a name="get-started-with-device-management-node"></a>Začínáme se správou zařízení (Node)
 
@@ -21,31 +21,27 @@ ms.locfileid: "65596642"
 
 V tomto kurzu získáte informace o následujících postupech:
 
-* Použití [webu Azure portal](https://portal.azure.com) k vytvoření služby IoT Hub a vytvoření identity zařízení ve službě IoT hub.
+* Pomocí [Azure Portal](https://portal.azure.com) můžete vytvořit IoT Hub a vytvořit identitu zařízení ve službě IoT Hub.
 
-* Vytvoření aplikace simulovaného zařízení, která obsahuje přímé metody, která toto zařízení restartuje. Přímé metody jsou vyvolány z cloudu.
+* Vytvořte aplikaci simulovaného zařízení, která obsahuje přímou metodu, která toto zařízení restartuje. Přímé metody jsou vyvolány z cloudu.
 
-* Vytvořte konzolovou aplikaci Node.js, která volá metodu restartování s přímým přístupem v aplikaci simulovaného zařízení prostřednictvím služby IoT hub.
+* Vytvořte konzolovou aplikaci Node. js, která v aplikaci simulovaného zařízení zavolá přímou metodu restartu ve službě IoT Hub.
 
-Na konci tohoto kurzu budete mít dvě konzolové aplikace Node.js:
+Na konci tohoto kurzu máte dvě konzolové aplikace Node. js:
 
-* **dmpatterns_getstarted_device.js**, propojuje službu IoT hub s identitou zařízení vytvořenou dříve, obdrží restartování přímé metody, simuluje fyzické restartování a ohlásí, čas poslední restartování.
+* **dmpatterns_getstarted_device. js**, který se připojí ke službě IoT Hub s dříve vytvořenou identitou zařízení, obdrží přímou metodu restart, simuluje fyzické restartování a oznamuje čas posledního restartování.
 
-* **dmpatterns_getstarted_service.js**, která volá metodu s přímým přístupem v aplikaci simulovaného zařízení, zobrazí odpověď a zobrazí aktualizovaný ohlášené vlastnosti.
+* **dmpatterns_getstarted_service. js**, který volá přímou metodu v aplikaci simulovaného zařízení, zobrazuje odpověď a zobrazuje aktualizované hlášené vlastnosti.
 
 Pro absolvování tohoto kurzu potřebujete:
 
-* Verze Node.js 10.0.x nebo novější. [Příprava vývojového prostředí](https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md) popisuje postup instalace Node.js pro účely tohoto kurzu ve Windows nebo Linuxu.
+* Node. js verze 10.0. x nebo novější. [Příprava vývojového prostředí](https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md) popisuje, jak nainstalovat Node. js pro tento kurz v systému Windows nebo Linux.
 
-* Aktivní účet Azure. (Pokud účet nemáte, můžete vytvořit [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/) během několika minut.)
+* Aktivní účet Azure. (Pokud účet nemáte, můžete si během několika minut vytvořit [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/) .)
 
 ## <a name="create-an-iot-hub"></a>Vytvoření centra IoT
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
-
-### <a name="retrieve-connection-string-for-iot-hub"></a>Načtení připojovacího řetězce pro službu IoT hub
-
-[!INCLUDE [iot-hub-include-find-connection-string](../../includes/iot-hub-include-find-connection-string.md)]
 
 [!INCLUDE [iot-hub-get-started-create-device-identity](../../includes/iot-hub-get-started-create-device-identity.md)]
 
@@ -55,9 +51,9 @@ V této části provedete následující kroky:
 
 * Vytvoříte konzolovou aplikaci Node.js, která bude reagovat na přímou metodu volanou cloudem.
 
-* Aktivovat restartování simulovaného zařízení
+* Aktivace simulovaného restartování zařízení
 
-* Pomocí ohlášených vlastností umožníte dotazů na dvojčata zařízení identifikovat zařízení a kdy se naposledy restartování
+* Pomocí hlášených vlastností povolit nefungující dotazy zařízení k identifikaci zařízení a jejich poslední restartování
 
 1. Vytvořte prázdnou složku s názvem **manageddevice**.  Ve složce **manageddevice** vytvořte soubor package.json pomocí následujícího příkazu na příkazovém řádku.  Přijměte všechny výchozí hodnoty:
       
@@ -65,15 +61,15 @@ V této části provedete následující kroky:
     npm init
     ```
 
-2. Na příkazovém řádku v **manageddevice** složky, spusťte následující příkaz k instalaci **azure-iot-device** balíčku sady SDK pro zařízení a **azure-iot-device-mqtt** balíček:
+2. Na příkazovém řádku ve složce **manageddevice** spusťte následující příkaz k instalaci balíčku sady SDK pro zařízení **Azure-IoT-Device** a balíčku **Azure-IoT-Device-MQTT** :
    
     ```
     npm install azure-iot-device azure-iot-device-mqtt --save
     ```
 
-3. Pomocí textového editoru, vytvořte **dmpatterns_getstarted_device.js** soubor **manageddevice** složky.
+3. Pomocí textového editoru vytvořte ve složce **manageddevice** soubor **dmpatterns_getstarted_device. js** .
 
-4. Přidejte následující příkazy na začátku "vyžadovat" **dmpatterns_getstarted_device.js** souboru:
+4. Na začátek souboru **dmpatterns_getstarted_device. js** přidejte následující příkazy ' vyžadovat ':
    
     ```
     'use strict';
@@ -82,14 +78,14 @@ V této části provedete následující kroky:
     var Protocol = require('azure-iot-device-mqtt').Mqtt;
     ```
 
-5. Přidejte proměnnou **connectionString** a použijte ji k vytvoření instance **klienta**.  Nahraďte připojovací řetězec připojovacím řetězcem zařízení.  
+5. Přidejte proměnnou **connectionString** a použijte ji k vytvoření instance **klienta**.  Nahraďte připojovací řetězec pomocí připojovacího řetězce zařízení.  
    
     ```
     var connectionString = 'HostName={youriothostname};DeviceId=myDeviceId;SharedAccessKey={yourdevicekey}';
     var client = Client.fromConnectionString(connectionString, Protocol);
     ```
 
-6. Přidejte následující funkci, která implementuje přímé metody v zařízení
+6. Přidejte následující funkci, která implementuje přímou metodu na zařízení.
    
     ```
     var onReboot = function(request, response) {
@@ -131,7 +127,7 @@ V této části provedete následující kroky:
     };
     ```
 
-7. Otevřete připojení ke službě IoT hub a spustit naslouchací proces přímé metody:
+7. Otevřete připojení ke službě IoT Hub a spusťte naslouchací proces přímé metody:
 
    
     ```
@@ -145,30 +141,36 @@ V této části provedete následující kroky:
     });
     ```
 
-8. Uložte a zavřete **dmpatterns_getstarted_device.js** souboru.
+8. Uložte a zavřete soubor **dmpatterns_getstarted_device. js** .
 
 > [!NOTE]
-> Za účelem zjednodušení tento kurz neimplementuje žádné zásady opakování. V produkčním kódu by měly implementovat zásady opakování (například exponenciální regresí), jak je navrženo v článku [zpracování přechodných chyb](/azure/architecture/best-practices/transient-faults).
+> Za účelem zjednodušení tento kurz neimplementuje žádné zásady opakování. V produkčním kódu byste měli implementovat zásady opakování (například exponenciální omezení rychlosti), jak je navrženo v článku, [zpracování přechodných chyb](/azure/architecture/best-practices/transient-faults).
 
-## <a name="trigger-a-remote-reboot-on-the-device-using-a-direct-method"></a>Aktivační událost vzdálené restartování zařízení pomocí přímé metody
+## <a name="get-the-iot-hub-connection-string"></a>Získání připojovacího řetězce centra IoT Hub
 
-V této části vytvoříte konzolovou aplikaci Node.js, který iniciuje vzdálené restartování zařízení pomocí přímé metody. Aplikace používá dotazů na dvojčata zařízení ke zjištění poslední čas restartování pro dané zařízení.
+[!INCLUDE [iot-hub-howto-device-management-shared-access-policy-text](../../includes/iot-hub-howto-device-management-shared-access-policy-text.md)]
 
-1. Vytvořte prázdnou složku s názvem **triggerrebootondevice**. V **triggerrebootondevice** složce vytvořte soubor package.json pomocí následujícího příkazu na příkazovém řádku. Přijměte všechny výchozí hodnoty:
+[!INCLUDE [iot-hub-include-find-service-connection-string](../../includes/iot-hub-include-find-service-connection-string.md)]
+
+## <a name="trigger-a-remote-reboot-on-the-device-using-a-direct-method"></a>Aktivace vzdáleného restartování zařízení pomocí přímé metody
+
+V této části vytvoříte konzolovou aplikaci Node. js, která inicializuje vzdálené restartování na zařízení pomocí přímé metody. Aplikace pomocí dvojitých dotazů na zařízení zjistí čas posledního restartování tohoto zařízení.
+
+1. Vytvořte prázdnou složku s názvem **triggerrebootondevice**. Ve složce **triggerrebootondevice** vytvořte soubor Package. JSON pomocí následujícího příkazu na příkazovém řádku. Přijměte všechny výchozí hodnoty:
    
     ```
     npm init
     ```
 
-2. Na příkazovém řádku v **triggerrebootondevice** složky, spusťte následující příkaz k instalaci **azure-iothub** balíčku sady SDK pro zařízení a **azure-iot-device-mqtt** balíček:
+2. Na příkazovém řádku ve složce **triggerrebootondevice** spusťte následující příkaz, který nainstaluje balíček sady SDK pro zařízení **Azure-iothub** a balíček **Azure-IoT-Device-MQTT** :
    
     ```
     npm install azure-iothub --save
     ```
 
-3. Pomocí textového editoru, vytvořte **dmpatterns_getstarted_service.js** soubor **triggerrebootondevice** složky.
+3. Pomocí textového editoru vytvořte ve složce **triggerrebootondevice** soubor **dmpatterns_getstarted_service. js** .
 
-4. Přidejte následující příkazy na začátku "vyžadovat" **dmpatterns_getstarted_service.js** souboru:
+4. Na začátek souboru **dmpatterns_getstarted_service. js** přidejte následující příkazy ' vyžadovat ':
 
   
     ```
@@ -188,7 +190,7 @@ V této části vytvoříte konzolovou aplikaci Node.js, který iniciuje vzdále
     var deviceToReboot = 'myDeviceId';
     ```
 
-6. Přidejte následující funkci, která vyvolat metodu zařízení restartovat cílové zařízení:
+6. Přidejte následující funkci, která vyvolá metodu zařízení k restartování cílového zařízení:
    
     ```
     var startRebootDevice = function(twin) {
@@ -211,7 +213,7 @@ V této části vytvoříte konzolovou aplikaci Node.js, který iniciuje vzdále
     };
     ```
 
-7. Přidejte následující funkci, která dotazovat na zařízení a získat poslední čas restartování:
+7. Přidejte následující funkci, která se dotazuje na zařízení a získá čas posledního restartování:
    
     ```
     var queryTwinLastReboot = function() {
@@ -232,7 +234,7 @@ V této části vytvoříte konzolovou aplikaci Node.js, který iniciuje vzdále
     };
     ```
 
-8. Přidejte následující kód k volání funkce, které aktivují přímé metody restartovat počítač a dotaz na poslední čas restartování:
+8. Přidejte následující kód pro volání funkcí, které aktivují metodu restart Direct a dotaz na čas posledního restartování:
 
    
     ```
@@ -240,26 +242,26 @@ V této části vytvoříte konzolovou aplikaci Node.js, který iniciuje vzdále
     setInterval(queryTwinLastReboot, 2000);
     ```
 
-9. Uložte a zavřete **dmpatterns_getstarted_service.js** souboru.
+9. Uložte a zavřete soubor **dmpatterns_getstarted_service. js** .
 
 ## <a name="run-the-apps"></a>Spouštění aplikací
 
 Nyní jste připraveni aplikaci spustit.
 
-1. Na příkazovém řádku v **manageddevice** složky, spuštěním následujícího příkazu zahajte naslouchání pro přímé metody restartování.
+1. Na příkazovém řádku ve složce **manageddevice** spusťte následující příkaz, který zahájí naslouchání metodě restart přímo.
 
    
     ```
     node dmpatterns_getstarted_device.js
     ```
 
-2. Na příkazovém řádku v **triggerrebootondevice** složky, spusťte následující příkaz spustí vzdálené restartování a dotazů pro dvojče zařízení najít poslední čas restartování.
+2. Na příkazovém řádku ve složce **triggerrebootondevice** spusťte následující příkaz, který aktivuje vzdálené restartování a dotaz na vlákna zařízení, aby se našel čas posledního restartování.
 
    
     ```
     node dmpatterns_getstarted_service.js
     ```
 
-3. Zobrazí se zařízení odpověď na přímé metody v konzole.
+3. V konzole se zobrazí odpověď zařízení k přímé metodě.
 
 [!INCLUDE [iot-hub-dm-followup](../../includes/iot-hub-dm-followup.md)]

@@ -1,5 +1,10 @@
 - name: Dokumentace k zabezpečenému vývoji
   href: index.yml
+- name: Ukázkové aplikace
+  expanded: true
+  items:
+    - name: Webová aplikace v linuxovém kontejneru
+      href: secure-web-app.md
 - name: Koncepty
   expanded: true
   items:

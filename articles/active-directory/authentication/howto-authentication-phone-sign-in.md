@@ -1,6 +1,6 @@
 ---
-title: Přihlašování pomocí aplikace Microsoft Authenticator (preview) – Azure Active Directory
-description: Přihlášení k Azure AD pomocí aplikace Microsoft Authenticator bez použití hesla (public preview)
+title: Přihlášení bez hesla pomocí aplikace Microsoft Authenticator (Preview) – Azure Active Directory
+description: Přihlaste se k Azure AD pomocí aplikace Microsoft Authenticator bez použití hesla (Public Preview).
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -12,66 +12,68 @@ manager: daveba
 ms.reviewer: librown
 ms.custom: seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3125de0d1fd784b30c000bb287b457397c0fbebb
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: c464874708c7b93ec5620cc9ae253912ce1a4790
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67703024"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68357137"
 ---
-# <a name="passwordless-phone-sign-in-with-the-microsoft-authenticator-app-public-preview"></a>Passwordless přihlašování telefonem s aplikací Microsoft Authenticator (public preview)
+# <a name="passwordless-phone-sign-in-with-the-microsoft-authenticator-app-public-preview"></a>Přihlášení bez hesla pomocí aplikace Microsoft Authenticator (Public Preview)
 
-Aplikace Microsoft Authenticator je možné se přihlásit k libovolnému účtu služby Azure AD bez použití hesla. Podobně jako technologii, kterou [Windows Hello pro firmy](/windows/security/identity-protection/hello-for-business/hello-identity-verification), Microsoft Authenticator využívá ověřování pomocí klíče k zajištění pověření uživatele, který se váže na zařízení a používá biometrika nebo PIN kód.
+Aplikaci Microsoft Authenticator můžete použít k přihlášení k jakémukoli účtu Azure AD bez použití hesla. Podobně jako technologie [Windows Hello pro firmy](/windows/security/identity-protection/hello-for-business/hello-identity-verification)používá Microsoft Authenticator k povolení přihlašovacích údajů uživatele, které jsou vázané na zařízení, a používá biometriku nebo PIN kód.
 
-![Příklad prohlížeči přihlášení s výzvou pro uživatele ke schválení přihlášení](./media/howto-authentication-phone-sign-in/phone-sign-in-microsoft-authenticator-app.png)
+![Příklad přihlášení prohlížeče, které žádá uživatele o schválení přihlášení](./media/howto-authentication-phone-sign-in/phone-sign-in-microsoft-authenticator-app.png)
 
-Místo zobrazuje se neočekávaná výzva k zadání hesla po zadání uživatelského jména, osoby, která má povolenou přihlašování telefonem v aplikaci Microsoft Authenticator se zobrazí zpráva s upozorněním na klepněte na příslušný počet do své aplikace. V aplikaci uživatel musí shodovat s číslem, zvolte možnost Schválit a pak zadejte svůj PIN kód nebo biometrické, pak ověřování dokončí.
+Namísto zobrazení výzvy k zadání hesla po zadání uživatelského jména se uživateli, který povolil přihlášení telefonem v aplikaci Microsoft Authenticator, zobrazí zpráva s oznámením, že v aplikaci klepne na číslo. V aplikaci musí uživatel souhlasit s číslem, zvolit schválit, potom zadat PIN nebo biometriku a ověřování se dokončí.
 
-## <a name="enable-my-users"></a>Povolení uživatelé
+## <a name="enable-my-users"></a>Povolit moji uživatelům
 
-Pro verzi public preview správce musíte nejprve přidat zásady pomocí powershellu k povolení použití přihlašovacích údajů v tenantovi. Projděte si část "Známé problémy" před provedením tohoto kroku.
-
-### <a name="tenant-prerequisites"></a>Požadavky na klienta
+### <a name="tenant-prerequisites"></a>Předpoklady klienta
 
 * Azure Active Directory
-* Koncoví uživatelé povoleno pro ověřování Azure Multi-Factor Authentication
-* Uživatelé můžou registrovat svoje zařízení
+* Koncoví uživatelé s povoleným ověřováním Azure Multi-Factor Authentication
+* Uživatelé můžou registrovat svoje zařízení.
 
 ### <a name="steps-to-enable"></a>Postup povolení
 
-Postupujte podle kroků v článku [povolit passwordless přihlášení pro službu Azure AD](howto-authentication-passwordless-enable.md#enable-new-passwordless-authentication-methods), chcete-li povolit metody ověřování passwordless ve vašem adresáři.
-
-## <a name="how-do-my-end-users-enable-phone-sign-in"></a>Jak koncovým uživatelům povolit přihlašování telefonem?
-
-Pro verzi public preview neexistuje žádný způsob, jak vynutit uživatelům vytvořit nebo použít těchto nových přihlašovacích údajů. Koncový uživatel se přihlašování dojít pouze po správce povolil jejich tenanta a uživatel se aktualizovala svoje aplikace Microsoft Authenticator povolit přihlašování telefonem.
+Postupujte podle kroků v článku [Povolení přihlášení bez hesla pro Azure AD](howto-authentication-passwordless-enable.md#enable-new-passwordless-authentication-methods)a povolte v adresáři metody ověřování bez hesla.
 
 > [!NOTE]
-> Tato funkce byla v aplikaci od března 2017, je možnost, že pokud je zásada povolená pro tenanta, můžou se setkat tento tok okamžitě. Mějte na paměti a tuto změnu připravit vaši uživatelé.
+> Pokud jste tuto funkci pro vašeho tenanta dříve povolili pomocí skriptu PowerShellu, nastavení nové zásady pro uživatele a skupiny přepíše stávající zásady v rámci tenanta. 
 >
 
-1. Zaregistrujte se do služby Azure Multi-Factor Authentication
-1. Nejnovější verzi aplikace Microsoft Authenticator nainstalované v zařízení se systémem iOS 8.0 nebo novější nebo Android 6.0 nebo vyšší.
-1. Pracovní nebo školní účet pomocí nabízených oznámení do aplikace. Dokumentaci pro koncové uživatele najdete v [ https://aka.ms/authappstart ](https://aka.ms/authappstart).
+## <a name="how-do-my-end-users-enable-phone-sign-in"></a>Jak mám koncoví uživatelé povolit přihlašování telefonem?
 
-Jakmile uživatel má účet MFA s nabízenými oznámeními v aplikaci Microsoft Authenticator, můžete podle kroků v článku [přihlášení pomocí telefonu, ne heslo](../user-help/microsoft-authenticator-app-phone-signin-faq.md) k dokončení registrace telefonu přihlášení.
+Ve verzi Public Preview neexistuje způsob, jak vyhovět uživatelům při vytváření nebo používání těchto nových přihlašovacích údajů. Jakmile správce povolí svého tenanta a uživatel aktualizoval svou Microsoft Authenticator aplikaci, aby umožnil přihlášení k telefonnímu číslu, bude mít koncový uživatel pouze přihlášení k heslům.
+
+> [!NOTE]
+> Tato funkce byla v aplikaci od března 2017, takže existuje možnost, že když je zásada pro tenanta povolená, může se tento tok zobrazit okamžitě. Mějte na paměti informace a připravte uživatele na tuto změnu.
+>
+
+1. Registrace v Azure Multi-Factor Authentication
+1. Na zařízeních se systémem iOS 8,0 nebo vyšším je nainstalovaná nejnovější verze Microsoft Authenticator nebo Android 6,0 nebo novější.
+1. Pracovní nebo školní účet s nabízenými oznámeními přidanými do aplikace Dokumentaci pro koncové uživatele najdete na adrese [https://aka.ms/authappstart](https://aka.ms/authappstart).
+
+Jakmile má uživatel účet MFA s nabízenými oznámeními nastavenými v Microsoft Authenticator aplikaci, může postupovat podle kroků v článku [přihlášení pomocí telefonu, nikoli hesla](../user-help/microsoft-authenticator-app-phone-signin-faq.md) k dokončení registrace telefonického přihlášení.
 
 ## <a name="known-issues"></a>Známé problémy
 
-### <a name="ad-fs-integration"></a>AD FS Integration
+### <a name="ad-fs-integration"></a>Integrace AD FS
 
-Když uživatel povolí passwordless přihlašovací údaje Microsoft Authenticator, ověřování pro tohoto uživatele bude vždy ve výchozím nastavení odesílání oznámení o schválení. Tuto logiku zabraňuje uživatelům v tenantovi hybridní do AD FS pro ověřování přihlášení uživatele, s ohledem na další krok směrovat do příslušných klikněte na tlačítko "Místo toho použít heslo." Tento proces bude také vynechat všechny místní zásady podmíněného přístupu a toky předávací ověřování. Výjimkou z tohoto procesu je login_hint je-li zadán, uživatel bude automaticky se službou AD FS a vynechat možnost použití passwordless přihlašovacích údajů.
+Pokud uživatel povolil Microsoft Authenticator přihlašovací údaje bez hesla, ověřování pro tohoto uživatele vždy bude ve výchozím nastavení odesláno oznámení ke schválení. Tato logika brání uživatelům v hybridním tenantovi směrovat se na službu AD FS, aby se ověřování přihlásilo bez toho, aby uživatel musel další krok kliknout na použít heslo. Tento proces taky obchází všechny místní zásady podmíněného přístupu a předávací ověřovací toky. Výjimkou z tohoto procesu je, že pokud je zadaný login_hint, uživatel se do AD FS přepošle a obejít možnost používat přihlašovací údaje bez hesla.
 
-### <a name="azure-mfa-server"></a>Azure MFA serveru
+### <a name="azure-mfa-server"></a>Azure MFA Server
 
-Koncoví uživatelé, kteří jsou povoleny pro vícefaktorové ověřování pomocí serveru Azure MFA v místním prostředí vaší organizace můžete stále vytvořit a použít jediné passwordless telefonní přihlašovací pověření. Pokud uživatel pokusí o upgrade více instalací (5 +) s pověřením Microsoft Authenticator, tato změna může vést k chybě.  
+Koncoví uživatelé, kteří mají povolený MFA prostřednictvím místního Azure MFA serveru organizace, můžou pořád vytvářet a používat přihlašovací údaje pro přihlášení bez hesla pro přihlášení k telefonu. Pokud se uživatel pokusí upgradovat více instalací (5 +) Microsoft Authenticator s přihlašovacími údaji, může tato změna způsobit chybu.  
 
 ### <a name="device-registration"></a>Registrace zařízení
 
-Jednou z požadavky na vytvoření této nové silné přihlašovací údaje, je, že registrace zařízení, ve kterém se nachází v rámci tenanta Azure AD pro jednotlivé uživatele. Z důvodu omezení registrace zařízení můžete zařízení registrovat jenom v jednom tenantovi. Toto omezení znamená, že je možné povolit jenom jeden pracovní nebo školní účet v aplikaci Microsoft Authenticator pro přihlašování telefonem.
+Jedním z požadavků pro vytvoření tohoto nového, silného pověření je, že zařízení, ve kterém se nachází, je zaregistrované v tenantovi služby Azure AD pro jednotlivé uživatele. V důsledku omezení registrace zařízení se může zařízení zaregistrovat jenom v jednom tenantovi. Tento limit znamená, že pro přihlašování telefonem se dá povolit jenom jeden pracovní nebo školní účet v aplikaci Microsoft Authenticator.
 
 ## <a name="next-steps"></a>Další postup
 
-[Co je passwordless?](concept-authentication-passwordless.md)
+[Co není heslo?](concept-authentication-passwordless.md)
 
 [Další informace o registraci zařízení](../devices/overview.md#getting-devices-in-azure-ad)
 

@@ -1,114 +1,107 @@
 ---
-title: Automatické škálování cloudové služby na portálu | Dokumentace Microsoftu
-description: Další informace o použití portálu ke konfiguraci pravidel automatického škálování pro webové role cloudové služby nebo role pracovního procesu v Azure.
+title: Automatické škálování cloudové služby na portálu | Microsoft Docs
+description: Naučte se používat portál ke konfiguraci pravidel automatického škálování webové role nebo role pracovního procesu cloudové služby v Azure.
 services: cloud-services
-documentationcenter: ''
-author: jpconnock
-manager: timlt
-editor: ''
-ms.assetid: 701d4404-5cc0-454b-999c-feb94c1685c0
+author: georgewallace
 ms.service: cloud-services
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 05/18/2017
-ms.author: jeconnoc
-ms.openlocfilehash: f5597773b3127852481d5e14844bed889c4d6f83
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: gwallace
+ms.openlocfilehash: 7e106dbd237be79be924afadbe893669c4f3daf8
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61435237"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68359623"
 ---
-# <a name="how-to-configure-auto-scaling-for-a-cloud-service-in-the-portal"></a>Konfigurace automatického škálování pro Cloudovou službu na portálu
+# <a name="how-to-configure-auto-scaling-for-a-cloud-service-in-the-portal"></a>Jak nakonfigurovat automatické škálování pro cloudovou službu na portálu
 
-Podmínky můžete nastavit pro roli pracovního procesu služby cloud, který aktivovat škálovací snížení nebo navýšení kapacity operace. Podmínky pro roli můžete být podle procesoru, disku nebo zatížení sítě role. Můžete také nastavit podmínky na základě fronty zpráv nebo metriky některých dalších prostředků Azure spojené s předplatným.
+Můžete nastavit podmínky pro roli pracovního procesu cloudové služby, která spouští operaci horizontálního nebo vyvýšení kapacity. Podmínky role můžou být založené na procesoru, disku nebo síťové zátěži role. Můžete také nastavit podmínku na základě fronty zpráv nebo metriky nějakého jiného prostředku Azure přidruženého k vašemu předplatnému.
 
 > [!NOTE]
-> Tento článek se zaměřuje na webové a pracovní role cloudové služby. Když vytváříte virtuální počítač (klasický) přímo, je hostovaná v cloudové službě. Standardní virtuální počítač je možné škálovat tak, že spojíte se [dostupnosti](../virtual-machines/windows/classic/configure-availability-classic.md) a ručně je zapnout nebo vypnout.
+> Tento článek se zaměřuje na webové role a role pracovních procesů cloudové služby. Když vytváříte virtuální počítač (Classic) přímo, je hostovaný v cloudové službě. Standardní virtuální počítač můžete škálovat tak, že ho přidružíte ke [skupině dostupnosti](../virtual-machines/windows/classic/configure-availability-classic.md) , a ručně je zapnout nebo vypnout.
 
 ## <a name="considerations"></a>Požadavky
-Před konfigurací škálování pro vaši aplikaci, byste měli zvážit následující informace:
+Před konfigurací škálování pro aplikaci byste měli zvážit následující informace:
 
-* Škálování je ovlivněna využití jader.
+* Škálování je ovlivněné základní spotřebou.
 
-    Větší instance rolí pomocí více jader. Škálování aplikace pouze v rámci limit jader pro vaše předplatné. Řekněme například, že vaše předplatné má limit 20 jader. Při spuštění aplikace pomocí dvou střední cloudových služeb (celkem 4 jádra), je možné pouze škálovat i jiné nasazení cloudové služby v rámci vašeho předplatného ve zbývajících 16 jádry. Další informace o velikosti najdete v tématu [velikost cloudových služeb](cloud-services-sizes-specs.md).
+    Větší instance rolí používají více jader. Aplikaci můžete škálovat pouze v rámci limitu jader pro vaše předplatné. Řekněme například, že vaše předplatné má limit 20 jader. Pokud spouštíte aplikaci se dvěma středními síťovými službami (celkem 4 jádra), můžete škálovat všechna nasazení cloudových služeb v rámci vašeho předplatného ve zbývajících 16 jádrech. Další informace o velikostech najdete v tématu [velikosti cloudových služeb](cloud-services-sizes-specs.md).
 
-* Můžete škálovat podle prahové hodnoty fronty zpráv. Další informace o tom, jak používat fronty, naleznete v tématu [k používání služby Queue Storage](../storage/queues/storage-dotnet-how-to-use-queues.md).
+* Škálování můžete škálovat na základě prahové hodnoty zprávy ve frontě. Další informace o tom, jak používat fronty, najdete v tématu [How to use the Queue Storage Service](../storage/queues/storage-dotnet-how-to-use-queues.md).
 
-* Můžete škálovat také další prostředky spojené s vaším předplatným.
+* Můžete také škálovat jiné prostředky přidružené k vašemu předplatnému.
 
-* Pokud chcete povolit vysokou dostupnost vaší aplikace, měli byste zajistit, že je nasazen s dvě nebo víc instancí rolí. Další informace najdete v tématu [smlouvy o úrovni služeb](https://azure.microsoft.com/support/legal/sla/).
+* Pokud chcete povolit vysokou dostupnost vaší aplikace, měli byste zajistit, aby byla nasazená se dvěma nebo více instancemi role. Další informace najdete v tématu [smlouvy o úrovni služeb](https://azure.microsoft.com/support/legal/sla/).
 
-* Automatické škálování pouze se stane, když jsou všechny role v **připravené** stavu.  
+* Automatické škálování se stane pouze v případě, že jsou  všechny role ve stavu připraveno.  
 
 
 ## <a name="where-scale-is-located"></a>Kde se nachází škálování
-Po výběru cloudové služby byste měli mít okna služby cloud viditelné.
+Po výběru cloudové služby byste měli mít zobrazené okno cloudové služby.
 
-1. V okně cloudové služby na **rolemi a instancemi** dlaždice, vyberte název cloudové služby.   
-   **DŮLEŽITÉ:** Ujistěte se, že klikněte na tlačítko role cloudové služby, není instancí role, která je nižší než roli.
+1. V okně cloudová služba na dlaždici **role a instance** vyberte název cloudové služby.   
+   **DŮLEŽITÉ:** Ujistěte se, že kliknete na roli Cloudová služba, nikoli na instanci role, která se nachází pod rolí.
 
     ![](./media/cloud-services-how-to-scale-portal/roles-instances.png)
-2. Vyberte **škálování** dlaždici.
+2. Vyberte dlaždici **škálování** .
 
     ![](./media/cloud-services-how-to-scale-portal/scale-tile.png)
 
 ## <a name="automatic-scale"></a>Automatické škálování
-Nastavení škálování pro roli můžete nakonfigurovat buď dva režimy **ruční** nebo **automatické**. Příručka je dle očekávání, nastavte absolutní počet instancí. Automatické ale umožňuje vám sada pravidla, která řídí způsob a jak mnohem vám by se měly škálovat.
+Nastavení škálování pro roli můžete nakonfigurovat buď pomocí dvou režimů **ručně** , nebo **automaticky**. Ruční je to, jak byste očekávali, nastavíte absolutní počet instancí. Možnost automaticky vám ale umožní nastavit pravidla, která určují, jak a o kolik byste měli škálovat.
 
-Nastavte **škálovat** umožňuje **pravidla výkonu a plánování**.
+Nastavte možnost **škálovat podle** na **pravidla plánování a výkon**.
 
-![Nastavení škálování cloudové služby profil a pravidla](./media/cloud-services-how-to-scale-portal/schedule-basics.png)
+![Nastavení škálování cloudových služeb pomocí profilu a pravidla](./media/cloud-services-how-to-scale-portal/schedule-basics.png)
 
 1. Existující profil.
-2. Přidáte pravidlo pro nadřazené profil.
+2. Přidejte pravidlo pro nadřazený profil.
 3. Přidejte jiný profil.
 
-Vyberte **přidat profil**. Profil určuje režimu, který chcete použít pro škálování: **vždy**, **opakování**, **pevné datum**.
+Vyberte **Přidat profil**. Profil určuje, který režim má být použit pro škálování: **vždy**, **opakování**, **pevné datum**.
 
-Po nakonfigurování profil a pravidla, vyberte **Uložit** ikonu v horní části.
+Po nakonfigurování profilu a pravidel vyberte ikonu **Uložit** v horní části.
 
 #### <a name="profile"></a>Profil
-Profil, který nastaví minimální a maximální instance pro škálování, a také tento rozsah škálování je aktivní.
+Profil nastaví minimální a maximální počet instancí pro měřítko a také v případě, že je tento rozsah stupnice aktivní.
 
 * **Vždy**
 
-    Vždy ponechte tento rozsah instance k dispozici.  
+    Vždy ponechat tento rozsah instancí k dispozici.  
 
-    ![Cloudová služba, která vždy škálování](./media/cloud-services-how-to-scale-portal/select-always.png)
+    ![Cloudová služba, která vždy škálovat](./media/cloud-services-how-to-scale-portal/select-always.png)
 * **Opakování**
 
-    Vyberte sadu dny v týdnu, kdy chcete škálovat.
+    Vyberte sadu dnů v týdnu pro horizontální navýšení kapacity.
 
-    ![Škálování cloudové služby s plán opakování](./media/cloud-services-how-to-scale-portal/select-recurrence.png)
+    ![Škálování cloudové služby s plánem opakování](./media/cloud-services-how-to-scale-portal/select-recurrence.png)
 * **Pevné datum**
 
-    Škálování role pevné časové období.
+    Pevný rozsah data pro škálování role.
 
-    ![Škálování cloudové služby s pevného data](./media/cloud-services-how-to-scale-portal/select-fixed.png)
+    ![Škálování CLoudové služby s pevným datem](./media/cloud-services-how-to-scale-portal/select-fixed.png)
 
-Po nakonfigurování profil, vyberte **OK** tlačítko v dolní části okna profil.
+Po nakonfigurování profilu klikněte na tlačítko **OK** v dolní části okna profil.
 
 #### <a name="rule"></a>Pravidlo
-Pravidla jsou přidány do profilu a představují podmínku, která aktivuje stupnice.
+Pravidla jsou přidána do profilu a představují podmínku, která spouští škálování.
 
-Pravidlo triggeru je podle metriky cloudové služby (využití procesoru, aktivit disku nebo síťové aktivity) ke kterému můžete přidat podmíněný hodnotu. Kromě toho může mít aktivační události na základě fronty zpráv nebo metriky některých dalších prostředků Azure spojené s předplatným.
+Trigger pravidla vychází z metriky cloudové služby (využití procesoru, aktivity disku nebo síťové aktivity), ke kterým můžete přidat podmíněnou hodnotu. Navíc můžete mít Trigger na základě fronty zpráv nebo metriky nějakého jiného prostředku Azure přidruženého k vašemu předplatnému.
 
 ![](./media/cloud-services-how-to-scale-portal/rule-settings.png)
 
-Po nakonfigurování pravidla, vyberte **OK** tlačítko v dolní části okna pravidlo.
+Po nakonfigurování pravidla vyberte tlačítko **OK** v dolní části okna pravidla.
 
-## <a name="back-to-manual-scale"></a>Zpět na ruční škálování
-Přejděte [škálování nastavení](#where-scale-is-located) a nastavte **škálovat** umožňuje **počet instancí, který nastavím ručně**.
+## <a name="back-to-manual-scale"></a>Zpět k ručnímu škálování
+Přejděte do [Nastavení škálování](#where-scale-is-located) a nastavte možnost **škálovat podle** na **počet instancí, který zadáte ručně**.
 
-![Nastavení škálování cloudové služby profil a pravidla](./media/cloud-services-how-to-scale-portal/manual-basics.png)
+![Nastavení škálování cloudových služeb pomocí profilu a pravidla](./media/cloud-services-how-to-scale-portal/manual-basics.png)
 
-Toto nastavení se odebere z role automatické škálování a pak můžete nastavit počet instancí přímo.
+Toto nastavení odebere z role automatické škálování a potom můžete nastavit počet instancí přímo.
 
-1. (Ruční nebo automatizované) možnost škálování.
-2. Posuvník instanci role pro nastavení instance tak, aby umožňovala.
-3. Instance role tak, aby umožňovala.
+1. Možnost škálování (ruční nebo automatizovaná).
+2. Posuvník instance role, na kterou se mají nastavit instance pro škálování.
+3. Instance role, na kterou se má škálovat
 
-Po nakonfigurování nastavení škálování, vyberte **Uložit** ikonu v horní části.
+Po nakonfigurování nastavení škálování vyberte ikonu **Uložit** v horní části.

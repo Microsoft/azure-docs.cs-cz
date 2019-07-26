@@ -1,188 +1,181 @@
 ---
-title: Postup aktualizace cloudové služby | Dokumentace Microsoftu
-description: Zjistěte, jak aktualizovat cloudové služby v Azure. Zjistěte, jak pokračuje aktualizace v cloudové službě k zajištění dostupnosti.
+title: Jak aktualizovat cloudovou službu | Microsoft Docs
+description: Naučte se aktualizovat cloudové služby v Azure. Zjistěte, jak aktualizace cloudové služby pokračuje, aby se zajistila dostupnost.
 services: cloud-services
-documentationcenter: ''
-author: jpconnock
-manager: timlt
-editor: ''
-ms.assetid: c6a8b5e6-5c99-454c-9911-5c7ae8d1af63
+author: georgewallace
 ms.service: cloud-services
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
-ms.author: jeconnoc
-ms.openlocfilehash: ff4dd571911719e4f2ec27952785432960a56d42
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: gwallace
+ms.openlocfilehash: 10d919b21e05195e8a7b6b351a742a4f9a57ee2b
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60653866"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68360700"
 ---
-# <a name="how-to-update-a-cloud-service"></a>Postup aktualizace cloudové služby
+# <a name="how-to-update-a-cloud-service"></a>Jak aktualizovat cloudovou službu
 
-Aktualizace cloudové služby, včetně jeho role a hostovaný operační systém, je o třech krocích. Nejprve musí se nahrát binární a konfigurační soubory pro novou cloudovou službu nebo verze operačního systému. Azure si dále vyhrazuje výpočetní a síťové prostředky pro cloudové služby na základě požadavků novou cloudovou verzi služby. Nakonec Azure provádí upgradu se zajištěním provozu přírůstkově aktualizovat tenanta na novou verzi nebo hostovaný operační systém, při zachování vašich dostupnosti. Tento článek popisuje podrobnosti o tomto posledním kroku – upgradu se zajištěním provozu.
+Aktualizace cloudové služby včetně jejích rolí a hostovaného operačního systému je proces tří kroků. Nejdřív je potřeba nahrát binární soubory a konfigurační soubory pro novou cloudovou službu nebo verzi operačního systému. V dalším kroku Azure rezervuje výpočetní a síťové prostředky pro cloudovou službu na základě požadavků nové verze cloudové služby. Nakonec Azure provede postupný upgrade, který klienta postupně aktualizuje na novou verzi nebo hostovaný operační systém a zároveň zachovává vaši dostupnost. Tento článek popisuje podrobnosti tohoto posledního kroku – postupná inovace.
 
 ## <a name="update-an-azure-service"></a>Aktualizace služby Azure
-Azure organizuje vaše instance rolí do logických seskupení volá upgradovací domény (UD). Upgradovací domény (UD) jsou logické sady instancí role, které se aktualizují jako skupinu.  Aktualizace Azure a cloudových služeb jeden UD současně, což umožňuje instance v jiných aktualizačními doménami nadále obsluhuje provoz.
+Azure uspořádá instance rolí do logických seskupení označovaných jako upgradovací domény (UD). Upgradovací domény (UD) jsou logické sady instancí rolí, které se aktualizují jako skupina.  Azure aktualizuje cloudovou službu po jednom UD, což umožňuje instancím v jiné UDs dál obsluhovat provoz.
 
-Výchozí počet domén upgradu je 5. Je-li zadat jiný počet upgradovacích domén, včetně upgradeDomainCount atributu v souboru definice služby (.csdef). Další informace o atributu upgradeDomainCount najdete v tématu [WebRole schéma](/previous-versions/azure/reference/gg557553(v=azure.100)) nebo [WorkerRole schéma](/previous-versions/azure/reference/gg557552(v=azure.100)).
+Výchozí počet domén upgradu je 5. Můžete zadat jiný počet domén upgradu zahrnutím atributu upgradeDomainCount do souboru definice služby (. csdef). Další informace o atributu upgradeDomainCount najdete v tématu schéma [webrole](/previous-versions/azure/reference/gg557553(v=azure.100)) nebo [schéma role pracovního procesu](/previous-versions/azure/reference/gg557552(v=azure.100)).
 
-Při provádění v místě aktualizace jeden nebo více rolí ve službě Azure aktualizuje sadu instancí role podle upgradovací domény, ke kterému patří. Aktualizace Azure, které všechny instance v dané doméně upgradu – zastavení, aktualizuje, uvede zpět online – pak přesune na další doménu. Zastavením pouze instance spuštěné v aktuální upgradovací doméně Azure zajišťuje, že aktualizace dochází s nejmenší dopad na spuštěnou službu. Další informace najdete v tématu [jak pokračuje aktualizace](#howanupgradeproceeds) dále v tomto článku.
+Při provádění místní aktualizace jedné nebo více rolí ve službě Azure aktualizuje sady instancí rolí v závislosti na upgradovací doméně, do které patří. Azure aktualizuje všechny instance v dané upgradovací doméně – zastavuje je, aktualizuje je, přenáší je online a pak se přesune na další doménu. Když zastavíte jenom instance spuštěné v aktuální upgradovací doméně, Azure zajistí, že dojde k aktualizaci s nejmenším možným dopadem na běžící službu. Další informace najdete v tématu [jak aktualizace pokračuje](#howanupgradeproceeds) dále v tomto článku.
 
 > [!NOTE]
-> Zatímco podmínky **aktualizovat** a **upgradovat** mají mírně odlišný význam v rámci Azure, mohou být použity Zaměnitelně pro procesy a popis jednotlivých funkcí v tomto dokumentu.
+> I když se  tyto výrazy aktualizují a **upgradují** mírně odlišným významem v kontextu Azure, dají se pro procesy a popisy funkcí v tomto dokumentu použít zaměnitelné.
 >
 >
 
-Vaše služba musí definovat aspoň dvě instance role pro danou roli aktualizace na místě bez jakýchkoli prostojů. Pokud služba obsahuje jenom jeden výskyt jedné role, vaše služba nebude k dispozici, až do dokončení aktualizace na místě.
+Vaše služba musí definovat aspoň dvě instance role, aby se tato role místně aktualizovala bez výpadků. Pokud se služba skládá jenom z jedné instance jedné role, bude služba nedostupná, dokud se nedokončí aktualizace na pracovišti.
 
-Toto téma obsahuje následující informace o Azure aktualizace:
+Toto téma obsahuje následující informace o aktualizacích Azure:
 
-* [Během aktualizace povoleny změny služby](#AllowedChanges)
-* [Jak pokračuje upgradu](#howanupgradeproceeds)
-* [Vrácení zpět aktualizace](#RollbackofanUpdate)
-* [Zahájení více mutující operací na probíhající nasazení](#multiplemutatingoperations)
-* [Distribuce rolí napříč upgradovací domény](#distributiondfroles)
+* [Povolená Změna služby během aktualizace](#AllowedChanges)
+* [Jak upgrade pokračuje](#howanupgradeproceeds)
+* [Vrácení aktualizace zpět](#RollbackofanUpdate)
+* [Inicializace více operací s pokračujícím nasazením](#multiplemutatingoperations)
+* [Distribuce rolí napříč doménami upgradu](#distributiondfroles)
 
 <a name="AllowedChanges"></a>
 
-## <a name="allowed-service-changes-during-an-update"></a>Během aktualizace povoleny změny služby
-V následující tabulce jsou uvedeny povolené změny do služby během aktualizace:
+## <a name="allowed-service-changes-during-an-update"></a>Povolená Změna služby během aktualizace
+V následující tabulce jsou uvedeny povolené změny služby během aktualizace:
 
-| Povoleny změny pro hostování, služby a role | Aktualizace na místě | Dvoufázové instalace (prohození virtuálních IP adres) | Odstranit a znovu nasadit |
+| Změny povolené pro hostování, služby a role | Místní aktualizace | Připraveno (prohození VIP) | Odstranit a znovu nasadit |
 | --- | --- | --- | --- |
 | Verze operačního systému |Ano |Ano |Ano |
-| Úrovně důvěryhodnosti .NET |Ano |Ano |Ano |
+| Úroveň důvěryhodnosti .NET |Ano |Ano |Ano |
 | Velikost virtuálního počítače<sup>1</sup> |Ano<sup>2</sup> |Ano |Ano |
-| Nastavení místního úložiště |Pouze zvýšit<sup>2</sup> |Ano |Ano |
-| Přidání nebo odebrání role ve službě |Ano |Ano |Ano |
-| Počet instancí konkrétní roli |Ano |Ano |Ano |
-| Číslo nebo typ koncových bodů služby |Ano<sup>2</sup> |Ne |Ano |
+| Nastavení místního úložiště |Zvýšit jenom<sup>2</sup> |Ano |Ano |
+| Přidání nebo odebrání rolí ve službě |Ano |Ano |Ano |
+| Počet instancí konkrétní role |Ano |Ano |Ano |
+| Počet nebo typ koncových bodů pro službu |Ano<sup>2</sup> |Ne |Ano |
 | Názvy a hodnoty nastavení konfigurace |Ano |Ano |Ano |
 | Hodnoty (ale ne názvy) nastavení konfigurace |Ano |Ano |Ano |
 | Přidat nové certifikáty |Ano |Ano |Ano |
 | Změna existujících certifikátů |Ano |Ano |Ano |
-| Nasazení nového kódu |Ano |Ano |Ano |
+| Nasadit nový kód |Ano |Ano |Ano |
 
-<sup>1</sup> velikost změnu omezené na podmnožinu dostupných pro cloudovou službu.
+<sup>1</sup> Změna velikosti omezená na podmnožinu velikostí dostupných pro cloudovou službu.
 
-<sup>2</sup> vyžaduje Azure SDK 1.5 nebo novější verze.
+<sup>2</sup> vyžaduje sadu Azure SDK 1,5 nebo novější verze.
 
 > [!WARNING]
-> Změna velikosti virtuálního počítače způsobí zničení místní data.
+> Změna velikosti virtuálního počítače způsobí zničení místních dat.
 >
 >
 
-Během aktualizace se nepodporují následující položky:
+Během aktualizace nejsou podporovány následující položky:
 
-* Změna názvu role. Odebrat a potom přidejte roli s novým názvem.
-* Změnit počet domén upgradu.
-* Zmenšit velikost místních prostředků.
+* Změna názvu role. Odeberte a pak přidejte roli s novým názvem.
+* Probíhá změna počtu upgradovacích domén.
+* Zmenšení velikosti místních prostředků.
 
-Pokud provádíte jiné aktualizace definice vaší služby, jako je například zmenšit velikost místního prostředku, je nutné provést aktualizaci prohození virtuálních IP adres. Další informace najdete v tématu [Prohodit nasazení](/previous-versions/azure/reference/ee460814(v=azure.100)).
+Pokud provádíte jiné aktualizace definice služby, jako je třeba zmenšení velikosti místního prostředku, musíte místo toho provést aktualizaci VIP swap. Další informace najdete v tématu [prohození nasazení](/previous-versions/azure/reference/ee460814(v=azure.100)).
 
 <a name="howanupgradeproceeds"></a>
 
-## <a name="how-an-upgrade-proceeds"></a>Jak pokračuje upgradu
-Můžete se rozhodnout, jestli chcete aktualizovat všechny role ve službě nebo jedné role ve službě. V obou případech jsou všechny instance každé role, která se upgraduje a patří do první upgradovací doména zastavena, upgradovat a opět nepřipojí online. Poté, co jsou zpátky do online režimu, instance v druhé upgradovací domény jsou zastavena, upgradovat a opět nepřipojí online. Cloudové služby může mít maximálně jeden upgrade v každém okamžiku aktivní. Upgrade se vždy provádí na nejnovější verzi cloudovou službu.
+## <a name="how-an-upgrade-proceeds"></a>Jak upgrade pokračuje
+Můžete se rozhodnout, jestli chcete ve službě aktualizovat všechny role ve vaší službě, nebo jednu roli. V obou případech se všechny instance všech rolí, které se upgradují a patří do první upgradovací domény, zastaví, upgradují a vrátí se zpátky do online režimu. Až budou zpátky online, instance v druhé upgradovací doméně se zastaví, upgradují a vrátí se zpátky do online režimu. Cloudová služba může mít po dobu maximálně jeden aktivní upgrade. Upgrade se vždy provádí na nejnovější verzi cloudové služby.
 
-Následující diagram znázorňuje, jak pokračuje v upgradu při upgradu všech rolí ve službě:
+Následující diagram znázorňuje, jak upgrade pokračuje, pokud upgradujete všechny role ve službě:
 
-![Upgradovat službu](media/cloud-services-update-azure-service/IC345879.png "Upgrade služby")
+![Upgradovat službu](media/cloud-services-update-azure-service/IC345879.png "Upgradovat službu")
 
-Tento další diagram znázorňuje, jak aktualizace pokračuje, pokud provádíte upgrade jedné role:
+Tento další diagram znázorňuje, jak aktualizace pokračuje, pokud upgradujete jenom jednu roli:
 
-![Upgrade role](media/cloud-services-update-azure-service/IC345880.png "upgradu role")  
+![Role upgradu](media/cloud-services-update-azure-service/IC345880.png "Role upgradu")  
 
-Kontroler prostředků infrastruktury Azure během automatických aktualizací, pravidelně vyhodnocuje stav cloudové služby můžete zjistit, kdy je bezpečné provedou další UD. Toto vyhodnocení stavu se provádí na základě specifických pro konkrétní role a bere v úvahu pouze instance v nejnovější verzi (tj. instance ze aktualizačními doménami, které již byly šel). Ověřuje, že minimální počet instancí role, pro každou roli dosáhli uspokojivé konečného stavu.
+Během automatické aktualizace kontroler prostředků infrastruktury Azure pravidelně vyhodnocuje stav cloudové služby, aby zjistil, kdy je bezpečné projít další UD. Toto hodnocení stavu se provádí na základě jednotlivých rolí a zvažuje jenom instance v nejnovější verzi (tj. instance z UDs, které už jsou vás provedl). Ověřuje, že pro každou roli dosáhlo minimálního počtu instancí rolí, který dosáhl uspokojivý stav terminálu.
 
-### <a name="role-instance-start-timeout"></a>Časový limit spuštění Instance role
-Kontroler prostředků infrastruktury se Počkejte 30 minut pro každou instanci role dosáhne stavu spuštěno. Dobu trvání časového limitu uplyne, kontroler prostředků infrastruktury budou procházení k dalším instance role.
+### <a name="role-instance-start-timeout"></a>Časový limit spuštění instance role
+Kontroler prostředků infrastruktury počká 30 minut, než se každá instance role dorazí na počáteční stav. Pokud doba trvání vypršela, kontroler prostředků infrastruktury bude pokračovat v procházení k další instanci role.
 
-### <a name="impact-to-drive-data-during-cloud-service-upgrades"></a>Upgraduje dopadu na jednotce dat během cloudové služby
+### <a name="impact-to-drive-data-during-cloud-service-upgrades"></a>Dopad na data na disku během upgradu cloudové služby
 
-Při upgradu služby z jedné instance na několik instancí služby vznášet během upgradu je provést z důvodu služeb Azure upgrady způsobem. Záruční služby dostupnost smlouvu o úrovni služeb se vztahuje pouze na služby, které se nasazují s více než jednu instanci. Následující seznam popisuje, jak data na každou jednotku je ovlivněna každý scénář upgradu služby Azure:
+Při upgradování služby z jedné instance na více instancí bude služba zavedena v době, kdy se upgrade provede v důsledku upgradu služeb Azure. Smlouva o úrovni služeb garantuje dostupnost služby pouze pro služby, které jsou nasazeny s více než jednou instancí. Následující seznam popisuje, jak jsou data na jednotlivých jednotkách ovlivněná jednotlivými scénáři upgradu služby Azure:
 
-|Scénář|Jednotce C|Jednotky D|Jednotce E:|
+|Scénář|Jednotka C|Jednotka D|Jednotka E|
 |--------|-------|-------|-------|
-|Restartování virtuálního počítače|Zachovány|Zachovány|Zachovány|
-|Restartování portálu|Zachovány|Zachovány|Zničení|
-|Portálu obnovení z Image|Zachovány|Zničení|Zničení|
-|Místní Upgrade|Zachovány|Zachovány|Zničení|
-|Přenesení uzlu|Zničení|Zničení|Zničení|
+|Restartování virtuálního počítače|Konzervován|Konzervován|Konzervován|
+|Restart portálu|Konzervován|Konzervován|Zneškodněn|
+|Přeinstalace portálu|Konzervován|Zneškodněn|Zneškodněn|
+|Místní upgrade|Konzervován|Konzervován|Zneškodněn|
+|Migrace uzlů|Zneškodněn|Zneškodněn|Zneškodněn|
 
-Mějte na paměti, že v seznamu výše jednotky představuje role kořenové jednotce a by neměl být pevně zakódované. Místo toho použijte **RoleRoot %** proměnnou prostředí k reprezentaci jednotce.
+Všimněte si, že ve výše uvedeném seznamu představuje jednotka E: kořenovou jednotku role a neměl by být pevně zakódovaný. Místo toho použijte proměnnou prostředí **% RoleRoot%** k reprezentaci jednotky.
 
-Chcete-li minimalizovat prostoje při upgradu služby jednou instancí, nasazení nové služby s více instancemi na testovacím serveru a provést prohození virtuálních IP adres.
+Abyste minimalizovali prostoje při upgradování jedné instance služby, nasaďte na pracovní server novou službu s více instancemi a proveďte prohození virtuálních IP adres.
 
 <a name="RollbackofanUpdate"></a>
 
-## <a name="rollback-of-an-update"></a>Vrácení zpět aktualizace
-Azure poskytuje flexibilitu při správě služby během aktualizace umožňují zahájit další operace v rámci služby, po přijetí žádosti počáteční aktualizace podle kontroler prostředků infrastruktury Azure. Vrácení zpět lze provést pouze v případě aktualizace (Změna konfigurace) nebo upgrade **probíhá** stavu na nasazení. Aktualizaci nebo upgradu se považuje za probíhá, dokud existuje alespoň jedna instance služby, která ještě neaktualizoval na novou verzi. K otestování, jestli smí vrácení zpět, zkontrolujte hodnotu příznaku RollbackAllowed, vrácený [získat nasazení](/previous-versions/azure/reference/ee460804(v=azure.100)) a [získat vlastnosti cloudové služby](/previous-versions/azure/reference/ee460806(v=azure.100)) operace, je nastavena na hodnotu true.
+## <a name="rollback-of-an-update"></a>Vrácení aktualizace zpět
+Azure poskytuje flexibilitu při správě služeb během aktualizace tím, že vám umožní zahájit u služby další operace až po přijetí počáteční žádosti o aktualizaci řadičem prostředků infrastruktury Azure. Vrácení zpět se dá provést jenom v případě, že se aktualizace (Změna konfigurace) nebo upgrade  nachází v probíhajícím stavu nasazení. Aktualizace nebo upgrade se považuje za probíhající, pokud existuje aspoň jedna instance služby, která ještě není aktualizovaná na novou verzi. Pokud chcete otestovat, jestli je vrácení zpět povolené, zkontrolujte hodnotu příznaku RollbackAllowed, který vrátí operace [získat nasazení](/previous-versions/azure/reference/ee460804(v=azure.100)) a [získat vlastnosti cloudové služby](/previous-versions/azure/reference/ee460806(v=azure.100)) , na hodnotu true.
 
 > [!NOTE]
-> Je vhodné volat vrácení zpět **místní** aktualizovat nebo upgradovat, protože upgrady prohození virtuálních IP adres zahrnují nahrazení celého jednu běžící instanci služby s jiným.
+> Je vhodné volat vrácení zpět v rámci **místní** aktualizace nebo upgradu, protože virtuální IP adresy prohození zahrnují nahrazení jedné spuštěné instance služby jinou instancí.
 >
 >
 
-Vrátit zpět změny v průběhu aktualizace má následující důsledky při nasazení:
+Vrácení probíhající aktualizace má na nasazení následující důsledky:
 
-* Všechny instance rolí, které bylo ještě nebyly aktualizovány nebo upgradovat na novou verzi se aktualizovat nebo upgradovat, protože tyto instance jsou již spuštěny cílovou verzi služby.
-* Všechny instance rolí, které již byly aktualizovat nebo upgradovat na novou verzi balíčku služby (\*.cspkg) souboru nebo konfigurace služby (\*.cscfg) soubor (nebo oba soubory) jsou vráceny do před upgradem verze těchto souborů.
+* Jakékoli instance rolí, které ještě nebyly aktualizovány nebo upgradovány na novou verzi, nejsou aktualizovány ani upgradovány, protože tyto instance jsou již spuštěny cílovou verzí služby.
+* Všechny instance rolí, které již byly aktualizovány nebo upgradovány na novou verzi souboru balíčku služby (\*. cspkg) nebo soubor konfigurace služby (\*. cscfg), jsou vráceny na verzi předběžného upgradu těchto souborů.
 
-Tato funkce poskytuje následující funkce:
+Tato funkce je poskytována následujícími funkcemi:
 
-* [Vrácení zpět aktualizace nebo upgradu](/previous-versions/azure/reference/hh403977(v=azure.100)) operace, které je možné vyvolat v aktualizaci konfigurace (aktivuje voláním [změna konfigurace nasazení](/previous-versions/azure/reference/ee460809(v=azure.100))) nebo upgradu (aktivuje voláním [ Upgrade nasazení](/previous-versions/azure/reference/ee460793(v=azure.100))), dokud je alespoň jednou instancí služby, které ještě neaktualizoval na novou verzi.
-* Element uzamčené a RollbackAllowed elementu, které jsou následně vráceny jako součást text odpovědi o [získat nasazení](/previous-versions/azure/reference/ee460804(v=azure.100)) a [získat vlastnosti cloudové služby](/previous-versions/azure/reference/ee460806(v=azure.100)) operace:
+* Operace [vrácení aktualizace nebo upgradu](/previous-versions/azure/reference/hh403977(v=azure.100)) , která se dá volat v aktualizaci konfigurace (aktivované voláním [Konfigurace nasazení změn](/previous-versions/azure/reference/ee460809(v=azure.100))) nebo upgradu (aktivuje voláním [nasazení upgradu](/previous-versions/azure/reference/ee460793(v=azure.100))), pokud existuje aspoň jedna instance služby, která se ještě neaktualizovala na novou verzi.
+* Uzamčený element a element RollbackAllowed, které jsou vráceny jako součást textu odpovědi v rámci operace [získat nasazení](/previous-versions/azure/reference/ee460804(v=azure.100)) a [získat vlastnosti cloudové služby](/previous-versions/azure/reference/ee460806(v=azure.100)) :
 
-  1. Element uzamčené umožňuje rozpoznat, kdy mutující operace může být vyvolána v zadaném nasazení.
-  2. RollbackAllowed element slouží ke zjištění, kdy [vrácení zpět aktualizace nebo upgradu](/previous-versions/azure/reference/hh403977(v=azure.100)) operace lze volat pro konkrétní nasazení.
+  1. Uzamčený element umožňuje rozpoznat, kdy může být v daném nasazení vyvolána případná operace.
+  2. Element RollbackAllowed umožňuje rozpoznat, kdy může být operace [vrácení aktualizace nebo upgradu](/previous-versions/azure/reference/hh403977(v=azure.100)) volána v daném nasazení.
 
-  Aby bylo možné provést vrácení zpět, není nutné uzamčeno a RollbackAllowed elementy. Stačí potvrdit, že RollbackAllowed nastavený na hodnotu true. Tyto prvky jsou vráceny pouze, pokud tyto metody jsou vyvolány pomocí hlavičky požadavku nastavte na "x-ms-version: 2011-10-01 "nebo novější. Další informace o hlavičkách správy verzí, naleznete v tématu [Správa verzí služby správy](/previous-versions/azure/gg592580(v=azure.100)).
+  Aby bylo možné provést vrácení zpět, není nutné kontrolovat uzamčené i RollbackAllowed prvky. Postačuje, abyste potvrdili, že je RollbackAllowed nastavené na true. Tyto prvky jsou vráceny pouze v případě, že jsou tyto metody vyvolány pomocí hlavičky Request nastavenou na "x-MS-Version: 2011-10-01 "nebo novější verze. Další informace o hlavičkách verzí najdete v tématu [Správa verzí správy služeb](/previous-versions/azure/gg592580(v=azure.100)).
 
-Existují určité situace, kdy vrácení zpět aktualizace nebo upgrade se nepodporuje, ty jsou následující:
+V některých situacích se nepodporují vrácení aktualizace nebo upgradu, které jsou následující:
 
-* Snížení místní prostředky – aktualizace se zvyšuje místních prostředků pro role na platformě Azure neumožňuje vrácení zpět.
-* Omezení kvóty – Pokud aktualizace byl vertikálního snižování kapacity operace, kterou jste už může mít dostatečná kvóta výpočetních prostředků k dokončení operace vrácení zpět. Každé předplatné Azure má kvótu, která určuje maximální počet jader, které mohou být spotřebovány všechny hostované služby, které patří k tomuto předplatnému. Je-li provést vrácení dané aktualizace vložili předplatné přes kvótu pak, která nepovolí vrácení zpět.
-* Konflikt časování - li počáteční aktualizace byla dokončena, vrácení zpět není možný.
+* Snížení místních prostředků – Pokud aktualizace zvyšuje místní prostředky pro roli, platforma Azure nepovoluje vracení zpět.
+* Omezení kvóty – Pokud byla aktualizace operací horizontálního snížení kapacity, možná už nebudete mít k dokončení operace vrácení zpět dostatečnou kvótu výpočtů. Každé předplatné Azure má přiřazenou kvótu, která určuje maximální počet jader, které mohou být spotřebovány všemi hostovanými službami, které patří k tomuto předplatnému. Pokud by došlo k vrácení zpět dané aktualizace, bude vaše předplatné přes kvótu zavedeno a vrácení zpět nebude povoleno.
+* Konflikt časování – Pokud se počáteční aktualizace dokončí, vrácení zpět není možné.
 
-Je například při vrácení zpět aktualizace může být užitečné, pokud používáte [nasazení upgradu](/previous-versions/azure/reference/ee460793(v=azure.100)) operace v režimu ručního řídit rychlost, jakou hlavní místní upgrade na Azure hostovaná služba nasazení.
+Příkladem, kdy může být odvolání aktualizace užitečné, je, pokud používáte operaci [nasazení upgradu](/previous-versions/azure/reference/ee460793(v=azure.100)) v ručním režimu k řízení četnosti, s jakou je nasazený hlavní upgrade na službu Azure Hosted.
 
-Během zavádění upgradu zavoláte [nasazení upgradu](/previous-versions/azure/reference/ee460793(v=azure.100)) v režimu ručního a začít procházet upgradovacích domén. Pokud v určitém okamžiku, jak můžete monitorovat upgrade, jste si některé instance rolí v první upgradovacích domén, které můžete zkontrolovat staly reagovat, můžete volat [vrácení zpět aktualizace nebo upgradu](/previous-versions/azure/reference/hh403977(v=azure.100)) operaci s nasazením, zůstane zůstanou instance, které nebyly dosud nebyly upgradovány a vrácení zpět instance, které upgradovali na předchozí balíček služby a konfiguraci.
+Během zavedení upgradu zavolejte [nasazení upgradu](/previous-versions/azure/reference/ee460793(v=azure.100)) v ručním režimu a začněte procházet domény upgradu. Pokud v některém okamžiku sledujete upgrade, Všimněte si, že některé instance role v první upgradovací doméně, kterou prohlížíte, přestanou reagovat, můžete na nasazení zavolat operaci [vrácení aktualizace nebo upgradu](/previous-versions/azure/reference/hh403977(v=azure.100)) , která zůstane beze změny. instance, které ještě nebyly upgradovány, a instance vrácení zpět, které byly upgradovány na předchozí balíček a konfiguraci služby.
 
 <a name="multiplemutatingoperations"></a>
 
-## <a name="initiating-multiple-mutating-operations-on-an-ongoing-deployment"></a>Zahájení více mutující operací na probíhající nasazení
-V některých případech můžete chtít spustit více souběžných operací mutující průběžné nasazení. Například může provádět aktualizace služby a tuto aktualizaci se zavádějí napříč vaší služby, ale chcete třeba provést některé změny k vrácení zpět aktualizace, použití různých aktualizace nebo dokonce odstranit nasazení. Případ, ve kterém to může být nezbytné je-li upgrade služby obsahuje chybový kód, což způsobí, že upgradovaná role instance opakovaně k chybě. V takovém případě kontroler prostředků infrastruktury Azure nebude možné pokroku při uplatňování, upgradovat, protože dostatečný počet instancí v upgradované domény jsou v pořádku. Tento stav se označuje jako *zablokované nasazení*. Nasazení můžete unstick vrácení zpět aktualizace nebo použití funkce aktualizace v horní části neúspěšného jeden.
+## <a name="initiating-multiple-mutating-operations-on-an-ongoing-deployment"></a>Inicializace více operací s pokračujícím nasazením
+V některých případech můžete chtít zahájit více souběžných operací probíhajícího nasazení. Například můžete provést aktualizaci služby a, zatímco tato aktualizace je v rámci služby zaváděna, chcete provést nějaké změny, například vrátit zpět aktualizaci, použít jinou aktualizaci nebo dokonce odstranit nasazení. Případ, kdy to může být nutné, je, že pokud upgrade služby obsahuje ladicí kód, který způsobí opakované zhroucení instance role. V takovém případě nebude mít řadič prostředků infrastruktury Azure během provádění tohoto upgradu žádný pokrok, protože v upgradovaných doménách je v pořádku nedostatečný počet instancí. Tento stav se označuje jako zablokované *nasazení*. Nasazení můžete odvýšit vrácením aktualizace nebo použitím nové aktualizace nad selháním jedné z nich.
 
-Po počáteční požadavek na aktualizaci nebo upgradu služby obdržel kontroler prostředků infrastruktury Azure, můžete spustit následující mutující operací. To znamená, že nemáte čekat pro počáteční operaci dokončit před zahájením mutující jiná operace.
+Jakmile kontroler prostředků infrastruktury Azure přijme počáteční požadavek na aktualizaci nebo upgrade služby, můžete začít s dalšími následnými operacemi. To znamená, že nemusíte čekat na dokončení počáteční operace, než budete moci spustit jinou operaci.
 
-Inicializace druhou operaci aktualizace, zatímco probíhá první aktualizací provede podobný operaci vrácení zpět. Pokud je druhý aktualizace v automatickém režimu, první upgradovací doména se upgradují okamžitě, by mohl vést k instancím z více upgradovacích doménách budou offline stejného bodu v čase.
+Zahájení druhé operace aktualizace při probíhající první aktualizaci bude fungovat podobně jako operace vrácení zpět. Pokud je druhá aktualizace v automatickém režimu, upgraduje se hned první upgradovací doména, což může vést k neaktivnímu navýšení instancí z více domén upgradu v jednom okamžiku.
 
-Mutující operace jsou následující: [Změna konfigurace nasazení](/previous-versions/azure/reference/ee460809(v=azure.100)), [Upgrade nasazení](/previous-versions/azure/reference/ee460793(v=azure.100)), [aktualizace stavu nasazení](/previous-versions/azure/reference/ee460808(v=azure.100)), [odstranit nasazení](/previous-versions/azure/reference/ee460815(v=azure.100)), a [vrácení zpět Aktualizace nebo upgradu](/previous-versions/azure/reference/hh403977(v=azure.100)).
+Operace jsou následující: [Změňte konfiguraci nasazení](/previous-versions/azure/reference/ee460809(v=azure.100)), [upgradujte nasazení](/previous-versions/azure/reference/ee460793(v=azure.100)), [stav nasazení aktualizace](/previous-versions/azure/reference/ee460808(v=azure.100)), [Odstranit nasazení](/previous-versions/azure/reference/ee460815(v=azure.100))a [vrátit zpět aktualizaci nebo upgrade](/previous-versions/azure/reference/hh403977(v=azure.100)).
 
-Dvě operace [získat nasazení](/previous-versions/azure/reference/ee460804(v=azure.100)) a [získat vlastnosti cloudové služby](/previous-versions/azure/reference/ee460806(v=azure.100)), vrátí uzamčené příznak, který můžete prověřit, abyste zjistili, jestli mutující operaci lze vyvolat u dané nasazení.
+Dvě operace, [získat vlastnosti nasazení](/previous-versions/azure/reference/ee460804(v=azure.100)) a [získat vlastnosti cloudové služby](/previous-versions/azure/reference/ee460806(v=azure.100)), vrátí příznak uzamčení, který se dá prozkoumat, aby se zjistilo, jestli se dá v daném nasazení vyvolat případnou operaci.
 
-Volání verzi tyto metody, která vrátí příznak uzamknout, je nutné nastavit hlavičku požadavku na "x-ms-version: 2011-10-01 "nebo pozdější. Další informace o hlavičkách správy verzí, naleznete v tématu [Správa verzí služby správy](/previous-versions/azure/gg592580(v=azure.100)).
+Pro volání verze těchto metod, které vrací příznak uzamknut, je nutné nastavit hlavičku požadavku na "x-MS-Version: 2011-10-01 "nebo později. Další informace o hlavičkách verzí najdete v tématu [Správa verzí správy služeb](/previous-versions/azure/gg592580(v=azure.100)).
 
 <a name="distributiondfroles"></a>
 
-## <a name="distribution-of-roles-across-upgrade-domains"></a>Distribuce rolí napříč upgradovací domény
-Instance rolí Azure rovnoměrně distribuuje mezi sadu počet upgradovacích domén, které lze konfigurovat jako součást souboru definičních (.csdef) služby. Výchozí hodnota je 5 maximální počet domén upgradu je 20. Další informace o tom, jak upravit soubor definice služby najdete v tématu [Azure schématu definice služby (.csdef souboru)](cloud-services-model-and-package.md#csdef).
+## <a name="distribution-of-roles-across-upgrade-domains"></a>Distribuce rolí napříč doménami upgradu
+Azure distribuuje instance role rovnoměrně v rámci nastaveného počtu domén upgradu, které je možné nakonfigurovat jako součást souboru definice služby (. csdef). Maximální počet domén upgradu je 20 a výchozí hodnota je 5. Další informace o tom, jak upravit definiční soubor služby, najdete v tématu [schéma definice služby Azure (soubor. csdef)](cloud-services-model-and-package.md#csdef).
 
-Například pokud má vaše role deseti instancí, ve výchozím nastavení každý upgradovací doména obsahuje dvě instance. Pokud vaše role má 14 instancí, pak čtyři upgradovacích doménách budou obsahovat tři instance a pátý domény obsahuje dva.
+Například pokud má vaše role deset instancí, ve výchozím nastavení každá upgradovací doména obsahuje dvě instance. Pokud má vaše role 14 instancí, pak čtyři domény upgradu obsahují tři instance a pátá doména obsahuje dvě.
 
-Upgradovací domény jsou označeny index založený na nule: první upgradovací doména má ID 0 a druhý upgradovací doména má ID 1 a tak dále.
+Domény upgradu jsou označeny indexem založeným na nule: první upgradovací doména má ID 0 a druhá upgradovací doména má ID 1 atd.
 
-Následující diagram znázorňuje, jak službu než obsahuje dvě role jsou distribuovány v případě služby definuje dvě upgradovacích domén. Se službou osmi instancí webové role a devět instance role pracovního procesu.
+Následující diagram znázorňuje, jak je služba, která obsahuje dvě role, distribuována v případě, že služba definuje dvě domény upgradu. Služba spouští osm instancí webové role a devět instancí role pracovního procesu.
 
-![Distribuce Upgradovacích doménách](media/cloud-services-update-azure-service/IC345533.png "distribuci Upgradovacích domén")
+![Distribuce domén upgradu](media/cloud-services-update-azure-service/IC345533.png "Distribuce domén upgradu")
 
 > [!NOTE]
-> Všimněte si, že Azure řídí, jak přidělovat instance napříč upgradovací domény. Není možné určit, která instance jsou přiděleny které domény.
+> Všimněte si, že Azure řídí přiřazování instancí mezi upgradovací domény. Není možné určit, které instance jsou přiděleny k této doméně.
 >
 >
 

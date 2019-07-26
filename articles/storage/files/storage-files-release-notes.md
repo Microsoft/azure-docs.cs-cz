@@ -5,15 +5,15 @@ services: storage
 author: wmgries
 ms.service: storage
 ms.topic: article
-ms.date: 7/12/2019
+ms.date: 7/24/2019
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 5a2ec72f835b720e0c760069b58ef8f092aedcb2
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: de0482f49e919d0cbb500e9ee8b27ccf8287fb99
+ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67875834"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68489570"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Poznámky k verzi agenta Azure File Sync
 Synchronizace souborů Azure umožňuje centralizovat sdílené složky organizace ve službě Soubory Azure bez ztráty flexibility, výkonu a kompatibility místního souborového serveru. Vaše instalace Windows Serveru se transformují na rychlou mezipaměť sdílené složky Azure. Pro místní přístup k datům můžete použít jakýkoli protokol dostupný ve Windows Serveru (včetně SMB, NFS a FTPS). Můžete mít libovolný počet mezipamětí po celém světě.
@@ -25,6 +25,7 @@ Agent Synchronizace souborů Azure podporuje následující verze:
 
 | RTM | Číslo verze agenta | Datum vydání | Stav |
 |----|----------------------|--------------|------------------|
+| Kumulativní aktualizace z července 2019 – [KB4490497](https://support.microsoft.com/help/4490497)| 7.2.0.0 | 24. července 2019 | Podporované – [let](https://docs.microsoft.com/azure/storage/files/storage-files-release-notes#automatic-agent-lifecycle-management) |
 | Kumulativní aktualizace z července 2019 – [KB4490496](https://support.microsoft.com/help/4490496)| 7.1.0.0 | 12. července 2019 | Podporované – [let](https://docs.microsoft.com/azure/storage/files/storage-files-release-notes#automatic-agent-lifecycle-management) |
 | Verze v7 – [KB4490495](https://support.microsoft.com/help/4490495)| 7.0.0.0 | 19. června 2019 | Podporováno |
 | Kumulativní aktualizace z června 2019 – [KB4489739](https://support.microsoft.com/help/4489739)| 6.3.0.0 | 27. června 2019 | Podporováno |
@@ -45,6 +46,14 @@ Agent Synchronizace souborů Azure podporuje následující verze:
 
 ### <a name="azure-file-sync-agent-update-policy"></a>Zásady aktualizace agenta Synchronizace souborů Azure
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]
+
+## <a name="agent-version-7200"></a>Verze agenta 7.2.0.0
+Následující poznámky k verzi jsou pro verzi 7.2.0.0 agenta Azure File Sync vydané 24. července 2019. Tyto poznámky jsou kromě poznámky k verzi uvedené pro verzi 7.0.0.0.
+
+Seznam problémů opravených v této verzi:  
+- Agent synchronizace úložiště (FileSyncSvc) selže, pokud má konfigurace proxy hodnoty null.
+- Koncový bod serveru se spustí BCDR (Error 0x80c80257-ECS_E_BCDR_IN_PROGRESS), pokud má více koncových bodů na serveru stejný název.
+- Zvýšení spolehlivosti při vrstvení cloudu.
 
 ## <a name="agent-version-7100"></a>Verze agenta 7.1.0.0
 Následující poznámky k verzi jsou pro verzi 7.1.0.0 agenta Azure File Sync vydané 12. července 2019. Tyto poznámky jsou kromě poznámky k verzi uvedené pro verzi 7.0.0.0.
@@ -85,7 +94,7 @@ Další informace o tom, jak nainstalovat a nakonfigurovat agenta Azure File Syn
 
 ### <a name="interoperability"></a>Vzájemná funkční spolupráce
 - Antivirové, zálohovací a další aplikace s přístupem k vrstveným souborům můžou způsobit nežádoucí odvolání, pokud nerespektují atribut offline a přeskočí čtení obsahu těchto souborů. Další informace najdete v tématu věnovaném [řešení potíží s Azure File Sync](storage-sync-files-troubleshoot.md).
-- Blokování souborů (Správce prostředků souborového správce prostředků serveru) může způsobit nekonečná selhání synchronizace, když jsou soubory blokované z důvodu blokování souborů.
+- Blokování souborů (Správce prostředků souborového Správce prostředků serveru) může způsobit nekonečná selhání synchronizace, když jsou soubory blokované z důvodu blokování souborů.
 - Spuštění nástroje Sysprep na serveru s nainstalovaným agentem Azure File Sync není podporováno a může vést k neočekávaným výsledkům. Agent Azure File Sync by měl být nainstalovaný po nasazení image serveru a dokončení zkrácené instalace nástroje Sysprep.
 
 ### <a name="sync-limitations"></a>Omezení synchronizace
@@ -182,7 +191,7 @@ Další informace o tom, jak nainstalovat a nakonfigurovat agenta Azure File Syn
 
 ### <a name="interoperability"></a>Vzájemná funkční spolupráce
 - Antivirové, zálohovací a další aplikace s přístupem k vrstveným souborům můžou způsobit nežádoucí odvolání, pokud nerespektují atribut offline a přeskočí čtení obsahu těchto souborů. Další informace najdete v tématu věnovaném [řešení potíží s Azure File Sync](storage-sync-files-troubleshoot.md).
-- Blokování souborů (Správce prostředků souborového správce prostředků serveru) může způsobit nekonečná selhání synchronizace, když jsou soubory blokované z důvodu blokování souborů.
+- Blokování souborů (Správce prostředků souborového Správce prostředků serveru) může způsobit nekonečná selhání synchronizace, když jsou soubory blokované z důvodu blokování souborů.
 - Spuštění nástroje Sysprep na serveru s nainstalovaným agentem Azure File Sync není podporováno a může vést k neočekávaným výsledkům. Agent Azure File Sync by měl být nainstalovaný po nasazení image serveru a dokončení zkrácené instalace nástroje Sysprep.
 
 ### <a name="sync-limitations"></a>Omezení synchronizace
@@ -280,7 +289,7 @@ Další informace o tom, jak nainstalovat a nakonfigurovat agenta Azure File Syn
 
 ### <a name="interoperability"></a>Vzájemná funkční spolupráce
 - Antivirové, zálohovací a další aplikace s přístupem k vrstveným souborům můžou způsobit nežádoucí odvolání, pokud nerespektují atribut offline a přeskočí čtení obsahu těchto souborů. Další informace najdete v tématu věnovaném [řešení potíží s Azure File Sync](storage-sync-files-troubleshoot.md).
-- Blokování souborů (Správce prostředků souborového správce prostředků serveru) může způsobit nekonečná selhání synchronizace, když jsou soubory blokované z důvodu blokování souborů.
+- Blokování souborů (Správce prostředků souborového Správce prostředků serveru) může způsobit nekonečná selhání synchronizace, když jsou soubory blokované z důvodu blokování souborů.
 - Spuštění nástroje Sysprep na serveru s nainstalovaným agentem Azure File Sync není podporováno a může vést k neočekávaným výsledkům. Agent Azure File Sync by měl být nainstalovaný po nasazení image serveru a dokončení zkrácené instalace nástroje Sysprep.
 
 ### <a name="sync-limitations"></a>Omezení synchronizace
@@ -364,7 +373,7 @@ Další informace o tom, jak nainstalovat a nakonfigurovat agenta Azure File Syn
 
 ### <a name="interoperability"></a>Vzájemná funkční spolupráce
 - Antivirové, zálohovací a další aplikace s přístupem k vrstveným souborům můžou způsobit nežádoucí odvolání, pokud nerespektují atribut offline a přeskočí čtení obsahu těchto souborů. Další informace najdete v tématu věnovaném [řešení potíží s Azure File Sync](storage-sync-files-troubleshoot.md).
-- Blokování souborů (Správce prostředků souborového správce prostředků serveru) může způsobit nekonečná selhání synchronizace, když jsou soubory blokované z důvodu blokování souborů.
+- Blokování souborů (Správce prostředků souborového Správce prostředků serveru) může způsobit nekonečná selhání synchronizace, když jsou soubory blokované z důvodu blokování souborů.
 - Spuštění nástroje Sysprep na serveru s nainstalovaným agentem Azure File Sync není podporováno a může vést k neočekávaným výsledkům. Agent Azure File Sync by měl být nainstalovaný po nasazení image serveru a dokončení zkrácené instalace nástroje Sysprep.
 - Odstranění duplicit dat a vrstvení cloudu se nepodporuje na stejném svazku.
 

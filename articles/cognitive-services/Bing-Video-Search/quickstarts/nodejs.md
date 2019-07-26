@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý start: Hledání videí pomocí API REST pro vyhledávání videí Bingu a Node.js'
-titlesuffix: Azure Cognitive Services
-description: V tomto rychlém startu používáme k odeslání žádosti pro vyhledávání videí do Bingu Video Search REST API prostřednictvím JavaScriptu.
+title: 'Rychlý start: Hledání videí pomocí Vvyhledávání videí Bingu REST API a Node. js'
+titleSuffix: Azure Cognitive Services
+description: Pomocí tohoto rychlého startu můžete odesílat žádosti o vyhledávání videí do Vvyhledávání videí Bingu REST API pomocí JavaScriptu.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,36 +10,36 @@ ms.subservice: bing-video-search
 ms.topic: quickstart
 ms.date: 06/26/2019
 ms.author: aahi
-ms.openlocfilehash: a7cfdeb69fd0df9d79424ade3823ab7f8adb4913
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: ab3d1e71515df80b5bdba1edf8cd16ba3ed6b0a9
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67449275"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68500123"
 ---
-# <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-nodejs"></a>Rychlý start: Hledání videí pomocí API REST pro vyhledávání videí Bingu a Node.js
+# <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-nodejs"></a>Rychlý start: Hledání videí pomocí Vvyhledávání videí Bingu REST API a Node. js
 
-V tomto rychlém startu můžete provést první volání do rozhraní API Bingu pro vyhledávání Video a zobrazení výsledků na vyhledávacím z odpovědi JSON. Tato jednoduchá aplikace JavaScript odešle dotaz pro vyhledávání videí HTTP do rozhraní API a zobrazí odpovědi. Zatímco tato aplikace je napsána v jazyce JavaScript a Node.js používá, je rozhraní API RESTful webová služba, která je kompatibilní s Většina programovacích jazyků. Zdrojový kód této ukázky je dostupný na [GitHubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingVideoSearchv7.js) s dalším ošetřením chyb a poznámkami ke kódu.
+Pomocí tohoto rychlého startu můžete provést vaše první volání na rozhraní API Bingu pro vyhledávání videí a zobrazit výsledky hledání z odpovědi JSON. Tato jednoduchá aplikace JavaScriptu pošle do rozhraní API dotaz pro vyhledávání videí HTTP a zobrazí odpověď. I když je tato aplikace napsaná v jazyce JavaScript a používá Node. js, je rozhraní API webová služba RESTful kompatibilní s většinou programovacích jazyků. Zdrojový kód této ukázky je dostupný na [GitHubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingVideoSearchv7.js) s dalším ošetřením chyb a poznámkami ke kódu.
 
 ## <a name="prerequisites"></a>Požadavky
 
 * [Node.js](https://nodejs.org/en/download/)
 
-* Modul požadavku pro JavaScript
-    * Můžete nainstalovat pomocí tohoto modulu `npm install request`
+* Modul žádosti pro JavaScript
+    * Tento modul můžete nainstalovat pomocí`npm install request`
 
 [!INCLUDE [cognitive-services-bing-video-search-signup-requirements](../../../../includes/cognitive-services-bing-video-search-signup-requirements.md)]
 
 ## <a name="initialize-the-application"></a>Inicializace aplikace
 
-1. Vytvořte nový soubor jazyka JavaScript v Oblíbené prostředí IDE nebo editoru. Nastavte přísnosti a přidejte následující požadavky:
+1. Vytvořte nový soubor JavaScriptu v oblíbeném integrovaném vývojovém prostředí (IDE) nebo editoru. Nastavte striktní a přidejte následující požadavek:
 
     ```javascript
     'use strict';
     let https = require('https');
     ```
 
-2. Vytváření proměnných pro váš koncový bod rozhraní API, klíč předplatného a hledaný termín.
+2. Vytvořte proměnné pro svůj koncový bod rozhraní API, klíč předplatného a hledaný výraz.
 
     ```javascript
     let subscriptionKey = 'enter key here';
@@ -50,7 +50,7 @@ V tomto rychlém startu můžete provést první volání do rozhraní API Bingu
 
 ## <a name="create-a-response-handler"></a>Vytvoření obslužné rutiny odpovědi
 
-1. Vytvořit funkci s názvem `response_handler` přijmout odpověď JSON z rozhraní API. Vytvořte proměnnou pro text odpovědi. Přidat odpověď při `data` přijatých příznak pomocí `response.on()`.
+1. Vytvořte funkci nazvanou `response_handler` , která z rozhraní API převezme odpověď JSON. Vytvořte proměnnou pro tělo odpovědi. Připojit odpověď, když `data` je přijat příznak, pomocí. `response.on()`
 
     ```javascript
     let response_handler = function (response) {
@@ -61,7 +61,7 @@ V tomto rychlém startu můžete provést první volání do rozhraní API Bingu
     };
     ```
     
-   1. Když `end` je signalizován, použijte `response.on()` k uložení Bingu související záhlaví (počínaje `bingapis` nebo `x-msedge-`). Potom parsovat JSON pomocí `JSON.parse()`, převeďte jej na řetězec s `JSON.stringify()`a vytisknout si ho.
+   1. Při `end` signalizaci použijte `response.on()` k uložení hlaviček `bingapis` souvisejících s bingem (počínaje nebo `x-msedge-`). Pak Analyzujte JSON pomocí `JSON.parse()`, převeďte ho na řetězec pomocí `JSON.stringify()`a vytiskněte ho.
 
        ```javascript
        response.on('end', function () {
@@ -75,9 +75,9 @@ V tomto rychlém startu můžete provést první volání do rozhraní API Bingu
        });
        ```
 
-# <a name="create-and-send-the-search-request"></a>Vytvoření a odeslání požadavku hledání
+# <a name="create-and-send-the-search-request"></a>Vytvoření a odeslání žádosti o vyhledávání
 
-1. Vytvořit funkci s názvem `bing_video_search()`. Přidáte parametry pro vaši žádost, včetně názvu hostitele a záhlaví. Kódování hledaný termín a přidejte je do vašeho parametr cesty s `?q=` parametru. Odešlete požadavek s `req.end()`.
+1. Vytvořte funkci s názvem `bing_video_search()`. Přidejte parametry pro svůj požadavek včetně názvu hostitele a hlaviček. Zakódování hledaného termínu a jeho připojení k parametru cesty s `?q=` parametrem. Pak odešlete žádost pomocí `req.end()`.
 
     ```javascript
     let bing_video_search = function (search_term) {
@@ -208,8 +208,8 @@ V tomto rychlém startu můžete provést první volání do rozhraní API Bingu
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Vytvoření webové jednostránkové aplikace](../tutorial-bing-video-search-single-page-app.md)
+> [Sestavení webové aplikace s jednou stránkou](../tutorial-bing-video-search-single-page-app.md)
 
-## <a name="see-also"></a>Další informace najdete v tématech 
+## <a name="see-also"></a>Viz také: 
 
- [Co je API pro vyhledávání videí Bingu?](../overview.md)
+ [Co je rozhraní API Bingu pro vyhledávání videí?](../overview.md)

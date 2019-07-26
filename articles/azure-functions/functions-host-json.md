@@ -1,6 +1,6 @@
 ---
-title: referenční materiály k Host.JSON pro Azure Functions 2.x
-description: Referenční dokumentace pro Azure Functions host.json soubor s modulem runtime verze 2.
+title: Reference Host. JSON pro Azure Functions 2. x
+description: Referenční dokumentace pro soubor Azure Functions Host. JSON s modulem runtime v2
 services: functions
 author: ggailey777
 manager: jeconnoc
@@ -10,31 +10,31 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/08/2018
 ms.author: glenga
-ms.openlocfilehash: 89c4723e83979f89721677146810abdf99fb5d11
-ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
+ms.openlocfilehash: ecb2059e529347b7eff72bf6af74b82558a4c251
+ms.sourcegitcommit: 83a89c45253b0d432ce8dcd70084c18e9930b1fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/21/2019
-ms.locfileid: "67310470"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68371695"
 ---
-# <a name="hostjson-reference-for-azure-functions-2x"></a>referenční materiály k Host.JSON pro Azure Functions 2.x  
+# <a name="hostjson-reference-for-azure-functions-2x"></a>Reference Host. JSON pro Azure Functions 2. x  
 
-> [!div class="op_single_selector" title1="Vyberte verzi modulu runtime Azure Functions, které používáte: "]
+> [!div class="op_single_selector" title1="Vyberte verzi Azure Functions runtime, kterou používáte: "]
 > * [Verze 1](functions-host-json-v1.md)
 > * [Verze 2](functions-host-json.md)
 
-*Host.json* soubor metadat obsahuje možnosti globální konfigurace, které ovlivňují všechny funkce aplikace function App. Tento článek obsahuje seznam nastavení, které jsou k dispozici pro modul runtime verze 2.  
+Soubor metadat *Host. JSON* obsahuje možnosti globální konfigurace, které mají vliv na všechny funkce aplikace Function App. Tento článek obsahuje seznam nastavení, která jsou k dispozici pro modul runtime v2.  
 
 > [!NOTE]
-> Tento článek je určený pro Azure Functions 2.x.  Pro odkaz host.json ve funkcích 1.x, najdete v článku [referenční materiály k host.json pro Azure Functions 1.x](functions-host-json-v1.md).
+> Tento článek je určen pro Azure Functions 2. x.  Pro odkaz host.json ve funkcích 1.x, najdete v článku [referenční materiály k host.json pro Azure Functions 1.x](functions-host-json-v1.md).
 
-Další možnosti konfigurace aplikace funkce se spravují v vaše [nastavení aplikace](functions-app-settings.md).
+Další možnosti konfigurace aplikace Function App jsou spravované v [nastavení aplikace](functions-app-settings.md).
 
-Některá nastavení host.json se použijí jenom při spuštění místně v [local.settings.json](functions-run-local.md#local-settings-file) souboru.
+Některá nastavení Host. JSON se používají jenom v případě, že se spouští místně v souboru [Local. Settings. JSON](functions-run-local.md#local-settings-file) .
 
-## <a name="sample-hostjson-file"></a>Ukázkový soubor host.json
+## <a name="sample-hostjson-file"></a>Ukázkový soubor host. JSON
 
-Následující ukázka *host.json* soubory mají všechny zadané možnosti.
+Následující ukázkové soubory *Host. JSON* mají uvedené všechny možné možnosti.
 
 ```json
 {
@@ -88,17 +88,17 @@ Následující ukázka *host.json* soubory mají všechny zadané možnosti.
 }
 ```
 
-Následující části tohoto článku popisují jednotlivé vlastnosti nejvyšší úrovně. Všechny jsou volitelné, pokud není uvedeno jinak.
+Následující části tohoto článku vysvětlují jednotlivé vlastnosti nejvyšší úrovně. Všechny jsou volitelné, pokud není uvedeno jinak.
 
-## <a name="aggregator"></a>aggregator
+## <a name="aggregator"></a>agregovan
 
 [!INCLUDE [aggregator](../../includes/functions-host-json-aggregator.md)]
 
 ## <a name="applicationinsights"></a>applicationInsights
 
-Toto nastavení je podřízeným prvkem [protokolování](#logging).
+Toto nastavení je podřízenou položkou [protokolování](#logging).
 
-Ovládací prvky [vzorkování funkcí ve službě Application Insights](./functions-monitoring.md#configure-sampling).
+Řídí [funkci vzorkování v Application Insights](./functions-monitoring.md#configure-sampling).
 
 ```json
 {
@@ -112,32 +112,32 @@ Ovládací prvky [vzorkování funkcí ve službě Application Insights](./funct
 ```
 
 > [!NOTE]
-> Vzorkování protokolu může způsobit, že některé spuštění není zobrazí v okně monitorování Application Insights.
+> Vzorkování protokolu může způsobit, že se některá spuštění v okně monitorování Application Insights neprojeví.
 
 |Vlastnost  |Výchozí | Popis |
 |---------|---------|---------| 
 |isEnabled|true|Povolí nebo zakáže vzorkování.| 
-|maxTelemetryItemsPerSecond|5|Prahová hodnota, na které vzorkování začíná.| 
+|maxTelemetryItemsPerSecond|5|Prahová hodnota, při které začíná vzorkování.| 
 
 ## <a name="cosmosdb"></a>cosmosDb
 
-Konfigurace nastavení najdete v [Cosmos DB triggerů a vazeb](functions-bindings-cosmosdb-v2.md#host-json).
+Nastavení konfigurace najdete v [Cosmos DB triggerech a vazbách](functions-bindings-cosmosdb-v2.md#host-json).
 
 ## <a name="durabletask"></a>durableTask
 
-Konfigurace nastavení najdete v [vazby pro Durable Functions](durable/durable-functions-bindings.md#host-json).
+Nastavení konfigurace lze nalézt v [vazby pro Durable Functions](durable/durable-functions-bindings.md#host-json).
 
 ## <a name="eventhub"></a>centra událostí
 
-Konfigurace nastavení se dají najít v [centra Event aktivačními událostmi a vazbami](functions-bindings-event-hubs.md#host-json). 
+Nastavení konfigurace najdete v aktivačních [událostech a vazbách centra událostí](functions-bindings-event-hubs.md#host-json). 
 
-## <a name="extensions"></a>Rozšíření
+## <a name="extensions"></a>SND
 
-Vlastnosti, která vrací objekt, který obsahuje všechna nastavení specifické pro vazbu, například [http](#http) a [eventHub](#eventhub).
+Vlastnost, která vrací objekt, který obsahuje všechna nastavení specifická pro vazbu, například [http](#http) a [eventHub](#eventhub).
 
-## <a name="functions"></a>functions
+## <a name="functions"></a>– funkce
 
-Seznam funkcí, které spustí úlohu hostitele. Prázdné pole znamená, že spuštění všech funkcí. Určený k použití pouze tehdy, když [spuštěná místně](functions-run-local.md). V aplikace function App v Azure, by měl místo toho podle kroků v [zakázání funkcí ve službě Azure Functions](disable-function.md) zakázat konkrétní funkce místo použití tohoto nastavení.
+Seznam funkcí, které hostitel úlohy spouští. Prázdné pole znamená spuštění všech funkcí. Určeno pro použití pouze při [místním spuštění](functions-run-local.md). V aplikacích Function App v Azure byste měli místo použití tohoto nastavení zakázat konkrétní funkce pomocí postupu v [Azure Functions](disable-function.md) .
 
 ```json
 {
@@ -147,7 +147,7 @@ Seznam funkcí, které spustí úlohu hostitele. Prázdné pole znamená, že sp
 
 ## <a name="functiontimeout"></a>functionTimeout
 
-Určuje dobu trvání časového limitu pro všechny funkce. V plánu Consumption bez serveru platný rozsah je od 1 sekundy do 10 minut a výchozí hodnota je 5 minut. V vyhrazený plán služby App Service neexistuje žádné omezení celkové a výchozí hodnota je 30 minut. Hodnota `-1` označuje spuštění bez vazby.
+Označuje dobu trvání časového limitu pro všechny funkce. V plánu spotřeby bez serveru je platný rozsah od 1 sekundy do 10 minut a výchozí hodnota je 5 minut. V plánu App Service neexistuje žádný celkový limit a výchozí hodnota závisí na verzi modulu runtime. Ve verzi 2. x je výchozí hodnota pro App Service plán 30 minut. Ve verzi 1. x je *hodnota null*, což znamená, že nevypršel časový limit. Nedá se nastavit jako nekonečné. Pokud tuto hodnotu explicitně nenastavíme, bude mít výchozí hodnotu 30 minut.
 
 ```json
 {
@@ -155,9 +155,9 @@ Určuje dobu trvání časového limitu pro všechny funkce. V plánu Consumptio
 }
 ```
 
-## <a name="healthmonitor"></a>healthMonitor
+## <a name="healthmonitor"></a>Elementu
 
-Nastavení konfigurace pro [monitorování stavu hostitelů](https://github.com/Azure/azure-webjobs-sdk-script/wiki/Host-Health-Monitor).
+Nastavení konfigurace pro [Monitor stavu hostitele](https://github.com/Azure/azure-webjobs-sdk-script/wiki/Host-Health-Monitor).
 
 ```
 {
@@ -173,21 +173,21 @@ Nastavení konfigurace pro [monitorování stavu hostitelů](https://github.com/
 
 |Vlastnost  |Výchozí | Popis |
 |---------|---------|---------| 
-|enabled|true|Určuje, zda je povolena funkce. | 
-|healthCheckInterval|10 sekund|Časový interval mezi stavu na pozadí pravidelně kontroluje. | 
-|healthCheckWindow|2 minut|Použít ve spojení s klouzavého časového období `healthCheckThreshold` nastavení.| 
-|healthCheckThreshold|6|Maximální počet pokusů o kontrolu stavu může selhat, předtím, než je zahájeno recyklace hostitele.| 
-|counterThreshold|0.80|Prahová hodnota, na které čítače výkonu se budou považovat za není v pořádku.| 
+|enabled|true|Určuje, jestli je funkce povolená. | 
+|healthCheckInterval|10 sekund|Časový interval mezi pravidelnými kontrolami stavu pozadí. | 
+|healthCheckWindow|2 minuty|Posuvné časové okno používané ve spojení s `healthCheckThreshold` nastavením.| 
+|healthCheckThreshold|6|Maximální počet neúspěšných kontrol stavu před zahájením recyklace hostitele.| 
+|counterThreshold|0,80|Prahová hodnota, při které bude čítač výkonu považován za špatný.| 
 
 ## <a name="http"></a>http
 
-Konfigurace nastavení se dají najít v [http triggerů a vazeb](functions-bindings-http-webhook.md).
+Nastavení konfigurace najdete v aktivačních [událostech http a vazbách](functions-bindings-http-webhook.md).
 
 [!INCLUDE [functions-host-json-http](../../includes/functions-host-json-http.md)]
 
-## <a name="logging"></a>Protokolování
+## <a name="logging"></a>protokolu
 
-Řídí chování protokolování aplikace function App, včetně Application Insights.
+Řídí chování protokolování aplikace Function App, včetně Application Insights.
 
 ```json
 "logging": {
@@ -207,14 +207,14 @@ Konfigurace nastavení se dají najít v [http triggerů a vazeb](functions-bind
 
 |Vlastnost  |Výchozí | Popis |
 |---------|---------|---------|
-|fileLoggingMode|debugOnly|Definuje, jaké úroveň protokolování do souboru je povolená.  Možnosti jsou `never`, `always`, `debugOnly`. |
-|logLevel|neuvedeno|Objekt, který definuje kategorie protokolu filtrování pro funkce v aplikaci. Verze 2.x následuje rozložení ASP.NET Core pro filtrování kategorie protokolu. To vám umožní filtrovat protokolování pro konkrétní funkce. Další informace najdete v tématu [filtrování protokolu](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering) v dokumentaci k ASP.NET Core. |
+|fileLoggingMode|debugOnly|Definuje, jakou úroveň protokolování souborů je povoleno.  Možnosti jsou `never`, `always`, `debugOnly`. |
+|logLevel|neuvedeno|Objekt, který definuje filtrování kategorií protokolů pro funkce v aplikaci. Verze 2. x se řídí rozložením ASP.NET Core pro filtrování kategorií protokolů. To vám umožní filtrovat protokolování pro konkrétní funkce. Další informace najdete v tématu [filtrování protokolů](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering) v dokumentaci k ASP.NET Core. |
 |console|neuvedeno| [console](#console) nastavení protokolování. |
-|applicationInsights|neuvedeno| [ApplicationInsights](#applicationinsights) nastavení. |
+|applicationInsights|neuvedeno| Nastavení [applicationInsights](#applicationinsights) |
 
 ## <a name="console"></a>console
 
-Toto nastavení je podřízeným prvkem [protokolování](#logging). Určuje konzoly protokolování není v režimu ladění.
+Toto nastavení je podřízenou položkou [protokolování](#logging). Řídí protokolování konzoly, pokud není v režimu ladění.
 
 ```json
 {
@@ -232,21 +232,21 @@ Toto nastavení je podřízeným prvkem [protokolování](#logging). Určuje kon
 |---------|---------|---------| 
 |isEnabled|false|Povolí nebo zakáže protokolování konzoly.| 
 
-## <a name="queues"></a>fronty
+## <a name="queues"></a>vytvořil
 
-Konfigurace nastavení se dají najít v [úložiště fronty aktivačními událostmi a vazbami](functions-bindings-storage-queue.md#host-json).  
+Nastavení konfigurace najdete v aktivačních [událostech a vazbách fronty úložiště](functions-bindings-storage-queue.md#host-json).  
 
-## <a name="sendgrid"></a>SendGrid
+## <a name="sendgrid"></a>sendGrid
 
-Konfigurace nastavení najdete v [SendGrid aktivačními událostmi a vazbami](functions-bindings-sendgrid.md#host-json).
+Nastavení konfigurace najdete v [SendGrid triggerech a vazbách](functions-bindings-sendgrid.md#host-json).
 
 ## <a name="servicebus"></a>serviceBus
 
-Konfigurace nastavení najdete v [aktivační události služby Service Bus a vazby](functions-bindings-service-bus.md#host-json).
+Nastavení konfigurace najdete v [Service Bus triggerech a vazbách](functions-bindings-service-bus.md#host-json).
 
 ## <a name="singleton"></a>singleton
 
-Nastavení konfigurace pro chování zámku typu Singleton. Další informace najdete v tématu [problém Githubu o podpoře typu singleton](https://github.com/Azure/azure-webjobs-sdk-script/issues/912).
+Nastavení konfigurace pro chování zámku typu singleton. Další informace najdete v tématu [problém GitHubu o podpoře typu Singleton](https://github.com/Azure/azure-webjobs-sdk-script/issues/912).
 
 ```json
 {
@@ -262,19 +262,19 @@ Nastavení konfigurace pro chování zámku typu Singleton. Další informace na
 
 |Vlastnost  |Výchozí | Popis |
 |---------|---------|---------| 
-|lockPeriod|00:00:15|Dobu, po kterou úroveň zámků funkce pořízeny pro. Zámky automatického obnovení.| 
-|listenerLockPeriod|00:01:00|Období, ve kterém zamkne naslouchací proces pořízeny pro.| 
-|listenerLockRecoveryPollingInterval|00:01:00|Časový interval použít pro obnovení zámku naslouchací proces, pokud při spuštění nebylo možné získat zámek naslouchací proces.| 
-|lockAcquisitionTimeout|00:01:00|Maximální množství času se modul runtime pokusí se získat zámek.| 
+|lockPeriod|00:00:15|Období, pro které jsou přijímány zámky na úrovni funkce. Automatické obnovení zámků.| 
+|listenerLockPeriod|00:01:00|Období, pro které jsou pořízeny zámky naslouchacího procesu.| 
+|listenerLockRecoveryPollingInterval|00:01:00|Časový interval, který se používá pro obnovení zámku naslouchacího procesu, pokud se nepovedlo získat zámek naslouchacího procesu při spuštění.| 
+|lockAcquisitionTimeout|00:01:00|Maximální doba, po kterou se modul runtime pokusí získat zámek.| 
 |lockAcquisitionPollingInterval|neuvedeno|Interval mezi pokusy o získání zámku.| 
 
 ## <a name="version"></a>version
 
-Řetězec verze `"version": "2.0"` je vyžadován pro aplikaci function app, zaměřuje na modul runtime verze 2.
+Pro aplikaci funkcí `"version": "2.0"` , která cílí na modul runtime v2, se vyžaduje řetězec verze.
 
 ## <a name="watchdirectories"></a>watchDirectories
 
-Sada [sdílených adresářů kód](functions-reference-csharp.md#watched-directories) , který je potřeba sledovat změny.  Zajišťuje, že při změně kódu v těchto adresářích, změny se prodlouží vašich funkcí.
+Sada [sdílených adresářů kódu](functions-reference-csharp.md#watched-directories) , které by měly být monitorovány pro změny.  Zajistí, že při změně kódu v těchto adresářích jsou změny převzaty funkcemi.
 
 ```json
 {
@@ -284,7 +284,7 @@ Sada [sdílených adresářů kód](functions-reference-csharp.md#watched-direct
 
 ## <a name="manageddependency"></a>managedDependency
 
-Spravované závislosti je funkce ve verzi preview, která je aktuálně podporují jenom prostřednictvím Powershellu na základě funkcí. Umožňuje závislosti automaticky spravuje služba. Pokud je vlastnost povoleno nastavena na hodnotu true, [requirements.psd1](functions-reference-powershell.md#dependency-management) soubor se zpracuje. Po vydání všechny dílčí verze závislosti aktualizuje.
+Spravovaná závislost je funkce ve verzi Preview, která je aktuálně podporovaná jenom s funkcemi založenými na PowerShellu. Umožňuje, aby se závislosti automaticky spravovaly službou. Pokud je vlastnost Enabled nastavená na hodnotu true, zpracuje se soubor [požadavky. psd1](functions-reference-powershell.md#dependency-management) . Závislosti se budou aktualizovat, až budou uvolněny jakékoli dílčí verze.
 
 ```json
 {
@@ -297,7 +297,7 @@ Spravované závislosti je funkce ve verzi preview, která je aktuálně podporu
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Zjistěte, jak aktualizovat soubor host.json](functions-reference.md#fileupdate)
+> [Naučte se aktualizovat soubor host. JSON.](functions-reference.md#fileupdate)
 
 > [!div class="nextstepaction"]
-> [Podívejte se globální nastavení proměnné prostředí](functions-app-settings.md)
+> [Zobrazit globální nastavení v proměnných prostředí](functions-app-settings.md)

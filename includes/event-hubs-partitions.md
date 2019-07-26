@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/22/2019
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: b23f9532aa1ca6f7bae914ff8cb9d7566a0fec86
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: dc7c86ff1df48f9ce96769098f7aab76d33c8822
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67841605"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68481423"
 ---
 Služba Event Hubs poskytuje datový proud zpráv pomocí schématu rozdělujícího datový proud na oddíly pro jednotlivé příjemce. To zajišťuje, aby každý příjemce četl jenom konkrétní podmnožinu nebo oddíl datového proudu zpráv. Toto schéma umožňuje vodorovné škálování zpracování událostí a poskytuje další funkce zaměřené na datový proud, které nejsou ve frontách a tématech k dispozici.
 
@@ -27,12 +27,14 @@ Event Hubs uchovává data dobu uchování nakonfigurované, která se vztahuje 
 
 Počet oddílů je určený při vytvoření a musí být v rozsahu 2 až 32. Počet oddílů není možné měnit. Proto je při nastavování počtu oddílů potřeba uvažovat z dlouhodobého hlediska. Oddíly slouží jako mechanismus pro organizaci dat a souvisí se stupněm paralelismu příjmu dat, který vyžadují přijímací aplikace. Počet oddílů v centru událostí přímo souvisí s počtem souběžných čtenářů, které plánujete mít. Pokud chcete použít vyšší počet oddílů než 32, kontaktujte tým služby Event Hubs.
 
-I když oddíly identifikovat a je možné odeslat přímo, odesílání přímo do oddílu se nedoporučuje. Místo toho můžete použít konstrukce vyšší úrovně počínaje [zdroje událostí](../articles/event-hubs/event-hubs-features.md#event-publishers) oddílu. 
+Možná budete chtít nastavit, aby byla nejvyšší možná hodnota, která je v době vytváření 32. Pamatujte, že pokud bude mít více než jeden oddíl, budou události odesílány do několika oddílů bez zachování pořadí, pokud nenastavíte odesílatele tak, aby odesílali pouze jeden oddíl z 32 ponechání zbývajících 31 oddílů redundantní. V bývalém případě budete muset číst události ve všech oddílech 32. V druhém případě se od dodatečné konfigurace neúčtují žádné zjevné náklady, které musíte udělat na hostiteli procesoru událostí.
+
+I když oddíly identifikovat a je možné odeslat přímo, odesílání přímo do oddílu se nedoporučuje. Místo toho můžete použít konstrukce vyšší úrovně, které jsou představené v části [vydavatelé událostí](../articles/event-hubs/event-hubs-features.md#event-publishers) . 
 
 Oddíly jsou naplněné posloupností dat událostí, která obsahují tělo události, uživatelem definované vlastnosti kontejneru objektů a dat a metadat – například její posun v oddílu a pořadí v posloupnosti datového proudu.
 
-Doporučujeme, abyste vyvážili jednotky propustnosti 1:1 a oddíly, abyste dosáhli optimálního škálování. Jednoho oddílu dovoluje zaručené příchozí a výchozí přenos maximálně jednu jednotku propustnosti. Přestože je možné dosáhnout vyšší propustnost na oddíl, není zaručeno, že výkon. To je důvod, proč důrazně doporučujeme, že počet oddílů v Centru událostí být větší než nebo rovna počtu jednotek propustnosti.
+Doporučujeme, abyste si vyrovnali 1:1 jednotek propustnosti a oddílů, abyste dosáhli optimálního škálování. Jeden oddíl má zaručené příchozí a odchozí přenosy až na jednu jednotku propustnosti. I když může být možné dosáhnout vyšší propustnosti oddílu, není zaručen výkon. Proto důrazně doporučujeme, aby počet oddílů v centru událostí byl větší nebo roven počtu jednotek propustnosti.
 
-Zadaný celkovou propustnost, kterou plánujete nutnosti, víte, že počet jednotek propustnosti, které vyžadujete a minimální počet oddílů, ale počet oddílů byste měli mít? Vyberte počet oddílů podle stupněm paralelismu příjmu dat, které chcete dosáhnout, jakož i vašim potřebám propustnosti budoucí. Neplatí žádné poplatky pro počet oddílů, které máte v rámci centra událostí.
+S ohledem na celkovou propustnost, kterou plánujete, potřebujete znát počet jednotek propustnosti, které požadujete, a minimální počet oddílů, ale kolik oddílů máte? Vyberte počet oddílů v závislosti na souběžném paralelismuch, které chcete dosáhnout, a také v budoucích potřebách propustnosti. Počet oddílů, které máte v centru událostí, se neúčtuje.
 
 Další informace o oddílech a kompromisu mezi dostupností a spolehlivostí najdete v tématech [Průvodce programováním pro službu Event Hubs](../articles/event-hubs/event-hubs-programming-guide.md#partition-key) a [Dostupnost a konzistence ve službě Event Hubs](../articles/event-hubs/event-hubs-availability-and-consistency.md).

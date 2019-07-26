@@ -1,7 +1,7 @@
 ---
 title: Správa rolí v pracovním prostoru Azure Machine Learning
 titleSuffix: Azure Machine Learning service
-description: Zjistěte, jak získat přístup k pracovnímu prostoru služby Azure Machine Learning pomocí řízení přístupu na základě role (RBAC).
+description: Naučte se, jak získat přístup k pracovnímu prostoru služby Azure Machine Learning pomocí řízení přístupu na základě role (RBAC).
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,48 +11,48 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 07/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 4a5723b2ffbd34fd7cf022bf747b4504b3bdac53
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: 0f28397717d5c89e5a5bcd5e7bdc17b4feb49577
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67797666"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68467979"
 ---
-# <a name="manage-access-to-an-azure-machine-learning-workspace"></a>Spravovat přístup k pracovnímu prostoru Azure Machine Learning
+# <a name="manage-access-to-an-azure-machine-learning-workspace"></a>Správa přístupu k pracovnímu prostoru Azure Machine Learning
 
-V tomto článku se dozvíte, jak můžete spravovat přístup k pracovnímu prostoru Azure Machine Learning. [Řízení přístupu na základě role (RBAC)](/azure/role-based-access-control/overview) slouží ke správě přístupu k prostředkům Azure. Uživatelé ve službě Azure Active Directory jsou přiřazeni konkrétní role, které poskytují přístup k prostředkům. Azure poskytuje předdefinované role a možnost vytvářet vlastní role.
+V tomto článku se dozvíte, jak spravovat přístup k pracovnímu prostoru Azure Machine Learning. [Řízení přístupu na základě role (RBAC)](/azure/role-based-access-control/overview) se používá ke správě přístupu k prostředkům Azure. Uživatelům v Azure Active Directory jsou přiřazeny konkrétní role, které udělují přístup k prostředkům. Azure poskytuje jak předdefinované role, tak i možnost vytvářet vlastní role.
 
 ## <a name="default-roles"></a>Výchozí role
 
-Pracovní prostor služby Azure Machine Learning je prostředek Azure. Stejně jako ostatní prostředky Azure když se vytvoří nový pracovní prostor Azure Machine Learning, součástí tří výchozích rolí. Můžete přidat uživatele do pracovního prostoru a přiřadit je k jednomu z těchto předdefinovaných rolí.
+Azure Machine Learning pracovní prostor je prostředek Azure. Podobně jako u jiných prostředků Azure se při vytvoření nového pracovního prostoru Azure Machine Learning dodává se třemi výchozími rolemi. Do pracovního prostoru můžete přidat uživatele a přiřadit jim jednu z těchto integrovaných rolí.
 
 | Role | Úroveň přístupu |
 | --- | --- |
-| **Reader** | Jen pro čtení akce v pracovním prostoru. Čtenáři můžou seznamu a zobrazení prostředků v pracovním prostoru, ale nelze vytvořit nebo aktualizovat tyto prostředky. |
-| **Přispěvatel** | Zobrazit, vytvořit, upravit nebo odstranit, (kde je to možné) prostředky v pracovním prostoru. Například přispěvatelé můžete vytvořit nový experiment, vytvořit nebo připojit výpočetního clusteru, odeslat spuštění a nasazení webové služby. |
-| **Vlastník** | Úplný přístup k pracovnímu prostoru, včetně možnosti zobrazit, vytvořit, upravit nebo odstranit, (kde je to možné) prostředky v pracovním prostoru. Kromě toho můžete změnit přiřazení rolí. |
+| **Reader** | Akce jen pro čtení v pracovním prostoru. Čtenáři můžou vypisovat a zobrazovat prostředky v pracovním prostoru, ale nemůžou tyto prostředky vytvářet ani aktualizovat. |
+| **Přispěvatel** | Zobrazení, vytvoření, úprava nebo odstranění prostředků (kde je k dispozici) v pracovním prostoru. Přispěvatelé můžou například vytvořit experiment, vytvořit nebo připojit výpočetní cluster, odeslat běh a nasadit webovou službu. |
+| **Vlastník** | Úplný přístup k pracovnímu prostoru, včetně možnosti zobrazit, vytvořit, upravit nebo odstranit (kde se vztahují) prostředky v pracovním prostoru. Kromě toho můžete změnit přiřazení rolí. |
 
 > [!IMPORTANT]
-> Přístup role se dají vymezit na více úrovních v Azure. Například někdo s vlastníkem přístup k pracovnímu prostoru nemusí mít přístup vlastníka do skupiny prostředků, který obsahuje tento pracovní prostor. Další informace najdete v tématu [funguje jak RBAC](/azure/role-based-access-control/overview#how-rbac-works).
+> Přístup k rolím může být v Azure omezený na více úrovní. Například někdo s přístupem vlastníka k pracovnímu prostoru nemusí mít oprávnění vlastníka ke skupině prostředků, která obsahuje pracovní prostor. Další informace najdete v tématu [jak funkce RBAC funguje](/azure/role-based-access-control/overview#how-rbac-works).
 
-Další informace o konkrétní předdefinované role, naleznete v tématu [předdefinované role pro Azure](/azure/role-based-access-control/built-in-roles).
+Další informace o konkrétních předdefinovaných rolích najdete v tématu [předdefinované role pro Azure](/azure/role-based-access-control/built-in-roles).
 
-## <a name="manage-workspace-access"></a>Spravovat přístup k pracovnímu prostoru
+## <a name="manage-workspace-access"></a>Správa přístupu k pracovnímu prostoru
 
-Pokud jste vlastník pracovního prostoru, můžete přidat a odebrat role pro pracovní prostor. Můžete také přiřazení rolí uživatelům. Pokud chcete zjistit, jak spravovat přístup pomocí následujících odkazů:
-- [Uživatelské rozhraní webu Azure portal](/azure/role-based-access-control/role-assignments-portal)
+Pokud jste vlastníkem pracovního prostoru, můžete přidat a odebrat role pro pracovní prostor. Role můžete přiřadit také uživatelům. Pomocí následujících odkazů zjistíte, jak spravovat přístup:
+- [Azure Portal UI](/azure/role-based-access-control/role-assignments-portal)
 - [PowerShell](/azure/role-based-access-control/role-assignments-powershell)
 - [Azure CLI](/azure/role-based-access-control/role-assignments-cli)
 - [REST API](/azure/role-based-access-control/role-assignments-rest)
-- [Šablony Azure Resource Manageru](/azure/role-based-access-control/role-assignments-template)
+- [Šablony Azure Resource Manager](/azure/role-based-access-control/role-assignments-template)
 
-Pokud jste nainstalovali [CLI aplikace Azure Machine Learning](reference-azure-machine-learning-cli.md), můžete také příkaz rozhraní příkazového řádku k přiřazení rolí uživatelům.
+Pokud jste nainstalovali [Azure Machine Learning CLI](reference-azure-machine-learning-cli.md), můžete k přiřazení rolí uživatelům použít taky příkaz CLI.
 
 ```azurecli-interactive 
 az ml workspace share -w <workspace_name> -g <resource_group_name> --role <role_name> --user <user_corp_email_address>
 ```
 
-`user` Pole je e-mailovou adresu stávajícího uživatele v instanci služby Azure Active Directory, kde se nachází pracovní prostor nadřazeného předplatného. Tady je příklad toho, jak pomocí tohoto příkazu:
+Toto `user` pole je e-mailová adresa stávajícího uživatele v instanci Azure Active Directory, kde nadřazený odběr pracovního prostoru je život. Tady je příklad, jak použít tento příkaz:
 
 ```azurecli-interactive 
 az ml workspace share -w my_workspace -g my_resource_group --role Contributor --user jdoe@contoson.com
@@ -60,12 +60,12 @@ az ml workspace share -w my_workspace -g my_resource_group --role Contributor --
 
 ## <a name="create-custom-role"></a>Vytvořit vlastní roli
 
-Pokud předdefinované role nestačí, můžete vytvořit vlastní role. Může mít vlastní role číst, zapisovat, odstranit a výpočetních prostředků oprávnění v daném pracovním prostoru. Roli můžete zpřístupnit na úrovni konkrétní pracovní prostor, úrovni skupiny prostředků konkrétní nebo úroveň konkrétní předplatné.
+Pokud jsou předdefinované role nedostatečné, můžete vytvořit vlastní role. Vlastní role můžou mít v tomto pracovním prostoru oprávnění ke čtení, zápisu, odstranění a výpočtu prostředků. Role může být dostupná na konkrétní úrovni pracovního prostoru, na konkrétní úrovni skupiny prostředků nebo na konkrétní úrovni předplatného.
 
 > [!NOTE]
-> Musíte být vlastníkem prostředku na této úrovni můžete vytvářet vlastní role v rámci tohoto prostředku.
+> Abyste mohli vytvářet vlastní role v rámci tohoto prostředku, musíte být vlastníkem prostředku na této úrovni.
 
-Chcete-li vytvořit vlastní roli, nejprve vytvořte role definiční soubor JSON, který určuje oprávnění a obor pro roli. Následující příklad definuje vlastní roli s názvem "Mezi odborníky přes Data" oboru na úrovni konkrétní pracovní prostor:
+Chcete-li vytvořit vlastní roli, nejprve Sestavte soubor JSON definice role, který určuje oprávnění a rozsah této role. Následující příklad definuje vlastní roli s názvem "data odborníka" vymezená na konkrétní úrovni pracovního prostoru:
 
 `data_scientist_role.json` :
 ```json
@@ -86,25 +86,25 @@ Chcete-li vytvořit vlastní roli, nejprve vytvořte role definiční soubor JSO
 }
 ```
 
-Můžete změnit `AssignableScopes` pole, které chcete nastavit obor této vlastní role na úrovni předplatného, na úrovni skupiny prostředků nebo určitý pracovní prostor úroveň.
+`AssignableScopes` Pole můžete změnit, pokud chcete nastavit rozsah této vlastní role na úrovni předplatného, na úrovni skupiny prostředků nebo na konkrétní úrovni pracovního prostoru.
 
-Tato vlastní role můžete provádět vše v pracovním prostoru, s výjimkou následujících akcí:
+Tato vlastní role může dělat všechno v pracovním prostoru s výjimkou následujících akcí:
 
-- Ji nejde vytvořit nebo aktualizovat výpočetních prostředků.
-- Nelze ho odstranit výpočetních prostředků.
-- Nelze přidat, odstranit nebo změnit přiřazení rolí.
-- Nelze ji odstranit pracovní prostor.
+- Nedokáže vytvořit ani aktualizovat výpočetní prostředek.
+- Nejde odstranit výpočetní prostředek.
+- Nemůže přidávat, odstraňovat ani měnit přiřazení rolí.
+- Pracovní prostor nelze odstranit.
 
-Pokud chcete nasadit tuto vlastní roli, použijte následující příkaz rozhraní příkazového řádku Azure:
+K nasazení této vlastní role použijte následující příkaz rozhraní příkazového řádku Azure:
 
 ```azurecli-interactive 
 az role definition create --role-definition data_scientist_role.json
 ```
 
-Po nasazení této roli k dispozici v zadaný pracovní prostor. Nyní můžete přidat a přiřadit tato role na webu Azure Portal. Nebo můžete přiřadit tato role pro uživatele s použitím `az ml workspace share` příkazu rozhraní příkazového řádku:
+Po nasazení bude tato role k dispozici v zadaném pracovním prostoru. Nyní můžete tuto roli přidat a přiřadit v Azure Portal. Nebo můžete tuto roli přiřadit uživateli pomocí `az ml workspace share` příkazu CLI:
 
 ```azurecli-interactive
-az ml workspace share -n my_workspace -g my_resource_group --role "Data Scientist" --user jdoe@contoson.com
+az ml workspace share -w my_workspace -g my_resource_group --role "Data Scientist" --user jdoe@contoson.com
 ```
 
 
@@ -112,6 +112,6 @@ Další informace najdete v tématu [vlastní role pro prostředky Azure](/azure
 
 ## <a name="next-steps"></a>Další postup
 
-- [Podnikové zabezpečení – přehled](concept-enterprise-security.md)
-- [Bezpečné spuštění experimentů a odvození/skóre uvnitř virtuální sítě](how-to-enable-virtual-network.md)
-- [Kurz: Trénování modelů](tutorial-train-models-with-aml.md)
+- [Přehled podnikového zabezpečení](concept-enterprise-security.md)
+- [Zabezpečené spouštění experimentů a odvozování/vystavení ve virtuální síti](how-to-enable-virtual-network.md)
+- [Kurz: Modely vlaků](tutorial-train-models-with-aml.md)

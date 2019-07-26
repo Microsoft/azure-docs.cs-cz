@@ -9,12 +9,12 @@ services: iot-hub
 ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 04/26/2018
-ms.openlocfilehash: 3b1872699b8b3ac72424f00cd74bb90b8b7be87f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ce71c64aff66ea94282a82c1f1b1ee564e74f192
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65873160"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68403906"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-using-the-portal-and-net-device"></a>Začínáme s identitou modulu a dvojčetem modulu služby IoT Hub pomocí portálu a zařízení .NET
 
@@ -24,28 +24,24 @@ ms.locfileid: "65873160"
 
 V tomto kurzu se dozvíte:
 
-1. jak vytvořit modul identit na portálu.
+1. Jak vytvořit identitu modulu na portálu.
 
-2. Jak používat aktualizace sady SDK zařízení .NET dvojčete modulu na vašem zařízení.
+2. Jak používat sadu SDK pro zařízení .NET aktualizujte modul z vašeho zařízení jako nezávisle.
 
 > [!NOTE]
-> Informace o Azure IoT SDK, který vám pomůže vytvářet aplikace, které poběží v zařízení a back-endem řešení najdete v tématu [sad SDK Azure IoT](iot-hub-devguide-sdks.md).
+> Informace o sadách Azure IoT SDK, které můžete použít k vytváření aplikací pro spouštění na zařízeních a back-endu vašeho řešení, najdete v tématu sady [SDK Azure IoT](iot-hub-devguide-sdks.md).
 >
 
 Pro absolvování tohoto kurzu potřebujete:
 
 * Visual Studio.
-* Aktivní účet Azure. (Pokud účet nemáte, můžete vytvořit [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/) během několika minut.)
+* Aktivní účet Azure. (Pokud účet nemáte, můžete si během několika minut vytvořit [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/) .)
 
 ## <a name="create-an-iot-hub"></a>Vytvoření centra IoT
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
-### <a name="retrieve-connection-string-for-iot-hub"></a>Načtení připojovacího řetězce pro službu IoT hub
-
-[!INCLUDE [iot-hub-include-find-connection-string](../../includes/iot-hub-include-find-connection-string.md)]
-
-## <a name="register-a-new-device-in-the-iot-hub"></a>Zaregistrujte nové zařízení ve službě IoT hub
+## <a name="register-a-new-device-in-the-iot-hub"></a>Registrace nového zařízení ve službě IoT Hub
 
 [!INCLUDE [iot-hub-include-create-device](../../includes/iot-hub-include-create-device.md)]
 
@@ -53,11 +49,11 @@ Pro absolvování tohoto kurzu potřebujete:
 
 V rámci jedné identity zařízení můžete vytvořit až 20 identit modulů. Kliknutím na tlačítko **Přidat identitu modulu** v horní části vytvořte první identitu modulu s názvem **myFirstModule**.
 
-  ![Podrobnosti o zařízení](./media/iot-hub-portal-csharp-module-twin-getstarted/create-module-id.png)
+  ![Detaily zařízení](./media/iot-hub-portal-csharp-module-twin-getstarted/create-module-id.png)
 
 Uložte právě vytvořenou identitu modulu a klikněte na ni. Zobrazí se podrobnosti o identitě modulu. Uložte připojovací řetězec – primární klíč. Použijete ho v další části, kde nastavíte svůj modul na zařízení.
 
-  ![Podrobnosti o zařízení](./media/iot-hub-portal-csharp-module-twin-getstarted/module-details.png)
+  ![Detaily zařízení](./media/iot-hub-portal-csharp-module-twin-getstarted/module-details.png)
 
 ## <a name="update-the-module-twin-using-net-device-sdk"></a>Aktualizace dvojčete modulu pomocí sady SDK pro zařízení .NET
 
@@ -65,23 +61,23 @@ Uložte právě vytvořenou identitu modulu a klikněte na ni. Zobrazí se podro
 
 ## <a name="create-a-visual-studio-project"></a>Vytvoření projektu ve Visual Studiu
 
-V sadě Visual Studio, přidejte Visual C# Windows klasický desktopový projekt do stávajícího řešení s použitím **Konzolová aplikace (.NET Framework)** šablony projektu. Ujistěte se, že máte .NET Framework verze 4.6.1 nebo novější. Pojmenujte projekt **UpdateModuleTwinReportedProperties**.
+V aplikaci Visual Studio přidejte do stávajícího C# řešení klasický desktopový projekt pro Visual Windows pomocí šablony projektu **Konzolová aplikace (.NET Framework)** . Ujistěte se, že máte .NET Framework verze 4.6.1 nebo novější. Pojmenujte projekt **UpdateModuleTwinReportedProperties**.
 
   ![Vytvoření projektu v sadě Visual Studio](./media/iot-hub-csharp-csharp-module-twin-getstarted/update-twins-csharp1.png)
 
-## <a name="install-the-latest-azure-iot-hub-net-device-sdk"></a>Nainstalujte nejnovější zařízení Azure IoT Hub .NET SDK
+## <a name="install-the-latest-azure-iot-hub-net-device-sdk"></a>Nainstalovat nejnovější sadu SDK pro zařízení Azure IoT Hub .NET
 
-Dvojče zařízení identit a modul je ve verzi public preview. Je dostupná jenom v zařízení služby IoT Hub předběžné verze sady SDK. V sadě Visual Studio otevřete Nástroje > Správce balíčků NuGet > Spravovat balíčky NuGet pro řešení. Vyhledejte Microsoft.Azure.Devices.Client. Ujistěte se, že si projdete zahrnout předběžné verze zaškrtávací políčko. Vyberte nejnovější verzi a instalaci. Teď máte přístup ke všem funkcím modulu.
+Identita modulu a modul s dvojitou identitou jsou ve verzi Public Preview. Je k dispozici pouze v sadách IoT Hub předběžných vydání sady SDK pro zařízení. V sadě Visual Studio otevřete Nástroje > Správce balíčků NuGet > Spravovat balíčky NuGet pro řešení. Vyhledejte Microsoft.Azure.Devices.Client. Ujistěte se, že jste zaškrtli políčko zahrnout předběžné verze. Vyberte nejnovější verzi a nainstalujte. Teď máte přístup ke všem funkcím modulu.
 
   ![Instalace sady SDK služby Azure IoT Hub pro .NET verze V1.16.0-preview-005](./media/iot-hub-csharp-csharp-module-twin-getstarted/install-sdk.png)
 
 ## <a name="get-your-module-connection-string"></a>Získání připojovacího řetězce modulu
 
-Přihlaste se k [webu Azure portal](https://portal.azure.com/). Přejděte do vaší služby IoT Hub a klikněte na Zařízení IoT. Najít myFirstDevice, otevřít a zobrazit myFirstModule byl úspěšně vytvořen. Zkopírujte připojovací řetězec modulu. Budete ho potřebovat v dalším kroku.
+Přihlaste se k [portálu Azure](https://portal.azure.com/). Přejděte do vaší služby IoT Hub a klikněte na Zařízení IoT. Najděte myFirstDevice, otevřete ho a uvidíte, že myFirstModule se úspěšně vytvořil. Zkopírujte připojovací řetězec modulu. Budete ho potřebovat v dalším kroku.
 
   ![Podrobnosti o modulu na webu Azure Portal](./media/iot-hub-csharp-csharp-module-twin-getstarted/module-detail.png)
 
-## <a name="create-updatemoduletwinreportedproperties-console-app"></a>Vytvoření konzolové aplikace v UpdateModuleTwinReportedProperties
+## <a name="create-updatemoduletwinreportedproperties-console-app"></a>Vytvoření aplikace konzoly UpdateModuleTwinReportedProperties
 
 Do horní části souboru **Program.cs** přidejte následující příkazy `using`:
 
@@ -159,12 +155,12 @@ Tento vzorový kód ukazuje, jak načíst dvojče modulu a aktualizovat hlášen
 
 ## <a name="run-the-apps"></a>Spouštění aplikací
 
-Nyní jste připraveni aplikaci spustit. V sadě Visual Studio v Průzkumníku řešení klikněte pravým tlačítkem na řešení a potom klikněte na tlačítko **Nastavit projekty po spuštění**. Vyberte **Více projektů po spuštění** a pak jako akci pro konzolovou aplikaci vyberte **Spustit**. A pak stisknutím klávesy F5 spusťte obě aplikace.
+Nyní jste připraveni aplikaci spustit. V sadě Visual Studio v Průzkumníku řešení klikněte pravým tlačítkem na řešení a potom klikněte na tlačítko **Nastavit projekty po spuštění**. Vyberte **Více projektů po spuštění** a pak jako akci pro konzolovou aplikaci vyberte **Spustit**. A potom stisknutím klávesy F5 spusťte obě aplikace spuštěné.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Chcete-li pokračovat v seznamování se službou IoT Hub a prozkoumat další scénáře IoT, podívejte se na tato témata:
 
-* [Začínáme s IoT Hub identit a modul dvojče zařízení pomocí zálohování .NET a .NET zařízení](iot-hub-csharp-csharp-module-twin-getstarted.md)
+* [Začínáme s identitou modulu IoT Hub a modulem s dvojitým zprovozněním pomocí .NET Backup a zařízení .NET](iot-hub-csharp-csharp-module-twin-getstarted.md)
 
 * [Začínáme s IoT Edge](../iot-edge/tutorial-simulate-device-linux.md)

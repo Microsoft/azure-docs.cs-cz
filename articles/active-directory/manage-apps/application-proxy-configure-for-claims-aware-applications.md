@@ -15,12 +15,12 @@ ms.date: 11/08/2018
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c97729cf7d88ebdeefb44c83eb571bb6d7ebd0ed
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cbc5c356ea5a542fdc12b11aff236c56b146b3d5
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65825587"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68477239"
 ---
 # <a name="working-with-claims-aware-apps-in-application-proxy"></a>Práce s deklaracemi identity aplikace v Proxy aplikací
 [S deklaracemi identity aplikace](https://msdn.microsoft.com/library/windows/desktop/bb736227.aspx) provést přesměrování do tokenů zabezpečení služby (STS). Služba tokenů zabezpečení přihlašovacích údajů požádá uživatele výměnou za token a pak přesměruje uživatele k aplikaci. Existuje několik způsobů, jak povolit Proxy aplikace pro práci s těmito přesměrování. Tento článek slouží ke konfiguraci svého nasazení s deklaracemi identity aplikace. 
@@ -38,11 +38,11 @@ Ujistěte se, že je služba tokenů zabezpečení, které s deklaracemi identit
 
 Konfigurace služby AD FS pro deklaracemi identity aplikace v jednom ze dvou způsobů. První je pomocí vlastních domén. Druhou je použití WS-Federation. 
 
-### <a name="option-1-custom-domains"></a>Option 1: Vlastní domény
+### <a name="option-1-custom-domains"></a>Možnost 1: Vlastní domény
 
 Pokud všechny interní adresy URL pro vaše aplikace jsou plně kvalifikované názvy domény (FQDN), pak můžete nakonfigurovat [vlastních domén](application-proxy-configure-custom-domain.md) pro vaše aplikace. Použijte vlastní domény k vytvoření externí adresy URL, které jsou stejné jako interní adresy URL. Když externí adresy URL odpovídají interní adresy URL, přesměrování služby tokenů zabezpečení fungovat, jestli vaši uživatelé jsou místní nebo vzdálené. 
 
-### <a name="option-2-ws-federation"></a>Option 2: WS-Federation
+### <a name="option-2-ws-federation"></a>Možnost 2: WS-Federation
 
 1. Otevřete správu služby AD FS.
 2. Přejděte na **vztahy důvěryhodnosti předávající strany**, klikněte pravým tlačítkem na aplikaci, které publikujete pomocí Proxy aplikace a zvolte **vlastnosti**.  
@@ -55,7 +55,7 @@ Pokud všechny interní adresy URL pro vaše aplikace jsou plně kvalifikované 
    ![Přidání koncového bodu - nastavit hodnotu adresy URL důvěryhodných – snímek obrazovky](./media/application-proxy-configure-for-claims-aware-applications/appproxyendpointtrustedurl.png)  
 
 ## <a name="next-steps"></a>Další postup
-* [Povolení jednoduchého přihlášení na](configure-single-sign-on-portal.md) pro aplikace, které nejsou s deklaracemi identity
+* [Povolení jednoduchého přihlášení na](configure-single-sign-on-non-gallery-applications.md) pro aplikace, které nejsou s deklaracemi identity
 * [Povolit nativní klientské aplikace pro interakci s proxy aplikací](application-proxy-configure-native-client-application.md)
 
 

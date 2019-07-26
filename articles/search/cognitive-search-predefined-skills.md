@@ -1,6 +1,6 @@
 ---
-title: Předdefinované datové extrakce, přirozeného jazyka obrázků zpracování – Azure Search
-description: Extrakce dat, přirozený jazyk a kognitivní dovednosti pro zpracování obrázků nezpracované obsahu v kanálu služby Azure Search přidat sémantiku a struktura.
+title: Integrovaná extrakce dat, přirozený jazyk, zpracování obrázků – Azure Search
+description: 'Extrakce dat, přirozený jazyk, rozpoznávání obrazu zpracování obrázků: Přidání sémantiky a struktury do nezpracovaného obsahu v kanálu Azure Search.'
 manager: pablocas
 author: luiscabrer
 services: search
@@ -10,45 +10,47 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: c9dfa6af4fb13018051c06783e5ae2bc3f49c0da
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 3d0c7c10b03169e5d78b833df5a26d83b04b9240
+ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67672093"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68347835"
 ---
-# <a name="predefined-skills-for-content-enrichment-azure-search"></a>Předdefinované dovednosti pro rozšiřování obsahu (Azure Search)
+# <a name="predefined-skills-for-content-enrichment-azure-search"></a>Předdefinované dovednosti pro rozšíření obsahu (Azure Search)
 
-V tomto článku se dozvíte o kognitivní dovednosti s Azure Search. A *kognitivní dovednosti* je operace, která transformuje obsah nějakým způsobem. Často je součást, která extrahuje data nebo struktura odvodí a proto argumentech naše Principy vstupní data. Výstup je téměř vždy založený na textu. A *dovednosti* je kolekce dovednosti, které definují rozšíření kanálu. 
+V tomto článku se dozvíte o dovednostech rozpoznávání poskytované s Azure Search. *Vnímání dovedností* je operace, která nějakým způsobem transformuje obsah. Často se jedná o komponentu, která extrahuje data nebo odvodí strukturu, a proto rozšiřuje naše znalosti vstupních dat. Téměř vždy je výstupem na základě textu. *Dovednosti* je kolekce dovedností, které definují kanál obohacení. 
 
 > [!NOTE]
-> Jak můžete rozšířit rozsah zvýšení četnosti zpracování, přidání více dokumentů nebo přidání další algoritmy AI, budete muset [připojení účtovaných prostředku služeb Cognitive Services](cognitive-search-attach-cognitive-services.md). Poplatky se účtují při volání rozhraní API ve službě Cognitive Services a extrakci image jako součást fáze hádání dokumentu ve službě Azure Search. Neúčtují žádné poplatky pro extrakci textu z dokumentů.
+> Když rozbalíte rozsah zvýšením četnosti zpracování, přidáním dalších dokumentů nebo přidáním dalších algoritmů AI, budete muset [připojit fakturovatelné Cognitive Services prostředku](cognitive-search-attach-cognitive-services.md). Poplatky se účtují při volání rozhraní API v Cognitive Services a pro extrakci obrázků jako součást fáze pro vystavování dokumentů v Azure Search. Pro extrakci textu z dokumentů se neúčtují žádné poplatky.
 >
-> Provádění předdefinované dovednosti, se účtuje za stávající [přejít ceny služeb Cognitive Services, platit jako můžete](https://azure.microsoft.com/pricing/details/cognitive-services/). Ceny za extrakce Image je popsaný na [stránce s cenami Azure Search](https://go.microsoft.com/fwlink/?linkid=2042400).
+> Při provádění integrovaných dovedností se účtují poplatky za stávající [Cognitive Services průběžných plateb](https://azure.microsoft.com/pricing/details/cognitive-services/). Ceny za extrakci obrázků jsou popsány na [stránce s cenami Azure Search](https://go.microsoft.com/fwlink/?linkid=2042400).
 
 
 ## <a name="predefined-skills"></a>Předdefinované dovednosti
 
-Několik dovednosti jsou flexibilní v co se používají, nebo vytvořit. Obecně platí většina dovednosti podle předem natrénovaných modelů, které znamená, že nelze trénování modelu s použitím cvičných dat. Následující tabulka uvádí a popisuje dovednosti od Microsoftu. 
+Několik dovedností je flexibilní v tom, co spotřebovávají nebo vyrábí. Obecně platí, že většina dovedností je založena na předem vyškolených modelech, což znamená, že model nemůžete pomocí vlastních školicích dat proškolit. Následující tabulka obsahuje výčet dovedností poskytovaných Microsoftem a popisuje je. 
 
-| Dovednosti | Popis |
+| Tuhle | Popis |
 |-------|-------------|
-| [Microsoft.Skills.Text.KeyPhraseSkill](cognitive-search-skill-keyphrases.md) | Tento dovednosti používá pretrained model rozpoznat důležité frází na základě umístění termín, jazykovou pravidel, blízkosti jiné podmínky a jak neobvyklé termín je v rámci zdrojová data. |
-| [Microsoft.Skills.Text.LanguageDetectionSkill](cognitive-search-skill-language-detection.md)  | Používá tento dovednosti pretrained model rozpoznat jazyk, který je použit (jedno ID jazyka v jednom dokumentu). V případě více jazyků používají v rámci stejné segmenty text, výstup je LCID převážně používá jazyk.|
+| [Microsoft.Skills.Text.KeyPhraseSkill](cognitive-search-skill-keyphrases.md) | Tato dovednost používá předvýukový model k detekci důležitých frází na základě pojmu umístění, lingvistických pravidel, blízkost k ostatním podmínkám a způsobu, jakým je neobvyklá doba v rámci zdrojových dat. |
+| [Microsoft.Skills.Text.LanguageDetectionSkill](cognitive-search-skill-language-detection.md)  | Tato dovednost používá předvlakový model ke zjištění, který jazyk se používá (jedno ID jazyka na dokument). Je-li v rámci stejných segmentů použito více jazyků, je výstupem identifikátor LCID převládajícího používaného jazyka.|
 | [Microsoft.Skills.Text.MergeSkill](cognitive-search-skill-textmerger.md) | Konsoliduje text z kolekce polí do jednoho pole.  |
-| [Microsoft.Skills.Text.EntityRecognitionSkill](cognitive-search-skill-entity-recognition.md) | Tato dovednosti pretrained modelu používá k vytvoření entity pro pevnou sadu kategorií: uživatelé, umístění, organizaci, e-mailem, adresy URL. pole data a času. |
-| [Microsoft.Skills.Text.SentimentSkill](cognitive-search-skill-sentiment.md)  | Tento dovednosti pomocí pretrained modelu na základě záznamu podle skóre mínění kladné nebo záporné. Je skóre mezi 0 a 1. Neutrální skóre dojde null případu nelze zjistit mínění, a pro text, který je považován za neutrální.  |
-| [Microsoft.Skills.Text.SplitSkill](cognitive-search-skill-textsplit.md) | Rozdělí text na stránky, takže můžete rozšiřovat nebo upravte obsah postupně. |
-| [Microsoft.Skills.Vision.ImageAnalysisSkill](cognitive-search-skill-image-analysis.md) | Tato dovednosti používá algoritmus detekce bitové kopie k identifikaci obsahu obrázku a vygenerovat textový popis. |
+| [Microsoft.Skills.Text.EntityRecognitionSkill](cognitive-search-skill-entity-recognition.md) | Tato dovednost používá předem provedený model pro vytváření entit pro pevnou sadu kategorií: lidé, umístění, organizace, e-maily, adresy URL, pole DateTime. |
+| [Microsoft.Skills.Text.SentimentSkill](cognitive-search-skill-sentiment.md)  | Tato dovednost používá předvlakový model ke zjištění kladné nebo záporné míněníy záznamu na základě záznamů. Skóre je mezi 0 a 1. V případě, že mínění nelze detekovat, a pro text, který je považován za neutrální, se vyskytnou neutrální skóre.  |
+| [Microsoft.Skills.Text.SplitSkill](cognitive-search-skill-textsplit.md) | Rozdělí text na stránky, aby bylo možné přírůstkově rozšířit nebo rozšířit obsah. |
+| [Microsoft. dovednosti. text. TranslationSkill (Preview)](cognitive-search-skill-text-translation.md) | Tato dovednost používá předvlakový model k překladu vstupního textu do celé řady jazyků pro normalizaci nebo použití lokalizace. |
+| [Microsoft.Skills.Vision.ImageAnalysisSkill](cognitive-search-skill-image-analysis.md) | Tato dovednost používá algoritmus pro detekci obrázků k identifikaci obsahu obrázku a vygenerování popisného textu. |
 | [Microsoft.Skills.Vision.OcrSkill](cognitive-search-skill-ocr.md) | Optické rozpoznávání znaků. |
-| [Microsoft.Skills.Util.ShaperSkill](cognitive-search-skill-shaper.md) | Výstup mapy na komplexní typ (vícedílný datový typ, který může být použit k úplný název, adresu Víceřádkový nebo kombinaci příjmení a osobních identifikátorů.) |
-| [Microsoft.Skills.Custom.WebApiSkill](cognitive-search-custom-skill-web-api.md) | Umožňuje rozšíření kognitivního vyhledávání kanálu tak, že volání protokolu HTTP do vlastního webového rozhraní API |
+| [Microsoft. dovednosti. util. ConditionalSkill](cognitive-search-skill-conditional.md) | Povoluje filtrování, přiřazuje výchozí hodnotu a slučuje data na základě podmínky.|
+| [Microsoft.Skills.Util.ShaperSkill](cognitive-search-skill-shaper.md) | Mapuje výstup na komplexní typ (datový typ s více částmi, který může být použit pro celé jméno, víceřádkovou adresu nebo kombinaci příjmení a osobní identifikátor). |
+| [Microsoft.Skills.Custom.WebApiSkill](cognitive-search-custom-skill-web-api.md) | Umožňuje rozšiřitelnost kanálu hledání rozpoznávání prostřednictvím volání HTTP do vlastního webového rozhraní API. |
 
 
-Pokyny k vytváření [vlastních dovedností](cognitive-search-custom-skill-web-api.md), naleznete v tématu [jak definovat vlastní rozhraní](cognitive-search-custom-skill-interface.md) a [příkladu: Vytváření vlastních dovedností pro kognitivního vyhledávání](cognitive-search-create-custom-skill-example.md).
+Pokyny k vytvoření [vlastní dovednosti](cognitive-search-custom-skill-web-api.md)najdete v tématu [Definování vlastního rozhraní](cognitive-search-custom-skill-interface.md) a [příkladu: Vytvoření vlastní dovednosti pro hledání](cognitive-search-create-custom-skill-example.md)vnímání.
 
 ## <a name="see-also"></a>Viz také:
 
-+ [Definování dovedností](cognitive-search-defining-skillset.md)
-+ [Definice vlastního rozhraní dovednosti](cognitive-search-custom-skill-interface.md)
-+ [Kurz: Obohacené indexování s využitím kognitivního vyhledávání](cognitive-search-tutorial-blob.md)
++ [Jak definovat dovednosti](cognitive-search-defining-skillset.md)
++ [Definice rozhraní vlastní dovednosti](cognitive-search-custom-skill-interface.md)
++ [Kurz: Obohacené indexování s vyhledáváním rozpoznávání](cognitive-search-tutorial-blob.md)

@@ -1,7 +1,7 @@
 ---
-title: Hledat na webu pro populárních videí pomocí API pro vyhledávání videí Bingu
-titlesuffix: Azure Cognitive Services
-description: Další informace o použití API pro vyhledávání videí Bingu pro vyhledávání na webu populárních videí.
+title: Hledání v trendech na webu pro vývoj videí pomocí rozhraní API Bingu pro vyhledávání videí
+titleSuffix: Azure Cognitive Services
+description: Naučte se používat rozhraní API Bingu pro vyhledávání videí k vyhledávání trendů na webu.
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
@@ -10,20 +10,20 @@ ms.subservice: bing-video-search
 ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: scottwhi
-ms.openlocfilehash: 486cf2e3bcf851f23011bb2fb8d91691d6190698
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ea6f79bf6c305ecc07b3e684ede15ad439039e7e
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61431915"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68500619"
 ---
-# <a name="get-trending-videos-with-the-bing-video-search-api"></a>Získat populární videa s API pro vyhledávání videí Bingu 
+# <a name="get-trending-videos-with-the-bing-video-search-api"></a>Získejte vývoj videí pomocí rozhraní API Bingu pro vyhledávání videí 
 
-API pro vyhledávání videí Bingu umožňuje najít dnešní populárních videí z webu i v různých kategoriích. 
+Rozhraní API Bingu pro vyhledávání videí vám umožní najít dnešní vývojové videa z celého webu a v různých kategoriích. 
 
-## <a name="get-request"></a>Žádost o získání
+## <a name="get-request"></a>ZÍSKAT žádost
 
-Chcete-li získat dnešní populárních videí z API Bingu pro vyhledávání videí, odešlete následující požadavek GET:  
+Pokud si chcete z rozhraní API Bingu pro vyhledávání videí dostat dnešní vývojové videa, pošlete následující požadavek GET:  
   
 ```cURL
 GET https://api.cognitive.microsoft.com/bing/v7.0/videos/trending?mkt=en-us HTTP/1.1
@@ -35,27 +35,27 @@ X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
 Host: api.cognitive.microsoft.com  
 ```
 
-## <a name="market-support"></a>Podpora na trhu
+## <a name="market-support"></a>Podpora trhu
 
-Následujících zemích podporují populárních videí.  
+Následující trhy podporují vývojové videa.  
  
--   cs Austrálie (angličtina, Austrálie)  
--   cs CA (angličtina, Kanada)  
+-   EN-AU (angličtina, Austrálie)  
+-   en-CA (angličtina, Kanada)  
 -   en-GB (angličtina, Velká Británie)  
--   cs ID (angličtina, Indonésie)  
--   cs IE (angličtina, Irsko)  
--   cs Indie (angličtina, Indie)  
--   cs NZ (angličtina, Nový Zéland)  
--   cs PH (angličtina, Filipíny)  
--   cs SG (angličtina, Singapur)  
--   en US (angličtina, USA)  
--   cs TT (angličtina, celosvětové agregovat kódu)  
--   cs ZA (angličtina, Jižní Afrika)  
+-   EN-ID (angličtina, Indonésie)  
+-   EN-IE (angličtina, Irsko)  
+-   en-IN (angličtina, Indie)  
+-   EN-NZ (angličtina, Nový Zéland)  
+-   EN-PH (angličtina, Filipínská republika)  
+-   EN-SG (angličtina, Singapur)  
+-   EN-US (angličtina, USA)  
+-   EN-WW (v angličtině, celosvětově agregovaný kód)  
+-   EN-ZA (angličtina, Jihoafrická Amerika)  
 -   zh-CN (čínština, Čína)
 
-## <a name="example-json-response"></a>Příklad JSON odpovědi  
+## <a name="example-json-response"></a>Příklad odpovědi JSON  
 
-Následující příklad ukazuje odpověď rozhraní API, která obsahuje populárních videí, které jsou uvedené podle kategorie a podkategorie. Odpověď obsahuje také nápis videa, které jsou nejoblíbenější populárních videí a můžou pocházet z jedné nebo více kategorií.  
+Následující příklad ukazuje odpověď rozhraní API obsahující vývojová videa, která jsou uvedena v kategorii a podkategorií. Odpověď také obsahuje videa s bannery, která jsou nejoblíbenějším trendem videí a která může pocházet z jedné nebo více kategorií.  
 
 ```json
 {  
@@ -124,4 +124,4 @@ Následující příklad ukazuje odpověď rozhraní API, která obsahuje popul�
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Získejte nové poznatky z videí](video-insights.md)
+> [Získat video přehledy](video-insights.md)

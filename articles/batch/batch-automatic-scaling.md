@@ -15,12 +15,12 @@ ms.workload: multiple
 ms.date: 06/20/2017
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 489a3935605432b485f7b0866668f6dbfaac686b
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 431212b2b0ac7bba209130e511e3510e3008a6c4
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68323754"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68500036"
 ---
 # <a name="create-an-automatic-scaling-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>Vytvoření vzorce automatického škálování pro škálování výpočetních uzlů ve fondu služby Batch
 
@@ -40,7 +40,7 @@ Tento článek popisuje různé entity, které tvoří vzorce automatického šk
 >
 
 ## <a name="automatic-scaling-formulas"></a>Vzorce automatického škálování
-Vzorec automatického škálování je řetězcová hodnota, kterou definujete, který obsahuje jeden nebo více příkazů. Vzorec automatického škálování je přiřazený k vlastnosti [autoScaleFormula][rest_autoscaleformula] element (Batch REST) or [CloudPool.AutoScaleFormula][net_cloudpool_autoscaleformula] fondu (Batch .NET). Služba Batch pomocí vzorce určí cílový počet výpočetních uzlů ve fondu pro další interval zpracování. Řetězec vzorce nesmí překročit 8 KB, může obsahovat až 100 příkazů, které jsou odděleny středníky a mohou obsahovat konce řádků a komentáře.
+Vzorec automatického škálování je řetězcová hodnota, kterou definujete, který obsahuje jeden nebo více příkazů. Vzorec automatického škálování je přiřazen prvku [autoScaleFormula][rest_autoscaleformula] fondu (Batch REST) nebo [CloudPool. autoScaleFormula][net_cloudpool_autoscaleformula] (Batch .NET). Služba Batch pomocí vzorce určí cílový počet výpočetních uzlů ve fondu pro další interval zpracování. Řetězec vzorce nesmí překročit 8 KB, může obsahovat až 100 příkazů, které jsou odděleny středníky a mohou obsahovat konce řádků a komentáře.
 
 Vzorce automatického škálování můžete představit jako jazyk automatického škálování Batch. Příkazy vzorců jsou výrazy ve formátu Free, které mohou zahrnovat proměnné definované službou (proměnné definované službou Batch) a uživatelem definované proměnné (proměnné, které definujete). Mohou provádět různé operace s těmito hodnotami pomocí integrovaných typů, operátorů a funkcí. Například příkaz může mít následující tvar:
 
@@ -132,7 +132,7 @@ Hodnotu těchto proměnných definovaných službou můžete získat tak, aby by
 >
 >
 
-## <a name="types"></a>Druhy
+## <a name="types"></a>Typy
 Ve vzorci jsou podporovány tyto typy:
 
 * double
@@ -364,15 +364,19 @@ $totalDedicatedNodes =
 $TargetDedicatedNodes = min(400, $totalDedicatedNodes)
 ```
 
-## <a name="create-an-autoscale-enabled-pool-with-net"></a>Vytvoření fondu s podporou automatického škálování pomocí .NET
+## <a name="create-an-autoscale-enabled-pool-with-batch-sdks"></a>Vytvoření fondu s povoleným autoškálou pomocí sad SDK služby Batch
+
+Automatické škálování fondu se dá nakonfigurovat pomocí kterékoli sady [SDK Batch](batch-apis-tools.md#azure-accounts-for-batch-development), rutiny [Batch REST API](https://docs.microsoft.com/rest/api/batchservice/) [Batch PowerShellu](batch-powershell-cmdlets-get-started.md)a rozhraní příkazového [řádku Batch](batch-cli-get-started.md). V této části vidíte příklady pro .NET i Python.
+
+### <a name="net"></a>.NET
 
 Pokud chcete vytvořit fond s povoleným automatickým škálováním v .NET, postupujte podle těchto kroků:
 
 1. Vytvořte fond pomocí [BatchClient. PoolOperations. CreatePool](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.pooloperations.createpool).
-2. Nastavte vlastnost [CloudPool. AutoScaleEnabled](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.autoscaleenabled) na `true`.
-3. Nastavte vlastnost [CloudPool. AutoScaleFormula](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.autoscaleformula) vzorcem automatického škálování.
-4. Volitelné Nastavte vlastnost [CloudPool. AutoScaleEvaluationInterval](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.autoscaleevaluationinterval) (výchozí hodnota je 15 minut).
-5. Potvrďte fond pomocí [CloudPool. Commit](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.commit) nebo [commitasync vyvolá výjimka](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.commitasync).
+1. Nastavte vlastnost [CloudPool. AutoScaleEnabled](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.autoscaleenabled) na `true`.
+1. Nastavte vlastnost [CloudPool. AutoScaleFormula](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.autoscaleformula) vzorcem automatického škálování.
+1. Volitelné Nastavte vlastnost [CloudPool. AutoScaleEvaluationInterval](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.autoscaleevaluationinterval) (výchozí hodnota je 15 minut).
+1. Potvrďte fond pomocí [CloudPool. Commit](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.commit) nebo [commitasync vyvolá výjimka](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.commitasync).
 
 Následující fragment kódu vytvoří fond s povoleným autoškálou v .NET. Vzorec automatického škálování fondu nastavuje cílový počet vyhrazených uzlů na hodnotu 5 v pondělí a 1 každý druhý den v týdnu. [Interval automatického škálování](#automatic-scaling-interval) je nastavený na 30 minut. V tomto článku a dalších C# fragmentech kódu v tomto článku `myBatchClient` je správně inicializovaná instance třídy [BatchClient][net_batchclient] .
 
@@ -392,10 +396,8 @@ await pool.CommitAsync();
 >
 >
 
-Kromě rozhraní Batch .NET můžete nakonfigurovat automatické škálování pomocí kterékoli z dalších [sad SDK pro Batch](batch-apis-tools.md#azure-accounts-for-batch-development), [dávek](https://docs.microsoft.com/rest/api/batchservice/) [prostředí PowerShell](batch-powershell-cmdlets-get-started.md)a rutiny Batch PowerShellu a rozhraní příkazového [řádku Batch](batch-cli-get-started.md) .
+#### <a name="automatic-scaling-interval"></a>Interval automatického škálování
 
-
-### <a name="automatic-scaling-interval"></a>Interval automatického škálování
 Služba Batch standardně upravuje velikost fondu podle vzorce automatického škálování každých 15 minut. Tento interval lze konfigurovat pomocí následujících vlastností fondu:
 
 * [CloudPool. AutoScaleEvaluationInterval][net_cloudpool_autoscaleevalinterval] (Batch .NET)
@@ -405,6 +407,50 @@ Minimální interval je pět minut a maximální hodnota je 168 hodin. Pokud je 
 
 > [!NOTE]
 > Automatické škálování není v současné době určeno k reakci na změny za méně než minutu, ale místo toho je určeno k postupnému přizpůsobení velikosti fondu při spuštění úlohy.
+>
+>
+
+### <a name="python"></a>Python
+
+Podobně můžete vytvořit fond s podporou automatického škálování se sadou Python SDK:
+
+1. Vytvořte fond a určete jeho konfiguraci.
+1. Přidejte fond do klienta služby.
+1. Povolí automatické škálování ve fondu se vzorem, který zapisujete.
+
+```python
+# Create a pool; specify configuration
+new_pool = batch.models.PoolAddParameter(
+    id="autoscale-enabled-pool",
+    virtual_machine_configuration=batchmodels.VirtualMachineConfiguration(
+        image_reference=batchmodels.ImageReference(
+          publisher="Canonical",
+          offer="UbuntuServer",
+          sku="18.04-LTS",
+          version="latest"
+            ),
+        node_agent_sku_id="batch.node.ubuntu 18.04"),
+    vm_size="STANDARD_D1_v2",
+    target_dedicated_nodes=0,
+    target_low_priority_nodes=0
+)
+batch_service_client.pool.add(new_pool) # Add the pool to the service client
+
+formula = """$curTime = time();
+             $workHours = $curTime.hour >= 8 && $curTime.hour < 18; 
+             $isWeekday = $curTime.weekday >= 1 && $curTime.weekday <= 5; 
+             $isWorkingWeekdayHour = $workHours && $isWeekday; 
+             $TargetDedicated = $isWorkingWeekdayHour ? 20:10;""";
+
+# Enable autoscale; specify the formula
+response = batch_service_client.pool.enable_auto_scale(pool_id, auto_scale_formula=formula,
+                                            auto_scale_evaluation_interval=datetime.timedelta(minutes=10), 
+                                            pool_enable_auto_scale_options=None, 
+                                            custom_headers=None, raw=False)
+```
+
+> [!TIP]
+> Další příklady použití sady Python SDK najdete v části [rychlý Start úložiště Pythonu pro Batch](https://github.com/Azure-Samples/batch-python-quickstart) na GitHubu.
 >
 >
 

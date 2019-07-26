@@ -1,6 +1,6 @@
 ---
-title: Měření reálných uživatelů ve službě Azure Traffic Manager
-description: Úvod do měření reálných uživatelů ve službě Traffic Manager
+title: Měření reálných uživatelů v Azure Traffic Manager
+description: Úvod do Měření reálných uživatelů v Traffic Manager
 services: traffic-manager
 documentationcenter: traffic-manager
 author: asudbring
@@ -12,33 +12,73 @@ ms.workload: infrastructure
 ms.date: 03/16/2018
 ms.author: allensu
 ms.custom: ''
-ms.openlocfilehash: cbde96f135aa52ada9bb10b47ca81687992e5833
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 4aa2649ba2e49e1fec1b9b124a9b82313280cee9
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67070988"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68333725"
 ---
-# <a name="traffic-manager-real-user-measurements-overview"></a>Přehled Traffic Manager Real User Measurements
+# <a name="traffic-manager-real-user-measurements-overview"></a>Přehled Traffic Manager Měření reálných uživatelů
 
-Při nastavování profilu Traffic Manageru metody směrování výkonu zjistí služba kde požadavků na dotazy DNS přicházející ze zařízení a díky rozhodování o směrování směrovat tyto žadatele na základě oblasti Azure, který jim poskytuje nejnižší latenci. Toho lze dosáhnout využitím intelligence latence sítě, která Traffic Manageru udržuje pro různé koncové uživatele sítě.
+Když nastavíte profil Traffic Manager pro použití metody směrování výkonu, služba vyhledá, kde požadavky na dotaz DNS přicházejí z, a provede rozhodnutí o směrování, aby tyto žadatele nasměrovala do oblasti Azure, která jim poskytne nejnižší latenci. K tomu je možné využít inteligentní informace o latenci sítě, které Traffic Manager udržuje pro různé sítě koncových uživatelů.
 
-Měření Real User Measurements umožňuje měřit měření latence sítě do oblastí Azure, z klientských aplikací, které vaši koncoví uživatelé použít, a mít Traffic Manageru zvažte tyto informace i při rozhodování o směrování. Kliknutím na použít měření Real User Measurements můžete zvýšit jeho přesnost směrování pro požadavky přicházející z těchto sítí, kde jsou umístěné vaše koncové uživatele. 
+Měření reálných uživatelů vám umožní měřit měření latence sítě do oblastí Azure, od klientských aplikací, které používají koncoví uživatelé, a Traffic Manager tyto informace při rozhodování o směrování vzít v úvahu. Když zvolíte použití Měření reálných uživatelů, můžete zvýšit přesnost směrování pro požadavky přicházející z těchto sítí, kde se nacházejí koncoví uživatelé. 
 
-## <a name="how-real-user-measurements-work"></a>Jak fungují měření Real User Measurements
+## <a name="how-real-user-measurements-work"></a>Jak Měření reálných uživatelů pracovat
 
-Měření Real User Measurements fungovat tak, že vaše latence klienta aplikace míru do oblastí Azure znázorněný od koncových uživatelů sítí, ve kterých se používají. Například pokud máte webovou stránku, která se využívají uživatelé v různých umístěních (například v oblastech Severní Ameriky), můžete použít měření Real User Measurements pomocí metody směrování podle výkonu na tom, abyste doporučené oblasti Azure, ve kterém je váš server aplikace hostovaná.
+Měření reálných uživatelů fungují tak, že klientské aplikace měří latenci do oblastí Azure, protože jsou vidět z sítí koncových uživatelů, ve kterých se používají. Máte-li například webovou stránku, ke které mají přístup uživatelé v různých umístěních (například v oblastech Severní Ameriky), můžete použít Měření reálných uživatelů s metodou směrování výkonu, abyste je získali do nejlepší oblasti Azure, ve které je server aplikace je hostovaná.
 
-Spustí s využitím vkládání zadaného jazyka JavaScript v Azure (s jedinečný klíč v něm) na webových stránkách. Po dokončení, pokaždé, když uživatel navštíví tuto webovou stránku, dotazuje JavaScript Traffic Manager, chcete-li získat informace o oblastech Azure, která by měla měření. Služba vrátí sadu koncových bodů do skriptu, který pak míru těchto oblastí postupně stažením image jeden pixel hostované v těchto oblastech Azure a poznamenat latence mezi časem žádost byla odeslána a čas přijetí prvního bajtu . Tato měření se pak hlášeny zpět ke službě Traffic Manager.
+Začíná vložením JavaScriptu poskytnutého v Azure (s jedinečným klíčem) na webových stránkách. Až to uděláte, pokaždé, když uživatel navštíví tuto webovou stránku, se v JavaScriptu dotazuje Traffic Manager k získání informací o oblastech Azure, které by měla změřit. Služba vrátí sadu koncových bodů ke skriptu, který následně měří tyto oblasti po sobě po stažení jediného pixelu hostovaného v těchto oblastech Azure a zaznamená latenci mezi okamžikem odeslání žádosti a časem přijetí prvního bajtu. . Tato měření se pak nahlásí zpátky do služby Traffic Manager.
 
-V průběhu času k tomu dojde v mnoha případech a napříč mnoha sítím, což vede k Traffic Manageru získávání přesnější informace o vlastnostech latence sítě, ve kterém se nacházejí vaši koncoví uživatelé. Tyto informace se spustí, získávání mají být zahrnuty v rozhodování o směrování provádí Traffic Manager. V důsledku toho vede k vyšší přesnost v těchto rozhodnutí založené na reálných uživatelů odeslána.
+V průběhu času se to děje mnohokrát a v mnoha sítích Traffic Manager získat přesnější informace o vlastnostech latence sítí, ve kterých se nacházejí koncoví uživatelé. Tyto informace začnou zahrnovat rozhodnutí o směrování, která provedla Traffic Manager. Výsledkem je, že vede k vyšší přesnosti v těchto rozhodnutích na základě odeslaného Měření reálných uživatelů.
 
-Při použití měření Real User Measurements účtují na základě počtu měření odesílané do Traffic Manageru. Podrobné informace o cenách najdete [Traffic Manageru stránce s cenami](https://azure.microsoft.com/pricing/details/traffic-manager/).
+Při použití Měření reálných uživatelů se fakturuje na základě počtu měření odesílaných do Traffic Manager. Další podrobnosti o cenách najdete na [stránce s cenami Traffic Manager](https://azure.microsoft.com/pricing/details/traffic-manager/).
+
+## <a name="faqs"></a>Nejčastější dotazy
+
+* [Jaké jsou výhody použití Měření reálných uživatelů?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-are-the-benefits-of-using-real-user-measurements)
+
+* [Můžu Měření reálných uživatelů používat s oblastmi mimo Azure?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-use-real-user-measurements-with-non-azure-regions)
+
+* [Jakou metodu směrování přináší výhody Měření reálných uživatelů?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#which-routing-method-benefits-from-real-user-measurements)
+
+* [Potřebuji Měření reálných uživatelů každý profil samostatně?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#do-i-need-to-enable-real-user-measurements-each-profile-separately)
+
+* [Návody vypnout Měření reálných uživatelů pro moje předplatné?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-do-i-turn-off-real-user-measurements-for-my-subscription)
+
+* [Můžu Měření reálných uživatelů použít s klientskými aplikacemi jinými než webovými stránkami?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-use-real-user-measurements-with-client-applications-other-than-web-pages)
+
+* [Kolik měření se provádí pokaždé, když se vykreslí webová stránka s povoleným Měření reálných uživatelů?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-many-measurements-are-made-each-time-my-real-user-measurements-enabled-web-page-is-rendered)
+
+* [Je zpoždění před spuštěním skriptu Měření reálných uživatelů na naší webové stránce?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#is-there-a-delay-before-real-user-measurements-script-runs-in-my-webpage)
+
+* [Můžu použít Měření reálných uživatelů jenom v oblastech Azure, které chci změřit?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-use-real-user-measurements-with-only-the-azure-regions-i-want-to-measure)
+
+* [Můžu omezit počet provedených měření na konkrétní číslo?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-limit-the-number-of-measurements-made-to-a-specific-number)
+
+* [Můžu zobrazit měření prováděná klientskou aplikací jako součást Měření reálných uživatelů?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-see-the-measurements-taken-by-my-client-application-as-part-of-real-user-measurements)
+
+* [Můžu změnit skript měření, který poskytuje Traffic Manager?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-modify-the-measurement-script-provided-by-traffic-manager)
+
+* [Bude možné, že ostatní uživatelé uvidí klíč, který používá Měření reálných uživatelů?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#will-it-be-possible-for-others-to-see-the-key-i-use-with-real-user-measurements)
+
+* [Můžou jiné zneužít svůj klíč rumu?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-others-abuse-my-rum-key)
+
+* [Potřebuji do všech mých webových stránek přidat měření JavaScriptu?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#do-i-need-to-put-the-measurement-javascript-in-all-my-web-pages)
+
+* [Můžou se informace o mých koncových uživatelích identifikovat pomocí Traffic Manager, když používám Měření reálných uživatelů?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-information-about-my-end-users-be-identified-by-traffic-manager-if-i-use-real-user-measurements)
+
+* [Musí webová stránka měřící Měření reálných uživatelů používat Traffic Manager pro směrování?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#does-the-webpage-measuring-real-user-measurements-need-to-be-using-traffic-manager-for-routing)
+
+* [Potřebuji pro použití s Měření reálných uživatelů hostovat jakoukoli službu v oblastech Azure?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#do-i-need-to-host-any-service-on-azure-regions-to-use-with-real-user-measurements)
+
+* [Zvýší se využití šířky pásma Azure při použití Měření reálných uživatelů?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#will-my-azure-bandwidth-usage-increase-when-i-use-real-user-measurements)
 
 ## <a name="next-steps"></a>Další postup
-- Další informace o použití [měření Real User Measurements s webovými stránkami](traffic-manager-create-rum-web-pages.md)
-- Přečtěte si [jak funguje Traffic Manager](traffic-manager-overview.md)
+- Naučte se používat [měření reálných uživatelů s webovými stránkami](traffic-manager-create-rum-web-pages.md)
+- Informace [o tom, jak Traffic Manager funguje](traffic-manager-overview.md)
 - Další informace o [Mobile Center](https://docs.microsoft.com/mobile-center/)
-- Další informace o [metody směrování provozu](traffic-manager-routing-methods.md) podporované nástrojem Traffic Manager
-- Zjistěte, jak [vytvořit profil služby Traffic Manager](traffic-manager-create-profile.md)
+- Další informace o [metodách směrování provozu](traffic-manager-routing-methods.md) , které podporuje Traffic Manager
+- Informace o tom, jak [vytvořit profil Traffic Manager](traffic-manager-create-profile.md)
 

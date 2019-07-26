@@ -1,6 +1,6 @@
 ---
-title: Odeslání nebo příjem událostí pomocí Pythonu – Azure Event Hubs | Dokumentace Microsoftu
-description: Tento článek poskytuje návod pro vytvoření aplikace v Pythonu, která zasílá události do služby Azure Event Hubs.
+title: Posílání a přijímání událostí pomocí Pythonu – Azure Event Hubs | Microsoft Docs
+description: Tento článek popisuje návod pro vytvoření aplikace v Pythonu, která odesílá události do Azure Event Hubs.
 services: event-hubs
 author: ShubhaVijayasarathy
 manager: femila
@@ -9,18 +9,18 @@ ms.workload: core
 ms.topic: article
 ms.date: 04/15/2019
 ms.author: shvija
-ms.openlocfilehash: 6a8f0ddcfe6de904219059c6e761ead4c004732d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9018df73c85486f5ffc9b16c1dbb70d4d99fcc65
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60461446"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68360183"
 ---
-# <a name="send-events-to-or-receive-events-from-event-hubs-using-python"></a>Odesílání událostí do nebo přijímat události ze služby Event Hubs pomocí Pythonu
+# <a name="send-events-to-or-receive-events-from-event-hubs-using-python"></a>Odesílání událostí do nebo příjem událostí z Event Hubs pomocí Pythonu
 
 Azure Event Hubs je platforma pro streamování velkých objemů dat a služba pro ingestování událostí, která je schopná přijmout a zpracovat miliony událostí za sekundu. Služba Event Hubs dokáže zpracovávat a ukládat události, data nebo telemetrické údaje produkované distribuovaným softwarem a zařízeními. Data odeslaná do centra událostí je možné transformovat a uložit pomocí libovolného poskytovatele analýz v reálném čase nebo adaptérů pro dávkové zpracování a ukládání. Podrobnější přehled služby Event Hubs najdete v tématech [Přehled služby Event Hubs](event-hubs-about.md) a [Funkce služby Event Hubs](event-hubs-features.md).
 
-Tento kurz popisuje, jak vytvářet aplikace Python k odesílání událostí do nebo přijímat události z centra událostí. 
+V tomto kurzu se dozvíte, jak vytvářet aplikace v Pythonu pro odesílání událostí nebo přijímání událostí z centra událostí. 
 
 > [!NOTE]
 > Tento rychlý start si můžete stáhnout jako ukázku z [GitHubu](https://github.com/Azure/azure-event-hubs-python/tree/master/examples), nahradit řetězce `EventHubConnectionString` a `EventHubName`, hodnotami pro vaše centrum událostí a spustit. Alternativně můžete vytvořit vlastní řešení podle kroků v tomto kurzu.
@@ -31,7 +31,7 @@ Pro absolvování tohoto kurzu musí být splněné následující požadavky:
 
 - Předplatné Azure. Pokud ho nemáte, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 - Python 3.4 nebo novější.
-- Použití [webu Azure portal](https://portal.azure.com) k vytvoření oboru názvů typu Event Hubs a získání přihlašovacích údajů pro správu, vaše aplikace potřebuje ke komunikaci s centrem událostí. Pokud chcete vytvořit obor názvů a centra událostí, postupujte podle pokynů v [v tomto článku](event-hubs-create.md). Potom Získejte hodnotu přístupový klíč pro Centrum událostí podle pokynů v článku: [Získání připojovacího řetězce](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). V kódu, který napíšete později v tomto kurzu použijete přístupový klíč. Je výchozí název klíče: **RootManageSharedAccessKey**.
+- Použijte [Azure Portal](https://portal.azure.com) k vytvoření oboru názvů typu Event Hubs a získání přihlašovacích údajů pro správu, které vaše aplikace potřebuje ke komunikaci s centrem událostí. Pokud chcete vytvořit obor názvů a centra událostí, postupujte podle pokynů v [v tomto článku](event-hubs-create.md). Pak Získejte hodnotu přístupového klíče pro centrum událostí podle pokynů v článku: [Získá připojovací řetězec](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). V kódu, který napíšete později v tomto kurzu použijete přístupový klíč. Výchozí název klíče: **RootManageSharedAccessKey**.
 
 ## <a name="install-python-package"></a>Instalovat balíček Pythonu
 
@@ -47,7 +47,7 @@ pip install azure-eventhub
 
 V dalším kroku vytvoření aplikace v Pythonu, která zasílá události do centra událostí:
 
-1. Otevřete váš oblíbený editor Pythonu, například [Visual Studio Code](https://code.visualstudio.com/)
+1. Otevřete oblíbený editor Pythonu, například [Visual Studio Code](https://code.visualstudio.com/)
 2. Vytvořte skript volá **send.py**. Tento skript odesílá 100 události do vašeho centra událostí.
 3. Vložte následující kód do send.py, zadejte adresu, uživatele a klíč hodnoty hodnotami, které jste získali z portálu Azure portal v předchozí části: 
 
@@ -113,7 +113,7 @@ Blahopřejeme! Nyní jste odeslali zprávy do centra událostí.
 
 V dalším kroku vytvoření aplikace v Pythonu, která bude přijímat události z centra událostí:
 
-1. Otevřete váš oblíbený editor Pythonu, například [Visual Studio Code](https://code.visualstudio.com/)
+1. Otevřete oblíbený editor Pythonu, například [Visual Studio Code](https://code.visualstudio.com/)
 2. Vytvořte skript volá **recv.py**.
 3. Vložte následující kód do recv.py, zadejte adresu, uživatele a klíč hodnoty hodnotami, které jste získali z portálu Azure portal v předchozí části: 
 
@@ -144,7 +144,8 @@ last_sn = -1
 last_offset = "-1"
 client = EventHubClient(ADDRESS, debug=False, username=USER, password=KEY)
 try:
-    receiver = client.add_receiver(CONSUMER_GROUP, PARTITION, prefetch=5000, offset=OFFSET)
+    receiver = client.add_receiver(
+        CONSUMER_GROUP, PARTITION, prefetch=5000, offset=OFFSET)
     client.run()
     start_time = time.time()
     for event_data in receiver.receive(timeout=100):
@@ -173,9 +174,9 @@ start python recv.py
 ```
  
 ## <a name="next-steps"></a>Další postup
-V následujících článcích:
+Přečtěte si následující články:
 
 - [EventProcessorHost](event-hubs-event-processor-host.md)
-- [Funkce a terminologii používané v Azure Event Hubs](event-hubs-features.md)
+- [Funkce a terminologie ve službě Azure Event Hubs](event-hubs-features.md)
 - [Nejčastější dotazy k Event Hubs](event-hubs-faq.md)
 

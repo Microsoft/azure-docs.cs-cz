@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: quickstart
-ms.date: 02/01/2019
+ms.date: 07/24/2019
 ms.author: aahi
-ms.openlocfilehash: 139f05e07060cc6dd958c19930e31b1b44e5d22a
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: e56bf0b3daa38f79e637ece947414b885de3797a
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68424032"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68478982"
 ---
 # <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-nodejs"></a>Rychlý start: Odeslat požadavek hledání do Vyhledávání entit Bingu REST API pomocí Node. js
 
@@ -173,7 +173,7 @@ I když je tato aplikace napsaná v JavaScriptu, rozhraní API je webová služb
 }
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 > [Sestavení webové aplikace s jednou stránkou](../tutorial-bing-entities-search-single-page-app.md)

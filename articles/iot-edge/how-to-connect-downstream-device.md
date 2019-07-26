@@ -1,6 +1,6 @@
 ---
 title: Připojit zařízení příjem dat – Azure IoT Edge | Dokumentace Microsoftu
-description: Jak nakonfigurovat směru server-klient nebo zařízení typu list pro připojení k zařízení brány Azure IoT Edge.
+description: Jak nakonfigurovat podřízená nebo koncová zařízení pro připojení k zařízením Azure IoT Edge brány
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -9,22 +9,22 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 7a66355ca1a0c9c2c144f04cd944efe22467d3ae
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 4e13075eabcdb482616f1e500fd739ca58a39003
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67058507"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68501225"
 ---
 # <a name="connect-a-downstream-device-to-an-azure-iot-edge-gateway"></a>Připojte zařízení za příjem dat k bráně Azure IoT Edge
 
-Tento článek obsahuje pokyny pro důvěryhodného připojení mezi zařízeními příjem dat a transparentní brány IoT Edge. Ve scénáři transparentní brána jedno nebo více zařízení, můžete předat své zprávy prostřednictvím jedné brány zařízení, která udržuje připojení ke službě IoT Hub. Příjem dat zařízení může být jakékoli aplikaci nebo platforma, která má identitu vytvořené pomocí [Azure IoT Hub](https://docs.microsoft.com/azure/iot-hub) cloudovou službu. V mnoha případech se tyto aplikace používat [zařízení Azure IoT SDK](../iot-hub/iot-hub-devguide-sdks.md). Příjem dat zařízení může být ještě aplikaci spuštěné na samotném zařízení brány IoT Edge. 
+Tento článek poskytuje pokyny k navázání důvěryhodného připojení mezi podřízenými zařízeními a IoT Edge transparentními branami. V případě transparentní brány může jedno nebo více zařízení předat zprávy pomocí jediného zařízení brány, které udržuje připojení k IoT Hub. Příjem dat zařízení může být jakékoli aplikaci nebo platforma, která má identitu vytvořené pomocí [Azure IoT Hub](https://docs.microsoft.com/azure/iot-hub) cloudovou službu. V mnoha případech se tyto aplikace používat [zařízení Azure IoT SDK](../iot-hub/iot-hub-devguide-sdks.md). Navazující zařízení by mohlo být i aplikace běžící na samotném zařízení IoT Edge brány. 
 
-Existují tři hlavní kroky k nastavení připojení úspěšné transparentní brány. Tento článek se týká třetí krok:
+Existují tři obecné kroky k nastavení úspěšného transparentního připojení brány. Tento článek se věnuje třetímu kroku:
 
-1. Zařízení brány, musí k zabezpečenému připojení pro příjem dat zařízení, přijímat komunikační sdělení od podřízené zařízení a směrování zpráv do správné cíl. Další informace najdete v tématu [nakonfigurovat nastavení zařízení IoT Edge tak, aby fungoval jako transparentní brána](how-to-create-transparent-gateway.md).
-2. Příjem dat zařízení potřebuje identity zařízení mohli ověřovat pomocí služby IoT Hub a znát komunikovat prostřednictvím zařízení brány. Další informace najdete v tématu [ověření podřízené zařízení do služby Azure IoT Hub](how-to-authenticate-downstream-device.md).
-3. **Příjem dat zařízení potřebuje k bezpečnému připojování k zařízení brány.**
+1. Zařízení brány musí bezpečně připojit se k zařízením pro příjem dat, přijímat komunikaci ze zařízení pro příjem dat a směrovat zprávy do správného umístění. Další informace najdete v tématu [Konfigurace zařízení IoT Edge pro fungování jako transparentní brány](how-to-create-transparent-gateway.md).
+2. Zařízení pro příjem dat potřebuje identitu zařízení, aby se mohla ověřit pomocí IoT Hub a ví, jak komunikovat přes jeho zařízení brány. Další informace najdete v tématu [ověření zařízení pro příjem dat do Azure IoT Hub](how-to-authenticate-downstream-device.md).
+3. **Zařízení pro příjem dat musí být schopné se bezpečně připojit k zařízení brány.**
 
 Tento článek identifikuje běžné problémy s připojením zařízení příjem dat a provede vás v nastavení zařízení příjem dat podle: 
 
@@ -36,27 +36,30 @@ V tomto článku se podmínky *brány* a *brána IoT Edge* odkazovat na zaříze
 
 ## <a name="prepare-a-downstream-device"></a>Příprava příjem dat zařízení
 
-Příjem dat zařízení může být jakékoli aplikaci nebo platforma, která má identitu vytvořené pomocí [Azure IoT Hub](https://docs.microsoft.com/azure/iot-hub) cloudovou službu. V mnoha případech se tyto aplikace používat [zařízení Azure IoT SDK](../iot-hub/iot-hub-devguide-sdks.md). Příjem dat zařízení může být ještě aplikaci spuštěné na samotném zařízení brány IoT Edge. 
+Příjem dat zařízení může být jakékoli aplikaci nebo platforma, která má identitu vytvořené pomocí [Azure IoT Hub](https://docs.microsoft.com/azure/iot-hub) cloudovou službu. V mnoha případech se tyto aplikace používat [zařízení Azure IoT SDK](../iot-hub/iot-hub-devguide-sdks.md). Navazující zařízení by mohlo být i aplikace běžící na samotném zařízení IoT Edge brány. Další IoT Edge zařízení ale nemůže být podřízená bráně IoT Edge. 
+
+>[!NOTE]
+>Zařízení IoT, která mají identity registrovaná v IoT Hub můžou používat [vlákna modulu](/iot-hub/iot-hub-devguide-module-twins.md) k izolaci různých procesů, hardwaru nebo funkcí na jednom zařízení. IoT Edge brány podporují připojení k navazujícím modulům pomocí ověřování pomocí symetrického klíče, ale ne pomocí ověřování pomocí certifikátu X. 509. 
 
 Připojit zařízení příjem dat na hraničních zařízeních IoT gateway, je třeba dvě věci:
 
 * Zařízení nebo aplikaci, která je nakonfigurována s řetězcem připojení zařízení IoT Hub s informace pro připojení k bráně. 
 
-    Tento krok je podrobně [ověření podřízené zařízení do služby Azure IoT Hub](how-to-authenticate-downstream-device.md).
+    Tento krok je vysvětlen v tématu [ověření zařízení pro příjem dat do Azure IoT Hub](how-to-authenticate-downstream-device.md).
 
-* Zařízení nebo aplikace musí důvěřovat brány **kořenová certifikační Autorita** certifikát pro ověření připojení TLS k zařízení brány. 
+* Zařízení nebo aplikace musí důvěřovat certifikátu **kořenové certifikační autority** brány, aby ověřili připojení TLS k zařízení brány. 
 
-    Tento krok je podrobně popsána ve zbývající části tohoto článku. Tento krok lze provádět jednu ze dvou způsobů: instalací certifikátu certifikační Autority v úložišti certifikátů operačního systému nebo (pro určité jazyky) pomocí odkazu na certifikát v rámci aplikací s použitím Azure IoT SDK.
+    Tento krok je podrobněji vysvětlen ve zbývající části tohoto článku. Tento krok lze provést jedním ze dvou způsobů: instalací certifikátu certifikační autority do úložiště certifikátů operačního systému nebo (u některých jazyků) odkazem na certifikát v aplikacích, které používají sady SDK Azure IoT.
 
 ## <a name="tls-and-certificate-fundamentals"></a>Základy TLS a certifikátů
 
-Výzvu se bezpečně připojuje podřízené zařízení k IoT Edge je stejně jako jinou klientem a serverem zabezpečené komunikaci, která nastane v Internetu. Klient a server zabezpečeně komunikovat přes internet pomocí [Transport layer security (TLS)](https://en.wikipedia.org/wiki/Transport_Layer_Security). Protokol TLS je sestavena pomocí standardní [infrastruktury veřejných klíčů (PKI)](https://en.wikipedia.org/wiki/Public_key_infrastructure) konstrukce nazývané certifikáty. Protokol TLS je poměrně používané specifikace a široké škály témat souvisejících s zabezpečení dva koncové body. Tento oddíl shrnuje koncepty, které jsou relevantní pro vás k bezpečnému propojení zařízení brány IoT Edge.
+Výzvu se bezpečně připojuje podřízené zařízení k IoT Edge je stejně jako jinou klientem a serverem zabezpečené komunikaci, která nastane v Internetu. Klient a server zabezpečeně komunikovat přes internet pomocí [Transport layer security (TLS)](https://en.wikipedia.org/wiki/Transport_Layer_Security). Protokol TLS je sestavena pomocí standardní [infrastruktury veřejných klíčů (PKI)](https://en.wikipedia.org/wiki/Public_key_infrastructure) konstrukce nazývané certifikáty. TLS je poměrně spojená specifikace a řeší široké spektrum témat souvisejících s zabezpečením dvou koncových bodů. V této části najdete přehled konceptů, které jsou důležité pro bezpečné připojení zařízení k bráně IoT Edge.
 
-Když se klient připojí k serveru, na serveru představuje řetěz certifikátů, volá se, *řetěz certifikátů serveru*. Řetěz certifikátů obvykle zahrnuje kořenový certifikát certifikační autority (CA), jeden nebo více zprostředkujících certifikátů CA a nakonec vlastní certifikát serveru. Klient vytváří vztah důvěryhodnosti se serverem pomocí kryptograficky ověření řetězu certifikátů celý server. Tento klient ověřování řetězu certifikátů serveru se nazývá *server ověřování řetězu*. Klient kryptograficky vyzve službu prokázat, že vlastníte privátní klíč spojenou s certifikátem serveru v procesu nazývaného *doklad o vlastnictví*. Je volána kombinací server ověřování řetězu a dokladu o vlastnictví *ověřování serveru*. Pokud chcete ověřit řetěz certifikátů serveru, klient potřebuje kopii certifikátu kořenové certifikační Autority, která byla použita k vytvoření (nebo vydat) na server certifikát. Obvykle při připojování k webům, prohlížeč vybavená předem nakonfigurovaným rozhraním běžně používaných certifikátů certifikačních Autorit, klient získá bezproblémový procesu. 
+Když se klient připojí k serveru, na serveru představuje řetěz certifikátů, volá se, *řetěz certifikátů serveru*. Řetěz certifikátů obvykle zahrnuje kořenový certifikát certifikační autority (CA), jeden nebo více zprostředkujících certifikátů CA a nakonec vlastní certifikát serveru. Klient vytváří vztah důvěryhodnosti se serverem pomocí kryptograficky ověření řetězu certifikátů celý server. Toto ověření klienta řetězu certifikátů serveru se nazývá *ověření řetězu serveru*. Klient kryptograficky vystavuje službu, aby prokázal vlastnictví privátního klíče přidruženého k certifikátu serveru v procesu, který se nazývá *důkaz o vlastnictví*. Kombinace ověřování řetězu serveru a ověření vlastnictví se nazývá *ověřování serveru*. Pokud chcete ověřit řetěz certifikátů serveru, klient potřebuje kopii certifikátu kořenové certifikační Autority, která byla použita k vytvoření (nebo vydat) na server certifikát. Obvykle při připojování k webům, prohlížeč vybavená předem nakonfigurovaným rozhraním běžně používaných certifikátů certifikačních Autorit, klient získá bezproblémový procesu. 
 
 Když se zařízení připojí ke službě Azure IoT Hub, klient je zařízení a cloudové služby IoT Hub je na serveru. Cloudové služby IoT Hub je založená na certifikátu kořenové certifikační Autority volá **Baltimore CyberTrust Root**, což je veřejně dostupné a široce používaným. Protože certifikát služby IoT Hub certifikační Autority je již nainstalován na většině zařízení, mnoho implementací protokolu TLS (OpenSSL, Schannel, LibreSSL) automaticky použije při ověřování certifikátu serveru. Zařízení, která se může úspěšně připojit ke službě IoT Hub může mít problémy při pokusu o připojení k bráně IoT Edge.
 
-Když se zařízení připojí k bráně IoT Edge, klient je podřízený zařízení a zařízení brány je na serveru. Azure IoT Edge umožňuje k vytváření řetězů certifikátů brány, ale jsou vhodná pro operátory (nebo uživatelé). Operátor, který můžete použít veřejný certifikát certifikační Autority, jako je Baltimore, nebo podepsaný svým držitelem (nebo interní) kořenový certifikát certifikační Autority. Veřejné certifikáty certifikační Autority často mají náklady spojené s nimi, proto se obvykle používají v produkčních scénářích. Certifikáty certifikační Autority podepsané svým držitelem jsou upřednostňované pro vývoj a testování. V článcích nastavení transparentní brána uvedené v úvodu používá certifikáty podepsané svým držitelem kořenové certifikační Autority. 
+Když se zařízení připojí k bráně IoT Edge, klient je podřízený zařízení a zařízení brány je na serveru. Azure IoT Edge umožňuje k vytváření řetězů certifikátů brány, ale jsou vhodná pro operátory (nebo uživatelé). Operátor, který můžete použít veřejný certifikát certifikační Autority, jako je Baltimore, nebo podepsaný svým držitelem (nebo interní) kořenový certifikát certifikační Autority. Veřejné certifikáty certifikační Autority často mají náklady spojené s nimi, proto se obvykle používají v produkčních scénářích. Certifikáty certifikační Autority podepsané svým držitelem jsou upřednostňované pro vývoj a testování. Články s nastavením transparentní brány uvedené v úvodu používají certifikáty kořenové certifikační autority podepsané svým držitelem. 
 
 Pokud používáte certifikát podepsaný svým držitelem kořenové certifikační Autority pro brány IoT Edge, musí být nainstalovaný na nebo k dispozici na všech zařízeních podřízené pokusu o připojení k bráně. 
 
@@ -64,17 +67,17 @@ Pokud používáte certifikát podepsaný svým držitelem kořenové certifika�
 
 Další informace o certifikátech pro IoT Edge a některé důsledky produkčního prostředí, najdete v článku [podrobnosti o použití IoT Edge certifikát](iot-edge-certs.md).
 
-## <a name="provide-the-root-ca-certificate"></a>Zadejte certifikát kořenové certifikační Autority
+## <a name="provide-the-root-ca-certificate"></a>Zadejte certifikát kořenové certifikační autority.
 
-Příjem dat zařízení potřebuje k ověření certifikátů zařízení brány, vlastní kopii certifikát kořenové certifikační Autority. Pokud jste použili k vytvoření testovací certifikáty skripty v úložišti git služby IoT Edge, a potom certifikát kořenové certifikační Autority se nazývá **azure-iot-test-only.root.ca.cert.pem**. Pokud jste tak dosud neučinili jako součást jiné podřízené zařízení přípravné kroky, přesuňte tento soubor certifikátu do libovolného adresáře na příjem dat zařízení. Je možné použít službu jako je [Azure Key Vault](https://docs.microsoft.com/azure/key-vault) nebo funkce, jako je [kopírování zabezpečený protokol](https://www.ssh.com/ssh/scp/) přesunout soubor certifikátu.
+Pro ověření certifikátů zařízení brány musí zařízení pro příjem dat vyžadovat vlastní kopii kořenového certifikátu certifikační autority. Pokud jste pro vytváření testovacích certifikátů použili skripty poskytované v úložišti Git IoT Edge, pak se certifikát kořenové certifikační autority nazývá **Azure-IoT-test-Only. root. ca. CERT. pem**. Pokud jste to ještě neudělali jako součást dalších kroků přípravy na zařízení, přesuňte tento soubor certifikátu do libovolného adresáře v zařízení pro příjem dat. K přesunutí souboru certifikátu můžete použít službu, jako je [Azure Key Vault](https://docs.microsoft.com/azure/key-vault) , nebo funkci, jako je [protokol Secure Copy](https://www.ssh.com/ssh/scp/) .
 
 ## <a name="install-certificates-in-the-os"></a>Instalace certifikátů v operačním systému
 
-Instalace certifikátu kořenové certifikační Autority v úložišti certifikátů operačního systému obecně umožňuje většinu aplikací používat certifikát kořenové certifikační Autority. Existují některé výjimky, podobně jako NodeJS ukládat aplikace, které nepoužívají certifikát operačního systému, ale místo toho použít úložiště vnitřní certifikát uzel modulu runtime. Pokud nemůžete nainstalovat certifikát na úrovni operačního systému, přeskočte k části [certifikáty pomocí sad SDK Azure IoT](#use-certificates-with-azure-iot-sdks). 
+Instalace kořenového certifikátu certifikační autority v úložišti certifikátů operačního systému obecně umožňuje, aby většina aplikací používala certifikát kořenové certifikační autority. Existují nějaké výjimky, jako NodeJS aplikace, které nepoužívají úložiště certifikátů operačního systému, ale používají interní úložiště certifikátů modulu runtime uzlu. Pokud nemůžete nainstalovat certifikát na úrovni operačního systému, přeskočte k [používání certifikátů se sadami SDK služby Azure IoT](#use-certificates-with-azure-iot-sdks). 
 
 ### <a name="ubuntu"></a>Ubuntu
 
-Následující příkazy jsou příkladem toho, jak nainstalovat certifikát certifikační Autority na hostiteli se systémem Ubuntu. Tento příklad předpokládá, že používáte **azure-iot-test-only.root.ca.cert.pem** certifikát z článcích požadavky a že jste zkopírovali certifikát do umístění na příjem dat zařízení.
+Následující příkazy jsou příkladem toho, jak nainstalovat certifikát certifikační Autority na hostiteli se systémem Ubuntu. V tomto příkladu se předpokládá, že používáte certifikát **Azure-IoT-test-Only. root. ca. CERT. pem** z článků s požadavky a že jste certifikát zkopírovali do umístění na zařízení pro příjem dat.
 
 ```bash
 sudo cp <path>/azure-iot-test-only.root.ca.cert.pem /usr/local/share/ca-certificates/azure-iot-test-only.root.ca.cert.pem.crt
@@ -85,7 +88,7 @@ Zobrazí se zpráva, že "aktualizace certifikáty v /etc/ssl/certs... 1 přidá
 
 ### <a name="windows"></a>Windows
 
-Následující postup je příklad toho, jak nainstalovat certifikát certifikační Autority na hostitele Windows. Tento příklad předpokládá, že používáte **azure-iot-test-only.root.ca.cert.pem** certifikát z článcích požadavky a že jste zkopírovali certifikát do umístění na příjem dat zařízení.
+Následující postup je příklad toho, jak nainstalovat certifikát certifikační Autority na hostitele Windows. V tomto příkladu se předpokládá, že používáte certifikát **Azure-IoT-test-Only. root. ca. CERT. pem** z článků s požadavky a že jste certifikát zkopírovali do umístění na zařízení pro příjem dat.
 
 1. V nabídce Start, vyhledejte a vyberte **spravovat certifikáty počítače**. Nástroj, který volá **certlm** otevře.
 2. Přejděte do **certifikáty - místní počítač** > **důvěryhodné kořenové certifikační autority**.
@@ -102,7 +105,7 @@ Tato část popisuje, jak připojit Azure IoT SDK pro zařízení IoT Edge pomoc
 
 Máte připravené před použitím ukázek úrovni aplikace splňovat dvě podmínky:
 
-* Připojovací řetězec služby IoT Hub pro příjem dat zařízení změnit pro odkazování na zařízení brány a jakékoli certifikáty požadované pro ověření podřízené zařízení do služby IoT Hub. Další informace najdete v tématu [ověření podřízené zařízení do služby Azure IoT Hub](how-to-authenticate-downstream-device.md).
+* IoT Hub připojovacího řetězce pro vaše zařízení, který se změnil tak, aby odkazoval na zařízení brány, a všechny certifikáty potřebné k ověření vašeho zařízení pro příjem dat IoT Hub. Další informace najdete v tématu [ověření zařízení pro příjem dat do Azure IoT Hub](how-to-authenticate-downstream-device.md).
 
 * Úplná cesta k certifikátu kořenové certifikační Autority, který jste zkopírovali a někam uložit na příjem dat zařízení.
 
@@ -110,7 +113,7 @@ Máte připravené před použitím ukázek úrovni aplikace splňovat dvě podm
 
 ### <a name="nodejs"></a>NodeJS
 
-Tato část poskytuje ukázkové aplikace pro připojení klienta Azure IoT NodeJS zařízení brány IoT Edge. U aplikací, NodeJS je nutné nainstalovat certifikát kořenové certifikační Autority na úrovni aplikace, jak je znázorněno zde. Aplikace NodeJS nepoužívejte úložiště certifikátů v systému. 
+Tato část poskytuje ukázkové aplikace pro připojení klienta Azure IoT NodeJS zařízení brány IoT Edge. V případě aplikací NodeJS je nutné na úrovni aplikace nainstalovat certifikát kořenové certifikační autority, jak je znázorněno zde. NodeJS aplikace nepoužívají úložiště certifikátů systému. 
 
 1. Získat ukázky pro **edge_downstream_device.js** z [zařízení Azure IoT SDK pro Node.js – ukázky úložiště](https://github.com/Azure/azure-iot-sdk-node/tree/master/device/samples). 
 2. Ujistěte se, že máte vše potřebné pro spuštění ukázky kontrolou **readme.md** souboru. 
@@ -175,7 +178,7 @@ Tato část představuje ukázkovou aplikaci pro připojení Azure IoT Pythonov�
 
 ## <a name="test-the-gateway-connection"></a>Otestovat připojení brány
 
-Toto je ukázka příkazu, který kontroluje, že všechno, co je nastavený správně. Měli byste vidět zprávu "OK ověřit".
+Toto je ukázkový příkaz, který testuje správné nastavení všeho. Měli byste vidět zprávu "OK ověřit".
 
 ```cmd/sh
 openssl s_client -connect mygateway.contoso.com:8883 -CAfile <CERTDIR>/certs/azure-iot-test-only.root.ca.cert.pem -showcerts
@@ -183,11 +186,11 @@ openssl s_client -connect mygateway.contoso.com:8883 -CAfile <CERTDIR>/certs/azu
 
 ## <a name="troubleshoot-the-gateway-connection"></a>Řešení potíží s připojením brány
 
-Pokud vaše zařízení typu list má nepřerušované připojení k zařízení brány, zkuste následující kroky pro řešení. 
+Pokud má vaše listové zařízení přerušované připojení k zařízení brány, zkuste k řešení použít následující postup. 
 
-1. Je název hostitele brány v připojovacím řetězci, stejná jako hodnota názvu hostitele v souboru config.yaml IoT Edge na zařízení brány?
-2. Název hostitele brány je možné přeložit na IP adresu? Přerušované připojení můžete vyřešit pomocí DNS nebo přidáním položkou hostitelského souboru na zařízení typu list.
-3. Komunikační porty jsou otevřeny v bráně firewall? Komunikace založená na protokolu používá (MQTTS:8883 / AMQPS:5671 / HTTPS:433) musí být možné mezi zařízení příjem dat a transparentní IoT Edge.
+1. Je název hostitele brány v připojovacím řetězci stejný jako hodnota názvu hostitele v souboru IoT Edge config. yaml na zařízení brány?
+2. Je název hostitele brány přeložitelný na IP adresu? Přerušovaná připojení můžete vyřešit buď pomocí DNS, nebo přidáním položky souboru hostitele na listovém zařízení.
+3. Jsou v bráně firewall otevřené komunikační porty? Komunikace založená na použitém protokolu (MQTTS: 8883/AMQPS: 5671/HTTPS: 433) musí být mezi podřízenými zařízeními a transparentním IoT Edge.
 
 ## <a name="next-steps"></a>Další postup
 

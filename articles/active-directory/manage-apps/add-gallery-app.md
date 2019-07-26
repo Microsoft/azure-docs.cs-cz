@@ -12,12 +12,12 @@ ms.date: 06/18/2019
 ms.author: mimart
 ms.reviewer: arvinh,luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: efe9ac4580afc066c3addfd6e19004d0562284c4
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: 1bdf275bbafa9c46cfc4577ac2843da0be74c7ef
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68425948"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68477270"
 ---
 # <a name="add-a-gallery-app-to-your-azure-ad-organization"></a>Přidání aplikace Galerie do vaší organizace Azure AD
 
@@ -102,7 +102,7 @@ Azure Active Directory (Azure AD) obsahuje galerii obsahující tisíce předem 
 
 Teď, když jste přidali aplikaci do vaší organizace Azure AD, [Vyberte metodu jednotného přihlašování](what-is-single-sign-on.md#choosing-a-single-sign-on-method) , kterou chcete použít, a podívejte se na příslušný článek níže:
 
-- [Konfigurace jednotného přihlašování založeného na SAML](configure-single-sign-on-portal.md)
+- [Konfigurace jednotného přihlašování založeného na SAML](configure-single-sign-on-non-gallery-applications.md)
 - [Konfigurace jednotného přihlašování k heslům](configure-password-single-sign-on-non-gallery-applications.md)
 - [Konfigurace propojeného přihlašování](configure-linked-sign-on.md)
 

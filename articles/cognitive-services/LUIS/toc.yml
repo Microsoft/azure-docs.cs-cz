@@ -321,6 +321,18 @@
     - name: Referenční informace k předem připraveným doménám
       href: luis-reference-prebuilt-domains.md
       displayName: 'Calendar, Communication,Email,HomeAutomation,Note,Places, RestaurantReservation,ToDo,Utilities,Weather,Web'
+    - name: Referenční informace k vlastním entitám
+      items:
+        - name: Složená entita
+          href: reference-entity-composite.md
+        - name: Entita seznamu
+          href: reference-entity-list.md
+        - name: Entita Pattern.any
+          href: reference-entity-pattern-any.md
+        - name: Entiay regulárního výrazu
+          href: reference-entity-regular-expression.md
+        - name: Jednoduchá entita
+          href: reference-entity-simple.md
     - name: Azure CLI
       href: 'https://go.microsoft.com/fwlink/?linkid=2092156'
     - name: Azure RM PowerShell

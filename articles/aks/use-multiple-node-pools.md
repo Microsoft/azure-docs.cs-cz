@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/17/2019
 ms.author: mlearned
-ms.openlocfilehash: 4ba9840d745995fdf7b8b14889a0c021917f0ec3
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 72f34d9711e1ba4658288bfdeb847632d32d0fcf
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68278174"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68478328"
 ---
 # <a name="preview---create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Preview – vytvoření a Správa fondů více uzlů pro cluster ve službě Azure Kubernetes (AKS)
 
@@ -145,7 +145,9 @@ VirtualMachineScaleSets  1        110        nodepool1   1.13.5                 
 
 ## <a name="upgrade-a-node-pool"></a>Upgrade fondu uzlů
 
-Pokud byl cluster AKS vytvořen v prvním kroku, `--kubernetes-version` byl zadán parametr *1.13.5* . Pojďme upgradovat *mynodepool* na Kubernetes *1.13.7*. Pomocí příkazu [AZ AKS Node upgrade Pool][az-aks-nodepool-upgrade] upgradujte fond uzlů, jak je znázorněno v následujícím příkladu:
+Pokud byl cluster AKS vytvořen v prvním kroku, `--kubernetes-version` byl zadán parametr *1.13.5* . Tím se nastaví verze Kubernetes pro rovinu ovládacího prvku i pro počáteční fond uzlů. K dispozici jsou různé příkazy pro upgrade verze Kubernetes roviny ovládacího prvku a fondu uzlů. Příkaz se používá k upgradu roviny ovládacího prvku, `az aks nodepool upgrade` zatímco se používá k upgradu samostatného fondu uzlů. `az aks upgrade`
+
+Pojďme upgradovat *mynodepool* na Kubernetes *1.13.7*. Pomocí příkazu [AZ AKS Node upgrade Pool][az-aks-nodepool-upgrade] upgradujte fond uzlů, jak je znázorněno v následujícím příkladu:
 
 ```azurecli-interactive
 az aks nodepool upgrade \
@@ -155,6 +157,9 @@ az aks nodepool upgrade \
     --kubernetes-version 1.13.7 \
     --no-wait
 ```
+
+> [!Tip]
+> Chcete-li upgradovat rovinu ovládacího prvku `az aks upgrade -k 1.13.7`na *1.13.7*, spusťte.
 
 Seznam stavů fondů uzlů znovu vypište pomocí příkazu [AZ AKS Node Pool list][az-aks-nodepool-list] . Následující příklad ukazuje, že *mynodepool* je ve stavu *upgradu* na *1.13.7*:
 
@@ -170,6 +175,15 @@ VirtualMachineScaleSets  1        110        nodepool1   1.13.5                 
 Upgrade uzlů na zadanou verzi trvá několik minut.
 
 V rámci osvědčeného postupu byste měli upgradovat všechny fondy uzlů v clusteru AKS na stejnou verzi Kubernetes. Možnost upgradovat jednotlivé fondy uzlů vám umožní provést postupný upgrade a naplánovat mezi fondy uzlů, aby udržovaly dobu provozu aplikací.
+
+> [!NOTE]
+> Kubernetes používá standardní [sémantickou](https://semver.org/) verzi schématu správy verzí. Číslo verze se vyjádří jako *x. y. z*, kde *x* je hlavní verze, *y* je podverze a *z* je verze opravy. Například ve verzi *1.12.6*je 1 hlavní verze, 12 je dílčí verze a 6 je verze opravy. Při vytváření clusteru je nastavená verze Kubernetes řídicí roviny i počáteční fond uzlů. Všechny další fondy uzlů mají svou verzi Kubernetes nastavenou při jejich přidání do clusteru. Verze Kubernetes se mohou lišit mezi fondy uzlů i mezi fondem uzlů a rovinou ovládacího prvku, ale platí následující omezení:
+> 
+> * Verze fondu uzlů musí mít stejnou hlavní verzi jako rovina ovládacího prvku.
+> * Verze fondu uzlů může být jedna podverze nižší než verze řídicí roviny.
+> * Verze fondu uzlů může být libovolná verze opravy, pokud jsou dodržena jiná dvě omezení.
+> 
+> Chcete-li upgradovat verzi Kubernetes řídicí plochy, použijte `az aks upgrade`. Pokud má cluster pouze jeden fond uzlů, `az aks upgrade` příkaz bude také upgradovat verzi Kubernetes fondu uzlů.
 
 ## <a name="scale-a-node-pool"></a>Škálování fondu uzlů
 
@@ -440,7 +454,7 @@ Pokud chcete samotný cluster odstranit, odstraňte skupinu prostředků AKS pom
 az group delete --name myResourceGroup --yes --no-wait
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto článku jste zjistili, jak vytvořit a spravovat více fondů uzlů v clusteru AKS. Další informace o tom, jak ovládat lusky napříč fondy uzlů, najdete v tématu [osvědčené postupy pro pokročilé funkce plánovače v AKS][operator-best-practices-advanced-scheduler].
 

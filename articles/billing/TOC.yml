@@ -87,11 +87,11 @@
               href: billing-reservation-discount-app-service-isolated-stamp.md
             - name: Softwarové plány Azure
               href: billing-understand-suse-reservation-charges.md
-        - name: Náklady na software nejsou součástí
+        - name: Náklady na Windows a SQL nejsou součástí
           href: billing-reserved-instance-windows-software-costs.md
-        - name: Využití pro jednotlivá předplatná
+        - name: Data o využití pro jednotlivá předplatná
           href: billing-understand-reserved-instance-usage.md
-        - name: Využití pro Enterprise
+        - name: Data o využití pro podnikové zákazníky
           href: billing-understand-reserved-instance-usage-ea.md
         - name: Výměny rezervací a vrácení peněz
           href: billing-azure-reservations-self-service-exchange-and-refund.md

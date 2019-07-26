@@ -10,12 +10,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 05/15/2019
 ms.author: shvija
-ms.openlocfilehash: e1ec6987f1a142e9bf9cd4413cfb4444bde1b7dd
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: 66b11ef8e746222074eadab2348f8a2cf9dab39f
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67797001"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68479149"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>Nejčastější dotazy k Event Hubs
 
@@ -24,14 +24,14 @@ ms.locfileid: "67797001"
 ### <a name="what-is-an-event-hubs-namespace"></a>Co je obor názvů služby Event Hubs?
 Obor názvů je kontejner oboru pro témata Event Hub a Kafka. Poskytuje jedinečný [plně kvalifikovaný název domény](https://en.wikipedia.org/wiki/Fully_qualified_domain_name). Obor názvů slouží jako kontejner aplikace, která může zastřešovat i více témata Event Hub a Kafka. 
 
-### <a name="when-do-i-create-a-new-namespace-vs-use-an-existing-namespace"></a>Kdy vytvořit nový obor názvů oproti použití existujícího oboru názvů?
-Přidělení kapacity ([jednotek propustnosti (jednotek propustnosti, které)](#throughput-units)) se účtuje na úrovni oboru názvů. Obor názvů je také přidružené k oblasti.
+### <a name="when-do-i-create-a-new-namespace-vs-use-an-existing-namespace"></a>Kdy vytvořím nový obor názvů vs. použít existující obor názvů?
+Přidělení kapacity ([jednotky propustnosti (počet propustnosti)](#throughput-units)) se účtuje na úrovni oboru názvů. Obor názvů je také přidružen k oblasti.
 
-Můžete chtít vytvořit nový obor názvů namísto použití existující v jednom z následujících scénářů: 
+Místo použití existujícího oboru názvů v jednom z následujících scénářů je vhodné vytvořit nový obor názvů: 
 
-- Je třeba v Centru událostí související s novou oblast.
-- Je třeba Centrum událostí přidružené k jiné předplatné.
-- Je třeba v Centru událostí s přidělení jedinečných kapacity (to znamená, je potřebná kapacita pro obor názvů s centrem událostí přidání překročí prahovou hodnotu 40 jednotek Propustnosti, a nechcete, aby vyhrazeném clusteru)  
+- Potřebujete centrum událostí přidružené k nové oblasti.
+- Potřebujete centrum událostí přidružené k jinému předplatnému.
+- Budete potřebovat centrum událostí s odlišným přidělením kapacity (to znamená, že kapacita pro obor názvů s přidaným centrem událostí by překročila prahovou hodnotu 40.) a nechcete pro vyhrazený cluster přejít.  
 
 ### <a name="what-is-the-difference-between-event-hubs-basic-and-standard-tiers"></a>Jaký je rozdíl mezi Event Hubs úrovně Basic a Standard?
 
@@ -60,46 +60,46 @@ Event Hubs úrovně Standard úroveň momentálně podporuje maximální doba se
 ### <a name="how-do-i-monitor-my-event-hubs"></a>Jak můžu monitorovat Moje služby Event Hubs?
 Event Hubs vysílá vyčerpávající metriky, které poskytují stavu vašich prostředků, aby [Azure Monitor](../azure-monitor/overview.md). Také vám umožňují posouzení celkového stavu služby Event Hubs pouze na úrovni oboru názvů, ale také na úrovni entity. Další informace o monitorování, které nabízíte [Azure Event Hubs](event-hubs-metrics-azure-monitor.md).
 
-### <a name="what-ports-do-i-need-to-open-on-the-firewall"></a>Které porty je potřeba otevřít v bráně firewall? 
-Následující protokoly s Azure Service Bus můžete použít k odesílání a příjem zpráv:
+### <a name="what-ports-do-i-need-to-open-on-the-firewall"></a>Jaké porty potřebuji v bráně firewall otevřít? 
+K posílání a přijímání zpráv můžete použít následující protokoly s Azure Service Bus:
 
-- Pokročilé řízení front zpráv (AMQP) protokolu
+- Rozšířený protokol řízení front zpráv (AMQP) (AMQP)
 - HTTP
 - Apache Kafka
 
-V následující tabulce pro odchozí porty, které je potřeba otevřít na použití těchto protokolů ke komunikaci s Azure Event Hubs. 
+V následující tabulce najdete Odchozí porty, které musíte otevřít, abyste mohli tyto protokoly používat ke komunikaci s Azure Event Hubs. 
 
 | Protocol | Porty | Podrobnosti | 
 | -------- | ----- | ------- | 
-| AMQP | 5671 a 5672 | Zobrazit [Průvodce protokolem AMQP](../service-bus-messaging/service-bus-amqp-protocol-guide.md) | 
+| AMQP | 5671 a 5672 | Viz [Průvodce protokolem AMQP](../service-bus-messaging/service-bus-amqp-protocol-guide.md) . | 
 | HTTP, HTTPS | 80, 443 |  |
-| Kafka | 9093 | Zobrazit [pomocí Event Hubs v aplikacích Kafka](event-hubs-for-kafka-ecosystem-overview.md)
+| Kafka | 9093 | Viz [použití Event Hubs z aplikací Kafka](event-hubs-for-kafka-ecosystem-overview.md) .
 
-### <a name="what-ip-addresses-do-i-need-to-whitelist"></a>Jaké IP adresy musí do seznamu povolených IP adres?
-Najít správné IP adresy na seznamu povolených pro vaše připojení, postupujte podle těchto kroků:
+### <a name="what-ip-addresses-do-i-need-to-whitelist"></a>Jaké IP adresy potřebuji pro seznam povolených?
+Chcete-li najít správné IP adresy pro připojení k seznamu, postupujte podle následujících kroků:
 
-1. Spusťte následující příkaz z příkazového řádku: 
+1. Z příkazového řádku spusťte následující příkaz: 
 
     ```
     nslookup <YourNamespaceName>.servicebus.windows.net
     ```
-2. Poznamenejte si IP adresu vrácenou v `Non-authoritative answer`. Pouze bodu v čase, že by došlo ke změně je-li obnovit obor názvů do jiného clusteru.
+2. Poznamenejte si IP adresu vrácenou `Non-authoritative answer`v. Jediným bodem v čase, který by měl být změněn, je, že obor názvů obnovíte na jiný cluster.
 
-Pokud používáte redundanci zón pro váš obor názvů, je třeba provést několik dalších kroků: 
+Pokud používáte redundanci zóny pro svůj obor názvů, musíte provést několik dalších kroků: 
 
-1. Nejprve spusťte příkaz nslookup v oboru názvů.
+1. Nejprve spustíte nástroj nslookup v oboru názvů.
 
     ```
     nslookup <yournamespace>.servicebus.windows.net
     ```
-2. Poznamenejte si název v **neautoritativní odpovědí** oddíl, což je v jednom z následujících formátů: 
+2. Poznamenejte si název v části **nesměrodatná odpověď** , která je v jednom z následujících formátů: 
 
     ```
     <name>-s1.servicebus.windows.net
     <name>-s2.servicebus.windows.net
     <name>-s3.servicebus.windows.net
     ```
-3. Spusťte nslookup pro každé z nich s příponami s1, s2 a s3 získat IP adresy všech tří instancí spuštěná ve třech zónách dostupnosti 
+3. Spusťte nástroj nslookup pro každý z nich s příponami S1, S2 a S3 k získání IP adres všech tří instancí spuštěných ve třech zónách dostupnosti. 
 
 ## <a name="apache-kafka-integration"></a>Integrace Apache Kafka
 
@@ -115,7 +115,7 @@ Příklad:
 
 Bootstrap.Servers=dummynamespace.servicebus.Windows.NET:9093 request.timeout.ms=60000 security.protocol=SASL_SSL sasl.mechanism=PLAIN sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule požadované uživatelské jméno = "$ Připojovací řetězec"password="Endpoint=sb://dummynamespace.servicebus.windows.net/; SharedAccessKeyName = DummyAccessKeyName; SharedAccessKey = 5dOntTRytoC24opYThisAsit3is2B + OGY1US/fuL3ly = ";
 
-Poznámka: Pokud sasl.jaas.config není podporovanou konfigurací v rozhraní framework, najdete konfigurace, které se používají k nastavení SASL uživatelské jméno a heslo a místo toho použít. Nastavte uživatelské jméno na $ConnectionString a heslo, aby váš připojovací řetězec služby Event Hubs.
+Poznámka: Pokud SASL. jaas. config není ve vašem rozhraní podporovaná konfigurace, najděte konfigurace, které se používají k nastavení uživatelského jména a hesla SASL, a místo toho je používejte. Nastavte uživatelské jméno na $ConnectionString a heslo, aby váš připojovací řetězec služby Event Hubs.
 
 ### <a name="what-is-the-messageevent-size-for-kafka-enabled-event-hubs"></a>Co je velikost zpráv/události Kafka s podporou služby Event hubs?
 Maximální velikost povolená Kafka s podporou služby Event Hubs je 1MB.
@@ -185,8 +185,9 @@ Vytvoření clusteru vyhrazené služby Event Hubs, odešlete [žádost o podpor
 ## <a name="best-practices"></a>Osvědčené postupy
 
 ### <a name="how-many-partitions-do-i-need"></a>Počet oddílů budu potřebovat?
+Počet oddílů je určený při vytvoření a musí být v rozsahu 2 až 32. Počet oddílů není možné měnit. Proto je při nastavování počtu oddílů potřeba uvažovat z dlouhodobého hlediska. Oddíly slouží jako mechanismus pro organizaci dat a souvisí se stupněm paralelismu příjmu dat, který vyžadují přijímací aplikace. Počet oddílů v centru událostí přímo souvisí s počtem souběžných čtenářů, které plánujete mít. Další informace o oddílech najdete v tématu [oddíly](event-hubs-features.md#partitions).
 
-Počet oddílů v Centru událostí nelze změnit po dokončení instalace. To na paměti je potřeba přemýšlet o tom, kolik oddíly je třeba před zahájení práce. 
+Možná budete chtít nastavit, aby byla nejvyšší možná hodnota, která je v době vytváření 32. Pamatujte, že pokud bude mít více než jeden oddíl, budou události odesílány do několika oddílů bez zachování pořadí, pokud nenastavíte odesílatele tak, aby odesílali pouze jeden oddíl z 32 ponechání zbývajících 31 oddílů redundantní. V bývalém případě budete muset číst události ve všech oddílech 32. V druhém případě se od dodatečné konfigurace neúčtují žádné zjevné náklady, které musíte udělat na hostiteli procesoru událostí.
 
 Event Hubs je navržena k umožnění čtečku jeden oddíl na skupinu uživatelů. Ve většině případů použití stačí výchozí nastavení čtyři oddíly. Pokud chcete ke škálování zpracování událostí, můžete zvážit přidání další oddíly. Neexistuje žádné omezení konkrétní propustnost na oddíl, ale celková propustnost ve vašem oboru názvů, je omezen počet jednotek propustnosti. Zvýšení počtu jednotek propustnosti ve vašem oboru názvů, možná budete chtít povolit souběžných čtenářů k dosažení vlastní maximální propustnost další oddíly.
 
@@ -232,8 +233,8 @@ Seznam všech kvótách služby Event Hubs najdete v tématu [kvóty](event-hubs
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
-### <a name="why-am-i-not-able-to-create-a-namespace-after-deleting-it-from-another-subscription"></a>Proč mi nejde vytvořit obor názvů po odstranění z jiného předplatného? 
-Při odstranění oboru názvů z předplatného čeká na 4 hodiny, než se nutnosti znovu vytvářet adresářovou se stejným názvem v jiném předplatném. V opačném případě může zobrazit následující chybová zpráva: `Namespace already exists`. 
+### <a name="why-am-i-not-able-to-create-a-namespace-after-deleting-it-from-another-subscription"></a>Proč nemůžu vytvořit obor názvů po jeho odstranění z jiného předplatného? 
+Když odstraníte obor názvů z předplatného, počkejte 4 hodiny, než ho znovu vytvoříte se stejným názvem v jiném předplatném. V opačném případě se může zobrazit následující chybová zpráva `Namespace already exists`:. 
 
 ### <a name="what-are-some-of-the-exceptions-generated-by-event-hubs-and-their-suggested-actions"></a>Jaké jsou některé výjimky generované služby Event Hubs a jejich doporučené akce?
 

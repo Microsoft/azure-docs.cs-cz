@@ -1,64 +1,61 @@
 ---
-title: Jak odblokovat uživatele s Azure Active Directory Identity Protection | Dokumentace Microsoftu
-description: Zjistěte, jak odblokovat uživatele, kteří se zablokoval pomocí zásad Azure Active Directory Identity Protection.
+title: Jak odblokovat uživatele pomocí Azure Active Directory Identity Protection | Microsoft Docs
+description: Přečtěte si, jak odblokovat uživatele blokované zásadou Azure Active Directory Identity Protection.
 services: active-directory
-keywords: Azure active directory identity protection odblokování uživatele
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: daveba
-ms.assetid: a953d425-a3ef-41f8-a55d-0202c3f250a7
 ms.service: active-directory
 ms.subservice: identity-protection
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1d22fa7fd3964f99c426e8e21d34dcfdea6d1b36
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c28e30b8e44b6888cdb7416b9c7b563b955a68ce
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60294399"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68335374"
 ---
 # <a name="how-to-unblock-users"></a>Jak: Odblokování uživatelů
 
-S Azure Active Directory Identity Protection můžete nakonfigurovat zásady pro blokování uživatelů jsou při splnění nakonfigurovaných podmínek. Obvykle blokovaný uživatel kontakty technické podpory o budou odblokována. Tento článek vysvětluje kroky můžete provést pro odblokování blokovaný uživatel.
+Pomocí Azure Active Directory Identity Protection můžete nakonfigurovat zásady, které blokují uživatele, pokud jsou nakonfigurované podmínky splněné. Obvykle se zablokování kontaktování kontaktů blokovaného uživatele stane odblokované. Tento článek popisuje kroky, které můžete provést k odblokování blokovaného uživatele.
 
-## <a name="determine-the-reason-for-blocking"></a>Zjistěte důvod pro blokování
-Jako první krok pro odblokování uživatele je nutné určit typ zásady, které má uživatel blokován, protože na něm závisí další kroky.
-S Azure Active Directory Identity Protection může být uživatel buď blokováno jiným zásady rizik přihlašování nebo zásady rizik uživatelů.
+## <a name="determine-the-reason-for-blocking"></a>Určete důvod blokování.
 
-Typ zásady, který se zablokoval uživatele z záhlaví v dialogovém okně, které se budou zobrazovat uživateli při pokusu o přihlášení můžete získat:
+Jako první krok odblokování uživatele musíte určit typ zásady, která uživatele zablokovala, protože na něm závisí další postup.
+Pomocí Azure Active Directory Identity Protection může uživatel zablokovat buď zásady rizik přihlašování, nebo zásady rizik uživatelů.
 
-| Zásada | Dialogové okno uživatele |
+Můžete získat typ zásad, které zablokovaly uživatele z nadpisu v dialogovém okně, které se uživateli zobrazily během pokusu o přihlášení:
+
+| Zásada | Uživatelský dialog |
 | --- | --- |
-| Riziko přihlášení |![Zablokování přihlášení](./media/howto-unblock-user/02.png) |
-| Riziko uživatele |![Blokované účtu](./media/howto-unblock-user/104.png) |
+| Riziko přihlášení |![Blokované přihlášení](./media/howto-unblock-user/02.png) |
+| Riziko uživatele |![Blokovaný účet](./media/howto-unblock-user/104.png) |
 
-Uživatel, který je blokovaný podle:
+Uživatel, který je zablokován nástrojem:
 
-* Zásady rizik přihlašování se také označuje jako podezřelou přihlášení
-* Zásady rizik uživatelů se také označuje jako účet u rizik
+* Zásady pro rizikové přihlašování se taky označují jako podezřelé přihlášení.
+* Zásady rizik uživatelů se také označují jako ohrožený účet.
 
-## <a name="unblocking-suspicious-sign-ins"></a>Odblokování podezřelé přihlášení
-K blokování podezřelých přihlášení, máte následující možnosti:
+## <a name="unblocking-suspicious-sign-ins"></a>Odblokování podezřelých přihlášení
 
-1. **Přihlášení ze známého umístění nebo zařízení** -Častým důvodem, proč blokované podezřelé přihlášení jsou pokusů o přihlášení z neznámých míst nebo zařízení. Vaši uživatelé mohli rychle zjistit, zda se jedná Důvod blokování tak, že zkusíte přihlásit ze známého umístění nebo zařízení.
-2. **Vyloučit ze zásad** – Pokud se domníváte, že aktuální konfigurace zásady přihlášení způsobuje problémy pro konkrétní uživatele, můžete vyloučit uživatele z něj. Další informace najdete v tématu [Azure Active Directory Identity Protection](../active-directory-identityprotection.md).
-3. **Zakázat zásadu** – Pokud se domníváte, že vaše konfigurace zásad způsobuje problémy pro všechny uživatele, můžete zakázat zásadu. Další informace najdete v tématu [Azure Active Directory Identity Protection](../active-directory-identityprotection.md).
+Chcete-li odblokovat podezřelé přihlášení, máte následující možnosti:
 
-## <a name="unblocking-accounts-at-risk"></a>Účty, odblokování
-Odblokování účtu ohroženy, máte následující možnosti:
+1. **Přihlaste se ze známého umístění nebo zařízení** – běžným důvodem pro blokované podezřelé přihlášení jsou pokusy o přihlášení z neznámých umístění nebo zařízení. Uživatelé mohou rychle zjistit, zda se jedná o důvod blokování, pokusit se o přihlášení ze známého umístění nebo zařízení.
+2. **Vyloučit ze zásad** – Pokud se domníváte, že aktuální konfigurace zásady přihlašování způsobuje problémy pro konkrétní uživatele, můžete z něj vyloučit uživatele. Další informace najdete v tématu [Azure Active Directory Identity Protection](../active-directory-identityprotection.md).
+3. **Zakázat zásady** – Pokud se domníváte, že konfigurace zásad způsobuje problémy pro všechny uživatele, můžete zásady zakázat. Další informace najdete v tématu [Azure Active Directory Identity Protection](../active-directory-identityprotection.md).
 
-1. **Resetovat heslo** – může resetovat heslo uživatele. 
-2. **Skrýt všechny rizikové události** – bloky zásady rizik uživatelů uživatele Pokud uživatel nakonfigurovaný rizika úroveň pro zablokování přístupu se dosáhlo. Uživatele můžete snížit na úroveň rizika ručně ukončením hlášené rizikové události. 
-3. **Vyloučit ze zásad** – Pokud se domníváte, že aktuální konfigurace zásady přihlášení způsobuje problémy pro konkrétní uživatele, můžete vyloučit uživatele z něj. Další informace najdete v tématu [Azure Active Directory Identity Protection](../active-directory-identityprotection.md).
-4. **Zakázat zásadu** – Pokud se domníváte, že vaše konfigurace zásad způsobuje problémy pro všechny uživatele, můžete zakázat zásadu. Další informace najdete v tématu [Azure Active Directory Identity Protection](../active-directory-identityprotection.md).
+## <a name="unblocking-accounts-at-risk"></a>Odblokování ohrožených účtů
+
+Chcete-li odblokovat účet s rizikem, máte následující možnosti:
+
+1. **Resetování hesla** – můžete resetovat heslo uživatele. 
+2. **Zrušit všechny rizikové události** – zásady rizik uživatelů blokují uživatele, pokud byla dosažena nakonfigurovaná úroveň rizika uživatele pro blokování přístupu. Úroveň rizika uživatele můžete snížit ručním ukončením hlášených rizikových událostí. 
+3. **Vyloučit ze zásad** – Pokud se domníváte, že aktuální konfigurace zásady přihlašování způsobuje problémy pro konkrétní uživatele, můžete z něj vyloučit uživatele. Další informace najdete v tématu [Azure Active Directory Identity Protection](../active-directory-identityprotection.md).
+4. **Zakázat zásady** – Pokud se domníváte, že konfigurace zásad způsobuje problémy pro všechny uživatele, můžete zásady zakázat. Další informace najdete v tématu [Azure Active Directory Identity Protection](../active-directory-identityprotection.md).
 
 ## <a name="next-steps"></a>Další postup
  
-Opravdu chcete dozvědět víc o službě Azure AD Identity Protection? Podívejte se na [Azure Active Directory Identity Protection](../active-directory-identityprotection.md).
+Chcete získat další informace o Azure AD Identity Protection? Podívejte se [Azure Active Directory Identity Protection](../active-directory-identityprotection.md).

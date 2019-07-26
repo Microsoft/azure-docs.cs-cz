@@ -1,6 +1,6 @@
 ---
-title: Reference – důvěryhodnosti architektury v Azure Active Directory B2C | Dokumentace Microsoftu
-description: Téma o vlastní zásady pro Azure Active Directory B2C a architekturu rozhraní identit.
+title: Rozhraní pro vztahy důvěryhodnosti referencí v Azure Active Directory B2C | Microsoft Docs
+description: Téma o Azure Active Directory B2C vlastních zásadách a prostředí identit.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,118 +10,118 @@ ms.topic: conceptual
 ms.date: 08/04/2017
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 47e45a7dac8abc65f414fedd0fd910e3a7a78113
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e96ddcb904bbda6c3123ffc9d3da50ff80823689
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66508810"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68500019"
 ---
-# <a name="define-trust-frameworks-with-azure-ad-b2c-identity-experience-framework"></a>Definice architektury důvěryhodnosti s architekturu rozhraní identit Azure AD B2C
+# <a name="define-trust-frameworks-with-azure-ad-b2c-identity-experience-framework"></a>Definování vztahů důvěryhodnosti pomocí Azure AD B2C Framework Experience identity
 
-Azure Active Directory B2C (Azure AD B2C) vlastní zásady, které používají architekturu rozhraní identit poskytnout vaší organizaci s centralizované služby. Tato služba pro snížení složitosti federaci identit velké komunity zájmu. Představuje jeden vztah důvěryhodnosti a jeden metadata exchange se snižuje složitost.
+Azure Active Directory B2C (Azure AD B2C) vlastní zásady, které používají architekturu prostředí identity, poskytují vaší organizaci centralizovanou službu. Tato služba snižuje složitost federace identit ve velké komunitě zájmu. Složitost se zkracuje na jeden vztah důvěryhodnosti a na jednu výměnu metadat.
 
-Azure AD B2C vlastní zásady, které používají architekturu rozhraní identit umožňuje odpovědět na následující otázky:
+Azure AD B2C vlastní zásady používají rozhraní identity Experience Framework, které vám umožní zodpovědět následující otázky:
 
-- Co je právní, zabezpečení, ochrany osobních údajů a zásady ochrany dat, které musí dodržovat?
-- Kdo jsou kontakty a co jsou procesy pro stát účastníkovi akreditované?
-- Informace o zprostředkovatelé identity akreditované (označované také jako "zprostředkovatelů deklarací identity"), kteří jsou a k čemu nabízejí?
-- Kdo jsou akreditované předávající strany (a volitelně, co bude potřebovat)?
-- Co jsou technické "na lince" požadavky vzájemná funkční spolupráce pro účastníky?
-- Co jsou pravidla provozní "runtime", které musí vynucovat k výměně informací o digitální identity?
+- Jaké jsou právní a bezpečnostní zásady zabezpečení, ochrany osobních údajů a ochrany dat, které musí dodržovat?
+- Kdo jsou kontakty a jaké procesy se stanou neschváleným účastníkem?
+- Kdo jsou poskytovatelé informací o identitě (označované také jako poskytovatelé deklarací identity) a co nabízejí?
+- Kdo jsou akreditační předávající strany (a volitelně co vyžadují)?
+- Jaké jsou technické požadavky na interoperabilitu pro účastníky?
+- Jaké jsou provozní pravidla "runtime", která se musí vymáhat pro výměnu informací o digitální identitě?
 
-Odpovědi na tyto otázky, vytvořit vlastní zásady Azure AD B2C, které používají architekturu rozhraní identit použijte důvěřovat Framework (TF). Pojďme se podívat tento konstruktor a poskytuje.
+Pokud chcete odpovědět na všechny tyto otázky, Azure AD B2C vlastní zásady, které používají architekturu identity Experience Framework, použijte konstrukci Trust Framework (TF). Pojďme vzít v úvahu tento konstruktor a to, co poskytuje.
 
-## <a name="understand-the-trust-framework-and-federation-management-foundation"></a>Vysvětlení právech důvěřovat rozhraní Framework a federace
+## <a name="understand-the-trust-framework-and-federation-management-foundation"></a>Pochopení architektury vztahu důvěryhodnosti a základu správy federace
 
-Rozhraní vztahu důvěryhodnosti je písemné specifikace identit, zabezpečení, ochrany osobních údajů a zásady ochrany dat, ke kterým musí odpovídat účastníků v komunitě zajímavé.
+Vztah důvěryhodnosti je písemná specifikace pro zásady týkající se identity, zabezpečení, ochrany osobních údajů a ochrany dat, které musí splňovat účastníci ve komunitě zájmu.
 
-Federované identity poskytuje základ pro dosažení assurance identitu koncového uživatele v internetovém měřítku. Delegováním identity management třetím stranám, lze opětovně použít jednu digitální identitu koncového uživatele s víc předávajících stran.  
+Federované identity poskytuje základ pro zajištění identity identity koncových uživatelů v internetovém měřítku. Delegováním správy identit na třetí strany se dá použít jedna Digitální identita pro koncového uživatele s více předávajícími stranami.  
 
-Identita assurance vyžaduje zprostředkovatelů identity (IDP) a poskytovatelé atribut (AtPs), které se dodržovat konkrétní zabezpečení, ochrany osobních údajů a zkontrolovala zásady a postupy.  Pokud nemohou provádět kontroly s přímým přístupem, předávající strany (předávajících stran) musí vyvinout vztahy důvěryhodnosti pomocí zprostředkovatelů identity a AtPs se rozhodnete pracovat.  
+Identity Assurance vyžaduje, aby zprostředkovatelé identity (zprostředkovatelů identity) a zprostředkovatelé atributů (AtPs) dodržovali konkrétní zabezpečení, ochranu osobních údajů a provozní zásady a postupy.  Pokud nemohou provádět přímé kontroly, musí předávající strany (RPs) vyvíjet vztahy důvěryhodnosti s zprostředkovatelů identity a AtPs, se kterými se uživatelé rozhodnou pracovat.  
 
-Roste počet příjemci a zprostředkovatelé identity digitálních informací, je obtížné pokračovat pairwise správu tyto vztahy důvěryhodnosti nebo dokonce pairwise exchange technické metadata potřebná pro připojení k síti.  Federace hubs dosáhli pouze omezené úspěch při řešení těchto problémů.
+Vzhledem k tomu, že se počet spotřebitelů a poskytovatelé informací o digitální identitě roste, je obtížné pokračovat ve správě těchto vztahů důvěryhodnosti, nebo dokonce na základě výměny technických metadat, která jsou potřebná pro připojení k síti.  Federační centra se dosáhlo pouze omezené úspěšnosti při řešení těchto problémů.
 
-### <a name="what-a-trust-framework-specification-defines"></a>Definuje vztah důvěryhodnosti Framework specifikace
-TFs jsou linchpins modelu rozhraní Framework důvěřovat otevřít Identity Exchange (OIX), kde je každý komunitě zajímavé řídí konkrétní specifikace TF. Definuje TF specifikace:
+### <a name="what-a-trust-framework-specification-defines"></a>Definice specifikace architektury pro vztahy důvěryhodnosti
+TFs jsou linchpins modelu rozhraní OIX (Open identity Exchange) pro vztah důvěryhodnosti, kde se každá komunita zájmů řídí konkrétní specifikací TF. Taková specifikace TF definuje:
 
-- **Zabezpečení a ochrana osobních údajů metrik pro komunitu zajímají s definicí:**
-    - Úrovně, které jsou požadované účastníci; jejich nabízí záruky (Symbolů) například uspořádané sady hodnocení spolehlivosti za pravosti digitální identity informace.
-    - Úrovně ochrany (LOP), které jsou nabízí/vyžadované účastníků například uspořádané sady hodnocení spolehlivosti pro ochranu informací digitální identity, který zařizuje služba účastníků v komunitě zajímavé.
+- **Metrika zabezpečení a ochrany osobních údajů v komunitě zájmu s definicí:**
+    - Úrovně Assurance (LOA), které jsou nabídnuty nebo požadovány účastníky; například uspořádaná sada hodnocení spolehlivosti pro pravost informací o digitální identitě.
+    - Úrovně ochrany (LOP), které jsou nabídnuty nebo požadovány účastníky; například uspořádaná sada hodnocení spolehlivosti pro ochranu informací o digitální identitě, která je pořízena účastníky v komunitě zájmu.
 
-- **Popis digitálních informací o identitě, který má nabízí/vyžadováno účastníci**.
+- **Popis informací o digitální identitě, které jsou nabídnuty nebo požadovány účastníky**.
 
-- **Technické zásady pro produkci a využití digitálních identit a proto pro měření Symbolů a LOP. Tyto zásady písemné obvykle zahrnují následující kategorie zásad:**
-    - Identita kontroly pravopisu zásady, třeba: *Jak důrazně se informace o identitě osoby prověřeny?*
-    - Zásady zabezpečení, například: *Jak důrazně jsou chráněné informace integrity a důvěrnosti?*
-    - Zásady ochrany osobních údajů, například: *Jaké ovládacího prvku uživatel nemá přes osobní identifikovatelné údaje (PII)* ?
-    - Přežití zásady, například: *Pokud zprostředkovatele přestane operace, jak funguje kontinuity podnikových procesů a ochranu funkce identifikovatelné osobní údaje?*
+- **Technické zásady pro produkci a spotřebu informací o digitální identitě, a to pro měření LOA a LOP. Tyto napsané zásady obvykle obsahují následující kategorie zásad:**
+    - Zásady pro kontrolu identity, například: *Jak silně je prověřené informace o identitě uživatele?*
+    - Zásady zabezpečení, například: *Jak silné jsou integrita informací a ochrana důvěrnosti?*
+    - Zásady ochrany osobních údajů, například: *Jaký ovládací prvek má uživatel více identifikovatelné osobní údaje (PII)* ?
+    - Zásady přežití, například: *Pokud poskytovatel přestane operace, jak funguje kontinuita a ochrana funkce PII?*
 
-- **Technické profily pro produkci a využití digitálních identit. Tyto profily zahrnují:**
-    - Obor rozhraní, pro které je k dispozici na zadané Symbolů digitální identity informace.
-    - Technické požadavky pro spolupráci ve přenosu.
+- **Technické profily pro produkci a spotřebu informací o digitální identitě. Mezi tyto profily patří:**
+    - Rozhraní oboru, pro které jsou k dispozici informace o digitální identitě v zadaném LOA.
+    - Technické požadavky na interoperabilitu s přenosem.
 
-- **Popis různých rolích, které mohou provádět členové komunity a podmínky, které jsou nezbytné pro splnění těchto rolí.**
+- **Popisy různých rolí, které mohou účastníci komunity provádět, a kvalifikace, které jsou nutné ke splnění těchto rolí.**
 
-Proto TF specifikace řídí, jak informace o identitě se vyměňují mezi jednotlivými účastníky komunity, které vás zajímají: předávající strany, identity a poskytovatelé atribut a atribut ověřovatele.
+Proto specifikace TF určuje, jak se vyměňují informace o identitě mezi účastníky komunity zájmu: předávající strany, poskytovatelé identit a atributů a ověřovatele atributů.
 
-Specifikace TF je jeden nebo více dokumentů, které slouží jako odkaz pro zásady správného řízení komunitě zajímavé, který řídí kontrolního výrazu a využití digitální informace o identitě v rámci komunity. Je zdokumentovaná sadu zásad a postupů, které jsou navržené tak, aby navázání vztahu důvěryhodnosti v digitálních identit, které se používají pro online transakce mezi členy komunity, které vás zajímají.  
+Specifikace TF je jeden nebo několik dokumentů, které slouží jako reference pro zásady správného řízení komunity zájmu, které řídí kontrolní výraz a spotřebu informací o digitální identitě v rámci komunity. Jedná se o popsanou sadu zásad a postupů, které jsou určené k navázání vztahu důvěryhodnosti v digitálních identitách, které se používají pro online transakce mezi členy komunity zájmu.  
 
-Jinými slovy TF specifikace definuje pravidla pro vytváření ekosystému přijatelné federovaných identit pro komunity.
+Jinými slovy specifikace TF definuje pravidla pro vytvoření životaschopného ekosystému federované identity pro komunitu.
 
-Aktuálně je široce smlouvy využívat takový přístup. Je už nepochybně, který důvěryhodnosti specifikace rozhraní framework usnadňují vývoj ekosystémů digitální identity s ověřitelný vlastnosti zabezpečení, zabezpečení a ochrana osobních údajů, což znamená, že můžete opakovaně napříč více komunit, které vás zajímají.
+V současné době existuje širší dohoda o výhodách takového přístupu. Neexistují žádné pochybnosti, že specifikace architektury pro vztah důvěryhodnosti usnadňují vývoj digitálních ekosystémů identity pomocí ověřitelných vlastností zabezpečení, záruky a ochrany osobních údajů, což znamená, že je možné je znovu použít napříč několika komunitami, které vás zajímají.
 
-Z důvodu vlastní zásady Azure AD B2C, které používají architekturu rozhraní identit pro, který používá specifikaci jako základ pro její znázornění dat TF pro usnadnění vzájemná funkční spolupráce.  
+Z tohoto důvodu Azure AD B2C vlastní zásady, které používají architekturu identity Experience Framework, k usnadnění interoperability slouží jako základ své reprezentace dat pro TF.  
 
-Azure AD B2C vlastní zásady, které využívají architekturu rozhraní identit představují TF specifikace jako kombinace modifikátorů dat, lidské a který je strojově čitelný. Některé části tohoto modelu (obvykle oddíly, které jsou více orientované na zásady správného řízení) jsou reprezentovány ve formě odkazů na publikované zabezpečení a ochrana osobních údajů dokumentace k zásadám spolu s postupy související (pokud existuje). Ostatní části podrobně popisují konfiguraci metadata a modulu runtime pravidla, která usnadňují automatizaci provozní.
+Azure AD B2C vlastní zásady, které využívají architekturu prostředí identity, reprezentují specifikaci TF jako kombinaci lidského a strojově čitelného data. Některé části tohoto modelu (obvykle oddíly, které se orientují směrem k zásadám správného řízení) jsou reprezentovány jako odkazy na publikovanou dokumentaci o zabezpečení a zásadách ochrany osobních údajů spolu se souvisejícími postupy (pokud existují). Ostatní oddíly popisují podrobně metadata konfigurace a pravidla modulu runtime, která usnadňují provozní automatizaci.
 
-## <a name="understand-trust-framework-policies"></a>Vysvětlení zásad důvěryhodnosti Framework
+## <a name="understand-trust-framework-policies"></a>Principy zásad pro rozhraní Trust Framework
 
-Z hlediska implementace TF specifikace sestává ze sady zásad, které umožní úplnou kontrolu nad chováním identity a prostředí.  AD B2C vlastní zásady Azure, které využívají architekturu rozhraní identit umožňují vytvářet a vytvořit vlastní TF prostřednictvím deklarativních zásad, které můžete definovat a konfigurace:
+V souvislosti s implementací TF se specifikace TF skládá ze sady zásad, které umožňují úplnou kontrolu nad chováním identity a prostředími.  Azure AD B2C vlastní zásady, které využívají architekturu prostředí identit, umožňují vytvářet a vytvářet vlastní TF prostřednictvím takových deklarativních zásad, které můžou definovat a konfigurovat:
 
-- Odkaz na dokument nebo odkazy, které definují federovanou identitu ekosystém komunity, který se vztahuje TF. Jsou odkazy na dokumentaci TF. Pravidla (Předdefinované) provozní "runtime", nebo jízdy uživatele, které automatizují a/nebo řídit exchange a použití deklarací identity. Tyto cesty uživatele jsou přidruženy Symbolů (a LOP). Zásady proto může mít cesty uživatele s použitím různých LOAs (a LOPs).
+- Odkaz na dokument nebo odkazy definující ekosystém federované identity komunity, který se vztahuje k TF. Jsou odkazy na dokumentaci TF. (Předdefinovaná) Provozní pravidla "runtime" nebo uživatelské cesty, které automatizují nebo řídí výměnu a používání deklarací identity. Tyto cesty uživatelů jsou přidruženy k LOA (a LOP). Zásada může mít proto cestu uživatele s různou LOAsou (a LOPs).
 
-- Zprostředkovatelé identitu a atribut, nebo poskytovatele deklarací identity v komunitě zájmu a technické profily, které podporují spolu s akreditace Symbolů/LOP (out-of-band), která má vztah k nim.
+- Poskytovatelé identit a atributů nebo poskytovatelé deklarací identity v komunitě zájmu a technické profily, které podporují, spolu s LOP schválením na základě kategorie (mimo pásmo), která souvisí s nimi.
 
-- Integrace s atribut ověřovatele nebo zprostředkovatelů deklarací identity.
+- Integrace s ověřovateli atributů nebo zprostředkovateli deklarací identity.
 
-- Předávající strany v komunitě (podle odvození).
+- Předávající strany ve Společenství (odvozením).
 
-- Metadata pro navázání komunikace mezi účastníky v síti. Tato metadata, spolu s technické profily se používají během transakce pro vložení "na lince" vzájemná funkční spolupráce mezi předávající strany a ostatní účastníci komunity.
+- Metadata pro vytvoření síťové komunikace mezi účastníky. Tato metadata spolu s technickými profily se používají během transakce na domovní spolupráci mezi předávající stranou a ostatními účastníky komunity.
 
-- Protokol převodu, pokud existuje (například SAML 2.0, OAuth2, WS-Federation a OpenID Connect).
+- Převod protokolu, pokud existuje (například SAML 2,0, OAuth2, WS-Federation a OpenID Connect).
 
 - Požadavky na ověřování.
 
-- Vícefaktorové Orchestrace případné.
+- Orchestrace s více fakty, pokud nějaká existuje.
 
-- Sdílené schéma pro všechny deklarace identity, které jsou k dispozici a mapování účastníkům komunitu zajímají.
+- Sdílené schéma pro všechny deklarace identity, které jsou k dispozici, a mapování účastníků zájmu komunity.
 
-- Všechny deklarace identity transformace, spolu s minimalizaci možných data v tomto kontextu, chcete-li udržet exchange a použití deklarací identity.
+- Všechny transformace deklarací identity společně s možnou minimalizováním dat v tomto kontextu začlení výměnu a používání deklarací identity.
 
-- Vazby a šifrování.
+- Vazba a šifrování.
 
-- Deklarace identity úložiště.
+- Úložiště deklarací identity.
 
-### <a name="understand-claims"></a>Vysvětlení deklarací identity
+### <a name="understand-claims"></a>Pochopení deklarací identity
 
 > [!NOTE]
-> Pro všechny možné druhy informací o identitě, který možná bude vyměněn jako "deklarace" souhrnně označujeme: deklarace identity o pověření pro ověření koncového uživatele, prověřování identity, zařízení komunikace, fyzické umístění, osobně určující atributy, a tak dále.  
+> Souhrnně odkazujeme na všechny možné typy informací o identitách, které se můžou vyměňovat jako deklarace identity: deklarace identity pro přihlašovací údaje koncového uživatele, dozvíte ČSFD identity, komunikační zařízení, fyzické umístění, identifikovatelné atributy, a tak dále.  
 >
-> Vzhledem k tomu, že v online transakce, nejsou tyto artefakty dat faktů, které se dá přímo ověřit předávající stranou používáme – místo "atributy"--"deklarace". Místo toho jsou kontrolní výrazy nebo deklarace identity o fakta, pro které musíte předávající straně vývoj dostatečnou důvěru udělit požadovaná transakce koncového uživatele.  
+> Používáme pojem "deklarace identity", a ne "atributy" – protože v online transakcích nejsou tyto artefakty dat fakty, které je možné přímo ověřit předávající stranou. Jsou to ale kontrolní výrazy nebo deklarace identity. informace o skutečnostech, pro které předávající strana musí vyvíjet dostatečnou důvěru pro udělení požadované transakce koncovému uživateli.  
 >
-> Použijeme také termín "deklarace", protože Azure AD B2C vlastní zásady, které používají architekturu rozhraní identit jsou navržené pro zjednodušení exchange všechny typy informací digitální identity konzistentním způsobem bez ohledu na to, zda je na základním protokolu definováno pro načtení ověřování nebo atribut uživatele.  Podobně, používáme pojem "zprostředkovatelů deklarací" souhrnně odkazovat na zprostředkovatelů identity, poskytovatelů atribut a atribut ověřovatele, když jsme nechcete, aby k rozlišení mezi vlastní specifické funkce.   
+> Používáme také pojem "deklarace identity", protože Azure AD B2C vlastní zásady, které používají architekturu identity Experience Framework, jsou navržené tak, aby se zjednodušila Výměna všech typů informací o digitální identitě bez ohledu na to, zda je příslušný protokol definováno pro ověřování uživatelů nebo načítání atributů.  Podobně používáme pojem "zprostředkovatelé deklarací identity" ke shromáždění informací o zprostředkovatelích identity, poskytovatelích atributů a ověřovatelích atributů, když nechcete rozlišovat mezi jejich konkrétními funkcemi.   
 
-Proto se řídí, jak informace o identitě se vyměňují mezi předávající stranu, identity a poskytovatelé atribut a atribut ověřovatele. Tím i určovat, které identity a atribut poskytovatelé jsou požadovány pro předávající stranu ověřování. By měly být považovány jazyka specifického pro doménu (DSL), to znamená, že počítač jazyk, který má specializované pro určité domény aplikace s dědičnosti, *Pokud* příkazy, polymorfismu.
+Proto určují, jak se vyměňují informace o identitě mezi předávající stranou, zprostředkovatelem identity a atributů a ověřovateli atributů. Řídí, která zprostředkovatelé identity a atributů se vyžadují pro ověřování předávající strany. Měly by se brát v úvahu jako jazyk specifického pro doménu (DSL), což je jazyk počítače, který je specializovaný na určitou doménu aplikace s děděním, *Pokud* se jedná o příkazy, polymorfismus.
 
-Tyto zásady představují, který je strojově čitelný část TF konstrukce v Azure AD B2C vlastní zásady, které využívá architekturu rozhraní identit. Patří mezi ně všechny provozní údaje, včetně metadat zprostředkovatelů deklarací identity a technické profily, definice schémat deklarace identity, funkce transformace deklarací identity a uživatel cesty, které jsou vyplněna usnadnit provozní Orchestrace a automatizace.  
+Tyto zásady představují strojově čitelnou část konstruktoru TF v Azure AD B2C vlastní zásady využívající architekturu prostředí identity. Zahrnují všechny provozní údaje, včetně metadat zprostředkovatelů deklarací identity a technických profilů, definic schémat deklarací identity, transformačních funkcí deklarací identity a cest uživatelů, které jsou vyplněny k usnadnění provozní Orchestrace a automatizace.  
 
-Se považuje za *živé dokumenty* vzhledem k tomu, že existuje šance, který mění jejich obsah v čase týkající se aktivní účastníky deklarované v zásadách. Je také potenciál, který může změnit podmínky a ujednání se účastníka.  
+Předpokládá se, že se jedná o *živý dokument* , protože je velmi pravděpodobné, že se jejich obsah v průběhu času týká aktivních účastníků deklarovaných v zásadách. Je také možné, že se podmínky a ujednání pro účastníka mohou změnit.  
 
-Nastavení federace a údržby výrazně zjednodušuje různé deklarace zprostředkovatelé/ověřovatele připojení nebo ponechte (komunity reprezentována) pro stínění předávající strany z probíhající rekonfigurací důvěryhodnosti a připojení k sadě zásad.
+Nastavení a údržba federace se značně zjednodušují ochranou předávající strany od probíhajících konfigurací vztahů důvěryhodnosti a připojení, protože různí poskytovatelé deklarací identity a Ověřovač se připojují nebo nechávají (komunita reprezentovaná) sadou zásad.
 
-Zajištění lepší interoperability je další velkou výzvou. Další deklarace identity zprostředkovatelé/ověřovatele musí být integrovány, protože předávající strany je nepravděpodobné, že podporují všechny nezbytné protokoly. Vlastní zásady služby Azure AD B2C tento problém vyřešit tak, že podpora standardních oborových protokolů a použití konkrétního uživatele cesty do transponovat žádostí přijímající strany a atribut zprostředkovatelů nepodporují stejný protokol.  
+Interoperabilita je další důležitou výzvou. Další zprostředkovatelé nebo ověřovatele deklarací identity musí být integrováni, protože předávající strany pravděpodobně nebudou podporovat všechny potřebné protokoly. Azure AD B2C vlastní zásady tento problém řeší podporou standardních protokolů a použitím konkrétních cest uživatelů k předávání požadavků, když předávající strany a zprostředkovatelé atributů nepodporují stejný protokol.  
 
-Cesty uživatele patří protokol profily a metadata, která slouží k vložení "na lince" vzájemná funkční spolupráce mezi předávající strany a ostatní účastníky. Existují také provozní runtime pravidla, která se použijí u zprávy s informacemi o exchange žádost/odpověď identity pro vynucování dodržování předpisů pomocí zásad publikované jako součást specifikaci TF. Cílem cesty uživatele je klíčem k přizpůsobení prostředí pro zákazníky. Také přibližuje o tom, jak systém funguje na úrovni protokolu.
+Mezi cesty uživatelů patří profily protokolu a metadata, která se používají na domovní spolupráci mezi předávající stranou a dalšími účastníky. K dispozici jsou také pravidla provozního běhu, která se používají pro zprávy žádosti a odpovědi výměny informací o identitě pro vynucování dodržování zásad publikovaných v rámci specifikace TF. Nápad uživatelských cest je klíč k přizpůsobení prostředí pro zákazníky. Také se tím uvolňuje, jak systém funguje na úrovni protokolu.
 
-Na tomto základě předávající strany aplikací a portály můžete, v závislosti na kontextu, vyvolat Azure AD B2C vlastní zásady, které využívají architekturu rozhraní identit název určité zásady a získat přesné informace o chování a exchange chtějí bez jakýchkoli muss, fuss nebo rizika.
+Na tomto základě můžou aplikace a portály předávající strany v závislosti na jejich kontextu vyvolat Azure AD B2C vlastní zásady, které využívají architekturu prostředí identit, které předávají název konkrétní zásady a budou se přesně vyměňovat s chováním a informacemi. chtějí bez jakéhokoli muss, Fuss nebo rizika.

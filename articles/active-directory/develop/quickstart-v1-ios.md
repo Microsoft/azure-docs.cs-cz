@@ -1,5 +1,5 @@
 ---
-title: Sestavení aplikace pro iOS, která se pro přihlášení integruje do Azure AD a volá chráněná rozhraní API pomocí OAuth 2.0 | Microsoft Docs
+title: Vytvoření aplikace pro iOS integrované s Azure AD pro přihlášení pomocí OAuth 2,0 | Microsoft Docs
 description: Zjistěte, jak přihlásit uživatele a zavolat rozhraní API pro Microsoft Graph z aplikace pro iOS.
 services: active-directory
 documentationcenter: ios
@@ -18,14 +18,14 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: brandwe
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d6274557ede35d7640eba37e5777cb0cb67d459a
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: 8a82a7cad9b9176589824b6febb5cfdde89fce8a
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66497087"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68380870"
 ---
-# <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-app"></a>Rychlý start: Přihlašování uživatelů a volání rozhraní Microsoft Graph API z aplikace pro iOS
+# <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-app"></a>Rychlý start: Přihlaste se uživatelům a zavolejte rozhraní API pro Microsoft Graph z aplikace pro iOS.
 
 [!INCLUDE [active-directory-develop-applies-v1-adal](../../../includes/active-directory-develop-applies-v1-adal.md)]
 
@@ -52,7 +52,7 @@ Než začnete, musíte splnit následující požadavky:
 > [!TIP]
 > Vyzkoušejte [portál pro vývojáře](https://identity.microsoft.com/Docs/iOS) a zprovozněte Azure AD během pár minut. Portál pro vývojáře vás provede procesem registrace aplikace a integrace Azure AD do kódu. Jakmile skončíte, budete mít jednoduchou aplikaci, která může ověřovat uživatele v tenantovi, a back-end, který může přijímat tokeny a provádět ověření.
 
-## <a name="step-1-determine-what-your-redirect-uri-is-for-ios"></a>Krok 1: Určit, jaké vaše přesměrování je identifikátor URI pro iOS
+## <a name="step-1-determine-what-your-redirect-uri-is-for-ios"></a>Krok 1: Určení identifikátoru URI přesměrování pro iOS
 
 Pokud chcete své aplikace v určitých scénářích jednotného přihlašování spouštět zabezpečeně, musíte *identifikátor URI pro přesměrování* vytvořit v konkrétním formátu. Identifikátor URI pro přesměrování slouží k zajištění, že se tokeny vrátí do správné aplikace, která o ně požádala.
 
@@ -69,20 +69,20 @@ Příklad tohoto kódu QuickStart:
 
 ***msquickstart://com.microsoft.azureactivedirectory.samples.graph.QuickStart***
 
-## <a name="step-2-register-the-directorysearcher-application"></a>Krok 2: Registrace aplikace DirectorySearcher
+## <a name="step-2-register-the-directorysearcher-application"></a>Krok 2: Registrace aplikace rámci
 
 Když chcete aplikaci nastavit tak, aby získávala tokeny, musíte ji zaregistrovat v tenantovi Azure AD a udělit mu oprávnění pro přístup k rozhraní Azure AD Graph API.
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. Na horním panelu vyberte svůj účet. Ze seznamu **Directory** vyberte tenanta Active Directory, do kterého chcete aplikaci zaregistrovat.
 3. V levém navigačním podokně vyberte **Všechny služby** a potom vyberte **Azure Active Directory**.
-4. Vyberte **registrace aplikací**a pak vyberte **registrace nové**.
-5. Postupujte podle výzev a vytvořte novou klientskou aplikaci.
+4. Vyberte **Registrace aplikací**a pak vyberte **Nová registrace**.
+5. Při vytváření nové klientské aplikace postupujte podle pokynů.
     * **Název** je název aplikace, který aplikaci popisuje koncovým uživatelům.
-    * **Identifikátor URI pro přesměrování** je schéma a kombinace řetězců, které Azure AD používá k vrácení odpovědí týkajících se tokenů. Zadejte hodnotu, která je specifická pro vaši aplikaci a je založená na předchozí informaci o identifikátoru URI pro přesměrování. Také vyberte **veřejným klientem (mobilních a desktopových)** z rozevíracího seznamu.
+    * **Identifikátor URI pro přesměrování** je schéma a kombinace řetězců, které Azure AD používá k vrácení odpovědí týkajících se tokenů. Zadejte hodnotu, která je specifická pro vaši aplikaci a je založená na předchozí informaci o identifikátoru URI pro přesměrování. Z rozevíracího seznamu také vyberte možnost **veřejný klient (mobilní zařízení a plocha)** .
 6. Po dokončení registrace přiřadí Azure AD aplikaci jedinečné ID aplikace. Tuto hodnotu budete potřebovat v následujících částech, proto si ji z karty aplikace zkopírujte.
-7. Z **oprávnění k rozhraní API** stránce **přidat oprávnění**. Uvnitř **vyberte rozhraní API** vyberte ***Microsoft Graphu***.
-8. V části **delegovaná oprávnění**, vyberte oprávnění **User.Read**, pak klikněte na tlačítko **přidat** uložte. Toto oprávnění nastaví aplikaci, aby za uživatele dotazovala rozhraní Azure AD Graph API.
+7. Na stránce **oprávnění rozhraní API** vyberte **Přidat oprávnění**. V rámci **výběru rozhraní API** vyberte ***Microsoft Graph***.
+8. V části **delegovaná oprávnění**vyberte oprávnění **uživatel. číst**a pak klikněte na tlačítko **Přidat** k uložení. Toto oprávnění nastaví aplikaci, aby za uživatele dotazovala rozhraní Azure AD Graph API.
 
 ## <a name="step-3-install-and-configure-adal"></a>Krok 3: Instalace a konfigurace ADAL
 
@@ -117,7 +117,7 @@ Když už máte v Azure AD aplikaci, můžete nainstalovat knihovnu ADAL a zapsa
     * `clientId` je ID klienta vaší aplikace, které jste zkopírovali z webu Azure Portal.
     * `redirectUri` je adresa URL pro přesměrování, kterou jste na webu Azure Portal zaregistrovali.
 
-## <a name="step-4-use-adal-to-get-tokens-from-azure-ad"></a>Krok 4: Použití knihovny ADAL k získání tokenů z Azure AD
+## <a name="step-4-use-adal-to-get-tokens-from-azure-ad"></a>Krok 4: Získání tokenů z Azure AD pomocí ADAL
 
 Základním principem knihovny ADAL je, že kdykoli aplikace potřebuje přístupový token, jednoduše zavolá příkaz CompletionBlock `+(void) getToken :` a ADAL provede zbytek.
 

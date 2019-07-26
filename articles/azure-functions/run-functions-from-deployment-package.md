@@ -1,65 +1,65 @@
 ---
-title: Spouštění Azure Functions z balíčku | Dokumentace Microsoftu
-description: Máte modul runtime Azure Functions spouštět funkce tak, že připojí soubor balíčku nasazení, který obsahuje soubory projektu aplikace funkce.
+title: Spuštění Azure Functions z balíčku | Microsoft Docs
+description: Modul runtime Azure Functions spouští vaše funkce připojením souboru balíčku pro nasazení, který obsahuje soubory projektu Function App.
 services: functions
 documentationcenter: na
 author: ggailey777
-manager: jeconnoc
+manager: gwallace
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 02/26/2019
+ms.date: 07/15/2019
 ms.author: glenga
-ms.openlocfilehash: 83a98a493068d3427e34f3ac2ca5c24baa48dda1
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: 96dbe9b15831a349afc0e68c15c39c1cb31b1032
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67508243"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68444068"
 ---
-# <a name="run-your-azure-functions-from-a-package-file"></a>Spouštění Azure Functions ze souboru balíčku
+# <a name="run-your-azure-functions-from-a-package-file"></a>Spuštění Azure Functions ze souboru balíčku
 
-> [!NOTE]
-> Funkce popsané v tomto článku není k dispozici pro funkce aplikace běžící na Linuxu v [plán služby App Service](functions-scale.md#app-service-plan).
+V Azure můžete spouštět funkce přímo ze souboru balíčku pro nasazení ve vaší aplikaci Function App. Druhou možností je nasadit soubory do `d:\home\site\wwwroot` adresáře aplikace Function App.
 
-V Azure můžete spustit přímo ze souboru balíčku nasazení vašich funkcí ve své aplikaci function app. Další možností je k nasazení svých souborů v `d:\home\site\wwwroot` adresáře aplikace function App.
+Tento článek popisuje výhody spouštění funkcí z balíčku. Také ukazuje, jak povolit tuto funkci ve vaší aplikaci Function App.
 
-Tento článek popisuje výhody provozu vaší funkce z balíčku. Také ukazuje, jak tuto funkci povolit ve své aplikaci function app.
+> [!IMPORTANT]
+> Při nasazení vašich funkcí do aplikace Functions pro Linux v [plánu Premium](functions-scale.md#premium-plan)byste měli vždy spustit ze souboru balíčku a [publikovat aplikaci pomocí Azure Functions Core Tools](functions-run-local.md#project-file-deployment).
 
-## <a name="benefits-of-running-from-a-package-file"></a>Výhody spuštění ze souboru balíčku
+## <a name="benefits-of-running-from-a-package-file"></a>Výhody spouštění ze souboru balíčku
   
-Existuje více výhod ke spuštění ze souboru balíčku:
+Existuje několik výhod, které je potřeba spustit ze souboru balíčku:
 
-+ Snižuje riziko problémy se zamykáním kopírování souborů.
-+ Je možné nasadit do produkčního prostředí aplikace (s restartem).
-+ Může být některé soubory, které běží ve vaší aplikaci.
-+ Zlepšuje výkon [nasazení Azure Resource Manageru](functions-infrastructure-as-code.md).
-+ Může snížit dobu studený start, zejména pro funkce jazyka JavaScript pomocí stromů balíček npm velké.
++ Snižuje riziko problémů se zámkem při kopírování souborů.
++ Dá se nasadit do produkční aplikace (s restartováním).
++ Můžete si být jisti soubory, které jsou spuštěny ve vaší aplikaci.
++ Zlepšuje výkon [Azure Resource Manager nasazení](functions-infrastructure-as-code.md).
++ Může snížit dobu studených časů, zejména pro funkce JavaScriptu s velkými stromy balíčků npm.
 
-Další informace najdete v tématu [toto oznámení](https://github.com/Azure/app-service-announcements/issues/84).
+Další informace najdete v [tomto oznámení](https://github.com/Azure/app-service-announcements/issues/84).
 
-## <a name="enabling-functions-to-run-from-a-package"></a>Povolení funkce ke spuštění z balíčku
+## <a name="enabling-functions-to-run-from-a-package"></a>Povolení spouštění funkcí z balíčku
 
-Chcete-li aplikace function app na spuštění z balíčku, stačí přidat `WEBSITE_RUN_FROM_PACKAGE` nastavení na vaše nastavení aplikace function app. `WEBSITE_RUN_FROM_PACKAGE` Nastavení může mít jednu z následujících hodnot:
+Pokud chcete povolit spouštění aplikace Function App z balíčku, stačí přidat `WEBSITE_RUN_FROM_PACKAGE` nastavení do nastavení aplikace Function App. `WEBSITE_RUN_FROM_PACKAGE` Nastavení může mít jednu z následujících hodnot:
 
-| Hodnota  | Popis  |
+| Value  | Popis  |
 |---------|---------|
-| **`1`**  | Doporučuje se pro funkce aplikace běžící na Windows. Spustit ze souboru balíčku v `d:\home\data\SitePackages` složky vaší aplikace function App. Pokud není [nasazení zip nasaďte](#integration-with-zip-deployment), tato možnost vyžaduje složku, kterou chcete mít také soubor s názvem `packagename.txt`. Tento soubor obsahuje pouze název souboru balíčku ve složce, bez jakékoli prázdné znaky. |
-|**`<url>`**  | Umístění souboru konkrétního balíčku, kterou chcete spustit. Při použití úložiště objektů Blob, byste měli používat privátní kontejneru s [sdíleného přístupového podpisu (SAS)](../vs-azure-tools-storage-manage-with-storage-explorer.md#generate-a-sas-in-storage-explorer) povolit modul runtime Functions pro přístup k balíčku. Můžete použít [Průzkumníka služby Azure Storage](../vs-azure-tools-storage-manage-with-storage-explorer.md) k nahrání balíčku souborů do účtu Blob storage.         |
+| **`1`**  | Doporučuje se pro aplikace Function App běžící v systému Windows. Spusťte ze souboru balíčku ve `d:\home\data\SitePackages` složce aplikace Function App. Pokud nedojde k [nasazení pomocí nástroje zip Deploy](#integration-with-zip-deployment), tato možnost vyžaduje, aby složka měla také soubor `packagename.txt`s názvem. Tento soubor obsahuje pouze název souboru balíčku ve složce bez prázdných znaků. |
+|**`<url>`**  | Umístění konkrétního souboru balíčku, který chcete spustit. Pokud používáte úložiště objektů blob, měli byste použít privátní kontejner se [sdíleným přístupovým podpisem (SAS)](../vs-azure-tools-storage-manage-with-storage-explorer.md#generate-a-sas-in-storage-explorer) , aby modul runtime Functions mohl přistupovat k balíčku. Pomocí [Průzkumník služby Azure Storage](../vs-azure-tools-storage-manage-with-storage-explorer.md) můžete odeslat soubory balíčku do svého účtu BLOB Storage.         |
 
 > [!CAUTION]
-> Při spuštění aplikace function app na Windows, poskytuje možnost externí adresa URL horší výkon studený start. Při nasazování aplikace function app na Windows, měli byste nastavit `WEBSITE_RUN_FROM_PACKAGE` k `1` a publikujete pomocí nasazení zip.
+> Při spuštění aplikace Function App ve Windows znamená možnost externí adresy URL horší výkon při studeném startu. Při nasazování aplikace Function App do Windows byste měli nastavit `WEBSITE_RUN_FROM_PACKAGE` `1` a publikovat s nasazením zip.
 
-Následující obrázek znázorňuje aplikaci function app nakonfigurovaný ke spouštění ze souboru ZIP hostované ve službě Azure Blob storage:
+V následujícím příkladu je aplikace Function App nakonfigurovaná tak, aby běžela ze souboru. zip hostovaného ve službě Azure Blob Storage:
 
-![Nastavení aplikace, které WEBSITE_RUN_FROM_ZIP](./media/run-functions-from-deployment-package/run-from-zip-app-setting-portal.png)
+![Nastavení aplikace WEBSITE_RUN_FROM_ZIP](./media/run-functions-from-deployment-package/run-from-zip-app-setting-portal.png)
 
 > [!NOTE]
-> V současné době jsou podporovány pouze soubory balíčku .zip.
+> V současné době jsou podporovány pouze soubory balíčku. zip.
 
-## <a name="integration-with-zip-deployment"></a>Integrace s nasazení zip
+## <a name="integration-with-zip-deployment"></a>Integrace s nasazením zip
 
-[Zazipovat nasazení][Zip deployment for Azure Functions] je funkce služby Azure App Service, který vám umožní nasadit váš projekt aplikace funkcí na `wwwroot` adresáře. Projekt je zabalena jako soubor ZIP nasazení. Stejná rozhraní API je možné nasadit balíček sady `d:\home\data\SitePackages` složky. S `WEBSITE_RUN_FROM_PACKAGE` hodnotu nastavení aplikace `1`, nasazení zip rozhraní API, zkopírujte balíček sady `d:\home\data\SitePackages` složky namísto extrahování souborů do `d:\home\site\wwwroot`. Také vytvoří `packagename.txt` souboru. Aplikace function app je spusťte z balíčku po restartování počítače a `wwwroot` jen pro čtení. Další informace o nasazení zip najdete v tématu [Zip nasazení pro službu Azure Functions](deployment-zip-push.md).
+[Nasazení zip][Zip deployment for Azure Functions] je funkce Azure App Service, která umožňuje nasadit projekt Function App do `wwwroot` adresáře. Projekt je zabalen jako soubor nasazení. zip. Stejná rozhraní API je možné použít k nasazení balíčku do `d:\home\data\SitePackages` složky. S hodnotou nastavení aplikace nakopírují rozhraní API pro nasazení `d:\home\site\wwwroot`zip balíček do složkymístoextrakcesouborůdo.`d:\home\data\SitePackages` `WEBSITE_RUN_FROM_PACKAGE` `1` Zároveň vytvoří `packagename.txt` soubor. Aplikace Function App se pak spustí z balíčku po restartování a `wwwroot` bude jen pro čtení. Další informace o nasazení zip najdete v tématu [nasazení zip pro Azure Functions](deployment-zip-push.md).
 
 ## <a name="adding-the-websiterunfrompackage-setting"></a>Přidání nastavení WEBSITE_RUN_FROM_PACKAGE
 
@@ -67,12 +67,12 @@ Následující obrázek znázorňuje aplikaci function app nakonfigurovaný ke s
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
-- Umožňuje spustit z balíčku `wwwroot` jen pro čtení, takže dojde k chybě při zapisování souborů do tohoto adresáře.
-- Cíl a gzip formáty nejsou podporovány.
-- Tato funkce není compose s místní mezipaměti.
-- Za účelem vylepšení výkonu úplné spuštění, použijte možnosti místního Zip (`WEBSITE_RUN_FROM_PACKAGE`= 1).
+- Příkaz spustit z balíčku `wwwroot` zpřístupňuje jen pro čtení, takže při zápisu souborů do tohoto adresáře se zobrazí chyba.
+- Formáty tar a gzip se nepodporují.
+- Tato funkce nevytváří místní mezipaměť.
+- Pro zlepšení výkonu pro studený start použijte místní možnost zip (`WEBSITE_RUN_FROM_PACKAGE`= 1).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 > [Průběžné nasazování se službou Azure Functions](functions-continuous-deployment.md)

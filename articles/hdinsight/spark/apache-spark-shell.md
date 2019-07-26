@@ -1,73 +1,73 @@
 ---
-title: Použití prostředí interaktivní Sparku v Azure HDInsight
-description: Interaktivní prostředí Sparku poskytuje proces pro čtení spusťte print pro spouštění Spark příkazy jeden po druhém a výsledky vidíme.
+title: Používání interaktivního prostředí Spark v Azure HDInsight
+description: Interaktivní prostředí Spark nabízí proces čtení a spouštění pro spouštění příkazů Spark po jednom a prohlížení výsledků.
 ms.service: hdinsight
-author: maxluk
-ms.author: maxluk
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/09/2018
-ms.openlocfilehash: 9044ed3ad9cf9ffa2f54d130bb50b37df121b86f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7aac2812787a7c14d99377754a4f85e699ef3f09
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64696806"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68441895"
 ---
-# <a name="run-apache-spark-from-the-spark-shell"></a>Apache Spark spouštět z prostředí Sparku
+# <a name="run-apache-spark-from-the-spark-shell"></a>Spuštění Apache Spark z prostředí Spark
 
-Interaktivní [Apache Spark](https://spark.apache.org/) poskytuje prostředí pro spouštění Spark příkazy jeden po druhém a výsledky vidíme dispozici prostředí REPL (čtení spuštění tisk smyčky). Tento proces je užitečný pro vývoj a ladění. Spark poskytuje jeden prostředí pro každý z jeho podporované jazyky: Scala, Python a R.
+Interaktivní [Apache Spark](https://spark.apache.org/) shell poskytuje prostředí REPL (čtení – spouštění-tisk) pro spouštění příkazů Spark po jednom a prohlížení výsledků. Tento proces je užitečný pro vývoj a ladění. Spark poskytuje jedno prostředí pro každý z podporovaných jazyků: Scala, Python a R.
 
-## <a name="get-to-an-apache-spark-shell-with-ssh"></a>Přístup k prostředí Apache Sparku pomocí protokolu SSH
+## <a name="get-to-an-apache-spark-shell-with-ssh"></a>Získat Apache Spark prostředí pomocí SSH
 
-Připojení k primárnímu hlavnímu uzlu clusteru pomocí SSH pro přístup prostředí Apache Spark v HDInsight:
+Přístup k prostředí Apache Spark v HDInsight připojením k primárnímu hlavnímu uzlu clusteru pomocí SSH:
 
      ssh <sshusername>@<clustername>-ssh.azurehdinsight.net
 
-Získáte úplný příkaz SSH pro váš cluster na webu Azure Portal:
+Úplný příkaz SSH pro váš cluster můžete získat z Azure Portal:
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-2. Přejděte do podokna pro váš cluster HDInsight Spark.
+2. Přejděte do podokna pro cluster HDInsight Spark.
 3. Vyberte Secure Shell (SSH).
 
-    ![HDInsight podokně webu Azure Portal](./media/apache-spark-shell/hdinsight-spark-blade.png)
+    ![Podokno HDInsight v Azure Portal](./media/apache-spark-shell/hdinsight-spark-blade.png)
 
-4. Zkopírujte zobrazený příkazu SSH a spusťte v terminálu.
+4. Zkopírujte zobrazený příkaz SSH a spusťte ho v terminálu.
 
-    ![HDInsight SSH podokně webu Azure Portal](./media/apache-spark-shell/hdinsight-spark-ssh-blade.png)
+    ![Podokno SSH protokolu HDInsight v Azure Portal](./media/apache-spark-shell/hdinsight-spark-ssh-blade.png)
 
-Podrobnosti o použití SSH pro připojení k HDInsight najdete v tématu [použití SSH se službou HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
+Podrobnosti o použití SSH pro připojení ke službě HDInsight najdete v tématu [Použití SSH se službou HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
-## <a name="run-an-apache-spark-shell"></a>Spusťte prostředí Apache Sparku
+## <a name="run-an-apache-spark-shell"></a>Spuštění prostředí Apache Spark
 
-Spark poskytuje prostředí pro Scala (spark-shell), Pythonu (pyspark) a R (sparkR). V relaci SSH na hlavní uzel clusteru HDInsight zadejte jeden z následujících příkazů:
+Spark nabízí prostředí pro Scala (Spark-Shell), Python (pyspark) a R (Spark). V relaci SSH v hlavním uzlu clusteru HDInsight zadejte jeden z následujících příkazů:
 
     ./bin/spark-shell
     ./bin/pyspark
     ./bin/sparkR
 
-Nyní můžete zadat příkazy Sparku v příslušném jazyce.
+Nyní můžete zadat příkazy Spark v příslušném jazyce.
 
 ## <a name="sparksession-and-sparkcontext-instances"></a>Instance SparkSession a SparkContext
 
-Ve výchozím nastavení při spuštění prostředí Sparku instance SparkSession a SparkContext jsou automaticky vytvořeny za vás.
+Ve výchozím nastavení platí, že když spustíte prostředí Spark, instance SparkSession a SparkContext se automaticky vytvoří.
 
-Chcete-li získat přístup k instanci SparkSession, zadejte `spark`. Chcete-li získat přístup k instanci SparkContext, zadejte `sc`.
+Pokud chcete získat přístup k instanci SparkSession `spark`, zadejte. Pokud chcete získat přístup k instanci SparkContext `sc`, zadejte.
 
-## <a name="important-shell-parameters"></a>Parametry důležité prostředí
+## <a name="important-shell-parameters"></a>Důležité parametry prostředí
 
-Příkaz prostředí Sparku (`spark-shell`, `pyspark`, nebo `sparkR`) podporuje mnoho parametrů příkazového řádku. Pokud chcete zobrazit úplný seznam parametrů, spusťte prostředí Sparku s přepínačem `--help`. Všimněte si, že některé z těchto parametrů může platit pouze pro `spark-submit`, která zabalí prostředí Spark.
+Příkaz Spark Shell (`spark-shell`, `pyspark`nebo `sparkR`) podporuje mnoho parametrů příkazového řádku. Pokud chcete zobrazit úplný seznam parametrů, spusťte prostředí Spark s přepínačem `--help`. Všimněte si, že některé z těchto parametrů se mohou `spark-submit`vztahovat pouze na, které prostředí Spark balí.
 
 | – přepínač | description | Příklad |
 | --- | --- | --- |
-| --hlavní MASTER_URL | Určuje hlavní adresy URL. V HDInsight, tato hodnota je vždy `yarn`. | `--master yarn`|
-| --jars JAR_LIST | Čárkami oddělený seznam místní kromě souborů JAR mají zobrazit na ovladač a prováděcí modul třídám. V HDInsight se tento seznam skládá z cesty na výchozí systém souborů v Azure Storage nebo Azure Data Lake Storage. | `--jars /path/to/examples.jar` |
-| – balíčky MAVEN_COORDS | Čárkami oddělený seznam souřadnice maven kromě souborů JAR mají zobrazit na ovladač a prováděcí modul třídám. Vyhledá maven místní úložiště a pak centrální maven, pak žádné další vzdálených úložištích zadaným `--repositories`. Formát pro souřadnice *groupId*:*artifactId*:*verze*. | `--packages "com.microsoft.azure:azure-eventhubs:0.14.0"`|
-| SEZNAM py – soubory | Pro jazyk Python pouze čárkou oddělený seznam souborů .py, .zip nebo .egg umístit na PYTHONPATH. | `--pyfiles "samples.py"` |
+| --Master MASTER_URL | Určuje hlavní adresu URL. Ve službě HDInsight je tato hodnota vždy `yarn`. | `--master yarn`|
+| --JAR JAR_LIST | Seznam místních jar oddělený čárkami, který se má zahrnout do ovladačů a prováděcích tříd V HDInsight se tento seznam skládá z cest k výchozímu systému souborů ve Azure Storage nebo Data Lake Storage. | `--jars /path/to/examples.jar` |
+| --balíčky MAVEN_COORDS | Čárkami oddělený seznam souřadnic mavenů jar, které se mají zahrnout do ovladače a prováděcích tříd Vyhledá místní úložiště Maven a potom Maven střed a pak všechna další vzdálená úložiště, která jsou `--repositories`určená pomocí. Formát souřadnic je *GroupID*:*artifactId*:*Version*. | `--packages "com.microsoft.azure:azure-eventhubs:0.14.0"`|
+| --py-seznam souborů | Jenom pro Python se seznam souborů. zip,. vaječný nebo. py oddělený čárkami, které se mají umístit na PYTHONPATH. | `--pyfiles "samples.py"` |
 
 ## <a name="next-steps"></a>Další postup
 
-- Zobrazit [Úvod k Apache Sparku v Azure HDInsight](apache-spark-overview.md) Přehled.
-- Zobrazit [vytvořit cluster Apache Spark v Azure HDInsight](apache-spark-jupyter-spark-sql.md) pro práci s clustery Spark a SparkSQL.
-- Zobrazit [novinky strukturovaného streamu Apache Spark?](apache-spark-streaming-overview.md) pro psaní aplikací, které zpracovávají datové proudy dat pomocí Sparku.
+- Přehled najdete v tématu [Úvod do Apache Spark ve službě Azure HDInsight](apache-spark-overview.md) .
+- Pokud chcete pracovat s clustery Spark a SparkSQL, přečtěte si téma [Vytvoření clusteru Apache Spark ve službě Azure HDInsight](apache-spark-jupyter-spark-sql.md) .
+- Podívejte [se, co je Apache Spark strukturované streamování?](apache-spark-streaming-overview.md) pro psaní aplikací, které zpracovávají streamovaná data pomocí Sparku.

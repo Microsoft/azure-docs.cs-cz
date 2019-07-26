@@ -1,238 +1,256 @@
 ---
-title: Sada IoT vzdálené monitorování a oznámení pomocí Azure Logic Apps | Dokumentace Microsoftu
-description: Pomocí Azure Logic Apps pro IoT teploty monitorování ve službě IoT hub a automaticky odesílat e-mailová oznámení do poštovní schránky pro zjistili anomálie.
+title: Vzdálené monitorování a oznámení IoT pomocí Azure Logic Apps | Microsoft Docs
+description: Použijte Azure Logic Apps pro monitorování teploty IoT ve službě IoT Hub a automaticky zasílejte e-mailová oznámení do vaší poštovní schránky pro všechny zjištěné anomálie.
 author: robinsh
-keywords: IOT iot oznámení monitorování monitorování teploty iot
+keywords: monitorování IoT, oznámení IoT, monitorování teploty IoT
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.tgt_pltfrm: arduino
-ms.date: 04/19/2019
+ms.date: 07/18/2019
 ms.author: robinsh
-ms.openlocfilehash: 26637468f44e12f7ad66f907e0f6be3d907e578f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ad1fcb67704e79f5aef62a59604e47f477804405
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64719324"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68385714"
 ---
-# <a name="iot-remote-monitoring-and-notifications-with-azure-logic-apps-connecting-your-iot-hub-and-mailbox"></a>Sada IoT vzdálené monitorování a oznámení pomocí Azure Logic Apps propojení vaší služby IoT hub a poštovní schránky
+# <a name="iot-remote-monitoring-and-notifications-with-azure-logic-apps-connecting-your-iot-hub-and-mailbox"></a>Vzdálené monitorování a oznámení IoT pomocí Azure Logic Apps připojení ke službě IoT Hub a poštovní schránce
 
-![Diagram začátku do konce](media/iot-hub-monitoring-notifications-with-azure-logic-apps/iot-hub-e2e-logic-apps.png)
+![Komplexní diagram](media/iot-hub-monitoring-notifications-with-azure-logic-apps/iot-hub-e2e-logic-apps.png)
 
 [!INCLUDE [iot-hub-get-started-note](../../includes/iot-hub-get-started-note.md)]
 
-[Služba Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/) vám může pomoct Orchestrace pracovních postupů napříč místním a cloudovým službám, jeden nebo více podniky a v různých protokolů. Aplikace logiky začíná triggerem, který je následována jednu nebo více akcí, které mohou být sekvencování pomocí integrovaných ovládacích prvků, jako je například podmínky a iterátory. Díky této flexibilitě jsou Logic Apps ideální řešení IoT pro monitorování scénáře IoT. Například doručení telemetrických dat ze zařízení na koncový bod služby IoT Hub můžete zahájit pracovních postupů aplikace logiky do skladu dat v objektu blob služby Azure Storage, odeslání výstrah emailů upozornit data anomálií, naplánování návštěvu technika, pokud se zařízení ohlásí chybu , a tak dále.
+[Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/) vám může pomáhat při organizování pracovních postupů v místních i cloudových službách, v jednom nebo několika podnicích a v různých protokolech. Aplikace logiky začíná triggerem, který potom následuje jednou nebo více akcí, které lze sekvencovat pomocí integrovaných ovládacích prvků, jako jsou podmínky a iterátory. Tato flexibilita přináší Logic Apps ideální řešení IoT pro scénáře monitorování IoT. Například doručení dat telemetrie ze zařízení do IoT Hubho koncového bodu může iniciovat pracovní postupy aplikace logiky, které budou skladovat data v objektu blob Azure Storage, posílat e-mailová upozornění a upozorňovat na anomálie v datech, naplánovat technika, jestli zařízení hlásí chybu. a tak dále.
 
 ## <a name="what-you-learn"></a>Co se naučíte
 
-Zjistíte, jak vytvořit aplikaci logiky, která propojuje službu IoT hub a poštovní schránky pro monitorování teploty a oznámení.
+Naučíte se, jak vytvořit aplikaci logiky, která připojuje vaše centrum IoT a vaši poštovní schránku k monitorování a upozorňování na teplotu.
 
-Klientský kód běžící na zařízení nastaví vlastnost aplikací, `temperatureAlert`na každý telemetrické zprávy odešle do služby IoT hub. Když klientský kód zjistí teploty vyšší než 30 C, je tato vlastnost nastaví na `true`; jinak, nastaví vlastnost na `false`.
+Klientský kód spuštěný v zařízení nastaví vlastnost aplikace, `temperatureAlert`v každé zprávě telemetrie, kterou odesílá do služby IoT Hub. Když kód klienta detekuje teplotu nad 30 C, nastaví tuto vlastnost na `true`; v opačném případě nastaví vlastnost na. `false`
 
-V tomto tématu nastavíte směrování ve službě IoT hub pro odesílání zpráv, ve kterém `temperatureAlert = true` k Service Bus koncového bodu a nastavit aplikaci logiky, která aktivuje na zprávy přicházející v jiném koncovém bodu služby Service Bus a odesílá e-mailové oznámení.
+Zprávy přicházející ve službě IoT Hub vypadají podobně jako v následujícím příkladu s daty telemetrie obsaženými v těle a `temperatureAlert` vlastností obsaženými ve vlastnostech aplikace (systémové vlastnosti nejsou zobrazeny):
 
-## <a name="what-you-do"></a>Co můžete dělat
+```json
+{
+  "body": {
+    "messageId": 18,
+    "deviceId": "Raspberry Pi Web Client",
+    "temperature": 27.796111770668457,
+    "humidity": 66.77637926438427
+  },
+  "applicationProperties": {
+    "temperatureAlert": "false"
+  }
+}
+```
 
-* Vytvoření oboru názvů služby Service Bus a přidejte do ní fronty Service Bus.
-* Přidání vlastního koncového bodu a pravidel směrování do služby IoT hub pro směrování zpráv, které obsahují teploty upozornění do fronty služby Service Bus.
-* Vytvoření, konfigurace a testování aplikace logiky využívat zprávy z fronty služby Service Bus a odesílat oznámení e-mailů na požadovanou příjemce.
+Další informace o formátu zpráv IoT Hub najdete v tématu [Vytvoření a čtení IoT Hub zpráv](iot-hub-devguide-messages-construct.md).
+
+V tomto tématu nastavíte směrování ve službě IoT Hub pro odesílání zpráv, ve kterých `temperatureAlert` je `true` vlastnost do Service Busho koncového bodu. Pak nastavíte aplikaci logiky, která se spustí na zprávách přicházejících do Service Busho koncového bodu, a pošle vám e-mailové oznámení.
+
+## <a name="what-you-do"></a>Co dělat
+
+* Vytvořte obor názvů Service Bus a přidejte do něj frontu Service Bus.
+* Přidejte vlastní koncový bod a pravidlo směrování do služby IoT Hub, abyste mohli směrovat zprávy, které obsahují upozornění na teplotu Service Bus fronty.
+* Vytvoření, konfigurace a otestování aplikace logiky pro využívání zpráv z fronty Service Bus a odesílání e-mailů s oznámením požadovanému příjemci.
 
 ## <a name="what-you-need"></a>Co potřebujete
 
-* Dokončení [online simulátor Raspberry Pi](iot-hub-raspberry-pi-web-simulator-get-started.md) kurzu nebo jeden z kurzů zařízení; například [Raspberry Pi s node.js](iot-hub-raspberry-pi-kit-node-get-started.md). Ty zahrnují následující požadavky:
+* Dokončete kurz [online simulátoru malin](iot-hub-raspberry-pi-web-simulator-get-started.md) . nebo v některém z kurzů zařízení; například Malina [Pi s Node. js](iot-hub-raspberry-pi-kit-node-get-started.md). Tyto požadavky se týkají následujících požadavků:
 
   * Aktivní předplatné Azure.
-  * Azure IoT hub v rámci vašeho předplatného.
-  * Klientská aplikace běžící na zařízení, která odesílá telemetrické zprávy do služby Azure IoT hub.
+  * Azure IoT Hub v rámci vašeho předplatného.
+  * Klientská aplikace spuštěná na vašem zařízení, která odesílá zprávy telemetrie do služby Azure IoT Hub.
 
-## <a name="create-service-bus-namespace-and-queue"></a>Vytvoření oboru názvů služby Service Bus a fronty
+## <a name="create-service-bus-namespace-and-queue"></a>Vytvořit Service Bus obor názvů a frontu
 
-Vytvořte oboru názvů a frontu Service Bus. Dále v tomto tématu vytvoříte pravidlo směrování ve službě IoT hub pro přímé zprávy, které obsahují teploty upozornění do fronty Service Bus, ve kterém neexistoval, použije aplikace logiky a aktivovat mohlo odesílat e-mailové oznámení.
+Vytvořte oboru názvů a frontu Service Bus. Později v tomto tématu vytvoříte pravidlo směrování ve službě IoT Hub, abyste mohli směrovat zprávy, které obsahují upozornění na teplotu, do fronty Service Bus, kde budou vyzvednuta aplikace logiky a aktivovat ji pro odesílání e-mailových oznámení.
 
 ### <a name="create-a-service-bus-namespace"></a>Vytvoření oboru názvů Service Bus
 
-1. Na [webu Azure portal](https://portal.azure.com/)vyberte **+ vytvořit prostředek** > **integrace** > **služby Service Bus**.
+1. V [Azure Portal](https://portal.azure.com/)vyberte **+ vytvořit** > **Service Bus**pro**integraci** > prostředků.
 
-1. Na **vytvoření oboru názvů** podokně zadejte následující informace:
+1. V podokně **vytvořit obor názvů** zadejte následující informace:
 
-   **Název**: Název oboru názvů služby Service bus. Obor názvů musí být jedinečný v Azure.
+   **Název**: Název oboru názvů služby Service Bus. Obor názvů musí být v rámci Azure jedinečný.
 
-   **Cenová úroveň**: Vyberte **základní** z rozevíracího seznamu. Úroveň Basic je dostatečná pro účely tohoto kurzu.
+   **Cenová úroveň**: Z rozevíracího seznamu vyberte **základní** . Úroveň Basic je pro tento kurz dostačující.
 
-   **Skupina prostředků**: Použijte stejnou skupinu prostředků, která používá službu IoT hub.
+   **Skupina prostředků**: Použijte stejnou skupinu prostředků, kterou používá vaše centrum IoT.
 
-   **Umístění**: Použijte stejné umístění, která používá službu IoT hub.
+   **Umístění**: Použijte stejné umístění, které používá vaše centrum IoT.
 
-   ![Vytvořit obor názvů služby Service bus na webu Azure Portal](media/iot-hub-monitoring-notifications-with-azure-logic-apps/1-create-service-bus-namespace-azure-portal.png)
+   ![Vytvoření oboru názvů služby Service Bus v Azure Portal](media/iot-hub-monitoring-notifications-with-azure-logic-apps/1-create-service-bus-namespace-azure-portal.png)
 
-1. Vyberte **Vytvořit**. Počkejte, až se nasazení dokončí, než budete pokračovat k dalšímu kroku.
+1. Vyberte **Vytvořit**. Než přejdete k dalšímu kroku, počkejte, než se nasazení dokončí.
 
-### <a name="add-a-service-bus-queue-to-the-namespace"></a>Přidat frontu služby Service Bus do oboru názvů
+### <a name="add-a-service-bus-queue-to-the-namespace"></a>Přidání fronty Service Bus do oboru názvů
 
-1. Otevřete obor názvů služby Service Bus. Nejjednodušší způsob, jak získat do oboru názvů služby Service Bus je výběr **skupiny prostředků** v podokně prostředků, vyberte skupinu prostředků a pak ze seznamu prostředků vyberte obor názvů služby Service Bus.
+1. Otevřete Service Bus obor názvů. Nejjednodušší způsob, jak získat Service Bus obor názvů, je vybrat **skupiny prostředků** v podokně prostředek, vybrat skupinu prostředků a potom v seznamu prostředků vybrat Service Bus obor názvů.
 
-1. Na **služby Service Bus Namespace** vyberte **+ fronta**.
+1. V podokně **Service Bus obor názvů** vyberte **+ fronta**.
 
-1. Zadejte název fronty a pak vyberte **vytvořit**. Po úspěšném vytvoření fronty **vytvořit frontu** podokno se zavře.
+1. Zadejte název fronty a pak vyberte **vytvořit**. Po úspěšném vytvoření fronty se zavře podokno **vytvořit frontu** .
 
-   ![Přidat frontu služby Service bus na webu Azure Portal](media/iot-hub-monitoring-notifications-with-azure-logic-apps/create-service-bus-queue.png)
+   ![Přidat frontu služby Service Bus do Azure Portal](media/iot-hub-monitoring-notifications-with-azure-logic-apps/create-service-bus-queue.png)
 
-1. Zpět na **služby Service Bus Namespace** podokně v části **entity**vyberte **fronty**. Otevření fronty služby Service Bus ze seznamu a pak vyberte **zásady sdíleného přístupu** >  **+ přidat**.
+1. Zpátky v podokně **obor názvů Service Bus** v části **entity**vyberte **fronty**. Otevřete Service Busovou frontu ze seznamu a pak vyberte >  **zásady sdíleného přístupu** **+ Přidat**.
 
-1. Zadejte název pro zásadu vrácení **spravovat**a pak vyberte **vytvořit**.
+1. Zadejte název zásady, zaškrtněte **Spravovat**a pak vyberte **vytvořit**.
 
-   ![Přidat zásadu fronty služby Service bus na webu Azure Portal](media/iot-hub-monitoring-notifications-with-azure-logic-apps/2-add-service-bus-queue-azure-portal.png)
+   ![Přidat zásadu fronty služby Service Bus do Azure Portal](media/iot-hub-monitoring-notifications-with-azure-logic-apps/2-add-service-bus-queue-azure-portal.png)
 
-## <a name="add-a-custom-endpoint-and-routing-rule-to-your-iot-hub"></a>Přidání vlastního koncového bodu a pravidlo směrování do služby IoT hub
+## <a name="add-a-custom-endpoint-and-routing-rule-to-your-iot-hub"></a>Přidání vlastního koncového bodu a pravidla směrování do služby IoT Hub
 
-Přidejte vlastní koncový bod pro frontu služby Service Bus do služby IoT hub a vytvořte pravidlo směrování zpráv na přímé zprávy, které obsahují teploty upozornění do tohoto koncového bodu, kde jsou neexistoval, použije ve vaší aplikaci logiky. Pravidlo směrování používá směrování dotazů `temperatureAlert = "true"`, aby předával zprávy založené na hodnotě `temperatureAlert` aplikace nastavenou klienta kódu spuštěného v příslušném zařízení. Další informace najdete v tématu [zprávy směrování pro dotazy podle vlastnosti zprávy](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-routing-query-syntax#message-routing-query-based-on-message-properties).
+Přidáním vlastního koncového bodu pro frontu Service Bus do služby IoT Hub a vytvořením pravidla směrování zpráv můžete směrovat zprávy, které obsahují upozornění na teplotu tohoto koncového bodu, kde budou vyzvednuty vaší aplikací logiky. Pravidlo směrování používá dotaz směrování, `temperatureAlert = "true"`k posílání zpráv na základě hodnoty `temperatureAlert` vlastnosti aplikace nastavené klientským kódem běžícím na zařízení. Další informace najdete v tématu [dotaz na směrování zpráv na základě vlastností zpráv](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-routing-query-syntax#message-routing-query-based-on-message-properties).
 
-### <a name="add-a-custom-endpoint"></a>Přidání vlastního koncového bodu
+### <a name="add-a-custom-endpoint"></a>Přidat vlastní koncový bod
 
-1. Otevřete své Centrum IoT. Nejjednodušší způsob, jak získat pro službu IoT hub je výběr **skupiny prostředků** z podokna prostředků vyberte skupinu prostředků a pak ze seznamu prostředků vyberte své Centrum IoT.
+1. Otevřete Centrum IoT. Nejjednodušší způsob, jak se dostat do služby IoT Hub, je vybrat **skupiny prostředků** v podokně prostředek, vybrat skupinu prostředků a pak ze seznamu prostředků vybrat centrum IoT.
 
-1. V části **zasílání zpráv**vyberte **směrování zpráv**. Na **směrování zpráv** podokně, vyberte **vlastní koncové body** kartu a potom vyberte **+ přidat**. V rozevíracím seznamu vyberte **frontu služby Service bus**.
+1. V části **zasílání zpráv**vyberte **směrování zpráv**. V podokně **směrování zpráv** vyberte kartu **vlastní koncové body** a pak vyberte **+ Přidat**. V rozevíracím seznamu vyberte **fronta služby Service Bus**.
 
-   ![Přidat koncový bod do služby IoT hub na webu Azure Portal](media/iot-hub-monitoring-notifications-with-azure-logic-apps/select-iot-hub-custom-endpoint.png)
+   ![Přidání koncového bodu do služby IoT Hub v Azure Portal](media/iot-hub-monitoring-notifications-with-azure-logic-apps/select-iot-hub-custom-endpoint.png)
 
-1. Na **přidat koncový bod služby Service bus** podokně zadejte následující informace:
+1. V podokně **přidat koncový bod služby Service Bus** zadejte následující informace:
 
    **Název koncového bodu**: Název koncového bodu.
 
-   **Obor názvů služby Service bus**: Vyberte obor názvů, který jste vytvořili.
+   **Obor názvů služby Service Bus**: Vyberte obor názvů, který jste vytvořili.
 
-   **Fronty služby Service bus**: Vyberte fronty, kterou jste vytvořili.
+   **Fronta služby Service Bus**: Vyberte frontu, kterou jste vytvořili.
 
-   ![Přidat koncový bod do služby IoT hub na webu Azure Portal](media/iot-hub-monitoring-notifications-with-azure-logic-apps/3-add-iot-hub-endpoint-azure-portal.png)
+   ![Přidání koncového bodu do služby IoT Hub v Azure Portal](media/iot-hub-monitoring-notifications-with-azure-logic-apps/3-add-iot-hub-endpoint-azure-portal.png)
 
-1. Vyberte **Vytvořit**. Po úspěšném vytvoření koncového bodu se pokračujte k dalšímu kroku.
+1. Vyberte **Vytvořit**. Po úspěšném vytvoření koncového bodu přejděte k dalšímu kroku.
 
-### <a name="add-a-routing-rule"></a>Přidání pravidla směrování
+### <a name="add-a-routing-rule"></a>Přidat pravidlo směrování
 
-1. Zpět na **směrování zpráv** podokně, vyberte **trasy** kartu a potom vyberte **+ přidat**.
+1. Zpátky v podokně **směrování zpráv** vyberte kartu **trasy** a pak vyberte **+ Přidat**.
 
-1. Na **přidejte trasu** podokně zadejte následující informace:
+1. V podokně **Přidat trasu** zadejte následující informace:
 
    **Název**: Název pravidla směrování.
 
    **Koncový bod**: Vyberte koncový bod, který jste vytvořili.
 
-   **Zdroj dat**: Vyberte **zařízení Telemetrických zpráv**.
+   **Zdroj dat**: Vyberte **zprávy telemetrie zařízení**.
 
-   **Směrování dotazů**: Zadejte `temperatureAlert = "true"`.
+   **Dotaz směrování**: Zadejte `temperatureAlert = "true"`.
 
-   ![Přidat pravidlo směrování na webu Azure Portal](media/iot-hub-monitoring-notifications-with-azure-logic-apps/4-add-routing-rule-azure-portal.png)
+   ![Přidat pravidlo směrování do Azure Portal](media/iot-hub-monitoring-notifications-with-azure-logic-apps/4-add-routing-rule-azure-portal.png)
 
-1. Vyberte **Uložit**. Můžete zavřít **směrování zpráv** podokně.
+1. Vyberte **Uložit**. Podokno **směrování zpráv** můžete zavřít.
 
 ## <a name="create-and-configure-a-logic-app"></a>Vytvoření a konfigurace aplikace logiky
 
-V předchozí části Nastavení služby IoT hub pro směrování zpráv obsahující teploty upozornění do fronty služby Service Bus. Nyní nastavíte aplikaci logiky, která sledovat frontu služby Service Bus a odeslat e-mailové oznámení pokaždé, když přidá zprávu do fronty.
+V předchozí části nastavíte službu IoT Hub pro směrování zpráv, které obsahují upozornění na teplotu, do fronty Service Bus. Teď nastavíte aplikaci logiky, která bude monitorovat Service Bus frontu a pošle e-mailové oznámení pokaždé, když se do fronty přidá zpráva.
 
 ### <a name="create-a-logic-app"></a>Vytvoření aplikace logiky
 
-1. Vyberte **vytvořit prostředek** > **integrace** > **aplikace logiky**.
+1. Vyberte **vytvořit prostředek** > **Integration** > **Logic App**.
 
 1. Zadejte následující informace:
 
-   **Název**: Název aplikace logiky.
+   **Název**: Název aplikace logiky
 
-   **Skupina prostředků**: Použijte stejnou skupinu prostředků, která používá službu IoT hub.
+   **Skupina prostředků**: Použijte stejnou skupinu prostředků, kterou používá vaše centrum IoT.
 
-   **Umístění**: Použijte stejné umístění, která používá službu IoT hub.
+   **Umístění**: Použijte stejné umístění, které používá vaše centrum IoT.
 
-   ![Vytvoření aplikace logiky na webu Azure Portal](media/iot-hub-monitoring-notifications-with-azure-logic-apps/create-a-logic-app.png)
+   ![Vytvoření aplikace logiky v Azure Portal](media/iot-hub-monitoring-notifications-with-azure-logic-apps/create-a-logic-app.png)
 
 1. Vyberte **Vytvořit**.
 
 ### <a name="configure-the-logic-app-trigger"></a>Konfigurace triggeru aplikace logiky
 
-1. Otevřete aplikaci logiky. Nejjednodušší způsob, jak získat aplikace logiky je výběr **skupiny prostředků** z podokna prostředků vyberte skupinu prostředků a pak ze seznamu prostředků vyberte svou aplikaci logiky. Když vyberete aplikaci logiky, otevře se návrhář pro Logic Apps.
+1. Otevřete aplikaci logiky. Nejjednodušší způsob, jak se dostat do aplikace logiky, je vybrat **skupiny prostředků** v podokně prostředek, vybrat skupinu prostředků a pak ze seznamu prostředků vybrat vaši aplikaci logiky. Když vyberete aplikaci logiky, otevře se Návrhář Logic Apps.
 
-1. V návrháři pro Logic Apps, přejděte dolů k položce **šablony** a vyberte **prázdná aplikace logiky**.
+1. V Návrháři Logic Apps přejděte dolů na **šablony** a vyberte **prázdná aplikace logiky**.
 
-   ![Začněte s prázdné aplikace logiky na webu Azure Portal](media/iot-hub-monitoring-notifications-with-azure-logic-apps/5-start-with-blank-logic-app-azure-portal.png)
+   ![Začněte s prázdnou aplikací logiky v Azure Portal](media/iot-hub-monitoring-notifications-with-azure-logic-apps/5-start-with-blank-logic-app-azure-portal.png)
 
-1. Vyberte **všechny** kartu a potom vyberte **služby Service Bus**.
+1. Vyberte kartu **vše** a pak vyberte **Service Bus**.
 
-   ![Výběr služby Service Bus a začněte vytvářet aplikace logiky na webu Azure Portal](media/iot-hub-monitoring-notifications-with-azure-logic-apps/6-select-service-bus-when-creating-blank-logic-app-azure-portal.png)
+   ![Pokud chcete začít vytvářet aplikaci logiky v Azure Portal, vyberte Service Bus.](media/iot-hub-monitoring-notifications-with-azure-logic-apps/6-select-service-bus-when-creating-blank-logic-app-azure-portal.png)
 
-1. V části **triggery**vyberte **při doručení jedné či více zpráv do fronty (automatické dokončení)** .
+1. V části triggery vyberte, **kdy se jedna nebo více zpráv dostane do fronty (automatické dokončování)** .
 
-   ![Vyberte trigger pro vaše aplikace logiky na webu Azure Portal](media/iot-hub-monitoring-notifications-with-azure-logic-apps/select-service-bus-trigger.png)
+   ![Vyberte Trigger vaší aplikace logiky v Azure Portal](media/iot-hub-monitoring-notifications-with-azure-logic-apps/select-service-bus-trigger.png)
 
-1. Vytvoření připojení pomocí service bus.
-   1. Zadejte název připojení a zvolte svůj obor názvů služby Service Bus ze seznamu. Otevře se na další obrazovce.
+1. Vytvořte připojení ke službě Service Bus.
+   1. Zadejte název připojení a v seznamu vyberte svůj obor názvů Service Bus. Otevře se další obrazovka.
 
-      ![Vytvoření připojení pomocí service bus pro vaši aplikaci logiky na webu Azure Portal](media/iot-hub-monitoring-notifications-with-azure-logic-apps/create-service-bus-connection-1.png)
+      ![Vytvořte připojení ke službě Service Bus pro vaši aplikaci logiky v Azure Portal](media/iot-hub-monitoring-notifications-with-azure-logic-apps/create-service-bus-connection-1.png)
 
-   1. Vyberte zásady service bus (RootManageSharedAccessKey). Potom vyberte **vytvořit**.
+   1. Vyberte zásady služby Service Bus (RootManageSharedAccessKey). Pak vyberte **vytvořit**.
 
-      ![Vytvoření připojení pomocí service bus pro vaši aplikaci logiky na webu Azure Portal](media/iot-hub-monitoring-notifications-with-azure-logic-apps/7-create-service-bus-connection-in-logic-app-azure-portal.png)
+      ![Vytvořte připojení ke službě Service Bus pro vaši aplikaci logiky v Azure Portal](media/iot-hub-monitoring-notifications-with-azure-logic-apps/7-create-service-bus-connection-in-logic-app-azure-portal.png)
 
-   1. Na poslední obrazovce pro **název fronty**, vyberte frontu, kterou jste vytvořili z rozevíracího seznamu. Zadejte `175` pro **maximální počet zpráv**.
+   1. Na poslední obrazovce pro **název fronty**vyberte z rozevíracího seznamu frontu, kterou jste vytvořili. Zadejte `175` pro **maximální počet zpráv**.
 
-      ![Zadejte maximální počet pro připojení služby Service bus ve vaší aplikaci logiky](media/iot-hub-monitoring-notifications-with-azure-logic-apps/8-specify-maximum-message-count-for-service-bus-connection-logic-app-azure-portal.png)
+      ![Zadejte maximální počet zpráv pro připojení služby Service Bus ve vaší aplikaci logiky.](media/iot-hub-monitoring-notifications-with-azure-logic-apps/8-specify-maximum-message-count-for-service-bus-connection-logic-app-azure-portal.png)
 
-   1. Vyberte **Uložit** v nabídce v horní části návrháře pro Logic Apps uložte provedené změny.
+   1. V nabídce v horní části návrháře Logic Apps vyberte **Uložit** a uložte provedené změny.
 
 ### <a name="configure-the-logic-app-action"></a>Konfigurace akce aplikace logiky
 
 1. Vytvořte připojení služby SMTP.
 
-   1. Vyberte **Nový krok**. V **zvolte akci**, vyberte **všechny** kartu.
+   1. Vyberte **Nový krok**. V části **zvolit akci**vyberte kartu **vše** .
 
-   1. Typ `smtp` do vyhledávacího pole, vyberte **SMTP** služby ve výsledcích hledání a potom vyberte **odeslání e-mailu**.
+   1. Do `smtp` vyhledávacího pole zadejte, ve výsledku hledání vyberte službu **SMTP** a pak vyberte **Odeslat e-mail**.
 
-      ![Vytvoření připojení k SMTP ve vaší aplikaci logiky na webu Azure Portal](media/iot-hub-monitoring-notifications-with-azure-logic-apps/9-create-smtp-connection-logic-app-azure-portal.png)
+      ![Vytvořte v aplikaci logiky v Azure Portal připojení SMTP.](media/iot-hub-monitoring-notifications-with-azure-logic-apps/9-create-smtp-connection-logic-app-azure-portal.png)
 
-   1. Zadejte informace o SMTP pro poštovní schránku a pak vyberte **vytvořit**.
+   1. Zadejte informace o protokolu SMTP pro poštovní schránku a potom vyberte **vytvořit**.
 
-      ![Zadejte informace o připojení SMTP ve vaší aplikaci logiky na webu Azure Portal](media/iot-hub-monitoring-notifications-with-azure-logic-apps/10-enter-smtp-connection-info-logic-app-azure-portal.png)
+      ![V Azure Portal zadejte informace o připojení SMTP do aplikace logiky.](media/iot-hub-monitoring-notifications-with-azure-logic-apps/10-enter-smtp-connection-info-logic-app-azure-portal.png)
 
-      Získejte informace o protokolu SMTP pro [Hotmail/Outlook.com](https://support.office.com/article/Add-your-Outlook-com-account-to-another-mail-app-73f3b178-0009-41ae-aab1-87b80fa94970), [Gmail](https://support.google.com/a/answer/176600?hl=en), a [e-mailu Yahoo](https://help.yahoo.com/kb/SLN4075.html).
+      Získejte informace protokolu SMTP pro [Hotmail/Outlook. com](https://support.office.com/article/Add-your-Outlook-com-account-to-another-mail-app-73f3b178-0009-41ae-aab1-87b80fa94970), [Gmail](https://support.google.com/a/answer/176600?hl=en)a [Yahoo mail](https://help.yahoo.com/kb/SLN4075.html).
 
       > [!NOTE]
-      > Budete muset zakázat SSL, aby se navázalo připojení. Pokud tomu tak a chcete po vytvořilo se připojení znovu povolit protokol SSL, přečtěte si téma volitelný krok na konci této části.
+      > K navázání připojení možná budete muset protokol SSL zakázat. Pokud se jedná o případ a chcete znovu povolit protokol SSL po navázání připojení, přečtěte si volitelný krok na konci této části.
 
-   1. Z **přidat nový parametr** rozevírací seznam na **odeslání e-mailu** kroku, vyberte **z**, **k**, **subjektu**a **tělo**. Klikněte nebo klepněte na libovolné místo na obrazovce, zavřete dialogové okno Výběr.
+   1. V rozevíracím seznamu **Přidat nový parametr** v kroku **Odeslat E-mail** vyberte možnost **od**, **do**, **Předmět** a **text**. Kliknutím nebo klepnutím kamkoli na obrazovce zavřete pole výběr.
 
-      ![Zvolte pole e-mailové připojení SMTP](media/iot-hub-monitoring-notifications-with-azure-logic-apps/smtp-connection-choose-fields.png)
+      ![Zvolit pole pro připojení k e-mailu SMTP](media/iot-hub-monitoring-notifications-with-azure-logic-apps/smtp-connection-choose-fields.png)
 
-   1. Zadejte svou e-mailovou adresu pro **z** a **k**, a `High temperature detected` pro **subjektu** a **tělo**. Pokud **Přidat dynamický obsah z aplikací a konektorů, které používají v tomto toku** otevře se dialogové okno, vyberte **skrýt** ho zavřít. V tomto kurzu nepoužijete dynamický obsah.
+   1. Zadejte svou e-mailovou adresu **z** a **do** `High temperature detected` a pro **Předmět** a **text**. Pokud se otevře dialogové okno **Přidat dynamický obsah z aplikací a konektorů, které se používají v tomto okně Flow** , vyberte **Skrýt** a zavřete ho. V tomto kurzu nepoužíváte dynamický obsah.
 
-      ![Pole e-mailové připojení SMTP vyplňování](media/iot-hub-monitoring-notifications-with-azure-logic-apps/fill-in-smtp-connection-fields.png)
+      ![Vyplnit pole emailu pro připojení SMTP](media/iot-hub-monitoring-notifications-with-azure-logic-apps/fill-in-smtp-connection-fields.png)
 
-   1. Vyberte **Uložit** uložte připojení SMTP.
+   1. Vyberte **Uložit** a uložte připojení SMTP.
 
-1. (Volitelné) Pokud jste měli zakázat SSL k zahájení připojení u svého poskytovatele e-mailu a chcete ho znovu povolit, postupujte podle těchto kroků:
+1. Volitelné Pokud jste museli zakázat protokol SSL a navázat spojení s vaším poskytovatelem e-mailu a chcete ho znovu povolit, postupujte podle těchto kroků:
 
-   1. Na **aplikace logiky** podokně v části **nástroje pro vývoj**vyberte **připojení rozhraní API**.
+   1. V podokně **Aplikace logiky** v části **vývojové nástroje**vyberte **připojení rozhraní API**.
 
    1. V seznamu připojení rozhraní API vyberte připojení SMTP.
 
-   1. Na **smtp pro propojení rozhraní API** podokně v části **Obecné**vyberte **připojení API. upravte**.
+   1. V podokně **připojení SMTP API** v části **Obecné**vyberte **Upravit připojení rozhraní API**.
 
-   1. Na **upravit připojení rozhraní API** vyberte **povolit SSL?** , znovu zadejte heslo pro e-mailový účet a vyberte **Uložit**.
+   1. V podokně **Upravit připojení rozhraní API** vyberte **Povolit SSL?** , znovu zadejte heslo pro váš e-mailový účet a vyberte **Uložit**.
 
-      ![Upravit připojení rozhraní API SMTP ve vaší aplikaci logiky na webu Azure Portal](media/iot-hub-monitoring-notifications-with-azure-logic-apps/re-enable-smtp-connection-ssl.png)
+      ![Upravte připojení SMTP API ve vaší aplikaci logiky v Azure Portal](media/iot-hub-monitoring-notifications-with-azure-logic-apps/re-enable-smtp-connection-ssl.png)
 
-Aplikace logiky je teď připravena ke zpracování teploty výstrahy z fronty služby Service Bus a odesílat oznámení e-mailový účet.
+Vaše aplikace logiky je teď připravená na zpracování upozornění na teplotu z fronty Service Bus a odesílání oznámení na váš e-mailový účet.
 
 ## <a name="test-the-logic-app"></a>Otestování aplikace logiky
 
-1. Spuštění klientské aplikace na vašem zařízení.
+1. Spusťte na svém zařízení klientskou aplikaci.
 
-1. Pokud používáte fyzické zařízení, heat zdroj téměř senzor heat dokud teplota překročí 30 C. stupňů pečlivě přeneste Pokud při použití online simulátoru, kód klienta náhodně výstup telemetrických zpráv, které překračují 30 C.
+1. Pokud používáte fyzické zařízení, pečlivě přeneste zdroj tepla poblíž tepelného senzoru, dokud teplota nepřekročí 30 stupňů C. Pokud používáte online simulátor, kód klienta bude náhodně vyvyšovat zprávy telemetrie, které překračují 30 C.
 
-1. Měli byste začít e-mailových oznámení odeslané aplikací logiky.
+1. Zahajte příjem e-mailových oznámení odeslaných aplikací logiky.
 
    > [!NOTE]
-   > Váš poskytovatel služeb e-mailu může potřebovat ověřit Identita odesílatele, aby se zajistilo, že se že jedná o vás, který odešle e-mail.
+   > Váš poskytovatel e-mailových služeb může potřebovat ověřit identitu odesilatele, aby se ujistil, že vám pošle e-mail.
 
 ## <a name="next-steps"></a>Další postup
 
-Úspěšně jste vytvořili aplikaci logiky, která propojuje službu IoT hub a poštovní schránky pro monitorování teploty a oznámení.
+Úspěšně jste vytvořili aplikaci logiky, která připojuje vaše centrum IoT a vaši poštovní schránku k monitorování a upozorňování na teplotu.
 
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]

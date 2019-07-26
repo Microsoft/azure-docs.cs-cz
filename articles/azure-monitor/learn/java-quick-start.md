@@ -1,5 +1,5 @@
 ---
-title: Rychlý start pro Azure Application Insights | Dokumentace Microsoftu
+title: 'Rychlý start: Monitorování webové aplikace v jazyce Java'
 description: Poskytuje pokyny pro rychlé nastavení webové aplikace v jazyce Java pro monitorování pomocí Application Insights
 services: application-insights
 keywords: ''
@@ -8,15 +8,15 @@ ms.author: mbullwin
 ms.reviewer: lagayhar
 ms.date: 07/15/2019
 ms.service: application-insights
-ms.custom: mvc
+ms.custom: mvc, seo-java-july2019
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: ef3c7668f1fb462b2d6a91cc90746437e74df51d
-ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
+ms.openlocfilehash: 160c0bd90e2e733cd2d57798c0e80f2df569cf0a
+ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67989895"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68489761"
 ---
 # <a name="start-monitoring-your-java-web-application"></a>Zahájení monitorování webové aplikace v Javě
 
@@ -42,7 +42,7 @@ Pokud dáváte přednost nástroji pro pružiny, zkuste [Application Insights po
 
 Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
-## <a name="enable-application-insights"></a>Povolení Application Insights
+## <a name="enable-application-insights"></a>Povolit Application Insights
 
 Application Insights může shromažďovat telemetrická data ze všech aplikací připojených k internetu bez ohledu na to, jestli jsou spuštěné místně nebo v cloudu. Pokud chcete tato data začít zobrazovat, použijte následující kroky.
 

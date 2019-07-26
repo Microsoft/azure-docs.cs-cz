@@ -1,6 +1,6 @@
 ---
-title: Spravovat náklady na AWS a využití ve službě Azure Cost Management
-description: Tento článek vám pomůže pochopit způsob použití analýzy nákladů a rozpočty ve službě Cost Management spravovat náklady na AWS a využití.
+title: Spravujte AWS náklady a využití v Azure Cost Management
+description: Tento článek vám pomůže pochopit, jak používat analýzy a rozpočty nákladů v Cost Management ke správě nákladů a využití AWS.
 services: cost-management
 keywords: ''
 author: bandersmsft
@@ -10,167 +10,177 @@ ms.topic: conceptual
 ms.service: cost-management
 manager: ormaoz
 ms.custom: ''
-ms.openlocfilehash: 57e66d449b194662bfc03f7e130cf49c02a15793
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 05e2375998b3bce4320b2d66ab7fce44cd911dcc
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67275706"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68479133"
 ---
-# <a name="manage-aws-costs-and-usage-in-azure"></a>Spravovat náklady na AWS a jeho použití v Azure
+# <a name="manage-aws-costs-and-usage-in-azure"></a>Správa AWSch nákladů a využití v Azure
 
-Poté, co jste nastavili a nakonfigurovali AWS nákladů a využití integrace sestavy pro službu Azure Cost Management, jste připravení začít spravovat náklady na AWS a využití. Tento článek vám pomůže pochopit způsob použití analýzy nákladů a rozpočty ve službě Cost Management spravovat náklady na AWS a využití.
+Jakmile nastavíte a nakonfigurujete integraci AWSch nákladů a sestav využití pro Azure Cost Management, budete připraveni začít spravovat náklady na AWS a jejich využití. Tento článek vám pomůže pochopit, jak používat analýzy a rozpočty nákladů v Cost Management ke správě nákladů a využití AWS.
 
-Pokud jste ještě nenakonfigurovali integraci, naleznete v tématu [nastavení a konfiguraci integrace sestavy využití AWS](aws-integration-set-up-configure.md).
+Pokud jste konfiguraci integrace ještě nenakonfigurovali, přečtěte si téma [nastavení a konfigurace integrace sestavy využití AWS](aws-integration-set-up-configure.md).
 
-_Než začnete_: Pokud nejste obeznámeni s analýzy nákladů, přečtěte si článek [zkoumat a analyzovat náklady pomocí Cost analysis](quick-acm-cost-analysis.md) rychlý start. A pokud jste obeznámeni s rozpočty v Azure, najdete v článku [vytvořit a spravovat Azure rozpočty](tutorial-acm-create-budgets.md) kurzu.
+_Než začnete_: Pokud nejste obeznámeni s analýzou nákladů, přečtěte si téma [prozkoumání a analýza nákladů pomocí rychlého startu analýzy nákladů](quick-acm-cost-analysis.md) . Pokud si nejste zvyklí rozpočty v Azure, přečtěte si kurz [Vytvoření a Správa rozpočtů Azure](tutorial-acm-create-budgets.md) .
 
-## <a name="view-aws-costs-in-cost-analysis"></a>Náklady na AWS zobrazení v analýzy nákladů
+## <a name="view-aws-costs-in-cost-analysis"></a>Zobrazení nákladů na AWS v analýze nákladů
 
-Náklady na AWS jsou k dispozici v analýzu nákladů na následující obory:
+Náklady na AWS jsou k dispozici při analýze nákladů v následujících oborech:
 
-- Účty AWS propojené v rámci skupiny pro správu
-- Náklady na AWS propojený účet
-- Náklady na účtu AWS konsolidováno
+- Propojené účty AWS ve skupině pro správu
+- Náklady na propojený účet AWS
+- Náklady na konsolidovanou AWS účet
 
-Další části popisují způsob použití rozsahů, tak, aby se zobrazí data o využití a nákladů pro každé z nich.
+V dalších oddílech je popsáno, jak použít rozsahy, abyste viděli data o nákladech a využití pro každé z nich.
 
-### <a name="view-aws-linked-accounts-under-a-management-group"></a>Zobrazit AWS, propojené účty v rámci skupiny pro správu
+### <a name="view-aws-linked-accounts-under-a-management-group"></a>Zobrazení propojených účtů AWS ve skupině pro správu
 
-Zobrazení nákladů s využitím oboru skupiny pro správu je jediný způsob, jak zobrazit souhrnné náklady, které pocházejí z různých předplatných a propojené účty. Pomocí skupiny pro správu poskytuje přehled cloudu.
+Zobrazení nákladů pomocí oboru skupiny pro správu je jediným způsobem, jak zobrazit agregované náklady pocházející z různých předplatných a propojených účtů. Použití skupiny pro správu poskytuje zobrazení pro více cloudů.
 
-V analýzy nákladů otevřete výběr oboru a vyberte skupiny pro správu, který obsahuje vaše účty propojené AWS. Tady je příklad image na webu Azure Portal:
+V části analýza nákladů otevřete výběr oboru a vyberte skupinu pro správu, která obsahuje propojené účty AWS. Tady je příklad obrázku v Azure Portal:
 
-![Příklad zobrazení vyberte rozsah](./media/aws-integration-manage/select-scope01.png)
-
-
-
-Tady je příklad zobrazující náklady na správu skupiny v analýzy nákladů, seskupené podle poskytovatele (Azure a AWS).
-
-![Příklad zobrazující Azure a AWS náklady na analýzu nákladů na čtvrtletí](./media/aws-integration-manage/cost-analysis-aws-azure.png)
-
-### <a name="view-aws-linked-account-costs"></a>Zobrazit AWS propojený účet náklady
-
-Pokud chcete zobrazit náklady na AWS propojení účtu, otevřete výběr oboru a vyberte AWS propojené účtu. Všimněte si, že propojené účty přidružené ke skupině pro správu, jak jsou definovány v konektoru AWS.
-
-Tady je příklad, že ukazuje výběr AWS propojený účet oboru.
-
-![Příklad zobrazení vyberte rozsah](./media/aws-integration-manage/select-scope02.png)
+![Příklad zobrazení oboru pro výběr](./media/aws-integration-manage/select-scope01.png)
 
 
 
-### <a name="view-aws-consolidated-account-costs"></a>Náklady na účet konsolidované zobrazení AWS
+Tady je příklad znázorňující náklady skupiny pro správu v tématu Analýza nákladů seskupené podle poskytovatele (Azure a AWS).
 
-Chcete-li zobrazit AWS konsolidovat konsolidovaný účet náklady, otevřete výběr oboru a vyberte AWS účtu. Tady je příklad, že ukazuje výběr AWS konsolidovat rozsahu účtu.
+![Příklad ukazující náklady na Azure a AWS za čtvrtletí při analýze nákladů](./media/aws-integration-manage/cost-analysis-aws-azure.png)
 
-![Příklad zobrazení vyberte rozsah](./media/aws-integration-manage/select-scope03.png)
+### <a name="view-aws-linked-account-costs"></a>Zobrazení nákladů na propojený účet AWS
+
+Pokud chcete zobrazit náklady na účet AWS Link, otevřete výběr oboru a vyberte propojený účet AWS. Všimněte si, že propojené účty jsou přidružené ke skupině pro správu, jak jsou definované v konektoru AWS.
+
+Tady je příklad, který ukazuje výběr oboru propojeného účtu AWS.
+
+![Příklad zobrazení oboru pro výběr](./media/aws-integration-manage/select-scope02.png)
 
 
 
-Tento obor obsahuje že souhrnný náhled na AWS všechny propojené účty přidružené k účtu AWS konsolidovat. Tady je příklad ukazující, že náklady AWS konsolidovat účtu, seskupené podle názvu služby.
+### <a name="view-aws-consolidated-account-costs"></a>Zobrazit náklady na konsolidovanou AWS účet
 
-![Příklad zobrazující AWS konsolidovat náklady pro analýzy nákladů](./media/aws-integration-manage/cost-analysis-aws-consolidated.png)
+Pokud chcete zobrazit AWS konsolidované náklady na účet, otevřete výběr oboru a vyberte konsolidovaný účet AWS. Tady je příklad, který ukazuje výběr oboru konsolidovaného účtu AWS.
 
-### <a name="dimensions-available-for-filtering-and-grouping"></a>Dimenze k dispozici pro filtrování a seskupování
+![Příklad zobrazení oboru pro výběr](./media/aws-integration-manage/select-scope03.png)
 
-Následující tabulka popisuje dimenze, které jsou k dispozici pro skupinu a filtrovat podle analýzy nákladů.
 
-| Dimenze | MĚNA Amazon záhlaví | Obory | Komentáře |
+
+Tento obor poskytuje agregované zobrazení všech propojených účtů AWS přidružených k konsolidovanému účtu AWS. Tady je příklad, který ukazuje náklady na konsolidovaný účet AWS seskupený podle názvu služby.
+
+![Příklad znázorňující konsolidované náklady AWS při analýze nákladů](./media/aws-integration-manage/cost-analysis-aws-consolidated.png)
+
+### <a name="dimensions-available-for-filtering-and-grouping"></a>Dostupné dimenze pro filtrování a seskupení
+
+Následující tabulka popisuje dimenze, které jsou k dispozici pro seskupení a filtrování podle v části analýza nákladů.
+
+| Dimenze | Amazon – stejné záhlaví | Obory | Komentáře |
 | --- | --- | --- | --- |
 | Zóna dostupnosti | lineitem/AvailabilityZone | Vše |   |
 | Location | produkt/oblast | Vše |   |
-| Měření |   | Vše |   |
+| Metr |   | Vše |   |
 | Kategorie měřiče | lineItem/ProductCode | Vše |   |
-| Podkategorie měřiče | lineitem/UsageType | Vše |   |
+| Podkategorie měřiče | LineItem/položku UsageType | Vše |   |
 | Operace | lineItem/operace | Vše |   |
 | Resource | lineItem/ResourceId | Vše |   |
-| Typ prostředku | product/instanceType | Vše | Pokud produkt/instanceType má hodnotu null, použije se lineItem/UsageType. |
-| ResourceGuid | neuvedeno | Vše | Měřičů Azure identifikátor GUID. |
-| Název služby | produkt/ProductName | Vše | Pokud produkt/ProductName má hodnotu null, použije se lineItem/kód ProductCode souboru. |
-| Úroveň služeb |   |   |   |
-| ID předplatného | lineItem/UsageAccountId | Konsolidované skupiny účet a správu |   |
-| Název předplatného | neuvedeno | Konsolidované skupiny účet a správu | Názvy účtů se shromažďují pomocí rozhraní API pro organizaci AWS. |
-| Značka | resourceTags/\* | Vše | _Uživatele:_ předpona je odebrán z uživatelské značky povolit značky cloudu. _Aws:_ předponu zůstává nedotčeno. |
-| ID účtu fakturace | bill/PayerAccountId | Skupina pro správu |   |
-| Název účtu fakturace | neuvedeno | Skupina pro správu | Názvy účtů se shromažďují pomocí rozhraní API pro organizaci AWS. |
-| Poskytovatel | neuvedeno | Skupina pro správu | AWS a Azure. |
+| Typ prostředku | produkt/instanceType | Vše | Pokud má produkt/instanceType hodnotu null, použije se lineItem/položku UsageType. |
+| ResourceGuid | Není k dispozici | Vše | Identifikátor GUID měřiče Azure |
+| Název služby | produkt/NázevVýrobku | Vše | Pokud je produkt/NázevVýrobku null, použije se lineItem/ProductCode. |
+| Úroveň služby |   |   |   |
+| ID předplatného | lineItem/UsageAccountId | Konsolidovaný účet a skupina pro správu |   |
+| Název předplatného | Není k dispozici | Konsolidovaný účet a skupina pro správu | Názvy účtů se shromažďují pomocí rozhraní AWS organizace API. |
+| Značka | resourceTags/\* | Vše | _Uživatel:_ předpona je odebrána z uživatelsky definovaných značek, aby povolovala značky křížového cloudu. Předpona _AWS:_ je ponechána beze změny. |
+| ID fakturačního účtu | bill/PayerAccountId | Skupina pro správu |   |
+| Název fakturačního účtu | Není k dispozici | Skupina pro správu | Názvy účtů se shromažďují pomocí rozhraní AWS organizace API. |
+| Poskytovatel | Není k dispozici | Skupina pro správu | Buď AWS nebo Azure. |
 
-## <a name="set-budgets-on-aws-scopes"></a>Sada rozpočty na AWS obory
+## <a name="set-budgets-on-aws-scopes"></a>Nastavení rozpočtů v oborech AWS
 
-Můžete aktivně spravovat náklady a jednotky zodpovědností ve vaší organizaci rozpočty. Rozpočty jsou nastavené v účtu AWS konsolidovat a AWS obory propojený účet. Tady je příklad rozpočtů účtu AWS konsolidovat zobrazí ve službě Cost Management:
+Používejte rozpočty k proaktivní správě nákladů a k zajištění zodpovědnosti ve vaší organizaci. Rozpočty se nastavují na konsolidovaném účtu AWS a v oborech propojených účtů AWS. Tady je příklad rozpočtů pro konsolidovaný účet AWS, který je zobrazený v Cost Management:
 
-![Příklad zobrazující rozpočty pro AWS konsolidovat účtu](./media/aws-integration-manage/budgets-aws-consolidated-account01.png)
+![Příklad znázorňující rozpočty pro konsolidovanou AWS účet](./media/aws-integration-manage/budgets-aws-consolidated-account01.png)
 
 ## <a name="aws-data-collection-process"></a>Proces shromažďování dat AWS
 
-Po nastavení konektoru AWS, spusťte shromažďování dat a procesů zjišťování. Může trvat několik hodin ke shromažďování všech dat využití. Doba závisí na:
+Po nastavování konektoru AWS se spustí procesy shromažďování a zjišťování dat. Shromažďování všech dat o využití může trvat několik hodin. Doba trvání závisí na:
 
-- Čas potřebný ke zpracování stejné soubory, které jsou v intervalu AWS S3.
-- Čas potřebný k vytvoření účtu AWS konsolidovat a obory AWS propojený účet.
-- Čas a četnost AWS psaní náklady a sestava využití souborů v intervalu S3
+- Čas potřebný ke zpracování souborů stejné v intervalu AWS S3.
+- Čas potřebný k vytvoření konsolidovaného účtu AWS a rozsahů propojených účtů AWS.
+- Čas a četnost AWS zapisují soubory sestav cost a Usage v intervalu S3.
 
-## <a name="aws-integration-pricing"></a>Ceny za integrace AWS
+## <a name="aws-integration-pricing"></a>Ceny AWS Integration
 
-Každý konektor AWS získá 90denní bezplatná zkušební verze. Ve verzi Public Preview se neúčtuje.
+Každý konektor AWS získá 90 volných zkušebních dnů. Během Public Preview se neúčtují žádné poplatky.
 
-Ceníková cena je 1 % měsíční náklady na AWS. Každý měsíc, bude se vám účtovat na základě vašich invoiced nákladů z předchozího měsíce.
+Ceník je 1% vašich AWS měsíčních nákladů. Každý měsíc se vám bude účtovat podle fakturovaných nákladů za předchozí měsíc.
 
-Přístup k rozhraní API AWS může způsobit dodatečné náklady.
+Přístup k rozhraním API AWS může mít za následek další náklady.
 
 ## <a name="aws-integration-limitations"></a>Omezení integrace AWS
 
-- Náklady na správu nepodporuje sestavy nákladů, které obsahují více typů měny. Chybová zpráva se zobrazí, pokud vyberete obor, který má více měn.
-- Konektory cloud nepodporují GovCloud AWS (USA), AWS Gov nebo AWS China.
-- Služba Cost Management zobrazuje AWS _náklady na využití_ pouze. Daň, podpora, finanční prostředky, rezervované instance, kredity nebo u jiných typů poplatek se zatím nepodporují.
+- Cost Management nepodporuje sestavy nákladů, které obsahují více typů měn. Pokud vyberete obor, který má více měn, zobrazí se chybová zpráva.
+- Cloudové konektory nepodporují AWS GovCloud (US), AWS gov nebo AWS Čína.
+- Cost Management se zobrazují jenom _náklady na používání_ AWS. Daň, podpora, refundace, rezervované instance, kredity nebo jakékoli jiné typy poplatků se ještě nepodporují.
 
 ## <a name="troubleshooting-aws-integration"></a>Řešení potíží s integrací AWS
 
-Použijte následující informace o odstraňování potíží vyřešit běžné problémy.
+Při řešení běžných problémů použijte následující informace pro řešení potíží.
 
-### <a name="no-permission-to-aws-linked-accounts"></a>Nemáte oprávnění ke AWS propojené účty
+### <a name="no-permission-to-aws-linked-accounts"></a>Žádné oprávnění k propojeným účtům AWS
 
-**Kód chyby:** _Neautorizováno_
+**Kód chyby:** _Přístupu_
 
-Existují dva způsoby, jak získat oprávnění pro přístup k náklady na AWS, propojené účty:
+Existují dva způsoby, jak získat oprávnění pro přístup k nákladům na AWS propojené účty:
 
-- Získáte přístup do skupiny pro správu, který má AWS propojené účty.
-- Si nechejte udělit oprávnění k účtu AWS propojený.
+- Získejte přístup ke skupině pro správu, která má propojené účty AWS.
+- Dejte někomu oprávnění k propojenému účtu AWS.
 
-Ve výchozím nastavení autora konektoru AWS je vlastníkem všechny objekty, které tento konektor vytvořen. Včetně AWS konsolidovaný účet a AWS propojený účet.
+Ve výchozím nastavení je autor konektoru AWS vlastníkem všech objektů, které konektor vytvořil. Včetně, konsolidovaného účtu AWS a propojeného účtu AWS.
 
-Pokud chcete mít možnost ověřit nastavení konektoru budete potřebovat alespoň roli přispěvatele, čtenář, nemůže ověřit nastavení konektoru
+Aby bylo možné ověřit nastavení konektoru, budete potřebovat aspoň roli přispěvatele. Čtenář nemůže ověřit nastavení konektoru.
 
-### <a name="collection-failed-with-assumerole"></a>Kolekce se nezdařilo s AssumeRole
+### <a name="collection-failed-with-assumerole"></a>Kolekce selhala s AssumeRole
 
 **Kód chyby:** _FailedToAssumeRole_
 
-Tato chyba znamená, že nelze volat rozhraní API AssumeRole AWS Cost Management. Tomuto problému může dojít z důvodu problému s definice role. Ověřte, že jsou splněny následující podmínky:
+Tato chyba znamená, že Cost Management nemůže volat rozhraní AssumeRole API pro AWS. K tomuto problému může dojít z důvodu problému s definicí role. Ověřte, že jsou splněné následující podmínky:
 
-- Externí ID je stejný jako v definici role a definice konektoru.
-- Typ role je nastaven na **AWS jiný účet patřící vás nebo 3. stran.**
-- **Vyžadovat vícefaktorové ověřování** volba je zrušeno.
-- Je důvěryhodného účtu AWS v roli AWS _432263259397_.
+- Externí ID je stejné jako u definice role a definice konektoru.
+- Typ role je nastavený na **jiný účet AWS, který patří vám nebo třetí straně.**
+- Výběr možnosti **vyžadovat MFA** je zrušený.
+- Účet důvěryhodného AWS v roli AWS je _432263259397_.
 
-### <a name="collection-failed-with-access-denied"></a>Collection se nezdařil se přístup odepřen
+### <a name="collection-failed-with-access-denied---cur-report-definitions"></a>Shromažďování se nepovedlo kvůli odepření přístupu – stejné definice sestav
 
-- **Kód chyby:** _AccessDeniedReportDefinitions_ 
-- **Kód chyby:** _AccessDeniedListReports_ 
-- **Kód chyby:** _AccessDeniedDownloadReport_ 
+**Kód chyby:** _AccessDeniedReportDefinitions_ 
 
-Tato chyba zpráv znamená, že nejde získat přístup ke stejné soubory uložené v intervalu Amazon S3 Cost Management. Ujistěte se, že AWS JSON zásady připojené k roli vypadá podobně jako v příkladu se zobrazí v dolní části [vytvoření role a zásady v AWS](aws-integration-set-up-configure.md#create-a-role-and-policy-in-aws) oddílu.
+Tato chyba znamená, že Cost Management nemůže zobrazit definice sestav náklady a využití. Toto oprávnění slouží k ověření, že je měna definována podle očekávání Azure Cost Management. Přečtěte si téma [Vytvoření sestavy nákladů a využití v AWS](aws-integration-set-up-configure.md#create-a-cost-and-usage-report-in-aws).
 
-### <a name="collection-failed-since-we-did-not-find-the-cost-and-usage-report"></a>Kolekce se nezdařilo, protože nebyly nalezeny náklady a sestava využití
+### <a name="collection-failed-with-access-denied---list-reports"></a>Shromažďování se nepovedlo kvůli odepření přístupu – Seznam sestav
+
+**Kód chyby:** _AccessDeniedListReports_ 
+
+Tato chyba znamená, že Cost Management není schopen vypsat objekt v bloku S3, kde je umístěn stejný. Zásady AWS IAM vyžadují oprávnění k tomuto kontejneru a objektům v kontejneru. Viz [vytvoření role a zásady v AWS](aws-integration-set-up-configure.md#create-a-role-and-policy-in-aws).
+
+### <a name="collection-failed-with-access-denied---download-report"></a>Shromažďování se nepovedlo se zakázaným přístupem – stáhnout sestavu 
+
+**Kód chyby:** _AccessDeniedDownloadReport_ 
+
+Tato chyba znamená, že Cost Management nemá přístup k souborům, které jsou uložené v kontejneru Amazon S3, a stáhne je. Ujistěte se, že se zásada AWS JSON připojená k roli podobá příkladu, který je uvedený v dolní části tématu [vytvoření role a zásady v části AWS](aws-integration-set-up-configure.md#create-a-role-and-policy-in-aws) .
+
+### <a name="collection-failed-since-we-did-not-find-the-cost-and-usage-report"></a>Shromažďování se nepovedlo, protože se nám nepovedlo najít sestavu náklady a využití.
 
 **Kód chyby:** _FailedToFindReport_
 
-Tato chyba znamená, že náklady na správu nelze najít sestavu nákladů a využití, která byla definována v konektoru. Ujistěte se, že se neodstraní a AWS JSON zásady připojené k roli vypadá podobně jako v příkladu se zobrazí v dolní části [vytvoření role a zásady v AWS](aws-integration-set-up-configure.md#create-a-role-and-policy-in-aws) oddílu.
+Tato chyba znamená, že Cost Management nemůže najít sestavu nákladů a využití, která byla definována v konektoru. Ujistěte se, že se neodstraní a že se zásada AWS JSON připojená k roli podobá příkladu, který je uvedený v dolní části tématu [vytvoření role a zásady v části AWS](aws-integration-set-up-configure.md#create-a-role-and-policy-in-aws) .
 
-### <a name="unable-to-create-or-verify-connector-due-to-cost-and-usage-report-definitions-mismatch"></a>Nepovedlo se vytvořit nebo ověřte konektor z důvodu neshody definice náklady a sestava využití
+### <a name="unable-to-create-or-verify-connector-due-to-cost-and-usage-report-definitions-mismatch"></a>Nelze vytvořit nebo ověřit konektor z důvodu neshody definic a nákladů na využití.
 
 **Kód chyby:** _ReportIsNotValid_
 
-Tato chyba má vztah k definici sestavy využití a náklady na AWS jsme vyžadovat konkrétní nastavení pro tuto sestavu, naleznete v tématu požadavky uvedené v [vytvoření sestavy nákladů a využití v AWS](aws-integration-set-up-configure.md#create-a-cost-and-usage-report-in-aws)
+Tato chyba se týká definice AWS nákladů a sestavy o využití. pro tuto sestavu vyžadujeme konkrétní nastavení. Přečtěte si požadavky v tématu [Vytvoření sestavy nákladů a využití v AWS](aws-integration-set-up-configure.md#create-a-cost-and-usage-report-in-aws) .
 
 ## <a name="next-steps"></a>Další postup
 
-- Pokud už jste nenakonfigurovali prostředí Azure pomocí skupin pro správu, přečtěte si téma [počáteční nastavení skupin pro správu](../governance/management-groups/index.md#initial-setup-of-management-groups).
+- Pokud jste prostředí Azure ještě nenakonfigurovali pomocí skupin pro správu, přečtěte si téma [počáteční nastavení skupin pro správu](../governance/management-groups/index.md#initial-setup-of-management-groups).

@@ -1,6 +1,6 @@
 ---
-title: Běžné atributy zabezpečení pro Azure Resource Manageru
-description: Kontrolní seznam společné atributy zabezpečení za vaše rozhodnutí vyzkoušet Azure Resource Manageru
+title: Atributy zabezpečení pro Azure Resource Manager
+description: Kontrolní seznam atributů zabezpečení pro vyhodnocení Azure Resource Manager
 services: azure-resource-manager
 author: msmbaldwin
 manager: barbkess
@@ -8,16 +8,16 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: mbaldwin
-ms.openlocfilehash: a771d4c2ae22b7bf149c13c80fe5286ef52a4545
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e3bfb79c54ff57adfa947f2dd0100f6c05c7af9f
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66002261"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68444157"
 ---
-# <a name="security-attributes-for-azure-resource-manager"></a>Atributy zabezpečení pro Azure Resource Manageru
+# <a name="security-attributes-for-azure-resource-manager"></a>Atributy zabezpečení pro Azure Resource Manager
 
-Tento článek popisuje atributy zabezpečení integrované do Azure Resource Manageru.
+Tento článek popisuje atributy zabezpečení integrované do Azure Resource Manager.
 
 [!INCLUDE [Security Attributes Header](../../includes/security-attributes-header.md)]
 
@@ -25,44 +25,44 @@ Tento článek popisuje atributy zabezpečení integrované do Azure Resource Ma
 
 | Atribut zabezpečení | Ano/Ne | Poznámky |
 |---|---|--|
-| Šifrování v klidovém stavu:<ul><li>Šifrování na straně serveru</li><li>Šifrování na straně serveru pomocí klíčů spravovaných zákazníkem</li><li>Další funkce šifrování (například klientů, funkce always encrypted, atd.)</ul>| Ano |  |
-| Šifrování během přenosu:<ul><li>Express route šifrování</li><li>Ve virtuální síti šifrování</li><li>Šifrování virtuálními sítěmi</ul>| Ano | HTTPS/TLS. |
-| Šifrování klíče zpracování (CMK, BYOK, atd.)| neuvedeno | Azure Resource Manager ukládá žádný obsah zákazníka, jenom data ovládacího prvku. |
+| Šifrování v klidovém formátu (například šifrování na straně serveru, šifrování na straně serveru pomocí klíčů spravovaných zákazníkem a další funkce šifrování)| Ano |  |
+| Šifrování při přenosu (například šifrování ExpressRoute, šifrování virtuální sítě a šifrování virtuální sítě)| Ano | HTTPS/TLS. |
+| Zpracování šifrovacích klíčů (CMK, BYOK atd.)| Není k dispozici | Azure Resource Manager neukládá žádný zákaznický obsah, řídí se jenom data. |
 | Šifrování na úrovni sloupce (Azure Data Services)| Ano | |
-| Šifrované volání rozhraní API| Ano | |
+| Zašifrovaná volání rozhraní API| Ano | |
 
 ## <a name="network-segmentation"></a>Segmentace sítě
 
 | Atribut zabezpečení | Ano/Ne | Poznámky |
 |---|---|--|
 | Podpora koncového bodu služby| Ne | |
-| Vkládání podpory virtuálních sítí| Ano | |
-| Izolace sítě a podporu funkce brány firewall| Ne |  |
-| Vynucené tunelování podpory| Ne |  |
+| Podpora vkládání virtuální sítě| Ano | |
+| Izolace sítě a podpora brány firewall| Ne |  |
+| Podpora vynuceného tunelování| Ne |  |
 
-## <a name="detection"></a>Detection (Detekce)
+## <a name="detection"></a>Detekce
 
 | Atribut zabezpečení | Ano/Ne | Poznámky|
 |---|---|--|
-| Podpora (Log analytics, App insights atd.) pro monitorování Azure| Ne | |
+| Podpora monitorování Azure (Log Analytics, App Insights atd.)| Ne | |
 
 ## <a name="identity-and-access-management"></a>Správa identit a přístupu
 
 | Atribut zabezpečení | Ano/Ne | Poznámky|
 |---|---|--|
-| Authentication| Ano | [Azure Active Directory](/azure/active-directory) založené.|
-| Autorizace| Ano | |
+| Ověřování| Ano | Na základě [Azure Active Directory](/azure/active-directory) .|
+| Authorization| Ano | |
 
 
 ## <a name="audit-trail"></a>Záznam pro audit
 
 | Atribut zabezpečení | Ano/Ne | Poznámky|
 |---|---|--|
-| Ovládací prvek a správu roviny protokolování a auditování| Ano | Všechny operace (PUT, POST, DELETE) prováděné s vašimi prostředky; zápisu zpřístupňují protokoly aktivit Zobrazit [zobrazení protokolů aktivit pro auditování akcí u prostředků](resource-group-audit.md). |
-| Protokolování roviny dat a auditu| neuvedeno | |
+| Protokolování a audit roviny řízení a správy| Ano | Protokoly aktivit zpřístupňují všechny operace zápisu (PUT, POST, DELETE) provedené na vašich prostředcích. v tématu [zobrazení protokolů aktivit můžete auditovat akce u prostředků](resource-group-audit.md). |
+| Protokolování a audit roviny dat| Není k dispozici | |
 
 ## <a name="configuration-management"></a>Správa konfigurace
 
 | Atribut zabezpečení | Ano/Ne | Poznámky|
 |---|---|--|
-| Podpora správy konfigurace (verze konfigurace atd.)| Ano |  |
+| Podpora správy konfigurace (Správa verzí konfigurace atd.)| Ano |  |

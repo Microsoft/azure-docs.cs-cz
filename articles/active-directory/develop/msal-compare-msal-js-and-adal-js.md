@@ -1,6 +1,6 @@
 ---
-title: Rozdíly mezi MSAL.js a ADAL.js | Azure
-description: Přečtěte si o rozdílech mezi knihovna Microsoft Authentication Library pro JavaScript (MSAL.js) a Azure AD Authentication Library pro JavaScript (ADAL.js) a jak zvolit, která se použije.
+title: Rozdíly mezi MSAL. js a ADAL. js | Azure
+description: Přečtěte si o rozdílech mezi knihovnou Microsoft Authentication Library for JavaScript (MSAL. js) a knihovnou ověřování Azure AD pro JavaScript (ADAL. js) a postupem, jak zvolit, která z nich se má použít.
 services: active-directory
 documentationcenter: dev-center-name
 author: navyasric
@@ -17,55 +17,55 @@ ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 10b5169d3f06e265b3effa3ec18ad8e4f69959d3
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 328db116cebda5eb288f04cc89e2c85550c38083
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66121960"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68421185"
 ---
 # <a name="differences-between-msal-js-and-adal-js"></a>Rozdíly mezi MSAL JS a ADAL JS
 
-Knihovna Microsoft Authentication Library pro JavaScript (MSAL.js) i Azure AD Authentication Library pro JavaScript (ADAL.js) se používají k ověření služby Azure AD entity a požádat o tokeny ze služby Azure AD. Až dosud Většina vývojářů pracovali s Azure AD pro vývojáře (verze 1.0) k ověření identit Azure AD (pracovní a školní účty) pomocí žádosti o tokeny pomocí knihovny ADAL. Nyní využitím MSAL.js, můžete ověřovat pestřejší škálu identit společnosti Microsoft (identit Azure AD a účty Microsoft a účty sociálních sítí a místní prostřednictvím Azure AD B2C) prostřednictvím Microsoft identity platform (verze 2.0).
+K ověření entit Azure AD a vyžádání tokenů z Azure AD se používají knihovny Microsoft Authentication Library pro JavaScript (MSAL. js) a knihovna ověřování Azure AD pro JavaScript (ADAL. js). Až do té doby se většina vývojářů pracovala se službou Azure AD pro vývojáře (v 1.0) k ověřování identit Azure AD (pracovní a školní účty) tím, že žádá o tokeny pomocí ADAL. Teď můžete pomocí MSAL. js ověřit širší sadu identit Microsoftu (identity Azure AD a účty Microsoft a sociální a místní účty prostřednictvím Azure AD B2C) prostřednictvím platformy Microsoft Identity Platform (v 2.0).
 
-Tento článek popisuje, jak si vybrat mezi knihovna Microsoft Authentication Library pro JavaScript (MSAL.js) a Azure AD Authentication Library pro JavaScript (ADAL.js) a porovná dvě knihovny.
+Tento článek popisuje, jak zvolit mezi knihovnou Microsoft Authentication Library pro JavaScript (MSAL. js) a knihovnou ověřování Azure AD pro JavaScript (ADAL. js) a porovnává dvě knihovny.
 
-## <a name="choosing-between-adaljs-and-msaljs"></a>Volba mezi ADAL.js a MSAL.js
+## <a name="choosing-between-adaljs-and-msaljs"></a>Výběr mezi ADAL. js a MSAL. js
 
-Ve většině případů, které chcete používat Microsoft identity platform a MSAL.js, což je nejnovější generace knihovny Microsoft authentication Library. Využitím MSAL.js získat tokeny uživatele přihlášení do vaší aplikace s Azure AD (pracovní a školní účty), účty Microsoft (osobní) (MSA) nebo Azure AD B2C.
+Ve většině případů chcete použít Microsoft Identity Platform a MSAL. js, což je nejnovější generace knihoven ověřování od společnosti Microsoft. Pomocí MSAL. js získáte tokeny pro uživatele, kteří se přihlašují k vaší aplikaci pomocí Azure AD (pracovní a školní účty), účtů Microsoft (osobní) (MSA) nebo Azure AD B2C.
 
-Pokud jste již obeznámeni s koncovým bodem verze 1.0 (a ADAL.js), můžete chtít číst [Čím se liší koncovým bodem v2.0?](active-directory-v2-compare.md).
+Pokud už jste obeznámeni s koncovým bodem v 1.0 (a ADAL. js), můžete si přečíst, [co se liší od koncového bodu v 2.0?](active-directory-v2-compare.md).
 
-Však budete stále muset použít ADAL.js Pokud vaše aplikace potřebuje k přihlášení uživatelů s předchozími verzemi [Active Directory Federation Services (ADFS)](/windows-server/identity/active-directory-federation-services).
+Pokud ale vaše aplikace potřebuje přihlašovat uživatele staršími verzemi [Active Directory Federation Services (AD FS) (ADFS)](/windows-server/identity/active-directory-federation-services), je stále nutné použít ADAL. js.
 
-## <a name="key-differences-in-authentication-with-msaljs"></a>Hlavní rozdíly v ověřování pomocí MSAL.js
+## <a name="key-differences-in-authentication-with-msaljs"></a>Klíčové rozdíly v ověřování pomocí MSAL. js
 
 ### <a name="core-api"></a>Základní rozhraní API
 
-* Používá ADAL.js [kontextu AuthenticationContext](https://github.com/AzureAD/azure-activedirectory-library-for-js/wiki/Config-authentication-context#authenticationcontext) jako reprezentace instance připojení vaší aplikace, které se autorizační server nebo zprostředkovatele identity prostřednictvím adresy URL autority. Naopak MSAL.js API navržené s ohledem na uživatelské agenta klientská aplikace (formulář veřejné klientské aplikace 00Z klientský kód spouští v uživatelský agent jako je webový prohlížeč). Poskytuje `UserAgentApplication` pro reprezentaci instance kontext ověřování vaší aplikace pomocí autorizačního serveru. Další podrobnosti najdete v tématu [inicializovat využitím MSAL.js](msal-js-initializing-client-applications.md).
+* ADAL. js používá [AuthenticationContext](https://github.com/AzureAD/azure-activedirectory-library-for-js/wiki/Config-authentication-context#authenticationcontext) jako reprezentace instance připojení aplikace k autorizačnímu serveru nebo zprostředkovateli identity prostřednictvím adresy URL autority. V opačném případě je rozhraní API MSAL. js navrženo kolem klientské aplikace uživatelského agenta (formulář klientské aplikace, ve které se klientský kód spouští v uživatelském agentu, jako je například webový prohlížeč). Poskytuje `UserAgentApplication` třídu, která představuje instanci ověřovacího kontextu aplikace s autorizačním serverem. Další podrobnosti najdete v tématu [inicializace pomocí MSAL. js](msal-js-initializing-client-applications.md).
 
-* V ADAL.js, metody k získání tokenů jsou přidruženy k jedné autoritu nastavenou `AuthenticationContext`. Získání tokenu žádosti MSAL.js, může trvat autority jiné hodnoty než hodnota nastavená `UserAgentApplication`. To umožňuje MSAL.js a získat tokeny mezipaměti odděleně pro více tenantů a uživatelské účty ve stejné aplikaci.
+* V ADAL. js jsou metody získání tokenů přidružené k jedné autoritě nastavené v `AuthenticationContext`. V MSAL. js můžou žádosti o získání tokenu využít jiné hodnoty autority než nastavení v `UserAgentApplication`. To umožňuje MSAL. js získat a ukládat tokeny samostatně pro více tenantů a uživatelských účtů ve stejné aplikaci.
 
-* Název metody, které chcete získat a obnovit tokeny tiše bez vyzvání uživatele `acquireToken` v ADAL.js. V MSAL.js, je tato metoda s názvem `acquireTokenSilent` být konkrétnější této funkce.
+* Metoda získání a obnovení tokenů v tichém režimu bez výzvy k zadání uživatelských `acquireToken` jmen v ADAL. js. V MSAL. js je tato metoda pojmenována `acquireTokenSilent` tak, aby byla výstižnější jako tato funkce.
 
-### <a name="authority-value-common"></a>Hodnota `common`
+### <a name="authority-value-common"></a>Hodnota autority`common`
 
-V v1.0 pomocí `https://login.microsoftonline.com/common` autority vám umožní uživatelům přihlašovat se pomocí libovolného účtu služby Azure AD (pro každou organizaci).
+V 1.0 se pomocí `https://login.microsoftonline.com/common` autority uživatelům umožní přihlásit pomocí účtu Azure AD (pro libovolnou organizaci).
 
-V v2.0 pomocí `https://login.microsoftonline.com/common` autority, vám umožní uživatelům přihlašovat se pomocí libovolného účtu organizace služby Azure AD nebo osobní účet Microsoft (MSA). Pokud chcete omezit přihlašování pouze účty Azure AD (stejně jako s ADAL.js), budete muset použít `https://login.microsoftonline.com/organizations`. Podrobnosti najdete v tématu `authority` možnost konfigurace v [inicializovat využitím MSAL.js](msal-js-initializing-client-applications.md).
+V 2.0 se pomocí `https://login.microsoftonline.com/common` autority umožní uživatelům přihlásit se pomocí účtu organizace Azure AD nebo osobního účtu Microsoft (MSA). Pokud chcete omezit přihlášení jenom na účty Azure AD (stejné chování jako u ADAL. js), musíte použít `https://login.microsoftonline.com/organizations`. Podrobnosti najdete v tématu `authority` věnovaném konfigurační možnosti při [inicializaci pomocí MSAL. js](msal-js-initializing-client-applications.md).
 
-### <a name="scopes-for-acquiring-tokens"></a>Obory pro získávání tokenů
-* Obor místo zdroje parametru v žádosti o ověření k získání tokenů
+### <a name="scopes-for-acquiring-tokens"></a>Obory pro získání tokenů
+* Rozsah místo parametru prostředku v požadavcích na ověření pro získání tokenů
 
-    protokol v2.0 používá obory místo prostředek v žádosti. Jinými slovy když vaše aplikace potřebuje požádat o tokeny s oprávněními pro určitý prostředek, jako je například MS Graphu, rozdíl v hodnoty předané do metod knihovny vypadá takto:
+    protokol v 2.0 místo prostředků v požadavcích používá obory. Jinými slovy, pokud vaše aplikace potřebuje požádat o tokeny s oprávněním pro prostředek, jako je například MS Graph, rozdíl v hodnotách předaných metodám knihovny je následující:
 
-    verze 1.0: prostředku =https://graph.microsoft.com
+    v 1.0: prostředek = https\://Graph.Microsoft.com
 
-    verze 2.0: rozsah = https://graph.microsoft.com/User.Read
+    v 2.0: Scope = https\://Graph.Microsoft.com/user.Read
 
-    Můžete požádat o rozsahy pro libovolné prostředky rozhraní API pomocí identifikátoru URI rozhraní API v tomto formátu: appidURI nebo oboru, například: https:\//mytenant.onmicrosoft.com/myapi/api.read
+    Pomocí identifikátoru URI rozhraní API můžete v tomto formátu vyžádat obory pro jakékoli rozhraní API: appidURI/Scope, například: https\/:/mytenant.onmicrosoft.com/MyAPI/API.Read
 
-    Pouze pro Graph API MS, hodnota rozsahu `user.read` mapuje https://graph.microsoft.com/User.Read a zaměnitelné.
+    Pouze v případě, že je k disGraph API `user.read` hodnota oboru https://graph.microsoft.com/User.Read , která je mapována na a je možné ji použít zaměnitelné.
 
     ```javascript
     var request = {
@@ -75,9 +75,9 @@ V v2.0 pomocí `https://login.microsoftonline.com/common` autority, vám umožn�
     acquireTokenPopup(request);   
     ```
 
-* Dynamické obory pro přírůstkové souhlas.
+* Dynamické obory pro přírůstkový souhlas.
 
-    Při sestavování aplikací s použitím verze 1.0, jste museli zaregistrovat úplnou sadu oprávnění (obory statické) vyžadovaného aplikací pro uživatele souhlas v době přihlášení. V verze 2.0 můžete použít parametr oboru v době chcete požádat o oprávnění. Nazývají se dynamické obory. To umožňuje uživateli zadat přírůstkové vyjadřujete souhlas s obory. Takže pokud na začátku je vhodné uživatele k přihlášení do vaší aplikace a nepotřebujete jiný druh přístupu, lze provést. Pokud později potřebujete oprávnění ke čtení kalendáře uživatele, můžete požádat o oboru kalendáře v metodách acquireToken a vyžadovat souhlas uživatele. Příklad:
+    Při sestavování aplikací pomocí verze 1.0 je nutné zaregistrovat úplnou sadu oprávnění (statické obory), které aplikace požaduje, aby uživatel mohl udělit souhlas v době přihlášení. V verze 2.0 můžete použít parametr scope k vyžádání oprávnění v době, kdy chcete. Tyto jsou označovány jako dynamické obory. To umožňuje uživateli poskytnout k oboru přírůstkové vyjádření souhlasu. Takže když na začátku budete chtít, aby se uživatel přihlásil ke svojí aplikaci a nepotřebujete žádný přístup, můžete tak učinit. Pokud budete později potřebovat možnost číst kalendář uživatele, můžete požádat o obor kalendáře v metodách acquireToken a získat souhlas uživatele. Příklad:
 
     ```javascript
     var request = {
@@ -87,9 +87,9 @@ V v2.0 pomocí `https://login.microsoftonline.com/common` autority, vám umožn�
     acquireTokenPopup(request);   
     ```
 
-* Obory pro rozhraní API V1.0
+* Obory pro rozhraní API V 1.0
 
-    Při získávání tokenů pro V1.0 API s využitím MSAL.js, můžete požádat o všechny statické obory registrován na rozhraní API přidáním `.default` na identifikátor URI ID aplikace rozhraní API jako obor. Příklad:
+    Při získávání tokenů pro rozhraní API v 1.0 pomocí MSAL. js si můžete vyžádat všechny statické obory registrované v rozhraní API připojením `.default` k identifikátoru URI ID aplikace rozhraní API jako oboru. Příklad:
 
     ```javascript
     var request = {
@@ -100,4 +100,4 @@ V v2.0 pomocí `https://login.microsoftonline.com/common` autority, vám umožn�
     ```
 
 ## <a name="next-steps"></a>Další postup
-Další informace najdete v [porovnání v1.0 a v2.0](active-directory-v2-compare.md).
+Další informace najdete [v tématu porovnání v 1.0 a v 2.0](active-directory-v2-compare.md).

@@ -34,6 +34,13 @@ sections:
             image:
               src: /media/common/i_learn-about.svg
             title: Získávání dovedností pomocí Microsoft Learn
+  - title: Zabezpečení ukázkových aplikací
+    items:
+      - type: list
+        style: unordered
+        className: spaced noBullet
+        items:
+          - html: <a href="/azure/security/develop/secure-web-app">Webová aplikace v linuxovém kontejneru</a>
   - title: Koncepty
     items:
       - type: list

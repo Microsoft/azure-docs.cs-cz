@@ -1,27 +1,26 @@
 ---
-title: Azure Backup – zálohování úloh DPM pomocí Powershellu
-description: Zjistěte, jak nasadit a spravovat Azure Backup pro Data Protection Manager (DPM) pomocí Powershellu
-services: backup
+title: Azure Backup – použití PowerShellu k zálohování úloh DPM
+description: Naučte se nasazovat a spravovat Azure Backup pro Data Protection Manager (DPM) pomocí PowerShellu.
 author: kasinh
 manager: vvithal
 ms.service: backup
 ms.topic: conceptual
 ms.date: 1/23/2017
 ms.author: adigan
-ms.openlocfilehash: b16963265c971e604f03b51fd63f7fe411bab36e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a269db3d97f23c16e848026ce78fc04c7a1182e8
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66127763"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68465138"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-data-protection-manager-dpm-servers-using-powershell"></a>Nasazení a správa zálohování do Azure pro servery DPM (Data Protection Manager) pomocí PowerShellu
 
-Tento článek popisuje, jak pomocí prostředí PowerShell k instalaci Azure Backup na serveru DPM a Správa zálohování a obnovení.
+V tomto článku se dozvíte, jak pomocí PowerShellu nastavit Azure Backup na serveru DPM a spravovat zálohování a obnovení.
 
 ## <a name="setting-up-the-powershell-environment"></a>Nastavení prostředí PowerShell
 
-Před použitím prostředí PowerShell pro správu z aplikace Data Protection Manager zálohování do Azure, budete muset mít správné prostředí v prostředí PowerShell. Při spuštění relace Powershellu Ujistěte se, že spustíte následující příkaz k importu správné moduly a bylo možné správně odkazují na rutiny aplikace DPM:
+Než budete moct pomocí PowerShellu spravovat zálohy z Data Protection Manager do Azure, musíte mít v prostředí PowerShell správné prostředí. Na začátku relace PowerShellu se ujistěte, že spustíte následující příkaz, který naimportuje správné moduly a umožní vám správně odkazovat na rutiny DPM:
 
 ```powershell
 & "C:\Program Files\Microsoft System Center 2012 R2\DPM\DPM\bin\DpmCliInitScript.ps1"
@@ -42,9 +41,9 @@ Sample DPM scripts: Get-DPMSampleScript
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Pokud chcete začít, [stáhnout nejnovější Azure PowerShell](/powershell/azure/install-az-ps).
+Začněte [stažením nejnovější Azure PowerShell](/powershell/azure/install-az-ps).
 
-Následující nastavení a registrace úlohy je možné automatizovat pomocí prostředí PowerShell:
+Prostředí PowerShell může automatizovat následující úlohy nastavení a registrace:
 
 * Vytvoření trezoru Služeb zotavení
 * Instalace agenta Azure Backup
@@ -54,27 +53,27 @@ Následující nastavení a registrace úlohy je možné automatizovat pomocí p
 
 ## <a name="create-a-recovery-services-vault"></a>Vytvoření trezoru služby Recovery Services
 
-Následující kroky vás provedou vytvořením trezor služby Recovery Services. Trezor služby Recovery Services se liší od trezoru služby Backup.
+Následující kroky vás provedou vytvořením trezoru Recovery Services. Recovery Services trezor se liší od trezoru záloh.
 
-1. Pokud používáte Azure Backup poprvé, je nutné použít **Register-AzResourceProvider** rutiny ve vašem předplatném zaregistrovat poskytovatele služby Azure Recovery.
+1. Pokud používáte Azure Backup poprvé, musíte pomocí rutiny **Register-AzResourceProvider** zaregistrovat poskytovatele služby Azure Recovery Services s vaším předplatným.
 
     ```powershell
     Register-AzResourceProvider -ProviderNamespace "Microsoft.RecoveryServices"
     ```
 
-2. Trezor služby Recovery Services je prostředek ARM, proto musíte umístit do skupiny prostředků. Můžete použít existující skupinu prostředků nebo vytvořte novou. Když vytváříte novou skupinu prostředků, zadejte název a umístění pro skupinu prostředků.
+2. Recovery Services trezor je prostředek ARM, takže ho budete muset umístit do skupiny prostředků. Můžete použít existující skupinu prostředků nebo vytvořit novou. Při vytváření nové skupiny prostředků zadejte název a umístění pro skupinu prostředků.
 
     ```powershell
     New-AzResourceGroup –Name "test-rg" –Location "West US"
     ```
 
-3. Použití **New-AzRecoveryServicesVault** rutina pro vytvoření nového trezoru. Ujistěte se, k určení stejného umístění trezoru, protože byl použit pro skupinu prostředků.
+3. K vytvoření nového trezoru použijte rutinu **New-AzRecoveryServicesVault** . Nezapomeňte zadat stejné umístění úložiště, jaké bylo použito pro skupinu prostředků.
 
     ```powershell
     New-AzRecoveryServicesVault -Name "testvault" -ResourceGroupName " test-rg" -Location "West US"
     ```
 
-4. Zadejte typ redundance úložiště se použije. můžete použít [místně redundantní úložiště (LRS)](../storage/common/storage-redundancy-lrs.md) nebo [geograficky redundantního úložiště (GRS)](../storage/common/storage-redundancy-grs.md). Následující příklad ukazuje, že možnost - BackupStorageRedundancy pro testVault nastavená na GeoRedundant.
+4. Zadejte typ redundance úložiště, který se má použít. můžete použít [místně redundantní úložiště (LRS)](../storage/common/storage-redundancy-lrs.md) nebo [geograficky redundantní úložiště (GRS)](../storage/common/storage-redundancy-grs.md). Následující příklad ukazuje možnost-BackupStorageRedundancy pro testVault je nastavená na geograficky redundantní.
 
    > [!TIP]
    > Řada rutin služby Azure Backup vyžaduje jako vstup objekt trezoru služby Recovery Services. Z tohoto důvodu je vhodné uložit objekt trezoru služby Recovery Services do proměnné.
@@ -86,11 +85,11 @@ Následující kroky vás provedou vytvořením trezor služby Recovery Services
     Set-AzRecoveryServicesBackupProperties  -vault $vault1 -BackupStorageRedundancy GeoRedundant
     ```
 
-## <a name="view-the-vaults-in-a-subscription"></a>Zobrazit tyto trezory v rámci předplatného
+## <a name="view-the-vaults-in-a-subscription"></a>Zobrazení trezorů v předplatném
 
-Použití **Get-AzRecoveryServicesVault** zobrazíte seznam všech trezorů v rámci aktuálního předplatného. Tento příkaz můžete použít ke kontrole, zda byl vytvořen nový trezor a zjistit, jaké trezory služby jsou dostupné v rámci předplatného.
+K zobrazení seznamu všech trezorů v rámci aktuálního předplatného použijte **příkaz Get-AzRecoveryServicesVault** . Tento příkaz můžete použít ke kontrole vytvoření nového trezoru nebo k zobrazení, které trezory jsou k dispozici v rámci předplatného.
 
-Spuštěním příkazu Get-AzRecoveryServicesVault, a všech trezorů v předplatném jsou uvedeny.
+V seznamu je spuštěný příkaz, Get-AzRecoveryServicesVault a všechny trezory v rámci předplatného.
 
 ```powershell
 Get-AzRecoveryServicesVault
@@ -107,48 +106,48 @@ Properties        : Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties
 ```
 
 
-## <a name="installing-the-azure-backup-agent-on-a-dpm-server"></a>Instalace agenta Azure Backup na serveru DPM
+## <a name="installing-the-azure-backup-agent-on-a-dpm-server"></a>Instalace agenta Azure Backup na server DPM
 
-Před instalací agenta Azure Backup, musíte mít instalační program stažený a k dispozici v systému Windows Server. Můžete získat nejnovější verzi instalačního programu z [Microsoft Download Center](https://aka.ms/azurebackup_agent) nebo ze stránky řídicího panelu trezoru služby Recovery Services. Uložte instalační program na snadno dostupném místě jako * C:\Downloads\*.
+Před instalací agenta Azure Backup musíte mít Instalační program stažený a přítomen na Windows serveru. Nejnovější verzi instalačního programu můžete získat z webu [Microsoft Download Center](https://aka.ms/azurebackup_agent) nebo ze stránky řídicího panelu Recovery Servicesového trezoru. Uložte instalační program do snadno přístupného umístění, jako je\** C:\downloads.
 
-Pokud chcete nainstalovat agenta, spusťte následující příkaz v konzole Powershellu se zvýšenými oprávněními **na serveru DPM**:
+Chcete-li nainstalovat agenta, spusťte následující příkaz v konzole PowerShell se zvýšenými oprávněními **na serveru DPM**:
 
 ```powershell
 MARSAgentInstaller.exe /q
 ```
 
-Tím se nainstaluje agent s výchozími možnostmi. Instalace trvá několik minut na pozadí. Pokud nezadáte */nu* možnost **Windows Update** otevře se okno na konci instalace žádné aktualizace.
+Tím se nainstaluje Agent se všemi výchozími možnostmi. Instalace na pozadí trvá několik minut. Pokud nezadáte možnost */Nu* , na konci instalace se otevře okno **web Windows Update** , kde můžete vyhledat aktualizace.
 
-Agent se zobrazí v seznamu nainstalovaných programů. Chcete-li zobrazit seznam nainstalovaných programů, přejděte na **ovládací panely** > **programy** > **programy a funkce**.
+Agent se zobrazí v seznamu nainstalovaných programů. Seznam nainstalovaných programů zobrazíte tak, že přejdete do části **Ovládací panely** >  > programy programy**a funkce**.
 
-![Agent nainstalovaný](./media/backup-dpm-automation/installed-agent-listing.png)
+![Agent nainstalován](./media/backup-dpm-automation/installed-agent-listing.png)
 
 ### <a name="installation-options"></a>Možnosti instalace
 
-Pokud chcete zobrazit všechny možnosti, které jsou k dispozici prostřednictvím příkazového řádku, použijte následující příkaz:
+Chcete-li zobrazit všechny možnosti, které jsou k dispozici prostřednictvím příkazového řádku, použijte následující příkaz:
 
 ```powershell
 MARSAgentInstaller.exe /?
 ```
 
-Mezi dostupné možnosti patří:
+K dispozici jsou tyto možnosti:
 
 | Možnost | Podrobnosti | Výchozí |
 | --- | --- | --- |
-| /q |Bezobslužnou instalaci |- |
-| / p: "umístění" |Cesta ke složce instalace agenta Azure Backup. |Agent C:\Program Files\Microsoft Azure Recovery Services |
-| / s: "umístění" |Cesta ke složce mezipaměti pro agenta Azure Backup. |C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch |
-| /m |Přihlášení ke službě Microsoft Update |- |
-| /nu |Nekontrolovat aktualizace po dokončení instalace |- |
+| /q |Tichá instalace |- |
+| /p: "umístění" |Cesta k instalační složce pro agenta Azure Backup. |C:\Program Files\Microsoft Azure Recovery Services Agent |
+| /s: umístění |Cesta ke složce mezipaměti pro agenta Azure Backup. |C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch |
+| /m |Výslovný souhlas s Microsoft Update |- |
+| /nu |Po dokončení instalace Nekontrolovat aktualizace |- |
 | /d |Odinstaluje Agenta Microsoft Azure Recovery Services. |- |
-| /pH |Adresa hostitele proxy |- |
-| /po |Číslo portu proxy serveru hostitele |- |
-| /pu |Proxy Host UserName |- |
-| /pw |Heslo pro proxy server |- |
+| /pH |Adresa hostitele proxy serveru |- |
+| /po |Číslo portu hostitele proxy serveru |- |
+| /pu |Uživatelské jméno hostitele proxy serveru |- |
+| /pw |Heslo proxy |- |
 
-## <a name="registering-dpm-to-a-recovery-services-vault"></a>Registrace aplikace DPM k obnovení služby úložiště
+## <a name="registering-dpm-to-a-recovery-services-vault"></a>Registrace aplikace DPM do trezoru Recovery Services
 
-Po vytvoření trezoru služby Recovery Services, stáhněte si nejnovější verzi agenta a přihlašovací údaje trezoru a uložit do vhodného umístění jako C:\Downloads.
+Po vytvoření trezoru Recovery Services Stáhněte nejnovějšího agenta a přihlašovací údaje trezoru a uložte je do vhodného umístění, jako je C:\Downloads.
 
 ```powershell
 $credspath = "C:\downloads"
@@ -160,7 +159,7 @@ $credsfilename
 C:\downloads\testvault\_Sun Apr 10 2016.VaultCredentials
 ```
 
-Na serveru aplikace DPM spusťte [Start OBRegistration](https://technet.microsoft.com/library/hh770398%28v=wps.630%29.aspx) rutiny k registraci počítače v trezoru.
+Na serveru DPM spusťte rutinu [Start-OBRegistration](https://technet.microsoft.com/library/hh770398%28v=wps.630%29.aspx) , která zaregistruje počítač do trezoru.
 
 ```powershell
 $cred = $credspath + $credsfilename
@@ -177,13 +176,13 @@ Machine registration succeeded.
 
 ### <a name="initial-configuration-settings"></a>Nastavení počáteční konfigurace
 
-Po zaregistrování serveru aplikace DPM v trezoru služby Recovery Services začíná nastavení výchozího předplatného. Tato nastavení předplatného zahrnují sítě, šifrování a pracovní oblast. Chcete-li změnit nastavení odběru je nutné nejprve získat popisovač na existující nastavení (výchozí) pomocí [Get-DPMCloudSubscriptionSetting](https://technet.microsoft.com/library/jj612793) rutiny:
+Po registraci serveru DPM v trezoru Recovery Services se spustí výchozí nastavení předplatného. Mezi tato nastavení předplatného patří sítě, šifrování a pracovní oblast. Pokud chcete změnit nastavení předplatného, musíte nejdřív získat popisovač pro existující (výchozí) nastavení pomocí rutiny [Get-DPMCloudSubscriptionSetting](https://technet.microsoft.com/library/jj612793) :
 
 ```powershell
 $setting = Get-DPMCloudSubscriptionSetting -DPMServerName "TestingServer"
 ```
 
-Všechny úpravy probíhají na tento místní objekt prostředí PowerShell ```$setting``` a pak se zaměřuje na aplikace DPM a Azure Backup k jejich uložení úplný objekt pomocí [Set-DPMCloudSubscriptionSetting](https://technet.microsoft.com/library/jj612791) rutiny. Je třeba použít ```–Commit``` příznak Ujistěte se, že jsou trvalé změny. Nastavení nebude použita a použít se službou Azure Backup, pokud potvrzené.
+V tomto místním objektu ```$setting``` prostředí PowerShell jsou provedeny všechny úpravy a potom je celý objekt potvrzen do aplikace DPM a Azure Backup jej uložit pomocí rutiny [set-DPMCloudSubscriptionSetting](https://technet.microsoft.com/library/jj612791) . K zajištění trvalého uložení ```–Commit``` změn je nutné použít příznak. Nastavení nebude použito a Azure Backup bude použito, pokud není potvrzeno.
 
 ```powershell
 Set-DPMCloudSubscriptionSetting -DPMServerName "TestingServer" -SubscriptionSetting $setting -Commit
@@ -191,13 +190,13 @@ Set-DPMCloudSubscriptionSetting -DPMServerName "TestingServer" -SubscriptionSett
 
 ## <a name="networking"></a>Sítě
 
-Je-li připojení počítače aplikace DPM do služby Azure Backup na Internetu prostřednictvím proxy serveru, nastavení proxy serveru musí být zadána pro úspěšné zálohování. To se provádí pomocí ```-ProxyServer```a ```-ProxyPort```, ```-ProxyUsername``` a ```ProxyPassword``` parametry [Set-DPMCloudSubscriptionSetting](https://technet.microsoft.com/library/jj612791) rutiny. V tomto příkladu není žádný proxy server tak můžeme jsou explicitně vymazání žádné informace související s proxy serverem.
+Pokud je připojení počítače DPM k Azure Backup službě na internetu prostřednictvím proxy server, mělo by být k dispozici nastavení proxy server pro úspěšné zálohování. To ```-ProxyServer```se provádí pomocí ```ProxyPassword``` parametrů ```-ProxyUsername``` a ```-ProxyPort```a pomocí rutiny [set-DPMCloudSubscriptionSetting](https://technet.microsoft.com/library/jj612791) . V tomto příkladu není proxy server, takže explicitně vymažeme všechny informace týkající se proxy serveru.
 
 ```powershell
 Set-DPMCloudSubscriptionSetting -DPMServerName "TestingServer" -SubscriptionSetting $setting -NoProxy
 ```
 
-Využití šířky pásma je možné řídit také s možností ```-WorkHourBandwidth``` a ```-NonWorkHourBandwidth``` pro danou sadu dny v týdnu. V tomto příkladu nenastavujeme žádné omezení.
+Využití šířky pásma je také možné ovládat pomocí možností ```-WorkHourBandwidth``` a ```-NonWorkHourBandwidth``` pro danou sadu dnů v týdnu. V tomto příkladu nenastavujeme žádné omezení.
 
 ```powershell
 Set-DPMCloudSubscriptionSetting -DPMServerName "TestingServer" -SubscriptionSetting $setting -NoThrottle
@@ -205,19 +204,19 @@ Set-DPMCloudSubscriptionSetting -DPMServerName "TestingServer" -SubscriptionSett
 
 ## <a name="configuring-the-staging-area"></a>Konfigurace pracovní oblasti
 
-Agent Azure Backup spuštěný na serveru DPM potřebuje dočasné úložiště pro data obnovená z cloudu (místní pracovní oblasti). Nakonfigurujte pracovní oblast pomocí [Set-DPMCloudSubscriptionSetting](https://technet.microsoft.com/library/jj612791) rutiny a ```-StagingAreaPath``` parametru.
+Agent Azure Backup spuštěný na serveru DPM potřebuje dočasné úložiště pro data obnovená z cloudu (místní pracovní oblast). Nastavte pracovní oblast pomocí rutiny [set-DPMCloudSubscriptionSetting](https://technet.microsoft.com/library/jj612791) a ```-StagingAreaPath``` parametru.
 
 ```powershell
 Set-DPMCloudSubscriptionSetting -DPMServerName "TestingServer" -SubscriptionSetting $setting -StagingAreaPath "C:\StagingArea"
 ```
 
-V předchozím příkladu se nastaví pracovní oblast *C:\StagingArea* v objektu prostředí PowerShell ```$setting```. Ujistěte se, že zadaná složka již existuje, jinak konečného potvrzení nastavení odběru nezdaří.
+V předchozím příkladu se pracovní oblast nastaví na *C:\StagingArea* v objektu ```$setting```PowerShellu. Zajistěte, aby Zadaná složka již existovala, nebo jinak se konečné potvrzení nastavení předplatného nezdaří.
 
 ### <a name="encryption-settings"></a>Nastavení šifrování
 
-Chránit jejich důvěrnost dat zašifrovaná data záloh odeslaných do služby Azure Backup. Šifrovací heslo je "password" se dešifrovat data v době obnovení. Je důležité zachovat tyto informace bezpečným a zabezpečeným, jakmile je nastavíte.
+Zálohovaná data odesílaná do Azure Backup jsou šifrovaná za účelem ochrany důvěrnosti dat. Šifrovací heslo je "heslo", které dešifruje data v době obnovení. Je důležité, aby tyto informace byly po nastavení bezpečné a zabezpečené.
 
-V následujícím příkladu první příkaz převede řetězec ```passphrase123456789``` zabezpečený řetězec a přiřadí zabezpečený řetězec do proměnné s názvem ```$Passphrase```. druhý příkaz nastaví zabezpečený řetězec v ```$Passphrase``` jako heslo pro šifrování záloh.
+V následujícím příkladu převede první příkaz řetězec ```passphrase123456789``` na zabezpečený řetězec a přiřadí zabezpečený řetězec k proměnné s názvem. ```$Passphrase``` Druhý příkaz nastaví zabezpečený řetězec ```$Passphrase``` jako heslo pro šifrování záloh.
 
 ```powershell
 $Passphrase = ConvertTo-SecureString -string "passphrase123456789" -AsPlainText -Force
@@ -226,55 +225,55 @@ Set-DPMCloudSubscriptionSetting -DPMServerName "TestingServer" -SubscriptionSett
 ```
 
 > [!IMPORTANT]
-> Heslo informace udržují v bezpečí po nastavení. Nebudete schopni obnovit data z Azure bez tohoto hesla.
+> Po nastavení ponechte informace pro heslo bezpečně a zabezpečené. Nebudete moct obnovit data z Azure bez tohoto přístupového hesla.
 >
 >
 
-V tomto okamžiku by měla provedení požadované změny pro ```$setting``` objektu. Mějte na paměti k provedení změn.
+V tomto okamžiku byste měli provést všechny požadované změny ```$setting``` objektu. Nezapomeňte změny potvrdit.
 
 ```powershell
 Set-DPMCloudSubscriptionSetting -DPMServerName "TestingServer" -SubscriptionSetting $setting -Commit
 ```
 
-## <a name="protect-data-to-azure-backup"></a>Ochrana dat do služby Azure Backup
+## <a name="protect-data-to-azure-backup"></a>Ochrana dat pro Azure Backup
 
-V této části přidáte provozního serveru DPM a poté proveďte ochranu dat do místního úložiště aplikace DPM a potom do služby Azure Backup. V příkladech předvedeme, jak zálohovat soubory a složky. Logiku je možné snadno rozšířit na libovolný zdroj dat aplikace DPM nepodporuje zálohování. Všechny zálohy aplikace DPM se řídí podle ochranu skupiny (PG) s čtyři části:
+V této části přidáte do DPM provozní server a pak data ochráníte do místního úložiště DPM a pak na Azure Backup. V příkladech ukážeme, jak zálohovat soubory a složky. Logika se dá snadno rozšířit na zálohování libovolného zdroje dat podporovaného aplikací DPM. Všechny zálohy aplikace DPM se řídí skupinou ochrany (PG) se čtyřmi částmi:
 
-1. **Seskupit členy** je seznam chránitelné objekty (označované také jako *zdroje dat* v aplikaci DPM), který chcete chránit ve stejné skupině ochrany. Chcete třeba chránit produkčních virtuálních počítačů v jedné skupiny ochrany a databáze systému SQL Server v jiné skupině ochrany mají různé požadavky na zálohování. Než budete zálohovat všechny zdroje dat na provozním serveru, které je třeba Ujistěte se, že Agent aplikace DPM je nainstalován na serveru a spravovaných aplikací DPM. Postupujte podle kroků pro [instalaci agenta aplikace DPM](https://technet.microsoft.com/library/bb870935.aspx) a odkazování na příslušném serveru aplikace DPM.
-2. **Způsob ochrany dat** Určuje umístění zálohování cílové - páska, disk a cloud. V našem příkladu jsme se chránit data na místní disk a do cloudu.
-3. A **plán zálohování** , která určuje, když potřebují zálohování mají být provedeny, a jak často mají data synchronizovat mezi serverem DPM a provozní server.
-4. A **plán uchovávání** , která určuje, jak dlouho chcete zachovat body obnovení v Azure.
+1. **Členové skupiny** jsou seznam všech chráněných objektů (označovaných také jako *zdroje dat* v aplikaci DPM), které chcete chránit ve stejné skupině ochrany. Například můžete chtít chránit produkční virtuální počítače v jedné skupině ochrany a SQL Server databáze v jiné skupině ochrany, protože mohou mít různé požadavky na zálohování. Než budete moct zálohovat jakýkoli zdroj dat na provozním serveru, musíte se ujistit, že je na serveru nainstalovaný agent DPM a spravuje ho DPM. Postupujte podle kroků pro [instalaci agenta DPM](https://technet.microsoft.com/library/bb870935.aspx) a jeho propojení s příslušným serverem DPM.
+2. **Metoda ochrany dat** Určuje cílové umístění zálohy – páska, disk a Cloud. V našem příkladu budeme chránit data na místní disk a do cloudu.
+3. **Plán zálohování** , který určuje, kdy je potřeba provést zálohování a jak často se mají synchronizovat data mezi serverem DPM a provozním serverem.
+4. **Plán uchovávání informací** , který určuje, jak dlouho mají být body obnovení v Azure uchovávány.
 
 ### <a name="creating-a-protection-group"></a>Vytvoření skupiny ochrany
 
-Začněte vytvořením nové skupiny ochrany s použitím [New-DPMProtectionGroup](https://technet.microsoft.com/library/hh881722) rutiny.
+Začněte vytvořením nové skupiny ochrany pomocí rutiny [New-DPMProtectionGroup](https://technet.microsoft.com/library/hh881722) .
 
 ```powershell
 $PG = New-DPMProtectionGroup -DPMServerName " TestingServer " -Name "ProtectGroup01"
 ```
 
-Výše uvedenou rutinu vytvoří skupiny ochrany s názvem *ProtectGroup01*. Do existující skupiny ochrany můžete také změnit později přidat zálohování do cloudu Azure. Žádné změny do skupiny ochrany – nové nebo existující - ještě ale zbývá k získání popisovače *upravitelná* pomocí [Get-DPMModifiableProtectionGroup](https://technet.microsoft.com/library/hh881713) rutiny.
+Výše uvedená rutina vytvoří skupinu ochrany s názvem *ProtectGroup01*. Existující skupinu ochrany je také možné upravit později a přidat tak zálohu do cloudu Azure. Pokud ale chcete udělat změny ve skupině ochrany – nové nebo existující, potřebujeme získat popisovač pro *upravitelný* objekt pomocí rutiny [Get-DPMModifiableProtectionGroup](https://technet.microsoft.com/library/hh881713) .
 
 ```powershell
 $MPG = Get-ModifiableProtectionGroup $PG
 ```
 
-### <a name="adding-group-members-to-the-protection-group"></a>Přidávají se členové skupiny do skupiny ochrany
+### <a name="adding-group-members-to-the-protection-group"></a>Přidání členů skupiny do skupiny ochrany
 
-Každý Agent aplikace DPM ví seznam zdrojů dat na serveru, na kterém je nainstalovaný. Do skupiny ochrany přidat zdroje dat, je potřeba nejdříve odeslat seznam zdrojů dat zpět na DPM server agenta aplikace DPM. Jeden nebo více zdrojů dat jsou pak vybraná a přidat do skupiny ochrany. Prostředí PowerShell kroky potřebné k dosažení tohoto cíle jsou:
+Každý agent DPM ví seznam zdrojů dat na serveru, na kterém je nainstalován. Chcete-li přidat zdroj dat do skupiny ochrany, musí nejdřív agent DPM odeslat seznam datových zdrojů zpět na server DPM. Jeden nebo více zdrojů dat se pak vybere a přidají se do skupiny ochrany. K dosažení těchto kroků je potřeba tento postup:
 
-1. Načte seznam všech serverů spravovaných aplikací DPM prostřednictvím agenta aplikace DPM.
+1. Načte seznam všech serverů spravovaných aplikací DPM prostřednictvím agenta DPM.
 2. Vyberte konkrétní server.
-3. Načte seznam všech datových zdrojů na serveru.
-4. Vyberte jeden nebo více zdrojů dat a přidat je do skupiny ochrany
+3. Načte seznam všech zdrojů dat na serveru.
+4. Vyberte jeden nebo více zdrojů dat a přidejte je do skupiny ochrany.
 
-Seznam serverů, na kterých agenta aplikace DPM je nainstalovaná a je spravována serverem aplikace DPM je získat [Get-DPMProductionServer](https://technet.microsoft.com/library/hh881600) rutiny. V tomto příkladu budeme filtrovat a pouze s názvem konfigurace PS *productionserver01* pro zálohování.
+Seznam serverů, na kterých je nainstalován agent aplikace DPM a který je spravován serverem DPM, je získán pomocí rutiny [Get-DPMProductionServer](https://technet.microsoft.com/library/hh881600) . V tomto příkladu vyfiltrujeme a nakonfigurujeme PS s názvem *productionserver01* , který se má zálohovat.
 
 ```powershell
 $server = Get-ProductionServer -DPMServerName "TestingServer" | Where-Object {($_.servername) –contains “productionserver01”}
 ```
 
-Teď načíst seznam zdrojů dat v ```$server``` pomocí [Get-DPMDatasource](https://technet.microsoft.com/library/hh881605) rutiny. V tomto příkladu jsme svazku filtrování *D:\\*  , který chcete konfigurovat pro zálohování. Tento zdroj dat se pak přidá do skupiny ochrany pomocí [přidat DPMChildDatasource](https://technet.microsoft.com/library/hh881732) rutiny. Nezapomeňte použít *upravitelná* objekt skupiny ochrany ```$MPG``` doplnit.
+Nyní načtěte seznam zdrojů dat na ```$server``` základě rutiny [Get-DPMDatasource](https://technet.microsoft.com/library/hh881605) . V tomto příkladu filtrujeme svazek *D:\\*  který chceme nakonfigurovat pro zálohování. Tento zdroj dat se pak přidá do skupiny ochrany pomocí rutiny [Add-DPMChildDatasource](https://technet.microsoft.com/library/hh881732) . Nezapomeňte použít objekt ```$MPG``` skupiny ochrany s *upravitelnou* ochranou, aby bylo možné dodatky.
 
 ```powershell
 $DS = Get-Datasource -ProductionServer $server -Inquire | Where-Object { $_.Name -contains “D:\” }
@@ -282,28 +281,28 @@ $DS = Get-Datasource -ProductionServer $server -Inquire | Where-Object { $_.Name
 Add-DPMChildDatasource -ProtectionGroup $MPG -ChildDatasource $DS
 ```
 
-Opakujte tento krok tolikrát, kolikrát podle potřeby, dokud nepřidáte všechny zvolené zdroje dat do skupiny ochrany. Můžete začít s pouze jeden zdroj dat a dokončit pracovní postup pro vytvoření skupiny ochrany a později přidat další zdroje dat do skupiny ochrany.
+Tento krok opakujte tolikrát, kolikrát je potřeba, dokud nepřidáte všechny vybrané zdroje dat do skupiny ochrany. Můžete také začít s pouze jedním zdrojem dat a dokončit pracovní postup pro vytvoření skupiny ochrany a později přidat další zdroje dat do skupiny ochrany.
 
 ### <a name="selecting-the-data-protection-method"></a>Výběr způsobu ochrany dat
 
-Jakmile se zdroje dat byly přidány do skupiny ochrany, dalším krokem je zadat pomocí metody ochrany [Set-DPMProtectionType](https://technet.microsoft.com/library/hh881725) rutiny. V tomto příkladu skupina ochrany je instalační program pro místním diskem a zálohování do cloudu. Také je třeba zadat zdroj dat, který chcete chránit, do cloudu pomocí [přidat DPMChildDatasource](https://technet.microsoft.com/library/hh881732.aspx) rutinu s parametrem - Online příznak.
+Po přidání zdrojů dat do skupiny ochrany je dalším krokem zadání metody ochrany pomocí rutiny [set-DPMProtectionType](https://technet.microsoft.com/library/hh881725) . V tomto příkladu je skupina ochrany nastavená na místní disk a cloudové zálohování. Je také potřeba zadat zdroj dat, který chcete chránit ke cloudu pomocí příznaku [Add-DPMChildDatasource](https://technet.microsoft.com/library/hh881732.aspx) s příznakem-online.
 
 ```powershell
 Set-DPMProtectionType -ProtectionGroup $MPG -ShortTerm Disk –LongTerm Online
 Add-DPMChildDatasource -ProtectionGroup $MPG -ChildDatasource $DS –Online
 ```
 
-### <a name="setting-the-retention-range"></a>Nastavení uchování
+### <a name="setting-the-retention-range"></a>Nastavení rozsahu uchování
 
-Nastavení uchovávání pro zálohování bodů pomocí [Set-DPMPolicyObjective](https://technet.microsoft.com/library/hh881762) rutiny. Když to může zdát liché předtím, než byly definovány plán zálohování, pomocí nastavení uchovávání ```Set-DPMPolicyObjective``` rutina automaticky nastaví výchozí plán zálohování, který je pak možné upravit. Vždy je možné nastavit první naplánovat zálohování a zásady uchovávání informací po.
+Nastavte uchovávání bodů zálohy pomocí rutiny [set-DPMPolicyObjective](https://technet.microsoft.com/library/hh881762) . I když se může stát, že nastavení uchovávání před definováním plánu zálohování je liché, ```Set-DPMPolicyObjective``` pomocí rutiny se automaticky nastaví výchozí plán zálohování, který se dá upravit. Plán zálohování je vždy možné nastavit jako první a zásady uchovávání informací po.
 
-V následujícím příkladu nastaví rutinu parametry uchování zálohování na disk. To bude uchovat zálohy po dobu 10 dnů a synchronizaci dat každých 6 hodin mezi produkční server a server aplikace DPM. ```SynchronizationFrequencyMinutes``` Nedefinuje, jak často bodu zálohy se vytvoří, ale jak často data zkopírována na DPM server.  Toto nastavení zabrání zálohy příliš velká.
+V následujícím příkladu rutina nastavuje parametry uchovávání pro zálohy disku. Tím se uchovávají zálohy po dobu 10 dnů a data se synchronizují každých 6 hodin mezi provozním serverem a serverem DPM. ```SynchronizationFrequencyMinutes``` Nedefinuje, jak často se vytvoří bod zálohování, ale jak často se data zkopírují na server DPM.  Toto nastavení zabrání nadměrnému navracení záloh.
 
 ```powershell
 Set-DPMPolicyObjective –ProtectionGroup $MPG -RetentionRangeInDays 10 -SynchronizationFrequencyMinutes 360
 ```
 
-Pro zálohy přejít do Azure (aplikace DPM na ně odkazuje jako zálohování Online) rozsahy uchovávání je možné nakonfigurovat pro [dlouhodobé uchování s využitím Dědečka ze strany otce-SYN schéma (GFS)](backup-azure-backup-cloud-as-tape.md). To znamená můžete definovat zásady uchovávání informací kombinované zahrnující denní, týdenní, měsíční a roční zásady uchovávání informací. V tomto příkladu vytvoříme představující schéma komplexní uchovávání, které chceme, aby pole a potom nakonfigurujte pomocí rozsah uchování [Set-DPMPolicyObjective](https://technet.microsoft.com/library/hh881762) rutiny.
+V případě záloh do Azure (aplikace DPM na ně odkazuje jako na online zálohování) rozsahy uchovávání dat je možné nakonfigurovat pro [dlouhodobé uchovávání dat pomocí schématu dědečka-otce-syn (GFS)](backup-azure-backup-cloud-as-tape.md). To znamená, že můžete definovat kombinované zásady uchovávání dat zahrnující denní, týdenní, měsíční a roční zásady uchovávání informací. V tomto příkladu vytvoříme pole reprezentující komplexní schéma uchovávání, které chceme, a pak nakonfigurujete rozsah uchování pomocí rutiny [set-DPMPolicyObjective](https://technet.microsoft.com/library/hh881762) .
 
 ```powershell
 $RRlist = @()
@@ -316,7 +315,7 @@ Set-DPMPolicyObjective –ProtectionGroup $MPG -OnlineRetentionRangeList $RRlist
 
 ### <a name="set-the-backup-schedule"></a>Nastavení plánu zálohování
 
-Aplikace DPM nastaví výchozí plán zálohování automaticky při zadání cíle ochrany pomocí ```Set-DPMPolicyObjective``` rutiny. Chcete-li změnit výchozí plány, použijte [Get-DPMPolicySchedule](https://technet.microsoft.com/library/hh881749) následovaný rutiny [Set-DPMPolicySchedule](https://technet.microsoft.com/library/hh881723) rutiny.
+DPM nastaví výchozí plán zálohování automaticky, pokud určíte cíl ochrany pomocí ```Set-DPMPolicyObjective``` rutiny. Pokud chcete změnit výchozí plány, použijte rutinu [Get-DPMPolicySchedule](https://technet.microsoft.com/library/hh881749) následovanou rutinou [set-DPMPolicySchedule](https://technet.microsoft.com/library/hh881723) .
 
 ```powershell
 $onlineSch = Get-DPMPolicySchedule -ProtectionGroup $mpg -LongTerm Online
@@ -327,42 +326,42 @@ Set-DPMPolicySchedule -ProtectionGroup $MPG -Schedule $onlineSch[3] -TimesOfDay 
 Set-DPMProtectionGroup -ProtectionGroup $MPG
 ```
 
-Ve výše uvedeném příkladu ```$onlineSch``` je pole, která obsahuje existující plán online ochrany pro skupinu ochrany ve schématu GFS čtyřech prvcích:
+Ve výše uvedeném příkladu ```$onlineSch``` je pole se čtyřmi prvky, které obsahují existující plán online ochrany pro skupinu ochrany v GFS schématu:
 
-1. ```$onlineSch[0]``` obsahuje denní plán
-2. ```$onlineSch[1]``` obsahuje Týdenní plán
-3. ```$onlineSch[2]``` obsahuje měsíční plán
-4. ```$onlineSch[3]``` obsahuje roční plán
+1. ```$onlineSch[0]```obsahuje denní plán.
+2. ```$onlineSch[1]```obsahuje týdenní plán.
+3. ```$onlineSch[2]```obsahuje měsíční plán.
+4. ```$onlineSch[3]```obsahuje roční plán.
 
-Proto pokud potřebujete změnit týdenní plán, musíte odkazovat ```$onlineSch[1]```.
+Takže pokud potřebujete upravit týdenní plán, je třeba použít odkaz ```$onlineSch[1]```na.
 
 ### <a name="initial-backup"></a>Prvotní zálohování
 
-Při zálohování zdroje dat poprvé, musí aplikace DPM vytvoří počáteční repliky, který vytvoří úplná kopie zdroje dat, které se mají chránit na svazku repliky DPM. Tato aktivita můžou být plánované pro určitou dobu, nebo můžete spustit ručně, pomocí [Set-DPMReplicaCreationMethod](https://technet.microsoft.com/library/hh881715) rutinu s parametrem ```-NOW```.
+Při prvním zálohování zdroje dat potřebuje DPM vytvořit počáteční repliku, která vytvoří úplnou kopii zdroje dat, který se má chránit na svazku repliky DPM. Tuto aktivitu je možné naplánovat buď na určitou dobu, nebo ji lze aktivovat ručně pomocí rutiny [set-DPMReplicaCreationMethod](https://technet.microsoft.com/library/hh881715) s parametrem ```-NOW```.
 
 ```powershell
 Set-DPMReplicaCreationMethod -ProtectionGroup $MPG -NOW
 ```
 
-### <a name="changing-the-size-of-dpm-replica--recovery-point-volume"></a>Změna velikosti repliky aplikace DPM a svazek bodu obnovení
+### <a name="changing-the-size-of-dpm-replica--recovery-point-volume"></a>Změna velikosti repliky aplikace DPM & svazku bodu obnovení
 
-Můžete také změnit velikost svazku repliky DPM a Stínová kopie svazku pomocí [Set-DPMDatasourceDiskAllocation](https://technet.microsoft.com/library/hh881618.aspx) rutiny jako v následujícím příkladu: Get-DatasourceDiskAllocation - Datasource $DS Set-DatasourceDiskAllocation - Datasource $DS - protectiongroup prostředí $MPG – ruční - ReplicaArea (2 gb) – ShadowCopyArea (2 gb)
+Velikost svazku repliky DPM a svazku stínové kopie můžete také změnit pomocí rutiny [set-DPMDatasourceDiskAllocation](https://technet.microsoft.com/library/hh881618.aspx) , jak je znázorněno v následujícím příkladu: Get-DatasourceDiskAllocation-DataSource $DS set-DatasourceDiskAllocation-DataSource $DS-AutoProtection $MPG-Manual-ReplicaArea (2 GB)-ShadowCopyArea (2 GB)
 
-### <a name="committing-the-changes-to-the-protection-group"></a>Potvrzují se změny do skupiny ochrany
+### <a name="committing-the-changes-to-the-protection-group"></a>Změny se potvrdily do skupiny ochrany.
 
-Nakonec změny musí být potvrzeny, než aplikace DPM může posloužit zálohování za novou konfiguraci skupiny ochrany. Toho lze dosáhnout pomocí [Set-DPMProtectionGroup](https://technet.microsoft.com/library/hh881758) rutiny.
+Nakonec je třeba provést změny, aby aplikace DPM mohla získat zálohu na novou konfiguraci skupiny ochrany. Toho lze dosáhnout pomocí rutiny [set-DPMProtectionGroup](https://technet.microsoft.com/library/hh881758) .
 
 ```powershell
 Set-DPMProtectionGroup -ProtectionGroup $MPG
 ```
 
-## <a name="view-the-backup-points"></a>Zobrazení body zálohy
+## <a name="view-the-backup-points"></a>Zobrazit body zálohy
 
-Můžete použít [Get-DPMRecoveryPoint](https://technet.microsoft.com/library/hh881746) rutiny pro získání seznamu všech bodů obnovení pro zdroj dat. V tomto příkladu provedeme následující:
+Pomocí rutiny [Get-DPMRecoveryPoint](https://technet.microsoft.com/library/hh881746) můžete získat seznam všech bodů obnovení pro zdroj dat. V tomto příkladu budeme:
 
-* načte všechny PGs na serveru DPM a uložit v poli ```$PG```
-* získání zdroje dat odpovídající ```$PG[0]```
-* získáte všechny body obnovení pro zdroj dat.
+* Načte všechny PGs na serveru DPM a uloží je do pole.```$PG```
+* získat zdroje dat odpovídající```$PG[0]```
+* Získá všechny body obnovení pro zdroj dat.
 
 ```powershell
 $PG = Get-DPMProtectionGroup –DPMServerName "TestingServer"
@@ -372,13 +371,13 @@ $RecoveryPoints = Get-DPMRecoverypoint -Datasource $DS[0] -Online
 
 ## <a name="restore-data-protected-on-azure"></a>Obnovení dat chráněných v Azure
 
-Obnovování dat jsou kombinací informací ```RecoverableItem``` objektu a ```RecoveryOption``` objektu. V předchozí části jsme teď seznam body zálohy pro zdroj dat.
+Obnovování dat je kombinací ```RecoverableItem``` objektu ```RecoveryOption``` a objektu. V předchozí části jsme získali seznam bodů zálohování pro zdroj dat.
 
-V následujícím příkladu jsme ukazují, jak obnovit virtuální počítač Hyper-V z Azure Backup kombinací body zálohy cíl pro obnovení. Tento příklad zahrnuje:
+V následujícím příkladu ukážeme, jak obnovit virtuální počítač Hyper-V z Azure Backup kombinováním bodů zálohování s cílem obnovení. Tento příklad obsahuje:
 
-* Vytváření s použitím možnosti obnovení [New-DPMRecoveryOption](https://technet.microsoft.com/library/hh881592) rutiny.
-* Načítají se pole body zálohy pomocí ```Get-DPMRecoveryPoint``` rutiny.
-* Vyberete bod obnovení ze zálohy.
+* Vytvoření možnosti obnovení pomocí rutiny [New-DPMRecoveryOption](https://technet.microsoft.com/library/hh881592) .
+* Načítá se pole záložních bodů pomocí ```Get-DPMRecoveryPoint``` rutiny.
+* Výběr bodu zálohování, ze kterého se má obnovit.
 
 ```powershell
 $RecoveryOption = New-DPMRecoveryOption -HyperVDatasource -TargetServer "HVDCenter02" -RecoveryLocation AlternateHyperVServer -RecoveryType Recover -TargetLocation “C:\VMRecovery”
@@ -390,8 +389,8 @@ $RecoveryPoints = Get-DPMRecoverypoint -Datasource $DS[0] -Online
 Restore-DPMRecoverableItem -RecoverableItem $RecoveryPoints[0] -RecoveryOption $RecoveryOption
 ```
 
-Pro každý typ zdroje dat lze snadno rozšířit příkazy.
+Příkazy lze snadno rozšířit pro libovolný typ zdroje dat.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* Další informace o DPM do služby Azure Backup najdete v části [seznámení s DPM Backup](backup-azure-dpm-introduction.md)
+* Další informace o aplikaci DPM pro Azure Backup najdete v tématu [Úvod do zálohování aplikace DPM](backup-azure-dpm-introduction.md) .

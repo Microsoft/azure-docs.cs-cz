@@ -1,6 +1,6 @@
 ---
-title: Čítače výkonu ve službě Application Insights | Dokumentace Microsoftu
-description: Monitorování systému a vlastní čítače výkonu .NET ve službě Application Insights.
+title: Čítače výkonu v Application Insights | Microsoft Docs
+description: Monitorovat systémové a vlastní čítače výkonu rozhraní .NET v Application Insights.
 services: application-insights
 documentationcenter: ''
 author: mrbullwinkle
@@ -12,96 +12,93 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: mbullwin
-ms.openlocfilehash: 0ec64a5ae412fb4a1900021fefcb7d9112b1b019
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c681b58b01979b95e35ae57cefde38c56a787543
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66255326"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68360249"
 ---
-# <a name="system-performance-counters-in-application-insights"></a>Čítače výkonu systému ve službě Application Insights
+# <a name="system-performance-counters-in-application-insights"></a>Čítače výkonu systému v Application Insights
 
-Windows nabízí širokou škálu [čítačů výkonu](https://docs.microsoft.com/windows/desktop/PerfCtrs/about-performance-counters), například pro vytížení procesoru nebo využití paměti, disku a sítě. Můžete také definovat vlastní čítače výkonu. Shromažďování čítačů výkonu je podporován tak dlouho, dokud je aplikace spuštěna v rámci služby IIS na místního hostitele nebo virtuální počítač, ke kterému máte přístup pro správu. I když aplikace běžící jako Azure Web Apps nemají přímý přístup k čítačům výkonu, jsou shromažďovány podmnožinu dostupné čítače službou Application Insights.
+Windows nabízí širokou škálu [čítačů výkonu](https://docs.microsoft.com/windows/desktop/PerfCtrs/about-performance-counters), například pro vytížení procesoru nebo využití paměti, disku a sítě. Můžete také definovat vlastní čítače výkonu. Shromažďování čítačů výkonu je podporováno, pokud je aplikace spuštěna v rámci služby IIS na místním hostiteli nebo virtuální počítač, ke kterému máte přístup pro správu. I když aplikace spuštěné jako Azure Web Apps nemají přímý přístup k čítačům výkonu, v Application Insights shromáždí podmnožinu dostupných čítačů.
 
-## <a name="view-counters"></a>Zobrazení čítačů
+## <a name="view-counters"></a>Zobrazit čítače
 
-V podokně metriky se zobrazí výchozí sadu čítačů výkonu.
+V podokně metriky se zobrazuje výchozí sada čítačů výkonu.
 
-![Čítače výkonu v Application Insights](./media/performance-counters/performance-counters.png)
+![Čítače výkonu hlášené v Application Insights](./media/performance-counters/performance-counters.png)
 
-Aktuální výchozí čítače, které jsou nakonfigurované jako shromážděných pro ASP.NET/ASP.NET základní webové aplikace jsou:
+Aktuální výchozí čítače, které jsou nakonfigurované pro shromažďování pro webové aplikace ASP.NET/ASP.NET Core, jsou:
+- % Času\\procesoru procesu
+- % Času\\procesoru procesu – normalizace
+- Bajty\\dostupné paměti
+- ASP.NET požadavky za sekundu
+- Vyvolané výjimky .NET CLR za sekundu
+- Doba spuštění ASP.NET ApplicationsRequest
+- Nesdílené bajty procesu\\
+- Vstupně\\-výstupní operace procesu – bajty/s
+- Žádosti aplikací\\ASP.NET ve frontě aplikací
+- Procesor (_Total)\\% času procesoru
 
-         - % Process\\Processor Time
-         - % Process\\Processor Time Normalized
-         - Memory\\Available Bytes
-         - ASP.NET Requests/Sec
-         - .NET CLR Exceptions Thrown / sec
-         - ASP.NET ApplicationsRequest Execution Time
-         - Process\\Private Bytes
-         - Process\\IO Data Bytes/sec
-         - ASP.NET Applications\\Requests In Application Queue
-         - Processor(_Total)\\% Processor Time
+## <a name="add-counters"></a>Přidat čítače
 
-## <a name="add-counters"></a>Přidání čítačů
+Pokud požadovaný čítač výkonu není zahrnutý v seznamu metrik, můžete ho přidat.
 
-Pokud čítač výkonu, které chcete nejsou zahrnuty v seznamu metrik, můžete ho přidat.
-
-1. Zjistěte, jaké čítače jsou k dispozici na serveru pomocí tohoto příkazu prostředí PowerShell na místním serveru:
+1. Zjistěte, jaké čítače jsou k dispozici na serveru pomocí tohoto příkazu PowerShellu na místním serveru:
 
     `Get-Counter -ListSet *`
 
-    (Viz [ `Get-Counter` ](https://technet.microsoft.com/library/hh849685.aspx).)
-2. Open ApplicationInsights.config.
+    (Viz [`Get-Counter`](https://technet.microsoft.com/library/hh849685.aspx).)
+2. Otevřete soubor ApplicationInsights. config.
 
-   * Pokud jste přidali Application Insights do vaší aplikace během vývoje, upravit soubor ApplicationInsights.config v projektu a pak ho znovu nasadíte na serverech.
-3. Upravte směrnice kolekce výkonu:
+   * Pokud jste během vývoje přidali Application Insights do vaší aplikace, upravte soubor ApplicationInsights. config v projektu a pak ho znovu nasaďte na své servery.
+3. Úprava direktivy sběrače výkonu:
 
-```XML
+    ```XML
 
-    <Add Type="Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.PerformanceCollectorModule, Microsoft.AI.PerfCounterCollector">
-      <Counters>
-        <Add PerformanceCounter="\Objects\Processes"/>
-        <Add PerformanceCounter="\Sales(photo)\# Items Sold" ReportAs="Photo sales"/>
-      </Counters>
-    </Add>
-
-```
+        <Add Type="Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.PerformanceCollectorModule, Microsoft.AI.PerfCounterCollector">
+          <Counters>
+            <Add PerformanceCounter="\Objects\Processes"/>
+            <Add PerformanceCounter="\Sales(photo)\# Items Sold" ReportAs="Photo sales"/>
+          </Counters>
+        </Add>
+    ```
 
 > [!NOTE]
-> Aplikace ASP.NET Core nemají `ApplicationInsights.config`, a proto výše uvedené metody není platný pro aplikace ASP.NET Core.
+> Aplikace ASP.NET Core neobsahují `ApplicationInsights.config`, takže výše uvedená metoda není platná pro ASP.NET Core aplikace.
 
-Můžete zaznamenat standardní čítače i ty že jsme implementovali sami. `\Objects\Processes` je příkladem standardní čítač, který je k dispozici na všech systémech Windows. `\Sales(photo)\# Items Sold` je příkladem vlastní čítače, která může být implementována ve webové službě.
+Můžete zachytit standardní počítadla i ty, které jste implementovali sami. `\Objects\Processes`je příkladem standardního čítače, který je k dispozici ve všech systémech Windows. `\Sales(photo)\# Items Sold`je příkladem vlastního čítače, který může být implementován ve webové službě.
 
-Formát je `\Category(instance)\Counter"`, nebo kategorií, které nemají instancí, právě `\Category\Counter`.
+Formát je `\Category(instance)\Counter"`nebo pro kategorie, které nemají instance, stačí `\Category\Counter`.
 
-`ReportAs` je vyžadován pro názvy čítačů, které se neshodují s `[a-zA-Z()/-_ \.]+` – to znamená, které obsahují znaky, které nejsou v následujících sadách: písmena, kulaté závorky, lomítkem, spojovník, podtržítko, mezery, tečky.
+`ReportAs`je vyžadován u názvů čítačů, které se neshodují `[a-zA-Z()/-_ \.]+` – to znamená, že obsahují znaky, které nejsou v následujících sadách: písmena, kulaté závorky, lomítko, pomlčka, podtržítko, mezera, tečka.
 
-Pokud chcete zadat instanci, nebudou se shromažďovat jako dimenze "CounterInstanceName" ohlášené metriky.
+Pokud zadáte instanci, bude shromažďována jako dimenze "CounterInstanceName" hlášené metriky.
 
-### <a name="collecting-performance-counters-in-code-for-aspnet-web-applications-or-netnet-core-console-applications"></a>Shromažďování čítačů výkonu v kódu pro webové aplikace ASP.NET nebo.NET/.NET základní konzolové aplikace
-Pokud chcete shromáždit čítače výkonu systému a posílat do Application Insights, můžete přizpůsobit následující fragment:
+### <a name="collecting-performance-counters-in-code-for-aspnet-web-applications-or-netnet-core-console-applications"></a>Shromažďování čítačů výkonu v kódu pro webové aplikace ASP.NET nebo konzolové aplikace .NET/.NET Core
+Chcete-li shromáždit čítače výkonu systému a odeslat je do Application Insights, můžete následující fragment kódu upravit:
 
 
-``` C#
-
+```csharp
     var perfCollectorModule = new PerformanceCollectorModule();
     perfCollectorModule.Counters.Add(new PerformanceCounterCollectionRequest(
       @"\Process([replace-with-application-process-name])\Page Faults/sec", "PageFaultsPerfSec")));
     perfCollectorModule.Initialize(TelemetryConfiguration.Active);
 ```
 
-Nebo můžete provést totéž s vlastní metriky, které jste vytvořili:
+Můžete také provést stejnou věc s vlastními metrikami, které jste vytvořili:
 
-``` C#
+```csharp
     var perfCollectorModule = new PerformanceCollectorModule();
     perfCollectorModule.Counters.Add(new PerformanceCounterCollectionRequest(
       @"\Sales(photo)\# Items Sold", "Photo sales"));
     perfCollectorModule.Initialize(TelemetryConfiguration.Active);
 ```
 
-### <a name="collecting-performance-counters-in-code-for-aspnet-core-web-applications"></a>Shromažďování čítačů výkonu v kódu pro webové aplikace ASP.NET Core
+### <a name="collecting-performance-counters-in-code-for-aspnet-core-web-applications"></a>Shromažďování čítačů výkonu v kódu pro ASP.NET Core webové aplikace
 
-Upravit `ConfigureServices` metoda ve vaší `Startup.cs` třídy jak je uvedeno níže.
+Upravte `ConfigureServices` metodu`Startup.cs` ve třídě tak, jak je uvedeno níže.
 
 ```csharp
 using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector;
@@ -120,45 +117,45 @@ using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector;
     }
 ```
 
-## <a name="performance-counters-in-analytics"></a>Čítače výkonu v Analytics
-Můžete vyhledat a zobrazit sestavy čítačů výkonu v [Analytics](../../azure-monitor/app/analytics.md).
+## <a name="performance-counters-in-analytics"></a>Čítače výkonu v analýzách
+Sestavy čítače výkonu můžete vyhledávat a zobrazovat v [analýzách](../../azure-monitor/app/analytics.md).
 
-**Čítače výkonu** zpřístupňuje schématu `category`, `counter` název, a `instance` název jednotlivých čítačů výkonu.  V telemetrii pro každou aplikaci zobrazí se vám jenom čítače pro tuto aplikaci. Například pokud chcete zobrazit jsou k dispozici co čítače: 
+Schéma **čítače výkonu** zpřístupňuje `category`, `counter` název a `instance` název každého čítače výkonu.  V telemetrii pro každou aplikaci uvidíte pouze čítače této aplikace. Například, chcete-li zjistit, jaké čítače jsou k dispozici: 
 
-![Čítače výkonu ve službě Application Insights analytics](./media/performance-counters/analytics-performance-counters.png)
+![Čítače výkonu v Application Insights Analytics](./media/performance-counters/analytics-performance-counters.png)
 
-('Instance' tady odkazuje na instanci čítače výkonu, není role nebo instance počítače serveru. Název instance čítače výkonu obvykle segmenty čítače, jako například čas procesoru podle názvu procesu nebo aplikace.)
+(' Instance ' zde odkazuje na instanci čítače výkonu, nikoli na roli nebo instanci počítače serveru. Název instance čítače výkonu obvykle segmentuje čítače, jako je například čas procesoru, podle názvu procesu nebo aplikace.)
 
-Pokud chcete získat grafu dostupné paměti za poslední období: 
+Získání grafu dostupné paměti za poslední období: 
 
-![Paměť promítnu ve službě Application Insights analytics](./media/performance-counters/analytics-available-memory.png)
+![Timechart paměti v analýzách Application Insights](./media/performance-counters/analytics-available-memory.png)
 
-Další telemetrická data, jako jsou **čítače výkonu** má také sloupec `cloud_RoleInstance` , která určuje identitu instance hostitelského serveru, na kterém je spuštěná aplikace. Chcete-li například porovnat výkon vaší aplikace na různých počítačích: 
+Podobně jako u jiné telemetrie má **čítače výkonu** také sloupec `cloud_RoleInstance` , který označuje identitu instance hostitelského serveru, na které je vaše aplikace spuštěná. Pokud například chcete porovnat výkon aplikace v různých počítačích: 
 
-![Výkon segmentované podle instance role ve službě Application Insights analytics](./media/performance-counters/analytics-metrics-role-instance.png)
+![Výkon segmentované instance role v Application Insights Analytics](./media/performance-counters/analytics-metrics-role-instance.png)
 
-## <a name="aspnet-and-application-insights-counts"></a>ASP.NET a počty Application Insights
+## <a name="aspnet-and-application-insights-counts"></a>Počty ASP.NET a Application Insights
 
-*Jaký je rozdíl mezi frekvence výjimek a metriky výjimky?*
+*Jaký je rozdíl mezi metrikou četnosti výjimek a výjimkami?*
 
-* *Frekvence výjimek* je čítač výkonu systému. CLR vrátí počet všech zpracovaných a nezpracovaných výjimek, které jsou vyvolány a vydělí celkový počet v intervalu vzorkování délku intervalu. Sadu SDK Application Insights shromažďuje tento výsledek a odešle ji na portál.
+* *Míra výjimek* je čítač výkonu systému. CLR počítá všechny zpracovávané a neošetřené výjimky, které jsou vyvolány, a vydělí celkový součet v intervalu vzorkování o délku intervalu. Sada SDK Application Insights shromažďuje tento výsledek a odesílá je na portál.
 
-* *Výjimky* je počet sestav TrackException přijatých na portálu v intervalu vzorkování grafu. Zahrnuje pouze zpracované výjimky, ve kterém jste napsali TrackException volání v kódu a nezahrnuje všechny [neošetřené výjimky](../../azure-monitor/app/asp-net-exceptions.md). 
+* *Výjimky* jsou počtem sestav TrackException přijatých portálem v intervalu vzorkování grafu. Obsahuje pouze ošetřené výjimky, u kterých jste napsali volání TrackException v kódu a nezahrnuje všechny neošetřené [výjimky](../../azure-monitor/app/asp-net-exceptions.md). 
 
 ## <a name="performance-counters-for-applications-running-in-azure-web-apps"></a>Čítače výkonu pro aplikace běžící v Azure Web Apps
 
-Aplikace ASP.NET a ASP.NET Core nasadit do Azure Web Apps běží v prostředí izolovaného prostoru speciální. Toto prostředí neumožňuje přímý přístup k čítačům výkonu systému. Ale jsou omezené dílčí sady čítačů zveřejní jako proměnné prostředí, jak je popsáno [tady](https://github.com/projectkudu/kudu/wiki/Perf-Counters-exposed-as-environment-variables). Application Insights SDK pro ASP.NET a ASP.NET Core z těchto proměnných prostředí speciální shromažďuje čítače výkonu z Azure Web Apps. Pouze podmnožinu čítače jsou k dispozici v tomto prostředí, a najdete úplný seznam [tady.](https://github.com/microsoft/ApplicationInsights-dotnet-server/blob/develop/Src/PerformanceCollector/Perf.Shared/Implementation/WebAppPerformanceCollector/CounterFactory.cs)
+Aplikace ASP.NET i ASP.NET Core nasazené do Azure Web Apps běžet ve speciálním prostředí izolovaného prostoru (sandbox). Toto prostředí neumožňuje přímý přístup k čítačům výkonu systému. Omezená podmnožina čítačů je však k dispozici jako proměnné prostředí, jak je popsáno [zde](https://github.com/projectkudu/kudu/wiki/Perf-Counters-exposed-as-environment-variables). Sada Application Insights SDK pro ASP.NET a ASP.NET Core shromažďuje čítače výkonu z Azure Web Apps z těchto speciálních proměnných prostředí. V tomto prostředí je dostupná jenom podmnožina čítačů. úplný seznam najdete [tady.](https://github.com/microsoft/ApplicationInsights-dotnet-server/blob/develop/Src/PerformanceCollector/Perf.Shared/Implementation/WebAppPerformanceCollector/CounterFactory.cs)
 
-## <a name="performance-counters-in-aspnet-core-applications"></a>Čítače výkonu aplikace ASP.NET Core
+## <a name="performance-counters-in-aspnet-core-applications"></a>Čítače výkonu v aplikacích ASP.NET Core
 
-* [ASP.NET Core SDK](https://nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore) verzi 2.4.1 a nad shromažďuje čítače výkonu, pokud je aplikace spuštěná ve službě Azure Web App (Windows)
+* [ASP.NET Core SDK](https://nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore) verze 2.4.1 a vyšší shromažďuje čítače výkonu, pokud je aplikace spuštěná ve službě Azure Web App (Windows).
 
-* Sada SDK verze 2.7.0-beta3 a nad shromažďuje čítače výkonu, pokud aplikace běží ve Windows a cílení `NETSTANDARD2.0` nebo vyšší.
-* Pro aplikace cílené na rozhraní .NET Framework čítače výkonu jsou podporovány ve všech verzích SDK.
-* Tento článek bude aktualizován, když se přidá podpora čítače výkonu v jiných Windows.
+* Sada SDK verze 2.7.0-beta3 a vyšší shromažďuje čítače výkonu, pokud aplikace běží ve Windows a cílí `NETSTANDARD2.0` na nebo vyšší.
+* Pro aplikace, které cílí na .NET Framework, jsou čítače výkonu podporovány ve všech verzích sady SDK.
+* Tento článek bude aktualizován, pokud je přidána podpora čítače výkonu v systému, který není systémem Windows.
 
-## <a name="alerts"></a>Výstrahy
-Stejně jako jiné metriky můžete [nastavit výstrahu](../../azure-monitor/app/alerts.md) upozornit, pokud čítač výkonu přejde mimo omezení zadáte. Otevřete podokno oznámení a klikněte na tlačítko Přidat oznámení.
+## <a name="alerts"></a>Upozornění
+Podobně jako u jiných metrik můžete [nastavit výstrahu](../../azure-monitor/app/alerts.md) , která vás upozorní, pokud počítadlo výkonu dosáhne mimo zadaný limit. Otevřete podokno výstrahy a klikněte na Přidat výstrahu.
 
 ## <a name="next"></a>Další kroky
 

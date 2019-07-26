@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8e9c11613a9bdcaedad1a69662b2d6bd7bfefc3b
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.openlocfilehash: 3661b3f7fd37a329857a74d32d292678d98f5aef
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67867258"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68499830"
 ---
 # <a name="how-to-manage-stale-devices-in-azure-ad"></a>Jak: Správa zastaralých zařízení ve službě Azure AD
 
@@ -70,7 +70,7 @@ Pokud chcete ve svém prostředí efektivně uklidit zastaralá zařízení, mě
 K aktualizaci zařízení ve službě Azure AD potřebujete účet, který má přiřazenu jednu z následujících rolí:
 
 - Globální správce
-- Správce cloudových zařízení (nová role, která je právě dostupná)
+- Správce cloudového zařízení
 - Správce služby Intune
 
 V zásadách úklidu vyberte účty, které mají přiřazené požadované role. 
@@ -165,6 +165,6 @@ Všechna ověřování, kdy se zařízení používá k ověřování vůči slu
 - **Zařízení připojená k Azure AD** – uživatelé nemůžou používat zařízení k přihlášení. 
 - **Mobilní zařízení** – uživatel nemá přístup k prostředkům Azure AD, jako je Office 365. 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Přehled správy zařízení na webu Azure Portal najdete v tématu věnovaném [správě zařízení pomocí webu Azure Portal](device-management-azure-portal.md).

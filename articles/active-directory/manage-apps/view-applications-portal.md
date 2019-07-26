@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: arvinh
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ae5e16aa00147d6ea434090720b51af06e8e0c5
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 764c7c048dd0398b495ee31421a8e2bc9f8169ee
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67807568"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68477197"
 ---
 # <a name="view-your-azure-active-directory-tenant-applications"></a>Zobrazení aplikací tenanta Azure Active Directory
 
@@ -39,16 +39,16 @@ Aplikace vašeho tenanta Azure AD můžete zobrazit na webu Azure Portal v čás
 
 Vyhledání aplikací tenanta:
 
-1. V  **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu vyberte **Azure Active Directory**.
-1. V **Azure Active Directory** vyberte **podnikové aplikace**.
-1. Z **typ aplikace** rozevírací nabídky vyberte **všechny aplikace**a zvolte **použít**. Zobrazí se náhodný vzorek aplikací vašeho tenanta.
-1. Pokud chcete zobrazit další aplikace, vyberte **načíst další** v dolní části seznamu. V závislosti na počtu aplikací ve vašem tenantovi může být místo procházení seznamu jednodušší [vyhledat konkrétní aplikaci](#search-for-a-tenant-application).
+1. V **[Azure Portal](https://portal.azure.com)** v levém navigačním panelu vyberte možnost **Azure Active Directory**.
+1. V podokně **Azure Active Directory** vyberte možnost **podnikové aplikace**.
+1. Z rozevírací nabídky **Typ aplikace** vyberte **všechny aplikace**a zvolte **použít**. Zobrazí se náhodný vzorek aplikací vašeho tenanta.
+1. Pokud chcete zobrazit víc aplikací, vyberte na konci seznamu **načíst další** . V závislosti na počtu aplikací ve vašem tenantovi může být místo procházení seznamu jednodušší [vyhledat konkrétní aplikaci](#search-for-a-tenant-application).
 
 ## <a name="select-viewing-options"></a>Výběr možností zobrazení
 
-Vyberte možnosti podle co hledáte.
+Vyberte možnosti podle toho, co hledáte.
 
-1. Můžete zobrazit aplikace podle **typ aplikace**, **stav aplikace**, a **viditelnost aplikace**.
+1. Můžete zobrazit aplikace podle **typu aplikace**, **stavu aplikace**a **viditelnosti aplikace**.
 1. V části **Typ aplikace** zvolte jednu z těchto možností:
 
     - **Podnikové aplikace:** Zobrazí se aplikace jiných výrobců než Microsoftu.
@@ -56,27 +56,27 @@ Vyberte možnosti podle co hledáte.
     - **Všechny aplikace:** Zobrazí se aplikace Microsoftu i jiných výrobců.
 
 1. V části **Stav aplikace** zvolte **Jakýkoli**, **Zakázáno** nebo **Povoleno**. Možnost **Jakýkoli** zahrnuje zakázané i povolené aplikace.
-1. V části **Viditelnost aplikace** zvolte **Jakákoli** nebo **Skrytá**. **Skryté** možnost zobrazí aplikace, které jsou v tenantovi, ale nejsou viditelné pro uživatele.
-1. Po zvolení požadované možnosti, vyberte **použít**.
+1. V části **Viditelnost aplikace** zvolte **Jakákoli** nebo **Skrytá**. Možnost **skryté** zobrazuje aplikace, které jsou v tenantovi, ale nejsou viditelné pro uživatele.
+1. Po výběru požadovaných možností vyberte **použít**.
 
 ## <a name="search-for-a-tenant-application"></a>Vyhledání aplikace tenanta
 
-K vyhledání konkrétní aplikaci:
+Hledání konkrétní aplikace:
 
-1. V **typ aplikace** nabídce vyberte možnost **všechny aplikace**a zvolte **použít**.
-1. Zadejte název aplikace, kterou chcete vyhledat. Pokud aplikace se přidala do svého tenanta Azure AD, zobrazí se ve výsledcích hledání. Tento příklad ukazuje, že GitHub nebyl přidán do aplikací tenanta.
+1. V nabídce **Typ aplikace** vyberte možnost **všechny aplikace**a klikněte na tlačítko **použít**.
+1. Zadejte název aplikace, kterou chcete vyhledat. Pokud byla aplikace přidána do tenanta služby Azure AD, zobrazí se ve výsledcích hledání. Tento příklad ukazuje, že GitHub nebyl přidán do klientských aplikací.
 
-    ![Příklad ukazuje, že aplikace nebyla přidána do tenanta](media/view-applications-portal/search-for-tenant-application.png)
+    ![Příklad ukazuje, že aplikace nebyla přidána do tenanta.](media/view-applications-portal/search-for-tenant-application.png)
 
 1. Zkuste zadat několik počátečních písmen názvu aplikace. Tento příklad ukazuje všechny aplikace začínající na **Sales**.
 
-    ![Příklad zobrazuje všechny aplikace, které začínají s prodejním týmem](media/view-applications-portal/search-by-prefix.png)
+    ![Příklad zobrazí všechny aplikace, které začínají na prodej.](media/view-applications-portal/search-by-prefix.png)
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto rychlém startu jste zjistili, jak zobrazit aplikace ve vašem tenantovi Azure AD. Jste zjistili, jak filtrovat seznam aplikací podle typu aplikace, stavu a viditelnost. Také jste zjistili, jak vyhledat konkrétní aplikaci.
+V tomto rychlém startu jste zjistili, jak zobrazit aplikace v tenantovi Azure AD. Zjistili jste, jak filtrovat seznam aplikací podle typu aplikace, stavu a viditelnosti. Také jste zjistili, jak vyhledat konkrétní aplikaci.
 
-Teď, když jste nalezené aplikace vám byly hledáte, můžete nadále [přidat další aplikace do svého tenanta](add-application-portal.md). Nebo můžete vybrat aplikace umožňuje zobrazit nebo upravit vlastnosti a možnosti konfigurace. Například můžete nakonfigurovat jednotné přihlašování.
+Teď, když jste našli aplikaci, kterou jste hledali, můžete pokračovat ve [přidávání dalších aplikací do svého tenanta](add-application-portal.md). Nebo můžete vybrat aplikaci pro zobrazení nebo úpravu vlastností a možností konfigurace. Například můžete nakonfigurovat jednotné přihlašování.
 
 > [!div class="nextstepaction"]
-> [Konfigurace jednotného přihlašování](configure-single-sign-on-portal.md)
+> [Konfigurace jednotného přihlašování](configure-single-sign-on-non-gallery-applications.md)

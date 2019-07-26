@@ -12,21 +12,21 @@ ms.devlang: python
 ms.topic: quickstart
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 01/30/2019
+ms.date: 07/22/2019
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: 5d0c8b458f11076ea87d74eae3eecd72fb37eb40
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 979c94e0c577c2a7dbcb11434ac5544e4dd1df64
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67621526"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68385140"
 ---
 # <a name="quickstart-deploy-linux-containers-to-service-fabric"></a>Rychlý start: Nasazení kontejnerů Linuxu do Service Fabric
 
 Azure Service Fabric je platforma distribuovaných systémů pro nasazování a správu škálovatelných a spolehlivých mikroslužeb a kontejnerů.
 
-Tento rychlý start ukazuje, jak nasadit kontejnery Linuxu do clusteru Service Fabric v Azure. Jakmile budete hotovi, budete mít hlasovací aplikaci skládající se z webového front-endu v Pythonu a back-endu Redis spuštěného v clusteru Service Fabric. Zjistíte také, jak převzít služby při selhání aplikace a jak škálovat aplikaci v clusteru.
+V tomto rychlém startu se dozvíte, jak nasadit kontejnery Linux do clusteru Service Fabric v Azure. Jakmile budete hotovi, budete mít hlasovací aplikaci skládající se z webového front-endu v Pythonu a back-endu Redis spuštěného v clusteru Service Fabric. Zjistíte také, jak převzít služby při selhání aplikace a jak škálovat aplikaci v clusteru.
 
 ![Webová stránka hlasovací aplikace][quickstartpic]
 
@@ -34,20 +34,20 @@ Tento rychlý start ukazuje, jak nasadit kontejnery Linuxu do clusteru Service F
 
 K provedení kroků v tomto kurzu Rychlý start je potřeba:
 
-1. Vytvoření [bezplatný účet Azure](https://azure.microsoft.com/free/) předtím, než začnete, pokud nemáte předplatné.
+1. Vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete, pokud nemáte předplatné.
 
 2. Instalace [rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli-apt?view=azure-cli-latest)
 
-3. Nainstalujte [Service Fabric SDK a rozhraní příkazového řádku](service-fabric-get-started-linux.md#installation-methods)
+3. Instalace [sady Service Fabric SDK a](service-fabric-get-started-linux.md#installation-methods) rozhraní PŘÍKAZového řádku
 
-4. Nainstalujte [Git](https://git-scm.com/)
+4. Nainstalovat [Git](https://git-scm.com/)
 
 
 ## <a name="get-the-application-package"></a>Získání balíčku aplikace
 
 K nasazení kontejnerů do Service Fabric potřebujete sadu souborů manifestu (definice aplikace), které popisují jednotlivé kontejnery a aplikaci.
 
-V konzole pomocí gitu naklonujte kopii definice aplikace; pak přejděte do adresáře `Voting` ve vašem klonu.
+V konzole nástroje pomocí Gitu naklonujte kopii definice aplikace; pak změňte adresář na `Voting` adresář ve vašem klonu.
 
 ```bash
 git clone https://github.com/Azure-Samples/service-fabric-containers.git
@@ -57,7 +57,7 @@ cd service-fabric-containers/Linux/container-tutorial/Voting
 
 ## <a name="create-a-service-fabric-cluster"></a>Vytvoření clusteru Service Fabric
 
-Pokud chcete nasadit aplikaci do Azure, potřebujete cluster Service Fabric, ve kterém bude aplikace spuštěná. Následující příkazy vytvoří cluster s pěti uzly v Azure.  Příkazy také vytvořit certifikát podepsaný svým držitelem, přidá ho do služby key vault a soubory ke stažení certifikátu místně. Nový certifikát se používá k zabezpečení clusteru nasadí a slouží k ověřování klientů.
+Pokud chcete nasadit aplikaci do Azure, potřebujete cluster Service Fabric, ve kterém bude aplikace spuštěná. Následující příkazy vytvoří cluster s pěti uzly v Azure.  Příkazy také vytvoří certifikát podepsaný svým držitelem, přidá ho do trezoru klíčů a stáhne certifikát místně. Nový certifikát se používá k zabezpečení clusteru při jeho nasazení a slouží k ověřování klientů.
 
 ```azurecli
 #!/bin/bash
@@ -87,7 +87,7 @@ az sf cluster create --resource-group $ResourceGroupName --location $Location --
 ```
 
 > [!Note]
-> Webová front-end služba je nakonfigurovaná k naslouchání příchozímu provozu na portu 80. Výchozí port 80 je otevřen v clusteru virtuální počítače a nástroj pro vyrovnávání zatížení Azure.
+> Webová front-end služba je nakonfigurovaná k naslouchání příchozímu provozu na portu 80. Ve výchozím nastavení je na virtuálních počítačích clusteru a nástroji pro vyrovnávání zatížení Azure otevřený port 80.
 >
 
 ## <a name="configure-your-environment"></a>Konfigurace prostředí
@@ -98,9 +98,9 @@ Service Fabric poskytuje několik nástrojů, pomocí kterých můžete spravova
 - Rozhraní příkazového řádku (CLI) Service Fabric, které se spouští nad Azure CLI. 
 - Příkazy PowerShellu.
 
-V tomto rychlém startu použijete Service Fabric CLI a Service Fabric Exploreru (webový nástroj). Pokud chcete použít Service Fabric Explorer, musíte importovat certifikát PFX, který do prohlížeče. Ve výchozím nastavení soubor PFX nemá žádné heslo.
+V tomto rychlém startu použijete Service Fabric CLI a Service Fabric Explorer (nástroj založený na webu). Chcete-li použít Service Fabric Explorer, je nutné importovat soubor PFX certifikátu do prohlížeče. Ve výchozím nastavení nemá soubor PFX žádné heslo.
 
-Výchozím prohlížečem v Ubuntu 16.04 je Mozilla Firefox. Pokud chcete certifikát importovat do prohlížeče Firefox, klikněte na tlačítko nabídky v pravém horním rohu prohlížeče a pak klikněte na **Možnosti**. Na stránce **Předvolby** pomocí vyhledávacího pole vyhledejte „certifikáty“. Klikněte na **Zobrazit certifikáty**, vyberte kartu **Osobní**, klikněte na **Importovat** a podle zobrazených výzev importujte certifikát.
+Mozilla Firefox je výchozím prohlížečem v Ubuntu 16,04. Pokud chcete certifikát importovat do prohlížeče Firefox, klikněte na tlačítko nabídky v pravém horním rohu prohlížeče a pak klikněte na **Možnosti**. Na stránce **Předvolby** pomocí vyhledávacího pole vyhledejte „certifikáty“. Klikněte na **Zobrazit certifikáty**, vyberte kartu **Osobní**, klikněte na **Importovat** a podle zobrazených výzev importujte certifikát.
 
    ![Instalace certifikátu v prohlížeči Firefox](./media/service-fabric-quickstart-containers-linux/install-cert-firefox.png)
 
@@ -112,7 +112,7 @@ Výchozím prohlížečem v Ubuntu 16.04 je Mozilla Firefox. Pokud chcete certif
     sfctl cluster select --endpoint https://containertestcluster.eastus.cloudapp.azure.com:19080 --pem containertestcluster22019013100.pem --no-verify
     ```
 
-2. Pomocí instalačního skriptu zkopírujte definici hlasovací aplikace do clusteru, zaregistrujte typ aplikace a vytvořte její instanci.  Soubor PEM, který certifikát se musí nacházet ve stejném adresáři jako *install.sh* souboru.
+2. Pomocí instalačního skriptu zkopírujte definici hlasovací aplikace do clusteru, zaregistrujte typ aplikace a vytvořte její instanci.  Soubor certifikátu PEM by měl být umístěn ve stejném adresáři jako soubor *install.sh* .
 
     ```bash
     ./install.sh
@@ -179,7 +179,7 @@ Pomocí odinstalačního skriptu (uninstall.sh), který je součástí šablony,
 
 Nejjednodušší způsob, jak odstranit cluster a všechny prostředky, které využívá, je odstranit příslušnou skupinu prostředků.
 
-Přihlaste se k Azure a vyberte ID předplatného, pomocí kterého chcete odebrat cluster. ID vašeho předplatného najdete po přihlášení k webu Azure portal. Odstranit skupinu prostředků a všechny prostředky clusteru pomocí [příkaz az group delete](/cli/azure/group?view=azure-cli-latest).
+Přihlaste se k Azure a vyberte ID předplatného, se kterým chcete cluster odebrat. ID předplatného najdete tak, že se přihlásíte k Azure Portal. Pomocí [příkazu AZ Group Delete](/cli/azure/group?view=azure-cli-latest)odstraňte skupinu prostředků a všechny prostředky clusteru.
 
 ```azurecli
 az login
@@ -189,11 +189,11 @@ az group delete --name $ResourceGroupName
 ```
 
 Pokud už jste dokončili práci se svým clusterem, můžete odebrat certifikát ze svého úložiště certifikátů. Příklad:
-- Ve Windows: Použití [modul snap-in Certifikáty konzoly MMC](https://docs.microsoft.com/dotnet/framework/wcf/feature-details/how-to-view-certificates-with-the-mmc-snap-in). Při přidávání modulu snap-in nezapomeňte vybrat možnost **Můj uživatelský účet**. Přejděte do umístění `Certificates - Current User\Personal\Certificates` a odeberte certifikát.
-- Na počítači Mac: Použijte aplikaci klíčenka.
-- On Ubuntu: Postupujte podle kroků, které jste zobrazili certifikáty a odeberte certifikát.
+- Ve Windows: Použijte [modul snap-in Certifikáty konzoly MMC](https://docs.microsoft.com/dotnet/framework/wcf/feature-details/how-to-view-certificates-with-the-mmc-snap-in). Při přidávání modulu snap-in nezapomeňte vybrat možnost **Můj uživatelský účet**. Přejděte do umístění `Certificates - Current User\Personal\Certificates` a odeberte certifikát.
+- Na počítači Mac: Použijte aplikaci pro řetězce klíčů.
+- V Ubuntu: Postupujte podle kroků, které jste použili k zobrazení certifikátů a odebrání certifikátu.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto rychlém startu jste nasadili aplikaci typu kontejner pro Linux do clusteru Service Fabric v Azure, provedli jste převzetí služeb při selhání aplikace a škálovali jste aplikaci v clusteru. Další informace o práci s kontejnery Linuxu v Service Fabric najdete v kurzu věnovaném aplikacím typu kontejner pro Linux.
 

@@ -1,211 +1,210 @@
 ---
-title: Architektura služby Azure Backup
-description: Obsahuje přehled architektury, komponenty a procesy používané službou Azure Backup.
-services: backup
+title: Architektura Azure Backup
+description: Poskytuje přehled architektury, komponent a procesů, které používá služba Azure Backup.
 author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: dacurwin
-ms.openlocfilehash: 7c0a1650490a863f5b3a3cf09a5500d72359e7f1
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 44bf85eafe3f5cfa801b6c845a51e3dcd5e1262a
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67271999"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68466876"
 ---
-# <a name="azure-backup-architecture"></a>Architektura služby Azure Backup
+# <a name="azure-backup-architecture"></a>Architektura Azure Backup
 
-Můžete použít [služby Azure Backup](backup-overview.md) zálohovat data na cloudové platformě Microsoft Azure. Tento článek shrnuje architektury Azure Backup, komponenty a procesy. 
+[Službu Azure Backup](backup-overview.md) můžete použít k zálohování dat na cloudovou platformu Microsoft Azure. Tento článek shrnuje Azure Backup architekturu, komponent a procesů. 
 
-## <a name="what-does-azure-backup-do"></a>Co dělá Azure Backup?
+## <a name="what-does-azure-backup-do"></a>Co Azure Backup udělat?
 
-Azure Backup zálohuje data, stav počítače a úlohy běžící na místních počítačů a instancí virtuálních počítačů (VM) Azure. Existuje mnoho scénářů Azure Backup.
+Azure Backup zálohují data, stav počítače a úlohy spuštěné na místních počítačích a instancích virtuálních počítačů Azure. Existuje několik scénářů Azure Backup.
 
-## <a name="how-does-azure-backup-work"></a>Jak funguje Azure Backup?
+## <a name="how-does-azure-backup-work"></a>Jak Azure Backup funguje?
 
-Můžete zálohovat počítače a data s využitím několik metod:
+Počítače a data můžete zálohovat pomocí několika metod:
 
 - **Zálohování místních počítačů**:
-    - Pomocí agenta Azure Backup Microsoft Azure Recovery Services (MARS) můžete zálohovat na místních počítačích Windows přímo do Azure. Počítače s Linuxem nejsou podporovány.
-    - Místních počítačů můžete zálohovat na záložní server (System Center Data Protection Manager (DPM) nebo Microsoft Azure Backup Server (MABS)). Záložní server lze pak zálohovat do trezoru služby Recovery Services v Azure.
+    - Místní počítače s Windows můžete zálohovat přímo do Azure pomocí agenta Azure Backup Microsoft Azure Recovery Services (MARS). Počítače se systémem Linux nejsou podporovány.
+    - Místní počítače můžete zálohovat na záložní server (buď pomocí nástroje System Center Data Protection Manager (DPM), nebo server Microsoft Azure Backup (MABS)). Záložní server pak můžete zálohovat do trezoru Recovery Services v Azure.
 
 - **Zálohování virtuálních počítačů Azure**:
-    - Můžete zálohovat virtuální počítače Azure přímo. Azure Backup nainstaluje rozšíření zálohování do agenta virtuálního počítače Azure, na kterém běží na virtuálním počítači. Toto rozšíření zálohuje celý virtuální počítač.
-    - Můžete zálohovat konkrétní soubory a složky na virtuálním počítači Azure spuštěním agenta MARS.
-    - Virtuální počítače Azure můžete zálohovat na MABS, na kterém běží v Azure a MABS pak můžete zálohovat do trezoru služby Recovery Services.
+    - Virtuální počítače Azure můžete zálohovat přímo. Azure Backup nainstaluje záložní rozšíření agenta virtuálního počítače Azure, který běží na virtuálním počítači. Toto rozšíření zálohuje celý virtuální počítač.
+    - Konkrétní soubory a složky můžete na virtuálním počítači Azure zálohovat spuštěním agenta MARS.
+    - Virtuální počítače Azure můžete zálohovat na MABS, která běží v Azure, a pak můžete MABS zálohovat do trezoru Recovery Services.
 
-Další informace o [co můžete zálohovat](backup-overview.md) a asi [Podporované scénáře zálohování](backup-support-matrix.md).
+Přečtěte si další informace o [tom, co můžete zálohovat](backup-overview.md) , a o [podporovaných scénářích zálohování](backup-support-matrix.md).
 
-## <a name="where-is-data-backed-up"></a>Kde se data zálohována?
+## <a name="where-is-data-backed-up"></a>Kde se data zálohují?
 
-Azure Backup ukládá zálohovaná data v trezoru služby Recovery Services. Trezor je entita online úložiště v Azure, která se používá k ukládání dat, jako jsou záložní kopie, body obnovení a zásady zálohování.
+Azure Backup ukládá zálohovaná data do trezoru Recovery Services. Trezor je online entita v Azure, která se používá k ukládání dat, jako jsou záložní kopie, body obnovení a zásady zálohování.
 
-Trezory služby Recovery Services mají tyto funkce:
+Recovery Services trezory mají následující funkce:
 
-- Trezory služby usnadňují uspořádání dat záloh a současně minimalizují režii na správu.
-- V rámci předplatného Azure můžete vytvořit až 500 trezorů.
-- Můžete monitorovat zálohovaných položek v trezoru, včetně virtuálních počítačů Azure a místních počítačů.
-- Můžete spravovat přístup k trezoru s využitím Azure [řízení přístupu na základě role (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal).
-- Můžete určit, jak data v trezoru se replikují pro zajištění redundance:
-    - **Místně redundantní úložiště (LRS)** : K ochraně před selháním v datacentru, můžete použít LRS. LRS se replikuje data na jednotce škálování úložiště. [Další informace](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs).
-    - **Geograficky redundantní úložiště (GRS)** : Pro ochranu před výjimečnými výpadky celé oblasti, můžete použít GRS. GRS replikuje vaše data do sekundární oblasti. [Další informace](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs). 
-    - Ve výchozím nastavení používají GRS trezory služby Recovery Services. 
+- Trezory usnadňují uspořádání zálohovaných dat a současně minimalizují nároky na správu.
+- V každém předplatném Azure můžete vytvořit až 500 trezorů.
+- Zálohované položky můžete monitorovat v trezoru, včetně virtuálních počítačů Azure a místních počítačů.
+- Přístup k trezoru můžete spravovat pomocí [řízení přístupu na základě role (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)v Azure.
+- Určíte, jak se data v trezoru replikují pro redundanci:
+    - **Místně redundantní úložiště (LRS)** : Pro zajištění ochrany před selháním v datovém centru můžete použít LRS. LRS replikuje data do jednotky škálování úložiště. [Další informace](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs).
+    - **Geograficky redundantní úložiště (GRS)** : K ochraně před výpadky v rámci oblastí můžete použít GRS. GRS replikuje vaše data do sekundární oblasti. [Další informace](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs). 
+    - Ve výchozím nastavení používají trezory Recovery Services GRS. 
 
-## <a name="backup-agents"></a>Agenty služby Backup
+## <a name="backup-agents"></a>Agenti zálohování
 
-Azure Backup poskytuje různé agenty služby backup, v závislosti na tom, jaký typ počítačů během zálohování:
+Azure Backup poskytuje různé agenty zálohování v závislosti na tom, jaký typ počítače se zálohuje:
 
 **Agent** | **Podrobnosti** 
 --- | --- 
-**Agenta MARS** | <ul><li>Běží na jednotlivých místních počítačů s Windows serverem k zálohování souborů, složek a stav systému.</li> <li>Běží na virtuálních počítačích Azure k zálohování souborů, složek a stav systému.</li> <li>Běží na serverech DPM nebo MABS zálohování na disk aplikace DPM nebo MABS místního úložiště do Azure.</li></ul> 
-**Rozšíření virtuálního počítače Azure** | Běží na virtuálních počítačích Azure zálohovat do trezoru.
+**Agent MARS** | <ul><li>Spouští se na jednotlivých místních počítačích Windows serveru pro zálohování souborů, složek a stavu systému.</li> <li>Spouští se na virtuálních počítačích Azure pro zálohování souborů, složek a stavu systému.</li> <li>Spouští na serverech DPM nebo MABS k zálohování místního úložiště aplikace DPM/MABS do Azure.</li></ul> 
+**Rozšíření virtuálního počítače Azure** | Spustí se na virtuálních počítačích Azure, které je zálohují do trezoru.
 
 ## <a name="backup-types"></a>Typy zálohování
 
-Následující tabulka vysvětluje různé typy záloh a jejich použití:
+Následující tabulka popisuje různé typy zálohování a jejich použití:
 
 **Typ zálohování** | **Podrobnosti** | **Použití**
 --- | --- | ---
-**Úplné** | Úplné zálohování obsahuje celý zdroj dat. Má větší šířku pásma sítě než rozdílové nebo přírůstkové zálohování. | Používá se pro prvotní zálohování.
-**Rozdílové** |  Rozdílová záloha ukládá bloky, které se změnily od prvotní úplné zálohy. Používá menší množství sítě a úložiště a redundantní kopie nezměněných dat. nezachová.<br/><br/> Neefektivní, protože jsou bloky dat, které jsou beze změny mezi novější zálohy přenesená a uložená. | Nepoužívá se službou Azure Backup.
-**Přírůstkové** | Přírůstkové zálohování ukládá pouze bloky dat, která se změnila od posledního zálohování. Vysokou efektivitu úložiště a sítě. <br/><br/> S přírůstkovým zálohováním není nutné k doplnění pomocí úplné zálohy. | Používají DPM nebo MABS zálohování na disk a používat v všechny zálohy do Azure.
+**Kompletní** | Úplná záloha obsahuje celý zdroj dat. Trvá větší šířku pásma sítě než rozdílové nebo přírůstkové zálohy. | Slouží k prvotnímu zálohování.
+**Diferenciál** |  Rozdílové zálohování ukládá bloky, které se od počátečního úplného zálohování změnily. Používá menší množství sítě a úložiště a neuchovává redundantní kopie nezměněných dat.<br/><br/> Neefektivní vzhledem k tomu, že se přenesou a ukládají datové bloky nezměněné mezi novějšími zálohami. | Nepoužívá se Azure Backup.
+**Pořadové** | Přírůstkové zálohování ukládá pouze bloky dat, které se od předchozí zálohy změnily. Vysoká efektivita úložiště a sítě. <br/><br/> Pomocí přírůstkového zálohování není nutné doplňovat s úplnými zálohami. | Používá se aplikací DPM/MABS pro zálohování disku a používá se ve všech zálohách do Azure.
 
-## <a name="sql-server-backup-types"></a>Typy zálohování systému SQL Server
+## <a name="sql-server-backup-types"></a>SQL Server typy zálohování
 
-Následující tabulka vysvětluje různé typy zálohy používají pro databáze systému SQL Server a jak často používají:
+Následující tabulka popisuje různé typy záloh používaných pro SQL Server databáze a četnost jejich používání:
 
 **Typ zálohování** | **Podrobnosti** | **Použití**
 --- | --- | ---
-**Úplné zálohování** | Úplná záloha databáze vytvoří zálohu celé databáze. Obsahuje všechna data v konkrétní databázi nebo sadu skupiny souborů nebo souborů. Úplné zálohování obsahuje také dostatek protokoly a tato data obnovit. | Maximálně můžete aktivovat jednu úplnou zálohu denně.<br/><br/> Můžete provést úplné zálohování na denní nebo týdenní interval.
-**Rozdílová záloha** | Rozdílové zálohování vychází největší zálohování všech dat aktuální a předchozí.<br/><br/> Zachytí pouze data, která se změnila od úplného zálohování. |  Maximálně můžete aktivovat jeden rozdílové zálohy za den.<br/><br/> Úplné zálohování a rozdílovou zálohu nelze konfigurovat ve stejný den.
-**Zálohy transakčního protokolu** | Záloha protokolu umožňuje obnovení bodu v čase až po konkrétní sekundy. | Maximálně můžete nakonfigurovat zálohy transakčního protokolu každých 15 minut.
+**Úplná záloha** | Úplná záloha databáze zálohuje celou databázi. Obsahuje všechna data v konkrétní databázi nebo v sadě skupin souborů nebo souborů. Úplné zálohování také obsahuje dostatek protokolů pro obnovení těchto dat. | Maximálně můžete aktivovat jednu úplnou zálohu denně.<br/><br/> Můžete si zvolit, že chcete vytvořit úplnou zálohu na denní nebo týdenní interval.
+**Rozdílové zálohování** | Rozdílová záloha vychází z poslední předchozí zálohy na základě úplného zálohování dat.<br/><br/> Zachycuje jenom data, která se od úplného zálohování změnila. |  Ve většině případů můžete aktivovat jednu rozdílovou zálohu za den.<br/><br/> V jednom dni nemůžete nakonfigurovat úplnou zálohu a rozdílovou zálohu.
+**Zálohování protokolu transakcí** | Zálohování protokolu umožňuje obnovení k určitému bodu v čase až na určitou sekundu. | V tuto chvíli můžete nakonfigurovat zálohování transakčních protokolů každých 15 minut.
 
-### <a name="comparison-of-backup-types"></a>Porovnání typy zálohování
+### <a name="comparison-of-backup-types"></a>Porovnání typů zálohování
 
-Spotřeba úložiště (RTO) plánovaná doba obnovení a využití sítě se liší pro každý typ zálohování. Následující obrázek znázorňuje srovnání typy zálohování:
+Spotřeba úložiště, plánovaná doba obnovení (RTO) a spotřeba sítě se u každého typu zálohování liší. Následující obrázek znázorňuje porovnání typů zálohování:
 
-- Zdroje dat A se skládá z 10 úložiště bloků, A1 – A10, které se zálohují každý měsíc.
+- Zdroj dat A se skládá z 10 bloků úložiště a1 – A10, které se zálohují měsíčně.
 - Bloky A2, A3, A4 a A9 se mění první měsíc a blok A5 se mění následující měsíc.
-- Pro rozdílové zálohování druhý měsíc změněné bloky A2, A3, A4 a A9 se zálohují. Třetí měsíc se znovu zálohují tyto stejné bloky, společně se změněným blokem A5. Změněné bloky se budou zálohovat až do doby, kdy dojde k dalšímu úplnému zálohování.
-- Přírůstkové zálohování, druhý měsíc bloky A2, A3, A4 a A9 jsou označeny jako změnit a přenést. Třetí měsíc se označí a přenese pouze změněný blok A5. 
+- Pro rozdílové zálohování se v druhém měsíci zálohují změněné bloky a2, a3, A4 a buňce 3. Třetí měsíc se znovu zálohují tyto stejné bloky, společně se změněným blokem A5. Změněné bloky se budou zálohovat až do doby, kdy dojde k dalšímu úplnému zálohování.
+- Pro přírůstkové zálohování se za druhý měsíc budou bloky a2, a3, A4 a 3 označovat jako změněné a přenesené. Třetí měsíc se označí a přenese pouze změněný blok A5. 
 
-![Obrázek ukazující porovnání způsobů zálohování](./media/backup-architecture/backup-method-comparison.png)
+![Obrázek znázorňující porovnání metod zálohování](./media/backup-architecture/backup-method-comparison.png)
 
-## <a name="backup-features"></a>Funkce služby zálohování
+## <a name="backup-features"></a>Funkce zálohování
 
 Následující tabulka shrnuje podporované funkce pro různé typy zálohování:
 
-**Funkce** | **Místní počítače s Windows serverem (přímo)** | **Virtuální počítače Azure** | **Počítače nebo aplikace pomocí aplikace DPM nebo MABS**
+**Funkce** | **Místní počítače se systémem Windows Server (přímé)** | **Virtuální počítače Azure** | **Počítače nebo aplikace s DPM/MABS**
 --- | --- | --- | ---
-Zálohovat do trezoru | ![Ano][green] | ![Ano][green] | ![Ano][green] 
-Zálohování na disk aplikace DPM nebo MABS, pak do Azure | | | ![Ano][green] 
-Komprese dat odeslaných k zálohování | ![Ano][green] | Při přenosu dat se nepoužívá žádná komprese. Úložiště se mírně zvětšený, ale je rychlejší obnovení.  | ![Ano][green] 
+Zálohování do trezoru | ![Ano][green] | ![Ano][green] | ![Ano][green] 
+Zálohování na disk DPM/MABS, potom do Azure | | | ![Ano][green] 
+Komprimovat data odesílaná k zálohování | ![Ano][green] | Při přenosu dat se nepoužívá žádná komprese. Úložiště je mírně nepatrné, ale obnovení je rychlejší.  | ![Ano][green] 
 Spustit přírůstkové zálohování |![Ano][green] |![Ano][green] |![Ano][green] 
-Zálohování disků s odstraněním duplicit | | | ![Částečně][yellow]<br/><br/> Pro aplikaci DPM nebo MABS servery nasazené jen místně. 
+Zálohování disků s odstraněnými duplicitními daty | | | ![Částečně][yellow]<br/><br/> Jenom pro servery DPM/MABS nasazené místně. 
 
-![klíč tabulky](./media/backup-architecture/table-key.png)
+![Klíč tabulky](./media/backup-architecture/table-key.png)
 
-## <a name="architecture-direct-backup-of-azure-vms"></a>Architektura: Přímé zálohování virtuálních počítačů Azure
+## <a name="architecture-direct-backup-of-azure-vms"></a>Architektura Přímé zálohování virtuálních počítačů Azure
 
-1. Při povolení zálohování pro virtuální počítač Azure, zálohování se spouští podle plánu, který zadáte.
-1. Při prvním zálohování zálohování rozšíření je nainstalováno na virtuálním počítači Pokud virtuální počítač je spuštěný.
-    - U virtuálních počítačů s Windows je nainstalované rozšíření VMSnapshot.
-    - Pro virtuální počítače s Linuxem je nainstalovaná rozšíření VMSnapshot Linuxu.
-1. Rozšíření pořídí snímek úroveň úložiště. 
-    - Pro Windows virtuálních počítačů, které jsou spuštěné, souřadnice zálohování se Windows Stínová kopie svazku Service (VSS) k pořízení konzistentního snímku virtuálního počítače. Ve výchozím nastavení zálohování trvá úplné zálohy stínové kopie svazku. Pokud záloha není schopen pořízení konzistentního snímku, trvá snímek konzistentní vzhledem k souboru.
-    - Zálohování virtuálních počítačů s Linuxem, trvá snímek konzistentní vzhledem k souboru. Pro snímky konzistentní budete muset ručně upravit předzálohovacího nebo pozálohovacího skripty.
-    - Zálohování je optimalizované zálohování každého disku virtuálního počítače paralelně. Azure Backup pro každý disk zálohování, přečte bloky na disku a uloží jenom změněná data. 
-1. Poté, co se pořídí snímek, data se přenesou do trezoru. 
-    - Pouze bloky dat, která se změnila od posledního zálohování jsou zkopírovány.
-    - Data nejsou šifrována. Azure Backup můžete zálohovat virtuální počítače Azure, které bylo zašifrováno službou Azure Disk Encryption.
-    - Data snímku nemusí být hned zkopírují do trezoru. Ve špičce zálohování může trvat několik hodin. Celkový čas zálohování pro virtuální počítač bude méně než 24 hodin denně zásady zálohování.
-1. Po odeslání dat do trezoru se snímek odstraní a vytvoří bod obnovení.
+1. Když povolíte zálohování pro virtuální počítač Azure, zálohování se spustí podle plánu, který zadáte.
+1. Při prvním zálohování se na virtuálním počítači nainstaluje rozšíření zálohování, pokud je virtuální počítač spuštěný.
+    - Pro virtuální počítače s Windows se nainstaluje rozšíření VMSnapshot.
+    - Pro virtuální počítače se systémem Linux se nainstaluje rozšíření VMSnapshot Linux.
+1. Rozšíření používá snímek na úrovni úložiště. 
+    - Pro virtuální počítače s Windows, na kterých běží, se zaregistrují služby Windows služba Stínová kopie svazku (VSS), aby vybraly snímek konzistentní vzhledem k aplikacím virtuálního počítače. Ve výchozím nastavení provádí zálohování úplné zálohy VSS. Pokud zálohování nedokáže vytvořit snímek konzistentní vzhledem k aplikacím, převezme snímek konzistentní se souborem.
+    - Pro virtuální počítače se systémem Linux aplikace Backup provede snímek konzistentní se souborem. U snímků konzistentních vzhledem k aplikacím je nutné ručně přizpůsobit skripty před/po.
+    - Zálohování je optimalizované zálohováním jednotlivých disků virtuálních počítačů paralelně. U každého zálohovaného disku Azure Backup načte bloky na disku a uloží jenom změněná data. 
+1. Po pořízení snímku se data přenesou do trezoru. 
+    - Zkopírovány jsou pouze bloky dat, které se od posledního zálohování změnily.
+    - Data nejsou šifrovaná. Azure Backup můžou zálohovat virtuální počítače Azure, které se šifrují pomocí Azure Disk Encryption.
+    - Data snímku se nemusí hned zkopírovat do trezoru. V časech špičky může zálohování trvat několik hodin. Celková doba zálohování pro virtuální počítač bude pro denní zásady zálohování kratší než 24 hodin.
+1. Po odeslání dat do trezoru se snímek odebere a vytvoří se bod obnovení.
 
-Virtuální počítače Azure pro příkazy pro řízení potřebovat přístup k Internetu. Pokud zálohujete úlohy ve virtuálním počítači (například zálohování databáze serveru SQL Server), musí back endovým datům také přístup k Internetu. 
+Virtuální počítače Azure vyžadují přístup k Internetu pro řídicí příkazy. Pokud zálohujete úlohy do virtuálního počítače (například SQL Server zálohy databáze), data back-endu také potřebují přístup k Internetu. 
 
 ![Zálohování virtuálních počítačů Azure](./media/backup-architecture/architecture-azure-vm.png)
 
-## <a name="architecture-direct-backup-of-on-premises-windows-server-machines-or-azure-vm-files-or-folders"></a>Architektura: Přímé zálohování počítačů s Windows serverem v místním nebo virtuálním počítači Azure souborů nebo složek
+## <a name="architecture-direct-backup-of-on-premises-windows-server-machines-or-azure-vm-files-or-folders"></a>Architektura Přímé zálohování místních počítačů s Windows serverem nebo souborů nebo složek virtuálních počítačů Azure
 
-1. Chcete-li nastavit scénář, stáhněte a nainstalujte agenta MARS na počítači. Potom vyberete, co bude zálohováno, když se spustí zálohování a jak dlouho se bude nacházet v Azure.
-1. Prvotní zálohování spustí podle nastavení zálohování.
-1. Pořídit snímek bodu v čase svazky vybrané pro zálohování pomocí agenta MARS stínové kopie svazku.
-    - Agenta MARS pouze operace zápisu Windows systému používá k zachycení snímku.
-    - Protože agenta nepoužívá žádné aplikace zapisovače VSS, nezachycuje snímky konzistentní.
-1. Po pořízení snímek služby VSS, agenta MARS vytvoří virtuální pevný disk (VHD) ve složce mezipaměti, kterou jste zadali při konfiguraci zálohování. Agent také ukládá kontrolních součtů pro každý blok dat.
-1. Spouštět přírůstkové zálohování podle plánu, který jste zadali, není-li spustit zálohování ad hoc.
-1. V přírůstkové zálohy změněné soubory jsou identifikovány a je vytvořen nový virtuální pevný disk. Virtuální pevný disk je komprimovaná a šifrovaná a bude odeslán do trezoru.
-1. Po dokončení přírůstkového zálohování, nový virtuální pevný disk je sloučen s virtuální disk VHD vytvořený po počáteční replikaci. Tento virtuální pevný disk sloučené poskytuje nejnovější stav má být použit pro porovnání pro probíhající zálohování.
+1. Pokud chcete nastavit scénář, Stáhněte a nainstalujte na počítači agenta MARS. Pak můžete vybrat, co se má zálohovat, kdy se zálohování spustí a jak dlouho se budou uchovávat v Azure.
+1. Počáteční zálohování se spouští podle nastavení zálohování.
+1. Agent MARS používá službu Stínová kopie svazku k provedení snímků vybraných pro zálohování v čase.
+    - Agent MARS používá pouze operaci zápisu systému Windows k zachycení snímku.
+    - Vzhledem k tomu, že agent nepoužívá žádné aplikace zapisovače služby VSS, nezachycuje snímky konzistentní vzhledem k aplikacím.
+1. Po pořízení snímku pomocí VSS vytvoří agent MARS virtuální pevný disk (VHD) ve složce mezipaměti, kterou jste zadali při konfiguraci zálohování. Agent také ukládá kontrolní součty pro každý blok dat.
+1. Přírůstkové zálohování se spouští podle plánu, který zadáte, Pokud nespustíte zálohování ad hoc.
+1. V přírůstkových zálohách se identifikují změněné soubory a vytvoří se nový virtuální pevný disk. Virtuální pevný disk je komprimovaný a zašifrovaný a pak se pošle do trezoru.
+1. Po dokončení přírůstkového zálohování se nový virtuální pevný disk sloučí s virtuálním pevným diskem vytvořeným po počáteční replikaci. Tento sloučený virtuální pevný disk poskytuje nejnovější stav, který se má použít pro porovnání probíhajícího zálohování.
 
-![Zálohování místních počítačů s Windows serverem pomocí agenta MARS](./media/backup-architecture/architecture-on-premises-mars.png)
+![Zálohování místních počítačů s Windows serverem s agentem MARS](./media/backup-architecture/architecture-on-premises-mars.png)
 
-## <a name="architecture-back-up-to-dpmmabs"></a>Architektura: Zálohování do DPM nebo MABS
+## <a name="architecture-back-up-to-dpmmabs"></a>Architektura Zálohování do DPM/MABS
 
-1. Nainstalujte agenta ochrany aplikace DPM nebo MABS na počítačích, které chcete chránit. Pak přidejte počítače do skupiny ochrany aplikace DPM.
-    - K ochraně místní počítače, server DPM nebo MABS musí být v místním.
-    - Pokud chcete chránit virtuální počítače Azure, se musí nacházet MABS server v Azure, spuštěná jako virtuální počítač Azure.
-    - Pomocí aplikace DPM nebo MABS lze chránit záložní svazky, sdílené složky, soubory a složky. Taky může chránit stav systému počítač (holý počítač), a budete moci chránit konkrétní aplikace s podporou aplikace nastavení zálohování.
-1. Když nastavíte ochranu pro počítače nebo aplikace v aplikaci DPM nebo MABS, vyberete zálohovat na místní disk MABS/DPM pro krátkodobé uložení a do Azure pro online ochranu. Můžete také určit, kdy se má spustit zálohování do místního úložiště DPM nebo MABS a kdy se má spustit online zálohování do Azure.
-1. Vytvoření zálohy disku chráněné úlohy na lokální disky MABS/DPM souladu s plánem, které jste zadali.
-4. Aplikace DPM nebo MABS disků jsou zálohovány do trezoru pomocí agenta MARS, na kterém běží na serveru aplikace DPM nebo MABS.
+1. Agenta ochrany DPM nebo MABS nainstalujete na počítače, které chcete chránit. Pak přidáte počítače do skupiny ochrany aplikace DPM.
+    - K ochraně místních počítačů se musí server DPM nebo MABS nacházet místně.
+    - Pro ochranu virtuálních počítačů Azure musí být server MABS umístěný v Azure, který běží jako virtuální počítač Azure.
+    - Pomocí aplikace DPM/MABS můžete chránit záložní svazky, sdílené složky, soubory a složky. Můžete také chránit stav systému počítače (holý počítač) a můžete chránit konkrétní aplikace pomocí nastavení zálohování s podporou aplikací.
+1. Když nastavíte ochranu pro počítač nebo aplikaci v DPM/MABS, vyberete možnost zálohovat na místní disk MABS/DPM pro krátkodobé ukládání a do Azure pro online ochranu. Také určíte, kdy se má spustit zálohování do místního úložiště DPM/MABS a kdy se má spustit online zálohování do Azure.
+1. Disk chráněné úlohy se zálohuje na místní disky MABS/DPM podle plánu, který jste zadali.
+4. DPM/MABS disky se zálohují do trezoru agentem MARS, který běží na serveru DPM nebo MABS.
 
-![Zálohování počítačů a zatížení chráněné aplikací DPM nebo MABS](./media/backup-architecture/architecture-dpm-mabs.png)
+![Zálohování počítačů a úloh chráněných aplikací DPM nebo MABS](./media/backup-architecture/architecture-dpm-mabs.png)
 
-## <a name="azure-vm-storage"></a>Úložiště virtuálního počítače Azure
+## <a name="azure-vm-storage"></a>Úložiště virtuálních počítačů Azure
 
-Virtuální počítače Azure využívají disky k ukládání svůj operační systém, aplikace a data. Každý virtuální počítač Azure má aspoň dva disky: disk operačního systému a dočasný disk. Virtuální počítače Azure můžete taky nechat datových disků pro data aplikací. Disky se ukládají jako virtuální pevné disky.
+Virtuální počítače Azure využívají disky k ukládání svých operačních systémů, aplikací a dat. Každý virtuální počítač Azure má aspoň dva disky: disk pro operační systém a dočasný disk. Virtuální počítače Azure mohou mít také datové disky pro data aplikací. Disky se ukládají jako VHD.
 
-- Virtuální pevné disky jsou uložené jako objekty BLOB stránky v účtech úložiště úrovně standard nebo premium v Azure:
-    - **Storage úrovně Standard:** Podporu spolehlivé, úsporné disků pro virtuální počítače spuštěné úlohy, které nejsou citlivá na latenci. Storage úrovně Standard můžete použít standardní SSD (SOLID-State drive) disky nebo disky standardní jednotkou pevného disku (HDD).
-    - **Storage úrovně Premium:** Podporu vysoce výkonných disků. Využívá disky SSD úrovně premium.
-- Existují jiné výkonové úrovně pro disky:
-    - **Standardní disk na pevný disk:** Založená na jednotkách HDD a použít pro nákladově efektivní úložiště.
-    - **Disk SSD na úrovni Standard:** Kombinuje prvky SSD disky úrovně premium a standard HDD disky. Nabízí konzistentní výkon a spolehlivost než pevný disk, ale stále nákladově efektivní.
-    - **Disk SSD na úrovni Premium:** Založená na jednotkách SSD a poskytuje vysoce výkonné a s nízkou latencí pro virtuální počítače, na kterých běží I intenzivních vstupně-výstupních operací.
-- Disky můžou být spravovaná nebo nespravovaná:
-    - **Nespravované disky:** Tradičním typem disků, které jsou používány virtuálními počítači. Pro tyto disky vytvořte si vlastní účet úložiště a ho zadat při vytváření disku. Pak budete muset zjistit, jak maximalizovat prostředky úložiště pro virtuální počítače.
-    - **Spravované disky:** Azure vytvoří a spravuje účty úložiště za vás. Zadejte úroveň výkonu a velikosti disku a Azure vytvoří spravované disky za vás. Jak přidat disky a škálovat virtuální počítače, účty úložiště se postará Azure.
+- Virtuální pevné disky se ukládají jako objekty blob stránky v účtech úložiště Standard nebo Premium v Azure:
+    - **Úložiště úrovně Standard:** Spolehlivá podpora disků s nízkými náklady pro virtuální počítače, na kterých běží úlohy, které nejsou citlivé na latenci. Služba Storage úrovně Standard může používat standardní disky SSD (Solid-State Drive) nebo standardní disky pevného disku (HDD).
+    - **Premium Storage:** Vysoce výkonná podpora disků. Využívá disky SSD úrovně Premium.
+- Pro disky jsou k dispozici různé úrovně výkonu:
+    - **HDD úrovně Standard disk:** Zajištěno HDD a slouží k nákladově efektivnímu úložišti.
+    - **SSD úrovně Standard disk:** Kombinuje prvky disků SSD úrovně Premium a standardní disky HDD. Nabízí spolehlivější výkon a spolehlivost než HDD, ale stále nákladově efektivní.
+    - **SSD úrovně Premium disk:** Je zajištěná SSD a poskytuje vysoce výkonná a nízká latenci pro virtuální počítače, na kterých běží úlohy náročné na vstupně-výstupní operace.
+- Disky je možné spravovat nebo nespravované:
+    - **Nespravované disky:** Tradiční typ disků využívaných virtuálními počítači. Pro tyto disky vytvoříte vlastní účet úložiště a určíte ho při vytváření disku. Pak budete muset zjistit, jak maximalizovat prostředky úložiště pro vaše virtuální počítače.
+    - **Spravované disky:** Azure vytvoří a spravuje účty úložiště za vás. Zadáte velikost disku a úroveň výkonu a Azure pro vás vytvoří spravované disky. Při přidávání disků a škálování virtuálních počítačů Azure zpracovává účty úložiště.
 
-Další informace o diskové úložiště a typy dostupných disků pro virtuální počítače najdete v těchto článcích:
+Další informace o diskovém úložišti a dostupných typech disků pro virtuální počítače najdete v těchto článcích:
 
-- [Spravovaných disků pro virtuální počítače s Windows v Azure](../virtual-machines/windows/managed-disks-overview.md)
-- [Spravovaných disků pro virtuální počítače s Linuxem v Azure](../virtual-machines/linux/managed-disks-overview.md)
-- [Typy dostupných disků pro virtuální počítače](../virtual-machines/windows/disks-types.md)
+- [Azure Managed disks pro virtuální počítače s Windows](../virtual-machines/windows/managed-disks-overview.md)
+- [Azure Managed disks pro virtuální počítače se systémem Linux](../virtual-machines/linux/managed-disks-overview.md)
+- [Dostupné typy disků pro virtuální počítače](../virtual-machines/windows/disks-types.md)
 
-### <a name="back-up-and-restore-azure-vms-with-premium-storage"></a>Zálohování a obnovení virtuálních počítačů Azure díky službě premium storage 
+### <a name="back-up-and-restore-azure-vms-with-premium-storage"></a>Zálohování a obnovení virtuálních počítačů Azure pomocí služby Premium Storage 
 
-Virtuální počítače Azure můžete zálohovat pomocí služby premium storage s Azure Backup:
+Virtuální počítače Azure můžete zálohovat pomocí služby Premium Storage s Azure Backup:
 
-- Během zálohování virtuálních počítačů se službou premium storage vytvoří služba Backup dočasné pracovní umístění s názvem *AzureBackup -* , v účtu úložiště. Velikost pracovního umístění se rovná velikosti snímku bodu obnovení.
-- Ujistěte se, zda má účet premium storage dostatek volného místa pro toto dočasné pracovní umístění. [Další informace](../storage/common/storage-scalability-targets.md#premium-performance-storage-account-scale-limits). Neupravujte pracovní umístění.
-- Po dokončení úlohy zálohování je pracovní umístění odstraněno.
-- Cena úložiště použitého pro pracovní umístění je konzistentní s [ceny za službu storage úrovně premium](../virtual-machines/windows/disks-types.md#billing).
+- Během zálohování virtuálních počítačů pomocí služby Premium Storage vytvoří služba Backup v účtu úložiště dočasné pracovní umístění s názvem *AzureBackup-* . Velikost pracovního umístění se rovná velikosti snímku bodu obnovení.
+- Ujistěte se, že účet Premium Storage má dostatek volného místa pro dočasné pracovní umístění. [Další informace](../storage/common/storage-scalability-targets.md#premium-performance-storage-account-scale-limits). Neupravujte pracovní umístění.
+- Po dokončení úlohy zálohování se pracovní umístění odstraní.
+- Cena za úložiště využitá pro pracovní umístění je konzistentní s [cenami služby Premium Storage](../virtual-machines/windows/disks-types.md#billing).
 
-Při obnovení virtuálních počítačů Azure pomocí služby premium storage, můžete obnovit na premium nebo standard storage. Obvykle by obnovíte je na premium storage. Ale pokud potřebujete jenom podmnožinu souborů z virtuálního počítače, může být cenově výhodnější obnovit je do úložiště úrovně standard.
+Při obnovení virtuálních počítačů Azure pomocí služby Premium Storage je můžete obnovit do úložiště úrovně Premium nebo Standard. Obvykle byste je měli obnovit do Premium Storage. Pokud ale potřebujete jenom podmnožinu souborů z virtuálního počítače, může být cenově výhodnější obnovit úložiště do úrovně Standard.
 
 ### <a name="back-up-and-restore-managed-disks"></a>Zálohování a obnovení spravovaných disků
 
-Můžete zálohovat virtuální počítače Azure se spravovanými disky:
+Virtuální počítače Azure můžete zálohovat pomocí spravovaných disků:
 
-- Zálohujete virtuální počítače se spravovanými disky stejným způsobem, který používáte jakýkoli jiný virtuální počítač Azure. Virtuální počítač můžete zálohovat přímo z nastavení virtuálního počítače, nebo můžete povolit zálohování pro virtuální počítače v trezoru služby Recovery Services.
+- Virtuální počítače se spravovanými disky zálohujete stejným způsobem jako ostatní virtuální počítače Azure. VIRTUÁLNÍ počítač můžete zálohovat přímo z nastavení virtuálního počítače nebo můžete povolit zálohování virtuálních počítačů v trezoru Recovery Services.
 - Virtuální počítače na spravovaných discích můžete zálohovat prostřednictvím kolekcí RestorePoint postavených na spravovaných discích.
-- Azure Backup podporuje také zálohování virtuálních počítačů se spravovanými disky, které byly šifrované pomocí Azure Disk Encryption.
+- Azure Backup podporuje taky zálohování virtuálních počítačů se spravovanými disky, které se šifrují pomocí Azure Disk Encryption.
 
-Při obnovení virtuálních počítačů se spravovanými disky, můžete obnovit do kompletního virtuálního počítače se spravovanými disky nebo do účtu úložiště:
+Po obnovení virtuálních počítačů se spravovanými disky můžete provést obnovení do kompletního virtuálního počítače se spravovanými disky nebo s účtem úložiště:
 
-- Během procesu obnovení – se postará Azure spravované disky. Pokud používáte možnost účtu úložiště, můžete spravovat účet úložiště, který se vytvoří během procesu obnovení.
-- Pokud obnovujete spravovaný virtuální počítač, který je šifrovaný, ujistěte se, že klíče Virtuálního počítače a tajné klíče v trezoru klíčů existují před zahájením procesu obnovení.
+- Během procesu obnovení Azure zpracovává spravované disky. Pokud používáte možnost účet úložiště, můžete spravovat účet úložiště, který se vytvořil během procesu obnovení.
+- Pokud obnovíte spravovaný virtuální počítač, který je zašifrovaný, ujistěte se, že klíče a tajné klíče virtuálního počítače v trezoru klíčů existují a teprve potom spusťte proces obnovení.
 
 ## <a name="next-steps"></a>Další postup
 
-- Zkontrolovat v matici podpory, aby [Další informace o podporovaných funkcích a omezení pro scénáře zálohování](backup-support-matrix.md).
-- Nastavení zálohování pro jeden z těchto scénářů:
+- [Další informace o podporovaných funkcích a omezeních pro scénáře zálohování](backup-support-matrix.md)najdete v matici podpory.
+- Nastavte zálohu pro jeden z těchto scénářů:
     - [Zálohování virtuálních počítačů Azure](backup-azure-arm-vms-prepare.md).
-    - [Zálohování počítačů Windows přímo](tutorial-backup-windows-server-to-azure.md), bez zálohování serveru.
-    - [Nastavit MABS](backup-azure-microsoft-azure-backup.md) pro zálohování do Azure a pak znovu úloh rozšiřování MABS.
-    - [Nastavení DPM](backup-azure-dpm-introduction.md) pro zálohování do Azure a pak zálohování úloh DPM.
+    - [Zálohování počítačů s Windows přímo](tutorial-backup-windows-server-to-azure.md)bez záložního serveru.
+    - [Nastavte MABS](backup-azure-microsoft-azure-backup.md) pro zálohování do Azure a pak zálohujte úlohy na MABS.
+    - [Nastavte DPM](backup-azure-dpm-introduction.md) pro zálohování do Azure a pak zálohujte úlohy do DPM.
 
 
 [green]: ./media/backup-architecture/green.png

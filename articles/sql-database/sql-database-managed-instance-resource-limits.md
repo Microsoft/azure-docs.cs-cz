@@ -1,6 +1,6 @@
 ---
-title: Limity prostředků Azure SQL Database – spravovaná instance | Dokumentace Microsoftu
-description: Tento článek obsahuje přehled limity prostředků Azure SQL Database pro spravované instance.
+title: Azure SQL Database omezení prostředků – spravovaná instance | Microsoft Docs
+description: Tento článek poskytuje přehled Azure SQL Databasech omezení prostředků pro spravované instance.
 services: sql-database
 ms.service: sql-database
 ms.subservice: managed-instance
@@ -12,140 +12,139 @@ ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
 manager: craigg
 ms.date: 06/26/2019
-ms.openlocfilehash: f4e19b916553912e36f2c3beee3f6a518b244e4d
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 29ece0677c71a2cb423e541cf2e9f4a06947e44c
+ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67707007"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68413383"
 ---
-# <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Přehled Azure SQL Database managed instance omezení prostředků
+# <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Přehled Azure SQL Database omezení prostředků spravované instance
 
-Tento článek obsahuje základní informace o omezení prostředků pro spravovanou instanci Azure SQL Database a poskytuje informace o tom, jak požádat o zvýšení těchto omezení.
+Tento článek poskytuje přehled omezení prostředků Azure SQL Database spravované instance a poskytuje informace o tom, jak požádat o zvýšení těchto limitů.
 
 > [!NOTE]
-> Rozdíly v podporovaných funkcích a T-SQL příkazy naleznete v tématu [rozdíly ve funkcích](sql-database-features.md) a [podpora příkazu T-SQL](sql-database-managed-instance-transact-sql-information.md).
+> Rozdíly v podporovaných funkcích a příkazech T-SQL najdete v tématu [rozdíly](sql-database-features.md) ve funkcích a [Podpora příkazů t-SQL](sql-database-managed-instance-transact-sql-information.md).
 
 ## <a name="instance-level-resource-limits"></a>Omezení prostředků na úrovni instance
 
-Managed instance má vlastnosti a omezení prostředků, které jsou závislé na základní infrastrukturu a architektury. Omezení závisí na úrovni hardwaru generování a služby.
+Spravovaná instance má charakteristiky a omezení prostředků, které závisí na základní infrastruktuře a architektuře. Omezení závisí na generaci hardwaru a vrstvě služeb.
 
-### <a name="hardware-generation-characteristics"></a>Generování vlastností hardwaru
+### <a name="hardware-generation-characteristics"></a>Charakteristiky generování hardwaru
 
-Spravované instance Azure SQL Database je možné nasadit na dvou generacemi hardwaru: Gen4 i Gen5. Generacemi hardwaru mají jiné charakteristiky, jak je popsáno v následující tabulce:
+Azure SQL Database spravovanou instanci lze nasadit na dvě generace hardwaru: COMPUTE GEN4 – a Gen5. Hardwarové generace mají různé charakteristiky, jak je popsáno v následující tabulce:
 
-|   | **Gen4** | **Gen5** |
+|   | **COMPUTE GEN4 –** | **Gen5** |
 | --- | --- | --- |
-| Hardware | Intel E5-2673 v3 (Haswell) 2,4 GHz procesorech připojené SSD vCore = 1 PP (fyzických jader) | Intel E5-2673 v4 (Broadwell) 2.3 GHz procesorech rychlé NVMe SSD, vCore = 1 LP (hyper vlákno) |
-| Počet virtuálních jader | 8, 16, 24 virtuálních jader | 4, 8, 16, 24, 32, 40, 64, 80 virtuálních jader |
-| Maximální velikost paměti (poměr paměti a jader) | 7 GB na vCore<br/>Přidáte další virtuální jádra, chcete-li získat více paměti. | 5.1 GB na vCore<br/>Přidáte další virtuální jádra, chcete-li získat více paměti. |
-| OLTP v paměti maximální paměti | Instance omezení: 3 GB na vCore<br/>Omezení databáze:<br/> -8 jádry: 8 GB na databázi<br/> -16 jádry: 20 GB na databázi<br/> -24jádra: 36 GB na databázi | Instance omezení: 2,5 GB na vCore<br/>Omezení databáze:<br/> -8 jádry: 13 GB na databázi<br/> -16 jádry: 32 GB na databázi |
-| Maximální počet instancí vyhrazené úložiště (Obecné) |  8 TB | 8 TB |
-| Maximální počet instancí vyhrazené úložiště (pro důležité obchodní informace) | 1 TB | 1 TB, 2 TB nebo 4 TB, v závislosti na počtu jader |
+| Hardware | Procesory Intel E5-2673 V3 (Haswell) 2,4 GHz, připojené SSD vCore = 1 PP (fyzický jádro) | Procesory Intel E5-2673 v4 (Broadwell) 2,3 GHz, Fast NVMe SSD, vCore = 1 LP (Hyper-thread) |
+| Počet virtuální jádra | 8, 16, 24 virtuální jádra | 4, 8, 16, 24, 32, 40, 64, 80 virtuální jádra |
+| Maximální velikost paměti (poměr paměti/jádra) | 7 GB na vCore<br/>Přidejte další virtuální jádra, abyste získali více paměti. | 5,1 GB na vCore<br/>Přidejte další virtuální jádra, abyste získali více paměti. |
+| Maximální paměť OLTP v paměti | Limit instance: 3 GB na vCore<br/>Omezení databáze:<br/> – 8 – jádro: 8 GB na databázi<br/> – 16 jader: 20 GB na databázi<br/> -24 – jádro: 36 GB na databázi | Limit instance: 2,5 GB na vCore<br/>Omezení databáze:<br/> – 8 – jádro: 13 GB na databázi<br/> – 16 jader: 32 GB na databázi |
+| Maximální rezervované úložiště instancí |  Pro obecné účely: 8 TB<br/>Pro důležité obchodní informace: 1TB | Pro obecné účely: 8 TB<br/> V závislosti na počtu jader Pro důležité obchodní informace 1 TB, 2 TB nebo 4 TB. |
 
 > [!IMPORTANT]
-> Nové databáze Gen4 již nejsou podporovány v oblasti AustraliaEast.
+> Nové databáze COMPUTE GEN4 – již nejsou podporovány v oblasti AustraliaEast.
 
-### <a name="service-tier-characteristics"></a>Vlastnosti úrovně služeb
+### <a name="service-tier-characteristics"></a>Vlastnosti vrstvy služeb
 
-Managed instance má dvě úrovně služby: Obecné účely a pro důležité obchodní informace. Tyto úrovně teď poskytují různé možnosti, jak je popsáno v následující tabulce:
+Spravovaná instance má dvě úrovně služeb: Pro obecné účely a Pro důležité obchodní informace. Tyto úrovně poskytují různé možnosti, jak je popsáno v následující tabulce:
 
-| **Funkce** | **Obecné účely** | **Pro důležité obchodní informace** |
+| **Funkce** | **Pro obecné účely** | **Pro důležité obchodní informace** |
 | --- | --- | --- |
-| Počet virtuálních jader\* | Gen4: 8, 16, 24<br/>Gen5: 4, 8, 16, 24, 32, 40, 64, 80 | Gen4: 8, 16, 24, 32 <br/> Gen5: 4, 8, 16, 24, 32, 40, 64, 80 |
-| Maximální velikost paměti | Gen4: 56 GB - 168 GB (7GB/vCore)<br/>Gen5: 40.8 GB - 408 GB (5.1 GB/vCore)<br/>Přidáte další virtuální jádra, chcete-li získat více paměti. | Gen4: 56 GB - 168 GB (7GB/vCore)<br/>Gen5: 40.8 GB - 408 GB (5.1 GB/vCore)<br/>Přidáte další virtuální jádra, chcete-li získat více paměti. |
-| Rezervované instance maximální velikost úložiště | -2 TB pro 4 virtuální jádra (pouze Gen5)<br/>-8 TB pro ostatní velikosti | Gen4: 1 TB <br/> Gen5: <br/>-1 TB pro 4, 8, 16 virtuálních jader<br/>-2 TB pro 24 virtuálních jader<br/>-4 TB pro 32, 40, 64, 80 virtuálních jader |
-| Maximální velikost databáze | Určuje maximální velikost úložiště na instanci | Určuje maximální velikost úložiště na instanci |
+| Počet virtuální jádra\* | COMPUTE GEN4 – 8, 16, 24<br/>Gen5 4, 8, 16, 24, 32, 40, 64, 80 | COMPUTE GEN4 – 8, 16, 24, 32 <br/> Gen5 4, 8, 16, 24, 32, 40, 64, 80 |
+| Maximální velikost paměti | COMPUTE GEN4 – 56 GB až 168 GB (7GB/vCore)<br/>Gen5 40,8 GB až 408 GB (5.1 GB/vCore)<br/>Přidejte další virtuální jádra, abyste získali více paměti. | COMPUTE GEN4 – 56 GB až 168 GB (7GB/vCore)<br/>Gen5 40,8 GB až 408 GB (5.1 GB/vCore)<br/>Přidejte další virtuální jádra, abyste získali více paměti. |
+| Maximální velikost rezervovaného úložiště instance | – 2 TB pro 4 virtuální jádra (jenom Gen5)<br/>– 8 TB pro jiné velikosti | COMPUTE GEN4 – 1 TB <br/> Gen5 <br/>-1 TB pro 4, 8, 16 virtuální jádra<br/>– 2 TB pro 24 virtuální jádra<br/>-4 TB pro 32, 40, 64, 80 virtuální jádra |
+| Maximální velikost databáze | Určeno maximální velikostí úložiště na instanci | Určeno maximální velikostí úložiště na instanci |
 | Maximální počet databází na instanci | 100 | 100 |
-| Maximální počet souborů databáze na instanci | Až 280 | 32 767 počet souborů v databázi |
-| Data/Log IOPS (přibližné) | 500 – 7 500 na soubor<br/>\*[Zvětšit velikost souboru, chcete-li získat další vstupně-výstupních operací](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes)| 11 110 tis. (1375/vCore)<br/>Přidáte další virtuální jádra, chcete-li získat lepší výkon vstupně-výstupních operací. |
-| Limit propustnosti zápisu protokolu | 3 MB/s na vCore<br/>Maximální počet 22 MB/s na instanci | 4 MB/s na vCore<br/>Maximální počet 48 MB/s na instanci|
-| Propustnost dat (přibližné) | 100 – 250 MB/s na souboru<br/>\*[Zvětšit velikost souboru, chcete-li získat lepší výkon vstupně-výstupních operací](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes) | Není k dispozici |
-| Úložiště vstupně-výstupní latence (přibližné) | 5-10 ms | 1-2 ms |
-| Maximální velikost tempDB | 192 - 1,920 GB (24 GB na vCore)<br/>Přidáte další virtuální jádra k získání dalšího místa v databázi TempDB. | Omezeno daty, která instance maximální velikost úložiště. Velikost souboru protokolu databáze TempDB je aktuálně omezená na 24GB/vCore. |
+| Maximální počet souborů databáze na instanci | Až 280 | 32 767 souborů na databázi |
+| Data/protokol IOPS (přibližná) | 500 – 7 500 na jeden soubor<br/>\*[Zvětšením velikosti souboru získat více IOPS](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes)| 11 k-110 K (1375/vCore)<br/>Přidáním dalších virtuální jádra získáte lepší výkon v/v. |
+| Limit propustnosti zápisu protokolu | 3 MB/s na vCore<br/>Max. 22 MB/s na instanci | 4 MB/s na vCore<br/>Max. 48 MB/s na instanci|
+| Propustnost dat (přibližná) | 100 – 250 MB/s na jeden soubor<br/>\*[Zvětšením velikosti souboru získáte lepší vstupně-výstupní operace.](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes) | Není k dispozici |
+| Latence v/v úložiště (přibližná) | 5-10 ms | 1-2 ms |
+| Maximální velikost databáze tempDB | 192 – 1 920 GB (24 GB na vCore)<br/>Přidejte další virtuální jádra, abyste získali více místa v databázi TempDB. | Omezeno velikostí úložiště maximální instance. Velikost souboru protokolu TempDB je aktuálně omezená na 24GB/vCore. |
 | Maximální počet relací | 30000 | 30000 |
 
 > [!NOTE]
-> - Velikost souboru protokolu a data uživatelů a systémové databáze jsou součástí úložiště velikost instance, která je ve srovnání s maximální limit velikosti úložiště. Použití <a href="https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-master-files-transact-sql">sys.master_files</a> zobrazení systému k určení součet využitého místa databáze. Protokoly chyb není trvalý a není součástí velikost. Velikost úložiště nejsou součástí zálohy.
-> - Propustnost a vstupně-výstupních operací také závisí na velikosti stránky, který není omezený explicitně spravované instance.
+> - Velikost dat a souborů protokolu v uživatelských i systémových databázích jsou zahrnuté do velikosti úložiště instance, která je porovnávána s limitem maximální velikosti úložiště. Pomocí systémového zobrazení <a href="https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-master-files-transact-sql">Sys. master_files</a> určete celkové využité místo podle databází. Protokoly chyb nejsou trvale uložené a nejsou zahrnuté do velikosti. Zálohy nejsou zahrnuté do velikosti úložiště.
+> - Propustnost a IOPS závisí také na velikosti stránky, která není explicitně omezená pomocí spravované instance.
 
 ## <a name="supported-regions"></a>Podporované oblasti
 
-Spravovaná instance je možné vytvořit pouze v [podporované oblasti](https://azure.microsoft.com/global-infrastructure/services/?products=sql-database&regions=all). Chcete-li vytvořit spravovanou instanci v oblasti, která se aktuálně nepodporuje, můžete [odeslat žádost o podporu prostřednictvím webu Azure portal](#obtaining-a-larger-quota-for-sql-managed-instance).
+Spravované instance lze vytvořit pouze v [podporovaných oblastech](https://azure.microsoft.com/global-infrastructure/services/?products=sql-database&regions=all). Pokud chcete vytvořit spravovanou instanci v oblasti, která není aktuálně podporovaná, můžete [Odeslat žádost o podporu prostřednictvím Azure Portal](#obtaining-a-larger-quota-for-sql-managed-instance).
 
-## <a name="supported-subscription-types"></a>Typy podporované předplatného
+## <a name="supported-subscription-types"></a>Podporované typy předplatného
 
-Nasazení spravované instance aktuálně podporuje jenom pro následující typy předplatných:
+Spravovaná instance aktuálně podporuje nasazení pouze u následujících typů předplatných:
 
 - [Smlouva Enterprise (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/)
-- [Pay-as-you-go](https://azure.microsoft.com/offers/ms-azr-0003p/)
-- [Poskytovatele cloudových služeb (CSP)](https://docs.microsoft.com/partner-center/csp-documents-and-learning-resources)
+- [Průběžné platby](https://azure.microsoft.com/offers/ms-azr-0003p/)
+- [Poskytovatel cloudových služeb (CSP)](https://docs.microsoft.com/partner-center/csp-documents-and-learning-resources)
 - [Enterprise pro vývoj/testování](https://azure.microsoft.com/offers/ms-azr-0148p/)
-- [Vývoj/testování s průběžnými platbami](https://azure.microsoft.com/offers/ms-azr-0023p/)
-- [Předplatná s měsíční kredit Azure pro předplatitele sady Visual Studio](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/)
+- [Průběžné platby dle aktuálního využití pro vývoj/testování](https://azure.microsoft.com/offers/ms-azr-0023p/)
+- [Předplatné s měsíčním kreditem Azure pro předplatitele sady Visual Studio](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/)
 
-## <a name="regional-resource-limitations"></a>Omezení místních prostředků
+## <a name="regional-resource-limitations"></a>Omezení regionálních prostředků
 
-Typy podporované předplatného může obsahovat omezený počet prostředků v jedné oblasti. Managed instance má dvě výchozí omezení každou oblast Azure, v závislosti na typu typ předplatného:
+Podporované typy předplatného můžou obsahovat omezený počet prostředků na oblast. Spravovaná instance má dvě výchozí omezení pro každou oblast Azure v závislosti na typu typu předplatného:
 
-- **Limitu podsítí**: Maximální počet podsítí, ve které jsou spravované instance nasazené v jedné oblasti.
-- **vCore limit**: Maximální počet virtuálních jader, které je možné nasadit napříč všemi instancemi v jedné oblasti.
+- **Omezení podsítě**: Maximální počet podsítí, ve kterých jsou spravované instance nasazeny v jedné oblasti.
+- **limit Vcore**: Maximální počet virtuální jádra, které se dají nasadit napříč všemi instancemi v jedné oblasti.
 
 > [!Note]
-> Tato omezení jsou výchozí nastavení a ne technická omezení. Omezení může být vyšší podle potřeby tak, že vytvoříte speciální [žádost o podporu na webu Azure Portal](#obtaining-a-larger-quota-for-sql-managed-instance) Pokud potřebujete více spravovaných instancí v aktuální oblasti. Jako alternativu můžete vytvořit nové spravované instance v jiné oblasti Azure bez odeslání žádosti o podporu.
+> Tato omezení představují výchozí nastavení a nejedná se o technická omezení. Omezení se dají zvýšit na vyžádání vytvořením speciální [žádosti o podporu v Azure Portal](#obtaining-a-larger-quota-for-sql-managed-instance) , pokud v aktuální oblasti potřebujete víc spravovaných instancí. Jako alternativu můžete vytvořit nové spravované instance v jiné oblasti Azure bez nutnosti odesílat žádosti o podporu.
 
-Následující tabulka ukazuje výchozí místní omezení pro podporované předplatná:
+Následující tabulka ukazuje výchozí regionální omezení pro podporovaná předplatná:
 
 |Typ odběru| Maximální počet podsítí spravované instance | Maximální počet jednotek vCore * |
 | :---| :--- | :--- |
 |Průběžné platby|3|320|
-|CSP |8 (15 v některých oblastech **)|960 (v některých oblastech ** 1440)|
-|Vývoj/testování s průběžnými platbami|3|320|
+|CSP |8 (15 v některých oblastech * *)|960 (1440 v některých oblastech * *)|
+|Průběžné platby dle aktuálního využití pro vývoj/testování|3|320|
 |Enterprise pro vývoj/testování|3|320|
-|EA|8 (15 v některých oblastech **)|960 (v některých oblastech ** 1440)|
+|EA|8 (15 v některých oblastech * *)|960 (1440 v některých oblastech * *)|
 |Visual Studio Enterprise|2 |64|
 |Visual Studio Professional a MSDN Platforms|2|32|
 
-\* Při plánování vašeho nasazení, vezměte v úvahu, že kritické obchodní (BC) virtuální jádro (z důvodu přidání redundance) využívá 4 x větší kapacitu než virtuální jádro pro obecné účely (zásady skupiny). Ano, pro výpočty, 1 virtuální jádro GP = 1 vCore jednotky a 1 BC virtuální jádro = 4 jednotky na vCore. Zjednodušuje analýzy využití pro výchozí omezení, Shrňte jednotky vCore přes všechny podsítě v oblasti, kde spravované instance se nasazují a porovnávat výsledky s limity instancí jednotky pro typ vašeho předplatného. **Maximální počet jednotek vCore** omezení platí pro každé předplatné oblast. Neexistuje žádné omezení na jednotlivé podsítě s tím rozdílem, že součet všech virtuálních jader nasazených na více podsítí musí být menší nebo rovna hodnotě **maximální počet jednotek vCore**.
+\*Při plánování nasazení Vezměte v úvahu, že Pro důležité obchodní informace (BC) vCore (kvůli přidané redundanci) spotřebovává 4x větší kapacitu Pro obecné účely než vCore (GP). Pro výpočty tedy 1 GP vCore = 1 vCore jednotku a 1 BC vCore = 4 jednotky vCore. Abyste zjednodušili analýzu spotřeby proti výchozím omezením, Shrňte jednotky vCore ve všech podsítích v oblasti, ve které se nasazují spravované instance, a porovnejte výsledky s omezeními jednotky instance pro typ předplatného. **Maximální počet Vcore jednotek** se vztahuje na každé předplatné v oblasti. Pro jednotlivé podsítě neplatí žádné omezení s tím rozdílem, že součet všech virtuální jádra nasazených napříč více podsítěmi musí být nižší nebo roven **maximálnímu počtu Vcore jednotek**.
 
-\*\* Větší podsítě a vCore omezení jsou k dispozici v následujících oblastech: Austrálie – východ, USA – východ, USA – východ 2, Severní Evropa, střed USA – Jih, jihovýchodní Asie, Velká Británie – Jih, západní Evropa, západní USA 2.
+\*\*Větší podsíť a omezení vCore jsou k dispozici v následujících oblastech: Austrálie – východ, Východní USA, Východní USA 2, Severní Evropa, Střed USA – jih, jihovýchodní Asie, Velká Británie – jih, Západní Evropa, Západní USA 2.
 
-## <a name="obtaining-a-larger-quota-for-sql-managed-instance"></a>Získání vyšší kvóty pro SQL spravovaná instance
+## <a name="obtaining-a-larger-quota-for-sql-managed-instance"></a>Získání větší kvóty pro spravovanou instanci SQL
 
-Pokud potřebujete více spravovaných instancí ve vaší aktuální oblastí, odešlete žádost o podporu pro rozšíření kvóty pomocí webu Azure portal.
-Chcete-li zahájit proces získávání vyšší kvóty:
+Pokud ve svých současných oblastech potřebujete víc spravovaných instancí, pošlete žádost o podporu, která kvótu rozšiřuje, pomocí Azure Portal.
+Postup pro zahájení procesu získání větší kvóty:
 
-1. Otevřít **Nápověda a podpora**a klikněte na tlačítko **nová žádost o podporu**.
+1. Otevřete **help + podpora**a klikněte na **Nová žádost o podporu**.
 
    ![Nápověda a podpora](media/sql-database-managed-instance-resource-limits/help-and-support.png)
-2. Na kartě základy pro novou žádost o podporu:
-   - Pro **typ problému**vyberte **limity služby a předplatného (kvóty)** .
+2. Na kartě základy nové žádosti o podporu:
+   - Jako **typ problému**vyberte **omezení služby a předplatné (kvóty)** .
    - V části **Předplatné** vyberte své předplatné.
-   - Pro **typ kvóty**vyberte **SQL Database Managed Instance**.
-   - Pro **plán podpory**, vyberte plán podpory.
+   - Jako **typ kvóty**vyberte **SQL Database spravovaná instance**.
+   - V případě **plánu podpory**vyberte svůj plán podpory.
 
-     ![Problém typ kvóty](media/sql-database-managed-instance-resource-limits/issue-type-quota.png)
+     ![Kvóta typu problému](media/sql-database-managed-instance-resource-limits/issue-type-quota.png)
 
 3. Klikněte na **Další**.
-4. Na **problém kartu** pro novou žádost o podporu:
-   - Pro **závažnost**, vyberte úroveň závažnosti problému.
-   - Pro **podrobnosti**, poskytují další informace o svém problému, včetně chybových zpráv.
-   - Pro **nahrání souboru**, připojte soubor s dalšími informacemi (až 4 MB).
+4. Na **kartě problém** u nové žádosti o podporu:
+   - V části **závažnost**vyberte úroveň závažnosti problému.
+   - **Podrobnosti**získáte zadáním dalších informací o vašem problému, včetně chybových zpráv.
+   - Pro **nahrání souboru**připojte soubor s více informacemi (až 4 MB).
 
      ![Podrobnosti o problému](media/sql-database-managed-instance-resource-limits/problem-details.png)
 
      > [!IMPORTANT]
-     > Neplatný požadavek by měl obsahovat:
-     > - Oblast, ve které předplatné limit musí být zvýšena.
-     > - Požadovaný počet virtuálních jader na úrovni služby v existující podsítě po kvóty zvýšit (je-li žádné existující podsítě je potřeba rozbalit.
-     > - Požadované číslo nové podsítě a celkový počet virtuálních jader na úrovni služby v rámci nové podsítě (Pokud je potřeba nasadit spravované instance v nové podsítě).
+     > Platná žádost by měla zahrnovat:
+     > - Oblast, ve které je potřeba zvýšit limit předplatného
+     > - Požadovaný počet virtuální jádra, na úroveň služby v existujících podsítích po zvýšení kvóty (Pokud je nutné rozšířit libovolnou existující podsíť.
+     > - Požadovaný počet nových podsítí a celkový počet virtuální jádra na úroveň služby v rámci nových podsítí (Pokud potřebujete nasadit spravované instance v nových podsítích).
 
 5. Klikněte na **Další**.
-6. Na kartě kontaktní informace pro novou žádost o podporu zadejte upřednostňovaný způsob kontaktu (e-mail nebo telefon) a kontaktní údaje.
+6. Na kartě kontaktní informace u nové žádosti o podporu zadejte upřednostňovanou metodu kontaktu (e-mail nebo telefon) a kontaktní údaje.
 7. Klikněte na možnost **Vytvořit**.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
-- Další informace o spravované instance najdete v tématu [co je managed instance?](sql-database-managed-instance.md).
-- Informace o cenách najdete v tématu [SQL Database managed instance ceny](https://azure.microsoft.com/pricing/details/sql-database/managed/).
-- Zjistěte, jak vytvořit první spravované instanci, najdete v článku [úvodní příručky](sql-database-managed-instance-get-started.md).
+- Další informace o spravované instanci najdete v tématu [co je spravovaná instance?](sql-database-managed-instance.md).
+- Informace o cenách najdete v tématu [SQL Database ceny za Managed instance](https://azure.microsoft.com/pricing/details/sql-database/managed/).
+- Informace o tom, jak vytvořit první spravovanou instanci, najdete v [příručce pro rychlý Start](sql-database-managed-instance-get-started.md).

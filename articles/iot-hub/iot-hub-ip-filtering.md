@@ -1,86 +1,90 @@
 ---
-title: Azure IoT Hub IP připojení filtry | Dokumentace Microsoftu
-description: Použití filtru bloku připojení z konkrétní IP adresy IP adres pro službu Azure IoT hub. Můžete blokovat připojení z jednotlivé nebo rozsahy IP adres.
+title: Filtry připojení IP pro Azure IoT Hub | Microsoft Docs
+description: Jak používat filtrování protokolu IP k blokování připojení z konkrétních IP adres pro do služby Azure IoT Hub. Můžete zablokovat připojení z individuálních nebo rozsahů IP adres.
 author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 05/23/2017
+ms.date: 07/22/2017
 ms.author: robinsh
-ms.openlocfilehash: 82b079a7e826d870ed3e156b56921fc347a0fbd8
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: a6bd8a766f3205358a65ef2fd0816643e4261cab
+ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67445533"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68414265"
 ---
 # <a name="use-ip-filters"></a>Použití filtrů IP adres
 
-Zabezpečení je důležitou součástí jakékoli řešení IoT, které jsou založené na službě Azure IoT Hub. Někdy je potřeba explicitně zadat IP adresy, ze kterých se můžete připojit zařízení jako součást konfigurace zabezpečení. *Filtr IP* funkce umožňuje konfigurovat pravidla pro odmítnutí nebo přijímá provoz z konkrétní adresy IPv4.
+Zabezpečení je důležitým aspektem řešení IoT založeného na Azure IoT Hub. Někdy musíte explicitně zadat IP adresy, ze kterých se zařízení můžou připojit, jako součást konfigurace zabezpečení. Funkce *filtrování IP adres* umožňuje konfigurovat pravidla pro zamítnutí nebo přijetí provozu z konkrétních adres IPv4.
 
 ## <a name="when-to-use"></a>Kdy je použít
 
-Existují dva zvláštní případy použití při je užitečné pro blokování koncové body IoT Hubu pro určité IP adresy:
+Existují dva konkrétní případy použití, když je užitečné zablokovat IoT Hub koncových bodů pro určité IP adresy:
 
-* Služby IoT hub by měla přijímat provoz pouze ze zadaného rozsahu IP adres a odmítnout všechno ostatní. Například používáte službu IoT hub s [Azure Express Route](https://azure.microsoft.com/documentation/articles/expressroute-faqs/#supported-services) můžete vytvářet privátní připojení mezi služby IoT hub a v místní infrastruktuře.
+* Vaše centrum IoT by mělo přijímat přenosy jenom z určeného rozsahu IP adres a zamítnout všechno ostatní. Například používáte službu IoT Hub se službou [Azure Express Route](https://azure.microsoft.com/documentation/articles/expressroute-faqs/#supported-services) k vytváření privátních připojení mezi službou IoT Hub a místní infrastrukturou.
 
-* Budete muset odmítnout provoz z IP adresy, které byly identifikovány jako podezřelou správcem centra IoT.
+* Musíte odmítnout provoz z IP adres, které správce služby IoT Hub identifikoval jako podezřelé.
 
 ## <a name="how-filter-rules-are-applied"></a>Jak se používají pravidla filtru
 
-Pravidla filtru IP se použijí na úrovni služby IoT Hub. Takže pravidla filtru IP platí pro všechna připojení ze zařízení a back endové aplikace pomocí libovolného protokolu pro podporované.
+Pravidla filtru IP jsou použita na úrovni služby IoT Hub. Proto se pravidla filtru IP použijí na všechna připojení ze zařízení a back-endové aplikace s využitím jakéhokoli podporovaného protokolu.
 
-Jakékoli pokusy o připojení z IP adresy, která odpovídá předávaní pravidlu IP ve službě IoT hub přijímá neoprávněným stavový kód 401 a popis. Zprávy s odpovědí není zmiňuje pravidlo protokolu IP.
+Jakýkoli pokus o připojení z IP adresy, která odpovídá pravidlu odmítnutí protokolu IP ve službě IoT Hub, obdrží ne401 autorizovaný kód stavu a popis. Zpráva odpovědi nezmiňuje pravidlo protokolu IP.
 
 ## <a name="default-setting"></a>Výchozí nastavení
 
-Ve výchozím nastavení **filtr IP** mřížky na portálu pro službu IoT hub je prázdný. Toto výchozí nastavení znamená, že vaše Centrum akceptuje připojení z libovolné IP adresy. Toto výchozí nastavení je ekvivalentní pravidlo, které přijímá tento rozsah IP adres 0.0.0.0/0.
+Ve výchozím nastavení je mřížka **filtru IP** na portálu pro Centrum IoT prázdná. Toto výchozí nastavení znamená, že vaše centrum akceptuje připojení z libovolné IP adresy. Toto výchozí nastavení je ekvivalentní pravidlo, které přijímá tento rozsah IP adres 0.0.0.0/0.
 
-![Nastavení filtru IP výchozí služby IoT Hub](./media/iot-hub-ip-filtering/ip-filter-default.png)
+![Výchozí nastavení filtru IP IoT Hub](./media/iot-hub-ip-filtering/ip-filter-default.png)
 
 ## <a name="add-or-edit-an-ip-filter-rule"></a>Přidat nebo upravit pravidlo filtru IP
 
-Když přidáte pravidlo filtru IP, zobrazí se výzva pro následující hodnoty:
+Pokud chcete přidat pravidlo filtru IP, vyberte **+ Přidat pravidlo filtru IP**.
 
-* **Název pravidla filtru IP** , který musí být jedinečný, velká a malá písmena, alfanumerický řetězec do 128 znaků. Pouze ASCII 7 bitů alfanumerických znaků plus `{'-', ':', '/', '\', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '''}` nepřijmou.
+![Přidání pravidla filtru IP do služby IoT Hub](./media/iot-hub-ip-filtering/ip-filter-add-rule.png)
 
-* Vyberte **odmítnout** nebo **přijmout** jako **akce** pro pravidla filtru IP.
+Po výběru možnosti **Přidat pravidlo filtru protokolu IP**zadejte pole.
 
-* Zadejte jednu adresu IPv4 nebo blok IP adres v zápisu CIDR. Například v CIDR notation 192.168.100.0/22 představuje 1024 IPv4 adres od 192.168.100.0 do 192.168.103.255.
+![Po výběru možnosti Přidat pravidlo filtru IP](./media/iot-hub-ip-filtering/ip-filter-after-selecting-add.png)
 
-![Přidání pravidla filtru IP do služby IoT hub](./media/iot-hub-ip-filtering/ip-filter-add-rule.png)
+* Zadejte **název** pravidla filtru IP. Musí se jednat o jedinečný řetězec bez rozlišení velkých a malých písmen, který je dlouhý až 128 znaků. Jsou přijímány pouze alfanumerické znaky ASCII a `{'-', ':', '/', '\', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '''}` 7.
 
-Po uložení pravidla se zobrazí výstraha s upozorněním, že probíhá aktualizace.
+* Zadejte jednu adresu IPv4 nebo blok IP adres v zápisu CIDR. Například v zápisu CIDR 192.168.100.0/22 představuje adresy IPv4 1024 z 192.168.100.0 do 192.168.103.255.
 
-![Oznámení o uložení pravidlo filtru IP](./media/iot-hub-ip-filtering/ip-filter-save-new-rule.png)
+* Jako **akci** pro pravidlo filtru IP vyberte možnost **povoluje** nebo zablokovat.
 
-**Přidat** možnost je vypnuta, když dosáhnou maximálního počtu 10 pravidla filtru IP.
+Po vyplnění polí vyberte **Uložit** a uložte pravidlo. Zobrazí se upozornění oznamující, že probíhá aktualizace.
 
-Poklikáním na řádek, který obsahuje pravidlo můžete upravit stávající pravidlo.
+![Oznámení o uložení pravidla filtru IP](./media/iot-hub-ip-filtering/ip-filter-save-new-rule.png)
+
+Možnost **Přidat** je zakázaná, když dosáhnete maximálního počtu 10 pravidel filtru IP.
+
+Pokud chcete upravit stávající pravidlo, vyberte data, která chcete změnit, proveďte změnu a pak kliknutím na **Uložit** uložte úpravy.
 
 > [!NOTE]
-> Odmítnutí IP adresy můžete zabránit ostatních služeb Azure (jako je Azure Stream Analytics, Azure Virtual Machines nebo Device Explorer na portálu) interakci s centrem IoT.
+> Odmítání IP adres může zabránit jiným službám Azure (například Azure Stream Analytics, Azure Virtual Machines nebo Device Explorer na portálu) v interakci se službou IoT Hub.
 
 > [!WARNING]
-> Pokud používáte Azure Stream Analytics (ASA) ke čtení zpráv ze služby IoT hub s povolené filtrování protokolu IP, použijte název kompatibilní s centrem událostí a koncový bod služby IoT Hub v připojovacím řetězci Azure Stream Analytics.
+> Pokud používáte Azure Stream Analytics (ASA) ke čtení zpráv ze služby IoT Hub s povoleným filtrováním IP adres, použijte v připojovacím řetězci ASA název kompatibilní s centrem událostí a koncový bod vašeho IoT Hub.
 
-## <a name="delete-an-ip-filter-rule"></a>Odstranění pravidla filtru IP
+## <a name="delete-an-ip-filter-rule"></a>Odstraní pravidlo filtru IP.
 
-Pokud chcete odstranit pravidlo filtru IP, vyberte v tabulce a klikněte na jedno nebo více pravidel **odstranit**.
+Pokud chcete odstranit pravidlo filtru IP, vyberte na tomto řádku ikonu odpadkového koše a pak vyberte **Uložit**. Pravidlo se odebere a změna se uloží.
 
-![Odstranění pravidla filtru IP centra IoT](./media/iot-hub-ip-filtering/ip-filter-delete-rule.png)
+![Odstraní pravidlo filtru IP IoT Hub.](./media/iot-hub-ip-filtering/ip-filter-delete-rule.png)
 
-## <a name="retrieve-and-update-ip-filters-using-azure-cli"></a>Načítají a aktualizují filtrů IP adres pomocí Azure CLI
+## <a name="retrieve-and-update-ip-filters-using-azure-cli"></a>Načtení a aktualizace filtrů IP adres pomocí Azure CLI
 
-Filtry IP adres služby IoT Hub můžete načíst a aktualizovat prostřednictvím [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest). 
+Filtry IP IoT Hub můžete načíst a aktualizovat prostřednictvím rozhraní příkazového [řádku Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest).
 
-Pokud chcete načíst aktuální filtry IP služby IoT Hub, spusťte:
+Chcete-li načíst aktuální filtry IP IoT Hub, spusťte příkaz:
 
 ```azurecli-interactive
 az resource show -n <iothubName> -g <resourceGroupName> --resource-type Microsoft.Devices/IotHubs
 ```
 
-Vrátí objekt JSON, ve kterém se zobrazí vaše existující filtry IP `properties.ipFilterRules` klíč:
+Tato akce vrátí objekt JSON, ve kterém jsou uvedené existující filtry IP adres pod `properties.ipFilterRules` klíčem:
 
 ```json
 {
@@ -104,26 +108,25 @@ Vrátí objekt JSON, ve kterém se zobrazí vaše existující filtry IP `proper
 }
 ```
 
-Chcete-li přidat nový filtr IP pro vaše Centrum IoT, spusťte:
+Chcete-li přidat nový filtr IP adres pro IoT Hub, spusťte příkaz:
 
 ```azurecli-interactive
 az resource update -n <iothubName> -g <resourceGroupName> --resource-type Microsoft.Devices/IotHubs --add properties.ipFilterRules "{\"action\":\"Reject\",\"filterName\":\"MaliciousIP\",\"ipMask\":\"6.6.6.6/6\"}"
 ```
 
-Pokud chcete odebrat existující filtr IP ve službě IoT Hub, spusťte:
+Pokud chcete ve svém IoT Hub odebrat existující filtr IP adres, spusťte:
 
 ```azurecli-interactive
 az resource update -n <iothubName> -g <resourceGroupName> --resource-type Microsoft.Devices/IotHubs --add properties.ipFilterRules <ipFilterIndexToRemove>
 ```
 
-Všimněte si, že `<ipFilterIndexToRemove>` musí odpovídat pořadí filtrů IP adres ve službě IoT Hub `properties.ipFilterRules`.
+Všimněte si `<ipFilterIndexToRemove>` , že musí odpovídat řazení filtrů IP adres v `properties.ipFilterRules`IoT Hub.
 
-
-## <a name="retrieve-and-update-ip-filters-using-azure-powershell"></a>Načítají a aktualizují filtrů IP adres pomocí Azure Powershellu
+## <a name="retrieve-and-update-ip-filters-using-azure-powershell"></a>Načtení a aktualizace filtrů IP adres pomocí Azure PowerShell
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Filtry IP adres služby IoT Hub můžete načíst a nastavit prostřednictvím [prostředí Azure PowerShell](/powershell/azure/overview). 
+Filtry IP IoT Hub můžete načíst a nastavit prostřednictvím [Azure PowerShell](/powershell/azure/overview).
 
 ```powershell
 # Get your IoT Hub resource using its name and its resource group name
@@ -145,26 +148,25 @@ $iothubResource.Properties.ipFilterRules = @($iothubResource.Properties.ipFilter
 $iothubResource | Set-AzResource -Force
 ```
 
-## <a name="update-ip-filter-rules-using-rest"></a>Aktualizovat pravidla filtru IP pomocí rozhraní REST
+## <a name="update-ip-filter-rules-using-rest"></a>Aktualizace pravidel filtru IP pomocí REST
 
-Může také načíst a úprava filtru IP služby IoT Hub pomocí koncového bodu REST poskytovatel prostředků Azure. Zobrazit `properties.ipFilterRules` v [metodu createorupdate](https://docs.microsoft.com/rest/api/iothub/iothubresource/createorupdate).
-
+Můžete také načíst a upravit filtr IP IoT Hub pomocí koncového bodu REST poskytovatele prostředků Azure. Viz `properties.ipFilterRules` v tématu [Metoda createorupdate](https://docs.microsoft.com/rest/api/iothub/iothubresource/createorupdate).
 
 ## <a name="ip-filter-rule-evaluation"></a>Vyhodnocení pravidla filtru IP
 
-Pravidla filtru IP jsou použity v zadaném pořadí a první pravidlo, které odpovídá IP adrese Určuje akci, přijmout nebo odmítnout.
+Pravidla filtru IP se aplikují v pořadí a první pravidlo, které odpovídá IP adrese, určuje akci přijmout nebo odmítnout.
 
-Například pokud chcete adresy v rozsahu 192.168.100.0/22 přijmout nebo odmítnout všechno ostatní, by měla přijímat prvního pravidla v mřížce 192.168.100.0/22 rozsah adres. Další pravidlo by měl odmítnout všechny adresy pomocí rozsahu 0.0.0.0/0.
+Například pokud chcete přijmout adresy v rozsahu 192.168.100.0/22 a odmítnout všechno ostatní, první pravidlo v mřížce by mělo přijmout rozsah adres 192.168.100.0/22. Další pravidlo by měl odmítnout všechny adresy pomocí rozsahu 0.0.0.0/0.
 
-Můžete změnit pořadí pravidel filtru IP v mřížce kliknutím na tři svislé tečky na začátku řádku a pomocí přetažení a vyřadit.
+Pořadí pravidel filtru IP v mřížce můžete změnit kliknutím na tři svislé tečky na začátku řádku a pomocí přetažení.
 
-Chcete-li uložit nové pořadí pravidel filtru IP, klikněte na tlačítko **Uložit**.
+Pokud chcete uložit nové pořadí pravidel filtru IP, klikněte na **Uložit**.
 
-![Změnit pořadí pravidel filtru IP centra IoT](./media/iot-hub-ip-filtering/ip-filter-rule-order.png)
+![Změna pořadí pravidel filtru IP IoT Hub](./media/iot-hub-ip-filtering/ip-filter-rule-order.png)
 
 ## <a name="next-steps"></a>Další postup
 
-Podrobněji prozkoumat možnosti služby IoT Hub, najdete v tématech:
+Chcete-li dále prozkoumat možnosti IoT Hub, přečtěte si:
 
 * [Monitorování operací](iot-hub-operations-monitoring.md)
-* [Metriky služby IoT Hub](iot-hub-metrics.md)
+* [IoT Hub metriky](iot-hub-metrics.md)

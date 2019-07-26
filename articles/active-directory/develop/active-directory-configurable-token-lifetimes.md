@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.custom: aaddev, annaba
 ms.reviewer: hirsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f9776126687832485bf329061dfeedce928918d9
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 901cf3e25ed63421f7e07d7773b6381fc54ea8a2
+ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68321145"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68489111"
 ---
 # <a name="configurable-token-lifetimes-in-azure-active-directory-preview"></a>Konfigurovatelné životnosti tokenů v Azure Active Directory (Preview)
 
@@ -40,6 +40,7 @@ Zásady můžete určit jako výchozí zásady pro vaši organizaci. Zásada se 
 > Pro SharePoint Online se nepodporují konfigurovatelné zásady životnosti tokenů.  I když máte možnost vytvořit tuto zásadu přes PowerShell, SharePoint Online tuto zásadu nepotvrdí. Další informace o konfiguraci časových limitů nečinných relací najdete v [blogu k SharePointu Online](https://techcommunity.microsoft.com/t5/SharePoint-Blog/Introducing-Idle-Session-Timeout-in-SharePoint-and-OneDrive/ba-p/119208) .
 >* Výchozí doba životnosti přístupového tokenu SharePointu Online je 1 hodina. 
 >* Výchozí maximální doba neaktivního obnovovacího tokenu SharePointu Online je 90 dní.
+
 
 ## <a name="token-types"></a>Typy tokenů
 
@@ -80,20 +81,21 @@ Zásada životního cyklu tokenu je typ objektu zásad, který obsahuje pravidla
 ### <a name="configurable-token-lifetime-properties"></a>Konfigurovatelné vlastnosti životnosti tokenů
 | Vlastnost | Řetězec vlastnosti zásad | Ovlivňuje | Výchozí | Minimální | Maximum |
 | --- | --- | --- | --- | --- | --- |
-| Doba života přístupového tokenu |AccessTokenLifetime |Přístupové tokeny, tokeny ID, tokeny typu Saml2 |1 hodina |10 minut |1 den |
-| Maximální neaktivní čas obnovovacího tokenu |MaxInactiveTime |Aktualizovat tokeny |90 dnů |10 minut |90 dnů |
+| Doba života přístupového tokenu |AccessTokenLifetime<sup>4</sup> |Přístupové tokeny, tokeny ID, tokeny typu Saml2 |1 hodina |10 minut |1 den |
+| Maximální neaktivní čas obnovovacího tokenu |MaxInactiveTime |Aktualizovat tokeny |90 dní |10 minut |90 dní |
 | Maximální stáří tokenu obnovení jednoho faktoru |MaxAgeSingleFactor |Aktualizovat tokeny (pro všechny uživatele) |Do-neodvolán |10 minut |Until-revoked<sup>1</sup> |
 | Maximální stáří tokenu pro Multi-Factor Refresh |MaxAgeMultiFactor |Aktualizovat tokeny (pro všechny uživatele) |Do-neodvolán |10 minut |Until-revoked<sup>1</sup> |
 | Maximální stáří tokenu relace s jedním faktorem |MaxAgeSessionSingleFactor<sup>2</sup> |Tokeny relace (trvalé a netrvalé) |Do-neodvolán |10 minut |Until-revoked<sup>1</sup> |
 | Maximální stáří tokenu relace Multi-Factor |MaxAgeSessionMultiFactor<sup>3</sup> |Tokeny relace (trvalé a netrvalé) |Do-neodvolán |10 minut |Until-revoked<sup>1</sup> |
 
 * <sup>1</sup>365 dní je maximální explicitní délka, kterou lze pro tyto atributy nastavit.
+* <sup>4</sup> . Pokud chcete, aby webový klient Microsoft Teams funguje, doporučujeme nastavit AccessTokenLifetime na více než 15 minut pro týmy Microsoft.
 
 ### <a name="exceptions"></a>Výjimky
 | Vlastnost | Ovlivňuje | Výchozí |
 | --- | --- | --- |
 | Maximální stáří obnovovacího tokenu (vydané pro federované uživatele, kteří mají nedostatečné informace o odvolání<sup>1</sup>) |Aktualizovat tokeny (vydané pro federované uživatele, kteří mají nedostatečné informace o odvolání<sup>1</sup>) |12 hodin |
-| Maximální neaktivní čas obnovovacího tokenu (vydaný pro důvěrné klienty) |Aktualizovat tokeny (vydané pro důvěrné klienty) |90 dnů |
+| Maximální neaktivní čas obnovovacího tokenu (vydaný pro důvěrné klienty) |Aktualizovat tokeny (vydané pro důvěrné klienty) |90 dní |
 | Maximální stáří obnovovacího tokenu (vydané pro důvěrné klienty) |Aktualizovat tokeny (vydané pro důvěrné klienty) |Do-neodvolán |
 
 * <sup>1</sup> Federované uživatele, kteří mají nedostatečné informace o odvolání, zahrnují všechny uživatele, kteří nemají atribut "LastPasswordChangeTimestamp" synchronizovaný. Těmto uživatelům se doručí krátký maximální stáří, protože AAD nedokáže ověřit, kdy odvolat tokeny, které jsou svázané se starým přihlašovacím údaji (například s heslem, které se změnily), a musí se vrátit častěji, aby se zajistilo, že uživatel a přidružené tokeny jsou pořád dobré.  stání. Aby bylo možné toto prostředí zlepšit, Správci klientů musí zajistit, aby synchronizoval tento atribut "LastPasswordChangeTimestamp" (dá se nastavit v objektu User pomocí PowerShellu nebo prostřednictvím AADSync).

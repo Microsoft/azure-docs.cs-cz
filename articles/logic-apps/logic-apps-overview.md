@@ -11,12 +11,12 @@ ms.reviewer: klam, LADocs
 ms.topic: overview
 ms.custom: mvc
 ms.date: 6/29/2018
-ms.openlocfilehash: 90287ab45341f203905aaf32eb6325edd3687231
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: f25ade0e984c98b9cbc8c4efa93f300c3ed93b14
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68273132"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68385479"
 ---
 # <a name="what-is-azure-logic-apps"></a>Co je Azure Logic Apps?
 
@@ -96,7 +96,7 @@ A naopak, BizTalk Server se může připojit k aplikacím logiky a komunikovat s
 
 ### <a name="write-once-reuse-often"></a>Časté používání jednou napsaného kódu
 
-Vytvářejte aplikace logiky jako šablony, abyste [své aplikace mohli nasazovat a znovu konfigurovat](../logic-apps/logic-apps-create-deploy-template.md) napříč různými prostředími a oblastmi.
+Vytvářejte aplikace logiky jako šablony Azure Resource Manager, abyste mohli [automatizovat nasazení aplikace logiky](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md) napříč různými prostředími a oblastmi.
 
 ### <a name="built-in-extensibility"></a>Integrovaná rozšiřitelnost
 
@@ -136,7 +136,7 @@ Logic Apps je jednou z mnoha služeb hostovaných v Microsoft Azure. Takže než
 
 Pokud máte předplatné Azure, vyzkoušejte tento [rychlý start k vytvoření první aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md), která prostřednictvím informačního kanálu RSS monitoruje nový obsah na webu a odesílá e-mail, když se objeví nový obsah.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Kontrola provozu s využitím aplikace logiky založené na plánu](../logic-apps/tutorial-build-schedule-recurring-logic-app-workflow.md)
 * Další informace o [řešeních bez serveru s využitím Azure](../logic-apps/logic-apps-serverless-overview.md)

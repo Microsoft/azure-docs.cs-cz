@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/14/2019
-ms.openlocfilehash: 0239111ca56dfe431a00eee83c79eedccc66c927
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: b0cf6eab86b0b932e44b6824305c23df01f35808
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68226151"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68383822"
 ---
 # <a name="select-the-correct-vm-sku-for-your-azure-data-explorer-cluster"></a>Vyberte správnou SKU virtuálního počítače pro váš cluster Azure Průzkumník dat. 
 
@@ -39,11 +39,11 @@ Azure Průzkumník dat nabízí dva typy clusterů:
 
 Při vytváření clusteru Azure Průzkumník dat vyberte *optimální* SKU virtuálního počítače pro plánované zatížení. Azure Průzkumník dat má dvě rodiny SKU, ze kterých si můžete vybrat:
 
-* **D_V2**: **D** SKU je výpočetní prostředí optimalizované a poskytované ve dvou charakterech.
+* **D_V2**: D SKU je výpočetní prostředí optimalizované a poskytované ve dvou charakterech.
     * Samotný virtuální počítač
     * Virtuální počítač s disky Premium Storage
 
-* **LS**: **L** SKU je úložiště optimalizované. Má mnohem větší velikost SSD, než je cena **D** SKU.
+* **LS**: L SKU je úložiště optimalizované. Má mnohem větší velikost SSD, než je cena **D** SKU.
 
 Následující tabulka uvádí hlavní rozdíly mezi dostupnými typy SKU:
  
@@ -68,17 +68,17 @@ Následující tabulka uvádí technické specifikace pro virtuální počítač
 
 |**Název**| **Kategorie** | **Velikost SSD** | **Jader** | **SRAM** | **Disky úložiště úrovně Premium (1 TB)**| **Minimální počet instancí na cluster** | **Maximální počet instancí na cluster**
 |---|---|---|---|---|---|---|---
-|D11_v2| Optimalizované pro výpočty | 75 GB    | 2 | 14 GB | 0 | 1 | 8 (kromě SKU pro vývoj/testování, kde se nachází 1)
-|D12_v2| Optimalizované pro výpočty | 150 GB   | 4 | 28 GB | 0 | 2 | 16
-|D13_v2| Optimalizované pro výpočty | 307 GB   | 8 | 56 GB | 0 | 2 | 1 000
-|D14_v2| Optimalizované pro výpočty | 614 GB   | 16| 112 GB | 0 | 2 | 1 000
-|DS13_v2 + 1 TB PS| Optimalizované úložiště | 1 TB | 8 | 56 GB | 1 | 2 | 1 000
-|DS13_v2 + 2 TB PS| Optimalizované úložiště | 2 TB | 8 | 56 GB | 2 | 2 | 1 000
-|DS14_v2 + zřizuje PS| Optimalizované úložiště | 3 TB | 16 | 112 GB | 2 | 2 | 1 000
-|DS14_v2 + 4 TB PS| Optimalizované úložiště | 4 TB | 16 | 112 GB | 4 | 2 | 1 000
-|L4s_v1| Optimalizované úložiště | 650 GB | 4 | 32 GB | 0 | 2 | 16
-|L8s_v1| Optimalizované úložiště | 1,3 TB | 8 | 64 GB | 0 | 2 | 1 000
-|L16s_1| Optimalizované úložiště | 2,6 TB | 16| 128 GB | 0 | 2 | 1 000
+|D11_v2| optimalizované pro výpočty | 75 GB    | 2 | 14 GB | 0 | 1 | 8 (kromě SKU pro vývoj/testování, kde se nachází 1)
+|D12_v2| optimalizované pro výpočty | 150 GB   | 4 | 28 GB | 0 | 2 | 16
+|D13_v2| optimalizované pro výpočty | 307 GB   | 8 | 56 GB | 0 | 2 | 1 000
+|D14_v2| optimalizované pro výpočty | 614 GB   | 16| 112 GB | 0 | 2 | 1 000
+|DS13_v2 + 1 TB PS| optimalizované úložiště | 1 TB | 8 | 56 GB | 1 | 2 | 1 000
+|DS13_v2 + 2 TB PS| optimalizované úložiště | 2 TB | 8 | 56 GB | 2 | 2 | 1 000
+|DS14_v2 + zřizuje PS| optimalizované úložiště | 3 TB | 16 | 112 GB | 2 | 2 | 1 000
+|DS14_v2 + 4 TB PS| optimalizované úložiště | 4 TB | 16 | 112 GB | 4 | 2 | 1 000
+|L4s_v1| optimalizované úložiště | 650 GB | 4 | 32 GB | 0 | 2 | 16
+|L8s_v1| optimalizované úložiště | 1,3 TB | 8 | 64 GB | 0 | 2 | 1 000
+|L16s_1| optimalizované úložiště | 2,6 TB | 16| 128 GB | 0 | 2 | 1 000
 
 * Prohlédněte si aktualizovaný seznam SKU pro virtuální počítače na oblast pomocí [rozhraní Azure Průzkumník dat ListSkus API](/dotnet/api/microsoft.azure.management.kusto.clustersoperationsextensions.listskus?view=azure-dotnet). 
 * Přečtěte si další informace o [různých skladových](/azure/virtual-machines/windows/sizes-compute)položkách Compute. 

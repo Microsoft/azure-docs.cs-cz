@@ -1,6 +1,6 @@
 ---
-title: Povolit Snapshot Debugger pro aplikace .NET v Azure Service Fabric, Cloudovou službu a Virtual Machines | Dokumentace Microsoftu
-description: Povolit Snapshot Debugger pro aplikace .NET v Azure Service Fabric, cloudové služby a virtuální počítače
+title: Povolení Snapshot Debugger pro aplikace .NET v Azure Service Fabric, cloudové službě a Virtual Machines | Microsoft Docs
+description: Povolení Snapshot Debugger pro aplikace .NET v Azure Service Fabric, cloudové službě a Virtual Machines
 services: application-insights
 documentationcenter: ''
 author: brahmnes
@@ -12,18 +12,18 @@ ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 03/07/2019
 ms.author: bfung
-ms.openlocfilehash: 5ac1d1339cb8a26cc86157d4d2aa664517418095
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 5a6cf763ae16b55806df2acaf2e03fd8c13d1e76
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67617799"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68359287"
 ---
-# <a name="enable-snapshot-debugger-for-net-apps-in-azure-service-fabric-cloud-service-and-virtual-machines"></a>Povolit Snapshot Debugger pro aplikace .NET v Azure Service Fabric, cloudové služby a virtuální počítače
+# <a name="enable-snapshot-debugger-for-net-apps-in-azure-service-fabric-cloud-service-and-virtual-machines"></a>Povolení Snapshot Debugger pro aplikace .NET v Azure Service Fabric, cloudové službě a Virtual Machines
 
-Pokud technologie ASP.NET nebo ASP.NET core běhu aplikace ve službě Azure App Service, důrazně doporučujeme k [povolit prostřednictvím stránky portálu služby Application Insights Snapshot Debugger](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json). Nicméně pokud vaše aplikace vyžaduje přizpůsobenému konfiguračnímu Snapshot Debugger nebo předběžnou verzi .NET core, pak tento pokyn byste měli dodržet, ***kromě*** k pokynům pro [povolení prostřednictvím na stránce portálu služby Application Insights](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json).
+Pokud aplikace ASP.NET nebo ASP.NET Core běží v Azure App Service, důrazně doporučujeme [povolit Snapshot Debugger prostřednictvím stránky Application Insightsového portálu](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json). Pokud však vaše aplikace vyžaduje upravenou konfiguraci Snapshot Debugger nebo verzi Preview rozhraní .NET Core, pak by tato instrukce měla následovat ***kromě*** pokynů pro [povolení prostřednictvím portálu Application Insights stránky](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json).
 
-Pokud vaše aplikace běží v Azure Service Fabric, cloudové služby, virtuální počítače, nebo místní počítače, postupujte podle následujících pokynů by měla sloužit. 
+Pokud vaše aplikace běží v Azure Service Fabric, cloudové službě, Virtual Machines nebo na místních počítačích, měli byste použít následující pokyny. 
     
 ## <a name="configure-snapshot-collection-for-aspnet-applications"></a>Konfigurace shromažďování snímků pro aplikace ASP.NET
 
@@ -31,7 +31,7 @@ Pokud vaše aplikace běží v Azure Service Fabric, cloudové služby, virtuál
 
 2. Zahrnout [Microsoft.ApplicationInsights.SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) balíčku NuGet ve vaší aplikaci.
 
-3. V případě potřeby přizpůsobit konfiguraci Snapshot Debugger do [soubor ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md). Výchozí konfigurace Snapshot Debugger je převážně prázdný a všechna nastavení jsou volitelná. Tady je příklad ukazující konfiguraci ekvivalentní výchozí konfigurace:
+3. V případě potřeby přizpůsobené Snapshot Debugger konfiguraci přidanou do [souboru ApplicationInsights. config](../../azure-monitor/app/configuration-with-applicationinsights-config.md). Výchozí konfigurace Snapshot Debugger je většinou prázdná a všechna nastavení jsou volitelná. Tady je příklad, který ukazuje konfiguraci odpovídající výchozí konfiguraci:
 
     ```xml
     <TelemetryProcessors>
@@ -68,7 +68,7 @@ Pokud vaše aplikace běží v Azure Service Fabric, cloudové služby, virtuál
 4. Snímky se shromažďují pouze na výjimky, které se hlásí do Application Insights. V některých případech (například starší verze platformy .NET), možná budete muset [Konfigurovat shromažďování výjimek](../../azure-monitor/app/asp-net-exceptions.md#exceptions) pro zobrazení výjimek pomocí snímků na portálu.
 
 
-## <a name="configure-snapshot-collection-for-applications-using-aspnet-core-20-or-above"></a>Konfigurace shromažďování snímek dat aplikací pomocí ASP.NET Core 2.0 nebo novější
+## <a name="configure-snapshot-collection-for-applications-using-aspnet-core-20-or-above"></a>Konfigurace kolekce snímků pro aplikace s využitím ASP.NET Core 2,0 nebo vyšší
 
 1. [Povolit Application Insights ve webové aplikaci ASP.NET Core](../../azure-monitor/app/asp-net-core.md), pokud jste to ještě neudělali.
 
@@ -78,26 +78,18 @@ Pokud vaše aplikace běží v Azure Service Fabric, cloudové služby, virtuál
 2. Zahrnout [Microsoft.ApplicationInsights.SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) balíčku NuGet ve vaší aplikaci.
 
 3. Upravit svou aplikaci `Startup` třídy přidání a konfigurace procesoru telemetrie Snapshot Collector.
-    1. Pokud [Microsoft.ApplicationInsights.SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet verze 1.3.5 balíčku nebo vyšší se používá a potom přidejte následující příkazy using do `Startup.cs`.
+    1. Pokud se používá balíček NuGet [Microsoft. ApplicationInsights. SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) verze 1.3.5 nebo vyšší, přidejte následující příkazy using do `Startup.cs`.
 
        ```csharp
             using Microsoft.ApplicationInsights.SnapshotCollector;
        ```
 
-       Přidejte následující na konci metoda ConfigureServices `Startup` třídy v `Startup.cs`.
+       Přidejte následující na konec metody ConfigureServices ve `Startup` třídě v. `Startup.cs`
 
        ```csharp
-            services.AddSnapshotCollector((configuration) =>
-            {
-                IConfigurationSection section = Configuration.GetSection(nameof(SnapshotCollectorConfiguration));
-                if (section.Value != null)
-                {
-                    section.Bind(configuration);
-                }
-            });
-
+            services.AddSnapshotCollector((configuration) => Configuration.Bind(nameof(SnapshotCollectorConfiguration), configuration));
        ```
-    2. Pokud [Microsoft.ApplicationInsights.SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet verze 1.3.4 balíčku nebo níže se používá a potom přidejte následující příkazy using do `Startup.cs`.
+    2. Pokud se používá balíček NuGet [Microsoft. ApplicationInsights. SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) verze 1.3.4 nebo nižší, přidejte následující příkazy using do `Startup.cs`.
 
        ```csharp
        using Microsoft.ApplicationInsights.SnapshotCollector;
@@ -143,7 +135,7 @@ Pokud vaše aplikace běží v Azure Service Fabric, cloudové služby, virtuál
        }
        ```
 
-4. V případě potřeby přizpůsobit konfiguraci Snapshot Debugger přidáním části SnapshotCollectorConfiguration do souboru appsettings.json. Všechna nastavení v konfiguraci Snapshot Debugger jsou volitelné. Tady je příklad ukazující konfiguraci ekvivalentní výchozí konfigurace:
+4. V případě potřeby přizpůsobené konfiguraci Snapshot Debugger přidáním oddílu SnapshotCollectorConfiguration do souboru appSettings. JSON. Všechna nastavení v konfiguraci Snapshot Debugger jsou volitelná. Tady je příklad, který ukazuje konfiguraci odpovídající výchozí konfiguraci:
 
    ```json
    {
@@ -191,6 +183,6 @@ Pokud vaše aplikace běží v Azure Service Fabric, cloudové služby, virtuál
 
 ## <a name="next-steps"></a>Další postup
 
-- Generovat provozu do vaší aplikace, který může vyvolat výjimku. Vyčkejte 10 až 15 minut, než se snímky k odeslání do instance služby Application Insights.
-- Zobrazit [snímky](snapshot-debugger.md?toc=/azure/azure-monitor/toc.json#view-snapshots-in-the-portal) na webu Azure Portal.
-- Vám pomůžou při řešení potíží Snapshot Debugger [řešení potíží s Snapshot Debugger](snapshot-debugger-troubleshoot.md?toc=/azure/azure-monitor/toc.json).
+- Vygenerujte provoz do vaší aplikace, který může aktivovat výjimku. Potom počkejte 10 až 15 minut, než se snímky odešlou do instance Application Insights.
+- Podívejte se na [snímky](snapshot-debugger.md?toc=/azure/azure-monitor/toc.json#view-snapshots-in-the-portal) v Azure Portal.
+- Nápovědu k řešení potíží s Snapshot Debugger najdete v tématu [řešení potíží s Snapshot Debugger](snapshot-debugger-troubleshoot.md?toc=/azure/azure-monitor/toc.json).

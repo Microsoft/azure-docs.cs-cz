@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 7/02/2019
+ms.date: 7/24/2019
 ms.author: v-mohabe
-ms.openlocfilehash: 1cafd8a3c766e57aed67634d7da8498c9a6ee120
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: f33b69ac443a1bb8f6b7d6e1b19f2f077bf38f58
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68295822"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68501482"
 ---
 # <a name="threat-detection-for-data-services-in-azure-security-center"></a>Detekce hrozeb pro datové služby v Azure Security Center
 
@@ -27,6 +27,7 @@ ms.locfileid: "68295822"
 
 * [Azure SQL Database a SQL Data Warehouse](#data-sql)
 * [Azure Storage](#azure-storage)
+* [Databáze Cosmos](#cosmos-db)
 
 ## Azure SQL Database a SQL Data Warehouse<a name="data-sql"></a>
 
@@ -46,7 +47,7 @@ Další informace o výstrahách detekce hrozeb SQL najdete v tématu[Azure SQL 
 ## Azure Storage<a name="azure-storage"></a>
 
 >[!NOTE]
-> Rozšířená ochrana před internetovými útoky pro Azure Storage je aktuálně dostupná jenom pro Blob Storage. 
+> Rozšířená ochrana před internetovými útoky pro Azure Storage je aktuálně dostupná jenom pro Blob Storage.
 
 Advanced Threat Protection pro Azure Storage poskytuje další vrstvu analytických nástrojů zabezpečení, která detekuje neobvyklé a potenciálně škodlivé pokusy o přístup nebo využití účtů úložiště. Tato vrstva ochrany umožňuje řešit hrozby, aniž byste museli být odborníkem na zabezpečení, a spravovat systémy monitorování zabezpečení.
 
@@ -70,3 +71,14 @@ Security Center analyzuje diagnostické protokoly žádostí o čtení, zápis a
 >Rozšířená ochrana před internetovými útoky pro Azure Storage není v současnosti dostupná v oblastech cloudu Azure pro státní správu a svrchované oblasti.
 
 Další informace o výstrahách pro úložiště najdete v článku [Rozšířená ochrana před internetovými útoky pro Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-advanced-threat-protection) a přečtěte si část výstrahy ochrany.
+
+## Cosmos DB<a name="cosmos-db"></a>
+
+Následující výstrahy jsou generovány neobvyklými a potenciálně škodlivými pokusy o přístup k účtům Azure Cosmos DB nebo jejich zneužití:
+
+|Výstrahy|Popis|
+|---|---|
+|**Přístup z neobvyklého umístění**|Indikuje, že došlo ke změně vzoru přístupu k účtu Cosmos DB. Někdo k tomuto účtu přistupoval z neznámé IP adresy v porovnání s poslední aktivitou. Buď útočník získal účet Cosmos DB, nebo k účtu Cosmos DB získal oprávněný uživatel z nového a neobvyklého zeměpisného umístění. Například: nová aplikace nebo vývojářská údržba ze vzdáleného.|
+|**Neobvyklé exfiltrace dat**|Indikuje, že došlo ke změně vzoru extrakce dat z Cosmos DB účtu. Někdo v porovnání s poslední aktivitou extrahovali neobvyklý objem dat. Buď mohl útočník extrahovat velké množství dat z databáze Cosmos DB. Například: exfiltrace dat/úniky, neoprávněný přenos dat. Nebo legitimní uživatel nebo aplikace extrahovali z kontejneru neobvyklé množství dat. Příklad: aktivita zálohování údržby.|
+
+Další informace najdete v tématu [Rozšířená ochrana před internetovými útoky pro Azure Cosmos DB](../cosmos-db/cosmos-db-advanced-threat-protection.md).

@@ -12,12 +12,12 @@ ms.topic: overview
 ms.date: 07/30/2018
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a99488025dc79a16006af4088555a67b23704cb1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: fd89d70bfe7a7f5e72e7fcabe167bafac5777672
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60473732"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68382251"
 ---
 # <a name="manage-my-devices-overview"></a>Přehled správy zařízení
 
@@ -28,5 +28,5 @@ Ujistěte se, že máte přístup ke všem potenciálně omezeným prostředků 
 
 |Článek |Popis |
 |------|------------|
-|[Připojení pracovního zařízení](user-help-join-device-on-network.md)|Popisuje, jak připojit pracovní zařízení k síti vaší organizace.|
-|[Registrace osobního zařízení](user-help-register-device-on-network.md)|Popisuje, jak zaregistrovat osobní zařízení v síti vaší organizace.|
+| [Připojte se k pracovnímu zařízení](user-help-join-device-on-network.md) .] Přečtěte si, jak připojit zařízení vlastněné vaší práci k síti vaší organizace.|
+| [Registrace svého osobního zařízení](user-help-register-device-on-network.md) ] Přečtěte si, jak zaregistrovat svoje osobní zařízení v síti vaší organizace.|

@@ -8,13 +8,13 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: conceptual
-ms.date: 07/19/2019
-ms.openlocfilehash: fe92d36eca05b47f928f6644053fb9b0149d6db9
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
-ms.translationtype: HT
+ms.date: 07/24/2019
+ms.openlocfilehash: cd611918b755ac3d5b6088ec6abe1711962921c7
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326796"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68423179"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>Připojení k virtuálním sítím Azure z Azure Logic Apps pomocí prostředí integrační služby (ISE)
 
@@ -23,6 +23,9 @@ Pro scénáře, ve kterých aplikace logiky a účty pro integraci potřebují p
 Při vytváření ISE Azure *vloží* do vaší virtuální sítě Azure, které ISE, nasadí službu Logic Apps do vaší virtuální sítě. Když vytvoříte aplikaci logiky nebo účet pro integraci, vyberte ISE jako své umístění. Vaše aplikace logiky nebo účet pro integraci pak můžou přímo přistupovat k prostředkům, jako jsou virtuální počítače (VM), servery, systémy a služby, ve vaší virtuální síti.
 
 ![Vybrat prostředí integrační služby](./media/connect-virtual-network-vnet-isolated-environment/select-logic-app-integration-service-environment.png)
+
+> [!IMPORTANT]
+> Aby Logic Apps a integrační účty fungovaly společně v ISE, musí jako své umístění používat *stejný ISE* .
 
 ISE má vyšší omezení doby trvání spuštění, uchovávání úložiště, propustnosti, požadavků HTTP a časových limitů odpovědí, velikostí zpráv a požadavků vlastních konektorů. Další informace najdete v tématu [omezení a konfigurace pro Azure Logic Apps](logic-apps-limits-and-config.md). Další informace o ISEs najdete v tématu [přístup k prostředkům Azure Virtual Network z Azure Logic Apps](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md).
 
@@ -43,9 +46,9 @@ V tomto článku se dozvíte, jak tyto úlohy provést:
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, <a href="https://azure.microsoft.com/free/" target="_blank">zaregistrujte si bezplatný účet Azure</a>.
 
-* [Virtuální síť Azure](../virtual-network/virtual-networks-overview.md). Pokud nemáte virtuální síť, přečtěte si, jak [vytvořit virtuální síť Azure](../virtual-network/quick-create-portal.md). 
+* [Virtuální síť Azure](../virtual-network/virtual-networks-overview.md). Pokud nemáte virtuální síť, přečtěte si, jak [vytvořit virtuální síť Azure](../virtual-network/quick-create-portal.md).
 
-  * Vaše virtuální síť musí mít čtyři *prázdné* podsítě pro vytváření a nasazování prostředků v ISE. Tyto podsítě můžete vytvořit předem nebo můžete počkat, dokud nevytvoříte ISE, kde můžete vytvářet podsítě ve stejnou dobu. Přečtěte si další informace o [požadavcích na podsíť](#create-subnet). 
+  * Vaše virtuální síť musí mít čtyři *prázdné* podsítě pro vytváření a nasazování prostředků v ISE. Tyto podsítě můžete vytvořit předem nebo můžete počkat, dokud nevytvoříte ISE, kde můžete vytvářet podsítě ve stejnou dobu. Přečtěte si další informace o [požadavcích na podsíť](#create-subnet).
   
     > [!NOTE]
     > Pokud používáte [ExpressRoute](../expressroute/expressroute-introduction.md), který poskytuje privátní připojení ke cloudovým službám Microsoftu, musíte [vytvořit směrovací tabulku](../virtual-network/manage-route-table.md) , která má následující trasu a propojit ji s každou podsítí, kterou používá vaše ISE:
@@ -90,9 +93,9 @@ Tyto tabulky popisují porty ve vaší virtuální síti, které používá ISE 
 | Závislost Azure SQL | Odchozí | 1433 | VirtualNetwork | SQL |
 | Azure Resource Health | Odchozí | 1886 | VirtualNetwork | Internet | Pro publikování stavu do Resource Health |
 | Koncový bod správy API Management | Příchozí | 3443 | APIManagement  | VirtualNetwork | |
-| Závislost z protokolu k zásadám centra událostí a agentům monitorování | Odchozí | 5672 | VirtualNetwork  | Centrum událostí | |
+| Závislost z protokolu k zásadám centra událostí a agentům monitorování | Odchozí | 5672 | VirtualNetwork  | EventHub | |
 | Přístup k mezipaměti Azure pro instance Redis mezi instancemi rolí | Příchozí <br>Odchozí | 6379-6383 | VirtualNetwork  | VirtualNetwork | Aby ISE mohli pracovat s Azure cache pro Redis, musíte tyto [odchozí a příchozí porty, které jsou popsané v mezipaměti Azure, otevřít i pro Redis Nejčastější dotazy](../azure-cache-for-redis/cache-how-to-premium-vnet.md#outbound-port-requirements). |
-| Nástroj pro vyrovnávání zatížení Azure | Příchozí | * | AzureLoadBalancer | VirtualNetwork |  |
+| Azure Load Balancer | Příchozí | * | AzureLoadBalancer | VirtualNetwork |  |
 ||||||
 
 <a name="create-environment"></a>
@@ -130,14 +133,13 @@ Do vyhledávacího pole zadejte jako filtr "prostředí integrační služby".
 
    **Vytvořit podsíť**
 
-   Pro vytváření a nasazování prostředků ve vašem prostředí ISE potřebuje čtyři *prázdné* podsítě, které nejsou delegované na žádnou službu. 
-   Po  vytvoření prostředí nemůžete tyto adresy podsítě změnit. Každá podsíť musí splňovat tato kritéria:
+   Pro vytváření a nasazování prostředků ve vašem prostředí ISE potřebuje čtyři *prázdné* podsítě, které nejsou delegované na žádnou službu. Po  vytvoření prostředí nemůžete tyto adresy podsítě změnit. Každá podsíť musí splňovat tato kritéria:
 
    * Má název, `<`který začíná abecedním znakem nebo podtržítkem a nemá tyto znaky:, `>`, `%`, `&`, `\\`, `?`,`/`
 
    * Používá [Formát CIDR (Inter-Domain Routing)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) a adresní prostor třídy B.
 
-   * Používá minimálně a `/27` v adresním prostoru, protože každá podsíť musí mít jako *minimum minimálně*32 adres. Příklad:
+   * Používá minimálně a `/27` v adresním prostoru, protože každá podsíť musí mít *minimálně 32 adres* *.* Příklad:
 
      * `10.0.0.0/27`má 32 adres, protože 2<sup>(32-27)</sup> je 2<sup>5</sup> nebo 32.
 
@@ -155,11 +157,11 @@ Do vyhledávacího pole zadejte jako filtr "prostředí integrační služby".
 
    1. V seznamu **podsítě** vyberte možnost **spravovat konfiguraci podsítě**.
 
-      ![Správa konfigurace podsítě](./media/connect-virtual-network-vnet-isolated-environment/manage-subnet.png)
+      ![Spravovat konfiguraci podsítě](./media/connect-virtual-network-vnet-isolated-environment/manage-subnet.png)
 
    1. V podokně **podsítě** vyberte možnost **podsíť**.
 
-      ![Přidání podsítě](./media/connect-virtual-network-vnet-isolated-environment/add-subnet.png)
+      ![Přidat podsíť](./media/connect-virtual-network-vnet-isolated-environment/add-subnet.png)
 
    1. V podokně **Přidat podsíť** zadejte tyto informace.
 
@@ -179,8 +181,7 @@ Do vyhledávacího pole zadejte jako filtr "prostředí integrační služby".
 
    ![Po úspěšném ověření vyberte vytvořit.](./media/connect-virtual-network-vnet-isolated-environment/ise-validation-success.png)
 
-   Azure spustí nasazení vašeho prostředí, ale tento proces *může* trvat až dvě hodiny, než se dokončí. 
-   Pokud chcete zjistit stav nasazení, na panelu nástrojů Azure vyberte ikonu oznámení, která otevře podokno oznámení.
+   Azure spustí nasazení vašeho prostředí, ale tento proces *může* trvat až dvě hodiny, než se dokončí. Pokud chcete zjistit stav nasazení, na panelu nástrojů Azure vyberte ikonu oznámení, která otevře podokno oznámení.
 
    ![Zkontroluje stav nasazení.](./media/connect-virtual-network-vnet-isolated-environment/environment-deployment-status.png)
 
@@ -191,10 +192,11 @@ Do vyhledávacího pole zadejte jako filtr "prostředí integrační služby".
    Jinak postupujte podle pokynů Azure Portal pro řešení potíží s nasazením.
 
    > [!NOTE]
-   > Pokud se nasazení nepovede nebo odstraníte ISE, může Azure trvat až hodinu, než se vaše podsítě uvolní. Tato prodleva znamená, že možná budete muset počkat, než tyto podsítě znovu použijete v jiné ISE. 
+   > Pokud se nasazení nepovede nebo odstraníte ISE, může Azure trvat až hodinu, než se vaše podsítě uvolní. Tato prodleva znamená, že možná budete muset počkat, než tyto podsítě znovu použijete v jiné ISE.
    >
    > Pokud virtuální síť odstraníte, Azure obvykle trvá až dvě hodiny, než se uvolní vaše podsítě, ale tato operace může trvat delší dobu. 
-   > Při odstraňování virtuálních sítí se ujistěte, že nejsou připojené žádné prostředky. Viz [odstranění virtuální sítě](../virtual-network/manage-virtual-network.md#delete-a-virtual-network).
+   > Při odstraňování virtuálních sítí se ujistěte, že nejsou připojené žádné prostředky. 
+   > Viz [odstranění virtuální sítě](../virtual-network/manage-virtual-network.md#delete-a-virtual-network).
 
 1. Pokud chcete zobrazit své prostředí, vyberte **Přejít k prostředku** , pokud Azure po dokončení nasazení automaticky nepřejde do vašeho prostředí.  
 
@@ -204,9 +206,26 @@ Další informace o vytváření podsítí najdete v tématu [Přidání podsít
 
 ## <a name="create-logic-app---ise"></a>Vytvoření aplikace logiky – ISE
 
-Pokud chcete vytvářet aplikace logiky, které běží ve vašem prostředí ISE (Integration Service Environment), [vytvořte v obvyklých aplikacích Logic Apps](../logic-apps/quickstart-create-first-logic-app-workflow.md) s výjimkou toho, že nakonfigurujete vlastnost **umístění** , vyberte svůj ISE z části **prostředí integrační služby** . případě
+Pokud chcete vytvářet aplikace logiky, které běží ve vašem prostředí ISE (Integration Service Environment), postupujte takto:
 
-  ![Vybrat prostředí integrační služby](./media/connect-virtual-network-vnet-isolated-environment/create-logic-app-with-integration-service-environment.png)
+1. Vyhledejte a otevřete své ISE, pokud ještě není otevřený. V nabídce ISE v části **Nastavení**vyberte **Logic Apps** > **Přidat**.
+
+   ![Přidání nové aplikace logiky do ISE](./media/connect-virtual-network-vnet-isolated-environment/add-logic-app-to-ise.png)
+
+   -nebo-
+
+   V hlavní nabídce Azure vyberte **vytvořit prostředek** > **Integration** > **Logic App**.
+
+1. Zadejte název, předplatné Azure a skupinu prostředků Azure (nová nebo existující), která se má použít pro vaši aplikaci logiky.
+
+1. V seznamu **umístění** v části **prostředí integrační služby** vyberte své ISE, například:
+
+   ![Vybrat prostředí integrační služby](./media/connect-virtual-network-vnet-isolated-environment/create-logic-app-with-ise.png)
+
+   > [!IMPORTANT]
+   > Pokud chcete používat aplikace logiky s účtem pro integraci, musí tyto aplikace logiky a účet pro integraci používat stejný ISE.
+
+1. Pokračujte [v vytváření aplikace logiky obvyklým způsobem](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
 Rozdíly ve fungování aktivačních událostí a akcí a způsobu jejich označení při použití ISE v porovnání s globálním Logic Apps službou najdete v tématu věnovaném izolaci a [globálnímu přehledu ISE](connect-virtual-network-vnet-isolated-environment-overview.md#difference).
 
@@ -214,11 +233,26 @@ Rozdíly ve fungování aktivačních událostí a akcí a způsobu jejich ozna�
 
 ## <a name="create-integration-account---ise"></a>Vytvořit účet pro integraci – ISE
 
-Pokud chcete použít účet pro integraci s Logic Apps v prostředí ISE (Integration Service Environment), musí účet pro integraci používat *stejné prostředí* jako aplikace logiky. Logic Apps v ISE můžou odkazovat jenom na účty pro integraci ve stejném ISE. V závislosti na [ISE SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) vybrané při vytváření vaše ISE zahrnuje konkrétní využití účtu pro integraci bez dalších nákladů. Informace o tom, jak ceny a fakturace pro účty pro integraci s ISEs najdete v článku o [cenovém modelu Logic Apps](../logic-apps/logic-apps-pricing.md#fixed-pricing). Cenové sazby najdete v tématu [Logic Apps ceny](https://azure.microsoft.com/pricing/details/logic-apps/).
+V závislosti na [ISE SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) vybrané při vytváření vaše ISE zahrnuje konkrétní využití účtu pro integraci bez dalších nákladů. Logic Apps, které existují v prostředí ISE (Integration Service Environment), můžou odkazovat jenom na účty pro integraci, které existují ve stejném ISE. Aby mohl účet pro integraci spolupracovat s Logic Apps v ISE, musí účet pro integraci i aplikace logiky používat *stejné prostředí* jako jejich umístění. Další informace o integračních účtech a ISEs najdete v [tématu účty pro integraci](connect-virtual-network-vnet-isolated-environment-overview.md#create-integration-account-environment
+)s ISE.
 
-Pokud chcete vytvořit účet pro integraci, který používá ISE, [Vytvořte si účet pro integraci obvyklým způsobem](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) , s výjimkou nastavení **umístění** , vyberte svůj ISE z oddílu **prostředí integrační služby** , například:
+Pokud chcete vytvořit účet pro integraci, který používá ISE, postupujte podle následujících kroků:
 
-![Vybrat prostředí integrační služby](./media/connect-virtual-network-vnet-isolated-environment/create-integration-account-with-integration-service-environment.png)
+1. Vyhledejte a otevřete své ISE, pokud ještě není otevřený. V nabídce ISE v části **Nastavení**vyberte **účty** > pro integraci**Přidat**.
+
+   ![Přidat nový účet pro integraci do ISE](./media/connect-virtual-network-vnet-isolated-environment/add-integration-account-to-ise.png)
+
+   -nebo-
+
+   V hlavní nabídce Azure vyberte vytvořit účet **pro** > **integraci** **integrace** > prostředků.
+
+1. Zadejte název, předplatné Azure, skupinu prostředků Azure (novou nebo existující) a cenovou úroveň, kterou chcete použít pro účet pro integraci.
+
+1. V seznamu **umístění** v části **prostředí integrační služby** vyberte stejný ISE, které vaše aplikace logiky používají, například:
+
+   ![Vybrat prostředí integrační služby](./media/connect-virtual-network-vnet-isolated-environment/create-integration-account-with-integration-service-environment.png)
+
+1. [Obvyklým způsobem pokračujte v vytváření účtu pro integraci](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md).
 
 <a name="add-capacity"></a>
 

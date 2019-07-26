@@ -8,12 +8,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 07/08/2019
 ms.author: mlearned
-ms.openlocfilehash: 554eba87efc56e2dadb3fb2d0cb78cd8b7ea7237
-ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
+ms.openlocfilehash: 7aff0fe47d1586b63157d5df7882fc338637f714
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68302727"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68381976"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Nejčastější dotazy týkající se služby Azure Kubernetes (AKS)
 
@@ -140,6 +140,50 @@ Uzly agenta AKS se účtují jako standardní virtuální počítače Azure, tak
 ## <a name="can-i-movemigrate-my-cluster-between-subscriptions"></a>Můžu cluster přesunout/migrovat mezi předplatnými?
 
 Přesun clusterů mezi předplatnými není aktuálně podporován.
+
+## <a name="can-i-move-my-aks-clusters-from-the-current-azure-subscription-to-another"></a>Můžu svoje clustery AKS přesunout z aktuálního předplatného Azure do jiného? 
+
+Přesunutí clusteru AKS a přidružené prostředky mezi předplatnými Azure se nepodporuje.
+
+## <a name="why-is-my-cluster-delete-taking-so-long"></a>Proč je můj cluster trvá tak dlouho? 
+
+Většina clusterů se po vyžádání uživatele odstraní; v některých případech, zejména v případě, že zákazníci přinášejí svoji vlastní skupinu prostředků nebo že odstraňování úloh mezi RGy může trvat delší dobu nebo selhat. Pokud máte problém s odstraněním, poklikejte na RG, že nejsou k dispozici žádné prostředky mimo RG od RG atd.
+
+## <a name="if-i-have-pod--deployments-in-state-nodelost-or-unknown-can-i-still-upgrade-my-cluster"></a>Pokud mám v/v nasazení stav ' NodeLost ' nebo ' neznámé ', je možné cluster stále upgradovat?
+
+To platí, ale AKS to nedoporučuje. Upgrady by se měly provádět v ideálním případě, když je stav clusteru známý a v pořádku.
+
+## <a name="if-i-have-a-cluster-with-one-or-more-nodes-in-an-unhealthy-state-or-shut-down-can-i-perform-an-upgrade"></a>Pokud mám cluster s minimálně jedním uzlem ve stavu není v pořádku nebo je možné ho vypnout, mohu provést upgrade?
+
+Ne, odstraňte nebo odeberte všechny uzly ve stavu selhání nebo jinak odeberte z clusteru před upgradem.
+
+## <a name="i-ran-a-cluster-delete-but-see-the-error-errno-11001-getaddrinfo-failed"></a>Spustil (a) jsem cluster s odstraněním, ale zobrazí se chyba`[Errno 11001] getaddrinfo failed` 
+
+Nejčastěji to je způsobeno tím, že uživatelé, kteří mají jednu nebo více skupin zabezpečení sítě (skupin zabezpečení sítě) stále používány a jsou přidruženi ke clusteru.  Odeberte je prosím a pokuste se o odstranění znovu.
+
+## <a name="i-ran-an-upgrade-but-now-my-pods-are-in-crash-loops-and-readiness-probes-fail"></a>Spustil (a) jsem upgrade, ale teď jsou moje lusky v cyklech havárií a testy připravenosti selžou?
+
+Potvrďte prosím, že váš instanční objekt nevypršel.  Podívejte se prosím na: [AKS instanční objekt](https://docs.microsoft.com/azure/aks/kubernetes-service-principal) a [přihlašovací údaje pro AKS aktualizace](https://docs.microsoft.com/azure/aks/update-credentials).
+
+## <a name="my-cluster-was-working-but-suddenly-can-not-provision-loadbalancers-mount-pvcs-etc"></a>Můj cluster fungoval, ale náhle neumožňuje zřídit LoadBalancers, připojení PVC atd.? 
+
+Potvrďte prosím, že váš instanční objekt nevypršel.  Podívejte se prosím na: [AKS instanční objekt](https://docs.microsoft.com/azure/aks/kubernetes-service-principal) a [přihlašovací údaje pro AKS aktualizace](https://docs.microsoft.com/azure/aks/update-credentials).
+
+## <a name="can-i-use-the-virtual-machine-scale-set-apis-to-scale-manually"></a>Můžu použít rozhraní API sady škálování pro virtuální počítače k ručnímu škálování?
+
+Ne, operace škálování s použitím rozhraní API sady škálování virtuálních počítačů se nepodporují. Použijte rozhraní API AKS (`az aks scale`).
+
+## <a name="can-i-use-virtual-machine-scale-sets-to-manually-scale-to-0-nodes"></a>Můžu pomocí sady škálování virtuálních počítačů ručně škálovat na 0 uzlů?
+
+Ne, operace škálování s použitím rozhraní API sady škálování virtuálních počítačů se nepodporují.
+
+## <a name="can-i-stop-or-de-allocate-all-my-vms"></a>Můžu zastavit nebo zrušit přidělení všech virtuálních počítačů?
+
+I když AKS má mechanismy odolnosti k vyvýšení těchto konfigurací a obnovení z něj, nejedná se o doporučenou konfiguraci.
+
+## <a name="can-i-use-custom-vm-extensions"></a>Můžu použít vlastní rozšíření virtuálních počítačů?
+
+Žádná AKS není spravovaná služba a manipulace s prostředky IaaS není podporovaná. Instalace vlastních komponent atd. Využijte prosím rozhraní API a mechanismů Kubernetes. Můžete například využít DaemonSets k instalaci požadovaných součástí.
 
 <!-- LINKS - internal -->
 

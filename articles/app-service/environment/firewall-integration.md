@@ -1,6 +1,6 @@
 ---
-title: Uzamčení odchozí provoz služby App Service Environment – Azure
-description: Popisuje, jak integrovat s bránou Firewall Azure zabezpečit odchozí provoz
+title: Uzamčení App Service Environment odchozího provozu – Azure
+description: Popisuje postup při integraci s Azure Firewall pro zabezpečení odchozího provozu.
 services: app-service
 documentationcenter: na
 author: ccompy
@@ -11,100 +11,100 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/11/2019
+ms.date: 07/25/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 6dae2d40650b9fdb8df2d3bdb74b2df78639dc11
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b57ac43b02e8630528e7ed3f77f51befa52ed45f
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67058063"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68498471"
 ---
-# <a name="locking-down-an-app-service-environment"></a>Používat jenom služby App Service Environment
+# <a name="locking-down-an-app-service-environment"></a>Uzamčení App Service Environment
 
-App Service Environment (ASE) má řadu externích závislostí, které vyžaduje přístup k mohl správně fungovat. Služba ASE se nachází v zákazníků Azure Virtual Network (VNet). Zákazníci musí umožňovat provoz závislostí služby ASE, který je pro zákazníky, které chcete zamknout všechny výchozí přenosy ze své virtuální síti.
+App Service Environment (pomocného programu) má řadu externích závislostí, ke kterým vyžaduje přístup, aby bylo možné správně fungovat. Pomocného uživatele bydlí v rámci zákazníka Azure Virtual Network (VNet). Zákazníci musí povolit provoz závislosti s pomocným mechanismem, což je problém pro zákazníky, kteří chtějí z své virtuální sítě uzamknout veškerý výstup.
 
-Existuje mnoho příchozí závislosti, které má služba ASE. Řízení příchozích přenosů nelze odeslat prostřednictvím zařízení brány firewall. Zdrojové adresy pro tento provoz jsou známé a jsou publikované ve [adresy pro správu služby App Service Environment](https://docs.microsoft.com/azure/app-service/environment/management-addresses) dokumentu. S touto informací k zabezpečení příchozího provozu, můžete vytvořit pravidla skupiny zabezpečení sítě.
+Existuje několik příchozích závislostí, které má pomocným mechanismem řízení. Příchozí provoz správy nelze odeslat přes zařízení brány firewall. Zdrojové adresy tohoto provozu jsou známé a jsou publikovány v dokumentu [adresy pro správu App Service Environment](https://docs.microsoft.com/azure/app-service/environment/management-addresses) . Můžete vytvořit pravidla skupiny zabezpečení sítě s těmito informacemi pro zabezpečení příchozího provozu.
 
-Odchozí závislostí služby ASE jsou téměř úplně definovány pomocí plně kvalifikovaných názvů domén, které nemají statické adresy za nimi stojí. Chybějící statické adresy znamená, že skupiny zabezpečení sítě (Nsg) nelze použít pro uzamčení odchozí přenosy ze služby ASE. Adresy změnit dostatečně často, že jeden nelze nastavit pravidla založená na aktuální řešení a použít k vytvoření skupin zabezpečení sítě. 
+Odchozí závislosti pomocného mechanismu jsou skoro zcela definované s plně kvalifikovanými názvy domén, které nejsou za nimi statické adresy. Nedostatek statických adres znamená, že se skupiny zabezpečení sítě (skupin zabezpečení sítě) nedají použít k uzamknutí odchozího provozu z pomocného mechanismu. Adresy se často mění, takže jedna z nich nemůže nastavit pravidla na základě aktuálního řešení a použít je k vytvoření skupin zabezpečení sítě. 
 
-Řešení zabezpečení odchozí adresy spočívá v použití zařízení brány firewall, které můžete řídit odchozí provoz na základě názvů domén. Brány Firewall na Azure můžete omezit odchozí přenosy HTTP i HTTPS založené na plně kvalifikovaný název domény cílový.  
+Řešení pro zabezpečení odchozích adres spočívá v použití zařízení brány firewall, které umožňuje řídit odchozí přenosy na základě názvů domén. Azure Firewall může omezit odchozí přenosy HTTP a HTTPS na základě plně kvalifikovaného názvu domény cílového umístění.  
 
 ## <a name="system-architecture"></a>Architektura systému
 
-Nasazení služby ASE s odchozí provoz prostřednictvím brány firewall na zařízení vyžaduje změnu trasy v podsíti služby ASE. Směrování provozu na úrovni IP. Pokud si nejste opatrní při definování trasy, můžete vynutit odeslání přenosu s odpovědí protokolu TCP do zdrojového kódu z jiné adresy. To se označuje jako asymetrické směrování a přeruší TCP.
+Nasazení služby řízení přihlašování s odchozím provozem procházející přes bránu firewall vyžaduje změnu tras v podsíti pomocného programu. Trasy fungují na úrovni protokolu IP. Pokud nejste opatrní v definování tras, můžete vynutit příjem přenosu TCP na zdroj z jiné adresy. Nazývá se to asymetrické směrování a dojde k přerušení protokolu TCP.
 
-Musí být definované tak, aby příchozí provoz do služby ASE může odpovídat zpět na ně že stejným způsobem jako provoz pochází trasy. To platí pro řízení příchozích požadavků a platí pro požadavky na příchozí žádosti.
+Musí být definované trasy, aby příchozí provoz do pomocného uživatelského rozhraní mohl odpovědět stejným způsobem jako v případě provozu. To platí pro příchozí požadavky na správu a platí pro příchozí žádosti o aplikace.
 
-Provoz do a ze služby ASE musí dodržovat následující konvence
+Provoz do a z pomocného mechanismu řízení musí dodržovat následující konvence.
 
-* Provoz do Azure SQL, úložiště a centra událostí nejsou podporovány s využitím zařízení brány firewall. Tento provoz se musí odeslat přímo na těchto služeb. Je tak, jak provádět dojít ke konfiguraci koncových bodů služby pro tyto tři služby. 
-* Směrovací tabulka pravidla musí být definován, které odesílají řízení příchozích přenosů z odkud pocházejí.
-* Směrovací tabulka pravidla musí být definován, které odesílají příchozí aplikační provoz z odkud pocházejí. 
-* Veškerý ostatní provoz služby ASE opuštění je odeslat do vašeho zařízení brány firewall s pravidlem směrovací tabulky.
+* Provoz do služby Azure SQL, úložiště a centra událostí není podporován při použití zařízení brány firewall. Tento provoz se musí odesílat přímo do těchto služeb. Způsob, jak to provést, je konfigurace koncových bodů služby pro tyto tři služby. 
+* Pravidla směrovací tabulky musí být definovaná tak, aby odesílala příchozí provoz pro správu zpátky z místa, kde byla přijata.
+* Pravidla směrovací tabulky musí být definovaná tak, aby odesílala příchozí provoz aplikací zpátky z místa, kde byla. 
+* Veškerý ostatní provoz, který opouští pomocného mechanismu řízení, se dá odeslat do zařízení brány firewall s pravidlem směrovací tabulky.
 
-![Služba ASE s flowem připojovací Brána Firewall služby Azure][5]
+![Pomocného programu s Azure Firewallm tokem připojení][5]
 
-## <a name="configuring-azure-firewall-with-your-ase"></a>Konfigurace brány Firewall Azure s vaší služby ASE 
+## <a name="configuring-azure-firewall-with-your-ase"></a>Konfigurace Azure Firewall pomocí pomocného mechanismu 
 
-Postup uzamčení odchozího přenosu dat z existující službu ASE s bránou Firewall služby Azure jsou:
+Postup, jak uzamknout výstup z vašeho stávajícího pomocného programu pomocí Azure Firewall:
 
-1. Povolení koncových bodů služby SQL, úložiště a centra událostí v podsíti služby ASE. Provedete to tak, přejděte na portál pro sítě > podsítí a vyberte Microsoft.EventHub Microsoft.SQL a Microsoft.Storage z rozevíracího seznamu koncových bodů služby. Až budete mít koncové body služby povolené do Azure SQL, musí být všechny závislosti Azure SQL, které vaše aplikace mají nakonfigurovaný s koncovými body služby také. 
+1. Povolte koncové body služby do SQL, úložiště a centra událostí v podsíti přihlášeného správce sítě. Provedete to tak, že přejdete do portálu sítě > podsítě a v rozevíracím seznamu koncové body služby vyberete Microsoft. EventHub, Microsoft. SQL a Microsoft. Storage. Po povolení koncových bodů služby pro Azure SQL musí být všechny závislosti Azure SQL, které vaše aplikace mají, nakonfigurované také s koncovými body služby. 
 
-   ![Vyberte koncové body služby][2]
+   ![Výběr koncových bodů služby][2]
   
-1. Vytvořte podsíť s názvem AzureFirewallSubnet ve virtuální síti, které se nachází vaše služba ASE. Postupujte podle pokynů [dokumentaci Brána Firewall služby Azure](https://docs.microsoft.com/azure/firewall/) vytvořit vaše Brána Firewall služby Azure.
-1. V uživatelském rozhraní brány Firewall Azure > pravidla > kolekce pravidel aplikace, vyberte Přidat aplikaci pravidlo kolekce. Zadejte název, priority a nastavte povolit. V části značky, plně kvalifikovaný název domény, zadejte název, nastavte zdrojové adresy na * a vyberte značku aplikace služby prostředí plně kvalifikovaný název domény a aktualizace Windows. 
+1. Ve virtuální síti, kde se nachází váš správce přihlašování, vytvořte podsíť s názvem AzureFirewallSubnet. Pokud chcete vytvořit Azure Firewall, postupujte podle pokynů v [dokumentaci k Azure firewall](https://docs.microsoft.com/azure/firewall/) .
+1. Z > pravidla Azure Firewall uživatelského rozhraní > kolekce pravidel aplikace vyberte přidat kolekci pravidel aplikace. Zadejte název, prioritu a nastavte povoleno. V části značky plně kvalifikovaného názvu domény zadejte název, nastavte zdrojové adresy na * a vyberte App Service Environment značku plně kvalifikovaného názvu domény a web Windows Update. 
    
    ![Přidat pravidlo aplikace][1]
    
-1. V uživatelském rozhraní brány Firewall Azure > pravidla > kolekce pravidel sítě, vyberte Přidat kolekci pravidel sítě. Zadejte název, priority a nastavte povolit. V části pravidla pro zadejte název, vyberte **jakékoli**, nastavte * na zdrojové a cílové adresy a porty hodnotu 123. Toto pravidlo umožňuje systému provést synchronizaci hodin pomocí NTP. Vytvořte další pravidlo pro port 12000 stejně ke třídění problémy systému.
+1. Z > pravidla Azure Firewall uživatelského rozhraní > kolekce pravidel sítě vyberte přidat kolekci pravidel sítě. Zadejte název, prioritu a nastavte povoleno. V části pravidla zadejte název, vyberte **libovolné**, nastavte * na zdrojové a cílové adresy a nastavte porty na 123. Toto pravidlo umožňuje systému provádět synchronizaci hodin pomocí protokolu NTP. Vytvořte další pravidlo stejným způsobem jako port 12000, který vám může pomáhat s tříděním všech systémových problémů.
 
    ![Přidat pravidlo sítě NTP][3]
 
-1. Vytvoření směrovací tabulky pomocí adresy pro správu z [adresy pro správu služby App Service Environment]( https://docs.microsoft.com/azure/app-service/environment/management-addresses) s dalším segmentem směrování do Internetu. Položky tabulky trasy je potřeba Předcházejte problémům asymetrického směrování. Přidání tras pro závislosti IP adresy uvedené níže v závislostech IP adresu s dalším segmentem směrování do Internetu. Přidání virtuálního zařízení trasy do směrovací tabulky pro 0.0.0.0/0 s dalším směrováním, přičemž vaše Brána Firewall služby Azure privátní IP adresu. 
+1. Vytvořte směrovací tabulku s adresami správy z [App Service Environment adres pro správu]( https://docs.microsoft.com/azure/app-service/environment/management-addresses) s dalším segmentem směrování Internetu. Aby se předešlo problémům s asymetrickým směrováním, je třeba zadat položky v tabulce směrování. Přidejte trasy pro závislosti IP adres uvedené níže v závislostech IP adres s dalším segmentem směrování Internetu. Přidejte trasu virtuálního zařízení do směrovací tabulky pro 0.0.0.0/0 s dalším segmentem směrování Azure Firewall privátní IP adresou. 
 
    ![Vytvoření směrovací tabulky][4]
    
-1. Přiřazení směrovací tabulku, kterou jste vytvořili k podsíti služby ASE.
+1. Přiřaďte směrovací tabulku, kterou jste vytvořili, do podsítě pomocného mechanismu služby.
 
-#### <a name="deploying-your-ase-behind-a-firewall"></a>Nasazování služby ASE za bránou firewall
+#### <a name="deploying-your-ase-behind-a-firewall"></a>Nasazení služby pomocného mechanismu za bránou firewall
 
-Postup nasazení služby ASE za bránou firewall, jsou stejná jako konfigurace stávající služby ASE s bránou Firewall Azure s výjimkou budete potřebovat k vytvoření podsíti služby ASE a pak postupujte podle předchozích kroků. K vytvoření služby ASE v již existující podsíti, je potřeba použít šablonu Resource Manageru, jak je popsáno v dokumentu na [vytvoření vaší služby ASE pomocí šablony Resource Manageru](https://docs.microsoft.com/azure/app-service/environment/create-from-template).
+Postup nasazení pomocného mechanismu služby za bránou firewall je stejný jako při konfiguraci vašeho stávajícího pomocného objektu s Azure Firewall s tím rozdílem, že budete muset vytvořit podsíť pomocného mechanismu řízení a potom postupovat podle předchozích kroků. Pokud chcete vytvořit správce přihlášený v již existující podsíti, je potřeba použít šablonu Správce prostředků, jak je popsáno v dokumentu o [vytvoření vašeho POmocného programu pomocí šablony Správce prostředků](https://docs.microsoft.com/azure/app-service/environment/create-from-template).
 
-## <a name="application-traffic"></a>Provoz aplikací 
+## <a name="application-traffic"></a>Provoz aplikace 
 
-Proveďte následující kroky vám umožní vaší služby ASE fungovat bez problémů. Je stále potřeba nakonfigurovat tak, aby vyhovovaly potřebám aplikace věcí. Existují dva problémy související s aplikací ve službě ASE, který je nakonfigurovaný s bránou Firewall služby Azure.  
+Výše uvedené kroky umožní vašemu pomocnému mechanismu fungovat bez problémů. Pořád musíte nakonfigurovat věci, aby vyhovovaly potřebám vaší aplikace. Existují dva problémy pro aplikace v mechanismu řízení služby, které jsou nakonfigurovány s Azure Firewall.  
 
-- Závislosti aplikace musíte přidat do brány Firewall Azure nebo směrovací tabulky. 
-- Trasy musí být vytvořeny pro provoz aplikace, abyste předešli problémům s asymetrického směrování
+- Závislosti aplikace musí být přidány do Azure Firewall nebo směrovací tabulky. 
+- Pro přenos aplikací se musí vytvořit trasy, aby se předešlo problémům s asymetrickým směrováním.
 
-Pokud vaše aplikace mají závislosti, musí být přidán do vaše Brána Firewall služby Azure. Vytvoření aplikace pravidla, která umožňují přenosy HTTP/HTTPS a pravidla síťových pro všechno ostatní. 
+Pokud vaše aplikace mají závislosti, musí být přidány do Azure Firewall. Vytvořte pravidla aplikací pro povolení přenosů HTTP/HTTPS a síťových pravidel pro všechno ostatní. 
 
-Pokud víte, které váš provoz žádostí na aplikace budou přicházet z rozsahu adres, můžete přidat, do směrovací tabulky, který je přiřazen k podsíti služby ASE. Pokud rozsah adres je velký nebo neurčená, pak vám pomůže síťové zařízení, jako je Application Gateway získáte jednu adresu pro přidání do směrovací tabulky. Podrobnosti o tom, jak nakonfigurovat službu Application Gateway se vaše služba ASE s ILB, přečtěte si [integrace služby ILB ASE pomocí služby Application Gateway](https://docs.microsoft.com/azure/app-service/environment/integrate-with-application-gateway)
+Pokud znáte rozsah adres, ze kterého bude požadavek na provoz vaší aplikace pocházet, můžete ho přidat do směrovací tabulky, která je přiřazena k podsíti přihlášek. Pokud je rozsah adres velký nebo neurčený, můžete použít síťové zařízení, jako je Application Gateway, a získat tak jednu adresu, kterou chcete přidat do směrovací tabulky. Podrobnosti o konfiguraci Application Gateway s pomocným mechanismem interního nástroje najdete v tématu věnovaném [integraci vašich interního nástrojech POmocného mechanismu pro přístup k Application Gateway](https://docs.microsoft.com/azure/app-service/environment/integrate-with-application-gateway)
 
-Toto použití služby Application Gateway je jenom jedním z příkladů, jak nakonfigurovat váš systém. Pokud postupovat podle této cesty, pak musíte přidat trasy do směrovací tabulky podsítě služby ASE, aby odpovědi provoz odeslaný ke službě Application Gateway by tam přejít přímo. 
+Toto použití Application Gateway je pouze jedním z příkladů konfigurace systému. Pokud jste použili tuto cestu, pak byste museli přidat trasu do tabulky směrování podsítě pomocného mechanismu, aby přenos odpovědí odeslaných do Application Gateway přešel přímo. 
 
 ## <a name="logging"></a>Protokolování 
 
-Odeslat protokoly brány Azure do služby Azure Storage, se v Centru událostí nebo protokoly Azure monitoru. K integraci vaší aplikace pomocí jakéhokoli podporovaného cíle, přejděte na portál Brána Firewall služby Azure > diagnostické protokoly a povolení protokolování pro váš požadovaný cíl. Pokud integrujete se službou Azure Monitor protokoly, uvidíte protokolování pro veškerý provoz odeslaný na Brána Firewall služby Azure. Sledovat provoz, který je mu odepřen, otevře portál pracovního prostoru Log Analytics > protokoly a zadejte dotaz podobný tomuto: 
+Azure Firewall může odesílat protokoly do Azure Storage, centra událostí nebo protokolů Azure Monitor. Pokud chcete svou aplikaci integrovat s jakýmkoli podporovaným cílem, na portálu Azure Firewall > diagnostické protokoly a povolte protokoly pro požadovaný cíl. Pokud provádíte integraci s protokoly Azure Monitor, můžete zobrazit protokolování pro veškerý provoz odeslaný do Azure Firewall. Pokud chcete zobrazit zamítnutý provoz, otevřete Log Analytics portálu pracovního prostoru > protokoly a zadejte dotaz jako 
 
     AzureDiagnostics | where msg_s contains "Deny" | where TimeGenerated >= ago(1h)
  
-Integrace s protokoly Azure monitoru vaše Brána Firewall služby Azure je velmi užitečné, když nejprve Začínáme aplikací pracovat, když si jich nejste vědomi všech závislostí aplikací. Další informace o Azure Monitor protokoly z [analyzovat data protokolů ve službě Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview)
+Integrace vašich Azure Firewall s protokoly Azure Monitor je velmi užitečná při prvním získání aplikace, když si nejste vědomi všech závislostí aplikace. Další informace o protokolech Azure Monitor můžete získat z [analýzy dat protokolu v Azure monitor](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview)
  
 ## <a name="dependencies"></a>Závislosti
 
-Tyto informace je jenom nutné, pokud chcete nakonfigurovat zařízení brány firewall než Brána Firewall služby Azure. 
+Následující informace jsou požadovány pouze v případě, že chcete nakonfigurovat jiné zařízení brány firewall než Azure Firewall. 
 
-- Koncový bod služby podporující služby by měly být nakonfigurované koncové body služby.
-- IP adresa závislosti se pro přenosy mimo HTTP/S (provoz TCP a UDP)
-- Koncové body HTTP/HTTPS plně kvalifikovaný název domény je možné použít ve vašem zařízení brány firewall.
-- Koncové body HTTP/HTTPS zástupných znaků jsou závislosti, které se můžou lišit podle vaší služby ASE na základě počtu kvalifikátory. 
-- Závislosti Linux jsou pouze žádný problém, pokud provádíte nasazení Linuxové aplikace do vaší služby ASE. Pokud se nasazení Linuxové aplikace do vaší služby ASE, pak tyto adresy není potřeba přidat do brány firewall. 
+- Služby podporující koncový bod služby by měly být nakonfigurované s koncovými body služby.
+- Závislosti IP adres pro přenos bez HTTP/S (provoz TCP i UDP)
+- Do zařízení brány firewall lze umístit koncové body s plně kvalifikovaným názvem domény (FQDN) HTTP/HTTPS.
+- Koncové body HTTP/HTTPS se zástupnými znaky jsou závislosti, které se můžou u vašeho mechanismu přihlašování měnit na základě několika kvalifikátorů. 
+- Závislosti Linux se týkají pouze v případě, že nasazujete aplikace pro Linux do svého pomocného mechanismu služby. Pokud do svého pomocného mechanismu nasazujete aplikace pro Linux, pak tyto adresy není nutné přidávat do brány firewall. 
 
-#### <a name="service-endpoint-capable-dependencies"></a>Koncový bod služby podporující závislosti 
+#### <a name="service-endpoint-capable-dependencies"></a>Závislosti podporující koncový bod služby 
 
 | Koncový bod |
 |----------|
@@ -112,24 +112,24 @@ Tyto informace je jenom nutné, pokud chcete nakonfigurovat zařízení brány f
 | Azure Storage |
 | Centrum událostí Azure |
 
-#### <a name="ip-address-dependencies"></a>IP adresa závislosti
+#### <a name="ip-address-dependencies"></a>Závislosti IP adres
 
 | Koncový bod | Podrobnosti |
 |----------| ----- |
-| \*:123 | Kontrola hodin NTP. Kontroluje provoz při více koncových bodů na portu 123 |
-| \*:12000 | Tento port se používá pro některé monitorování systému. Pokud se zablokuje, pak bude obtížnější třídění některé problémy, ale vaše služba ASE bude i nadále fungovat |
-| 40.77.24.27:80 | Potřebné k monitorování a upozornění na problémy s ASE |
-| 40.77.24.27:443 | Potřebné k monitorování a upozornění na problémy s ASE |
-| 13.90.249.229:80 | Potřebné k monitorování a upozornění na problémy s ASE |
-| 13.90.249.229:443 | Potřebné k monitorování a upozornění na problémy s ASE |
-| 104.45.230.69:80 | Potřebné k monitorování a upozornění na problémy s ASE |
-| 104.45.230.69:443 | Potřebné k monitorování a upozornění na problémy s ASE |
-| 13.82.184.151:80 | Potřebné k monitorování a upozornění na problémy s ASE |
-| 13.82.184.151:443 | Potřebné k monitorování a upozornění na problémy s ASE |
+| \*:123 | Kontroluje se čas NTP. Provoz se kontroluje na více koncových bodech na portu 123. |
+| \*:12000 | Tento port se používá pro monitorování systému. Pokud je zablokované, budou se některé problémy obtížnější rozlišit, ale váš pomocným mechanismem bude fungovat i nadále. |
+| 40.77.24.27:80 | Monitorování a upozornění na problémy s MECHANISMem řízení |
+| 40.77.24.27:443 | Monitorování a upozornění na problémy s MECHANISMem řízení |
+| 13.90.249.229:80 | Monitorování a upozornění na problémy s MECHANISMem řízení |
+| 13.90.249.229:443 | Monitorování a upozornění na problémy s MECHANISMem řízení |
+| 104.45.230.69:80 | Monitorování a upozornění na problémy s MECHANISMem řízení |
+| 104.45.230.69:443 | Monitorování a upozornění na problémy s MECHANISMem řízení |
+| 13.82.184.151:80 | Monitorování a upozornění na problémy s MECHANISMem řízení |
+| 13.82.184.151:443 | Monitorování a upozornění na problémy s MECHANISMem řízení |
 
-S bránou Firewall Azure automaticky získáte všechno pod nakonfigurované se značkami plně kvalifikovaný název domény. 
+U Azure Firewall automaticky získáte vše, co je nakonfigurováno pomocí značek plně kvalifikovaného názvu domény. 
 
-#### <a name="fqdn-httphttps-dependencies"></a>Plně kvalifikovaný název domény HTTP/HTTPS závislosti 
+#### <a name="fqdn-httphttps-dependencies"></a>Závislosti HTTP/HTTPS v plně kvalifikovaném názvu domény 
 
 | Koncový bod |
 |----------|
@@ -182,13 +182,15 @@ S bránou Firewall Azure automaticky získáte všechno pod nakonfigurované se 
 |flighting.cp.wd.microsoft.com:443 |
 |dmd.metaservices.microsoft.com:80 |
 |admin.core.windows.net:443 |
+|prod.warmpath.msftcloudes.com:443 |
+|prod.warmpath.msftcloudes.com:80 |
 |azureprofileruploads.blob.core.windows.net:443 |
 |azureprofileruploads2.blob.core.windows.net:443 |
 |azureprofileruploads3.blob.core.windows.net:443 |
 |azureprofileruploads4.blob.core.windows.net:443 |
 |azureprofileruploads5.blob.core.windows.net:443 |
 
-#### <a name="wildcard-httphttps-dependencies"></a>Zástupný znak HTTP/HTTPS závislosti 
+#### <a name="wildcard-httphttps-dependencies"></a>Závislosti HTTP/HTTPS se zástupnými znaky 
 
 | Koncový bod |
 |----------|
@@ -197,7 +199,7 @@ S bránou Firewall Azure automaticky získáte všechno pod nakonfigurované se 
 | \*.update.microsoft.com:443 |
 | \*.windowsupdate.microsoft.com:443 |
 
-#### <a name="linux-dependencies"></a>Závislosti pro Linux 
+#### <a name="linux-dependencies"></a>Závislosti Linux 
 
 | Koncový bod |
 |----------|

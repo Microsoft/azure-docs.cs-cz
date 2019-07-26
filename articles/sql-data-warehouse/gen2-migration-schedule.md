@@ -1,6 +1,6 @@
 ---
-title: Migrujte vaše stávající Azure SQL Data Warehouse na Gen2 | Dokumentace Microsoftu
-description: Pokyny k migraci existujícího datového skladu na Gen2 a migrace plán, podle oblasti.
+title: Migrace stávajícího Azure SQL Data Warehouse do Gen2 | Microsoft Docs
+description: Pokyny k migraci stávajícího datového skladu do Gen2 a plánu migrace podle oblasti.
 services: sql-data-warehouse
 author: mlee3gsd
 ms.author: anjangsh
@@ -9,151 +9,152 @@ manager: craigg
 ms.assetid: 04b05dea-c066-44a0-9751-0774eb84c689
 ms.service: sql-data-warehouse
 ms.topic: article
-ms.date: 04/03/2019
-ms.openlocfilehash: cef3036b01709847016d9523a5770febb8ff1134
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.date: 07/22/2019
+ms.openlocfilehash: d4724672510d6ccbbc819691d621400cb00d8c9a
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67839663"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68405442"
 ---
-# <a name="upgrade-your-data-warehouse-to-gen2"></a>Upgrade služby data warehouse na Gen2
+# <a name="upgrade-your-data-warehouse-to-gen2"></a>Upgrade datového skladu na Gen2
 
-Microsoft pomáhá snížit základní náklady na provozování datového skladu.  Nižší výpočetní úrovně schopná zpracovat vyhovovat i vašim náročným dotazů jsou teď dostupné pro Azure SQL Data Warehouse. Přečtěte si celé oznámení [nižší výpočetní vrstva podpory pro Gen2](https://azure.microsoft.com/blog/azure-sql-data-warehouse-gen2-now-supports-lower-compute-tiers/). Nová nabídka je dostupná v oblastech, které jste si poznamenali v následující tabulce. Pro oblasti jsou podporované je možné upgradovat na Gen2 stávajících datových skladů Gen1 prostřednictvím:
+Společnost Microsoft pomáhá řídit náklady na úroveň vstupu pro provoz datového skladu.  Pro Azure SQL Data Warehouse jsou nyní k dispozici nižší výpočetní vrstvy, které umožňují zpracování náročných dotazů. Přečtěte si úplné oznámení o [podpoře výpočetních vrstev pro Gen2](https://azure.microsoft.com/blog/azure-sql-data-warehouse-gen2-now-supports-lower-compute-tiers/). Nová nabídka je k dispozici v oblastech uvedených v následující tabulce. U podporovaných oblastí lze existující datové sklady Gen1 upgradovat na Gen2 prostřednictvím:
 
-- **Automatický proces upgradu:** Automatické upgrady nezačínají poté, co je služba dostupná v oblasti.  Při spuštění automatických upgradů v konkrétní oblasti, jednotlivé upgradu datového skladu bude probíhat během svůj plán údržby vybraných.
-- [**Samoobslužné upgradujte na Gen2:** ](#self-upgrade-to-gen2) Můžete řídit, kdy upgradovat tímto způsobem svým upgradovat na Gen2. Pokud vaše oblast ještě není podporovaná, můžete obnovit z bodu obnovení, který je přímo na Gen2 instanci v podporované oblasti.
+- **Proces automatického upgradu:** Automatické upgrady se nespustí hned po tom, co je služba dostupná v určité oblasti.  Když automatické upgrady začnou v konkrétní oblasti, během vybraného plánu údržby budou provedeny jednotlivé upgrady DW.
+- [**Samoobslužný upgrade na Gen2:** ](#self-upgrade-to-gen2) Můžete řídit, kdy se má upgradovat, a to provedením samočinného upgradu na Gen2. Pokud vaše oblast ještě není podporovaná, můžete ji obnovit z bodu obnovení přímo do instance Gen2 v podporované oblasti.
 
-## <a name="automated-schedule-and-region-availability-table"></a>Plán automatizovaných a tabulka dostupnosti oblast
+## <a name="automated-schedule-and-region-availability-table"></a>Automatický plán a tabulka dostupnosti oblastí
 
-Následující tabulka shrnuje podle oblastí, při nižší Gen2 výpočetní vrstva bude k dispozici, a při spuštění automatických upgradů. Data se můžou změnit. Zkontrolujte zpět při vaší oblasti k dispozici.
+Následující tabulka shrnuje podle oblasti v případě, že bude k dispozici nižší výpočetní vrstva Gen2 a když se spustí automatické upgrady. Data se mohou změnit. Vraťte se zpět a podívejte se, jestli je vaše oblast k dispozici.
 
-\* Označuje, že konkrétní plán pro oblast je momentálně není k dispozici.
+\*indikuje, že konkrétní plán pro oblast není aktuálně k dispozici.
 
-| **Oblast** | **K dispozici nižší Gen2** | **Zahájit automatické upgrady** |
+| **Oblast** | **Nižší Gen2 k dispozici** | **Začátek automatických upgradů** |
 |:--- |:--- |:--- |
-| Austrálie – východ |K dispozici |1\. června 2019 |
-| Austrálie – jihovýchod |K dispozici |1\. května 2019 |
-| Brazílie – jih |K dispozici |1\. června 2019 |
-| Kanada – střed |K dispozici |1\. června 2019 |
-| Kanada – východ |\* |\* |
-| Střed USA |K dispozici |1\. června 2019 |
+| Austrálie – východ |K dispozici |Dokončeno |
+| Austrálie – jihovýchod |K dispozici |Dokončeno |
+| Brazílie – jih |K dispozici |Dokončeno |
+| Kanada – střed |K dispozici |Dokončeno |
+| Kanada – východ |1\. června 2020 |Od 1. července 2020 |
+| Střed USA |K dispozici |Dokončeno |
 | Čína – východ |\* |\* |
-| Čína – východ 2 |K dispozici |Pouze Gen2 |
+| Čína – východ 2 |K dispozici |Dokončeno |
 | Čína – sever |\* |\* |
-| Čína – sever 2 |K dispozici |Pouze Gen2 |
-| Východní Asie |K dispozici |1\. června 2019 |
-| East US |K dispozici |1\. června 2019 |
-| Východní USA 2 |K dispozici |1\. června 2019 |
-| Francie – střed |K dispozici |1\. června 2019 |
-| Německo – střed |\* |\* |
-| Německo – středozápad |1\. září 2019|2\. ledna 2020 |
-| Indie – střed |K dispozici |1\. června 2019 |
-| Indie – jih |K dispozici |1\. června 2019 |
-| Japonsko – východ |K dispozici |1\. června 2019 |
-| Japonsko – západ |K dispozici |1\. května 2019 |
-| Jižní Korea – střed |K dispozici |1\. června 2019 |
-| Jižní Korea – jih |K dispozici |1\. května 2019 |
-| Střed USA – sever |K dispozici |1\. května 2019 |
-| Severní Evropa |K dispozici |1\. června 2019 |
-| Jižní Afrika – sever |12. července 2019 |Pouze Gen2 |
-| Střed USA – jih |K dispozici |1\. června 2019 |
-| Jihovýchodní Asie |K dispozici |1\. června 2019 |
-| Spojené arabské emiráty – sever |20. července 2019 |Pouze Gen2 |
-| Velká Británie – jih |K dispozici |1\. června 2019 |
-| Spojené království – západ |K dispozici |Pouze Gen2 |
-| Západní střed USA |2\. září 2019 |2\. ledna 2020|
-| Západní Evropa |K dispozici |1\. června 2019 |
-| USA – západ |K dispozici |1\. června 2019 |
-| USA – západ 2 |K dispozici |1\. června 2019 |
+| Čína – sever 2 |K dispozici |Dokončeno |
+| Východní Asie |K dispozici |Dokončeno |
+| East US |K dispozici |Dokončeno |
+| Východní USA 2 |K dispozici |Dokončeno |
+| Francie – střed |K dispozici |Probíhá |
+| Střední Německo |\* |\* |
+| Německo – středozápad |Od 1. září 2019|Od 1. října 2019 |
+| Indie – střed |K dispozici |Dokončeno |
+| Indie – jih |K dispozici |Dokončeno |
+| Indie – západ |Od 1. července 2019 |Probíhá |
+| Japonsko – východ |K dispozici |Dokončeno |
+| Japonsko – západ |K dispozici |Dokončeno |
+| Jižní Korea – střed |K dispozici |Dokončeno |
+| Jižní Korea – jih |K dispozici |Dokončeno |
+| Střed USA – sever |K dispozici |Dokončeno |
+| Severní Evropa |K dispozici |Dokončeno |
+| Jižní Afrika – sever |12. července 2019 |Dokončeno |
+| Střed USA – jih |K dispozici |Dokončeno |
+| Jihovýchodní Asie |K dispozici |Dokončeno |
+| Spojené arabské emiráty – sever |20. července 2019 |Dokončeno |
+| Velká Británie – jih |K dispozici |Probíhá |
+| Spojené království – západ |K dispozici |Probíhá |
+| Západní střed USA |Od 1. září 2019 |Od 1. října 2019|
+| Západní Evropa |K dispozici |Dokončeno |
+| USA – západ |K dispozici |Dokončeno |
+| USA – západ 2 |K dispozici |Dokončeno |
 
 ## <a name="automatic-upgrade-process"></a>Proces automatického upgradu
 
-Podle výše uvedených graf dostupnosti, jsme budete plánovat automatické upgrady pro vaše instance Gen1. Pokud chcete vyhnout neočekávaným přerušení na dostupnost datového skladu, bude naplánováno automatizované upgrady během vašeho plánu údržby. Schopnost vytvářet nové instance Gen1 se deaktivuje v oblastech prochází automatický upgrade na Gen2. Gen1 se přestanou používat po dokončení automatické upgrady. Další informace v rámci plánů najdete v tématu [zobrazit plán údržby](viewing-maintenance-schedule.md)
+V závislosti na grafu dostupnosti naplánujeme automatizované upgrady pro instance Gen1. Aby nedošlo k neočekávanému přerušení dostupnosti datového skladu, budou se automatizované upgrady naplánovaly během plánu údržby. Možnost vytvoření nové instance Gen1 se zakáže v oblastech, které provádějí automatický upgrade na Gen2. Po dokončení automatických upgradů se Gen1 přestane používat. Další informace o plánech najdete v tématu [zobrazení plánu údržby.](viewing-maintenance-schedule.md)
 
-Procesu upgradu bude zahrnovat stručný pokles připojení (přibližně 5 minut), jak jsme restartování služby data warehouse.  Po restartování služby data warehouse je plně k dispozici pro použití. Ale můžete setkat snížení výkonu během procesu upgradu nadále upgrade datové soubory na pozadí. Celková doba pro snížení výkonu se budou lišit závisí na velikosti datových souborů.
+Proces upgradu bude při restartu datového skladu zahrnovat krátké přerušení připojení (přibližně 5 min).  Jakmile je datový sklad restartován, bude plně dostupný pro použití. Nicméně může docházet ke snížení výkonu v době, kdy proces upgradu pokračuje v upgradu datových souborů na pozadí. Celková doba snížení výkonu se bude lišit v závislosti na velikosti datových souborů.
 
-Může také urychlit proces upgradu soubor dat spuštěním [Alter Index znovu sestavit](sql-data-warehouse-tables-index.md) ve všech tabulkách primární columnstore pomocí větší třídu cíle na úrovni služby a prostředky po restartování.
-
-> [!NOTE]
-> Příkaz ALTER Index sestavení je v režimu offline operace a tabulky budou dostupné, až se dokončí sestavení.
-
-## <a name="self-upgrade-to-gen2"></a>Samoobslužné upgradovat na Gen2
-
-Můžete se k místním upgradu pomocí následujících kroků na existující datový sklad Gen1. Pokud se rozhodnete k místním upgradu, musíte dokončit před zahájením procesu upgradu automatické ve vaší oblasti. Tím se zajistí, že byste se vyhnout rizika automatických upgradů, což způsobí konflikt.
-
-Existují dvě možnosti při místním upgradu.  Můžete buď upgradovat vaše aktuální data warehouse na místě nebo Gen1 datový sklad můžete provést obnovení do Gen2 instance.
-
-- [Upgrade na místě](upgrade-to-latest-generation.md) – tato možnost provede upgrade existující datový sklad Gen1 na Gen2. Procesu upgradu bude zahrnovat stručný pokles připojení (přibližně 5 minut), jak jsme restartování služby data warehouse.  Po restartování služby data warehouse je plně k dispozici pro použití. Pokud máte problémy při upgradu, otevřete [žádost o podporu](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-get-started-create-support-ticket) a odkazovat na "Gen2 upgrade" jako možnou příčinu.
-- [Upgrade z bodu obnovení](sql-data-warehouse-restore.md) – vytvořit bod obnovení definovaný uživatelem ve vaší aktuální data warehouse Gen1 a potom obnovit přímo do Gen2 instance. Existující datový sklad Gen1 zůstane na místě. Po dokončení obnovení budou plně k dispozici pro použití služby data warehouse Gen2.  Po spuštění všech procesů testování a ověřování na obnovené instance Gen2 je možné odstranit původní instanci Gen1.
-
-   - Krok 1: Na webu Azure Portal [vytvořit bod obnovení uživatelem definované](sql-data-warehouse-restore.md#create-a-user-defined-restore-point-using-the-azure-portal).
-   - Krok 2: Při obnovení z uživatelem definované bod obnovení, nastavte "výkonu úroveň" pro upřednostňovanou úroveň Gen2.
-
-Během procesu upgradu nadále upgrade datové soubory na pozadí se můžete setkat s určitou snížení výkonu. Celková doba pro snížení výkonu se budou lišit závisí na velikosti datových souborů.
-
-Pokud chcete urychlit proces migrace dat na pozadí, můžete okamžitě vynutit přesun dat spuštěním [Alter Index znovu sestavit](sql-data-warehouse-tables-index.md) ve všech tabulkách primární columnstore by dotazování na větší třídu cíle na úrovni služby a prostředky.
+Proces upgradu datového souboru můžete také urychlit spuštěním [příkazu ALTER index Rebuild](sql-data-warehouse-tables-index.md) ve všech primárních tabulkách columnstore s použitím větších tříd objektů slo a prostředků po restartování.
 
 > [!NOTE]
-> Příkaz ALTER Index sestavení je v režimu offline operace a tabulky budou dostupné, až se dokončí sestavení.
+> Příkaz ALTER index Rebuild je offline operace a tabulky nebudou k dispozici, dokud se znovu nedokončí sestavení.
 
-Pokud narazíte na případné problémy s váš datový sklad, vytvořte [žádost o podporu](sql-data-warehouse-get-started-create-support-ticket.md) a odkazovat na "Gen2 upgrade" jako možnou příčinu.
+## <a name="self-upgrade-to-gen2"></a>Samoobslužný upgrade na Gen2
 
-Další informace najdete v tématu [upgradovat na Gen2](upgrade-to-latest-generation.md).
+Pomocí následujících kroků můžete v existujícím datovém skladu Gen1 vybrat samoobslužný upgrade. Pokud se rozhodnete pro vlastní upgrade, je nutné jej dokončit před zahájením procesu automatického upgradu ve vaší oblasti. Tím zajistíte, že předejdete jakémukoli riziku automatických upgradů, které způsobují konflikt.
+
+Při provádění samoobslužného upgradu jsou k dispozici dvě možnosti.  Můžete buď upgradovat aktuální datový sklad místně, nebo můžete obnovit Gen1 datový sklad do instance Gen2.
+
+- [Upgrade na místě](upgrade-to-latest-generation.md) – Tato možnost provede upgrade existujícího datového skladu Gen1 na Gen2. Proces upgradu bude při restartu datového skladu zahrnovat krátké přerušení připojení (přibližně 5 min).  Jakmile je datový sklad restartován, bude plně dostupný pro použití. Pokud při upgradu dojde k problémům, otevřete [žádost o podporu](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-get-started-create-support-ticket) a referenční informace "Gen2 upgrade" jako možnou příčinu.
+- [Upgrade z bodu obnovení](sql-data-warehouse-restore.md) – vytvořte uživatelem definovaný bod obnovení v aktuálním datovém skladu Gen1 a proveďte obnovení přímo do instance Gen2. Existující datový sklad Gen1 zůstane na svém místě. Až se obnovení dokončí, váš datový sklad Gen2 bude plně dostupný pro použití.  Po spuštění všech procesů testování a ověřování na obnovené instanci Gen2 je možné odstranit původní instanci Gen1.
+
+   - Krok 1: Z Azure Portal [Vytvořte bod obnovení definovaný uživatelem](sql-data-warehouse-restore.md#create-a-user-defined-restore-point-using-the-azure-portal).
+   - Krok 2: Při obnovení z bodu obnovení definovaného uživatelem nastavte úroveň výkonu na upřednostňovanou Gen2 úroveň.
+
+Během toho, co proces upgradu upgraduje datové soubory na pozadí, může na určitou dobu dojít ke snížení výkonu. Celková doba snížení výkonu se bude lišit v závislosti na velikosti datových souborů.
+
+Chcete-li urychlit proces migrace dat na pozadí, můžete ihned vynutit přesun dat spuštěním [příkazu ALTER index Rebuild](sql-data-warehouse-tables-index.md) na všech primárních tabulkách columnstore, které se dotazují na větší úrovni objektů slo a prostředků.
+
+> [!NOTE]
+> Příkaz ALTER index Rebuild je offline operace a tabulky nebudou k dispozici, dokud se znovu nedokončí sestavení.
+
+Pokud narazíte na nějaké problémy s datovým skladem, vytvořte [žádost o podporu](sql-data-warehouse-get-started-create-support-ticket.md) a odkaz "Gen2 upgrade" jako možnou příčinu.
+
+Další informace najdete v tématu [upgrade na Gen2](upgrade-to-latest-generation.md).
 
 ## <a name="migration-frequently-asked-questions"></a>Nejčastější dotazy k migraci
 
-**Otázka: Gen2 stojí stejné jako Gen1?**
+**Otázka: Jsou Gen2 náklady stejné jako Gen1?**
 
 - Odpověď: Ano.
 
-**Otázka: Upgrady vliv skripty pro automatizaci?**
+**Otázka: Jak budou upgrady ovlivněny se skripty pro automatizaci?**
 
-- Odpověď: Automatizační skript, který odkazuje cíl na úrovni služby musí změnit tak, aby odpovídaly ekvivalent Gen2.  Zobrazit podrobnosti [tady](upgrade-to-latest-generation.md#sign-in-to-the-azure-portal).
+- Odpověď: Jakýkoli skript Automation, který odkazuje na cíl na úrovni služby, by měl být změněn tak, aby odpovídal ekvivalentu Gen2.  [Tady](upgrade-to-latest-generation.md#sign-in-to-the-azure-portal)najdete podrobnosti.
 
-**Otázka: Jak dlouho místním upgradu obvykle trvá?**
+**Otázka: Jak dlouho obvykle trvá samočinný upgrade?**
 
 - Odpověď: Můžete upgradovat na místě nebo upgradovat z bodu obnovení.  
-   - Upgrade na místě způsobí okamžité pozastavení a obnovení datového skladu.  Proces na pozadí bude pokračovat, zatímco data warehouse je online.  
-   - Trvá déle, pokud provádíte upgrade pomocí bodu obnovení, protože upgrade bude projít procesem úplného obnovení.
+   - Upgrade na místě způsobí, že se datový sklad přestane pozastavit a obnoví se.  Proces na pozadí bude pokračovat, i když je datový sklad online.  
+   - Pokud provádíte upgrade prostřednictvím bodu obnovení, trvá to déle, protože upgrade projde procesem úplného obnovení.
 
-**Otázka: Jak dlouho se automatický upgrade provést?**
+**Otázka: Jak dlouho bude automatický upgrade trvat?**
 
-- Odpověď: Skutečná délka výpadku pro upgrade je pouze čas potřebný k pozastavení a obnovení služby, která je mezi 5 až 10 minut. Po krátké dolů čas proces na pozadí se spustí migraci úložiště. Doba pro proces na pozadí je závisí na velikosti vašeho datového skladu.
+- Odpověď: Skutečná délka výpadku kvůli upgradu představuje pouze dobu potřebnou k pozastavení a obnovení služby, což je 5 až 10 minut. Po krátkém výpadku proces na pozadí spustí migraci úložiště. Délka trvání procesu na pozadí závisí na velikosti datového skladu.
 
-**Otázka: Když tento automatický upgrade proběhne?**
+**Otázka: Kdy bude tento automatický upgrade probíhat?**
 
-- Odpověď: Během vašeho plánu údržby. Využití vašeho plánu údržby zvolené se minimalizovalo přerušení pro vaši firmu.
+- Odpověď: Během plánu údržby. Využití zvoleného plánu údržby způsobí minimalizaci přerušení na vaši firmu.
 
-**Otázka: Co mám dělat, když proces upgradu na pozadí se zdají být zablokované?**
+**Otázka: Co mám dělat, když se můj proces upgradu na pozadí jeví jako zablokované?**
 
- - Odpověď: Pusťte se do reindex tabulek Columnstore. Všimněte si, že Reindexace tabulky budou offline během této operace.
+ - Odpověď: Vypíná přeindexaci tabulek columnstore. Všimněte si, že při této operaci bude přeindexace tabulky v režimu offline.
 
-**Otázka: Co když Gen2 nemá žádné cíle na úrovni služby je nutné na Gen1?**
-- Odpověď: Pokud používáte úroveň DW600 nebo DW1200 na Gen1, se doporučuje použít DW500c nebo DW1000c v uvedeném pořadí, protože Gen2 poskytuje více paměti, prostředky a vyšší výkon než Gen1.
+**Otázka: Co když Gen2 nemá cíl na úrovni služby I v Gen1?**
+- Odpověď: Pokud používáte úroveň DW600 nebo DW1200 na Gen1, doporučujeme použít DW500c nebo DW1000c, protože Gen2 poskytuje více paměti, prostředků a vyšší výkon než Gen1.
 
-**Otázka: Můžete zakázat geografické zálohování?**
-- Odpověď: Ne. Geografické zálohování je funkce enterprise pro zachování vašich dat skladu dostupnost v případě, že oblast stane nedostupnou. Otevřít [žádost o podporu](sql-data-warehouse-get-started-create-support-ticket.md) Pokud máte další otázky.
+**Otázka: Můžu zakázat geografickou zálohu?**
+- Odpověď: Ne. Geografické zálohování je podniková funkce, která zachovává dostupnost datového skladu v případě, že oblast nebude k dispozici. Pokud máte další obavy, otevřete [žádost o podporu](sql-data-warehouse-get-started-create-support-ticket.md) .
 
-**Otázka: Je nějaký rozdíl mezi Gen1 a Gen2 v syntaxi T-SQL?**
+**Otázka: Existuje rozdíl v syntaxi T-SQL mezi Gen1 a Gen2?**
 
-- Odpověď: Není žádná změna v syntaxi jazyka T-SQL z Gen1 na Gen2.
+- Odpověď: V syntaxi jazyka T-SQL nedošlo k žádné změně z Gen1 na Gen2.
 
-**Otázka: Podporuje Gen2 údržby Windows?**
+**Otázka: Podporuje Gen2 okna údržby?**
 
 - Odpověď: Ano.
 
-**Otázka: Bude možné vytvořit novou instanci Gen1 po upgradu mojí oblasti?**
+**Otázka: Budu po upgradu své oblasti moct vytvořit novou instanci Gen1?**
 
-- Odpověď: Ne. Po upgradu v oblasti vytváření nových instancí Gen1 se deaktivuje.
+- Odpověď: Ne. Po upgradu oblasti budou vytváření nových instancí Gen1 zakázané.
 
 ## <a name="next-steps"></a>Další postup
 
 - [Postup upgradu](upgrade-to-latest-generation.md)
-- [Časová období údržby](maintenance-scheduling.md)
+- [Okna údržby](maintenance-scheduling.md)
 - [Monitorování stavu prostředků](https://docs.microsoft.com/azure/service-health/resource-health-overview)
-- [Projděte si před zahájením migrace](upgrade-to-latest-generation.md#before-you-begin)
-- [Místní upgrade a upgrade z bodu obnovení](upgrade-to-latest-generation.md)
-- [Vytvořit bod obnovení definovaný uživatelem](sql-data-warehouse-restore.md#restore-through-the-azure-portal)
-- [Zjistěte, jak obnovení na Gen2](sql-data-warehouse-restore.md#restore-an-active-or-paused-database-using-the-azure-portal)
-- [Žádost o podporu SQL Data Warehouse](https://go.microsoft.com/fwlink/?linkid=857950)
+- [Kontrola před zahájením migrace](upgrade-to-latest-generation.md#before-you-begin)
+- [Upgrade na místě a upgrade z bodu obnovení](upgrade-to-latest-generation.md)
+- [Vytvoření bodu obnovení definovaného uživatelem](sql-data-warehouse-restore.md#restore-through-the-azure-portal)
+- [Informace o tom, jak obnovit Gen2](sql-data-warehouse-restore.md#restore-an-active-or-paused-database-using-the-azure-portal)
+- [Otevřete žádost o podporu SQL Data Warehouse](https://go.microsoft.com/fwlink/?linkid=857950)

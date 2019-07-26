@@ -1,6 +1,6 @@
 ---
-title: Transformace dat pomocí poznámkového bloku Databricks – Azure | Dokumentace Microsoftu
-description: Zjistěte, jak zpracovat nebo transformovat data pomocí poznámkového bloku Databricks.
+title: Transformace dat pomocí poznámkového bloku datacihly – Azure | Microsoft Docs
+description: Naučte se zpracovávat nebo transformovat data spuštěním poznámkového bloku datacihly.
 services: data-factory
 documentationcenter: ''
 ms.assetid: ''
@@ -12,20 +12,20 @@ ms.date: 03/15/2018
 author: sharonlo101
 ms.author: shlo
 manager: craigg
-ms.openlocfilehash: 8036a8694bb8c8d0db236eba831f13dc2bf47d0a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 2bc8b84d4b98036acc93788dee88444786df139e
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60311661"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68335853"
 ---
-# <a name="transform-data-by-running-a-databricks-notebook"></a>Transformovat data spuštěním poznámkového bloku Databricks
+# <a name="transform-data-by-running-a-databricks-notebook"></a>Transformujte data spuštěním poznámkového bloku datacihly.
 
-Aktivity poznámkového bloku Azure Databricks ve [kanálu služby Data Factory](concepts-pipelines-activities.md) spuštění poznámkového bloku Databricks v pracovním prostoru Azure Databricks. Tento článek vychází [aktivity transformace dat](transform-data.md) článek, který nabízí obecný přehled o transformaci dat a aktivity podporované transformace. Azure Databricks je spravovaná platforma pro spouštění Apache Spark.
+Aktivita poznámkového bloku Azure Databricks v [kanálu Data Factory](concepts-pipelines-activities.md) spustí v pracovním prostoru Azure Databricks Poznámkový blok datacihly. Tento článek se sestavuje na článku  [aktivity transformace dat](transform-data.md), který představuje obecný přehled transformace dat a podporovaných transformačních aktivit. Azure Databricks je spravovaná platforma pro spouštění Apache Spark.
 
-## <a name="databricks-notebook-activity-definition"></a>Definice aktivity poznámkového bloku Databricks
+## <a name="databricks-notebook-activity-definition"></a>Definice aktivity poznámkového bloku datacihly
 
-Tady je ukázková definice JSON aktivity poznámkového bloku Databricks:
+Tady je ukázka definice JSON aktivity poznámkového bloku datacihly:
 
 ```json
 {
@@ -53,24 +53,24 @@ Tady je ukázková definice JSON aktivity poznámkového bloku Databricks:
 }
 ```
 
-## <a name="databricks-notebook-activity-properties"></a>Vlastnosti aktivity poznámkového bloku Databricks
+## <a name="databricks-notebook-activity-properties"></a>Vlastnosti aktivity poznámkového bloku datacihly
 
-Následující tabulka popisuje vlastnostech JSON použitých v definici JSON:
+Následující tabulka obsahuje popis vlastností JSON použitých v definici JSON:
 
-|Vlastnost|Popis|Požaduje se|
+|Vlastnost|Popis|Požadováno|
 |---|---|---|
 |name|Název aktivity v kanálu.|Ano|
-|description|Text popisující, jakým způsobem aktivita naloží.|Ne|
-|type|Pro aktivitu poznámkového bloku Databricks je typ aktivity DatabricksNotebook.|Ano|
-|linkedServiceName|Název propojené služby Databricks, na kterém běží poznámkového bloku Databricks. Další informace o tuto propojenou službu, najdete v článku [propojené služby Compute](compute-linked-services.md) článku.|Ano|
-|notebookPath|Absolutní cesta ke spuštění v pracovním prostoru Databricks Poznámkový blok. Tato cesta musí začínat lomítkem.|Ano|
-|baseParameters|Pole párů klíč-hodnota. Základní parametry můžete použít pro každé spuštění aktivity. Pokud poznámkový blok má parametr, který není zadán, použije se výchozí hodnota z poznámkového bloku. Další informace o parametrech v [poznámkových bloků Databricks](https://docs.databricks.com/api/latest/jobs.html#jobsparampair).|Ne|
-|Knihovny|Seznam knihovny, které chcete nainstalovat na clusteru, který provede úlohu. Pole může být \<řetězec, objekt >.|Ne|
+|description|Text popisující, co aktivita dělá.|Ne|
+|type|V případě aktivity poznámkového bloku datacihly je typ aktivity DatabricksNotebook.|Ano|
+|linkedServiceName|Název propojené služby datacihly, na které se Poznámkový blok datacihly spouští. Další informace o této propojené službě najdete v článku věnovaném [propojeným službám](compute-linked-services.md) Compute.|Ano|
+|notebookPath|Absolutní cesta poznámkového bloku, který má být spuštěn v pracovním prostoru datacihly. Tato cesta musí začínat lomítkem.|Ano|
+|baseParameters|Pole párů klíč-hodnota. Základní parametry lze použít pro každý běh aktivity. Pokud Poznámkový blok převezme parametr, který není zadaný, použije se výchozí hodnota z poznámkového bloku. Přečtěte si další informace o parametrech v poznámkových [blocích](https://docs.databricks.com/api/latest/jobs.html#jobsparampair)datacihly.|Ne|
+|Knihovna|Seznam knihoven, které se mají nainstalovat na cluster, který spustí úlohu. Může to být pole typu \<String a Object >.|Ne|
 
 
-## <a name="supported-libraries-for-databricks-activities"></a>Podporované knihovny pro aktivity Databricks
+## <a name="supported-libraries-for-databricks-activities"></a>Podporované knihovny pro aktivity datacihly
 
-V definici aktivity výše Databricks zadáte tyto knihovny typů: *jar*, *egg*, *maven*, *pypi*,  *cran*.
+Ve výše uvedené definici aktivity datacihly zadáte tyto typy knihoven: *jar*, *vaječný*, *WHL*, *Maven*, *PyPI*, *Cran*.
 
 ```json
 {
@@ -80,6 +80,12 @@ V definici aktivity výše Databricks zadáte tyto knihovny typů: *jar*, *egg*,
         },
         {
             "egg": "dbfs:/mnt/libraries/library.egg"
+        },
+    {
+            "whl": "dbfs:/mnt/libraries/mlflow-0.0.1.dev0-py2-none-any.whl"
+        },
+        {
+            "whl": "dbfs:/mnt/libraries/wheel-libraries.wheelhouse.zip"
         },
         {
             "maven": {
@@ -104,18 +110,18 @@ V definici aktivity výše Databricks zadáte tyto knihovny typů: *jar*, *egg*,
 
 ```
 
-Další podrobnosti najdete v tématu [dokumentace k Databricks](https://docs.azuredatabricks.net/api/latest/libraries.html#managedlibrarieslibrary) knihovny typů.
+Další podrobnosti najdete v [dokumentaci](https://docs.azuredatabricks.net/api/latest/libraries.html#managedlibrarieslibrary) k datacihlám pro typy knihoven.
 
-## <a name="how-to-upload-a-library-in-databricks"></a>Jak nahrát knihovnu v Databricks
+## <a name="how-to-upload-a-library-in-databricks"></a>Postup nahrání knihovny v datacihlách
 
-#### <a name="using-databricks-workspace-uihttpsdocsazuredatabricksnetuser-guidelibrarieshtmlcreate-a-library"></a>[Používání pracovního prostoru Databricks uživatelského rozhraní](https://docs.azuredatabricks.net/user-guide/libraries.html#create-a-library)
+#### <a name="using-databricks-workspace-uihttpsdocsazuredatabricksnetuser-guidelibrarieshtmlcreate-a-library"></a>[Použití uživatelského rozhraní pracovního prostoru datacihly](https://docs.azuredatabricks.net/user-guide/libraries.html#create-a-library)
 
-Chcete-li získat cestu dbfs knihovny přidat pomocí uživatelského rozhraní, můžete použít [rozhraní příkazového řádku Databricks (instalace)](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html#install-the-cli). 
+Chcete-li získat cestu dBFS knihovny přidané pomocí uživatelského rozhraní, můžete použít rozhraní příkazového [řádku datacihly (instalace)](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html#install-the-cli). 
 
-Obvykle jsou uložené na soubor Jar knihovny pod dbfs: / funkce FileStore/jars při používání uživatelského rozhraní. Můžete zobrazit seznam všech přes rozhraní příkazového řádku: *databricks fs ls dbfs: / funkce FileStore/JAR*.
+Knihovny jar jsou obvykle uloženy v dBFS:/úložiště/jar při používání uživatelského rozhraní. Seznamte se všemi prostřednictvím rozhraní příkazového řádku: datacihly *FS LS dBFS:/úložiště/jar*.
 
 
 
-#### <a name="copy-library-using-databricks-clihttpsdocsazuredatabricksnetuser-guidedev-toolsdatabricks-clihtmlcopy-a-file-to-dbfs"></a>[Knihovna kopírování pomocí rozhraní příkazového řádku Databricks](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html#copy-a-file-to-dbfs)
+#### <a name="copy-library-using-databricks-clihttpsdocsazuredatabricksnetuser-guidedev-toolsdatabricks-clihtmlcopy-a-file-to-dbfs"></a>[Kopírování knihovny pomocí rozhraní příkazového řádku datacihly](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html#copy-a-file-to-dbfs)
 
-Příklad: *databricks fs cp SparkPi sestavení 0.1.jar dbfs: / funkce FileStore/JAR*
+Příklad: *datacihly FS CP sparkpi-Assembly-0,1. jar dBFS:/úložiště/jar*

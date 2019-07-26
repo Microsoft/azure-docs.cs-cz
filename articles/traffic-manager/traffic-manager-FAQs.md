@@ -1,6 +1,6 @@
 ---
-title: Azure Traffic Manager – nejčastější dotazy
-description: Tento článek obsahuje odpovědi na nejčastější dotazy o Traffic Manageru
+title: Azure Traffic Manager – Nejčastější dotazy
+description: Tento článek obsahuje odpovědi na nejčastější dotazy týkající se Traffic Manager
 services: traffic-manager
 documentationcenter: ''
 author: asudbring
@@ -11,498 +11,498 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: allensu
-ms.openlocfilehash: 640d36649f59842a740b4c12b4e3ab39a6d98c13
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 37f1a0d9c70afc0a3a86ac76b682ee7b2adb253d
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67050945"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68335805"
 ---
-# <a name="traffic-manager-frequently-asked-questions-faq"></a>Traffic Manager – nejčastější dotazy (FAQ)
+# <a name="traffic-manager-frequently-asked-questions-faq"></a>Nejčastější dotazy Traffic Manager
 
-## <a name="traffic-manager-basics"></a>Základní informace o Traffic Manageru
+## <a name="traffic-manager-basics"></a>Základy Traffic Manager
 
-### <a name="what-ip-address-does-traffic-manager-use"></a>Jaké IP adresy používá Traffic Manager?
+### <a name="what-ip-address-does-traffic-manager-use"></a>Jaká IP adresa Traffic Manager použít?
 
-Jak je vysvětleno v [jak funguje Traffic Manager](../traffic-manager/traffic-manager-how-it-works.md), Traffic Manager pracuje na úrovni DNS. Odesílání odpovědí DNS k nasměrování klientů na příslušné službě koncového bodu. Klienti se pak připojují ke koncovému bodu služby přímo, ne pomocí Traffic Manageru.
+Jak je vysvětleno, [jak Traffic Manager funguje](../traffic-manager/traffic-manager-how-it-works.md), Traffic Manager funguje na úrovni DNS. Odesílá odpovědi DNS na přesměrování klientů do příslušného koncového bodu služby. Klienti se pak připojují přímo k koncovému bodu služby, nikoli prostřednictvím Traffic Manager.
 
-Proto se Traffic Manager neposkytuje koncovému bodu nebo IP adresu pro připojení klientů k. Pokud chcete statickou IP adresu pro vaši službu, která musí být nakonfigurované na službu, není v Traffic Manageru.
+Proto Traffic Manager neposkytuje koncový bod nebo IP adresu, ke kterým se klienti připojují. Pokud chcete pro vaši službu statickou IP adresu, musí být nakonfigurovaná ve službě, ne v Traffic Manager.
 
-### <a name="what-types-of-traffic-can-be-routed-using-traffic-manager"></a>Co může být typy provozu směruje pomocí Traffic Manageru?
-Jak je vysvětleno v [jak funguje Traffic Manager](../traffic-manager/traffic-manager-how-it-works.md), koncový bod služby Traffic Manager může být internetové služby hostované v Azure nebo mimo něj. Proto Traffic Manager může směrovat provoz pocházející z veřejného Internetu do sady koncových bodů, že jsou také Internetu. Pokud máte koncové body, které jsou v privátní síti (například na interní verze [Azure Load Balancer](../load-balancer/load-balancer-overview.md#internalloadbalancer)) nebo mít uživatelích směřujících své požadavky na DNS z takových interní sítě, a pak pomocí Traffic Manageru nelze směrovat provoz.
+### <a name="what-types-of-traffic-can-be-routed-using-traffic-manager"></a>Jaké typy přenosů se dají směrovat pomocí Traffic Manager?
+Jak je vysvětleno, [jak Traffic Manager funguje](../traffic-manager/traffic-manager-how-it-works.md), Traffic Manager koncový bod může být libovolná internetová služba hostovaná v nebo mimo Azure. Proto Traffic Manager můžou směrovat provoz, který pochází z veřejného Internetu, do sady koncových bodů, které jsou taky na internetu. Pokud máte koncové body, které jsou uvnitř privátní sítě (například interní verze [Azure Load Balancer](../load-balancer/load-balancer-overview.md#internalloadbalancer)), nebo pokud chcete, aby uživatelé prováděli žádosti DNS z těchto interních sítí, nebudete moci použít Traffic Manager ke směrování tohoto provozu.
 
-### <a name="does-traffic-manager-support-sticky-sessions"></a>Traffic Manager podporuje "rychlé" relace?
+### <a name="does-traffic-manager-support-sticky-sessions"></a>Podporuje Traffic Manager "rychlé" relace?
 
-Jak je vysvětleno v [jak funguje Traffic Manager](../traffic-manager/traffic-manager-how-it-works.md), Traffic Manager pracuje na úrovni DNS. Využívá odpovědi služby DNS k nasměrování klientů na příslušné službě koncového bodu. Klienti připojení ke koncovému bodu služby přímo, ne pomocí Traffic Manageru. Proto Traffic Manageru nezobrazují přenos pomocí protokolu HTTP mezi klientem a serverem.
+Jak je vysvětleno, [jak Traffic Manager funguje](../traffic-manager/traffic-manager-how-it-works.md), Traffic Manager funguje na úrovni DNS. Pomocí odpovědí DNS směruje klienty do příslušného koncového bodu služby. Klienti se připojují přímo ke koncovému bodu služby, nikoli prostřednictvím Traffic Manager. Proto Traffic Manager nevidí přenos HTTP mezi klientem a serverem.
 
-Kromě toho zdrojové IP adresy přijaté Traffic Managerem dotazy DNS patří do rekurzivní službu DNS, ne klienta. Traffic Manageru, proto nemá žádný způsob, jak sledovat jednotlivé klienty a nemůže implementovat "rychlé" relace. Toto omezení je společný pro všechny systémy správy provozu na základě DNS a není specifická pro Traffic Manager.
+Kromě toho zdrojová IP adresa dotazu DNS přijatého Traffic Manager patří do rekurzivní služby DNS, nikoli z klienta. Proto Traffic Manager nemá žádný způsob, jak sledovat jednotlivé klienty a nemůže implementovat "rychlé" relace. Toto omezení je běžné pro všechny systémy správy provozu založené na DNS a není specifické pro Traffic Manager.
 
-### <a name="why-am-i-seeing-an-http-error-when-using-traffic-manager"></a>Proč se mi zobrazuje chyba HTTP při použití Traffic Manageru?
+### <a name="why-am-i-seeing-an-http-error-when-using-traffic-manager"></a>Proč se mi při použití Traffic Manager zobrazuje chyba protokolu HTTP?
 
-Jak je vysvětleno v [jak funguje Traffic Manager](../traffic-manager/traffic-manager-how-it-works.md), Traffic Manager pracuje na úrovni DNS. Využívá odpovědi služby DNS k nasměrování klientů na příslušné službě koncového bodu. Klienti se pak připojují ke koncovému bodu služby přímo, ne pomocí Traffic Manageru. Traffic Manager nemá viz přenosy HTTP není mezi klientem a serverem. Proto všechny Chyba protokolu HTTP, který se zobrazí musí pocházet z vaší aplikace. Aby klient mohl připojit k aplikaci se dokončí všechny kroky řešení DNS. To zahrnuje všechny interakce, který má Traffic Manageru na tok provozu aplikace.
+Jak je vysvětleno, [jak Traffic Manager funguje](../traffic-manager/traffic-manager-how-it-works.md), Traffic Manager funguje na úrovni DNS. Pomocí odpovědí DNS směruje klienty do příslušného koncového bodu služby. Klienti se pak připojují přímo k koncovému bodu služby, nikoli prostřednictvím Traffic Manager. Traffic Manager nevidí přenos HTTP mezi klientem a serverem. Všechny chyby HTTP, které vidíte, se proto musí nacházet z vaší aplikace. Aby se klient mohl připojit k aplikaci, všechny kroky překladu DNS jsou dokončené. Zahrnuje všechny interakce, které Traffic Manager mají v toku provozu aplikací.
 
-Další šetření byste proto se zaměřit na aplikace.
+Další šetření by proto mělo být zaměřeno na aplikaci.
 
-Hlavička hostitele HTTP odeslané do prohlížeče klienta je nejběžnější příčiny problémů. Ujistěte se, že aplikace je nakonfigurovaná tak, aby přijímal hlavičku hostitele správná pro název domény, který používáte. Koncové body pomocí služby Azure App Service, najdete v části [konfigurace vlastního názvu domény pro webovou aplikaci ve službě Azure App Service pomocí Traffic Manageru](../app-service/web-sites-traffic-manager-custom-domain-name.md).
+Hlavička hostitele HTTP, která je odeslána z prohlížeče klienta, je nejběžnější zdrojem problémů. Ujistěte se, že aplikace je nakonfigurovaná tak, aby přijímala správnou hlavičku hostitele pro název domény, který používáte. Koncových bodů pomocí Azure App Service najdete v tématu [Konfigurace vlastního názvu domény pro webovou aplikaci v Azure App Service pomocí Traffic Manager](../app-service/web-sites-traffic-manager-custom-domain-name.md).
 
-### <a name="what-is-the-performance-impact-of-using-traffic-manager"></a>Co je dopad na výkon pomocí Traffic Manageru?
+### <a name="what-is-the-performance-impact-of-using-traffic-manager"></a>Jaký je dopad na výkon při používání Traffic Manager?
 
-Jak je vysvětleno v [jak funguje Traffic Manager](../traffic-manager/traffic-manager-how-it-works.md), Traffic Manager pracuje na úrovni DNS. Protože klienti připojení koncových bodů služby přímo, neexistuje žádný dopad na výkon při použití Traffic Manageru, jakmile se naváže připojení.
+Jak je vysvětleno, [jak Traffic Manager funguje](../traffic-manager/traffic-manager-how-it-works.md), Traffic Manager funguje na úrovni DNS. Vzhledem k tomu, že se klienti připojují k koncovým bodům služby přímo, nedochází při použití Traffic Manager po navázání tohoto připojení k žádnému dopadu na výkon.
 
-Vzhledem k tomu, že Traffic Manager se integruje s aplikacemi na úrovni DNS, vyžaduje další vyhledávání DNS má být vložen do řetězu překlad DNS. Je minimální dopad na dobu překladu názvů DNS Traffic Manageru. Traffic Manager využívá globální síť názvových serverů a využívá [anycast](https://en.wikipedia.org/wiki/Anycast) sítě zajistit DNS dotazy jsou vždy směrovány do nejbližší dostupné názvový server. Kromě toho ukládání do mezipaměti odpovědí DNS znamená, že další latence DNS při pomocí Traffic Manageru aplikuje pouze na zlomek relací.
+Vzhledem k tomu, že Traffic Manager se integruje s aplikacemi na úrovni DNS, vyžaduje se vložení dalšího vyhledávání DNS do řetězce překladu DNS. Dopad Traffic Manager na dobu překladu DNS je minimální. Traffic Manager používá globální síť názvových serverů [a používá síť](https://en.wikipedia.org/wiki/Anycast) s více jmény k zajištění toho, aby se dotazy DNS vždycky směrovaly na nejbližší dostupný názvový server. Kromě toho ukládání odpovědí DNS do mezipaměti znamená, že další latence DNS vzniklé pomocí Traffic Manager platí jenom pro zlomek relací.
 
-Metoda výkonu směruje provoz na nejbližší dostupný koncový bod. Net výsledkem je, že by měl být minimální dopad na celkový výkon přidružený k této metodě. Každé zvýšení počtu latence DNS by měla být pokryta nižší latence sítě ke koncovému bodu.
+Metoda Performance směruje provoz do nejbližšího dostupného koncového bodu. Výsledkem netto je, že celkový dopad na výkon spojený s touto metodou by měl být minimální. Jakékoli zvýšení latence DNS by mělo být posunuto o nižší latenci sítě ke koncovému bodu.
 
-### <a name="what-application-protocols-can-i-use-with-traffic-manager"></a>Jaké aplikační protokoly je možné použít s využitím Traffic Manageru?
+### <a name="what-application-protocols-can-i-use-with-traffic-manager"></a>Jaké aplikační protokoly můžu používat s Traffic Manager?
 
-Jak je vysvětleno v [jak funguje Traffic Manager](../traffic-manager/traffic-manager-how-it-works.md), Traffic Manager pracuje na úrovni DNS. Po dokončení vyhledávání DNS se klienti připojovat k koncový bod aplikace přímo, ne pomocí Traffic Manageru. Připojení proto můžete použít jakýkoli protokol aplikace. Pokud vyberete TCP jako monitorování protokolu, Traffic Manager koncový bod monitorování stavu se dá udělat bez použití jakékoli aplikačních protokolů. Pokud budete chtít mít stav ověření pomocí protokolu aplikace, koncový bod musí být schopné reagovat na požadavky HTTP nebo HTTPS GET.
+Jak je vysvětleno, [jak Traffic Manager funguje](../traffic-manager/traffic-manager-how-it-works.md), Traffic Manager funguje na úrovni DNS. Po dokončení vyhledávání DNS se klienti připojují přímo ke koncovému bodu aplikace, nikoli prostřednictvím Traffic Manager. Připojení proto může používat libovolný aplikační protokol. Pokud jako protokol monitorování vyberete TCP, můžete monitorování stavu koncového bodu Traffic Manager provést bez použití protokolů aplikací. Pokud se rozhodnete, že budete mít stav ověřený pomocí aplikačního protokolu, musí být koncový bod schopný reagovat na požadavky GET HTTP nebo HTTPS.
 
-### <a name="can-i-use-traffic-manager-with-a-naked-domain-name"></a>Můžete použít Traffic Manageru s názvem "základní" doména?
+### <a name="can-i-use-traffic-manager-with-a-naked-domain-name"></a>Můžu použít Traffic Manager s názvem domény "holé"?
 
-Ano. Zjistěte, jak vytvořit záznam aliasu pro apex název vaší domény tak, aby odkazovaly profilu Azure Traffic Manageru, najdete v článku [konfigurace záznamu o aliasu pro podporu vrcholu názvy domén s Traffic Managerem](../dns/tutorial-alias-tm.md).
+Ano. Informace o tom, jak vytvořit záznam aliasu pro název vaší domény, aby odkazoval na profil Azure Traffic Manager, najdete v tématu [Konfigurace záznamu aliasu pro podporu názvů vrcholu domény pomocí Traffic Manager](../dns/tutorial-alias-tm.md).
 
-### <a name="does-traffic-manager-consider-the-client-subnet-address-when-handling-dns-queries"></a>Traffic Manageru zvažte adresa podsítě klienta při zpracování dotazů DNS 
+### <a name="does-traffic-manager-consider-the-client-subnet-address-when-handling-dns-queries"></a>Považuje Traffic Manager adresa klientské podsítě při zpracování dotazů DNS? 
 
-Ano, kromě IP adresu zdrojového dotazu DNS obdrží (což obvykle je IP adresa překladače DNS), když provádíte vyhledávání pro Geographic, výkonu a podsítě metod směrování, traffic Manageru také bere v úvahu adresa podsítě klienta Pokud pomocí překladače, který zadal žádost jménem koncového uživatele je zahrnutý v dotazu.  
-Konkrétně [RFC 7871 – klientské podsíti v dotazech DNS](https://tools.ietf.org/html/rfc7871) poskytující [mechanismus rozšíření pro službu DNS (EDNS0)](https://tools.ietf.org/html/rfc2671) které můžete předat na adresu podsítě klienta z překladače, kteří jej podporují.
+Ano, kromě zdrojové IP adresy dotazu DNS, který přijímá (obvykle se jedná o IP adresu překladače DNS), při provádění vyhledávání pro metody směrování geografických, výkon a podsítí bere Traffic Manager také adresu klientské podsítě, pokud je součástí dotazu překladače, který provádí požadavek jménem koncového uživatele.  
+Konkrétně [RFC 7871 – podsíť klienta v dotazech DNS](https://tools.ietf.org/html/rfc7871) , která poskytuje [mechanismus rozšíření pro DNS (EDNS0)](https://tools.ietf.org/html/rfc2671) , který může předat adresu klientské podsítě z překladačů, které ji podporují.
 
-### <a name="what-is-dns-ttl-and-how-does-it-impact-my-users"></a>Co je hodnotu TTL pro DNS a jak to ovlivní Moji uživatelé?
+### <a name="what-is-dns-ttl-and-how-does-it-impact-my-users"></a>Co je DNS TTL a jak má vliv na uživatele?
 
-Pokud dotaz DNS jsou v Traffic Manageru, nastaví hodnotu v odpovědi nazývá time to live (TTL). Tato hodnota, jejíž jednotka je v sekundách, označuje do překladače DNS směru server-klient na jak dlouho pro ukládání do mezipaměti této odpovědi. Zatímco překladače DNS není zaručena pro ukládání do mezipaměti tohoto výsledku, ukládání do mezipaměti umožňuje jim reagovat na následující dotazy vypnout mezipaměti místo přechodu na servery DNS Traffic Manageru. To má vliv na odpovědi následujícím způsobem:
+Když se na Traffic Manager dotaz DNS, nastaví hodnotu v odpovědi s názvem Time-to-Live (TTL). Tato hodnota, jejíž jednotka je v sekundách, označuje překladače DNS po dobu ukládání této odpovědi do mezipaměti. I když není zaručené ukládání tohoto výsledku Překladači DNS do mezipaměti, umožníte jim, aby jim odpověděl na všechny následné dotazy z mezipaměti, a ne na Traffic Manager servery DNS. To má vliv na odezvy následujícím způsobem:
 
-- vyšší hodnoty TTL snižuje počet dotazů, které se objeví na serverech DNS Traffic Manageru, které můžete snížit náklady na zákazníka, protože počet dotazů, které obsluhují je fakturovatelná spotřeba.
-- vyšší hodnoty TTL můžete potenciálně snížili množství času, kterou trvá proveďte vyhledání DNS.
-- vyšší hodnoty TTL také znamená, že vaše data neodráží nejnovějších informací o stavu, které Traffic Manager je získali prostřednictvím jeho zjišťování agentů.
+- vyšší hodnota TTL snižuje počet dotazů, které jsou na Traffic Manager serverech DNS, což může snížit náklady na zákazníka, protože počet zpracovaných dotazů je Fakturovatelné využití.
+- vyšší hodnota TTL může potenciálně zkrátit dobu potřebnou k vyhledání DNS.
+- vyšší hodnota TTL také znamená, že vaše data nereflektují nejnovější informace o stavu, které Traffic Manager získali prostřednictvím svých agentů pro zjišťování.
 
-### <a name="how-high-or-low-can-i-set-the-ttl-for-traffic-manager-responses"></a>Jak vysoká nebo Nízká můžete nastavit hodnotu TTL pro odpovědi Traffic Manageru?
+### <a name="how-high-or-low-can-i-set-the-ttl-for-traffic-manager-responses"></a>Jak vysoká nebo nízká můžu nastavit hodnotu TTL pro Traffic Manager odezvy?
 
-Můžete nastavit, v na úroveň profilu, hodnotu TTL pro DNS v rozsahu od 0 sekund a tak vysoké jako 2 147 483 647 sekund (kompatibilní s maximální rozsah [definicí RFC 1035](https://www.ietf.org/rfc/rfc1035.txt )). Hodnota TTL 0 znamená, že podřízené překladače DNS do mezipaměti odpovědi na dotazy a se očekává, že všechny dotazy DNS Traffic Manageru mohly spojit se servery pro překlad.
+Na úrovni profilu můžete nastavit, aby hodnota TTL služby DNS byla menší než 0 sekund a 2 147 483 647 sekund (maximální rozsah odpovídá [specifikaci RFC-1035](https://www.ietf.org/rfc/rfc1035.txt )). Hodnota TTL (0) znamená, že převádění DNS pro příjem dat neukládají odpovědi na dotazy do mezipaměti a všechny dotazy se očekávají, že budou mít přístup k Traffic Manager serverům DNS pro řešení.
 
-### <a name="how-can-i-understand-the-volume-of-queries-coming-to-my-profile"></a>Jak můžete porozumět objem dotazů přicházející do svého profilu? 
+### <a name="how-can-i-understand-the-volume-of-queries-coming-to-my-profile"></a>Jak můžu pochopit objem dotazů přicházejících do svého profilu? 
 
-Jednu z metrik uvedených Traffic Managerem je počet dotazů v rámci profilu odpověděl. Tyto informace můžete získat na úrovni agregace profilu nebo můžete rozdělit ho uvidět objem dotazů, ve kterém byly vráceny konkrétní koncové body. Kromě toho můžete nastavit oznámení, které vás upozorní, pokud objem odpovědi dotazu překročí podmínek, které jste nastavili. Další podrobnosti [Traffic Manageru metrik a výstrah](traffic-manager-metrics-alerts.md).
+Jedna z metrik, kterou poskytuje Traffic Manager, je počet dotazů, které jsou v profilu odpovědi. Tyto informace můžete získat na základě agregace na úrovni profilu nebo ji můžete rozdělit a zobrazit tak objem dotazů, ve kterých byly vráceny konkrétní koncové body. Kromě toho můžete nastavit výstrahy, které vás upozorní, pokud svazek s odpovědí na dotaz překračuje podmínky, které jste nastavili. Další podrobnosti [Traffic Manager metriky a upozorněních](traffic-manager-metrics-alerts.md).
 
-## <a name="traffic-manager-geographic-traffic-routing-method"></a>Metody směrování provozu Traffic Manageru Geographic
+## <a name="traffic-manager-geographic-traffic-routing-method"></a>Traffic Manager způsob směrování geografického provozu
 
-### <a name="what-are-some-use-cases-where-geographic-routing-is-useful"></a>Jaké jsou některé případy použití, ve kterém geografické směrování je užitečné?
+### <a name="what-are-some-use-cases-where-geographic-routing-is-useful"></a>Jaké jsou některé případy použití, kde se geografické směrování hodí?
 
-Geografické směrování typu lze použít ve všech scénářích, kde zákazník Azure potřebuje k rozlišení jejich uživatelů podle geografických oblastí. Například pomocí geografickou metodu směrování provozu, můžete uživatelům udělit z konkrétních oblastí a činnost koncových uživatelů jiné než ty, které z jiných oblastí. Dalším příkladem je dodržování pověření místní datové suverenity, vyžadující, že uživatelé z určité oblasti být obsluhovaný pouze koncové body v dané oblasti.
+Typ geografického směrování se dá použít v jakémkoli scénáři, kdy zákazník Azure potřebuje odlišit své uživatele na základě geografických oblastí. Například pomocí metody směrování geografických přenosů můžete uživatelům z určitých oblastí poskytnout jiné uživatelské prostředí než ty z jiných oblastí. Dalším příkladem je splnění místních nároků na svrchovanost dat, které vyžadují, aby se uživatelé z konkrétní oblasti mohli dodávat jenom koncovými body v této oblasti.
 
-### <a name="how-do-i-decide-if-i-should-use-performance-routing-method-or-geographic-routing-method"></a>Jak můžu rozhodnout, pokud mám použít metody směrování podle výkonu nebo metody geografického směrování?
+### <a name="how-do-i-decide-if-i-should-use-performance-routing-method-or-geographic-routing-method"></a>Návody rozhodnout, jestli mám použít metodu směrování výkonu nebo metodu geografického směrování?
 
-Klíčovým rozdílem mezi těmito dvěma metodami oblíbených směrování je, že v metody, které primární cílem je odesílat provoz do koncového bodu, který může poskytnout nejnižší latenci volajícímu, že v Geographic směrování hlavním cílem je vynucení zeměpisné oblasti směrování výkonu plotu pro vaši volající tak, aby je záměrně směrovat do určitého koncového bodu. Překrytí se stane vzhledem k tomu, že existuje korelace mezi zeměpisné těsnost a nižší latenci, i když to není vždy hodnotu true. V různých zeměpisné oblasti, která dokáže poskytovat lepší prostředí latence pro volající může být koncový bod a v takovém případě směrování podle výkonu odešle uživatel do tohoto koncového bodu, ale geografické směrování bude vždy odesílat je do koncového bodu pro namapování jejich zeměpisné oblasti. Dále nastavte ji vymazat, zvažte následující příklad – s Geographic směrování, můžete nastavit neobvyklé mapování jako odesílat veškerý přenos v Asii ke koncovým bodům v USA a všechny USA provozu do koncových bodů v Asii. V takovém případě geografické směrování bude provádět záměrně, přesně jak jste nakonfigurovali na práci a optimalizace výkonu není potřeba. 
+Hlavním rozdílem mezi těmito dvěma oblíbenými metodami směrování je to, že v rámci směrování výkonu je vaším primárním cílem odeslání provozu do koncového bodu, který může poskytnout nejnižší latenci volajícího, zatímco v geografickém směrování je primárním cílem vymáhat si geografickou oblast. plot pro vaše volající, abyste je mohli záměrně směrovat do konkrétního koncového bodu. K překrytí dochází, protože existuje korelace mezi geografickou těsnou a nižší latencí, přestože to není vždy true. V různých zeměpisných oblastech může být koncový bod, který pro volající může poskytovat lepší možnosti latence, a v takovém případě směrování výkonu odešle uživateli do tohoto koncového bodu, ale geografické směrování je vždycky pošle do koncového bodu, který jste namapovali pro jejich Zeměpisná oblast. Pokud ho chcete dál vyjasnit, vezměte v úvahu následující příklad – s geografickým směrováním můžete provádět neobvyklá mapování, jako je například odesílání všech přenosů z Asie do koncových bodů v USA a veškerý provoz v Asii do koncových bodů v Asii. V takovém případě geografické směrování záměrně provede přesně to, co jste nakonfigurovali a optimalizace výkonu neplatí. 
 >[!NOTE]
->Můžou existovat situacích, kdy můžete potřebovat i výkon a geografické směrování možnosti pro tyto scénáře vnořených profilů může být skvělou volbu. Například můžete nastavit nadřazený profil s geografické směrování, kde odesílat veškerý přenos v Severní Americe do vnořeného profilu, který má koncové body v USA a používat k posílání těchto provozu nejlepší koncový bod v rámci této sady směrování výkonu. 
+>Může nastat situace, kdy budete možná potřebovat možnosti výkonu i geografického směrování. pro tyto scénáře může být vhodná volba pro vnořené profily. Můžete například nastavit nadřazený profil s geografickým směrováním, kde odesíláte veškerý provoz z Severní Amerika do vnořeného profilu, který obsahuje koncové body v USA, a použít směrování výkonu k odeslání těchto dat do nejlepšího koncového bodu v této sadě. 
 
-### <a name="what-are-the-regions-that-are-supported-by-traffic-manager-for-geographic-routing"></a>Co jsou oblasti, které jsou podporovány nástrojem Traffic Manager pro geografické směrování?
+### <a name="what-are-the-regions-that-are-supported-by-traffic-manager-for-geographic-routing"></a>Jaké jsou oblasti podporované Traffic Manager pro geografické směrování?
 
-Hierarchie zemí/oblastí, který se používá Traffic Managerem můžete najít [tady](traffic-manager-geographic-regions.md). Zatímco tato stránka je veden odpovídalo nejnovějším změnám, můžete také programově načítat stejné informace s použitím [REST API služby Azure Traffic Manager](https://docs.microsoft.com/rest/api/trafficmanager/). 
+Hierarchii země nebo oblasti, kterou používá Traffic Manager, najdete [tady](traffic-manager-geographic-regions.md). I když je tato stránka stále aktuální se změnami, můžete také programově načíst stejné informace pomocí [Traffic Manager Azure REST API](https://docs.microsoft.com/rest/api/trafficmanager/). 
 
-### <a name="how-does-traffic-manager-determine-where-a-user-is-querying-from"></a>Jak traffic manager Určuje, kde je uživatel dotazování z?
+### <a name="how-does-traffic-manager-determine-where-a-user-is-querying-from"></a>Jak Traffic Manager zjišťuje, ze kterého uživatele se dotazuje?
 
-Traffic Manager zjistí Zdrojová IP adresa dotazu (je to pravděpodobně místního překladače DNS způsobem dotazování jménem uživatele) a používá interní IP adresu do oblasti mapy k určení umístění. Toto mapování se aktualizuje průběžně pro změny v Internetu. 
+Traffic Manager prochází se zdrojovou IP adresou dotazu (pravděpodobně se jedná o místní Překladač DNS, který provádí dotazování jménem uživatele), a k určení umístění používá mapu interní IP adresa pro oblast. Tato mapa se průběžně aktualizuje, aby se zohlednily změny v Internetu. 
 
-### <a name="is-it-guaranteed-that-traffic-manager-can-correctly-determine-the-exact-geographic-location-of-the-user-in-every-case"></a>To zaručuje, že Traffic Manager správně zjistit přesnou zeměpisnou polohu uživatele v každém případě?
+### <a name="is-it-guaranteed-that-traffic-manager-can-correctly-determine-the-exact-geographic-location-of-the-user-in-every-case"></a>Je zaručeno, že Traffic Manager dokáže správně určit přesné geografické umístění uživatele v každém případě?
 
-Ne, Traffic Manager nemůže zaručit, že geografické oblasti, které jsme odvodit od zdrojové IP adresy pomocí dotazu DNS bude vždycky odpovídají podle umístění uživatele z následujících důvodů:
+Ne, Traffic Manager nemůže zaručit, že geografická oblast odvozená ze zdrojové IP adresy dotazu DNS bude vždycky odpovídat umístění uživatele z následujících důvodů:
 
-- Nejprve jak je popsáno v předchozí – nejčastější dotazy, zdrojové IP adresy, které můžeme vidět je, že překladače DNS způsobem vyhledávání jménem uživatele. Geografické umístění Překladač DNS je dobré proxy pro geografické umístění uživatele, může být jiný v závislosti na nároky překladač služby DNS a konkrétní službu Překladač DNS, kterou zákazník se rozhodli použít. Například zákazník nachází v Malajsii zadat jejich zařízení nastavení používá překladač služby DNS, server DNS, in Singapore může získat vybere zpracování dotazu řešení pro uživatele nebo zařízení. V takovém případě Traffic Manageru uvidí jenom překladač IP adresu, která odpovídá Singapur umístění. Viz také starší – nejčastější dotazy týkající se podpory adresa podsítě klienta na této stránce.
+- Nejdříve, jak je popsáno v předchozích nejčastějších dotazech, se zobrazuje zdrojová IP adresa, kterou překládá DNS při vyhledávání jménem uživatele. I když je zeměpisné umístění překladače DNS dobrým proxy serverem pro zeměpisnou polohu uživatele, může se také lišit v závislosti na tom, jaké jsou nároky na službu DNS Resolver a konkrétní služba překladače DNS, kterou si zákazník rozhodl použít. Příklad: zákazník umístěný v Malajsii může v nastavení zařízení zadat službu DNS Resolver, jejíž server DNS v Singapuru může vyzvednutím rozlišení dotazů pro daného uživatele nebo zařízení. V takovém případě Traffic Manager uvidí jenom IP adresu překladače, která odpovídá umístění Singapuru. Podívejte se také na předchozí Nejčastější dotazy týkající se podpory adres klientských podsítí na této stránce.
 
-- Za druhé Traffic Manager používá interní mapy provedete IP adresu pro překlad geografické oblasti. Přestože toto mapování se ověří a aktualizovat průběžně zvýšit jeho přesnost a zohlednily vyvíjející povaze internet, je stále možné, že naše informace nejsou přesnou reprezentací zeměpisné umístění všech IP adresy.
+- Druhý Traffic Manager k překladu IP adres na geografickou oblast používat interní mapu. I když se tato mapa ověří a průběžně aktualizuje, aby se zvýšila její přesnost a účet pro vývojovou povahu internetu, stále existuje možnost, že naše informace nepředstavuje přesnou reprezentaci geografického umístění všech IP adres. Adresa.
 
-###  <a name="does-an-endpoint-need-to-be-physically-located-in-the-same-region-as-the-one-it-is-configured-with-for-geographic-routing"></a>Koncový bod musí být fyzicky umístěné ve stejné oblasti jako ta, kterou má nakonfigurovanou pro geografické směrování?
+###  <a name="does-an-endpoint-need-to-be-physically-located-in-the-same-region-as-the-one-it-is-configured-with-for-geographic-routing"></a>Musí být koncový bod fyzicky umístěný ve stejné oblasti, ve které je nakonfigurovaný pro geografické směrování?
 
-Ne, ukládá umístění koncového bodu bez omezení, na kterých lze k němu mapována oblastech. Koncový bod v oblasti Azure USA – střed můžete mít například všichni uživatelé z Indie směrované do něj.
+Ne, umístění koncového bodu neukládá žádná omezení, na které lze namapovat oblasti. Například koncový bod v oblasti USA-střed Azure může mít směrovaného uživatele z Indie.
 
-### <a name="can-i-assign-geographic-regions-to-endpoints-in-a-profile-that-is-not-configured-to-do-geographic-routing"></a>Můžete přiřadit geografických oblastí na koncové body v profilu, který není nakonfigurovaný geografické směrování?
+### <a name="can-i-assign-geographic-regions-to-endpoints-in-a-profile-that-is-not-configured-to-do-geographic-routing"></a>Je možné přiřazovat geografické oblasti koncovým bodům v profilu, který není nakonfigurován tak, aby provedl geografické směrování?
 
-Ano, pokud není geografické metodu směrování profilu, můžete použít [REST API služby Azure Traffic Manager](https://docs.microsoft.com/rest/api/trafficmanager/) přiřadit geografických oblastí na koncové body v profilu. V případě-geografické směrování profily typů toto nastavení je ignorováno. Pokud později změníte takový profil pro geografické směrování typu, Traffic Manager může použít tyto mapování.
+Ano, pokud metoda směrování profilu není geografická, můžete k přiřazení geografických oblastí k koncovým bodům v tomto profilu použít [REST API Traffic Manager Azure](https://docs.microsoft.com/rest/api/trafficmanager/) . V případě negeografických profilů typu směrování se tato konfigurace ignoruje. Pokud takový profil změníte na typ geografické směrování později, Traffic Manager můžou tato mapování použít.
 
-### <a name="why-am-i-getting-an-error-when-i-try-to-change-the-routing-method-of-an-existing-profile-to-geographic"></a>Proč se při změně metodu směrování existující profil pro Geographic dochází k chybě?
+### <a name="why-am-i-getting-an-error-when-i-try-to-change-the-routing-method-of-an-existing-profile-to-geographic"></a>Proč se při pokusu o změnu metody směrování stávajícího profilu na geografickou chybu zobrazuje chyba?
 
-Všechny koncové body v rámci profilu s geografické směrování musí mít aspoň jednu oblast k němu mapována. Převést existující profil pro geografické směrování typu, je nutné nejprve přidružit geografických oblastí na všechny její pomocí koncových bodů [REST API služby Azure Traffic Manager](https://docs.microsoft.com/rest/api/trafficmanager/) před změnou typu směrování do geografických. Pokud používáte portál, nejprve odstranit koncových bodů, změňte metodu směrování profilu na geografické a pak přidat koncové body spolu s jejich zeměpisnou oblast mapování.
+Všechny koncové body v profilu s geografickým směrováním musí mít namapovanou aspoň jednu oblast. Pokud chcete převést stávající profil na typ geografické směrování, musíte nejdřív přidružit geografické oblasti ke všem jeho koncovým bodům pomocí [Traffic Manager Azure REST API](https://docs.microsoft.com/rest/api/trafficmanager/) před změnou typu směrování na geografickou. Pokud používáte portál, nejprve tyto koncové body odstraňte, změňte metodu směrování profilu na geografickou a přidejte koncové body spolu s jejich mapováním na geografickou oblast.
 
-### <a name="why-is-it-strongly-recommended-that-customers-create-nested-profiles-instead-of-endpoints-under-a-profile-with-geographic-routing-enabled"></a>Proč je důrazně doporučujeme, aby zákazníci vytvářet vnořené profily místo koncové body v rámci profilu se zapnutým směrováním geografické?
+### <a name="why-is-it-strongly-recommended-that-customers-create-nested-profiles-instead-of-endpoints-under-a-profile-with-geographic-routing-enabled"></a>Proč doporučujeme, aby zákazníci vytvářeli vnořené profily místo koncových bodů v profilu s povoleným geografickým směrováním?
 
-Oblast je přiřadit pouze jeden koncový bod v rámci profilu, pokud aplikace používá metody geografického směrování. Pokud tohoto koncového bodu není vnořený typ profilem podřízené připojené, pokud provoz tohoto koncového bodu, bude v pořádku, správce i nadále posílat provoz k němu od alternativní není odesílání není žádná lepší veškerý provoz. Traffic Manager nemá převzetí služeb při selhání do jiného koncového bodu, i když oblasti přiřazené je "nadřazený" oblasti přiřazené ke koncovému bodu, který není v pořádku (například, pokud koncový bod, který má oblast Španělsko přestane není v pořádku, že to není převzetí služeb při selhání do jiného koncového bodu se nepovedlo obsahuje oblast, kterou přiřazenou Evropa). To slouží k zajištění, že Traffic Manager respektuje geografické hranice, že zákazník má instalační program ve svém profilu. K budete mít k dispozici přebírání služeb při selhání do jiného koncového bodu, když se koncový bod dostane není v pořádku, se doporučuje pro vnořené profily s několika koncovými body v rámci něj namísto jednotlivé koncové body přidělí geografických oblastí. Tímto způsobem Pokud koncový bod v profilu vnořené podřízené selže, můžete provoz převzetí služeb při selhání do jiného koncového bodu uvnitř vnořené podřízené stejný profil.
+Oblast se dá přiřadit jenom k jednomu koncovému bodu v profilu, pokud používá metodu geografického směrování. Pokud se tento koncový bod nejedná o vnořený typ s připojeným podřízeným profilem, pokud tento koncový bod není v pořádku, Traffic Manager nadále posílat provoz na něj, protože alternativa k tomu, že neodesílá žádný provoz, není lepší. Traffic Manager neproběhne převzetí služeb při selhání jiným koncovým bodem, a to i v případě, že je přiřazená oblast "nadřazená" oblasti přiřazené koncovému bodu, který není v pořádku (například pokud koncový bod s oblastí Španělsko není v pořádku, neproběhne převzetí služeb při selhání na jiný koncový bod, který má přiřazenou oblast Evropa. K tomu je potřeba zajistit, aby Traffic Manager respektovat geografické hranice, které zákazník má ve svém profilu nastavený. Aby bylo možné převzít služby při selhání do jiného koncového bodu v případě, že koncový bod není v pořádku, doporučujeme, aby byly geografické oblasti přiřazeny k vnořeným profilům s více koncovými body namísto jednotlivých koncových bodů. Tímto způsobem se může provoz převzetí služeb při selhání do jiného koncového bodu v rámci stejného vnořeného podřízeného profilu v případě selhání koncového bodu ve vnořeném podřízeném profilu.
 
-### <a name="are-there-any-restrictions-on-the-api-version-that-supports-this-routing-type"></a>Existují nějaká omezení na verzi rozhraní API, která podporuje tento typ směrování?
+### <a name="are-there-any-restrictions-on-the-api-version-that-supports-this-routing-type"></a>Existují nějaká omezení verze rozhraní API, která podporuje tento typ směrování?
 
-Ano, geografické směrování zadejte pouze verze rozhraní API 2017-03-01 a novější podporuje. Všechny starší verze rozhraní API nelze použít k vytvořené profily geografické směrování typu nebo přiřadit geografických oblastí na koncové body. Pokud starší verze rozhraní API slouží k načtení profily z předplatného Azure, nevrátí se žádný profil geografické směrování typu. Kromě toho, jestli používáte starší verze rozhraní API vrácen žádný profil, který má koncové body s přiřazením geografické oblasti, nemá jeho přiřazení geografické oblasti.
+Ano, jenom rozhraní API verze 2017-03-01 a novější podporuje typ geografického směrování. Jakékoli starší verze rozhraní API nelze použít k vytvoření profilů geografického typu směrování nebo k přiřazení geografických oblastí koncovým bodům. Pokud se k načtení profilů z předplatného Azure používá starší verze rozhraní API, nevrátí se žádný profil geografického směrování. Při použití starších verzí rozhraní API se navíc u všech vrácených profilů, které mají koncové body s přiřazením geografické oblasti, nezobrazuje příslušné přiřazení geografické oblasti.
 
-## <a name="traffic-manager-subnet-traffic-routing-method"></a>Metody směrování provozu Traffic Manageru podsítě
+## <a name="traffic-manager-subnet-traffic-routing-method"></a>Metoda směrování provozu Traffic Manager podsíti
 
-### <a name="what-are-some-use-cases-where-subnet-routing-is-useful"></a>Jaké jsou některé případy použití, ve kterém směrování podsítě je užitečné?
+### <a name="what-are-some-use-cases-where-subnet-routing-is-useful"></a>Jaké jsou případy použití, kde je směrování podsítě užitečné?
 
-Podsíť směrování vám umožní rozlišovat prostředí, které poskytujete pro konkrétní skupiny uživatelů identifikovaný Zdrojová IP adresa z jejich IP adresa žádosti DNS. Příkladem může být zobrazení jiný obsah, pokud se uživatelé připojují k webu z vaší podnikové Sídel. Jiné by omezení uživatelů z určitých poskytovatelů internetových služeb jenom přístup k koncové body, které podporují jenom IPv4 připojení, pokud tyto poskytovatelů internetových služeb budou mít dílčí par výkon při použití protokolu IPv6.
-Dalším důvodem pro použití metody směrování pro podsíť ve spojení s další profily v profilu vnořené nastavena. Například pokud chcete použít metody geografického směrování pro geograficky monitorování geografických zón uživatele, ale pro konkrétního poskytovatele internetových služeb, kterou chcete provést jinou metodu směrování, můžete mít profil withy podsítě metody směrování jako nadřazený profil a přepsání tohoto poskytovatele použít konkrétní podřízené pro soubor a mají pro všechny ostatní standardní zeměpisného profilu.
+Směrování podsítě vám umožní odlišit prostředí, které zadáváte, pro konkrétní skupiny uživatelů identifikované zdrojovou IP adresou svých požadavků DNS. V příkladu se zobrazí jiný obsah, pokud se uživatelé připojují k webu z firemního SÍDELu. Druhý by omezil přístup uživatelů z některých poskytovatelů internetových služeb jenom na koncové body, které podporují jenom připojení typu IPv4, pokud mají tyto poskytovatelé služeb při použití IPv6 stejný výkon.
+Dalším důvodem pro použití metody směrování podsítí je spojení s dalšími profily ve vnořené sadě profilů. Pokud například chcete použít metodu geografického směrování pro geografickou ochranu uživatelů, ale u konkrétního poskytovatele internetových služeb, u kterého chcete provést jinou metodu směrování, můžete mít profil s metodou směrování podsítě jako nadřazený profil a přepsat tohoto poskytovatele internetových služeb pro použití konkrétního podřízeného prvku pro. a mít standardní zeměpisný profil pro všechny ostatní.
 
 ### <a name="how-does-traffic-manager-know-the-ip-address-of-the-end-user"></a>Jak Traffic Manager znát IP adresu koncového uživatele?
 
-Zařízení pro koncové uživatele obvykle pomocí překladače DNS provádět vyhledávání DNS jejich jménem. Odchozí IP takové překladače je Traffic Manager vnímá jako zdrojová IP adresa. Kromě toho metodu směrování podsítě vypadá také jestli se informace o EDNS0 rozšířené klientské podsíti (ECS), který byl předán s požadavkem. Pokud ECS informace jsou k dispozici, je to adresa použitá k určení směrování. Chybí informace ECS Zdrojová IP adresa dotazu se používá pro účely směrování.
+Zařízení koncových uživatelů obvykle používají Překladač DNS k provádění vyhledávání DNS jménem. Odchozí IP adresa takového překladače je to, co Traffic Manager uvidí jako zdrojová IP adresa. Kromě toho metoda směrování podsítě také zjistí, jestli jsou informace o podsíti (ECS) rozšíření EDNS0, které se předaly s požadavkem. Pokud jsou k dispozici informace služby ECS, jedná se o adresu použitou k určení směrování. Při absenci informací služby ECS se zdrojová IP adresa dotazu používá pro účely směrování.
 
-### <a name="how-can-i-specify-ip-addresses-when-using-subnet-routing"></a>Jak lze zadat IP adresy, při použití směrování podsítí?
+### <a name="how-can-i-specify-ip-addresses-when-using-subnet-routing"></a>Jak lze při používání směrování podsítí zadat IP adresy?
 
-IP adresy, které mají přidružit k koncový bod se dá nastavit dvěma způsoby. Nejprve můžete použít zápis čtverčíku tečkovaná desítkové octet s počáteční a koncovou adresu k určení rozsahu (například 1.2.3.4-5.6.7.8 nebo 3.4.5.6-3.4.5.6). Za druhé vám pomůže zápisu CIDR zadejte rozsah (například 1.2.3.0/24). Můžete určit více rozsahů a sady rozsahu můžete použít oba typy zápis. Platí několik omezení.
+IP adresy, které se mají přidružit ke koncovému bodu, je možné zadat dvěma způsoby. Nejprve můžete použít Desítkový zápis desítkových teček s počátečními a koncovými adresami k určení rozsahu (například 1.2.3.4-5.6.7.8 nebo 3.4.5.6-3.4.5.6). Za druhé můžete použít zápis CIDR k určení rozsahu (například 1.2.3.0/24). Můžete zadat více rozsahů a použít oba typy zápisu v sadě rozsahu. Platí několik omezení.
 
--   Nelze se překrývají rozsahů adres, protože každý IP musí být namapován pouze jeden koncový bod
--   Počáteční adresa nesmí být delší než koncová adresa
--   V případě notaci CIDR, IP adresa před '/' by měla být počáteční adresa rozsahu (například 1.2.3.0/24 je platný, ale 1.2.3.4.4/24 není platný)
+-   Nemůžete mít překrývající se rozsahy adres, protože jednotlivé IP adresy musí být namapované jenom na jeden koncový bod.
+-   Počáteční adresa nemůže být větší než koncová adresa.
+-   V případě zápisu CIDR by měla být IP adresa před znakem "/" počáteční adresou tohoto rozsahu (například 1.2.3.0/24 je platná, ale 1.2.3.4.4/24 není platná).
 
-### <a name="how-can-i-specify-a-fallback-endpoint-when-using-subnet-routing"></a>Jak může určit koncový bod záložního při použití směrování podsítí?
+### <a name="how-can-i-specify-a-fallback-endpoint-when-using-subnet-routing"></a>Jak můžu při používání směrování podsítí zadat záložní koncový bod?
 
-V profilu se směrováním podsítě Pokud máte koncový bod s žádné podsítě mapována, všechny požadavky, které se liší od ostatních koncových bodů budete přesměrováni do tohoto místa. Důrazně doporučujeme mít záložní endpoint ve vašem profilu, protože vrátí odpovědi NXDOMAIN Traffic Manageru, pokud požadavek je k dispozici ve a není mapována na žádné koncové body nebo pokud je mapován na koncový bod, ale, že koncový bod není v pořádku.
+Pokud máte v profilu s směrováním podsítí k dispozici koncový bod, na který se nemapují žádné podsítě, všechny požadavky, které se neshodují s jinými koncovými body, se přesměrují sem. Důrazně doporučujeme, abyste ve svém profilu měli takový záložní koncový bod, protože Traffic Manager vrátí odpověď NXDOMAIN v případě, že žádost přichází a není namapovaná na žádné koncové body, nebo pokud je namapovaná na koncový bod, ale koncový bod není v pořádku.
 
-### <a name="what-happens-if-an-endpoint-is-disabled-in-a-subnet-routing-type-profile"></a>Co se stane, když je v profilu typ směrování pro podsíť zakázaný koncový bod?
+### <a name="what-happens-if-an-endpoint-is-disabled-in-a-subnet-routing-type-profile"></a>Co se stane, když je v profilu typu směrování podsítě zakázán koncový bod?
 
-V profilu se směrováním podsítě Pokud máte koncový bod s, který je zakázaný, Traffic Manager se bude chovat, jako kdyby tohoto koncového bodu a mapování podsítě, která má buď neexistuje. Pokud je přijat dotaz, který by zjišťována shoda s jeho mapování IP adres a koncový bod je zakázaná, Traffic Manageru vrátí záložního koncového bodu (jedna žádná mapování) nebo pokud takové koncového bodu není k dispozici, bude vrácení odpovědi NXDOMAIN.
+Pokud máte v profilu se směrováním podsítě, v případě, že máte koncový bod, který je zakázaný, se Traffic Manager chová, jako by tento koncový bod a mapování podsítě neexistovaly. Pokud se přijme dotaz, který by odpovídal mapování IP adresy, a koncový bod je zakázaný, Traffic Manager vrátí záložní koncový bod (jeden bez mapování), nebo pokud takový koncový bod není k dispozici, vrátí odpověď NXDOMAIN.
 
-## <a name="traffic-manager-multivalue-traffic-routing-method"></a>Metody směrování provozu Traffic Manageru hodnot
+## <a name="traffic-manager-multivalue-traffic-routing-method"></a>Metoda směrování provozu Traffic Manager s více hodnotami
 
-### <a name="what-are-some-use-cases-where-multivalue-routing-is-useful"></a>Jaké jsou některé případy použití, ve kterém routing vícehodnotový je užitečné?
+### <a name="what-are-some-use-cases-where-multivalue-routing-is-useful"></a>Jaké jsou případy použití, ve kterých je vhodné použít směrování s více hodnotami?
 
-Routing vícehodnotový vrátí více koncových bodů v dobrém stavu v odpovědi na jeden dotaz. Hlavní výhodou je, že pokud koncový bod není v pořádku, má klient několik možností, zkuste to znovu bez provedení další volání DNS (která může vrátit stejnou hodnotu z nadřazeného mezipaměti). To se vztahuje dostupnost citlivých aplikací, které chcete minimalizovat prostoje.
-Další možností použití pro metody směrování s více hodnotami je, pokud koncový bod je "dvěma adresami" na protokolech IPv4 a IPv6 adresy a chcete poskytnout volající obě možnosti můžete vybírat z při zahájení připojení ke koncovému bodu.
+Vícenásobné směrování v jedné odpovědi na dotaz vrátí několik zdravých koncových bodů. Hlavní výhodou je, že pokud koncový bod není v pořádku, má klient více možností pro opakování bez dalšího volání DNS (což může vracet stejnou hodnotu z nadřazené mezipaměti). Tento postup se týká dostupnosti citlivých aplikací, které chtějí minimalizovat prostoje.
+Další možností použití metody směrování s více hodnotami je, že pokud je koncový bod "duálním" připojením "na adresy IPv4 i IPv6 a chcete volajícímu povolit obě možnosti výběru při inicializaci připojení ke koncovému bodu.
 
-### <a name="how-many-endpoints-are-returned-when-multivalue-routing-is-used"></a>Kolik koncových bodů se vrátí, když routing vícehodnotový slouží?
+### <a name="how-many-endpoints-are-returned-when-multivalue-routing-is-used"></a>Kolik koncových bodů se vrátí při použití směrování s více hodnotami?
 
-Můžete určit maximální počet koncových bodů, který se má vrátit a vícehodnotové nevrátí nesmí být větší než, který mnoho koncových bodů v pořádku po přijetí dotazu. Maximální možná hodnota pro tuto konfiguraci je 10.
+Můžete zadat maximální počet koncových bodů, které mají být vráceny, a při přijetí dotazu nevrátí více než tento počet funkčních koncových bodů. Maximální možná hodnota této konfigurace je 10.
 
-### <a name="will-i-get-the-same-set-of-endpoints-when-multivalue-routing-is-used"></a>Budou týkat stejnou sadu koncových bodů, když routing vícehodnotový slouží?
+### <a name="will-i-get-the-same-set-of-endpoints-when-multivalue-routing-is-used"></a>Získá se stejná sada koncových bodů, když se použije směrování s více hodnotami?
 
-Nelze zaručit, že budou vráceny stejnou sadu koncových bodů v obou dotazech. To zároveň tím, že některé z koncových bodů je možné dát v tomto okamžiku by se nezahrnuly v odpovědi není v pořádku
+Nemůžeme zaručit, že se v každém dotazu vrátí stejná sada koncových bodů. To je ovlivněno i tím, že některé koncové body můžou být v nesprávném stavu, v jakém okamžiku nebudou zahrnuty do odpovědi.
 
 ## <a name="real-user-measurements"></a>Měření reálných uživatelů
 
-### <a name="what-are-the-benefits-of-using-real-user-measurements"></a>Jaké jsou výhody používání měření Real User Measurements?
+### <a name="what-are-the-benefits-of-using-real-user-measurements"></a>Jaké jsou výhody použití Měření reálných uživatelů?
 
-Při použití metody směrování podle výkonu Traffic Manageru vybere nejlepší oblast Azure pro vaše koncového uživatele pro připojení k zkontrolováním Zdrojová IP adresa a podsíť EDNS klienta (Pokud je předaná) a kontrola s inteligentními funkcemi latence sítě služby udržuje. Měření Real User Measurements to vylepšuje pro základní koncové uživatele tak, že jejich zkušenostem přispívat do této tabulky latence ale také ověřit, který tuto tabulku adekvátně pokrývaly sítě koncový uživatel z kde koncoví uživatelé připojení k Azure. To vede k vyšší přesnost v postupu koncového uživatele.
+Při použití metody směrování výkonu Traffic Manager vybere nejlepší oblast Azure, ke které se má koncový uživatel připojit, a to tak, že zkontroluje zdrojovou podsíť IP a EDNS klienta (Pokud je předaná) a zkontroluje se s tím, že služba udržuje informace o latenci sítě. Měření reálných uživatelů tuto možnost vylepšit pro vaši základnu koncových uživatelů tím, že jejich zkušenost přispívá k této tabulce latence a zároveň zajišťuje, aby tato tabulka byla vhodně rozložená na sítě koncových uživatelů, ze kterých se koncoví uživatelé připojují k Azure. To vede k vyšší přesnosti při směrování koncového uživatele.
 
-### <a name="can-i-use-real-user-measurements-with-non-azure-regions"></a>Můžete použít měření Real User Measurements oblasti mimo Azure?
+### <a name="can-i-use-real-user-measurements-with-non-azure-regions"></a>Můžu Měření reálných uživatelů používat s oblastmi mimo Azure?
 
-Měření Real User Measurements měří a oznamuje omezení jenom latence pro dosažení oblasti Azure. Pokud používáte směrování podle výkonu s koncovými body, které jsou hostované v oblasti mimo Azure, můžete stále využívat výhod této funkce pomocí s vyšší latencí informace o reprezentativní oblast Azure, která jste vybrali k tomuto koncovému bodu.
+Měření reálných uživatelů míry a oznamuje pouze latenci pro dosažení oblastí Azure. Pokud používáte směrování na základě výkonu s koncovými body hostovanými v oblastech mimo Azure, můžete tuto funkci i nadále využívat tím, že získáte informace o latenci týkající se zástupce oblasti Azure, kterou jste vybrali k přidružení k tomuto koncovému bodu.
 
-### <a name="which-routing-method-benefits-from-real-user-measurements"></a>Které metody směrování těží z reálných uživatelů?
+### <a name="which-routing-method-benefits-from-real-user-measurements"></a>Jakou metodu směrování přináší výhody Měření reálných uživatelů?
 
-Další informace o získaných měření Real User Measurements platí jenom pro profily, které používají metody směrování výkonu. Měření Real User Measurements odkaz je k dispozici ve všech profilech, při zobrazení na webu Azure portal.
+Další informace získané prostřednictvím Měření reálných uživatelů platí pouze pro profily, které používají metodu směrování výkonu. Odkaz Měření reálných uživatelů je při prohlížení přes Azure Portal dostupný ze všech profilů.
 
-### <a name="do-i-need-to-enable-real-user-measurements-each-profile-separately"></a>Je potřeba povolit měření Real User Measurements všechny profily samostatně?
+### <a name="do-i-need-to-enable-real-user-measurements-each-profile-separately"></a>Potřebuji Měření reálných uživatelů každý profil samostatně?
 
-Ne, je potřeba jenom jednou ji povolit na jedno předplatné a všechny informace o latenci měří a hlásí jsou k dispozici pro všechny profily.
+Ne, stačí ho pro každé předplatné povolit a všechny informace o latenci měřené a hlášené jsou k dispozici pro všechny profily.
 
-### <a name="how-do-i-turn-off-real-user-measurements-for-my-subscription"></a>Jak vypnout měření Real User Measurements pro Moje předplatné?
+### <a name="how-do-i-turn-off-real-user-measurements-for-my-subscription"></a>Návody vypnout Měření reálných uživatelů pro moje předplatné?
 
-Můžete zastavit nabíhání poplatků za související s měření Real User Measurements, když zastavíte shromažďování a odesílání měření latence zpět z klientské aplikace. Například při měření JavaScript vložený do webové stránky, můžete přestat používat tuto funkci tak, že odeberete jazyka JavaScript nebo vypnutím jeho vyvolání při vykreslování stránky.
+Pokud zastavíte shromažďování a odesílání měření latence z klientské aplikace, můžete zastavit účtování poplatků souvisejících s Měření reálných uživatelů. Například při měření JavaScriptu vloženého na webové stránky můžete zastavit používání této funkce odebráním JavaScriptu nebo vypnutím volání při vykreslování stránky.
 
-Měření Real User Measurements můžete také vypnout tak, že odstraníte váš klíč. Když klíč odstraníte, se zahodí všechny měření odesílané do Traffic Manageru s tímto klíčem.
+Můžete také vypnout Měření reálných uživatelů odstraněním klíče. Po odstranění klíče se zahodí všechna měření poslaná do Traffic Manager s tímto klíčem.
 
-### <a name="can-i-use-real-user-measurements-with-client-applications-other-than-web-pages"></a>Můžete použít měření Real User Measurements pomocí klientských aplikací, než webové stránky
+### <a name="can-i-use-real-user-measurements-with-client-applications-other-than-web-pages"></a>Můžu Měření reálných uživatelů použít s klientskými aplikacemi jinými než webovými stránkami?
 
-Ano, měření Real User Measurements je navržena na příjem údaje shromážděné prostřednictvím různých typů klientů koncového uživatele. Tyto nejčastější dotazy se aktualizovat, protože získání podporuje nové typy klientských aplikací.
+Ano, Měření reálných uživatelů je navržená tak, aby ingestoval data shromážděná prostřednictvím různých typů klientů koncových uživatelů. Tyto nejčastější dotazy budou aktualizovány, protože jsou podporovány nové typy klientských aplikací.
 
-### <a name="how-many-measurements-are-made-each-time-my-real-user-measurements-enabled-web-page-is-rendered"></a>Kolik se měří pokaždé, když můj měření Real User Measurements povolené webové stránky se vykreslí?
+### <a name="how-many-measurements-are-made-each-time-my-real-user-measurements-enabled-web-page-is-rendered"></a>Kolik měření se provádí pokaždé, když se vykreslí webová stránka s povoleným Měření reálných uživatelů?
 
-Při měření Real User Measurements se používá s měřením jazyka JavaScript poskytuje, výsledkem každého vykreslování části stránky šest měření. Ty se pak hlášeny zpět ke službě Traffic Manager. Bude vám účtována tuto funkci na základě počtu měření nahlášené službě Traffic Manager. Například pokud uživatel přejde od webovou stránku, zatímco se se měří, ale předtím, než byla nahlášena, se nepovažují těchto měření pro účely fakturace.
+Když se Měření reálných uživatelů používá s dodaným jazykem JavaScript měření, každé vykreslení stránky má za následek 6 měření. Ty se pak nahlásí zpátky do služby Traffic Manager. Tato funkce se vám bude účtovat na základě počtu měření hlášených Traffic Manager službě. Například pokud uživatel přejde pryč z vaší webové stránky v době, kdy byla provedena měření, ale před jeho Nahlášením, měření se nepovažují za účely fakturace.
 
-### <a name="is-there-a-delay-before-real-user-measurements-script-runs-in-my-webpage"></a>Je k dispozici ke zpoždění před spuštěním skriptu měření Real User Measurements v Moje webová stránka?
+### <a name="is-there-a-delay-before-real-user-measurements-script-runs-in-my-webpage"></a>Je zpoždění před spuštěním skriptu Měření reálných uživatelů na naší webové stránce?
 
-Ne, není žádný naprogramovaných zpoždění před vyvoláním skriptu.
+Ne, před vyvoláním skriptu neexistuje žádné programové zpoždění.
 
-### <a name="can-i-use-real-user-measurements-with-only-the-azure-regions-i-want-to-measure"></a>Můžete použít měření Real User Measurements s jenom Azure oblasti, které chcete k měření?
+### <a name="can-i-use-real-user-measurements-with-only-the-azure-regions-i-want-to-measure"></a>Můžu použít Měření reálných uživatelů jenom v oblastech Azure, které chci změřit?
 
-Ne, každý čas, který je vyvolán, skript měření Real User Measurements měří sada šesti oblastech Azure podle služby. Tato možnost nastavená změny mezi různými voláními a při velké množství taková volání, pokrytí měření zabírá různých oblastech Azure.
+Ne, při každém vyvolání skript Měření reálných uživatelů měří sadu šesti oblastí Azure podle určení služby. Tato sada se mění mezi různými vyvoláními a když dojde k velkému počtu takových vyvolání, pokrytí měření se rozpíná napříč různými oblastmi Azure.
 
-### <a name="can-i-limit-the-number-of-measurements-made-to-a-specific-number"></a>Můžete omezit počet měření na konkrétní číslo?
+### <a name="can-i-limit-the-number-of-measurements-made-to-a-specific-number"></a>Můžu omezit počet provedených měření na konkrétní číslo?
 
-Měření, které jazyk JavaScript je vložený v rámci vaší webové stránky a mít plnou kontrolu nad pro spouštění a zastavování jeho použití. Za předpokladu, službu Traffic Manager obdrží žádost o seznam oblastí Azure k měření, jsou vráceny sadě oblastí.
+Měření JavaScriptu je vložené na vaší webové stránce a vy budete mít úplnou kontrolu nad tím, kdy se má spustit a jak ho používat. Pokud služba Traffic Manager obdrží požadavek na seznam oblastí Azure, které se mají změřit, vrátí se sada oblastí.
 
-### <a name="can-i-see-the-measurements-taken-by-my-client-application-as-part-of-real-user-measurements"></a>Můžete zobrazit měření Moje klientská aplikace jako součást měření Real User Measurements?
+### <a name="can-i-see-the-measurements-taken-by-my-client-application-as-part-of-real-user-measurements"></a>Můžu zobrazit měření prováděná klientskou aplikací jako součást Měření reálných uživatelů?
 
-Protože logiky měření je spuštěn z klientské aplikace, se v úplné řízení co se stane, včetně zobrazení měření latence. Traffic Manager nevytváří sestavu agregované zobrazení měření přijatých pod klíčem k předplatnému připojený.
+Vzhledem k tomu, že se logika měření spouští z klientské aplikace, máte plnou kontrolu nad tím, co se děje, včetně zobrazení latencí. Traffic Manager neoznamuje agregované zobrazení měření přijatých pod klíčem připojeným k vašemu předplatnému.
 
-### <a name="can-i-modify-the-measurement-script-provided-by-traffic-manager"></a>Můžete upravit skript měření uvedený pomocí Traffic Manageru?
+### <a name="can-i-modify-the-measurement-script-provided-by-traffic-manager"></a>Můžu změnit skript měření, který poskytuje Traffic Manager?
 
-Když jste si kontrolu nad co je vložen do webové stránky, budeme důrazně Zabraňte můžete z jakýchkoli změn do skriptu měření k zajištění, že se měří a oznamuje latence správně.
+I když ovládáte, co je na webové stránce vložené, důrazně vám nemůžeme dělat změny ve skriptu měření, abyste zajistili, že měří a hlásí správně latence.
 
-### <a name="will-it-be-possible-for-others-to-see-the-key-i-use-with-real-user-measurements"></a>To bude možné, aby ho ostatní viděli na klíč, který mohu použít s měření Real User Measurements?
+### <a name="will-it-be-possible-for-others-to-see-the-key-i-use-with-real-user-measurements"></a>Bude možné, že ostatní uživatelé uvidí klíč, který používá Měření reálných uživatelů?
 
-Když vkládáte měření skript pro webové stránky je možné aby ho ostatní viděli skript a klíč měření reálných skutečných uživatelů (REÁLNÝCH). Ale je důležité vědět, že tento klíč se liší od id vašeho předplatného a je generována pomocí Traffic Manageru se použije pouze pro tento účel. Znalost spuštění klíč nebude ohrozit bezpečnost vašeho účtu Azure.
+Při vložení skriptu měření na webovou stránku bude možné, aby ostatní viděli skript a klíč Měření reálných uživatelů (RUM). Je ale důležité znát, že tento klíč se liší od ID předplatného a je vygenerovaný Traffic Manager, který se má použít jenom pro tento účel. Znalost klíče rumu neohrožuje zabezpečení vašich účtů Azure.
 
-### <a name="can-others-abuse-my-rum-key"></a>Ostatní zneužívání Můj klíč spuštění?
+### <a name="can-others-abuse-my-rum-key"></a>Můžou jiné zneužít svůj klíč rumu?
 
-I když je možné pro ostatní uživatele k odesílání chybných informací do Azure pomocí svého klíče, několik nesprávné měření nezmění, směrování, protože je vzít do úvahy spolu s všechny měření, že státem. Pokud budete muset změnit svoje klíče, můžete znovu vygenerovat klíče v tomto okamžiku bude zahozen starý klíč.
+I když je možné, že ostatní používají váš klíč k odesílání chybných informací do Azure, několik špatných měření nebude směrování měnit, protože se bere v úvahu spolu se všemi ostatními měřeními, které obdržíme. Pokud potřebujete změnit klíče, můžete znovu vygenerovat klíč, ve kterém se starý klíč zahodí.
 
-### <a name="do-i-need-to-put-the-measurement-javascript-in-all-my-web-pages"></a>Je nutné umístit měření jazyka JavaScript v mých webových stránek?
+### <a name="do-i-need-to-put-the-measurement-javascript-in-all-my-web-pages"></a>Potřebuji do všech mých webových stránek přidat měření JavaScriptu?
 
-Měření Real User Measurements zajišťuje vyšší hodnotu jako číslo zvýšení měření. Musíme ale, je vaše rozhodování o tom, jestli je potřeba ji umístit do všech webových stránek nebo select málo. Naše doporučení je spustit tak, že vložíte ho většina navštívenou stránku kde se uživatel očekává setrvá na této stránce pět sekund nebo více.
+Měření reálných uživatelů poskytuje větší hodnotu jako počet zvýšení počtu měření. V takovém případě je to vaše rozhodnutí, jestli je potřeba je umístit na všechny webové stránky nebo vybrat několik. Naše doporučení je potřeba začít tím, že ho umístíte na navštívenou stránku, kde se očekává, že na této stránce zůstane na stránce pět sekund nebo déle.
 
-### <a name="can-information-about-my-end-users-be-identified-by-traffic-manager-if-i-use-real-user-measurements"></a>Informace o koncovým uživatelům možné identifikovat Traffic Managerem když používám měření Real User Measurements?
+### <a name="can-information-about-my-end-users-be-identified-by-traffic-manager-if-i-use-real-user-measurements"></a>Můžou se informace o mých koncových uživatelích identifikovat pomocí Traffic Manager, když používám Měření reálných uživatelů?
 
-Při použití zadané měření JavaScript Traffic Manageru bude mít přehled o IP adresu klienta koncového uživatele a zdrojové IP adresy místního překladače DNS, které používají. Traffic Manager používá IP adresu klienta jenom za to zkrácen na nebylo možné identifikovat konkrétní koncové uživatele, který odeslal měření.
+Když se použije poskytnutá jednotka JavaScript, Traffic Manager bude mít přehled o IP adrese klienta koncového uživatele a zdrojové IP adrese, které používají Překladač DNS. Traffic Manager používá IP adresu klienta jenom poté, co se zkrátí, aby nedokázal identifikovat konkrétního koncového uživatele, který měření poslal.
 
-### <a name="does-the-webpage-measuring-real-user-measurements-need-to-be-using-traffic-manager-for-routing"></a>Provádí webovou stránku měření reálných uživatelů potřeba používat ke směrování Traffic Manageru?
+### <a name="does-the-webpage-measuring-real-user-measurements-need-to-be-using-traffic-manager-for-routing"></a>Musí webová stránka měřící Měření reálných uživatelů používat Traffic Manager pro směrování?
 
-Ne, není nutné používat Traffic Manager. Na straně směrování Traffic Manageru funguje samostatně z část reálného měření uživatele a je sice skvělý nápad, jak je oba ve stejné vlastnosti webové, nemusí být.
+Ne, nemusí používat Traffic Manager. Strana směrování Traffic Manager pracuje nezávisle na části měření reálného uživatele, i když je to skvělé, aby je bylo možné mít ve stejné webové vlastnosti, nemusí být.
 
-### <a name="do-i-need-to-host-any-service-on-azure-regions-to-use-with-real-user-measurements"></a>Potřebuji k hostování jakoukoli službu v oblasti Azure pro použití s měření Real User Measurements?
+### <a name="do-i-need-to-host-any-service-on-azure-regions-to-use-with-real-user-measurements"></a>Potřebuji pro použití s Měření reálných uživatelů hostovat jakoukoli službu v oblastech Azure?
 
-Ne, nemusíte hostovat žádné komponenty na straně serveru v Azure pro měření Real User Measurements pracovat. Jeden pixel image nestáhne měřením jazyka JavaScript a služby spuštěné v různých oblastech Azure je hostované a spravované v Azure. 
+Ne, nemusíte hostovat žádnou komponentu na straně serveru v Azure, aby mohla Měření reálných uživatelů fungovat. Obrázek v jednom obrazovém pixelu, který stáhla jednotka JavaScript a služba běžící v různých oblastech Azure, je hostovaný a spravovaný pomocí Azure. 
 
-### <a name="will-my-azure-bandwidth-usage-increase-when-i-use-real-user-measurements"></a>Zvýší využití Azure šířku pásma, když používám měření Real User Measurements?
+### <a name="will-my-azure-bandwidth-usage-increase-when-i-use-real-user-measurements"></a>Zvýší se využití šířky pásma Azure při použití Měření reálných uživatelů?
 
-Jak je uvedeno v předchozí odpověď, serverové součásti měření Real User measurements vlastní a spravuje Azure. To znamená, že vaše využití Azure šířky pásma nezvýší vzhledem k tomu, že používáte měření Real User Measurements. To nezahrnuje žádné využití šířky pásma mimo s jakými poplatky Azure. Jsme Minimalizovat šířku pásma používanou stažením pouze jeden pixel bitové kopie k měření latence do oblasti Azure. 
+Jak je uvedeno v předchozí odpovědi, komponenty na straně serveru služby Měření reálných uživatelů jsou vlastněné a spravované pomocí Azure. To znamená, že využití šířky pásma Azure se nezvýší, protože používáte Měření reálných uživatelů. Nezahrnuje použití šířky pásma mimo jiné poplatky za Azure. Šířku pásma, kterou používáme, minimalizujete tak, že stáhnete jenom jeden obrázek v pixelech, abyste zjistili latenci v oblasti Azure. 
 
 ## <a name="traffic-view"></a>Zobrazení přenosů
 
-### <a name="what-does-traffic-view-do"></a>Co dělá Traffic View?
+### <a name="what-does-traffic-view-do"></a>Co Zobrazení přenosů udělat?
 
-Zobrazení provozu je funkce Traffic Manageru, který vám pomůže pochopit více o své uživatele a jak se jejich prostředí. Používá dotazů přijatých službou Traffic Manager a tabulky intelligence latence sítě, které spravuje služba, kde přinášejí následující:
+Zobrazení přenosů je funkce Traffic Manager, která vám pomůže pochopit Další informace o vašich uživatelích a jejich možnosti. Používá dotazy přijaté Traffic Manager a tabulky informací o latenci sítě, které služba udržuje, a poskytuje následující:
 
-- Oblasti, kde jsou vaši uživatelé připojit do koncových bodů v Azure.
-- Svazek uživatelé, kteří se připojují z těchto oblastí.
-- Oblasti Azure, ke kterým jsou získávání předán.
-- Jejich zkušenostem latence do těchto oblastí Azure.
+- Oblasti, ze kterých se vaši uživatelé připojují k koncovým bodům v Azure.
+- Objem uživatelů připojující z těchto oblastí.
+- Oblasti Azure, do kterých jsou směrovány.
+- Možnosti jejich latence pro tyto oblasti Azure.
 
-Tyto informace jsou k dispozici přes překrytí zeměpisné mapě a tabulkové zobrazení kromě toho, že k dispozici jako nezpracovaných dat si můžete stáhnout na portálu.
+Tyto informace můžete využít k tomu, abyste na portálu mohli využívat i tabulková zobrazení pro překrytí geografických map a tabulková zobrazení, aby bylo možné je stáhnout jako neupravená data.
 
-### <a name="how-can-i-benefit-from-using-traffic-view"></a>Jak může přinést použití Traffic View?
+### <a name="how-can-i-benefit-from-using-traffic-view"></a>Jak můžu využít Zobrazení přenosů?
 
-Zobrazení přenosů poskytne celkový přehled o provozu, který se zobrazí vaše profily Traffic Manageru. Konkrétně to je možné pochopit, kde se svou uživatelskou základnu připojuje z a stejně důležité je co je jejich zkušenostem průměrnou dobu vyřízení. Tyto informace pak můžete nalézt oblasti, ve kterých je potřeba zaměřit, třeba tak, že rozbalíte Azure nároky na oblasti, který může sloužit tito uživatelé s nižší latencí. Další přehledy, které lze odvodit z používání funkce zobrazení přenosů se odhalit vzory provozu do různých oblastí, které pak může pomoci při rozhodování o zvýšením nebo snížením vytvářet v těchto oblastech.
+Zobrazení přenosů poskytuje celkový přehled o provozu, který profily Traffic Manager obdrží. Konkrétně se dá použít k pochopení, kde se vaše uživatelská základna připojuje, a stejně tak důležité, co je jejich průměrná latence. Tyto informace pak můžete použít k vyhledání oblastí, ve kterých se musíte zaměřit, například rozšiřováním nároků Azure na oblast, která může těmto uživatelům poskytnout nižší latenci. Dalším přehledem, který můžete odvodit z použití Zobrazení přenosů, je zobrazení vzorců provozu do různých oblastí, které vám zase pomůžou při rozhodování o zvyšování nebo zmenšení zásob v těchto oblastech.
 
-### <a name="how-is-traffic-view-different-from-the-traffic-manager-metrics-available-through-azure-monitor"></a>Čím se liší od metriky Traffic Manageru dostupné přes Azure monitor zobrazení přenosů
+### <a name="how-is-traffic-view-different-from-the-traffic-manager-metrics-available-through-azure-monitor"></a>Jak se Zobrazení přenosů liší od metrik Traffic Manager dostupných prostřednictvím služby Azure monitor?
 
-Azure Monitor umožňuje porozumět na souhrnné úrovni přenosů přijatých profilu a jeho koncových bodů. Také umožňuje sledovat stav koncových bodů zveřejněním výsledky kontroly stavu. Když budete potřebovat nad rámec těchto a pochopení prostředí koncového uživatele pro připojení k Azure na místní úrovni, lze toho dosáhnout Traffic View.
+Azure Monitor lze použít k pochopení agregované úrovně provozu, který obdrží váš profil a jeho koncových bodů. Umožňuje také sledovat stav koncových bodů tím, že zveřejňuje výsledky kontroly stavu. Pokud potřebujete jít nad rámec těchto informací a pochopit, jak se koncoví uživatelé připojují k Azure na regionální úrovni, můžete k tomu použít Zobrazení přenosů.
 
-### <a name="does-traffic-view-use-edns-client-subnet-information"></a>Používá Traffic View informace o podsíti EDNS klienta?
+### <a name="does-traffic-view-use-edns-client-subnet-information"></a>Používá Zobrazení přenosů informace o podsíti klienta EDNS?
 
-Dotazy DNS služby Azure Traffic Manager vezměte v úvahu informace ECS zvýšit přesnost směrování. Ale při vytváření sady dat, který ukazuje, kde se uživatelé připojují ze zobrazení přenosů používá pouze IP adresu Překladač DNS.
+Dotazy DNS obsluhované službou Azure Traffic Manager považují informace služby ECS za účelem zvýšení přesnosti směrování. Když ale vytváříte datovou sadu, která zobrazuje, odkud se uživatelé připojují, Zobrazení přenosů používá jenom IP adresu překladače DNS.
 
-### <a name="how-many-days-of-data-does-traffic-view-use"></a>Kolik dnů od data zobrazení přenosů použít?
+### <a name="how-many-days-of-data-does-traffic-view-use"></a>Kolik dní dat Zobrazení přenosů použít?
 
-Zobrazení přenosů zpracování dat ze sedmi dnů předchozí den před při jeho zobrazení vámi vytvoří jeho výstup. To se posouvá a nejnovější data se použijí pokaždé, když navštívíte.
+Zobrazení přenosů vytvoří svůj výstup zpracováním dat ze sedmi dnů předcházejících dni před jeho zobrazením. Toto je přesunutí okna a při každém návštěvě se použijí nejnovější data.
 
-### <a name="how-does-traffic-view-handle-external-endpoints"></a>Jak zobrazení přenosů zpracovává externí koncové body?
+### <a name="how-does-traffic-view-handle-external-endpoints"></a>Jak Zobrazení přenosů zpracovávat externí koncové body?
 
-Pokud používáte externí koncové body, které jsou hostované mimo oblasti Azure v profilu služby Traffic Manager můžete její namapované na určitá oblast Azure, což je proxy server pro charakteristik latence (to je ve skutečnosti je třeba Pokud používáte metody směrování podle výkonu). Pokud má toto mapování oblasti Azure, Azure národními metriky latence se použije při vytváření výstupu Traffic View. Pokud není zadána žádná oblast Azure, bude informace o latenci prázdný v datech pro tyto externí koncové body.
+Když použijete externí koncové body hostované mimo oblasti Azure v Traffic Manager Profile, můžete si vybrat, že se má namapovat na oblast Azure, která je proxy serverem pro jeho charakteristiky latence (ve skutečnosti je to potřeba, pokud používáte metodu směrování výkonu). Pokud má toto mapování oblasti Azure, při vytváření výstupu Zobrazení přenosů se použijí metriky latence oblasti Azure. Pokud není zadaná žádná oblast Azure, informace o latenci budou v datech pro tyto externí koncové body prázdné.
 
-### <a name="do-i-need-to-enable-traffic-view-for-each-profile-in-my-subscription"></a>Je potřeba povolit zobrazení provozu pro každý profil ve svém předplatném?
+### <a name="do-i-need-to-enable-traffic-view-for-each-profile-in-my-subscription"></a>Potřebuji povolit Zobrazení přenosů pro každý profil v předplatném?
 
-Během období preview bylo povoleno zobrazení provozu na úrovni předplatného. Jako součást vylepšení, které jsme provedli před všeobecnou dostupnost můžete teď povolit zobrazení provozu na úrovni profilu, díky kterým podrobnější povolení této funkce. Ve výchozím nastavení se zakážou Traffic View profilu.
+Během období Preview bylo Zobrazení přenosů povolené na úrovni předplatného. V rámci vylepšení, které jsme provedli před všeobecnou dostupností, teď můžete povolit Zobrazení přenosů na úrovni profilu, což vám umožní podrobnější povolení této funkce. Ve výchozím nastavení se Zobrazení přenosů pro profil zakáže.
 
 >[!NOTE]
->Pokud jste povolili zobrazení provozu na úrovni předplatného v době ve verzi preview, musíte teď ji znovu povolit pro každý profil v rámci příslušného předplatného.
+>Pokud jste povolili Zobrazení přenosů na úrovni předplatného během období Preview, je teď potřeba ho znovu povolit pro každý profil v rámci tohoto předplatného.
  
-### <a name="how-can-i-turn-off-traffic-view"></a>Jak můžu vypnout Traffic View?
+### <a name="how-can-i-turn-off-traffic-view"></a>Jak můžu Zobrazení přenosů vypnout?
 
-Můžete vypnout zobrazení přenosů pro žádný profil pomocí portálu nebo rozhraní REST API. 
+Zobrazení přenosů pro libovolný profil můžete vypnout pomocí portálu nebo REST API. 
 
-### <a name="how-does-traffic-view-billing-work"></a>Jak funguje fakturace Traffic View?
+### <a name="how-does-traffic-view-billing-work"></a>Jak funguje Zobrazení přenosů fakturace?
 
-Zobrazit ceny provozu je podle počtu datových bodů použitých k vytvoření výstupu. V současné době podporované pouze datový typ je dotazů, které obdrží váš profil. Kromě toho nebudete dostávat faktury, výpočetní výkon, který bylo provedeno v případě, že máte Traffic View povolena. To znamená, že-li povolit zobrazení provozu pro některé časové období v daném měsíci a vypněte jej během jindy pouze datové body zpracována, když jste měli funkci Počet povolených na faktuře.
+Ceny Zobrazení přenosů jsou založené na počtu datových bodů použitých k vytvoření výstupu. V současné době je jediným podporovaným datovým typem dotazy, které váš profil obdrží. Kromě toho se vám bude účtovat pouze zpracování, které bylo provedeno, když máte Zobrazení přenosů povoleno. To znamená, že pokud povolíte Zobrazení přenosů v určitém časovém období v měsíci a vypnete ho v jinou dobu, zpracují se jenom datové body, které se zpracovaly v době, kdy jste vystavili povolený počet funkcí.
 
-## <a name="traffic-manager-endpoints"></a>Koncové body Traffic Manageru
+## <a name="traffic-manager-endpoints"></a>Koncové body služby Traffic Manager
 
-### <a name="can-i-use-traffic-manager-with-endpoints-from-multiple-subscriptions"></a>Můžete použít Traffic Manageru s koncovými body z několika předplatných?
+### <a name="can-i-use-traffic-manager-with-endpoints-from-multiple-subscriptions"></a>Můžu použít Traffic Manager s koncovými body z více předplatných?
 
-Pomocí koncových bodů z několika předplatnými není možné s Azure Web Apps. Azure Web Apps vyžaduje, že všechny vlastní doménu používat s Web Apps se používá pouze v rámci jednoho předplatného. Není možné používat službu Web Apps z několika předplatných se stejným názvem domény.
+Použití koncových bodů z více předplatných není možné u Azure Web Apps. Azure Web Apps vyžaduje, aby se vlastní název domény používaný pro Web Apps používal jenom v rámci jednoho předplatného. Není možné použít Web Apps z více předplatných se stejným názvem domény.
 
-Pro jiné typy koncových bodů je možné použít Traffic Manageru s koncovými body z více než jedno předplatné. V Resource Manageru koncových bodů z jakéhokoli předplatného je možné přidat do Traffic Manageru, jako osoba konfigurace profilu služby Traffic Manager má přístup pro čtení ke koncovému bodu. Tato oprávnění lze udělit prostřednictvím [Azure Resource Manageru řízení přístupu na základě role (RBAC)](../role-based-access-control/role-assignments-portal.md).
+U ostatních typů koncových bodů je možné použít Traffic Manager s koncovými body z více než jednoho předplatného. V Správce prostředků se koncové body z jakéhokoli předplatného dají přidat do Traffic Manager, pokud osoba, která konfiguruje profil Traffic Manager, má ke koncovému bodu oprávnění ke čtení. Tato oprávnění se dají udělit pomocí [Azure Resource Manager řízení přístupu na základě role (RBAC)](../role-based-access-control/role-assignments-portal.md).
 
-### <a name="can-i-use-traffic-manager-with-cloud-service-staging-slots"></a>Můžete použít Traffic Manageru s sloty "Pracovní" cloudové služby?
+### <a name="can-i-use-traffic-manager-with-cloud-service-staging-slots"></a>Můžu použít Traffic Manager s testovacími sloty cloudové služby?
 
-Ano. Cloudová služba, přípravné sloty lze nakonfigurovat v Traffic Manageru jako externí koncové body. Kontroly stavu jsou stále účtovat sazba koncových bodů Azure.
+Ano. Sloty "fázování" cloudové služby je možné nakonfigurovat v Traffic Manager jako externí koncové body. Kontrolám stavu se pořád účtuje sazba Koncové body Azure.
 
-### <a name="does-traffic-manager-support-ipv6-endpoints"></a>Traffic Manager podporuje koncové body IPv6?
+### <a name="does-traffic-manager-support-ipv6-endpoints"></a>Podporuje Traffic Manager koncové body IPv6?
 
-Traffic Manager aktuálně neposkytuje IPv6 bajtově adresovatelného názvové servery. Ale Traffic Manageru můžete stále využívat IPv6 klientů připojujících se ke koncovým bodům protokol IPv6. Klient Nedovolte, aby byly žádosti DNS přímo na Traffic Manager. Klient místo toho použije rekurzivní službu DNS. Pouze protokol IPv6 klient zasílá požadavky na rekurzivní službu DNS prostřednictvím protokolu IPv6. Rekurzivní službu pak by měl být schopen kontaktovat názvové servery Traffic Manageru pomocí protokolu IPv4.
+Traffic Manager aktuálně neposkytují názvové servery IPv6-Addressing. Traffic Manager je však stále možné používat klienty IPv6 připojujícími se k koncovým bodům IPv6. Klient neprovádí požadavky DNS přímo na Traffic Manager. Místo toho klient používá rekurzivní službu DNS. Klient jenom s protokolem IPv6 odesílá požadavky do rekurzivní služby DNS přes IPv6. Rekurzivní služba by měla být schopná kontaktovat Traffic Manager názvové servery pomocí protokolu IPv4.
 
-Traffic Manager jsou reaguje s názvem DNS nebo IP adresu koncového bodu. Pro podporu koncový bod IPv6, existují dvě možnosti. Přidat koncový bod jako název DNS, který má přidružený záznam AAAA a Traffic Manager tento koncový bod a vraťte jej jako záznam CNAME, který zadejte odpovědi na dotaz bude kontrola stavu. Můžete také přidat tento koncový bod přímo pomocí adresy IPv6 a Traffic Manager v odpovědi na dotaz vrátí záznam AAAA typu.
+Traffic Manager odpoví názvem DNS nebo IP adresou koncového bodu. Pro podporu koncového bodu IPv6 jsou k dispozici dvě možnosti. Koncový bod můžete přidat jako název DNS, který má přidružený záznam AAAA a Traffic Manager bude mít za následek kontrolu stavu tohoto koncového bodu a vrátí ho jako typ záznamu CNAME v odpovědi na dotaz. Tento koncový bod můžete přidat také přímo pomocí adresy IPv6 a Traffic Manager v odpovědi na dotaz vrátí záznam typu AAAA.
 
-### <a name="can-i-use-traffic-manager-with-more-than-one-web-app-in-the-same-region"></a>Můžete použít Traffic Manageru s více než jednu webovou aplikaci ve stejné oblasti?
+### <a name="can-i-use-traffic-manager-with-more-than-one-web-app-in-the-same-region"></a>Můžu použít Traffic Manager s více než jednou webovou aplikací ve stejné oblasti?
 
-Traffic Manager se obvykle používá pro směrování provozu do aplikace nasazené v různých oblastech. Nicméně jej lze také pokud má aplikace více než jedno nasazení ve stejné oblasti. Koncové body Azure Traffic Manageru není povoleno více než jeden koncový bod webové aplikace ze stejné oblasti Azure mají být přidány do stejného profilu Traffic Manageru.
+Traffic Manager se obvykle používá k směrování provozu do aplikací nasazených v různých oblastech. Dá se ale použít i v případě, že aplikace má ve stejné oblasti více než jedno nasazení. Traffic Manager koncových bodů Azure nepovoluje přidání více než jednoho koncového bodu webové aplikace ze stejné oblasti Azure do stejného Traffic Manager profilu.
 
-### <a name="how-do-i-move-my-traffic-manager-profiles-azure-endpoints-to-a-different-resource-group"></a>Jak přesunu profil Traffic Manageru koncových bodů Azure k jiné skupině prostředků.
+### <a name="how-do-i-move-my-traffic-manager-profiles-azure-endpoints-to-a-different-resource-group"></a>Návody přesunout koncové body Azure profilu Traffic Manager do jiné skupiny prostředků?
 
-Koncové body Azure, které jsou spojeny s profilem Traffic Manager jsou sledovány v jejich ID prostředků. Když prostředek Azure, který je používán jako koncový bod (například veřejná IP adresa, klasické cloudové služby, webové aplikace nebo jiný profil služby Traffic Manager používá vnořené způsobem) se přesune do jiné skupiny prostředků, jeho změny ID prostředku. V tomto scénáři v současné době je nutné aktualizovat profil Traffic Manageru předchozího odstranění a následným přidáním zpět koncových bodů do profilu.
+Koncové body Azure přidružené k profilu Traffic Manager jsou sledovány pomocí jejich ID prostředků. Pokud se prostředek Azure, který se používá jako koncový bod (například veřejná IP adresa, klasický cloudová služba, WebApp nebo jiný profil Traffic Manager používaný způsobem), přesune do jiné skupiny prostředků, změní se jeho ID prostředku. V tomto scénáři je potřeba aktualizovat profil Traffic Manager tím, že nejprve odstraníte a pak přidáte zpátky koncové body do profilu.
 
-## <a name="traffic-manager-endpoint-monitoring"></a>Monitorování koncových bodů Traffic Manageru
+## <a name="traffic-manager-endpoint-monitoring"></a>Monitorování koncového bodu Traffic Manager
 
-### <a name="is-traffic-manager-resilient-to-azure-region-failures"></a>Je odolné vůči selhání oblasti Azure Traffic Manager?
+### <a name="is-traffic-manager-resilient-to-azure-region-failures"></a>Je Traffic Manager odolné vůči selhání oblasti Azure?
 
-Traffic Manager je klíčovou komponentou doručování aplikací s vysokou dostupností v Azure.
-Traffic Manager k zajištění vysoké dostupnosti, musíte mít mimořádně vysoký stupeň dostupnosti a být odolné vůči selhání v oblasti.
+Traffic Manager je klíčovou součástí doručování vysoce dostupných aplikací v Azure.
+Aby byla zajištěna vysoká dostupnost, Traffic Manager musí mít mimořádně vysokou úroveň dostupnosti a být odolná vůči místnímu selhání.
 
-Traffic Manager součásti jsou standardně odolné vůči selhání dokončení v libovolné oblasti Azure. Tato odolnosti se vztahuje na všechny komponenty Traffic Manager: název DNS servery, rozhraní API, vrstvy úložiště a monitorování služeb koncových bodů.
+Díky navrhování Traffic Manager komponenty jsou odolné proti kompletnímu selhání jakékoli oblasti Azure. Tato odolnost se vztahuje na všechny součásti Traffic Manager: názvové servery DNS, rozhraní API, vrstva úložiště a služba monitorování koncového bodu.
 
-V nepravděpodobném případě výpadku celé oblasti Azure Traffic Manager má dál normálně fungovat. Aplikace nasazené v několika oblastech Azure můžete spolehnout na Traffic Manager ke směrování provozu na dostupnou instanci aplikace.
+V nepravděpodobném případě výpadku celé oblasti Azure očekává Traffic Manager, že bude fungovat normálně. Aplikace nasazené ve více oblastech Azure se můžou spoléhat na Traffic Manager k přímému přenosu dat do dostupné instance jejich aplikace.
 
-### <a name="how-does-the-choice-of-resource-group-location-affect-traffic-manager"></a>Jaký vliv má Volba umístění skupiny prostředků Traffic Manageru?
+### <a name="how-does-the-choice-of-resource-group-location-affect-traffic-manager"></a>Jak Volba umístění skupiny prostředků ovlivní Traffic Manager?
 
-Traffic Manager je jedna globální služba. Není místní. Volba umístění skupiny prostředků díky žádný rozdíl a profily Traffic Manageru, které jsou nasazené v této skupině prostředků.
+Traffic Manager je jediná globální služba. Nejedná se o oblast. Volba umístění skupiny prostředků nemá žádný rozdíl na Traffic Manager profily nasazené v této skupině prostředků.
 
-Azure Resource Manageru vyžaduje všechny skupiny prostředků a zadejte umístění, která určuje výchozí umístění pro prostředky nasazené v této skupině prostředků. Když vytvoříte profil Traffic Manageru, se vytvoří ve skupině prostředků. Všechny profily Traffic Manageru využívají **globální** jako svoje umístění, přepíšete výchozí skupiny prostředků.
+Azure Resource Manager vyžaduje, aby všechny skupiny prostředků určovaly umístění, které určuje výchozí umístění pro prostředky nasazené v této skupině prostředků. Když vytvoříte profil Traffic Manager, vytvoří se ve skupině prostředků. Všechny profily Traffic Manager jako jejich umístění používají **globální** nastavení skupiny prostředků.
 
-### <a name="how-do-i-determine-the-current-health-of-each-endpoint"></a>Jak zjistím, jaký je aktuální stav každého koncového bodu?
+### <a name="how-do-i-determine-the-current-health-of-each-endpoint"></a>Návody zjistit aktuální stav každého koncového bodu?
 
-Aktuální stav monitorování každého koncového bodu, kromě celkové profilu se zobrazí na webu Azure Portal. Tyto informace jsou také k dispozici prostřednictvím sledování provozu [rozhraní REST API](https://msdn.microsoft.com/library/azure/mt163667.aspx), [rutin prostředí PowerShell](https://docs.microsoft.com/powershell/module/az.trafficmanager), a [Azure CLI pro různé platformy](../cli-install-nodejs.md).
+Aktuální stav monitorování každého koncového bodu (kromě celkového profilu) se zobrazí v Azure Portal. Tyto informace jsou také k dispozici prostřednictvím [REST API](https://msdn.microsoft.com/library/azure/mt163667.aspx)monitorování provozu, [rutin prostředí PowerShell](https://docs.microsoft.com/powershell/module/az.trafficmanager)a [rozhraní příkazového řádku Azure CLI pro různé platformy](../cli-install-nodejs.md).
 
-Azure Monitor můžete také sledovat stav vašich koncových bodů a zobrazte vizualizaci z nich. Další informace o použití Azure monitoru, najdete v článku [dokumentace ke službě Azure Monitoring](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics).
+Můžete také použít Azure Monitor ke sledování stavu koncových bodů a k zobrazení vizuální reprezentace. Další informace o používání Azure Monitor najdete v [dokumentaci ke službě Azure Monitoring](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics).
 
-### <a name="can-i-monitor-https-endpoints"></a>Můžete monitorovat koncové body HTTPS?
+### <a name="can-i-monitor-https-endpoints"></a>Můžu monitorovat koncové body HTTPS?
 
-Ano. Traffic Manager podporuje zjišťování přes protokol HTTPS. Konfigurace **HTTPS** jako protokol v konfiguraci monitorování.
+Ano. Traffic Manager podporuje zjišťování prostřednictvím protokolu HTTPS. Nakonfigurujte **https** jako protokol v konfiguraci monitorování.
 
-Traffic manager neposkytuje žádné ověření certifikátu, včetně:
+Traffic Manager nemůže poskytnout žádné ověření certifikátu, včetně:
 
-* Pořadí úloh se neověřuje certifikáty na straně serveru
-* Pořadí úloh se neověřuje certifikátů SNI na straně serveru
+* Certifikáty na straně serveru nejsou ověřené.
+* SNI certifikátů na straně serveru nejsou ověřené.
 * Klientské certifikáty nejsou podporovány.
 
-### <a name="do-i-use-an-ip-address-or-a-dns-name-when-adding-an-endpoint"></a>Používá adresu IP nebo název DNS při přidání koncového bodu?
+### <a name="do-i-use-an-ip-address-or-a-dns-name-when-adding-an-endpoint"></a>Používá se při přidávání koncového bodu IP adresa nebo název DNS?
 
-Traffic Manager podporuje přidání koncových bodů pomocí tři způsoby, jak odkazovat způsobem – jako název DNS, jako adresu IPv4 a IPv6 adresu. Pokud koncový bod se přidá jako adresu IPv4 nebo IPv6 odpověď na dotaz bude mít typ záznamu A nebo AAAA, v uvedeném pořadí. Pokud koncový bod byl přidán jako název DNS, odpověď na dotaz budou typu záznamu CNAME. Přidání koncových bodů, jako adresa IPv4 nebo IPv6 je povoleno pouze v případě, že je koncový bod typu **externí**.
-Všechny metody směrování a monitorování nastavení podporuje tři typy koncových bodů adresování.
+Traffic Manager podporuje přidávání koncových bodů pomocí tří způsobů, jak je odkazovat – jako název DNS jako adresa IPv4 a jako adresa IPv6. Pokud je koncový bod přidán jako adresa IPv4 nebo IPv6, odpověď na dotaz bude typu záznamu A nebo AAAA (v uvedeném pořadí). Pokud byl koncový bod přidán jako název DNS, bude odpověď dotazu typu záznam CNAME. Přidávání koncových bodů jako adresy IPv4 nebo IPv6 je povolené jenom v případě, že je koncový bod typu **externí**.
+Všechny metody směrování a nastavení monitorování podporují tři typy adresování koncových bodů.
 
-### <a name="what-types-of-ip-addresses-can-i-use-when-adding-an-endpoint"></a>Jaké typy IP adres můžete použít při přidávání koncový bod?
+### <a name="what-types-of-ip-addresses-can-i-use-when-adding-an-endpoint"></a>Jaké typy IP adres můžu použít při přidávání koncového bodu?
 
-Traffic Manageru můžete určovat koncové body pomocí adresy IPv4 nebo IPv6. Existuje několik omezení, které jsou uvedeny níže:
+Traffic Manager umožňuje zadat koncové body pomocí adres IPv4 nebo IPv6. Níže jsou uvedena některá omezení:
 
-- Adresy, které odpovídají vyhrazené privátní adresní prostory IP adres nejsou povoleny. Tyto adresy obsahovat těch v dokumentu RFC 1918, RFC 6890, RFC 5737,. RFC 3068, RFC 2544 a RFC 5771
-- Adresa nesmí obsahovat žádné čísla portů (můžete zadat porty pro použití v nastavení profilu konfigurace)
-- Žádné dva koncové body v jednom profilu může mít stejnou cílovou IP adresu
+- Adresy, které odpovídají vyhrazeným adresním prostorům privátních IP adres, nejsou povoleny. Tyto adresy zahrnují ty, které se vyvolaly v RFC 1918, RFC 6890, RFC 5737, RFC 3068, RFC 2544 a RFC 5771.
+- Adresa nesmí obsahovat žádná čísla portů (můžete zadat porty, které se mají použít v nastavení konfigurace profilu).
+- Žádné dva koncové body ve stejném profilu nemohou mít stejnou cílovou IP adresu.
 
-### <a name="can-i-use-different-endpoint-addressing-types-within-a-single-profile"></a>Můžete použít jiný koncový bod adresování typy v rámci jediného profilu?
+### <a name="can-i-use-different-endpoint-addressing-types-within-a-single-profile"></a>Můžu v jednom profilu použít jiné typy adresování koncových bodů?
 
-Ne, Traffic Manager neumožňuje kombinovat adresování typy koncových bodů v rámci profilu, s výjimkou nástrojů profil s více hodnotami směrování typu, ve kterém můžete kombinovat IPv4 a IPv6 adres typy
+Ne, Traffic Manager neumožňuje kombinovat typy adresování koncových bodů v rámci profilu, s výjimkou případu, kdy je profil s typem směrování s více hodnotami, kde můžete kombinovat typy adres IPv4 a IPv6.
 
-### <a name="what-happens-when-an-incoming-querys-record-type-is-different-from-the-record-type-associated-with-the-addressing-type-of-the-endpoints"></a>Co se stane, když typ záznamu příchozí dotaz se liší od typu záznamu. přidružené k adresování typu koncové body?
+### <a name="what-happens-when-an-incoming-querys-record-type-is-different-from-the-record-type-associated-with-the-addressing-type-of-the-endpoints"></a>Co se stane, když se typ záznamu příchozího dotazu liší od typu záznamu přidruženého k typu adresování koncových bodů?
 
-Po přijetí dotaz vůči profilu Traffic Manageru vyhledá první koncový bod, který je vrácen podle metodu směrování zadat a stav koncových bodů. Poté hledá v typu záznamu. požadovaný v příchozí dotaz a typ záznamu spojená s koncovým bodem před vrácením odpovědi na základě následující tabulky.
+Když se na profil přijme dotaz, Traffic Manager nejdřív najde koncový bod, který se musí vrátit podle zadané metody směrování a stavu koncových bodů. Potom se podívá na typ záznamu požadovaný v příchozím dotazu a typ záznamu, který je přidružený ke koncovému bodu, a teprve potom vrátí odpověď na základě níže uvedené tabulky.
 
-Pro profily s kteroukoli metodu směrování, než je hodnot:
+Pro profily s jinou metodou směrování než s více hodnotami:
 
-|Příchozí požadavek dotazu|    Typ koncového bodu|  K dispozici odpověď|
+|Příchozí žádost o dotaz|    Typ koncového bodu|  Poskytnutá odpověď|
 |--|--|--|
-|VŠECHNY |  A / AAAA / CNAME |  Cílový koncový bod| 
-|A |    A / CNAME | Cílový koncový bod|
-|A |    AAAA |  NODATA |
+|JAKÝMIKOLI |  A / AAAA / CNAME |  Cílový koncový bod| 
+|A |    A/CNAME | Cílový koncový bod|
+|A |    AAAA |  DATA |
 |AAAA | AAAA / CNAME |  Cílový koncový bod|
-|AAAA | A | NODATA |
+|AAAA | A | DATA |
 |CNAME |    CNAME | Cílový koncový bod|
-|CNAME  |A / AAAA | NODATA |
+|CNAME  |A / AAAA | DATA |
 |
 
-Profily pomocí metody směrování nastavený na více hodnot:
+Pro profily s metodou směrování nastavenou na hodnotu vícehodnotové:
 
-|Příchozí požadavek dotazu|    Typ koncového bodu | K dispozici odpověď|
+|Příchozí žádost o dotaz|    Typ koncového bodu | Poskytnutá odpověď|
 |--|--|--|
-|VŠECHNY |  Kombinace A a AAAA | Cílové koncové body|
-|A |    Kombinace A a AAAA | Pouze cílové koncové body typu objekt|
-|AAAA   |Kombinace A a AAAA|     Pouze cílové koncové body typu AAAA|
-|CNAME |    Kombinace A a AAAA | NODATA |
+|JAKÝMIKOLI |  Kombinace a a AAAA | Cílové koncové body|
+|A |    Kombinace a a AAAA | Pouze cílové koncové body typu A|
+|AAAA   |Kombinace a a AAAA|     Pouze cílové koncové body typu AAAA|
+|CNAME |    Kombinace a a AAAA | DATA |
 
-### <a name="can-i-use-a-profile-with-ipv4--ipv6-addressed-endpoints-in-a-nested-profile"></a>Můžete použít profil s podporou protokolu IPv4 / IPv6 řeší koncových bodů v vnořeného profilu?
+### <a name="can-i-use-a-profile-with-ipv4--ipv6-addressed-endpoints-in-a-nested-profile"></a>Můžu použít profil s adresovánými koncovými body IPv4/IPv6 ve vnořeném profilu?
 
-Ano, s tím rozdílem, že profil více hodnot typu nemůže mít nadřazený profilu v vnořeného profilu nastavíte.
+Ano, můžete s výjimkou, že profil s hodnotou typu vícehodnotové nemůže být nadřazeným profilem ve vnořené sadě profilů.
 
-### <a name="i-stopped-an-web-application-endpoint-in-my-traffic-manager-profile-but-i-am-not-receiving-any-traffic-even-after-i-restarted-it-how-can-i-fix-this"></a>Zastavení koncový bod webové aplikace v mém profilu Traffic Manageru, ale i poté, co jsem restartování veškerý provoz doručována. Jak to mohu napravit?
+### <a name="i-stopped-an-web-application-endpoint-in-my-traffic-manager-profile-but-i-am-not-receiving-any-traffic-even-after-i-restarted-it-how-can-i-fix-this"></a>Ukončil (a) jsem koncový bod webové aplikace v profilu Traffic Manager, ale nepřijímám žádný provoz ani po jeho restartování. Jak mohu tuto situaci opravit?
 
-Při zastavení koncového bodu Azure webové aplikace Traffic Manageru zastaví kontrola jeho stavu a restartuje kontroly stavu, až poté, co zjistí, že má restartovat koncový bod. Abyste zabránili tomuto zpoždění dochází, zakázat a pak znovu povolit tohoto koncového bodu v profilu služby Traffic Manager po restartování koncový bod.
+Když je koncový bod webové aplikace Azure zastavený, Traffic Manager zastaví kontrolu jeho stavu a restartuje kontroly stavu až po zjištění, že byl koncový bod restartován. Chcete-li zabránit této prodlevě, zakažte a znovu povolte tento koncový bod v profilu Traffic Manager po restartování koncového bodu.
 
-### <a name="can-i-use-traffic-manager-even-if-my-application-does-not-have-support-for-http-or-https"></a>Můžete použít i v případě, že Moje aplikace nemá podporu pro protokol HTTP nebo HTTPS Traffic Manageru?
+### <a name="can-i-use-traffic-manager-even-if-my-application-does-not-have-support-for-http-or-https"></a>Můžu použít Traffic Manager i v případě, že moje aplikace nepodporuje protokol HTTP nebo HTTPS?
 
-Ano. TCP můžete zadat jako protokol monitorování a Traffic Manageru můžete iniciovat připojení TCP a čekat na odpověď od koncového bodu. Koncový bod odpoví na požadavek na připojení odpovědí k navázání připojení v časovém limitu tohoto koncového bodu je označen jako v pořádku.
+Ano. Jako monitorovací protokol můžete zadat TCP a Traffic Manager může iniciovat připojení TCP a čekat na odpověď z koncového bodu. Pokud koncový bod odpoví na požadavek připojení s odpovědí na navázání připojení, v rámci časového limitu je tento koncový bod označený jako dobrý.
 
-### <a name="what-specific-responses-are-required-from-the-endpoint-when-using-tcp-monitoring"></a>Jaké konkrétní odpovědi jsou vyžadována z koncového bodu při použití protokolu TCP monitorování?
+### <a name="what-specific-responses-are-required-from-the-endpoint-when-using-tcp-monitoring"></a>Jaké konkrétní odpovědi z koncového bodu vyžadují při použití monitorování protokolu TCP?
 
-Při použití protokolu TCP monitorování Traffic Manageru začíná třícestné TCP odesláním SYN požadavek na koncový bod na zadaný port. Pak čeká určitou dobu (jak je uvedeno v nastavení časového limitu) pro odpovědi z koncového bodu. Pokud koncový bod odpoví na požadavek SYN SYN ACK odpovědí v rámci časový limit zadaný v nastavení monitorování, pak tento koncový bod se považuje za v pořádku. Pokud odpověď SYN ACK, Traffic Manager resetuje připojení reakcí vraťte se RVNÍ.
+Když se použije monitorování protokolu TCP, Traffic Manager spustí třícestný protokol TCP handshake odesláním žádosti SYN do koncového bodu na zadaném portu. Potom počká po určitou dobu (zadanou v nastavení časového limitu) pro odpověď z koncového bodu. Pokud koncový bod odpoví na požadavek SYN s odpovědí SYN-ACK v časovém limitu zadaném v nastavení monitorování, pak je tento koncový bod považován za dobrý. Pokud je přijata odpověď SYN-ACK, Traffic Manager obnoví připojení tak, že odpoví zpět o RST.
 
-### <a name="how-fast-does-traffic-manager-move-my-users-away-from-an-unhealthy-endpoint"></a>Jak rychle přesunout Traffic Manageru Moje uživatelů mimo koncový bod není v pořádku?
+### <a name="how-fast-does-traffic-manager-move-my-users-away-from-an-unhealthy-endpoint"></a>Jak rychle Traffic Manager přesunout uživatele z poškozeného koncového bodu?
 
-Traffic Manager poskytuje několik nastavení, které vám mohou pomoci při řízení chování převzetí služeb při selhání z vašeho profilu Traffic Manageru následujícím způsobem:
+Traffic Manager poskytuje několik nastavení, která vám pomůžou řídit chování při převzetí služeb při selhání profilu Traffic Manager následujícím způsobem:
 
-- můžete určit, že Traffic Manager sondy koncových bodů častěji tak, že nastavíte Interval zjišťování na 10 sekund. Tím se zajistí, že nejdříve lze zjistit libovolný koncový bod přechod není v pořádku. 
-- můžete zadat jak dlouho čekat, než stavu požadavků doby rezervovat (hodnota minimální časový limit je 5 s).
-- můžete určit, kolik selhání může dojít předtím, než koncový bod je označen jako není v pořádku. Tato hodnota může být v rozsahu od 0, v kterémžto případě koncového bodu je označen není v pořádku, jakmile selže první kontrola stavu. Však pomocí minimální hodnotu 0 pro Tolerovaný počet selhání může vést ke koncovým bodům se vyřazen ze smyčky kvůli všechny přechodné problémy, které mohou nastat v době zjišťování.
-- můžete zadat time to live (TTL) pro odpověď DNS být v rozsahu od 0. Provádí se tak znamená, že překladače DNS nejde ukládat do mezipaměti odpovědi a každý nový dotaz načte odpověď, která zahrnuje nejnovější informace stavu, který má Traffic Manageru.
+- můžete určit, že se v Traffic Manager budou koncové body pokládat častěji nastavením intervalu zjišťování na 10 sekund. Tím se zajistí, že libovolný koncový bod, který není v pořádku, bude možné zjistit co nejdříve. 
+- můžete určit, jak dlouho se má čekat před vypršením časového limitu požadavku na kontrolu stavu (minimální hodnota časového limitu je 5 sekund).
+- můžete určit, kolik selhání může dojít, než je koncový bod označený jako není v pořádku. Tato hodnota může být menší než 0. v takovém případě je koncový bod označen jako není v pořádku, protože při tom dojde k chybě při první kontrole stavu. Použití minimální hodnoty 0 pro tolerovatcí počet selhání může ale vést k tomu, že se koncovým bodům vyčerpá koncové body z důvodu jakýchkoli přechodných problémů, ke kterým může dojít v době zjišťování.
+- můžete zadat hodnotu TTL (Time to Live) pro odpověď DNS, aby byla menší než 0. To znamená, že překladače DNS nemůžou odpověď ukládat do mezipaměti a každý nový dotaz dostane odpověď, která zahrnuje nejaktuálnější informace o stavu, které Traffic Manager.
 
-Pomocí těchto nastavení Traffic Manageru umožňuje převzetí služeb při selhání v části 10 sekund poté, co koncový bod přejde není v pořádku a proti odpovídající profil se provede dotaz DNS.
+Pomocí těchto nastavení Traffic Manager může poskytnout převzetí služeb při selhání za 10 sekund po nesprávném ukončení koncového bodu a provede se dotaz DNS na odpovídajícím profilu.
 
-### <a name="how-can-i-specify-different-monitoring-settings-for-different-endpoints-in-a-profile"></a>Jak lze určit různé nastavení monitorování pro různé koncové body v profilu?
+### <a name="how-can-i-specify-different-monitoring-settings-for-different-endpoints-in-a-profile"></a>Jak lze zadat různá nastavení monitorování pro různé koncové body v profilu?
 
-Nastavení monitorování se v Traffic Manageru na úroveň profilu. Pokud budete muset použít jiné nastavení monitorování pro pouze jeden koncový bod, lze provést tak, že tento koncový bod jako [vnořené profilu](traffic-manager-nested-profiles.md) nastavení, jejíž monitorování se liší od nadřazené profilu.
+Nastavení monitorování Traffic Manager se nachází na úrovni profilu. Pokud potřebujete použít jiné nastavení monitorování jenom pro jeden koncový bod, můžete to udělat tak, že tento koncový bod nastavíte jako [vnořený profil](traffic-manager-nested-profiles.md) , jehož nastavení monitorování se liší od nadřazeného profilu.
 
-### <a name="how-can-i-assign-http-headers-to-the-traffic-manager-health-checks-to-my-endpoints"></a>Jak můžu přiřazovat hlavičky protokolu HTTP na Traffic Manager doplněk pro kontroly stavu pro své koncové body?
+### <a name="how-can-i-assign-http-headers-to-the-traffic-manager-health-checks-to-my-endpoints"></a>Jak mohu přiřadit hlavičky HTTP ke kontrolám Traffic Manager stavu do mých koncových bodů?
 
-Traffic Manager umožňuje určit vlastní hlavičky v protokolu HTTP (S) doplněk pro kontroly stavu, že zahájení koncových bodů. Pokud chcete zadat vlastní hlavičky, můžete to udělat na úrovni profilu (platí pro všechny koncové body) nebo zadat na úrovni koncového bodu. Pokud hlavička je definován na obou úrovních, je uvedeno na úrovni koncového bodu přepíše jednu úroveň profilu.
-Jeden běžným případem použití pro tuto je určení hlavičky hostitele tak, aby požadavky Traffic Manager může získat správně směrovat do koncového bodu hostované v prostředí s více tenanty. Jiné případem použití tohoto objektu je k identifikaci požadavků Traffic Manageru z protokolů požadavku koncového bodu HTTP (S)
+Traffic Manager umožňuje zadat vlastní hlavičky v rámci kontrol stavu HTTP (S), které zahájí vaše koncové body. Pokud chcete zadat vlastní hlavičku, můžete to udělat na úrovni profilu (platí pro všechny koncové body) nebo zadat na úrovni koncového bodu. Pokud je hlavička definovaná na obou úrovních, pak ta, která je určená na úrovni koncového bodu, přepíše úroveň profilu jedna.
+Jedním z běžných případů použití pro toto je zadání hlaviček hostitele, aby se Traffic Manager požadavky mohly správně směrovat do koncového bodu hostovaného ve více tenantů prostředí. Dalším případem použití tohoto řešení je identifikovat Traffic Manager požadavky z protokolů požadavků HTTP (S) koncového bodu.
 
-## <a name="what-host-header-do-endpoint-health-checks-use"></a>Jaké stav koncového bodu hlavičky hostitele kontroluje použití?
+### <a name="what-host-header-do-endpoint-health-checks-use"></a>Jakou hlavičku hostitele používají kontroly stavu koncových bodů?
 
-Pokud je k dispozici žádné nastavení, záhlaví vlastního hostitele, hlavičku hostitele používaná Traffic Managerem je název DNS cílového koncového bodu nakonfigurovali v profilu, pokud, který je k dispozici.
+Pokud není k dispozici žádné vlastní nastavení záhlaví hostitele, bude Hlavička hostitele používaná v Traffic Manager název DNS cíle koncového bodu nakonfigurovaného v profilu, pokud je k dispozici.
 
-### <a name="what-are-the-ip-addresses-from-which-the-health-checks-originate"></a>Co jsou IP adresy, ze kterých doplněk pro kontroly stavu pocházejí?
+### <a name="what-are-the-ip-addresses-from-which-the-health-checks-originate"></a>Jaké jsou IP adresy, ze kterých pocházejí kontroly stavu?
 
-Klikněte na tlačítko [tady](https://azuretrafficmanagerdata.blob.core.windows.net/probes/azure/probe-ip-ranges.json) k zobrazení souboru JSON, který zobrazí seznam IP adres, ze které Traffic Manager může pocházet kontroly stavu. Zkontrolujte IP adresy uvedené v souboru JSON k zajištění, že příchozí připojení z těchto IP adres jsou povolena na koncové body zkontrolovat její stav.
+Kliknutím [sem](https://azuretrafficmanagerdata.blob.core.windows.net/probes/azure/probe-ip-ranges.json) zobrazíte soubor JSON, který obsahuje seznam IP adres, ze kterých můžou nacházet Traffic Manager kontroly stavu. Zkontrolujte IP adresy uvedené v souboru JSON, abyste zajistili, že příchozí připojení z těchto IP adres jsou v koncových bodech povolená pro kontrolu stavu.
 
-### <a name="how-many-health-checks-to-my-endpoint-can-i-expect-from-traffic-manager"></a>Kolik kontroly stavu k koncovému bodu můžu očekávat od Traffic Manageru?
+### <a name="how-many-health-checks-to-my-endpoint-can-i-expect-from-traffic-manager"></a>Kolik kontrol stavu do mého koncového bodu je možné očekávat od Traffic Manager?
 
-Počet stavů Traffic Manageru bude kontrolována dosažení váš koncový bod závisí na následujících:
+Počet kontrol Traffic Manager stavu, které dosáhnou svého koncového bodu, závisí na následujícím:
 
-- hodnota, která jste nastavili monitorování interval (interval menší znamená další požadavky na úvodní na váš koncový bod v daném časovém období).
-- počet umístění, ze kterých pocházejí kontroly stavu (IP adresy z kde můžou očekávat, těmito kontrolami je uveden v předchozím – nejčastější dotazy).
+- hodnota, kterou jste nastavili pro interval monitorování (menší interval) znamená více požadavků, které jsou v daném časovém intervalu vypsány v daném časovém období.
+- počet umístění, z nichž pocházejí kontroly stavu (IP adresy, ze kterých můžete očekávat tyto kontroly, jsou uvedené v předchozích nejčastějších dotazech).
 
-### <a name="how-can-i-get-notified-if-one-of-my-endpoints-goes-down"></a>Jak lze můžu získat vás upozorní, když jeden z mé koncových bodů ocitne mimo provoz?
+### <a name="how-can-i-get-notified-if-one-of-my-endpoints-goes-down"></a>Jak získám oznámení, pokud se některý z mých koncových bodů přestane nastavovat?
 
-Jednu z metrik uvedených Traffic Managerem je stav koncových bodů v profilu. Můžete to zobrazit jako agregací všechny koncové body v profilu (například 75 % z vašich koncových bodů jsou v pořádku), nebo v na úrovni koncového bodu. Metriky Traffic Manageru se zobrazují v nástroji Azure Monitor a můžete použít jeho [upozorňování](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md) dostávat oznámení, když dojde ke změně v stav koncového bodu. Další podrobnosti najdete v tématu [Traffic Manageru metrik a výstrah](traffic-manager-metrics-alerts.md).  
+Jedna z metrik poskytovaných nástrojem Traffic Manager je stavem koncových bodů v profilu. Tohle vidíte jako agregaci všech koncových bodů v profilu (například 75% vašich koncových bodů je v pořádku) nebo na úrovni jednotlivých koncových bodů. Traffic Manager metriky jsou zpřístupněny prostřednictvím Azure Monitor a pomocí [možností upozorňování](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md) můžete dostávat oznámení, když dojde ke změně stavu koncového bodu. Další podrobnosti najdete v tématu [Traffic Manager metrik a upozornění](traffic-manager-metrics-alerts.md).  
 
-## <a name="traffic-manager-nested-profiles"></a>Vnořené profily Traffic Manageru
+## <a name="traffic-manager-nested-profiles"></a>Traffic Manager vnořené profily
 
-### <a name="how-do-i-configure-nested-profiles"></a>Jak nakonfigurovat vnořené profily
+### <a name="how-do-i-configure-nested-profiles"></a>Návody nakonfigurovat vnořené profily?
 
-Vnořené profily Traffic Manageru můžete konfigurovat pomocí Azure Resource Manageru a rozhraní classic Azure REST API, rutin prostředí Azure PowerShell a příkazy Azure CLI pro různé platformy. Podporovány jsou i na novém webu Azure Portal.
+Vnořené Traffic Manager profily se dají konfigurovat pomocí Azure Resource Manager a klasických rozhraní Azure REST API, Azure PowerShell rutiny a příkazy Azure CLI pro různé platformy. Jsou podporovány také pomocí nového Azure Portal.
 
-### <a name="how-many-layers-of-nesting-does-traffic-manger-support"></a>Počet úrovní vnoření nemá Traffic Manager podporuje?
+### <a name="how-many-layers-of-nesting-does-traffic-manger-support"></a>Kolik vrstev vnoření podporuje Traffic Manager?
 
-Je možné vnořovat profilů až 10 úrovní do hloubky. "Smyčky" nejsou povoleny.
+Profily můžete vnořovat až do 10 úrovní. ' Smyčky ' nejsou povoleny.
 
-### <a name="can-i-mix-other-endpoint-types-with-nested-child-profiles-in-the-same-traffic-manager-profile"></a>Můžete kombinovat jiné typy koncových bodů s profily vnořené podřízené, v jednom profilu Traffic Manageru?
+### <a name="can-i-mix-other-endpoint-types-with-nested-child-profiles-in-the-same-traffic-manager-profile"></a>Můžu ve stejném profilu Traffic Manager kombinovat jiné typy koncových bodů s vnořenými podřízenými profily?
 
-Ano. Nejsou žádná omezení jak kombinovat různé typy v rámci profilu koncové body.
+Ano. Neexistují žádná omezení způsobu kombinování koncových bodů různých typů v rámci profilu.
 
-### <a name="how-does-the-billing-model-apply-for-nested-profiles"></a>Jak model fakturace použít pro vnořené profily?
+### <a name="how-does-the-billing-model-apply-for-nested-profiles"></a>Jak model fakturace platí pro vnořené profily?
 
-Neexistuje žádné negativní vliv na použití vnořených profilů cenu.
+Použití vnořených profilů nemá žádný negativní dopad na ceny.
 
-Fakturace Traffic Manageru má dvě součásti: kontrolám stavu koncových bodů a milionů dotazů DNS
+Traffic Manager fakturace má dvě komponenty: kontroly stavu koncových bodů a miliony dotazů DNS.
 
-* Kontroly stavu koncových bodů: Neplatí žádné poplatky pro podřízené profil při nakonfigurovaný jako koncový bod v nadřazené profilu. Monitorování koncových bodů v podřízených profilu se účtuje obvyklým způsobem.
-* Dotazy DNS: Každý dotaz se počítá pouze jednou. Dotaz vůči nadřazené profilu, která vrací koncový bod z podřízených profilu se započítává jenom profil nadřazené.
+* Kontroly stavu koncových bodů: Pro podřízený profil se neúčtují žádné poplatky, pokud je v nadřazeném profilu nakonfigurovaný jako koncový bod. Monitorování koncových bodů v podřízeném profilu se fakturuje obvyklým způsobem.
+* Dotazy DNS: Každý dotaz se počítá jenom jednou. Dotaz na nadřazený profil, který vrací koncový bod z podřízeného profilu, se počítá pouze s nadřazeným profilem.
 
-Úplné podrobnosti najdete v tématu [Traffic Manageru stránce s cenami](https://azure.microsoft.com/pricing/details/traffic-manager/).
+Úplné podrobnosti najdete na stránce s [cenami Traffic Manager](https://azure.microsoft.com/pricing/details/traffic-manager/).
 
-### <a name="is-there-a-performance-impact-for-nested-profiles"></a>Je nějaký dopad na výkon pro vnořené profily?
+### <a name="is-there-a-performance-impact-for-nested-profiles"></a>Je pro vnořené profily dopad na výkon?
 
-Ne. Neexistuje žádný dopad na výkon při použití vnořených profilů.
+Ne. Při použití vnořených profilů se nevyskytl dopad na výkon.
 
-Názvové servery Traffic Manageru procházet hierarchii profilu interně při zpracování jednotlivých dotazů DNS. Dotaz DNS na nadřazené profil může přijímat odpovědi DNS pomocí koncového bodu z profilu podřízené. Jeden záznam CNAME se používá, jestli používáte jeden profil nebo vnořených profilů. Není nutné vytvořit záznam CNAME pro každý profil v hierarchii.
+Traffic Manager názvové servery přecházejí hierarchii profilu interně při zpracování každého dotazu DNS. Dotaz DNS na nadřazený profil může přijmout odpověď DNS s koncovým bodem z podřízeného profilu. Jeden záznam CNAME se používá bez ohledu na to, jestli používáte jeden profil nebo vnořené profily. Pro každý profil v hierarchii není nutné vytvářet záznam CNAME.
 
-### <a name="how-does-traffic-manager-compute-the-health-of-a-nested-endpoint-in-a-parent-profile"></a>Jak Traffic Manager compute stavu vnořený koncový bod v nadřazené profilu?
+### <a name="how-does-traffic-manager-compute-the-health-of-a-nested-endpoint-in-a-parent-profile"></a>Jak Traffic Manager počítá stav vnořeného koncového bodu v nadřazeném profilu?
 
-Profil nadřazené neprovádí kontroly stavu pro podřízený přímo. Stav profilu podřízených koncových bodů se místo toho používají k výpočtu celkového stavu profilu podřízené. Tyto informace se šíří hierarchii vnořeného profilu určit stav vnořený koncový bod. Nadřazené profil používá toto agregovaný stav k určení, zda lze přenášená do podřízeného.
+Nadřazený profil neprovádí kontroly stavu přímo u podřízeného objektu. Místo toho se k výpočtu celkového stavu podřízeného profilu použijí i stav koncových bodů podřízeného profilu. Tyto informace se šíří v hierarchii vnořeného profilu, aby bylo možné zjistit stav vnořeného koncového bodu. Nadřazený profil používá tento agregovaný stav k určení, zda lze provoz směrovat na podřízený uzel.
 
-Následující tabulka popisuje chování Traffic Manageru kontroly stavu pro vnořený koncový bod.
+Následující tabulka popisuje chování Traffic Managerch kontrol stavu pro vnořený koncový bod.
 
-| Stav podřízené nástroj Profile Monitor | Stav nadřazeného monitorování koncového bodu | Poznámky |
+| Stav monitoru pro podřízený profil | Stav monitorování nadřazeného koncového bodu | Poznámky |
 | --- | --- | --- |
-| Zakázané. Podřízené profilu bylo zakázáno. |Zastaveno |Stav koncového bodu nadřazené je zastaven, není zakázáno. Stav Zakázáno je vyhrazený pro označující, že jste zakázali koncový bod v nadřazené profilu. |
-| Snížený výkon. Nejméně jeden podřízený prvek koncovému bodu profilu je ve stavu snížený. |Online: počet Online koncových bodů v podřízených profilu je nejméně hodnotu MinChildEndpoints.<BR>CheckingEndpoint: počet Online plus CheckingEndpoint koncových bodů v podřízených profilu je minimálně hodnota MinChildEndpoints.<BR>Snížený výkon: jinak. |Provoz se směruje do koncového bodu stavu CheckingEndpoint. Pokud se nastaví příliš vysoko MinChildEndpoints, koncový bod má vždy snížený výkon. |
-| Online. Koncový bod profilu aspoň jedním podřízeným prvkem je stavu Online. Žádný koncový bod je ve stavu snížený. |Viz výše. | |
-| CheckingEndpoints. Koncový bod profilu aspoň jedním podřízeným prvkem je "CheckingEndpoint". Žádné koncové body jsou "Online" nebo "snížený výkon. |Stejné jako výše. | |
-| Neaktivní. Všechny podřízené profilu koncové body jsou zakázané nebo zastaveno, nebo tento profil nemá žádné koncové body. |Zastaveno | |
+| Zabezpečen. Podřízený profil byl zakázán. |Zastaveno |Stav nadřazeného koncového bodu je zastaven, není zakázán. Zakázaný stav je rezervovaný pro indikaci, že jste v nadřazeném profilu zakázali koncový bod. |
+| Degradovaný. Nejméně jeden koncový bod podřízeného profilu je v neomezeném stavu. |Online: počet online koncových bodů v podřízeném profilu je aspoň hodnota MinChildEndpoints.<BR>CheckingEndpoint: počet koncových bodů online plus CheckingEndpoint v podřízeném profilu je alespoň hodnota MinChildEndpoints.<BR>Snížený výkon: jinak. |Provoz se směruje na koncový bod stavového CheckingEndpoint. Pokud je nastavení MinChildEndpoints příliš vysoké, koncový bod je vždy snížený. |
+| Online. Nejméně jeden koncový bod podřízeného profilu je online stav. V neomezeném stavu není žádný koncový bod. |Viz výše. | |
+| CheckingEndpoints. Aspoň jeden podřízený koncový bod profilu je "CheckingEndpoint". Žádné koncové body nejsou online nebo jsou degradovány. |Stejné jako výše. | |
+| Termín. Všechny koncové body podřízeného profilu jsou buď zakázány, nebo zastaveny, nebo tento profil nemá žádné koncové body. |Zastaveno | |
 
-## <a name="next-steps"></a>Další kroky:
+## <a name="next-steps"></a>Další postup:
 
-- Další informace o Traffic Manageru [koncový bod monitorování a automatickému převzetí služeb při selhání](../traffic-manager/traffic-manager-monitoring.md).
-- Další informace o Traffic Manageru [metody směrování provozu](../traffic-manager/traffic-manager-routing-methods.md).
+- Další informace o Traffic Manager [monitorování koncového bodu a automatické převzetí služeb při selhání](../traffic-manager/traffic-manager-monitoring.md).
+- Přečtěte si další informace o [metodách směrování provozu](../traffic-manager/traffic-manager-routing-methods.md)Traffic Manager.

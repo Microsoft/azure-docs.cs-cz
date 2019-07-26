@@ -5,19 +5,19 @@ ms.topic: include
 ms.date: 11/03/2016
 ms.author: cephalin
 ms.openlocfilehash: f188f2c7bea511f1109d37ef49563e0f745a770e
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67175426"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68385755"
 ---
-S Azure Resource Manageru, můžete definovat parametry pro hodnoty pro použití při nasazování šablony. Šablona obsahuje `parameters` oddíl, který obsahuje všechny hodnoty parametrů. Každá hodnota parametru používá k definování prostředků, které chcete nasadit šablonu.
+Pomocí Azure Resource Manager můžete definovat parametry pro hodnoty, které se mají použít při nasazování šablony. Šablona obsahuje `parameters` oddíl, který obsahuje všechny hodnoty parametrů. Každá hodnota parametru je používána šablonou k definování prostředků, které chcete nasadit.
 
 > [!NOTE]
-> Nedefinujte parametry pro hodnoty, které jsou vždy stejné. Definujte parametry jenom pro hodnoty, které se liší podle projektu, který nasazujete nebo podle prostředí, do kterého nasazujete.
+> Nedefinujte parametry pro hodnoty, které jsou vždy stejné. Definujte parametry pouze pro hodnoty, které se liší v závislosti na projektu, který nasazujete, nebo v závislosti na prostředí, ve kterém nasazujete.
 
 Při definování parametrů:
 
-* Pokud chcete zadat povolené hodnoty, které můžete během nasazení zadat uživatele, použijte **allowedValues** pole.
+* Chcete-li určit povolené hodnoty, které může uživatel poskytnout během nasazení, použijte pole **allowedValues** .
 
-* Pokud chcete přiřadit výchozí hodnoty parametru, když se nezadají žádné hodnoty během nasazení, použijte **defaultValue** pole. 
+* Pokud chcete přiřadit výchozí hodnoty k parametru, když během nasazování nejsou k dispozici žádné hodnoty, použijte pole **DefaultValue** . 

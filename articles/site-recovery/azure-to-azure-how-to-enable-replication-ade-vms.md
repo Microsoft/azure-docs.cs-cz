@@ -1,6 +1,6 @@
 ---
-title: Konfigurace replikace pro virtuální počítače s podporou Azure Disk Encryption v Azure Site Recovery | Dokumentace Microsoftu
-description: Tento článek popisuje, jak nakonfigurovat replikace pro Azure Disk Encryption virtuální počítače s podporou z jedné oblasti Azure do jiné pomocí Site Recovery.
+title: Konfigurace replikace pro virtuální počítače s podporou Azure Disk Encryption v Azure Site Recovery | Microsoft Docs
+description: Tento článek popisuje, jak nakonfigurovat replikaci pro virtuální počítače s povolenou Azure Disk Encryption z jedné oblasti Azure do jiné pomocí Site Recovery.
 services: site-recovery
 author: asgang
 manager: rochakm
@@ -8,157 +8,153 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/08/2019
 ms.author: sutalasi
-ms.openlocfilehash: b2e9bf7fbe7d5940b517d97dcc15d21c30835001
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: b000610b5cba6f768a629ad797500a57597f2569
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67449214"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68335699"
 ---
-# <a name="replicate-azure-disk-encryption-enabled-virtual-machines-to-another-azure-region"></a>Azure Disk Encryption povolené virtuální počítače replikovat do jiné oblasti Azure
+# <a name="replicate-azure-disk-encryption-enabled-virtual-machines-to-another-azure-region"></a>Replikace virtuálních počítačů s podporou Azure Disk Encryption do jiné oblasti Azure
 
 Tento článek popisuje, jak replikovat virtuální počítače s podporou Azure Disk Encryption z jedné oblasti Azure do jiné.
 
 >[!NOTE]
->Azure Site Recovery aktuálně podporuje pouze virtuální počítače Azure, na kterých běží operační systém Windows a, které jsou [povoleno šifrování se službou Azure Active Directory (Azure AD)](https://aka.ms/ade-aad-app).
+>Azure Site Recovery aktuálně podporuje jenom virtuální počítače Azure, na kterých běží operační systém Windows a které mají [povolené šifrování pomocí Azure Active Directory (Azure AD)](https://aka.ms/ade-aad-app).
 
-## <a id="required-user-permissions"></a> Požadovaná uživatelská oprávnění
-Site Recovery vyžaduje, aby uživatel měl oprávnění k vytvoření služby key vault v cílové oblasti a kopie klíče oblastí.
+## <a id="required-user-permissions"></a>Požadovaná uživatelská oprávnění
+Site Recovery vyžaduje, aby měl uživatel oprávnění k vytvoření trezoru klíčů v cílové oblasti a zkopírování klíčů do oblasti.
 
-Pokud chcete povolit replikaci povolené šifrování disků virtuálních počítačů na webu Azure Portal, uživatel potřebuje následující oprávnění:
+Aby bylo možné povolit replikaci virtuálních počítačů s povoleným šifrováním disku z Azure Portal, uživatel potřebuje následující oprávnění:
 
-- Oprávnění služby Key vault
-    - List
-    - Vytvořit
-    - Získat
+- Oprávnění trezoru klíčů
+    - Seznam, vytvoření a získání
+    
+- Oprávnění tajného klíče trezoru klíčů
+    - Operace správy tajných kódů
+        - Získání, vypsání a nastavení
+    
+- Oprávnění klíče trezoru klíčů (požadováno jenom v případě, že virtuální počítače používají šifrovací klíč klíče k šifrování šifrovacích klíčů disku)
+    - Operace správy klíčů
+        - Získání, vypsání a vytvoření
+    - Kryptografické operace
+        - Dešifrování a šifrování
 
--   Oprávnění tajného kódu trezoru klíčů
-    - List
-    - Vytvořit
-    - Získat
+Pokud chcete spravovat oprávnění, otevřete na portálu prostředek trezoru klíčů. Přidejte požadovaná oprávnění pro uživatele. Následující příklad ukazuje, jak povolit oprávnění k *ContosoWeb2Keyvault*trezoru klíčů, který je ve zdrojové oblasti.
 
-- Oprávnění klíče služby Key vault (nutné jenom v případě, že virtuální počítače použít šifrovací klíč klíče k šifrování klíče pro šifrování disků)
-    - List
-    - Získat
-    - Vytvořit
-    - Šifrování
-    - Dešifrování
+1. Přejděte na **domovské** > **trezory** > klíčů**ContosoWeb2KeyVault > zásady přístupu**.
 
-Pokud chcete spravovat oprávnění, přejděte k prostředku služby key vault na portálu. Přidáte požadovaná oprávnění pro uživatele. Následující příklad ukazuje, jak používat sady oprávnění k trezoru klíčů *ContosoWeb2Keyvault*, což je ve zdrojové oblasti.
+   ![Okno oprávnění trezoru klíčů](./media/azure-to-azure-how-to-enable-replication-ade-vms/key-vault-permission-1.png)
 
-1. Přejděte na **Domů** > **Keyvaults** > **ContosoWeb2KeyVault > zásady přístupu**.
+2. Uvidíte, že neexistují žádná uživatelská oprávnění. Vyberte **Přidat nový**. Zadejte informace o uživateli a oprávněních.
 
-   ![Okno trezoru klíčů oprávnění](./media/azure-to-azure-how-to-enable-replication-ade-vms/key-vault-permission-1.png)
+   ![Oprávnění trezoru klíčů](./media/azure-to-azure-how-to-enable-replication-ade-vms/key-vault-permission-2.png)
 
-2. Uvidíte, že neexistují žádná uživatelská oprávnění. Vyberte **přidat nový**. Zadání informací o uživatelích a oprávnění.
+Pokud uživatel, který povoluje zotavení po havárii (DR), nemá oprávnění ke kopírování klíčů, může správce zabezpečení, který má příslušná oprávnění, použít následující skript ke zkopírování šifrovacích tajných klíčů a klíčů do cílové oblasti.
 
-   ![oprávnění služby keyvault](./media/azure-to-azure-how-to-enable-replication-ade-vms/key-vault-permission-2.png)
-
-Pokud uživatel, který je povolení zotavení po havárii (DR) nemá oprávnění ke zkopírování klíče, správce zabezpečení, který má příslušná oprávnění můžete použít následující skript ke kopírování šifrování tajných kódů a klíčů do cílové oblasti.
-
-Řešení potíží s oprávnění, najdete v tématu [klíče trezoru problémům s oprávněním](#trusted-root-certificates-error-code-151066) dále v tomto článku.
+Pokud chcete řešit oprávnění, přečtěte si téma [problémy s oprávněními k trezoru klíčů](#trusted-root-certificates-error-code-151066) dále v tomto článku.
 
 >[!NOTE]
->Pokud chcete povolit replikaci povolené šifrování disků virtuálních počítačů z portálu, můžete potřebovat nejméně "seznam" oprávnění k trezorům klíčů, tajných kódů a klíčů.
+>Pokud chcete povolit replikaci virtuálních počítačů s povoleným šifrováním disku z portálu, budete pro trezory klíčů, tajné klíče a klíče potřebovat alespoň oprávnění "list".
 
-## <a name="copy-disk-encryption-keys-to-the-dr-region-by-using-the-powershell-script"></a>Zkopírujte Disk šifrovací klíče do oblasti zotavení po Havárii pomocí skriptu prostředí PowerShell
+## <a name="copy-disk-encryption-keys-to-the-dr-region-by-using-the-powershell-script"></a>Zkopírování šifrovacích klíčů disku do oblasti DR pomocí skriptu PowerShellu
 
-1. [Otevřete kód skriptu raw "CopyKeys"](https://aka.ms/ade-asr-copy-keys-code).
-2. Zkopírujte skript do souboru a pojmenujte ho **kopírování keys.ps1**.
-3. Otevřete aplikaci Windows Powershellu a přejděte do složky, kam jste soubor uložili.
-4. Execute Copy-keys.ps1.
-5. Zadejte přihlašovací údaje pro přihlášení Azure.
-6. Vyberte **předplatného Azure** vašich virtuálních počítačů.
-7. Počkejte pro skupiny prostředků pro načtení a pak vyberte **skupiny prostředků** vašich virtuálních počítačů.
-8. Vyberte virtuální počítače, ze seznamu, který se zobrazí. Pouze virtuální počítače, které jsou povoleny pro šifrování disků jsou na seznamu.
+1. [Otevřete nezpracovaný kód skriptu "CopyKeys"](https://aka.ms/ade-asr-copy-keys-code).
+2. Zkopírujte skript do souboru a pojmenujte ho **copy-Keys. ps1**.
+3. Otevřete aplikaci Windows PowerShell a pokračujte do složky, kam jste soubor uložili.
+4. Spusťte Copy-Keys. ps1.
+5. Zadejte přihlašovací údaje Azure pro přihlášení.
+6. Vyberte **předplatné Azure** vašich virtuálních počítačů.
+7. Počkejte, až se skupiny prostředků načtou, a pak vyberte **skupinu prostředků** vašich virtuálních počítačů.
+8. Vyberte virtuální počítače ze zobrazeného seznamu. V seznamu jsou jenom virtuální počítače, které jsou povolené pro šifrování disků.
 9. Vyberte **cílové umístění**.
 
-    - **Trezory klíčů šifrování disku**
-    - **Trezory klíčů šifrování pomocí klíče**
+    - **Trezory klíčů Disk Encryption**
+    - **Trezory klíčů šifrovacího klíče**
 
-   Ve výchozím nastavení vytvoří Site Recovery v cílové oblasti nový trezor klíčů. Název trezoru má příponou "Azure Site Recovery", který je založen na klíče pro šifrování disků zdrojového virtuálního počítače. Pokud služby key vault už existuje, který byl vytvořen službou Site Recovery, použije se Tenhle certifikát. Ze seznamu v případě potřeby vyberte jiný trezor klíčů.
+   Ve výchozím nastavení Site Recovery vytvoří nový trezor klíčů v cílové oblasti. Název trezoru má příponu ASR, která je založená na šifrovacích klíčích disků zdrojového virtuálního počítače. Pokud již existuje Trezor klíčů, který byl vytvořen Site Recovery, je znovu použit. V případě potřeby vyberte v seznamu jiný Trezor klíčů.
 
 ## <a name="enable-replication"></a>Povolení replikace
 
-V tomto příkladu primární oblast Azure je východní Asie a jihovýchodní Asie je sekundární oblasti.
+V tomto příkladu je primární oblast Azure Východní Asie a sekundární oblast je jih Východní Asie.
 
-1. V trezoru, vyberte **+ replikovat**.
-2. Poznámka: následující pole.
-    - **Zdroj**: Bod počátek virtuálních počítačů, které v tomto případě je **Azure**.
-    - **Umístění zdroje**: Oblasti Azure, ve které chcete chránit virtuální počítače. V tomto příkladu se zdrojové umístění "Východní Asie."
-    - **Model nasazení**: Model nasazení Azure zdrojový počítač.
-    - **Zdrojové předplatné**: Předplatné, do které patří vaše zdrojové virtuální počítače. Může být libovolné předplatné, které je ve stejném tenantovi Azure Active Directory jako váš trezor služby recovery services.
-    - **Skupina prostředků**: Skupina prostředků, do které patří vaše zdrojové virtuální počítače. Pro ochranu v dalším kroku jsou uvedeny všechny virtuální počítače ve vybrané skupině prostředků.
+1. V trezoru vyberte **+ replikovat**.
+2. Všimněte si následujících polí.
+    - **Zdroj**: Bod původu virtuálních počítačů, což je v tomto případě **Azure**.
+    - **Zdrojové umístění**: Oblast Azure, ve které chcete chránit virtuální počítače. V tomto příkladu je zdrojovým umístěním "Východní Asie."
+    - **Model nasazení**: Model nasazení Azure zdrojových počítačů.
+    - **Zdrojové předplatné**: Předplatné, ke kterému patří vaše zdrojové virtuální počítače. Může to být jakékoli předplatné, které je ve stejném Azure Active Directory tenant jako trezor služby Recovery Services.
+    - **Skupina prostředků**: Skupina prostředků, do které patří vaše zdrojové virtuální počítače. V dalším kroku jsou uvedené pro ochranu všechny virtuální počítače ve vybrané skupině prostředků.
 
-3. V **virtuálních počítačů** > **výběr virtuálních počítačů**, vyberte každý virtuální počítač, který chcete replikovat. Můžete vybrat pouze počítače, pro které je možné povolit replikaci. Pak vyberte **OK**.
+3. V **Virtual Machines** > **vyberte virtuální počítače**, vyberte všechny virtuální počítače, které chcete replikovat. Můžete vybrat pouze počítače, pro které je možné povolit replikaci. Pak vyberte **OK**.
 
-4. V **nastavení**, můžete nakonfigurovat následující nastavení cílové lokality.
+4. V **Nastavení**můžete nakonfigurovat následující nastavení cílové lokality.
 
-    - **Cílové umístění**: Umístění, kde se budou replikovat svá zdrojová data virtuálního počítače. Site Recovery poskytuje seznam vhodná cílová oblastí na základě umístění vybraný počítač. Doporučujeme použít stejné umístění jako umístění trezoru služby Recovery Services.
-    - **Cílové předplatné**: Cílové předplatné, který se používá pro zotavení po havárii. Ve výchozím nastavení cílové předplatné je stejné jako zdrojové předplatné.
-    - **Cílová skupina prostředků**: Skupina prostředků, na kterém jsou všechny vaše replikované virtuální počítače patří. Ve výchozím nastavení vytvoří Site Recovery v cílové oblasti novou skupinu prostředků. Získá název přípony "Azure Site Recovery". Pokud skupina prostředků už existuje, který byl vytvořen pomocí Azure Site Recovery, použije se Tenhle certifikát. Můžete také přizpůsobit, jak je znázorněno v následující části. Umístění cílové skupiny prostředků může být libovolné oblasti Azure, s výjimkou oblasti, kde jsou hostované zdrojové virtuální počítače.
-    - **Cílová virtuální síť**: Ve výchozím nastavení vytvoří Site Recovery v cílové oblasti novou virtuální síť. Získá název přípony "Azure Site Recovery". Má namapované na zdrojovou síť a použít pro všechny budoucí ochrany. [Další informace](site-recovery-network-mapping-azure-to-azure.md) o mapování sítě.
-    - **Cílové účty úložiště (Pokud je váš zdrojový virtuální počítač nepoužívá spravované disky)** : Ve výchozím nastavení vytvoří Site Recovery nový cílový účet úložiště podle tak napodobuje konfiguraci úložiště zdrojového virtuálního počítače. Pokud účet úložiště už existuje, je znovu.
-    - **Repliky spravovaných disků (Pokud zdrojový virtuální počítač používá spravované disky)** : Site Recovery vytvoří nové spravované disky repliky v cílové oblasti zrcadlící spravované disky zdrojového Virtuálního počítače ze stejného typu úložiště (standard nebo premium) jako spravované disky zdrojového Virtuálního počítače.
-    - **Účty úložiště mezipaměti**: Site Recovery potřebuje účet úložiště, s názvem *úložiště do mezipaměti* ve zdrojové oblasti. Všechny změny na zdrojových virtuálních počítačů jsou sledovány a odešle na účet úložiště mezipaměti. Budete pak replikují do cílového umístění.
-    - **Skupina dostupnosti**: Ve výchozím nastavení vytvoří Site Recovery novou v cílové oblasti skupinu dostupnosti. Název může mít příponu "Azure Site Recovery". Pokud skupinu dostupnosti, které bylo vytvořeno pomocí Site Recovery už existuje, je znovu.
-    - **Trezory klíčů šifrování disku**: Ve výchozím nastavení vytvoří Site Recovery v cílové oblasti nový trezor klíčů. Má příponou "Azure Site Recovery", který je založen na klíče pro šifrování disků zdrojového virtuálního počítače. Pokud se trezor klíčů, které bylo vytvořeno pomocí Azure Site Recovery už existuje, je znovu.
-    - **Trezory klíčů šifrovací klíče**: Ve výchozím nastavení vytvoří Site Recovery v cílové oblasti nový trezor klíčů. Název má příponou "Azure Site Recovery", který je založen na klíče šifrovací klíče zdrojového virtuálního počítače. Pokud se trezor klíčů Azure Site Recovery vytvoří již existuje, je znovu.
-    - **Zásady replikace**: Definuje nastavení historie uchovávání bodů obnovení a frekvence pořizování snímků konzistentních s aplikací. Ve výchozím nastavení vytvoří Site Recovery novou zásadu replikace s výchozími nastaveními z *24 hodin* uchování bodu obnovení a *60 minut* pro frekvence pořizování snímků konzistentních s aplikací.
+    - **Cílové umístění**: Místo, kde budou replikována vaše zdrojová data virtuálního počítače. Site Recovery poskytuje seznam vhodných cílových oblastí na základě umístění vybraného počítače. Doporučujeme použít stejné umístění jako v umístění trezoru Recovery Services.
+    - **Cílové předplatné**: Cílové předplatné, které se používá pro zotavení po havárii. Ve výchozím nastavení je cílové předplatné stejné jako zdrojové předplatné.
+    - **Cílová skupina prostředků**: Skupina prostředků, do které patří všechny replikované virtuální počítače. Ve výchozím nastavení Site Recovery vytvoří novou skupinu prostředků v cílové oblasti. Název Získá příponu ASR. Pokud již existuje skupina prostředků, která byla vytvořena Azure Site Recovery, je znovu použita. Můžete ji také přizpůsobit, jak je znázorněno v následující části. Umístění cílové skupiny prostředků může být libovolná oblast Azure s výjimkou oblasti, ve které jsou hostované zdrojové virtuální počítače.
+    - **Cílová virtuální síť**: Ve výchozím nastavení Site Recovery vytvoří novou virtuální síť v cílové oblasti. Název Získá příponu ASR. Je namapována na vaši zdrojovou síť a používá se pro jakoukoliv budoucí ochranu. [Přečtěte si další informace](site-recovery-network-mapping-azure-to-azure.md) o mapování sítě.
+    - **Cílové účty úložiště (Pokud zdrojový virtuální počítač nepoužívá spravované disky)** : Ve výchozím nastavení Site Recovery vytvoří nový cílový účet úložiště tím, že mimicking konfiguraci úložiště virtuálních počítačů. Pokud účet úložiště již existuje, bude znovu použit.
+    - **Spravované disky repliky (Pokud zdrojový virtuální počítač používá spravované disky)** : Site Recovery v cílové oblasti vytvoří nové repliky spravované disky pro zrcadlení spravovaných disků zdrojového virtuálního počítače se stejným typem úložiště (Standard nebo Premium) jako se spravovanými disky zdrojového virtuálního počítače.
+    - **Účty úložiště mezipaměti**: Site Recovery potřebuje další účet úložiště s názvem *úložiště mezipaměti* ve zdrojové oblasti. Všechny změny ve zdrojových virtuálních počítačích jsou sledovány a odesílány do účtu úložiště mezipaměti. Pak se replikují do cílového umístění.
+    - **Skupina dostupnosti**: Ve výchozím nastavení Site Recovery vytvoří novou skupinu dostupnosti v cílové oblasti. Název má příponu ASR. Pokud skupina dostupnosti, kterou vytvořil Site Recovery, už existuje, použije se znovu.
+    - **Trezory klíčů pro šifrování disku**: Ve výchozím nastavení Site Recovery vytvoří nový trezor klíčů v cílové oblasti. Má příponu ASR založenou na klíčích pro šifrování disků zdrojového virtuálního počítače. Pokud Trezor klíčů, který byl vytvořen Azure Site Recovery, již existuje, bude znovu použit.
+    - **Trezory**klíčů šifrovacího klíče: Ve výchozím nastavení Site Recovery vytvoří nový trezor klíčů v cílové oblasti. Název má příponu ASR, která je založená na šifrovacích klíčích zdrojového virtuálního počítače. Pokud již existuje Trezor klíčů vytvořený pomocí Azure Site Recovery, bude znovu použit.
+    - **Zásady replikace**: Definuje nastavení pro historii uchovávání bodů obnovení a četnost snímků konzistentních vzhledem k aplikacím. Ve výchozím nastavení Site Recovery vytvoří novou zásadu replikace s výchozím nastavením *24 hodin* pro uchování bodu obnovení a *60 minut* pro frekvenci snímků konzistentní vzhledem k aplikacím.
 
-## <a name="customize-target-resources"></a>Přizpůsobení cílové prostředky
+## <a name="customize-target-resources"></a>Přizpůsobení cílových prostředků
 
-Následujícím postupem změnit výchozí nastavení cíle Site Recovery.
+Pomocí těchto kroků upravíte Site Recovery výchozí nastavení cíle.
 
-1. Vyberte **vlastní** vedle "Cílové předplatné" upravit výchozí cílové předplatné. Vyberte předplatné ze seznamu předplatných, které jsou k dispozici v tenantovi Azure AD.
+1. Pokud chcete změnit výchozí cílové předplatné, vyberte **přizpůsobit** u možnosti cílové předplatné. Vyberte předplatné ze seznamu předplatných, která jsou k dispozici v tenantovi Azure AD.
 
-2. Vyberte **vlastní** vedle "skupiny prostředků, síť, úložiště a skupiny dostupnosti" upravit následující nastavení:
-    - Pro **cílová skupina prostředků**, vyberte skupinu prostředků ze seznamu skupin prostředků v cílovém umístění předplatného.
-    - Pro **cílovou virtuální sítí**, vyberte ze seznamu virtuálních sítí v cílovém umístění v síti.
-    - Pro **dostupnosti**, můžete přidat nastavení skupinu dostupnosti pro virtuální počítač, pokud jsou součástí skupiny dostupnosti ve zdrojové oblasti.
-    - Pro **účty úložiště v cíli**, vyberte účet, který chcete použít.
+2. Vyberte **přizpůsobit** vedle možnosti skupina prostředků, síť, úložiště a skupiny dostupnosti a upravte následující výchozí nastavení:
+    - V poli **cílová skupina prostředků**vyberte skupinu prostředků ze seznamu skupin prostředků v cílovém umístění předplatného.
+    - V poli **cílová virtuální síť**vyberte síť ze seznamu virtuálních sítí v cílovém umístění.
+    - V případě **skupiny dostupnosti**můžete do virtuálního počítače přidat nastavení skupiny dostupnosti, pokud jsou součástí skupiny dostupnosti ve zdrojové oblasti.
+    - U **cílových účtů úložiště**vyberte účet, který chcete použít.
 
-2. Vyberte **vlastní** vedle "Nastavení šifrování" upravit následující nastavení:
-   - Pro **služby key vault cílový disk encryption**, vyberte trezor klíčů šifrování disku cílového seznamu trezorů klíčů v cílovém umístění předplatného.
-   - Pro **cílové šifrování klíče služby key vault**, vyberte cíl šifrování klíče služby key vault ze seznamu trezorů klíčů v cílovém umístění předplatného.
+2. Pokud chcete upravit následující výchozí nastavení, vyberte **přizpůsobit** u možnosti nastavení šifrování:
+   - V případě **trezoru klíčů cílového disku**vyberte v seznamu trezorů klíčů v cílovém umístění předplatného možnost trezoru šifrovacího klíče cílového disku.
+   - U **trezoru šifrovacího klíče cílového klíče**vyberte v seznamu trezorů klíčů v cílovém umístění předplatného možnost trezor šifrovacího klíče cílového klíče.
 
-3. Vyberte **vytvořit cílový prostředek** > **povolením replikace**.
-4. Po virtuální počítače jsou povolena pro replikaci, můžete zkontrolovat stav virtuálních počítačů v rámci **replikované položky**.
+3. Vyberte **vytvořit cílový prostředek** > **Povolit replikaci**.
+4. Po povolení replikace virtuálních počítačů můžete u **replikovaných položek**ověřit stav virtuálních počítačů.
 
 >[!NOTE]
->Během počáteční replikace stavu může trvat nějakou dobu bez zjevné průběh aktualizace. Klikněte na tlačítko **aktualizovat** získat nejnovější stav.
+>Během počáteční replikace může aktualizace stavu nějakou dobu trvat, a to bez zjevného postupu. Kliknutím na **aktualizovat** získáte nejnovější stav.
 
-## <a name="update-target-vm-encryption-settings"></a>Aktualizace nastavení šifrování cílového virtuálního počítače
-V následujících scénářích bude nutné aktualizovat nastavení šifrování cílového virtuálního počítače:
-  - Povolování replikace Site Recovery na virtuálním počítači. Později povolit šifrování disku ve zdrojovém virtuálním počítači.
-  - Povolování replikace Site Recovery na virtuálním počítači. Později můžete změnit šifrovací klíč disku nebo šifrovací klíč klíče zdrojového virtuálního počítače.
+## <a name="update-target-vm-encryption-settings"></a>Aktualizovat nastavení šifrování cílového virtuálního počítače
+V následujících scénářích budete muset aktualizovat nastavení šifrování cílového virtuálního počítače:
+  - Povolili jste Site Recovery replikaci na virtuálním počítači. Později jste na zdrojovém virtuálním počítači povolili šifrování disku.
+  - Povolili jste Site Recovery replikaci na virtuálním počítači. Později jste změnili šifrovací klíč disku nebo šifrovací klíč klíče na zdrojovém virtuálním počítači.
 
-Můžete použít [skript](#copy-disk-encryption-keys-to-the-dr-region-by-using-the-powershell-script) zkopírujte šifrovací klíče do cílové oblasti a pak aktualizujte nastavení šifrování cíle v **trezor služby Recovery services** > *replikovaná položka*  >  **Vlastnosti** > **výpočty a síť**.
+Pomocí [skriptu](#copy-disk-encryption-keys-to-the-dr-region-by-using-the-powershell-script) můžete zkopírovat šifrovací klíče do cílové oblasti a potom aktualizovat cílové nastavení šifrování ve**vlastnostech**  >  *repliky* >  >  **služby Recovery Services**. **Výpočty a síť**.
 
-![Aktualizace ADE nastavení dialogového okna](./media/azure-to-azure-how-to-enable-replication-ade-vms/update-ade-settings.png)
+![Dialogové okno aktualizace nastavení ADE](./media/azure-to-azure-how-to-enable-replication-ade-vms/update-ade-settings.png)
 
-## <a id="trusted-root-certificates-error-code-151066"></a>Řešení potíží s trezoru klíčů oprávnění při replikaci virtuálních počítačů Azure do Azure
+## <a id="trusted-root-certificates-error-code-151066"></a>Řešení potíží s oprávněními trezoru klíčů během replikace virtuálních počítačů z Azure do Azure
 
-Azure Site Recovery vyžaduje oprávnění nejméně pro čtení v Key vault zdrojové oblasti a oprávnění k zápisu cílové oblasti trezor klíčů pro čtení tajného klíče a zkopírujte jej do trezoru klíčů cílové oblasti. 
+Azure Site Recovery vyžaduje aspoň oprávnění ke čtení pro Trezor klíčů zdrojové oblasti a oprávnění k zápisu do trezoru klíčů cílové oblasti pro čtení tajného klíče a jeho zkopírování do trezoru klíčů cílové oblasti. 
 
-**1. příčina:** "GET" oprávnění nemáte k dispozici na **zdrojové oblasti Key vault** ke čtení klíče. </br>
-**Jak vyřešit:** Bez ohledu na to, jestli jste správcem předplatného nebo ne je důležité, abyste měli oprávnění get pro trezor klíčů.
+**Příčina 1:** Nemáte oprávnění GET pro **Trezor klíčů zdrojové oblasti** pro čtení klíčů. </br>
+**Jak opravit:** Bez ohledu na to, jestli jste správce předplatného, nebo ne, je důležité, abyste měli k trezoru klíčů oprávnění získat.
 
-1. Přejděte do služby Key vault zdrojové oblasti, která v tomto příkladu je "ContososourceKeyvault" > **zásady přístupu** 
-2. V části **výběr objektu zabezpečení** přidejte uživatelské jméno, například: "dradmin@contoso.com"
-3. V části **oprávnění klíče** vyberte získat 
-4. V části **tajný kód oprávnění** vyberte získat 
-5. Uložte zásadu přístupu
+1. Přejděte do trezoru klíčů zdrojové oblasti, který je v tomto příkladu "ContososourceKeyvault" > **zásady přístupu** . 
+2. V části **Vybrat Hlavní** přidejte uživatelské jméno. Příklad:dradmin@contoso.com""
+3. V části **oprávnění klíče** vyberte získat. 
+4. V části **oprávnění tajného** kódu vyberte získat. 
+5. Uložení zásad přístupu
 
-**2. příčina:** Nemáte požadovaná oprávnění **cílové oblasti Key vault** zapsat klíče. </br>
+**Příčina 2:** Nemáte požadovaná oprávnění k zápisu klíčů do **trezoru klíčů cílové oblasti** . </br>
 
-*Například*: Pokusu o replikaci virtuálního počítače, který má služby key vault *ContososourceKeyvault* ve zdrojové oblasti.
-Máte všechna oprávnění pro trezor klíčů zdrojové oblasti. Ale při ochrany, vyberete už vytvořili trezor klíčů ContosotargetKeyvault, který nemá oprávnění. Dojde k chybě.
+*Například*: Pokusíte se replikovat virtuální počítač, který má *ContososourceKeyvault* trezoru klíčů ve zdrojové oblasti.
+Máte všechna oprávnění k trezoru klíčů zdrojové oblasti. Ale během ochrany vyberte už vytvořený Trezor klíčů ContosotargetKeyvault, který nemá oprávnění. Dojde k chybě.
 
-Oprávnění na [cílové služby Key vault](#required-user-permissions)
+Vyžaduje se oprávnění pro [cílový Trezor klíčů](#required-user-permissions) .
 
-**Jak vyřešit:** Přejděte na **Domů** > **Keyvaults** > **ContosotargetKeyvault** > **zásady přístupu** a přidejte příslušná oprávnění.
+**Jak opravit:** Přejděte na **domácí** > **trezory** > klíčů**ContosotargetKeyvault** > **zásady přístupu** a přidejte příslušná oprávnění.
 
 ## <a name="next-steps"></a>Další postup
 
-[Další informace](site-recovery-test-failover-to-azure.md) o spuštění testovací převzetí služeb při selhání.
+[Přečtěte si další informace](site-recovery-test-failover-to-azure.md) o spuštění testovacího převzetí služeb při selhání.

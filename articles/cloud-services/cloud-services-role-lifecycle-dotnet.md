@@ -1,54 +1,48 @@
 ---
-title: Zpracování událostí životního cyklu cloudových služeb | Dokumentace Microsoftu
-description: Přečtěte si použití metody životního cyklu role cloudové služby v .NET
+title: Zpracování událostí životního cyklu cloudové služby | Microsoft Docs
+description: Přečtěte si, jak se metody životního cyklu role cloudové služby dají používat v .NET.
 services: cloud-services
 documentationcenter: .net
-author: jpconnock
-manager: timlt
-editor: ''
-ms.assetid: 39b30acd-57b9-48b7-a7c4-40ea3430e451
+author: georgewallace
 ms.service: cloud-services
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
-ms.author: jeconnoc
-ms.openlocfilehash: 13f500b32bb85bdc0f84b812ef4ef9188a257771
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: gwallace
+ms.openlocfilehash: fa4eebfa64a296e6830db3730de31ca9b0565678
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60406411"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68358966"
 ---
 # <a name="customize-the-lifecycle-of-a-web-or-worker-role-in-net"></a>Přizpůsobení životního cyklu webové role nebo role pracovního procesu v .NET
-Když vytvoříte roli pracovního procesu, můžete rozšířit [RoleEntryPoint](/previous-versions/azure/reference/ee758619(v=azure.100)) třídy, které poskytuje metody pro vás k přepsání, které vám umožní reagovat na události životního cyklu. V případě webových rolí Tato třída je volitelné, takže je nutné použít pro reakci na události životního cyklu.
+Když vytváříte roli pracovního procesu, rozšíříte třídu [RoleEntryPoint](/previous-versions/azure/reference/ee758619(v=azure.100)) , která poskytuje metody pro přepsání, které umožňují reagovat na události životního cyklu. Pro webové role je tato třída volitelná, takže ji musíte použít k reakci na události životního cyklu.
 
-## <a name="extend-the-roleentrypoint-class"></a>Rozšíření třídy RoleEntryPoint
-[RoleEntryPoint](/previous-versions/azure/reference/ee758619(v=azure.100)) třída obsahuje metody, které jsou volány aplikací Azure při jeho **spustí**, **spustí**, nebo **zastaví** webové nebo pracovní role. Volitelně můžete přepsat tyto metody pro správu role inicializace, sekvence vypnutí rolí nebo vlákno provádění role. 
+## <a name="extend-the-roleentrypoint-class"></a>Rozšiřování třídy RoleEntryPoint
+Třída [RoleEntryPoint](/previous-versions/azure/reference/ee758619(v=azure.100)) zahrnuje metody, které Azure volá při **spuštění**, **spuštění**nebo **zastavení** webové role nebo role pracovního procesu. Volitelně můžete tyto metody přepsat pro správu inicializace rolí, sekvencí vypnutí rolí nebo vlákna spuštění role. 
 
-Při rozšiřování **RoleEntryPoint**, je třeba si uvědomit následující chování metody:
+Při rozšiřování **RoleEntryPoint**byste měli mít na paměti následující chování metod:
 
-* [OnStart](/previous-versions/azure/reference/ee772851(v=azure.100)) a [OnStop](/previous-versions/azure/reference/ee772844(v=azure.100)) metody vrací logickou hodnotu, takže je možné vrátit **false** z těchto metod.
+* Metody [OnStart](/previous-versions/azure/reference/ee772851(v=azure.100)) a [dokončí](/previous-versions/azure/reference/ee772844(v=azure.100)) vrací logickou hodnotu, takže je možné z těchto metod vrátit **hodnotu false** .
   
-   Pokud váš kód vrátí **false**, ukončí proces role, bez nutnosti spuštění jakékoli sekvence vypnutí můžete mít na místě. Obecně byste se měli vyhnout vrácení **false** z **OnStart** metody.
-* Některé nezachycená výjimka v rámci přetížení **RoleEntryPoint** metoda považuje za neošetřenou výjimku.
+   Pokud váš kód vrátí **hodnotu false**, proces role se náhle ukončí, aniž by se musela spustit žádná sekvence vypnutí. Obecně byste se měli vyhnout vrácení **hodnoty false** z metody **OnStart** .
+* Jakékoli nezachycené výjimky v rámci přetížení metody **RoleEntryPoint** se považují za neošetřenou výjimku.
   
-   Pokud dojde k výjimce v rámci jedné z metod životního cyklu, bude vyvolána Azure [UnhandledException](/dotnet/api/system.appdomain.unhandledexception) událostí a proces je ukončen. Poté, co vaše role bylo převedeno do režimu offline, se restartuje v Azure. Když dojde k neošetřené výjimce [zastavení](/previous-versions/azure/reference/ee758136(v=azure.100)) není vyvolána událost a **OnStop** metoda není volána.
+   Pokud dojde k výjimce v rámci jedné z metod životního cyklu, Azure vyvolá událost [UnhandledException](/dotnet/api/system.appdomain.unhandledexception) a proces se ukončí. Po převedení role do režimu offline bude Azure restartován. Pokud dojde k neošetřené výjimce, událost [zastavení](/previous-versions/azure/reference/ee758136(v=azure.100)) není vyvolána a metoda při **chybě** není volána.
 
-Pokud vaše role se nespustí nebo se recykluje mezi inicializace, zaneprázdněný a zastavení stavy, může váš kód došlo k neošetřené výjimce v jednom z události životního cyklu pokaždé, když role restartuje. V takovém případě použijte [UnhandledException](/dotnet/api/system.appdomain.unhandledexception) událost, abyste zjistili příčinu výjimkou a odpovídajícím způsobem zpracovat. Vaše role může být také vrácení z [spustit](/previous-versions/azure/reference/ee772746(v=azure.100)) metodu, která způsobí restartování role. Další informace o stavy nasazení najdete v tématu [běžné problémy který příčina role recyklovat](cloud-services-troubleshoot-common-issues-which-cause-roles-recycle.md).
+Pokud se vaše role nespustí nebo je recyklace mezi inicializací, zaneprázdněnou a stavem zastavení, váš kód může při každém restartování role vystavit neošetřenou výjimku v rámci jedné z událostí životního cyklu. V takovém případě použijte událost [UnhandledException](/dotnet/api/system.appdomain.unhandledexception) k určení příčiny výjimky a patřičně ji zpracujte. Vaše role může být vrácena také z metody [Run](/previous-versions/azure/reference/ee772746(v=azure.100)) , což způsobí, že se role restartuje. Další informace o stavech nasazení najdete v tématu [běžné problémy, které způsobují recyklaci rolí](cloud-services-troubleshoot-common-issues-which-cause-roles-recycle.md).
 
 > [!NOTE]
-> Pokud používáte **nástroje Azure pro Microsoft Visual Studio** vyvíjet aplikace, šablony projektů role automaticky rozšíří **RoleEntryPoint** třídy, v  *WebRole.cs* a *WorkerRole.cs* soubory.
+> Pokud používáte **nástroje Azure pro Microsoft Visual Studio** k vývoji vaší aplikace, šablony projektu role automaticky rozšířily třídu **RoleEntryPoint** pro vás, v souborech *WebRole.cs* a *WorkerRole.cs* .
 > 
 > 
 
 ## <a name="onstart-method"></a>OnStart – metoda
-**OnStart** metoda se volá, když vaše instance role do online režimu Azure. Při provádění operace OnStart kód role instance je označen jako **zaneprázdněn** a žádné externí přenosy budou přesměrováni na ho pomocí služby Vyrovnávání zatížení. Můžete přepsat tuto metodu za účelem inicializace činnosti, jako jsou implementace obslužné rutiny událostí a spuštění [Azure Diagnostics](cloud-services-how-to-monitor.md).
+Metoda **OnStart** se volá, když Azure vaši instanci role dovede do online režimu. I když je spuštěn kód OnStart, je instance role označena jako **zaneprázdněná** a nástroj pro vyrovnávání zatížení do něj nesměruje žádný externí provoz. Tuto metodu můžete přepsat pro provedení inicializační práce, například implementace obslužných rutin událostí a spouštění [Azure Diagnostics](cloud-services-how-to-monitor.md).
 
-Pokud **OnStart** vrátí **true**instance je úspěšně inicializován a Azure zavolá **RoleEntryPoint.Run** metody. Pokud **OnStart** vrátí **false**, roli skončí okamžitě, bez provádění jakékoli plánované vypnutí pořadí.
+Pokud **OnStart** vrátí **hodnotu true**, instance se úspěšně Inicializuje a Azure zavolá metodu **RoleEntryPoint. Run** . Pokud **OnStart** vrátí **hodnotu false**, role se okamžitě ukončí, aniž by bylo nutné spouštět žádné plánované sekvence vypnutí.
 
-Následující příklad kódu ukazuje, jak přepsat **OnStart** metody. Tato metoda konfiguruje a monitorování diagnostiky se spustí při spuštění role instance a nastaví přenos protokolování dat do účtu úložiště:
+Následující příklad kódu ukazuje, jak přepsat metodu **OnStart** . Tato metoda konfiguruje a spustí diagnostické monitorování při spuštění instance role a nastaví přenos protokolovaných dat do účtu úložiště:
 
 ```csharp
 public override bool OnStart()
@@ -64,22 +58,22 @@ public override bool OnStart()
 }
 ```
 
-## <a name="onstop-method"></a>OnStop – metoda
-**OnStop** metoda se volá, když role instance je v režimu offline v Azure a předtím, než se proces ukončí. Mohou přepsat tuto metodu volat kód potřebný pro vaši instanci role pro vypnutí čistě.
+## <a name="onstop-method"></a>Metoda zastavení
+Metoda **instop** se volá po převedení instance role do režimu offline v Azure a před ukončením procesu. Tuto metodu můžete přepsat pro volání kódu, který je požadován pro vaši instanci role k čistěmu vypnutí.
 
 > [!IMPORTANT]
-> Kód spuštěný v **OnStop** metoda má po omezenou dobu pro dokončení, když je volána z důvodů, než je vypnutí iniciované uživatelem. Po uplynutí této doby je proces ukončen, takže musíte přesvědčit, že kód v **OnStop** metodu můžete rychle spustit nebo toleruje neběží na dokončení. **OnStop** metoda je volána po **zastavení** událost se vyvolá.
+> Kód spuštěný v metodě- **stop** má časově omezený čas na jeho dokončení, pokud je volán z jiných důvodů než vypnutí iniciované uživatelem. Po uplynutí této doby se proces ukončí, takže je nutné zajistit, aby kód v metodě k **zastavení** mohl rychle běžet nebo tolerovat nechody do dokončení. Metoda **instop** je volána po vyvolání události **zastavení** .
 > 
 > 
 
 ## <a name="run-method"></a>Run – metoda
-Je možné přepsat **spustit** metody k implementaci dlouho běžící vlákna pro vaši instanci role.
+Metodu **Run** můžete přepsat tak, aby pro vaši instanci role implementovala dlouhodobě běžící vlákno.
 
-Přepsání **spustit** metoda se nevyžaduje; výchozí implementace spuštění vlákna, které stále v režimu spánku. Pokud přepíšete **spustit** metody kódu měla být trvale blokovaná. Pokud **spustit** metoda vrací výsledek, je automaticky řádně recyklaci role; jinými slovy, vyvolá Azure **zastavení** událostí a volání **OnStop** metoda tak, aby vaše vypnutí pořadí může být spuštěna před roli je převedeno do režimu offline.
+Přepsání metody **Run** není vyžadováno; Výchozí implementace spustí vlákno, které je trvale úsporné. Pokud přepíšete metodu **Run** , váš kód by měl blokovat neomezenou dobu. Pokud se metoda **Run** vrátí, role se automaticky recykluje. Jinými slovy, Azure vyvolá událost **zastavení** a zavolá metodu restop, aby bylo možné spustit sekvence vypnutí, než bude role přepnuta do režimu offline.
 
-### <a name="implementing-the-aspnet-lifecycle-methods-for-a-web-role"></a>Implementace metody životního cyklu technologie ASP.NET pro webové role
-Můžete použít metody životního cyklu ASP.NET poskytovaným **RoleEntryPoint** třídy související se správou pořadí inicializace a ukončení pro webovou roli. To může být užitečné pro účely kompatibility, pokud se přenos stávající aplikaci ASP.NET do Azure. Volání těchto metod životního cyklu technologie ASP.NET v rámci **RoleEntryPoint** metody. **Aplikace\_Start** metoda je volána po **RoleEntryPoint.OnStart** dokončení metody. **Aplikace\_End** metoda je volána před provedením **RoleEntryPoint.OnStop** metoda je volána.
+### <a name="implementing-the-aspnet-lifecycle-methods-for-a-web-role"></a>Implementace metod životního cyklu ASP.NET pro webovou roli
+Pomocí metod životního cyklu ASP.NET můžete kromě těch, které poskytuje třída **RoleEntryPoint** , spravovat inicializační a ukončovací sekvenci webové role. To může být užitečné pro účely kompatibility, Pokud předáváte existující aplikaci ASP.NET do Azure. Metody životního cyklu ASP.NET se volají v rámci metod **RoleEntryPoint** . Metoda **spuštění\_aplikace** je volána po dokončení metody **RoleEntryPoint. OnStart** . Metoda **End\_aplikace** je volána před voláním metody **RoleEntryPoint... stop** .
 
 ## <a name="next-steps"></a>Další postup
-Zjistěte, jak [vytvořit balíček cloudové služby](cloud-services-model-and-package.md).
+Přečtěte si, jak [vytvořit balíček cloudové služby](cloud-services-model-and-package.md).
 

@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý start: Hledat videa pomocí rozhraní REST API pro vyhledávání Bingu Video aC#'
-titlesuffix: Azure Cognitive Services
-description: Použít tento rychlý start k odesílání požadavků pro vyhledávání videí pomocí Bingu Video Search REST API C#.
+title: 'Rychlý start: Hledání videí pomocí Vvyhledávání videí Bingu REST API aC#'
+titleSuffix: Azure Cognitive Services
+description: Pomocí tohoto rychlého startu můžete odesílat žádosti o vyhledávání videí Vvyhledávání videí Bingu REST API pomocí C#.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,21 +10,21 @@ ms.subservice: bing-video-search
 ms.topic: quickstart
 ms.date: 06/19/2019
 ms.author: aahi
-ms.openlocfilehash: 06f01875b6173c2b1188c2179b9bc4b3f67c714c
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 9ba2027641ef6cc9a86044850e8996f986992bf8
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67275898"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68500192"
 ---
-# <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-c"></a>Rychlý start: Hledat videa pomocí rozhraní REST API pro vyhledávání Bingu Video aC#
+# <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-c"></a>Rychlý start: Hledání videí pomocí Vvyhledávání videí Bingu REST API aC#
 
-V tomto rychlém startu můžete provést první volání do rozhraní API Bingu pro vyhledávání Video a zobrazení výsledků na vyhledávacím z odpovědi JSON. Tento jednoduchý C# aplikace odešle dotaz pro vyhledávání videí HTTP do rozhraní API a zobrazí odpovědi. Aplikace je sice napsaná v C#, ale rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků.
+Pomocí tohoto rychlého startu můžete provést vaše první volání na rozhraní API Bingu pro vyhledávání videí a zobrazit výsledky hledání z odpovědi JSON. Tato jednoduchá C# aplikace pošle do rozhraní API dotaz pro vyhledávání videí http a zobrazí odpověď. Aplikace je sice napsaná v C#, ale rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků.
 
-Zdrojový kód pro tuto ukázku je k dispozici [na Githubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingVideoSearchv7.cs) zpracování dalších chyb, funkcí a kód poznámky.
+Zdrojový kód pro tuto ukázku je k dispozici [na GitHubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingVideoSearchv7.cs) s dalšími zpracováním chyb, funkcemi a poznámkami ke kódu.
 
 ## <a name="prerequisites"></a>Požadavky
-* Libovolná edice [sady Visual Studio 2017 nebo novější](https://www.visualstudio.com/downloads/).
+* Libovolná edice sady [Visual Studio 2017 nebo novější](https://www.visualstudio.com/downloads/).
 * Rozhraní [Json.NET](https://www.newtonsoft.com/json), k dispozici jako balíček NuGet.
 * Pokud používáte Linux nebo MacOS, je možné tuto aplikaci spustit pomocí [Mono](https://www.mono-project.com/).
 
@@ -32,7 +32,7 @@ Zdrojový kód pro tuto ukázku je k dispozici [na Githubu](https://github.com/A
 
 ## <a name="create-and-initialize-a-project"></a>Vytvoření a inicializace projektu
 
-1. Vytvořte nové konzoly řešení v sadě Visual Studio. Pak přidejte následující obory názvů do souboru hlavního kódu.
+1. Vytvořte nové řešení konzoly v aplikaci Visual Studio. Pak přidejte následující obory názvů do souboru hlavního kódu.
 
     ```csharp
     using System;
@@ -42,7 +42,7 @@ Zdrojový kód pro tuto ukázku je k dispozici [na Githubu](https://github.com/A
     using System.Collections.Generic;
     ```
 
-2. Přidejte proměnné pro váš klíč předplatného, koncový bod a hledání termín.
+2. Přidejte proměnné pro svůj klíč předplatného, koncový bod a hledaný termín.
 
     ```csharp
     const string accessKey = "enter your key here";
@@ -50,7 +50,7 @@ Zdrojový kód pro tuto ukázku je k dispozici [na Githubu](https://github.com/A
     const string searchTerm = "kittens";
     ```
 
-### <a name="create-a-struct-to-format-the-bing-video-search-api-response"></a>Vytvoření struktury k formátování odpovědi API pro vyhledávání videí Bingu
+### <a name="create-a-struct-to-format-the-bing-video-search-api-response"></a>Vytvoření struktury pro naformátování odezvy rozhraní API Bingu pro vyhledávání videí
 
 1. Definujte strukturu `SearchResult` tak, aby obsahovala výsledky hledání obrázků, a informace v hlavičce JSON.
 
@@ -62,11 +62,11 @@ Zdrojový kód pro tuto ukázku je k dispozici [na Githubu](https://github.com/A
         }
     ```
 
-## <a name="create-and-handle-a-video-search-request"></a>Vytvořit a zpracovat žádost o vyhledávání videí
+## <a name="create-and-handle-a-video-search-request"></a>Vytvoření a zpracování žádosti o vyhledávání videí
 
 Vytvořte metodu s názvem `BingVideoSearch`, která provede volání rozhraní API a nastaví typ vrácení na strukturu `SearchResult` vytvořenou dříve. V metodě proveďte následující kroky:
 
-1. Sestavte URI pro žádost o vyhledávání. Všimněte si, že musí být ve formátu toSearch termín vyhledávání, než se připojí na řetězec.
+1. Sestavte URI pro žádost o vyhledávání. Všimněte si, že hledaný výraz toSearch musí být před připojením k řetězci zformátován.
 
     ```csharp
     
@@ -76,7 +76,7 @@ Vytvořte metodu s názvem `BingVideoSearch`, která provede volání rozhraní 
     //...
     ```
 
-2. Provést webový požadavek přidáním klíče, abyste `Ocp-Acpim-Subscription-Key` hlavičky a pomocí `HttpWebResponse` objekt pro uložení odpovědi rozhraní API. Potom použijte `StreamReader` získat řetězec formátu JSON.
+2. Webovou žádost můžete provést tak, že do `Ocp-Acpim-Subscription-Key` hlavičky přidáte svůj klíč a `HttpWebResponse` pomocí objektu uložíte odpověď rozhraní API. Pak použijte `StreamReader` k získání řetězce JSON.
 
     ```csharp
     //...
@@ -89,7 +89,7 @@ Vytvořte metodu s názvem `BingVideoSearch`, která provede volání rozhraní 
 
 ## <a name="process-the-result"></a>Zpracovat výsledek
 
-1. Vytvořte objekt výsledků hledání a extrahujte hlavičky HTTP Bingu. Pak se vraťte `searchResult` objektu. 
+1. Vytvořte objekt výsledků hledání a extrahujte hlavičky HTTP Bingu. Pak `searchResult` objekt vraťte. 
 
     ```csharp
     var searchResult = new SearchResult();
@@ -105,13 +105,13 @@ Vytvořte metodu s názvem `BingVideoSearch`, která provede volání rozhraní 
     return searchResult;
     ```
 
-2. Potom můžete vytisknout odpověď.
+2. Pak můžete odpověď vytisknout.
 
     ```csharp
     Console.WriteLine(result.jsonResult);
     ```
 
-## <a name="example-json-response"></a>Příklad JSON odpovědi 
+## <a name="example-json-response"></a>Příklad odpovědi JSON 
 
 Úspěšná odpověď se vrátí ve formátu JSON, jak je znázorněno v následujícím příkladu:
 
@@ -224,8 +224,8 @@ Vytvořte metodu s názvem `BingVideoSearch`, která provede volání rozhraní 
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Vytvoření webové jednostránkové aplikace](../tutorial-bing-video-search-single-page-app.md)
+> [Sestavení webové aplikace s jednou stránkou](../tutorial-bing-video-search-single-page-app.md)
 
-## <a name="see-also"></a>Další informace najdete v tématech 
+## <a name="see-also"></a>Viz také: 
 
- [Co je API pro vyhledávání videí Bingu?](../overview.md)
+ [Co je rozhraní API Bingu pro vyhledávání videí?](../overview.md)

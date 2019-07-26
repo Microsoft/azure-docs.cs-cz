@@ -1,185 +1,185 @@
 ---
 title: Vysoká dostupnost pro Hadoop – Azure HDInsight
-description: Zjistěte, jak clustery HDInsight zvýšit spolehlivost a dostupnost pomocí dalšího hlavního uzlu. Zjistěte, jak to má vliv služby Hadoop jako je například Ambari a Hive, a jak se připojit jednotlivě každému hlavnímu uzlu pomocí SSH.
+description: Přečtěte si, jak clustery HDInsight zlepšují spolehlivost a dostupnost pomocí dalšího hlavního uzlu. Přečtěte si, jak se to týká služeb Hadoop, jako je Ambari a podregistr, a také jak se jednotlivě připojit ke každému hlavnímu uzlu pomocí SSH.
 ms.reviewer: jasonh
 author: hrasheed-msft
-keywords: Vysoká dostupnost systému hadoop
+keywords: vysoká dostupnost Hadoop
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: hrasheed
-ms.openlocfilehash: 6cb72730ef3dbef81e2b2c9bc1c5cfd3bbd88b65
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1828efb410849677e859d341e4e16e4f5d4ca681
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64704938"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68405988"
 ---
-# <a name="availability-and-reliability-of-apache-hadoop-clusters-in-hdinsight"></a>Dostupnost a spolehlivost clusterů systému Apache Hadoop v HDInsight
+# <a name="availability-and-reliability-of-apache-hadoop-clusters-in-hdinsight"></a>Dostupnost a spolehlivost clusterů Apache Hadoop v HDInsight
 
-Clustery HDInsight poskytují dva hlavní uzly pro zvýšení dostupnosti a spolehlivosti služeb Apache Hadoop a spouštění úloh.
+Clustery HDInsight poskytují dva hlavní uzly, které zvyšují dostupnost a spolehlivost Apache Hadoopch služeb a úloh, které běží.
 
-Hadoop dosahuje vysoké dostupnosti a spolehlivosti replikuje data a služby napříč několika uzly v clusteru. Ale standardní distribucích systému Hadoop obvykle mívají pouze jeden hlavní uzel. Jakémkoli výpadku jeden hlavní uzel může způsobit, že cluster přestane fungovat. HDInsight poskytuje dva hlavní uzly zlepšit dostupnost a spolehlivost Hadoop.
+Hadoop dosahuje vysoké dostupnosti a spolehlivosti tím, že replikuje služby a data napříč několika uzly v clusteru. Standardní distribuce Hadoop mají obvykle pouze jeden hlavní uzel. Případný výpadek jednoho hlavního uzlu může způsobit, že cluster přestane fungovat. HDInsight poskytuje dvě hlavníchy, které zlepšují dostupnost a spolehlivost Hadoop.
 
 ## <a name="availability-and-reliability-of-nodes"></a>Dostupnost a spolehlivost uzlů
 
-Uzly v clusteru HDInsight jsou implementovány pomocí Azure Virtual Machines. Následující části popisují jednotlivých uzlů typy použité spolu s HDInsight. 
+Uzly v clusteru HDInsight se implementují pomocí Azure Virtual Machines. Následující části popisují jednotlivé typy uzlů používané v HDInsight. 
 
 > [!NOTE]  
-> Ne všechny typy uzlů se používají pro typ clusteru. Například typ clusteru Hadoop nemá žádné uzly Nimbus. Další informace o uzlech používá typy clusterů HDInsight, najdete v oddílu typy clusteru [založených na Linuxu vytvoření Hadoop clusterů v HDInsight](hdinsight-hadoop-provision-linux-clusters.md#cluster-types) dokumentu.
+> Ne všechny typy uzlů se používají pro typ clusteru. Například typ clusteru Hadoop nemá žádné uzly Nimbus. Další informace o uzlech, které používají typy clusterů HDInsight, najdete v části typy clusterů v tématu [Vytvoření clusterů Hadoop se systémem Linux v dokumentu HDInsight](hdinsight-hadoop-provision-linux-clusters.md#cluster-types) .
 
 ### <a name="head-nodes"></a>Hlavní uzly
 
-K zajištění vysoké dostupnosti služby Hadoop HDInsight poskytuje dva hlavní uzly. Oba hlavní uzly jsou současně aktivní a v chodu v rámci clusteru HDInsight. Některé služby, jako je například Apache HDFS nebo Apache Hadoop YARN, jsou aktivní na jeden hlavní uzel pouze v daném okamžiku. Jiné služby, jako je například HiveServer2 nebo Hive MetaStore jsou aktivní na oba hlavní uzly ve stejnou dobu.
+Pro zajištění vysoké dostupnosti služeb Hadoop poskytuje HDInsight dva hlavní uzly. Oba hlavní uzly jsou aktivní a běží v clusteru HDInsight současně. Některé služby, jako je Apache HDFS nebo Apache Hadoop nitě, jsou v jednom hlavním uzlu v každém okamžiku aktivní pouze pro jeden hlavní uzel. Další služby, jako je HiveServer2 nebo podregistr MetaStore, jsou v obou hlavních uzlech aktivní.
 
-Hlavní uzly (a dalších uzlů v HDInsight) mají číselnou hodnotu jako součást názvu hostitele uzlu. Například `hn0-CLUSTERNAME` nebo `hn4-CLUSTERNAME`.
+Hlavní uzly (a další uzly v HDInsight) mají číselnou hodnotu jako součást názvu hostitele uzlu. Například `hn0-CLUSTERNAME` nebo `hn4-CLUSTERNAME`.
 
 > [!IMPORTANT]  
-> S tím, zda je uzel primární nebo sekundární nepřidružujte číselnou hodnotu. Číselná hodnota se nachází pouze jako jedinečný název pro každý uzel.
+> Nepřidružte číselnou hodnotu k tomu, zda je uzel primární nebo sekundární. Číselná hodnota je přítomna pouze pro zadání jedinečného názvu pro každý uzel.
 
 ### <a name="nimbus-nodes"></a>Uzly Nimbus
 
-Uzly nimbus jsou k dispozici s clustery Apache Storm. Uzly Nimbus poskytují podobné funkce jako Hadoop jobtracker distribuci a monitorování zpracování v rámci pracovních uzlů. HDInsight poskytuje dva uzly Nimbus pro clustery Storm
+Uzly Nimbus jsou k dispozici v clusterech Apache Storm. Uzly Nimbus poskytují podobné funkce pro Hadoop JobTracker, a to distribucí a monitorováním zpracování napříč pracovními uzly. HDInsight poskytuje dva uzly Nimbus pro clustery s více prostředími.
 
-### <a name="apache-zookeeper-nodes"></a>Apache Zookeeper uzly
+### <a name="apache-zookeeper-nodes"></a>Uzly Apache Zookeeper
 
-[ZooKeeper](https://zookeeper.apache.org/) uzlů se používají pro vedoucího hlavní služeb na hlavní uzly. Používají se také zajistit, že služby, datových (pracovní) uzlů a brány vědět, které hlavního uzlu je hlavní služba aktivní na. Ve výchozím nastavení HDInsight poskytuje tři uzly ZooKeeper.
+Uzly [Zookeeper](https://zookeeper.apache.org/) slouží k volbě vedoucích služeb Master Services u hlavních uzlů. Používají se také k zajištění toho, aby služby, uzly dat (Worker) a brány věděli, na kterých hlavních uzlech je hlavní služba aktivní. Ve výchozím nastavení služba HDInsight poskytuje tři uzly ZooKeeper.
 
 ### <a name="worker-nodes"></a>Pracovní uzly
 
-Pracovní uzly provádět analýzu skutečná data, když je úloha odeslána do clusteru. Pokud selže jeden uzel pracovního procesu, úkol, který byl výkon se odešle do jiného uzlu pracovního procesu. Ve výchozím nastavení vytvoří čtyři pracovní uzly HDInsight. Toto číslo tak, aby odpovídala vašim potřebám, během a po vytvoření clusteru můžete změnit.
+Pracovní uzly provádějí vlastní analýzu dat při odeslání úlohy do clusteru. Pokud se pracovní uzel nezdařil, úloha, kterou prováděl, je odeslána do jiného pracovního uzlu. Ve výchozím nastavení vytvoří HDInsight čtyři pracovní uzly. Toto číslo můžete změnit tak, aby vyhovovalo vašim potřebám během i po vytvoření clusteru.
 
 ### <a name="edge-node"></a>Hraniční uzel
 
-Hraniční uzel není součástí aktivně analýzy dat v rámci clusteru. Používá se vývojáři nebo datovým vědcům při práci se systémem Hadoop. Na hraničním uzlu se nachází ve stejné virtuální síti Azure jako ostatní uzly v clusteru a přímý přístup k jiné uzly. Na hraničním uzlu je možné bez nutnosti převádět prostředky mimo kritické služby Hadoop nebo analytických úloh.
+Hraniční uzel se aktivně neúčastní analýzy dat v rámci clusteru. Je využíván vývojáři nebo odborníky přes data při práci se systémem Hadoop. Hraniční uzel žije ve stejné službě Azure Virtual Network jako ostatní uzly v clusteru a má přímý přístup ke všem ostatním uzlům. Hraniční uzel se dá použít, aniž byste museli přebírat prostředky z důležitých služeb Hadoop nebo úloh analýzy.
 
-V současné době služby ML na HDInsight je jediný typ clusteru, který obsahuje hraniční uzel ve výchozím nastavení. Pro služby ML na HDInsight, se používá k hraničnímu uzlu R testovací kód místně v uzlu před jeho odesláním do clusteru pro distribuované zpracování.
+V současné době jsou služby ML v HDInsight jediným typem clusteru, který ve výchozím nastavení poskytuje hraniční uzel. Pro služby ML Services v HDInsight se hraniční uzel před odesláním do clusteru pro distribuované zpracování používá v místním prostředí k testování kódu R.
 
-Informace o použití hraniční uzel s jinými typy clusteru, najdete v článku [použití hraničních uzlů v HDInsight](hdinsight-apps-use-edge-node.md) dokumentu.
+Informace o používání hraničního uzlu s jinými typy clusterů najdete v tématu [použití hraničních uzlů v HDInsight](hdinsight-apps-use-edge-node.md) .
 
 ## <a name="accessing-the-nodes"></a>Přístup k uzlům
 
-Poskytuje přístup ke clusteru přes internet prostřednictvím veřejné brány. Přístup je omezený na připojení k hlavním uzlům a (pokud existuje) na hraničním uzlu. Přístup ke službám, které běží na hlavní uzly. to neovlivní tím, že více hlavních uzlů. Veřejnou brány směruje žádosti do hlavního uzlu, který je hostitelem požadovanou službu. Například pokud Apache Ambari je aktuálně hostitelem sekundárnímu hlavnímu uzlu, brány směruje příchozí žádosti pro Ambari do tohoto uzlu.
+Přístup ke clusteru přes Internet se poskytuje prostřednictvím veřejné brány. Přístup je omezený na připojení k hlavním uzlům a (pokud existuje) hraniční uzel. Přístup ke službám běžícím na hlavních uzlech není ovlivněn více hlavními uzly. Veřejná brána směruje požadavky na hlavní uzel, který hostuje požadovanou službu. Pokud je například služba Apache Ambari aktuálně hostovaná v sekundárním hlavním uzlu, brána směruje příchozí požadavky na Ambari do tohoto uzlu.
 
-Přístup přes veřejnou brány je omezen na portu 443 (HTTPS), 22 a 23.
+Přístup přes veřejnou bránu je omezený na port 443 (HTTPS), 22 a 23.
 
-* Port __443__ slouží k přístupu k Ambari a další webové uživatelské rozhraní nebo rozhraní REST API hostované na hlavní uzly.
+* Port __443__ se používá pro přístup k Ambari a dalším webovým uživatelským rozhraním nebo rozhraním API REST hostovaným na hlavních uzlech.
 
-* Port __22__ slouží k přístupu k primárnímu hlavnímu uzlu nebo hraničnímu uzlu pomocí SSH.
+* Port __22__ se používá pro přístup k primárnímu hlavnímu uzlu nebo hraničnímu uzlu pomocí SSH.
 
-* Port __23__ slouží k přístupu k sekundárnímu hlavnímu uzlu pomocí SSH. Například `ssh username@mycluster-ssh.azurehdinsight.net` připojí k primárnímu hlavnímu uzlu clusteru s názvem **mycluster**.
+* Port __23__ se používá pro přístup k sekundárnímu hlavnímu uzlu pomocí SSH. Například `ssh username@mycluster-ssh.azurehdinsight.net` se připojí k primárnímu hlavnímu uzlu clusteru s názvem **mycluster**.
 
-Další informace o používání SSH najdete v tématu [použití SSH se službou HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md) dokumentu.
+Další informace o používání SSH najdete v dokumentu [Použití SSH se službou HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md) .
 
 ### <a name="internal-fully-qualified-domain-names-fqdn"></a>Interní plně kvalifikované názvy domény (FQDN)
 
-Uzly v clusteru služby HDInsight mají interní IP adresy a plně kvalifikovaný název domény, který je přístupný pouze z clusteru. Při přístupu ke službám v clusteru pomocí interní plně kvalifikovaný název domény nebo IP adresa, měli byste použít Ambari ověření IP adresy nebo plně kvalifikovaný název domény pro použití při přístupu ke službě.
+Uzly v clusteru HDInsight mají interní IP adresu a plně kvalifikovaný název domény, ke kterým se dá dostat jenom z clusteru. Při přístupu ke službám na clusteru pomocí interního plně kvalifikovaného názvu domény nebo IP adresy byste měli použít Ambari k ověření IP adresy nebo plně kvalifikovaného názvu domény pro použití při přístupu ke službě.
 
-Například služba Apache Oozie dají spustit jenom na jeden hlavní uzel a použití `oozie` příkaz z relace SSH vyžaduje adresu URL služby. Tuto adresu URL můžete získat z Ambari pomocí následujícího příkazu:
+Například služba Apache Oozie se dá spustit jenom na jednom hlavním uzlu a použití `oozie` příkazu z relace SSH vyžaduje adresu URL služby. Tuto adresu URL můžete načíst z Ambari pomocí následujícího příkazu:
 
     curl -u admin:PASSWORD "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/configurations?type=oozie-site&tag=TOPOLOGY_RESOLVED" | grep oozie.base.url
 
-Tento příkaz vrátí hodnotu, podobně jako následující příkaz, který obsahuje interní adresa URL pro použití s `oozie` příkaz:
+Tento příkaz vrátí hodnotu podobnou následujícímu příkazu, který obsahuje interní adresu URL pro použití s `oozie` příkazem:
 
     "oozie.base.url": "http://hn0-CLUSTERNAME-randomcharacters.cx.internal.cloudapp.net:11000/oozie"
 
-Další informace o práci se rozhraní Ambari REST API najdete v tématu [monitorování a správa HDInsight pomocí rozhraní REST API Apache Ambari](hdinsight-hadoop-manage-ambari-rest-api.md).
+Další informace o práci s Ambari REST API najdete v tématu [monitorování a Správa HDInsight pomocí REST API Apache Ambari](hdinsight-hadoop-manage-ambari-rest-api.md).
 
-### <a name="accessing-other-node-types"></a>Přístup k jiné typy uzlů
+### <a name="accessing-other-node-types"></a>Přístup k jiným typům uzlů
 
-Můžete připojit k uzlům, které nejsou přímo přístupné přes internet pomocí následujících metod:
+K uzlům, které nejsou přímo přístupné přes Internet, se můžete připojit pomocí následujících metod:
 
-* **SSH**: Po připojení k hlavnímu uzlu pomocí SSH, pak vám pomůže SSH z hlavního uzlu připojení k ostatním uzlům v clusteru. Další informace najdete v dokumentu [Použití SSH se službou HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).
+* **SSH**: Po připojení k hlavnímu uzlu pomocí SSH můžete pomocí SSH z hlavního uzlu se připojit k ostatním uzlům v clusteru. Další informace najdete v dokumentu [Použití SSH se službou HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).
 
-* **SSH tunelového propojení**: Pokud potřebujete přístup k webové službě hostované na jednom z uzlů, které není přístupný z Internetu, musíte použít tunelu SSH. Další informace najdete v tématu [použití tunelu SSH s HDInsight](hdinsight-linux-ambari-ssh-tunnel.md) dokumentu.
+* **Tunel SSH**: Pokud potřebujete přístup k webové službě hostované na jednom z uzlů, které nejsou přístupné pro Internet, musíte použít tunel SSH. Další informace najdete v tématu [použití tunelu SSH](hdinsight-linux-ambari-ssh-tunnel.md) v dokumentu HDInsight.
 
-* **Azure Virtual Network**: Pokud váš cluster HDInsight je součástí služby Azure Virtual Network, prostředek ve stejné virtuální síti přímo přístupné všechny uzly v clusteru. Další informace najdete v tématu [rozšířit HDInsight pomocí Azure Virtual Network](hdinsight-extend-hadoop-virtual-network.md) dokumentu.
+* **Azure Virtual Network**: Pokud je cluster HDInsight součástí Virtual Network Azure, může libovolný prostředek na stejném Virtual Network mít přímý přístup ke všem uzlům v clusteru. Další informace najdete v tématu Naplánování [virtuálního síťového dokumentu HDInsight](hdinsight-plan-virtual-network-deployment.md) .
 
-## <a name="how-to-check-on-a-service-status"></a>Jak zkontrolovat stav služby
+## <a name="how-to-check-on-a-service-status"></a>Postup kontroly stavu služby
 
-Pokud chcete zkontrolovat stav služby, které běží na hlavní uzly, pomocí uživatelského rozhraní Ambari Web nebo Ambari REST API.
+Chcete-li zjistit stav služeb, které jsou spuštěny na hlavních uzlech, použijte webové uživatelské rozhraní Ambari nebo Ambari REST API.
 
 ### <a name="ambari-web-ui"></a>Ambari Web UI
 
-Je viditelný na webové uživatelské rozhraní Ambari `https://CLUSTERNAME.azurehdinsight.net`. Nahraďte **CLUSTERNAME** názvem vašeho clusteru. Pokud se zobrazí výzva, zadejte přihlašovací údaje uživatele protokolu HTTP pro váš cluster. Je výchozí uživatelské jméno HTTP **správce** a heslo je heslo, které jste zadali při vytváření clusteru.
+Webové uživatelské rozhraní Ambari je možné zobrazit `https://CLUSTERNAME.azurehdinsight.net`na adrese. Nahraďte **CLUSTERNAME** názvem vašeho clusteru. Pokud se zobrazí výzva, zadejte přihlašovací údaje uživatele HTTP pro váš cluster. Výchozí uživatelské jméno HTTP je **admin** a heslo je heslo, které jste zadali při vytváření clusteru.
 
-Při doručení na stránce Ambari, nainstalované služby jsou uvedené na levé straně stránky.
+Po přijetí na stránku Ambari jsou nainstalované služby uvedeny na levé straně stránky.
 
 ![Nainstalované služby](./media/hdinsight-high-availability-linux/services.png)
 
-Existuje řada ikony, které se mohou objevit vedle služby k označení stavu. Žádné výstrahy týkající se služby lze zobrazit pomocí **výstrahy** odkazu v horní části stránky.  Ambari nabízí několik předdefinovaných výstrahy.
+Pro indikaci stavu se může zobrazit řada ikon, které se mohou objevit vedle služby. Jakékoli výstrahy týkající se služby lze zobrazit pomocí odkazu **výstrahy** v horní části stránky.  Ambari nabízí několik předdefinovaných výstrah.
 
-Tyto výstrahy pomáhají monitorovat dostupnost clusteru:
+Následující výstrahy vám pomůžou monitorovat dostupnost clusteru:
 
 | Název výstrahy                               | Popis                                                                                                                                                                                  |
 |------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Metriky monitorování stavu                    | Tato výstraha indikuje stav metriky monitorování procesu podle monitorování stavu skriptu.                                                                                   |
-| Ambari Agent Heartbeat                   | Tato výstraha se aktivuje, pokud server ztratí kontaktu s vloženým agentem.                                                                                                                        |
-| ZooKeeper Server Process                 | Tato výstraha úrovni hostitele se aktivuje, pokud proces ZooKeeper server nemůže být určené dá zvládnout a naslouchá na síti.                                                               |
-| IOCache Metadata Server Status           | Tato výstraha úrovni hostitele se aktivuje, pokud IOCache Metadata Server nemůže být určené dá zvládnout a reagovat na žádosti klientů                                                            |
-| JournalNode Web UI                       | Pokud JournalNode webového uživatelského rozhraní nedostupné, se aktivuje upozornění na této úrovni hostitele.                                                                                                                 |
-| Spark2 Thrift Server                     | Pokud Spark2 Thrift Server nelze určit dá zvládnout, se aktivuje upozornění na této úrovni hostitele.                                                                                                |
-| Proces serveru historie                   | Tato výstraha úrovni hostitele se aktivuje, pokud proces historie serveru nemůže být zavedený dá zvládnout a naslouchá na síti.                                                                |
-| Historie serveru webového uživatelského rozhraní                    | Pokud webové uživatelské rozhraní historie Server nedostupný, se aktivuje upozornění na této úrovni hostitele.                                                                                                              |
-| Webové uživatelské rozhraní správce prostředků                   | Tato výstraha úrovni hostitele se aktivuje, pokud nedostupný webového uživatelského rozhraní správce prostředků.                                                                                                             |
-| Souhrn stavu NodeManager               | Tato úroveň služby výstraha se aktivuje, pokud není v pořádku NodeManagers                                                                                                                    |
-| Časová osa webové aplikace uživatelského rozhraní                      | Pokud webového uživatelského rozhraní aplikace časová osa Server nedostupný, se aktivuje upozornění na této úrovni hostitele.                                                                                                         |
-| Souhrn stavu DataNode                  | Tato úroveň služby výstraha se aktivuje, pokud není v pořádku DataNodes                                                                                                                       |
-| NameNode webového uživatelského rozhraní                          | Pokud NameNode webového uživatelského rozhraní nedostupné, se aktivuje upozornění na této úrovni hostitele.                                                                                                                    |
-| Proces převzetí služeb při selhání Kontroleru zooKeeper    | Tato výstraha úrovni hostitele se aktivuje, pokud proces převzetí služeb při selhání Kontroleru ZooKeeper nemůže být potvrzen dá zvládnout a naslouchá na síti.                                                   |
-| Oozie Server webového uživatelského rozhraní                      | Pokud server Oozie webového uživatelského rozhraní nedostupný, se aktivuje upozornění na této úrovni hostitele.                                                                                                                |
-| Stav serveru Oozie                      | Pokud Oozie server nemůže být určené dá zvládnout a reagovat na požadavky klientů, se aktivuje upozornění na této úrovni hostitele.                                                                      |
-| Proces Metastoru Hive                   | Tato výstraha úrovni hostitele se aktivuje, pokud proces Hive Metastore nemůže být určené dá zvládnout a naslouchá na síti.                                                                 |
-| Proces serveru HiveServer2                      | Pokud HiveServer nemůže být určené dá zvládnout a reagovat na požadavky klientů, se aktivuje upozornění na této úrovni hostitele.                                                                        |
-| WebHCat Server Status                    | Pokud server templeton stav není v pořádku, se aktivuje upozornění na této úrovni hostitele.                                                                                                            |
-| Procento ZooKeeper servery, které jsou k dispozici      | Tato výstraha se aktivuje, pokud počet dolů ZooKeeper servery v clusteru je větší než nastavená prahová hodnota důležité. Agreguje výsledky kontrol procesu ZooKeeper.     |
-| Spark2 Livy Server                       | Pokud Livy2 Server nelze určit dá zvládnout, se aktivuje upozornění na této úrovni hostitele.                                                                                                        |
-| Server historie Spark2                    | Pokud Server historie Spark2 nelze určit dá zvládnout, se aktivuje upozornění na této úrovni hostitele.                                                                                               |
-| Proces shromažďování metrik                | Tato výstraha se aktivuje, pokud kolekce metriky nemůže být potvrzen dá zvládnout a naslouchá na konfigurovaném portu pro počet sekund rovna prahové hodnoty.                                 |
-| Metriky kolekcí – proces hlavní server HBase | Tato výstraha se aktivuje, pokud hlavní procesy shromažďování metrik HBase nemůže být potvrzen dá zvládnout a naslouchání v síti pro nakonfigurovanou prahovou hodnotu kritického, zadaný v řádu sekund. |
-| Monitorování procenta metriky k dispozici       | Tato výstraha se aktivuje, pokud procento metriky monitorování procesů nejsou nahoru a naslouchá na síti nakonfigurované upozornění a kritické prahové hodnoty.                             |
-| Procento NodeManagers k dispozici           | Tato výstraha se aktivuje, pokud počet dolů NodeManagers v clusteru je větší než nastavená prahová hodnota důležité. Agreguje výsledky kontrol NodeManager procesu.        |
-| NodeManager Health                       | Tato výstraha úrovni hostitele kontroly stavu vlastnost uzlu, které jsou k dispozici z komponenty NodeManager.                                                                                              |
-| NodeManager Web UI                       | Pokud NodeManager webového uživatelského rozhraní nedostupné, se aktivuje upozornění na této úrovni hostitele.                                                                                                                 |
-| Stav NameNode vysoké dostupnosti        | Tato úroveň služby výstraha se aktivuje, pokud nejsou spuštěné na aktivní NameNode nebo NameNode pohotovostní režim.                                                                                     |
-| DataNode procesu                         | Pokud jednotlivé procesy DataNode nemůže být zavedený dá zvládnout a naslouchá na síti, se aktivuje upozornění na této úrovni hostitele.                                                         |
-| DataNode webového uživatelského rozhraní                          | Pokud DataNode webového uživatelského rozhraní nedostupné, se aktivuje upozornění na této úrovni hostitele.                                                                                                                    |
-| Procento JournalNodes k dispozici           | Tato výstraha se aktivuje, pokud počet dolů JournalNodes v clusteru je větší než nastavená prahová hodnota důležité. Agreguje výsledky kontrol JournalNode procesu.        |
-| Procento DataNodes k dispozici              | Tato výstraha se aktivuje, pokud počet dolů DataNodes v clusteru je větší než nastavená prahová hodnota důležité. Agreguje výsledky kontrol DataNode procesu.              |
-| Stav aplikace Zeppelinu serveru                   | Pokud Zeppelin server nemůže být určené dá zvládnout a reagovat na požadavky klientů, se aktivuje upozornění na této úrovni hostitele.                                                                   |
-| Interaktivní proces serveru HiveServer2          | Pokud HiveServerInteractive nemůže být určené dá zvládnout a reagovat na požadavky klientů, se aktivuje upozornění na této úrovni hostitele.                                                             |
-| Aplikace funkcí LLAP                         | Tato výstraha se aktivuje, pokud aplikace LLAP nemůže být určené dá zvládnout a reagovat na požadavky.                                                                                    |
+| Stav monitorování metriky                    | Tato výstraha indikuje stav procesu monitorování metrik, jak je určený skriptem stavu monitorování.                                                                                   |
+| Prezenční signál agenta Ambari                   | Tato výstraha se aktivuje, pokud server ztratil kontakt s agentem.                                                                                                                        |
+| Proces serveru ZooKeeper                 | Tato výstraha na úrovni hostitele se aktivuje, pokud proces serveru ZooKeeper nejde určit tak, aby naslouchal v síti.                                                               |
+| Stav serveru metadat IOCache           | Tato výstraha na úrovni hostitele se aktivuje, pokud se server metadat IOCache nedá určit a reagovat na požadavky klienta.                                                            |
+| JournalNode Web UI                       | Tato výstraha na úrovni hostitele se aktivuje, pokud je webové uživatelské rozhraní JournalNode nedosažitelné.                                                                                                                 |
+| Server Spark2 Thrift                     | Tato výstraha na úrovni hostitele se aktivuje, pokud se Spark2 Server Thrift nedá určit jako.                                                                                                |
+| Proces serveru historie                   | Tato výstraha na úrovni hostitele se aktivuje, pokud se proces serveru historie nedá navázat a naslouchat v síti.                                                                |
+| Webové uživatelské rozhraní serveru historie                    | Tato výstraha na úrovni hostitele se aktivuje, pokud je webové uživatelské rozhraní serveru historie nedosažitelné.                                                                                                              |
+| Webové uživatelské rozhraní ResourceManager                   | Tato výstraha na úrovni hostitele se aktivuje, pokud je webové uživatelské rozhraní ResourceManager nedosažitelné.                                                                                                             |
+| Shrnutí stavu NodeManager               | Tato výstraha na úrovni služby se aktivuje, pokud není v pořádku NodeManagers                                                                                                                    |
+| Webové uživatelské rozhraní časové osy aplikace                      | Tato výstraha na úrovni hostitele se aktivuje, pokud je webové uživatelské rozhraní serveru časové osy aplikace nedosažitelné.                                                                                                         |
+| Shrnutí stavu datauzel                  | Tato výstraha na úrovni služby se aktivuje, pokud existují chybné datauzly.                                                                                                                       |
+| Webové uživatelské rozhraní NameNode                          | Tato výstraha na úrovni hostitele se aktivuje, pokud je webové uživatelské rozhraní NameNode nedosažitelné.                                                                                                                    |
+| Proces kontroleru převzetí služeb při selhání ZooKeeper    | Tato výstraha na úrovni hostitele se aktivuje, pokud se nepodaří zpracovat proces ZooKeeper převzetí služeb při selhání, který se bude naslouchat v síti.                                                   |
+| Webové uživatelské rozhraní serveru Oozie                      | Tato výstraha na úrovni hostitele se aktivuje, pokud je webové uživatelské rozhraní Oozie serveru nedostupné.                                                                                                                |
+| Stav serveru Oozie                      | Tato výstraha na úrovni hostitele se aktivuje, pokud se server Oozie nedá zjistit a reagovat na požadavky klientů.                                                                      |
+| Proces metastore podregistru                   | Tato výstraha na úrovni hostitele se aktivuje, pokud se proces metastore podregistru nedá určit a naslouchat v síti.                                                                 |
+| HiveServer2 proces                      | Tato výstraha na úrovni hostitele se aktivuje, pokud HiveServer nejde zjistit a reagovat na požadavky klientů.                                                                        |
+| Stav serveru WebHCat                    | Tato výstraha na úrovni hostitele se aktivuje, pokud stav serveru Templeton není v pořádku.                                                                                                            |
+| Procento dostupných serverů ZooKeeper      | Tato výstraha se aktivuje, pokud je počet ZooKeeper serverů v clusteru větší než nakonfigurovaná kritická prahová hodnota. Agreguje výsledky kontrol procesu ZooKeeper.     |
+| Server Spark2 Livy                       | Tato výstraha na úrovni hostitele se aktivuje, pokud se server Livy2 nedá určit jako.                                                                                                        |
+| Server historie Spark2                    | Tato výstraha na úrovni hostitele se aktivuje, pokud nelze určit server historie Spark2.                                                                                               |
+| Proces kolektoru metrik                | Tato výstraha se aktivuje, pokud se kolekce metriky nedá potvrdit a naslouchá na konfigurovaném portu po dobu v sekundách, která se rovná prahové hodnotě.                                 |
+| Kolektor metrik – proces HBase Master | Tato výstraha se aktivuje v případě, že se hlavní procesy pro emulátory metriky (HBA) v síti nedají potvrzovat a naslouchat v síti za nakonfigurovanou kritickou prahovou hodnotu zadanou v sekundách. |
+| Dostupné monitory metriky v procentech       | Tato výstraha se aktivuje, pokud procento procesů monitorování metriky není v síti v případě nakonfigurovaného upozornění a kritických prahových hodnot.                             |
+| Procento dostupných NodeManagers           | Tato výstraha se aktivuje, pokud je počet vypnutých NodeManagers v clusteru větší než nakonfigurovaná kritická prahová hodnota. Agreguje výsledky kontrol procesu NodeManager.        |
+| Stav NodeManager                       | Tato výstraha na úrovni hostitele kontroluje vlastnost stavu uzlu dostupnou ze součásti NodeManager.                                                                                              |
+| Webové uživatelské rozhraní NodeManager                       | Tato výstraha na úrovni hostitele se aktivuje, pokud je webové uživatelské rozhraní NodeManager nedosažitelné.                                                                                                                 |
+| Stav vysoké dostupnosti NameNode        | Tato výstraha na úrovni služby se aktivuje v případě, že aktivní NameNode nebo pohotovostní NameNode nejsou spuštěné.                                                                                     |
+| Proces datanode                         | Tato výstraha na úrovni hostitele se aktivuje, pokud se jednotlivé procesy datanode nedají navázat a naslouchat v síti.                                                         |
+| Webové uživatelské rozhraní pro datauzel                          | Tato výstraha na úrovni hostitele se aktivuje, pokud je webové uživatelské rozhraní pro datauzel nedosažitelné.                                                                                                                    |
+| Procento dostupných dostupných deníkových uzlů           | Tato výstraha se aktivuje, pokud je počet vypnutých dostupných deníkových uzlů v clusteru větší než nakonfigurovaná kritická prahová hodnota. Agreguje výsledky kontrol procesu JournalNode.        |
+| Procento dostupných datanode              | Tato výstraha se aktivuje, pokud je počet nefunkčních uzlů v clusteru větší než nakonfigurovaná kritická prahová hodnota. Agreguje výsledky kontrol procesů datanode.              |
+| Stav serveru Zeppelin                   | Tato výstraha na úrovni hostitele se aktivuje, pokud se server Zeppelin nedá zjistit a reagovat na požadavky klientů.                                                                   |
+| Interaktivní proces HiveServer2          | Tato výstraha na úrovni hostitele se aktivuje, pokud HiveServerInteractive nejde zjistit a reagovat na požadavky klientů.                                                             |
+| Aplikace LLAP                         | Tato výstraha se aktivuje, pokud se aplikace LLAP nedá určit tak, aby odpovídala požadavkům.                                                                                    |
 
-Každá služba zobrazíte další informace v něm můžete vybrat.
+Můžete vybrat každou službu a zobrazit další informace.
 
-Když na stránku služby obsahuje informace o stavu a konfiguraci každé služby, neposkytuje informace, na které hlavního uzlu je služba spuštěna na. Chcete-li zobrazit tyto informace, použijte **hostitele** odkazu v horní části stránky. Tato stránka zobrazuje hostitele v clusteru, a to včetně hlavní uzly.
+I když stránka služby poskytuje informace o stavu a konfiguraci jednotlivých služeb, neposkytuje informace o tom, na kterém hlavním uzlu služba běží. Chcete-li zobrazit tyto informace,  použijte odkaz hostitelé v horní části stránky. Tato stránka zobrazuje hostitele v rámci clusteru, včetně hlavních uzlů.
 
-![seznam hostitelů](./media/hdinsight-high-availability-linux/hosts.png)
+![Seznam hostitelů](./media/hdinsight-high-availability-linux/hosts.png)
 
-Vyberte odkaz pro jeden z hlavních uzlů se zobrazí služeb a součástí, které běží na tomto uzlu.
+Výběr odkazu pro jeden z hlavních uzlů zobrazí služby a komponenty běžící v tomto uzlu.
 
 ![Stav součásti](./media/hdinsight-high-availability-linux/nodeservices.png)
 
-Další informace o použití Ambari, naleznete v tématu [monitorování a správa HDInsight pomocí webového uživatelského rozhraní Apache Ambari](hdinsight-hadoop-manage-ambari.md).
+Další informace o použití Ambari najdete v tématu [monitorování a Správa HDInsight pomocí webového uživatelského rozhraní Apache Ambari](hdinsight-hadoop-manage-ambari.md).
 
 ### <a name="ambari-rest-api"></a>Ambari REST API
 
-Rozhraní Ambari REST API je k dispozici přes internet. HDInsight bránu veřejné zpracovává směrování žádostí na hlavní uzel, který je aktuálně hostitelem rozhraní REST API.
+REST API Ambari je k dispozici prostřednictvím Internetu. Veřejná brána HDInsight zpracovává požadavky na směrování do hlavního uzlu, který je aktuálně hostitelem REST API.
 
-Pokusila zkontrolovat stav služby pomocí rozhraní Ambari REST API můžete použít následující příkaz:
+Pomocí následujícího příkazu můžete kontrolovat stav služby prostřednictvím REST API Ambari:
 
     curl -u admin:PASSWORD https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/SERVICENAME?fields=ServiceInfo/state
 
-* Nahraďte **heslo** heslem účtu uživatele (správce) protokolu HTTP.
+* Heslo účtu uživatele protokolu HTTP (admin **) nahraďte** heslem.
 * Místo **CLUSTERNAME** zadejte název vašeho clusteru.
-* Nahraďte **SERVICENAME** s názvem služby, které chcete zkontrolovat stav.
+* Místo **ServiceName** nahraďte názvem služby, jejíž stav chcete zjistit.
 
-Například, chcete-li zkontrolovat stav **HDFS** služby v clusteru s názvem **mycluster**, s použitím hesla **heslo**, použijte následující příkaz:
+Pokud například chcete ověřit stav služby **HDFS** v clusteru s názvem **mycluster**s heslem **hesla, použijte**následující příkaz:
 
     curl -u admin:password https://mycluster.azurehdinsight.net/api/v1/clusters/mycluster/services/HDFS?fields=ServiceInfo/state
 
-Odpověď se podobá následující JSON:
+Odpověď je podobná následujícímu kódu JSON:
 
     {
       "href" : "http://hn0-CLUSTERNAME.randomcharacters.cx.internal.cloudapp.net:8080/api/v1/clusters/mycluster/services/HDFS?fields=ServiceInfo/state",
@@ -190,81 +190,81 @@ Odpověď se podobá následující JSON:
       }
     }
 
-Adresa URL nám říká, že služba běží na hlavního uzlu s názvem **hn0 CLUSTERNAME**.
+Adresa URL oznamuje, že služba je aktuálně spuštěná na hlavním uzlu s názvem **hn0-název_clusteru**.
 
-Stav nám říká, že je služba aktuálně spuštěna, nebo **spuštěno**.
+Stav oznamuje, že je služba aktuálně spuštěná nebo spuštěná .
 
-Pokud si nejste jisti, jaké služby jsou nainstalované v clusteru, můžete použít následující příkaz pro načtení seznamu:
+Pokud si nejste jisti, jaké služby jsou v clusteru nainstalovány, můžete k načtení seznamu použít následující příkaz:
 
     curl -u admin:PASSWORD https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services
 
-Další informace o práci se rozhraní Ambari REST API najdete v tématu [monitorování a správa HDInsight pomocí rozhraní REST API Apache Ambari](hdinsight-hadoop-manage-ambari-rest-api.md).
+Další informace o práci s Ambari REST API najdete v tématu [monitorování a Správa HDInsight pomocí REST API Apache Ambari](hdinsight-hadoop-manage-ambari-rest-api.md).
 
 #### <a name="service-components"></a>Součásti služby
 
-Služby mohou obsahovat komponenty, které chcete zkontrolovat stav jednotlivě. Například HDFS obsahuje komponentu NameNode. Chcete-li zobrazit informace na komponentu, by příkaz vypadal takto:
+Služby mohou obsahovat komponenty, u kterých chcete zkontrolovat stav jednotlivě. Například HDFS obsahuje komponentu NameNode. Chcete-li zobrazit informace o komponentě, příkaz by byl:
 
     curl -u admin:PASSWORD https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/SERVICE/components/component
 
-Pokud si nejste jisti, jaké součásti jsou k dispozici ve službě, můžete použít následující příkaz k načtení seznamu:
+Pokud si nejste jisti, jaké součásti služba poskytuje, můžete k načtení seznamu použít následující příkaz:
 
     curl -u admin:PASSWORD https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/SERVICE/components/component
 
-## <a name="how-to-access-log-files-on-the-head-nodes"></a>Jak získat přístup k protokolu souborů na hlavní uzly.
+## <a name="how-to-access-log-files-on-the-head-nodes"></a>Přístup k souborům protokolu na hlavních uzlech
 
 ### <a name="ssh"></a>SSH
 
-Při připojení k hlavnímu uzlu přes SSH, souborů protokolu najdete v části **/var/log**. Například **/var/log/hadoop-yarn/yarn** obsahovat protokoly YARN.
+V případě připojení k hlavnímu uzlu přes SSH se soubory protokolu nacházejí v **/var/log**. Například **/var/log/Hadoop-YARN/YARN** obsahuje protokoly pro příze.
 
-Každý hlavního uzlu může mít položky jedinečný protokolu, měli byste zkontrolovat protokoly na obojí.
+Každý hlavní uzel může mít jedinečné položky protokolu, takže byste měli kontrolovat protokoly v obou.
 
 ### <a name="sftp"></a>SFTP
 
-Můžete také připojit k hlavnímu uzlu pomocí SSH File Transfer Protocol nebo rozhraní Secure File Transfer Protocol (SFTP) a přímo stahovat soubory protokolu.
+Můžete se také připojit k hlavnímu uzlu pomocí protokolu SSH protokol FTP (File Transfer Protocol) nebo Secure protokol FTP (File Transfer Protocol) (SFTP) a stáhnout soubory protokolu přímo.
 
-Podobně jako pomocí klienta SSH, při připojování ke clusteru musíte zadat název uživatelského účtu SSH a adresa SSH clusteru. Například, `sftp username@mycluster-ssh.azurehdinsight.net`. Zadejte heslo pro účet po zobrazení výzvy, nebo zadat veřejný klíč pomocí `-i` parametru.
+Podobně jako při připojování ke clusteru použijte klienta SSH, musíte zadat název uživatelského účtu SSH a adresu SSH clusteru. Například, `sftp username@mycluster-ssh.azurehdinsight.net`. Po zobrazení výzvy zadejte heslo k účtu nebo zadejte veřejný klíč pomocí `-i` parametru.
 
-Jakmile budete připojeni, zobrazí se `sftp>` řádku. Z příkazového řádku, můžete změnit adresáře, nahrávání a stahování souborů. Například následující příkazy přejděte do adresáře **/var/log/hadoop/hdfs** adresář a potom stažení všechny soubory v adresáři.
+Po připojení `sftp>` se zobrazí výzva. Z této výzvy můžete měnit adresáře, nahrávat a stahovat soubory. Například následující příkazy mění adresáře do adresáře **/var/log/Hadoop/HDFS** a pak stáhnou všechny soubory v adresáři.
 
     cd /var/log/hadoop/hdfs
     get *
 
-Seznam dostupných příkazů zadejte `help` na `sftp>` řádku.
+Seznam dostupných příkazů zobrazíte zadáním `help` `sftp>` na příkazovém řádku.
 
 > [!NOTE]  
-> Existují také grafické rozhraní, které umožňují vizualizovat systému souborů při připojení pomocí protokolu SFTP. Například [MobaXTerm](https://mobaxterm.mobatek.net/) umožňuje procházet pomocí rozhraní Windows Explorer podobně jako systém souborů.
+> K dispozici jsou také grafická rozhraní, která umožňují vizualizovat systém souborů při připojení pomocí protokolu SFTP. [MobaXTerm](https://mobaxterm.mobatek.net/) například umožňuje procházet systém souborů pomocí rozhraní podobného Průzkumníku Windows.
 
 ### <a name="ambari"></a>Ambari
 
 > [!NOTE]  
-> Pro přístup k souborům protokolu pomocí nástroje Ambari, je nutné použít tunelu SSH. Webové rozhraní pro jednotlivé služby nejsou zveřejněné veřejně na Internetu. Informace o používání tunelu SSH najdete v tématu [používání tunelového propojení SSH](hdinsight-linux-ambari-ssh-tunnel.md) dokumentu.
+> Pro přístup k souborům protokolu pomocí Ambari je nutné použít tunel SSH. Webová rozhraní pro jednotlivé služby nejsou veřejně vystavená na internetu. Informace o použití tunelu SSH najdete v tématu [použití tunelového dokumentu SSH](hdinsight-linux-ambari-ssh-tunnel.md) .
 
-Webové uživatelské rozhraní Ambari vyberte službu, kterou chcete zobrazit protokoly pro (například YARN). Pak pomocí **rychlé odkazy** vyberte které hlavního uzlu, chcete-li zobrazit v protokolech.
+Z webového uživatelského rozhraní Ambari vyberte službu, pro kterou chcete zobrazit protokoly (například PŘÍZe). Pak použijte **Rychlé odkazy** k výběru hlavního uzlu, pro který chcete zobrazit protokoly.
 
-![Chcete-li zobrazit protokoly pomocí rychlé odkazy](./media/hdinsight-high-availability-linux/viewlogs.png)
+![Použití rychlých odkazů k zobrazení protokolů](./media/hdinsight-high-availability-linux/viewlogs.png)
 
-## <a name="how-to-configure-the-node-size"></a>Jak konfigurovat velikost uzlu
+## <a name="how-to-configure-the-node-size"></a>Konfigurace velikosti uzlu
 
-Velikost uzlu lze vybrat pouze při vytváření clusteru. Pro HDInsight na najdete seznam různých velikostí virtuálních počítačů dostupných [HDInsight stránce s cenami](https://azure.microsoft.com/pricing/details/hdinsight/).
+Velikost uzlu lze vybrat pouze při vytváření clusteru. Seznam různých velikostí virtuálních počítačů dostupných pro HDInsight najdete na stránce s cenami za službu [HDInsight](https://azure.microsoft.com/pricing/details/hdinsight/).
 
-Při vytváření clusteru, můžete zadat velikost uzlů. Následující informace poskytují pokyny o tom, jak zadat velikost pomocí [webu Azure portal][preview-portal], [modulu Azure PowerShell Az][azure-powershell], a [rozhraní příkazového řádku Azure][azure-cli]:
+Při vytváření clusteru můžete určit velikost uzlů. Následující informace obsahují pokyny k určení velikosti pomocí [Azure Portal][preview-portal], [Azure PowerShell module Az][azure-powershell]a Azure [CLI][Azure]CLI:
 
-* **Azure portal**: Při vytváření clusteru, můžete nastavit velikost uzlů cluster používat:
+* **Azure Portal**: Při vytváření clusteru můžete nastavit velikost uzlů používaných clusterem:
 
-    ![Obrázek průvodce vytvořením clusteru s výběr velikost uzlu](./media/hdinsight-high-availability-linux/headnodesize.png)
+    ![Obrázek Průvodce vytvořením clusteru s výběrem velikosti uzlu](./media/hdinsight-high-availability-linux/headnodesize.png)
 
-* **Azure CLI**: Při použití [az hdinsight vytvořit](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-create) příkazu, můžete nastavit velikost head, pracovních procesů a uzly ZooKeeper s použitím `--headnode-size`, `--workernode-size`, a `--zookeepernode-size` parametry.
+* **Azure CLI**: Při použití příkazu [AZ HDInsight Create](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-create) můžete nastavit velikost hlav, pracovních procesů a Zookeeper uzlů pomocí `--headnode-size`parametrů, `--workernode-size`a `--zookeepernode-size` .
 
-* **Azure PowerShell**: Při použití [New-AzHDInsightCluster](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster) rutiny, můžete nastavit velikost head, pracovních procesů a uzly ZooKeeper s použitím `-HeadNodeSize`, `-WorkerNodeSize`, a `-ZookeeperNodeSize` parametry.
+* **Azure PowerShell**: Při použití rutiny [New-AzHDInsightCluster](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster) můžete nastavit velikost hlav, pracovních procesů a Zookeeper uzlů pomocí `-HeadNodeSize`parametrů, `-WorkerNodeSize`a `-ZookeeperNodeSize` .
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Další informace o možnosti uvedené v tomto dokumentu pomocí následujících odkazů.
+Pomocí následujících odkazů můžete získat další informace o akcích, které jsou uvedené v tomto dokumentu.
 
-* [Reference k rozhraní Apache Ambari REST](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)
-* [Instalace a konfigurace rozhraní příkazového řádku Azure](https://docs.microsoft.com//cli/azure/install-azure-cli?view=azure-cli-latest)
-* [Instalace a konfigurace modulu Azure PowerShell Az](/powershell/azure/overview)
-* [Správa HDInsight pomocí nástroje Apache Ambari](hdinsight-hadoop-manage-ambari.md)
+* [Referenční informace k Apache Ambari REST](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)
+* [Instalace a konfigurace rozhraní příkazového řádku Azure CLI](https://docs.microsoft.com//cli/azure/install-azure-cli?view=azure-cli-latest)
+* [Instalace a konfigurace Azure PowerShell modul AZ](/powershell/azure/overview)
+* [Správa HDInsight pomocí Apache Ambari](hdinsight-hadoop-manage-ambari.md)
 * [Zřizování clusterů HDInsight se systémem Linux](hdinsight-hadoop-provision-linux-clusters.md)
 
 [preview-portal]: https://portal.azure.com/

@@ -1,123 +1,123 @@
 ---
-title: SaaS splnění rozhraní API v2 | Azure Marketplace
-description: Tento článek vysvětluje, jak vytvořit a spravovat nabídky SaaS na AppSource a webu Azure Marketplace pomocí plnění přidružené rozhraní API v2.
+title: Rozhraní API pro plnění SaaS v2 | Azure Marketplace
+description: Tento článek vysvětluje, jak vytvořit a spravovat nabídku SaaS pro AppSource a Azure Marketplace s použitím přidružených rozhraní API pro splnění verze v2.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
 ms.topic: reference
 ms.date: 05/23/2019
 ms.author: evansma
-ms.openlocfilehash: 476aaacbe6f1bf6d1920df0f12599976bfcc27b7
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: a8196370a93a6ce8eed83002397c2f09efbc777f
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67701139"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68358578"
 ---
-# <a name="saas-fulfillment-apis-version-2"></a>Splnění SaaS rozhraní API, verze 2 
+# <a name="saas-fulfillment-apis-version-2"></a>Rozhraní API pro splnění SaaS verze 2 
 
-Tento článek podrobně popisuje rozhraní API, která mohou partneři k prodeji jejich SaaS aplikací v AppSource marketplace a na webu Azure Marketplace. Tato rozhraní API se požadavek na transactable SaaS nabídky na webu Azure Marketplace a AppSource.
+Tento článek podrobně popisuje rozhraní API, které umožňuje partnerům prodávat své aplikace SaaS na webu AppSource Marketplace a v Azure Marketplace. Tato rozhraní API jsou požadavkem pro SaaS nabídky AppSource a Azure Marketplace.
 
 ## <a name="managing-the-saas-subscription-life-cycle"></a>Správa životního cyklu předplatného SaaS
 
-Azure SaaS spravuje celý životní cyklus nákupu předplatného SaaS. Používá k řízení skutečné splnění splnění rozhraní API jako vhodný mechanismus, se změní na plánech a odstranění předplatného s partnerem. Faktura za zákazníka je založená na stav předplatného SaaS, které Microsoft udržuje. Následující diagram znázorňuje stavy a operace, které jednotky změny mezi stavy.
+Azure SaaS spravuje celý životní cyklus nákupu předplatného SaaS. Používá rozhraní API pro plnění jako mechanismus pro řízení skutečného plnění, změny plánů a odstraňování předplatného partnera. Faktura zákazníka vychází ze stavu předplatného SaaS, které Microsoft udržuje. Následující diagram znázorňuje stavy a operace, které určují změny mezi stavy.
 
 ![Stavy životního cyklu předplatného SaaS](./media/saas-subscription-lifecycle-api-v2.png)
 
 
 ### <a name="states-of-a-saas-subscription"></a>Stavy předplatného SaaS
 
-V následující tabulce jsou uvedeny stavy zřizování pro předplatné SaaS, včetně popisu a pořadí diagram pro každou (pokud existuje). 
+V následující tabulce jsou uvedeny stavy zřizování pro předplatné SaaS, včetně popisu a sekvenčního diagramu pro každý (Pokud je k dispozici). 
 
 #### <a name="provisioning"></a>Zřizování
 
-Když zákazník iniciuje nákup, partner obdrží tyto informace v autorizační kód na zákazníka interaktivní webové stránce, která používá parametr adresy URL. Příkladem je `https://contoso.com/signup?token=..`, že je adresa URL stránky cílové v partnerském centru `https://contoso.com/signup`. Autorizační kód lze ověřit a vyměňují podrobnosti o službě zřizování pomocí volání rozhraní API pro řešení.  Po dokončení zřizování služby SaaS odešle signál, že dokončení splnění a zákazníka může znamenat volání rozhraní aktivovat. 
+Když zákazník zahájí nákup, partner obdrží tyto informace v autorizačním kódu na interaktivní webové stránce zákazníka, která používá parametr adresy URL. Příkladem je `https://contoso.com/signup?token=..`, že adresa URL cílové stránky v partnerském centru `https://contoso.com/signup`je. Autorizační kód lze ověřit a vyměňovat pro podrobnosti o službě zřizování voláním rozhraní API pro řešení.  Když se dokončí zřizování služby SaaS, pošle volání metody Activate signalizaci, že se plnění dokončilo, a zákazník se může účtovat. 
 
-Následující diagram znázorňuje posloupnost volání rozhraní API pro zřizování scénář.  
+Následující diagram znázorňuje posloupnost volání rozhraní API pro scénář zřizování.  
 
-![Volání rozhraní API pro SaaS služby zřizování](./media/saas-post-provisioning-api-v2-calls.png)
+![Volání rozhraní API pro zřizování služby SaaS](./media/saas-post-provisioning-api-v2-calls.png)
 
-#### <a name="provisioned"></a>Zřízené
+#### <a name="provisioned"></a>Zajištěno
 
-Tento stav se stálé zřízené služby.
+Tento stav je stabilním stavem zřízené služby.
 
-##### <a name="provisioning-for-update"></a>Zřizování pro aktualizace 
+##### <a name="provisioning-for-update"></a>Zřizování pro aktualizaci 
 
-Tento stav znamená, že aktualizace do existující služby čeká na vyřízení. Tato aktualizace může vyvolat zákazník, a to buď z marketplace, nebo ve službě SaaS (pouze pro přímé zákazníky transakce).
+Tento stav znamená, že probíhá aktualizace existující služby. Tuto aktualizaci může iniciovat zákazník, ať už z webu Marketplace nebo služby SaaS (jenom pro transakce z přímých na zákazníka).
 
-##### <a name="provisioning-for-update-when-its-initiated-from-the-marketplace"></a>Zřizování pro aktualizaci (když je zahájeno z webu marketplace)
+##### <a name="provisioning-for-update-when-its-initiated-from-the-marketplace"></a>Zřizování pro aktualizaci (při zahájení z Marketplace)
 
-Následující diagram znázorňuje posloupnost akcí, když je aktualizace iniciované z marketplace.
+Následující diagram znázorňuje posloupnost akcí při zahájení aktualizace z webu Marketplace.
 
-![Volání rozhraní API, když je aktualizace iniciované z marketplace](./media/saas-update-api-v2-calls-from-marketplace-a.png)
+![Volání rozhraní API při zahájení aktualizace z Marketplace](./media/saas-update-api-v2-calls-from-marketplace-a.png)
 
-##### <a name="provisioning-for-update-when-its-initiated-from-the-saas-service"></a>Zřizování pro aktualizace (po inicializaci ve službě SaaS)
+##### <a name="provisioning-for-update-when-its-initiated-from-the-saas-service"></a>Zřizování pro aktualizaci (při zahájení ze služby SaaS)
 
-Následující diagram znázorňuje akce při zahájení aktualizace ve službě SaaS. (Volání webhooku se nahrazuje aktualizace do předplatného, inicializuje služby SaaS.) 
+Následující diagram znázorňuje akce při zahájení aktualizace ze služby SaaS. (Volání Webhooku se nahradí aktualizací předplatného iniciované službou SaaS.) 
 
-![Volání rozhraní API při zahájení aktualizace ve službě SaaS](./media/saas-update-api-v2-calls-from-saas-service-a.png) 
+![Volání rozhraní API při zahájení aktualizace ze služby SaaS](./media/saas-update-api-v2-calls-from-saas-service-a.png) 
 
 #### <a name="suspended"></a>Pozastaveno
 
-Tento stav označuje, že nebyl přijat platby zákazníků. Pomocí zásad poskytujeme zákazníka a období odkladu před zrušením předplatného. Pokud je předplatné v tomto stavu: 
+Tento stav indikuje, že platba zákazníka nebyla přijata. Podle zásad poskytneme období odkladu pro zákazníka před zrušením předplatného. Když je předplatné v tomto stavu: 
 
-- Jako partner můžete snížit nebo blokovat přístup ke službě.
-- Předplatné musí uchovávat v obnovitelných stavu, ve kterém můžete obnovit všechny funkce bez ztráty dat nebo nastavení. 
-- Můžete očekávat obnovit žádost pro toto předplatné přes rozhraní API pro splnění nebo žádost o zrušení zřízení na konci období odkladu. 
+- Jako partner se můžete rozhodnout snížit nebo zablokovat přístup uživatele ke službě.
+- Odběr musí být uložený v obnovitelném stavu, který může obnovit všechny funkce bez ztráty dat nebo nastavení. 
+- Po skončení období odkladu se očekává, že získáte žádost o obnovení pro toto předplatné prostřednictvím rozhraní API pro splnění nebo žádosti o zrušení zřízení. 
 
-#### <a name="unsubscribed"></a>Odhlášení odběru 
+#### <a name="unsubscribed"></a>Odběr se odhlásil 
 
-Předplatná kontaktovat tento stav v reakci na žádost explicitní zákazníka nebo nezaplacení poplatků. Očekávání od partnera je, že zákaznická data se uchovávají po dobu obnovení na vyžádání pro určitý počet dní a pak odstraní. 
+Předplatná dosáhnou tohoto stavu v reakci na výslovný požadavek zákazníka nebo na nedoplatky poplatků. Od partnera se očekává, že se data zákazníka uchovávají pro obnovení na vyžádání po určitý počet dnů a pak se odstraní. 
 
 
 ## <a name="api-reference"></a>API – referenční informace
 
-Tato část popisuje SaaS *rozhraní Subscription API* a *operace rozhraní API*.  Hodnota `api-version` parametr pro verzi 2 rozhraní API je `2018-08-31`.  
+Tato část popisuje *rozhraní API* pro SaaS odběr a *rozhraní Operations API*.  Hodnota `api-version` parametru pro rozhraní API verze 2 je `2018-08-31`.  
 
 
-### <a name="parameter-and-entity-definitions"></a>Definice parametru a entity
+### <a name="parameter-and-entity-definitions"></a>Definice parametrů a entit
 
-Následující tabulka obsahuje seznam definic pro společné parametry a entity používané v plnění rozhraní API.
+V následující tabulce jsou uvedeny definice běžných parametrů a entit používaných rozhraními API pro plnění.
 
-|     Parametr/entity     |     Definice                         |
+|     Entita/parametr     |     Definice                         |
 |     ----------------     |     ----------                         |
-| `subscriptionId`         | Identifikátor GUID prostředku SaaS.  |
-| `name`                   | Popisný název pro tento prostředek k dispozici příslušného zákazníka. |
-| `publisherId`            | Identifikátor jedinečný řetězec pro jednotlivé vydavatele (například: "contoso"). |
-| `offerId`                | Identifikátor jedinečný řetězec pro každou nabídku (například: "offer1").  |
-| `planId`                 | Jedinečný řetězec identifikátoru pro každý plán nebo SKU (například: "stříbrná"). |
-| `operationId`            | Identifikátor GUID pro určitou operaci.  |
-|  `action`                | Akce prováděná s prostředkem, buď `unsubscribe`, `suspend`, `reinstate`, nebo `changePlan`, `changeQuantity`, `transfer`.  |
+| `subscriptionId`         | Identifikátor GUID pro prostředek SaaS.  |
+| `name`                   | Popisný název, který pro tento prostředek zadal zákazník. |
+| `publisherId`            | Jedinečný identifikátor řetězce pro každého vydavatele (například: contoso). |
+| `offerId`                | Jedinečný identifikátor řetězce pro každou nabídku (například: "offer1").  |
+| `planId`                 | Jedinečný identifikátor řetězce pro každý plán/SKU (například: "stříbrné"). |
+| `operationId`            | Identifikátor GUID konkrétní operace.  |
+|  `action`                | Akce prováděná na prostředku, buď `unsubscribe` `suspend`,, `reinstate`nebo `changePlan`, `changeQuantity`, `transfer`.  |
 |   |   |
 
-Globálně jedinečné identifikátory ([GUID](https://en.wikipedia.org/wiki/Universally_unique_identifier)) jsou čísla 128-bit (32 šestnáctkového čísla), která jsou obvykle automaticky generovány. 
+Globálně jedinečné identifikátory ([GUID](https://en.wikipedia.org/wiki/Universally_unique_identifier)) jsou 128 (32 – šestnáctková) čísel, která se obvykle generují automaticky. 
 
 #### <a name="resolve-a-subscription"></a>Vyřešit předplatné 
 
-Umožňuje vyřešit koncový bod vydavatele řešení marketplace token ID trvalý prostředků. ID prostředku je jedinečný identifikátor pro předplatné SaaS. Když uživatel se přesměruje na web partnera, adresa URL obsahuje token v parametry dotazu. Partner má používat tento token a požádat o jeho vyřešení. Odpověď obsahuje ID předplatného SaaS jedinečný název, ID nabídky a plán pro prostředek. Tento token je platný pouze jednu hodinu. 
+Koncový bod vyřešení umožňuje vydavateli přeložit token Marketplace na trvalé ID prostředku. ID prostředku je jedinečný identifikátor předplatného SaaS. Když se uživatel přesměruje na web partnera, adresa URL obsahuje token v parametrech dotazu. U partnera se očekává, že tento token použijete a vyžádáte ho k vyřešení. Odpověď obsahuje jedinečné ID předplatného SaaS, název, ID nabídky a plán pro daný prostředek. Tento token je platný jenom pro jednu hodinu. 
 
-##### <a name="postbrhttpsmarketplaceapimicrosoftcomapisaassubscriptionsresolveapi-versionapiversion"></a>Příspěvek<br>`https://marketplaceapi.microsoft.com/api/saas/subscriptions/resolve?api-version=<ApiVersion>`
+##### <a name="postbrhttpsmarketplaceapimicrosoftcomapisaassubscriptionsresolveapi-versionapiversion"></a>Publikovat<br>`https://marketplaceapi.microsoft.com/api/saas/subscriptions/resolve?api-version=<ApiVersion>`
 
 *Parametry dotazu:*
 
 |                    |                   |
 |  ---------------   |  ---------------  |
-|  ApiVersion        |  Verze operace pro tento požadavek.  |
+|  ApiVersion        |  Verze operace, která se má použít pro tento požadavek.  |
 
 *Hlavičky žádosti:*
  
 |                    |                   |
 |  ---------------   |  ---------------  |
-|  Content-Type      | `application/json` |
-|  x-ms-requestid    |  Jedinečnou hodnotu řetězce pro sledování žádosti z klienta, pokud možno identifikátor GUID. Pokud tuto hodnotu nezadáte, jeden se vygeneruje a k dispozici v hlavičkách odpovědi. |
-|  x-ms-correlationid |  Jedinečnou hodnotu řetězce pro operaci na straně klienta. Tento parametr koreluje všech událostí z operace klienta s událostmi na straně serveru. Pokud tuto hodnotu nezadáte, jeden se vygeneruje a k dispozici v hlavičkách odpovědi.  |
-|  authorization     |  [Získání tokenu JSON web token (JWT) nosiče](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app). |
-|  x-ms-marketplace-token  |  Parametr token dotazu v adrese URL, když se uživatel přesměruje na web partnera SaaS od Azure (například: `https://contoso.com/signup?token=..`). *Poznámka:* Adresa URL dekóduje hodnoty tokenu z prohlížeče před jeho použitím.  |
+|  Typ obsahu      | `application/json` |
+|  x-ms-requestid    |  Jedinečná řetězcová hodnota pro sledování požadavku z klienta, nejlépe identifikátor GUID. Pokud tato hodnota není k dispozici, bude vygenerována a uvedena v hlavičkách odpovědi. |
+|  x-ms-correlationid |  Jedinečná řetězcová hodnota pro operaci na klientovi. Tento parametr koreluje všechny události z klientské operace s událostmi na straně serveru. Pokud tato hodnota není k dispozici, bude vygenerována a uvedena v hlavičkách odpovědi.  |
+|  authorization     |  [Získat token nosiče webového tokenu JSON (Jwt)](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app). Například: "`Bearer <access_token>`". |
+|  x-ms-marketplace-token  |  Parametr dotazu tokenu v adrese URL, když se uživatel přesměruje na web partnera SaaS z Azure (například: `https://contoso.com/signup?token=..`). *Poznámka:* Adresa URL překóduje hodnotu tokenu z prohlížeče před jeho použitím.  |
 
 *Kódy odpovědí:*
 
 Kód: 200<br>
-Přeloží neprůhledné token k odběru služby SaaS. Text odpovědi:
+Vyřeší neprůhledný token na SaaS předplatné. Tělo odpovědi:
  
 
 ```json
@@ -131,16 +131,16 @@ Přeloží neprůhledné token k odběru služby SaaS. Text odpovědi:
 ```
 
 Kód: 400<br>
-Chybný požadavek. x-ms-marketplace-token je chybí, je poškozený nebo jejichž platnost vypršela.
+Chybný požadavek. x-MS-Marketplace – token chybí, je poškozený nebo vypršela jeho platnost.
 
 Kód: 403<br>
-Neoprávněný přístup. Ověřovací token nebylo zadáno nebo je neplatný nebo požadavek se pokouší o přístup akvizice, který nepatří do aktuální vydavatele.
+Neautorizováno. Ověřovací token nebyl poskytnut nebo je neplatný nebo se pokouší o přístup k akvizici, který nepatří k aktuálnímu vydavateli.
 
 Kód: 404<br>
-Nebyl nalezen.
+Nenalezeno
 
 Kód: 500<br>
-Vnitřní chyba serveru.
+Vnitřní chyba serveru
 
 ```json
 {
@@ -151,14 +151,14 @@ Vnitřní chyba serveru.
 }
 ```
 
-### <a name="subscription-api"></a>Předplatné rozhraní API
+### <a name="subscription-api"></a>Rozhraní API pro předplatné
 
-Předplatné rozhraní API podporuje následující operace HTTPS: **Získat**, **příspěvek**, **opravy**, a **odstranit**.
+Rozhraní API pro předplatné podporuje následující operace HTTPS: **Získat**, vystavit, **opravit**a **Odstranit**.
 
 
 #### <a name="list-subscriptions"></a>Seznam předplatných
 
-Zobrazí všechny odběry SaaS pro vydavatele.
+Zobrazí seznam všech předplatných SaaS pro vydavatele.
 
 ##### <a name="getbrhttpsmarketplaceapimicrosoftcomapisaassubscriptionsapi-versionapiversion"></a>Získat<br>`https://marketplaceapi.microsoft.com/api/saas/subscriptions?api-version=<ApiVersion>`
 
@@ -166,22 +166,22 @@ Zobrazí všechny odběry SaaS pro vydavatele.
 
 |             |                   |
 |  --------   |  ---------------  |
-| ApiVersion  |  Verze operace pro tento požadavek.  |
+| ApiVersion  |  Verze operace, která se má použít pro tento požadavek.  |
 
 *Hlavičky žádosti:*
 
 |                    |                   |
 |  ---------------   |  ---------------  |
-| Content-Type       |  `application/json`  |
-| x-ms-requestid     |  Jedinečnou hodnotu řetězce pro sledování žádosti z klienta, pokud možno identifikátor GUID. Pokud tuto hodnotu nezadáte, jeden se vygeneruje a k dispozici v hlavičkách odpovědi. |
-| x-ms-correlationid |  Jedinečnou hodnotu řetězce pro operaci na straně klienta. Tento parametr koreluje všech událostí z operace klienta s událostmi na straně serveru. Pokud tuto hodnotu nezadáte, jeden se vygeneruje a k dispozici v hlavičkách odpovědi.  |
-| authorization      |  [Získání tokenu JSON web token (JWT) nosiče](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app).  |
+| Typ obsahu       |  `application/json`  |
+| x-ms-requestid     |  Jedinečná řetězcová hodnota pro sledování požadavku z klienta, nejlépe identifikátor GUID. Pokud tato hodnota není k dispozici, bude vygenerována a uvedena v hlavičkách odpovědi. |
+| x-ms-correlationid |  Jedinečná řetězcová hodnota pro operaci na klientovi. Tento parametr koreluje všechny události z klientské operace s událostmi na straně serveru. Pokud tato hodnota není k dispozici, bude vygenerována a uvedena v hlavičkách odpovědi.  |
+| authorization      |  [Získat token nosiče webového tokenu JSON (Jwt)](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app). Například: "`Bearer <access_token>`".  |
 
 *Kódy odpovědí:*
 
 Kód: 200 <br/>
-Získá vydavatele a odpovídajících předplatných všechny vydavatele, nabídky, na základě tokenu ověřování.
-Vrácená data:<br>
+Získá vydavatele a odpovídající odběry pro všechny nabídky vydavatele na základě ověřovacího tokenu.
+Datová část odpovědi:<br>
 
 ```json
 {
@@ -216,13 +216,13 @@ Vrácená data:<br>
 }
 ```
 
-Token pro pokračování bude k dispozici pouze v případě, že existují další výraz "stránky" plánů pro načtení. 
+Token pokračování bude přítomen pouze v případě, že existují další "stránky" plánů k načtení. 
 
 Kód: 403 <br>
-Neoprávněný přístup. Ověřovací token nebylo zadáno nebo je neplatný nebo požadavek se pokouší o přístup akvizice, který nepatří do aktuální vydavatele. 
+Neautorizováno. Ověřovací token nebyl poskytnut nebo je neplatný nebo se pokouší o přístup k akvizici, který nepatří k aktuálnímu vydavateli. 
 
 Kód: 500<br>
-Vnitřní chyba serveru.
+Vnitřní chyba serveru
 
 ```json
 {
@@ -235,7 +235,7 @@ Vnitřní chyba serveru.
 
 #### <a name="get-subscription"></a>Získat předplatné
 
-Získá určený odběr SaaS. Pomocí tohoto volání můžete získat informace o licencích a informacemi o plánu.
+Získá zadané předplatné SaaS. Pomocí tohoto volání získáte informace o licenci a informace o plánu.
 
 ##### <a name="getbr-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidapi-versionapiversion"></a>Získat<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId?api-version=<ApiVersion>`
 
@@ -243,22 +243,22 @@ Získá určený odběr SaaS. Pomocí tohoto volání můžete získat informace
 
 |                    |                   |
 |  ---------------   |  ---------------  |
-| subscriptionId     |   Jedinečný identifikátor předplatného SaaS, která se získá po vyřešení token prostřednictvím rozhraní API vyřešit.   |
-|  ApiVersion        |   Verze operace pro tento požadavek.   |
+| subscriptionId     |   Jedinečný identifikátor předplatného SaaS, který se získá po vyřešení tokenu prostřednictvím řešení API.   |
+|  ApiVersion        |   Verze operace, která se má použít pro tento požadavek.   |
 
 *Hlavičky žádosti:*
 
 |                    |                   |
 |  ---------------   |  ---------------  |
-|  Content-Type      |  `application/json`  |
-|  x-ms-requestid    |  Jedinečnou hodnotu řetězce pro sledování žádosti z klienta, pokud možno identifikátor GUID. Pokud tuto hodnotu nezadáte, jeden se vygeneruje a k dispozici v hlavičkách odpovědi. |
-|  x-ms-correlationid |  Jedinečnou hodnotu řetězce pro operaci na straně klienta. Tento parametr koreluje všech událostí z operace klienta s událostmi na straně serveru. Pokud tuto hodnotu nezadáte, jeden se vygeneruje a k dispozici v hlavičkách odpovědi.  |
-|  authorization     |  [Získání tokenu JSON web token (JWT) nosiče](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app). |
+|  Typ obsahu      |  `application/json`  |
+|  x-ms-requestid    |  Jedinečná řetězcová hodnota pro sledování požadavku z klienta, nejlépe identifikátor GUID. Pokud tato hodnota není k dispozici, bude vygenerována a uvedena v hlavičkách odpovědi. |
+|  x-ms-correlationid |  Jedinečná řetězcová hodnota pro operaci na klientovi. Tento parametr koreluje všechny události z klientské operace s událostmi na straně serveru. Pokud tato hodnota není k dispozici, bude vygenerována a uvedena v hlavičkách odpovědi.  |
+|  authorization     |  [Získat token nosiče webového tokenu JSON (Jwt)](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app). Například: "`Bearer <access_token>`".  |
 
 *Kódy odpovědí:*
 
 Kód: 200<br>
-Získá předplatné SaaS z identifikátoru. Vrácená data:<br>
+Získá předplatné SaaS z identifikátoru. Datová část odpovědi:<br>
 
 ```json
 Response Body:
@@ -288,13 +288,13 @@ Response Body:
 ```
 
 Kód: 403<br>
-Neoprávněný přístup. Ověřovací token nebylo zadáno nebo je neplatný nebo požadavek se pokouší o přístup akvizice, který nepatří do aktuální vydavatele.
+Neautorizováno. Ověřovací token nebyl poskytnut nebo je neplatný nebo se pokouší o přístup k akvizici, který nepatří k aktuálnímu vydavateli.
 
 Kód: 404<br>
-Nebyl nalezen.<br> 
+Nenalezeno<br> 
 
 Kód: 500<br>
-Vnitřní chyba serveru.<br>
+Vnitřní chyba serveru<br>
 
 ```json
 {
@@ -304,9 +304,9 @@ Vnitřní chyba serveru.<br>
     }  
 ```
 
-#### <a name="list-available-plans"></a>Seznam dostupných plánů
+#### <a name="list-available-plans"></a>Výpis dostupných plánů
 
-Pomocí tohoto volání můžete zjistit, jestli jsou všechny privátní nebo veřejné nabídky pro aktuální vydavatele.
+Pomocí tohoto volání zjistíte, jestli pro aktuálního vydavatele existují soukromé nebo veřejné nabídky.
 
 ##### <a name="getbr-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidlistavailableplansapi-versionapiversion"></a>Získat<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/listAvailablePlans?api-version=<ApiVersion>`
 
@@ -314,21 +314,21 @@ Pomocí tohoto volání můžete zjistit, jestli jsou všechny privátní nebo v
 
 |                    |                   |
 |  ---------------   |  ---------------  |
-|  ApiVersion        |   Verze operace pro tento požadavek.  |
+|  ApiVersion        |   Verze operace, která se má použít pro tento požadavek.  |
 
 *Hlavičky žádosti:*
 
 |                    |                   |
 |  ---------------   |  ---------------  |
-|   Content-Type     |  `application/json` |
-|   x-ms-requestid   |   Jedinečnou hodnotu řetězce pro sledování žádosti z klienta, pokud možno identifikátor GUID. Pokud tuto hodnotu nezadáte, jeden se vygeneruje a k dispozici v hlavičkách odpovědi. |
-|  x-ms-correlationid  | Jedinečnou hodnotu řetězce pro operaci na straně klienta. Tento parametr koreluje všech událostí z operace klienta s událostmi na straně serveru. Pokud tuto hodnotu nezadáte, jeden se vygeneruje a k dispozici v hlavičkách odpovědi. |
-|  authorization     |  [Získání tokenu JSON web token (JWT) nosiče](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app). |
+|   Typ obsahu     |  `application/json` |
+|   x-ms-requestid   |   Jedinečná řetězcová hodnota pro sledování požadavku z klienta, nejlépe identifikátor GUID. Pokud tato hodnota není k dispozici, bude vygenerována a uvedena v hlavičkách odpovědi. |
+|  x-ms-correlationid  | Jedinečná řetězcová hodnota pro operaci na klientovi. Tento parametr koreluje všechny události z klientské operace s událostmi na straně serveru. Pokud tato hodnota není k dispozici, bude vygenerována a uvedena v hlavičkách odpovědi. |
+|  authorization     |  [Získat token nosiče webového tokenu JSON (Jwt)](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app).  Například: "`Bearer <access_token>`". |
 
 *Kódy odpovědí:*
 
 Kód: 200<br>
-Získá seznam dostupných plánů pro zákazníka. Text odpovědi:
+Načte seznam dostupných plánů pro zákazníka. Tělo odpovědi:
 
 ```json
 {
@@ -341,13 +341,13 @@ Získá seznam dostupných plánů pro zákazníka. Text odpovědi:
 ```
 
 Kód: 404<br>
-Nebyl nalezen.<br> 
+Nenalezeno<br> 
 
 Kód: 403<br>
-Neoprávněný přístup. Ověřovací token nebylo zadáno nebo je neplatný nebo požadavek se pokouší o přístup akvizice, který nepatří do aktuální vydavatele. <br> 
+Neautorizováno. Ověřovací token nebyl poskytnut nebo je neplatný nebo se pokouší o přístup k akvizici, který nepatří k aktuálnímu vydavateli. <br> 
 
 Kód: 500<br>
-Vnitřní chyba serveru.<br>
+Vnitřní chyba serveru<br>
 
 ```json
 { 
@@ -357,25 +357,25 @@ Vnitřní chyba serveru.<br>
     } 
 ```
 
-#### <a name="activate-a-subscription"></a>Aktivovat předplatné
+#### <a name="activate-a-subscription"></a>Aktivace předplatného
 
-##### <a name="postbrhttpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidactivateapi-versionapiversion"></a>Příspěvek<br>`https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/activate?api-version=<ApiVersion>`
+##### <a name="postbrhttpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidactivateapi-versionapiversion"></a>Publikovat<br>`https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/activate?api-version=<ApiVersion>`
 
 *Parametry dotazu:*
 
 |                    |                   |
 |  ---------------   |  ---------------  |
-|  ApiVersion        |  Verze operace pro tento požadavek.  |
-| subscriptionId     | Jedinečný identifikátor předplatného SaaS, která se získá po vyřešení tokenu pomocí rozhraní API pro řešení.  |
+|  ApiVersion        |  Verze operace, která se má použít pro tento požadavek.  |
+| subscriptionId     | Jedinečný identifikátor předplatného SaaS, který se získá po vyřešení tokenu pomocí rozhraní API pro řešení.  |
 
 *Hlavičky žádosti:*
  
 |                    |                   |
 |  ---------------   |  ---------------  |
-|  Content-Type      | `application/json`  |
-|  x-ms-requestid    | Jedinečnou hodnotu řetězce pro sledování žádosti z klienta, pokud možno identifikátor GUID. Pokud tuto hodnotu nezadáte, jeden se vygeneruje a k dispozici v hlavičkách odpovědi.  |
-|  x-ms-correlationid  | Jedinečnou hodnotu řetězce pro operaci na straně klienta. Tento řetězec koreluje všech událostí z operace klienta s událostmi na straně serveru. Pokud tuto hodnotu nezadáte, jeden se vygeneruje a k dispozici v hlavičkách odpovědi.  |
-|  authorization     |  [Získání tokenu JSON web token (JWT) nosiče](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app). |
+|  Typ obsahu      | `application/json`  |
+|  x-ms-requestid    | Jedinečná řetězcová hodnota pro sledování požadavku z klienta, nejlépe identifikátor GUID. Pokud tato hodnota není k dispozici, bude vygenerována a uvedena v hlavičkách odpovědi.  |
+|  x-ms-correlationid  | Jedinečná řetězcová hodnota pro operaci na klientovi. Tento řetězec koreluje všechny události z klientské operace s událostmi na straně serveru. Pokud tato hodnota není k dispozici, bude vygenerována a uvedena v hlavičkách odpovědi.  |
+|  authorization     |  [Získat token nosiče webového tokenu JSON (Jwt)](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app).  Například: "`Bearer <access_token>`". |
 
 *Datová část požadavku:*
 
@@ -392,16 +392,16 @@ Kód: 200<br>
 Aktivuje předplatné.<br>
 
 Kód: 400<br>
-Chybná žádost: selhalo ověřování.
+Chybný požadavek: Chyby ověření.
 
 Kód: 403<br>
-Neoprávněný přístup. Ověřovací token nebylo zadáno nebo je neplatný nebo požadavek se pokouší o přístup akvizice, který nepatří do aktuální vydavatele.
+Neautorizováno. Ověřovací token nebyl poskytnut nebo je neplatný nebo se pokouší o přístup k akvizici, který nepatří k aktuálnímu vydavateli.
 
 Kód: 404<br>
-Nebyl nalezen.
+Nenalezeno
 
 Kód: 500<br>
-Vnitřní chyba serveru.
+Vnitřní chyba serveru
 
 ```json
 {
@@ -412,9 +412,9 @@ Vnitřní chyba serveru.
 }
 ```
 
-#### <a name="change-the-plan-on-the-subscription"></a>Změnit plán v rámci předplatného
+#### <a name="change-the-plan-on-the-subscription"></a>Změna plánu předplatného
 
-Aktualizujte plán v rámci předplatného.
+Aktualizujte plán v předplatném.
 
 ##### <a name="patchbr-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidapi-versionapiversion"></a>Oprava<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>?api-version=<ApiVersion>`
 
@@ -422,17 +422,17 @@ Aktualizujte plán v rámci předplatného.
 
 |                    |                   |
 |  ---------------   |  ---------------  |
-|  ApiVersion        |  Verze operace pro tento požadavek.  |
-| subscriptionId     | Jedinečný identifikátor předplatného SaaS, která se získá po vyřešení tokenu pomocí rozhraní API pro řešení.  |
+|  ApiVersion        |  Verze operace, která se má použít pro tento požadavek.  |
+| subscriptionId     | Jedinečný identifikátor předplatného SaaS, který se získá po vyřešení tokenu pomocí rozhraní API pro řešení.  |
 
 *Hlavičky žádosti:*
 
 |                    |                   |
 |  ---------------   |  ---------------  |
-|  Content-Type      | `application/json` |
-|  x-ms-requestid    |   Jedinečnou hodnotu řetězce pro sledování žádosti z klienta, pokud možno identifikátor GUID. Pokud tuto hodnotu nezadáte, jeden se vygeneruje a k dispozici v hlavičkách odpovědi.  |
-|  x-ms-correlationid  |  Jedinečnou hodnotu řetězce pro operaci na straně klienta. Tento parametr koreluje všech událostí z operace klienta s událostmi na straně serveru. Pokud tuto hodnotu nezadáte, jeden se vygeneruje a k dispozici v hlavičkách odpovědi.    |
-| authorization      |  [Získání tokenu JSON web token (JWT) nosiče](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app).  |
+|  Typ obsahu      | `application/json` |
+|  x-ms-requestid    |   Jedinečná řetězcová hodnota pro sledování požadavku z klienta, nejlépe identifikátor GUID. Pokud tato hodnota není k dispozici, bude vygenerována a uvedena v hlavičkách odpovědi.  |
+|  x-ms-correlationid  |  Jedinečná řetězcová hodnota pro operaci na klientovi. Tento parametr koreluje všechny události z klientské operace s událostmi na straně serveru. Pokud tato hodnota není k dispozici, bude vygenerována a uvedena v hlavičkách odpovědi.    |
+| authorization      |  [Získat token nosiče webového tokenu JSON (Jwt)](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app).  Například: "`Bearer <access_token>`".  |
 
 *Datová část požadavku:*
 
@@ -447,24 +447,24 @@ Request Body:
 
 |                    |                   |
 |  ---------------   |  ---------------  |
-| Operace umístění | Odkaz na prostředek se získat stav operace.   |
+| Operace – umístění | Odkaz na prostředek, který získá stav operace.   |
 
 *Kódy odpovědí:*
 
 Kód: 202<br>
-Byl přijat požadavek na změnu plánu. Partner má dotazovat umístění operace určit úspěch nebo neúspěch. <br>
+Požadavek na změnu plánu byl přijat. U partnera se očekává, že se bude dotazovat na umístění operace, aby bylo možné určit úspěch nebo neúspěch. <br>
 
 Kód: 400<br>
-Chybná žádost: selhalo ověřování.
+Chybný požadavek: Chyby ověření.
 
 Kód: 403<br>
-Neoprávněný přístup. Ověřovací token nebylo zadáno nebo je neplatný nebo požadavek se pokouší o přístup akvizice, který nepatří do aktuální vydavatele.
+Neautorizováno. Ověřovací token nebyl poskytnut nebo je neplatný nebo se pokouší o přístup k akvizici, který nepatří k aktuálnímu vydavateli.
 
 Kód: 404<br>
-Nebyl nalezen.
+Nenalezeno
 
 Kód: 500<br>
-Vnitřní chyba serveru.
+Vnitřní chyba serveru
 
 ```json
 {
@@ -476,29 +476,29 @@ Vnitřní chyba serveru.
 ```
 
 >[!Note]
->Patched najednou, nikoli oba současně, může být pouze plán nebo množství. Upraví na předplatné s **aktualizace** není v `allowedCustomerOperations`.
+>Současně lze opravit pouze plán nebo množství, nikoli obojí. Úpravy v předplatném s **aktualizací** nejsou `allowedCustomerOperations`v.
 
-#### <a name="change-the-quantity-on-the-subscription"></a>Změnit množství na předplatné
+#### <a name="change-the-quantity-on-the-subscription"></a>Změna množství v předplatném
 
-Aktualizujte množství u daného předplatného.
+Aktualizujte množství v předplatném.
 
-##### <a name="patchbr-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidapi-versionapiversion"></a>Oprava:<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>?api-version=<ApiVersion>`
+##### <a name="patchbr-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidapi-versionapiversion"></a>Použita<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>?api-version=<ApiVersion>`
 
 *Parametry dotazu:*
 
 |                    |                   |
 |  ---------------   |  ---------------  |
-|  ApiVersion        |  Verze operace pro tento požadavek.  |
-| subscriptionId     | Jedinečný identifikátor předplatného SaaS, která se získá po vyřešení tokenu pomocí rozhraní API pro řešení.  |
+|  ApiVersion        |  Verze operace, která se má použít pro tento požadavek.  |
+| subscriptionId     | Jedinečný identifikátor předplatného SaaS, který se získá po vyřešení tokenu pomocí rozhraní API pro řešení.  |
 
 *Hlavičky žádosti:*
 
 |                    |                   |
 |  ---------------   |  ---------------  |
-|  Content-Type      | `application/json` |
-|  x-ms-requestid    |   Jedinečnou hodnotu řetězce pro sledování žádosti z klienta, pokud možno identifikátor GUID. Pokud tuto hodnotu nezadáte, jeden se vygeneruje a k dispozici v hlavičkách odpovědi.  |
-|  x-ms-correlationid  |  Jedinečnou hodnotu řetězce pro operaci na straně klienta. Tento parametr koreluje všech událostí z operace klienta s událostmi na straně serveru. Pokud tuto hodnotu nezadáte, jeden se vygeneruje a k dispozici v hlavičkách odpovědi.    |
-| authorization      |  [Získání tokenu JSON web token (JWT) nosiče](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app).  |
+|  Typ obsahu      | `application/json` |
+|  x-ms-requestid    |   Jedinečná řetězcová hodnota pro sledování požadavku z klienta, nejlépe identifikátor GUID. Pokud tato hodnota není k dispozici, bude vygenerována a uvedena v hlavičkách odpovědi.  |
+|  x-ms-correlationid  |  Jedinečná řetězcová hodnota pro operaci na klientovi. Tento parametr koreluje všechny události z klientské operace s událostmi na straně serveru. Pokud tato hodnota není k dispozici, bude vygenerována a uvedena v hlavičkách odpovědi.    |
+| authorization      |  [Získat token nosiče webového tokenu JSON (Jwt)](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app).  Například: "`Bearer <access_token>`".  |
 
 *Datová část požadavku:*
 
@@ -513,25 +513,25 @@ Request Body:
 
 |                    |                   |
 |  ---------------   |  ---------------  |
-| Operace umístění | Odkaz na prostředek se získat stav operace.   |
+| Operace – umístění | Připojte se k prostředku, abyste získali stav operace.   |
 
 *Kódy odpovědí:*
 
 Kód: 202<br>
-Byl přijat požadavek na změnu množství. Partner má dotazovat umístění operace určit úspěch nebo neúspěch. <br>
+Žádost o změnu množství byla přijata. U partnera se očekává, že se bude dotazovat na umístění operace, aby bylo možné určit úspěch nebo neúspěch. <br>
 
 Kód: 400<br>
-Chybná žádost: selhalo ověřování.
+Chybný požadavek: Chyby ověření.
 
 
 Kód: 403<br>
-Neoprávněný přístup. Ověřovací token nebylo zadáno nebo je neplatný nebo požadavek se pokouší o přístup akvizice, který nepatří do aktuální vydavatele.
+Neautorizováno. Ověřovací token nebyl poskytnut nebo je neplatný nebo se pokouší o přístup k akvizici, který nepatří k aktuálnímu vydavateli.
 
 Kód: 404<br>
-Nebyl nalezen.
+Nenalezeno
 
 Kód: 500<br>
-Vnitřní chyba serveru.
+Vnitřní chyba serveru
 
 ```json
 {
@@ -543,11 +543,11 @@ Vnitřní chyba serveru.
 ```
 
 >[!Note]
->Patched najednou, nikoli oba současně, může být pouze plán nebo množství. Upraví na předplatné s **aktualizace** není v `allowedCustomerOperations`.
+>Současně lze opravit pouze plán nebo množství, nikoli obojí. Úpravy v předplatném s **aktualizací** nejsou `allowedCustomerOperations`v.
 
-#### <a name="delete-a-subscription"></a>Odstranění předplatného
+#### <a name="delete-a-subscription"></a>Odstraní předplatné
 
-Odhlásit a odstranit zadaný odběr.
+Zruší odběr a odstraní zadané předplatné.
 
 ##### <a name="deletebr-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionid-api-versionapiversion"></a>Odstranění<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId> ?api-version=<ApiVersion>`
 
@@ -555,34 +555,34 @@ Odhlásit a odstranit zadaný odběr.
 
 |                    |                   |
 |  ---------------   |  ---------------  |
-|  ApiVersion        |  Verze operace pro tento požadavek.  |
-| subscriptionId     | Jedinečný identifikátor předplatného SaaS, která se získá po vyřešení tokenu pomocí rozhraní API pro řešení.  |
+|  ApiVersion        |  Verze operace, která se má použít pro tento požadavek.  |
+| subscriptionId     | Jedinečný identifikátor předplatného SaaS, který se získá po vyřešení tokenu pomocí rozhraní API pro řešení.  |
 
 *Hlavičky žádosti:*
  
 |                    |                   |
 |  ---------------   |  ---------------  |
-|   Content-Type     |  `application/json` |
-|  x-ms-requestid    |   Jedinečnou hodnotu řetězce pro sledování žádosti z klienta, pokud možno identifikátor GUID. Pokud tuto hodnotu nezadáte, jeden se vygeneruje a k dispozici v hlavičkách odpovědi.   |
-|  x-ms-correlationid  |  Jedinečnou hodnotu řetězce pro operaci na straně klienta. Tento parametr koreluje všech událostí z operace klienta s událostmi na straně serveru. Pokud tuto hodnotu nezadáte, jeden se vygeneruje a k dispozici v hlavičkách odpovědi.   |
-|  authorization     |  [Získání tokenu JSON web token (JWT) nosiče](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app).  |
+|   Typ obsahu     |  `application/json` |
+|  x-ms-requestid    |   Jedinečná řetězcová hodnota pro sledování požadavku z klienta, nejlépe identifikátor GUID. Pokud tato hodnota není k dispozici, bude vygenerována a uvedena v hlavičkách odpovědi.   |
+|  x-ms-correlationid  |  Jedinečná řetězcová hodnota pro operaci na klientovi. Tento parametr koreluje všechny události z klientské operace s událostmi na straně serveru. Pokud tato hodnota není k dispozici, bude vygenerována a uvedena v hlavičkách odpovědi.   |
+|  authorization     |  [Získat token nosiče webového tokenu JSON (Jwt)](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app).  Například: "`Bearer <access_token>`".  |
 
 *Kódy odpovědí:*
 
 Kód: 202<br>
-Partner inicializovalo volání, chcete-li odhlásit odběr SaaS.<br>
+Partner inicioval volání odhlášení odběru předplatného SaaS.<br>
 
 Kód: 400<br>
-Odstranit v rámci předplatného pomocí **odstranit** není v `allowedCustomerOperations`.
+Odstraní se v rámci předplatného **, které není** v `allowedCustomerOperations`.
 
 Kód: 403<br>
-Neoprávněný přístup. Ověřovací token nebylo zadáno nebo je neplatný nebo požadavek se pokouší o přístup akvizice, který nepatří do aktuální vydavatele.
+Neautorizováno. Ověřovací token nebyl poskytnut nebo je neplatný nebo se pokouší o přístup k akvizici, který nepatří k aktuálnímu vydavateli.
 
 Kód: 404<br>
-Nebyl nalezen.
+Nenalezeno
 
 Kód: 500<br>
-Vnitřní chyba serveru.
+Vnitřní chyba serveru
 
 ```json
 {
@@ -594,13 +594,13 @@ Vnitřní chyba serveru.
 ```
 
 
-### <a name="operations-api"></a>Operace rozhraní API
+### <a name="operations-api"></a>Rozhraní API pro provoz
 
-Operace rozhraní API podporuje následující operace opravy a Get.
+Rozhraní API operací podporuje následující operace patch a Get.
 
-#### <a name="list-outstanding-operations"></a>Seznam zbývajících operací. 
+#### <a name="list-outstanding-operations"></a>Výpis nezpracovaných operací 
 
-Vypíše zbývající operace pro aktuální vydavatele. 
+Zobrazí nedokončené operace pro aktuálního vydavatele. 
 
 ##### <a name="getbr-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidoperationsapi-versionapiversion"></a>Získat<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations?api-version=<ApiVersion>`
 
@@ -608,21 +608,21 @@ Vypíše zbývající operace pro aktuální vydavatele.
 
 |             |        |
 |  ---------------   |  ---------------  |
-|    ApiVersion                |   Verze operace pro tento požadavek.                |
-| subscriptionId     | Jedinečný identifikátor předplatného SaaS, která se získá po vyřešení tokenu pomocí rozhraní API pro řešení.  |
+|    ApiVersion                |   Verze operace, která se má použít pro tento požadavek.                |
+| subscriptionId     | Jedinečný identifikátor předplatného SaaS, který se získá po vyřešení tokenu pomocí rozhraní API pro řešení.  |
 
 *Hlavičky žádosti:*
  
 |                    |                   |
 |  ---------------   |  ---------------  |
-|   Content-Type     |  `application/json` |
-|  x-ms-requestid    |  Jedinečnou hodnotu řetězce pro sledování žádosti z klienta, pokud možno identifikátor GUID. Pokud tuto hodnotu nezadáte, jeden se vygeneruje a k dispozici v hlavičkách odpovědi.  |
-|  x-ms-correlationid |  Jedinečnou hodnotu řetězce pro operaci na straně klienta. Tento parametr koreluje všech událostí z operace klienta s událostmi na straně serveru. Pokud tuto hodnotu nezadáte, jeden se vygeneruje a k dispozici v hlavičkách odpovědi.  |
-|  authorization     |  [Získání tokenu JSON web token (JWT) nosiče](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app).  |
+|   Typ obsahu     |  `application/json` |
+|  x-ms-requestid    |  Jedinečná řetězcová hodnota pro sledování požadavku z klienta, nejlépe identifikátor GUID. Pokud tato hodnota není k dispozici, bude vygenerována a uvedena v hlavičkách odpovědi.  |
+|  x-ms-correlationid |  Jedinečná řetězcová hodnota pro operaci na klientovi. Tento parametr koreluje všechny události z klientské operace s událostmi na straně serveru. Pokud tato hodnota není k dispozici, bude vygenerována a uvedena v hlavičkách odpovědi.  |
+|  authorization     |  [Získat token nosiče webového tokenu JSON (Jwt)](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app).  Například: "`Bearer <access_token>`".  |
 
 *Kódy odpovědí:*
 
-Kód: 200<br> Získá seznam čekajících operací v rámci předplatného. Vrácená data:
+Kód: 200<br> Získá seznam nevyřízených operací v rámci předplatného. Datová část odpovědi:
 
 ```json
 [{
@@ -641,16 +641,16 @@ Kód: 200<br> Získá seznam čekajících operací v rámci předplatného. Vr�
 
 
 Kód: 400<br>
-Chybná žádost: selhalo ověřování.
+Chybný požadavek: Chyby ověření.
 
 Kód: 403<br>
-Neoprávněný přístup. Ověřovací token nebylo zadáno nebo je neplatný nebo požadavek se pokouší o přístup akvizice, který nepatří do aktuální vydavatele.
+Neautorizováno. Ověřovací token nebyl poskytnut nebo je neplatný nebo se pokouší o přístup k akvizici, který nepatří k aktuálnímu vydavateli.
 
 Kód: 404<br>
-Nebyl nalezen.
+Nenalezeno
 
 Kód: 500<br>
-Vnitřní chyba serveru.
+Vnitřní chyba serveru
 
 ```json
 {
@@ -662,9 +662,9 @@ Vnitřní chyba serveru.
 
 ```
 
-#### <a name="get-operation-status"></a>Načíst stav operace
+#### <a name="get-operation-status"></a>Získat stav operace
 
-Umožňuje vydavatele a sledovat stav zadaného aktivovaných asynchronní operace (například `subscribe`, `unsubscribe`, `changePlan`, nebo `changeQuantity`).
+Umožňuje vydavateli sledovat `subscribe`stav zadané aktivované asynchronní operace (například, `unsubscribe`, `changePlan`nebo `changeQuantity`).
 
 ##### <a name="getbr-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidoperationsoperationidapi-versionapiversion"></a>Získat<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations/<operationId>?api-version=<ApiVersion>`
 
@@ -672,20 +672,20 @@ Umožňuje vydavatele a sledovat stav zadaného aktivovaných asynchronní opera
 
 |                    |                   |
 |  ---------------   |  ---------------  |
-|  ApiVersion        |  Verze operace pro tento požadavek.  |
+|  ApiVersion        |  Verze operace, která se má použít pro tento požadavek.  |
 
 *Hlavičky žádosti:*
 
 |                    |                   |
 |  ---------------   |  ---------------  |
-|  Content-Type      |  `application/json`   |
-|  x-ms-requestid    |   Jedinečnou hodnotu řetězce pro sledování žádosti z klienta, pokud možno identifikátor GUID. Pokud tuto hodnotu nezadáte, jeden se vygeneruje a k dispozici v hlavičkách odpovědi.  |
-|  x-ms-correlationid |  Jedinečnou hodnotu řetězce pro operaci na straně klienta. Tento parametr koreluje všech událostí z operace klienta s událostmi na straně serveru. Pokud tuto hodnotu nezadáte, jeden se vygeneruje a k dispozici v hlavičkách odpovědi.  |
-|  authorization     |  [Získání tokenu JSON web token (JWT) nosiče](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app).  |
+|  Typ obsahu      |  `application/json`   |
+|  x-ms-requestid    |   Jedinečná řetězcová hodnota pro sledování požadavku z klienta, nejlépe identifikátor GUID. Pokud tato hodnota není k dispozici, bude vygenerována a uvedena v hlavičkách odpovědi.  |
+|  x-ms-correlationid |  Jedinečná řetězcová hodnota pro operaci na klientovi. Tento parametr koreluje všechny události z klientské operace s událostmi na straně serveru. Pokud tato hodnota není k dispozici, bude vygenerována a uvedena v hlavičkách odpovědi.  |
+|  authorization     |  [Získat token nosiče webového tokenu JSON (Jwt)](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app). Například: "`Bearer <access_token>`".  |
 
 *Kódy odpovědí:*<br>
 
-Kód: 200<br> Získá zadaný nevyřízenou operaci SaaS. Vrácená data:
+Kód: 200<br> Načte zadanou probíhající operaci SaaS. Datová část odpovědi:
 
 ```json
 Response body:
@@ -705,15 +705,15 @@ Response body:
 ```
 
 Kód: 400<br>
-Chybná žádost: selhalo ověřování.
+Chybný požadavek: Chyby ověření.
 
 Kód: 403<br>
-Neoprávněný přístup. Ověřovací token nebylo zadáno nebo je neplatný nebo požadavek se pokouší o přístup akvizice, který nepatří do aktuální vydavatele.
+Neautorizováno. Ověřovací token nebyl poskytnut nebo je neplatný nebo se pokouší o přístup k akvizici, který nepatří k aktuálnímu vydavateli.
  
 Kód: 404<br>
-Nebyl nalezen.
+Nenalezeno
 
-Kód: 500<br> Vnitřní chyba serveru.
+Kód: 500<br> Vnitřní chyba serveru
 
 ```json
 {
@@ -724,9 +724,9 @@ Kód: 500<br> Vnitřní chyba serveru.
 }
 
 ```
-#### <a name="update-the-status-of-an-operation"></a>Aktualizovat stav operace
+#### <a name="update-the-status-of-an-operation"></a>Aktualizace stavu operace
 
-Aktualizujte stav operace indikuje úspěch nebo selhání pomocí zadané hodnoty.
+Aktualizuje stav operace, aby označovala úspěch nebo neúspěch se zadanými hodnotami.
 
 ##### <a name="patchbr-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidoperationsoperationidapi-versionapiversion"></a>Oprava<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations/<operationId>?api-version=<ApiVersion>`
 
@@ -734,18 +734,18 @@ Aktualizujte stav operace indikuje úspěch nebo selhání pomocí zadané hodno
 
 |                    |                   |
 |  ---------------   |  ---------------  |
-|   ApiVersion       |  Verze operace pro tento požadavek.  |
-| subscriptionId     | Jedinečný identifikátor předplatného SaaS, která se získá po vyřešení tokenu pomocí rozhraní API pro řešení.  |
-|  operationId       | Operace, která se dokončuje. |
+|   ApiVersion       |  Verze operace, která se má použít pro tento požadavek.  |
+| subscriptionId     | Jedinečný identifikátor předplatného SaaS, který se získá po vyřešení tokenu pomocí rozhraní API pro řešení.  |
+|  operationId       | Operace, která je dokončena. |
 
 *Hlavičky žádosti:*
 
 |                    |                   |
 |  ---------------   |  ---------------  |
-|   Content-Type     | `application/json`   |
-|   x-ms-requestid   |   Jedinečnou hodnotu řetězce pro sledování žádosti z klienta, pokud možno identifikátor GUID. Pokud tuto hodnotu nezadáte, jeden se vygeneruje a k dispozici v hlavičkách odpovědi. |
-|  x-ms-correlationid |  Jedinečnou hodnotu řetězce pro operaci na straně klienta. Tento parametr koreluje všech událostí z operace klienta s událostmi na straně serveru. Pokud tuto hodnotu nezadáte, jeden se vygeneruje a k dispozici v hlavičkách odpovědi. |
-|  authorization     |  [Získání tokenu JSON web token (JWT) nosiče](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app).  |
+|   Typ obsahu     | `application/json`   |
+|   x-ms-requestid   |   Jedinečná řetězcová hodnota pro sledování požadavku z klienta, nejlépe identifikátor GUID. Pokud tato hodnota není k dispozici, bude vygenerována a uvedena v hlavičkách odpovědi. |
+|  x-ms-correlationid |  Jedinečná řetězcová hodnota pro operaci na klientovi. Tento parametr koreluje všechny události z klientské operace s událostmi na straně serveru. Pokud tato hodnota není k dispozici, bude vygenerována a uvedena v hlavičkách odpovědi. |
+|  authorization     |  [Získat token nosiče webového tokenu JSON (Jwt)](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app).  Například: "`Bearer <access_token>`".  |
 
 *Datová část požadavku:*
 
@@ -760,21 +760,21 @@ Aktualizujte stav operace indikuje úspěch nebo selhání pomocí zadané hodno
 
 *Kódy odpovědí:*
 
-Kód: 200<br> Volání k informování o dokončení operace na straně partnera. Tato odpověď může například signalizovat změnu licence nebo plány.
+Kód: 200<br> Výzva k informování o dokončení operace na straně partnera. Tato odpověď by například mohla signalizovat změnu míst nebo plánů.
 
 Kód: 400<br>
-Chybná žádost: selhalo ověřování.
+Chybný požadavek: Chyby ověření.
 
 Kód: 403<br>
-Neoprávněný přístup. Ověřovací token nebylo zadáno nebo je neplatný nebo požadavek se pokouší o přístup akvizice, který nepatří do aktuální vydavatele.
+Neautorizováno. Ověřovací token nebyl poskytnut nebo je neplatný nebo se pokouší o přístup k akvizici, který nepatří k aktuálnímu vydavateli.
 
 Kód: 404<br>
-Nebyl nalezen.
+Nenalezeno
 
 Kód: 409<br>
-Ke konfliktu. Například novější transakce je již splněny.
+Došlo. Například novější transakce je již splněna.
 
-Kód: 500<br> Vnitřní chyba serveru.
+Kód: 500<br> Vnitřní chyba serveru
 
 ```json
 {
@@ -786,9 +786,9 @@ Kód: 500<br> Vnitřní chyba serveru.
 
 ```
 
-## <a name="implementing-a-webhook-on-the-saas-service"></a>Implementace webhook ve službě SaaS
+## <a name="implementing-a-webhook-on-the-saas-service"></a>Implementace Webhooku ve službě SaaS
 
-Vydavatel musí implementovat webhooku v této službě SaaS k proaktivně upozorní uživatele na změny ve své službě. Očekává se, že služba SaaS volají operace rozhraní API k ověření a autorizaci před provedením akce na oznámení webhooku.
+Vydavatel musí implementovat Webhook v této službě SaaS, aby proaktivně upozornil uživatele na změny ve své službě. Očekává se, že služba SaaS před provedením akce v oznámení Webhooku zavolá rozhraní API operací k ověření a autorizaci.
 
 ```json
 {
@@ -805,34 +805,34 @@ Vydavatel musí implementovat webhooku v této službě SaaS k proaktivně upozo
 
 }
 ```
-Kde akce může být jeden z následujících akcí: 
-- `unsubscribe` (Pokud prostředek se odstranil)
-- `changePlan` (po operaci změnit plán dokončení)
-- `changeQuantity` (Pokud změna množství dokončení operace)
-- `suspend` (když prostředků bylo pozastaveno)
-- `reinstate` (když prostředků má byly obnoveny po pozastavení se vaše)
+Kde může být akce jedna z následujících: 
+- `unsubscribe`(při odstranění prostředku)
+- `changePlan`(po dokončení operace změnit plán)
+- `changeQuantity`(po dokončení operace změny množství)
+- `suspend`(pokud byl prostředek pozastaven)
+- `reinstate`(pokud byl prostředek obnoven po pozastavení)
 
-Kde stav může být jeden z následujících akcí: 
+Kde může být stav jedna z následujících: 
 - **NotStarted** <br>
- - **Probíhá zpracování** <br>
-- **Bylo úspěšně dokončeno** <br>
+ - **InProgress** <br>
+- **Úspěchu** <br>
 - **Se nezdařilo** <br>
-- **Konflikt** <br>
+- **Došlo** <br>
 
-V oznámení webhooku užitečné stavy jsou buď **Succeeded** a **neúspěšné**. Operace životního cyklu pochází z **NotStarted** do konečného stavu, jako je **Succeeded**, **neúspěšné**, nebo **konflikt**. Pokud se zobrazí **NotStarted** nebo **InProgress**, požádat o stav přes získat rozhraní API, dokud operace přejde do konečného stavu před provedením akce i nadále. 
+V oznámení Webhooku jsou možné stavy **úspěšné** a neúspěšné. Životní cyklus operace je od **NotStarted** do stavu terminálu, jako je **úspěch**, **Chyba**nebo **konflikt**. Pokud obdržíte **NotStarted** nebo InProgress, pokračujte v žádosti o stav prostřednictvím rozhraní Get API, dokud operace nedosáhne stavu terminálu před provedením akce. 
 
-## <a name="mock-apis"></a>Napodobení rozhraní API
+## <a name="mock-apis"></a>Rozhraní API pro návrhy
 
-Vám pomůže naše mock rozhraní API vám pomůžou začít s vývojem, zejména při vytváření prototypů, projekty a testování. 
+Můžete použít naše rozhraní API, které vám pomohou začít s vývojem, zejména vytváření prototypů a testování projektů. 
 
-Hostování koncový bod: `https://marketplaceapi.microsoft.com/api` (ověření není vyžadováno)<br/>
-Verze rozhraní API: `2018-09-15`<br/>
-Vzorek identifikátoru URI: `https://marketplaceapi.microsoft.com/api/saas/subscriptions?api-version=2018-09-15` <br/>
+Koncový bod hostitele `https://marketplaceapi.microsoft.com/api` : (není vyžadováno ověřování)<br/>
+Verze rozhraní API:`2018-09-15`<br/>
+Vzorový identifikátor URI:`https://marketplaceapi.microsoft.com/api/saas/subscriptions?api-version=2018-09-15` <br/>
 
-Cesty koncový bod rozhraní API jsou stejné ve mock a skutečné rozhraní API, ale verze rozhraní API se liší. Verze je `2018-09-15` pro verzi mock a `2018-08-31` pro produkční verzi. 
+Cesty koncových bodů rozhraní API jsou stejné napříč modely i skutečnými rozhraními API, ale verze rozhraní API se liší. Verze je určena `2018-09-15` pro verzi v modelu a `2018-08-31` pro produkční verzi. 
 
-Některé z volání rozhraní API v tomto článku provádět mock hostitele koncového bodu. Obecně můžete očekávat mock dat zpět jako odpověď. Volání metody předplatného aktualizace pomocí mock rozhraní API vrací vždy 500. 
+Jakékoli volání rozhraní API v tomto článku se dá udělat na koncový bod hostitele s přípravou. Obecně se očekává, že se jako odpověď vrátí napodobná data. Volání metod aktualizace předplatného na rozhraní API pro návrhy vždy vrátí 500. 
 
 ## <a name="next-steps"></a>Další postup
 
-Vývojáři také programově načíst a manipulace s úlohy, nabídky a vydavatel profilů pomocí [Cloud Partner Portal, rozhraní REST API](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-api-overview).
+Vývojáři můžou také programově načítat a manipulovat s úlohami, nabídkami a profily vydavatelů pomocí [rozhraní portál partnerů cloudu REST API](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-api-overview).

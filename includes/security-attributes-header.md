@@ -2,24 +2,15 @@
 author: msmbaldwin
 ms.service: security
 ms.topic: include
-ms.date: 04/17/2019
+ms.date: 07/23/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 762393e501475001d2af6defc563b3e489788309
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: 4aea8c1d1d7112ac1f9ff9042ff01d173ed986c5
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67795631"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68440891"
 ---
-Atribut zabezpečení je kvality nebo funkce služby Azure. Přispívá k schopnost služby ochrana, detekci a reakce na ohrožení zabezpečení.
+Atribut zabezpečení je kvalita nebo funkce služby Azure. Přispívá k schopnostem služby zabránit, zjišťovat a reagovat na ohrožení zabezpečení.
 
-Atributy zabezpečení jsou klasifikovány jako:
-* Preventivní
-* Segmentace sítě
-* Detection (Detekce)
-* Podpora pro správu identit a přístupu
-* Záznam pro audit
-* Řízení přístupu (Pokud se používá)
-* Správa konfigurace (Pokud se používá)
-
-V každé kategorii ukážeme "Ano" nebo "Ne" označuje, jestli se atribut používá. U některých služeb vám ukážeme, "Není k dispozici" pro atribut, který se nedá použít. Může také zajišťuje poznámky nebo odkaz na další informace o atributu.
+V každé kategorii zobrazujeme "Ano" nebo "ne" k označení toho, zda je atribut použit. U některých služeb se pro nepoužitý atribut zobrazuje "N/A". Můžete také zadat poznámku nebo odkaz na Další informace o atributu.

@@ -1,6 +1,6 @@
 ---
-title: Konfigurovat nastavení použití v testovacím prostředím v učebnách Azure Lab Services | Dokumentace Microsoftu
-description: Zjistěte, jak nakonfigurovat počet uživatelů pro testovací prostředí, je registrován v testovacím, řídí počet hodin, můžete použít virtuální počítač a další.
+title: Konfigurace nastavení využití v učebně Labs Azure Lab Services | Microsoft Docs
+description: Přečtěte si, jak nakonfigurovat počet uživatelů pro testovací prostředí, získat je zaregistrovaných v testovacím prostředí, určit počet hodin, po které může virtuální počítač používat, a další.
 services: lab-services
 documentationcenter: na
 author: spelluru
@@ -13,138 +13,138 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/11/2019
 ms.author: spelluru
-ms.openlocfilehash: 67faf268d265fd045c21b75b6f64840511a371d3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 86f22864c416ad2a90bea09c02675d6eb3322308
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67067327"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68385619"
 ---
-# <a name="configure-usage-settings-and-policies"></a>Konfigurace nastavení použití a zásady
-Tento článek popisuje, jak přidat uživatele do testovacího prostředí, je registrován v testovacím, řídí počet hodin, můžete použít virtuální počítač a další. 
+# <a name="configure-usage-settings-and-policies"></a>Konfigurace nastavení a zásad použití
+Tento článek popisuje, jak přidat uživatele do testovacího prostředí, získat je zaregistrované v testovacím prostředí a určit počet hodin, po které může virtuální počítač používat, a další. 
 
 
-## <a name="add-users-to-the-lab"></a>Přidání uživatelů do testovacího prostředí
-Pokud máte **omezit přístup** povolena, přidejte do seznamu uživatelé (e-mailové adresy).
+## <a name="add-users-to-the-lab"></a>Přidat uživatele do testovacího prostředí
+Pokud máte povolený **přístup omezit** , přidejte uživatele (e-mailové adresy) do seznamu.
 
-1. Vyberte **uživatelé** v nabídce vlevo.
-2. Vyberte **přidat uživatele** na panelu nástrojů. 
+1. V nabídce vlevo vyberte **Uživatelé** .
+2. Na panelu nástrojů vyberte **Přidat uživatele** . 
 
-    ![Přidání uživatelů tlačítka](../media/how-to-configure-student-usage/add-users-button.png)
-1. Na **přidat uživatele** stránky, zadejte e-mailové adresy uživatele na samostatných řádcích nebo na jednom řádku, oddělené středníky. 
+    ![Tlačítko Přidat uživatele](../media/how-to-configure-student-usage/add-users-button.png)
+1. Na stránce **Přidat uživatele** zadejte e-mailové adresy uživatelů na samostatných řádcích nebo na jeden řádek oddělený středníky. 
 
     ![Přidat e-mailové adresy uživatele](../media/how-to-configure-student-usage/add-users-email-addresses.png)
-4. Vyberte **Uložit**. Zobrazí se e-mailové adresy uživatelů a jejich stavy (zaregistrované, nebo ne) v seznamu. 
+4. Vyberte **Uložit**. V seznamu se zobrazí e-mailové adresy uživatelů a jejich stavů (registrovaných nebo ne). 
 
     ![Seznam uživatelů](../media/how-to-configure-student-usage/users-list-new.png)
 
-## <a name="share-registration-link-with-students"></a>Sdílet odkaz na registraci se zúčastnili studenti
-Odeslat odkaz na registraci pro studenty, použijte jednu z následujících metod. První metoda ukazuje, jak odesílat e-maily studentům odkaz na registraci a volitelnou zprávu. Druhá metoda ukazuje, jak získat odkaz na registraci, které můžete sdílet s ostatními požadovaným způsobem. 
+## <a name="share-registration-link-with-students"></a>Sdílet odkaz na registraci s studenty
+Chcete-li odeslat odkaz na registraci studentům, použijte jednu z následujících metod. První metoda ukazuje, jak odeslat e-maily studentům pomocí odkazu na registraci a volitelné zprávy. Druhá metoda vám ukáže, jak získat odkaz na registraci, který můžete sdílet s ostatními způsobem, jaký požadujete. 
 
-Pokud **omezit přístup** je povolená pro testovací prostředí, pouze uživatelé ze seznamu uživatelů můžete použít odkaz na registraci k zaregistrování do testovacího prostředí. Tato možnost je povolená ve výchozím nastavení. 
+Pokud je pro testovací prostředí povolený **přístup** s omezením, můžou k registraci do testovacího prostředí používat jenom uživatelé v seznamu uživatelů. Tato možnost je ve výchozím nastavení povolená. 
 
 ### <a name="send-email-to-users"></a>Odeslání e-mailu uživatelům
-Azure Lab Services umožňuje učitelům na e-mailové pozvánky testovacího prostředí pro všechny nebo vybrané studenty bez nutnosti použít jinou e-mailový klient. Učitelé můžou při najetí myší na jednotlivé studenty v seznamu zobrazovat ikona e-mailu pro každý student nebo vyberte jeden nebo více studentů a používat **poslat pozvánku** na panelu nástrojů. Tato funkce odesílá e-mailu s odkazem na registraci a učitele přidá zprávu (pokud existuje). Po odeslání e-mailové pozvánce, změní se stav pozvánku **Pozvánka se odeslala** tak, aby učitelé můžete udržovat přehled o studentům jste už dostali, odkaz na registraci a data byla odeslána.
+Azure Lab Services umožní učitelům e-mailové prostředí pozvánky všem nebo vybraným studentům bez použití jiného e-mailového klienta. Učitelé si můžou v seznamu najetí myší na jednotlivé studenty a zobrazit tak ikonu e-mailu pro každého studenta nebo vybrat jednoho nebo více studentů a na panelu nástrojů použít **poslat pozvánku** . Tato funkce pošle e-mail s odkazem na registraci a zprávou (pokud existuje), kterou přidal učitel. Po odeslání pozvánky se stav pozvánky změní na **pozvánku odeslanou** , aby učitelé mohli sledovat, kteří studenti již obdrželi registrační odkaz a datum odeslání.
 
-1. Přepněte **uživatelé** zobrazit v případě, že již není na stránce. 
-2. V seznamu vyberte konkrétní nebo všechny uživatele. Pokud chcete vybrat konkrétní uživatele, vyberte zaškrtávací políčka v prvním sloupci v seznamu. Chcete-li vybrat všechny uživatele, zaškrtněte políčko před název prvního sloupce (**název**) nebo vyberte všechna zaškrtávací políčka pro všechny uživatele v seznamu. Zobrazí se stav **pozvánku stavu** v tomto seznamu.  Na následujícím obrázku, stav pozvánku pro všechny studenty je nastavený na **neodeslaná Pozvánka**. 
+1. Pokud na stránce již nejste, přepněte do zobrazení **Uživatelé** . 
+2. Vyberte konkrétní nebo všechny uživatele ze seznamu. Chcete-li vybrat konkrétní uživatele, zaškrtněte políčka v prvním sloupci seznamu. Chcete-li vybrat možnost všichni uživatelé, zaškrtněte políčko před nadpisem prvního sloupce (**název**) nebo zaškrtněte všechna políčka pro všechny uživatele v seznamu. Stav pozvánky můžete zobrazit v tomto  seznamu.  Na následujícím obrázku je stav pozvánky pro všechny studenty nastavený na pozvánku Neodesláno. 
 
-    ![Vyberte studenty](../media/tutorial-setup-classroom-lab/select-students.png)
-1. Vyberte **ikony e-mailu (obálky)** v jednom z řádků (nebo) vyberte **poslat pozvánku** na panelu nástrojů. Můžete také ukazatele myši nad jméno studenta v seznamu se zobrazí ikona e-mailu. 
+    ![Vybrat studenty](../media/tutorial-setup-classroom-lab/select-students.png)
+1. Vyberte **ikonu e-mailu (obálka)** v jednom z řádků (nebo) vyberte **Odeslat pozvánku** na panelu nástrojů. Chcete-li zobrazit ikonu e-mailu, můžete také umístit ukazatel myši na jméno studenta v seznamu. 
 
-    ![Poslat odkaz registraci e-mailem](../media/tutorial-setup-classroom-lab/send-email.png)
-4. Na **registraci odeslat odkaz e-mailem** stránce, postupujte podle těchto kroků: 
-    1. Typ **volitelnou zprávu** , který chcete odeslat pro studenty. E-mailu automaticky zahrnuje odkaz na registraci. 
-    2. Na **registraci odeslat odkaz e-mailem** stránce **odeslat**. Zobrazí stav změnit na pozvánku **posílá se Pozvánka** a potom do **Pozvánka se odeslala**. 
+    ![Poslat odkaz na registraci e-mailem](../media/tutorial-setup-classroom-lab/send-email.png)
+4. Na stránce **Odeslat odkaz pro registraci e-mailem** proveďte tyto kroky: 
+    1. Zadejte **volitelnou zprávu** , kterou chcete odeslat studentům. E-mail automaticky obsahuje odkaz na registraci. 
+    2. Na stránce **Odeslat odkaz pro registraci e-mailem** vyberte **Odeslat**. Zobrazí se stav pozvánky, která se mění a **odesílá Pozvánka** , a pak na **pozvánku odeslanou**. 
         
-        ![Odeslání pozvánky](../media/tutorial-setup-classroom-lab/invitations-sent.png)
+        ![Odeslané pozvánky](../media/tutorial-setup-classroom-lab/invitations-sent.png)
 
-## <a name="get-registration-link"></a>Získejte odkaz pro registraci
-1. Přepněte **uživatelé** zobrazení tak, že vyberete **uživatelé** v nabídce vlevo. 
-2. Vyberte **odkazu registrace** dlaždici.
+## <a name="get-registration-link"></a>Získat odkaz na registraci
+1. Přepněte do zobrazení **Uživatelé** výběrem možnosti **Uživatelé** v nabídce vlevo. 
+2. Vyberte ikonu **získat registrační odkaz** .
 
     ![Odkaz pro registraci studenta](../media/tutorial-setup-classroom-lab/dashboard-user-registration-link.png)
 1. V dialogovém okně **User registration** (Registrace uživatelů) vyberte tlačítko **Copy** (Kopírovat). Odkaz se zkopíruje do schránky. Vložte ho do editoru e-mailů a e-mail odešlete studentovi. 
 
     ![Odkaz pro registraci studenta](../media/tutorial-setup-classroom-lab/registration-link.png)
 2. V dialogovém okně **User registration** (Registrace uživatelů) vyberte **Close** (Zavřít). 
-4. Sdílené složky **registrace odkaz** s student tak, aby student může zaregistrovat pro třídu. 
+4. Sdílejte **registrační odkaz** s studentem, aby se mohl student zaregistrovat pro třídu. 
 
 ## <a name="view-users-registered-with-the-lab"></a>Zobrazení uživatelů zaregistrovaných do testovacího prostředí
 
-Vyberte **uživatelé** v nabídce vlevo, pokud chcete zobrazit seznam uživatelů zaregistrované testovací prostředí. 
+V nabídce vlevo vyberte **Uživatelé** a zobrazí se seznam uživatelů registrovaných v testovacím prostředí. 
 
-![Seznam uživatelů zaregistrovaného testovacího prostředí](../media/how-to-configure-student-usage/users-list-new.png)
+![Seznam uživatelů registrovaných v testovacím prostředí](../media/how-to-configure-student-usage/users-list-new.png)
 
-## <a name="set-quotas-per-user"></a>Nastavení kvót na uživatele
-Kvóty uživatele můžete nastavit pomocí následujících kroků: 
+## <a name="set-quotas-for-users"></a>Nastavit kvóty pro uživatele
+Kvóty na uživatele můžete nastavit pomocí následujících kroků: 
 
-1. Vyberte **uživatelé** v nabídce vlevo.
-2. Vyberte **kvóty na uživatele:** na panelu nástrojů. 
-3. Na **kvóty uživatele** stránky, zadejte počet hodin, kterou chcete přidělit pro jednotlivé uživatele (student): 
-    1. **0 hodin (pouze schéma)** . Uživatelé mohou používat své virtuální počítače pouze v naplánovaném čase nebo jako vlastník testovacího prostředí se změní na virtuálních počítačích pro ně.
+1. V nabídce vlevo vyberte **Uživatelé** , pokud už stránka není aktivní. 
+2. Vybrat **kvótu pro jednotlivé uživatele: 10 hodin** na panelu nástrojů. 
+3. Na stránce **kvóta na uživatele** zadejte počet hodin, který chcete každému uživateli (studentovi) přidělit: 
+    1. **Celkový počet hodin testovacího prostředí na uživatele** Uživatelé můžou použít svoje virtuální počítače pro nastavený počet hodin (určených pro toto pole) **kromě naplánovaného času**. Pokud vyberete tuto možnost, zadejte do textového pole **počet hodin** . 
 
-        ![Nula hodin – pouze naplánovaném čase](../media/how-to-configure-student-usage/zero-hours.png)
-    1. **Celkový počet hodin testovacího prostředí na uživatele**. Uživatelé můžou používat svoje virtuální počítače pro zadaného počtu hodin (zadaný pro toto pole) **kromě naplánovaném čase**. Pokud vyberete tuto možnost, zadejte **počet hodin** v textovém poli. 
+        ![Počet hodin na uživatele](../media/how-to-configure-student-usage/number-of-hours-per-user.png). 
+    1. **0 hodin (pouze plán)** . Uživatelé můžou svoje virtuální počítače používat jenom během naplánovaného času nebo když se na nich stane vlastník testovacího prostředí na virtuálních počítačích.
 
-        ![Počet hodin na uživatele](../media/how-to-configure-student-usage/number-of-hours-per-user.png)
+        ![Nula hodin – pouze plánovaný čas](../media/how-to-configure-student-usage/zero-hours.png)
     4. Vyberte **Uložit**. 
-5. Nyní uvidíte změněné hodnoty na panelu nástrojů: **Kvóta na uživatele: &lt;počet hodin&gt;** . 
+5. Změněné hodnoty se zobrazí na panelu nástrojů nyní: **Kvóta na uživatele &lt;: počet hodin&gt;** 
 
     ![Kvóta na uživatele](../media/how-to-configure-student-usage/quota-per-user.png)
 
 
 
 > [!IMPORTANT]
-> Před odesláním odkaz na registraci pro studenty, učitelé musí buď nastavte plán pro třídu, pokud 0 hodin kvóty vyberte nebo zadejte hodiny kvóty pro testovací prostředí.
+> Před odesláním odkazu na registraci studentům musí učitelům buď nastavit plán pro třídu, pokud si vyberou 0 kvótové hodiny, nebo zadat kvóty pro testovací prostředí.
 >
-> [Naplánované spuštění virtuálních počítačů](how-to-create-schedules.md) nepočítá proti kvóty přidělený na uživatele. Kvóta je na dobu mimo hodiny plánu, které student stráví na virtuálních počítačích. 
+> [Plánovaná doba spuštění virtuálních počítačů](how-to-create-schedules.md) se nepočítá s kvótou přidělenou uživateli. Kvóta je určena pro dobu mimo plánované hodiny, kterou student stráví na virtuálních počítačích. 
 
-### <a name="add-users-by-uploading-a-csv-file"></a>Přidání uživatelů tím, že nahrajete soubor CSV
-Nahrajete soubor .csv s e-mailové adresy uživatelů, můžete také přidat uživatele.
+### <a name="add-users-by-uploading-a-csv-file"></a>Přidání uživatelů odesláním souboru CSV
+Uživatele můžete také přidat tak, že nahrajete soubor CSV s e-mailovými adresami uživatelů.
 
-1. Vytvořte soubor CSV s e-mailové adresy uživatelů do jednoho sloupce.
+1. Vytvořte soubor CSV s e-mailovými adresami uživatelů v jednom sloupci.
 
     ![Kvóta na uživatele](../media/how-to-configure-student-usage/csv-file-with-users.png)
-2. Na **uživatelé** stránce testovacího prostředí, vyberte **nahrát CSV** na panelu nástrojů.
+2. Na stránce **Uživatelé** testovacího prostředí vyberte **nahrát sdílený svazek clusteru** na panelu nástrojů.
 
-    ![Sdílený svazek clusteru tlačítko Nahrát](../media/how-to-configure-student-usage/upload-csv-button.png)
-3. Vyberte soubor CSV s e-mailové adresy uživatele. Když vyberete **otevřít** po výběru souboru CSV, zobrazí se následující **přidat uživatele** okna. Seznamu e-mailová adresa je vyplněna e-mailové adresy ze souboru CSV. 
+    ![Tlačítko nahrát sdílený svazek clusteru](../media/how-to-configure-student-usage/upload-csv-button.png)
+3. Vyberte soubor CSV s e-mailovými adresami uživatele. Po výběru možnosti **otevřít** po výběru souboru CSV se zobrazí následující okno **Přidat uživatele** . Seznam e-mailových adres je vyplněn e-mailovými adresami ze souboru CSV. 
 
-    ![Přidat okno Uživatelé naplněný e-mailové adresy ze souboru CSV](../media/how-to-configure-student-usage/add-users-window.png)
-4. Vyberte **Uložit** v **přidat uživatele** okna. 
-5. Ověřte, že se uživatelé ze seznamu uživatelů. 
+    ![Přidat uživatele, který se naplní pomocí e-mailových adres ze souboru CSV](../media/how-to-configure-student-usage/add-users-window.png)
+4. V okně **Přidat uživatele** vyberte **Uložit** . 
+5. Ověřte, že se v seznamu uživatelů zobrazí uživatelé. 
 
     ![Seznam přidaných uživatelů](../media/how-to-configure-student-usage/list-of-added-users.png)
 
 ## <a name="manage-user-vms"></a>Správa virtuálních počítačů uživatele
-Jakmile studenty registru pomocí Azure Lab Services pomocí registrace propojení za předpokladu, uvidíte virtuální počítače přiřazené pro studenty na **virtuálních počítačů** kartu. 
+Jakmile Students zaregistruje Azure Lab Services pomocí registračního odkazu, který jste jim zadali, zobrazí se na kartě **virtuální počítače** virtuální počítače přiřazené k studentům. 
 
-![Virtuální počítače přiřazené pro studenty](../media/how-to-manage-classroom-labs/virtual-machines-students.png)
+![Virtuální počítače přiřazené studentům](../media/how-to-manage-classroom-labs/virtual-machines-students.png)
 
-Můžete provádět následující úlohy na studenta virtuálního počítače: 
+Na virtuálním počítači studenta můžete provádět následující úlohy: 
 
-- Zastavení virtuálního počítače, pokud je virtuální počítač spuštěný. 
-- Spuštění virtuálního počítače, pokud je virtuální počítač zastavený. 
+- Pokud je virtuální počítač spuštěný, zastavte virtuální počítač. 
+- Pokud je virtuální počítač zastavený, spusťte virtuální počítač. 
 - Připojte se k virtuálnímu počítači. 
-- Odstranění virtuálního počítače. 
-- Zobrazí počet hodin, že uživatelé používat virtuální počítač. 
+- Odstraňte virtuální počítač. 
+- Zobrazuje počet hodin, po které uživatelé virtuální počítač použili. 
 
-## <a name="update-number-of-virtual-machines-in-lab"></a>Aktualizace počtu virtuálních počítačů v testovacím prostředí
-Pokud chcete aktualizovat počet virtuálních počítačů v testovacím prostředí, proveďte následující kroky **virtuálních počítačů** stránky:
+## <a name="update-number-of-virtual-machines-in-lab"></a>Aktualizovat počet virtuálních počítačů v testovacím prostředí
+Pokud chcete aktualizovat počet virtuálních počítačů v testovacím prostředí, proveďte na stránce **Virtual Machines** následující kroky:
 
-1. Vyberte **virtuálních počítačů** v nabídce vlevo. 
-2. Vyberte **kapacity testovacího prostředí: &lt;číslo&gt; tento počet počítačů:** na panelu nástrojů. 
-3. Zadejte **číslo** virtuálních počítačů.
+1. V nabídce vlevo vyberte **virtuální počítače** . 
+2. Vyberte možnost **kapacita testovacího&gt; prostředí: &lt;počet počítačů** na panelu nástrojů. 
+3. Zadejte **počet** virtuálních počítačů.
 4. Vyberte **Uložit**.
 
     ![Virtuální počítače v testovacím prostředí](../media/how-to-configure-student-usage/number-virtual-machines.png)
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Viz následující články:
 
-- [Jako správce vytvářet a spravovat účty pro testovací prostředí](how-to-manage-lab-accounts.md)
-- [Jako vlastník testovacího prostředí vytvoření a správa testovacích prostředí](how-to-manage-classroom-labs.md)
-- [Jako vlastník testovacího prostředí nastavení a publikování šablon](how-to-create-manage-template.md)
-- [Jako uživatel, který testovací prostředí přístup k testovacím prostředím v učebnách](how-to-use-classroom-lab.md)
+- [Účty testovacího prostředí se vytvářejí a spravují jako správce.](how-to-manage-lab-accounts.md)
+- [Jako vlastník testovacího prostředí vytvářet a spravovat cvičení](how-to-manage-classroom-labs.md)
+- [Jako vlastník testovacího prostředí, nastavení a publikování šablon](how-to-create-manage-template.md)
+- [Jako uživatel testovacího prostředí, Access učeben Labs](how-to-use-classroom-lab.md)

@@ -4,21 +4,23 @@ description: Zjistěte, jaké operační systémy můžete spustit démona Azure
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 06/12/2019
+ms.date: 07/22/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 178cbf930c946170834eb1f7de17e6d5bc0dda48
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 62b8ed553e3b4cec3750dae4f0426b6f0dd38855
+ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67058292"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68414382"
 ---
 # <a name="azure-iot-edge-supported-systems"></a>Azure IoT Edge podporované systémy
 
-Existuje řada různých způsobů, jak získat podporu pro produkt Azure IoT Edge.
+Tento článek poskytuje podrobné informace o tom, které systémy a součásti podporuje IoT Edge, ať už jsou oficiálně nebo ve verzi Preview. 
+
+Pokud při používání služby Azure IoT Edge nastanou problémy, existuje několik způsobů, jak hledat podporu. Pro podporu zkuste použít jeden z následujících kanálů:
 
 **Zasílání zpráv o chybách** – většinou vývoj, která přejdou do produktu Azure IoT Edge se stane v projektu open source IoT Edge. Chyby mohou být zaznamenány na [stránky problémy](https://github.com/azure/iotedge/issues) projektu. Opravy rychle dostanou z projektu v k aktualizace produktu.
 
@@ -27,68 +29,74 @@ Existuje řada různých způsobů, jak získat podporu pro produkt Azure IoT Ed
 **Funkce požadavků** – The Azure IoT Edge produktu sleduje žádosti o funkce prostřednictvím produktu [User Voice stránky](https://feedback.azure.com/forums/907045-azure-iot-edge).
 
 ## <a name="container-engines"></a>Moduly kontejneru
-Azure IoT Edge musí modul container moduly spustit, protože jsou implementované jako kontejnery. Společnost Microsoft poskytuje modul kontejneru moby-engine ke splnění tohoto požadavku. Je založen na Moby open source projektu. Docker CE a Dockerem EE jsou ostatních vyhledávacích strojů oblíbených kontejneru. Tyto jsou také založeny na open source projektu Moby a musí být kompatibilní s Azure IoT Edge. Společnost Microsoft poskytuje nejvhodnější podporou pro systémy s využitím těchto modulů kontejneru; Microsoft nemá schopnost dodávat opravy problémů v nich. Z tohoto důvodu se společnost Microsoft doporučuje používat moby modul na provozní systémy.
+
+Moduly Azure IoT Edge jsou implementovány jako kontejnery, takže IoT Edge k jejich spuštění potřebuje modul pro kontejner. Společnost Microsoft poskytuje modul kontejneru moby-engine ke splnění tohoto požadavku. Tento modul kontejneru je založen na Moby open source projektu. Docker CE a Dockerem EE jsou ostatních vyhledávacích strojů oblíbených kontejneru. Jsou také založeny na open source projektu Moby a jsou kompatibilní s Azure IoT Edge. Microsoft poskytuje nejlepší podporu pro systémy, které používají tyto kontejnerové motory; Společnost Microsoft ale nemůže dodávat opravy pro problémy v nich. Z tohoto důvodu se společnost Microsoft doporučuje používat moby modul na provozní systémy.
 
 <br>
 <center>
 
-![Moby jako kontejner modulu runtime](./media/support/only-moby-for-production.png)
+![Moby jako modul runtime kontejneru](./media/support/only-moby-for-production.png)
 </center>
 
 ## <a name="operating-systems"></a>Operační systémy
-Azure IoT Edge běží na většině operačních systémů, které můžete spouštět kontejnery; však všechny tyto systémy nepodporují stejně. Operační systémy jsou seskupené do vrstev, které představují úroveň podpory, které uživatelé můžou očekávat.
-* Systémy vrstvy 1 si lze představit jako oficiálně podporované. Pro systémy vrstvy 1, Microsoft:
-    * má tento operační systém v automatizovaných testů
+Azure IoT Edge běží na většině operačních systémů, které můžou spouštět kontejnery. všechny tyto systémy se ale nepodporují stejně. Operační systémy jsou seskupené do vrstev, které představují úroveň podpory, které uživatelé můžou očekávat.
+* Systémy vrstvy 1 jsou podporovány. Pro systémy vrstvy 1 Microsoft:
+    * má tento operační systém v automatizovaných testech
     * poskytne vám jejich instalačních balíčků
-* Systémy vrstvy 2 si lze představit jako kompatibilní s Azure IoT Edge a je možné poměrně snadno. Pro systémy vrstvy 2:
-    * Microsoft má provést testování ad hoc na platformách nebo ví partnerských úspěšně spuštěných na platformě Azure IoT Edge
+* Systémy vrstvy 2 jsou kompatibilní s Azure IoT Edge a je možné je používat relativně snadno. Pro systémy vrstvy 2:
+    * Společnost Microsoft provedla ad hoc testování na platformách nebo ví, že partner úspěšně běžel Azure IoT Edge na platformě.
     * Instalační balíčky pro jiné platformy může pracovat na těchto platformách
     
-Řada hostitelský operační systém musí vždy odpovídat řady hostovaného operačního systému použít uvnitř kontejneru modulu. Jinými slovy můžete použít pouze Linuxové kontejnery v Linuxu a kontejnery Windows ve Windows. Při použití Windows pouze procesu, které jsou podporovány izolovaných kontejnerech, technologie Hyper-V izolované kontejnery.  
+Rodina hostitelského operačního systému musí vždy odpovídat rodině hostovaného operačního systému používaného uvnitř kontejneru modulu. Jinými slovy můžete používat pouze kontejnery Linux v kontejnerech Linux a Windows ve Windows. Při použití systému Windows jsou podporovány pouze izolované kontejnery, nikoli izolované kontejnery technologie Hyper-V.  
 
 <br>
 <center>
 
-![Hostitelského operačního systému odpovídá hostovaného operačního systému](./media/support/edge-on-device.png)
+![Operační systém hostitele odpovídá hostovanému operačnímu systému](./media/support/edge-on-device.png)
 </center>
 
 ### <a name="tier-1"></a>Úroveň 1
-Obecně dostupná
 
-| Operační systém | AMD64 | ARM32v7 |
-| ---------------- | ----- | ----- |
-| Raspbian stretch | Ne | Ano|
-| Ubuntu Server 16.04 | Ano | Ne |
-| Ubuntu Server 18.04 | Ano | Ne |
-| Windows 10 IoT Enterprise, build 17763 | Ano | Ne |
-| Windows Server 2019, build 17763 | Ano | Ne |
-| Windows Server IoT 2019, sestavení 17763 | Ano | Ne |
+Systémy uvedené v následující tabulce jsou podporovány společností Microsoft, všeobecně dostupné nebo ve verzi Public Preview a testovány s každou novou verzí. 
 
-Verze Public Preview
-
-| Operační systém | AMD64 | ARM32v7 |
-| ---------------- | ----- | ----- |
-| Windows 10 IoT Core, build 17763 | Ano | Ne |
+| Operační systém | AMD64 | ARM32v7 | ARM64 |
+| ---------------- | ----- | ------- | ----- |
+| Raspbian stretch |  | ![Raspbian Stretch + ARM32v7](./media/tutorial-c-module/green-check.png) | Veřejná verze Preview |
+| Ubuntu Server 16.04 | ![Ubuntu Server 16,04 + AMD64](./media/tutorial-c-module/green-check.png) |  |  |
+| Ubuntu Server 18.04 | ![Ubuntu Server 18,04 + AMD64](./media/tutorial-c-module/green-check.png) |  |  |
+| Windows 10 IoT Enterprise, Build 17763 | ![Windows 10 IoT Enterprise + AMD64](./media/tutorial-c-module/green-check.png) |  |  |
+| Windows Server 2019, Build 17763 | ![Windows Server 2019 + AMD64](./media/tutorial-c-module/green-check.png) |  |  |
+| Windows Server IoT 2019, Build 17763 | ![Windows Server IoT 2019 + AMD64](./media/tutorial-c-module/green-check.png) |  |  |
+| Windows 10 IoT Core, Build 17763 | Veřejná verze Preview |  |  |
 
 
-Výše uvedenými operačními systémy Windows jsou uvedeny požadavky pro zařízení se systémem Windows kontejnery ve Windows. Tato konfigurace je jedinou podporovanou konfiguraci pro produkční prostředí. Instalační balíčky Azure IoT Edge pro Windows jim umožňují používat kontejnery Linuxu ve Windows; Nicméně tato konfigurace je pro vývoj a testování pouze. Použití kontejnery Linuxu ve Windows není podporovanou konfiguraci pro produkční prostředí. Všechny verze Windows 10 sestavení 14393 nebo novější a Windows Server 2016 nebo novější, je možné pro tento scénář vývoje.
+Operační systémy Windows uvedené výše jsou požadavky na zařízení, která používají kontejnery Windows ve Windows. Tato konfigurace je jedinou podporovanou konfigurací pro produkční prostředí. Instalační balíčky Azure IoT Edge pro Windows umožňují použití kontejnerů Linux v systému Windows. Tato konfigurace je však určena pouze pro vývoj a testování. Použití kontejnerů Linux ve Windows není podporovaná konfigurace pro produkční prostředí. Pro tento vývojový scénář se dají použít všechny verze Windows 10 Build 14393 nebo novější a Windows Server 2016 nebo novější.
 
 ### <a name="tier-2"></a>Úroveň 2
 
-| Operační systém | AMD64 | ARM32v7 |
-| ---------------- | ----- | ----- |
-| CentOS 7.5 | Ano | Ano |
-| Debian 8 | Ano | Ano |
-| Debian 9 | Ano | Ano |
-| RHEL 7.5 | Ano | Ano |
-| Ubuntu 18.04 | Ano | Ano |
-| Ubuntu 16.04 | Ano | Ano |
-| Větru řeka 8 | Ano | Ne |
-| Yocto | Ano | Ne |
+Systémy uvedené v následující tabulce jsou považovány za kompatibilní s Azure IoT Edge, ale nejsou aktivně testovány ani udržovány. 
 
+| Operační systém | AMD64 | ARM32v7 | ARM64 |
+| ---------------- | ----- | ------- | ----- |
+| CentOS 7.5 | ![CentOS + AMD64](./media/tutorial-c-module/green-check.png) | ![CentOS + ARM32v7](./media/tutorial-c-module/green-check.png) | ![CentOS + ARM64](./media/tutorial-c-module/green-check.png) |
+| Debian 8 | ![Debian 8 a AMD64](./media/tutorial-c-module/green-check.png) | ![Debian 8 + ARM32v7](./media/tutorial-c-module/green-check.png) | ![Debian 8 + ARM64](./media/tutorial-c-module/green-check.png) |
+| Debian 9 | ![Debian 9 + AMD64](./media/tutorial-c-module/green-check.png) | ![Debian 9 + ARM32v7](./media/tutorial-c-module/green-check.png) | ![Debian 9 + ARM64](./media/tutorial-c-module/green-check.png) |
+| Debian 10<sup>1</sup> | ![Debian 10 a AMD64](./media/tutorial-c-module/green-check.png) | ![Debian 10 + ARM32v7](./media/tutorial-c-module/green-check.png) | ![Debian 10 + ARM64](./media/tutorial-c-module/green-check.png) |
+| RHEL 7.5 | ![RHEL 7,5 + AMD64](./media/tutorial-c-module/green-check.png) | ![RHEL 7,5 + ARM32v7](./media/tutorial-c-module/green-check.png) | ![RHEL 7,5 + ARM64](./media/tutorial-c-module/green-check.png) |
+| Ubuntu 16.04 | ![Ubuntu 16,04 + AMD64](./media/tutorial-c-module/green-check.png) | ![Ubuntu 16,04 + ARM32v7](./media/tutorial-c-module/green-check.png) | ![Ubuntu 16,04 + ARM64](./media/tutorial-c-module/green-check.png) |
+| Ubuntu 18.04 | ![Ubuntu 18,04 + AMD64](./media/tutorial-c-module/green-check.png) | ![Ubuntu 18,04 + ARM32v7](./media/tutorial-c-module/green-check.png) | ![Ubuntu 18,04 + ARM64](./media/tutorial-c-module/green-check.png) |
+| Větru řeka 8 | ![Vítr řek 8 + AMD64](./media/tutorial-c-module/green-check.png) |  |  |
+| Yocto | ![Yocto + AMD64](./media/tutorial-c-module/green-check.png) | ![Yocto + ARM32v7](./media/tutorial-c-module/green-check.png) | ![Yocto + ARM64](./media/tutorial-c-module/green-check.png) |
+| Raspbian Buster<sup>1</sup> |  | ![Raspbian Buster + ARM32v7](./media/tutorial-c-module/green-check.png) | ![Raspbian Buster + ARM64](./media/tutorial-c-module/green-check.png) |
+
+<sup>1</sup> Debian 10 systémy, včetně Raspian Buster, používají verzi OpenSSL, kterou IoT Edge nepodporuje. K instalaci starší verze před instalací IoT Edge použijte následující příkaz: 
+
+```bash
+sudo apt-get install libssl1.0.2
+```
 
 ## <a name="virtual-machines"></a>Virtuální počítače
-Azure IoT Edge může běžet na virtuálních počítačích. Používání virtuálních počítačů jako IoT Edge zařízení je běžná v případě zákazníci chtějí rozšířit stávající infrastrukturu s hraniční inteligence. Řada hostitelský operační systém virtuálního počítače musí odpovídat řady hostovaného operačního systému použít uvnitř kontejneru modulu. Tento požadavek je stejný jako při spuštění přímo na zařízení Azure IoT Edge. Azure IoT Edge se nerozlišují základní technologie virtualizace a pracuje ve virtuálních počítačích s využitím podle platformy, jako je Hyper-V a vSphere.
+Azure IoT Edge lze spustit na virtuálních počítačích. Použití virtuálního počítače jako zařízení IoT Edge je běžné, když zákazníci chtějí rozšiřovat stávající infrastrukturu pomocí Edge Intelligence. Rodina hostitelského operačního systému virtuálního počítače musí odpovídat rodině hostovaného operačního systému používaného uvnitř kontejneru modulu. Tento požadavek je stejný, jako když se Azure IoT Edge spustí přímo na zařízení. Azure IoT Edge nezávislá na základní virtualizační technologii a funguje na virtuálních počítačích využívajících platformy, jako je Hyper-V a vSphere.
 
 <br>
 <center>
@@ -97,14 +105,14 @@ Azure IoT Edge může běžet na virtuálních počítačích. Používání vir
 </center>
 
 ## <a name="minimum-system-requirements"></a>Minimální požadavky na systém
-Azure IoT Edge skvělé fungování v zařízení malá jako Raspberry Pi3 na hardware serveru na podnikové úrovni. Volba ten správný hardware pro váš scénář závisí na jiné úlohy, které chcete spustit. Rozhodování konečné zařízení můžou být složité; vytváření prototypů řešení ale můžete snadno spustit na tradiční přenosné počítače nebo stolní počítače.
+Azure IoT Edge běží skvěle na zařízeních, což je malé jako PI3 k hardwaru na úrovni serveru. Výběr správného hardwaru pro váš scénář závisí na úlohách, které chcete spustit. Rozhodování, že konečné rozhodnutí zařízení může být složité; Můžete však snadno spustit vytváření prototypů řešení na tradičních přenosných počítačích nebo na počítačích.
 
-Prostředí při vytváření prototypů se pomoci výběr konečné zařízení. Otázek, na které byste měli zvážit, patří: 
+Prostředí při vytváření prototypů vám pomůže pořídit finální výběr zařízení. Mezi otázky, které byste měli vzít v úvahu, patří: 
 
-* Kolik modulů jsou vaše úlohy?
-* Kolik vrstvy vašeho moduly kontejnery sdílejí?
-* V jakém jazyce jsou moduly vytvořeny? 
-* Kolik dat bude moduly zpracovávat?
-* Potřebují moduly žádný speciální hardware pro urychlení jejich pracovní vytížení?
-* Jaké jsou požadované výkonové charakteristiky vašeho řešení?
-* Co je vašemu rozpočtu hardwaru?
+* Kolik modulů je ve vašem zatížení?
+* Kolik vrstev sdílí vaše moduly s kontejnery?
+* V jakých jazycích jsou vytvořeny vaše moduly? 
+* Kolik dat budou vaše moduly zpracovávat?
+* Potřebují vaše moduly pro urychlení svých úloh specializovaný hardware?
+* Jaké jsou požadované charakteristiky výkonu vašeho řešení?
+* Co je váš hardwarový rozpočet?

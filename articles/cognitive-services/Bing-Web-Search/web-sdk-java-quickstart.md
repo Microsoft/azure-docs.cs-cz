@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Použijte vyhledávání na webu Bingu sady SDK pro Javu'
+title: 'Rychlý start: Použití sady Vyhledávání na webu Bingu SDK pro jazyk Java'
 titleSuffix: Azure Cognitive Services
 description: Sada SDK Bingu pro vyhledávání na webu usnadňuje integraci webového vyhledávání Bingu do vaší aplikace v jazyce Java. V tomto rychlém startu se naučíte poslat požadavek, přijmout odpověď JSON, filtrovat a parsovat výsledky.
 services: cognitive-services
@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 03/12/2019
+ms.date: 07/25/2019
 ms.author: aahi
-ms.openlocfilehash: 7209df902f03a7055e142dcbbb7743b6832958b6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0d2c1ca439dbbbd79ddabd2ea7a4eb5298d1071a
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60344106"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68500968"
 ---
-# <a name="quickstart-use-the-bing-web-search-sdk-for-java"></a>Rychlý start: Použijte vyhledávání na webu Bingu sady SDK pro Javu
+# <a name="quickstart-use-the-bing-web-search-sdk-for-java"></a>Rychlý start: Použití sady Vyhledávání na webu Bingu SDK pro jazyk Java
 
 Sada SDK Bingu pro vyhledávání na webu usnadňuje integraci webového vyhledávání Bingu do vaší aplikace v jazyce Java. V tomto rychlém startu se naučíte poslat požadavek, přijmout odpověď JSON, filtrovat a parsovat výsledky.
 
@@ -37,7 +37,7 @@ Tady je pár věcí, které budete na začátku tohoto rychlého startu potřebo
 
 ## <a name="create-a-project-and-set-up-your-pom-file"></a>Vytvoření projektu a nastavení souboru POM
 
-Vytvořte nový projekt Java. Použijte Maven nebo jiný oblíbený nástroj na automatické sestavení. Za předpokladu, že používáte Maven, přidejte následující řádky do vaší [Model objektu projektu (POM)](https://maven.apache.org/guides/introduction/introduction-to-the-pom.html) souboru. Všechny instance `mainClass` nahraďte svou aplikací.
+Vytvořte nový projekt Java. Použijte Maven nebo jiný oblíbený nástroj na automatické sestavení. Za předpokladu, že používáte Maven, přidejte následující řádky do souboru [Project Object Model (pom)](https://maven.apache.org/guides/introduction/introduction-to-the-pom.html) . Všechny instance `mainClass` nahraďte svou aplikací.
 
 ```xml
 <build>
@@ -293,11 +293,11 @@ mvn compile exec:java
 
 Až projekt dokončíte, nezapomeňte z kódu programu odebrat klíč předplatného.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 > [Ukázky kognitivních služeb sady Java SDK](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingWebSearch)
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také:
 
-* [Referenční informace k sadě Azure Java SDK](https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/websearch)
+* [Referenční informace k sadě Azure Java SDK](https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/bingwebsearchapi?view=azure-java-stable)

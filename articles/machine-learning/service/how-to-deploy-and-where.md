@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 07/08/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 796118999041b2bef2d51657901e9e399578e97c
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 6b9ebb2f7ef46fd2900d036f178201863ecbc8d4
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68327040"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68358816"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>Nasazujte modely pomocí služby Azure Machine Learning
 
@@ -140,7 +140,7 @@ Následující příklad vrátí cestu k jednomu souboru s názvem `sklearn_mnis
 
 ```python
 model_path = Model.get_model_path('sklearn_mnist')
-``` 
+```
 
 #### <a name="optional-automatic-swagger-schema-generation"></a>Volitelné Automatické generování schématu Swagger
 
@@ -190,6 +190,7 @@ from azureml.core.model import Model
 from inference_schema.schema_decorators import input_schema, output_schema
 from inference_schema.parameter_types.numpy_parameter_type import NumpyParameterType
 
+
 def init():
     global model
     # note here "sklearn_regression_model.pkl" is the name of the model registered under
@@ -198,8 +199,10 @@ def init():
     # deserialize the model file back into a sklearn model
     model = joblib.load(model_path)
 
-input_sample = np.array([[10,9,8,7,6,5,4,3,2,1]])
+
+input_sample = np.array([[10, 9, 8, 7, 6, 5, 4, 3, 2, 1]])
 output_sample = np.array([3726.995])
+
 
 @input_schema('data', NumpyParameterType(input_sample))
 @output_schema(NumpyParameterType(output_sample))
@@ -230,19 +233,27 @@ from inference_schema.schema_decorators import input_schema, output_schema
 from inference_schema.parameter_types.numpy_parameter_type import NumpyParameterType
 from inference_schema.parameter_types.pandas_parameter_type import PandasParameterType
 
+
 def init():
     global model
-    model_path = Model.get_model_path('model_name')   # replace model_name with your actual model name, if needed
+    # replace model_name with your actual model name, if needed
+    model_path = Model.get_model_path('model_name')
     # deserialize the model file back into a sklearn model
     model = joblib.load(model_path)
 
-input_sample = pd.DataFrame(data=[{
-              "input_name_1": 5.1,         # This is a decimal type sample. Use the data type that reflects this column in your data
-              "input_name_2": "value2",    # This is a string type sample. Use the data type that reflects this column in your data
-              "input_name_3": 3            # This is a integer type sample. Use the data type that reflects this column in your data
-            }])
 
-output_sample = np.array([0])              # This is a integer type sample. Use the data type that reflects the expected result
+input_sample = pd.DataFrame(data=[{
+    # This is a decimal type sample. Use the data type that reflects this column in your data
+    "input_name_1": 5.1,
+    # This is a string type sample. Use the data type that reflects this column in your data
+    "input_name_2": "value2",
+    # This is a integer type sample. Use the data type that reflects this column in your data
+    "input_name_3": 3
+}])
+
+# This is a integer type sample. Use the data type that reflects the expected result
+output_sample = np.array([0])
+
 
 @input_schema('data', PandasParameterType(input_sample))
 @output_schema(NumpyParameterType(output_sample))
@@ -268,7 +279,7 @@ Další ukázkové skripty najdete v následujících příkladech:
 Konfigurace odvození popisuje, jak nakonfigurovat model pro vytvoření předpovědi. Následující příklad ukazuje, jak vytvořit odvozenou konfiguraci. Tato konfigurace určuje modul runtime, skript vstupu a (volitelně) soubor prostředí conda:
 
 ```python
-inference_config = InferenceConfig(runtime= "python",
+inference_config = InferenceConfig(runtime="python",
                                    entry_script="x/y/score.py",
                                    conda_file="env/myenv.yml")
 ```
@@ -279,32 +290,9 @@ Informace o použití vlastní image Docker s odvozenou konfigurací najdete v t
 
 ### <a name="cli-example-of-inferenceconfig"></a>Příklad rozhraní příkazového řádku InferenceConfig
 
-Následující dokument JSON je příkladem odvození konfigurace pro použití s rozhraním příkazového řádku Machine Learning:
+[!INCLUDE [inferenceconfig](../../../includes/machine-learning-service-inference-config.md)]
 
-```JSON
-{
-   "entryScript": "x/y/score.py",
-   "runtime": "python",
-   "condaFile": "env/myenv.yml",
-   "sourceDirectory":"C:/abc",
-}
-```
-
-V tomto souboru jsou platné následující entity:
-
-* __entryScript__: Cesta k místnímu souboru, který obsahuje kód, který se má pro obrázek spustit.
-* __modul runtime__: Který modul runtime má být použit pro bitovou kopii. Aktuální podporované moduly runtime jsou Spark-py a Python.
-* __condaFile__ (volitelné): Cesta k místnímu souboru obsahujícímu definici prostředí Conda, která se má použít pro bitovou kopii
-* __extraDockerFileSteps__ (volitelné): Cesta k místnímu souboru, který obsahuje další kroky Docker, které se mají spustit při nastavování image
-* __sourceDirectory__ (volitelné): Cesta ke složkám, které obsahují všechny soubory pro vytvoření bitové kopie.
-* __enableGpu__ (volitelné): Určuje, jestli se má v imagi povolit podpora GPU. Image GPU se musí používat v Microsoft Azurech službách, jako je Azure Container Instances, Azure Machine Learning COMPUTE, Azure Virtual Machines a Azure Kubernetes Service. Výchozí hodnota je false.
-* __baseImage__ (volitelné): Vlastní image, která se má použít jako základní image Pokud není zadána žádná základní image, použije se na základě zadaného parametru runtime základní image.
-* __baseImageRegistry__ (volitelné): Registr imagí, který obsahuje základní image.
-* __cudaVersion__ (volitelné): Verze CUDA, která se má nainstalovat pro image, které potřebují podporu GPU Image GPU se musí používat v Microsoft Azurech službách, jako je Azure Container Instances, Azure Machine Learning COMPUTE, Azure Virtual Machines a Azure Kubernetes Service. Podporované verze jsou 9,0, 9,1 a 10,0. Pokud je nastavená možnost enable_gpu, použije se výchozí hodnota 9,1.
-
-Tyto entity se mapují na parametry pro třídu [InferenceConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py) .
-
-Thee následující příkaz ukazuje, jak nasadit model pomocí rozhraní příkazového řádku:
+Následující příkaz ukazuje, jak nasadit model pomocí rozhraní příkazového řádku:
 
 ```azurecli-interactive
 az ml model deploy -n myservice -m mymodel:1 --ic inferenceconfig.json
@@ -312,7 +300,6 @@ az ml model deploy -n myservice -m mymodel:1 --ic inferenceconfig.json
 
 V tomto příkladu konfigurace obsahuje následující položky:
 
-* Adresář, který obsahuje prostředky potřebné k odvození
 * Tento model vyžaduje Python.
 * [Skript vstupu](#script), který se používá ke zpracování webových požadavků odeslaných do nasazené služby
 * Soubor Conda, který popisuje balíčky Pythonu potřebné k odvození
@@ -366,21 +353,7 @@ K místnímu nasazení musíte mít v místním počítači **nainstalovaný Doc
   az ml model deploy -m mymodel:1 -ic inferenceconfig.json -dc deploymentconfig.json
   ```
 
-    Položky v `deploymentconfig.json` dokumentu jsou mapovány na parametry pro [LocalWebservice. deploy_configuration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservicedeploymentconfiguration?view=azure-ml-py). Následující tabulka popisuje mapování mezi entitami v dokumentu JSON a parametry pro metodu:
-
-    | Entita JSON | Parametr metody | Popis |
-    | ----- | ----- | ----- |
-    | `computeType` | Není k dispozici | Cílové výpočetní prostředí. Pro místní musí být `local`hodnota. |
-    | `port` | `port` | Místní port, na kterém má být vystaven koncový bod HTTP služby. |
-
-    Následující kód JSON je příkladem konfigurace nasazení pro použití s rozhraním příkazového řádku:
-
-    ```json
-    {
-        "computeType": "local",
-        "port": 32267
-    }
-    ```
+    [!INCLUDE [deploymentconfig](../../../includes/machine-learning-service-local-deploy-config.md)]
 
 ### <a id="aci"></a>Azure Container Instances (DEVTEST)
 
@@ -407,38 +380,7 @@ Pokud chcete zobrazit dostupnost kvót a oblastí pro ACI, přečtěte si člán
     az ml model deploy -m mymodel:1 -n myservice -ic inferenceconfig.json -dc deploymentconfig.json
     ```
 
-    Položky v `deploymentconfig.json` dokumentu jsou mapovány na parametry pro [AciWebservice. deploy_configuration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aci.aciservicedeploymentconfiguration?view=azure-ml-py). Následující tabulka popisuje mapování mezi entitami v dokumentu JSON a parametry pro metodu:
-
-    | Entita JSON | Parametr metody | Popis |
-    | ----- | ----- | ----- |
-    | `computeType` | Není k dispozici | Cílové výpočetní prostředí. Pro ACI musí být `ACI`hodnota. |
-    | `containerResourceRequirements` | Není k dispozici | Obsahuje prvky konfigurace pro procesor a paměť přidělené kontejneru. |
-    | &emsp;&emsp;`cpu` | `cpu_cores` | Počet jader procesoru, které se mají přidělit této webové službě. Upravovaný`0.1` |
-    | &emsp;&emsp;`memoryInGB` | `memory_gb` | Velikost paměti (v GB), která má být přidělena této webové službě. Výchozí`0.5` |
-    | `location` | `location` | Oblast Azure, do které se má tato webová služba nasadit Pokud není zadáno, bude použito umístění pracovního prostoru. Další podrobnosti o dostupných oblastech najdete tady: [ACI oblasti](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=container-instances) |
-    | `authEnabled` | `auth_enabled` | Určuje, jestli se má pro tuto webovou službu povolit ověřování. Výchozí hodnota je false. |
-    | `sslEnabled` | `ssl_enabled` | Určuje, jestli se má pro tuto webovou službu povolit protokol SSL. Výchozí hodnota je false. |
-    | `appInsightsEnabled` | `enable_app_insights` | Určuje, jestli se má pro tuto webovou službu povolit AppInsights. Výchozí hodnota je false. |
-    | `sslCertificate` | `ssl_cert_pem_file` | Soubor certifikátu potřebný, pokud je povolený protokol SSL |
-    | `sslKey` | `ssl_key_pem_file` | Soubor klíče potřebný v případě, že je povolený protokol SSL |
-    | `cname` | `ssl_cname` | Záznam CNAME pro, pokud je povolený protokol SSL |
-    | `dnsNameLabel` | `dns_name_label` | Popisek názvu DNS pro koncový bod bodování. Pokud není zadán, bude pro koncový bod bodování vygenerován jedinečný popisek názvu DNS. |
-
-    Následující kód JSON je příkladem konfigurace nasazení pro použití s rozhraním příkazového řádku:
-
-    ```json
-    {
-        "computeType": "aci",
-        "containerResourceRequirements":
-        {
-            "cpu": 0.5,
-            "memoryInGB": 1.0
-        },
-        "authEnabled": true,
-        "sslEnabled": false,
-        "appInsightsEnabled": false
-    }
-    ```
+    [!INCLUDE [deploymentconfig](../../../includes/machine-learning-service-aci-deploy-config.md)]
 
 + **Použití VS Code**
 
@@ -476,65 +418,7 @@ Pokud již máte připojený cluster AKS, můžete do něj nasadit. Pokud jste n
   az ml model deploy -ct myaks -m mymodel:1 -n myservice -ic inferenceconfig.json -dc deploymentconfig.json
   ```
 
-    Položky v `deploymentconfig.json` dokumentu jsou mapovány na parametry pro [AksWebservice. deploy_configuration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aks.aksservicedeploymentconfiguration?view=azure-ml-py). Následující tabulka popisuje mapování mezi entitami v dokumentu JSON a parametry pro metodu:
-
-    | Entita JSON | Parametr metody | Popis |
-    | ----- | ----- | ----- |
-    | `computeType` | Není k dispozici | Cílové výpočetní prostředí. Pro AKS musí být `aks`hodnota. |
-    | `autoScaler` | Není k dispozici | Obsahuje prvky konfigurace pro automatické škálování. Podívejte se na tabulku automatického škálování. |
-    | &emsp;&emsp;`autoscaleEnabled` | `autoscale_enabled` | Určuje, zda má být povoleno automatické škálování webové služby. Pokud `numReplicas` ,;v =  opačném`False`případě. `0` `True` |
-    | &emsp;&emsp;`minReplicas` | `autoscale_min_replicas` | Minimální počet kontejnerů, které se mají použít při automatickém škálování této webové služby. Výchozí hodnota `1`,. |
-    | &emsp;&emsp;`maxReplicas` | `autoscale_max_replicas` | Maximální počet kontejnerů, které se mají použít při automatickém škálování této webové služby. Výchozí hodnota `10`,. |
-    | &emsp;&emsp;`refreshPeriodInSeconds` | `autoscale_refresh_seconds` | Jak často se automatické škálování pokusí škálovat tuto webovou službu. Výchozí hodnota `1`,. |
-    | &emsp;&emsp;`targetUtilization` | `autoscale_target_utilization` | Cílové využití (v procentech z 100), které by měl modul automatického škálování zkusit zachovat pro tuto webovou službu. Výchozí hodnota `70`,. |
-    | `dataCollection` | Není k dispozici | Obsahuje prvky konfigurace pro shromažďování dat. |
-    | &emsp;&emsp;`storageEnabled` | `collect_model_data` | Určuje, jestli se má pro webovou službu povolit shromažďování dat modelu. Výchozí hodnota `False`,. |
-    | `authEnabled` | `auth_enabled` | Určuje, zda má být povoleno ověřování webové služby. Výchozí hodnota `True`,. |
-    | `containerResourceRequirements` | Není k dispozici | Obsahuje prvky konfigurace pro procesor a paměť přidělené kontejneru. |
-    | &emsp;&emsp;`cpu` | `cpu_cores` | Počet jader procesoru, které se mají přidělit této webové službě. Upravovaný`0.1` |
-    | &emsp;&emsp;`memoryInGB` | `memory_gb` | Velikost paměti (v GB), která má být přidělena této webové službě. Výchozí`0.5` |
-    | `appInsightsEnabled` | `enable_app_insights` | Určuje, jestli se má povolit Application Insights protokolování webové služby. Výchozí hodnota `False`,. |
-    | `scoringTimeoutMs` | `scoring_timeout_ms` | Časový limit pro vykonání volání bodování webové službě. Výchozí hodnota `60000`,. |
-    | `maxConcurrentRequestsPerContainer` | `replica_max_concurrent_requests` | Maximální počet souběžných požadavků na uzel pro tuto webovou službu. Výchozí hodnota `1`,. |
-    | `maxQueueWaitMs` | `max_request_wait_time` | Maximální doba, po kterou požadavek zůstane ve frontě Thee (v milisekundách), než se vrátí chyba 503. Výchozí hodnota `500`,. |
-    | `numReplicas` | `num_replicas` | Počet kontejnerů, které se mají přidělit této webové službě. Žádná výchozí hodnota. Pokud tento parametr není nastaven, je automatické škálování ve výchozím nastavení povolené. |
-    | `keys` | Není k dispozici | Obsahuje prvky konfigurace pro klíče. |
-    | &emsp;&emsp;`primaryKey` | `primary_key` | Primární ověřovací klíč, který se má použít pro tuto webovou službu |
-    | &emsp;&emsp;`secondaryKey` | `secondary_key` | Sekundární ověřovací klíč, který se má použít pro tuto webovou službu |
-    | `gpuCores` | `gpu_cores` | Počet jader GPU, které se mají přidělit pro tuto webovou službu. Výchozí hodnota je 1. |
-    | `livenessProbeRequirements` | Není k dispozici | Obsahuje prvky konfigurace pro požadavky sondy pro živý provoz. |
-    | &emsp;&emsp;`periodSeconds` | `period_seconds` | Jak často (v sekundách) provést test živého provozu Výchozí hodnota je 10 sekund. Minimální hodnota je 1. |
-    | &emsp;&emsp;`initialDelaySeconds` | `initial_delay_seconds` | Počet sekund po zahájení kontejneru, než se iniciují sondy pro živou práci. Výchozí hodnota je 310. |
-    | &emsp;&emsp;`timeoutSeconds` | `timeout_seconds` | Počet sekund, po jejichž uplynutí vyprší platnost testu živého provozu. Výchozí hodnota je 2 sekundy. Minimální hodnota je 1. |
-    | &emsp;&emsp;`successThreshold` | `success_threshold` | Minimální po sobě jdoucí úspěšnost testu za provozu, aby bylo možné považovat za úspěšné po selhání. Výchozí hodnota je 1. Minimální hodnota je 1. |
-    | &emsp;&emsp;`failureThreshold` | `failure_threshold` | Když se spustí pod a sonda živého vysílání selže, Kubernetes se pokusí failureThreshold časy před tím, než zadáte. Výchozí hodnota je 3. Minimální hodnota je 1. |
-    | `namespace` | `namespace` | Obor názvů Kubernetes, do kterého je webová služba nasazena. Až 63 malých alfanumerických znaků (' a-z ', ' 0 '-' 9 ') a spojovníky ('-'). První a poslední znak nesmí být spojovníky. |
-
-    Následující kód JSON je příkladem konfigurace nasazení pro použití s rozhraním příkazového řádku:
-
-    ```json
-    {
-        "computeType": "aks",
-        "autoScaler":
-        {
-            "autoscaleEnabled": true,
-            "minReplicas": 1,
-            "maxReplicas": 3,
-            "refreshPeriodInSeconds": 1,
-            "targetUtilization": 70
-        },
-        "dataCollection":
-        {
-            "storageEnabled": true
-        },
-        "authEnabled": true,
-        "containerResourceRequirements":
-        {
-            "cpu": 0.5,
-            "memoryInGB": 1.0
-        }
-    }
-    ```
+    [!INCLUDE [deploymentconfig](../../../includes/machine-learning-service-aks-deploy-config.md)]
 
 + **Použití VS Code**
 
@@ -566,12 +450,12 @@ prov_config = AksCompute.provisioning_configuration()
 
 aks_name = 'myaks'
 # Create the cluster
-aks_target = ComputeTarget.create(workspace = ws,
-                                    name = aks_name,
-                                    provisioning_configuration = prov_config)
+aks_target = ComputeTarget.create(workspace=ws,
+                                  name=aks_name,
+                                  provisioning_configuration=prov_config)
 
 # Wait for the create process to complete
-aks_target.wait_for_completion(show_output = True)
+aks_target.wait_for_completion(show_output=True)
 ```
 
 Další informace o vytvoření clusteru AKS mimo sadu SDK Azure Machine Learning najdete v následujících článcích:
@@ -609,8 +493,8 @@ cluster_name = 'mycluster'
 # attach_config = AksCompute.attach_configuration(resource_group = resource_group,
 #                                         cluster_name = cluster_name,
 #                                         cluster_purpose = AksCompute.ClusterPurpose.DEV_TEST)
-attach_config = AksCompute.attach_configuration(resource_group = resource_group,
-                                         cluster_name = cluster_name)
+attach_config = AksCompute.attach_configuration(resource_group=resource_group,
+                                                cluster_name=cluster_name)
 aks_target = ComputeTarget.attach(ws, 'mycompute', attach_config)
 ```
 
@@ -629,19 +513,20 @@ Tady je příklad, jak volat vaši službu v Pythonu:
 import requests
 import json
 
-headers = {'Content-Type':'application/json'}
+headers = {'Content-Type': 'application/json'}
 
 if service.auth_enabled:
     headers['Authorization'] = 'Bearer '+service.get_keys()[0]
 
 print(headers)
-    
+
 test_sample = json.dumps({'data': [
-    [1,2,3,4,5,6,7,8,9,10], 
-    [10,9,8,7,6,5,4,3,2,1]
+    [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+    [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]
 ]})
 
-response = requests.post(service.scoring_uri, data=test_sample, headers=headers)
+response = requests.post(
+    service.scoring_uri, data=test_sample, headers=headers)
 print(response.status_code)
 print(response.elapsed)
 print(response.json())
@@ -668,18 +553,18 @@ from azureml.core.webservice import Webservice
 from azureml.core.model import Model
 
 # register new model
-new_model = Model.register(model_path = "outputs/sklearn_mnist_model.pkl",
-                       model_name = "sklearn_mnist",
-                       tags = {"key": "0.1"},
-                       description = "test",
-                       workspace = ws)
+new_model = Model.register(model_path="outputs/sklearn_mnist_model.pkl",
+                           model_name="sklearn_mnist",
+                           tags={"key": "0.1"},
+                           description="test",
+                           workspace=ws)
 
 service_name = 'myservice'
 # Retrieve existing service
-service = Webservice(name = service_name, workspace = ws)
+service = Webservice(name=service_name, workspace=ws)
 
 # Update to new model(s)
-service.update(models = [new_model])
+service.update(models=[new_model])
 print(service.state)
 print(service.get_logs())
 ```
@@ -718,7 +603,7 @@ Chcete-li odstranit registrovaný model, použijte `model.delete()`.
 
 Další informace naleznete v referenční dokumentaci pro [WebService. Delete ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#delete--)a [model. Delete ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#delete--).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 * [Postup nasazení modelu pomocí vlastní image Docker](how-to-deploy-custom-docker-image.md)
 * [Řešení potíží s nasazením](how-to-troubleshoot-deployment.md)
 * [Zabezpečení webových služeb Azure Machine Learning s protokolem SSL](how-to-secure-web-service.md)

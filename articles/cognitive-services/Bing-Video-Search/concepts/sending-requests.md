@@ -1,7 +1,7 @@
 ---
-title: Odesílání žádostí o hledání do API pro vyhledávání videí Bingu
-titlesuffix: Azure Cognitive Services
-description: Přečtěte si o odesílání vyhledávacích dotazů do API pro vyhledávání videí Bingu.
+title: Odesílání požadavků hledání do rozhraní API Bingu pro vyhledávání videí
+titleSuffix: Azure Cognitive Services
+description: Přečtěte si informace o posílání vyhledávacích dotazů na rozhraní API Bingu pro vyhledávání videí.
 services: cognitive-services
 author: aahi
 manager: nitinme
@@ -10,26 +10,26 @@ ms.subservice: bing-video-search
 ms.topic: quickstart
 ms.date: 06/27/2019
 ms.author: aahill
-ms.openlocfilehash: 93c2a5f9cd9fb3141e79559429ae69c0c42a96c1
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.openlocfilehash: 892220a08480b6b6b1b246967f225422c8c5a105
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67542680"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68500748"
 ---
-# <a name="sending-search-requests-to-the-bing-video-search-api"></a>Odesílání žádostí o hledání do API pro vyhledávání videí Bingu
+# <a name="sending-search-requests-to-the-bing-video-search-api"></a>Odesílání požadavků hledání do rozhraní API Bingu pro vyhledávání videí
 
-Tento článek popisuje parametry a atributy požadavky odeslané na rozhraní API Bingu pro vyhledávání videa, stejně jako objekt JSON odpovědi se vrátí. 
+Tento článek popisuje parametry a atributy požadavků odeslaných do rozhraní API Bingu pro vyhledávání videí a také objekt odpovědi JSON, který vrátí. 
 
 [!INCLUDE [cognitive-services-bing-video-search-signup-requirements](../../../../includes/cognitive-services-bing-video-search-signup-requirements.md)]
 
-## <a name="suggest-search-terms-with-the-bing-autosuggest-api"></a>Navrhnout hledané výrazy s rozhraním API pro automatické návrhy Bingu
+## <a name="suggest-search-terms-with-the-bing-autosuggest-api"></a>Navrhněte hledané výrazy pomocí rozhraní API pro automatické návrhy Bingu
 
 Pokud nabízíte vyhledávací pole, do kterého může uživatel zadat hledaný termín, můžete hledání vylepšit s využitím [rozhraní API pro automatické návrhy Bingu](../../bing-autosuggest/get-suggested-search-terms.md). Toto rozhraní API vrací navrhované řetězce dotazů na základě částečné shody hledaných termínů zadávaných uživatelem.
 
-Poté, co uživatel zadá své hledaný termín, kódování URL ho před nastavením [q](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#query) parametr dotazu. Pokud uživatel například zadá *sailing dinghies*, nastavte parametr `q` na hodnotu `sailing+dinghies` nebo `sailing%20dinghies`.
+Jakmile uživatel vstoupí do hledaného termínu, adresa URL ho zakóduje před nastavením parametru dotazu [q](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#query) . Pokud uživatel například zadá *sailing dinghies*, nastavte parametr `q` na hodnotu `sailing+dinghies` nebo `sailing%20dinghies`.
 
-## <a name="sending-a-request"></a>Odesílání požadavku
+## <a name="sending-a-request"></a>Odesílá se žádost.
 
 Pokud chcete získat výsledky hledání videa, odešlete požadavek GET na následující koncový bod:  
   
@@ -69,7 +69,7 @@ X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
 Host: api.cognitive.microsoft.com  
 ```  
 
-## <a name="example-json-response"></a>Příklad JSON odpovědi
+## <a name="example-json-response"></a>Příklad odpovědi JSON
 
 Následující příklad ukazuje odpověď na předchozí požadavek. Příklad také zobrazuje hlavičky odpovědi specifické pro Bing.
 

@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: 269568c172ff6c65c9877f9ad22067a11125b339
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: edc0da77fc1c2813c2485fca18d50952e3060db8
+ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67847415"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68370466"
 ---
 # <a name="log-metrics-during-training-runs-in-azure-machine-learning"></a>Metriky protokolu během školicích běhů v Azure Machine Learning
 
@@ -225,8 +225,8 @@ Tento příklad rozšiřuje základní model skriptu sklearn Ridge výše. Prov�
 
 ## <a name="view-run-details"></a>Zobrazení podrobností o spuštění
 
-### <a name="monitor-run-with-jupyter-notebook-widgets"></a>Monitorování spuštění pomocí widgetů poznámkového bloku Jupyter
-Při použití **ScriptRunConfig** spuštěním metody k odeslání, můžete sledovat průběh spuštění s pomůckou Poznámkový blok Jupyter. Podobně jako odeslání spuštění je tento widget asynchronní a poskytuje průběžné aktualizace každých 10 až 15 sekund, dokud se úloha nedokončí.
+### <a name="monitor-run-with-jupyter-notebook-widget"></a>Monitorovat běh pomocí widgetu pro Poznámkový blok Jupyter
+Když použijete metodu **ScriptRunConfig** k odeslání spuštění, můžete sledovat průběh běhu s [pomůckou Jupyter](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py). Podobně jako odeslání spuštění je tento widget asynchronní a poskytuje průběžné aktualizace každých 10 až 15 sekund, dokud se úloha nedokončí.
 
 1. Při čekání na dokončení běhu zobrazte widgetu Jupyter.
 
@@ -236,6 +236,12 @@ Při použití **ScriptRunConfig** spuštěním metody k odeslání, můžete sl
    ```
 
    ![Snímek obrazovky aplikace Jupyter notebook widgetu](./media/how-to-track-experiments/run-details-widget.png)
+
+Můžete také získat odkaz na stejný displej v pracovním prostoru.
+
+```python
+print(run.get_portal_url())
+```
 
 2. **[Pro automatizované strojového učení spuštění]**  Pro přístup k grafy z předchozích spuštění. Nahraďte `<<experiment_name>>` názvem vhodného experimentu:
 
@@ -257,7 +263,8 @@ Chcete-li zobrazit další podrobnosti klikněte na kanál ke kanálu chcete dat
 ### <a name="get-log-results-upon-completion"></a>Získání protokolu výsledků při dokončení
 
 Model školení a monitorování probíhá na pozadí tak, aby můžete spouštět další úlohy, zatímco čekáte. Můžete také počkat, dokud modelu byla dokončena školení před spuštěním další kód. Při použití **ScriptRunConfig**, můžete použít ```run.wait_for_completion(show_output = True)``` zobrazíte po dokončení cvičení modelu. ```show_output``` Příznak vám poskytne podrobný výstup. 
-  
+
+
 ### <a name="query-run-metrics"></a>Dotaz spustit metriky
 
 Metriky trénovaný model použití lze zobrazit ```run.get_metrics()```. Teď můžete získat všechny metriky, které byly zaznamenány v příkladu výše k určení nejvhodnějšího modelu.
@@ -287,140 +294,6 @@ Existují různé způsoby, jak používat protokolování rozhraní API pro rů
 |Opakovaným odesláním řádek 2 číselné sloupce|`run.log_row(name='Cosine Wave', angle=angle, cos=np.cos(angle))   sines['angle'].append(angle)      sines['sine'].append(np.sin(angle))`|Dvě proměnné spojnicový graf|
 |Tabulku protokolu s 2 číselné sloupce|`run.log_table(name='Sine Wave', value=sines)`|Dvě proměnné spojnicový graf|
 
-<a name="auto"></a>
-## <a name="understanding-automated-ml-charts"></a>Principy automatického ML grafy
-
-Po odeslání automatizované úlohy ML v poznámkovém bloku, historie tyto spouštění najdete v vaší služby pracovního prostoru machine learning. 
-
-Další informace:
-+ [Grafy a křivky pro modelů klasifikace](#classification)
-+ [Tabulky a grafy pro regresní modely](#regression)
-+ [Model popisují možnosti](#model-explain-ability-and-feature-importance)
-
-
-### <a name="view-the-run-charts"></a>Zobrazení spuštění grafů
-
-1. Přejděte do svého pracovního prostoru. 
-
-1. Vyberte **experimenty** úplně vlevo panelu pracovního prostoru.
-
-   ![Snímek obrazovky nabídky experimentu](./media/how-to-track-experiments/azure-machine-learning-auto-ml-experiment-menu.png)
-
-1. Vyberte experiment, které vás zajímají.
-
-   ![Seznam experimentu](./media/how-to-track-experiments/azure-machine-learning-auto-ml-experiment-list.png)
-
-1. V tabulce vyberte číslo spustit.
-
-   ![Běh experimentu](./media/how-to-track-experiments/azure-machine-learning-auto-ml-experiment-run.png)
-
-1. V tabulce vyberte počet opakování pro model, který byste chtěli dále zkoumat.
-
-   ![Model experimentu](./media/how-to-track-experiments/azure-machine-learning-auto-ml-experiment-model.png)
-
-
-
-### <a name="classification"></a>Klasifikace
-
-Pro každý model klasifikace, který vytvoříte pomocí automatizovaných strojového učení služby Azure Machine Learning zobrazí se následující grafy: 
-+ [Chybová matice](#confusion-matrix)
-+ [Graf přesnosti a úplnosti](#precision-recall-chart)
-+ [Příjemce provozní vlastnosti (nebo roc s více TŘÍDAMI)](#roc)
-+ [Výtah křivky](#lift-curve)
-+ [Zvýšení křivky](#gains-curve)
-+ [Diagram kalibrací](#calibration-plot)
-
-#### <a name="confusion-matrix"></a>Chybová matice
-
-Chybová matice se používá k popisu výkonu model klasifikace. Každý řádek zobrazí instancí třídy true a každý sloupec představuje instance předpokládaná třída. Chybová matice zobrazí správně klasifikované popisky a nesprávně klasifikované popisky pro daný model.
-
-Azure Machine Learning pro klasifikaci problémy automaticky poskytuje chybová matice pro každý model, který je sestaven. Pro každý chybovou matici automatizované ML zobrazí správně klasifikované popisky jako popisky zelené a nesprávně klasifikovaný jako červený. Velikost kruhu představuje počet vzorků v této přihrádky. Kromě toho frekvence počet každý předpokládané popisek a každému popisku true je součástí sousední pruhové grafy. 
-
-Příklad 1: Klasifikační model s nízkou přesností ![model klasifikace s nízkou přesností](./media/how-to-track-experiments/azure-machine-learning-auto-ml-confusion-matrix1.png)
-
-Příklad 2: Klasifikační model s vysokou přesností (ideální) ![model klasifikace s vysokou přesností](./media/how-to-track-experiments/azure-machine-learning-auto-ml-confusion-matrix2.png)
-
-
-#### <a name="precision-recall-chart"></a>Graf přesnosti a úplnosti
-
-Pomocí tohoto grafu lze porovnávat přesnosti a úplnosti křivky pro každý model k určení, které model má přijatelné vztah mezi přesnosti a odvolání pro vaše konkrétní obchodní problém. Tento graf ukazuje průměrnou přesnosti a úplnosti – makro, Micro průměrné přesnosti a úplnosti a přesnosti a úplnosti přidružené všechny třídy modelu.
-
-Termín přesnosti představuje tuto možnost pro třídění k označení všech instancí správně. Odvolání představuje možnost pro třídění a vyhledat všechny instance konkrétní popisek. Přesnosti a úplnosti křivky znázorňuje vztah mezi tyto dva pojmy. V ideálním případě by modelu mají 100 % přesností a 100 % přesností.
-
-Příklad 1: Klasifikační model s nízkou přesností a nízkým ![odvoláním modelu klasifikace s nízkou přesností a nízkým navrácením](./media/how-to-track-experiments/azure-machine-learning-auto-ml-precision-recall1.png)
-
-Příklad 2: Klasifikační model s ~ 100% Precision a ~ 100% Recall (ideální) ![klasifikační model s vysokou přesností a vrácením](./media/how-to-track-experiments/azure-machine-learning-auto-ml-precision-recall2.png)
-
-#### <a name="roc"></a>ROC S VÍCE TŘÍDAMI
-
-Příjemce provozních charakteristik (nebo roc s více TŘÍDAMI) je vykreslení správně klasifikované popisků vs. nesprávně klasifikované popisky konkrétním modelu. Při trénování modelů na datové sady s vysokou posun, protože se nezobrazí falešně pozitivní popisky, může být méně informativní křivka roc s více TŘÍDAMI.
-
-Příklad 1: Klasifikační model s dolními popisky s nízkou hodnotou a s ![vysokým falešnou jmenovkou, s nízkými a horními popisky](./media/how-to-track-experiments/azure-machine-learning-auto-ml-roc-1.png)
-
-Příklad 2: Klasifikační model s horními popisky s hodnotou true a s ![nízkou hodnotou false označí klasifikační model s horními a nepravdivými popisky.](./media/how-to-track-experiments/azure-machine-learning-auto-ml-roc-2.png)
-
-#### <a name="lift-curve"></a>Výtah křivky
-
-Můžete porovnat výtah modelu u automaticky vytvořených službou Azure Machine Learning do směrného plánu chcete-li zobrazit takto získané místo hodnoty tohoto konkrétního modelu.
-
-Výtah grafy se používají k vyhodnocení výkonu modelu klasifikace. Ukazuje, jak mnohem lépe můžete očekávat s modelem porovnání bez modelu. 
-
-Příklad 1: Model je vykonává horší než model ![náhodného výběru modelu klasifikace, který je horší než model náhodného výběru.](./media/how-to-track-experiments/azure-machine-learning-auto-ml-lift-curve1.png)
-
-Příklad 2: Model je lepší než model ![náhodného výběru, který provádí model klasifikace, který je lepší.](./media/how-to-track-experiments/azure-machine-learning-auto-ml-lift-curve2.png)
-
-#### <a name="gains-curve"></a>Zvýšení křivky
-
-Graf zvýšení nastavení vyhodnocuje výkon model klasifikace podle každá část data. Ukazuje pro každý percentilu sady dat, kolik lépe můžete očekávat k provádění porovnání proti náhodný výběr modelu.
-
-Použijte graf kumulativní zisky si můžete vybrat klasifikace odříznutí pomocí procenta, který odpovídá požadované zisk z modelu. Tyto informace obsahuje jiný způsob řešení prohlížení výsledků v související tabulce.
-
-Příklad 1: Klasifikační model s minimálním ziskem ![a modelem klasifikace s minimálním ziskem](./media/how-to-track-experiments/azure-machine-learning-auto-ml-gains-curve1.png)
-
-Příklad 2: Klasifikační model s významným ziskem získáte ![model klasifikace s významným ziskem.](./media/how-to-track-experiments/azure-machine-learning-auto-ml-gains-curve2.png)
-
-#### <a name="calibration-plot"></a>Diagram kalibrací
-
-Všechny klasifikace problémy můžete zkontrolovat řádku kalibrací micro průměr, – makro průměr a každá třída v daném prediktivního modelu. 
-
-Vykreslení kalibrací slouží k zobrazení spolehlivosti prediktivního modelu. Dělá to tak, že znázorňující vztah mezi pravděpodobnost předpovězené a skutečný pravděpodobnosti, kde "pravděpodobnost" představuje pravděpodobnost, že konkrétní instanci patří pod některé popiskem. Dobře kalibrované modelu v souladu s y = x řádku, kde je přiměřeně jisti jeho předpovědi. Model typu over-pass-the důvěrné v souladu s y = 0 řádku, kde pravděpodobnost předpovězené existuje, ale neexistuje žádný skutečný pravděpodobnosti.
-
-Příklad 1: Dobře kalibrovaný model ![ s větším kalibrovaným modelem](./media/how-to-track-experiments/azure-machine-learning-auto-ml-calib-curve1.png)
-
-Příklad 2: Model ![s vysokou jistotou modelu nadlimitního modelu](./media/how-to-track-experiments/azure-machine-learning-auto-ml-calib-curve2.png)
-
-### <a name="regression"></a>Regrese
-Pro každý regresní model programujte automatizované strojového učení služby Azure Machine Learning, zobrazí se následující grafy: 
-+ [Předpokládaná vs. Hodnota TRUE](#pvt)
-+ [Histogram zbytků](#histo)
-
-<a name="pvt"></a>
-
-#### <a name="predicted-vs-true"></a>Předpokládaná vs. True
-
-Předpokládaná vs. Hodnota TRUE označuje vztah mezi předpovězené hodnoty a její usnadňuje korelování hodnotu true pro regresní problém. Tento graf lze použít k měření výkonu modelu jako blíže k y = x řádku predikované hodnoty jsou, tím lepší přesnost prediktivního modelu.
-
-Po každém spuštění zobrazí se předpokládané vs. true grafu pro každou regresní model. K ochraně dat o ochraně osobních údajů, hodnoty jsou rozdělený na intervaly společně a velikost každé z nich se zobrazuje jako pruhový graf v dolní části oblasti grafu. Prediktivní model, můžete porovnat s označením vystínovat oblast s okraji chyba proti ideální hodnotě, kde by mělo být modelu.
-
-Příklad 1: Regresní model s nízkou přesností v předpovědi ![regresní model s nízkou přesností v předpovědi](./media/how-to-track-experiments/azure-machine-learning-auto-ml-regression1.png)
-
-Příklad 2: Regresní model s vysokou přesností v jeho předpovědi ![regresní model s vysokou přesností ve své předpovědi](./media/how-to-track-experiments/azure-machine-learning-auto-ml-regression2.png)
-
-<a name="histo"></a>
-
-#### <a name="histogram-of-residuals"></a>Histogram zbytků
-
-Zbývající představuje zjištěnou y – předpokládaná y. Zobrazíte okraj chyby s nízkou posun by měl mít tvar histogram zbytky křivku zvonku zaměřená na 0. 
-
-Příklad 1: Regresní model s posunem chyb ![SA regresní model s posunem v jeho chybách](./media/how-to-track-experiments/azure-machine-learning-auto-ml-regression3.png)
-
-Příklad 2: Regresní model s větší rovnoměrné distribucí chyb ![A regresní model s větším množstvím distribucí chyb](./media/how-to-track-experiments/azure-machine-learning-auto-ml-regression4.png)
-
-### <a name="model-explain-ability-and-feature-importance"></a>Model význam popisují možnosti a funkce
-
-Funkce význam poskytuje skóre, která určuje, jak se jednotlivé funkce v procesu vytváření modelu. Můžete zkontrolovat skóre význam funkce pro model celkové stejně jako na třídu v prediktivním modelem. Zobrazí se na funkci jak si vede význam pro každou třídu a celková.
-
-![Možnost vysvětlit funkce](./media/how-to-track-experiments/azure-machine-learning-auto-ml-feature-explain1.png)
 
 ## <a name="example-notebooks"></a>Příklad poznámkové bloky
 Tyto poznámkové bloky předvedení konceptů v tomto článku:

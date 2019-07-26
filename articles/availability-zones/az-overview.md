@@ -1,6 +1,6 @@
 ---
-title: Co jsou zóny dostupnosti Azure? | Dokumenty Microsoft
-description: Zóny dostupnosti v Azure vytvořit vysoce dostupné a odolné aplikace, poskytují fyzicky oddělená umístění, které lze použít ke spuštění vašich prostředků.
+title: Co jsou Zóny dostupnosti Azure? | Dokumenty Microsoft
+description: Pokud chcete vytvářet vysoce dostupné a odolné aplikace v Azure, Zóny dostupnosti poskytovat fyzicky samostatná umístění, která můžete použít ke spouštění svých prostředků.
 services: ''
 documentationcenter: ''
 author: cynthn
@@ -16,80 +16,81 @@ ms.workload: na
 ms.date: 06/20/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 848d0eddb9870f7690989e5bfa01985883e4308e
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: 048a4dd9f35bd62886876f98bcbc5e6267cca6c8
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67508857"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68442236"
 ---
-# <a name="what-are-availability-zones-in-azure"></a>Co jsou zóny dostupnosti v Azure?
-Zóny dostupnosti je vysoká dostupnost služeb, které chrání vaše aplikace a data z datacenter selhání. Zóny dostupnosti jsou jedinečná fyzická umístění v rámci oblasti Azure. Každá zóna se skládá z jednoho nebo více datových Center vybavených nezávislým napájením, chlazením a sítí. K zajištění odolnosti proti chybám, je minimálně tří samostatných zón ve všech oblastech, povolené. Fyzické oddělení zón dostupnosti v rámci oblasti chrání aplikace a data před selháními datových center. Zónově redundantní služby replikaci vašich aplikací a dat napříč zónami dostupnosti pro zajištění ochrany z jednoho body z chyby. Zóny dostupnosti Azure nabízí odvětví nejlepší 99,99 % doby provozu SLA k virtuálním počítačům. Úplná smlouva [Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) vysvětluje garantovanou dostupnost Azure jako celku.
+# <a name="what-are-availability-zones-in-azure"></a>Co jsou v Azure Zóny dostupnosti?
+Zóny dostupnosti je nabídka s vysokou dostupností, která chrání vaše aplikace a data při selhání datacentra. Zóny dostupnosti jsou jedinečná fyzická umístění v rámci oblasti Azure. Každá zóna se skládá z jednoho nebo více datových Center vybavených nezávislým napájením, chlazením a sítí. Aby se zajistila odolnost, existuje minimálně tři samostatné zóny ve všech povolených oblastech. Fyzické oddělení Zóny dostupnosti v rámci oblasti chrání aplikace a data před selháními datových center. Redundantní služby v zóně replikují aplikace a data napříč Zóny dostupnosti, aby se chránily před jednotlivými chybami. Díky Zóny dostupnosti Azure nabízí nejlepší smlouvu SLA 99,99% provozu virtuálního počítače. Úplná smlouva [Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) vysvětluje garantovanou dostupnost Azure jako celku.
 
-Zónu dostupnosti, do oblasti Azure je kombinace doména selhání a aktualizační doména. Například pokud vytvoříte tři nebo více virtuálních počítačů napříč zónami tři v oblasti Azure, vaše virtuální počítače jsou účinně rozloženy na tři domény selhání a aktualizačních doménách tři. Platforma Azure rozpoznává této distribuce napříč aktualizační domény, abyste měli jistotu, že virtuální počítače v různých oblastech nejsou aktualizovány ve stejnou dobu.
+Zóna dostupnosti v oblasti Azure je kombinací domény selhání a aktualizační domény. Pokud například vytvoříte tři nebo více virtuálních počítačů ve třech zónách v oblasti Azure, budou vaše virtuální počítače efektivně distribuovány mezi tři domény selhání a tři aktualizační domény. Platforma Azure tuto distribuci rozpoznává mezi aktualizačními doménami, aby se zajistilo, že se virtuální počítače v různých zónách neaktualizují současně.
 
-Sestavte vysokou dostupnost do vaší aplikace architektury společně umístěných prostředky výpočetní prostředky, úložiště, sítě a dat v rámci zóny a replikace v jiné zóně. Služby Azure, které podporují zóny dostupnosti se dělí do dvou kategorií:
+Společné umístění výpočetních operací, úložiště, sítě a datových prostředků v rámci zóny a replikace v jiných zónách vám může vytvořit vysokou dostupnost architektury aplikace. Služby Azure, které podporují Zóny dostupnosti spadají do dvou kategorií:
 
-- **Oblastmi služby** – Připnutí prostředků pro konkrétní zónu (například virtuální počítače, spravované disky, IP adresy), nebo
-- **Zónově redundantní služby** – platforma se automaticky replikuje napříč zónami (například zónově redundantní úložiště, databáze SQL).
+- **Služby** oblastí – připnutí prostředku ke konkrétní zóně (například virtuální počítače, spravované disky, IP adresy) nebo
+- **Služba – redundantní služby** – platforma se automaticky replikuje mezi zónami (například redundantní úložiště zóny, SQL Database).
 
-Pokud chcete dosáhnout komplexní obchodní kontinuity podnikových procesů v Azure, sestavení architektury aplikace pomocí kombinace zón dostupnosti s párování oblastí Azure. Můžete synchronní replikace aplikací a dat s využitím zón dostupnosti v rámci oblasti Azure pro vysokou dostupnost a asynchronní replikace v různých oblastech Azure pro ochranu zotavení po havárii.
+Pro zajištění komplexní provozní kontinuity v Azure Sestavte architekturu aplikace pomocí kombinace Zóny dostupnosti s páry oblastí Azure. Můžete synchronně replikovat aplikace a data pomocí Zóny dostupnosti v oblasti Azure pro zajištění vysoké dostupnosti a asynchronní replikace napříč oblastmi Azure pro ochranu proti havárii.
  
-![koncepční zobrazení jednu zónu směrem dolů v oblasti](./media/az-overview/az-graphic-two.png)
+![koncepční zobrazení jedné zóny v oblasti](./media/az-overview/az-graphic-two.png)
 
-## <a name="services-support-by-region"></a>Podpora služeb podle oblastí
+## <a name="services-support-by-region"></a>Podpora služeb podle oblasti
 
-Kombinace služeb Azure a oblasti, které podporují zóny dostupnosti jsou:
+Kombinace služeb a oblastí Azure, které podporují Zóny dostupnosti:
 
 
 |                                 |Amerika |              |           |           | Evropa |              |          |              | Asie a Tichomoří |                 |
 |----------------------------|----------|----------|---------|---------|--------------|------------|--------|----------|----------|-------------|
-|          |USA – střed|East US|Východní USA 2|Západní USA 2|Francie – střed|Severní Evropa|Velká Británie – jih|Západní Evropa|Japonsko – východ|Jihovýchodní Asie|
+|          |Střed USA|East US|Východní USA 2|USA – západ 2|Francie – střed|Severní Evropa|Velká Británie – jih|Západní Evropa|Japonsko – východ|Jihovýchodní Asie|
 | **Compute**                         |            |              |           |           |                |              |          |             |            |                |
 | Linux Virtual Machines          | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    | &#10003;   | &#10003;       |
 | Windows Virtual Machines        | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    | &#10003;   | &#10003;       |
 | Virtual Machine Scale Sets      | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    | &#10003;   | &#10003;       |
 | **Storage**   |            |              |           |           |                |              |          |             |            |                |
 | Spravované disky                   | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    | &#10003;   | &#10003;       |
-| Zónově redundantní úložiště          | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    | &#10003;   | &#10003;       |
+| Zóna – redundantní úložiště          | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    | &#10003;   | &#10003;       |
 | **Sítě**                     |            |              |           |           |                |              |          |             |            |                |
-| Standardní IP adresu        | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    | &#10003;   | &#10003;       |
+| Standardní IP adresa        | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    | &#10003;   | &#10003;       |
 | Load Balancer úrovně Standard     | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    | &#10003;   | &#10003;       |
-| VPN Gateway                     | &#10003;   |              | &#10003;  | &#10003;  | &#10003;       | &#10003;     |          | &#10003;    |            | &#10003;       |
-| ExpressRoute Gateway   | &#10003;   |              | &#10003;  | &#10003;  | &#10003;       | &#10003;     |          | &#10003;    |            | &#10003;       |
+| VPN Gateway   | &#10003;   |  &#10003;    | &#10003;  | &#10003;  | &#10003;  | &#10003;     |   &#10003;  | &#10003;    |  &#10003;   | &#10003;       |
+| ExpressRoute bránu   | &#10003;   |  &#10003;   | &#10003;  | &#10003;  | &#10003;       | &#10003;     |  &#10003;  | &#10003;    |   &#10003;  | &#10003;       |
 | Application Gateway   | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     |          | &#10003;    | &#10003;       | &#10003;       |
 | Brána Azure Firewall           | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    |  &#10003;       | &#10003;       |
 | **Databáze**                     |            |              |           |           |                |              |          |             |            |                |
+| Průzkumník dat Azure                   | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    | &#10003;        | &#10003;       |
 | SQL Database                    | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    |            | &#10003;       |
 | Azure Cache for Redis           | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    |  &#10003;       | &#10003;       |
 | Azure Cosmos DB                    | &#10003;   |  &#10003;  |  &#10003; |  |       |     | &#10003; |     |            | &#10003;       |
 | **Analýzy**                       |            |              |           |           |                |              |          |             |            |                |
 | Event Hubs                      | &#10003;   |              | &#10003;  | &#10003;  | &#10003;       | &#10003;     |          | &#10003;    |            | &#10003;       |
-| **Integrace**                     |            |              |           |           |                |              |          |             |            |                |
-| Service Bus (pouze úroveň Premium) | &#10003;   |              | &#10003;  | &#10003;  | &#10003;       | &#10003;     |          | &#10003;    |            | &#10003;       |
+| **Spolupráci**                     |            |              |           |           |                |              |          |             |            |                |
+| Service Bus (jenom úroveň Premium) | &#10003;   |              | &#10003;  | &#10003;  | &#10003;       | &#10003;     |          | &#10003;    |            | &#10003;       |
 
 
 
-## <a name="services-resiliency"></a>Odolnost proti chybám služby
-Všech služeb Azure pro správu dokáže odolné proti chybám v případě selhání úrovni oblasti. V celé spektrum od selhání mají nejmíň jeden chyby zóna dostupnosti v rámci oblasti menší radius chyby ve srovnání s selhání celé oblasti. Azure můžete obnovit v případě selhání zóny úrovně služeb pro správu v rámci oblasti nebo z jiné oblasti Azure. Azure provádí po jednom v rámci oblasti, aby se zabránilo chybám vliv na prostředky zákazníků nasazení napříč zónami dostupnosti v rámci oblasti kritické údržby jednu zónu.
+## <a name="services-resiliency"></a>Odolnost služeb
+Všechny služby správy Azure jsou navržené tak, aby byly odolné proti selháním na úrovni jednotlivých oblastí. V případě selhání má jedna nebo více selhání zóny dostupnosti v rámci oblasti menší poloměr selhání v porovnání s selháním celé oblasti. Azure se může zotavit z neúspěšného selhání služeb správy v rámci oblasti nebo z jiné oblasti Azure. Azure provádí kritickou údržbu jedné zóny v čase v rámci určité oblasti, aby nedocházelo k chybám, které mají vliv na prostředky zákazníka nasazené napříč Zóny dostupnosti v rámci oblasti.
 
 ## <a name="pricing"></a>Ceny
-Se neúčtují žádné další poplatky pro virtuální počítače nasazené v zóně dostupnosti. 99,99 % dostupnosti virtuálního počítače nabízíme smlouvy SLA při nasazení dvou nebo více virtuálních počítačů napříč zónami dostupnosti dva nebo více v rámci oblasti Azure. Bude existovat další mezi dostupnost zóny virtuálních počítačů VM poplatky za přenos dat. Další informace najdete v článku [cenách šířky pásma](https://azure.microsoft.com/pricing/details/bandwidth/) stránky.
+Pro virtuální počítače nasazené v zóně dostupnosti se neúčtují žádné další náklady. 99,99% doba provozu virtuálního počítače se nabízí, když se v rámci jedné nebo více Zóny dostupnosti v oblasti Azure nasadí nejméně dva virtuální počítače. Budou se účtovat další poplatky za přenos dat mezi virtuálními počítači v zóně dostupnosti. Další informace najdete na stránce s [cenami za šířku pásma](https://azure.microsoft.com/pricing/details/bandwidth/) .
 
 
-## <a name="get-started-with-availability-zones"></a>Začínáme se zónami dostupnosti
+## <a name="get-started-with-availability-zones"></a>Začínáme s Zóny dostupnosti
 - [Vytvoření virtuálního počítače](../virtual-machines/windows/create-portal-availability-zone.md)
-- [Přidat spravovaný Disk pomocí Powershellu](../virtual-machines/windows/attach-disk-ps.md#add-an-empty-data-disk-to-a-virtual-machine)
-- [Vytvoření zóny redundantní virtuálního počítače škálovací sady](../virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones.md)
-- [Nástroj pro vyrovnávání zatížení virtuálních počítačů napříč zónami zónově redundantních front-endu pomocí Load balanceru úrovně Standard](../load-balancer/load-balancer-standard-public-zone-redundant-cli.md)
-- [Nástroj pro vyrovnávání zatížení virtuálních počítačů v rámci zóny pomocí Load balanceru úrovně Standard s oblastmi front-endu](../load-balancer/load-balancer-standard-public-zonal-cli.md)
+- [Přidání spravovaného disku pomocí PowerShellu](../virtual-machines/windows/attach-disk-ps.md#add-an-empty-data-disk-to-a-virtual-machine)
+- [Vytvoření sady škálování virtuálních počítačů v zóně redundantní](../virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones.md)
+- [Vyrovnávání zatížení virtuálních počítačů napříč zónami pomocí Standard Load Balancer se zónou redundantního front-endu](../load-balancer/load-balancer-standard-public-zone-redundant-cli.md)
+- [Vyrovnávání zatížení virtuálních počítačů v rámci zóny pomocí Standard Load Balancer s oblastí front-endu](../load-balancer/load-balancer-standard-public-zonal-cli.md)
 - [Zónově redundantní úložiště](../storage/common/storage-redundancy-zrs.md)
 - [SQL Database](../sql-database/sql-database-high-availability.md#zone-redundant-configuration)
 - [Geografické zotavení po havárii služby Event Hubs](../event-hubs/event-hubs-geo-dr.md#availability-zones)
 - [Geografické zotavení po havárii služby Service Bus](../service-bus-messaging/service-bus-geo-dr.md#availability-zones)
 - [Vytvoření zónově redundantní brány virtuální sítě](../vpn-gateway/create-zone-redundant-vnet-gateway.md)
-- [Přidat oblast redundantní zóny pro službu Azure Cosmos DB](../cosmos-db/high-availability.md#availability-zone-support)
-- [Začínáme se službou Azure Cache pro zóny dostupnosti Redis](https://aka.ms/redis/az/getstarted)
+- [Přidat redundantní oblast zóny pro Azure Cosmos DB](../cosmos-db/high-availability.md#availability-zone-support)
+- [Začínáme Azure cache pro Zóny dostupnosti Redis](https://aka.ms/redis/az/getstarted)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 - [Šablony Rychlý start](https://aka.ms/azqs)

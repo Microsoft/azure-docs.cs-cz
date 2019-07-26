@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 03/26/2019
+ms.date: 07/25/2019
 ms.author: diberry
-ms.openlocfilehash: efb2524b430935e6c74415efe850b69835825bc7
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 156b2cf7c8042699f70e4bc3ec0b8944ac59a364
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67447690"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68501165"
 ---
 # <a name="data-sources-for-qna-maker-content"></a>Zdroje dat pro nástroj QnA Maker obsahu
 
@@ -25,22 +25,22 @@ Následující tabulka shrnuje typy obsahu a souboru formáty, které podporuje 
 
 |Typ zdroje|Typ obsahu| Příklady|
 |--|--|--|
-|zprostředkovatele identity|Nejčastější dotazy<br> (Paušální, oddíly nebo s domovskou stránku témata)<br>Stránku podpory <br> (Jednostránkové články s postupy, řešení potíží s články atd.)|[Nejčastější dotazy týkající se prostý](https://docs.microsoft.com/azure/cognitive-services/qnamaker/faqs), <br>[Nejčastější dotazy týkající se propojení](https://www.microsoft.com/software-download/faq),<br> [Nejčastější dotazy týkající se témata domovské stránky](https://www.microsoft.com/Licensing/servicecenter/Help/Faq.aspx)<br>[Článek podpory](https://docs.microsoft.com/azure/cognitive-services/qnamaker/concepts/best-practices)|
-|SOUBOR PDF / DOC|Nejčastější dotazy,<br> Příručka k produktu,<br> Brožur<br> Dokument,<br> Leták zásad<br> Průvodce podpory<br> Nástroj QnA strukturovaná,<br> Atd.|[Strukturované QnA.doc](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/semi-structured.docx),<br> [Ukázka produktu Manual.pdf](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/product-manual.pdf),<br> [Ukázkový částečně structured.doc](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/semi-structured.docx),<br> [Ukázka bílé paper.pdf](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/white-paper.pdf)|
-|Excel|Strukturované QnA souboru<br> (včetně RTF, HTML podpora)|[Ukázka QnA FAQ.xls](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/QnA%20Maker%20Sample%20FAQ.xlsx)|
+|URL|Nejčastější dotazy<br> (Plochý, s oddíly nebo s domovskou stránkou témat)<br>Stránky podpory <br> (Články s návody na jednu stranu, články týkající se řešení potíží atd.)|[Jednoduché Nejčastější dotazy](https://docs.microsoft.com/azure/cognitive-services/qnamaker/faqs) <br>[Nejčastější dotazy s odkazy](https://www.microsoft.com/software-download/faq)<br> [Nejčastější dotazy s domovskou stránkou s tématy](https://www.microsoft.com/Licensing/servicecenter/Help/Faq.aspx)<br>[Článek podpory](https://docs.microsoft.com/azure/cognitive-services/qnamaker/concepts/best-practices)|
+|SOUBOR PDF / DOC|Nejčastější<br> Ruční produkt,<br> Brožury,<br> Formátech<br> Zásady oznámení<br> Průvodce podporou,<br> Strukturované QnA,<br> atd.|[Strukturované QnA. doc](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/semi-structured.docx),<br> [Ukázka ručního produktu. PDF](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/product-manual.pdf),<br> [Ukázka semi-Structured. doc](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/semi-structured.docx),<br> [Ukázka dokumentu White Paper. PDF](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/white-paper.pdf)|
+|Excel|Strukturované QnA souboru<br> (včetně formátu RTF, HTML support)|[Ukázka QnA FAQ.xls](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/QnA%20Maker%20Sample%20FAQ.xlsx)|
 |TXT/TSV|Strukturované QnA souboru|[Ukázka chit-chat.tsv](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/Scenario_Responses_Friendly.tsv)|
 
 ## <a name="data-source-locations"></a>Umístění zdroje dat.
 
-Většina umístění zdrojů dat muset poskytnout veřejné adresy URL nebo soubory, které nevyžadují ověřování. 
+Většina umístění zdrojů dat musí poskytovat veřejné adresy URL nebo soubory, které nevyžadují ověřování. 
 
-[Umístění zdroje dat SharePoint](../How-to/add-sharepoint-datasources.md) můžou poskytovat ověřené soubory. Prostředky služby SharePoint musí být soubory, nikoli webové stránky. 
+[Umístění zdrojů dat služby SharePoint](../How-to/add-sharepoint-datasources.md) můžou poskytovat ověřené soubory. Prostředky SharePoint musí být soubory, nikoli webové stránky. 
 
-Pokud už máte ověřeného souboru nebo adresy URL, alternativní možnost je ke stažení souboru z ověřených webu do místního počítače, přidejte soubor z vašeho místního počítače do znalostní báze. 
+Pokud máte ověřený soubor nebo adresu URL, alternativní možnost je stáhnout soubor z ověřené lokality do místního počítače a pak tento soubor přidat z místního počítače do znalostní báze. 
 
 ## <a name="faq-urls"></a>Nejčastější dotazy týkající se adresy URL
 
-Nástroj QnA Maker může podporovat nejčastější dotazy k webové stránky ve 3 různých podob: Jednoduché stránky – nejčastější dotazy, nejčastější dotazy k stránky s odkazy, nejčastější dotazy týkající se stránky s domovskou stránku témata.
+QnA Maker může podporovat webové stránky nejčastějších dotazů ve třech různých formulářích: Jednoduché stránky nejčastějších dotazů, stránky s nejčastějšími dotazy s odkazy, stránky s NEJČASTĚJŠÍmi dotazy a témata s tématy
 
 ### <a name="plain-faq-pages"></a>Jednoduché stránky – nejčastější dotazy
 
@@ -69,14 +69,14 @@ Níže je příklad stránky nejčastější dotazy k domovské stránce témata
  ![Příklad stránky přímý odkaz na nejčastější dotazy pro znalostní báze](../media/qnamaker-concepts-datasources/topics-faq.png) 
 
 
-### <a name="support-urls"></a>Podporovat adresy URL
+### <a name="support-urls"></a>Adresy URL podpory
 
-Nástroj QnA Maker může zpracovat semistrukturovaná podpora webové stránky, jako jsou webové články, které by popisují, jak provést dané úlohy, jak diagnostikovat a řešit daný problém a doporučené postupy pro daný proces. Extrakce funguje nejlépe na obsah, který se má Vymazat strukturu s hierarchické záhlaví.
+QnA Maker může zpracovat částečně strukturované webové stránky podpory, jako jsou například webové články, které popisují, jak provést danou úlohu, jak diagnostikovat a vyřešit daný problém a jaké jsou osvědčené postupy pro daný proces. Extrakce funguje nejlépe na obsahu, který má jasně strukturu s hierarchickými nadpisy.
 
 > [!NOTE]
-> Extrakce pro články podpory je nová funkce a je v raných fázích. Je nejvhodnější pro jednoduché stránky, které jsou také strukturované a neobsahují komplexní záhlaví/zápatí.
+> Extrakce článků podpory je nová funkce a je v rané fázi. Funguje nejlépe pro jednoduché stránky, které jsou dobře strukturované a neobsahují složitá záhlaví a zápatí.
 
-![Podporuje QnA Maker extrakce z částečně strukturovaných webové stránky, kde se zobrazí Vymazat strukturu s hierarchické záhlaví](../media/qnamaker-concepts-datasources/support-web-pages-with-heirarchical-structure.png)
+![QnA Maker podporuje extrakci z částečně strukturovaných webových stránek tam, kde je k dispozici jasná struktura s hierarchickými nadpisy.](../media/qnamaker-concepts-datasources/support-web-pages-with-heirarchical-structure.png)
 
 
 ## <a name="pdf-doc-files"></a>Soubor PDF / DOC soubory
@@ -98,7 +98,7 @@ Tady je příklad příručky s indexovou stránku a hierarchické obsahu
 
 ### <a name="brochures-guidelines-papers-and-other-files"></a>Brožury, pokyny, papírů a další soubory
 
-Mnoho dalších typů dokumentů mohou být také zpracovány ke generování dvojice dotazů a odpovědí, za předpokladu, že máte Vymazat strukturu a rozložení. Mezi ně patří: Brožury pokyny, sestavy, dokumenty white paper, vědecké práce, zásady, knihy, atd. Podívejte se příklad [tady](https://qnamakerstore.blob.core.windows.net/qnamakerdata/docs/Manage%20Azure%20Blob%20Storage.docx).
+Mnoho dalších typů dokumentů mohou být také zpracovány ke generování dvojice dotazů a odpovědí, za předpokladu, že máte Vymazat strukturu a rozložení. Mezi ně patří: Brožury, pokyny, sestavy, dokumenty White Paper, vědecké dokumenty, zásady, knihy atd. Podívejte se příklad [tady](https://qnamakerstore.blob.core.windows.net/qnamakerdata/docs/Manage%20Azure%20Blob%20Storage.docx).
 
 Níže je příklad částečně strukturovaných dokumentů, bez indexu:
 
@@ -126,7 +126,7 @@ Níže je příklad strukturovaných QnA wordový dokument:
 
 Strukturované maximálně ve formě *.txt*, *TSV* nebo *.xls* soubory se také dají nahrát pro nástroj QnA Maker k vytvoření nebo upravte znalostní báze.  Toto může být prostý text nebo může mít obsah ve formátu RTF nebo HTML. 
 
-| Otázka  | Odpověď  | Metadata (1 klíč: Hodnota 1) |
+| Otázka  | Odpověď  | Metadata (1 klíč: 1 hodnota) |
 |-----------|---------|-------------------------|
 | Question1 | Answer1 | <code>Key1:Value1 &#124; Key2:Value2</code> |
 | Question2 | Answer2 |      `Key:Value`           |
@@ -139,9 +139,9 @@ Níže je příklad strukturovaných QnA *.xls* soubor s obsahem HTML:
 
 ## <a name="structured-data-format-through-import"></a>Formát strukturovaných dat pomocí importu
 
-Import znalostní báze nahradí obsah znalostní báze existující. Strukturované TSV soubor, který obsahuje informace o zdroji dat vyžaduje import. Tyto informace pomáhají QnA Maker skupině páry otázka – odpověď a atribut pro konkrétní datové zdroje.
+Import znalostní báze nahradí obsah znalostní báze existující. Strukturované TSV soubor, který obsahuje informace o zdroji dat vyžaduje import. Tyto informace pomáhají QnA Maker seskupovat páry dotazů a jejich atributy na konkrétní zdroj dat.
 
-| Otázka  | Odpověď  | source| Metadata (1 klíč: Hodnota 1) |          
+| Otázka  | Odpověď  | Source| Metadata (1 klíč: 1 hodnota) |          
 |-----------|---------|----|---------------------|
 | Question1 | Answer1 | Url1 | <code>Key1:Value1 &#124; Key2:Value2</code> |
 | Question2 | Answer2 | Redakční|    `Key:Value`       |
@@ -150,26 +150,46 @@ Import znalostní báze nahradí obsah znalostní báze existující. Strukturov
 
 Pokud nemáte existující obsah k vyplnění znalostní báze, můžete přidat maximálně pomocí redakčních úprav v nástroje QnA Maker znalostní bázi. Zjistěte, jak aktualizovat znalostní báze [tady](../How-To/edit-knowledge-base.md).
 
+<a href="#formatting-considerations"></a>
+
 ## <a name="formatting-considerations"></a>Důležité informace o formátování
 
-Po importu souboru nebo adresy URL, je převeden na Markdown a uložená v tomto formátu. Pokud proces převodu není správně převod odkazů na soubory a adresy URL, měli upravovat dotazy a odpovědi na **upravit** stránky. 
+Po importu souboru nebo adresy URL QnA Maker převádí a ukládá obsah ve [formátu Markdownu](https://en.wikipedia.org/wiki/Markdown). Proces převodu přidá do textu nové řádky, například `\n\n`. Znalost formátu Markdownu vám pomůže pochopit převedený obsah a spravovat obsah znalostní báze. 
 
-|Formát|Účel|
-|--|--|
-|`\n\n`| Nový řádek|
-|`\n*`|Odrážce je seřazený seznam|
+Pokud přidáte nebo upravíte svůj obsah přímo ve znalostní bázi, použijte **formátování Markdownu** k vytvoření formátovaného textu nebo změňte obsah formátu Markdownu, který je již v odpovědi. QnA Maker podporuje většinu formátu Markdownu, aby bylo možné do obsahu dostat možnosti formátovaného textu. Klientská aplikace, jako je například robot pro chat, nemusí podporovat stejnou sadu formátů Markdownu. Je důležité otestovat zobrazení odpovědí klientské aplikace. 
 
-## <a name="editing-your-knowledge-base-locally"></a>Úpravy místně znalostní báze
+Následuje seznam formátů Markdownu, které můžete použít v QnA Maker: 
 
-Po vytvoření znalostní báze se doporučuje provádět úpravy textu znalostní báze knowledge base [portál QnA Maker](https://qnamaker.ai), místo export a znovu importujte prostřednictvím místních souborů. Může však nastat situace, které je potřeba upravit znalostní bázi místně. 
+|Účel|Formát|Příklad Markdownu|Vykreslování<br>Jak se zobrazuje v robotovi pro chat|
+|--|--|--|--|
+Nový řádek mezi 2 větami.|`\n\n`|`How can I create a bot with \n\n QnA Maker?`|![naformátovat nový řádek mezi dvěma větami](../media/qnamaker-concepts-datasources/format-newline.png)|
+|Hlavičky z H1 do h6, počet `#` značících, která záhlaví jsou. 1 `#` je H1.|`\n# text \n## text \n### text \n####text \n#####text` |`## Creating a bot \n ...text.... \n### Important news\n ...text... \n### Related Information\n ....text...`<br><br>`\n# my h1 \n## my h2\n### my h3 \n#### my h4 \n##### my h5`|![formátování pomocí hlaviček Markdownu](../media/qnamaker-concepts-datasources/format-headers.png)<br>![formátování pomocí hlaviček Markdownu H1 na H5](../media/qnamaker-concepts-datasources/format-h1-h5.png)|
+|Kurzíva |`*text*`|`How do I create a bot with *QnA Maker*?`|![formátování pomocí kurzív](../media/qnamaker-concepts-datasources/format-italics.png)|
+|Řetězec (tučně)|`**text**`|`How do I create a bot with **QnA Maker**?`|![formát se silným označením pro tučné písmo](../media/qnamaker-concepts-datasources/format-strong.png)|
+|Adresa URL odkazu|`[text](https://www.my.com)`|`How do I create a bot with [QnA Maker](https://www.qnamaker.ai)?`|![formát pro adresu URL (hypertextový odkaz)](../media/qnamaker-concepts-datasources/format-url.png)|
+|\* Adresa URL pro veřejnou image|`![text](https://www.my.com/image.png)`|`How can I create a bot with ![QnAMaker](https://review.docs.microsoft.com/en-us/azure/cognitive-services/qnamaker/media/qnamaker-how-to-key-management/qnamaker-resource-list.png)`|![formát pro adresu URL veřejného obrázku ](../media/qnamaker-concepts-datasources/format-image-url.png)|
+|Přeškrtnutí|`~~text~~`|`some ~~questoins~~ questions need to be asked`|![formát pro přeškrtnutí](../media/qnamaker-concepts-datasources/format-strikethrough.png)|
+|Tučné a kurzívy|`***text***`|`How can I create a ***QnA Maker*** bot?`|![formát pro tučné písmo a kurzívu](../media/qnamaker-concepts-datasources/format-bold-italics.png)|
+|Tučná adresa URL odkazu|`[**text**](https://www.my.com)`|`How do I create a bot with [**QnA Maker**](https://www.qnamaker.ai)?`|![formát pro adresu URL tučného písma](../media/qnamaker-concepts-datasources/format-bold-url.png)|
+|Adresa URL pro odkaz na kurzívu|`[*text*](https://www.my.com)`|`How do I create a bot with [*QnA Maker*](https://www.qnamaker.ai)?`|![formát pro adresu URL kurzívou](../media/qnamaker-concepts-datasources/format-url-italics.png)|
+|Řídicí symboly Markdownu|`\*text\*`|`How do I create a bot with \*QnA Maker\*?`|![formát pro adresu URL kurzívou](../media/qnamaker-concepts-datasources/format-escape-markdown-symbols.png)|
+|Seřazený seznam|`\n 1. item1 \n 1. item2`|`This is an ordered list: \n 1. List item 1 \n 1. List item 2`<br>Předchozí příklad používá automatické číslování integrovaný do Markdownu.<br>`This is an ordered list: \n 1. List item 1 \n 2. List item 2`<br>Předchozí příklad používá explicitní číslování.|![formát pro uspořádaný seznam](../media/qnamaker-concepts-datasources/format-ordered-list.png)|
+|Neuspořádaný seznam|`\n * item1 \n * item2`<br>or<br>`\n - item1 \n - item2`|`This is an ordered list: \n * List item 1 \n * List item 2`|![formát pro neuspořádaný seznam](../media/qnamaker-concepts-datasources/format-unordered-list.png)|
+|Vnořené seznamy|`\n * Parent1 \n\t * Child1 \n\t * Child2 \n * Parent2`<br><br>`\n * Parent1 \n\t 1. Child1 \n\t * Child2 \n 1. Parent2`<br><br>Můžete vnořit seřazené a neuspořádané seznamy dohromady. Karta `\t`označuje úroveň odsazení podřízeného prvku.|`This is an unordered list: \n * List item 1 \n\t * Child1 \n\t * Child2 \n * List item 2`<br><br>`This is an ordered nested list: \n 1. Parent1 \n\t 1. Child1 \n\t 1. Child2 \n 1. Parent2`|![formát pro vnořený seznam neuspořádaných](../media/qnamaker-concepts-datasources/format-nested-unordered-list.png)<br>![formát pro vnořený uspořádaný seznam](../media/qnamaker-concepts-datasources/format-nested-ordered-list.png)|
 
-Exportovat ve znalostní bázi z **nastavení** stránce a pak upravit znalostní báze pomocí aplikace Microsoft Excel. Pokud se rozhodnete používat jiná aplikace upravte exportovaný soubor TSV, aplikace může představovat chyby syntaxe, protože není plně TSV kompatibilní. Soubory aplikace Microsoft Excel TSV obecně nezpůsobíte žádné chyby formátování. 
+\* QnA Maker nezpracovává bitovou kopii jakýmkoli způsobem. Je to role klientské aplikace pro vykreslení image. 
 
-Po dokončení úprav opětovné importování souboru TSV z **nastavení** stránky. Zcela tato operace nahradí aktuální znalostní báze s importovaných znalostní báze. 
+## <a name="editing-your-knowledge-base-locally"></a>Místní úprava znalostní báze
 
-## <a name="testing-your-markdown"></a>Testování Markdown
+Po vytvoření znalostní báze se doporučuje provádět úpravy textu znalostní báze na [portálu QnA maker](https://qnamaker.ai)a nemusíte je exportovat a znovu importovat pomocí místních souborů. Nicméně může nastat situace, kdy budete muset znalostní bázi upravit místně. 
 
-Použití **[CommonMark](https://commonmark.org/help/tutorial/index.html)** kurz k ověření Markdown. Tento kurz obsahuje **vyzkoušet** funkce pro ověření rychlého kopírování a vkládání. 
+Vyexportujte znalostní bázi ze stránky **Nastavení** a pak upravte znalostní bázi v aplikaci Microsoft Excel. Pokud se rozhodnete použít jinou aplikaci k úpravě exportovaného souboru TSV, může aplikace způsobit chyby syntaxe, protože není plně kompatibilní s požadavky na TSV. Soubory TSV v aplikaci Microsoft Excel obecně nezavádějí žádné chyby formátování. 
+
+Až budete s úpravami hotovi, znovu naimportujte soubor TSV ze stránky **Nastavení** . Tato akce zcela nahradí aktuální znalostní bázi importovanou znalostní bázi. 
+
+## <a name="testing-your-markdown"></a>Testování Markdownu
+
+Pomocí kurzu **[CommonMark](https://commonmark.org/help/tutorial/index.html)** ověřte své Markdownu. V tomto kurzu je funkce **vyzkoušet** pro rychlé kopírování a vkládání. 
 
 ## <a name="next-steps"></a>Další postup
 

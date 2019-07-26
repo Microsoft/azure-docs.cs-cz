@@ -1,7 +1,7 @@
 ---
-title: Posun dat monitorování (Preview)
+title: Monitorování posunu dat (Preview)
 titleSuffix: Azure Machine Learning service
-description: Zjistěte, jak monitorovat službu Azure Machine Learning pro data odchylek.
+description: Naučte se, jak může služba Azure Machine Learning sledovat posun dat.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,55 +10,55 @@ ms.reviewer: jmartens
 author: cody-dkdc
 ms.author: copeters
 ms.date: 06/20/2019
-ms.openlocfilehash: a03e3124647869e7148f271810bb523986a851c6
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 13f73718fabd711e9c71a56ac4537b2ebef8a411
+ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67442382"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68371083"
 ---
-# <a name="what-is-data-drift-monitoring-preview"></a>Co je data odchylek monitorování (Preview)?
+# <a name="what-is-data-drift-monitoring-preview"></a>Co je sledování posunu dat (Preview)?
 
-Data jsou změny v distribuci dat. V rámci služby machine learning natrénované modely strojového učení zaznamenat snížení předpověď výkonu z důvodu odchylek. Monitorování odchylek mezi trénovací data a data ukládaná za účelem provádění předpovědí může pomoct detekovat problémy s výkonem.
+Posun dat je změnou distribuce dat. V kontextu strojového učení můžou školicí modely strojového učení mít vliv na snížení výkonu předpovědi z důvodu snížení úrovně. Sledování posunu mezi školicími daty a daty používanými k vytváření předpovědi může přispět k detekci potíží s výkonem.
 
-Modely strojového učení jsou jenom tak dobré jako data využívají k tréninku je. Nasazení modelů do produkčního prostředí bez sledování jeho výkon a může vést k nezjištěné a škodlivé následky. Pomocí dat odchylek monitorování, můžete zjišťovat a přizpůsobit odchylek data. 
+Modely strojového učení jsou stejně vhodné jako data používaná k jejich výuce. Nasazení modelů do produkčního prostředí bez monitorování jeho výkonu může vést k nezjištěným a nepříznivým dopadům. Díky monitorování posunu dat můžete detekovat a přizpůsobovat se ke posunu dat. 
 
-## <a name="when-to-monitor-for-data-drift"></a>Kdy se má monitorovat posun data?
+## <a name="when-to-monitor-for-data-drift"></a>Kdy se má monitorovat posun dat?
 
-Metriky, které nám můžete monitorovat patří:
+Mezi metriky, které můžeme monitorovat, patří:
 
-+ Velikost odchylek odchylek koeficient)
-+ Příčinu odchylek (odchylek příspěvek funkcí)
-+ Vzdálenost metriky (Wasserstein, energie, atd.)
++ Velikost posunu (posunový koeficient)
++ Způsob posunu (posun podílu podle funkce)
++ Metriky ujeté vzdálenosti (Wasserstein, energie atd.)
 
-Pomocí tohoto monitorování na místě, upozornění nebo které lze upravit při zjištění odchylek a mezi odborníky přes data, můžete zjistit příčinu problému. 
+V rámci tohoto monitorování je možné nastavit výstrahy nebo akce, když se zjistí posun, a odborník na data může prozkoumat původní příčinu problému. 
 
-Pokud si myslíte, že vstupní data pro vaše nasazené modelu může změnit, měli byste zvážit, pomocí zjišťování odchylek data.
+Pokud si myslíte, že se vstupní data pro nasazený model můžou změnit, měli byste zvážit použití detekce posunu dat.
 
-## <a name="how-data-drift-is-monitored-in-azure-machine-learning-service"></a>Jak se monitoruje odchylek data ve službě Azure Machine Learning
+## <a name="how-data-drift-is-monitored-in-azure-machine-learning-service"></a>Jak se monitoruje posun dat ve službě Azure Machine Learning
 
-Pomocí **služby Azure Machine Learning**, odchylek dat je monitorovat prostřednictvím datové sady nebo nasazení. Ke sledování dat odchylek, datovou sadu standardních hodnot – obvykle trénovací datové sady pro model - určena. Druhý datová sada – obvykle modelu vstupních dat shromážděných z nasazení – je testován vůči datovou sadu standardních hodnot. Oba datové sady jsou [profilované](how-to-explore-prepare-data.md#explore-with-summary-statistics) a zadání dat odchylek monitorování služby. Ke zjišťování rozdílů mezi dvěma datovými sadami se trénuje model strojového učení. Výkon modelu je převedena na odchylek koeficient, která měří velikost odchylek mezi dvěma datovými sadami. Pomocí [model interpretability](machine-learning-interpretability-explainability.md) se zpracovávají funkce, které přispívají k koeficient odchylek. Z profilu datové sady jsou sledovány statistické informace o jednotlivých funkcí. 
+Pomocí **Azure Machine Learning služby**je mezi datovými sadami a nasazeními monitorovaná data. Chcete-li monitorovat pro posun dat, je určena datová sada, která je obvykle datovou sadou pro model. Druhá datová sada – obvykle modelují vstupní data shromážděná z nasazení – jsou testována proti základní datové sadě. Obě datové [sady jsou](how-to-explore-prepare-data.md#explore-with-summary-statistics) profilované a vstupní služba pro sledování datového posunu dat. Model strojového učení je vyškolen k detekci rozdílů mezi dvěma datovými sadami. Výkon modelu se převede na koeficient posunu, který měří velikost posunu mezi dvěma datovými sadami. Při použití [Interpretace modelu](machine-learning-interpretability-explainability.md) jsou vypočítány funkce, které přispívají k koeficientu posunu. Z profilu datové sady jsou sledovány statistické informace o jednotlivých funkcích. 
 
-## <a name="data-drift-metric-output"></a>Metriky výstup dat odchylek
+## <a name="data-drift-metric-output"></a>Výstup metriky pro posun dat
 
-Pokud chcete zobrazit metriky odchylek několika způsoby:
+Existují různé způsoby, jak zobrazit metriky pro posun:
 
-* Pomocí widgetu Jupyter.
-* Použití `get_metrics()` funkce na všech `datadriftRun` objektu.
-* Zobrazení metrik na webu Azure Portal na modelu
+* Použijte widget [Jupyter.](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py) `RunDetails`
+* Použijte funkci na libovolný `datadriftRun` objekt. `get_metrics()`
+* Zobrazení metrik v Azure Portal modelu
 
-V každé iteraci spuštění úlohy odchylek data se uloží následující metriky:
+Následující metriky jsou uloženy v každé iteraci spuštění pro úlohu posunu dat:
 
 |Metrika|Popis|
 --|--|
-wasserstein_distance|Statistické vzdálenost definované pro jednorozměrné číselné distribuci.|
-energy_distance|Statistické vzdálenost definované pro jednorozměrné číselné distribuci.|
-datadrift_coefficient|Formálně Matthews korelačního koeficientu, reálné číslo od -1 do 1. V rámci odchylek 0 znamená bez odchylek a 1 označuje maximální odchylek.|
-datadrift_contribution|Funkce důležitost funkce, které přispívají k odchylek.|
+wasserstein_distance|Statistická vzdálenost definovaná pro jednorozměrné číselné rozdělení.|
+energy_distance|Statistická vzdálenost definovaná pro jednorozměrné číselné rozdělení.|
+datadrift_coefficient|Formálně Matthews korelační koeficient, reálné číslo od-1 do 1. V případě posunu 0 neindikuje žádný posun a 1 označuje maximální posun.|
+datadrift_contribution|Důležitost funkcí, které přispívají k posunu.|
 
 ## <a name="next-steps"></a>Další postup
 
-Podívejte se na příklady a další informace o monitorování pro data odchylek:
+Podívejte se na příklady a Naučte se monitorovat posun dat:
 
-+ [Další informace o monitorování dat odchylek na modely nasazené prostřednictvím Azure Kubernetes Service (AKS)](how-to-monitor-data-drift.md)
-+ Vyzkoušejte si [ukázky Poznámkový blok Jupyter](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/data-drift/)
++ [Přečtěte si, jak monitorovat posun dat na modelech nasazených prostřednictvím služby Azure Kubernetes Service (AKS).](how-to-monitor-data-drift.md)
++ Vyzkoušení [ukázek Jupyter notebook](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/data-drift/)

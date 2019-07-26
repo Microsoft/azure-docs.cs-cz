@@ -1,6 +1,6 @@
 ---
 title: Chráněné webové rozhraní API – konfigurace kódu aplikace | Azure Active Directory
-description: Zjistěte, jak sestavit chráněné webové rozhraní API a konfigurovat kódu vaší aplikace.
+description: Naučte se vytvářet chráněné webové rozhraní API a konfigurovat kód vaší aplikace.
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -16,24 +16,30 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 23ff03316a1f9409d4d6e4b7ddf52d0c8cc7a909
-ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
+ms.openlocfilehash: b249b99faa62e73b9aa3247f71f88767fca96f01
+ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67551545"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68488839"
 ---
-# <a name="protected-web-api-adding-authorization-to-your-api"></a>Chráněné webové rozhraní API: Přidání ověřování do vašeho rozhraní API
+# <a name="protected-web-api-adding-authorization-to-your-api"></a>Chráněné webové rozhraní API: Přidání autorizace do rozhraní API
 
-Tento článek popisuje, jak můžete přidat ověřování do webového rozhraní API. Tato ochrana zajistí, že se pouze volá rozhraní API:
+Tento článek popisuje, jak můžete přidat autorizaci do webového rozhraní API. Tato ochrana zajišťuje, že rozhraní API je voláno pouze pomocí:
 
-- Aplikace jménem uživatelů, kteří mají správné rozsahy.
-- Aplikace démonů, které mají správné aplikační role.
+- Aplikace jménem uživatelů, kteří mají správné obory
+- Démon aplikace, které mají správnou aplikační role
 
-K ochraně webového rozhraní API ASP.NET/ASP.NET Core, budete muset přidat `[Authorize]` atribut na jednu z těchto:
+> [!NOTE]
+> Fragmenty kódu z tohoto článku jsou extrahovány z následujících ukázek, které jsou plně funkční
+>
+> - [Přírůstkový kurz ASP.NET Core webového rozhraní API](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/blob/02352945c1c4abb895f0b700053506dcde7ed04a/1.%20Desktop%20app%20calls%20Web%20API/TodoListService/Controllers/TodoListController.cs#L37) na GitHubu
+> - [Ukázka webového rozhraní API v ASP.NET](https://github.com/Azure-Samples/ms-identity-aspnet-webapi-onbehalfof/blob/dfd0115533d5a230baff6a3259c76cf117568bd9/TodoListService/Controllers/TodoListController.cs#L48)
 
-- Kontroler samostatně, pokud chcete, aby všechny akce daného kontroleru, který se má chránit
-- Akce jednotlivých kontroleru pro vaše rozhraní API
+K ochraně webového rozhraní API ASP.NET/ASP.NET Core budete muset přidat `[Authorize]` atribut na jednu z těchto:
+
+- Samotný kontroler, pokud chcete všechny akce kontroleru chránit
+- Akce jednotlivého kontroleru pro vaše rozhraní API
 
 ```CSharp
     [Authorize]
@@ -43,14 +49,14 @@ K ochraně webového rozhraní API ASP.NET/ASP.NET Core, budete muset přidat `[
     }
 ```
 
-Ale tato ochrana nestačí. Pouze zaručuje, že základní ASP.NET/ASP.NET ověří token. Chcete-li ověřit, že je token používaný k volat vaše webové rozhraní API byla vyžádána se deklarace identity se očekává, že, zejména potřebuje vaše rozhraní API:
+Tato ochrana ale není dostatečná. Garantuje pouze to, že ASP.NET/ASP.NET Core ověří token. Vaše rozhraní API musí ověřit, zda byl token používaný k volání webového rozhraní API požadován s deklaracemi, které očekává, zejména:
 
-- *Obory*, pokud se volá rozhraní API jménem uživatele.
-- *Role aplikace*, pokud rozhraní API může být volána z aplikace démona.
+- *Obory*, pokud je rozhraní API voláno jménem uživatele.
+- *Role aplikace*, pokud je možné rozhraní API volat z aplikace démona.
 
-## <a name="verifying-scopes-in-apis-called-on-behalf-of-users"></a>Ověření oborů v rozhraní API volá jménem uživatelů
+## <a name="verifying-scopes-in-apis-called-on-behalf-of-users"></a>Ověřování oborů v rozhraních API volaných jménem uživatelů
 
-Pokud vaše rozhraní API je volán klientskou aplikaci jménem uživatele, je potřeba požádat o token nosiče, který obsahuje konkrétní obory pro rozhraní API. (Viz [konfiguraci kódu | Nosný token](scenario-protected-web-api-app-configuration.md#bearer-token).)
+Pokud vaše rozhraní API volá klientská aplikace jménem uživatele, musí požádat o nosný token, který má konkrétní obory pro rozhraní API. (Viz [Konfigurace kódu | Nosný token](scenario-protected-web-api-app-configuration.md#bearer-token).)
 
 ```CSharp
 [Authorize]
@@ -74,10 +80,10 @@ public class TodoListController : Controller
 }
 ```
 
-`VerifyUserHasAnyAcceptedScope` Metoda byste udělali nějak takto:
+`VerifyUserHasAnyAcceptedScope` Metoda by měla vypadat nějak takto:
 
-- Ověřte, zda je deklarace identity s názvem `http://schemas.microsoft.com/identity/claims/scope` nebo `scp`.
-- Ověřte, zda se deklarace má hodnotu, která obsahuje obor očekávané rozhraním API.
+- Ověřte, zda se jedná o deklaraci `scp`s názvem `http://schemas.microsoft.com/identity/claims/scope` nebo.
+- Ověřte, že deklarace identity má hodnotu, která obsahuje obor očekávaný rozhraním API.
 
 ```CSharp
     /// <summary>
@@ -107,12 +113,12 @@ public class TodoListController : Controller
     }
 ```
 
-Tento ukázkový kód je pro ASP.NET Core. Pro technologii ASP.NET, stačí nahradit `HttpContext.User` s `ClaimsPrincipal.Current`a nahraďte typ deklarace identity `"http://schemas.microsoft.com/identity/claims/scope"` s `"scp"`. (Viz také dále v tomto článku fragmentu kódu.)
+Tento [vzorový kód](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/blob/02352945c1c4abb895f0b700053506dcde7ed04a/Microsoft.Identity.Web/Resource/ScopesRequiredByWebAPIExtension.cs#L47) je určen pro ASP.NET Core. V `HttpContext.User` případě ASP.NET jenom nahraďte `ClaimsPrincipal.Current`argumentem a nahraďte typ `"http://schemas.microsoft.com/identity/claims/scope"` deklarace `"scp"`pomocí. (Viz také fragment kódu dále v tomto článku.)
 
-## <a name="verifying-app-roles-in-apis-called-by-daemon-apps"></a>Ověřuje se, jestli role aplikace v rozhraní API volané aplikace démonů
+## <a name="verifying-app-roles-in-apis-called-by-daemon-apps"></a>Ověřování rolí aplikace v rozhraní API volaných aplikacemi démona
 
-Pokud vaše webové rozhraní API je volán [démon aplikace](scenario-daemon-overview.md), tato aplikace by měla vyžadovat aplikace oprávnění ke své webové rozhraní API. Zaznamenali jsme v [vystavení oprávnění aplikace (role aplikace)](https://docs.microsoft.com/azure/active-directory/develop/scenario-protected-web-api-app-registration#exposing-application-permissions-app-roles) , že vaše rozhraní API zveřejňuje taková oprávnění (například `access_as_application` role aplikace).
-Teď je potřeba mít svá rozhraní API, ověřte, zda obsahuje token obdržel `roles` deklarace identity a zda tato deklarace identity se očekává, že hodnota. Je podobný kód, který ověřuje delegovaná oprávnění, s výjimkou, že místo pro testování kódu dělat toto ověření `scopes`, testovat vaše akce kontroleru pro `roles`:
+Pokud je vaše webové rozhraní API voláno [aplikací démona](scenario-daemon-overview.md), měla by tato aplikace vyžadovat oprávnění aplikace pro vaše webové rozhraní API. Zjistili jsme, že máte oprávnění k vystavování [oprávnění aplikací (aplikační role)](https://docs.microsoft.com/azure/active-directory/develop/scenario-protected-web-api-app-registration#exposing-application-permissions-app-roles) , které vaše rozhraní API zpřístupňuje `access_as_application` (například role aplikace).
+Teď musíte mít rozhraní API, abyste ověřili, že přijatý token obsahuje `roles` deklaraci identity a že tato deklarace má hodnotu, kterou očekává. Kód, který provádí toto ověření, je podobný kódu, který ověřuje delegovaná oprávnění s tím rozdílem, že místo testování `scopes`pro bude vaše akce kontroleru `roles`testovat:
 
 ```CSharp
 [Authorize]
@@ -125,7 +131,7 @@ public class TodoListController : ApiController
     }
 ```
 
-`ValidateAppRole()` Metoda může být vypadat přibližně takto:
+`ValidateAppRole()` Metoda může být podobná této:
 
 ```CSharp
 private void ValidateAppRole(string appRole)
@@ -146,23 +152,23 @@ private void ValidateAppRole(string appRole)
 }
 ```
 
-Tento ukázkový kód je pro technologii ASP.NET. Pro ASP.NET Core, stačí nahradit `ClaimsPrincipal.Current` s `HttpContext.User`a nahraďte `"roles"` deklarace názvu s `"http://schemas.microsoft.com/identity/claims/roles"`. (Viz také fragment kódu výše v tomto článku.)
+Tentokrát je fragment kódu určen pro ASP.NET. V případě ASP.NET Core stačí nahradit `ClaimsPrincipal.Current` pomocí `HttpContext.User`a nahradit `"roles"` název deklarace pomocí `"http://schemas.microsoft.com/identity/claims/roles"`. (Viz také fragment kódu dříve v tomto článku.)
 
-### <a name="accepting-app-only-tokens-if-the-web-api-should-be-called-only-by-daemon-apps"></a>Pokud webové rozhraní API by měla být volána pouze pomocí aplikace démonů přijímat tokeny jen pro aplikace
+### <a name="accepting-app-only-tokens-if-the-web-api-should-be-called-only-by-daemon-apps"></a>Přijímají se tokeny jenom pro aplikace, pokud by webové rozhraní API mělo volat jenom aplikace typu démon.
 
-`roles` Deklarace identity se používá také pro uživatele ve vzorech pro přiřazení uživatele. (Viz [jak: Přidání rolí aplikace ve vaší aplikaci a přijímat je v tokenu](howto-add-app-roles-in-azure-ad-apps.md).) Kontroluje se tak, aby role vám umožní aplikace přihlásit jako uživatele a naopak, pokud jsou dané role přiřadit k oběma. Doporučujeme vám, že deklarujete různé role pro uživatele a aplikace, aby se zabránilo potíže.
+`roles` Deklarace identity se používá taky pro uživatele ve vzorcích přiřazování uživatelů. (Viz [postup: Přidejte do své aplikace aplikační role a obdržení je v tokenu](howto-add-app-roles-in-azure-ad-apps.md).) Takže jenom kontrola rolí umožní aplikacím přihlašovat se jako uživatelé a jiným způsobem, pokud se role přiřazují k oběma. Doporučujeme, abyste pro uživatele a aplikace deklarovali různé role, aby nedocházelo k nejasnostem.
 
-Pokud chcete povolit pouze aplikace démonů volání webového rozhraní API, přidejte podmínku, když ověřujete role aplikace, že váš token je token jen pro aplikace:
+Pokud chcete, aby aplikace typu démon mohli volat vaše webové rozhraní API, přidejte podmínku, když ověříte roli aplikace, že se jedná o token jenom pro aplikaci:
 
 ```CSharp
-string oid = ClaimsPrincipal.Current.FindFirst("oid");
-string sub = ClaimsPrincipal.Current.FindFirst("sub");
+string oid = ClaimsPrincipal.Current.FindFirst("oid")?.Value;
+string sub = ClaimsPrincipal.Current.FindFirst("sub")?.Value;
 bool isAppOnlyToken = oid == sub;
 ```
 
-Kontrola stavu inverzní vám umožní jenom aplikace s možností přihlášení uživatele k volání rozhraní API.
+Při kontrole inverzní podmínky budou povoleny pouze aplikace, které přihlásí uživatele k volání rozhraní API.
 
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Přejít do produkčního prostředí](scenario-protected-web-api-production.md)
+> [Přesunout do produkčního prostředí](scenario-protected-web-api-production.md)
