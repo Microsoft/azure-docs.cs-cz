@@ -1,7 +1,6 @@
 ---
 title: Rychlý start Azure – Zálohování virtuálního počítače pomocí Azure CLI
 description: Zjistěte, jak zálohovat virtuální počítače pomocí Azure CLI.
-services: backup
 author: rayne-wiselman
 manager: carmonm
 tags: azure-resource-manager, virtual-machine-backup
@@ -11,12 +10,12 @@ ms.topic: quickstart
 ms.date: 01/31/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: d3ed9370726d35f67edfbcf32dfd25e74d7865e5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1d431cceee80175710f339e4734972340ed3469d
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66127675"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68467237"
 ---
 # <a name="back-up-a-virtual-machine-in-azure-with-the-cli"></a>Zálohování virtuálního počítače v Azure pomocí rozhraní příkazového řádku
 Azure CLI slouží k vytváření a správě prostředků Azure z příkazového řádku nebo ve skriptech. Svá data můžete chránit prováděním záloh v pravidelných intervalech. Azure Backup vytváří body obnovení, které je možné uchovávat v geograficky redundantních trezorech obnovení. Tento článek podrobně popisuje, jak zálohovat virtuální počítač v Azure pomocí Azure CLI. K provedení těchto kroků můžete také využít [Azure PowerShell](quick-backup-vm-powershell.md) nebo [Azure Portal](quick-backup-vm-portal.md).
@@ -43,7 +42,7 @@ az backup vault create --resource-group myResourceGroup \
     --location eastus
 ```
 
-Ve výchozím nastavení je trezor služby Recovery Services nastavený pro geograficky redundantní úložiště. Geograficky redundantní úložiště zajišťuje replikaci vašich zálohovaných dat do sekundární oblasti Azure, která je od primární oblasti vzdálená stovky kilometrů. Pokud nastavení redundance úložiště musí být upravena, použijte [set vlastnosti zálohování trezoru záloh az](https://docs.microsoft.com/cli/azure/backup/vault/backup-properties?view=azure-cli-latest#az-backup-vault-backup-properties-set) rutiny.
+Ve výchozím nastavení je trezor služby Recovery Services nastavený pro geograficky redundantní úložiště. Geograficky redundantní úložiště zajišťuje replikaci vašich zálohovaných dat do sekundární oblasti Azure, která je od primární oblasti vzdálená stovky kilometrů. Pokud je potřeba upravit nastavení redundance úložiště, použijte příkaz [AZ Backup trezor Backup-Properties set](https://docs.microsoft.com/cli/azure/backup/vault/backup-properties?view=azure-cli-latest#az-backup-vault-backup-properties-set) rutina.
 
 ```azurecli
 az backup vault backup-properties set \
@@ -137,7 +136,7 @@ az group delete --name myResourceGroup
 ```
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 V tomto rychlém startu jste vytvořili trezor služby Recovery Services, povolili ochranu virtuálního počítače a vytvořili prvotní bod obnovení. Pokud se chcete o službách Azure Backup a Recovery Services dozvědět více, pokračujte ke kurzům.
 
 > [!div class="nextstepaction"]

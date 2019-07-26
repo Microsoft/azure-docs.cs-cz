@@ -9,10 +9,10 @@ ms.date: 05/06/2019
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 444e64488b185b1ff2aa7cc63fbeffafc591dbfe
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.sourcegitcommit: 57a7d4f67635212f5bf0c56e58fd87c8ec366f2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
+ms.lasthandoff: 07/22/2019
 ms.locfileid: "68319982"
 ---
 ## <a name="benefits-of-managed-disks"></a>Výhody spravovaných disků
@@ -65,7 +65,7 @@ V Azure existují tři hlavní diskové role: datový disk, disk s operačním s
 
 Datový disk je spravovaný disk, který je připojený k virtuálnímu počítači pro ukládání dat aplikací, nebo jiná data, která potřebujete zachovat. Datové disky se registrují jako jednotky SCSI a jsou označené písmenem, které zvolíte. Každý datový disk má maximální kapacitu 32 767 gibibajtech (GiB). Velikost virtuálního počítače určuje, kolik datových disků se k němu můžete připojit, a typ úložiště, které můžete použít k hostování disků.
 
-### <a name="os-disk"></a>Disk OS
+### <a name="os-disk"></a>Disk s operačním systémem
 
 Každý virtuální počítač má jeden připojený disk s operačním systémem. Tento disk s operačním systémem má předem instalovaný operační systém, který byl vybrán při vytvoření virtuálního počítače.
 

@@ -1,6 +1,6 @@
 ---
-title: Přihlaste se pomocí účtu sítě Twitter lze nastavit pomocí vlastních zásad v Azure Active Directory B2C | Dokumentace Microsoftu
-description: Přihlaste se pomocí účtu sítě Twitter lze nastavte pomocí vlastních zásad v Azure Active Directory B2C.
+title: Nastavte přihlášení pomocí účtu Twitteru pomocí vlastních zásad v Azure Active Directory B2C | Microsoft Docs
+description: Nastavte přihlášení pomocí účtu Twitteru pomocí vlastních zásad v Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,61 +10,61 @@ ms.topic: conceptual
 ms.date: 09/20/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 1bf90ec8987ec419131ba21137972a0905e33f19
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: 557d25c4921c9906be75bce03c326903e63432de
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67654143"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68464795"
 ---
-# <a name="set-up-sign-in-with-a-twitter-account-by-using-custom-policies-in-azure-active-directory-b2c"></a>Přihlaste se pomocí účtu sítě Twitter lze nastavit pomocí vlastních zásad v Azure Active Directory B2C
+# <a name="set-up-sign-in-with-a-twitter-account-by-using-custom-policies-in-azure-active-directory-b2c"></a>Nastavte přihlášení pomocí účtu Twitteru pomocí vlastních zásad v Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Tento článek ukazuje, jak povolit přihlášení pro uživatele z účtu na Twitteru s použitím [vlastní zásady](active-directory-b2c-overview-custom.md) v Azure Active Directory (Azure AD) B2C.
+V tomto článku se dozvíte, jak povolit přihlášení uživatelům účtu Twitteru pomocí [vlastních zásad](active-directory-b2c-overview-custom.md) v Azure Active Directory (Azure AD) B2C.
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Proveďte kroky v [začít pracovat s vlastními zásadami v Azure Active Directory B2C](active-directory-b2c-get-started-custom.md).
-- Pokud ještě nemáte účet na Twitteru, vytvořte si ho na [registrační stránku Twitteru](https://twitter.com/signup).
+- Proveďte kroky v části Začínáme [s vlastními zásadami v Azure Active Directory B2C](active-directory-b2c-get-started-custom.md).
+- Pokud ještě nemáte účet na Twitteru, vytvořte ho na [stránce pro registraci Twitteru](https://twitter.com/signup).
 
 ## <a name="create-an-application"></a>Vytvoření aplikace
 
-Pokud chcete použít Twitteru jako zprostředkovatele identity v Azure AD B2C, budete muset vytvoření aplikace Twitter.
+Pokud chcete jako poskytovatele identity v Azure AD B2C používat Twitter, musíte vytvořit aplikaci Twitter.
 
-1. Přihlaste se k [Twitteru vývojáři](https://developer.twitter.com/en/apps) pomocí svých přihlašovacích údajů účtu Twitter.
+1. Přihlaste se k webu pro [vývojáře](https://developer.twitter.com/en/apps) na Twitteru pomocí přihlašovacích údajů k účtu Twitteru.
 2. Vyberte **vytvořit aplikaci**.
-3. Zadejte **název aplikace** a **popis aplikace**.
-4. V **adresu URL webu**, zadejte `https://your-tenant.b2clogin.com`. Nahraďte `your-tenant` s názvem vašeho tenanta. Například, https://contosob2c.b2clogin.com.
-5. Pro **adresu URL zpětného volání**, zadejte `https://your-tenant.b2clogin.com/your-tenant.onmicrosoft.com/your-policy-Id/oauth1/authresp`. Nahraďte `your-tenant` s názvem název tenanta a `your-policy-Id` s identifikátorem vaše zásady. Například, `b2c_1A_signup_signin_twitter`. Budete muset použít jenom malá písmena. Pokud zadáte název vašeho klienta i v případě, že klient je definována s velká písmena v Azure AD B2C.
-6. V dolní části stránky, přečtěte si a přijměte podmínky a pak vyberte **vytvořit**.
-7. Na **podrobností o aplikaci** stránce **Upravit > Upravit podrobnosti**, zaškrtněte políčko u **povolit Přihlaste se pomocí Twitteru**a pak vyberte **Uložit**.
-8. Vyberte **klávesy a tokeny** a zaznamenejte **klíč rozhraní API příjemců** a **tajný klíč rozhraní API pro příjemce** hodnoty pro pozdější použití.
+3. Zadejte **název aplikace** a **Popis aplikace**.
+4. Do **adresy URL webu**zadejte `https://your-tenant.b2clogin.com`. Nahraďte `your-tenant` názvem vašeho tenanta. Například, https://contosob2c.b2clogin.com.
+5. Jako **adresu URL zpětného volání**zadejte `https://your-tenant.b2clogin.com/your-tenant.onmicrosoft.com/your-policy-Id/oauth1/authresp`. Nahraďte `your-tenant` názvem vašeho tenanta a `your-policy-Id` identifikátorem zásady. Například, `b2c_1A_signup_signin_twitter`. Při zadávání názvu tenanta musíte použít malá písmena, i když je tenant definovaný velkými písmeny v Azure AD B2C.
+6. V dolní části stránky si přečtěte a přijměte podmínky a pak vyberte **vytvořit**.
+7. Na stránce **podrobností aplikace** vyberte **Upravit > Upravit podrobnosti**, zaškrtněte políčko **Povolit přihlášení pomocí Twitteru**a potom vyberte **Uložit**.
+8. Vyberte **klíče a tokeny** a zaznamenejte **klíč rozhraní API příjemce** a hodnoty **tajného klíče rozhraní API příjemce** , které chcete použít později.
 
 ## <a name="create-a-policy-key"></a>Vytvoření klíče zásad
 
-Potřebujete ukládat tajný klíč, který jste si dříve poznamenali ve vašem tenantovi Azure AD B2C.
+Je potřeba uložit tajný klíč, který jste předtím nahráli ve svém tenantovi Azure AD B2C.
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
-2. Ujistěte se, že používáte adresáře, který obsahuje vašeho tenanta Azure AD B2C. Vyberte **filtr adresářů a předplatných** v horní nabídce a vyberte adresář, který obsahuje váš tenant.
-3. Zvolte **všechny služby** v horním levém horním rohu webu Azure portal a poté vyhledejte a vyberte **Azure AD B2C**.
-4. Na stránce s přehledem, vyberte **architekturu rozhraní identit**.
-5. Vyberte **klíče zásad** a pak vyberte **přidat**.
-6. Pro **možnosti**, zvolte `Manual`.
-7. Zadejte **název** klíče zásad. Například, `TwitterSecret`. Předpona, která `B2C_1A_` je automaticky přidán do názvu klíče.
-8. V **tajný kód**, zadejte váš tajný klíč klienta, který jste si předtím poznamenali.
+2. Ujistěte se, že používáte adresář, který obsahuje vašeho tenanta Azure AD B2C. V horní nabídce vyberte **adresář a filtr** předplatného a zvolte adresář, který obsahuje vašeho tenanta.
+3. V levém horním rohu Azure Portal vyberte **všechny služby** a pak vyhledejte a vyberte **Azure AD B2C**.
+4. Na stránce Přehled vyberte možnost **Architektura prostředí identity**.
+5. Vyberte **klíče zásad** a pak vyberte **Přidat**.
+6. Pro **Možnosti**vyberte `Manual`možnost.
+7. Zadejte **název** klíče zásad. Například, `TwitterSecret`. Předpona `B2C_1A_` se automaticky přidá do názvu vašeho klíče.
+8. Do **tajného klíče**zadejte tajný klíč klienta, který jste předtím nahráli.
 9. Pro **použití klíče**vyberte `Encryption`.
 10. Klikněte na možnost **Vytvořit**.
 
 ## <a name="add-a-claims-provider"></a>Přidat zprostředkovatele deklarací identity
 
-Pokud chcete uživatelům umožní přihlásit pomocí účtu sítě Twitter, musíte definovat účtu jako zprostředkovatele deklarací identity, který Azure AD B2C můžou klienti komunikovat prostřednictvím koncového bodu. Koncový bod poskytuje sadu deklarací identity, které používají Azure AD B2C k ověření, že se ověřil konkrétního uživatele.
+Pokud chcete, aby se uživatelé přihlásili pomocí účtu Twitteru, musíte účet definovat jako zprostředkovatele deklarací identity, se kterým Azure AD B2C můžou komunikovat prostřednictvím koncového bodu. Koncový bod poskytuje sadu deklarací, které používá Azure AD B2C k ověření, že konkrétní uživatel byl ověřen.
 
-Účtu sítě Twitter jako poskytovatele deklarací identity můžete definovat tak, že ji přidáte **ClaimsProviders** prvku v souboru rozšíření vašich zásad.
+Můžete definovat účet Twitter jako zprostředkovatele deklarací, a to tak, že ho přidáte do prvku **ClaimsProviders** v souboru rozšíření zásady.
 
-1. Otevřít *TrustFrameworkExtensions.xml*.
-2. Najít **ClaimsProviders** elementu. Pokud neexistuje, přidejte jej pod kořenovým elementem.
-3. Přidat nový **ClaimsProvider** následujícím způsobem:
+1. Otevřete *soubor TrustFrameworkExtensions. XML*.
+2. Vyhledejte element **ClaimsProviders** . Pokud neexistuje, přidejte jej pod kořenový element.
+3. Přidejte nový **ClaimsProvider** následujícím způsobem:
 
     ```xml
     <ClaimsProvider>
@@ -105,72 +105,72 @@ Pokud chcete uživatelům umožní přihlásit pomocí účtu sítě Twitter, mu
     </ClaimsProvider>
     ```
 
-4. Nahraďte hodnotu **client_id** s uživatelským klíčem, který jste si předtím poznamenali.
+4. Nahraďte hodnotu **client_id** klíčem příjemce, který jste předtím nahráli.
 5. Uložte soubor.
 
-### <a name="upload-the-extension-file-for-verification"></a>Nahrát soubor rozšíření pro ověřování
+### <a name="upload-the-extension-file-for-verification"></a>Nahrajte soubor rozšíření pro ověření.
 
-Nyní jste nakonfigurovali zásady tak, aby Azure AD B2C ví, jak komunikovat s vaším účtem LinkedIn. Zkuste nahrát soubor rozšíření zásady jenom k potvrzení, že všechny problémy nemusí zatím.
+Teď jste nakonfigurovali zásady tak, aby Azure AD B2C vědět, jak komunikovat s vaším účtem Twitteru. Zkuste nahrát soubor s příponou zásady jenom tak, aby se ověřilo, že zatím nemá žádné problémy.
 
-1. Na **vlastní zásady** stránky ve vašem tenantovi Azure AD B2C, vyberte **nahrát zásady**.
-2. Povolit **přepsat zásady, pokud existuje**a poté vyhledejte a vyberte *TrustFrameworkExtensions.xml* souboru.
+1. Na stránce **vlastní zásady** ve vašem tenantovi Azure AD B2C vyberte **Odeslat zásadu**.
+2. Pokud existuje, zapněte **zásadu přepsat**a pak vyhledejte a vyberte soubor *TrustFrameworkExtensions. XML* .
 3. Klikněte na **Odeslat**.
 
 ## <a name="register-the-claims-provider"></a>Registrace zprostředkovatele deklarací identity
 
-V tuto chvíli je nastavený zprostředkovatele identity, ale není k dispozici v některém z obrazovky registrace nebo přihlášení. Chcete-li k dispozici, vytvoření duplicitní cesty existující uživatele šablony a upravte ho tak, aby má také zprostředkovatele identity Twitteru.
+V tuto chvíli je poskytovatel identity nastavený, ale není k dispozici na žádném z přihlašovacích obrazovek pro registraci nebo přihlášení. Aby byl k dispozici, vytvořte duplikát existující cesty uživatele šablony a pak ji upravte, aby měl také poskytovatele identity Twitteru.
 
-1. Otevřít *TrustFrameworkBase.xml* soubor z starter pack.
-2. Vyhledejte a zkopírujte celý obsah **UserJourney** element, který zahrnuje `Id="SignUpOrSignIn"`.
-3. Otevřít *TrustFrameworkExtensions.xml* a najít **Userjourney** elementu. Pokud element neexistuje, přidejte jeden.
-4. Vložte celý obsah **UserJourney** element, který jste zkopírovali jako podřízený objekt **Userjourney** elementu.
-5. Přejmenujte ID cesty uživatele. Například, `SignUpSignInTwitter`.
+1. Otevřete soubor *TrustFrameworkBase. XML* z úvodní sady.
+2. Vyhledejte a zkopírujte celý obsah prvku **UserJourney** , který obsahuje `Id="SignUpOrSignIn"`.
+3. Otevřete *soubor TrustFrameworkExtensions. XML* a vyhledejte element **userjourney** . Pokud element neexistuje, přidejte jej.
+4. Vložte celý obsah elementu **UserJourney** , který jste zkopírovali jako podřízený prvek **userjourney** elementu.
+5. Přejmenujte ID cesty pro uživatele. Například, `SignUpSignInTwitter`.
 
 ### <a name="display-the-button"></a>Zobrazit tlačítko
 
-**ClaimsProviderSelection** element je obdobou k tlačítku na obrazovce registrace nebo přihlášení zprostředkovatele identity. Pokud chcete přidat **ClaimsProviderSelection** – element pro účet na Twitteru, nové tlačítko se zobrazí při uživatel umístil na stránce.
+Element **claimsproviderselection.** se podobá tlačítku poskytovatele identity na obrazovce pro registraci nebo přihlášení. Pokud přidáte element **claimsproviderselection.** pro účet Twitteru, zobrazí se nové tlačítko, když se uživatel na stránce zařadí.
 
-1. Najít **OrchestrationStep** element, který zahrnuje `Order="1"` v cestě uživatele, který jste vytvořili.
-2. V části **ClaimsProviderSelects**, přidejte následující prvek. Nastavte hodnotu **TargetClaimsExchangeId** na odpovídající hodnotu, například `TwitterExchange`:
+1. Vyhledejte element **OrchestrationStep** , který obsahuje `Order="1"` cestu k uživateli, kterou jste vytvořili.
+2. Pod **ClaimsProviderSelects**přidejte následující element. Nastavte hodnotu **TargetClaimsExchangeId** na odpovídající hodnotu, například `TwitterExchange`:
 
     ```XML
     <ClaimsProviderSelection TargetClaimsExchangeId="TwitterExchange" />
     ```
 
-### <a name="link-the-button-to-an-action"></a>Tlačítko s odkazem na akci
+### <a name="link-the-button-to-an-action"></a>Propojit tlačítko s akcí
 
-Teď, když máte tlačítko na místě, budete potřebovat odkázat na akci. Akce v tomto případě je pro Azure AD B2C pro komunikaci pomocí účtu Twitteru získat token.
+Teď, když máte tlačítko na místě, musíte ho propojit s akcí. Tato akce je v tomto případě určena pro Azure AD B2C ke komunikaci s účtem Twitter pro příjem tokenu.
 
-1. Najít **OrchestrationStep** , který obsahuje `Order="2"` v cestě uživatele.
-2. Přidejte následující **ClaimsExchange** a ujistěte se, že používáte stejnou hodnotu pro ID, které jste použili pro element **TargetClaimsExchangeId**:
+1. Najděte **OrchestrationStep** , který obsahuje `Order="2"` cestu k uživateli.
+2. Přidejte následující prvek **ClaimsExchange** a ujistěte se, že používáte stejnou hodnotu pro ID, které jste použili pro **TargetClaimsExchangeId**:
 
     ```XML
     <ClaimsExchange Id="TwitterExchange" TechnicalProfileReferenceId="Twitter-OAUTH1" />
     ```
 
-    Aktualizujte hodnotu **TechnicalProfileReferenceId** ID technického profilu, který jste vytvořili dříve. Například, `Twitter-OAUTH1`.
+    Aktualizujte hodnotu **TechnicalProfileReferenceId** na ID technického profilu, který jste vytvořili dříve. Například, `Twitter-OAUTH1`.
 
-3. Uložit *TrustFrameworkExtensions.xml* souboru a nahrajte ji znovu pro ověření.
+3. Uložte soubor *TrustFrameworkExtensions. XML* a znovu ho nahrajte k ověření.
 
 ## <a name="create-an-azure-ad-b2c-application"></a>Vytvoření aplikace Azure AD B2C
 
-Probíhá komunikace s Azure AD B2c prostřednictvím aplikace, kterou vytvoříte ve vašem tenantovi. Tato část obsahuje seznam volitelné kroky, které můžete použít k vytvoření aplikace testů, pokud jste tak již neučinili.
+Komunikace se službou Azure AD B2C probíhá prostřednictvím aplikace, kterou vytvoříte ve vašem tenantovi. V této části jsou uvedeny volitelné kroky, které můžete provést, chcete-li vytvořit testovací aplikaci, pokud jste tak již neučinili.
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-2. Ujistěte se, že používáte adresáře, který obsahuje vašeho tenanta Azure AD B2C. Vyberte **filtr adresářů a předplatných** v horní nabídce a vyberte adresář, který obsahuje váš tenant.
-3. Zvolte **všechny služby** v horním levém horním rohu webu Azure portal a poté vyhledejte a vyberte **Azure AD B2C**.
-4. Vyberte **aplikací**a pak vyberte **přidat**.
+2. Ujistěte se, že používáte adresář, který obsahuje vašeho tenanta Azure AD B2C. V horní nabídce vyberte **adresář a filtr** předplatného a zvolte adresář, který obsahuje vašeho tenanta.
+3. V levém horním rohu Azure Portal vyberte **všechny služby** a pak vyhledejte a vyberte **Azure AD B2C**.
+4. Vyberte **aplikace**a pak vyberte **Přidat**.
 5. Zadejte název aplikace, například *testapp1*.
-6. Pro **webová aplikace / webové rozhraní API**vyberte `Yes`a pak zadejte `https://jwt.ms` pro **adresy URL odpovědi**.
+6. Pro **webovou aplikaci nebo webové rozhraní API**vyberte `Yes`a zadejte `https://jwt.ms` **adresu URL odpovědi**.
 7. Klikněte na možnost **Vytvořit**.
 
-## <a name="update-and-test-the-relying-party-file"></a>Aktualizace a předávající strany soubor testu
+## <a name="update-and-test-the-relying-party-file"></a>Aktualizace a testování souboru předávající strany
 
-Aktualizujte předávající stranu soubor, který iniciuje cesty uživatele, který jste vytvořili.
+Aktualizujte soubor předávající strany (RP), který iniciuje cestu uživatele, kterou jste vytvořili.
 
-1. Vytvořte kopii *SignUpOrSignIn.xml* ve svém pracovním adresáři a přejmenujte jej. Například přejmenujte ho na *SignUpSignInTwitter.xml*.
-2. Otevřete nový soubor a aktualizujte hodnotu **PolicyId** atributu **TrustFrameworkPolicy** s jedinečnou hodnotu. Například, `SignUpSignInTwitter`.
-3. Aktualizujte hodnotu **PublicPolicyUri** s identifikátorem URI pro zásady. Například`http://contoso.com/B2C_1A_signup_signin_twitter`
-4. Aktualizujte hodnotu **ReferenceId** atribut **DefaultUserJourney** tak, aby odpovídaly ID nové cesty uživatele, který jste vytvořili (SignUpSignTwitter).
-5. Uložte provedené změny, nahrajte soubor a pak v seznamu vyberte novou zásadu.
-6. Ujistěte se, že je vybraná aplikaci Azure AD B2C, kterou jste vytvořili v **vyberte aplikaci** pole a pak ho otestujte kliknutím **spustit nyní**.
+1. Vytvořte kopii *SignUpOrSignIn. XML* v pracovním adresáři a přejmenujte ji. Přejmenujte ho například na *SignUpSignInTwitter. XML*.
+2. Otevřete nový soubor a aktualizujte hodnotu atributu **PolicyId** pro **TrustFrameworkPolicy** s jedinečnou hodnotou. Například, `SignUpSignInTwitter`.
+3. Aktualizujte hodnotu **PUBLICPOLICYURI** identifikátorem URI pro zásadu. Například`http://contoso.com/B2C_1A_signup_signin_twitter`
+4. Aktualizujte hodnotu atributu **ReferenceId** v **DefaultUserJourney** tak, aby odpovídala ID nové cesty uživatele, kterou jste vytvořili (SignUpSignTwitter).
+5. Uložte změny, nahrajte soubor a pak v seznamu vyberte novou zásadu.
+6. Ujistěte se, že je vybrána možnost Azure AD B2C aplikace, kterou jste vytvořili v poli **Vybrat aplikaci** , a poté ji otestujte kliknutím na tlačítko **Spustit nyní**.

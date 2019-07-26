@@ -1,57 +1,59 @@
 ---
 title: Instalace Azure IoT Edge v Linuxu | Dokumentace Microsoftu
-description: Instalační pokyny pro Azure IoT Edge v Linuxu AMD64 zařízení se systémem Ubuntu
+description: Pokyny k instalaci Azure IoT Edge na zařízeních se systémem Linux se systémem Ubuntu nebo Raspbian
 author: kgremban
 manager: philmea
 ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
 ms.topic: conceptual
-ms.date: 07/10/2019
+ms.date: 07/22/2019
 ms.author: kgremban
 ms.custom: seodec18
-ms.openlocfilehash: 822efe2534d49c0995a672232107cc322e547989
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: bb23ee1e51be178f93e05b728f7b8c2e9bb18e0d
+ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68227514"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68414491"
 ---
-# <a name="install-the-azure-iot-edge-runtime-on-linux-x64"></a>Instalace modulu runtime Azure IoT Edge v Linuxu (x64)
+# <a name="install-the-azure-iot-edge-runtime-on-debian-based-linux-systems"></a>Instalace modulu runtime Azure IoT Edge v systémech Linux založených na Debian
 
-Modul runtime Azure IoT Edge je co se změní na zařízení do zařízení IoT Edge. Modul runtime můžete nasadit na zařízení jako Raspberry Pi malé nebo velké průmyslové serveru. Jakmile je zařízení nakonfigurovaná s modulem runtime IoT Edge, můžete začít nasazovat obchodní logiky k němu z cloudu.
+Modul runtime Azure IoT Edge je co se změní na zařízení do zařízení IoT Edge. Modul runtime můžete nasadit na zařízení jako Raspberry Pi malé nebo velké průmyslové serveru. Jakmile je zařízení nakonfigurovaná s modulem runtime IoT Edge, můžete začít nasazovat obchodní logiky k němu z cloudu. Další informace najdete v tématu [pochopení Azure IoT Edge runtime a jeho architektury](iot-edge-runtime.md).
 
-Další informace najdete v tématu [pochopení Azure IoT Edge runtime a jeho architektury](iot-edge-runtime.md).
+V tomto článku jsou uvedené kroky pro instalaci modulu runtime Azure IoT Edge na zařízení s platformou x64, ARM32 nebo ARM64 Linux. Instalační balíčky jsou k dispozici pro Ubuntu Server 16,04, Ubuntu Server 18,04 a Raspbian Stretch. Seznam podporovaných operačních systémů a architektur pro Linux najdete v tématu [Azure IoT Edge podporované systémy](support.md#operating-systems) .
 
-V tomto článku jsou uvedené kroky pro instalaci modulu runtime Azure IoT Edge na Ubuntu Linux x64 (Intel/AMD) IoT Edge zařízení. Seznam podporovaných operačních systémů AMD64 najdete v tématu [Azure IoT Edge podporované systémy](support.md#operating-systems) .
+>[!NOTE]
+>Podpora pro zařízení ARM64 je ve [verzi Public Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 > [!NOTE]
 > Balíčky v úložiště softwaru Linux jsou souladu s licenčními podmínkami v jednotlivých balíčků (/ usr/sdílet/doc/*název balíčku*). Přečtěte si licenční podmínky před použitím balíčku. Instalace a použití balíčku se považuje za svůj souhlas s těmito podmínkami. Pokud s licenčními podmínkami nesouhlasíte, nepoužívejte balíček.
 
-## <a name="install-the-latest-version"></a>Nainstalovat nejnovější verzi
+## <a name="install-the-latest-runtime-version"></a>Nainstalovat nejnovější verzi modulu runtime
 
-K instalaci nejnovější verze Azure IoT Edge služby do zařízení použijte následující části. 
+Pomocí následujících částí můžete nainstalovat nejnovější verzi Azure IoT Edge runtime do svého zařízení. 
 
 ### <a name="register-microsoft-key-and-software-repository-feed"></a>Zaregistrujte informační kanál úložiště Microsoft klíč a softwaru
 
 Připravte zařízení na instalaci modulu runtime IoT Edge.
 
+Nainstalujte konfiguraci úložiště. Vyberte příkaz **16,04** nebo **18,04** , který odpovídá operačnímu systému zařízení:
 
-Nainstalujte konfiguraci úložiště. Vyberte buď fragment kódu **16,04** nebo **18,04** , který je vhodný pro vaši verzi Ubuntu:
-
-> [!NOTE]
-> Ujistěte se, že jste vybrali fragment kódu ze správného pole kódu pro vaši verzi Ubuntu.
-
-* Pro **Ubuntu 16,04**:
+* **Ubuntu Server 16,04**:
    ```bash
-   curl https://packages.microsoft.com/config/ubuntu/16.04/prod.list > ./microsoft-prod.list
+   curl https://packages.microsoft.com/config/ubuntu/16.04/multiarch/prod.list > ./microsoft-prod.list
    ```
 
-* Pro **Ubuntu 18,04**:
+* **Ubuntu Server 18,04**:
    ```bash
-   curl https://packages.microsoft.com/config/ubuntu/18.04/prod.list > ./microsoft-prod.list
+   curl https://packages.microsoft.com/config/ubuntu/18.04/multiarch/prod.list > ./microsoft-prod.list
    ```
-   
+
+* **Raspbian Stretch**:
+   ```bash
+   curl https://packages.microsoft.com/config/debian/stretch/multiarch/prod.list > ./microsoft-prod.list
+   ```
+
 Zkopírujte vygenerovaný seznam.
 
    ```bash
@@ -87,17 +89,7 @@ Nainstalujte Moby rozhraní příkazového řádku (CLI). Rozhraní příkazové
    sudo apt-get install moby-cli
    ```
 
-#### <a name="verify-your-linux-kernel-for-moby-compatibility"></a>Ověření kompatibility se systémem Linux v jádře Moby
-
-Řada integrovaných výrobců zařízení dodává obrázky zařízení, které obsahují vlastní jádra systému Linux, ve kterých mohou chybět funkce vyžadované pro kompatibilitu s modulem runtime kontejneru. Pokud narazíte na problémy při instalaci doporučeného modulu runtime [Moby](https://github.com/moby/moby) Container, možná budete moci vyřešit potíže s konfigurací jádra pro Linux pomocí skriptu [check-config](https://raw.githubusercontent.com/moby/moby/master/contrib/check-config.sh) , který je součástí oficiálního [úložiště GitHub Moby](https://github.com/moby/moby) . na zařízení spustíte následující příkazy.
-
-   ```bash
-   curl -sSL https://raw.githubusercontent.com/moby/moby/master/contrib/check-config.sh -o check-config.sh
-   chmod +x check-config.sh
-   ./check-config.sh
-   ```
-
-Tím se poskytne podrobný výstup, který obsahuje stav funkcí jádra používaných modulem runtime Moby. Budete chtít zajistit, aby všechny položky v `Generally Necessary` a `Network Drivers` byly povoleny, aby bylo zajištěno, že je jádro plně kompatibilní s modulem runtime Moby.  Pokud jste identifikovali chybějící funkce, můžete je povolit tak, že znovu sestavíte jádro ze zdroje a vyberete přidružené moduly pro zahrnutí do příslušného jádra. config.  Podobně pokud používáte generátor konfigurace jádra, jako je defconfig nebo menuconfig, bude nutné vyhledat a povolit příslušné funkce a odpovídajícím způsobem sestavit jádro.  Po nasazení nově upraveného jádra spusťte skript check-config znovu, abyste ověřili, že vaše identifikované funkce byly úspěšně povoleny.
+Pokud narazíte na chyby při instalaci modulu runtime kontejneru Moby, postupujte podle pokynů pro [ověření jádra systému Linux pro kompatibilitu s Moby](#verify-your-linux-kernel-for-moby-compatibility), jak je uvedeno dále v tomto článku. 
 
 ### <a name="install-the-azure-iot-edge-security-daemon"></a>Instalace démona zabezpečení Azure IoT Edge
 
@@ -117,17 +109,17 @@ Instalace démona zabezpečení. Při instalaci balíčku `/etc/iotedge/`.
    sudo apt-get install iotedge
    ```
 
-Po úspěšné instalaci IoT Edge zobrazí se ve výstupu výzva k aktualizaci konfiguračního souboru. Postupujte podle kroků v části [konfigurace Azure IoT Edge démona zabezpečení](#configure-the-azure-iot-edge-security-daemon) a dokončete zřízení zařízení. 
+Po úspěšné instalaci IoT Edge zobrazí se ve výstupu výzva k aktualizaci konfiguračního souboru. Postupujte podle kroků v části [konfigurace Azure IoT Edge démona zabezpečení](#configure-the-security-daemon) a dokončete zřízení zařízení. 
 
-## <a name="install-a-specific-version"></a>Instalace konkrétní verze
+## <a name="install-a-specific-runtime-version"></a>Instalace konkrétní verze modulu runtime
 
-Pokud chcete nainstalovat určitou verzi Azure IoT Edge, můžete cílit na soubory součásti přímo z úložiště GitHub IoT Edge. Pomocí následujících kroků načtete všechny součásti IoT Edge do svého zařízení: modul Moby a rozhraní příkazového řádku, libiothsm a nakonec proces démona zabezpečení IoT Edge.
+Pokud chcete nainstalovat určitou verzi Azure IoT Edge runtime, můžete cílit na soubory součásti přímo z úložiště GitHub IoT Edge. Pomocí následujících kroků načtete všechny součásti IoT Edge do svého zařízení: modul Moby a rozhraní příkazového řádku, libiothsm a nakonec proces démona zabezpečení IoT Edge.
 
 1. Přejděte do vydaných verzí [Azure IoT Edge](https://github.com/Azure/azure-iotedge/releases)a vyhledejte verzi pro vydání, na kterou chcete cílit. 
 
 2. Rozbalte část **assets (prostředky** ) pro danou verzi.
 
-3. V žádné dané vydané verzi může nebo nemusí být možné aktualizovat modul Moby. Pokud se zobrazí soubory, které začínají na **Moby** a **Moby-CLI**, aktualizujte tyto součásti pomocí následujících příkazů. Pokud nevidíte žádné soubory Moby a ještě nemáte na svém zařízení nainstalované Moby, vraťte se k předchozímu assetu vydané verze, dokud je nenajdete. 
+3. V žádné dané vydané verzi může nebo nemusí být možné aktualizovat modul Moby. Pokud se zobrazí soubory, které začínají na **Moby** a **Moby-CLI**, aktualizujte tyto součásti pomocí následujících příkazů. Pokud nevidíte žádné soubory Moby, přečtěte si předchozí assety vydaných verzí, dokud nenajdete nejnovější verzi. 
 
    1. Vyhledejte soubor **Moby** , který odpovídá architektuře zařízení IoT Edge. Klikněte pravým tlačítkem na odkaz na soubor a zkopírujte adresu odkazu.
 
@@ -165,7 +157,7 @@ Pokud chcete nainstalovat určitou verzi Azure IoT Edge, můžete cílit na soub
 
 Po úspěšné instalaci IoT Edge zobrazí se ve výstupu výzva k aktualizaci konfiguračního souboru. Pokud chcete dokončit zřizování zařízení, postupujte podle kroků v následující části. 
 
-## <a name="configure-the-azure-iot-edge-security-daemon"></a>Konfigurace démona zabezpečení Azure IoT Edge
+## <a name="configure-the-security-daemon"></a>Konfigurace démona zabezpečení
 
 Konfigurace modulu runtime IoT Edge k propojení vaší fyzické zařízení s identitou zařízení, která existuje v Azure IoT hub.
 
@@ -271,13 +263,26 @@ A seznam s moduly:
 sudo iotedge list
 ```
 
-## <a name="tips-and-suggestions"></a>Tipy a návrhy
+## <a name="tips-and-troubleshooting"></a>Tipy a řešení potíží
 
 Ke spouštění příkazů `iotedge` potřebujete zvýšená oprávnění. Po instalaci modulu runtime, odhlaste se z vašeho počítače a znovu se přihlaste automaticky aktualizovat vaše oprávnění. Dokud to neuděláte, použijte **sudo** před všechny `iotedge` příkazy.
 
 Na zařízeních prostředků omezené, důrazně doporučujeme, abyste nastavili *OptimizeForPerformance* proměnnou prostředí, aby *false* podle pokynů v [Průvodce odstraňováním potíží ](troubleshoot.md).
 
 Pokud vaše síť, která má proxy server, postupujte podle kroků v [nakonfigurujte zařízení IoT Edge pro komunikaci přes proxy server](how-to-configure-proxy-support.md).
+
+### <a name="verify-your-linux-kernel-for-moby-compatibility"></a>Ověření kompatibility se systémem Linux v jádře Moby
+
+Řada integrovaných výrobců zařízení dodává obrázky zařízení, které obsahují vlastní jádra systému Linux bez funkcí požadovaných pro kompatibilitu s modulem runtime kontejneru. Pokud narazíte na problémy při instalaci doporučeného modulu runtime Moby Container, možná budete moci vyřešit potíže s konfigurací jádra pro Linux pomocí skriptu [check-config](https://raw.githubusercontent.com/moby/moby/master/contrib/check-config.sh) z oficiálního [úložiště GitHub Moby](https://github.com/moby/moby). Spuštěním následujících příkazů na zařízení ověřte konfiguraci jádra:
+
+   ```bash
+   curl -sSL https://raw.githubusercontent.com/moby/moby/master/contrib/check-config.sh -o check-config.sh
+   chmod +x check-config.sh
+   ./check-config.sh
+   ```
+
+Tím se poskytne podrobný výstup, který obsahuje stav funkcí jádra, které používá modul runtime Moby. Budete chtít zajistit, aby všechny položky v `Generally Necessary` a `Network Drivers` byly povoleny, aby bylo zajištěno, že je jádro plně kompatibilní s modulem runtime Moby.  Pokud jste identifikovali chybějící funkce, povolte je opětovným sestavením jádra ze zdroje a výběrem přidružených modulů pro zahrnutí do příslušného souboru kernel. config.  Podobně pokud používáte generátor konfigurace jádra, jako je defconfig nebo menuconfig, najděte a povolte příslušné funkce a odpovídajícím způsobem Sestavte jádro.  Po nasazení nově upraveného jádra spusťte skript check-config znovu, abyste ověřili, že všechny požadované funkce byly úspěšně povoleny.
+
 
 ## <a name="uninstall-iot-edge"></a>Odinstalace IoT Edge
 
@@ -308,7 +313,7 @@ sudo apt-get remove --purge moby-cli
 sudo apt-get remove --purge moby-engine
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Teď, když máte zařízení IoT Edge zřízené s modulem runtime nainstalovaný, je možné [nasadit moduly IoT Edge](how-to-deploy-modules-portal.md).
 

@@ -1,29 +1,28 @@
 ---
 title: 'Azure Backup: Správa úloh zálohování pomocí REST API'
-description: Správa zálohování a obnovení úlohy Azure Backup pomocí rozhraní REST API
-services: backup
+description: Správa úloh zálohování a obnovení Azure Backup pomocí REST API
 author: pvrk
 manager: shivamg
-keywords: ROZHRANÍ REST API; Zálohování virtuálních počítačů Azure; Obnovení virtuálního počítače Azure;
+keywords: REST API; Zálohování virtuálních počítačů Azure; Obnovení virtuálního počítače Azure;
 ms.service: backup
 ms.topic: conceptual
 ms.date: 08/03/2018
 ms.author: pullabhk
 ms.assetid: b234533e-ac51-4482-9452-d97444f98b38
-ms.openlocfilehash: eb8b7dc77d180eb56c2585e93e60a36742f6c84c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d497fc714e0ad5f61873d4c1f95ab35837532646
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60646618"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68466762"
 ---
-# <a name="track-backup-and-restore-jobs-using-rest-api"></a>Sledování úloh zálohování a obnovení pomocí rozhraní REST API
+# <a name="track-backup-and-restore-jobs-using-rest-api"></a>Sledování úloh zálohování a obnovení pomocí REST API
 
-Služba Azure Backup spustí úlohy, které je spustit na pozadí v různých scénářích, jako je aktivace zálohování, obnovení operace, zakázáním zálohování. Tyto úlohy můžete sledovat pomocí jejich identifikátorů.
+Služba Azure Backup Service spouští úlohy, které běží na pozadí v různých scénářích, jako je například aktivace zálohování, obnovení operací, zakázání zálohování. Tyto úlohy je možné sledovat pomocí jejich ID.
 
-## <a name="fetch-job-information-from-operations"></a>Načíst informace o úlohách z operací
+## <a name="fetch-job-information-from-operations"></a>Načíst informace o úloze z operací
 
-Určité operace, například spouští se záloha vždy vrátí ID úlohy. Pro např: Poslední reakce [spustit operaci zálohování rozhraní REST API](backup-azure-arm-userestapi-backupazurevms.md#example-responses-3) vypadá takto:
+Operace, jako je například aktivace zálohování, vždy vrátí jobID. Pro například: Konečná odpověď [REST API operace zálohování aktivační události](backup-azure-arm-userestapi-backupazurevms.md#example-responses-3) je následující:
 
 ```http
 {
@@ -39,7 +38,7 @@ Určité operace, například spouští se záloha vždy vrátí ID úlohy. Pro 
 }
 ```
 
-Úloha zálohování virtuálního počítače Azure je identifikován pole "ID úlohy" a lze sledovat, jak je uvedeno [tady](https://docs.microsoft.com/rest/api/backup/jobdetails/) pomocí jednoduchého *získat* požadavku.
+Úloha zálohování virtuálních počítačů Azure je identifikovaná polem jobId a je možné ji sledovat tak, jak je uvedeno [tady](https://docs.microsoft.com/rest/api/backup/jobdetails/) , pomocí jednoduché žádosti *Get* .
 
 ## <a name="tracking-the-job"></a>Sledování úlohy
 
@@ -47,7 +46,7 @@ Určité operace, například spouští se záloha vždy vrátí ID úlohy. Pro 
 GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupJobs/{jobName}?api-version=2017-07-01
 ```
 
-`{jobName}` "JobId" uvedená výše. Odpověď se vždycky 200 OK pole "stavu" ukazuje aktuální stav úlohy. Až bude "Dokončeno" nebo "CompletedWithWarnings", v části "extendedInfo" zobrazí další podrobnosti o úloze.
+`{jobName}` Je výše uvedená zpráva "jobId". Odpověď je vždy 200 OK s polem "status", které indikuje aktuální stav úlohy. Až bude "dokončeno" nebo "CompletedWithWarnings", sekce "extendedInfo" odhalí další podrobnosti o úloze.
 
 ### <a name="response"></a>Odpověď
 
@@ -57,7 +56,7 @@ GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 
 #### <a name="example-response"></a>Příklad odpovědi
 
-Jednou *získat* identifikátoru URI je odeslán, se vrátí odpověď 200 (OK).
+Po odeslání identifikátoru URI *Get* se vrátí odpověď 200 (ok).
 
 ```http
 HTTP/1.1 200 OK

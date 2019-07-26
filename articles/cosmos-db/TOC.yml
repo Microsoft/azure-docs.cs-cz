@@ -272,6 +272,8 @@
         - name: Řízení přístupu na základě role
           displayName: rbac
           href: role-based-access-control.md
+        - href: cosmos-db-advanced-threat-protection.md
+          name: Rozšířená ochrana před internetovými útoky
         - name: Atributy zabezpečení
           href: cosmos-db-security-attributes.md
     - name: Připravenost pro podnikové zpracování

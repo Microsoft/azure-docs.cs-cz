@@ -1,6 +1,6 @@
 ---
-title: Použití sady SDK pro WebJobs – Azure
-description: Další informace o tom, jak psát kód pro sadu WebJobs SDK. Vytvoření založený na událostech pozadí úlohy zpracování, které přístup k datům v Azure služby a služby třetích stran.
+title: Jak používat WebJobs SDK – Azure
+description: Přečtěte si další informace o tom, jak napsat kód pro sadu WebJobs SDK. Vytvářejte úlohy zpracování na pozadí založené na událostech, které přistupují k datům ze služeb Azure a služeb třetích stran.
 services: app-service\web, storage
 documentationcenter: .net
 author: ggailey777
@@ -13,46 +13,46 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: 38d8bdfcba48d2080b434ebec192b41f3663ae6a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3ba8a8e5922c012b93ab19a5859aab5c31d35b2b
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60831788"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68424170"
 ---
-# <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Použití sady Azure WebJobs SDK pro zpracování na pozadí založený na událostech
+# <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Jak používat sadu SDK Azure WebJobs pro zpracování na pozadí založené na událostech
 
-Tento článek obsahuje pokyny o tom, jak pracovat se sadou Azure WebJobs SDK. Pomocí WebJobs rovnou začít, najdete v článku [Začínáme se sadou Azure WebJobs SDK pro zpracování na pozadí založený na událostech](webjobs-sdk-get-started.md). 
+Tento článek poskytuje pokyny pro práci s Azure WebJobs SDK. Pokud chcete začít s WebJobs hned hned, přečtěte si téma Začínáme [s Azure WEBJOBS SDK pro zpracování na pozadí](webjobs-sdk-get-started.md)založené na událostech. 
 
 ## <a name="webjobs-sdk-versions"></a>Verze sady WebJobs SDK
 
-Toto jsou hlavní rozdíly mezi verze 3. *x* a verze 2. *x* sady WebJobs SDK:
+Toto jsou klíčové rozdíly mezi verzí 3. *x* a verze 2. *x* sady WebJobs SDK:
 
 * Verze 3. *x* přidává podporu pro .NET Core.
-* Ve verzi 3. *x*, je potřeba explicitně nainstalovat rozšíření vazby úložiště vyžadované sada WebJobs SDK. Ve verzi 2. *x*, vazby úložiště byly zahrnuty v sadě SDK.
-* Nástroje pro .NET Core sady Visual Studio (3. *x*) projektů se liší od nástroje pro rozhraní .NET Framework (2. *x*) projekty. Další informace najdete v tématu [vývoj a nasazení WebJobs pomocí sady Visual Studio – služby Azure App Service](webjobs-dotnet-deploy-vs.md).
+* Ve verzi 3. *x*, musíte explicitně nainstalovat rozšíření vazby úložiště, které vyžaduje Sada WebJobs SDK. Ve verzi 2. *x*byly vazby úložiště součástí sady SDK.
+* Nástroje sady Visual Studio pro .NET Core (3. *x*) projekty se liší od nástrojů pro .NET Framework (2. *x*) projektů. Další informace najdete v tématu [vývoj a nasazení WebJobs pomocí sady Visual Studio – Azure App Service](webjobs-dotnet-deploy-vs.md).
 
 Pokud je to možné, jsou k dispozici příklady pro obě verze 3. *x* a verze 2. *x*.
 
 > [!NOTE]
-> [Služba Azure Functions](../azure-functions/functions-overview.md) je postavená na sadě WebJobs SDK, a tento článek obsahuje odkazy na dokumentaci ke službě Azure Functions pro některá témata. Všimněte si těchto rozdílů mezi službami Functions a WebJobs SDK:
-> * Azure Functions verze 2. *x* odpovídá sada WebJobs SDK verze 3. *x*a Azure Functions 1. *x* odpovídá WebJobs SDK 2. *x*. Úložišť zdrojového kódu pomocí sady SDK pro WebJobs číslování.
-> * Ukázkový kód pro službu Azure Functions C# knihovny tříd je stejně jako kód sada WebJobs SDK, s tím rozdílem, není nutné `FunctionName` atribut v projektu sady WebJobs SDK.
-> * Některé typy vazeb jsou podporovány pouze v funkce, jako jsou HTTP (Webhooky) a služby Event Grid (která je založená na protokolu HTTP).
+> [Azure Functions](../azure-functions/functions-overview.md) je postavená na sadě WebJobs SDK a tento článek obsahuje odkazy na dokumentaci k Azure Functions pro některá témata. Všimněte si těchto rozdílů mezi funkcemi a sadou WebJobs SDK:
+> * Azure Functions verze 2 *x* odpovídá sadě WebJobs SDK verze 3. *x*a Azure Functions 1. *x* odpovídá sadě WebJobs SDK 2. *x*. Úložiště zdrojového kódu používají číslování sady SDK pro WebJobs.
+> * Vzorový kód pro Azure Functions C# knihovny tříd je jako kód sady SDK WebJobs, s tím rozdílem `FunctionName` , že nepotřebujete atribut v projektu sady WebJobs SDK.
+> * Některé typy vazeb se podporují jenom ve funkcích, jako je HTTP (Webhooky) a Event Grid (založené na HTTP).
 >
-> Další informace najdete v tématu [porovnání sadou WebJobs SDK a Azure Functions](../azure-functions/functions-compare-logic-apps-ms-flow-webjobs.md#compare-functions-and-webjobs).
+> Další informace najdete v tématu [porovnání sady WebJobs SDK a Azure Functions](../azure-functions/functions-compare-logic-apps-ms-flow-webjobs.md#compare-functions-and-webjobs).
 
-## <a name="webjobs-host"></a>WebJobs hostitele
+## <a name="webjobs-host"></a>Hostitel WebJobs
 
-Hostitel je kontejner modulu runtime pro funkce.  Naslouchá aktivačních událostí a volání funkce. Ve verzi 3. *x*, hostitel je implementace `IHost`. Ve verzi 2. *x*, je použít `JobHost` objektu. Vytvoření instance hostitele ve vašem kódu a psaní kódu můžete přizpůsobit její chování.
+Hostitel je kontejner modulu runtime pro funkce.  Naslouchá triggerům a volání funkcí. Ve verzi 3. *x*, hostitel je implementace `IHost`. Ve verzi 2. *x*, můžete použít `JobHost` objekt. Vytvoříte instanci hostitele v kódu a napíšete kód pro přizpůsobení jeho chování.
 
-Toto je klíčovým rozdílem mezi přímo pomocí sady WebJobs SDK a používat jej nepřímo prostřednictvím Azure Functions. Ve službě Azure Functions služba ovládací prvky hostitele a hostitele nelze přizpůsobit napsáním kódu. Azure Functions umožňuje přizpůsobit chování hostitele pomocí nastavení v souboru host.json. Tato nastavení jsou řetězce, nikoli kódu, a to omezuje typy vlastního nastavení, které vám pomůžou.
+Jedná se o klíčový rozdíl mezi použitím sady WebJobs SDK přímo a jejím přímým použitím prostřednictvím Azure Functions. V Azure Functions služba řídí hostitele a nemůžete přizpůsobit hostitele pomocí psaní kódu. Azure Functions umožňuje přizpůsobit chování hostitele prostřednictvím nastavení v souboru Host. JSON. Tato nastavení jsou řetězce, nikoli kód a tato omezení omezují typy úprav, které lze provést.
 
-### <a name="host-connection-strings"></a>Hostitel připojovacích řetězců
+### <a name="host-connection-strings"></a>Připojovací řetězce hostitele
 
-Sada WebJobs SDK hledá služby Azure Storage a Azure Service Bus připojovací řetězce v souboru local.settings.json při spuštění místně nebo v prostředí webové úlohy při spuštění v Azure. Ve výchozím nastavení, řetězec připojení úložiště nastavení s názvem `AzureWebJobsStorage` je povinný.  
+Sada WebJobs SDK hledá Azure Storage a Azure Service Bus připojovací řetězce v souboru Local. Settings. JSON při spuštění místně nebo v prostředí úlohy WebJob při spuštění v Azure. Ve výchozím nastavení se vyžaduje nastavení připojovacího řetězce `AzureWebJobsStorage` úložiště s názvem.  
 
-Verze 2. *x* sady SDK můžete použít vlastní názvy pro tyto řetězce připojení nebo je uložíte jinam. Můžete nastavit názvy v kódu pomocí [ `JobHostConfiguration` ], jak je znázorněno zde:
+Verze 2. *x* sady SDK umožňuje používat pro tyto připojovací řetězce vlastní názvy nebo je ukládat jinde. Můžete nastavit názvy v kódu pomocí [`JobHostConfiguration`], jak je znázorněno zde:
 
 ```cs
 static void Main(string[] args)
@@ -72,23 +72,23 @@ static void Main(string[] args)
 }
 ```
 
-Protože verze 3. *x* používá výchozí konfiguraci .NET Core API, neexistuje žádné rozhraní API, chcete-li změnit připojovací řetězec názvy.
+Protože verze 3. *x* používá výchozí rozhraní API pro konfiguraci .NET Core, neexistuje žádné rozhraní API pro změnu názvů připojovacích řetězců.
 
-### <a name="host-development-settings"></a>Hostitel vývojové nastavení
+### <a name="host-development-settings"></a>Nastavení vývoje hostitele
 
-Hostitele můžete spustit v režimu pro vývoj pro efektivnější místní vývoj. Tady jsou některé z nastavení, která se mění při spuštění v režimu pro vývoj:
+Můžete spustit hostitele v režimu vývoje a zefektivnit tak místní vývoj. Tady jsou některá nastavení, která se změnila při spuštění v režimu pro vývoj:
 
-| Vlastnost | Vývojové nastavení |
+| Vlastnost | Nastavení vývoje |
 | ------------- | ------------- |
-| `Tracing.ConsoleLevel` | `TraceLevel.Verbose` pro maximalizaci výstupu protokolu. |
-| `Queues.MaxPollingInterval`  | Nízká hodnota zajistit fronty metody se aktivují okamžitě.  |
-| `Singleton.ListenerLockPeriod` | 15 sekund pro rychlý iterativní vývoj. |
+| `Tracing.ConsoleLevel` | `TraceLevel.Verbose`pro maximalizaci výstupu protokolu. |
+| `Queues.MaxPollingInterval`  | Nízká hodnota pro zajištění, že se metody fronty spouštějí okamžitě.  |
+| `Singleton.ListenerLockPeriod` | 15 sekund na pomoc při rychlém iterativním vývoji. |
 
-Postup pro povolení režimu pro vývoj závisí na verzi sady SDK. 
+Proces povolení režimu vývoje závisí na verzi sady SDK. 
 
 #### <a name="version-3x"></a>Verze 3. *x*
 
-Verze 3. *x* používá standardní rozhraní API ASP.NET Core. Volání [ `UseEnvironment` ](/dotnet/api/microsoft.extensions.hosting.hostinghostbuilderextensions.useenvironment) metodu [ `HostBuilder` ](/dotnet/api/microsoft.extensions.hosting.hostbuilder) instance. Předat řetězec s názvem `development`, jako v tomto příkladu:
+Verze 3. *x* používá standardní rozhraní ASP.NET Core API. [`UseEnvironment`](/dotnet/api/microsoft.extensions.hosting.hostinghostbuilderextensions.useenvironment) Zavolejte [metodu`HostBuilder`](/dotnet/api/microsoft.extensions.hosting.hostbuilder) na instanci. Předejte řetězec s `development`názvem, jako v tomto příkladu:
 
 ```cs
 static void Main()
@@ -109,7 +109,7 @@ static void Main()
 
 #### <a name="version-2x"></a>Verze 2. *x*
 
-`JobHostConfiguration` Třída nemá `UseDevelopmentSettings` metodu, která umožňuje vývoj režimu.  Následující příklad ukazuje způsob použití vývojového nastavení. Chcete-li `config.IsDevelopment` vrátit `true` při spuštění místně, nastavte proměnnou prostředí místní `AzureWebJobsEnv` s hodnotou `Development`.
+`JobHostConfiguration` Třída`UseDevelopmentSettings` má metodu, která umožňuje režim vývoje.  Následující příklad ukazuje, jak použít nastavení vývoje. Chcete- `config.IsDevelopment` li `true` provést návrat při místním spuštění, nastavte místní proměnnou prostředí s `AzureWebJobsEnv` názvem s hodnotou `Development`.
 
 ```cs
 static void Main()
@@ -126,19 +126,19 @@ static void Main()
 }
 ```
 
-### <a name="jobhost-servicepointmanager-settings"></a>Správa souběžných připojení (verze 2. *x*)
+### <a name="jobhost-servicepointmanager-settings"></a>Správa souběžných připojení (verze 2 *) ×*)
 
-Ve verzi 3. *x*, limitu připojení výchozí hodnota je nekonečná připojení. Pokud z nějakého důvodu potřebujete tento limit změnit, můžete použít [ `MaxConnectionsPerServer` ](/dotnet/api/system.net.http.winhttphandler.maxconnectionsperserver) vlastnost [ `WinHttpHandler` ](/dotnet/api/system.net.http.winhttphandler) třídy.
+Ve verzi 3. *x*se limit připojení nastaví jako nekonečná připojení. [`MaxConnectionsPerServer`](/dotnet/api/system.net.http.winhttphandler.maxconnectionsperserver) [Pokud`WinHttpHandler`](/dotnet/api/system.net.http.winhttphandler) z nějakého důvodu potřebujete tento limit změnit, můžete použít vlastnost třídy.
 
-Ve verzi 2. *x*, řídí počet souběžných připojení k hostiteli s použitím [ServicePointManager.DefaultConnectionLimit](/dotnet/api/system.net.servicepointmanager.defaultconnectionlimit#System_Net_ServicePointManager_DefaultConnectionLimit) rozhraní API. Ve verzi 2. *x*, měli byste zvýšit tuto hodnotu z výchozí hodnoty 2 před spuštěním hostitele WebJobs.
+Ve verzi 2. *x*můžete řídit počet souběžných připojení k hostiteli pomocí rozhraní API [Třída ServicePointManager. DefaultConnectionLimit](/dotnet/api/system.net.servicepointmanager.defaultconnectionlimit#System_Net_ServicePointManager_DefaultConnectionLimit) . V 2. *x*, před spuštěním hostitele WebJobs byste tuto hodnotu měli zvýšit od výchozí hodnoty 2.
 
-Všechny odchozí požadavky HTTP, které jste provedli z funkce s použitím `HttpClient` procházet skrz `ServicePointManager`. Po dosažení hodnotu nastavenou v `DefaultConnectionLimit`, `ServicePointManager` spustí zařazení do fronty žádostí před jejich odesláním. Předpokládejme, že vaše `DefaultConnectionLimit` je nastavena na 2 a váš kód je 1 000 požadavků HTTP. Zpočátku je povoleno pouze dvě požadavků prostřednictvím do operačního systému. Další 998 se zařadí do fronty. dokud je volného místa pro ně. To znamená, že vaše `HttpClient` může být vypršení časového limitu, protože zdá se, že jste provedli požadavek, ale žádost byla odeslána nikdy operačního systému na cílový server. Může se zobrazit chování, které vypadá, že nepodporuje dávat smysl: místní `HttpClient` trvá dokončení požadavku, 10 sekund, ale vaše služba vrací každého požadavku v 200 ms. 
+Všechny odchozí požadavky HTTP, které jste provedli z funkce `HttpClient` pomocí `ServicePointManager`toku. Po dosažení hodnoty nastavené v `DefaultConnectionLimit` `ServicePointManager` spustí aplikace před odesláním požadavky do fronty. Předpokládejme, že je nastavené na 2 a váš kód bude 1 000 požadavků HTTP. `DefaultConnectionLimit` Zpočátku jsou do operačního systému povoleny pouze dvě požadavky. Ostatní 998 jsou zařazeny do fronty, dokud pro ně neexistují místnosti. To znamená, `HttpClient` že váš časový limit vypršel, protože se zdá, že byl požadavek proveden, ale požadavek nebyl nikdy odeslán operačním systémem do cílového serveru. Takže se může zobrazit chování, které se jeví jako smysl: požadavek vaší `HttpClient` místní služby trvá 10 sekund, ale služba vrací každý požadavek v 200 ms. 
 
-Výchozí hodnota pro aplikace ASP.NET je `Int32.MaxValue`, a to je pravděpodobně fungovat i pro webové úlohy spuštěné v Basic nebo vyšší. plán služby App Service. WebJobs většinou potřebují nastavení AlwaysOn a, který je podporován pouze základní a vyšší plány služby App Service.
+Výchozí hodnota pro aplikace ASP.NET je, `Int32.MaxValue`což je nejspíš dobře fungovat pro webové úlohy spuštěné v plánu Basic nebo vyšší App Service. U webových úloh se obvykle vyžaduje nastavení Always On a podporuje se jenom plány Basic a vyšší App Service.
 
-Pokud vaše webová úloha běží v Free nebo sdílený plán služby App Service, vaše aplikace je omezen sandboxu služby App Service, která má v současné době [limitu připojení 300](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox#per-sandbox-per-appper-site-numerical-limits). Limit nevázaného připojení je v `ServicePointManager`, je pravděpodobnější, že prahová hodnota připojení izolovaného prostoru bude dostupný a webu se vypne. V takovém případě nastavení `DefaultConnectionLimit` na něco nižší, jako je 50 nebo 100, tomu zabránili a stále umožňují dostatečnou propustnost.
+Pokud je vaše webová úloha spuštěna v rámci bezplatného nebo sdíleného App Serviceho plánu, aplikace je omezená na App Service izolovaného prostoru (sandbox), která má v současné době [limit připojení 300](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox#per-sandbox-per-appper-site-numerical-limits). U nevázaného limitu připojení `ServicePointManager`v nástroji je pravděpodobnější, že dojde k dosažení prahové hodnoty připojení izolovaného prostoru a lokalita se vypne. V takovém případě je `DefaultConnectionLimit` možné, že nastavení na nižší hodnotu, například 50 nebo 100, může zabránit tomu, aby se to stalo a pořád umožňoval dostatek propustnosti.
 
-Nastavení musí být nakonfigurované dřív, než všechny požadavky HTTP. Z tohoto důvodu nesmí hostitele webových úloh upravit nastavení automaticky. Je možné požadavky HTTP, ke kterým dochází před spuštěním hostitele, které by mohly vést k neočekávanému chování. Nejlepším řešením je nastavit hodnotu okamžitě ve vaší `Main` metoda před inicializací `JobHost`, jak je znázorněno zde:
+Nastavení musí být nakonfigurováno před provedením jakýchkoli požadavků HTTP. Z tohoto důvodu by hostitel WebJobs neměl nastavení automaticky upravit. Může se jednat o požadavky HTTP, ke kterým dojde před spuštěním hostitele, což by mohlo vést k neočekávanému chování. Nejlepším řešením je nastavit hodnotu hned v `Main` metodě před inicializací `JobHost`, jak je znázorněno zde:
 
 ```csharp
 static void Main(string[] args)
@@ -153,11 +153,11 @@ static void Main(string[] args)
 
 ## <a name="triggers"></a>Aktivační procedury
 
-Funkce musí být veřejné metody a musí obsahovat jeden atribut aktivační události nebo [ `NoAutomaticTrigger` ](#manual-triggers) atribut.
+Funkce musí být veřejné metody a musí mít jeden atribut triggeru nebo [`NoAutomaticTrigger`](#manual-triggers) atribut.
 
-### <a name="automatic-triggers"></a>Automatických aktivačních procedur
+### <a name="automatic-triggers"></a>Automatické triggery
 
-Automatických aktivačních procedur volání funkce v reakci na událost. Podívejte se například funkce, která se aktivuje do úložiště Azure Queue storage přidá zpráva. Odpovědí ve čtení objektu blob z úložiště objektů Blob v Azure:
+Automatické triggery volají funkci v reakci na událost. Vezměte v úvahu tento příklad funkce, která se aktivuje pomocí zprávy přidané do Azure Queue Storage. To reaguje čtením objektu BLOB ze služby Azure Blob Storage:
 
 ```cs
 public static void Run(
@@ -169,12 +169,13 @@ public static void Run(
 }
 ```
 
-`QueueTrigger` Atribut oznamuje modul runtime pro volání funkce pokaždé, když se zobrazí zpráva fronty v `myqueue-items` fronty. `Blob` Atribut oznamuje modul runtime pro použití fronty zpráv ke čtení objektů blob v *ukázka workitems* kontejneru. Obsah zprávy fronty předaného do funkce `myQueueItem` parametr, je název objektu blob.
+Atribut říká modulu runtime, aby vyvolal funkci pokaždé, když se `myqueue-items` ve frontě zobrazí zpráva fronty. `QueueTrigger` Atribut oznamuje modulu runtime, aby používal zprávu queue ke čtení objektu BLOB v kontejneru *Sample-pracovní položky.* `Blob` Obsah zprávy fronty, předaný do funkce v `myQueueItem` parametru, je název objektu BLOB.
 
+[!INCLUDE [webjobs-always-on-note](../../includes/webjobs-always-on-note.md)]
 
-### <a name="manual-triggers"></a>Ruční aktivační události
+### <a name="manual-triggers"></a>Ruční triggery
 
-Chcete-li aktivovat funkce ručně, použijte `NoAutomaticTrigger` atributu, jak je znázorněno zde:
+Chcete-li funkci aktivovat ručně, použijte `NoAutomaticTrigger` atribut, jak je znázorněno zde:
 
 ```cs
 [NoAutomaticTrigger]
@@ -188,7 +189,7 @@ string value,
 }
 ```
 
-Proces pro ruční aktivací funkce závisí na verzi sady SDK.
+Proces ruční aktivace funkce závisí na verzi sady SDK.
 
 #### <a name="version-3x"></a>Verze 3. *x*
 
@@ -229,17 +230,17 @@ static void Main(string[] args)
 
 ## <a name="input-and-output-bindings"></a>Vstupní a výstupní vazby
 
-Vstupní vazby poskytují deklarativní způsob zpřístupnění dat z Azure nebo služby třetích stran do vašeho kódu. Výstupní vazby poskytují způsob, jak aktualizovat data. [Začínáme](webjobs-sdk-get-started.md) článek ukazuje příklad každého.
+Vstupní vazby poskytují deklarativní způsob, jak vytvářet data z Azure nebo služeb třetích stran, které jsou k dispozici pro váš kód. Výstupní vazby poskytují způsob, jak aktualizovat data. V článku [Začínáme](webjobs-sdk-get-started.md) se zobrazuje příklad každého z nich.
 
-Návratová hodnota metody můžete použít pro výstupní vazbu použitím atribut návratovou hodnotu metody. Podívejte se na příklad v [pomocí funkce Azure Functions vrátí hodnotu](../azure-functions/functions-bindings-return-value.md).
+Můžete použít návratovou hodnotu metody pro výstupní vazbu použitím atributu pro návratovou hodnotu metody. Podívejte se na příklad v tématu [použití návratové hodnoty funkce Azure Functions](../azure-functions/functions-bindings-return-value.md).
 
-## <a name="binding-types"></a>Vazby typů
+## <a name="binding-types"></a>Typy vazeb
 
-Proces pro instalaci a správu typů vazeb závisí na, jestli používáte verzi 3. *x* nebo verze 2. *x* sady SDK. Můžete najít balíček k instalaci pro typ konkrétní vazbu v části "Packages" Tento typ vazby Azure Functions [článku](#binding-reference-information). Výjimkou je aktivační událost soubory a vazbu (pro místního systému souborů), což není podporováno službou Azure Functions.
+Proces pro instalaci a správu typů vazeb závisí na tom, zda používáte verzi 3. *x* nebo verze 2. *x* sady SDK. Balíček, který chcete nainstalovat pro konkrétní typ vazby, najdete v části Packages (balíčky) tohoto [článku Azure Functions odkazu](#binding-reference-information)typu vazby. Výjimka je Trigger souborů a vazba (pro místní systém souborů), která není podporována Azure Functions.
 
 #### <a name="version-3x"></a>Verze 3. *x*
 
-Ve verzi 3. *x*, vazby úložiště jsou součástí `Microsoft.Azure.WebJobs.Extensions.Storage` balíčku. Volání `AddAzureStorage` metody rozšíření v `ConfigureWebJobs` způsob, jak je znázorněno zde:
+Ve verzi 3. *x*, vazby úložiště jsou součástí `Microsoft.Azure.WebJobs.Extensions.Storage` balíčku. Zavolejte metodu `ConfigureWebJobs` rozšíření v metodě, jak je znázorněno zde: `AddAzureStorage`
 
 ```cs
 static void Main()
@@ -258,7 +259,7 @@ static void Main()
 }
 ```
 
-Použít další aktivační události a typy vazeb, nainstalujte balíček NuGet, který je obsahuje a volat `Add<binding>` rozšiřující metoda implementována v rozšíření. Například pokud chcete použít vazby Azure Cosmos DB, nainstalujte `Microsoft.Azure.WebJobs.Extensions.CosmosDB` a volat `AddCosmosDB`, tímto způsobem:
+Chcete-li použít jiné typy triggerů a vazeb, nainstalujte balíček NuGet, který je obsahuje `Add<binding>` , a zavolejte metodu rozšíření implementovanou v rozšíření. Například pokud chcete použít Azure Cosmos DB vazby, nainstalujte `Microsoft.Azure.WebJobs.Extensions.CosmosDB` a zavolejte `AddCosmosDB`takto:
 
 ```cs
 static void Main()
@@ -277,17 +278,17 @@ static void Main()
 }
 ```
 
-Pomocí aktivační událost časovače nebo soubory vazby, které jsou součástí základní služby, zavolejte `AddTimers` nebo `AddFiles` rozšiřující metody, v uvedeném pořadí.
+Chcete-li použít aktivační událost časovače nebo vazby souborů, které jsou součástí základních služeb, zavolejte `AddTimers` metody `AddFiles` rozšíření nebo v uvedeném pořadí.
 
 #### <a name="version-2x"></a>Verze 2. *x*
 
-Tyto typy aktivační události a vazby jsou zahrnuty ve verzi 2. *x* z `Microsoft.Azure.WebJobs` balíčku:
+Tyto triggery a typy vazeb jsou součástí verze 2. *x balíčku:* `Microsoft.Azure.WebJobs`
 
 * Blob Storage
 * Queue Storage
-* Úložiště Table
+* Úložiště tabulek
 
-Použít další aktivační události a typy vazeb, nainstalujte balíček NuGet, který je obsahuje a volat `Use<binding>` metodu na `JobHostConfiguration` objektu. Například pokud chcete použít aktivační událost časovače, nainstalujte `Microsoft.Azure.WebJobs.Extensions` a volat `UseTimers` v `Main` způsob, jak je znázorněno zde:
+Chcete-li použít jiné typy triggerů a vazeb, nainstalujte balíček NuGet, který je obsahuje `Use<binding>` , a zavolejte `JobHostConfiguration` metodu objektu. Například pokud chcete použít aktivační událost časovače, nainstalujte `Microsoft.Azure.WebJobs.Extensions` a zavolejte `UseTimers` do `Main` metody, jak je znázorněno zde:
 
 ```cs
 static void Main()
@@ -299,11 +300,11 @@ static void Main()
 }
 ```
 
-použít soubory vazby, nainstalujte `Microsoft.Azure.WebJobs.Extensions` a volat `UseFiles`.
+Chcete-li použít vazby souborů, `Microsoft.Azure.WebJobs.Extensions` nainstalujte a `UseFiles`zavolejte.
 
 ### <a name="executioncontext"></a>ExecutionContext
 
-WebJobs umožňuje svázat [ `ExecutionContext` ]. S touto vazbou se dostanete [ `ExecutionContext` ] jako parametr v podpisu funkce. Například následující kód používá objekt kontextu pro přístup k ID vyvolání, které můžete použít ke korelaci všechny protokoly vytvořené metodou volání dané funkce.  
+WebJobs umožňuje vytvořit propojení s [`ExecutionContext`]. Pomocí této vazby můžete v podpisu funkce získat [`ExecutionContext`] přístup k parametru AS. Například následující kód používá kontextový objekt pro přístup k ID vyvolání, které můžete použít ke korelaci všech protokolů vytvořených daným voláním funkce.  
 
 ```cs
 public class Functions
@@ -317,11 +318,11 @@ public class Functions
 }
 ```
 
-Proces pro vazbu [ `ExecutionContext` ] závisí na vaší verzi sady SDK.
+Proces vytvoření vazby [`ExecutionContext`] závisí na vaší verzi sady SDK.
 
 #### <a name="version-3x"></a>Verze 3. *x*
 
-Volání `AddExecutionContextBinding` metody rozšíření v `ConfigureWebJobs` způsob, jak je znázorněno zde:
+Zavolejte metodu `ConfigureWebJobs` rozšíření v metodě, jak je znázorněno zde: `AddExecutionContextBinding`
 
 ```cs
 static void Main()
@@ -342,7 +343,7 @@ static void Main()
 
 #### <a name="version-2x"></a>Verze 2. *x*
 
-`Microsoft.Azure.WebJobs.Extensions` Balíčku již bylo zmíněno dříve také poskytuje typ speciální vazby, která můžete zaregistrovat pomocí volání `UseCore` metody. Tato vazba umožňuje definovat [ `ExecutionContext` ] parametrů v signatuře funkce, která je povolena takto:
+Výše uvedený `UseCore` balíček také poskytuje speciální typ vazby, který lze zaregistrovat voláním metody. `Microsoft.Azure.WebJobs.Extensions` Tato vazba umožňuje definovat [`ExecutionContext`] parametr v signatuře funkce, který je povolený takto:
 
 ```cs
 class Program
@@ -359,24 +360,24 @@ class Program
 
 ## <a name="binding-configuration"></a>Konfigurace vazby
 
-Můžete provádět konfiguraci chování některé triggerů a vazeb. Postup pro jejich konfiguraci závisí na verzi sady SDK.
+Můžete nakonfigurovat chování některých triggerů a vazeb. Proces konfigurace je závislý na verzi sady SDK.
 
-* **Verze 3. *x*:** Konfigurace sady při `Add<Binding>` metoda je volána `ConfigureWebJobs`.
-* **Verze 2. *x*:** Konfigurace sady nastavením vlastností v objekt konfigurace, který můžete předat do `JobHost`.
+* **Verze 3. *x*:** Nastavte konfiguraci při `Add<Binding>` volání metody v `ConfigureWebJobs`.
+* **Verze 2. *x*:** Nastavte konfiguraci nastavením vlastností v objektu konfigurace, který předáte do `JobHost`.
 
-Tato nastavení specifické pro vazby jsou ekvivalentní nastavení v [soubor projektu host.json](../azure-functions/functions-host-json.md) ve službě Azure Functions.
+Tato nastavení specifická pro vazbu jsou ekvivalentní nastavení v [souboru projektu Host. JSON](../azure-functions/functions-host-json.md) v Azure Functions.
 
 Můžete nakonfigurovat následující vazby:
 
-* [Aktivační událost Azure cosmos DB](#azure-cosmosdb-trigger-configuration-version-3x)
-* [Aktivace služby Event Hubs](#event-hubs-trigger-configuration-version-3x)
-* Aktivační událost fronty úložiště
-* [Vazby služby SendGrid](#sendgrid-binding-configuration-version-3x)
-* [Aktivační události služby Service Bus](#service-bus-trigger-configuration-version-3x)
+* [Aktivační událost Azure CosmosDB](#azure-cosmosdb-trigger-configuration-version-3x)
+* [Aktivační událost Event Hubs](#event-hubs-trigger-configuration-version-3x)
+* [Aktivační událost Queue Storage](#queue-storage-trigger-configuration)
+* [Vazba SendGrid](#sendgrid-binding-configuration-version-3x)
+* [Aktivační událost Service Bus](#service-bus-trigger-configuration-version-3x)
 
-### <a name="azure-cosmosdb-trigger-configuration-version-3x"></a>Konfigurace aktivační událost Azure cosmos DB (verze 3. *x*)
+### <a name="azure-cosmosdb-trigger-configuration-version-3x"></a>Konfigurace aktivační události Azure CosmosDB (verze 3 *) ×*)
 
-Tento příklad ukazuje postup při konfiguraci triggeru služby Azure Cosmos DB:
+Tento příklad ukazuje, jak nakonfigurovat aktivační událost Azure Cosmos DB:
 
 ```cs
 static void Main()
@@ -402,11 +403,11 @@ static void Main()
 }
 ```
 
-Další podrobnosti najdete v tématu [vazby služby Azure cosmos DB](../azure-functions/functions-bindings-cosmosdb-v2.md#hostjson-settings) článku.
+Další podrobnosti najdete v článku věnovaném [vazbám Azure CosmosDB](../azure-functions/functions-bindings-cosmosdb-v2.md#hostjson-settings) .
 
-### <a name="event-hubs-trigger-configuration-version-3x"></a>Konfigurace aktivace služby Event Hubs (verze 3. *x*)
+### <a name="event-hubs-trigger-configuration-version-3x"></a>Konfigurace aktivační události Event Hubs (verze 3 *×*)
 
-Tento příklad ukazuje postup při konfiguraci triggeru služby Event Hubs:
+Tento příklad ukazuje, jak nakonfigurovat aktivační událost Event Hubs:
 
 ```cs
 static void Main()
@@ -431,11 +432,11 @@ static void Main()
 }
 ```
 
-Další podrobnosti najdete v tématu [vazby služby Event Hubs](../azure-functions/functions-bindings-event-hubs.md#hostjson-settings) článku.
+Další podrobnosti najdete v článku věnovaném [vazbě Event Hubs](../azure-functions/functions-bindings-event-hubs.md#hostjson-settings) .
 
-### <a name="queue-storage-trigger-configuration"></a>Konfigurace aktivační událost fronty úložiště
+### <a name="queue-storage-trigger-configuration"></a>Konfigurace triggeru služby Queue Storage
 
-Tyto příklady ukazují, jak nakonfigurovat aktivační událost fronty úložiště:
+Tyto příklady ukazují, jak nakonfigurovat aktivační událost fronty pro úložiště:
 
 #### <a name="version-3x"></a>Verze 3. *x*
 
@@ -462,7 +463,7 @@ static void Main()
 }
 ```
 
-Další podrobnosti najdete v tématu [fronty úložiště vazby](../azure-functions/functions-bindings-storage-queue.md#hostjson-settings) článku.
+Další podrobnosti najdete v článku věnovaném [vazbě úložiště fronty](../azure-functions/functions-bindings-storage-queue.md#hostjson-settings) .
 
 #### <a name="version-2x"></a>Verze 2. *x*
 
@@ -479,11 +480,11 @@ static void Main(string[] args)
 }
 ```
 
-Další podrobnosti najdete v tématu [referenční materiály k host.json v1.x](../azure-functions/functions-host-json-v1.md#queues).
+Další podrobnosti najdete v referenčních informacích k [hostiteli. JSON v1. x](../azure-functions/functions-host-json-v1.md#queues).
 
-### <a name="sendgrid-binding-configuration-version-3x"></a>Konfigurace vazby služby SendGrid (verze 3. *x*)
+### <a name="sendgrid-binding-configuration-version-3x"></a>Konfigurace vazeb SendGrid (verze 3 *) ×*)
 
-Tento příklad ukazuje, jak nakonfigurovat SendGrid výstupní vazby:
+Tento příklad ukazuje, jak nakonfigurovat výstupní vazbu SendGrid:
 
 ```cs
 static void Main()
@@ -507,11 +508,11 @@ static void Main()
 }
 ```
 
-Další podrobnosti najdete v tématu [vazby služby SendGrid](../azure-functions/functions-bindings-sendgrid.md#hostjson-settings) článku.
+Další podrobnosti najdete v článku věnovaném [vazbě SendGrid](../azure-functions/functions-bindings-sendgrid.md#hostjson-settings) .
 
-### <a name="service-bus-trigger-configuration-version-3x"></a>Konfigurace aktivační události služby Service Bus (verze 3. *x*)
+### <a name="service-bus-trigger-configuration-version-3x"></a>Konfigurace aktivační události Service Bus (verze 3 *×*)
 
-Tento příklad ukazuje postup při konfiguraci aktivační události služby Service Bus:
+Tento příklad ukazuje, jak nakonfigurovat aktivační událost Service Bus:
 
 ```cs
 static void Main()
@@ -535,11 +536,11 @@ static void Main()
 }
 ```
 
-Další podrobnosti najdete v tématu [vazby služby Service Bus](../azure-functions/functions-bindings-service-bus.md#hostjson-settings) článku.
+Další podrobnosti najdete v článku věnovaném [vazbě Service Bus](../azure-functions/functions-bindings-service-bus.md#hostjson-settings) .
 
-### <a name="configuration-for-other-bindings"></a>Konfigurace u jiných vazeb
+### <a name="configuration-for-other-bindings"></a>Konfigurace pro jiné vazby
 
-Některé typy aktivační události a vazby definovat jejich vlastní typy vlastní konfigurace. Například aktivační událost soubor umožňuje určit kořenovou cestou za účelem monitorování, jako v těchto příkladech:
+Některé typy triggerů a vazeb definují vlastní typy konfigurace. Například Trigger souboru umožňuje zadat kořenovou cestu, která se má monitorovat, jako v těchto příkladech:
 
 #### <a name="version-3x"></a>Verze 3. *x*
 
@@ -579,7 +580,7 @@ static void Main()
 
 ## <a name="binding-expressions"></a>Výrazy vazby
 
-V parametrech konstruktoru atributu můžete použít výrazy, které odkazují na hodnoty z různých zdrojů. Například v následujícím kódu, cesty pro `BlobTrigger` atribut vytváří výraz s názvem `filename`. Když se použije pro výstupní vazbu `filename` přeloží název spouštěcí objekt blob.
+V parametrech konstruktoru atributu můžete použít výrazy, které se překládají na hodnoty z různých zdrojů. Například v následujícím kódu cesta pro `BlobTrigger` atribut vytvoří výraz s názvem. `filename` Při použití pro výstupní vazbu `filename` se přeloží na název triggeru objektu BLOB.
 
 ```cs
 public static void CreateThumbnail(
@@ -593,13 +594,13 @@ public static void CreateThumbnail(
 }
 ```
 
-Další informace o výrazech vazeb, naleznete v tématu [vazby výrazů a vzory](../azure-functions/functions-bindings-expressions-patterns.md) v dokumentaci ke službě Azure Functions.
+Další informace o výrazech vazby naleznete v tématu [výrazy a vzory vazby](../azure-functions/functions-bindings-expressions-patterns.md) v dokumentaci Azure Functions.
 
-### <a name="custom-binding-expressions"></a>Výrazy vlastní vazby
+### <a name="custom-binding-expressions"></a>Vlastní výrazy vazby
 
-Někdy budete chtít zadat název fronty, název objektu blob nebo kontejner nebo název tabulky v kódu namísto pevně kódováno pomocí ho. Například můžete chtít určit název fronty `QueueTrigger` atribut v konfigurační soubor nebo prostředí proměnnou.
+Někdy je třeba zadat název fronty, název objektu BLOB nebo kontejner nebo název tabulky v kódu, nikoli v hardwarovém kódování. Například můžete chtít zadat název fronty pro `QueueTrigger` atribut v konfiguračním souboru nebo v proměnné prostředí.
 
-Můžete to udělat pomocí předání `NameResolver` objektu v `JobHostConfiguration` objektu. Obsahují zástupné symboly v aktivační události nebo parametry konstruktoru atributu vazby a vaše `NameResolver` kód obsahuje skutečné hodnoty, které mají být zastoupen tyto zástupné symboly. Identifikujte zástupné symboly obklopením je (%) příznaky, jak je znázorněno zde:
+To lze provést předáním `NameResolver` objektu `JobHostConfiguration` do objektu. Do parametrů triggeru nebo konstruktoru atributu Binding jsou zástupné symboly a `NameResolver` váš kód poskytuje skutečné hodnoty, které budou použity místo těchto zástupných symbolů. Zástupné symboly se identifikují v procentech (%) znaménka, jak je znázorněno zde:
 
 ```cs
 public static void WriteLog([QueueTrigger("%logqueue%")] string logMessage)
@@ -608,11 +609,11 @@ public static void WriteLog([QueueTrigger("%logqueue%")] string logMessage)
 }
 ```
 
-Tento kód vám umožní použít frontu s názvem `logqueuetest` v testovacím prostředí a jednu s názvem `logqueueprod` v produkčním prostředí. Místo názvu fronty pevně zakódované, zadejte název položky v `appSettings` kolekce.
+Tento kód umožňuje používat frontu s názvem `logqueuetest` v testovacím prostředí a jednu s `logqueueprod` názvem v produkčním prostředí. Namísto pevně zakódovaného názvu fronty zadáte název položky v `appSettings` kolekci.
 
-Je výchozí `NameResolver` , která má vliv, pokud nezadáte vlastní. Výchozí hodnota získá hodnoty z nastavení aplikace nebo proměnné prostředí.
+Pokud nezadáte vlastní `NameResolver` , projeví se výchozí nastavení. Výchozí hodnota Získá hodnoty z nastavení aplikace nebo proměnných prostředí.
 
-Vaše `NameResolver` třídy získá název fronty z `appSettings`, jak je znázorněno zde:
+Vaše `NameResolver` třída Získá název fronty z `appSettings`, jak je znázorněno zde:
 
 ```cs
 public class CustomNameResolver : INameResolver
@@ -626,13 +627,13 @@ public class CustomNameResolver : INameResolver
 
 #### <a name="version-3x"></a>Verze 3. *x*
 
-Překladač nakonfigurujete pomocí vkládání závislostí. Tyto ukázky vyžadují následující `using` – příkaz:
+Překladač můžete nakonfigurovat pomocí injektáže závislostí. Tyto ukázky vyžadují následující `using` příkaz:
 
 ```cs
 using Microsoft.Extensions.DependencyInjection;
 ```
 
-Přidat překladač voláním [ `ConfigureServices` ] rozšiřující metody na [ `HostBuilder` ](/dotnet/api/microsoft.extensions.hosting.hostbuilder), jako v tomto příkladu:
+Překladač přidáte voláním [`ConfigureServices`] metody rozšíření na [`HostBuilder`](/dotnet/api/microsoft.extensions.hosting.hostbuilder), jako v tomto příkladu:
 
 ```cs
 static async Task Main(string[] args)
@@ -654,7 +655,7 @@ static async Task Main(string[] args)
 
 #### <a name="version-2x"></a>Verze 2. *x*
 
-Předání vašeho `NameResolver` třídu v `JobHost` objektu, jak je znázorněno zde:
+Předejte `JobHost` třídu do objektu, jak je znázorněno zde: `NameResolver`
 
 ```cs
  static void Main(string[] args)
@@ -666,13 +667,13 @@ Předání vašeho `NameResolver` třídu v `JobHost` objektu, jak je znázorně
 }
 ```
 
-Azure implementuje funkce `INameResolver` získat hodnoty z aplikace nastavení, jak je znázorněno v příkladu. Při použití sady WebJobs SDK přímo, můžete napsat vlastní implementace, která získá zástupný symbol náhradní hodnoty z jakéhokoli zdroje dáváte přednost.
+Azure Functions implementuje `INameResolver` k získání hodnot z nastavení aplikace, jak je znázorněno v příkladu. Když použijete sadu SDK pro WebJobs přímo, můžete napsat vlastní implementaci, která vrací hodnoty zástupných symbolů z libovolného zdroje, kterému dáváte přednost.
 
-## <a name="binding-at-runtime"></a>Vazbu za běhu
+## <a name="binding-at-runtime"></a>Vazba za běhu
 
-Pokud potřebujete provést nějakou práci ve své funkci předtím, než použijete atribut vazby, jako je `Queue`, `Blob`, nebo `Table`, můžete použít `IBinder` rozhraní.
+Pokud potřebujete udělat nějakou práci ve funkci před použitím atributu `Queue`vazby, jako je, `Blob`nebo `Table`, můžete použít `IBinder` rozhraní.
 
-V následujícím příkladu přebírá zprávu vstupní fronty a vytvoří novou zprávu s stejný obsah ve výstupní frontě. Název fronty výstupu nastavený prostřednictvím kódu v těle funkce.
+Následující příklad přebírá zprávu vstupní fronty a vytvoří novou zprávu se stejným obsahem ve výstupní frontě. Název výstupní fronty je nastaven podle kódu v těle funkce.
 
 ```cs
 public static void CreateQueueMessage(
@@ -686,25 +687,25 @@ public static void CreateQueueMessage(
 }
 ```
 
-Další informace najdete v tématu [vazby za běhu](../azure-functions/functions-dotnet-class-library.md#binding-at-runtime) v dokumentaci ke službě Azure Functions.
+Další informace najdete v tématu [vázání za běhu](../azure-functions/functions-dotnet-class-library.md#binding-at-runtime) v dokumentaci Azure Functions.
 
 ## <a name="binding-reference-information"></a>Referenční informace o vazbě
 
-Dokumentace ke službě Azure Functions poskytuje referenční informace o jednotlivých typech vazby. Tyto informace najdete v článku o každé vazby. (V tomto příkladu je založená na frontu úložiště.)
+Dokumentace k Azure Functions poskytuje referenční informace o jednotlivých typech vazeb. V každém referenčním článku o vazbách najdete následující informace. (Tento příklad je založen na frontě úložiště.)
 
-* [Balíčky](../azure-functions/functions-bindings-storage-queue.md#packages---functions-1x). Balíček, který je potřeba nainstalovat zahrnující podporu pro vazbu v projektu sady WebJobs SDK.
-* [Příklady](../azure-functions/functions-bindings-storage-queue.md#trigger---example). Ukázky kódu. C# Třídy knihovny příklad se týká sada WebJobs SDK. Jednoduše vynechejte `FunctionName` atribut.
-* [Atributy](../azure-functions/functions-bindings-storage-queue.md#trigger---attributes). Atributy pro typ vazby.
-* [Konfigurace](../azure-functions/functions-bindings-storage-queue.md#trigger---configuration). Vysvětlení vlastností atributu a parametry konstruktoru.
-* [Využití](../azure-functions/functions-bindings-storage-queue.md#trigger---usage). Typy, které lze svázat a informace o tom, jak funguje vazby. Příklad: dotazování algoritmus, zacházení s nezpracovatelnými zpracování fronty.
+* [Balíčky](../azure-functions/functions-bindings-storage-queue.md#packages---functions-1x). Balíček, který je potřeba nainstalovat, aby zahrnoval podporu vazby v projektu sady WebJobs SDK.
+* [Příklady](../azure-functions/functions-bindings-storage-queue.md#trigger---example). Ukázky kódu. Příklad C# knihovny tříd se vztahuje na sadu WebJobs SDK. Stačí vynechat `FunctionName` atribut.
+* [Atributy](../azure-functions/functions-bindings-storage-queue.md#trigger---attributes). Atributy, které mají být použity pro typ vazby.
+* [Konfigurace](../azure-functions/functions-bindings-storage-queue.md#trigger---configuration). Vysvětlení vlastností atributů a parametrů konstruktoru.
+* [Využití](../azure-functions/functions-bindings-storage-queue.md#trigger---usage). Typy, které můžete svázat, a informace o tom, jak vazba funguje. Příklad: algoritmus cyklického dotazování, zpracování fronty poškození.
   
-Seznam vazby článku o příkazech naleznete v části "Podporované vazby" v [aktivačními událostmi a vazbami](../azure-functions/functions-triggers-bindings.md#supported-bindings) článku pro službu Azure Functions. V tomto seznamu vazby protokolu HTTP, Webhooky a služby Event Grid jsou podporovány pouze funkcí Azure, ne pomocí sady SDK pro WebJobs.
+Seznam článků s odkazy na vazby najdete v části "podporované vazby" v článku [triggery a vazby](../azure-functions/functions-triggers-bindings.md#supported-bindings) pro Azure Functions. V tomto seznamu jsou vazby HTTP, webhooks a Event Grid podporovány pouze pomocí Azure Functions, nikoli pomocí sady WebJobs SDK.
 
 ## <a name="disable-attribute"></a>Zakázat atribut 
 
-[ `Disable` ](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/DisableAttribute.cs) Atribut umožňuje řídit, jestli funkce se dá spouštět. 
+[`Disable`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/DisableAttribute.cs) Atribut umožňuje řídit, zda lze funkci aktivovat. 
 
-V následujícím příkladu Pokud nastavení aplikace, které `Disable_TestJob` má hodnotu `1` nebo `True` (malá a velká písmena), funkce se nespustí. V takovém případě modul runtime vytvoří zprávu protokolu *zakázána funkce "Functions.TestJob"* .
+V následujícím příkladu, pokud má nastavení `Disable_TestJob` aplikace `1` hodnotu nebo `True` (bez rozlišení velkých a malých písmen), funkce se nespustí. V takovém případě modul runtime vytvoří funkci zprávy protokolu *Functions. TestJob*, která je zakázaná.
 
 ```cs
 [Disable("Disable_TestJob")]
@@ -714,13 +715,13 @@ public static void TestJob([QueueTrigger("testqueue2")] string message)
 }
 ```
 
-Při změně hodnoty nastavení aplikace na webu Azure Portal, aby se získaly nové nastavení restartuje webová úloha.
+Když změníte hodnoty nastavení aplikace v Azure Portal, Webová úloha se restartuje, aby se vybralo nové nastavení.
 
-Atribut lze deklarovat na parametr, metody nebo třídy úroveň. Název nastavení může také obsahovat výrazy vazby.
+Atribut lze deklarovat na úrovni parametru, metody nebo třídy. Název nastavení může obsahovat i výrazy vazby.
 
-## <a name="timeout-attribute"></a>Atribut časového limitu
+## <a name="timeout-attribute"></a>Atribut timeout
 
-[ `Timeout` ](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/TimeoutAttribute.cs) Atribut způsobí, že funkce budou zrušeny, pokud není dokončena ve stanoveném čase. V následujícím příkladu spustí funkci za jeden den bez atributu časového limitu. Časový limit způsobí, že funkce zrušení po 15 sekundách.
+[`Timeout`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/TimeoutAttribute.cs) Atribut způsobí zrušení funkce, pokud se nedokončí v určeném časovém intervalu. V následujícím příkladu by se funkce spouštěla po jednom dni bez atributu Timeout. Timeout způsobí, že se funkce zruší po 15 sekundách.
 
 ```cs
 [Timeout("00:00:15")]
@@ -735,13 +736,13 @@ public static async Task TimeoutJob(
 }
 ```
 
-Můžete použít atribut časového limitu na úrovni třídy nebo metody a globálního časového limitu můžete určit pomocí `JobHostConfiguration.FunctionTimeout`. Vypršení časového limitu pro úrovni třídy nebo metody přepsat globální vypršení časového limitu.
+Můžete použít atribut timeout na úrovni třídy nebo metody a můžete zadat globální časový limit pomocí `JobHostConfiguration.FunctionTimeout`. Časové limity na úrovni třídy nebo metody přepisují globální časové limity.
 
-## <a name="singleton-attribute"></a>Atribut typu singleton
+## <a name="singleton-attribute"></a>Singleton – atribut
 
-[ `Singleton` ](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/SingletonAttribute.cs) Atribut zajišťuje, že pouze jedna instance funkce spuštění, i když existuje více instancí hostitele webové aplikace. Dělá to pomocí [distribuované uzamčení](#viewing-lease-blobs).
+[`Singleton`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/SingletonAttribute.cs) Atribut zajišťuje, že bude spuštěna pouze jedna instance funkce, i když existuje více instancí webové aplikace hostitele. Používá se k tomu [distribuované uzamykání](#viewing-lease-blobs).
 
-V tomto příkladu pouze jednu instanci `ProcessImage` v daném okamžiku spuštění funkce:
+V tomto příkladu se v daném čase spustí jenom jedna `ProcessImage` instance funkce:
 
 ```cs
 [Singleton]
@@ -751,19 +752,19 @@ public static async Task ProcessImage([BlobTrigger("images")] Stream image)
 }
 ```
 
-### <a name="singletonmodelistener"></a>SingletonMode.Listener
+### <a name="singletonmodelistener"></a>SingletonMode. Listener
 
-Některé aktivační události mají integrovanou podporu řízení souběžnosti:
+Některé triggery mají integrovanou podporu pro správu souběžnosti:
 
-* **QueueTrigger**. Nastavte `JobHostConfiguration.Queues.BatchSize` k `1`.
-* **ServiceBusTrigger**. Nastavte `ServiceBusConfiguration.MessageOptions.MaxConcurrentCalls` k `1`.
-* **FileTrigger**. Nastavte `FileProcessor.MaxDegreeOfParallelism` k `1`.
+* **QueueTrigger**. Nastavte `JobHostConfiguration.Queues.BatchSize` na `1`.
+* **ServiceBusTrigger**. Nastavte `ServiceBusConfiguration.MessageOptions.MaxConcurrentCalls` na `1`.
+* **Trigger**. Nastavte `FileProcessor.MaxDegreeOfParallelism` na `1`.
 
-Tato nastavení můžete použít k zajištění, že funkce běží na jednu instanci jako typ singleton. Aby bylo zajištěno, že jenom jednu instanci funkce běží, když webová aplikace horizontálně navýší kapacitu na několik instancí, použít singleton naslouchací proces – úroveň zámku na funkci (`[Singleton(Mode = SingletonMode.Listener)]`). Při spuštění JobHost pořízené zámky naslouchacího procesu. Pokud tři instance horizontálním navýšením kapacity všechna spuštění ve stejnou dobu, pouze jedna z instancí získá zámek a pouze jeden naslouchací proces spustí.
+Pomocí těchto nastavení můžete zajistit, aby se vaše funkce spouštěla jako typ singleton v rámci jedné instance. Chcete-li zajistit, aby byla při škálování webové aplikace na více instancí spuštěna pouze jedna instance funkce, použijte pro funkci (`[Singleton(Mode = SingletonMode.Listener)]`) zámek singleton na úrovni naslouchacího procesu. Zámky naslouchacího procesu se získávají při spuštění JobHost. Pokud se současně spustí tři instance s horizontálním škálováním, pouze jedna z instancí získá zámek a spustí se pouze jeden naslouchací proces.
 
 ### <a name="scope-values"></a>Hodnoty oboru
 
-Můžete zadat *výraz/hodnotu oboru* na jednotlivý prvek. Výraz a hodnota zajistí, že bude serializována všechny prováděné funkci v konkrétním oboru. Implementace podrobnější uzamčení tímto způsobem můžete povolit pro některé stupeň paralelismu funkce při serializaci další volání podle vašich požadavků. Například v následujícím kódu, výraz scope vytvoří vazbu `Region` hodnotu příchozí zprávy. Když tato fronta obsahuje tři zprávy v oblastech východ – východ a v uvedeném pořadí – Západ, zprávy, které mají oblast východ spouštějí sériově while zprávy s oblastí, že západní běží paralelně s aliasy ve – východ.
+Pro typ singleton můžete zadat *výraz nebo hodnotu oboru* . Výraz/hodnota zajistí, že všechna spuštění funkce v konkrétním oboru budou serializována. Implementace podrobnějšího zamykání tímto způsobem může způsobit určitou úroveň paralelismu pro vaši funkci při serializaci jiných volání podle vašich požadavků. Například v následujícím kódu se výraz SCOPE váže k `Region` hodnotě příchozí zprávy. Pokud fronta obsahuje tři zprávy v oblasti východ, východní a západní, budou zprávy s oblastí východ spouštěny sériově, zatímco zpráva s oblastí západ se spouští paralelně s uživateli na východě.
 
 ```csharp
 [Singleton("{Region}")]
@@ -781,9 +782,9 @@ public class WorkItem
 }
 ```
 
-### <a name="singletonscopehost"></a>SingletonScope.Host
+### <a name="singletonscopehost"></a>SingletonScope. Host
 
-Výchozí obor pro zámek je `SingletonScope.Function`, což znamená rozsah zámku (cesta zapůjčení objektu blob) se váže na funkce plně kvalifikovaného názvu. Zamknout napříč funkcí, zadejte `SingletonScope.Host` a používat název ID oboru, které jsou stejné všechny funkce, které nechcete spustit současně. V následujícím příkladu, pouze jedna instance `AddItem` nebo `RemoveItem` byla najednou spuštěna:
+Výchozím rozsahem zámku je `SingletonScope.Function`, což znamená, že rozsah zámku (cesta k zapůjčení objektu BLOB) je svázán s plně kvalifikovaným názvem funkce. Chcete-li zamknout napříč funkcemi `SingletonScope.Host` , určete a použijte název ID oboru, který je stejný ve všech funkcích, které nechcete spouštět současně. V následujícím příkladu je spuštěna pouze jedna instance `AddItem` nebo `RemoveItem` v jednom okamžiku:
 
 ```csharp
 [Singleton("ItemsLock", SingletonScope.Host)]
@@ -799,63 +800,63 @@ public static void RemoveItem([QueueTrigger("remove-item")] string message)
 }
 ```
 
-### <a name="viewing-lease-blobs"></a>Objekty BLOB zapůjčení zobrazení
+### <a name="viewing-lease-blobs"></a>Zobrazení objektů BLOB zapůjčení
 
-Sada WebJobs SDK používá [zapůjčení objektu blob Azure](../storage/common/storage-concurrency.md#pessimistic-concurrency-for-blobs) na pozadí k implementaci distribuovaných uzamčení. Objekty BLOB zapůjčení používané Singleton najdete v `azure-webjobs-host` kontejneru v `AzureWebJobsStorage` účtu úložiště v rámci cesty "zámky". Například cesta objektu blob zapůjčení pro první `ProcessImage` příklad uvedený výše může být `locks/061851c758f04938a4426aa9ab3869c0/WebJobs.Functions.ProcessImage`. Všechny programy zahrnují JobHost ID v tomto případu 061851c758f04938a4426aa9ab3869c0.
+Sada WebJobs SDK používá [zapůjčení Azure Blob](../storage/common/storage-concurrency.md#pessimistic-concurrency-for-blobs) v rámci pokrývání k implementaci distribuovaného zamykání. Objekty blob zapůjčení používané pomocí typu Singleton najdete v `azure-webjobs-host` kontejneru `AzureWebJobsStorage` v účtu úložiště pod cestou "zámky". Například cesta objektu BLOB zapůjčení pro první `ProcessImage` příklad zobrazená výše může být. `locks/061851c758f04938a4426aa9ab3869c0/WebJobs.Functions.ProcessImage` Všechny cesty zahrnují ID JobHost, v tomto případě 061851c758f04938a4426aa9ab3869c0.
 
 ## <a name="async-functions"></a>Asynchronní funkce
 
-Informace o tom, jak kód asynchronních funkcí najdete v tématu [dokumentaci ke službě Azure Functions](../azure-functions/functions-dotnet-class-library.md#async).
+Informace o způsobu kódování asynchronních funkcí naleznete v [dokumentaci Azure Functions](../azure-functions/functions-dotnet-class-library.md#async).
 
 ## <a name="cancellation-tokens"></a>Tokeny zrušení
 
-Informace o tom, jak zpracovávat tokeny zrušení, najdete v dokumentaci ke službě Azure Functions na [tokeny zrušení a řádné vypnutí](../azure-functions/functions-dotnet-class-library.md#cancellation-tokens).
+Informace o tom, jak zpracovávat tokeny zrušení, naleznete v dokumentaci k Azure Functions v tématu o [tokenech zrušení a řádném vypnutí](../azure-functions/functions-dotnet-class-library.md#cancellation-tokens).
 
 ## <a name="multiple-instances"></a>Několik instancí
 
-Pokud vaše webová aplikace běží na více instancí, nepřetržitá webová úloha běží na jednotlivých instancích naslouchání pro aktivační události a volání funkcí. Různé vazby aktivační události jsou navrženy pro sdílet práci efektivně spolupracovat napříč instancemi, tak, aby horizontální navýšení kapacity na více instancí umožňuje zpracovávat větší zatížení.
+Pokud webová aplikace běží na více instancích, souvislá webová úloha se spustí na každé instanci, bude naslouchat triggerům a volání funkcí. Různé aktivační vazby jsou navržené tak, aby efektivně sdílely společné fungování napříč instancemi, takže škálování na více instancí vám umožní zpracovávat větší zatížení.
 
-Aktivační události front a objektů blob automaticky zabránit funkci zpracování zpráv fronty nebo objektu blob více než jednou; funkce nemusí být idempotentní.
+Fronty a triggery objektů BLOB automaticky zabraňují funkci zpracování zprávy fronty nebo objektu BLOB více než jednou. funkce nemusí být idempotentní.
 
-Trigger časovače automaticky zajistí této pouze jedna instance spuštění časovače, proto nebudete mít více než jednu instanci funkce spuštění v daném okamžiku naplánované.
+Aktivační událost časovače automaticky zajišťuje, že se spustí jenom jedna instance časovače, takže nebudete mít v daném naplánovaném čase spuštěnou víc než jednu instanci funkce.
 
-Pokud chcete zajistit, že pouze jedna instance funkce běží i v případě, že existuje více instancí hostitele webové aplikace, můžete použít [ `Singleton` ](#singleton-attribute) atribut.
+Pokud chcete zajistit, aby se jenom jedna instance funkce spouštěla i v případě, že existuje více instancí webové aplikace hostitele, můžete použít [`Singleton`](#singleton-attribute) atribut.
 
 ## <a name="filters"></a>Filtry
 
-Funkce filtry (preview) poskytují způsob, jak přizpůsobit spouštěcí kanál WebJobs pomocí vlastní logiky. Filtry jsou podobné [filtry pro ASP.NET Core](https://docs.microsoft.com/aspnet/core/mvc/controllers/filters). Lze je implementovat jako deklarativních atributů, které se použijí u funkcí nebo tříd. Další informace najdete v tématu [filtry funkce](https://github.com/Azure/azure-webjobs-sdk/wiki/Function-Filters).
+Filtry funkcí (Preview) poskytují způsob přizpůsobení kanálu spuštění webové úlohy pomocí vlastní logiky. Filtry jsou podobné [filtrům ASP.NET Core](https://docs.microsoft.com/aspnet/core/mvc/controllers/filters). Můžete je implementovat jako deklarativní atributy, které jsou použity pro vaše funkce nebo třídy. Další informace najdete v tématu [filtry funkcí](https://github.com/Azure/azure-webjobs-sdk/wiki/Function-Filters).
 
 ## <a name="logging-and-monitoring"></a>Protokolování a monitorování
 
-Doporučujeme, abyste protokolovacího rozhraní, který byl vyvinut pro technologii ASP.NET. [Začínáme](webjobs-sdk-get-started.md) článek popisuje, jak ji používat. 
+Doporučujeme rozhraní protokolování, které bylo vyvinuto pro ASP.NET. V článku [Začínáme](webjobs-sdk-get-started.md) se dozvíte, jak ho používat. 
 
-### <a name="log-filtering"></a>Filtrování protokolu
+### <a name="log-filtering"></a>Filtrování protokolů
 
-Každý protokol vytvořené `ILogger` instance má přiřazený `Category` a `Level`. [`LogLevel`](/dotnet/api/microsoft.extensions.logging.loglevel) výčet a kód celé číslo označuje relativní význam:
+Každý protokol vytvořený `ILogger` instancí má přidruženou `Category` a `Level`. [`LogLevel`](/dotnet/api/microsoft.extensions.logging.loglevel)je výčet a celočíselný kód označuje relativní důležitost:
 
 |LogLevel    |Kód|
 |------------|---|
 |Trasování       | 0 |
 |Ladění       | 1 |
-|Informace | 2 |
+|Information | 2 |
 |Upozornění     | 3 |
 |Chyba       | 4 |
 |Kritická    | 5 |
-|Žádný        | 6 |
+|Žádné        | 6 |
 
-Nezávisle na sobě můžete filtrovat každá kategorie pro určitý [ `LogLevel` ](/dotnet/api/microsoft.extensions.logging.loglevel). Například můžete chtít zobrazit všechny protokoly pro zpracování objektů blob aktivační událost ale jenom `Error` nebo vyšší pro všechno ostatní.
+Jednotlivé kategorie můžete filtrovat nezávisle na konkrétním [`LogLevel`](/dotnet/api/microsoft.extensions.logging.loglevel). Můžete například chtít zobrazit všechny protokoly pro zpracování triggerů objektů blob, ale jenom `Error` a vyšší pro všechno ostatní.
 
 #### <a name="version-3x"></a>Verze 3. *x*
 
-Verze 3. *x* sady SDK spoléhá na filtrování integrované do .NET Core. `LogCategories` Třída umožňuje definovat kategorie pro konkrétní funkce, aktivační události nebo uživatele. Definuje také filtry pro konkrétního hostitele stavy, jako je třeba `Startup` a `Results`. To umožňuje optimalizovat výstup protokolování. Pokud není nalezena žádná shoda v rámci definovaných kategorií, filtr přejde `Default` hodnota při rozhodování, jestli se má filtrovat zprávy.
+Verze 3. *x* sady SDK spoléhá na filtrování integrované do .NET Core. `LogCategories` Třída umožňuje definovat kategorie pro konkrétní funkce, triggery nebo uživatele. Také definuje filtry pro konkrétní stavy hostitele, například `Startup` a. `Results` To vám umožní vyladit výstup protokolování. Pokud se v definovaných kategoriích nenajde žádná shoda, filtr se vrátí k `Default` hodnotě při rozhodování o tom, jestli se má zpráva filtrovat.
 
-`LogCategories` vyžaduje následující příkaz using:
+`LogCategories`vyžaduje následující příkaz using:
 
 ```cs
 using Microsoft.Azure.WebJobs.Logging; 
 ```
 
-Následující příklad vytvoří filtr, který ve výchozím nastavení, vyfiltruje všechny protokoly `Warning` úroveň. `Function` a `results` kategorie (ekvivalentní `Host.Results` ve verzi 2. *x*) jsou filtrovány na `Error` úroveň. Filtr porovná aktuální kategorii pro všechny úrovně registrované v `LogCategories` instance a zvolí nejdelší shody. To znamená, že `Debug` úroveň zaregistrovali `Host.Triggers` odpovídá `Host.Triggers.Queue` nebo `Host.Triggers.Blob`. To umožňuje řídit širší kategorie bez nutnosti přidat každý z nich.
+Následující příklad vytvoří filtr, který ve výchozím nastavení filtruje všechny protokoly na `Warning` úrovni. Kategorie `Function` a `results` ( ekvivalent`Host.Results` verze 2). *x*) jsou filtrovány na `Error` úrovni. Filtr porovná aktuální kategorii na všechny registrované úrovně v `LogCategories` instanci a zvolí nejdelší shodu. To znamená, že `Debug` úroveň zaregistrovaná `Host.Triggers.Queue` pro `Host.Triggers.Blob` `Host.Triggers` shody nebo. To vám umožní ovládat širší kategorie bez nutnosti přidávat je.
 
 ```cs
 static async Task Main(string[] args)
@@ -884,11 +885,11 @@ static async Task Main(string[] args)
 
 #### <a name="version-2x"></a>Verze 2. *x*
 
-Ve verzi 2. *x* sady SDK, můžete použít `LogCategoryFilter` třídy řídit filtrování. `LogCategoryFilter` Má `Default` vlastnost s počáteční hodnotou `Information`, to znamená, že všechny zprávy v `Information`, `Warning`, `Error`, nebo `Critical` jsou protokolovány úrovně, ale všechny zprávy v `Debug` nebo `Trace` úrovně jsou filtrovány okamžitě.
+Ve verzi 2. *x* sady SDK, použijete `LogCategoryFilter` třídu k řízení filtrování. `Information` `Warning` `Debug` Mávlastnostspočáteční`Error`hodnotou ,což`Critical` znamená, že všechny zprávy na úrovních,, a jsou protokolovány, ale všechny zprávy na `Information` `Default` `LogCategoryFilter` a `Trace` úrovně jsou odfiltrovány.
 
-Stejně jako u `LogCategories` ve verzi 3. *x*, `CategoryLevels` vlastnost vám umožní určit úrovně protokolu pro konkrétní kategorie tak mají možnost konfiguraci doladit výstup protokolování. Pokud není nalezena žádná shoda v rámci `CategoryLevels` slovníku. Tím se filtr spadne zpět na `Default` hodnota při rozhodování, jestli se má filtrovat zprávy.
+Stejně jako `LogCategories` ve verzi 3. *x*, `CategoryLevels` vlastnost umožňuje zadat úrovně protokolu pro konkrétní kategorie, abyste mohli vyladit výstup protokolování. Pokud se ve `CategoryLevels` slovníku nenajde žádná shoda, filtr se vrátí `Default` k hodnotě při rozhodování o tom, jestli se má zpráva filtrovat.
 
-Následující příklad vytvoří filtr, který ve výchozím nastavení vyfiltruje všechny protokoly `Warning` úroveň. `Function` a `Host.Results` kategorií jsou filtrovány na `Error` úroveň. `LogCategoryFilter` Porovná aktuální kategorii pro všechny zaregistrované `CategoryLevels` a zvolí nejdelší shody. Proto `Debug` úroveň zaregistrovali `Host.Triggers` bude odpovídat `Host.Triggers.Queue` nebo `Host.Triggers.Blob`. To umožňuje řídit širší kategorie bez nutnosti přidat každý z nich.
+Následující příklad vytvoří filtr, který ve výchozím nastavení filtruje všechny protokoly na `Warning` úrovni. Kategorie a jsou`Host.Results` filtrovány na úrovni.`Error` `Function` Porovná aktuální kategorii se všemi registrovanými `CategoryLevels` a zvolí nejdelší shodu. `LogCategoryFilter` Takže úroveň zaregistrovaná `Host.Triggers` pro bude `Host.Triggers.Queue` odpovídat `Host.Triggers.Blob`nebo. `Debug` To vám umožní ovládat širší kategorie bez nutnosti přidávat je.
 
 ```csharp
 var filter = new LogCategoryFilter();
@@ -902,20 +903,20 @@ config.LoggerFactory = new LoggerFactory()
     .AddConsole(filter.Filter);
 ```
 
-### <a name="custom-telemetry-for-application-insights"></a>Vlastní telemetrii pro službu Application Insights
+### <a name="custom-telemetry-for-application-insights"></a>Vlastní telemetrie pro Application Insights
 
-Proces pro implementaci vlastní telemetrii pro [Application Insights](../azure-monitor/app/app-insights-overview.md) závisí na verzi sady SDK. Další informace o konfiguraci Application Insights, najdete v článku [přidat službu Application Insights protokolování](webjobs-sdk-get-started.md#add-application-insights-logging).
+Proces implementace vlastní telemetrie pro [Application Insights](../azure-monitor/app/app-insights-overview.md) závisí na verzi sady SDK. Informace o tom, jak nakonfigurovat Application Insights, najdete v tématu [přidání Application Insights protokolování](webjobs-sdk-get-started.md#add-application-insights-logging).
 
 #### <a name="version-3x"></a>Verze 3. *x*
 
-Protože verze 3. *x* sady WebJobs SDK spoléhá na .NET Core, už je k dispozici Obecný hostitelský objekt pro vytváření vlastní telemetrii. Ale můžete přidat vlastní telemetrická data do kanálu pomocí vkládání závislostí. Příklady v této části vyžadují následující `using` příkazy:
+Protože verze 3. *x* sady WebJobs SDK spoléhá na obecného hostitele .NET Core. vlastní továrna telemetrie už není k dispozici. Můžete ale do kanálu přidat vlastní telemetrii pomocí injektáže závislosti. Příklady v této části vyžadují následující `using` příkazy:
 
 ```cs
 using Microsoft.ApplicationInsights.Extensibility;
 using Microsoft.ApplicationInsights.Channel;
 ```
 
-Následující vlastní implementace [ `ITelemetryInitializer` ] umožňuje přidat vlastní [ `ITelemetry` ](/dotnet/api/microsoft.applicationinsights.channel.itelemetry) na výchozí hodnotu [ `TelemetryConfiguration` ].
+Následující vlastní implementace [`ITelemetryInitializer`] nástroje umožňuje přidat vlastní [`ITelemetry`](/dotnet/api/microsoft.applicationinsights.channel.itelemetry) do výchozího nastavení [`TelemetryConfiguration`].
 
 ```cs
 internal class CustomTelemetryInitializer : ITelemetryInitializer
@@ -927,7 +928,7 @@ internal class CustomTelemetryInitializer : ITelemetryInitializer
 }
 ```
 
-Volání [ `ConfigureServices` ] v Tvůrci přidáte vlastní [ `ITelemetryInitializer` ] do kanálu.
+Zavolejte [`ConfigureServices`] v tvůrci a přidejte do kanálu vlastní [`ITelemetryInitializer`] .
 
 ```cs
 static void Main()
@@ -963,17 +964,17 @@ static void Main()
 }
 ```
 
-Když [ `TelemetryConfiguration` ] je vytvořen, všechny registrované typy [ `ITelemetryInitializer` ] jsou zahrnuty. Další informace najdete v tématu [API pro Application Insights pro vlastní události a metriky](../azure-monitor/app/api-custom-events-metrics.md).
+Když je vytvořen, [`ITelemetryInitializer`] jsou zahrnuty všechny registrované typy. [`TelemetryConfiguration`] Další informace najdete v tématu [Application Insights API pro vlastní události a metriky](../azure-monitor/app/api-custom-events-metrics.md).
 
-Ve verzi 3. *x*, máte už se nezdařil [ `TelemetryClient` ] při zastavení hostitele. Injektor .NET Core závislosti automaticky uvolní zaregistrovanou `ApplicationInsightsLoggerProvider`, které vyprázdnění [ `TelemetryClient` ].
+Ve verzi 3. *x*, už nemusíte [`TelemetryClient`] při zastavení hostitele vyprázdnit. Systém injektáže rozhraní .NET Core Dependency vstřiku automaticky odstraní registrovanou `ApplicationInsightsLoggerProvider`, což vyprázdní. [`TelemetryClient`]
 
 #### <a name="version-2x"></a>Verze 2. *x*
 
-Ve verzi 2. *x*, [ `TelemetryClient` ] interně vytvořené poskytovateli Application Insights pro použití sady WebJobs SDK [ `ServerTelemetryChannel` ](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/develop/src/ServerTelemetryChannel/ServerTelemetryChannel.cs). Pokud koncový bod služby Application Insights je nedostupná nebo omezení příchozích požadavků, v tomto kanálu [uloží žádosti v systému souborů webové aplikace a je později znovu odešle](https://apmtips.com/blog/2015/09/03/more-telemetry-channels).
+Ve verzi 2. *x*, která [`TelemetryClient`] je vytvořena interně poskytovatelem Application Insights pro sadu WebJobs SDK [`ServerTelemetryChannel`](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/develop/src/ServerTelemetryChannel/ServerTelemetryChannel.cs)používá. Pokud Application Insights koncový bod není k dispozici nebo omezuje příchozí požadavky, tento kanál [uloží požadavky v systému souborů webové aplikace a znovu je odešle](https://apmtips.com/blog/2015/09/03/more-telemetry-channels).
 
-[ `TelemetryClient` ] Vytvoří třídu, která implementuje `ITelemetryClientFactory`. Ve výchozím nastavení je to [ `DefaultTelemetryClientFactory` ](https://github.com/Azure/azure-webjobs-sdk/blob/dev/src/Microsoft.Azure.WebJobs.Logging.ApplicationInsights/DefaultTelemetryClientFactory.cs).
+Je vytvořen třídou, která implementuje `ITelemetryClientFactory`. [`TelemetryClient`] Ve výchozím nastavení je [`DefaultTelemetryClientFactory`](https://github.com/Azure/azure-webjobs-sdk/blob/dev/src/Microsoft.Azure.WebJobs.Logging.ApplicationInsights/DefaultTelemetryClientFactory.cs)to.
 
-Pokud chcete upravit libovolné části kanálu Application Insights, můžete zadat vlastní `ITelemetryClientFactory`, a Hostitel použije k vytvoření své třídy [ `TelemetryClient` ]. Například tento kód přepíše `DefaultTelemetryClientFactory` upravit vlastnost `ServerTelemetryChannel`:
+Chcete-li změnit jakoukoli část kanálu Application Insights, můžete zadat vlastní `ITelemetryClientFactory`a hostitel bude třídu používat k [`TelemetryClient`]sestavení. Například přepsání `DefaultTelemetryClientFactory` tohoto kódu pro úpravu `ServerTelemetryChannel`vlastnosti:
 
 ```csharp
 private class CustomTelemetryClientFactory : DefaultTelemetryClientFactory
@@ -995,9 +996,9 @@ private class CustomTelemetryClientFactory : DefaultTelemetryClientFactory
 }
 ```
 
-`SamplingPercentageEstimatorSettings` Konfiguruje objekt [adaptivního vzorkování](https://docs.microsoft.com/azure/application-insights/app-insights-sampling). To znamená, že v některých scénářích velkého objemu aplikace Insights odesílá vybranou podmnožinu telemetrická data na serveru.
+Objekt nakonfiguruje [adaptivní vzorkování.](https://docs.microsoft.com/azure/application-insights/app-insights-sampling) `SamplingPercentageEstimatorSettings` To znamená, že v některých scénářích s vysokým objemem se v aplikacích Application Insights pošle vybraná podmnožina dat telemetrie na server.
 
-Jakmile vytvoříte objekt pro vytváření telemetrická data, předejte ji v k poskytovateli protokolování Application Insights:
+Jakmile vytvoříte objekt pro vytváření telemetrie, předáte ho do poskytovatele protokolování Application Insights:
 
 ```csharp
 var clientFactory = new CustomTelemetryClientFactory(instrumentationKey, filter.Filter);
@@ -1008,7 +1009,7 @@ config.LoggerFactory = new LoggerFactory()
 
 ## <a id="nextsteps"></a> Další kroky
 
-Tento článek poskytuje fragmenty kódu, které ukazují, jak zvládnout běžné scénáře pro práci se sadou WebJobs SDK. Kompletní ukázky najdete v tématu [azure webjobs sdk ukázky](https://github.com/Azure/azure-webjobs-sdk-samples).
+V tomto článku jsou uvedené fragmenty kódu, které ukazují, jak zpracovávat běžné scénáře pro práci se sadou WebJobs SDK. Kompletní ukázky najdete v tématu [Azure-WebJobs-SDK-Samples](https://github.com/Azure/azure-webjobs-sdk-samples).
 
 [`ExecutionContext`]: https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions/Extensions/Core/ExecutionContext.cs
 [`TelemetryClient`]: /dotnet/api/microsoft.applicationinsights.telemetryclient

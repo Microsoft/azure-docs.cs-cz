@@ -1,6 +1,6 @@
 ---
-title: Postup konfigurace hesel jednotného přihlašování pro aplikaci mimo Galerii applicationn | Dokumentace Microsoftu
-description: Jak nakonfigurovat vlastní aplikaci mimo galerii pro zabezpečení založené na heslech jednotného přihlašování, když není uvedená v galerii aplikací Azure AD
+title: Jak nakonfigurovat jednotné přihlašování k heslům pro aplikace Azure AD | Microsoft Docs
+description: Jak nakonfigurovat jednotné přihlašování (SSO) k podnikovým aplikacím Azure AD v platformě Microsoft Identity Platform (Azure AD)
 services: active-directory
 author: msmimart
 manager: CelesteDG
@@ -8,184 +8,91 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/12/2018
+ms.date: 07/10/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1df52e0c25ecaff451f133e3a9207fb04b11f4a5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d191abafbaad123ed47f8eaae6cdd4e48478da7a
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65824930"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68422625"
 ---
-# <a name="how-to-configure-password-single-sign-on-for-a-non-gallery-application"></a>Postup konfigurace hesel jednotného přihlašování pro aplikaci mimo Galerii
+# <a name="configure-password-single-sign-on"></a>Konfigurace jednotného přihlašování k heslům
 
-Kromě možností najdete v galerii aplikací Azure AD, máte také možnost přidávat **aplikaci mimo galerii** při požadovanou aplikaci není v seznamu uvedeno. Díky této funkci můžete přidat jakékoli aplikace, která již existuje ve vaší organizaci nebo jakékoli aplikaci třetí strany, který můžete použít od dodavatele, který je již součástí [Galerie aplikací Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Když [přidáte aplikaci Galerie](add-gallery-app.md) nebo [webovou aplikaci mimo galerii](add-non-gallery-app.md) do podnikových aplikací Azure AD, jedna z dostupných možností jednotného přihlašování je [jednotné přihlašování založené](what-is-single-sign-on.md#password-based-sso)na heslech. Tato možnost je k dispozici pro všechny webové stránky s přihlašovací stránkou HTML. Jednotné přihlašování založené na heslech, označované taky jako trezor hesel, umožňuje spravovat přístup uživatelů a hesla k webovým aplikacím, které nepodporují federaci identit. Je to také užitečné ve scénářích, kdy je potřeba, aby několik uživatelů sdílelo jeden účet, například k účtům aplikací sociálních médií vaší organizace. 
 
-Jakmile přidáte aplikaci mimo galerii, pak můžete nakonfigurovat jednotné přihlašování metodu tato aplikace používá tak, že vyberete **Single Sign-on** navigační položka na podniková aplikace v [webuAzureportal](https://portal.azure.com/).
+Jednotné přihlašování založené na heslech je skvělým způsobem, jak rychle začít integrovat aplikace do služby Azure AD a umožní vám:
 
-Jedním z Single Sign-on metody k dispozici, je [založené na heslech Single Sign-on](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) možnost. S **přidat aplikaci mimo galerii** prostředí, můžete integrovat všechny aplikace, který vykreslí založeného na HTML uživatelské jméno a heslo vstupní pole, i když není v naší sadě předem integrovaných aplikací.
+-   Povolení **jednotného přihlašování pro uživatele** díky bezpečnému ukládání a přehrávání uživatelských jmen a hesel pro aplikaci, kterou jste integrací se službou Azure AD.
 
-Způsob, jakým tento postup funguje, je pomocí stránky automatizované získávání dat technologie, která je součástí přístupový Panel rozšíření, která umožňuje automaticky detekovat uživatelské jméno a heslo vstupní pole, uložit je bezpečně pro vaši instanci konkrétní aplikaci. Bezpečně přehrát uživatelských jmen a hesel, která se těchto polí, když uživatel přejde na tuto aplikaci na přístupovém panelu aplikací.
+-   **Podpora aplikací, které vyžadují více** polí přihlašování pro aplikace, které pro přihlášení vyžadují víc než jenom uživatelské jméno a heslo
 
-To je skvělý způsob, jak začít rychle integrace jakékoliv aplikaci do služby Azure AD a umožňuje:
+-   **Přizpůsobení popisků** vstupních polí uživatelského jména a hesla, která se uživatelům zobrazí na [přístupovém panelu aplikace](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) při zadání přihlašovacích údajů
 
--   Integrace **libovolné aplikace na světě** v tenantu Azure AD, pokud je vhodné uživatelské jméno a heslo vstupní pole HTML
+-   Umožněte **uživatelům** zadání vlastních uživatelských jmen a hesel pro všechny existující účty aplikací, které na [přístupovém panelu aplikací](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) zadávají ručně.
 
--   Povolit **jednotné přihlašování pro vaše uživatele** bezpečně ukládat a přehráním uživatelských jmen a hesel pro aplikaci jste integrovali se službou Azure AD
+-   Umožňuje **členům obchodní skupiny** zadat uživatelská jména a hesla přiřazená uživateli pomocí funkce [Samoobslužný přístup k aplikacím](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-application-access) .
 
--   **Automaticky rozpoznat vstup** pole pro libovolnou aplikaci a umožňují ručně zjišťovat těchto polí pomocí rozšíření prohlížeče přístupového panelu, v případě, že automatické zjišťování je nenajde
+-   Umožňuje **Správci** zadat uživatelské jméno a heslo, které mají jednotlivci nebo skupiny používat při přihlašování k aplikaci pomocí funkce aktualizovat přihlašovací údaje. 
 
--   **Podpora aplikací, které vyžadují více polí přihlášení** pro aplikace, které vyžadují víc než jenom pole jméno a heslo pro přihlášení
+## <a name="before-you-begin"></a>Před zahájením
 
--   **Přizpůsobení popisků** vstupní pole uživatelské jméno a heslo se uživatelům zobrazí na [přístupového panelu aplikací](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) při zadání přihlašovacích údajů
+Pokud se aplikace nepřidala do tenanta Azure AD, přečtěte si téma [Přidání aplikace Galerie](add-gallery-app.md) nebo [Přidání aplikace mimo galerii](add-non-gallery-app.md).
 
--   Povolit vaše **uživatelé** poskytnout vlastní uživatelská jména a hesla pro zadávání v ručně na existující účty aplikace [přístupového panelu aplikací](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)
+## <a name="open-the-app-and-select-password-single-sign-on"></a>Otevřete aplikaci a vyberte možnost jednotné přihlašování pomocí hesla.
 
--   Povolit **členem skupiny business** zadat uživatelská jména a hesla, které jsou přiřazeny uživateli přes [samoobslužný přístup k aplikacím](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-application-access) funkce
+1. Přihlaste se k [Azure Portal](https://portal.azure.com) jako správce cloudové aplikace nebo správce aplikace pro vašeho TENANTA Azure AD.
 
--   Povolit **správce** k určení uživatelských jmen a hesel uživateli přidělena pomocí funkce aktualizace přihlašovacích údajů při přiřazení uživatele k aplikaci
+2. Přejděte na **Azure Active Directory** > **podnikové aplikace**. Zobrazí se náhodná ukázka aplikací v tenantovi Azure AD. 
 
--   Povolit **správce** k určení sdílené uživatelské jméno nebo heslo používané skupinou uživatelů pomocí přihlašovacích údajů pro aktualizace funkcí při [přiřazení skupiny k aplikaci](#assign-an-application-to-a-group-directly)
+3. V nabídce **Typ aplikace** vyberte **všechny aplikace**a pak vyberte **použít**.
 
-Následující část popisuje, jak můžete zajistit [založené na heslech Single Sign-on](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) do všech aplikací, přidat direktivu using **přidat aplikaci mimo galerii** prostředí.
+4. Do vyhledávacího pole zadejte název aplikace a pak vyberte aplikaci z výsledků.
 
-## <a name="overview-of-steps-required"></a>Přehled kroků potřebných
+5. V části **Spravovat** vyberte **jednotné přihlašování**. 
 
-Konfigurace aplikace z Galerie Azure AD, které je potřeba:
+6. Vyberte možnost **založené na heslech**.
 
--   [Přidat aplikaci mimo Galerii](#add-a-non-gallery-application)
+7. Zadejte adresu URL stránky pro přihlášení na webu aplikace. Tento řetězec musí být stránka, která obsahuje pole pro zadání uživatelského jména.
 
--   [Konfigurace aplikace pro heslo jednotného přihlašování](#configure-the-application-for-password-single-sign-on)
+   ![Jednotné přihlašování pomocí hesla](./media/configure-single-sign-on-non-gallery-applications/password-based-sso.png)
 
--   Přiřazení aplikace k uživateli nebo skupině
+8. Vyberte **Uložit**. Služba Azure AD se pokusí analyzovat přihlašovací stránku pro zadání uživatelského jména a zadání hesla. Pokud je pokus úspěšný, jste hotovi. 
+ 
+> [!NOTE]
+> Dalším krokem je [přiřazení uživatelů nebo skupin k aplikaci](methods-for-assigning-users-and-groups.md). Po přiřazení uživatelů a skupin můžete zadat přihlašovací údaje, které se budou používat jménem uživatele při přihlášení k aplikaci. Vyberte **Uživatelé a skupiny**, zaškrtněte políčko pro řádek uživatele nebo skupiny a potom klikněte na **Aktualizovat přihlašovací údaje**. Pak zadejte uživatelské jméno a heslo, které chcete použít jménem uživatele nebo skupiny. V opačném případě budou uživatelé vyzváni k zadání přihlašovacích údajů sami při spuštění.
+ 
 
-    -   [Přiřadit uživatele k aplikaci přímo](#assign-a-user-to-an-application-directly)
+## <a name="manual-configuration"></a>Ruční konfigurace
 
-    -   [Přímo přiřadit aplikace do skupiny](#assign-an-application-to-a-group-directly)
+Pokud se pokus o analýzu služby Azure AD nezdaří, můžete nakonfigurovat ruční přihlášení.
 
-## <a name="add-a-non-gallery-application"></a>Přidat aplikaci mimo Galerii
+1. V části  **\<název aplikace > Konfigurace**vyberte **Konfigurovat \<název aplikace > nastavení jednotné přihlašování** . zobrazí se stránka **Konfigurace přihlášení** . 
 
-Pokud chcete přidat aplikaci z Galerie Azure AD, postupujte takto:
+2. Vyberte možnost **ručně zjišťovat přihlašovací pole**. Zobrazí se další pokyny, které popisují ruční zjišťování polí přihlašování.
 
-1.  Otevřít [webu Azure portal](https://portal.azure.com) a přihlaste se jako **globálního správce** nebo **spolusprávce**
+   ![Ruční konfigurace jednotného přihlašování založeného na heslech](./media/configure-password-single-sign-on/password-configure-sign-on.png)
+3. Vyberte možnost **zachytávání přihlašovacích polí**. Na nové kartě se otevře stránka stavu zachycení, která ukazuje, že **právě probíhá zachytávání metadat**zprávy.
 
-2.  Otevřít **rozšíření Azure Active Directory** kliknutím **všechny služby** v horní části hlavní navigační nabídce vlevo.
+4. Pokud se na nové kartě zobrazí pole **požadované rozšíření přístupového panelu** , vyberte **instalovat hned** a nainstalujte rozšíření prohlížeče **rozšíření pro zabezpečené přihlašování k aplikacím** . (Rozšíření prohlížeče vyžaduje Microsoft Edge, Chrome nebo Firefox.) Pak nainstalujte, spusťte a povolte rozšíření a aktualizujte stránku stavu zachycení.
 
-3.  Zadejte **"Azure Active Directory**" do vyhledávacího pole filtrovat a vybrat **Azure Active Directory** položky.
+   Rozšíření prohlížeče pak otevře jinou kartu, která zobrazí zadanou adresu URL.
+5. Na kartě se zadanou adresou URL Projděte přihlašovací proces. Do polí uživatelské jméno a heslo zadejte a zkuste se přihlásit. (Nemusíte zadávat správné heslo.)
 
-4.  Klikněte na tlačítko **podnikové aplikace** levé navigační nabídce Azure Active Directory.
+   Zobrazí se výzva k uložení zachycených přihlašovacích polí.
+6. Vyberte **OK**. Rozšíření prohlížeče aktualizuje stránku stavu zachycení s metadaty zprávy, která byla **pro aplikaci aktualizována**. Karta prohlížeče se zavře.
 
-5.  Klikněte na tlačítko **přidat** tlačítko v pravém horním rohu **podnikové aplikace** podokně.
+7. Na **přihlašovací stránce konfigurace** Azure AD vyberte **OK, přihlášení k aplikaci bylo úspěšné**.
 
-6.  Klikněte na tlačítko **aplikace mimo galerii**.
+8. Vyberte **OK**.
 
-7.  Zadejte název vaší aplikace v **název** textového pole. Vyberte **přidat.**
+Po zachytávání přihlašovací stránky můžete přiřadit uživatele a skupiny a zásady pro přihlašovací údaje můžete nastavit stejně jako běžné [aplikace jednotného hesla](what-is-single-sign-on.md).
 
-Po krátké době budete moci zobrazit podokno konfiguračních vaší aplikace.
-
-## <a name="configure-the-application-for-password-single-sign-on"></a>Konfigurace aplikace pro heslo jednotného přihlašování
-
-Pokud chcete nakonfigurovat jednotné přihlašování pro aplikaci, postupujte takto:
-
-1. Otevřít [ **webu Azure portal** ](https://portal.azure.com/) a přihlaste se jako **globálního správce** nebo **Spolusprávce.**
-
-2. Otevřít **rozšíření Azure Active Directory** kliknutím **všechny služby** v horní části hlavní navigační nabídce vlevo.
-
-3. Zadejte **"Azure Active Directory**" do vyhledávacího pole filtrovat a vybrat **Azure Active Directory** položky.
-
-4. Klikněte na tlačítko **podnikové aplikace** levé navigační nabídce Azure Active Directory.
-
-5. Klikněte na tlačítko **všechny aplikace** zobrazíte seznam všech aplikací.
-
-   * Pokud nevidíte aplikaci, kterou má zobrazit tady, použijte **filtr** ovládacího prvku v horní části **seznam všech aplikací** a nastavit **zobrazit** umožňuje **všechny Aplikace.**
-
-6. Vyberte aplikaci, kterou chcete nakonfigurovat jednotné přihlašování.
-
-7. Po načtení aplikace, klikněte na tlačítko **jednotného přihlašování** levé navigační nabídce aplikace.
-
-8. Vyberte režim **přihlašování na základě heslo.**
-
-9. Zadejte **přihlašovací adresa URL**. Toto je adresa URL, kde uživatelé zadat svoje uživatelské jméno a heslo pro přihlášení k aplikaci. Ujistěte se, že pole přihlášení jsou viditelné na adrese URL.
-
-10. Přiřazení uživatelů k aplikaci.
-
-11. Kromě toho můžete také zadat přihlašovací údaje jménem uživatele výběr řádků uživatele a kliknutím na **aktualizaci přihlašovacích údajů** a zadáním uživatelského jména a hesla jménem uživatele. V opačném případě uživatelé vyzváni k zadání samotné přihlašovací údaje při spuštění.
-
-
-## <a name="assign-a-user-to-an-application-directly"></a>Přiřadit uživatele k aplikaci přímo
-
-Jeden nebo více uživatelů přiřadit přímo k aplikaci, postupujte takto:
-
-1. Otevřít [ **webu Azure portal** ](https://portal.azure.com/) a přihlaste se jako **globálního správce.**
-
-2. Otevřít **rozšíření Azure Active Directory** kliknutím **všechny služby** v horní části hlavní navigační nabídce vlevo.
-
-3. Zadejte **"Azure Active Directory**" do vyhledávacího pole filtrovat a vybrat **Azure Active Directory** položky.
-
-4. Klikněte na tlačítko **podnikové aplikace** levé navigační nabídce Azure Active Directory.
-
-5. Klikněte na tlačítko **všechny aplikace** zobrazíte seznam všech aplikací.
-
-   * Pokud nevidíte aplikaci, kterou má zobrazit tady, použijte **filtr** ovládacího prvku v horní části **seznam všech aplikací** a nastavit **zobrazit** umožňuje **všechny Aplikace.**
-
-6. Vyberte aplikaci, kterou chcete přiřadit uživatele ze seznamu.
-
-7. Po načtení aplikace, klikněte na tlačítko **uživatelů a skupin** levé navigační nabídce aplikace.
-
-8. Otevřete **přidat přiřazení** podokně klikněte na tlačítko **přidat** tlačítko nahoře **uživatelů a skupin** seznamu.
-
-9. Klikněte na tlačítko **uživatelů a skupin** selektor z **přidat přiřazení** podokně.
-
-10. Zadejte **celý název** nebo **e-mailová adresa** uživatele zájem o přiřazení do **hledat podle jména nebo e-mailové adresy** vyhledávacího pole.
-
-11. Najeďte myší **uživatele** v seznamu zobrazíte **zaškrtávací políčko**. Klikněte na zaškrtávací políčko vedle profilové fotky uživatele nebo logo, které chcete přidat uživatele **vybrané** seznamu.
-
-12. **Volitelné:** Pokud byste chtěli **přidat více než jeden uživatel**, typ v jiném **celý název** nebo **e-mailová adresa** do **hledat podle jména nebo e-mailové adresy** vyhledávací pole a klikněte na zaškrtávací políčko a přidáním tohoto uživatele do **vybrané** seznamu.
-
-13. Po dokončení výběru uživatelů, klikněte na tlačítko **vyberte** tlačítko pro přidání do seznamu uživatelů a skupin pro přiřazení k aplikaci.
-
-14. **Volitelné:** klikněte na tlačítko **vybrat roli** oblasti pro výběr **přidat přiřazení** podokně vyberte roli, kterou chcete přiřadit uživatelům, které jste vybrali.
-
-15. Klikněte na tlačítko **přiřadit** tlačítko přiřadit aplikaci do vybraného uživatele.
-
-## <a name="assign-an-application-to-a-group-directly"></a>Přímo přiřadit aplikace do skupiny
-
-Jeden nebo více skupin přiřadit přímo k aplikaci, postupujte takto:
-
-1. Otevřít [ **webu Azure portal** ](https://portal.azure.com/) a přihlaste se jako **globálního správce.**
-
-2. Otevřít **rozšíření Azure Active Directory** kliknutím **všechny služby** v horní části hlavní navigační nabídce vlevo.
-
-3. Zadejte **"Azure Active Directory**" do vyhledávacího pole filtrovat a vybrat **Azure Active Directory** položky.
-
-4. Klikněte na tlačítko **podnikové aplikace** levé navigační nabídce Azure Active Directory.
-
-5. Klikněte na tlačítko **všechny aplikace** zobrazíte seznam všech aplikací.
-
-   * Pokud nevidíte aplikaci, kterou má zobrazit tady, použijte **filtr** ovládacího prvku v horní části **seznam všech aplikací** a nastavit **zobrazit** umožňuje **všechny Aplikace.**
-
-6. Vyberte aplikaci, kterou chcete přiřadit uživatele ze seznamu.
-
-7. Po načtení aplikace, klikněte na tlačítko **uživatelů a skupin** levé navigační nabídce aplikace.
-
-8. Otevřete **přidat přiřazení** podokně klikněte na tlačítko **přidat** tlačítko nahoře **uživatelů a skupin** seznamu.
-
-9. Klikněte na tlačítko **uživatelů a skupin** selektor z **přidat přiřazení** podokně.
-
-10. Zadejte **název celé skupiny** zájem o přiřazení do skupiny **hledat podle jména nebo e-mailové adresy** vyhledávacího pole.
-
-11. Najeďte myší **skupiny** v seznamu zobrazíte **zaškrtávací políčko**. Klikněte na zaškrtávací políčko vedle profilové fotky nebo logo, které chcete přidat uživatele do skupiny **vybrané** seznamu.
-
-12. **Volitelné:** Pokud byste chtěli **přidat více než jednu skupinu**, typ v jiném **název celé skupiny** do **hledat podle jména nebo e-mailové adresy** vyhledávací pole a klikněte na zaškrtávací políčko a přidáním této skupiny Chcete **vybrané** seznamu.
-
-13. Když jste hotovi s výběrem skupin, klikněte na tlačítko **vyberte** tlačítko pro přidání do seznamu uživatelů a skupin pro přiřazení k aplikaci.
-
-14. **Volitelné:** klikněte na tlačítko **vybrat roli** oblasti pro výběr **přidat přiřazení** podokně vyberte roli, kterou chcete přiřadit ke zvoleným skupinám, které jste vybrali.
-
-15. Klikněte na tlačítko **přiřadit** tlačítko a přiřazení aplikace k vybraným skupinám.
-
-Po krátké době uživatele, které jste vybrali dát spustit tyto aplikace na přístupovém panelu.
+> [!NOTE]
+> Pro aplikaci můžete nahrát logo dlaždice pomocí tlačítka **nahrát logo** na kartě **Konfigurace** aplikace.
 
 ## <a name="next-steps"></a>Další postup
-[Poskytovat jednotné přihlašování do aplikací pomocí Proxy aplikace](application-proxy-configure-single-sign-on-with-kcd.md)
+
+- [Přiřazení uživatelů nebo skupin k aplikaci](methods-for-assigning-users-and-groups.md)
+- [Konfigurace automatického zřizování uživatelských účtů](configure-automatic-user-provisioning-portal.md)

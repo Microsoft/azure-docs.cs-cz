@@ -1,19 +1,18 @@
 ---
 title: Odstranění trezoru Recovery Services v Azure
 description: Popisuje odstranění trezoru Recovery Services.
-services: backup
 author: rayne-wiselman
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 07/11/2019
 ms.author: raynew
-ms.openlocfilehash: 3d3a77b43babb7fa3666dbbc9e4334f61ae612f8
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: f98b9a02d12cc53ba23857b203ee3eaed9dd7cfa
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68232663"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68466643"
 ---
 # <a name="delete-a-recovery-services-vault"></a>Odstranění trezoru služby Recovery Services
 
@@ -249,7 +248,7 @@ Další informace o příkazu ARMClient najdete v tomto [dokumentu](https://gith
 3. V Azure Portal ověřte odstranění trezoru.
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 [Další informace](backup-azure-recovery-services-vault-overview.md) Recovery Services trezory.<br/>
 [Seznamte](backup-azure-manage-windows-server.md) se s monitorováním a správou trezorů Recovery Services.

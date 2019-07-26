@@ -1,10 +1,10 @@
 ---
-title: Dokončení kontroly přístupu skupiny nebo aplikace – Azure Active Directory | Dokumentace Microsoftu
-description: Zjistěte, jak dokončení kontroly přístupu členů skupiny nebo přístupu k aplikacím v kontrol přístupu Azure Active Directory.
+title: Dokončení kontroly přístupu skupin nebo aplikací – Azure Active Directory | Microsoft Docs
+description: Naučte se, jak dokončit kontrolu přístupu pro členy skupiny nebo přístup k aplikacím v Azure Active Directory kontroly přístupu.
 services: active-directory
 documentationcenter: ''
-author: rolyon
-manager: mtillman
+author: msaburnley
+manager: daveba
 editor: markwahl-msft
 ms.service: active-directory
 ms.workload: identity
@@ -12,77 +12,77 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 05/22/2019
-ms.author: rolyon
+ms.date: 07/23/2019
+ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ec3909ffbb624284f999360140b7454098643062
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 97c405032368ffd06f5808bc4518302d2f6d66b9
+ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66473363"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68489148"
 ---
-# <a name="complete-an-access-review-of-groups-or-applications-in-azure-ad-access-reviews"></a>Dokončení kontroly přístupu skupin nebo kontrol přístupu aplikací ve službě Azure AD
+# <a name="complete-an-access-review-of-groups-or-applications-in-azure-ad-access-reviews"></a>Dokončení kontroly přístupu skupin nebo aplikací v kontrolách přístupu ke službě Azure AD
 
-Jako správce můžete [vytvoření kontroly přístupu skupinám nebo aplikacím](create-access-review.md) a revidující [provádění kontroly přístupu](perform-access-review.md). Tento článek popisuje postup zobrazení výsledků kontroly přístupu a použití výsledky.
+Jako správce [vytvoříte kontrolu přístupu pro skupiny nebo aplikace](create-access-review.md) a kontrolory, kteří [provádějí kontrolu přístupu](perform-access-review.md). Tento článek popisuje, jak zobrazit výsledky kontroly přístupu a použít výsledky.
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-intro-sentence.md)]
 
 ## <a name="prerequisites"></a>Požadavky
 
 - Azure AD Premium P2
-- Globální správce, Správce uživatelů, správce zabezpečení nebo Čtenář zabezpečení
+- Globální správce, Správce uživatelů, správce zabezpečení nebo čtecí modul zabezpečení
 
-Další informace najdete v tématu [kteří uživatelé musí mít licence?](access-reviews-overview.md#which-users-must-have-licenses).
+Další informace najdete v tématu o uživatelích, [kteří musí mít licence?](access-reviews-overview.md#which-users-must-have-licenses).
 
-## <a name="view-an-access-review"></a>Zobrazit kontroly přístupu
+## <a name="view-an-access-review"></a>Zobrazit kontrolu přístupu
 
-Průběh můžete sledovat, jak se revidující dokončení jejich revize.
+Můžete sledovat průběh, když kontroloři dokončí revize.
 
-1. Přihlaste se k Azure portal a otevřete [stránka zásady správného řízení identit](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/).
+1. Přihlaste se k Azure Portal a otevřete [stránku zásad správného řízení identity](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/).
 
-1. V nabídce vlevo klikněte na tlačítko **kontrol přístupu**.
+1. V nabídce vlevo klikněte na **recenze přístupů**.
 
-1. V seznamu klikněte na možnost kontroly přístupu.
+1. V seznamu klikněte na kontrolu přístupu.
 
-    Chcete-li zobrazit řadu přístup kontroly, přejděte na kontrolu přístupu a nadcházející události zjistíte v naplánované kontroly.
+    Pokud chcete zobrazit řadu kontrol přístupu, přejděte na kontrolu přístupu a v části naplánované recenze najdete nadcházející výskyty.
 
-    Na **přehled** stránky, zobrazí se průběh. Žádné přístupová práva jsou změnit v adresáři, dokud se kontrola dokončí.
+    Na stránce **Přehled** můžete zobrazit průběh. V adresáři se nezměnila žádná přístupová práva, dokud se kontrola nedokončí.
 
-    ![Průběh kontroly přístupu](./media/complete-access-review/overview-progress.png)
+    ![Průběh kontrol přístupu](./media/complete-access-review/overview-progress.png)
 
-1. Pokud chcete zastavit kontrolu přístupu před dosažením naplánované koncové datum, klikněte na tlačítko **Zastavit** tlačítko.
+1. Chcete-li před dosažením naplánovaného koncového data zastavit kontrolu přístupu, klikněte na tlačítko **zastavit** .
 
-    Při zastavení kontrolu, revidující nebude moct poskytovat odpovědi. Kontrola nelze restartovat po je zastaven.
+    Po zastavení recenze již recenzenti nebude moci poskytnout odpovědi. Po zastavení nemůžete kontrolu znovu spustit.
 
-1. Pokud už máte zájem kontroly přístupu, můžete ji odstranit kliknutím **odstranit** tlačítko.
+1. Pokud již nejste zajímat kontrolu přístupu, můžete ji odstranit kliknutím na tlačítko **Odstranit** .
 
 ## <a name="apply-the-changes"></a>Použít změny
 
-Pokud **automaticky zavést výsledky do prostředku** byla povolena a na základě vašeho výběru v **nastavení činností po dokončení**, automaticky – použít se bude provedena po koncové datum kontrola nebo když ručně zastavte kontrolu.
+Pokud je možnost **automaticky použít výsledky do prostředku** zapnutá a na základě vašich výběrů v **nastavení po dokončení**, provede se automatické použití po datu ukončení revize nebo při ručním zastavení kontroly.
 
-Pokud **automaticky zavést výsledky do prostředku** nebyla povolena pro revizi, klepněte na tlačítko **použít** ručně změny se projeví. Pokud byl odepřen přístup uživatele při kontrole, po kliknutí na **použít**, odebere jejich přiřazení členství nebo aplikace Azure AD.
+Pokud se u prostředku pro kontrolu nepovolilo **automatické použití výsledků** , klikněte na **použít** , aby se změny projevily ručně. Pokud se k přístupu uživatele v recenzi odepře přístup, po kliknutí na **použít**Azure AD odebere přiřazení členství nebo aplikací.
 
-![Použít změny vyplývající z revize přístupu](./media/complete-access-review/apply-changes.png)
+![Použití změn kontroly přístupu](./media/complete-access-review/apply-changes.png)
 
-Stav kontroly se změní z **dokončeno** prostřednictvím průběžných stavů například **použití** a nakonec do stavu **použitý výsledek**. Měli byste očekávat zobrazíte zamítnutým uživatelům, pokud existuje, odebírán z přiřazení skupiny členství nebo aplikaci za několik minut.
+Stav revize se změní ze dokončených do  mezistavů, jako je **použití** a nakonec na **výsledek použití**. Měli byste očekávat, že v několika minutách se v případě potřeby odeberou Zakázaní uživatelé z členství ve skupině nebo přiřazení aplikace.
 
-Nakonfigurované automatické použití kontroly, nebo jeho výběru **použít** nemá vliv na skupinu, která pochází z místního adresáře nebo dynamické skupiny. Pokud chcete změnit skupinu, která mohou být místní, stáhněte si výsledky a tyto změny použít k reprezentaci dané skupiny v tomto adresáři.
+Nakonfigurované automatické použití revize nebo volba **použít** nemá vliv na skupinu, která pochází z místního adresáře nebo dynamické skupiny. Pokud chcete změnit skupinu, která pochází z místního prostředí, Stáhněte výsledky a použijte tyto změny v zastoupení skupiny v tomto adresáři.
 
 ## <a name="retrieve-the-results"></a>Načtení výsledků
 
-Chcete-li zobrazit výsledky kontroly jednorázové přístupu, klikněte na tlačítko **výsledky** stránky. Chcete-li zobrazit pouze přístup uživatelů, do vyhledávacího pole, zadejte zobrazované jméno nebo hlavní název uživatele pro uživatele byl recenzován má přístup.
+Chcete-li zobrazit výsledky pro jednorázovou kontrolu přístupu, klikněte na stránku **výsledky** . Chcete-li zobrazit přístup pouze uživatele, zadejte do vyhledávacího pole název zobrazení nebo hlavní název uživatele, jehož přístup byl zkontrolován.
 
-![Načíst výsledky kontroly přístupu](./media/complete-access-review/retrieve-results.png)
+![Načtení výsledků pro kontrolu přístupu](./media/complete-access-review/retrieve-results.png)
 
-Chcete-li zobrazit průběh kontroly aktivní přístupu, který se opakuje, klikněte na **výsledky** stránky.
+Pokud chcete zobrazit průběh aktivní kontroly přístupu, klikněte na stránku **výsledky** .
 
-Chcete-li zobrazit výsledky dokončenou instanci sady kontroly přístupu, který se opakuje, klikněte na tlačítko **kontrola historie**a pak vyberte konkrétní instanci ze seznamu instance kontrol přístupu dokončené, podle instance počáteční a koncové datum. Můžete získat výsledky této instance **výsledky** stránky.
+Chcete-li zobrazit výsledky dokončené instance kontroly přístupu, klikněte na tlačítko **zkontrolovat historii**a pak vyberte konkrétní instanci ze seznamu dokončených instancí kontroly přístupu na základě počátečního a koncového data instance. Výsledky této instance lze získat ze stránky **výsledků** .
 
-Pokud chcete načíst všechny výsledky kontroly přístupu, klikněte na tlačítko **Stáhnout** tlačítko. Výsledný soubor CSV lze je zobrazit v Excelu nebo v jiných aplikacích, které se otevřou UTF-8 kódování souborů CSV.
+Chcete-li načíst všechny výsledky kontroly přístupu, klikněte na tlačítko **Stáhnout** . Výsledný soubor CSV se dá zobrazit v Excelu nebo v jiných programech, které otevřou soubory CSV s kódováním UTF-8.
 
-## <a name="remove-users-from-an-access-review"></a>Odebrat uživatele z kontroly přístupu
+## <a name="remove-users-from-an-access-review"></a>Odebrání uživatelů z kontroly přístupu
 
  Ve výchozím nastavení zůstane odstraněný uživatel ve službě Azure Active Directory odstraněný na 30 dní, během kterých ho v případě potřeby může správce obnovit.  Po 30 dnech je tento uživatel odstraněn trvale.  Kromě toho může globální správce pomocí portálu Azure Active Directory explicitně [trvale odstranit nedávno odstraněného uživatele](../fundamentals/active-directory-users-restore.md) ještě před dosažením tohoto časového období.  Jakmile je uživatel trvale odstraněný, odeberou se následně data o tomto uživateli z aktivních kontrol přístupu.  Informace o auditování o odstraněných uživatelích zůstávají v protokolu auditu.
 
@@ -90,5 +90,5 @@ Pokud chcete načíst všechny výsledky kontroly přístupu, klikněte na tlač
 
 - [Správa přístupu uživatelů pomocí kontrol přístupu Azure AD](manage-user-access-with-access-reviews.md)
 - [Správa přístupu uživatelů typu host pomocí kontrol přístupu Azure AD](manage-guest-access-with-access-reviews.md)
-- [Vytvoření kontroly přístupu skupiny nebo aplikace](create-access-review.md)
+- [Vytvoření kontroly přístupu skupin nebo aplikací](create-access-review.md)
 - [Vytváření kontroly přístupu uživatelů v roli správce Azure AD](../privileged-identity-management/pim-how-to-start-security-review.md)

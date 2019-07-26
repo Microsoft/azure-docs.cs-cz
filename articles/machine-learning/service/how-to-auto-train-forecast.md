@@ -1,7 +1,7 @@
 ---
-title: Automaticky – train model prognózy časových řad
+title: Automatické učení modelu prognózy časových řad
 titleSuffix: Azure Machine Learning service
-description: Zjistěte, jak pomocí služby Azure Machine Learning algoritmu time series prognóz regresního modelu pomocí automatizované strojového učení.
+description: Naučte se používat službu Azure Machine Learning ke studiu předpovědi regresního modelu časových řad pomocí automatizovaného strojového učení.
 services: machine-learning
 author: trevorbye
 ms.author: trbye
@@ -10,39 +10,39 @@ ms.subservice: core
 ms.reviewer: trbye
 ms.topic: conceptual
 ms.date: 06/20/2019
-ms.openlocfilehash: 4a3ab9094080ab257a885bb7a745fc83948327c2
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: 34902aa23339b62920f918ae19b410a99e226a0e
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67331685"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68358808"
 ---
-# <a name="auto-train-a-time-series-forecast-model"></a>Automaticky – train model prognózy časových řad
+# <a name="auto-train-a-time-series-forecast-model"></a>Automatické učení modelu prognózy časových řad
 
-V tomto článku se dozvíte, jak pro trénování časových řad prognóz regresního modelu pomocí automatizovaných strojového učení ve službě Azure Machine Learning. Konfigurace modelu prognózy je podobné nastavení standardní regresního modelu pomocí automatizovaných strojového učení, ale existují určité kroky předběžného zpracování a možnosti konfigurace pro práci s daty časových řad. Následující příklady ukazují, jak do:
+V tomto článku se naučíte, jak pomocí automatizovaného strojového učení ve službě Azure Machine Learning proškolit regresní model předpovědi časových řad. Konfigurace modelu prognózy je podobná nastavení standardního regresního modelu pomocí automatizovaného strojového učení, ale pro práci s daty časových řad existují některé možnosti konfigurace a postup předběžného zpracování. Následující příklady vám ukážou, jak:
 
-* Příprava dat pro čas řady modelování
-* Konfigurovat parametry pro konkrétní časových řad v [ `AutoMLConfig` ](/python/api/azureml-train-automl/azureml.train.automl.automlconfig) objektu
-* Spustit předpovědi s daty časových řad
+* Příprava dat pro modelování časových řad
+* Konfigurace určitých parametrů časových řad v [`AutoMLConfig`](/python/api/azureml-train-automl/azureml.train.automl.automlconfig) objektu
+* Spuštění předpovědi s daty časových řad
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE2X1GW]
 
-Automatizované ML můžete kombinovat technik a postupů a získejte doporučené, vysoce kvalitní časovou řadu prognózy. Automatizované experiment časovou řadu je považován za problém regrese s množstvím proměnných. Poslední časové řady hodnoty jsou "neseskupené" se další dimenze pro regresor společně s další prediktory. 
+Pomocí automatizovaného ML můžete kombinovat techniky a přístupy a získat doporučenou a vysoce kvalitní předpověď časových řad. Automatický experiment s časovou řadou se považuje za problém lineární regrese. Hodnoty za časovou řadou jsou "pivoted" a stanou se dalšími dimenzemi pro regresor společně s jinými koproměnnými. 
 
-Tento přístup, na rozdíl od klasického čas řady metod, má výhodu přirozeně začlenění více kontextových proměnných a jejich vzájemných vztazích během cvičení. Ve skutečných aplikacích prognóz několika faktory mohou mít vliv na prognózy. Například při Prognózování prodeje, interakce historické trendy, exchange sazba a cena všechny společně jednotka prodejní výsledky. Další výhodou je, všechny nejnovější inovace v regresních modelů ihned k předpovědi.
+Tento přístup, na rozdíl od metod klasických časových řad, má výhodu přirozeně zahrnující více kontextových proměnných a jejich vzájemný vztah během školení. V aplikacích pro předpověď reálného světa může předpověď ovlivnit více faktorů. Například při prognózování prodeje, interakcí s historickými trendy, směnného kurzu a ceny budou všechny společně řídit výsledek prodeje. Další výhodou je, že všechny nedávné inovace v regresních modelech se okamžitě použijí na prognózy.
 
-Je možné [konfigurace](#config) jak daleko dopředu prognózy by měl rozšířit (prognózy horizontu), a také zjevně demonstruje výskyt pomalé a provádění dalších akcí. Automatizované ML zjistí model jednu, ale často interně větvenou pro všechny položky v datové sady a predikcí možností. Další data jsou tedy k dispozici k odhadu parametry modelu a je možné generalizace nezobrazený řady. 
+Můžete [nakonfigurovat](#config) , jak daleko do budoucna má být prognóza rozšířena (horizont předpovědi), a také prodlevy a další. Automatizovaná ML seznámí s jedním, ale často interně rozvětveným modelem pro všechny položky v datové sadě a horizontech předpovědi. K dispozici jsou proto další data k odhadování parametrů modelu a generalizace na nedostupné řady. 
 
-Funkce z trénovací data extrahovat hrát důležitou roli. A automatizované ML provede standardní předběžného zpracování kroky a vygeneruje další funkce časových řad pro zachycení sezónní efekty a maximalizovat prediktivní přesnost. 
+Funkce extrahované ze školicích dat hrají důležitou roli. Automatizované ML a vychází ze standardních kroků předběžného zpracování a generuje další funkce časových řad, které zaznamenávají sezónní účinky a maximalizují prediktivní přesnost. 
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Pracovní prostor služby Azure Machine Learning. Pokud chcete vytvořit pracovní prostor, najdete v článku [vytvořit pracovní prostor služby Azure Machine Learning](setup-create-workspace.md).
-* Tento článek předpokládá základní znalost nastavení automatizované experimentu strojového učení. Postupujte podle [kurzu](tutorial-auto-train-models.md) nebo [postupy](how-to-configure-auto-train.md) zobrazíte základní automatizované strojového učení vzory návrhu v experimentu.
+* Pracovní prostor služby Azure Machine Learning. Pokud chcete vytvořit pracovní prostor, přečtěte si téma [Vytvoření pracovního prostoru služby Azure Machine Learning](setup-create-workspace.md).
+* Tento článek předpokládá základní znalost s nastavením automatizovaného experimentu strojového učení. Pomocí [kurzu](tutorial-auto-train-models.md) nebo [postupu](how-to-configure-auto-train.md) si můžete prohlédnout základní modely návrhu experimentů pro strojové učení.
 
 ## <a name="preparing-data"></a>Příprava dat
 
-Nejdůležitější rozdíl mezi Prognózování úloh typ regrese a regresní typ úkolu v rámci automatizovaného machine learning je včetně funkce ve vašich datech, která představuje platné časové řady. Pravidelné časové řady má frekvenci dobře definovaný a konzistentní vzhledem k aplikacím a má hodnotu v každém bodě ukázka spojitý časový rozsah. Vezměte v úvahu z následujícího snímku souboru `sample.csv`.
+Nejdůležitější rozdíl mezi typem úkolu regrese regrese a typem úlohy regrese v rámci automatizovaného strojového učení je zahrnutí funkce do vašich dat, která představuje platnou časovou řadu. Pravidelná časová řada má jasně definovanou a konzistentní frekvenci a má hodnotu pro každý vzorový bod v souvislém časovém intervalu. Vezměte v úvahu následující snímek souboru `sample.csv`.
 
     day_datetime,store,sales_quantity,week_of_year
     9/3/2018,A,2000,36
@@ -56,7 +56,7 @@ Nejdůležitější rozdíl mezi Prognózování úloh typ regrese a regresní t
     9/7/2018,A,2450,36
     9/7/2018,B,650,36
 
-Tato datová sada je jednoduchý příklad denní prodejní data pro společnosti, která má dvě různé úložiště, A a B. kromě, je funkce pro `week_of_year` , který vám umožní modelu k detekci týdenní sezónnosti. Pole `day_datetime` představuje čisté časové řady s denní frekvence a pole `sales_quantity` je cílový sloupec pro spouštěním predikcí. Načtení dat do struktury Pandas dataframe, a pak pomocí `to_datetime` funkce zkontrolujte časové řady `datetime` typu.
+Tato datová sada je jednoduchý příklad každodenních prodejních dat pro společnost, která má dvě různá úložiště, a a B. Navíc je k dispozici funkce `week_of_year` , která umožňuje, aby model zjišťoval týdenní sezónnost. Pole `day_datetime` představuje čistou časovou řadu s denní frekvencí a pole `sales_quantity` je cílovým sloupcem pro spuštění předpovědi. Přečtěte si data do PANDAS dataframe a pak použijte `to_datetime` funkci, abyste zajistili, že časová řada `datetime` je typu.
 
 ```python
 import pandas as pd
@@ -64,7 +64,7 @@ data = pd.read_csv("sample.csv")
 data["day_datetime"] = pd.to_datetime(data["day_datetime"])
 ```
 
-V tomto případě je již řazeno vzestupně podle času pole `day_datetime`. Ale při nastavování experiment, ujistěte se, že sloupec je požadovaný čas je seřazen vzestupně sestavit platný časové řady. Předpokládejme, že data obsahují 1 000 záznamů a deterministický rozdělení ve data vytvoření trénování a testování datových sad. Pak oddělit cílového pole `sales_quantity` vytvořte předpověď trénování a testování sad.
+V tomto případě jsou data již seřazena vzestupně podle pole `day_datetime`čas. Při nastavování experimentu se ale ujistěte, že požadovaný sloupec čas je seřazen vzestupně, aby se vytvořila platná časová řada. Předpokládejme, že data obsahují 1 000 záznamů a vytvoří deterministické rozdělení dat pro vytváření školicích a testovacích sad dat. Pak rozdělte cílové pole `sales_quantity` , aby se vytvořila předpověď předpovědi a sady testů.
 
 ```python
 X_train = data.iloc[:950]
@@ -75,30 +75,30 @@ y_test = X_test.pop("sales_quantity").values
 ```
 
 > [!NOTE]
-> Když trénujete model pro předpověď budoucích hodnot, zajistěte všechno, co funkce použité v školení se dá použít při spouštěním predikcí pro určené horizont. Například při vytváření prognózy poptávky, včetně funkcí pro aktuální ceny akcie může široce zvýšit přesnost školení. Nicméně pokud máte v úmyslu Prognózování s dlouhý časový horizont, nemusí být schopni přesně předpovědět budoucí uložené hodnoty odpovídající budoucí body časových řad a přesnost modelu může být negativně.
+> Při výuce modelu pro předpověď budoucích hodnot se ujistěte, že všechny funkce používané v rámci školení můžou být použité pro předpovědi pro zamýšlené horizonty. Například při vytváření prognózy poptávky, včetně funkce pro aktuální cenu akcií, se může zvýšit přesnost školení. Pokud máte v úmyslu předpovědi s dlouhým horizontem, možná nebudete schopni přesně předpovědět budoucí hodnoty v budoucích zásobách, které odpovídají budoucím bodům časových řad, a přesnost modelu by mohla být zhoršená.
 
 <a name="config"></a>
-## <a name="configure-and-run-experiment"></a>Nakonfigurování a spuštění experimentu
+## <a name="configure-and-run-experiment"></a>Konfigurace a spuštění experimentu
 
-Pro předpověď úkoly, používá automatizované strojového učení úkony předběžného zpracování a odhad kroky, které jsou specifické pro data časových řad. Provede následující kroky předběžného zpracování:
+Pro úlohy předpovědi používá automatizované strojové učení kroky předběžného zpracování a odhadu, které jsou specifické pro data časových řad. Spustí se následující kroky předběžného zpracování:
 
-* Zjištění časových řad ukázkový frekvence (například hodinové, denní, týdenní) a vytvořit nové záznamy pro chybějící body v čase provádět řadu průběžné.
-* Dává chybějících hodnot ve sloupcích funkce (s použitím hodnoty mediánu sloupce) a cíl (prostřednictvím výplně dopředu)
-* Vytvoření funkce založené na intervalem povolit pevný efekty napříč různými řadami
-* Vytvoření funkcí podle času, které pomáhají studium sezónní vzory
-* Kódování zařazené do kategorií proměnné číselnou množství
+* Umožňuje detekovat četnost vzorků časové řady (např. každou hodinu, denně, týdně) a vytvářet nové záznamy pro nepřítomné časové body, aby se řada mohla spojit.
+* Imputace chybějící hodnoty v cíli (prostřednictvím předávaného sloupce) a sloupců funkcí (pomocí hodnot sloupců mediánu)
+* Vytvoření funkcí založených na zrnitosti, které umožní pevné efekty v různých řadách
+* Vytváření funkcí založených na čase, které vám pomůžou při učení se sezónními vzory
+* Kódovat proměnné kategorií na číselné množství
 
-`AutoMLConfig` Objekt definuje nastavení a data potřebná pro úlohu automatické machine learning. Podobně jako regresní problém, můžete definovat standardní školení parametrů, jako je typ úlohy, počet opakování je vyšší, Cvičná data a počet křížové ověření. Prognózování úloh, existují další parametry, které musí být nastavena, které mají vliv experiment. Následující tabulka popisuje jednotlivé parametry a jejich využití.
+`AutoMLConfig` Objekt definuje nastavení a data potřebná pro úkol automatizovaného strojového učení. Podobně jako u regresního problému definujete standardní parametry školení, jako je typ úkolu, počet iterací, školicích dat a počet křížových ověření. Pro úlohy prognózy existují další parametry, které musí být nastaveny, které mají vliv na experiment. Následující tabulka vysvětluje jednotlivé parametry a jejich použití.
 
-| Param | Popis | Požaduje se |
+| Param | Popis | Požadováno |
 |-------|-------|-------|
-|`time_column_name`|Slouží k zadání vstupních dat použít pro vytváření časové řady a jeho četnost odvození sloupce data a času.|✓|
-|`grain_column_names`|Názvy, definování skupin jednotlivé řady ve vstupních datech. Pokud není definovaný interval, datová sada se považuje za jednu časových řad.||
-|`max_horizon`|Definuje maximální požadovaný prognózy horizontu v jednotkách frekvence časových řad. Jednotky jsou založeny na časový interval cvičných dat, např. měsíčně, týdenní, že uživatel by měl předpovědět navýšení kapacity.|✓|
-|`target_lags`|*n* období vpřed prodleva cílových hodnot před cvičení modelu.||
-|`target_rolling_window_size`|*n* historických období pro generování předpokládaných hodnoty, < = školení nastavení velikosti. Pokud tento parametr vynechán, *n* je nastavení úplné školení velikosti.||
+|`time_column_name`|Slouží k zadání sloupce data a času ve vstupních datech použitých k vytvoření časové řady a odvození frekvence.|✓|
+|`grain_column_names`|Názvy definující jednotlivé skupiny řad ve vstupních datech. Pokud není sada zrn definována, předpokládá se, že datová sada bude jedna časová řada.||
+|`max_horizon`|Definuje maximální požadovaný horizont prognózy v jednotkách časové řady. Jednotky jsou založené na časovém intervalu vašich školicích dat, třeba měsíčně, týdně, kdy by měl prognóza předpovědět.|✓|
+|`target_lags`|*n* období pro přeposílání cílových hodnot před školením modelu||
+|`target_rolling_window_size`|*n* historická období, která se mají použít ke generování předpokládaných hodnot, < = velikost sady školení Pokud tento parametr vynecháte, *n* je úplná velikost sady školení.||
 
-Vytvoření nastavení časových řad jako objekt slovníku. Nastavte `time_column_name` k `day_datetime` pole v datové sadě. Definovat `grain_column_names` parametr zajistit, aby **dva samostatné skupiny časových řad** jsou vytvořené pro data, jeden pro úložiště A a b a konečně, nastavte `max_horizon` na 50, aby bylo možné předpovědět, pro celý test nastavení. Nastavit časové období prognózy do 10 období s `target_rolling_window_size`a prodlevu cílové hodnoty 2 období pokračovat s `target_lags` parametru.
+Vytvořte nastavení časových řad jako objekt Dictionary. `time_column_name` Nastavtena`day_datetime` pole v datové sadě. Definujte parametr, aby se zajistilo, že se pro data vytvoří **dvě samostatné skupiny časových řad** . jednu pro úložiště a a B. Nakonec nastavte `max_horizon` na 50, aby bylo možné předpovědět celou sadu testů. `grain_column_names` Nastavte okno prognózy na 10 teček `target_rolling_window_size`a prodlevu cílových hodnot 2 teček `target_lags` s parametrem.
 
 ```python
 time_series_settings = {
@@ -110,7 +110,7 @@ time_series_settings = {
 }
 ```
 
-Teď vytvořte standardní `AutoMLConfig` objektu, určení `forecasting` typ úkolu a odeslání experimentu. Po dokončení modelu načte nejlépe spuštění iterace.
+Nyní vytvořte standardní `AutoMLConfig` objekt, `forecasting` zadáním typu úkolu a experiment odešlete. Po dokončení modelu načtěte nejlepší iteraci spuštění.
 
 ```python
 from azureml.core.workspace import Workspace
@@ -135,42 +135,43 @@ best_run, fitted_model = local_run.get_output()
 ```
 
 > [!NOTE]
-> Pro procedury křížového ověřování (CV) data časových řad porušit základní statistické předpoklady canonical strategie K přeložení křížového ověřování, takže automatizované machine learning implementuje postupné postup ověření původu a vytvořte přeložení křížového ověření pro data časových řad. Pomocí tohoto postupu, zadejte `n_cross_validations` parametr `AutoMLConfig` objektu. Můžete obejít ověření a použití vlastní ověřování, nastaví se `X_valid` a `y_valid` parametry.
+> V případě postupu křížového ověření (CV) můžou data časových řad porušovat základní statistické předpoklady pro křížové ověřování, takže automatizované Machine Learning implementuje postup pro ověření zavedení za provozu. skládání křížového ověřování pro data časových řad. Chcete-li použít tento postup, `n_cross_validations` zadejte parametr `AutoMLConfig` v objektu. Ověřování můžete obejít a použít vlastní ověřovací sady s `X_valid` parametry a. `y_valid`
 
-### <a name="view-feature-engineering-summary"></a>Zobrazit funkce engineering souhrn
+### <a name="view-feature-engineering-summary"></a>Zobrazit souhrn metodologie funkcí
 
-Pro typy úloh časových řad v automatizovaných machine learning můžete zobrazit podrobnosti o funkci technické procesu. Následující kód ukazuje jednotlivé nezpracovaná funkce společně s následujícími atributy:
+V případě typů úloh časových řad v automatizovaném strojovém učení můžete zobrazit podrobnosti z procesu technické analýzy funkcí. Následující kód ukazuje jednotlivé nezpracované funkce spolu s následujícími atributy:
 
-* Název nezpracované funkce
-* Počet inženýrství funkce vytvořených tuto funkci nezpracované
-* Typ zjistil
-* Určuje, zda byla zahozena, funkce
-* Seznam transformací funkce pro funkci nezpracovaná
+* Nezpracovaný název funkce
+* Počet vydaných funkcí, které byly vytvořeny z této nezpracované funkce
+* Zjištěn typ
+* Určuje, zda byla funkce vyřazena.
+* Seznam transformací funkcí pro nezpracované funkce
 
 ```python
 fitted_model.named_steps['timeseriestransformer'].get_featurization_summary()
 ```
 
-## <a name="forecasting-with-best-model"></a>Prognózování s nejlepší model
+## <a name="forecasting-with-best-model"></a>Prognózování s nejlepším modelem
 
-Nejlepší model iterace použijte k předpovědi hodnot pro datovou sadu testů.
+Použijte nejlepší modelovou iteraci pro předpověď hodnot sady dat testu.
 
 ```python
 y_predict = fitted_model.predict(X_test)
 y_actual = y_test.flatten()
 ```
 
-Alternativně můžete použít `forecast()` místo funkce `predict()`, který vám umožní specifikace zahájení předpovědi. V následujícím příkladu, je nejprve nahradit všechny hodnoty v `y_pred` s `NaN`. Prognózy původu bude na konci trénovací data v tomto případě by být obvykle při použití `predict()`. Ale pokud nahradit pouze v druhé polovině `y_pred` s `NaN`, funkce zůstane číselných hodnot v první polovině bez úprav, ale prognózy `NaN` hodnoty ve druhé polovině. Funkce vrátí předpokládaných hodnoty a zarovnané funkce.
+Alternativně můžete použít `forecast()` funkci `predict()`namísto, což umožní specifikace, kdy by měl předpovědi začít. V následujícím příkladu je třeba nejprve nahradit všechny hodnoty v `y_pred`. `NaN` V takovém případě bude zdroj prognózy na konci školicích dat, jako by to bylo normálně při použití `predict()`. Pokud jste však nahradili pouze druhou polovinu z `y_pred` s `NaN`, funkce by v první polovině `NaN` nezměněných hodnot nechala tyto číselné hodnoty, ale předpověď hodnot v druhé polovině. Funkce vrátí předpovězené hodnoty i zarovnané funkce.
 
-Můžete také použít `forecast_destination` parametr `forecast()` funkce k předpovědi hodnot až k zadanému datu.
+Můžete také použít `forecast_destination` parametr `forecast()` ve funkci k předpovědi hodnot až do zadaného data.
 
 ```python
 y_query = y_test.copy().astype(np.float)
 y_query.fill(np.nan)
-y_fcst, X_trans = fitted_pipeline.forecast(X_test, y_query, forecast_destination=pd.Timestamp(2019, 1, 8))
+y_fcst, X_trans = fitted_pipeline.forecast(
+    X_test, y_query, forecast_destination=pd.Timestamp(2019, 1, 8))
 ```
 
-Vypočítat RMSE (střední hodnotu kořenové spolehlivosti chyba) mezi `y_test` skutečnými hodnotami a předpokládané hodnoty v `y_pred`.
+Vypočítá RMSE (znak "root střed_hodn" Error) mezi `y_test` skutečnými hodnotami a předpovězené hodnoty v `y_pred`.
 
 ```python
 from sklearn.metrics import mean_squared_error
@@ -180,18 +181,18 @@ rmse = sqrt(mean_squared_error(y_actual, y_predict))
 rmse
 ```
 
-Teď, když celkové určil přesnost modelu, většina realistické dalším krokem je použít model k předpovědi Neznámý budoucí hodnoty. Jednoduše zadat sadu dat ve stejném formátu jako testovací sada `X_test` ale budoucí data a času a výsledné předpovědi sada je předpokládaných hodnoty pro každý krok časových řad. Předpokládejme, že byly poslední záznamy časových řad v datové sadě pro 12/31. ledna 2018. Předpovídá poptávku za další den (nebo libovolný počet období, kolik je potřeba dala udělat předpověď, < = `max_horizon`), vytvořit jeden čas řady záznam pro každé úložiště pro 01, 01/2019.
+Teď, když je zjištěná přesnost celkového modelu, je nejrealističtějším dalším krokem použití modelu k předpovědi neznámých budoucích hodnot. Jednoduše poskytněte sadu dat ve stejném formátu jako sadu `X_test` testů, ale s budoucími DateTime a výslednou předpokládanou sadou je předpověď hodnot pro každý krok Time-Series. Předpokládejte, že poslední záznamy časových řad v datové sadě byly pro 12/31/2018. Chcete-li odhadnout poptávku pro následující den (nebo tolik období, kolik potřebujete pro předpověď < = `max_horizon`), vytvořte jeden záznam časových řad pro každé úložiště pro 01/01/2019.
 
     day_datetime,store,week_of_year
     01/01/2019,A,1
     01/01/2019,A,1
 
-Opakováním kroků nezbytných k načtení této budoucí dat pro datový rámec a pak spusťte `best_run.predict(X_test)` předpovídat budoucí hodnoty.
+Zopakováním potřebných kroků načtěte tato budoucí data do datového rámce a potom spusťte příkaz `best_run.predict(X_test)` pro předpověď budoucích hodnot.
 
 > [!NOTE]
-> Hodnoty nemůže být předpovězen pro počet období, které jsou větší než `max_horizon`. Model musí být znovu trénovaného s větší horizontu předpovídat budoucí hodnoty mimo aktuální časový horizont.
+> Hodnoty nelze předpovědět pro počet období, který je `max_horizon`větší než. Model musí být znovu vyškolen s větším horizontem, aby bylo možné předpovědět budoucí hodnoty nad rámec aktuálního horizontu.
 
 ## <a name="next-steps"></a>Další postup
 
-* Postupujte podle [kurzu](tutorial-auto-train-models.md) naučíte se vytvářet experimenty s automatických strojového učení.
-* Zobrazení [Azure Machine Learning SDK pro Python](https://aka.ms/aml-sdk) referenční dokumentaci.
+* V tomto [kurzu](tutorial-auto-train-models.md) se naučíte vytvářet experimenty pomocí automatizovaného strojového učení.
+* Podívejte se na referenční dokumentaci k [sadě Azure Machine Learning SDK pro Python](https://aka.ms/aml-sdk) .

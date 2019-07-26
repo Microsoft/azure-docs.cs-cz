@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: reference
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: 67da7d67a3165583a872c2b435c3cdca9763d4dd
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: 22860e0798ec852b6d25da27e108befe8a3089a2
+ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68443808"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68488827"
 ---
 # <a name="immersive-reader-sdk-reference"></a>Referenční dokumentace sady pro moderní čtečku
 
@@ -37,7 +37,7 @@ launchAsync(token: string, subdomain: string, content: Content, options?: Option
 
 | Name | Typ | Popis |
 | ---- | ---- |------------ |
-| `token` | řetězec | Ověřovací token Azure AD. Podívejte se na [kurz ověřování Azure AD](./azure-active-directory-authentication.md). |
+| `token` | řetězec | Ověřovací token Azure AD. Podívejte se na [postupy ověřování Azure AD](./azure-active-directory-authentication.md). |
 | `subdomain` | řetězec | Vlastní subdoména prostředku pro moderní čtečku v Azure. Podívejte se na [postupy ověřování Azure AD](./azure-active-directory-authentication.md). |
 | `content` | [Obsah](#content) | Objekt obsahující obsah, který se má zobrazit v moderní čtečce. |
 | `options` | [Možnosti](#options) | Možnosti pro konfiguraci určitého chování moderního čtecího zařízení. Volitelné. |

@@ -1,10 +1,10 @@
 ---
-title: Vytvořit nový balíček pro přístup ve službě Azure AD oprávnění management (Preview) – Azure Active Directory
-description: Zjistěte, jak vytvořit nový balíček pro přístup z prostředků, které chcete sdílet ve službě Azure Active Directory management oprávnění (Preview).
+title: Vytvoření nového balíčku pro přístup ve správě nároků ve službě Azure AD (Preview) – Azure Active Directory
+description: Naučte se, jak vytvořit nový balíček pro přístup k prostředkům, které chcete sdílet, v Azure Active Directory Správa nároků (Preview).
 services: active-directory
 documentationCenter: ''
-author: rolyon
-manager: mtillman
+author: msaburnley
+manager: daveba
 editor: ''
 ms.service: active-directory
 ms.workload: identity
@@ -12,120 +12,120 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 05/16/2019
-ms.author: rolyon
+ms.date: 07/23/2019
+ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1b5ff842d1645d2b47a436eca4fc8dc614a9fb63
-ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
+ms.openlocfilehash: 83eee019ee8530297689b85e6f3300fed4392610
+ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67190379"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68489184"
 ---
-# <a name="create-a-new-access-package-in-azure-ad-entitlement-management-preview"></a>Vytvořit nový balíček pro přístup ve správě služby Azure AD oprávnění (Preview)
+# <a name="create-a-new-access-package-in-azure-ad-entitlement-management-preview"></a>Vytvoření nového balíčku pro přístup ve správě nároků ve službě Azure AD (Preview)
 
 > [!IMPORTANT]
-> Správa nároků Azure Active Directory (Azure AD) je aktuálně ve verzi public preview.
+> Správa opravňujících k Azure Active Directory (Azure AD) je aktuálně ve verzi Public Preview.
 > Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti.
 > Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Balíček přístup můžete to udělat o jednorázové nastavení zásad a prostředků, které automaticky spravuje přístup po dobu životnosti přístup k balíčku. Tento článek popisuje, jak vytvořit nový balíček pro přístup.
+Balíček pro přístup vám umožní jednorázovou instalaci prostředků a zásad, které automaticky spravují přístup po dobu života balíčku přístupu. Tento článek popisuje, jak vytvořit nový balíček pro přístup.
 
 ## <a name="overview"></a>Přehled
 
-Všechny balíčky přístupu musíte vložit do kontejneru s názvem katalog. Katalog definuje prostředky můžete přidat do vašeho přístupu k balíčku. Pokud nezadáte katalog, zařadí se do obecné katalogu vašeho balíčku přístup. V současné době nelze přesunout existující balíček pro přístup do různých katalogu.
+Všechny balíčky přístupu musí být vloženy do kontejneru s názvem Catalog. Katalog definuje prostředky, které můžete přidat do balíčku pro přístup. Pokud nezadáte katalog, balíček pro přístup se vloží do katalogu pro obecné. V současné době nemůžete přesunout existující balíček přístupu do jiného katalogu.
 
-Všechny balíčky přístupu musí mít aspoň jednu zásadu. Zásady určit, kdo může vyžádat přístup k balíčku a také nastavení schválení a vypršení platnosti. Když vytvoříte nový balíček pro přístup, můžete vytvořit počáteční zásady pro uživatele ve vašem adresáři, pro uživatele není ve vašem adresáři pro správce pouze přímé přiřazení nebo můžete vytvořit zásady později.
+Všechny balíčky pro přístup musí mít aspoň jednu zásadu. Zásady určují, kdo může žádat o přístup k balíčku a také nastavení schválení a vypršení platnosti. Při vytváření nového přístupového balíčku můžete vytvořit počáteční zásady pro uživatele v adresáři, pro uživatele, kteří nejsou ve vašem adresáři, jenom pro přímé přiřazení správců, nebo můžete zvolit vytvoření zásady později.
 
-Následující diagram znázorňuje proces vysoké úrovně, chcete-li vytvořit nový balíček pro přístup.
+Následující diagram znázorňuje proces vysoké úrovně pro vytvoření nového přístupového balíčku.
 
-![Vytvořit proces přístupu k balíčku](./media/entitlement-management-access-package-create/access-package-process.png)
+![Vytvoření procesu přístupového balíčku](./media/entitlement-management-access-package-create/access-package-process.png)
 
-## <a name="start-new-access-package"></a>Začít nový balíček pro přístup
+## <a name="start-new-access-package"></a>Spustit nový balíček pro přístup
 
-**Požadované role:** Uživatel správce nebo vlastníka katalogu
+**Požadovaná role:** Správce uživatele nebo vlastník katalogu
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
-1. Klikněte na tlačítko **Azure Active Directory** a potom klikněte na tlačítko **zásady správného řízení identit**.
+1. Klikněte na **Azure Active Directory** a pak na zásady **správného řízení identity**.
 
-1. V nabídce vlevo klikněte na tlačítko **přístup k balíčkům**.
+1. V nabídce vlevo klikněte na možnost **přístup k balíčkům**.
 
-    ![Správa nároků na webu Azure Portal](./media/entitlement-management-shared/elm-access-packages.png)
+    ![Správa nároků v Azure Portal](./media/entitlement-management-shared/elm-access-packages.png)
 
-1. Klikněte na tlačítko **nový balíček pro přístup k**.
+1. Klikněte na **nový balíček pro přístup**.
 
-## <a name="basics"></a>Základy
+## <a name="basics"></a>Základní informace
 
-Na **Základy** kartu, pojmenujte balíček přístup a zadejte katalogu, do kterého chcete vytvořit balíček přístup v.
+Na kartě **základy** udělíte přístupovému balíčku název a určíte, ke kterému katalogu se má balíček pro přístup vytvořit.
 
-1. Zadejte zobrazovaný název a popis pro přístup k balíčku. Uživatelé uvidí tyto informace při odesílání žádosti o přístup k balíčku.
+1. Zadejte zobrazovaný název a Popis balíčku pro přístup. Uživatelům se zobrazí tyto informace, když odešlou žádost o přístup k balíčku.
 
-1. V **katalogu** rozevíracího seznamu vyberte katalogu, kterou chcete vytvořit přístup zabalíte. Například může mít katalogu vlastníka, který spravuje marketingové prostředky, které mohou být požadována. V takovém případě můžete třeba vybrat marketingové katalogu.
+1. V rozevíracím seznamu **katalog** vyberte katalog, ve kterém chcete vytvořit balíček pro přístup. Můžete mít například vlastníka katalogu, který spravuje všechny prostředky marketingu, které mohou být požadovány. V takovém případě můžete vybrat marketingový katalog.
 
-    Zobrazí se pouze katalogy máte oprávnění k vytváření balíčků přístup v. Vytvoření balíčku přístup v existující katalog, musí být nejméně jednoho správce uživatelů, katalogu vlastník nebo správce přístupu k balíčku.
+    Zobrazí se pouze katalogy, které máte oprávnění k vytváření balíčků přístupu v nástroji. Pokud chcete vytvořit balíček přístupu v existujícím katalogu, musíte mít aspoň správce uživatele, vlastníka katalogu nebo správce balíčků přístupu.
 
-    ![Přístup k balíčku – základy](./media/entitlement-management-access-package-create/basics.png)
+    ![Přístup k základům balíčku](./media/entitlement-management-access-package-create/basics.png)
 
-    Pokud chcete vytvořit váš přístup k balíčku v nový katalog, klikněte na tlačítko **vytvořit nový**. Zadejte název katalogu a popis a potom klikněte na tlačítko **vytvořit**.
+    Pokud chcete vytvořit balíček přístupu v novém katalogu, klikněte na **vytvořit nový**. Zadejte název a popis katalogu a pak klikněte na **vytvořit**.
 
-    Při vytváření balíčku přístupu a všechny prostředky zahrnuté v ní se přidají do nového katalogu. Kromě toho se automaticky stanete prvním vlastníka do katalogu. Můžete přidat další katalogu vlastníky.
+    Balíček přístupu, který vytváříte, a všechny prostředky, které jsou v něm obsažené, se přidají do nového katalogu. Navíc se automaticky stanete prvním vlastníkem katalogu. Můžete přidat další vlastníky katalogu.
 
-    Pokud chcete vytvořit nový katalog, musí být nejméně jednoho uživatele správce nebo Tvůrce katalogu.
+    Chcete-li vytvořit nový katalog, musíte být alespoň správcem uživatelů nebo tvůrcem katalogu.
 
 1. Klikněte na **Další**.
 
 ## <a name="resource-roles"></a>Role prostředků
 
-Na **role prostředků** kartu, vyberte zdroje, které chcete zahrnout do balíčku přístup.
+Na kartě **role prostředků** vyberte prostředky, které se mají zahrnout do balíčku pro přístup.
 
-1. Klikněte na typ prostředku, které chcete přidat (**skupiny**, **aplikací**, nebo **Sharepointové weby**).
+1. Klikněte na typ prostředku, který chcete přidat (**skupiny**, **aplikace**nebo **weby služby SharePoint**).
 
-1. V podokně vyberte možnost, která se zobrazí vyberte jeden nebo více prostředků ze seznamu.
+1. V zobrazeném podokně vyberte jeden nebo více prostředků ze seznamu.
 
-    ![Přístup k balíčku - role prostředků](./media/entitlement-management-access-package-create/resource-roles.png)
+    ![Přístup k prostředkům balíčku – role](./media/entitlement-management-access-package-create/resource-roles.png)
 
-    Pokud vytváříte balíček přístup v obecné katalogu nebo nový katalog, budete moct vybrat prostředek z adresáře, který vlastníte. Musí být nejméně jednoho uživatele správce nebo Tvůrce katalogu.
+    Pokud vytváříte balíček přístupu v katalogu obecné nebo v novém katalogu, budete moci vybrat libovolný prostředek z adresáře, který vlastníte. Musíte mít aspoň Správce uživatelů nebo Tvůrce katalogu.
 
-    Pokud vytváříte balíček přístup v existující katalog, můžete vybrat prostředek, který je již v katalogu nemusíte přitom vlastnit ho.
+    Pokud vytváříte balíček přístupu v existujícím katalogu, můžete vybrat libovolný prostředek, který je již v katalogu, aniž by mu byl vlastník.
 
-    Pokud jste uživatele správce nebo vlastníka katalogu, máte další možnost vybrat prostředky, které vlastníte, které nejsou ještě v katalogu. Pokud vyberete v katalogu vybrané prostředky nejsou aktuálně, tyto prostředky budou také přidaných do katalogu pro ostatní správci katalogu sestavovat balíčky přístup s. Pokud chcete vybrat prostředky, které jsou momentálně ve vybrané katalogu, zkontrolujte **vidět jenom** zaškrtnutí políčka v horní části vyberte posouvání.
+    Pokud jste správcem nebo vlastníkem katalogu, máte k dispozici další možnost výběru nevlastních prostředků, které ještě nejsou v katalogu. Pokud vyberete prostředky, které nejsou aktuálně ve vybraném katalogu, tyto prostředky budou také přidány do katalogu pro jiné Správce katalogu, aby mohli vytvářet balíčky přístupu pomocí nástroje. Pokud chcete pouze vybrat prostředky, které jsou aktuálně ve vybraném katalogu, zaškrtněte políčko **pouze** v horní části okna Vybrat pan.
 
-1. Jakmile vyberete v prostředky, **Role** seznamu, vyberte roli, kterou chcete přiřadit uživatelům pro prostředek.
+1. Jakmile vyberete prostředky, v seznamu **role** vyberte roli, kterou chcete přiřadit uživatelům pro daný prostředek.
 
-    ![Přístup k balíčku - výběr role prostředků](./media/entitlement-management-access-package-create/resource-roles-role.png)
+    ![Přístup k balíčku – výběr role prostředků](./media/entitlement-management-access-package-create/resource-roles-role.png)
 
 1. Klikněte na **Další**.
 
 ## <a name="policy"></a>Zásada
 
-Na **zásady** kartě vytvoříte první zásada k určení, kdo může vyžádat přístup k balíčku a také nastavení schválení a vypršení platnosti. Později můžete vytvořit více zásad další skupiny uživatelů pro vyžádání přístupu k balíčku pomocí vlastních nastavení schválení a vypršení platnosti. Můžete také vytvořit zásady později.
+Na kartě **zásady** vytvoříte první zásadu, která určí, kdo může žádat o přístup k balíčku a také nastavení schválení a vypršení platnosti. Později můžete vytvořit další zásady, které umožní více skupinám uživatelů žádat o přístup k balíčku s vlastním nastavením schválení a vypršení platnosti. Zásadu můžete vytvořit také později.
 
-1. Nastavte **vytvořte první zásady** přepnutím **nyní** nebo **později**.
+1. Nastavte přepínač **vytvořit první zásadu** na **nyní** nebo **později**.
 
     ![Přístup k balíčku – zásady](./media/entitlement-management-access-package-create/policy.png)
 
-1. Pokud vyberete **později**, přejděte dolů k [revize + vytvořit](#review--create) část, která vytvoří váš přístup k balíčku.
+1. Pokud vyberete **později**, přeskočte na oddíl [Revize + vytvořit](#review--create) a vytvořte balíček přístupu.
 
-1. Pokud vyberete **nyní**, proveďte kroky v jednom z následujících částí zásad.
+1. Pokud vyberete možnost **nyní**, proveďte kroky v jedné z následujících sekcí zásad.
 
 [!INCLUDE [Entitlement management policy](../../../includes/active-directory-entitlement-management-policy.md)]
 
 ## <a name="review--create"></a>Zkontrolovat a vytvořit
 
-Na **zkontrolujte + vytvořit** kartu, můžete zkontrolovat nastavení a vyhledat všechny chyby ověření.
+Na kartě **Revize + vytvořit** můžete zkontrolovat nastavení a zkontrolovat chyby ověřování.
 
-1. Projděte si nastavení přístupu k balíčku
+1. Kontrola nastavení balíčku přístupu
 
-    ![Přístup k balíčku - nastavení zásad pro povolení zásad](./media/entitlement-management-access-package-create/review-create.png)
+    ![Přístup k balíčku – nastavení zásad – Povolit zásadu](./media/entitlement-management-access-package-create/review-create.png)
 
-1. Klikněte na tlačítko **vytvořit** k vytvoření balíčku přístup.
+1. Kliknutím na **vytvořit** vytvořte balíček pro přístup.
 
-    Nový balíček pro přístup se zobrazí v seznamu balíčků přístup.
+    Nový balíček pro přístup se zobrazí v seznamu balíčků přístupu.
 
 ## <a name="next-steps"></a>Další postup
 
 - [Úprava a správa existujících přístupových balíčků](entitlement-management-access-package-edit.md)
-- [Přidat katalog vlastník nebo správce přístupu k balíčku](entitlement-management-delegate.md#add-a-catalog-owner-or-an-access-package-manager)
-- [Vytvoření a Správa katalogu](entitlement-management-catalog-create.md)
+- [Přidat vlastníka katalogu nebo správce balíčků přístupu](entitlement-management-delegate.md#add-a-catalog-owner-or-an-access-package-manager)
+- [Vytvoření a správa katalogu](entitlement-management-catalog-create.md)

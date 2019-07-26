@@ -1,62 +1,62 @@
 ---
-title: Řešení potíží s Azure dat sdílené složky ve verzi Preview
-description: Zjistěte, jak řešit problémy s Azure Data sdílené složky ve verzi Preview
+title: Řešení potíží s Azure Data Share Preview
+description: Přečtěte si, jak řešit problémy s Azure Data Share Preview
 services: data-share
 author: joannapea
 ms.service: data-share
-ms.topic: overview
+ms.topic: troubleshooting
 ms.date: 07/10/2019
 ms.author: joanpo
-ms.openlocfilehash: c02f72d6a327c4dcb94ac8844005613cfe316986
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 386a5e34dccafa61859cd13c3e0ad88cd3a7ffac
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67838381"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68421461"
 ---
-# <a name="troubleshoot-common-issues-in-azure-data-share-preview"></a>Řešení běžných potíží ve verzi Preview služby Azure Data sdílené složky
+# <a name="troubleshoot-common-issues-in-azure-data-share-preview"></a>Řešení běžných problémů v Azure Data Share Preview
 
-Tento článek ukazuje, jak řešení běžných potíží pro Azure Data sdílené složky ve verzi Preview. 
+Tento článek popisuje, jak řešit běžné problémy pro Azure Data Share Preview. 
 
-## <a name="azure-data-share-invitations"></a>Pozvánky sdílení dat v Azure 
+## <a name="azure-data-share-invitations"></a>Pozvánky ke sdílení dat Azure 
 
-V některých případech, pokud nový uživatel klikne **přijměte pozvánku** z byla odeslána e-mailové pozvánky, může se vám prázdný seznam pozvánky. 
+V některých případech platí, že když nový uživatel klikne na **přijmout pozvánku** z e-mailové pozvánky, která se poslala, může se zobrazit prázdný seznam pozvánek. 
 
-![Žádné pozvánky](media/no-invites.png)
+![Žádná pozvání](media/no-invites.png)
 
-Výše uvedené chyby se o známý problém ve službě a je aktuálně zabýváme. Jako alternativní řešení, postupujte následujících kroků. 
+Výše uvedená chyba je známý problém se službou a v tuto chvíli se řeší. Alternativním řešením je postupovat podle následujících kroků. 
 
-1. Na webu Azure Portal, přejděte na **předplatná**
-1. Vyberte předplatné, které používáte pro sdílenou složku Azure dat
-1. Klikněte na **poskytovatelů prostředků**
-1. Hledat Microsoft.DataShare
-1. Klikněte na tlačítko **zaregistrovat**
+1. V Azure Portal přejděte na odběry  .
+1. Vyberte předplatné, které používáte pro sdílení dat Azure.
+1. Kliknout na **poskytovatelé prostředků**
+1. Hledání Microsoft. datashare
+1. Klikněte na **zaregistrovat** .
 
-Je potřeba mít [role Azure RBAC Přispěvatel](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor) k dokončení těchto kroků. 
+K provedení těchto kroků budete potřebovat [roli RBAC přispěvatele Azure](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor) . 
 
-Pokud stále nemůžete zobrazíte data sdílet pozvánku, obraťte se na svého poskytovatele dat a ujistěte se, že odeslali pozvánku k e-mailovou adresu pro přihlášení k Azure a *není* e-mailový alias. 
+Pokud stále nemůžete zobrazit pozvánku ke sdílení dat, kontaktujte poskytovatele dat a zajistěte, aby odeslali pozvánku na vaši e-mailovou adresu Azure, a *ne* váš e-mailový alias. 
 
 > [!IMPORTANT]
-> Pokud jste už přijmout pozvánku sdílené složky služby Azure Data a služby před konfigurací úložiště byl ukončen, postupujte podle pokynů, najdete v [nakonfigurovat mapování datovou sadu](how-to-configure-mapping.md) postupy příručku a zjistěte, jak dokončit konfiguraci vašeho přijatá data sdílet a začít přijímat data. 
+> Pokud jste už přijali pozvánku ke sdílené složce Azure a před konfigurací úložiště jste službu ukončili, postupujte podle pokynů uvedených v průvodci [Konfigurovat datovou sadu](how-to-configure-mapping.md) s návodem, kde se dozvíte, jak dokončit konfiguraci přijatých sdílených dat. a začněte přijímat data. 
 
-## <a name="error-when-creating-or-receiving-a-new-data-share"></a>Chyba při vytváření nebo přijímání nových sdílení dat
+## <a name="error-when-creating-or-receiving-a-new-data-share"></a>Chyba při vytváření nebo přijímání nové sdílené složky dat
 
-"Chyba: Operace vrátil neplatný stavový kód "chybného požadavku."
+Chyba Operace vrátila neplatný stavový kód důvodu chybného požadavku.
 
-"Chyba: AuthorizationFailed"
+Chyba AuthorizationFailed"
 
-"Chyba: přiřazení role do účtu úložiště"
+"Chyba: přiřazení role k účtu úložiště"
 
 ![Chyba oprávnění](media/error-write-privilege.png)
 
-Pokud se zobrazí některé z výše uvedených chyb při vytváření nové sdílené složky dat nebo zobrazuje Nová sdílená složka dat, protože jsou k dispozici dostatečná oprávnění k účtu úložiště. Je požadováno oprávnění *Microsoft.Authorization/role přiřazení a zápis*, která existuje v roli vlastník úložiště, nebo je možné přiřadit vlastní roli. I v případě, že jste vytvořili účet úložiště, neprovede automaticky jste vlastníkem účtu úložiště. Použijte následující postup udělit sami vlastníka účtu úložiště. Alternativně lze vytvořit vlastní roli s tímto oprávněním, který můžete přidat sobě a.  
+Pokud se při vytváření nebo přijímání nové sdílené datové složky zobrazí některá z výše uvedených chyb, je to z důvodu nedostatečných oprávnění k účtu úložiště. Požadovaná oprávnění jsou *Microsoft. Authorization/přiřazení role/zápis*, která existuje v roli vlastníka úložiště nebo je možné ji přiřadit vlastní roli. I když vytvoříte účet úložiště, automaticky to z vás NEDĚLÁ vlastníka účtu úložiště. Pokud si chcete udělit oprávnění vlastníka účtu úložiště, postupujte podle těchto kroků. Alternativně lze vytvořit vlastní roli s tímto oprávněním, které můžete přidat do nástroje do aplikace.  
 
-1. Přejděte na účet úložiště na webu Azure portal
-1. Vyberte **řízení přístupu (IAM)**
-1. Klikněte na tlačítko **přidat**
-1. Přidáte vás jako vlastníka.
+1. Na webu Azure Portal přejděte k účtu úložiště.
+1. Výběr **řízení přístupu (IAM)**
+1. Klikněte na **Přidat** .
+1. Přidejte sami sebe jako vlastníka.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
-Zjistěte, jak začít, sdílení dat, nadále [sdílet vaše data](share-your-data.md) kurzu.
+Pokud se chcete dozvědět, jak začít sdílet data, pokračujte do kurzu [sdílení vašich dat](share-your-data.md) .
 

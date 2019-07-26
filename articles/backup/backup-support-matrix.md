@@ -1,155 +1,154 @@
 ---
 title: Matice podpory pro Azure Backup
-description: Poskytuje přehled podpory nastavení a omezení pro službu Azure Backup.
-services: backup
+description: Poskytuje souhrn nastavení podpory a omezení pro službu Azure Backup.
 author: rayne-wiselman
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 02/17/2019
 ms.author: raynew
-ms.openlocfilehash: 99dd3c0b07307f2d0bf97dbff697e32e648705ae
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a6b7dfe8fb8ade7f84f41fb5602aff68b4f52cf2
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66400178"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68464835"
 ---
 # <a name="azure-backup-support-matrix"></a>Matice podpory pro Azure Backup
 
-Můžete použít [Azure Backup](backup-overview.md) zálohovat data na cloudové platformě Microsoft Azure. Tento článek shrnuje obecných nastavení a omezení pro scénáře zálohování Azure a nasazení.
+[Azure Backup](backup-overview.md) můžete použít k zálohování dat na cloudovou platformu Microsoft Azure. Tento článek shrnuje obecná nastavení podpory a omezení pro Azure Backup scénáře a nasazení.
 
-K dispozici jsou další matice podpory:
+K dispozici jsou další matrice podpory:
 
-- Matice podpory pro [zálohování virtuálních počítačů (VM) Azure](backup-support-matrix-iaas.md)
-- Matice podpory pro zálohování pomocí [System Center Data Protection Manager (DPM) nebo Microsoft Azure Backup Server (MABS)](backup-support-matrix-mabs-dpm.md)
+- Matice podpory pro [zálohování virtuálních počítačů Azure](backup-support-matrix-iaas.md)
+- Matice podpory pro zálohování pomocí nástroje [System Center Data Protection Manager (DPM)/Microsoft Azure Backup Server (MABS)](backup-support-matrix-mabs-dpm.md)
 - Matice podpory pro zálohování pomocí [agenta Microsoft Azure Recovery Services (MARS)](backup-support-matrix-mars-agent.md)
 
 ## <a name="vault-support"></a>Podpora trezoru
 
-Azure Backup používá k organizování a správě zálohy trezory služby Recovery Services. Využívá také trezory ukládat zálohovaná data.
+Azure Backup používá k orchestraci a správě záloh Recovery Services trezory. Používá taky trezory k ukládání zálohovaných dat.
 
-Následující tabulka popisuje funkce trezory služby Recovery Services:
+Následující tabulka popisuje funkce trezorů Recovery Services:
 
 **Funkce** | **Podrobnosti**
 --- | ---
-**Trezorů v předplatném** | Až 500 trezorů služby Recovery Services v rámci jednoho předplatného.
-**Počítače v trezoru** | Až 1 000 virtuálních počítačů Azure v jednom trezoru.<br/><br/> Až 50 MABS lze zaregistrovat servery v jednom trezoru.
-**Zdroje dat v trezoru úložiště** | Maximální 54,400 GB. Neexistuje žádné omezení pro zálohy virtuálních počítačů Azure.
-**Zálohování do trezoru** | **Virtuální počítače Azure:** Jednou za den.<br/><br/>**Počítače chráněné službou DPM nebo MABS:** Dvakrát denně.<br/><br/> **Počítače přímo pomocí agenta MARS zálohovat:** Třikrát denně.
-**Mezi trezorů záloh** | Zálohování je v rámci oblasti.<br/><br/> Je nutné ve všech oblastech Azure, která obsahuje virtuální počítače, které chcete zálohovat trezoru. Nelze zálohovat do jiné oblasti.
-**Přesun trezorů** | Je možné [přesun trezorů](https://review.docs.microsoft.com/azure/backup/backup-azure-move-recovery-services-vault) napříč předplatnými nebo mezi skupinami prostředků ve stejném předplatném.
-**Přesun dat mezi trezorů** | Přechod zálohovaných dat mezi trezory se nepodporuje.
-**Změna typu trezoru úložiště** | Typ replikace úložiště (geograficky redundantní úložiště nebo místně redundantní úložiště) pro trezor můžete upravit před zálohy jsou uložené. Po zálohování začne v trezoru, nelze změnit typ replikace.
+**Trezory v předplatném** | V jednom předplatném je až 500 Recovery Services trezory.
+**Počítače v trezoru** | Až 1 000 virtuálních počítačů Azure v jednom trezoru.<br/><br/> V jednom trezoru se dají zaregistrovat až 50 serverů MABS.
+**Zdroje dat v úložišti trezoru** | Maximální 54 400 GB. Zálohování virtuálních počítačů Azure není nijak omezené.
+**Zálohy do trezoru** | **Virtuální počítače Azure:** Jednou denně.<br/><br/>**Počítače chráněné aplikací DPM/MABS:** Dvakrát denně.<br/><br/> **Počítače zálohované přímo pomocí agenta MARS:** Třikrát denně.
+**Zálohy mezi trezory** | Zálohování je v rámci jedné oblasti.<br/><br/> Potřebujete trezor v každé oblasti Azure, která obsahuje virtuální počítače, které chcete zálohovat. Nemůžete zálohovat do jiné oblasti.
+**Přesunout trezory** | Trezory můžete [přesouvat](https://review.docs.microsoft.com/azure/backup/backup-azure-move-recovery-services-vault) mezi předplatnými nebo mezi skupinami prostředků ve stejném předplatném.
+**Přesun dat mezi trezory** | Přesouvání zálohovaných dat mezi trezory se nepodporuje.
+**Upravit typ úložiště trezoru** | Před uložením záloh můžete upravit typ replikace úložiště (geograficky redundantní úložiště nebo místně redundantní úložiště) pro trezor. Po zahájení zálohování v trezoru se typ replikace nedá upravit.
 
-## <a name="on-premises-backup-support"></a>Místní podpora zálohování
+## <a name="on-premises-backup-support"></a>Podpora místních záloh
 
-Zde je, co je podporováno, pokud chcete zálohovat na místních počítačích:
+Co je se podporuje, pokud chcete zálohovat místní počítače:
 
-**Počítač** | **Co se zálohuje** | **Location** | **Funkce**
+**Počítačové** | **Co se zálohuje** | **Location** | **Funkce**
 --- | --- | --- | ---
-**Přímé zálohování počítače s Windows pomocí agenta MARS** | Soubory, složky, stav systému | Zálohovat do trezoru služby Recovery Services. | Zálohování třikrát za den<br/><br/> Záloha s ohledem na aplikace<br/><br/> Obnovení souboru, složky, svazku
-**Přímé zálohování počítač s Linuxem pomocí agenta MARS** | Zálohování není podporováno
-**Zálohování do aplikace DPM** | Soubory, složky, svazky, stav systému, dat aplikací | Zálohovat na místní úložiště aplikace DPM. Aplikace DPM se potom zálohuje do trezoru. | Snímky schopné rozeznávat aplikace<br/><br/> Členitost úplné zálohování a obnovení<br/><br/> Linux podporované pro virtuální počítače (Hyper-V nebo VMware)<br/><br/> Oracle nepodporuje
-**Zálohování do MABS** | Soubory, složky, svazky, stav systému, dat aplikací | Zálohovat na místní úložiště MABS. MABS se potom zálohuje do trezoru. | Snímky schopné rozeznávat aplikace<br/><br/> Členitost úplné zálohování a obnovení<br/><br/> Linux podporované pro virtuální počítače (Hyper-V nebo VMware)<br/><br/> Oracle nepodporuje
+**Přímé zálohování počítače s Windows pomocí agenta MARS** | Soubory, složky, stav systému | Zálohujte do úložiště Recovery Services. | Zálohování třikrát za den<br/><br/> Žádné zálohování s podporou aplikací<br/><br/> Obnovení souboru, složky, svazku
+**Přímá záloha počítače se systémem Linux s agentem MARS** | Zálohování není podporováno
+**Zálohování do DPM** | Soubory, složky, svazky, stav systému, data aplikací | Zálohujte do místního úložiště DPM. DPM se pak zálohuje do trezoru. | Snímky s podporou aplikací<br/><br/> Úplná členitost pro zálohování a obnovení<br/><br/> Linux podporovaný pro virtuální počítače (Hyper-V/VMware)<br/><br/> Oracle není podporován
+**Zálohování do MABS** | Soubory, složky, svazky, stav systému, data aplikací | Zálohujte do MABS místního úložiště. MABS se pak zálohuje do trezoru. | Snímky s podporou aplikací<br/><br/> Úplná členitost pro zálohování a obnovení<br/><br/> Linux podporovaný pro virtuální počítače (Hyper-V/VMware)<br/><br/> Oracle není podporován
 
-## <a name="azure-vm-backup-support"></a>Azure podporuje zálohování virtuálních počítačů
+## <a name="azure-vm-backup-support"></a>Podpora zálohování virtuálních počítačů Azure
 
-### <a name="azure-vm-limits"></a>Omezení pro virtuální počítač v Azure
+### <a name="azure-vm-limits"></a>Omezení virtuálních počítačů Azure
 
 **Limit** | **Podrobnosti**
 --- | ---
-**Azure datových disků virtuálního počítače** | Limit 16
-**Azure velikost datového disku virtuálního počítače** | Jednotlivé disky můžou být až 4 095 GB
+**Datové disky virtuálních počítačů Azure** | Omezení 16
+**Velikost datového disku virtuálního počítače Azure** | Jednotlivé disky můžou být až 4 095 GB.
 
-### <a name="azure-vm-backup-options"></a>Možnosti zálohování Azure VM
+### <a name="azure-vm-backup-options"></a>Možnosti zálohování virtuálních počítačů Azure
 
-Zde je, co je podporováno, pokud chcete zálohovat virtuální počítače Azure:
+Co je se podporuje, pokud chcete zálohovat virtuální počítače Azure:
 
-**Počítač** | **Co se zálohuje** | **Location** | **Funkce**
+**Počítačové** | **Co se zálohuje** | **Location** | **Funkce**
 --- | --- | --- | ---
-**Zálohování virtuálních počítačů Azure pomocí rozšíření virtuálního počítače** | Celý virtuální počítač | Zálohujte do trezoru. | Rozšíření nainstaluje, když povolíte zálohování pro virtuální počítač.<br/><br/> Proveďte zálohu jednou za den.<br/><br/> Zálohování s podporou aplikací pro virtuální počítače s Windows; konzistentní zálohování virtuálních počítačů s Linuxem. Můžete nakonfigurovat aplikace ani konzistence vzhledem k pro počítače s Linuxem pomocí vlastních skriptů.<br/><br/> Obnovte virtuální počítač nebo disk.<br/><br/> Nelze zálohovat virtuální počítač Azure do místního umístění.
-**Zálohování virtuálních počítačů Azure pomocí agenta MARS** | Soubory, složky, stav systému | Zálohujte do trezoru. | Proveďte zálohu třikrát denně.<br/><br/> Pokud chcete zálohovat konkrétní soubory nebo složky, nikoli celý virtuální počítač, můžete spustit agenta MARS společně s rozšířením virtuálního počítače.
-**Virtuální počítač Azure s aplikací DPM** | Soubory, složky, svazky, stav systému, dat aplikací | Zálohovat na místní úložiště virtuálního počítače Azure, na kterém běží aplikace DPM. Aplikace DPM se potom zálohuje do trezoru. | Snímky schopné rozeznávat aplikace.<br/><br/> Členitost úplné zálohování a obnovení.<br/><br/> Linux pro virtuální počítače (Hyper-V nebo VMware) nepodporuje.<br/><br/> Oracle nepodporuje.
-**Virtuální počítač Azure s MABS** | Soubory, složky, svazky, stav systému, dat aplikací | Zálohovat na místní úložiště virtuálního počítače Azure, na kterém běží MABS. MABS se potom zálohuje do trezoru. | Snímky schopné rozeznávat aplikace.<br/><br/> Členitost úplné zálohování a obnovení.<br/><br/> Linux pro virtuální počítače (Hyper-V nebo VMware) nepodporuje.<br/><br/> Oracle nepodporuje.
+**Zálohování virtuálních počítačů Azure pomocí rozšíření virtuálního počítače** | Celý virtuální počítač | Zálohujte do trezoru. | Rozšíření nainstalované při povolení zálohování pro virtuální počítač.<br/><br/> Zálohujte se jednou denně.<br/><br/> Zálohování s podporou aplikací pro virtuální počítače s Windows; Zálohování konzistentní se soubory pro virtuální počítače se systémem Linux. Konzistenci aplikací pro počítače se systémem Linux můžete nakonfigurovat pomocí vlastních skriptů.<br/><br/> Obnovte virtuální počítač nebo disk.<br/><br/> Virtuální počítač Azure nejde zálohovat do místního umístění.
+**Zálohování virtuálních počítačů Azure pomocí agenta MARS** | Soubory, složky, stav systému | Zálohujte do trezoru. | Zálohujte třikrát denně.<br/><br/> Pokud chcete zálohovat konkrétní soubory nebo složky namísto celého virtuálního počítače, můžete agenta MARS spustit společně s rozšířením virtuálního počítače.
+**Virtuální počítač Azure s DPM** | Soubory, složky, svazky, stav systému, data aplikací | Zálohujte do místního úložiště virtuálního počítače Azure, na kterém běží DPM. DPM se pak zálohuje do trezoru. | Snímky s podporou aplikací.<br/><br/> Úplná členitost pro zálohování a obnovení.<br/><br/> Linux podporovaný pro virtuální počítače (Hyper-V/VMware).<br/><br/> Oracle není podporován.
+**Virtuální počítač Azure s MABS** | Soubory, složky, svazky, stav systému, data aplikací | Zálohujte do místního úložiště virtuálního počítače Azure, na kterém běží MABS. MABS se pak zálohuje do trezoru. | Snímky s podporou aplikací.<br/><br/> Úplná členitost pro zálohování a obnovení.<br/><br/> Linux podporovaný pro virtuální počítače (Hyper-V/VMware).<br/><br/> Oracle není podporován.
 
-## <a name="linux-backup-support"></a>Podpora zálohování Linux
+## <a name="linux-backup-support"></a>Podpora zálohování pro Linux
 
-Zde je, co je podporováno, pokud chcete zálohování počítačů s Linuxem:
+Co je se podporuje, pokud chcete zálohovat počítače se systémem Linux:
 
-**Typ zálohování** | **Linuxu (schváleného Azure)**
+**Typ zálohování** | **Linux (schváleno Azure)**
 --- | ---
-**Přímé zálohování v místním počítači se systémem Linux** | Nepodporuje se. Agenta MARS lze nainstalovat pouze na počítačích s Windows.
-**Pomocí rozšíření agenta pro zálohování Virtuálního počítače se systémem Linux** | Zálohování konzistentní s aplikací s použitím [vlastní skripty](backup-azure-linux-app-consistent.md).<br/><br/> Obnovení na úrovni souboru.<br/><br/> Obnovte tak, že vytvoříte virtuální počítač z disku a bod obnovení.
-**Použití DPM k zálohování v místním nebo virtuálním počítači Azure, na kterém běží Linux** | Konzistentní zálohování virtuálních počítačů hosta s Linuxem v Hyper-V a VMWare.<br/><br/> Obnovení virtuálních počítačů Hyper-V a VMWare virtuálních počítačů hosta s Linuxem.<br/><br/> Konzistentní zálohování není k dispozici pro virtuální počítač Azure.
-**Použití MABS k zálohování v místním počítači nebo virtuálním počítači Azure, na kterém běží Linux** | Konzistentní zálohování virtuálních počítačů hosta s Linuxem v Hyper-V a VMWare.<br/><br/> Obnovení virtuálních počítačů Hyper-V a virtuálních počítačů VMWare s Linuxem hosta.<br/><br/> Konzistentní zálohování není k dispozici pro virtuální počítače Azure.
+**Přímá záloha místního počítače se systémem Linux** | Nepodporuje se. Agenta MARS lze nainstalovat pouze do počítačů se systémem Windows.
+**Použití rozšíření agenta pro zálohování virtuálního počítače Azure se systémem Linux** | Zálohování konzistentní s aplikací pomocí [vlastních skriptů](backup-azure-linux-app-consistent.md).<br/><br/> Obnovení na úrovni souborů.<br/><br/> Obnovte vytvořením virtuálního počítače z bodu obnovení nebo disku.
+**Použití DPM k zálohování místního prostředí nebo virtuálního počítače Azure se systémem Linux** | Zálohování virtuálních počítačů hosta v systému Linux na technologii Hyper-V a VMWare.<br/><br/> Obnovení virtuálních počítačů s virtuálními počítači hosta Hyper-V a VMWare Linux.<br/><br/> Zálohování konzistentní se soubory není pro virtuální počítač Azure k dispozici.
+**Zálohování místního počítače nebo virtuálního počítače Azure se systémem Linux pomocí MABS** | Zálohování virtuálních počítačů hosta v systému Linux na technologii Hyper-V a VMWare.<br/><br/> Obnovení virtuálních počítačů s virtuálními počítači hosta Hyper-V a VMWare Linux.<br/><br/> Zálohování konzistentní se soubory není pro virtuální počítače Azure k dispozici.
 
 ## <a name="daylight-saving-time-support"></a>Podpora letního času
 
-Azure Backup nepodporuje úpravu automatické hodiny pro letní čas pro zálohy virtuálních počítačů Azure. Upravte zásady zálohování ručně podle potřeby.
+Azure Backup nepodporuje automatické úpravy hodin pro letní čas pro zálohování virtuálních počítačů Azure. Zásady zálohování upravte podle potřeby ručně.
 
-## <a name="disk-deduplication-support"></a>Podpora odstranění duplicit disku
+## <a name="disk-deduplication-support"></a>Podpora odstranění duplicitních dat disku
 
-Podpora odstranění duplicit disku je následujícím způsobem:
+Podpora odstranění duplicitních disků je následující:
 
-- Odstranění duplicit disku je podporovaných místních, když používáte k zálohování virtuálních počítačů Hyper-V se systémem Windows Server DPM nebo MABs. Windows Server odstraňuje duplicity disku (na úrovni hostitele) na virtuální pevné disky (VHD), které jsou připojené k virtuálnímu počítači jako úložiště pro zálohování.
-- Odstranění duplicit se nepodporuje v Azure pro žádné komponenty služby Backup. Když jsou v Azure nasazené aplikace DPM a MABS, nelze provést odstranění duplicit úložné disky připojené k virtuálnímu počítači.
+- Odstranění duplicitních dat je podporováno v místním prostředí při použití DPM nebo MABs k zálohování virtuálních počítačů Hyper-V se systémem Windows. Windows Server provádí odstranění duplicitních dat (na úrovni hostitele) na virtuálních pevných discích (VHD), které jsou připojené k virtuálnímu počítači jako úložiště zálohování.
+- Odstranění duplicitních dat se v Azure nepodporuje pro žádnou součást zálohování. Když jsou DPM a MABS nasazené v Azure, disky úložiště připojené k virtuálnímu počítači se nedají odstranit z duplicitních dat.
 
-## <a name="security-and-encryption-support"></a>Podpora šifrování a zabezpečení
+## <a name="security-and-encryption-support"></a>Podpora zabezpečení a šifrování
 
-Azure Backup podporuje šifrování přenášených i uložených dat.
+Azure Backup podporuje šifrování pro data v přenosu a na REST.
 
 ### <a name="network-traffic-to-azure"></a>Síťový provoz do Azure
 
-- Provoz zálohování z serverů do trezoru služby Recovery Services je šifrován pomocí rozšířené šifrování Standard 256.
-- Zálohovaná data se odesílají prostřednictvím zabezpečeného spojení HTTPS.
-- Zálohovaná data se ukládají do trezoru služby Recovery Services v šifrovaném tvaru.
-- Můžete mít jenom heslo k odemknutí těchto dat. Microsoft nelze dešifrovat data záloh a kdykoli.
+- Provoz zálohování ze serverů do trezoru Recovery Services je zašifrovaný pomocí standard AES (Advanced Encryption Standard) 256.
+- Zálohovaná data se odesílají přes zabezpečené připojení HTTPS.
+- Zálohovaná data jsou uložená v trezoru Recovery Services v šifrované podobě.
+- K odemknutí těchto dat máte jenom přístupové heslo. Společnost Microsoft nemůže data záloh kdykoli dešifrovat.
 
     > [!WARNING]
-    > Po nastavení trezoru, máte přístup jen vy k šifrovacímu klíči. Microsoft nikdy udržuje kopii a nemá přístup ke klíči. Pokud dojde ke ztrátě klíče, Microsoft nemůže zálohovaná data obnovit.
+    > Po nastavení trezoru máte k šifrovacímu klíči přístup jenom vy. Společnost Microsoft nikdy neudržuje kopii a nemá přístup k tomuto klíči. Pokud je klíč nesprávně umístěn, Microsoft nemůže obnovit zálohovaná data.
 
 ### <a name="data-security"></a>Zabezpečení dat
 
-- Pokud zálohujete virtuální počítače Azure, budete muset nastavit šifrování *v rámci* virtuálního počítače.
+- Při zálohování virtuálních počítačů Azure je potřeba nastavit šifrování *v rámci* virtuálního počítače.
 - Azure Backup podporuje službu Azure Disk Encryption, která používá BitLocker na virtuálních počítačích s Windows a **dm-crypt** na virtuálních počítačích s Linuxem.
-- Na back-endu, Azure Backup používá [šifrování služby Azure Storage](../storage/common/storage-service-encryption.md), které chrání data v klidovém stavu.
+- Na back-endu Azure Backup používá [šifrování Azure Storage služby](../storage/common/storage-service-encryption.md), které chrání neaktivní neaktivní data.
 
-**Počítač** | **Při přenosu** | **V klidovém stavu**
+**Počítačové** | **Při přenosu** | **V klidovém umístění**
 --- | --- | ---
-**Místní počítače Windows bez DPM nebo MABS** | ![Ano][green] | ![Ano][green]
+**Místní počítače s Windows bez DPM/MABS** | ![Ano][green] | ![Ano][green]
 **Virtuální počítače Azure** | ![Ano][green] | ![Ano][green]
-**Místní počítače Windows nebo virtuálních počítačů Azure pomocí DPM** | ![Ano][green] | ![Ano][green]
-**Místní počítače Windows nebo virtuální počítače Azure s MABS** | ![Ano][green] | ![Ano][green]
+**Místní počítače s Windows nebo virtuální počítače Azure s DPM** | ![Ano][green] | ![Ano][green]
+**Místní počítače s Windows nebo virtuální počítače Azure s MABS** | ![Ano][green] | ![Ano][green]
 
 ## <a name="compression-support"></a>Podpora komprese
 
-Backup podporuje kompresi provoz zálohování dle souhrnu v následující tabulce.
+Zálohování podporuje komprimaci provozu zálohování, jak je shrnuto v následující tabulce.
 
-- Pro virtuální počítače Azure rozšíření virtuálního počítače čte data přímo z účtu úložiště Azure přes síť úložiště, takže není potřeba tento provoz komprimovat.
-- Pokud používáte DPM nebo MABS, můžete šetřit šířku pásma pomocí komprese dat před jeho zálohování.
+- V případě virtuálních počítačů Azure rozšíření virtuálního počítače načte data přímo z účtu úložiště Azure přes síť úložiště, takže není potřeba tento provoz komprimovat.
+- Pokud používáte DPM nebo MABS, můžete ušetřit šířku pásma komprimací dat před jejich zálohováním.
 
-**Počítač** | **Komprimovat MABS/DPM (TCP)** | **Zkomprimujte do trezoru (HTTPS)**
+**Počítačové** | **Komprimovat do MABS/DPM (TCP)** | **Komprimovat do trezoru (HTTPS)**
 --- | --- | ---
-**Přímé zálohování počítačů s Windows v místním** | Není k dispozici | ![Ano][green]
+**Přímá záloha místních počítačů s Windows** | Není k dispozici | ![Ano][green]
 **Zálohování virtuálních počítačů Azure pomocí rozšíření virtuálního počítače** | Není k dispozici | Není k dispozici
-**Zálohování na počítačích typu místní nebo Azure s použitím MABS/aplikace DPM** | ![Ano][green] | ![Ano][green]
+**Zálohování místních nebo Azure počítačů pomocí MABS/DPM** | ![Ano][green] | ![Ano][green]
 
-## <a name="retention-limits"></a>Limity uchování
+## <a name="retention-limits"></a>Omezení uchování
 
 **Nastavení** | **Omezení**
 --- | ---
-**Maximální počet bodů obnovení na chráněnou instanci (počítač nebo úloha)** | 9,999
-**Maximální čas vypršení platnosti pro bod obnovení** | Bez omezení
-**Maximální frekvence zálohování do DPM nebo MABS** | Každých 15 minut pro SQL Server<br/><br/> Jednou za hodinu pro ostatní úlohy
-**Maximální frekvence zálohování do trezoru** | **Místní počítače Windows nebo virtuální počítače Azure s MARS:** Tři za den<br/><br/> **DPM/MABS:** Dva za den<br/><br/> **Zálohování virtuálních počítačů Azure:** Jedna za den
+**Maximální počet bodů obnovení na chráněnou instanci (počítač nebo zatížení)** | 9 999
+**Maximální doba vypršení platnosti bodu obnovení** | Bez omezení
+**Maximální četnost zálohování pro DPM/MABS** | Každých 15 minut pro SQL Server<br/><br/> Jednou za hodinu pro jiné úlohy
+**Maximální četnost zálohování do trezoru** | **Místní počítače s Windows nebo virtuální počítače Azure se spuštěným MARS:** Tři za den<br/><br/> **DPM/MABS:** Dva za den<br/><br/> **Zálohování virtuálních počítačů Azure:** Za jeden den
 **Uchování bodu obnovení** | Denně, týdně, měsíčně, ročně
-**Maximální doba uchovávání** | Závisí na četnosti zálohování
-**Body obnovení na disku aplikace DPM nebo MABS** | 64 pro souborové servery; 448 pro servery aplikace <br/><br/>Neomezený počet pásek body obnovení pro místní aplikace DPM
+**Maximální doba uchování** | Závisí na četnosti zálohování
+**Body obnovení na disku DPM/MABS** | 64 pro souborové servery; 448 pro aplikační servery <br/><br/>Neomezené body obnovení pásky pro místní DPM
 
 ## <a name="next-steps"></a>Další postup
 
-- [Systém podpory replikace z revize](backup-support-matrix-iaas.md) pro zálohování virtuálních počítačů Azure.
+- Seznamte se s [maticí podpory](backup-support-matrix-iaas.md) pro zálohování virtuálních počítačů Azure.
 
 [green]: ./media/backup-support-matrix/green.png
 [yellow]: ./media/backup-support-matrix/yellow.png

@@ -1,7 +1,7 @@
 ---
 title: Zabezpečení webových služeb pomocí protokolu SSL
 titleSuffix: Azure Machine Learning service
-description: Zjistěte, jak zabezpečit webovou službu, která je nasazena prostřednictvím služby Azure Machine Learning povolením protokolu HTTPS. HTTPS zabezpečuje data z klienty pomocí zabezpečení transportní vrstvy (TLS), můžou nahradit aktuální soubor vrstvy zabezpečení soketu (SSL). Klienti dále používají protokol HTTPS k ověření identity webové služby.
+description: Přečtěte si, jak zabezpečit webovou službu, která je nasazená prostřednictvím služby Azure Machine Learning, povolením protokolu HTTPS. Protokol HTTPS zabezpečuje data od klientů pomocí protokolu TLS (Transport Layer Security), což je náhrada za SSL (Secure Socket Layer). Klienti také používají protokol HTTPS k ověření identity webové služby.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,87 +11,87 @@ ms.author: aashishb
 author: aashishb
 ms.date: 04/29/2019
 ms.custom: seodec18
-ms.openlocfilehash: c176458cfc404a9d55d7fb71a36ea63110b3a6d6
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: ee8af77ce8f3897fdf1cb3da9a125acca28f9419
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67657954"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68358695"
 ---
-# <a name="use-ssl-to-secure-a-web-service-through-azure-machine-learning"></a>Použití protokolu SSL pro zabezpečení webové služby pomocí Azure Machine Learning
+# <a name="use-ssl-to-secure-a-web-service-through-azure-machine-learning"></a>Použití SSL k zabezpečení webové služby prostřednictvím Azure Machine Learning
 
-V tomto článku se dozvíte, jak zabezpečit webovou službu, která je nasazena prostřednictvím služby Azure Machine Learning.
+V tomto článku se dozvíte, jak zabezpečit webovou službu, která je nasazená prostřednictvím služby Azure Machine Learning.
 
-Použijete [HTTPS](https://en.wikipedia.org/wiki/HTTPS) omezit přístup k webovým službám a zabezpečit data, která odešlete klientů. HTTPS pomáhá zabezpečenou komunikaci mezi klientem a webovou službu pomocí šifrování komunikace mezi nimi. Šifrování používá [zabezpečení TLS (Transport Layer)](https://en.wikipedia.org/wiki/Transport_Layer_Security). Protokol TLS je stále někdy označovány jako *Secure Sockets Layer* (SSL), který byl předchůdce TLS.
+Pomocí [protokolu HTTPS](https://en.wikipedia.org/wiki/HTTPS) můžete omezit přístup k webovým službám a zabezpečit data, která klienti odesílají. Protokol HTTPS pomáhá zabezpečit komunikaci mezi klientem a webovou službou tím, že šifruje komunikaci mezi nimi. Šifrování používá [protokol TLS (Transport Layer Security)](https://en.wikipedia.org/wiki/Transport_Layer_Security). Protokol TLS se někdy označuje jako *SSL (Secure Sockets Layer)* (SSL), což bylo předchůdce TLS.
 
 > [!TIP]
-> Sada SDK Azure Machine Learning používá termín "Šifrování SSL" pro vlastnosti, které se vztahují k zabezpečení komunikace. To neznamená, že webová služba nepoužívá *TLS*. SSL je právě běžně rozpoznaný termín.
+> Sada Azure Machine Learning SDK používá pojem "SSL" pro vlastnosti, které se vztahují k zabezpečené komunikaci. To neznamená, že webová služba nepoužívá protokol *TLS*. SSL je jenom častěji rozpoznaná doba.
 
-TLS a SSL oba spoléhají na *digitální certifikáty*, které pomáhají s ověřováním šifrování a identity. Další informace o práci způsob, jakým digitální certifikáty, naleznete v tématu Wikipedia [infrastruktury veřejných klíčů](https://en.wikipedia.org/wiki/Public_key_infrastructure).
+Protokoly TLS a SSL závisí na *digitálních certifikátech*, které vám pomůžou se šifrováním a ověřením identity. Další informace o tom, jak digitální certifikáty fungují, najdete v tématu [Infrastruktura veřejných klíčů](https://en.wikipedia.org/wiki/Public_key_infrastructure)tématu Wikipedii.
 
 > [!WARNING]
-> Pokud nepoužíváte protokol HTTPS pro webovou službu, může být viditelné pro ostatní uživatele na Internetu data odesílaná do a ze služby.
+> Pokud pro webovou službu nepoužíváte protokol HTTPS, data odesílaná do a ze služby mohou být viditelná i pro ostatní na internetu.
 >
-> HTTPS také umožňuje klientovi k ověření pravosti, která se připojuje k serveru. Tato funkce chrání klienty před [man-in-the-middle](https://en.wikipedia.org/wiki/Man-in-the-middle_attack) útoky.
+> Protokol HTTPS taky umožňuje klientovi ověřit pravost serveru, ke kterému se připojuje. Tato funkce chrání klienty proti [útokům](https://en.wikipedia.org/wiki/Man-in-the-middle_attack) prostředníkem.
 
-Toto je obecný postup zabezpečení webové služby:
+Toto je obecný proces zabezpečení webové služby:
 
 1. Získáte název domény.
 
-2. Získáte digitální certifikát.
+2. Získejte digitální certifikát.
 
-3. Nasazení nebo aktualizovat webovou službu s protokol SSL povolený.
+3. Nasaďte nebo aktualizujte webovou službu s povoleným protokolem SSL.
 
 4. Aktualizujte svoji službu DNS tak, aby odkazoval na webovou službu.
 
 > [!IMPORTANT]
-> Pokud nasazujete do Azure Kubernetes Service (AKS), můžete koupit vlastní certifikát nebo použít certifikát, který je k dispozici společností Microsoft. Pokud používáte certifikát od společnosti Microsoft, není nutné získat název domény nebo certifikát SSL. Další informace najdete v tématu [povolit SSL a nasadit](#enable) části tohoto článku.
+> Pokud nasazujete do služby Azure Kubernetes Service (AKS), můžete si koupit vlastní certifikát nebo použít certifikát, který poskytuje Microsoft. Pokud používáte certifikát od Microsoftu, nemusíte mít název domény ani certifikát SSL. Další informace najdete v části [Povolení protokolu SSL a nasazení](#enable) v tomto článku.
 
-Existují mírné rozdíly při zabezpečování webových služeb napříč [cíle nasazení](how-to-deploy-and-where.md).
+Při zabezpečení webových služeb napříč [cíli nasazení](how-to-deploy-and-where.md)existují mírné rozdíly.
 
 ## <a name="get-a-domain-name"></a>Získání názvu domény
 
-Pokud již není vlastní název domény, zakoupit jeden z *registrátora názvu domény*. Proces a ceny se liší mezi registrátorů. Doménový Registrátor poskytuje nástroje ke správě názvu domény. Pomocí těchto nástrojů můžete namapovat plně kvalifikovaný název domény (FQDN) (jako je například www\.contoso.com) na IP adresu, který je hostitelem webové služby.
+Pokud název domény ještě nemáte, kupte si ho od *registrátora názvu domény*. Proces a cena se v rámci registrátorů liší. Registrátor poskytuje nástroje pro správu názvu domény. Tyto nástroje slouží k mapování plně kvalifikovaného názvu domény (FQDN) (například webové\.contoso.com) na IP adresu, která je hostitelem vaší webové služby.
 
 ## <a name="get-an-ssl-certificate"></a>Získat certifikát SSL
 
-Existuje mnoho způsobů, jak získat certifikát SSL (certifikát). Nejběžnější je to k nákupu z *certifikační autorita* (CA). Bez ohledu na to, kde můžete získat certifikát budete potřebovat následující soubory:
+Existuje mnoho způsobů, jak získat certifikát SSL (digitální certifikát). Nejběžnější je koupit si ho od certifikační autority  (CA). Bez ohledu na to, kde certifikát obdržíte, potřebujete následující soubory:
 
-* A **certifikát**. Certifikát musí obsahovat řetězce úplný certifikát, a musí být "Kódovaný PEM."
-* A **klíč**. Klíč musí být také kódovaný PEM.
+* A **certifikát**. Certifikát musí obsahovat úplný řetěz certifikátů a musí být "PEM-encodeded".
+* A **klíč**. Klíč musí být také zakódovaný v PEM.
 
-Když požádáte o certifikát, musíte zadat plně kvalifikovaný název domény adresy, který chcete použít pro webovou službu (například www\.contoso.com). K ověření identity webové služby jsou porovnány adresu, která má na certifikát a adresu klienti používat. Pokud se tyto adresy se neshodují, klient získá chybovou zprávu.
+Když vyžádáte certifikát, musíte zadat plně kvalifikovaný název domény adresy, kterou chcete používat pro webovou službu (například www\.contoso.com). Adresa, která je vyražena na certifikát a adresu, kterou používají klienti, je porovnána s cílem ověřit identitu webové služby. Pokud se tyto adresy neshodují, klient obdrží chybovou zprávu.
 
 > [!TIP]
-> Pokud certifikační autorita nemůže poskytnout certifikát a klíč jako kódovaný PEM soubory, můžete použít nástroj, jako [OpenSSL](https://www.openssl.org/) změny formátu.
+> Pokud certifikační autorita nemůže certifikát a klíč zadat jako soubory kódované PEM, můžete změnit formát pomocí nástroje, jako je třeba [OpenSSL](https://www.openssl.org/) .
 
 > [!WARNING]
-> Použití *podepsaný držitelem* certifikáty jenom pro vývoj. Nepoužívejte je v produkčním prostředí. Certifikáty podepsané svým držitelem může způsobovat problémy v klientovi aplikace. Další informace naleznete v dokumentaci pro knihovny sítě, které používá vaše klientská aplikace.
+> Certifikáty *podepsané svým držitelem* používejte jenom pro vývoj. Nepoužívejte je v produkčních prostředích. Certifikáty podepsané svým držitelem může způsobovat problémy v klientovi aplikace. Další informace naleznete v dokumentaci pro síťové knihovny, které používá vaše klientská aplikace.
 
-## <a id="enable"></a> Povolení protokolu SSL a nasazení
+## <a id="enable"></a>Povolení SSL a nasazení
 
-Chcete-li nasadit (nebo znovu nasadit) na službu s protokol SSL povolený, nastavte *ssl_enabled* parametr "PRAVDA", bez ohledu na to se vztahuje. Nastavte *ssl_certificate* parametr na hodnotu *certifikát* souboru. Nastavte *ssl_key* na hodnotu *klíč* souboru.
+Chcete-li nasadit (nebo znovu nasadit) službu s povoleným protokolem SSL, nastavte parametr *ssl_enabled* na hodnotu "true", ať je to možné. Nastavte parametr *ssl_certificate* na hodnotu souboru *certifikátu* . Nastavte *ssl_key* na hodnotu souboru *klíče* .
 
-### <a name="deploy-on-aks-and-field-programmable-gate-array-fpga"></a>Nasazení do AKS a pole programmable gate array (FPGA)
+### <a name="deploy-on-aks-and-field-programmable-gate-array-fpga"></a>Nasadit v AKS a poli brány pole brány (FPGA)
 
   > [!NOTE]
-  > Informace v této části se vztahují také při nasazení zabezpečené webové služby pro vizuální rozhraní. Pokud nejste obeznámeni s pomocí sady Python SDK, přečtěte si téma [co je Azure Machine Learning SDK pro Python?](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py).
+  > Informace v této části platí také při nasazení zabezpečené webové služby pro vizuální rozhraní. Pokud nejste obeznámeni s používáním sady Python SDK, přečtěte si téma [co je Azure Machine Learning SDK pro Python?](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py).
 
-Při nasazení do AKS, můžete vytvořit nový cluster AKS nebo připojení existující.
+Při nasazení na AKS můžete vytvořit nový cluster AKS nebo připojit existující.
   
--  Pokud vytvoříte nový cluster, můžete použít  **[AksCompute.provisionining_configuration()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute#provisioning-configuration-agent-count-none--vm-size-none--ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--location-none--vnet-resourcegroup-name-none--vnet-name-none--subnet-name-none--service-cidr-none--dns-service-ip-none--docker-bridge-cidr-none--cluster-purpose-none-)** .
-- Pokud připojíte existující cluster, můžete použít  **[AksCompute.attach_configuration()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute#attach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none-)** . Oba vracejí objekt konfigurace, který má **enable_ssl** metody.
+-  Pokud vytvoříte nový cluster, použijete **[AksCompute. provisionining_configuration ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute#provisioning-configuration-agent-count-none--vm-size-none--ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--location-none--vnet-resourcegroup-name-none--vnet-name-none--subnet-name-none--service-cidr-none--dns-service-ip-none--docker-bridge-cidr-none--cluster-purpose-none-)** .
+- Pokud připojíte existující cluster, použijete **[AksCompute. attach_configuration ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute#attach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none-)** . Vrátí objekt konfigurace, který obsahuje metodu **Enable_ssl** .
 
-**Enable_ssl** metodu můžete použít certifikát, který je k dispozici společností Microsoft nebo certifikát, který si zakoupíte.
+Metoda **Enable_ssl** může používat certifikát, který poskytuje společnost Microsoft nebo certifikát, který si koupíte.
 
-  * Pokud používáte certifikát od společnosti Microsoft, je nutné použít *leaf_domain_label* parametru. Tento parametr generuje názvu DNS pro danou službu. Například hodnota "Moje_služba" vytvoří název domény "Moje_služba\<šest náhodných znaků >.\< oblast_azure >. cloudapp.azure.com ", kde \<oblast_azure > je oblast, která obsahuje službu. Pokud chcete, můžete použít *overwrite_existing_domain* parametr přepsat existující *leaf_domain_label*.
+  * Použijete-li certifikát od společnosti Microsoft, je nutné použít parametr *leaf_domain_label* . Tento parametr vygeneruje název DNS pro službu. Například hodnota "mojesluzba" vytvoří název domény "mojesluzba\<šest-Random-Characters >.\< a >. cloudapp. Azure. com ", kde \<a > je oblast, která obsahuje službu. Volitelně můžete pomocí parametru *overwrite_existing_domain* přepsat existující *leaf_domain_label*.
 
-    Chcete-li nasadit (nebo znovu nasadit) na službu s protokol SSL povolený, nastavte *ssl_enabled* parametr "PRAVDA", bez ohledu na to se vztahuje. Nastavte *ssl_certificate* parametr na hodnotu *certifikát* souboru. Nastavte *ssl_key* na hodnotu *klíč* souboru.
+    Chcete-li nasadit (nebo znovu nasadit) službu s povoleným protokolem SSL, nastavte parametr *ssl_enabled* na hodnotu "true", ať je to možné. Nastavte parametr *ssl_certificate* na hodnotu souboru *certifikátu* . Nastavte *ssl_key* na hodnotu souboru *klíče* .
 
     > [!IMPORTANT]
-    > Pokud používáte certifikát od společnosti Microsoft, nemusíte zakoupit vlastní certifikát nebo názvu domény.
+    > Pokud používáte certifikát od Microsoftu, nemusíte kupovat svůj vlastní certifikát ani název domény.
 
-    Následující příklad ukazuje, jak vytvořit konfiguraci, která umožňuje certifikát SSL od společnosti Microsoft:
+    Následující příklad ukazuje, jak vytvořit konfiguraci, která povolí certifikát SSL od společnosti Microsoft:
 
     ```python
     from azureml.core.compute import AksCompute
@@ -104,7 +104,7 @@ Při nasazení do AKS, můžete vytvořit nový cluster AKS nebo připojení exi
     attach_config.enable_ssl(leaf_domain_label = "myservice")
     ```
 
-  * Při použití *certifikát, který jste si koupili*, je použít *ssl_cert_pem_file*, *ssl_key_pem_file*, a *ssl_cname* Parametry. Následující příklad ukazuje, jak používat *.pem* soubory pro vytvoření konfigurace, který používá certifikát SSL, který jste si koupili:
+  * Když použijete *certifikát, který jste*zakoupili, použijete parametry *ssl_cert_pem_file*, *ssl_key_pem_file*a *ssl_cname* . Následující příklad ukazuje, jak pomocí souborů *. pem* vytvořit konfiguraci, která používá certifikát SSL, který jste zakoupili:
 
     ```python
     from azureml.core.compute import AksCompute
@@ -119,19 +119,20 @@ Při nasazení do AKS, můžete vytvořit nový cluster AKS nebo připojení exi
                                         ssl_key_pem_file="key.pem", ssl_cname="www.contoso.com")
     ```
 
-Další informace o *enable_ssl*, naleznete v tématu [AksProvisioningConfiguration.enable_ssl()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.aksprovisioningconfiguration?view=azure-ml-py#enable-ssl-ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--leaf-domain-label-none--overwrite-existing-domain-false-) a [AksAttachConfiguration.enable_ssl()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.aksattachconfiguration?view=azure-ml-py#enable-ssl-ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--leaf-domain-label-none--overwrite-existing-domain-false-).
+Další informace o *Enable_ssl*naleznete v tématu [AksProvisioningConfiguration. Enable_ssl ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.aksprovisioningconfiguration?view=azure-ml-py#enable-ssl-ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--leaf-domain-label-none--overwrite-existing-domain-false-) a [AksAttachConfiguration. Enable_ssl ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.aksattachconfiguration?view=azure-ml-py#enable-ssl-ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--leaf-domain-label-none--overwrite-existing-domain-false-).
 
-### <a name="deploy-on-azure-container-instances"></a>Nasazení do Azure Container Instances
+### <a name="deploy-on-azure-container-instances"></a>Nasadit na Azure Container Instances
 
-Když nasadíte do služby Azure Container Instances, zadejte hodnoty pro parametry související s protokolem SSL, jak ukazuje následující fragment kódu:
+Při nasazení na Azure Container Instances zadáte hodnoty parametrů souvisejících s protokolem SSL, jak ukazuje následující fragment kódu:
 
 ```python
 from azureml.core.webservice import AciWebservice
 
-aci_config = AciWebservice.deploy_configuration(ssl_enabled=True, ssl_cert_pem_file="cert.pem", ssl_key_pem_file="key.pem", ssl_cname="www.contoso.com")
+aci_config = AciWebservice.deploy_configuration(
+    ssl_enabled=True, ssl_cert_pem_file="cert.pem", ssl_key_pem_file="key.pem", ssl_cname="www.contoso.com")
 ```
 
-Další informace najdete v tématu [AciWebservice.deploy_configuration()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aciwebservice#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none-).
+Další informace najdete v tématu [AciWebservice. deploy_configuration ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aciwebservice#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none-).
 
 ## <a name="update-your-dns"></a>Aktualizujte svoji službu DNS
 
@@ -139,20 +140,20 @@ V dalším kroku je nutné aktualizovat DNS tak, aby odkazoval na webovou služb
 
 + **Pro Container Instances:**
 
-  Použití nástrojů z vašeho registrátora názvu domény aktualizovat záznam DNS pro název domény. Záznam musí odkazovat na IP adresu služby.
+  Pomocí nástrojů z registrátora názvu domény aktualizujte záznam DNS pro název domény. Záznam musí ukazovat na IP adresu služby.
 
-  Může docházet k prodlevám minut nebo hodin, než klienti lze přeložit název domény, v závislosti na doménový Registrátor a "time to live" (TTL), který je nakonfigurovaný pro název domény.
+  Může dojít ke zpoždění minut nebo hodin, než klienti budou moci přeložit název domény v závislosti na registrátoru a TTL (Time to Live), který je nakonfigurován pro název domény.
 
 + **Pro AKS:**
 
   > [!WARNING]
-  > Pokud jste použili *leaf_domain_label* k vytvoření služby pomocí certifikátu od společnosti Microsoft, nemusíte aktualizovat ručně hodnotu DNS pro cluster. Hodnota by měla být nastaví automaticky.
+  > Pokud jste službu *leaf_domain_label* použili k vytvoření služby pomocí certifikátu od Microsoftu, neaktualizujte ručně hodnotu DNS clusteru. Hodnota by měla být nastavena automaticky.
 
-  Aktualizace služby DNS **konfigurace** kartu veřejnou IP adresu clusteru AKS. (Viz následující obrázek). Veřejná IP adresa je typ prostředku, který se vytvoří ve skupině prostředků, který obsahuje agentské uzly AKS a jiných síťových prostředků.
+  Aktualizujte DNS na kartě **Konfigurace** veřejné IP adresy clusteru AKS. (Podívejte se na následující obrázek.) Veřejná IP adresa je typ prostředku, který se vytvoří v rámci skupiny prostředků, která obsahuje uzly agenta AKS a další síťové prostředky.
 
-  ![Služba Azure Machine Learning: Zabezpečení webové služby s protokolem SSL](./media/how-to-secure-web-service/aks-public-ip-address.png)
+  ![Služba Azure Machine Learning: Zabezpečení webových služeb pomocí SSL](./media/how-to-secure-web-service/aks-public-ip-address.png)
 
 ## <a name="next-steps"></a>Další postup
 Naučte se:
-+ [Využívání služby machine learning model nasadit jako webovou službu](how-to-consume-web-service.md)
-+ [Bezpečné spuštění experimentů a odvození uvnitř virtuální sítě Azure](how-to-enable-virtual-network.md)
++ [Využití modelu strojového učení nasazeného jako webové služby](how-to-consume-web-service.md)
++ [Zabezpečené spouštění experimentů a odvození v rámci virtuální sítě Azure](how-to-enable-virtual-network.md)

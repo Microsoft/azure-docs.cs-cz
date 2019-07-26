@@ -17,12 +17,12 @@ ms.date: 07/16/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fe90e5a70779857f0045baf27abc59a75289c39c
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
-ms.translationtype: HT
+ms.openlocfilehash: c407ca9f7d28f1a74f0037931d83dd64fe7fc801
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68276826"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68335538"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-windows-desktop-app"></a>Rychlý start: Získání tokenu a volání Microsoft Graph API z desktopové aplikace pro Windows
 
@@ -44,7 +44,7 @@ V tomto rychlém startu se dozvíte, jak napsat desktopovou aplikaci .NET pro Wi
 >
 > ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>Možnost 2: Registrace a ruční konfigurace vaší aplikace a ukázky kódu
 >
-> #### <a name="step-1-register-your-application"></a>Krok 1: Registrace vaší aplikace
+> #### <a name="step-1-register-your-application"></a>Krok 1: Zaregistrujte svoji aplikaci.
 > Pokud chcete zaregistrovat aplikaci a ručně přidat informace o registraci aplikace ke svému řešení, postupujte následovně:
 >
 > 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účtu Microsoft.
@@ -175,3 +175,7 @@ Vyzkoušejte kurz pro plochu Windows, kde najdete podrobný návod k vytvářen�
 > [!div class="nextstepaction"]
 > [Kurz volání rozhraní Graph API](https://docs.microsoft.com/azure/active-directory/develop/guidedsetups/active-directory-windesktop)
 
+Pomůžeme nám vylepšit platformu Microsoft identity. Řekněte nám, co si myslíte, díky krátkému průzkumu dvou dotazů.
+
+> [!div class="nextstepaction"]
+> [Microsoft Identity Platform Survey](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyKrNDMV_xBIiPGgSvnbQZdUQjFIUUFGUE1SMEVFTkdaVU5YT0EyOEtJVi4u)

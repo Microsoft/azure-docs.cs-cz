@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.reviewer: trbye
 ms.date: 07/12/2019
-ms.openlocfilehash: f93fdcbea103259e493399ae479cf001c1ff68db
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.openlocfilehash: 384cd2df9c629a73095cc55f4f6d65aa6a727225
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67868811"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68360965"
 ---
 # <a name="enable-logging-in-azure-machine-learning-service"></a>Povolit protokolování ve službě Azure Machine Learning
 
@@ -64,7 +64,7 @@ Sada SDK také podporuje použití výchozího balíčku protokolování Pythonu
 from azureml.train.automl import AutoMLConfig
 import logging
 
-automated_ml_config = AutoMLConfig(task = 'regression',
+automated_ml_config = AutoMLConfig(task='regression',
                                    verbosity=logging.INFO,
                                    X=your_training_features,
                                    y=your_training_labels,
@@ -78,7 +78,8 @@ automated_ml_config = AutoMLConfig(task = 'regression',
 ```python
 from azureml.core.compute import ComputeTarget
 
-compute_target = ComputeTarget.attach(workspace=ws, name="example", attach_configuration=config)
+compute_target = ComputeTarget.attach(
+    workspace=ws, name="example", attach_configuration=config)
 compute.wait_for_completion(show_output=True)
 ```
 

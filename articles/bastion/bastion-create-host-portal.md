@@ -1,27 +1,27 @@
 ---
-title: Vytvoření Azure Bastion host | Dokumentace Microsoftu
-description: V tomto článku najdete informace o vytvoření Azure Bastion host
+title: Vytvoření hostitele Azure bastionu | Microsoft Docs
+description: V tomto článku se dozvíte, jak vytvořit hostitele Azure bastionu.
 services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: conceptual
 ms.date: 06/25/2019
 ms.author: cherylmc
-ms.openlocfilehash: 65116ebbd6a66241a5b35a39f3dfb8f826a3745f
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 881d89170c82731fca3f6977da486eac5be772f8
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67594273"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68466998"
 ---
-# <a name="create-an-azure-bastion-host-preview"></a>Vytvoření Azure Bastion host (Preview)
+# <a name="create-an-azure-bastion-host-preview"></a>Vytvoření hostitele Azure bastionu (Preview)
 
-Tento článek ukazuje, jak vytvořit Azure Bastion host. Když si zřídíte službu Azure Bastionu ve vaší virtuální síti, bezproblémové prostředí RDP/SSH je k dispozici pro všechny vaše virtuální počítače ve stejné virtuální síti. Toto nasazení je na jednu virtuální síť, ne na předplatné/účet nebo virtuální počítač.
+V tomto článku se dozvíte, jak vytvořit hostitele Azure bastionu. Po zřízení služby Azure bastionu ve vaší virtuální síti bude bezproblémové prostředí RDP/SSH dostupné pro všechny vaše virtuální počítače ve stejné virtuální síti. Toto nasazení je na jednu virtuální síť, ne na předplatné/účet nebo virtuální počítač.
 
-Existují dva způsoby, které jste vytvořili prostředek Bastion host:
+Existují dva způsoby, jak můžete vytvořit prostředek hostitele bastionu:
 
-* Vytvořte prostředek Bastionu pomocí webu Azure portal.
-* Vytvořte prostředek Bastionu na webu Azure Portal pomocí stávajícího nastavení virtuálního počítače.
+* Vytvořte prostředek bastionu pomocí Azure Portal.
+* Vytvořte prostředek bastionu v Azure Portal pomocí stávajících nastavení virtuálního počítače.
 
 > [!IMPORTANT]
 > Tato verze Public Preview se poskytuje bez smlouvy o úrovni služeb a neměla by se používat pro úlohy v produkčním prostředí. Některé funkce nemusí být podporované, můžou mít omezené možnosti nebo nemusí být dostupné ve všech umístěních Azure. Podrobnosti najdete v [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
@@ -29,64 +29,64 @@ Existují dva způsoby, které jste vytvořili prostředek Bastion host:
 
 ## <a name="before-you-begin"></a>Před zahájením
 
-Verze public preview je omezená na následující veřejných oblastech Azure:
+Verze Public Preview je omezená na následující veřejné oblasti Azure:
 
 [!INCLUDE [available regions](../../includes/bastion-regions-include.md)]
 
-## <a name="createhost"></a>Vytvoření hostitel typu bašta
+## <a name="createhost"></a>Vytvoření hostitele bastionu
 
-Tato část vám pomůže vytvořit nový prostředek Bastionu Azure na webu Azure Portal.
+Tato část vám pomůže vytvořit nový prostředek Azure bastionu z Azure Portal.
 
-1. Z domovské stránky v [webu Azure portal – ve verzi Preview Bastionu](https://aka.ms/BastionHost), klikněte na tlačítko **+ vytvořit prostředek**. Ujistěte se, že můžete použít odkaz uvedený pro přístup k portálu pro tuto verzi preview, není regulární webu Azure portal.
+1. Z domovské stránky v [Azure Portal-bastionu Preview](https://aka.ms/BastionHost)klikněte na **+ vytvořit prostředek**. Ujistěte se, že jste k přístupu k portálu pro tuto verzi Preview použili zadaný odkaz, nikoli běžné Azure Portal.
 
-1. Na **nový** stránku, *Hledat na Marketplace* zadejte **Bastionu**, pak klikněte na tlačítko **Enter** zobrazíte výsledky hledání.
+1. Na **nové** stránce v poli *Hledat na Marketplace* zadejte **bastionu**a kliknutím na **ENTER** se dostanete do výsledků hledání.
 
-1. Z výsledků, klikněte na tlačítko **Bastionu (preview)** . Ujistěte se, že vydavatel je *Microsoft* a kategorie je *sítě*.
+1. Z výsledků klikněte na **bastionu (Preview)** . Ujistěte se, že je Vydavatel *Microsoft* a kategorie jsou *sítě*.
 
-1. Na **Bastionu (preview)** klikněte na **vytvořit** otevřít **vytvořit bastionu** stránky.
+1. Na stránce **bastionu (Preview)** klikněte na **vytvořit** a otevřete stránku **vytvořit bastionu** .
 
-1. Na **vytvořit bastionu** stránce, konfiguraci nového prostředku Bastionu. Určení nastavení konfigurace pro váš prostředek Bastionu.
+1. Na stránce **vytvořit bastionu** Nakonfigurujte nový prostředek bastionu. Zadejte nastavení konfigurace pro prostředek bastionu.
 
     ![Vytvoření bastionu](./media/bastion-create-host-portal/settings.png)
 
-    * **Předplatné**: Předplatné Azure, kterou chcete použít k vytvoření nového prostředku Bastionu.
-    * **Skupina prostředků**: Skupina prostředků Azure, ve kterém bude vytvořen nový prostředek Bastionu v. Pokud nemáte existující skupinu prostředků, můžete vytvořit nový.
-    * **Název**: Název nového prostředku Bastionu
-    * **Oblast**: Veřejné oblast Azure, který prostředek vytvořený.
-    * **Virtuální síť**: Virtuální síť, ve kterém bude vytvořen prostředek Bastionu v. Nové virtuální sítě můžete vytvořit na portálu během tohoto procesu a v případě nemají nebo nechcete použít existující virtuální sítě. Pokud použijete existující virtuální síť, ujistěte se, že existující virtuální síť má dostatek volného adresní prostor pro plnění požadavků na podsíť Bastionu.
-    * **Podsíť**: Podsíť ve vaší virtuální síti, ke které se nový prostředek hostitele Bastionu nasadí. Musíte vytvořit podsíť s použitím hodnoty názvu **AzureBastionSubnet**. Tato hodnota umožňuje Azure vědělo, který podsítě do Bastionu prostředky nasadíte. To se liší od podsíť brány. Důrazně doporučujeme použít aspoň/27 nebo větší podsítě (/ 27, / 26 a tak dále). Vytvořte **AzureBastionSubnet** bez jakékoli skupiny zabezpečení sítě, směrování tabulky nebo delegace.
-    * **Veřejná IP adresa**: Veřejné IP adresy Bastionu prostředku, na kterém budou mít přístup RDP/SSH (přes port 443). Vytvořit novou veřejnou IP adresu, nebo použijte již existující. Veřejná IP adresa musí být ve stejné oblasti jako prostředek Bastionu, kterou vytváříte.
+    * **Předplatné**: Předplatné Azure, které chcete použít k vytvoření nového prostředku bastionu.
+    * **Skupina prostředků**: Skupina prostředků Azure, ve které se vytvoří nový prostředek bastionu. Pokud nemáte existující skupinu prostředků, můžete vytvořit novou.
+    * **Název**: Název nového prostředku bastionu
+    * **Oblast**: Veřejná oblast Azure, ve které se prostředek vytvoří.
+    * **Virtuální síť**: Virtuální síť, ve které se vytvoří prostředek bastionu. Během tohoto procesu můžete vytvořit novou virtuální síť v portálu, pokud nemáte nebo nechcete používat stávající virtuální síť. Pokud používáte existující virtuální síť, ujistěte se, že stávající virtuální síť má dostatek volného místa pro splnění požadavků na bastionu podsíť.
+    * **Podsíť**: Podsíť ve virtuální síti, do které bude nasazen nový prostředek hostitele bastionu. Podsíť musíte vytvořit pomocí hodnoty název **AzureBastionSubnet**. Tato hodnota umožňuje službě Azure zjistit, do které podsítě nasadit prostředky bastionu. To se liší od podsítě brány. Důrazně doporučujeme, abyste používali alespoň a/27 nebo větší podsíť (/27,/26 atd.). Vytvořte **AzureBastionSubnet** bez směrovacích tabulek nebo delegování. Pokud používáte skupiny zabezpečení sítě na **AzureBastionSubnet**, přečtěte si téma [práce s skupin zabezpečení sítě](bastion-nsg.md).
+    * **Veřejná IP adresa**: Veřejná IP adresa prostředku bastionu, ke kterému bude přístup RDP/SSH (přes port 443). Vytvořte novou veřejnou IP adresu nebo použijte existující. Veřejná IP adresa musí být ve stejné oblasti jako prostředek bastionu, který vytváříte.
     * **Název veřejné IP adresy**: Název prostředku veřejné IP adresy.
-    * **Veřejné IP adresy skladové položky**: Ve výchozím nastavení předem **standardní**. Azure Bastionu používá a podporuje pouze standardní veřejné IP skladová jednotka.
-    * **Přiřazení**: Ve výchozím nastavení předem **statické**.
+    * **SKU veřejné IP adresy**: Předem vyplněné ve výchozím nastavení na **Standard**. Azure bastionu používá nebo podporuje jenom standardní IP SKU Standard.
+    * **Přiřazení**: Ve výchozím nastavení předem naplní **statickou**.
 
-1. Když zadáte nastavení, klikněte na tlačítko **revize + vytvořit**. Tato operace ověří hodnoty. Jakmile úspěšně proběhne ověření, můžete začít v procesu vytváření.
-1. Na stránce vytvořit bastionu klikněte na tlačítko **vytvořit**.
-1. Zobrazí se zpráva s informacemi, které už znáte, že probíhá nasazení. Stav se zobrazí na této stránce vytvářené prostředky. Trvá přibližně 5 minut, než Bastionu prostředek, který se dají vytvářet a nasazovat.
+1. Po dokončení zadávání nastavení klikněte na tlačítko **zkontrolovat + vytvořit**. Tím se hodnoty ověří. Po úspěšném ověření můžete zahájit proces vytváření.
+1. Na stránce vytvořit bastionu klikněte na **vytvořit**.
+1. Zobrazí se zpráva s informacemi o tom, že probíhá nasazení. Stav se zobrazí na této stránce při vytváření prostředků. Vytvoření a nasazení prostředku bastionu trvá přibližně 5 minut.
 
-## <a name="createvmset"></a>Vytvoření hostitel typu bašta pomocí nastavení virtuálního počítače
+## <a name="createvmset"></a>Vytvoření hostitele bastionu pomocí nastavení virtuálního počítače
 
-Pokud hostitel typu bašta vytvoříte na portálu s použitím existujícího virtuálního počítače, různá nastavení automaticky výchozí odpovídající virtuální počítač nebo virtuální sítě.
+Pokud vytvoříte hostitele bastionu na portálu pomocí existujícího virtuálního počítače, budou automaticky nastavena výchozí nastavení, která odpovídají vašemu virtuálnímu počítači nebo virtuální síti.
 
-1. V [webu Azure portal – ve verzi Preview Bastionu](https://aka.ms/BastionHost), přejděte ke svému virtuálnímu počítači a pak klikněte na tlačítko **připojit**.
+1. Ve [verzi Preview Azure Portal bastionu](https://aka.ms/BastionHost)přejděte na svůj virtuální počítač a klikněte na **připojit**.
 
-    ![Připojení virtuálního počítače](./media/bastion-create-host-portal/vmsettings.png)
+    ![Připojení k virtuálnímu počítači](./media/bastion-create-host-portal/vmsettings.png)
 
-1. Na postranním panelu vpravo klikněte na tlačítko **Bastionu**, pak **použití Bastionu**.
+1. Na pravém bočním panelu klikněte na **bastionu**a pak **použijte bastionu**.
 
     ![Bastion](./media/bastion-create-host-portal/vmbastion.png)
 
-1. Na stránce Bastionu vyplňte následující pole nastavení:
+1. Na stránce bastionu vyplňte následující pole nastavení:
 
-    * **Název**: Název hostitele bastionu chcete vytvořit.
-    * **Podsíť**: Podsíť ve vaší virtuální sítě, do které Bastionu se nasadí prostředků. Je potřeba vytvořit podsíť s názvem **AzureBastionSubnet**. Díky Azure vědělo, která podsíť Bastionu prostředek, který chcete nasadit. To se liší od podsíť brány. Klikněte na tlačítko **spravovat konfiguraci podsítě** vytvořit podsíť Bastionu Azure. Důrazně doporučujeme použít aspoň/27 nebo větší podsítě (/ 27, / 26, atd.). Vytvořte **AzureBastionSubnet** bez jakékoli skupiny zabezpečení sítě, směrování tabulky nebo delegace. Klikněte na tlačítko **vytvořit** vytvořte podsíť, pak pokračujte další nastavení.
+    * **Název**: Název hostitele bastionu, který chcete vytvořit.
+    * **Podsíť**: Podsíť ve virtuální síti, do které se bude nasazovat prostředek bastionu. Podsíť musí být vytvořená s názvem **AzureBastionSubnet**. To umožňuje službě Azure zjistit, do které podsítě nasadit prostředek bastionu. To se liší od podsítě brány. Pokud chcete vytvořit podsíť Azure bastionu, klikněte na **spravovat konfiguraci podsítě** . Důrazně doporučujeme, abyste používali alespoň a/27 nebo větší podsíť (/27,/26 atd.). Vytvořte **AzureBastionSubnet** bez jakýchkoli skupin zabezpečení sítě, směrovacích tabulek nebo delegování. Kliknutím na **vytvořit** vytvořte podsíť a pak pokračujte dalším nastavením.
 
       ![Bastion](./media/bastion-create-host-portal/subnet.png)
       
-    * **Veřejná IP adresa**: Veřejné IP adresy Bastionu prostředku, na kterém budou mít přístup RDP/SSH (přes port 443). Vytvořit novou veřejnou IP adresu, nebo použijte již existující. Veřejná IP adresa musí být ve stejné oblasti jako prostředek Bastionu, kterou vytváříte.
+    * **Veřejná IP adresa**: Veřejná IP adresa prostředku bastionu, ke kterému bude přístup RDP/SSH (přes port 443). Vytvořte novou veřejnou IP adresu nebo použijte existující. Veřejná IP adresa musí být ve stejné oblasti jako prostředek bastionu, který vytváříte.
     * **Název veřejné IP adresy**: Název prostředku veřejné IP adresy.
-1. V dialogovém okně ověřování klikněte na tlačítko **vytvořit**. Počkejte přibližně 5 minut, než Bastionu prostředek, který se dají vytvářet a nasazovat.
+1. Na obrazovce ověřování klikněte na **vytvořit**. Počkejte přibližně 5 minut, než se prostředek bastionu vytvoří a nasadí.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
-Přečtěte si [Bastionu – nejčastější dotazy](bastion-faq.md)
+Přečtěte si [Nejčastější dotazy k bastionu](bastion-faq.md)

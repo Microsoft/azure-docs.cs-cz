@@ -1,5 +1,5 @@
 ---
-title: Automatické zřizování zařízení s DPS pomocí ověřování symetrického klíče pomocí ověření identity-Azure IoT Edge | Microsoft Docs
+title: Automatického zřizování zařízení s DPS pomocí ověřování symetrického klíče pomocí ověření identity-Azure IoT Edge | Microsoft Docs
 description: Použití ověření identity symetrického klíče k testování automatického zřizování zařízení pro Azure IoT Edge se službou Device Provisioning
 author: kgremban
 manager: philmea
@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: a91162271bf36e1d68e087a60723497e7fc261ec
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
-ms.translationtype: HT
+ms.openlocfilehash: 3c21c0bdce6f6a5cd3c8f634bf400600b30a8ead
+ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68275745"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68414587"
 ---
 # <a name="create-and-provision-an-iot-edge-device-using-symmetric-key-attestation"></a>Vytvoření a zřízení zařízení IoT Edge pomocí ověřování symetrického klíče
 
-Zařízení Azure IoT Edge může být automatické zřízení pomocí [služby Device Provisioning](../iot-dps/index.yml) stejně jako zařízení, která nejsou povolena edge. Pokud neznáte proces automatického zřizování, přečtěte si [konceptům automatického zřizování](../iot-dps/concepts-auto-provisioning.md) než budete pokračovat.
+Zařízení Azure IoT Edge můžou být autoprovisioned pomocí [služby Device Provisioning](../iot-dps/index.yml) stejně jako zařízení, která nejsou povolena edge. Pokud neznáte proces autoprovisioning, přečtěte si [autoprovisioning koncepty](../iot-dps/concepts-auto-provisioning.md) než budete pokračovat.
 
 V tomto článku se dozvíte, jak vytvořit službu Device Provisioning pomocí ověření symetrického klíče na zařízení IoT Edge pomocí následujících kroků:
 
@@ -165,8 +165,7 @@ Při zřizování zařízení budete potřebovat následující informace:
 
 Postupujte podle pokynů pro architekturu vašeho zařízení. Ujistěte se, že konfigurace modulu runtime IoT Edge není ruční, automatické zřizování.
 
-* [Instalace modulu runtime Azure IoT Edge v systému Linux (x64)](how-to-install-iot-edge-linux.md)
-* [Instalace modulu runtime Azure IoT Edge v systému Linux (ARM32v7/armhf)](how-to-install-iot-edge-linux-arm.md)
+[Instalace modulu runtime Azure IoT Edge v systému Linux](how-to-install-iot-edge-linux.md)
 
 Oddíl konfiguračního souboru pro zajištění symetrického klíče vypadá takto:
 
@@ -188,7 +187,7 @@ Nahraďte zástupné `{scope_id}`hodnoty `{registration_id}`pro, `{symmetric_key
 
 Podle pokynů nainstalujte modul runtime IoT Edge na zařízení, pro které jste vygenerovali odvozený klíč zařízení. Ujistěte se, že konfigurace modulu runtime IoT Edge není ruční, automatické zřizování.
 
-[Instalace a Automatické zřizování IoT Edge](how-to-install-iot-edge-windows.md#option-2-install-and-automatically-provision)
+[Instalace a Automatické zřizování IoT Edge ve Windows](how-to-install-iot-edge-windows.md#option-2-install-and-automatically-provision)
 
 ## <a name="verify-successful-installation"></a>Ověření úspěšné instalace
 
@@ -236,6 +235,6 @@ iotedge list
 
 Můžete ověřit, že se použil jednotlivý zápis, který jste vytvořili v rámci služby Device Provisioning. V Azure Portal přejděte na instanci služby Device Provisioning. Otevřete podrobnosti registrace pro jednotlivou registraci, kterou jste vytvořili. Všimněte si, že je přiřazený stav  registrace a že je uvedené ID zařízení.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Proces registrace služby Device Provisioning umožňuje nastavit ID zařízení a značky dvojčat zařízení ve stejnou dobu, jak zřídit nové zařízení. Tyto hodnoty můžete cílit na jednotlivá zařízení nebo skupin pomocí automatické správy zařízení. Zjistěte, jak [nasazení a monitorování modulů při škálování na portálu Azure IoT Edge](how-to-deploy-monitor.md) nebo [pomocí Azure CLI](how-to-deploy-monitor-cli.md).

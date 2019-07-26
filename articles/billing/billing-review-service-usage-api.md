@@ -1,6 +1,6 @@
 ---
-title: Zkontrolujte využití prostředků služby Azure pomocí rozhraní REST API | Dokumentace Microsoftu
-description: Zjistěte, jak použít rozhraní Azure REST API ke kontrole využití prostředků služby Azure.
+title: Kontrola využití prostředků služby Azure pomocí REST API | Microsoft Docs
+description: Naučte se používat rozhraní Azure REST API ke kontrole využití prostředků služby Azure.
 services: billing
 documentationcenter: na
 author: lleonard-msft
@@ -12,26 +12,26 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/15/2018
-ms.author: erikre
-ms.openlocfilehash: d3db4166810da981ff0117536d8550a6b2203924
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: banders
+ms.openlocfilehash: 47e19fae26d6e3bc465799980c587d7bb7ed5e92
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60370981"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68443064"
 ---
-# <a name="review-azure-resource-usage-using-the-rest-api"></a>Zkontrolujte využití prostředků Azure pomocí rozhraní REST API
+# <a name="review-azure-resource-usage-using-the-rest-api"></a>Projděte si využití prostředků Azure pomocí REST API
 
-Azure Cost Management API pomáhají prohlížet a spravovat využití vašich prostředků Azure.
+Rozhraní API pro Azure Cost Management vám pomůžou zkontrolovat a spravovat spotřebu vašich prostředků Azure.
 
-V tomto článku se dozvíte, jak vytvořit denní sestavu, která bude generovat dokument hodnot oddělených čárkami se po hodinách informace o použití a jak používat filtry umožní přizpůsobit sestavu, takže můžete dát dotaz na využití virtuálních počítačů, databází a označí prostředky ve skupině prostředků Azure.
+V tomto článku se dozvíte, jak vytvořit denní sestavu, která bude generovat dokument s hodnotami oddělenými čárkou s informacemi o hodinovém použití, a pak pomocí filtrů přizpůsobit sestavu, abyste mohli zadávat dotazy na využití virtuálních počítačů, databází a značek. prostředky ve skupině prostředků Azure.
 
 >[!NOTE]
-> Rozhraní API pro správu nákladů je aktuálně ve verzi private preview.
+> Rozhraní Cost Management API je aktuálně v privátní verzi Preview.
 
-## <a name="create-a-basic-cost-management-report"></a>Vytvoření sestavy základní náklady na správu
+## <a name="create-a-basic-cost-management-report"></a>Vytvoření sestavy základní správy nákladů
 
-Použití `reports` operace v rozhraní API pro správu nákladů definovat způsob generování sestav nákladů a kde sestavy bude publikován.
+`reports` Pomocí operace v rozhraní cost Management API definujte způsob, jakým se generují náklady na generování sestav a kde budou sestavy publikovány.
 
 ```http
 https://management.azure.com/subscriptions/{subscriptionGuid}/providers/Microsoft.CostManagement/reports/{reportName}?api-version=2018-09-01-preview
@@ -39,16 +39,16 @@ Content-Type: application/json
 Authorization: Bearer
 ```
 
-`{subscriptionGuid}` Parametr je vyžadován a musí obsahovat ID předplatného, který může číst pomocí pověření poskytnutých ve token rozhraní API. Na `{reportName}`
+`{subscriptionGuid}` Parametr je povinný a měl by obsahovat ID předplatného, které se dá číst pomocí přihlašovacích údajů zadaných v tokenu rozhraní API. Okně`{reportName}`
 
-Vyžadují se následující hlavičky: 
+Jsou vyžadovány následující hlavičky: 
 
-|Hlavička požadavku|Popis|  
+|Hlavička žádosti|Popis|  
 |--------------------|-----------------|  
-|*Content-Type:*| Povinná hodnota. Nastavte na `application/json`. |  
-|*Authorization:*| Povinná hodnota. Nastaven na platné `Bearer` token. |
+|*Content-Type:*| Povinný parametr. Nastavte na `application/json`. |  
+|*Authorization:*| Povinný parametr. Nastavte na platný `Bearer` token. |
 
-Konfigurujte parametry sestavy v textu požadavku HTTP. V následujícím příkladu je nastavena sestavy ke generování každý den, kdy aktivní, je soubor CSV se zapisují do kontejneru objektů blob v Azure Storage a obsahuje informace o nákladech pro všechny prostředky ve skupině prostředků každou hodinu `westus`.
+Nakonfigurujte parametry sestavy v textu požadavku HTTP. V následujícím příkladu je sestava nastavená tak, aby se vygenerovala každý den, pokud je aktivní, jedná se o soubor CSV zapsaný do Azure Storage kontejneru objektů BLOB a obsahuje hodinové informace o `westus`nákladech pro všechny prostředky ve skupině prostředků.
 
 ```json
 {
@@ -89,15 +89,15 @@ Konfigurujte parametry sestavy v textu požadavku HTTP. V následujícím přík
 }
 ```
 
-Prostředek
+Rozhraní
 
-## <a name="filtering-reports"></a>Filtrování sestavy
+## <a name="filtering-reports"></a>Filtrování sestav
 
-`filter` a `dimensions` část obsahu žádosti při vytváření sestavy vám umožní soustředit se v na náklady na konkrétní typy prostředků. Předchozí text požadavku ukazuje, jak filtrovat podle všech prostředků v oblasti. 
+Oddíl `filter` a`dimensions` v těle požadavku při vytváření sestavy vám umožní soustředit se na náklady na konkrétní typy prostředků. Předchozí text žádosti ukazuje, jak filtrovat podle všech prostředků v oblasti. 
 
-### <a name="get-all-compute-usage"></a>Získat všechny využití služby compute
+### <a name="get-all-compute-usage"></a>Získat veškeré využití výpočtů
 
-Použití `ResourceType` dimenze sestavy nákladů na virtuální počítač Azure v rámci vašeho předplatného ve všech oblastech.
+`ResourceType` Dimenzi můžete použít k hlášení nákladů na virtuální počítače Azure v rámci předplatného ve všech oblastech.
 
 ```json
 "filter": {
@@ -112,9 +112,9 @@ Použití `ResourceType` dimenze sestavy nákladů na virtuální počítač Azu
 }
 ```
 
-### <a name="get-all-database-usage"></a>Získat všechny databáze využití
+### <a name="get-all-database-usage"></a>Získat všechny využití databáze
 
-Použití `ResourceType` dimenze sestava náklady na Azure SQL Database ve vašem předplatném ve všech oblastech.
+`ResourceType` Dimenzi můžete použít k hlášení Azure SQL Database nákladů ve vašem předplatném napříč všemi oblastmi.
 
 ```json
 "filter": {
@@ -128,9 +128,9 @@ Použití `ResourceType` dimenze sestava náklady na Azure SQL Database ve vaše
 }
 ```
 
-### <a name="report-on-specific-instances"></a>Ohlásit na určité instance
+### <a name="report-on-specific-instances"></a>Sestava konkrétních instancí
 
-`Resource` Dimenze, které vám umožní nahlásit náklady pro konkrétní prostředky.
+`Resource` Dimenze vám umožní nahlásit náklady na konkrétní prostředky.
 
 ```json
 "filter": {
@@ -144,9 +144,9 @@ Použití `ResourceType` dimenze sestava náklady na Azure SQL Database ve vaše
 }
 ```
 
-### <a name="changing-timeframes"></a>Změna časové rámce
+### <a name="changing-timeframes"></a>Změna časových období
 
-Nastavte `timeframe` definici `Custom` nastavit časový rámec mimo týden k datu a měsíci pro integrované možnosti data.
+Nastavte definici na `Custom` hodnotu pro nastavení časového období mimo týden do předdefinovaných možností data a měsíc. `timeframe`
 
 ```json
 "timeframe": "Custom",

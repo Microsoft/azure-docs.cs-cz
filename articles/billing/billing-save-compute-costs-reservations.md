@@ -1,153 +1,175 @@
 ---
 title: Co jsou rezervace Azure?
-description: Přečtěte si o Azure rezervace a ceny a Ušetřete na virtuálních počítačů, databází SQL, Azure Cosmos DB a další náklady na prostředky.
+description: Přečtěte si o Azure Reservations a cenách, které můžete ukládat na své virtuální počítače, databáze SQL, Azure Cosmos DB a další náklady na prostředky.
 author: yashesvi
 manager: yashar
 ms.service: billing
 ms.topic: conceptual
-ms.date: 07/03/2019
+ms.date: 07/19/2019
 ms.author: banders
-ms.openlocfilehash: cd0a70aa0fb5096c5b0157ae078c961da03109bc
-ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
+ms.openlocfilehash: c63447ff0a3329e0cc0dc0605984ae4f26e9c25f
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67565312"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68359228"
 ---
 # <a name="what-are-azure-reservations"></a>Co jsou rezervace Azure?
 
-Azure rezervací můžete ušetřit platíte předem za jeden rok nebo tři roky virtuálních počítačů, SQL Database výpočetní kapacitu, propustnost služby Azure Cosmos DB nebo další prostředky Azure. Platíte předem, můžete získat slevu na prostředky, které používáte. Rezervace může výrazně snížit virtuálního počítače SQL database výpočetní služby Azure Cosmos DB, nebo jiný prostředek stojí až 72 % oproti průběžným platbám. Rezervace poskytovat fakturační slevy a neovlivní jejich běhový stav vašich prostředků.
+Azure Reservations vám pomůžou ušetřit peníze tím, že se předem platíte za jednoleté nebo tři roky virtuálních počítačů, SQL Database výpočetní kapacity, Azure Cosmos DB propustnosti nebo jiných prostředků Azure. Předběžná platba vám umožní získat slevu na prostředky, které používáte. Rezervace můžou významně snížit svůj virtuální počítač, výpočetní výkon SQL Database, Azure Cosmos DB nebo jiné náklady na prostředky až do 72% při průběžných platbách. Rezervace poskytují fakturační slevu a neovlivňují běhový stav vašich prostředků.
 
-Můžete si koupit rezervaci [webu Azure portal](https://ms.portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=Reservations&Microsoft_Azure_Reservations=true#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade).
+Rezervaci můžete koupit v [Azure Portal](https://ms.portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=Reservations&Microsoft_Azure_Reservations=true#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade).
 
-## <a name="why-buy-a-reservation"></a>Proč si koupit rezervaci?
+## <a name="why-buy-a-reservation"></a>Proč koupit rezervaci?
 
-Pokud máte virtuální počítače, služby Azure Cosmos DB nebo databází SQL, které běží dlouhou dobu, nákup rezervace nabízí cenově nejvýhodnější možnost. Například při spuštění průběžně čtyři instance služby bez rezervace, můžete se účtovat tarify průběžných plateb. Pokud zakoupíte rezervaci pro tyto prostředky, získáte okamžitě sleva za rezervaci. Prostředky jsou již účtovat podle tarifů průběžných plateb.
+Pokud máte virtuální počítače, Azure Cosmos DB nebo databáze SQL, které se spouštějí po dlouhou dobu, můžete si koupit rezervaci a získat tak cenově nejúčinnější možnost. Pokud například průběžně spustíte čtyři instance služby bez rezervace, budou se vám účtovat tarify průběžných plateb. Když si koupíte rezervaci těchto prostředků, okamžitě získáte slevu za rezervaci. Prostředky se už neúčtují podle tarifů průběžných plateb.
 
-## <a name="charges-covered-by-reservation"></a>Poplatky za předmětem rezervace
+## <a name="charges-covered-by-reservation"></a>Poplatky kryté rezervací
 
-Plány služby:
+Plány služeb:
 
-- **Rezervované Instance virtuálního počítače** -rezervaci pokrývá jenom náklady na výpočetní výkon virtuálního počítače. Nezahrnuje další poplatky za software, sítě nebo úložiště.
-- **Azure Cosmos DB rezervované kapacity** -rezervaci pokrývá zajištěné propustnosti pro vaše prostředky. Nezahrnuje úložiště a sítě poplatky.
-- **Databáze SQL vyhrazený vCore** – pouze náklady na výpočetní výkon jsou součástí rezervaci. Licence se fakturuje samostatně.
+- **Rezervovaná instance virtuálního počítače** – rezervace pokrývá jenom výpočetní náklady virtuálních počítačů. Nepokrývá další poplatky za software, sítě nebo úložiště.
+- **Azure Cosmos DB Rezervovaná kapacita** – rezervace pokrývá propustnost zřízenou pro vaše prostředky. Nepokrývá vám poplatky za úložiště a sítě.
+- **SQL Database rezervované Vcore** – s rezervací jsou zahrnuté jenom výpočetní náklady. Licence se účtuje samostatně.
 
-Pro virtuální počítače Windows a SQL Database, může zahrnovat náklady na licencování s [zvýhodněné hybridní využití Azure](https://azure.microsoft.com/pricing/hybrid-benefit/).
+Pro virtuální počítače s Windows a SQL Database můžete pokrýt náklady na licencování pomocí [zvýhodněné hybridní využití Azure](https://azure.microsoft.com/pricing/hybrid-benefit/).
 
-## <a name="whos-eligible-to-purchase-a-reservation"></a>Kdo má nárok na nákup rezervace?
+## <a name="whos-eligible-to-purchase-a-reservation"></a>Kdo má nárok na zakoupení rezervace?
 
-Koupit plán, musíte mít roli vlastníka předplatného v podniku (MS-AZR - 0017P nebo MS-AZR - 0148P) nebo předplatné s průběžnými platbami (MS-AZR - 003P nebo MS-AZR - 0023P). Poskytovatele cloud solution Provider, můžete pomocí webu Azure portal nebo [partnerského centra](/partner-center/azure-reservations) nákupu rezervace Azure.
+Pokud si chcete koupit plán, musíte mít roli vlastníka předplatného v podniku (MS-AZR-0017P nebo MS-AZR-0148P) nebo předplatném s průběžnými platbami (MS-AZR-003P nebo MS-AZR-0023P). Poskytovatelé Cloud Solution Provider můžou k nákupu Azure reservations použít Azure Portal nebo [Partnerské centrum](/partner-center/azure-reservations) .
 
-Zákazníkům se smlouvou EA může omezit nákupy správcům EA zakázáním **přidat rezervované instance** možnost přes portál EA. Správce EA musí být vlastníkem předplatného pro alespoň jedno předplatné EA si koupit rezervaci. Možnost je užitečná pro podniky, které mají centralizovaný tým k nákupu rezervace pro jiné nákladových středisek. Po nákupu můžete přidat centralizované týmy cost center vlastníky rezervace. Vlastníci můžete pak určit obor rezervace svá předplatná. Centrální tým nemusí mít přístup vlastníka předplatného se nákup rezervace.
+Zákazníci smlouva Enterprise (EA) můžou omezit nákupy na správce EA. Tím je vypíná možnost **Přidat rezervované instance** na portálu EA. Správce EA musí být vlastníkem předplatného alespoň jednoho předplatného, aby si mohl koupit rezervaci. Možnost je užitečná pro podniky, které mají centralizovaný tým k nákupu rezervací pro různá nákladová centra. Po nákupu můžou centralizované týmy do rezervací přidat vlastníky nákladového centra. Vlastníci potom můžou rezervaci omezit na své odběry. Centrální tým nemusí mít přístup vlastníka předplatného, kde se rezervace zakoupí.
 
-Sleva za rezervaci se vztahuje pouze na prostředky spojené s předplatným zakoupeným prostřednictvím Enterprise, CSP a jednotlivé plány průběžných plateb.
+Sleva za rezervaci se vztahuje jenom na prostředky přidružené k předplatným zakoupeným prostřednictvím organizace, Cloud Solution Provider (CSP) a jednotlivé plány s tarify průběžných plateb.
 
-## <a name="scope-reservations"></a>Rozsah rezervace
+## <a name="scope-reservations"></a>Rezervace oborů
 
-Můžete omezit rozsah rezervace skupinám předplatné nebo prostředek. Nastavuje se obor pro rezervaci vybere kde úspory rezervace platí. Pokud jste-li nastavit obor rezervace do skupiny prostředků, slevy na rezervaci platí pouze pro skupiny prostředků – ne celé předplatné.
+Můžete určit rozsah rezervace u předplatného nebo skupin prostředků. Nastavením oboru pro rezervaci se vybere, kde se použijí úspory rezervace. Po určení oboru rezervace pro skupinu prostředků se slevy za rezervace vztahují jenom na skupinu prostředků – ne na celé předplatné.
 
-### <a name="reservation-scoping-options"></a>Možnosti oboru rezervace
+### <a name="reservation-scoping-options"></a>Možnosti oboru rezervací
 
-S prostředkem skupina oborů, budete mít tři možnosti, jak určit obor rezervace, v závislosti na potřebách:
+V případě oboru skupiny prostředků máte k dispozici tři možnosti pro vymezení rezervace v závislosti na vašich potřebách:
 
-- **Jednotného oboru skupiny prostředků** – platí pro odpovídající prostředky ve vybrané skupině prostředků pouze sleva za rezervaci.
-- **Jednotného oboru předplatného** – sleva za rezervaci se vztahuje na odpovídající prostředkům ve vybraném předplatném.
-- **Sdílený obor** – sleva za rezervaci se vztahuje na odpovídající zdroje v oprávněné předplatné, které jsou v kontextu fakturace. Pro zákazníky se smlouvou Enterprise je kontext fakturace registraci. Jednotlivých předplatných s průběžnými sazbami fakturační rozsah je všechny oprávněné předplatné vytvořili správce účtu.
+- **Obor jedné skupiny prostředků** – aplikuje slevu na rezervované prostředky jenom na ty, které jsou ve vybrané skupině prostředků.
+- **Rozsah jednoho** předplatného – aplikuje slevu na rezervované prostředky ve vybraném předplatném.
+- **Sdílený rozsah** – použije slevu rezervace na odpovídající prostředky v oprávněných předplatných, která jsou v účetním kontextu. Pro zákazníky smlouva Enterprise je fakturačním kontextem registrace. U jednotlivých předplatných s tarify průběžných plateb jsou oborem fakturace všechna oprávněná předplatná vytvořená správcem účtu.
 
-Při použití slevy na rezervaci na využití, zpracovává Azure rezervace v následujícím pořadí:
+Při použití slev rezervací na základě vašeho využití Azure zpracuje rezervaci v tomto pořadí:
 
-1. Rezervace, které jsou vymezeny na skupinu prostředků
-2. Jeden obor rezervace
-3. Sdílený obor rezervace
+1. Rezervace s vymezenou skupinou prostředků
+2. Rezervace s jedním oborem
+3. Rezervace sdíleného oboru
 
-Jedna skupina prostředků můžete získat slevy na rezervaci více rezervace, v závislosti na tom, jak rozsah vaší rezervace.
+Jedna skupina prostředků může získat slevy rezervace z více rezervací v závislosti na tom, jak zadáte rozsah rezervací.
 
-### <a name="scope-a-reservation-to-a-resource-group"></a>Rozsah rezervace do skupiny prostředků
+### <a name="scope-a-reservation-to-a-resource-group"></a>Určení rozsahu rezervace pro skupinu prostředků
 
-Při nákupu rezervace nebo nastavit obor po nákupu, můžete omezit rozsah rezervace do skupiny prostředků. Musíte být vlastníkem předplatného, pokud chcete určit obor rezervace do skupiny prostředků.
+Rezervaci můžete omezit na skupinu prostředků při nákupu rezervace nebo nastavíte obor po nákupu. Pro vymezení rezervace na skupinu prostředků musíte být vlastníkem předplatného.
 
-Chcete-li nastavit obor, přejděte [nákupu rezervace](https://ms.portal.azure.com/#blade/Microsoft\_Azure\_Reservations/CreateBlade/referrer/Browse\_AddCommand) stránky na webu Azure Portal. Vyberte typ rezervace, které chcete koupit. Na **vyberte produkt, který chcete zakoupit** výběru formuláře, změna **oboru** hodnota, která se **jedna skupina prostředků** a vyberte skupinu prostředků.
+Chcete-li nastavit obor, v Azure Portal klikněte na stránku [rezervace nákupu](https://ms.portal.azure.com/#blade/Microsoft\_Azure\_Reservations/CreateBlade/referrer/Browse\_AddCommand) . Vyberte typ rezervace, který chcete koupit. V nabídce **Vybrat produkt, ve kterém chcete koupit** výběr, změňte hodnotu oboru na jednu skupinu prostředků. Pak vyberte skupinu prostředků.
 
-![Příklad zobrazující výběr nákup rezervace virtuálních počítačů](./media/billing-save-compute-costs-reservations/select-product-to-purchase.png)
+![Příklad znázorňující výběr nákupu rezervace virtuálních počítačů](./media/billing-save-compute-costs-reservations/select-product-to-purchase.png)
 
-Zobrazí nákupní doporučení pro skupinu prostředků v rezervaci virtuálních počítačů. Doporučení se počítají analýzou vašeho využití v posledních 30 dnech. Nákupní doporučení se provádí v případě, že náklady na prostředky s rezervované instance jsou levnější než náklady na provozování prostředků s průběžných plateb. Další informace o doporučeních nákup rezervace, najdete v článku [získat rezervované Instance purchase doporučení založená na vzor používání](https://azure.microsoft.com/blog/get-usage-based-reserved-instance-recommendations) blogový příspěvek.
+Zobrazí se doporučení nákupu pro skupinu prostředků v rezervaci virtuálního počítače. Doporučení se vypočtou analýzou využití během posledních 30 dnů. Doporučení k nákupu se provádí v případě, že náklady na spouštění prostředků s rezervovanými instancemi jsou levnější než náklady na spouštění prostředků s tarify průběžných plateb. Další informace o doporučeních nákupu rezervací najdete v tématu [získání doporučení pro nákup rezervovaných instancí na základě vzorce používání](https://azure.microsoft.com/blog/get-usage-based-reserved-instance-recommendations).
 
-Můžete kdykoli aktualizovat rozsah po nákupu rezervace. Uděláte to tak, přejděte na rezervaci, klikněte na tlačítko **konfigurace** a rescope rezervace. Změna oboru mzdy rezervace není obchodní transakce. Období rezervace se nezmění. Další informace o aktualizaci rozsahu najdete v tématu [aktualizovat rozsah po nákupu rezervace](billing-manage-reserved-vm-instance.md#change-the-reservation-scope).
+Po zakoupení rezervace můžete obor vždy aktualizovat. Provedete to tak, že přejdete na rezervace, kliknete na **Konfigurace**a znovu zadáte obor rezervace. Přeoborování rezervace není komerční transakce. Váš výraz rezervace se nezměnil. Další informace o aktualizaci oboru najdete v tématu [aktualizace oboru po zakoupení rezervace](billing-manage-reserved-vm-instance.md#change-the-reservation-scope).
 
-![Příklad zobrazující změnit obor rezervace](./media/billing-save-compute-costs-reservations/rescope-reservation-resource-group.png)
+![Příklad znázorňující změnu oboru rezervace](./media/billing-save-compute-costs-reservations/rescope-reservation-resource-group.png)
 
-### <a name="monitor-and-optimize-reservation-usage"></a>Sledovat a optimalizovat využití rezervace
+### <a name="monitor-and-optimize-reservation-usage"></a>Monitorování a optimalizace využití rezervací
 
-Můžete monitorovat využití rezervace několika různými způsoby – prostřednictvím webu Azure portal, prostřednictvím rozhraní API nebo data o využití. Chcete-li zobrazit všechny rezervace, ke kterým máte přístup, přejděte na **rezervace** na webu Azure Portal. Mřížka rezervace ukazuje poslední procento zaznamenané využití pro rezervaci. Klikněte na rezervaci zobrazíte dlouhodobého využívání rezervace.
+Využití rezervace můžete monitorovat různými způsoby – Azure Portal prostřednictvím rozhraní API nebo prostřednictvím dat o využití. Pokud chcete zobrazit všechny rezervace, ke kterým máte přístup, přejděte na **rezervace** v Azure Portal. Mřížka rezervací zobrazuje poslední zaznamenané procento využití pro rezervaci. Kliknutím na rezervaci zobrazíte dlouhodobé využití rezervace.
 
-Můžete také získat pomocí využití rezervace [rozhraní API](billing-reservation-apis.md#see-reservation-usage) a z vašich [data o využití](billing-understand-reserved-instance-usage-ea.md#common-cost-and-usage-tasks) Pokud jste zákazníkem smlouvy enterprise.
+Můžete také získat využití rezervace pomocí [rozhraní API](billing-reservation-apis.md#see-reservation-usage) a dat o [využití](billing-understand-reserved-instance-usage-ea.md#common-cost-and-usage-tasks) , pokud jste zákazníkem se smlouvou Enterprise.
 
-Pokud si všimnete, že využití vaší skupiny prostředků obor rezervace je nízký, pak může aktualizovat obor rezervace pro jedno předplatné, nebo ho sdílet napříč kontext fakturace. Můžete také rozdělit rezervace a použít výsledný rezervace do různých skupin prostředků.
+Pokud si všimnete, že využití rezervovaného rozsahu skupiny prostředků je nízké, můžete obor rezervací aktualizovat na jedno předplatné nebo ho sdílet v rámci fakturačního kontextu. Rezervaci můžete také rozdělit a použít výsledné rezervace na jiné skupiny prostředků.
 
 ### <a name="other-considerations"></a>Další důležité informace
 
-Pokud nemáte k dispozici odpovídající prostředky ve skupině prostředků, bude historického rezervace. Rezervaci neplatí automaticky pro jiné skupiny prostředků nebo předplatného níž se nachází nízké využití.
+Pokud ve skupině prostředků nemáte stejné prostředky, rezervace se nevyužívá. Rezervace se automaticky nepoužije pro jinou skupinu prostředků nebo předplatné, u kterých existuje nízké využití.
 
-Obor rezervace neaktualizuje automaticky, pokud přesunete skupinu prostředků z jednoho předplatného do druhého. Budete muset rescope rezervace. V opačném případě bude nevyužité rezervace.
+Obor rezervace se automaticky neaktualizuje, Pokud přesouváte skupinu prostředků z jednoho předplatného do jiného. Pokud odstraníte skupinu prostředků, obor se neaktualizuje. Bude nutné přeřadit [obor rezervace](billing-manage-reserved-vm-instance.md#change-the-reservation-scope). V opačném případě bude rezervace nevyužitá.
 
-## <a name="discounted-subscription-and-offer-types"></a>Zlevněné typy předplatného a nabídky
+## <a name="discounted-subscription-and-offer-types"></a>Zlevněné typy předplatného a nabídek
 
-Slevy rezervace platí pro následující oprávněné předplatné a nabízí typy.
+Slevy za rezervace se vztahují na následující opravňující odběry a typy nabídek.
 
-- Smlouvy Enterprise (nabízejí čísla: MS-AZR-0017P nebo MS-AZR - 0148 P)
-- Jednotlivé plány průběžných plateb (nabízejí čísla: MS-AZR-0003P nebo MS-AZR - 0023 P)
+- Smlouva Enterprise (čísla nabídek: MS-AZR-0017P nebo MS-AZR-0148P)
+- Jednotlivé plány s tarify průběžných plateb (čísla nabídek: MS-AZR-0003P nebo MS-AZR-0023P)
 - Předplatná CSP
 
-Prostředky, které běží v rámci předplatného s jinými typy nabídky nepřijímají sleva za rezervaci.
+U prostředků, které se spouštějí v rámci předplatného s jinými typy nabídek, se sleva rezervace nedostává.
 
-## <a name="how-is-a-reservation-billed"></a>Jak se účtuje rezervace?
+## <a name="how-is-a-reservation-billed"></a>Jak se fakturuje rezervace?
 
-Rezervace jsou zpoplatněné nad rámec platby vázané na předplatné. Pokud máte předplatné Enterprise, náklady na rezervaci se odečte od váš zůstatek peněžního závazku. Pokud váš zůstatek peněžního závazku využívání služeb nezahrnuje náklady na rezervaci, bude se vám účtovat Nadlimitní využití. Pokud máte předplatné z individuálních plánů s průběžnými sazbami platební karty, kterou máte v účtu je účtována okamžitě. Bude se vám účtovat na faktuře uvidíte poplatky na další faktuře.
+K rezervaci se účtuje způsob platby spojený s předplatným. Pokud máte předplatné Enterprise, náklady na rezervaci se odečtou z bilance vašeho peněžního závazku. Když zůstatek peněžních závazků nepokrývá náklady na rezervaci, účtuje se za nadlimitní využití. Pokud máte předplatné z jednotlivého plánu s tarify průběžných plateb, platební karta, kterou máte ve vašem účtu, se účtuje okamžitě. Pokud se fakturuje podle faktury, uvidíte poplatky na vaší další faktuře.
 
-## <a name="how-reservation-discount-is-applied"></a>Jak se uplatňuje sleva ve výši rezervace
+## <a name="how-reservation-discount-is-applied"></a>Jak se používá sleva rezervace
 
-Sleva za rezervaci se vztahuje na využití prostředků odpovídající atributy, které jste vybrali při nákupu rezervace. Atributy zahrnout rozsahu, kde spustit odpovídající virtuální počítače, databáze SQL, Azure Cosmos DB nebo jiné prostředky. Například pokud chcete sleva za rezervaci čtyři virtuální počítače Standard D2 v oblasti západní USA, vyberte předplatné, ve kterém běží virtuální počítače.
+Sleva rezervace se vztahuje na využití prostředků, které odpovídá atributům, které vyberete při nákupu rezervace. Mezi atributy patří obor, ve kterém se spouští vyhovující virtuální počítače, databáze SQL, Azure Cosmos DB nebo jiné prostředky. Pokud například chcete slevu za rezervované slevy pro čtyři standardní virtuální počítače D2 v oblasti Západní USA, vyberte předplatné, ve kterém jsou virtuální počítače spuštěné.
 
-Sleva za rezervaci se "*použití – it nebo ztratit – it*". Pokud nemáte k dispozici odpovídající prostředky pro hodinu, potom můžete přijít o množství rezervací pro určitou hodinu. Nelze provést vpřed nevyužité vyhrazené hodin.
+Slevou rezervace je "*použití-IT-nebo-ztráta-IT*". Pokud nemáte odpovídající prostředky v průběhu hodiny, ztratíte množství rezervace za tuto hodinu. Nevyužité rezervované hodiny nemůžete přenést.
 
-Při vypínání prostředek sleva za rezervaci automaticky použije další odpovídající prostředek v zadaném oboru. Pokud systém nenašel žádné odpovídající prostředky v zadaném oboru, pak jsou vyhrazené hodin *ztráty*.
+Po vypnutí prostředku se sleva rezervace automaticky použije na jiný shodný prostředek v zadaném oboru. Pokud v zadaném oboru nebyly nalezeny žádné vyhovující prostředky, budou rezervované hodiny *ztraceny*.
 
-Například může být později vytvořte prostředek a mít odpovídající rezervaci, která je historického. V tomto příkladu sleva za rezervaci automaticky použije nový odpovídající prostředek.
+Můžete například později vytvořit prostředek a mít odpovídající rezervaci, která je nevyužitá. Sleva rezervace se automaticky vztahuje na nový vyhovující prostředek.
 
-Pokud jsou virtuální počítače spuštěné v různých předplatných v rámci vaší registrace účtu, vyberte obor jako sdílené. Sdílený obor umožňuje sleva za rezervaci použít napříč předplatnými. Rozsah můžete změnit po nákupu rezervace. Další informace najdete v tématu [spravovat Azure rezervace](billing-manage-reserved-vm-instance.md).
+Pokud virtuální počítače běží v různých předplatných v rámci registrace nebo účtu, vyberte obor jako sdílený. Sdílený rozsah umožňuje použití slevy rezervace v rámci předplatných. Po zakoupení rezervace můžete obor změnit. Další informace najdete v tématu [správa Azure reservations](billing-manage-reserved-vm-instance.md).
 
-Sleva za rezervaci platí jenom pro prostředky přidružené organizace, CSP, nebo předplatné s platbami jako můžete přejít sazby. Prostředky, které běží v rámci předplatného s jinými typy nabídky nepřijímají sleva za rezervaci.
+Sleva za rezervaci se vztahuje jenom na prostředky přidružené k podnikovým, CSP nebo předplatným podle tarifů průběžných plateb. U prostředků, které se spouštějí v rámci předplatného s jinými typy nabídek, se sleva rezervace nedostává.
 
-## <a name="when-the-reservation-term-expires"></a>Vypršení platnosti období rezervace
+## <a name="when-the-reservation-term-expires"></a>Po vypršení platnosti podmínky rezervace
 
-Na konci období rezervace fakturace slevy vyprší a virtuální počítač, SQL database, Azure Cosmos DB nebo jiný prostředek se účtuje ve výši platby jako můžete přejít cena. Azure rezervace není automatického obnovení. Pokračovat v uplatňování slevy fakturace, musíte koupit novou rezervaci pro opravňující služby a softwaru.
+Na konci rezervovaného období vyprší platnost fakturační slevy. Virtuální počítač, databáze SQL, Azure Cosmos DB nebo jiný prostředek se fakturují podle ceny za průběžné platby. Azure Reservations se automaticky neobnovuje. Pokud chcete i nadále získávat fakturační slevu, musíte si koupit novou rezervaci pro oprávněné služby a software.
 
-## <a name="discount-applies-to-different-sizes"></a>Sleva za vztahuje na různé velikosti
+## <a name="discount-applies-to-different-sizes"></a>Sleva se vztahuje na různé velikosti.
 
-Při nákupu rezervace sleva provést u ostatních instancí s atributy, které jsou ve stejné skupině velikostí. Tato funkce se označuje jako velikost flexibilita instancí. Flexibilita pokrytí slevy závisí na typu rezervace a atributy, které můžete vybrat při nákupu rezervace.
+Když si koupíte rezervaci, sleva se může vztahovat na jiné instance s atributy, které se nacházejí ve stejné skupině velikostí. Tato funkce se označuje jako flexibilita velikosti instance. Flexibilita pokrytí slev závisí na typu rezervace a atributy, které vyberete při nákupu rezervace.
 
-Plány služby:
+Plány služeb:
 
-- Rezervované instance virtuálních počítačů: Když koupit rezervaci a vyberete **optimalizovaná pro**: **instance velikost flexibilitu**, pokrytí slevy závisí na velikosti virtuálního počítače, vyberete. Rezervaci můžete použít velikosti virtuálních počítačů (VM) ve stejné skupině velikost series. Další informace najdete v tématu [flexibilitu velikost virtuálního počítače s rezervovanými instancemi virtuálních počítačů](../virtual-machines/windows/reserved-vm-instance-size-flexibility.md).
-- SQL Database rezervované kapacity: Pokrytí slevy závisí na úrovni výkonu, kterou vyberete. Další informace najdete v tématu [pochopit, jak se použije sleva za rezervaci Azure](billing-understand-reservation-charges.md).
-- Azure Cosmos DB rezervované kapacity: Pokrytí slevy závisí na zřízenou propustnost. Další informace najdete v tématu [vysvětlení, používání Azure Cosmos DB sleva za rezervaci](billing-understand-cosmosdb-reservation-charges.md).
+- Rezervované instance virtuálních počítačů: Když zakoupíte rezervaci a vyberete **optimalizovanou pro flexibilitu velikosti instance**, bude pokrytí slevy záviset na velikosti virtuálního počítače, kterou vyberete. Tato rezervace se může vztahovat na velikosti virtuálních počítačů ve stejné skupině řady. Další informace najdete v tématu [flexibilita velikosti virtuálních počítačů pomocí rezervovaných instancí virtuálních počítačů](../virtual-machines/windows/reserved-vm-instance-size-flexibility.md).
+- SQL Database Rezervovaná kapacita: Pokrytí slevy závisí na úrovni výkonu, kterou zvolíte. Další informace najdete v tématu [Vysvětlení způsobu použití slevy za rezervaci Azure](billing-understand-reservation-charges.md).
+- Azure Cosmos DB Rezervovaná kapacita: Pokrytí slevy závisí na zřízené propustnosti. Další informace najdete v tématu [Vysvětlení způsobu, jakým se používá Azure Cosmos DB sleva při rezervaci](billing-understand-cosmosdb-reservation-charges.md).
 
-## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás.
+## <a name="reservation-notifications"></a>Oznámení o rezervacích
 
-Pokud máte otázky nebo potřebujete pomoc, [vytvořit žádost o podporu](https://go.microsoft.com/fwlink/?linkid=2083458).
+V závislosti na tom, jak platíte za předplatné Azure, e-mailem rezervace pro následující uživatele ve vaší organizaci pošleme oznámení. Oznámení se odesílají pro různé události, včetně těchto:
 
-## <a name="next-steps"></a>Další postup
+- Koupit
+- Nadcházející doba rezervace
+- Expiry
+- Obnovit
+- Výmaz
+- Změna oboru
 
-- Další informace o rezervacích Azure najdete v následujících článcích:
+Pro zákazníky s předplatnými EA:
+- Prodejnímu uživateli se pošle oznámení o nákupu a kontaktním zprávám EA.
+- Další oznámení o životním cyklu rezervace se odesílají jenom do kontaktních zpráv EA.
+- Uživatelé přidaní do rezervace s použitím oprávnění RBAC (IAM) neobdrží žádná e-mailová oznámení.
+
+Pro zákazníky s jednotlivými předplatnými:
+- Nákupčí obdrží oznámení o nákupu.
+- V době nákupu obdrží vlastník fakturačního účtu předplatného oznámení o nákupu.
+- Vlastník účtu obdrží všechna ostatní oznámení.
+
+
+## <a name="need-help-contact-us"></a>Potřebujete pomoct? Kontaktujte nás.
+
+Pokud máte dotazy nebo potřebujete pomoc, [vytvořte žádost o podporu](https://go.microsoft.com/fwlink/?linkid=2083458).
+
+## <a name="next-steps"></a>Další kroky
+
+- Další informace o Azure Reservations najdete v následujících článcích:
     - [Správa rezervací Azure](billing-manage-reserved-vm-instance.md)
-    - [Vysvětlení využití rezervace pro vaše předplatné s průběžnými sazbami](billing-understand-reserved-instance-usage.md)
-    - [Vysvětlení využití rezervaci u prováděcí smlouvy Enterprise](billing-understand-reserved-instance-usage-ea.md)
-    - [Náklady na software Windows, které nejsou součástí rezervace](billing-reserved-instance-windows-software-costs.md)
-    - [Rezervace Azure v programu Partnerské centrum Cloud Solution Provider (CSP)](/partner-center/azure-reservations)
+    - [Vysvětlení využití rezervací pro vaše předplatné s tarify průběžných plateb](billing-understand-reserved-instance-usage.md)
+    - [Vysvětlení použití rezervací pro podnikovou registraci](billing-understand-reserved-instance-usage-ea.md)
+    - [Náklady na software systému Windows, které nejsou součástí rezervací](billing-reserved-instance-windows-software-costs.md)
+    - [Azure Reservations v programu partner Center pro Cloud Solution Provider (CSP)](/partner-center/azure-reservations)
 
-- Další informace o rezervacích pro plány služby:
-    - [Virtuální počítače se službou Azure Reserved VM Instances](../virtual-machines/windows/prepay-reserved-vm-instances.md)
-    - [Rezervované kapacity prostředků Azure Cosmos DB pomocí služby Azure Cosmos DB](../cosmos-db/cosmos-db-reserved-capacity.md)
-    - [Rezervované kapacity výpočetních prostředků SQL Database s využitím Azure SQL Database](../sql-database/sql-database-reserved-capacity.md) Další informace o rezervacích pro softwarové plány:
-    - [Plány softwaru Red Hat z Azure rezervací](../virtual-machines/linux/prepay-rhel-software-charges.md)
-    - [Plány softwaru SUSE z Azure rezervací](../virtual-machines/linux/prepay-suse-software-charges.md)
+- Další informace o rezervacích pro plány služeb:
+    - [Virtual Machines s Azure Reserved VM Instances](../virtual-machines/windows/prepay-reserved-vm-instances.md)
+    - [Prostředky Azure Cosmos DB s využitím Azure Cosmos DB rezervované kapacity](../cosmos-db/cosmos-db-reserved-capacity.md)
+    - [SQL Database výpočetní prostředky s využitím Azure SQL Database rezervované kapacity](../sql-database/sql-database-reserved-capacity.md) Další informace o rezervacích pro softwarové plány:
+    - [Softwarové plány Red Hat z Azure Reservations](../virtual-machines/linux/prepay-rhel-software-charges.md)
+    - [SUSE softwarové plány z Azure Reservations](../virtual-machines/linux/prepay-suse-software-charges.md)

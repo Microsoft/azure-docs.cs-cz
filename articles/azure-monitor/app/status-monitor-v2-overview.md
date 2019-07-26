@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: 38359858d16a20f73cf845fa547899bdc5ee7fd3
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 0264cf3a972c35edb3ad6dc600ca39bdaa076dfd
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326232"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68333686"
 ---
 # <a name="status-monitor-v2"></a>Monitorování stavu v2
 
@@ -33,7 +33,7 @@ Monitorování stavu v2 se nachází zde: https://www.powershellgallery.com/pack
 ![Galerie prostředí PowerShell](https://img.shields.io/powershellgallery/v/Az.ApplicationMonitor.svg?color=Blue&label=Current%20Version&logo=PowerShell&style=for-the-badge)
 
 
-## <a name="instructions"></a>Pokyny
+## <a name="instructions"></a>Instrukce
 - Začínáme s ukázkami stručných ukázek kódu najdete v pokynech k zahájení [práce](status-monitor-v2-get-started.md) .
 - Projděte si [podrobné pokyny](status-monitor-v2-detailed-instructions.md) , jak v podrobně začít.
 
@@ -62,13 +62,13 @@ Každá z těchto možností je popsaná v [podrobných pokynech](status-monitor
   
 - Návody ověřit, zda bylo povolení úspěšné?
 
-   Neexistuje žádná rutina pro ověření zapnutí.
-K rychlému určení, jestli vaše aplikace posílá telemetrii, doporučujeme použít [živé metriky](https://docs.microsoft.com/azure/azure-monitor/app/live-stream) .
+  - Pomocí rutiny [Get-ApplicationInsightsMonitoringStatus](status-monitor-v2-api-get-status.md) můžete ověřit, že je povolení úspěšné.
+  - K rychlému určení, jestli vaše aplikace posílá telemetrii, doporučujeme použít [živé metriky](https://docs.microsoft.com/azure/azure-monitor/app/live-stream) .
 
-   [Log Analytics](../log-query/get-started-portal.md) můžete použít také k vypsání všech cloudových rolí, které aktuálně odesílají telemetrii:
-   ```Kusto
-   union * | summarize count() by cloud_RoleName, cloud_RoleInstance
-   ```
+  - [Log Analytics](../log-query/get-started-portal.md) můžete použít také k vypsání všech cloudových rolí, které aktuálně odesílají telemetrii:
+      ```Kusto
+      union * | summarize count() by cloud_RoleName, cloud_RoleInstance
+      ```
 
 ## <a name="next-steps"></a>Další postup
 

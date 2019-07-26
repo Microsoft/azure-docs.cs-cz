@@ -1,6 +1,6 @@
 ---
-title: Plánování úloh s Azure IoT Hub (Node) | Dokumentace Microsoftu
-description: Jak naplánovat úlohu služby Azure IoT Hub k vyvolání přímé metody v různá zařízení. Implementace služby aplikace na spuštění úlohy a aplikace simulovaného zařízení pomocí sady Azure IoT SDK pro Node.js.
+title: Plánování úloh pomocí Azure IoT Hub (Node) | Microsoft Docs
+description: Jak naplánovat úlohu Azure IoT Hub k vyvolání přímé metody na více zařízeních. Sady SDK Azure IoT pro Node. js slouží k implementaci aplikací simulovaného zařízení a aplikace služby ke spuštění úlohy.
 author: wesmc7777
 manager: philmea
 ms.author: wesmc
@@ -9,80 +9,76 @@ services: iot-hub
 ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 10/06/2017
-ms.openlocfilehash: af35a84c299544e43988547771ddce75fd71bd90
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a3a07f54d77577085951b2bccfa1213adef5b20d
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67065789"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68403920"
 ---
-# <a name="schedule-and-broadcast-jobs-node"></a>Úlohy vysílání a plánování (Node)
+# <a name="schedule-and-broadcast-jobs-node"></a>Úlohy plánování a vysílání (uzel)
 
 [!INCLUDE [iot-hub-selector-schedule-jobs](../../includes/iot-hub-selector-schedule-jobs.md)]
 
-Azure IoT Hub je plně spravovaná služba, která umožňuje back endové aplikace vytvořit a sledovat úlohy, které naplánovat a aktualizovat miliony zařízení.  Úlohy lze použít pro následující akce:
+Azure IoT Hub je plně spravovaná služba, která umožňuje aplikacím back-end vytvářet a sledovat úlohy, které naplánují a aktualizují miliony zařízení.  Úlohy lze použít pro následující akce:
 
 * Aktualizace požadovaných vlastností
-* Aktualizace značky
+* Aktualizovat značky
 * Vyvolání přímých metod
 
-Úloha koncepčně, zabalí jednu z těchto akcí a sleduje průběh provádění sady zařízení, která je definovaná dotazem dvojčete zařízení.  Například back endové aplikace úlohu můžete použít k vyvolání metody restartu na 10 000 zařízení, vybraných podle dotazu dvojče zařízení a naplánované na budoucí dobu. Tuto aplikaci pak můžete sledovat průběh každé z těchto zařízení přijímat a proveďte metodu restartování.
+V koncepčním případě úloha obaluje jednu z těchto akcí a sleduje průběh provádění na základě sady zařízení, která je definována dotazem se zdvojeným zařízením.  Například aplikace back-end může použít úlohu k vyvolání metody restart na zařízeních 10 000, která je určená dotazem typu v budoucnosti a naplánována v budoucím čase. Tato aplikace pak může sledovat průběh, protože každé zařízení obdrží a spustí metodu restartování.
 
-Další informace o každé z těchto funkcí v těchto článcích:
+Další informace o každé z těchto možností najdete v těchto článcích:
 
-* Dvojče zařízení a vlastnosti: [Začínáme s dvojčaty zařízení](iot-hub-node-node-twin-getstarted.md) a [kurzu: Jak používat vlastnosti dvojčat zařízení](tutorial-device-twins.md)
+* Vlastnosti a vlákna zařízení: [Začínáme s dvojitými zprávami](iot-hub-node-node-twin-getstarted.md) a [kurzem zařízení: Jak používat zdvojené vlastnosti zařízení](tutorial-device-twins.md)
 
-* Přímé metody: [Příručka pro vývojáře IoT Hub - přímých metod](iot-hub-devguide-direct-methods.md) a [kurz: přímé metody](quickstart-control-device-node.md)
+* Přímé metody: [IoT Hub příručka pro vývojáře – přímé metody](iot-hub-devguide-direct-methods.md) a [kurz: přímé metody](quickstart-control-device-node.md)
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
 V tomto kurzu získáte informace o následujících postupech:
 
-* Vytvoření aplikace simulovaného zařízení Node.js, která má přímé metody, která umožňuje **lockDoor**, které je možné vyvolat v back-endu řešení.
+* Vytvořte aplikaci simulovaného zařízení Node. js, která má přímou metodu, která umožňuje **lockDoor**, která může být volána back-end řešení.
 
-* Vytvořte konzolovou aplikaci Node.js, která volá **lockDoor** přímé metody v aplikaci simulovaného zařízení pomocí úlohy a aktualizace požadované vlastnosti pomocí úlohy zařízení.
+* Vytvořte konzolovou aplikaci Node. js, která zavolá metodu **lockDoor** Direct v aplikaci simulovaného zařízení pomocí úlohy a aktualizuje požadované vlastnosti pomocí úlohy zařízení.
 
-Na konci tohoto kurzu budete mít dvě aplikace Node.js:
+Na konci tohoto kurzu máte dvě aplikace Node. js:
 
-* **simDevice.js**, která se připojuje ke službě IoT hub s identitou zařízení a přijímá **lockDoor** přímá metoda.
+* **simDevice. js**, který se připojí ke službě IoT Hub s identitou zařízení a přijímá metodu **lockDoor** Direct.
 
-* **scheduleJobService.js**, která volá metodu s přímým přístupem v aplikaci simulovaného zařízení a aktualizace dvojčete zařízení požadované vlastnosti pomocí úlohy.
+* **scheduleJobService. js**, který volá přímou metodu v aplikaci simulovaného zařízení a aktualizuje požadované vlastnosti v zařízení pomocí úlohy.
 
 Pro absolvování tohoto kurzu potřebujete:
 
-* Verze Node.js 10.0.x nebo novější [Příprava vývojového prostředí](https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md) popisuje postup instalace Node.js pro účely tohoto kurzu ve Windows nebo Linuxu.
+* Node. js verze 10.0. x nebo novější [Příprava vývojového prostředí](https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md) popisuje, jak nainstalovat Node. js pro tento kurz v systému Windows nebo Linux.
 
-* Aktivní účet Azure. (Pokud účet nemáte, můžete vytvořit [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/) během několika minut.)
+* Aktivní účet Azure. (Pokud účet nemáte, můžete si během několika minut vytvořit [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/) .)
 
 ## <a name="create-an-iot-hub"></a>Vytvoření centra IoT
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
-### <a name="retrieve-connection-string-for-iot-hub"></a>Načtení připojovacího řetězce pro službu IoT hub
-
-[!INCLUDE [iot-hub-include-find-connection-string](../../includes/iot-hub-include-find-connection-string.md)]
-
 [!INCLUDE [iot-hub-get-started-create-device-identity](../../includes/iot-hub-get-started-create-device-identity.md)]
 
 ## <a name="create-a-simulated-device-app"></a>Vytvoření aplikace simulovaného zařízení
 
-V této části vytvoříte konzolovou aplikaci Node.js, která bude reagovat na přímou metodu volanou cloudem, který aktivuje Simulovaná **lockDoor** metody.
+V této části vytvoříte konzolovou aplikaci Node. js, která reaguje na přímou metodu volanou cloudem, která spustí simulovanou **lockDoor** metodu.
 
-1. Vytvořte novou prázdnou složku s názvem **simDevice**.  V **simDevice** složce vytvořte soubor package.json pomocí následujícího příkazu na příkazovém řádku.  Přijměte všechny výchozí hodnoty:
+1. Vytvořte novou prázdnou složku s názvem **simDevice**.  Ve složce **simDevice** vytvořte soubor Package. JSON pomocí následujícího příkazu na příkazovém řádku.  Přijměte všechny výchozí hodnoty:
 
    ```
    npm init
    ```
 
-2. Na příkazovém řádku v **simDevice** složky, spusťte následující příkaz k instalaci **azure-iot-device** balíčku sady SDK pro zařízení a **azure-iot-device-mqtt** balíčku:
+2. Na příkazovém řádku ve složce **simDevice** spusťte následující příkaz k instalaci balíčku sady SDK pro zařízení **Azure-IoT-Device** a balíčku **Azure-IoT-Device-MQTT** :
    
    ```
    npm install azure-iot-device azure-iot-device-mqtt --save
    ```
 
-3. Pomocí textového editoru vytvořte nový **simDevice.js** soubor **simDevice** složky.
+3. Pomocí textového editoru vytvořte nový soubor **simDevice. js** ve složce **simDevice** .
 
-4. Přidejte následující příkazy na začátku "vyžadovat" **simDevice.js** souboru:
+4. Na začátek souboru **simDevice. js** přidejte následující příkazy ' vyžadovat ':
    
     ```
     'use strict';
@@ -98,7 +94,7 @@ V této části vytvoříte konzolovou aplikaci Node.js, která bude reagovat na
     var client = Client.fromConnectionString(connectionString, Protocol);
     ```
 
-6. Přidejte následující funkci pro zpracování **lockDoor** metody.
+6. Přidejte následující funkci pro zpracování metody **lockDoor** .
    
     ```
     var onLockDoor = function(request, response) {
@@ -116,7 +112,7 @@ V této části vytvoříte konzolovou aplikaci Node.js, která bude reagovat na
     };
     ```
 
-7. Přidejte následující kód pro obslužnou rutinu pro registraci **lockDoor** metody.
+7. Přidejte následující kód pro registraci obslužné rutiny pro metodu **lockDoor** .
 
    ```
    client.open(function(err) {
@@ -129,31 +125,37 @@ V této části vytvoříte konzolovou aplikaci Node.js, která bude reagovat na
    });
    ```
 
-8. Uložte a zavřete **simDevice.js** souboru.
+8. Uložte a zavřete soubor **simDevice. js** .
 
 > [!NOTE]
-> Za účelem zjednodušení tento kurz neimplementuje žádné zásady opakování. V produkčním kódu by měly implementovat zásady opakování (například exponenciální regresí), jak je navrženo v článku [zpracování přechodných chyb](/azure/architecture/best-practices/transient-faults).
+> Za účelem zjednodušení tento kurz neimplementuje žádné zásady opakování. V produkčním kódu byste měli implementovat zásady opakování (například exponenciální omezení rychlosti), jak je navrženo v článku, [zpracování přechodných chyb](/azure/architecture/best-practices/transient-faults).
 >
 
-## <a name="schedule-jobs-for-calling-a-direct-method-and-updating-a-device-twins-properties"></a>Plánování úloh pro volání přímé metody a aktualizují se vlastnosti dvojčete zařízení
+## <a name="get-the-iot-hub-connection-string"></a>Získání připojovacího řetězce centra IoT Hub
 
-V této části vytvoříte konzolovou aplikaci Node.js, který iniciuje vzdálené **lockDoor** na zařízení pomocí přímé metody a aktualizovat vlastnosti dvojčete zařízení.
+[!INCLUDE [iot-hub-howto-schedule-jobs-shared-access-policy-text](../../includes/iot-hub-howto-schedule-jobs-shared-access-policy-text.md)]
 
-1. Vytvořte novou prázdnou složku s názvem **scheduleJobService**.  V **scheduleJobService** složce vytvořte soubor package.json pomocí následujícího příkazu na příkazovém řádku.  Přijměte všechny výchozí hodnoty:
+[!INCLUDE [iot-hub-include-find-registryrw-connection-string](../../includes/iot-hub-include-find-registryrw-connection-string.md)]
+
+## <a name="schedule-jobs-for-calling-a-direct-method-and-updating-a-device-twins-properties"></a>Plánování úloh pro volání přímé metody a aktualizace vlastností vlákna zařízení
+
+V této části vytvoříte konzolovou aplikaci Node. js, která inicializuje vzdálenou **lockDoor** na zařízení pomocí přímé metody a aktualizuje vlastnosti vlákna zařízení.
+
+1. Vytvořte novou prázdnou složku s názvem **scheduleJobService**.  Ve složce **scheduleJobService** vytvořte soubor Package. JSON pomocí následujícího příkazu na příkazovém řádku.  Přijměte všechny výchozí hodnoty:
 
     ```
     npm init
     ```
 
-2. Na příkazovém řádku v **scheduleJobService** složky, spusťte následující příkaz k instalaci **azure-iothub** balíčku sady SDK pro zařízení a **azure-iot-device-mqtt** balíček:
+2. Na příkazovém řádku ve složce **scheduleJobService** spusťte následující příkaz, který nainstaluje balíček sady SDK pro zařízení **Azure-iothub** a balíček **Azure-IoT-Device-MQTT** :
    
     ```
     npm install azure-iothub uuid --save
     ```
 
-3. Pomocí textového editoru vytvořte nový **scheduleJobService.js** soubor **scheduleJobService** složky.
+3. Pomocí textového editoru vytvořte nový soubor **scheduleJobService. js** ve složce **scheduleJobService** .
 
-4. Přidejte následující příkazy na začátku "vyžadovat" **dmpatterns_gscheduleJobServiceetstarted_service.js** souboru:
+4. Na začátek souboru **dmpatterns_gscheduleJobServiceetstarted_service. js** přidejte následující příkazy ' vyžadovat ':
    
     ```
     'use strict';
@@ -172,7 +174,7 @@ V této části vytvoříte konzolovou aplikaci Node.js, který iniciuje vzdále
     var jobClient = JobClient.fromConnectionString(connectionString);
     ```
 
-6. Přidejte následující funkci, která se používá k monitorování provádění úlohy:
+6. Přidejte následující funkci, která slouží k monitorování provádění úlohy:
    
     ```
     function monitorJob (jobId, callback) {
@@ -223,7 +225,7 @@ V této části vytvoříte konzolovou aplikaci Node.js, který iniciuje vzdále
     });
     ```
 
-8. Přidejte následující kód k naplánování úlohy se aktualizovat dvojče zařízení:
+8. Přidejte následující kód k naplánování úlohy pro aktualizaci vlákna zařízení:
    
     ```
     var twinPatch = {
@@ -259,30 +261,30 @@ V této části vytvoříte konzolovou aplikaci Node.js, který iniciuje vzdále
     });
     ```
 
-9. Uložte a zavřete **scheduleJobService.js** souboru.
+9. Uložte a zavřete soubor **scheduleJobService. js** .
 
 ## <a name="run-the-applications"></a>Spuštění aplikací
 
 Nyní můžete spustit aplikace.
 
-1. Na příkazovém řádku v **simDevice** složky, spuštěním následujícího příkazu zahajte naslouchání pro přímé metody restartování.
+1. Na příkazovém řádku ve složce **simDevice** spusťte následující příkaz, který zahájí naslouchání metodě restart přímo.
    
     ```
     node simDevice.js
     ```
 
-2. Na příkazovém řádku v **scheduleJobService** složky, spusťte následující příkaz k aktivaci úlohy, které mají zamknout dveře a aktualizovat dvojčeti
+2. Na příkazovém řádku ve složce **scheduleJobService** spusťte následující příkaz, který aktivuje úlohy pro uzamknutí dvířek a aktualizaci vlákna.
    
     ```
     node scheduleJobService.js
     ```
 
-3. Zobrazí se zařízení odpověď na přímé metody v konzole.
+3. V konzole se zobrazí odpověď zařízení k přímé metodě.
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto kurzu používají úlohy k plánování přímé metody, která zařízení a aktualizace vlastnosti dvojčete zařízení.
+V tomto kurzu jste použili úlohu k naplánování přímé metody na zařízení a aktualizaci vlastností vlákna zařízení.
 
-Chcete-li pokračovat v seznamování se službou IoT Hub a schémata správy zařízení jako vzdálené přes aktualizace firmwaru air, přečtěte si téma [kurzu: Jak provést upgrade firmwaru](tutorial-firmware-update.md).
+Pokud chcete pokračovat v seznámení se IoT Hub a způsoby správy zařízení, jako je například vzdálené prostřednictvím aktualizace [firmwaru Air, přečtěte si téma Kurz: Postup při aktualizaci](tutorial-firmware-update.md)firmwaru.
 
-Chcete-li pokračovat v seznamování se službou IoT Hub, přečtěte si téma [Začínáme se službou Azure IoT Edge](../iot-edge/tutorial-simulate-device-linux.md).
+Pokud chcete pokračovat v seznámení s IoT Hub, přečtěte si téma [Začínáme s Azure IoT Edge](../iot-edge/tutorial-simulate-device-linux.md).

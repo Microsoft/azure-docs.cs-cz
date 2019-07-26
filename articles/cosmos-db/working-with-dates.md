@@ -5,16 +5,16 @@ ms.service: cosmos-db
 author: SnehaGunda
 ms.author: sngun
 ms.topic: conceptual
-ms.date: 05/21/2019
-ms.openlocfilehash: 99a807cf3918a8768231f88f846432df18fea9e8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 07/23/2019
+ms.openlocfilehash: 5b482d00990add365a90f36bf6e8d047dc50efc0
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65977237"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68467815"
 ---
 # <a name="working-with-dates-in-azure-cosmos-db"></a>Práce s daty ve službě Azure Cosmos DB
-Azure Cosmos DB nabízí flexibilitu schémat a bohaté indexování prostřednictvím nativní [JSON](https://www.json.org) datového modelu. Všechny prostředky Azure Cosmos DB, včetně databází, kontejnerů, dokumenty a uložené procedury jsou modelovány a ukládány jako dokumenty JSON. Jako požadavek za přenosné JSON (a Azure Cosmos DB) podporuje pouze malou sadu základních typů: Řetězec, číslo, logickou hodnotu, pole, objekt a hodnotu Null. Ale JSON je flexibilní a umožňují vývojářům a architektur představují složitější typy, pomocí těchto primitivních hodnot a skládání jako objekty nebo pole. 
+Azure Cosmos DB nabízí flexibilitu schémat a bohaté indexování prostřednictvím nativní [JSON](https://www.json.org) datového modelu. Všechny prostředky Azure Cosmos DB, včetně databází, kontejnerů, dokumenty a uložené procedury jsou modelovány a ukládány jako dokumenty JSON. Jako požadavek na přenos, JSON (a Azure Cosmos DB) podporuje jenom malou sadu základních typů: Řetězec, číslo, logická hodnota, pole, objekt a hodnota null. Ale JSON je flexibilní a umožňují vývojářům a architektur představují složitější typy, pomocí těchto primitivních hodnot a skládání jako objekty nebo pole. 
 
 Kromě základních typů, mnoho aplikací se musí [data a času](https://msdn.microsoft.com/library/system.datetime(v=vs.110).aspx) typ představující datum a časové razítko. Tento článek popisuje, jak mohou vývojáři ukládat, načíst a dotazovat data ve službě Azure Cosmos DB pomocí sady .NET SDK.
 

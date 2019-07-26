@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: 14a4191612a5d42836ae4be3ff902ca47a6b06d4
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 3dd1dde067a2ec745d7d60a78a50ab34ea30d0dd
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60634335"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68359804"
 ---
 # <a name="access-cloud-data-in-a-notebook"></a>Přístup k datům cloudu v poznámkovém bloku
 
@@ -42,7 +42,7 @@ import requests
 data_url = 'https://data.cityofnewyork.us/resource/gkne-dk5s.json'
 
 # General data request; include other API keys and credentials as needed in the data argument
-response = requests.get(data_url, data={"limit" : "20"})
+response = requests.get(data_url, data={"limit": "20"})
 
 if response.status_code == 200:
     dataframe_rest2 = pandas.DataFrame.from_records(response.json())
@@ -69,7 +69,7 @@ Poznámkový blok ukázka ukazuje práci s tabulkami a objekty BLOB, jak povolit
 Azure Cosmos DB zajišťující NoSQL s dvojicí plně indexovaných dokumentů JSON). Následující články poskytují celou řadou způsobů, jak pracovat s Cosmos DB z Pythonu:
 
 - [Sestavení rozhraní SQL API aplikací s využitím Pythonu](https://docs.microsoft.com/azure/cosmos-db/create-sql-api-python)
-- [Sestavení aplikace Flask pomocí rozhraní API služby Azure Cosmos DB pro MongoDB](https://docs.microsoft.com/azure/cosmos-db/create-mongodb-flask)
+- [Sestavení aplikace v baňce s rozhraním API Azure Cosmos DB pro MongoDB](https://docs.microsoft.com/azure/cosmos-db/create-mongodb-flask)
 - [Vytvoření databáze grafů pomocí Pythonu a rozhraní Gremlin API](https://docs.microsoft.com/azure/cosmos-db/create-graph-python)
 - [Sestavení aplikace Cassandra pomocí Pythonu a Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/create-cassandra-python)
 - [Sestavení aplikace Table API pomocí Pythonu a Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/create-table-python)
@@ -80,9 +80,9 @@ Při práci se službou Cosmos DB, můžete použít [azure-cosmos DB table](htt
 
 Azure nabízí celou řadu jiných typů databází, které můžete použít. Následující články poskytují pokyny pro přístup k těmto databázím z Pythonu:
 
-- [Azure Database for PostgreSQL: Použití Pythonu k připojení a dotazování dat](https://docs.microsoft.com/azure/postgresql/connect-python)
+- [Azure Database for PostgreSQL: Použití Pythonu pro připojení a dotazování dat](https://docs.microsoft.com/azure/postgresql/connect-python)
 - [Rychlé zprovoznění: Použití Azure Redis Cache s Pythonem](https://docs.microsoft.com/azure/redis-cache/cache-python-get-started)
-- [Azure Database for MySQL: Použití Pythonu k připojení a dotazování dat](https://docs.microsoft.com/azure/mysql/connect-python)
+- [Azure Database for MySQL: Použití Pythonu pro připojení a dotazování dat](https://docs.microsoft.com/azure/mysql/connect-python)
 - [Azure Data Factory](https://azure.microsoft.com/services/data-factory/)
   - [Průvodce kopírováním pro službu Azure Data Factory](https://azure.microsoft.com/updates/code-free-copy-wizard-for-azure-data-factory/)
 

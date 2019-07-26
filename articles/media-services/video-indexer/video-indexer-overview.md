@@ -8,58 +8,58 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 05/15/2019
+ms.date: 07/22/2019
 ms.author: juliako
-ms.openlocfilehash: 2c72c7c493c0a887adab147054c725a2e1c0659f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b0d0df5d113b1d75602022085b8bb17133f07333
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65799123"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68422983"
 ---
 # <a name="what-is-video-indexer"></a>Co je Video Indexer?
 
-Azure Video Indexer je cloudová aplikace sestavená s využitím služeb Azure Media Analytics, Azure Search, Cognitive Services (jako jsou rozhraní API pro rozpoznávání tváře, Microsoft Translator, rozhraní API pro počítačové zpracování obrazu a služba Custom Speech). Umožňuje extrahovat přehledy z videí pomocí video a audiostreamů modely Video Indexer je popsáno níže:
+Azure Video Indexer je cloudová aplikace sestavená s využitím služeb Azure Media Analytics, Azure Search, Cognitive Services (jako jsou rozhraní API pro rozpoznávání tváře, Microsoft Translator, rozhraní API pro počítačové zpracování obrazu a služba Custom Speech). Umožňuje extrahovat přehledy z videí pomocí Video Indexer video a zvukové modely popsané níže:
   
-## <a name="video-insights"></a>Nové poznatky z videí
+## <a name="video-insights"></a>Video přehledy
 
-- **Rozpoznávání tváře**: Zjistí a skupiny tváří povolí, nebude ve videu.
-- **Identifikace celebrit**: Video Indexer automaticky identifikuje přes 1 millión celebrit – například world lídrů, actors, actresses, sportovců z celého světa, výzkumní pracovníci, obchodní a technické představitelů Microsoftu na celém světě. Data o těchto celebritách najdete taky na různých známých webech, třeba IMDB nebo v encyklopedii Wikipedia.
-- **Identifikace tváře založené na účtu**: Video Indexer trénovat modelu pro zadaný účet. Pak rozezná tváří na videu na základě trénovaného modelu. Další informace najdete v tématu [přizpůsobení modelu osoby z webu Video Indexer](customize-person-model-with-website.md) a [přizpůsobení modelu osoba s Video Indexer API](customize-person-model-with-api.md).
-- **Miniatura extrakce pro plošky** ("co nejlepší pro rozpoznávání tváře"): Automaticky identifikuje nejvhodnější zachycené tváří v každé skupině tváří (podle kvality, velikost a umístění čelní) a rozbalte ho jako prostředek obrázku.
-- **Rozpoznávání textu Visual** (OCR): Extrahuje text, který se zobrazí vizuální ve videu.
-- **Vizuální moderování obsahu**: Zjistí pro dospělé nebo pikantního vizuály.
-- **Popisky identifikace**: Určuje vizuální objekty a zobrazené akce.
-- **Segmentace scény**: Určuje změnu scény ve videu podle vizuální prvky. Znázorňuje scény jedna událost a skládá se v řadě po sobě jdoucích snímků, které jsou sémanticky související. 
-- **Snímek detekce**: Určuje změny snímek v videa podle vizuální prvky. Snímku je řada snímků z fotoaparátu/kamery stejný obrázek pohybu. Další informace najdete v tématu [scény, snímky a klíčové snímky](scenes-shots-keyframes.md).
-- **Černé rámců**: Identifikuje černého rámce uvedené ve videu.
-- **Extrakce klíčových snímků**: Stabilní klíčové snímky rozpozná ve videu.
-- **Kredity se zajištěním provozu**: identifikaci začátku a konci postupné kredity na konci televizní pořady a videa.
+- **Rozpoznávání tváře**: Detekuje a seskupuje plošky, které se zobrazují ve videu.
+- **Identifikace celebrit**: Video Indexer automaticky identifikuje více než 1 000 000 celebrit – jako jsou například špičkové vedoucí, aktéry, Actresses, sportovců, výzkumníki, obchodní a technické vedoucí po celém světě. Data o těchto celebritách najdete taky na různých známých webech, třeba IMDB nebo v encyklopedii Wikipedia.
+- **Identifikace obličeje na základě účtu**: Video Indexer navlacích model pro určitý účet. Pak rozpoznává obličeje ve videu na základě trained model. Další informace najdete v tématu [Přizpůsobení modelu osoby z video indexer webu](customize-person-model-with-website.md) a [Přizpůsobení modelu osoby pomocí video indexer API](customize-person-model-with-api.md).
+- **Extrakce miniatur pro obličeje** ("nejlepší plocha"): Automaticky identifikuje nejlépe zachycenou plošku v každé skupině ploch (na základě kvality, velikosti a čelní pozice) a extrahuje je jako prostředek obrázku.
+- **Rozpoznávání vizuálního textu** (OCR): Extrahuje text, který je vizuálně zobrazen ve videu.
+- **Moderování vizuálního obsahu**: Detekuje vizuály pro dospělé nebo pikantní.
+- **Identifikace popisků**: Identifikuje zobrazené vizuální objekty a akce.
+- **Segmentace scény**: Určuje, kdy se scény mění ve videu na základě vizuálních pomůcek. Scéna znázorňuje jednu událost a skládá se z řady po sobě jdoucích snímků, které jsou sémanticky spojeny. 
+- **Detekce snímku**: Určuje, kdy se ve videu mění snímek na základě vizuálních pomůcek. Snímek je řada snímků pořízených ze stejné kamery pro pohyb snímků. Další informace najdete v tématu [scény, snímky a klíčové snímky](scenes-shots-keyframes.md).
+- **Detekce černého snímku**: Identifikuje černé snímky prezentované ve videu.
+- **Extrakce klíčového snímku**: Detekuje stabilní klíčové snímky ve videu.
+- **Kumulovaný kredity**: Identifikujte začátek a konec kumulovaných kreditů na konci televizních pořadů a filmů.
 
-## <a name="audio-insights"></a>Zvukový insights
+## <a name="audio-insights"></a>Přehledy zvuku
 
-- **Automatické rozpoznávání jazyka**: Automaticky identifikuje dominantní mluvený jazyk. Mezi podporované jazyky patří angličtina, španělština, francouzština, němčina, italština, čínština (zjednodušená), japonština, ruština a Brazilská portugalština bude záložní na angličtinu při jazyk nebyl nalezen.
-- **Přepisování zvukového záznamu**: Převede řeči na text v 12 jazycích a umožňuje rozšíření. Mezi podporované jazyky patří angličtina, španělština, francouzština, němčina, italština, čínština (zjednodušená), japonština, arabština, ruština, brazilská portugalština, hindština a korejštině.
-- **Skryté titulky**: Vytvoří titulků v tří formátů: VTT, TTML, SRT.
-- **Dvě kanálu zpracování**: Automaticky detekuje, oddělte přepisu a sloučí do jediné časové osy.
-- **Noise snížení**: Vymaže nahoru nahrávky zvuku nebo hlučného telefonního subsystému (na základě Skype filtrů).
-- **Přizpůsobení přepisu** (CRIS): Trénovat vlastní převod řeči na text modely a vytvořte záznamy o studiu specifických pro dané odvětví. Další informace najdete v tématu [přizpůsobení jazykového modelu z webu Video Indexer](customize-language-model-with-website.md) a [upravit jazykový model s rozhraními API pro Video Indexer](customize-language-model-with-api.md).
-- **Výčet mluvčího**: Mapuje a rozumí, které mluvčího paprsků která slova a kdy.
-- **Statistiky mluvčího**: Poskytuje statistiky pro přednášející řeči poměry.
-- **Textové moderování obsahu**: Detekuje explicitní text v přepisu zvuku.
-- **Zvukové efekty**: Identifikuje zvukové efekty, jako je ruční přípitky, zpracování řeči a nečinnosti.
-- **Rozpoznávání emocí z výrazu**: Identifikuje emoce na základě rozpoznávání řeči (co se říká) a hlasové tónů (jak ho se říká, že je).  Rozpozná tyto emoce: radost, smutek, hněv nebo strach.
-- **Překlad**: Vytvoří překlady přepisu zvuku na 54 různých jazycích.
+- **Automatické rozpoznávání jazyka**: Automaticky identifikuje dominantní mluvený jazyk. Mezi podporované jazyky patří angličtina, španělština, francouzština, němčina, italština, čínština (zjednodušená), japonština, ruština a brazilská portugalština. Pokud jazyk nelze identifikovat s jistotou, Video Indexer předpokládá, že mluvený jazyk je angličtina. Další informace najdete v tématu [model identifikace jazyka](language-identification-model.md).
+- **Přepis zvuku**: Převede řeč na text v 12 jazycích a povoluje rozšíření. Mezi podporované jazyky patří angličtina, španělština, francouzština, němčina, italština, čínština (zjednodušená), japonština, arabština, ruština, brazilská portugalština, hindština a korejština.
+- **Skryté titulky**: Vytvoří skryté titulky ve třech formátech: VTT, TTML, SRT.
+- **Zpracování dvou kanálů**: Automaticky detekuje, oddělují a sloučí je s jednou časovou osou.
+- **Snížení šumu**: Vymaže zvukové a přenosové nahrávky telefonního subsystému (na základě filtrů Skype).
+- **Přizpůsobení přepisu** (Položku CRI): Vlaky s vlastním převodem na textové modely pro vytváření přepisů specifických pro konkrétní obor. Další informace najdete v tématu [přizpůsobení jazykového modelu z video indexer webu](customize-language-model-with-website.md) a [přizpůsobení jazykového modelu pomocí rozhraní API video indexer](customize-language-model-with-api.md).
+- **Výčet mluvčího**: Mapuje a rozumí, ke kterému paprskovým paprskům jsou slova a kdy.
+- **Statistika mluvčího**: Poskytuje statistiku pro sluchátka s mluvenými poměry.
+- **Moderování obsahu textu**: Detekuje explicitní text v přepisu zvuku.
+- **Zvukové efekty**: Identifikuje zvukové efekty, jako je například ruční claps, řeč a netiché zpracování.
+- **Detekce emoce**: Identifikuje emoce na základě řeči (co se říká) a hlasového tónoví (jak se říkáte).  Rozpozná tyto emoce: radost, smutek, hněv nebo strach.
+- **Překlad**: Vytvoří překlady zvukového přepisu do různých jazyků 54.
 
-## <a name="audio-and-video-insights-multi-channels"></a>Audio a video insights (s více kanálů)
+## <a name="audio-and-video-insights-multi-channels"></a>Zvukové a video přehledy (více kanálů)
 
-Indexování pomocí částečných výsledků jeden kanál pro tyto modely kdy bude k dispozici
+K dispozici bude při indexování v jednom kanálu částečný výsledek pro tyto modely.
 
-- **Extrakce klíčových slov**: Extrahuje klíčových slov z řeči a vizuální text.
-- **Opatří extrakce**: Extrahuje značky z pro zpracování řeči a vizuální text.
-- **Odvození tématu**: Díky odvození hlavní témata z záznamy o studiu. Součástí je taxonomie IPTC 1. úrovně.
-- **Artefakty**: Extrahuje bohatou sadu "Další úroveň podrobností" artefakty pro každou modelů.
-- **Analýza subjektivního hodnocení**: Identifikuje kladná, záporná a neutrální zabarvení řeči a vizuální text.
+- **Extrakce klíčových slov**: Extrahuje klíčová slova z mluvené řeči a vizuálního textu.
+- **Extrakce značek**: Extrahuje značky z mluvené řeči a vizuálního textu.
+- **Odvození tématu**: Provádí odvození hlavních témat z přepisů. Zahrnuje se taxonomie IPTC na první úrovni.
+- **Artefakty**: Extrahuje bohatou sadu artefaktů další úrovně podrobností pro každý model.
+- **Analýza mínění**: Identifikuje kladné, záporné a neutrální zabarvení z mluvené řeči a vizuálního textu.
  
 Jakmile Video Indexer dokončí zpracování a analýzu, můžete přehledné informace o videích revidovat, kurátorovat, prohledávat a publikovat.
 
@@ -72,7 +72,7 @@ K registraci této služby můžete využít existující účet služeb AAD, Li
 Dál najdete několik scénářů, ve kterých se Video Indexer může hodit
 
 - Hledání – Přehledy extrahované z videa se dají využít k vylepšení vyhledávání v knihovně videí. Například indexování mluveného slova a tváří umožňuje ve videu vyhledávat okamžiky, kdy konkrétní osoba říká určitá slova nebo kdy jsou dva lidé vidět pohromadě. Hledání založené na takovýchto přehledech z videí je užitečné pro zpravodajské agentury, vzdělávací instituce, provozovatele vysílání, vlastníky zábavního obsahu, podnikové obchodní aplikace a obecně pro libovolné obory využívající knihovnu videí, ve kterých musí uživatelé vyhledávat.
-- Vytváření obsahu – insights extrahovat z videí a pomáhají efektivně vytvářet obsahu, jako je například přípojných, sociálních médií obsah zprávy atd. z existujícího obsahu v archivní úrovni organizace 
+- Vytváření obsahu – přehledy extrahované z videí a efektivní vytváření obsahu, jako jsou přívěsy, obsah sociálních médií, novinové klipy atd. z existujícího obsahu v archivu organizace 
 - Finanční zhodnocení – Video Indexer umožňuje zvýšit hodnotu videí. Například obory, které závisejí na výnosech z reklam (například sdělovací prostředky, sociální média atd.), mohou využít extrahované přehledy jako další signály pro reklamní server a poskytovat díky nim relevantnější reklamy (reklama na sportovní obuv je relevantnější během fotbalového utkání než při plaveckých soutěžích).
 - Zapojení uživatelů – Video Insights se dá využít k lepšímu zapojení uživatelů díky možnosti předkládání relevantních videookamžiků. Jako příklad si představte vzdělávací video, které prvních 30 minut vysvětluje kulové plochy a dalších 30 minut pyramidy. Studentovi, který si čte o pyramidách, by víc pomohlo, kdyby se video nastavilo tak, aby se spustilo od značky 30 minut.
 

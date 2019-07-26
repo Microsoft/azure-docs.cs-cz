@@ -1,6 +1,6 @@
 ---
-title: Běžné atributy zabezpečení pro Azure zasílání zpráv Service Bus
-description: Kontrolní seznam společné atributy zabezpečení za vaše rozhodnutí vyzkoušet Azure zasílání zpráv Service Bus
+title: Atributy zabezpečení pro zasílání zpráv Azure Service Bus
+description: Kontrolní seznam atributů zabezpečení pro vyhodnocení Azure Service Bus zasílání zpráv
 services: service-bus-messaging
 ms.service: service-bus-messaging
 documentationcenter: ''
@@ -9,16 +9,16 @@ manager: barbkess
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: mbaldwin
-ms.openlocfilehash: d68ffe6561da6a23c288dfabd1d3eb6b34099bb3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0e1d6e041b47a261b549fb8b608cf09d0d6362dd
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66003109"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68443900"
 ---
-# <a name="security-attributes-for-azure-service-bus-messaging"></a>Atributy zabezpečení pro Azure zasílání zpráv Service Bus
+# <a name="security-attributes-for-azure-service-bus-messaging"></a>Atributy zabezpečení pro zasílání zpráv Azure Service Bus
 
-Tento článek popisuje atributy zabezpečení integrované do Azure zasílání zpráv Service Bus.
+Tento článek popisuje atributy zabezpečení integrované do Azure Service Bus zasílání zpráv.
 
 [!INCLUDE [Security Attributes Header](../../includes/security-attributes-header.md)]
 
@@ -26,33 +26,33 @@ Tento článek popisuje atributy zabezpečení integrované do Azure zasílání
 
 | Atribut zabezpečení | Ano/Ne | Poznámky |
 |---|---|--|
-| Šifrování v klidovém stavu:<ul><li>Šifrování na straně serveru</li><li>Šifrování na straně serveru pomocí klíčů spravovaných zákazníkem</li><li>Další funkce šifrování (například klientů, funkce always encrypted, atd.)</ul>|  Ano pro serverové šifrování neaktivních ve výchozím nastavení. | Spravovaná zákazníkem klíče a BYOK se zatím nepodporují. Šifrování na straně klienta je odpovědností klienta |
-| Šifrování během přenosu:<ul><li>Express route šifrování</li><li>Ve virtuální síti šifrování</li><li>Šifrování virtuálními sítěmi</ul>| Ano | Podporuje standardní mechanismus HTTPS/TLS. |
-| Šifrování klíče zpracování (CMK, BYOK, atd.)| Ne |   |
-| Šifrování na úrovni sloupce (Azure Data Services)| neuvedeno | |
-| Šifrované volání rozhraní API| Ano | Volání rozhraní API se provádějí přes [Azure Resource Manageru](../azure-resource-manager/index.yml) a HTTPS. |
+| Šifrování v klidovém formátu (například šifrování na straně serveru, šifrování na straně serveru pomocí klíčů spravovaných zákazníkem a další funkce šifrování)|  Ano, pokud je ve výchozím nastavení zapnuté šifrování na straně serveru. | Spravované klíče zákazníka a BYOK ještě nejsou podporované. Šifrování na straně klienta je zodpovědností klienta. |
+| Šifrování při přenosu (například šifrování ExpressRoute, šifrování virtuální sítě a šifrování virtuální sítě)| Ano | Podporuje standardní mechanismus HTTPS/TLS. |
+| Zpracování šifrovacích klíčů (CMK, BYOK atd.)| Ne |   |
+| Šifrování na úrovni sloupce (Azure Data Services)| Není k dispozici | |
+| Zašifrovaná volání rozhraní API| Ano | Volání rozhraní API se provádí prostřednictvím [Azure Resource Manager](../azure-resource-manager/index.yml) a HTTPS. |
 
 ## <a name="network-segmentation"></a>Segmentace sítě
 
 | Atribut zabezpečení | Ano/Ne | Poznámky |
 |---|---|--|
-| Podpora koncového bodu služby| Ano (pouze úroveň Premium) | Koncové body služby virtuální sítě jsou podporovány pro [úroveň služby Service Bus Premium](service-bus-premium-messaging.md) pouze. |
-| Vkládání podpory virtuálních sítí| Ne | |
-| Izolace sítě a podporu funkce brány firewall| Ano (pouze úroveň Premium) |  |
-| Vynucené tunelování podpory| Ne |  |
+| Podpora koncového bodu služby| Ano (jenom úroveň Premium) | Koncové body služby virtuální sítě se podporují jenom pro [Service Bus úrovně Premium](service-bus-premium-messaging.md) . |
+| Podpora vkládání virtuální sítě| Ne | |
+| Izolace sítě a podpora brány firewall| Ano (jenom úroveň Premium) |  |
+| Podpora vynuceného tunelování| Ne |  |
 
-## <a name="detection"></a>Detection (Detekce)
+## <a name="detection"></a>Detekce
 
 | Atribut zabezpečení | Ano/Ne | Poznámky|
 |---|---|--|
-| Podpora (Log analytics, App insights atd.) pro monitorování Azure| Ano | Podporováno prostřednictvím [Azure Monitor a výstrahy](service-bus-metrics-azure-monitor.md). |
+| Podpora monitorování Azure (Log Analytics, App Insights atd.)| Ano | Podporováno prostřednictvím [Azure monitor a výstrah](service-bus-metrics-azure-monitor.md). |
 
 ## <a name="identity-and-access-management"></a>Správa identit a přístupu
 
 | Atribut zabezpečení | Ano/Ne | Poznámky|
 |---|---|--|
-| Authentication| Ano | Spravovat prostřednictvím [Azure Active Directory identitu spravované služby](service-bus-managed-service-identity.md); viz [ověřování a autorizace Service Bus](service-bus-authentication-and-authorization.md).|
-| Autorizace| Ano | Podporuje ověřování prostřednictvím [RBAC](service-bus-role-based-access-control.md) (Preview) a tokenu SAS, viz [ověřování a autorizace Service Bus](service-bus-authentication-and-authorization.md). |
+| Ověřování| Ano | Spravované prostřednictvím [Azure Active Directory identita spravované služby](service-bus-managed-service-identity.md); viz [Service Bus ověřování a autorizace](service-bus-authentication-and-authorization.md).|
+| Authorization| Ano | Podporuje autorizaci pomocí [RBAC](service-bus-role-based-access-control.md) (Preview) a tokenu SAS; viz [Service Bus ověřování a autorizace](service-bus-authentication-and-authorization.md). |
 
 
 
@@ -60,11 +60,11 @@ Tento článek popisuje atributy zabezpečení integrované do Azure zasílání
 
 | Atribut zabezpečení | Ano/Ne | Poznámky|
 |---|---|--|
-| Ovládací prvek a správu roviny protokolování a auditování| Ano | Protokoly operací jsou k dispozici. Zobrazit [diagnostické protokoly služby Service Bus](service-bus-diagnostic-logs.md).  |
-| Protokolování roviny dat a auditu| Ne |  |
+| Protokolování a audit roviny řízení a správy| Ano | Jsou k dispozici protokoly operací. viz [protokoly diagnostiky Service Bus](service-bus-diagnostic-logs.md).  |
+| Protokolování a audit roviny dat| Ne |  |
 
 ## <a name="configuration-management"></a>Správa konfigurace
 
 | Atribut zabezpečení | Ano/Ne | Poznámky|
 |---|---|--|
-| Podpora správy konfigurace (verze konfigurace atd.)| Ano | Podporuje správu verzí zprostředkovatele prostředků prostřednictvím [API Azure Resource Manageru](/rest/api/resources/).|
+| Podpora správy konfigurace (Správa verzí konfigurace atd.)| Ano | Podporuje správu verzí poskytovatele prostředků prostřednictvím [rozhraní Azure Resource Manager API](/rest/api/resources/).|

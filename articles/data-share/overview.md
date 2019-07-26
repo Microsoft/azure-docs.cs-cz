@@ -1,92 +1,95 @@
 ---
-title: Co je Azure dat sdílené složky ve verzi Preview
-description: Přehled sdílení dat Azure ve verzi Preview
+title: Co je verze Preview služby Azure Data Share
+description: Přehled služby Azure Data Share Preview
 author: joannapea
 ms.service: data-share
 ms.topic: overview
 ms.date: 07/10/2019
 ms.author: joanpo
-ms.openlocfilehash: 7d4e51ec9564bfb123cf73d9fe89d040f42fe650
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 11f32b1f1349ef0f9826f95832648e6949cc2f8c
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67807547"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68421397"
 ---
 # <a name="what-is-azure-data-share-preview"></a>Co je Azure Data Share Preview?
 
-V dnešním světě data zobrazit jako se strategickým aktivem klíče, který mnoho organizace potřebují jednoduše a bezpečně sdílet se svými zákazníky a partnery. Existuje mnoho způsobů, že zákazníci provést ještě dnes, včetně pomocí služby FTP, e-mailu, rozhraní API pro další. Organizace můžou snadno ztrátě informací o kdo sdílí svá data pomocí. Sdílení dat přes FTP nebo vlastních rozhraní API infrastruktury je často drahé ke zřízení a správě. Je režie spojená s využitím těchto metod sdílení ve velkém měřítku. 
+V dnešním světě se data zobrazují jako klíčový strategický prostředek, který mnoho organizací potřebuje jednoduše a bezpečně sdílet se svými zákazníky a partnery. Existuje mnoho způsobů, jak to zákazníci dnes dělají, včetně FTP, e-mailu, rozhraní API k pojmenování. Organizace můžou snadno ztratit přehled o tom, pomocí kterých data sdíleli. Sdílení dat prostřednictvím FTP nebo zaznamenání vlastní infrastruktury rozhraní API je často nákladné při zřizování a správě. Existují režijní náklady na správu spojené s používáním těchto metod sdílení ve velkém měřítku. 
 
-Řada organizací musí být zodpovídají za data, která sdílejí. Kromě zodpovědnost řada organizací chcete mít možnost řídit, spravovat a monitorovat všechna svá data v jednoduchý způsob sdílení. Organizace potřebují jednoduchý způsob, jak sdílet velké objemy dat, informací o dnešku světě, kde je očekávána data nadále rozšiřovat exponenciální rychlostí. Zákazníci vyžadují nejnovější data k zajištění, aby je bylo možné včasné vyvoďte z nich.
+Mnoho organizací musí být pro data, která sdíleli, nutné. Kromě zodpovědnosti by mohli spousta organizací kontrolovat, spravovat a monitorovat všechna sdílení svých dat jednoduchým způsobem. V dnešním světě, kde se očekává, že se data budou dál rozšiřovat na exponenciální tempo, organizace potřebují jednoduchý způsob, jak sdílet velké objemy dat. Zákazníci požadují nejaktuálnější data, aby se zajistilo, že budou moci odvodit včas přehledy.
 
-Azure Data sdílet ve verzi Preview umožňuje organizacím jednoduše a bezpečně sdílet data s více partnery a zákazníky. Pomocí několika kliknutí můžete zřídit nový účet data sdílené složky, přidat datové sady a pozvat zákazníci a partneři dat sdílené složky. Zprostředkovatelé dat se vždycky nacházejí v kontrolu nad daty, která sdílejí. Sdílené složky Azure dat usnadňuje spravovat a sledovat, jaká data se sdílí, kdy a kým. 
+Azure Data Share Preview umožňuje organizacím jednoduše a bezpečně sdílet data s více zákazníky a partnery. V několika kliknutích můžete zřídit nový účet pro sdílení dat, přidat datové sady a pozvat své zákazníky a partnery do vaší sdílené složky. Poskytovatelé dat vždy ovládají data, která sdíleli. Azure Data Share usnadňuje správu a sledování dat, která byla sdílena, kdy a kým. 
 
-Zprostředkovatel dat můžete zachovejte si kontrolu nad zpracování svá data zadáním podmínky použití pro svá data sdílet. Spotřebitel dat musí přijmout tyto podmínky teprve pak ji bude moci přijímat data. Zprostředkovatelé dat můžete zadat frekvenci, s jakou jejich spotřebitelé dat přijímat aktualizace. Kdykoli můžete poskytovatelem dat. odvolat přístup k nové aktualizace. 
+Poskytovatel dat může zůstat v řízení toho, jak se jejich data zpracovávají, a to zadáním podmínek použití pro jejich sdílení dat. Příjemce dat musí tyto podmínky přijmout, aby mohl přijímat data. Poskytovatelé dat můžou určit frekvenci, s jakou jejich příjemci dat obdrží aktualizace. Poskytovatel dat může kdykoli odvolat přístup k novým aktualizacím. 
 
-Sdílené složky Azure dat pomáhá vylepšit insights usnadňuje kombinace dat od jiných výrobců rozšířit analýzy a AI scénáře. Snadno použijte nástroje Azure analytics ot k přípravě, zpracovávat a analyzovat data sdílená pomocí sdílené složky služby Azure Data. 
+Azure Data Share pomáhá zdokonalit přehledy tím, že usnadňuje kombinování dat od třetích stran až po obohacení analytických scénářů a scénářů AI. K přípravě, zpracování a analýze dat sdílených pomocí Azure Data Share můžete snadno použít nástroje Power Analytics pro Azure Analytics. 
 
-## <a name="scenarios-for-azure-data-share"></a>Scénáře pro sdílenou složku Azure dat
+Poskytovatel dat i příjemce dat musí mít ke sdílení a přijímání dat předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/).
 
-Sdílené složky Azure dat je možné v celou řadou různých odvětví. Prodejce může třeba nedávný bod prodejních dat sdílet s jejich dodavatele. Pomocí Azure Data sdílet, můžete prodejce nastavte sdílení dat obsahující bod prodejní data pro všechny jejich dodavatelů a sdílejte prodeje na hodinové nebo denní bázi. 
+## <a name="scenarios-for-azure-data-share"></a>Scénáře pro Azure Data Share
 
-Sdílené složky Azure dat lze také vytvořit datové tržiště pro konkrétní odvětví. Například státní instituce nebo výzkumu instituce, která pravidelně sdílí anonymizovali data o růst s třetími stranami. 
+Sdílenou složku Azure můžete použít v mnoha různých oborech. Maloobchodníka může například chtít sdílet poslední bod Sales data se svými dodavateli. Pomocí Azure Data share může prodejce nastavit sdílení dat obsahující body prodeje pro všechny své dodavatele a sdílet prodej na každou hodinu nebo každý den. 
 
-Další případ použití pro sdílené složky služby Azure Data navazuje data consortium. Například celou řadou různých výzkumnými ústavy můžou sdílet data s jednoho důvěryhodného textu. Data se analyzují, agregují nebo zpracovány pomocí nástroje Azure analytics a pak je sdílet se zúčastněnými stranami. 
+Sdílenou složku Azure můžete také použít k vytvoření Tržiště dat pro konkrétní odvětví. Například státní nebo výzkumné instituce, která pravidelně sdílí data o růstu populace s třetími stranami. 
+
+Dalším případem použití pro sdílenou složku Azure je vytvořit datovou Consortium. Například řada různých výzkumných institucí může sdílet data s jedním důvěryhodným subjektem. Data se analyzují, agreguje nebo zpracovávají pomocí analytických nástrojů Azure a pak se sdílejí se zúčastněnými stranami. 
 
 ## <a name="how-it-works"></a>Jak to funguje
 
-Sdílené složky Azure Data používá založených na snímcích sdílení přístup, odkud se data přesouvá z předplatného Azure zprostředkovatele dat a jsou v rámci předplatného Azure příjemce dat. Jako poskytovatel dat zřídíte sdílení dat a pozvat příjemcům sdílet data. Spotřebitelé dat přijímat pozvánky dat sdílené složky prostřednictvím e-mailu. Jakmile příjemce dat přijme pozvánku, mohou aktivovat plnou snímků sdílených dat je sdílíte. Přijetí tato data do účtu úložiště dat uživatele. Spotřebitelé dat dostávat pravidelné, přírůstkové aktualizace dat s nimi sdíleli, aby vždy měli nejnovější data. 
+Azure Data Share využívá přístup ke sdílení na základě snímků, kde se data pohybují z předplatného Azure poskytovatele dat a nacházejí v předplatném Azure datového zákazníka. Jako poskytovatel dat zřizujete sdílenou složku a budete pozvat příjemce ke sdílení dat. Příjemci dat obdrží pozvánku do sdílené složky prostřednictvím e-mailu. Jakmile příjemce dat pozvánku přijme, může aktivovat úplný snímek sdílených dat, která jsou sdílená. Tato data se přijímají do účtu úložiště dat pro uživatele. Příjemci dat můžou dostávat pravidelné a přírůstkové aktualizace dat, která jsou s nimi sdílená, aby vždy měli nejnovější verzi dat. 
 
-Zprostředkovatelé dat můžou nabízet svoje data příjemci přírůstkové aktualizace dat s nimi sdílí prostřednictvím plánu snímku. Plány snímku se nabízejí na hodinu nebo každý den. Když příjemce dat přijme a nakonfiguruje jejich sdílení dat, přihlášení k odběru plánu snímku. To je užitečné v situacích, kdy sdílených dat je aktualizována v pravidelných intervalech a příjemce dat vyžaduje nejnovější data. 
+Poskytovatelé dat můžou svým spotřebitelům dat postupně aktualizovat data, která s nimi sdílí, prostřednictvím plánu snímků. Plány snímků jsou nabízeny každou hodinu nebo každý den. Když příjemce dat přijme a nakonfiguruje jejich sdílení dat, může se přihlásit k odběru plánu snímku. To je užitečné ve scénářích, kdy se v pravidelných intervalech aktualizují sdílená data a spotřebitel dat potřebuje nejaktuálnější data. 
 
-![tok dat sdílené složky](media/data-share-flow.png)
+![tok sdílení dat](media/data-share-flow.png)
 
-Když příjemce dat přijme sdílení dat, se může přijímat data v účtu úložiště podle vlastního uvážení. Například pokud poskytovatel dat sdílí data pomocí služby Azure Blob Storage, příjemce dat, dostanou tato data v Azure Data Lake Store. 
+Když příjemce dat přijme sdílenou složku, může přijímat data v účtu úložiště, který si zvolíte. Pokud například poskytovatel dat sdílí data pomocí Azure Blob Storage, příjemce dat může tato data přijímat v Azure Data Lake Store. 
 
 ## <a name="key-capabilities"></a>Klíčové funkce
 
-Sdílené složky Azure dat umožňuje poskytovatelům dat:
+Azure Data Share umožňuje zprostředkovatelům dat:
 
-* Sdílení dat ze služby Azure Storage a Azure Data Lake Store se zákazníky a partnery mimo vaši organizaci
+* Sdílení dat od Azure Storage a Azure Data Lake Store se zákazníky a partnery mimo vaši organizaci
 
-* Sledovat, s kým je sdílíte svá data pomocí
+* Udržujte si přehled o tom, se kterými jste data sdíleli
 
-* Jak často jsou data uživatele příjem aktualizací k vašim datům
+* Jak často příjemci dat přijímají aktualizace vašich dat
 
-* Povolit zákazníkům podle potřeby si přetáhněte nejnovější data, nebo zajistí, aby automaticky obdrží přírůstkové změny ke svým datům v intervalu definované uživatelem
+* Umožněte zákazníkům, aby si vyžádají nejnovější verzi vašich dat, jak je potřeba, nebo jim umožněte automatické přijímání přírůstkových změn dat v intervalu, který jste definovali.
 
-Sdílené složky Azure Data umožňuje uživatelům dat: 
+Azure Data Share umožňuje příjemcům dat: 
 
-* Zobrazit popis typu sdílení dat
+* Zobrazit popis typu sdílených dat
 
-* Zobrazit podmínky použití pro data
+* Zobrazení podmínek použití pro data
 
-* Následně přijímal nebo odmítal pozvánku dat sdílené složky Azure
+* Přijmout nebo odmítnout pozvánku ke sdílené složce Azure Data Share
 
-* Spustit úplné nebo přírůstkové snímek sdílení dat, který s vámi sdílí organizace
+* Aktivace úplného nebo přírůstkového snímku sdílené složky dat, kterou s vámi organizace sdílí
 
-* Přihlaste se k sdílení dat pro příjem nejnovější kopii dat prostřednictvím přírůstkový snímek kopie odběru
+* Přihlaste se k odběru sdílení dat, abyste získali nejnovější kopii dat prostřednictvím přírůstkové kopie snímku.
 
-* Přijmout data sdílená s vámi do účtu Azure Blob Storage nebo Azure Data Lake Gen2
+* Přijměte data sdílená s vámi do účtu Azure Blob Storage nebo Azure Data Lake Gen2.
 
-Všechny klíčové funkce uvedené výše jsou podporovány prostřednictvím Azure nebo přes rozhraní REST API. Další podrobnosti o použití sdílení dat Azure pomocí rozhraní REST API projděte si naši referenční dokumentaci. 
+Všechny výše uvedené klíčové funkce jsou podporované prostřednictvím Azure nebo přes rozhraní REST API. Další informace o používání sdílené složky Azure prostřednictvím rozhraní REST API najdete v naší referenční dokumentaci. 
 
 ## <a name="security"></a>Zabezpečení
 
-Sdílené složky Azure dat využívá základního zabezpečení, které Azure nabízí pro ochranu dat v klidovém stavu a během přenosu. Data se šifrují při nečinnosti, kde je základní mechanismus úložiště podporuje. Data se šifrují taky při přenosu. Metadata o sdílené složce data se šifrují taky v klidovém stavu a během přenosu. 
+Azure Data Share využívá základní zabezpečení, které Azure nabízí k ochraně dat v klidovém provozu a při přenosu. Data jsou zašifrovaná v klidovém stavu, kde je podporuje základní mechanismus úložiště. Data se šifrují i při přenosu. Metadata o sdílené složce jsou také šifrována v klidovém stavu a při přenosu. 
 
-Řízení přístupu je možné nastavit na úrovni zdroje dat sdílené složky Azure k zajištění, že se k nim přistupovat pomocí ty, které mají oprávnění. 
+Řízení přístupu lze nastavit na úrovni prostředků sdílené složky Azure, aby bylo zajištěno, že k nim mají přístup autorizované aplikace. 
 
-Sdílené složky Azure dat využívá identit spravovaných pro prostředky Azure (dříve označovanou jako souborů MSI) pro automatickou správu identity ve službě Azure Active Directory. Pro přístup k účtům úložiště, které se používají pro sdílení dat se využívají spravovaných identit pro prostředky Azure. Neexistuje žádné výměnu přihlašovacích údajů mezi zprostředkovatele dat a dat uživatelů. Další informace najdete [identit spravovaných prostředků Azure stránky](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-managed-identities). 
+Azure Data Share využívá spravované identity pro prostředky Azure (dříve označované jako MSIs) pro automatickou správu identit v Azure Active Directory. Spravované identity pro prostředky Azure se využívají pro přístup k účtům úložiště, které se používají ke sdílení dat. Neexistuje žádná výměna přihlašovacích údajů mezi poskytovatelem dat a příjemcem dat. Další informace najdete na [stránce spravované identity pro prostředky Azure](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-managed-identities). 
+
 
 ## <a name="supported-regions"></a>Podporované oblasti
 
-Seznam oblastí Azure, které usnadňují sdílení dat Azure k dispozici, najdete [dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/) stránky a vyhledejte Data sdílené složky Azure. 
+Seznam oblastí Azure, které zpřístupňují sdílenou složku Azure Data Share, najdete na stránce [produkty dostupné v oblasti](https://azure.microsoft.com/global-infrastructure/services/) a ve službě Azure Data Share. 
 
-Sdílené složky Azure dat neukládá vlastní data. Data se ukládají v základní účty úložiště, které jsou sdíleny. Například pokud poskytovatel dat ukládají svá data v účtu služby Azure Data Lake Store, který je umístěný v oblasti západní USA, to je, kde jsou data uložená. Pokud se účet služby Azure Storage, který je umístěný v oblasti západní Evropa, jsou sdílení dat, data se přenesou přímo do účtu Azure Storage, který je umístěný v oblasti západní Evropa. 
+Azure Data Share neukládá žádná data. Data se ukládají do podkladových účtů úložiště, které jsou sdílené. Pokud například producent dat ukládá svá data do účtu Azure Data Lake Store, který se nachází v Západní USA, kde jsou data uložená. Pokud sdílí data s účtem Azure Storage umístěným v Západní Evropa, data se přenesou přímo na účet Azure Storage umístěný v Západní Evropa. 
 
-Služba sdílení dat Azure nemá k dispozici ve vaší oblasti využívat službu. Například pokud máte data uložená v účtu služby Azure Storage, který je umístěný v oblasti, kde Azure sdílet Data ještě nejsou k dispozici, můžete využít službu sdílet vaše data. 
+Služba Azure Data Share není ve vaší oblasti k dispozici, aby ji bylo možné využívat. Pokud máte například data uložená v účtu Azure Storage umístěném v oblasti, kde není ještě dostupná služba Azure Data Share, můžete tuto službu využít ke sdílení dat. 
 
 ## <a name="next-steps"></a>Další postup
 
-Zjistěte, jak začít, sdílení dat, nadále [sdílet vaše data](share-your-data.md) kurzu.
+Pokud se chcete dozvědět, jak začít sdílet data, pokračujte do kurzu [sdílení vašich dat](share-your-data.md) .

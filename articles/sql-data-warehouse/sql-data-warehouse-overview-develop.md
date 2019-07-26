@@ -1,8 +1,8 @@
 ---
-title: Zdroje informací pro vývoj datový sklad v Azure | Dokumentace Microsoftu
-description: Koncepty vývoje, rozhodnutí o návrhu, doporučení a technikám kódování pro SQL Data Warehouse.
+title: Prostředky pro vývoj datového skladu v Azure | Microsoft Docs
+description: Koncepce vývoje, rozhodování o návrhu, doporučení a techniky kódování pro SQL Data Warehouse.
 services: sql-data-warehouse
-author: XiaoyuL-Preview
+author: XiaoyuMSFT
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
@@ -10,43 +10,43 @@ ms.subservice: development
 ms.date: 08/29/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 613bcb05dab993989a2ae00b71fef95794953ab8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a78d78618a4cd9bf8d2aaebbd0c0da13697549bc
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65850738"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68479475"
 ---
-# <a name="design-decisions-and-coding-techniques-for-sql-data-warehouse"></a>Rozhodnutí o návrhu a technikám kódování pro SQL Data Warehouse
-Podívejte se přes tyto články o vývoji pro lepší pochopení klíčových rozhodnutí, doporučení a technikám kódování pro SQL Data Warehouse.
+# <a name="design-decisions-and-coding-techniques-for-sql-data-warehouse"></a>Rozhodnutí o návrhu a techniky kódování pro SQL Data Warehouse
+Projděte si tyto články o vývoji, abyste lépe pochopili důležité aspekty rozhodování o návrhu, doporučení a kódovací techniky pro SQL Data Warehouse.
 
-## <a name="key-design-decisions"></a>Rozhodnutí o návrhu klíče
-V následujících článcích zvýraznění koncepty a rozhodnutí o návrhu pro vývoj distribuovaných data warehouse s využitím SQL Data Warehouse:
+## <a name="key-design-decisions"></a>Klíčová rozhodnutí pro návrh
+Následující články zvýrazňují koncepty a rozhodnutí o návrhu pro vývoj distribuovaného datového skladu pomocí SQL Data Warehouse:
 
-* [Připojení][connections]
-* [concurrency][concurrency]
-* [Transakce][transactions]
-* [schémata definovaná uživatelem][user-defined schemas]
+* [připojení][connections]
+* [Concurrency][concurrency]
+* [převody][transactions]
+* [uživatelsky definovaná schémata][user-defined schemas]
 * [distribuce tabulky][table distribution]
 * [indexy tabulek][table indexes]
-* [Oddíly tabulky][table partitions]
+* [oddíly tabulky][table partitions]
 * [CTAS][CTAS]
 * [statistiky][statistics]
 
-## <a name="development-recommendations-and-coding-techniques"></a>Doporučení pro vývoj a technikám kódování
-Tyto články zvýraznit konkrétní technikám kódování, tipy a doporučení pro vývoj služby SQL Data Warehouse:
+## <a name="development-recommendations-and-coding-techniques"></a>Doporučení pro vývoj a techniky kódování
+Tyto články zvýrazňují konkrétní techniky kódování, tipy a doporučení pro vývoj SQL Data Warehouse:
 
-* [Uložené procedury][stored procedures]
+* [uložené procedury][stored procedures]
 * [popisky][labels]
-* [Zobrazení][views]
-* [Dočasné tabulky][temporary tables]
-* [dynamic SQL][dynamic SQL]
-* [opakování ve smyčce][looping]
-* [Seskupit podle možnosti][group by options]
+* [Náhled][views]
+* [dočasné tabulky][temporary tables]
+* [dynamické SQL][dynamic SQL]
+* [opakování][looping]
+* [možnosti pro seskupení][group by options]
 * [přiřazení proměnné][variable assignment]
 
 ## <a name="next-steps"></a>Další postup
-Další informace najdete v části [příkazy SQL Data Warehouse T-SQL](sql-data-warehouse-reference-tsql-statements.md).
+Další referenční informace najdete v tématu [SQL Data Warehouse příkazů T-SQL](sql-data-warehouse-reference-tsql-statements.md).
 
 <!--Image references-->
 

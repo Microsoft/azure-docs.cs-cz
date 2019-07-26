@@ -1,10 +1,10 @@
 ---
-title: Schválit nebo odmítnout žádosti o přístup ve službě Azure AD oprávnění management (Preview) – Azure Active Directory
-description: Další informace o použití portálu Můj přístup ke schvalování nebo zamítání žádostí pro balíček přístup ve službě Azure Active Directory management oprávnění (Preview).
+title: Schválení nebo zamítnutí žádostí o přístup ve správě nároků Azure AD (Preview) – Azure Active Directory
+description: Naučte se používat portál pro přístup ke schválení nebo zamítnutí žádostí o přístup k balíčku přístupu v Azure Active Directory Správa nároků (Preview).
 services: active-directory
 documentationCenter: ''
-author: rolyon
-manager: mtillman
+author: msaburnley
+manager: daveba
 editor: mamtakumar
 ms.service: active-directory
 ms.workload: identity
@@ -13,72 +13,72 @@ ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
 ms.date: 04/18/2019
-ms.author: rolyon
+ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1b2d07638f6c6f153ee3640273fbee5e56df0ab2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 78243f02cbbe3d06b94ee52d6193865dbfa27121
+ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64541522"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68489004"
 ---
-# <a name="approve-or-deny-access-requests-in-azure-ad-entitlement-management-preview"></a>Schválit nebo odmítnout žádosti o přístup ve správě služby Azure AD oprávnění (Preview)
+# <a name="approve-or-deny-access-requests-in-azure-ad-entitlement-management-preview"></a>Schválení nebo zamítnutí žádostí o přístup ve správě nároků Azure AD (Preview)
 
 > [!IMPORTANT]
-> Správa nároků Azure Active Directory (Azure AD) je aktuálně ve verzi public preview.
+> Správa opravňujících k Azure Active Directory (Azure AD) je aktuálně ve verzi Public Preview.
 > Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti.
 > Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Správa oprávnění Azure AD můžete nakonfigurovat zásady, které vyžadují schválení pro přístup k balíčkům a zvolte jednu nebo více schvalovatelů. Tento článek popisuje, jak určených schvalovatelů mohli schválit nebo odmítnout žádosti o přístup k balíčkům.
+Díky správě nároků ve službě Azure AD můžete nakonfigurovat zásady, které vyžadují schválení balíčků přístupu, a vybrat jednoho nebo více schvalovatelů. Tento článek popisuje, jak můžou určení schvalovatelé schvalovat nebo odmítat žádosti o přístup k balíčkům.
 
 ## <a name="open-request"></a>Otevřít požadavek
 
-Prvním krokem pro schválení nebo zamítnutí žádosti o přístup je najít a otevřít žádost o přístup čeká na schválení. Existují dva způsoby, jak otevřít žádost o přístup.
+Prvním krokem ke schválení nebo zamítnutí žádostí o přístup je vyhledání a otevření žádosti o přístup, která čeká na schválení. Existují dva způsoby, jak otevřít žádost o přístup.
 
-**Požadované role:** Schvalovatele
+**Požadovaná role:** Schvalovatel
 
-1. Vyhledejte e-mailu z Microsoft Azure, která vás vyzve k schválit nebo zamítnout žádost. Tady je příklad e-mailu:
+1. Vyhledejte e-mail od Microsoft Azure, který vás vyzve ke schválení nebo zamítnutí žádosti. Tady je příklad e-mailu:
 
     ![Schválit žádost o přístup k e-mailu balíčku](./media/entitlement-management-shared/email-approve-request.png)
 
-1. Klikněte na tlačítko **schválit nebo zamítnout žádost o** odkaz k otevření žádosti o přístup.
+1. Kliknutím na odkaz **schválit nebo odmítnout** otevřete žádost o přístup.
 
-1. Přihlaste se k portálu Můj přístup.
+1. Přihlaste se k portálu přístupu.
 
-Pokud nemáte k dispozici v e-mailu, najdete pomocí následujících kroků žádosti o přístup čeká na vaše schválení.
+Pokud nemáte e-mail, můžete podle následujících kroků najít žádosti o přístup, které čekají na schválení.
 
-1. Přihlaste se k portálu Můj přístup na adrese [ https://myaccess.microsoft.com ](https://myaccess.microsoft.com).
+1. Přihlaste se na portál My Access [https://myaccess.microsoft.com](https://myaccess.microsoft.com)na adrese.
 
-1. V nabídce vlevo klikněte na tlačítko **schválení** chcete zobrazit seznam žádostí o přístup čeká na schválení.
+1. V nabídce vlevo klikněte na **schválení** . zobrazí se seznam žádostí o přístup, které čekají na schválení.
 
-1. Na **čekající** kartu, najít žádost.
+1. Na kartě **čeká** na vyřízení žádost.
 
 ## <a name="approve-or-deny-request"></a>Schválit nebo zamítnout žádost
 
-Po otevření žádosti o přístup čeká na schválení, zobrazí se podrobnosti, které vám pomohou Ujistěte se, schválit nebo zamítnout rozhodnutí.
+Po otevření žádosti o přístup se zobrazí podrobnosti, které vám pomohou učinit rozhodnutí o schválení nebo zamítnutí.
 
-**Požadované role:** Schvalovatele
+**Požadovaná role:** Schvalovatel
 
-1. Klikněte na tlačítko **zobrazení** odkaz a otevřete tak podokno žádost o přístup.
+1. Kliknutím na odkaz **Zobrazit** otevřete podokno žádost o přístup.
 
-1. Klikněte na tlačítko **podrobnosti** zobrazíte podrobnosti o žádosti o přístup.
+1. Kliknutím na **Podrobnosti** zobrazíte podrobnosti o žádosti o přístup.
 
-    Podrobnosti zahrnují uživatelské jméno, organizaci, přístup k počáteční a koncové datum-li zadán, obchodní odůvodnění, kdy byl požadavek odeslán a kdy skončí platnost této žádosti.
+    Podrobnosti zahrnují jméno uživatele, organizaci, počáteční a koncové datum přístupu, pokud jsou k dispozici, obchodní odůvodnění, čas odeslání žádosti a čas vypršení platnosti žádosti.
 
-1. Klikněte na tlačítko **schválit** nebo **Odepřít**.
+1. Klikněte na **schválit** nebo **Odepřít**.
 
 1. V případě potřeby zadejte důvod.
 
-    ![Moje přístup k portálu – žádost o přístup](./media/entitlement-management-shared/my-access-approve-request.png)
+    ![Můj portál pro přístup – žádost o přístup](./media/entitlement-management-shared/my-access-approve-request.png)
 
-1. Klikněte na tlačítko **odeslat** odeslat svoje rozhodnutí.
+1. Kliknutím na **Odeslat** odešlete rozhodnutí.
 
-    Pokud zásada je konfigurována s několika schvalovateli, je potřeba jenom jeden schvalovatel rozhodnutí o čekajících na schválení. Po odeslání na žádost o přístup svého rozhodnutí schvalovatele žádosti se dokončí a již není k dispozici pro další schvalovatele o schválení nebo zamítnutí žádosti. Další schvalovatele můžete zobrazit žádost o rozhodnutí a rozhodovací pravomocí na portálu Moje přístup. V současné době se podporuje jenom jedné fáze schválení.
+    Pokud je zásada nakonfigurovaná s více schvalovateli, je potřeba, abyste měli rozhodnutí o nedokončeném schválení jenom jeden schvalovatel. Poté, co schvalovatel odešle své rozhodnutí na žádost o přístup, je žádost dokončena a již není k dispozici ostatním schvalovatelům ke schválení nebo zamítnutí žádosti. Ostatní schvalovatelé můžou na svém portálu pro přístup zobrazit rozhodnutí o žádosti a tvůrce rozhodnutí. V tuto chvíli je podporována pouze schválení s jednou fází.
 
-    Pokud žádné nakonfigurované schvalovatel schválí nebo zamítne žádost o přístup, žádost vyprší po doba trvání žádosti nakonfigurované. Uživatel získá informován, že vypršela platnost jejich žádost o přístup a je nutné znovu odeslat žádost o přístup.
+    Pokud žádný z konfigurovaných schvalovatelů nemůže schválit nebo zamítnout žádost o přístup, platnost žádosti vyprší po nakonfigurované době trvání žádosti. Uživateli se zobrazí oznámení o vypršení platnosti žádosti o přístup a o tom, že musí žádost o přístup znovu odeslat.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- [Žádost o přístup přístupu k balíčku](entitlement-management-request-access.md)
-- [Požádat o procesu a e-mailových oznámení](entitlement-management-process.md)
+- [Vyžádat přístup k balíčku přístupu](entitlement-management-request-access.md)
+- [Žádost o proces a e-mailová oznámení](entitlement-management-process.md)

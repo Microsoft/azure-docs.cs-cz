@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: nacanuma
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 20b8780ae0c24ca2b037211f7cb977f0cacee0f9
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
-ms.translationtype: HT
+ms.openlocfilehash: 3ca7e7f282d63160cd1f729fba00f6d7d7704270
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325381"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68334134"
 ---
 # <a name="quickstart-sign-in-users-and-acquire-an-access-token-from-a-javascript-single-page-application"></a>Rychlý start: Přihlášení uživatelů a získání přístupového tokenu z jednostránkové aplikace v JavaScriptu
 
@@ -50,7 +50,7 @@ Tento rychlý Start vyžaduje následující nastavení:
 >
 > ### <a name="option-2-manual-register-and-manually-configure-your-application-and-code-sample"></a>Možnost 2 (ruční): Registrace a ruční konfigurace vaší aplikace a ukázky kódu
 >
-> #### <a name="step-1-register-your-application"></a>Krok 1: Registrace vaší aplikace
+> #### <a name="step-1-register-your-application"></a>Krok 1: Zaregistrujte svoji aplikaci.
 >
 > 1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
 >
@@ -275,3 +275,8 @@ K procházení úložiště MSAL pro dokumentaci, nejčastější dotazy, probl�
 
 > [!div class="nextstepaction"]
 > [MSAL.js GitHub repo](https://github.com/AzureAD/microsoft-authentication-library-for-js)
+
+Pomůžeme nám vylepšit platformu Microsoft identity. Řekněte nám, co si myslíte, díky krátkému průzkumu dvou dotazů.
+
+> [!div class="nextstepaction"]
+> [Microsoft Identity Platform Survey](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyKrNDMV_xBIiPGgSvnbQZdUQjFIUUFGUE1SMEVFTkdaVU5YT0EyOEtJVi4u)

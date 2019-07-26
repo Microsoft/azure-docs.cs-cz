@@ -1,24 +1,24 @@
 ---
-title: Nasazení více instancí prostředku Azure | Dokumentace Microsoftu
-description: Použití operace kopírování a polí v šabloně Azure Resource Manageru k iteraci více než jednou při nasazování prostředků.
+title: Nasazení více instancí prostředků Azure | Microsoft Docs
+description: Použijte operaci kopírování a pole v šabloně Azure Resource Manager k iterování několikrát při nasazování prostředků.
 services: azure-resource-manager
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 07/01/2019
+ms.date: 07/25/2019
 ms.author: tomfitz
-ms.openlocfilehash: 22317372a7d954286ebcb0b59aea293c746b2a58
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: dbacec6e8f91480996150e73f2a81dbcde67550b
+ms.sourcegitcommit: 5604661655840c428045eb837fb8704dca811da0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67508172"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68494793"
 ---
-# <a name="resource-property-or-variable-iteration-in-azure-resource-manager-templates"></a>Prostředek, vlastnost nebo proměnné iterace v šablonách Azure Resource Manageru
+# <a name="resource-property-or-variable-iteration-in-azure-resource-manager-templates"></a>Iterace prostředku, vlastnosti nebo proměnné v šablonách Azure Resource Manager
 
-V tomto článku se dozvíte, jak vytvořit více než jednu instanci z prostředků, proměnné nebo vlastnosti v šabloně Azure Resource Manageru. Chcete-li vytvořit více instancí, přidejte `copy` objektu do šablony.
+V tomto článku se dozvíte, jak vytvořit v šabloně Azure Resource Manager více než jednu instanci prostředku, proměnné nebo vlastnosti. Chcete-li vytvořit více instancí, `copy` přidejte objekt do šablony.
 
-Při použití s prostředkem, kopírovat objekt má následující formát:
+Při použití s prostředkem má objekt kopírování následující formát:
 
 ```json
 "copy": {
@@ -29,7 +29,7 @@ Při použití s prostředkem, kopírovat objekt má následující formát:
 }
 ```
 
-Při použití s proměnnou nebo vlastnost, kopírovat objekt má následující formát:
+Při použití s proměnnou nebo vlastností má objekt kopírování následující formát:
 
 ```json
 "copy": [
@@ -41,25 +41,25 @@ Při použití s proměnnou nebo vlastnost, kopírovat objekt má následující
 ]
 ```
 
-Obě použití jsou popsány podrobněji v tomto článku. Podívejte se kurz [kurz: vytvoření více instancí prostředků pomocí šablon Resource Manageru](./resource-manager-tutorial-create-multiple-instances.md).
+Obě použití jsou podrobněji popsány v tomto článku. Kurz najdete v tématu [kurz: vytvoření více instancí prostředků pomocí šablon Správce prostředků](./resource-manager-tutorial-create-multiple-instances.md).
 
-Pokud je potřeba určit, jestli je prostředek nasazený vůbec, přečtěte si téma [podmínky](resource-group-authoring-templates.md#condition).
+Pokud potřebujete určit, jestli je prostředek nasazený vůbec, viz [Podmínka elementu](resource-group-authoring-templates.md#condition).
 
-## <a name="copy-limits"></a>Zkopírujte omezení
+## <a name="copy-limits"></a>Omezení kopírování
 
-Chcete-li určit počet iterací, zadejte hodnotu pro vlastnost count. Počet nemůže být delší než 800.
+Chcete-li zadat počet iterací, zadejte hodnotu pro vlastnost Count. Počet nemůže být větší než 800.
 
-Počet nemůže být záporné číslo. Pokud provádíte nasazení šablony pomocí rozhraní REST API verze **2019-05-10** nebo později, můžete nastavit počet na nulu. Starší verze rozhraní REST API nepodporují nula Count. V současné době Powershellu nebo rozhraní příkazového řádku Azure nepodporují nulu pro počet, ale tato podpora bude přidána v budoucí verzi.
+Počet nemůže být záporné číslo. Pokud nasadíte šablonu s REST API verze **2019-05-10** nebo novější, můžete nastavit počet na nula. Starší verze REST API pro počet nepodporují nulu. V současné době Azure CLI nebo PowerShell nepodporují pro tento počet nulu, ale tato podpora se přidá v budoucí verzi.
 
-Být opatrní pomocí [dokončení nasazení režimu](deployment-modes.md) kopií. Pokud provádíte opakované nasazení s režimem dokončení až po skupinu prostředků, se odstraní všechny prostředky, které nejsou v této šabloně specifikovaný, po vyřešení kopírovací smyčkou.
+Pomocí úplného [nasazení režimu](deployment-modes.md) s kopírováním buďte opatrní. Pokud znovu nasadíte v režimu úplného nasazení do skupiny prostředků, všechny prostředky, které nejsou zadané v šabloně po vyřešení smyčky kopírování, se odstraní.
 
-Omezení pro počet jsou stejné, jestli se použije s prostředku, proměnná nebo vlastnost.
+Omezení pro počet jsou stejná, ať už se používá u prostředku, proměnné nebo vlastnosti.
 
-## <a name="resource-iteration"></a>Iterace prostředků
+## <a name="resource-iteration"></a>Iterace prostředku
 
-Pokud během nasazení se musíte rozhodnout vytvořit jednu nebo více instancí prostředku, přidejte `copy` element na typ prostředku. V elementu copy určete počet iterací a název pro tuto smyčku.
+Pokud se musíte rozhodnout během nasazení, aby se vytvořila jedna nebo více instancí prostředku, přidejte `copy` element do typu prostředku. V elementu Copy zadejte počet iterací a název pro tuto smyčku.
 
-Prostředek pro vytvoření několikrát má následující formát:
+Prostředek, který se má vytvořit několikrát, má následující formát:
 
 ```json
 {
@@ -86,7 +86,7 @@ Prostředek pro vytvoření několikrát má následující formát:
 }
 ```
 
-Všimněte si, že název každého prostředku obsahuje `copyIndex()` funkce, která vrací aktuální iteraci ve smyčce. `copyIndex()` je založen na nule. To, v následujícím příkladu:
+Všimněte si, že název každého prostředku obsahuje `copyIndex()` funkci, která vrací aktuální iteraci ve smyčce. `copyIndex()` je založen na nule. V následujícím příkladu:
 
 ```json
 "name": "[concat('storage', copyIndex())]",
@@ -98,7 +98,7 @@ Vytvoří tyto názvy:
 * storage1
 * storage2.
 
-Abyste odsadili hodnotu indexu, můžete hodnotu předat do funkce copyIndex(). V elementu copy je stále zadaný počet iterací, ale hodnota copyIndex je posunut o zadanou hodnotu. To, v následujícím příkladu:
+Abyste odsadili hodnotu indexu, můžete hodnotu předat do funkce copyIndex(). Počet iterací je stále specifikován v elementu Copy, ale hodnota copyIndex je posunuta podle zadané hodnoty. V následujícím příkladu:
 
 ```json
 "name": "[concat('storage', copyIndex(1))]",
@@ -110,7 +110,7 @@ Vytvoří tyto názvy:
 * storage2
 * storage3
 
-Operace kopírování je užitečné při práci s poli, protože můžete iterovat každý prvek v poli. Použití `length` funkce na pole, které chcete určit počet iterací, a `copyIndex` načíst aktuální index v poli. To, v následujícím příkladu:
+Operace kopírování je užitečná při práci s poli, protože můžete iterovat přes každý prvek v poli. Použijte funkci v poli k určení počtu iterací a `copyIndex` k načtení aktuálního indexu v poli. `length` V následujícím příkladu:
 
 ```json
 "parameters": { 
@@ -141,11 +141,11 @@ Vytvoří tyto názvy:
 * storagefabrikam
 * storagecoho
 
-Ve výchozím nastavení správce prostředků vytvoří prostředky paralelně. Není zaručeno pořadí, ve které jste vytvořili. Můžete však určit, že se prostředky nasadí v sekvenci. Například při aktualizaci produkčním prostředí, můžete chtít rozvrhnout aktualizace tak jenom určitý počet jsou aktualizovány v daný okamžik.
+Ve výchozím nastavení Správce prostředků vytvoří paralelní prostředky. Neplatí pro počet paralelně nasazených prostředků, s výjimkou celkového limitu 800 prostředků v šabloně. Pořadí, ve kterém jsou vytvořeny, není zaručeno.
 
-Chcete-li sériově nasadit více než jednu instanci prostředku, nastavte `mode` k **sériového portu** a `batchSize` na počet instancí k nasazení v čase. Sériového portu v režimu Resource Manageru vytvoří závislost na předchozích instancí ve smyčce, tak se nespustí jednu dávku, dokud se nedokončí předchozí dávky.
+Můžete ale chtít určit, že se prostředky nasazují v pořadí. Například při aktualizaci produkčního prostředí můžete aktualizace rozložit, aby se v jednom okamžiku aktualizovalo jenom určité číslo. Pro sériové nasazení více než jedné instance prostředku nastavte `mode` **sériové** a `batchSize` na počet instancí, které se mají nasadit v jednom okamžiku. V případě sériového režimu Správce prostředků ve smyčce vytvoří závislost na dřívějších instancích, takže nespustí jednu dávku, dokud se předchozí dávka nedokončí.
 
-Například účty úložiště, dva sériově nasazení najednou, použijte:
+Pokud například chcete sériové nasazení účtů úložiště vytvořit dvakrát, použijte:
 
 ```json
 {
@@ -174,19 +174,19 @@ Například účty úložiště, dva sériově nasazení najednou, použijte:
 }
 ```
 
-Vlastnost mode přijímá také **paralelní**, což je výchozí hodnota.
+Vlastnost Mode také akceptuje **paralelní**, což je výchozí hodnota.
 
-Informace o používání kopírování s vnořené šablony najdete v tématu [pomocí kopírování](resource-group-linked-templates.md#using-copy).
+Informace o použití kopírování s vnořenými šablonami naleznete v tématu [using Copy](resource-group-linked-templates.md#using-copy).
 
-## <a name="property-iteration"></a>Vlastnost iterace
+## <a name="property-iteration"></a>Iterace vlastnosti
 
-Chcete-li vytvořit více než jednu hodnotu pro vlastnost na prostředek, přidejte `copy` pole v elementu properties. Toto pole obsahuje objekty, a každý objekt má následující vlastnosti:
+Chcete-li vytvořit více než jednu hodnotu pro vlastnost prostředku, přidejte `copy` pole do elementu Properties. Toto pole obsahuje objekty a každý objekt má následující vlastnosti:
 
-* název – název vlastnosti pro vytvoření několika hodnot pro
-* počet – počet hodnot k vytvoření.
-* (vstup) – objekt, který obsahuje hodnoty pro přiřazení k vlastnosti  
+* Název – název vlastnosti, pro kterou chcete vytvořit několik hodnot.
+* Count – počet hodnot, které se mají vytvořit.
+* Input – objekt, který obsahuje hodnoty, které chcete přiřadit vlastnosti.  
 
-Následující příklad ukazuje, jak použít `copy` dataDisks vlastnost na virtuálním počítači:
+Následující příklad ukazuje, jak použít `copy` vlastnost datadisks na virtuálním počítači:
 
 ```json
 {
@@ -207,9 +207,9 @@ Následující příklad ukazuje, jak použít `copy` dataDisks vlastnost na vir
       ...
 ```
 
-Všimněte si, že při použití `copyIndex` uvnitř vlastnosti iterace, je nutné zadat název iterace. Není nutné zadat název, při použití s prostředků iterace.
+Všimněte si, že `copyIndex` při použití v rámci iterace vlastnosti je nutné zadat název iterace. Při použití s iterací prostředků není nutné zadávat název.
 
-Resource Manager rozšiřuje `copy` pole během nasazení. Název pole bude název vlastnosti. Vstupní hodnoty stane vlastností objektu. Stane se nasadila Šablona:
+Správce prostředků rozbalí `copy` pole během nasazování. Název pole se zobrazí jako název vlastnosti. Vstupní hodnoty se stanou vlastnostmi objektu. Nasazená šablona bude:
 
 ```json
 {
@@ -238,7 +238,7 @@ Resource Manager rozšiřuje `copy` pole během nasazení. Název pole bude náz
       ...
 ```
 
-V elementu copy je pole, takže můžete zadat více než jednu vlastnost pro prostředek. Přidání objektu pro každou vlastnost k vytvoření.
+Element Copy je pole, abyste mohli zadat více než jednu vlastnost prostředku. Přidejte objekt pro každou vlastnost, která se má vytvořit.
 
 ```json
 {
@@ -266,7 +266,7 @@ V elementu copy je pole, takže můžete zadat více než jednu vlastnost pro pr
 }
 ```
 
-Zdroj a vlastnost iterace můžete použít společně. Odkaz na vlastnost iterace podle názvu.
+Můžete použít iteraci prostředků a vlastností společně. Odkázat na iteraci vlastnosti podle názvu.
 
 ```json
 {
@@ -300,13 +300,13 @@ Zdroj a vlastnost iterace můžete použít společně. Odkaz na vlastnost itera
 }
 ```
 
-## <a name="variable-iteration"></a>Proměnné iterace
+## <a name="variable-iteration"></a>Iterace proměnné
 
-Chcete-li vytvořit více instancí proměnné, použijte `copy` vlastnost v sekci proměnných. Vytvoří pole prvků zkonstruovat z hodnoty v `input` vlastnost. Můžete použít `copy` vlastnosti v rámci proměnné nebo na nejvyšší úrovni sekci proměnných. Při použití `copyIndex` uvnitř proměnné iterace, je nutné zadat název iterace.
+Chcete-li vytvořit více instancí proměnné, použijte `copy` vlastnost v sekci proměnné. Vytvoříte pole prvků konstruovaných z hodnoty `input` vlastnosti. Můžete použít `copy` vlastnost v rámci proměnné nebo na nejvyšší úrovni oddílu proměnné. Při použití `copyIndex` v rámci proměnné iterace je nutné zadat název iterace.
 
-Jednoduchý příklad vytvoření pole hodnot typu string, naleznete v tématu [šablony pole kopírování](https://github.com/bmoore-msft/AzureRM-Samples/blob/master/copy-array/azuredeploy.json).
+Jednoduchý příklad vytvoření pole řetězcových hodnot naleznete v tématu [copy Array Template](https://github.com/bmoore-msft/AzureRM-Samples/blob/master/copy-array/azuredeploy.json).
 
-Následující příklad ukazuje několik způsobů vytvoření proměnné pole s prvky dynamicky vytvořený. Ukazuje, jak používat kopii uvnitř proměnné k vytvoření polí objektů a řetězce. Také ukazuje, jak používat kopii na nejvyšší úrovni k vytvoření polí objektů, řetězce a celá čísla.
+Následující příklad ukazuje několik různých způsobů, jak vytvořit proměnné pole s dynamicky vytvořenými prvky. Ukazuje, jak použít kopírování uvnitř proměnné pro vytvoření polí objektů a řetězců. Ukazuje také, jak použít kopírování na nejvyšší úrovni k vytvoření polí objektů, řetězců a celých čísel.
 
 ```json
 {
@@ -380,7 +380,7 @@ Následující příklad ukazuje několik způsobů vytvoření proměnné pole 
 }
 ```
 
-Typ proměnné, která se vytvoří závisí na vstupní objekt. Například proměnná s názvem **top-úrovně-object pole** v předchozím příkladu vrátí:
+Typ proměnné, která se vytvoří, závisí na vstupním objektu. Například proměnná s názvem **nejvyšší úrovně objektu-Array** v předchozím příkladu vrátí:
 
 ```json
 [
@@ -412,7 +412,7 @@ Typ proměnné, která se vytvoří závisí na vstupní objekt. Například pro
 ]
 ```
 
-A proměnné s názvem **top-úrovně--pole řetězců** vrátí:
+A proměnná s názvem **Top-level-String-Array** vrátí:
 
 ```json
 [
@@ -424,9 +424,9 @@ A proměnné s názvem **top-úrovně--pole řetězců** vrátí:
 ]
 ```
 
-## <a name="depend-on-resources-in-a-loop"></a>Závisí na prostředky ve smyčce
+## <a name="depend-on-resources-in-a-loop"></a>Závislá na prostředcích ve smyčce
 
-Určíte, že je prostředek nasazený pomocí po jiný prostředek `dependsOn` elementu. K nasazení na prostředek, který závisí na kolekci prostředků ve smyčce, zadejte název kopií smyčky v elementu dependsOn. Následující příklad ukazuje, jak nasadit 3 účty úložiště před nasazením virtuálního počítače. Kompletní definici virtuálního počítače se nezobrazí. Všimněte si, že v elementu copy má název nastavený `storagecopy` a elementu dependsOn pro virtuální počítače je také nastavena na `storagecopy`.
+Určíte, že prostředek bude nasazen po jiném prostředku pomocí `dependsOn` elementu. Chcete-li nasadit prostředek, který závisí na kolekci prostředků ve smyčce, zadejte název smyčky kopírování v elementu dependsOn. Následující příklad ukazuje, jak nasadit tři účty úložiště před nasazením virtuálního počítače. Nezobrazuje se úplná definice virtuálního počítače. Všimněte si, že element Copy má název nastaven `storagecopy` na a element dependsOn pro Virtual Machines je také nastaven na. `storagecopy`
 
 ```json
 {
@@ -464,9 +464,9 @@ Určíte, že je prostředek nasazený pomocí po jiný prostředek `dependsOn` 
 <a id="looping-on-a-nested-resource" />
 
 ## <a name="iteration-for-a-child-resource"></a>Iterace pro podřízený prostředek
-Kopírovací smyčkou nelze použít pro podřízený prostředek. Pokud chcete vytvořit více než jednu instanci prostředek, který se obvykle definují jako vnořený v rámci jiného prostředku, musíte místo toho vytvořit tento prostředek jako prostředku nejvyšší úrovně. Můžete definovat relaci se nadřazený prostředek prostřednictvím typ a název vlastnosti.
+U podřízeného prostředku nemůžete použít kopírovací smyčku. Chcete-li vytvořit více než jednu instanci prostředku, který obvykle definujete jako vnořený v rámci jiného prostředku, je nutné místo toho vytvořit tento prostředek jako prostředek nejvyšší úrovně. Pomocí vlastností typ a název můžete definovat relaci s nadřazeným prostředkem.
 
-Předpokládejme například, že obvykle definujete datovou sadu jako podřízený prostředek v rámci služby data factory.
+Předpokládejme například, že obvykle definujete datovou sadu jako podřízený prostředek v rámci objektu pro vytváření dat.
 
 ```json
 "resources": [
@@ -486,9 +486,9 @@ Předpokládejme například, že obvykle definujete datovou sadu jako podříze
   ]
 ```
 
-Pokud chcete vytvořit více než jedné datové sady, přesuňte ho mimo datovou továrnou. Datová sada musí být na stejné úrovni jako objekt pro vytváření dat, ale je stále podřízený prostředek služby data factory. Zachováte vztah mezi datovou sadu a data factory prostřednictvím typ a název vlastnosti. Vzhledem k tomu, že již nelze odvodit z jeho pozice v šabloně, je nutné zadat plně kvalifikovaný typ ve formátu: `{resource-provider-namespace}/{parent-resource-type}/{child-resource-type}`.
+Pokud chcete vytvořit více než jednu datovou sadu, přesuňte ji mimo datovou továrnu. Datová sada musí být na stejné úrovni jako objekt pro vytváření dat, ale je stále podřízeným prostředkem objektu pro vytváření dat. Můžete zachovat vztah mezi datovou sadou a datovou továrnou prostřednictvím vlastností typu a názvu. Vzhledem k tomu, že typ již nelze odvodit z jeho pozice v šabloně, je nutné zadat plně kvalifikovaný typ ve formátu: `{resource-provider-namespace}/{parent-resource-type}/{child-resource-type}`.
 
-K navázání vztahu nadřazené a podřízené s instancí služby data factory, zadejte název pro datovou sadu, která obsahuje název nadřazené prostředku. Použijte formát: `{parent-resource-name}/{child-resource-name}`.  
+Pokud chcete vytvořit relaci nadřazený-podřízený s instancí datové továrny, zadejte název datové sady, která zahrnuje název nadřazeného prostředku. Použijte formát: `{parent-resource-name}/{child-resource-name}`.  
 
 Následující příklad ukazuje implementaci:
 
@@ -515,21 +515,21 @@ Následující příklad ukazuje implementaci:
 
 ## <a name="example-templates"></a>Příklad šablony
 
-Následující příklady ukazují běžné scénáře týkající se vytvoření víc než jednu instanci zdroje nebo vlastnost.
+Následující příklady znázorňují běžné scénáře pro vytvoření více než jedné instance prostředku nebo vlastnosti.
 
 |Šablona  |Popis  |
 |---------|---------|
-|[Zkopírujte úložiště](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copystorage.json) |Nasadí více než jeden účet úložiště s číslem indexu v názvu. |
-|[Úložiště kopie sériového portu](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/serialcopystorage.json) |Nasadí několik účtů úložiště jeden v době. Název obsahuje číslo indexu. |
-|[Kopírování s polem úložiště](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copystoragewitharray.json) |Nasadí několik účtů úložiště. Název obsahuje hodnotu z pole. |
-|[Nasazení virtuálního počítače s variabilním počtem datových disků](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-windows-copy-datadisks) |Nasadí několik datových disků virtuálního počítače. |
-|[Zkopírujte proměnné](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copyvariables.json) |Ukazuje různé způsoby pro proměnné iterace. |
-|[Víc pravidel zabezpečení](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.json) |Nasadí několik pravidel zabezpečení do skupiny zabezpečení sítě. Vytvoří pravidla zabezpečení z parametru. Pro parametr, naleznete v tématu [více NSG v souboru parametrů](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.parameters.json). |
+|[Kopírovat úložiště](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copystorage.json) |Nasadí více než jeden účet úložiště s číslem indexu v názvu. |
+|[Úložiště sériového kopírování](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/serialcopystorage.json) |Nasadí několik účtů úložiště v jednom okamžiku. Název zahrnuje číslo indexu. |
+|[Kopírování úložiště pomocí pole](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copystoragewitharray.json) |Nasadí několik účtů úložiště. Název obsahuje hodnotu z pole. |
+|[Nasazení virtuálního počítače s proměnným počtem datových disků](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-windows-copy-datadisks) |Nasadí několik datových disků s virtuálním počítačem. |
+|[Zkopírujte proměnné](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copyvariables.json) |Ukazuje různé způsoby, jak iterace proměnných vymezit. |
+|[Více pravidel zabezpečení](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.json) |Nasadí několik pravidel zabezpečení do skupiny zabezpečení sítě. Vytvoří pravidla zabezpečení z parametru. Pro parametr viz [více souborů parametrů NSG](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.parameters.json). |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* Absolvovat kurz, naleznete v tématu [kurz: vytvoření více instancí prostředků pomocí šablon Resource Manageru](./resource-manager-tutorial-create-multiple-instances.md).
+* Kurz najdete v tématu [kurz: vytvoření více instancí prostředků pomocí šablon Správce prostředků](./resource-manager-tutorial-create-multiple-instances.md).
 
-* Pokud chcete další informace o části šablony, přečtěte si téma [vytváření šablon Azure Resource Manageru](resource-group-authoring-templates.md).
-* Informace o nasazení šablony najdete v tématu [nasazení aplikace pomocí šablony Azure Resource Manageru](resource-group-template-deploy.md).
+* Pokud se chcete dozvědět o oddílech šablony, přečtěte si téma [vytváření Azure Resource Manager šablon](resource-group-authoring-templates.md).
+* Informace o tom, jak šablonu nasadit, najdete v tématu [nasazení aplikace pomocí šablony Azure Resource Manager](resource-group-template-deploy.md).
 

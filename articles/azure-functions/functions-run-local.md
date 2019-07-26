@@ -1,6 +1,6 @@
 ---
-title: Práce s Azure Functions Core Tools | Dokumentace Microsoftu
-description: Zjistěte, jak pro kódování a testování Azure functions z příkazového řádku nebo terminálu v místním počítači před spuštěním ve službě Azure Functions.
+title: Práce s Azure Functions Core Tools | Microsoft Docs
+description: Přečtěte si, jak pomocí příkazového řádku nebo terminálu v místním počítači Code a testovat službu Azure Functions, abyste je mohli spustit na Azure Functions.
 services: functions
 documentationcenter: na
 author: ggailey777
@@ -12,95 +12,95 @@ ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: glenga
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: dd6259173792585a83effd42c75ff9a7a7d572e4
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: cee91de9e0a5d75be258705f636248a6a6213664
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67448380"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68444051"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Práce s Azure Functions Core Tools
 
-Nástroje Azure Functions Core můžete vyvíjet a testovat funkce v místním počítači z příkazového řádku nebo terminálu. Lokální funkce se můžete připojit k za provozu služeb Azure a vaší funkce můžete ladit v místním počítači pomocí úplné modul runtime služby Functions. Aplikace function app můžete nasadit i do vašeho předplatného Azure.
+Azure Functions Core Tools umožňuje vyvíjet a testovat funkce na místním počítači z příkazového řádku nebo terminálu. Vaše místní funkce se můžou připojit k živým službám Azure a své funkce můžete ladit na místním počítači pomocí modulu runtime Full Functions. Můžete dokonce nasadit aplikaci Function App do předplatného Azure.
 
 [!INCLUDE [Don't mix development environments](../../includes/functions-mixed-dev-environments.md)]
 
-Vývoje služby functions na místním počítači a jejich publikování do Azure s využitím nástrojů Core zahrnuje následující základní kroky:
+Vývoj funkcí v místním počítači a jejich publikování v Azure pomocí základních nástrojů se řídí těmito základními kroky:
 
 > [!div class="checklist"]
 > * [Nainstalujte základní nástroje a závislosti.](#v2)
-> * [Vytvoření projektu aplikace funkcí ze specifické pro jazyk šablony.](#create-a-local-functions-project)
-> * [Registrace rozšíření aktivační události a vazby.](#register-extensions)
-> * [Definování úložiště a další připojení.](#local-settings-file)
-> * [Vytvoření funkce z aktivační události a specifické pro jazyk šablony.](#create-func)
+> * [Vytvořte projekt Function App z šablony specifické pro konkrétní jazyk.](#create-a-local-functions-project)
+> * [Zaregistrujte Trigger a rozšíření vazby.](#register-extensions)
+> * [Definujte úložiště a další připojení.](#local-settings-file)
+> * [Vytvořte funkci z triggeru a šablony pro konkrétní jazyk.](#create-func)
 > * [Místní spuštění funkce](#start)
 > * [Publikování projektu do Azure](#publish)
 
-## <a name="core-tools-versions"></a>Základní verze nástroje
+## <a name="core-tools-versions"></a>Verze základních nástrojů
 
-Existují dvě verze nástrojů Azure Functions Core. Verze použijete, závisí na svoje místní vývojové prostředí [volba jazyka](supported-languages.md)a je vyžadována podpora na úrovni:
+Existují dvě verze Azure Functions Core Tools. Použitá verze závisí na vašem místním vývojovém prostředí, [výběru jazyka](supported-languages.md)a požadované úrovni podpory:
 
-+ Verzi 1.x: podporuje verzi 1.x modulu runtime. Tato verze nástroje je podporována pouze na počítačích s Windows a je nainstalovaná ze [balíčku npm](https://docs.npmjs.com/getting-started/what-is-npm). S touto verzí můžete vytvořit funkce v následujících experimentálních jazyků, které nejsou oficiálně podporované. Další informace najdete v tématu [podporované jazyky ve službě Azure Functions](supported-languages.md)
++ Verze 1. x: podporuje verzi 1. x modulu runtime. Tato verze nástrojů je podporována pouze v počítačích se systémem Windows a je instalována z [balíčku npm](https://docs.npmjs.com/getting-started/what-is-npm). V této verzi můžete vytvářet funkce v experimentálních jazycích, které se oficiálně nepodporují. Další informace najdete v tématu [podporované jazyky v Azure Functions](supported-languages.md)
 
-+ [Verze 2.x](#v2): podporuje [verze 2.x modulu runtime](functions-versions.md). Tato verze podporuje [Windows](#windows-npm), [macOS](#brew), a [Linux](#linux). Správce balíčků specifických pro platformu používá nebo npm pro instalaci.
++ [Verze 2. x](#v2): podporuje [modul runtime verze 2. x](functions-versions.md). Tato verze podporuje [Windows](#windows-npm), [MacOS](#brew)a [Linux](#linux). Používá pro instalaci správce balíčků pro konkrétní platformu nebo npm.
 
-Pokud není uvedeno jinak, příklady v tomto článku platí pro verze 2.x.
+Pokud není uvedeno jinak, příklady v tomto článku jsou pro verzi 2. x.
 
 ## <a name="install-the-azure-functions-core-tools"></a>Instalace nástrojů Azure Functions Core
 
-[Nástroje Azure Functions Core] obsahuje verzi stejného modulu runtime, která je základem modul runtime služby Azure Functions, který můžete spustit na místním počítači pro vývoj. Také poskytuje příkazy, které funkce můžete vytvářet připojení k Azure a nasazení projektů funkce.
+[Azure Functions Core Tools] obsahuje verzi stejného modulu runtime, který funguje Azure Functions runtime, který můžete spustit na místním vývojovém počítači. Poskytuje také příkazy pro vytváření funkcí, připojení k Azure a nasazení projektů funkcí.
 
-### <a name="v2"></a>Verze 2.x
+### <a name="v2"></a>Verze 2. x
 
-Verze 2.x nástrojů používá modul runtime služby Azure Functions 2.x, která je založená na prostředí .NET Core. Tato verze se podporuje na všech platformách .NET Core 2.x podporuje, včetně [Windows](#windows-npm), [macOS](#brew), a [Linux](#linux). 
+Verze 2. x nástroje používá modul runtime Azure Functions 2. x, který je postaven na .NET Core. Tato verze se podporuje na všech platformách .NET Core 2. x, včetně [Windows](#windows-npm), [MacOS](#brew)a [Linux](#linux). 
 
 > [!IMPORTANT]
-> Můžete obejít požadavek pro instalaci .NET Core 2.x SDK pomocí [rozšíření sady].
+> Požadavek na instalaci sady .NET Core 2. x SDK můžete obejít pomocí [sad rozšíření].
 
 #### <a name="windows-npm"></a>Windows
 
-Následující kroky pomocí npm nainstalujte základní nástroje na Windows. Můžete také použít [Chocolatey](https://chocolatey.org/). Další informace najdete v tématu [Core Tools readme](https://github.com/Azure/azure-functions-core-tools/blob/master/README.md#windows).
+Následující kroky používají npm k instalaci základních nástrojů v systému Windows. Můžete také použít [čokolády](https://chocolatey.org/). Další informace najdete v [souboru Readme pro základní nástroje](https://github.com/Azure/azure-functions-core-tools/blob/master/README.md#windows).
 
-1. Nainstalujte [Node.js], což zahrnuje npm. Pro verzi 2.x nástroje pouze Node.js 8.5 a novější verze podporují.
+1. Nainstalujte [Node.js], který zahrnuje npm. Pro verzi 2. x nástroje se podporují jenom Node. js 8,5 a novější verze.
 
-1. Instalace balíčku Core Tools:
+1. Nainstalujte balíček Core Tools:
 
     ```bash
     npm install -g azure-functions-core-tools
     ```
 
-   Může trvat několik minut, než npm ke stažení a instalaci balíčku Core Tools.
+   Stažení a instalace balíčku Core Tools může trvat několik minut, než se npm.
 
-1. Pokud nemáte v plánu používat [rozšíření sady], nainstalujte [.NET Core 2.x sady SDK pro Windows](https://www.microsoft.com/net/download/windows).
+1. Pokud neplánujete použít [sad rozšíření], nainstalujte [sadu .NET Core 2. x SDK pro Windows](https://www.microsoft.com/net/download/windows).
 
-#### <a name="brew"></a>MacOS pomocí Homebrew
+#### <a name="brew"></a>MacOS s homebrew
 
-Následující kroky pomocí Homebrew v systému macOS nainstalujte základní nástroje.
+Následující kroky používají homebrew k instalaci základních nástrojů na macOS.
 
-1. Nainstalujte [Homebrew](https://brew.sh/), pokud ještě není nainstalovaná.
+1. Nainstalujte [homebrew](https://brew.sh/), pokud ještě není nainstalovaný.
 
-1. Instalace balíčku Core Tools:
+1. Nainstalujte balíček Core Tools:
 
     ```bash
     brew tap azure/functions
     brew install azure-functions-core-tools
     ```
 
-1. Pokud nemáte v plánu používat [rozšíření sady], nainstalujte [.NET Core 2.x sady SDK pro macOS](https://www.microsoft.com/net/download/macos).
+1. Pokud neplánujete použít [sad rozšíření], nainstalujte [sadu .NET Core 2. x SDK pro MacOS](https://www.microsoft.com/net/download/macos).
 
 
-#### <a name="linux"></a> Linux (Ubuntu nebo Debian) pomocí APT
+#### <a name="linux"></a>Linux (Ubuntu/Debian) s APT
 
-Následující kroky použijte [APT](https://wiki.debian.org/Apt) instalace nástrojů pro jádra na vaší distribuci Linuxu Ubuntu nebo Debian. Pro jiné distribuce Linuxu najdete v článku [Core Tools readme](https://github.com/Azure/azure-functions-core-tools/blob/master/README.md#linux).
+Následující kroky používají [apt](https://wiki.debian.org/Apt) k instalaci základních nástrojů na distribuci Ubuntu/Debian Linux. Další distribuce pro Linux najdete v [souboru Readme pro základní nástroje](https://github.com/Azure/azure-functions-core-tools/blob/master/README.md#linux).
 
-1. Zaregistrujte jako důvěryhodný kód product key společnosti Microsoft:
+1. Zaregistrujte kód Product Key společnosti Microsoft jako důvěryhodný:
 
     ```bash
     curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
     sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
     ```
 
-1. Ověřte, že váš server se systémem Ubuntu s některým z příslušné verze z tabulky níže. Pokud chcete přidat zdroje apt, spusťte:
+1. Ověřte, že na serveru Ubuntu běží jedna z odpovídajících verzí z následující tabulky. Chcete-li přidat zdroj apt, spusťte příkaz:
 
     ```bash
     sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-$(lsb_release -cs)-prod $(lsb_release -cs) main" > /etc/apt/sources.list.d/dotnetdev.list'
@@ -111,31 +111,31 @@ Následující kroky použijte [APT](https://wiki.debian.org/Apt) instalace nás
     | --------------- | ----------- |
     | Ubuntu 18.10    | `cosmic`    |
     | Ubuntu 18.04    | `bionic`    |
-    | Ubuntu 17.04    | `zesty`     |
-    | Ubuntu 16.04/Linux Mátová 18    | `xenial`  |
+    | Ubuntu 17,04    | `zesty`     |
+    | Ubuntu 16.04/Linux mentolová 18    | `xenial`  |
 
-1. Instalace balíčku Core Tools:
+1. Nainstalujte balíček Core Tools:
 
     ```bash
     sudo apt-get install azure-functions-core-tools
     ```
 
-1. Pokud nemáte v plánu používat [rozšíření sady], nainstalujte [.NET Core 2.x sady SDK pro Linux](https://www.microsoft.com/net/download/linux).
+1. Pokud neplánujete použít [sad rozšíření], nainstalujte [sadu .NET Core 2. x SDK pro Linux](https://www.microsoft.com/net/download/linux).
 
 ## <a name="create-a-local-functions-project"></a>Vytvořte projekt místní funkce
 
-Adresář projektu funkce obsahuje soubory [host.json](functions-host-json.md) a [local.settings.json](#local-settings-file), spolu s podsložky, které obsahují kód pro jednotlivé funkce. Tento adresář je ekvivalentem aplikaci function app v Azure. Další informace o struktuře složek funkce, najdete v článku [Příručka pro vývojáře Azure Functions](functions-reference.md#folder-structure).
+Adresář projektu Functions obsahuje soubory [Host. JSON](functions-host-json.md) a [Local. Settings. JSON](#local-settings-file)spolu s podsložkami, které obsahují kód pro jednotlivé funkce. Tento adresář je ekvivalentem aplikace Function App v Azure. Další informace o struktuře složek Functions najdete v příručce pro [vývojáře Azure Functions](functions-reference.md#folder-structure).
 
-Verze 2.x je potřeba vybrat výchozí jazyk pro projekt při inicializaci a použití výchozí jazyk šablony přidány všechny funkce. Ve verzi 1.x, můžete určit jazyk pokaždé, když vytvoříte funkci.
+Verze 2. x vyžaduje, abyste při inicializaci vybrali výchozí jazyk pro projekt a všechny přidané funkce používaly výchozí jazykové šablony. Ve verzi 1. x určíte jazyk pokaždé, když vytvoříte funkci.
 
-V okně terminálu nebo z příkazového řádku spusťte následující příkaz k vytvoření projektu a místní úložiště Git:
+V okně terminálu nebo z příkazového řádku spusťte následující příkaz, který vytvoří projekt a místní úložiště Git:
 
 ```bash
 func init MyFunctionProj
 ```
 
-Když zadáte název projektu, nová složka s tímto názvem je vytvořen a inicializován. V opačném případě je inicializován do aktuální složky.  
-Ve verzi 2.x, když spustíte tento příkaz musíte zvolit modul runtime pro váš projekt. Pokud se chystáte vyvíjet funkce jazyka JavaScript, zvolte **uzel**:
+Když zadáte název projektu, vytvoří se a inicializuje nová složka s tímto názvem. V opačném případě se aktuální složka inicializuje.  
+Pokud ve verzi 2. x spustíte příkaz, musíte zvolit modul runtime pro váš projekt. Pokud plánujete vývoj funkcí jazyka JavaScript, vyberte **uzel**:
 
 ```output
 Select a worker runtime:
@@ -143,7 +143,7 @@ dotnet
 node
 ```
 
-Použití nahoru a dolů šipkami zvolte jazyk, stiskněte klávesu Enter. Výstup bude vypadat jako v následujícím příkladu pro projekt jazyka JavaScript:
+Pomocí kláves se šipkami nahoru/dolů vyberte jazyk a potom stiskněte klávesu ENTER. Výstup vypadá jako v následujícím příkladu pro projekt JavaScriptu:
 
 ```output
 Select a worker runtime: node
@@ -154,63 +154,63 @@ Writing C:\myfunctions\myMyFunctionProj\.vscode\extensions.json
 Initialized empty Git repository in C:/myfunctions/myMyFunctionProj/.git/
 ```
 
-`func init` podporuje následující možnosti, které jsou verze 2.x čistě, pokud není uvedeno jinak:
+`func init`podporuje následující možnosti, které jsou pouze verze 2. x, pokud není uvedeno jinak:
 
 | Možnost     | Popis                            |
 | ------------ | -------------------------------------- |
-| **`--csx`** | Inicializuje skriptu (.csx) projektu C#. Je nutné zadat `--csx` v následné příkazy. |
-| **`--docker`** | Vytvořit soubor Dockerfile pro kontejner pomocí základní image, která je založena na zvolený `--worker-runtime`. Tuto možnost použijte, když chcete publikovat do vlastního kontejneru Linuxu. |
-| **`--force`** | Inicializace projektu i v případě, že existují existující soubory v projektu. Toto nastavení přepíše existující soubory se stejným názvem. Nejsou k ovlivnění ostatních souborů ve složce projektu. |
-| **`--no-source-control -n`** | Zabraňuje vytváření výchozí úložiště Git ve verzi 1.x. Ve verzi 2.x, ve výchozím nastavení se vytvoří úložiště git. |
-| **`--source-control`** | Určuje, zda se vytvoří úložiště git. Ve výchozím nastavení se vytvoří úložiště. Když `true`, se vytvoří úložiště. |
-| **`--worker-runtime`** | Nastaví modul runtime jazyka pro projekt. Podporované hodnoty jsou `dotnet`, `node` (JavaScript) `java`, a `python`. Pokud není nastavený, zobrazí se výzva k výběru prostředí runtime během inicializace. |
+| **`--csx`** | Inicializuje projekt C# skriptu (. csx). Je nutné zadat `--csx` v následujících příkazech. |
+| **`--docker`** | Vytvořte souboru Dockerfile pro kontejner pomocí základní image, která je založena na zvoleném `--worker-runtime`typu. Tuto možnost použijte, když plánujete publikování do vlastního kontejneru Linux. |
+| **`--force`** | Inicializujte projekt i v případě, že v projektu existují existující soubory. Toto nastavení přepíše existující soubory se stejným názvem. Ostatní soubory ve složce projektu nejsou ovlivněny. |
+| **`--no-source-control -n`** | Zabrání výchozímu vytvoření úložiště Git ve verzi 1. x. Ve výchozím nastavení ve verzi 2. x není úložiště Git vytvořeno. |
+| **`--source-control`** | Určuje, zda je vytvořeno úložiště Git. Ve výchozím nastavení není úložiště vytvořeno. Kdy `true`je vytvořeno úložiště. |
+| **`--worker-runtime`** | Nastaví jazykový modul runtime pro projekt. Podporované hodnoty jsou `dotnet`, `node` (JavaScript), `java`a `python`. Pokud není nastavena, zobrazí se výzva k výběru modulu runtime během inicializace. |
 
 > [!IMPORTANT]
-> Ve výchozím nastavení verze 2.x základní nástroje pro projekty aplikací pro .NET runtime jako vytvoří funkci [třídy projekty jazyka C#](functions-dotnet-class-library.md) (.csproj). Tyto projekty jazyka C#, které je možné použít s Visual Studio nebo Visual Studio Code, jsou zkompilovány při testování a publikování do Azure. Pokud místo toho chcete vytvořit a pracovat stejném skript jazyka C# (.csx) soubory vytvořené ve verzi 1.x a na portálu, musíte zahrnout `--csx` parametr při vytváření a nasazení služby functions.
+> Ve výchozím nastavení verze 2. x základních nástrojů vytváří projekty aplikací funkcí pro modul runtime .NET jako [ C# třídy projektů](functions-dotnet-class-library.md) (. csproj). Tyto C# projekty, které lze použít se sadou Visual Studio nebo Visual Studio Code, jsou kompilovány během testování a při publikování do Azure. Pokud místo toho chcete vytvořit a pracovat se stejnými C# soubory skriptu (. csx), které byly vytvořeny ve verzi 1. x a na portálu, je nutné při `--csx` vytváření a nasazování funkcí použít parametr.
 
 [!INCLUDE [functions-core-tools-install-extension](../../includes/functions-core-tools-install-extension.md)]
 
 [!INCLUDE [functions-local-settings-file](../../includes/functions-local-settings-file.md)]
 
-Ve výchozím nastavení se nemigrují automaticky při publikování projektu do Azure. Použití `--publish-local-settings` přepnout [při publikování](#publish) k Ujistěte se, že tato nastavení jsou přidány do aplikace function app v Azure. Všimněte si, že hodnoty v **ConnectionStrings** se nikdy publikováno.
+Ve výchozím nastavení se tato nastavení nemigrují automaticky, když je projekt publikován do Azure. [Při publikování](#publish) použijte přepínač,abystemělijistotu,žesetatonastavenípřidajídoaplikaceFunctionAppv`--publish-local-settings` Azure. Všimněte si, že  hodnoty v connectionStrings nejsou nikdy publikovány.
 
-Hodnoty nastavení aplikace funkcí můžete číst také ve vašem kódu jako proměnné prostředí. Další informace najdete v sekci proměnných prostředí z těchto témat reference specifická pro jazyk:
+Hodnoty nastavení aplikace Function App lze ve vašem kódu přečíst také jako proměnné prostředí. Další informace naleznete v části proměnné prostředí v těchto referenčních tématech specifických pro konkrétní jazyk:
 
-* [Předkompilované C#](functions-dotnet-class-library.md#environment-variables)
+* [C#předkompilované](functions-dotnet-class-library.md#environment-variables)
 * [C# skript (.csx)](functions-reference-csharp.md#environment-variables)
 * [Java](functions-reference-java.md#environment-variables)
 * [JavaScript](functions-reference-node.md#environment-variables)
 
-Pokud se žádný platný připojovací řetězec úložiště jsou nastavené pro [ `AzureWebJobsStorage` ] a se nepoužívá emulátor, se zobrazí následující chybová zpráva:
+Pokud není nastaven žádný platný připojovací řetězec úložiště pro [`AzureWebJobsStorage`] a emulátor se nepoužívá, zobrazí se následující chybová zpráva:
 
-> Chybí hodnota pro AzureWebJobsStorage v local.settings.json. To je potřeba pro všechny aktivační události než HTTP. Můžete spustit "func azure functionapp načtení app-settings \<functionAppName\>" nebo zadat připojovací řetězec v local.settings.json.
+> Chybějící hodnota pro AzureWebJobsStorage v Local. Settings. JSON. To je vyžadováno pro všechny triggery kromě HTTP. Můžete spustit Func Azure functionapp Fetch-App-Settings \<functionAppName\>nebo zadat připojovací řetězec v souboru Local. Settings. JSON.
 
-### <a name="get-your-storage-connection-strings"></a>Získejte připojovací řetězce úložiště
+### <a name="get-your-storage-connection-strings"></a>Získání připojovacích řetězců úložiště
 
-I když se používá pro vývoj pro emulátor úložiště, můžete otestovat s připojením k skutečného úložiště. Za předpokladu, že už máte [nevytvořili účet úložiště](../storage/common/storage-create-storage-account.md), platným připojovacím řetězcem úložiště můžete získat v jednom z následujících způsobů:
+I když používáte emulátor úložiště pro vývoj, budete možná chtít testovat pomocí skutečného připojení úložiště. Za předpokladu, že jste již [vytvořili účet úložiště](../storage/common/storage-create-storage-account.md), můžete získat platný připojovací řetězec úložiště jedním z následujících způsobů:
 
-+ Z [Azure Portal]. Přejděte do svého účtu úložiště, vyberte **přístupové klíče** v **nastavení**, zkopírujte jeden z **připojovací řetězec** hodnoty.
++ Z [Azure Portal]. Přejděte do svého účtu úložiště, vyberte **přístupové klíče** v **Nastavení**a potom zkopírujte jednu z hodnot **připojovacího řetězce** .
 
-  ![Zkopírujte připojovací řetězec z portálu Azure portal](./media/functions-run-local/copy-storage-connection-portal.png)
+  ![Kopírovat připojovací řetězec z Azure Portal](./media/functions-run-local/copy-storage-connection-portal.png)
 
-+ Použití [Průzkumníka služby Azure Storage](https://storageexplorer.com/) se připojit ke svému účtu Azure. V **Explorer**, rozšířit vaše předplatné, vyberte svůj účet úložiště a zkopírování primárního nebo sekundárního připojovacího řetězce.
++ Pomocí [Průzkumník služby Azure Storage](https://storageexplorer.com/) se připojte ke svému účtu Azure. V **Průzkumníku**rozbalte své předplatné, vyberte svůj účet úložiště a zkopírujte primární nebo sekundární připojovací řetězec.
 
-  ![Zkopírujte připojovací řetězec z Průzkumníka služby Storage](./media/functions-run-local/storage-explorer.png)
+  ![Kopírovat připojovací řetězec z Průzkumník služby Storage](./media/functions-run-local/storage-explorer.png)
 
-+ Základní nástroje stáhněte si pomocí připojovacího řetězce z Azure vedenou jedním z následujících příkazů:
++ Použijte základní nástroje ke stažení připojovacího řetězce z Azure pomocí jednoho z následujících příkazů:
 
-  + Stáhněte si všechna nastavení z existující aplikaci function app:
+  + Stáhnout všechna nastavení z existující aplikace Function App:
 
     ```bash
     func azure functionapp fetch-app-settings <FunctionAppName>
     ```
-  + Získání připojovacího řetězce pro konkrétnímu účtu úložiště:
+  + Získání připojovacího řetězce pro konkrétní účet úložiště:
 
     ```bash
     func azure storage fetch-connection-string <StorageAccountName>
     ```
 
-    Pokud nejste ještě přihlášení do Azure, zobrazí se výzva k tomu.
+    Pokud jste se ještě přihlásili k Azure, budete vyzváni k tomu.
 
 ## <a name="create-func"></a>Vytvoření funkce
 
@@ -220,7 +220,7 @@ Vytvořit funkci, spusťte následující příkaz:
 func new
 ```
 
-Ve verzi 2.x, když spustíte `func new` budete vyzváni k výběru šablony ve výchozím jazyce aplikace function App a potom zvolte název funkce se také výzva. Ve verzi 1.x, také budete vyzváni k volbě jazyka.
+Když ve verzi 2. x spustíte `func new` výzvu k výběru šablony ve výchozím jazyce aplikace Function App, zobrazí se vám také výzva k výběru názvu funkce. Ve verzi 1. x se zobrazí také výzva k výběru jazyka.
 
 ```output
 Select a language: Select a template:
@@ -235,7 +235,7 @@ Service Bus Topic trigger
 Timer trigger
 ```
 
-Funkce kód je generován v podsložce s názvem zadaná funkce, jak je vidět v následujícím výstupu aktivační událost fronty:
+Kód funkce se vygeneruje v podsložce se zadaným názvem funkce, jak vidíte v následujícím výstupu triggeru fronty:
 
 ```output
 Select a language: Select a template: Queue trigger
@@ -246,57 +246,57 @@ Writing C:\myfunctions\myMyFunctionProj\MyQueueTrigger\sample.dat
 Writing C:\myfunctions\myMyFunctionProj\MyQueueTrigger\function.json
 ```
 
-Můžete také zadat tyto možnosti v příkaz s následujícími argumenty:
+Tyto možnosti můžete zadat také v příkazu pomocí následujících argumentů:
 
 | Argument     | Popis                            |
 | ------------------------------------------ | -------------------------------------- |
-| **`--csx`** | (Verze 2.x) Generuje stejné jazyka C# (.csx) skript šablony používané ve verzi 1.x a na portálu. |
-| **`--language -l`**| Šablona programovací jazyk, jako například C#, F#, nebo JavaScript. Tato možnost je vyžadována ve verzi 1.x. Ve verzi 2.x, tuto možnost použijte, nebo zvolte jazyk, který odpovídá modulu runtime pracovního procesu. |
-| **`--name -n`** | Název funkce. |
-| **`--template -t`** | Použití `func templates list` příkazu zobrazte úplný seznam dostupných šablon pro každý podporovaný jazyk.   |
+| **`--csx`** | (Verze 2. x) Vytvoří stejnou C# šablonu skriptu (. csx) použitou ve verzi 1. x a na portálu. |
+| **`--language -l`**| Programovací jazyk šablony, například C#, F#nebo JavaScript. Tato možnost je vyžadována ve verzi 1. x. Ve verzi 2. x tuto možnost nepoužívejte nebo vyberte jazyk, který se shoduje s modulem runtime pracovního procesu. |
+| **`--name -n`** | Název funkce |
+| **`--template -t`** | `func templates list` Pomocí příkazu můžete zobrazit úplný seznam dostupných šablon pro každý podporovaný jazyk.   |
 
-Například pokud chcete vytvořit trigger JavaScript HTTP stačí jediný příkaz, spusťte:
+Například pro vytvoření triggeru HTTP JavaScriptu v jednom příkazu spusťte:
 
 ```bash
 func new --template "Http Trigger" --name MyHttpTrigger
 ```
 
-Vytvoření funkce aktivované fronty stačí jediný příkaz, spusťte:
+Chcete-li vytvořit funkci aktivovanou frontou v jednom příkazu, spusťte příkaz:
 
 ```bash
 func new --template "Queue Trigger" --name QueueTriggerJS
 ```
 
-## <a name="start"></a>Místní spuštění funkce
+## <a name="start"></a>Místní spuštění funkcí
 
-Chcete-li spustit projekt Functions, spusťte hostitele funkce. Hostitel umožňuje aktivační události pro všechny funkce v projektu:
+Chcete-li spustit projekt funkcí, spusťte hostitele Functions. Hostitel povolí triggery pro všechny funkce v projektu:
 
 ```bash
 func host start
 ```
 
-`host` Příkazu je potřeba jenom ve verzi 1.x.
+`host` Příkaz je vyžadován pouze ve verzi 1. x.
 
-`func host start` podporuje následující možnosti:
+`func host start`podporuje následující možnosti:
 
 | Možnost     | Popis                            |
 | ------------ | -------------------------------------- |
-| **`--no-build`** | Provést aktuální projekt před provozováním žádná sestavení. Dotnet pouze pro projekty. Výchozí je nastavena na hodnotu false. Verze 2.x pouze. |
-| **`--cert`** | Cesta k souboru .pfx, který obsahuje privátní klíč. Použít pouze s `--useHttps`. Verze 2.x pouze. |
-| **`--cors-credentials`** | Povolit ověřený požadavky mezi zdroji (tj. soubory cookie a hlavičky ověřování) verze 2.x pouze. |
-| **`--cors`** | Čárkou oddělený seznam zdrojů CORS, bez mezer. |
-| **`--language-worker`** | Argumentů pro konfiguraci jazyka pracovního procesu. Verze 2.x pouze. |
-| **`--nodeDebugPort -n`** | Port pro ladicí program uzel používat. Výchozí hodnota: Hodnota z launch.json nebo 5858. Verzi 1.x pouze. |
-| **`--password`** | Heslo nebo soubor, který obsahuje heslo pro soubor .pfx. Použít pouze s `--cert`. Verze 2.x pouze. |
-| **`--port -p`** | Místní port pro naslouchání. Výchozí hodnota: 7071. |
-| **`--pause-on-error`** | Pozastavit další vstupní před ukončením procesu. Používá pouze v případě, že spuštění nástroje Core z integrovaného vývojového prostředí (IDE).|
-| **`--script-root --prefix`** | Slouží k zadání cesty do kořenového adresáře aplikace function app, který se má spustit nebo nasadit. Používá se pro kompilované projekty, které Generovat soubory projektu do podsložky. Například při vytváření knihovny tříd jazyka C# projekt, host.json, local.settings.json a function.json soubory jsou generovány *kořenové* , jako je podsložka s cestou `MyProject/bin/Debug/netstandard2.0`. V takovém případě nastavte předponu jako `--script-root MyProject/bin/Debug/netstandard2.0`. To je kořenový adresář aplikace function app, při spuštění v Azure. |
-| **`--timeout -t`** | Časový limit pro hostitele funkce spustit v řádu sekund. Výchozí hodnota: 20 sekund.|
-| **`--useHttps`** | Vytvoření vazby k `https://localhost:{port}` spíše než na `http://localhost:{port}`. Ve výchozím nastavení tato volba vytvoří důvěryhodný certifikát ve vašem počítači.|
+| **`--no-build`** | Nevytvářejte aktuální projekt před spuštěním. Pouze pro projekty dotnet. Výchozí nastavení je false. Pouze verze 2. x. |
+| **`--cert`** | Cesta k souboru. pfx, který obsahuje privátní klíč. Používá se jenom `--useHttps`pro. Pouze verze 2. x. |
+| **`--cors-credentials`** | Povolte pouze ověřené požadavky mezi zdroji (tj. soubory cookie a záhlaví ověřování) pouze verze 2. x. |
+| **`--cors`** | Čárkami oddělený seznam původů CORS bez mezer. |
+| **`--language-worker`** | Argumenty pro konfiguraci modulu Language Worker. Pouze verze 2. x. |
+| **`--nodeDebugPort -n`** | Port pro použití ladicího programu uzlu. Výchozí: Hodnota z Launch. JSON nebo 5858. Pouze verze 1. x. |
+| **`--password`** | Buď heslo, nebo soubor, který obsahuje heslo pro soubor. pfx. Používá se jenom `--cert`pro. Pouze verze 2. x. |
+| **`--port -p`** | Místní port, na kterém má naslouchat. Výchozí hodnota: 7071. |
+| **`--pause-on-error`** | Před ukončením procesu ponechejte další vstup. Používá se jenom při spouštění základních nástrojů z integrovaného vývojového prostředí (IDE).|
+| **`--script-root --prefix`** | Slouží k zadání cesty ke kořenu aplikace Function App, která má být spuštěna nebo nasazena. Používá se pro kompilované projekty, které generují soubory projektu do podsložky. Například při sestavování projektu knihovny C# tříd jsou soubory Host. JSON, Local. Settings. JSON a Function. JSON generovány v *kořenové* podsložce s cestou, jako je například `MyProject/bin/Debug/netstandard2.0`. V takovém případě nastavte předponu jako `--script-root MyProject/bin/Debug/netstandard2.0`. Toto je kořen aplikace Function App při spuštění v Azure. |
+| **`--timeout -t`** | Časový limit pro spuštění funkce Host v sekundách. Výchozí: 20 sekund.|
+| **`--useHttps`** | Vytvořte vazby `https://localhost:{port}` na místo pro `http://localhost:{port}`. Ve výchozím nastavení tato možnost vytvoří důvěryhodný certifikát na vašem počítači.|
 
-C# projekt knihovny tříd (.csproj), je třeba zahrnout `--build` možnost k vygenerování knihovny DLL.
+Pro projekt C# knihovny tříd (. csproj) musíte zahrnout `--build` možnost pro generování knihovny. dll.
 
-Při spuštění funkce hostitele, uloží funkce aktivované protokolem URL HTTP:
+Když se hostitel funkce spustí, vypíše adresu URL funkcí aktivovaných protokolem HTTP:
 
 ```output
 Found the following functions:
@@ -307,48 +307,48 @@ Http Function MyHttpTrigger: http://localhost:7071/api/MyHttpTrigger
 ```
 
 >[!IMPORTANT]
->Při místním spuštění ověřování se vynucují s ohledem koncové body HTTP. To znamená, že všechny místní požadavky HTTP jsou zpracovávány jako `authLevel = "anonymous"`. Další informace najdete v tématu [článku vazby HTTP](functions-bindings-http-webhook.md#authorization-keys).
+>Při místním spuštění není ověřování pro koncové body HTTP vynutilo. To znamená, že všechny místní požadavky HTTP jsou zpracovávány jako `authLevel = "anonymous"`. Další informace najdete v [článku vázání http](functions-bindings-http-webhook.md#authorization-keys).
 
-### <a name="passing-test-data-to-a-function"></a>Testovací předání dat pro funkci
+### <a name="passing-test-data-to-a-function"></a>Předávání testovacích dat do funkce
 
-K testování vašich funkcí místně, můžete [spuštění funkce hostitele](#start) a volají koncové body na místním serveru pomocí žádosti protokolu HTTP. Koncový bod, co zavoláte, závisí na typu funkce.
+Chcete-li místně testovat své funkce, [spusťte hostitele funkcí](#start) a koncové body volání na místním serveru pomocí požadavků HTTP. Koncový bod, který zavoláte, závisí na typu funkce.
 
 >[!NOTE]
-> Příklady v tomto tématu použijte nástroj cURL k odeslání požadavků HTTP z terminálu nebo příkazového řádku. Nástroje podle vašeho výběru můžete použít k odesílání požadavků HTTP na místním serveru. Je nástroj cURL k dispozici ve výchozím nastavení v systémech založených na Linuxu. Na Windows, musíte nejdřív stáhnout a nainstalovat [nástroj cURL](https://curl.haxx.se/).
+> V příkladech v tomto tématu se k posílání požadavků HTTP z terminálu nebo příkazového řádku používají nástroj pro otáčení. K odeslání požadavků HTTP na místní server můžete použít libovolný nástroj. Nástroj pro zakládání je ve výchozím nastavení k dispozici v systémech Linux. V systému Windows je třeba nejprve stáhnout a nainstalovat [Nástroj pro otáčení](https://curl.haxx.se/).
 
-Další obecné informace o testování funkcí najdete v tématu [strategie pro testování kódu ve službě Azure Functions](functions-test-a-function.md).
+Obecnější informace o testovacích funkcích naleznete [v tématu strategie pro testování kódu v Azure Functions](functions-test-a-function.md).
 
-#### <a name="http-and-webhook-triggered-functions"></a>Funkce aktivované pomocí protokolu HTTP a webhookové
+#### <a name="http-and-webhook-triggered-functions"></a>Funkce aktivované protokolem HTTP a webhookem
 
-Volání této funkce aktivované pomocí koncového bodu HTTP a webhookové místně spustit:
+Zavoláte následující koncový bod pro místně spouštěné funkce HTTP a Webhooku:
 
     http://localhost:{port}/api/{function_name}
 
-Nezapomeňte použít stejný název serveru a port, který naslouchá funkce hostitele. Se zobrazí ve výstupu generovány při spuštění funkce hostitele. Můžete volat tuto adresu URL pomocí libovolné metody HTTP nepodporuje aktivační události.
+Ujistěte se, že používáte stejný název serveru a port, na kterém hostitel funkce naslouchá. Toto se zobrazí ve výstupu vygenerovaném při spouštění hostitele funkce. Tuto adresu URL můžete zavolat pomocí jakékoli metody HTTP podporované triggerem.
 
-Následující cURL příkaz aktivační události `MyHttpTrigger` funkce rychlého startu z požadavku GET s _název_ parametr předaný řetězec dotazu.
+Následující příkaz oblé spustí `MyHttpTrigger` funkci rychlé zprovoznění z požadavku GET s parametrem _Name_ předaným v řetězci dotazu.
 
 ```bash
 curl --get http://localhost:7071/api/MyHttpTrigger?name=Azure%20Rocks
 ```
 
-V následujícím příkladu je stejnou funkci volat z požadavku POST předávání _název_ v textu požadavku:
+V následujícím příkladu je stejná funkce, která se volá z předávaného _názvu_ žádosti post v textu žádosti:
 
 ```bash
 curl --request POST http://localhost:7071/api/MyHttpTrigger --data '{"name":"Azure Rocks"}'
 ```
 
-Můžete vytvořit žádosti o získání z prohlížeče předávání dat v řetězci dotazu. Pro všechny ostatní metody HTTP musíte použít cURL, Fiddler, Postman nebo podobný nástroj testování protokolu HTTP.
+Můžete vytvářet požadavky GET z prohlížeče, které přecházejí data v řetězci dotazu. Pro všechny ostatní metody HTTP je nutné použít nástroj Fiddler, post nebo podobný nástroj pro testování HTTP.
 
-#### <a name="non-http-triggered-functions"></a>Funkce aktivované pomocí jiným protokolem než HTTP
+#### <a name="non-http-triggered-functions"></a>Funkce, které nejsou aktivované protokolem HTTP
 
-Pro všechny typy funkcí jiné než triggerů HTTP a webhooky můžete otestovat funkce místně pomocí volání koncového bodu správy. Volání tohoto koncového bodu pomocí požadavku HTTP POST na místním serveru aktivuje funkci. Testovací data můžete volitelně předat ke spuštění v textu požadavku POST. Tato funkce je podobný **Test** karta na portálu Azure portal.
+Pro všechny druhy funkcí kromě triggerů HTTP a webhooků můžete své funkce místně testovat voláním koncového bodu správy. Volání tohoto koncového bodu s požadavkem HTTP POST na místním serveru aktivuje funkci. Volitelně můžete předat testovací data do provádění v těle žádosti POST. Tato funkce je podobná kartě **test** v Azure Portal.
 
-Můžete volat následující koncový bod správce k aktivaci funkce jiným protokolem než HTTP:
+Zavoláte následující koncový bod správce, který aktivuje funkce jiného typu než HTTP:
 
     http://localhost:{port}/admin/functions/{function_name}
 
-K předání dat testu ke koncovému bodu správce funkce, je nutné zadat data v textu zprávy požadavku POST. Text zprávy musí mít následující formát JSON:
+Chcete-li předat testovací data do koncového bodu správce funkce, je nutné zadat data v těle zprávy s požadavkem POST. Tělo zprávy musí mít následující formát JSON:
 
 ```JSON
 {
@@ -356,30 +356,30 @@ K předání dat testu ke koncovému bodu správce funkce, je nutné zadat data 
 }
 ```
 
-`<trigger_input>` Hodnota obsahuje data ve formátu očekávání tím, funkce. Následující příklad cURL je odeslat do `QueueTriggerJS` funkce. V tomto případě je vstupní řetězec, který je ekvivalentní zpráva je očekávána nalezen ve frontě.
+`<trigger_input>` Hodnota obsahuje data ve formátu očekávaném funkcí. Následující oblý příklad je příspěvek na `QueueTriggerJS` funkci. V tomto případě je vstupem řetězec, který je ekvivalentní zprávě, která se má ve frontě najít.
 
 ```bash
 curl --request POST -H "Content-Type:application/json" --data '{"input":"sample queue data"}' http://localhost:7071/admin/functions/QueueTriggerJS
 ```
 
-#### <a name="using-the-func-run-command-in-version-1x"></a>Použití `func run` příkaz ve verzi 1.x
+#### <a name="using-the-func-run-command-in-version-1x"></a>`func run` Použití příkazu ve verzi 1. x
 
 >[!IMPORTANT]
-> `func run` Příkaz není podporovaný ve verzi 2.x nástroje. Další informace naleznete v tématu [způsobu cílení verze modulu runtime Azure Functions](set-runtime-version.md).
+> `func run` Příkaz není podporován ve verzi 2. x nástrojů. Další informace naleznete v tématu [jak cílit na Azure Functions verze modulu runtime](set-runtime-version.md).
 
-Funkci lze vyvolat přímo pomocí `func run <FunctionName>` a poskytují vstupní data pro tuto funkci. Tento příkaz je podobný spouštění funkcí s použitím **Test** karta na portálu Azure portal.
+Funkci lze také vyvolat přímo pomocí `func run <FunctionName>` a zadat vstupní data pro funkci. Tento příkaz je podobný spuštění funkce pomocí karty **test** v Azure Portal.
 
-`func run` podporuje následující možnosti:
+`func run`podporuje následující možnosti:
 
 | Možnost     | Popis                            |
 | ------------ | -------------------------------------- |
 | **`--content -c`** | Vložený obsah. |
-| **`--debug -d`** | Připojte ladicí program k hostitelskému procesu před spuštěním funkce.|
-| **`--timeout -t`** | Doba čekání (v sekundách), dokud nebude připravené místního hostitele funkce.|
-| **`--file -f`** | Název souboru použitého jako obsah.|
-| **`--no-interactive`** | Dotaz na vstup. Užitečné pro scénáře automatizace.|
+| **`--debug -d`** | Před spuštěním funkce připojte k hostitelskému procesu ladicí program.|
+| **`--timeout -t`** | Doba, po kterou se má čekat (v sekundách), dokud nebude hostitel místní funkce připravený.|
+| **`--file -f`** | Název souboru, který se má použít jako obsah|
+| **`--no-interactive`** | Nezobrazuje výzvu k zadání. Užitečné pro scénáře automatizace.|
 
-Volat funkci aktivovanou protokolem HTTP a předat text obsahu, spusťte následující příkaz:
+Například pro volání funkce aktivované protokolem HTTP a předejte tělo obsahu spusťte následující příkaz:
 
 ```bash
 func run MyHttpTrigger -c '{\"name\": \"Azure\"}'
@@ -387,82 +387,80 @@ func run MyHttpTrigger -c '{\"name\": \"Azure\"}'
 
 ## <a name="publish"></a>Publikování do Azure
 
-Azure Functions Core Tools podporuje dva typy nasazení: nasazení souborů projektu funkce přímo na aplikaci funkcí přes [Zip nasaďte](functions-deployment-technologies.md#zip-deploy) a [nasazením vlastního kontejneru Dockeru](functions-deployment-technologies.md#docker-container). Musíte mít již [vytvoří aplikaci funkcí ve vašem předplatném Azure](functions-cli-samples.md#create), do které budete nasazovat kód. Projekty, které vyžadují kompilace by měly být sestaveny tak, aby binární soubory je možné nasadit.
+Azure Functions Core Tools podporuje dva typy nasazení: nasazení souborů projektu funkce přímo do aplikace Function App prostřednictvím nástroje [zip Deploy](functions-deployment-technologies.md#zip-deploy) a [nasazení vlastního kontejneru Docker](functions-deployment-technologies.md#docker-container). Musíte mít už [vytvořenou aplikaci Function App v předplatném Azure](functions-cli-samples.md#create), do které budete kód nasazovat. Projekty, které vyžadují kompilaci, by měly být sestaveny tak, aby mohly být nasazeny binární soubory.
 
 ### <a name="project-file-deployment"></a>Nasazení (soubory projektu)
 
-Chcete-li publikovat místní kódu do aplikace function app v Azure, použijte `publish` příkaz:
+Pokud chcete publikovat místní kód do aplikace Function App v Azure, použijte `publish` příkaz:
 
 ```bash
 func azure functionapp publish <FunctionAppName>
 ```
 
-Tento příkaz publikuje do existující aplikaci function app v Azure. Budete dojde k chybě při pokusu publikovat `<FunctionAppName>` , který neexistuje v rámci vašeho předplatného. Zjistěte, jak vytvořit aplikaci function app z příkazového řádku nebo v okně terminálu pomocí Azure CLI, najdete v článku [vytvoření aplikace funkcí pro provádění bez serveru](./scripts/functions-cli-create-serverless.md). Ve výchozím nastavení, tento příkaz povolí svoji aplikaci spouštět [spustit z balíčku](run-functions-from-deployment-package.md) režimu.
+Tento příkaz se publikuje do existující aplikace Function App v Azure. Pokud se pokusíte publikovat do `<FunctionAppName>` , který ve vašem předplatném neexistuje, zobrazí se chyba. Informace o tom, jak vytvořit aplikaci funkcí z příkazového řádku nebo okna terminálu pomocí Azure CLI, najdete v tématu [vytvoření Function App pro provádění bez serveru](./scripts/functions-cli-create-serverless.md). Ve výchozím nastavení tento příkaz nasadí vaši aplikaci, aby [běžela z balíčku pro nasazení](run-functions-from-deployment-package.md). Pokud chcete tento doporučený režim nasazení zakázat, `--nozip` použijte možnost.
 
 >[!IMPORTANT]
-> Když vytvoříte aplikaci function app na webu Azure Portal, používá verzi 2.x modul runtime funkce ve výchozím nastavení. Chcete-li funkce aplikace použijte verzi 1.x modulu runtime, postupujte podle pokynů v [spustit ve verzi 1.x](functions-versions.md#creating-1x-apps).
-> Nelze změnit verzi modulu runtime aplikace function App, který má existující funkce.
+> Když vytváříte aplikaci funkcí v Azure Portal, používá ve výchozím nastavení verze 2. x modulu runtime funkce. Pokud chcete, aby aplikace Function App používala verzi 1. x modulu runtime, postupujte podle pokynů v části [Spustit ve verzi 1. x](functions-versions.md#creating-1x-apps).
+> Nemůžete změnit verzi modulu runtime pro aplikaci Function App, která obsahuje existující funkce.
 
-Tyto možnosti publikovat platí pro verze, 1.x a 2.x:
-
-| Možnost     | Popis                            |
-| ------------ | -------------------------------------- |
-| **`--publish-local-settings -i`** |  Nastavení publikování v local.settings.json do Azure, s výzvou k přepsání, pokud nastavení už existuje. Pokud používáte emulátor úložiště, nejprve změňte nastavení aplikace nastavte [skutečného úložiště připojení](#get-your-storage-connection-strings). |
-| **`--overwrite-settings -y`** | Potlačit výzva k nastavení aplikace přepsat při `--publish-local-settings -i` se používá.|
-
-Následující možnosti publikování jsou podporovány pouze ve verzi 2.x:
+Následující možnosti publikování platí pro obě verze, 1. x a 2. x:
 
 | Možnost     | Popis                            |
 | ------------ | -------------------------------------- |
-| **`--publish-settings-only -o`** |  Pouze nastavení publikování a přejít obsah. Výchozí hodnota je prompt. |
-|**`--list-ignored-files`** | Zobrazí seznam souborů, které jsou během publikování, který je založen na souboru .funcignore ignorován. |
-| **`--list-included-files`** | Zobrazí seznam souborů, které jsou publikovány, který je založen na souboru .funcignore. |
-| **`--nozip`** | Výchozí hodnota se změní `Run-From-Package` režimu vypnout. |
-| **`--build-native-deps`** | Aplikace function přeskočí .wheels složky při publikování pythonu. |
-| **`--additional-packages`** | Seznam balíčků, které mají nainstalovat při sestavování nativních závislosti. Například: `python3-dev libevent-dev`. |
-| **`--force`** | Ignorujte předem publikování ověřování v některých scénářích. |
-| **`--csx`** | Publikování projektu skriptu (.csx) jazyka C#. |
-| **`--no-build`** | Přeskočit sestavení dotnet funkce. |
-| **`--dotnet-cli-params`** | Při publikování zkompilován funkcí jazyka C# (.csproj), základní nástroje volá 'dotnet build--bin/publikovat výstup'. Všechny parametry předané tomuto se připojí k příkazovému řádku. |
+| **`--publish-local-settings -i`** |  Publikování nastavení v Local. Settings. JSON do Azure, zobrazení výzvy k přepsání, pokud už nastavení existuje. Pokud používáte emulátor úložiště, změňte nejprve nastavení aplikace na [skutečné připojení úložiště](#get-your-storage-connection-strings). |
+| **`--overwrite-settings -y`** | Potlačí výzvu k přepsání nastavení aplikace, `--publish-local-settings -i` když se použije.|
 
-### <a name="deployment-custom-container"></a>Nasazení (vlastního kontejneru)
+Následující možnosti publikování jsou podporovány pouze ve verzi 2. x:
 
-Služba Azure Functions vám umožní nasadit projekt funkcí v [vlastního kontejneru Dockeru](functions-deployment-technologies.md#docker-container). Další informace najdete v tématu [vytvoření funkce v Linuxu pomocí vlastní image](functions-create-function-linux-custom-image.md). Soubor Dockerfile musí mít vlastní kontejnery. K vytvoření aplikace pomocí souboru Dockerfile, použijte možnost--soubor dockerfile v `func init`.
+| Možnost     | Popis                            |
+| ------------ | -------------------------------------- |
+| **`--publish-settings-only -o`** |  Pouze publikování nastavení a přeskočení obsahu. Výchozí hodnota je prompt. |
+|**`--list-ignored-files`** | Zobrazí seznam souborů, které jsou během publikování ignorovány, které jsou založeny na souboru. funcignore. |
+| **`--list-included-files`** | Zobrazí seznam souborů, které jsou publikovány, které jsou založeny na souboru. funcignore. |
+| **`--nozip`** | Zapne výchozí `Run-From-Package` režim. |
+| **`--build-native-deps`** | Při publikování aplikací funkcí Pythonu přeskočí vygenerování složky. kolaes. |
+| **`--additional-packages`** | Seznam balíčků, které se mají nainstalovat při vytváření nativních závislostí Například: `python3-dev libevent-dev`. |
+| **`--force`** | Ignorovat ověření před publikováním v některých scénářích. |
+| **`--csx`** | Publikujte C# projekt skriptu (. csx). |
+| **`--no-build`** | Přeskočte vytváření funkcí dotnet. |
+| **`--dotnet-cli-params`** | Při publikování kompilovaných C# funkcí (. csproj) volají základní nástroje "dotnet Build--Output bin/Publish". Všechny předané parametry budou připojeny k příkazovému řádku. |
+
+### <a name="deployment-custom-container"></a>Nasazení (vlastní kontejner)
+
+Azure Functions umožňuje nasadit projekt funkce ve [vlastním kontejneru Docker](functions-deployment-technologies.md#docker-container). Další informace najdete v tématu [Vytvoření funkce na platformě Linux s použitím vlastní image](functions-create-function-linux-custom-image.md). Vlastní kontejnery musí mít souboru Dockerfile. Pokud chcete vytvořit aplikaci s souboru Dockerfile, použijte možnost--souboru Dockerfile na `func init`.
 
 ```bash
 func deploy
 ```
 
-Jsou k dispozici následující možnosti nasazení vlastního kontejneru:
+K dispozici jsou následující možnosti nasazení vlastního kontejneru:
 
 | Možnost     | Popis                            |
 | ------------ | -------------------------------------- |
-| **`--registry`** | Název registru Dockeru aktuálního uživatele přihlášeného k. |
-| **`--platform`** | Hostitelskou platformu pro danou aplikaci funkcí. Platné možnosti jsou `kubernetes` |
-| **`--name`** | Název aplikace funkcí. |
-| **`--max`**  | Případně Nastaví maximální počet instancí funkce aplikace nasadit. |
-| **`--min`**  | Volitelně Nastaví minimální počet instancí funkce aplikace nasadit. |
-| **`--config`** | Nastaví konfigurační soubor volitelné nasazení. |
+| **`--registry`** | Název registru Docker, ke kterému se přihlásil aktuální uživatel. |
+| **`--platform`** | Platforma hostování aplikace Function App. Platné možnosti jsou`kubernetes` |
+| **`--name`** | Název aplikace Function App |
+| **`--max`**  | Volitelně můžete nastavit maximální počet instancí aplikace Function App, na které se mají nasadit. |
+| **`--min`**  | Volitelně nastaví minimální počet instancí aplikace Function App, na které se má nasadit. |
+| **`--config`** | Nastaví volitelný konfigurační soubor nasazení. |
 
 ## <a name="monitoring-functions"></a>Funkce monitorování
 
-Díky integraci s Azure Application Insights je doporučeným způsobem, jak provádění funkcí monitorování. Když vytvoříte aplikaci function app na webu Azure Portal, je tato integrační ve výchozím nastavení provede za vás. Když vytvoříte aplikaci function app pomocí rozhraní příkazového řádku Azure, není dokončení integrace ve vaší aplikaci function app v Azure.
-
-Povolení Application Insights pro aplikaci funkcí:
+Doporučený způsob, jak monitorovat provádění vašich funkcí, je integrace s Azure Application Insights. Když vytvoříte aplikaci funkcí v Azure Portal, tato integrace se ve výchozím nastavení provádí. Když ale vytvoříte aplikaci Function App pomocí Azure CLI, integrace ve vaší aplikaci Function App v Azure se nedokončila.
 
 [!INCLUDE [functions-connect-new-app-insights.md](../../includes/functions-connect-new-app-insights.md)]
 
 Další informace najdete v tématu [monitorování Azure Functions](functions-monitoring.md).
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Nástroje Azure Functions Core je [open source a hostovaná na Githubu](https://github.com/azure/azure-functions-cli).  
-Do souboru žádost chybu nebo funkce [otevřete problém na Githubu](https://github.com/azure/azure-functions-cli/issues).
+Azure Functions Core Tools je [Open Source a hostovaný na GitHubu](https://github.com/azure/azure-functions-cli).  
+Pokud chcete zaslat žádost o chybu nebo funkci, [otevřete problém GitHubu](https://github.com/azure/azure-functions-cli/issues).
 
 <!-- LINKS -->
 
-[Nástroje Azure Functions Core]: https://www.npmjs.com/package/azure-functions-core-tools
+[Azure Functions Core Tools]: https://www.npmjs.com/package/azure-functions-core-tools
 [Azure Portal]: https://portal.azure.com 
 [Node.js]: https://docs.npmjs.com/getting-started/installing-node#osx-or-windows
 [`FUNCTIONS_WORKER_RUNTIME`]: functions-app-settings.md#functions_worker_runtime
 [`AzureWebJobsStorage`]: functions-app-settings.md#azurewebjobsstorage
-[rozšíření sady]: functions-bindings-register.md#extension-bundles
+[sad rozšíření]: functions-bindings-register.md#extension-bundles

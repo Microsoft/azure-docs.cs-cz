@@ -17,12 +17,12 @@ ms.author: jmprieur
 ms.reviewer: ''
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3a938f85b2047ea5cceada98df6adba2c560c1a1
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: e1ea75499334f3f6eb2f5d3c15526067fcef4eb8
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68278665"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68442510"
 ---
 # <a name="confidential-client-assertions"></a>Důvěrné kontrolní výrazy klienta
 Aby bylo možné prokázat svoji identitu, důvěrné klientské aplikace zaměňují tajný kód s Azure AD. Tajný klíč může být:
@@ -34,7 +34,7 @@ Tento tajný klíč může také představovat přímo podepsaný kontrolní vý
 MSAL.NET má čtyři metody pro poskytnutí přihlašovacích údajů nebo kontrolních výrazů do důvěrné klientské aplikace:
 - `.WithClientSecret()`
 - `.WithCertificate()`
-- `.WithSignedAssertion()`
+- `.WithClientAssertion()`
 - `.WithClientClaims()`
 
 ### <a name="signed-assertions"></a>Podepsané kontrolní výrazy

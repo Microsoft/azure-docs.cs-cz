@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Integrace Power BI s Text Analytics služby Cognitive Services'
+title: 'Kurz: Integrace Power BI se službou Analýza textu pro rozpoznávání'
 titleSuffix: Azure Cognitive Services
 description: Zjistěte, jak pomocí Analýzy textu extrahovat klíčové fráze z textu uloženého v Power BI.
 services: cognitive-services
@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: tutorial
-ms.date: 02/13/2019
+ms.date: 07/24/2019
 ms.author: aahi
-ms.openlocfilehash: 705e637235eb81be29a2ea0d7d68ccd000ea0470
-ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
+ms.openlocfilehash: e56926b9a23e0dd649fb85347e521a6dda7863a3
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67626035"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68479871"
 ---
-# <a name="tutorial-integrate-power-bi-with-the-text-analytics-cognitive-service"></a>Kurz: Integrace Power BI s Text Analytics služby Cognitive Services
+# <a name="tutorial-integrate-power-bi-with-the-text-analytics-cognitive-service"></a>Kurz: Integrace Power BI se službou Analýza textu pro rozpoznávání
 
 Microsoft Power BI Desktop je bezplatná aplikace, se kterou se můžete připojit k datům abyste je mohli transformovat a vizualizovat. Služba Analýza textu je součástí služby Microsoft Azure Cognitive Services. Umožňuje zpracovat jazyk v jeho přirozené podobě. Služba dokáže z nezpracovaného a nestrukturovaného textu extrahovat nejdůležitější fráze, analyzovat mínění a identifikovat známé prvky, jako jsou značky. Společně vám tyto služby můžou pomoct rychle zjistit, o čem mluví vaši zákazníci a jak se při tom cítí.
 
@@ -94,7 +94,7 @@ Můžete také vyfiltrovat prázdné zprávy filtrem Odebrat prázdné nebo odeb
 | | |
 | - | - |
 | `id`  | Jedinečný identifikátor tohoto dokumentu v rámci požadavku. Odpověď také obsahuje toto pole. Tímto způsobem můžete v případě zpracování více dokumentů snadno přidružit extrahované klíčové fráze k dokumentu, ze kterého pocházejí. V tomto kurzu zpracováváte pro každou žádost jenom jeden dokument. Proto můžete hodnotu `id` pevně zadat, aby byla pro všechny požadavky stejná.|
-| `text`  | Text, který se má zpracovat. Hodnota tohoto pole pochází ze sloupce `Merged` vytvořeného v [předchozím oddílu](#PreparingData). V tomto sloupci je sloučený řádek předmětu s textem komentáře. Rozhraní API fráze klíč vyžaduje že tato data být více než přibližně 5 120 znaků.|
+| `text`  | Text, který se má zpracovat. Hodnota tohoto pole pochází ze sloupce `Merged` vytvořeného v [předchozím oddílu](#PreparingData). V tomto sloupci je sloučený řádek předmětu s textem komentáře. Rozhraní API pro klíčové fráze vyžaduje, aby tato data nebyla delší než 5 120 znaků.|
 | `language` | Kód pro přirozený jazyk, ve kterém je dokument napsaný. Všechny zprávy v ukázkových datech jsou v angličtině, takže do tohoto pole můžete pevně zadat hodnotu `en`.|
 
 ## <a name="create-a-custom-function"></a>Vytvoření vlastní funkce
@@ -285,7 +285,7 @@ A konečně, tady je již uvedená varianta funkce Klíčové fráze, která vr�
 in  keyphrases
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 <a name="NextSteps"></a>
 
 Přečtěte si další informace o službě Analýza textu, jazyce vzorců Power Query M nebo Power BI.

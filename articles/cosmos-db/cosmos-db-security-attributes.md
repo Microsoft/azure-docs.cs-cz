@@ -1,6 +1,6 @@
 ---
-title: Atributy zabezpečení pro službu Azure Cosmos DB
-description: Kontrolní seznam zabezpečení atributy za vaše rozhodnutí vyzkoušet službu Azure Cosmos DB
+title: Atributy zabezpečení pro Azure Cosmos DB
+description: Kontrolní seznam atributů zabezpečení pro vyhodnocení Azure Cosmos DB
 services: cosmos-db
 documentationcenter: ''
 author: msmbaldwin
@@ -9,16 +9,16 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: mbaldwin
-ms.openlocfilehash: ffeb60f5476a540e3da46a82c240b0dda9aa6be2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 50711f8675e1b8aca6b9f90925ea921d22020ddd
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66480461"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68442559"
 ---
-# <a name="security-attributes-for-azure-cosmos-db"></a>Atributy zabezpečení pro službu Azure Cosmos DB
+# <a name="security-attributes-for-azure-cosmos-db"></a>Atributy zabezpečení pro Azure Cosmos DB
 
-Tento článek popisuje běžné atributy zabezpečení integrované do služby Azure Cosmos DB.
+Tento článek popisuje atributy zabezpečení integrované do Azure Cosmos DB.
 
 [!INCLUDE [Security Attributes Header](../../includes/security-attributes-header.md)]
 
@@ -26,50 +26,50 @@ Tento článek popisuje běžné atributy zabezpečení integrované do služby 
 
 | Atribut zabezpečení | Ano/Ne | Poznámky |
 |---|---|--|
-| Šifrování v klidovém stavu (například šifrování na straně serveru, šifrování na straně serveru pomocí klíčů spravovaných zákazníkem a další funkce šifrování) | Ano | Všechny databáze Cosmos DB a záloh se šifrují ve výchozím nastavení; Zobrazit [šifrování dat ve službě Azure Cosmos DB](database-encryption-at-rest.md). Šifrování na straně serveru pomocí klíčů spravovaných zákazníkem není podporováno. |
-| Šifrování během přenosu (například šifrování ExpressRoute ve virtuální síti a šifrováním virtuálními sítěmi)| Ano | Všechna data služby Azure Cosmos DB se šifrují při přenosu. |
-| Šifrovací klíč zpracování (CMK, BYOK, atd.)| Ne |  |
-| Šifrování na úrovni sloupce (datových služeb Azure)| Ano | Pouze na úrovni Premium rozhraní API tabulky. Ne všechna rozhraní API tuto funkci podporovat. Zobrazit [Úvod do služby Azure Cosmos DB: Table API](table-introduction.md). |
-| Šifrované volání rozhraní API| Ano | Všechna připojení ke službě Azure Cosmos DB podporoval i protokol HTTPS. Azure Cosmos DB podporuje také připojení protokolu TLS 1.2, ale to se ještě nevynucuje. Pokud zákazníci vypnout nižší úroveň TLS na své straně, můžete zajistit pro připojení ke službě Cosmos DB.  |
+| Šifrování v klidovém formátu (například šifrování na straně serveru, šifrování na straně serveru pomocí klíčů spravovaných zákazníkem a další funkce šifrování) | Ano | Všechny databáze Cosmos DB a zálohy jsou standardně šifrované. viz [šifrování dat v Azure Cosmos DB](database-encryption-at-rest.md). Šifrování na straně serveru pomocí klíčů spravovaných zákazníkem se nepodporuje. |
+| Šifrování při přenosu (například šifrování ExpressRoute, šifrování virtuální sítě a šifrování virtuální sítě)| Ano | Všechna Azure Cosmos DBová data jsou při přenosu šifrovaná. |
+| Zpracování šifrovacích klíčů (CMK, BYOK atd.)| Ne |  |
+| Šifrování na úrovni sloupce (Azure Data Services)| Ano | Pouze v rozhraních API tabulky Premium. Tato funkce nepodporuje všechna rozhraní API. Viz [Úvod do Azure Cosmos DB: Rozhraní API pro tabulky](table-introduction.md). |
+| Zašifrovaná volání rozhraní API| Ano | Všechna připojení k Azure Cosmos DB podporují protokol HTTPS. Azure Cosmos DB podporuje také připojení TLS 1,2, ale toto není ještě vynutilo. Pokud zákazníci na svém konci vypnou nižší úroveň TLS, můžou se připojit k Cosmos DB.  |
 
 ## <a name="network-segmentation"></a>Segmentace sítě
 
 | Atribut zabezpečení | Ano/Ne | Poznámky |
 |---|---|--|
-| Koncový bod služby podpory| Ano |  |
-| Vkládání podpory virtuálních sítí| Ano | Pomocí koncového bodu služby virtuální sítě můžete nakonfigurovat účet služby Azure Cosmos DB povolit přístup pouze z konkrétní podsítě virtuální sítě (VNet). Přístup k virtuální síti můžete také kombinovat s pravidly brány firewall.  Zobrazit [přístup služby Azure Cosmos DB z virtuálních sítí](vnet-service-endpoint.md). |
-| Izolace sítě a Firewalling podpory| Ano | Podpora brány firewall můžete nakonfigurovat váš účet Azure Cosmos k povolení přístupu jenom ze schválených sadu IP adres, rozsah IP adres a/nebo cloudové služby. Zobrazit [konfigurace IP brány firewall ve službě Azure Cosmos DB](how-to-configure-firewall.md).|
-| Podpora pro vynucené tunelování | Ano | Je možné nakonfigurovat na straně klienta ve virtuální síti, kde jsou umístěné virtuální počítače.   |
+| Podpora koncového bodu služby| Ano |  |
+| Podpora vkládání virtuální sítě| Ano | Pomocí koncového bodu služby virtuální sítě můžete nakonfigurovat účet Azure Cosmos DB, aby povoloval přístup jenom z konkrétní podsítě virtuální sítě (VNet). Můžete také kombinovat přístup k virtuální síti pomocí pravidel brány firewall.  Viz [Azure Cosmos DB přístupu z virtuálních sítí](VNet-service-endpoint.md). |
+| Izolace sítě a podpora brány firewall| Ano | Díky podpoře brány firewall můžete účet Azure Cosmos nakonfigurovat tak, aby povoloval přístup jenom ze schválené sady IP adres, rozsahu IP adres a/nebo cloudových služeb. Viz [Konfigurace brány firewall protokolu IP v Azure Cosmos DB](how-to-configure-firewall.md).|
+| Podpora vynuceného tunelování| Ano | Dá se nakonfigurovat na straně klienta na virtuální síti, kde jsou umístěné virtuální počítače.   |
 
-## <a name="detection"></a>Detection (Detekce)
+## <a name="detection"></a>Detekce
 
 | Atribut zabezpečení | Ano/Ne | Poznámky|
 |---|---|--|
-| Podpora (Log analytics, App insights atd.) pro monitorování Azure| Ano | Všechny požadavky, které se odesílají do služby Azure Cosmos DB jsou protokolovány. [Azure Monitoring](../azure-monitor/overview.md), Azure metrik a protokolování auditu Azure jsou podporovány.  Informace odpovídající na požadavky roviny dat, statistické údaje o dotazu, text dotazu se můžete přihlásit, požádá o MongoDB. Můžete také nastavit výstrahy. |
+| Podpora monitorování Azure (Log Analytics, App Insights atd.)| Ano | Všechny požadavky, které se odesílají do Azure Cosmos DB, se zaznamenávají do protokolu. [Azure Monitoring](../azure-monitor/overview.md), metriky Azure, protokolování Azure audit se podporují.  Můžete protokolovat informace, které odpovídají požadavkům na rovinu dat, statistiky dotazů za běhu, text dotazu a MongoDB požadavky. Můžete také nastavit výstrahy. |
 
 ## <a name="identity-and-access-management"></a>Správa identit a přístupu
 
 | Atribut zabezpečení | Ano/Ne | Poznámky|
 |---|---|--|
-| Authentication| Ano | Ano na úrovni účtu databáze. na úrovni roviny dat Cosmos DB používá tokeny prostředků a přístupu ke klíčům. |
-| Autorizace| Ano | V účtu Azure Cosmos pomocí hlavního klíče (primární i sekundární) a tokeny prostředků nepodporuje. Můžete získat pro čtení a zápis nebo pouze přístup k datům pomocí hlavního klíče pro čtení. Tokeny prostředků umožňují po omezenou dobu přístup k prostředkům, jako jsou dokumenty a kontejnery. |
+| Ověřování| Ano | Ano na úrovni databázového účtu; na úrovni roviny dat Cosmos DB používá tokeny prostředků a přístup k klíčům. |
+| Authorization| Ano | Podporováno v účtu Azure Cosmos s hlavními klíči (primárními a sekundárními) a tokeny prostředků. Přístup k datům můžete získat jen pro čtení a zápis nebo pro čtení pomocí hlavních klíčů. Tokeny prostředků umožňují omezený časový přístup k prostředkům, jako jsou dokumenty a kontejnery. |
 
 
 ## <a name="audit-trail"></a>Záznam pro audit
 
 | Atribut zabezpečení | Ano/Ne | Poznámky|
 |---|---|--|
-| Plánování a řízení protokolování a auditování| Ano | Protokol aktivit pro operace na úrovni účtu jako jsou brány firewall virtuální sítě, v Azure klíčů přístup a IAM. |
-| Protokolování a auditování RP roviny dat | Ano | Diagnostika, monitorování, protokolování pro operace na úrovni kontejneru jako například vytvořit kontejner, zřídit propustnost, indexování, zásady a operace CRUD v dokumentech. |
+| Protokolování a audit roviny řízení a správy| Ano | Protokol aktivit Azure pro operace na úrovni účtu, jako jsou brány firewall, virtuální sítě, přístup k klíčům a IAM. |
+| Protokolování a audit roviny dat | Ano | Protokolování monitorování diagnostiky pro operace na úrovni kontejneru, jako je vytvoření kontejneru, zajištění propustnosti, zásady indexování a operace CRUD v dokumentech. |
 
 ## <a name="configuration-management"></a>Správa konfigurace
 
 | Atribut zabezpečení | Ano/Ne | Poznámky|
 |---|---|--|
-| Podpora správy konfigurace (verze konfigurace atd.)| Ne  | | 
+| Podpora správy konfigurace (Správa verzí konfigurace atd.)| Ne  | | 
 
-## <a name="additional-security-attributes-for-cosmos-db"></a>Atributy dodatečné zabezpečení pro službu Cosmos DB
+## <a name="additional-security-attributes-for-cosmos-db"></a>Další atributy zabezpečení pro Cosmos DB
 
 | Atribut zabezpečení | Ano/Ne | Poznámky|
 |---|---|--|
-| Různé sdílení prostředků zdroji (CORS) | Ano | Zobrazit [konfigurace prostředků mezi zdroji (CORS) pro sdílení obsahu](how-to-configure-cross-origin-resource-sharing.md). |
+| Sdílení prostředků mezi zdroji (CORS) | Ano | Viz [Konfigurace sdílení prostředků mezi zdroji (CORS)](how-to-configure-cross-origin-resource-sharing.md). |

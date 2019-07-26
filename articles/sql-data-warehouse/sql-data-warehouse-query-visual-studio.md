@@ -2,7 +2,7 @@
 title: Připojení k Azure SQL Data Warehouse – VSTS | Dokumentace Microsoftu
 description: Dotazování SQL Data Warehouse pomocí sady Visual Studio.
 services: sql-data-warehouse
-author: XiaoyuL-Preview
+author: XiaoyuMSFT
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
@@ -10,12 +10,12 @@ ms.subservice: development
 ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 6aa707d3c63b7ead6db94f84ebd9214302cc7367
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5c0867252023378347e55d673260f28a7bf2ccc4
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65873733"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68479447"
 ---
 # <a name="connect-to-sql-data-warehouse-with-visual-studio-and-ssdt"></a>Připojení k SQL Data Warehouse pomocí sady Visual Studio a SSDT
 > [!div class="op_single_selector"]
@@ -78,7 +78,7 @@ Teď, když jste si vytvořili připojení k databázi, můžete napsat dotaz.
 ## <a name="next-steps"></a>Další postup
 Teď, když se můžete připojit a můžete zadávat dotazy, můžete si vyzkoušet [vizualizaci dat pomocí PowerBI][visualizing the data with PowerBI].
 
-Informace o tom, jak nakonfigurovat prostředí pro ověřování služby Azure Active Directory, najdete v části [Ověřování pro SQL Data Warehouse][Authenticate to SQL Data Warehouse].
+Informace o tom, jak nakonfigurovat prostředí pro ověřování služby Azure Active Directory naleznete v části [Ověřování pro SQL Data Warehouse][Authenticate to SQL Data Warehouse].
 
 <!--Arcticles-->
 [Connect to SQL Data Warehouse]: sql-data-warehouse-connect-overview.md

@@ -1,24 +1,24 @@
 ---
-title: Ingestování dat pomocí knihovny Python Průzkumník dat Azure
-description: V tomto článku se dozvíte, jak se přijmout data (načíst) do Průzkumníku dat Azure pomocí Pythonu.
+title: Ingestování dat pomocí knihovny Pythonu v Azure Průzkumník dat
+description: V tomto článku se naučíte přijímat (načítat) data do Azure Průzkumník dat pomocí Pythonu.
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: da23ec91891776e9a459b04c5718147427843991
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f109f2dd45fe90884d3947b244b3dafffd547725
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66496925"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68355930"
 ---
-# <a name="ingest-data-using-the-azure-data-explorer-python-library"></a>Ingestování dat pomocí knihovny Python Průzkumník dat Azure
+# <a name="ingest-data-using-the-azure-data-explorer-python-library"></a>Ingestování dat pomocí knihovny Pythonu v Azure Průzkumník dat
 
-Azure Data Explorer je rychlá a vysoce škálovatelná služba pro zkoumání dat protokolů a telemetrie. Průzkumník dat Azure nabízí dvě klientské knihovny pro Python: [knihovnu ingestů](https://github.com/Azure/azure-kusto-python/tree/master/azure-kusto-ingest) a [knihovnu dat](https://github.com/Azure/azure-kusto-python/tree/master/azure-kusto-data). Tyto knihovny umožňují snadno ingestovat (načíst) data do clusteru a dotazovat se na data z vašeho kódu. V tomto článku vytvoříte první tabulky a mapování dat v clusteru. Pak vytvoříte frontu ingestace do clusteru a ověříte výsledky.
+Azure Data Explorer je rychlá a vysoce škálovatelná služba pro zkoumání dat protokolů a telemetrie. Průzkumník dat Azure nabízí dvě klientské knihovny pro Python: [knihovnu ingestů](https://github.com/Azure/azure-kusto-python/tree/master/azure-kusto-ingest) a [knihovnu dat](https://github.com/Azure/azure-kusto-python/tree/master/azure-kusto-data). Tyto knihovny umožňují snadno ingestovat (načíst) data do clusteru a dotazovat se na data z vašeho kódu. V tomto článku vytvoříte nejprve tabulku a mapování dat v clusteru. Pak vytvoříte frontu ingestace do clusteru a ověříte výsledky.
 
-Tento článek je také k dispozici [poznámkového bloku Azure](https://notebooks.azure.com/ManojRaheja/libraries/KustoPythonSamples/html/QueuedIngestSingleBlob.ipynb).
+Tento článek je také k dispozici jako [notebook Azure](https://notebooks.azure.com/ManojRaheja/libraries/KustoPythonSamples/html/QueuedIngestSingleBlob.ipynb).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -39,7 +39,7 @@ pip install azure-kusto-ingest
 
 ## <a name="add-import-statements-and-constants"></a>Přidání příkazů a konstant pro import
 
-Importovat třídy z dat azure kusto.
+Importujte třídy z Azure-kusto-data.
 
 ```python
 from azure.kusto.data.request import KustoClient, KustoConnectionStringBuilder
@@ -68,14 +68,16 @@ KUSTO_INGEST_URI = "https://ingest-<ClusterName>.<Region>.kusto.windows.net:443/
 KUSTO_DATABASE = "<DatabaseName>"
 ```
 
-Teď vytvořte připojovací řetězec. V tomto příkladu se pro přístup ke clusteru používá ověřování pomocí zařízení. Můžete také použít [certifikát aplikace AAD](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py#L24), [klíč aplikace AAD](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py#L20), a [AAD uživatele a heslo](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py#L34).
+Teď vytvořte připojovací řetězec. V tomto příkladu se pro přístup ke clusteru používá ověřování pomocí zařízení. Můžete také použít [certifikát aplikace AAD](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py#L24), [klíč aplikace AAD](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py#L20)a [uživatele a heslo AAD](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py#L34).
 
 Cílovou tabulku a mapování vytvoříte v pozdějším kroku.
 
 ```python
-KCSB_INGEST = KustoConnectionStringBuilder.with_aad_device_authentication(KUSTO_INGEST_URI, AAD_TENANT_ID)
+KCSB_INGEST = KustoConnectionStringBuilder.with_aad_device_authentication(
+    KUSTO_INGEST_URI, AAD_TENANT_ID)
 
-KCSB_DATA = KustoConnectionStringBuilder.with_aad_device_authentication(KUSTO_URI, AAD_TENANT_ID)
+KCSB_DATA = KustoConnectionStringBuilder.with_aad_device_authentication(
+    KUSTO_URI, AAD_TENANT_ID)
 
 DESTINATION_TABLE = "StormEvents"
 DESTINATION_TABLE_COLUMN_MAPPING = "StormEvents_CSV_Mapping"
@@ -95,12 +97,13 @@ SAS_TOKEN = "?st=2018-08-31T22%3A02%3A25Z&se=2020-09-01T22%3A02%3A00Z&sp=r&sv=20
 FILE_PATH = "StormEvents.csv"
 FILE_SIZE = 64158321    # in bytes
 
-BLOB_PATH = "https://" + ACCOUNT_NAME + ".blob.core.windows.net/" + CONTAINER + "/" + FILE_PATH + SAS_TOKEN
+BLOB_PATH = "https://" + ACCOUNT_NAME + ".blob.core.windows.net/" + \
+    CONTAINER + "/" + FILE_PATH + SAS_TOKEN
 ```
 
-## <a name="create-a-table-on-your-cluster"></a>Vytvoření tabulky ve vašem clusteru
+## <a name="create-a-table-on-your-cluster"></a>Vytvoření tabulky v clusteru
 
-Vytvořte tabulku, která odpovídá schématu dat v souboru StormEvents.csv. Když tento kód se spustí, vrátí se zpráva podobná následující: *Pro přihlášení, použijte webový prohlížeč a otevřete stránku https://microsoft.com/devicelogin a zadejte kód F3W4VWZDM k ověření*. Podle pokynů se přihlaste a pak se vraťte a spusťte další blok kódu. Následující bloky kódu, které provedou připojení, vyžadují, abyste se znovu přihlásili.
+Vytvořte tabulku, která odpovídá schématu dat v souboru StormEvents.csv. Po spuštění tohoto kódu se vrátí zpráva podobná následující: Pokud *se chcete přihlásit, https://microsoft.com/devicelogin otevřete stránku pomocí webového prohlížeče a zadejte kód F3W4VWZDM, který se má ověřit*. Podle pokynů se přihlaste a pak se vraťte a spusťte další blok kódu. Následující bloky kódu, které provedou připojení, vyžadují, abyste se znovu přihlásili.
 
 ```python
 KUSTO_CLIENT = KustoClient(KCSB_DATA)
@@ -113,7 +116,7 @@ dataframe_from_result_table(RESPONSE.primary_results[0])
 
 ## <a name="define-ingestion-mapping"></a>Definování mapování ingestace
 
-Namapujte příchozí data CSV na názvy sloupců a datové typy použité při vytváření tabulky. To se mapuje pole zdroje dat na sloupce cílové tabulky
+Namapujte příchozí data CSV na názvy sloupců a datové typy použité při vytváření tabulky. Tato data mapuje zdrojová datová pole do cílových sloupců tabulky.
 
 ```python
 CREATE_MAPPING_COMMAND = """.create table StormEvents ingestion csv mapping 'StormEvents_CSV_Mapping' '[{"Name":"StartTime","datatype":"datetime","Ordinal":0}, {"Name":"EndTime","datatype":"datetime","Ordinal":1},{"Name":"EpisodeId","datatype":"int","Ordinal":2},{"Name":"EventId","datatype":"int","Ordinal":3},{"Name":"State","datatype":"string","Ordinal":4},{"Name":"EventType","datatype":"string","Ordinal":5},{"Name":"InjuriesDirect","datatype":"int","Ordinal":6},{"Name":"InjuriesIndirect","datatype":"int","Ordinal":7},{"Name":"DeathsDirect","datatype":"int","Ordinal":8},{"Name":"DeathsIndirect","datatype":"int","Ordinal":9},{"Name":"DamageProperty","datatype":"int","Ordinal":10},{"Name":"DamageCrops","datatype":"int","Ordinal":11},{"Name":"Source","datatype":"string","Ordinal":12},{"Name":"BeginLocation","datatype":"string","Ordinal":13},{"Name":"EndLocation","datatype":"string","Ordinal":14},{"Name":"BeginLat","datatype":"real","Ordinal":16},{"Name":"BeginLon","datatype":"real","Ordinal":17},{"Name":"EndLat","datatype":"real","Ordinal":18},{"Name":"EndLon","datatype":"real","Ordinal":19},{"Name":"EpisodeNarrative","datatype":"string","Ordinal":20},{"Name":"EventNarrative","datatype":"string","Ordinal":21},{"Name":"StormSummary","datatype":"dynamic","Ordinal":22}]'"""
@@ -131,15 +134,17 @@ Přidejte zprávu do fronty k získání dat z úložiště objektů blob a tato
 INGESTION_CLIENT = KustoIngestClient(KCSB_INGEST)
 
 # All ingestion properties are documented here: https://docs.microsoft.com/azure/kusto/management/data-ingest#ingestion-properties
-INGESTION_PROPERTIES = IngestionProperties(database=KUSTO_DATABASE, table=DESTINATION_TABLE, dataFormat=DataFormat.csv, mappingReference = DESTINATION_TABLE_COLUMN_MAPPING, additionalProperties={'ignoreFirstRecord': 'true'})
-BLOB_DESCRIPTOR = BlobDescriptor(BLOB_PATH, FILE_SIZE)  # FILE_SIZE is the raw size of the data in bytes
-INGESTION_CLIENT.ingest_from_blob(BLOB_DESCRIPTOR, ingestion_properties=INGESTION_PROPERTIES)
+INGESTION_PROPERTIES = IngestionProperties(database=KUSTO_DATABASE, table=DESTINATION_TABLE, dataFormat=DataFormat.csv,
+                                           mappingReference=DESTINATION_TABLE_COLUMN_MAPPING, additionalProperties={'ignoreFirstRecord': 'true'})
+# FILE_SIZE is the raw size of the data in bytes
+BLOB_DESCRIPTOR = BlobDescriptor(BLOB_PATH, FILE_SIZE)
+INGESTION_CLIENT.ingest_from_blob(
+    BLOB_DESCRIPTOR, ingestion_properties=INGESTION_PROPERTIES)
 
 print('Done queuing up ingestion with Azure Data Explorer')
-
 ```
 
-## <a name="query-data-that-was-ingested-into-the-table"></a>Dotazování dat, který se ingestuje do tabulky
+## <a name="query-data-that-was-ingested-into-the-table"></a>Dotazování dat, která byla ingestovaná do tabulky
 
 Počkejte pět až deset minut, než ingestace ve frontě naplánuje ingestování a načte data do Průzkumníka dat Azure. Pak spuštěním následujícího kódu získejte počet záznamů v tabulce StormEvents.
 
@@ -170,7 +175,7 @@ Spuštěním následujícího příkazu zobrazíte stav všech operací ingestac
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud budete chtít postupujte podle našich článků, zachovat prostředky, které jste vytvořili. Pokud ne, spuštěním následujícího příkazu v databázi tabulku StormEvents vyčistěte.
+Pokud plánujete postupovat podle našich dalších článků, ponechejte prostředky, které jste vytvořili. Pokud ne, spuštěním následujícího příkazu v databázi tabulku StormEvents vyčistěte.
 
 ```Kusto
 .drop table StormEvents

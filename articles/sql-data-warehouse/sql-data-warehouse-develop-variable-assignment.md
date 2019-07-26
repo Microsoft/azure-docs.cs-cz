@@ -1,8 +1,8 @@
 ---
-title: Přiřazení proměnné ve službě Azure SQL Data Warehouse | Dokumentace Microsoftu
-description: Tipy pro přiřazení proměnné jazyka T-SQL ve službě Azure SQL Data Warehouse pro vývoj řešení.
+title: Přiřadit proměnné v Azure SQL Data Warehouse | Microsoft Docs
+description: Tipy pro přiřazování proměnných T-SQL v Azure SQL Data Warehouse pro vývoj řešení.
 services: sql-data-warehouse
-author: XiaoyuL-Preview
+author: XiaoyuMSFT
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
@@ -10,27 +10,27 @@ ms.subservice: development
 ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 62c4273a02e02aff268a96e1b13483088ba33f87
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6c943478f3904aac17a572f012f2b2b69ffa2223
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65861680"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68479548"
 ---
-# <a name="assigning-variables-in-azure-sql-data-warehouse"></a>Přiřazení proměnné ve službě Azure SQL Data Warehouse
+# <a name="assigning-variables-in-azure-sql-data-warehouse"></a>Přiřazování proměnných v Azure SQL Data Warehouse
 
-Tipy pro přiřazení proměnné jazyka T-SQL ve službě Azure SQL Data Warehouse pro vývoj řešení.
+Tipy pro přiřazování proměnných T-SQL v Azure SQL Data Warehouse pro vývoj řešení.
 
-## <a name="setting-variables-with-declare"></a>Nastavení proměnných s DECLARE
+## <a name="setting-variables-with-declare"></a>Nastavení proměnných pomocí deklarace
 
-Proměnné ve službě SQL Data Warehouse se nastavují pomocí `DECLARE` příkazu nebo `SET` příkazu. Inicializace proměnných s DECLARE, je jedním z nejflexibilnější způsoby, jak nastavit hodnotu proměnné ve službě SQL Data Warehouse.
+Proměnné v SQL Data Warehouse jsou nastaveny pomocí `DECLARE` příkazu `SET` nebo příkazu. Inicializace proměnných pomocí příkazu DECLARE je jedním z nejpružnější způsobů, jak nastavit hodnotu proměnné v SQL Data Warehouse.
 
 ```sql
 DECLARE @v  int = 0
 ;
 ```
 
-Také vám pomůže DECLARE v každém okamžiku nastaven více než jednu proměnnou. Vyberte nebo aktualizaci nelze použít k postupujte takto:
+Můžete také použít DEKLARaci k nastavení více než jedné proměnné v jednom okamžiku. PŘÍKAZ SELECT nebo UPDATE nelze použít k následujícím akcím:
 
 ```sql
 DECLARE @v  INT = (SELECT TOP 1 c_customer_sk FROM Customer where c_last_name = 'Smith')
@@ -38,7 +38,7 @@ DECLARE @v  INT = (SELECT TOP 1 c_customer_sk FROM Customer where c_last_name = 
 ;
 ```
 
-Nelze inicializovat a použití proměnné v jednom příkazu DECLARE. Abychom tento bod ilustrovali v následujícím příkladu je **není** povolená, protože služba @p1 je inicializován i použít ve stejném příkazu DECLARE. Následující příklad vrátí chybu.
+Nelze inicializovat a používat proměnnou v rámci stejného příkazu DECLARE. Pro ilustraci tohoto bodu **není povolen následující** příklad, protože @p1 je inicializován i použit ve stejném příkazu Declare. Následující příklad obsahuje chybu.
 
 ```sql
 DECLARE @p1 int = 0
@@ -46,11 +46,11 @@ DECLARE @p1 int = 0
 ;
 ```
 
-## <a name="setting-values-with-set"></a>Nastavení hodnot SET
+## <a name="setting-values-with-set"></a>Nastavení hodnot pomocí SET
 
-Sada je běžnou metodu pro nastavení jedné proměnné.
+SET je společná metoda pro nastavení jedné proměnné.
 
-Následující příkazy jsou všechny platné způsoby, jak nastavit proměnnou pomocí sady:
+Následující příkazy jsou platné způsoby, jak nastavit proměnnou pomocí SET:
 
 ```sql
 SET     @v = (Select max(database_id) from sys.databases);
@@ -59,12 +59,12 @@ SET     @v = @v+1;
 SET     @v +=1;
 ```
 
-Jednu proměnnou lze nastavit pouze současně se SADOU. Složené operátory jsou však přípustné.
+Současně lze nastavit pouze jednu proměnnou. Jsou však přípustné složené operátory.
 
 ## <a name="limitations"></a>Omezení
 
-AKTUALIZACI nelze použít pro přiřazení proměnné.
+Nejde použít UPDATE pro přiřazení proměnné.
 
 ## <a name="next-steps"></a>Další postup
 
-Další tipy pro vývoj najdete v části [přehled vývoje](sql-data-warehouse-overview-develop.md).
+Další tipy pro vývoj najdete v tématu [Přehled vývoje](sql-data-warehouse-overview-develop.md).

@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/12/2019
+ms.date: 07/22/2019
 ms.author: magoedte
-ms.openlocfilehash: 7d8fb7bc0e837ba78d86a39524d869c9bb01895d
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.openlocfilehash: 96a312630c92048f36f79e3bec18f83ed5a445ff
+ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67867565"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68414129"
 ---
 # <a name="azure-monitor-for-containers-overview"></a>Azure Monitor pro kontejnery – přehled
 
@@ -44,12 +44,18 @@ Azure Monitor pro kontejnery nabízí ucelené monitorování pomocí různých 
 >Podpora pro Prometheus je ve verzi Public Preview v současnosti funkce.
 >
 
+Podívejte se na následující video, které poskytuje podrobné podrobně úrovně, které vám pomůžou získat informace o monitorování clusteru AKS pomocí Azure Monitor pro kontejnery.
+
+> [!VIDEO https://www.youtube.com/embed/RjsNmapggPU]
+
 ## <a name="how-do-i-access-this-feature"></a>Jak získám přístup do této funkce?
+
 Azure Monitor lze použít pro kontejnery dva způsoby, ze služby Azure Monitor nebo přímo z vybraných clusteru AKS. Z Azure Monitor máte globální perspektivu všech nasazených kontejnerů, které jsou monitorované a které nejsou, což vám umožní vyhledávat a filtrovat v rámci předplatných a skupin prostředků a pak přejít na Azure Monitor pro kontejnery z vybraný kontejner.  V opačném případě můžete k této funkci přistupovat přímo z vybraného kontejneru AKS ze stránky AKS.  
 
 ![Přehled metod pro přístup k Azure Monitor pro kontejnery](./media/container-insights-overview/azmon-containers-experience.png)
 
-Pokud vás zajímá monitorování a správu Docker a Windows najdete v hostitelích kontejnerů na zobrazení konfigurace, auditování a využití prostředků [řešení pro monitorování kontejnerů](../../azure-monitor/insights/containers.md).
+Pokud vás zajímá monitorování a Správa hostitelů kontejnerů pro Docker a Windows, kteří používají mimo AKS k zobrazení konfigurace, auditu a využití prostředků, prostudujte si [řešení pro monitorování kontejnerů](../../azure-monitor/insights/containers.md).
 
 ## <a name="next-steps"></a>Další postup
+
 Pokud chcete začít monitorovat cluster AKS, přečtěte si, [Jak povolit Azure monitor kontejnerů](container-insights-onboard.md) pro pochopení požadavků a dostupných metod, které umožňují monitorování.  

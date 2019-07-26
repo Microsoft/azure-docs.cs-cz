@@ -1,110 +1,109 @@
 ---
-title: Virtuální sítě WAN globální tranzitní síť architektura služby Azure | Dokumentace Microsoftu
-description: Další informace o globální přenosu Síťová architektura pro virtuální sítě WAN
+title: Azure Virtual WAN – architektura globální přenosové sítě | Microsoft Docs
+description: Další informace o architektuře globální přenosové sítě pro virtuální síť WAN
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: article
-ms.date: 05/20/2019
+ms.date: 07/23/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to understand global transit network architecture as it relates to Virtual WAN.
-ms.openlocfilehash: 114d11f98c6181a03f5ce52527b5e2efea468c42
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2376c77ecc328788c842e045aafb618cbad39b0e
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65965984"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68421425"
 ---
-# <a name="global-transit-network-architecture-and-virtual-wan"></a>Architektura globálního přenosu sítě a virtuální sítě WAN
+# <a name="global-transit-network-architecture-and-virtual-wan"></a>Globální přenosová architektura sítě a virtuální síť WAN
 
-Architektura globálního přenosu sítě přijali podnikům umožňuje konsolidovat, připojení a řízení zaměřené na cloud moderní podnikové IT zázemí. V moderních podnikových zaměřené na cloud síťový provoz nemusí být backhauled k Ústředí. Globální tranzitní síť architektura je založená na známé koncepty sítě i nových konceptů, které jsou jedinečné pro cloud a cloudové architektury.
+Podniková architektura pro cloudovou architekturu se přijímá v rámci konsolidace, připojení a řízení moderního podnikání zaměřeného na Cloud. V moderním cloudově orientovaném podniku nemusí být síťový provoz vysídelý. Architektura globální přenosové sítě je založená na známých konceptech sítě a nových konceptech, které jsou jedinečné pro cloudové a cloudové architektury.
 
 ![Architektura](./media/virtual-wan-global-transit-network-architecture/architecture2.png)
 
-**Obrázek 1: Globální tranzitní síť s virtuální sítě WAN**
+**Obrázek 1: Globální tranzitní síť s virtuální sítí WAN**
 
-Moderní podniky vyžadují všudypřítomná spojení mezi hyper distribuované aplikace, data a uživatelé v cloudu i lokálně. Azure virtuální sítě WAN umožňuje Síťová architektura globálního přenosu tím, že připojení všudypřítomná, any-to-any mezi globálně distribuovanou sadu virtuálních sítí, webů, aplikací a uživatelů. Azure virtuální síť WAN je služba spravovaná Microsoftem. Síťové součásti, které tato služba se skládá z jsou hostované a spravované microsoftem. Další informace o virtuální sítě WAN, najdete v článku [virtuální sítě WAN přehled](virtual-wan-about.md) článku.
+Moderní podniky vyžadují připojení všudypřítomný mezi aplikacemi, daty a uživateli distribuovanými na Hyper-v cloudu a místním prostředím. Azure Virtual WAN umožňuje globální přenosovou architekturu sítě tím, že umožňuje všudypřítomný připojení mezi globálně distribuovanými sadami virtuální sítě, weby, aplikacemi a uživateli. Azure Virtual WAN je služba spravovaná Microsoftem. Všechny síťové součásti, ze kterých se tato služba skládá, je hostována a spravována společností Microsoft. Další informace o virtuální síti WAN najdete v článku [Přehled virtuálních sítí WAN](virtual-wan-about.md) .
 
-V Azure virtuální sítě WAN architektuře oblasti Azure, které slouží jako rozbočovače, ke kterým můžete zvolit připojení větve. Po připojení se větve, můžete využít páteřní síť Azure k vytvoření větve to-VNet a volitelně větve do větve připojení.
+V architektuře Azure Virtual WAN oblasti Azure slouží jako rozbočovače, na které se můžete rozhodnout připojit své větve. Po připojení větví můžete využít páteřní síť Azure k navázání připojení mezi virtuálními sítěmi a případně připojením mezi větvemi.
 
-Můžete vytvořit virtuální síť WAN vytvoření jedné virtuální sítě WAN centra v oblasti, která má největší počet paprsků (větví, virtuálních sítích, které uživatelé) a následným připojením paprsků, které jsou v jiných oblastech k rozbočovači. Případně pokud paprsky jsou geograficky distribuované, můžete také vytvořit instanci místní centra a propojení rozbočovače. Všechny jsou součástí stejné virtuální síť WAN jsou rozbočovače, ale můžou být spojené s jinou místní zásady.
+Virtuální síť WAN můžete vytvořit tak, že vytvoříte jedno virtuální centrum sítě WAN v oblasti s největším počtem paprsků (větví, virtuální sítě, uživatelů) a potom propojíte paprsky, které jsou v jiných oblastech, do centra. Případně, pokud jsou paprsky geograficky distribuované, můžete také vytvářet instance regionálních center a propojit centra. Všechna centra jsou součástí stejné virtuální sítě WAN, ale můžou být přidružená k různým oblastním zásadám.
 
-## <a name="hub"></a>Střed a paprsek přenosu
+## <a name="hub"></a>Přenos hub a paprsků
 
-Architektura globálního přenosu sítě je založená na modelu classic připojení střed a paprsek kde hostované v cloudu síť "centra" umožňuje tranzitivní připojení mezi koncovými body, které mohou být distribuovány do různých typů "paprsky".
+Architektura globální přenosové sítě je založená na klasickém modelu připojení hub a hvězdicové sítě, ve kterém cloudová hostovaná síť "centrum" umožňuje přenosné připojení mezi koncovými body, které mohou být distribuovány napříč různými typy "paprsků".
   
-V tomto modelu může být jednoho paprsku:
+V tomto modelu může být paprsek:
 
-* Virtuální síť (Vnet)
-* Fyzické pobočky
+* Virtuální síť (virtuální sítě)
+* Lokalita fyzické pobočky
 * Vzdálený uživatel
 * Internet
 
-![hvězdicové diagram globální přenosu](./media/virtual-wan-global-transit-network-architecture/architecture.png)
+![Diagram globálního přenosu centra a paprsků](./media/virtual-wan-global-transit-network-architecture/architecture.png)
 
-**Obrázek 2: Střed a paprsek**
+**Obrázek 2: Střed a paprskový**
 
-Obrázek 2 znázorňuje logické zobrazení a pomocí globální sítě, ve kterém geograficky distribuovaných uživatelů, fyzických serverů a virtuálních sítí jsou propojeny prostřednictvím sítě Centrum hostované v cloudu. Tato architektura umožňuje připojení k logické jedním segmentem směrováním provozu mezi koncových bodech sítě. Paprsky jsou připojené k rozbočovači podle různých služeb Azure, sítě například ExpressRoute nebo site-to-síť VPN typu site fyzické větví, partnerský vztah virtuální sítě a sítě VPN point-to-site pro vzdálené uživatele.
+Obrázek 2 ukazuje logické zobrazení globální sítě, ve které jsou geograficky rozmístěné uživatele, fyzické lokality a virtuální sítě propojeny prostřednictvím síťového centra hostovaného v cloudu. Tato architektura umožňuje v rámci logického připojení mezi koncovými body sítě logický přenos s jedním směrováním. Paprsky jsou připojené k centru pomocí různých síťových služeb Azure, jako jsou ExpressRoute nebo site-to-VPN pro fyzické větve, VNet peering pro virtuální sítě a VPN typu Point-to-site pro vzdálené uživatele.
 
-## <a name="crossregion"></a>Připojení mezi různými oblastmi
+## <a name="crossregion"></a>Připojení mezi oblastmi
 
-Pro organizace cloudovou stopou obvykle následuje nároky na fyzické. Většina podniků přístup do cloudu z oblasti nejblíž k jejich fyzické síti a uživatelů. Jeden z klíčů objekty zabezpečení architektury globální sítě je chcete povolit připojení mezi různými oblastmi mezi koncových bodů a síťové entity. Cloudovou stopou může zahrnovat více oblastí. To znamená, že provoz z větve, která je připojená ke cloudu v jedné oblasti můžete oslovit jiné větve nebo virtuální sítě v jiné oblasti pomocí připojení k rozbočovači centra, která je aktuálně ve verzi preview.
+V případě podniku se cloudové nároky typicky řídí fyzickými nároky. Většina podniků přistupuje ke cloudu z oblasti, která je nejblíže jejich fyzické lokalitě a uživatelům. Jedním z klíčových objektů globální síťové architektury je povolit připojení mezi oblastmi mezi síťovými entitami a koncovými body. Cloudové nároky mohou zahrnovat více oblastí. To znamená, že provoz z větve, která je připojená ke cloudu v jedné oblasti, může oslovit jinou větev nebo virtuální síť v jiné oblasti pomocí připojení typu hvězdicové centrum, které je aktuálně v našem plánu.
 
-## <a name="any"></a>Any-to-any připojení
+## <a name="any"></a>Jakékoli připojení
 
-Architektura globálního přenosu sítě umožňuje *any-to-any připojení* přes rozbočovač centrální síti. Tato architektura eliminuje nebo snižuje potřebu Vícecestná nebo částečné síť připojení modely, které jsou mnohem složitější a vytvářet a spravovat. Kromě toho směrování ovládací prvek v hub-and-spoke vs. síť sítě je snazší konfigurovat a udržovat.
+Globální přenosová architektura sítě umožňuje *jakékoli připojení* prostřednictvím centrálního síťového rozbočovače. Tato architektura eliminuje nebo omezuje nutnost vytvoření celé sítě nebo částečně propojených modelů sítě, které jsou složitější pro sestavování a údržbu. Kromě toho je snazší konfigurovat a udržovat řízení směrování v sítích s rozbočovačem a s mřížkou.
 
-Any-to-any připojení v rámci globální architektury umožňuje podnikům s globálně distribuovanou uživateli, větví, datových center, virtuální sítě a aplikace se připojit k sobě navzájem prostřednictvím centra přenosu. Průchod centra funguje jako globální přenosu systému.
+Jakékoli připojení, v kontextu globální architektury, umožňuje podnik s globálně distribuovanými uživateli, pobočkami, datacentry, virtuální sítě a aplikacemi, aby se vzájemně připojovali prostřednictvím centra přenosů. Centrum přenosů funguje jako globální tranzitní systém.
 
-![provoz cesty](./media/virtual-wan-global-transit-network-architecture/trafficpath.png)
+![cesty provozu](./media/virtual-wan-global-transit-network-architecture/trafficpath.png)
 
-**Obrázek 3: Cesty virtuálního provozu v síti WAN**
+**Obrázek 3: Cesty provozu virtuální sítě WAN**
 
-Azure virtuální sítě WAN podporuje následující cesty připojení globální přenosu. Písmena v závorkách se mapují na obr. 3.
+Azure Virtual WAN podporuje následující cesty pro připojení globálního přenosu. Písmena v závorkách se mapují na obrázek 3.
 
-* Větev to-VNet (a)  
-* Větve do větve (b)
-* Vzdálený uživatel to-VNet (c)
-* Vzdálené uživatele na větve (d)
-* Připojení typu VNet-to-VNet pomocí partnerského vztahu virtuálních sítí (e)
-* ExpressRoute globálním dosahem 
+* Větev do virtuální sítě (a)  
+* Větev do větve (b)
+* Vzdálený uživatel – virtuální síť (c)
+* Vzdálený uživatel-do větve (d)
+* VNet-to-VNet pomocí partnerského vztahu virtuální sítě (e)
+* ExpressRoute Global Reach 
 
-### <a name="branchvnet"></a>Větev to-VNet
+### <a name="branchvnet"></a>Větev do VNet
 
-Větev to-VNet je primární cesta podporuje Azure virtuální sítě WAN. Tuto cestu můžete připojení pobočky k Azure IAAS firemních procesů, které jsou nasazené ve virtuálních sítích Azure. Větví může být připojen k virtuální síť WAN přes ExpressRoute nebo VPN typu site-to-site. Tranzit provoz do virtuální sítě, které jsou připojené k virtuální síti WAN hubs přes připojení typu VNet.
+Větev-to-VNet je primární cesta podporovaná službou Azure Virtual WAN. Tato cesta umožňuje připojit větve k podnikovým úlohám Azure IAAS nasazeným v Azure virtuální sítě. Větve se dají připojit k virtuální síti WAN přes ExpressRoute nebo VPN typu Site-to-site. Přenos dat do virtuální sítě, která jsou připojená k virtuálním rozbočovačům sítě WAN prostřednictvím připojení virtuální sítě.
 
-### <a name="branchbranch"></a>Větve do větve
+### <a name="branchbranch"></a>Větev do větve
 
-Větví může být připojen k centra Azure virtuální sítě WAN, pomocí okruhy ExpressRoute a připojení VPN typu site-to-site. Větve můžete připojit k centru virtuální sítě WAN, který je v oblast nejbližší větev.
+Větve se dají připojit ke službě Azure Virtual WAN pomocí okruhů ExpressRoute a připojení VPN typu Site-to-site. Větve můžete připojit k virtuálnímu rozbočovači WAN, který je v oblasti nejbližší k této větvi.
 
-Tato možnost umožňuje podnikům využívat páteřní síť Azure pro připojení větví. Nicméně i když tato funkce je k dispozici, měli byste zvážit výhody propojení větví prostřednictvím Azure virtuální sítě WAN anebo privátní síť WAN.
+Tato možnost umožňuje podnikům využít páteřní síť Azure pro připojení větví. I když je tato možnost k dispozici, měli byste zvážit výhody propojení větví přes Azure Virtual WAN vs. pomocí privátní sítě WAN.
 
-### <a name="usertovnet"></a>Vzdálený uživatel to-VNet
+### <a name="usertovnet"></a>Vzdálený uživatel-síť VNet
 
-Můžete povolit s přímým přístupem, zabezpečený vzdálený přístup k Azure pomocí připojení point-to-site od vzdáleného uživatele klienta na virtuální síť WAN. Vzdálení uživatelé organizace už žádné hairpin do cloudu s využitím firemní sítě VPN.
+Můžete povolit přímý a zabezpečený vzdálený přístup k Azure pomocí připojení typu Point-to-site od vzdáleného uživatele klienta k virtuální síti WAN. Podnikoví vzdálení uživatelé už nemusí hairpin do cloudu pomocí podnikové sítě VPN.
 
-### <a name="usertobranch"></a>Vzdálený uživatel větve
+### <a name="usertobranch"></a>Vzdálený uživatel – větev
 
-Cesta vzdáleného uživatele větve umožňuje vzdáleným uživatelům, kteří používají připojení point-to-site k místní úlohy přístup ke službě Azure a aplikací přes cloud. Tato cesta zajišťuje flexibilitu vzdáleným uživatelům přístup k úlohám, které jsou nasazené v Azure a místní. Podniky můžete povolit službu centrální založené na cloudu zabezpečený vzdálený přístup v Azure virtuální sítě WAN.
+Cesta vzdáleného uživatele k větvi umožňuje vzdáleným uživatelům, kteří používají připojení Point-to-site k Azure, přistupovat k místním úlohám a aplikacím prostřednictvím přenosu v cloudu. Tato cesta dává vzdáleným uživatelům flexibilitu při přístupu k úlohám, které jsou nasazené v Azure i v místním prostředí. Podniky můžou povolit centrální cloudovou službu vzdáleného přístupu založenou na Azure Virtual WAN.
 
-### <a name="vnetvnet"></a>Připojení typu VNet-to-VNet přenosu pomocí VNet peering
+### <a name="vnetvnet"></a>Tranzitní síť VNet-to-VNet pomocí partnerského vztahu virtuální sítě
 
-Propojení virtuálních sítí mezi sebou za účelem podpory vícevrstvých aplikací, které jsou implementovány mezi několika virtuálními sítěmi, pomocí VNet peering. V tuto chvíli nepodporuje scénáři přenosu připojení typu VNet-to-VNet přes Azure virtuální sítě WAN, ale je na plány Azure do budoucna. Propojení virtuálních sítí pomocí VNet Peering je doporučená řešení pro virtuální sítě, které musejí být připojení k sobě navzájem. [Průchod branou](../virtual-network/virtual-network-peering-overview.md#gateways-and-on-premises-connectivity) (v rámci partnerského vztahu virtuální sítě) se nevyžaduje pro virtuální sítě WAN vzhledem k tomu, že virtuální sítě WAN automaticky umožňuje průchod bránou.
+K vzájemnému propojení virtuální sítě, aby bylo možné podporovat vícevrstvé aplikace, které jsou implementované napříč více virtuální sítě, použijte partnerský vztah virtuálních sítí. Scénář přenosu typu VNet-to-VNet prostřednictvím Azure Virtual WAN se v současnosti nepodporuje, ale je k dispozici v plánu Azure. Připojení virtuální sítě prostřednictvím partnerského vztahu virtuálních sítí je doporučené řešení pro virtuální sítě, které je potřeba vzájemně propojit. [Přenos brány](../virtual-network/virtual-network-peering-overview.md#gateways-and-on-premises-connectivity) (v kontextu partnerského vztahu virtuálních sítí) se virtuální síť WAN nevyžaduje, protože virtuální síť WAN automaticky povoluje přenos brány.
 
-### <a name="globalreach"></a>ExpressRoute globálním dosahem
+### <a name="globalreach"></a>ExpressRoute Global Reach
 
-ExpressRoute je privátní a odolná proti selháním způsob, jak připojit místní sítě ke cloudu Microsoftu. Globální dosah ExpressRoute je funkce doplňku pro ExpressRoute. Okruhy ExpressRoute tvořit privátní sítě mezi místními sítěmi můžete propojit s globální dosah. Větve, které jsou připojené k Azure virtuální sítě WAN pomocí ExpressRoute vyžadují ExpressRoute globální dosah komunikovat mezi sebou.
+ExpressRoute je soukromý a odolný způsob, jak připojit vaše místní sítě k Microsoft Cloud. ExpressRoute Global Reach je doplňková funkce pro ExpressRoute. Pomocí Global Reach můžete propojit okruhy ExpressRoute dohromady a vytvořit tak soukromou síť mezi místními sítěmi. Větve, které jsou připojené k Azure Virtual WAN pomocí ExpressRoute, vyžadují vzájemnou komunikaci ExpressRoute Global Reach.
 
-V tomto modelu každou větev, který je připojený k virtuální síti WAN hubu pomocí ExpressRoute můžete připojit k virtuálním sítím pomocí cesty větev to-VNet. Větve do větve provoz nebude přenosu centra, protože globální dosah ExpressRoute umožňuje více optimální cesta přes sítě WAN Azure.
+V tomto modelu se může každá větev, která je připojená k virtuálnímu rozbočovači WAN pomocí ExpressRoute, připojit k virtuální sítě pomocí cesty k virtuální síti. Provoz z větve do větve nebude přenášet do služby hub, protože ExpressRoute Global Reach umožňuje lepší cestu přes Azure WAN.
 
-## <a name="security"></a>Zabezpečení a zásad řízení
+## <a name="security"></a>Zabezpečení a řízení zásad
 
-Virtuální síť centra propojení a potenciálně vidí všechny provoz. Může být místo pro hostitele centrální síťové funkce a služby, jako je takový cloudu směrování, síťové zásady a zabezpečení a řízení přístupu na Internet.
+Rozbočovač virtuální sítě se vzájemně připojuje a potenciálně vidí veškerý tranzitní provoz. Může to být místo pro hostování funkcí a služeb centrální sítě, jako je například směrování cloudu, síťové zásady a zabezpečení a řízení přístupu k Internetu.
 
 ## <a name="next-steps"></a>Další postup
 
-Vytvoření připojení pomocí virtuální sítě WAN.
+Vytvořte připojení pomocí virtuální sítě WAN.
 
-* [Připojení Site-to-site pomocí virtuální sítě WAN](virtual-wan-site-to-site-portal.md)
-* [Připojení point-to-site pomocí virtuální sítě WAN](virtual-wan-point-to-site-portal.md)
-* [Připojení ExpressRoute využívající virtuální sítě WAN](virtual-wan-expressroute-portal.md)
+* [Připojení typu Site-to-site pomocí virtuální sítě WAN](virtual-wan-site-to-site-portal.md)
+* [Připojení ExpressRoute pomocí virtuální sítě WAN](virtual-wan-expressroute-portal.md)

@@ -1,61 +1,54 @@
 ---
-title: Povolení služby Azure Active Directory Identity Protection | Dokumentace Microsoftu
-description: Zjistěte, jak povolit Azure Active Directory Identity Protection.
+title: Povoluje se Azure Active Directory Identity Protection | Microsoft Docs
+description: Naučte se, jak povolit Azure Active Directory Identity Protection.
 services: active-directory
-keywords: Azure active directory identity protection, zjišťování cloudových aplikací, Správa aplikací, zabezpečení, rizika, úroveň rizika, ohrožení zabezpečení, zásady zabezpečení
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: daveba
-ms.assetid: f7a7ffaf-76bf-4cc7-96a1-86c944275c82
 ms.service: active-directory
 ms.subservice: identity-protection
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/02/2018
 ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5d33c5c3fe970ee8e5d70e0ba358462d5bdf2bbd
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 304ba16985d5abfc4d385b3f1150cfa544c20b2a
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60295053"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68335516"
 ---
-# <a name="enabling-azure-active-directory-identity-protection"></a>Povolení služby Azure Active Directory Identity Protection
+# <a name="enabling-azure-active-directory-identity-protection"></a>Povolení Azure Active Directory Identity Protection
 
-Azure Active Directory Identity Protection je funkce Azure Active Directory (Azure AD). S Azure AD Identity Protection budete moct:
+Azure Active Directory Identity Protection je schopnost Azure Active Directory (Azure AD). S Azure AD Identity Protection můžete:
 
-- Získejte ucelený přehled uživatele označené příznakem a rizikové události detekované pomocí algoritmů strojového učení
-- Nastavení zásad podmíněného přístupu na základě rizik do automaticky chrání uživatele
-- Zlepšit stav zabezpečení podle reagovat na ohrožení zabezpečení 
+- Získat ucelený pohled na uživatele označené příznakem a rizikové události detekované pomocí algoritmů strojového učení
+- Nastavit zásady podmíněného přístupu založené na rizicích, které automaticky chrání uživatele
+- Zlepšit stav zabezpečení tak, že bude reagovat na ohrožení zabezpečení 
 
 Další informace najdete v tématu [Azure Active Directory Identity Protection](../active-directory-identityprotection.md).
 
-Tento článek ukazuje, jak povolit Azure Active Directory Identity Protection.
+V tomto článku se dozvíte, jak povolit Azure Active Directory Identity Protection.
 
 ## <a name="steps-to-enable-azure-active-directory-identity-protection"></a>Postup povolení Azure Active Directory Identity Protection
 
-1. Přihlášení k vaší [webu Azure portal](https://ms.portal.azure.com/) jako globální správce. 
+1. Přihlaste se k vašemu [Azure Portal](https://ms.portal.azure.com/) jako globální správce. 
 
-2. Na webu Azure Portal, klikněte na tlačítko **Marketplace**.
+2. V Azure Portal klikněte na **Marketplace**.
    
-    ![Vytvoření](./media/enable/01.png "vytvořit")
+    ![Vytvořit](./media/enable/01.png "Vytvořit")
 
-3. V seznamu aplikací klepněte **Identity**.
+3. V seznamu aplikace klikněte na možnost **Identita**.
    
-    ![Vytvoření](./media/enable/05.png "vytvořit")
+    ![Vytvořit](./media/enable/05.png "Vytvořit")
 
-4. Klikněte na tlačítko **Azure AD Identity Protection**.
+4. Klikněte na **Azure AD Identity Protection**.
    
-    ![Vytvoření](./media/enable/06.png "vytvořit")
+    ![Vytvořit](./media/enable/06.png "Vytvořit")
 
-5. Na **Azure AD Identity Protection** okna, klikněte na tlačítko **vytvořit**.
+5. V okně **Azure AD Identity Protection** klikněte na **vytvořit**.
    
-    ![Vytvoření](./media/enable/04.png "vytvořit")
+    ![Vytvořit](./media/enable/04.png "Vytvořit")
 
 ## <a name="next-steps"></a>Další kroky
 * [Azure Active Directory Identity Protection](../active-directory-identityprotection.md)
-

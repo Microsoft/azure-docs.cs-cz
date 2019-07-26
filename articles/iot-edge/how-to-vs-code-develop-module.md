@@ -6,28 +6,32 @@ keywords: ''
 author: shizn
 manager: philmea
 ms.author: xshi
-ms.date: 06/25/2019
+ms.date: 07/23/2019
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 2d190edfac71705590135988b64ed043784125ec
-ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
-ms.translationtype: HT
+ms.openlocfilehash: a9c38d82c4b460564077690d3cddd731ec6c2b89
+ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68305567"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68414499"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-modules-for-azure-iot-edge"></a>Použití Visual Studio Code k vývoji a ladění modulů pro Azure IoT Edge
 
 Obchodní logiky můžete proměnit moduly pro Azure IoT Edge. V tomto článku se dozvíte, jak používat Visual Studio Code jako hlavní nástroj pro vývoj a ladění modulů.
 
+U modulů napsaných v C#, Node. js nebo Java existují dva způsoby, jak modul ladit v Visual Studio Code: Můžete buď připojit proces do kontejneru modulu, nebo spustit kód modulu v režimu ladění. Moduly napsané v Pythonu nebo C se dají ladit jenom připojením k procesu v kontejnerech Linux amd64.
+
+Pokud nejste obeznámeni s funkcemi ladění Visual Studio Code, přečtěte si o [ladění](https://code.visualstudio.com/Docs/editor/debugging).
+
+Tento článek poskytuje pokyny pro vývoj a ladění modulů v několika jazycích pro více architektur. V současné době Visual Studio Code poskytuje podporu pro moduly napsané v C#jazycích, C, Python, Node. js a Java. Podporované architektury zařízení jsou x64 a ARM32. Další informace o podporovaných operačních systémech, jazycích a architekturách najdete v tématu [Podpora jazyků a architektur](module-development.md#language-and-architecture-support).
+
+>[!NOTE]
+>Podpora pro vývoj a ladění pro zařízení se systémem Linux ARM64 je ve [verzi Public Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Další informace najdete v tématu [vývoj a ladění ARM64 IoT Edgech modulů v Visual Studio Code (Preview)](https://devblogs.microsoft.com/iotdev/develop-and-debug-arm64-iot-edge-modules-in-visual-studio-code-preview).
+
 ## <a name="prerequisites"></a>Požadavky
 
 Jako vývojový počítač můžete použít počítač nebo virtuální počítač s Windows, macOS nebo Linux. Zařízení IoT Edge může být jiné fyzické zařízení.
-
-U modulů napsaných v C#, Node. js nebo Java existují dva způsoby, jak modul ladit v Visual Studio Code: Můžete buď připojit proces do kontejneru modulu, nebo spustit kód modulu v režimu ladění. Moduly napsané v Pythonu nebo C se dají ladit jenom připojením k procesu v kontejnerech Linux amd64.
-
-> [!TIP]
-> Pokud nejste obeznámeni s funkcemi ladění Visual Studio Code, přečtěte si o [ladění](https://code.visualstudio.com/Docs/editor/debugging).
 
 Nejdřív nainstalujte [Visual Studio Code](https://code.visualstudio.com/) a pak přidejte následující rozšíření:
 
@@ -66,8 +70,7 @@ Pokud nevyvíjíte modul v jazyce C, budete také potřebovat nástroj pro vývo
 > [!NOTE]
 > Pokud máte několik Pythonů včetně předem nainstalovaného Pythonu 2,7 (například na Ubuntu nebo MacOS), ujistěte se, že používáte správnou `pip` instalaci nebo `pip3` Pokud chcete nainstalovat **iotedgehubdev** .
 
-> [!NOTE]
-> K otestování modulu v zařízení budete potřebovat aktivní službu IoT Hub s aspoň jedním IoT Edge zařízením. Pokud chcete počítač použít jako zařízení IoT Edge, postupujte podle kroků v rychlém startu pro [Linux](quickstart-linux.md) nebo [Windows](quickstart.md). Pokud ve vývojovém počítači používáte IoT Edge démon, možná budete muset před přechodem na další krok zastavit EdgeHub a EdgeAgent.
+K otestování modulu v zařízení budete potřebovat aktivní službu IoT Hub s aspoň jedním IoT Edge zařízením. Pokud chcete počítač použít jako zařízení IoT Edge, postupujte podle kroků v rychlém startu pro [Linux](quickstart-linux.md) nebo [Windows](quickstart.md). Pokud ve vývojovém počítači používáte IoT Edge démon, možná budete muset před přechodem na další krok zastavit EdgeHub a EdgeAgent.
 
 ## <a name="create-a-new-solution-template"></a>Vytvořit novou šablonu řešení
 

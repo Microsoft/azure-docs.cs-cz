@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Dotazování dat pomocí knihovny Python Průzkumník dat Azure'
+title: 'Rychlý start: Dotazování na data pomocí knihovny Pythonu v Azure Průzkumník dat'
 description: V tomto rychlém startu se naučíte dotazovat data z Azure Data Exploreru pomocí Pythonu.
 author: orspod
 ms.author: orspodek
@@ -7,14 +7,14 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 10/16/2018
-ms.openlocfilehash: 4de8f68e0384742cea4ce50ccd23a7455b186893
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 253629bab6b0985ab8f540c653f3671c49e6d278
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60827149"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68360231"
 ---
-# <a name="quickstart-query-data-using-the-azure-data-explorer-python-library"></a>Rychlý start: Dotazování dat pomocí knihovny Python Průzkumník dat Azure
+# <a name="quickstart-query-data-using-the-azure-data-explorer-python-library"></a>Rychlý start: Dotazování na data pomocí knihovny Pythonu v Azure Průzkumník dat
 
 Azure Data Explorer je rychlá a vysoce škálovatelná služba pro zkoumání dat protokolů a telemetrie. Azure Data Explorer poskytuje [datovou klientskou knihovnu pro Python](https://github.com/Azure/azure-kusto-python/tree/master/azure-kusto-data). Pomocí této knihovny můžete data dotazovat z kódu. V tomto rychlém startu se připojíte k tabulce na *clusteru nápovědy*, který jsme zřídili pro podporu výuky. Pak provedete dotaz na tabulku v tomto clusteru a vrátíte výsledky.
 
@@ -62,23 +62,24 @@ ID tenanta je v tomto případě `6babcaad-604b-40ac-a9d7-9fd97c0b779f`. Před s
 ```python
 AAD_TENANT_ID = "<TenantId>"
 KUSTO_CLUSTER = "https://help.kusto.windows.net/"
-KUSTO_DATABASE  = "Samples"
+KUSTO_DATABASE = "Samples"
 ```
 
-Teď sestavte připojovací řetězec. V tomto příkladu se pro přístup ke clusteru používá ověřování pomocí zařízení. Můžete také použít [certifikát aplikace AAD](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py#L24), [klíč aplikace AAD](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py#L20), a [AAD uživatele a heslo](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py#L34).
+Teď sestavte připojovací řetězec. V tomto příkladu se pro přístup ke clusteru používá ověřování pomocí zařízení. Můžete také použít [certifikát aplikace AAD](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py#L24), [klíč aplikace AAD](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py#L20)a [uživatele a heslo AAD](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py#L34).
 
 ```python
-KCSB = KustoConnectionStringBuilder.with_aad_device_authentication(KUSTO_CLUSTER)
+KCSB = KustoConnectionStringBuilder.with_aad_device_authentication(
+    KUSTO_CLUSTER)
 KCSB.authority_id = AAD_TENANT_ID
 ```
 
 ## <a name="connect-to-azure-data-explorer-and-execute-a-query"></a>Připojení k Azure Data Exploreru a spuštění dotazu
 
-Spusťte dotaz vůči clusteru a uložte výstup do datového rámce. Když tento kód se spustí, vrátí se zpráva podobná následující: *Pro přihlášení, použijte webový prohlížeč a otevřete stránku https://microsoft.com/devicelogin a zadejte kód F3W4VWZDM k ověření*. Podle pokynů se přihlaste a pak se vraťte a spusťte další blok kódu.
+Spusťte dotaz vůči clusteru a uložte výstup do datového rámce. Po spuštění tohoto kódu se vrátí zpráva podobná následující: Pokud *se chcete přihlásit, https://microsoft.com/devicelogin otevřete stránku pomocí webového prohlížeče a zadejte kód F3W4VWZDM, který se má ověřit*. Podle pokynů se přihlaste a pak se vraťte a spusťte další blok kódu.
 
 ```python
-KUSTO_CLIENT  = KustoClient(KCSB)
-KUSTO_QUERY  = "StormEvents | sort by StartTime desc | take 10"
+KUSTO_CLIENT = KustoClient(KCSB)
+KUSTO_QUERY = "StormEvents | sort by StartTime desc | take 10"
 
 RESPONSE = KUSTO_CLIENT.execute(KUSTO_DATABASE, KUSTO_QUERY)
 ```
@@ -97,4 +98,4 @@ Měli byste vidět prvních deset výsledků z tabulky StormEvents.
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Rychlé zprovoznění: Ingestování dat pomocí knihovny Python Průzkumník dat Azure](python-ingest-data.md)
+> [Rychlé zprovoznění: Ingestování dat pomocí knihovny Pythonu v Azure Průzkumník dat](python-ingest-data.md)

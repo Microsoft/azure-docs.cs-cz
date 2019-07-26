@@ -14,14 +14,14 @@ ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 5/10/2018
-ms.author: erikre
+ms.author: banders
 ms.custom: seodec18
-ms.openlocfilehash: 99772579fd28b0880d497abb038fb25fd2a6139e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 4756c7abcb354e0b72c8a95c9d2df4bb3a14671a
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60369263"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68443021"
 ---
 # <a name="use-azure-billing-apis-to-programmatically-get-insight-into-your-azure-usage"></a>Pomocí Azure API pro fakturaci prostřednictvím kódu programu získáte přehled o využívání služeb Azure
 Pomocí Azure API pro fakturaci. data o využití a prostředků o přijetí změn do nástroje pro vaše preferované datové analýzy. Rozhraní API využití a ceníku prostředků Azure vám pomohou přesně odhadnout a spravovat vaše náklady. Rozhraní API se implementují jako poskytovatele prostředků a součástí rodiny API pomocí Azure Resource Manageru.  

@@ -14,15 +14,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 07/15/2019
+ms.date: 07/24/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: df12d4f7b2a06b89df1bfd7d7d904943e341ccd2
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: 8f4352a1f6a065d1e9be78f01bde95c8f00593a3
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68234249"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68479775"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Použití Azure k hostování a spouštění scénářů pro úlohy SAP
 
@@ -34,8 +34,9 @@ Jedinečnost Azure pro SAP HANA je nabídka, která nastavuje Azure odděleně. 
 
 Hostování scénářů pro úlohy SAP v Azure taky může vytvořit požadavky na integraci identit a jednotné přihlašování. K této situaci může dojít, když použijete Azure Active Directory (Azure AD) k propojení různých komponent SAP a SAP software-as-a-Service (SaaS) nebo Platform-as-a-Service (PaaS). Seznam takových scénářů integrace a jednotného přihlašování s entitami služby Azure AD a SAP je popsán v části "AAD SAP Identity Integration and Single přihlašování".
 
-## <a name="latest-changes"></a>Poslední změny
+## <a name="change-log"></a>Protokol změn
 
+- Změny v [clusteru jsou instance SAP ASCS/SCS v clusteru s podporou převzetí služeb při selhání systému Windows pomocí sdílené složky v Azure](sap-high-availability-guide-wsfc-file-share.md) , aby odrážela podporu prostoru úložiště s přímým přístupem Azure Site Recovery službami.
 - Vydání [skupin umístění blízkosti Azure pro optimální latenci sítě s aplikacemi SAP](sap-proximity-placement-scenarios.md)
 - Vydání nové Příručky k [IBM DB2 hadr na serveru Red Hat Enterprise](high-availability-guide-rhel-ibm-db2-luw.md)
 - Vydání [vysoké dostupnosti pro SAP NetWeaver v Red Hat Enterprise Linux s Azure NetApp Files pro aplikace SAP](high-availability-guide-rhel-netapp-files.md)
@@ -60,7 +61,7 @@ Hostování scénářů pro úlohy SAP v Azure taky může vytvořit požadavky 
 - [Vysoká dostupnost a zotavení po havárii SAP HANA v Azure (velké instance)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery)
 - [Řešení potíží a monitorování SAP HANA v Azure (velké instance)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/troubleshooting-monitoring)
 
-Další kroky:
+Další postup:
 
 - Přečtěte si [Přehled a architekturu SAP HANA v Azure (velké instance)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)
 

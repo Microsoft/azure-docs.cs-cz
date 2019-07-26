@@ -1,75 +1,69 @@
 ---
-title: Cloud Services a správa certifikátů | Dokumentace Microsoftu
-description: Další informace o vytváření a používání certifikátů s Microsoft Azure
+title: Cloud Services a certifikáty pro správu | Microsoft Docs
+description: Naučte se vytvářet a používat certifikáty s Microsoft Azure
 services: cloud-services
 documentationcenter: .net
-author: jpconnock
-manager: timlt
-editor: ''
-ms.assetid: fc70d00d-899b-4771-855f-44574dc4bfc6
+author: georgewallace
 ms.service: cloud-services
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
-ms.author: jeconnoc
-ms.openlocfilehash: 82d1114451b677880b0b02234546d9cdb2e743e2
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.author: gwallace
+ms.openlocfilehash: 3c84c6832856986a45be7d275fb94a6c5fc066f0
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67593050"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68359192"
 ---
 # <a name="certificates-overview-for-azure-cloud-services"></a>Přehled certifikátů pro Azure Cloud Services
-Certifikáty se používají v Azure pro cloudové služby ([služby certifikátů](#what-are-service-certificates)) a pro ověřování pomocí rozhraní API pro správu ([certifikáty pro správu](#what-are-management-certificates)). Toto téma obsahuje obecný přehled o oba typy certifikátů, jak k [vytvořit](#create) a jejich nasazení do Azure.
+Certifikáty se používají v Azure pro cloudové služby ([certifikáty služeb](#what-are-service-certificates)) a pro ověřování pomocí rozhraní API pro správu ([certifikáty pro správu](#what-are-management-certificates)). Toto téma obsahuje obecný přehled obou typů certifikátů, jak je [vytvořit](#create) a nasadit do Azure.
 
-Certifikáty používané v Azure jsou x.509 v3 certifikáty a může být podepsány jiný certifikát pro důvěryhodného nebo mohou být podepsaný svým držitelem. Certifikát podepsaný svým držitelem je podepsaný vlastním creator, proto není důvěryhodný ve výchozím nastavení. Většina prohlížečů můžete ignorovat tento problém. Byste měli používat jenom certifikáty podepsané svým držitelem při vývoji a testování vašich cloudových služeb. 
+Certifikáty, které se používají v Azure, jsou certifikáty x. 509 v3 a můžou být podepsané jiným důvěryhodným certifikátem nebo můžou být podepsané svým držitelem. Certifikát podepsaný svým držitelem je podepsaný vlastním tvůrcem, proto není ve výchozím nastavení důvěryhodný. Většina prohlížečů může tento problém ignorovat. Certifikáty podepsané svým držitelem byste měli používat jenom při vývoji a testování vašich cloudových služeb. 
 
-Certifikáty používané službou Azure může obsahovat privátního nebo veřejného klíče. Certifikáty mít kryptografický otisk, který poskytuje prostředky k identifikaci jednoznačným způsobem. Tímto kryptografickým otiskem se používá ve službě Azure [konfigurační soubor](cloud-services-configure-ssl-certificate-portal.md) k identifikaci který certifikát je Cloudová služba by měla používat. 
-
->[!Note]
->Azure Cloud Services nepřijímá zašifrovaný certifikát AES256 SHA256.
-
-## <a name="what-are-service-certificates"></a>Co jsou certifikáty služeb?
-Certifikáty služby jsou připojeny k cloudových služeb a povolení zabezpečené komunikace do a ze služby. Pokud jste nasadili webovou roli, by například chcete zadat certifikát, který může ověřit koncový bod HTTPS vystavené. Certifikáty služby, definované v definici služby se automaticky nasadí do virtuálního počítače, na kterém běží instance role. 
-
-Certifikáty služby můžete nahrát do Azure, buď pomocí webu Azure portal nebo pomocí modelu nasazení classic. Certifikáty služby jsou spojeny s konkrétní cloudové služby. Jsou přiřazeny k nasazení v definičním souboru služby.
-
-Certifikáty služeb se dají spravovat nezávisle z vašich služeb a může být spravován různí jednotlivci. Například vývojář může nahrát balíček služby, který odkazuje na certifikát, který správce IT má byl dříve odeslán do Azure. Správce IT můžete spravovat a obnovit tento certifikát (a změníte konfiguraci této služby) bez nutnosti k nahrání nového balíčku služby. Aktualizace bez nového balíčku služby je možné, protože logický název, název úložiště a umístění certifikátu naleznete v souboru definice služby a kryptografický otisk certifikátu je zadané v konfiguračním souboru služby. Pokud chcete aktualizovat certifikát, je pouze potřeba nahrát nový certifikát a změňte hodnotu kryptografického otisku v konfiguračním souboru služby.
+Certifikáty používané v Azure můžou obsahovat soukromý nebo veřejný klíč. Certifikáty mají kryptografický otisk, který poskytuje prostředky k jejich identifikaci jednoznačným způsobem. Tento kryptografický otisk se používá v [konfiguračním souboru](cloud-services-configure-ssl-certificate-portal.md) Azure k identifikaci certifikátu, který by měla cloudová služba používat. 
 
 >[!Note]
->[Cloud Services – nejčastější dotazy – konfigurace a správa](cloud-services-configuration-and-management-faq.md) článek má některé užitečné informace o certifikátech.
+>Azure Cloud Services nepřijímá zašifrovaný certifikát AES256-SHA256.
+
+## <a name="what-are-service-certificates"></a>Co jsou certifikáty služby?
+Certifikáty služeb jsou připojené ke cloudovým službám a umožňují zabezpečenou komunikaci do a ze služby. Pokud jste například nasadili webovou roli, měli byste dodat certifikát, který může ověřit vystavený koncový bod HTTPS. Certifikáty služby definované v definici služby se automaticky nasadí do virtuálního počítače, na kterém běží instance vaší role. 
+
+Certifikáty služby můžete do Azure nahrát buď pomocí Azure Portal, nebo pomocí modelu nasazení Classic. Certifikáty služeb jsou přidružené ke konkrétní cloudové službě. Jsou přiřazeny k nasazení v definičním souboru služby.
+
+Certifikáty služeb je možné spravovat odděleně od služeb a můžou je spravovat různí jednotlivci. Vývojář může například nahrát balíček služby, který odkazuje na certifikát, který správce IT předtím nahrál do Azure. Správce IT může tento certifikát spravovat a obnovovat (Změna konfigurace služby), aniž by musel nahrávat nový balíček služby. Aktualizace bez nového balíčku služby je možná, protože logický název, název úložiště a umístění certifikátu jsou v definičním souboru služby a i když je v konfiguračním souboru služby zadaný kryptografický otisk certifikátu. Chcete-li aktualizovat certifikát, je nutné odeslat nový certifikát a změnit hodnotu kryptografického otisku v konfiguračním souboru služby.
+
+>[!Note]
+>[Cloud Services nejčastější dotazy ke konfiguraci a správě](cloud-services-configuration-and-management-faq.md) obsahují některé užitečné informace o certifikátech.
 
 ## <a name="what-are-management-certificates"></a>Co jsou certifikáty pro správu?
-Certifikáty pro správu umožňují ověření pomocí modelu nasazení classic. Mnoho programech a nástrojích (např. Visual Studio nebo pomocí sady SDK Azure) použijte tyto certifikáty k automatizaci konfigurace a nasazení různých služeb Azure. Tyto nemá relaci ve skutečnosti ke cloudovým službám. 
+Certifikáty pro správu umožňují ověřování pomocí modelu nasazení Classic. Mnoho programů a nástrojů (například sadu Visual Studio nebo Azure SDK) tyto certifikáty používá k automatizaci konfigurace a nasazení různých služeb Azure. Nevztahují se ke cloudovým službám. 
 
 > [!WARNING]
-> Dej si pozor! Tyto typy certifikátů povolit všem uživatelům, který se ověřuje pomocí nich ke správě předplatného, které jsou přidružené. 
+> Dej si pozor! Tyto typy certifikátů umožňují všem, kteří se s nimi ověřují, spravovat předplatné, ke kterému jsou přidružené. 
 > 
 > 
 
 ### <a name="limitations"></a>Omezení
-Platí limit 100 certifikátů pro správu na jedno předplatné. Také platí limit 100 certifikátů pro správu pro všechna předplatná zařazená pod ID správce konkrétní služby uživatele. Pokud ID uživatele pro účet správce již byl použit pro přidání 100 certifikáty pro správu a je potřeba pro další certifikáty, můžete přidat spolupracující správce přidat další certifikáty. 
+U každého předplatného je povolený limit 100 certifikátů pro správu. K dispozici je také limit 100 certifikátů pro správu pro všechna předplatná v rámci konkrétního ID uživatele správce služeb. Pokud ID uživatele pro správce účtu již bylo použito k přidání certifikátů pro správu 100 a vyžaduje více certifikátů, můžete přidat spolusprávce a přidat další certifikáty. 
 
 <a name="create"></a>
-## <a name="create-a-new-self-signed-certificate"></a>Vytvořit nový certifikát podepsaný svým držitelem
-Můžete použít jakýkoli nástroj k vytvoření certifikátu podepsaného svým držitelem, za předpokladu, že dodržovat tato nastavení:
+## <a name="create-a-new-self-signed-certificate"></a>Vytvoření nového certifikátu podepsaného svým držitelem
+Můžete použít libovolný nástroj dostupný k vytvoření certifikátu podepsaného svým držitelem, pokud dodržují tato nastavení:
 
-* Certifikát X.509.
+* Certifikát X. 509.
 * Obsahuje privátní klíč.
-* Vytvořen pro výměnu klíčů (soubor .pfx).
-* Název subjektu musí odpovídat doménu, kterou používá pro přístup ke cloudové službě.
+* Vytvořeno pro výměnu klíčů (soubor. pfx).
+* Název subjektu se musí shodovat s doménou používanou pro přístup ke cloudové službě.
 
-    > Nelze získat certifikát SSL pro cloudapp.net (nebo pro všechny související s Azure) domény. Název subjektu certifikátu musí odpovídat názvu vlastní domény pro přístup k aplikaci. Například **contoso.net**, nikoli **contoso.cloudapp.net**.
+    > Nemůžete získat certifikát SSL pro cloudapp.net (nebo pro žádnou doménu související s Azure); název subjektu certifikátu se musí shodovat s názvem vlastní domény použitým pro přístup k vaší aplikaci. Například **contoso.NET**, ne **contoso.cloudapp.NET**.
 
-* Minimálně 2048bitové šifrování.
-* **Certifikát služby pouze**: Certifikát na straně klienta se musí nacházet v *osobní* úložiště certifikátů.
+* Minimálně 2048 bitů šifrování.
+* **Jenom certifikát služby**: Certifikát na straně klienta se musí nacházet v *osobním* úložišti certifikátů.
 
-Existují dva snadných způsobů, jak vytvořit certifikát na Windows, se `makecert.exe` nástroj nebo službu IIS.
+Existují dva jednoduché způsoby, jak vytvořit certifikát ve Windows, a to pomocí `makecert.exe` nástroje nebo služby IIS.
 
 ### <a name="makecertexe"></a>Makecert.exe
-Tento nástroj je zastaralý a už jsou zde uvedeny. Další informace najdete v tématu [článku na webu MSDN](/windows/desktop/SecCrypto/makecert).
+Tento nástroj je zastaralý a již není dokumentován. Další informace najdete v [tomto článku na webu MSDN](/windows/desktop/SecCrypto/makecert).
 
 ### <a name="powershell"></a>PowerShell
 ```powershell
@@ -79,23 +73,23 @@ Export-PfxCertificate -Cert $cert -FilePath ".\my-cert-file.pfx" -Password $pass
 ```
 
 > [!NOTE]
-> Pokud chcete použít certifikát s IP adresou namísto domény, použijte parametr - DnsName IP adresu.
+> Pokud chcete použít certifikát s IP adresou a nikoli doménou, použijte IP adresu v parametru-DnsName.
 
 
-Pokud chcete použít toto [certifikátu pomocí portálu pro správu](../azure-api-management-certs.md), exportujte ho do **.cer** souboru:
+Pokud chcete tento [certifikát použít s portálem pro správu](../azure-api-management-certs.md), exportujte ho do souboru **. cer** :
 
 ```powershell
 Export-Certificate -Type CERT -Cert $cert -FilePath .\my-cert-file.cer
 ```
 
 ### <a name="internet-information-services-iis"></a>Internetová informační služba (IIS)
-Existuje mnoho stránek na Internetu, které se dozvíte, jak to udělat pomocí služby IIS. [Tady](https://www.sslshopper.com/article-how-to-create-a-self-signed-certificate-in-iis-7.html) je skvělé se mi najít myslím vysvětluje dobře. 
+Existuje mnoho stránek na internetu, které pokrývají, jak to provést se službou IIS. [Tady](https://www.sslshopper.com/article-how-to-create-a-self-signed-certificate-in-iis-7.html) je skvělé, který jsme našli, že je to v podstatě. 
 
 ### <a name="linux"></a>Linux
-[To](../virtual-machines/linux/mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) článek popisuje postup vytvoření certifikátů pomocí protokolu SSH.
+[Tento](../virtual-machines/linux/mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) článek popisuje, jak vytvořit certifikáty pomocí SSH.
 
-## <a name="next-steps"></a>Další postup
-[Nahrát svůj certifikát služby na webu Azure portal](cloud-services-configure-ssl-certificate-portal.md).
+## <a name="next-steps"></a>Další kroky
+[Nahrajte do Azure Portal certifikát služby](cloud-services-configure-ssl-certificate-portal.md).
 
-Nahrát [certifikátu rozhraní API pro správu](../azure-api-management-certs.md) k webu Azure portal.
+Nahrajte do Azure Portal [certifikát rozhraní API pro správu](../azure-api-management-certs.md) .
 

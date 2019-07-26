@@ -1,5 +1,5 @@
 ---
-title: 'Směrování požadavků – ExpressRoute: Azure | Dokumentace Microsoftu'
+title: 'Požadavky směrování – ExpressRoute: Azure | Microsoft Docs'
 description: Tato stránka obsahuje podrobné požadavky pro konfiguraci a správu směrování pro okruhy ExpressRoute.
 services: expressroute
 author: cherylmc
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/12/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 6c475ab0a2e47cf654d1299a4c5638b34fb5e4b6
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: 458808f9d2c496ae4c29b05bd8a3531b94ba78c0
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67508533"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68422684"
 ---
 # <a name="expressroute-routing-requirements"></a>Požadavky na směrování služby ExpressRoute
 Pokud se chcete připojit ke cloudovým službám Microsoftu pomocí služby ExpressRoute, budete muset nastavit a spravovat směrování. Někteří poskytovatelé připojení nabízejí nastavení a správu směrování jako spravovanou službu. Zeptejte se svého poskytovatele připojení, jestli tuto službu nabízí. Pokud ne, je nutné splnit následující požadavky:
@@ -84,7 +84,7 @@ Pro nastavení relací protokolu BGP musíte použít veřejné IP adresy, kter�
 Pro soukromý partnerský vztah si můžete zvolit použití veřejných nebo privátních IPv4 adres. Poskytujeme kompletní izolaci provozu, takže v případě soukromého partnerského vztahu není možné překrývání adres s jinými zákazníky. Tyto adresy nejsou inzerované na internetu. 
 
 ### <a name="microsoft-peering"></a>Partnerský vztah Microsoftu
-Cesta partnerského vztahu Microsoftu vám umožní připojit se ke cloudovým službám Microsoftu. Mezi tyto služby patří služby Office 365, jako je Exchange Online, SharePoint Online, Skype pro firmy nebo Dynamics 365. Microsoft v partnerském vztahu Microsoftu podporuje obousměrné připojení. Přenosy směřující do cloudových služeb Microsoftu musí před vstupem do služby MSN používat platné veřejné IPv4 adresy.
+Cesta partnerského vztahu Microsoftu vám umožní připojit se ke cloudovým službám Microsoftu. Seznam služeb zahrnuje služby Office 365, jako je Exchange Online, SharePoint Online, Skype pro firmy, Microsoft teams a Dynamics 365. Microsoft v partnerském vztahu Microsoftu podporuje obousměrné připojení. Přenosy směřující do cloudových služeb Microsoftu musí před vstupem do služby MSN používat platné veřejné IPv4 adresy.
 
 Ujistěte se, že vaše IP adresa a číslo AS jsou registrované na vás v jednom z následujících registrů:
 
@@ -101,7 +101,7 @@ Pokud vám ve výše uvedených registrech nejsou přiřazeny vaše předpony a 
 U partnerského vztahu Microsoftu je povoleno soukromé číslo AS, které ale také vyžaduje ruční ověření. Kromě toho v AS PATH odebereme soukromá čísla AS pro přijaté předpony. V důsledku toho nebudete moct připojit soukromá čísla AS k AS PATH, abyste [ovlivnili směrování pro partnerský vztah Microsoftu](expressroute-optimize-routing.md). 
 
 > [!IMPORTANT]
-> Neprovádějí stejnou veřejnou IP trasy do veřejného Internetu a přes ExpressRoute. Aby se snížilo riziko chybné konfigurace způsobuje asymetrické směrování, důrazně doporučujeme, aby [adres IP pro NAT](expressroute-nat.md) inzerovaným Microsoftu přes ExpressRoute být z rozsahu, který není vůbec inzerované na Internetu. Pokud to není možné dosáhnout, je nezbytné zajistit, že inzerujete konkrétnější oblast přes ExpressRoute než na připojení k Internetu. Kromě veřejné trasy pro překlad adres, můžete také inzerovat přes ExpressRoute veřejné IP adresy používané servery ve vaší místní síti, které komunikují s koncovými body služeb Office 365 v rámci Microsoftu. 
+> Neprovádějí stejnou veřejnou IP trasy do veřejného Internetu a přes ExpressRoute. Aby se snížilo riziko nesprávné konfigurace, která způsobuje asymetrické směrování, důrazně doporučujeme, aby [IP adresy NAT](expressroute-nat.md) inzerované Microsoftu přes ExpressRoute byly z rozsahu, který není inzerovaný pro Internet vůbec. Pokud to není možné dosáhnout, je nutné zajistit, abyste inzerovali konkrétnější rozsah přes ExpressRoute, než je ten v připojení k Internetu. Kromě veřejné trasy pro překlad adres, můžete také inzerovat přes ExpressRoute veřejné IP adresy používané servery ve vaší místní síti, které komunikují s koncovými body služeb Office 365 v rámci Microsoftu. 
 > 
 > 
 
@@ -120,7 +120,7 @@ Výměna směrování bude přes protokol EBGP. Relace EBGP se vytvoří mezi sm
 ## <a name="autonomous-system-numbers"></a>Čísla autonomního systému
 Microsoft pro veřejný partnerský vztah Azure, soukromý partnerský vztah Azure a partnerský vztah Microsoftu používá číslo AS 12076. Pro interní použití jsme vyhradili čísla ASN od 65515 do 65520. Jsou podporována 16bitová a 32bitová čísla AS.
 
-Nejsou žádné požadavky týkající se symetrie přenosu dat. Cesty vpřed a zpět můžou procházet různými dvojicemi směrovačů. Identické trasy musí být inzerovány z obou stran přes víc dvojic okruhů, které vám patří. Metriky tras nemusejí být identické.
+Nejsou žádné požadavky týkající se symetrie přenosu dat. Cesty vpřed a zpět můžou procházet různými dvojicemi směrovačů. Identické trasy musí být inzerovány z obou stran napříč páry okruhů, které patří vám. Metriky tras nemusejí být identické.
 
 ## <a name="route-aggregation-and-prefix-limits"></a>Agregace tras a omezení předpon
 Podporujeme až 4000 předpon, které jsou nám inzerované prostřednictvím soukromého partnerského vztahu Azure. To omezení může být zvýšeno až 10 000 předpon, pokud je povolen doplněk ExpressRoute Premium. Přijímáme až 200 předpon na každou relaci BGP pro veřejný partnerský vztah Azure a partnerský vztah Microsoftu. 
@@ -135,7 +135,7 @@ Výchozí trasy jsou povolené jenom na relacích soukromého partnerského vzta
 
  Chcete-li povolit připojení k dalším službám Azure a službám infrastruktury, je třeba zajistit, že platí jedna z následujících položek:
 
-* Veřejný partnerský vztah Azure je povolené přesměrování provozu na veřejné koncové body.
+* Veřejný partnerský vztah Azure povoluje směrování provozu do veřejných koncových bodů.
 * Používáte uživatelsky definované směrování umožňující připojení k internetu pro každou podsíť, která připojení k internetu vyžaduje.
 
 > [!NOTE]
@@ -154,17 +154,17 @@ Podrobný seznam geopolitických oblastí, přidružených oblastí Azure a odpo
 
 Můžete zakoupit víc než jeden okruh ExpressRoute na geopolitickou oblast. Použití víc připojení nabízí významné výhody vysoké dostupnosti z důvodu georedundance. V případech, kdy máte víc okruhů ExpressRoute obdržíte stejnou sadu předpon inzerovaných od Microsoftu na partnerský vztah Microsoftu a cesty veřejného partnerského vztahu. To znamená, že bude mít z vaší sítě do Microsoftu víc cest. To může potenciálně v rámci vaší sítě způsobovat přijímání neoptimálních rozhodnutí o směrování. V důsledku toho se můžete u různých služeb setkat s neoptimálním průběhem připojení. Při rozhodování o směrování se na tyto hodnoty komunity můžete spoléhat, abyste nabízeli [uživatelům optimální směrování](expressroute-optimize-routing.md).
 
-| **Oblast Microsoft Azure** | **Regionální komunity protokolu BGP** | **Úložiště komunity protokolu BGP** | **Komunity protokolu BGP SQL** | **Komunity protokolu BGP databáze cosmos** |
+| **Oblast Microsoft Azure** | **Oblastní komunita protokolu BGP** | **Komunita protokolu BGP úložiště** | **Komunita protokolu BGP SQL** | **Cosmos DB komunita protokolu BGP** |
 | --- | --- | --- | --- | --- |
 | **Severní Amerika** | |
 | USA – východ | 12076:51004 | 12076:52004 | 12076:53004 | 12076:54004 |
 | Východní USA 2 | 12076:51005 | 12076:52005 | 12076:53005 | 12076:54005 |
-| Západní USA | 12076:51006 | 12076:52006 | 12076:53006 | 12076:54006 |
-| Západní USA 2 | 12076:51026 | 12076:52026 | 12076:53026 | 12076:54026 |
+| USA – západ | 12076:51006 | 12076:52006 | 12076:53006 | 12076:54006 |
+| USA – západ 2 | 12076:51026 | 12076:52026 | 12076:53026 | 12076:54026 |
 | Západní střed USA | 12076:51027 | 12076:52027 | 12076:53027 | 12076:54027 |
-| Středoseverní USA | 12076:51007 | 12076:52007 | 12076:53007 | 12076:54007 |
-| Středojižní USA | 12076:51008 | 12076:52008 | 12076:53008 | 12076:54008 |
-| USA – střed | 12076:51009 | 12076:52009 | 12076:53009 | 12076:54009 |
+| Střed USA – sever | 12076:51007 | 12076:52007 | 12076:53007 | 12076:54007 |
+| Střed USA – jih | 12076:51008 | 12076:52008 | 12076:53008 | 12076:54008 |
+| Střed USA | 12076:51009 | 12076:52009 | 12076:53009 | 12076:54009 |
 | Kanada – střed | 12076:51020 | 12076:52020 | 12076:53020 | 12076:54020 |
 | Kanada – východ | 12076:51021 | 12076:52021 | 12076:53021 | 12076:54021 |
 | **Jižní Amerika** | |
@@ -194,7 +194,7 @@ Můžete zakoupit víc než jeden okruh ExpressRoute na geopolitickou oblast. Po
 | Indie – střed | 12076:51017 | 12076:52017 | 12076:53017 | 12076:54017 |
 | **Jižní Korea** | |
 | Jižní Korea – jih | 12076:51028 | 12076:52028 | 12076:53028 | 12076:54028 |
-| Korea – střed | 12076:51029 | 12076:52029 | 12076:53029 | 12076:54029 |
+| Jižní Korea – střed | 12076:51029 | 12076:52029 | 12076:53029 | 12076:54029 |
 | **Jižní Afrika**| |
 | Jižní Afrika – sever | 12076:51034 | 12076:52034 | 12076:53034 | 12076:54034 |
 | Jižní Afrika – západ | 12076:51035 | 12076:52035 | 12076:53035 | 12076:54035 |
@@ -210,7 +210,7 @@ Všechny trasy inzerované Microsoftem budou označené odpovídající hodnotou
 > 
 > 
 
-### <a name="service-to-bgp-community-value"></a>Služby na hodnotu komunity protokolu BGP
+### <a name="service-to-bgp-community-value"></a>Hodnota služby pro komunitu BGP
 Kromě výše uvedeného bude Microsoft také označovat předpony podle služby, ke které patří. To se týká jenom partnerského vztahu Microsoftu. Následující tabulka poskytuje mapování služby na hodnotu komunity protokolu BGP.
 
 | **Služba** | **Hodnota komunity protokolu BGP** |
@@ -222,7 +222,7 @@ Kromě výše uvedeného bude Microsoft také označovat předpony podle služby
 | Azure globální služby * | 12076:5050 |
 | Jiné online služby Office 365 | 12076:5100 |
 
-\* Azure služeb Global Services obsahuje pouze Azure DevOps v tuto chvíli.
+\* Globální služby Azure v tuto chvíli obsahují jenom Azure DevOps.
 
 
 > [!NOTE]

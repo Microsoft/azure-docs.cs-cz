@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 1a13c130c45c746a42c0acf1ec2646f3c8f9bc51
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
-ms.translationtype: HT
+ms.openlocfilehash: b48455b6ea9c1cd74e94c10d8f9f938c20512c02
+ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68227521"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68414570"
 ---
 # <a name="create-and-provision-an-iot-edge-device-with-a-virtual-tpm-on-a-linux-virtual-machine"></a>Vytvoření a zřízení zařízení IoT Edge s virtuálním čipem TPM na virtuálním počítači se systémem Linux
 
@@ -162,8 +162,7 @@ Modul runtime IoT Edge se nasadí na všechna zařízení IoT Edge. Jeho součá
 
 Vědět, službě Device Provisioning **rozsah ID** a zařízení **ID registrace** před zahájením článek, který odpovídá typu vašeho zařízení. Pokud jste nainstalovali server se systémem Ubuntu v příkladu, použijte **x64** pokyny. Ujistěte se, že konfigurace modulu runtime IoT Edge není ruční, automatické zřizování. 
 
-* [Instalace modulu runtime Azure IoT Edge v systému Linux (x64)](how-to-install-iot-edge-linux.md)
-* [Instalace modulu runtime Azure IoT Edge v systému Linux (ARM32v7/armhf)](how-to-install-iot-edge-linux-arm.md)
+[Instalace modulu runtime Azure IoT Edge v systému Linux](how-to-install-iot-edge-linux.md)
 
 ## <a name="give-iot-edge-access-to-the-tpm"></a>Poskytnout přístup IoT Edge do čipu TPM
 

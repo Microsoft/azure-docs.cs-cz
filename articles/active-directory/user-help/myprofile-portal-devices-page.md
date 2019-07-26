@@ -1,6 +1,6 @@
 ---
-title: Správa připojených zařízení z portálu Můj profil (preview) – Azure Active Directory | Dokumentace Microsoftu
-description: Základní přehled o stránce zařízení na portálu Můj profil.
+title: Spravujte připojená zařízení z portálu Můj profil (Preview) – Azure Active Directory | Microsoft Docs
+description: Podrobný přehled stránky zařízení na portálu Můj profil
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -12,41 +12,44 @@ ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b303a1cd3da7010573ce34dd4762616f4b6581d0
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c9035d68e95798eb238c1836e617e485c39194c4
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60475826"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68383031"
 ---
-# <a name="manage-your-connected-devices-from-the-my-profile-preview-portal"></a>Správa připojených zařízení z portálu Můj profil (preview)
-Budete moct spravovat zařízení, kterým jste připojeni, pomocí svého pracovního nebo školního účtu, zakázat některé, které už vlastníte, z **zařízení** stránku **Můj profil** portálu.
+# <a name="manage-your-connected-devices-from-the-my-profile-preview-portal"></a>Spravujte připojená zařízení z portálu Můj profil (Preview).
+
+Zařízení, ke kterým jste se připojili pomocí svého pracovního nebo školního účtu, můžete spravovat tak, že na stránce **zařízení** na portálu **můj profil** zakážete, aby už nevlastníte.
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-myprofile.md)]
 
 ## <a name="view-your-connected-devices"></a>Zobrazit připojená zařízení
-1. Přihlaste se ke svému pracovnímu nebo školnímu účtu a potom přejděte k vaší https://myprofile.microsoft.com/ stránky.
 
-2. Vyberte **zařízení** z levého navigačního podokna nebo vyberte **spravovat zařízení** propojit **zařízení** bloku.
+1. Přihlaste se ke svému pracovnímu nebo školnímu účtu a https://myprofile.microsoft.com/ pak přejít na stránku.
 
-    ![Stránka Moje profilu zobrazující zvýrazněný odkazy zařízení](media/myprofile-portal/myprofile-portal-devices.png)
+2. V levém navigačním podokně vyberte **zařízení** nebo vyberte odkaz **spravovat zařízení** z bloku **zařízení** .
 
-3. Zkontrolujte informace o připojených zařízení, ujistěte se, že všechny rozpoznat. 
+    ![Stránka můj profil zobrazující odkazy na zvýrazněná zařízení](media/myprofile-portal/myprofile-portal-devices.png)
 
-    ![Stránka zařízení zobrazuje připojená zařízení](media/myprofile-portal/myprofile-portal-devices-page.png)
+3. Zkontrolujte informace o připojených zařízeních a ujistěte se, že jsou všechny rozpoznány. 
+
+    ![Stránka zařízení, která zobrazuje připojená zařízení](media/myprofile-portal/myprofile-portal-devices-page.png)
 
 ## <a name="disable-a-device"></a>Zakázání zařízení
-Kdykoli můžete zakázat kterýkoliv z připojených zařízení. To je obzvláště důležité, pokud zařízení není povědomá, nebo pokud dojde ke ztrátě nebo odcizení zařízení. Po zakázání zařízení už může být ověřen pomocí vaší organizaci a bude schopen získat přístup k žádným prostředkům vaší organizace.
+
+Všechna připojená zařízení můžete kdykoli zakázat. To je obzvláště důležité, pokud vám zařízení není známé nebo pokud dojde ke ztrátě nebo odcizení zařízení. Když zařízení zakážete, už ho nebude možné ověřit ve vaší organizaci a nebude moct získat přístup k žádným prostředkům vaší organizace.
 
 >[!Important]
->Pokud zařízení vypnete omylem, neexistuje žádný způsob, jak ji vrátit. Budete muset kontaktovat správce vaší organizace na zařízení znovu přidejte.
+>Pokud zařízení zakážete omylem, neexistuje žádný způsob, jak ho vrátit zpátky. Budete muset požádat správce vaší organizace, aby zařízení znovu přidal.
 
-1. Vyberte **zakázat** ze zařízení, které chcete odebrat.
+1. V zařízení, které chcete odebrat, vyberte **Zakázat** .
 
-    ![Stránka zařízení s zvýrazněný odkaz Disable](media/myprofile-portal/myprofile-portal-devices-disable.png)
+    ![Stránka zařízení se zvýrazněným odkazem zakázat](media/myprofile-portal/myprofile-portal-devices-disable.png)
 
-2. Vyberte **Ano** pro potvrzení, které chcete zakázat toto zařízení.
+2. Vyberte **Ano** a potvrďte tak, že chcete zařízení zakázat.
 
 ## <a name="next-steps"></a>Další postup
 
-- Po zobrazení připojených zařízení, můžete vybrat možnost zobrazovat a spravovat vaše [bezpečnostní údaje](user-help-security-info-overview.md), vaše [organizace](myprofile-portal-organizations-page.md), nebo zobrazení jak vaše organizace [používá data](myprofile-portal-privacy-page.md).
+- Po zobrazení připojených zařízení můžete vybrat, že chcete zobrazit nebo spravovat vaše [bezpečnostní údaje](user-help-security-info-overview.md), vaše [organizace](myprofile-portal-organizations-page.md)nebo zobrazit, jak vaše organizace [používá vaše data](myprofile-portal-privacy-page.md).

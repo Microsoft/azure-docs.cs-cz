@@ -1,26 +1,26 @@
 ---
-title: Diagnostika a řešení potíží při použití triggeru Azure Cosmos DB v Azure Functions
-description: Běžné problémy, alternativní řešení a diagnostické kroky při použití triggeru Azure Cosmos DB s Azure Functions
+title: Diagnostika a řešení potíží při použití triggeru Azure Functions pro Cosmos DB
+description: Běžné problémy, alternativní řešení a diagnostické kroky při použití triggeru Azure Functions pro Cosmos DB
 author: ealsur
 ms.service: cosmos-db
-ms.date: 05/23/2019
+ms.date: 07/17/2019
 ms.author: maquaran
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 9c728a735e56e461e49dd3f594186c9c0192a3f0
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: b90986e449df7e81f97f9ef86ce3cf69621c76d6
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68250016"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68335747"
 ---
-# <a name="diagnose-and-troubleshoot-issues-when-using-azure-cosmos-db-trigger-in-azure-functions"></a>Diagnostika a řešení potíží při použití triggeru Azure Cosmos DB v Azure Functions
+# <a name="diagnose-and-troubleshoot-issues-when-using-azure-functions-trigger-for-cosmos-db"></a>Diagnostika a řešení potíží při použití triggeru Azure Functions pro Cosmos DB
 
-Tento článek popisuje běžné problémy, alternativní řešení a diagnostické kroky při použití [triggeru Azure Cosmos DB](change-feed-functions.md) s Azure Functions.
+Tento článek popisuje běžné problémy, alternativní řešení a diagnostické kroky při použití [triggeru Azure Functions pro Cosmos DB](change-feed-functions.md).
 
 ## <a name="dependencies"></a>Závislosti
 
-Aktivační událost Azure Cosmos DB a vazby závisejí na balíčcích rozšíření v rámci základního Azure Functions runtime. Vždy udržujte tyto balíčky aktualizované, protože můžou zahrnovat opravy a nové funkce, které mohou řešit případné problémy, se kterými se můžete setkat:
+Aktivační událost Azure Functions a vazby pro Cosmos DB závisí na balíčcích rozšíření v rámci základního Azure Functions modulu runtime. Vždy udržujte tyto balíčky aktualizované, protože můžou zahrnovat opravy a nové funkce, které mohou řešit případné problémy, se kterými se můžete setkat:
 
 * Azure Functions v2 najdete v tématu [Microsoft. Azure. WebJobs. Extensions. CosmosDB](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.CosmosDB).
 * Azure Functions v1 najdete v tématu [Microsoft. Azure. WebJobs. Extensions. DocumentDB](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DocumentDB).
@@ -29,7 +29,7 @@ Tento článek se vždy odkazuje na Azure Functions v2 vždy, když je zmíněn 
 
 ## <a name="consume-the-azure-cosmos-db-sdk-independently"></a>Využívat sadu SDK pro Azure Cosmos DB nezávisle
 
-Klíčovou funkcí balíčku rozšíření je poskytnutí podpory pro aktivační událost Azure Cosmos DB a vazby. Zahrnuje také [sadu Azure Cosmos DB .NET SDK](sql-api-sdk-dotnet-core.md), která je užitečná, pokud chcete pracovat s Azure Cosmos DB programově bez použití triggeru a vazeb.
+Klíčovou funkcí balíčku rozšíření je poskytnutí podpory Azure Functions triggeru a vazeb pro Cosmos DB. Zahrnuje také [sadu Azure Cosmos DB .NET SDK](sql-api-sdk-dotnet-core.md), která je užitečná, pokud chcete pracovat s Azure Cosmos DB programově bez použití triggeru a vazeb.
 
 Pokud chcete použít sadu Azure Cosmos DB SDK, ujistěte se, že do projektu nepřidáte další odkaz na balíček NuGet. Místo toho je třeba **pomocí balíčku rozšíření Azure Functions vyhodnotit odkaz na sadu SDK**. Využití sady SDK Azure Cosmos DB odděleně od triggeru a vazeb
 
@@ -81,7 +81,7 @@ Pokud v cíli chybějí nějaké změny, může to znamenat, že došlo k chybě
 V tomto scénáři je nejlepší postup přidat `try/catch blocks` do kódu a uvnitř smyček, které mohou zpracovávat změny, zjistit případné selhání pro určitou podmnožinu položek a odpovídajícím způsobem je zpracovat (Odeslat je do jiného úložiště pro další Analýza nebo opakování). 
 
 > [!NOTE]
-> Aktivační událost Azure Cosmos DB ve výchozím nastavení neopakuje dávku změn, pokud došlo k neošetřené výjimce během provádění kódu. To znamená, že důvodem nedoručení změn do cíle je to, že nebudete schopni je zpracovat.
+> Aktivační událost Azure Functions pro Cosmos DB ve výchozím nastavení neopakuje dávku změn, pokud došlo k neošetřené výjimce během provádění kódu. To znamená, že důvodem nedoručení změn do cíle je to, že nebudete schopni je zpracovat.
 
 Pokud zjistíte, že Trigger nepřijal vůbec nějaké změny, nejběžnějším scénářem je, že je **spuštěná jiná funkce Azure**. Může to být jiná funkce Azure nasazená v Azure nebo funkce Azure spuštěná místně na počítači vývojáře, který má **přesně stejnou konfiguraci** (stejný monitorovaný a kontejner zapůjčení), a tato funkce Azure ukrást podmnožinu změn, které očekává, že vaše funkce Azure Functions zpracuje.
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/03/2019
 ms.author: tamram
 ms.reviewer: cbrooks
-ms.openlocfilehash: fb221d774d9d00a5dc7b0d94edc35a5651443a5b
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 5d0b41344f4a77f3205799be7c30526e2a150523
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67874062"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68479924"
 ---
 # <a name="advanced-threat-protection-for-azure-storage"></a>Advanced Threat Protection pro Azure Storage
 
@@ -66,7 +66,7 @@ Pomocí šablony Azure Resource Manager nasaďte účet Azure Storage s povoleno
 
 Pomocí Azure Policy můžete povolit rozšířenou ochranu před internetovými útoky napříč účty úložiště v rámci konkrétního předplatného nebo skupiny prostředků.
 
-1. Na obědě stránku Azure **Policy-definitions** .
+1. Spusťte stránku Azure **Policy-definitions** .
 
 1. Vyhledejte zásadu **nasazení rozšířené ochrany před internetovými útoky na účty úložiště** .
 
