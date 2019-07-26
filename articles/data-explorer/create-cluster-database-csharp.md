@@ -1,20 +1,20 @@
 ---
-title: Vytvoření clusteru Průzkumník dat Azure a databáze s použitímC#
-description: Zjistěte, jak vytvořit cluster Průzkumník dat Azure a databáze služby pomocíC#
+title: Vytvoření clusteru a databáze Azure Průzkumník dat pomocíC#
+description: Naučte se vytvořit cluster a databázi Azure Průzkumník dat pomocíC#
 author: oflipman
 ms.author: oflipman
 ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: e51551d4ce8061122fce52b05e68e102b71c27a8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 64f16c2ad6fdeeb47b747eab24587b43f3df5130
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66494611"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68355952"
 ---
-# <a name="create-an-azure-data-explorer-cluster-and-database-by-using-c"></a>Vytvoření clusteru Průzkumník dat Azure a databáze s použitímC#
+# <a name="create-an-azure-data-explorer-cluster-and-database-by-using-c"></a>Vytvoření clusteru a databáze Azure Průzkumník dat pomocíC#
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](create-cluster-database-portal.md)
@@ -22,103 +22,102 @@ ms.locfileid: "66494611"
 > * [PowerShell](create-cluster-database-powershell.md)
 > * [C#](create-cluster-database-csharp.md)
 > * [Python](create-cluster-database-python.md)
->  
 
-Azure Data Explorer je rychlá, plně spravovaná služba analýzy dat pro analýzy velkých objemů dat v reálném čase, která se streamují z aplikací, webů, zařízení IoT a dalších. Použití Průzkumníku dat Azure, nejprve vytvoříte cluster a vytvořit jednu nebo více databází v tomto clusteru. Pak můžete ingestovat data (načíst) do databáze tak, aby u ní můžete spouštět dotazy. V tomto článku vytvoříte cluster a databází pomocí C#.
+Azure Data Explorer je rychlá, plně spravovaná služba analýzy dat pro analýzy velkých objemů dat v reálném čase, která se streamují z aplikací, webů, zařízení IoT a dalších. Pokud chcete použít Azure Průzkumník dat, musíte nejdřív vytvořit cluster a v tomto clusteru vytvořit jednu nebo víc databází. Pak data ingestujte do databáze, abyste na ni mohli spouštět dotazy. V tomto článku vytvoříte cluster a databázi pomocí nástroje C#.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Pokud nemáte nainstalované Visual Studio 2019, můžete stáhnout a použít **bezplatné** [Visual Studio. 2019 Community Edition](https://www.visualstudio.com/downloads/). Nezapomeňte při instalaci sady Visual Studio povolit možnost **Azure Development**.
+* Pokud nemáte nainstalovanou aplikaci Visual Studio 2019, můžete si stáhnout a použít **bezplatnou** [edici Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/). Nezapomeňte při instalaci sady Visual Studio povolit možnost **Azure Development**.
 
 * Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
 
-## <a name="install-c-nuget"></a>Nainstalujte C# nuget
+## <a name="install-c-nuget"></a>Nainstalovat C# NuGet
 
-1. Nainstalujte [balíček nuget Průzkumník dat Azure (Kusto)](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/).
+1. Nainstalujte [balíček NuGet pro Azure Průzkumník dat (Kusto)](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/).
 
-1. Nainstalujte [balíček nuget Microsoft.IdentityModel.Clients.ActiveDirectory](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/) pro ověřování.
+1. Nainstalujte [balíček NuGet Microsoft. IdentityModel. clients. Active](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/) pro ověřování.
 
-## <a name="create-the-azure-data-explorer-cluster"></a>Vytvoření clusteru Průzkumník dat Azure
+## <a name="create-the-azure-data-explorer-cluster"></a>Vytvoření clusteru Azure Průzkumník dat
 
-1. Vytvoření clusteru pomocí následujícího kódu:
+1. Vytvořte cluster pomocí následujícího kódu:
 
-    ```C#-interactive
-    string resourceGroupName = "testrg";    
-    string clusterName = "mykustocluster";
-    string location = "Central US";
-    AzureSku sku = new AzureSku("D13_v2", 5);
-    Cluster cluster = new Cluster(location, sku);
-    
+    ```csharp
+    var resourceGroupName = "testrg";
+    var clusterName = "mykustocluster";
+    var location = "Central US";
+    var sku = new AzureSku("D13_v2", 5);
+    var cluster = new Cluster(location, sku);
+
     var authenticationContext = new AuthenticationContext("https://login.windows.net/{tenantName}");
     var credential = new ClientCredential(clientId: "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx", clientSecret: "xxxxxxxxxxxxxx");
-    var result = authenticationContext.AcquireTokenAsync(resource: "https://management.core.windows.net/", clientCredential: credential).Result;
-    
+    var result = await authenticationContext.AcquireTokenAsync(resource: "https://management.core.windows.net/", clientCredential: credential);
+
     var credentials = new TokenCredentials(result.AccessToken, result.AccessTokenType);
-     
-    KustoManagementClient KustoManagementClient = new KustoManagementClient(credentials)
+
+    var kustoManagementClient = new KustoManagementClient(credentials)
     {
         SubscriptionId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx"
     };
 
-    KustoManagementClient.Clusters.CreateOrUpdate(resourceGroupName, clusterName, cluster);
+    kustoManagementClient.Clusters.CreateOrUpdate(resourceGroupName, clusterName, cluster);
     ```
 
    |**Nastavení** | **Navrhovaná hodnota** | **Popis pole**|
    |---|---|---|
-   | clusterName | *mykustocluster* | Požadovaný název vašeho clusteru.|
-   | Skladová položka | *D13_v2* | Skladová položka, která se použije pro váš cluster. |
-   | resourceGroupName | *testrg* | Název skupiny prostředků, ve kterém se cluster vytvoří. |
+   | clusterName | *mykustocluster* | Požadovaný název clusteru.|
+   | SKU | *D13_v2* | SKU, které bude použito pro váš cluster. |
+   | resourceGroupName | *testrg* | Název skupiny prostředků, ve které se cluster vytvoří. |
 
-    Existují další volitelné parametry, které můžete použít, jako je například kapacita clusteru.
+    Existují další nepovinné parametry, které můžete použít, například kapacitu clusteru.
 
-1. Nastavte [svoje přihlašovací údaje](https://docs.microsoft.com/dotnet/azure/dotnet-sdk-azure-authenticate?view=azure-dotnet)
+1. Nastavení [přihlašovacích údajů](https://docs.microsoft.com/dotnet/azure/dotnet-sdk-azure-authenticate?view=azure-dotnet)
 
-1. Spusťte následující příkaz a zkontrolujte, zda byl úspěšně vytvořen cluster:
+1. Spusťte následující příkaz a ověřte, zda byl cluster úspěšně vytvořen:
 
-    ```C#-interactive
-    KustoManagementClient.Clusters.Get(resourceGroupName, clusterName);
+    ```csharp
+    kustoManagementClient.Clusters.Get(resourceGroupName, clusterName);
     ```
 
-Pokud výsledek obsahuje `ProvisioningState` s `Succeeded` hodnotu, pak clusteru byl úspěšně vytvořen.
+Pokud výsledek obsahuje `ProvisioningState` `Succeeded` hodnotu, cluster se úspěšně vytvořil.
 
-## <a name="create-the-database-in-the-azure-data-explorer-cluster"></a>Vytvoření databáze v Průzkumníku dat Azure clusteru
+## <a name="create-the-database-in-the-azure-data-explorer-cluster"></a>Vytvoření databáze v clusteru Azure Průzkumník dat
 
-1. Vytvoření databáze pomocí následujícího kódu:
+1. Vytvořte databázi pomocí následujícího kódu:
 
-    ```c#-interactive
-    TimeSpan hotCachePeriod = new TimeSpan(3650, 0, 0, 0);
-    TimeSpan softDeletePeriod = new TimeSpan(3650, 0, 0, 0);
-    string databaseName = "mykustodatabase";
-    Database database = new Database(location: location, softDeletePeriod: softDeletePeriod, hotCachePeriod: hotCachePeriod);
-    
-    KustoManagementClient.Databases.CreateOrUpdate(resourceGroupName, clusterName, databaseName, database);
+    ```csharp
+    var hotCachePeriod = new TimeSpan(3650, 0, 0, 0);
+    var softDeletePeriod = new TimeSpan(3650, 0, 0, 0);
+    var databaseName = "mykustodatabase";
+    var database = new Database(location: location, softDeletePeriod: softDeletePeriod, hotCachePeriod: hotCachePeriod);
+
+    kustoManagementClient.Databases.CreateOrUpdate(resourceGroupName, clusterName, databaseName, database);
     ```
 
    |**Nastavení** | **Navrhovaná hodnota** | **Popis pole**|
    |---|---|---|
-   | clusterName | *mykustocluster* | Název clusteru s novou databází.|
-   | databaseName | *mykustodatabase* | Název databáze.|
-   | resourceGroupName | *testrg* | Název skupiny prostředků, ve kterém se cluster vytvoří. |
-   | softDeletePeriod | *3650:00:00:00* | Množství času, které data zůstanou k dispozici pro dotazy. |
-   | hotCachePeriod | *3650:00:00:00* | Množství času, které data zůstanou v mezipaměti. |
+   | clusterName | *mykustocluster* | Název clusteru, ve kterém se databáze vytvoří.|
+   | databaseName | *mykustodatabase* | Název vaší databáze.|
+   | resourceGroupName | *testrg* | Název skupiny prostředků, ve které se cluster vytvoří. |
+   | softDeletePeriod | *3650:00:00:00* | Doba, po kterou budou data uchována k dispozici pro dotaz. |
+   | hotCachePeriod | *3650:00:00:00* | Doba, po kterou budou data uchována v mezipaměti. |
 
-2. Spuštěním následujícího příkazu zobrazte databázi, kterou jste vytvořili:
+2. Spuštěním následujícího příkazu zobrazíte databázi, kterou jste vytvořili:
 
-    ```c#-interactive
-    KustoManagementClient.Databases.Get(resourceGroupName, clusterName, databaseName);
+    ```csharp
+    kustoManagementClient.Databases.Get(resourceGroupName, clusterName, databaseName);
     ```
 
 Teď máte cluster a databázi.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-* Pokud budete chtít postupujte podle našich článků, zachovat prostředky, které jste vytvořili.
-* Pokud chcete vyčistit prostředky, cluster odstraňte. Po odstranění clusteru se odstraní také všechny databáze v ní. Pomocí následujícího příkazu odstraňte cluster:
+* Pokud plánujete postupovat podle našich dalších článků, ponechejte prostředky, které jste vytvořili.
+* Pokud chcete vyčistit prostředky, odstraňte cluster. Když odstraníte cluster, odstraní se i všechny jeho databáze. Pomocí následujícího příkazu odstraňte cluster:
 
-    ```C#-interactive
-    KustoManagementClient.Clusters.Delete(resourceGroupName, clusterName);
+    ```csharp
+    kustoManagementClient.Clusters.Delete(resourceGroupName, clusterName);
     ```
 
 ## <a name="next-steps"></a>Další postup
 
-* [Příjem dat s využitím dat Explorer .NET Standard SDK služby Azure (Preview)](net-standard-ingest-data.md)
+* [Ingestování dat pomocí sady Azure Průzkumník dat .NET Standard SDK (Preview)](net-standard-ingest-data.md)

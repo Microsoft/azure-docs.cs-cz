@@ -1,141 +1,141 @@
 ---
-title: Začínáme s Azure Monitor Log Analytics | Dokumentace Microsoftu
-description: Tento článek obsahuje kurz pro psaní dotazů pomocí Log Analytics na portálu Azure portal.
+title: Začínáme s Azure Monitor Log Analytics | Microsoft Docs
+description: Tento článek popisuje kurz použití Log Analytics v Azure Portal k zápisu dotazů.
 services: log-analytics
 author: bwren
 manager: carmonm
 ms.service: log-analytics
 ms.topic: conceptual
-ms.date: 08/20/2018
+ms.date: 07/19/2019
 ms.author: bwren
-ms.openlocfilehash: 2e2d13e6923535a8993a6477cbbfb921f6092d66
-ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
+ms.openlocfilehash: cf2aee475f5d3933421de45fa5b2ade687bed62f
+ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67565589"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68348084"
 ---
-# <a name="get-started-with-log-analytics-in-azure-monitor"></a>Začínáme se službou Log Analytics ve službě Azure Monitor
+# <a name="get-started-with-log-analytics-in-azure-monitor"></a>Začínáme s Log Analytics v Azure Monitor
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
-V tomto kurzu se dozvíte, jak používat službu Log Analytics na portálu Azure portal pro zápis dotazů na protokoly Azure monitoru. To se dozvíte, jak do:
+V tomto kurzu se naučíte používat Log Analytics v Azure Portal k zápisu dotazů protokolu Azure Monitor log. Naučíte se, jak:
 
-- Můžete napsat jednoduchý dotaz Log Analytics
+- Použití Log Analytics k zápisu jednoduchého dotazu
 - Pochopení schématu dat
-- Filtrace, řazení a seskupení výsledků
+- Filtrování, řazení a seskupování výsledků
 - Použít časový rozsah
 - Vytváření grafů
-- Uložit a načíst dotazy
-- Export a sdílet dotazy
+- Uložení a načtení dotazů
+- Exportovat a sdílet dotazy
 
-Kurz o psaní dotazů na protokoly, najdete v tématu [Začínáme s dotazy protokolu ve službě Azure Monitor](get-started-queries.md).<br>
-Podrobné informace o dotazech protokolu naleznete v tématu [přehled protokolu dotazů ve službě Azure Monitor](log-query-overview.md).
+Kurz týkající se psaní dotazů na protokoly najdete v tématu [Začínáme s dotazy protokolu v Azure monitor](get-started-queries.md).<br>
+Další podrobnosti o dotazech protokolu najdete v tématu [Přehled dotazů protokolu v Azure monitor](log-query-overview.md).
 
-## <a name="meet-log-analytics"></a>Musí splňovat Log Analytics
-Log Analytics je webový nástroj pro zápis a spouštění dotazů na protokoly Azure monitoru. Otevřete ho tak, že vyberete **protokoly** v nabídce Azure Monitor. Spustí se nový prázdný dotaz.
+## <a name="meet-log-analytics"></a>Splnění Log Analytics
+Log Analytics je webový nástroj, který se používá pro zápis a spouštění Azure Monitorch dotazů protokolu. Otevřete ho tak, že v nabídce Azure Monitor vyberete **protokoly** . Začíná novým prázdným dotazem.
 
 ![Domovská stránka](media/get-started-portal/homepage.png)
 
 ## <a name="firewall-requirements"></a>Požadavky na bránu firewall
-Chcete-li používat službu Log Analytics, váš prohlížeč vyžaduje přístup k následující adresy. Pokud váš prohlížeč je přístup k portálu Azure přes bránu firewall, je třeba povolit přístup pro tyto adresy.
+Pokud chcete použít Log Analytics, váš prohlížeč vyžaduje přístup k následujícím adresám. Pokud Váš prohlížeč přistupuje k Azure Portal přes bránu firewall, musíte povolit přístup k těmto adresám.
 
-| Uri | IP adresa | Porty |
+| Uri | IP | Porty |
 |:---|:---|:---|
 | portal.loganalytics.io | Dynamické | 80,443 |
 | api.loganalytics.io | Dynamické | 80,443 |
 | docs.loganalytics.io | Dynamické | 80,443 |
 
 ## <a name="basic-queries"></a>Základní dotazy
-Hledané termíny, rozpoznávejte trendy, analyzovat vzory a poskytují mnoho přehledy na základě vašich dat je možné dotazy. Začínáme s základní dotazy:
+Dotazy se dají použít k vyhledávání podmínek, identifikaci trendů, analýze vzorů a poskytování mnoha dalších přehledů na základě vašich dat. Začněte se základním dotazem:
 
 ```Kusto
 Event | search "error"
 ```
 
-Tento dotaz vyhledá _události_ tabulky pro záznamy, které obsahují pojem _chyba_ v jakékoli vlastnosti.
+Tento dotaz vyhledá v tabulce _událostí_ záznamy, které obsahují _chybu_ v jakékoli vlastnosti.
 
-Dotazy můžete spustit buď pomocí názvu tabulky nebo [hledání](/azure/kusto/query/searchoperator) příkazu. Výše uvedený příklad začíná název tabulky _události_, který načte všechny záznamy z tabulky událostí. Znak svislé čáry (|) odděluje příkazy, takže výstup první z nich slouží jako vstup následující příkaz. Můžete přidat libovolný počet příkazů do jednoho dotazu.
+Dotazy mohou začít buď s názvem tabulky, nebo s příkazem [hledání](/azure/kusto/query/searchoperator) . Výše uvedený příklad začíná s _událostí_název tabulky, která načte všechny záznamy z tabulky událostí. Znak kanálu (|) odděluje příkazy, takže výstup prvního z nich slouží jako vstup z následujícího příkazu. Do jednoho dotazu můžete přidat libovolný počet příkazů.
 
-Jiný způsob psaní tohoto stejného dotazu by byl:
+Dalším způsobem, jak stejný dotaz napsat, bude:
 
 ```Kusto
 search in (Event) "error"
 ```
 
-V tomto příkladu **hledání** působí na _události_ tabulku a všechny záznamy v této tabulce jsou prohledány na termín _chyba_.
+V tomto příkladu je **hledání** vymezeno na tabulku _událostí_ a všechny záznamy v této tabulce jsou vyhledány při výskytu _chyby_.
 
 ## <a name="running-a-query"></a>Spuštění dotazu
-Spusťte dotaz kliknutím **spustit** tlačítko nebo stisknutím klávesy **Shift + Enter**. Vezměte v úvahu následující informace, které určíte, kód, který se spustí a data, která je vrácena:
+Spusťte dotaz kliknutím na tlačítko **Spustit** nebo stisknutím **SHIFT + ENTER**. Vezměte v úvahu následující podrobnosti, které určují kód, který se spustí, a vrácená data:
 
-- Konce řádků: Jediné přerušení usnadňuje čtení dotazu. Více konce řádků ho rozdělit na samostatné dotazy.
-- Cursor: Umístěte kurzor někam uvnitř dotazu k jeho provedení. Aktuální dotaz se považuje za kód, dokud nenajde prázdný řádek.
-- Časový rozsah - časový rozsah _posledních 24 hodin_ ve výchozím nastavení. Pokud chcete použít jiný rozsah, použijte Výběr času nebo přidat explicitní čas filtr rozsahu do dotazu.
+- Zalomení řádků: Jediné přerušení usnadňuje čtení dotazů. Více konců řádků je rozděleno do samostatných dotazů.
+- Jeďte Umístěte kurzor někam do dotazu, aby jej bylo možné spustit. Aktuální dotaz se považuje za kód, dokud se nenajde prázdný řádek.
+- Časový rozsah – ve výchozím nastavení je nastavený časový rozsah za _posledních 24 hodin_ . Chcete-li použít jiný rozsah, použijte pro výběr času nebo přidejte do dotazu explicitní filtr časového rozsahu.
 
 
 ## <a name="understand-the-schema"></a>Vysvětlené schématu
-Schéma je kolekce tabulek vizuálně seskupené pod logických kategorií. Některé z kategorií jsou z monitorování řešení. _LogManagement_ kategorie obsahuje běžné data, jako jsou Windows a protokolu Syslog události, údaje o výkonu a agent vysílat prezenční signál.
+Schéma je kolekce tabulek vizuálně seskupených do logické kategorie. Některé z kategorií jsou z monitorování řešení. Kategorie _LogManagement_ obsahuje běžná data, jako jsou události Windows a syslog, údaje o výkonu a prezenční signály agenta.
 
 ![Schéma](media/get-started-portal/schema.png)
 
-V každé tabulce dat uspořádány do sloupce s různými datovými typy je určeno ikonami vedle jejich názvu sloupce. Například _události_ tabulka ukazuje snímek obrazovky obsahuje sloupce, například _počítače_ což je text, _EventCategory_ což je číslo, a  _TimeGenerated_ což je datum a čas.
+V každé tabulce jsou data uspořádána do sloupců s různými datovými typy, které jsou označeny ikonami vedle názvu sloupce. Například tabulka _událostí_ zobrazená na snímku obrazovky obsahuje sloupce, jako je například _Computer_ , což je text, _EventCategory_ , což je číslo a _TimeGenerated_ , což je datum a čas.
 
 ## <a name="filter-the-results"></a>Filtrování výsledků
-Začněte tím, že tu být všechno _události_ tabulky.
+Začněte tím, že získáte vše v tabulce _událostí_ .
 
 ```Kusto
 Event
 ```
 
-Log Analytics automaticky obory výsledky podle:
+Log Analytics automatické obory výsledků:
 
-- Časový rozsah:  Ve výchozím nastavení dotazy jsou omezené na poslední 24 hodin.
-- Počet výsledků: Výsledky jsou omezeny na maximálně 10 000 záznamů.
+- Časový rozsah:  Ve výchozím nastavení jsou dotazy omezené na posledních 24 hodin.
+- Počet výsledků: Výsledky jsou omezené na maximum 10 000 záznamů.
 
-Tento dotaz je velmi obecná a vrátí příliš mnoho výsledků. aby byla užitečná. Můžete filtrovat výsledky přes prvky tabulky nebo tak, že explicitně přidáte filtr do dotazu. Filtrování výsledků přes prvky tabulky platí pro stávající sadu výsledků, zatímco filtru samotný dotaz vrátí novou filtrovaných výsledků nastavit a může proto poskytuje přesnější výsledky.
+Tento dotaz je velmi obecný a vrací příliš mnoho výsledků, aby byly užitečné. Výsledky můžete filtrovat buď prostřednictvím prvků tabulky, nebo explicitně přidáním filtru do dotazu. Filtrování výsledků prostřednictvím prvků tabulky se vztahuje na existující sadu výsledků, zatímco filtr na samotný dotaz vrátí novou filtrovanou sadu výsledků a může proto vytvořit přesnější výsledky.
 
-### <a name="add-a-filter-to-the-query"></a>Přidání filtru do dotazu
-Existuje šipku nalevo od každého záznamu. Klepnutím na šipku otevřete podrobnosti konkrétního záznamu.
+### <a name="add-a-filter-to-the-query"></a>Přidejte filtr do dotazu.
+Nalevo od každého záznamu se nachází šipka. Klepnutím na šipku otevřete podrobnosti konkrétního záznamu.
 
-Najeďte myší nad název sloupce pro "+" a "-" k zobrazení ikony. Pokud chcete přidat filtr, který vrátí pouze záznamy se stejnou hodnotou, klikněte na znaménko "+". Klikněte na tlačítko "-" vyloučit záznamy s touto hodnotou a potom klikněte na **spustit** spusťte dotaz znovu.
+Najeďte myší nad název sloupce pro ikony "+" a "-", které se mají zobrazit. Chcete-li přidat filtr, který vrátí pouze záznamy se stejnou hodnotou, klikněte na symbol "+". Kliknutím na "–" vyloučíte záznamy s touto hodnotou a potom kliknutím na tlačítko **Spustit** spusťte dotaz znovu.
 
-![Přidání filtru do dotazu](media/get-started-portal/add-filter.png)
+![Přidat filtr do dotazu](media/get-started-portal/add-filter.png)
 
 ### <a name="filter-through-the-table-elements"></a>Filtrovat přes prvky tabulky
-Nyní zaměřme se na události závažnost _chyba_. Tento parametr je zadán v sloupec s názvem _EventLevelName_. Budete muset posunout doprava najdete v tomto sloupci.
+Teď se podíváme na události se závažností _chyby_. Tento parametr je určený ve sloupci s názvem _EventLevelName_. Pro zobrazení tohoto sloupce se budete muset posunout doprava.
 
-Kliknutím na ikonu filtru vedle záhlaví sloupce a v automaticky otevíraném okně vyberte hodnoty, které _začíná_ text _chyba_:
+Klikněte na ikonu filtru vedle názvu sloupce a v místním okně vyberte hodnoty začínající textovou _chybou_:
 
 ![Filtr](media/get-started-portal/filter.png)
 
 
-## <a name="sort-and-group-results"></a>Seřadit a seskupit výsledky
-Výsledky jsou nyní zúží a obsahovat pouze chybové události z SQL serveru vytvořené za posledních 24 hodin. Však nejsou seřazené výsledky žádným způsobem. Chcete-li seřadit výsledky podle konkrétního sloupce, jako například _časové razítko_ například klikněte na záhlaví sloupce. Jedno kliknutí Seřadí seznam vzestupně během druhé kliknutí se seřadit sestupně.
+## <a name="sort-and-group-results"></a>Řazení a seskupení výsledků
+Výsledky jsou nyní zúžené tak, aby zahrnovaly pouze chybové události z SQL Server vytvořené za posledních 24 hodin. Výsledky nejsou ale seřazené jakýmkoli způsobem. Pokud chcete výsledky seřadit podle konkrétního sloupce, jako je například _časové razítko_ , klikněte na název sloupce. Jedno kliknutí seřadí vzestupné pořadí, zatímco druhé kliknutí bude seřazeno sestupně.
 
-![Sloupec pro řazení](media/get-started-portal/sort-column.png)
+![Seřadit sloupec](media/get-started-portal/sort-column.png)
 
-Dalším způsobem, jak výsledky uspořádat je podle skupin. K seskupení výsledků podle konkrétního sloupce, jednoduše přetáhněte záhlaví sloupce vyšší než ostatní sloupce. K vytvoření podskupiny, přetáhněte další sloupce na horním panelu také.
+Další možností uspořádání výsledků je seskupení. Chcete-li seskupit výsledky podle konkrétního sloupce, jednoduše přetáhněte záhlaví sloupce nad ostatní sloupce. Chcete-li vytvořit podskupiny, přetáhněte horní panel také další sloupce.
 
 ![Skupiny](media/get-started-portal/groups.png)
 
-## <a name="select-columns-to-display"></a>Vyberte sloupce, které chcete zobrazit
-Tabulka výsledků často obsahuje mnoho sloupců. Můžete zjistit, že některé vrácené sloupce se nezobrazují ve výchozím nastavení, nebo můžete chtít odebrat některé sloupce, které jsou zobrazeny. Pokud chcete vybrat sloupce, které chcete zobrazit, klikněte na tlačítko sloupce:
+## <a name="select-columns-to-display"></a>Vyberte sloupce, které se mají zobrazit.
+Tabulka výsledků často obsahuje mnoho sloupců. Možná zjistíte, že některé z vrácených sloupců nejsou ve výchozím nastavení zobrazeny, nebo můžete chtít odebrat některé sloupce, které jsou zobrazeny. Chcete-li vybrat sloupce, které chcete zobrazit, klikněte na tlačítko sloupce:
 
 ![Výběr sloupců](media/get-started-portal/select-columns.png)
 
 
-## <a name="select-a-time-range"></a>Vyberte časový rozsah
-Ve výchozím nastavení, Log Analytics se vztahuje _posledních 24 hodin_ časový rozsah. Pokud chcete použít jiný rozsah, vyberte jinou hodnotu prostřednictvím nástroje pro výběr času a klikněte na **spustit**. Kromě přednastavené hodnoty, můžete použít _vlastního časového rozsahu_ možnost vybrat si absolutní rozsahu pro váš dotaz.
+## <a name="select-a-time-range"></a>Vybrat časový rozsah
+Ve výchozím nastavení Log Analytics použije _posledních 24 hodin_ časového rozsahu. Chcete-li použít jiný rozsah, vyberte jinou hodnotu prostřednictvím výběru času a klikněte na tlačítko **Spustit**. Kromě přednastavených hodnot můžete použít možnost _vlastní časový rozsah_ k výběru absolutního rozsahu dotazu.
 
 ![Výběr času](media/get-started-portal/time-picker.png)
 
-Když vyberete vlastní časový rozsah, vybraných hodnot se ve standardu UTC, což může být jiný než místní časové pásmo.
+Když vyberete vlastní časový rozsah, vybrané hodnoty jsou ve formátu UTC, což může být jiné než vaše místní časové pásmo.
 
-Pokud dotaz obsahuje explicitně filtr pro _TimeGenerated_, se zobrazí název výběr času _nastavit v dotazu_. Aby se zabránilo konfliktu se zakážou ruční výběr.
+Pokud dotaz explicitně obsahuje filtr pro _TimeGenerated_, zobrazí se v poli název pro výběr času _nastavení v dotazu_. Ruční výběr bude zakázán, aby se zabránilo konfliktu.
 
 
 ## <a name="charts"></a>Grafy
-Kromě vracení výsledků v tabulce, můžete výsledky dotazu uvedené v visual formátů. Jako příklad použijte následující dotaz:
+Kromě vracení výsledků v tabulce je možné výsledky dotazu prezentovat ve vizuálních formátech. Jako příklad použijte následující dotaz:
 
 ```Kusto
 Event 
@@ -144,55 +144,58 @@ Event
 | summarize count() by Source 
 ```
 
-Ve výchozím nastavení výsledky se zobrazí v tabulce. Klikněte na tlačítko _grafu_ pro zobrazení výsledků v grafické zobrazení:
+Ve výchozím nastavení se výsledky zobrazují v tabulce. Kliknutím na _graf_ zobrazíte výsledky v grafickém zobrazení:
 
 ![Pruhový graf](media/get-started-portal/bar-chart.png)
 
-Výsledky jsou zobrazeny skládaném pruhovém grafu. Klikněte na tlačítko _skládaný sloupcový_ a vyberte _výsečový_ do jiného zobrazení výsledků:
+Výsledky se zobrazují v skládaném pruhovém grafu. Klikněte na _Skládaný sloupcový_ a vyberte _výseč_ , aby se zobrazilo jiné zobrazení výsledků:
 
 ![Výsečový graf](media/get-started-portal/pie-chart.png)
 
-Různé vlastnosti objektu zobrazení, jako je například x a osy y, nebo seskupování a rozdělování předvolby, můžete ručně změnit na ovládacím panelu.
+Různé vlastnosti zobrazení, například osy x a y nebo seskupení a rozdělení předvoleb, lze změnit ručně z ovládacích panelů.
 
-Požadované zobrazení můžete také nastavit v dotazu, použití operátoru vykreslování.
+Můžete také nastavit preferované zobrazení v samotném dotazu pomocí operátoru vykreslení.
 
 ### <a name="smart-diagnostics"></a>Inteligentní Diagnostika
-Na časový graf Pokud náhlá Špička nebo kroku ve vašich datech, může se zobrazit bod zvýrazněný na řádku. Znamená to, že _inteligentní Diagnostika_ zjistila kombinací vlastností, které odfiltrovat náhlé změny. Klikněte na bod, abyste získali více podrobností na filtr a zobrazíte filtrované verze. To může pomoci zjistit, co způsobilo změny:
+V případě, že je v timechart náhlé špička nebo krok, může se na řádku zobrazit zvýrazněný bod. To znamená, že _inteligentní Diagnostika_ identifikovala kombinaci vlastností, které odfiltrují náhlé změny. Kliknutím na bod získáte další podrobnosti o filtru a zobrazíte filtrovanou verzi. To vám může přispět k identifikaci toho, co způsobilo změnu:
 
 ![Inteligentní Diagnostika](media/get-started-portal/smart-diagnostics.png)
 
 ## <a name="pin-to-dashboard"></a>Připnout na řídicí panel
-Pro Připnutí diagramu nebo tabulku k jedné sdílené řídicí panely Azure, klikněte na ikonu připínáčku.
+Pokud chcete připnout diagram nebo tabulku na některý ze sdílených řídicích panelů Azure, klikněte na ikonu připnutí.
 
 ![Připnout na řídicí panel](media/get-started-portal/pin-dashboard.png)
 
-Některé zjednodušení jsou použity pro graf připnout na řídicí panel:
+Určitá zjednodušení se u grafu aplikují při jeho připnutí na řídicí panel:
 
-- Sloupce tabulky a řádky: Pokud chcete připnout tabulku na řídicí panel, musí mít čtyři nebo méně sloupců. Zobrazí se jenom prvních řádků sedm.
-- Čas omezení: Dotazy jsou automaticky omezeny na posledních 14 dní.
-- Omezení počtu Bin: Pokud zobrazíte graf, který obsahuje mnoho intervalů diskrétní méně mají údaj vyplněný přihrádek budou automaticky seskupeny do jednoho _ostatní_ bin.
+- Sloupce a řádky tabulky: Aby bylo možné tabulku připnout na řídicí panel, musí mít čtyři nebo méně sloupců. Zobrazí se pouze prvních sedm řádků.
+- Časové omezení: Dotazy jsou automaticky omezeny na posledních 14 dní.
+- Omezení počtu přihrádek: Pokud zobrazíte graf s velkým množstvím diskrétních přihrádek, do jedné přihrádky _ostatní_ se automaticky seskupí méně vyplněné přihrádky.
 
 ## <a name="save-queries"></a>Ukládání dotazů
-Po vytvoření užitečného dotazu, můžete chtít uložit nebo sdílet s ostatními. **Uložit** je ikona na horním panelu.
+Po vytvoření užitečného dotazu ho můžete chtít uložit nebo sdílet s ostatními. Ikona **Uložit** je na horním panelu.
 
-Na stránce celý dotaz nebo pomocí jediného dotazu můžete uložit jako funkce. Funkce jsou dotazy, které lze také odkazovat pomocí jiných dotazů. Aby bylo možné uložit dotaz jako funkce, je nutné zadat alias funkce, což je název používaný k volání tohoto dotazu, když odkazují jiné dotazy.
+Jako funkci můžete uložit celou stránku dotazu nebo jeden dotaz. Funkce jsou dotazy, které mohou být také odkazovány jinými dotazy. Chcete-li uložit dotaz jako funkci, je nutné zadat alias funkce, což je název, který se používá k volání tohoto dotazu, pokud na něj odkazují jiné dotazy.
 
-![Uložit – funkce](media/get-started-portal/save-function.png)
+![Save – funkce](media/get-started-portal/save-function.png)
 
-Dotazy log Analytics jsou vždy uloženy do vybraného pracovního prostoru a sdílet s ostatními uživateli daného pracovního prostoru.
+>[!NOTE]
+>Následující znaky jsou podporovány – `a–z, A–Z, 0-9, -, _, ., <space>, (, ), |` v poli **název** při ukládání nebo úpravách uloženého dotazu.
+
+Log Analytics dotazy se vždycky ukládají do vybraného pracovního prostoru a sdílí se s ostatními uživateli tohoto pracovního prostoru.
 
 ## <a name="load-queries"></a>Načíst dotazy
-Ikona Průzkumníka dotazů je v horní pravé oblasti. Vypíšou se všechny uložené dotazy podle kategorie. Také umožňuje označit jako oblíbené položky v budoucnu je rychle vyhledat konkrétní dotazy. Klikněte dvakrát na uložený dotaz se přidá do aktuálního okna.
+Ikona Průzkumník dotazů je v pravé horní části. Zobrazí se seznam všech uložených dotazů podle kategorie. Umožňuje také označit konkrétní dotazy jako oblíbené položky a rychle je najít v budoucnu. Dvojím kliknutím na uložený dotaz ho přidejte do aktuálního okna.
 
 ![Průzkumník dotazů](media/get-started-portal/query-explorer.png)
 
-## <a name="export-and-share-as-link"></a>Export a sdílenou složku jako odkaz
-Log Analytics podporuje několik metod pro export:
+## <a name="export-and-share-as-link"></a>Exportovat a sdílet jako odkaz
+Log Analytics podporuje několik metod exportu:
 
-- Excel: Uložte výsledky do souboru .csv.
-- Power BI: Exportujte výsledky do Power BI. Zobrazit [data protokolu Azure Monitor importovat do Power BI](../../azure-monitor/platform/powerbi.md) podrobnosti.
-- Sdílejte odkaz: Samotný dotaz mohou být sdíleny jako odkaz, který lze potom odeslat a spustit další uživatelé, kteří mají přístup do stejného pracovního prostoru.
+- Excel: Výsledky uložte jako soubor CSV.
+- Power BI: Exportujte výsledky do Power BI. Podrobnosti najdete v tématu [Import dat protokolu Azure monitor do Power BI](../../azure-monitor/platform/powerbi.md) .
+- Sdílet odkaz: Samotný dotaz může být sdílen jako odkaz, který lze následně odeslat a spustit jinými uživateli, kteří mají přístup ke stejnému pracovnímu prostoru.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- Další informace o [psaní dotazů na protokoly Azure monitoru](get-started-queries.md).
+- Přečtěte si další informace o [psaní Azure Monitorch dotazů protokolu](get-started-queries.md).

@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/01/2019
 ms.author: cynthn
-ms.openlocfilehash: 0d44e38343d6f7113b296b57353080e2de068bb6
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: a3009c9863d8322e3fe34bd99d64b93f0aa3d858
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68278290"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68385731"
 ---
 # <a name="preview-deploy-vms-to-proximity-placement-groups-using-azure-cli"></a>Verze Preview: Nasazení virtuálních počítačů do skupin umístění pro Proximity pomocí Azure CLI
 
@@ -63,7 +63,13 @@ az vm create \
    -l westus
 ```
 
-## <a name="availability-sets"></a>Skupiny dostupnosti
+Virtuální počítač ve skupině umístění blízkosti můžete zobrazit pomocí [AZ PPG show](/cli/azure/ppg#az-ppg-show).
+
+```azurecli-interactive
+az ppg show --name myppg --resource-group myppggroup --query "virtualMachines"
+```
+
+## <a name="availability-sets"></a>Sady dostupnosti
 Ve skupině umístění blízkosti můžete také vytvořit skupinu dostupnosti. Použijte stejný `--ppg` parametr s příkazem [AZ VM Availability-set Create](/cli/azure/vm/availability-set#az-vm-availability-set-create) , aby se vytvořila skupina dostupnosti, a všechny virtuální počítače ve skupině dostupnosti se taky vytvoří ve stejné skupině umístění blízkosti.
 
 ## <a name="scale-sets"></a>Škálovací sady

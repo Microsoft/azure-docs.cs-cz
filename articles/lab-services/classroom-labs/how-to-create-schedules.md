@@ -1,6 +1,6 @@
 ---
-title: Vytvořit plán pro testovací prostředí v učebnách ve službě Azure Lab Services | Dokumentace Microsoftu
-description: Zjistěte, jak vytvořit plány pro testovací prostředí v učebnách ve službě Azure Lab Services tak, aby virtuální počítače v Tato praktická cvičení spouštění a vypínání v určitou dobu.
+title: Vytvořte plán pro učebn Labs v Azure Lab Services | Microsoft Docs
+description: Naučte se vytvářet plány pro učebn Labs v Azure Lab Services tak, aby se virtuální počítače v laboratořích spouštěly v určitou dobu.
 services: lab-services
 documentationcenter: na
 author: spelluru
@@ -13,73 +13,73 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/30/2019
 ms.author: spelluru
-ms.openlocfilehash: 34bc8263053cd4a701c16ee1832cf1b27340a345
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f607ba68563aa92797f45cf77db0575ae6802fee
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60695949"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68385599"
 ---
-# <a name="create-and-manage-schedules-for-classroom-labs-in-azure-lab-services"></a>Vytvořit a spravovat plány pro testovací prostředí v učebnách ve službě Azure Lab Services 
-Plány umožňují konfigurovat testovacího prostředí v učebně, tak, aby virtuální počítače v testovacím prostředí automaticky spuštění a vypnutí v určenou dobu. Můžete definovat jednorázového plánu nebo plánu opakování. Následující postupy vám postup vytvoření a správě plánů pro prostředí v učebně: 
+# <a name="create-and-manage-schedules-for-classroom-labs-in-azure-lab-services"></a>Vytváření a Správa plánů pro učebn Labs v Azure Lab Services 
+Plány umožňují nakonfigurovat prostředí učebny tak, aby se virtuální počítače v testovacím prostředí automaticky spouštěly a vypnuly v určitou dobu. Můžete definovat Jednorázový plán nebo plán opakování. Následující postupy vám poskytnou kroky pro vytváření a správu plánů pro prostředí učebny: 
 
 > [!IMPORTANT]
-> Plánovaná doba spuštění virtuálních počítačů proti nepočítá [odpadkový uživateli](how-to-configure-student-usage.md#set-quotas-per-user). Kvóta je na dobu mimo hodiny plánu, které student stráví na virtuálních počítačích. 
+> Plánovaná doba spuštění virtuálních počítačů se nepočítá s kvótou [přidělenou uživateli](how-to-configure-student-usage.md#set-quotas-for-users). Kvóta je určena pro dobu mimo plánované hodiny, kterou student stráví na virtuálních počítačích. 
 
 ## <a name="add-a-schedule-once"></a>Přidat plán (jednou)
 
-1. Přepněte **plány** stránku a vybrat **přidat plán** na panelu nástrojů. 
+1. Přepněte na stránku **plány** a na panelu nástrojů vyberte **Přidat plán** . 
 
-    ![Přidejte tlačítko plán na stránce plány](../media/how-to-create-schedules/add-schedule-button.png)
-2. Na **přidat plán** stránky, ujistěte se, že **jednou** je vybraná možnost v horní části. Pokud není, vyberte **jednou**. 
-3. Pro **naplánovat datum (povinné)** , zadejte datum, nebo vyberte ikonu kalendáře pro výběr data. 
-4. Pro **počáteční čas**, vyberte čas, kdy chcete spustit virtuální počítače. Počáteční čas je vyžadována, pokud čas ukončení není nastaven. Vyberte **odebrat zahájit událost** Pokud chcete určit pouze čas ukončení. Pokud **počáteční čas** je zakázaná, vyberte **přidat počáteční událost** vedle rozevíracího seznamu, aby je. 
-5. Pro **čas ukončení**, vyberte čas, kdy chcete vypnout virtuální počítače. Čas ukončení je vyžadována, pokud není nastaven počáteční čas. Vyberte **událost odebrání po zastavení** Pokud chcete zadat čas spuštění. Pokud **čas ukončení** je zakázaná, vyberte **události zastavení přidat** vedle rozevíracího seznamu, aby je.
-6. Pro **časové pásmo (povinné)** , vyberte časové pásmo pro spuštění a zastavení časy, které jste zadali. 
-7. Pro **poznámky**, zadejte popis případné poznámky pro daný plán. 
+    ![Tlačítko Přidat plán na stránce plány](../media/how-to-create-schedules/add-schedule-button.png)
+2. Na stránce **Přidat plán** potvrďte, že je v horní části vybraná možnost **jednou** . Pokud není, vyberte **jednou**. 
+3. Pro **Datum plánu (povinné)** zadejte datum nebo vyberte ikonu kalendáře a vyberte datum. 
+4. V části **čas spuštění**vyberte čas, kdy se mají virtuální počítače spustit. Čas spuštění je vyžadován, pokud není nastaven čas zastavení. Vyberte možnost **Odebrat událost spuštění** , pokud chcete určit pouze dobu zastavení. Pokud je **počáteční čas** zakázaný, vyberte **Přidat spustit událost** vedle rozevíracího seznamu a povolte ho. 
+5. V poli **čas zastavení**vyberte čas, kdy se mají virtuální počítače vypnout. Pokud není nastaven počáteční čas, je nutné čas zastavení. Vyberte **Odebrat událost zastavení** , pokud chcete zadat pouze počáteční čas. Pokud je **Doba zastavení** zakázaná, můžete ji povolit výběrem **Přidat událost zastavení** vedle rozevíracího seznamu.
+6. V poli **časové pásmo (povinné)** vyberte časové pásmo pro dobu zahájení a ukončení, kterou jste zadali. 
+7. Pro **poznámky**zadejte libovolný popis nebo poznámky k plánu. 
 8. Vyberte **Uložit**. 
 
-    ![Jednorázová plán](../media/how-to-create-schedules/add-schedule-page.png)
+    ![Plán jednorázová](../media/how-to-create-schedules/add-schedule-page.png)
 
-## <a name="add-a-recurring-schedule-weekly"></a>Přidat (týdně) plánu opakování
+## <a name="add-a-recurring-schedule-weekly"></a>Přidání opakovaného plánu (týdně)
 
-1. Přepněte **plány** stránku a vybrat **přidat plán** na panelu nástrojů. 
+1. Přepněte na stránku **plány** a na panelu nástrojů vyberte **Přidat plán** . 
 
-    ![Přidejte tlačítko plán na stránce plány](../media/how-to-create-schedules/add-schedule-button.png)
-2. Na **přidat plán** stránce, přepněte na **týdenní** v horní části. 
-3. Pro **naplánovat dnů (povinné)** , vyberte dny, ve které chcete plánu se projeví. V následujícím příkladu je vybrána pondělí až pátek. 
-4. Pro **z** zadejte **naplánovat datum zahájení** nebo vyberte datum tak, že vyberete **kalendáře** tlačítko. Toto pole je povinné. 
-5. Pro **datum ukončení plánu**, zadejte nebo vyberte koncové datum, na kterém jsou virtuální počítače vypnou. 
-6. Pro **počáteční čas**, vyberte čas, kdy chcete spustit virtuální počítače. Počáteční čas je vyžadována, pokud čas ukončení není nastaven. Vyberte **odebrat zahájit událost** Pokud chcete určit pouze čas ukončení. Pokud **počáteční čas** je zakázaná, vyberte **přidat počáteční událost** vedle rozevíracího seznamu, aby je. 
-7. Pro **čas ukončení**, vyberte čas, kdy chcete vypnout virtuální počítače. Čas ukončení je vyžadována, pokud není nastaven počáteční čas. Vyberte **událost odebrání po zastavení** Pokud chcete zadat čas spuštění. Pokud **čas ukončení** je zakázaná, vyberte **události zastavení přidat** vedle rozevíracího seznamu, aby je.
-8. Pro **časové pásmo (povinné)** , vyberte časové pásmo pro spuštění a zastavení časy, které jste zadali.  
-9. Pro **poznámky**, zadejte popis případné poznámky pro daný plán. 
+    ![Tlačítko Přidat plán na stránce plány](../media/how-to-create-schedules/add-schedule-button.png)
+2. Na stránce **Přidat plán** přepněte v horní části  na týdně. 
+3. Pro **dny plánu (povinné)** vyberte dny, ve kterých se má plán projevit. V následujícím příkladu je vybrána možnost pondělí – pátek. 
+4. V poli **od** zadejte **Datum zahájení plánu** nebo vyberte datum výběrem tlačítka **Kalendář** . Toto pole je povinné. 
+5. Do pole **Datum ukončení plánu**zadejte nebo vyberte koncové datum, kdy se mají virtuální počítače vypnout. 
+6. V části **čas spuštění**vyberte čas, kdy se mají virtuální počítače spustit. Čas spuštění je vyžadován, pokud není nastaven čas zastavení. Vyberte možnost **Odebrat událost spuštění** , pokud chcete určit pouze dobu zastavení. Pokud je **počáteční čas** zakázaný, vyberte **Přidat spustit událost** vedle rozevíracího seznamu a povolte ho. 
+7. V poli **čas zastavení**vyberte čas, kdy se mají virtuální počítače vypnout. Pokud není nastaven počáteční čas, je nutné čas zastavení. Vyberte **Odebrat událost zastavení** , pokud chcete zadat pouze počáteční čas. Pokud je **Doba zastavení** zakázaná, můžete ji povolit výběrem **Přidat událost zastavení** vedle rozevíracího seznamu.
+8. V poli **časové pásmo (povinné)** vyberte časové pásmo pro dobu zahájení a ukončení, kterou jste zadali.  
+9. Pro **poznámky**zadejte libovolný popis nebo poznámky k plánu. 
 10. Vyberte **Uložit**. 
 
     ![Týdenní plán](../media/how-to-create-schedules/add-schedule-page-weekly.png)
 
 ## <a name="view-schedules-in-calendar"></a>Zobrazit plány v kalendáři
-Můžete zobrazit plánované dat a časů v zobrazení Kalendář zvýrazněn, jak je znázorněno na následujícím obrázku:
+Naplánovaná data a časy zvýrazněné v zobrazení Kalendář můžete zobrazit, jak je znázorněno na následujícím obrázku:
 
 ![Plány v zobrazení Kalendář](../media/how-to-create-schedules/schedules-in-calendar.png)
 
-Vyberte **Dnes** tlačítko v pravém horním rohu přepnout na aktuální datum v kalendáři. Vyberte **šipku vlevo** přejděte do předchozího týdne a **šipku vpravo** přejděte do následujícího týdne v kalendáři. 
+V pravém horním rohu vyberte tlačítko **dnes** a přepněte tak na aktuální datum v kalendáři. Vyberte **šipku doleva** pro přepnutí na předchozí týden a **šipku vpravo** , abyste přešli na další týden v kalendáři. 
 
 ## <a name="edit-a-schedule"></a>Upravit plán
-Když dvakrát kliknete na zvýrazněný plánu v kalendáři nebo vyberte **tužky** tlačítko na panelu nástrojů zobrazí **upravit plán** stránky. Aktualizuje se nastavení na této stránce je stejný jako při aktualizaci nastavení v **přidat plán** stránce, jak je popsáno v [přidat opakovaně](#add-a-recurring-schedule-weekly) oddílu. 
+Když dvakrát kliknete na zvýrazněný plán v kalendáři nebo na panelu nástrojů vyberete  tlačítko tužky, zobrazí se stránka **Upravit plán** . Aktualizace nastavení na této stránce je stejná jako aktualizace nastavení na stránce **Přidat plán** , jak je popsáno v části [Přidání opakovaného plánu](#add-a-recurring-schedule-weekly) . 
 
-![Upravit plán stránku](../media/how-to-create-schedules/edit-schedule-page.png)
+![Stránka upravit plán](../media/how-to-create-schedules/edit-schedule-page.png)
 
 ## <a name="delete-a-schedule"></a>Odstranění plánu
 
-1. Pokud chcete odstranit plán, vyberte Koš (odstranit) na panelu nástrojů, jak je znázorněno na následujícím obrázku:
+1. Pokud chcete odstranit plán, vyberte na panelu nástrojů tlačítko odpadkový koš (odstranit), jak je znázorněno na následujícím obrázku:
 
-    ![Odstranění tlačítka na panelu nástrojů](../media/how-to-create-schedules/delete-schedule-button.png)
+    ![Tlačítko Odstranit na panelu nástrojů](../media/how-to-create-schedules/delete-schedule-button.png)
 
-    Můžete použít tlačítko pro odstranění pro všechny naplánované datum a čas v kalendáři a vybrat **odstranit**. 
-2. Na **odstranit plány** stránce **Ano**.
+    Tlačítko Odstranit můžete použít pro jakékoli naplánované datum a časy v kalendáři a vybrat **Odstranit**. 
+2. Na stránce **Odstranit plány** vyberte **Ano**.
 
-    ![Plány potvrzení odstranění](../media/how-to-create-schedules/delete-schedules-confirmation.png)
+    ![Potvrzení odstranění plánů](../media/how-to-create-schedules/delete-schedules-confirmation.png)
 
 
 
@@ -87,7 +87,7 @@ Když dvakrát kliknete na zvýrazněný plánu v kalendáři nebo vyberte **tu�
 ## <a name="next-steps"></a>Další postup
 Viz následující články:
 
-- [Jako správce vytvářet a spravovat účty pro testovací prostředí](how-to-manage-lab-accounts.md)
-- [Jako vlastník testovacího prostředí vytvoření a správa testovacích prostředí](how-to-manage-classroom-labs.md)
-- [Jako vlastník testovacího prostředí konfigurovat a spravovat využití testovacího prostředí](how-to-configure-student-usage.md)
-- [Jako uživatel, který testovací prostředí přístup k testovacím prostředím v učebnách](how-to-use-classroom-lab.md)
+- [Účty testovacího prostředí se vytvářejí a spravují jako správce.](how-to-manage-lab-accounts.md)
+- [Jako vlastník testovacího prostředí vytvářet a spravovat cvičení](how-to-manage-classroom-labs.md)
+- [Jako vlastník testovacího prostředí konfigurace a řízení využití testovacího prostředí](how-to-configure-student-usage.md)
+- [Jako uživatel testovacího prostředí, Access učeben Labs](how-to-use-classroom-lab.md)

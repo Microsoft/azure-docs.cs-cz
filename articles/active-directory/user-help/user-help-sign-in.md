@@ -1,79 +1,100 @@
 ---
-title: Přihlaste se pomocí dvoustupňového ověření nebo bezpečnostních údajů – Azure Active Directory | Dokumentace Microsoftu
-description: Další informace o tom, jak se přihlásit pomocí různých metod ověření identity bezpečnostních údajů.
+title: Přihlaste se se dvěma kroky ověřování nebo bezpečnostní informace – Azure Active Directory | Microsoft Docs
+description: Přečtěte si, jak se přihlásit pomocí různých metod ověřování identity v informacích o zabezpečení.
 services: active-directory
 author: eross-msft
 manager: daveba
-ms.reviewer: sahenry
+ms.reviewer: librown
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: conceptual
-ms.date: 07/30/2018
+ms.date: 07/18/2019
 ms.author: lizross
-ms.custom: user-help, seo-update-azuread-jan
+ms.custom: user-help
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 60e4d9a4cb555dfbc9f05961487a8f794d19e1bf
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b20ea1131ceda0527ed35d1a1082d05f25da6bac
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60472956"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68382294"
 ---
-# <a name="sign-in-using-two-step-verification-or-security-info"></a>Přihlaste se pomocí dvoustupňového ověření nebo bezpečnostních údajů
-Po nastavení dvoustupňového ověřování nebo bezpečnostní údaje budete moct přihlásit k vašemu účtu pomocí zadaný ověřovací metodu.
+# <a name="sign-in-using-two-step-verification-or-security-info"></a>Přihlášení pomocí dvoustupňového ověřování nebo bezpečnostních údajů
+
+Až nastavíte dvoustupňové ověřování nebo bezpečnostní údaje, budete se moct přihlásit ke svému účtu pomocí zadané metody ověřování.
 
 > [!Note]
-> Pokud stále používáte prostředí dvoustupňové ověření, budete muset nastavit metody ověřování pomocí následujících pokynů [nastavit účtu pro dvoustupňové ověřování](multi-factor-authentication-end-user-first-time.md) článku.
-> 
-> Pokud správce zapnul prostředí informace o zabezpečení, musíte nastavit tyto podrobné články pomocí metody ověřování:<ul><li>[Nastavení informací o zabezpečení pro použití ověřování aplikace](security-info-setup-auth-app.md)</li><li>[Nastavení bezpečnostních údajů pro používání zasílání textových zpráv](security-info-setup-text-msg.md)</li><li>[Upravit informace o zabezpečení tak, aby pomocí telefonního hovoru](security-info-setup-phone-number.md)</li></ul>
+> Pokud stále používáte dvoustupňové ověřování, budete muset nastavit metody ověřování podle pokynů v článku [Nastavení mého účtu pro dvoustupňové ověření](multi-factor-authentication-end-user-first-time.md) v článku.
+>
+> Pokud správce zapnul prostředí informací o zabezpečení, budete muset pomocí těchto podrobných článků nastavit metody ověřování:<ul><li>[Nastavení bezpečnostních údajů pro použití ověřovací aplikace](security-info-setup-auth-app.md)</li><li>[Nastavení bezpečnostních údajů pro používání zasílání textových zpráv](security-info-setup-text-msg.md)</li><li>[Nastavení bezpečnostních údajů pro použití telefonního hovoru](security-info-setup-phone-number.md)</li><li>[Nastavení bezpečnostních údajů pro použití bezpečnostního klíče](security-info-setup-security-key.md)</li></ul>
 
-## <a name="sign-in-using-an-authenticator-app-notification-on-your-mobile-device"></a>Přihlaste se pomocí oznámení aplikaci authenticator na vašem mobilním zařízení
+## <a name="sign-in-using-an-authenticator-app-notification-on-your-mobile-device"></a>Přihlaste se pomocí oznámení ověřovací aplikace na mobilním zařízení.
 
-1. Přihlaste se ke svému účtu pomocí svého uživatelského jména a hesla.
+1. Přihlaste se ke svému účtu pomocí uživatelského jména a hesla.
 
-2. Vyberte **schválit** z oznámení o schválení odeslané na vaše mobilní zařízení.
+2. Vyberte **schválit** z oznámení o schválení odeslaného na vaše mobilní zařízení.
 
-## <a name="sign-in-using-an-authenticator-app-code-on-your-mobile-device"></a>Přihlaste se pomocí kódu aplikace authenticator na vašem mobilním zařízení
+## <a name="sign-in-using-an-authenticator-app-code-on-your-mobile-device"></a>Přihlaste se pomocí kódu aplikace ověřovatele na mobilním zařízení.
 
-1. Přihlaste se ke svému účtu pomocí svého uživatelského jména a hesla.
+1. Přihlaste se ke svému účtu pomocí uživatelského jména a hesla.
 
-2. Otevřete aplikaci authenticator a zadejte náhodně generovaný kód pro váš účet do **zadejte kód** pole.
+2. Otevřete aplikaci ověřovatele a do pole **zadat kód** zadejte náhodně generovaný kód pro svůj účet.
 
-## <a name="sign-in-using-your-phone-number"></a>Přihlaste se pomocí svého telefonního čísla
+## <a name="sign-in-using-your-phone-number"></a>Přihlaste se pomocí svého telefonního čísla.
 
-1. Přihlaste se ke svému účtu pomocí svého uživatelského jména a hesla.
+1. Přihlaste se ke svému účtu pomocí uživatelského jména a hesla.
 
-2. Odpovědět na telefonu a postupujte podle pokynů.
+2. Odpovězte na svůj telefon a postupujte podle pokynů.
 
-## <a name="sign-in-using-a-text-message"></a>Přihlaste se pomocí textové zprávy
+## <a name="sign-in-using-a-text-message"></a>Přihlášení pomocí textové zprávy
 
-1. Přihlaste se ke svému účtu pomocí svého uživatelského jména a hesla.
+1. Přihlaste se ke svému účtu pomocí uživatelského jména a hesla.
 
-2. Otevřete na textovou zprávu a zadejte kód textovou zprávu do **zadejte kód** pole.
+2. Otevřete textovou zprávu a zadejte kód z textové zprávy do pole **Zadejte kód** .
 
-## <a name="sign-in-using-another-verification-method"></a>Přihlaste se pomocí jinou metodu ověřování
-Pokud z nějakého důvodu nemůžete použít primární způsob přihlašování, můžete použít jiné si dříve nastavil ověřovacích metod současně.
+## <a name="sign-in-using-a-security-key-at-the-lock-screen"></a>Přihlášení pomocí bezpečnostního klíče na zamykací obrazovce
 
-1. Normálně přihlásit ke svému účtu a klikněte na tlačítko **podepsat jiným způsobem** odkaz na **dvoustupňové ověřování** stránky.
+1. Po zaregistrování klíče zabezpečení vyberte z zamykací obrazovky Windows 10 obrázek klíče zabezpečení.
 
-    ![Změnit přihlašovací metoda ověření](media/security-info/two-factor-auth-signin-another-way.png)
+2. Vložte svůj bezpečnostní klíč do portu USB vašeho zařízení a přihlaste se k Windows pomocí PIN kódu bezpečnostního klíče.
+
+    ![Přihlášení k bezpečnostnímu klíči na zamykací obrazovce Windows 10](./media/security-info/security-info-windows-10-lock-screen-security-key.png)
+
+## <a name="sign-in-using-a-security-key-and-the-microsoft-edge-browser"></a>Přihlaste se pomocí bezpečnostního klíče a prohlížeče Microsoft Edge.
+
+1. Po zaregistrování klíče zabezpečení otevřete prohlížeč Microsoft Edge.
+
+2. Po zobrazení výzvy k přihlášení vložte svůj bezpečnostní klíč do portu USB zařízení a přihlaste se k Windows pomocí PIN kódu bezpečnostního klíče.
+
+    ![Přihlášení k bezpečnostnímu klíči pomocí prohlížeče Microsoft Edge](./media/security-info/security-info-edge-security-key.png)
+
+    >[!NOTE]
+    >Informace o přihlášení pomocí aplikace Microsoft Authenticator najdete v článku o [přihlášení k účtům pomocí Microsoft Authenticator aplikace](user-help-auth-app-sign-in.md).
+
+## <a name="sign-in-using-another-verification-method"></a>Přihlaste se pomocí jiné metody ověřování.
+
+Pokud z nějakého důvodu nemůžete použít vaši primární metodu přihlašování, můžete použít jinou metodu ověření, kterou jste dříve nastavili.
+
+1. Přihlaste se ke svému účtu normálně a pak na stránce **dvoustupňové ověřování** klikněte na odkaz **podepsat** jinak.
+
+    ![Změnit metodu ověření přihlášení](media/security-info/two-factor-auth-signin-another-way.png)
 
     >[!Note]
-    >Pokud se nezobrazí **podepsat jiným způsobem** propojit, znamená to, že jste nenastavili žádné jiné metody ověřování a že bude nutné požádat správce o pomoc přihlášení k účtu. Poté, co váš správce vám umožní přihlásit se, ujistěte se, že přidáte další ověřovací metody. Další informace o přidání metod ověřování, najdete v článku [spravovat nastavení pro dvoustupňové ověřování](multi-factor-authentication-end-user-manage-settings.md) článku.
-    > 
-    >Pokud se zobrazí **podepsat jiným způsobem** propojení, ale stále nevidíte žádné jiné metody ověřování, bude nutné požádat správce o pomoc s přihlášením k účtu.
+    >Pokud nevidíte odkaz **jiný způsob** , znamená to, že jste nenainstalovali žádné další metody ověřování a že budete muset požádat správce, aby vám pomohli přihlašovat se k vašemu účtu. Až správce pomůže přihlásit, nezapomeňte přidat další metody ověřování. Další informace o přidání metod ověřování najdete v článku [Správa nastavení pro dvoustupňové ověřování](multi-factor-authentication-end-user-manage-settings.md) .
+    >
+    >Pokud se zobrazí odkaz **podepsat jiným způsobem** , ale stále se nezobrazuje žádné další metody ověřování, budete se muset obrátit na správce, aby vám pomohla přihlašovat se k vašemu účtu.
 
-2. Zvolte metodu alternativní ověření a pokračujte v procesu dvoustupňové ověření.
+2. Vyberte metodu alternativního ověřování a pokračujte v procesu dvojúrovňového ověřování.
 
-3. Jakmile budete zpět ve vašem účtu, můžete aktualizovat své metody ověřování (v případě potřeby). Další informace o přidání nebo změna vašich metodách, naleznete v tématu [spravovat nastavení pro dvoustupňové ověřování](multi-factor-authentication-end-user-manage-settings.md) článku.
+3. Po obnovení účtu můžete aktualizovat metody ověřování (v případě potřeby). Další informace o přidání nebo změně vašich metod najdete v článku [Správa nastavení pro dvoustupňové ověřování](multi-factor-authentication-end-user-manage-settings.md) .
 
 ## <a name="next-steps"></a>Další postup
 
-- Další informace o bezpečnostním údajům v [zabezpečení informací (preview) – přehled](user-help-security-info-overview.md) článku.
+- Informace o zabezpečení najdete v článku Přehled informací o zabezpečení [(Preview)](user-help-security-info-overview.md) .
 
-- Další informace o dvoustupňovém ověřování v [dvoustupňové ověření přehled](user-help-two-step-verification-overview.md) článku. 
+- Další informace o dvoustupňovém ověřování najdete v článku [Přehled ověřování dvou kroků](user-help-two-step-verification-overview.md) .
 
-- Resetování hesla, pokud jste ztratíte nebo zapomenete, z [portál pro resetování hesel](https://passwordreset.microsoftonline.com/)
+- Resetování hesla, pokud jste ho ztratili nebo zapomněli, na [portálu pro resetování hesla](https://passwordreset.microsoftonline.com/)
 
-- Získejte řešení potíží, tipy a nápovědu pro problémy s přihlášením v [nemůžete se přihlásit ke svému účtu Microsoft](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant) článku.
+- Získejte tipy pro řešení potíží a nápovědu k problémům s přihlášením v tématu se nemůžete [přihlásit k vašemu účet Microsoft](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant) .

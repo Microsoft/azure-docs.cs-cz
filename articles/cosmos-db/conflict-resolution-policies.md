@@ -1,55 +1,55 @@
 ---
-title: Řešení konfliktu a zásady řešení s několika zápisu oblastí ve službě Azure Cosmos DB
-description: Tento článek popisuje kategorie konflikt a zásady řešení konfliktu ve službě Azure Cosmos DB.
+title: Typy řešení konfliktů a zásady řešení s více oblastmi zápisu v Azure Cosmos DB
+description: Tento článek popisuje kategorie konfliktů a zásady řešení konfliktů v Azure Cosmos DB.
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/23/2019
+ms.date: 07/23/2019
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 98e9f5fff1b74d417ee07ed0056c8046b49baa17
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 45b7257f67be8ba5c134717d73488916056b7a7d
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66236536"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68384209"
 ---
 # <a name="conflict-types-and-resolution-policies"></a>Zásady řešení a typy konfliktů
 
-Konflikty a řešení konfliktů, že zásady se dají použít, pokud váš účet Azure Cosmos DB je nakonfigurovaný s několika zápisu oblastech.
+Zásady konfliktů a řešení konfliktů se použijí, pokud je váš účet Azure Cosmos DB nakonfigurovaný s více oblastmi zápisu.
 
-Pro účty Azure Cosmos, nakonfigurovaný s využitím více oblastí zápisu můžete aktualizace konflikt nastane, když uživatelé vytvářející obsah současně aktualizace jedné položce v několika oblastech. Ke konfliktům aktualizace může být z následujících tří typů:
+U účtů Azure Cosmos konfigurovaných s více oblastmi zápisu může dojít ke konfliktům aktualizace, když zapisovač současně aktualizuje stejnou položku ve více oblastech. Konflikty aktualizací můžou mít následující tři typy:
 
-* **Vložit konflikty**: Tyto konflikty mohou nastat při aplikaci současně vloží dva nebo více položek se stejný jedinečný index ve dvou nebo více oblastech. Například může vzniknout tento konflikt s vlastností ID.
+* **Konflikty při vkládání**: K těmto konfliktům může dojít, když aplikace současně vloží dvě nebo více položek se stejným jedinečným indexem ve dvou nebo více oblastech. K tomuto konfliktu může například dojít s vlastností ID.
 
-* **Nahraďte je v konfliktu**: Tyto konflikty situace může nastat, pokud aplikace aktualizuje jedné položce současně ve dvou nebo více oblastech.
+* **Nahradit konflikty**: Tyto konflikty mohou nastat, pokud aplikace aktualizuje stejnou položku současně ve dvou nebo více oblastech.
 
-* **Odstranit konflikty**: Tyto konflikty mohou nastat při aplikaci současně odstraní položku v jedné oblasti a aktualizuje v jiné oblasti.
+* **Konflikty při odstraňování**: K těmto konfliktům může dojít, když aplikace současně odstraní položku v jedné oblasti a aktualizuje ji v jiné oblasti.
 
 ## <a name="conflict-resolution-policies"></a>Zásady řešení konfliktů
 
-Azure Cosmos DB nabízí flexibilní založená na zásadách mechanismus k řešení konfliktů při zápisu. Můžete vybrat mezi dvěma zásadami řešení konfliktů v kontejneru Azure Cosmos:
+Azure Cosmos DB nabízí flexibilní mechanizmy založené na zásadách pro řešení konfliktů při zápisu. V kontejneru Azure Cosmos můžete vybrat ze dvou zásad řešení konfliktů:
 
-- **Posledního zápisu Wins (LWW)** : Tato zásada řešení používá ve výchozím nastavení vlastnosti definované v systému časové razítko. Je založen na protokolu synchronizaci času hodin. Pokud používáte rozhraní SQL API, můžete zadat jakoukoli jinou vlastní číselné vlastnosti (například vlastní pojem časové razítko) se použije k odstranění konfliktů. Vlastní číselné vlastnosti se také označuje jako *cesta nalezení konflikt*. 
+- **Poslední zápis WINS (LWW)** : Tato zásada řešení používá ve výchozím nastavení vlastnost časového razítka definovanou systémem. Vychází z protokolu časových hodin synchronizace. Pokud používáte rozhraní SQL API, můžete zadat jakoukoli jinou vlastní číselnou vlastnost (například vlastní fiktivní časovou známku), která se použije pro řešení konfliktů. Vlastní numerická vlastnost je také označována jako *cesta řešení konfliktů*. 
 
-  Pokud dva nebo více položek konflikt na vložení nebo nahrazení operace, stane položek s nejvyšší hodnotou pro cestu k řešení konfliktů vítěze. Systém určí vítěze máte více položek na stejnou číselnou hodnotu pro cestu k řešení konfliktů. Všechny oblasti zaručeno směřovat do jednoho vítěze a end nahoru se stejnou verzí položky potvrzeny. Při odstranění je v konfliktu se podílejí, vždy odstraněné verze služby wins vložení nebo nahrazení je v konfliktu. Tento výsledek nastane bez ohledu na cestu řešení konfliktů.
-
-  > [!NOTE]
-  > Poslední zápis Wins je výchozí zásada řešení konfliktů. Je k dispozici pro následující rozhraní API: SQL, MongoDB, Cassandra, Gremlin a tabulky.
-
-  Další informace najdete v tématu [příklady, které používají LWW konfliktu zásad řešení](how-to-manage-conflicts.md).
-
-- **Vlastní**: Tato zásada řešení je určena pro sémantiku definovaného aplikací pro odsouhlasení je v konfliktu. Když tyto zásady nastavíte na váš kontejner Azure Cosmos, musíte také zaregistrovat *sloučit uloženou proceduru*. Tento postup je automaticky vyvolána při zjištění konfliktu v rámci transakce databáze na serveru. Poskytuje tento systém přesně jednou zaručit k provádění procedury sloučení jako součást závazku protokolu.  
-
-  Pokud konfigurace vašeho kontejneru s možností vlastního řešení a nezdaří jejich registrace sloučení proceduru ke kontejneru nebo sloučení postupu dojde k výjimce za běhu, konflikty se zapisují do *konfliktům kanál*. Aplikace pak je potřeba ručně vyřešit konflikty v konflikty informačního kanálu. Další informace najdete v tématu [příklady, jak používat zásady vlastní řešení a jak používat konfliktům kanál](how-to-manage-conflicts.md).
+  Pokud dojde ke konfliktu dvou nebo více položek u operací vložení nebo nahrazení, bude se jednat o položku s nejvyšší hodnotou pro cestu k řešení konfliktů. Systém Určuje, zda má více položek stejnou číselnou hodnotu pro cestu k řešení konfliktů. Všechny oblasti jsou zaručené sblížení s jednou vítězí a končí stejnou verzí potvrzené položky. Pokud jsou zapojené konflikty při odstraňování, Odstraněná verze vždy vyhrává z konfliktů vložení nebo nahrazení. K tomuto výsledku nedochází bez ohledu na to, co je hodnota cesty pro řešení konfliktů.
 
   > [!NOTE]
-  > Vlastní konflikt zásada řešení je k dispozici pouze pro účty SQL API.
+  > Poslední zápis WINS je výchozí zásada řešení konfliktů. Je k dispozici pro následující rozhraní API: SQL, MongoDB, Cassandra, Gremlin a Table.
+
+  Další informace najdete v tématu [Příklady použití zásad řešení konfliktů LWW](how-to-manage-conflicts.md).
+
+- **Vlastní**: Tato zásada řešení je navržena pro sémantiku definovanou aplikací pro odsouhlasení konfliktů. Když nastavíte tuto zásadu v kontejneru Azure Cosmos, musíte taky zaregistrovat uloženou proceduru *sloučení*. Tento postup je automaticky vyvolán při zjištění konfliktů v rámci transakce databáze na serveru. Poskytuje tento systém přesně jednou zaručit k provádění procedury sloučení jako součást závazku protokolu.  
+
+  Pokud nakonfigurujete kontejner s možností vlastní rozlišení a nebudete registrovat proceduru sloučení v kontejneru nebo procedura sloučení vyvolá výjimku za běhu, jsou konflikty zapisovány do *kanálu konfliktů*. Vaše aplikace pak potřebuje ručně vyřešit konflikty v kanálu konfliktů. Další informace najdete v tématu [Příklady použití vlastních zásad řešení a způsobu použití kanálu konfliktů](how-to-manage-conflicts.md).
+
+  > [!NOTE]
+  > Vlastní zásady řešení konfliktů jsou k dispozici pouze pro účty rozhraní SQL API.
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace o konfiguraci zásad řešení konfliktů:
+Přečtěte si, jak nakonfigurovat zásady řešení konfliktů:
 
-* [Jak nakonfigurovat více hlavních databází ve svých aplikacích](how-to-multi-master.md)
-* [Správa zásad řešení konfliktů](how-to-manage-conflicts.md)
-* [Čtení z kanálu je v konfliktu](how-to-manage-conflicts.md#read-from-conflict-feed)
+* [Jak v aplikacích nakonfigurovat více hlavních serverů](how-to-multi-master.md)
+* [Jak spravovat zásady řešení konfliktů](how-to-manage-conflicts.md)
+* [Jak číst z informačního kanálu konfliktů](how-to-manage-conflicts.md#read-from-conflict-feed)

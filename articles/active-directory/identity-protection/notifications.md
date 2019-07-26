@@ -1,88 +1,73 @@
 ---
-title: Azure Active Directory Identity Protection upozornění | Dokumentace Microsoftu
-description: Zjistěte, jak oznámení podporu aktivit šetření.
+title: Oznámení Azure Active Directory Identity Protection | Microsoft Docs
+description: Přečtěte si, jak oznámení podporují vaše aktivity šetření.
 services: active-directory
-keywords: Azure active directory identity protection, zjišťování cloudových aplikací, Správa aplikací, zabezpečení, rizika, úroveň rizika, ohrožení zabezpečení, zásady zabezpečení
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: daveba
-editor: ''
-ms.assetid: 65ca79b9-4da1-4d5b-bebd-eda776cc32c7
 ms.service: active-directory
 ms.subservice: identity-protection
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/07/2017
 ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0065ec03695ee977133ae2ec43aafba7d5bfff78
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3dcc7d2d03b3c4a3f4c8c772f38aa3785080d986
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65784345"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68335364"
 ---
-# <a name="azure-active-directory-identity-protection-notifications"></a>Oznámení služby Azure Active Directory Identity Protection
+# <a name="azure-active-directory-identity-protection-notifications"></a>Oznámení Azure Active Directory Identity Protection
 
-Služba Azure AD Identity Protection se odešle dva druhy automatizované oznámení e-mailů vám pomohou při správě uživatelského rizika a rizikových událostí:
+Azure AD Identity Protection posílá dva typy automatických e-mailů s oznámením, které vám pomůžou spravovat rizika a rizikové události uživatelů:
 
-- Ohrožení uživatelé zjistil e-mailu
-- Týdenní přehled e-mailu
+- E-mail zjištěných uživatelů v nebezpečí
+- Týdenní e-mail pro výtah
 
-Tento článek poskytuje přehled o obou oznámení e-mailů.
+Tento článek poskytuje přehled e-mailů s oznámením.
 
+## <a name="users-at-risk-detected-email"></a>E-mail zjištěných uživatelů v nebezpečí
 
-## <a name="users-at-risk-detected-email"></a>Ohrožení uživatelé zjistil e-mailu
+V reakci na zjištěný účet hrozí Azure AD Identity Protection vygenerovat e-mailové upozornění s **uživateli** s rizikem zjištěným jako předmětem. E-mail obsahuje odkaz na sestavu **[Uživatelé označení příznakem rizika](../reports-monitoring/concept-user-at-risk.md)** . Osvědčeným postupem je okamžitě prozkoumat riziko pro uživatele.
 
-V reakci na účet zjištěná ohrožení, Azure AD Identity Protection generuje upozornění e-mailu s **uživatelé na zjištěné riziko** jako předmět. E-mailu obsahuje odkaz **[uživatelé označení příznakem rizika](../reports-monitoring/concept-user-at-risk.md)** sestavy. Jako osvědčený postup byste měli prozkoumat okamžitě ohrožení uživatelé.
+Konfigurace pro tuto výstrahu vám umožní určit, na jakou úroveň rizika uživatele má být výstraha vygenerována. E-mail se vygeneruje, když úroveň rizika uživatele dosáhne toho, co jste určili. Po přesunu na tuto úroveň rizika uživatele ale nebudete dostávat noví uživatelé upozorňující na riziko zjištěná e-mailová upozornění pro tohoto uživatele. Pokud jste například nastavili zásady na upozornění pro středně velké uživatelské riziko a uživatel Jan se přesune na střední riziko, obdržíte riziko zjištěného e-mailu pro uživatele Jan. V případě, že se Jan pak přesune na vysoké riziko nebo má další rizikové události, nebudete dostávat druhé uživatele v upozornění na zjištěnou rizikovost.
 
-Konfigurace pro toto upozornění můžete zadat, na jaké úroveň rizika uživatele má vygenerování výstrahy. E-mailu se vygeneruje, když úroveň rizika uživatele dosáhne jste zadali; ale neobdržíte žádné nové uživatele na zjištěné riziko e-mailové výstrahy pro tohoto uživatele po přecházejí na tuto úroveň rizika uživatele. Například pokud nastavíte zásady tak, aby upozornění na střední uživatelského rizika a John přesune na střední riziko uživatelů, zobrazí se uživateli v e-mailu zjištěné riziko pro Jan. Druhý uživatelé na zjištěné riziko upozornění ale neobdržíte Pokud John pak přesune do vysoce rizikových nebo má další rizikové události.
+![E-mail zjištěných uživatelů v nebezpečí](./media/notifications/01.png)
 
-![Ohrožení uživatelé zjistil e-mailu](./media/notifications/01.png)
-
-
-### <a name="configuration"></a>Konfigurace
+### <a name="configuration"></a>Konfiguraci
 
 Jako správce můžete nastavit:
 
-- **Úroveň rizika pro uživatele, která aktivuje generování tohoto e-mailu** – ve výchozím nastavení, je k riziku "Vysoká" nastavit úroveň rizika.
-- **Příjemci tohoto e-mailu** – ve výchozím nastavení, příjemci zahrnují všichni globální správci. Globální správci můžete také přidat další globální správci, správci zabezpečení, čtenáři zabezpečení jako příjemce.  
+- **Úroveň rizika uživatele, která aktivuje generování tohoto e** -mailu – ve výchozím nastavení je úroveň rizika nastavena na "vysoké" riziko.
+- **Příjemci tohoto e** -mailu – ve výchozím nastavení mají příjemci všechny globální správce. Globální správci můžou také přidat další globální správce, správce zabezpečení, čtenáře zabezpečení jako příjemce.  
 
+Pokud chcete otevřít související dialogové okno, klikněte na **výstrahy** v části **Nastavení** na stránce **Identity Protection** .
 
-Související dialogového okna, klikněte na tlačítko **výstrahy** v **nastavení** část **Identity Protection** stránky.
+![E-mail zjištěných uživatelů v nebezpečí](./media/notifications/05.png)
 
-![Ohrožení uživatelé zjistil e-mailu](./media/notifications/05.png)
+## <a name="weekly-digest-email"></a>Týdenní e-mail pro výtah
 
-
-## <a name="weekly-digest-email"></a>Týdenní přehled e-mailu
-
-Týdenní přehled e-mailu obsahuje souhrn nové rizikové události.  
+Týdenní e-mailová zpráva o Digest obsahuje souhrn nových rizikových událostí.  
 Zahrnuje:
 
 - Ohrožení uživatelé
-
 - Podezřelé aktivity
-
 - Zjištěná ohrožení zabezpečení
+- Odkazy na související sestavy v Identity Protection
 
-- Odkazy na související sestavy ve službě Identity Protection
+    ![Náprava](./media/notifications/400.png "Náprava")
 
-    ![Náprava](./media/notifications/400.png "nápravy")
+### <a name="configuration"></a>Konfiguraci
 
-### <a name="configuration"></a>Konfigurace
+Jako správce můžete přepínat odeslání e-mailu s týdenním výtahem.
 
-Jako správce můžete přepnout, odesílání týdenní e-mailů digest.
+![Rizika uživatele](./media/notifications/62.png "Rizika uživatele")
 
-![Riziko uživatele](./media/notifications/62.png "rizika uživatele")
+Pokud chcete otevřít související dialogové okno, klikněte na **týdenní výtah** v části **Nastavení** na stránce **Identita Protection** .
 
-Související dialogového okna, klikněte na tlačítko **týdenní souhrn** v **nastavení** část **Identity Protection** stránky.
+![E-mail zjištěných uživatelů v nebezpečí](./media/notifications/04.png)
 
-![Ohrožení uživatelé zjistil e-mailu](./media/notifications/04.png)
-
-
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také:
 
 - [Azure Active Directory Identity Protection](../active-directory-identityprotection.md)

@@ -1,6 +1,6 @@
 ---
-title: Definování rozhraní RESTful technický profil ve vlastních zásadách v Azure Active Directory B2C | Dokumentace Microsoftu
-description: Definujte rozhraní RESTful technický profil ve vlastních zásadách v Azure Active Directory B2C.
+title: Definování technického profilu RESTful ve vlastních zásadách v Azure Active Directory B2C | Microsoft Docs
+description: Definujte technický profil RESTful ve vlastních zásadách v Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,34 +10,34 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 21a2ea861df96a057db0ec13eacd0906ed51fff1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f535bc7d67198b3fe06326260bc1910b6afd36f2
+ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66512747"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68346767"
 ---
-# <a name="define-a-restful-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definování rozhraní RESTful technický profil ve vlastních zásadách pro Azure Active Directory B2C
+# <a name="define-a-restful-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definování technického profilu RESTful ve vlastní zásadě Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Azure Active Directory (Azure AD) B2C poskytuje podporu pro služby RESTful. Azure AD B2C odešle data do služby RESTful ve vstupní kolekce deklarací a přijímá data zpět v kolekci výstupních deklarací identity. Integrace služby RESTful vám umožní:
+Azure Active Directory (Azure AD) B2C poskytuje podporu pro vlastní službu RESTful. Azure AD B2C odesílá data službě RESTful ve vstupní kolekci deklarací a přijímá data zpátky do výstupní kolekce deklarací. S integrací služby RESTful můžete:
 
-- **Ověření vstupu dat uživatele** – brání poškozených datových uložením do Azure AD B2C. Pokud hodnota od uživatele není platná, vaše služba RESTful vrátí chybovou zprávu, která informuje uživatele k zadání položku. Ověřte například, že e-mailovou adresu, které zadal uživatel existuje v databázi vašeho zákazníka.
-- **Přepsat vstupními deklaracemi identity** – umožňuje změnu formátu hodnot ve vstupních deklarací identity. Například pokud uživatel zadá křestní jméno v všechna písmena malá nebo všechna velká písmena, lze formátovat název pouze první písmeno velké.
-- **Obohacení dat uživatele** – umožňuje další integraci s podnikovým – obchodní aplikace. Služby RESTful můžete například dostávat e-mailovou adresu uživatele, dotazy na databázi zákazníka a vrátí číslo věrnostní uživatele Azure AD B2C. Návratový deklarace identity lze uložit, vyhodnotí v dalších krocích Orchestrace nebo zahrnutý v přístupovém tokenu.
-- **Spuštění vlastní obchodní logiky** – umožňuje odesílat nabízená oznámení, aktualizaci firemních databází, spusťte proces migrace uživatelů, oprávnění ke správě, audit databáze a provádět jiné akce.
+- **Ověřit data vstupu uživatele** – zabrání ukládání poškozených dat do Azure AD B2C. Pokud hodnota od uživatele není platná, služba RESTful vrátí chybovou zprávu, která uživateli vydá pokyn k zadání položky. Můžete třeba ověřit, že e-mailová adresa zadaná uživatelem existuje v databázi vašeho zákazníka.
+- **Přepsat vstupní deklarace identity** – umožňuje přeformátovat hodnoty ve vstupních deklaracích. Pokud například uživatel zadá křestní jméno do všech malých a velkých písmen, můžete název naformátovat pouze na první písmeno.
+- **Rozšíření uživatelských dat** – umožňuje další integraci s podnikovými firemními aplikacemi. Například vaše služba RESTful může obdržet e-mailovou adresu uživatele, zadat dotaz na databázi zákazníka a získat věrnostní číslo uživatele Azure AD B2C. Vrácené deklarace identity je možné uložit, vyhodnotit v dalších krocích orchestrace nebo zahrnout do přístupového tokenu.
+- **Spustit vlastní obchodní logiku** – umožňuje odesílat nabízená oznámení, aktualizovat podnikové databáze, spouštět proces migrace uživatelů, spravovat oprávnění, auditovat databáze a provádět další akce.
 
-Vaše zásada může odeslat vstupních deklarací identity k rozhraní REST API. Rozhraní REST API může také vrátit výstupní deklarace identit, které použijete později v zásadách nebo ji může vyvolat chybovou zprávu. Integrace služby RESTful můžete navrhnout následujícími způsoby:
+Vaše zásada může odesílat vstupní deklarace do vašeho REST API. REST API může také vracet výstupní deklarace identity, které můžete použít později v zásadách, nebo může vyvolat chybovou zprávu. Integraci s RESTful službami můžete navrhovat následujícími způsoby:
 
-- **Technický profil ověření** – technický profil ověření volá služba RESTful. Technický profil ověření ověří uživatelsky zadaných dat než cesty uživatele bude pokračovat. Chybová zpráva s technický profil ověření je zobrazení na stránku s vlastním potvrzením a vrácené v výstupní deklarace identit.
-- **Deklarace identity exchange** – služba RESTful přes jeden krok Orchestrace je provedeno volání. V tomto scénáři neexistuje žádné uživatelské rozhraní k vykreslení chybové zprávě. Pokud vaše rozhraní REST API vrací chybu, bude uživatel přesměrován zpět do aplikace předávající strany s chybovou zprávou.
+- **Technický profil ověření** – technický profil ověření volá službu RESTful. Technický profil ověření ověřuje uživatelem poskytnutá data před pokračováním cesty uživatele. S technickým profilem ověření se zobrazí chybová zpráva na stránce s vlastním kontrolním jménem a vrátí se do výstupních deklarací.
+- **Výměna deklarací identity** – volání služby RESTful prostřednictvím kroku orchestrace se provede. V tomto scénáři není k dispozici uživatelské rozhraní pro vykreslení chybové zprávy. Pokud REST API vrátí chybu, bude uživatel přesměrován zpět do aplikace předávající strany s chybovou zprávou.
 
 ## <a name="protocol"></a>Protocol
 
-**Název** atribut **protokol** elementu musí být nastavena na `Proprietary`. **Obslužná rutina** atribut musí obsahovat plně kvalifikovaný název sestavení obslužné rutiny protokolu, který používá Azure AD B2C: `Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null`.
+Atribut **Name** elementu **Protocol** musí být nastaven na `Proprietary`hodnotu. Atribut **obslužné rutiny** musí obsahovat plně kvalifikovaný název sestavení obslužné rutiny protokolu, které je používáno Azure AD B2C `Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null`:.
 
-Následující příklad ukazuje RESTful technický profil:
+Následující příklad ukazuje technický profil RESTful:
 
 ```XML
 <TechnicalProfile Id="REST-UserMembershipValidator">
@@ -48,7 +48,7 @@ Následující příklad ukazuje RESTful technický profil:
 
 ## <a name="input-claims"></a>Vstupní deklarace identity
 
-**InputClaims** prvek obsahuje seznam deklarací identity k odesílání do rozhraní REST API. Můžete také namapovat na název vašeho nároku na název definovaný v rozhraní REST API. Následující příklad ukazuje mapování mezi vaší zásady a rozhraní REST API. **GivenName** deklarace identity se odešle jako rozhraní REST API **firstName**, zatímco **příjmení** se odešle jako **lastName**. **E-mailu** sady deklarací, jako je.
+Element **InputClaims** obsahuje seznam deklarací pro odeslání do REST API. Název vaší deklarace identity můžete také namapovat na název definovaný v REST API. Následující příklad ukazuje mapování mezi vaší zásadou a REST API. Tato **deklarace identity** se pošle REST API jako **FirstName**, zatímco **příjmení** se pošle jako **LastName**. Deklarace **e-mailu** je nastavená tak, jak je.
 
 ```XML
 <InputClaims>
@@ -58,21 +58,21 @@ Následující příklad ukazuje RESTful technický profil:
 </InputClaims>
 ```
 
-**InputClaimsTransformations** element může obsahovat kolekci **InputClaimsTransformation** prvků, které slouží k úpravě mezi vstupními deklaracemi identity nebo generování nových před odesláním do rozhraní REST API.
+Element **InputClaimsTransformations** může obsahovat kolekci prvků **InputClaimsTransformation** , které se používají k úpravě vstupních deklarací identity nebo k vygenerování nových před odesláním do REST API.
 
-## <a name="output-claims"></a>Výstupní deklarace identit.
+## <a name="output-claims"></a>Deklarace výstupů
 
-**OutputClaims** prvek obsahuje seznam deklarací identity vrácená rozhraním REST API. Budete muset namapovat název deklarace identity, definovaný ve svojí zásadě název definovaný v rozhraní REST API. Můžete také zahrnout deklarace identity, které nejsou vrácené zprostředkovatelem identity rozhraní REST API, tak dlouho, dokud je nastavit `DefaultValue` atribut.
+Element **OutputClaims** obsahuje seznam deklarací vrácených REST API. Možná budete muset namapovat název deklarace identity definované v zásadě na název definovaný v REST API. Můžete také zahrnout deklarace identity, které nejsou vraceny zprostředkovatelem REST API identity, pokud nastavíte `DefaultValue` atribut.
 
-**OutputClaimsTransformations** element může obsahovat kolekci **OutputClaimsTransformation** prvky, které se používají ke změně výstupní deklarace identit nebo generovat nové značky.
+Element **OutputClaimsTransformations** může obsahovat kolekci prvků **OutputClaimsTransformation** , které se používají k úpravě výstupních deklarací identity nebo k vygenerování nových.
 
-Následující příklad ukazuje deklaraci vrácená rozhraním REST API:
+Následující příklad ukazuje deklaraci identity vrácenou REST API:
 
-- **MembershipId** deklarace identity, který je namapovaný na **loyaltyNumber** název deklarace.
+- Deklarace identity **MembershipId** , která je namapovaná na název deklarace **loyaltyNumber**
 
-Technický profil také vrátí hodnotu deklarace identity, které nejsou vrácené zprostředkovatelem identity: 
+Technický profil také vrací deklarace identity, které nejsou vraceny zprostředkovatelem identity: 
 
-- **LoyaltyNumberIsNew** deklaraci identity, která má výchozí hodnotu nastavte na `true`.
+- Deklarace identity **loyaltyNumberIsNew** , která má výchozí hodnotu nastavenou `true`na.
 
 ```xml
 <OutputClaims>
@@ -85,15 +85,15 @@ Technický profil také vrátí hodnotu deklarace identity, které nejsou vráce
 
 | Atribut | Požadováno | Popis |
 | --------- | -------- | ----------- |
-| ServiceUrl | Ano | Adresa URL koncového bodu rozhraní REST API. | 
-| AuthenticationType | Ano | Typ ověřování prováděné poskytovatelem deklarací identit RESTful. Možné hodnoty: `None`, `Basic`, nebo `ClientCertificate`. `None` Hodnota značí, že není anonymní rozhraní REST API. `Basic` Hodnota značí, že je rozhraní REST API zabezpečené pomocí základního ověřování protokolu HTTP. Jenom ověřit uživatele, včetně Azure AD B2C, můžete přístup k rozhraní API. `ClientCertificate` (Doporučeno) hodnota značí, že rozhraní REST API omezuje přístup pomocí ověření klientského certifikátu. Pouze služby, které mají příslušné certifikáty, jako je například Azure AD B2C můžete přístup ke službě. | 
-| SendClaimsIn | Ne | Určuje, jak se mezi vstupními deklaracemi identity odesílají do zprostředkovatele deklarací identit RESTful. Možné hodnoty: `Body` (výchozí), `Form`, `Header`, nebo `QueryString`. `Body` Hodnota je vstupní deklaraci identity, která je odeslána v textu požadavku ve formátu JSON. `Form` Hodnota je vstupní deklaraci identity, který posílá v těle požadavku ampersand ' a ' oddělené klíče ve formátu. `Header` Hodnota je vstupní deklaraci identity odeslaný v hlavičce požadavku. `QueryString` Hodnota je vstupní deklaraci identity, která je odeslána v řetězci dotazu požadavku. | 
-| ClaimsFormat | Ne | Určuje formát pro výstupní deklarace identit. Možné hodnoty: `Body` (výchozí), `Form`, `Header`, nebo `QueryString`. `Body` Hodnota je výstupní deklarací, které je odesláno v textu požadavku ve formátu JSON. `Form` Hodnotu, která se odešle v textu požadavku v ampersand ' a ' oddělené klíče ve formátu deklarace identity výstup. `Header` Hodnota je výstupní deklarací odeslaný v hlavičce požadavku. `QueryString` Hodnota je výstupní deklarací, které je odesláno v řetězci dotazu požadavku. | 
-| Režim DebugMode | Ne | Technický profil se spustí v režimu ladění. V režimu ladění rozhraní REST API můžete vrátit další informace. Naleznete v části vracející chybová zpráva. | 
+| ServiceUrl | Ano | Adresa URL koncového bodu REST API. | 
+| AuthenticationType | Ano | Typ ověřování prováděného zprostředkovatelem deklarací RESTful. Možné hodnoty: `None`, `Basic`, nebo `ClientCertificate`. `None` Hodnota označuje, že REST API není anonymní. `Basic` Hodnota označuje, že REST API je zabezpečeno pomocí ověřování HTTP Basic. K rozhraní API můžou přistupovat jenom ověření uživatelé, včetně Azure AD B2C. Hodnota `ClientCertificate` (doporučeno) znamená, že REST API omezuje přístup pomocí ověřování klientského certifikátu. K vaší službě mají přístup jenom služby, které mají příslušné certifikáty, například Azure AD B2C. | 
+| SendClaimsIn | Ne | Určuje, jakým způsobem se vstupní deklarace identity odesílají do zprostředkovatele deklarací RESTful. Možné hodnoty: `Body` (výchozí), `Form`, `Header`nebo `QueryString`. `Body` Hodnota je vstupní deklarace, která je odeslána v těle žádosti ve formátu JSON. `Form` Hodnota je vstupní deklarace, která se pošle v těle žádosti ve formátu hodnoty oddělovače & znaku. `Header` Hodnota je vstupní deklarace, která je odeslána v hlavičce požadavku. `QueryString` Hodnota je vstupní deklarace, která je odeslána v řetězci dotazu požadavku. | 
+| ClaimsFormat | Ne | Určuje formát pro výstupní deklarace identity. Možné hodnoty: `Body` (výchozí), `Form`, `Header`nebo `QueryString`. `Body` Hodnota je výstupní deklarace, která je odeslána v těle žádosti ve formátu JSON. `Form` Hodnota je výstupní deklarace, která se pošle v těle žádosti ve formátu hodnoty "oddělovače" & znaku. `Header` Hodnota je výstupní deklarace, která je odeslána v hlavičce požadavku. `QueryString` Hodnota je výstupní deklarace, která je odeslána v řetězci dotazu požadavku. | 
+| DebugMode | Ne | Spustí technický profil v režimu ladění. V režimu ladění může REST API vrátit více informací. Přečtěte si část vracení chybové zprávy. | 
 
 ## <a name="cryptographic-keys"></a>Kryptografické klíče
 
-Pokud typ ověřování nastavený na `None`, **CryptographicKeys** není použit element.
+Pokud je typ ověřování nastaven na `None`, není použit element **CryptographicKeys** .
 
 ```XML
 <TechnicalProfile Id="REST-API-SignUp">
@@ -107,14 +107,14 @@ Pokud typ ověřování nastavený na `None`, **CryptographicKeys** není použi
 </TechnicalProfile>
 ```
 
-Pokud typ ověřování nastavený na `Basic`, **CryptographicKeys** prvek obsahuje následující atributy:
+Pokud je typ ověřování nastaven na `Basic`, element **CryptographicKeys** obsahuje následující atributy:
 
 | Atribut | Požadováno | Popis |
 | --------- | -------- | ----------- |
-| BasicAuthenticationUsername | Ano | Uživatelské jméno, který se používá k ověření. | 
+| BasicAuthenticationUsername | Ano | Uživatelské jméno, které se používá k ověření. | 
 | BasicAuthenticationPassword | Ano | Heslo, které se používá k ověření. |
 
-Následující příklad ukazuje technického profilu se základním ověřováním:
+Následující příklad ukazuje technický profil se základním ověřováním:
 
 ```XML
 <TechnicalProfile Id="REST-API-SignUp">
@@ -132,11 +132,11 @@ Následující příklad ukazuje technického profilu se základním ověřován
 </TechnicalProfile>
 ```
 
-Pokud typ ověřování nastavený na `ClientCertificate`, **CryptographicKeys** prvek obsahuje následující atribut:
+Pokud je typ ověřování nastaven na `ClientCertificate`, element **CryptographicKeys** obsahuje následující atribut:
 
 | Atribut | Požadováno | Popis |
 | --------- | -------- | ----------- |
-| ClientCertificate | Ano | X509 certifikát (sadu klíčů RSA) se má použít k ověření. | 
+| ClientCertificate | Ano | Certifikát x509 (sada klíčů RSA), která se má použít k ověření. | 
 
 ```XML
 <TechnicalProfile Id="REST-API-SignUp">
@@ -153,21 +153,21 @@ Pokud typ ověřování nastavený na `ClientCertificate`, **CryptographicKeys**
 </TechnicalProfile>
 ```
 
-## <a name="returning-error-message"></a>Vrací chybovou zprávu
+## <a name="returning-error-message"></a>Vracení chybové zprávy
 
-Rozhraní REST API může být zapotřebí vracet chybová zpráva, například "uživatel nebyl nalezen v systému CRM". K chybě dojde, rozhraní REST API by měla vrátit chybovou zprávu protokolu HTTP 409 (konflikt stavový kód odpovědi) s následujícími atributy:
+Vaše REST API může potřebovat vrátit chybovou zprávu, například ' uživatel nebyl nalezen v systému CRM '. V případě chyby by REST API měla vrátit chybovou zprávu HTTP 409 (kód stavu odpovědi na konflikt) s následujícími atributy:
 
 | Atribut | Požadováno | Popis |
 | --------- | -------- | ----------- |
 | version | Ano | 1.0.0 | 
 | status | Ano | 409 | 
-| code | Ne | Kód chyby z poskytovatele RESTful koncový bod, který se zobrazí, když `DebugMode` je povolená. | 
-| requestId | Ne | Identifikátor žádosti od poskytovatele koncový bod RESTful, které se zobrazí, když `DebugMode` je povolená. | 
+| code | Ne | Kód chyby od poskytovatele koncového bodu RESTful, který se zobrazí, `DebugMode` když je povolený. | 
+| Identifikátor | Ne | Identifikátor požadavku od poskytovatele koncového bodu RESTful, který se zobrazí, `DebugMode` když je povolený. | 
 | userMessage | Ano | Chybová zpráva, která se zobrazí uživateli. | 
-| developerMessage | Ne | Podrobný popis problému a vyřešit, který se zobrazí, když `DebugMode` je povolená. | 
-| moreInfo | Ne | Identifikátor URI, který odkazuje na další informace, které se zobrazí, když `DebugMode` je povolená. | 
+| developerMessage | Ne | Podrobný popis problému a jak ho opravit, který se zobrazí, když `DebugMode` je povolený. | 
+| moreInfo | Ne | Identifikátor URI, který odkazuje na Další informace, které se zobrazí `DebugMode` , když je povolený. | 
 
-Následující příklad ukazuje rozhraní REST API, která vrátí chybovou zprávu ve formátu JSON:
+Následující příklad ukazuje REST API, který vrací chybovou zprávu formátovanou ve formátu JSON:
 
 ```JSON
 {
@@ -181,9 +181,9 @@ Následující příklad ukazuje rozhraní REST API, která vrátí chybovou zpr
 }
 ```
 
-Následující příklad ukazuje třídu C#, která vrátí chybovou zprávu:
+Následující příklad ukazuje C# třídu, která vrací chybovou zprávu:
 
-```C#
+```csharp
 public class ResponseContent
 {
   public string version { get; set; }
@@ -197,10 +197,10 @@ public class ResponseContent
 ```
 
 ## <a name="examples"></a>Příklady:
-- [Integrace rozhraní REST API služby výměny deklarací identity na vaší cestě uživatele Azure AD B2C jako ověření vstupu uživatele](active-directory-b2c-custom-rest-api-netfw.md) 
-- [Zabezpečení služby RESTful pomocí základního ověřování protokolu HTTP](active-directory-b2c-custom-rest-api-netfw-secure-basic.md)
-- [Zabezpečení služby RESTful pomocí klientských certifikátů](active-directory-b2c-custom-rest-api-netfw-secure-cert.md)
-- [Návod: Integrace rozhraní REST API služby výměny deklarací identity na vaší cestě uživatele Azure AD B2C, jako na vstup uživatele](active-directory-b2c-rest-api-validation-custom.md)
+- [Integrace REST APIch výměn deklarací identity v cestě uživatele Azure AD B2C jako ověření vstupu uživatele](active-directory-b2c-custom-rest-api-netfw.md) 
+- [Zabezpečte své služby RESTful pomocí ověřování HTTP Basic.](active-directory-b2c-custom-rest-api-netfw-secure-basic.md)
+- [Zabezpečte službu RESTful pomocí klientských certifikátů.](active-directory-b2c-custom-rest-api-netfw-secure-cert.md)
+- [Podrobné Integrace REST APIch výměn deklarací identity v cestě uživatele Azure AD B2C při ověřování vstupu uživatele](active-directory-b2c-rest-api-validation-custom.md)
 
  
 

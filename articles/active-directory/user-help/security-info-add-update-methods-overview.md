@@ -1,6 +1,6 @@
 ---
-title: Přehled o změně metody (preview) informace o zabezpečení a informace o – Azure Active Directory | Dokumentace Microsoftu
-description: Přehled o tom, jak přidat, aktualizovat a odstraňovat vaše informace metody zabezpečení pro dvoufaktorové ověřování a samoobslužné passsword resetování.
+title: Přehled změny metod a informací o zabezpečení (Preview) – Azure Active Directory | Microsoft Docs
+description: Přehled o tom, jak přidat, aktualizovat a odstranit metody bezpečnostních údajů pro dvojúrovňové ověřování a Samoobslužné resetování hesla.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -12,34 +12,37 @@ ms.topic: overview
 ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 115354985284b090fef890068ade6ddaf5867f04
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3bcef64c8bf8c2b52e5cc5d954de933d830ba4c1
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60474106"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68382883"
 ---
-# <a name="overview-about-changing-your-security-info-preview-methods-and-information"></a>Přehled o změně metody (preview) informace o zabezpečení a informace
-Můžete přidat, upravit, odstranit a změnit výchozí metodu informace o zabezpečení v rámci **bezpečnostní údaje** stránky. Další informace o jednotlivých metod a jak změnit vaše údaje najdete v článku přidružené, založených na volání metody.
+# <a name="overview-about-changing-your-security-info-preview-methods-and-information"></a>Přehled změny metod a informací o zabezpečení (Preview)
 
-## <a name="two-factor-verification-versus-password-reset-authentication"></a>Dvojúrovňové ověřování oproti heslo resetovat ověřování
-Zabezpečení informací o metody se používají pro obě dvojúrovňového ověřování a pro resetování hesla. Ne všechny metody však lze použít pro obojí.
+Můžete přidat, upravit, odstranit a změnit výchozí metodu zabezpečení v rámci stránek **bezpečnostní údaje** . Další informace o jednotlivých metodách a o tom, jak změnit informace, najdete v příslušném článku na bázi metody.
 
-|Metoda|Použití|
-|------|--------|
-|Aplikace Authenticator|Dvoufaktorové ověřování a resetováním hesla ověřování.|
-|Text zprávy|Dvoufaktorové ověřování a resetováním hesla ověřování.|
-|Telefonní hovory|Dvoufaktorové ověřování a resetováním hesla ověřování.|
-|E-mailový účet|Pouze ověřování pro resetování hesla. Budete muset zvolit jinou metodu pro dvoufaktorové ověřování.|
-|Bezpečnostní otázky|Pouze ověřování pro resetování hesla. Budete muset zvolit jinou metodu pro dvoufaktorové ověřování.|
+## <a name="two-factor-verification-versus-password-reset-authentication"></a>Dvojúrovňové ověřování oproti ověřování hesla pro resetování hesel
 
-## <a name="method-based-how-to-articles"></a>Články s postupy založených na volání metody
-Tento seznam obsahuje články založených na volání metody. Každý článek obsahuje podrobnosti o tom, jak přidat, upravit, odstranit nebo změnit svoje bezpečnostní údaje založené na zadanou metodu.
+Metody bezpečnostních údajů se používají pro dvoustupňové ověřování a pro resetování hesla. Nicméně ne všechny metody lze použít pro obojí.
 
-|Článek |Popis |
-|------|------------|
-|[Nastavte si bezpečnostní údaje pro ověřovací aplikaci](security-info-setup-auth-app.md)|Popisuje, jak upravit metodu informace o zabezpečení pro aplikaci Microsoft Authenticator.|
-|[Nastavte si bezpečnostní údaje pro zasílání textových zpráv](security-info-setup-text-msg.md)|Popisuje, jak upravit metodu informace o zabezpečení pro zasílání textových zpráv.|
-|[Nastavení bezpečnostních údajů pro používání telefonních hovorů](security-info-setup-phone-number.md)|Popisuje, jak upravit metodu informace o zabezpečení pro telefonní hovory.|
-|[Nastavení bezpečnostních údajů pro používání e-mailu](security-info-setup-email.md)|Popisuje, jak upravit metodu informace o zabezpečení používat e-mailovou adresu.|
-|[Nastavení bezpečnostních údajů pro používání předdefinovaných bezpečnostních otázek](security-info-setup-questions.md)|Popisuje, jak upravit metodu informace o zabezpečení na použít bezpečnostní otázky.|
+| Metoda | Použití |
+| ------ | -------- |
+| Aplikace Authenticator | Dvojúrovňové ověřování a ověřování nového hesla. |
+| Textové zprávy | Dvojúrovňové ověřování a ověřování nového hesla. |
+| Telefonní hovory | Dvojúrovňové ověřování a ověřování nového hesla. |
+| E-mailový účet | Jenom ověřování heslem. Budete muset zvolit jinou metodu pro dvojúrovňové ověřování. |
+| Bezpečnostní otázky | Jenom ověřování heslem. Budete muset zvolit jinou metodu pro dvojúrovňové ověřování. |
+
+## <a name="method-based-how-to-articles"></a>Články s postupy založenými na metodách
+
+Tento seznam obsahuje články založené na metodách. Každý článek poskytuje podrobné informace o tom, jak přidat, upravit, odstranit nebo změnit bezpečnostní údaje na základě zadané metody.
+
+| Článek | Popis |
+| ------ |------------ |
+| [Nastavení bezpečnostních údajů pro ověřovací aplikaci](security-info-setup-auth-app.md) | Popisuje, jak upravit metodu bezpečnostních údajů pro aplikaci Microsoft Authenticator. |
+| [Nastavení bezpečnostních údajů pro zasílání textových zpráv](security-info-setup-text-msg.md) | Popisuje, jak upravit metodu bezpečnostních údajů pro zasílání textových zpráv. |
+| [Nastavení bezpečnostních údajů pro používání telefonních hovorů](security-info-setup-phone-number.md) | Popisuje, jak upravit metodu bezpečnostních údajů pro telefonní hovory. |
+| [Nastavení bezpečnostních údajů pro používání e-mailu](security-info-setup-email.md) | Popisuje, jak upravit metodu bezpečnostních údajů pro použití e-mailové adresy. |
+| [Nastavení bezpečnostních údajů pro používání předdefinovaných bezpečnostních otázek](security-info-setup-questions.md)|Popisuje, jak upravit metodu bezpečnostních údajů pro použití bezpečnostních otázek. |

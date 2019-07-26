@@ -12,12 +12,12 @@ ms.author: bonova
 ms.reviewer: sstein, carlrab, vanto
 manager: craigg
 ms.date: 07/18/2019
-ms.openlocfilehash: 028b3b2287e9d37a87ae2caf828c8855be331a1f
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: f4dc00623694fa1fd218f43e7bbd19edef48dec4
+ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68327015"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68348128"
 ---
 # <a name="what-is-azure-sql-database-managed-instance"></a>Co je Azure SQL Database spravovaná instance?
 
@@ -61,7 +61,7 @@ Klíčové funkce spravovaných instancí jsou uvedené v následující tabulce
 | Integrovaná instance a monitorování databáze a metriky | Ano |
 | Automatické opravy softwaru | Ano |
 | Nejnovější funkce databázového stroje | Ano |
-| Počet datových souborů (řádků) na databázi | Několik |
+| Počet datových souborů (řádků) na databázi | Vícenásobný |
 | Počet souborů protokolu (protokol) na databázi | 1 |
 | Nasazení VNet-Azure Resource Manager | Ano |
 | Model nasazení sítě VNet – klasický | Ne |
@@ -269,7 +269,7 @@ Možnost nasazení Managed instance podporuje zpětnou kompatibilitu databází 
   
 Následující diagram popisuje kompatibilitu oblasti Surface ve spravované instanci:  
 
-![Migrace](./media/sql-database-managed-instance/migration.png)
+![migrace](./media/sql-database-managed-instance/migration.png)
 
 ### <a name="key-differences-between-sql-server-on-premises-and-in-a-managed-instance"></a>Klíčové rozdíly mezi SQL Server místním prostředím a ve spravované instanci
 
@@ -300,7 +300,7 @@ V následující tabulce je uvedeno několik vlastností, které jsou přístupn
 |`SERVERPROPERTY('EngineEdition')`|8|Tato hodnota jednoznačně identifikuje spravovanou instanci.|
 |`@@SERVERNAME`, `SERVERPROPERTY ('ServerName')`|Název DNS úplná instance v následujícím formátu:`<instanceName>`.`<dnsPrefix>`.Database.Windows.NET, kde `<instanceName>` je poskytnutá výhradně zákazník, zatímco `<dnsPrefix>` je automaticky generované část názvu zaručující globální jedinečnost názvu DNS ("wcus17662feb9ce98", například)|Příklad: my-managed-instance.wcus17662feb9ce98.database.windows.net|
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Další informace o tom, jak vytvořit první spravovanou instanci, najdete v tématu [Průvodce rychlým startem](sql-database-managed-instance-get-started.md).
 - Seznam funkcí a porovnání najdete v tématu věnovaném [běžným funkcím SQL](sql-database-features.md).

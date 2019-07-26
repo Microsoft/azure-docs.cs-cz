@@ -1,41 +1,41 @@
 ---
-title: Certifikáty vyžadované k vytvoření seznamu povolených back-endů v Azure Application Gateway
-description: Tento článek obsahuje příklady jak certifikát SSL je možné převést na certifikát pro ověřování a důvěryhodný kořenový certifikát, které jsou požadovány pro přidávání na seznam povolených back-endových instancí ve službě Azure Application Gateway
+title: Certifikáty vyžadované pro povolení back-endu v Azure Application Gateway
+description: Tento článek popisuje příklady, jak se dá certifikát SSL převést na certifikát ověřování a důvěryhodný kořenový certifikát, který se vyžaduje pro seznam povolených back-end instancí v Azure Application Gateway
 services: application-gateway
-author: abshamsft
+author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 3/14/2019
+ms.date: 07/23/2019
 ms.author: absha
-ms.openlocfilehash: 72ee9123ad959c0c7240d4f7a906adc1a4dd1a93
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2d808548ef91ed416f27b0dbb3e3e93d79ade30c
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60831584"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68382053"
 ---
-# <a name="create-certificates-for-whitelisting-backend-with-azure-application-gateway"></a>Vytvoření certifikátů pro přidávání na seznam povolených back-end pomocí služby Azure Application Gateway
+# <a name="create-certificates-to-allow-the-backend-with-azure-application-gateway"></a>Vytvoření certifikátů pro povolení back-endu s Azure Application Gateway
 
-K provedení kompletního protokolu SSL, služba application gateway vyžaduje instance back-endu tím, že nahrajete ověřování/důvěryhodných kořenových certifikátů uvedení na seznamu povolených. V případě skladové položky v1 se k přidání certifikátů na seznam povolených vyžadují ověřovací certifikáty, zatímco v případě skladové položky v2 se vyžadují důvěryhodné kořenové certifikáty.
+Pokud chcete provést koncové šifrování protokolu SSL, Application Gateway vyžaduje, aby byly back-end instance povoleny naodesíláním ověřování/důvěryhodných kořenových certifikátů. V případě SKU v1 jsou vyžadovány ověřovací certifikáty, ale pro povolení certifikátů jsou vyžadovány důvěryhodné kořenové certifikáty SKU v2.
 
 V tomto článku získáte informace o těchto tématech:
 
 > [!div class="checklist"]
 >
-> - Exportovat certifikát pro ověřování z certifikátu back-endu (pro v1 SKU)
-> - Export důvěryhodného kořenového certifikátu z back-endu certifikát (pro v2 SKU)
+> - Export ověřovacího certifikátu z back-endu certifikátu (pro SKU V1)
+> - Export důvěryhodného kořenového certifikátu z back-endu certifikátu (SKU verze 2)
 
 ## <a name="prerequisites"></a>Požadavky
 
-Potřebujete existující certifikát back-endu ke generování ověřovacích certifikátů nebo důvěryhodných kořenových certifikátů vyžadovaných pro vytvoření seznamu povolených back-end instance pomocí služby application gateway. Certifikát back-end může být stejný jako certifikát SSL nebo jiný pro zvýšení zabezpečení. Služba Application gateway je neposkytuje žádný mechanismus k vytvoření nebo zakoupit certifikát SSL. Pro účely testování můžete vytvořit certifikát podepsaný svým držitelem ale byste neměli používat pro produkční úlohy. 
+K vygenerování ověřovacích certifikátů nebo důvěryhodných kořenových certifikátů vyžadovaných pro povolení back-end instancí s Application Gateway je nutný existující certifikát back-endu. Certifikát back-endu může být stejný jako certifikát SSL nebo jiný pro zvýšení zabezpečení. Application Gateway neposkytuje žádný mechanismus k vytvoření nebo zakoupení certifikátu SSL. Pro účely testování můžete vytvořit certifikát podepsaný svým držitelem, ale neměli byste ho používat pro produkční úlohy. 
 
-## <a name="export-authentication-certificate-for-v1-sku"></a>Exportujte certifikát pro ověřování (pro v1 SKU)
+## <a name="export-authentication-certificate-for-v1-sku"></a>Exportovat ověřovací certifikát (pro SKU verze V1)
 
-Certifikát pro ověřování se vyžaduje instancím back-end seznamu povolených IP adres ve službě application gateway v1 SKU. Certifikát pro ověřování je formát veřejný klíč certifikátů back-endového serveru v Base-64 X.509 (. Formátu CER). V tomto příkladu budeme použití certifikátu SSL pro back-endu certifikát a exportujte veřejný klíč pro použití jako ověřování certifikace. Také v tomto příkladu budeme používat nástroj Správce certifikátů Windows pro export požadované certifikáty. Můžete použít jakéhokoli jiného nástroje podle vašeho pohodlí.
+Pro povolení back-end instancí v SKU Application Gateway v1 je vyžadován ověřovací certifikát. Ověřovací certifikát je veřejný klíč certifikátů back-end serveru v kódování X. 509 kódované na bázi Base-64 (. CER) formátu. V tomto příkladu použijete certifikát SSL pro certifikát back-end a vyexportujete jeho veřejný klíč, který použijete jako certifikaci ověřování. V tomto příkladu také použijete nástroj Správce certifikátů systému Windows k exportu požadovaných certifikátů. Můžete zvolit, zda chcete použít jakýkoli jiný nástroj, který je vhodný.
 
-Z certifikátu SSL vyexportovat soubor .cer veřejného klíče (ne privátní klíč). Následující kroky nápovědy exportovat .cer formát souboru v Base-64 X.509 (. Formátu CER) pro váš certifikát:
+Z certifikátu SSL exportujte soubor. cer veřejného klíče (ne privátní klíč). Následující kroky vám pomůžou exportovat soubor. CER v kódování Base-64 s kódováním X. 509 (. CER) pro váš certifikát:
 
-1. Chcete-li získat soubor .cer z certifikátu, otevřete **správu uživatelských certifikátů**. Vyhledejte certifikát, obvykle v "Certificates - Current User\Personal\Certificates" a klikněte pravým tlačítkem myši. Klikněte na **Všechny úlohy** a potom klikněte na **Exportovat**. Otevře se **Průvodce exportem certifikátu**. Pokud nemůžete najít certifikát v části Current User\Personal\Certificates, pravděpodobně jste omylem otevřeli "Certifikáty – místního počítače", spíše než "Certifikáty – aktuální uživatel"). Pokud chcete otevřít Správce certifikátů v aktuálním oboru uživatele pomocí Powershellu, zadáte *certmgr* v okně konzoly.
+1. Chcete-li získat soubor .cer z certifikátu, otevřete **správu uživatelských certifikátů**. Vyhledejte certifikát, obvykle v ' Certificates-Current User\Personal\Certificates ' a klikněte pravým tlačítkem myši. Klikněte na **Všechny úlohy** a potom klikněte na **Exportovat**. Otevře se **Průvodce exportem certifikátu**. Pokud certifikát nemůžete najít v rámci aktuálního User\Personal\Certificates, možná jste omylem otevřeli "certifikáty-místní počítač", nikoli "Certifikáty – aktuální uživatel"). Pokud chcete otevřít Správce certifikátů v oboru aktuální uživatel pomocí PowerShellu, zadáte v okně konzoly *certmgr* .
 
    ![Export](./media/certificates-for-backend-authentication/export.png)
 
@@ -51,7 +51,7 @@ Z certifikátu SSL vyexportovat soubor .cer veřejného klíče (ne privátní k
 
    ![Kódování Base-64](./media/certificates-for-backend-authentication/base64.png)
 
-5. Pro **soubor pro Export**, **Procházet** do umístění, do které chcete exportovat certifikát. V části **Název souboru** zadejte název souboru. Pak klikněte na **Další**.
+5. Pro **Export souboru** **přejděte** do umístění, do kterého chcete certifikát exportovat. V části **Název souboru** zadejte název souboru. Pak klikněte na **Další**.
 
    ![Procházet](./media/certificates-for-backend-authentication/browse.png)
 
@@ -59,50 +59,50 @@ Z certifikátu SSL vyexportovat soubor .cer veřejného klíče (ne privátní k
 
    ![Dokončit](./media/certificates-for-backend-authentication/finish.png)
 
-7. Váš certifikát se úspěšně exportoval.
+7. Váš certifikát byl úspěšně exportován.
 
    ![Úspěch](./media/certificates-for-backend-authentication/success.png)
 
    Exportovaný certifikát vypadá nějak takto:
 
-   ![Exportovat](./media/certificates-for-backend-authentication/exported.png)
+   ![Exportováno](./media/certificates-for-backend-authentication/exported.png)
 
-8. Pokud otevřete exportovaný certifikát pomocí poznámkového bloku, vypadá podobně jako tento příklad. Modrá obsahuje informace, které se nahraje k službě application gateway. Pokud otevřete certifikát v aplikaci Poznámkový blok a není vypadat podobně jako tento, obvykle to znamená, že není ho exportovat pomocí Base-64 formát X.509 (. Formátu CER). Pokud chcete použít v jiném textovém editoru, Pochopte, že některé editory může způsobovat nežádoucí formátování na pozadí. To můžete vytvářet problémy při nahrání text z tohoto certifikátu do Azure.
+8. Pokud otevřete exportovaný certifikát pomocí programu Poznámkový blok, zobrazí se podobné jako v tomto příkladu. Oddíl modře obsahuje informace, které se nahrají do služby Application Gateway. Pokud certifikát otevřete v programu Poznámkový blok a nevypadá to jako to, obvykle to znamená, že jste ho neexportovali pomocí kódování Base-64 kódovaného X. 509 (. CER) formátu. Kromě toho, pokud chcete použít jiný textový editor, je třeba pochopit, že některé editory mohou na pozadí způsobit nezamýšlené formátování. To může vytvořit problémy při nahrání textu z tohoto certifikátu do Azure.
 
    ![Otevřít v programu Poznámkový blok](./media/certificates-for-backend-authentication/format.png)
 
-## <a name="export-trusted-root-certificate-for-v2-sku"></a>Export důvěryhodného kořenového certifikátu (pro v2 SKU)
+## <a name="export-trusted-root-certificate-for-v2-sku"></a>Exportovat důvěryhodný kořenový certifikát (pro SKU verze v2)
 
-Důvěryhodný kořenový certifikát je potřebný instancím back-end seznamu povolených IP adres ve službě application gateway v2 SKU. Je kořenový certifikát X.509 s kódováním Base-64 (. CER) formát kořenového certifikátu z certifikátů back-endového serveru. V tomto příkladu jsme se použití certifikátu SSL pro back-endu certifikát, exportujte veřejný klíč a potom export kořenového certifikátu důvěryhodné certifikační autority z veřejného klíče ve formátu kódování base64 získat důvěryhodný kořenový certifikát. 
+Pro povolení back-end instancí v SKU Application Gateway v2 je vyžadován důvěryhodný kořenový certifikát. Kořenový certifikát je X. 509 s kódováním Base-64 (. CER) naformátujte kořenový certifikát z certifikátů back-end serveru. V tomto příkladu použijete certifikát SSL pro certifikát back-end a vyexportujete jeho veřejný klíč. Pak exportujte kořenový certifikát důvěryhodné certifikační autority z veřejného klíče ve formátu base64, abyste získali důvěryhodný kořenový certifikát. 
 
-Následující kroky vám pomůžou exportovat soubor .cer pro váš certifikát:
+Následující kroky vám pomůžou exportovat soubor. cer pro váš certifikát:
 
-1. Pomocí kroků uvedených v části 1 až 9 **ověřovací certifikát exportovat z certifikátu back-endu (pro v1 SKU)** výše pro export veřejného klíče z certifikátu back-endu.
+1. Použijte postup 1-9 uvedený v části **Export ověřovacího certifikátu z back-endu certifikátu (pro SKU V1)** výše a exportujte veřejný klíč z back-endu certifikátu.
 
-2. Jakmile byl exportován veřejný klíč, otevřete soubor.
+2. Po exportu veřejného klíče soubor otevřete.
 
-   ![Otevřené ověřování certifikátu](./media/certificates-for-backend-authentication/openAuthcert.png)
+   ![Otevřít autorizační certifikát](./media/certificates-for-backend-authentication/openAuthcert.png)
 
-   ![informace o certifikátu](./media/certificates-for-backend-authentication/general.png)
+   ![o certifikátu](./media/certificates-for-backend-authentication/general.png)
 
-3. Přesunete na cestě k zobrazení certifikační autority.
+3. Přejděte k zobrazení certifikačních cest a zobrazte certifikační autoritu.
 
-   ![Podrobnosti o certifikátu.](./media/certificates-for-backend-authentication/certdetails.png)
+   ![Podrobnosti o certifikátu](./media/certificates-for-backend-authentication/certdetails.png)
 
-4. Vybrat kořenový certifikát a klikněte na **zobrazit certifikát**.
+4. Vyberte kořenový certifikát a klikněte na **Zobrazit certifikát**.
 
-   ![Cesta k certifikátu.](./media/certificates-for-backend-authentication/rootcert.png)
+   ![Cesta k certifikátu](./media/certificates-for-backend-authentication/rootcert.png)
 
-   Je třeba zobrazit podrobnosti o kořenovém certifikátu.
+   Měli byste vidět podrobnosti o kořenovém certifikátu.
 
-   ![informace o certifikátu.](./media/certificates-for-backend-authentication/rootcertdetails.png)
+   ![informace o certifikátu](./media/certificates-for-backend-authentication/rootcertdetails.png)
 
-5. Přesunout **podrobnosti** zobrazení a klikněte na tlačítko **kopírovat do souboru...**
+5. Přejděte do zobrazení **podrobností** a klikněte na **Kopírovat do souboru...**
 
-   ![kopie kořenového certifikátu](./media/certificates-for-backend-authentication/rootcertcopytofile.png)
+   ![Kopírovat kořenový certifikát](./media/certificates-for-backend-authentication/rootcertcopytofile.png)
 
-6. V tomto okamžiku jste extrahovali podrobnosti kořenového certifikátu z certifikátu back-endu. Zobrazí se **Průvodce exportem certifikátu**. Teď použijte kroky uvedené v části 2-9 **ověřovací certifikát exportovat z certifikátu back-endu (pro v1 SKU)** výše pro export důvěryhodného kořenového certifikátu v Base-64 formát X.509 (. Formátu CER).
+6. V tuto chvíli jste extrahovali podrobnosti kořenového certifikátu z certifikátu back-endu. Zobrazí se **Průvodce exportem certifikátu**. Teď použijte kroky 2-9 uvedené v části **Export ověřovacího certifikátu z back-endu (pro SKU V1)** výše k exportu důvěryhodného kořenového certifikátu v kódování Base-64 kódované X. 509 (. CER) formátu.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Nyní je třeba ověřování certifikátů nebo důvěryhodných formát kořenového certifikátu v úložišti Base-64 X.509 (. Formátu CER). Můžete to přidat ke službě application gateway na seznam povolených back-end serverů pro koncové šifrování protokolu SSL. Zobrazit [konfigurace koncového šifrování protokolu SSL](https://docs.microsoft.com/azure/application-gateway/application-gateway-end-to-end-ssl-powershell).
+Nyní máte certifikát pro ověřování/důvěryhodný kořenový certifikát v kódování Base-64 s kódováním X. 509 (. CER) formátu. Můžete ho přidat do služby Application Gateway, aby back-end servery mohly zakončit šifrováním protokolu SSL. Podívejte [se, jak nakonfigurovat šifrování koncového protokolu SSL](https://docs.microsoft.com/azure/application-gateway/application-gateway-end-to-end-ssl-powershell).

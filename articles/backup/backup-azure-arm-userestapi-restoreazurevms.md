@@ -1,41 +1,40 @@
 ---
-title: 'Azure Backup: Obnovení virtuálních počítačů Azure pomocí rozhraní REST API'
-description: Spravovat operace obnovení zálohování virtuálních počítačů Azure pomocí rozhraní REST API
-services: backup
+title: 'Azure Backup: Obnovení virtuálních počítačů Azure pomocí REST API'
+description: Správa operací obnovení zálohování virtuálních počítačů Azure pomocí REST API
 author: pvrk
 manager: shivamg
-keywords: ROZHRANÍ REST API; Zálohování virtuálních počítačů Azure; Obnovení virtuálního počítače Azure;
+keywords: REST API; Zálohování virtuálních počítačů Azure; Obnovení virtuálního počítače Azure;
 ms.service: backup
 ms.topic: conceptual
 ms.date: 09/12/2018
 ms.author: pullabhk
 ms.assetid: b8487516-7ac5-4435-9680-674d9ecf5642
-ms.openlocfilehash: 4a65e8a855b9be797c1ceeacf4b74fea74697d00
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 1b2e7994fa52e8fcbbd4fa32a6203181ad9735e5
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60646641"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68466751"
 ---
-# <a name="restore-azure-virtual-machines-using-rest-api"></a>Obnovení pomocí rozhraní REST API služby Azure Virtual machines
+# <a name="restore-azure-virtual-machines-using-rest-api"></a>Obnovení virtuálních počítačů Azure pomocí REST API
 
-Po dokončení zálohování Azure virtuální počítače pomocí Azure Backup jeden obnovit celý Azure Virtual machines nebo disky nebo souborů ze stejné záložní kopie. Tento článek popisuje, jak obnovit virtuální počítač Azure nebo disky pomocí rozhraní REST API.
+Po dokončení zálohování virtuálního počítače Azure pomocí Azure Backup může jeden obnovit celý virtuální počítač nebo disky nebo soubory Azure ze stejné záložní kopie. Tento článek popisuje, jak obnovit virtuální počítač nebo disky Azure pomocí REST API.
 
-Pro žádné operace obnovení, je nutné nejprve identifikovat bod obnovení relevantní.
+Pro všechny operace obnovení je nutné nejprve identifikovat příslušný bod obnovení.
 
-## <a name="select-recovery-point"></a>Vyberte bod obnovení
+## <a name="select-recovery-point"></a>Vybrat bod obnovení
 
-Dostupné body obnovení záložní položky je možné uvést pomocí [seznamu bod obnovení rozhraní REST API](https://docs.microsoft.com/rest/api/backup/recoverypoints/list). Je jednoduchý *získat* operace se všemi příslušnými hodnotami.
+Dostupné body obnovení zálohované položky mohou být uvedeny pomocí [REST APIho bodu obnovení seznamu](https://docs.microsoft.com/rest/api/backup/recoverypoints/list). Jedná se o jednoduchou operaci *Get* se všemi relevantními hodnotami.
 
 ```http
 GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints?api-version=2016-12-01
 ```
 
-`{containerName}` a `{protectedItemName}` jsou konstruovány [tady](backup-azure-arm-userestapi-backupazurevms.md#example-responses-1). `{fabricName}` je "Azure".
+A jsou sestaveny [zde.](backup-azure-arm-userestapi-backupazurevms.md#example-responses-1) `{protectedItemName}` `{containerName}` `{fabricName}`je "Azure".
 
-*Získat* identifikátor URI má všechny požadované parametry. Není nutné pro obsahu další žádosti
+Identifikátor URI *Get* má všechny požadované parametry. Není potřeba žádné další tělo žádosti.
 
-### <a name="responses"></a>Odezvy
+### <a name="responses"></a>Odpovědi
 
 |Name  |Typ  |Popis  |
 |---------|---------|---------|
@@ -43,7 +42,7 @@ GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 
 #### <a name="example-response"></a>Příklad odpovědi
 
-Jednou *získat* identifikátoru URI je odeslán, se vrátí odpověď 200 (OK).
+Po odeslání identifikátoru URI *Get* se vrátí odpověď 200 (ok).
 
 ```http
 HTTP/1.1 200 OK
@@ -119,33 +118,33 @@ X-Powered-By: ASP.NET
 ......
 ```
 
-Bod obnovení se určuje podle `{name}` pole v odpovědi výše.
+Bod obnovení je označený `{name}` polem ve výše uvedené reakci.
 
 ## <a name="restore-disks"></a>Obnovit disky
 
-Pokud je potřeba k přizpůsobení vytvoření virtuálního počítače z zálohovaná data, jeden pouze obnovení disků do účtu zvoleného úložiště a vytvoření virtuálního počítače z těchto disků podle svých požadavků. Účet úložiště by měl být ve stejné oblasti jako trezor služby recovery services a by neměl být zónově redundantní. Disky, jakož i konfigurace zálohovaného virtuálního počítače ("vmconfig.json") se uloží v daný účet úložiště.
+Pokud je potřeba přizpůsobit vytvoření virtuálního počítače ze záložních dat, může se jedna z nich jenom obnovit na vybraný účet úložiště a z těchto disků vytvořit virtuální počítač podle jejich požadavků. Účet úložiště by měl být ve stejné oblasti jako trezor služby Recovery Services a neměl by být zóna redundantní. Disky i konfigurace zálohovaného virtuálního počítače ("VMConfig. JSON") se uloží do daného účtu úložiště.
 
-Aktivuje obnovení disků je *příspěvek* požadavku. Chcete-li získat další informace o obnovení disků zopakovat, přečtěte si ["aktivovat obnovení" rozhraní REST API](https://docs.microsoft.com/rest/api/backup/restores/trigger).
+Aktivace disků pro obnovení je požadavek *post* . Pokud chcete získat další informace o operaci obnovení disků, přečtěte si [téma "Trigger Restore" REST API](https://docs.microsoft.com/rest/api/backup/restores/trigger).
 
 ```http
 POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints/{recoveryPointId}/restore?api-version=2016-12-01
 ```
 
-`{containerName}` a `{protectedItemName}` jsou konstruovány [tady](backup-azure-arm-userestapi-backupazurevms.md#example-responses-1). `{fabricName}` "Azure" a `{recoveryPointId}` je `{name}` pole bodu obnovení uvedeného [nad](#example-response).
+A jsou sestaveny [zde.](backup-azure-arm-userestapi-backupazurevms.md#example-responses-1) `{protectedItemName}` `{containerName}` `{fabricName}`je "Azure" a `{recoveryPointId}` `{name}` je pole bodu obnovení uvedeného [výše](#example-response).
 
-### <a name="create-request-body"></a>Vytvoření textu požadavku
+### <a name="create-request-body"></a>Vytvořit text žádosti
 
-Aktivovat disk obnovení ze zálohy virtuálního počítače Azure, jsou následující komponenty z textu požadavku.
+Pokud chcete aktivovat obnovení disku ze zálohy virtuálního počítače Azure, níže jsou uvedené součásti textu žádosti.
 
-|Název  |Typ  |Popis  |
+|Name  |Typ  |Popis  |
 |---------|---------|---------|
 |properties     | [IaaSVMRestoreRequest](https://docs.microsoft.com/rest/api/backup/restores/trigger#iaasvmrestorerequest)        |    RestoreRequestResourceProperties     |
 
-Úplný seznam definic z textu požadavku a další podrobnosti najdete v tématu [aktivovat obnovení rozhraní REST API dokumentu](https://docs.microsoft.com/rest/api/backup/restores/trigger#request-body).
+Úplný seznam definic těla žádosti a další podrobnosti najdete v tématu [Aktivace obnovení REST API dokumentu](https://docs.microsoft.com/rest/api/backup/restores/trigger#request-body).
 
 #### <a name="example-request"></a>Příklad požadavku
 
-Následující text požadavku definuje vlastnosti požadované pro aktivaci obnovení disku.
+Následující text žádosti definuje vlastnosti vyžadované k aktivaci obnovení disku.
 
 ```json
 {
@@ -167,17 +166,17 @@ Následující text požadavku definuje vlastnosti požadované pro aktivaci obn
 
 ### <a name="response"></a>Odpověď
 
-Aktivuje obnovení disků se [asynchronní operace](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations). Znamená to, že tato operace vytvoří jiná operace, která je třeba sledovat samostatně.
+Aktivace disku pro obnovení je [asynchronní operace](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations). To znamená, že tato operace vytvoří další operaci, která musí být sledována samostatně.
 
-Vrátí dva odpovědi: 202 (přijato), když se vytvoří jiná operace a pak 200 (OK) po dokončení této operace.
+Vrátí dvě odpovědi: 202 (přijato) při vytvoření jiné operace a po dokončení této operace 200 (OK).
 
-|Název  |Typ  |Popis  |
+|Name  |Typ  |Popis  |
 |---------|---------|---------|
 |202 přijato     |         |     Přijato    |
 
-#### <a name="example-responses"></a>Ukázkové odpovědi
+#### <a name="example-responses"></a>Příklady odpovědí
 
-Jakmile odešlete *příspěvek* identifikátor URI pro aktivaci obnovení disků, první odezvy je 202 (přijato) se hlavička umístění nebo Azure asynchronní záhlaví.
+Jakmile odešlete identifikátor *URI* pro aktivaci disků pro obnovení, počáteční odpověď je 202 (přijato) s hlavičkou umístění nebo Azure-Async-Header.
 
 ```http
 HTTP/1.1 202 Accepted
@@ -197,13 +196,13 @@ Location: https://management.azure.com/subscriptions//subscriptions/00000000-000
 X-Powered-By: ASP.NET
 ```
 
-Poté můžete sledovat pomocí hlavičky location nebo Azure-AsyncOperation záhlaví s jednoduchou výsledný operace *získat* příkazu.
+Pak Sledujte výslednou operaci pomocí záhlaví umístění nebo hlavičky Azure-AsyncOperation s jednoduchým příkazem *Get* .
 
 ```http
 GET https://management.azure.com/subscriptions//subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/microsoft.recoveryservices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testRG;testVM/protectedItems/vm;testRG;testVM/operationResults/781a0f18-e250-4d73-b059-5e9ffed4069e?api-version=2016-12-01
 ```
 
-Po dokončení této operace vrátí 200 (OK) s ID v textu odpovědi se výsledná úloha obnovení.
+Po dokončení operace vrátí 200 (OK) ID výsledné úlohy obnovení v těle odpovědi.
 
 ```http
 HTTP/1.1 200 OK
@@ -233,15 +232,15 @@ X-Powered-By: ASP.NET
 }
 ```
 
-Úlohy zálohování je dlouho běžící operace, ho mají být sledovány jak je vysvětleno v [monitorování úloh pomocí rozhraní REST API dokumentu](backup-azure-arm-userestapi-managejobs.md#tracking-the-job).
+Vzhledem k tomu, že úloha zálohování je dlouhodobě spuštěná operace, měla by být sledována tak, jak je vysvětleno v tématu [Monitorování úloh pomocí REST API dokumentu](backup-azure-arm-userestapi-managejobs.md#tracking-the-job).
 
-Po dokončení dlouho běžící úlohy se disky a konfigurace zálohovaného virtuálního počítače ("VMConfig.json") bude v daný účet úložiště.
+Po dokončení dlouho spuštěné úlohy se v daném účtu úložiště budou vyskytovat disky a konfigurace zálohovaného virtuálního počítače ("VMConfig. JSON").
 
 ## <a name="restore-as-another-virtual-machine"></a>Obnovit jako jiný virtuální počítač
 
-[Vyberte bod obnovení](#select-recovery-point) a vytvořit datovou část požadavku uvedená níže vytvořte další Azure virtuální počítač s daty z bodu obnovení.
+[Vyberte bod obnovení](#select-recovery-point) a vytvořte text žádosti, jak je uvedeno níže, aby se vytvořil jiný virtuální počítač Azure s daty z bodu obnovení.
 
-Následující text požadavku definuje vlastnosti požadované pro aktivaci obnovení virtuálního počítače.
+Následující text žádosti definuje vlastnosti vyžadované k aktivaci obnovení virtuálního počítače.
 
 ```json
 {
@@ -277,11 +276,11 @@ Následující text požadavku definuje vlastnosti požadované pro aktivaci obn
 }
 ```
 
-Odpověď by měla být zpracovány v stejným způsobem jako [bylo vysvětleno výše pro obnovení disků](#response).
+Odpověď by měla být zpracována stejným způsobem, jak [je vysvětleno výše pro obnovení disků](#response).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Další informace o rozhraní REST API služby Azure Backup najdete v následujících dokumentech:
+Další informace o rozhraních REST API Azure Backup najdete v následujících dokumentech:
 
-- [Rozhraní REST API poskytovatele Azure Recovery Services](/rest/api/recoveryservices/)
+- [Poskytovatel Azure Recovery Services REST API](/rest/api/recoveryservices/)
 - [Začínáme s Azure REST API](/rest/api/azure/)

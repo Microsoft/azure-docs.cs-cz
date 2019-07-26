@@ -1,129 +1,122 @@
 ---
-title: Cloud Services Role config tahák XPath pro | Dokumentace Microsoftu
-description: Různá nastavení XPath vám pomůže v konfiguraci role cloudové služby nabízejí nastavení jako proměnnou prostředí.
+title: Cloud Services tabulka tahák XPath pro konfiguraci rolí | Microsoft Docs
+description: Různá nastavení XPath, která můžete použít v konfiguraci role cloudové služby k vystavování nastavení jako proměnné prostředí.
 services: cloud-services
-documentationcenter: ''
-author: jpconnock
-manager: timlt
-editor: ''
-ms.assetid: c51e4493-0643-4d05-bc44-06c76bcbf7d1
+author: georgewallace
 ms.service: cloud-services
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 04/19/2017
-ms.author: jeconnoc
-ms.openlocfilehash: 53a262af421dd986e6b70af173a6e8b3f7c06f64
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: gwallace
+ms.openlocfilehash: cd2bdc4fc4b2a135907851ca4d3034430618e0cd
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60527296"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68359006"
 ---
-# <a name="expose-role-configuration-settings-as-an-environment-variable-with-xpath"></a>Zpřístupnit nastavení konfigurace role jako proměnnou prostředí, jejichž výraz XPath
-V pracovního procesu cloud service nebo definiční soubor služby webové role mohou vystavit hodnoty konfigurace modulu runtime jako proměnné prostředí. Následující výraz XPath hodnoty jsou podporovány (které odpovídají hodnotám rozhraní API).
+# <a name="expose-role-configuration-settings-as-an-environment-variable-with-xpath"></a>Vystavit nastavení konfigurace role jako proměnnou prostředí pomocí XPath
+V souboru s definicí pracovníka cloudové služby nebo v definičním souboru služby webové role můžete vystavit hodnoty konfigurace modulu runtime jako proměnné prostředí. Podporovány jsou následující hodnoty XPath (které odpovídají hodnotám rozhraní API).
 
-Tyto hodnoty XPath jsou také k dispozici prostřednictvím [Microsoft.WindowsAzure.ServiceRuntime](/previous-versions/azure/reference/ee773173(v=azure.100)) knihovny. 
+Tyto hodnoty XPath jsou také k dispozici prostřednictvím knihovny [Microsoft. windowsazure. ServiceRuntime](/previous-versions/azure/reference/ee773173(v=azure.100)) . 
 
-## <a name="app-running-in-emulator"></a>Aplikace spuštěné v emulátoru
-Označuje, že je aplikace spuštěna v emulátoru.
+## <a name="app-running-in-emulator"></a>Aplikace spuštěná v emulátoru
+Indikuje, že aplikace běží v emulátoru.
 
-| Type | Příklad: |
+| type | Příklad |
 | --- | --- |
-| Výraz XPath |xpath="/RoleEnvironment/Deployment/@emulated" |
-| Kód |var x = RoleEnvironment.IsEmulated; |
+| Cestou |xpath="/RoleEnvironment/Deployment/@emulated" |
+| Kód |var x = RoleEnvironment. Emulation; |
 
 ## <a name="deployment-id"></a>ID nasazení
-Načte identifikátor ID nasazení pro instanci.
+Načte ID nasazení instance.
 
-| Type | Příklad: |
+| type | Příklad |
 | --- | --- |
-| Výraz XPath |xpath="/RoleEnvironment/Deployment/@id" |
-| Kód |var deploymentId = RoleEnvironment.DeploymentId; |
+| Cestou |xpath="/RoleEnvironment/Deployment/@id" |
+| Kód |var deploymentId = RoleEnvironment. DeploymentId; |
 
-## <a name="role-id"></a>Role ID
+## <a name="role-id"></a>ID role
 Načte aktuální ID role pro instanci.
 
-| Type | Příklad: |
+| type | Příklad |
 | --- | --- |
-| Výraz XPath |xpath="/RoleEnvironment/CurrentInstance/@id" |
-| Kód |var id = RoleEnvironment.CurrentRoleInstance.Id; |
+| Cestou |xpath="/RoleEnvironment/CurrentInstance/@id" |
+| Kód |var ID = RoleEnvironment.CurrentRoleInstance.Id; |
 
-## <a name="update-domain"></a>Aktualizace domény
-Načte aktualizační doména instance.
+## <a name="update-domain"></a>Aktualizovat doménu
+Načte aktualizační doménu instance.
 
-| Type | Příklad: |
+| type | Příklad |
 | --- | --- |
-| Výraz XPath |xpath="/RoleEnvironment/CurrentInstance/@updateDomain" |
-| Kód |var ud = RoleEnvironment.CurrentRoleInstance.UpdateDomain; |
+| Cestou |xpath="/RoleEnvironment/CurrentInstance/@updateDomain" |
+| Kód |var ud = RoleEnvironment. CurrentRoleInstance. UpdateDomain; |
 
-## <a name="fault-domain"></a>Doména selhání
+## <a name="fault-domain"></a>Chybná doména
 Načte doménu selhání instance.
 
-| Type | Příklad: |
+| type | Příklad |
 | --- | --- |
-| Výraz XPath |xpath="/RoleEnvironment/CurrentInstance/@faultDomain" |
-| Kód |var fd = RoleEnvironment.CurrentRoleInstance.FaultDomain; |
+| Cestou |xpath="/RoleEnvironment/CurrentInstance/@faultDomain" |
+| Kód |var FD = RoleEnvironment. CurrentRoleInstance. FaultDomain; |
 
 ## <a name="role-name"></a>Název role
-Načte název instance role.
+Načte název role instancí.
 
-| Type | Příklad: |
+| type | Příklad |
 | --- | --- |
-| Výraz XPath |xpath="/RoleEnvironment/CurrentInstance/@roleName" |
-| Kód |var rname = RoleEnvironment.CurrentRoleInstance.Role.Name; |
+| Cestou |xpath="/RoleEnvironment/CurrentInstance/@roleName" |
+| Kód |var RNAME = RoleEnvironment.CurrentRoleInstance.Role.Name; |
 
 ## <a name="config-setting"></a>Nastavení konfigurace
-Načte hodnotu zadaného nastavení.
+Načte hodnotu zadaného nastavení konfigurace.
 
-| Type | Příklad: |
+| type | Příklad |
 | --- | --- |
-| Výraz XPath |xpath="/RoleEnvironment/CurrentInstance/ConfigurationSettings/ConfigurationSetting[@name='Setting1']/@value" |
-| Kód |var nastavení = RoleEnvironment.GetConfigurationSettingValue("Setting1"); |
+| Cestou |XPath = "/RoleEnvironment/CurrentInstance/ConfigurationSettings/ConfigurationSetting [@name= ' Setting1 ']/@value" |
+| Kód |var – nastavení = RoleEnvironment. GetConfigurationSettingValue ("Setting1"); |
 
 ## <a name="local-storage-path"></a>Cesta k místnímu úložišti
 Načte cestu místního úložiště pro instanci.
 
-| Type | Příklad: |
+| type | Příklad |
 | --- | --- |
-| Výraz XPath |výraz XPath = "/ RoleEnvironment/CurrentInstance/LocalResources/LocalResource [@name= 'LocalStore1']/@path" |
-| Kód |var localResourcePath = RoleEnvironment.GetLocalResource("LocalStore1"). RootPath; |
+| Cestou |XPath = "/RoleEnvironment/CurrentInstance/LocalResources/LocalResource [@name= ' LocalStore1 ']/@path" |
+| Kód |var localResourcePath = RoleEnvironment. GetLocalResource ("LocalStore1"). RootPath |
 
 ## <a name="local-storage-size"></a>Velikost místního úložiště
-Získá velikost místního úložiště pro instanci.
+Načte velikost místního úložiště pro instanci.
 
-| Type | Příklad: |
+| type | Příklad |
 | --- | --- |
-| Výraz XPath |výraz XPath = "/ RoleEnvironment/CurrentInstance/LocalResources/LocalResource [@name= 'LocalStore1']/@sizeInMB" |
-| Kód |var localResourceSizeInMB = RoleEnvironment.GetLocalResource("LocalStore1"). MaximumSizeInMegabytes; |
+| Cestou |XPath = "/RoleEnvironment/CurrentInstance/LocalResources/LocalResource [@name= ' LocalStore1 ']/@sizeInMB" |
+| Kód |var localResourceSizeInMB = RoleEnvironment. GetLocalResource ("LocalStore1"). MaximumSizeInMegabytes; |
 
 ## <a name="endpoint-protocol"></a>Protokol koncového bodu
 Načte protokol koncového bodu pro instanci.
 
-| Type | Příklad: |
+| type | Příklad |
 | --- | --- |
-| Výraz XPath |výraz XPath = "/ RoleEnvironment/CurrentInstance/koncové body nebo koncový bod [@name= 'koncovém bodě 1']/@protocol" |
-| Kód |var ochranu = RoleEnvironment.CurrentRoleInstance.InstanceEndpoints["Endpoint1"]. Protokol; |
+| Cestou |XPath = "/RoleEnvironment/CurrentInstance/Endpoints/Endpoint [@name= ' Endpoint1 ']/@protocol" |
+| Kód |var prot = RoleEnvironment. CurrentRoleInstance. InstanceEndpoints ["Endpoint1"]. Protokol |
 
-## <a name="endpoint-ip"></a>Koncový bod IP
-Získá zadaný koncový bod IP adresu.
+## <a name="endpoint-ip"></a>IP adresa koncového bodu
+Získá IP adresu zadaného koncového bodu.
 
-| Type | Příklad: |
+| type | Příklad |
 | --- | --- |
-| Výraz XPath |výraz XPath = "/ RoleEnvironment/CurrentInstance/koncové body nebo koncový bod [@name= 'koncovém bodě 1']/@address" |
-| Kód |var adresa = RoleEnvironment.CurrentRoleInstance.InstanceEndpoints["Endpoint1"]. IPEndpoint.Address |
+| Cestou |XPath = "/RoleEnvironment/CurrentInstance/Endpoints/Endpoint [@name= ' Endpoint1 ']/@address" |
+| Kód |var Address = RoleEnvironment. CurrentRoleInstance. InstanceEndpoints ["Endpoint1"]. IPEndpoint. Address |
 
 ## <a name="endpoint-port"></a>Port koncového bodu
-Načte port koncového bodu pro instanci.
+Načte pro instanci port koncového bodu.
 
-| Type | Příklad: |
+| type | Příklad |
 | --- | --- |
-| Výraz XPath |výraz XPath = "/ RoleEnvironment/CurrentInstance/koncové body nebo koncový bod [@name= 'koncovém bodě 1']/@port" |
-| Kód |var port = RoleEnvironment.CurrentRoleInstance.InstanceEndpoints["Endpoint1"]. IPEndpoint.Port; |
+| Cestou |XPath = "/RoleEnvironment/CurrentInstance/Endpoints/Endpoint [@name= ' Endpoint1 ']/@port" |
+| Kód |var port = RoleEnvironment. CurrentRoleInstance. InstanceEndpoints ["Endpoint1"]. IPEndpoint. port; |
 
-## <a name="example"></a>Příklad:
-Tady je příklad, který vytváří úlohy po spuštění s proměnnou prostředí s názvem role pracovního procesu `TestIsEmulated` nastaveno [ @emulated hodnota xpath](#app-running-in-emulator). 
+## <a name="example"></a>Příklad
+Tady je příklad role pracovního procesu, která vytvoří úlohu po spuštění s proměnnou prostředí s názvem `TestIsEmulated` nastavenou [ @emulated na hodnotu XPath](#app-running-in-emulator). 
 
 ```xml
 <WorkerRole name="Role1">
@@ -163,9 +156,9 @@ Tady je příklad, který vytváří úlohy po spuštění s proměnnou prostře
 ```
 
 ## <a name="next-steps"></a>Další postup
-Další informace o [souboru ServiceConfiguration.cscfg](cloud-services-model-and-package.md#serviceconfigurationcscfg) souboru.
+Přečtěte si další informace o souboru [ServiceConfiguration. cscfg](cloud-services-model-and-package.md#serviceconfigurationcscfg) .
 
-Vytvoření [ServicePackage.cspkg](cloud-services-model-and-package.md#servicepackagecspkg) balíčku.
+Vytvořte balíček [ServicePack. cspkg](cloud-services-model-and-package.md#servicepackagecspkg) .
 
-Povolit [vzdálené plochy](cloud-services-role-enable-remote-desktop-new-portal.md) pro roli.
+Povolit [vzdálenou plochu](cloud-services-role-enable-remote-desktop-new-portal.md) pro roli.
 

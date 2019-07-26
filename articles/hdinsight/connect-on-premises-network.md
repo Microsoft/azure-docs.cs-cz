@@ -1,6 +1,6 @@
 ---
 title: Připojení Azure HDInsight k místní síti
-description: Zjistěte, jak vytvořit HDInsight cluster ve službě Azure Virtual Network a pak ho připojíte k místní síti. Zjistěte, jak nakonfigurovat překlad mezi HDInsight a v místní síti pomocí vlastního serveru DNS.
+description: Naučte se, jak vytvořit cluster HDInsight v Virtual Network Azure a pak ho připojit k místní síti. Naučte se konfigurovat překlad IP adres mezi HDInsight a vaší místní sítí pomocí vlastního serveru DNS.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,125 +8,125 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/04/2019
-ms.openlocfilehash: 52fe8c05101f9647549acec276f0bdb9fa52d1c7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ced0655d2e8ff012b3043dd123a8483674b4c472
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60537825"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68404541"
 ---
 # <a name="connect-hdinsight-to-your-on-premises-network"></a>Připojení HDInsightu k místní síti
 
-Zjistěte, jak připojit HDInsight k místní síti pomocí virtuální sítě Azure a bránu VPN. Tento dokument obsahuje informace o plánování na:
+Naučte se připojit HDInsight k místní síti pomocí Azure Virtual Networks a brány VPN. Tento dokument poskytuje informace o plánování:
 
-* Pomocí HDInsight ve virtuální síti Azure, která se připojuje k vaší místní síti.
+* Použití služby HDInsight v Virtual Network Azure, která se připojuje k vaší místní síti.
 * Konfigurace překladu názvů DNS mezi virtuální sítí a místní sítí.
-* Konfigurace skupin zabezpečení sítě pro omezení přístupu k Internetu k HDInsight.
-* Porty, které poskytuje HDInsight ve virtuální síti.
+* Konfigurace skupin zabezpečení sítě k omezení přístupu k Internetu do HDInsight.
+* Porty poskytované službou HDInsight ve virtuální síti.
 
 ## <a name="overview"></a>Přehled
 
-Povolit HDInsight a prostředky v připojeném k síti komunikovat podle názvu, je třeba provést následující akce:
+Chcete-li službě HDInsight a prostředkům v připojené síti umožňovat komunikaci podle názvu, je nutné provést následující akce:
 
-* Vytvoření virtuální sítě Azure.
-* Vytvoření vlastního serveru DNS ve virtuální síti Azure.
-* Konfigurace virtuální sítě pro použití vlastního serveru DNS. místo výchozího rekurzivní překladače Azure.
-* Konfigurace předávání mezi vlastního serveru DNS a místním serverem DNS.
+* Vytvořte Virtual Network Azure.
+* Vytvořte si vlastní server DNS na Virtual Network Azure.
+* Nakonfigurujte virtuální síť tak, aby používala vlastní server DNS namísto výchozího překladače rekurzivního překladu Azure.
+* Nakonfigurujte přesměrování mezi vlastním serverem DNS a místním serverem DNS.
 
-Tato konfigurace umožňuje toto chování:
+Tato konfigurace umožňuje následující chování:
 
-* Požadavky pro plně kvalifikované názvy domén, které mají příponu DNS __pro virtuální síť__ se předávají do vlastního serveru DNS. Tyto požadavky vlastního serveru DNS. potom předá do rekurzivní překladače Azure, které vrací IP adresu.
-* Všechny ostatní žádosti jsou předávány na místním serveru DNS. Dokonce i požadavky na veřejné internetové prostředky, třeba microsoft.com jsou předány na místním serveru DNS pro překlad názvů.
+* Požadavky na plně kvalifikované názvy domén, které mají příponu DNS __pro virtuální síť__ , se předají do vlastního serveru DNS. Vlastní server DNS pak tyto požadavky přepošle do rekurzivního překladače Azure, který vrací IP adresu.
+* Všechny ostatní požadavky se předají na místní server DNS. I požadavky na veřejné internetové prostředky, jako je microsoft.com, se předávají na místní server DNS pro překlad IP adres.
 
-V následujícím diagramu zelenou řádky jsou požadavky na prostředky, které končí příponou DNS ve virtuální síti. Modré čáry jsou požadavky na prostředky v místní síti nebo na veřejný internet.
+V následujícím diagramu jsou zelenými řádky požadavky na prostředky, které končí příponou DNS virtuální sítě. Modré řádky jsou požadavky na prostředky v místní síti nebo na veřejném Internetu.
 
-![Diagram způsob řešení žádosti DNS v konfiguraci v tomto dokumentu](./media/connect-on-premises-network/on-premises-to-cloud-dns.png)
+![Diagram postupu při řešení požadavků DNS v konfiguraci použité v tomto dokumentu](./media/connect-on-premises-network/on-premises-to-cloud-dns.png)
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Klient SSH. Další informace najdete v tématu [připojení k HDInsight (Apache Hadoop) pomocí protokolu SSH](./hdinsight-hadoop-linux-use-ssh-unix.md).
-* Pokud používáte PowerShell, budete potřebovat [AZ modulu](https://docs.microsoft.com/powershell/azure/overview).
-* Pokud chtějí používat rozhraní příkazového řádku Azure a je zatím ho ještě nenainstalovali, naleznete v tématu [instalace rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli).
+* Klient SSH. Další informace najdete v tématu [připojení ke službě HDInsight (Apache Hadoop) pomocí SSH](./hdinsight-hadoop-linux-use-ssh-unix.md).
+* Pokud používáte PowerShell, budete potřebovat [AZ Module](https://docs.microsoft.com/powershell/azure/overview).
+* Pokud chcete použít rozhraní příkazového řádku Azure a ještě jste ho nenainstalovali, přečtěte si téma [instalace Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
-## <a name="create-virtual-network-configuration"></a>Vytvoření konfigurace virtuální sítě
+## <a name="create-virtual-network-configuration"></a>Vytvořit konfiguraci virtuální sítě
 
-Zjistěte, jak vytvořit virtuální síť Azure, který je připojený k vaší místní síti pomocí následujících dokumentech:
+Pomocí následujících dokumentů se naučíte, jak vytvořit Virtual Network Azure, která je připojená k vaší místní síti:
 
 * [Pomocí webu Azure Portal](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)
 * [Použití Azure PowerShellu](../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md)
 * [Použití Azure CLI](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli.md)
 
-## <a name="create-custom-dns-server"></a>Vytvoření vlastního serveru DNS
+## <a name="create-custom-dns-server"></a>Vytvořit vlastní server DNS
 
 > [!IMPORTANT]  
-> Musíte vytvořit a konfigurovat DNS server před instalací HDInsight do virtuální sítě.
+> Před instalací HDInsight do virtuální sítě je potřeba vytvořit a nakonfigurovat server DNS.
 
-Tyto kroky používají [webu Azure portal](https://portal.azure.com) k vytvoření virtuálního počítače Azure. Další způsoby vytvoření virtuálního počítače, naleznete v tématu [vytvořit virtuální počítač – rozhraní příkazového řádku Azure](../virtual-machines/linux/quick-create-cli.md) a [vytvořit virtuální počítač – Azure PowerShell](../virtual-machines/linux/quick-create-powershell.md).  Vytvoření virtuálního počítače s Linuxem, který používá [svázat](https://www.isc.org/downloads/bind/) DNS software, použijte následující postup:
+Tyto kroky používají [Azure Portal](https://portal.azure.com) k vytvoření virtuálního počítače Azure. Další způsoby vytvoření virtuálního počítače najdete v tématu [Vytvoření virtuálního počítače – Azure CLI](../virtual-machines/linux/quick-create-cli.md) a [Vytvoření virtuálního počítače – Azure PowerShell](../virtual-machines/linux/quick-create-powershell.md).  K vytvoření virtuálního počítače se systémem Linux, který používá software DNS [BIND](https://www.isc.org/downloads/bind/) , použijte následující postup:
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
   
-2. V nabídce vlevo přejděte na **+ vytvořit prostředek** > **Compute** > **Ubuntu Server 18.04 LTS**.
+2. V nabídce vlevo přejděte na **+ vytvořit Resource** > **COMPUTE** > **Ubuntu Server 18,04 LTS**.
 
     ![Vytvoření virtuálního počítače s Ubuntu](./media/connect-on-premises-network/create-ubuntu-vm.png)
 
-3. Z __Základy__ kartu, zadejte následující informace:  
+3. Na kartě __základy__ zadejte následující informace:  
   
-    | Pole | Hodnota |
+    | Pole | Value |
     | --- | --- |
-    |Předplatné |Vyberte odpovídající předplatné.|
-    |Skupina prostředků |Vyberte skupinu prostředků, která obsahuje virtuální síť vytvořili dříve.|
-    |Název virtuálního počítače | Zadejte popisný název, který identifikuje tento virtuální počítač. Tento příklad používá **DNSProxy**.|
-    |Oblast | Vyberte stejné oblasti jako virtuální síť vytvořili dříve.  Ne všechny velikosti virtuálních počítačů jsou k dispozici ve všech oblastech.  |
-    |Možnosti dostupnosti |  Vyberte požadovanou úroveň dostupnosti.  Azure nabízí celou řadu možností pro správu dostupnosti a odolnosti proti chybám pro vaše aplikace.  Architektury řešení použití k ochraně aplikací a dat v případě výpadku datacentra nebo události údržby replikované virtuální počítače v zónách dostupnosti nebo skupinami dostupnosti. Tento příklad používá **žádné redundance infrastruktury požadované**. |
-    |Image | Ponechte **Ubuntu Server 18.04 LTS**. |
-    |Typ ověřování | __Heslo__ nebo __veřejný klíč SSH__: Metoda ověřování pro účet SSH. Doporučujeme pomocí veřejných klíčů, protože jde o zabezpečení. Tento příklad používá **heslo**.  Další informace najdete v tématu [vytvoření a použití klíčů SSH pro virtuální počítače s Linuxem](../virtual-machines/linux/mac-create-ssh-keys.md) dokumentu.|
-    |Uživatelské jméno |Zadejte uživatelské jméno správce pro virtuální počítač.  Tento příklad používá **sshuser**.|
-    |Heslo nebo SSH veřejný klíč | Dostupná pole se určuje podle vaší volby **typ ověřování**.  Zadejte odpovídající hodnotu.|
-    |Veřejné příchozí porty|Vyberte **povolit vybrané porty**. Potom vyberte **SSH (22)** z **vyberte příchozí porty** rozevíracího seznamu.|
+    |Subscription |Vyberte odpovídající předplatné.|
+    |Resource group |Vyberte skupinu prostředků, která obsahuje dříve vytvořenou virtuální síť.|
+    |Název virtuálního počítače | Zadejte popisný název, který identifikuje tento virtuální počítač. V tomto příkladu se používá **DNSProxy**.|
+    |Oblast | Vyberte stejnou oblast jako dříve vytvořenou virtuální síť.  Ne všechny velikosti virtuálních počítačů jsou dostupné ve všech oblastech.  |
+    |Možnosti dostupnosti |  Vyberte požadovanou úroveň dostupnosti.  Azure nabízí řadu možností pro správu dostupnosti a odolnosti pro vaše aplikace.  Architekt svého řešení pro použití replikovaných virtuálních počítačů v Zóny dostupnosti nebo skupin dostupnosti k ochraně vašich aplikací a dat před výpadky datacentra a událostmi údržby. V tomto příkladu se **nepožaduje žádná redundance infrastruktury**. |
+    |Image | Ponechte na **Ubuntu serveru 18,04 LTS**. |
+    |Typ ověřování | __Heslo__ nebo __veřejný klíč SSH__: Metoda ověřování pro účet SSH Doporučujeme používat veřejné klíče, protože jsou bezpečnější. V tomto příkladu se používá **heslo**.  Další informace najdete v dokumentu [Vytvoření a použití klíčů ssh pro virtuální počítače se systémem Linux](../virtual-machines/linux/mac-create-ssh-keys.md) .|
+    |Uživatelské jméno |Zadejte uživatelské jméno správce pro virtuální počítač.  V tomto příkladu se používá **sshuser**.|
+    |Heslo nebo veřejný klíč SSH | Dostupné pole je určeno podle vaší volby pro **typ ověřování**.  Zadejte odpovídající hodnotu.|
+    |Veřejné příchozí porty|Vyberte možnost **Povolení vybraných portů**. Pak v rozevíracím seznamu **vybrat příchozí porty** vyberte **SSH (22)** .|
 
     ![Základní konfigurace virtuálního počítače](./media/connect-on-premises-network/vm-basics.png)
 
-    Další položky ponechte výchozí hodnoty a pak vyberte **sítě** kartu.
+    Ponechte výchozí hodnoty na další položky a pak vyberte kartu **síť** .
 
-4. Z **sítě** kartu, zadejte následující informace:
+4. Na kartě **sítě** zadejte následující informace:
 
-    | Pole | Hodnota |
+    | Pole | Value |
     | --- | --- |
     |Virtuální síť | Vyberte virtuální síť, kterou jste vytvořili dříve.|
-    |Podsíť | Vyberte výchozí podsíť pro virtuální síť, kterou jste vytvořili dříve. Proveďte __není__ vyberte podsíť používá bránu sítě VPN.|
-    |Veřejná IP adresa | Použijte hodnotu vyplní automaticky.  |
+    |Subnet | Vyberte výchozí podsíť pro virtuální síť, kterou jste vytvořili dříve. Nevybírejte __podsíť__ , kterou používá brána sítě VPN.|
+    |Veřejná IP adresa | Použijte automaticky vyplněnou hodnotu.  |
 
     ![Nastavení virtuální sítě](./media/connect-on-premises-network/virtual-network-settings.png)
 
-    Další položky ponechte výchozí hodnoty a pak vyberte **revize + vytvořit**.
+    Ponechte výchozí hodnoty na další položky a potom vyberte **zkontrolovat + vytvořit**.
 
-5. Z **revize + vytvořit** kartu, vyberte možnost **vytvořit** k vytvoření virtuálního počítače.
+5. Na kartě **Revize + vytvořit** vyberte **vytvořit** a vytvořte tak virtuální počítač.
 
-### <a name="review-ip-addresses"></a>Zkontrolujte IP adresy
-Po vytvoření virtuálního počítače, zobrazí se **nasazení bylo úspěšné** oznámení **přejít k prostředku** tlačítko.  Vyberte **přejít k prostředku** přejděte k novému virtuálnímu počítači.  Výchozí zobrazení pro nový virtuální počítač použijte následující postup identifikovat přidružené IP adresy:
+### <a name="review-ip-addresses"></a>Kontrola IP adres
+Po vytvoření virtuálního počítače se zobrazí oznámení o **úspěšném nasazení** s tlačítkem **Přejít na prostředek** .  Vyberte **Přejít k prostředku** a přejít na nový virtuální počítač.  Ve výchozím zobrazení nového virtuálního počítače pomocí těchto kroků Identifikujte přidružené IP adresy:
 
-1. Z **nastavení**vyberte **vlastnosti**.
+1. V **Nastavení**vyberte **vlastnosti**.
 
-2. Poznamenejte si hodnoty pro **veřejné IP adresy nebo DNS název popisek** a **PRIVÁTNÍ IP adresa** pro pozdější použití.
+2. Poznamenejte si hodnoty pro **veřejnou IP adresu/název DNS popisek** a **privátní IP adresu** pro pozdější použití.
 
-   ![Veřejných a privátních IP adres](./media/connect-on-premises-network/vm-ip-addresses.png)
+   ![Veřejné a privátní IP adresy](./media/connect-on-premises-network/vm-ip-addresses.png)
 
-### <a name="install-and-configure-bind-dns-software"></a>Instalace a konfigurace vazby (DNS software)
+### <a name="install-and-configure-bind-dns-software"></a>Instalace a konfigurace služby BIND (software DNS)
 
-1. Pomocí SSH se připojte k __veřejnou IP adresu__ virtuálního počítače. Nahraďte `sshuser` pomocí uživatelského účtu SSH, jste zadali při vytváření virtuálního počítače. Následující příklad se připojí k virtuálnímu počítači na 40.68.254.142:
+1. Pomocí SSH se připojte k __veřejné IP adrese__ virtuálního počítače. Nahraďte `sshuser` uživatelským účtem SSH, který jste zadali při vytváření virtuálního počítače. Následující příklad se připojuje k virtuálnímu počítači na adrese 40.68.254.142:
 
     ```bash
     ssh sshuser@40.68.254.142
     ```
 
-2. K instalaci vazby, použijte následující příkazy z relace SSH:
+2. K instalaci vazby použijte následující příkazy z relace SSH:
 
     ```bash
     sudo apt-get update -y
     sudo apt-get install bind9 -y
     ```
 
-3. Ke konfiguraci vazby pro předávání název řešení požadavků na serveru DNS v místním prostředí, použijte následující text jako obsah `/etc/bind/named.conf.options` souboru:
+3. Chcete-li konfigurovat službu BIND pro přeposílání požadavků na překlad názvů na místní server DNS, použijte jako obsah `/etc/bind/named.conf.options` souboru následující text:
 
         acl goodclients {
             10.0.0.0/16; # Replace with the IP address range of the virtual network
@@ -153,17 +153,17 @@ Po vytvoření virtuálního počítače, zobrazí se **nasazení bylo úspěšn
         };
 
     > [!IMPORTANT]  
-    > Nahraďte hodnoty v `goodclients` část s rozsahem IP adres virtuální sítě a v místní síti. Tento oddíl definuje adresy, které přijímá požadavky od tento server DNS.
+    > Nahraďte hodnoty v `goodclients` oddílu rozsahem IP adres virtuální sítě a místní sítě. V této části se definují adresy, od kterých tento server DNS přijímá požadavky.
     >
-    > Nahraďte `192.168.0.1` položku `forwarders` část s IP adresou vašeho serveru DNS v místním. Tato položka směruje žádosti DNS na místní server DNS pro překlad.
+    > Nahraďte `forwarders` položku v části IP adresou místního serveru DNS. `192.168.0.1` Tato položka směruje požadavky DNS na váš místní server DNS na rozlišení.
 
-    K úpravě tohoto souboru použijte následující příkaz:
+    Chcete-li tento soubor upravit, použijte následující příkaz:
 
     ```bash
     sudo nano /etc/bind/named.conf.options
     ```
 
-    Chcete-li uložit soubor, použijte __Ctrl + X__, __Y__a potom __Enter__.
+    Pokud chcete soubor uložit, použijte __CTRL + X__, __Y__a pak __Zadejte__.
 
 4. Z relace SSH použijte následující příkaz:
 
@@ -171,15 +171,15 @@ Po vytvoření virtuálního počítače, zobrazí se **nasazení bylo úspěšn
     hostname -f
     ```
 
-    Tento příkaz vrátí hodnotu podobné následujícímu textu:
+    Tento příkaz vrátí hodnotu podobnou následujícímu textu:
 
     ```output
     dnsproxy.icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net
     ```
 
-    `icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net` Text je __přípona DNS__ pro tuto virtuální síť. Uložte tuto hodnotu, bude se hodit později.
+    Text je přípona DNS pro tuto virtuální síť.  `icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net` Uložte tuto hodnotu, bude se hodit později.
 
-5. Ke konfiguraci vazby k překladu názvů DNS pro prostředky v rámci virtuální sítě, použijte následující text jako obsah `/etc/bind/named.conf.local` souboru:
+5. Pokud chcete nakonfigurovat službu BIND k překladu názvů DNS pro prostředky v rámci virtuální sítě, jako obsah `/etc/bind/named.conf.local` souboru použijte následující text:
 
         // Replace the following with the DNS suffix for your virtual network
         zone "icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net" {
@@ -188,23 +188,23 @@ Po vytvoření virtuálního počítače, zobrazí se **nasazení bylo úspěšn
         };
 
     > [!IMPORTANT]  
-    > Je třeba nahradit `icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net` s příponou DNS, který jste získali dříve.
+    > Je nutné nahradit `icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net` příponu DNS, kterou jste získali dříve.
 
-    K úpravě tohoto souboru použijte následující příkaz:
+    Chcete-li tento soubor upravit, použijte následující příkaz:
 
     ```bash
     sudo nano /etc/bind/named.conf.local
     ```
 
-    Chcete-li uložit soubor, použijte __Ctrl + X__, __Y__a potom __Enter__.
+    Pokud chcete soubor uložit, použijte __CTRL + X__, __Y__a pak __Zadejte__.
 
-6. Spuštění vazby, použijte následující příkaz:
+6. K zahájení vazby použijte následující příkaz:
 
     ```bash
     sudo service bind9 restart
     ```
 
-7. Chcete-li ověřit, že vazby dokáže přeložit názvy prostředků ve vaší místní síti, použijte následující příkazy:
+7. Chcete-li ověřit, zda může vazba přeložit názvy prostředků v místní síti, použijte následující příkazy:
 
     ```bash
     sudo apt install dnsutils
@@ -212,11 +212,11 @@ Po vytvoření virtuálního počítače, zobrazí se **nasazení bylo úspěšn
     ```
 
     > [!IMPORTANT]  
-    > Nahraďte `dns.mynetwork.net` s plně kvalifikovaný název domény (FQDN) prostředků ve vaší místní síti.
+    > Nahraďte `dns.mynetwork.net` plně kvalifikovaným názvem domény (FQDN) prostředku ve vaší místní síti.
     >
-    > Nahraďte `10.0.0.4` s __interní IP adresa__ vašeho vlastního serveru DNS ve virtuální síti.
+    > Nahraďte `10.0.0.4` __interní IP adresou__ vašeho vlastního serveru DNS ve virtuální síti.
 
-    Odpověď se zobrazí podobný následujícímu textu:
+    Odpověď se zobrazí jako následující text:
 
     ```output
     Server:         10.0.0.4
@@ -227,83 +227,83 @@ Po vytvoření virtuálního počítače, zobrazí se **nasazení bylo úspěšn
     Address: 192.168.0.4
     ```
 
-## <a name="configure-virtual-network-to-use-the-custom-dns-server"></a>Konfigurace virtuální sítě pro použití vlastního serveru DNS.
+## <a name="configure-virtual-network-to-use-the-custom-dns-server"></a>Nakonfigurujte virtuální síť tak, aby používala vlastní server DNS.
 
-Ke konfiguraci virtuální sítě, abyste místo Azure rekurzivní překladač použít vlastní server DNS, použijte následující kroky v [webu Azure portal](https://portal.azure.com):
+Pokud chcete virtuální síť nakonfigurovat tak, aby místo rekurzivního překladače Azure používala vlastní server DNS, použijte následující postup [Azure Portal](https://portal.azure.com):
 
 1. V nabídce vlevo přejděte na **všechny služby** > **sítě** > **virtuální sítě**.
 
-2. Vyberte virtuální síť v seznamu se otevře zobrazení výchozí pro vaši virtuální síť.  
+2. Vyberte ze seznamu svou virtuální síť, čímž otevřete výchozí zobrazení vaší virtuální sítě.  
 
-3. Výchozí zobrazení v části **nastavení**vyberte **servery DNS**.  
+3. Ve výchozím zobrazení v části **Nastavení**vyberte **servery DNS**.  
 
-4. Vyberte __vlastní__a zadejte **PRIVÁTNÍ IP adresa** vlastního serveru DNS.   
+4. Vyberte __vlastní__a zadejte **privátní IP adresu** vlastního serveru DNS.   
 
 5. Vyberte __Uložit__.  <br />  
 
     ![Nastavení vlastního serveru DNS pro síť](./media/connect-on-premises-network/configure-custom-dns.png)
 
-## <a name="configure-on-premises-dns-server"></a>Konfigurace serveru DNS na místě
+## <a name="configure-on-premises-dns-server"></a>Konfigurace místního serveru DNS
 
-V předchozí části jste nakonfigurovali vlastní server DNS ke směrování žádostí na server DNS místní. Dále musíte nakonfigurovat na místním serveru DNS ke směrování žádostí na vlastní server DNS.
+V předchozí části jste nakonfigurovali vlastní server DNS pro přeposílání požadavků na místní server DNS. V dalším kroku musíte nakonfigurovat místní server DNS tak, aby předal požadavky na vlastní server DNS.
 
-Konkrétní kroky pro konfiguraci serveru DNS najdete v dokumentaci pro váš software serveru DNS. Hledat podle pokynů na tom, jak nakonfigurovat __podmíněné předávání__.
+Konkrétní postup konfigurace serveru DNS najdete v dokumentaci k vašemu softwaru DNS Server. Vyhledejte kroky, jak nakonfigurovat __podmíněný předávací server__.
 
-Podmíněné předávání pouze předává požadavky pro konkrétní příponu DNS. V takovém případě musíte nakonfigurovat server pro předávání pro příponu DNS virtuální sítě. Požadavky pro tuto příponu mají předávat IP adresu serveru DNS. 
+Podmíněný posun pouze přepošle požadavky na konkrétní příponu DNS. V takovém případě musíte nakonfigurovat službu pro směrování pro příponu DNS virtuální sítě. Žádosti o tuto příponu by se měly přesměrovat na IP adresu vlastního serveru DNS. 
 
-Následující text je příklad konfigurace pro podmíněné předávání **svázat** DNS software:
+Následující text představuje příklad konfigurace podmíněného dopředné pro software DNS **BIND** :
 
     zone "icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net" {
         type forward;
         forwarders {10.0.0.4;}; # The custom DNS server's internal IP address
     };
 
-Informace o použití DNS na **Windows serveru 2016**, najdete v článku [přidat DnsServerConditionalForwarderZone](https://technet.microsoft.com/itpro/powershell/windows/dnsserver/add-dnsserverconditionalforwarderzone) dokumentace...
+Informace o použití DNS v **systému Windows Server 2016**najdete v dokumentaci k [Přidání-DnsServerConditionalForwarderZone](https://technet.microsoft.com/itpro/powershell/windows/dnsserver/add-dnsserverconditionalforwarderzone) ...
 
-Jakmile jste nakonfigurovali na místním serveru DNS, můžete použít `nslookup` z místní sítě k ověření, aby dokázaly vyhledat názvy virtuální sítě. Následující příklad 
+Po nakonfigurování místního serveru DNS můžete použít `nslookup` z místní sítě a ověřit tak, že můžete přeložit názvy ve virtuální síti. Následující příklad 
 
 ```bash
 nslookup dnsproxy.icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net 196.168.0.4
 ```
 
-Tento příklad používá na místním serveru DNS na 196.168.0.4 názvu vlastního serveru DNS. Nahraďte IP adresu pro místní server DNS. Nahradit `dnsproxy` adresu se plně kvalifikovaný název vlastního serveru DNS.
+V tomto příkladu se k překladu názvu vlastního serveru DNS používá místní server DNS na adrese 196.168.0.4. Nahraďte IP adresu druhou pro místní server DNS. `dnsproxy` Adresu nahraďte plně kvalifikovaným názvem domény vlastního serveru DNS.
 
 ## <a name="optional-control-network-traffic"></a>Volitelné: Řízení síťového provozu
 
-Skupiny zabezpečení sítě (NSG) nebo trasy definované uživatelem (UDR) můžete použít k řízení síťového provozu. Skupiny zabezpečení sítě povolují filtrování příchozího a odchozího provozu a povolit nebo zakázat provoz. Trasy definované uživatelem umožňují řídit tok provozu mezi prostředky virtuální sítě, Internetu a v místní síti.
+K řízení síťového provozu můžete použít skupiny zabezpečení sítě (NSG) nebo uživatelsky definované trasy (UDR). Skupin zabezpečení sítě umožňují filtrovat příchozí a odchozí provoz a povolit nebo odepřít provoz. Udr vám umožní řídit tok přenosů mezi prostředky ve virtuální síti, internetem a místní sítí.
 
 > [!WARNING]  
-> HDInsight vyžaduje příchozí přístup z konkrétních IP adres v cloudu Azure a neomezený odchozí přístup. Při použití skupin zabezpečení sítě nebo udr pro řízení provozu, je třeba provést následující kroky:
+> HDInsight vyžaduje příchozí přístup z konkrétních IP adres v cloudu Azure a neomezený odchozí přístup. Při použití skupin zabezpečení sítě nebo udr k řízení provozu je nutné provést následující kroky:
 
-1. Najdete IP adresy pro umístění, která obsahuje virtuální síť. Seznam požadované IP adresy podle umístění najdete v tématu [požadované IP adresy](./hdinsight-extend-hadoop-virtual-network.md#hdinsight-ip).
+1. Vyhledejte IP adresy pro umístění, které obsahuje vaši virtuální síť. Seznam požadovaných IP adres podle umístění najdete v části [požadované IP adresy](./hdinsight-management-ip-addresses.md).
 
-2. Pro IP adresy, určenou v kroku 1, povolí příchozí provoz z této IP adresy.
+2. Pro IP adresy identifikované v kroku 1 povolte příchozí provoz z těchto IP adres.
 
-   * Pokud používáte __NSG__: Povolit __příchozí__ přenosy na portu __443__ pro IP adresy.
-   * Pokud používáte __uživatelem definovaná TRASA__: Nastavte __dalšího segmentu směrování__ trasy, která má typ __Internet__ pro IP adresy.
+   * Pokud používáte __NSG__: Povolí __příchozí__ provoz na portu __443__ pro IP adresy.
+   * Pokud používáte __udr__: Nastavte typ __dalšího segmentu směrování__ trasy na __Internet__ pro IP adresy.
 
-Příklad použití Azure Powershellu nebo rozhraní příkazového řádku Azure k vytvoření skupin zabezpečení sítě, najdete v článku [rozšířit HDInsight s Azure Virtual Networks](./hdinsight-extend-hadoop-virtual-network.md#hdinsight-nsg) dokumentu.
+Příklad použití Azure PowerShell nebo rozhraní příkazového řádku Azure ke tvorbě skupin zabezpečení sítě najdete v dokumentu věnovaném [Rozšířené službě HDInsight s Azure Virtual Networks](hdinsight-create-virtual-network.md#hdinsight-nsg) .
 
 ## <a name="create-the-hdinsight-cluster"></a>Vytvoření clusteru HDInsight
 
 > [!WARNING]  
-> Před instalací HDInsight ve virtuální síti musíte nakonfigurovat vlastní server DNS.
+> Než začnete službu HDInsight ve virtuální síti instalovat, musíte nakonfigurovat vlastní server DNS.
 
-Postupujte podle kroků v [vytvoření clusteru HDInsight pomocí webu Azure portal](./hdinsight-hadoop-create-linux-clusters-portal.md) dokumentu k vytvoření clusteru HDInsight.
+Pomocí postupu v části [Vytvoření clusteru HDInsight pomocí Azure Portalho](./hdinsight-hadoop-create-linux-clusters-portal.md) dokumentu vytvořte cluster HDInsight.
 
 > [!WARNING]  
-> * Při vytváření clusteru musíte zvolit umístění, která obsahuje virtuální síť.
-> * V __upřesňující nastavení__ část konfigurace, je nutné vybrat virtuální síť a podsíť, která jste vytvořili dříve.
+> * Během vytváření clusteru musíte zvolit umístění, které obsahuje vaši virtuální síť.
+> * V části __Upřesnit nastavení__ v části konfigurace musíte vybrat virtuální síť a podsíť, které jste vytvořili dříve.
 
-## <a name="connecting-to-hdinsight"></a>Připojení k HDInsight
+## <a name="connecting-to-hdinsight"></a>Připojování k HDInsight
 
-Většina dokumentace na HDInsight předpokládá, že máte přístup ke clusteru přes internet. To znamená, že se ke clusteru můžete připojit třeba na `https://CLUSTERNAME.azurehdinsight.net`. Tato adresa se používá veřejnou brány, která není k dispozici, pokud jste použili skupiny zabezpečení sítě nebo udr pro omezení přístupu z Internetu.
+Většina dokumentace k HDInsight předpokládá, že máte přístup ke clusteru přes Internet. To znamená, že se ke clusteru můžete připojit třeba na `https://CLUSTERNAME.azurehdinsight.net`. Tato adresa používá veřejnou bránu, která není k dispozici, pokud jste k omezení přístupu z Internetu použili skupin zabezpečení sítě nebo udr.
 
-Také odkazuje na některé dokumentaci `headnodehost` při připojování ke clusteru z relace SSH. Tato adresa je dostupná pouze z uzlů v rámci clusteru a není použitelný na klientů připojených přes virtuální síť.
+Některá dokumentace také odkazuje `headnodehost` při připojování ke clusteru z relace SSH. Tato adresa je dostupná jenom z uzlů v rámci clusteru a nedá se použít na klientech připojených přes virtuální síť.
 
-K přímému připojení k HDInsight prostřednictvím virtuální sítě, použijte následující postup:
+Pokud se chcete ke službě HDInsight připojit přímo přes virtuální síť, použijte následující postup:
 
-1. Chcete-li zjistit, interní plně kvalifikované názvy domény uzlů clusteru HDInsight, použijte jednu z následujících metod:
+1. K vyhledání interních plně kvalifikovaných názvů domén uzlů clusteru HDInsight použijte jednu z následujících metod:
 
     ```powershell
     $resourceGroupName = "The resource group that contains the virtual network used with HDInsight"
@@ -325,18 +325,18 @@ K přímému připojení k HDInsight prostřednictvím virtuální sítě, použ
     az network nic list --resource-group <resourcegroupname> --output table --query "[?contains(name,'node')].{NICname:name,InternalIP:ipConfigurations[0].privateIpAddress,InternalFQDN:dnsSettings.internalFqdn}"
     ```
 
-2. Pokud chcete určit port, který je k dispozici na službu, naleznete v tématu [portů používaných služeb Apache Hadoop v HDInsight](./hdinsight-hadoop-port-settings-for-services.md) dokumentu.
+2. Pokud chcete zjistit port, na kterém je služba dostupná, přečtěte si [porty používané službou Apache Hadoop Services na dokumentu HDInsight](./hdinsight-hadoop-port-settings-for-services.md) .
 
     > [!IMPORTANT]  
-    > Některé služby hostované na hlavní uzly jsou aktivní na jednom uzlu jenom po jednom. Pokud pokusu o přístup k službě na jeden hlavní uzel a selže, přejděte k hlavnímu uzlu.
+    > Některé služby hostované v hlavních uzlech jsou aktivní jenom na jednom uzlu. Pokud se pokusíte o přístup ke službě na jednom hlavním uzlu a tato operace se nezdařila, přepněte na jiný hlavní uzel.
     >
-    > Například Apache Ambari slouží pouze na jeden hlavní uzel aktivní najednou. Pokud se pokusíte přístup k Ambari na jeden hlavní uzel a vrátí chybu 404, je spuštěna na k hlavnímu uzlu.
+    > Například Apache Ambari je aktivní jenom v jednom hlavní uzlu. Pokud se pokusíte získat přístup k Ambari na jednom hlavním uzlu a vrátí 404 chybu, bude spuštěna na druhém hlavním uzlu.
 
 ## <a name="next-steps"></a>Další postup
 
-* Další informace o používání HDInsight ve virtuální síti najdete v tématu [rozšířit HDInsight pomocí Azure Virtual Networks](./hdinsight-extend-hadoop-virtual-network.md).
+* Další informace o používání služby HDInsight ve virtuální síti najdete v tématu [Plánování nasazení virtuální sítě pro clustery Azure HDInsight](./hdinsight-plan-virtual-network-deployment.md).
 
-* Další informace o virtuálních sítích Azure najdete v článku [Přehled služby Azure Virtual Network](../virtual-network/virtual-networks-overview.md).
+* Další informace o virtuálních sítích Azure najdete v tématu [Přehled azure Virtual Network](../virtual-network/virtual-networks-overview.md).
 
 * Další informace o skupinách zabezpečení sítě najdete v tématu [skupiny zabezpečení sítě](../virtual-network/security-overview.md).
 

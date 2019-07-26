@@ -1,45 +1,38 @@
 ---
-title: Co je balíček a model cloudové služby | Dokumentace Microsoftu
-description: Popisuje balíček (.cspkg) v Azure a model cloudové služby (.csdef, .cscfg)
+title: Co je model a balíček cloudové služby | Microsoft Docs
+description: Popisuje model cloudové služby (. csdef,. cscfg) a balíček (. cspkg) v Azure.
 services: cloud-services
-documentationcenter: ''
-author: jpconnock
-manager: timlt
-editor: ''
-ms.assetid: 4ce2feb5-0437-496c-98da-1fb6dcb7f59e
+author: georgewallace
 ms.service: cloud-services
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2017
-ms.author: jeconnoc
-ms.openlocfilehash: 6c8833dc0db80dde96dda92c426c7840c44c1f1b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: gwallace
+ms.openlocfilehash: 47d031e339b3677e0bf6ddcbad9456041c53c6e2
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67080764"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68359550"
 ---
-# <a name="what-is-the-cloud-service-model-and-how-do-i-package-it"></a>Jaký je model cloudové služby a jak ho balíček?
-Cloudové služby je vytvořen z tři komponenty, definice služby *(.csdef)* , konfigurace služby *(.cscfg)* a balíček služby *(.cspkg)* . Oba **ServiceDefinition.csdef** a **ServiceConfig.cscfg** soubory jsou založené na XML a popisují strukturu cloudové služby a jak je nakonfigurován; nazývají modelu. **ServicePackage.cspkg** je soubor zip, který je generován z **ServiceDefinition.csdef** a mimo jiné obsahuje všechny požadované závislosti založené na binární soubor. Azure vytvoří cloudovou službu z obou **ServicePackage.cspkg** a **ServiceConfig.cscfg**.
+# <a name="what-is-the-cloud-service-model-and-how-do-i-package-it"></a>Co je model cloudové služby a jak ho mám zabalit?
+Cloudová služba se vytvoří ze tří součástí, definice služby *(. csdef)* , konfigurace služby *(. cscfg)* a balíčku služby *(. cspkg)* . Soubory **ServiceDefinition. csdef** a **ServiceConfig. cscfg** jsou založené na jazyce XML a popisují strukturu cloudové služby a způsob jejich konfigurace. souhrnně označovaný jako model. **ServicePack. cspkg** je soubor zip, který je generován z **ServiceDefinition. csdef** a mimo jiné, obsahuje všechny požadované binární závislosti. Azure vytvoří cloudovou službu z nástroje **ServicePack. cspkg** a **ServiceConfig. cscfg**.
 
-Jakmile je Cloudová služba běží v Azure, můžete změnit konfiguraci prostřednictvím **ServiceConfig.cscfg** soubor, ale nelze změnit definici.
+Jakmile je cloudová služba spuštěná v Azure, můžete ji překonfigurovat prostřednictvím souboru **ServiceConfig. cscfg** , ale nemůžete definici změnit.
 
-## <a name="what-would-you-like-to-know-more-about"></a>Co byste chtěli dozvědět víc o?
-* Chci vědět více o [ServiceDefinition.csdef](#csdef) a [ServiceConfig.cscfg](#cscfg) soubory.
-* Už vím o tom, dejte mi [příklady](#next-steps) na Co můžu nakonfigurovat.
-* Chci vytvořit [ServicePackage.cspkg](#cspkg).
-* Používám Visual Studio a chci...
-  * [Vytvořit cloudovou službu][vs_create]
-  * [Překonfigurovat existující cloudovou službu][vs_reconfigure]
-  * [Nasadit projekt cloudové služby][vs_deploy]
-  * [Instance cloudové služby pomocí vzdálené plochy][remotedesktop]
+## <a name="what-would-you-like-to-know-more-about"></a>K čemu se chcete dozvědět více?
+* Chci vědět více o souborech [ServiceDefinition. csdef](#csdef) a [ServiceConfig. cscfg](#cscfg) .
+* Už o tom poznáte, podávají [několik příkladů](#next-steps) , jak můžu nakonfigurovat.
+* Chci vytvořit [ServicePack. cspkg](#cspkg).
+* Používám aplikaci Visual Studio a chci...
+  * [Vytvoření cloudové služby][vs_create]
+  * [Překonfigurujte existující cloudovou službu.][vs_reconfigure]
+  * [Nasazení projektu cloudové služby][vs_deploy]
+  * [Vzdálená plocha do instance cloudové služby][remotedesktop]
 
 <a name="csdef"></a>
 
 ## <a name="servicedefinitioncsdef"></a>ServiceDefinition.csdef
-**ServiceDefinition.csdef** soubor Určuje nastavení, které Azure používá ke konfiguraci cloudové služby. [Azure schématu definice služby (.csdef souboru)](/previous-versions/azure/reference/ee758711(v=azure.100)) povolený formát stanoví definiční soubor služby. Následující příklad ukazuje nastavení, které lze definovat pro webové a pracovní role:
+Soubor **ServiceDefinition. csdef** určuje nastavení, která Azure používá ke konfiguraci cloudové služby. [Schéma definice služby Azure (soubor. csdef)](/previous-versions/azure/reference/ee758711(v=azure.100)) poskytuje povolený formát pro soubor definice služby. Následující příklad ukazuje nastavení, která lze definovat pro webovou roli a role pracovního procesu:
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -90,38 +83,38 @@ Jakmile je Cloudová služba běží v Azure, můžete změnit konfiguraci prost
 </ServiceDefinition>
 ```
 
-Můžete se podívat do [schématu definice služby](/previous-versions/azure/reference/ee758711(v=azure.100)) pro lepší přehled schématu XML se tady použít, ale tady je rychlý vysvětlení některých prvků:
+Můžete se podívat na [schéma definice služby](/previous-versions/azure/reference/ee758711(v=azure.100)) pro lepší porozumění schématu XML, které se tady používá, ale tady je stručné vysvětlení některých prvků:
 
-**Weby**  
-Obsahuje definice pro weby nebo webové aplikace, které jsou hostované ve službě IIS7.
+**Místa**  
+Obsahuje definice pro weby nebo webové aplikace, které jsou hostovány v IIS7.
 
 **InputEndpoints**  
 Obsahuje definice pro koncové body, které se používají ke kontaktování cloudové služby.
 
 **InternalEndpoints**  
-Obsahuje definice pro koncové body, které jsou používány instancí role ke komunikaci mezi sebou.
+Obsahuje definice pro koncové body, které používají instance rolí ke vzájemné komunikaci.
 
 **ConfigurationSettings**  
-Obsahuje nastavení definice funkcí konkrétní role.
+Obsahuje definice nastavení pro funkce konkrétní role.
 
 **Certifikáty**  
-Obsahuje definice pro certifikáty, které jsou potřeba pro roli. Předchozí příklad kódu ukazuje certifikát, který se používá pro konfiguraci Azure připojit.
+Obsahuje definice certifikátů, které jsou potřeba pro roli. Předchozí příklad kódu ukazuje certifikát, který se používá pro konfiguraci Azure Connect.
 
 **LocalResources**  
-Obsahuje definice pro prostředky místní úložiště. Místní úložiště prostředků je vyhrazené adresáře v systému souborů virtuálního počítače, ve kterém je spuštěna instance role.
+Obsahuje definice místních prostředků úložiště. Prostředek místního úložiště je rezervovaný adresář v systému souborů virtuálního počítače, ve kterém je spuštěná instance role.
 
-**Importy**  
-Obsahuje definice pro importované moduly. Předchozí příklad kódu ukazuje moduly pro připojení ke vzdálené ploše a připojení k Azure.
+**Objem**  
+Obsahuje definice pro importované moduly. Předchozí příklad kódu ukazuje moduly pro Připojení ke vzdálené ploše a Azure Connect.
 
-**Startup**  
-Obsahuje úlohy, které jsou spouštěny, když se role spustila. Úkoly jsou definovány v .cmd nebo spustitelný soubor.
+**Úvod**  
+Obsahuje úlohy, které se spouštějí při spuštění role. Úkoly jsou definovány v souboru. cmd nebo ve spustitelném souboru.
 
 <a name="cscfg"></a>
 
 ## <a name="serviceconfigurationcscfg"></a>ServiceConfiguration.cscfg
-Konfigurace nastavení pro cloudovou službu se určuje podle hodnoty **souboru ServiceConfiguration.cscfg** souboru. Zadáte počet instancí, které chcete nasadit pro každou roli v tomto souboru. Hodnoty pro nastavení konfigurace, které jste definovali v definičním souboru služby jsou přidány do konfiguračního souboru služby. Kryptografický otisk pro jakékoli certifikáty pro správu, které jsou spojené s cloudovou službou přidají také do souboru. [Schématu konfigurace služby Azure (.cscfg souboru)](/previous-versions/azure/reference/ee758710(v=azure.100)) poskytuje povolený formát konfiguračního souboru služby.
+Konfigurace nastavení pro cloudovou službu je určena hodnotami v souboru **ServiceConfiguration. cscfg** . Zadejte počet instancí, které chcete pro každou roli v tomto souboru nasadit. Hodnoty nastavení konfigurace, které jste definovali v definičním souboru služby, se přidají do konfiguračního souboru služby. Do souboru jsou přidány také kryptografické otisky pro všechny certifikáty pro správu, které jsou přidruženy ke cloudové službě. [Schéma konfigurace služby Azure (soubor. cscfg)](/previous-versions/azure/reference/ee758710(v=azure.100)) poskytuje povolený formát pro konfigurační soubor služby.
 
-Konfigurační soubor služby není zabalena v aplikaci, ale je nahráli do Azure jako samostatný soubor a slouží ke konfiguraci cloudové služby. Můžete nahrát nový soubor konfigurace služby bez opětovného nasazení cloudové služby. Hodnoty konfigurace pro cloudovou službu můžete změnit, když běží v cloudové službě. Následující příklad ukazuje nastavení konfigurace, které lze definovat pro webové a pracovní role:
+Konfigurační soubor služby není zabalený do aplikace, ale do Azure se nahraje jako samostatný soubor, který se používá ke konfiguraci cloudové služby. Můžete nahrát nový konfigurační soubor služby, aniž byste museli znovu nasazovat cloudovou službu. Konfigurační hodnoty pro cloudovou službu je možné změnit i v případě, že je cloudová služba spuštěná. Následující příklad ukazuje nastavení konfigurace, která lze definovat pro webovou roli a role pracovního procesu:
 
 ```xml
 <?xml version="1.0"?>
@@ -141,28 +134,28 @@ Konfigurační soubor služby není zabalena v aplikaci, ale je nahráli do Azur
 </ServiceConfiguration>
 ```
 
-Můžete se podívat do [schématu konfigurace služby](/previous-versions/azure/reference/ee758710(v=azure.100)) pro lepší pochopení schématu XML se tady použít, ale tady je rychlý vysvětlení prvky:
+Můžete se podívat na [schéma konfigurace služby](/previous-versions/azure/reference/ee758710(v=azure.100)) pro lepší porozumění schématu XML, které se tady používá, ale tady je rychlé vysvětlení těchto elementů:
 
 **Instance**  
-Konfiguruje počet spuštěných instancí role. Abyste zabránili potenciálně nedostupností během upgradu vaší cloudové služby, se doporučuje nasadit více než jeden výskyt určených pro webové role. Nasazení více než jednu instanci, jsou splněny pokyny v [Azure Compute služby smlouva o úrovni (SLA)](https://azure.microsoft.com/support/legal/sla/), což zaručuje externí připojení v 99,95 % pro role přístupem k Internetu, pokud dvě nebo více instancí role jsou nasadit službu.
+Konfiguruje počet spuštěných instancí této role. Aby nedocházelo k nedostupnosti cloudové služby během upgradů, doporučujeme nasadit více než jednu instanci webových rolí. Nasazením víc než jedné instance dodržujete pokyny ve [službě Azure compute smlouva SLA (SLA)](https://azure.microsoft.com/support/legal/sla/), která garantuje 99,95% externí připojení k internetovým rolím, když se pro službu nasadí dvě nebo víc instancí role. .
 
 **ConfigurationSettings**  
-Konfiguruje nastavení pro spuštěné instance role. Název `<Setting>` prvky musí odpovídat definici nastavení v definičním souboru služby.
+Konfiguruje nastavení pro spuštěné instance role. Název `<Setting>` elementů se musí shodovat s definicemi nastavení v definičním souboru služby.
 
 **Certifikáty**  
-Nakonfiguruje certifikáty používané službou. Předchozí příklad kódu ukazuje, jak definovat certifikát pro modul vzdáleného přístupu. Hodnota *kryptografický otisk* atribut musí být nastaven na kryptografický otisk certifikátu pro použití.
+Nakonfiguruje certifikáty používané službou. Předchozí příklad kódu ukazuje, jak definovat certifikát pro modul RemoteAccess. Hodnota atributu kryptografického *otisku* musí být nastavená na kryptografický otisk certifikátu, který se má použít.
 
 <p/>
 
 > [!NOTE]
-> Kryptografický otisk certifikátu je přidat do konfiguračního souboru pomocí textového editoru. Nebo hodnoty lze přidat na **certifikáty** karty **vlastnosti** stránce role v sadě Visual Studio.
+> Kryptografický otisk certifikátu lze přidat do konfiguračního souboru pomocí textového editoru. Nebo lze hodnotu přidat na kartě **certifikáty** stránky **vlastnosti** role v aplikaci Visual Studio.
 > 
 > 
 
-## <a name="defining-ports-for-role-instances"></a>Definování porty pro instance rolí
-Azure umožňuje pouze jeden vstupní bod do webové role. To znamená, že dojde k veškerý provoz přes jednu IP adresu. Můžete nakonfigurovat své weby pro sdílení portu nakonfigurováním hlavičku hostitele pro přesměrování požadavku do správného umístění. Můžete také nakonfigurovat tak, aby naslouchala na dobře známé porty u IP adresy vašich aplikací.
+## <a name="defining-ports-for-role-instances"></a>Definování portů pro instance rolí
+Azure umožňuje webové roli jenom jeden vstupní bod. To znamená, že veškerý provoz probíhá přes jednu IP adresu. Své weby můžete nakonfigurovat tak, aby sdílely port tím, že nakonfigurujete hlavičku hostitele, aby požadavek směroval na správné místo. Můžete také nakonfigurovat své aplikace tak, aby naslouchaly dobře známým portům na IP adrese.
 
-Následující příklad ukazuje konfiguraci pro webovou roli webu a webových aplikací. Web je nakonfigurován jako výchozí umístění pro položku na portu 80 a webových aplikací jsou nakonfigurované pro příjem požadavků z alternativním hostiteli hlavičky, která se nazývá "mail.mysite.cloudapp.net".
+Následující ukázka ukazuje konfiguraci webové role s webem a webovou aplikací. Web je nakonfigurovaný jako výchozí umístění vstupu na portu 80 a webové aplikace jsou nakonfigurované tak, aby přijímaly požadavky z alternativní hlavičky hostitele, která se nazývá "mail.mysite.cloudapp.net".
 
 ```xml
 <WebRole>
@@ -198,54 +191,54 @@ Následující příklad ukazuje konfiguraci pro webovou roli webu a webových a
 
 
 ## <a name="changing-the-configuration-of-a-role"></a>Změna konfigurace role
-Když je spuštěný v Azure, bez nutnosti převádět služby v offline režimu doporučí aktualizovat konfiguraci cloudové služby. Chcete-li změnit informace o konfiguraci, můžete nahrát nový soubor konfigurace nebo upravit konfigurační soubor na místě a použijte ji pro spuštěnou službu. Ke konfiguraci služby můžete provést následující změny:
+Konfiguraci cloudové služby můžete aktualizovat, když běží v Azure, aniž byste museli službu přebírat offline. Chcete-li změnit informace o konfiguraci, můžete buď nahrát nový konfigurační soubor, nebo upravit konfigurační soubor na místě a použít ho pro spuštěnou službu. V konfiguraci služby je možné provést následující změny:
 
-* **Změna hodnoty nastavení konfigurace**  
-  Při nastavení změny konfigurace, instanci role můžete zvolit použití změny instance je online, nebo recyklovat instance bez výpadku a použití změn při instanci je offline.
-* **Změna topologie služby instance role**  
-  Změny topologie neovlivní spuštěné instance, s výjimkou případů, kdy se odebírá instance. Všechny zbývající instance obvykle není nutné k provedení recyklace; Můžete však recyklovat instance rolí v reakci na změnu topologie.
-* **Změna kryptografický otisk certifikátu**  
-  Certifikát lze aktualizovat pouze pokud je role instance offline. Pokud certifikát přidat, odstranit nebo změnit instanci role je online, Azure řádně trvá instance offline aktualizace certifikátu a pak zpátky online po dokončení změny.
+* **Změna hodnot nastavení konfigurace**  
+  Když se změní nastavení konfigurace, může instance role zvolit, aby se změna projevila, když je instance online, nebo aby se instance korektně recykloval, a změny se projeví, když je instance offline.
+* **Změna topologie služby instancí rolí**  
+  Změny topologie neovlivňují spuštěné instance s výjimkou případů, kdy je instance odebrána. Všechny zbývající instance obvykle není nutné recyklovat; Můžete ale zvolit recyklaci instancí rolí v reakci na změnu topologie.
+* **Změna kryptografického otisku certifikátu**  
+  Certifikát lze aktualizovat pouze v případě, že je instance role v režimu offline. Pokud dojde k přidání, odstranění nebo změně certifikátu, když je instance role online, Azure bez problémů převezme instanci v režimu offline, aby aktualizovala certifikát, a po dokončení změny ho vrátí zpátky do online režimu.
 
-### <a name="handling-configuration-changes-with-service-runtime-events"></a>Zpracování změny konfigurace s událostmi služby modulu Runtime
-[Knihovny prostředí Runtime Azure](/previous-versions/azure/reference/mt419365(v=azure.100)) zahrnuje [Microsoft.WindowsAzure.ServiceRuntime](/previous-versions/azure/reference/ee741722(v=azure.100)) obor názvů, který poskytuje třídy pro interakci s prostředím Azure z role. [RoleEnvironment](/previous-versions/azure/reference/ee773173(v=azure.100)) třída definuje následující události, které jsou vyvolány před a po změně konfigurace:
+### <a name="handling-configuration-changes-with-service-runtime-events"></a>Zpracování změn konfigurace s událostmi modulu runtime služby
+[Knihovna runtime Azure](/previous-versions/azure/reference/mt419365(v=azure.100)) obsahuje obor názvů [Microsoft. windowsazure. ServiceRuntime](/previous-versions/azure/reference/ee741722(v=azure.100)) , který poskytuje třídy pro interakci s prostředím Azure z role. Třída [RoleEnvironment](/previous-versions/azure/reference/ee773173(v=azure.100)) definuje následující události, které jsou vyvolány před a po změně konfigurace:
 
-* **[Změna](/previous-versions/azure/reference/ee758134(v=azure.100)) událostí**  
-  K tomu dojde, než se do zadané instance role s možností až shodí instance rolí v případě potřeby zavádí změna konfigurace.
-* **[Změnit](/previous-versions/azure/reference/ee758129(v=azure.100)) událostí**  
-  Nastane, jakmile se k zadané instanci role zavádí změna konfigurace.
+* **[Změna](/previous-versions/azure/reference/ee758134(v=azure.100)) události**  
+  K tomu dojde předtím, než se změna konfigurace použije u zadané instance role, což vám umožní v případě potřeby pořídit instance rolí.
+* **Událost [změny](/previous-versions/azure/reference/ee758129(v=azure.100))**  
+  Vyvolá se po použití změny konfigurace u zadané instance role.
 
 > [!NOTE]
-> Protože změny certifikátů je instancí role vždy převést do režimu offline, jejich nevyvolávejte RoleEnvironment.Changing nebo RoleEnvironment.Changed událostí.
+> Vzhledem k tomu, že změny certifikátu vždy přebírají instance role v režimu offline, nevyvolávají RoleEnvironment. Změna nebo RoleEnvironment. změněné události.
 > 
 > 
 
 <a name="cspkg"></a>
 
 ## <a name="servicepackagecspkg"></a>ServicePackage.cspkg
-Pokud chcete nasadit aplikace jako cloudové služby v Azure, musí nejprve zabalení aplikace ve správném formátu. Můžete použít **CSPack** nástroj příkazového řádku (součástí [sady Azure SDK](https://azure.microsoft.com/downloads/)) k vytvoření souboru balíčku jako alternativu k sadě Visual Studio.
+Pokud chcete nasadit aplikaci jako cloudovou službu v Azure, musíte nejdřív aplikaci zabalit v příslušném formátu. Pomocí nástroje příkazového řádku **CSPack** (nainstalovaného se sadou [Azure SDK](https://azure.microsoft.com/downloads/)) můžete vytvořit soubor balíčku jako alternativu k sadě Visual Studio.
 
-**CSPack** pomocí obsah definiční soubor služby a konfigurační soubor služby definuje obsah balíčku. **CSPack** generuje soubor balíčku aplikace (.cspkg), který můžete nahrát do Azure s použitím [webu Azure portal](cloud-services-how-to-create-deploy-portal.md#create-and-deploy). Ve výchozím nastavení, je balíček s názvem `[ServiceDefinitionFileName].cspkg`, ale můžete zadat jiný název pomocí `/out` možnost **CSPack**.
+**CSPack** používá obsah souboru definice služby a konfiguračního souboru služby k definování obsahu balíčku. **CSPack** vygeneruje soubor balíčku aplikace (. cspkg), který můžete nahrát do Azure pomocí [Azure Portal](cloud-services-how-to-create-deploy-portal.md#create-and-deploy). Ve výchozím nastavení je balíček pojmenován `[ServiceDefinitionFileName].cspkg`, ale můžete zadat jiný název `/out` pomocí možnosti **CSPack**.
 
-**CSPack** se nachází v  
+**CSPack** se nachází na  
 `C:\Program Files\Microsoft SDKs\Azure\.NET SDK\[sdk-version]\bin\`
 
 > [!NOTE]
-> Po spuštění je k dispozici CSPack.exe (v systému windows) **příkazového řádku Microsoft Azure** zástupce, který je nainstalován se sadou SDK.  
+> CSPack. exe (ve Windows) je k dispozici spuštěním zástupce **příkazového řádku Microsoft Azure** , který se instaluje se sadou SDK.  
 > 
-> Spusťte CSPack.exe program samostatně najdete v dokumentaci o všech možných přepínače a příkazy.
+> Spusťte program CSPack. exe sám o sobě a zobrazte si dokumentaci ke všem možným přepínačům a příkazům.
 > 
 > 
 
 <p />
 
 > [!TIP]
-> Spustit místně do cloudové služby **emulátoru Microsoft Azure Compute**, použijte **/copyonly** možnost. Tato možnost zkopíruje binární soubory pro aplikaci do rozložení adresáře, ze kterého bylo možné spouštět v emulátoru služby compute.
+> Spusťte cloudovou službu místně v **emulátoru Microsoft Azure COMPUTE**, použijte možnost **/CopyOnly** . Tato možnost zkopíruje binární soubory aplikace do rozložení adresáře, ze kterého mohou být spuštěny v emulátoru služby Compute.
 > 
 > 
 
-### <a name="example-command-to-package-a-cloud-service"></a>Ukázkový příkaz pro balíček cloudové služby
-Následující příklad vytvoří balíček aplikace, který obsahuje informace pro webovou roli. Tento příkaz Určuje definiční soubor služby používat adresář, kde můžete najít binární soubory, a názvem souboru balíčku.
+### <a name="example-command-to-package-a-cloud-service"></a>Příklad příkazu pro zabalení cloudové služby
+Následující příklad vytvoří balíček aplikace, který obsahuje informace pro webovou roli. Příkaz Určuje definiční soubor služby, který se má použít, adresář, ve kterém se mají najít binární soubory, a název souboru balíčku.
 
 ```cmd
 cspack [DirectoryName]\[ServiceDefinition]
@@ -254,7 +247,7 @@ cspack [DirectoryName]\[ServiceDefinition]
        /out:[OutputFileName]
 ```
 
-Pokud aplikace obsahuje webovou roli a roli pracovního procesu, je pomocí následujícího příkazu:
+Pokud aplikace obsahuje webovou roli a roli pracovního procesu, použije se tento příkaz:
 
 ```cmd
 cspack [DirectoryName]\[ServiceDefinition]
@@ -266,28 +259,28 @@ cspack [DirectoryName]\[ServiceDefinition]
 
 Kde proměnné jsou definovány takto:
 
-| Proměnná | Hodnota |
+| Proměnná | Value |
 | --- | --- |
-| \[DirectoryName\] |Podadresář kořenovém adresáři projektu, která obsahuje soubor .csdef Azure projektu. |
-| \[ServiceDefinition\] |Název souboru definice služby. Ve výchozím nastavení je tento soubor s názvem ServiceDefinition.csdef. |
-| \[OutputFileName\] |Název souboru pro vygenerovaný balíček. To obvykle nastavena na název aplikace. Pokud není zadán žádný název souboru, jako je vytvořen balíček aplikace \[ApplicationName\].cspkg. |
-| \[RoleName\] |Název role, jak je definováno v definičním souboru služby. |
-| \[RoleBinariesDirectory] |Umístění binárních souborů pro tuto roli. |
-| \[VirtualPath\] |Fyzických adresářů pro jednotlivé virtuální cesty definované v části webů v definici služby. |
-| \[PhysicalPath\] |Fyzické adresáře obsah pro každý virtuální cestu definovanou v uzlu Web definice služby. |
-| \[RoleAssemblyName\] |Název binárního souboru pro danou roli. |
+| \[DirectoryName\] |Podadresář v kořenovém adresáři projektu, který obsahuje soubor. csdef projektu Azure. |
+| \[ServiceDefinition\] |Název definičního souboru služby. Ve výchozím nastavení má tento soubor název ServiceDefinition. csdef. |
+| \[OutputFileName\] |Název vygenerovaného souboru balíčku. Obvykle je tato nastavení nastavena na název aplikace. Pokud není zadán žádný název souboru, vytvoří se balíček aplikace jako \[ApplicationName\]. cspkg. |
+| \[RoleName\] |Název role definovaný v definičním souboru služby. |
+| \[RoleBinariesDirectory] |Umístění binárních souborů pro roli. |
+| \[VirtualPath\] |Fyzické adresáře pro každou virtuální cestu definovanou v části lokalita definice služby. |
+| \[PhysicalPath\] |Fyzické adresáře obsahu pro každou virtuální cestu definovanou v uzlu lokalita definice služby. |
+| \[RoleAssemblyName\] |Název binárního souboru pro roli. |
 
 ## <a name="next-steps"></a>Další postup
 Vytvářím balíček cloudové služby a chci...
 
 * [Nastavení vzdálené plochy pro instanci cloudové služby][remotedesktop]
-* [Nasadit projekt cloudové služby][deploy]
+* [Nasazení projektu cloudové služby][deploy]
 
-Používám Visual Studio a chci...
+Používám aplikaci Visual Studio a chci...
 
 * [Vytvořit novou cloudovou službu][vs_create]
-* [Překonfigurovat existující cloudovou službu][vs_reconfigure]
-* [Nasadit projekt cloudové služby][vs_deploy]
+* [Překonfigurujte existující cloudovou službu.][vs_reconfigure]
+* [Nasazení projektu cloudové služby][vs_deploy]
 * [Nastavení vzdálené plochy pro instanci cloudové služby][vs_remote]
 
 [deploy]: cloud-services-how-to-create-deploy-portal.md

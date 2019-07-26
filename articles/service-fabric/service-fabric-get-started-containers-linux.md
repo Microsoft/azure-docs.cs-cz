@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 1/4/2019
 ms.author: aljo
-ms.openlocfilehash: 58af752d8b7fcec5c681e2b8975d109a0f731878
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 16f117e7c5291216b5716aee40995e6f224705fa
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66302280"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68359360"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-linux"></a>Vytvoření první aplikace Service Fabric typu kontejner v Linuxu
 > [!div class="op_single_selector"]
@@ -29,7 +29,7 @@ ms.locfileid: "66302280"
 Spuštění existující aplikace v kontejneru Linux v clusteru Service Fabric nevyžaduje žádné změny aplikace. Tento článek vás provede vytvořením image Dockeru obsahující webovou aplikaci Python [Flask](http://flask.pocoo.org/) a jejím nasazením do clusteru Service Fabric. Kontejnerizovanou aplikaci budete také sdílet prostřednictvím služby [Azure Container Registry](/azure/container-registry/). Tento článek předpokládá základní znalost Dockeru. Informace o Dockeru najdete v článku [Docker Overview](https://docs.docker.com/engine/understanding-docker/) (Přehled Dockeru).
 
 > [!NOTE]
-> Tento článek se týká Linuxovém vývojovém prostředí.  Modulu runtime clusteru Service Fabric a modul runtime Docker musí běžet na stejném operačním systému.  Nelze spustit kontejnery Linuxu v clusteru Windows.
+> Tento článek se týká prostředí pro vývoj pro Linux.  Modul runtime clusteru Service Fabric a modul runtime Docker musí být spuštěný ve stejném operačním systému.  V clusteru Windows nemůžete spouštět kontejnery Linux.
 
 ## <a name="prerequisites"></a>Požadavky
 * Vývojový počítač s:
@@ -84,10 +84,12 @@ from flask import Flask
 
 app = Flask(__name__)
 
+
 @app.route("/")
 def hello():
-    
+
     return 'Hello World!'
+
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=80)
@@ -122,7 +124,7 @@ docker run -d -p 4000:80 --name my-web-site helloworldapp
 
 Parametr *name* udává název spuštěného kontejneru (namísto ID kontejneru).
 
-Připojte se ke spuštěnému kontejneru. Otevřete webový prohlížeč a přejděte na IP adresu vrácenou na portu 4000, například "http:\//localhost:4000". V prohlížeči by se měl zobrazit nadpis „Hello World!“.
+Připojte se ke spuštěnému kontejneru. Otevřete webový prohlížeč, který odkazuje na IP adresu vrácenou na portu 4000, například http:\//localhost: 4000. V prohlížeči by se měl zobrazit nadpis „Hello World!“.
 
 ![Hello World!][hello-world]
 
@@ -141,9 +143,9 @@ docker rm my-web-site
 ## <a name="push-the-image-to-the-container-registry"></a>Nahrání image do registru kontejneru
 Po ověření, že se aplikace spustí v Dockeru, nahrajte image do vašeho registru ve službě Azure Container Registry.
 
-Spustit `docker login` přihlásit ke svému registru kontejnerů pomocí vaší [přihlašovacích údajů registru](../container-registry/container-registry-authentication.md).
+Spusťte `docker login` , abyste se k registru kontejneru přihlásili pomocí [přihlašovacích údajů registru](../container-registry/container-registry-authentication.md).
 
-Následující příklad předá ID a heslo [instančního objektu](../active-directory/develop/app-objects-and-service-principals.md) Azure Active Directory. Instanční objekt jste k registru mohli přiřadit například pro účely scénáře automatizace. Nebo může přihlásit pomocí vašeho registru uživatelské jméno a heslo.
+Následující příklad předá ID a heslo [instančního objektu](../active-directory/develop/app-objects-and-service-principals.md) Azure Active Directory. Instanční objekt jste k registru mohli přiřadit například pro účely scénáře automatizace. Nebo se můžete přihlásit pomocí uživatelského jména a hesla registru.
 
 ```bash
 docker login myregistry.azurecr.io -u xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -p myPassword
@@ -174,7 +176,7 @@ Vzhledem k tomu, že tato image má definovaný vstupní bod úloh, není potře
 
 Jako počet instancí zadejte 1.
 
-Zadejte mapování portů ve správném formátu. Pro účely tohoto článku, budete muset zadat ```80:4000``` jako mapování portů. Tímto způsobem, který jste nakonfigurovali všechny příchozí požadavky přicházející na portu 4000 na hostitelském počítači jsou přesměrovány na port 80 v kontejneru.
+Zadejte mapování portů v příslušném formátu. V tomto článku je třeba zadat ```80:4000``` mapování portů. Díky tomu jste nakonfigurovali, aby všechny příchozí požadavky přicházející na port 4000 na hostitelském počítači byly přesměrované na port 80 na kontejneru.
 
 ![Generátor Service Fabric Yeoman pro kontejnery][sf-yeoman]
 
@@ -193,14 +195,14 @@ Zadejte mapování portů ve správném formátu. Pro účely tohoto článku, b
    </ServiceManifestImport>
 ``` 
 
-Doporučujeme šifrovat heslo úložiště. Odkazovat na [ spravovat šifrované tajné kódy aplikace Service Fabric](service-fabric-application-secret-management.md) pokyny.
+Doporučujeme, abyste heslo úložiště zašifroval. Pokyny najdete [v tématu Správa šifrovaných tajných klíčů v Service Fabricch aplikacích](service-fabric-application-secret-management.md) .
 
-### <a name="configure-cluster-wide-credentials"></a>Konfigurace přihlašovacích údajů celoclusterový
-Odkazovat na [dokumentaci](
+### <a name="configure-cluster-wide-credentials"></a>Konfigurace přihlašovacích údajů na úrovni clusteru
+Další informace najdete v dokumentaci.[](
 service-fabric-get-started-containers.md#configure-cluster-wide-credentials)
 
 ## <a name="configure-isolation-mode"></a>Konfigurace režimu izolace
-Verze modulu runtime 6.3 izolaci virtuálních počítačů se podporuje pro kontejnery Linuxu, a tím podpora pro kontejnery dva režimy izolace: proces a Hyper-v. V režimu izolace Hyper-v izolují všechny kontejnery a hostitele kontejneru. Izolace hyperv je implementováno pomocí [vymazat kontejnery](https://software.intel.com/en-us/articles/intel-clear-containers-2-using-clear-containers-with-docker). Zadaný režim izolace pro Linux clusterů v nástroji `ServicePackageContainerPolicy` prvku v souboru manifestu aplikace. Je možné zadat tyto režimy izolace: `process`, `hyperv` a `default`. Výchozí hodnota je režim izolace procesů. Následující fragment kódu ukazuje, jakým způsobem je režim izolace určený v souboru manifestu aplikace.
+V případě běhové verze 6,3 je pro kontejnery Linux podporovaná izolace virtuálních počítačů, což pro kontejnery podporuje dva režimy izolace: proces a HyperV. V režimu izolace HyperV jsou jádra izolovaná od každého kontejneru a hostitele kontejneru. Izolace HyperV se implementuje pomocí [jasných kontejnerů](https://software.intel.com/en-us/articles/intel-clear-containers-2-using-clear-containers-with-docker). Režim izolace je určen pro clustery systému Linux v `ServicePackageContainerPolicy` elementu v souboru manifestu aplikace. Je možné zadat tyto režimy izolace: `process`, `hyperv` a `default`. Výchozím nastavením je režim izolace procesu. Následující fragment kódu ukazuje, jakým způsobem je režim izolace určený v souboru manifestu aplikace.
 
 ```xml
 <ServiceManifestImport>
@@ -215,7 +217,7 @@ Verze modulu runtime 6.3 izolaci virtuálních počítačů se podporuje pro kon
 
 
 ## <a name="configure-resource-governance"></a>Konfigurace zásad správného řízení prostředků
-[Zásady správného řízení prostředků](service-fabric-resource-governance.md) omezují prostředky, které kontejner může použít na hostiteli. Element `ResourceGovernancePolicy`, který je zadaný v manifestu aplikace, slouží k deklaraci omezení prostředků pro balíček kódu služby. Omezení prostředků lze nastavit pro následující prostředky: Paměť, MemorySwap, CpuShares (Relativní váha CPU), MemoryReservationInMB, BlkioWeight (Relativní váha BlockIO). V tomto příkladu balíček služby Guest1Pkg získá jedno jádro na uzlech clusteru, kde je umístěný. Omezení paměti jsou absolutní, takže balíček kódu je omezený na 1024 MB paměti (a má tuto paměť softwarově vyhrazenou). Balíčky kódu (kontejnery a procesy) nejsou schopné přidělit víc paměti, než je toto omezení, a případný pokus o takové přidělení má za následek výjimku z důvodu nedostatku paměti. Aby vynucení omezení prostředků fungovala, musí být omezení paměti zadaná pro všechny balíčky kódu v rámci balíčku služby.
+[Zásady správného řízení prostředků](service-fabric-resource-governance.md) omezují prostředky, které kontejner může použít na hostiteli. Element `ResourceGovernancePolicy`, který je zadaný v manifestu aplikace, slouží k deklaraci omezení prostředků pro balíček kódu služby. Omezení prostředků lze nastavit pro následující prostředky: Paměť, MemorySwap, CpuShares (relativní váha procesoru), MemoryReservationInMB, BlkioWeight (relativní relativní váha). V tomto příkladu balíček služby Guest1Pkg získá jedno jádro na uzlech clusteru, kde je umístěný. Omezení paměti jsou absolutní, takže balíček kódu je omezený na 1024 MB paměti (a má tuto paměť softwarově vyhrazenou). Balíčky kódu (kontejnery a procesy) nejsou schopné přidělit víc paměti, než je toto omezení, a případný pokus o takové přidělení má za následek výjimku z důvodu nedostatku paměti. Aby vynucení omezení prostředků fungovala, musí být omezení paměti zadaná pro všechny balíčky kódu v rámci balíčku služby.
 
 ```xml
 <ServiceManifestImport>
@@ -234,7 +236,7 @@ Verze modulu runtime 6.3 izolaci virtuálních počítačů se podporuje pro kon
 
 Počínaje v6.1 Service Fabric automaticky integruje události [dockeru HEALTHCHECK](https://docs.docker.com/engine/reference/builder/#healthcheck) do sestavy stavu systému. To znamená, že pokud váš kontejner má **HEALTHCHECK** povolený, Service Fabric oznámí stav vždy, když se změní stav kontejneru (nahlášený Dockerem). Pokud *health_status* je *healthy*, v [Service Fabric Exploreru](service-fabric-visualizing-your-cluster.md) se zobrazí sestava stavu **OK**. Pokud *health_status* je *unhealthy*, zobrazí se **UPOZORNĚNÍ**. 
 
-Počáteční verze nejnovější aktualizaci v6.4, máte možnost určit, že dockeru HEALTHCHECK hodnocení by se měly hlásit jako chyba. Pokud je tato možnost povolena, **OK** sestava stavu health_status *health_status* je *v pořádku* a **chyba** health_status *health_status* je *není v pořádku*.
+Počínaje nejnovější verzí aktualizace v 6.4 máte možnost určit, že se mají tato hodnocení Docker HEALTHCHECK hlásit jako chyba. Pokud je tato možnost povolená, zobrazí se zpráva o stavu **OK** , pokud je *health_status* *v pořádku* a **Chyba** se zobrazí, když *health_status* není v *pořádku.*
 
 Pokyn **HEALTHCHECK** odkazující na aktuální kontrolu, která se provede pro monitorování stavu kontejneru, musí být uvedený v souboru Dockerfile použitém při generování image kontejneru.
 
@@ -258,11 +260,11 @@ Chování **HEALTHCHECK** pro jednotlivé kontejnery můžete nakonfigurovat zad
     </Policies>
 </ServiceManifestImport>
 ```
-Ve výchozím nastavení *IncludeDockerHealthStatusInSystemHealthReport* je nastavena na **true**, *RestartContainerOnUnhealthyDockerHealthStatus* je nastavena na  **false**, a *TreatContainerUnhealthyStatusAsError* je nastavena na **false**. 
+Ve výchozím nastavení je *IncludeDockerHealthStatusInSystemHealthReport* nastaveno na **hodnotu true**, hodnota *RestartContainerOnUnhealthyDockerHealthStatus* je nastavena na **hodnotu false**a vlastnost *TreatContainerUnhealthyStatusAsError* je nastavena na **hodnotu false.** . 
 
 Pokud je pro *RestartContainerOnUnhealthyDockerHealthStatus* nastavená hodnota **true**, kontejner, který je opakovaně nahlášený ve špatném stavu, se restartuje (potenciálně na jiných uzlech).
 
-Pokud *TreatContainerUnhealthyStatusAsError* je nastavena na **true**, **chyba** sestav o stavu health_status kontejneru *health_status*je *není v pořádku*.
+Pokud je *TreatContainerUnhealthyStatusAsError* nastavené na **true**, zobrazí se **chybové** zprávy o stavu, když *health_status* kontejneru není v *pořádku*.
 
 Pokud chcete zakázat integraci **HEALTHCHECK** pro celý cluster Service Fabric, musíte nastavit [EnableDockerHealthCheckIntegration](service-fabric-cluster-fabric-settings.md) na **false**.
 
@@ -275,18 +277,18 @@ Připojte se k místnímu clusteru služby Service Fabric.
 sfctl cluster select --endpoint http://localhost:19080
 ```
 
-Pomocí instalačního skriptu, který je součástí šablony při https://github.com/Azure-Samples/service-fabric-containers/ zkopírujte balíček aplikace do úložiště imagí clusteru, zaregistrujte typ aplikace a vytvořte její instanci aplikace.
+Pomocí instalačního skriptu, který je součástí šablon https://github.com/Azure-Samples/service-fabric-containers/ v části, zkopírujte balíček aplikace do úložiště imagí clusteru, zaregistrujte typ aplikace a vytvořte instanci aplikace.
 
 
 ```bash
 ./install.sh
 ```
 
-Otevřete prohlížeč a přejděte na Service Fabric Explorer na adrese http:\//localhost:19080 / Explorer (místo localhost použijte privátní IP adresu virtuálního počítače, pokud používáte Vagrant v Mac OS X). Rozbalte uzel Aplikace a všimněte si, že už obsahuje položku pro váš typ aplikace a další položku pro první instanci tohoto typu.
+Otevřete prohlížeč a přejděte na adresu Service Fabric Explorer na adrese http\/:/localhost: 19080/Explorer (Pokud používáte Vagrant v Mac OS X, nahraďte localhost privátní IP adresou virtuálního počítače. Rozbalte uzel Aplikace a všimněte si, že už obsahuje položku pro váš typ aplikace a další položku pro první instanci tohoto typu.
 
-Připojte se ke spuštěnému kontejneru. Otevřete webový prohlížeč a přejděte na IP adresu vrácenou na portu 4000, například "http:\//localhost:4000". V prohlížeči by se měl zobrazit nadpis „Hello World!“.
+Připojte se ke spuštěnému kontejneru. Otevřete webový prohlížeč, který odkazuje na IP adresu vrácenou na portu 4000, například http:\//localhost: 4000. V prohlížeči by se měl zobrazit nadpis „Hello World!“.
 
-![Hello World!][hello-world]
+![Hello World][hello-world]
 
 
 ## <a name="clean-up"></a>Vyčištění
@@ -396,7 +398,7 @@ Tady jsou kompletní manifesty aplikace a služby použité v tomto článku.
 Pokud chcete přidat další službu kontejneru do aplikace již vytvořené pomocí Yeomana, proveďte následující kroky:
 
 1. Změňte adresář na kořenovou složku stávající aplikace. Například `cd ~/YeomanSamples/MyApplication`, pokud `MyApplication` je aplikace vytvořená pomocí Yeomanu.
-2. Spusťte `yo azuresfcontainer:AddService`.
+2. Spustit `yo azuresfcontainer:AddService`
 
 <a id="manually"></a>
 

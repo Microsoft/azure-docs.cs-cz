@@ -5,22 +5,22 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: include
-ms.date: 01/11/2018
+ms.date: 07/19/2019
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 54050116f9894f9a7903dad53caf6b01228313b7
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
-ms.translationtype: HT
+ms.openlocfilehash: e692b4704d14a1f0d18f2a3be7397a13a969bc40
+ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326971"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68371769"
 ---
 Následující tabulka popisuje výchozí omezení pro účty úložiště Azure pro obecné účely V1, v2 a BLOB. Limit  příchozího přenosu dat odkazuje na všechna data z požadavků, které se odesílají do účtu úložiště. Limit *odchozího* přenosu dat odkazuje na všechna data z odpovědí, které jsou přijaty z účtu úložiště.
 
 | Resource | Výchozí omezení |
 | --- | --- |
 | Počet účtů úložiště podle jednotlivých oblastí a předplatných, včetně účtů Standard a Premium | 250 |
-| Maximální kapacita účtu úložiště | 2 PB pro USA a Evropu a 500 TB pro všechny ostatní oblasti (včetně Spojené království) <sup>1</sup>|
+| Maximální kapacita účtu úložiště | 2 PB pro USA a Evropu a 500 TB pro všechny ostatní oblasti (včetně Spojené království)<sup>1</sup>|
 | Maximální počet kontejnerů objektů blob, objektů blob, sdílených složek, tabulek, front, entit nebo zpráv na účet úložiště | Bez omezení |
 | Maximální počet požadavků<sup>1</sup> na účet úložiště | počet požadavků 20 000 za sekundu |
 | Maximální příchozí<sup>1</sup> na účet úložiště (oblasti USA, Evropa) | 25 GB/s |

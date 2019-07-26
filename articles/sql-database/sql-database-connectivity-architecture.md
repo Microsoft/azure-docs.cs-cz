@@ -12,12 +12,12 @@ ms.author: rohitna
 ms.reviewer: carlrab, vanto
 manager: craigg
 ms.date: 07/02/2019
-ms.openlocfilehash: 951481a7dd7d7a9cfd8c88f2cd8bbcaaec4df685
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 9dfc22be45b68ba4ff59d88810435db35bafc8b6
+ms.sourcegitcommit: 5604661655840c428045eb837fb8704dca811da0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68320624"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68494968"
 ---
 # <a name="azure-sql-connectivity-architecture"></a>Architektura připojení Azure SQL
 
@@ -72,15 +72,15 @@ Když budete pokračovat, přidáme do každé oblasti další brány a vyřadí
 | Kanada – střed       | 40.85.224.249      |                 | |
 | Kanada – východ          | 40.86.226.166      |                 | |
 | Střed USA           | 13.67.215.62, 52.182.137.15 | 23.99.160.139 | Žádná připojení po 1. září 2019 |
-| Čína – východ 1         | 139.219.130.35     |                 | |
+| Čína – východ           | 139.219.130.35     |                 | |
 | Čína – východ 2         | 40.73.82.1         |                 | |
-| Čína – sever 1        | 139.219.15.17      |                 | |
+| Čína – sever          | 139.219.15.17      |                 | |
 | Čína – sever 2        | 40.73.50.0         |                 | |
 | Východní Asie            | 191.234.2.139, 52.175.33.150 |       | |
-| Východní USA 1            | 40.121.158.30, 40.79.153.12 | 191.238.6.43 | Žádná připojení po 1. září 2019 |
+| East US              | 40.121.158.30, 40.79.153.12 | 191.238.6.43 | Žádná připojení po 1. září 2019 |
 | Východní USA 2            | 40.79.84.180, 52.177.185.181, 52.167.104.0 | 191.239.224.107    | Žádná připojení po 1. září 2019 |
 | Francie – střed       | 40.79.137.0, 40.79.129.1 |           | |
-| Německo – střed      | 51.4.144.100       |                 | |
+| Střední Německo      | 51.4.144.100       |                 | |
 | Německo – sever východ   | 51.5.144.179       |                 | |
 | Indie – střed        | 104.211.96.159     |                 | |
 | Indie – jih          | 104.211.224.146    |                 | |
@@ -100,8 +100,8 @@ Když budete pokračovat, přidáme do každé oblasti další brány a vyřadí
 | Velká Británie – jih             | 51.140.184.11      |                 | |
 | Spojené království – západ              | 51.141.8.11        |                 | |
 | Západní střed USA      | 13.78.145.25       |                 | |
-| Západní Evropa          | 191.237.232.75, 40.68.37.158 |       | |
-| Západní USA 1            | 23.99.34.75, 104.42.238.205 |        | |
+| Západní Evropa          | 40.68.37.158       | 191.237.232.75  | Žádná připojení po 1. září 2019 |
+| USA – západ              | 104.42.238.205     | 23.99.34.75     | Žádná připojení po 1. září 2019 |
 | USA – západ 2            | 13.66.226.202      |                 | |
 |                      |                    |                 | |
 

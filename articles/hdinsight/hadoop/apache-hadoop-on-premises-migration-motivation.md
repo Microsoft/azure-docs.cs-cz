@@ -1,6 +1,6 @@
 ---
-title: Migrace místních Apache Hadoop clusterů Azure HDInsight – výhody a motivace
-description: Informace o motivace a výhody pro migrace místních Hadoop clusterů pro Azure HDInsight.
+title: Migrace místních Apache Hadoop clusterů do Azure HDInsight – motivace a výhody
+description: Seznamte se s motivací a výhodami migrace místních clusterů Hadoop do Azure HDInsight.
 author: hrasheed-msft
 ms.reviewer: ashishth
 ms.service: hdinsight
@@ -8,54 +8,54 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: a03a778b2a057235b31d02e90e5ce87e9559b38a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f886cb71d4dbc191dae317e8ea72d8c896f37c03
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67058556"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68442072"
 ---
-# <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---motivation-and-benefits"></a>Migrace místních Apache Hadoop clusterů Azure HDInsight – výhody a motivace
+# <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---motivation-and-benefits"></a>Migrace místních Apache Hadoop clusterů do Azure HDInsight – motivace a výhody
 
-Tento článek je první z řady na osvědčené postupy pro migraci v místním nasazení ekosystému Apache Hadoop do Azure HDInsight. Tato série článků je pro uživatele, kteří odpovídají za návrh, nasazení a migrace řešení Apache Hadoop v Azure HDInsight. Role, které můžou mít užitek z těchto článků zahrnují cloudové architekty, správci systému Hadoop a technici DevOps. Vývojáři softwaru, datovými architekty a datovými vědci by měl také využívat vysvětlení jak různých typů činnosti clusterů v cloudu.
+Tento článek je první v řadě na základě osvědčených postupů pro migraci místních Apache Hadoop nasazení pro ekosystém do Azure HDInsight. Tato série článků je určená lidem, kteří zodpovídají za návrh, nasazení a migraci Apache Hadoop řešení ve službě Azure HDInsight. Role, které můžou tyto články využívat, zahrnují cloudové architekty, správce Hadoop a DevOps technici. Vývojáři softwaru, technici dat a odborníci na data by měli mít také na vysvětlení, jak různé typy clusterů fungují v cloudu.
 
-## <a name="why-to-migrate-to-azure-hdinsight"></a>Důvod, proč k migraci do Azure HDInsight
+## <a name="why-to-migrate-to-azure-hdinsight"></a>Proč migrovat do Azure HDInsight
 
-Azure HDInsight je Cloudová distribuce komponent Hadoop. Azure HDInsight umožňuje snadné, rychlé a nákladově efektivní zpracování obrovského množství dat. HDInsight obsahuje nejoblíbenější opensourcové architektury, jako například:
+Azure HDInsight je cloudová distribuce komponent systému Hadoop. Azure HDInsight umožňuje snadné, rychlé a nákladově efektivní zpracování obrovského množství dat. HDInsight obsahuje nejoblíbenější Open Source architektury, jako jsou:
 
 - Apache Hadoop
 - Apache Spark
-- Apache Hive s funkcí LLAP
+- Apache Hive s LLAP
 - Apache Kafka
 - Apache Storm
 - Apache HBase
 - R
 
-## <a name="azure-hdinsight-advantages-over-on-premises-hadoop"></a>Azure HDInsight výhod oproti místního clusteru Hadoop
+## <a name="azure-hdinsight-advantages-over-on-premises-hadoop"></a>Výhody Azure HDInsight v místní službě Hadoop
 
-- **Nízkonákladové** -lze snížit náklady na [vytváření clusterů na vyžádání](../hdinsight-hadoop-create-linux-clusters-adf.md) a platit jenom za využité. Oddělený výpočetní výkon a úložiště nabízí flexibilitu udržováním objem dat nezávislé na velikosti clusteru.
+- **Nízké náklady** – náklady se můžou snížit [vytvořením clusterů na vyžádání](../hdinsight-hadoop-create-linux-clusters-adf.md) a platíte jenom za to, co využijete. Oddělené výpočetní prostředky a úložiště poskytují flexibilitu tím, že se objem dat nezávisle na velikosti clusteru udržuje.
 
-- **Automatizované vytváření clusterů** – automatizované vytváření clusteru vyžaduje minimální instalaci a konfiguraci. Automation je možné pro clustery na vyžádání.
+- **Automatizované vytváření clusterů** – automatizované vytváření clusterů vyžaduje minimální nastavení a konfiguraci. Automatizaci je možné použít pro clustery na vyžádání.
 
-- **Spravovat hardware a konfiguraci** – není nutné se starat o fyzický hardware nebo infrastrukturu s clusterem HDInsight. Stačí zadat konfiguraci clusteru, a Azure nastaví ho.
+- **Spravovaný hardware a konfigurace** – nemusíte si dělat starosti s fyzickým hardwarem nebo infrastrukturou s clusterem HDInsight. Stačí zadat konfiguraci clusteru a Azure ho nastaví.
 
-- **Snadná škálovatelnost** – HDInsight umožňuje [škálování](../hdinsight-administer-use-portal-linux.md) úlohy směrem nahoru nebo dolů. Úloha opětovné vyvážení bez přerušení úloh zpracování dat a distribuci dat postará Azure.
+- **Snadno škálovatelná** – HDInsight umožňuje [škálovat](../hdinsight-administer-use-portal-linux.md) úlohy nahoru nebo dolů. Azure se stará o redistribuci dat a opětovné vyrovnávání zatížení, aniž by došlo k přerušení úloh zpracování dat.
 
-- **Globální dostupnost** – HDInsight je dostupná ve více [oblastech](https://azure.microsoft.com/regions/services/) než všechny ostatní nabídka analýz velkých objemů dat. Služba Azure HDInsight je dostupná také pro Azure Government, Čínu a Německo a umožňuje tak splnit požadavky vašeho podniku v klíčových suverénních oblastech.
+- **Globální dostupnost** – HDInsight je k dispozici ve více [oblastech](https://azure.microsoft.com/regions/services/) než jakákoli jiná nabídka analýzy velkých objemů dat. Služba Azure HDInsight je dostupná také pro Azure Government, Čínu a Německo a umožňuje tak splnit požadavky vašeho podniku v klíčových suverénních oblastech.
 
-- **Zabezpečení a dodržování** – HDInsight umožňuje chránit datové prostředky vašeho podniku pomocí [Azure Virtual Network](../hdinsight-extend-hadoop-virtual-network.md), [šifrování](../hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md)a integraci s [Azure Active Adresář](../domain-joined/apache-domain-joined-introduction.md). HDInsight také splňuje nejoblíbenější oborové a vládní [standardy pro dodržování předpisů](https://azure.microsoft.com/overview/trusted-cloud).
+- **Zabezpečené a kompatibilní** – HDInsight umožňuje chránit vaše podnikové datové prostředky pomocí Virtual Network, [šifrování](../hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md)a integrace s [Azure](../hdinsight-plan-virtual-network-deployment.md)pomocí [Azure Active Directory](../domain-joined/hdinsight-security-overview.md). HDInsight také splňuje nejoblíbenější obory a [standardy dodržování předpisů](https://azure.microsoft.com/overview/trusted-cloud)pro státní správu.
 
-- **Zjednodušená správa verzí** – Azure HDInsight verze součástí ekosystému Hadoop spravuje a udržuje je aktuální. Aktualizace softwaru jsou obvykle složitý proces pro místní nasazení.
+- **Zjednodušená správa verzí** – Azure HDInsight spravuje verzi součástí pro ekosystém systému Hadoop a udržuje je aktuální. Aktualizace softwaru jsou obvykle složitým procesem pro místní nasazení.
 
-- **Menší clustery optimalizované pro určité úlohy s méně závislosti mezi komponentami** – instalační program systému Hadoop typický místní používal jeden cluster, který slouží různým účelům. S Azure HDInsight je možné vytvářet clustery určeného pro konkrétní úlohy. Vytváření clusterů pro konkrétní úlohy odebere vyžadovalo udržování jeden cluster s rostoucí složitostí.
+- **Menší clustery optimalizované pro konkrétní úlohy s menšími závislostmi mezi komponentami** – typický místní instalační program Hadoop používá jeden cluster, který slouží k mnoha účelům. S Azure HDInsight je možné vytvářet clustery specifické pro úlohy. Vytváření clusterů pro konkrétní úlohy odstraňuje složitost údržby jednoho clusteru a rostoucí složitost.
 
-- **Zvýšení produktivity** – můžete použít různé nástroje pro Hadoop a Spark v upřednostňovaných vývojových prostředích.
+- **Produktivita** – v upřednostňovaném vývojovém prostředí můžete použít různé nástroje pro Hadoop a Spark.
 
-- **Rozšíření s vlastní nástroje nebo aplikace jiných výrobců** – clustery HDInsight je možné rozšířit pomocí nainstalovaných komponent a je také možné integrovat s jinými řešeními pro velké objemy dat s využitím [jedním kliknutím](https://azure.microsoft.com/services/hdinsight/partner-ecosystem/)  nasazení z Azure Market place.
+- **Rozšiřitelnost pomocí vlastních nástrojů nebo aplikací třetích stran** – clustery HDInsight je možné rozšířit pomocí nainstalovaných komponent a také je možné integrovat s dalšími řešeními pro velké objemy dat pomocí nasazení [jedním kliknutím](https://azure.microsoft.com/services/hdinsight/partner-ecosystem/) z Místo na trhu Azure.
 
-- **Snadná správa, Správa a monitorování** – Azure HDInsight se integruje s [protokoly Azure monitoru](../hdinsight-hadoop-oms-log-analytics-tutorial.md) a poskytuje jednotné rozhraní, pomocí kterého můžete monitorování všech vašich clusterů.
+- **Snadná správa, Správa a monitorování** – Azure HDInsight se integruje s [protokoly](../hdinsight-hadoop-oms-log-analytics-tutorial.md) Azure monitor a poskytuje tak jediné rozhraní, se kterým můžete monitorovat všechny clustery.
 
-- **Integrace s dalšími službami Azure** – HDInsight je možné snadno integrovat s dalšími oblíbenými službami Azure jako je následující:
+- **Integrace s dalšími službami Azure** – HDInsight je možné snadno integrovat s dalšími oblíbenými službami Azure, jako jsou tyto:
 
     - Azure Data Factory (ADF)
     - Azure Blob Storage
@@ -64,143 +64,143 @@ Azure HDInsight je Cloudová distribuce komponent Hadoop. Azure HDInsight umož�
     - Azure SQL Database
     - Azure Analysis Services
 
-- **Opravy procesů a komponent** – HDInsight neustále kontroluje infrastruktury a open source komponenty pomocí vlastní monitorování infrastruktury. Kritické chyby, jako je například nedostupnost opensourcové komponenty a uzly také automaticky obnoví. V Ambari se aktivují upozornění, pokud libovolné součásti OSS, se nezdařilo.
+- **Procesy a součásti** pro samočinné retušování – HDInsight nepřetržitě kontroluje infrastruktury a open source komponenty pomocí vlastní monitorovací infrastruktury. Také automaticky obnoví kritické chyby, jako je například nedostupnost open source komponent a uzlů. Výstrahy se aktivují v Ambari, pokud se nějaká součást OSS nezdařila.
 
-Další informace najdete v článku [co je Azure HDInsight a technologie Apache hadoop](../hadoop/apache-hadoop-introduction.md).
+Další informace najdete v článku [co je Azure HDInsight a Apache Hadoop Technology Stack](../hadoop/apache-hadoop-introduction.md).
 
 ## <a name="migration-planning-process"></a>Proces plánování migrace
 
-Následující kroky se doporučují pro plánování migrace místních Hadoop clusterů pro Azure HDInsight:
+Následující postup se doporučuje pro plánování migrace místních clusterů Hadoop do Azure HDInsight:
 
-1. Zjistěte aktuální místní nasazení a topologie.
-2. Zjistěte aktuální rozsahu projektu, časové osy a odborných znalostí týmu.
-3. Zjistěte požadavky pro Azure.
-4. Vytvářejte si podrobný plán na základě osvědčených postupů.
+1. Pochopte aktuální místní nasazení a topologie.
+2. Pochopení aktuálního rozsahu projektu, časových os a odbornosti týmu.
+3. Pochopení požadavků Azure.
+4. Sestavte podrobný plán na základě osvědčených postupů.
 
-## <a name="gathering-details-to-prepare-for-a-migration"></a>Shromažďování podrobností přípravy na migraci
+## <a name="gathering-details-to-prepare-for-a-migration"></a>Shromažďování podrobností pro přípravu na migraci
 
-Tato část obsahuje šablony dotazníky umožňující získat důležité informace o:
+V této části jsou uvedeny dotazníky šablon, které vám pomůžou shromáždit důležité informace o:
 
 - Místní nasazení
 - Podrobnosti o projektu
 - Požadavky na Azure
 
-### <a name="on-premises-deployment-questionnaire"></a>Dotazník pro místní nasazení
+### <a name="on-premises-deployment-questionnaire"></a>Dotazník místního nasazení
 
-| **Dotaz** | **Příklad** | **Answer** |
+| **Daná** | **Příklad** | **Zodpovědět** |
 |---|---|---|
-|**téma**: **Prostředí**|||
-|Verze clusteru distribuce|HDP 2.6.5, CDH 5.7|
-|Komponenty ekosystému velkých objemů dat|HDFS, Yarn, Hive, LLAP, Impala, Kudu, HBase, Spark, MapReduce, Kafka, Zookeeper, Solr, Sqoop, Oozie, Ranger, Atlas, Falcon, Zeppelin, R|
-|Typy clusterů|Hadoop, Spark, nesrostlé Kafka, Storm, Solr|
+|**Téma**: **Prostředí**|||
+|Verze distribuce clusteru|HDP 2.6.5, CDH 5.7|
+|Součásti pro ekosystém velkých objemů dat|HDFS, příze, podregistr, LLAP, Impala, Kudu, HBA, Spark, MapReduce, Kafka, Zookeeper, Solr, Sqoop, Oozie, Ranger, Atlas, Falcon, Zeppelin, R|
+|Typy clusterů|Hadoop, Spark, Kafka, zaplavení, Solr|
 |Počet clusterů|4|
-|Počet řídicích uzlů|2|
+|Počet hlavních uzlů|2|
 |Počet uzlů pracovního procesu|100|
 |Počet hraničních uzlů| 5|
 |Celkové místo na disku|100 TB|
-|Konfigurace hlavního uzlu|min nebo y, procesoru, disku atd.|
-|Konfigurace datové uzly|min nebo y, procesoru, disku atd.|
-|Hraniční uzly konfigurace|min nebo y, procesoru, disku atd.|
-|HDFS šifrování?|Ano|
-|Vysoká dostupnost|HDFS HA, Metastore HA|
-|Zotavení po havárii / zálohování|Zálohování clusteru?|  
+|Konfigurace hlavního uzlu|m/y, CPU, disk atd.|
+|Konfigurace datových uzlů|m/y, CPU, disk atd.|
+|Konfigurace hraničních uzlů|m/y, CPU, disk atd.|
+|Šifrování HDFS?|Ano|
+|Vysoká dostupnost|HDFS HA, metastore HA|
+|Zotavení po havárii/zálohování|Zálohovat cluster?|  
 |Systémy, které jsou závislé na clusteru|SQL Server, Teradata, Power BI, MongoDB|
-|Integrace třetích stran|Tableau GridGain Qubole, Informatica, Splunk|
-|**téma**: **Zabezpečení**|||
-|Zabezpečení perimetru|Brány firewall|
-|Cluster ověřování a autorizace|Active Directory, Ambari, Cloudera správce, bez ověřování|
-|HDFS Access Control|  Ruční, ssh uživatelů|
-|Hive ověřování a autorizace|SENTRY, LDAP, Kerberos, Ranger AD|
+|Integrace třetích stran|Tableau, GridGain, Qubole, Informatica, Splunk|
+|**Téma**: **Zabezpečení**|||
+|Zabezpečení hraničních|Brány firewall|
+|Ověřování clusteru & autorizaci|Active Directory, Ambari, Cloudera Manager, bez ověřování|
+|HDFS – Access Control|  Ruční, uživatelé SSH|
+|Ověřování podregistru & autorizaci|Sentry, LDAP, AD s protokolem Kerberos, Ranger|
 |Auditování|Ambari, Cloudera Navigator, Ranger|
-|Monitorování|Grafitová, shromážděná, statsd, Telegraf, InfluxDB|
-|Zobrazení výstrah|Kapacitor, Prometheus, Datadog|
-|Doba uchování dat| 3 roky, 5 let.|
-|Správce clusteru|Jeden správce, více správců|
+|Monitorování|Grafit, Collect, statd, telegraf, InfluxDB|
+|Zobrazení výstrah|Kapacitor, Prometheus, služby Datadog|
+|Doba uchovávání dat| 3 roky, 5 let|
+|Správci clusteru|Jeden správce, více správců|
 
 ### <a name="project-details-questionnaire"></a>Dotazník podrobností projektu
 
-|**Dotaz**|**Příklad**|**Answer**|
+|**Daná**|**Příklad**|**Zodpovědět**|
 |---|---|---|
-|**téma**: **Úlohy a frekvence**|||
-|Úlohy MapReduce|10 úlohy--dvakrát denně||
-|Úlohy Hive|100 úloh – každou hodinu||
-|Sparkových úloh služby batch|50 úlohy--každých 15 minut||
-|Úlohy Spark Streaming|5 úloh – každé 3 minuty||
-|Strukturované streamování úlohy|5 úlohy--každou minutu||
-|Úlohy trénování modelů ML|2 úlohy--jednou za týden||
+|**Téma**: **Úlohy a frekvence**|||
+|MapReduce úlohy|10 úloh – dvakrát denně||
+|Úlohy podregistru|úlohy 100 – každou hodinu||
+|Dávkové úlohy Spark|úlohy 50 – každých 15 minut||
+|Úlohy streamování Sparku|5 úloh – každé 3 minuty||
+|Strukturované úlohy streamování|5 úloh – každou minutu||
+|Školicí úlohy modelů ML|2 úlohy--jednou za týden||
 |Programovací jazyky|Python, Scala, Java||
-|Skriptování|Prostředí Pythonu||
-|**téma**: **Data**|||
-|Zdroje dat|Flat files, Json, Kafka, RDBMS||
-|Orchestrace dat|Pracovní postupy Oozie, vzduchu||
-|V paměti pro vyhledávání|Apache Ignite, Redis||
+|Skriptování|Prostředí, Python||
+|**Téma**: **Data**|||
+|Zdroje dat|Ploché soubory, JSON, Kafka, RDBMS||
+|Orchestrace dat|Oozie pracovní postupy, tok||
+|V hledání paměti|Apache Ignite, Redis||
 |Cíle dat|HDFS, RDBMS, Kafka, MPP ||
-|**téma**: **Metadata**|||
-|Typ databáze Hive|MySQL, Postgres||
-|Ne. z metaúložiště Hive|2||
-|Ne. tabulek Hive|100||
+|**Téma**: **Meta data**|||
+|Typ databáze typu podregistr|MySQL, Postgres||
+|Ne. metaúložiště podregistru|2||
+|Ne. z tabulek podregistru|100||
 |Ne. zásad Ranger|20||
-|Ne. Oozie pracovních postupů|100||
-|**téma**: **Škálování**|||
-|Objem dat, včetně replikace|100 TB||
-|Denní objem příjmu|50 GB||
-|Míry růstu dat|10 % za rok||
-|Míra růstu uzlů clusteru|% 5, ročně
-|**téma**: **Využití clusteru**|||
-|Průměrné využití procesoru % využití|60 %||
-|Průměrná paměť % využití|75%||
+|Ne. pracovních postupů Oozie|100||
+|**Téma**: **Škálování**|||
+|Objem dat včetně replikace|100 TB||
+|Objem denního příjmu|50 GB||
+|Míra nárůstu dat|10% za rok||
+|Míra růstu uzlů clusteru|5% za rok
+|**Téma**: **Využití clusteru**|||
+|Průměrné využití procesoru v%|60%||
+|Průměrná doba využití paměti%|75%||
 |Využité místo na disku|75%||
-|Průměrná sítě % využití|25 %
-|**téma**: **Zaměstnanci**|||
-|Ne. správců|2||
-|Ne. vývojářů|10||
+|Průměrná doba využití sítě%|25 %
+|**Téma**: **Sazovat**|||
+|Ne. Správců|2||
+|Ne. z vývojářů|10||
 |Ne. koncových uživatelů|100||
 |Dovednosti|Hadoop, Spark||
-|Ne. z dostupných prostředků pro účely migrace|2||
-|**téma**: **Omezení**|||
+|Ne. dostupných zdrojů pro účely migrace|2||
+|**Téma**: **Omezení**|||
 |Aktuální omezení|Latence je vysoká.||
-|Aktuální problémy|Problém souběžnosti||
+|Aktuální výzvy|Problém souběžnosti||
 
-### <a name="azure-requirements-questionnaire"></a>Dotazník požadavky pro Azure
+### <a name="azure-requirements-questionnaire"></a>Dotazník požadavků Azure
 
-|**téma**: **Infrastruktura** |||
+|**Téma**: **Infrastrukturu** |||
 |---|---|---|
-|**Dotaz**|**Příklad**|**Answer**|
-| Preferované oblasti|USA – východ||
-|Upřednostňované sítě VNet?|Ano||
-|HA / DR potřeby?|Ano||
-|Integrace s jinými cloudovými službami?|ADF, CosmosDB||
-|**téma**:   **Pohyb dat**  |||
-|Předvolby počátečním načtení|DistCp, Data box, ADF, WANDisco||
-|Rozdílová data přenosu|DistCp, AzCopy||
-|Průběžné přírůstkové datové přenosy|DistCp, Sqoop||
-|**téma**:   **Monitoring a Alerting** |||
-|Použití Azure Monitoring a Alerting integrace Vs monitorování třetích stran|Použití Azure Monitoring a Alerting||
-|**téma**:   **Předvolby pro zabezpečení** |||
-|Soukromým a chráněným datovým kanálem?|Ano||
-|Cluster připojeno k doméně (ESP)?|     Ano||
-|On-Premises synchronizace AD do cloudu?|     Ano||
-|Ne. Synchronizace uživatelů AD?|          100||
-|OK pro synchronizaci hesel do cloudu?|    Ano||
-|Jenom cloudoví uživatelé?|                 Ano||
-|Potřeba vícefaktorové ověřování?|                       Ne|| 
-|Požadavky na ověření dat?|  Ano||
-|Řízení přístupu na základě rolí?|        Ano||
-|Auditování potřeba?|                  Ano||
-|Šifrování dat v klidovém stavu?|          Ano||
+|**Daná**|**Příklad**|**Zodpovědět**|
+| Upřednostňovaná oblast|USA – východ||
+|Upřednostňovaná virtuální síť?|Ano||
+|Je potřeba HA/DR?|Ano||
+|Integraci s dalšími Cloud Services?|ADF, CosmosDB||
+|**Téma**:   **Pohyb dat**  |||
+|Předvolba počátečního zatížení|DistCp, data box, ADF, WANDisco||
+|Rozdíl přenosu dat|DistCp, AzCopy||
+|Pokračující přírůstkový přenos dat|DistCp, Sqoop||
+|**Téma**:   **Monitorování & upozorňování** |||
+|Použití monitorování Azure & upozorňování a integrace monitorování třetích stran|Použití upozorňování & monitorování Azure||
+|**Téma**:   **Předvolby zabezpečení** |||
+|Privátní a chráněný datový kanál?|Ano||
+|Cluster připojený k doméně (ESP)?|     Ano||
+|Místní AD Sync ke cloudu?|     Ano||
+|Ne. Chcete, aby se uživatelé služby AD synchronizovaly?|          100||
+|Chcete synchronizovat hesla do cloudu?|    Ano||
+|Jenom uživatelé cloudu?|                 Ano||
+|Je potřeba MFA?|                       Ne|| 
+|Požadavky na autorizaci dat?|  Ano||
+|Access Control na základě rolí?|        Ano||
+|Je vyžadováno auditování?|                  Ano||
+|Šifrování dat v klidovém umístění?|          Ano||
 |Šifrování dat při přenosu?|       Ano||
-|**téma**:   **Předvolby RE – architektura** |||
-|Jeden cluster vs specifické typy clusterů|Specifické typy clusterů||
-|Společně umísťovat úložiště Vs vzdálené úložiště?|Vzdálené úložiště||
-|Protože data uložená vzdáleně menší velikost clusteru?|Menší velikost clusteru||
-|Použití více clusterů menší než jednoho velkého clusteru?|Použití několika menších clusterů||
-|Používat vzdálený metastore?|Ano||
+|**Téma**:   **Předvolby opětovné architektury** |||
+|Jeden cluster vs konkrétní typy clusterů|Konkrétní typy clusterů||
+|Společně umístěné úložiště vs – vzdálené úložiště?|Vzdálené úložiště||
+|Menší velikost clusteru jako data se ukládají vzdáleně?|Menší velikost clusteru||
+|Použít více menších clusterů místo jednoho velkého clusteru?|Použití více menších clusterů||
+|Používáte vzdálenou metastore?|Ano||
 |Sdílet metaúložiště mezi různými clustery?|Ano||
-|Dekonstruovat úlohy?|Nahraďte úloh Hive Sparkových úloh||
-|Pro Orchestrace dat pomocí ADF?|Ne||
+|Dekonstruovat úlohy?|Výměna úloh podregistru pomocí úloh Spark||
+|Chcete použít ADF pro orchestraci dat?|Ne||
 
 ## <a name="next-steps"></a>Další postup
 
 Přečtěte si další článek v této sérii:
 
-- [Osvědčené postupy architektury pro místní migrace Azure HDInsight Hadoop](apache-hadoop-on-premises-migration-best-practices-architecture.md)
+- [Osvědčené postupy architektury pro migraci z místního prostředí do Azure HDInsight Hadoop](apache-hadoop-on-premises-migration-best-practices-architecture.md)

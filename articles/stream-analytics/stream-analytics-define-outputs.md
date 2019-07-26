@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/31/2019
-ms.openlocfilehash: 854fd5ca2bb6c27b7f8815bf85e19c6cf147e475
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: a0da13e82811d500dee50c2231500245c7e011a6
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68278044"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68383444"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Vysvětlení vytvořené jako výstupy z Azure Stream Analytics
 
@@ -70,7 +70,7 @@ Následující tabulka uvádí seznam názvů vlastností a jejich popis pro vyt
 
 ## <a name="blob-storage-and-azure-data-lake-gen2"></a>Úložiště objektů BLOB a Azure Data Lake Gen2
 
-Výstup do Azure Data Lake Gen2 se nabízí jako funkce Public Preview.
+Výstup do Azure Data Lake Gen2 se nabízí jako funkce ve verzi Preview v omezených oblastech po celém světě. Můžete požádat o přístup k verzi Preview poskytnutím dalších podrobností ve [formuláři žádosti](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2EUNXd_ZNJCq_eDwZGaF5VURjFLTDRGS0Q4VVZCRFY5MUVaTVJDTkROMi4u).
 
 Azure Blob Storage nabízí nákladově efektivní a škálovatelné řešení pro ukládání velkých objemů nestrukturovaných dat v cloudu. Úvod do úložiště objektů BLOB a jeho použití najdete v tématu [nahrání, stažení a výpis objektů BLOB pomocí Azure Portal](../storage/blobs/storage-quickstart-blobs-portal.md).
 
@@ -116,7 +116,7 @@ Pro konfiguraci datových proudů z Center událostí jako výstupu potřebujete
 | Název centra událostí | Název výstupu centra událostí. |
 | Název zásady centra událostí | Zásady sdíleného přístupu, které můžete vytvořit na kartě **Konfigurace** centra událostí. Každá zásada sdíleného přístupu má název, že je nastavená oprávnění a přístupové klíče. |
 | Klíč zásad centra událostí | Sdílený přístupový klíč, který se používá k ověření přístupu k oboru názvů centra událostí. |
-| Sloupec klíče oddílu | Volitelné. Sloupec obsahující klíč oddílu pro výstup centra událostí |
+| Sloupec s klíčem oddílu | Volitelné. Sloupec obsahující klíč oddílu pro výstup centra událostí |
 | Formát serializace události | Formát serializace pro výstupní data. JSON, CSV nebo Avro, jsou podporovány. |
 | Kódování | CSV a JSON UTF-8 je jediný podporovaný formát kódování v tuto chvíli. |
 | Oddělovač | Platí pouze pro serializaci CSV. Stream Analytics podporuje celou řadu běžných oddělovačů pro serializaci dat ve formátu CSV. Podporované hodnoty jsou čárka, středník, místa, karty a svislá čára. |
@@ -176,7 +176,7 @@ Double | Double | Řetězec | Řetězec | Double
 Řetězec | String | String | String | Řetězec 
 Datum a čas | Řetězec | Řetězec |  Datum a čas | Řetězec
 
-## <a name="table-storage"></a>Úložiště Table
+## <a name="table-storage"></a>Úložiště tabulek
 
 [Azure Table Storage](../storage/common/storage-introduction.md) nabízí vysoce dostupné, široce škálovatelné úložiště, aby se aplikace mohla automaticky škálovat tak, aby splňovala požadavky uživatelů. Table Storage je úložiště NoSQLch klíčů a atributů od Microsoftu, které můžete použít pro strukturovaná data s menším omezením schématu. Azure Table storage můžete použít k ukládání dat pro trvalost a efektivní načtení.
 
@@ -248,7 +248,7 @@ Následující tabulka popisuje vlastnosti pro vytvoření výstup Azure Cosmos 
 | Alias pro výstup | Alias pro najdete na tomto výstup v dotazu Stream Analytics. |
 | Jímka | Azure Cosmos DB. |
 | Možnost importu | Zvolte buď **možnost vybrat Cosmos DB z** předplatného, nebo **Zadejte Cosmos DB nastavení ručně**.
-| Account ID | Název nebo identifikátor URI koncového bodu účtu Azure Cosmos DB. |
+| ID účtu | Název nebo identifikátor URI koncového bodu účtu Azure Cosmos DB. |
 | Klíč účtu | Sdílený přístupový klíč pro účet Azure Cosmos DB. |
 | Databáze | Azure Cosmos DB název databáze. |
 | Název kontejneru | Název kontejneru, který se má použít, který musí existovat v Cosmos DB. Příklad:  <br /><ul><li> _MyContainer_: Musí existovat kontejner s názvem "MyContainer".</li>|
@@ -278,8 +278,8 @@ V situaci, kdy není žádné přistání události v časovém intervalu, není
 Sloupce dotazu můžete k odchozím zprávám připojit jako vlastnosti uživatele. Tyto sloupce neobsahují datovou část. Vlastnosti jsou k dispozici ve formě slovníku ve výstupní zprávě. *Klíč* je název sloupce a *hodnota* je hodnota sloupce ve slovníku Properties (vlastnosti). Všechny datové typy Stream Analytics jsou podporovány kromě záznamu a pole.  
 
 Podporované výstupy: 
-* Fronta Service Bus 
-* Service Bus téma 
+* Fronta služby Service Bus 
+* Téma služby Service Bus 
 * Centrum událostí 
 
 V následujícím příkladu přidáme dvě pole `DeviceId` a `DeviceStatus` metadata. 

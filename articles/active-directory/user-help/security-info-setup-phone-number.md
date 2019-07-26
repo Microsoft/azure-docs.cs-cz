@@ -1,6 +1,6 @@
 ---
-title: Nastavení informací zabezpečení (preview) pro použití telefonní hovory – Azure Active Directory | Dokumentace Microsoftu
-description: Jak nastavit své bezpečnostní údaje ověřit svoji identitu pomocí telefonních hovorů.
+title: Nastavte informace o zabezpečení (Preview), aby se používaly telefonní hovory – Azure Active Directory | Microsoft Docs
+description: Jak nastavit bezpečnostní údaje pro ověření identity pomocí telefonních hovorů.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -12,102 +12,109 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9c1620be30d8cdf3a592ab0fc118938783579689
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: fbac4f364dedc28f7d5f3e100481a56bde70b4d3
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60474931"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68382923"
 ---
-# <a name="set-up-security-info-preview-to-use-phone-calls"></a>Nastavení informací zabezpečení (preview) pro použití telefonních hovorů
-Provedením následujících kroků pro přidání dvoufaktorového ověřování a metody pro resetování hesla. Po nastavení tím prvním, můžete se vrátit k **bezpečnostní údaje** stránku chcete přidat, aktualizovat nebo odstranit informace o zabezpečení.
+# <a name="set-up-security-info-preview-to-use-phone-calls"></a>Nastavte informace o zabezpečení (Preview), aby se používaly telefonní hovory.
 
-Pokud se zobrazí výzva k nastavení ihned po přihlášení ke svému pracovnímu nebo školnímu účtu, najdete v podrobné kroky [nastavit své bezpečnostní údaje na přihlašovací stránce řádku](security-info-setup-signin.md) článku.
+Pomocí těchto kroků můžete přidat metody dvou faktorů ověřování a resetování hesla. Po prvním nastavení se můžete vrátit na stránku **bezpečnostní údaje** a přidat, aktualizovat nebo odstranit informace o zabezpečení.
+
+Pokud se zobrazí výzva k nastavení hned po přihlášení k pracovnímu nebo školnímu účtu, přečtěte si podrobný postup v článku [Nastavení bezpečnostních údajů z výzvy k zadání přihlašovací stránky](security-info-setup-signin.md) .
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-security-info.md)]
 
 > [!Note]
-> Informace o zabezpečení nepodporuje používání telefonní linky. I v případě, že přidáte správný formát, jsou odebrány 4255551234 + 1 X 12345, rozšíření předtím, než je umístěn volání.
-> 
-> Pokud nevidíte možnost Telefon, je možné, že vaše organizace nepovoluje budete moci použít telefonní číslo pro ověření. V takovém případě budete muset zvolit jinou metodu, nebo požádejte správce o další pomoc.
+> Informace o zabezpečení nepodporují používání telefonních rozšíření. I když přidáte správný formát, + 1 4255551234X12345, rozšíření budou odebrána před tím, než se volání umístí.
+>
+> Pokud nevidíte možnost telefonu, je možné, že vaše organizace neumožňuje používat pro ověření telefonní číslo. V takovém případě budete muset zvolit jinou metodu, nebo požádejte správce o další nápovědu.
 
-## <a name="set-up-phone-calls-from-the-security-info-page"></a>Nastavení telefonních hovorů na stránce informace o zabezpečení
-V závislosti na nastavení vaší organizace je možné použít telefonní hovory jako jeden z vašich metodách informace o zabezpečení.
+## <a name="set-up-phone-calls-from-the-security-info-page"></a>Nastavte telefonní hovory ze stránky bezpečnostní údaje.
+
+V závislosti na nastaveních vaší organizace možná budete moct používat telefonní hovory jako jednu z vašich metod bezpečnostních údajů.
 
 >[!Note]
->Pokud chcete bude doručena zpráva SMS místo telefonní hovor, postupujte podle kroků v [nastavení bezpečnostní údaje pro použití zasílání textových zpráv](security-info-setup-text-msg.md) článku.
+>Pokud chcete místo telefonního hovoru přijmout textovou zprávu, postupujte podle kroků v článku [Nastavení informací o zabezpečení pro použití zasílání textových zpráv](security-info-setup-text-msg.md) .
 
 ### <a name="to-set-up-phone-calls"></a>Nastavení telefonních hovorů
 
-1. Přihlaste se ke svému pracovnímu nebo školnímu účtu a potom přejděte k vaší https://myprofile.microsoft.com/ stránky.
+1. Přihlaste se ke svému pracovnímu nebo školnímu účtu a https://myprofile.microsoft.com/ pak přejít na stránku.
 
-    ![Můj profil stránky zobrazující zvýrazněný odkazy informace o zabezpečení](media/security-info/securityinfo-myprofile-page.png)
+    ![Stránka můj profil zobrazující odkazy na zvýrazněné informace o zabezpečení](media/security-info/securityinfo-myprofile-page.png)
 
-2. Vyberte **bezpečnostní údaje** v levém navigačním podokně nebo z odkazu v **bezpečnostní údaje** blokovat a pak vyberte **přidejte metodu** z **bezpečnostní údaje**  stránky.
+2. V levém navigačním podokně nebo na odkaz v bloku **informací o** zabezpečení vyberte možnost **informace o zabezpečení** a pak vyberte **Přidat metodu** ze stránky **bezpečnostní údaje** .
 
-    ![Stránka informace o zabezpečení s zvýrazněnou možností přidat – metoda](media/security-info/securityinfo-myprofile-addmethod-page.png)
+    ![Stránka informace o zabezpečení se zvýrazněnou možností přidat metodu](media/security-info/securityinfo-myprofile-addmethod-page.png)
 
-3. Na **přidejte metodu** stránce **Phone** z rozevíracího seznamu a pak vyberte **přidat**.
+3. Na stránce **Přidat metodu** vyberte v rozevíracím seznamu možnost **telefon** a pak vyberte **Přidat**.
 
-    ![Přidat metodu pole s telefonem vybrané](media/security-info/securityinfo-myprofile-addphonetext.png)
+    ![Přidat pole metody s vybraným telefonem](media/security-info/securityinfo-myprofile-addphonetext.png)
 
-4. Na **Phone** stránky, zadejte telefonní číslo pro vaše mobilní zařízení, zvolte **zavolat mi**a pak vyberte **Další**.
+4. Na stránce **telefon** zadejte telefonní číslo mobilního zařízení, zvolte **zavolat mi**a pak vyberte **Další**.
 
-    ![Přidat telefonní číslo a zvolte možnost telefonní hovory](media/security-info/securityinfo-myprofile-phonecall-addnumber.png)
+    ![Přidat telefonní číslo a vybrat telefonní hovory](media/security-info/securityinfo-myprofile-phonecall-addnumber.png)
 
-5. Stačí odpovědět ověřovací telefonní hovor na telefonní číslo, které jste zadali a postupujte podle pokynů.
+5. Odpovězte na telefonní hovor pro ověření, odešlete na telefonní číslo, které jste zadali, a postupujte podle pokynů.
 
-    Změny stránky zobrazíte úspěchu.
+    Stránka se změní tak, aby zobrazovala úspěch.
 
-    ![Oznámením o úspěšné připojení telefonní číslo, obdržet telefonních hovorů a váš účet](media/security-info/securityinfo-myprofile-phonetext-success.png)
+    ![Oznámení o úspěšnosti, připojení telefonního čísla, volba pro příjem telefonních hovorů a váš účet](media/security-info/securityinfo-myprofile-phonetext-success.png)
 
-    Vaše bezpečnostní údaje se aktualizuje a telefonních hovorů můžete použít k ověření vaší identity při použití dvoustupňové ověření nebo heslo resetovat. Pokud chcete pro telefonní hovory výchozí metodu, najdete v článku [změnit výchozí metodu informace o zabezpečení](#change-your-default-security-info-method) části tohoto článku.
+    Vaše bezpečnostní údaje se aktualizují a můžete použít telefonní hovory k ověření vaší identity při použití dvoustupňového ověřování nebo resetování hesla. Pokud chcete nastavit telefonní hovory jako výchozí metodu, přečtěte si část [Změna výchozího způsobu zabezpečení informací](#change-your-default-security-info-method) v tomto článku.
 
-## <a name="delete-phone-calls-from-your-security-info-methods"></a>Odstranit telefonní hovory ze své metody informace o zabezpečení
-Pokud už nechcete používat telefonní hovory jako metoda informace o zabezpečení, můžete ho odebrat **bezpečnostní údaje** stránky.
+## <a name="delete-phone-calls-from-your-security-info-methods"></a>Odstraňte telefonní hovory z metod zabezpečení vašich údajů.
+
+Pokud již nechcete používat telefonní hovory jako metodu bezpečnostních údajů, můžete ji odebrat ze stránky **bezpečnostní údaje** .
 
 >[!Important]
->Pokud omylem odstraníte telefonní hovory, neexistuje žádný způsob, jak ji vrátit. Budete muset znovu, přidejte metodu podle kroků v [nastavení telefonních hovorů](#set-up-phone-calls-from-the-security-info-page) části tohoto článku.
+>Pokud omylem odstraníte telefonní hovory, neexistuje žádný způsob, jak to vrátit. Tuto metodu budete muset znovu přidat podle kroků uvedených v části [nastavit telefonní hovory](#set-up-phone-calls-from-the-security-info-page) v tomto článku.
 
-### <a name="to-delete-phone-calls"></a>Chcete-li odstranit telefonních hovorů
+### <a name="to-delete-phone-calls"></a>Postup odstranění telefonních hovorů
 
-1. Na **bezpečnostní údaje** stránky, vyberte **odstranit** odkaz **Phone** možnost.
+1. Na stránce **informace o zabezpečení** vyberte odkaz **Odstranit** vedle možnosti **telefon** .
 
-    ![Odkaz na metodu phone odstranit z bezpečnostní údaje](media/security-info/securityinfo-myprofile-phonetext-delete.png)
+    ![Odkaz pro odstranění metody Phone z bezpečnostních údajů](media/security-info/securityinfo-myprofile-phonetext-delete.png)
 
-2. Vyberte **Ano** ze seznamu potvrzení odstranění **Phone** číslo. Po odstranění své telefonní číslo, odebere se ze svých bezpečnostních údajů a dané zařízení zmizí z **bezpečnostní údaje** stránky. Pokud **Phone** je vaše výchozí metoda, výchozí hodnota se změní na jinou metodu k dispozici.
-    
-## <a name="change-your-default-security-info-method"></a>Změnit výchozí metodu informace o zabezpečení
-Pokud chcete telefonní hovory, bude výchozí metodu použitou při přihlášení k vašemu pracovního nebo školního účtu pomocí dvojúrovňového ověřování, nebo pro žádosti o resetování hesla, můžete ho z nastavit **bezpečnostní údaje** stránky.
+2. Chcete-li odstranit **telefonní** číslo, vyberte možnost **Ano** v potvrzovacím poli. Po odstranění telefonního čísla se z bezpečnostních údajů odstraní a zmizí ze stránky **bezpečnostní údaje** . Pokud je **telefon** výchozí metodou, výchozí nastavení se změní na jinou dostupnou metodu.
 
-### <a name="to-change-your-default-security-info-method"></a>Chcete-li změnit výchozí metodu informace o zabezpečení
+## <a name="change-your-default-security-info-method"></a>Změna výchozí metody zabezpečení údajů
 
-1. Na **bezpečnostní údaje** stránky, vyberte **změnu** odkaz **výchozí metody přihlašování** informace.
+Pokud chcete, aby telefonní hovory byly výchozí metodou, která se používá při přihlášení ke svému pracovnímu nebo školnímu účtu Pomocí dvojúrovňového ověřování nebo pro žádosti o resetování hesla, můžete ho nastavit na stránce **informace o zabezpečení** .
 
-    ![Změnit vazbu pro výchozí přihlašovací – metoda](media/security-info/securityinfo-myprofile-phonetext-defaultchange.png)
+### <a name="to-change-your-default-security-info-method"></a>Změna výchozí metody zabezpečení údajů
 
-2. Vyberte **Phone – volání ( *_your_phone_number_* )** z rozevíracího seznamu dostupných metod a pak vyberte **potvrdit**.
+1. Na stránce **informace o zabezpečení** vyberte odkaz **změnit** vedle informací o **výchozím způsobu přihlašování** .
 
-    ![Vyberte metodu pro přihlášení výchozí](media/security-info/securityinfo-myprofile-phonecall-changeddefault.png)
+    ![Odkaz pro změnu výchozí metody přihlašování](media/security-info/securityinfo-myprofile-phonetext-defaultchange.png)
 
-    Výchozí metoda použitá pro přihlašování změny **Phone – volání ( *_your_phone_number_* )** .
+2. V rozevíracím seznamu dostupných metod vyberte **telefonní hovor ( *_your_phone_number_* )** a pak vyberte **Potvrdit**.
 
-## <a name="additional-security-info-methods"></a>Další bezpečnostní údaje metody
-Máte další možnosti pro jak kontakty vaší organizace k ověření své identity na základě toho, co jste se snažíte udělat. Mezi možnosti patří:
+    ![Zvolit metodu pro výchozí přihlášení](media/security-info/securityinfo-myprofile-phonecall-changeddefault.png)
 
-- **Ověřovací aplikaci.** Stáhnout a použít ověřovací aplikaci získat oznámení o schválení nebo kódu náhodně generované schválení pro dvoustupňové ověření nebo heslo resetovat. Podrobné pokyny o tom, jak nastavit a začít používat aplikaci Microsoft Authenticator, naleznete v tématu [nastavení bezpečnostní údaje pro použití ověřovací aplikaci](security-info-setup-auth-app.md).
+    Výchozí metoda používaná pro změny přihlašování na **telefonní hovor ( *_your_phone_number_* )** .
 
-- **Text mobilní zařízení.** Zadejte číslo svého mobilního zařízení a dostat zprávu SMS, kód budete používat pro dvoustupňové ověřování nebo heslo resetovat. Podrobné pokyny o tom, jak ověřit vaši identitu pomocí textové zprávy (SMS), najdete v části [upravit informace o zabezpečení tak, aby pomocí textové zprávy (SMS)](security-info-setup-text-msg.md).
+## <a name="additional-security-info-methods"></a>Další metody zabezpečení
 
-- **E-mailovou adresu.** Zadejte svou pracovní nebo školní e-mailovou adresu, dostanete e-mail pro resetování hesla. Tato možnost není dostupná pro dvoustupňové ověřování. Podrobné pokyny o tom, jak nastavit e-mailu, najdete v části [nastavení bezpečnostní údaje pro použití e-mailu](security-info-setup-email.md).
+Máte k dispozici další možnosti, jak vaše organizace kontaktuje vaši identitu na základě toho, co se you're snaží. Mezi možnosti patří:
 
-- **Bezpečnostní otázky.** Odpověď na nějakou bezpečnostní otázky vytvořený vaším správcem ve vaší organizaci. Tato možnost je pouze k dispozici pro resetování hesla a ne pro dvoustupňové ověřování. Podrobné pokyny o tom, jak nastavit své bezpečnostní otázky, najdete v článku [nastavení bezpečnostní údaje na použít bezpečnostní otázky](security-info-setup-questions.md) článku.
-    
+- **Ověřovací aplikace** Stáhněte a použijte ověřovací aplikaci k získání oznámení o schválení nebo náhodně generovaného kódu schválení pro dvoustupňové ověřování nebo resetování hesla. Podrobné pokyny k nastavení a používání aplikace Microsoft Authenticator najdete v tématu [Nastavení bezpečnostních údajů pro použití ověřovací aplikace](security-info-setup-auth-app.md).
+
+- **Text mobilního zařízení** Zadejte číslo mobilního zařízení a získejte text jako kód, který budete používat pro dvoustupňové ověřování nebo resetování hesla. Podrobné pokyny, jak ověřit identitu pomocí textové zprávy (SMS), najdete v tématu [Nastavení bezpečnostních údajů pro použití zasílání textových zpráv (SMS)](security-info-setup-text-msg.md).
+
+- **Bezpečnostní klíč** Zaregistrujte svůj bezpečnostní klíč kompatibilní s Microsoftem a použijte ho spolu s kódem PIN pro dvoustupňové ověřování nebo resetování hesla. Podrobné pokyny, jak ověřit identitu pomocí bezpečnostního klíče, najdete v tématu [Nastavení bezpečnostních údajů pro použití bezpečnostního klíče](security-info-setup-security-key.md).
+
+- **E-mailová adresa** Zadejte svou pracovní nebo školní e-mailovou adresu, abyste získali e-mail pro resetování hesla. Tato možnost není k dispozici pro dvoustupňové ověřování. Podrobné pokyny k nastavení e-mailu najdete v tématu [Nastavení bezpečnostních údajů pro použití e-mailu](security-info-setup-email.md).
+
+- **Bezpečnostní otázky.** Odpovězte na některé bezpečnostní otázky, které vytvořil správce vaší organizace. Tato možnost je k dispozici pouze pro resetování hesla a nikoli pro dvoustupňové ověřování. Podrobné pokyny k nastavení bezpečnostních otázek najdete v článku [Nastavení bezpečnostních informací pro použití bezpečnostních otázek](security-info-setup-questions.md) .
+
     >[!Note]
-    >Pokud chybí některé z těchto možností, je pravděpodobně, protože vaše organizace nepovoluje tyto metody. Pokud je to tento případ, budete muset zvolit metodu k dispozici nebo požádejte správce o další pomoc.
+    >Pokud některé z těchto možností chybí, je to pravděpodobně proto, že vaše organizace tyto metody nepovoluje. Pokud se jedná o tento případ, budete muset zvolit dostupnou metodu nebo požádat správce o další nápovědu.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- Resetování hesla, pokud jste ztratíte nebo zapomenete, z [portál pro resetování hesel](https://passwordreset.microsoftonline.com/) nebo postupujte podle kroků v [obnovit heslo pracovního nebo školního](user-help-reset-password.md) článku.
+- Resetujte heslo, pokud jste ho ztratili nebo zapomněli z [portálu pro resetování hesla](https://passwordreset.microsoftonline.com/) , nebo postupujte podle pokynů v článku [resetování svého pracovního nebo školního hesla](user-help-reset-password.md) .
 
-- Získejte řešení potíží, tipy a nápovědu pro problémy s přihlášením v [nemůžete se přihlásit ke svému účtu Microsoft](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant) článku.
+- Získejte tipy pro řešení potíží a nápovědu k problémům s přihlášením v tématu se nemůžete [přihlásit k vašemu účet Microsoft](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant) .

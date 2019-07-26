@@ -1,6 +1,6 @@
 ---
-title: S názvem dovednosti kognitivního vyhledávání entit – Azure Search
-description: Extrahujte pojmenované entity pro uživatele, umístění a organizace z textu v kanálu služby Azure Search kognitivního vyhledávání.
+title: Dovednost pro vyhledávání pojmenovaných entit – Azure Search
+description: Extrahujte pojmenované entity pro osobu, umístění a organizaci z textu v kanálu vyhledávání Azure Searchho rozpoznávání.
 services: search
 manager: pablocas
 author: luiscabrer
@@ -11,59 +11,59 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: b7af4d0a48f002f7523def971a306d1fa2077c70
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4049f76fdbe4745f3c75c74bc49d8fecc43fb2cf
+ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65952030"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68347683"
 ---
-#    <a name="named-entity-recognition-cognitive-skill"></a>Pojmenované rozpoznávání entit kognitivních dovedností
+#    <a name="named-entity-recognition-cognitive-skill"></a>Vnímání znalostí rozpoznávání pojmenovaných entit
 
-**Rozpoznávání entit s názvem** dovednosti z textu extrahuje pojmenované entity. Dostupné entity zahrnují `person`, `location` a `organization`.
+Dovednost pro **rozpoznávání pojmenovaných entit** extrahuje pojmenované entity z textu. Dostupné entity zahrnují typy `person`, `location` a `organization`.
 
 > [!IMPORTANT]
-> Rozpoznávání pojmenovaných entit dovedností se vyřazuje teď nahrazuje [Microsoft.Skills.Text.EntityRecognitionSkill](cognitive-search-skill-entity-recognition.md). Podpora zastaví na 15. února 2019 a rozhraní API se odebralo z produktu v 2. května 2019. Postupujte podle doporučení v [zastaralé kognitivního vyhledávání dovednosti](cognitive-search-skill-deprecated.md) migrovat do podporovaných dovedností.
+> Dovednost pro rozpoznávání pojmenovaných entit je teď přerušená [Microsoft. dovednosti. text. EntityRecognitionSkill](cognitive-search-skill-entity-recognition.md). Podpora se zastavila 15. února 2019 a rozhraní API se z produktu odebralo 2. května 2019. Pokud chcete migrovat na podporovanou dovednost, postupujte podle doporučení v části nepoužívané poznatky pro [vyhledávání v rozpoznávání](cognitive-search-skill-deprecated.md) .
 
 > [!NOTE]
-> Jak můžete rozšířit rozsah zvýšení četnosti zpracování, přidání více dokumentů nebo přidání další algoritmy AI, budete muset [připojení účtovaných prostředku služeb Cognitive Services](cognitive-search-attach-cognitive-services.md). Poplatky se účtují při volání rozhraní API ve službě Cognitive Services a extrakci image jako součást fáze hádání dokumentu ve službě Azure Search. Neúčtují žádné poplatky pro extrakci textu z dokumentů.
+> Když rozbalíte rozsah zvýšením četnosti zpracování, přidáním dalších dokumentů nebo přidáním dalších algoritmů AI, budete muset [připojit fakturovatelné Cognitive Services prostředku](cognitive-search-attach-cognitive-services.md). Poplatky se účtují při volání rozhraní API v Cognitive Services a pro extrakci obrázků jako součást fáze pro vystavování dokumentů v Azure Search. Pro extrakci textu z dokumentů se neúčtují žádné poplatky.
 >
-> Provádění předdefinované dovednosti, se účtuje za stávající [přejít ceny služeb Cognitive Services, platit jako můžete](https://azure.microsoft.com/pricing/details/cognitive-services/). Ceny za extrakce Image je popsaný na [stránce s cenami Azure Search](https://go.microsoft.com/fwlink/?linkid=2042400).
+> Při provádění integrovaných dovedností se účtují poplatky za stávající [Cognitive Services průběžných plateb](https://azure.microsoft.com/pricing/details/cognitive-services/). Ceny za extrakci obrázků jsou popsány na [stránce s cenami Azure Search](https://go.microsoft.com/fwlink/?linkid=2042400).
 
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Text.NamedEntityRecognitionSkill
 
 ## <a name="data-limits"></a>Omezení dat
-Maximální velikost záznamu by měla být 50 000 znaků pohledu `String.Length`. Pokud je potřeba rozdělit data před odesláním k extrakci klíčových frází, zvažte použití [dovedností rozdělit textové](cognitive-search-skill-textsplit.md).
+Maximální velikost záznamu musí být 50 000 znaků měřených podle [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length). Pokud potřebujete data před odesláním do extraktoru klíčové fráze rozdělit, zvažte použití [dovednosti rozdělení textu](cognitive-search-skill-textsplit.md).
 
-## <a name="skill-parameters"></a>Parametry dovedností
+## <a name="skill-parameters"></a>Parametry dovednosti
 
-Parametry rozlišují malá a velká písmena.
+V parametrech jsou rozlišována malá a velká písmena.
 
 | Název parametru     | Popis |
 |--------------------|-------------|
-| categories    | Pole kategorií, které má být extrahován.  Typy možných kategorií: `"Person"`, `"Location"`, `"Organization"`. Pokud je k dispozici žádná kategorie, budou vráceny všechny typy.|
-|defaultLanguageCode |  Kód jazyka vstupního textu. Jsou podporovány následující jazyky: `de, en, es, fr, it`|
-| minimumPrecision  | Číslo mezi 0 a 1. Pokud přesnost je menší než tato hodnota, se vrátí entity. Výchozí hodnota je 0.|
+| Kategorie    | Pole kategorií, které mají být extrahovány.  Možné typy kategorií: `"Person"`, `"Location"`, `"Organization"`. Pokud není zadána žádná kategorie, jsou vráceny všechny typy.|
+|defaultLanguageCode |  Kód jazyka vstupního textu Podporují se tyto jazyky:`de, en, es, fr, it`|
+| minimumPrecision  | Číslo mezi 0 a 1. Pokud je přesnost nižší než tato hodnota, entita se nevrátí. Výchozí hodnota je 0.|
 
 ## <a name="skill-inputs"></a>Vstupy dovedností
 
 | Název vstupu      | Popis                   |
 |---------------|-------------------------------|
 | languageCode  | Volitelné. Výchozí hodnota je `"en"`.  |
-| text          | Text k analýze.          |
+| text          | Text, který se má analyzovat          |
 
 ## <a name="skill-outputs"></a>Výstupy dovedností
 
-| Název výstupního     | Popis                   |
+| Název výstupu     | Popis                   |
 |---------------|-------------------------------|
-| osoby      | Pole řetězců, přičemž každý řetězec představuje jméno osoby. |
+| obyvatel      | Pole řetězců, kde každý řetězec představuje jméno osoby. |
 | locations  | Pole řetězců, kde každý řetězec představuje umístění. |
-| organizations  | Pole řetězců, přičemž každý řetězec představuje organizace. |
-| Entity | Pole komplexních typů. Každý komplexní typ obsahuje následující pole: <ul><li>kategorie (`"person"`, `"organization"`, nebo `"location"`)</li> <li>hodnota (název skutečné entity)</li><li>posun (umístění, kde se nachází v textu)</li><li>spolehlivosti (hodnotu mezi 0 a 1, který představuje tuto jistotu, že hodnota je skutečné entity)</li></ul> |
+| organizations  | Pole řetězců, kde každý řetězec představuje organizaci. |
+| entity | Pole komplexních typů. Každý komplexní typ obsahuje následující pole: <ul><li>kategorie (`"person"`, `"organization"`nebo) `"location"`</li> <li>Value (skutečný název entity)</li><li>posun (umístění, kde byl nalezen v textu)</li><li>důvěra (hodnota mezi 0 a 1, která představuje jistotu, že hodnota je skutečnou entitou)</li></ul> |
 
-##  <a name="sample-definition"></a>Ukázková definice
+##  <a name="sample-definition"></a>Definice vzorku
 
 ```json
   {
@@ -84,7 +84,7 @@ Parametry rozlišují malá a velká písmena.
     ]
   }
 ```
-##  <a name="sample-input"></a>Ukázkový vstup
+##  <a name="sample-input"></a>Vzorový vstup
 
 ```json
 {
@@ -153,11 +153,11 @@ Parametry rozlišují malá a velká písmena.
 ```
 
 
-## <a name="error-cases"></a>Případy chyb
-Pokud kód jazyka pro dokument není podporován, vrátí se chyba a jsou extrahovány žádné entity.
+## <a name="error-cases"></a>Chybové případy
+Pokud kód jazyka pro dokument není podporován, je vrácena chyba a nejsou extrahovány žádné entity.
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také:
 
 + [Předdefinované dovednosti](cognitive-search-predefined-skills.md)
-+ [Definování dovedností](cognitive-search-defining-skillset.md)
-+ [Dovednosti rozpoznávání entit](cognitive-search-skill-entity-recognition.md)
++ [Jak definovat dovednosti](cognitive-search-defining-skillset.md)
++ [Dovednost pro rozpoznávání entit](cognitive-search-skill-entity-recognition.md)

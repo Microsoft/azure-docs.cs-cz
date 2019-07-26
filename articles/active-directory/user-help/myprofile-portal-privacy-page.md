@@ -1,6 +1,6 @@
 ---
-title: Zobrazit informace týkající se ochrany osobních údajů z portálu Můj profil (preview) – Azure Active Directory | Dokumentace Microsoftu
-description: Základní přehled o stránce o ochraně osobních údajů na portálu Můj profil.
+title: Zobrazit informace související s ochranou osobních údajů z portálu Můj profil (Preview) – Azure Active Directory | Microsoft Docs
+description: Přehled vysoké úrovně na stránce soukromí na portálu Můj profil.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -12,31 +12,33 @@ ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dbfcab7900a1552a46341ec71b8b0ea4b41b0bce
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 31847f3cc47ddf1ed784263a543e94ebca454222
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60474692"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68382967"
 ---
-# <a name="view-your-privacy-related-info-from-the-my-profile-preview-portal"></a>Zobrazit vaše informace týkající se ochrany osobních údajů z portálu Můj profil (preview)
-Můžete zobrazit, jak vaše organizace používá data z **ochrany osobních údajů** stránku **Můj profil** portálu.
+# <a name="view-your-privacy-related-info-from-the-my-profile-preview-portal"></a>Zobrazit informace související s ochranou osobních údajů z portálu Můj profil (Preview)
+
+To, jak vaše organizace používá vaše data, můžete zobrazit na stránce **soukromí** na portálu **můj profil** .
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-myprofile.md)]
 
 ## <a name="view-your-privacy-related-info"></a>Zobrazení informací souvisejících s ochranou osobních údajů
-1. Přihlaste se ke svému pracovnímu nebo školnímu účtu a potom přejděte k vaší https://myprofile.microsoft.com/ stránky.
 
-2. Vyberte **ochrany osobních údajů** z levého navigačního podokna nebo vyberte **Kontrola ochrany osobních údajů** propojit **ochrany osobních údajů** bloku.
+1. Přihlaste se ke svému pracovnímu nebo školnímu účtu a https://myprofile.microsoft.com/ pak přejít na stránku.
 
-    ![Stránka Moje profilu zobrazující zvýrazněný odkazy ochrany osobních údajů](media/myprofile-portal/myprofile-portal-privacy.png)
+2. V levém navigačním podokně vyberte **Ochrana osobních** údajů nebo vyberte odkaz **zkontrolovat soukromí** z bloku **osobních údajů** .
 
-3. Přečtěte si informace, včetně:
+    ![Stránka můj profil zobrazující zvýrazněné odkazy na ochranu osobních údajů](media/myprofile-portal/myprofile-portal-privacy.png)
 
-    - **Služby.** Seznam služeb online services, které jste připojeni, pomocí pracovního nebo školního účtu.
+3. Projděte si informace, včetně:
 
-    - **Podmínky použití**. Vaše organizace podmínky použití.
+    - **Orgány.** Seznam online služby, ke kterým jste se připojili pomocí svého pracovního nebo školního účtu.
+
+    - **Podmínky použití**. Podmínek použití vaší organizace.
 
 ## <a name="next-steps"></a>Další postup
 
-- Po zobrazení, jak vaše organizace používá data, můžete vybrat možnost zobrazovat a spravovat vaše [bezpečnostní údaje](user-help-security-info-overview.md), vašich připojených [zařízení](myprofile-portal-devices-page.md), nebo vaše [organizace](myprofile-portal-organizations-page.md).
+- Po zobrazení, jak vaše organizace používá vaše data, můžete vybrat zobrazení nebo správu vašich [bezpečnostních údajů](user-help-security-info-overview.md), připojených [zařízení](myprofile-portal-devices-page.md)nebo vašich [organizací](myprofile-portal-organizations-page.md).

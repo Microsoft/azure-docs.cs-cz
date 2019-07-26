@@ -1,48 +1,48 @@
 ---
-title: 'Ve verzi Preview: vytvoření kontejneru Windows serveru v clusteru Azure Kubernetes Service (AKS)'
-description: Zjistěte, jak rychle vytvořit Kubernetes cluster, nasazení aplikace v kontejneru Windows Server ve službě Azure Kubernetes Service (AKS) pomocí Azure CLI.
+title: Preview – vytvoření kontejneru Windows serveru v clusteru služby Azure Kubernetes (AKS)
+description: Naučte se rychle vytvořit cluster Kubernetes a nasadit aplikaci v kontejneru Windows serveru ve službě Azure Kubernetes Service (AKS) pomocí rozhraní příkazového řádku Azure CLI.
 services: container-service
-author: tylermsft
+author: mlearned
 ms.service: container-service
 ms.topic: article
 ms.date: 06/17/2019
-ms.author: twhitney
-ms.openlocfilehash: b753d643b4651cd6665b5b85dcb8b7c5f0b3583d
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.author: mlearned
+ms.openlocfilehash: 305901007180cfb197cf5c0dfb338800449560a1
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67444130"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68382026"
 ---
-# <a name="preview---create-a-windows-server-container-on-an-azure-kubernetes-service-aks-cluster-using-the-azure-cli"></a>Ve verzi Preview: vytvoření kontejneru Windows serveru v clusteru Azure Kubernetes Service (AKS) pomocí rozhraní příkazového řádku Azure
+# <a name="preview---create-a-windows-server-container-on-an-azure-kubernetes-service-aks-cluster-using-the-azure-cli"></a>Preview – vytvoření kontejneru Windows serveru v clusteru služby Azure Kubernetes (AKS) pomocí rozhraní příkazového řádku Azure
 
-Azure Kubernetes Service (AKS) je spravovaná služba, která vám umožní rychle nasadit a spravovat clustery Kubernetes. V tomto článku nasadíte cluster AKS pomocí Azure CLI. Ukázková aplikace ASP.NET v kontejneru Windows serveru se také nasadit do clusteru.
+Služba Azure Kubernetes Service (AKS) je spravovaná služba Kubernetes, která umožňuje rychle nasadit a spravovat clustery. V tomto článku nasadíte cluster AKS pomocí Azure CLI. V kontejneru Windows serveru také nasadíte ukázkovou aplikaci ASP.NET do clusteru.
 
 Tato funkce je aktuálně ve verzi Preview.
 
 ![Obrázek přechodu na ukázkovou aplikaci ASP.NET](media/windows-container/asp-net-sample-app.png)
 
-Tento článek předpokládá základní znalost konceptů Kubernetes. Další informace najdete v tématu [Kubernetes pro Azure Kubernetes Service (AKS) základní koncepty][kubernetes-concepts].
+V tomto článku se předpokládá základní znalost konceptů Kubernetes. Další informace najdete v tématu [základní koncepty Kubernetes pro Azure Kubernetes Service (AKS)][kubernetes-concepts].
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, tento článek vyžaduje použití Azure CLI verze 2.0.61 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][azure-cli-install].
+Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít spuštěnou verzi Azure CLI 2.0.61 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][azure-cli-install].
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
-Po vytvoření clusteru, který může spouštět kontejnery Windows serveru, je nutné přidat fond dalšího uzlu. Přidání fondu dalšího uzlu je popsáno v pozdějším kroku, ale je nejprve potřeba povolit několik funkcí ve verzi preview.
+Po vytvoření clusteru, který může spouštět kontejnery Windows serveru, musíte přidat další fond uzlů. Přidání dalšího fondu uzlů je zahrnuto v pozdějším kroku, ale nejdřív musíte povolit několik funkcí verze Preview.
 
 > [!IMPORTANT]
-> Funkce AKS ve verzi preview jsou samoobslužných služeb, vyjádřit výslovný souhlas. Jsou poskytovány shromažďovat zpětnou vazbu a chyb z naší komunitě. Ve verzi preview nejsou tyto funkce určené k použití v produkčním prostředí. Funkce ve verzi public preview spadají pod "co možná nejlepší" podporu. Pomoc od týmů AKS technická podpora je k dispozici během pracovní doby tichomořské časové pásmo (PST) pouze. Další informace najdete v tématu následující články o podpoře:
+> Funkce služby AKS ve verzi Preview jsou samoobslužné a výslovný souhlas. Jsou k dispozici za účelem shromažďování názorů a chyb od naší komunity. Ve verzi Preview nejsou tyto funkce určeny pro použití v produkčním prostředí. Funkce ve verzi Public Preview spadají pod podporu nejlepšího úsilí. Pomoc od týmů technické podpory AKS je k dispozici pouze během pracovní doby tichomořského časového pásma (PST). Další informace najdete v následujících článcích podpory:
 >
 > * [Zásady podpory AKS][aks-support-policies]
 > * [Nejčastější dotazy k podpoře Azure][aks-faq]
 
-### <a name="install-aks-preview-cli-extension"></a>Instalace rozšíření aks ve verzi preview rozhraní příkazového řádku
+### <a name="install-aks-preview-cli-extension"></a>Nainstalovat rozšíření CLI AKS-Preview
 
-Pokud chcete používat kontejnery Windows serveru, musíte *aks ve verzi preview* CLI verze rozšíření 0.4.1 nebo vyšší. Nainstalujte *aks ve verzi preview* pomocí rozšíření Azure CLI [přidat rozšíření az][az-extension-add] command, then check for any available updates using the [az extension update][az-extension-update] příkaz::
+Pokud chcete používat kontejnery Windows serveru, potřebujete rozšíření CLI *AKS-Preview* verze 0.4.1 nebo vyšší. Nainstalujte rozšíření Azure CLI *AKS-Preview* pomocí příkazu [AZ Extension Add][az-extension-add] command, then check for any available updates using the [az extension update][az-extension-update] ::
 
 ```azurecli-interactive
 # Install the aks-preview extension
@@ -52,24 +52,24 @@ az extension add --name aks-preview
 az extension update --name aks-preview
 ```
 
-### <a name="register-windows-preview-feature"></a>Funkce ve verzi preview registru Windows
+### <a name="register-windows-preview-feature"></a>Registrovat funkci Windows Preview
 
-K vytvoření clusteru AKS, můžete použít více fondy uzlů a spouštění kontejnerů Windows serveru, nejprve povolit *WindowsPreview* funkcí příznaky v rámci předplatného. *WindowsPreview* funkce také používá clustery s několika uzly fondu a škálovací sady pro správu nasazení a konfigurace uzlů Kubernetes virtuálních počítačů. Zaregistrovat *WindowsPreview* pomocí příznak funkce [az funkce register][az-feature-register] příkaz, jak je znázorněno v následujícím příkladu:
+Pokud chcete vytvořit cluster AKS, který může používat víc fondů uzlů a spustit kontejnery Windows serveru, nejdřív Povolte ve svém předplatném příznaky funkcí *WindowsPreview* . Funkce *WindowsPreview* používá k řízení nasazení a konfigurace uzlů Kubernetes taky clustery s více uzly a sadu škálování virtuálního počítače. Pomocí příkazu [AZ Feature Register][az-feature-register] Zaregistrujte příznak funkce *WindowsPreview* , jak je znázorněno v následujícím příkladu:
 
 ```azurecli-interactive
 az feature register --name WindowsPreview --namespace Microsoft.ContainerService
 ```
 
 > [!NOTE]
-> Libovolný cluster AKS, vytvoříte po úspěšném zaregistrování *WindowsPreview* tento cluster prostředí ve verzi preview použít příznak funkce. Pokračujte k vytvoření clusterů pravidelných a plně podporované nepovolí funkce ve verzi preview na předplatná pro produkční prostředí. Používejte samostatný testovací nebo vývojové předplatné Azure pro testování funkcí ve verzi preview.
+> Libovolný cluster AKS, který vytvoříte po úspěšném zaregistrování příznaku funkce *WindowsPreview* , použijte tuto verzi Preview prostředí clusteru. Pokud chcete pokračovat v vytváření běžných, plně podporovaných clusterů, nepovolujte funkce ve verzi Preview v produkčních předplatných. Pro testování funkcí ve verzi Preview použijte samostatný test nebo vývojové předplatné Azure.
 
-Trvá několik minut, než registraci dokončit. Podívejte se na stav registrace pomocí [seznam funkcí az][az-feature-list] příkaz:
+Dokončení registrace trvá několik minut. Pomocí příkazu [AZ Feature list][az-feature-list] ověřte stav registrace.
 
 ```azurecli-interactive
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/WindowsPreview')].{Name:name,State:properties.state}"
 ```
 
-Pokud je stav registrace `Registered`, stiskněte kombinaci kláves Ctrl-C se zastavit monitorování stavu.  Potom aktualizujte registraci *Microsoft.ContainerService* poskytovatele prostředků pomocí [az provider register][az-provider-register] příkaz:
+Když je `Registered`stav registrace, stisknutím kombinace kláves CTRL + C zastavíte monitorování stavu.  Potom aktualizujte registraci poskytovatele prostředků *Microsoft. ContainerService* pomocí příkazu [AZ Provider Register][az-provider-register] :
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.ContainerService
@@ -77,32 +77,32 @@ az provider register --namespace Microsoft.ContainerService
 
 ### <a name="limitations"></a>Omezení
 
-Při vytváření a správě AKS clustery, které podporují více fondy uzlů se vztahují následující omezení:
+Při vytváření a správě clusterů AKS, které podporují více fondů uzlů, platí následující omezení:
 
-* Jsou k dispozici v případě clusterů vytvořených po úspěšném zaregistrování více fondy uzlů *WindowsPreview*. Více fondy uzlů jsou také k dispozici, když si zaregistrujete *MultiAgentpoolPreview* a *VMSSPreview* funkce pro vaše předplatné. Nelze přidat nebo spravovat fondy uzlů s existující cluster AKS vytvořili předtím, než tyto funkce byly úspěšně registrovány.
-* Nelze odstranit první fond uzlů.
+* Pro clustery vytvořené po úspěšném zaregistrování služby *WindowsPreview*jsou k dispozici více fondů uzlů. Při registraci funkcí *MultiAgentpoolPreview* a *VMSSPreview* pro vaše předplatné jsou k dispozici také více fondů uzlů. Nemůžete přidat ani spravovat fondy uzlů s existujícím clusterem AKS vytvořeným před tím, než se tyto funkce úspěšně zaregistrovaly.
+* Nemůžete odstranit první fond uzlů.
 
-Tato funkce je ve verzi preview, platí následující další omezení:
+I když je tato funkce ve verzi Preview, platí následující další omezení:
 
-* AKS cluster může mít maximálně osm fondy uzlů.
-* AKS cluster můžou mít maximálně 400 uzlů ve fondech osmi uzlů.
-* Název fondu uzel Windows Server má limit 6 znaků.
+* Cluster AKS může mít maximálně osm fondů uzlů.
+* Cluster AKS může mít maximálně 400 uzlů v těchto osmi fondech uzlů.
+* Název fondu uzlů Windows serveru má maximálně 6 znaků.
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-Skupina prostředků Azure je logická skupina, ve které se nasazují a spravují prostředky Azure. Při vytváření skupiny prostředků se zobrazí výzva k zadání umístění. Toto umístění je uložení metadat skupiny prostředků, je také kde prostředky běží v Azure, pokud nezadáte jiné oblasti při vytváření prostředku. Abyste vytvořili skupinu prostředků pomocí [vytvořit skupiny az][az-group-create] příkazu.
+Skupina prostředků Azure je logická skupina, ve které se nasazují a spravují prostředky Azure. Při vytváření skupiny prostředků se zobrazí výzva k zadání umístění. V tomto umístění se ukládají metadata skupin prostředků, a to i v případě, že se vaše prostředky spouštějí v Azure, pokud při vytváření prostředků nezadáte jinou oblast. Vytvořte skupinu prostředků pomocí příkazu [AZ Group Create][az-group-create] .
 
 Následující příklad vytvoří skupinu prostředků *myResourceGroup* v umístění *eastus*.
 
 > [!NOTE]
-> Tento článek používá syntaxi Bash pro příkazy v tomto kurzu.
-> Pokud používáte Azure Cloud Shell, ujistěte se, že rozevíracího seznamu v levém horním rohu okna služby Cloud Shell je nastaven na **Bash**.
+> Tento článek používá syntaxi bash pro příkazy v tomto kurzu.
+> Pokud používáte Azure Cloud Shell, ujistěte se, že rozevírací seznam v levém horním rohu okna Cloud Shell je nastaven na **bash**.
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
 ```
 
-Následující příklad výstupu ukazuje úspěšně vytvořili skupinu prostředků:
+Následující příklad výstupu ukazuje, že skupina prostředků byla úspěšně vytvořena:
 
 ```json
 {
@@ -120,11 +120,11 @@ Následující příklad výstupu ukazuje úspěšně vytvořili skupinu prostř
 
 ## <a name="create-an-aks-cluster"></a>Vytvoření clusteru AKS
 
-Chcete-li spustit cluster AKS, který podporuje fondy uzlů pro kontejnery Windows serveru, musí používat síťové zásady, které používá váš cluster [Azure CNI][azure-cni-about] (advanced) network plugin. For more detailed information to help plan out the required subnet ranges and network considerations, see [configure Azure CNI networking][use-advanced-networking]. Použití [az aks vytvořit][az aks create] příkaz pro vytvoření clusteru AKS s názvem *myAKSCluster*. Tento příkaz vytvoří nezbytné síťovým prostředkům, pokud ještě neexistují.
-  * Cluster je nakonfigurovaný s jedním uzlem
-  * *Heslo správce systému windows* a *uživatelské jméno windows správce* parametry nastavit přihlašovací údaje správce pro všechny kontejnery Windows serveru na clusteru vytvořený.
+Aby bylo možné spustit cluster AKS, který podporuje fondy uzlů pro kontejnery Windows serveru, musí cluster používat zásady sítě, které používají [Azure CNI][azure-cni-about] (advanced) network plugin. For more detailed information to help plan out the required subnet ranges and network considerations, see [configure Azure CNI networking][use-advanced-networking]. Pomocí příkazu [AZ AKS Create][AZ-AKS-Create] vytvořte cluster AKS s názvem *myAKSCluster*. Tento příkaz vytvoří nezbytné síťové prostředky, pokud neexistují.
+  * Cluster je nakonfigurovaný s jedním uzlem.
+  * Parametry *Windows-Admin-Password* a *Windows-admin-username* nastavily přihlašovací údaje správce pro všechny kontejnery Windows serveru vytvořené v clusteru.
 
-Zadejte vlastní zabezpečené *PASSWORD_WIN* (mějte na paměti, že příkazy v tomto článku se zadávají do prostředí BASH):
+Poskytněte vlastní zabezpečené *PASSWORD_WIN* (Nezapomeňte, že příkazy v tomto článku se zadávají do prostředí bash):
 
 ```azurecli-interactive
 PASSWORD_WIN="P@ssw0rd1234"
@@ -134,7 +134,7 @@ az aks create \
     --name myAKSCluster \
     --node-count 1 \
     --enable-addons monitoring \
-    --kubernetes-version 1.14.0 \
+    --kubernetes-version 1.14.1 \
     --generate-ssh-keys \
     --windows-admin-password $PASSWORD_WIN \
     --windows-admin-username azureuser \
@@ -143,14 +143,14 @@ az aks create \
 ```
 
 > [!Note]
-> Pokud se zobrazí chyba ověření heslo, zkuste vytvořit skupinu prostředků v jiné oblasti.
-> Pak zkuste vytvořit cluster s novou skupinu prostředků.
+> Pokud se zobrazí chyba ověřování hesla, zkuste vytvořit skupinu prostředků v jiné oblasti.
+> Pak zkuste cluster vytvořit s novou skupinou prostředků.
 
-Po několika minutách se příkaz dokončí a vrátí hodnotu ve formátu JSON informace o clusteru.
+Po několika minutách se příkaz dokončí a vrátí informace o clusteru ve formátu JSON.
 
-## <a name="add-a-windows-server-node-pool"></a>Přidat fond uzlů Windows Server
+## <a name="add-a-windows-server-node-pool"></a>Přidat fond uzlů Windows serveru
 
-Ve výchozím nastavení se vytvoří AKS cluster pomocí fond uzlů, který může spouštět kontejnery Linuxu. Použití `az aks nodepool add` příkaz pro přidání dalšího uzlu fondu, který může spouštět kontejnery Windows serveru.
+Ve výchozím nastavení se cluster AKS vytvoří s fondem uzlů, který může spouštět kontejnery Linux. Pomocí `az aks nodepool add` příkazu můžete přidat další fond uzlů, který může spouštět kontejnery Windows serveru.
 
 ```azurecli
 az aks nodepool add \
@@ -159,20 +159,20 @@ az aks nodepool add \
     --os-type Windows \
     --name npwin \
     --node-count 1 \
-    --kubernetes-version 1.14.0
+    --kubernetes-version 1.14.1
 ```
 
-Výše uvedený příkaz vytvoří nový fond uzel s názvem *npwin* a přidá jej do *myAKSCluster*. Když vytváříte fond uzlů pro spouštění kontejnerů Windows serveru, výchozí hodnota pro *velikost virtuálního počítače uzlu* je *Standard_D2s_v3*. Pokud budete chtít nastavit *velikost virtuálního počítače uzlu* parametr, Zkontrolujte prosím seznam [velikosti virtuálních počítačů s omezením pomocí specifikátoru][restricted-vm-sizes]. Minimální doporučená velikost je *Standard_D2s_v3*. Výše uvedený příkaz také používá výchozí podsíť ve virtuální síti výchozí vytvořit při spuštění `az aks create`.
+Výše uvedený příkaz vytvoří nový fond uzlů s názvem *npwin* a přidá ho do *myAKSCluster*. Při vytváření fondu uzlů pro spouštění kontejnerů Windows serveru je výchozí hodnota pro *Node-VM-Size* *Standard_D2s_v3*. Pokud se rozhodnete nastavit parametr *Node-VM-Size* , zkontrolujte prosím seznam [omezených velikostí virtuálních počítačů][restricted-vm-sizes]. Minimální doporučená velikost je *Standard_D2s_v3*. Výše uvedený příkaz používá také výchozí podsíť ve výchozí virtuální síti vytvořené při spuštění `az aks create`.
 
 ## <a name="connect-to-the-cluster"></a>Připojení ke clusteru
 
-Ke správě clusteru Kubernetes použijete [kubectl][kubectl], klienta příkazového řádku Kubernetes. Pokud používáte Azure Cloud Shell, `kubectl` je již nainstalována. Chcete-li nainstalovat `kubectl` místně, použijte [az aks install-cli][az-aks-install-cli] příkaz:
+Ke správě clusteru Kubernetes použijete klienta příkazového řádku Kubernetes [kubectl][kubectl]. Pokud používáte Azure Cloud Shell, `kubectl` je již nainstalováno. Pokud chcete `kubectl` nainstalovat místně, použijte příkaz [AZ AKS Install-CLI][az-aks-install-cli] :
 
 ```azurecli
 az aks install-cli
 ```
 
-Ke konfiguraci `kubectl` pro připojení k vašemu clusteru Kubernetes, použijte [az aks get-credentials][az-aks-get-credentials] příkazu. Tento příkaz stáhne přihlašovací údaje a nakonfiguruje rozhraní příkazového řádku Kubernetes pro jejich použití.
+Pokud chcete `kubectl` nakonfigurovat připojení ke clusteru Kubernetes, použijte příkaz [AZ AKS Get-Credentials][az-aks-get-credentials] . Tento příkaz stáhne pověření a nakonfiguruje rozhraní příkazového řádku Kubernetes pro jejich použití.
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
@@ -184,21 +184,21 @@ Pokud chcete ověřit připojení ke clusteru, použijte příkaz [kubectl get][
 kubectl get nodes
 ```
 
-Následující příklad výstupu ukazuje jeden uzel vytvořený v předchozích krocích. Ujistěte se, zda je stav uzlu *připravené*:
+Následující příklad výstupu ukazuje jeden uzel vytvořený v předchozích krocích. Ujistěte se, že stav uzlu je *připravený*:
 
 ```
 NAME                                STATUS   ROLES   AGE    VERSION
-aks-nodepool1-12345678-vmssfedcba   Ready    agent   13m    v1.14.0
-aksnpwin987654                      Ready    agent   108s   v1.14.0
+aks-nodepool1-12345678-vmssfedcba   Ready    agent   13m    v1.14.1
+aksnpwin987654                      Ready    agent   108s   v1.14.1
 ```
 
 ## <a name="run-the-application"></a>Spuštění aplikace
 
-Soubor manifestu Kubernetes definuje požadovaný stav clusteru, například jaké kontejneru obrázků ke spuštění. V tomto článku manifest slouží k vytvoření všech objektů potřebných ke spuštění ukázkové aplikace ASP.NET v kontejneru Windows serveru. Zahrnuje tento manifest [nasazení Kubernetes][kubernetes-deployment] for the ASP.NET sample application and an external [Kubernetes service][kubernetes-service] přístup k aplikaci z Internetu.
+Soubor manifestu Kubernetes definuje požadovaný stav clusteru, například jaké image kontejnerů se mají spustit. V tomto článku se k vytvoření všech objektů potřebných ke spuštění ukázkové aplikace ASP.NET v kontejneru Windows serveru používá manifest. Tento manifest obsahuje [nasazení][kubernetes-deployment] for the ASP.NET sample application and an external [Kubernetes service][kubernetes-service] Kubernetes pro přístup k aplikaci z Internetu.
 
-Ukázková aplikace ASP.NET je k dispozici jako součást [rozhraní .NET Framework – ukázky][dotnet-samples] a běží v kontejneru Windows serveru. AKS vyžaduje systém Windows Server kontejnery založený na obrázky *systému Windows Server 2019* nebo vyšší. Musíte také definovat soubor manifestu Kubernetes [uzlu selektoru][node-selector] říct clusteru AKS ke spuštění pod ASP.NET ukázkovou aplikaci prvku na uzlu, který může spouštět kontejnery Windows serveru.
+Ukázková aplikace ASP.NET se poskytuje jako součást [ukázek .NET Framework][dotnet-samples] a běží v kontejneru Windows serveru. AKS vyžaduje, aby kontejnery Windows serveru byly založené na imagí *Windows serveru 2019* nebo vyšší. Soubor manifestu Kubernetes musí také definovat [selektor uzlů][node-selector] , aby mohl cluster AKS spustit na uzlu, na kterém je možné spustit kontejnery Windows serveru, na kterém je spuštěná vaše ukázková aplikace ASP.NET.
 
-Vytvořte soubor s názvem `sample.yaml` a zkopírujte do následující definice YAML. Pokud používáte Azure Cloud Shell, můžete tento soubor vytvořit pomocí `vi` nebo `nano` stejně jako kdybyste pracovali na virtuálním nebo fyzickém systému:
+Vytvořte soubor s názvem `sample.yaml` a zkopírujte ho do následující definice YAML. Pokud Azure Cloud Shell použijete, můžete tento soubor vytvořit pomocí `vi` nebo `nano` jako při práci na virtuálním nebo fyzickém systému:
 
 ```yaml
 apiVersion: apps/v1
@@ -246,13 +246,13 @@ spec:
     app: sample
 ```
 
-Nasazení aplikace pomocí [použití kubectl][kubectl-apply] příkaz a zadejte název vašeho YAML manifestu:
+Nasaďte aplikaci pomocí příkazu [kubectl Apply][kubectl-apply] a zadejte název manifestu YAML:
 
 ```azurecli-interactive
 kubectl apply -f sample.yaml
 ```
 
-Následující příklad výstupu ukazuje nasazení a služby se úspěšně vytvořil:
+Následující příklad výstupu ukazuje, že se úspěšně vytvořilo nasazení a služba:
 
 ```
 deployment.apps/sample created
@@ -261,7 +261,7 @@ service/sample created
 
 ## <a name="test-the-application"></a>Testování aplikace
 
-Při spuštění aplikace, služba Kubernetes poskytuje front-endu aplikace k Internetu. Dokončení tohoto procesu může trvat několik minut.
+Když je aplikace spuštěná, služba Kubernetes zpřístupňuje front-end aplikace na internetu. Dokončení tohoto procesu může trvat několik minut.
 
 Pomocí příkazu [kubectl get service][kubectl-get] s argumentem `--watch` můžete sledovat průběh.
 
@@ -269,42 +269,42 @@ Pomocí příkazu [kubectl get service][kubectl-get] s argumentem `--watch` mů�
 kubectl get service sample --watch
 ```
 
-Zpočátku *EXTERNAL-IP* pro *ukázka* služby se zobrazuje jako *čekající*.
+Zpočátku je *externí IP adresa* *ukázkové* služby zobrazená jako *čeká na vyřízení*.
 
 ```
 NAME               TYPE           CLUSTER-IP   EXTERNAL-IP   PORT(S)        AGE
 sample             LoadBalancer   10.0.37.27   <pending>     80:30572/TCP   6s
 ```
 
-Když *EXTERNAL-IP* adresa se změní z *čekající* skutečné veřejnou IP adresu, použijte `CTRL-C` Zastavit `kubectl` sledujte proces. Následující příklad výstupu ukazuje platnou veřejnou IP adresu přiřazené příslušné službě:
+Pokud se *IP* adresa změní z *čekání* na skutečnou veřejnou IP adresu, použijte `CTRL-C` k zastavení `kubectl` procesu sledování. Následující příklad výstupu ukazuje platnou veřejnou IP adresu přiřazenou ke službě:
 
 ```
 sample  LoadBalancer   10.0.37.27   52.179.23.131   80:30572/TCP   2m
 ```
 
-Pokud chcete zobrazit ukázkovou aplikaci v akci, otevřete webový prohlížeč na externí IP adresu vaší služby.
+Pokud chcete vidět ukázkovou aplikaci v akci, otevřete webový prohlížeč na externí IP adresu vaší služby.
 
 ![Obrázek přechodu na ukázkovou aplikaci ASP.NET](media/windows-container/asp-net-sample-app.png)
 
-## <a name="delete-cluster"></a>Odstranění clusteru
+## <a name="delete-cluster"></a>Odstranit cluster
 
-Pokud už cluster nepotřebujete, použijte [odstranění skupiny az][az-group-delete] příkazu k odebrání skupiny prostředků, služby kontejneru a všech souvisejících prostředků.
+Pokud už cluster nepotřebujete, odeberte skupinu prostředků, službu kontejneru a všechny související prostředky pomocí příkazu [AZ Group Delete][az-group-delete] .
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --yes --no-wait
 ```
 
 > [!NOTE]
-> Při odstranění clusteru se neodebere instanční objekt služby Azure Active Directory používaný clusterem AKS. Pokyny o tom, jak odebrat instanční objekt služby, najdete v článku [hlavní aspekty a odstranění služby AKS][sp-delete].
+> Při odstranění clusteru se neodebere instanční objekt služby Azure Active Directory používaný clusterem AKS. Postup odebrání instančního objektu najdete v tématu [AKS a informace o instančním objektu a jejich odstranění][sp-delete].
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto článku nasadili Kubernetes cluster a ukázkové aplikace ASP.NET v kontejneru Windows Server v něm nasazené. [Přístup k řídicímu panelu Kubernetes webové][kubernetes-dashboard] pro cluster, který jste právě vytvořili.
+V tomto článku jste nasadili cluster Kubernetes a do něj jste nasadili ukázkovou aplikaci ASP.NET v kontejneru Windows serveru. Přihlaste [se k webovému řídicímu panelu Kubernetes][kubernetes-dashboard] pro cluster, který jste právě vytvořili.
 
 Další informace o službě AKS a podrobné vysvětlení kompletního příkladu od kódu až po nasazení najdete v kurzu clusteru Kubernetes.
 
 > [!div class="nextstepaction"]
-> [Kurz AKS][aks-tutorial]
+> [Kurz k AKS][aks-tutorial]
 
 <!-- LINKS - external -->
 [kubectl]: https://kubernetes.io/docs/user-guide/kubectl/

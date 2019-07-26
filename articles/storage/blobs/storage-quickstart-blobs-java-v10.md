@@ -1,20 +1,20 @@
 ---
-title: 'Rychlý Start Azure: Vytvoření objektu BLOB v úložišti objektů pomocí sady Java Storage SDK v10 za účelem | Microsoft Docs'
+title: 'Rychlý start: Vytvoření objektu BLOB pomocí sady SDK pro úložiště Java'
 description: V tomto rychlém startu vytvoříte kontejner v úložišti objektů (Azure Blob), nahrajete soubor a vypíšete a stáhnete objekty pomocí sady Java Storage SDK.
 services: storage
 author: mhopkins-msft
-ms.custom: mvc
+ms.custom: mvc, seo-java-july2019
 ms.service: storage
 ms.topic: quickstart
 ms.date: 11/14/2018
 ms.author: mhopkins
 ms.reviewer: seguler
-ms.openlocfilehash: 2aa004ffa98730341c8de105f16feea6e3931a86
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 96da1f8903896f932fa63aa8497eaff69f893559
+ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326689"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68489670"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-by-using-the-java-storage-sdk-v10"></a>Rychlý start: Nahrávání, stahování a výpis objektů BLOB pomocí sady Java Storage SDK v10 za účelem
 

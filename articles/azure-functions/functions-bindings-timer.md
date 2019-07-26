@@ -1,6 +1,6 @@
 ---
-title: Trigger časovače pro službu Azure Functions
-description: Vysvětlení použití aktivačních časovačích ve službě Azure Functions.
+title: Aktivační událost časovače pro Azure Functions
+description: Vysvětlení použití aktivačních událostí časovače v Azure Functions.
 services: functions
 documentationcenter: na
 author: craigshoemaker
@@ -13,32 +13,32 @@ ms.topic: reference
 ms.date: 09/08/2018
 ms.author: cshoe
 ms.custom: ''
-ms.openlocfilehash: 1a26950f355fd10d9dd502851886a8b8101d4a83
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: ef02c8120775aa119aff44ff7a06bccf2bc70a21
+ms.sourcegitcommit: b49431b29a53efaa5b82f9be0f8a714f668c38ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67508273"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68377342"
 ---
-# <a name="timer-trigger-for-azure-functions"></a>Trigger časovače pro službu Azure Functions 
+# <a name="timer-trigger-for-azure-functions"></a>Aktivační událost časovače pro Azure Functions 
 
-Tento článek vysvětluje, jak pracovat s aktivačními událostmi časovače ve službě Azure Functions. Trigger časovače umožňuje spouštět funkce podle plánu. 
+Tento článek vysvětluje, jak pracovat s triggery časovače v Azure Functions. Aktivační událost časovače umožňuje spustit funkci podle plánu. 
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
 ## <a name="packages---functions-1x"></a>Balíčky – funkce 1.x
 
-Trigger časovače je k dispozici v [Microsoft.Azure.WebJobs.Extensions](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions) balíčku NuGet, verze 2.x. Zdrojový kód pro tento balíček je v [azure webjobs sdk rozšíření](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions/Extensions/Timers/) úložiště GitHub.
+Aktivační událost časovače je k dispozici v balíčku NuGet [Microsoft. Azure. WebJobs. Extensions](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions) , verze 2. x. Zdrojový kód balíčku je v úložišti GitHub [Azure-WebJobs-SDK-Extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions/Extensions/Timers/) .
 
 [!INCLUDE [functions-package-auto](../../includes/functions-package-auto.md)]
 
 ## <a name="packages---functions-2x"></a>Balíčky – funkce 2.x
 
-Trigger časovače je k dispozici v [Microsoft.Azure.WebJobs.Extensions](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions) balíčku NuGet, verze 3.x. Zdrojový kód pro tento balíček je v [azure webjobs sdk rozšíření](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/) úložiště GitHub.
+Aktivační událost časovače je k dispozici v balíčku NuGet [Microsoft. Azure. WebJobs. Extensions.](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions) Version 3. x. Zdrojový kód balíčku je v úložišti GitHub [Azure-WebJobs-SDK-Extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/) .
 
 [!INCLUDE [functions-package-auto](../../includes/functions-package-auto.md)]
 
-## <a name="example"></a>Příklad:
+## <a name="example"></a>Příklad
 
 Podívejte se na příklad specifické pro jazyk:
 
@@ -49,9 +49,9 @@ Podívejte se na příklad specifické pro jazyk:
 * [JavaScript](#javascript-example)
 * [Python](#python-example)
 
-### <a name="c-example"></a>Příklad jazyka C#
+### <a name="c-example"></a>C#případě
 
-Následující příklad ukazuje [ C# funkce](functions-dotnet-class-library.md) , který je proveden při každém spuštění minuty mají hodnotu dělitelné podle pět (třeba Pokud funkci začne v 18:57:00, se další výkon v 19:00:00). [ `TimerInfo` ](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/TimerInfo.cs) Objekt je předán do funkce.
+Následující příklad ukazuje [ C# funkci](functions-dotnet-class-library.md) , která se spustí pokaždé, když minuty mají hodnotu dělitelnou pěti (např. Pokud funkce začíná na 18:57:00, bude další výkon na 19:00:00). [`TimerInfo`](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/TimerInfo.cs) Objekt je předán do funkce.
 
 ```cs
 [FunctionName("TimerTriggerCSharp")]
@@ -65,9 +65,9 @@ public static void Run([TimerTrigger("0 */5 * * * *")]TimerInfo myTimer, ILogger
 }
 ```
 
-### <a name="c-script-example"></a>Ukázkový skript jazyka C#
+### <a name="c-script-example"></a>C#Příklad skriptu
 
-Následující příklad ukazuje vazby v časovacího triggeru *function.json* souboru a [funkce skriptu jazyka C#](functions-reference-csharp.md) , který používá vazba. Funkce zapíše do protokolu určující, zda je toto volání funkce z důvodu chybějící plán výskyt. [ `TimerInfo` ](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/TimerInfo.cs) Objekt je předán do funkce.
+Následující příklad ukazuje vazbu triggeru časovače v souboru *Function. JSON* a [ C# funkci skriptu](functions-reference-csharp.md) , která používá vazbu. Funkce zapíše protokol, který označuje, zda je vyvolání této funkce způsobeno chybějícím výskytem plánu. [`TimerInfo`](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/TimerInfo.cs) Objekt je předán do funkce.
 
 Zde je vazba dat v *function.json* souboru:
 
@@ -93,9 +93,9 @@ public static void Run(TimerInfo myTimer, ILogger log)
 }
 ```
 
-### <a name="f-example"></a>F#Příklad
+### <a name="f-example"></a>F#případě
 
-Následující příklad ukazuje časovacího triggeru vazby ve *function.json* souboru a [ F# skriptu funkce](functions-reference-fsharp.md) , který používá vazba. Funkce zapíše do protokolu určující, zda je toto volání funkce z důvodu chybějící plán výskyt. [ `TimerInfo` ](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/TimerInfo.cs) Objekt je předán do funkce.
+Následující příklad ukazuje vazbu triggeru časovače v souboru *Function. JSON* a [ F# funkci skriptu](functions-reference-fsharp.md) , která používá vazbu. Funkce zapíše protokol, který označuje, zda je vyvolání této funkce způsobeno chybějícím výskytem plánu. [`TimerInfo`](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/TimerInfo.cs) Objekt je předán do funkce.
 
 Zde je vazba dat v *function.json* souboru:
 
@@ -118,9 +118,9 @@ let Run(myTimer: TimerInfo, log: ILogger ) =
     log.LogInformation(sprintf "F# function executed at %s!" now)
 ```
 
-### <a name="java-example"></a>Příklad pro jazyk Java
+### <a name="java-example"></a>Příklad Java
 
-Následující příklad funkci aktivuje a spustí každých pět minut. `@TimerTrigger` Poznámka k funkci definuje plán stejný řetězec formátu jako [výrazů CRON](https://en.wikipedia.org/wiki/Cron#CRON_expression).
+Následující ukázková funkce se spustí a provede každých pět minut. Poznámka na funkci definuje plán pomocí stejného formátu řetězce jako [cron výrazy.](https://en.wikipedia.org/wiki/Cron#CRON_expression) `@TimerTrigger`
 
 ```java
 @FunctionName("keepAlive")
@@ -133,9 +133,9 @@ public void keepAlive(
 }
 ```
 
-### <a name="javascript-example"></a>Příklad v jazyce JavaScript
+### <a name="javascript-example"></a>Příklad JavaScriptu
 
-Následující příklad ukazuje časovacího triggeru vazby ve *function.json* souboru a [funkce jazyka JavaScript](functions-reference-node.md) , který používá vazba. Funkce zapíše do protokolu určující, zda je toto volání funkce z důvodu chybějící plán výskyt. A [objekt časovače](#usage) je předán do funkce.
+Následující příklad ukazuje vazbu triggeru časovače v souboru *Function. JSON* a [funkci JavaScriptu](functions-reference-node.md) , která používá vazbu. Funkce zapíše protokol, který označuje, zda je vyvolání této funkce způsobeno chybějícím výskytem plánu. Do funkce se předává [objekt Timer](#usage) .
 
 Zde je vazba dat v *function.json* souboru:
 
@@ -164,9 +164,9 @@ module.exports = function (context, myTimer) {
 };
 ```
 
-### <a name="python-example"></a>Příklad v Pythonu
+### <a name="python-example"></a>Příklad Pythonu
 
-Následující příklad používá aktivaci časovačem vazby, jejíž konfigurace je popsáno v *function.json* souboru. Skutečný [funkce Pythonu](functions-reference-python.md) používá vazba je popsána v  *__init__.py* souboru. Objekt předaný do funkce je typu [azure.functions.TimerRequest objekt](/python/api/azure-functions/azure.functions.timerrequest). Funkce logic zapíše do protokolů určující, zda je aktuální volání z důvodu chybějící plán výskyt. 
+Následující příklad používá vazbu triggeru časovače, jejíž konfigurace je popsána v souboru *Function. JSON* . Skutečná [funkce jazyka Python](functions-reference-python.md) , která používá vazbu, je popsána v souboru  *__init__. py* . Objekt předaný do funkce je typu [objekt Azure. Functions. TimerRequest](/python/api/azure-functions/azure.functions.timerrequest). Logika funkce zapisuje do protokolů, které označují, zda je aktuální vyvolání způsobeno chybějícím plánovaným výskytem. 
 
 Zde je vazba dat v *function.json* souboru:
 
@@ -200,9 +200,9 @@ def main(mytimer: func.TimerRequest) -> None:
 
 ## <a name="attributes"></a>Atributy
 
-V [knihoven tříd C#](functions-dotnet-class-library.md), použijte [TimerTriggerAttribute](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/TimerTriggerAttribute.cs).
+V [ C# knihovně tříd](functions-dotnet-class-library.md)použijte [TimerTriggerAttribute](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/TimerTriggerAttribute.cs).
 
-Konstruktor atributu má výraz CRONU nebo `TimeSpan`. Můžete použít `TimeSpan` pouze v případě, že aplikace function app běží na plán služby App Service. Následující příklad ukazuje výraz CRON:
+Konstruktor atributu přebírá výraz CRON nebo `TimeSpan`. Můžete použít `TimeSpan` jenom v případě, že aplikace Function App běží v plánu App Service. Následující příklad ukazuje výraz CRON:
 
 ```csharp
 [FunctionName("TimerTriggerCSharp")]
@@ -216,27 +216,27 @@ public static void Run([TimerTrigger("0 */5 * * * *")]TimerInfo myTimer, ILogger
 }
  ```
 
-## <a name="configuration"></a>Konfigurace
+## <a name="configuration"></a>Konfiguraci
 
 Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v *function.json* souboru a `TimerTrigger` atribut.
 
 |Vlastnost Function.JSON | Vlastnost atributu |Popis|
 |---------|---------|----------------------|
-|**type** | neuvedeno | Musí být nastavena na "timerTrigger". Tato vlastnost je nastavena automaticky, když vytvoříte aktivační událost na webu Azure Portal.|
+|**type** | neuvedeno | Musí být nastavené na "timerTrigger". Tato vlastnost je nastavena automaticky, když vytvoříte aktivační událost na webu Azure Portal.|
 |**direction** | neuvedeno | Musí být nastavena na "in". Tato vlastnost je nastavena automaticky, když vytvoříte aktivační událost na webu Azure Portal. |
-|**Jméno** | neuvedeno | Název proměnné, který představuje objekt časovače v kódu funkce. | 
-|**schedule**|**ScheduleExpression**|A [výraz CRON](#cron-expressions) nebo [TimeSpan](#timespan) hodnotu. A `TimeSpan` lze použít pouze pro aplikaci function app, který běží na plán služby App Service. Můžete vložit výraz plán v nastavení aplikace a nastavte tuto vlastnost na název, který je obalen nastavení aplikace **%** znaky, jako v následujícím příkladu: "ScheduleAppSetting %". |
-|**runOnStartup**|**RunOnStartup**|Pokud `true`, funkce se vyvolala při spuštění modulu runtime. Například modul runtime spustí, když aplikace function app se obnoví po přepnutí do režimu nečinnosti z důvodu nečinnosti. aplikace function app při restartování z důvodu změn funkce a horizontálně navyšuje jeho kapacita aplikace function app. Takže **runOnStartup** je zřídka Pokud někdy třeba nastavit na `true`, zejména v produkčním prostředí. |
-|**useMonitor**|**UseMonitor**|Nastavte na `true` nebo `false` označující, jestli plán by se měly monitorovat. Plán monitorování nevyřeší výskytů plán vám pomůže zajistit, že plán zachovaný správně, i v případě restartování instance aplikace funkce. Pokud není nastavený explicitně, výchozí hodnota je `true` pro plány, které mají interval opakování větší než 1 minuta. Pro plány, které aktivují více než jednou za minutu, výchozí hodnota je `false`.
+|**Jméno** | neuvedeno | Název proměnné, která představuje objekt časovače v kódu funkce. | 
+|**schedule**|**ScheduleExpression**|[Výraz cron](#cron-expressions) nebo hodnota [TimeSpan](#timespan) . `TimeSpan` Dá se použít jenom pro aplikaci Function App, která běží na plánu App Service. Výraz plánu můžete zadat do nastavení aplikace a tuto vlastnost nastavit na název nastavení aplikace zabalené v **%** části znaky, jako v tomto příkladu: "% ScheduleAppSetting%". |
+|**runOnStartup**|**RunOnStartup**|Pokud `true`je funkce vyvolána při spuštění modulu runtime. Například modul runtime začíná, když se aplikace funkce probudí po přechodu do stavu nečinnosti z důvodu neaktivity. Když se aplikace Function App restartuje kvůli změnám funkcí a když se aplikace Function App škáluje. Takže **runOnStartup** by měl být zřídka nastavený na `true`, zejména v produkčním prostředí. |
+|**useMonitor**|**UseMonitor**|Nastavte na `true` nebo `false` , pokud chcete určit, jestli se má plán monitorovat. Plánování monitorování přetrvává i v případě, že dojde k podpoře při zajištění správné údržby plánu i v případě restartování instancí aplikace Function App. Pokud není explicitně nastaveno, je `true` výchozí hodnota pro plány, které mají interval opakování delší než 1 minuta. Pro plány, které se spouštějí více než jednou za minutu, je `false`výchozí hodnota.
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
 > [!CAUTION]
-> Nedoporučujeme nastavení **runOnStartup** k `true` v produkčním prostředí. Použití tohoto nastavení činí kód provést v časech s vysokou nepředvídatelné. V některých výrobní nastavení může způsobit tyto další spuštění výrazně vyšší náklady na aplikacím hostovaným v plánech spotřeby. Třeba index Mei **runOnStartup** povolena aktivační událost je vyvolána pokaždé, když se škálovat vaši aplikaci function app. Ujistěte se, že plně chápete chování produkční funkcí před povolením **runOnStartup** v produkčním prostředí.   
+> Doporučujeme nastavit **runOnStartup** na `true` v produkčním prostředí. Použití tohoto nastavení způsobí, že se kód spustí při velmi nepředvídatelných časech. V některých nastaveních produkčního prostředí můžou tato dodatečná spuštění vést k významně vyšším nákladům na aplikace hostované v plánech spotřeby. Například s povoleným **runOnStartup** je vyvolána Trigger při každé změně měřítka aplikace Function App. Než povolíte **runOnStartup** v produkčním prostředí, ujistěte se, že plně rozumíte provoznímu chování vašich funkcí.   
 
-## <a name="usage"></a>Využití
+## <a name="usage"></a>Použití
 
-Při vyvolání funkce pro aktivaci časovače časovače objekt je předán do funkce. Následující kód JSON je příklad reprezentace objektu časovače.
+Když je vyvolána funkce Trigger časovače, je do funkce předán objekt Timer. Následující kód JSON je příklad reprezentace objektu Timer.
 
 ```json
 {
@@ -251,96 +251,97 @@ Při vyvolání funkce pro aktivaci časovače časovače objekt je předán do 
 }
 ```
 
-`IsPastDue` Vlastnost `true` Pokud je novější než naplánované aktuální volání funkce. Například může dojít k restartování aplikace funkce vyvolání vynechání.
+`IsPastDue` Vlastnost je`true` v případě, že aktuální volání funkce je pozdější než naplánované. Například restartování aplikace funkce může způsobit, že by se vyvolání vynechalo.
 
-## <a name="cron-expressions"></a>Výrazů CRON 
+## <a name="cron-expressions"></a>Výrazy CRON 
 
-Azure Functions používá [NCronTab](https://github.com/atifaziz/NCrontab) knihovny interpretace výrazů CRON. Výraz CRONU obsahuje šest polí:
+Azure Functions používá knihovnu [NCronTab](https://github.com/atifaziz/NCrontab) k interpretaci výrazů cron. Výraz CRON obsahuje šest polí:
 
 `{second} {minute} {hour} {day} {month} {day-of-week}`
 
-Každé pole může mít jednu z následujících typů hodnot:
+Každé pole může mít jeden z následujících typů hodnot:
 
-|Type  |Příklad:  |Při aktivaci  |
+|type  |Příklad  |Při aktivaci  |
 |---------|---------|---------|
-|Konkrétní hodnota |<nobr>"0 5 * * * *"</nobr>|na hh:05:00, kde je hh každou hodinu (jednou za hodinu)|
-|Všechny hodnoty (`*`)|<nobr>"0 * 5 * * *"</nobr>|na 5:mm: 00 každý den, kdy mm se každou minutu v hodině (60 za den)|
-|Rozsah (`-` operátor)|<nobr>"5-7 * * * * *"</nobr>|na hh:mm:05 hh:mm:06 a hh:mm:07, kde je HH: mm každou minutu každou hodinu (3 x minuty)|  
-|Sadu hodnot (`,` operátor)|<nobr>"5,8,10 * * * * *"</nobr>|na hh:mm:05 hh:mm:08 a hh:mm:10, kde je HH: mm každou minutu každou hodinu (3 x minuty)|
-|Hodnota intervalu (`/` operátor)|<nobr>"0 */5 * * * *"</nobr>|mít hh:05:00 hh:10:00 hh:15:00, a tak dále prostřednictvím hh:55:00, kde je hh každou hodinu (12krát větší hodiny)|
+|Konkrétní hodnota |<nobr>"0 5 * * * *"</nobr>|v hh: 05:00, kde HH je každou hodinu (jednou za hodinu)|
+|Všechny hodnoty (`*`)|<nobr>"0 * 5 * * *"</nobr>|5: mm: 00 každý den, kde mm je každé minuty hodiny (60 dní)|
+|Rozsah (`-` operátor)|<nobr>"5-7 * * * * *"</nobr>|v hh: mm: 05, hh: mm: 06 a hh: mm: 07, kde hh: mm je každou minutu každou hodinu (3 hodiny za minutu)|  
+|Sada hodnot (`,` operator)|<nobr>"5,8,10 * * * * *"</nobr>|v hh: mm: 05, hh: mm: 08 a hh: mm: 10, kde hh: mm je každou minutu každou hodinu (3 hodiny za minutu)|
+|Hodnota intervalu (`/` operátor)|<nobr>"0 */5 * * * *"</nobr>|v hh: 05:00, hh: 10:00, hh: 15:00, a tak dále až hh: 55:00, kde HH je každou hodinu (12 krát za hodinu)|
 
 [!INCLUDE [functions-cron-expressions-months-days](../../includes/functions-cron-expressions-months-days.md)]
 
-### <a name="cron-examples"></a>Příklady procesu CRON
+### <a name="cron-examples"></a>Příklady CRON
 
-Tady je několik příkladů výrazů CRON, který můžete použít pro trigger časovače ve službě Azure Functions.
+Tady je několik příkladů CRON výrazů, které můžete použít pro aktivační událost časovače v Azure Functions.
 
-|Příklad:|Při aktivaci  |
+|Příklad|Při aktivaci  |
 |---------|---------|
 |`"0 */5 * * * *"`|každých pět minut|
-|`"0 0 * * * *"`|jednou v horní části každou hodinu|
+|`"0 0 * * * *"`|jednou na začátku každé hodiny|
 |`"0 0 */2 * * *"`|každé dvě hodiny|
-|`"0 0 9-17 * * *"`|každou hodinu od 9: 00 do 17: 00|
-|`"0 30 9 * * *"`|v 9:30:00 každý den|
-|`"0 30 9 * * 1-5"`|v 9:30:00 každý den v týdnu|
-|`"0 30 9 * Jan Mon"`|v 9:30:00 v lednu každé pondělí|
+|`"0 0 9-17 * * *"`|jednou za hodinu od 9:00 do 5 odp.|
+|`"0 30 9 * * *"`|každý den v 9:30.|
+|`"0 30 9 * * 1-5"`|v 9:30. každý den v týdnu|
+|`"0 30 9 * Jan Mon"`|v 9:30 ráno každé pondělí v lednu|
 >[!NOTE]   
->Můžete najít příklady výrazů CRON online, ale mnohé z nich vynechat, nechte `{second}` pole. Pokud zkopírujete z jednoho z nich, přidejte chybějící `{second}` pole. Obvykle je vhodné nulu v daném poli, není hvězdičku.
+>Příklady výrazů cron můžete najít online, ale mnoho z nich vynechává `{second}` pole. Pokud kopírujete z jednoho z nich, přidejte chybějící `{second}` pole. Obvykle v tomto poli budete chtít nulu, ne hvězdičku.
 
-### <a name="cron-time-zones"></a>CRON časových pásem
+### <a name="cron-time-zones"></a>CRON časová pásma
 
-Číslo ve výrazu CRON odkazovat na čas a datum, nejsou časové období. Například 5 v `hour` pole odkazuje na 5:00:00, ne každých 5 hodin.
+Čísla ve výrazu CRON odkazují na datum a čas, ne na časový rozsah. Například 5 v `hour` poli odkazuje na 5:00 dop. a ne každých 5 hodin.
 
-Výchozí časové pásmo použita pomocí výrazů CRON je koordinovaný univerzální čas (UTC). Pokud chcete, aby podle jiného časového pásma výrazu CRON, vytvořte nastavení aplikace pro vaši aplikaci function app s názvem `WEBSITE_TIME_ZONE`. Nastavte hodnotu na název požadovaného časového pásma, jak je znázorněno [Microsoft časové pásmo Index](https://technet.microsoft.com/library/cc749073). 
+Výchozí časové pásmo použité s výrazy CRON je koordinovaný světový čas (UTC). Pokud chcete mít výraz CRON založený na jiném časovém pásmu, vytvořte nastavení aplikace pro aplikaci Function App `WEBSITE_TIME_ZONE`s názvem. Nastavte hodnotu na název požadovaného časového pásma, jak je znázorněno v [indexu časového pásma Microsoftu](https://technet.microsoft.com/library/cc749073). 
 
-Například *východní oblast (běžný čas)* je UTC-05:00. Chcete-li mít časovače triggeru fire na 10:00 dop. každý den, použijte následující výraz CRON, který účty pro časové pásmo UTC:
+Například *východní běžný čas* je UTC-05:00. Pokud chcete, aby se aktivovala aktivační událost časovače v 10:00.., použijte následující výraz CRON, který obsahuje účty pro časové pásmo UTC:
 
 ```json
 "schedule": "0 0 15 * * *"
 ``` 
 
-Nebo vytvořit nastavení aplikace pro vaši aplikaci function app s názvem `WEBSITE_TIME_ZONE` a nastavte hodnotu na **východní oblast (běžný čas)** .  Poté použije následující výraz CRON: 
+Nebo vytvořte nastavení aplikace pro aplikaci Function App s názvem `WEBSITE_TIME_ZONE` a nastavte hodnotu na **východní běžný čas**.  Pak používá následující výraz CRON: 
 
 ```json
 "schedule": "0 0 10 * * *"
 ``` 
 
-Při použití `WEBSITE_TIME_ZONE`, dojde k přenastavení čas pro změny času v konkrétním časovém pásmu, jako je letní čas. 
+Když použijete `WEBSITE_TIME_ZONE`, čas se upraví pro časové změny v konkrétním časovém pásmu, jako je například letní čas. 
 
 ## <a name="timespan"></a>TimeSpan
 
- A `TimeSpan` lze použít pouze pro aplikaci function app, který běží na plán služby App Service.
+ `TimeSpan` Dá se použít jenom pro aplikaci Function App, která běží na plánu App Service.
 
-Na rozdíl od výrazu CRON `TimeSpan` hodnota určuje časový interval mezi každé volání funkce. Po dokončení funkce po spuštění delší než zadaný interval časovače okamžitě volá funkci znovu.
+Na rozdíl od výrazu `TimeSpan` cron hodnota určuje časový interval mezi voláním funkce. Jakmile se funkce dokončí po spuštění déle, než je zadaný interval, časovač okamžitě vyvolá funkci znovu.
 
-Vyjádřená jako řetězec, `TimeSpan` formát je `hh:mm:ss` při `hh` je kratší než 24. Pokud první dvě číslice 24 nebo novější, je ve formátu `dd:hh:mm`. Následuje několik příkladů:
+Vyjádřeno jako řetězec, `TimeSpan` formát je `hh:mm:ss` , pokud `hh` je menší než 24. Pokud jsou první dvě číslice 24 nebo větší, formát je `dd:hh:mm`. Následuje několik příkladů:
 
-|Příklad: |Při aktivaci  |
+|Příklad |Při aktivaci  |
 |---------|---------|
 |"01:00:00" | každou hodinu        |
 |"00:01:00"|každou minutu         |
-|"24:00:00" | každý den        |
+|"24:00:00" | každých 24 dní        |
+|"1,00:00:00" | každý den        |
 
 ## <a name="scale-out"></a>Škálování na víc systémů
 
-Pokud aplikaci function app škálovat do několika instancí, je spuštěna pouze jedna instance funkce aktivované pomocí časovače napříč všemi instancemi.
+Pokud se aplikace funkcí škáluje na více instancí, spustí se ve všech instancích jenom jedna instance funkce aktivované časovačem.
 
-## <a name="function-apps-sharing-storage"></a>Sdílení úložiště aplikace Function App
+## <a name="function-apps-sharing-storage"></a>Aplikace Function App pro sdílení úložiště
 
-Pokud sdílíte mezi více aplikací funkcí účet úložiště, ujistěte se, že každá aplikace function app má jinou `id` v *host.json*. Můžete vynechat `id` vlastnost nebo ručně nastavit vaší aplikace funkcí `id` na jinou hodnotu. Trigger časovače používá úložiště zámek k zajištění, že bude existovat pouze jedna instance časovač při aplikaci function app horizontálně navýší kapacitu na několik instancí. Pokud dvě aplikace function App sdílet stejný `id` a každý používá aktivaci časovačem, bude spuštěna pouze jedna časovače.
+Pokud sdílíte účet úložiště napříč více aplikacemi Function App, ujistěte se, že každá aplikace Function App má `id` v *Host. JSON*jiný. Můžete vynechat `id` vlastnost nebo ručně nastavit každou `id` aplikaci funkcí na jinou hodnotu. Aktivační událost časovače používá zámek úložiště k tomu, aby se zajistilo, že pokud se aplikace funkcí škáluje na více instancí, bude to mít jenom jednu instanci časovače. Pokud dvě aplikace Function App sdílí stejný `id` a každý z nich používá aktivační událost časovače, spustí se jenom jeden časovač.
 
 ## <a name="retry-behavior"></a>Chování opakování
 
-Na rozdíl od aktivační událost fronty trigger časovače nebude opakovat po selhání funkce. Pokud funkce selže, není volána znovu až do příštího podle plánu.
+Na rozdíl od triggeru fronty se aktivační událost časovače neopakuje po chybě funkce. Když funkce dojde k chybě, nebude znovu volána až do příštího plánu.
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
-Informace o tom, co dělat, když trigger časovače nebude fungovat podle očekávání, najdete v části [Investigating a hlášení problémů s časovačem aktivuje funkce se nespustí,](https://github.com/Azure/azure-functions-host/wiki/Investigating-and-reporting-issues-with-timer-triggered-functions-not-firing).
+Informace o tom, co dělat, když aktivační událost časovače nefunguje podle očekávání, najdete v tématu [zkoumání a hlášení problémů s aktivovanými funkcemi aktivované časovačem](https://github.com/Azure/azure-functions-host/wiki/Investigating-and-reporting-issues-with-timer-triggered-functions-not-firing).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Přejděte na rychlý start, která využívá trigger časovače](functions-create-scheduled-function.md)
+> [Přejít k rychlému startu, který používá aktivační událost časovače](functions-create-scheduled-function.md)
 
 > [!div class="nextstepaction"]
 > [Další informace o aktivačních událostech Azure functions a vazby](functions-triggers-bindings.md)

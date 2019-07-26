@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 07/18/2019
 ms.author: normesta
-ms.openlocfilehash: 4a8c69dc06b2de08016ae282413402061cdb89d1
-ms.sourcegitcommit: da0a8676b3c5283fddcd94cdd9044c3b99815046
+ms.openlocfilehash: fc2d7e4f611e1eee9c369ef26aa7bf66feb7c888
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68314390"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68385677"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Známé problémy s Azure Data Lake Storage Gen2
 
@@ -54,20 +54,9 @@ Pokud se zaregistrujete do veřejné verze Preview přístupu k více protokolů
 
 Tato část popisuje problémy a omezení s použitím rozhraní API objektů BLOB a rozhraní API pro Data Lake Storage Gen2 pro práci se stejnými daty.
 
-Tato rozhraní REST API pro objekty blob nejsou podporovaná:
-
-* [Vložit objekt BLOB (stránka)](https://docs.microsoft.com/rest/api/storageservices/put-blob)
-* [Vložit stránku](https://docs.microsoft.com/rest/api/storageservices/put-page)
-* [Získat rozsahy stránek](https://docs.microsoft.com/rest/api/storageservices/get-page-ranges)
-* [Objekt BLOB přírůstkového kopírování](https://docs.microsoft.com/rest/api/storageservices/incremental-copy-blob)
-* [Vložit stránku z adresy URL](https://docs.microsoft.com/rest/api/storageservices/put-page-from-url)
-* [Vložit objekt BLOB (připojit)](https://docs.microsoft.com/rest/api/storageservices/put-blob)
-* [Připojit blok](https://docs.microsoft.com/rest/api/storageservices/append-block)
-* [Připojit blok z adresy URL](https://docs.microsoft.com/rest/api/storageservices/append-block-from-url)
-
 * Rozhraní API objektů BLOB a rozhraní Data Lake Storage API nemůžete použít k zápisu do stejné instance souboru.
 
-* Pokud zapisujete do souboru pomocí Data Lake Storage Gen2 rozhraní API, pak bloky tohoto souboru nebudou viditelné pro volání rozhraní API objektů BLOB [Get Block](https://docs.microsoft.comrest/api/storageservices/get-block-list) .
+* Pokud zapisujete do souboru pomocí Data Lake Storage Gen2 rozhraní API, pak bloky tohoto souboru nebudou viditelné pro volání rozhraní API objektů BLOB [Get Block](https://docs.microsoft.com/rest/api/storageservices/get-block-list) .
 
 * Soubor můžete přepsat buď pomocí rozhraní API Data Lake Storage Gen2 nebo rozhraní API objektů BLOB. To nebude mít vliv na vlastnosti souboru.
 
@@ -78,6 +67,17 @@ Tato rozhraní REST API pro objekty blob nejsou podporovaná:
 * Použijete-li k odstranění adresáře rozhraní API pro [odstranění objektů BLOB](https://docs.microsoft.com/rest/api/storageservices/delete-blob) , bude tento adresář odstraněn pouze v případě, že je prázdný.
 
   To znamená, že nemůžete rekurzivně odstraňovat adresáře pomocí rozhraní BLOB API.
+
+Tato rozhraní REST API pro objekty blob nejsou podporovaná:
+
+* [Vložit objekt BLOB (stránka)](https://docs.microsoft.com/rest/api/storageservices/put-blob)
+* [Vložit stránku](https://docs.microsoft.com/rest/api/storageservices/put-page)
+* [Získat rozsahy stránek](https://docs.microsoft.com/rest/api/storageservices/get-page-ranges)
+* [Objekt BLOB přírůstkového kopírování](https://docs.microsoft.com/rest/api/storageservices/incremental-copy-blob)
+* [Vložit stránku z adresy URL](https://docs.microsoft.com/rest/api/storageservices/put-page-from-url)
+* [Vložit objekt BLOB (připojit)](https://docs.microsoft.com/rest/api/storageservices/put-blob)
+* [Připojit blok](https://docs.microsoft.com/rest/api/storageservices/append-block)
+* [Připojit blok z adresy URL](https://docs.microsoft.com/rest/api/storageservices/append-block-from-url)
 
 ## <a name="issues-with-unmanaged-virtual-machine-vm-disks"></a>Problémy s nespravovanými disky virtuálního počítače (VM)
 
@@ -94,12 +94,13 @@ Následující tabulka obsahuje seznam všech dalších funkcí a nástrojů, kt
 | **AzCopy** | Podpora specifická pro verzi <br><br>Použijte pouze nejnovější verzi AzCopy ([AzCopy v10 za účelem](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2ftables%2ftoc.json)). Starší verze AzCopy, jako je AzCopy v 8.1, nejsou podporovány.|
 | **Zásady správy životního cyklu služby Azure Blob Storage** | Podporováno pouze v případě, že se zaregistrujete do [přístupu s více protokoly na data Lake Storage](data-lake-storage-multi-protocol-access.md) Preview. Úrovně přístupu studené a archivní jsou podporovány pouze ve verzi Preview. Odstranění snímků objektů BLOB ještě není podporováno. |
 | **Azure Content Delivery Network (CDN)** | Zatím nepodporováno|
-| **Hledání Azure** |Zatím nepodporováno|
+| **Hledání Azure** |Podporováno pouze v případě, že se zaregistrujete do [přístupu s více protokoly na data Lake Storage](data-lake-storage-multi-protocol-access.md) Preview.|
 | **Azure Storage Explorer** | Podpora specifická pro verzi <br><br>Používejte pouze verzi `1.6.0` nebo vyšší. <br>Verze `1.6.0` je k dispozici [zdarma ke stažení](https://azure.microsoft.com/features/storage-explorer/).|
 | **Seznamy ACL kontejneru objektů BLOB** |Zatím nepodporováno|
 | **Blobfuse** |Zatím nepodporováno|
 | **Vlastní domény** |Zatím nepodporováno|
 | **Průzkumník systému souborů** | Omezená podpora |
+| **Protokolování diagnostiky** |Podporováno pouze v případě, že se zaregistrujete do [přístupu s více protokoly na data Lake Storage](data-lake-storage-multi-protocol-access.md) Preview.|
 | **Neměnné úložiště** |Zatím nepodporováno <br><br>Neměnné úložiště poskytuje možnost ukládat data v [červech (jeden způsob zápisu, čtení mnoha)](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutable-storage) .|
 | **Vrstvy na úrovni objektů** |Studené a archivní úrovně se podporují jenom v případě, že se zaregistrujete do [přístupu k více protokolům](data-lake-storage-multi-protocol-access.md) ve službě Data Lake Storage Preview. <br><br> Všechny ostatní úrovně přístupu ještě nejsou podporované.|
 | **Podpora PowerShellu a rozhraní příkazového řádku** | Omezená funkčnost <br><br>Podporují se operace správy, jako je vytváření účtu. Operace roviny dat, jako je například nahrávání a stahování souborů, jsou ve verzi Public Preview v rámci [přístupu k více protokolům na data Lake Storage](data-lake-storage-multi-protocol-access.md). Práce s adresáři a nastavování seznamů řízení přístupu (ACL) ještě není podporovaná. |

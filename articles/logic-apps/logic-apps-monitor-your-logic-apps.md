@@ -10,16 +10,16 @@ ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.assetid: 5c1b1e15-3b6c-49dc-98a6-bdbe7cb75339
 ms.date: 07/21/2017
-ms.openlocfilehash: 851943ad967a79a6800a899b31d0cf9f90a6889b
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
-ms.translationtype: HT
+ms.openlocfilehash: 840124a35ed4389699757e011aaf5d05a9400836
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68312241"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68385527"
 ---
 # <a name="monitor-status-set-up-diagnostics-logging-and-turn-on-alerts-for-azure-logic-apps"></a>Stav monitorování, nastavení protokolování diagnostiky a zapnutí výstrah pro Azure Logic Apps
 
-Po [Vytvoření a spuštění aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md)můžete kontrolovat jejich historii spuštění, historii triggerů, stav a výkon. Pro monitorování událostí v reálném čase a bohatší ladění nastavte [diagnostické protokolování](#azure-diagnostics) pro vaši aplikaci logiky. Tímto způsobem můžete [Najít a zobrazit události](#find-events), jako jsou události triggeru, události spuštění a události akcí. Tato diagnostická data můžete také použít [s jinými službami](#extend-diagnostic-data), jako je Azure Storage a Azure Event Hubs. 
+Po [vytvoření a spuštění aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md) můžete zkontrolovat její historii spuštění, historii triggerů, stav a výkon. Pro monitorování událostí v reálném čase a bohatší ladění nastavte [diagnostické protokolování](#azure-diagnostics) pro vaši aplikaci logiky. Díky tomu budete moct [vyhledat a zobrazit události](#find-events), jako jsou aktivační události, události spuštění nebo události akcí. Tato [diagnostická data můžete využít také s dalšími službami](#extend-diagnostic-data), jako jsou Azure Storage nebo Azure Event Hubs. 
 
 Pokud chcete dostávat oznámení o selháních nebo jiných možných problémech, nastavte [výstrahy](#add-azure-alerts). Můžete například vytvořit výstrahu, která detekuje "Pokud více než pět běhů selže za hodinu." Monitorování, sledování a protokolování můžete také nastavit programově pomocí [Azure Diagnostics nastavení a vlastnosti události](#diagnostic-event-properties).
 
@@ -80,7 +80,7 @@ Než začnete, musíte mít Log Analytics pracovní prostor. Naučte [se, jak vy
 
 1. V [Azure Portal](https://portal.azure.com)vyhledejte a vyberte svou aplikaci logiky. 
 
-2. V nabídce okna aplikace logiky v části **sledování**vyberte  > **nastavení diagnostické diagnostiky**.
+2. V nabídce okna aplikace logiky v části **sledování** **Vyberte** > **nastavení diagnostické diagnostiky**.
 
    ![Přejít na monitorování, diagnostiku, nastavení diagnostiky](media/logic-apps-monitor-your-logic-apps/logic-app-diagnostics.png)
 
@@ -139,7 +139,7 @@ Pokud chcete dotaz upřesnit přidáním filtru, vyberte **+ Přidat**.
    Tento příklad používá slovo status (stav) k vyhledání neúspěšných událostí v **AzureDiagnostics**.
    Zde je již vybrán filtr pro **status_s** .
 
-   ![Výběr filtru](media/logic-apps-monitor-your-logic-apps/log-search-add-filter.png)
+   ![Vyberte filtr.](media/logic-apps-monitor-your-logic-apps/log-search-add-filter.png)
 
 7. Na levém panelu vyberte hodnotu filtru, kterou chcete použít, a zvolte **použít**.
 
@@ -293,6 +293,6 @@ Každá událost diagnostiky obsahuje podrobnosti o vaší aplikaci logiky a o t
 
 ## <a name="next-steps"></a>Další postup
 
-* [Vytváření šablon pro nasazení aplikace logiky a správu vydaných verzí](../logic-apps/logic-apps-create-deploy-template.md)
+* [Automatizace nasazení aplikace logiky](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)
 * [Scénáře B2B s Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md)
 * [Monitorování zpráv B2B](../logic-apps/logic-apps-monitor-b2b-message.md)

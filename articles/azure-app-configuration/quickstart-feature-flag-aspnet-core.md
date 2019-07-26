@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ASP.NET Core
 ms.workload: tbd
 ms.date: 04/19/2019
 ms.author: yegu
-ms.openlocfilehash: 38cfabc703b7578d3b5fede9d6a99fe8a33c93a4
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
-ms.translationtype: HT
+ms.openlocfilehash: 41947de18ae27b41d046fd4358f0039a1b56374d
+ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326543"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68347913"
 ---
 # <a name="quickstart-add-feature-flags-to-an-aspnet-core-app"></a>Rychlý start: Přidání příznaků funkcí do aplikace ASP.NET Core
 
@@ -40,7 +40,7 @@ Knihovny pro správu funkcí .NET Core přesahují rámec s kompletní podporou 
 
     | Klíč | Stav |
     |---|---|
-    | Beta | Vypnuto |
+    | Betaverze | Vypnuto |
 
 ## <a name="create-an-aspnet-core-web-app"></a>Vytvoření webové aplikace ASP.NET Core
 
@@ -132,7 +132,7 @@ Přidejte do projektu [Nástroj Správce tajných klíčů](https://docs.microso
 1. Otevřete *Startup.cs*a přidejte odkazy na správce funkcí .NET Core:
 
     ```csharp
-    using Microsoft.FeatureManagement.AspNetCore;
+    using Microsoft.FeatureManagement;
     ```
 
 1. Aktualizujte `services.AddFeatureManagement()` metodu pro přidání podpory příznaků funkcí voláním metody. `ConfigureServices` Volitelně můžete zahrnout jakýkoli filtr, který se má použít s příznaky funkcí voláním `services.AddFeatureFilter<FilterType>()`:
@@ -264,7 +264,7 @@ Přidejte do projektu [Nástroj Správce tajných klíčů](https://docs.microso
 
     | Klíč | Stav |
     |---|---|
-    | Beta | Zapnuto |
+    | Betaverze | Zapnuto |
 
 1. Aktualizujte stránku prohlížeče, aby se zobrazilo nové nastavení konfigurace.
 

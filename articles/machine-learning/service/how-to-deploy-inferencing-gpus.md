@@ -9,44 +9,61 @@ ms.topic: conceptual
 ms.author: vaidyas
 author: csteegz
 ms.reviewer: larryfr
-ms.date: 06/01/2019
-ms.openlocfilehash: eeb1bc35e0438a7e99ea5ed8284f0c8611108da0
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.date: 07/24/2019
+ms.openlocfilehash: 520e7fe953256e4c489e4c540493d9f74dda3aef
+ms.sourcegitcommit: 5604661655840c428045eb837fb8704dca811da0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326989"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68494356"
 ---
 # <a name="deploy-a-deep-learning-model-for-inference-with-gpu"></a>Nasazení modelu hloubkového učení pro odvození pomocí GPU
 
-V tomto článku se naučíte, jak používat službu Azure Machine Learning k nasazení modelu hloubkového učení Tensorflow s povoleným GPU jako webové služby.
+V tomto článku se naučíte, jak používat službu Azure Machine Learning k nasazení modelu s povoleným grafickým procesorem jako webové služby. Informace v tomto článku jsou založené na nasazení modelu ve službě Azure Kubernetes Service (AKS). Cluster AKS poskytuje prostředek GPU, který používá model pro odvození.
 
-Nasaďte model do clusteru Azure Kubernetes Service (AKS), abyste mohli Inferencing s podporou GPU. Inferencing nebo model bodování je fáze, ve které se nasazený model používá pro předpověď. Použití GPU namísto CPU nabízí výhody výkonu při vysoce paralelizovat výpočtu.
+Odvození modelu nebo Bodové hodnocení je fáze, ve které je nasazený model použit k provedení předpovědi. Použití GPU místo CPU nabízí výhody výkonu při vysoce paralelizovat výpočtu.
 
-I když tato ukázka používá model TensorFlow, můžete použít následující kroky pro jakékoli rozhraní Machine Learning, které podporuje GPU, a to provedením malých změn v souboru bodování a souboru prostředí. 
-
-V tomto článku proveďte následující kroky:
-
-* Vytvoření clusteru AKS s povoleným GPU
-* Nasazení Tensorflow modelu GPU
-* Vydejte vzorový dotaz na nasazený model.
+> [!TIP]
+> I když fragmenty kódu v tomto článku Usee model TensorFlow, můžete tyto informace použít pro jakékoli rozhraní Machine Learning, které podporuje GPU.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Pracovní prostor služby Azure Machine Learning Services.
-* Distribuce Pythonu.
-* Registrovaný model Tensorflow uložený.
+* Pracovní prostor služby Azure Machine Learning. Další informace najdete v tématu [Vytvoření pracovního prostoru služby Azure Machine Learning](setup-create-workspace.md).
+
+* Prostředí pro vývoj v Pythonu s nainstalovanou sadou Azure Machine Learning SDK. Další informace najdete v části věnované [sadě Python SDK](setup-create-workspace.md#sdk) v článku Vytvoření pracovního prostoru.
+
+* Registrovaný model, který používá GPU.
+
     * Informace o tom, jak zaregistrovat modely, najdete v tématu [nasazení modelů](../service/how-to-deploy-and-where.md#registermodel).
 
-V rámci jedné z těchto postupů je možné vyškolit [TensorFlow model](how-to-train-tensorflow.md), abyste splnili nezbytné požadavky.
+    * Chcete-li vytvořit a zaregistrovat model Tensorflow, který jste použili k vytvoření tohoto dokumentu, přečtěte si téma [Postup výuky modelu Tensorflow](how-to-train-tensorflow.md).
 
-## <a name="provision-an-aks-cluster-with-gpus"></a>Zřízení clusteru AKS pomocí GPU
+* Obecné informace o [tom, jak a kde nasadit modely](how-to-deploy-and-where.md).
 
-Azure má spoustu různých možností GPU. Pro Inferencing můžete použít kterýkoli z nich. Úplný rozpis možností a nákladů najdete v [seznamu virtuálních počítačů řady N-Series](https://azure.microsoft.com/pricing/details/virtual-machines/linux/#n-series) .
+## <a name="connect-to-your-workspace"></a>Připojení k vašemu pracovnímu prostoru
 
-Další informace o používání AKS se službou Azure Machine Learning najdete v tématu [Jak nasadit a kde](../service/how-to-deploy-and-where.md#deploy-aks).
+Pokud se chcete připojit k existujícímu pracovnímu prostoru, použijte následující kód:
 
-```Python
+> [!IMPORTANT]
+> Tento fragment kódu očekává uložení konfigurace pracovního prostoru do aktuálního adresáře nebo jeho nadřazeného objektu. Další informace o tom, jak vytvořit pracovní prostor a uložit konfiguraci do souboru, najdete v tématu [Vytvoření pracovního prostoru služby Azure Machine Learning](setup-create-workspace.md).
+
+```python
+from azureml.core import Workspace
+
+# Connect to the workspace
+ws = Workspace.from_config()
+```
+
+## <a name="create-a-kubernetes-cluster-with-gpus"></a>Vytvoření clusteru s Kubernetes pomocí GPU
+
+Služba Azure Kubernetes poskytuje mnoho různých možností GPU. Pro odvození modelu můžete použít kterýkoli z nich. Úplný rozpis možností a nákladů najdete v [seznamu virtuálních počítačů řady N-Series](https://azure.microsoft.com/pricing/details/virtual-machines/linux/#n-series) .
+
+Následující kód ukazuje, jak vytvořit nový cluster AKS pro váš pracovní prostor:
+
+```python
+from azureml.core.compute import ComputeTarget, AksCompute
+from azureml.exceptions import ComputeTargetException
+
 # Choose a name for your cluster
 aks_name = "aks-gpu"
 
@@ -68,11 +85,16 @@ except ComputeTargetException:
 ```
 
 > [!IMPORTANT]
-> Pokud se zřídí cluster AKS, Azure vám bude účtovat. Až s tím budete hotovi, nezapomeňte cluster AKS odstranit.
+> Azure vám bude účtovat, dokud cluster AKS existuje. Až s tím budete hotovi, nezapomeňte cluster AKS odstranit.
+
+Další informace o používání služby Azure Kubernetes pomocí služby Azure Machine Learning najdete v tématu [Jak nasadit a kde](how-to-deploy-and-where.md#deploy-aks).
 
 ## <a name="write-the-entry-script"></a>Zápis vstupního skriptu
 
-Následující kód uložte do pracovního adresáře jako `score.py`. Tento soubor vyhodnotí obrázky při jejich posílání do vaší služby. Načte uložený model TensorFlow, předá do relace TensorFlow v každé žádosti POST a vrátí výsledná skóre. Jiné Inferencing architektury vyžadují jiné soubory bodování.
+Skript vstupu přijme data odeslaná webové službě, předává je do modelu a vrátí výsledky bodování. Následující skript načte model Tensorflow při spuštění a pak použije model k určení skóre dat.
+
+> [!TIP]
+> Vstupní skript je specifický pro váš model. Například skript musí znát rozhraní pro použití s modelem, datovými formáty atd.
 
 ```python
 import json
@@ -82,16 +104,19 @@ import tensorflow as tf
 
 from azureml.core.model import Model
 
+
 def init():
     global X, output, sess
     tf.reset_default_graph()
     model_root = Model.get_model_path('tf-dnn-mnist')
-    saver = tf.train.import_meta_graph(os.path.join(model_root, 'mnist-tf.model.meta'))
+    saver = tf.train.import_meta_graph(
+        os.path.join(model_root, 'mnist-tf.model.meta'))
     X = tf.get_default_graph().get_tensor_by_name("network/X:0")
     output = tf.get_default_graph().get_tensor_by_name("network/output/MatMul:0")
-    
+
     sess = tf.Session()
     saver.restore(sess, os.path.join(model_root, 'mnist-tf.model'))
+
 
 def run(raw_data):
     data = np.array(json.loads(raw_data)['data'])
@@ -99,11 +124,13 @@ def run(raw_data):
     out = output.eval(session=sess, feed_dict={X: data})
     y_hat = np.argmax(out, axis=1)
     return y_hat.tolist()
-
 ```
+
+Tento soubor má název `score.py`. Další informace o vstupních skriptech najdete v tématu [jak a kde nasadit](how-to-deploy-and-where.md).
+
 ## <a name="define-the-conda-environment"></a>Definice prostředí conda
 
-Vytvořte soubor prostředí conda s názvem `myenv.yml` k určení závislostí pro vaši službu. Je důležité určit, že používáte `tensorflow-gpu` k dosažení urychleného výkonu.
+Soubor prostředí conda určuje závislosti služby. Obsahuje závislosti vyžadované modelem i vstupním skriptem. Následující YAML definuje prostředí pro model Tensorflow. Určí `tensorflow-gpu`, že se použije GPU používané v tomto nasazení:
 
 ```yaml
 name: project_environment
@@ -120,60 +147,102 @@ channels:
 - conda-forge
 ```
 
-## <a name="define-the-gpu-inferenceconfig-class"></a>Definování třídy InferenceConfig GPU
+V tomto příkladu je soubor uložen jako `myenv.yml`.
 
-`InferenceConfig` Vytvořte objekt, který povolí GPU a zajistí, že se CUDA nainstaluje s imagí Docker.
+## <a name="define-the-deployment-configuration"></a>Definování konfigurace nasazení
+
+Konfigurace nasazení definuje prostředí služby Azure Kubernetes, které se používá ke spuštění webové služby:
 
 ```python
-from azureml.core.model import Model
+from azureml.core.webservice import AksWebservice
+
+gpu_aks_config = AksWebservice.deploy_configuration(autoscale_enabled=False,
+                                                    num_replicas=3,
+                                                    cpu_cores=2,
+                                                    memory_gb=4)
+```
+
+Další informace najdete v referenční dokumentaci k [AksService. deploy_configuration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aks.akswebservice?view=azure-ml-py#deploy-configuration-autoscale-enabled-none--autoscale-min-replicas-none--autoscale-max-replicas-none--autoscale-refresh-seconds-none--autoscale-target-utilization-none--collect-model-data-none--auth-enabled-none--cpu-cores-none--memory-gb-none--enable-app-insights-none--scoring-timeout-ms-none--replica-max-concurrent-requests-none--max-request-wait-time-none--num-replicas-none--primary-key-none--secondary-key-none--tags-none--properties-none--description-none--gpu-cores-none--period-seconds-none--initial-delay-seconds-none--timeout-seconds-none--success-threshold-none--failure-threshold-none--namespace-none-).
+
+## <a name="define-the-inference-configuration"></a>Definovat odvozenou konfiguraci
+
+Odvození konfigurace odkazuje na vstupní skript a soubor prostředí conda. Také umožňuje podporu GPU, která nainstaluje CUDA do image Docker vytvořené pro webovou službu:
+
+```python
 from azureml.core.model import InferenceConfig
 
-aks_service_name ='aks-dnn-mnist'
-gpu_aks_config = AksWebservice.deploy_configuration(autoscale_enabled = False, 
-                                                    num_replicas = 3, 
-                                                    cpu_cores=2, 
-                                                    memory_gb=4)
-model = Model(ws,"tf-dnn-mnist")
-
-inference_config = InferenceConfig(runtime= "python", 
+inference_config = InferenceConfig(runtime="python",
                                    entry_script="score.py",
-                                   conda_file="myenv.yml", 
+                                   conda_file="myenv.yml",
                                    enable_gpu=True)
 ```
 
-Další informace naleznete v tématu:
-
-- [InferenceConfig – třída](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py)
-- [AksServiceDeploymentConfiguration – třída](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aks.aksservicedeploymentconfiguration?view=azure-ml-py)
+Další informace najdete v referenční dokumentaci k [InferenceConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py).
 
 ## <a name="deploy-the-model"></a>Nasazení modelu
 
 Nasaďte model do clusteru AKS a počkejte, než se vytvoří vaše služba.
 
 ```python
+from azureml.core.model import Model
+
+# Name of the web service that is deployed
+aks_service_name = 'aks-dnn-mnist'
+# Get the registerd model
+model = Model(ws, "tf-dnn-mnist")
+# Deploy the model
 aks_service = Model.deploy(ws,
                            models=[model],
-                           inference_config=inference_config, 
+                           inference_config=inference_config,
                            deployment_config=gpu_aks_config,
                            deployment_target=aks_target,
                            name=aks_service_name)
 
-aks_service.wait_for_deployment(show_output = True)
+aks_service.wait_for_deployment(show_output=True)
 print(aks_service.state)
 ```
 
 > [!NOTE]
-> Služba Azure Machine Learning neimplementuje model s `InferenceConfig` objektem, který očekává, že GPU bude povolená na cluster, který nemá GPU.
+> Pokud má `InferenceConfig` `enable_gpu=True`objekt hodnotu, `deployment_target` musí parametr odkazovat na cluster, který poskytuje GPU. V opačném případě se nasazení nezdaří.
 
-Další informace naleznete v tématu [třída modelu](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py).
+Další informace najdete v referenční dokumentaci k [modelu](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py).
 
-## <a name="issue-a-sample-query-to-your-model"></a>Vydat vzorový dotaz do modelu
+## <a name="issue-a-sample-query-to-your-service"></a>Vydat vzorový dotaz do vaší služby
 
-Odešlete testovací dotaz do nasazeného modelu. Při odeslání obrázku JPEG do modelu se vyhodnotí obrázek. Následující ukázka kódu používá funkci externích nástrojů pro načtení obrázků. Příslušný kód najdete v [ukázce PIR TensorFlow na GitHubu](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-tensorflow/utils.py). 
+Odešlete testovací dotaz do nasazeného modelu. Při odeslání obrázku JPEG do modelu se vyhodnotí obrázek. Následující ukázka kódu stáhne testovací data a pak vybere náhodný test obrazu, který se odešle službě. 
 
 ```python
 # Used to test your webservice
-from utils import load_data 
+import os
+import urllib
+import gzip
+import numpy as np
+import struct
+import requests
+
+# load compressed MNIST gz files and return numpy arrays
+def load_data(filename, label=False):
+    with gzip.open(filename) as gz:
+        struct.unpack('I', gz.read(4))
+        n_items = struct.unpack('>I', gz.read(4))
+        if not label:
+            n_rows = struct.unpack('>I', gz.read(4))[0]
+            n_cols = struct.unpack('>I', gz.read(4))[0]
+            res = np.frombuffer(gz.read(n_items[0] * n_rows * n_cols), dtype=np.uint8)
+            res = res.reshape(n_items[0], n_rows * n_cols)
+        else:
+            res = np.frombuffer(gz.read(n_items[0]), dtype=np.uint8)
+            res = res.reshape(n_items[0], 1)
+    return res
+
+# one-hot encode a 1-D array
+def one_hot_encode(array, num_of_classes):
+    return np.eye(num_of_classes)[array.reshape(-1)]
+
+# Download test data
+os.makedirs('./data/mnist', exist_ok=True)
+urllib.request.urlretrieve('http://yann.lecun.com/exdb/mnist/t10k-images-idx3-ubyte.gz', filename='./data/mnist/test-images.gz')
+urllib.request.urlretrieve('http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ubyte.gz', filename='./data/mnist/test-labels.gz')
 
 # Load test data from model training
 X_test = load_data('./data/mnist/test-images.gz', False) / 255.0
@@ -184,17 +253,16 @@ random_index = np.random.randint(0, len(X_test)-1)
 input_data = "{\"data\": [" + str(list(X_test[random_index])) + "]}"
 
 api_key = aks_service.get_keys()[0]
-headers = {'Content-Type':'application/json', 'Authorization':('Bearer '+ api_key)}
+headers = {'Content-Type': 'application/json',
+           'Authorization': ('Bearer ' + api_key)}
 resp = requests.post(aks_service.scoring_uri, input_data, headers=headers)
 
 print("POST to url", aks_service.scoring_uri)
-#print("input data:", input_data)
 print("label:", y_test[random_index])
 print("prediction:", resp.text)
 ```
 
-> [!IMPORTANT]
-> K minimalizaci latence a optimalizaci propustnosti se ujistěte, že je klient ve stejné oblasti Azure jako koncový bod. V tomto příkladu jsou rozhraní API vytvořená v oblasti Východní USA Azure.
+Další informace o vytvoření klientské aplikace najdete v tématu [Vytvoření klienta pro využívání nasazené webové služby](how-to-consume-web-service.md).
 
 ## <a name="clean-up-the-resources"></a>Vyčištění prostředků
 
@@ -208,7 +276,7 @@ aks_service.delete()
 aks_target.delete()
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * [Nasazení modelu na FPGA](../service/how-to-deploy-fpga-web-service.md)
 * [Nasazení modelu pomocí ONNX](../service/concept-onnx.md#deploy-onnx-models-in-azure)

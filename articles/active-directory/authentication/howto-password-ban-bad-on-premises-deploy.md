@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 11532fbae4565ec1fc3625abe60b98d2ccd26fec
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
-ms.translationtype: HT
+ms.openlocfilehash: 01a9cc4ec4788422337b77b285ed8ee440f6acd4
+ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68319750"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68346903"
 ---
 # <a name="deploy-azure-ad-password-protection"></a>Nasazení ochrany hesel Azure AD
 
@@ -135,11 +135,11 @@ Pro ochranu heslem Azure AD existují dvě požadované instalační programy. J
         ```
 
         > [!NOTE]
-        > Tento režim se nezdařil, pokud je vyžadováno ověřování Azure Multi-Factor Authentication. V takovém případě použijte jeden z předchozích dvou režimů ověřování nebo použijte jedno z následujících řešení: Pro účely testování doporučujeme vynechat požadavky na vícefaktorové ověřování.
+        > Tento režim se nezdařil, pokud je pro váš účet vyžadováno ověřování Azure Multi-Factor Authentication. V takovém případě použijte jeden z předchozích dvou režimů ověřování nebo místo toho použijte jiný účet, který nevyžaduje MFA.
         >
-        > Pokud je váš účet Azure konkrétně nakonfigurovaný tak, aby vyžadoval MFA, můžete místo toho použít jiný účet, který nevyžaduje MFA.
+        > Je také možné, že se vyžaduje ověřování MFA, pokud je registrace zařízení Azure (která se používá v rámci zabezpečení Azure AD heslem) nakonfigurovaná tak, aby globálně vyžadovala MFA. K řešení tohoto problému můžete použít jiný účet, který podporuje VÍCEFAKTOROVÉ ověřování v jednom z předchozích dvou režimů ověřování, nebo můžete také dočasně uvolnit požadavek MFA pro registraci zařízení Azure. Provedete to tak, že přejdete na portál pro správu Azure, přejdete na Azure Active Directory, pak na zařízení a pak na nastavení zařízení a pak nastavíte "vyžadovat vícefaktorové ověřování pro připojení zařízení" na ne. Nezapomeňte znovu nakonfigurovat toto nastavení zpět na Ano, jakmile se registrace dokončí.
         >
-        > Je také možné, že se vyžaduje ověřování MFA, pokud je registrace zařízení Azure (která se používá v rámci zabezpečení Azure AD heslem) nakonfigurovaná tak, aby globálně vyžadovala MFA. V takovém případě můžete použít jiný účet, který nevyžaduje MFA, nebo můžete dočasně zmírnit požadavek MFA na registraci zařízení Azure. Provedete to tak, že přejdete na portál pro správu Azure, přejdete na Azure Active Directory, pak na zařízení a pak na nastavení zařízení a pak nastavíte "vyžadovat vícefaktorové ověřování pro připojení zařízení" na ne.  Nezapomeňte znovu nakonfigurovat toto nastavení zpět na Ano, jakmile se registrace dokončí.
+        > Pro účely testování doporučujeme vynechat požadavky na vícefaktorové ověřování.
 
        V tuto chvíli nemusíte zadávat parametr *-ForestCredential* , který je vyhrazený pro budoucí funkce.
 
@@ -179,11 +179,11 @@ Pro ochranu heslem Azure AD existují dvě požadované instalační programy. J
         ```
 
         > [!NOTE]
-        > Tento režim se nezdařil, pokud je vyžadováno ověřování Azure Multi-Factor Authentication. V takovém případě použijte jeden z předchozích dvou režimů ověřování nebo použijte jedno z následujících řešení: Pro účely testování doporučujeme vynechat požadavky na vícefaktorové ověřování.
+        > Tento režim se nezdařil, pokud je pro váš účet vyžadováno ověřování Azure Multi-Factor Authentication. V takovém případě použijte jeden z předchozích dvou režimů ověřování nebo místo toho použijte jiný účet, který nevyžaduje MFA.
         >
-        > Pokud je váš účet Azure konkrétně nakonfigurovaný tak, aby vyžadoval MFA, můžete místo toho použít jiný účet, který nevyžaduje MFA.
+        > Je také možné, že se vyžaduje ověřování MFA, pokud je registrace zařízení Azure (která se používá v rámci zabezpečení Azure AD heslem) nakonfigurovaná tak, aby globálně vyžadovala MFA. K řešení tohoto problému můžete použít jiný účet, který podporuje VÍCEFAKTOROVÉ ověřování v jednom z předchozích dvou režimů ověřování, nebo můžete také dočasně uvolnit požadavek MFA pro registraci zařízení Azure. Provedete to tak, že přejdete na portál pro správu Azure, přejdete na Azure Active Directory, pak na zařízení a pak na nastavení zařízení a pak nastavíte "vyžadovat vícefaktorové ověřování pro připojení zařízení" na ne. Nezapomeňte znovu nakonfigurovat toto nastavení zpět na Ano, jakmile se registrace dokončí.
         >
-        > Je také možné, že se vyžaduje ověřování MFA, pokud je registrace zařízení Azure (která se používá v rámci zabezpečení Azure AD heslem) nakonfigurovaná tak, aby globálně vyžadovala MFA. V takovém případě můžete použít jiný účet, který nevyžaduje MFA, nebo můžete dočasně zmírnit požadavek MFA na registraci zařízení Azure. Provedete to tak, že přejdete na portál pro správu Azure, přejdete na Azure Active Directory, pak na zařízení a pak na nastavení zařízení a pak nastavíte "vyžadovat vícefaktorové ověřování pro připojení zařízení" na ne.  Nezapomeňte znovu nakonfigurovat toto nastavení zpět na Ano, jakmile se registrace dokončí.
+        > Pro účely testování doporučujeme vynechat požadavky na vícefaktorové ověřování.
 
        Tyto příklady jsou úspěšné pouze v případě, že aktuálně přihlášený uživatel je zároveň správcem domény služby Active Directory pro kořenovou doménu. V takovém případě můžete alternativní přihlašovací údaje domény zadat pomocí parametru *-ForestCredential* .
 
@@ -297,7 +297,7 @@ Hlavním problémem při dostupnosti ochrany heslem je dostupnost proxy serverů
 
 Návrh softwaru agenta DC snižuje běžné problémy, které jsou spojené s vysokou dostupností. Agent řadiče domény uchovává místní mezipaměť naposledy stažených zásad hesel. I když jsou všechny registrované proxy servery nedostupné, budou agenti řadiče domény nadále vysazovat zásady hesel v mezipaměti. Přiměřená frekvence aktualizace zásad hesel ve velkém nasazení je obvykle *dny*, ne hodiny nebo méně. To znamená, že krátké výpadky proxy serverů významně neovlivňují ochranu heslem Azure AD.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Teď, když jste nainstalovali služby, které potřebujete pro ochranu heslem Azure AD na místních serverech, [proveďte konfiguraci po instalaci a shromážděte informace pro vytváření sestav](howto-password-ban-bad-on-premises-operations.md) , abyste mohli nasazení dokončit.
 

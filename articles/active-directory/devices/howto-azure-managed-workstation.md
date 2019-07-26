@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: frasim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 90687d0229d3ad74c287bb4aff4885dc26932e40
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
-ms.translationtype: HT
+ms.openlocfilehash: be9e6374d92fbb7bb1c4b5a2a9e154119c5baf87
+ms.sourcegitcommit: b49431b29a53efaa5b82f9be0f8a714f668c38ab
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68227272"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68377488"
 ---
 # <a name="deploy-a-secure-azure-managed-workstation"></a>Nasazení zabezpečené pracovní stanice spravované v Azure
 
@@ -28,7 +28,7 @@ Než budete moct nasadit řešení, musíte vybrat profil. V nasazení můžete 
 > [!NOTE]
 > Použijte libovolný profil podle potřeby podle vašich požadavků. Přiřazením v Intune můžete přejít na jiný profil.
 
-| Profil | Nízká | Rozšířené | Vysoká | Specializovaná | Psán | Isolated |
+| Profil | Nízká | Rozšířené | Vysoká | Specializovaná | Zabezpečené | Isolated |
 | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 | Uživatel v Azure AD | Ano | Ano | Ano | Ano | Ano | Ano |
 | Spravovaná v Intune | Ano | Ano | Ano | Ano | Ano | Ano |
@@ -134,7 +134,7 @@ Postup konfigurace podmíněného přístupu z Azure Portal:
        * Zahrnutí – **Uživatelé a skupiny** – vyberte skupinu **uživatelů zabezpečených pracovních stanic** , kterou jste vytvořili dříve.
        * Vyloučení – **Uživatelé a skupiny** – vyberte účty pro nouzový přístup vaší organizace.
      * **Cloudové aplikace** – zahrnuje **všechny cloudové aplikace**.
-    * Řízení přístupu
+    * Ovládací prvky přístupu
       * **Udělení** – vyberte přepínač **udělení přístupu** .
         * **Vyžadovat službu Multi-Factor Authentication**.
         * **Vyžadovat, aby zařízení bylo označené jako vyhovující**.
@@ -229,14 +229,14 @@ Další informace najdete v tématu [Rozšířená ochrana před internetovými 
 
 Aby bylo možné úspěšně dokončit posílení zabezpečení řešení, Stáhněte a spusťte příslušný skript. Najděte odkazy ke stažení pro požadovanou **úroveň profilu**:
 
-| Profil | Umístění pro stahování | Bitmap |
+| Profil | Umístění pro stahování | Název souboru |
 | --- | --- | --- |
 | Nízká úroveň zabezpečení | Není k dispozici |  Není k dispozici |
 | Rozšířené zabezpečení | https://aka.ms/securedworkstationgit | Enhanced-Workstation-Windows10-(1809).ps1 |
 | Vysoké zabezpečení  | https://aka.ms/securedworkstationgit | HighSecurityWorkstation-Windows10-(1809).ps1 |
 | Specializovaná | https://github.com/pelarsen/IntunePowerShellAutomation | DeviceConfiguration_NCSC-Windows10 (1803) SecurityBaseline. ps1 |
 | Specializované dodržování předpisů * | https://aka.ms/securedworkstationgit | DeviceCompliance_NCSC-Windows10(1803).ps1 |
-| Psán | https://aka.ms/securedworkstationgit | Secure-Workstation-Windows10-(1809)-SecurityBaseline.ps1 |
+| Zabezpečené | https://aka.ms/securedworkstationgit | Secure-Workstation-Windows10-(1809)-SecurityBaseline.ps1 |
 
 \*Specializované dodržování předpisů je skript, který vynutil specializovanou konfiguraci poskytnutou v NCSC Windows10 SecurityBaseline.
 
@@ -245,7 +245,7 @@ Po úspěšném spuštění skriptu můžete v Intune dělat aktualizace profil�
 * Tady najdete profily konfigurace zařízení Intune vytvořené skripty: **Azure Portal** > **Microsoft Intune**konfiguračníchprofilůzařízení > . > 
 * Tady najdete zásady dodržování předpisů zařízením v Intune, které vytvořily tyto skripty: **Azure Portal**MicrosoftIntunezásadydodržování > **předpisů zařízením**. >  > 
 
-Chcete-li zkontrolovat změny provedené skripty, můžete exportovat profily. Tímto způsobem můžete určit další posílení zabezpečení, které může být vyžadováno, jak je uvedeno v dokumentaci k SECCON.
+Chcete-li zkontrolovat změny provedené skripty, můžete exportovat profily. Tímto způsobem můžete určit další posílení zabezpečení, které může být vyžadováno, jak je uvedeno v [dokumentaci k SECCON](https://docs.microsoft.com/windows/security/threat-protection/windows-security-configuration-framework/windows-security-configuration-framework).
 
 Spusťte skript `DeviceConfiguration_Export.ps1` pro export dat Intune z [úložiště DeviceConfiguration GiuHub](https://github.com/microsoftgraph/powershell-intune-samples/tree/master/DeviceConfiguration) a exportujte všechny aktuální profily Intune.
 

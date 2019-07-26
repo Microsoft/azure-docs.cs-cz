@@ -1,6 +1,6 @@
 ---
-title: Tipy pro používání systému Hadoop v HDInsight se systémem Linux – Azure
-description: Získejte implementace tipy pro používání Linuxovým systémem HDInsight (Hadoop) clustery ve známém prostředí Linux spuštěné v cloudu Azure.
+title: Tipy pro použití Hadoop v HDInsight založené na Linux – Azure
+description: Získejte tipy k implementaci pro používání clusterů HDInsight se systémem Linux (Hadoop) na známém prostředí Linux běžící v cloudu Azure.
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,159 +8,159 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/20/2019
-ms.openlocfilehash: b00630354834897793bbf357be378051bcf74698
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 1904ab07a188e4e877a4fb2f2b7682d923c08fb2
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67059381"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68441997"
 ---
 # <a name="information-about-using-hdinsight-on-linux"></a>Informace o používání HDInsightu v Linuxu
 
-Azure clustery HDInsight poskytují Apache Hadoop ve známém prostředí Linux spuštěné v cloudu Azure. Pro většinu toho, co by měl pracovat přesně jako jakékoliv jiné instalace Hadoop na Linuxu. Tento dokument, volá konkrétní rozdíly, které byste měli vědět.
+Clustery Azure HDInsight poskytují Apache Hadoop v známém prostředí pro Linux běžící v cloudu Azure. Pro většinu věcí by měla fungovat přesně stejně jako všechny ostatní instalace systému Hadoop-Linux. Tento dokument volá konkrétní rozdíly, o kterých byste měli vědět.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Celá řada kroků v tomto dokumentu pomocí následujících nástrojů, které může být nutné nainstalovat ve vašem systému.
+Mnohé z kroků v tomto dokumentu používají následující nástroje, které může být potřeba nainstalovat do systému.
 
-* [cURL](https://curl.haxx.se/) – slouží ke komunikaci s webové služby.
-* **jq**, příkazového řádku procesoru JSON.  Zobrazit [ https://stedolan.github.io/jq/ ](https://stedolan.github.io/jq/).
-* [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) – používá se ke vzdálené správě služeb Azure.
-* **Klient SSH**. Další informace najdete v tématu [připojení k HDInsight (Apache Hadoop) pomocí protokolu SSH](hdinsight-hadoop-linux-use-ssh-unix.md).
+* [oblý](https://curl.haxx.se/) – slouží ke komunikaci s webovými službami.
+* **JQ**, procesor JSON příkazového řádku.  Viz [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/).
+* [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) – slouží k vzdálené správě služeb Azure.
+* **Klient SSH**. Další informace najdete v tématu [připojení ke službě HDInsight (Apache Hadoop) pomocí SSH](hdinsight-hadoop-linux-use-ssh-unix.md).
 
 ## <a name="users"></a>Uživatelé
 
-Není-li [připojených k doméně](./domain-joined/apache-domain-joined-introduction.md), by měly být považovány za HDInsight **jednoho uživatele** systému. Jeden uživatelský účet SSH se vytvoří s clusterem se oprávnění na úrovni správce. Další účty SSH je možné vytvářet, ale také mají přístup správce ke clusteru.
+Pokud není [připojeno k doméně](./domain-joined/hdinsight-security-overview.md), HDInsight by se mělo považovat za systém s **jedním uživatelem** . V clusteru se vytvoří jeden uživatelský účet SSH s oprávněními na úrovni správce. Je možné vytvořit další účty SSH, ale mají také přístup správce ke clusteru.
 
-HDInsight připojený k doméně podporuje více uživatelů a podrobnější nastavení oprávnění a rolí. Další informace najdete v tématu [clusterů HDInsight připojených k doméně spravovat](./domain-joined/apache-domain-joined-manage.md).
+Prostředí HDInsight připojené k doméně podporuje více uživatelů a přesnější nastavení oprávnění a rolí. Další informace najdete v tématu [Správa clusterů HDInsight připojených k doméně](./domain-joined/apache-domain-joined-manage.md).
 
 ## <a name="domain-names"></a>Názvy domén
 
-Plně kvalifikovaný název domény (FQDN) pro použití při připojování ke clusteru z Internetu je `CLUSTERNAME.azurehdinsight.net` nebo `CLUSTERNAME-ssh.azurehdinsight.net` (pro pouze SSH).
+Plně kvalifikovaný název domény (FQDN), který se má použít při připojování ke clusteru z Internetu, `CLUSTERNAME.azurehdinsight.net` je `CLUSTERNAME-ssh.azurehdinsight.net` nebo (jenom pro SSH).
 
-Interně každý uzel v clusteru má název, který se přiřadí během konfigurace clusteru. Názvy clusterů najdete v tématu **hostitele** stránce webové uživatelské rozhraní Ambari. Také vám pomůže následující seznam hostitelů z rozhraní Ambari REST API:
+Interně má každý uzel v clusteru název, který je přiřazený během konfigurace clusteru. Názvy clusterů najdete na stránce hostitelé  ve webovém uživatelském rozhraní Ambari. K vrácení seznamu hostitelů z Ambari REST API můžete použít také následující:
 
     curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/hosts" | jq '.items[].Hosts.host_name'
 
-Nahraďte `CLUSTERNAME` názvem svého clusteru. Po zobrazení výzvy zadejte heslo pro účet správce. Tento příkaz vrátí dokument JSON, který obsahuje seznam hostitelů v clusteru. [jq](https://stedolan.github.io/jq/) slouží k extrakci `host_name` hodnota elementu pro každého hostitele.
+Nahraďte `CLUSTERNAME` názvem svého clusteru. Po zobrazení výzvy zadejte heslo pro účet správce. Tento příkaz vrátí dokument JSON, který obsahuje seznam hostitelů v clusteru. [JQ](https://stedolan.github.io/jq/) se používá k extrakci `host_name` hodnoty prvku pro každého hostitele.
 
-Pokud je potřeba najít název uzlu pro konkrétní službu, můžete zadat dotaz na danou součást Ambari. Například pokud chcete najít hostitele pro název uzlu HDFS, použijte následující příkaz:
+Pokud potřebujete najít název uzlu pro konkrétní službu, můžete pro danou součást zadat dotaz na Ambari. Chcete-li například vyhledat hostitele pro uzel HDFS Name, použijte následující příkaz:
 
     curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/HDFS/components/NAMENODE" | jq '.host_components[].HostRoles.host_name'
 
-Tento příkaz vrátí dokument JSON popisující službu a potom [jq](https://stedolan.github.io/jq/) si vyžádá pouze `host_name` hodnotu pro hostitele.
+Tento příkaz vrátí dokument JSON popisující službu a pak [JQ](https://stedolan.github.io/jq/) vyžádá pouze `host_name` hodnotu pro hostitele.
 
 ## <a name="remote-access-to-services"></a>Vzdálený přístup ke službám
 
-* **Ambari (web)**  - https://CLUSTERNAME.azurehdinsight.net
+* **Ambari (Web)**  - https://CLUSTERNAME.azurehdinsight.net
 
-    Ověřování pomocí Správce clusteru a heslo a pak se přihlaste k Ambari.
+    Proveďte ověření pomocí uživatele a hesla správce clusteru a pak se přihlaste k Ambari.
 
-    Ověřování je ve formátu prostého textu – používejte vždy HTTPS, abyste zajistili, že připojení je zabezpečené.
+    Ověřování je prostého textu – pomocí protokolu HTTPS vždy pomůžete zajistit, aby připojení bylo zabezpečené.
 
     > [!IMPORTANT]  
-    > Některé z webovým uživatelským rozhraním, které jsou k dispozici prostřednictvím Ambari přístup k uzlům pomocí názvu interní domény. Interní doméně názvy nejsou veřejně přístupná přes internet. Můžete obdržet chyby "serveru nebyla nalezena" při pokusu o přístup k některé funkce přes Internet.
+    > Některé z webových uživatelská rozhraní jsou dostupné prostřednictvím uzlů pro přístup k Ambari pomocí interního názvu domény. Interní názvy domén nejsou veřejně přístupné prostřednictvím Internetu. Při pokusu o přístup k některým funkcím přes Internet se může zobrazit chyba "Server nebyl nalezen".
     >
-    > Pokud chcete používat všechny funkce webové uživatelské rozhraní Ambari, použijte tunelového propojení SSH pro proxy webový provoz k hlavnímu uzlu clusteru. Zobrazit [používání tunelového propojení SSH pro přístup k webové uživatelské rozhraní Apache Ambari, ResourceManager, JobHistory, NameNode, Oozie a dalším webovým uživatelským rozhraním](hdinsight-linux-ambari-ssh-tunnel.md)
+    > Pokud chcete používat všechny funkce webového uživatelského rozhraní Ambari, použijte tunel SSH pro proxy webový provoz do hlavního uzlu clusteru. Viz [použití tunelového propojení SSH pro přístup k webovému uživatelskému rozhraní Apache Ambari, ResourceManager, JobHistory, NameNode, Oozie a dalším webovým uživatelská rozhraní](hdinsight-linux-ambari-ssh-tunnel.md) .
 
 * **Ambari (REST)**  - https://CLUSTERNAME.azurehdinsight.net/ambari
 
     > [!NOTE]  
-    > Ověřování pomocí Správce clusteru a heslo.
+    > Ověřování pomocí uživatele a hesla správce clusteru.
     >
-    > Ověřování je ve formátu prostého textu – používejte vždy HTTPS, abyste zajistili, že připojení je zabezpečené.
+    > Ověřování je prostého textu – pomocí protokolu HTTPS vždy pomůžete zajistit, aby připojení bylo zabezpečené.
 
 * **WebHCat (Templeton)**  - https://CLUSTERNAME.azurehdinsight.net/templeton
 
     > [!NOTE]  
-    > Ověřování pomocí Správce clusteru a heslo.
+    > Ověřování pomocí uživatele a hesla správce clusteru.
     >
-    > Ověřování je ve formátu prostého textu – používejte vždy HTTPS, abyste zajistili, že připojení je zabezpečené.
+    > Ověřování je prostého textu – pomocí protokolu HTTPS vždy pomůžete zajistit, aby připojení bylo zabezpečené.
 
-* **SSH** -ssh.azurehdinsight.net název clusteru na portu 22 a 23. Port 22 se používá pro připojení k primárnímu hlavnímu uzlu, zatímco 23 se používá pro připojení k sekundární. Další informace o hlavních uzlech najdete v tématu [dostupnost a spolehlivost systému Apache Hadoop clusterů v HDInsight](hdinsight-high-availability-linux.md).
+* **SSH** -CLUSTERNAME-SSH.azurehdinsight.NET na portu 22 nebo 23. Port 22 se používá pro připojení k primárnímu hlavnímu uzlu, zatímco 23 se používá pro připojení k sekundárnímu. Další informace o hlavních uzlech najdete v tématu [dostupnost a spolehlivost Apache Hadoopch clusterů ve službě HDInsight](hdinsight-high-availability-linux.md).
 
     > [!NOTE]  
-    > Hlavní uzly clusteru prostřednictvím SSH můžete přistupovat pouze z klientského počítače. Po připojení se pak dostanete pracovní uzly pomocí protokolu SSH z hlavního uzlu.
+    > K hlavním uzlům clusteru můžete přistupovat jenom přes SSH z klientského počítače. Po připojení můžete k pracovním uzlům přistupovat pomocí SSH z hlavnímu uzlu.
 
-Další informace najdete v tématu [portů používaných služeb Apache Hadoop v HDInsight](hdinsight-hadoop-port-settings-for-services.md) dokumentu.
+Další informace najdete v tématu [porty používané službou Apache Hadoop Services na dokumentu HDInsight](hdinsight-hadoop-port-settings-for-services.md) .
 
 ## <a name="file-locations"></a>Umístění souborů
 
-Soubory související s Hadoop můžete najít na uzly clusteru na `/usr/hdp`. Tento adresář obsahuje následující podadresáře:
+Soubory související se systémem Hadoop lze nalézt na uzlech clusteru na `/usr/hdp`adrese. Tento adresář obsahuje následující podadresáře:
 
-* **2.6.5.3006-29**: Název adresáře je verze datovou platformou Hortonworks používá HDInsight. Číslo ve vašem clusteru může být jiný než ten, který zde uvedené.
-* **aktuální**: Tento adresář obsahuje odkazy na podadresářů **2.6.5.3006-29** adresáře. Tento adresář existuje, takže nebudou muset pamatovat číslo verze.
+* **2.6.5.3006-29**: Název adresáře je verze datové platformy Hortonworks, kterou používá HDInsight. Číslo v clusteru se může lišit od výše uvedeného.
+* **aktuální**: Tento adresář obsahuje odkazy na podadresáře v adresáři **2.6.5.3006-29** . Tento adresář existuje, takže si nemusíte pamatovat číslo verze.
 
-Ukázková data a soubory JAR můžete najít na Hadoop Distributed File System na `/example` a `/HdiSamples`.
+Příklady dat a souborů JAR najdete v systém souborů DFS (Distributed File System) Hadoop v `/example` a. `/HdiSamples`
 
-## <a name="hdfs-azure-storage-and-data-lake-storage"></a>Data Lake Storage, HDFS a Azure Storage
+## <a name="hdfs-azure-storage-and-data-lake-storage"></a>HDFS, Azure Storage a Data Lake Storage
 
-Ve většině distribucí Hadoop jsou data uložená v HDFS, která je založená na místní úložiště na počítačích v clusteru. Pomocí místního úložiště může být nákladná řešení založené na cloudu ve kterém se účtují po hodinách nebo minutách za výpočetní prostředky.
+Ve většině distribucí Hadoop jsou data uložená v HDFS, která se na počítačích v clusteru zálohuje na základě místního úložiště. Použití místního úložiště může být nákladné pro cloudové řešení, které se účtují po hodinách a za minutu pro výpočetní prostředky.
 
-Při použití HDInsight, se ukládají datové soubory způsobem škálovatelná a odolná proti selháním v cloudu s využitím úložiště objektů Blob v Azure a volitelně Azure Data Lake Storage. Tyto služby poskytují následující výhody:
+Při použití HDInsight se datové soubory ukládají v cloudu v cloudu s využitím Azure Blob Storage a případně Azure Data Lake Storage. Tyto služby poskytují následující výhody:
 
-* Levné dlouhodobé uložení.
-* Usnadnění přístupu z externích služeb, jako je například webů, nástrojů pro nahrávání a stahování souborů, různých sadách SDK pro jazyk a webové prohlížeče.
-* Velký soubor kapacita a velké škálovatelné úložiště.
+* Levné dlouhodobé úložiště.
+* Přístupnost z externích služeb, jako jsou weby, odesílání souborů/stahování nástrojů, různé jazykové sady SDK a webové prohlížeče.
+* Velká kapacita souborů a velké škálovatelné úložiště.
 
-Další informace najdete v tématu [vysvětlení objektů blob](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs) a [Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/).
+Další informace najdete v tématu [Principy objektů BLOB](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs) a [Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/).
 
-Při použití služby Azure Storage nebo Data Lake Storage, nemusíte dělat nic zvláštního z HDInsight pro přístup k datům. Například následující příkaz zobrazí seznam souborů v `/example/data` složku bez ohledu na to, zda je uložená v Azure Storage nebo Azure Data Lake Storage:
+Pokud používáte Azure Storage nebo Data Lake Storage, nemusíte pro přístup k datům dělat nic zvláštního. Například následující příkaz vypíše soubory ve `/example/data` složce bez ohledu na to, jestli je uložený na Azure Storage nebo data Lake Storage:
 
     hdfs dfs -ls /example/data
 
-V HDInsight jsou prostředky úložiště dat (Azure Blob Storage a Azure Data Lake Storage) oddělené od výpočetních prostředků. Proto můžete vytvářet clustery HDInsight provést výpočet podle potřeby a po dokončení práce později odstranit cluster, mezitím udržování vašich datových souborů bezpečně zachována v cloudovém úložišti za předpokladu, budete potřebovat.
+V HDInsight se prostředky úložiště dat (Azure Blob Storage a Azure Data Lake Storage) odpojí od výpočetních prostředků. Proto můžete vytvořit clustery HDInsight, abyste mohli provádět výpočty podle potřeby, a později odstranit cluster, až se práce dokončí, a přitom trvale uchovávat datové soubory v cloudovém úložišti, dokud budete potřebovat.
 
 
 ### <a name="URI-and-scheme"></a>Identifikátor URI a schéma
 
-Některé příkazy mohou vyžadovat zadejte schéma jako součást identifikátoru URI při přístupu k souboru. Například komponenty Storm HDFS vyžaduje, abyste zadejte schéma. Pokud používáte jiné než výchozí storage (úložiště do clusteru přidat jako "Další" úložiště), musíte vždycky použít schéma jako součást identifikátoru URI.
+Některé příkazy mohou vyžadovat, abyste při přístupu k souboru určili schéma jako součást identifikátoru URI. Například komponenta pro zaplavování vyžaduje, abyste určili schéma. Pokud používáte jiné než výchozí úložiště (úložiště přidáno do clusteru jako "Další" úložiště), musíte toto schéma vždy použít jako součást identifikátoru URI.
 
-Při použití __služby Azure Storage__, použijte jednu z následujících schémata identifikátoru URI:
+Při použití __Azure Storage__použijte jedno z následujících schémat identifikátorů URI:
 
-* `wasb:///`: Výchozí úložiště s přístupem pomocí nešifrovaná komunikace.
+* `wasb:///`: Přístup k výchozímu úložišti pomocí nešifrované komunikace
 
-* `wasbs:///`: Výchozí úložiště s přístupem pomocí šifrovanou komunikaci.  Schéma wasbs je podporováno pouze z HDInsight verze 3.6 a vyšší.
+* `wasbs:///`: Přístup k výchozímu úložišti pomocí šifrované komunikace.  Schéma wasbs se podporuje jenom ve verzi HDInsight 3,6 a vyšší.
 
-* `wasb://<container-name>@<account-name>.blob.core.windows.net/`: Použít při komunikaci s účtem služby storage jiné než výchozí. Například pokud máte ještě účet úložiště nebo při přístupu k datům uloženým v účtu úložiště veřejně přístupná.
+* `wasb://<container-name>@<account-name>.blob.core.windows.net/`: Používá se při komunikaci s jiným než výchozím účtem úložiště. Například když máte další účet úložiště nebo když přistupujete k datům uloženým v veřejně přístupném účtu úložiště.
 
-Při použití __Azure Data Lake Storage Gen2__, použijte jednu z následujících schémata identifikátoru URI:
+Při použití __Azure Data Lake Storage Gen2__použijte jedno z následujících schémat identifikátorů URI:
 
-* `abfs:///`: Výchozí úložiště s přístupem pomocí nešifrovaná komunikace.
+* `abfs:///`: Přístup k výchozímu úložišti pomocí nešifrované komunikace
 
-* `abfss:///`: Výchozí úložiště s přístupem pomocí šifrovanou komunikaci.  Schéma abfss je podporováno pouze v HDInsight verze 3.6 a vyšší.
+* `abfss:///`: Přístup k výchozímu úložišti pomocí šifrované komunikace.  Schéma abfss se podporuje jenom ve verzi HDInsight 3,6 a vyšší.
 
-* `abfs://<container-name>@<account-name>.dfs.core.windows.net/`: Použít při komunikaci s účtem služby storage jiné než výchozí. Například pokud máte ještě účet úložiště nebo při přístupu k datům uloženým v účtu úložiště veřejně přístupná.
+* `abfs://<container-name>@<account-name>.dfs.core.windows.net/`: Používá se při komunikaci s jiným než výchozím účtem úložiště. Například když máte další účet úložiště nebo když přistupujete k datům uloženým v veřejně přístupném účtu úložiště.
 
-Při použití __Azure Data Lake Storage Gen1__, použijte jednu z následujících schémata identifikátoru URI:
+Při použití __Azure Data Lake Storage Gen1__použijte jedno z následujících schémat identifikátorů URI:
 
-* `adl:///`: Přístup k výchozí Data Lake Storage pro cluster.
+* `adl:///`: Přístup k výchozímu Data Lake Storage clusteru.
 
-* `adl://<storage-name>.azuredatalakestore.net/`: Použít při komunikaci s úložištěm Data Lake jiné než výchozí. Také používá pro přístup k datům mimo kořenový adresář vašeho clusteru HDInsight.
+* `adl://<storage-name>.azuredatalakestore.net/`: Používá se při komunikaci s jiným než výchozím Data Lake Storage. Používá se také pro přístup k datům mimo kořenový adresář clusteru HDInsight.
 
 > [!IMPORTANT]  
-> Při použití Data Lake Storage jako výchozího úložiště pro HDInsight, musíte zadat cestu v rámci úložiště, které chcete použít jako kořen úložiště HDInsight. Výchozí cesta je `/clusters/<cluster-name>/`.
+> Při použití Data Lake Storage jako výchozího úložiště pro HDInsight musíte zadat cestu v úložišti, která se má použít jako kořenový adresář úložiště HDInsight. Výchozí cesta je `/clusters/<cluster-name>/`.
 >
-> Při použití `/` nebo `adl:///` pro přístup k datům, máte přístup jenom data uložená v kořenovém adresáři (například `/clusters/<cluster-name>/`) clusteru. Chcete-li získat přístup k datům kdekoli v úložišti, použijte `adl://<storage-name>.azuredatalakestore.net/` formátu.
+> Při použití `/` nebo `adl:///` pro přístup k datům můžete přistupovat pouze k datům uloženým v `/clusters/<cluster-name>/`kořenovém adresáři (například) clusteru. Chcete-li získat přístup k datům kdekoli v úložišti `adl://<storage-name>.azuredatalakestore.net/` , použijte formát.
 
-### <a name="what-storage-is-the-cluster-using"></a>Úložiště používá cluster
+### <a name="what-storage-is-the-cluster-using"></a>Jaké úložiště používá cluster
 
-Ambari slouží k načtení výchozí konfiguraci úložiště pro cluster. Použijte následující příkaz pro načtení pomocí příkazu curl informace o konfiguraci HDFS a filtrovat pomocí [jq](https://stedolan.github.io/jq/):
+Pomocí Ambari můžete načíst výchozí konfiguraci úložiště pro cluster. Pomocí následujícího příkazu můžete načíst informace o konfiguraci HDFS pomocí formátu kudrlinkou a filtrovat je pomocí [JQ](https://stedolan.github.io/jq/):
 
 ```bash
 curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/configurations/service_config_versions?service_name=HDFS&service_config_version=1" | jq '.items[].configurations[].properties["fs.defaultFS"] | select(. != null)'
 ```
 
 > [!NOTE]  
-> Tento příkaz vrátí první konfigurace pro server (`service_config_version=1`), která obsahuje tyto informace. Budete muset zobrazí seznam všech verzí konfigurace, abyste našli ten poslední.
+> Tento příkaz vrátí první konfiguraci použitou pro server (`service_config_version=1`), který obsahuje tyto informace. Možná budete muset zobrazit seznam všech verzí konfigurace, abyste našli nejnovější verzi.
 
-Tento příkaz vrátí hodnotu podobně jako následující identifikátory URI:
+Tento příkaz vrátí hodnotu podobnou následujícím identifikátorům URI:
 
-* `wasb://<container-name>@<account-name>.blob.core.windows.net` Pokud používáte účet služby Azure Storage.
+* `wasb://<container-name>@<account-name>.blob.core.windows.net`Pokud používáte účet Azure Storage.
 
-    Název účtu je název účtu služby Azure Storage. Název kontejneru je kontejner objektů blob, který je kořenový adresář úložiště clusteru.
+    Název účtu je název účtu Azure Storage. Název kontejneru je kontejner objektů blob, který je kořenovým adresářem úložiště clusteru.
 
-* `adl://home` Pokud používáte Azure Data Lake Storage. Pokud chcete získat název Data Lake Storage, použijte následující volání REST:
+* `adl://home`Pokud používáte Azure Data Lake Storage. Chcete-li získat název Data Lake Storage, použijte následující volání REST:
 
      ```bash
     curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/configurations/service_config_versions?service_name=HDFS&service_config_version=1" | jq '.items[].configurations[].properties["dfs.adls.home.hostname"] | select(. != null)'
@@ -168,29 +168,29 @@ Tento příkaz vrátí hodnotu podobně jako následující identifikátory URI:
 
     Tento příkaz vrátí následující název hostitele: `<data-lake-store-account-name>.azuredatalakestore.net`.
 
-    Adresář v rámci úložiště, které je kořenový adresář pro HDInsight získáte pomocí následujícího volání REST:
+    Pokud chcete získat adresář v rámci úložiště, který je kořenem pro HDInsight, použijte následující volání REST:
 
     ```bash
     curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/configurations/service_config_versions?service_name=HDFS&service_config_version=1" | jq '.items[].configurations[].properties["dfs.adls.home.mountpoint"] | select(. != null)'
     ```
 
-    Tento příkaz vrátí cestu, podobně jako na následující cestu: `/clusters/<hdinsight-cluster-name>/`.
+    Tento příkaz vrátí cestu podobnou následující cestě: `/clusters/<hdinsight-cluster-name>/`.
 
-Můžete také najít informace o úložiště pomocí webu Azure portal pomocí následujících kroků:
+Informace o úložišti můžete také najít pomocí Azure Portal pomocí následujících kroků:
 
-1. Z [webu Azure portal](https://portal.azure.com/), vyberte svůj cluster HDInsight.
+1. Z [Azure Portal](https://portal.azure.com/)vyberte svůj cluster HDInsight.
 
-2. Z **vlastnosti** vyberte **účty úložiště**. Zobrazí se informace o úložiště pro cluster.
+2. V části **vlastnosti** vyberte **účty úložiště**. Zobrazí se informace o úložišti pro cluster.
 
-### <a name="how-do-i-access-files-from-outside-hdinsight"></a>Jak získám přístup k soubory z mimo HDInsight
+### <a name="how-do-i-access-files-from-outside-hdinsight"></a>Návody přístup k souborům mimo HDInsight
 
-Existují různé způsoby, jak získat přístup k datům z mimo HDInsight cluster. Následuje několik odkazů na nástroje a sady SDK, které lze použít pro práci s daty:
+Existují různé způsoby, jak získat přístup k datům mimo cluster HDInsight. Následuje několik odkazů na nástroje a sady SDK, které lze použít pro práci s daty:
 
-Pokud používáte __služby Azure Storage__, naleznete v tématu Možnosti, můžete přistupovat k datům prostřednictvím následujících odkazů:
+Pokud používáte __Azure Storage__, přečtěte si následující odkazy, které vám umožní získat přístup k datům:
 
-* [Azure CLI](https://docs.microsoft.com/cli/azure/install-az-cli2): Příkazy rozhraní příkazového řádku pro práci s Azure. Po instalaci, použijte `az storage` příkaz nápovědu k používání úložiště, nebo `az storage blob` pro konkrétní objekt blob příkazy.
-* [blobxfer.py](https://github.com/Azure/blobxfer): Skript pythonu pro práci s objekty BLOB ve službě Azure Storage.
-* Různých sadách SDK:
+* [Azure CLI](https://docs.microsoft.com/cli/azure/install-az-cli2): Příkazy rozhraní příkazového řádku pro práci s Azure. Po instalaci použijte `az storage` příkaz pro nápovědu k používání úložiště nebo `az storage blob` pro příkazy pro objekty blob.
+* [blobxfer.py](https://github.com/Azure/blobxfer): Skript Pythonu pro práci s objekty BLOB v Azure Storage.
+* Různé sady SDK:
 
     * [Java](https://github.com/Azure/azure-sdk-for-java)
     * [Node.js](https://github.com/Azure/azure-sdk-for-node)
@@ -200,7 +200,7 @@ Pokud používáte __služby Azure Storage__, naleznete v tématu Možnosti, mů
     * [.NET](https://github.com/Azure/azure-sdk-for-net)
     * [Rozhraní REST API pro Storage](https://msdn.microsoft.com/library/azure/dd135733.aspx)
 
-Pokud používáte __Azure Data Lake Storage__, naleznete v tématu Možnosti, můžete přistupovat k datům prostřednictvím následujících odkazů:
+Pokud používáte __Azure Data Lake Storage__, přečtěte si následující odkazy, které vám umožní získat přístup k datům:
 
 * [Webový prohlížeč](../data-lake-store/data-lake-store-get-started-portal.md)
 * [PowerShell](../data-lake-store/data-lake-store-get-started-powershell.md)
@@ -213,79 +213,79 @@ Pokud používáte __Azure Data Lake Storage__, naleznete v tématu Možnosti, m
 
 ## <a name="scaling"></a>Škálování clusteru
 
-Funkce škálování clusteru můžete dynamicky měnit počet datových uzlů používané clusterem. Můžete provádět operace škálování při dalším úlohám nebo procesy jsou spuštěny v clusteru.  Viz také [HDInsight škálování clusterů](./hdinsight-scaling-best-practices.md)
+Funkce škálování clusteru umožňuje dynamicky měnit počet datových uzlů používaných clusterem. V případě, že se v clusteru spouštějí jiné úlohy nebo procesy, můžete provádět operace škálování.  Viz také [škálování clusterů HDInsight](./hdinsight-scaling-best-practices.md)
 
-Typy jiného clusteru jsou ovlivněny škálování následujícím způsobem:
+Různé typy clusterů jsou ovlivněny škálováním následujícím způsobem:
 
-* **Hadoop**: Během vertikálního snižování počtu uzlů v clusteru se restartují některé ze služeb v clusteru. Operace škálování může způsobit úlohy spuštěné nebo čeká na dokončení selhání po dokončení operace škálování. Neúspěšné úlohy po dokončení operace.
-* **HBase**: Oblastní servery jsou automaticky rovnoměrně rozdělen během několika minut, po dokončení operace škálování. Ručně vyvážit místní servery, postupujte následovně:
+* **Hadoop**: Při horizontálním navýšení kapacity počtu uzlů v clusteru se některé služby v clusteru restartují. Operace škálování můžou způsobit, že úlohy spuštěné nebo čekají na selhání při dokončení operace škálování. Po dokončení operace můžete úlohy znovu odeslat.
+* **HBase**: Po dokončení operace škálování se automaticky vyrovnávají regionální servery během několika minut. K ručnímu vyrovnávání regionálních serverů použijte následující postup:
 
     1. Připojte se ke clusteru HDInsight pomocí SSH. Další informace najdete v tématu [Použití SSH se službou HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).
 
-    2. Pomocí následujících spusťte prostředí HBase:
+    2. K zahájení prostředí HBA použijte následující:
 
             hbase shell
 
-    3. Po načtení prostředí HBase pomocí následujícího postupu ručně vyvážit místní servery:
+    3. Po načtení prostředí HBA použijte následující příkaz k ručnímu vyvážení místních serverů:
 
             balancer
 
-* **Storm**: Po provedení operace, která škálování byste měli obnovit rovnováhu všechny spuštěné topologie Storm. Opětovné vyvážení umožňuje přizpůsobit podle počtu uzlů v clusteru nové nastavení paralelismus topologii. Znovu vyvážit spuštěné topologie, použijte jednu z následujících možností:
+* Zaplavení: Po provedení operace škálování byste měli znovu vyrovnávat všechny spuštěné topologie zatížení. Nové vyrovnávání umožňuje, aby topologie znovu nastavila nastavení paralelismu na základě nového počtu uzlů v clusteru. Chcete-li znovu vyrovnávat spuštěné topologie, použijte jednu z následujících možností:
 
-    * **SSH**: Připojení k serveru a použijte následující příkaz obnovit rovnováhu topologie:
+    * **SSH**: Připojte se k serveru a použijte následující příkaz k opětovnému vyvážení topologie:
 
             storm rebalance TOPOLOGYNAME
 
-        Můžete také zadat parametry přepsat pomocné parametry paralelismu původně poskytované topologie. Například `storm rebalance mytopology -n 5 -e blue-spout=3 -e yellow-bolt=10` změní konfiguraci topologie 5 pracovních procesů, 3 vykonavatele pro součásti spout modrá a 10 vykonavatele pro součásti bolt žlutou barvou.
+        Můžete také zadat parametry pro přepsání pomocného parametru paralelismus původně poskytnuté topologie. Například `storm rebalance mytopology -n 5 -e blue-spout=3 -e yellow-bolt=10` změní konfiguraci topologie na 5 pracovních procesů, 3 vykonavatelé pro komponentu Blue-Spout a 10 prováděcích modulů pro komponentu žlutého šroubu.
 
-    * **Uživatelské rozhraní Storm**: Následujícím postupem obnovit rovnováhu topologie pomocí uživatelského rozhraní Storm.
+    * **Uživatelské rozhraní**pro zaplavení: Pomocí následujícího postupu můžete znovu vyvážit topologii pomocí uživatelského rozhraní.
 
-        1. Otevřít `https://CLUSTERNAME.azurehdinsight.net/stormui` ve webovém prohlížeči, kde `CLUSTERNAME` je název vašeho clusteru Storm. Pokud se zobrazí výzva, zadejte název správce (správce) clusteru HDInsight a heslo, které jste zadali při vytváření clusteru.
-        2. Vyberte topologii, kterou chcete obnovit rovnováhu a pak vyberte **obnovit rovnováhu** tlačítko. Zadejte zpoždění před provedením operace obnovení rovnováhy.
+        1. Otevřete `https://CLUSTERNAME.azurehdinsight.net/stormui` ve webovém prohlížeči, kde `CLUSTERNAME` je název vašeho clusteru s více podsítěmi. Po zobrazení výzvy zadejte název správce clusteru HDInsight (správce) a heslo, které jste zadali při vytváření clusteru.
+        2. Vyberte topologii, kterou chcete znovu vyvážit, a pak  vyberte tlačítko pro vyvážení. Zadejte zpoždění před provedením operace obnovení rovnováhy.
 
-* **Kafka**: Po operacích škálování měli obnovit rovnováhu replik oddílů. Další informace najdete v tématu [vysoké dostupnosti dat s využitím Apache Kafka v HDInsight](./kafka/apache-kafka-high-availability.md) dokumentu.
+* **Kafka**: Po operaci škálování byste měli znovu vyrovnávat repliky oddílů. Další informace najdete v článku o [vysoké dostupnosti dat s Apache Kafka v dokumentu HDInsight](./kafka/apache-kafka-high-availability.md) .
 
-Podrobnější informace o škálování clusteru HDInsight naleznete v tématu:
+Konkrétní informace o škálování clusteru HDInsight najdete v těchto tématech:
 
-* [Spravovat clustery systému Apache Hadoop v HDInsight pomocí webu Azure portal](hdinsight-administer-use-portal-linux.md#scale-clusters)
-* [Spravovat clustery systému Apache Hadoop v HDInsight pomocí rozhraní příkazového řádku Azure](hdinsight-administer-use-command-line.md#scale-clusters)
+* [Správa clusterů Apache Hadoop ve službě HDInsight pomocí Azure Portal](hdinsight-administer-use-portal-linux.md#scale-clusters)
+* [Správa clusterů Apache Hadoop ve službě HDInsight pomocí rozhraní příkazového řádku Azure](hdinsight-administer-use-command-line.md#scale-clusters)
 
-## <a name="how-do-i-install-hue-or-other-hadoop-component"></a>Jak nainstalovat Hue (nebo jiné součásti systému Hadoop)?
+## <a name="how-do-i-install-hue-or-other-hadoop-component"></a>Návody nainstalovat odstín (nebo jinou komponentu Hadoop)?
 
-HDInsight je spravovaná služba. Když Azure zjistí problém s clusterem, může odstranit uzel selhání a vytvořit uzel ji nahradit. Pokud nainstalujete ručně věci v clusteru, nejsou zachované při výskytu této operace. Místo toho použijte [akce skriptu HDInsight](hdinsight-hadoop-customize-cluster-linux.md). Akce skriptu umožňuje provést následující změny:
+HDInsight je spravovaná služba. Pokud Azure zjistí problém s clusterem, může odstranit uzel, který selhal, a vytvořit uzel, který ho nahradí. Pokud ručně nainstalujete na cluster nějaké věci, nebudou při této operaci trvalé. Místo toho použijte [akce skriptu HDInsight](hdinsight-hadoop-customize-cluster-linux.md). Akci skriptu lze použít k provedení následujících změn:
 
-* Instalace a konfigurace služby nebo webové stránky.
-* Instalace a konfigurace komponenty, která vyžaduje změny konfigurace na několika uzlech v clusteru.
+* Instalace a konfigurace služby nebo webu.
+* Nainstalujte a nakonfigurujte komponentu, která vyžaduje změny konfigurace na více uzlech v clusteru.
 
-Akce skriptů jsou skripty Bash. Skripty spustit během vytváření clusteru a slouží k instalaci a konfiguraci dalších součástí. Příklady skriptů jsou k dispozici pro instalaci následující komponenty:
+Akce skriptů jsou skripty bash. Skripty se spouští během vytváření clusteru a používají se k instalaci a konfiguraci dalších součástí. Ukázkové skripty jsou k dispozici pro instalaci následujících součástí:
 
 * [Apache Giraph](hdinsight-hadoop-giraph-install-linux.md)
 
 Informace o vývoji vlastních akcí skriptů naleznete v tématu [Vývoj akcí skriptů v prostředí HDInsight](hdinsight-hadoop-script-actions-linux.md).
 
-### <a name="jar-files"></a>Soubory JAR
+### <a name="jar-files"></a>Soubory jar
 
-Některé technologie Hadoop jsou k dispozici v souborech samostatný soubor jar, které obsahují funkce, které jsou použity jako součást úlohy MapReduce nebo z uvnitř Pigu a Hivu. Často není vyžadují žádné nastavení a mohou být odeslán do clusteru po vytvoření a používat přímo. Pokud chcete zajistit, aby že komponenta odolává obnovování z Image z clusteru, můžete uložit soubor jar do výchozího úložiště pro váš cluster (WASB nebo ADL).
+Některé technologie Hadoop jsou k dispozici v samostatných souborech jar, které obsahují funkce používané jako součást MapReduce úlohy, nebo z prasete nebo podregistru. Často nevyžadují žádné nastavení a dají se do clusteru nahrát po vytvoření a použití přímo. Pokud chcete zajistit, aby součást předržela přebitovou kopii clusteru, můžete uložit soubor JAR do výchozího úložiště pro váš cluster (WASB nebo ADL).
 
-Například, pokud chcete používat nejnovější verzi [Apache DataFu](https://datafu.incubator.apache.org/), si můžete stáhnout soubor jar obsahující projekt a nahrajte ho do clusteru HDInsight. Potom postupujte podle dokumentace DataFu o tom, jak pomocí Pigu a Hivu.
+Například pokud chcete použít nejnovější verzi [Apache DataFu](https://datafu.incubator.apache.org/), můžete si stáhnout jar obsahující projekt a nahrát ho do clusteru HDInsight. Pak postupujte podle pokynů v dokumentaci k DataFu, jak ji použít z prasete nebo z podregistru.
 
 > [!IMPORTANT]  
-> Některé součásti, které jsou samostatné soubory jar jsou k dispozici s HDInsight, ale nejsou v cestě. Pokud hledáte konkrétní součást, můžete ho vyhledat na svém clusteru těchto kroků:
+> Některé součásti, které jsou samostatnými soubory jar, jsou součástí HDInsight, ale nejsou v cestě. Pokud hledáte určitou součást, můžete ji vyhledat na svém clusteru pomocí následujícího postupu:
 >
 > ```find / -name *componentname*.jar 2>/dev/null```
 >
-> Tento příkaz vrátí cestu odpovídající soubory jar.
+> Tento příkaz vrátí cestu všech souborů JAR, které odpovídají.
 
-Chcete-li použít různé verze komponenty, nahrajte verze a použít je ve svých úlohách.
+Pokud chcete použít jinou verzi komponenty, nahrajte potřebnou verzi a použijte ji ve svých úlohách.
 
 > [!IMPORTANT]
-> Součásti, které jsou součástí clusteru HDInsight jsou plně podporované a Microsoft Support pomáhá izolovat a vyřešit problémy týkající se těchto součástí.
+> Komponenty dodávané s clusterem HDInsight jsou plně podporované a podpora Microsoftu pomáhají izolovat a řešit problémy související s těmito součástmi.
 >
-> Vlastní komponenty získat obchodně přiměřenou podporu můžete-li dále řešit tento problém. To může vést řeší problém nebo s výzvou k zapojení dostupné kanály pro open source technologie, ve kterých se nachází rozsáhlé znalosti pro tuto technologii. Existuje například mnoho komunitním webům, které lze použít jako: [Fórum na webu MSDN pro HDInsight](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight), [ https://stackoverflow.com ](https://stackoverflow.com). Také projektů Apache mít projektovým webům na [ https://apache.org ](https://apache.org), například: [Hadoop](https://hadoop.apache.org/), [Spark](https://spark.apache.org/).
+> Vlastní komponenty získají komerčně přiměřenou podporu, která vám může pomoct s dalším řešením tohoto problému. To může vést k vyřešení problému nebo požádá vás o zapojení dostupných kanálů pro technologie Open Source, ve kterých se najde hlubokou odbornost pro danou technologii. Například existuje mnoho webů komunity, které lze použít, například: [Fórum MSDN pro HDInsight](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight), [https://stackoverflow.com](https://stackoverflow.com). Projekty Apache také obsahují projektové weby [https://apache.org](https://apache.org), například: [Hadoop](https://hadoop.apache.org/), [Spark](https://spark.apache.org/).
 
 ## <a name="next-steps"></a>Další postup
 
-* [Správa clusterů HDInsight pomocí rozhraní Apache Ambari REST API](./hdinsight-hadoop-manage-ambari-rest-api.md)
-* [Použití Apache Hivu se službou HDInsight](hadoop/hdinsight-use-hive.md)
-* [Použití Apache Pig s HDInsight](hadoop/hdinsight-use-pig.md)
+* [Správa clusterů HDInsight pomocí REST API Apache Ambari](./hdinsight-hadoop-manage-ambari-rest-api.md)
+* [Použití Apache Hive se službou HDInsight](hadoop/hdinsight-use-hive.md)
+* [Použití Apache prasete se službou HDInsight](hadoop/hdinsight-use-pig.md)
 * [Použití úloh MapReduce se službou HDInsight](hadoop/hdinsight-use-mapreduce.md)

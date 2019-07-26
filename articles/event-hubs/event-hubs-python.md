@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/26/2018
 ms.author: shvija
-ms.openlocfilehash: 88fdaec9e19c082a6fe981dc4d9a0e015335f1e2
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f86dc92b4df45119930970acfe9e173f32f894fb
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60202968"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68356048"
 ---
 # <a name="how-to-use-azure-event-hubs-from-a-python-application"></a>Jak z aplikace v Pythonu pomocí služby Azure Event Hubs
 Azure Event Hubs je platforma pro streamování velkých objemů dat a služba pro ingestování událostí, která je schopná přijmout a zpracovat miliony událostí za sekundu. Služba Event Hubs dokáže zpracovávat a ukládat události, data nebo telemetrické údaje produkované distribuovaným softwarem a zařízeními. Data odeslaná do centra událostí je možné transformovat a uložit pomocí libovolného poskytovatele analýz v reálném čase nebo adaptérů pro dávkové zpracování a ukládání. Další informace najdete v tématu [Úvod do služby Event Hubs](event-hubs-what-is-event-hubs.md). 
@@ -29,10 +29,10 @@ Tento článek obsahuje odkazy na články, které ukazují, jak provádět nás
 
 - [Odesílání událostí do centra událostí](#send-events-to-event-hubs)
 - [Příjem událostí z centra událostí](#receive-events-from-event-hubs)
-- Čtení zachycená data události ze služby Azure storage. 
+- Načte zachycená data událostí z úložiště Azure. 
 
 ## <a name="prerequisites"></a>Požadavky
-- Vytvoření centra událostí pomocí jednoho z těchto rychlých startů: [Azure portal](event-hubs-create.md), [rozhraní příkazového řádku Azure](event-hubs-quickstart-cli.md), [prostředí Azure PowerShell](event-hubs-quickstart-powershell.md), [šablony Azure Resource Manageru](event-hubs-resource-manager-namespace-event-hub.md). 
+- Vytvořte centrum událostí pomocí jednoho z těchto rychlých startů: [Azure Portal](event-hubs-create.md), [Azure CLI](event-hubs-quickstart-cli.md), [Azure PowerShell](event-hubs-quickstart-powershell.md), [Azure Resource Manager šablonu](event-hubs-resource-manager-namespace-event-hub.md). 
 - Python 3.4 nebo novější na svém počítači.
 
 ## <a name="install-python-package"></a>Instalovat balíček Pythonu
@@ -94,7 +94,8 @@ Následující kód ukazuje, jak přijímat události z centra událostí z apli
 client = EventHubClient(ADDRESS, debug=False, username=USER, password=KEY)
 
 # Add a receiver to the client
-receiver = client.add_receiver(CONSUMER_GROUP, PARTITION, prefetch=5000, offset=OFFSET)
+receiver = client.add_receiver(
+    CONSUMER_GROUP, PARTITION, prefetch=5000, offset=OFFSET)
 
 # Run the Event Hubs client
 client.run()
@@ -112,7 +113,7 @@ client.stop()
 Úplný kurz o tom, jak přijímat události z centra událostí z aplikace napsané v Pythonu, najdete v tématu [v tomto článku](event-hubs-python-get-started-receive.md)
 
 ## <a name="read-capture-event-data-from-azure-storage"></a>Data události sběr dat pro čtení ze služby Azure Storage
-Následující kód ukazuje, jak číst data zaznamenané události, která je uložena v **úložiště objektů blob v Azure** z aplikace v Pythonu: Povolit **zachycení** funkce pro Centrum událostí podle pokynů od: [Povolení funkce Event Hubs Capture pomocí webu Azure portal](event-hubs-capture-enable-through-portal.md). Před testováním kód pak odešlete některé události do centra událostí. 
+Následující kód ukazuje, jak číst zachycená data událostí, která jsou uložená v **úložišti objektů BLOB v Azure** z aplikace Pythonu: Povolte funkci **Capture** pro centrum událostí podle pokynů v následujících pokynech: [Povolí Event Hubs zachytávání pomocí Azure Portal](event-hubs-capture-enable-through-portal.md). Před testováním kód pak odešlete některé události do centra událostí. 
 
 ```python
 import os
@@ -156,7 +157,6 @@ def startProcessing(accountName, key, container):
             os.remove(cleanName)
         block_blob_service.delete_blob(container, blob.name)
 startProcessing('YOUR STORAGE ACCOUNT NAME', 'YOUR KEY', 'capture')
-
 ```
 
 Úplný kurz o tom, jak číst zachycená data Event Hubs ve službě Azure blob storage z aplikace napsané v Pythonu, najdete v tématu [v tomto článku](event-hubs-capture-python.md)

@@ -1,6 +1,6 @@
 ---
-title: Můj profil (preview) portálu přehled – Azure Active Directory | Dokumentace Microsoftu
-description: Základní přehled a odkazy na další informace o portálu Můj profil a jeho funkcí.
+title: Přehled portálu Můj profil (Preview) – Azure Active Directory | Microsoft Docs
+description: Podrobný přehled a odkazy na Další informace o portálu Můj profil a jeho funkcích.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -12,27 +12,27 @@ ms.topic: overview
 ms.date: 05/08/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c686dc0af893259d942527d318f3dd7d98fd752d
-ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
+ms.openlocfilehash: d72cc4360025d50c6db55bf3029d1edeb538a040
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65470725"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68382953"
 ---
-# <a name="my-profile-preview-portal-overview"></a>Přehled portálu Můj profil (preview)
+# <a name="my-profile-preview-portal-overview"></a>Přehled portálu Můj profil (Preview)
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-myprofile.md)]
 
-**Můj profil** portálu (preview) vám pomůže při správě pracovního nebo školního účtu pomocí nastavení a správu bezpečnostních údajů, Správa připojených organizace a zařízení a zobrazení, jak vaše organizace používá vaše data.
+Portál **můj profil** (Preview) pomáhá spravovat pracovní nebo školní účet tím, že nastavuje a spravuje vaše bezpečnostní údaje, spravuje připojené organizace a zařízení a zobrazuje, jak vaše organizace používá vaše data.
 
 >[!Important]
 >Tento obsah je určený pro uživatele. Pokud jste správce, najdete další informace o nastavení a správě vašeho prostředí Azure Active Directory (Azure AD) v [dokumentaci k Azure Active Directory](https://docs.microsoft.com/azure/active-directory).
 
-![Stránka Přehled portálu, můj profil](media/myprofile-portal/myprofile-portal-overview.png)
+![Můj profilový portál, stránka přehled](media/myprofile-portal/myprofile-portal-overview.png)
 
-## <a name="go-to-the-my-profile-portal"></a>Přejděte na portálu Můj profil
+## <a name="go-to-the-my-profile-portal"></a>Přejít na portál Můj profil
 
-Můžete získat **Můj profil** portálu (https://myprofile.microsoft.com), z aktuální verzi některého z následujících prohlížečů:
+Můžete získat přístup k portálu **můj profil** (https://myprofile.microsoft.com), z aktuální verze kteréhokoli z následujících prohlížečů:
 
 - Chrome
 - Microsoft Edge
@@ -40,13 +40,13 @@ Můžete získat **Můj profil** portálu (https://myprofile.microsoft.com), z a
 - Firefox
 - Internet Explorer 11
 
-## <a name="my-profile-portal-articles"></a>Články portálu Můj profil
+## <a name="my-profile-portal-articles"></a>Články s portálem pro profil
 
-Podrobné informace a pokyny ohledně toho, co je k dispozici **Můj profil** portálu, najdete v následujících článcích:
+Podrobné informace a pokyny, co je k dispozici na portálu **můj profil** , najdete v následujících článcích:
 
 |Článek |Popis |
 |------|------------|
-|[Přidejte své bezpečnostní údaje](user-help-security-info-overview.md)| Několik článků s pokyny, jak nastavit aplikaci Microsoft Authenticator, zasílání textových zpráv nebo volání jako metodu ověřování. Zahrnuje také články o tom, jak přidat e-mailovou adresu nebo předdefinované bezpečnostní otázky, můžete resetovat vlastní zapomenutého hesla v případě potřeby.|
-|[Zobrazení nebo ponechte připojených organizace](myprofile-portal-organizations-page.md)| Pokyny ohledně toho, jak zobrazit a nechte organizace připojený ke svému pracovnímu nebo školnímu účtu.|
-|[Zobrazit nebo zakázat připojených zařízení](myprofile-portal-devices-page.md)| Pokyny ohledně toho, jak zobrazit nebo zakázat všechna zařízení jste se připojili ke svému pracovnímu nebo školnímu účtu.|
-|[Zobrazení informací souvisejících s ochranou osobních údajů](myprofile-portal-privacy-page.md)| Pokyny pro zobrazení online služby jsou připojené k vaší pracovní nebo školní účet, spolu s vaší organizace podmínky použití příkazu.|
+| [Přidat informace o zabezpečení](user-help-security-info-overview.md) | Několik článků s pokyny, jak nastavit Microsoft Authenticator aplikaci, zasílání textových zpráv nebo telefonní hovory jako metodu ověřování. Zahrnuje také články o tom, jak přidat e-mailovou adresu nebo předem definované bezpečnostní otázky, abyste mohli v případě potřeby resetovat své vlastní zapomenuté heslo.|
+| [Zobrazit nebo opustit připojené organizace](myprofile-portal-organizations-page.md) | Pokyny, jak zobrazit a opustit organizace připojené k vašemu pracovnímu nebo školnímu účtu.|
+| [Zobrazit nebo zakázat připojená zařízení](myprofile-portal-devices-page.md) | Pokyny, jak zobrazit nebo zakázat všechna zařízení, která jste připojili k pracovnímu nebo školnímu účtu.|
+| [Zobrazení informací souvisejících s ochranou osobních údajů](myprofile-portal-privacy-page.md) | Pokyny, jak zobrazit, které online služby jsou připojené k vašemu pracovnímu nebo školnímu účtu, spolu s příkazem podmínek použití vaší organizace.|

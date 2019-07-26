@@ -1,146 +1,146 @@
 ---
-title: Mapování toku dat výkonu a ladění, Průvodce ve službě Azure Data Factory | Dokumentace Microsoftu
-description: Další informace o klíčových faktorů, které ovlivňují výkon toků dat ve službě Azure Data Factory, při použití mapování datové toky.
+title: Mapování výkonu toku dat a Průvodce optimalizací v Azure Data Factory | Microsoft Docs
+description: Přečtěte si o klíčových faktorech, které mají vliv na výkon toků dat v Azure Data Factory při použití mapování datových toků.
 author: kromerm
 ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.date: 05/16/2019
-ms.openlocfilehash: 1ee266d7d9846a357dce613817affdb0cde5bfdc
-ms.sourcegitcommit: e6cb7ca206a125c05acfd431b5a64391a8dcc6b3
+ms.openlocfilehash: 090c229c5e97ede8eb7a397ce8f4d13d8735a346
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67569031"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68404609"
 ---
-# <a name="mapping-data-flows-performance-and-tuning-guide"></a>Mapování výkonu toky dat a Průvodce laděním
+# <a name="mapping-data-flows-performance-and-tuning-guide"></a>Průvodce optimalizací výkonu a ladění toků dat
 
 [!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
-Azure Data Factory mapování dat toků poskytují rozhraní bez kódu prohlížeče k návrhu, nasazení a orchestrovat transformace dat ve velkém měřítku.
+Azure Data Factory mapování datových toků poskytuje rozhraní prohlížeče bez kódu pro návrh, nasazení a orchestraci transformací dat ve velkém měřítku.
 
 > [!NOTE]
-> Pokud nejste obeznámeni s ADF mapování Data proudí obecně platí, přečtěte si téma [přehled toků dat](concepts-data-flow-overview.md) před čtením tohoto článku.
+> Pokud nejste obeznámeni s datovým proudem mapování ADF, přečtěte si článek [Přehled toků dat](concepts-data-flow-overview.md) před čtením tohoto článku.
 >
 
 > [!NOTE]
-> Při navrhování a testování datové toky v uživatelském rozhraní ADF, ujistěte se, že chcete zapnout přepínač ladění tak, aby vaše toky dat v můžete spustit v reálném čase bez čekání na clusteru zahřívání.
+> Když navrhujete a testujete toky dat z uživatelského rozhraní ADF, nezapomeňte zapnout přepínač ladění, abyste mohli spouštět toky dat v reálném čase, aniž byste čekali na zahřívání clusteru.
 >
 
-![Ladění tlačítko](media/data-flow/debugb1.png "ladění")
+![Tlačítko ladit](media/data-flow/debugb1.png "Ladit")
 
-## <a name="monitor-data-flow-performance"></a>Monitorování výkonu toku dat
+## <a name="monitor-data-flow-performance"></a>Sledování výkonu toku dat
 
-Při navrhování data mapování toků v prohlížeči, můžete test jednotek každé jednotlivé transformace po kliknutí na kartě Náhled dat v dolním podokně nastavení pro každý transformace. Dalším krokem, které byste měli podniknout je k testování vašich dat tok end až do konce v Návrháři kanálu. Přidat aktivitu spuštění toku dat a použijte tlačítko ladění k testování výkonu datový tok. V dolním podokně okna kanál zobrazí se ikona eyeglass v části "akce":
+Při navrhování toků dat mapování v prohlížeči lze každou jednotlivou transformaci otestovat kliknutím na kartu náhled dat v dolním podokně nastavení pro každou transformaci. Dalším krokem, který byste měli provést, je testování toku dat v Návrháři kanálu. Přidejte aktivitu spustit tok dat a použijte tlačítko ladit k otestování výkonu toku dat. V dolním podokně okna kanálu se zobrazí ikona eyeglass v části akce:
 
-![Tok dat monitorování](media/data-flow/mon002.png "předávají Data monitorování 2")
+![Sledování toku dat](media/data-flow/mon002.png "Monitor toku dat 2")
 
-Klepnutí na tuto ikonu se zobrazí plán provádění a následné výkonu profilu datový tok. Tyto informace můžete použít k odhadu výkon vašeho toku dat pro různé velikosti datové zdroje. Mějte na paměti, že 1 minuta čas nastavení spuštění úlohy clusteru, můžete předpokládat výpočtech celkový výkon a pokud použijete výchozí prostředí Azure Integration Runtime, budete muset přidat clusteru nahoru typu číselník také dobu 5 minut.
+Po kliknutí na tuto ikonu se zobrazí plán spuštění a následný profil výkonu toku dat. Tyto informace můžete použít k odhadu výkonu toku dat s různými zdroji dat s různou velikostí. Počítejte s tím, že v celkových výpočtech výkonu můžete předpokládat 1 minutu nastavení času spuštění úlohy clusteru a pokud používáte výchozí Azure Integration Runtime, možná budete muset přidat 5 minut času aktivace clusteru.
 
-![Sledování toku dat](media/data-flow/mon003.png "předávají Data monitorování 3")
+![Sledování toku dat](media/data-flow/mon003.png "Monitor toku dat 3")
 
 ## <a name="optimizing-for-azure-sql-database-and-azure-sql-data-warehouse"></a>Optimalizace pro Azure SQL Database a Azure SQL Data Warehouse
 
-![Zdroj část](media/data-flow/sourcepart3.png "zdroje část")
+![Zdrojová část](media/data-flow/sourcepart3.png "Zdrojová část")
 
-### <a name="partition-your-source-data"></a>Rozdělit svá zdrojová data
+### <a name="partition-your-source-data"></a>Rozdělit zdrojová data na oddíly
 
-* Přejít na "Optimalizace" a vybrat možnost "Zdroj". Nastavte buď sloupce konkrétní tabulky, nebo typ v dotazu.
-* Pokud jste zvolili "sloupce", pak vyberte sloupec oddílu.
-* Nastavuje maximální počet připojení k vaší databázi SQL Azure. Vyšší zkuste získat paralelní připojení k vaší databázi. Někdy však může vést k vyšší výkon s omezený počet připojení.
-* Zdrojových tabulkách databáze není nutné k rozdělení na oddíly.
-* Nastavení dotazu ve vaší zdrojové transformace, která odpovídá schématu dělení tabulky databáze, vám umožní source databázového stroje využívat eliminace oddílů.
-* Pokud váš zdroj není již rozdělená na oddíly, ADF dál používat dělení v prostředí Spark transformace na základě klíče, který zvolíte v transformaci zdroje dat.
+* Přejít na "optimalizovat" a vybrat zdroj. V dotazu nastavte buď konkrétní sloupec tabulky, nebo typ.
+* Pokud jste zvolili "sloupec", pak vyberte sloupec partition (oddíl).
+* Nastavte také maximální počet připojení k databázi SQL Azure. Můžete vyzkoušet vyšší nastavení, abyste získali paralelní připojení k vaší databázi. V některých případech ale může dojít k rychlejšímu výkonu s omezeným počtem připojení.
+* Zdrojové tabulky databáze není nutné rozdělit na oddíly.
+* Když nastavíte dotaz ve zdrojové transformaci, který se shoduje se schématem vytváření oddílů vaší databázovou tabulkou, umožníte zdrojovému databázovému stroji využít odstraňování oddílů.
+* Pokud váš zdroj ještě není rozdělený na oddíly, ADF bude v prostředí Spark Transforming dál používat dělení dat, a to na základě klíče, který jste vybrali ve zdrojové transformaci.
 
-### <a name="set-batch-size-and-query-on-source"></a>Nastavte velikost dávky a dotazování na zdroj
+### <a name="set-batch-size-and-query-on-source"></a>Nastavit velikost dávky a dotaz na zdroj
 
-![Zdroj](media/data-flow/source4.png "zdroje")
+![Zdroj](media/data-flow/source4.png "Zdroj")
 
-* Nastavení velikosti dávky se dát pokyn ADF k ukládání dat v sadách v paměti namísto řádek po řádku. Je volitelné nastavení a mohou Pokud nejsou správně velká spuštění ve výpočetních uzlech nemá dostatek prostředků.
-* Nastavení dotazu vám umožní filtrovat řádky přímo na zdroji před i doručení pro tok dat ke zpracování, které můžete provést počáteční data pořízení rychlejší.
-* Pokud použijete dotaz, můžete přidat nepovinný dotaz pomocných parametrů pro vaši službu Azure SQL DB, to znamená READ UNCOMMITTED
+* Nastavením velikosti dávky budete mít k ADF pokyn k ukládání dat v sadách místo řádků po řádku. Je to volitelné nastavení a na výpočetních uzlech, pokud nemají správnou velikost, může dojít k nedostatku prostředků.
+* Nastavení dotazu vám umožní filtrovat řádky přímo ve zdroji předtím, než dostanou tok dat pro zpracování, což může urychlit počáteční získání dat.
+* Pokud použijete dotaz, můžete přidat volitelné pomocný parametr dotazu pro Azure SQL DB, tj. číst nepotvrzené.
 
-### <a name="set-isolation-level-on-source-transformation-settings-for-sql-datasets"></a>Nastavit úroveň izolace na transformaci nastavení zdroje u datových sad SQL
+### <a name="set-isolation-level-on-source-transformation-settings-for-sql-datasets"></a>Nastavit úroveň izolace pro nastavení transformace zdroje pro datové sady SQL
 
-* Nepotvrzené čtení bude poskytovat rychlejší výsledky dotazu na zdroj transformace
+* Čtení nepotvrzeného vám poskytne rychlejší výsledky dotazu na transformaci zdroje.
 
-![Úroveň izolace](media/data-flow/isolationlevel.png "úroveň izolace")
+![Úroveň izolace](media/data-flow/isolationlevel.png "Úroveň izolace")
 
-### <a name="set-sink-batch-size"></a>Nastavte velikost dávky jímky
+### <a name="set-sink-batch-size"></a>Nastavit velikost dávky jímky
 
-![Jímka](media/data-flow/sink4.png "jímky")
+![Jímka](media/data-flow/sink4.png "Jímka")
 
-* Pokud se chcete vyhnout řádek po řádku zpracování datové toky, nastavte v nastavení jímky pro službu Azure SQL DB "velikost dávky". Dozvíte se, že se že zapíše ADF procesu databáze v dávkách, v závislosti na velikosti k dispozici.
+* Abyste se vyhnuli zpracování datových toků po řádcích, nastavte velikost dávky v nastavení jímky pro Azure SQL DB. Díky tomu bude ADF v dávkách zpracovávat zápisy do databáze v dávkách na základě zadané velikosti.
 
-### <a name="set-partitioning-options-on-your-sink"></a>Nastavte možnosti pro jímku dělení
+### <a name="set-partitioning-options-on-your-sink"></a>Nastavení možností dělení na jímku
 
-* I v případě, že není nutné data rozdělit na oddíly ve vaší cílové tabulky Azure SQL DB, přejděte na kartu Optimalizace a nastavte dělení.
-* Velmi často jednoduše oznamující do kruhové dotazování dělení v clusterech Spark provádění výsledky v mnohem rychlejší načítání místo vynucení všechna připojení z jednoho uzlu/oddílu dat pomocí ADF.
+* I v případě, že vaše data nejsou rozdělená do cílových tabulek Azure SQL DB, navštivte kartu optimalizace a nastavte dělení.
+* Velmi často stačí, když zapnete ADF pro použití kruhové dotazování na oddíly pro spouštěcí Clustery Spark, výsledkem je mnohem rychlejší načítání dat namísto vynucení všech připojení z jednoho uzlu nebo oddílu.
 
-### <a name="increase-size-of-your-compute-engine-in-azure-integration-runtime"></a>Zvětšete velikost výpočetní modul v prostředí Azure Integration Runtime
+### <a name="increase-size-of-your-compute-engine-in-azure-integration-runtime"></a>Zvětšete velikost modulu COMPUTE v Azure Integration Runtime
 
-![Nové prostředí IR](media/data-flow/ir-new.png "nové prostředí IR")
+![Nový IR](media/data-flow/ir-new.png "Nový IR")
 
-* Zvýšíte počet jader, které zvýšit počet uzlů a poskytneme vám další výpočetní výkon pro dotazování a zapisovat do databáze SQL Azure.
-* Vyzkoušejte "– Compute optimalizované" a "Memory Optimized" možnosti použít další prostředky pro vaše výpočetní uzly.
+* Zvyšte počet jader, čímž zvýšíte počet uzlů a získáte další výpočetní výkon pro dotazování a zápis do databáze SQL Azure.
+* Vyzkoušejte možnosti "optimalizované pro výpočty" a "paměť optimalizované", abyste pro výpočetní uzly použili více prostředků.
 
-### <a name="unit-test-and-performance-test-with-debug"></a>Testování částí a test výkonnosti s laděním
+### <a name="unit-test-and-performance-test-with-debug"></a>Test jednotek a test výkonnosti pomocí ladění
 
-* Jednotky testování toků dat, při nastavení na tlačítko "Tok Debug" na ON.
-* V Návrháři toku dat na kartě Náhled dat na transformace pro zobrazení výsledků svoji logiku transformace.
-* Testování částí data toky z Návrháře kanálu tak, že aktivitu toku dat v návrhu kanálu plátno a testovat pomocí tlačítka "Debug".
-* Testování v režimu ladění bude fungovat pro aktivní topným zařízením cluster prostředí, aniž byste museli čekat clusteru just-in-time typu číselník up.
+* Při toku dat testování částí nastavte na ZAPNUTo tlačítko "ladění toku dat".
+* V Návrháři toku dat použijte kartu náhled dat pro transformace k zobrazení výsledků logiky transformace.
+* Otestujte datové toky z návrháře kanálu tím, že na plátno pro návrh kanálu umístíte aktivitu toku dat a pomocí tlačítka ladit ji otestujete.
+* Testování v režimu ladění bude fungovat s živým živým clusterovým prostředím bez nutnosti čekat na zahřívání clusteru za běhu.
 
-### <a name="disable-indexes-on-write"></a>Zakázat indexy pro zápis
-* Použijte aktivitu ADF kanálu uložené procedury před vaši aktivitu toku dat, která zakáže indexů na cílové tabulky, které jsou zapisovány do z pro jímku.
-* Po vaši aktivitu toku dat přidejte další aktivitu uložené procedury, povolené tyto indexy.
+### <a name="disable-indexes-on-write"></a>Zakázat indexy při zápisu
+* Použijte aktivitu uložené procedury kanálu ADF před aktivitou toku dat, která zakáže indexy na cílových tabulkách, na které se zapisují z jímky.
+* Po aktivitě toku dat přidejte další aktivitu uložené procedury, která povoluje tyto indexy.
 
-### <a name="increase-the-size-of-your-azure-sql-db"></a>Zvětšete velikost vaší databáze SQL Azure
-* Naplánujte změny velikosti zdroje a jímky Azure SQL DB před spuštění, který omezuje svůj kanál pro zvýšení propustnosti a minimalizovat Azure omezování, když dosáhnete počtu jednotek DTU.
-* Po dokončení spouštění kanálu můžete změnit velikost vaší databáze zpět do jejich normální spuštění množství.
+### <a name="increase-the-size-of-your-azure-sql-db"></a>Zvětšení velikosti databáze SQL Azure
+* Naplánujte změnu velikosti zdroje a jímky Azure SQL DB předtím, než svůj kanál spustíte, abyste zvýšili propustnost a minimalizovali omezení Azure, jakmile dosáhnete limitů DTU.
+* Po dokončení kanálu můžete své databáze změnit na normální rychlost běhu.
 
-## <a name="optimizing-for-azure-sql-data-warehouse"></a>Optimalizace pro službu Azure SQL Data Warehouse
+## <a name="optimizing-for-azure-sql-data-warehouse"></a>Optimalizace pro Azure SQL Data Warehouse
 
-### <a name="use-staging-to-load-data-in-bulk-via-polybase"></a>Načtení dat pomocí Polybase hromadně pomocí pracovní
+### <a name="use-staging-to-load-data-in-bulk-via-polybase"></a>Použití přípravy k hromadnému načtení dat prostřednictvím základu
 
-* Pokud se chcete vyhnout řádek po řádku zpracování datové toky, nastavte možnost "Pracovní" v nastavení jímky tak, aby ADF můžete využít Polybase, aby se zabránilo řádek po řádku vloží do datového skladu. To bude dát pokyn ADF použití technologie Polybase, tak, aby data je možné načíst hromadně.
-* Při spouštění aktivit v toku dat z kanálu s pracovní zapnuta, bude nutné vybrat umístění úložiště objektů Blob pro hromadné načítání vaše pracovní data.
+* Abyste se vyhnuli zpracování datových toků po řádcích, nastavte možnost "fázování" v nastavení jímky tak, aby ADF mohla využít základnu k zamezení vkládání řádků do datového skladu. To povede k tomu, aby ADF používalo základnu, aby bylo možné data hromadně načíst.
+* Při spuštění aktivity toku dat z kanálu se zapnutým příchodem budete muset pro hromadné načítání vybrat umístění úložiště objektů BLOB vašich pracovních dat.
 
-### <a name="increase-the-size-of-your-azure-sql-dw"></a>Zvětšete velikost vašeho datového skladu SQL Azure
+### <a name="increase-the-size-of-your-azure-sql-dw"></a>Zvětšení velikosti datového skladu Azure SQL
 
-* Naplánovat, změna velikosti zdroje a jímky Azure SQL data Warehouse předtím, než spustíte svůj kanál pro zvýšení propustnosti a minimalizovat Azure omezování, když dosáhnete limitů DWU.
+* Naplánování změny velikosti zdroje a jímky Azure SQL DW před spuštěním kanálu za účelem zvýšení propustnosti a minimalizaci omezení Azure, jakmile dosáhnete limitů DWU.
 
-* Po dokončení spouštění kanálu můžete změnit velikost vaší databáze zpět do jejich normální spuštění množství.
+* Po dokončení kanálu můžete své databáze změnit na normální rychlost běhu.
 
 ## <a name="optimize-for-files"></a>Optimalizovat pro soubory
 
-* Můžete určit, kolik oddíly, které budou používat ADF. Každá transformace zdroje a jímky, stejně jako každý jednotlivých transformace můžete nastavit schéma vytváření oddílů. Pro zmenšení souborů může se stát, že vyberete "Jeden oddíl" můžete někdy fungovat lépe a rychleji, než s dotazem, Spark pro rozdělení malých souborů.
-* Pokud nemáte dostatek informací o svá zdrojová data, můžete "Kruhové dotazování" vytváření oddílů a nastavit počet oddílů.
-* Pokud zkoumat data a zjistit, že sloupce, které může být vhodné hash klíče, použijte-the-Hash dělení možnost.
+* Můžete určit, kolik oddílů bude používat ADF. U každé zdrojové & transformaci jímky a také každou jednotlivou transformaci můžete nastavit schéma dělení. U menších souborů může být při výběru možnosti "jeden oddíl" vhodnější pracovat lépe a rychleji než při vytváření oddílů malých souborů v Sparku.
+* Pokud nemáte k dispozici dostatek informací o zdrojových datech, můžete vybrat oddíl "kruhové dotazování" a nastavit počet oddílů.
+* Pokud prozkoumáte data a zjistíte, že máte sloupce, které mohou být vhodné pro klíče hash, použijte možnost dělení hodnoty hash.
 
-### <a name="file-naming-options"></a>Možnosti pro pojmenování souborů
+### <a name="file-naming-options"></a>Možnosti pojmenovávání souborů
 
-* Výchozí povaze zápis Transformovaná data v ADF mapování toků dat je k zápisu do datové sady, která obsahuje objekt Blob nebo ADLS propojenou službu. Měli byste nastavit tuto datovou sadu, aby odkazoval na složku nebo kontejneru, není soubor s názvem.
-* Explicitně data toky pomocí Azure Databricks Spark pro spouštění, což znamená, že výstup bude rozdělit přes více souborů na základě buď výchozí Spark rozdělení do oddílů nebo dělení schéma, které jste zvolili.
-* Velmi běžné operace v tocích ADF dat je zvolit "Výstup do jednoho souboru" tak, aby všechny soubory část výstupu jsou sloučeny do jednoho výstupního souboru.
-* Tato operace vyžaduje, že snižuje výstup do jednoho oddílu na jeden uzel clusteru.
-* To mějte na paměti při výběru této možnosti Oblíbené. Můžete spustit nemá dostatek prostředků uzlu clusteru, pokud kombinujete mnoha velkých zdrojové soubory do oddílu jeden výstupní soubor.
-* Aby se zabránilo vyčerpání prostředků výpočetního uzlu, můžete ponechat výchozí nebo explicitní schéma rozdělení oddílů ve službě ADF, která optimalizuje výkon, a pak přidejte další aktivitu kopírování v kanálu, která sloučí všechny části souborů z výstupní složky do jediného nového soubor. Tato technika v podstatě odděluje akci transformace z sloučení souboru a dosáhne stejného výsledku jako nastavení "výstup do jednoho souboru".
+* Výchozí povaha psaní transformovaných dat v datových tocích mapování ADF se zapisuje do datové sady, která má propojenou službu BLOB nebo ADLS. Tuto datovou sadu byste měli nastavit tak, aby odkazovala na složku nebo kontejner, nikoli na pojmenovaný soubor.
+* Toky dat používají Azure Databricks Spark ke spuštění, což znamená, že váš výstup bude rozdělen do více souborů na základě výchozího dělení Spark nebo schématu dělení, které jste výslovně zvolili.
+* Velmi běžnou operací v datových proudech ADF je volba "výstup do jednoho souboru", takže všechny soubory výstupních součástí budou sloučeny do jednoho výstupního souboru.
+* Tato operace ale vyžaduje, aby se výstup snížil na jeden oddíl na jednom uzlu clusteru.
+* Mějte na paměti, že při výběru této oblíbené možnosti. Pokud kombinujete mnoho velkých zdrojových souborů do jednoho oddílu výstupního souboru, můžete použít prostředky uzlu clusteru.
+* Aby nedošlo k vyčerpání prostředků výpočetních uzlů, můžete zachovat výchozí nebo explicitní schéma dělení v ADF, které optimalizuje výkon, a pak do kanálu přidat následnou aktivitu kopírování, která sloučí všechny soubory součásti z výstupní složky až po novou jednu. souborů. V podstatě Tato technika odděluje akci transformace ze slučování souborů a dosáhne stejného výsledku jako nastavení "výstup do jednoho souboru".
 
-### <a name="looping-through-file-lists"></a>Opakování ve smyčce prostřednictvím seznamy souborů
+### <a name="looping-through-file-lists"></a>Procházení seznamem souborů
 
-Ve většině případů se spustí toky dat ve službě ADF lepší z kanálu, který umožňuje transformace toku zdroje dat k iteraci přes více souborů. Jinými slovy proto se upřednostňuje pomocí zástupných znaků nebo seznamy souborů ve zdroji dat tok, který k iteraci přes seznam velkých souborů pomocí příkazu ForEach v kanálu, volání spuštění toku dat při každé iteraci. Zpracování toku dat tím, že opakování dojde k uvnitř toku dat spustí rychleji.
+Ve většině případů se toky dat v ADF spustí lépe z kanálu, který umožňuje transformaci zdroje toku dat na více souborů. Jinými slovy, je vhodnější používat zástupné znaky nebo seznamy souborů v toku dat, než můžete iterovat v rozsáhlých seznamech souborů pomocí příkazu ForEach v kanálu a voláním toku dat spouštění v každé iteraci. Proces toku dat se zrychluje tím, že umožní cyklům výskytu v toku dat.
 
-Například pokud mám seznam datových souborů z července 2019, pomocí které chcete ke zpracování do složky v úložišti objektů Blob, je výkonnější volat aktivitu spuštění toku dat jednou z vašeho kanálu a ve zdroji následujícím způsobem použít zástupný znak :
+Například pokud mám seznam datových souborů z července 2019, které chci zpracovat ve složce v Blob Storage, bude se více provádět pokus o volání aktivity toku dat z vašeho kanálu a použití zástupného znaku ve zdroji, jako je to :
 
 ```DateFiles/*_201907*.txt```
 
-To se poskytují vyšší výkon než vyhledávání na základě Store objektů Blob v kanálu, který pak Iteruje přes všechny odpovídající soubory pomocí aktivity spustit tok dat uvnitř ForEach.
+To bude mít lepší výkon než vyhledávání v úložišti objektů BLOB v kanálu, který pak projde všemi odpovídajícími soubory pomocí příkazu ForEach s aktivitou spustit tok dat uvnitř.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
-Zobrazit další toku dat články související s výkonem:
+Další články toku dat týkající se výkonu:
 
-- [Karta Optimalizace toku dat](concepts-data-flow-optimize-tab.md)
-- [Aktivitu toku dat](control-flow-execute-data-flow-activity.md)
-- [Sledování toku dat výkonu](concepts-data-flow-monitoring.md)
+- [Karta optimalizace toku dat](concepts-data-flow-optimize-tab.md)
+- [Aktivita toku dat](control-flow-execute-data-flow-activity.md)
+- [Sledování výkonu toku dat](concepts-data-flow-monitoring.md)

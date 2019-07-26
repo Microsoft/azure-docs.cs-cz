@@ -1,138 +1,105 @@
 ---
-title: Jak zlepšit přesnost detekce ve službě Azure Active Directory Identity Protection (Aktualizovat) | Dokumentace Microsoftu
-description: Jak zlepšit přesnost detekce ve službě Azure Active Directory Identity Protection (Aktualizovat).
+title: Jak zlepšit přesnost detekce v Azure Active Directory Identity Protection (Aktualizováno) | Microsoft Docs
+description: Jak zlepšit přesnost detekce v Azure Active Directory Identity Protection (Aktualizováno).
 services: active-directory
-keywords: Azure active directory identity protection, zjišťování cloudových aplikací, Správa aplikací, zabezpečení, rizika, úroveň rizika, ohrožení zabezpečení, zásady zabezpečení
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: mtillman
-ms.assetid: e7434eeb-4e98-4b6b-a895-b5598a6cccf1
 ms.service: active-directory
 ms.subservice: identity-protection
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7724d69a9294b420ca061d5ad26ad64826372203
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 32bb8de7970fc167a6a95e9d9c3c71e4e1dc0150
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60453217"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68333953"
 ---
-# <a name="how-to-improve-the-detection-accuracy"></a>Jak: Zlepšovat přesnost detekce 
+# <a name="how-to-improve-the-detection-accuracy"></a>Jak: Zlepšit přesnost detekce 
 
-Identity Protection poskytuje mechanismus poskytněte zpětnou vazbu ke službě Azure AD na rizika zjištěními ve vašem prostředí. Chcete-li poskytnout zpětnou vazbu, lze potvrdit tento stav zjištěné rizikový uživatel nebo události přihlášení. Uživatelé Microsoft tuto zpětnou vazbu reagovat na aktuální detekce rizik a zlepšili přesnost detekce budoucí. 
-
+Identity Protection poskytuje mechanizmy pro poskytování zpětné vazby do Azure AD při detekcích rizik ve vašem prostředí. Chcete-li poskytnout zpětnou vazbu, můžete potvrdit stav zjištěného rizikového uživatele nebo události přihlášení. Uživatelé Microsoftu tuto zpětnou vazbu provedou na základě současného zjišťování rizik a zlepšují přesnost budoucích zjišťování. 
 
 ## <a name="what-is-detection"></a>Co je detekce?
 
-Zjišťování je proces identifikace podezřelých aktivit ve spojení s vašimi uživatelskými účty. Podezřelé aktivity služby Azure AD může zjistit, se nazývají [riziková událost](../reports-monitoring/concept-risk-events.md). Proces zjišťování je založená na adaptivní algoritmy strojového učení a heuristik ke zjištění rizikové události pro uživatele.
+Zjišťování je proces identifikace podezřelých aktivit ve spojení s vašimi uživatelskými účty. Podezřelé aktivity, které Azure AD dokáže detekovat, se nazývají [rizikové události](../reports-monitoring/concept-risk-events.md). Proces zjišťování vychází z adaptivních algoritmů strojového učení a heuristiky k detekci rizikových událostí pro uživatele.
 
-Výsledky vyhledávání se používají k určení, zda jsou ohrožených uživatelů a přihlášení. 
+Výsledky detekce slouží k určení, zda jsou uživatelé a přihlášení ohroženi. 
 
+## <a name="how-can-i-improve-the-detection-accuracy"></a>Jak můžu zlepšit přesnost detekce?
 
-## <a name="how-can-i-improve-the-detection-accuracy"></a>Jak můžete zlepšit přesnost detekce?
+Vzhledem k tomu, že detekce je automatizovaný proces, je možné, že služba Azure AD hlásí falešně pozitivní výsledky. Přesnost detekce můžete zlepšit poskytnutím zpětné vazby do Azure AD ohledně výsledků zjišťování.
 
-Protože zjišťování je automatizovaný proces je možné, že Azure AD hlásí počet falešně pozitivních výsledků. Zlepšovat přesnost detekce tím, že poskytuje zpětnou vazbu ke službě Azure AD, pokud jde o výsledky vyhledávání.
+Existují tři způsoby, jak vylepšit přesnost detekce: potvrďte nahlášené přihlášení, potvrďte zabezpečené přihlášení a odsuňte riziko uživatele. Můžete to udělat z následujících sestav:
 
-Existují tři způsoby, jak zlepšit přesnost detekce: potvrďte ohrožení zabezpečení přihlášení, comfirm bezpečného přihlášení a zavřít uživatelského rizika. Můžete tak učinit z následujících sestav:
+- **Sestava rizikových přihlášení –** V sestavě riziková přihlášení si můžete ověřit, že přihlášení jsou bezpečná nebo ohrožená.
+- **Sestava rizikových uživatelů-** V sestavě rizikové uživatele můžete zrušit riziko uživatele. 
 
-- **Sestavy rizikových přihlášení –** v sestavě rizikových přihlášení můžete potvrďte, že přihlášení jsou bezpečné nebo ohrožení zabezpečení
+Vaše zpětná vazba se zpracovává službou Azure AD za účelem zlepšení přesnosti výsledků zjišťování. Vaše zpětná vazba se většinou poskytuje jako součást rizika uživatele nebo šetření rizik při přihlašování. Další informace najdete v tématu [jak prozkoumat rizikové uživatele a přihlášení](howto-investigate-risky-users-signins.md).
 
-- **Sestava rizikových uživatelů –** v sestavě rizikových uživatelů, můžete zavřít uživatelského rizika 
+## <a name="confirm-compromised"></a>Potvrdit napadení
 
-Vaše zpětná vazba je zpracován Azure AD, aby se zlepšila přesnost detekce výsledky. Obvykle můžete poskytnout zpětnou vazbu jako součást uživatelského rizika nebo šetření rizika přihlášení. Další informace najdete v tématu [zkoumání rizikoví uživatelé a přihlašování](howto-investigate-risky-users-signins.md).
+Potvrzení přihlašovací události jako ohrožených signálů do služby Azure AD, že přihlášení neautorizované vlastníkem identity Když vyberete potvrdit ohrožení, Azure AD bude
 
+- Zvyšte riziko uživatele ovlivněného uživatelem na vysoké úrovni.
+- Pomáhat s optimalizací strojového učení, které detekuje rizikové události
+- Proveďte další opatření pro další ochranu vaší organizace.
 
-## <a name="confirm-compromised"></a>Potvrďte dojde k ohrožení bezpečnosti
+Potvrzení napadeného přihlášení:
 
-Potvrzení události přihlášení, protože dojde k ohrožení bezpečnosti signalizuje do služby Azure AD, že přihlášení nebyl autorizován vlastníkem identity. Když si vyberete, "Potvrdit dojde k ohrožení bezpečnosti", bude Azure AD
+- **Sestava rizikových přihlášení** – Tato možnost umožňuje potvrdit napadené přihlášení pro jednu nebo více přihlašovacích událostí.
 
-- Zvýšení rizika uživatelů ovlivněných uživatelů na vysoká.
+   ![Skrýt riziko uživatele](./media/howto-improve-detection-accuracy/07.png)
 
-- Nápověda pro optimalizaci strojového učení, který zjistí rizikových událostí
+- **Zobrazení podrobností sestavy rizikových přihlášení** – Tato možnost umožňuje potvrdit napadený účet pro vybranou událost přihlášení v sestavě rizikových přihlášení. 
+
+   ![Skrýt riziko uživatele](./media/howto-improve-detection-accuracy/04.png)
  
-- Proveďte další opatření ke zvýšení ochrany vaší organizace
+## <a name="confirm-safe"></a>Potvrdit bezpečnost
 
+Potvrzení přihlašovací události jako bezpečných signálů službě Azure AD, že přihlášení schválil příslušný vlastník identity  . Když vyberete potvrdit zabezpečení, Azure AD bude:
 
-
-Potvrďte ohrožení zabezpečení přihlášení:
-
-- **Sestavy rizikových přihlášení** – tato možnost umožňuje, abyste potvrdili, že ohrožení zabezpečení přihlášení pro jeden nebo více události přihlášení.
-
-    ![Zavřít uživatelského rizika](./media/howto-improve-detection-accuracy/07.png)
-
-- **Zobrazení podrobností o sestavě rizikových přihlášení** – tato možnost povolí, budete vyzváni k potvrzení ohrožení bezpečnosti účtu pro vybrané přihlášení události v sestavě rizikových přihlášení. 
-
-    ![Zavřít uživatelského rizika](./media/howto-improve-detection-accuracy/04.png)
-
-
+- Vrátí příspěvek rizika uživatele pro vybraná přihlášení.
+- Zavřít základní rizikové události
+- Pomáhat s optimalizací strojového učení, které detekuje rizikové události
+- Proveďte další opatření pro další ochranu vaší organizace.
  
-## <a name="confirm-safe"></a>Potvrďte bezpečné
+Ověření bezpečného přihlášení v nástroji:
 
+- **Sestava rizikových přihlášení** – Tato možnost umožňuje potvrdit bezpečné přihlášení pro jednu nebo více přihlašovacích událostí.
 
-Potvrzení události přihlášení jako bezpečné signály do služby Azure AD, která přihlášení **byl** oprávnění vlastníkem příslušné identity. Když si vyberete, "Potvrdit bezpečné", bude Azure AD:
+   ![Skrýt riziko uživatele](./media/howto-improve-detection-accuracy/08.png)
 
-- Vrátí podíl vybrané přihlášení rizika uživatele
+- **Zobrazení podrobností sestavy rizikových přihlášení** – Tato možnost umožňuje potvrdit bezpečné přihlášení k vybrané události přihlášení v sestavě rizikových přihlášení. 
 
-- Zavřete základních rizikových událostí
+   ![Skrýt riziko uživatele](./media/howto-improve-detection-accuracy/05.png)
 
-- Nápověda pro optimalizaci strojového učení, který zjistí rizikových událostí
+## <a name="dismiss-user-risk"></a>Skrýt riziko uživatele
 
-- Proveďte další opatření ke zvýšení ochrany vaší organizace
- 
+Pokud jste již provedli nápravné akce pro rizikové uživatele nebo se domníváte, že byly falešně označeny jako rizikové, můžete odstranit riziko uživatele. Po chybějícím riziku uživatele se uživatel vrátí do nerizikového stavu. Všechna poslední riziková přihlášení a rizikové události pro vybraného uživatele budou zrušena.
 
-Potvrďte, že bezpečného přihlášení v:
+Hlášené riziko uživatele můžete zrušit v:
 
-- **Sestavy rizikových přihlášení** – tato možnost povolí, budete vyzváni k potvrzení bezpečné přihlašování k nejméně jedné události přihlášení.
+- **Sestava rizikové uživatele** – Tato možnost umožňuje přeskočit riziko uživatele pro jednoho nebo více vybraných uživatelů.
 
-    ![Zavřít uživatelského rizika](./media/howto-improve-detection-accuracy/08.png)
+   ![Skrýt riziko uživatele](./media/howto-improve-detection-accuracy/02.png)
 
-- **Zobrazení podrobností o sestavě rizikových přihlášení** – tato možnost povolí, budete vyzváni k potvrzení bezpečného přihlášení na vybrané události přihlášení v sestavě rizikových přihlášení. 
+- **Zobrazení podrobností** – Tato možnost umožňuje přeskočit riziko uživatele pro vybraného uživatele v sestavě rizik uživatele. 
 
-    ![Zavřít uživatelského rizika](./media/howto-improve-detection-accuracy/05.png)
+   ![Skrýt riziko uživatele](./media/howto-improve-detection-accuracy/01.png)
 
+**Co byste měli znát:**
 
-
-
-## <a name="dismiss-user-risk"></a>Zavřít uživatelského rizika
-
-Pokud už udělali nápravné akce pro riziko uživatele nebo přesvědčeni, že falešně byly označeny jako rizikovou, že můžete zavřít uživatelského rizika. Zavření rizika uživatele obnoví uživatele – rizikové stavu. Všechny minulé rizika a rizikových přihlášení se zruší události pro vybraného uživatele.
-
-
-Můžete zavřít ohlášené uživatelského rizika v:
-
-- **Sestava rizikových uživatelů** – tato možnost dovoluje zrušit uživatelského rizika pro jeden nebo více vybraných uživatelů.
-
-    ![Zavřít uživatelského rizika](./media/howto-improve-detection-accuracy/02.png)
-
-- **Zobrazení podrobností o** – tato možnost dovoluje zrušit riziko uživatele pro vybrané uživatele v sestavě rizika uživatele. 
-
-    ![Zavřít uživatelského rizika](./media/howto-improve-detection-accuracy/01.png)
-
-
-**Co byste měli vědět:**
-
-- Tuto akci nejde vrátit zpět.
-
-- Může trvat několik minut, než tuto akci dokončit, což je důvod, proč by neměl znovu odeslat žádost o.
-
-- Tuto akci lze provést pouze v případě AD spravuje přihlašovací údaje uživatele. 
-
-
+- Tuto akci nelze vrátit zpět.
+- Dokončení této akce může trvat několik minut, což je důvod, proč byste svou žádost neměli znovu odeslat.
+- Tuto akci můžete provést jenom v případě, že služba AD spravuje přihlašovací údaje uživatele. 
 
 ## <a name="best-practices"></a>Osvědčené postupy
 
-Zavření rizika uživatele je jedním ze způsobů je odblokování, pokud byla blokována zásady rizik uživatelů a nejde vlastní opravit kvůli nemají resetování hesla nebo povolené ověřování MFA. V takovém případě je nejvhodnější zajistit uživatele a zaregistruje se pro resetování hesla a vícefaktorové ověřování, takže budou moct sami napravit všechny budoucí rizikové události.
-
+Chybějící riziko uživatele je jedním ze způsobů, jak je odblokovat, pokud byly zablokovány zásadami rizika uživatele a nelze je opravit, protože není povoleno resetování hesla nebo ověřování MFA. V této situaci je nejvhodnější zajistit, aby uživatel potom registroval resetování hesla a MFA, aby mohl provádět samočinnou nápravu všech budoucích rizikových událostí.
 
 ## <a name="next-steps"></a>Další postup
 
-Získejte přehled o Azure AD Identity Protection, najdete v článku [Přehled služby Azure AD Identity Protection](overview-v2.md).
-
-
+Přehled Azure AD Identity Protection najdete v tématu [Azure AD Identity Protection Overview](overview-v2.md).

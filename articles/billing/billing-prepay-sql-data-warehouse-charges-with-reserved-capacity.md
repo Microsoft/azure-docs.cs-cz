@@ -1,87 +1,87 @@
 ---
-title: Předem za SQL Data Warehouse pomocí Azure záložní kapacitu
-description: Zjistěte, jak si můžete Předplatíte SQL Data Warehouse poplatky za vyhrazené kapacitě ještě ušetříte peníze.
+title: Platba za poplatky za SQL Data Warehouse s využitím rezervované kapacity Azure
+description: Přečtěte si, jak můžete zaplatit za SQL Data Warehouse poplatky s rezervovanou kapacitou, abyste ušetřili peníze.
 services: billing
 author: yashesvi
 manager: yashar
 ms.service: billing
 ms.topic: conceptual
-ms.date: 07/03/2019
+ms.date: 07/19/2019
 ms.author: banders
-ms.openlocfilehash: cea2c8e6d476c3ea2799337ab2da1f9406731814
-ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
+ms.openlocfilehash: 08c9f958f5103da9961f4c2d29be97f455cecc4b
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67565356"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68359265"
 ---
-# <a name="prepay-for-sql-data-warehouse-charges-with-reserved-capacity"></a>Předem SQL Data Warehouse poplatky za vyhrazené kapacitě
+# <a name="prepay-for-sql-data-warehouse-charges-with-reserved-capacity"></a>Platba za SQL Data Warehouse poplatky s rezervovanou kapacitou
 
-Vám umožní ušetřit s Azure SQL Data Warehouse se rozhodnete cDWU využití po dobu jednoho nebo tří let. K nákupu SQL Data Warehouse vyhrazené kapacity, musíte zvolit Azure oblast a délku smlouvy. Potom přidat do košíku SQL Data Warehouse SKU a zvolit počet jednotek cDWU, které si chcete koupit.
+Peníze můžete ušetřit Azure SQL Data Warehouse tím, že předplatíte za využití cDWU po dobu jednoho nebo tří let. Pokud chcete koupit SQL Data Warehouse rezervovanou kapacitu, musíte zvolit oblast Azure a termín. Pak přidejte SQL Data Warehouse SKU na svůj košík a zvolte množství cDWU jednotek, které chcete koupit.
 
-Při nákupu rezervace přejít na SQL Data Warehouse využití, která odpovídá atributy rezervace je už účtovat podle tarifů platit jako budete sazby.
+Když zakoupíte rezervaci, použití SQL Data Warehouse, které odpovídá atributům rezervace, už se neúčtují podle tarifů průběžných plateb.
 
-Rezervace nezahrnuje úložiště nebo sítě poplatky spojené s využitím SQL Data Warehouse.
+Rezervace nezahrnuje poplatky za úložiště ani síťové služby spojené s využitím SQL Data Warehouse.
 
-Když vyprší platnost rezervované kapacity, instance SQL Data Warehouse dál běžet, ale se účtují sazbou platit jako můžete přejít. Rezervace není automaticky obnoví.
+Až vyprší platnost rezervované kapacity, SQL Data Warehouse instance budou dál běžet, ale účtují se podle tarifu průběžných plateb. Rezervace se neobnovují automaticky.
 
-Informace o cenách najdete v článku [SQL Data Warehouse vyhrazené kapacity nabídky](https://azure.microsoft.com/pricing/details/sql-data-warehouse/gen2/).
+Informace o cenách najdete v [nabídce SQL Data Warehouse rezervované kapacity](https://azure.microsoft.com/pricing/details/sql-data-warehouse/gen2/).
 
-Můžete si koupit Azure SQL Data Warehouse vyhrazené kapacitě [webu Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade). Koupit rezervované kapacity:
+V [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade)si můžete koupit Azure SQL Data Warehouse rezervovanou kapacitu. Zakoupení rezervované kapacity:
 
-- Musíte mít roli vlastníka pro alespoň jeden enterprise nebo předplatné s průběžnými platbami.
-- Předplatné Enterprise **přidat Reserved Instances** musí být povolena možnost v [portálu EA](https://ea.azure.com/). Pokud je zakázáno, musíte být správce EA.
-- Programu Cloud Solution Provider (CSP) můžou nakupovat jenom správce agentů nebo prodejní agentů SQL Data Warehouse vyhrazené kapacity.
+- Musíte mít roli vlastníka alespoň pro jedno předplatné podniku nebo průběžné platby.
+- V případě předplatných Enterprise musí být na [portálu EA](https://ea.azure.com/)povolená možnost **Přidat rezervované instance** . Pokud je nastavení zakázané, musíte být správce EA.
+- V případě programu Cloud Solution Provider (CSP) mohou SQL Data Warehouse rezervované kapacity koupit pouze agenti správce nebo prodejní agenti.
 
-Další informace o jak podnikovým zákazníkům a Zákazníci s průběžnými platbami se vám účtovat nákup rezervace, naleznete v tématu [porozumět používání rezervace Azure u prováděcí smlouvy Enterprise](billing-understand-reserved-instance-usage-ea.md) a [pochopit Azure rezervace využití pro vaše předplatné s průběžnými platbami](billing-understand-reserved-instance-usage.md).
+Další informace o tom, jak se zákazníci s průběžnými platbami účtují za nákupy rezervací, najdete v tématu [vysvětlení využití rezervace Azure pro registraci v podniku](billing-understand-reserved-instance-usage-ea.md) a [pochopení využití rezervace Azure pro vaše Předplatné](billing-understand-reserved-instance-usage.md)s průběžnými platbami.
 
-## <a name="choose-the-right-size-before-purchase"></a>Výběr správné velikosti před nákupem
+## <a name="choose-the-right-size-before-purchase"></a>Zvolit správnou velikost před nákupem
 
-SQL Data Warehouse, které vyhrazená velikost by měla vycházet z celkové výpočetních jednotek datového skladu (cDWU), které skutečně využijete. Nákupy se provádí v přírůstcích po 100 cDWU.
+Velikost rezervace SQL Data Warehouse by měla být založená na celkovém počtu jednotek datového skladu (cDWU), které využíváte. Nákupy se provádějí v 100 cDWU přírůstcích.
 
-Předpokládejme například, že vaše celková spotřeba služby SQL Data Warehouse je DW3000c. Chcete zakoupit vyhrazené kapacitu pro všechno. Proto byste si zakoupit 30 jednotek cDWU vyhrazené kapacity.
+Předpokládejme například, že vaše celková spotřeba SQL Data Warehouse je DW3000c. Chcete zakoupit vyhrazenou kapacitu pro vše. Měli byste si koupit 30 jednotek rezervované kapacity cDWU.
 
-## <a name="buy-sql-data-warehouse-reserved-capacity"></a>Nákup SQL Data Warehouse rezervované kapacity
+## <a name="buy-sql-data-warehouse-reserved-capacity"></a>Koupit SQL Data Warehouse rezervovanou kapacitu
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
-2. Vyberte **všechny služby** > **rezervace**.
-3. Vyberte předplatné. Pomocí seznamu předplatného vyberte předplatné, který umožňuje platit za rezervované kapacity. Způsob platby předplatného se účtuje pořizovací náklady pro záložní kapacitu. Tento typ předplatného musí být smlouvu enterprise agreement (nabízejí čísla: MS-AZR-0017P nebo MS-AZR - 0148 P) nebo s průběžnými platbami (nabízejí čísla: MS-AZR-0003P nebo MS-AZR-0023P).
-  - V případě předplatného se smlouvou Enterprise se poplatky strhávají z peněžního zůstatku v rámci dané registrace nebo se účtují jako nadlimitní využití.
-  - V případě předplatného s průběžnými platbami se poplatky účtují na platební kartu nebo pomocí způsobu platby faktur určeného v předplatném.
-4. Vyberte obor. Pomocí seznamu rozsahů vyberte oboru předplatného.
-  - **Jednotného oboru skupiny prostředků** – platí pro odpovídající prostředky ve vybrané skupině prostředků pouze sleva za rezervaci.
-  - **Jednotného oboru předplatného** – sleva za rezervaci se vztahuje na odpovídající prostředkům ve vybraném předplatném.
-  - **Sdílený obor** – sleva za rezervaci se vztahuje na odpovídající zdroje v oprávněné předplatné, které jsou v kontextu fakturace. Pro zákazníky se smlouvou Enterprise je kontext fakturace registraci. Jednotlivých předplatných s průběžnými sazbami fakturační rozsah je všechny oprávněné předplatné vytvořili správce účtu.
-    - Pro podnikové zákazníky je kontext fakturace registraci smlouvy Enterprise.
-    - Pro zákazníky s průběžnými platbami sdílený obor je Všechna předplatná s průběžnými platbami, vytváří správce účtu.
-5. Vyberte oblast a vyberte oblast Azure, která je předmětem záložní kapacitu.
-6. Vyberte množství. Zadejte množství 100 jednotek datového skladu (cDWU), které si chcete koupit.    
-  Například množství 30 by vám poskytlo 3000 cDWU záložní kapacitu každou hodinu.
-7. Kontrola vyhrazené náklady na rezervované kapacity v SQL Data Warehouse **náklady** oddílu.
+2. Vyberte **všechny** > **rezervace**služeb.
+3. Vyberte předplatné. Pomocí seznamu předplatných vyberte předplatné, které se používá k placení rezervované kapacity. Platební metodou předplatného se účtují náklady na front-end pro rezervovanou kapacitu. Typ předplatného musí být smlouva Enterprise (čísla nabídek: MS-AZR-0017P nebo MS-AZR-0148P) nebo průběžné platby (čísla nabídek: MS-AZR-0003P nebo MS-AZR-0023P).
+   - V případě předplatného se smlouvou Enterprise se poplatky strhávají z peněžního zůstatku v rámci dané registrace nebo se účtují jako nadlimitní využití.
+   - V případě předplatného s průběžnými platbami se poplatky účtují na platební kartu nebo pomocí způsobu platby faktur určeného v předplatném.
+4. Vyberte obor. Pro výběr oboru předplatného použijte seznam rozsah.
+   - **Obor jedné skupiny prostředků** – aplikuje slevu na rezervované prostředky jenom na ty, které jsou ve vybrané skupině prostředků.
+   - **Rozsah jednoho** předplatného – aplikuje slevu na rezervované prostředky ve vybraném předplatném.
+   - **Sdílený rozsah** – použije slevu rezervace na odpovídající prostředky v oprávněných předplatných, která jsou v účetním kontextu. Pro zákazníky smlouva Enterprise je fakturačním kontextem registrace. U jednotlivých předplatných s tarify průběžných plateb jsou oborem fakturace všechna oprávněná předplatná vytvořená správcem účtu.
+   - Pro podnikové zákazníky je fakturačním kontextem registrace EA.
+   - Pro zákazníky s průběžnými platbami se sdíleným oborem jsou všechna předplatná s průběžnými platbami vytvořená správcem účtu.
+5. Vyberte oblast a zvolte oblast Azure, která je pokrytá rezervovanou kapacitou.
+6. Vyberte množství. Zadejte množství 100 jednotek datového skladu (cDWU), které chcete koupit.    
+   Například množství 30 vám poskytne 3 000 cDWU rezervované kapacity každou hodinu.
+7. Přečtěte si část náklady na rezervované vyhrazené kapacity SQL Data Warehouse v části **náklady** .
 8. Vyberte **Koupit**.
-9. Vyberte **zobrazit tuto rezervaci** zobrazíte stav vašeho nákupu.
+9. Pokud chcete zobrazit stav nákupu, vyberte **Zobrazit tuto rezervaci** .
 
 ## <a name="cancellations-and-exchanges"></a>Zrušení a výměny
 
-Potřebujete-li zrušit služby SQL Data Warehouse rezervované kapacity, může být 12 % poplatek za předčasné ukončení. Výše vrácených peněz vychází z vaší kupní ceny nebo aktuální ceny rezervace podle toho, která hodnota je nižší. Náhrady jsou omezené na 50,000.00 za rok. Náhrady, který jste dostali se zbývající poměrný zůstatek minus poplatek za předčasné ukončení 12 %. Pokud chcete požádat o zrušení, přejděte na rezervaci v Azure portal a vyberte **náhrada** vytvořit žádost o podporu.
+Pokud potřebujete zrušit svou SQL Data Warehouse rezervovanou kapacitu, může se jednat o 12% poplatek za předčasné ukončení. Výše vrácených peněz vychází z vaší kupní ceny nebo aktuální ceny rezervace podle toho, která hodnota je nižší. Refundace jsou omezeny na $50 000,00 za rok. Sazba, kterou obdržíte, je zbývající poměrné množství minus 12% poplatek za předčasné ukončení. Pokud ho chcete zrušit, pokračujte na rezervaci v Azure Portal a vyberte **refundace**.
 
-Pokud potřebujete změnit kapacitu pro vyhrazené SQL Data Warehouse do jiné oblasti nebo termín, můžete ji exchange pro jiné rezervace, který je roven nebo větší hodnotu. Počáteční datum období nové rezervace se z vyměněné rezervace nepřenáší. Jeden nebo tři roky začne, když vytvoříte novou rezervaci. Požádat o výměnu, otevřete rezervace na webu Azure Portal a vyberte **Exchange** vytvořit žádost o podporu.
+Pokud potřebujete změnit svou SQL Data Warehouse rezervovanou kapacitu na jinou oblast nebo termín, můžete si ji vyměňovat pro jinou rezervaci, která má stejnou nebo větší hodnotu. Počáteční datum období nové rezervace se z vyměněné rezervace nepřenáší. Jeden nebo tři roky se spustí při vytvoření nové rezervace. Na Exchange otevřete rezervaci v Azure Portal a vyberte **Exchange**.
 
-Další informace o tom, jak exchange nebo náhrady rezervace, naleznete v tématu [výměny rezervaci a vrácení peněz](billing-azure-reservations-self-service-exchange-and-refund.md).
+Další informace o výměně nebo refundaci rezervacích najdete v tématu věnovaném [výměnám a refundacím rezervací](billing-azure-reservations-self-service-exchange-and-refund.md).
 
-Sleva za rezervaci se automaticky využije na počet instancí SQL Data Warehouse, které odpovídají oboru SQL Data Warehouse vyhrazené kapacity a oblasti. Můžete aktualizovat obor SQL Data Warehouse vyhrazené kapacity pomocí [webu Azure portal](https://portal.azure.com/), prostředí PowerShell, rozhraní příkazového řádku nebo prostřednictvím rozhraní API.
+Sleva rezervace se automaticky použije na počet instancí SQL Data Warehouse, které odpovídají SQL Data Warehouse rezervovanému rozsahu kapacity a oblasti. Rozsah SQL Data Warehouse rezervované kapacity můžete aktualizovat pomocí [Azure Portal](https://portal.azure.com/), PowerShellu, CLI nebo přes rozhraní API.
 
-## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás
+## <a name="need-help-contact-us"></a>Potřebujete pomoct? Kontaktujte nás
 
 Pokud máte otázky nebo potřebujete pomoc, [vytvořit žádost o podporu](https://portal.azure.com/).
 
 ## <a name="next-steps"></a>Další postup
 
-- Další informace o tom, jak použít slevy na rezervaci do služby Azure SQL Data Warehouse najdete v tématu [jak slevy na rezervaci použít do služby Azure SQL Data Warehouse](billing-prepay-sql-data-warehouse-charges-with-reserved-capacity.md).
+- Další informace o tom, jak se slevy za rezervace vztahují na Azure SQL Data Warehouse, najdete v tématu [jak se vztahují slevy na rezervace na Azure SQL Data Warehouse](billing-prepay-sql-data-warehouse-charges-with-reserved-capacity.md).
 
-- Další informace o rezervacích Azure, najdete v následujících článcích:
-  - [Co jsou Azure rezervace?](billing-save-compute-costs-reservations.md)
+- Další informace o Azure Reservations najdete v následujících článcích:
+  - [Co jsou Azure Reservations?](billing-save-compute-costs-reservations.md)
   - [Správa rezervací Azure](billing-manage-reserved-vm-instance.md)
-  - [Vysvětlení, že slevách na využití platformy Azure rezervace](billing-understand-reservation-charges.md)
-  - [Vysvětlení využití rezervace pro vaše předplatné s průběžnými platbami](billing-understand-reserved-instance-usage.md)
-  - [Vysvětlení využití rezervaci u prováděcí smlouvy Enterprise](billing-understand-reserved-instance-usage-ea.md)
+  - [Pochopení Azure Reservations slevy](billing-understand-reservation-charges.md)
+  - [Vysvětlení využití rezervací pro předplatné s průběžnými platbami](billing-understand-reserved-instance-usage.md)
+  - [Vysvětlení použití rezervací pro podnikovou registraci](billing-understand-reserved-instance-usage-ea.md)

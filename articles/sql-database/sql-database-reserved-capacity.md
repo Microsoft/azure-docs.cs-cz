@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: sstein, carlrab
 manager: craigg
-ms.date: 07/15/2019
-ms.openlocfilehash: fa64177dfa5bfadad5db4116224b94ffac2fadc0
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
-ms.translationtype: HT
+ms.date: 07/19/2019
+ms.openlocfilehash: 1cc8828f5a936b130480c2c7516d00b8bee6760f
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68233051"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68357282"
 ---
 # <a name="prepay-for-sql-database-compute-resources-with-azure-sql-database-reserved-capacity"></a>Platba za SQL Database výpočetních prostředků s využitím Azure SQL Database rezervované kapacity
 
@@ -66,9 +66,9 @@ V následující tabulce jsou popsána povinná pole.
 
 ## <a name="cancellations-and-exchanges"></a>Zrušení a výměny
 
-Pokud potřebujete zrušit rezervaci rezervované kapacity SQL Database, může existovat 12% poplatek za předčasné ukončení. Výše vrácených peněz vychází z vaší kupní ceny nebo aktuální ceny rezervace podle toho, která hodnota je nižší. Výše vrácených peněz je omezená na 50 000 USD za rok. Výše vrácených peněz, které obdržíte, je zbývající poměrný zůstatek minus poplatek za předčasné ukončení ve výši 12 %. Chcete-li požádat o zrušení, pokračujte na rezervaci v Azure Portal a výběrem  možnosti refundace vytvořte žádost o podporu.
+Pokud potřebujete zrušit rezervaci rezervované kapacity SQL Database, může existovat 12% poplatek za předčasné ukončení. Výše vrácených peněz vychází z vaší kupní ceny nebo aktuální ceny rezervace podle toho, která hodnota je nižší. Výše vrácených peněz je omezená na 50 000 USD za rok. Výše vrácených peněz, které obdržíte, je zbývající poměrný zůstatek minus poplatek za předčasné ukončení ve výši 12 %. Pokud ho chcete zrušit, pokračujte na rezervaci v Azure Portal a vyberte **refundace**.
 
-Pokud potřebujete u své rezervace záložní kapacity SQL Database změnit oblast, typ nasazení, úroveň výkonu nebo období, můžete ji vyměnit za jinou rezervaci stejné nebo vyšší hodnoty. Počáteční datum období nové rezervace se z vyměněné rezervace nepřenáší. 1 nebo 3leté období začne okamžikem vytvoření nové rezervace. Pokud chcete požádat o výměnu, v Azure Portal klikněte na rezervace a vytvořte žádost o podporu výběrem možnosti **Exchange** .
+Pokud potřebujete u své rezervace záložní kapacity SQL Database změnit oblast, typ nasazení, úroveň výkonu nebo období, můžete ji vyměnit za jinou rezervaci stejné nebo vyšší hodnoty. Počáteční datum období nové rezervace se z vyměněné rezervace nepřenáší. 1 nebo 3leté období začne okamžikem vytvoření nové rezervace. Chcete-li vyměnit server Exchange, pokračujte na rezervaci v Azure Portal a vyberte možnost **Exchange**.
 
 Další informace o výměně nebo refundaci rezervacích najdete v tématu věnovaném [výměnám a refundacím rezervací](../billing/billing-azure-reservations-self-service-exchange-and-refund.md).
 
@@ -80,7 +80,7 @@ flexibilita velikosti vCore vám pomůže škálovat směrem nahoru nebo dolů v
 
 Pokud máte otázky nebo potřebujete pomoc, [vytvořit žádost o podporu](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Sleva rezervovaného vCore se automaticky aplikuje na počet instancí SQL Database, které odpovídají SQL Database rezervovaných rezervací kapacity a atributů. Rozsah rezervované rezervace kapacity SQL Database můžete aktualizovat prostřednictvím [Azure Portal](https://portal.azure.com), PowerShellu, CLI nebo přes rozhraní API.
 

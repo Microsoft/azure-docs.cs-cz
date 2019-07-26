@@ -1,5 +1,5 @@
 ---
-title: Řešení potíží s vynuceným použitím protokolu Kerberos konfigurace delegování pro Proxy aplikací | Dokumentace Microsoftu
+title: Řešení potíží s konfiguracemi omezeného delegování protokolu Kerberos pro proxy aplikací | Microsoft Docs
 description: Řešení potíží s konfigurace omezeného delegování protokolu Kerberos pro Proxy aplikací
 services: active-directory
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.date: 04/23/2019
 ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c758b473dcdf36456bcc3569c18849488ad14983
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 3ca50cfb8697fdbb8c71054c5a6b4d5e23792eb5
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67702661"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68381519"
 ---
 # <a name="troubleshoot-kerberos-constrained-delegation-configurations-for-application-proxy"></a>Řešení potíží s vynuceným použitím protokolu Kerberos konfigurace delegování pro Proxy aplikací
 
@@ -46,7 +46,7 @@ Z tohoto důvodu je nejvhodnější zajistit splnění všech požadavků v [pom
 
 - Není, členský server domény a otevřete dialogové okno zabezpečený kanál s řadičem konkrétní domény (DC). Server může přesuňte do jiného dialogového okna v daném okamžiku. Konektor hostitelé nejsou tak s omezeným přístupem ke komunikaci s místní lokalita pouze konkrétní řadiče domény.
 - Scénáře napříč doménami spoléhat na referenční seznamy sledování, které budou řídit konektor hostitele do řadiče domény, které můžou být mimo hranice místní sítě. V těchto případech je stejně důležité také směrovat provoz dále do řadiče domény, které představují další příslušné domény. V opačném případě delegování se nezdaří.
-- Kde je to možné, vyhněte se uvedení aktivních IP adres nebo ID zařízení mezi hostiteli v konektoru a řadiče domény. Tato zařízení jsou někdy příliš nežádoucí a ovlivňovat základní přenos pomocí protokolu RPC.
+- Kde je to možné, vyhněte se uvedení aktivních IP adres nebo ID zařízení mezi hostiteli v konektoru a řadiče domény. Tato zařízení jsou někdy příliš rušivá a jsou v konfliktu s jádrem provozu RPC.
 
 Otestujte delegování v jednoduché scénáře. Zavést další proměnné, tím víc bude pravděpodobně nutné potýkat s. Chcete-li ušetřit čas, omezte testování na jeden konektor. Poté, co byl problém vyřešen, přidejte další konektory.
 
@@ -60,7 +60,7 @@ Co se zobrazí KCD problém? Existuje několik běžných označení, které se 
 
 ![Příklad: Ověření se nezdařilo z důvodu chybějící oprávnění](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic2.png)
 
-Obě tyto Image zobrazit stejný příznak: Jednotné přihlašování se nezdařilo. Byl odepřen přístup uživatelů k aplikaci.
+Oba tyto obrázky obsahují stejný příznak: Chyba jednotného přihlašování Byl odepřen přístup uživatelů k aplikaci.
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
@@ -129,7 +129,7 @@ Příjemce poskytnuté konektoru lístek služby Kerberos. V této fázi očeká
 
      *Microsoft AAD Application Proxy Connector uživatele nejde ověřit, protože back-end server odpoví na pokusy o ověření protokolu Kerberos s chybou HTTP 401.*
 
-      ![Ukazuje HTTTP 401 je zakázané chyba](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic8.png)
+      ![Zobrazuje chybu HTTTP 401 Forbidden](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic8.png)
 
    - Zkontrolujte aplikace služby IIS. Ujistěte se, že se fond aplikací nakonfigurovaný a hlavní název služby umožňují použít stejný účet ve službě Azure AD. Přejděte ve službě IIS, jak je znázorněno na následujícím obrázku:
 
@@ -137,7 +137,7 @@ Příjemce poskytnuté konektoru lístek služby Kerberos. V této fázi očeká
 
       Až budete vědět, identitu, ujistěte se, že tento účet je nakonfigurovaný pomocí hlavního názvu služby dotyčný. Příklad: `setspn –q http/spn.wacketywack.com`. V příkazovém řádku zadejte následující text:
 
-      ![Zobrazí okno příkazu SetSPN](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic10.png)
+      ![Zobrazuje příkazové okno SetSPN.](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic10.png)
 
    - Zkontrolujte název SPN definované pro aplikace, nastavení na portálu. Ujistěte se, že fond aplikací aplikace používají stejný hlavní název služby nakonfigurovaný na cíli účtu Azure AD.
 
@@ -165,8 +165,8 @@ Pokud stále nemůžete provádět průběh, může vám pomůže podporu Micros
 
 ## <a name="other-scenarios"></a>Další scénáře
 
-- Proxy aplikací Azure vyžádá lístek protokolu Kerberos před odesláním jeho žádost do aplikace. Některé aplikace třetích stran nelíbí se vám tato metoda ověřování. Tyto aplikace můžete očekávat konvenčnější jednání uskutečnit. První požadavek je anonymní, což umožňuje, aby aplikace reagovat s typy ověřování, podporuje prostřednictvím zobrazuje chyba 401.
-- Ověřování s více segmenty směrování se běžně používá ve scénářích kde vrstvenou aplikaci s front-endu a back-endu kde vyžadují ověřování, jako je SQL Server Reporting Services. Pokud chcete nakonfigurovat scénář vícenásobného předávání, najdete v článku podpory [omezeného delegování může vyžadovat Přechod protokolu Kerberos ve scénářích s více segmenty směrování](https://support.microsoft.com/help/2005838/kerberos-constrained-delegation-may-require-protocol-transition-in-mul).
+- Proxy aplikací Azure vyžádá lístek protokolu Kerberos před odesláním jeho žádost do aplikace. Některé aplikace od jiných výrobců nezpůsobují tuto metodu ověřování. Tyto aplikace můžete očekávat konvenčnější jednání uskutečnit. První požadavek je anonymní, což umožňuje, aby aplikace reagovat s typy ověřování, podporuje prostřednictvím zobrazuje chyba 401.
+- Ověřování s více segmenty směrování se běžně používá ve scénářích kde vrstvenou aplikaci s front-endu a back-endu kde vyžadují ověřování, jako je SQL Server Reporting Services. Pokud chcete nakonfigurovat scénář s více segmenty směrování, přečtěte si článek podpora [omezeného delegování protokolu Kerberos ve scénářích s více segmenty směrování může vyžadovat přechod protokolu](https://support.microsoft.com/help/2005838/kerberos-constrained-delegation-may-require-protocol-transition-in-mul).
 
 ## <a name="next-steps"></a>Další postup
 

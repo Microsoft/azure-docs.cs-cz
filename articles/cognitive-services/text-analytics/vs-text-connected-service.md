@@ -1,38 +1,38 @@
 ---
-title: 'Kurz: Připojení ke službě Text Analytics pomocí připojené služby v sadě Visual Studio'
+title: 'Kurz: Připojení ke službě Analýza textu s připojenými službami v aplikaci Visual Studio'
 titleSuffix: Azure Cognitive Services
-description: Zjistěte, jak se připojit k rozhraní Text Analytics z webové aplikace ASP.NET Core.
+description: Přečtěte si, jak se připojit k Analýza textu z webové aplikace ASP.NET Core.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: tutorial
-ms.date: 02/13/2019
+ms.date: 07/24/2019
 ms.author: aahi
-ms.openlocfilehash: 75228b8c939cb5b8dd04471662ba86b46cfc808c
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: ff4c703070d6a7ebd545de3043e5f59b764fe4c9
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65860477"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68478465"
 ---
-# <a name="tutorial-connect-to-the-text-analytics-service-with-connected-services-in-visual-studio"></a>Kurz: Připojení ke službě Text Analytics pomocí připojené služby v sadě Visual Studio
+# <a name="tutorial-connect-to-the-text-analytics-service-with-connected-services-in-visual-studio"></a>Kurz: Připojení ke službě Analýza textu s připojenými službami v aplikaci Visual Studio
 
 Pomocí služby analýzy textu se dá extrahovat velké množství dat, které je možné využít ke kategorizaci a zpracování vizuálních dat a také k usnadnění správy služeb díky moderování obrázků s podporou počítače.
 
-Tento článek a jeho doprovodné články obsahují podrobnosti k použití funkce připojené služby sady Visual Studio pro službu Analýza textu. Možnost je dostupná v obou 2019 Visual Studio nebo novější, s nainstalované rozšíření služeb Cognitive Services.
+Tento článek a jeho doprovodné články obsahují podrobnosti k použití funkce připojené služby sady Visual Studio pro službu Analýza textu. Tato funkce je k dispozici v aplikaci Visual Studio 2019 nebo novější s nainstalovanou příponou Cognitive Services.
 
 ## <a name="prerequisites"></a>Požadavky
 
 - Předplatné Azure. Pokud žádné nemáte, můžete si zaregistrovat [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/)
-- Visual Studio. 2019, s nainstalovaná úloha vývoj pro Web. [Stáhnout](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs)
+- Visual Studio 2019 s nainstalovanou úlohou vývoje webu. [Stáhnout](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs)
 
 [!INCLUDE [vs-install-cognitive-services-vsix](../../../includes/vs-install-cognitive-services-vsix.md)]
 
 ## <a name="add-support-to-your-project-for-the-text-analytics-service"></a>Přidání podpory služby analýzy textu do projektu
 
-1. Vytvořte si nový webový projekt ASP.NET Core s názvem TextAnalyticsDemo. Použijte šablonu projektu Webová aplikace (Model-View-Controller) a ponechte výchozí nastavení. Je důležité projekt pojmenovat MyWebApplication, aby se při kopírování kódu do projektu shodovaly obory názvů.  Příklad v tomto článku používá MVC, ale připojenou službu analýzy textu můžete použít s libovolným typem projektu ASP.NET.
+1. Vytvořte si nový webový projekt ASP.NET Core s názvem TextAnalyticsDemo. Použijte šablonu projektu Webová aplikace (Model-View-Controller) a ponechte výchozí nastavení. Je důležité projekt pojmenovat MyWebApplication, aby se při kopírování kódu do projektu shodovaly obory názvů.  Příklad v tomto článku používá MVC, ale můžete použít Analýza textu připojené služby s libovolným typem projektu ASP.NET.
 
 1. V **Průzkumníku řešení** poklikejte na položku **Připojená služba**.
    Zobrazí se stránka Připojená služba se službami, které můžete přidat do projektu.
@@ -54,7 +54,7 @@ Tento článek a jeho doprovodné články obsahují podrobnosti k použití fun
    Pomocí odkazu můžete zobrazit podrobnosti o cenových úrovních.
 
 1. Výběrem možnosti **Přidat** přidejte podporu této připojené služby.
-   Sada Visual Studio upraví projekt tak, že přidá balíčky NuGet, položky konfiguračního souboru a další změny pro podporu připojení ke službě analýzy textu. V **okně výstupu** se zobrazí protokol, který ukazuje, co se s projektem děje. Mělo by se zobrazit něco podobného:
+   Sada Visual Studio upraví projekt tak, že přidá balíčky NuGet, položky konfiguračního souboru a další změny pro podporu připojení ke službě analýzy textu. V **okně výstupu** se zobrazí protokol, který ukazuje, co se s projektem děje. Výstup by měl vypadat jako v následujícím příkladu:
 
    ```output
     [6/1/2018 3:04:02.347 PM] Adding Text Analytics to the project.
@@ -90,7 +90,7 @@ Tento článek a jeho doprovodné články obsahují podrobnosti k použití fun
       }
    ```
 
-1. Do složky kontrolerů přidejte soubor třídy s názvem DemoTextAnalyzeController a nahraďte jeho obsah následujícím kódem:
+1. Přidejte soubor třídy do složky *Controllers* s názvem `DemoTextAnalyzeController` a nahraďte jeho obsah následujícím kódem:
 
     ```csharp
     using System;
@@ -153,7 +153,7 @@ Tento článek a jeho doprovodné články obsahují podrobnosti k použití fun
     }
     ```
     
-    Kód zahrnuje příkaz GetTextAnalyzeClient pro získání objektu klienta, který můžete použít pro volání rozhraní API pro analýzu textu, a popisovač žádosti, který zavolá metodu DetectLanguage u daného textu.
+    Kód zahrnuje `GetTextAnalyzeClient` pro získání objektu klienta pro volání rozhraní API pro analýzu textu a obslužnou rutinu žádosti, která volá operaci DetectLanguage na daný text.
 
 1. Přidejte třídu pomocné rutiny MyHandler, kterou používá předcházející kód.
 
@@ -171,7 +171,7 @@ Tento článek a jeho doprovodné články obsahují podrobnosti k použití fun
         }
     ```
 
-1. Do složky modelů přidejte třídu modelu.
+1. Ve složce *modely* přidejte třídu pro model.
 
     ```csharp
     using System;
@@ -265,6 +265,6 @@ Pokud už ji nepotřebujete, odstraňte skupinu prostředků. Tím se odstraní 
 2. Vyberte **Odstranit skupinu prostředků**.
 3. Do pole **ZADEJTE NÁZEV SKUPINY PROSTŘEDKŮ:** zadejte název vaší skupiny prostředků a vyberte **Odstranit**.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o službě analýzy textu najdete v [dokumentaci ke službě analýzy textu](index.yml).

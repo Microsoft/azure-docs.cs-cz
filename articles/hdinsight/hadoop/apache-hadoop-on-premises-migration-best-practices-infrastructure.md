@@ -1,6 +1,6 @@
 ---
-title: Migrace místních Apache Hadoop clusterů Azure HDInsight – osvědčené postupy infrastruktury
-description: Přečtěte si osvědčené postupy infrastruktury pro migrace místních Hadoop clusterů pro Azure HDInsight.
+title: Migrace místních Apache Hadoopových clusterů do Azure HDInsight – osvědčené postupy infrastruktury
+description: Naučte se osvědčené postupy pro migraci místních clusterů Hadoop do Azure HDInsight.
 author: hrasheed-msft
 ms.reviewer: jasonwhowell
 ms.service: hdinsight
@@ -8,101 +8,101 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/05/2019
 ms.author: hrasheed
-ms.openlocfilehash: 5bdd5049b7ddeaac4425734aa6f4d633b08cd3b4
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 0707f08d7c1447ff9aaae919cabfe1a668b25e3d
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67057473"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68404373"
 ---
-# <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---infrastructure-best-practices"></a>Migrace místních Apache Hadoop clusterů Azure HDInsight – osvědčené postupy infrastruktury
+# <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---infrastructure-best-practices"></a>Migrace místních Apache Hadoopových clusterů do Azure HDInsight – osvědčené postupy infrastruktury
 
-Tento článek obsahuje doporučení pro správu infrastruktury clustery Azure HDInsight. To je součástí série, která poskytuje osvědčené postupy pro pomoc s migrací místních systémů Apache Hadoop do Azure HDInsight.
+Tento článek obsahuje doporučení pro správu infrastruktury clusterů Azure HDInsight. Je součástí série, která poskytuje osvědčené postupy, které vám pomůžou s migrací místních Apache Hadoop systémů do Azure HDInsight.
 
 ## <a name="plan-for-hdinsight-cluster-capacity"></a>Plánování kapacity clusteru HDInsight
 
-Klíčové možnosti pro plánování kapacity clusteru HDInsight jsou následující:
+K dispozici jsou následující klíčové volby pro plánování kapacity clusteru HDInsight:
 
-- **Vyberte oblast,** -určuje oblast Azure, kde fyzicky zřízení clusteru. Kvůli minimalizaci latence čtení a zápisy, clusteru by měl být ve stejné oblasti jako data.
-- **Vyberte umístění úložiště a jeho velikost** – výchozí úložiště musí být ve stejné oblasti jako cluster. Pro cluster s uzly 48 se doporučuje mít 4 až 8 účty úložiště. I když už může být dostatečné celkový úložiště, každý účet úložiště poskytuje větší šířku pásma sítě pro výpočetní uzly. Pokud existuje více účtů úložiště, použijte náhodný název pro každý účet úložiště, bez předpony. Účelem náhodných názvů snižuje pravděpodobnost vzniku kritických bodů úložiště (omezení využití sítě) nebo režimu běžné chyby ve všech účtech. Pro lepší výkon pomocí pouze jednoho kontejneru účtu úložiště.
-- **Zvolte velikost virtuálního počítače a typ (teď podporuje řady G-series)** – každý typ clusteru má sadu typů uzlů a u každého typu uzlu má specifické nastavení pro jejich velikost virtuálního počítače a typu. Velikost virtuálního počítače a typ se určuje podle procesoru, výkon, velikost paměti RAM a latence sítě. Simulované zatížení lze použít k určení optimální velikost virtuálního počítače a zadejte pro každý typ uzlu.
-- **Vyberte počet uzlů pracovního procesu** – počáteční počet uzlů pracovního procesu můžete určit pomocí simulovaných úloh. Clusteru je možné později škálovat tak, že přidáte další pracovní uzly určené k požadavkům zatížení ve špičce. Clusteru je možné škálovat později při pracovní uzly nejsou povinné.
+- **Vyberte oblast** – oblast Azure určuje, kde se cluster fyzicky zřídí. Aby se minimalizovala latence čtení a zápisu, měl by cluster být ve stejné oblasti jako data.
+- **Zvolit umístění a velikost úložiště** – výchozí úložiště musí být ve stejné oblasti jako cluster. Pro cluster 48 se doporučuje mít 4 až 8 účtů úložiště. I když již může existovat dostatečná celková velikost úložiště, každý účet úložiště poskytuje pro výpočetní uzly další šířku pásma sítě. Pokud je k dispozici více účtů úložiště, použijte pro každý účet úložiště náhodný název bez předpony. Účelem náhodného pojmenování je snížit pravděpodobnost kritických bodů úložiště (omezování) nebo selhání v běžném režimu napříč všemi účty. Pro lepší výkon používejte jenom jeden kontejner na účet úložiště.
+- **Vyberte velikost virtuálního počítače a typ (teď podporuje G-series)** – každý typ clusteru má sadu typů uzlů a každý typ uzlu má konkrétní možnosti pro velikost a typ virtuálního počítače. Velikost a typ virtuálního počítače závisí na výkonu procesoru, velikosti paměti RAM a latenci sítě. Simulované úlohy lze použít k určení optimální velikosti a typu virtuálního počítače pro jednotlivé typy uzlů.
+- **Vyberte počet pracovních uzlů** – počáteční počet uzlů pracovních procesů lze určit pomocí simulovaných úloh. Cluster se dá škálovat později přidáním dalších pracovních uzlů pro splnění požadavků na špičku zatížení. Cluster lze později škálovat zpět, pokud nejsou požadovány další pracovní uzly.
 
 Další informace najdete v článku [plánování kapacity pro clustery HDInsight](../hdinsight-capacity-planning.md).
 
-## <a name="use-recommended-virtual-machine-type-for-cluster"></a>Typ virtuálního počítače pro cluster se doporučuje použít
+## <a name="use-recommended-virtual-machine-type-for-cluster"></a>Použít doporučený typ virtuálního počítače pro cluster
 
-Zobrazit [výchozí velikosti virtuálního počítače a konfigurace uzlů pro clustery](../hdinsight-component-versioning.md#default-node-configuration-and-virtual-machine-sizes-for-clusters) doporučeno typy virtuálních počítačů pro každý typ clusteru HDInsight.
+Doporučené typy virtuálních počítačů pro každý typ clusteru HDInsight najdete v tématu [Konfigurace výchozích uzlů a velikosti virtuálních počítačů pro clustery](../hdinsight-component-versioning.md#default-node-configuration-and-virtual-machine-sizes-for-clusters) .
 
-## <a name="check-hadoop-components-availability-in-hdinsight"></a>Zkontrolovat dostupnost součásti systému Hadoop v HDInsight
+## <a name="check-hadoop-components-availability-in-hdinsight"></a>Zkontroluje dostupnost součástí Hadoop ve službě HDInsight.
 
-Každá verze HDInsight je Cloudová distribuce sady součástí ekosystému Hadoop. Zobrazit [Správa verzí komponenty HDInsight](../hdinsight-component-versioning.md) podrobnosti o všech součástí HDInsight a jejich aktuální verze.
+Každá verze HDInsight je cloudová distribuce sady komponent pro ekosystém systému Hadoop. Podrobnosti o všech komponentách HDInsight a jejich aktuálních verzích najdete v tématu [Správa verzí komponent HDInsight](../hdinsight-component-versioning.md) .
 
-Ke kontrole komponenty a verze v HDInsight můžete také použít Apache Ambari, Uživatelskému nebo Ambari REST API.
+K ověření komponent a verzí Hadoop ve službě HDInsight můžete také použít uživatelské rozhraní Apache Ambari nebo Ambari REST API.
 
-Aplikace nebo komponenty, které byly k dispozici v místních clusterech, ale nejsou součástí clusterů HDInsight se dají přidat na hraničním uzlu nebo na virtuálním počítači ve stejné virtuální síti jako HDInsight cluster. Aplikace Hadoop jiných výrobců, která není k dispozici v Azure HDInsight můžete nainstalovat pomocí možnosti "Aplikace" v clusteru HDInsight. Vlastních aplikací Hadoop můžete nainstalovat na clusteru HDInsight pomocí "akce". V následující tabulce jsou uvedeny některé z běžných aplikací a jejich možnosti integrace HDInsight:
+Aplikace nebo komponenty, které byly dostupné v místních clusterech, ale nejsou součástí clusterů HDInsight, se dají přidávat na hraničním uzlu nebo na virtuálním počítači ve stejné virtuální síti jako cluster HDInsight. Aplikace Hadoop třetí strany, která není dostupná v Azure HDInsight, se dá nainstalovat pomocí možnosti aplikace v clusteru HDInsight. Vlastní aplikace Hadoop můžete nainstalovat na cluster HDInsight pomocí akcí skriptů. V následující tabulce jsou uvedeny některé běžné aplikace a jejich možnosti integrace HDInsight:
 
-|**Aplikace**|**Integrace**
+|**Aplikace**|**Spolupráci**
 |---|---|
-|Vzduchu|IaaS nebo HDInsight hraniční uzel
+|Tok dat|Hraniční uzel IaaS nebo HDInsight
 |Alluxio|IaaS  
 |Arcadia|IaaS 
-|Atlas|Žádný (pouze HDP)
+|Atlas|Žádné (pouze HDP)
 |Datameer|Hraniční uzel HDInsight
-|Datastax (Cassandra)|IaaS (alternativu v Azure cosmos DB)
+|DataStax (Cassandra)|IaaS (CosmosDB alternativa v Azure)
 |DataTorrent|IaaS 
 |Drill|IaaS 
 |Ignite|IaaS
 |Jethro|IaaS 
 |Mapador|IaaS 
-|Mongo|IaaS (alternativu v Azure cosmos DB)
+|Mongo|IaaS (CosmosDB alternativa v Azure)
 |NiFi|IaaS 
-|Presto|IaaS nebo HDInsight hraniční uzel
+|Presto|Hraniční uzel IaaS nebo HDInsight
 |Python 2|PaaS 
 |Python 3|PaaS 
 |R|PaaS 
 |SAS|IaaS 
-|Vertica|IaaS (SQLDW alternativu v Azure)
+|Vertica|IaaS (SQLDW alternativa v Azure)
 |Tableau|IaaS 
-|Vodoryskou|Hraniční uzel HDInsight
-|StreamSets|HDInsight edge 
+|Hlavní|Hraniční uzel HDInsight
+|StreamSets|Edge HDInsight 
 |Palantir|IaaS 
-|Sailpoint|Iaas 
+|Sailpoint|IaaS 
 
-Další informace najdete v článku [Apache Hadoop součásti, které jsou k dispozici v různých verzích HDInsight](../hdinsight-component-versioning.md#apache-hadoop-components-available-with-different-hdinsight-versions)
+Další informace najdete v článku věnovaném [Apache Hadoop komponentám, které jsou k dispozici v různých verzích HDInsight](../hdinsight-component-versioning.md#apache-hadoop-components-available-with-different-hdinsight-versions) .
 
-## <a name="customize-hdinsight-clusters-using-script-actions"></a>Přizpůsobení clusterů HDInsight pomocí skriptových akcí
+## <a name="customize-hdinsight-clusters-using-script-actions"></a>Přizpůsobení clusterů HDInsight pomocí akcí skriptů
 
-Poskytuje metodu volá konfigurace clusteru HDInsight **skript akce**. Akce skriptu je skriptu Bash, která běží na uzlech v clusteru služby HDInsight a slouží k instalaci dalších komponent a změnit nastavení konfigurace.
+HDInsight poskytuje metodu konfigurace clusteru nazvanou **akce skriptu**. Akce skriptu je skript bash, který běží na uzlech v clusteru HDInsight a dá se použít k instalaci dalších komponent a změně nastavení konfigurace.
 
-Akce se skripty musí být uložené na identifikátor URI, který je přístupný z clusteru HDInsight. Jejich lze použít během nebo po vytvoření clusteru a je také možné omezit pro spouštěn jen na určité typy uzlů.
+Akce skriptu musí být uložené na identifikátoru URI, který je přístupný z clusteru HDInsight. Dají se použít během vytváření clusteru nebo po ní a můžou se taky omezit na spouštění jenom na určitých typech uzlů.
 
-Skript může být zachována nebo provést jednou. Trvalých skriptů se používají k přizpůsobení nové pracovních uzlů do clusteru prostřednictvím operace škálování. Trvalá akce se skripty může také použít změny na jiný typ uzlu, jako je například hlavního uzlu, když dojde k operace škálování.
+Skript je možné zachovat nebo spustit jednou. Trvalé skripty se používají k přizpůsobení nových pracovních uzlů přidaných do clusteru prostřednictvím operací škálování. Trvalý skript může také při operacích škálování použít změny jiného typu uzlu, jako je například hlavní uzel.
 
-HDInsight poskytuje předpřipravené skripty v clusterech HDInsight nainstalovat následující komponenty:
+HDInsight poskytuje předem napsané skripty pro instalaci následujících komponent do clusterů HDInsight:
 
-- Přidání účtu služby Azure Storage
-- Instalace rozhraní Hue
+- Přidat účet Azure Storage
+- Nainstalovat Hue
 - Nainstalovat Presto
 - Nainstalovat Solr
 - Nainstalovat Giraph
 - Přednačíst knihovny Hive
-- Instalace nebo aktualizace Mono
+- Nainstalovat nebo aktualizovat Mono
 
 > [!Note]  
-> HDInsight neposkytuje přímou podporu pro vlastní hadoop součásti nebo součásti nainstalovat pomocí akcí skriptů.
+> HDInsight neposkytuje přímou podporu pro vlastní součásti Hadoop nebo komponenty nainstalované pomocí akcí skriptů.
 
-Akce se skripty můžete také publikovat na webu Azure Marketplace jako aplikace HDInsight.
+Akce skriptu je také možné publikovat do Azure Marketplace jako aplikace HDInsight.
 
 Další informace najdete v následujících článcích:
 
-- [Instalace aplikací třetích stran Apache Hadoop v HDInsight](../hdinsight-apps-install-applications.md)
-- [Přizpůsobení clusterů HDInsight pomocí skriptových akcí](../hdinsight-hadoop-customize-cluster-linux.md)
-- [Publikování aplikace HDInsight na Azure Marketplace](../hdinsight-apps-publish-applications.md)
+- [Instalace aplikací Apache Hadoop třetích stran v HDInsight](../hdinsight-apps-install-applications.md)
+- [Přizpůsobení clusterů HDInsight pomocí akcí skriptů](../hdinsight-hadoop-customize-cluster-linux.md)
+- [Publikování aplikace HDInsight v Azure Marketplace](../hdinsight-apps-publish-applications.md)
 
-## <a name="customize-hdinsight-configs-using-bootstrap"></a>Přizpůsobení konfigurace HDInsight pomocí Bootstrapu
+## <a name="customize-hdinsight-configs-using-bootstrap"></a>Přizpůsobení konfigurací HDInsight pomocí Bootstrap
 
-Změny konfigurace v konfiguračních souborech, jako `core-site.xml`, `hive-site.xml` a `oozie-env.xml` je možné provádět pomocí Bootstrap. Následující skript představuje příklad, pomocí Powershellu [AZ modulu](https://docs.microsoft.com/powershell/azure/new-azureps-module-az) rutiny [New-AzHDInsightClusterConfig](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster):
+Změny konfiguračních souborů v konfiguračních souborech `core-site.xml`, například a `oozie-env.xml` , `hive-site.xml` lze provádět pomocí Bootstrap. Následující skript je příkladem použití PowerShellu [AZ Module](https://docs.microsoft.com/powershell/azure/new-azureps-module-az) rutina [New-AzHDInsightClusterConfig](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster):
 
 ```powershell
 # hive-site.xml configuration
@@ -127,70 +127,70 @@ New—AzHDInsightCluster `
     —Config $config
 ```
 
-Další informace najdete v článku [HDInsight přizpůsobení clusterů pomocí Bootstrap](../hdinsight-hadoop-customize-cluster-bootstrap.md).  Viz také [HDInsight Správa clusterů pomocí rozhraní REST API Apache Ambari](../hdinsight-hadoop-manage-ambari-rest-api.md).
+Další informace najdete v článku [Přizpůsobení clusterů HDInsight pomocí nástroje Bootstrap](../hdinsight-hadoop-customize-cluster-bootstrap.md).  Viz také [Správa clusterů HDInsight pomocí REST API Apache Ambari](../hdinsight-hadoop-manage-ambari-rest-api.md).
 
-## <a name="access-client-tools-from-hdinsight-hadoop-cluster-edge-nodes"></a>Hraniční uzly clusteru přístup k nástrojům klienta z Hadoopu HDInsight
+## <a name="access-client-tools-from-hdinsight-hadoop-cluster-edge-nodes"></a>Přístup k nástrojům klienta z hraničních uzlů clusteru HDInsight Hadoop
 
-Prázdných hraničních uzlů je virtuální počítač s Linuxem pomocí stejných nástrojů klient nainstalovaný a nakonfigurovaný jako na hlavní uzly, ale žádné služby Hadoop spuštěné. Na hraničním uzlu lze použít k těmto účelům:
+Prázdný hraniční uzel je virtuální počítač pro Linux se stejnými klientskými nástroji, který je nainstalovaný a nakonfigurovaný jako hlavní, ale nemá spuštěné žádné služby Hadoop. Hraniční uzel lze použít pro následující účely:
 
 - přístup ke clusteru
-- testování klientské aplikace
-- hostování klientské aplikace
+- testování klientských aplikací
+- hostování klientských aplikací
 
-Hraniční uzly je možné vytvořit a odstranit prostřednictvím webu Azure portal a mohou být použity během nebo po vytvoření clusteru. Po vytvoření na hraničním uzlu, můžete se připojit k hraničnímu uzlu pomocí SSH a spuštění klientské nástroje pro přístup ke clusteru Hadoop v HDInsight. Na hraničním uzlu ssh je koncový bod `<EdgeNodeName>.<ClusterName>-ssh.azurehdinsight.net:22`.
-
-
-Další informace najdete v článku [použití prázdných hraničních uzlů v clusterech Apache Hadoop v HDInsight](../hdinsight-apps-use-edge-node.md).
+Hraniční uzly lze vytvořit a odstranit pomocí Azure Portal a lze je použít během vytváření clusteru nebo po ní. Po vytvoření hraničního uzlu se můžete připojit k hraničnímu uzlu pomocí protokolu SSH a spustit klientské nástroje pro přístup ke clusteru Hadoop ve službě HDInsight. Koncový bod SSH hraničního uzlu `<EdgeNodeName>.<ClusterName>-ssh.azurehdinsight.net:22`je.
 
 
-## <a name="use-scale-up-and-scale-down-feature-of-clusters"></a>Pomocí funkce horizontálního navýšení nebo snížení clusterů
+Další informace najdete v článku [použití prázdných hraničních uzlů na Apache Hadoop clusterech v HDInsight](../hdinsight-apps-use-edge-node.md).
 
-HDInsight poskytuje pružnost tím, že možnost vertikálně navýšit a snížit počet pracovních uzlů v clusterech služby. Tato funkce umožňuje zmenšit cluster po hodinách, nebo o víkendech a rozbalte ho během špičky obchodními požadavky. Další informace naleznete v tématu:
+
+## <a name="use-scale-up-and-scale-down-feature-of-clusters"></a>Použití funkcí horizontálního navýšení kapacity a škálování clusterů
+
+Služba HDInsight poskytuje pružnost díky možnosti horizontálního navýšení a snížení kapacity počtu pracovních uzlů ve vašich clusterech. Tato funkce umožňuje zmenšit cluster po hodinách nebo na víkendech a rozšířit ho během špičkových obchodních požadavků. Další informace naleznete v tématu:
 
 * [Škálování clusterů HDInsight](../hdinsight-scaling-best-practices.md).
 * [Škálování clusterů](../hdinsight-administer-use-portal-linux.md#scale-clusters).
 
-## <a name="use-hdinsight-with-azure-virtual-network"></a>Používat HDInsight s Azure Virtual Network
+## <a name="use-hdinsight-with-azure-virtual-network"></a>Použití HDInsight s Azure Virtual Network
 
-Virtuální sítě Azure umožňují prostředkům Azure, jako jsou Azure Virtual Machines, zabezpečeně komunikovat mezi sebou, internet, a místními sítěmi, filtrování a směrování síťového provozu.
+Virtuální sítě Azure umožňují zabezpečeně komunikovat s prostředky Azure, jako je třeba Azure Virtual Machines, a to díky filtrování a směrování síťového provozu.
 
-Pomocí Azure Virtual Network s HDInsight umožňuje následující scénáře:
+Použití Azure Virtual Network se službou HDInsight umožňuje následující scénáře:
 
-- Připojení k HDInsight přímo z místní sítě.
-- Připojování k datům HDInsight ukládají ve službě Azure Virtual network.
-- Přímý přístup k služby Hadoop, které nejsou k dispozici veřejně přes internet. Například rozhraní API systému Kafka nebo HBase Java API.
+- Připojení ke službě HDInsight přímo z místní sítě.
+- Připojení HDInsight k úložištím dat ve službě Azure Virtual Network.
+- Přímý přístup ke službám Hadoop, které nejsou veřejně dostupné po internetu. Například rozhraní API Kafka nebo rozhraní Java API pro adaptéry.
 
-HDInsight je buď přidat do nové nebo existující virtuální sítě Azure. Pokud HDInsight se přidává do existující virtuální síť, existující skupiny zabezpečení sítě a trasy definované uživatelem musí aktualizovat, chcete-li povolit neomezený přístup k [několik IP adres](../hdinsight-extend-hadoop-virtual-network.md#hdinsight-ip) v datovém centru Azure. Také zajistěte, aby blokovat provoz [porty](../hdinsight-extend-hadoop-virtual-network.md#hdinsight-ports), které jsou používány služby HDInsight.
+HDInsight se dá přidat do nové nebo existující služby Azure Virtual Network. Pokud se HDInsight přidává do existující Virtual Network, musí se aktualizovat existující skupiny zabezpečení sítě a uživatelsky definované trasy, aby bylo možné neomezený přístup k [několika IP adresám](../hdinsight-management-ip-addresses.md) v datacentru Azure. Také se ujistěte, že nechcete blokovat provoz do [portů](../hdinsight-plan-virtual-network-deployment.md#hdinsight-ports), které jsou používány službami HDInsight.
 
 > [!Note]  
-> HDInsight aktuálně nepodporují vynucené tunelování. Vynucené tunelování znamená nastavení podsítě, která vynutí odchozí internetový provoz do zařízení pro kontrolu a protokolování. Buď odeberte vynucené tunelování před instalací HDInsight do podsítě, nebo vytvořte novou podsíť pro HDInsight. HDInsight také nepodporuje omezení odchozího síťového připojení.
+> HDInsight v současné době nepodporuje vynucené tunelování. Vynucené tunelování je nastavení podsítě, které vynucuje odchozí internetový provoz do zařízení pro kontrolu a protokolování. Buď odeberte vynucené tunelové propojení před instalací HDInsight do podsítě, nebo vytvořte novou podsíť pro HDInsight. HDInsight také nepodporuje omezení odchozího připojení k síti.
 
 Další informace najdete v následujících článcích:
 
-- [Azure virtual-networks-overview](../../virtual-network/virtual-networks-overview.md)
-- [Rozšíření Azure HDInsight pomocí virtuální síť Azure](../hdinsight-extend-hadoop-virtual-network.md)
+- [Virtuální sítě Azure – přehled](../../virtual-network/virtual-networks-overview.md)
+- [Rozšíření Azure HDInsight pomocí virtuální síť Azure](../hdinsight-plan-virtual-network-deployment.md)
 
-## <a name="securely-connect-to-azure-services-with-azure-virtual-network-service-endpoints"></a>Připojte se bezpečně ke službám Azure s koncovými body služby virtuální sítě Azure
+## <a name="securely-connect-to-azure-services-with-azure-virtual-network-service-endpoints"></a>Zabezpečené připojení ke službám Azure pomocí koncových bodů služby Azure Virtual Network
 
-HDInsight podporuje [koncové body služeb virtuální sítě](../../virtual-network/virtual-network-service-endpoints-overview.md), které umožňují zabezpečené připojení k Azure Blob Storage, Azure Data Lake Storage Gen2, Cosmos DB a databáze SQL. Tím, že koncový bod služby pro Azure HDInsight, provoz prochází přes zabezpečené trasu z v rámci datového centra Azure. Tato rozšířená úroveň zabezpečení na síťové vrstvě můžete uzamčení účtů úložiště velké objemy dat do jejich zadané virtuální sítě (Vnet) a dál používat clustery HDInsight bez problémů pro přístup k a tato data zpracovávat.
+HDInsight podporuje [koncové body služby virtuální sítě](../../virtual-network/virtual-network-service-endpoints-overview.md), které vám umožní zabezpečené připojení k databázím Azure Blob Storage, Azure Data Lake Storage Gen2, Cosmos DB a SQL. Povolením koncového bodu služby pro Azure HDInsight přenos toků přes zabezpečenou trasu z datového centra Azure. Díky této rozšířené úrovni zabezpečení v síťové vrstvě můžete uzamknout účty úložiště s velkými objemy dat na zadané virtuální sítě (virtuální sítě) a i nadále používat clustery HDInsight k bezproblémovému přístupu a zpracování těchto dat.
 
 Další informace najdete v následujících článcích:
 
 - [Koncové body služby pro virtuální síť](../../virtual-network/virtual-network-service-endpoints-overview.md)
-- [Umožňuje zvýšit zabezpečení HDInsight s koncovými body služby](https://azure.microsoft.com/blog/enhance-hdinsight-security-with-service-endpoints/)
+- [Vylepšení zabezpečení HDInsight pomocí koncových bodů služby](https://azure.microsoft.com/blog/enhance-hdinsight-security-with-service-endpoints/)
 
-## <a name="connect-hdinsight-to-the-on-premises-network"></a>HDInsight se připojit k místní síti
+## <a name="connect-hdinsight-to-the-on-premises-network"></a>Připojení HDInsight k místní síti
 
-HDInsight můžete připojené k místní síti pomocí virtuální sítě Azure a bránu VPN. Následující postup slouží k navázání připojení:
+HDInsight se dá připojit k místní síti pomocí virtuálních sítí Azure a brány VPN. K navázání připojení se dají použít tyto kroky:
 
-- Pomocí HDInsight ve virtuální síti Azure, který má připojení k místní síti.
+- Použijte HDInsight v Virtual Network Azure, která má připojení k místní síti.
 - Nakonfigurujte překlad názvů DNS mezi virtuální sítí a místní sítí.
-- Konfigurace skupin zabezpečení sítě nebo uživatelem definované trasy (UDR) k řízení síťového provozu.
+- Nakonfigurujte skupiny zabezpečení sítě nebo trasy definované uživatelem (UDR) k řízení síťového provozu.
 
-Další informace najdete v článku [HDInsight připojit k místní síti](../connect-on-premises-network.md)
+Další informace najdete v článku [připojení HDInsight k místní síti](../connect-on-premises-network.md) .
 
 ## <a name="next-steps"></a>Další postup
 
 Přečtěte si další článek v této sérii:
 
-- [Úložiště osvědčené postupy pro místní migrace Azure HDInsight Hadoop](apache-hadoop-on-premises-migration-best-practices-storage.md)
+- [Osvědčené postupy úložiště pro migraci z místního prostředí do Azure HDInsight Hadoop](apache-hadoop-on-premises-migration-best-practices-storage.md)

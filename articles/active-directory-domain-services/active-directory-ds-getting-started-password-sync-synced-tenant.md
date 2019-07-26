@@ -1,5 +1,5 @@
 ---
-title: 'Azure AD Domain Services: Povolení synchronizace hesel | Dokumentace Microsoftu'
+title: 'Azure AD Domain Services: Povolit synchronizaci hesel | Microsoft Docs'
 description: Začínáme se službou Azure Active Directory Domain Services
 services: active-directory-ds
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: iainfou
-ms.openlocfilehash: e252774d99eecac3623fcbae4ce9fdc0e1591672
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 3ea4ebe652679ee9e4c0a165493fa86756ca7868
+ms.sourcegitcommit: 5604661655840c428045eb837fb8704dca811da0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67474111"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68494551"
 ---
 # <a name="enable-password-synchronization-to-azure-active-directory-domain-services"></a>Povolení synchronizace hesel do služby Azure Active Directory Domain Services
 V předchozích úlohách jste povolili službu Azure Active Directory Domain Services pro tenanta služby Azure Active Directory (Azure AD). Další úlohou je povolení synchronizace hodnot hash přihlašovacích údajů požadovaných pro ověřování protokolů NT LAN Manager (NTLM) a Kerberos do služby Azure AD Domain Services. Po nastavení synchronizace přihlašovacích údajů se uživatelé mohou přihlásit ke spravované doméně s použitím podnikových přihlašovacích údajů.
@@ -41,7 +41,7 @@ Potřebný postup se liší pro uživatelské účty jenom cloudu a uživatelsk�
 Synchronizovaný tenant služby Azure AD je nastavený na synchronizaci s místním adresářem vaší organizace pomocí služby Azure AD Connect. Azure AD Connect ve výchozím nastavení do služby Azure AD nesynchronizuje hodnoty hash přihlašovacích údajů protokolů NTLM a Kerberos. Chcete-li použít službu Azure AD Domain Services, je potřeba nakonfigurovat službu Azure AD Connect na synchronizaci hodnot hash přihlašovacích údajů požadovaných pro ověřování protokolů NTLM a Kerberos. Následujícím postupem povolíte synchronizaci požadovaných hodnot hash přihlašovacích údajů z místního adresáře do tenanta služby Azure AD.
 
 > [!NOTE]
-> **Pokud jsou ve vaší organizaci uživatelské účty synchronizované z místního adresáře, musíte povolit synchronizaci hodnot hash protokolů NTLM a Kerberos, abyste mohli používat spravovanou doménu.** Synchronizovaný uživatelský účet je účet vytvořený v místním adresáři a synchronizovaný do tenanta služby Azure AD pomocí služby Azure AD Connect.
+> **Pokud jsou ve vaší organizaci uživatelské účty synchronizované z místního adresáře, musíte povolit synchronizaci hodnot hash protokolů NTLM a Kerberos, abyste mohli používat spravovanou doménu.** Synchronizovaný uživatelský účet je účet vytvořený v místním adresáři a synchronizovaný do tenanta služby Azure AD pomocí služby Azure AD Connect.  Synchronizace hodnot hash hesel je jiný proces než synchronizace uživatelů nebo objektů. Je potřeba zakázat nebo povolit synchronizaci hodnot hash hesel, aby se získala Úplná synchronizace hesel, a pak uvidíte aktualizace hash hesla Batch v protokolu událostí aplikace.
 >
 >
 
@@ -50,7 +50,7 @@ Na počítač připojený k doméně nainstalujte nejnovější doporučenou ver
 
 **[Stažení služby Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594)**
 
-Doporučená verze: **1.1.614.0** – publikováno 5. září 2017.
+Doporučená verze: **1.1.614.0** – Publikováno 5. září 2017.
 
 > [!WARNING]
 > Chcete-li povolit synchronizaci starších verzí přihlašovacích hesel (požadovaných pro ověřování protokolů NTLM a Kerberos) do svého tenanta služby Azure AD, JE NUTNÉ nainstalovat nejnovější doporučenou verzi služby Azure AD Connect. V předchozích verzích služby Azure AD Connect ani u starší verze nástroje DirSync není tato funkce dostupná.
@@ -78,8 +78,11 @@ Set-ADSyncAADPasswordSyncConfiguration -SourceConnector $adConnector -TargetConn
 
 Synchronizace hodnot hash přihlašovacích údajů do služby Azure AD bude v závislosti na velikosti adresáře (počtu uživatelů, skupin atd.) chvíli trvat. Hesla bude možné použít ve spravované doméně služby Azure AD Domain Services zanedlouho poté, co se hodnoty hash přihlašovacích údajů synchronizují do služby Azure AD.
 
+> [!NOTE]
+> **Synchronizace hodnot hash hesel** je jiný proces než synchronizace uživatelů nebo objektů. Je potřeba zakázat nebo povolit synchronizaci hodnot hash hesel, aby se získala Úplná synchronizace hesel, a pak uvidíte aktualizace hash hesla Batch v protokolu událostí aplikace.
+
 ## <a name="related-content"></a>Související obsah
 * [Povolení synchronizace hesel do služby AAD Domain Services u výhradně cloudového adresáře služby Azure AD](active-directory-ds-getting-started-password-sync.md)
-* [Spravovat domény služby Azure AD Domain Services](manage-domain.md)
+* [Správa domény Azure AD Domain Services](manage-domain.md)
 * [Připojení virtuálního počítače s Windows k spravované doméně služby Azure AD Domain Services](active-directory-ds-admin-guide-join-windows-vm.md)
 * [Připojení virtuálního počítače se systémem Red Hat Enterprise Linux k spravované doméně služby Azure AD Domain Services](active-directory-ds-admin-guide-join-rhel-linux-vm.md)

@@ -1,9 +1,9 @@
 ---
-title: Odesílání plánovaných oznámení | Dokumentace Microsoftu
-description: Toto téma popisuje naplánované oznámení pomocí Azure Notification Hubs.
+title: Postup odeslání naplánovaných oznámení | Microsoft Docs
+description: Toto téma popisuje použití naplánovaných oznámení s Azure Notification Hubs.
 services: notification-hubs
 documentationcenter: .net
-keywords: nabízená oznámení, nabízená oznámení, nabízená oznámení plánování
+keywords: nabízená oznámení, nabízené oznámení, plánování nabízených oznámení
 author: jwargo
 manager: patniko
 editor: spelluru
@@ -15,36 +15,36 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/04/2019
 ms.author: jowargo
-ms.openlocfilehash: af0de9e8c18644f4ae200f6546c0dd0a41320f9f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 94af0dede158c091ae64ae317db3c3153063ce79
+ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61457681"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68347361"
 ---
 # <a name="how-to-send-scheduled-notifications"></a>Jak: Odesílání plánovaných oznámení
 
-Pokud máte scénáře, ve kterém chcete odeslat oznámení v určitém okamžiku v budoucnu, ale nemají snadný způsob, jak funkce do vaší back-end kódu pro odesílání oznámení. Notification hubs úrovně standard podporují funkce, která je možné naplánovat oznámení až na 7 dní v budoucnu.
+Máte-li scénář, ve kterém chcete později odeslat oznámení, ale nemáte snadný způsob, jak probudit back-end kód k odeslání oznámení. Centra oznámení úrovně Standard podporují funkci, která umožňuje naplánovat oznámení až na sedm dní v budoucnu.
 
 
-## <a name="schedule-your-notifications"></a>Naplánovat oznámení
-Při odesílání oznámení, jednoduše použít [ `ScheduledNotification` třídy](https://msdn.microsoft.com/library/microsoft.azure.notificationhubs.schedulednotification.aspx) v SDK centra oznámení, jak je znázorněno v následujícím příkladu:
+## <a name="schedule-your-notifications"></a>Naplánování oznámení
+Při odesílání oznámení jednoduše použijte [ `ScheduledNotification` třídu](https://msdn.microsoft.com/library/microsoft.azure.notificationhubs.schedulednotification.aspx) v sadě Notification Hubs SDK, jak je znázorněno v následujícím příkladu:
 
-```c#
+```csharp
 Notification notification = new AppleNotification("{\"aps\":{\"alert\":\"Happy birthday!\"}}");
 var scheduled = await hub.ScheduleNotificationAsync(notification, new DateTime(2014, 7, 19, 0, 0, 0));
 ```
 
-## <a name="cancel-scheduled-notifications"></a>Zrušit plánovaných oznámení
-Můžete také zrušit dříve plánovaná oznámení pomocí jeho notificationId:
+## <a name="cancel-scheduled-notifications"></a>Zrušit plánovaná oznámení
+Můžete také zrušit dříve naplánovaná oznámení pomocí jeho notificationId:
 
-```c#
+```csharp
 await hub.CancelNotificationAsync(scheduled.ScheduledNotificationId);
 ```
 
-Neplatí žádné limity počtu plánovaná oznámení můžete odesílat.
+Počet naplánovaných oznámení, která můžete odesílat, není nijak omezený.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Projděte si tyto kurzy:
 

@@ -9,16 +9,16 @@ ms.topic: quickstart
 ms.date: 12/14/2018
 ms.author: mhopkins
 ms.reviewer: seguler
-ms.openlocfilehash: 0ae47a7898e380a25618a8d6ae6a1e0251fe466c
-ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
+ms.openlocfilehash: 5fe011d740b1c08ae3b9cf4e3ea67d2cdd4fee66
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67514588"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68360090"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-with-python"></a>Rychlý start: Nahrávání, stahování a výpis objektů BLOB pomocí Pythonu
 
-V tomto rychlém startu naleznete v tématu Jak používat Python k nahrání, stažení a výpis objektů BLOB bloku v kontejneru v úložišti objektů Blob v Azure. Objekty BLOB jsou jednoduché objekty, které může obsahovat jakýkoli objem textových nebo binárních dat (například obrázky, dokumenty, streamování médií, archivovat data atd.) a se liší ve službě Azure Storage ze sdílené složky, bez schématu tabulky a fronty zpráv. (Další informace najdete v tématu [Úvod do služby Azure Storage](/azure/storage/common/storage-introduction).)
+V tomto rychlém startu vidíte, jak pomocí Pythonu nahrávat, stahovat a vypisovat objekty blob bloku v kontejneru v úložišti objektů BLOB v Azure. Objekty blob jsou jednoduše objekty, které mohou obsahovat libovolné množství textových nebo binárních dat (například obrázky, dokumenty, streamovaná média, data archivu atd.) a jsou odlišná v Azure Storage ze sdílených složek, tabulek bez schématu a front zpráv. (Další informace najdete v tématu [Úvod do Azure Storage](/azure/storage/common/storage-introduction).)
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -27,7 +27,7 @@ V tomto rychlém startu naleznete v tématu Jak používat Python k nahrání, s
 Ujistěte se, že máte nainstalované následující další požadavky:
 
 * [Python](https://www.python.org/downloads/)
-* [Azure Storage SDK pro Python](https://github.com/Azure/azure-sdk-for-python)
+* [Sada SDK Azure Storage pro Python](https://github.com/Azure/azure-sdk-for-python)
 
 ## <a name="download-the-sample-application"></a>Stažení ukázkové aplikace
 [Ukázková aplikace](https://github.com/Azure-Samples/storage-blobs-python-quickstart.git) v tomto rychlém startu je základní aplikace v Pythonu.  
@@ -45,8 +45,9 @@ Tento příkaz naklonuje úložiště *Azure-Samples/storage-blobs-python-quicks
 ## <a name="configure-your-storage-connection-string"></a>Konfigurace připojovacího řetězce úložiště
 V aplikaci zadejte název účtu úložiště a klíč účtu pro vytvoření objektu `BlockBlobService`. V Průzkumníku řešení vašeho integrovaného vývojového prostředí (IDE) otevřete soubor *example.py*. Nahraďte hodnoty `accountname` a `accountkey` názvem a klíčem vašeho účtu. 
 
-```python 
-block_blob_service = BlockBlobService(account_name = 'accountname', account_key = 'accountkey') 
+```python
+block_blob_service = BlockBlobService(
+    account_name='accountname', account_key='accountkey')
 ```
 
 ## <a name="run-the-sample"></a>Spuštění ukázky
@@ -94,16 +95,18 @@ Jakmile budete mít CloudBlobContainer, vytvořte instanci objektu **CloudBlockB
 
 V této části vytvoříte instance objektů, vytvoříte nový kontejner a pak nastavíte oprávnění ke kontejneru tak, aby objekty blob byly veřejné. Kontejner má název **quickstartblobs**. 
 
-```python 
+```python
 # Create the BlockBlockService that is used to call the Blob service for the storage account.
-block_blob_service = BlockBlobService(account_name = 'accountname', account_key = 'accountkey') 
- 
+block_blob_service = BlockBlobService(
+    account_name='accountname', account_key='accountkey')
+
 # Create a container called 'quickstartblobs'.
 container_name = 'quickstartblobs'
-block_blob_service.create_container(container_name) 
+block_blob_service.create_container(container_name)
 
 # Set the permission so the blobs are public.
-block_blob_service.set_container_acl(container_name, public_access=PublicAccess.Container)
+block_blob_service.set_container_acl(
+    container_name, public_access=PublicAccess.Container)
 ```
 ### <a name="upload-blobs-to-the-container"></a>Nahrání objektů blob do kontejneru
 
@@ -111,7 +114,7 @@ block_blob_service.set_container_acl(container_name, public_access=PublicAccess.
 
 Pokud chcete nahrát soubor do objektu blob, získejte úplnou cestu k souboru spojením názvu adresáře a názvu souboru na místním disku. Pak můžete soubor nahrát do zadané cesty pomocí metody `create_blob_from_path`. 
 
-Vzorový kód vytvoří místní soubor, který použije k nahrání a stažení. soubor k nahrání *full_path_to_file* a název objektu blob jako *local_file_name*. Následující příklad nahraje soubor do kontejneru **quickstartblobs**.
+Vzorový kód vytvoří místní soubor, který se použije k nahrání a stažení, a uloží soubor, který se má nahrát jako *full_path_to_file* , a název objektu BLOB jako *local_file_name*. Následující příklad nahraje soubor do kontejneru **quickstartblobs**.
 
 ```python
 # Create a file in Documents to test the upload and download.
@@ -128,7 +131,8 @@ print("Temp file = " + full_path_to_file)
 print("\nUploading to Blob storage as blob" + local_file_name)
 
 # Upload the created file, use local_file_name for the blob name.
-block_blob_service.create_blob_from_path(container_name, local_file_name, full_path_to_file)
+block_blob_service.create_blob_from_path(
+    container_name, local_file_name, full_path_to_file)
 ```
 
 V případě úložiště objektů blob můžete k nahrání použít několik metod. Například pokud máte paměťový proud, můžete místo metody `create_blob_from_path` použít metodu `create_blob_from_stream`. 
@@ -149,14 +153,16 @@ for blob in generator:
 
 ### <a name="download-the-blobs"></a>Stažení objektů blob
 
-Stáhněte objekty BLOB na místní disk pomocí `get_blob_to_path` metody. Následující kód stáhne objekt blob nahraný v předchozí části. K názvu objektu blob se přidá přípona *_DOWNLOADED*, takže na místním disku uvidíte oba soubory. 
+Stáhněte objekty blob na místní disk pomocí `get_blob_to_path` metody. Následující kód stáhne objekt blob nahraný v předchozí části. K názvu objektu blob se přidá přípona *_DOWNLOADED*, takže na místním disku uvidíte oba soubory. 
 
 ```python
 # Download the blob(s).
 # Add '_DOWNLOADED' as prefix to '.txt' so you can see both files in Documents.
-full_path_to_file2 = os.path.join(local_path, string.replace(local_file_name, '.txt', '_DOWNLOADED.txt'))
+full_path_to_file2 = os.path.join(local_path, string.replace(
+    local_file_name, '.txt', '_DOWNLOADED.txt'))
 print("\nDownloading blob to " + full_path_to_file2)
-block_blob_service.get_blob_to_path(container_name, local_file_name, full_path_to_file2)
+block_blob_service.get_blob_to_path(
+    container_name, local_file_name, full_path_to_file2)
 ```
 
 ### <a name="clean-up-resources"></a>Vyčištění prostředků

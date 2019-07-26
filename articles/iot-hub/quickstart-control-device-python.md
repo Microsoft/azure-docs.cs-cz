@@ -10,14 +10,14 @@ ms.devlang: python
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 06/21/2019
-ms.openlocfilehash: 9c9b892f7d1f992210a18f2290bb199d12aeaf49
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: fe0c16962eef38ac26490eb7928d1705ef63a217
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67330512"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68355022"
 ---
-# <a name="quickstart-control-a-device-connected-to-an-iot-hub-python"></a>Rychlý start: Řízení zařízení připojená ke službě IoT hub (Python)
+# <a name="quickstart-control-a-device-connected-to-an-iot-hub-python"></a>Rychlý start: Řízení zařízení připojeného k centru IoT (Python)
 
 [!INCLUDE [iot-hub-quickstarts-2-selector](../../includes/iot-hub-quickstarts-2-selector.md)]
 
@@ -35,23 +35,23 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 ## <a name="prerequisites"></a>Požadavky
 
-Dvě ukázkové aplikace, které spustíte v tomto rychlém startu, jsou napsány pomocí Pythonu. Microsoft Azure IoT SDK pro Python v současné době podporují pouze konkrétní verze jazyka Python pro každou platformu. Další informace najdete v tématu [Python SDK – soubor Readme](https://github.com/Azure/azure-iot-sdk-python#important-installation-notes---dealing-with-importerror-issues).
+Dvě ukázkové aplikace, které spustíte v tomto rychlém startu, jsou napsány pomocí Pythonu. V současné době Microsoft Azure sady IoT SDK pro Python podporovat pouze konkrétní verze Pythonu pro každou platformu. Další informace najdete v [souboru Readme pro Python SDK](https://github.com/Azure/azure-iot-sdk-python#important-installation-notes---dealing-with-importerror-issues).
 
-V tomto rychlém startu se předpokládá, že používáte vývojový počítač s Windows. Pro systémy Windows, pouze [Python 3.6.x](https://www.python.org/downloads/release/python-368/) je podporována. To, který instalační program Pythonu zvolíte, by mělo vycházet z architektury systému, ve kterém pracujete. Pokud je váš systém architekturu procesoru, 32 bitů, potom instalační program stáhnout x86; pro 64bitovou architekturu stáhněte si instalační program x86 – x 64. Dále ověřte, jestli [Microsoft Visual C++ Redistributable pro Visual Studio 2015 – 2017 a 2019](https://support.microsoft.com/en-us/help/2977003/the-latest-supported-visual-c-downloads) pro architektury (x86 nebo x64) je nainstalována.
+V tomto rychlém startu se předpokládá použití vývojového počítače s Windows. Pro systémy Windows je podporována pouze [Python 3.6. x](https://www.python.org/downloads/release/python-368/) . To, který instalační program Pythonu zvolíte, by mělo vycházet z architektury systému, ve kterém pracujete. Pokud je architektura procesoru systému 32 bitů, Stáhněte instalační program x86. v případě 64bitové architektury si stáhněte instalační program X86-64. Dále se ujistěte, že je pro vaši architekturu (x86 nebo x64) nainstalována [aplikace Microsoft Visual C++ Redistributable pro Visual Studio 2015, 2017 a 2019](https://support.microsoft.com/en-us/help/2977003/the-latest-supported-visual-c-downloads) .
 
-Python si můžete stáhnout pro jiné platformy z [Python.org](https://www.python.org/downloads/).
+Python můžete stáhnout pro jiné platformy z [Python.org](https://www.python.org/downloads/).
 
 Aktuální verzi Pythonu na počítači používaném pro vývoj můžete ověřit pomocí jednoho z následujících příkazů:
 
 ```python
-python --version
+python - -version
 ```
 
 ```python
-python3 --version
+python3 - -version
 ```
 
-Spusťte následující příkaz pro přidání rozšíření Microsoft Azure IoT pro Azure CLI do instance služby Cloud Shell. Rozšíření IOT přidá služby IoT Hub, IoT Edge a IoT zařízení zřizování služby (DPS) konkrétní příkazy rozhraní příkazového řádku Azure.
+Spuštěním následujícího příkazu přidejte do instance služby Cloud Shell Microsoft Azure rozšíření IoT pro rozhraní příkazového řádku Azure. Rozšíření IOT přidá do Azure CLI příkazy určené pro služby IoT Hub, IoT Edge a IoT Device Provisioning Service (DPS).
 
 ```azurecli-interactive
 az extension add --name azure-cli-iot-ext
@@ -61,21 +61,21 @@ Pokud jste to ještě neudělali, stáhněte si ukázkový projekt Python z webu
 
 ## <a name="create-an-iot-hub"></a>Vytvoření centra IoT
 
-Pokud jste dokončili předchozí [rychlý start: Odesílání telemetrických dat ze zařízení do služby IoT hub](quickstart-send-telemetry-python.md), můžete tento krok přeskočit.
+Pokud jste dokončili předchozí [Průvodce rychlým startem: Poslat telemetrii ze zařízení do služby IoT Hub](quickstart-send-telemetry-python.md), můžete tento krok přeskočit.
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
 ## <a name="register-a-device"></a>Registrování zařízení
 
-Pokud jste dokončili předchozí [rychlý start: Odesílání telemetrických dat ze zařízení do služby IoT hub](quickstart-send-telemetry-python.md), můžete tento krok přeskočit.
+Pokud jste dokončili předchozí [Průvodce rychlým startem: Poslat telemetrii ze zařízení do služby IoT Hub](quickstart-send-telemetry-python.md), můžete tento krok přeskočit.
 
 Zařízení musí být zaregistrované ve vašem centru IoT, aby se mohlo připojit. V tomto rychlém startu zaregistrujete simulované zařízení pomocí služby Azure Cloud Shell.
 
-1. Spusťte následující příkaz v Azure Cloud Shell vytvořte identitu zařízení.
+1. Spuštěním následujícího příkazu v Azure Cloud Shell vytvořte identitu zařízení.
 
-    **YourIoTHubName** : Nahraďte tento zástupný text pod názvem, který jste zvolili pro službu IoT hub.
+    **YourIoTHubName** : Nahraďte tento zástupný symbol níže názvem, který jste zvolili pro Centrum IoT.
 
-    **MyPythonDevice** : Toto je název pro registrovaná zařízení. Použijte uvedený název MyPythonDevice. Pokud si zvolíte jiný název zařízení, budete ho muset používat v průběhu celého článku a aktualizovat název zařízení v ukázkových aplikacích, než je spustíte.
+    **MyPythonDevice** : Toto je název zadaný pro registrované zařízení. Použijte uvedený název MyPythonDevice. Pokud si zvolíte jiný název zařízení, budete ho muset používat v průběhu celého článku a aktualizovat název zařízení v ukázkových aplikacích, než je spustíte.
 
     ```azurecli-interactive
     az iot hub device-identity create --hub-name YourIoTHubName --device-id MyPythonDevice
@@ -83,7 +83,7 @@ Zařízení musí být zaregistrované ve vašem centru IoT, aby se mohlo připo
 
 2. Spuštěním následujícího příkazu ve službě Azure Cloud Shell získejte _připojovací řetězec zařízení_ pro zařízení, které jste právě zaregistrovali:
 
-    **YourIoTHubName** : Nahraďte tento zástupný text pod názvem, který jste zvolili pro službu IoT hub.
+    **YourIoTHubName** : Nahraďte tento zástupný symbol níže názvem, který jste zvolili pro Centrum IoT.
 
     ```azurecli-interactive
     az iot hub device-identity show-connection-string --hub-name YourIoTHubName --device-id MyPythonDevice --output table
@@ -97,7 +97,7 @@ Zařízení musí být zaregistrované ve vašem centru IoT, aby se mohlo připo
 
 3. Potřebujete také _připojovací řetězec služby_, který back-endové aplikaci umožní připojení k vašemu centru IoT a načtení zpráv. Následující příkaz načte připojovací řetězec služby pro vaše centrum IoT:
 
-    **YourIoTHubName** : Nahraďte tento zástupný text pod názvem, který jste vybrali pro službu IoT hub.
+    **YourIoTHubName** : Nahraďte tento zástupný symbol níže názvem, který zvolíte pro Centrum IoT.
 
     ```azurecli-interactive
     az iot hub show-connection-string \
@@ -172,11 +172,11 @@ Back-endová aplikace se připojí ke koncovému bodu vašeho centra IoT na stra
 
 [!INCLUDE [iot-hub-quickstarts-clean-up-resources](../../includes/iot-hub-quickstarts-clean-up-resources.md)]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto rychlém startu jste volali přímou metodu na zařízení z back-endové aplikace a odpovídali na volání přímé metody v aplikaci simulovaného zařízení.
 
 Informace o tom, jak směrovat zprávy typu zařízení-cloud do různých cílů v cloudu, najdete v dalším kurzu.
 
 > [!div class="nextstepaction"]
-> [Kurz: Telemetrická data trasy pro různé koncové body pro zpracování](tutorial-routing.md)
+> [Kurz: Směrování telemetrie do různých koncových bodů pro zpracování](tutorial-routing.md)

@@ -4,18 +4,18 @@ description: Poskytuje přehled známých problémů služby Azure Migrate a Rad
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 07/17/2019
+ms.date: 07/22/2019
 ms.author: raynew
-ms.openlocfilehash: 0e2a8f269a98babc17f36ceff209ee2f057e6911
-ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
-ms.translationtype: HT
+ms.openlocfilehash: 15d3809b9a028fd2495c504e9bf19251dd051520
+ms.sourcegitcommit: 57a7d4f67635212f5bf0c56e58fd87c8ec366f2c
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68302315"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68372578"
 ---
 # <a name="troubleshoot-azure-migrate"></a>Řešení problémů s Azure Migrate
 
-[Azure Migrate](migrate-services-overview.md) poskytuje centrum nástrojů Microsoftu pro účely posouzení a migrace a také nabídky nezávislého výrobce softwaru (ISV) od jiných výrobců. Tento dokument poskytuje pomoc při řešení chyb pomocí Azure Migrate Azure Migrate: Vyhodnocování a Azure Migrate serveru: Migrace serveru.
+[Azure Migrate](migrate-services-overview.md) poskytuje centrum nástrojů Microsoftu pro účely posouzení a migrace a také nabídky nezávislého výrobce softwaru (ISV) od jiných výrobců. Tento dokument poskytuje pomoc při řešení chyb pomocí Azure Migrate Azure Migrate: Vyhodnocování a Azure Migrate serveru: Migrace serverů.
 
 ## <a name="azure-migrate-project-issues"></a>Problémy s Azure Migrate projektu
 
@@ -54,6 +54,10 @@ Chcete-li vytvořit nový projekt Azure Migrate, postupujte podle následující
 
    ![Vytvořit druhý Azure Migrate projekt](./media/troubleshooting-general/create-new-project.png)
 
+### <a name="which-azure-geographies-are-supported-by-azure-migrate"></a>Které geografické oblasti Azure podporuje Azure Migrate?
+
+Seznam pro [VMware sem](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#azure-migrate-projects) můžete najít tady a pro [Hyper-V](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-hyper-v#azure-migrate-projects).
+
 ### <a name="deletion-of-azure-migrate-projects-and-associated-log-analytics-workspace"></a>Odstranění Azure Migrate projektů a přidruženého pracovního prostoru Log Analytics
 
 Když odstraníte Azure Migrate projekt, odstraní se i projekt migrace spolu s metadaty o zjištěných počítačích. Pokud jste ale k nástroji pro vyhodnocení serveru připojili Log Analytics pracovní prostor, automaticky se pracovní prostor Log Analytics neodstraní. Je to proto, že je možné použít stejný pracovní prostor Log Analytics pro více případů použití. Pokud chcete odstranit i pracovní prostor Log Analytics, musíte to provést ručně.
@@ -76,7 +80,7 @@ Po přijetí e-mailu s pozvánkou musíte otevřít e-mail a kliknout na odkaz v
 
 ### <a name="deployment-of-azure-migrate-appliance-for-vmware-failed-with-the-error-the-provided-manifest-file-is-invalid-invalid-ovf-manifest-entry"></a>Nasazení zařízení Azure Migrate pro VMware se nepovedlo kvůli této chybě: Zadaný soubor manifestu je neplatný: Neplatný záznam manifestu OVF
 
-1. Zkontrolujte jeho hodnotu hash a ověřte, zda je soubor s Azure Migratemi VAJÍČKy zařízení správně stažen. Informace o tom, jak zkontrolovat hodnotu hash, najdete v tomto [článku](https://docs.microsoft.com/azure/migrate/tutorial-assessment-vmware#verify-the-collector-appliance). Pokud hodnota hash není shodná, Stáhněte si znovu soubor vajíček a zkuste nasazení zopakovat.
+1. Zkontrolujte jeho hodnotu hash a ověřte, zda je soubor s Azure Migratemi VAJÍČKy zařízení správně stažen. Informace o tom, jak zkontrolovat hodnotu hash, najdete v tomto [článku](https://docs.microsoft.com/azure/migrate/tutorial-assessment-vmware). Pokud hodnota hash není shodná, Stáhněte si znovu soubor vajíček a zkuste nasazení zopakovat.
 2. Pokud se zase nepodaří a pokud nasazujete soubor OVF pomocí klienta VMware vSphere, zkuste ho nasadit pomocí webového klienta vSphere. Pokud se chyba stále nedaří, zkuste použít jiný webový prohlížeč.
 3. Pokud používáte webového klienta vSphere a pokusíte se ho nasadit na vCenter Server 6,5 nebo 6,7, zkuste nasadit VAJÍČKu přímo na hostiteli ESXi pomocí následujících kroků:
    - Připojte se k hostiteli ESXi přímo (místo vCenter Server) pomocí webového klienta (https://<*IP adresa hostitele*>/UI).
@@ -121,9 +125,31 @@ Pokud k problému dochází v nejnovější verzi, může to být způsobeno tí
 3. Zjistěte správné číslo portu pro připojení k serveru vCenter.
 4. Nakonec zkontrolujte, jestli server vCenter je spuštěný.
 
-## <a name="discovery-issues"></a>Problémy zjišťování
 
-### <a name="i-started-discovery-but-i-dont-see-the-discovered-vms-on-azure-portal-server-assessment-and-server-migrate-tiles-show-a-status-of-discovery-in-progress"></a>Zahájil (a) jsem zjišťování, ale zjištěné virtuální počítače se na Azure Portal nezobrazily. Dlaždice vyhodnocení serveru a migrace serveru zobrazují stav "Probíhá zjišťování".
+### <a name="the-appliance-could-not-be-registered-successfully-to-the-azure-migrate-project-error-id-60052"></a>Zařízení se nepovedlo úspěšně zaregistrovat do projektu Azure Migrate (ID chyby: 60052)
+
+Tato chyba je způsobená nedostatečnými oprávněními k účtu Azure, který se použil k registraci zařízení. Ujistěte se, že uživatelský účet Azure použitý k registraci zařízení má aspoň oprávnění Přispěvatel v rámci předplatného. [Přečtěte si další informace](https://docs.microsoft.com/azure/migrate/migrate-appliance#appliance-deployment-requirements) o požadovaných rolích a oprávněních Azure.
+
+### <a name="the-appliance-could-not-be-registered-successfully-to-the-azure-migrate-project-error-id-60039"></a>Zařízení se nepovedlo úspěšně zaregistrovat do projektu Azure Migrate (ID chyby: 60039)
+
+Azure Migrate projekt, který jste vybrali k registraci zařízení, se nenajde, což způsobí selhání registrace. Otevřete Azure Portal a ověřte, jestli projekt ve vaší skupině prostředků existuje. Pokud projekt neexistuje, vytvořte ve skupině prostředků nový Azure Migrate projekt a znovu zaregistrujte zařízení. [Přečtěte si další informace](https://docs.microsoft.com/azure/migrate/how-to-add-tool-first-time#create-a-project-and-add-a-tool) o vytvoření nového projektu Azure Migrate.
+
+### <a name="azure-key-vault-management-operation-failed-error-id-60030-60031"></a>Operace správy trezoru klíčů Azure se nezdařila (ID chyby: 60030, 60031)
+
+Ujistěte se, že uživatelský účet Azure použitý k registraci zařízení má aspoň oprávnění Přispěvatel v rámci předplatného. Také ověřte, zda má účet přístup k Key Vault zadané v chybové zprávě a opakujte operaci. Pokud se problém nevyřeší, obraťte se na podporu Microsoftu. [Přečtěte si další informace](https://docs.microsoft.com/azure/migrate/migrate-appliance#appliance-deployment-requirements) o požadovaných rolích a oprávněních Azure.
+
+### <a name="discovery-could-not-be-initiated-due-to-the-error-the-operation-failed-for-the-given-list-of-hosts-or-clusters-error-id-60028"></a>Zjišťování nebylo možné zahájit z důvodu chyby. Operace se pro daný seznam hostitelů nebo clusterů nezdařila (ID chyby: 60028)
+
+Na hostitelích uvedených v chybě se nepodařilo spustit zjišťování, protože došlo k potížím při přístupu nebo načítání informací o virtuálním počítači. ostatní hostitelé, které jste přidali, se úspěšně přidaly. Přidejte znovu hostitele v této chybě pomocí možnosti **Přidat hostitele** . Pokud dojde k chybě ověřování, přečtěte si pokyny k nápravě a opravte chyby a zkuste znovu **Uložit a spustit zjišťování** .
+
+### <a name="azure-active-directory-aad-operation-failed-the-error-occurred-while-creating-or-updating-the-aad-application-error-id-60025"></a>Operace Azure Active Directory (AAD) se nezdařila. Při vytváření nebo aktualizaci aplikace AAD došlo k chybě (ID chyby: 60025)
+
+Uživatelský účet Azure, který se používá k registraci zařízení, nemá přístup k aplikaci AAD uvedené v chybové zprávě. Ověřte, zda jste vlastníkem aplikace AAD. [Přečtěte si další informace](https://docs.microsoft.com/azure/migrate/migrate-appliance#appliance-deployment-requirements) o oprávněních aplikace AAD.
+
+
+## <a name="discovery-issues"></a>Problémy se zjišťováním
+
+### <a name="i-started-discovery-but-i-dont-see-the-discovered-vms-on-azure-portal-server-assessment-and-server-migration-tiles-show-a-status-of-discovery-in-progress"></a>Zahájil (a) jsem zjišťování, ale zjištěné virtuální počítače se na Azure Portal nezobrazily. Dlaždice Server Assessment a migrace serveru zobrazují stav "Probíhá zjišťování".
 Po spuštění zjišťování ze zařízení počkejte určitou dobu, než se zjištěné počítače zobrazí na Azure Portal. Zjišťování VMware trvá přibližně 15 minut a přibližně 2 minuty na přidané hostitele pro zjišťování technologie Hyper-V. Pokud se vám nadále zobrazuje "zjišťování probíhá", a to i po tomto čase, klikněte na tlačítko **aktualizovat** na kartě **servery** . Mělo by se zobrazit počet zjištěných serverů na dlaždicích Server pro vyhodnocení a migraci serveru.
 
 
@@ -146,15 +172,15 @@ Data zjišťování shromážděná zařízením zabere až 30 minut, než se na
 4. Počkejte na dokončení operace aktualizace. Teď byste měli vidět aktuální informace na vašich virtuálních počítačích.
 
 ### <a name="unable-to-connect-to-hosts-or-cluster-as-the-server-name-cannot-be-resolved-winrm-error-code-0x803381b9-error-id-50004"></a>Nepovedlo se připojit k hostitelům nebo clusteru, protože název serveru nejde přeložit. Kód chyby WinRM: 0x803381B9 (ID chyby: 50004)
-K této chybě dojde, pokud služba DNS obsluhující zařízení nemůže vyřešit zadaný název clusteru nebo hostitele. Pokud se tato chyba zobrazuje v clusteru, zkuste zadat plně kvalifikovaný název domény clusteru. 
+K této chybě dojde, pokud služba DNS obsluhující zařízení nemůže vyřešit zadaný název clusteru nebo hostitele. Pokud se tato chyba zobrazuje v clusteru, zkuste zadat plně kvalifikovaný název domény clusteru.
 
-Tato chyba se může zobrazit i pro hostitele v clusteru. V takovém případě se zařízení může připojit ke clusteru. Ale cluster vrátil názvy hostitelů, které nejsou plně kvalifikované názvy domén. 
+Tato chyba se může zobrazit i pro hostitele v clusteru. V takovém případě se zařízení může připojit ke clusteru. Ale cluster vrátil názvy hostitelů, které nejsou plně kvalifikované názvy domén.
 
 Chcete-li tuto chybu vyřešit, aktualizujte soubor hostitelů na zařízení přidání mapování IP adresy a názvů hostitelů.
 1. Otevřete Poznámkový blok jako uživatel s oprávněními správce. Otevřete soubor C:\Windows\System32\Drivers\etc\hosts.
 2. Přidejte IP adresu a název hostitele do řádku. Opakujte pro každého hostitele nebo cluster, kde se zobrazí tato chyba.
 3. Uložte a zavřete soubor Hosts.
-4. Můžete zjistit, jestli se zařízení může připojit k hostitelům pomocí aplikace pro správu zařízení. Po 30 minutách byste si měli být schopni zobrazit nejnovější informace o těchto hostitelích na Azure Portal. 
+4. Můžete zjistit, jestli se zařízení může připojit k hostitelům pomocí aplikace pro správu zařízení. Po 30 minutách byste si měli být schopni zobrazit nejnovější informace o těchto hostitelích na Azure Portal.
 
 
 ## <a name="assessment-issues"></a>Problémy posouzení
@@ -166,10 +192,10 @@ Problém | Náprava
 Nepodporovaný typ spuštění | Azure nepodporuje virtuální počítače s typem spouštění EFI. Před spuštěním migrace doporučujeme převést typ spouštění na systém BIOS. <br/><br/>K migraci takových virtuálních počítačů můžete použít migraci Azure Migrate serveru, protože při migraci převede typ spouštění virtuálního počítače na systém BIOS.
 Podmíněně podporované operační systémy Windows | Operační systém předal svůj konec platnosti a pro [podporu v Azure](https://aka.ms/WSosstatement)potřebuje vlastní smlouvu o podpoře (CSA). před migrací do Azure zvažte možnost upgradovat operační systém.
 Nepodporovaný operační systém Windows | Azure podporuje jenom [vybrané verze operačních systémů Windows](https://aka.ms/WSosstatement). před migrací do Azure zvažte možnost upgradovat operační systém počítače.
-Podmíněně schválené operační systémy Linux | Azure schválí jenom [vybrané verze operačního systému Linux](../virtual-machines/linux/endorsed-distros.md). před migrací do Azure zvažte možnost upgradovat operační systém počítače.
+Podmíněně schválený operační systém Linux | Azure schválí jenom [vybrané verze operačního systému Linux](../virtual-machines/linux/endorsed-distros.md). před migrací do Azure zvažte možnost upgradovat operační systém počítače.
 Neschválený operační systém Linux | Počítač se může spustit v Azure, ale Azure neposkytuje žádnou podporu operačního systému. před migrací do Azure zvažte možnost upgradovat operační systém na [schválenou verzi systému Linux](../virtual-machines/linux/endorsed-distros.md) .
 Neznámý operační systém | Operační systém virtuálního počítače se ve vCenter Server zadal jako jiný, protože Azure Migrate nedokáže identifikovat připravenost virtuálního počítače Azure. Než počítač migrujete, ujistěte se, že Azure [podporuje](https://aka.ms/azureoslist) operační systém běžící v počítači.
-Nepodporované bitová verze OS | Virtuální počítače s 32 operačním systémem se můžou v Azure spustit, ale před migrací do Azure se doporučuje upgradovat operační systém virtuálního počítače z 32-bitů na 64.
+Nepodporovaná bitová verze operačního systému | Virtuální počítače s 32 operačním systémem se můžou v Azure spustit, ale před migrací do Azure se doporučuje upgradovat operační systém virtuálního počítače z 32-bitů na 64.
 Vyžaduje předplatné sady Visual Studio. | Počítač má spuštěný klientský operační systém Windows, který je podporován pouze v rámci předplatného sady Visual Studio.
 Pro požadovaný výkon úložiště se nenašel žádný virtuální počítač. | Výkon úložiště (IOPS/propustnost) vyžadovaný pro tento počítač překračuje podporu virtuálních počítačů Azure. Před migrací snižte požadavky na úložiště pro daný počítač.
 Pro požadovaný výkon sítě nebyl nalezen virtuální počítač. | Výkon sítě (v/v) vyžadovaný pro tento počítač překračuje podporu virtuálních počítačů Azure. Snižte požadavky na síť pro daný počítač.
@@ -178,39 +204,42 @@ Jeden nebo více nevhodných disků. | Jeden nebo více disků připojených k v
 Jeden nebo více nevhodných síťových adaptérů. | Před migrací odeberte nepoužívané síťové adaptéry z počítače.
 Počet disků překračuje limit. | Před migrací z počítače odeberte nepoužívané disky.
 Velikost disku překračuje limit. | Azure podporuje disky o velikosti až 4 TB. Před migrací zmenšete disky na méně než 4 TB.
-Disk není v zadaném umístění k dispozici. | Před migrací zajistěte, aby byl disk v cílovém umístění.
-Disk není pro zadanou redundanci k dispozici. | Disk by měl používat typ úložiště redundance definovaný v nastavení hodnocení (ve výchozím nastavení LRS).
-Kvůli vnitřní chybě se nepovedlo určit vhodnost disku. | Zkuste vytvořit nové vyhodnocení pro skupinu.
-Virtuální počítač s požadovanými jádry a pamětí se nenašel. | Azure nemůže navýšit vhodný typ virtuálního počítače. Před migrací Snižte velikost paměti a počtu jader místního počítače.
+V zadaném umístění není k dispozici žádný disk. | Před migrací zajistěte, aby byl disk v cílovém umístění.
+Pro zadanou redundanci není k dispozici žádný disk. | Disk by měl používat typ úložiště redundance definovaný v nastavení hodnocení (ve výchozím nastavení LRS).
+Z důvodu interní chyby není možné určit vhodnost disku. | Zkuste vytvořit nové vyhodnocení pro skupinu.
+Virtuální počítač s požadovaný počtem jader a požadovanou pamětí se nenašel. | Azure nemůže navýšit vhodný typ virtuálního počítače. Před migrací Snižte velikost paměti a počtu jader místního počítače.
 Kvůli vnitřní chybě se nepovedlo určit vhodnost virtuálního počítače. | Zkuste vytvořit nové vyhodnocení pro skupinu.
 Kvůli vnitřní chybě se nepovedlo určit vhodnost pro jeden nebo více disků. | Zkuste vytvořit nové vyhodnocení pro skupinu.
 Kvůli vnitřní chybě se nepovedlo určit vhodnost pro jeden nebo víc síťových adaptérů. | Zkuste vytvořit nové vyhodnocení pro skupinu.
 
 ### <a name="i-am-unable-to-specify-enterprise-agreement-ea-as-an-azure-offer-in-the-assessment-properties"></a>Ve vlastnostech posouzení nejde zadat smlouva Enterprise (EA) jako nabídku Azure?
-Azure Migrate: Posouzení serveru v současné době nepodporuje ceny založené na smlouva Enterprise (EA). Alternativním řešením je použít jako nabídku Azure "průběžné platby" a použít vlastnost ' sleva ' k určení libovolné vlastní slevy, kterou dostanete. [Přečtěte si další informace o tom, jak můžete posouzení přizpůsobit](https://aka.ms/migrate/selfhelp/eapricing).
+Azure Migrate: Hodnocení serverů v současné době nepodporuje ceny založené na smlouvě Enterprise. Alternativním řešením je jako nabídku Azure použít průběžné platby a pomocí vlastnosti Discount určit případné individuální slevy. [Další informace o možnostech přizpůsobení hodnocení](https://aka.ms/migrate/selfhelp/eapricing)
 
 ### <a name="why-does-server-assessment-mark-my-linux-vms-conditionally-ready-is-there-anything-i-need-to-do-to-fix-this"></a>Proč vyhodnocování serveru označí moje virtuální počítače Linux jako podmíněně připravené. Je něco, co je potřeba vyřešit?
-V posuzování serveru je známá mezera, kde není možné detekovat podverzi operačního systému Linux nainstalovaného na místních virtuálních počítačích (například pro RHEL 6,10, aktuálně vyhodnocování serveru detekuje pouze RHEL 6 jako verzi operačního systému). Vzhledem k tomu, že Azure připravuje pouze konkrétní verze systému Linux, jsou virtuální počítače se systémem Linux v současnosti označeny jako podmíněně připravené v rámci posouzení serveru. Můžete ručně zkontrolovat, jestli je operační systém Linux běžící na místním virtuálním počítači schválen v Azure, v [dokumentaci podpory Azure Linux.](https://aka.ms/migrate/selfhost/azureendorseddistros). Jakmile ověříte schválené distribuce, můžete toto upozornění ignorovat.
+V nástroji Hodnocení serverů existuje známý nedostatek, kdy nástroj nedokáže rozpoznat podverzi operačního systému Linux nainstalovaného na místních virtuálních počítačích (například u RHEL 6.10 v současné době nástroj Hodnocení serverů jako verzi operačního systému rozpozná pouze RHEL 6). Vzhledem k tomu, že Azure schvaluje pouze určité verze Linuxu, virtuální počítače s Linuxem se v současné době v nástroji Hodnocení serverů označují jako připravené s podmínkou. Můžete ručně zkontrolovat, jestli je operační systém Linux běžící na místním virtuálním počítači schválen v Azure, v [dokumentaci podpory Azure Linux.](https://aka.ms/migrate/selfhost/azureendorseddistros). Jakmile ověříte, že je distribuce schválená, můžete toto upozornění ignorovat.
 
 ### <a name="the-vm-sku-recommended-by-server-assessment-has-more-number-of-cores-and-a-larger-memory-size-than-what-is-allocated-on-premises-why-is-that-so"></a>SKU virtuálního počítače doporučeného posouzením serveru má větší počet jader a větší velikost paměti než místní přidělení. Proč to znamená?
-Doporučení na SKU virtuálního počítače v posouzení serveru závisí na vlastnostech posouzení. V rámci posuzování serverů můžete vytvořit dva druhy hodnocení, "založené na výkonu" a "jako" místní "posouzení. U posouzení na základě výkonu považuje server hodnocení za využití dat z místních virtuálních počítačů (CPU, paměti, disku a sítě) k určení správné cílové SKU virtuálního počítače pro vaše místní virtuální počítače. Pro určení velikosti na základě výkonu je navíc faktor komfortu přihlédnuto k identifikaci efektivního využití. V případě, že se jedná o místní velikost, data o výkonu se neberou v úvahu a na základě toho, co se přiděluje místně, se doporučuje cílová skladová jednotka.
+Doporučení skladové položky virtuálního počítače v nástroji Hodnocení serverů závisí na vlastnostech posouzení. V nástroji Hodnocení serverů můžete vytvořit dva druhy posouzení: posouzení na základě výkonu a posouzení na základě místního nastavení. U posouzení na základě výkonu považuje server hodnocení za využití dat z místních virtuálních počítačů (CPU, paměti, disku a sítě) k určení správné cílové SKU virtuálního počítače pro vaše místní virtuální počítače. Při určování velikosti na základě výkonu se navíc při identifikaci efektivního využití bere v úvahu i faktor komfortu. V případě určování velikosti na základě místního nastavení se data o využití nezohledňují a cílová skladová položka se doporučí na základě toho, co je přiděleno v místním prostředí.
 
-Řekněme například, že se jedná o místní virtuální počítač se 4 jádry a 8 GB paměti s 50% využitím procesoru a 50% využití paměti a že se v posouzení určí faktor komfortu 1,3. Pokud je kritérium změny velikosti posouzení stejné jako místní, doporučuje se SKU virtuálního počítače Azure se 4 jádry a 8 GB paměti. Pokud je ale kritérium změny velikosti založené na výkonu, vychází z efektivního využití procesoru a paměti (50% ze 4 jader × 1,3 = 2,6 jader a 50% 8 GB paměť * 1,3 = 5,3-GB paměti), doporučuje se SKU virtuálního počítače nejlevnější se čtyřmi jádry (nejbližší podporovaný počet jader) a 8 GB velikosti paměti (nejbližší podporovaná velikost paměti). [Přečtěte si další informace o tom, jak vyhodnocování serveru provádí změnu velikosti.](https://docs.microsoft.com/azure/migrate/concepts-assessment-calculation#sizing)
+Řekněme například, že se jedná o místní virtuální počítač se 4 jádry a 8 GB paměti s 50% využitím procesoru a 50% využití paměti a že se v posouzení určí faktor komfortu 1,3. Pokud je kritérium změny velikosti posouzení stejné jako místní, doporučuje se SKU virtuálního počítače Azure se 4 jádry a 8 GB paměti. Pokud je ale kritérium změny velikosti založené na výkonu, vychází z efektivního využití procesoru a paměti (50% ze 4 jader × 1,3 = 2,6 jader a 50% 8 GB paměť * 1,3 = 5,3-GB paměti), doporučuje se SKU virtuálního počítače nejlevnější se čtyřmi jádry (nejbližší podporovaný počet jader) a 8 GB velikosti paměti (nejbližší podporovaná velikost paměti). [Další informace o určování velikosti v nástroji Hodnocení serverů](https://docs.microsoft.com/azure/migrate/concepts-assessment-calculation#sizing)
 
 ### <a name="the-disk-sku-recommended-by-server-assessment-has-a-bigger-size-than-what-is-allocated-on-premises-why-is-that-so"></a>SKU disku, které doporučuje posouzení serveru, má větší velikost, než je přiděleno místně. Proč to znamená?
-Velikost disku v posuzování serveru závisí na dvou kritériích pro určení velikosti a typu úložiště. Pokud má kritérium změny velikosti hodnotu "na základě výkonu" a typ úložiště je nastaven na hodnotu automaticky, považují se hodnoty IOPS a propustnosti disku za účelem určení typu cílového disku (HDD úrovně Standard, SSD úrovně Standard a prémiových disků). Pak se doporučuje zvážit velikost jednotky disku v rámci typu disku, a to v úvahách o požadavcích na velikost místního disku. Pokud má kritérium změny velikosti hodnotu "na základě výkonu" a typ úložiště je Premium, doporučuje se skladová jednotka Premium v Azure na základě požadavků na vstupně-výstupní operace, propustnost a velikost na disku. Stejná logika se používá k určení velikosti disku, pokud je kritérium změny velikosti "as-premises" a typ úložiště je "HDD úrovně Standard", "SSD úrovně Standard" nebo "Premium".
+Určování velikosti disku v nástroji Hodnocení serverů závisí na dvou vlastnostech posouzení: kritérium určení velikosti a typ úložiště. Pokud má kritérium změny velikosti hodnotu "na základě výkonu" a typ úložiště je nastaven na hodnotu automaticky, považují se hodnoty IOPS a propustnosti disku za účelem určení typu cílového disku (HDD úrovně Standard, SSD úrovně Standard a prémiových disků). V závislosti na požadavcích na velikost místního disku se pak doporučí skladová položka disku v rámci daného typu. Pokud má kritérium změny velikosti hodnotu "na základě výkonu" a typ úložiště je Premium, doporučuje se skladová jednotka Premium v Azure na základě požadavků na vstupně-výstupní operace, propustnost a velikost na disku. Stejná logika se používá při určování velikosti disku, když je kritériem určení velikosti místní nastavení velikosti a typ úložiště je HDD úrovně Standard, SSD úrovně Standard nebo Premium.
 
-Například pokud máte místní disk s 32 GB paměti, ale agregované vstupně-výstupní operace čtení a zápisu pro disk je 800 IOPS, posouzení serveru doporučí typ disku Premium (z důvodu vyšších požadavků IOPS) a pak doporučí SKU disku, který může podporovat požadovaný počet vstupně-výstupních operací a velikosti. Nejbližší shoda v tomto příkladu bude P15 (256 GB, 1100 IOPS). Takže i když velikost požadovaná místním diskem byla 32 GB, vyhodnocování serveru doporučuje disk s větší velikostí v důsledku požadavků na vysoký počet IOPS na místním disku.
+Například pokud máte místní disk s 32 GB paměti, ale agregované vstupně-výstupní operace čtení a zápisu pro disk je 800 IOPS, posouzení serveru doporučí typ disku Premium (z důvodu vyšších požadavků IOPS) a pak doporučí SKU disku, který může podporovat požadovaný počet vstupně-výstupních operací a velikosti. Nejbližší shodou by v tomto případě byla skladová položka P15 (256 GB, 1 100 IOPS). Takže i když místní disk vyžadoval velikost 32 GB, nástroj Hodnocení serverů kvůli vysokým požadavkům místního disku na IOPS doporučil větší disk.
+
+### <a name="why-does-my-assessment-report-say-percentageofcoresutilizedmissing-or-percentageofmemoryutilizedmissing-for-some-vms"></a>Proč moje zpráva o posouzení říká "PercentageOfCoresUtilizedMissing" nebo "PercentageOfMemoryUtilizedMissing" pro některé virtuální počítače?
+Výše uvedené problémy se zobrazí, když zařízení Azure Migrate nedokáže shromáždit údaje o výkonu pro místní virtuální počítače. K tomu může dojít, pokud jsou virtuální počítače vypnuté po dobu, po kterou vytváříte hodnocení (poslední den/jeden týden/jeden měsíc), protože zařízení nedokáže shromažďovat údaje o výkonu pro virtuální počítač, když je vypnutý. Pokud v případě chybějících čítačů paměti dojde k vyhodnocování virtuálních počítačů Hyper-V, ověřte, jestli máte na těchto virtuálních počítačích povolenou dynamickou paměť. V tuto chvíli dochází k známému problému, protože Azure Migrate zařízení nemůže shromažďovat využití paměti pro virtuální počítače, které nemají povolenou dynamickou paměť. Upozorňujeme, že tento problém je jenom pro virtuální počítače Hyper-V, a ne pro virtuální počítače VMware. Pokud některý z čítačů výkonu chybí, Azure Migrate: Posouzení serveru se vrátí k přiděleným jádrům a paměti a doporučuje odpovídající velikost virtuálního počítače.
 
 ### <a name="is-the-os-license-cost-of-the-vm-included-in-the-compute-cost-estimated-by-server-assessment"></a>Jsou náklady na licenci na virtuální počítač zahrnuté do výpočetních nákladů na operační systém vyhodnocené vyhodnocením serveru?
-Posouzení serveru v současné době pouze zvažuje náklady na licenci na operační systém pro počítače se systémem Windows, náklady na licenci na operační systém pro počítače se systémem Linux nejsou v současnosti 
+Nástroj Hodnocení serverů v současné době zohledňuje licenční náklady na operační systém pouze u počítačů s Windows. U počítačů s Linuxem se aktuálně licenční náklady na operační systém nezohledňují.
 
 ### <a name="what-impact-does-performance-history-and-percentile-utilization-have-on-the-size-recommendations"></a>Jaký dopad má využití historie výkonu a percentilu na velikost doporučení?
-Tyto vlastnosti jsou použitelné pouze pro změny velikosti na základě výkonu. Posouzení serveru průběžně shromažďuje data o výkonu místních počítačů a používá je k tomu, aby v Azure doporučila SKU virtuálního počítače a SKU disku. Níže je uveden způsob shromažďování údajů o výkonu pomocí posouzení serveru:
+Tyto vlastnosti se zohledňují pouze při určování velikosti na základě výkonu. Nástroj Hodnocení serverů průběžně shromažďuje data o výkonu místních počítačů a používá je k doporučení skladové položky virtuálního počítače a disku v Azure. Níže najdete vysvětlení způsobu, jakým nástroj Hodnocení serverů shromažďuje data o výkonu:
 - Zařízení Azure Migrate průběžně profiluje místní prostředí za účelem shromažďování dat o využití v reálném čase každých 20 sekund pro virtuální počítače VMware a každých 30 sekund pro virtuální počítače Hyper-V.
-- Zařízení shrnuje vzorek o 20/30 sekund, který vytvoří jeden datový bod každých 10 minut. Pokud chcete vytvořit jeden datový bod, zařízení vybere nejvyšší hodnotu ze všech ukázek s 20/30 sekund a pošle je do Azure.
-- Když vytvoříte posouzení v rámci posuzování serveru na základě hodnoty doby trvání a percentilu historie výkonu, bude identifikována hodnota reprezentativního využití. Například pokud je historie výkonu jeden týden a procento využití je 95., Azure Migrate bude řadit všechny 10 minutových vzorků za poslední týden ve vzestupném pořadí a pak jako hodnotu zástupce vybrat 95. percentil.
-Hodnota 95. percentilu zajišťuje, že budete ignorovat jakékoli odlehlé hodnoty, které mohou být zahrnuty, pokud vyberete percentil 99. Pokud chcete vybrat špičku pro období a nechcete vyznačit žádné odlehlé hodnoty, měli byste jako procento využití vybrat 99 percentil.
+- Zařízení seskupuje 20sekundové a 30sekundové vzorky a pro každých 10 minut vytvoří jeden datový bod. Jeden datový bod se vytvoří tak, že zařízení ze všech 20sekundových a 30sekundových vzorků vybere maximální hodnotu a odešle ji do Azure.
+- Když v nástroji Hodnocení serverů vytvoříte posouzení, na základě doby výkonu a hodnoty percentilu historie výkonu se zjistí reprezentativní hodnota efektivního využití. Například pokud je historie výkonu jeden týden a procento využití je 95., Azure Migrate bude řadit všechny 10 minutových vzorků za poslední týden ve vzestupném pořadí a pak jako hodnotu zástupce vybrat 95. percentil.
+Hodnota 95. percentilu zajistí, že se budou ignorovat případné odlehlé hodnoty, které by se mohly zohlednit, kdybyste vybrali 99. percentil. Pokud chcete vybrat maximální využití v určitém období a nechcete přijít o žádné odlehlé hodnoty, měli byste jako percentilové využití vybrat 99. percentil.
 
 ## <a name="dependency-visualization-issues"></a>Problémy s vizualizací závislostí
 

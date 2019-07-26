@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: snehaa
-ms.openlocfilehash: e5b4777adfcbb5babbf5db792a10d025c79b1a8b
-ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
+ms.openlocfilehash: 0708502087ae6880d9559cf17f0ba9982b2ba040
+ms.sourcegitcommit: 57a7d4f67635212f5bf0c56e58fd87c8ec366f2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68302372"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68372483"
 ---
 # <a name="azure-migrate---frequently-asked-questions-faq"></a>Nejčastější dotazy k Azure Migrate (FAQ)
 
@@ -20,20 +20,8 @@ Tento článek obsahuje nejčastější dotazy týkající se Azure Migrate. Pok
 ## <a name="general"></a>Obecné
 
 ### <a name="which-azure-geographies-are-supported-by-azure-migrate"></a>Které geografické oblasti Azure podporuje Azure Migrate?
-Azure Migrate aktuálně podporuje řadu geografických oblastí, ve kterých lze vytvořit Azure Migrate projekt. I když v těchto geografických oblastech můžete vytvářet pouze projekty, můžete i nadále vyhodnocovat nebo migrovat počítače pro další cílová umístění. Geografie projektu se používá pouze k uložení zjištěných metadat.
 
-
-**Zeměpisné oblasti** | **Umístění úložiště metadat**
---- | ---
-Azure Government | USA (Gov) – Virginia
-Asie | Jihovýchodní Asie nebo Východní Asie
-Evropa | Jižní Evropa nebo Západní Evropa
-Spojené království | Velká Británie – jih nebo Velká Británie – západ
-Spojené státy | Střed USA nebo Západní USA 2
-
-
-> [!NOTE]
-> Podpora Azure Government je v tuto chvíli dostupná jenom pro [starší verze](https://docs.microsoft.com/azure/migrate/migrate-services-overview#azure-migrate-versions) Azure Migrate.
+Seznam pro [VMware sem](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#azure-migrate-projects) můžete najít tady a pro [Hyper-V](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-hyper-v#azure-migrate-projects).
 
 ### <a name="how-is-azure-migrate-different-from-azure-site-recovery"></a>Jak se Azure Migrate liší od Azure Site Recovery?
 
@@ -51,7 +39,7 @@ Pro adresy URL a porty potřebné pro Azure Migrate komunikace s Azure si přeč
 
 ### <a name="can-i-harden-the-appliance-vm-i-set-up-with-the-template"></a>Je možné posílit virtuální počítač zařízení, který jste nastavili pomocí šablony?
 
-Do šablony se dají přidat další komponenty (například anti-virus), pokud se pravidla komunikace a brány firewall požadovaná pro Azure Migrate zařízení znovu nacházela.   
+Do šablony se dají přidat další komponenty (například anti-virus), pokud jsou potřeba komunikační a bezpečnostní pravidla brány firewall, která Azure Migrate zařízení vynechala.   
 
 ### <a name="what-data-is-collected-by-azure-migrate-appliance"></a>Jaká data shromažďuje zařízení Azure Migrate?
 
@@ -195,11 +183,11 @@ Ne, můžete vizualizovat závislosti až o hodinu. Můžete se vrátit k určit
 ### <a name="is-dependency-visualization-supported-for-groups-with-more-than-10-vms"></a>Podporuje se pro skupiny s více než 10 virtuálními počítači Vizualizace závislostí?
 Můžete [vizualizovat závislosti pro skupiny](https://docs.microsoft.com/azure/migrate/how-to-create-group-dependencies) s až 10 virtuálními počítači. Pokud máte skupinu s více než 10 virtuálními počítači, doporučujeme rozdělit skupinu do menších skupin a potom tyto závislosti vizualizovat.
 
-## <a name="azure-migrate-server-migration"></a>Azure Migrate: Migrace serveru
+## <a name="azure-migrate-server-migration"></a>Azure Migrate: Migrace serverů
 
 ### <a name="how-is-azure-migrate-server-migration-different-from-azure-site-recovery"></a>Jak je Azure Migrate: Migrace serveru se liší od Azure Site Recovery?
 
 Azure Migrate: Migrace serveru využívá replikační modul Site Recovery pro migraci virtuálních počítačů VMware založenou na agentech, migraci virtuálních počítačů Hyper-V a migraci fyzických serverů do Azure. Možnost bez agenta pro migraci virtuálních počítačů VMware je nativně integrovaná do migrace serveru.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Přečtěte si [přehled Azure Migrate](migrate-services-overview.md)

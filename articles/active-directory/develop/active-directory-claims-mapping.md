@@ -1,5 +1,5 @@
 ---
-title: Přizpůsobení deklarací identity emitovaných v tokenech pro konkrétní aplikaci v tenantovi Azure AD (Public Preview)
+title: Přizpůsobení deklarací identity pro aplikaci v tenantovi Azure AD (Public Preview)
 description: Tato stránka popisuje Azure Active Directory mapování deklarací identity.
 services: active-directory
 author: rwike77
@@ -15,12 +15,12 @@ ms.date: 03/28/2019
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e923cde3cfcffe594226f6b8b665053d1fc584f6
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 97de45ef94afa9da8a5e928a3d4a8911db052107
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68324991"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68381065"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>Postup: Přizpůsobení deklarací identity emitovaných v tokenech pro konkrétní aplikaci v tenantovi (Preview)
 
@@ -122,7 +122,7 @@ Existují určité sady deklarací, které definují, jak a kdy se používají 
 | IdentityProvider |
 | IDP |
 | in_corp |
-| Případě |
+| instance |
 | ipaddr |
 | isbrowserhostedapp |
 | ISS |
@@ -289,9 +289,9 @@ Element ID určuje, která vlastnost ve zdroji poskytuje hodnotu pro deklaraci i
 | Source | id | Popis |
 |-----|-----|-----|
 | Uživatel | Příjmení | Název rodiny |
-| Uživatel | givenName | jméno |
+| Uživatel | givenName | Křestní jméno |
 | Uživatel | displayName | Zobrazovaný název |
-| Uživatel | objektu | Objektu |
+| Uživatel | objektu | ObjectID |
 | Uživatel | e-mailu | E-mailová adresa |
 | Uživatel | userprincipalname | Hlavní název uživatele |
 | Uživatel | Oddělení|Oddělení|
@@ -302,9 +302,9 @@ Element ID určuje, která vlastnost ve zdroji poskytuje hodnotu pro deklaraci i
 | Uživatel | společnosti| Název organizace |
 | Uživatel | streetaddress | Ulice |
 | Uživatel | ovládacím | PSČ |
-| Uživatel | preferredlanguange | Preferovaný jazyk |
+| Uživatel | preferredlanguange | Upřednostňovaný jazyk |
 | Uživatel | onpremisesuserprincipalname | Místní hlavní název uživatele (UPN) |
-| Uživatel | mailNickname | Přezdívka pošty |
+| Uživatel | mailNickname | Přezdívka pro poštu |
 | Uživatel | extensionattribute1 | Atribut rozšíření 1 |
 | Uživatel | extensionattribute2 | Atribut rozšíření 2 |
 | Uživatel | extensionattribute3 | Atribut rozšíření 3 |
@@ -321,15 +321,15 @@ Element ID určuje, která vlastnost ve zdroji poskytuje hodnotu pro deklaraci i
 | Uživatel | extensionattribute14 | Atribut rozšíření 14 |
 | Uživatel | extensionattribute15 | Atribut rozšíření 15 |
 | Uživatel | othermail | Jiná pošta |
-| Uživatel | Krajin | Country |
+| Uživatel | krajin | Country |
 | Uživatel | city | City |
 | Uživatel | state | Stav |
 | Uživatel | jobtitle | Funkce |
 | Uživatel | EmployeeID | ID zaměstnance |
 | Uživatel | facsimiletelephonenumber | Telefonní číslo faxu |
 | aplikace, prostředek, cílová skupina | displayName | Zobrazovaný název |
-| aplikace, prostředek, cílová skupina | s objekty | Objektu |
-| aplikace, prostředek, cílová skupina | tags | Značka objektu služby |
+| aplikace, prostředek, cílová skupina | s objekty | ObjectID |
+| aplikace, prostředek, cílová skupina | značky | Značka objektu služby |
 | Společnosti | tenantcountry | Země tenanta |
 
 **TransformationID:** Element TransformationID se musí poskytnout jenom v případě, že je zdrojový element nastavený na transformaci.
@@ -362,8 +362,8 @@ Na základě zvolené metody se očekává sada vstupů a výstupů. Definujte v
 
 |TransformationMethod|Očekávaný vstup|Očekávaný výstup|Popis|
 |-----|-----|-----|-----|
-|Spojit|řetězec1, řetězec2, oddělovač|OutputClaim|Spojí vstupní řetězce pomocí oddělovače mezi. Například: řetězec1: "foo@bar.com", řetězec2: "Sandbox", oddělovač: "." má za následek outputClaim: ""foo@bar.com.sandbox|
-|ExtractMailPrefix|e-mailu|OutputClaim|Extrahuje místní část e-mailové adresy. Například: mail: "foo@bar.com" má za následek outputClaim: "foo". Pokud není \@ k dispozici žádný symbol, je původní vstupní řetězec vrácen tak, jak je.|
+|Spojit|řetězec1, řetězec2, oddělovač|outputClaim|Spojí vstupní řetězce pomocí oddělovače mezi. Například: řetězec1: "foo@bar.com", řetězec2: "Sandbox", oddělovač: "." má za následek outputClaim: ""foo@bar.com.sandbox|
+|ExtractMailPrefix|e-mailu|outputClaim|Extrahuje místní část e-mailové adresy. Například: mail: "foo@bar.com" má za následek outputClaim: "foo". Pokud není \@ k dispozici žádný symbol, je původní vstupní řetězec vrácen tak, jak je.|
 
 **InputClaims:** Pomocí elementu InputClaims předejte data ze záznamu schématu deklarace do transformace. Má dva atributy: **ClaimTypeReferenceId** a **TransformationClaimType**.
 

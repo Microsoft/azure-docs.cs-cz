@@ -1,6 +1,6 @@
 ---
-title: 'Rychlý start pro Javu: Vytvoření, načtení a dotazování indexů Azure Search REST API – Azure Search pomocí'
-description: Vysvětluje, jak vytvořit index, načtení dat a spouštění dotazů pomocí Javy a rozhraní REST API Azure Search.
+title: 'Rychlý start: Vytvoření indexu Azure Search v jazyce Java'
+description: Vysvětluje, jak vytvořit index, načíst data a spustit dotazy pomocí Java a rozhraní REST API pro Azure Search.
 services: search
 author: jj09
 manager: jlembicz
@@ -8,15 +8,15 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 08/26/2018
 ms.author: jjed
-ms.custom: seodec2018
-ms.openlocfilehash: 83f41f248d99ce55daef40e168e5f7b175e08107
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.custom: seodec2018, seo-java-july2019
+ms.openlocfilehash: 7172cd01ca881ec3027854444107b0744b65feb3
+ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67450101"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68489792"
 ---
-# <a name="quickstart-create-an-azure-search-index-in-java"></a>Rychlý start: Vytvoření indexu Azure Search v Javě
+# <a name="quickstart-create-an-azure-search-index-in-java"></a>Rychlý start: Vytvoření indexu Azure Search v jazyce Java
 > [!div class="op_single_selector"]
 > * [Azure Portal](search-get-started-portal.md)
 > * [.NET](search-howto-dotnet-sdk.md)
@@ -36,7 +36,7 @@ Pro vytvoření a testování tohoto příkladu jsme použili následující sof
 ## <a name="about-the-data"></a>Informace o datech
 Tato ukázková aplikace používá data agentury [United States Geological Services (USGS)](https://geonames.usgs.gov/domestic/download_data.htm), která jsou filtrovaná pro stát Rhode Island, aby se zmenšila velikost datové sady. Pomocí těchto dat sestavíme vyhledávací aplikaci, která najde významné budovy, například nemocnice a školy, a geologické prvky, jako jsou vodní toky, jezera a vrcholy.
 
-V této aplikaci **SearchServlet.java** program sestaví a načte index pomocí [Indexer](https://msdn.microsoft.com/library/azure/dn798918.aspx) konstrukce, načítání filtrovanou sadu dat USGS z Azure SQL Database. Předdefinované přihlašovací údaje a informace o připojení k online zdroji dat jsou uvedené v kódu programu. Z hlediska přístupu k datům není potřeba žádná další konfigurace.
+V této aplikaci sestaví program **SearchServlet. Java** sestavení a načte index pomocí konstrukce [indexeru](https://msdn.microsoft.com/library/azure/dn798918.aspx) a načítá FILTROVANOU datovou sadu sadě USGS z Azure SQL Database. Předdefinované přihlašovací údaje a informace o připojení k online zdroji dat jsou uvedené v kódu programu. Z hlediska přístupu k datům není potřeba žádná další konfigurace.
 
 > [!NOTE]
 > U této sady dat jsme použili filtr, abychom dodrželi omezení 10 000 dokumentů pro cenovou úroveň Free. Pokud používáte úroveň Standard, toto omezení se na vás nevztahuje a můžete upravit tento kód, aby používal větší datovou sadu. Podrobnosti týkající se kapacity u jednotlivých cenových úrovní najdete v tématu [Omezení](search-limits-quotas-capacity.md).
@@ -46,25 +46,25 @@ V této aplikaci **SearchServlet.java** program sestaví a načte index pomocí 
 ## <a name="about-the-program-files"></a>O souborech programu
 Následující seznam popisuje soubory, které se vztahují k tomuto příkladu.
 
-* Search.jsp: Poskytuje uživatelské rozhraní
-* SearchServlet.java: Poskytuje metody (podobně jako řadič v MVC)
-* SearchServiceClient.java: Zpracovává požadavky HTTP
+* Hledat. jsp: Poskytuje uživatelské rozhraní.
+* SearchServlet.java: Poskytuje metody (podobně jako u kontroleru v MVC).
+* SearchServiceClient. Java: Zpracovává požadavky HTTP.
 * SearchServiceHelper.java: Pomocná třída, která poskytuje statické metody
-* Document.Java: Poskytuje datový model.
-* config.properties: Nastaví adresu URL služby Search a `api-key`
+* Document. Java: Poskytuje datový model.
+* config. Properties: Nastaví adresu URL služby Search a`api-key`
 * pom.xml: Závislost Maven
 
 <a id="sub-2"></a>
 
-## <a name="find-the-service-name-and-api-key-of-your-azure-search-service"></a>Vyhledání názvu služby a `api-key` vaší služby Azure Search
-Všechna volání rozhraní REST API do Azure Search vyžadují, abyste zadali adresu URL služby a `api-key`. 
+## <a name="find-the-service-name-and-api-key-of-your-azure-search-service"></a>Vyhledejte název služby a `api-key` službu Azure Search.
+Všechna REST API volání do Azure Search vyžadují, abyste zadali adresu URL služby a `api-key`. 
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. Na panelu odkazů klikněte na **Služba Search** a zobrazte výpis všech služeb Azure Search zřízených pro předplatné.
 3. Vyberte službu, kterou chcete použít.
 4. Na řídicím panelu služby uvidíte dlaždice se základními informacemi a ikonu klíče pro přístup ke klíčům správce.
    
-      ![][3]
+      ![Snímek obrazovky ukazující, jak získat přístup k klíčům správce z řídicího panelu služby][3]
 5. Zkopírujte adresu URL služby a klíč správce. Budete je potřebovat později, až je budete přidávat do souboru **config.properties**.
 
 ## <a name="download-the-sample-files"></a>Stažení ukázkových souborů
@@ -77,32 +77,32 @@ Všechny následné úpravy souborů a spouštěné příkazy se budou provádě
 ## <a name="import-project"></a>Import projektu
 1. V prostředí Eclipse zvolte **Soubor** > **Import** > **Obecné** > **Existující projekty do pracovního prostoru**.
    
-    ![][4]
+    ![Snímek obrazovky ukazující, jak importovat existující projekt][4]
 2. V okně **Vybrat kořenový adresář** přejděte do složky obsahující ukázkové soubory. Vyberte složku, která obsahuje složku .project. Projekt by se měl zobrazit v seznamu **Projekty** jako vybraná položka.
    
-    ![][12]
-3. Klikněte na **Dokončit**.
+    ![Snímek obrazovky se seznamem projektů v okně Importovat projekty][12]
+3. Klikněte na tlačítko **Dokončit**.
 4. Pomocí **Prohlížeče projektu** můžete zobrazit a upravit soubory. Pokud ještě není otevřený, klikněte na **Okno** > **Zobrazit zobrazení** > **Prohlížeč projektu** nebo ho otevřete pomocí klávesové zkratky.
 
-## <a name="configure-the-service-url-and-api-key"></a>Nakonfigurujte adresu URL služby a `api-key`
-1. V **Project Exploreru**, dvakrát klikněte na panel **config.properties** upravit nastavení konfigurace, který obsahuje název serveru a `api-key`.
-2. Otestovat podle kroků výše v tomto článku, kde jste našli adresu URL služby a `api-key` v [webu Azure portal](https://portal.azure.com), abyste získali hodnoty, které nyní zadáte do **config.properties**.
-3. V **config.properties**, nahraďte "API Key" `api-key` pro vaši službu. Další, název služby (první komponenta adresy URL https://servicename.search.windows.net) nahradí "service name" ve stejném souboru.
+## <a name="configure-the-service-url-and-api-key"></a>Konfigurace adresy URL služby a`api-key`
+1. V **Průzkumníku projektu**poklikejte na **config. Properties** a upravte nastavení konfigurace obsahující název serveru a `api-key`.
+2. Přečtěte si postup uvedený výše v tomto článku, kde jste našli adresu URL služby `api-key` a v [Azure Portal](https://portal.azure.com), abyste získali hodnoty, které teď zadáte do **souboru config. Properties**.
+3. V **souboru config. Properties**nahraďte "klíč rozhraní API" `api-key` parametrem pro vaši službu. V dalším kroku název služby (první součást adresy URL https://servicename.search.windows.net) nahrazuje "název služby" ve stejném souboru.
    
-    ![][5]
+    ![Snímek obrazovky ukazující, jak nahradit klíč rozhraní API][5]
 
 ## <a name="configure-the-project-build-and-runtime-environments"></a>Konfigurace prostředí projektu, buildu a běhového prostředí
 1. V prostředí Eclipse v Prohlížeči projektu klikněte pravým tlačítkem myši na projekt > **Vlastnosti** > **Omezující vlastnosti projektu**.
 2. Vyberte **Dynamic Web Module**, **Java** a **JavaScript**.
    
-    ![][6]
-3. Klikněte na **Použít**.
+    ![Snímek obrazovky ukazující, jak vybrat charakteristiky projektu pro váš projekt][6]
+3. Klikněte na tlačítko **Použít**.
 4. Vyberte **Okno** > **Předvolby** > **Server** > **Běhová prostředí** > **Přidat**.
 5. Rozbalte položku Apache a vyberte verzi serveru Apache Tomcat, kterou jste dříve nainstalovali. V našem systému jsme nainstalovali verzi 8.
    
-    ![][7]
+    ![Snímek obrazovky zobrazující, kde v okně běhového prostředí můžete vybrat svou verzi Apache Tomcat][7]
 6. Na další stránce zadejte instalační adresář Tomcat. V počítači s Windows to bude pravděpodobně C:\Program Files\Apache Software Foundation\Tomcat *verze*.
-7. Klikněte na **Dokončit**.
+7. Klikněte na tlačítko **Dokončit**.
 8. Vyberte **Okno** > **Předvolby** > **Java** > **Nainstalovaná prostředí JRE** > **Přidat**.
 9. V okně **Přidat prostředí JRE**, vyberte **Standardní virtuální počítač**.
 10. Klikněte na **Další**.
@@ -110,17 +110,17 @@ Všechny následné úpravy souborů a spouštěné příkazy se budou provádě
 12. Přejděte do adresáře **Program Files** > **Java** a vyberte sadu JDK, kterou jste dříve nainstalovali. Je důležité vybrat jako prostředí JRE sadu JDK.
 13. V okně Nainstalovaná prostředí JRE zvolte **JDK**. Vaše nastavení by mělo vypadat jako na následujícím snímku obrazovky.
     
-    ![][9]
+    ![Snímek obrazovky ukazující, jak vybrat JDK jako nainstalovaný JRE][9]
 14. Volitelně vyberte **Okno** > **Webový prohlížeč** > **Internet Explorer**, aby se aplikaci spustila v okně externího prohlížeče. Použití externího prohlížeče poskytuje lepší uživatelské prostředí webové aplikace.
     
-    ![][8]
+    ![Snímek obrazovky ukazující, jak vybrat Internet Explorer jako externí okno procházení][8]
 
 Nyní jste dokončili úlohy konfigurace. V dalším kroku sestavíte a spustíte projekt.
 
 ## <a name="build-the-project"></a>Sestavení projektu
 1. V Prohlížeči projektu klikněte pravým tlačítkem na název projektu a zvolte **Spustit jako** > **Build Maven...** , abyste nakonfigurovali projekt.
    
-    ![][10]
+    ![Snímek obrazovky ukazující, jak zvolit Maven sestavení v okně Průzkumníka projektu][10]
 2. V okně Upravit konfiguraci v části Cíle zadejte „clean install“ a pak klikněte na **Spustit**.
 
 Stavové zprávy se zobrazují v okně konzoly. Měli byste vidět zprávu o úspěšném sestavení, která oznamuje sestavení projektu bez chyb.
@@ -147,7 +147,7 @@ Sada dat USGS obsahuje záznamy, které se vztahují ke státu Rhode Island. Pok
 
 Když zadáte hledaný výraz, vyhledávací web bude mít s čím pracovat. Zkuste zadat místní název. Roger Williams byl prvním guvernérem státu Rhode Island. Je po něm pojmenovaná celá řada parků, budov a škol.
 
-![][11]
+![Snímek obrazovky znázorňující, jak hledat data sadě USGS][11]
 
 Může taky zkusit kterýkoli z těchto výrazů:
 

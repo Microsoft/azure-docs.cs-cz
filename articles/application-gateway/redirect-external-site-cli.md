@@ -1,6 +1,6 @@
 ---
-title: Vytvoření služby application gateway s přesměrování externího provozu – rozhraní příkazového řádku Azure | Dokumentace Microsoftu
-description: Informace o vytvoření služby application gateway, který přesměruje interní webový provoz do příslušného fondu pomocí Azure CLI.
+title: Vytvoření aplikační brány s přesměrováním externích přenosů – Azure CLI | Microsoft Docs
+description: Naučte se, jak vytvořit Aplikační bránu, která přesměruje vnitřní webový provoz do příslušného fondu pomocí Azure CLI.
 services: application-gateway
 author: vhorne
 manager: jpconnock
@@ -12,22 +12,22 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/24/2018
 ms.author: victorh
-ms.openlocfilehash: 1ddbc84004622c2a5fa9dc08d4396e1f300474f2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e1fb25a9d5bfe6538d081169d163d7b280733cc1
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66133870"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68382017"
 ---
-# <a name="create-an-application-gateway-with-external-redirection-using-the-azure-cli"></a>Vytvoření služby application gateway pomocí externího přesměrování pomocí Azure CLI
+# <a name="create-an-application-gateway-with-external-redirection-using-the-azure-cli"></a>Vytvoření aplikační brány s externím přesměrování pomocí Azure CLI
 
-Rozhraní příkazového řádku Azure můžete použít ke konfiguraci [přesměrování webového provozu](multiple-site-overview.md) při vytváření [služba application gateway](overview.md). V tomto kurzu nakonfigurujete naslouchací proces a pravidlo, které přesměruje webový provoz přicházející ve službě application gateway na externí web.
+Rozhraní příkazového řádku Azure můžete použít ke konfiguraci [přesměrování webového provozu](multiple-site-overview.md) při vytváření [aplikační brány](overview.md). V tomto kurzu nakonfigurujete naslouchací proces a pravidlo, které přesměrují webový provoz, který je součástí aplikační brány, na externí Web.
 
 V tomto článku získáte informace o těchto tématech:
 
 > [!div class="checklist"]
 > * Nastavit síť
-> * Vytvořit pravidlo naslouchací proces a přesměrování
+> * Vytvoření naslouchacího procesu a pravidla přesměrování
 > * Vytvoření služby Application Gateway
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
@@ -65,7 +65,7 @@ az network public-ip create \
 
 ## <a name="create-an-application-gateway"></a>Vytvoření služby Application Gateway
 
-K vytvoření aplikační brány s názvem *myAppGateway* použijte příkaz [az network application-gateway create](/cli/azure/network/application-gateway). Při vytváření aplikační brány pomocí Azure CLI zadáte konfigurační údaje, jako je kapacita, skladová položka nebo nastavení HTTP. Application gateway je přiřazeno *myAGSubnet* a *myPublicIPAddress* , kterou jste vytvořili. 
+K vytvoření aplikační brány s názvem *myAppGateway* použijte příkaz [az network application-gateway create](/cli/azure/network/application-gateway). Při vytváření aplikační brány pomocí Azure CLI zadáte konfigurační údaje, jako je kapacita, skladová položka nebo nastavení HTTP. Aplikační brána je přiřazena k *myAGSubnet* a *myPublicIPAddress* , které jste vytvořili dříve. 
 
 ```azurecli-interactive
 az network application-gateway create \
@@ -93,7 +93,7 @@ Vytvoření aplikační brány může trvat několik minut. Po vytvoření aplik
 
 ### <a name="add-the-redirection-configuration"></a>Přidat konfiguraci přesměrování
 
-Přidat konfiguraci přesměrování, který odesílá síťový provoz z *www.consoto.org* pro naslouchací proces pro *www.contoso.com* na aplikační bránu pomocí [az network application-gateway přesměrování config vytvořit](/cli/azure/network/application-gateway/redirect-config).
+Přidejte konfiguraci přesměrování, která odesílá provoz z *webové\.služby consoto.org* do naslouchacího procesu pro službu *www\.contoso.com* na službu Application Gateway pomocí funkce [AZ Network Application-Gateway redirect-config Create. ](/cli/azure/network/application-gateway/redirect-config).
 
 ```azurecli-interactive
 az network application-gateway redirect-config create \
@@ -106,7 +106,7 @@ az network application-gateway redirect-config create \
 
 ### <a name="add-a-listener-and-routing-rule"></a>Přidat naslouchací proces a pravidlo směrování
 
-Naslouchací proces je nutné povolit aplikační brány pro směrování provozu odpovídajícím způsobem. Vytvořte naslouchací proces, pomocí [az network application-gateway-naslouchací proces protokolu http vytvořit](/cli/azure/network/application-gateway) s front-endový port vytvořené pomocí [az network application-gateway front-endu port vytvořit](/cli/azure/network/application-gateway). Pravidlo je vyžadováno pro naslouchací proces vědět, kam má odesílat příchozí provoz. Vytvořte základní pravidlo s názvem *redirectRule* pomocí [az network application-gateway pravidlo vytvořte](/cli/azure/network/application-gateway).
+Naslouchací proces je nutný k tomu, aby brána Application Gateway mohla vhodným způsobem směrovat provoz. Vytvořte naslouchací proces pomocí [AZ Network Application-Gateway http-naslouchacího procesu Create](/cli/azure/network/application-gateway) s portem front-endu vytvořeno pomocí [AZ Network Application-Gateway Endu-port Create](/cli/azure/network/application-gateway). Pro naslouchací proces, který je vyžadován pro odeslání příchozího provozu, je vyžadováno pravidlo. Vytvořte základní pravidlo s názvem *redirectRule* pomocí [AZ Network Application-Gateway Rule Create](/cli/azure/network/application-gateway).
 
 ```azurecli-interactive
 az network application-gateway frontend-port create \
@@ -133,12 +133,12 @@ az network application-gateway rule create \
 
 K získání veřejné IP adresy aplikační brány můžete použít příkaz [az network public-ip show](/cli/azure/network/public-ip). Zkopírujte veřejnou IP adresu a pak ji vložte do adresního řádku svého prohlížeče.
 
-Měli byste vidět *bing.com* se zobrazí v prohlížeči.
+V prohlížeči by se měla zobrazit *Bing.com* .
 
 ## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste se naučili:
 
 > * Nastavit síť
-> * Vytvořit pravidlo naslouchací proces a přesměrování
+> * Vytvoření naslouchacího procesu a pravidla přesměrování
 > * Vytvoření služby Application Gateway

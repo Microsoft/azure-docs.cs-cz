@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 05/11/2019
 ms.author: genli
-ms.openlocfilehash: a0cd2952633293bfa1d29bf3a399c67bf092d288
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: ad30bd4f77c5f4314956e39f26a30b72d72a208a
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68318317"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68361174"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Příprava virtuálního pevného disku (VHD) nebo VHDX systému Windows pro nahrání do Azure
 
@@ -33,7 +33,7 @@ Informace o zásadách podpory pro virtuální počítače Azure najdete v téma
 > [!NOTE]
 > Pokyny v tomto článku se týkají:
 >1. 64 verze systému Windows Server 2008 R2 a novějších operačních systémů Windows Server. Informace o spuštění 32 operačního systému v Azure najdete v tématu [Podpora pro 32 operační systémy ve virtuálních počítačích Azure](https://support.microsoft.com/help/4021388/support-for-32-bit-operating-systems-in-azure-virtual-machines).
->2. Pokud bude k migraci úlohy, jako je Azure Site Recovery nebo Azure Migrate, použit libovolný nástroj pro zotavení po havárii, je nutné tento proces ještě provést a následně na hostovaném operačním systému připravit image před migrací.
+>2. Pokud bude k migraci zatížení použit libovolný nástroj pro zotavení po havárii, například Azure Site Recovery nebo Azure Migrate, je nutné tento proces ještě provést a následně pokračovat v hostovaném operačním systému, aby bylo možné image připravit před migrací.
 
 ## <a name="convert-the-virtual-disk-to-a-fixed-size-and-to-vhd"></a>Převést virtuální disk na pevnou velikost a na VHD
 
@@ -214,7 +214,7 @@ Ujistěte se, že jsou pro vzdálený přístup správně nakonfigurovaná násl
 
 9. Pokud bude virtuální počítač součástí domény, zkontrolujte následující zásady, abyste se ujistili, že předchozí nastavení nebudou obnovená. 
     
-    | Cíl                                     | Zásada                                                                                                                                                       | Hodnota                                                                                    |
+    | Cíl                                     | Zásada                                                                                                                                                       | Value                                                                                    |
     |------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------|
     | Protokol RDP je povolený.                           | Computer cestě konfigurace Settings\Administrative Templates\Components\Remote Desktop – pracovní relace, Host\Connections         | Umožňuje uživatelům vzdálené připojení pomocí vzdálené plochy.                                  |
     | NLA – zásady skupiny                         | Settings\Administrative Templates\Components\Remote Desktop – relace pro pracovní plochu – Host\Security                                                    | Vyžadovat ověření uživatele pro vzdálený přístup pomocí NLA |
@@ -347,7 +347,7 @@ Ujistěte se, že je virtuální počítač v pořádku, zabezpečený a dostupn
 
    - Operátoři zálohování
 
-   - Všemi
+   - Všichni
 
    - Uživatelé
 

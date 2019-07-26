@@ -1,6 +1,6 @@
 ---
-title: Začínáme s dvojčaty zařízení Azure IoT Hub (.NET/.NET) | Dokumentace Microsoftu
-description: Jak používat dvojče zařízení Azure IoT Hub pro přidání značek a následné použití k dotazu služby IoT Hub. Implementace aplikace simulovaného zařízení a služby Azure IoT SDK pro .NET k implementaci app service, které přidá značky a spustí dotaz služby IoT Hub pomocí zařízení Azure IoT SDK pro .NET.
+title: Začínáme s neznámkou zařízení s Azure IoT Hub (.NET/.NET) | Microsoft Docs
+description: Jak používat vlákna v zařízeních Azure IoT Hub k přidávání značek a k následnému použití dotazu IoT Hub. Pomocí sady SDK pro zařízení Azure IoT pro .NET implementujete aplikaci simulovaného zařízení a sadu SDK služby Azure IoT pro .NET k implementaci aplikace služby, která přidá značky a spustí dotaz IoT Hub.
 author: robinsh
 manager: philmea
 ms.service: iot-hub
@@ -9,56 +9,58 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: robinsh
-ms.openlocfilehash: 9d5d5bdc569fec1df20c7729285cc462d5af4ffb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c1b8f60fd155cf9bce0b999da7459299b6f3c7aa
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65873236"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68404523"
 ---
-# <a name="get-started-with-device-twins-netnet"></a>Začínáme s dvojčaty zařízení (.NET/.NET)
+# <a name="get-started-with-device-twins-netnet"></a>Začínáme se zdvojením zařízení (.NET/.NET)
 [!INCLUDE [iot-hub-selector-twin-get-started](../../includes/iot-hub-selector-twin-get-started.md)]
 
 Na konci tohoto kurzu budete mít tyto aplikace konzoly .NET:
 
 * **CreateDeviceIdentity**, aplikace .NET, která vytvoří identitu zařízení a přiřazený bezpečnostní klíč k připojení simulované aplikace zařízení.
 
-* **AddTagsAndQuery**, .NET back endové aplikace, které přidá značky a dotazy dvojčata zařízení.
+* **AddTagsAndQuery**, aplikace back-end v .NET, která přidává značky a dotaz na vlákna zařízení.
 
-* **ReportConnectivity**, aplikace .NET zařízení, která simuluje zařízení, která se připojuje ke službě IoT hub s dříve vytvořenou identitou zařízení a sestav stavu připojení.
+* **ReportConnectivity**, aplikace pro zařízení .NET, která simuluje zařízení, které se připojuje ke službě IoT Hub s identitou zařízení vytvořenou dříve, a hlásí stav připojení.
 
 > [!NOTE]
-> Tento článek [sad SDK Azure IoT](iot-hub-devguide-sdks.md) poskytuje informace o Azure IoT SDK, že vám pomůže vytvářet aplikace pro zařízení i back-end.
+> V článku sady [SDK Azure IoT](iot-hub-devguide-sdks.md) najdete informace o sadách SDK Azure IoT, které můžete použít k vytvoření zařízení i back-endové aplikace.
 > 
 
-K dokončení tohoto kurzu budete potřebovat následující:
+K dokončení tohoto kurzu potřebujete následující:
 
 * Visual Studio.
-* Aktivní účet Azure. (Pokud účet nemáte, můžete vytvořit [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/) během několika minut.)
+* Aktivní účet Azure. (Pokud účet nemáte, můžete si během několika minut vytvořit [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/) .)
 
 ## <a name="create-an-iot-hub"></a>Vytvoření centra IoT
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
-### <a name="retrieve-connection-string-for-iot-hub"></a>Načtení připojovacího řetězce pro službu IoT hub
-
-[!INCLUDE [iot-hub-include-find-connection-string](../../includes/iot-hub-include-find-connection-string.md)]
-
-## <a name="register-a-new-device-in-the-iot-hub"></a>Zaregistrujte nové zařízení ve službě IoT hub
+## <a name="register-a-new-device-in-the-iot-hub"></a>Registrace nového zařízení ve službě IoT Hub
 
 [!INCLUDE [iot-hub-include-create-device](../../includes/iot-hub-include-create-device.md)]
 
+## <a name="get-the-iot-hub-connection-string"></a>Získání připojovacího řetězce centra IoT Hub
+
+[!INCLUDE [iot-hub-howto-twin-shared-access-policy-text](../../includes/iot-hub-howto-twin-shared-access-policy-text.md)]
+
+[!INCLUDE [iot-hub-include-find-custom-connection-string](../../includes/iot-hub-include-find-custom-connection-string.md)]
+
 ## <a name="create-the-service-app"></a>Vytvoření aplikace služby
 
-V této části vytvoříte konzolovou aplikaci .NET (s použitím jazyka C#), která přidává umístění metadat do dvojčete zařízení spojené s **myDeviceId**. Následně se dotazuje dvojčata zařízení, které jsou uložené ve službě IoT hub výběrem umístěné v USA a ty, kteří hlásili mobilní připojení zařízení.
+V této části vytvoříte konzolovou aplikaci .NET (pomocí C#), která přidá metadata umístění do vlákna zařízení přidruženého k **myDeviceId**. Pak se dotazuje na vlákna uložená ve službě IoT Hub a vybere zařízení umístěná v USA a potom ty, které nahlásily mobilní připojení.
 
 1. V sadě Visual Studio přidejte k stávajícímu řešení klasický desktopový projekt Visual C# pro systém Windows pomocí šablony projektu **Konzolová aplikace**. Pojmenujte projekt **AddTagsAndQuery**.
    
     ![Nový klasický desktopový projekt Visual C# pro systém Windows](./media/iot-hub-csharp-csharp-twin-getstarted/createnetapp.png)
 
-2. V Průzkumníku řešení klikněte pravým tlačítkem myši **AddTagsAndQuery** projektu a pak klikněte na tlačítko **spravovat balíčky NuGet...** .
+2. V Průzkumník řešení klikněte pravým tlačítkem na projekt **AddTagsAndQuery** a potom klikněte na **Spravovat balíčky NuGet...** .
 
-3. V **Správce balíčků NuGet** okně **Procházet** a vyhledejte **Microsoft.Azure.Devices**. Vyberte **nainstalovat** k instalaci **Microsoft.Azure.Devices** balíček a přijměte podmínky použití. Tento postup stáhne, nainstaluje a přidá odkaz na [pro službu Azure IoT SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices/) NuGet balíček a jeho závislosti.
+3. V okně **Správce balíčků NuGet** vyberte **Procházet** a vyhledejte **Microsoft. Azure. Devices**. Vyberte **instalovat** a nainstalujte balíček **Microsoft. Azure. Devices** a přijměte podmínky použití. Tímto postupem se stáhne a nainstaluje balíček NuGet [sady SDK služby Azure IoT](https://www.nuget.org/packages/Microsoft.Azure.Devices/) a jeho závislosti a přidá se na něj odkaz.
    
     ![Okno Správce balíčků NuGet](./media/iot-hub-csharp-csharp-twin-getstarted/servicesdknuget.png)
 
@@ -68,7 +70,7 @@ V této části vytvoříte konzolovou aplikaci .NET (s použitím jazyka C#), k
     using Microsoft.Azure.Devices;
     ```
 
-5. Do třídy **Program** přidejte následující pole. Nahraďte hodnotu zástupného symbolu připojovacím řetězcem pro službu IoT Hub, kterou jste vytvořili v předchozí části.
+5. Do třídy **Program** přidejte následující pole. Nahraďte hodnotu zástupného symbolu připojovacím řetězcem IoT Hub, který jste dříve zkopírovali v [části získání připojovacího řetězce centra IoT Hub](#get-the-iot-hub-connection-string).
 
     ```csharp  
     static RegistryManager registryManager;
@@ -105,11 +107,11 @@ V této části vytvoříte konzolovou aplikaci .NET (s použitím jazyka C#), k
     }
     ```
    
-    **RegistryManager** třída zveřejňuje všechny metody, které jsou nutné k interakci s dvojčaty zařízení ze služby. Předchozí kód nejprve inicializuje **registryManager** a pak načte dvojče zařízení pro **myDeviceId**a nakonec aktualizuje její klíčová slova s informacemi o požadované umístění.
+    Třída **RegistryManager** zpřístupňuje všechny metody, které jsou potřeba pro interakci se zařízeními ze služby. Předchozí kód nejprve inicializuje objekt **registryManager** , potom načte vlákna zařízení pro **myDeviceId**a nakonec aktualizuje své značky o požadované informace o umístění.
    
-    Po aktualizaci se provede dva dotazy: první vybere pouze dvojčata zařízení nachází v zařízení **Redmond43** kategorie plant a druhá zpřesnění dotaz pro výběr pouze do zařízení, které jsou také připojené přes mobilní síť.
+    Po aktualizaci se spustí dva dotazy: první vybere jenom zařízení, která se nacházejí v **Redmond43** , a druhá ho vyplní a vybere jenom zařízení, která jsou taky připojená přes mobilní síť.
    
-    Všimněte si, že předchozí kód, když vytváří **dotazu** objektu, určuje maximální počet vrácených dokumentů. **Dotazu** obsahuje objekt **HasMoreResults** logická vlastnost, která můžete použít k vyvolání **GetNextAsTwinAsync** metody víc než jednou načíst všechny výsledky. Volána metoda **GetNextAsJson** je k dispozici pro výsledky, které není dvojčata zařízení, třeba výsledky dotazů agregace.
+    Všimněte si, že předchozí kód při vytváření objektu **dotazu** určuje maximální počet vrácených dokumentů. Objekt **dotazu** obsahuje vlastnost **HasMoreResults** Boolean, kterou můžete použít k vícenásobnému vyvolání metod **GetNextAsTwinAsync** pro načtení všech výsledků. Metoda s názvem **GetNextAsJson** je k dispozici pro výsledky, které nejsou nevlákenné zařízení, například výsledky agregačních dotazů.
 
 7. Nakonec do metody **Main** přidejte následující řádky:
 
@@ -120,27 +122,27 @@ V této části vytvoříte konzolovou aplikaci .NET (s použitím jazyka C#), k
     Console.ReadLine();
     ```
 
-8. V Průzkumníku řešení otevřete **nastavit projekty po spuštění...**  a ujistěte se, že **akce** pro **AddTagsAndQuery** projekt je **Start**. Sestavte řešení.
+8. V Průzkumník řešení otevřete **nastavení projekty po spuštění...** a ujistěte se, že je **spuštěna** **Akce** pro projekt **AddTagsAndQuery** . Sestavte řešení.
 
-9. Tuto aplikaci spustit kliknutím pravým tlačítkem na **AddTagsAndQuery** projekt a výběrem **ladění**následovaný **zahájit novou instanci**. Měli byste vidět jedno zařízení ve výsledcích pro kladení dotazů pro všechna zařízení nachází v **Redmond43** a žádné dotaz, který omezuje výsledky na zařízení, která používají mobilní síti.
+9. Spusťte tuto aplikaci tak, že kliknete pravým tlačítkem na projekt **AddTagsAndQuery** a vyberete **ladění**a potom zahájíte **novou instanci**. Ve výsledcích dotazu pro všechna zařízení umístěná v **Redmond43** byste měli vidět jedno zařízení, které pro dotaz neomezuje výsledky na zařízení, která používají mobilní síť.
    
     ![Výsledky dotazu v okně](./media/iot-hub-csharp-csharp-twin-getstarted/addtagapp.png)
 
-V další části můžete vytvořit aplikace pro zařízení, která hlásí informace o připojení a změní výsledek dotazu v předchozí části.
+V další části vytvoříte aplikaci pro zařízení, která oznamuje informace o připojení a mění výsledek dotazu v předchozí části.
 
 ## <a name="create-the-device-app"></a>Vytvoření aplikace pro zařízení
 
-V této části vytvoříte konzolovou aplikaci .NET, která se připojuje k vašemu centru jako **myDeviceId**a pak aktualizuje ohlášených vlastností obsahují informace, že je připojený pomocí mobilní síti.
+V této části vytvoříte konzolovou aplikaci .NET, která se připojí k vašemu rozbočovači jako **myDeviceId**, a pak aktualizuje své hlášené vlastnosti tak, aby obsahovala informace, které jsou připojené pomocí mobilní sítě.
 
 1. V sadě Visual Studio přidejte k stávajícímu řešení klasický desktopový projekt Visual C# pro systém Windows pomocí šablony projektu **Konzolová aplikace**. Pojmenujte projekt **ReportConnectivity**.
    
-    ![Nový Visual C# Windows klasické aplikace pro zařízení](./media/iot-hub-csharp-csharp-twin-getstarted/createdeviceapp.png)
+    ![Nová aplikace C# Visual v klasickém zařízení s Windows](./media/iot-hub-csharp-csharp-twin-getstarted/createdeviceapp.png)
     
-2. V Průzkumníku řešení klikněte pravým tlačítkem myši **ReportConnectivity** projektu a pak klikněte na tlačítko **spravovat balíčky NuGet...** .
+2. V Průzkumník řešení klikněte pravým tlačítkem na projekt **ReportConnectivity** a potom klikněte na **Spravovat balíčky NuGet...** .
 
-3. V **Správce balíčků NuGet** okně **Procházet** a vyhledejte **Microsoft.Azure.Devices.Client**. Vyberte **nainstalovat** k instalaci **Microsoft.Azure.Devices.Client** balíček a přijměte podmínky použití. Tento postup stáhne, nainstaluje a přidá odkaz na [zařízení Azure IoT SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices.Client/) NuGet balíček a jeho závislosti.
+3. V okně **Správce balíčků NuGet** vyberte **Procházet** a vyhledejte **Microsoft. Azure. Devices. Client**. Vyberte **instalovat** a nainstalujte balíček **Microsoft. Azure. Devices. Client** a přijměte podmínky použití. Tímto postupem se stáhne a nainstaluje balíček NuGet [sady SDK pro zařízení Azure IoT](https://www.nuget.org/packages/Microsoft.Azure.Devices.Client/) a jeho závislosti a přidá se na něj odkaz.
    
-    ![Klientská aplikace okno Správce balíčků NuGet](./media/iot-hub-csharp-csharp-twin-getstarted/clientsdknuget.png)
+    ![Klientská aplikace okna Správce balíčků NuGet](./media/iot-hub-csharp-csharp-twin-getstarted/clientsdknuget.png)
 
 4. Do horní části souboru **Program.cs** přidejte následující příkazy `using`:
 
@@ -179,7 +181,7 @@ V této části vytvoříte konzolovou aplikaci .NET, která se připojuje k va�
     }
     ```
 
-    **Klienta** objekt poskytuje všechny metody, které budete potřebovat pro interakci s dvojčaty zařízení ze zařízení. Inicializuje kódu uvedeného výše **klienta** objekt a potom načte dvojče zařízení pro **myDeviceId**.
+    Objekt **klienta** zveřejňuje všechny metody, které vyžadujete pro interakci se zařízeními ze zařízení. Výše zobrazený kód inicializuje objekt **klienta** a potom načte pro **myDeviceId**vlákna zařízení.
 
 7. Přidejte následující metodu do třídy **Program**:
 
@@ -205,7 +207,7 @@ V této části vytvoříte konzolovou aplikaci .NET, která se připojuje k va�
     }
     ```
 
-   Kód výše aktualizace **myDeviceId**je uvedena vlastnost s informacemi o připojení.
+   Výše uvedený kód aktualizuje vlastnost hlášenou **myDeviceId**informacemi o připojení.
 
 8. Nakonec do metody **Main** přidejte následující řádky:
 
@@ -224,24 +226,24 @@ V této části vytvoříte konzolovou aplikaci .NET, která se připojuje k va�
     Console.ReadLine();
     ```
 
-9. V Průzkumníku řešení otevřete **nastavit projekty po spuštění...**  a ujistěte se, že **akce** pro **ReportConnectivity** projekt je **Start**. Sestavte řešení.
+9. V Průzkumník řešení otevřete **nastavení projekty po spuštění...** a ujistěte se, že je **spuštěna** **Akce** pro projekt **ReportConnectivity** . Sestavte řešení.
 
-10. Tuto aplikaci spustit kliknutím pravým tlačítkem na **ReportConnectivity** projekt a výběrem **ladění**následovaný **zahájit novou instanci**. Měli byste vidět, získávání dvojčete informace a potom odešlete připojení jako *hlášené vlastnost*.
+10. Spusťte tuto aplikaci tak, že kliknete pravým tlačítkem na projekt **ReportConnectivity** a vyberete **ladění**a potom zahájíte **novou instanci**. Měli byste vidět, že se dostaly zdvojené informace, a pak poslat připojení jako *hlášenou vlastnost*.
    
-    ![Spuštění aplikace pro zařízení pro připojení k sestavě](./media/iot-hub-csharp-csharp-twin-getstarted/rundeviceapp.png)
+    ![Spuštění aplikace zařízení pro hlášení připojení](./media/iot-hub-csharp-csharp-twin-getstarted/rundeviceapp.png)
        
-11. Teď, když zařízení uvádět jeho informace o připojení, měl by se zobrazit v obou dotazech. Spuštění rozhraní .NET **AddTagsAndQuery** aplikaci znovu spustit dotazy. Tentokrát **myDeviceId** by se měla objevit v obou výsledky dotazu.
+11. Teď, když zařízení oznámilo informace o připojení, by se mělo zobrazit v obou dotazech. Spusťte aplikaci .NET **AddTagsAndQuery** a spusťte dotazy znovu. Toto časové **myDeviceId** by se mělo objevit ve výsledcích dotazu.
    
-    ![Připojení zařízení úspěšně hlášené](./media/iot-hub-csharp-csharp-twin-getstarted/tagappsuccess.png)
+    ![Připojení zařízení se úspěšně nahlásilo.](./media/iot-hub-csharp-csharp-twin-getstarted/tagappsuccess.png)
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto kurzu jste nakonfigurovali novou službu IoT Hub na webu Azure Portal a potom jste vytvořili identitu zařízení v registru identit ve službě IoT Hub. Přidá metadata zařízení jako značky z back endové aplikace a aplikace s Simulovaná zařízení zapsáno do sestavy informací o připojení k zařízení ve dvojčeti zařízení. Také jste zjistili, jak zadávat dotazy na tyto informace pomocí dotazovacího jazyka podobného SQL IoT Hub.
+V tomto kurzu jste nakonfigurovali novou službu IoT Hub na webu Azure Portal a potom jste vytvořili identitu zařízení v registru identit ve službě IoT Hub. Metadata zařízení jste přidali jako značky z back-endové aplikace a zapsali jste aplikaci simulovaného zařízení, která oznamuje informace o připojení zařízení v zařízení. Zjistili jste také, jak zadat dotaz na tyto informace pomocí dotazovacího jazyka IoT Hub, jako je třeba SQL.
 
-Pomocí následujících zdrojích se dozvíte jak:
+Pomocí následujících zdrojů se naučíte:
 
-* odesílání telemetrie ze zařízení s [odesílání telemetrických dat ze zařízení do služby IoT hub](quickstart-send-telemetry-dotnet.md) kurzu
+* Odeslat telemetrii ze zařízení pomocí [odesílací telemetrie ze zařízení do služby IoT Hub](quickstart-send-telemetry-dotnet.md)
 
-* Konfigurace zařízení pomocí požadované vlastnosti dvojčete zařízení s [použití požadované vlastnosti ke konfiguraci zařízení](tutorial-device-twins.md) kurzu
+* v kurzu konfigurace zařízení pomocí [požadovaných vlastností pro konfiguraci](tutorial-device-twins.md) zařízení nakonfigurujte zařízení pomocí požadovaných vlastností.
 
-* Ovládací prvek zařízení interaktivně (například zapnutí ventilátor z aplikace řízené uživatelem) [použití přímých metod](quickstart-control-device-dotnet.md) kurzu.
+* interaktivní řízení zařízení (například zapnutí ventilátoru z aplikace řízené uživatelem) pomocí kurzu [použití přímých metod](quickstart-control-device-dotnet.md) .
