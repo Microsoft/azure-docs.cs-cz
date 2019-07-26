@@ -5,17 +5,17 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: tutorial
-ms.date: 04/23/2019
+ms.date: 07/25/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my local site to my VNets using Virtual WAN and I don't want to go through a Virtual WAN partner.
-ms.openlocfilehash: e8e251aa5031a8eadd2d567bff2830449c7decc3
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: e9be7ef5c4f37c66f7cbf2c6226936438b367108
+ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64689515"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68515170"
 ---
-# <a name="tutorial-create-a-site-to-site-connection-using-azure-virtual-wan"></a>Kurz: Vytvoření připojení typu Site-to-Site pomocí Azure virtuální sítě WAN
+# <a name="tutorial-create-a-site-to-site-connection-using-azure-virtual-wan"></a>Kurz: Vytvoření připojení typu Site-to-site pomocí Azure Virtual WAN
 
 V tomto kurzu se dozvíte, jak se pomocí služby Virtual WAN připojit ke svým prostředkům v Azure přes připojení VPN IPsec/IKE (IKEv1 a IKEv2). Tento typ připojení vyžaduje místní zařízení VPN, které má přiřazenou veřejnou IP adresu. Další informace o službě Virtual WAN najdete v tématu [Přehled služby Virtual WAN](virtual-wan-about.md).
 
@@ -32,14 +32,14 @@ V tomto kurzu se naučíte:
 > * Vytvoření lokality
 > * Vytvoření rozbočovače
 > * Připojení rozbočovače k lokalitě
-> * Vytvořit kompatibilní virtuální síť (pokud ho ještě nemáte)
+> * Vytvoření kompatibilní virtuální sítě (pokud ji ještě nemáte)
 > * Připojení virtuální sítě k rozbočovači
 > * Stažení a použití konfigurace zařízení VPN
 > * Zobrazení virtuální sítě WAN
 > * Zobrazení stavu prostředků
 > * Monitorování připojení
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 [!INCLUDE [Before you begin](../../includes/virtual-wan-tutorial-vwan-before-include.md)]
 
@@ -57,13 +57,18 @@ Můžete vytvořit libovolný počet lokalit odpovídajících fyzickým umíst�
 2. Na stránce **Lokality VPN** klikněte na **+Vytvořit lokalitu**.
 3. Na stránce **Create site** (Vytvořit lokalitu) zadejte údaje do následujících polí:
 
-   * **Název** -název, podle kterého chcete odkazovat na místní lokalitu.
-   * **Veřejná IP adresa** -veřejnou IP adresu zařízení VPN, které se nacházejí ve vaší místní lokalitě.
+   * **Název** – název, podle kterého chcete odkazovat na místní lokalitu.
+   * **Veřejná IP adresa** – veřejná IP adresa zařízení VPN, která se nachází na vaší místní lokalitě.
    * **Private address space** (Privátní adresní prostor) – prostor IP adres, který se nachází v místní lokalitě. Provoz určený do tohoto adresního prostoru se přesměruje do místní lokality.
    * **Subscription** (Předplatné) – ověřte předplatné.
    * **Resource Group** (Skupina prostředků) – skupina prostředků, kterou chcete použít.
-   * **Umístění**
-4. Další nastavení zobrazíte kliknutím na **Show advanced** (Zobrazit rozšířené nastavení). Můžete vybrat **BGP** se povolit protokol BGP, která vám umožní funkce protokolu BGP na všech připojení vytvořených pro tento webový server v Azure. Můžete také zadat **Informace o zařízení** (volitelná pole). To může pomoct lépe porozuměli svému prostředí pro přidání možností další optimalizace v budoucnu, nebo pomocný při řešení problémů týmu Azure.
+   * **Location**
+4. Další nastavení zobrazíte kliknutím na **Show advanced** (Zobrazit rozšířené nastavení). 
+
+   Můžete vybrat protokol **BGP** a povolit protokol BGP. tím se povolí funkce protokolu BGP u všech připojení vytvořených pro tento web v Azure. Konfigurace protokolu BGP ve virtuální síti WAN je rovnocenná konfiguraci protokolu BGP v bráně Azure VPN. Vaše místní adresa partnerského uzlu BGP *nesmí* být stejná jako veřejná IP adresa vaší sítě VPN k zařízení nebo adresní prostor virtuální sítě sítě VPN. Pro IP adresu partnerského uzlu BGP použijte jinou IP adresu na zařízení VPN. Může se jednat o adresu přiřazenou rozhraní zpětné smyčky v zařízení. Nejedná se  však o APIPA (169,254). *x*. *x*) adresa. Adresu zadejte v odpovídající bráně místní sítě reprezentující umístění. Požadavky protokolu BGP najdete v tématu [informace o protokolu BGP s Azure VPN Gateway](../vpn-gateway/vpn-gateway-bgp-overview.md).
+
+   Můžete také zadat **Informace o zařízení** (volitelná pole). Díky tomu může tým Azure lépe pochopit vaše prostředí, aby v budoucnu přidal další možnosti optimalizace, nebo vám pomůže při odstraňování potíží.
+   
 5. Klikněte na **Confirm** (Potvrdit).
 6. Po kliknutí na **Potvrdit** se podívejte na stav na stránce Lokality VPN. Stav lokality se změní ze **Zřizování** na **Zřízeno**.
 
@@ -83,7 +88,7 @@ Rozbočovače by se obecně měly přidružovat k lokalitám ve stejné oblasti 
 
 ## <a name="vnet"></a>5. Vytvoření virtuální sítě
 
-Pokud ještě nemáte virtuální síť, můžete rychle vytvořit jeden pomocí Powershellu nebo na webu Azure portal. Pokud už virtuální síť máte, ověřte si, jestli splňuje povinná kritéria a nemá bránu virtuální sítě.
+Pokud ještě nemáte virtuální síť, můžete ji rychle vytvořit pomocí PowerShellu nebo Azure Portal. Pokud už virtuální síť máte, ověřte si, jestli splňuje povinná kritéria a nemá bránu virtuální sítě.
 
 [!INCLUDE [Create a virtual network](../../includes/virtual-wan-tutorial-vnet-include.md)]
 
@@ -101,7 +106,7 @@ V tomto kroku vytvoříte partnerské připojení mezi rozbočovačem a určitou
     * **Virtual network** (Virtuální síť) – vyberte virtuální síť, kterou chcete připojit k tomuto rozbočovači. Virtuální síť nesmí mít existující bránu virtuální sítě.
 4. Kliknutím na **OK** vytvořte partnerské propojení.
 
-## <a name="device"></a>7. Stažení konfigurace zařízení VPN
+## <a name="device"></a>7. Stáhnout konfiguraci sítě VPN
 
 Nakonfigurujte místní zařízení VPN pomocí konfigurace zařízení VPN.
 
@@ -115,7 +120,7 @@ Nakonfigurujte místní zařízení VPN pomocí konfigurace zařízení VPN.
 Konfigurační soubor zařízení obsahuje nastavení, které se má použít při konfiguraci místního zařízení VPN. Při prohlížení souboru si všimněte následujících informací:
 
 * **vpnSiteConfiguration** – tato část udává podrobnosti o zařízení nastaveném jako lokalita, která se připojuje k virtuální síti WAN. Obsahuje název a veřejnou IP adresu zařízení pobočky.
-* **vpnSiteConnections -** Tato část obsahuje informace o následující nastavení:
+* **vpnSiteConnections –** V této části najdete informace o následujících nastaveních:
 
     * **Adresní prostor** virtuální sítě virtuálních rozbočovačů<br>Příklad:
  
@@ -127,7 +132,7 @@ Konfigurační soubor zařízení obsahuje nastavení, které se má použít p�
          ```
         "ConnectedSubnets":["10.2.0.0/16","10.30.0.0/16"]
          ```
-    * **IP adresy** brány sítě VPN virtuálního rozbočovače. Protože každé připojení Brána VPN se skládá ze dvou tunelů v konfiguraci aktivní aktivní, zobrazí se vám obě IP adresy uvedené v tomto souboru. V tomto příkladu vidíte pro každou lokalitu položky Instance0 a Instance1.<br>Příklad:
+    * **IP adresy** brány sítě VPN virtuálního rozbočovače. Vzhledem k tomu, že každé připojení vpngateway se skládá ze dvou tunelů v konfiguraci aktivní-aktivní, zobrazí se obě IP adresy uvedené v tomto souboru. V tomto příkladu vidíte pro každou lokalitu položky Instance0 a Instance1.<br>Příklad:
 
         ``` 
         "Instance0":"104.45.18.186"
@@ -270,7 +275,7 @@ Vytvořte připojení pro monitorování komunikace mezi virtuálním počítač
 
 ## <a name="cleanup"></a>11. Vyčištění prostředků
 
-Pokud už tyto prostředky nepotřebujete, můžete použít [odebrat AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) k odebrání skupiny prostředků a všech prostředků, které obsahuje. Položku myResourceGroup nahraďte názvem vaší skupiny prostředků a spusťte následující příkaz PowerShellu:
+Pokud už tyto prostředky nepotřebujete, můžete k odebrání skupiny prostředků a všech prostředků, které obsahuje, použít [příkaz Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) . Položku myResourceGroup nahraďte názvem vaší skupiny prostředků a spusťte následující příkaz PowerShellu:
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name myResourceGroup -Force

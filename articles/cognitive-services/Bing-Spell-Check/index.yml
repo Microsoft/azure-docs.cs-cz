@@ -7,7 +7,7 @@ metadata:
   description: 'Naučte se používat rozhraní API Bingu pro kontrolu pravopisu k získání navržených oprav pro textové dokumenty. Kurzy vám ukážou, jak vytvářet aplikace, které toto rozhraní API používají.'
   services: cognitive-services
   author: aahill
-  manager: cgronlun
+  manager: nitinme
   ms.service: cognitive-services
   ms.subservice: bing-spell-check
   ms.tgt_pltfrm: na

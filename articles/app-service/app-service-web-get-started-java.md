@@ -15,13 +15,13 @@ ms.devlang: Java
 ms.topic: quickstart
 ms.date: 05/29/2019
 ms.author: jafreebe
-ms.custom: mvc
-ms.openlocfilehash: 1e25f65cf7ec52b4a58386843a1d2f5796c66e65
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.custom: mvc, seo-java-july2019
+ms.openlocfilehash: 2af33976a3c1d1458136a5d91d51c656ede2d343
+ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68297362"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68514099"
 ---
 # <a name="quickstart-create-a-java-app-in-app-service"></a>Rychlý start: Vytvoření aplikace Java v App Service
 
@@ -125,7 +125,7 @@ Po dokončení nasazení přejděte ve webovém prohlížeči pomocí následuj�
 
 [!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
 > [Azure pro vývojáře v jazyce Java – prostředky](/java/azure/)

@@ -1,164 +1,140 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory s ADP | Dokumentace Microsoftu'
-description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a ADP.
+title: 'Kurz: Azure Active Directory integrace s ADP | Microsoft Docs'
+description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a ADP.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: daveba
+manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 7be5331b-0481-48f7-9d6b-619dfec657e1
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 01/04/2019
+ms.date: 07/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ae7f47fcbdf61caa95e49a34bcfd093d3370f769
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1597a4ca9cac7ba3885e863502f156d4c83aeed1
+ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67107303"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68516388"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-adp"></a>Kurz: Integrace Azure Active Directory s ADP
+# <a name="tutorial-integrate-adp-with-azure-active-directory"></a>Kurz: Integrace ADP s Azure Active Directory
 
-V tomto kurzu se dozvíte, jak integrovat ADP s Azure Active Directory (Azure AD).
-ADP integraci se službou Azure AD poskytuje následující výhody:
+V tomto kurzu se naučíte integrovat ADP s Azure Active Directory (Azure AD). Když ve službě Azure AD integrujete ADP, můžete:
 
-* Můžete řídit ve službě Azure AD, který má přístup k ADP.
-* Můžete povolit uživatelům být automaticky přihlášeni k ADP (Single Sign-On) s jejich účty Azure AD.
-* Můžete spravovat své účty na jediném místě – na webu Azure portal.
+* Řízení ve službě Azure AD, která má přístup k ADP.
+* Umožněte uživatelům, aby se do ADP automaticky přihlásili pomocí svých účtů Azure AD.
+* Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Konfigurace integrace Azure AD s ADP, potřebujete následující položky:
+Chcete-li začít, potřebujete následující položky:
 
-* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat měsíční zkušební verze [zde](https://azure.microsoft.com/pricing/free-trial/)
-* ADP jednotného přihlašování povolená předplatného
+* Předplatné služby Azure AD. Pokud předplatné nemáte, můžete získat [bezplatný účet](https://azure.microsoft.com/free/).
+* Předplatné s povoleným jednotným přihlašováním (SSO) ADP.
 
 ## <a name="scenario-description"></a>Popis scénáře
 
-V tomto kurzu konfigurace a testování v testovacím prostředí Azure AD jednotného přihlašování.
+V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
-* Podporuje ADP **IDP** jednotné přihlašování zahájené pomocí
+* ADP podporuje jednotné přihlašování (SSO) iniciované **IDP**
 
-## <a name="adding-adp-from-the-gallery"></a>Přidání ADP z Galerie
+## <a name="adding-adp-from-the-gallery"></a>Přidávání ADP z Galerie
 
-Konfigurace integrace ADP do služby Azure AD, budete muset přidat ADP z Galerie na váš seznam spravovaných aplikací SaaS.
+Pokud chcete nakonfigurovat integraci ADP do Azure AD, musíte do seznamu spravovaných aplikací SaaS přidat ADP z galerie.
 
-**Chcete-li přidat ADP z galerie, postupujte následovně:**
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účtu Microsoft.
+1. V levém navigačním podokně vyberte službu **Azure Active Directory** .
+1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace**.
+1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
+1. V části **Přidat z Galerie** zadejte do vyhledávacího pole text **ADP** .
+1. Na panelu výsledků vyberte **ADP** a pak aplikaci přidejte. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 
-1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
-
-    ![Tlačítko Azure Active Directory](common/select-azuread.png)
-
-2. Přejděte do **podnikové aplikace** a pak vyberte **všechny aplikace** možnost.
-
-    ![V okně podnikové aplikace](common/enterprise-applications.png)
-
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
-
-    ![Tlačítko nové aplikace](common/add-new-app.png)
-
-4. Do vyhledávacího pole zadejte **ADP**vyberte **ADP** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
-
-     ![ADP v seznamu výsledků](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
 
-V této části, konfigurace a testování služby Azure AD jednotné přihlašování s ADP podle testu uživateli **Britta Simon**.
-Pro jednotné přihlašování pro práci je potřeba navázat vztah odkazu mezi uživatele služby Azure AD a související uživatelské v ADP.
+Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí ADP pomocí testovacího uživatele s názvem **B. Simon**. Aby jednotné přihlašování fungovalo, musíte v e-mailu vytvořit vztah propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v části ADP.
 
-Nakonfigurovat a otestovat Azure AD jednotné přihlašování s ADP, které potřebujete k dokončení následujících stavebních bloků:
+Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí ADP, dokončete následující stavební bloky:
 
-1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
-2. **[Konfigurace ADP Single Sign-On](#configure-adp-single-sign-on)**  – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
-3. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
-5. **[Vytvořit testovacího uživatele ADP](#create-adp-test-user)**  – Pokud chcete mít protějšek Britta Simon ADP, který je propojený s Azure AD reprezentace uživatele.
-6. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
+1. **[NAKONFIGURUJTE jednotné přihlašování Azure AD](#configure-azure-ad-sso)** – umožníte uživatelům používat tuto funkci.
+2. **[Nakonfigurujte jednotné přihlašování ADP](#configure-adp-sso)** – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
+3. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí B. Simon.
+4. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – Pokud chcete povolit B. Simon používat jednotné přihlašování Azure AD.
+5. **[Vytvořte testovacího uživatele ADP](#create-adp-test-user)** , abyste měli protějšek B. Simon ve ADP, který je propojený s reprezentací uživatele Azure AD.
+6. **[Test SSO](#test-sso)** – ověřte, zda konfigurace funguje.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
+### <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování Azure AD
 
-V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure portal.
+Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal.
 
-Ke konfiguraci Azure AD jednotné přihlašování s ADP, proveďte následující kroky:
-
-1. Na webu Azure Portal na **ADP** stránky integrace aplikace, klikněte na **karta Vlastnosti** a proveďte následující kroky: 
+1. V Azure Portal na stránce integrace aplikace **ADP** klikněte na **kartu vlastnosti** a proveďte následující kroky: 
 
     ![Vlastnosti jednotného přihlašování](./media/adpfederatedsso-tutorial/tutorial_adp_prop.png)
 
-    a. Nastavte **mohou se uživatelé přihlásit** hodnota pro pole **Ano**.
+    a. Nastavte hodnotu pole **povoleno pro uživatele na** možnost **Ano**.
 
-    b. Kopírování **adresa URL portálu User access** a vložte ji **část konfigurovat přihlašovací adresa URL**, což je vysvětleno dále v tomto kurzu.
+    b. Zkopírujte **adresu URL přístupu uživatele** a musíte ji vložit v **části konfigurace přihlašovacích adres URL**, která je vysvětlena dále v tomto kurzu.
 
-    c. Nastavte **přiřazení uživatelů povinné** hodnota pro pole **Ano**.
+    c. Nastavte hodnotu pole **vyžadováno přiřazení uživatele** na **Ano**.
 
-    d. Nastavte **viditelné pro uživatele** hodnota pro pole **ne**.
+    d. Nastavte hodnotu pole **viditelná pro uživatele** na **ne**.
 
-2. V [webu Azure portal](https://portal.azure.com/)na **ADP** integrace stránce aplikace vyberte **jednotného přihlašování**.
+1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikace **ADP** najděte část **Správa** a vyberte **jednotné přihlašování**.
+1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu Upravit/pero pro **základní konfiguraci SAML** a upravte nastavení.
 
-    ![Nakonfigurovat jednotné přihlašování – odkaz](common/select-sso.png)
+   ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
-3. Na **vybrat jedinou metodu přihlašování** dialogového okna, vyberte **SAML/WS-Fed** chcete povolit jednotné přihlašování.
+1. V části **základní konfigurace SAML** proveďte následující kroky:
 
-    ![Jednotné přihlašování režim výběru](common/select-saml-option.png)
+    Do textového pole **identifikátor (ID entity)** zadejte adresu URL:`https://fed.adp.com`
 
-4. Na **nastavte si jednotné přihlašování pomocí SAML** klikněte na **upravit** ikony otevřete **základní konfiguraci SAML** dialogového okna.
+5. Aplikace ADP očekává kontrolní výrazy SAML v určitém formátu, což vyžaduje přidání mapování vlastních atributů do konfigurace atributů tokenu SAML. Následující snímek obrazovky ukazuje seznam výchozích atributů. Kliknutím na tlačítko **Upravit** ikonu otevřete dialogové okno atributy uživatele. Název deklarace identity bude vždycky **PersonImmutableID** a hodnota, kterou jsme ukázali, že se má mapovat s **ČísloZaměstnance**.
 
-    ![Upravit konfiguraci základní SAML](common/edit-urls.png)
-
-5. Na **základní konfiguraci SAML** části, proveďte následující kroky:
-
-    ![ADP domény a adresy URL jednotného přihlašování – informace](common/idp-identifier.png)
-
-    V **identifikátor (Entity ID)** textové pole, zadejte adresu URL:  `https://fed.adp.com`
-
-6. ADP aplikace očekává, že kontrolní výrazy SAML v určitém formátu. Nakonfigurujte následující deklarace identity pro tuto aplikaci. Můžete spravovat hodnotami těchto atributů z **atributy uživatele** části na stránce aplikací pro integraci. Na **nastavte si jednotné přihlašování pomocí SAML** klikněte na **upravit** tlačítko Otevřít **atributy uživatele** dialogového okna. Název deklarace bude vždy **"PersonImmutableID"** a hodnotu z nich jsme zjištěno, že na mapu s **employeeid**. 
-
-    Mapování uživatelů ze služby Azure AD k ADP se provede na **employeeid** , ale to můžete namapovat na jinou hodnotu na základě svého nastavení aplikace. Proto prosím práci s [tým podpory ADP](https://www.adp.com/contact-us/overview.aspx) nejprve k použijte správný identifikátor uživatele a mapování danou hodnotu s **"PersonImmutableID"** deklarací identity.
+    Mapování uživatele z Azure AD na ADP bude provedeno v poli **ČísloZaměstnance** , ale můžete ho namapovat na jinou hodnotu na základě nastavení aplikace. Aby bylo možné použít správný identifikátor uživatele a namapovat tuto hodnotu s deklarací **PersonImmutableID** , pracujte nejprve s [týmem podpory ADP](https://www.adp.com/contact-us/overview.aspx) .
 
     ![image](common/edit-attribute.png)
 
-7. V **deklarace identity uživatelů** části na **atributy uživatele** dialogovém okně Upravit deklarace identity pomocí **ikonu pro úpravu** nebo přidání deklarace identity pomocí **přidat novou deklaraci**ke konfiguraci atribut tokenu SAML, jak je znázorněno na obrázku výše a proveďte následující kroky:
-    
-    | Name | Zdrojový atribut | 
-    | ---------------| --------------- |
+6. Kromě výše očekává aplikace ADP několik dalších atributů, které se vrátí zpátky v odpovědi SAML. V části deklarace identity uživatelů v dialogovém okně atributy uživatele proveďte následující kroky pro přidání atributu tokenu SAML, jak je znázorněno v následující tabulce: 
+
+    | Name | Zdrojový atribut|
+    | ---------------| --------- |
     | PersonImmutableID  | user.employeeid |
 
-    a. Klikněte na tlačítko **přidat novou deklaraci** otevřít **spravovat deklarace identity uživatelů** dialogového okna.
+    a. Kliknutím na **Přidat novou deklaraci identity** otevřete dialogové okno **Spravovat deklarace identity uživatelů** .
 
-    ![image](common/new-save-attribute.png)
+    b. Do textového pole **název** zadejte název atributu zobrazeného pro tento řádek.
 
-    ![image](common/new-attribute-details.png)
+    c. Ponechte **obor názvů** prázdný.
 
-    b. V **název** textového pole zadejte název atributu, který je zobrazený pro tento řádek.
+    d. Jako **atribut**vyberte zdroj.
 
-    c. Nechte **Namespace** prázdné.
+    e. V seznamu **zdrojový atribut** zadejte hodnotu atributu zobrazenou pro tento řádek.
 
-    d. Vyberte zdroj jako **atribut**.
-
-    e. Z **zdrojový atribut** seznamu, zadejte hodnotu atributu zobrazený pro tento řádek.
-
-    f. Klikněte na tlačítko **Ok**
-
-    g. Klikněte na **Uložit**.
+    f. Klikněte na **Uložit**.
 
     > [!NOTE] 
-    > Než budete moct nakonfigurovat kontrolní výraz SAML, budete muset požádat vašeho [tým podpory ADP](https://www.adp.com/contact-us/overview.aspx) a žádat o hodnotu identifikátor atributu jedinečného uživatele pro vašeho tenanta. Ke konfiguraci vlastních deklarací identity pro vaše aplikace tuto hodnotu budete potřebovat. 
+    > Než budete moct nakonfigurovat kontrolní výraz SAML, musíte se obrátit na [tým podpory ADP](https://www.adp.com/contact-us/overview.aspx) a požádat o hodnotu jedinečného atributu identifikátoru uživatele pro vašeho tenanta. Tuto hodnotu budete potřebovat ke konfiguraci vlastní deklarace identity pro vaši aplikaci. 
 
-8. Na **nastavte si jednotné přihlašování pomocí SAML** stránku, **podpisový certifikát SAML** klikněte na tlačítko **Stáhnout** ke stažení **kód XML metadat federace**  z se zadanými možnostmi podle vašich požadavků a uložit je ve vašem počítači.
+4. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** Najděte **XML metadata federace** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do svého počítače.
 
     ![Odkaz ke stažení certifikátu](common/metadataxml.png)
 
-### <a name="configure-adp-single-sign-on"></a>Konfigurace ADP jednotné přihlašování
+6. V části **nastavit ADP** zkopírujte na základě vašeho požadavku příslušné adresy URL.
 
-Ke konfiguraci jednotného přihlašování na **ADP** straně, budete muset nahrát na stažený **soubor XML s metadaty** na [ADP webu](https://adpfedsso.adp.com/public/login/index.fcc).
+    ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
+
+### <a name="configure-adp-sso"></a>Konfigurace jednotného přihlašování ADP
+
+Ke konfiguraci jednotného přihlašování na straně **ADP** je potřeba nahrát stažené **metadata XML** na [webu ADP](https://adpfedsso.adp.com/public/login/index.fcc).
 
 > [!NOTE]  
 > Tento proces může trvat několik dní.
@@ -166,147 +142,114 @@ Ke konfiguraci jednotného přihlašování na **ADP** straně, budete muset nah
 ### <a name="configure-your-adp-services-for-federated-access"></a>Konfigurace služby ADP pro federovaný přístup
 
 >[!Important]
-> Vaši zaměstnanci, kteří požadují federovaný přístup k vašim službám ADP musí být přiřazena ADP služby App Service a následně, uživatelé musí přiřadit ke konkrétní službě ADP.
-Přijetí potvrzení od zástupce ADP nakonfigurujte pro řízení přístupu uživatele do konkrétní služby ADP ADP služeb a přiřazovat a spravovat uživatele.
+> Zaměstnanci, kteří vyžadují federovaný přístup ke službám ADP, musí být přiřazeni k aplikaci služby ADP a následně musí být uživatelé přiřazeni ke konkrétní službě ADP.
+Po přijetí potvrzení od zástupce ADP nakonfigurujte vaše služby ADP a přiřaďte/Spravujte uživatele, abyste mohli řídit přístup uživatelů ke konkrétní službě ADP.
 
-1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účtu Microsoft.
+1. V levém navigačním podokně vyberte službu **Azure Active Directory** .
+1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace**.
+1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
+1. V části **Přidat z Galerie** zadejte do vyhledávacího pole text **ADP** .
+1. Na panelu výsledků vyberte **ADP** a pak aplikaci přidejte. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
+1. V Azure Portal na stránce integrace aplikace **ADP** klikněte na **kartu vlastnosti** a proveďte následující kroky:  
 
-    ![Tlačítko Azure Active Directory](common/select-azuread.png)
+    ![Propojené vlastnosti jednotného přihlašování](./media/adpfederatedsso-tutorial/tutorial_adp_linkedproperties.png)
 
-2. Přejděte do **podnikové aplikace** a pak vyberte **všechny aplikace** možnost.
+    a.  Nastavte hodnotu pole **povoleno pro uživatele na** možnost **Ano**.
 
-    ![V okně podnikové aplikace](common/enterprise-applications.png)
+    b.  Nastavte hodnotu pole **vyžadováno přiřazení uživatele** na **Ano**.
 
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
+    c.  Nastavte hodnotu pole **viditelné pro uživatele** na **Ano**.
 
-    ![Tlačítko nové aplikace](common/add-new-app.png)
+1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikace **ADP** najděte část **Správa** a vyberte **jednotné přihlašování**.
 
-4. Do vyhledávacího pole zadejte **ADP**vyberte **ADP** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
+1. V dialogovém okně **Vyberte metodu jednotného přihlašování** vyberte možnost **režim** jako **propojený**. propojení aplikace s **ADP**.
 
-     ![ADP v seznamu výsledků](common/search-new-app.png)
+    ![Propojení s jednotným přihlašováním](./media/adpfederatedsso-tutorial/tutorial_adp_linked.png)
 
-5. Na webu Azure Portal na vaší **ADP** stránky integrace aplikace, klikněte na **karta Vlastnosti** a proveďte následující kroky:  
+1. Přejděte do části **konfigurace přihlašovací adresy URL** , proveďte následující kroky:
 
-    ![Jednotné přihlašování propojené vlastnosti](./media/adpfederatedsso-tutorial/tutorial_adp_linkedproperties.png)
+    ![Prop – jednotné přihlašování](./media/adpfederatedsso-tutorial/tutorial_adp_linkedsignon.png)
 
-    a.  Nastavte **mohou se uživatelé přihlásit** hodnota pro pole **Ano**.
-
-    b.  Nastavte **přiřazení uživatelů povinné** hodnota pro pole **Ano**.
-
-    c.  Nastavte **viditelné pro uživatele** hodnota pro pole **Ano**.
-
-6. V [webu Azure portal](https://portal.azure.com/)na **ADP** integrace stránce aplikace vyberte **jednotného přihlašování**.
-
-    ![Nakonfigurovat jednotné přihlašování – odkaz](common/select-sso.png)
-
-7. Na **vybrat jedinou metodu přihlašování** dialogového okna, vyberte **režimu** jako **propojené**. propojit aplikaci **ADP**.
-
-    ![Jednotné přihlašování propojené](./media/adpfederatedsso-tutorial/tutorial_adp_linked.png)
-
-8. Přejděte **konfigurovat přihlašovací adresa URL** části, proveďte následující kroky:
-
-    ![Prop jednotné přihlašování](./media/adpfederatedsso-tutorial/tutorial_adp_linkedsignon.png)
-
-    a. Vložit **adresa URL portálu User access**, který jste zkopírovali z výše **karta Vlastnosti** (z hlavní ADP aplikace).
+    a. Vložte **adresu URL přístupu uživatele**, kterou jste zkopírovali z **karty vlastností** výše (z hlavní aplikace ADP).
                                                              
-    b. Následují 5 aplikace, které podporují různé **adresy URL stavu Relay**. Je nutné přidat odpovídající **Relay stavu URL** ručně na hodnotu pro konkrétní aplikaci **adresa URL portálu User access**.
+    b. Níže jsou uvedené 5 aplikací, které podporují různé **adresy URL stavu přenosu**. Do **adresy URL přístupu uživatele**musíte ručně připojit příslušnou hodnotu **adresy URL stavu přenosu** konkrétní aplikace.
     
-    * **Pracovníci ADP nyní**
+    * **Nyní můžete pracovní síly ADP**
         
-        `<User access URL>?relaystate=https://fed.adp.com/saml/fedlanding.html?WFN`
+        `<User access URL>&relaystate=https://fed.adp.com/saml/fedlanding.html?WFN`
 
-    * **Pracovníci ADP teď Vylepšená doba**
+    * **Pracovní síly ADP teď zvyšují čas**
         
-        `<User access URL>?relaystate=https://fed.adp.com/saml/fedlanding.html?EETDC2`
+        `<User access URL>&relaystate=https://fed.adp.com/saml/fedlanding.html?EETDC2`
     
     * **ADP Vantage HCM**
         
-        `<User access URL>?relaystate=https://fed.adp.com/saml/fedlanding.html?ADPVANTAGE`
+        `<User access URL>&relaystate=https://fed.adp.com/saml/fedlanding.html?ADPVANTAGE`
 
     * **ADP Enterprise HR**
 
-        `<User access URL>?relaystate=https://fed.adp.com/saml/fedlanding.html?PORTAL`
+        `<User access URL>&relaystate=https://fed.adp.com/saml/fedlanding.html?PORTAL`
 
     * **MyADP**
 
-        `<User access URL>?relaystate=https://fed.adp.com/saml/fedlanding.html?REDBOX`
+        `<User access URL>&relaystate=https://fed.adp.com/saml/fedlanding.html?REDBOX`
 
-9. **Uložit** provedené změny.
+9. **Uložte** změny.
 
-10. Přijetí potvrzení od zástupce ADP začněte test s uživateli jednu nebo dvě.
+10. Po přijetí potvrzení od zástupce ADP spusťte test s jedním nebo dvěma uživateli.
 
-    a. Přiřadíte několik uživatelů ve službě ADP aplikaci otestovat federovaný přístup.
+    a. K otestování federovaného přístupu přiřaďte k aplikaci služby ADP několik uživatelů.
 
-    b. Test je úspěšný, když uživatelé přístup k app service ADP v galerii a jejich ADP službě se můžete dostat.
+    b. Test je úspěšný, když uživatelé přistupují k aplikaci služby ADP v galerii a mají přístup ke službě ADP.
  
-11. Na potvrzení test proběhl úspěšně přiřaďte federované ADP služby pro jednotlivé uživatele nebo skupiny uživatelů, které je vysvětlen později v tomto kurzu a zavedení na svoje zaměstnance.
- 
-### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD 
+11. Po potvrzení úspěšného testu přiřaďte službu federovaného ADP jednotlivým uživatelům nebo skupinám uživatelů, které jsou vysvětleny dále v kurzu a převeďte je do vašich zaměstnanců.
 
-Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
+### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
 
-1. Na webu Azure Portal, v levém podokně vyberte **Azure Active Directory**vyberte **uživatelé**a pak vyberte **všichni uživatelé**.
+V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
-    !["Uživatele a skupiny" a "Všechny uživatele" odkazy](common/users.png)
-
-2. Vyberte **nového uživatele** v horní části obrazovky.
-
-    ![Tlačítko Nový uživatel](common/new-user.png)
-
-3. Ve vlastnosti uživatele proveďte následující kroky.
-
-    ![Dialogové okno uživatele](common/user-properties.png)
-
-    a. V **název** zadat **BrittaSimon**.
-  
-    b. V **uživatelské jméno** typ pole **brittasimon\@yourcompanydomain.extension**  
-    Například BrittaSimon@contoso.com.
-
-    c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.
-
-    d. Klikněte na možnost **Vytvořit**.
+1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. Vyberte **nového uživatele** v horní části obrazovky.
+1. Ve vlastnostech **uživatele** proveďte následující kroky:
+   1. Do pole **Název** zadejte `B.Simon`.  
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
+   1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
+   1. Klikněte na možnost **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
-V této části je povolit Britta Simon k udělení přístupu k ADP použití Azure jednotného přihlašování.
+V této části povolíte B. Simon pro použití jednotného přihlašování Azure tím, že udělíte přístup k ADP.
 
-1. Na webu Azure Portal, vyberte **podnikové aplikace**vyberte **všechny aplikace**a pak vyberte **ADP**.
+1. V Azure Portal vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. V seznamu aplikace vyberte možnost **ADP**.
+1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
 
-    ![Okno aplikace organizace](common/enterprise-applications.png)
+   ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
 
-2. V seznamu aplikace zadejte a vyberte **ADP**.
+1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
-    ![Odkaz ADP v seznamu aplikací](common/all-applications.png)
+    ![Odkaz Přidat uživatele](common/add-assign-user.png)
 
-3. V nabídce na levé straně vyberte **uživatelů a skupin**.
+1. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **B. Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+1. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+1. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
 
-    ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
+### <a name="create-adp-test-user"></a>Vytvořit testovacího uživatele ADP
 
-4. Klikněte na tlačítko **přidat uživatele** tlačítko a pak vyberte **uživatelů a skupin** v **přidat přiřazení** dialogového okna.
+Cílem této části je vytvořit uživatele s názvem B. Simon v ADP. Pracujte s [týmem podpory ADP](https://www.adp.com/contact-us/overview.aspx) a přidejte uživatele do účtu ADP. 
 
-    ![Podokno Přidat přiřazení](common/add-assign-user.png)
-
-5. V **uživatelů a skupin** dialogové okno Vybrat **Britta Simon** v seznamu uživatelů, klikněte **vyberte** tlačítko v dolní části obrazovky.
-
-6. Pokud očekáváte libovolnou hodnotu role v kontrolní výraz SAML a potom v **vybrat roli** dialogové okno vybrat vhodnou roli pro uživatele ze seznamu, klikněte **vyberte** tlačítko v dolní části obrazovky.
-
-7. V **přidat přiřazení** dialogové okno kliknutím **přiřadit** tlačítko.
-
-### <a name="create-adp-test-user"></a>Vytvoření ADP testovacího uživatele
-
-Cílem této části je vytvořte uživatele Britta Simon v ADP. Práce s [tým podpory ADP](https://www.adp.com/contact-us/overview.aspx) k přidání uživatelů v účtu ADP. 
-
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
+### <a name="test-sso"></a>Test SSO 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
-Po kliknutí na dlaždici ADP na přístupovém panelu, můžete by měl být automaticky přihlášeni k ADP, u kterého nastavíte jednotné přihlašování. Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když kliknete na dlaždici ADP na přístupovém panelu, měli byste se automaticky přihlásit ke ADP, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další prostředky
+## <a name="additional-resources"></a>Další zdroje
 
-- [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

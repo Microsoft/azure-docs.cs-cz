@@ -6,7 +6,7 @@ metadata:
   description: 'Rozhraní API Detektoru anomálií můžete využít k monitorování dat v čase a k detekci anomálií s využitím strojového učení. Získáte přehled o vašich darech, bez ohledu na objem, obor nebo scénář.'
   services: cognitive-services
   author: aahill
-  manager: cgronlun
+  manager: nitinme
   layout: LandingPage
   ms.service: cognitive-services
   ms.tgt_pltfrm: na

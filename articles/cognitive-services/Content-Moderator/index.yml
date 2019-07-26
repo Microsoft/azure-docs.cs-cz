@@ -6,7 +6,7 @@ metadata:
   description: 'Naučte se využívat Content Moderator ke kontrole potenciálně urážlivého, rizikového nebo jinak nežádoucí materiálu v textu, obrázcích a videích.'
   services: cognitive-services
   author: nitinme
-  manager: cgronlun
+  manager: nitinme
   ms.service: cognitive-services
   ms.subservice: content-moderator
   ms.tgt_pltfrm: na

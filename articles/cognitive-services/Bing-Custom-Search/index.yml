@@ -6,7 +6,7 @@ metadata:
   description: Naučte se využívat rozhraní API a portál Vlastní vyhledávání Bingu k vytváření vlastních vyhledávacích prostředí.
   services: cognitive-services
   author: v-deken
-  manager: cgronlun
+  manager: nitinme
   layout: LandingPage
   ms.service: cognitive-services
   ms.tgt_pltfrm: na

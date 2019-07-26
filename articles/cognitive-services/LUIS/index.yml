@@ -6,7 +6,7 @@ metadata:
   title: 'Služba Language Understanding (LUIS) – kurzy, rychlá zprovoznění, reference k rozhraní API'
   description: 'Zjistěte, jak využít službu Language Understanding k tomu, aby vaší aplikaci umožnila pochopit, co lidé vlastními slovy chtějí.'
   author: nitinme
-  manager: cgronlun
+  manager: nitinme
   ms.service: cognitive-services
   ms.tgt_pltfrm: na
   ms.devlang: na

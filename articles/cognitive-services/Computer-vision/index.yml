@@ -6,7 +6,7 @@ metadata:
   description: 'Naučte se využívat k počítačové zpracování obrazu ke zpracování obrázků a vrácení informací. Kurzy vám ukážou, jak vytvářet aplikace, které toto rozhraní API používají.'
   services: cognitive-services
   author: nitinme
-  manager: cgronlun
+  manager: nitinme
   ms.service: cognitive-services
   ms.subservice: computer-vision
   ms.tgt_pltfrm: na

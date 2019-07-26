@@ -1,111 +1,111 @@
 ---
-title: 'Kurz: Použít vlastní logo detektor k rozpoznání Azure services – Custom Vision'
+title: 'Kurz: Použití vlastního detektoru loga k rozpoznávání služeb Azure – Custom Vision'
 titlesuffix: Azure Cognitive Services
-description: V tomto kurzu přesune se krokování přes ukázkovou aplikaci, která používá Azure Custom Vision jako součást scénáře detekce logo. Dozvíte se, jak je využívat Custom Vision s ostatními součástmi dodávat aplikace začátku do konce.
+description: V tomto kurzu provedete ukázkovou aplikaci, která jako součást scénáře detekce loga používá službu Azure Custom Vision. Přečtěte si, jak se používá Custom Vision s dalšími komponentami k zajištění ucelené aplikace.
 services: cognitive-services
 author: PatrickFarley
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: b4b10591069b71a4e70769f5bdcd6149768c5007
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: ab3dc89b90636c90564803c6a91350a75c3181cd
+ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67604025"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68517079"
 ---
-# <a name="tutorial-recognize-azure-service-logos-in-camera-pictures"></a>Kurz: Rozpoznat loga služeb Azure v fotoaparátu
+# <a name="tutorial-recognize-azure-service-logos-in-camera-pictures"></a>Kurz: Rozpoznání loga služby Azure v obrázcích na kameře
 
-V tomto kurzu prozkoumáte ukázkovou aplikaci, která používá Azure Custom Vision jako součást většího scénáře. Zřizování Visual AI aplikace Xamarin.Forms app pro mobilní platformy, analyzuje obrázky fotoaparát služby Azure log a pak nasadí skutečné služby k účtu uživatele Azure. Zde se dozvíte, jak používá vlastní vize ve spolupráci s ostatními součástmi poskytovat užitečné aplikace začátku do konce. Můžete spustit scénář celá aplikace sami, nebo můžete dokončit pouze část vizi vlastní nastavení a prozkoumejte, jak se aplikace používá.
+V tomto kurzu se seznámíte s ukázkovou aplikací, která používá Azure Custom Vision jako součást většího scénáře. Aplikace pro vizuální zřizování AI, aplikace Xamarin. Forms pro mobilní platformy, analyzuje obrázky kamery s logy služby Azure a pak nasadí skutečné služby na účet Azure uživatele. V tomto článku se dozvíte, jak používá Custom Vision ve spolupráci s dalšími komponentami k zajištění užitečné ucelené aplikace. Můžete spustit celý scénář aplikace pro sebe nebo můžete dokončit pouze Custom Vision část nastavení a prozkoumat, jak ji aplikace používá.
 
 V tomto kurzu se dozvíte, jak:
 
 > [!div class="checklist"]
-> - Vytvořte vlastní objekt detektor rozpoznat loga služby Azure.
-> - Připojte svou aplikaci k Azure počítačové zpracování obrazu a Custom Vision.
-> - Vytvoření instančního objektu účtu služby Azure k nasazení služby Azure z aplikace.
+> - Vytvořte vlastní objektový detektor pro rozpoznávání log Services Azure.
+> - Připojte svoji aplikaci k Azure Počítačové zpracování obrazu a Custom Vision.
+> - Vytvoření účtu instančního objektu Azure pro nasazení služeb Azure z aplikace
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete. 
 
 ## <a name="prerequisites"></a>Požadavky
 
 - [Visual Studio 2017 nebo novější](https://www.visualstudio.com/downloads/)
-- Úlohy Xamarinu pro Visual Studio (viz [instalaci Xamarin](https://docs.microsoft.com/xamarin/cross-platform/get-started/installation/windows))
-- Se systémem iOS nebo emulátoru Androidu pro Visual Studio
-- [Rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli-windows?view=azure-cli-latest) (volitelné)
+- Úlohy Xamarin pro Visual Studio (viz [instalace Xamarin](https://docs.microsoft.com/xamarin/cross-platform/get-started/installation/windows))
+- Emulátor pro iOS nebo Android pro Visual Studio
+- Rozhraní příkazového [řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli-windows?view=azure-cli-latest) (volitelné)
 
-## <a name="get-the-source-code"></a>Získat zdrojový kód
+## <a name="get-the-source-code"></a>Získání zdrojového kódu
 
-Pokud chcete pomocí zadané webové aplikace, klonovat nebo stáhnout zdrojový kód aplikace z [Visual zřízení AI](https://github.com/Microsoft/AIVisualProvision) úložišti na Githubu. Otevřít *Source/VisualProvision.sln* souboru v sadě Visual Studio. Později upravíte některé soubory projektu, můžete tuto aplikaci spustit.
+Pokud chcete použít poskytnutou webovou aplikaci, naklonujte nebo Stáhněte zdrojový kód aplikace z úložiště AI pro [Visual](https://github.com/Microsoft/AIVisualProvision) Provisioning na GitHubu. Otevřete soubor *source/VisualProvision. sln* v aplikaci Visual Studio. Později upravíte některé soubory projektu, abyste mohli aplikaci spustit.
 
-## <a name="create-an-object-detector"></a>Vytvoření detektor objektu
+## <a name="create-an-object-detector"></a>Vytvoření detektoru objektu
 
-Přihlaste se k [webu Custom Vision](https://customvision.ai/) a vytvořte nový projekt. Zadejte projekt detekce objektů a používat Logo domény. To vám umožní službě použít algoritmus optimalizovaná pro zjišťování logo. 
+Přihlaste se k [webu Custom Vision](https://customvision.ai/) a vytvořte nový projekt. Zadejte projekt rozpoznávání objektů a použijte doménu loga; Tato akce umožní službě používat algoritmus optimalizovaný pro detekci loga. 
 
-![Okno Nový projekt na webu Custom Vision v prohlížeči Chrome](media/azure-logo-tutorial/new-project.png)
+![Okno New-Project na webu Custom Vision v prohlížeči Chrome](media/azure-logo-tutorial/new-project.png)
 
 ## <a name="upload-and-tag-images"></a>Nahrání a označení obrázků
 
-V dalším kroku učení algoritmu detekce logo nahrávání imagí Azure služba log a označit ručně. Úložiště AIVisualProvision obsahuje sadu trénovacích obrázků, které můžete použít. Na webu, vyberte **přidávat image** tlačítko **Trénovacích obrázků** kartu. Pak přejděte **dokumenty a obrázky/Training_DataSet** složky úložiště. Budete muset ručně označit loga každé Image, proto pokud jenom testujete tento projekt, je vhodné nahrát pouze podmnožinu bitové kopie. Nahrajte aspoň 15 výskyty jednotlivé značky, které chcete použít.
+V dalším kroku nahlaste algoritmus detekce loga nahráváním imagí loga služeb Azure a jejich ručním označením. Úložiště AIVisualProvision zahrnuje sadu školicích imagí, které můžete použít. Na webu vyberte tlačítko **Přidat obrázky** na kartě **školicích imagí** . Pak přejdete do složky **Documents/images/Training_DataSet** úložiště. Je nutné ručně označit loga v každém obrázku, takže pokud testujete pouze testování tohoto projektu, můžete chtít nahrát pouze podmnožinu imagí. Nahrajte aspoň 15 instancí každé značky, kterou plánujete použít.
 
-Po odeslání trénovacích obrázků, vyberte první z nich na displeji. Objeví se okno značek. Vykreslení polí a přiřazení značek pro obě loga každé Image. 
+Po nahrání školicích snímků vyberte na displeji první. Zobrazí se okno označování. Nakreslete pole a přiřaďte značky pro každé logo v každém obrázku. 
 
-![Logo označování na webu Custom Vision](media/azure-logo-tutorial/tag-logos.png)
+![Označení loga na webu Custom Vision](media/azure-logo-tutorial/tag-logos.png)
 
-Aplikace je nakonfigurováno pro práci s řetězci konkrétní značku. Definice v zjistíte *Source\VisualProvision\Services\Recognition\RecognitionService.cs* souboru:
+Aplikace je nakonfigurovaná tak, aby fungovala s konkrétními řetězci značek. Definice najdete v souboru *Source\VisualProvision\Services\Recognition\RecognitionService.cs* :
 
 [!code-csharp[Tag definitions](~/AIVisualProvision/Source/VisualProvision/Services/Recognition/RecognitionService.cs?range=18-33)]
 
-Po můžete označit image, přejděte vpravo na další značky. Jakmile skončíte, zavřete okno označení.
+Až označíte obrázek, načtěte vpravo a označte ho jako další. Po dokončení zavřete okno označování.
 
-## <a name="train-the-object-detector"></a>Trénování objekt detectoru
+## <a name="train-the-object-detector"></a>Naučit se detektor objektů
 
-V levém podokně, nastavte **značky** přepnout na **značkami** k zobrazení obrázků. Zvolte zelené tlačítko v horní části stránky pro trénování modelu. Algoritmus se trénování rozpoznat stejné značky v nových imagí. Taky otestujete na některé z vašich existujících imagí k vygenerování skóre přesnost modelu.
+V levém podokně nastavte **značky** na **označené** , aby se zobrazily obrázky. Pak vyberte zelené tlačítko v horní části stránky a prohlaste model. Algoritmus bude vlakem rozpoznávat stejné značky v nových obrázcích. Také otestuje model u některých z vašich stávajících imagí, aby vygenerovala hodnocení přesnosti.
 
-![Vize vlastní web na kartě Trénovacích obrázků. Na tomto snímku obrazovky je popsána tlačítko trénování](media/azure-logo-tutorial/train-model.png)
+![Web Custom Vision na kartě školicích imagí. Na tomto snímku obrazovky je tlačítko Výuka obrysové.](media/azure-logo-tutorial/train-model.png)
 
-## <a name="get-the-prediction-url"></a>Získat adresu URL predikcí
+## <a name="get-the-prediction-url"></a>Získat adresu URL předpovědi
 
-Po model se trénuje, jste připraveni k jeho integraci do vaší aplikace. Budete muset získat adresu URL koncového bodu (adresa váš model, který bude dotaz na aplikace) a předpovědi klíče (k udělení přístupu aplikací k předpovědi požadavky). Na **výkonu** kartu, vyberte **předpovědi URL** tlačítko v horní části stránky.
+Po vyškolení modelu jste připraveni ho integrovat do své aplikace. Budete muset získat adresu URL koncového bodu (adresu vašeho modelu, který bude aplikace dotazovat) a klíč předpovědi (pro udělení přístupu aplikace k požadavkům předpovědi). Na kartě **výkon** v horní části stránky vyberte tlačítko **Adresa URL předpovědi** .
 
-![Custom Vision webu, zobrazuje okno Prediction API, který zobrazuje adresu URL a klíč rozhraní API](media/azure-logo-tutorial/cusvis-endpoint.png)
+![Web Custom Vision zobrazující okno prediktivního rozhraní API, které zobrazuje adresu URL a klíč rozhraní API](media/azure-logo-tutorial/cusvis-endpoint.png)
 
-Zkopírujte adresu URL souboru obrázku a **předpovědi klíč** hodnota, která má odpovídající pole v *Source\VisualProvision\AppSettings.cs* souboru:
+Zkopírujte adresu URL souboru obrázku a hodnotu **předpovědi-Key** do příslušných polí v souboru *Source\VisualProvision\AppSettings.cs* :
 
 [!code-csharp[Custom Vision fields](~/AIVisualProvision/Source/VisualProvision/AppSettings.cs?range=22-26)]
 
-## <a name="examine-custom-vision-usage"></a>Zkontrolujte využití Custom Vision
+## <a name="examine-custom-vision-usage"></a>Kontrola využití Custom Vision
 
-Otevřít *Source/VisualProvision/Services/Recognition/CustomVisionService.cs* souboru a zjistěte, jak aplikace používá vaše Custom Vision key a koncového bodu adresy URL. **PredictImageContentsAsync** – metoda přijímá datový proud bajtů souboru obrázku spolu s zrušením tokenu (pro asynchronní úlohu správy), volá prediktivního rozhraní API Custom Vision a vrátí výsledek do predikce. 
+Otevřete soubor *source/VisualProvision/Services/Recognition/CustomVisionService. cs* , abyste viděli, jak aplikace používá vaši Custom Vision klíč a adresu URL koncového bodu. Metoda **PredictImageContentsAsync** přebírá bajtový datový proud obrázkového souboru spolu s tokenem zrušení (pro správu asynchronních úloh), volá rozhraní API prediktivního Custom Vision a vrátí výsledek předpovědi. 
 
 [!code-csharp[Custom Vision fields](~/AIVisualProvision/Source/VisualProvision/Services/Recognition/CustomVisionService.cs?range=12-28)]
 
-Tento výsledek má formu **PredictionResult** instance, které obsahuje seznam **předpovědi** instancí. A **předpovědi** obsahuje zjištěné značku a její ohraničující umístění pole na obrázku.
+Tento výsledek má podobu **PredictionResult** instance, která obsahuje seznam **předpovědních** instancí. **Předpověď** obsahuje zjištěnou značku a její umístění ohraničovacího rámečku v obrázku.
 
 [!code-csharp[Custom Vision fields](~/AIVisualProvision/Source/VisualProvision/Services/Recognition/Prediction.cs?range=3-12)]
 
-Další informace o způsobu, jakým aplikace zpracovává tato data, začínat **GetResourcesAsync** metody. Tato metoda je definována v *Source/VisualProvision/Services/Recognition/RecognitionService.cs* souboru.  
+Pokud chcete získat další informace o tom, jak aplikace zpracovává Tato data, začněte metodou **GetResourcesAsync** . Tato metoda je definována v souboru *source/VisualProvision/Services/Recognition/RecognitionService. cs* .  
 
-## <a name="add-computer-vision"></a>Přidat pro počítačové zpracování obrazu
+## <a name="add-computer-vision"></a>Přidat Počítačové zpracování obrazu
 
-Custom Vision část tohoto kurzu je dokončena. Pokud chcete aplikaci spustit, musíte integrovat službu pro počítačové zpracování obrazu. Aplikace používá funkce rozpoznávání textu pro počítačové zpracování obrazu k doplnění procesu zjišťování logo. Azure logo můžete rozpoznat podle jejího vzhledu *nebo* podle textu zobrazeny máte telefon po ruce. Na rozdíl od zpracování obrazu vlastní modely pro počítačové zpracování obrazu je které je předem vytrénované k provádění určitých operací imagí nebo videa.
+Custom Vision část tohoto kurzu jste dokončili. Pokud chcete aplikaci spustit, bude potřeba integrovat i službu Počítačové zpracování obrazu. Aplikace používá funkci rozpoznávání textu Počítačové zpracování obrazu k doplnění procesu zjišťování loga. Logo Azure může rozpoznat jeho vzhled *nebo* text, který se v blízkosti něj tiskne. Na rozdíl od Custom Vision modelů je Počítačové zpracování obrazu předvedený, aby na obrázcích a videích prováděl určité operace.
 
-Přihlásit ke službě pro počítačové zpracování obrazu a získejte klíč a koncový bod adresy URL. Nápovědu v tomto kroku naleznete v tématu [získání klíčů předplatného](https://docs.microsoft.com/azure/cognitive-services/computer-vision/vision-api-how-to-topics/howtosubscribe).
+Přihlaste se k odběru služby Počítačové zpracování obrazu, abyste získali adresu URL klíče a koncového bodu. Nápovědu k tomuto kroku najdete v tématu [Jak získat klíče](https://docs.microsoft.com/azure/cognitive-services/computer-vision/vision-api-how-to-topics/howtosubscribe)předplatného.
 
-![Služba pro počítačové zpracování obrazu na portálu Azure s nabídkou rychlý start vybrali. Odkaz pro klíče je uvedeno, jako je adresa URL koncového bodu rozhraní API](media/azure-logo-tutorial/comvis-keys.png)
+![Služba Počítačové zpracování obrazu v Azure Portal s vybranou nabídkou pro rychlý Start. Odkaz na klíče je popsaný, jak je adresa URL koncového bodu rozhraní API.](media/azure-logo-tutorial/comvis-keys.png)
 
-Dále otevřete *Source\VisualProvision\AppSettings.cs* souboru a naplnit `ComputerVisionEndpoint` a `ComputerVisionKey` proměnné s správné hodnoty.
+Potom otevřete soubor *Source\VisualProvision\AppSettings.cs* a naplňte `ComputerVisionEndpoint` proměnné a `ComputerVisionKey` pomocí správných hodnot.
 
 [!code-csharp[Computer Vision fields](~/AIVisualProvision/Source/VisualProvision/AppSettings.cs?range=28-32)]
 
 ## <a name="create-a-service-principal"></a>Vytvoření instančního objektu
 
-Aplikace vyžaduje účet instančního objektu služby Azure k nasazení služeb do vašeho předplatného Azure. Instanční objekt služby umožňuje delegovat konkrétní oprávnění k aplikaci pomocí řízení přístupu na základě rolí. Další informace najdete v tématu [instanční objekty průvodce](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-create-service-principals).
+K nasazení služeb do předplatného Azure vyžaduje aplikace účet instančního objektu Azure. Instanční objekt umožňuje delegovat specifická oprávnění k aplikaci pomocí řízení přístupu na základě rolí. Další informace najdete v tématu [Průvodce instančními objekty služby](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-create-service-principals).
 
-Je můžete vytvořit instanční objekt pomocí Azure Cloud Shell nebo Azure CLI, jak je znázorněno zde. Pokud chcete začít, přihlaste se a vyberte předplatné, které chcete použít.
+Instanční objekt můžete vytvořit pomocí Azure Cloud Shell nebo rozhraní příkazového řádku Azure CLI, jak je znázorněno zde. Začněte tím, že se přihlásíte a vyberete předplatné, které chcete použít.
 
 ```console
 az login
@@ -113,13 +113,13 @@ az account list
 az account set --subscription "<subscription name or subscription id>"
 ```
 
-Pak vytvořte instančního objektu služby. (Tento proces může chvíli trvat.)
+Pak vytvořte instanční objekt. (Dokončení tohoto procesu může nějakou dobu trvat.)
 
 ```console
 az ad sp create-for-rbac --name <servicePrincipalName> --password <yourSPStrongPassword>
 ```
 
-Po úspěšném dokončení byste měli vidět následující výstup ve formátu JSON, včetně potřebné přihlašovací údaje.
+Po úspěšném dokončení by se měl zobrazit následující výstup JSON, včetně nezbytných přihlašovacích údajů.
 
 ```json
 {
@@ -131,55 +131,55 @@ Po úspěšném dokončení byste měli vidět následující výstup ve formát
 }
 ```
 
-Poznamenejte si `clientId` a `tenantId` hodnoty. Přidat do příslušných polí v *Source\VisualProvision\AppSettings.cs* souboru.
+Poznamenejte `clientId` si hodnoty a `tenantId` . Přidejte je do příslušných polí v souboru *Source\VisualProvision\AppSettings.cs* .
 
 [!code-csharp[Computer Vision fields](~/AIVisualProvision/Source/VisualProvision/AppSettings.cs?range=8-16)]
 
 ## <a name="run-the-app"></a>Spuštění aplikace
 
-V tomto okamžiku jste dali přístup k aplikaci pro:
+V tuto chvíli jste přidali přístup k aplikaci:
 
-- trénovaného modelu Custom Vision
-- službu pro počítačové zpracování obrazu
-- instanční objekt
+- Trained Custom Vision model
+- Služba Počítačové zpracování obrazu
+- Hlavní účet služby
 
-Postupujte podle těchto kroků a spusťte aplikaci:
+Pomocí těchto kroků spusťte aplikaci:
 
-1. V Průzkumníku řešení Visual Studio, vyberte buď **VisualProvision.Android** projektu nebo **VisualProvision.iOS** projektu. Zvolte odpovídající emulátoru nebo připojeného mobilní zařízení z rozevírací nabídky na hlavním panelu nástrojů. Spusťte aplikaci.
-
-    > [!NOTE]
-    > Budete potřebovat ke spuštění emulátoru iOS zařízení s MacOS.
-
-1. Na první obrazovce zadejte ID klienta instančního objektu služby, ID tenanta a heslo. Vyberte **přihlášení** tlačítko.
+1. V aplikaci Visual Studio Průzkumník řešení vyberte buď projekt **VisualProvision. Android** , nebo projekt **VisualProvision. iOS** . V rozevírací nabídce na hlavním panelu nástrojů vyberte odpovídající emulátor nebo připojené mobilní zařízení. Pak aplikaci spusťte.
 
     > [!NOTE]
-    > V některých emulátory **přihlášení** tlačítko nemusí být aktivovaná v tomto kroku. Pokud k tomu dojde, zastavte aplikaci, otevřete *Source/VisualProvision/Pages/LoginPage.xaml* souboru, vyhledejte `Button` prvku označeného **TLAČÍTKA pro přihlášení**, odstraňte následující řádek a spusťte aplikaci znovu.
+    > Pro spuštění emulátoru iOS budete potřebovat zařízení s MacOS.
+
+1. Na první obrazovce zadejte ID klienta instančního objektu, ID tenanta a heslo. Vyberte tlačítko pro **přihlášení** .
+
+    > [!NOTE]
+    > V některých emulátorech se v tomto kroku nemusí aktivovat tlačítko pro **přihlášení** . Pokud k tomu dojde, zastavte aplikaci, otevřete soubor *source/VisualProvision/Pages/LoginPage. XAML* , `Button` Najděte element s označením **Login**, odeberte následující řádek a pak znovu spusťte aplikaci.
     >  ```xaml
     >  IsEnabled="{Binding IsValid}"
     >  ```
     
-    ![Na obrazovce aplikace zobrazí pole pro pověření instančního objektu](media/azure-logo-tutorial/app-credentials.png)
+    ![Obrazovka aplikace zobrazující pole pro přihlašovací údaje instančního objektu](media/azure-logo-tutorial/app-credentials.png)
 
-1. Na další obrazovce vyberte své předplatné Azure z rozevírací nabídky. (Tato nabídka by měl obsahovat všechna předplatná, ke kterým má hlavní službě přístup.) Vyberte **pokračovat** tlačítko. V tomto okamžiku může aplikace výzva k udělení přístupu k fotoaparátu zařízení a fotografie úložiště. Udělte oprávnění k přístupu.
+1. Na další obrazovce vyberte předplatné Azure z rozevírací nabídky. (Tato nabídka by měla obsahovat všechna předplatná, ke kterým má objekt služby přístup.) Klikněte na tlačítko **pokračovat** . V tomto okamžiku se může zobrazit výzva k udělení přístupu k fotoaparátu a úložišti fotografií zařízení. Udělte přístupová oprávnění.
 
-    ![Na obrazovce aplikace zobrazuje pole rozevíracího seznamu pro předplatné Azure cílového](media/azure-logo-tutorial/app-az-subscription.png)
+    ![Obrazovka aplikace, ve které se zobrazuje rozevírací pole pro cílové předplatné Azure](media/azure-logo-tutorial/app-az-subscription.png)
 
 
-1. Aktivuje se používání fotoaparátu v zařízení. Pořiďte fotku jedné služby Azure log, které jste školení. Okno nasazení by měl vyzvat k výběru oblast a skupinu prostředků pro nové služby (jak byste udělali, pokud byly jejich nasazení na webu Azure Portal). 
+1. Fotoaparát v zařízení se aktivuje. Povezměte si fotografii některého z poučených log služby Azure. Okno nasazení by vás mělo vyzvat k výběru oblasti a skupiny prostředků pro nové služby (jak byste to provedli, pokud je nasazujete z Azure Portal). 
 
-    ![Obrazovky fotoaparátu smartphone, zaměřuje na dvě výřezy papíru Azure log](media/azure-logo-tutorial/app-camera-capture.png)
+    ![Obrazovka kamery smartphone zaměřená na dva Vystřižení loga Azure](media/azure-logo-tutorial/app-camera-capture.png)
 
-    ![Obrazovce aplikace zobrazí pole pro nasazení oblast a skupinu prostředků](media/azure-logo-tutorial/app-deployment-options.png)
+    ![Obrazovka aplikace zobrazující pole pro oblast nasazení a skupinu prostředků](media/azure-logo-tutorial/app-deployment-options.png)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud jste postupovali podle všech kroků v tomto scénáři a používá aplikace k nasazení služby Azure do vašeho účtu, přejděte [webu Azure portal](https://ms.portal.azure.com/). Zrušte, služby, které nechcete použít.
+Pokud jste postupovali podle všech kroků v tomto scénáři a použili jste aplikaci k nasazení služeb Azure do svého účtu, pokračujte na [Azure Portal](https://ms.portal.azure.com/). Tam můžete zrušit služby, které nechcete používat.
 
-Pokud budete chtít vytvořit vlastní projekt zjišťování objektu s Custom Vision, můžete chtít odstranit projekt detekce logo, které jste vytvořili v tomto kurzu. Bezplatná zkušební verze pro vlastní zpracování obrazu umožňuje pouze dva projekty. Odstranění projektu detekce logo, na [webu Custom Vision](https://customvision.ai), otevřete **projekty** a potom vyberte ikonu koše v rámci **tento nový projekt**.
+Pokud plánujete vytvořit vlastní projekt rozpoznávání objektů pomocí Custom Vision, možná budete chtít odstranit projekt detekce loga, který jste vytvořili v tomto kurzu. Bezplatná zkušební verze pro Custom Vision umožňuje pouze dva projekty. Pokud chcete odstranit projekt zjišťování loga, na [webu Custom Vision](https://customvision.ai)otevřete **projekty** a potom vyberte ikonu odpadkového koše v části **můj nový projekt**.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu se nastavit a prozkoumat plně funkční aplikaci Xamarin.Forms, používající Custom Vision service k detekci loga v mobilních snímků. Dále se naučíte osvědčené postupy pro vytváření modelu zpracování obrazu vlastní tak, aby při vytváření vlastní aplikace pro, můžete si je efektivní a přesné.
+V tomto kurzu nastavíte a prozkoumáte plnohodnotnou aplikaci Xamarin. Forms, která používá službu Custom Vision k detekci loga v obrazech mobilní kamery. V dalším kroku se dozvíte, jaké jsou osvědčené postupy pro vytváření Custom Vision modelu, takže když ho vytvoříte pro vlastní aplikaci, můžete ho nastavit jako účinný a přesný.
 
 > [!div class="nextstepaction"]
-> [K vylepšení klasifikátoru](getting-started-improving-your-classifier.md)
+> [Jak vylepšit třídění](getting-started-improving-your-classifier.md)

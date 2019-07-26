@@ -1,69 +1,69 @@
 ---
-title: 'Rychlý start: Vytvoření experimentu datové vědy'
+title: 'Rychlý start: Vytvoření experimentu pro datové vědy'
 titleSuffix: Azure Machine Learning Studio
-description: V tomto rychlém startu machine learningu vás provede experimentu jednoduché datové vědy. Pomocí regresního algoritmu předpovíme cenu automobilu.
+description: Tento rychlý Start Machine Learning vás provede jednoduchým experimentem pro datové vědy. Pomocí regresního algoritmu předpovíme cenu automobilu.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: quickstart
-author: garyericson
-ms.author: garye
+author: xiaoharper
+ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 02/06/2019
-ms.openlocfilehash: 0819c232412e1619f82a25476a8318d26c8087da
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e5c004b69f24b50ed2eb3a10dbd0a7915c0773ce
+ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60753139"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68515111"
 ---
-# <a name="quickstart-create-your-first-data-science-experiment-in-azure-machine-learning-studio"></a>Rychlý start: Vytvoření prvního experimentu datové vědy v nástroji Azure Machine Learning Studio
+# <a name="quickstart-create-your-first-data-science-experiment-in-azure-machine-learning-studio"></a>Rychlý start: Vytvořte svůj první experiment s datovou vědy v Azure Machine Learning Studio
 
-V tomto rychlém startu vytvoříte experiment strojového učení v [Azure Machine Learning Studio](what-is-ml-studio.md) , který bude předpovídat cenu automobilu podle různých proměnných, třeba značky a technických specifikací.
+V tomto rychlém startu vytvoříte experiment strojového učení v [Azure Machine Learning Studio](what-is-ml-studio.md) , který předpovídá cenu auta na základě různých proměnných, jako jsou třeba technické specifikace.
 
-Pokud jste úplně novým uživatelem ve službě machine learning, série videí [datová věda pro začátečníky](data-science-for-beginners-the-5-questions-data-science-answers.md) představuje vynikající Úvod do strojového učení s využitím každodenního jazyka a konceptů.
+Pokud se naučíte novinkou ve strojovém učení, je [pro začátečníky užitečná řada datových věd](data-science-for-beginners-the-5-questions-data-science-answers.md) , která využívá každodenní jazyk a koncepty.
 
-V tomto rychlém startu následující výchozí pracovní postup pro experiment:
+Tento rychlý Start následuje za výchozím pracovním postupem pro experiment:
 
 1. **Vytvoření modelu**
-    - [Získání dat]
+    - [Získat data]
     - [Příprava dat]
-    - [Definice funkcí]
+    - [Definovat funkce]
 1. **Trénování modelu**
     - [Volba a použití algoritmu]
 1. **Stanovení skóre a otestování modelu**
     - [Předpověď cen nových automobilů]
 
-[Získání dat]: #get-the-data
+[Získat data]: #get-the-data
 [Příprava dat]: #prepare-the-data
-[Definice funkcí]: #define-features
+[Definovat funkce]: #define-features
 [Volba a použití algoritmu]: #choose-and-apply-an-algorithm
 [Předpověď cen nových automobilů]: #predict-new-automobile-prices
 
-Pokud nemáte účet Studio, přejděte na [domovské stránky Studio](https://studio.azureml.net) a vyberte **zaregistrovat** vytvořte si bezplatný účet. Bezplatný pracovní prostor bude mít všechny funkce, které potřebujete pro tento rychlý start.
+Pokud nemáte účet studia, na [domovské stránce studia](https://studio.azureml.net) klikněte na **zaregistrovat** a vytvořte si bezplatný účet. Pracovní prostor Free bude obsahovat všechny funkce, které pro tento rychlý Start potřebujete.
 
 ## <a name="get-the-data"></a>Získání dat
 
-První věc, kterou je nutné ve službě machine learning se data.
-Existuje několik ukázkových datových sad se sadou Studio, které můžete použít, nebo můžete importovat data z mnoha zdrojů. V tomto příkladu použijeme ukázkovou datovou sadu **Automobile price data (Raw)**, která je součástí vašeho pracovního prostoru.
+První věc, kterou potřebujete ve službě Machine Learning, je data.
+Sada Studio obsahuje několik ukázkových datových sad, které můžete použít, nebo můžete importovat data z mnoha zdrojů. V tomto příkladu použijeme ukázkovou datovou sadu **Automobile price data (Raw)** , která je součástí vašeho pracovního prostoru.
 Tato datová sada obsahuje záznamy řady různých automobilů, včetně informací o značce, modelu, technických specifikacích a ceně.
 
 > [!TIP]
-> Pracovní kopii následujícího experimentu najdete v [galerii Azure AI](https://gallery.azure.ai). Přejděte k části **[První experiment z oblasti datové vědy – predikce ceny automobilu](https://gallery.azure.ai/Experiment/Your-first-data-science-experiment-Automobile-price-prediction-1)**, klikněte na **Open in Studio** (Otevřít v sadě Studio) a stáhněte kopii experimentu do pracovního prostoru Machine Learning Studio.
+> Pracovní kopii následujícího experimentu najdete v [galerii Azure AI](https://gallery.azure.ai). Přejděte k části **[První experiment z oblasti datové vědy – predikce ceny automobilu](https://gallery.azure.ai/Experiment/Your-first-data-science-experiment-Automobile-price-prediction-1)** , klikněte na **Open in Studio** (Otevřít v sadě Studio) a stáhněte kopii experimentu do pracovního prostoru Machine Learning Studio.
 
 Tuto datovou sadu dostanete do svého experimentu takto.
 
-1. Vytvořte nový experiment kliknutím **+ nová** v dolní části okna Machine Learning Studio. Vyberte **EXPERIMENT** >  **prázdný Experiment**.
+1. Kliknutím na **+ Nový** ve spodní části okna Machine Learning Studio vytvořte nový experiment. Vyberte **experimentovat** >  **prázdný experiment**.
 
 1. Experimentu se přiřadí výchozí název, který se zobrazí v horní části plátna. Vyberte tento text a přejmenujte jej na něco smysluplného, například **Predikce ceny automobilu**. Název nemusí být jedinečný.
 
     ![Přejmenování experimentu](./media/create-experiment/rename-experiment.png)
 
-1. Nalevo od plátna experimentu je paleta datových sad a modulů. Do pole Hledat v horní části palety zadejte **automobile**. Vyhledá se datová sada **Automobile price data (Raw)**. Přetáhněte tuto datovou sadu na plátno experimentu.
+1. Nalevo od plátna experimentu je paleta datových sad a modulů. Do pole Hledat v horní části palety zadejte **automobile**. Vyhledá se datová sada **Automobile price data (Raw)** . Přetáhněte tuto datovou sadu na plátno experimentu.
 
-    ![Vyhledejte datovou sadu automobilů a přetáhněte ji na plátno experimentu.](./media/create-experiment/type-automobile.png)
+    ![Najděte datovou sadu automobilu a přetáhněte ji na plátno experimentu.](./media/create-experiment/type-automobile.png)
 
-Chcete-li zobrazit, co tato data vypadají, klikněte na výstupní port v dolní části datovou sadu automobilů a vyberte položku **vizualizovat**.
+Pokud se chcete podívat, jak tato data vypadají, klikněte na výstupní port v dolní části datové sady automobilu a potom vyberte **vizualizovat**.
 
 ![Klikněte na výstupní port a vyberte vizualizovat.](./media/create-experiment/select-visualize.png)
 
@@ -72,75 +72,75 @@ Chcete-li zobrazit, co tato data vypadají, klikněte na výstupní port v doln�
 Pokud chcete vytvořit tok dat prostřednictvím experimentu, připojte výstupní port jednoho modulu ke vstupnímu portu jiného.
 V libovolném okamžiku můžete kliknout na výstupní port datové sady nebo modulu a prohlédnout si, jak v tomto bodě vypadá tok dat.
 
-V této datové sadě každý řádek představuje automobilu a proměnné přidružené k automobilům se zobrazují jako sloupce. Předpovíme cenu ve sloupci úplně vpravo (sloupec 26 s názvem "price") pomocí proměnných pro konkrétní automobil.
+V této datové sadě každý řádek představuje automobil a proměnné přidružené k jednotlivým automobilům se zobrazí jako sloupce. Za použití proměnných pro konkrétní automobil předpovídáme cenu v pravém sloupci (sloupec 26 s názvem Price).
 
-![Zobrazte data automobilů v okně vizualizace dat.](./media/create-experiment/visualize-auto-data.png)
+![Zobrazení dat automobilu v okně vizualizace dat](./media/create-experiment/visualize-auto-data.png)
 
 Kliknutím na **x** v pravém horním rohu zavřete okno vizualizace.
 
 ## <a name="prepare-the-data"></a>Příprava dat
 
-Před analýzou datové sady bývá zpravidla nutné sadu nějakým způsobem předzpracovat. Možná jste si ve sloupcích různých řádků všimli chybějících hodnot. Tyto chybějící hodnoty se musí vyčistit, aby model mohl data správně analyzovat. Odstraníme všechny řádky, které chybí některé hodnoty. Hodnoty ve sloupci **normalized-losses** navíc z velké části chybí, proto tento sloupec v modelu zcela vynecháme.
+Před analýzou datové sady bývá zpravidla nutné sadu nějakým způsobem předzpracovat. Možná jste si ve sloupcích různých řádků všimli chybějících hodnot. Tyto chybějící hodnoty se musí vyčistit, aby model mohl data správně analyzovat. Odebereme všechny řádky, které obsahují chybějící hodnoty. Hodnoty ve sloupci **normalized-losses** navíc z velké části chybí, proto tento sloupec v modelu zcela vynecháme.
 
 > [!TIP]
 > Vyčištění chybějících hodnot ze vstupních dat je pro většinu modulů nutností.
 
-Nejdříve přidáme modul, který odebere **normalized-losses** sloupec úplně. Potom přidáme další modul, který odebere všechny řádky, ve kterých chybějí data.
+Nejprve přidáme modul, který zcela odebere sloupec **normalizovaných ztrát** . Pak přidáme další modul, který odebere všechny řádky, které obsahují chybějící data.
 
-1. Typ **vyberte sloupce, které** do vyhledávacího pole v horní části palety modulů najít [výběr sloupců v datové sadě] [ select-columns] modulu. Potom přetáhněte na plátno experimentu. Tento modul umožňuje vybrat, které sloupce dat chceme zahrnout do modelu, nebo je z modelu naopak vyloučit.
+1. Do pole Hledat v horní části palety modulů zadejte **Výběr sloupců** a vyhledejte modul [Výběr sloupců v datové sadě][select-columns] . Přetáhněte ho na plátno experimentu. Tento modul umožňuje vybrat, které sloupce dat chceme zahrnout do modelu, nebo je z modelu naopak vyloučit.
 
-1. Připojte výstupní port modulu **Automobile price data (Raw)** datové sady ke vstupnímu portu výběr sloupců v datové sadě.
+1. Připojte výstupní port datové sady **dat automobilu (RAW)** k vstupnímu portu pro výběr sloupců v datové sadě.
 
-    ![Přidejte modul "Výběr sloupců v datové sadě" na plátno experimentu a propojte jej](./media/create-experiment/type-select-columns.png)
+    ![Přidejte modul Výběr sloupců v datové sadě na plátno experimentu a připojte ho.](./media/create-experiment/type-select-columns.png)
 
-1. Klikněte na modul [Výběr sloupců v datové sadě][select-columns] a v podokně **Vlastnosti** klikněte na **Spustit selektor sloupců**.
+1. Klikněte na modul [Výběr sloupců v datové sadě][select-columns] a v podokně **vlastnosti** klikněte na **Spustit selektor sloupců** .
 
    - Vlevo klikněte na **S pravidly**.
-   - V části **Začít s** klikněte na **Všechny sloupce**. Tato pravidla s přímým přístupem [výběr sloupců v datové sadě] [ select-columns] aby prošel všechny sloupce (kromě sloupců, které vyloučíme).
+   - V části **Začít s** klikněte na **Všechny sloupce**. Tato pravidla přímo [vyberou sloupce v datové sadě][select-columns] , aby prošla všemi sloupci (s výjimkou těch sloupců, které se chystáme vyloučit).
    - V rozevíracích seznamech vyberte **Vyloučit** a **názvy sloupců** a klikněte do textového pole. Zobrazí se seznam sloupců. Vyberte sloupec **normalized-losses**, který se tak přidá do textového pole.
-   - Kliknutím na tlačítko zaškrtnutí (OK) zavřete selektor sloupců (vpravo dole).
+   - Kliknutím na tlačítko se značkou zaškrtnutí (OK) zavřete selektor sloupců (vpravo dole).
 
-     ![Spusťte selektor sloupců a vylučte sloupec normalized-losses."](./media/create-experiment/launch-column-selector.png)
+     ![Spusťte selektor sloupců a vylučte sloupec "normalizované ztráty".](./media/create-experiment/launch-column-selector.png)
 
      Podokno vlastností modulu **Výběr sloupců v datové sadě** teď indikuje, že modul bude procházet všechny sloupce datové sady kromě **normalized-losses**.
 
-     ![V podokně vlastností ukazuje, že sloupec normalized-losses."je vyloučený](./media/create-experiment/showing-excluded-column.png)
+     ![V podokně vlastnosti se zobrazí, že je vyloučený sloupec "normalizované ztráty".](./media/create-experiment/showing-excluded-column.png)
 
      > [!TIP] 
-     > Kliknutím dvakrát na modul a zadáním textu je možné přidat k modulu komentář. To vám může pomoci rychle poznat, jaký je účel modulu v experimentu. V tomto případě klikněte dvakrát na modul [Výběr sloupců v datové sadě][select-columns] a zadejte komentář Vyloučit normalized-losses.
+     > Kliknutím dvakrát na modul a zadáním textu je možné přidat k modulu komentář. To vám může pomoci rychle poznat, jaký je účel modulu v experimentu. V tomto případě poklikejte na modul [Výběr sloupců v datové sadě][select-columns] a zadejte komentář "vyloučit normalizované ztráty".
 
-     ![Klikněte dvakrát na modul a přidejte komentář.](./media/create-experiment/add-comment.png)
+     ![Dvakrát klikněte na modul a přidejte komentář.](./media/create-experiment/add-comment.png)
 
-1. Přetáhněte modul [Vyčištění chybějících dat][clean-missing-data] na plátno experimentu a propojte jej s modulem [Výběr sloupců v datové sadě][select-columns]. V podokně **Vlastnosti** vyberte v části **Režim čištění** možnost **Odstranit celý řádek**. Tyto možnosti s přímým přístupem [vyčištění chybějících dat] [ clean-missing-data] k vyčištění dat odstraněním řádků, které mají chybí některé hodnoty. Klikněte dvakrát na modul a zadejte komentář Odstranění řádků s chybějícími hodnotami.
+1. Přetáhněte modul [Vyčištění chybějících dat][clean-missing-data] na plátno experimentu a propojte jej s modulem [Výběr sloupců v datové sadě][select-columns] . V podokně **Vlastnosti** vyberte v části **Režim čištění** možnost **Odstranit celý řádek**. Tyto možnosti přímo [čistí chybějící data][clean-missing-data] k vyčištění dat odstraněním řádků, které obsahují chybějící hodnoty. Klikněte dvakrát na modul a zadejte komentář Odstranění řádků s chybějícími hodnotami.
 
-    ![Nastavení režimu čisticí "Odebrat celý řádek" pro modul "Vyčištění chybějících dat"](./media/create-experiment/set-remove-entire-row.png)
+    ![Pro modul vyčištění chybějících dat nastavte režim čištění na odebrat celý řádek.](./media/create-experiment/set-remove-entire-row.png)
 
 1. Spusťte experiment kliknutím na **SPUSTIT** v dolní části stránky.
 
     Až se spuštění experimentu dokončí, u všech modulů se zobrazí zelená značka zaškrtnutí, která označuje, že jejich činnost úspěšně skončila. Všimněte si také stavu **Konec běhu** v pravém horním rohu.
 
-    ![Po spuštění by experiment měl vypadat asi takhle nějak.](./media/create-experiment/early-experiment-run.png)
+    ![Po spuštění by experiment měl vypadat nějak takto.](./media/create-experiment/early-experiment-run.png)
 
 > [!TIP]
-> Proč jsme experiment teď spustili? Spuštěním experimentu jsme zajistili, aby definice sloupců pro naše data prošly z původní datové sady přes modul [Výběr sloupců v datové sadě][select-columns] a přes modul [Vyčištění chybějících dat][clean-missing-data]. To znamená, že všechny moduly, které připojíme k modulu [Vyčištění chybějících dat][clean-missing-data], budou také mít tytéž informace.
+> Proč jsme experiment teď spustili? Spuštěním experimentu jsou definice sloupců pro naše data předávány z datové sady prostřednictvím modulu [Výběr sloupců v datové sadě][select-columns] a pomocí modulu [Vyčištění chybějících dat][clean-missing-data] . To znamená, že všechny moduly, které připojíme k [Vyčištění chybějících dat][clean-missing-data] , budou mít také stejné informace.
 
-Teď máme vyčistit data. Pokud si chcete zobrazit vyčištěnou datovou sadu, klikněte na levý výstupní port modulu [Vyčištění chybějících dat][clean-missing-data] a vyberte **Vizualizovat**. Všimněte si, že již není zobrazen sloupec **normalized-losses** a že nechybí žádné hodnoty.
+Teď máme čistá data. Pokud chcete zobrazit vyčištěnou datovou sadu, klikněte na levý výstupní port modulu [Vyčištění chybějících dat][clean-missing-data] a vyberte **vizualizovat**. Všimněte si, že již není zobrazen sloupec **normalized-losses** a že nechybí žádné hodnoty.
 
 Nyní když jsou data vyčištěna, můžete určit, které příznaky použijeme v prediktivním modelu.
 
-## <a name="define-features"></a>Definice funkcí
+## <a name="define-features"></a>Definovat funkce
 
 Ve strojovém učení se jako *příznaky* označují jednotlivé měřitelné vlastnosti něčeho, co vás zajímá. V naší datové sadě každý řádek představuje jeden automobil a každý sloupec je příznak daného automobilu.
 
-Nalezení správné sady příznaků pro vytvoření prediktivního modelu vyžaduje experimentování a znalost problému, který chcete vyřešit. Některé příznaky jsou pro predikci cíle vhodnější než jiné. Některé funkce mají silnou korelaci s jinými funkcemi a je možné odebrat. Například příznaky city-mpg a highway-mpg jsou vzájemně těsně propojené, takže stačí jeden z nich odebrat a ponechat jenom ten druhý, aniž by to vytvářenou predikci výrazně ovlivnilo.
+Nalezení správné sady příznaků pro vytvoření prediktivního modelu vyžaduje experimentování a znalost problému, který chcete vyřešit. Některé příznaky jsou pro predikci cíle vhodnější než jiné. Některé funkce mají silnou korelaci s jinými funkcemi a dají se odebrat. Například příznaky city-mpg a highway-mpg jsou vzájemně těsně propojené, takže stačí jeden z nich odebrat a ponechat jenom ten druhý, aniž by to vytvářenou predikci výrazně ovlivnilo.
 
 Vytvořme model, který používá podmnožinu příznaků naší datové sady. Později můžete vybrat jiné příznaky, spustit experiment znovu a zjistit, jestli nedostanete lepší výsledky. Nejdřív ale vyzkoušíme tyto funkce:
 
     make, body-style, wheel-base, engine-size, horsepower, peak-rpm, highway-mpg, price
 
-1. Na plátno experimentu přetáhněte další modul [Výběr sloupců v datové sadě][select-columns]. Propojte levý výstupní port modulu [Vyčištění chybějících dat][clean-missing-data] se vstupem modulu [Výběr sloupců v datové sadě][select-columns].
+1. Přetáhněte další modul [Výběr sloupců v datové sadě][select-columns] na plátno experimentu. Propojte levý výstupní port modulu [Vyčištění chybějících dat][clean-missing-data] se vstupem modulu [Výběr sloupců v datové sadě][select-columns] .
 
-    ![Připojte modul "Výběr sloupců v datové sadě" k "Vyčištění chybějících dat"](./media/create-experiment/connect-clean-to-select.png)
+    ![Připojte modul Výběr sloupců v datové sadě k modulu vyčištění chybějících dat.](./media/create-experiment/connect-clean-to-select.png)
 
 1. Poklikejte na modul a zadejte Výběr příznaků pro predikci.
 
@@ -148,13 +148,13 @@ Vytvořme model, který používá podmnožinu příznaků naší datové sady. 
 
 1. Klikněte na **S pravidly**.
 
-1. V části **Začít s** klikněte na **Žádné sloupce**. V řádku filtru vyberte **Zahrnout** a **názvy sloupců** a vyberte náš seznam názvů sloupců v textovém poli. Tento filtr modul dostává instrukci, aby neprocházel žádné sloupce (příznaky) s výjimkou těch, které určíme.
+1. V části **Začít s** klikněte na **Žádné sloupce**. V řádku filtru vyberte **Zahrnout** a **názvy sloupců** a vyberte náš seznam názvů sloupců v textovém poli. Tento filtr přesměruje modul, aby nepředával žádné sloupce (funkce) s výjimkou těch, které určíme.
 
 1. Klikněte na tlačítko zaškrtnutí (OK).
 
-    ![Vyberte sloupce (příznaky), které chcete zahrnout do predikce.](./media/create-experiment/select-columns-to-include.png)
+    ![Vyberte sloupce (funkce), které se mají zahrnout do předpovědi.](./media/create-experiment/select-columns-to-include.png)
 
-Tento modul vytváří je filtrovaná datová sada obsahující jenom ty příznaky, které chceme předat algoritmu učení, který použijeme v dalším kroku. Později se můžete vrátit a zkusit jiný výběr příznaků.
+Tento modul vytváří filtrovanou datovou sadu obsahující jenom ty funkce, které chceme předat do výukového algoritmu, který použijeme v dalším kroku. Později se můžete vrátit a zkusit jiný výběr příznaků.
 
 ## <a name="choose-and-apply-an-algorithm"></a>Volba a použití algoritmu
 
@@ -163,71 +163,71 @@ Nyní když jsou data připravena, tvorba prediktivního modelu sestává z tré
 
 *Klasifikace* a *regrese* jsou dva typy technik strojového učení se supervizí. Klasifikace předpovídá odpověď na základě definované sady kategorií, třeba barvy (červená, modrá nebo zelená). Regrese se používá k předpovědi čísel.
 
-Chceme předpovědět cenu, což je číslo, a tak použijeme regresní algoritmus. V tomto příkladu použijeme *lineární regrese* modelu.
+Chceme předpovědět cenu, což je číslo, a tak použijeme regresní algoritmus. V tomto příkladu použijeme model *lineární regrese* .
 
 
 Model trénujeme tím, že mu poskytneme sadu dat, která zahrnují cenu. Model projde data a hledá korelaci mezi příznaky automobilu a jeho cenou. Potom model otestujeme. Poskytneme mu sadu příznaků pro automobily, které známe, a uvidíme, do jaké míry se predikce modelu blíží známé ceně.
 
 Naše data můžeme použít jak pro trénování modelu, tak pro jeho otestování. Dají se totiž rozdělit na samostatné sady pro trénování a testování.
 
-1. Vyberte a přetáhněte na plátno experimentu modul [Rozdělení dat][split] a propojte jej s posledním modulem [Výběr sloupců v datové sadě][select-columns].
+1. Vyberte a přetáhněte modul [rozdělit data][split] na plátno experimentu a propojte jej s posledním modulem [Výběr sloupců v datové sadě][select-columns] .
 
-1. Klikněte na modul [Rozdělení dat][split]. Modul se vybere. Vyhledejte **Podíl řádků v první výstupní sadě dat** (v podokně **Vlastnosti** napravo od plátna) a nastavte ho na 0,75. Takto použijeme 75 procent dat pro trénování modelu a 25 procent si ponecháme na testování.
+1. Klikněte na modul [rozdělení dat][split] a vyberte ho. Vyhledejte **Podíl řádků v první výstupní sadě dat** (v podokně **Vlastnosti** napravo od plátna) a nastavte ho na 0,75. Takto použijeme 75 procent dat pro trénování modelu a 25 procent si ponecháme na testování.
 
-    ![Nastavte podíl modulu "Rozdělení dat" na 0,75.](./media/create-experiment/set-split-data-percentage.png)
+    ![Nastavte rozdělení zlomku z modulu "rozdělit data" na 0,75.](./media/create-experiment/set-split-data-percentage.png)
 
     > [!TIP]
     > Změnou parametru **Náhodná počáteční hodnota** je možné pro trénování a testování vytvořit různé náhodné vzorky. Tento parametr řídí nastavování počáteční hodnoty pseudonáhodného generátoru čísel.
 
-1. Spusťte experiment. Při spuštění experimentu moduly [Výběr sloupců v datové sadě][select-columns] a [Rozdělení dat][split] předají definice sloupců do modulů, které přidáme jako další.  
+1. Spusťte experiment. Po spuštění experimentu budou moduly [Výběr sloupců v datové sadě][select-columns] a [rozdělení dat][split] předávat definice sloupců do modulů, které přidáme další.  
 
-1. Nyní vyberte algoritmus učení. Na paletě modulů nalevo od plátna rozbalte kategorii **Strojové učení** a pak **Inicializovat model**. Tímto se zobrazí několik kategorií modulů, které je možné použít k inicializaci algoritmů strojového učení. Pro tento experiment vyberte modul [Lineární regrese][linear-regression] v kategorii **Regrese** a přetáhněte ho na plátno experimentu. (Tento modul můžete najít i tak, že do pole Hledat palety zadáte lineární regrese.)
+1. Nyní vyberte algoritmus učení. Na paletě modulů nalevo od plátna rozbalte kategorii **Strojové učení** a pak **Inicializovat model**. Tímto se zobrazí několik kategorií modulů, které je možné použít k inicializaci algoritmů strojového učení. Pro tento experiment vyberte modul [lineární regrese][linear-regression] v kategorii **regrese** a přetáhněte ho na plátno experimentu. (Tento modul můžete najít i tak, že do pole Hledat palety zadáte lineární regrese.)
 
-1. Najděte modul [Trénování modelu][train-model] a přetáhněte ho na plátno experimentu. Propojte výstup modulu [Lineární regrese][linear-regression] s levým vstupem modulu [Trénování modelu][train-model] a potom propojte výstup trénovacích dat (levý port) modulu [Rozdělení dat][split] s pravým vstupem modulu [Trénování modelu][train-model].
+1. Najděte modul vlakového [modelu][train-model] a přetáhněte ho na plátno experimentu. Připojte výstup modulu [lineární regrese][linear-regression] k levému vstupu modulu [vlak model][train-model] a připojte výstup školicích dat (levý port) modulu [rozdělení dat][split] ke správnému vstupu modulu [vlak model][train-model] .
 
-    ![Propojte modul "Train Model" k modulům "Lineární regrese" a "Rozdělení dat."](./media/create-experiment/connect-train-model.png)
+    ![Připojte modul vlakového modelu k modulům lineární regrese a rozdělení dat.](./media/create-experiment/connect-train-model.png)
 
-1. Klikněte na modul [Trénování modelu][train-model], v podokně **Vlastnosti** klikněte na **Spustit selektor sloupců** a vyberte sloupec **price**. **Cena** je hodnota, kterou náš model bude předpovídat.
+1. Klikněte na modul [vlak model][train-model] , v podokně **vlastnosti** klikněte na **Spustit selektor sloupců** a pak vyberte sloupec **Price** . **Cena** je hodnota, kterou náš model hodlá předpovědět.
 
     V selektoru sloupců vyberete sloupec **price** – přesunete ho ze seznamu **Dostupné sloupce** do seznamu **Vybrané sloupce**.
 
-    ![Vyberte sloupec price. pro modul "Train Model"](./media/create-experiment/select-price-column.png)
+    ![Vyberte sloupec Price pro modul "model výuky".](./media/create-experiment/select-price-column.png)
 
 1. Spusťte experiment.
 
 Výsledkem je natrénovaný model, který je možné použít ke stanovení skóre pro nová data automobilů a k následné predikci cen.
 
-![Po spuštění experimentu by teď měl vypadat asi takhle nějak.](./media/create-experiment/second-experiment-run.png)
+![Po spuštění by experiment měl vypadat nějak takto.](./media/create-experiment/second-experiment-run.png)
 
 ## <a name="predict-new-automobile-prices"></a>Předpověď cen nových automobilů
 
 Nyní když jsme natrénovali model pomocí 75 procent dat, můžeme model použít ke stanovení skóre u zbylých 25 procent dat a zjistit, jak dobře model funguje.
 
-1. Najděte modul [Určení skóre modelu][score-model] a přetáhněte ho na plátno experimentu. Propojte výstup modulu [Trénování modelu][train-model] s levým vstupním portem modulu [Určení skóre modelu][score-model]. Propojte výstup testovacích dat (pravý port) modulu [Rozdělení dat][split] s pravým vstupním portem modulu [Určení skóre modelu][score-model].
+1. Vyhledejte a přetáhněte modul [skóre model][score-model] na plátno experimentu. Připojte výstup modulu [vlak model][train-model] k levému vstupnímu portu [modelu skóre][score-model]. Připojte výstup testovacích dat (pravý port) modulu [rozdělení dat][split] ke správnému vstupnímu portu [modelu skóre][score-model].
 
-    ![Propojte modul "Určení skóre modelu" k modulům "Train Model" a "Rozdělení dat."](./media/create-experiment/connect-score-model.png)
+    ![Připojte modul určení skóre modelu k modulům "model výuky" a "rozdělená data".](./media/create-experiment/connect-score-model.png)
 
-1. Spusťte experiment a zobrazte výstup [Score Model] [ score-model] kliknutím na výstupní port modulu [určení skóre modelu] [ score-model] a vyberte  **Vizualizujte**. Na výstupu se zobrazí predikované hodnoty ceny a známé hodnoty v testovacích datech.  
+1. Spusťte experiment a zobrazte výstup z modulu [skóre modelu][score-model] kliknutím na výstupní port [modelu skóre][score-model] a vyberte **vizualizovat**. Na výstupu se zobrazí predikované hodnoty ceny a známé hodnoty v testovacích datech.  
 
-    ![Výstup modulu "Určení skóre modelu"](./media/create-experiment/score-model-output.png)
+    ![Výstup modulu určení skóre modelu](./media/create-experiment/score-model-output.png)
 
-1. Nakonec otestujeme kvalitu výsledků. Najděte modul [Vyhodnocení modelu][evaluate-model], přetáhněte ho na plátno experimentu a propojte výstup modulu [Určení skóre modelu][score-model] s levým vstupem modulu [Vyhodnocení modelu][evaluate-model]. Konečný experiment by měl vypadat přibližně takto:
+1. Nakonec otestujeme kvalitu výsledků. Vyberte modul [vyhodnocení modelu][evaluate-model] a přetáhněte ho na plátno experimentu a propojte výstup modulu určení [skóre][score-model] modelu s levým vstupem [modelu vyhodnocení][evaluate-model]. Konečný experiment by měl vypadat přibližně takto:
 
     ![Konečný experiment](./media/create-experiment/complete-linear-regression-experiment.png)
 
 1. Spusťte experiment.
 
-Zobrazte výstup modulu [Vyhodnocení modelu][evaluate-model] tak, že kliknete na výstupní port a vyberete **Vizualizovat**.
+Pokud chcete zobrazit výstup z modulu [vyhodnocení modelu][evaluate-model] , klikněte na výstupní port a vyberte **vizualizovat**.
 
 ![Výsledky vyhodnocení pro experiment](./media/create-experiment/evaluation-results.png)
 
 Pro náš model se zobrazí následující statistiky:
 
-- **Střední absolutní chyba** (MAE): Průměr absolutních chyb ( *chyba* je rozdíl mezi předpovězenou a skutečnou hodnotu).
-- **Střední kořenové spolehlivosti chyba** (RMSE): Druhá odmocnina průměru kvadratických chyb předpovědí na základě testovací datové.
+- **Střední absolutní chyba** (MAE): Průměr absolutních chyb ( *Chyba* je rozdíl mezi předpovězenou a skutečnou hodnotou).
+- **Střední Chyba v kořenu – chyba** (RMSE): Druhá odmocnina průměru kvadratických chyb předpovědi provedených v testovací datové sadě.
 - **Relativní absolutní chyba**: Průměr absolutních chyb relativních k absolutnímu rozdílu mezi skutečnými hodnotami a průměrem všech skutečných hodnot.
-- **Relativní spolehlivosti chyba**: Průměr kvadratických chyb relativních ke kvadratickému rozdílu mezi skutečnými hodnotami a průměrem všech skutečných hodnot.
-- **Koeficient spolehlivosti**: Také **hodnota spolehlivosti R**, to tedy statistická metrika označující, jak dobře model odpovídá zpracovávaným datům.
+- **Relativní čtvercová chyba**: Průměr kvadratických chyb vzhledem k kvadratickému rozdílu mezi skutečnými hodnotami a průměrem všech skutečných hodnot.
+- **Koeficient určení**: Tato statistická Metrika označuje, jak dobře model odpovídá datům, označovanou také jako **hodnota R**.
 
 Pro každou statistiku chyb platí, že menší hodnota je lepší. Menší hodnota označuje, že předpověď přesněji odpovídá skutečným hodnotám. V případě **koeficientu spolehlivosti** platí, že čím bližší je jeho hodnota hodnotě jedna (1,0), tím lepší jsou předpovědi.
 
@@ -237,10 +237,10 @@ Pro každou statistiku chyb platí, že menší hodnota je lepší. Menší hodn
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto rychlém startu jste vytvořili jednoduchý experiment pomocí ukázkové datové sadě. Prozkoumat proces vytvoření a nasazení modelu do větší hloubky, pokračujte ke kurzu prediktivní řešení.
+V tomto rychlém startu jste vytvořili jednoduchý experiment s použitím ukázkové datové sady. Chcete-li prozkoumat proces tvorby a nasazení modelu podrobněji, pokračujte do kurzu prediktivního řešení.
 
 > [!div class="nextstepaction"]
-> [Kurz: Vývoj prediktivního řešení v sadě Studio](tutorial-part1-credit-risk.md)
+> [Kurz: Vývoj prediktivního řešení v studiu](tutorial-part1-credit-risk.md)
 
 <!-- Module References -->
 [evaluate-model]: https://msdn.microsoft.com/library/azure/927d65ac-3b50-4694-9903-20f6c1672089/

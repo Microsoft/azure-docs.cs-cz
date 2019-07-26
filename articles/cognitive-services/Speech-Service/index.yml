@@ -7,7 +7,7 @@ metadata:
   description: 'Služby Speech Services poskytují vývojářům snadný způsob, jak do aplikací přidat výkonné funkce s podporou řeči. Příkladem mohou být dialogy a řízení pomocí hlasových příkazů, konverzace v přirozeném jazyce, diktování a přepis a překlad řeči.'
   services: cognitive-services
   author: nitinme
-  manager: cgronlun
+  manager: nitinme
   layout: LandingPage
   ms.service: cognitive-services
   ms.subservice: speech-service

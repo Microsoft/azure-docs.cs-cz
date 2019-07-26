@@ -7,7 +7,7 @@ metadata:
   description: 'Naučte se využívat rozhraní API Bingu pro vyhledávání na webu k vyhledávání webových stránek, obrázků, videí, zpráv a dalších informací.'
   services: cognitive-services
   author: nitinme
-  manager: cgronlun
+  manager: nitinme
   ms.service: cognitive-services
   ms.subservice: bing-web-search
   ms.tgt_pltfrm: na

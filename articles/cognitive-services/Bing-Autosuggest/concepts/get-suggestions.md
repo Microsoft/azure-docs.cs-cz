@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: Naučte se používat rozhraní API pro automatické návrhy Bingu.
 services: cognitive-services
 author: aahill
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-autosuggest
 ms.topic: overview
 ms.date: 02/20/2019
 ms.author: aahi
-ms.openlocfilehash: 1fc2311610dd45025ddb71cdf005a6e87381ee95
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: 428756588152ff2c2deb2e3a123bcffc1cb605d7
+ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68405403"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68517035"
 ---
 # <a name="suggesting-query-terms"></a>Návrhy termínů dotazu
 
@@ -55,6 +55,6 @@ Následující příklad ukazuje rozevírací vyhledávací pole s navrhovanými
 
 Pokud uživatel vybere z rozevíracího seznamu navrhovaný dotaz, použijete termín dotazu v poli `query` k volání [rozhraní API Bingu pro vyhledávání na webu](../../bing-web-search/search-the-web.md) a zobrazení výsledků. Nebo můžete použít adresu URL v poli `url` a odeslat uživatele na stránku s výsledky hledání Bingu.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * [Co je rozhraní API pro automatické návrhy Bingu?](../get-suggested-search-terms.md)

@@ -6,7 +6,7 @@ metadata:
   description: 'Naučte se využívat rozhraní API pro rozpoznávání tváře k rozpoznávání a identifikaci tváří v obrázcích a vrácení příslušných informací. Kurzy vám ukážou, jak vytvářet aplikace, které toto rozhraní API používají.'
   services: cognitive-services
   author: PatrickFarley
-  manager: cgronlun
+  manager: nitinme
   ms.service: cognitive-services
   ms.subservice: face-api
   ms.tgt_pltfrm: na

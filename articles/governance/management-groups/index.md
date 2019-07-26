@@ -7,12 +7,12 @@ ms.service: governance
 ms.date: 04/22/2019
 ms.author: rithorn
 ms.topic: overview
-ms.openlocfilehash: 1958a829df2643bd218d4e8d7f6dd563b5b395e8
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 6ca8351e7294c5a9cdd9f594eb4524d04a27b5c1
+ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66237162"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68516977"
 ---
 # <a name="organize-your-resources-with-azure-management-groups"></a>Uspořádání vašich prostředků s využitím skupin pro správu Azure
 
@@ -98,7 +98,7 @@ Následující diagram ukazuje role a podporované akce pro skupiny pro správu.
 |Čtenář                      |        |        |        |        |               |               | ×     |
 |Čtenář MG*                  |        |        |        |        |               |               | ×     |
 |Přispěvatel zásad prostředků |        |        |        |        |               | ×             |       |
-|Správce přístupu uživatelů   |        |        |        |        | ×             |               |       |
+|Správce přístupu uživatelů   |        |        |        |        | ×             | ×             |       |
 
 *: Role Přispěvatel MG a Čtenář MG umožňují uživateli provádět tyto akce jenom v rozsahu příslušné skupiny pro správu.  
 **: K přesunu předplatného nebo skupiny pro správu v rámci kořenové skupiny pro správu se nevyžadují přiřazení rolí.  Další informace o přesunu položek v rámci hierarchie najdete v tématu věnovaném [správě prostředků s využitím skupin pro správu](manage.md).

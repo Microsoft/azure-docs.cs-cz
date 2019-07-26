@@ -6,7 +6,7 @@ metadata:
   description: 'Rozhraní API pro analýzu textu je cloudová služba, která poskytuje rozšířené zpracování přirozeného jazyka pro nezpracovaný text a zahrnuje čtyři hlavní funkce: analýzu mínění, extrakci klíčových frází, rozpoznávání pojmenovaných entit a rozpoznávání jazyka.'
   services: cognitive-services
   author: nitinme
-  manager: cgronlun
+  manager: nitinme
   layout: LandingPage
   ms.service: cognitive-services
   ms.subservice: text-analytics

@@ -6,7 +6,7 @@ metadata:
   description: Naučíte se využívat Rozpoznávání formulářů k inteligentnímu extrahování dat klíč-hodnota z vašich formulářových dokumentů.
   services: cognitive-services
   author: PatrickFarley
-  manager: cgronlun
+  manager: nitinme
   ms.service: cognitive-services
   ms.subservice: forms-recognizer
   ms.tgt_pltfrm: na
