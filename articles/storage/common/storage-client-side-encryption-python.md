@@ -1,6 +1,6 @@
 ---
-title: Šifrování na straně klienta s využitím Pythonu pro službu Microsoft Azure Storage | Dokumentace Microsoftu
-description: Klientská knihovna Azure Storage pro Python podporuje šifrování na straně klienta z důvodu maximálního zabezpečení pro vaše aplikace Azure Storage.
+title: Šifrování na straně klienta pomocí Pythonu pro Microsoft Azure Storage | Microsoft Docs
+description: Klientská knihovna Azure Storage pro Python podporuje šifrování na straně klienta pro zajištění maximálního zabezpečení pro vaše Azure Storage aplikace.
 services: storage
 author: tamram
 ms.service: storage
@@ -10,148 +10,148 @@ ms.date: 05/11/2017
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: d04c1e137a190b01554106c041853aa2fd6786d7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cd8ba51b960703fa25371d874ed2bb50e7df2fde
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65146898"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68360037"
 ---
-# <a name="client-side-encryption-with-python-for-microsoft-azure-storage"></a>Šifrování na straně klienta s využitím Pythonu pro službu Microsoft Azure Storage
+# <a name="client-side-encryption-with-python-for-microsoft-azure-storage"></a>Šifrování na straně klienta pomocí Pythonu pro Microsoft Azure Storage
 [!INCLUDE [storage-selector-client-side-encryption-include](../../../includes/storage-selector-client-side-encryption-include.md)]
 
 ## <a name="overview"></a>Přehled
-[Klientská knihovna Azure Storage pro Python](https://pypi.python.org/pypi/azure-storage) podporuje šifrování dat v rámci klientské aplikace před nahráním do služby Azure Storage a dešifrování dat při stahování do klienta.
+[Klientská knihovna Azure Storage pro Python](https://pypi.python.org/pypi/azure-storage) podporuje šifrování dat v rámci klientských aplikací před odesláním do Azure Storage a dešifrování dat při stahování do klienta.
 
 > [!NOTE]
-> Knihovna Python pro úložiště Azure je ve verzi preview.
+> Knihovna Pythonu Azure Storage je ve verzi Preview.
 > 
 > 
 
-## <a name="encryption-and-decryption-via-the-envelope-technique"></a>Šifrování a dešifrování prostřednictvím techniku obálky
-Procesy šifrování a dešifrování podle techniku obálky.
+## <a name="encryption-and-decryption-via-the-envelope-technique"></a>Šifrování a dešifrování prostřednictvím techniky obálek
+Procesy šifrování a dešifrování se řídí způsobem obálky.
 
-### <a name="encryption-via-the-envelope-technique"></a>Šifrování prostřednictvím techniku obálky
-Šifrování prostřednictvím obálky technika pracuje následujícím způsobem:
+### <a name="encryption-via-the-envelope-technique"></a>Šifrování prostřednictvím techniky obálek
+Šifrování prostřednictvím techniky obálek funguje následujícím způsobem:
 
-1. Klientská knihovna pro úložiště Azure vygeneruje obsahu šifrovací klíč (CEK), což je použití jednoho jednorázových symetrický klíč.
-2. Uživatel data se šifrují pomocí této CEK.
-3. CEK je vnořena (zašifrovaný) pomocí šifrovací klíč klíče (KEK). Klíče KEK je identifikovaná identifikátorem klíče a může být asymetrický pár klíčů nebo symetrický klíč, který je spravovaný místně.
-   Klientská knihovna pro úložiště, samotný nikdy má přístup k KEK. Knihovny vyvolá klíče zabalení algoritmus, který je poskytován klíče KEK. Uživatelé mohou používat vlastní zprostředkovatelé pro klíče zabalení a rozbalení v případě potřeby.
-4. Šifrovaná data se pak nahrají do služby Azure Storage. Zabalená klíče spolu s některé další šifrování metadat je uložená jako metadata (na objekt blob) nebo interpolovaných s šifrovaná data (zprávy fronty a tabulky entity).
+1. Klientská knihovna pro úložiště Azure vygeneruje šifrovací klíč obsahu (CEK), což je symetrický klíč založený na jednorázovém použití.
+2. Uživatelská data se šifrují pomocí tohoto CEK.
+3. CEK se pak zabalí (zašifruje) pomocí klíčového šifrovacího klíče (KEK). KEK je identifikován identifikátorem klíče a může se jednat o asymetrickou dvojici klíčů nebo symetrický klíč, který je spravován místně.
+   Klientská knihovna pro úložiště nemá nikdy přístup k KEK. Knihovna vyvolá algoritmus pro zabalení klíče, který je k dispozici v KEK. V případě potřeby mohou uživatelé používat vlastní poskytovatele pro zalamování a rozbalení klíče.
+4. Šifrovaná data se pak nahrají do služby Azure Storage. Zabalené klíče spolu s dalšími metadaty šifrování se ukládají jako metadata (v objektu BLOB) nebo interpolovaná pomocí šifrovaných dat (zprávy fronty a entity tabulky).
 
-### <a name="decryption-via-the-envelope-technique"></a>Dešifrování pomocí obálky technika
-Dešifrování pomocí obálky technika pracuje následujícím způsobem:
+### <a name="decryption-via-the-envelope-technique"></a>Dešifrování prostřednictvím techniky obálek
+Dešifrování prostřednictvím techniky obálek funguje následujícím způsobem:
 
-1. Knihovna klienta předpokládá, že uživatel spravuje šifrovací klíč klíče (KEK) místně. Uživatel není potřeba zjistit, konkrétní klíč, který se použil pro šifrování. Místo toho překladače klíče, které se překládá identifikátory klíče ke klíčům, můžete nastavit a použít.
-2. Klientská knihovna šifrovaná data spolu se žádné šifrování materiál, který je uložený ve službě soubory ke stažení.
-3. Zabalená obsahu šifrovací klíč (CEK) je rozbalená (dešifrovaný) pomocí klíčů šifrování klíčů (KEK). Zde znovu, knihovna klienta nemá přístup k KEK. Jednoduše volá rozbalení algoritmus vlastního zprostředkovatele.
-4. Klíč obsahu šifrovací (CEK) se pak použije k dešifrování šifrovaného uživatelská data.
+1. Klientská knihovna předpokládá, že uživatel spravuje klíč šifrovacího klíče (KEK) místně. Uživatel nemusí znát konkrétní klíč, který se použil pro šifrování. Místo toho je možné nastavit a použít překladač klíčů, který překládá různé identifikátory klíčů na klíče.
+2. Klientská knihovna stáhne zašifrovaná data spolu s jakýmkoli šifrovacím materiálem uloženým ve službě.
+3. Nezabalený šifrovací klíč obsahu (CEK) se pak nebalí (dešifruje) pomocí klíčového šifrovacího klíče (KEK). V takovém případě knihovna klienta nemá přístup k KEK. Jednoduše vyvolá algoritmus rozbalení vlastního poskytovatele.
+4. Šifrovací klíč obsahu (CEK) se pak použije k dešifrování šifrovaných uživatelských dat.
 
-## <a name="encryption-mechanism"></a>Mechanismus šifrování
-Klientská knihovna pro úložiště používá [AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) pro šifrování dat uživatele. Konkrétně [Cipher Block řetězení (CBC)](https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#Cipher-block_chaining_.28CBC.29) režimu s AES. Každý trochu jinak, service funguje tak, že bude každý z nich tady probereme.
+## <a name="encryption-mechanism"></a>Šifrovací mechanismus
+Klientská knihovna pro úložiště používá [algoritmus AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) , aby se šifroval data uživatelů. Konkrétně režim [řetězení bloků šifry (CBC)](https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#Cipher-block_chaining_.28CBC.29) s AES. Každá služba funguje trochu jinak, takže se na ně podíváme každý z nich.
 
 ### <a name="blobs"></a>Objekty blob
-Klientská knihovna aktuálně podporuje šifrování pouze celé objekty BLOB. Konkrétně šifrování je podporované, když uživatelé používají **vytvořit*** metody. Pro soubory ke stažení, i kompletní a soubory ke stažení rozsahu jsou podporované a paralelizaci nahrávání a stahování je k dispozici.
+Klientská knihovna aktuálně podporuje pouze šifrování celých objektů BLOB. Šifrování je konkrétně podporováno, pokud uživatelé používají metody **Create***. Pro soubory ke stažení jsou podporované jak stahování dokončeno, tak i rozsah, ale paralelní využívání nahrávání i stahování je dostupné.
 
-Při šifrování klientské knihovny bude generovat náhodné inicializační vektor (IV) 16 bajtů, společně s náhodné obsahu šifrovací klíč (CEK) 32 bajtů a provádět obálky šifrování dat objektů blob pomocí těchto informací. Zabalená CEK a některé další šifrování metadat jsou pak uloženy jako metadata spolu s zašifrovaný objekt blob ve službě objektů blob.
+Při šifrování vygeneruje Klientská knihovna náhodný vektor inicializace (IV) o 16 bajtech, společně s náhodným šifrovacím klíčem obsahu (CEK) 32 bajtů a provede šifrování obálky dat objektů BLOB pomocí těchto informací. Zabalené CEK a některá další šifrovací metadata se pak ukládají jako metadata objektů BLOB společně s šifrovaným objektem BLOB ve službě.
 
 > [!WARNING]
-> Pokud jsou úpravy nebo odesílání vlastních metadat pro tento objekt blob, je potřeba zajistit, že tato metadata je zachováno. Pokud nahrajete nová metadata bez těchto metadat, zabalené CEK, IV a další metadata budou ztraceny a obsah objektu blob se nikdy bude nenávratně ztracený.
+> Pokud upravujete nebo ukládáte vlastní metadata pro objekt blob, musíte zajistit, aby byla tato metadata zachovaná. Pokud nahrajete nová metadata bez těchto metadat, zabalené CEK, IV a další metadata budou ztraceny a obsah objektu BLOB nebude nikdy možné znovu načíst.
 > 
 > 
 
-Stažení objektu blob šifrované zahrnuje načítání obsahu z celý objekt blob pomocí **získat*** vhodné metody. Zabalené CEK je neobalený a používá se společně s IV (uložené v tomto případě jako metadata objektu blob) k vrácení dešifrovaná data pro uživatele.
+Stažení šifrovaného objektu BLOB zahrnuje načtení obsahu celého objektu BLOB pomocí metod **Get*** pohodlí. Zabalená CEK se nebalí a používá společně s IV (uloženými jako metadata objektů BLOB v tomto případě) k vrácení dešifrovaných dat uživatelům.
 
-Stažení libovolného rozsahu (**získat*** metody s parametry rozsahu předaný) v objektu blob šifrované zahrnuje úpravy rozsahu poskytuje uživatelům zajistí malé množství další data, která slouží k úspěšně dešifrování požadovaný rozsah.
+Stažení libovolného rozsahu (**Get*** metody s předanými parametry rozsahu) v zašifrovaném objektu BLOB zahrnuje úpravu rozsahu poskytnutého uživateli, aby bylo možné získat malé množství dalších dat, která lze použít k úspěšnému dešifrování požadovaného rozsahu. .
 
-Objekty BLOB bloku a objekty BLOB stránky pouze může být šifrované/dešifrovat použití tohoto schématu. Současné době není dostupná podpora pro šifrování doplňovacích objektů BLOB.
+Objekty blob bloku a objekty blob stránky je možné šifrovat nebo dešifrovat pomocí tohoto schématu. V tuto chvíli není k dispozici žádná podpora pro šifrování doplňovacích objektů BLOB.
 
 ### <a name="queues"></a>Fronty
-Protože fronty zprávy mohou mít libovolný formát, definuje klientské knihovně pro vlastní formát, který obsahuje inicializační vektor (IV) a šifrovaného obsahu šifrovací klíč (CEK) v textu zprávy.
+Vzhledem k tomu, že zprávy fronty mohou být libovolného formátu, knihovna klienta definuje vlastní formát, který obsahuje inicializační vektor (IV) a šifrovaný šifrovací klíč (CEK) šifrovaného obsahu () v textu zprávy.
 
-Během šifrování se Klientská knihovna generuje náhodné IV 16 bajtů spolu s náhodné CEK 32 bajtů a provádí obálky šifrování pomocí těchto informací text zprávy ve frontě. Zabalená CEK a některé další šifrování metadat se poté přidají ke šifrované fronty zpráv. Tuto upravenou zprávu (viz dole) je uložená ve službě.
+Při šifrování generuje Klientská knihovna náhodnou hodnotu IV z 16 bajtů spolu s náhodným CEK 32 bajtů a pomocí těchto informací provádí šifrování obálky textu zprávy fronty. Zabalené CEK a některá další šifrovací metadata se pak přidají do zprávy zašifrované fronty. Tato upravená zpráva (uvedená níže) je uložena ve službě.
 
 ```
 <MessageText>{"EncryptedMessageContents":"6kOu8Rq1C3+M1QO4alKLmWthWXSmHV3mEfxBAgP9QGTU++MKn2uPq3t2UjF1DO6w","EncryptionData":{…}}</MessageText>
 ```
 
-Při dešifrování zabalené klíč je extrahují z fronty zpráv a neobalený. Vektor IV je také extrahují z fronty zpráv a použít spolu s rozbalení klíče k dešifrování dat fronty zpráv. Všimněte si, že metadata šifrování malá (pod 500 bajtů), zatímco počítají limit 64KB zprávu fronty, by tak měly být spravovatelné dopad.
+Během dešifrování je zabalený klíč extrahován ze zprávy fronty a rozbalením. Rozhraní IV je také extrahováno ze zprávy fronty a použito společně s nezabaleným klíčem k dešifrování dat zprávy ve frontě. Všimněte si, že metadata šifrování jsou malá (pod 500 bajtů), takže pokud se počítá s limitem 64KB pro zprávu fronty, měl by být dopad spravovatelný.
 
 ### <a name="tables"></a>Tabulky
-Klientská knihovna podporuje šifrování vlastností entity pro vložení a nahrazovat operace.
+Klientská knihovna podporuje šifrování vlastností entit pro operace INSERT a nahrazování.
 
 > [!NOTE]
 > Sloučení se momentálně nepodporuje. Protože podmnožinu vlastností mohou byla zašifrována pomocí dříve za jiný klíč, jednoduše slučování nové vlastnosti a metadata aktualizace způsobí ztrátu dat. Slučují se buď vyžaduje, aby volání další služby do existující entity načíst ze služby nebo pomocí nového klíče pro jednu vlastnost, které nejsou vhodné z důvodů výkonu.
 > 
 > 
 
-Šifrování dat tabulky funguje takto:
+Šifrování dat v tabulce funguje takto:
 
-1. Uživatelé zadat vlastnosti pro šifrování.
-2. Klientská knihovna vygeneruje náhodných inicializační vektor (IV) 16 bajtů spolu s náhodný obsahu šifrovací klíč (CEK) 32 bajtů pro každou entitu a provádí šifrování obálky na jednotlivé vlastnosti šifrování odvozením nové IV jednu vlastnost. Zašifrované vlastnosti se ukládají jako binární data.
-3. Zabalená CEK a některé další šifrování metadat jsou pak uloženy jako dvě další rezervované vlastnosti. První rezervované vlastnosti (\_ClientEncryptionMetadata1) je řetězec, který obsahuje informace o IV, verzi a zabalené klíč. Druhá rezervované vlastnosti (\_ClientEncryptionMetadata2) je binární vlastnost, která uchovává informace o vlastnosti, která jsou šifrovaná. Informace v této druhé vlastnosti (\_ClientEncryptionMetadata2) sama o sobě šifrovaná.
-4. Z důvodu tyto další rezervované vlastnosti vyžadované pro šifrování uživatelé nyní mohou mít pouze 250 vlastní vlastnosti namísto 252. Celková velikost entity musí být menší než 1MB.
+1. Uživatelé určují vlastnosti, které mají být zašifrovány.
+2. Klientská knihovna generuje náhodný vektor inicializace (IV) o 16 bajtech spolu s náhodným šifrovacím klíčem obsahu (CEK) o 32 bajtech pro každou entitu a provede šifrování obálky u jednotlivých vlastností, které se zašifrují, a to odvozením nové IV na vlastnost. Šifrovaná vlastnost se ukládá jako binární data.
+3. Zabalené CEK a některá další šifrovací metadata se pak uloží jako dvě další rezervované vlastnosti. První vyhrazená vlastnost (\_ClientEncryptionMetadata1) je řetězcová vlastnost, která obsahuje informace o IV, verzi a zabaleném klíči. Druhá rezervovaná vlastnost (\_ClientEncryptionMetadata2) je binární vlastnost, která obsahuje informace o vlastnostech, které jsou zašifrovány. Informace v této druhé vlastnosti (\_ClientEncryptionMetadata2) jsou zašifrované.
+4. Vzhledem k těmto dalším rezervovaným vlastnostem vyžadovaným pro šifrování mohou uživatelé nyní mít pouze 250 vlastních vlastností místo 252. Celková velikost entity musí být menší než 1 MB.
 
-   Všimněte si, že lze pouze vlastnosti řetězce zašifrovaná. Pokud se ostatní typy vlastností jsou zašifrované, musí být převedeny na řetězce. Šifrované řetězce jsou uložené ve službě jako binární vlastnosti a jsou převedeny na řetězce (nezpracovaná řetězce, nikoli EntityProperties s typem EdmType.STRING) zpět po dešifrování.
+   Všimněte si, že lze šifrovat pouze vlastnosti řetězce. Pokud mají být zašifrovány jiné typy vlastností, je nutné je převést na řetězce. Šifrované řetězce jsou uloženy ve službě jako binární vlastnosti a jsou převedeny zpět na řetězce (nezpracované řetězce, nikoli EntityProperties s typem EdmType. STRING) po dešifrování.
 
-   Pro tabulky, vedle zásady šifrování musí uživatelé zadat vlastnosti, které mají být šifrována. To lze provést buď uložení těchto vlastností v objektech TableEntity je typ nastaven na EdmType.STRING a šifrování nastavenou na hodnotu true nebo nastavením encryption_resolver_function tableservice objektu. Překladač šifrování je funkce, která přebírá klíč oddílu, klíč řádku a název vlastnosti a vrací logickou hodnotu, která určuje, jestli by měl být šifrovaná tuto vlastnost. Při šifrování klientské knihovny použije tyto informace se rozhodnout, zda vlastnost by se měla šifrovat během zápisu lince. Delegát také poskytuje možnost logiky po tom, jak jsou zašifrované vlastnosti. (Například, pokud X, pak šifrování vlastnost A; v opačném případě šifrování vlastnosti A a B.) Všimněte si, že není potřeba zadat tyto informace při čtení nebo dotazování entit.
+   Pro tabulky, vedle zásady šifrování musí uživatelé zadat vlastnosti, které mají být šifrována. To lze provést buď uložením těchto vlastností v objektech TableEntity s typem nastaveným na EdmType. STRING a Encrypted na hodnotu true, nebo nastavením encryption_resolver_function na objektu tableservice. Překladač šifrování je funkce, která přebírá klíč oddílu, klíč řádku a název vlastnosti a vrací logickou hodnotu, která označuje, zda má být tato vlastnost zašifrována. Při šifrování klientské knihovny použije tyto informace se rozhodnout, zda vlastnost by se měla šifrovat během zápisu lince. Delegát také poskytuje možnost logiky po tom, jak jsou zašifrované vlastnosti. (Například, pokud X, pak šifrování vlastnost A; v opačném případě šifrování vlastnosti A a B.) Všimněte si, že při čtení nebo dotazování entit není nutné tyto informace zadávat.
 
 ### <a name="batch-operations"></a>Dávkové operace
-Jedna zásada šifrování platí pro všechny řádky v dávce. Klientská knihovna interně vygenerujte nový náhodný IV a náhodné CEK každý řádek v dávce. Uživatelé také mohou šifrovat definováním toto chování překladač šifrování různé vlastnosti pro všechny operace v dávce.
-Pokud dávku se vytvoří jako místní správce prostřednictvím metody batch() tableservice, tableservice pro šifrování zásady použijí automaticky služby batch. Pokud dávky je explicitně nevytvořili zavoláním konstruktoru, musíte být zásady šifrování předaného jako parametr a vlevo ponechat beze změny po dobu životnosti služby batch.
-Všimněte si, že entity jsou zašifrované, jako jsou vloženy do služby batch pomocí zásad šifrování služby batch (entity nejsou šifrovaná při potvrzování služby batch pomocí zásad šifrování tableservice).
+Jedna zásada šifrování se vztahuje na všechny řádky v dávce. Knihovna klienta interně vygeneruje nový náhodný a náhodný CEK na řádek v dávce. Uživatelé také mohou zvolit šifrování různých vlastností každé operace v dávce definováním tohoto chování v překladači šifrování.
+Pokud je dávka vytvořená jako správce kontextu prostřednictvím metody tableservice Batch (), zásada šifrování tableservice se automaticky použije pro dávku. Pokud je dávka vytvořena explicitně voláním konstruktoru, musí být zásady šifrování předány jako parametr a v případě životnosti dávky ponechány beze změny.
+Všimněte si, že entity se šifrují, protože jsou vložené do dávky pomocí zásad šifrování této dávky (entity nejsou v době potvrzení dávky pomocí zásad šifrování tableservice šifrované.)
 
 ### <a name="queries"></a>Dotazy
 > [!NOTE]
-> Vzhledem k tomu, entit je jím zašifrovaná, nelze spustit dotazy, které filtrují v zašifrované vlastnosti.  Pokud se pokusíte, budou výsledky nesprávné, služba by se pokouší o porovnání šifrovaná data s nešifrovaným datům.
+> Vzhledem k tomu, že jsou entity zašifrované, nemůžete spouštět dotazy, které filtrují na zašifrovanou vlastnost.  Pokud se pokusíte, výsledky budou nesprávné, protože se služba snaží porovnat zašifrovaná data s nezašifrovanými daty.
 > 
 > 
-> K provedení operace dotazů, je nutné zadat překladače klíče, který je schopen převést všechny klíče v sadě výsledků. Pokud se entity obsažené ve výsledku dotazu. nelze přeložit na zprostředkovateli, klientské knihovny vyvolá chybu. Pro každého dotazu, který provádí projekce na straně serveru, klientské knihovny přidá vlastnosti metadat speciální šifrování (\_ClientEncryptionMetadata1 a \_ClientEncryptionMetadata2) ve výchozím nastavení vybrané sloupce.
+> Chcete-li provést operace s dotazem, je nutné zadat překladač klíčů, který dokáže vyřešit všechny klíče v sadě výsledků dotazu. Pokud entitu obsaženou ve výsledku dotazu nelze přeložit na zprostředkovatele, bude vyvolána chyba klientské knihovny. Pro všechny dotazy, které provádějí projekce na straně serveru, knihovna klienta ve výchozím nastavení přidá do vybraných sloupců speciální\_vlastnosti šifrovacích metadat (ClientEncryptionMetadata1 a \_ClientEncryptionMetadata2).
 > 
 > [!IMPORTANT]
-> Mějte na paměti těchto důležitých bodů při použití šifrování na straně klienta:
+> Pamatujte na tyto důležité body při použití šifrování na straně klienta:
 > 
-> * Při čtení nebo zápisu do objektu blob šifrované, použijte příkazy nahrávání celého objektu blob a příkazy ke stažení objektů blob v rozsahu/celé. Vyhněte se zápis do blob šifrovaným pomocí operace protokolu například vložit blok, vložte seznam blokovaných položek, zápis stránky nebo vymazat stránky; jinak může dojít k poškození zašifrovaný objekt blob a nastavte ji nejde přečíst.
-> * Pro tabulky existuje podobná omezení. Buďte opatrní při aktualizaci šifrované vlastnosti bez aktualizace metadat šifrování.
-> * Pokud nastavíte metadata pro objekt blob šifrované, mohou přepsat šifrování metadat požadovaná pro dešifrování, protože nastavení metadat není sčítání. To platí také pro snímky Neurčujte metadat vytvřit snímek objektu blob šifrované. Pokud metadata musí být nastavena, je nutné volat **get_blob_metadata** nejprve má metoda načíst aktuální metadata šifrování a vyhnout souběžných zápisů při metadat je nastavena.
-> * Povolit **require_encryption** příznak na objekt služby pro uživatele, kteří by měla fungovat jenom s šifrovaná data. Další informace najdete níže.
+> * Při čtení nebo zápisu do šifrovaného objektu BLOB použijte úplné příkazy pro nahrání objektů BLOB a rozsah nebo celé objekty pro stažení objektů BLOB. Vyhněte se zápisu do šifrovaného objektu BLOB pomocí operací protokolu, jako je blok vložení, seznam blokovaných objektů, zápis stránek nebo vymazat stránky. v opačném případě může dojít k poškození šifrovaného objektu BLOB a zpřístupnění ho nečitelným.
+> * V případě tabulek existuje podobné omezení. Nezapomeňte neaktualizovat šifrované vlastnosti bez aktualizace metadat šifrování.
+> * Pokud nastavíte metadata pro zašifrovaný objekt blob, můžete přepsat metadata týkající se šifrování, která jsou nutná k dešifrování, protože nastavení metadat není aditivní. To platí také pro snímky; Vyhněte se zadávání metadat při vytváření snímku šifrovaného objektu BLOB. Pokud musí být nastavena metadata, nezapomeňte nejprve zavolat metodu **get_blob_metadata** a získat aktuální šifrovací metadata a vyhnout se souběžným zápisům při nastavování metadat.
+> * Pro uživatele, kteří by měli pracovat pouze se šifrovanými daty, povolte příznak **require_encryption** u objektu služby. Další informace najdete níže.
 
-Klientská knihovna pro úložiště očekává, že zadaná KEK a klíče překladač implementovat následující rozhraní. [Služba Azure Key Vault](https://azure.microsoft.com/services/key-vault/) podporu pro Python KEK správy čeká na vyřízení a bude se integrovat do této knihovny po dokončení.
+Klientská knihovna pro úložiště očekává, že poskytnuté KEK a překladač klíčů implementují následující rozhraní. Podpora [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) správy Python KEK čeká na vyřízení a po dokončení bude integrovaná do této knihovny.
 
-## <a name="client-api--interface"></a>Klientské rozhraní API / rozhraní
-Po vytvoření objektu služby storage (tj. blockblobservice), uživatel může přiřadit hodnoty polí, které tvoří zásady šifrování: key_encryption_key key_resolver_function a require_encryption. Uživatelé mohou zadat pouze KEK pouze překladače, nebo obojí. key_encryption_key je základní typ klíče, který je identifikován pomocí identifikátoru klíče, který poskytuje logiku pro zabalení a rozbalení. key_resolver_function se používá k překladu během procesu dešifrovací klíč. Vrátí platný KEK zadaný identifikátor klíče. To poskytuje uživatelům možnost výběru mezi více klíčů, které jsou spravovány v několika umístěních.
+## <a name="client-api--interface"></a>Rozhraní API klienta/rozhraní
+Po vytvoření objektu služby úložiště (tj. blockblobservice) může uživatel přiřadit hodnoty k polím, která tvoří zásady šifrování: key_encryption_key, key_resolver_function a require_encryption. Uživatelé můžou poskytovat jenom KEK, jenom překladač nebo obojí. key_encryption_key je základní typ klíče, který je identifikován pomocí identifikátoru klíče a poskytuje logiku pro balení a rozbalení. key_resolver_function se používá k překladu klíče během dešifrovacího procesu. Vrátí platný KEK s daným identifikátorem klíče. To umožňuje uživatelům volit mezi několika klíči, které jsou spravovány ve více umístěních.
 
-Klíče KEK musí implementovat následující metody, které úspěšně šifrování dat:
+KEK musí implementovat následující metody pro úspěšné šifrování dat:
 
-* wrap_key(cek): Zabalí zadanou CEK (v bajtech), pomocí algoritmu podle volby uživatele. Vrátí zabaleného klíče.
-* get_key_wrap_algorithm(): Vrátí algoritmus, který slouží k zabalení klíče.
-* get_kid(): Vrátí řetězec id klíče pro tento KEK.
-  Klíče KEK musí implementovat následující metody, které úspěšně dešifrovat data:
-* unwrap_key (cek, algoritmus): Vrátí nezabalené formu zadané CEK pomocí algoritmu zadaný řetězec.
-* get_kid(): Vrátí id klíče řetězec pro tento KEK.
+* wrap_key(cek): Zalomí zadané CEK (bajty) pomocí algoritmu výběru uživatele. Vrátí zabaleného klíče.
+* get_key_wrap_algorithm(): Vrátí algoritmus použitý k zabalení klíčů.
+* get_kid(): Vrátí ID řetězcového klíče pro tento KEK.
+  KEK musí implementovat následující metody pro úspěšné dešifrování dat:
+* unwrap_key (cek, algoritmus): Vrátí nezabalenou formu zadaného CEK pomocí algoritmu zadaného řetězce.
+* get_kid(): Vrátí ID řetězcového klíče pro tento KEK.
 
-Překladač klíčů alespoň musí implementovat metodu, která zadané id klíče, vrátí odpovídající klíče KEK implementující rozhraní výše. Jenom tato metoda slouží k přiřazení vlastnosti key_resolver_function na objekt služby.
+Překladač klíčů musí přinejmenším implementovat metodu, která za ID klíče vrátí odpovídající KEK implementující rozhraní výše. Vlastnost key_resolver_function objektu služby se přiřadí pouze této metodě.
 
-* Pro šifrování klíč je používán vždy a absence klíč způsobí chybu.
-* K dešifrování:
+* Pro šifrování se klíč použije vždycky a absence klíče bude mít za následek chybu.
+* Pro dešifrování:
 
-  * Překladač klíče je vyvolána, pokud zadaná k získání klíče. Pokud překladač je zadána, ale nemá žádné mapování pro identifikátor klíče, je vržena chyba.
-  * Pokud překladač není zadán, ale zadaný klíč, klíč se používá, pokud jeho identifikátor odpovídá požadovaný identifikátor klíče. Pokud se neshoduje identifikátor, je vržena chyba.
+  * Překladač klíčů je vyvolán, pokud je zadán pro získání klíče. Pokud je překladač zadán, ale nemá mapování pro identifikátor klíče, je vyvolána chyba.
+  * Pokud není překladač zadán, ale je zadán klíč, použije se klíč, pokud jeho identifikátor odpovídá požadovanému identifikátoru klíče. Pokud identifikátor neodpovídá, je vyvolána chyba.
 
-    Ukázky šifrování azure.storage.samples předvádí podrobnější scénář začátku do konce pro objekty BLOB, fronty a tabulky.
-      Ukázková implementace KEK a překladač klíče jsou k dispozici v ukázkové soubory jako KeyWrapper a KeyResolver v uvedeném pořadí.
+    Ukázky šifrování v Azure. Storage. Samples ukazují podrobnější scénář pro objekty blob, fronty a tabulky, které jsou podrobněji kompletní.
+      Ukázkové implementace KEK a překladače klíčů jsou k dispozici v ukázkových souborech jako základní obálku a v uvedeném pořadí.
 
-### <a name="requireencryption-mode"></a>Režim RequireEncryption
-Uživatelé mohou volitelně povolit režim operace, kde musí být všechny nahrávání a stahování šifrovaná. V tomto režimu se nezdaří pokusy o nahrání dat bez zásady šifrování nebo stahování dat, které nejsou šifrovány ve službě na straně klienta. **Require_encryption** příznak na objekt služby, určuje toto chování.
+### <a name="requireencryption-mode"></a>RequireEncryption režim
+Uživatelé mohou volitelně povolit režim operace, kde všechna nahraná a stažená soubory musí být zašifrovaná. V tomto režimu se pokusy o nahrání dat bez zásad šifrování nebo stažení dat, která nejsou ve službě zašifrovaná, selžou na klientovi. Toto chování řídí příznak **require_encryption** na objektu služby.
 
-### <a name="blob-service-encryption"></a>Šifrování objektů BLOB service
-U objektu blockblobservice nastavte šifrování zásad pole. Všechno ostatní bude zpracován adresou klientské knihovny interně.
+### <a name="blob-service-encryption"></a>Blob service šifrování
+Nastavte pole zásad šifrování v objektu blockblobservice. Všechny ostatní budou zpracovávány v interní knihovně klienta.
 
 ```python
 # Create the KEK used for encryption.
 # KeyWrapper is the provided sample implementation, but the user may use their own object as long as it implements the interface above.
-kek = KeyWrapper('local:key1') # Key identifier
+kek = KeyWrapper('local:key1')  # Key identifier
 
 # Create the key resolver used for decryption.
 # KeyResolver is the provided sample implementation, but the user may use whatever implementation they choose so long as the function set on the service object behaves appropriately.
@@ -163,19 +163,20 @@ my_block_blob_service.key_encryption_key = kek
 my_block_blob_service.key_resolver_funcion = key_resolver.resolve_key
 
 # Upload the encrypted contents to the blob.
-my_block_blob_service.create_blob_from_stream(container_name, blob_name, stream)
+my_block_blob_service.create_blob_from_stream(
+    container_name, blob_name, stream)
 
 # Download and decrypt the encrypted contents from the blob.
 blob = my_block_blob_service.get_blob_to_bytes(container_name, blob_name)
 ```
 
-### <a name="queue-service-encryption"></a>Šifrování služby Queue
-U objektu queueservice nastavte šifrování zásad pole. Všechno ostatní bude zpracován adresou klientské knihovny interně.
+### <a name="queue-service-encryption"></a>Služba front šifrování
+Nastavte pole zásad šifrování v objektu QueueService. Všechny ostatní budou zpracovávány v interní knihovně klienta.
 
 ```python
 # Create the KEK used for encryption.
 # KeyWrapper is the provided sample implementation, but the user may use their own object as long as it implements the interface above.
-kek = KeyWrapper('local:key1') # Key identifier
+kek = KeyWrapper('local:key1')  # Key identifier
 
 # Create the key resolver used for decryption.
 # KeyResolver is the provided sample implementation, but the user may use whatever implementation they choose so long as the function set on the service object behaves appropriately.
@@ -193,15 +194,15 @@ my_queue_service.put_message(queue_name, content)
 retrieved_message_list = my_queue_service.get_messages(queue_name)
 ```
 
-### <a name="table-service-encryption"></a>Šifrování služby Table
-Kromě vytváření zásad šifrování a nastavíte ho na možnosti žádosti, je třeba buď zadat **encryption_resolver_function** na **tableservice**, nebo nastavte atribut šifrování EntityProperty.
+### <a name="table-service-encryption"></a>Table service šifrování
+Kromě vytvoření zásad šifrování a jejich nastavení v možnostech žádosti musíte buď zadat **encryption_resolver_function** na **tableservice**, nebo nastavit atribut Encrypt pro EntityProperty.
 
-### <a name="using-the-resolver"></a>Použitím překladač
+### <a name="using-the-resolver"></a>Použití překladače
 
 ```python
 # Create the KEK used for encryption.
 # KeyWrapper is the provided sample implementation, but the user may use their own object as long as it implements the interface above.
-kek = KeyWrapper('local:key1') # Key identifier
+kek = KeyWrapper('local:key1')  # Key identifier
 
 # Create the key resolver used for decryption.
 # KeyResolver is the provided sample implementation, but the user may use whatever implementation they choose so long as the function set on the service object behaves appropriately.
@@ -209,10 +210,13 @@ key_resolver = KeyResolver()
 key_resolver.put_key(kek)
 
 # Define the encryption resolver_function.
+
+
 def my_encryption_resolver(pk, rk, property_name):
     if property_name == 'foo':
         return True
     return False
+
 
 # Set the KEK and key resolver on the service object.
 my_table_service.key_encryption_key = kek
@@ -224,19 +228,20 @@ my_table_service.insert_entity(table_name, entity)
 
 # Retrieve Entity
 # Note: No need to specify an encryption resolver for retrieve, but it is harmless to leave the property set.
-my_table_service.get_entity(table_name, entity['PartitionKey'], entity['RowKey'])
+my_table_service.get_entity(
+    table_name, entity['PartitionKey'], entity['RowKey'])
 ```
 
-### <a name="using-attributes"></a>Pomocí atributů
-Jak je uvedeno výše, mohou být označeny vlastností pro šifrování tak, že ho uložíte v objektu EntityProperty a nastavení šifrování pole.
+### <a name="using-attributes"></a>Použití atributů
+Jak bylo uvedeno výše, vlastnost může být označena pro šifrování tím, že ji uloží do objektu EntityProperty a nastaví pole šifrovat.
 
 ```python
 encrypted_property_1 = EntityProperty(EdmType.STRING, value, encrypt=True)
 ```
 
-## <a name="encryption-and-performance"></a>Šifrování a výkonu
-Všimněte si, že šifruje vaše výsledky úložiště dat v dalším výkonnostním režiím. Vygenerovat symetrický klíč a vektor IV, samotný obsah musí být zašifrován a další metadata musí být ve formátu a nahrát. Tato dodatečná režie se liší v závislosti na množství dat, které jsou šifrované. Doporučujeme vždy testovat výkon při vývoji svých aplikací zákazníkům.
+## <a name="encryption-and-performance"></a>Šifrování a výkon
+Všimněte si, že šifrování dat úložiště má za následek zvýšené nároky na výkon. Klíč obsahu a IV se musí vygenerovat, samotný obsah musí být zašifrovaný a musí se naformátovat a nahrát další metadata. Tato režie se bude lišit v závislosti na množství šifrovaných dat. Zákazníkům doporučujeme, aby při vývoji vždy otestovali své aplikace na výkon.
 
 ## <a name="next-steps"></a>Další postup
-* Stáhněte si [Klientská knihovna pro úložiště Azure pro Javu PyPi balíček](https://pypi.python.org/pypi/azure-storage)
-* Stáhněte si [Klientská knihovna Azure Storage pro Python zdrojový kód z Githubu](https://github.com/Azure/azure-storage-python)
+* Azure Storage stažení [balíčku klientské knihovny pro PyPI Java](https://pypi.python.org/pypi/azure-storage)
+* Stažení [klientské knihovny Azure Storage pro zdrojový kód Pythonu z GitHubu](https://github.com/Azure/azure-storage-python)

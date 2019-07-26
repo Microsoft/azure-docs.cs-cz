@@ -1,7 +1,7 @@
 ---
-title: Odesílání žádostí o hledání do API pro vyhledávání videí Bingu
-titlesuffix: Azure Cognitive Services
-description: Přečtěte si o odesílání vyhledávacích dotazů do API pro vyhledávání videí Bingu.
+title: Odesílání požadavků hledání do rozhraní API Bingu pro vyhledávání videí
+titleSuffix: Azure Cognitive Services
+description: Přečtěte si informace o posílání vyhledávacích dotazů na rozhraní API Bingu pro vyhledávání videí.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,16 +10,16 @@ ms.subservice: bing-video-search
 ms.topic: overview
 ms.date: 06/24/2019
 ms.author: aahi
-ms.openlocfilehash: bf0f74fe76ec7a83e0ce23ca83141276a677a5df
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.openlocfilehash: f1d433dd7d919aa5d11f2f59b74a5e3f2dca0b59
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67868090"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68500287"
 ---
-# <a name="search-for-videos-with-the-bing-video-search-api"></a>Hledání videí s API pro vyhledávání videí Bingu
+# <a name="search-for-videos-with-the-bing-video-search-api"></a>Hledání videí pomocí rozhraní API Bingu pro vyhledávání videí
 
-API pro vyhledávání videí Bingu umožňuje snadno do svých aplikací integrovat funkce vyhledávání Bingu cognitive zprávy. Rozhraní API primárně najde a vrátí odpovídající videa z webu, poskytuje několik funkcí pro inteligentní a zaměřují se načtení videa na webu.
+Rozhraní API Bingu pro vyhledávání videí usnadňuje integraci funkcí vyhledávání zpráv Bingu ve vašich aplikacích. I když rozhraní API primárně najde a vrátí relevantní videa z webu, nabízí několik funkcí pro inteligentní a cílené načítání videí na webu.
 
 ## <a name="getting-videos"></a>Získávání videí
 
@@ -98,7 +98,7 @@ Odpověď obsahuje objekt [Videos](https://docs.microsoft.com/rest/api/cognitive
 
 ## <a name="video-thumbnails"></a>Miniatury videa
 
-Můžete zobrazit všechny, nebo podmnožinu miniatury videa vrácený Video API Bingu pro vyhledávání. Pokud zobrazíte podmnožinu, poskytněte uživateli možnost zobrazit zbývající videa. jako součást rozhraní API Bingu pro [použít a zobrazit požadavky](../UseAndDisplayRequirements.md), je třeba zobrazit videa v pořadí poskytnutém v odpovědi. Informace o změně velikosti miniatury najdete v tématu [Změna velikosti a oříznutí miniatur](../../bing-web-search/resize-and-crop-thumbnails.md). 
+Můžete zobrazit všechny nebo podmnožinu miniatur videa vrácených rozhraní API Bingu pro vyhledávání videí. Pokud zobrazíte podmnožinu, poskytněte uživateli možnost zobrazit zbývající videa. v rámci [požadavků na použití a zobrazení](../UseAndDisplayRequirements.md)rozhraní API Bingu je nutné zobrazit videa v uvedeném pořadí v odpovědi. Informace o změně velikosti miniatury najdete v tématu [Změna velikosti a oříznutí miniatur](../../bing-web-search/resize-and-crop-thumbnails.md). 
 
 Pokud uživatel najede myší na miniaturu, může pomocí [motionThumbnailUrl](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#video-motionthumbnailurl) spustit přehrávání miniatury videa. Ujistěte se, že je při zobrazení přiřazená filmová miniatura.
 
@@ -106,7 +106,7 @@ Pokud uživatel najede myší na miniaturu, může pomocí [motionThumbnailUrl](
 ![Motion thumbnail of a video](../bing-web-search/media/cognitive-services-bing-web-api/bing-web-video-motion-thumbnail.PNG)
 -->
 
-Po kliknutí na miniaturu existují tři možnosti pro zobrazení videa:
+Při kliknutí na miniaturu jsou k dispozici tři možnosti zobrazení videa:
 
 - Použitím adresy [hostPageUrl](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#video-hostpageurl) zobrazíte video na webu hostitele (například YouTube)
 - Použitím adresy [webSearchUrl](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#video-websearchurl) zobrazíte video v prohlížeči videa Bingu
@@ -144,7 +144,7 @@ Host: api.cognitive.microsoft.com
 
 ## <a name="expanding-the-query"></a>Rozšíření dotazu
 
-Pokud Bing dokáže rozšířením dotazu zúžit původní hledání, bude objekt [Videos](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videos) obsahovat pole `queryExpansions`. Například, pokud se dotaz *čištění mezery*, rozšířené dotazy nesmusí být: Ovládací prvek čištění **nástroje**, čištění mezery **od základů**, čištění vazbu **počítače**, a **snadno** čištění ovládací prvek.
+Pokud Bing dokáže rozšířením dotazu zúžit původní hledání, bude objekt [Videos](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videos) obsahovat pole `queryExpansions`. Pokud například dotaz *čistí mezery*, rozšířené dotazy mohou být: Čisticí **nástroje**pro hřbet, čisticí mezery **z pozemního**a jednoduchého čištění na hřbetu.
 
 Následující příklad ukazuje rozšířené dotazy pro dotaz *čištění okapů*.
 

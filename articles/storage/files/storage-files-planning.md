@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/25/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: aba41d62df49a40d9fc3686684b39b71e1363453
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: 6282ce426b08c4ad9c44bead0bd4ec3d259f65fe
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68296038"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68501422"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Plánování nasazení služby Soubory Azure
 
@@ -126,11 +126,11 @@ Následující tabulka ilustruje několik příkladů těchto vzorců pro zříz
 |100         | 100     | Až 300     | 66   | 44   |
 |500         | 500     | Až 1 500   | 90   | 60   |
 |1,024       | 1,024   | Až 3 072   | 122   | 81   |
-|5 120       | 5 120   | Až 15 360  | 368   | 245   |
-|10 240      | 10 240  | Až 30 720  | 675 | 450   |
-|33 792      | 33 792  | Až 100 000 | 2 088 | 1 392   |
-|51 200      | 51 200  | Až 100 000 | 3 132 | 2 088   |
-|102 400     | 100,000 | Až 100 000 | 6 204 | 4 136   |
+|5 120       | 5 120   | Až 15 360  | 368   | 245   |
+|10 240      | 10 240  | Až 30 720  | 675 | 450   |
+|33 792      | 33 792  | Až 100 000 | 2 088 | 1 392   |
+|51 200      | 51 200  | Až 100 000 | 3 132 | 2 088   |
+|102 400     | 100,000 | Až 100 000 | 6 204 | 4 136   |
 
 > [!NOTE]
 > Výkon sdílených složek závisí na omezeních sítě počítačů, dostupné šířce pásma sítě, velikosti v/v, paralelních operacích, mezi mnoha dalšími faktory. Chcete-li dosáhnout maximálního rozsahu výkonu, rozšíříte zatížení napříč více virtuálními počítači. Některé běžné problémy s výkonem a alternativní řešení najdete v [Průvodci odstraňováním potíží](storage-troubleshooting-files-performance.md) .
@@ -209,7 +209,7 @@ Standardní sdílené složky jsou k dispozici ve všech oblastech až do 5 TiB.
 |Oblast  |Podporovaná redundance  |Podporuje existující účty úložiště.  |
 |---------|---------|---------|
 |Jihovýchodní Asie     |LRS|Ne         |
-|Západní Evropa     |LRS|Ne         |
+|Západní Evropa     |LRS, ZRS|Ne         |
 |USA – západ 2     |LRS, ZRS|Ne         |
 
 Abychom vám pomohli upřednostnit nové oblasti a funkce, vyplňte prosím tento [průzkum](https://aka.ms/azurefilesatscalesurvey).
