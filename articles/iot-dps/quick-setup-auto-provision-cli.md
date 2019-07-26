@@ -10,10 +10,10 @@ services: iot-dps
 manager: timlt
 ms.custom: mvc
 ms.openlocfilehash: 3062fb640985498ba35e23f6310828a2bd59bfed
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "60363712"
 ---
 # <a name="set-up-the-iot-hub-device-provisioning-service-with-azure-cli"></a>Nastavení služby Azure IoT Hub Device Provisioning pomocí Azure CLI
