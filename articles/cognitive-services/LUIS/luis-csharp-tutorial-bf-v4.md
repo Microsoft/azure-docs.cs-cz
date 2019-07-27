@@ -1,7 +1,7 @@
 ---
-title: Language Understanding Bot C# v4
-titleSuffix: Language Understanding - Azure Cognitive Services
-description: Pomocí jazyka C# vytvořte chatovacího robota integrovaného se službou Language Understanding (LUIS). Robot využívá rozhraní Bot Framework verze 4 a Azure Web app bot service.
+title: Language Understanding robot C# v4
+titleSuffix: Azure Cognitive Services
+description: Pomocí jazyka C# vytvořte chatovacího robota integrovaného se službou Language Understanding (LUIS). Robot má vytvořenou verzi bot Framework verze 4 a službu Azure Web App bot.
 services: cognitive-services
 author: diberry
 ms.custom: seodec18
@@ -11,22 +11,22 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 06/24/2019
 ms.author: diberry
-ms.openlocfilehash: 8a03d87441f26d3116aff8af33fd94da0ef9a909
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 210724e8a8b9b585a3e308b8e321d809e4e897a1
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67438430"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560659"
 ---
-# <a name="tutorial-use-a-web-app-bot-enabled-with-language-understanding-in-c"></a>Kurz: Použijte Web App Bot povolené službou Language Understanding vC#
+# <a name="tutorial-use-a-web-app-bot-enabled-with-language-understanding-in-c"></a>Kurz: Použití robota webové aplikace s povoleným Language Understanding vC#
 
-Použití C# vytvářet chatovací robot integrovaná jazyka (LUIS). Robot je vytvořené pomocí Azure [Web app bot](https://docs.microsoft.com/azure/bot-service/) prostředků a [Bot Framework verze](https://github.com/Microsoft/botbuilder-dotnet) V4.
+Použijte C# k sestavení robota pro chat integrovaný s jazykem porozumění (Luis). Robot má vytvořenou službu Azure [Web App bot](https://docs.microsoft.com/azure/bot-service/) Resource a [bot Framework verze](https://github.com/Microsoft/botbuilder-dotnet) v4.
 
 **V tomto kurzu se naučíte:**
 
 > [!div class="checklist"]
 > * Vytvořit Web App Bota. Tento proces za vás vytvoří novou aplikaci LUIS.
-> * Stáhněte si projekt bot vytvořena webová služba bot
+> * Stažení projektu robota vytvořeného službou Web bot Service
 > * Spustit robota a emulátor místně na počítači
 > * Zobrazit výsledky promluv v robotovi
 
@@ -36,7 +36,7 @@ Použití C# vytvářet chatovací robot integrovaná jazyka (LUIS). Robot je vy
 * [Visual Studio](https://visualstudio.microsoft.com/downloads/)
 
 
-## <a name="create-a-web-app-bot-resource"></a>Vytvořit prostředek použijete web app bot
+## <a name="create-a-web-app-bot-resource"></a>Vytvoření prostředku robota webové aplikace
 
 1. Na portálu **Azure Portal** vyberte [Vytvořit nový prostředek](https://portal.azure.com).
 
@@ -54,27 +54,27 @@ Použití C# vytvářet chatovací robot integrovaná jazyka (LUIS). Robot je vy
     |App name (Název aplikace)|Název se používá jako subdoména, když je váš robot nasazený do cloudu (například humanresourcesbot.azurewebsites.net).|`luis-csharp-bot-` + `<your-name>`, například `luis-csharp-bot-johnsmith`|
     |Bot template (Šablona robota)|Nastavení Bot Frameworku – viz následující tabulka|
     |LUIS App location (Umístění aplikace LUIS)|Musí být stejné jako oblast prostředků LUIS|`westus`|
-    |Plán App service/umístění|Neměňte z Zadaná výchozí hodnota.|
-    |Application Insights|Neměňte z Zadaná výchozí hodnota.|
-    |Microsoft App ID a heslo|Neměňte z Zadaná výchozí hodnota.|
+    |Plán služby App Service / umístění|Neměňte z poskytnuté výchozí hodnoty.|
+    |Application Insights|Neměňte z poskytnuté výchozí hodnoty.|
+    |ID a heslo aplikace od Microsoftu|Neměňte z poskytnuté výchozí hodnoty.|
 
-1. V **Bot šablony**, vyberte následující a potom klepněte **vyberte** tlačítko v těchto nastavení:
+1. V **šabloně robota**vyberte následující a pak klikněte na tlačítko **Vybrat** pod těmito nastaveními:
 
     |Nastavení|Účel|Výběr|
     |--|--|--|
     |SDK version (Verze sady SDK)|Bot framework version (Verze Bot Frameworku)|**SDK v4**|
     |SDK language (Jazyk sady SDK)|Programovací jazyk robota|**C#**|
-    |Bot|Typ robota|**Basic Bot** (Základní robot)|
+    |Dole|Typ robota|**Basic Bot** (Základní robot)|
     
-1. Vyberte **Vytvořit**. Tím se vytvoří a nasadí služba robota do Azure. Část tohoto procesu vytvoří aplikaci LUIS nazvanou `luis-csharp-bot-XXXX`. Tento název je založen na názvu aplikace /Azure Bot Service.
+1. Vyberte **Vytvořit**. Tím se vytvoří a nasadí služba robota do Azure. Část tohoto procesu vytvoří aplikaci LUIS nazvanou `luis-csharp-bot-XXXX`. Tento název vychází z názvu aplikace služby/Azure bot.
 
-    [![Vytvoření webové aplikace robota](./media/bfv4-csharp/create-web-app-service.png)](./media/bfv4-csharp/create-web-app-service.png#lightbox)
+    [![Vytvoření robota webové aplikace](./media/bfv4-csharp/create-web-app-service.png)](./media/bfv4-csharp/create-web-app-service.png#lightbox)
 
-    Počkejte, dokud bot service je vytvořen před pokračováním.
+    Než budete pokračovat, počkejte, než se vytvoří služba robot.
 
-## <a name="the-bot-has-a-language-understanding-model"></a>Robot má model Language Understanding
+## <a name="the-bot-has-a-language-understanding-model"></a>Robot má Language Understanding model
 
-Proces vytvoření bot service vytvoří také novou aplikaci LUIS pomocí tříd Intent a projevy příklad. Robot poskytuje mapování záměrů na novou aplikaci LUIS pro následující záměry: 
+Proces vytvoření služby robot také vytvoří novou aplikaci LUIS s záměry a příkladem projevy. Robot poskytuje mapování záměrů na novou aplikaci LUIS pro následující záměry: 
 
 |Záměry základního robota LUIS|Příklad promluvy|
 |--|--|
@@ -84,31 +84,31 @@ Proces vytvoření bot service vytvoří také novou aplikaci LUIS pomocí tří
 
 ## <a name="test-the-bot-in-web-chat"></a>Testování ve Web Chat robota
 
-1. Zatímco jste pořád na webu Azure Portal pro novým robotem, vyberte **testování ve Web Chat**. 
-1. V **napište zprávu** textového pole zadejte text `hello`. Informace o rozhraní bot framework, jakož i Příklady dotazů pro konkrétní model LUIS, jako je například rezervace letenky na Paříž jako odpověď vrátí robota. 
+1. I když jste stále v Azure Portal pro nový robot, vyberte **test na webu chat**. 
+1. Do textového pole **text zprávy** zadejte text `hello`. Robot reaguje na informace o rozhraní robota a příklady dotazů na konkrétní LUIS model, jako je například rezervace letu do Paříž. 
 
-    ![Snímek obrazovky webu Azure portal, zadejte text "hello".](./media/bfv4-csharp/ask-bot-question-in-portal-test-in-web-chat.png)
+    ![Snímek obrazovky Azure Portal zadejte text Hello.](./media/bfv4-csharp/ask-bot-question-in-portal-test-in-web-chat.png)
 
-    Funkce testu můžete použít pro rychlé testování svého robota. Další informace dokončení testování, včetně ladění, stažení kódu robotů a pomocí sady Visual Studio. 
+    Pro rychlé testování robota můžete použít funkci testu. Pro úplnější testování, včetně ladění, Stáhněte si kód robota a použijte Visual Studio. 
 
-## <a name="download-the-web-app-bot-source-code"></a>Stáhněte si zdrojový kód web app bot
+## <a name="download-the-web-app-bot-source-code"></a>Stažení zdrojového kódu robota webové aplikace
 Pokud chcete vyvíjet kód Web App Bota, stáhněte si kód a použijte ho ve svém místním počítači. 
 
 1. Na portálu Azure Portal vyberte **Build** (Sestavení) v části **Bot management** (Správa robota). 
 
 1. Vyberte **Download Bot source code** (Stáhnout zdrojový kód robota). 
 
-    [![Stáhněte si web app bot zdrojový kód pro základního robota](../../../includes/media/cognitive-services-luis/bfv4/download-code.png)](../../../includes/media/cognitive-services-luis/bfv4/download-code.png#lightbox)
+    [![Stažení zdrojového kódu robota webové aplikace pro základní bot](../../../includes/media/cognitive-services-luis/bfv4/download-code.png)](../../../includes/media/cognitive-services-luis/bfv4/download-code.png#lightbox)
 
-1. Při zobrazení dialogu požádá **obsahují nastavení aplikace v souboru zip staženého?** vyberte **Ano**.
+1. Když se automaticky otevře okno s dotazem **zahrnout nastavení aplikace ve staženém souboru ZIP?** vyberte **Ano**.
 
 1. Když se zdrojový kód zazipuje, zobrazí se zpráva s odkazem na stažení kódu. Vyberte odkaz. 
 
-1. Uložte soubor zip do místního počítače a extrahujte soubory. Otevřete projekt pomocí sady Visual Studio. 
+1. Uložte soubor zip do místního počítače a extrahujte soubory. Otevřete projekt v aplikaci Visual Studio. 
 
-## <a name="review-code-to-send-utterance-to-luis-and-get-response"></a>Revize kódu utterance posílala LUIS a získat odpovědi
+## <a name="review-code-to-send-utterance-to-luis-and-get-response"></a>Přečtěte si kód, který odešle utterance do LUIS a získá odpověď.
 
-1. Otevřít **LuisHelper.cs** souboru. Tady se uživatelská promluva zadaná do robota odešle do služby LUIS. Odpověď služby luis se vrátí z metody jako **BookDetails** objektu. Když vytvoříte vlastní robota, by měl taky vytvořit vlastní objekt vrátit podrobnosti služby luis. 
+1. Otevřete soubor **LuisHelper.cs** . Tady se uživatelská promluva zadaná do robota odešle do služby LUIS. Odpověď z LUIS je vrácena z metody jako objekt **BookDetails** . Když vytvoříte vlastní robot, měli byste také vytvořit vlastní objekt, který vrátí podrobnosti z LUIS. 
 
 
     ```csharp
@@ -169,7 +169,7 @@ Pokud chcete vyvíjet kód Web App Bota, stáhněte si kód a použijte ho ve sv
     }
     ```
 
-1. Otevřít **BookingDetails.cs** Chcete-li zobrazit, jak objekt abstrahuje služby LUIS informace. 
+1. Otevřete **BookingDetails.cs** a podívejte se, jak objekt vyabstrakce informace Luis. 
 
     ```csharp
     // Copyright (c) Microsoft Corporation. All rights reserved.
@@ -188,7 +188,7 @@ Pokud chcete vyvíjet kód Web App Bota, stáhněte si kód a použijte ho ve sv
     }
     ```
 
-1. Otevřít **dialogová okna -> BookingDialog.cs** pochopit, jak objekt BookingDetails slouží ke správě toku konverzace. Podrobnosti cesty se zobrazí výzva, v krocích, pak celý rezervace je potvrzen a nakonec opakován zpět tak, aby uživatel. 
+1. Otevřete **dialogová okna – > BookingDialog.cs** , abyste porozuměli tomu, jak se objekt BookingDetails používá ke správě toku konverzace. Podrobnosti o cestách se dotazují v krocích, potom se potvrdí celá rezervace a nakonec se vrátí zpět uživateli. 
 
     ```csharp
     // Copyright (c) Microsoft Corporation. All rights reserved.
@@ -303,19 +303,19 @@ Pokud chcete vyvíjet kód Web App Bota, stáhněte si kód a použijte ho ve sv
     ```
 
 
-## <a name="start-the-bot-code-in-visual-studio"></a>Spustit bot kódu v sadě Visual Studio
+## <a name="start-the-bot-code-in-visual-studio"></a>Spuštění kódu robota v aplikaci Visual Studio
 
-V sadě Visual Studio spusťte robota. Otevře se okno prohlížeče s webem Web App Bota na adrese `http://localhost:3978/`. Zobrazí se domovská stránka s informacemi o váš robot.
+V sadě Visual Studio spusťte robota. Otevře se okno prohlížeče s webem Web App Bota na adrese `http://localhost:3978/`. Zobrazí se Domovská stránka s informacemi o robotovi.
 
-![Zobrazí se domovská stránka s informacemi o váš robot.](./media/bfv4-csharp/running-bot-web-home-page-success.png)
+![Zobrazí se Domovská stránka s informacemi o robotovi.](./media/bfv4-csharp/running-bot-web-home-page-success.png)
 
-## <a name="use-the-bot-emulator-to-test-the-bot"></a>Použití emulátoru robota k otestování robota
+## <a name="use-the-bot-emulator-to-test-the-bot"></a>Použití emulátoru bot k otestování robota
 
-1. Začněte Bot emulátoru a vyberte **otevřít Bot**.
-1. V **otevřete robota** vyskakovací dialogové okno, zadejte adresu URL vašeho robota, jako například `http://localhost:3978/api/messages`. `/api/messages` Trasy je webová adresa pro robota.
-1. Zadejte **ID aplikace Microsoft** a **heslo Microsoft App**byl nalezen v **appsettings.json** soubor v kořenové složce kódu bot jste si stáhli.
+1. Spusťte emulátor bot a vyberte **otevřít robot**.
+1. V automaticky **otevřeném** okně robota zadejte adresu URL robota, například `http://localhost:3978/api/messages`. `/api/messages` Trasa je webová adresa pro robota.
+1. Zadejte **ID aplikace Microsoftu** a **heslo aplikace Microsoftu**, které najdete v souboru **appSettings. JSON** v kořenovém adresáři kódu robota, který jste stáhli.
 
-    Volitelně můžete vytvořit novým robotem, konfigurace a zkopírujte `appId` a `appPassword` z **appsettings.json** soubor v projektu sady Visual Studio pro robota. Název konfiguračního souboru robota by měl být stejný jako název robota. 
+    Volitelně můžete vytvořit novou konfiguraci robota a zkopírovat `appId` a `appPassword` ze souboru **appSettings. JSON** v projektu sady Visual Studio pro robot. Název konfiguračního souboru robota by měl být stejný jako název bot. 
 
     ```json
     {
@@ -338,31 +338,31 @@ V sadě Visual Studio spusťte robota. Otevře se okno prohlížeče s webem Web
     }
     ```
 
-1. V emulátoru robota, zadejte `Hello` dostanete stejnou odpověď pro základního robota, jako jste obdrželi **testování ve Web Chat**.
+1. V emulátoru bot zadejte `Hello` a získejte stejnou reakci na základní bot, jak jste dostali v **testu na webu chat**.
 
-    [![Odpověď základního robota v emulátoru](./media/bfv4-csharp/ask-bot-emulator-a-question-and-get-response.png)](./media/bfv4-csharp/ask-bot-emulator-a-question-and-get-response.png#lightbox)
+    [![Základní odpověď robota v emulátoru](./media/bfv4-csharp/ask-bot-emulator-a-question-and-get-response.png)](./media/bfv4-csharp/ask-bot-emulator-a-question-and-get-response.png#lightbox)
 
 
-## <a name="ask-bot-a-question-for-the-book-flight-intent"></a>Zeptejte se bot pro knihy letu záměr
+## <a name="ask-bot-a-question-for-the-book-flight-intent"></a>Zeptat se robota na záměr pro let
 
-1. V emulátoru bot rezervovat tak, že zadáte následující utterance let: 
+1. V emulátoru bot zarezervujte let zadáním následujících utterance: 
 
     ```bot
     Book a flight from Paris to Berlin on March 22, 2020
     ```
 
-    Emulátor bot požádá o potvrzení. 
+    Emulátor bot se zeptá, jestli se má potvrdit. 
 
-1. Vyberte **Ano**. Robot jako odpověď vrátí souhrn jeho akce. 
-1. Z protokolu bot emulátor, vyberte řádek, který zahrnuje `Luis Trace`. Tím se zobrazí odpověď JSON na záměr a entity utterance služby luis.
+1. Vyberte **Ano**. Robot odpoví souhrnem jeho akcí. 
+1. V protokolu emulátoru bot vyberte řádek, který obsahuje `Luis Trace`. Tím se zobrazí odpověď JSON z LUIS pro záměr a entity utterance.
 
-    [![Odpověď základního robota v emulátoru](./media/bfv4-csharp/ask-luis-book-flight-question-get-json-response-in-bot-emulator.png)](./media/bfv4-csharp/ask-luis-book-flight-question-get-json-response-in-bot-emulator.png#lightbox)
+    [![Základní odpověď robota v emulátoru](./media/bfv4-csharp/ask-luis-book-flight-question-get-json-response-in-bot-emulator.png)](./media/bfv4-csharp/ask-luis-book-flight-question-get-json-response-in-bot-emulator.png#lightbox)
 
 [!INCLUDE [Bot Information](../../../includes/cognitive-services-qnamaker-luis-bot-info.md)]
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace naleznete v [ukázky](https://github.com/microsoft/botframework-solutions) s konverzační robotů. 
+Podívejte se na další [ukázky](https://github.com/microsoft/botframework-solutions) s konverzací roboty. 
 
 > [!div class="nextstepaction"]
-> [Vytvoření aplikace Language Understanding s doménou vlastního subjektu](luis-quickstart-intents-only.md)
+> [Vytvoření aplikace Language Understanding s vlastní doménou předmětu](luis-quickstart-intents-only.md)

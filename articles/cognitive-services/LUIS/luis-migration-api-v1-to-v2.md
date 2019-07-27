@@ -1,7 +1,7 @@
 ---
 title: V1 na v2 migrace rozhraní API
 titleSuffix: Azure Cognitive Services
-description: Koncový bod verze 1 a vytváření rozhraní API pro rozpoznávání jazyka jsou zastaralé. Tento průvodce vám pochopit, jak migrovat na koncový bod verze 2 a rozhraní API pro vytváření.
+description: Koncové body verze 1 a vytváření Language Understanding API jsou zastaralé. Tento průvodce vám pomůže pochopit, jak migrovat na koncový bod verze 2 a vytváření rozhraní API.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,18 +11,18 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 04/02/2019
 ms.author: diberry
-ms.openlocfilehash: a4e176552fcbab9d54da696439c7e46750be3944
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ab42ee29e508bfa62e2dba7a6e6a06baa0da2489
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65522366"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560319"
 ---
-# <a name="api-v1-to-v2-migration-guide-for-luis-apps"></a>Rozhraní API v1 na v2 Průvodce migrací pro aplikace LUIS
-Verze 1 [koncový bod](https://aka.ms/v1-endpoint-api-docs) a [vytváření](https://aka.ms/v1-authoring-api-docs) jsou zastaralé rozhraní API. Tento průvodce vám pochopit, jak migrovat na verzi 2 [koncový bod](https://go.microsoft.com/fwlink/?linkid=2092356) a [vytváření](https://go.microsoft.com/fwlink/?linkid=2092087) rozhraní API. 
+# <a name="api-v1-to-v2-migration-guide-for-luis-apps"></a>Průvodce migrací rozhraní API V1 na v2 pro aplikace LUIS
+[Koncový bod](https://aka.ms/v1-endpoint-api-docs) verze 1 a rozhraní API pro [vytváření obsahu](https://aka.ms/v1-authoring-api-docs) jsou zastaralé. Tento průvodce vám pochopit, jak migrovat na verzi 2 [koncový bod](https://go.microsoft.com/fwlink/?linkid=2092356) a [vytváření](https://go.microsoft.com/fwlink/?linkid=2092087) rozhraní API. 
 
 ## <a name="new-azure-regions"></a>Nové oblasti Azure
-Služba LUIS je nový [oblastech](https://aka.ms/LUIS-regions) k rozhraním API LUIS k dispozici. Služba LUIS poskytuje jiný portál pro skupiny oblasti. Aplikace musí být vytvořen ve stejné oblasti, které očekáváte, že k dotazování. Aplikace se nemigrují automaticky oblastech. Exportujte aplikace z jedné oblasti a importovat do jiného být k dispozici v nové oblasti.
+Služba LUIS je nový [oblastech](https://aka.ms/LUIS-regions) k rozhraním API LUIS k dispozici. LUIS poskytuje pro skupiny oblastí jiný portál. Aplikace musí být vytvořen ve stejné oblasti, které očekáváte, že k dotazování. Aplikace se nemigrují automaticky oblastech. Exportujte aplikace z jedné oblasti a importovat do jiného být k dispozici v nové oblasti.
 
 ## <a name="authoring-route-changes"></a>Vytváření změny směrování
 Vytváření rozhraní API route změnit pomocí **GID** trasy k použití **api** trasy.
@@ -35,7 +35,7 @@ Vytváření rozhraní API route změnit pomocí **GID** trasy k použití **api
 
 
 ## <a name="endpoint-route-changes"></a>Koncový bod trasy změny
-Koncový bod rozhraní API má nové parametry řetězce dotazu, stejně jako jiné odpověď. Pokud příznak podrobné hodnotu true, všechny příkazy, bez ohledu na to skóre, které jsou vráceny v poli s názvem záměrů, kromě topScoringIntent.
+Rozhraní API koncového bodu má nové parametry řetězce dotazu i jinou odpověď. Pokud příznak podrobné hodnotu true, všechny příkazy, bez ohledu na to skóre, které jsou vráceny v poli s názvem záměrů, kromě topScoringIntent.
 
 | version | ZÍSKAT trasu |
 |--|--|
@@ -153,7 +153,7 @@ LUIS navrhuje projevy ze stávajících [koncový bod projevy](luis-how-to-revie
 |/ luis/api/v2.0/apps/customprebuiltdomains/{culture}  |získat|
 
 ## <a name="importing-1x-app-into-2x"></a>Import aplikace 1.x do 2.x
-Exportované 1.x aplikace JSON má některé oblasti, které je třeba změnit před importem do [LUIS] [ LUIS] 2.0. 
+Exportovaný formát JSON aplikace 1. x obsahuje některé oblasti, které je třeba před importem do [LUIS][LUIS] 2,0 změnit. 
 
 ### <a name="prebuilt-entities"></a>Předem připravených entit 
 [Předem připravených entit](luis-prebuilt-entities.md) změnily. Ujistěte se, že používáte V2 předem připravených entit. Jedná se o pomocí [datetimeV2](luis-reference-prebuilt-datetimev2.md), namísto data a času. 

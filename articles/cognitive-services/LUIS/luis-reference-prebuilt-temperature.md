@@ -1,6 +1,6 @@
 ---
-title: Teplota předem připravených entit
-titleSuffix: Azure
+title: Předem vytvořená jednotka – LUIS
+titleSuffix: Azure Cognitive Services
 description: Tento článek obsahuje teploty informace předem připravených entit v Language Understanding (LUIS).
 services: cognitive-services
 author: diberry
@@ -11,22 +11,22 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: 8d5e10a7a4fe7fb12bc4140690fcabffa16b32be
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9ecf977e1a477eb4b9178a6259fbe26ef18a9ec2
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65072100"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560153"
 ---
-# <a name="temperature-prebuilt-entity-for-a-luis-app"></a>Teplota předem připravených entit pro aplikace LUIS
+# <a name="temperature-prebuilt-entity-for-a-luis-app"></a>Předem vytvořená entita pro aplikaci pro LUIS
 Teplota extrahuje celou řadu typů teploty. Protože tato entita je už vytrénovaný, není potřeba přidat příklad projevy obsahující teploty do aplikace. Teplota entity se podporuje v [mnoha jazykových verzí](luis-reference-prebuilt-entities.md). 
 
 ## <a name="types-of-temperature"></a>Typy teploty
-Spravuje se z teplota [rozpoznávání textu](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-NumbersWithUnit.yaml#L819) úložiště GitHub
+Teplota se spravuje z úložiště pro [rozpoznávání textu](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-NumbersWithUnit.yaml#L819) v GitHubu.
 
 ## <a name="resolution-for-prebuilt-temperature-entity"></a>Řešení pro teploty předem připravených entit
 
-### <a name="api-version-2x"></a>Verze rozhraní API 2.x
+### <a name="api-version-2x"></a>Rozhraní API verze 2. x
 
 Následující příklad ukazuje rozlišení **builtin.temperature** entity.
 
@@ -58,9 +58,9 @@ Následující příklad ukazuje rozlišení **builtin.temperature** entity.
 }
 ```
 
-### <a name="preview-api-version-3x"></a>Verze Preview rozhraní API 3.x
+### <a name="preview-api-version-3x"></a>Verze Preview rozhraní API verze 3. x
 
-Následující kód JSON je `verbose` parametr nastaven na `false`:
+Následující kód JSON je s `verbose` parametrem nastaveným na: `false`
 
 ```json
 {
@@ -85,7 +85,7 @@ Následující kód JSON je `verbose` parametr nastaven na `false`:
 }
 ```
 
-Následující kód JSON je `verbose` parametr nastaven na `true`:
+Následující kód JSON je s `verbose` parametrem nastaveným na: `true`
 
 ```json
 {

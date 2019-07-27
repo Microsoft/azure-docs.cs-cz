@@ -1,5 +1,5 @@
 ---
-title: Shoda přesný text
+title: Přesný text shody – LUIS
 titleSuffix: Azure Cognitive Services
 description: Získejte data, která odpovídají předem definovanému seznamu položek. Každá položka v seznamu může mít synonyma, která také přesně odpovídají.
 services: cognitive-services
@@ -11,16 +11,16 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: df37e7aad2420d0bc280121634d49675ae29ee5a
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: a5aeeb74d26ce633beb0e9feef20a2315bc0ff1d
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65236423"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560399"
 ---
-# <a name="tutorial-get-exact-text-matched-data-from-an-utterance"></a>Kurz: Získat data přesně odpovídající text z utterance
+# <a name="tutorial-get-exact-text-matched-data-from-an-utterance"></a>Kurz: Získání přesného textu se shodnými daty z utterance
 
-V tomto kurzu se pochopit, jak získat data entity, která odpovídá předdefinovaného seznamu položek. 
+V tomto kurzu se seznámíte s tím, jak získat data entity, která odpovídají předdefinovanému seznamu položek. 
 
 **V tomto kurzu se naučíte:**
 
@@ -37,23 +37,23 @@ V tomto kurzu se pochopit, jak získat data entity, která odpovídá předdefin
 
 ## <a name="what-is-a-list-entity"></a>Co je entita seznamu?
 
-Seznam entit je přesný text odpovídá slova v utterance. 
+Entita seznamu je přesný text, který se shoduje se slovy v utterance. 
 
-Ke každé položce v seznamu může existovat seznam synonym. Pro aplikaci lidských zdrojů oddělení společnosti lze identifikovat podle několika klíčových informací, například fakturační oddělení kódy, běžné zkratky a oficiální název. 
+Ke každé položce v seznamu může existovat seznam synonym. V případě aplikace pro lidské zdroje může být oddělení společnosti identifikováno několika klíčovými informacemi, jako je například oficiální název, běžné zkratky a kódy fakturačního oddělení. 
 
-Musí určit oddělení, které zaměstnanec přechází k aplikaci lidských zdrojů. 
+Aplikace lidských zdrojů potřebuje určit oddělení, na které se zaměstnanec převádí. 
 
 Entita seznamu je vhodná pro tento typ dat, když platí následující:
 
 * Hodnoty dat jsou známou sadou.
 * Tato sada nepřekračuje maximální [hranice](luis-boundaries.md) aplikace LUIS pro tento typ entity.
-* Text promluvy se přesně shoduje se synonymem nebo názvem v kanonickém tvaru. Služba LUIS nepoužívá seznamu nad rámec textu přesné shody. Pouze seznam entit nejsou vyřešil slovního rozboru, množné číslo a další varianty konfigurací. Chcete-li spravovat změny, zvažte použití [vzor](luis-concept-patterns.md#syntax-to-mark-optional-text-in-a-template-utterance) syntaxí volitelný text, který. 
+* Text promluvy se přesně shoduje se synonymem nebo názvem v kanonickém tvaru. LUIS nepoužívá seznam nad rámec přesně vyhovujících textů. Odvozování, plural a další variace se nevyřešily pouze entitou seznamu. Chcete-li spravovat variace, zvažte použití [vzoru](luis-concept-patterns.md#syntax-to-mark-optional-text-in-a-template-utterance) s volitelnou syntaxí textu. 
 
 ## <a name="create-a-new-app"></a>Vytvoření nové aplikace
 
 [!INCLUDE [Follow these steps to create a new LUIS app](../../../includes/cognitive-services-luis-create-new-app-steps.md)]
 
-## <a name="create-an-intent-to-transfer-employees-to-a-different-department"></a>Vytvoření záměru zaměstnanci přenést k jinému oddělení
+## <a name="create-an-intent-to-transfer-employees-to-a-different-department"></a>Vytvoření záměru pro přenos zaměstnanců do jiného oddělení
 
 1. [!INCLUDE [Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
@@ -67,36 +67,36 @@ Entita seznamu je vhodná pro tento typ dat, když platí následující:
 
     |Ukázkové promluvy|
     |--|
-    |Přesunout Jan Macek W. z účetního oddělení|
-    |Jill Jones z přenosu pro výzkum a vývoj|
-    |Oddělení 1234 má nového člena s názvem Bradstreet faktury|
-    |Jackson Jan místo v inženýrství |
-    |Přesunout Debra Doughtery uvnitř prodeje|
-    |MV Jill Jones do IT|
-    |Alice Anderson Shift na DevOps|
-    |Carl Chamerlin pro Finance|
-    |Steve Standish k 1234|
-    |Tanner Thompson k 3456|
+    |přesunout Jan W. Novák do účetního oddělení|
+    |přenos Jill Novotný z na R & D|
+    |Oddělení 1234 má nového člena s názvem Bill Bradstreet|
+    |Umístění Jan Jacksonův in Engineering |
+    |přesunout Debra Doughtery na prodej v rámci|
+    |MV Jill Novotný|
+    |Posunutí Alice Anderson na DevOps|
+    |Carl Chamerlin na finance|
+    |Steve Standish na 1234|
+    |Tanner Václav na 3456|
 
-    [![Snímek obrazovky záměr pomocí příkladu projevy](media/luis-quickstart-intent-and-list-entity/intent-transfer-employee-to-department.png "snímek záměr pomocí příkladu projevy")](media/luis-quickstart-intent-and-list-entity/intent-transfer-employee-to-department.png#lightbox)
+    [![Snímek obrazovky záměru s příkladem projevy](media/luis-quickstart-intent-and-list-entity/intent-transfer-employee-to-department.png "Snímek obrazovky záměru s příkladem projevy")](media/luis-quickstart-intent-and-list-entity/intent-transfer-employee-to-department.png#lightbox)
 
     [!INCLUDE [Do not use too few utterances](../../../includes/cognitive-services-luis-too-few-example-utterances.md)]  
 
-## <a name="department-list-entity"></a>Oddělení seznam entit
+## <a name="department-list-entity"></a>Entita seznamu oddělení
 
-Teď, když **TransferEmployeeToDepartment** záměr obsahuje příklad projevy, LUIS je potřeba pochopit, co je oddělení. 
+Teď, když má **TransferEmployeeToDepartment** záměr příklad projevy, Luis musí pochopit, co je oddělení. 
 
-Primární, _kanonické_, název pro každou položku je název oddělení. Mezi synonyma každý název v kanonickém tvaru patří: 
+Primární, _kanonický_název pro každou položku je název oddělení. Příklady synonym každého kanonického názvu jsou: 
 
-|Název v kanonickém tvaru|Synonyma|
+|Kanonický název|Synonyma|
 |--|--|
-|Účtárna|acct<br>accting<br>3456|
-|Vývoj pro operace|Vývoj a provoz<br>4949|
-|Strojírenství|"Eng"<br>nesmí<br>4567|
-|Finance|dokončení<br>2020|
+|Účtárna|účtu<br>accting<br>3456|
+|Operace vývoje|Vývoj a provoz<br>4949|
+|Strojírenství|ENG<br>modulu<br>4567|
+|Finance|–<br>2020|
 |Informační technologie|it<br>2323|
-|Uvnitř prodeje|isale<br>insale<br>1414|
-|Výzkum a vývoj|R&D<br>1234|
+|V rámci prodeje|isale<br>prodej<br>1414|
+|Výzkum a vývoj|R & D<br>1234|
 
 1. Na levém panelu vyberte **Entities** (Entity).
 
@@ -106,25 +106,25 @@ Primární, _kanonické_, název pro každou položku je název oddělení. Mezi
 
     [![Snímek obrazovky vytváření nové entity automaticky otevíraná okna](media/luis-quickstart-intent-and-list-entity/create-new-list-entity-named-department.png "snímek obrazovky vytváření nové entity automaticky otevíraná okna")](media/luis-quickstart-intent-and-list-entity/create-new-list-entity-named-department.png#lightbox)
 
-1. Na stránce entity oddělení zadejte `Accounting` jako novou hodnotu.
+1. Na stránce entita oddělení zadejte `Accounting` novou hodnotu.
 
-1. Synonyma přidejte synonyma z předchozí tabulky.
+1. V případě synonym přidejte synonyma z předchozí tabulky.
 
-1. Pokračujte v přidávání kanonické názvy a jejich synonyma. 
+1. Pokračujte v přidávání všech kanonických názvů a jejich synonym. 
 
-## <a name="add-example-utterances-to-the-none-intent"></a>Přidání projevů příklad na hodnotu None záměru 
+## <a name="add-example-utterances-to-the-none-intent"></a>Přidat příklad projevy k záměru None 
 
 [!INCLUDE [Follow these steps to add the None intent to the app](../../../includes/cognitive-services-luis-create-the-none-intent.md)]
 
-## <a name="train-the-app-so-the-changes-to-the-intent-can-be-tested"></a>Trénování aplikace, takže můžete otestovat změny k příslušnému záměru 
+## <a name="train-the-app-so-the-changes-to-the-intent-can-be-tested"></a>Výuka aplikace, aby se mohly testovat změny záměru 
 
 [!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
-## <a name="publish-the-app-so-the-trained-model-is-queryable-from-the-endpoint"></a>Publikování aplikace, tedy dotazovatelné z koncového bodu trénovaného modelu
+## <a name="publish-the-app-so-the-trained-model-is-queryable-from-the-endpoint"></a>Publikujte aplikaci, aby se Queryable z koncového bodu vyškolený model.
 
 [!INCLUDE [LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 
-## <a name="get-intent-and-entity-prediction-from-endpoint"></a>Získání předpovědi záměr a entity z koncového bodu
+## <a name="get-intent-and-entity-prediction-from-endpoint"></a>Získání záměru a předpovědi entit z koncového bodu
 
 1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)] 
 
@@ -169,17 +169,17 @@ Primární, _kanonické_, název pro každou položku je název oddělení. Mezi
 
 ## <a name="related-information"></a>Související informace
 
-* [Seznam entit](luis-concept-entity-types.md#list-entity) koncepční informace
-* [Trénování](luis-how-to-train.md)
+* [Výpis](luis-concept-entity-types.md#list-entity) koncepčních informací entity
+* [Postup výuky](luis-how-to-train.md)
 * [Jak publikovat](luis-how-to-publish-app.md)
-* [Testování v portálu služby LUIS](luis-interactive-test.md)
+* [Testování na portálu LUIS](luis-interactive-test.md)
 
 
 ## <a name="next-steps"></a>Další postup
 V tomto kurzu jste vytvořili nový záměr, přidali jste ukázkové promluvy a pak jste vytvořili entitu seznamu určenou k extrakci shodného textu ze záznamů. Po natrénování a publikování aplikace jste dotazem adresovaným koncovému bodu zjistili záměr a vrátili extrahovaná data.
 
-Pokračovat v této aplikaci [přidání složenou entitu](luis-tutorial-composite-entity.md).
+Pokračujte v této aplikaci a [přidejte složenou entitu](luis-tutorial-composite-entity.md).
 
 > [!div class="nextstepaction"]
-> [Přidání předem připravených entit s rolí do aplikace](tutorial-entity-roles.md)
+> [Přidat předem vytvořenou entitu s rolí do aplikace](tutorial-entity-roles.md)
 

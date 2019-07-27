@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-custom-search
 ms.topic: quickstart
-ms.date: 05/15/2019
+ms.date: 07/26/2019
 ms.author: aahi
-ms.openlocfilehash: 3703658d6cab78592c50a23deaf9da2a426aebec
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: e95b9aa8f01142065202e029c6298fc4c4cb1294
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68405171"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68565727"
 ---
 # <a name="quickstart-call-your-bing-custom-search-endpoint-using-nodejs"></a>Rychlý start: Volání koncového bodu Vlastní vyhledávání Bingu pomocí Node. js
 

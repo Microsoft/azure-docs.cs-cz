@@ -1,5 +1,5 @@
 ---
-title: Publikování aplikace
+title: Publikování aplikace – LUIS
 titleSuffix: Azure Cognitive Services
 description: Po dokončení vytváření a testování aplikace LUIS aktivní, zpřístupní ji pro klientské aplikace ji publikujete do koncového bodu.
 services: cognitive-services
@@ -11,14 +11,14 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 01/08/2019
 ms.author: diberry
-ms.openlocfilehash: 22bed877d853c7023f8efe6bfb3dd21b4aa4c8df
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: fdbdb2cd13d131019c4230aa369af31240d25f0d
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60194423"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563648"
 ---
-# <a name="publish-your-active-trained-app-to-a-staging-or-production-endpoint"></a>Publikování aplikace aktivní, trénované na pracovní nebo produkční koncový bod
+# <a name="publish-your-active-trained-app-to-a-staging-or-production-endpoint"></a>Publikujte svou aktivní, školenou aplikaci do pracovního nebo produkčního koncového bodu.
 
 Po dokončení vytváření a testování aplikace LUIS aktivní, zpřístupní ji pro klientské aplikace ji publikujete do koncového bodu. 
 
@@ -38,7 +38,7 @@ Publikování aplikace do všech oblastí, které jsou spojené s prostředky sl
 
 Pokud vaše aplikace se úspěšně publikuje, zobrazí se upozornění zelené úspěch v horní části stránky prohlížeče. Zelená oznamovací pruh také obsahuje odkaz na koncové body. 
 
-![Publikování automaticky otevírané okno s odkazem na koncový bod](./media/luis-how-to-publish-app/publish-success.png)
+![Publikování automaticky otevíraného okna s odkazem na koncový bod](./media/luis-how-to-publish-app/publish-success.png)
 
 Pokud budete potřebovat adresu URL koncového bodu, vyberte odkaz. Získáte taky k adresám URL, koncový bod tak, že vyberete **spravovat** v horní nabídce vyberte **klíče a koncových bodů** v levé nabídce. 
 
@@ -56,7 +56,7 @@ Analýza subjektivního hodnocení umožňuje LUIS můžete integrovat s [rozhra
 
 Není potřeba zadat klíč pro analýzu textu a nic neplatíte fakturace pro tuto službu ke svému účtu Azure. Když zaškrtnete toto nastavení, je trvalé. 
 
-Je skóre mezi 1 a 0 označující pozitivní mínění data (blíže 1) ani na zápornou (blíže 0) mínění data. Popisek mínění `positive`, `neutral`, a `negative` se děje u každého podporované jazykové verze. V současné době podporuje jenom v angličtině mínění popisky. 
+Je skóre mezi 1 a 0 označující pozitivní mínění data (blíže 1) ani na zápornou (blíže 0) mínění data. Popisek `positive`mínění, `neutral`a `negative` je na podporovanou jazykovou verzi. V současné době podporuje popisky mínění jenom angličtina. 
 
 Další informace o odpovědi JSON koncového bodu s analýzou mínění, naleznete v tématu [analýzu subjektivního hodnocení](luis-concept-data-extraction.md#sentiment-analysis)
 

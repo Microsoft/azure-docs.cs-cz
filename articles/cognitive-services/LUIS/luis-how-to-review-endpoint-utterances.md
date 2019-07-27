@@ -1,7 +1,7 @@
 ---
-title: Projděte si uživatel projevy
-titleSuffix: Language Understanding - Azure Cognitive Services
-description: Aktivní učení koncový bod dotazy zachytí a vybere uživatele koncový bod projevy, které je jistí, jaké. Můžete zkontrolovat tyto projevy vyberte záměr a označování entit, pro tyto projevy čtení reálného světa. Přijmout tyto změny do vaší příklad projevy a trénování a publikování. Služba LUIS pak identifikuje projevy přesněji.
+title: Kontrola uživatele projevy-LUIS
+titleSuffix: Azure Cognitive Services
+description: Active Learning zachycuje dotazy koncových bodů a vybere koncové body uživatele projevy, že si nejste jistí. Projděte si tyto projevy a vyberte záměr a označte entity pro tyto projevyy na úrovni Read-World. Přijměte tyto změny do svého ukázkového projevyu a potom proveďte výuku a publikování. LUIS pak identifikuje projevy přesněji.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,25 +11,25 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 03/25/2019
 ms.author: diberry
-ms.openlocfilehash: 8fac360682ef11c438cdec333fac21d6f8cfc117
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c2f49d4bf573cc2dc2e1a3b8fc13413a738df8ba
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60195079"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560450"
 ---
-# <a name="how-to-review-endpoint-utterances-in-luis-portal-for-active-learning"></a>Kontrola projevy koncový bod portálu služby LUIS aktivní učení
+# <a name="how-to-review-endpoint-utterances-in-luis-portal-for-active-learning"></a>Postup kontroly služby Endpoint projevy na portálu LUIS pro aktivní učení
 
-[Aktivní učení](luis-concept-review-endpoint-utterances.md) koncový bod dotazy zachytí a vybere uživatele koncový bod projevy, které je jistí, jaké. Můžete zkontrolovat tyto projevy vyberte záměr a označování entit, pro tyto projevy čtení reálného světa. Přijmout tyto změny do vaší příklad projevy a trénování a publikování. Služba LUIS pak identifikuje projevy přesněji.
+[Active Learning](luis-concept-review-endpoint-utterances.md) zachycuje dotazy koncových bodů a vybere koncové body uživatele projevy, že si nejste jistí. Projděte si tyto projevy a vyberte záměr a označte entity pro tyto projevyy na úrovni Read-World. Přijměte tyto změny do svého ukázkového projevyu a potom proveďte výuku a publikování. LUIS pak identifikuje projevy přesněji.
 
 
 ## <a name="enable-active-learning"></a>Povolit aktivní učení
 
-Umožňuje aktivně učit přihlaste dotazy uživatelů. To lze provést tak, že nastavíte [dotazu koncový bod](luis-get-started-create-app.md#query-the-endpoint-with-a-different-utterance) s `log=true` řetězec dotazu parametr a hodnotu.
+Pokud chcete povolit aktivní učení, Zaprotokolujte uživatelské dotazy. Toho je možné dosáhnout nastavením [dotazu koncového bodu](luis-get-started-create-app.md#query-the-endpoint-with-a-different-utterance) s `log=true` parametrem a hodnotou QueryString.
 
 ## <a name="disable-active-learning"></a>Zakázat aktivní učení
 
-Zakázat active learning, nemusíte protokolu dotazy uživatelů. To lze provést tak, že nastavíte [dotazu koncový bod](luis-get-started-create-app.md#query-the-endpoint-with-a-different-utterance) s `log=false` řetězec dotazu parametr a hodnotu.
+Pokud chcete zakázat aktivní učení, Neprotokolujte uživatelské dotazy. Toho je možné dosáhnout nastavením [dotazu koncového bodu](luis-get-started-create-app.md#query-the-endpoint-with-a-different-utterance) s `log=false` parametrem a hodnotou QueryString.
 
 ## <a name="filter-utterances"></a>Filtrovat projevy
 

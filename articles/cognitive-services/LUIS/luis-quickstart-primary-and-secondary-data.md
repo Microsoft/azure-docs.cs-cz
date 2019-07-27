@@ -1,7 +1,7 @@
 ---
-title: Jednoduché entity, seznam frází
+title: Jednoduchá entita, seznam frází – LUIS
 titleSuffix: Azure Cognitive Services
-description: V tomto kurzu se extrakce dat zjištěné počítače pracovní úlohy pro název z utterance pomocí jednoduchého entity. Za účelem zvýšení přesnosti extrakce přidáte seznam termínů, které jsou pro jednoduchou entitu specifické.
+description: V tomto kurzu extrahujete pomocí jednoduché entity data z pracovní úlohy, která se naučila z utterance. Za účelem zvýšení přesnosti extrakce přidáte seznam termínů, které jsou pro jednoduchou entitu specifické.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,14 +11,14 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 07/16/2019
 ms.author: diberry
-ms.openlocfilehash: a03a1224451411617f38c8cecafbef008aa08916
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 786c5725046885a0321696e95703c53081e96979
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68276222"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560333"
 ---
-# <a name="tutorial-extract-names-with-simple-entity-and-a-phrase-list"></a>Kurz: Extrahovat názvy s jednoduchou entitu a seznam fráze
+# <a name="tutorial-extract-names-with-simple-entity-and-a-phrase-list"></a>Kurz: Extrahování názvů pomocí jednoduchých entit a seznamu frází
 
 V tomto kurzu extrahujete strojově naučená data názvu pracovní pozice z promluvy pomocí **jednoduché** entity. Za účelem zvýšení přesnosti extrakce přidáte seznam termínů, které jsou pro jednoduchou entitu specifické.
 
@@ -28,9 +28,9 @@ Jednoduchá entita rozpozná jeden koncept dat obsažený ve slovech nebo fráz�
 
 <!-- green checkmark -->
 > [!div class="checklist"]
-> * Importovat ukázková aplikace
+> * Importovat ukázkovou aplikaci
 > * Přidat jednoduchou entitu 
-> * Přidat seznam frázi a zvýšit tak signál slova
+> * Přidat seznam frází, aby se zvýšila slova signálů
 > * Trénování 
 > * Publikování 
 > * Zjistit záměry a entity z koncového bodu
@@ -48,7 +48,7 @@ Jednoduchá entita je vhodná pro tento typ dat, když platí následující:
 * Data nejsou správně naformátovaná, jako je tomu například u regulárních výrazů.
 * Data nejsou běžná, nejedná se například o předem připravenou entitu telefonních čísel nebo dat.
 * Data přesně neodpovídají seznamu známých slov, jako je tomu například u entity seznamu.
-* Data neobsahují dalších datových položek, jako je například složené entity nebo kontextové role.
+* Data neobsahují jiné datové položky, jako jsou například složené nebo kontextové role.
 
 Představte si následující promluvy z chatbota:
 
@@ -77,15 +77,15 @@ Tato aplikace LUIS obsahuje názvy pracovních pozic v několika záměrech. Dí
 
 Jakmile označíte entity v ukázkových promluvách, je důležité přidat seznam frází, abyste zesílili signál jednoduché entity. Seznam frází **neslouží** jako přesná shoda a nemusí zahrnovat všechny možné očekávané hodnoty. 
 
-## <a name="import-example-app"></a>Importovat ukázková aplikace
+## <a name="import-example-app"></a>Importovat ukázkovou aplikaci
 
-1.  Stáhněte a uložte [souboru JSON aplikace](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/build-app/intentonly.json) z kurzu záměry.
+1.  Stáhněte a uložte [soubor JSON aplikace](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/build-app/intentonly.json) z kurzu záměry.
 
 2. Naimportujte soubor JSON do nové aplikace.
 
 3. V části **Manage** (Správa) na kartě **Versions** (Verze) naklonujte verzi a pojmenujte ji `simple`. Klonování představuje skvělý způsob, jak si můžete vyzkoušet různé funkce služby LUIS, aniž by to mělo vliv na původní verzi. Název verze je součástí cesty URL, a proto smí obsahovat jenom znaky, které jsou platné v adresách URL.
 
-## <a name="mark-entities-in-example-utterances-of-an-intent"></a>Označování entit v příkladu projevy záměru
+## <a name="mark-entities-in-example-utterances-of-an-intent"></a>Označení entit v příkladu projevy záměru
 
 1. [!INCLUDE [Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
@@ -99,14 +99,14 @@ Jakmile označíte entity v ukázkových promluvách, je důležité přidat sez
 
     ![Modální automaticky otevírané okno pro vytvoření jednoduché entity s názvem pracovní pozice a typem Simple (Jednoduchá)](media/luis-quickstart-primary-and-secondary-data/hr-create-simple-entity-popup.png)
 
-1. Ve zbývající projevy označit slov úlohy související s **úlohy** entity, když vyberete slovo nebo frázi, poté vyberete **úlohy** v místní nabídce. 
+1. Ve zbývajících projevy označte slova související s úlohou entitou **úlohy** , a to tak, že vyberete slovo nebo frázi a potom v místní nabídce vyberete možnost **úloha** . 
 
     [![Snímek obrazovky LUIS označování entit úlohy zvýrazněný](media/luis-quickstart-primary-and-secondary-data/hr-label-simple-entity.png "snímek obrazovky LUIS označování entit úlohy zvýrazněný")](media/luis-quickstart-primary-and-secondary-data/hr-label-simple-entity.png#lightbox)
 
 
-## <a name="add-more-example-utterances-and-mark-entity"></a>Přidejte další příklad projevy a označte entity
+## <a name="add-more-example-utterances-and-mark-entity"></a>Přidat další příklady projevy a označit entitu
 
-Jednoduché entity musí mnoho příkladů abyste měli vysokou spolehlivostí předpovědí. 
+Jednoduché entity potřebují mnoho příkladů, aby měly vysokou důvěru předpovědi. 
  
 1. Přidejte další promluvy a označte slova a fráze označující pracovní pozice jako entitu **Job** (Pracovní pozice). 
 
@@ -129,25 +129,25 @@ Jednoduché entity musí mnoho příkladů abyste měli vysokou spolehlivostí p
     |My curriculum vitae for professor of biology is enclosed (Přikládám curriculum vitae pro pozici profesor biologie).|professor of biology (profesor biologie)|
     |I would like to apply for the position in photography (Chtěl bych se přihlásit na pozici fotograf).|photography (fotograf)|
 
-## <a name="mark-job-entity-in-other-intents"></a>Označit úlohu entity v jiných záměry
+## <a name="mark-job-entity-in-other-intents"></a>Označit entitu úlohy v jiných záměrech
 
 1. V levé nabídce vyberte **Intents** (Záměry).
 
 1. V seznamu záměrů vyberte **GetJobInformation** (Informace o pracovní pozici). 
 
-1. Popisek úlohy v příkladu projevy
+1. Označte úlohy v příkladu projevy
 
-    Pokud jsou v jedné záměr než jiné záměr projevů další příklad, tohoto záměru má vyšší pravděpodobnost, že se nejvyšší předpokládané intext. 
+    Pokud existuje více příkladů projevy v jednom záměru než jiný záměr, má tento záměr větší pravděpodobnost, že se jedná o nejvyšší předpokládaný text. 
 
-## <a name="train-the-app-so-the-changes-to-the-intent-can-be-tested"></a>Trénování aplikace, takže můžete otestovat změny k příslušnému záměru 
+## <a name="train-the-app-so-the-changes-to-the-intent-can-be-tested"></a>Výuka aplikace, aby se mohly testovat změny záměru 
 
 [!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
-## <a name="publish-the-app-so-the-trained-model-is-queryable-from-the-endpoint"></a>Publikování aplikace, tedy dotazovatelné z koncového bodu trénovaného modelu
+## <a name="publish-the-app-so-the-trained-model-is-queryable-from-the-endpoint"></a>Publikujte aplikaci, aby se Queryable z koncového bodu vyškolený model.
 
 [!INCLUDE [LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 
-## <a name="get-intent-and-entity-prediction-from-endpoint"></a>Získání předpovědi záměr a entity z koncového bodu 
+## <a name="get-intent-and-entity-prediction-from-endpoint"></a>Získání záměru a předpovědi entit z koncového bodu 
 
 1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
@@ -221,9 +221,9 @@ V následujícím souboru JSON vrátí služba LUIS správný záměr `ApplyForJ
 
 Protože názvem může být cokoli, predikuje služba LUIS entity přesněji, pokud má seznam frází se slovy pro zlepšení signalizování.
 
-## <a name="to-boost-signal-of-the-job-related-words-add-a-phrase-list-of-job-related-words"></a>Chcete-li boost signál slov souvisejících s úlohami přidejte frázi seznam souvisejících s úlohami slov
+## <a name="to-boost-signal-of-the-job-related-words-add-a-phrase-list-of-job-related-words"></a>Chcete-li zvýšit signál slov souvisejících s úlohou, přidejte seznam frází slov souvisejících s úlohou.
 
-Otevřít [úlohy. frázi list.csv](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/quickstarts/job-phrase-list.csv) z úložiště GitHub Azure-Samples. Seznam je více než 1 000 úloh slova a slovní spojení. Seznam si prohlédněte a vyhledejte slova označující pracovní pozice, která pro vás mají smysl. Pokud potřebná slova nebo fráze v seznamu nenajdete, přidejte si vlastní.
+Otevřete soubor [Jobs-phrase-list. csv](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/quickstarts/job-phrase-list.csv) z úložiště GitHub Azure-Samples. Seznam je více než 1 000 slov úloh a frází. Seznam si prohlédněte a vyhledejte slova označující pracovní pozice, která pro vás mají smysl. Pokud potřebná slova nebo fráze v seznamu nenajdete, přidejte si vlastní.
 
 1. V části **Build** (Sestavit) aplikace LUIS vyberte možnost **Phrase lists** (Seznamy frází) v nabídce **Improve app performance** (Zvýšení výkonu aplikací).
 
@@ -233,15 +233,15 @@ Otevřít [úlohy. frázi list.csv](https://github.com/Azure-Samples/cognitive-s
 
     [![Snímek obrazovky vytvořit dialogové okno Nový seznam frázi rozbalovací](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-1.png "snímek obrazovky vytvořit dialogové okno Nový seznam frázi místní")](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-1.png#lightbox)
 
-    Pokud chcete přidat do seznamu frázi více slov, vyberte **Recommand** zkontrolujte nové **souvisejících hodnot** a přidejte všechny, které jsou relevantní. 
+    Pokud chcete přidat další slova do seznamu frází, vyberte znovu **příkaz** , zkontrolujte nové **související hodnoty** a přidejte relevantní. 
 
-    Ujistěte se, aby **tyto hodnoty jsou zaměnitelné** kontrolovat, protože tyto hodnoty by měly být zacházeno jako s synonyma pro úlohy. Další informace o zaměnitelné a noninterchangeable [frázi seznamu koncepty](luis-concept-feature.md#how-to-use-phrase-lists).
+    Ujistěte se, že **jsou tyto hodnoty** zaměnitelné, protože by se měly všechny tyto hodnoty považovat za synonyma pro úlohy. Přečtěte si další informace o [konceptech seznamu frází](luis-concept-feature.md#how-to-use-phrase-lists), které se nemění.
 
-1. Vyberte **provádí** aktivovat seznamu frázi.
+1. Vyberte **Hotovo** a aktivujte seznam frází.
 
     [![Snímek obrazovky vytvořit dialogové okno Nový seznam frázi místní s slova v seznamu hodnot frázi](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-2.png "snímek obrazovky s novou frázi seznamu dialogové okno Vytvořit místní obsahující slova v seznamu hodnot fráze")](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-2.png#lightbox)
 
-1. Trénování a publikování aplikace znovu a použijte seznam frázi.
+1. Spusťte znovu výuku a publikujte aplikaci, abyste mohli používat seznam frází.
 
 1. Znovu zadejte dotaz na koncovém bodě pomocí stejné promluvy: `This is the lead welder paperwork.`
 
@@ -286,12 +286,12 @@ Otevřít [úlohy. frázi list.csv](https://github.com/Azure-Samples/cognitive-s
 
 ## <a name="related-information"></a>Související informace
 
-* [Záměry bez kurzu entity](luis-quickstart-intents-only.md)
-* [Jednoduché entity](luis-concept-entity-types.md) koncepční informace
+* [Výukové záměry bez entit](luis-quickstart-intents-only.md)
+* [Jednoduché](luis-concept-entity-types.md) koncepční informace entity
 * [Seznam frází](luis-concept-feature.md) koncepční informace
-* [Trénování](luis-how-to-train.md)
+* [Postup výuky](luis-how-to-train.md)
 * [Jak publikovat](luis-how-to-publish-app.md)
-* [Testování v portálu služby LUIS](luis-interactive-test.md)
+* [Testování na portálu LUIS](luis-interactive-test.md)
 
 
 ## <a name="next-steps"></a>Další kroky

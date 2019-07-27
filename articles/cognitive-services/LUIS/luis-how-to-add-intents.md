@@ -1,6 +1,6 @@
 ---
-title: Přidání záměrů
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: Přidat záměry – LUIS
+titleSuffix: Azure Cognitive Services
 description: Přidání záměrů do vaší aplikace LUIS k identifikaci skupin dotazy nebo příkazy, které mají stejné záměry.
 services: cognitive-services
 author: diberry
@@ -11,14 +11,14 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: diberry
 ms.service: cognitive-services
-ms.openlocfilehash: 0c42ab44ba317888b982ba7c72f78be4ca73d93c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 639079a43e75741d78496939f90324b076b164d5
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65148164"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563704"
 ---
-# <a name="add-intents-to-determine-user-intention-of-utterances"></a>Přidání záměrů k určení uživatelů záměr projevů
+# <a name="add-intents-to-determine-user-intention-of-utterances"></a>Přidání záměrů k určení záměru uživatele projevy
 
 Přidat [záměry](luis-concept-intent.md) do vaší aplikace LUIS k identifikaci skupin dotazy nebo příkazy, které mají stejný účel. 
 
@@ -44,29 +44,29 @@ Příklad projevy jsou příkladem text otázky uživatele nebo příkazy. Před
 
 <a name="#intent-prediction-discrepancy-errors"></a>
 
-## <a name="intent-prediction-errors"></a>Chyby záměru predikcí 
+## <a name="intent-prediction-errors"></a>Chyby předpovědi záměru 
 
-Příkladu utterance v záměru pravděpodobně chybu záměru předpovědi mezi záměr utterance příklad je aktuálně ve a predikcí záměr určit během cvičení. 
+Příklad utterance záměru může mít chybu předpovědi záměru mezi záměrem, který je v současnosti v rámci, a záměrem, který je určen během školení. 
 
-Chcete-li najít utterance předpovědi chyb a opravte je, použijte **filtr** volby **vyhodnocení** možnosti nesprávné a Unclear kombinovat s **zobrazení** možnost **Podrobného zobrazení**. 
+Chcete-li najít chyby předpovědi utterance a opravit je,  použijte možnosti **vyhodnocení** nesprávné a nejasné v kombinaci s možností **zobrazení** **podrobného zobrazení**. 
 
-![Pokud chcete najít utterance předpovědi chyb a opravte je, použijte možnost filtru.](./media/luis-how-to-add-intents/find-intent-prediction-errors.png)
+![Chcete-li najít chyby předpovědi utterance a opravit je, použijte možnost filtr.](./media/luis-how-to-add-intents/find-intent-prediction-errors.png)
 
-Pokud jsou použity filtry a zobrazení, a jsou projevy příklad s chybami, ukazuje příklad seznamu utterance projevy a případných problémech.
+Pokud jsou filtry a zobrazení aplikovány a existují příklady projevy s chybami, zobrazí se v seznamu ukázkový utterance projevy a problémy.
 
-![! [Pokud jsou použity filtry a zobrazení, a jsou projevy příklad s chybami, příklad utterance nastavení seznam zobrazuje projevy a problémy.] (. / media/luis-how-to-add-intents/find-errors-in-utterances.png)](./media/luis-how-to-add-intents/find-errors-in-utterances.png#lightbox)
+![! [Při použití filtrů a zobrazení se zobrazí příklad projevy s chybami. v seznamu příkladů utterance se zobrazí projevy a problémy.] (./media/luis-how-to-add-intents/find-errors-in-utterances.png)](./media/luis-how-to-add-intents/find-errors-in-utterances.png#lightbox)
 
-Každý řádek zobrazuje aktuální školení předpovědi skóre pro příklad utterance, nejbližší rival skóre, což je rozdíl v těchto dvou skóre. 
+V každém řádku se zobrazuje skóre předpovědi aktuálního školení pro příklad utterance, nejbližšího skóre rival, což je rozdíl v těchto dvou skórech. 
 
-### <a name="fixing-intents"></a>Oprava záměrů
+### <a name="fixing-intents"></a>Opravení záměrů
 
-Chcete-li další informace o opravách chyb záměru predikcí, použijte [řídicí panel souhrnu](luis-how-to-use-dashboard.md). Souhrnný řídicí panel poskytuje analýzu pro aktivní verze poslední školení a nabízí nejvyšší návrhy k vyřešení vašeho modelu.  
+Pokud se chcete dozvědět, jak opravit chyby předpovědi, použijte [řídicí panel souhrnu](luis-how-to-use-dashboard.md). Souhrnný řídicí panel poskytuje analýzu pro poslední školení aktivní verze a nabízí hlavní návrhy na opravu modelu.  
 
 ## <a name="add-a-custom-entity"></a>Přidání vlastní entity
 
 Jakmile utterance se přidá k záměru, můžete vybrat text z v rámci utterance k vytvoření vlastní entity. Vlastní entity je způsob, jak text značky pro extrakci, spolu s správné záměr. 
 
-Zobrazit [přidání entity do utterance](luis-how-to-add-example-utterances.md) Další informace.
+Další informace najdete v tématu [Přidání entity do utterance](luis-how-to-add-example-utterances.md) .
 
 ## <a name="entity-prediction-discrepancy-errors"></a>Entita předpovědi nesrovnalosti chyby 
 
@@ -82,7 +82,7 @@ Informace najdete v tématu [předem připravených entit](luis-how-to-add-entit
 
 ## <a name="using-the-contextual-toolbar"></a>Použití kontextových panelu nástrojů
 
-Když vyberete nejmíň jeden příklad projevy v seznamu zaškrtněte políčka nalevo od utterance, panelu nástrojů nad seznamem utterance umožňuje provádět následující akce:
+Když v seznamu vyberete jeden nebo více příkladů projevy, můžete zaškrtnutím políčka vlevo od utterance zobrazit panel nástrojů nad seznamem utterance a provést následující akce:
 
 * Záměr přiřazení: utterance(s) přesunout na jiný záměr
 * Odstranit utterance(s)
@@ -97,7 +97,7 @@ Na jednotlivé utterance z nabídky tlačítko se třemi tečkami napravo od utt
 
 * Úpravy: změnit text utterance
 * Odstranit: odebrání záměr utterance. Pokud chcete i utterance, lepší metodou je přesunout **žádný** záměr. 
-* Přidejte vzor: Vzor umožňuje provést běžné utterance a označit replaceable text a ignorable – text, a tím snižuje potřebu další projevy v záměr. 
+* Přidejte vzor: Vzor umožňuje vzít běžné utterance a označit nahraditelný text a ignorovat text, což snižuje nutnost dalších projevy v úmyslu. 
 
 **Označené záměr** sloupec vám umožní změnit záměr utterance.
 

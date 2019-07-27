@@ -1,7 +1,7 @@
 ---
-title: Předem připravené záměry a entity
+title: Předem připravené záměry a entity – LUIS
 titleSuffix: Azure Cognitive Services
-description: V tomto kurzu přidáte do aplikace rychle získat záměru extrakce předpovědi a data předem připravených záměry a entity. Není potřeba označovat promluvy s předem vytvořenými entitami. Příslušná entita se rozpozná automaticky.
+description: V tomto kurzu přidáte do aplikace předem připravené záměry a entity, abyste rychle získali předpověď záměrů a extrakci dat. Není potřeba označovat promluvy s předem vytvořenými entitami. Příslušná entita se rozpozná automaticky.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,18 +11,18 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 07/16/2018
 ms.author: diberry
-ms.openlocfilehash: 189514c51451dedfaab7b07f28d79f674b32f83a
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 8c3fa2a68018e0eb45f37b54b16b6e7797cfa7c4
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68277534"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560048"
 ---
-# <a name="tutorial-identify-common-intents-and-entities"></a>Kurz: Identifikovat běžné záměry a entity
+# <a name="tutorial-identify-common-intents-and-entities"></a>Kurz: Identifikace běžných záměrů a entit
 
-V tomto kurzu přidáte do aplikace pro kurz lidských zdrojů získáte rychlé přehled záměru extrakce předpovědi a data předem připravených záměry a entity. Nepotřebujete označte jakékoli projevy s předem vytvořenými entitami, protože entita je detekován automaticky.
+V tomto kurzu přidejte předem připravené záměry a entity do aplikace kurz pro lidské zdroje, abyste mohli rychle získat předpověď záměrů a extrakci dat. Nemusíte označit žádné projevy s předem vytvořenými entitami, protože entita se detekuje automaticky.
 
-Předem připravené modely (domén, záměry a entity) pomáhají rychle vytvářet model.
+Předem připravené modely (domény, záměry a entity) vám pomůžou rychle sestavit model.
 
 **V tomto kurzu se naučíte:**
 
@@ -41,7 +41,7 @@ Předem připravené modely (domén, záměry a entity) pomáhají rychle vytvá
 [!INCLUDE [Follow these steps to create a new LUIS app](../../../includes/cognitive-services-luis-create-new-app-steps.md)]
 
 
-## <a name="add-prebuilt-intents-to-help-with-common-user-intentions"></a>Přidání předem připravených záměrů, abychom vám pomohli s common záměry uživatele
+## <a name="add-prebuilt-intents-to-help-with-common-user-intentions"></a>Přidejte předem připravené záměry, které vám pomůžou s běžnými záměry uživatelů
 
 Služba LUIS poskytuje několik předem připravených záměrů, které vám pomůžou s běžnými záměry uživatelů.  
 
@@ -51,7 +51,7 @@ Služba LUIS poskytuje několik předem připravených záměrů, které vám po
 
 1. Vyhledejte `Utilities`. 
 
-    [![Snímek obrazovky dialogového okna předem připravené příkazy nástroje do vyhledávacího pole](./media/luis-tutorial-prebuilt-intents-and-entities/prebuilt-intent-utilities.png)](./media/luis-tutorial-prebuilt-intents-and-entities/prebuilt-intent-utilities.png#lightbox)
+    [![Snímek obrazovky předdefinovaných záměrů pomocí nástrojů ve vyhledávacím poli](./media/luis-tutorial-prebuilt-intents-and-entities/prebuilt-intent-utilities.png)](./media/luis-tutorial-prebuilt-intents-and-entities/prebuilt-intent-utilities.png#lightbox)
 
 1. Vyberte následující záměry a pak vyberte **Done** (Hotovo): 
 
@@ -61,10 +61,10 @@ Služba LUIS poskytuje několik předem připravených záměrů, které vám po
    * Utilities.StartOver
    * Utilities.Stop
 
-     Tyto příkazy jsou užitečná k určení toho, pokud v konverzaci, uživatel je a co se žádáme provést. Tyto záměry zahrnovat využití entit. Tyto entity se automaticky přidají do aplikace LUIS: počet, pořadí a Utilities.DirectionalReference. 
+     Tyto záměry jsou užitečné k určení, kde v konverzaci je uživatel a co žádají. Tyto záměry zahrnují použití entit. Tyto entity se automaticky přidají do aplikace LUIS: číslo, ordinální a nástroje. DirectionalReference. 
 
 
-## <a name="add-prebuilt-entities-to-help-with-common-data-type-extraction"></a>Přidat předem připravených entit, abychom vám pomohli s společný typ extrakce
+## <a name="add-prebuilt-entities-to-help-with-common-data-type-extraction"></a>Přidat předem připravené entity, které vám pomůžou s extrakcí běžných datových typů
 
 Služba LUIS poskytuje několik předem připravených entit pro extrakci běžných dat. 
 
@@ -72,28 +72,28 @@ Služba LUIS poskytuje několik předem připravených entit pro extrakci běžn
 
 1. Vyberte tlačítko **Add prebuilt entity** (Přidat předem připravenou entitu).
 
-1. Vyberte ze seznamu předem připravených entit následující entity a pak vyberte **provádí**:
+1. V seznamu předem vytvořených entit vyberte následující entity a potom vyberte Hotovo :
 
    * **[PersonName](luis-reference-prebuilt-person.md)** 
    * **[GeographyV2](luis-reference-prebuilt-geographyV2.md)**
 
      ![Snímek obrazovky s vybranou možností number (číslo) v dialogovém okně s předem připravenými entitami](./media/luis-tutorial-prebuilt-intents-and-entities/select-prebuilt-entities.png)
 
-     Tyto entity můžete přidat název a místo rozpoznávání do klientské aplikace.
+     Tyto entity vám pomůžou přidat název a umístit rozpoznávání do klientské aplikace.
 
-## <a name="add-example-utterances-to-the-none-intent"></a>Přidání projevů příklad na hodnotu None záměru 
+## <a name="add-example-utterances-to-the-none-intent"></a>Přidat příklad projevy k záměru None 
 
 [!INCLUDE [Follow these steps to add the None intent to the app](../../../includes/cognitive-services-luis-create-the-none-intent.md)]
 
-## <a name="train-the-app-so-the-changes-to-the-intent-can-be-tested"></a>Trénování aplikace, takže můžete otestovat změny k příslušnému záměru 
+## <a name="train-the-app-so-the-changes-to-the-intent-can-be-tested"></a>Výuka aplikace, aby se mohly testovat změny záměru 
 
 [!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
-## <a name="publish-the-app-so-the-trained-model-is-queryable-from-the-endpoint"></a>Publikování aplikace, tedy dotazovatelné z koncového bodu trénovaného modelu
+## <a name="publish-the-app-so-the-trained-model-is-queryable-from-the-endpoint"></a>Publikujte aplikaci, aby se Queryable z koncového bodu vyškolený model.
 
 [!INCLUDE [LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 
-## <a name="get-intent-and-entity-prediction-from-endpoint"></a>Získání předpovědi záměr a entity z koncového bodu
+## <a name="get-intent-and-entity-prediction-from-endpoint"></a>Získání záměru a předpovědi entit z koncového bodu
 
 1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
@@ -149,7 +149,7 @@ Služba LUIS poskytuje několik předem připravených entit pro extrakci běžn
     }
     ```
 
-    Výsledek předpovědět záměr Utilities.Cancel bez obav 80 % a extrahovaná data název města a osoby. 
+    Výsledkem bylo předpověď těchto nástrojů. zrušení záměru s 80% jistotou a extrahování dat města a jména osoby. 
 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
@@ -158,17 +158,17 @@ Služba LUIS poskytuje několik předem připravených entit pro extrakci běžn
 
 ## <a name="related-information"></a>Související informace
 
-Další informace o předem připravené modely:
+Další informace o předem sestavených modelech:
 
-* [Předem připravených domén](luis-reference-prebuilt-domains.md): Toto jsou běžné domén, které snížit celkový vytváření aplikace LUIS
-* Předem připravené záměry: Jedná se o jednotlivých záměry běžné domén. Můžete přidat záměry jednotlivě nepřidávat v celé doméně.
-* [Předem připravených entit](luis-prebuilt-entities.md): Toto jsou běžné typy dat užitečné pro většinu aplikací LUIS.
+* [Předem připravené domény](luis-reference-prebuilt-domains.md): Jedná se o běžné domény, které omezují celkový vývoj aplikací Luis.
+* Předem sestavené záměry: Jedná se o individuální záměry běžných domén. Místo přidávání celé domény můžete přidat záměry individuálně.
+* [Předem připravené entity](luis-prebuilt-entities.md): Jedná se o běžné datové typy, které jsou užitečné pro většinu aplikací Luis.
 
-Další informace o práci s vaší aplikací LUIS:
+Další informace o práci s aplikací LUIS:
 
-* [Trénování](luis-how-to-train.md)
+* [Postup výuky](luis-how-to-train.md)
 * [Jak publikovat](luis-how-to-publish-app.md)
-* [Testování v portálu služby LUIS](luis-interactive-test.md)
+* [Testování na portálu LUIS](luis-interactive-test.md)
 
 ## <a name="next-steps"></a>Další postup
 

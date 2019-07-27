@@ -1,7 +1,7 @@
 ---
-title: Přepisy více účastníka konverzace se sadou SDK pro řeč – hlasové služby
+title: Přepisovat konverzace s více účastníky pomocí sady Speech SDK – Speech Service
 titleSuffix: Azure Cognitive Services
-description: Další informace o použití přepisu konverzace se sadou SDK pro řeč. K dispozici pro C++, C#a Java.
+description: Naučte se používat přepis konverzace pomocí sady Speech SDK. K C++dispozici C#pro, a Java.
 services: cognitive-services
 author: jhakulin
 manager: nitinme
@@ -10,40 +10,40 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: jhakulin
-ms.openlocfilehash: 215209a5b8e3ed46b25fbfa492c305785a9a0070
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 8c4ecc017d058900297f2220173e064700e7051b
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606467"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68559465"
 ---
-# <a name="transcribe-multi-participant-conversations-with-the-speech-sdk"></a>Přepisy více účastníka konverzace se sadou SDK pro řeč
+# <a name="transcribe-multi-participant-conversations-with-the-speech-sdk"></a>Přepisovat konverzace s více účastníky pomocí sady Speech SDK
 
-Sada SDK řeči **ConversationTranscriber** API umožňuje přepisy schůzky/konverzace s možností přidat, odebrat a identifikovat účastníky pomocí vysílání datového proudu zvuku pro hlasové služby s využitím `PullStream` nebo `PushStream`.
+Rozhraní **ConversationTranscriber** API sady Speech SDK umožňuje přepisovat schůzky a konverzace s možností přidávat, odebírat a identifikovat účastníky streamování zvuku do služeb řeči pomocí `PullStream` nebo. `PushStream`
 
 ## <a name="limitations"></a>Omezení
 
-* Aplikace transcriber konverzace je podporováno pro C++, C#a Java na Windows, Linuxu a Android.
-* ROOBO DevKit je podporovaný hardware prostředí pro vytváření přepisů konverzace, které efektivně poskytuje cyklické více mikrofon pole, které lze využít pro identifikaci mluvčího. [Další informace najdete v tématu sadou SDK pro řeč zařízení](speech-devices-sdk.md).
-* Podpora SDK řeči pro přepis konverzace je omezena na použití zvuku o přijetí změn a push režim datové proudy s osmi kanály 16bitové 16 kHz PCM zvuku.
-* Přepis konverzace je aktuálně k dispozici v jazycích "en US" a "zh-CN" v těchto oblastech: centralus a východní Asie.
+* Konverzace Transcriber je podporována pro C++systémy C#, a Java v systémech Windows, Linux a Android.
+* ROOBO DevKit je podporované hardwarové prostředí pro vytváření přepisů konverzací, protože poskytuje kruhové pole s více mikrofony, které je možné efektivně využít pro identifikaci mluvčího. [Další informace najdete v tématu sada Speech Devices SDK](speech-devices-sdk.md).
+* Podpora sady Speech SDK pro přepisy konverzací je omezená na použití zvukových streamů pro vyžádání obsahu a nabízených oznámení s osmi kanály 16 kHz PCM.
+* Přepis konverzace je aktuálně k dispozici v jazycích "en-US" a "zh-CN" v následujících oblastech: centralus a eastasia.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* [Naučte se používat se sadou SDK pro řeč Speech to text.](quickstart-csharp-dotnet-windows.md)
-* [Získejte zkušební verzi předplatného řeči.](https://azure.microsoft.com/try/cognitive-services/)
-* Rozpoznávání řeči SDK verze 1.5.1 nebo novější je povinný.
+* [Naučte se používat převod řeči na text pomocí sady Speech SDK.](quickstart-csharp-dotnet-windows.md)
+* [Získejte zkušební verzi předplatného pro rozpoznávání řeči.](https://azure.microsoft.com/try/cognitive-services/)
+* Je vyžadována sada Speech SDK verze 1.5.1 nebo novější.
 
-## <a name="create-voice-signatures-for-participants"></a>Vytvoření hlasu podpisy pro účastníky
+## <a name="create-voice-signatures-for-participants"></a>Vytvoření hlasových podpisů pro účastníky
 
-Prvním krokem je vytvoření hlasové podpisy pro účastníky konverzace. Vytvoření podpisy hlasu je požadované pro identifikaci mluvčího efektivní.
+Prvním krokem je vytvoření hlasových podpisů pro účastníky konverzace. Pro efektivní identifikaci mluvčího se vyžadují vytváření podpisů hlasu.
 
-### <a name="requirements-for-input-wave-file"></a>Požadavky pro soubor vstupní wave
+### <a name="requirements-for-input-wave-file"></a>Požadavky na vstupní soubor Wave
 
-* Soubor vstupní zvuková pro vytváření podpisů hlasu musí být v 16bitové ukázky, 16 kHz vzorkovací frekvence a jeden kanál (Mono) formát.
-* Doporučená délka každé zvukové ukázce je 30 sekund až dvě minuty.
+* Vstupní zvukový soubor Wave pro vytváření podpisů hlasu musí být v 16bitovém vzorcích, 16 kHz vzorkování a ve formátu jediného kanálu (mono).
+* Doporučená délka každého zvukového vzorku je mezi 30 sekundami a dvěma minutami.
 
-Následující příklad ukazuje dva různé způsoby vytváření hlasové podpisu [pomocí rozhraní REST API](https://aka.ms/cts/signaturegenservice) z C#:
+Následující příklad ukazuje dva různé způsoby, jak vytvořit podpis hlasu [pomocí REST API](https://aka.ms/cts/signaturegenservice) z C#:
 
 ```csharp
 class Program
@@ -85,11 +85,11 @@ class Program
 }
 ```
 
-## <a name="transcribing-conversations"></a>Přepisování konverzace
+## <a name="transcribing-conversations"></a>Konverzace zdlouhavého přepisování
 
-Přepisy konverzace s více účastníky, vytvořte `ConversationTranscriber` objekt, který je přidružený `AudioConfig` objekt vytvořený pro relaci konverzace a zvuku pomocí datového proudu `PullAudioInputStream` nebo `PushAudioInputStream`.
+Pokud chcete přepisovat konverzace s více účastníky, vytvořte `ConversationTranscriber` objekt přidružený `AudioConfig` k objektu vytvořenému pro relaci konverzace a zvuk streamu pomocí `PullAudioInputStream` nebo `PushAudioInputStream`.
 
-Předpokládejme, že máte ConversationTranscriber třídu s názvem `MyConversationTranscriber`. Váš kód může vypadat takto:
+Pojďme předpokládat, že máte ConversationTranscriber třídu s názvem `MyConversationTranscriber`. Váš kód může vypadat takto:
 
 ```csharp
 using Microsoft.CognitiveServices.Speech;
@@ -191,4 +191,4 @@ public class MyConversationTranscriber
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Prozkoumejte naše ukázky na Githubu](https://aka.ms/csspeech/samples)
+> [Prozkoumejte naše ukázky na GitHubu](https://aka.ms/csspeech/samples)

@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý start: Získání odpovědí ze znalostní báze knowledge base - REST, Javy – QnA Maker'
-titlesuffix: Azure Cognitive Services
-description: V tomto rychlém startu založené na protokolu REST Javy provede získat odpověď ze znalostní báze, prostřednictvím kódu programu.
+title: 'Rychlý start: Získat odpověď z znalostní báze – REST, Java-QnA Maker'
+titleSuffix: Azure Cognitive Services
+description: Tento rychlý Start založený na REST Java vás provede tím, že vám umožní získat odpověď ze znalostní báze prostřednictvím kódu programu.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -10,16 +10,16 @@ ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 02/28/2019
 ms.author: diberry
-ms.openlocfilehash: 6d49ce71959f80a96731046475c3de5737bf7d46
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 2b888a275b08c7011c6e0b60ff1cd1d70b42f465
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65796193"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68559844"
 ---
-# <a name="get-answers-to-a-question-from-a-knowledge-base-with-java"></a>Získejte odpovědi na dotaz zadaný ze znalostní báze s Javou
+# <a name="get-answers-to-a-question-from-a-knowledge-base-with-java"></a>Získejte odpovědi na otázku ze znalostní báze Java.
 
-Tento rychlý start vás provede prostřednictvím kódu programu získávání odpovědi z publikovaných znalostní báze QnA Maker. Znalostní báze obsahuje otázky a odpovědi z [zdroje dat](../Concepts/data-sources-supported.md) například nejčastější dotazy. [Otázku](../how-to/metadata-generateanswer-usage.md#generateanswer-request-configuration) se odesílají službě nástroje QnA Maker. [Odpovědi](../how-to/metadata-generateanswer-usage.md#generateanswer-response-properties) zahrnuje horní předpovědět odpověď. 
+V tomto rychlém startu se dozvíte, jak programově získat odpověď z publikované QnA Maker znalostní báze. Znalostní báze obsahuje otázky a odpovědi ze [zdrojů dat](../Concepts/data-sources-supported.md) , jako jsou nejčastější dotazy. [Otázka](../how-to/metadata-generateanswer-usage.md#generateanswer-request-configuration) se odešle do služby QnA maker. [Odpověď](../how-to/metadata-generateanswer-usage.md#generateanswer-response-properties) obsahuje horní předpokládanou odpověď. 
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -30,15 +30,15 @@ Tento rychlý start vás provede prostřednictvím kódu programu získávání 
     * Commons. protokolování 1.2.jar
 * [Visual Studio Code](https://code.visualstudio.com/)
 * Potřebujete [službu QnA Maker](../How-To/set-up-qnamaker-service-azure.md). Chcete-li načíst kód Product key, vyberte **klíče** pod **správy prostředků** v řídicím panelu Azure pro prostředek nástroje QnA Maker. 
-* **Publikování** stránce nastavení. Pokud nemáte publikované znalostní báze, vytvořte prázdný znalostní báze a potom importujte znalostní báze na **nastavení** stránce a potom publikovat. Můžete stáhnout a použít [tento základní znalostní báze](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/knowledge-bases/basic-kb.tsv). 
+* **Publikování** nastavení stránky. Pokud nemáte publikovanou znalostní bázi, vytvořte prázdnou znalostní bázi a pak importujte znalostní bázi na stránce **Nastavení** a pak klikněte na publikovat. [Tuto základní znalostní bázi](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/knowledge-bases/basic-kb.tsv)si můžete stáhnout a použít. 
 
-    Stránka nastavení publikování zahrnují hodnoty trasy příspěvek, hodnota hostitele a EndpointKey hodnoty. 
+    Nastavení stránky publikovat zahrnuje hodnotu POST Route, hodnotu Host a hodnotu EndpointKey. 
 
     ![Nastavení publikování](../media/qnamaker-quickstart-get-answer/publish-settings.png)
 
-Kód v tomto rychlém startu se [ https://github.com/Azure-Samples/cognitive-services-qnamaker-java ](https://github.com/Azure-Samples/cognitive-services-qnamaker-java/tree/master/documentation-samples/quickstarts/get-answer) úložiště. 
+Kód pro tento rychlý Start je v [https://github.com/Azure-Samples/cognitive-services-qnamaker-java](https://github.com/Azure-Samples/cognitive-services-qnamaker-java/tree/master/documentation-samples/quickstarts/get-answer) úložišti. 
 
-## <a name="create-a-java-file"></a>Vytvořte soubor java
+## <a name="create-a-java-file"></a>Vytvoření souboru Java
 
 Otevřete VSCode a vytvořte nový soubor s názvem `GetAnswer.java` a přidejte následující třídu:
 
@@ -54,25 +54,25 @@ public class GetAnswer {
 
 ## <a name="add-the-required-dependencies"></a>Přidání požadovaných závislostí
 
-Tento rychlý start využívá Apache třídy pro požadavky HTTP. Nad GetAnswer třídy, v horní části `GetAnswer.java` potřebné závislosti přidejte do projektu:
+Tento rychlý Start používá třídy Apache pro požadavky HTTP. Nad třídou getanswer v horní `GetAnswer.java` části souboru přidejte nezbytné závislosti do projektu:
 
 [!code-java[Add the required dependencies](~/samples-qnamaker-java/documentation-samples/quickstarts/get-answer/GetAnswer.java?range=5-13 "Add the required dependencies")]
 
 ## <a name="add-the-required-constants"></a>Přidání požadovaných konstant
 
-V horní části `GetAnswer.java` třídy, přidejte požadované konstanty na používání nástroje QnA Maker. Tyto hodnoty jsou na **publikovat** stránce po publikování znalostní báze.  
+V horní části `GetAnswer.java` třídy přidejte požadované konstanty pro přístup k QnA maker. Tyto hodnoty jsou po publikování znalostní báze na stránce **publikovat** .  
 
 [!code-java[Add the required constants](~/samples-qnamaker-java/documentation-samples/quickstarts/get-answer/GetAnswer.java?range=26-42 "Add the required constants")]
 
-## <a name="add-a-post-request-to-send-question"></a>Přidání požadavku POST k odesílání otázku
+## <a name="add-a-post-request-to-send-question"></a>Přidat požadavek POST k odeslání otázky
 
-Následující kód odešle požadavek HTTPS API nástroje QnA Maker odeslat dotaz do znalostní báze a přijímat odpovědi:
+Následující kód provede požadavek HTTPS na rozhraní API služby QnA Maker k odeslání otázky do znalostní báze a obdrží odpověď:
 
 [!code-java[Add a POST request to send question to knowledge base](~/samples-qnamaker-java/documentation-samples/quickstarts/get-answer/GetAnswer.java?range=44-72 "Add a POST request to send question to knowledge base")]
 
-`Authorization` Hodnotu hlavičky obsahuje řetězec `EndpointKey`. 
+Hodnota hlavičky obsahuje řetězec `EndpointKey`. `Authorization` 
 
-Další informace o [požadavek](../how-to/metadata-generateanswer-usage.md#generateanswer-request) a [odpovědi](../how-to/metadata-generateanswer-usage.md#generateanswer-response).
+Přečtěte si další informace o [žádosti](../how-to/metadata-generateanswer-usage.md#generateanswer-request) a [odpovědi](../how-to/metadata-generateanswer-usage.md#generateanswer-response).
 
 ## <a name="build-and-run-the-program"></a>Sestavení a spuštění programu
 
@@ -95,7 +95,7 @@ Sestavit a spustit program z příkazového řádku. Automaticky se odešle pož
 
 [!INCLUDE [Clean up files and knowledge base](../../../../includes/cognitive-services-qnamaker-quickstart-cleanup-resources.md)] 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 > [Reference k rozhraní REST API služby QnA Maker (V4)](https://go.microsoft.com/fwlink/?linkid=2092179)

@@ -1,6 +1,6 @@
 ---
-title: Jednoduchý typ entity
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: Jednoduchý typ entity – LUIS
+titleSuffix: Azure Cognitive Services
 description: Jednoduchá entita je obecná entita, která popisuje jeden koncept a je získána z kontextu zjištěného počítačem. Vzhledem k tomu, že jednoduché entity jsou obecně názvy, například názvy společností, názvy produktů nebo jiné kategorie názvů, přidejte seznam frází při použití jednoduché entity k posílení signálu používaných názvů.
 services: cognitive-services
 author: diberry
@@ -10,12 +10,12 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 07/24/2019
 ms.author: diberry
-ms.openlocfilehash: 3f03b33f685bb5c7c9ba8f2267b8556c5dadade4
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: c1514b6cd512924a162a524d11e888055fa06514
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68480217"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563197"
 ---
 # <a name="simple-entity"></a>Jednoduchá entita 
 
@@ -51,6 +51,6 @@ Data vrácená z koncového bodu obsahuje název entity, zjištěný text z utte
 |--|--|--|
 |Jednoduché Entity|`Customer`|`bob jones`|
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto [kurzu](luis-quickstart-primary-and-secondary-data.md)extrahujete pomocí **jednoduché entity**data z pracovní úlohy, která se naučila z utterance. Chcete-li zvýšit přesnost extrakce, přidejte [seznam frází](luis-concept-feature.md) , které jsou specifické pro jednoduchou entitu.

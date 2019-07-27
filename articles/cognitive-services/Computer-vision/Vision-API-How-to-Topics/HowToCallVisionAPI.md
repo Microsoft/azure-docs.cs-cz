@@ -1,6 +1,6 @@
 ---
-title: 'Příklad: Volání rozhraní API image Analyze - pro počítačové zpracování obrazu'
-titlesuffix: Azure Cognitive Services
+title: 'Příklad: Volání rozhraní API pro analýzu obrázků – Počítačové zpracování obrazu'
+titleSuffix: Azure Cognitive Services
 description: Přečtěte si, jak použít k volání rozhraní API pro počítačové zpracování obrazu REST v Azure Cognitive Services.
 services: cognitive-services
 author: KellyDF
@@ -11,14 +11,14 @@ ms.topic: sample
 ms.date: 03/21/2019
 ms.author: kefre
 ms.custom: seodec18
-ms.openlocfilehash: 0e2767660edf2a9dbcb8617b07a6b9f71fedb743
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 35e6ad922ab54748165fcf8e273d93ee44bc42cc
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60202866"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68564539"
 ---
-# <a name="example-how-to-call-the-computer-vision-api"></a>Příklad: Jak volat rozhraní API pro počítačové zpracování obrazu
+# <a name="example-how-to-call-the-computer-vision-api"></a>Příklad: Postup volání rozhraní API pro počítačové zpracování obrazu
 
 V tomto průvodci si ukážeme, jak použít REST k volání rozhraní API pro počítačové zpracování obrazu. Ukázky jsou napsané v jazyce C# pomocí klientské knihovny rozhraní API pro počítačové zpracování obrazu a také jako volání HTTP s operacemi POST/GET. Na co se zaměříme:
 
@@ -28,10 +28,10 @@ V tomto průvodci si ukážeme, jak použít REST k volání rozhraní API pro p
 ## <a name="prerequisites"></a>Požadavky
 
 - Adresa URL obrázku nebo cesta k místně uloženému obrázku.
-- Podporované metody zadávání znaků: Nezpracovaná binární ve formě application/octet-stream adresa URL obrázku nebo image
-- Podporované formáty bitové kopie: JPEG, PNG, GIF, BMP
-- Velikost souboru obrázku: Méně než 4MB
-- Dimenze bitové kopie: Větší než 50 × 50 pixelů
+- Podporované metody zadávání: Nezpracovaný binární obrázek ve formě datového proudu aplikace/oktetu nebo adresy URL obrázku
+- Podporované formáty obrázků: JPEG, PNG, GIF, BMP
+- Velikost souboru obrázku: Méně než 4 MB
+- Dimenze obrázku: Větší než 50 × 50 pixelů
   
 V následujících příkladech si ukážeme tyto funkce:
 
@@ -40,14 +40,14 @@ V následujících příkladech si ukážeme tyto funkce:
 
 Funkce můžeme rozdělit na:
 
-- **Možnost 1:** Obor analýzy – analýza daný model
-- **Option Two:** Rozšířená analýza - analýza poskytnout další podrobnosti se [taxonomie kategorií 86](../Category-Taxonomy.md)
+- **Možnost jedna:** Vymezená analýza – analýza pouze daného modelu
+- **Možnost dvě:** Vylepšená analýza – analýza vám poskytne další podrobnosti s [taxonomií 86-Categories](../Category-Taxonomy.md) .
   
-## <a name="authorize-the-api-call"></a>Povolit volání rozhraní API
+## <a name="authorize-the-api-call"></a>Autorizace volání rozhraní API
 
 Ke každému volání rozhraní API pro počítačové zpracování obrazu potřebujete klíč předplatného. Tento klíč je potřeba předat buď jako parametr řetězce dotazu, nebo ho zadat v hlavičce požadavku.
 
-Získání bezplatné zkušební verze klíče, naleznete v tématu [zkuste služby Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Nebo, postupujte podle pokynů v [vytvoření účtu služeb Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) k přihlášení pro počítačové zpracování obrazu a získejte klíč.
+Pokud chcete získat bezplatný zkušební klíč, přečtěte si téma [Try Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Případně postupujte podle pokynů v části [Vytvoření účtu Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) pro přihlášení k odběru počítačové zpracování obrazu a získání klíče.
 
 1. Předání klíče předplatného prostřednictvím řetězce dotazu je vidět v následujícím příkladu rozhraní API pro počítačové zpracování obrazu:
 
@@ -61,13 +61,13 @@ Získání bezplatné zkušební verze klíče, naleznete v tématu [zkuste slu�
 
 ```var visionClient = new VisionServiceClient("Your subscriptionKey");```
 
-## <a name="upload-an-image-to-the-computer-vision-api-service-and-get-back-tags-descriptions-and-celebrities"></a>Nahrajte image do služby rozhraní API pro počítačové zpracování obrazu a vrátili se značky, popisy a celebrit
+## <a name="upload-an-image-to-the-computer-vision-api-service-and-get-back-tags-descriptions-and-celebrities"></a>Nahrání obrázku do služby rozhraní API pro počítačové zpracování obrazu a získání zpětných značek, popisů a celebrit
 
 Základní způsob, jak volat rozhraní API pro počítačové zpracování obrazu, spočívá přímo v nahrání obrázku. Provede se to odesláním požadavku POST s typem obsahu application/octet-stream společně s daty přečtenými z obrázku. V případě značek a popisu bude metoda odeslání stejná pro všechna volání rozhraní API pro počítačové zpracování obrazu. Jediný rozdíl bude v parametrech dotazu, které zadá uživatel. 
 
 Tady je postup, jak získat k danému obrázku značky a popis:
 
-**Možnost 1:** Získejte seznam "Tags" a jedné "Popis"
+**Možnost jedna:** Získat seznam značek a jednoho popisu
 
 ```
 POST https://westus.api.cognitive.microsoft.com/vision/v2.0/analyze?visualFeatures=Description,Tags&subscription-key=<Your subscription key>
@@ -106,9 +106,9 @@ using (var fs = new FileStream(@"C:\Vision\Sample.jpg", FileMode.Open))
 }
 ```
 
-### <a name="get-domain-specific-analysis-celebrities"></a>Získat analýzy specifického pro doménu (celebrit)
+### <a name="get-domain-specific-analysis-celebrities"></a>Získat analýzu specifickou pro doménu (celebrit)
 
-**Možnost 1:** Obor analýzy – analýza daný model
+**Možnost jedna:** Vymezená analýza – analýza pouze daného modelu
 ```
 POST https://westus.api.cognitive.microsoft.com/vision/v2.0/models/celebrities/analyze
 var celebritiesResult = await visionClient.AnalyzeImageInDomainAsync(url, "celebrities");
@@ -121,7 +121,7 @@ GET https://westus.api.cognitive.microsoft.com/vision/v2.0/models
 var models = await visionClient.ListModelsAsync();
 ```
 
-**Option Two:** Rozšířená analýza - analýza poskytnout další podrobnosti se [taxonomie kategorií 86](../Category-Taxonomy.md)
+**Možnost dvě:** Vylepšená analýza – analýza vám poskytne další podrobnosti s [taxonomií 86-Categories](../Category-Taxonomy.md) .
 
 Pokud chcete kromě podrobností z jednoho nebo několika modelů určitých domén získat i obecnou analýzu obrázku, rozšířili jsme verzi 1 rozhraní API o parametr dotazu do modelů.
 
@@ -164,9 +164,9 @@ Tady je příklad:
 }
 ```
 
-Pole | Type | Obsah
+Pole | type | Obsah
 ------|------|------|
-Značky  | `object` | Objekt nejvyšší úrovně pro pole značek.
+Tags  | `object` | Objekt nejvyšší úrovně pro pole značek.
 tags[].Name | `string`  | Klíčové slovo z klasifikátoru značek.
 tags[].Score    | `number`  | Skóre spolehlivosti z intervalu 0 až 1.
 description  | `object` | Objekt nejvyšší úrovně pro popis.
@@ -174,9 +174,9 @@ description.tags[] |    `string`    | Seznam značek.  Pokud vytvořený popisek
 description.captions[].text | `string`  | Výraz, který popisuje obrázek.
 description.captions[].confidence   | `number`  | Spolehlivost výrazu.
 
-## <a name="retrieve-and-understand-the-json-output-of-domain-specific-models"></a>Načíst a pochopit výstup JSON doménově specifické modely
+## <a name="retrieve-and-understand-the-json-output-of-domain-specific-models"></a>Načtení a pochopení výstupu JSON pro modely specifické pro doménu
 
-**Možnost 1:** Obor analýzy – analýza daný model
+**Možnost jedna:** Vymezená analýza – analýza pouze daného modelu
 
 Výstupem bude pole značek. Tady je příklad:
 
@@ -195,7 +195,7 @@ Výstupem bude pole značek. Tady je příklad:
 }
 ```
 
-**Option Two:** Rozšířená analýza - analýza taxonomie kategorií 86 poskytnout další podrobnosti
+**Možnost dvě:** Vylepšená analýza – analýza vám poskytne další podrobnosti s taxonomií 86-Categories.
 
 Při použití druhé možnosti (rozšířená analýza) u modelů určitých domén je rozšířený typ vrácených kategorií. Příklad:
 
@@ -226,9 +226,9 @@ Při použití druhé možnosti (rozšířená analýza) u modelů určitých do
 
 Pole kategorií představuje seznam jedné nebo několika z [86 kategorií](../Category-Taxonomy.md) původní taxonomie. Všimněte si také, že kategorie končící podtržítkem odpovídají dané kategorii a podřízeným prvkům (příklad: people_ a people_group v modelu celebrities).
 
-Pole   | Type  | Obsah
+Pole   | type  | Obsah
 ------|------|------|
-categories | `object`   | Objekt nejvyšší úrovně
+Kategorie | `object`   | Objekt nejvyšší úrovně
 categories[].name    | `string` | Název z taxonomie 86 kategorií
 categories[].score  | `number`  | Skóre spolehlivosti z intervalu 0 až 1
 categories[].detail  | `object?`      | Volitelné podrobnosti o objektu

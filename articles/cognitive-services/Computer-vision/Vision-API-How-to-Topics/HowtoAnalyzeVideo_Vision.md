@@ -1,6 +1,6 @@
 ---
-title: 'Příklad: Analýza videa v reálném čase – pro počítačové zpracování obrazu'
-titlesuffix: Azure Cognitive Services
+title: 'Příklad: Analýza videa v reálném čase – Počítačové zpracování obrazu'
+titleSuffix: Azure Cognitive Services
 description: Zjistěte, jak pomocí rozhraní API pro počítačové zpracování obrazu provádět analýzu snímků z živého video streamu v téměř reálném čase.
 services: cognitive-services
 author: KellyDF
@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 03/21/2019
 ms.author: kefre
 ms.custom: seodec18
-ms.openlocfilehash: feafb983a7b9e4aea6091753842b03a65ccd3ca5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3432ea20f9fb59524940258e13c46ee6f4c4e890
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61293749"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68565698"
 ---
 # <a name="how-to-analyze-videos-in-real-time"></a>Jak analyzovat videa v reálném čase
 
@@ -70,7 +70,7 @@ while (true)
 }
 ```
 
-Tento přístup spustí každou analýzu v samostatné úloze, která běží na pozadí, zatímco se nadále zachytávají nové snímky. Zabrání to sice blokování hlavního vlákna při čekání na návrat volání rozhraní API, ale přijdeme o určité záruky, které poskytovala jednoduchá verze – k několika voláním rozhraní API může dojít souběžně a výsledky se nemusejí vracet ve správném pořadí. Tento přístup může také způsobit více vláken současně, zadejte ConsumeResult() funkce, které by mohly být nebezpečné, pokud funkce není bezpečná pro vlákno. Tento jednoduchý kód navíc nesleduje vytvářené úlohy, takže výjimky bez povšimnutí zmizí. Poslední ingrediencí, kterou potřebujeme přidat, je vlákno „příjemce“, které bude sledovat úlohy analýzy, vyvolávat výjimky, ukončovat dlouho běžící úlohy a zajišťovat, aby se výsledky přijímaly postupně a ve správném pořadí.
+Tento přístup spustí každou analýzu v samostatné úloze, která běží na pozadí, zatímco se nadále zachytávají nové snímky. Zabrání to sice blokování hlavního vlákna při čekání na návrat volání rozhraní API, ale přijdeme o určité záruky, které poskytovala jednoduchá verze – k několika voláním rozhraní API může dojít souběžně a výsledky se nemusejí vracet ve správném pořadí. Tento přístup by mohl také způsobit, že více vláken může současně zadat funkci ConsumeResult (), což může být nebezpečné, pokud funkce není bezpečná pro přístup z více vláken. Tento jednoduchý kód navíc nesleduje vytvářené úlohy, takže výjimky bez povšimnutí zmizí. Poslední ingrediencí, kterou potřebujeme přidat, je vlákno „příjemce“, které bude sledovat úlohy analýzy, vyvolávat výjimky, ukončovat dlouho běžící úlohy a zajišťovat, aby se výsledky přijímaly postupně a ve správném pořadí.
 
 ### <a name="a-producer-consumer-design"></a>Návrh typu producent-příjemce
 
@@ -141,7 +141,7 @@ while (true)
 
 Kvůli co nejrychlejšímu zprovoznění aplikace jsme implementovali výše popsaný systém, který je dostatečně flexibilní, aby vyhovoval různým situacím, ale zároveň se snadno používal. Tento kód můžete získat na adrese [https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis).
 
-Knihovna obsahuje třídu FrameGrabber, která implementuje systém producent – příjemce bylo uvedeno výše pro zpracování snímky videí z webová kamera. Uživatel může určit přesnou formu volání rozhraní API, přičemž tato třída informuje volající kód pomocí událostí o pořízení nového snímku nebo dostupnosti výsledku analýzy.
+Knihovna obsahuje třídu FrameGrabber, která implementuje výše popsaný systém od producenta a zpracovává snímky videa z webové kamery. Uživatel může určit přesnou formu volání rozhraní API, přičemž tato třída informuje volající kód pomocí událostí o pořízení nového snímku nebo dostupnosti výsledku analýzy.
 
 Některé možnosti ilustrují dvě ukázkové aplikace, které tuto knihovnu používají. První je jednoduchá konzolová aplikace, jejíž zjednodušená verze je uvedená níže. Zachytává snímky z výchozí webkamery a odesílá je do rozhraní API pro rozpoznávání tváře za účelem detekce obličeje.
 
@@ -192,9 +192,9 @@ namespace VideoFrameConsoleApplication
 
 Druhá ukázková aplikace je o něco zajímavější a umožňuje zvolit, které rozhraní API se má na snímky videa zavolat. Tato aplikace zobrazuje na levé straně náhled živého videa a na pravé straně ukazuje poslední výsledek rozhraní API překrývající odpovídající snímek.
 
-Ve většině režimů bude mezi živým videem vlevo a vizualizovanou analýzou vpravo viditelné zpoždění. Toto zpoždění představuje dobu, jakou trvá volání rozhraní API. Výjimkou je v režimu "EmotionsWithClientFaceDetect", který provádí rozpoznávání tváře lokálně na klientském počítači pomocí OpenCV, před odesláním žádné obrázky do služeb Cognitive Services. Díky tomu můžeme detekovanou tvář vizualizovat okamžitě a emoce aktualizovat později, jakmile se vrátí volání rozhraní API. To demonstruje možnost „hybridního“ přístupu, kdy je možné určité jednoduché zpracování provést na straně klienta, a v případě potřeby je rozšířit o pokročilejší analýzu pomocí rozhraní API služeb Cognitive Services.
+Ve většině režimů bude mezi živým videem vlevo a vizualizovanou analýzou vpravo viditelné zpoždění. Toto zpoždění představuje dobu, jakou trvá volání rozhraní API. Výjimkou je v režimu "EmotionsWithClientFaceDetect", který provádí detekci plochy místně na klientském počítači pomocí OpenCV před odesláním jakýchkoli imagí Cognitive Services. Díky tomu můžeme detekovanou tvář vizualizovat okamžitě a emoce aktualizovat později, jakmile se vrátí volání rozhraní API. To demonstruje možnost „hybridního“ přístupu, kdy je možné určité jednoduché zpracování provést na straně klienta, a v případě potřeby je rozšířit o pokročilejší analýzu pomocí rozhraní API služeb Cognitive Services.
 
-![Snímek obrazovky LiveCameraSample aplikaci zobrazující image pomocí zobrazení značek](../../Video/Images/FramebyFrame.jpg)
+![Snímek obrazovky aplikace LiveCameraSample zobrazující obrázek se zobrazenými značkami](../../Video/Images/FramebyFrame.jpg)
 
 ### <a name="integrating-into-your-codebase"></a>Integrace do základu kódu
 
@@ -207,7 +207,7 @@ Pokud chcete s touto ukázkou začít, postupujte takto:
 2. Naklonujte úložiště [Cognitive-Samples-VideoFrameAnalysis](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/) na GitHubu.
 
 3. Otevřete tuto ukázku v sadě Visual Studio 2015 a sestavte a spusťte ukázkové aplikace:
-    - Pro BasicConsoleSample, klíč rozhraní API pro rozpoznávání tváře je pevně zakódované přímo v [BasicConsoleSample/Program.cs](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/blob/master/Windows/BasicConsoleSample/Program.cs).
+    - V případě BasicConsoleSample je klíč Face API pevně zakódovaný přímo v [BasicConsoleSample/program. cs](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/blob/master/Windows/BasicConsoleSample/Program.cs).
     - U aplikace LiveCameraSample se klíče zadávají do panelu s nastavením aplikace. Uloží se pro následné relace jako uživatelská data.
 
 Až budete připravení integrovat, **stačí do vlastních projektů přidat odkaz na knihovnu VideoFrameAnalyzer**.
@@ -218,5 +218,5 @@ Funkce knihovny VideoFrameAnalyzer pro rozpoznávání obrazu, hlasu, videa nebo
 
 V této příručce jste se naučili analyzovat živé video streamy téměř v reálném čase pomocí rozhraní API pro rozpoznávání tváře, počítačové zpracování obrazu a rozpoznávání emocí a zjistili, jak můžete využít náš ukázkový kód. Svou vlastní aplikaci můžete začít sestavovat s využitím bezplatných klíčů rozhraní API na [registrační stránce služby Azure Cognitive Services](https://azure.microsoft.com/try/cognitive-services/). 
 
-Můžete poskytnout zpětnou vazbu a návrhů v [úložiště GitHub](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/), nebo na další názory široké rozhraní API, na našem [webu UserVoice](https://cognitive.uservoice.com/).
+Na našem [webu UserVoice](https://cognitive.uservoice.com/)si můžete zdarma poskytnout zpětnou vazbu a návrhy v [úložišti GitHubu](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/), nebo pro lepší názory na rozhraní API.
 

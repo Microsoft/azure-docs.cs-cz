@@ -1,5 +1,5 @@
 ---
-title: Zeměpisné oblasti V2 předem připravených entit
+title: Předdefinovaná entita geografie v2 – LUIS
 titleSuffix: Azure Cognitive Services
 description: Tento článek obsahuje geographyV2 informace předem připravených entit v Language Understanding (LUIS).
 services: cognitive-services
@@ -11,14 +11,14 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: 5b9ace8a2402d96c4bb54864eb59a56b46d04067
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2628dd30e09f4c52517ccb0a284cda235fb0c33f
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65071975"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560228"
 ---
-# <a name="geographyv2-prebuilt-entity-for-a-luis-app"></a>GeographyV2 předem připravených entit pro aplikace LUIS
+# <a name="geographyv2-prebuilt-entity-for-a-luis-app"></a>GeographyV2 předem vytvořenou entitu pro aplikaci LUIS
 GeographyV2 předem připravených entit rozpozná místech. Protože tato entita je už vytrénovaný, není potřeba přidat příklad projevy obsahující GeographyV2 záměry aplikace. GeographyV2 entity se podporuje v angličtině [jazykovou verzi](luis-reference-prebuilt-entities.md).
 
 ## <a name="subtypes"></a>Podtypy
@@ -35,7 +35,7 @@ Zeměpisné umístění mít podtypy:
 
 ## <a name="resolution-for-geographyv2-entity"></a>Řešení pro entitu GeographyV2
 
-### <a name="api-version-2x"></a>Verze rozhraní API 2.x
+### <a name="api-version-2x"></a>Rozhraní API verze 2. x
 
 Následující příklad ukazuje rozlišení **builtin.geographyV2** entity.
 
@@ -93,9 +93,9 @@ Následující příklad ukazuje rozlišení **builtin.geographyV2** entity.
 } 
 ```
 
-### <a name="preview-api-version-3x"></a>Verze Preview rozhraní API 3.x
+### <a name="preview-api-version-3x"></a>Verze Preview rozhraní API verze 3. x
 
-Následující kód JSON je `verbose` parametr nastaven na `false`:
+Následující kód JSON je s `verbose` parametrem nastaveným na: `false`
 
 ```json
 {
@@ -121,7 +121,7 @@ Následující kód JSON je `verbose` parametr nastaven na `false`:
 }
 ```
 
-Následující kód JSON je `verbose` parametr nastaven na `true`:
+Následující kód JSON je s `verbose` parametrem nastaveným na: `true`
 
 ```json
 {
@@ -191,6 +191,6 @@ Následující kód JSON je `verbose` parametr nastaven na `true`:
 }
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o [e-mailu](luis-reference-prebuilt-email.md), [číslo](luis-reference-prebuilt-number.md), a [ordinální](luis-reference-prebuilt-ordinal.md) entity. 

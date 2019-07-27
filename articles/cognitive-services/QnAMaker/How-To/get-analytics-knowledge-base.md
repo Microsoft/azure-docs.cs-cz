@@ -1,5 +1,5 @@
 ---
-title: Analýzy na základě znalostí
+title: Analýzy na základě znalostní báze – QnA Maker
 titleSuffix: Azure Cognitive Services
 description: Pokud jste povolili App Insights během vytváření služby QnA Maker, QnA Maker ukládá všechny protokoly chatu a další telemetrie. Spusťte Ukázkové dotazy pro získání protokolů chatu z App Insights.
 services: cognitive-services
@@ -11,12 +11,12 @@ ms.subservice: qna-maker
 ms.topic: article
 ms.date: 07/16/2019
 ms.author: diberry
-ms.openlocfilehash: 5fc473fb1a1b1af84b0966bde4ecf02f4f221bf1
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: 5c729065076f5dc9f25189632f42ed565a72df8a
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68296408"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563096"
 ---
 # <a name="get-analytics-on-your-knowledge-base"></a>Získání analýz pro znalostní bázi
 
@@ -48,7 +48,7 @@ Pokud jste povolili App Insights během [vytváření služby QnA maker](./set-u
 
     Vyberte **Spustit** a spusťte dotaz.
 
-    ![Spuštění dotazu](../media/qnamaker-how-to-analytics-kb/run-query.png)
+    ![Spustit dotaz](../media/qnamaker-how-to-analytics-kb/run-query.png)
 
 ## <a name="run-queries-for-other-analytics-on-your-qna-maker-knowledge-base"></a>Spouštění dotazů pro další analýzy na QnA Maker znalostní bázi Knowledge Base
 

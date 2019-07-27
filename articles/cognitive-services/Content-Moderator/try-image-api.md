@@ -1,7 +1,7 @@
 ---
-title: Moderování obrázků s konzolou rozhraní API – Content Moderator
-titlesuffix: Azure Cognitive Services
-description: Pomocí rozhraní API pro moderování obrázků v Azure Content Moderator k zahájení pracovních postupů kontroly a kontrola moderování obsahu bitové kopie.
+title: Střední obrázky s konzolou API – Content Moderator
+titleSuffix: Azure Cognitive Services
+description: Použití rozhraní API pro moderování imagí v Azure Content Moderator k zahájení kontrol a revizí pracovních postupů moderování pro obsah obrázků.
 services: cognitive-services
 author: sanjeev3
 manager: nitinme
@@ -10,96 +10,96 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 1e4efa5e06525194bfdc7d1932fcfec5ec9f8c6b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 20353d488cba255925d21017b77d1def2d06b30b
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60607418"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68561242"
 ---
-# <a name="moderate-images-from-the-api-console"></a>Moderování obrázků z konzoly pro rozhraní API
+# <a name="moderate-images-from-the-api-console"></a>Střední obrázky z konzoly API
 
-Použití [rozhraní API pro moderování obrázků](https://westus.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66c) v Azure Content Moderator k zahájení pracovních postupů kontroly a kontrola moderování obsahu bitové kopie. Moderování úlohy kontroluje váš obsah pro vulgárních výrazů a porovná je s vlastní a sdílené seznamů zakázaných položek.
+Použití [rozhraní API pro moderování imagí](https://westus.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66c) v Azure Content moderator k zahájení kontrol a revizí pracovních postupů moderování pro obsah obrázků. Úloha moderování zkontroluje obsah pro vulgární výrazy a porovná ho s vlastními a sdílenými zakázanými operacemi.
 
-## <a name="use-the-api-console"></a>Pomocí rozhraní API konzoly
-Předtím, než můžete vyzkoušet rozhraní API v konzole online, budete potřebovat klíč předplatného. To je umístěn na **nastavení** kartě **Ocp-Apim-Subscription-Key** pole. Další informace najdete v tématu [Přehled](overview.md).
+## <a name="use-the-api-console"></a>Použití konzoly API
+Než budete moct otestovat rozhraní API v online konzole, budete potřebovat svůj klíč předplatného. Najdete ho na kartě **Nastavení** v poli **OCP-APIM-Subscription-Key** . Další informace najdete v tématu [Přehled](overview.md).
 
-1. Přejděte na [reference k rozhraní API pro moderování obrázků](https://westus.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66c).
+1. Přejít na [Reference k rozhraní API pro moderování imagí](https://westus.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66c)
 
-   **Obrázek – vyhodnocení** otevře se stránka pro moderování obrázků.
+   Otevře se stránka **pro** moderování image vyhodnocování obrazu.
 
-2. Pro **testovací konzoly Open API**, vyberte oblast, která nejlépe popisuje vaši polohu. 
+2. V případě **konzoly Open API Testing**vyberte oblast, která nejlépe popisuje vaše umístění. 
 
-   ![Zkuste Image - vyhodnotit výběr oblasti stránek](images/test-drive-region.png)
+   ![Vyzkoušet výběr oblasti stránky a vyhodnotit image](images/test-drive-region.png)
   
-   **Obrázek – vyhodnocení** otevře se konzola rozhraní API.
+   Otevře se konzola rozhraní API **pro vyhodnocení bitové kopie** .
 
-3. V **Ocp-Apim-Subscription-Key** zadejte váš klíč předplatného.
+3. Do pole **OCP-APIM-Subscription-Key** zadejte svůj klíč předplatného.
 
-   ![Zkuste Image - vyhodnotit klíč předplatného konzoly](images/try-image-api-1.PNG)
+   ![Vyzkoušejte klíč předplatného konzoly pro vyhodnocení image](images/try-image-api-1.PNG)
 
-4. V **text žádosti** pole, použít výchozí Ukázkový obrázek nebo zadejte obrázek, který chcete prohledat. Samotný obrázek jako binární soubor, můžete zadat bit dat nebo zadejte adresu URL veřejně přístupná pro bitovou kopii. 
+4. V poli **Text žádosti** použijte výchozí ukázkovou bitovou kopii nebo určete obrázek, který chcete prohledat. Samotný obrázek můžete odeslat jako binární data nebo zadat veřejně přístupnou adresu URL pro obrázek. 
 
-   V tomto příkladu použijte cestě zadané v **text žádosti** a potom vyberte **odeslat**. 
+   V tomto příkladu použijte cestu zadanou v poli **Text žádosti** a pak vyberte **Odeslat**. 
 
-   ![Zkuste Image – vyhodnocení těla požadavku konzoly](images/try-image-api-2.PNG)
+   ![Vyzkoušení image – tělo žádosti konzoly](images/try-image-api-2.PNG)
 
-   Toto je image na dané adrese URL:
+   Obrázek na této adrese URL:
 
-   ![Zkuste Image - vyhodnotit konzoly Ukázkový obrázek](images/sample-image.jpg) 
+   ![Vyzkoušejte ukázkový obrázek konzoly pro vyhodnocení image](images/sample-image.jpg) 
 
 5. Vyberte **Poslat**.
 
-6. Rozhraní API vrátí skóre pravděpodobnosti pro každou klasifikaci. Také vrátí zjištění, jestli image splňuje podmínky (**true** nebo **false**). 
+6. Rozhraní API vrací skóre pravděpodobnosti pro každou klasifikaci. Také vrátí určení, zda bitová kopie splňuje podmínky (**true** nebo **false**). 
 
-   ![Zkuste Image – vyhodnotit skóre pravděpodobnosti konzoly a stanovení podmínky](images/try-image-api-3.PNG)
+   ![Vyzkoušejte hodnocení pravděpodobnosti a určení podmínky v konzole pro vyhodnocení image](images/try-image-api-3.PNG)
 
 ## <a name="face-detection"></a>Rozpoznávání tváře
 
-Rozhraní API pro moderování obrázků můžete použít k vyhledání tváří v obrázku. Tato možnost může být užitečné, když máte obavy o ochraně osobních údajů a chcete zabránit odeslání na vaší platformě konkrétní tváře. 
+Rozhraní API pro moderování obrázků můžete použít k vyhledání plošek v obrázku. Tato možnost může být užitečná, když máte obavy z ochrany osobních údajů a chcete zabránit tomu, aby se na vaší platformě publikoval konkrétní obličej. 
 
-1. V [reference k rozhraní API pro moderování obrázků](https://westus.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66c), v nabídce vlevo v části **Image**vyberte **najít čelí**. 
+1. V referenčních informacích k [rozhraní API pro moderování imagí](https://westus.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66c)v nabídce vlevo v části **Obrázek**vyberte **Najít obličeje**. 
 
-   **Image - najít čelí** otevře se stránka.
+   Otevře se stránka **s obrázkem obličeje** .
 
-2. Pro **testovací konzoly Open API**, vyberte oblast, která nejlépe popisuje vaši polohu. 
+2. V případě **konzoly Open API Testing**vyberte oblast, která nejlépe popisuje vaše umístění. 
 
-   ![Zkuste Image – vyhledání výběr oblasti stránek tváří](images/test-drive-region.png)
+   ![Vyzkoušejte si obrázek – najde výběr oblasti stránky obličeje](images/test-drive-region.png)
 
-   **Image - najít čelí** otevře se konzola rozhraní API.
+   Otevře se konzola rozhraní API **pro obrázky – najít obličeje** .
 
-3. Zadejte obrázek, který chcete prohledat. Samotný obrázek jako binární soubor, můžete zadat bit dat nebo zadejte adresu URL veřejně přístupná pro bitovou kopii. Tento příklad obsahuje odkazy na bitovou kopii, která se používá v CNN scénáře.
+3. Zadejte obrázek, který se má prohledat. Samotný obrázek můžete odeslat jako binární data nebo zadat veřejně přístupnou adresu URL k obrázku. Tento příklad odkazuje na obrázek, který se používá v CNNm scénáři.
 
-   ![Zkuste Image – vyhledání Ukázkový obrázek tváře](images/try-image-api-face-image.jpg)
+   ![Vyzkoušejte si ukázku obrázku – vyhledání obličeje](images/try-image-api-face-image.jpg)
 
-   ![Zkuste Image – vyhledání tváří ukázková žádost](images/try-image-api-face-request.png)
+   ![Vyzkoušejte si ukázkovou žádost o image – vyhledání obličeje](images/try-image-api-face-request.png)
 
-4. Vyberte **Poslat**. V tomto příkladu rozhraní API vyhledá dvě tváře a vrátí jejich souřadnice na obrázku.
+4. Vyberte **Poslat**. V tomto příkladu rozhraní API najde dvě obličeje a vrátí jejich souřadnice v obrázku.
 
-   ![Zkuste Image – vyhledání tváří ukázkové odpovědi pole obsahu](images/try-image-api-face-response.png)
+   ![Vyzkoušejte si pole obsah odpovědi na obrázek ukázkové obličeje.](images/try-image-api-face-response.png)
 
-## <a name="text-detection-via-ocr-capability"></a>Text zjišťování prostřednictvím funkce technologie OCR
+## <a name="text-detection-via-ocr-capability"></a>Rozpoznávání textu prostřednictvím funkce OCR
 
-Možnost Content Moderator OCR můžete použít k detekci textu v obrázcích.
+K detekci textu v obrázcích můžete použít funkci Content Moderator optické rozpoznávání znaků.
 
-1. V [reference k rozhraní API pro moderování obrázků](https://westus.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66c), v nabídce vlevo v části **Image**vyberte **OCR**. 
+1. V referenčních informacích k [rozhraní API pro moderování imagí](https://westus.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66c)v nabídce vlevo v části **Obrázek**vyberte **optické rozpoznávání znaků**. 
 
-   **Image - OCR** otevře se stránka.
+   Otevře se stránka **Obrázek – optické rozpoznávání znaků** .
 
-2. Pro **testovací konzoly Open API**, vyberte oblast, která nejlépe popisuje vaši polohu. 
+2. V případě **konzoly Open API Testing**vyberte oblast, která nejlépe popisuje vaše umístění. 
 
-   ![Obrázek – výběr oblasti stránek technologie OCR](images/test-drive-region.png)
+   ![Obrázek – výběr oblasti stránky s rozpoznáváním OCR](images/test-drive-region.png)
 
-   **Image - OCR** otevře se konzola rozhraní API.
+   Otevře se konzola rozhraní API **pro optické rozpoznávání obrazu** .
 
-3. V **Ocp-Apim-Subscription-Key** zadejte váš klíč předplatného.
+3. Do pole **OCP-APIM-Subscription-Key** zadejte svůj klíč předplatného.
 
-4. V **text žádosti** pole, použijte výchozí Ukázkový obrázek. Toto je stejný obrázek, který se používá v předchozí části.
+4. V poli **Text žádosti** použijte výchozí ukázkovou bitovou kopii. To je stejný obrázek, který se používá v předchozí části.
 
-5. Vyberte **Poslat**. Byl extrahován text se zobrazí ve formátu JSON:
+5. Vyberte **Poslat**. Extrahovaný text se zobrazí ve formátu JSON:
 
-   ![Obrázek – OCR ukázkové odpovědi pole obsahu](images/try-image-api-ocr.PNG)
+   ![Obrázek – pole obsahu odpovědi vzorku pro optické rozpoznávání znaků](images/try-image-api-ocr.PNG)
 
 ## <a name="next-steps"></a>Další postup
 
-Použití rozhraní REST API ve vašem kódu nebo začínat [rychlý úvod k .NET pro moderování obrázků](image-moderation-quickstart-dotnet.md) integrovat s vaší aplikací.
+Pomocí REST API ve vašem kódu nebo začněte s aplikací pro [rychlý Start pro moderování imagí .NET](image-moderation-quickstart-dotnet.md) pro integraci s vaší aplikací.

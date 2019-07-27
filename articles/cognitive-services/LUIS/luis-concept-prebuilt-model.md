@@ -1,6 +1,6 @@
 ---
-title: Předem připravené modely
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: Předem připravené modely – LUIS
+titleSuffix: Azure Cognitive Services
 description: Předem připravené modely poskytují domén, záměrů, projevy a entity. Můžete spustit vaši aplikaci s využitím předem připravených doménou nebo později přidat příslušné domény do vaší aplikace.
 services: cognitive-services
 author: diberry
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 01/24/2019
 ms.author: diberry
-ms.openlocfilehash: 5d2ea9d971eff22ddeed4122c9697ca3096697b0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: be0ac73b1e225612fedb93c59a90380d67c6de92
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60813876"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560712"
 ---
 # <a name="prebuilt-domain-intent-and-entity-models"></a>Předem připravené modely entity, domény a záměr
 

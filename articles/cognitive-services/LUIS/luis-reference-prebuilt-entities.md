@@ -1,5 +1,5 @@
 ---
-title: Všechny předem připravených entit
+title: Všechny předem připravené entity – LUIS
 titleSuffix: Azure Cognitive Services
 description: Tento článek obsahuje seznam předem připravených entit, které jsou zahrnuty v Language Understanding (LUIS).
 services: cognitive-services
@@ -11,14 +11,14 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 06/25/2019
 ms.author: diberry
-ms.openlocfilehash: 082ebaef9a2497899cf91c24435dea6e626f0041
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 9ce6d33f6f8be844877067163630e5a7909183f6
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67485156"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563446"
 ---
-# <a name="entities-per-culture-in-your-luis-model"></a>Počet entit na jazykové verzi v modelu LUIS
+# <a name="entities-per-culture-in-your-luis-model"></a>Entity na jazykovou verzi v modelu LUIS
 
 Language Understanding (LUIS) poskytuje předem připravených entit. Předem připravených entit je obsažen ve vaší aplikaci, LUIS obsahuje odpovídající entity predikce v odpovědi koncového bodu. Všechny projevy příkladu jsou označeny jako také s entitou. Chování předem připravených entit **nelze** upravit. Pokud není uvedeno jinak, jsou předem připravených entit k dispozici ve všech oblastech aplikace LUIS (jazykové verze). V následující tabulce jsou uvedeny předem připravených entit, které jsou podporovány pro každou jazykovou verzi.
 
@@ -34,7 +34,7 @@ Language Understanding (LUIS) poskytuje předem připravených entit. Předem p�
 |Korejština|[ko-KR](#korean-entity-support)||
 |Portugalština|[pt-BR (Brazílie)](#portuguese-brazil-entity-support)||
 |Španělština|[ES-ES (Španělsko)](#spanish-spain-entity-support), [es-MX (Mexiko)](#spanish-mexico-entity-support)||
-|turečtina|[Turečtina](#turkish-entity-support)|Žádné předem připravených entit, které jsou podporovány v turečtině|
+|turečtina|[Turečtina](#turkish-entity-support)|V turečtině nejsou podporované předem připravené entity|
 
 ## <a name="chinese-entity-support"></a>Podpora čínských entity
 
@@ -66,7 +66,7 @@ Podporují se následující entity:
 ------|:------:|
 [Stáří](luis-reference-prebuilt-age.md):<br>rok<br>měsíc<br>týden<br>den   |    ✔   |
 [Měny](luis-reference-prebuilt-currency.md):<br>dolar<br>zlomkové jednotky (ex: pritzker)  |    ✔   |
-[Datum a čas](luis-reference-prebuilt-deprecated.md)   |    -   | 
+[Hodnotu](luis-reference-prebuilt-deprecated.md)   |    -   | 
 [Dimenze](luis-reference-prebuilt-dimension.md):<br>svazek<br>Oblast<br>Váha<br>informace (ex: bit nebo byte)<br>Délka (ex: měřidla)<br>rychlost (ex: mil za hodinu)  |    ✔   | 
 [E-mail](luis-reference-prebuilt-email.md)   |    ✔   | 
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   | 
@@ -176,7 +176,7 @@ Podporují se následující entity:
 ------|:------:|
 [Stáří](luis-reference-prebuilt-age.md):<br>rok<br>měsíc<br>týden<br>den   |    ✔   |
 [Měny](luis-reference-prebuilt-currency.md):<br>dolar<br>zlomkové jednotky (ex: pritzker)  |    ✔   |
-[Datum a čas](luis-reference-prebuilt-deprecated.md)   |    -   | 
+[Hodnotu](luis-reference-prebuilt-deprecated.md)   |    -   | 
 [Dimenze](luis-reference-prebuilt-dimension.md):<br>svazek<br>Oblast<br>Váha<br>informace (ex: bit nebo byte)<br>Délka (ex: měřidla)<br>rychlost (ex: mil za hodinu)  |    ✔   | 
 [E-mail](luis-reference-prebuilt-email.md)   |    ✔   | 
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   | 
@@ -198,7 +198,7 @@ Podporují se následující entity:
 ------|:------:|
 [Stáří](luis-reference-prebuilt-age.md):<br>rok<br>měsíc<br>týden<br>den   |    ✔   |
 [Měny](luis-reference-prebuilt-currency.md):<br>dolar<br>zlomkové jednotky (ex: pritzker)  |    ✔   |
-[Datum a čas](luis-reference-prebuilt-deprecated.md)   |    -   | 
+[Hodnotu](luis-reference-prebuilt-deprecated.md)   |    -   | 
 [Dimenze](luis-reference-prebuilt-dimension.md):<br>svazek<br>Oblast<br>Váha<br>informace (ex: bit nebo byte)<br>Délka (ex: měřidla)<br>rychlost (ex: mil za hodinu)  |    ✔   | 
 [E-mail](luis-reference-prebuilt-email.md)   |    ✔   | 
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   | 
@@ -220,7 +220,7 @@ Podporují se následující entity:
 ------|:------:|
 [Stáří](luis-reference-prebuilt-age.md):<br>rok<br>měsíc<br>týden<br>den   |    -   |
 [Měny](luis-reference-prebuilt-currency.md):<br>dolar<br>zlomkové jednotky (ex: pritzker)  |    -   |
-[Datum a čas](luis-reference-prebuilt-deprecated.md)   |    -   | 
+[Hodnotu](luis-reference-prebuilt-deprecated.md)   |    -   | 
 [Dimenze](luis-reference-prebuilt-dimension.md):<br>svazek<br>Oblast<br>Váha<br>informace (ex: bit nebo byte)<br>Délka (ex: měřidla)<br>rychlost (ex: mil za hodinu)  |    -   | 
 [E-mail](luis-reference-prebuilt-email.md)   |    ✔   | 
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   | 
@@ -304,9 +304,9 @@ Pro naleznete v poznámkách [zastaralé předem připravených entit](luis-refe
 
 Není k dispozici ve všech subkultury portugalština (Brazílie) – KeyPhrase ```pt-BR```.
 
-## <a name="turkish-entity-support"></a>Podpora turecké entity
+## <a name="turkish-entity-support"></a>Podpora pro tureckou entitu
 
-**Neexistují žádné předem připravených entit, které jsou podporovány v turečtině.** 
+**V turečtině nejsou podporovány žádné předem připravené entity.** 
 
 <!--
 

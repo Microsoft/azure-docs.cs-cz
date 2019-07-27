@@ -1,6 +1,6 @@
 ---
-title: Vytvoření znalostní báze knowledge base - REST,C#
-titlesuffix: QnA Maker- Azure Cognitive Services
+title: 'Rychlý start: Vytvoření znalostní báze – REST, C# -QnA maker'
+titleSuffix: Azure Cognitive Services
 description: Tento rychlý start založený na REST a jazyce C# vás provede procesem vytvoření ukázkové znalostní báze služby QnA Maker prostřednictvím kódu programu. Tato znalostní báze se zobrazí na řídicím panelu Azure účtu rozhraní API služeb Cognitive Services.
 services: cognitive-services
 author: diberry
@@ -11,14 +11,14 @@ ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 07/16/2019
 ms.author: diberry
-ms.openlocfilehash: 130f14f1a377c6ee580b207a62fd47d9dd818dcb
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 8947baba9212fecab8c67eaf679380a2517ed63d
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68249692"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68559907"
 ---
-# <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-c"></a>Rychlý start: Vytvoření znalostní báze v pomocí nástroje QnA MakerC#
+# <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-c"></a>Rychlý start: Vytvoření znalostní báze ve QnA Maker pomocíC#
 
 Tento rychlý start vás provede vytvořením a publikováním ukázkové znalostní báze služby QnA Maker pomocí kódu programu. Služba QnA Maker automaticky extrahuje otázky a odpovědi z částečně strukturovaného obsahu, jako jsou třeba časté otázky, ze [zdrojů dat](../Concepts/data-sources-supported.md). Model pro znalostní bázi je definovaný v kódu ve formátu JSON poslaném v těle požadavku rozhraní API. 
 
@@ -33,7 +33,7 @@ Tento rychlý start volá rozhraní API služby QnA Maker:
 * Potřebujete [službu QnA Maker](../How-To/set-up-qnamaker-service-azure.md). Pokud chcete získat klíč, vyberte na řídicím panelu **Klíče** v části **Správa prostředků**. 
 
 > [!NOTE] 
-> Soubory tak získají kompletní řešení jsou k dispozici na [ **Azure – ukázky/cognitive-services – QnA maker csharp** úložiště GitHub](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp).
+> Kompletní soubory řešení jsou k dispozici v [úložišti GitHub **Azure-Samples/vnímání-Services-qnamakerem-CSharp** ](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp).
 
 ## <a name="create-a-knowledge-base-project"></a>Vytvoření projektu znalostní báze
 

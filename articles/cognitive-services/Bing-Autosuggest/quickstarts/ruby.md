@@ -1,21 +1,21 @@
 ---
 title: 'Rychlý start: Navrhněte vyhledávací dotazy pomocí Automatické návrhy Bingu REST API a Ruby.'
 titleSuffix: Azure Cognitive Services
-description: Získejte informace a ukázky kódu, které vám pomůžou rychle začít používat rozhraní API pro automatické návrhy Bingu.
+description: Naučte se, jak rychle začít navrhovat hledané výrazy v reálném čase pomocí rozhraní API pro automatické návrhy Bingu.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-autosuggest
 ms.topic: quickstart
-ms.date: 02/20/2019
+ms.date: 07/26/2019
 ms.author: aahi
-ms.openlocfilehash: 3797e8b0d200bcb7f010afbf77f57cfc5cf6b5d1
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: b395c9202ce6d67b76bc0dc6e203a0db275b4fa1
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68405200"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68565790"
 ---
 # <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-ruby"></a>Rychlý start: Navrhněte vyhledávací dotazy pomocí Automatické návrhy Bingu REST API a Ruby.
 
@@ -146,7 +146,7 @@ Pomocí tohoto rychlého startu můžete začít volat rozhraní API pro automat
 }
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 > [Vytvoření jednostránkové webové aplikace](../tutorials/autosuggest.md)

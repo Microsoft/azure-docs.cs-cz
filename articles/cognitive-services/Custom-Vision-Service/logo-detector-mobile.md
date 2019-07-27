@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Použití vlastního detektoru loga k rozpoznávání služeb Azure – Custom Vision'
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: V tomto kurzu provedete ukázkovou aplikaci, která jako součást scénáře detekce loga používá službu Azure Custom Vision. Přečtěte si, jak se používá Custom Vision s dalšími komponentami k zajištění ucelené aplikace.
 services: cognitive-services
 author: PatrickFarley
@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: ab3dc89b90636c90564803c6a91350a75c3181cd
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: b0a5b110951d7b13110fab935d5ca1333f7f8c1e
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/26/2019
-ms.locfileid: "68517079"
+ms.locfileid: "68564214"
 ---
 # <a name="tutorial-recognize-azure-service-logos-in-camera-pictures"></a>Kurz: Rozpoznání loga služby Azure v obrázcích na kameře
 
@@ -177,7 +177,7 @@ Pokud jste postupovali podle všech kroků v tomto scénáři a použili jste ap
 
 Pokud plánujete vytvořit vlastní projekt rozpoznávání objektů pomocí Custom Vision, možná budete chtít odstranit projekt detekce loga, který jste vytvořili v tomto kurzu. Bezplatná zkušební verze pro Custom Vision umožňuje pouze dva projekty. Pokud chcete odstranit projekt zjišťování loga, na [webu Custom Vision](https://customvision.ai)otevřete **projekty** a potom vyberte ikonu odpadkového koše v části **můj nový projekt**.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu nastavíte a prozkoumáte plnohodnotnou aplikaci Xamarin. Forms, která používá službu Custom Vision k detekci loga v obrazech mobilní kamery. V dalším kroku se dozvíte, jaké jsou osvědčené postupy pro vytváření Custom Vision modelu, takže když ho vytvoříte pro vlastní aplikaci, můžete ho nastavit jako účinný a přesný.
 

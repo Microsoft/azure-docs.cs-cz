@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý start: Díky analýze obrázků na problematický obsah v C# – Content Moderator'
-titlesuffix: Azure Cognitive Services
-description: Jak analyzovat obsah image pro různé nevhodných materiálů pomocí sady obsahu Moderator SDK pro .NET
+title: 'Rychlý start: Analýza imagí pro nevhodný obsah C# v Content moderator'
+titleSuffix: Azure Cognitive Services
+description: Jak analyzovat obsah obrázků pro různé nevhodný materiál pomocí sady Content Moderator SDK pro .NET
 services: cognitive-services
 author: sanjeev3
 manager: nitinme
@@ -10,16 +10,16 @@ ms.subservice: content-moderator
 ms.topic: quickstart
 ms.date: 07/03/2019
 ms.author: sajagtap
-ms.openlocfilehash: d9a28dcd4af68cf9c00eb3d338c4bd83c8d89ecc
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 9bfe5f21da6418f82b2099a5da4ba8c3c32c25f3
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67604122"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68564499"
 ---
-# <a name="quickstart-analyze-images-for-objectionable-content-in-c"></a>Rychlý start: Díky analýze obrázků pro nežádoucí obsah naC#
+# <a name="quickstart-analyze-images-for-objectionable-content-in-c"></a>Rychlý start: Analýza imagí pro nevhodný obsah v nástrojiC#
 
-Tento článek obsahuje informace a vzorové kódy, které vám pomůžou začít používat [sadu Content Moderator SDK pro .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/). Budete se dozvíte, jak vyhledávat obsah pro dospělé nebo pikantní extrahovatelný text a lidské tváře se postarat o moderování potenciálně nežádoucím.
+Tento článek obsahuje informace a vzorové kódy, které vám pomůžou začít používat [sadu Content Moderator SDK pro .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/). Naučíte se, jak hledat obsah pro dospělé nebo pikantní, extrahovatelné texty a lidské obličeje s cílem moderování potenciálně nežádoucího materiálu.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete. 
 
@@ -60,7 +60,7 @@ Do souboru *Program.cs* přidejte následující kód, který pro vaše předpla
 
 ### <a name="set-up-input-and-output-targets"></a>Nastavení vstupních a výstupních cílů
 
-Do třídy **Program** v souboru _Program.cs_ přidejte následující statická pole. Tato pole zadejte soubory pro obsah vstupního obrázku a výstup JSON obsahu.
+Do třídy **Program** v souboru _Program.cs_ přidejte následující statická pole. Tato pole určují soubory pro obsah vstupní bitové kopie a výstupní obsah JSON.
 
 [!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/image-moderation-quickstart-dotnet.cs?range=49-53)]
 
@@ -86,13 +86,13 @@ Do třídy **Program** přidejte následující metodu. Tato metoda ohodnotí je
 
 ### <a name="load-the-input-images"></a>Načtení vstupních obrázků
 
-Do metody **Main** ve třídě **Program** přidejte následující kód. Tento kód nastaví program k načtení dat hodnocení pro každou adresu URL obrázku ve vstupním souboru. Tato data pak zapíše do jednoho výstupního souboru.
+Do metody **Main** ve třídě **Program** přidejte následující kód. Tento kód nastaví program k načtení zkušebních dat pro každou adresu URL obrázku ve vstupním souboru. Tato data pak zapíše do jednoho výstupního souboru.
 
 [!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/image-moderation-quickstart-dotnet.cs?range=17-46)]
 
 ## <a name="run-the-program"></a>Spuštění programu
 
-Program zapíše řetězcová data JSON do souboru _ModerationOutput.json_. Pro ukázkové obrázky použité v tomto rychlém startu bude výstup následující. Každá image obsahuje různé části pro `ImageModeration`, `FaceDetection`, a `TextDetection`, které odpovídají tři volání rozhraní API v vaše **EvaluateImage** metody.
+Program zapíše řetězcová data JSON do souboru _ModerationOutput.json_. Pro ukázkové obrázky použité v tomto rychlém startu bude výstup následující. Každý obrázek má různé oddíly pro `ImageModeration`, `FaceDetection`a `TextDetection`, které odpovídají třem voláním rozhraní API v metodě **EvaluateImage** .
 
 ```json
 [{

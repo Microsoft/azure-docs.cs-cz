@@ -1,7 +1,7 @@
 ---
-title: Záměry
-titleSuffix: Language Understanding - Azure Cognitive Services
-description: Představuje jeden záměru úkol nebo akci uživatel chce provést. Jedná o účely nebo cíl vyjádřeny utterance uživatele. Definujte sadu příkazů, který odpovídá na akce, které uživatelé chtějí využít ve vaší aplikaci.
+title: Záměry – LUIS
+titleSuffix: Azure Cognitive Services
+description: Jeden záměr představuje úkol nebo akci, kterou chce uživatel provést. Jedná o účely nebo cíl vyjádřeny utterance uživatele. Definujte sadu příkazů, který odpovídá na akce, které uživatelé chtějí využít ve vaší aplikaci.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,14 +11,14 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: diberry
-ms.openlocfilehash: e635a11cb99d11befc40703d9f5d2abec8559632
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2b574e0a545091263fce7949f997a3ba2dc8e5a8
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60813459"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563975"
 ---
-# <a name="concepts-about-intents-in-your-luis-app"></a>Principy záměry aplikace LUIS
+# <a name="concepts-about-intents-in-your-luis-app"></a>Koncepty o záměrech v aplikaci LUIS
 
 Záměru představuje úkol nebo akci uživatel chce provést. Jedná o účely nebo cíl vyjádřeny uživatele [utterance](luis-concept-utterance.md).
 
@@ -31,7 +31,7 @@ Cestovní záměry aplikace   |   Ukázkové promluvy   |
  CheckWeather | "Jak se o počasí v Bostonu jako"? <br/> "Zobrazit předpovědi pro tento víkendu" |
  Žádný         | "Si předpisu soubor cookie"<br>"Lakers win?" |
 
-Všechny aplikace, které jsou součástí předdefinovaných záměr "[žádný](#none-intent-is-fallback-for-app)", což je záložní záměr. 
+Všechny aplikace jsou dodávány s předdefinovaným záměrem "[none](#none-intent-is-fallback-for-app)", což je záložní záměr. 
 
 ## <a name="prebuilt-domains-provide-intents"></a>Předem připravených domén poskytují záměrů
 Kromě záměrů, které definujete můžete použít předem připravených záměry z jednoho z předem připravených domén. Další informace najdete v tématu [použití předem připravených domén v aplikacích LUIS](luis-how-to-use-prebuilt-domains.md) Další informace o tom, jak přizpůsobit příkazy z předem připravených domény pro použití ve vaší aplikaci.
@@ -59,10 +59,10 @@ Podobně míněný [projevy](luis-concept-utterance.md) odpovídají jedné zám
 
 ## <a name="none-intent"></a>Žádný záměr
 
-**Žádný** záměr je důležité pro každou aplikaci a nesmí mít nulovou projevy.
+Záměr **none** je pro každou aplikaci důležitý a neměl by mít žádné projevy.
 
 ### <a name="none-intent-is-fallback-for-app"></a>Žádná záměru není pro aplikaci pro použití náhradní lokality
-**Žádný** pokrývající vše nebo záložní záměr je cílem. Používá se naučit LUIS projevy, které nejsou důležité v doméně aplikace (oblastí). **Žádný** záměr by měl mít 10 až 20 procent celkového projevy v aplikaci. Nenechávají žádný prázdný. 
+**Žádný** pokrývající vše nebo záložní záměr je cílem. Používá se naučit LUIS projevy, které nejsou důležité v doméně aplikace (oblastí). **Žádný** záměr by měl mít 10 až 20 procent celkového projevy v aplikaci. Nenechte pole None prázdné. 
 
 ### <a name="none-intent-helps-conversation-direction"></a>Žádný záměru pomáhá směr konverzace
 Když utterance očekává se, že jako žádný záměru a vrácené chatovací robot s predikcí, robota můžete další otázky nebo nabídky nasměrovat uživatele na platné možnosti v chatovací robot. 
@@ -83,9 +83,9 @@ Pokud chcete určit kladnému i záměrů, jako například "můžu **má** auto
 
 ## <a name="intents-and-patterns"></a>Záměry a vzory
 
-Pokud máte například projevy, které mohou být definovány částečně nebo zcela jako regulární výraz, zvažte použití [regulárního výrazu entity](luis-concept-entity-types.md#regular-expression-entity) spárované s [vzor](luis-concept-patterns.md). 
+Pokud máte příklad projevy, který lze definovat jako součást nebo celý jako regulární výraz, zvažte použití [entity regulárního výrazu](luis-concept-entity-types.md#regular-expression-entity) spárovaného se [vzorem](luis-concept-patterns.md). 
 
-Extrakce dat pomocí regulárních výrazů entity zaručuje, tak, aby je vzorek párován. Porovnávání vzorů zaručuje, že se vrátí přesné záměru. 
+Použití entity regulárního výrazu garantuje extrakci dat, aby byl vzor porovnán. Porovnávání vzorů zaručuje, že se vrátí přesný záměr. 
 
 ## <a name="intent-balance"></a>Záměru zůstatek
 Domény záměry aplikace by měl mít rovnováhu projevy mezi každou záměr. Není nutné jeden záměr s 10 projevy a jiný účel s 500 projevy. To se rovnováha. Pokud máte tuto situaci, přečtěte si záměr s 500 projevy zobrazíte, pokud řadu příkazů může být znovu uspořádat do [vzor](luis-concept-patterns.md). 

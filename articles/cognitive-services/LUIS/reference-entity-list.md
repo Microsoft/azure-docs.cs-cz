@@ -1,6 +1,6 @@
 ---
-title: Seznam typů entit
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: Seznam typů entit – LUIS
+titleSuffix: Azure Cognitive Services
 description: Seznam entit představuje pevně uzavřenou sadu příbuzných slov spolu s jejich synonymy. Služba LUIS nevyhledává další hodnoty pro seznam entit. Pomocí funkce doporučit můžete zobrazit návrhy nových slov na základě aktuálního seznamu.
 services: cognitive-services
 author: diberry
@@ -10,12 +10,12 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 07/24/2019
 ms.author: diberry
-ms.openlocfilehash: c278a72327d476be8963b10db5e8231b6d859a4a
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: ca9f8b570ee28b1913c8ec81c66a5b70827c04d6
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68480184"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68559964"
 ---
 # <a name="list-entity"></a>Entita seznamu 
 

@@ -1,7 +1,7 @@
 ---
-title: Vyzkoušejte přesnost pro Custom Speech – hlasové služby
-titlesuffix: Azure Cognitive Services
-description: V tomto dokumentu zjistíte jak kvantitativně jsou měřítkem kvality modelu řeči na text od Microsoftu nebo vašeho vlastního modelu. K testování přesnost je potřeba dat přepisu zvuku + lidských s názvem bez přípony a musí být zadána 30 minut až 5 hodin reprezentativní zvuku.
+title: Vyhodnotit přesnost pro službu Custom Speech-Speech
+titleSuffix: Azure Cognitive Services
+description: V tomto dokumentu se dozvíte, jak kvantitativní měření kvality našeho modelu řeči (Speech-to-text) nebo vlastního modelu. Pro testování přesnosti se vyžadují data přepisu a přepisu, které by měly být k dispozici po dobu 30 až 5 hodin reprezentativního zvuku.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,65 +10,65 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 2e9818fad9a0b5d04cc50a293b16d838c319dd86
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: bd8bbc28247ecd924db25cb4b916d1d466065606
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606574"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68562864"
 ---
-# <a name="evaluate-custom-speech-accuracy"></a>Vyzkoušejte přesnost vlastní řeči
+# <a name="evaluate-custom-speech-accuracy"></a>Vyhodnotit přesnost Custom Speech
 
-V tomto dokumentu se dozvíte, jak kvantitativně jsou měřítkem kvality modelu řeči na text od Microsoftu nebo vašeho vlastního modelu. K testování přesnost je potřeba dat přepisu zvuku + lidských s názvem bez přípony a musí být zadána 30 minut až 5 hodin reprezentativní zvuku.
+V tomto dokumentu se dozvíte, jak kvantitativní měření kvality modelu řeči od Microsoftu nebo vlastního modelu. Pro testování přesnosti se vyžadují data přepisu a přepisu, které by měly být k dispozici po dobu 30 až 5 hodin reprezentativního zvuku.
 
-## <a name="what-is-word-error-rate-wer"></a>Co je míra chyb aplikace Word (zasílání)?
+## <a name="what-is-word-error-rate-wer"></a>Co je četnost chyb ve Wordu (WER)?
 
-Standardní měření přesnost modelu je *míra chyb slovo* (zasílání). Zasílání spočítá nesprávná slova identifikovaný při rozpoznávání a potom provede podíl celkového počtu slov v přepisu lidských s názvem bez přípony. A konečně toto číslo vynásobené 100 % k výpočtu zasílání.
+Standardní hodnota pro měření přesnosti modelu je *počet chyb v aplikaci* (WER). Služba WER počítá počet nesprávných slov identifikovaných během rozpoznávání a pak je vydělí celkovým počtem slov poskytnutých v přepisu popisku. Nakonec se toto číslo vynásobí 100% za účelem výpočtu WER.
 
-![Vzorec zasílání](./media/custom-speech/custom-speech-wer-formula.png)
+![Vzorec WER](./media/custom-speech/custom-speech-wer-formula.png)
 
-Nesprávně identifikován slova spadají do tří kategorií:
+Nesprávně identifikovaná slova spadají do tří kategorií:
 
-* Vložení (I): Slova, která se nesprávně přidají hypotézu přepisu
-* Odstranění (D): Slova, která nezjištěné hypotézu přepisu
-* Nahrazení (S): Slova, které byly nahrazeny mezi referenční a hypotézu
+* Vložení (I): Slova, která jsou nesprávně přidaná v přepisu hypotéz
+* Odstranění (D): Slova, která nejsou rozpoznána v přepisu hypotézy
+* Náhrady: Slova, která byla nahrazena mezi odkazem a hypotézou
 
 Tady je příklad:
 
-![Příklad nesprávně identifikované slov](./media/custom-speech/custom-speech-dis-words.png)
+![Příklad nesprávně identifikovaných slov](./media/custom-speech/custom-speech-dis-words.png)
 
-## <a name="resolve-errors-and-improve-wer"></a>Řešení chyb a vylepšení zasílání
+## <a name="resolve-errors-and-improve-wer"></a>Řešení chyb a vylepšení WER
 
-Zasílání ve výsledcích rozpoznávání počítače můžete použít k vyhodnocení kvality modelu, který používáte s vaší aplikace, nástroj nebo produktu. Zasílání o 5-10 % se považuje za kvalitní a je připravený k použití. Zasílání 20 % je přijatelná, ale můžete chtít zvážit další školicí. Zasílání 30 % nebo víc signály kvalita a vyžaduje přizpůsobení a školení.
+Pomocí služby WER z výsledků rozpoznávání počítačů můžete vyhodnotit kvalitu modelu, který používáte, pro aplikaci, nástroj nebo produkt. WER 5% až 10% se považuje za dobrou kvalitu a je připravená k použití. Je přijatelné akceptovat 20%, ale možná budete chtít zvážit další školení. WER na více než 30% signalizuje špatné kvality a vyžaduje přizpůsobení a školení.
 
-Jak se distribuují chyby je důležité. Pokud nedojde k mnoha chyb při odstraňování, je obvykle z důvodu slabé zvukový signál. Chcete-li vyřešit tento problém, musíte shromažďovat zvukových dat blíže ke zdroji. Vkládání chyb znamenat, že zvuk se zaznamenávají do prostředí hlučného a nežádoucím může být k dispozici, což způsobuje problémy, rozpoznávání. Substituce jsou často došlo k chybám při nedostatečné ukázka podmínek specifického pro doménu se zadat buď jako přepisů lidských s názvem bez přípony nebo související s text.
+Důležité je, jak jsou distribuované chyby. V případě, že dojde k mnoha chybám při odstraňování, většinou se jedná o slabý signál zvukové signalizace. Pokud chcete tento problém vyřešit, budete muset shromáždit zvuková data blíž ke zdroji. Chyby vkládání znamenají, že zvuk byl zaznamenán v prostředí s vysokou úrovní šumu a Crosstalk může být k dispozici, což způsobuje problémy s rozpoznáváním. K chybám nahrazení dochází často v případě, že se nedostatečná ukázka podmínek specifických pro doménu poskytla jako přepisy nebo související text.
 
-Díky analýze jednotlivé soubory, můžete určit, jaký typ chyby existují, a které chyby jsou jedinečné pro konkrétní soubor. Principy problémů na úrovni souborů můžete cílit na vylepšení.
+Analýzou jednotlivých souborů můžete určit, jaký typ chyb existuje a které chyby jsou jedinečné pro určitý soubor. Porozumění problémům na úrovni souborů vám pomůže zaměřit se na vylepšení.
 
-## <a name="create-a-test"></a>Vytvoření testu
+## <a name="create-a-test"></a>Vytvořit test
 
-Pokud chcete pro otestování kvality modelu směrného plánu převodu řeči na text od Microsoftu nebo vlastní model, který jsme natrénovali, můžete porovnání dvou modelů vedle sebe, k vyhodnocení přesnost. Porovnání obsahuje výsledky zasílání a uznání. Obvykle vlastního modelu se porovná se základní model od Microsoftu.
+Pokud chcete testovat kvalitu modelu standardních hodnot řeči od Microsoftu nebo vlastního modelu, který jste si vyzkoušeli, můžete porovnat dva modely vedle sebe a vyhodnotit tak přesnost. Porovnávání zahrnuje výsledky WER a rozpoznávání. Vlastní model se obvykle porovnává se základními modely Microsoftu.
 
-O vyhodnocení modelů vedle sebe:
+Chcete-li vyhodnotit modely vedle sebe:
 
-1. Přejděte do **Speech to text > Custom Speech > testování**.
-2. Klikněte na tlačítko **přidat Test**.
-3. Vyberte **vyhodnotit přesnost**. Zadejte název, popis, testu a vyberte vaše datová sada přepisu zvuku + lidských s názvem bez přípony.
+1. **> Custom Speech > testování**, přejděte na text na řeč.
+2. Klikněte na **Přidat test**.
+3. Vyberte možnost vyhodnotit **přesnost**. Dejte testu název, popis a vyberte si zvukovou datovou sadu přepisu a s popiskem.
 4. Vyberte až dva modely, které chcete testovat.
 5. Klikněte na možnost **Vytvořit**.
 
 Po úspěšném vytvoření testu můžete porovnat výsledky vedle sebe.
 
-## <a name="side-by-side-comparison"></a>Porovnání vedle sebe
+## <a name="side-by-side-comparison"></a>Souběžné porovnání
 
-Po dokončení testu indikován stav změny *Succeeded*, zjistíte číslo zasílání pro oba modely součástí vašeho testu. Klikněte na název testu, chcete-li zobrazit testovací stránce s podrobnostmi. Tato stránka podrobností uvádí všechny projevy ve vaší datové sadě, určující rozpoznávání výsledky ze dvou modelů vedle přepis z odeslané datové sady. Chcete-li zkontrolovat porovnání vedle sebe, můžete přepínat různých typů chyb včetně vkládání, odstraňování a nahrazení. Poslech Audio nahrávky patřící a porovnáním rozpoznávání výsledky v každém sloupci, který ukazuje přepis lidských s názvem bez přípony a výsledky pro dva modely řeči na text, můžete rozhodnout, které model bude vyhovovat vašim potřebám a kde jsou další školicí a vylepšení povinné.
+Po dokončení testu, který je označen změnou stavu na *úspěch*, najdete číslo wer pro oba modely zahrnuté v testu. Kliknutím na název testu zobrazíte stránku s podrobnostmi o testování. Tato stránka podrobností obsahuje seznam všech projevy ve vaší datové sadě, které označují výsledky rozpoznávání dvou modelů společně s přepisem z odeslané datové sady. Chcete-li zkontrolovat souběžné porovnání, můžete přepínat různé typy chyb včetně vložení, odstranění a nahrazování. Díky poslechu zvuku a porovnání výsledků rozpoznávání v každém sloupci, který ukazuje přepis a výsledky pro dva modely řeči a textu, můžete rozhodnout, který model vyhovuje vašim potřebám, a kde jsou další školení a vylepšení. požadovanou.
 
 ## <a name="next-steps"></a>Další postup
 
-* [Vyzkoušejte svůj model](how-to-custom-speech-train-model.md)
+* [Výuka modelu](how-to-custom-speech-train-model.md)
 * [Nasazení modelu](how-to-custom-speech-deploy-model.md)
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další zdroje
 
-* [Připravit a otestovat vašich dat](how-to-custom-speech-test-data.md)
+* [Příprava a testování dat](how-to-custom-speech-test-data.md)
 * [Kontrola dat](how-to-custom-speech-inspect-data.md)

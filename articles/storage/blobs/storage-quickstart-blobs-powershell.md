@@ -8,24 +8,26 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 02/14/2019
 ms.author: tamram
-ms.openlocfilehash: c0a5f7271628e11dbc8fa8b18b21358923f567cc
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 4ffa4319fa2691469899ff038eeedc7ef30ccebe
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65149411"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68565004"
 ---
-# <a name="quickstart-upload-download-and-list-blobs-by-using-azure-powershell"></a>Rychlý start: Nahrávání, stahování a výpis objektů BLOB pomocí Azure Powershellu
+# <a name="quickstart-upload-download-and-list-blobs-by-using-azure-powershell"></a>Rychlý start: Nahrávání, stahování a výpis objektů BLOB pomocí Azure PowerShell
 
 Pomocí modulu Azure PowerShell můžete vytvářet a spravovat prostředky Azure. Prostředky Azure je možné vytvářet nebo spravovat z příkazového řádku PowerShellu nebo ve skriptech. Tato příručka popisuje použití PowerShellu k přenosu souborů mezi místním diskem a úložištěm objektů blob v Azure.
 
+[!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
+
 ## <a name="prerequisites"></a>Požadavky
 
-Pro přístup k úložišti Azure, budete potřebovat předplatné Azure. Pokud ještě nemáte předplatné, vytvořte [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) předtím, než začnete.
+Pokud chcete získat přístup k Azure Storage, budete potřebovat předplatné Azure. Pokud ještě nemáte předplatné, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Tento rychlý start vyžaduje modul Azure PowerShell Az verze 0.7 nebo novější. Verzi zjistíte spuštěním příkazu `Get-InstalledModule -Name Az -AllVersions | select Name,Version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-Az-ps).
+Tento rychlý Start vyžaduje modul Azure PowerShell AZ verze 0,7 nebo novější. Verzi zjistíte spuštěním příkazu `Get-InstalledModule -Name Az -AllVersions | select Name,Version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-Az-ps).
 
 [!INCLUDE [storage-quickstart-tutorial-intro-include-powershell](../../../includes/storage-quickstart-tutorial-intro-include-powershell.md)]
 
@@ -33,7 +35,7 @@ Tento rychlý start vyžaduje modul Azure PowerShell Az verze 0.7 nebo novějš�
 
 Objekty blob se vždy nahrávají do kontejneru. Skupiny objektů blob můžete organizovat podobně, jako organizujete soubory do složek na svém počítači.
 
-Nastavte název kontejneru a pak vytvořte kontejner s použitím [New-AzStorageContainer](/powershell/module/az.storage/new-AzStoragecontainer). Nastavte oprávnění na `blob`, abyste umožnili veřejný přístup k souborům. Název kontejneru v tomto příkladu je *quickstartblobs*.
+Nastavte název kontejneru a pak vytvořte kontejner pomocí [New-AzStorageContainer](/powershell/module/az.storage/new-AzStoragecontainer). Nastavte oprávnění na `blob`, abyste umožnili veřejný přístup k souborům. Název kontejneru v tomto příkladu je *quickstartblobs*.
 
 ```powershell
 $containerName = "quickstartblobs"
@@ -44,7 +46,7 @@ new-AzStoragecontainer -Name $containerName -Context $ctx -Permission blob
 
 Úložiště objektů blob podporuje objekty blob bloku, doplňovací objekty blob a objekty blob stránky. Soubory VHD využívané virtuálními počítači IaaS jsou objekty blob stránky. Doplňovací objekty blob můžete použít k protokolování, například když chcete zapisovat do souboru a pak přidávat další informace. Většina souborů uložených v úložišti objektů blob je objekty blob bloku. 
 
-Pokud chcete nahrát soubor do objektu blob bloku, získejte odkaz na kontejner a pak získejte odkaz na objekt blob bloku v tomto kontejneru. Jakmile budete mít odkaz na objekt blob, které můžete do něj nahrát data pomocí [Set-AzStorageBlobContent](/powershell/module/az.storage/set-AzStorageblobcontent). Tato operace vytvoří objekt blob, pokud ještě neexistuje, nebo objekt blob přepíše, pokud už existuje.
+Pokud chcete nahrát soubor do objektu blob bloku, získejte odkaz na kontejner a pak získejte odkaz na objekt blob bloku v tomto kontejneru. Jakmile budete mít odkaz na objekt blob, můžete do něj nahrát data pomocí [set-AzStorageBlobContent](/powershell/module/az.storage/set-AzStorageblobcontent). Tato operace vytvoří objekt blob, pokud ještě neexistuje, nebo objekt blob přepíše, pokud už existuje.
 
 Následující příklady nahrají soubory *Image001.jpg* a *Image002.png* ze složky *D:\\_TestImages* na místním disku do kontejneru, který jste vytvořili.
 
@@ -66,7 +68,7 @@ Než budete pokračovat, můžete nahrát libovolné množství souborů.
 
 ## <a name="list-the-blobs-in-a-container"></a>Zobrazí seznam objektů blob v kontejneru
 
-Získání seznamu objektů BLOB v kontejneru pomocí [Get-AzStorageBlob](/powershell/module/az.storage/get-AzStorageblob). Tento příklad zobrazí pouze názvy nahraných objektů blob.
+Získat seznam objektů BLOB v kontejneru pomocí [Get-AzStorageBlob](/powershell/module/az.storage/get-AzStorageblob). Tento příklad zobrazí pouze názvy nahraných objektů blob.
 
 ```powershell
 Get-AzStorageBlob -Container $ContainerName -Context $ctx | select Name
@@ -74,7 +76,7 @@ Get-AzStorageBlob -Container $ContainerName -Context $ctx | select Name
 
 ## <a name="download-blobs"></a>Stáhnout objekty blob
 
-Stáhněte objekty blob na svůj místní disk. Pro každý objekt blob, kterou chcete stáhnout, nastavte název a zavoláním [Get-AzStorageBlobContent](/powershell/module/az.storage/get-AzStorageblobcontent) stáhnout objekt blob.
+Stáhněte objekty blob na svůj místní disk. Pro každý objekt blob, který chcete stáhnout, nastavte název a zavolejte [Get-AzStorageBlobContent](/powershell/module/az.storage/get-AzStorageblobcontent) ke stažení objektu BLOB.
 
 Tento příklad stáhne objekty blob do složky D:*D:\\_TestImages\Downloads* na místním disku. 
 

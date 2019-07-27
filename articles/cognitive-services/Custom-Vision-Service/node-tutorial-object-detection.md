@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý start: Vytvoření projektu zjišťování objektu s vlastní Vision SDK pro Node.js'
-titlesuffix: Azure Cognitive Services
-description: Vytvoření projektu, přidání značek, nahrávat obrázky, trénování váš projekt a zjišťovat objekty pomocí sady Node.js SDK.
+title: 'Rychlý start: Vytvoření projektu pro detekci objektů pomocí sady Custom Vision SDK pro Node. js'
+titleSuffix: Azure Cognitive Services
+description: Vytvořte projekt, přidejte značky, nahrajte obrázky, proveďte výuku projektu a detekuje objekty pomocí sady Node. js SDK.
 services: cognitive-services
 author: areddish
 manager: daauld
@@ -10,32 +10,32 @@ ms.subservice: custom-vision
 ms.topic: quickstart
 ms.date: 07/15/2019
 ms.author: areddish
-ms.openlocfilehash: 45fce7a8b02f8613b666ed08d4755b0deb46cbca
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 306f812ab10c0ef247fdc1201e7df2a23b949a54
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68276454"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68564166"
 ---
-# <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-nodejs-sdk"></a>Rychlý start: Vytvoření projektu zjišťování objektu sadou Custom Vision Node.js SDK
+# <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-nodejs-sdk"></a>Rychlý start: Vytvoření projektu pro detekci objektů pomocí Custom Vision Node. js SDK
 
-Tento článek obsahuje informace a ukázky kódu pro vám pomůže začít s pomocí sady SDK pro zpracování obrazu vlastní s využitím Node.js k vytvoření objektový model zjišťování. Po jeho vytvoření, je můžete přidat označený oblastí, nahrávání obrázků, trénování projektu, získat adresu URL koncového bodu publikované předpovědi projektu a použít koncový bod pro programové testování bitovou kopii. V tomto příkladu můžete použijte jako šablonu pro vytvoření aplikace Node.js.
+Tento článek poskytuje informace a ukázkový kód, který vám může pomoci začít používat sadu Custom Vision SDK s Node. js k sestavení modelu detekce objektu. Po vytvoření můžete přidat tagované oblasti, nahrát obrázky, naučit projekt, získat adresu URL koncového bodu předpovědi projektu a použít koncový bod k programovému testování obrázku. Tento příklad použijte jako šablonu pro sestavení vlastní aplikace Node. js.
 
 ## <a name="prerequisites"></a>Požadavky
 
-- [Node.js 8](https://www.nodejs.org/en/download/) nebo novější.
-- [npm](https://www.npmjs.com/) nainstalované.
+- Je nainstalovaný [Node. js 8](https://www.nodejs.org/en/download/) nebo novější.
+- [npm](https://www.npmjs.com/) je nainstalovaný.
 
 ## <a name="install-the-custom-vision-sdk"></a>Instalace sady Custom Vision SDK
 
-Instalace sady Custom Vision service SDK pro Node.js, spusťte následující příkazy:
+Chcete-li nainstalovat sady SDK služby Custom Vision pro Node. js, spusťte následující příkazy:
 
 ```shell
 npm install @azure/cognitiveservices-customvision-training
 npm install @azure/cognitiveservices-customvision-prediction
 ```
 
-Můžete si stáhnout Image s [ukázky Node.js](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples).
+Image si můžete stáhnout s ukázkami [Node. js](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples).
 
 [!INCLUDE [get-keys](includes/get-keys.md)]
 
@@ -43,7 +43,7 @@ Můžete si stáhnout Image s [ukázky Node.js](https://github.com/Azure-Samples
 
 ## <a name="add-the-code"></a>Přidání kódu
 
-Vytvořte nový soubor s názvem *sample.js* v adresáři projektu upřednostňované.
+V upřednostňovaném adresáři projektu vytvořte nový soubor s názvem *Sample. js* .
 
 ### <a name="create-the-custom-vision-service-project"></a>Vytvoření projektu služby Custom Vision
 
@@ -76,7 +76,7 @@ const trainer = new TrainingApi.TrainingAPIClient(trainingKey, endPoint);
 
 ### <a name="create-tags-in-the-project"></a>Vytvoření značek v projektu
 
-Vytvořit klasifikaci značky do projektu přidejte následující kód do konce *sample.js*:
+Chcete-li vytvořit klasifikační značky pro projekt, přidejte následující kód na konec souboru *Sample. js*:
 
 ```javascript
     const forkTag = await trainer.createTag(sampleProject.id, "Fork");
@@ -184,9 +184,9 @@ scissorsFiles.forEach(file => {
 await Promise.all(fileUploadPromises);
 ```
 
-### <a name="train-the-project-and-publish"></a>Projekt pro trénování a publikování
+### <a name="train-the-project-and-publish"></a>Výuka projektu a publikování
 
-Tento kód vytvoří první iterace v projektu a ke koncovému bodu predikcí následně publikuje danou iteraci. Název zadaný pro publikované iterace lze použít k odesílání požadavků předpovědi. Iterace není k dispozici v koncovém bodě predikcí, dokud je publikována.
+Tento kód vytvoří první iteraci v projektu a pak tuto iteraci publikuje do koncového bodu předpovědi. Název zadaný pro publikovanou iteraci lze použít k odeslání požadavků předpovědi. Iterace není v koncovém bodu předpovědi k dispozici, dokud není publikována.
 
 ```javascript
 console.log("Training...");
@@ -205,7 +205,7 @@ console.log("Training status: " + trainingIteration.status);
 await trainer.publishIteration(sampleProject.id, trainingIteration.id, publishIterationName, predictionResourceId);
 ```
 
-### <a name="get-and-use-the-published-iteration-on-the-prediction-endpoint"></a>Získat a používat publikované iterace na koncovém bodu predikcí
+### <a name="get-and-use-the-published-iteration-on-the-prediction-endpoint"></a>Získání a použití publikované iterace na koncovém bodu předpovědi
 
 Pokud chcete odeslat obrázek do koncového bodu předpovědi a načíst předpověď, přidejte na konec souboru následující kód:
 
@@ -225,7 +225,7 @@ Pokud chcete odeslat obrázek do koncového bodu předpovědi a načíst předpo
 
 ## <a name="run-the-application"></a>Spuštění aplikace
 
-Spustit *sample.js*.
+Spusťte *Sample. js*.
 
 ```shell
 node sample.js
@@ -235,7 +235,7 @@ V konzole by se měl zobrazit výstup aplikace. Pak můžete ověřit správné 
 
 [!INCLUDE [clean-od-project](includes/clean-od-project.md)]
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Právě jste viděli, jak se dají jednotlivé kroky procesu detekce objektů provádět v kódu. Tato ukázka provede jednu iteraci trénování, ale často je potřeba model trénovat a testovat vícekrát, aby byl přesnější. Následující příručka se zabývá klasifikací obrázků, ale její principy jsou podobné jako u detekce objektů.
 

@@ -1,6 +1,6 @@
 ---
 title: Kontrola textu proti seznamu vlastních výrazů v jazyce C# – Content Moderator
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: Návod, jak moderovat text se seznamy vlastních výrazů pomocí sady Content Moderator SDK pro jazyk C#.
 services: cognitive-services
 author: sanjeev3
@@ -10,14 +10,14 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 07/03/2019
 ms.author: sajagtap
-ms.openlocfilehash: 0ab11d8ef9fd481d2b3ea7029664a1ec2778cf4b
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 144137109f97a8c2049430ed1e05117ea6c95d7f
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67604091"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68564409"
 ---
-# <a name="check-text-against-a-custom-term-list-in-c"></a>Zkontrolujte seznam vlastních termín se v textuC#
+# <a name="check-text-against-a-custom-term-list-in-c"></a>Kontrolovat text proti vlastnímu seznamu podmínek vC#
 
 Výchozí globální seznam výrazů v Azure Content Moderatoru je dostačující pro většinu potřeb z hlediska moderování obsahu. Možná ale budete potřebovat vyhledat výrazy, které jsou specifické pro vaši organizaci. Například můžete chtít označit názvy konkurentů k další kontrole. 
 
@@ -373,7 +373,7 @@ static void DeleteTermList (ContentModeratorClient client, string list_id)
 }
 ```
 
-## <a name="compose-the-main-method"></a>Vytvořit metodu Main
+## <a name="compose-the-main-method"></a>Vytvoření metody Main
 
 Přidejte definici metody **Main** do oboru názvů **TermLists**, třída **Program**. Nakonec zavřete třídu **Program** a obor názvů **TermLists**.
 
@@ -415,7 +415,7 @@ static void Main(string[] args)
 
 ## <a name="run-the-application-to-see-the-output"></a>Zobrazení výstupu spuštěním aplikace
 
-Výstup na konzole bude vypadat nějak takto:
+Výstup vaší konzoly bude vypadat následovně:
 
 ```console
 Creating term list.

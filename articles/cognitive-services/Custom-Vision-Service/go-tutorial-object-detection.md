@@ -1,6 +1,6 @@
 ---
 title: 'Rychlý start: Vytvoření projektu pro detekci objektů pomocí sady Custom Vision SDK for přejít'
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: Vytvořte projekt, přidejte značky, nahrajte obrázky, vytvořte svůj projekt a vyhledáte objekty pomocí sady SDK jít.
 services: cognitive-services
 author: areddish
@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: quickstart
 ms.date: 07/15/2019
 ms.author: daauld
-ms.openlocfilehash: 500a8fcc4d218742b9f39834259e6a7a85ce14c2
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: fd305c0fa9f046e6601f1d94ad4ebb1677f1787d
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/26/2019
-ms.locfileid: "68517215"
+ms.locfileid: "68561036"
 ---
 # <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-go-sdk"></a>Rychlý start: Vytvoření projektu pro detekci objektů pomocí sady Custom Vision jít SDK
 
@@ -277,7 +277,7 @@ V konzole by se měl zobrazit výstup aplikace. Pak můžete ověřit správné 
 
 [!INCLUDE [clean-od-project](includes/clean-od-project.md)]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Právě jste viděli, jak se dají jednotlivé kroky procesu detekce objektů provádět v kódu. Tato ukázka provede jednu iteraci trénování, ale často je potřeba model trénovat a testovat vícekrát, aby byl přesnější. Následující příručka se zabývá klasifikací obrázků, ale její principy jsou podobné jako u detekce objektů.
 

@@ -1,6 +1,6 @@
 ---
-title: Předem připravených entit měny
-titleSuffix: Azure
+title: Předem vytvořená entita s měnou – LUIS
+titleSuffix: Azure Cognitive Services
 description: Tento článek obsahuje měny informace předem připravených entit v Language Understanding (LUIS).
 services: cognitive-services
 author: diberry
@@ -11,22 +11,22 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: 7e882a66ae5a090e1fd3a0850ff35281dc4e692d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 369e8f94a4733a7c9e21fee98c72aa447802e943
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65072010"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563498"
 ---
-# <a name="currency-prebuilt-entity-for-a-luis-app"></a>Měna předem připravených entit pro aplikace LUIS
-Měny předem připravených entit rozpozná měny v mnoha označení a země nebo oblasti, bez ohledu na jazykovou verzi aplikace LUIS. Protože tato entita je už vytrénovaný, není potřeba přidat příklad projevy obsahující Měna, která se záměry aplikace. Entita měny se podporuje v [mnoha jazykových verzí](luis-reference-prebuilt-entities.md). 
+# <a name="currency-prebuilt-entity-for-a-luis-app"></a>Předem vytvořená entita v měně pro aplikaci pro LUIS
+Entita předem vytvořená měna detekuje měnu v mnoha denominováncích a zemích nebo oblastech, bez ohledu na jazykovou verzi aplikace LUIS. Protože tato entita je už vytrénovaný, není potřeba přidat příklad projevy obsahující Měna, která se záměry aplikace. Entita měny se podporuje v [mnoha jazykových verzí](luis-reference-prebuilt-entities.md). 
 
 ## <a name="types-of-currency"></a>Typy měny
-Spravuje se z měny [rozpoznávání textu](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-NumbersWithUnit.yaml#L26) úložiště GitHub
+Měna se spravuje z úložiště pro [rozpoznávání textu](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-NumbersWithUnit.yaml#L26) v GitHubu.
 
 ## <a name="resolution-for-currency-entity"></a>Řešení pro entitu měny
 
-### <a name="api-version-2x"></a>Verze rozhraní API 2.x
+### <a name="api-version-2x"></a>Rozhraní API verze 2. x
 
 Následující příklad ukazuje rozlišení **builtin.currency** entity.
 
@@ -64,9 +64,9 @@ Následující příklad ukazuje rozlišení **builtin.currency** entity.
 
 
 
-### <a name="preview-api-version-3x"></a>Verze Preview rozhraní API 3.x
+### <a name="preview-api-version-3x"></a>Verze Preview rozhraní API verze 3. x
 
-Následující kód JSON je `verbose` parametr nastaven na `false`:
+Následující kód JSON je s `verbose` parametrem nastaveným na: `false`
 
 ```json
 {
@@ -91,7 +91,7 @@ Následující kód JSON je `verbose` parametr nastaven na `false`:
 }
 ```
 
-Následující kód JSON je `verbose` parametr nastaven na `true`:
+Následující kód JSON je s `verbose` parametrem nastaveným na: `true`
 
 ```json
 {
@@ -128,6 +128,6 @@ Následující kód JSON je `verbose` parametr nastaven na `true`:
 }
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o [datetimeV2](luis-reference-prebuilt-datetimev2.md), [dimenze](luis-reference-prebuilt-dimension.md), a [e-mailu](luis-reference-prebuilt-email.md) entity. 

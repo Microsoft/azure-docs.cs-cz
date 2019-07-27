@@ -1,5 +1,5 @@
 ---
-title: PersonName předem připravených entit
+title: Předem vytvořená entita person – LUIS
 titleSuffix: Azure Cognitive Services
 description: Tento článek obsahuje personName informace předem připravených entit v Language Understanding (LUIS).
 services: cognitive-services
@@ -11,19 +11,19 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: 3b12c69b7c6710e774d50e631d2423fd72ce828a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 63e32fe79d1f3f6d2573d9a8f94f937cb9eb31ef
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65072177"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560172"
 ---
-# <a name="personname-prebuilt-entity-for-a-luis-app"></a>PersonName předem připravených entit pro aplikace LUIS
+# <a name="personname-prebuilt-entity-for-a-luis-app"></a>Předem sestavená entita person pro aplikaci LUIS
 PersonName předem připravených entit rozpozná jména lidí. Protože tato entita je už vytrénovaný, není potřeba přidat příklad projevy obsahující personName k záměry aplikace. personName entity se podporuje v angličtině a čínština [jazykové verze](luis-reference-prebuilt-entities.md).
 
 ## <a name="resolution-for-personname-entity"></a>Řešení pro entitu personName
 
-### <a name="api-version-2x"></a>Verze rozhraní API 2.x
+### <a name="api-version-2x"></a>Rozhraní API verze 2. x
 
 Následující příklad ukazuje rozlišení **builtin.personName** entity.
 
@@ -45,9 +45,9 @@ Následující příklad ukazuje rozlišení **builtin.personName** entity.
 }
 ```
 
-### <a name="preview-api-version-3x"></a>Verze Preview rozhraní API 3.x
+### <a name="preview-api-version-3x"></a>Verze Preview rozhraní API verze 3. x
 
-Následující kód JSON je `verbose` parametr nastaven na `false`:
+Následující kód JSON je s `verbose` parametrem nastaveným na: `false`
 
 ```json
 {
@@ -69,7 +69,7 @@ Následující kód JSON je `verbose` parametr nastaven na `false`:
 }
 ```
 
-Následující kód JSON je `verbose` parametr nastaven na `true`:
+Následující kód JSON je s `verbose` parametrem nastaveným na: `true`
 
 ```json
 {

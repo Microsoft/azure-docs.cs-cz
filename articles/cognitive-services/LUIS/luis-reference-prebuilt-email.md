@@ -1,6 +1,6 @@
 ---
-title: Služba LUIS předem připravených entit e-mailem odkaz – Azure | Dokumentace Microsoftu
-titleSuffix: Azure
+title: Referenční informace k e-mailu předdefinovaných entit LUIS
+titleSuffix: Azure Cognitive Services
 description: Tento článek obsahuje e-mailu předem připravených entit informace v Language Understanding (LUIS).
 services: cognitive-services
 author: diberry
@@ -11,19 +11,19 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: 2b11446c84ede0e8ecfce23eda1026919777fc66
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9c9c7b373f820dd23c70a67a1de8545935a1d93c
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65072087"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560247"
 ---
-# <a name="email-prebuilt-entity-for-a-luis-app"></a>E-mailu předem připravených entit pro aplikace LUIS
+# <a name="email-prebuilt-entity-for-a-luis-app"></a>Předem vytvořená entita emailu pro aplikaci LUIS
 Extrakce e-mailu obsahuje celé e-mailovou adresu z utterance. Protože tato entita je už vytrénovaný, není potřeba přidat příklad projevy obsahující e-mailu záměry aplikace. E-mailu entity se podporuje v `en-us` pouze jazykovou verzi. 
 
 ## <a name="resolution-for-prebuilt-email"></a>Řešení pro předem připravených e-mailu
 
-### <a name="api-version-2x"></a>Verze rozhraní API 2.x
+### <a name="api-version-2x"></a>Rozhraní API verze 2. x
 
 Následující příklad ukazuje rozlišení **builtin.email** entity.
 
@@ -54,9 +54,9 @@ Následující příklad ukazuje rozlišení **builtin.email** entity.
 }
 ```
 
-### <a name="preview-api-version-3x"></a>Verze Preview rozhraní API 3.x
+### <a name="preview-api-version-3x"></a>Verze Preview rozhraní API verze 3. x
 
-Následující kód JSON je `verbose` parametr nastaven na `false`:
+Následující kód JSON je s `verbose` parametrem nastaveným na: `false`
 
 ```json
 {
@@ -79,7 +79,7 @@ Následující kód JSON je `verbose` parametr nastaven na `false`:
 ```
 
 
-Následující kód JSON je `verbose` parametr nastaven na `true`:
+Následující kód JSON je s `verbose` parametrem nastaveným na: `true`
 
 ```json
 {

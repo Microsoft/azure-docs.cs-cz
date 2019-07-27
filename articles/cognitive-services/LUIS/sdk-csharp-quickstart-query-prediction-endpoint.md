@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý start: C#Sada SDK dotaz předpovědi koncového bodu'
+title: 'Rychlý start: C#Koncový bod předpovědi dotazu sady SDK – LUIS'
 titleSuffix: Azure Cognitive Services
-description: Použití C# SDK odesílat utterance uživatele k LUIS a přijímat predikcí.
+description: Pomocí C# sady SDK můžete odeslat uživatele UTTERANCE do Luis a získat předpovědi.
 author: diberry
 manager: nitinme
 ms.service: cognitive-services
@@ -10,18 +10,18 @@ ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 07/16/2019
 ms.author: diberry
-ms.openlocfilehash: af20d555a83e8d229ed5d83d3b1d3f242de1e4a8
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: c0b534848232d60929722e2036f69f4b6e670a4a
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68275811"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563146"
 ---
-# <a name="quickstart-query-prediction-endpoint-with-c-net-sdk"></a>Rychlý start: Dotazy předpovědi koncový bod s C# sady .NET SDK
+# <a name="quickstart-query-prediction-endpoint-with-c-net-sdk"></a>Rychlý start: Koncový bod předpovědi dotazu C# pomocí sady .NET SDK
 
-Použití sady .NET SDK, nalezeno na [NuGet](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime/), pro odesílání utterance uživatele Language Understanding (LUIS) a přijímání predikcí záměru uživatele. 
+Pomocí sady .NET SDK, která se nachází na [NuGet](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime/), můžete odeslat uživatele utterance do Language UNDERSTANDING (Luis) a získat předpověď záměru uživatele. 
 
-V tomto rychlém startu odešle utterance uživatele, jako například `turn on the bedroom light`, do veřejné aplikace Language Understanding, pak obdrží odhadu a zobrazí záměr nejvyšší hodnocení `HomeAutomation.TurnOn` a entitou `HomeAutomation.Room` v rámci utterance nebyl nalezen. 
+V tomto rychlém startu se pošle uživatelem `turn on the bedroom light`utterance, jako je například, do veřejné aplikace Language Understanding, potom obdrží předpověď a zobrazí záměr `HomeAutomation.TurnOn` nejvyšší bodování a entitu `HomeAutomation.Room` , která se nachází v rámci utterance. 
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -30,18 +30,18 @@ V tomto rychlém startu odešle utterance uživatele, jako například `turn on 
 * ID veřejné aplikace: df67dcdb-c37d-46af-88e1-8b97951ca1c2
 
 > [!Note]
-> Kompletní řešení je k dispozici [cognitive services – language porozumění](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/sdk-quickstarts/c%23/UsePredictionRuntime) úložiště GitHub.
+> Kompletní řešení je k dispozici v úložišti GitHubu pro [rozpoznávání služeb – jazyk – porozumění](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/sdk-quickstarts/c%23/UsePredictionRuntime) .
 
 Hledáte další dokumentaci?
 
  * [Referenční dokumentace k sadě SDK](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/languageunderstanding?view=azure-dotnet)
 
 
-## <a name="get-cognitive-services-or-language-understanding-key"></a>Získání klíče služeb Cognitive Services nebo Language Understanding
+## <a name="get-cognitive-services-or-language-understanding-key"></a>Získat Cognitive Services nebo Language Understanding klíč
 
-Chcete-li použít veřejné aplikace pro domácí automatizace, budete potřebovat platný klíč pro koncový bod předpovědi. Můžete použít buď služeb Cognitive Services klíč (vytvořené pod pomocí Azure CLI), které platí pro mnoho služeb cognitive services, nebo `Language Understanding` klíč. 
+Aby bylo možné používat veřejnou aplikaci pro automatizaci domů, potřebujete platný klíč pro koncový bod předpovědi. Můžete použít Cognitive Services klíč (vytvořený níže pomocí Azure CLI), který je platný pro mnoho služeb rozpoznávání, nebo `Language Understanding` klíč. 
 
-Pomocí následujících [rozhraní příkazového řádku Azure k vytvoření klíče služby Cognitive Services](https://docs.microsoft.com/cli/azure/cognitiveservices/account?view=azure-cli-latest#az-cognitiveservices-account-create):
+Pomocí následujícího [příkazu rozhraní příkazového řádku Azure vytvořte klíč služby pro rozpoznávání](https://docs.microsoft.com/cli/azure/cognitiveservices/account?view=azure-cli-latest#az-cognitiveservices-account-create):
 
 ```azurecli-interactive
 az cognitiveservices account create \
@@ -53,20 +53,20 @@ az cognitiveservices account create \
     --yes
 ```
 
-## <a name="create-net-core-project"></a>Vytvoření projektu .NET Core
+## <a name="create-net-core-project"></a>Vytvořit projekt .NET Core
 
-Vytvořte projekt konzoly .NET Core v sadě Visual Studio Community 2017.
+Vytvořte projekt konzoly .NET Core v aplikaci Visual Studio Community 2017.
 
-1. Otevřít Visual Studio Community 2017.
-1. Vytvoření nového projektu z **Visual C#**  zvolte **Konzolová aplikace (.NET Core)** .
-1. Zadejte název projektu `QueryPrediction`, ponechejte zbývající výchozí hodnoty a vyberte **OK**.
-    Tím se vytvoří jednoduchý projekt s primární kód soubor s názvem **Program.cs**.
+1. Otevřete Visual Studio Community 2017.
+1. Vytvořte nový projekt, v části **vizuál C#**  vyberte **aplikace konzoly (.NET Core)** .
+1. Zadejte název `QueryPrediction`projektu, ponechte zbývající výchozí hodnoty a vyberte **OK**.
+    Tím se vytvoří jednoduchý projekt s primárním souborem kódu s názvem **program.cs**.
 
-## <a name="add-sdk-with-nuget"></a>Přidejte sadu SDK s NuGet
+## <a name="add-sdk-with-nuget"></a>Přidání sady SDK s NuGet
 
-1. V **Průzkumníka řešení**, vyberte projekt v zobrazení stromu s názvem **QueryPrediction**, klepněte pravým tlačítkem myši. V nabídce vyberte **spravovat balíčky NuGet...** .
-1. Vyberte **Procházet** zadejte `Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime`. Jakmile se zobrazí informace o balíčku, vyberte **nainstalovat** k instalaci balíčku do projektu. 
-1. Přidejte následující _pomocí_ příkazy k hornímu okraji **Program.cs**. Neodebírejte existující _pomocí_ příkaz pro `System`. 
+1. V **Průzkumník řešení**vyberte projekt ve stromovém zobrazení s názvem **QueryPrediction**a potom klikněte pravým tlačítkem myši. V nabídce vyberte **Spravovat balíčky NuGet...** .
+1. Vyberte **Procházet** a pak `Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime`zadejte. Až se zobrazí informace o balíčku, vyberte **instalovat** a nainstalujte balíček do projektu. 
+1. Do horní části **program.cs**přidejte následující příkazy _using_ . Neodstraňujte existující příkaz _using_ pro `System`. 
 
 ```csharp
 using System.Threading;
@@ -75,20 +75,20 @@ using Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime;
 using Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime.Models;
 ```
 
-## <a name="create-a-new-method-for-the-prediction"></a>Vytvoření nové metody pro předpověď
+## <a name="create-a-new-method-for-the-prediction"></a>Vytvořit novou metodu pro předpověď
 
-Vytvoření nové metody, `GetPrediction` odeslat dotaz na koncový bod dotaz předpovědi. Metoda vytvoří a konfigurace všech nezbytných objektů potom vrátí `Task` s [ `LuisResult` ](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.runtime.models.luisresult?view=azure-dotnet) predikované výsledky. 
+Vytvořte novou metodu `GetPrediction` pro odeslání dotazu do koncového bodu předpovědi dotazu. Metoda vytvoří a nakonfiguruje všechny potřebné objekty a potom vrátí `Task` [`LuisResult`](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.runtime.models.luisresult?view=azure-dotnet) výsledek předpovědi. 
 
 ```csharp
 static async  Task<LuisResult> GetPrediction() {
 }
 ```
 
-## <a name="create-credentials-object"></a>Vytvořte objekt přihlašovacích údajů
+## <a name="create-credentials-object"></a>Vytvořit objekt přihlašovacích údajů
 
-Přidejte následující kód, který `GetPrediction` metodu pro vytvoření přihlašovacích údajů klienta klíč služby Cognitive Services.
+Přidejte následující kód do `GetPrediction` metody pro vytvoření přihlašovacích údajů klienta s klíčem služby pro rozpoznávání.
 
-Nahraďte `<REPLACE-WITH-YOUR-KEY>` s oblastí klíč služby Cognitive Services. Klíč má [webu Azure portal](https://portal.azure.com) na stránce klíče pro daný prostředek.
+Nahraďte `<REPLACE-WITH-YOUR-KEY>` oblastí vašeho klíče služby vyvnímání. Klíč je v [Azure Portal](https://portal.azure.com) na stránce klíče pro daný prostředek.
 
 ```csharp
 // Use Language Understanding or Cognitive Services key
@@ -97,11 +97,11 @@ var endpointPredictionkey = "<REPLACE-WITH-YOUR-KEY>";
 var credentials = new ApiKeyServiceClientCredentials(endpointPredictionkey);
 ```
 
-## <a name="create-language-understanding-client"></a>Vytvoření klienta služby Language Understanding
+## <a name="create-language-understanding-client"></a>Vytvořit klienta Language Understanding
 
-V `GetPrediction` metodu po předchozím kódu přidejte následující kód pomocí nových přihlašovacích údajů, vytváření [ `LUISRuntimeClient` ](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.runtime.luisruntimeclient.-ctor?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Language_LUIS_Runtime_LUISRuntimeClient__ctor_Microsoft_Rest_ServiceClientCredentials_System_Net_Http_DelegatingHandler___) objektu klienta. 
+V metodě za předchozí kód přidejte následující kód pro použití nových přihlašovacích údajů a [`LUISRuntimeClient`](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.runtime.luisruntimeclient.-ctor?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Language_LUIS_Runtime_LUISRuntimeClient__ctor_Microsoft_Rest_ServiceClientCredentials_System_Net_Http_DelegatingHandler___) vytvoření objektu klienta. `GetPrediction` 
 
-Nahraďte `<REPLACE-WITH-YOUR-KEY-REGION>` s oblastí vašeho klíče, jako například `westus`. Klíčové oblasti se [webu Azure portal](https://portal.azure.com) na stránce s přehledem pro daný prostředek.
+Nahraďte `<REPLACE-WITH-YOUR-KEY-REGION>` oblastí klíče, `westus`jako je například. Oblast klíče je [Azure Portal](https://portal.azure.com) na stránce Přehled pro daný prostředek.
 
 ```csharp
 // Create Luis client and set endpoint
@@ -112,7 +112,7 @@ luisClient.Endpoint = "https://<REPLACE-WITH-YOUR-KEY-REGION>.api.cognitive.micr
 
 ## <a name="set-query-parameters"></a>Nastavit parametry dotazu
 
-V `GetPrediction` metodu po předchozím kódu přidejte následující kód můžete nastavit parametry dotazu.
+`GetPrediction` V metodě, za předchozí kód, přidejte následující kód pro nastavení parametrů dotazu.
 
 ```csharp
 // public Language Understanding Home Automation app
@@ -132,7 +132,7 @@ var log = false;
 
 ## <a name="query-prediction-endpoint"></a>Koncový bod předpovědi dotazů
 
-V `GetPrediction` metodu po předchozím kódu přidejte následující kód můžete nastavit parametry dotazu:
+`GetPrediction` V metodě po předchozím kódu přidejte následující kód pro nastavení parametrů dotazu:
 
 ```csharp
 // Create prediction client
@@ -142,9 +142,9 @@ var prediction = new Prediction(luisClient);
 return await prediction.ResolveAsync(appId, query, timezoneOffset, verbose, staging, spellCheck, bingSpellCheckKey, log, CancellationToken.None);
 ```
 
-## <a name="display-prediction-results"></a>Zobrazit výsledky předpovědí
+## <a name="display-prediction-results"></a>Zobrazit výsledky předpovědi
 
-Změnit **hlavní** metodu pro zavolání nové `GetPrediction` metoda a vraťte se předpověď výsledků:
+Změňte metodu **Main** pro volání nové `GetPrediction` metody a vraťte výsledky předpovědi:
 
 ```csharp
 static void Main(string[] args)
@@ -171,7 +171,7 @@ static void Main(string[] args)
 
 ## <a name="run-the-project"></a>Spuštění projektu
 
-Sestavení projektu v sadě Studio a spuštění projektu se výstup dotazu:
+Sestavte projekt v studiu a spusťte projekt na výstup dotazu:
 
 ```console
 Query:'turn on the bedroom light'
@@ -181,7 +181,7 @@ HomeAutomation.Room:'bedroom' begins at position 12 and ends at position 18
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace o [sady .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime/) a [referenční dokumentace k .NET](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/languageunderstanding?view=azure-dotnet). 
+Přečtěte si další informace o sadě [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime/) a [referenční dokumentaci k rozhraní .NET](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/languageunderstanding?view=azure-dotnet). 
 
 > [!div class="nextstepaction"] 
-> [Kurz: Sestavení aplikace LUIS k určení záměry uživatele](luis-quickstart-intents-only.md) 
+> [Kurz: Sestavování aplikace LUIS pro určení záměrů uživatelů](luis-quickstart-intents-only.md) 

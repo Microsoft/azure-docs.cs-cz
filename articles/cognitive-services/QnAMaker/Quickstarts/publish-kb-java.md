@@ -1,6 +1,6 @@
 ---
-title: Publikování znalostní báze knowledge base, REST, Java
-titleSuffix: QnA Maker - Azure Cognitive Services
+title: 'Rychlý start: Publikování znalostní báze, REST, Java-QnA Maker'
+titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu založené na protokolu REST Javy provede publikování znalostní báze, která odesílá na nejnovější verzi znalostní báze otestované vyhrazené index Azure Search představující publikované znalostní báze. Také se přitom vytvoří koncový bod, který je možné volat v aplikaci nebo chatovacím robotu.
 services: cognitive-services
 author: diberry
@@ -11,14 +11,14 @@ ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 02/28/2019
 ms.author: diberry
-ms.openlocfilehash: ae94d02b93880b7c81d359e5b2606b720b38b554
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 4252ce3e0dfdaf9033221d86b0aacc728783b75b
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65787927"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68559768"
 ---
-# <a name="quickstart-publish-a-knowledge-base-in-qna-maker-using-java"></a>Rychlý start: Publikování znalostní báze v jazyce Java pomocí nástroje QnA Maker
+# <a name="quickstart-publish-a-knowledge-base-in-qna-maker-using-java"></a>Rychlý start: Publikování znalostní báze v QnA Maker pomocí jazyka Java
 
 V tomto rychlém startu založené na protokolu REST provede programově publikování znalostní bázi (KB). Publikování odešle nejnovější verzi znalostní báze do vyhrazeného indexu Azure Search a vytvoří koncový bod, který je možné volat v aplikaci nebo chatovacím robotu.
 
@@ -38,10 +38,10 @@ Tento rychlý start volá rozhraní API služby QnA Maker:
 
     ![ID znalostní báze ve službě QnA Maker](../media/qnamaker-quickstart-kb/qna-maker-id.png)
 
-    Pokud ještě nemáte znalostní báze, můžete vytvořit ukázky, jednu pro účely tohoto rychlého startu: [Vytvoření nové znalostní báze](create-new-kb-csharp.md).
+    Pokud ještě nemáte znalostní bázi Knowledge Base, můžete si vytvořit ukázku pro použití v tomto rychlém startu: [Vytvořte novou znalostní bázi](create-new-kb-csharp.md).
 
 > [!NOTE] 
-> Soubory tak získají kompletní řešení jsou k dispozici na [ **Azure – ukázky/cognitive-services – QnA maker – v Javě** úložiště GitHub](https://github.com/Azure-Samples/cognitive-services-qnamaker-java/tree/master/documentation-samples/quickstarts/publish-knowledge-base).
+> Kompletní soubory řešení jsou k dispozici v [úložišti GitHub **Azure-Samples/vnímání-Services-qnamakerem-Java** ](https://github.com/Azure-Samples/cognitive-services-qnamaker-java/tree/master/documentation-samples/quickstarts/publish-knowledge-base).
 
 ## <a name="create-a-java-file"></a>Vytvořte soubor Java
 

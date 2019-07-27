@@ -1,5 +1,6 @@
 ---
-title: Co je Language Understanding (LUIS) – Azure Cognitive Services | Microsoft Docs
+title: Co je Language Understanding (LUIS)?
+titleSuffix: Azure Cognitive Services
 description: Language Understanding (LUIS) je cloudová služba API, která prostřednictvím vlastních inteligentních funkcí strojového učení, které používá na konverzační text uživatele v přirozeném jazyce, předvídá celkový význam a vytahuje z něj relevantní podrobné informace.
 services: cognitive-services
 author: diberry
@@ -9,12 +10,12 @@ ms.subservice: language-understanding
 ms.topic: overview
 ms.date: 06/11/2019
 ms.author: diberry
-ms.openlocfilehash: 569b33d299f52f0da50d8a8992420754aa85b533
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 41c5e2f01678996406c586eb20043516beaf2184
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67062168"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563191"
 ---
 # <a name="what-is-language-understanding-luis"></a>Co je Language Understanding (LUIS)?
 
@@ -28,7 +29,7 @@ Klientskou aplikací je pro LUIS jakákoli konverzační aplikace, která s uži
 
 <a name="Accessing-LUIS"></a>
 
-Po publikování aplikace LUIS může klientská aplikace odesílat promluvy (text) do rozhraní [API][endpoint-apis] koncového bodu služby LUIS pro zpracování přirozeného jazyka a přijímat z něj výsledky v podobě odpovědí ve formátu JSON. Běžnou klientskou aplikace pro službu LUIS je chatbot.
+Po publikování aplikace LUIS pošle klientská aplikace projevy (text) do [rozhraní API][endpoint-apis] koncového bodu zpracování Luis přirozeného jazyka a výsledky obdrží jako odpověď JSON. Běžnou klientskou aplikace pro službu LUIS je chatbot.
 
 
 ![Koncepční obrázek spolupráce služby LUIS s chatbotem na předvídání významu textu uživatele s využitím rozpoznávání přirozeného jazyka](./media/luis-overview/luis-overview-process-2.png "Koncepční obrázek spolupráce služby LUIS s chatbotem na předvídání významu textu uživatele s využitím rozpoznávání přirozeného jazyka")
@@ -101,26 +102,26 @@ Služba LUIS poskytuje nástroje, správu verzí a spolupráci s jinými autory 
 Služba LUIS jako rozhraní REST API umožňuje použití s jakýmkoli produktem, službou nebo architekturou odesílající požadavky HTTP. Následující seznam obsahuje produkty a služby Microsoftu nejčastěji používané se službou LUIS.
 
 Hlavní klientská aplikace služby LUIS je následující:
-* [Robot webové aplikace](https://docs.microsoft.com/azure/bot-service/?view=azure-bot-service-4.0) umožňující rychlé vytvoření chatbota s podporou služby LUIS, který bude s uživatelem komunikovat prostřednictvím textového vstupu. Používá [Bot Framework] [ bot-framework] verze [4.x](https://github.com/Microsoft/botbuilder-dotnet) zajišťuje kompletní robota.
+* [Robot webové aplikace](https://docs.microsoft.com/azure/bot-service/?view=azure-bot-service-4.0) umožňující rychlé vytvoření chatbota s podporou služby LUIS, který bude s uživatelem komunikovat prostřednictvím textového vstupu. Pro kompletní prostředí robota používá [rozhraní bot Framework][bot-framework] verze [4. x](https://github.com/Microsoft/botbuilder-dotnet) .
 
 Nástroje pro rychlé a snadné používání služby LUIS s využitím robota:
-* [Rozhraní příkazového řádku služby LUIS](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/LUIS) poskytuje balíčku NPM vytváření obsahu a půjček s využitím jako nástroj příkazového řádku samostatné nebo import. 
+* [Luis CLI](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/LUIS) Balíček NPM poskytuje vytváření a předpovědi pomocí samostatného nástroje příkazového řádku nebo jako importu. 
 * [LUISGen](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/LUISGen) – LUISGen je nástroj pro generování zdrojového kódu C# se silnými typy a zdrojového kódu TypeScript z exportovaného modelu LUIS.
 * [Dispatch](https://aka.ms/dispatch-tool) umožňuje používat z nadřazené aplikace několik aplikací LUIS a QnA Maker s využitím modelu dispečera.
 * [LUDown](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Ludown) – LUDown je nástroj příkazového řádku, který pomáhá spravovat jazykové modely pro vašeho robota.
 
 Další služby Cognitive Services používané se službou LUIS:
-* [QnA Maker][qnamaker] umožňuje kombinovat několik typů textu do znalostní báze otázek a odpovědí.
+* [QnA maker][qnamaker] umožňuje zkombinovat několik typů textu do otázek a odpovědí znalostní báze.
 * [Rozhraní API Bingu pro kontrolu pravopisu](../bing-spell-check/proof-text.md) zajišťuje opravu textu před vytvořením předpovědi. 
 * [Služba Speech](../Speech-Service/overview.md) převádí mluvené požadavky na text. 
 * [Conversation learner](https://docs.microsoft.com/azure/cognitive-services/labs/conversation-learner/overview) umožňuje ve službě LUIS rychleji vytvářet konverzace chatbota.
 * [Project personality chat](https://docs.microsoft.com/azure/cognitive-services/project-personality-chat/overview) zpracovává nezávaznou konverzaci chatbota.
 
-Pomocí služby LUIS ukázky:
-* [Konverzační AI](https://github.com/Microsoft/AI) úložiště GitHub.
-* [Language Understanding](https://github.com/Azure-Samples/cognitive-services-language-understanding) ukázky v Azure
+Ukázky pomocí LUIS:
+* [Konverzační AI](https://github.com/Microsoft/AI) Úložiště GitHub.
+* [Language Understanding](https://github.com/Azure-Samples/cognitive-services-language-understanding) Ukázky Azure
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Vytvořte novou aplikaci LUIS s využitím [předem připravené](luis-get-started-create-app.md) nebo [vlastní](luis-quickstart-intents-only.md) domény. [Odešlete dotaz na koncový bod předpovědi](luis-get-started-cs-get-intent.md) veřejné aplikace IoT.
 

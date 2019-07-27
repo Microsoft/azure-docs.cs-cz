@@ -1,6 +1,6 @@
 ---
 title: Použití Node.js k dotazování služby Azure SQL Database | Dokumentace Microsoftu
-description: Jak pomocí Node.js vytvořit program, který se připojí ke službě Azure SQL database a ji dotazovat s použitím příkazů T-SQL.
+description: Jak pomocí Node. js vytvořit program, který se připojí ke službě Azure SQL Database a provede dotaz pomocí příkazů T-SQL.
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
@@ -9,57 +9,56 @@ ms.topic: quickstart
 author: stevestein
 ms.author: sstein
 ms.reviewer: v-masebo
-manager: craigg
 ms.date: 03/25/2019
-ms.openlocfilehash: 8d050fe92af7b22363b0a9207201412bc12d9082
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 4a99acaaae0c0efee61d97605a81d74549e02509
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65792184"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68569210"
 ---
 # <a name="quickstart-use-nodejs-to-query-an-azure-sql-database"></a>Rychlý start: Použití Node.js k dotazování databáze Azure SQL
 
-Tento článek ukazuje, jak používat [Node.js](https://nodejs.org) pro připojení k databázi Azure SQL. Pak můžete použít příkazy jazyka T-SQL k dotazování dat.
+Tento článek ukazuje, jak pomocí [Node. js](https://nodejs.org) připojit k databázi SQL Azure. Pak můžete použít příkazy T-SQL k dotazování dat.
 
 ## <a name="prerequisites"></a>Požadavky
 
-K dokončení této ukázce, ujistěte se, že jsou splněné následující požadavky:
+K dokončení této ukázky se ujistěte, že máte následující požadavky:
 
-- Databázi Azure SQL. Jeden z těchto rychlých startech můžete vytvořit a potom nakonfigurovat databázi ve službě Azure SQL Database:
+- Databázi Azure SQL. K vytvoření a konfiguraci databáze v Azure SQL Database můžete použít jeden z těchto rychlých startů:
 
   || Izolovaná databáze | Spravovaná instance |
   |:--- |:--- |:---|
-  | Vytvořit| [Azure Portal](sql-database-single-database-get-started.md) | [Azure Portal](sql-database-managed-instance-get-started.md) |
+  | Create| [Azure Portal](sql-database-single-database-get-started.md) | [Azure Portal](sql-database-managed-instance-get-started.md) |
   || [Rozhraní příkazového řádku](scripts/sql-database-create-and-configure-database-cli.md) | [Rozhraní příkazového řádku](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
   || [PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) | [PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md) |
-  | Nakonfigurovat | [pravidlo brány firewall na úrovni serveru IP](sql-database-server-level-firewall-rule.md)| [Připojení z virtuálního počítače](sql-database-managed-instance-configure-vm.md)|
-  |||[Připojení z na místě](sql-database-managed-instance-configure-p2s.md)
-  |Načíst data|Společnosti Adventure Works načtených za rychlý start|[Obnovit Wide World Importers](sql-database-managed-instance-get-started-restore.md)
-  |||Obnovení nebo importovat společnosti Adventure Works z [BACPAC](sql-database-import.md) souboru z [Githubu](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works)|
+  | Konfigurace | [Pravidlo brány firewall protokolu IP na úrovni serveru](sql-database-server-level-firewall-rule.md)| [Připojení z virtuálního počítače](sql-database-managed-instance-configure-vm.md)|
+  |||[Připojení z webu](sql-database-managed-instance-configure-p2s.md)
+  |Načtení dat|Načtený Adventure Works pro každý rychlý Start|[Obnovení celosvětových dovozců](sql-database-managed-instance-get-started-restore.md)
+  |||Obnovení nebo import Adventure Works ze souboru [BacPac](sql-database-import.md) z [GitHubu](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works)|
   |||
 
   > [!IMPORTANT]
-  > Skripty v tomto článku se zapisují do použít databázi společnosti Adventure Works. S managed instance musíte importovat databázi společnosti Adventure Works do instance databáze nebo upravovat skripty v tomto článku pro používání databáze Wide World Importers.
+  > Skripty v tomto článku jsou určeny k používání databáze Adventure Works. Se spravovanou instancí musíte buď importovat databázi Adventure Works do databáze instance, nebo upravit skripty v tomto článku, aby používaly databázi World Importers.
 
 
-- Node.js související software pro váš operační systém:
+- Software související s Node. js pro váš operační systém:
 
-  - **MacOS**, nainstalujte Homebrew a Node.js a potom nainstalujte ovladač ODBC a Nástroj SQLCMD. Viz [kroky 1.2 a 1.3](https://www.microsoft.com/sql-server/developer-get-started/node/mac/).
+  - **MacOS**, nainstalujte homebrew a Node. js a potom nainstalujte ovladač ODBC a Nástroj Sqlcmd. Viz [kroky 1.2 a 1.3](https://www.microsoft.com/sql-server/developer-get-started/node/mac/).
   
-  - **Ubuntu**, nainstalujte Node.js a potom nainstalujte ovladač ODBC a Nástroj SQLCMD. Viz [kroky 1.2 a 1.3](https://www.microsoft.com/sql-server/developer-get-started/node/ubuntu/).
+  - **Ubuntu**, nainstalujte Node. js a potom nainstalujte ovladač ODBC a Nástroj Sqlcmd. Viz [kroky 1.2 a 1.3](https://www.microsoft.com/sql-server/developer-get-started/node/ubuntu/).
   
-  - **Windows**, nainstalujte Chocolatey a Node.js a potom nainstalujte ovladač ODBC a Nástroj SQLCMD. Viz [kroky 1.2 a 1.3](https://www.microsoft.com/sql-server/developer-get-started/node/windows/).
+  - **Windows**, nainstalujte čokolády a Node. js a potom nainstalujte ovladač ODBC a Nástroj Sqlcmd. Viz [kroky 1.2 a 1.3](https://www.microsoft.com/sql-server/developer-get-started/node/windows/).
 
-## <a name="get-sql-server-connection-information"></a>Získejte informace o připojení SQL serveru
+## <a name="get-sql-server-connection-information"></a>Získat informace o připojení k SQL serveru
 
-Získejte informace o připojení potřebné pro připojení k databázi Azure SQL. Nadcházející postupy budete potřebovat plně kvalifikovaný název serveru nebo název hostitele, název databáze a přihlašovací údaje.
+Získejte informace o připojení, které potřebujete pro připojení ke službě Azure SQL Database. Pro nadcházející postupy budete potřebovat plně kvalifikovaný název serveru nebo název hostitele, název databáze a přihlašovací údaje.
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
-2. Přejděte **databází SQL** nebo **spravované instance SQL** stránky.
+2. Přejděte na stránku **databáze SQL** nebo **spravované instance SQL** .
 
-3. Na **přehled** stránce si prohlédněte plně kvalifikovaný název vedle **název serveru** pro izolované databáze nebo serveru plně kvalifikovaný název vedle **hostitele** pro spravované instance. Zkopírujte název serveru nebo název hostitele, je ukazatel myši a vyberte **kopírování** ikonu. 
+3. Na stránce **Přehled** zkontrolujte plně kvalifikovaný název serveru vedle **názvu serveru** pro izolovanou databázi nebo plně kvalifikovaný název serveru vedle možnost **hostitel** pro spravovanou instanci. Pokud chcete zkopírovat název serveru nebo název hostitele, najeďte na něj ukazatelem myši a vyberte ikonu **kopírování** . 
 
 ## <a name="create-the-project"></a>Vytvoření projektu
 
@@ -71,11 +70,11 @@ Otevřete příkazový řádek a vytvořte složku *sqltest*. Přejděte do slo�
   npm install async@2.6.2
   ```
 
-## <a name="add-code-to-query-database"></a>Přidejte kód pro dotaz na databázi
+## <a name="add-code-to-query-database"></a>Přidání kódu do databáze dotazů
 
-1. Ve svém oblíbeném textovém editoru vytvořte nový soubor, *sqltest.js*.
+1. V oblíbeném textovém editoru vytvořte nový soubor *sqltest. js*.
 
-1. Nahraďte jeho obsah následujícím kódem. Přidejte příslušné hodnoty pro server, databázi, uživatele a heslo.
+1. Nahraďte jeho obsah následujícím kódem. Pak přidejte příslušné hodnoty pro váš server, databázi, uživatele a heslo.
 
     ```js
     var Connection = require('tedious').Connection;
@@ -139,7 +138,7 @@ Otevřete příkazový řádek a vytvořte složku *sqltest*. Přejděte do slo�
     ```
 
 > [!NOTE]
-> Příklad kódu používá **AdventureWorksLT** ukázkovou databázi SQL Azure.
+> Příklad kódu používá ukázkovou databázi **AdventureWorksLT** pro Azure SQL.
 
 ## <a name="run-the-code"></a>Spuštění kódu
 
@@ -149,14 +148,14 @@ Otevřete příkazový řádek a vytvořte složku *sqltest*. Přejděte do slo�
     node sqltest.js
     ```
 
-1. Ověření se vrátí prvních 20 řádků a zavřete okno aplikace.
+1. Ověřte, že se vrátí prvních 20 řádků a okno aplikace zavřete.
 
 ## <a name="next-steps"></a>Další postup
 
 - [Ovladač Microsoft Node.js pro SQL Server](/sql/connect/node-js/node-js-driver-for-sql-server)
 
-- Připojení a dotazování na Windows, Linux nebo macOS s [.NET core](sql-database-connect-query-dotnet-core.md), [Visual Studio Code](sql-database-connect-query-vscode.md), nebo [SSMS](sql-database-connect-query-ssms.md) (jenom Windows)
+- Připojení a dotazování na Windows/Linux/macOS pomocí [.NET Core](sql-database-connect-query-dotnet-core.md), [Visual Studio Code](sql-database-connect-query-vscode.md)nebo [SSMS](sql-database-connect-query-ssms.md) (jenom Windows)
 
-- [Začínáme s .NET Core ve Windows, Linux nebo macOS pomocí příkazového řádku](/dotnet/core/tutorials/using-with-xplat-cli)
+- [Začínáme s .NET Core v systému Windows, Linux nebo macOS pomocí příkazového řádku](/dotnet/core/tutorials/using-with-xplat-cli)
 
-- Navrhnout vaši první Azure SQL database pomocí [.NET](sql-database-design-first-database-csharp.md) nebo [aplikace SSMS](sql-database-design-first-database.md)
+- Návrh první databáze SQL Azure pomocí [rozhraní .NET](sql-database-design-first-database-csharp.md) nebo [SSMS](sql-database-design-first-database.md)

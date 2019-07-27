@@ -1,7 +1,7 @@
 ---
-title: Vytvoření znalostní báze
-titleSuffix: QnA Maker API - Azure Cognitive Services
-description: Použití portálu služby API nástroje QnA Maker, chcete-li přidat vytvořte znalostní bázi s chit konverzace. Díky tomu aplikace zapojení. Přidat sadu nejčastější konverzace chit předvyplněný do znalostní BÁZÍ jako výchozí bod pro svého robota chit chat a vám ušetří čas a náklady na jejich vytváření od začátku.
+title: Vytvoření znalostní báze – QnA Maker
+titleSuffix: Azure Cognitive Services
+description: Pomocí portálu služby rozhraní API služby QnA Maker můžete přidat vytvoření znalostní báze pomocí funkce CHITEST-chat. Díky tomu bude vaše aplikace zajímavější. Přidejte předem vyplněnou sadu horních funkce CHITEST – chat do vaší znalostní báze jako výchozí bod pro funkce CHITEST – chat pro robota a Ušetřete čas a náklady na jejich zápis od začátku.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,23 +11,23 @@ ms.topic: article
 ms.date: 05/10/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 8c674d33d7f0958fbce8f080f43404c480c7410c
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: dfd0663c09b78539a1d6b78aa7820385b9ddbdca
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67447447"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563092"
 ---
-# <a name="quickstart-create-a-knowledge-base-using-the-qna-maker-api-service-portal"></a>Rychlý start: Vytvoření znalostní báze na portálu služby API nástroje QnA Maker
+# <a name="quickstart-create-a-knowledge-base-using-the-qna-maker-api-service-portal"></a>Rychlý start: Vytvoření znalostní báze pomocí portálu služby rozhraní API služby QnA Maker
 
-Na portálu služby API nástroje QnA Maker usnadňuje přidat stávajících zdrojů dat při vytváření znalostní báze. Můžete vytvořit nové znalostní báze QnA Maker z následujících typů dokumentu:
+Portál služby rozhraní API služby QnA Maker usnadňuje přidávání stávajících zdrojů dat při vytváření znalostní báze. Můžete vytvořit nové znalostní báze QnA Maker z následujících typů dokumentu:
 
 <!-- added for scanability -->
 * Nejčastější dotazy k stránky
 * Příručky pro produkty
 * Strukturovaných dokumentů
 
-Zahrnout posouzení vašich osobnostních chit chatu, aby své znalosti v oblasti Další zapojení uživatelů.
+Zahrňte do funkce CHITEST-chat preference, aby vaše znalosti uživatelů byly zajímavější.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete. 
 
@@ -50,9 +50,9 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
     - Nahrání souborů pro data, která chcete, aby byl extrahován. Zobrazit [informace o cenách](https://aka.ms/qnamaker-pricing) chcete zobrazit, kolik dokumenty, které můžete přidat.
     - Pokud chcete ručně přidat maximálně, můžete přeskočit **kroku 4** je vidět na předchozím obrázku.
 
-1. Přidat **Chit chat** do znalostní BÁZÍ. Zvolte Přidat podporu chit chat pro svého robota výběrem jedné osobnosti. 
+1. Přidat **Chit chat** do znalostní BÁZÍ. Zvolte možnost Přidat pro robota podporu funkce CHITEST-chat, a to tak, že vyberete jednu z osobních možností. 
 
-    ![Přidat chit chat KB](../media/qnamaker-how-to-create-kb/create-kb-chit-chat.png)
+    ![Přidání funkce CHITEST-chat do znalostní báze KB](../media/qnamaker-how-to-create-kb/create-kb-chit-chat.png)
 
 1. Vyberte **vytvořit znalostní BÁZÍ**.
 
@@ -66,11 +66,11 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Jakmile budete hotovi s znalostní báze, odeberte ho na portálu pro nástroj QnA Maker.
+Až se znalostní báze dokončí, odeberte ji na portálu QnA Maker.
 
 ## <a name="next-steps"></a>Další postup
 
-Pro míry úspor nákladů, můžete [sdílet](upgrade-qnamaker-service.md?#share-existing-services-with-qna-maker) některé, ale ne všechny prostředky Azure vytvořené pro nástroj QnA Maker.
+V případě míry úspory nákladů můžete [sdílet](upgrade-qnamaker-service.md?#share-existing-services-with-qna-maker) některé, ale ne všechny prostředky Azure vytvořené pro QnA maker.
 
 > [!div class="nextstepaction"]
 > [Přidejte osobní chit chat](./chit-chat-knowledge-base.md)

@@ -1,6 +1,6 @@
 ---
-title: Seznamy frází
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: Seznamy frází – LUIS
+titleSuffix: Azure Cognitive Services
 description: Pomocí Language Understanding (LUIS) přidejte funkce aplikací, které můžete zlepšit zjišťování nebo předpověď záměry a entity, které kategorie a vzory
 services: cognitive-services
 author: diberry
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 01/16/2019
 ms.author: diberry
-ms.openlocfilehash: 0723c3730ca0ae6325d828fbb5f41698cb807dd3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 75764fd0a3f862157d9377d7dc886334ef1231db
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60195888"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563722"
 ---
 # <a name="use-phrase-lists-to-boost-signal-of-word-list"></a>Použijte frázi v seznamech boost signál seznam slov
 
@@ -28,7 +28,7 @@ Seznam frází přidá do slovníku domény aplikace jako druhý signál k LUIS 
 
 ## <a name="add-phrase-list"></a>Přidat seznam frází
 
-Služba LUIS umožňuje až 10 frázi seznamy na aplikaci. 
+LUIS umožňuje až 10 seznamů frází na aplikaci. 
 
 1. Otevřete aplikaci klepnutím na jeho název na **Moje aplikace** stránce a potom klikněte na **sestavení**, pak klikněte na tlačítko **frázi seznamy** v levém panelu vaší aplikace. 
 
@@ -40,11 +40,11 @@ Služba LUIS umožňuje až 10 frázi seznamy na aplikaci.
 
 4. Služba LUIS můžete navrhnout související hodnoty pro přidání do seznamu frázi. Klikněte na tlačítko **doporučujeme** zobrazíte skupinu navrhované hodnoty, které se týkají sémanticky added value(s). Získáte po kliknutí na navrhované hodnoty, nebo klikněte na tlačítko **přidat všechny** je přidat všechny.
 
-    ![Navrhované hodnoty seznamu frázi – přidání všech](./media/luis-add-features/related-values.png)
+    ![Seznam frází navrhovaných hodnot – přidat vše](./media/luis-add-features/related-values.png)
 
 5. Klikněte na tlačítko **tyto hodnoty jsou zaměnitelné** Pokud jsou hodnoty seznamu přidal frázi alternativy, které můžete používat Zaměnitelně.
 
-    ![Navrhované hodnoty seznamu frázi – políčko zaměnitelné](./media/luis-add-features/interchangeable.png)
+    ![Seznam frází navrhovaných hodnot – výběr proměnitelné pole](./media/luis-add-features/interchangeable.png)
 
 6. Klikněte na **Uložit**. Přidání seznamu frázi "Cities" **frázi seznamy** stránky.
 

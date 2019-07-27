@@ -1,5 +1,5 @@
 ---
-title: Spuštění vašeho prvního dotazu pomocí Azure Powershellu
+title: Spuštění prvního dotazu pomocí Azure PowerShell
 description: Tento článek vás provede kroky pro povolení modulu Resource Graph pro prostředí Azure PowerShell a spusťte svůj první dotaz.
 author: DCtheGeek
 ms.author: dacoulte
@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: resource-graph
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 76771a7dfcc323cca6ea52366195c895ee510701
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 6c58528aba29cbbc81694112815534a8fc525b8a
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67165598"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68565379"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-powershell"></a>Rychlý start: Spusťte nejdříve dotaz na Resource Graph použitím Azure PowerShell
 
@@ -27,28 +27,28 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 ## <a name="add-the-resource-graph-module"></a>Přidat modul k Resource Graph
 
-Chcete-li pro Azure PowerShell povolit dotaz na Azure Resource Graph, musí být modul přidán. Tento modul je možné místně nainstalovaný PowerShell s [Azure Cloud Shell](https://shell.azure.com), nebo se [image Dockeru Azure PowerShell](https://hub.docker.com/r/azuresdk/azure-powershell/).
+Chcete-li pro Azure PowerShell povolit dotaz na Azure Resource Graph, musí být modul přidán. Tento modul se dá použít s místně nainstalovaným PowerShellem, s [Azure Cloud Shell](https://shell.azure.com), nebo s [imagí Azure PowerShell Docker](https://hub.docker.com/r/azuresdk/azure-powershell/).
 
 ### <a name="base-requirements"></a>Základní požadavky
 
 Modul Azure Resource Graph vyžaduje následující software:
 
-- Prostředí Azure PowerShell 1.0.0 nebo vyšší. Pokud ještě není nainstalovaný, postupujte podle [těchto pokynů](/powershell/azure/install-az-ps).
+- Azure PowerShell 1.0.0 nebo vyšší. Pokud ještě není nainstalovaný, postupujte podle [těchto pokynů](/powershell/azure/install-az-ps).
 
 - PowerShellGet 2.0.1 nebo novější. Pokud není nainstalovaný nebo aktualizovaný, postupujte podle [těchto pokynů](/powershell/gallery/installing-psget).
 
-### <a name="install-the-module"></a>Instalace modulu
+### <a name="install-the-module"></a>Nainstalovat modul
 
-Modul prostředků grafu pro prostředí PowerShell je **Az.ResourceGraph**.
+Modul Resource Graph pro PowerShell je **AZ. ResourceGraph**.
 
-1. Ze **správu** příkazový řádek Powershellu, spusťte následující příkaz:
+1. Na příkazovém řádku PowerShellu **pro správu** spusťte následující příkaz:
 
    ```azurepowershell-interactive
    # Install the Resource Graph module from PowerShell Gallery
    Install-Module -Name Az.ResourceGraph
    ```
 
-1. Ověřte, že v modulu byla naimportována a správnou verzi (0.7.1):
+1. Ověřte, že je modul naimportovaný a má správnou verzi (0.7.3):
 
    ```azurepowershell-interactive
    # Get a list of commands for the imported Az.ResourceGraph module
@@ -91,7 +91,7 @@ Když se modul Azure PowerShell přidal do vašeho vybraného prostředí, můž
 Pokud se konečný dotaz spustí několikrát, za předpokladu, že se ve vašem prostředí nic nemění, budou vrácené výsledky konzistentní a podle očekávání – seřazené podle vlastnosti **Name**, ale stále s omezením na prvních pět výsledků.
 
 > [!NOTE]
-> Pokud dotaz nevrátí žádné výsledky z předplatného už máte přístup, pak Všimněte si, že `Search-AzGraph` výchozí nastavení rutiny pro předplatná ve výchozím kontextu. Zobrazí seznam předplatné ID, které jsou součástí výchozí kontext spustit `(Get-AzContext).Account.ExtendedProperties.Subscriptions` Pokud chcete hledat ve všech předplatných, kterým máte přístup, jeden nastavit PSDefaultParameterValues pro `Search-AzGraph` spuštěním `$PSDefaultParameterValues=@{"Search-AzGraph:Subscription"= $(Get-AzSubscription).ID }`
+> Pokud dotaz nevrátí výsledky z předplatného, ke kterému už máte přístup, a pak si `Search-AzGraph` Všimněte, že se výchozí nastavení rutiny ve výchozím kontextu předplatným. Pokud chcete zobrazit seznam ID předplatných, která jsou součástí výchozího kontextu, spusťte `(Get-AzContext).Account.ExtendedProperties.Subscriptions` tuto možnost, pokud chcete hledat ve všech předplatných, ke kterým máte přístup, a jeden z `Search-AzGraph` nich může nastavit PSDefaultParameterValues pro rutinu spuštěním.`$PSDefaultParameterValues=@{"Search-AzGraph:Subscription"= $(Get-AzSubscription).ID}`
    
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
@@ -105,7 +105,7 @@ Remove-Module -Name 'Az.ResourceGraph'
 > [!NOTE]
 > Tím se neodstraní dříve stažený soubor s modulem. Pouze ho odebere ze spuštěného relace PowerShell.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Získejte další informace o [dotazovacím jazyce](./concepts/query-language.md)
 - Naučte se [prozkoumat zdroje](./concepts/explore-resources.md)

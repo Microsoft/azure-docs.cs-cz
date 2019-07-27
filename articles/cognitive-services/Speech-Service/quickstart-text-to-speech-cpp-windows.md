@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý start: Syntetizace řeči, jazyka C++ (Windows) – hlasové služby'
+title: 'Rychlý start: Syntetizace řeči, C++ (Windows) – služba Speech'
 titleSuffix: Azure Cognitive Services
-description: Zjistěte, jak tak, aby odpovídaly řeči v jazyce C++ na ploše Windows s použitím sadou SDK pro řeč
+description: Naučte se, jak na ploše C++ Windows syntetizovat řeč pomocí sady Speech SDK
 services: cognitive-services
 author: yinhew
 manager: nitinme
@@ -10,26 +10,26 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: yinhew
-ms.openlocfilehash: dfad425d6da2e3dabec138ef4f108957ebea7ee9
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 6936d8f93221402fca9b250d09a842ce753e0e12
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67602917"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68559308"
 ---
-# <a name="quickstart-synthesize-speech-in-c-on-windows-by-using-the-speech-sdk"></a>Rychlý start: Syntetizace řeči v C++ ve Windows s použitím sadou SDK pro řeč
+# <a name="quickstart-synthesize-speech-in-c-on-windows-by-using-the-speech-sdk"></a>Rychlý start: Používání sady Speech SDK C++ v systému Windows syntetiz řeči
 
-Rychlí průvodci jsou také k dispozici pro [rozpoznávání řeči](quickstart-cpp-windows.md) a [překlad řeči](quickstart-translate-speech-cpp-windows.md).
+K dispozici jsou také rychlé starty pro [rozpoznávání řeči](quickstart-cpp-windows.md) a [Překlad řeči](quickstart-translate-speech-cpp-windows.md).
 
-V tomto článku vytvoříte konzolovou aplikaci pro Windows v jazyce C++. Použití služeb Cognitive Services [sadou SDK pro řeč](speech-sdk.md) syntetizace řeč z textu v reálném čase a přehrát řeč na váš počítač mluvčího. Tato aplikace je vytvořená pomocí [balíčku NuGet sady Speech SDK](https://aka.ms/csspeech/nuget) a sady Microsoft Visual Studio 2017 (libovolné edice).
+V tomto článku vytvoříte konzolovou aplikaci pro Windows v jazyce C++. [Sada Cognitive Services Speech SDK](speech-sdk.md) slouží k syntetizování řeči z textu v reálném čase a přehrávání řeči v mluvčím počítače. Tato aplikace je vytvořená pomocí [balíčku NuGet sady Speech SDK](https://aka.ms/csspeech/nuget) a sady Microsoft Visual Studio 2017 (libovolné edice).
 
-Funkce popsané v tomto článku je k dispozici z [sadou SDK pro řeč 1.5.0](https://www.nuget.org/packages/Microsoft.CognitiveServices.Speech/1.5.0).
+Funkce popsaná v tomto článku je k dispozici v [sadě Speech SDK 1.5.0](https://www.nuget.org/packages/Microsoft.CognitiveServices.Speech/1.5.0).
 
-Úplný seznam jazyků/hlasy dostupné pro syntézu řeči, naleznete v tématu [jazykovou podporu](language-support.md#text-to-speech).
+Úplný seznam jazyků a hlasů dostupných pro syntézu řeči najdete v tématu [Podpora jazyků](language-support.md#text-to-speech).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Klíč předplatného hlasové služby k dokončení tohoto rychlého startu potřebujete. Můžete ho získat zdarma. Zobrazit [hlasové služby si můžete vyzkoušet zdarma](get-started.md) podrobnosti.
+K dokončení tohoto rychlého startu budete potřebovat klíč předplatného služby Speech Services. Můžete ho získat zdarma. Další informace najdete v tématu o bezplatném pokusu o [hlasové služby](get-started.md) .
 
 ## <a name="create-a-visual-studio-project"></a>Vytvoření projektu ve Visual Studiu
 
@@ -57,18 +57,18 @@ Klíč předplatného hlasové služby k dokončení tohoto rychlého startu pot
 
    ![Snímek obrazovky s aplikací sady Visual Studio se zvýrazněnou možností Spustit ladění](media/sdk/qs-cpp-windows-07-start-debugging.png)
 
-1. Zobrazí se okno konzoly vás vyzve k zadání nějaký text. Zadejte pár slov nebo věty. Text, který jste zadali se přenášejí do služeb řeči a syntetizovat do mluvené řeči, který přehraje na reproduktoru.
+1. Zobrazí se okno konzoly, které vás vyzve k zadání textu. Zadejte několik slov nebo větu. Text, který jste zadali, se přenáší do služeb řeči a syntetizuje se na řeč, který hraje na reproduktoru.
 
-   ![Snímek obrazovky výstup na konzole po úspěšné syntézu](media/sdk/qs-tts-cpp-windows-console-output.png)
+   ![Snímek obrazovky s výstupem konzoly po úspěšném Shrnutí](media/sdk/qs-tts-cpp-windows-console-output.png)
 
 ## <a name="next-steps"></a>Další postup
 
-Další ukázky, jako je například ukládání řeči zvukový soubor, jsou k dispozici na Githubu.
+Další ukázky, jako je například ukládání řeči do zvukového souboru, jsou k dispozici na GitHubu.
 
 > [!div class="nextstepaction"]
-> [Prozkoumejte C++ – ukázky na Githubu](https://aka.ms/csspeech/samples)
+> [Prozkoumejte C++ ukázky na GitHubu](https://aka.ms/csspeech/samples)
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také:
 
-- [Přizpůsobení hlasová písma](how-to-customize-voice-font.md)
-- [Záznam hlasu ukázky](record-custom-voice-samples.md)
+- [Přizpůsobení hlasových písem](how-to-customize-voice-font.md)
+- [Záznam ukázek hlasu](record-custom-voice-samples.md)

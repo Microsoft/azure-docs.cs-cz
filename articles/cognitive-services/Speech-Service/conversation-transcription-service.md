@@ -1,7 +1,7 @@
 ---
-title: Konverzace určené k transkripci – hlasové služby
+title: Přepis konverzace – služba Speech
 titleSuffix: Azure Cognitive Services
-description: Přepis konverzace je pokročilá funkce hlasových služeb, který kombinuje rozpoznávání řeči v reálném čase, identifikace mluvčího a diarization. Přepis konverzace je ideální pro přepisování osobně schůzky, s možností rozlišení mluvčích, upozorní vás, ale nutné dodat, co a kdy, umožňuje účastníkům zaměřit na schůzku a rychle vyřídit další kroky. Tato funkce taky zlepšuje dostupnost. S přepis může aktivně zapojit účastníky s poškozením sluchu.
+description: Přepis konverzace je pokročilou funkcí služeb Speech, které kombinují rozpoznávání řeči v reálném čase, identifikaci mluvčího a diarization. Přepisy konverzací jsou ideální pro zdlouhavého přepisování schůzky na osobu s možností odlišit reproduktory. to vám umožní zjistit, kdo řekl a kdy, aby se účastníci mohli soustředit na schůzku a rychle postupovat podle dalších kroků. Tato funkce také vylepšuje přístupnost. S přepisem můžete aktivně zapojit účastníky s postižením sluchu.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,70 +10,70 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 18de3e52d61afd8e1ef20f80c020c8b7d96b9757
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: acbf82335523ee226f4b899180f0f22cb94cca5e
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67603249"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68562888"
 ---
-# <a name="what-is-conversation-transcription"></a>Co je určené k transkripci konverzace?
+# <a name="what-is-conversation-transcription"></a>Co je přepis konverzace?
 
-Přepis konverzace je pokročilá funkce hlasových služeb, který kombinuje rozpoznávání řeči v reálném čase, identifikace mluvčího a diarization. Přepis konverzace je ideální pro přepisování osobně schůzky, s možností rozlišení mluvčích, upozorní vás, ale nutné dodat, co a kdy, umožňuje účastníkům zaměřit na schůzku a rychle vyřídit další kroky. Tato funkce taky zlepšuje dostupnost. S přepis může aktivně zapojit účastníky s poškozením sluchu.   
+Přepis konverzace je pokročilou funkcí služeb Speech, které kombinují rozpoznávání řeči v reálném čase, identifikaci mluvčího a diarization. Přepisy konverzací jsou ideální pro zdlouhavého přepisování schůzky na osobu s možností odlišit reproduktory. to vám umožní zjistit, kdo řekl a kdy, aby se účastníci mohli soustředit na schůzku a rychle postupovat podle dalších kroků. Tato funkce také vylepšuje přístupnost. S přepisem můžete aktivně zapojit účastníky s postižením sluchu.   
 
-Konverzace určené k transkripci poskytuje přesné rozpoznávání s přizpůsobitelné modely řeči, které můžete přizpůsobit o oboru a specifické pro společnost slovník. Kromě toho můžete spárovat konverzace přepisu se sadou SDK pro řeč zařízení k optimalizaci prostředí pro více mikrofon zařízení.
+Přepis konverzace nabízí přesné rozpoznávání s přizpůsobitelnými modely řeči, které můžete přizpůsobit pro pochopení odvětví a slovníku konkrétní společnosti. Kromě toho můžete pro optimalizaci prostředí pro zařízení s více mikrofony párovat přepisy konverzace pomocí sady Speech Devices SDK.
 
 >[!NOTE]
-> V současné době určené k transkripci konverzace se doporučuje pro malé schůzky. Pokud chcete rozšířit konverzace přepis pro velké schůzky ve velkém měřítku, kontaktujte nás prosím.
+> V současné době se pro malé schůzky doporučuje přepisovat konverzaci. Pokud chcete rozšířit přepis konverzace pro velké schůzky se škálováním, kontaktujte nás prosím.
 
-Tento diagram znázorňuje hardwaru, softwaru a služeb, které fungují společně s určené k transkripci konverzace.
+Tento diagram znázorňuje hardware, software a služby, které spolupracují s přepisem konverzace.
 
-![Diagram určené k transkripci Import konverzace](media/scenarios/conversation-transcription-service.png)
+![Diagram přepisu importu konverzací](media/scenarios/conversation-transcription-service.png)
 
 >[!IMPORTANT]
-> Vyžaduje se cyklické pole sedmi mikrofon s konkrétní geometrie konfigurací. Podrobnější informace o specifikaci a návrhu, naleznete v tématu [Microsoft řeči zařízení SDK mikrofon](https://aka.ms/cts/microphone). Další informace nebo zakoupit development kit, najdete v článku [získat Microsoft zařízení sadou SDK pro řeč](https://aka.ms/cts/getsdk).
+> Je nutné zadat kruhové pole mikrofonu s konkrétní konfigurací geometrie. Podrobnosti specifikace a návrhu najdete v tématu věnovaném [mikrofonu sady SDK pro zařízení Microsoft Speech](https://aka.ms/cts/microphone). Další informace o tom, jak si můžete koupit vývojovou sadu, najdete v tématu věnovaném [sadě SDK pro zařízení Speech](https://aka.ms/cts/getsdk).
 
-## <a name="get-started-with-conversation-transcription"></a>Začínáme s určené k transkripci konverzace
+## <a name="get-started-with-conversation-transcription"></a>Začínáme s přepisem konverzace
 
-Existují tři kroky, které potřebujete, abyste mohli začít s určené k transkripci konverzace.
+Chcete-li začít s přepisem konverzace, je třeba provést tři kroky.
 
-1. Hlasové ukázek shromážděte od uživatelů.
-2. Generovat profily uživatelů pomocí ukázky hlas uživatele
-3. Využijte sadou SDK pro řeč k identifikaci uživatelů (přednášející) a přepisy řeči
+1. Shromažďování hlasových ukázek od uživatelů
+2. Generování profilů uživatelů pomocí ukázek uživatelského hlasu
+3. Použití sady Speech SDK k identifikaci uživatelů (mluvčích) a přepisovat řeči
 
-## <a name="collect-user-voice-samples"></a>Shromáždit vzorky hlas uživatele
+## <a name="collect-user-voice-samples"></a>Shromažďování uživatelských ukázek hlasu
 
-Prvním krokem je shromažďovat zvukové záznamy z každého uživatele. Uživatel řeči se zaznamená v tichém prostředí bez šum na pozadí. Doporučená délka každé zvukové ukázce je 30 sekund až dvě minuty. Delší zvukové vzorky způsobí zpřesnění při identifikaci mluvčích. Mono kanál s 16 KHz vzorkovací frekvence musí být zvuk.
+Prvním krokem je shromažďování zvukových záznamů od jednotlivých uživatelů. Rozpoznávání řeči uživatele by se mělo zaznamenávat v tichém prostředí bez šumu na pozadí. Doporučená délka každého zvukového vzorku je mezi 30 sekundami a dvěma minutami. Delší zvukové vzorky budou mít za následek lepší přesnost při identifikaci mluvčích. Zvuk musí být mono kanál s vzorkovací frekvencí 16 KHz.
 
-Nad rámec výše uvedené informace se zvuk se zaznamenávají a ukládají se jenom na vás – doporučuje zabezpečené databázi. V další části si probereme, jak zvuková slouží ke generování profily uživatelů, které se používají se sadou SDK pro řeč rozpoznat mluvčí.
+Kromě výše uvedených pokynů je způsob, jakým se záznam zvuku nahraje a je uložený na vás – je vhodná zabezpečená databáze. V další části si ukážeme, jak se tento zvuk používá ke generování profilů uživatelů používaných se sadou Speech SDK k rozpoznávání mluvčích.
 
 ## <a name="generate-user-profiles"></a>Generování profilů uživatelů
 
-V dalším kroku budete muset odeslat zvukové záznamy jste shromažďují ve službě generování podpis ověřit zvuk a vygenerovat uživatelské profily. [Služba generování podpis](https://aka.ms/cts/signaturegenservice) představuje sadu rozhraní REST API, díky kterým můžou generovat a načítat profily uživatelů.
+V dalším kroku budete muset odeslat zvukové nahrávky, které jste shromáždili do služby generování podpisů, abyste ověřili zvuk a vygenerovali profily uživatelů. [Služba generování podpisů](https://aka.ms/cts/signaturegenservice) je sada rozhraní REST API, která umožňuje vygenerovat a načíst profily uživatelů.
 
-Vytvoření uživatelského profilu, budete muset použít `GenerateVoiceSignature` rozhraní API. Specifikace podrobností a ukázky kódu jsou k dispozici:
+Chcete-li vytvořit profil uživatele, bude nutné použít `GenerateVoiceSignature` rozhraní API. K dispozici jsou podrobnosti specifikace a vzorový kód:
 
 > [!NOTE]
-> Přepis konverzace je aktuálně dostupné v "en US" a "zh-CN" v těchto oblastech: `centralus` a `eastasia`.
+> Přepis konverzace je aktuálně k dispozici v části "en-US" a "zh-CN" v následujících `centralus` oblastech `eastasia`: a.
 
 * [Specifikace REST](https://aka.ms/cts/signaturegenservice)
 * [Použití přepisu konverzace](https://aka.ms/cts/howto)
 
-## <a name="transcribe-and-identify-speakers"></a>Přepisy a identifikaci mluvčích
+## <a name="transcribe-and-identify-speakers"></a>Přepisovat a Identifikujte reproduktory
 
-Konverzace určené k transkripci očekává, že vícekanálový audiostreamy a profily uživatelů jako vstupy pro generování přepisů a identifikaci mluvčích. Zvuk a uživatelská data profilu se odesílají do určené k transkripci konverzace služby pomocí sady SDK zařízení řeči. Jak už jsme zmínili cyklické pole sedmi mikrofon a sadou SDK pro řeč zařízení je potřeba použít určené k transkripci konverzace.
+Přepis konverzace očekává vícekanálový audio streamy a profily uživatelů jako vstupy pro generování přepisů a identifikaci mluvčích. Data profilu zvuku a uživatele se odesílají do služby přepisu konverzace pomocí sady Speech Devices SDK. Jak už jsme uvedli, je k použití přepisu konverzace potřeba vytvořit kruhové pole mikrofonu a sadu Speech SDK pro zařízení.
 
 >[!NOTE]
-> Podrobnější informace o specifikaci a návrhu, naleznete v tématu [Microsoft řeči zařízení SDK mikrofon](https://aka.ms/cts/microphone). Další informace nebo zakoupit development kit, najdete v článku [získat Microsoft zařízení sadou SDK pro řeč](https://aka.ms/cts/getsdk).
+> Podrobnosti specifikace a návrhu najdete v tématu věnovaném [mikrofonu sady SDK pro zařízení Microsoft Speech](https://aka.ms/cts/microphone). Další informace o tom, jak si můžete koupit vývojovou sadu, najdete v tématu věnovaném [sadě SDK pro zařízení Speech](https://aka.ms/cts/getsdk).
 
-Další informace o použití přepisu konverzace se sadou SDK pro řeč zařízení, najdete v článku [použití přepisu konverzace](https://aka.ms/cts/howto).
+Informace o použití přepisu konverzace v sadě Speech Devices SDK najdete v článku [Jak používat přepis konverzace](https://aka.ms/cts/howto).
 
 
-## <a name="quick-start-with-a-sample-app"></a>Rychlý Start s ukázkovou aplikací
+## <a name="quick-start-with-a-sample-app"></a>rychlé zprovoznění s ukázkovou aplikací
 
-Microsoft řeči zařízení SDK obsahuje ukázkové aplikace rychlý start pro všechna zařízení související ukázky. Přepis konverzace je jedním z nich. Najdete ho v [sadou SDK pro řeč zařízení s androidem quickstart](https://aka.ms/sdsdk-quickstart) s ukázkovou aplikaci a jeho zdrojový kód pro vaši informaci.
+Sada Microsoft Speech zařízení SDK má rychlou úvodní ukázkovou aplikaci pro všechny ukázky týkající se zařízení. Jedním z nich je přepis konverzace. Můžete ji najít v [sadě Speech SDK pro zařízení Android rychlý Start](https://aka.ms/sdsdk-quickstart) s ukázkovou aplikací a jejím zdrojovým kódem pro váš odkaz.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Další informace o zařízení sadou SDK pro řeč](speech-devices-sdk.md)
+> [Další informace o sadě Speech SDK pro zařízení](speech-devices-sdk.md)

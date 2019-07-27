@@ -1,6 +1,6 @@
 ---
 title: Testování znalostní báze – QnA Maker
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: Testování znalostní báze QnA Maker je důležitou součástí iterativní proces, aby se zlepšila přesnost odpovědi se vrací. Můžete otestovat ve znalostní bázi prostřednictvím rozhraní rozšířené chatu, který také umožňuje že provádět úpravy.
 services: cognitive-services
 author: diberry
@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 05/08/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 4d9c00c4ea7fd0494d00551dc37b186e1a357037
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 6a512098d5dfda47b7755e24b286aabf83aa7e69
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67439726"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563072"
 ---
 # <a name="test-your-knowledge-base-interactively-in-qna-maker"></a>Testování znalostní báze interaktivně v nástroje QnA Maker
 
@@ -24,28 +24,28 @@ Testování znalostní báze QnA Maker je důležitou součástí iterativní pr
 
 ## <a name="test-answer-matching"></a>Odpovídající odpověď testu
 
-1. Výběrem názvu na přístup ke znalostní báze **Moje znalostních bází** stránky.
-1. Chcete-li získat přístup k panelu snímku na více instancí testu, vyberte **Test** v horním panelu vaší aplikace.
+1. K znalostní bázi se dostanete tak, že na stránce **Moje základy znalostí** vyberete její název.
+1. Pro přístup k panelu testovacího snímku vyberte v horním panelu aplikace **test** .
 1. Zadejte dotaz do textového pole a stiskněte Enter.
 1. Nejlépe odpovídající odpověď na základě znalostní báze se vrátí jako odpověď.
 
 ## <a name="clear-test-panel"></a>Vymazat test panelu
 
-Chcete-li vymazat všechny zadané testovací dotazy a jejich výsledky z testovací konzole, vyberte **začít od začátku** v levém horním rohu panelu Test.
+Chcete-li vymazat všechny zadané testovací dotazy a jejich výsledky z konzoly test, vyberte možnost **začít znovu** v levém horním rohu panelu Test.
 
 ## <a name="close-test-panel"></a>Test Zavřít panel
 
-Zavřít panel testu, vyberte **Test** tlačítko znovu. Při otevření panelu Test nelze upravovat obsah znalostní báze Knowledge Base.
+Chcete-li panel testu zavřít, vyberte tlačítko **test** znovu. Při otevření panelu Test nelze upravovat obsah znalostní báze Knowledge Base.
 
 ## <a name="inspect-score"></a>Kontrola skóre
 
-Si prohlédnout podrobnosti o výsledku testu na panelu zkontrolujte, jestli se.
+Podrobnosti o výsledku testu si můžete prohlédnout na panelu Kontrola.
 
-1.  Test snímku na více instancí panelu otevřete, vyberte **zkontrolujte, jestli se** podrobné informace o této odpovědi.
+1.  Na panelu Test snímků na více instancí otevřete možnost **zkontrolovat** , kde najdete další podrobnosti o této odpovědi.
 
     ![Zkontrolovat odpovědi](../media/qnamaker-how-to-test-kb/inspect.png)
 
-2.  Otevře se panel kontroly. Na panelu zahrnuje nejvyšší hodnocení záměr, stejně jako všechny zjištěné entity. Na panelu zobrazuje výsledek vybraný utterance.
+2.  Zobrazí se panel kontrola. Na panelu zahrnuje nejvyšší hodnocení záměr, stejně jako všechny zjištěné entity. Na panelu zobrazuje výsledek vybraný utterance.
 
 ## <a name="correct-the-top-scoring-answer"></a>Opravte nejvyšší hodnocení odpovědí
 
@@ -63,7 +63,7 @@ Můžete přidat alternativní formy dotaz na danou odpovědí. Zadejte alternat
 
 Pokud některý z existujících odpovědi, které se shoda našla, nejsou správné nebo odpověď neexistuje znalostní báze knowledge base (dobré nalezena žádná shoda v KB), můžete přidat nové odpovědi. 
 
-V dolní části seznamu odpovědi použijte textové pole k zadání odpovědi na nový a stiskněte klávesu enter a přidejte ji. 
+V dolní části seznamu odpovědí zadejte novou odpověď pomocí textového pole a stisknutím klávesy ENTER ji přidejte. 
 
 Vyberte **uložit a jejich trénování** zachovat tuto odpověď. Nový pár otázka – odpověď byl přidán do znalostní báze. 
 
@@ -72,9 +72,9 @@ Vyberte **uložit a jejich trénování** zachovat tuto odpověď. Nový pár ot
 
 ## <a name="test-the-published-knowledge-base"></a>Testování publikované znalostní báze
 
-Testování publikované verze znalostní báze knowledge base v testovací podokno. Po publikování KB, vyberte **publikované KB** pole a odeslat dotaz pro získání výsledků z publikovaných KB.
+Publikovanou verzi znalostní báze můžete otestovat v podokně test. Po publikování znalostní báze vyberte pole **zveřejněné znalostní báze** a odešlete dotaz, který získá výsledky z PUBLIKOVANÉHO znalostní báze.
 
-![Testování publikované KB](../media/qnamaker-how-to-test-kb/test-against-published-kb.png)
+![Test proti publikované znalostní bázi](../media/qnamaker-how-to-test-kb/test-against-published-kb.png)
 
 ## <a name="next-steps"></a>Další postup
 

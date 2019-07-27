@@ -1,7 +1,7 @@
 ---
-title: Role modelu
+title: Role vzoru – LUIS
 titleSuffix: Azure Cognitive Services
-description: Vzory extrahovat data z projevy správně naformátovaný šablony. Šablona promluvy používá jednoduchou entitu a role k extrakci takových souvisejících dat, jako jsou umístění původu a umístění cíle.
+description: Vzory extrahují data z dobře formátované šablony projevy. Šablona promluvy používá jednoduchou entitu a role k extrakci takových souvisejících dat, jako jsou umístění původu a umístění cíle.
 ms.custom: seodec18
 services: cognitive-services
 author: diberry
@@ -11,22 +11,22 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 07/16/2019
 ms.author: diberry
-ms.openlocfilehash: c0e3ac1d53cda2afb2184b92b0fd0afd662101bb
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 7586a81eac95a2e4a08b045b3a2826132d9919f7
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68277499"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560023"
 ---
-# <a name="tutorial-extract-contextually-related-patterns-using-roles"></a>Kurz: Extrahovat kontextově související vzory používání rolí
+# <a name="tutorial-extract-contextually-related-patterns-using-roles"></a>Kurz: Extrakce kontextem souvisejících vzorů pomocí rolí
 
-V tomto kurzu budete používat vzor k extrakci dat z dobře formulované šablony promluvy. Používá utterance šablony [jednoduchou entitu](luis-concept-entity-types.md#simple-entity) a [role](luis-concept-roles.md) extrahovat související data, jako je původní umístění a cílové umístění.  Záměr bude při použití vzorů potřebovat méně ukázkových promluv.
+V tomto kurzu budete používat vzor k extrakci dat z dobře formulované šablony promluvy. Šablona utterance používá [jednoduchou entitu](luis-concept-entity-types.md#simple-entity) a [role](luis-concept-roles.md) k extrakci souvisejících dat, jako je zdrojové umístění a cílové umístění.  Záměr bude při použití vzorů potřebovat méně ukázkových promluv.
 
 
 **V tomto kurzu se naučíte:**
 
 > [!div class="checklist"]
-> * Importovat ukázková aplikace
+> * Importovat ukázkovou aplikaci
 > * Tvorba nových entit
 > * Tvorba nového záměru
 > * Trénování
@@ -40,14 +40,14 @@ V tomto kurzu budete používat vzor k extrakci dat z dobře formulované šablo
 
 ## <a name="using-roles-in-patterns"></a>Použití rolí ve vzorcích
 
-Účelem role je extrahovat kontextově související entity v utterance. V promluvě `Move new employee Robert Williams from Sacramento and San Francisco` jsou hodnoty města původu a cílového města ve vztahu jedna k druhé a odlišují se jen obecným jazykem. 
+Účelem rolí je extrakce kontextově souvisejících entit v utterance. V promluvě `Move new employee Robert Williams from Sacramento and San Francisco` jsou hodnoty města původu a cílového města ve vztahu jedna k druhé a odlišují se jen obecným jazykem. 
 
 
 Jméno nového zaměstnance (Billy Patterson) ještě není součástí seznamu entity **Zaměstnanec**. Jméno nového zaměstnance se extrahuje jako první, aby bylo možné poslat je do externího systému, kde se vytvoří přihlašovací údaje společnosti. Po jejich vytvoření se přihlašovací údaje zaměstnance přidají do seznamu entity **Zaměstnanec**.
 
 Nového zaměstnance s rodinou je teď potřeba přesunout z aktuálního města do města, kde sídlí fiktivní společnost. Protože může nový zaměstnanec pocházet z libovolného města, je potřeba zjistit umístění. Seznam sad, jako například seznam entity, by nefungoval, protože to by dovolovalo extrahovat pouze města, která tento seznam obsahuje.
 
-Názvy rolí spojených s městem původu a cílovým městem musejí být jedinečná napříč všemi entitami. Snadný způsob, jak zajistit, aby byly role jedinečné, je spojit tyto role s entitou, která je obsahuje, pomocí strategie vytváření názvů. **NewEmployeeRelocation** entita je jednoduchou entitu s dvě role: **NewEmployeeReloOrigin** a **NewEmployeeReloDestination**. Relo je zkráceně relokace (přemístění).
+Názvy rolí spojených s městem původu a cílovým městem musejí být jedinečná napříč všemi entitami. Snadný způsob, jak zajistit, aby byly role jedinečné, je spojit tyto role s entitou, která je obsahuje, pomocí strategie vytváření názvů. Entita **NewEmployeeRelocation** je jednoduchou entitou se dvěma rolemi: **NewEmployeeReloOrigin** a **NewEmployeeReloDestination**. Relo je zkráceně relokace (přemístění).
 
 Protože má ukázková promluva `Move new employee Robert Williams from Sacramento and San Francisco` pouze strojově naučené entity, je důležité poskytnout záměru dostatek ukázkových promluv, aby se daly entity určit.  
 
@@ -55,7 +55,7 @@ Protože má ukázková promluva `Move new employee Robert Williams from Sacrame
 
 Pokud máte potíže s určováním jednoduché entity, protože jde o název, například města, zvažte přidání seznamu frází podobných hodnot. Pomáhá to detekci názvu města tím, že LUIS dostane další signál, že jde o určitý typ slova nebo fráze. Seznamy frází jen pomáhají vzoru detekovat entitu. To je nutné pro spárování vzoru. 
 
-## <a name="import-example-app"></a>Importovat ukázková aplikace
+## <a name="import-example-app"></a>Importovat ukázkovou aplikaci
 Pokračujte s aplikací **HumanResources**, kterou jste vytvořili v posledním kurzu. 
 
 Použijte k tomu následující postup:

@@ -1,6 +1,6 @@
 ---
-title: Referenční informace k předem připraveným doménám
-titleSuffix: Azure
+title: Předem sestavený odkaz na doménu – LUIS
+titleSuffix: Azure Cognitive Services
 description: Referenční informace pro předem připravených domén, které jsou předem sestavené kolekce záměry a entity z Language Understanding Intelligent Services (LUIS).
 services: cognitive-services
 author: diberry
@@ -11,21 +11,21 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: b615185472ede25fd6ceef9cc3e7325375e16ac7
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: ce043e23a0384a74fd5d2c9dd514045578ef836d
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67846668"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563461"
 ---
-# <a name="prebuilt-domain-reference-for-your-luis-app"></a>Informace o předem připravených domény pro aplikace LUIS
+# <a name="prebuilt-domain-reference-for-your-luis-app"></a>Předem sestavený odkaz na doménu pro aplikaci LUIS
 V tomto materiálu najdete informace o [předem připravených domén](luis-how-to-use-prebuilt-domains.md), které jsou předem sestavené kolekce záměry a entity, které nabízí služba LUIS.
 
 [Vlastní domény](luis-how-to-start-new-app.md), naopak spustit bez záměry a modely. Všechny předem připravených domény záměry a entity můžete přidat do vlastního modelu.
 
-# <a name="supported-domains-across-cultures"></a>Podporované domény napříč jazykovými verzemi
+# <a name="supported-domains-across-cultures"></a>Podporované domény napříč kulturami
 
-Pouze podporované jazykové verze je angličtina. 
+Jediná podporovaná jazyková verze je angličtina. 
 
 <!--
 
@@ -54,14 +54,14 @@ The table below summarizes the currently supported domains. Support for English 
 
 |Typ entity|description|
 |--|--|
-|Kalendář|Kalendář se něco o osobní schůzky a události, _není_ veřejné události (jako je například světa ve fotbale plány, kalendářů událostí Seattle) nebo obecný kalendáře (jako je například den je dnes, co fall začít, při Labor Day).|
-|Komunikace|Požadavky pro volání, odesílat texty nebo rychlých zpráv, najděte a přidejte kontakty a různé další komunikaci žádosti týkající se (obecně odchozí). Jméno kontaktní osoby pouze dotazy nepatří do domény komunikace.|
-|Email|E-mailu je subdoména domény, komunikace. Obsahuje především požadavky na odesílání a příjem zpráv prostřednictvím e-mailů.|
-|HomeAutomation|Doména HomeAutomation poskytuje záměry a entity související řízení domácí chytrými zařízeními. Především podporuje příkaz Ovládací prvek související s indikátory a klimatizace, ale má některé schopnosti generalizace pro ostatní electric zařízení.|
-|Poznámky|Poznámka: doména poskytuje záměry a entity pro vytváření poznámek a zápis dolů položky pro uživatele.|
-|Místa|Místa vložení firmám, instituce, restaurace, veřejné mezer a adresy. Doména podporuje místo hledání a zeptat se na informace na veřejném místě, jako je například umístění, pracovní hodiny a vzdálenost.|
-|RestaurantReservation|Restaurace rezervace doména podporuje příkazy pro zpracování rezervace restaurace.|
-|ToDo|Doména ToDo poskytuje typy seznamů úkolů pro uživatele k přidání, označení a odstranění jejich položky seznamu úkolů.|
-|Veřejné služby|Nástroje doména je obecné domény mezi všechny LUIS předem připravené modely, které obsahuje běžné příkazy a projevy ve scénářích rozdíl.|
-|Počasí|Počasí domény se zaměřuje na kontrolu stavu počasí a poradci pro umístění a čas nebo kontrola čas počasí.|
-|Web|Doména webové poskytuje záměr a entity pro vyhledávání na webu.|
+|Kalendář|Kalendář je cokoli o osobních schůzkách a událostech, _ne_ k veřejným událostem (například k plánům na světě, kalendářům událostí v Seattlu) nebo k obecným kalendářům (například k tomu, co se dnes nachází v dnešním dni).|
+|Komunikace|Žádosti o provedení volání, posílání textů nebo rychlých zpráv, hledání a přidávání kontaktů a různé požadavky související s komunikací (obecně odchozí). Dotazy jenom na název kontaktu nepatří do domény komunikace.|
+|Email|E-mail je subdoménou domény komunikace. Hlavně obsahuje žádosti o posílání a přijímání zpráv prostřednictvím e-mailů.|
+|HomeAutomation|Doména HomeAutomation poskytuje záměry a entity týkající se řízení inteligentních domácích zařízení. Hlavně podporuje řídicí příkaz týkající se světel a klimatizace, ale má určité možnosti generalizace pro jiné elektrické spotřebiče.|
+|Poznámky|Poznámka: doména poskytuje záměry a entity pro vytváření poznámek a zápis položek pro uživatele.|
+|Místa|Mezi ně patří firmy, instituce, restaurace, veřejné prostory a adresy. Doména podporuje místo hledání a dotaz na informace o veřejném místě, jako je například poloha, provozní doba a vzdálenost.|
+|RestaurantReservation|Rezervační doména restaurace podporuje záměry pro zpracování rezervací pro restaurace.|
+|ToDo|Doména ToDo poskytuje typy seznamů úkolů pro uživatele, kteří mají přidat, označit a odstranit položky ToDo.|
+|Veřejné služby|Doména nástrojů je obecná doména mezi všemi LUIS předem sestavenými modely, které obsahují běžné záměry a projevy v rozdílných scénářích.|
+|Počasí|V případě povětrnostních podmínek se zaměřuje na kontrolu povětrnostní podmínky a Advisory s využitím místa a času nebo při kontrole podle počasí.|
+|Web|Webová doména poskytuje záměr a entity pro hledání webu.|

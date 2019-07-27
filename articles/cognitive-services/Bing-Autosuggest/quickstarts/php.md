@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-autosuggest
 ms.topic: quickstart
-ms.date: 02/20/2019
+ms.date: 07/26/2019
 ms.author: aahi
-ms.openlocfilehash: 6bbd9e5f0f1c9f26a8af756dd3c9bce666168079
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: 7c9c12cd1097ab4a2b7138efd169e4e7a7f03720
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68405295"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68565811"
 ---
 # <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-php"></a>Rychlý start: Návrh vyhledávacích dotazů pomocí Automatické návrhy Bingu REST API a PHP
 
@@ -147,7 +147,7 @@ echo json_encode (json_decode ($result), JSON_PRETTY_PRINT);
 }
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 > [Kurz rozhraní API pro automatické návrhy Bingu](../tutorials/autosuggest.md)

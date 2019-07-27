@@ -1,6 +1,6 @@
 ---
-title: Rychlý start – Azure SQL Database managed instance | Dokumentace Microsoftu
-description: Zjistěte, jak rychle začít s Azure SQL Database – spravovaná instance
+title: Rychlý Start-Azure SQL Database spravovaná instance | Microsoft Docs
+description: Naučte se, jak rychle začít s Azure SQL Databaseem – spravovaná instance
 services: sql-database
 ms.service: sql-database
 ms.subservice: managed-instance
@@ -10,72 +10,71 @@ ms.topic: quickstart
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlr
-manager: craigg
 ms.date: 07/11/2019
-ms.openlocfilehash: c2a468507c598c38b0b6b3b9f9c6a58a6ef4eff2
-ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
+ms.openlocfilehash: 97f7393622311103d94d3067205f902e3eec6843
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67826972"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68567350"
 ---
-# <a name="getting-started-with-azure-sql-database-managed-instance"></a>Začínáme s Azure SQL Database managed instance
+# <a name="getting-started-with-azure-sql-database-managed-instance"></a>Začínáme s Azure SQL Database Managed instance
 
-[Spravovanou instanci](sql-database-managed-instance-index.yml) možnost nasazení vytvoří databázi s téměř 100 % kompatibilitu s nejnovější systému SQL Server (Enterprise Edition) na místní databázový stroj, poskytuje nativní [virtuální síť (VNet)](../virtual-network/virtual-networks-overview.md) implementace, která řeší běžné problémy zabezpečení a [obchodního modelu](https://azure.microsoft.com/pricing/details/sql-database/) uspokojivým pro zákazníky v místním systému SQL Server. V tomto článku se dozvíte, jak rychle nakonfigurovat a vytvoření managed instance a migrace databází.
+Možnost nasazení [spravované instance](sql-database-managed-instance-index.yml) vytvoří databázi s téměř 100% kompatibilitou s nejnovějším databázovým strojem SQL Server místně (Enterprise Edition), který poskytuje implementaci nativní [virtuální sítě (VNET)](../virtual-network/virtual-networks-overview.md) , která řeší běžné bezpečnostní obavy a [obchodní model](https://azure.microsoft.com/pricing/details/sql-database/) , který je pro místní SQL Server zákazníky příznivý. V tomto článku se dozvíte, jak rychle nakonfigurovat a vytvořit spravovanou instanci a migrovat databáze.
 
-## <a name="quickstart-overview"></a>Rychlý start – přehled
+## <a name="quickstart-overview"></a>Přehled rychlého startu
 
-Tyto rychlé starty vám umožní rychle vytvořit managed instance, konfigurace virtuálního počítače nebo přejděte na připojení VPN typu site pro klientskou aplikaci a obnovit databázi k nové spravované instance pomocí `.bak` souboru.
+Následující rychlé starty vám umožní rychle vytvořit spravovanou instanci, nakonfigurovat virtuální počítač nebo Ukázat připojení VPN na lokalitu pro klientskou aplikaci a obnovit databázi do nové spravované instance pomocí `.bak` souboru.
 
 ### <a name="configure-environment"></a>Konfigurace prostředí
 
-Jako první krok je třeba vytvořit první Managed Instance pomocí síťového prostředí, kde budou umístěny a povolit připojení z počítače nebo virtuálního počítače, ve kterém se spouštěním dotazů do Managed Instance. Můžete použít následující příručky:
+Jako první krok byste museli vytvořit svou první spravovanou instanci v síťovém prostředí, kde bude umístěna, a povolit připojení z počítače nebo virtuálního počítače, ve kterém spouštíte dotazy do spravované instance. Můžete použít následující příručky:
 
-- [Vytvoření managed instance pomocí webu Azure portal](sql-database-managed-instance-get-started.md). Na webu Azure Portal nakonfigurujte potřebné parametry (uživatelského jména a hesla, počet jader a množství maximální velikosti úložiště) a automaticky vytvořit prostředí Azure sítě bez nutnosti znát podrobnosti o síti a požadavky na infrastrukturu. Můžete dejte pozor, abyste měli [typ předplatného](sql-database-managed-instance-resource-limits.md#supported-subscription-types) , který je aktuálně povoleno vytvoření managed instance. Pokud máte vlastní sítě, kterou chcete použít, nebo chcete přizpůsobit sítě naleznete v tématu [konfigurace existující virtuální sítě pro spravovanou instanci Azure SQL Database](sql-database-managed-instance-configure-vnet-subnet.md) nebo [vytvoření virtuální sítě pro službu Azure SQL Database spravovaná instance](sql-database-managed-instance-create-vnet-subnet.md).
-- Spravovaná instance je vytvořena ve vlastní virtuální síť, bez veřejného koncového bodu. Pro přístup z aplikace klienta, můžete je buď **vytvoření virtuálního počítače ve stejné virtuální síti (jiné podsíti)** nebo **vytvořit připojení VPN typu point-to-site k virtuální síti z klientských počítačů** pomocí jedné z nich šablony rychlý start:
-  - Povolit [veřejný koncový bod](sql-database-managed-instance-public-endpoint-configure.md) na Managed Instance pro přístup k datům přímo z vašeho prostředí.
-  - Vytvoření [virtuálního počítače Azure ve spravované instanci VNet](sql-database-managed-instance-configure-vm.md) připojením klienta aplikace, včetně SQL Server Management Studio.
-  - Nastavit [připojení VPN typu point-to-site k vaší spravované instance](sql-database-managed-instance-configure-p2s.md) z klientského počítače, na kterých máte SQL Server Management Studio a další aplikace připojení klienta. Toto je druhý operand dvě možnosti pro připojení k vaší spravované instanci a k jeho virtuální síti.
+- [Vytvořte spravovanou instanci pomocí Azure Portal](sql-database-managed-instance-get-started.md). V Azure Portal nakonfigurujete potřebné parametry (uživatelské jméno/heslo, počet jader a maximální velikost úložiště) a automaticky vytvoříte síťové prostředí Azure bez nutnosti znát podrobnosti o síti a požadavky na infrastrukturu. Stačí se ujistit, že máte [typ](sql-database-managed-instance-resource-limits.md#supported-subscription-types) předplatného, který aktuálně povoluje vytvoření spravované instance. Pokud máte vlastní síť, kterou chcete použít, nebo chcete síť přizpůsobit, přečtěte si téma [Konfigurace existující virtuální sítě pro Azure SQL Database spravovanou instanci](sql-database-managed-instance-configure-vnet-subnet.md) nebo [vytvoření virtuální sítě pro Azure SQL Database spravovanou instanci](sql-database-managed-instance-create-vnet-subnet.md).
+- Spravovaná instance je vytvořená ve vlastní virtuální síti bez veřejného koncového bodu. Pro klientský přístup k aplikacím můžete buď **vytvořit virtuální počítač ve stejné virtuální síti (jinou podsíť)** , nebo **vytvořit připojení VPN typu Point-to-site k virtuální síti z klientského počítače** pomocí některého z těchto rychlých startů:
+  - Povolením [veřejného koncového bodu](sql-database-managed-instance-public-endpoint-configure.md) na spravované instanci získáte přístup k datům přímo z vašeho prostředí.
+  - Vytvořte [virtuální počítač Azure v rámci virtuální sítě spravované instance](sql-database-managed-instance-configure-vm.md) pro připojení klientské aplikace, včetně SQL Server Management Studio.
+  - Nastavte [připojení VPN typu Point-to-site ke spravované instanci](sql-database-managed-instance-configure-p2s.md) z klientského počítače, na kterém máte SQL Server Management Studio a další aplikace pro připojení klienta. Jedná se o další dvě možnosti připojení ke spravované instanci a její virtuální síti.
 
   > [!NOTE]
-  > Můžete také použít expressroute nebo připojení site-to-site z místní sítě, ale tyto přístupy jsou mimo rozsah v těchto rychlých startech.
+  > Z místní sítě můžete také použít expresní směrování nebo připojení typu Site-to-site, ale tyto přístupy jsou z rozsahu těchto rychlých startů.
 
-Jako alternativu k ruční vytvoření Managed Instance, můžete použít [PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md), [Powershellu pomocí šablony Resource Manageru](scripts/sql-managed-instance-create-powershell-azure-resource-manager-template.md), nebo [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-create) při skriptování a automatizaci Tento proces.
+Jako alternativu k ručnímu vytvoření spravované instance můžete použít [PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md), [PowerShell s správce prostředků šablonou](scripts/sql-managed-instance-create-powershell-azure-resource-manager-template.md)nebo [Azure CLI](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-create) pro vytvoření skriptu a automatizaci tohoto procesu.
 
 ### <a name="migrate-your-databases"></a>Migrace databází
 
-Po vytvoření managed instance a konfigurovat přístup, můžete začít migrovat databáze z místního SQL serveru nebo virtuálních počítačích Azure. Migrace selže, pokud máte některé nepodporované funkce ve zdrojové databázi, kterou chcete migrovat. Pokud chcete zabránit selhání a zkontrolovat kompatibilitu, můžete nainstalovat [Data Migration Assistant (DMA)](https://www.microsoft.com/download/details.aspx?id=53595) , která analyzuje vaše databáze na SQL serveru a najde některý problém, který může způsobit zablokování migraci do spravované instance, jako je například existence [FileStream](https://docs.microsoft.com/sql/relational-databases/blob/filestream-sql-server) nebo víc souborů protokolů. Pokud tyto problémy vyřešit, vaše databáze jsou připravené k migraci do spravované instance. [Databáze služby experimentování ve službě pomocníka](https://blogs.msdn.microsoft.com/datamigration/2018/08/06/release-database-experimentation-assistant-dea-v2-6/) je další užitečná nástroj, který může zaznamenávat vaše úlohy na serveru SQL Server a opětovného přehrání ho ve službě managed instance, můžete určit chystají možné problémy s výkonem, pokud provádíte migraci do spravované instance.
+Po vytvoření spravované instance a konfiguraci přístupu můžete začít s migrací databází z SQL Server místních nebo virtuálních počítačů Azure. Pokud ve zdrojové databázi, kterou chcete migrovat, nejsou k dispozici některé nepodporované funkce, migrace se nezdařila. Aby nedocházelo k chybám a kontrolovali kompatibilitu, můžete nainstalovat [Data Migration Assistant (DMA)](https://www.microsoft.com/download/details.aspx?id=53595) , který analyzuje vaše databáze na SQL Server a vyhledá případné potíže, které by mohly blokovat migraci do spravované instance, jako je existence [FileStream](https://docs.microsoft.com/sql/relational-databases/blob/filestream-sql-server) nebo více souborů protokolu. Pokud tyto problémy vyřešíte, budou vaše databáze připravené k migraci do spravované instance. [Pomocník pro experimentování s databázemi](https://blogs.msdn.microsoft.com/datamigration/2018/08/06/release-database-experimentation-assistant-dea-v2-6/) je další užitečný nástroj, který může zaznamenat vaše zatížení na SQL Server a přehrát je ve spravované instanci, abyste zjistili, že při migraci na spravovanou instanci dojde k problémům s výkonem.
 
-Jakmile jste si jisti, že můžete migrovat databáze do spravované instance, nativní možnosti obnovení systému SQL Server můžete obnovit databázi do managed instance z `.bak` souboru. Tuto metodu můžete použít k migraci databází systému SQL Server nainstalovaný modul místní databáze nebo virtuální počítač Azure. Rychlý start, naleznete v tématu [obnovit ze zálohy do spravované instance](sql-database-managed-instance-get-started-restore.md). V tomto rychlém startu, můžete obnovit ze `.bak` souboru uloženého v Azure Blob storage pomocí `RESTORE` příkazu jazyka Transact-SQL.
+Jakmile si jste jisti, že můžete migrovat databázi do spravované instance, můžete použít možnosti obnovení nativního SQL Server k obnovení databáze do spravované instance ze `.bak` souboru. Tuto metodu můžete použít k migraci databází z SQL Server databázového stroje nainstalovaného místně nebo Azure VM. Rychlý Start najdete v tématu [obnovení ze zálohy do spravované instance](sql-database-managed-instance-get-started-restore.md). V tomto rychlém startu obnovíte `.bak` soubor uložený v úložišti objektů BLOB v Azure `RESTORE` pomocí příkazu Transact-SQL.
 
 > [!TIP]
-> Použít `BACKUP` naleznete v tématu příkazu Transact-SQL ve službě Azure Blob storage, vytvořte zálohu vaší databáze [zálohování serveru SQL Server na adresu URL](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-to-url).
+> Pokud chcete použít `BACKUP` příkaz Transact-SQL k vytvoření zálohy databáze v úložišti objektů BLOB v Azure, přečtěte si téma [SQL Server zálohování na adresu URL](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-to-url).
 
-V těchto rychlých startech umožňují rychle vytvářet, konfigurovat a obnovte zálohu databáze do spravované instance. V některých případech je třeba přizpůsobit nebo automatizovat nasazení spravované instance a požadované síťové prostředí. Tyto scénáře budou popsány níže.
+Tyto rychlé starty vám umožní rychle vytvořit, nakonfigurovat a obnovit zálohu databáze do spravované instance. V některých scénářích je třeba přizpůsobit nebo automatizovat nasazování spravovaných instancí a požadovaného síťového prostředí. Tyto scénáře budou popsány níže.
 
-## <a name="customize-network-environment"></a>Přizpůsobení prostředí sítě
+## <a name="customize-network-environment"></a>Přizpůsobení síťového prostředí
 
-I když se virtuální síť/podsíť může automaticky nakonfiguruje při vytvoření instance pomocí [na webu Azure portal](sql-database-managed-instance-get-started.md), může být vhodné vytvořte ho, než můžete začít vytvářet spravovaných instancí, protože můžete nakonfigurovat parametry sítě vnet a podsítě. Nejjednodušší způsob, jak vytvořit a konfigurovat síťové prostředí je použití [nasazení prostředků Azure](sql-database-managed-instance-create-vnet-subnet.md) šablonu, která vytvoří a nakonfiguruje je síť a podsíť, kde budou umístěné na instanci. Stačí stisknout klávesu Azure Resource Manageru nasadit tlačítko a vyplnit formulář s parametry.
+I když se virtuální síť nebo podsíť dá automaticky nakonfigurovat při vytvoření instance pomocí [Azure Portal](sql-database-managed-instance-get-started.md), může být vhodné ji vytvořit ještě předtím, než začnete vytvářet spravované instance, protože můžete nakonfigurovat parametry virtuální sítě a podsítě. Nejjednodušší způsob, jak vytvořit a nakonfigurovat síťové prostředí, je použít šablonu [nasazení prostředků Azure](sql-database-managed-instance-create-vnet-subnet.md) , která vytvoří a nakonfiguruje síť a podsíť, do které se instance umístí. Stačí stisknout tlačítko Azure Resource Manager nasadit a naplnit formulář parametry.
 
-Jako alternativu můžete použít [skript prostředí PowerShell](https://www.powershellmagazine.com/20../../configuring-azure-environment-to-set-up-azure-sql-database-managed-instance-preview/) k automatizaci vytváření sítě.
+Jako alternativu můžete k automatizaci vytváření sítě použít [skript prostředí PowerShell](https://www.powershellmagazine.com/20../../configuring-azure-environment-to-set-up-azure-sql-database-managed-instance-preview/) .
 
-Jako alternativu můžete použít také to [skript prostředí PowerShell](https://www.powershellmagazine.com/2018/07/23/configuring-azure-environment-to-set-up-azure-sql-database-managed-instance-preview/) k automatizaci vytváření sítě.
+Alternativně můžete tento [skript PowerShellu](https://www.powershellmagazine.com/2018/07/23/configuring-azure-environment-to-set-up-azure-sql-database-managed-instance-preview/) použít také k automatizaci vytváření sítě.
 
-Pokud již máte virtuální síť a podsíť kde byste chtěli nasadit spravované instance, potřebujete, abyste měli jistotu, že splňují vaše virtuální síť a podsíť [požadavky na síť](sql-database-managed-instance-connectivity-architecture.md#network-requirements). Použijte tento [skript Powershellu, který ověřte, že je správně nakonfigurována vaše podsíť](sql-database-managed-instance-configure-vnet-subnet.md). Tento skript ověřuje vaší sítí a sestavy nějaké problémy a zjistíte, co by mělo být změněno a potom nabídky proveďte potřebné změny ve vaší virtuální síti nebo podsíti. Pokud nechcete konfigurovat vaše virtuální síť/podsíť ručně, spusťte tento skript. Můžete ho spustit také za jakékoli hlavní změny konfigurace síťové infrastruktury. Pokud chcete vytvořit a nakonfigurovat vlastní sítě, přečtěte si [architektura připojení](sql-database-managed-instance-connectivity-architecture.md) a to [základní příručku k vytváření a konfiguraci prostředí spravované instance](https://medium.com/azure-sqldb-managed-instance/the-ultimate-guide-for-creating-and-configuring-azure-sql-managed-instance-environment-91ff58c0be01).
+Pokud už máte virtuální síť a podsíť, do které chcete nasadit spravovanou instanci, musíte zajistit, aby vaše virtuální síť a podsíť splňovaly [požadavky na síť](sql-database-managed-instance-connectivity-architecture.md#network-requirements). Pomocí tohoto [skriptu PowerShell ověříte, že je vaše podsíť správně nakonfigurovaná](sql-database-managed-instance-configure-vnet-subnet.md). Tento skript ověří vaši síť a nahlásí všechny problémy a poskytne vám informace o tom, co se má změnit, a pak nabídne potřebné změny ve vaší virtuální síti nebo podsíti. Pokud nechcete konfigurovat virtuální síť nebo podsíť ručně, spusťte tento skript. Můžete ji také spustit po jakékoli zásadní rekonfiguraci síťové infrastruktury. Pokud chcete vytvořit a nakonfigurovat vlastní síť, načtěte si [architekturu připojení](sql-database-managed-instance-connectivity-architecture.md) a tuto ucelenou [příručku pro vytváření a konfiguraci prostředí spravované instance](https://medium.com/azure-sqldb-managed-instance/the-ultimate-guide-for-creating-and-configuring-azure-sql-managed-instance-environment-91ff58c0be01).
 
 ## <a name="migrate-to-a-managed-instance"></a>Migrace do spravované instance
 
-Články v těchto rychlých startech umožňují rychle vytvářet spravovaná instance a přesun databází pomocí nativní `RESTORE` funkce. Toto je dobrým výchozím bodem, pokud chcete dokončit rychlé testování of koncepty a ověřte, že vaše řešení může pracovat na Managed Instance. 
+Články v těchto rychlých startech vám umožní rychle nastavit spravovanou instanci a přesunout databáze pomocí nativní `RESTORE` schopnosti. Toto je dobrý výchozí bod, pokud chcete kompletní kontrolu konceptů a ověřit, jestli vaše řešení může fungovat na spravované instanci. 
 
-Ale pro migraci produkční databáze nebo databáze i pro vývoj/testování, které chcete použít pro některé test výkonnosti, je třeba zvážit použití některé další techniky, jako například:
-- Testování výkonu – by měl měření výkonu standardních hodnot na zdrojové instanci SQL serveru a jejich porovnání s výkonem na cíl spravované Instance, kde jste provedli migraci databáze. Další informace o [osvědčené postupy pro porovnání výkonu](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/The-best-practices-for-performance-comparison-between-Azure-SQL/ba-p/683210).
-- Online migrace – s nativní `RESTORE` popsaných v tomto článku, budete muset počkat databázi, kterou chcete být obnoveny (a zkopírovat do úložiště objektů Blob v Azure není již uloženy). To způsobí, že výpadkům vaší aplikace, zejména u větších databází. Chcete-li přesunout provozní databázi, použijte [Data Migration service (DMS)](https://docs.microsoft.com/azure/dms/tutorial-sql-server-to-managed-instance?toc=/azure/sql-database/toc.json) migrace databáze s minimálními výpadky. DMS dosahuje tak, že postupně doručením (push) změny provedené ve zdrojové databázi na spravované instanci databáze obnovena. Díky tomu můžete rychle přepínat aplikace ze zdroje do cílové databáze s minimálními výpadky.
+Chcete-li však migrovat provozní databázi nebo dokonce vývoj/testovací databáze, které chcete použít pro některý test výkonnosti, je nutné zvážit použití některých dalších technik, například:
+- Testování výkonu – měli byste změřit základní výkon instance SQL Server instanci a porovnat je s výkonem v cílové spravované instanci, kde jste migrovali databázi. Přečtěte si další informace o [osvědčených postupech pro porovnání výkonu](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/The-best-practices-for-performance-comparison-between-Azure-SQL/ba-p/683210).
+- Online migrace – s nativním `RESTORE` popsaným v tomto článku musíte počkat, až budou databáze obnoveny (a zkopírovány do úložiště objektů BLOB v Azure, pokud se tam ještě neuložily). To způsobí určité výpadky aplikace, zejména pro větší databáze. K přesunu provozní databáze použijte [službu migrace dat (DMS)](https://docs.microsoft.com/azure/dms/tutorial-sql-server-to-managed-instance?toc=/azure/sql-database/toc.json) k migraci databáze s minimálními prostoji. DMS to provede přírůstkovým vložením změn provedených ve zdrojové databázi do obnovované databáze spravované instance. Tímto způsobem můžete rychle přepnout aplikaci ze zdrojového do cílové databáze s minimálními výpadky.
 
-Další informace o [doporučuje proces migrace](sql-database-managed-instance-migrate.md).
+Přečtěte si další informace o [doporučeném procesu migrace](sql-database-managed-instance-migrate.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- Najít [podrobný seznam podporovaných funkcí ve spravované instanci zde](sql-database-features.md) a [podrobnosti a známé problémy většinou neřeší](sql-database-managed-instance-transact-sql-information.md).
-- Další informace o [technické vlastnosti spravovanou instanci](sql-database-managed-instance-resource-limits.md#instance-level-resource-limits).
-- Jak najít pokročilejší-pro uživatele [použití ve službě Azure SQL Database managed instance](sql-database-howto-managed-instance.md).
-- [Určení správné Azure SQL Database nebo spravované Instance SKU pro místní databázi](/sql/dma/dma-sku-recommend-sql-db/).
+- Tady najdete [seznam podporovaných funkcí ve spravované instanci](sql-database-features.md) a [Podrobnosti a známé problémy](sql-database-managed-instance-transact-sql-information.md).
+- Seznamte se [s technickými charakteristikami spravované instance](sql-database-managed-instance-resource-limits.md#instance-level-resource-limits).
+- Najděte si pokročilejší postupy, [Jak používat spravovanou instanci v Azure SQL Database](sql-database-howto-managed-instance.md).
+- [Identifikujte správnou Azure SQL Database/SKU spravované instance pro vaši místní databázi](/sql/dma/dma-sku-recommend-sql-db/).

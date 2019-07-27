@@ -1,7 +1,7 @@
 ---
-title: Migrace ze služby Custom Speech Service pro hlasové služby
-titlesuffix: Azure Cognitive Services
-description: Custom Speech Service je teď součástí hlasové služby. Přepnout na hlasové služby využívat nejnovější aktualizace kvality a funkcí.
+title: Migrace z Custom Speech Service do služby Speech
+titleSuffix: Azure Cognitive Services
+description: Custom Speech Service je teď součástí Speech Service. Přepnout na Speech Service, abyste využili výhod nejnovější aktualizace kvality a funkcí.
 services: cognitive-services
 author: PanosPeriorellis
 manager: nitinme
@@ -11,18 +11,18 @@ ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: 8a2c149faa0ec9d135713a123a33d7c220522496
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 01b853c59723a8ed79cb32b0ee9c245c9c3ffb3f
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60995616"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68562760"
 ---
 # <a name="migrate-from-the-custom-speech-service-to-the-speech-service"></a>Migrace ze služby Custom Speech Service na Speech Service
 
 V tomto článku použijte k migraci aplikace z Custom Speech Service ve službě řeči.
 
-Custom Speech Service je teď součástí Speech Service. Přepnout na hlasové služby využívat nejnovější aktualizace kvality a funkcí.
+Custom Speech Service je teď součástí Speech Service. Pokud chcete využít nejnovější aktualizace kvality a funkcí, přepněte na hlasové služby.
 
 ## <a name="migration-for-new-customers"></a>Migrace pro nové zákazníky
 
@@ -39,11 +39,11 @@ Cenový model je jednodušší, pomocí cenového modelu založeného na hodinu 
 
 3. Postupujte podle příručky rychlý úvod a ukázky SDK použít správné rozhraní API. Pokud používáte rozhraní REST API, musíte taky použít správné koncové body a klíče prostředku.
 
-4. Aktualizace klientské aplikace určený hlasových služeb a rozhraní API.
+4. Aktualizujte klientskou aplikaci tak, aby používala hlasové služby a rozhraní API.
 
 ## <a name="migration-for-existing-customers"></a>Migrace pro stávající zákazníky
 
-Migrujte vaše stávající klíče prostředku na hlasové služby na portálu pro hlasové služby. Použijte k tomu následující postup:
+Migrujte stávající klíče prostředků na řeč na portálu služby Speech Services. Použijte k tomu následující postup:
 
 > [!NOTE]
 > Klíče prostředku je možné migrovat pouze v rámci stejné oblasti.
@@ -56,10 +56,10 @@ Migrujte vaše stávající klíče prostředku na hlasové služby na portálu 
 
 ## <a name="next-steps"></a>Další postup
 
-* [Vyzkoušejte hlasové služby zdarma](get-started.md).
+* [Vyzkoušejte si hlasové služby zdarma](get-started.md).
 * Přečtěte si [převod řeči na text](./speech-to-text.md) koncepty.
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 
 * [Co je Speech Service](overview.md)
-* [Dokumentace k hlasových služeb a sadou SDK pro řeč](speech-sdk.md#get-the-sdk)
+* [Dokumentace ke službám Speech a sadě Speech SDK](speech-sdk.md#get-the-sdk)

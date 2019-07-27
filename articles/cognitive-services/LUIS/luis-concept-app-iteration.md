@@ -1,6 +1,6 @@
 ---
-title: Návrh iterativní aplikací
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: Návrh iterační aplikace – LUIS
+titleSuffix: Azure Cognitive Services
 description: Služba LUIS učí nejlepší v iterativní cyklus změny modelu, příklady utterance, publikování a shromažďování dat z koncového bodu dotazů.
 services: cognitive-services
 author: diberry
@@ -11,14 +11,14 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: diberry
-ms.openlocfilehash: 67bcb33727bc808f5e5bea701daffc77dde736ff
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7ecc595a398ce7d18fbc708a1de175fe4aa22177
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60813785"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68564057"
 ---
-# <a name="authoring-cycle-for-your-luis-app"></a>Vytváření cyklus aplikace LUIS
+# <a name="authoring-cycle-for-your-luis-app"></a>Cyklus vytváření aplikací pro LUIS
 Služba LUIS učí nejlepší v iterativní cyklus změny modelu, příklady utterance, publikování a shromažďování dat z koncového bodu dotazů. 
 
 ![Cyklus vytváření](./media/luis-concept-app-iteration/iteration.png)

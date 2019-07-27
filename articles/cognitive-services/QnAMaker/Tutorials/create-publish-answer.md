@@ -1,6 +1,6 @@
 ---
-title: Vytvářet, publikovat, odpovědět
-titleSuffix: QnA Maker - Azure Cognitive Services
+title: Vytvoření, publikování, odpověď – QnA Maker
+titleSuffix: Azure Cognitive Services
 description: Tento kurz založený na rozhraní REST vás provede programovým vytvořením a publikováním znalostní báze a následným zodpovězením otázky ze znalostní báze.
 services: cognitive-services
 author: diberry
@@ -11,14 +11,14 @@ ms.subservice: qna-maker
 ms.topic: tutorial
 ms.date: 01/24/2019
 ms.author: diberry
-ms.openlocfilehash: a14bc14e6115c1bc25582c3de71382ae17d7debd
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: dfd0a04da9f4f728bd43d8d3fcd4c671e9b95a47
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65792287"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68562893"
 ---
-# <a name="tutorial-using-c-create-knowledge-base-then-answer-question"></a>Kurz: Pomocí C#, vytvořte základní znalosti pak odpověď na otázku
+# <a name="tutorial-using-c-create-knowledge-base-then-answer-question"></a>Kurz: Použití C#, vytvoření znalostní báze a odpověď na otázku
 
 Tento kurz vás provede programovým vytvořením a publikováním znalostní báze a následným zodpovězením otázky zákazníka s využitím znalostní báze. 
 
@@ -44,7 +44,7 @@ Tento rychlý start volá rozhraní API služby QnA Maker:
 * Potřebujete [službu QnA Maker](../How-To/set-up-qnamaker-service-azure.md). Pokud chcete získat klíč, vyberte na řídicím panelu **Klíče** v části **Správa prostředků**. 
 
 > [!NOTE] 
-> Soubory tak získají kompletní řešení jsou k dispozici na [ **Azure – ukázky/cognitive-services – QnA maker csharp** úložiště GitHub](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp/tree/master/documentation-samples/tutorials/create-publish-answer-knowledge-base).
+> Kompletní soubory řešení jsou k dispozici v [úložišti GitHub **Azure-Samples/vnímání-Services-qnamakerem-CSharp** ](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp/tree/master/documentation-samples/tutorials/create-publish-answer-knowledge-base).
 
 ## <a name="create-a-knowledge-base-project"></a>Vytvoření projektu znalostní báze
 

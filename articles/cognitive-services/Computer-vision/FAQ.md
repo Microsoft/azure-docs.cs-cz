@@ -1,6 +1,6 @@
 ---
-title: Časté otázky – pro počítačové zpracování obrazu
-titlesuffix: Azure Cognitive Services
+title: Nejčastější dotazy – Počítačové zpracování obrazu
+titleSuffix: Azure Cognitive Services
 description: Získejte odpovědi na nejčastější dotazy týkající se rozhraní API pro počítačové zpracování obrazu ve službě Azure Cognitive Services.
 services: cognitive-services
 author: KellyDF
@@ -11,64 +11,64 @@ ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: kefre
 ms.custom: seodec18
-ms.openlocfilehash: fce3242746d47809c4fbbb1448453369d6460a9b
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: e8ab205a43e5cb1e8e2b96dbd9600e1fceb29403
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67203226"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68564603"
 ---
-# <a name="computer-vision-api-frequently-asked-questions"></a>Computer Vision API na nejčastější dotazy
+# <a name="computer-vision-api-frequently-asked-questions"></a>rozhraní API pro počítačové zpracování obrazu nejčastějších dotazech
 
 > [!TIP]
-> Pokud nemůžete najít odpovědi na své dotazy v tomto dokumentu, zkuste se zeptat v komunitě rozhraní API pro počítačové zpracování obrazu na [StackOverflow](https://stackoverflow.com/questions/tagged/project-oxford+or+microsoft-cognitive) nebo se obraťte na [Nápověda a podpora na UserVoice](https://cognitive.uservoice.com/)
+> Pokud nemůžete najít odpovědi na vaše otázky v těchto nejčastějších dotazech, zkuste požádat o rozhraní API pro počítačové zpracování obrazu komunitu na [StackOverflow](https://stackoverflow.com/questions/tagged/project-oxford+or+microsoft-cognitive) nebo kontaktujte [pomoc a podporu na webu UserVoice](https://cognitive.uservoice.com/) .
 
 ---
 
-**Dotaz**: *Trénovat rozhraní API pro počítačové zpracování obrazu používat vlastní značky  Například chci informačního kanálu obrázky plemen cat trénování AI a pak zobrazí hodnotu generace v požadavku AI.*
+**Otázka**: *Můžu rozhraní API pro počítačové zpracování obrazu používat vlastní značky?  Například chci, aby se v obrázcích v nabídce Cat použily klíčové slovo "vlak", a pak získá hodnotu plemeny na žádost AI.*
 
-**Odpověď**: Tato funkce není aktuálně k dispozici. Naši technici jsou však práce zpřístupnit tuto funkci pro počítačové zpracování obrazu.
-
----
-
-**Dotaz**: *Počítačové zpracování obrazu slouží místně bez připojení k Internetu?*
-
-**Odpověď**: Momentálně neposkytujeme místní nebo místního řešení.
+**Odpověď**: Tato funkce není momentálně k dispozici. Naši technici ale pracují na tom, aby tuto funkci Počítačové zpracování obrazu.
 
 ---
 
-**Dotaz**: *Pro počítačové zpracování obrazu umožňuje číst talířů licence?*
+**Otázka**: *Lze Počítačové zpracování obrazu použít místně bez připojení k Internetu?*
 
-**Odpověď**: Rozhraní API pro zpracování obrazu nabízí dobrý duplicit text pomocí technologie OCR, ale není aktuálně optimalizované pro licence talířů. Pokoušíme se neustále vylepšovat naše služby a přidali OCR pro automatické rozpoznávání registrační na našem seznamu požadovaných funkcí.
-
----
-
-**Dotaz**: *Jaké typy psaní plochy jsou podporovány pro rozpoznávání textu psaného rukou?*
-
-**Odpověď**: Tato technologie funguje s různými druhy zařízení Surface, včetně bločky nebo Tabule, dokument white paper a žluté.
+**Odpověď**: V současnosti nenabízíme místní nebo místní řešení.
 
 ---
 
-**Dotaz**: *Jak dlouho operace rozpoznávání textu psaného rukou trvá?*
+**Otázka**: *Dá se Počítačové zpracování obrazu použít ke čtení desek licencí?*
 
-**Odpověď**: Množství času potřebného závisí na délce textu. Pro delší text může trvat až na několik sekund. Proto po dokončení operace rozpoznat rukou Text, budete muset počkat, než můžete načíst pomocí operace získat rukou výsledek operace Text.
-
----
-
-**Dotaz**: *Jak technologii rozpoznávání ručně psaného textu zpracovává text, který byl vložen pomocí stříška uprostřed řádku?*
-
-**Odpověď**: Takové textu se vrátí jako samostatný řádek operací rozpoznávání rukopisu.
+**Odpověď**: Rozhraní Vision API nabízí dobrý detekci textu s rozpoznáváním OCR, ale není aktuálně optimalizované pro licenční štítky. Neustále se snažíme vylepšit naše služby a přidat rozpoznávání OCR pro rozpoznávání automatických licencí do našeho seznamu žádostí o funkce.
 
 ---
 
-**Dotaz**: *Jak technologii rozpoznávání rukopisu zpracovává přeškrtnutý slova nebo řádky?*
+**Otázka**: *Jaké typy povrchů psaní se podporují pro rozpoznávání rukopisu?*
 
-**Odpověď**: Překročení slova s více řádky k vykreslení je nelze rozpoznat, operace rozpoznávání textu psaného rukou nebude sesbírejte je. Ale překročení slova pomocí jeden řádek, tento přechod je považován za šumu a slova stále získat vyzvednou operace rozpoznávání rukopisu.
+**Odpověď**: Technologie funguje s různými druhy povrchů, včetně tabulí, dokumentu White Paper a žlutých rychlých poznámek.
 
 ---
 
-**Dotaz**: *Jaké orientace textu podporují technologii rozpoznávání rukopisu?*
+**Otázka**: *Jak dlouho trvá operace rozpoznávání rukopisu?*
 
-**Odpověď**: Text orientovaný na úhly až přibližně 30 stupňů na 40 stupně může získat neexistoval operace rozpoznávání rukopisu.
+**Odpověď**: Množství času, které trvá, závisí na délce textu. U delších textů může trvat až několik sekund. Proto po dokončení operace rozpoznávání ručního textu budete možná muset počkat, než budete moci načíst výsledky pomocí operace získat rukopisný text operace.
+
+---
+
+**Otázka**: *Jak technologie rozpoznávání rukopisu zpracovává text, který byl vložen pomocí blikajícího kurzoru uprostřed čáry?*
+
+**Odpověď**: Takový text se vrátí jako samostatný řádek operace rozpoznávání rukopisu.
+
+---
+
+**Otázka**: *Jak technologie rozpoznávání rukopisu zpracovává přesahující slova nebo řádky?*
+
+**Odpověď**: Pokud jsou tato slova rozložená na více řádků, aby je bylo možné vykreslit nerozpoznatelná, operace rozpoznávání rukopisu je nevybrala. Pokud se ale slova přecházejí pomocí jednoho řádku, považuje se tato křížení za šum a tato slova se pořád vybírají operací rozpoznávání rukopisu.
+
+---
+
+**Otázka**: *Jaké orientace textu jsou podporovány pro technologii rozpoznávání rukopisu?*
+
+**Odpověď**: Operace rozpoznávání rukopisu může vyzvednutí textu zaměřeného na úhly až do přibližně 30 stupňů až 40 stupňů.
 
 ---

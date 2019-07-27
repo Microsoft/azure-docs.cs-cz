@@ -1,6 +1,6 @@
 ---
-title: Vytvoření pomocí rozhraní .NET – Content Moderator revize
-titlesuffix: Azure Cognitive Services
+title: Vytváření revizí pomocí Content Moderator .NET
+titleSuffix: Azure Cognitive Services
 description: Způsob vytvoření revizí pomocí sady Azure Content Moderator SDK pro .NET
 services: cognitive-services
 author: sanjeev3
@@ -10,23 +10,23 @@ ms.subservice: content-moderator
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: sajagtap
-ms.openlocfilehash: 153d42bf4ce4322536d6837be3058d1f9bfb49a2
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9938c79c2ba1b2f80c8f147fafe6ce79e247df43
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60607173"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68564467"
 ---
-# <a name="create-human-reviews-net"></a>Vytvoření recenze prováděné lidmi (.NET)
+# <a name="create-human-reviews-net"></a>Vytvořit lidské recenze (.NET)
 
-Recenze uložit a zobrazit obsah pro lidské moderátory k vyhodnocení. Přezkoumání dokončení uživatele výsledky se posílají do koncového bodu zadané zpětného volání. Tato příručka obsahuje informace a ukázky kódu, které vám pomůžou začít používat [Content Moderator SDK pro .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) na:
+Kontroluje ukládání a zobrazování obsahu pro Moderátoři pro lidské moderování k vyhodnocení. Když uživatel dokončí revizi, výsledky se odešlou do zadaného koncového bodu zpětného volání. Tato příručka poskytuje informace a ukázky kódu, které vám pomohou začít používat [sadu Content moderator SDK pro .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) k těmto akcím:
 
 - Vytvoření sady revizí pro lidské moderátory
 - Získání stavu existujících revizí pro lidské moderátory
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Přihlaste se nebo si vytvořte účet v Content Moderatoru [nástroj pro recenze](https://contentmoderator.cognitive.microsoft.com/) lokality.
+- Přihlaste se nebo vytvořte účet na webu [Nástroje pro kontrolu](https://contentmoderator.cognitive.microsoft.com/) Content moderator.
 
 ## <a name="ensure-your-api-key-can-call-the-review-api-for-review-creation"></a>Kontrola, že klíč rozhraní API může volat rozhraní API pro kontroly, aby se mohla vytvořit kontrola
 
@@ -159,7 +159,7 @@ Do třídy **Program** přidejte následující třídu. Tato třída slouží k
 >
 > Klíč úrovně Free má limit nastavený na 1 RPS.
 
-#### <a name="add-the-following-constants-to-the-program-class-in-programcs"></a>Přidejte následující konstanty **Program** třída v souboru Program.cs
+#### <a name="add-the-following-constants-to-the-program-class-in-programcs"></a>Do třídy **program** v program.cs přidejte následující konstanty
 
 ```csharp
 /// <summary>
@@ -181,7 +181,7 @@ Do třídy **Program** přidejte následující třídu. Tato třída slouží k
     private const string OutputFile = "OutputLog.txt";
 ```
 
-#### <a name="add-the-following-constants-and-static-fields-to-the-program-class-in-programcs"></a>Přidejte následující konstanty a statická pole na **Program** třída v souboru Program.cs
+#### <a name="add-the-following-constants-and-static-fields-to-the-program-class-in-programcs"></a>Do třídy **program** v program.cs přidejte následující konstanty a statická pole.
 
 Aktualizujte tyto hodnoty tak, aby obsahovaly informace specifické pro vaše předplatné a tým.
 
@@ -238,7 +238,7 @@ private const string MetadataKey = "sc";
 private const string MetadataValue = "true";
 ```
 
-#### <a name="add-the-following-static-fields-to-the-program-class-in-programcs"></a>Přidejte následující statické pole na **Program** třída v souboru Program.cs
+#### <a name="add-the-following-static-fields-to-the-program-class-in-programcs"></a>Do třídy **program** v program.cs přidejte následující statická pole.
 
 Pomocí těchto polí můžete sledovat stav aplikace.
 
@@ -382,7 +382,7 @@ Do třídy **Program** přidejte následující metodu.
 
 Do metody **Main** přidejte následující kód.
 
-Tento kód simuluje mnoho operací, které provádíte při definování a správě seznamu i použití seznamu k vyhledávání obrázků. Funkce protokolování umožňují zobrazit objekty odpovědi generovaných volání sady SDK ve službě obsahu mModerator.
+Tento kód simuluje mnoho operací, které provádíte při definování a správě seznamu i použití seznamu k vyhledávání obrázků. Funkce protokolování umožňují zobrazit objekty odpovědí generované sadou SDK volání služby Content mModerator.
 
 ```csharp
 using (TextWriter outputWriter = new StreamWriter(OutputFile, false))
@@ -536,4 +536,4 @@ Zobrazí se odpověď, která vypadá přibližně takto:
 
 ## <a name="next-steps"></a>Další postup
 
-Získejte [Content Moderator sady .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) a stáhněte si [řešení sady Visual Studio](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator) pro tuto a další rychlé starty Content Moderator pro platformu .NET a začít používat svoji integraci.
+Získejte [sadu Content moderator .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) a Stáhněte si [řešení sady Visual Studio](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator) pro tuto a další Content moderator rychlé starty pro .NET a začněte s integrací.

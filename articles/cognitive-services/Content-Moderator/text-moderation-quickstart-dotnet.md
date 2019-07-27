@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý start: Analýza textu v obsahu C# – Content Moderator'
-titlesuffix: Azure Cognitive Services
-description: Jak analyzovat textový obsah pro různé nevhodných materiálů pomocí sady obsahu Moderator SDK pro .NET
+title: 'Rychlý start: Analýza obsahu textu v C# Content moderator'
+titleSuffix: Azure Cognitive Services
+description: Jak analyzovat textový obsah pro různé nevhodný materiál pomocí sady Content Moderator SDK pro .NET
 services: cognitive-services
 author: sanjeev3
 manager: nitinme
@@ -10,16 +10,16 @@ ms.subservice: content-moderator
 ms.topic: quickstart
 ms.date: 07/03/2019
 ms.author: sajagtap
-ms.openlocfilehash: f848ea0d1c86b9c12d26c59b8f0e92d1e5d70094
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 45ac641948531aa27334762704eba3333aebba4d
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67604050"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68564326"
 ---
-# <a name="quickstart-analyze-text-content-for-objectionable-material-in-c"></a>Rychlý start: Analýza pro nežádoucím v textový obsahC#
+# <a name="quickstart-analyze-text-content-for-objectionable-material-in-c"></a>Rychlý start: Analyzovat textový obsah pro nevhodný materiál vC#
 
-Tento článek obsahuje informace a vzorové kódy, které vám pomůžou začít používat [sadu Content Moderator SDK pro .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/). Budete se dozvíte, jak spustit na základě termín filtrování a klasifikaci obsahu se postarat o potenciálně nežádoucím moderování textu.
+Tento článek obsahuje informace a vzorové kódy, které vám pomůžou začít používat [sadu Content Moderator SDK pro .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/). Naučíte se, jak provádět filtrování založené na termínech a klasifikaci textových obsahu s cílem moderování potenciálně nežádoucího materiálu.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete. 
 
@@ -57,11 +57,11 @@ Do souboru *Program.cs* přidejte následující kód, který pro vaše předpla
 
 ### <a name="set-up-input-and-output-targets"></a>Nastavení vstupních a výstupních cílů
 
-Do třídy **Program** v souboru _Program.cs_ přidejte následující statická pole. Tato pole zadejte soubory pro obsah vstupního textu a výstup JSON obsahu.
+Do třídy **Program** v souboru _Program.cs_ přidejte následující statická pole. Tato pole určují soubory pro vstupní textový obsah a výstupní obsah JSON.
 
 [!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/text-moderation-quickstart-dotnet.cs?range=15-19)]
 
-Budete muset vytvořit *TextFile.txt* vstupní soubor a aktualizovat jeho cesty (cesty jsou relativní vzhledem k adresáři spuštění). Otevřete soubor _TextFile.txt_ a přidejte text, který se má moderovat. V tomto rychlém startu se používá následující ukázkový text:
+Budete muset vytvořit vstupní soubor *textfile. txt* a aktualizovat jeho cestu (cesty jsou relativní vzhledem k adresáři spuštění). Otevřete soubor _TextFile.txt_ a přidejte text, který se má moderovat. V tomto rychlém startu se používá následující ukázkový text:
 
 ```
 Is this a grabage or crap email abcdef@abcd.com, phone: 6657789887, IP: 255.255.255.255, 1 Microsoft Way, Redmond, WA 98052.
@@ -74,7 +74,7 @@ These are all UK phone numbers, the last two being Microsoft UK support numbers:
 Do metody **Main** přidejte následující kód. Zásadní operací je metoda **ScreenText**. Její parametry určují, které operace moderování obsahu se provedou. V tomto příkladu je metoda nakonfigurovaná tak, aby prováděla následující:
 - Rozpoznávání potenciálně vulgárních výrazů v textu
 - Normalizace textu a automatické opravy překlepů
-- Zjistit osobní údaje, jako je USA a Spojeného království telefonní čísla, e-mailové adresy a poštovní adresy v USA.
+- Zjišťují se osobní údaje, jako jsou telefonní čísla USA a UK, e-mailové adresy a poštovní adresy USA.
 - Klasifikace textu do tří kategorií s využitím modelů založených na strojovém učení
 
 Další informace o tom, co tyto operace dělají, najdete na odkazu v části [Další kroky](#next-steps).

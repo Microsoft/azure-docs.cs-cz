@@ -1,6 +1,6 @@
 ---
-title: Získání záměru, Java
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: Získat záměr, Java – LUIS
+titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu Java použijte k určení záměru uživatele z textu lze aplikaci dostupnou LUIS veřejné.
 author: diberry
 manager: nitinme
@@ -11,14 +11,14 @@ ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 07/16/2019
 ms.author: diberry
-ms.openlocfilehash: 42240c7b45029684e51c25419eab7f4378785a4d
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 7a80aefd7a88727cf3a2261115c076853bd45b3f
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68276138"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563817"
 ---
-# <a name="quickstart-get-intent-using-java"></a>Rychlý start: Získání záměru pomocí Javy
+# <a name="quickstart-get-intent-using-java"></a>Rychlý start: Získání záměru pomocí jazyka Java
 
 V tomto rychlém startu budete do koncového bodu služby LUIS předávat promluvy a získávat zpět záměr a entity.
 
@@ -29,7 +29,7 @@ V tomto rychlém startu budete do koncového bodu služby LUIS předávat promlu
 ## <a name="prerequisites"></a>Požadavky
 
 * [JDK SE](https://aka.ms/azure-jdks) (Java Development Kit, Standard Edition)
-* [Visual Studio Code](https://code.visualstudio.com/) nebo oblíbeného prostředí IDE
+* [Visual Studio Code](https://code.visualstudio.com/) nebo vaše oblíbené integrované vývojové prostředí (IDE)
 * ID veřejné aplikace: df67dcdb-c37d-46af-88e1-8b97951ca1c2
 
 [!INCLUDE [Use authoring key for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-luis-repo-note.md)]
@@ -44,7 +44,7 @@ V tomto rychlém startu budete do koncového bodu služby LUIS předávat promlu
 
 ## <a name="get-intent-programmatically"></a>Získání záměru prostřednictvím kódu programu
 
-Pomocí Javy můžete získat přístup ke stejným výsledkům, jako jste viděli v okně prohlížeče v předchozím kroku. Ujistěte se, že jste do projektu přidejte knihovny Apache.
+Pomocí Javy můžete získat přístup ke stejným výsledkům, jako jste viděli v okně prohlížeče v předchozím kroku. Nezapomeňte do svého projektu přidat knihovny Apache.
 
 1. Zkopírujte následující kód a vytvořte třídu v souboru s názvem `LuisGetRequest.java`:
 
@@ -52,9 +52,9 @@ Pomocí Javy můžete získat přístup ke stejným výsledkům, jako jste vidě
 
 2. Nahraďte hodnotu proměnné `YOUR-KEY` klíčem služby LUIS.
 
-3. Nahraďte vaše cesta k souboru a kompilovat program v jazyce java z příkazového řádku: `javac -cp .;<FILE_PATH>\* LuisGetRequest.java`.
+3. Nahraďte cestou k souboru a zkompilujte program Java z příkazového řádku: `javac -cp .;<FILE_PATH>\* LuisGetRequest.java`.
 
-4. Nahraďte vaše cesta k souboru a spuštění aplikace z příkazového řádku: `java -cp .;<FILE_PATH>\* LuisGetRequest.java`. Zobrazí se stejný JSON, jako jste viděli dříve v okně prohlížeče.
+4. Nahraďte cestou k souboru a spusťte aplikaci z příkazového řádku: `java -cp .;<FILE_PATH>\* LuisGetRequest.java`. Zobrazí se stejný JSON, jako jste viděli dříve v okně prohlížeče.
 
     ![Okno konzoly se zobrazeným výsledkem JSON ze služby LUIS](./media/luis-get-started-java-get-intent/console-turn-on.png)
     
@@ -64,7 +64,7 @@ Pomocí Javy můžete získat přístup ke stejným výsledkům, jako jste vidě
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Odstraňte složku souboru nebo projektu jazyka Java.
+Odstraňte soubor/složku projektu Java.
 
 ## <a name="next-steps"></a>Další postup
 > [!div class="nextstepaction"]

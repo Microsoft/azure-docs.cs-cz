@@ -1,5 +1,5 @@
 ---
-title: Kontrola projevy koncového bodu
+title: Kontrola koncového bodu projevy-LUIS
 titleSuffix: Azure Cognitive Services
 description: Vylepšete predikce aplikace ověřením nebo opravou promluv získaných prostřednictvím koncového bodu HTTP služby LUIS, které nemusí být správně naučené. U některých promluv může být potřeba zkontrolovat záměr, zatímco u jiných entitu.
 services: cognitive-services
@@ -11,14 +11,14 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 07/16/2019
 ms.author: diberry
-ms.openlocfilehash: 2994f7b19d5a104b129dc4d7aff29dabbc89f0f4
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: dd5c0012bad567623fdfc0a70760f692aafe0e3e
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68276030"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563343"
 ---
-# <a name="tutorial-fix-unsure-predictions-by-reviewing-endpoint-utterances"></a>Kurz: Oprava jisti predikcí kontrolou projevy koncového bodu
+# <a name="tutorial-fix-unsure-predictions-by-reviewing-endpoint-utterances"></a>Kurz: Opravte nejistotu předpovědi kontrolou Endpoint projevy
 V tomto kurzu vylepšíte predikce aplikace ověřením nebo opravou promluv získaných prostřednictvím koncového bodu HTTPS služby LUIS, které nemusí mít tato služba správně naučené. U některých promluv může být potřeba zkontrolovat záměr, zatímco u jiných entitu. Promluvy koncového bodu byste měli pravidelně kontrolovat v rámci plánované údržby služby LUIS. 
 
 Tento proces kontroly představuje další způsob, jakým se LUIS seznamuje s vaší aplikační doménou. Služba LUIS vybrala promluvy zobrazené v seznamu revizí. Tento seznam:
@@ -33,7 +33,7 @@ Kontrolou projevů koncového bodu ověřujete nebo opravujete předpokládaný 
 
 <!-- green checkmark -->
 > [!div class="checklist"]
-> * Importovat ukázková aplikace
+> * Importovat ukázkovou aplikaci
 > * Kontrola promluv koncového bodu
 > * Aktualizace seznamu frází
 > * Vytrénovat aplikaci
@@ -42,7 +42,7 @@ Kontrolou projevů koncového bodu ověřujete nebo opravujete předpokládaný 
 
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
-## <a name="import-example-app"></a>Importovat ukázková aplikace
+## <a name="import-example-app"></a>Importovat ukázkovou aplikaci
 
 Pokračujte s aplikací **HumanResources**, kterou jste vytvořili v posledním kurzu. 
 
@@ -54,9 +54,9 @@ Použijte k tomu následující postup:
 
 1. V části **Manage** (Správa) na kartě **Versions** (Verze) naklonujte verzi a pojmenujte ji `review`. Klonování představuje skvělý způsob, jak si můžete vyzkoušet různé funkce služby LUIS, aniž by to mělo vliv na původní verzi. Název verze je součástí cesty URL, a proto smí obsahovat jenom znaky, které jsou platné v adresách URL.
 
-1. Trénování a publikování nové aplikace.
+1. Výuku a publikování nové aplikace
 
-1. Přidejte následující projevy pomocí koncového bodu. Můžete buď to provedete [skript](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/demo-upload-endpoint-utterances/endpoint.js) nebo z koncového bodu v prohlížeči. Přidávané promluvy jsou tyto:
+1. Pomocí koncového bodu přidejte následující projevy. To můžete provést buď pomocí [skriptu](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/demo-upload-endpoint-utterances/endpoint.js) , nebo z koncového bodu v prohlížeči. Přidávané promluvy jsou tyto:
 
    [!code-nodejs[Node.js code showing endpoint utterances to add](~/samples-luis/examples/demo-upload-endpoint-utterances/endpoint.js?range=15-26)]
 
@@ -68,26 +68,26 @@ Použijte k tomu následující postup:
 
 1. V levém navigačním panelu vyberte **Review endpoint utterances** (Kontrola promluv koncového bodu). Seznam je filtrovaný pro záměr **ApplyForJob**. 
 
-    [![Snímek obrazovky revize koncový bod projevy tlačítko v levém navigačním panelu](./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-entity-view.png)](./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-entity-view.png#lightbox)
+    [![Snímek obrazovky s tlačítkem revize koncového bodu projevy v levém navigačním panelu](./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-entity-view.png)](./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-entity-view.png#lightbox)
 
 1. Přepněte zobrazení entit (**Entities view**), aby se zobrazily označené entity. 
     
-    [![Snímek obrazovky revize projevy koncový bod s entitami Zobrazit přepínací tlačítko zvýrazněnou](./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-token-view.png)](./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-token-view.png#lightbox)
+    [![Snímek obrazovky projevy koncového bodu se zvýrazněným přepínačem zobrazení entit](./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-token-view.png)](./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-token-view.png#lightbox)
 
 
-    Tato utterance `I'm looking for a job with Natural Language Processing`, není ve správném záměr. 
+    Tento utterance, `I'm looking for a job with Natural Language Processing`není ve správném záměru. 
 
-    Důvodem byla mispredicted utterance je, že **ApplyForJob** záměr má 21 projevy ve srovnání s 7 projevy v **GetJobInformation**. Záměr s další projevů budou mít vyšší předpovědi. Je důležité, že jsou rovnoměrně množství a kvalitu projevy mezi záměry.
+    Důvodem, proč byl utterance, je, že **ApplyForJob** záměr má oproti 7 projevy v **GetJobInformation**v porovnání s 21 projevy. Záměr s více projevy bude mít vyšší předpověď. Je důležité, aby množství a kvalita projevy napříč záměry byly vyvážené.
 
-1.  Zarovnat tento utterance, vyberte správné záměr a označí entitu úlohy v něm. Přidání změněné utterance do aplikace tak, že vyberete zelené zaškrtávací políčko. 
+1.  Pokud chcete tento utterance zarovnat, vyberte správný záměr a označte entitu úlohy v ní. Přidejte změněné utterance do aplikace tak, že vyberete zelené zaškrtávací políčko. 
 
     |Promluva|Správný záměr|Chybějící entity|
     |:--|:--|:--|
     |`I'm looking for a job with Natural Language Processing`|GetJobInfo|Job – "Natural Language Process"|
 
-    Přidávání utterance přesune utterance z **zkontrolujte projevy koncový bod** k **GetJobInformation** záměr. Promluva koncového bodu je teď příkladem promluvy pro tento záměr. 
+    Přidáním utterance se přesune utterance z koncového **bodu recenze projevy** do záměru **GetJobInformation** . Promluva koncového bodu je teď příkladem promluvy pro tento záměr. 
 
-    Spolu se tento utterance zarovnání správně, by se měl přidat další projevy na **GetJobInformation** záměr. To necháme na vás jako cvičení, které si můžete provést sami. Každý záměr s výjimkou záměru **None** by měl mít přibližně stejný počet ukázkových promluv. Záměr **None** by měl mít 10 % z celkového počtu promluv v aplikaci. 
+    Spolu s správným zarovnáním tohoto utteranceu by se měl přidat další projevy k **GetJobInformation** záměru. To necháme na vás jako cvičení, které si můžete provést sami. Každý záměr s výjimkou záměru **None** by měl mít přibližně stejný počet ukázkových promluv. Záměr **None** by měl mít 10 % z celkového počtu promluv v aplikaci. 
 
 1. Zkontrolujte zbývající promluvy v tomto záměru, označte je a opravte nastavený záměr (**Aligned intent**), pokud je nesprávný.
 

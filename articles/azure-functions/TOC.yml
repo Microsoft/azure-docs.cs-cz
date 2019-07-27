@@ -119,7 +119,7 @@
         - name: Python
           href: functions-reference-python.md
     - name: Diagnostika
-      href: ../app-service/overview-diagnostics.md
+      href: ../app-service/overview-diagnostics.md?toc=%2fazure%2fazure-functions%2ftoc.json
     - name: Otázky výkonu
       href: functions-best-practices.md
     - name: Proxy servery služby Functions

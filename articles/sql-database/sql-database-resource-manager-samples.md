@@ -1,6 +1,6 @@
 ---
-title: Šablony Azure Resource Manageru pro službu SQL Database | Dokumentace Microsoftu
-description: Pomocí šablon Azure Resource Manageru k vytvoření a konfigurace Azure SQL Database.
+title: Šablony Azure Resource Manager pro SQL Database | Microsoft Docs
+description: K vytvoření a konfiguraci Azure SQL Database použijte šablony Azure Resource Manager.
 services: sql-database
 ms.service: sql-database
 ms.subservice: service
@@ -10,45 +10,44 @@ ms.topic: sample
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
-manager: craigg
 ms.date: 02/04/2019
-ms.openlocfilehash: b967dc872529ec8b045df81542eec4c555b17a6c
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.openlocfilehash: 81f3e4beb29f21f1b752a876827e9b35856c713a
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66418434"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68566883"
 ---
-# <a name="azure-resource-manager-templates-for-azure-sql-database"></a>Šablony Azure Resource Manageru pro službu Azure SQL Database
+# <a name="azure-resource-manager-templates-for-azure-sql-database"></a>Šablony Azure Resource Manager pro Azure SQL Database
 
-Šablony Azure Resource Manageru umožňují definovat infrastrukturu jako kód a nasazení řešení do cloudu Azure.
+Šablony Azure Resource Manager umožňují definovat infrastrukturu jako kód a nasadit vaše řešení do cloudu Azure.
 
-## <a name="single-database--elastic-pool"></a>Izolované databáze a elastického fondu
+## <a name="single-database--elastic-pool"></a>Elastický fond pro izolovanou databázi &
 
-Následující tabulka obsahuje odkazy na šablony Azure Resource Manageru pro službu Azure SQL Database.
+Následující tabulka obsahuje odkazy na šablony Azure Resource Manager pro Azure SQL Database.
 
 | |  |
 |---|---|
-| [Izolované databáze](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-database-transparent-encryption-create) | Tuto šablonu Azure Resource Manageru vytvoří izolovanou databázi SQL Azure s logického serveru a nakonfiguruje pravidla brány firewall. |
-| [Logický server](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-logical-server) | Tuto šablonu Azure Resource Manageru vytvoří logický server Azure SQL Database. |
-| [Elastický fond](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-elastic-pool-create) | Tuto šablonu můžete nasadit nový elastický fond se jí přiřadit jeho nové přidružený Server SQL a nové databáze SQL. |
-| [Skupiny převzetí služeb při selhání](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-with-failover-group) | Tato šablona vytvoří dvě logické servery Azure SQL, SQL database a převzetí služeb při selhání skupiny.|
-| [Detekce hrozeb](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-threat-detection-db-policy-multiple-databases) | Tato šablona umožňuje nasadit logický server Azure SQL a sadu databází Azure SQL Database s detekcí hrozeb služby povolené s e-mailovou adresu pro oznámení pro každou databázi. Detekce hrozeb je součástí nabídky SQL Advanced Threat Protection (ATP) a poskytuje vrstvu zabezpečení, která bude reagovat na potenciální hrozby přes servery a databáze SQL.|
-| [Auditování objektů Blob v Azure Storage](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-auditing-server-policy-to-blob-storage) | Tato šablona umožňuje nasazení logického serveru Azure SQL pomocí auditování povoleno pro zápis protokolů auditu do úložiště objektů blob. Auditování pro Azure SQL Database sleduje události databáze a zapisuje je do protokolu auditu, které mohou být umístěny v účtu úložiště Azure, pracovní prostor OMS nebo Event Hubs.|
-| [Auditování do centra událostí Azure](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-auditing-server-policy-to-eventhub) | Tuto šablonu můžete nasadit server Azure SQL s auditování povoleno pro zápis protokolů auditu do stávající centra událostí. Aby bylo možné odesílat události auditu do centra událostí, nastavte nastavení s auditování `Enabled` `State` a nastavte `IsAzureMonitorTargetEnabled` jako `true`. Nakonfigurujte také nastavení diagnostiky se `SQLSecurityAuditEvents` kategorii diagnostické protokoly na `master` databázi (při poskytování auditování na úrovni). Auditování pro Azure SQL Database a SQL Data Warehouse sleduje události databáze a zapisuje je do protokolu auditu, které mohou být umístěny v účtu úložiště Azure, pracovní prostor OMS nebo Event Hubs.|
-| [Webové aplikace Azure s SQL Database](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-sql-database) | Tato ukázka vytvoří bezplatná webová aplikace Azure a SQL Database na úrovni "Základní" služby.|
-| [Webové aplikace Azure a Redis Cache s využitím SQL Database](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-redis-cache-sql-database) | Tato šablona vytvoří webovou aplikaci, Redis Cache a SQL Database ve stejné skupině prostředků a vytvoří dva připojovací řetězce ve webové aplikaci pro SQL Database a Redis Cache.|
-| [Umožňuje importovat data z úložiště objektů blob pomocí ADF V2](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-v2-blob-to-sql-copy) | Azure Data Factory V2, který kopíruje data z Azure Blob Storage do SQL Database vytvoří tato šablona Azure Resource Manageru.|
-| [Clusteru HDInsight se službou SQL Database](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-with-sql-database) | Tato šablona umožňuje vytvořit HDInsight cluster, server služby SQL Database, SQL Database a dvě tabulky. Tato šablona používá [pomocí Sqoop se systémem Hadoop v HDInsight článku](https://docs.microsoft.com/azure/hdinsight/hadoop/hdinsight-use-sqoop) |
-| [Azure Logic App, na kterém běží SQL uložená procedura podle plánu](https://github.com/Azure/azure-quickstart-templates/tree/master/101-logic-app-sql-proc) | Tato šablona umožňuje vytvořit aplikaci logiky, která uložené procedury SQL se spouštět podle plánu. Všechny argumenty pro proceduru můžou být přepnuté do části textu šablony.|
+| [Samostatná databáze](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-database-transparent-encryption-create) | Tato šablona Azure Resource Manager vytvoří jeden Azure SQL Database s logickým serverem a nakonfiguruje pravidla brány firewall. |
+| [Logický Server](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-logical-server) | Tato šablona Azure Resource Manager vytvoří logický Server pro Azure SQL Database. |
+| [Elastický fond](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-elastic-pool-create) | Tato šablona vám umožní nasadit nový elastický fond s novým přidruženým SQL Server a novými databázemi SQL, které se k němu přiřadí. |
+| [Skupiny převzetí služeb při selhání](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-with-failover-group) | Tato šablona vytvoří dva logické servery Azure SQL, databázi SQL a skupinu převzetí služeb při selhání.|
+| [Detekce hrozeb](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-threat-detection-db-policy-multiple-databases) | Tato šablona vám umožní nasadit logický Server Azure SQL a sadu databází Azure SQL s povoleným detekcí hrozeb s použitím e-mailové adresy pro výstrahy pro každou databázi. Detekce hrozeb je součástí nabídky SQL Advanced Threat Protection (ATP) a poskytuje vrstvu zabezpečení, která reaguje na potenciální hrozby přes servery a databáze SQL.|
+| [Auditování Blob Storage Azure](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-auditing-server-policy-to-blob-storage) | Tato šablona vám umožní nasadit logický Server Azure SQL s povoleným auditováním pro zápis protokolů auditu do úložiště objektů BLOB. Auditování pro Azure SQL Database sleduje události databáze a zapisuje je do protokolu auditu, který lze umístit do svého účtu služby Azure Storage, pracovního prostoru OMS nebo Event Hubs.|
+| [Auditování do centra událostí Azure](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-auditing-server-policy-to-eventhub) | Tato šablona vám umožní nasadit Azure SQL Server s povoleným auditováním pro zápis protokolů auditu do ukončení centra událostí. Aby bylo možné odesílat události auditu do centra událostí, nastavte nastavení auditování pomocí `Enabled` `State` a nastavte `IsAzureMonitorTargetEnabled` jako `true`. Také nakonfigurujte nastavení diagnostiky pomocí `SQLSecurityAuditEvents` kategorie diagnostické protokoly `master` v databázi (pro auditování na úrovni systému). Auditování pro Azure SQL Database a SQL Data Warehouse sleduje události databáze a zapisuje je do protokolu auditu, který lze umístit do svého účtu služby Azure Storage, pracovního prostoru OMS nebo Event Hubs.|
+| [Webová aplikace Azure s SQL Database](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-sql-database) | Tato ukázka vytvoří bezplatnou webovou aplikaci Azure a SQL Database na úrovni "Basic".|
+| [Webová aplikace Azure a Redis Cache s SQL Database](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-redis-cache-sql-database) | Tato šablona vytvoří webovou aplikaci, Redis Cache a SQL Database ve stejné skupině prostředků a vytvoří dva připojovací řetězce ve webové aplikaci pro SQL Database a Redis Cache.|
+| [Import dat z úložiště objektů BLOB pomocí ADF v2](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-v2-blob-to-sql-copy) | Tato šablona Azure Resource Manager vytvoří Azure Data Factory v2, která kopíruje data z Azure Blob Storage do SQL Database.|
+| [Cluster HDInsight s SQL Database](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-with-sql-database) | Tato šablona vám umožní vytvořit cluster HDInsight, SQL Database Server, SQL Database a dvě tabulky. Tato šablona se používá v [článku použití Sqoop se systémem Hadoop v HDInsight](https://docs.microsoft.com/azure/hdinsight/hadoop/hdinsight-use-sqoop) . |
+| [Aplikace logiky Azure, která spouští uloženou proceduru SQL podle plánu](https://github.com/Azure/azure-quickstart-templates/tree/master/101-logic-app-sql-proc) | Tato šablona vám umožní vytvořit aplikaci logiky, která spustí uloženou proceduru SQL podle plánu. Jakékoli argumenty pro proceduru lze umístit do části text v šabloně.|
 
 ## <a name="managed-instance"></a>MI
 
-Následující tabulka obsahuje odkazy na šablony Azure Resource Manageru pro službu Azure SQL Database – Managed Instance.
+Následující tabulka obsahuje odkazy na šablony Azure Resource Manager pro Azure SQL Database spravovanou instanci.
 
 | |  |
 |---|---|
-| [Spravovaná Instance v nové sítě VNet](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sqlmi-new-vnet) | Tuto šablonu Azure Resource Manageru vytvoří novou virtuální síť nakonfigurovanou Azure a spravované Instance ve virtuální síti. |
-| [Síťové prostředí pro Managed Instance](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-managed-instance-azure-environment) | Toto nasazení vytvoří nakonfigurované virtuální sítě Azure se dvěma podsítěmi – ten, který bude vyhrazený pro vaši Managed instance a jiný umístění jiné prostředky (například virtuální počítače, služby App Service Environment, atd.). Tato šablona vytvoří správně nakonfigurované síťové prostředí, kde můžete nasadit spravované instance. |
-| [Managed Instance pomocí připojení P2S](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sqlmi-new-vnet-w-point-to-site-vpn) | Toto nasazení vytvoří virtuální síť Azure se dvěma podsítěmi `ManagedInstance` a `GatewaySubnet`. V podsíti ManagedInstance se nasadí spravovanou instanci. Brána virtuální sítě se vytvoří v `GatewaySubnet` podsítě a nakonfigurovaný pro připojení Point-to-Site VPN. |
-| [Spravovaná Instance s virtuálním počítačem](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sqlmi-new-vnet-w-jumpbox) | Toto nasazení vytvoří virtuální síť Azure se dvěma podsítěmi `ManagedInstance` a `Management`. Managed Instance se nasadí v `ManagedInstance` podsítě. Virtuální počítač s nejnovější verzí systému SQL Server Management Studio (SSMS) nasadí v `Management` podsítě. |
+| [Spravovaná instance v nové virtuální síti](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sqlmi-new-vnet) | Tato šablona Azure Resource Manager ve virtuální síti vytvoří novou nakonfigurovanou virtuální síť Azure a spravovanou instanci. |
+| [Síťové prostředí pro spravovanou instanci](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-managed-instance-azure-environment) | Toto nasazení vytvoří nakonfigurovanou Virtual Network Azure se dvěma podsítěmi – jednu, která bude vyhrazená pro vaše spravované instance, a další, kde můžete umístit další prostředky (například virtuální počítače, App Service prostředí atd.). Tato šablona vytvoří správně nakonfigurované síťové prostředí, ve kterém můžete nasadit spravované instance. |
+| [Spravovaná instance s připojením P2S](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sqlmi-new-vnet-w-point-to-site-vpn) | Toto nasazení vytvoří Azure Virtual Network se dvěma podsítěmi `ManagedInstance` a. `GatewaySubnet` Spravovaná instance bude nasazena v ManagedInstance podsíti. Brána virtuální sítě se vytvoří v `GatewaySubnet` podsíti a nakonfiguruje pro připojení VPN typu Point-to-site. |
+| [Spravovaná instance s virtuálním počítačem](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sqlmi-new-vnet-w-jumpbox) | Toto nasazení vytvoří Azure Virtual Network se dvěma podsítěmi `ManagedInstance` a. `Management` Spravovaná instance bude nasazena v `ManagedInstance` podsíti. Virtuální počítač s nejnovější verzí SQL Server Management Studio (SSMS) bude nasazený v `Management` podsíti. |

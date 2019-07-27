@@ -1,7 +1,7 @@
 ---
-title: Klíčů předplatného
-titleSuffix: Language Understanding - Azure Cognitive Services
-description: Není nutné k vytvoření klíčů předplatného používat dotazy zdarma prvních 1 000 koncových bodů. Pokud se zobrazí _překročení kvóty_ chyby ve formuláři HTTP 403 a 429, budete muset vytvořit klíč a přiřaďte ho do své aplikace.
+title: Klíče předplatného – LUIS
+titleSuffix: Azure Cognitive Services
+description: Nemusíte vytvářet klíče předplatného, abyste mohli používat bezplatné dotazy na koncový bod od prvního 1000. Pokud se vám zobrazí zpráva o nedostatku _kvóty_ ve formě HTTP 403 nebo 429, je potřeba vytvořit klíč a přiřadit ho k aplikaci.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,16 +11,16 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 07/10/2019
 ms.author: diberry
-ms.openlocfilehash: dedc498ebc910b448b1684136c288b2045780e00
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: c7e23c78b5d03b834d593bd2b53958c3379c51f2
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67797955"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560522"
 ---
 # <a name="using-subscription-keys-with-your-luis-app"></a>Použití klíčů předplatného s aplikací LUIS
 
-Při prvním použití Language Understanding (LUIS), není nutné k vytvoření klíčů předplatného. 1000 koncový bod dotazy jsou uvedeny na začátku. 
+Když poprvé použijete Language Understanding (LUIS), nemusíte vytvářet klíče předplatného. Máte 1000 dotazů koncového bodu, které mají začít. 
 
 Pro účely testování a prototypu pouze úroveň free (F0) můžete použijte. Pro produkční systémy, používat [placené](https://aka.ms/luis-price-tier) vrstvy. Nepoužívejte [vytváření klíč](luis-concept-keys.md#authoring-key) za dotazy na koncový bod v produkčním prostředí.
 
@@ -28,11 +28,11 @@ Pro účely testování a prototypu pouze úroveň free (F0) můžete použijte.
 <a name="create-luis-service"></a>
 <a name="create-language-understanding-endpoint-key-in-the-azure-portal"/>
 
-## <a name="create-prediction-endpoint-runtime-resource-in-the-azure-portal"></a>Vytvoření predikcí koncový bod runtimový prostředek na webu Azure Portal
+## <a name="create-prediction-endpoint-runtime-resource-in-the-azure-portal"></a>Vytvořit předpověď prostředku modulu runtime koncového bodu v Azure Portal
 
-Můžete vytvořit [předpovědi koncový bod prostředku](get-started-portal-deploy-app.md#create-the-endpoint-resource) na webu Azure Portal. Tento prostředek by měla sloužit pouze pro dotazy předpovědi s koncový bod. Tento prostředek nepoužívají vytváření změny do aplikace.
+V Azure Portal vytvoříte [prostředek koncového bodu předpovědi](get-started-portal-deploy-app.md#create-the-endpoint-resource) . Tento prostředek by se měl používat jenom pro dotazy předpovědi koncových bodů. Nepoužívejte tento prostředek k vytváření změn v aplikaci.
 
-Můžete vytvořit umožňující porozumět jazyku prostředku nebo prostředku služeb Cognitive Services. Při vytváření prostředku Language Understanding, je vhodné postpend prostředek zadejte název prostředku. 
+Můžete vytvořit prostředek Language Understanding nebo prostředek Cognitive Services. Pokud vytváříte prostředek Language Understanding, dobrým zvykem je postpend typ prostředku do názvu prostředku. 
 
 <a name="programmatic-key" ></a>
 <a name="authoring-key" ></a>
@@ -47,19 +47,19 @@ Můžete vytvořit umožňující porozumět jazyku prostředku nebo prostředku
 <a name="assign-endpoint-key"></a>
 <a name="assign-resource"></a>
 
-### <a name="using-resource-from-luis-portal"></a>Použití prostředků z portálu služby LUIS
+### <a name="using-resource-from-luis-portal"></a>Používání prostředků z portálu LUIS
 
-Pokud používáte prostředků z portálu služby LUIS, není potřeba znát klíč a umístění. Místo toho je potřeba vědět tenanta prostředků, předplatné a název prostředku.
+Pokud prostředek používáte z portálu LUIS, nemusíte znát svůj klíč a umístění. Místo toho potřebujete znát svůj tenant, předplatné a název prostředku.
 
-Jakmile [přiřadit](#assign-resource-key-to-luis-app-in-luis-portal) váš prostředek do vaší aplikace LUIS v portálu LUIS, klíč a umístění jsou k dispozici jako součást dotazu předpovědi koncový bod adresy URL v části Správa **klíče a koncových bodů nastavení** stránky.
+Po [přiřazení](#assign-resource-key-to-luis-app-in-luis-portal) prostředku k aplikaci Luis na portálu Luis se klíč a umístění poskytují jako součást adresy URL koncového bodu prediktivního dotazování na stránce Správa **klíčů a nastavení koncového bodu** oddílu.
  
-### <a name="using-resource-from-rest-api-or-sdk"></a>Použití prostředků z rozhraní REST API nebo sady SDK
+### <a name="using-resource-from-rest-api-or-sdk"></a>Používání prostředků z REST API nebo SDK
 
-Pokud používáte prostředku z REST API(s) nebo SDK, je potřeba vědět klíč a umístění. Tyto informace je k dispozici jako součást dotazu předpovědi koncový bod adresy URL v části Správa **klíče a koncových bodů nastavení** stránce i webu Azure portal, na stránkách přehledu a klíče prostředku.
+Pokud používáte prostředek z REST API (s) nebo sady SDK, musíte znát svůj klíč a umístění. Tyto informace jsou k dispozici jako součást adresy URL koncového bodu předpovědi dotazů na stránce Správa **klíčů a nastavení koncových bodů oddílu a** také v Azure Portal na stránkách přehled a klíče prostředku.
 
-## <a name="assign-resource-key-to-luis-app-in-luis-portal"></a>Klíč prostředku přiřadit aplikace LUIS portálu LUIS
+## <a name="assign-resource-key-to-luis-app-in-luis-portal"></a>Přiřazení klíče prostředků k aplikaci LUIS na portálu LUIS
 
-Pokaždé, když vytvoříte nový prostředek pro LUIS, budete muset [přiřazení prostředku k aplikaci LUIS](get-started-portal-deploy-app.md#assign-the-resource-key-to-the-luis-app-in-the-luis-portal). Po přiřazení, nebudete muset znovu proveďte tento krok, není-li vytvořit nový prostředek. Můžete vytvořit nový prostředek rozbalte oblasti vaší aplikace nebo pro podporu větší počet dotazy předpovědi.
+Pokaždé, když vytvoříte nový prostředek pro LUIS, je potřeba [přiřadit prostředek k aplikaci Luis](get-started-portal-deploy-app.md#assign-the-resource-key-to-the-luis-app-in-the-luis-portal). Po přiřazení Tento krok nebudete muset provádět znovu, dokud nevytvoříte nový prostředek. Můžete vytvořit nový prostředek pro rozšíření oblastí vaší aplikace nebo pro podporu většího počtu předpovědních dotazů.
 
 <!-- content moved to luis-reference-regions.md, need replacement links-->
 <a name="regions-and-keys"></a>
@@ -102,7 +102,7 @@ Příkazů a jejich výsledky jsou také zahrnuté protokoly koncového bodu. Je
 ### <a name="enable-bing-spell-checker"></a>Povolit kontrolu pravopisu Bingu 
 V **nastavení adresy url koncového bodu**, **kontrolu pravopisu Bingu** přepínač umožňuje LUIS opravovat slova s překlepem před předpovědi. Vytvoření  **[kontrolu pravopisu Bingu klíč](https://azure.microsoft.com/try/cognitive-services/?api=spellcheck-api)** . 
 
-Přidat **kontrola pravopisu = true** parametr querystring a **Bingu – pravopisu – kontrola subscription-key = {YOUR_BING_KEY_HERE}** . Nahradit `{YOUR_BING_KEY_HERE}` vaším klíčem kontrolu pravopisu Bingu.
+Přidejte parametr " **kontrolu pravopisu = true** QueryString" a **Bing-check-Subscription-Key = {YOUR_BING_KEY_HERE}** . Nahradit `{YOUR_BING_KEY_HERE}` vaším klíčem kontrolu pravopisu Bingu.
 
 ```JSON
 {
@@ -122,11 +122,11 @@ Další informace o publikování [oblastech](luis-reference-regions.md) včetn�
 
 ## <a name="assign-resource-without-luis-portal"></a>Přiřazení prostředků bez portál LUIS
 
-Pro účely automatizace, jako je kanál CI/CD můžete automatizovat přiřazování prostředků LUIS na aplikaci LUIS. Aby bylo možné provést, je třeba provést následující kroky:
+Pro účely automatizace, jako je kanál CI/CD můžete automatizovat přiřazování prostředků LUIS na aplikaci LUIS. Abyste to mohli udělat, musíte provést následující kroky:
 
 1. Získání tokenu Azure Resource Manageru z tohoto [webu](https://resources.azure.com/api/token?plaintext=true). Vypršení platnosti tohoto tokenu tak okamžitě použít. Požadavek vrátí token Azure Resource Manageru.
 
-    ![Požádat o token Azure Resource Manageru a zobrazit token Azure Resource Manageru](./media/luis-manage-keys/get-arm-token.png)
+    ![Vyžádat token Azure Resource Manager a získat token Azure Resource Manager](./media/luis-manage-keys/get-arm-token.png)
 
 1. Použití tokenu k žádosti o služby LUIS prostředky napříč předplatnými, od [získat LUIS azure účty rozhraní API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5be313cec181ae720aa2b26c), váš uživatelský účet má přístup k. 
 
@@ -153,42 +153,42 @@ Pro účely automatizace, jako je kanál CI/CD můžete automatizovat přiřazov
 
     Po úspěšné toto rozhraní API vrátí stav 201 – vytvořeno. 
 
-## <a name="change-pricing-tier"></a>Změna cenové úrovně
+## <a name="change-pricing-tier"></a>Změnit cenovou úroveň
 
-1.  V [Azure](https://portal.azure.com), vyhledejte své předplatné služby LUIS. Vyberte předplatné, LUIS.
+1.  V [Azure](https://portal.azure.com), vyhledejte své předplatné služby LUIS. Vyberte předplatné LUIS.
     ![Vyhledejte své předplatné služby LUIS](./media/luis-usage-tiers/find.png)
-1.  Vyberte **cenová úroveň** Chcete-li zobrazit dostupné cenové úrovně. 
+1.  Vyberte **cenovou úroveň** , aby se zobrazily dostupné cenové úrovně. 
     ![Zobrazení cenové úrovně](./media/luis-usage-tiers/subscription.png)
-1.  Vyberte cenovou úroveň a vyberte **vyberte** změny se uloží. 
+1.  Vyberte cenovou úroveň a výběrem **Vybrat** uložte změnu. 
     ![Změnit úroveň služby LUIS platby](./media/luis-usage-tiers/plans.png)
 1.  Po dokončení při změně cen se automaticky otevírané okno ověří novou cenovou úroveň. 
     ![Ověřte svou úroveň platby LUIS](./media/luis-usage-tiers/updated.png)
 1. Nezapomeňte [přiřadit tento klíč koncového bodu](#assign-endpoint-key) na **publikovat** stránce a používat ho v všechny dotazy na koncový bod. 
 
-## <a name="fix-http-status-code-403-and-429"></a>Oprava stavový kód HTTP 403 a 429
+## <a name="fix-http-status-code-403-and-429"></a>Opravte stavový kód HTTP 403 a 429
 
-Získáte chyby 403 a 429 stavové kódy překročíte transakcí za sekundu nebo transakcí za měsíc pro svou cenovou úroveň.
+Stavové kódy chyb 403 a 429 získáte, když překročíte transakce za sekundu nebo transakce za měsíc pro vaši cenovou úroveň.
 
-### <a name="when-you-receive-an-http-403-error-status-code"></a>Když se zobrazí kód stav chyby HTTP 403
+### <a name="when-you-receive-an-http-403-error-status-code"></a>Když obdržíte stavový kód chyby HTTP 403
 
-Pokud použijete všechny tyto bezplatné 1000 koncový bod dotazy nebo překročí měsíční kvóta transakce svou cenovou úroveň, obdržíte kód stav chyby HTTP 403. 
+Když použijete všechny tyto bezplatné dotazy na koncový bod 1000 nebo překročíte kvótu měsíčních transakcí vaší cenové úrovně, obdržíte kód stavu chyby HTTP 403. 
 
-Chcete-li tuto chybu opravit, musíte buď [změnit svou cenovou úroveň](luis-how-to-azure-subscription.md#change-pricing-tier) na vyšší úroveň nebo [vytvořit nový prostředek](get-started-portal-deploy-app.md#create-the-endpoint-resource) a [přiřazení k vaší aplikaci](get-started-portal-deploy-app.md#assign-the-resource-key-to-the-luis-app-in-the-luis-portal).
+Pokud chcete tuto chybu opravit, musíte [změnit svou cenovou úroveň](luis-how-to-azure-subscription.md#change-pricing-tier) na vyšší úroveň nebo [vytvořit nový prostředek](get-started-portal-deploy-app.md#create-the-endpoint-resource) a [přiřadit ho k aplikaci](get-started-portal-deploy-app.md#assign-the-resource-key-to-the-luis-app-in-the-luis-portal).
 
-Řešení této chyby patří:
+Mezi řešení této chyby patří:
 
-* V [webu Azure portal](https://portal.azure.com), na vaší Language Understanding prostředků, na **správy prostředků -> cenová úroveň**, změnit svou cenovou úroveň na vyšší úroveň TPS. Nemusíte dělat nic. portálu Language Understanding, pokud váš prostředek je už přiřazený k aplikaci umožňující porozumět jazyku.
-*  Pokud využití překročí nejvyšší cenová úroveň, přidáte další prostředky Language Understanding se nástroj pro vyrovnávání zatížení před nimi. [Language Understanding kontejneru](luis-container-howto.md) s Kubernetes a Docker Compose vám ho mohl pomoct to.
+* V [Azure Portal](https://portal.azure.com)v prostředku Language Understanding na **cenové úrovni správa prostředků – >** změňte cenovou úroveň na vyšší úroveň TPS. Pokud je váš prostředek už přiřazený k aplikaci Language Understanding, nemusíte dělat nic na Language Understandingovém portálu.
+*  Pokud vaše využití přesáhne nejvyšší cenovou úroveň, přidejte další Language Understanding prostředky s nástrojem pro vyrovnávání zatížení před nimi. K tomu může pomáhat [kontejner Language Understanding](luis-container-howto.md) s Kubernetes nebo Docker Compose.
 
-### <a name="when-you-receive-an-http-429-error-status-code"></a>Když se zobrazí kód stavu HTTP 429 chyby
+### <a name="when-you-receive-an-http-429-error-status-code"></a>Když obdržíte stavový kód chyby HTTP 429
 
-Tento kód stavu je vrácena, pokud vaše transakce za sekundu překračuje svou cenovou úroveň.  
+Tento stavový kód se vrátí, když vaše transakce za sekundu překročí vaši cenovou úroveň.  
 
-Řešení zahrnují:
+Mezi řešení patří:
 
-* Je možné [zvyšte svou cenovou úroveň](#change-pricing-tier), pokud nejsou na nejvyšší úrovni.
-* Pokud využití překročí nejvyšší cenová úroveň, přidáte další prostředky Language Understanding se nástroj pro vyrovnávání zatížení před nimi. [Language Understanding kontejneru](luis-container-howto.md) s Kubernetes a Docker Compose vám ho mohl pomoct to.
-* Vaší žádosti o aplikace klienta se může bran [zásady opakování](https://docs.microsoft.com/azure/architecture/best-practices/transient-faults#general-guidelines) lze implementovat sami získat tímto stavovým kódem. 
+* Pokud nejste na nejvyšší úrovni, můžete [zvýšit svou cenovou úroveň](#change-pricing-tier).
+* Pokud vaše využití přesáhne nejvyšší cenovou úroveň, přidejte další Language Understanding prostředky s nástrojem pro vyrovnávání zatížení před nimi. K tomu může pomáhat [kontejner Language Understanding](luis-container-howto.md) s Kubernetes nebo Docker Compose.
+* Pomocí [zásady opakování](https://docs.microsoft.com/azure/architecture/best-practices/transient-faults#general-guidelines) , kterou sami implementujete, můžete své požadavky na klientskou aplikaci vymezit tak, že se zobrazí tento stavový kód. 
 
 ## <a name="viewing-summary-usage"></a>Zobrazení souhrnu využití
 Informace o použití LUIS můžete zobrazit v Azure. **Přehled** stránka zobrazuje poslední souhrnné informace, včetně volání a chyby. Pokud provedete požadavku koncového bodu LUIS, pak okamžitě podívejte se **stránka s přehledem**, povolit pro použití se zobrazí až pět minut.

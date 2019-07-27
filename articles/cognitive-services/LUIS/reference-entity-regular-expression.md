@@ -1,6 +1,6 @@
 ---
-title: Typ entity regulárního výrazu
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: Typ entity regulárního výrazu – LUIS
+titleSuffix: Azure Cognitive Services
 description: Regulární výraz je nejvhodnější pro nezpracovaný utterance text. Ignoruje velikost písmen a ignoruje kulturní variant.  Porovnávání regulárních výrazů se použije po kontrolu pravopisu změny na úrovni znak není úroveň tokenu.
 services: cognitive-services
 author: diberry
@@ -10,12 +10,12 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 07/24/2019
 ms.author: diberry
-ms.openlocfilehash: dfffea26ccd8dfcecea2c6a2e07234f3ab27f72b
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: 82cce359f2161800c53ccce7cdb0342bba759d43
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68480228"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68559947"
 ---
 # <a name="regular-expression-entity"></a>Entiay regulárního výrazu 
 
@@ -76,6 +76,6 @@ Při použití `kb[0-9]{6}`jako definice entity regulárního výrazu je násled
 }
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto [kurzu](luis-quickstart-intents-regex-entity.md)vytvoříte aplikaci, která extrahuje konzistentně formátovaná data z utterance pomocí entity regulárního **výrazu** .

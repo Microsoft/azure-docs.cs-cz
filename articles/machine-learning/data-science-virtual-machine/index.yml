@@ -5,7 +5,7 @@ metadata:
   title: Dokumentace k virtuálním počítačům pro datové vědy – Azure
   description: 'Naučíte se využívat virtuální počítač pro datové vědy, experimentální prostředí v cloudu Azure vytvořené speciálně pro účely datových věd. Obsahuje řadu oblíbených předinstalovaných nástrojů datové vědy a dalších funkcí a je předem nakonfigurovaná, abyste mohli hned začít sestavovat inteligentní aplikace pro pokročilou analýzu.'
   services: machine-learning
-  author: gopitk
+  author: vijetajo
   manager: cgronlun
   ms.service: machine-learning
   ms.subservice: data-science-vm
@@ -13,7 +13,7 @@ metadata:
   ms.devlang: na
   ms.topic: landing-page
   ms.date: 01/18/2018
-  ms.author: gokuma
+  ms.author: vijetaj
 abstract:
   description: 'Virtuální počítače pro datové vědy a hloubkové učení jsou přizpůsobené image virtuálních počítačů v Azure jsou vybavené nástroji pro datové vědy, které slouží k sestavování inteligentních aplikací pro rozšířené analýzy.'
 sections:

@@ -1,6 +1,6 @@
 ---
-title: DatetimeV2 předem připravených entit
-titleSuffix: Azure
+title: DatetimeV2 předem připravené entity – LUIS
+titleSuffix: Azure Cognitive Services
 description: Tento článek obsahuje datetimeV2 informace předem připravených entit v Language Understanding (LUIS).
 services: cognitive-services
 author: diberry
@@ -11,19 +11,19 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: e7577dcf4859b1192121fe0406d0efb63a9f5990
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1a19ab6e02249bad689f1a05c5761150b7a817df
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65148640"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560279"
 ---
-# <a name="datetimev2-prebuilt-entity-for-a-luis-app"></a>DatetimeV2 předem připravených entit pro aplikace LUIS
+# <a name="datetimev2-prebuilt-entity-for-a-luis-app"></a>DatetimeV2 předem vytvořenou entitu pro aplikaci LUIS
 
 **DatetimeV2** předem připravených entit extrahuje hodnoty data a času. Tyto hodnoty vyřešit ve standardizovaném formátu pro klientské programy používat. Když utterance má data nebo času, který není kompletní, LUIS zahrnuje _minulosti i budoucí hodnoty_ v odpovědi koncového bodu. Protože tato entita je už vytrénovaný, není potřeba přidat příklad projevy obsahující datetimeV2 k záměry aplikace. 
 
 ## <a name="types-of-datetimev2"></a>Typy datetimeV2
-Spravuje se z DatetimeV2 [rozpoznávání textu](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-DateTime.yaml) úložiště GitHub
+DatetimeV2 se spravuje z úložiště pro [rozpoznávání textu](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-DateTime.yaml) v GitHubu.
 
 ## <a name="example-json"></a>Ukázkový soubor JSON 
 Následující příklad odpověď JSON má `datetimeV2` entita s podtypem typu `datetime`. Příklady dalších typů entit datetimeV2 najdete v tématu [podtypy datetimeV2](#subtypes-of-datetimev2)</a>.
@@ -82,7 +82,7 @@ Každý prvek `values` pole může obsahovat následující pole:
 |Název vlastnosti|Popis vlastnosti|
 |--|--|
 |Timex|čas, datum nebo období vyjádřena v TIMEX formátu, který následuje [standardu ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) a atributy TIMEX3 poznámky v jazyce TimeML. Tato poznámka je popsána v [TIMEX pokyny](http://www.timeml.org/tempeval2/tempeval2-trial/guidelines/timex3guidelines-072009.pdf).|
-|type|Podtyp, což může být jeden z následujících položek: `datetime`, `date`, `time`, `daterange`, `timerange`, `datetimerange`, `duration`, `set`.|
+|type|Podtyp, což může být jedna z následujících položek: `datetime`, `date`, `time`, `daterange`, `timerange`, `datetimerange`, `duration`, `set`.|
 |value|**Volitelné.** Datum a čas objektu ve formátu yyyy:MM:dd (datum), hh: mm: (čas) yyyy:MM:dd hh: mm: (datetime). Pokud `type` je `duration`, hodnota je počet sekund (doba trvání) <br/> Použít jenom v případě `type` je `datetime` nebo `date`, `time`, nebo "doba trvání.|
 
 ## <a name="valid-date-values"></a>Hodnoty platné datum.
@@ -91,7 +91,7 @@ Každý prvek `values` pole může obsahovat následující pole:
 
 | Minimum | Maximum |
 |----------|-------------|
-| 1\. ledna 1900   | 31\. prosince 2099 |
+| 1\. ledna 1900   | 31. prosince 2099 |
 
 ## <a name="ambiguous-dates"></a>Nejednoznačný kalendářních dat
 
@@ -206,15 +206,15 @@ Následující příklad ukazuje, jak se využívá LUIS **datetimeV2** vyřeši
   ]
 ```
 
-## <a name="preview-api-version-3x"></a>Verze Preview rozhraní API 3.x
+## <a name="preview-api-version-3x"></a>Verze Preview rozhraní API verze 3. x
 
-Odpověď DatetimeV2 JSON změnil v rozhraní API V3. 
+V rozhraní API V3 se změnila odpověď DatetimeV2 JSON. 
 
-Změny z rozhraní API V2:
-* `datetimeV2.timex.type` Vlastnost je již vrátit, protože se vrátí na nadřazené úrovni `datetimev2.type`. 
-* `datetimeV2.timex` Vlastnost byla přejmenována na `datetimeV2.value`.
+Změny z rozhraní API v2:
+* `datetimeV2.timex.type`vlastnost již není vrácena, `datetimev2.type`protože je vrácena na nadřazené úrovni. 
+* Vlastnost byla přejmenována na `datetimeV2.value`. `datetimeV2.timex`
 
-Pro utterance `8am on may 2nd 2017`, verze V3 DatetimeV2 je:
+Pro utterance `8am on may 2nd 2017`je verze V3 DatetimeV2:
 
 ```JSON
 {
@@ -244,7 +244,7 @@ Pro utterance `8am on may 2nd 2017`, verze V3 DatetimeV2 je:
 }
 ```
 
-Následující kód JSON je `verbose` parametr nastaven na `false`:
+Následující kód JSON je s `verbose` parametrem nastaveným na: `false`
 
 ```json
 {

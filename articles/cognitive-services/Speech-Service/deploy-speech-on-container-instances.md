@@ -1,7 +1,7 @@
 ---
-title: Spusťte Azure Container Instances
+title: Spuštění služby Azure Container Instances-Speech
 titleSuffix: Azure Cognitive Services
-description: Speech Service kontejner nasadí do Instance kontejneru Azure a testování ve webovém prohlížeči.
+description: Nasaďte kontejner služby Speech Service do instance kontejneru Azure a otestujte ho ve webovém prohlížeči.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -10,22 +10,22 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 7/5/2019
 ms.author: dapine
-ms.openlocfilehash: 062765be22135b12abb29ff6f7ce8a772c67adae
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 41589a12f16f330188e2971e3069eb715d1a7163
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67711513"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68559717"
 ---
-# <a name="deploy-the-speech-service-container-to-azure-container-instances"></a>Nasazení kontejneru Speech Service do služby Azure Container Instances
+# <a name="deploy-the-speech-service-container-to-azure-container-instances"></a>Nasaďte kontejner služby Speech Service do Azure Container Instances
 
-Informace o nasazení služeb Cognitive Services [Speech Service](speech-container-howto.md) kontejneru do Azure [Container Instances](https://docs.microsoft.com/azure/container-instances/). Tento postup ukazuje vytvoření prostředku Azure Speech Service. Pak si popíšeme, stahování image kontejneru přidružené. Nakonec jsme zvýrazněte schopnost vykonávat Orchestrace dvě z prohlížeče. Pomocí kontejnerů můžete posunout vývojářů pozornost od správy infrastruktury na místo toho soustředit na vývoj aplikací.
+Přečtěte si, jak nasadit kontejner [služby Cognitive Services Speech Service](speech-container-howto.md) do Azure [Container Instances](https://docs.microsoft.com/azure/container-instances/). Tento postup ukazuje vytvoření prostředku služby Azure Speech Service. Pak se podíváme na navýšení přidružené image kontejneru. Nakonec zvýrazníme možnost cvičení těchto dvou z prohlížeče. Pomocí kontejnerů můžete před správou infrastruktury místo toho, aby se zaměřily na vývoj aplikací, posunout pozornost vývojářů.
 
 [!INCLUDE [Prerequisites](../containers/includes/container-preview-prerequisites.md)]
 
 ## <a name="request-access-to-the-container-registry"></a>Požádat o přístup k registru kontejneru
 
-Nejprve musíte vyplňte a odešlete [formulář žádosti o kontejnerech řeči Cognitive Services](https://aka.ms/speechcontainerspreview/) chcete požádat o přístup ke kontejneru. 
+Aby bylo možné požádat o přístup ke kontejneru, je nutné nejprve dokončit a odeslat [formulář žádosti o Cognitive Services kontejnerech řeči](https://aka.ms/speechcontainerspreview/) . 
 
 [!INCLUDE [Request access to the container registry](../../../includes/cognitive-services-containers-request-access-only.md)]
 

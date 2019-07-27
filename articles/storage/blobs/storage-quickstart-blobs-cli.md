@@ -9,16 +9,18 @@ ms.topic: quickstart
 ms.date: 11/14/2018
 ms.author: tamram
 ms.reviewer: seguler
-ms.openlocfilehash: 0b74876d153a775993678ad50ed311c524480f76
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 6a0aef9b2fc7a99183ebd6991691245731e00200
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65149594"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68565955"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-the-azure-cli"></a>Rychlý start: Nahrávání, stahování a výpis objektů BLOB pomocí Azure CLI
 
 Azure CLI je prostředí příkazového řádku Azure pro správu prostředků Azure. Můžete ho používat ve svém prohlížeči prostřednictvím služby Azure Cloud Shell. Můžete ho také nainstalovat v systému macOS, Linux nebo Windows a spouštět z příkazového řádku. V tomto rychlém startu zjistíte, jak pomocí Azure CLI nahrávat data do úložiště objektů blob v Azure a stahovat data z úložiště objektů blob v Azure.
+
+[!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -117,4 +119,4 @@ az group delete --name myResourceGroup
 V tomto rychlém startu jste zjistili, jak přenášet soubory mezi místním diskem a kontejnerem v úložišti objektů blob v Azure. Další informace o práci s objekty blob ve službě Azure Storage najdete v kurzu práce s úložištěm objektů blob v Azure.
 
 > [!div class="nextstepaction"]
-> [Postup: Operace úložiště objektů BLOB pomocí Azure CLI](storage-how-to-use-blobs-cli.md)
+> [Postup: Operace s úložištěm objektů BLOB pomocí Azure CLI](storage-how-to-use-blobs-cli.md)

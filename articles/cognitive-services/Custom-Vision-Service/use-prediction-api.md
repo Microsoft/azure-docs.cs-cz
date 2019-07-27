@@ -1,6 +1,6 @@
 ---
-title: Použití koncového bodu předpovědi pro programové testování imagí pomocí třídění – Custom Vision
-titlesuffix: Azure Cognitive Services
+title: Použití koncového bodu předpovědi pro programové testování imagí s klasifikátorem – Custom Vision
+titleSuffix: Azure Cognitive Services
 description: Zjistěte, jak použít rozhraní API k programovému testování obrázků pomocí klasifikátoru služby Custom Vision Service.
 services: cognitive-services
 author: anrothMSFT
@@ -10,48 +10,48 @@ ms.subservice: custom-vision
 ms.topic: article
 ms.date: 04/02/2019
 ms.author: anroth
-ms.openlocfilehash: 1ee6edbf49bbcd2014afcf29ed3b737168a3b5bc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8564095cc84a3f124ca41efd2e19787cd16902ab
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60816753"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68564118"
 ---
-# <a name="use-your-model-with-the-prediction-api"></a>Váš Model pomocí prediktivního rozhraní API
+# <a name="use-your-model-with-the-prediction-api"></a>Použití modelu s prediktivním rozhraním API
 
-Po jste trénování modelu, můžete otestovat imagí prostřednictvím kódu programu, odešlete je do koncového bodu Prediction API.
+Po vytvoření výukového modelu můžete image testovat programově jejich odesláním do koncového bodu rozhraní API předpovědi.
 
 > [!NOTE]
-> Tento dokument ukazuje použití jazyka C# k odeslání obrázku do rozhraní API pro předpovědi. Další informace a příklady najdete v tématu [reference k rozhraní API pro předpověď](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Prediction_3.0/operations/5c82db60bf6a2b11a8247c15).
+> Tento dokument ukazuje použití jazyka C# k odeslání obrázku do rozhraní API pro předpovědi. Další informace a příklady najdete v referenčních informacích k [rozhraní API předpovědi](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Prediction_3.0/operations/5c82db60bf6a2b11a8247c15).
 
-## <a name="publish-your-trained-iteration"></a>Publikování trénovaného iterace
+## <a name="publish-your-trained-iteration"></a>Publikování vyškolené iterace
 
 Na [webové stránce služby Custom Vision](https://customvision.ai) vyberte svůj projekt a pak vyberte kartu __Výkon__.
 
-Odeslání Image do rozhraní API pro předpověď, musíte nejdřív publikovat vaši iteraci pro predikci, což lze provést tak, že vyberete __publikovat__ a zadáte název publikované iterace. Díky tomu budou váš model přístupné Prediction API Custom Vision Azure prostředku.
+Chcete-li odesílat obrázky do prediktivního rozhraní API, budete nejprve muset publikovat iteraci pro předpověď, což lze provést výběrem možnosti __publikovat__ a zadáním názvu publikované iterace. Díky tomu bude model dostupný pro předpovědi rozhraní API Custom Vision prostředku Azure.
 
-![Na kartě výkonu se zobrazí s červeným obdélníkem tlačítko Publikovat.](./media/use-prediction-api/unpublished-iteration.png)
+![Karta výkon se zobrazí s červeným obdélníkem obklopujícím tlačítko publikovat.](./media/use-prediction-api/unpublished-iteration.png)
 
-Po úspěšném publikování modelu se zobrazí vedle vašeho iterace na levém bočním panelu se zobrazí popisek "Publikováno" a jejich název se zobrazí v popisu iterace.
+Po úspěšném publikování modelu se vedle vaší iterace na levém bočním panelu zobrazí popisek Publikováno a jeho název se zobrazí v popisu iterace.
 
-![Na kartě výkonu se zobrazí s red rámeček okolo publikováno label a název publikované iterace.](./media/use-prediction-api/published-iteration.png)
+![Zobrazí se karta výkon s červeným obdélníkem kolem publikovaného popisku a názvem publikované iterace.](./media/use-prediction-api/published-iteration.png)
 
 ## <a name="get-the-url-and-prediction-key"></a>Získání adresy URL a klíče předpovědi
 
-Po publikování modelu, můžete načíst požadované informace tak, že vyberete __předpovědi URL__. Tím se otevře dialogové okno s informacemi o používání rozhraní API Predikcí, včetně __předpovědi URL__ a __předpovědi klíč__.
+Po publikování modelu můžete požadované informace načíst výběrem možnosti __Adresa URL předpovědi__. Tím se otevře dialogové okno s informacemi pro použití prediktivního rozhraní API, včetně __předpovědi URL__ a __předpovědi-Key__.
 
-![Na kartě výkonu se zobrazí s red obdélník tlačítko předpovědi adresy URL.](./media/use-prediction-api/published-iteration-prediction-url.png)
+![Karta výkon se zobrazí s červeným obdélníkem obklopujícím tlačítko adresy URL předpovědi.](./media/use-prediction-api/published-iteration-prediction-url.png)
 
-![Na kartě výkonu se zobrazí s červenou obdélník hodnota předpovědi URL souboru obrázku a hodnotu klíče předpovědi.](./media/use-prediction-api/prediction-api-info.png)
+![Karta výkon se zobrazí s červeným obdélníkem, který obklopuje hodnotu adresy URL předpovědi pro použití souboru obrázku a hodnoty předpovědi-Key.](./media/use-prediction-api/prediction-api-info.png)
 
 > [!TIP]
-> Vaše __předpovědi klíč__ najdete také v [webu Azure portal](https://portal.azure.com) stránky pro vlastní prostředek Azure pro zpracování obrazu spojené s projektem, v části __klíče__ okno.
+> Váš __předpověď – klíč__ najdete taky na stránce [Azure Portal](https://portal.azure.com) pro Custom Vision prostředek Azure přidružený k vašemu projektu v okně __klíče__ .
 
-V této příručce, použijte místní image, takže zkopírujte adresu URL v části **Pokud máte soubor obrázku** do dočasného umístění. Zkopírujte odpovídající __předpovědi klíč__ hodnotu.
+V tomto průvodci použijete místní bitovou kopii, takže zkopírujte adresu URL v části **Pokud máte soubor** s obrázkem do dočasného umístění. Zkopírujte také odpovídající hodnotu __pro předpověď a klíč__ .
 
 ## <a name="create-the-application"></a>Vytvoření aplikace
 
-1. V sadě Visual Studio vytvořte nový C# konzolové aplikace.
+1. V aplikaci Visual Studio vytvořte novou C# konzolovou aplikaci.
 
 1. Použijte následující kód jako obsah souboru __Program.cs__.
 
@@ -111,13 +111,13 @@ V této příručce, použijte místní image, takže zkopírujte adresu URL v �
     ```
 
 1. Změňte následující informace:
-   * Nastavte `namespace` pole na název vašeho projektu.
-   * Nahraďte zástupný text `<Your prediction key>` s hodnotou klíče, který jste získali dříve.
-   * Nahraďte zástupný text `<Your prediction URL>` s adresou URL, který jste získali dříve.
+   * `namespace` Nastavte pole na název vašeho projektu.
+   * Zástupný text `<Your prediction key>` nahraďte hodnotou klíče, kterou jste získali dříve.
+   * Nahraďte zástupný `<Your prediction URL>` symbol adresou URL, kterou jste získali dříve.
 
 ## <a name="run-the-application"></a>Spuštění aplikace
 
-Při spuštění aplikace, zobrazí se výzva k zadání cesty k souboru obrázku v konzole. Na obrázku je potom odeslán Predikcí rozhraní API a predikované výsledky jsou vráceny jako řetězec ve formátu JSON. Následuje příklad odpovědi.
+Při spuštění aplikace se zobrazí výzva k zadání cesty k souboru obrázku v konzole nástroje. Obrázek se pak odešle do prediktivního rozhraní API a výsledky předpovědi se vrátí jako řetězec ve formátu JSON. Následuje příklad odpovědi.
 
 ```json
 {
@@ -134,10 +134,10 @@ Při spuštění aplikace, zobrazí se výzva k zadání cesty k souboru obrázk
 
 ## <a name="next-steps"></a>Další postup
 
-V této příručce, jste zjistili, jak odeslat Image do vaší vlastní image třídění/detektor a přijetí odpovědi programově pomocí C# SDK. Dále se naučíte k dokončení scénáře začátku do konce se C#, nebo začněte používat jiný jazyk sady SDK.
+V této příručce jste zjistili, jak odeslat obrázky do klasifikátoru a detektoru vlastní image a jak programově získat odpověď pomocí C# sady SDK. Dále se naučíte, jak dokončit ucelené scénáře s nástrojem C#nebo začít používat jinou JAZYKOVOU sadu SDK.
 
-* [Rychlý start: .NET SDK](csharp-tutorial.md)
+* [Rychlý Start: sada .NET SDK](csharp-tutorial.md)
 * [Rychlé zprovoznění: Python SDK](python-tutorial.md)
 * [Rychlé zprovoznění: Java SDK](java-tutorial.md)
-* [Rychlé zprovoznění: Node SDK](node-tutorial.md)
-* [Rychlé zprovoznění: Go SDK](go-tutorial.md)
+* [Rychlé zprovoznění: Sada SDK pro Node](node-tutorial.md)
+* [Rychlé zprovoznění: Přejít k sadě SDK](go-tutorial.md)

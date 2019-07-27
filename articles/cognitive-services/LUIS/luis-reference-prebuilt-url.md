@@ -1,6 +1,6 @@
 ---
-title: Adresa URL předem připravených entit
-titleSuffix: Azure
+title: Předem připravené entity adresy URL – LUIS
+titleSuffix: Azure Cognitive Services
 description: Tento článek obsahuje adresu url informace předem připravených entit v Language Understanding (LUIS).
 services: cognitive-services
 author: diberry
@@ -11,22 +11,22 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: d59020eb45f7dcced5ea8da04b3b908def34fb70
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a4b2db4accb638e6e4147a19d94d0a323cfe7c81
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65072244"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560119"
 ---
-# <a name="url-prebuilt-entity-for-a-luis-app"></a>Adresa URL předem připravených entit pro aplikace LUIS
+# <a name="url-prebuilt-entity-for-a-luis-app"></a>Předem vytvořená entita URL pro aplikaci LUIS
 Adresa URL entity extrahuje adresy URL s názvy domény nebo IP adresy. Protože tato entita je už vytrénovaný, není potřeba přidat příklad projevy obsahující adresy URL do aplikace. Adresa URL entity se podporuje v `en-us` pouze jazykovou verzi. 
 
 ## <a name="types-of-urls"></a>Typy adres URL
-Spravuje se z adresy URL [rozpoznávání textu](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/Base-URL.yaml) úložiště GitHub
+Adresa URL se spravuje z úložiště pro [rozpoznávání textu](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/Base-URL.yaml) v GitHubu.
 
 ## <a name="resolution-for-prebuilt-url-entity"></a>Řešení pro předem připravených entit adresy URL
 
-### <a name="api-version-2x"></a>Verze rozhraní API 2.x
+### <a name="api-version-2x"></a>Rozhraní API verze 2. x
 
 Následující příklad ukazuje rozlišení **builtin.url** entity.
 
@@ -54,9 +54,9 @@ Následující příklad ukazuje rozlišení **builtin.url** entity.
 }
 ```
 
-### <a name="preview-api-version-3x"></a>Verze Preview rozhraní API 3.x
+### <a name="preview-api-version-3x"></a>Verze Preview rozhraní API verze 3. x
 
-Následující kód JSON je `verbose` parametr nastaven na `false`:
+Následující kód JSON je s `verbose` parametrem nastaveným na: `false`
 
 ```json
 {
@@ -78,7 +78,7 @@ Následující kód JSON je `verbose` parametr nastaven na `false`:
 }
 ```
 
-Následující kód JSON je `verbose` parametr nastaven na `true`:
+Následující kód JSON je s `verbose` parametrem nastaveným na: `true`
 
 ```json
 {

@@ -1,6 +1,6 @@
 ---
-title: Testovací služby batch
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: Batch test – LUIS
+titleSuffix: Azure Cognitive Services
 description: Pomocí služby batch Language Understanding (LUIS) testování sad vyhledejte projevy s nesprávnou záměry a entity.
 services: cognitive-services
 author: diberry
@@ -11,16 +11,16 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 03/29/2019
 ms.author: diberry
-ms.openlocfilehash: d615eb2a23b953bad5e41859357d9ae9e9be2ba6
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: bd0910fedc9fd27af198f6a2b94b34daf57c050f
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60197606"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563676"
 ---
 # <a name="batch-testing-with-a-set-of-example-utterances"></a>Testování pomocí sady projevy příklad služby batch
 
- Testování služby batch je komplexní test na aktuální trénovaný model pro měření jejího výkonu v LUIS. Sady dat použít pro testování služby batch by neměl obsahovat příklad projevy záměry nebo projevy z koncového bodu modulu runtime předpovědi přijata. 
+ Testování služby batch je komplexní test na aktuální trénovaný model pro měření jejího výkonu v LUIS. Datové sady, které se používají pro dávkové testování, by neměly zahrnovat příklad projevy v záměrech nebo projevy přijaté z koncového bodu modulu runtime předpovědi. 
 
 <a name="batch-testing"></a>
 

@@ -1,7 +1,7 @@
 ---
-title: Taxonomie kategorií image - pro počítačové zpracování obrazu
-titlesuffix: Azure Cognitive Services
-description: Získejte 86 kategorie taxonomii pro rozhraní API pro počítačové zpracování obrazu ve službě Azure Cognitive Services.
+title: Taxonomie kategorií obrázků – Počítačové zpracování obrazu
+titleSuffix: Azure Cognitive Services
+description: Získejte kategorie 86 taxonomie pro rozhraní API pro počítačové zpracování obrazu ve službě Azure Cognitive Services.
 services: cognitive-services
 author: KellyDF
 manager: nitinme
@@ -11,16 +11,16 @@ ms.topic: reference
 ms.date: 04/17/2019
 ms.author: kefre
 ms.custom: seodec18
-ms.openlocfilehash: 92adcf40d008a94a2fd81846cf9aa712474beacc
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 42562f3e19844621cb3893cb4ce185e85cf7e0ab
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60498843"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68565757"
 ---
-# <a name="computer-vision-86-category-taxonomy"></a>Počítač pro zpracování obrazu 86 kategorie taxonomie
+# <a name="computer-vision-86-category-taxonomy"></a>Počítačové zpracování obrazu 86-taxonomie kategorie
 
-abstract_
+Výtah
 
 abstract_net
 
@@ -32,7 +32,7 @@ abstract_shape
 
 abstract_texture
 
-animal_
+plyšák
 
 animal_bird
 
@@ -44,7 +44,7 @@ animal_horse
 
 animal_panda
 
-building_
+kapacit
 
 building_arch
 
@@ -62,9 +62,9 @@ building_stair
 
 building_street
 
-dark_
+tmavě
 
-drink_
+nápojů
 
 drink_can
 
@@ -74,7 +74,7 @@ dark_fireworks
 
 sky_object
 
-food_
+simulant
 
 food_bread
 
@@ -84,7 +84,7 @@ food_grilled
 
 food_pizza
 
-indoor_
+venkovní
 
 indoor_churchwindow
 
@@ -100,9 +100,9 @@ indoor_venue
 
 dark_light
 
-others_
+účastníky
 
-outdoor_
+přírodní
 
 outdoor_city
 
@@ -132,7 +132,7 @@ outdoor_water
 
 outdoor_waterside
 
-people_
+lidé
 
 people_baby
 
@@ -152,7 +152,7 @@ people_tattoo
 
 people_young
 
-plant_
+výsadb
 
 plant_branch
 

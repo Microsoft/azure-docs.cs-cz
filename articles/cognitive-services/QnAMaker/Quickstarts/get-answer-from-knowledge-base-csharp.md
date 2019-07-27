@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý start: Získání odpovědí ze znalostní báze knowledge base - REST, C# – QnA Maker'
-titlesuffix: Azure Cognitive Services
-description: To C# založené na protokolu REST rychlý start vás provede s získat odpověď ze znalostní báze, prostřednictvím kódu programu.
+title: 'Rychlý start: Získat odpověď ze znalostní báze Knowledge Base – C# REST,-QnA maker'
+titleSuffix: Azure Cognitive Services
+description: Tento C# rychlý Start založený na REST vás provede tím, že vám prostřednictvím programu získá odpověď z znalostní báze.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -10,56 +10,56 @@ ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 07/16/2019
 ms.author: diberry
-ms.openlocfilehash: 020403268665633bf3d71cf43258ced87b4f837d
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: ba128f5ad87083f8d57c33011969756f3b3a8c93
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68249717"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68559827"
 ---
-# <a name="get-answers-to-a-question-from-a-knowledge-base-with-c"></a>Získejte odpovědi na dotaz zadaný ze znalostní báze sC#
+# <a name="get-answers-to-a-question-from-a-knowledge-base-with-c"></a>Získejte odpovědi na otázku ze znalostní báze.C#
 
-Tento rychlý start vás provede prostřednictvím kódu programu získávání odpovědi z publikovaných znalostní báze QnA Maker. Znalostní báze obsahuje otázky a odpovědi z [zdroje dat](../Concepts/data-sources-supported.md) například nejčastější dotazy. [Otázku](../how-to/metadata-generateanswer-usage.md#generateanswer-request-configuration) se odesílají službě nástroje QnA Maker. [Odpovědi](../how-to/metadata-generateanswer-usage.md#generateanswer-response-properties) zahrnuje horní předpovědět odpověď. 
+V tomto rychlém startu se dozvíte, jak programově získat odpověď z publikované QnA Maker znalostní báze. Znalostní báze obsahuje otázky a odpovědi ze [zdrojů dat](../Concepts/data-sources-supported.md) , jako jsou nejčastější dotazy. [Otázka](../how-to/metadata-generateanswer-usage.md#generateanswer-request-configuration) se odešle do služby QnA maker. [Odpověď](../how-to/metadata-generateanswer-usage.md#generateanswer-response-properties) obsahuje horní předpokládanou odpověď. 
 
 
 ## <a name="prerequisites"></a>Požadavky
 
 * Nejnovější verze sady [**Visual Studio Community Edition**](https://www.visualstudio.com/downloads/).
 * Potřebujete [službu QnA Maker](../How-To/set-up-qnamaker-service-azure.md). Chcete-li načíst kód Product key, vyberte **klíče** pod **správy prostředků** v řídicím panelu Azure pro prostředek nástroje QnA Maker. 
-* **Publikování** stránce nastavení. Pokud nemáte publikované znalostní báze, vytvořte prázdný znalostní báze a potom importujte znalostní báze na **nastavení** stránce a potom publikovat. Můžete stáhnout a použít [tento základní znalostní báze](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/knowledge-bases/basic-kb.tsv). 
+* **Publikování** nastavení stránky. Pokud nemáte publikovanou znalostní bázi, vytvořte prázdnou znalostní bázi a pak importujte znalostní bázi na stránce **Nastavení** a pak klikněte na publikovat. [Tuto základní znalostní bázi](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/knowledge-bases/basic-kb.tsv)si můžete stáhnout a použít. 
 
-    Stránka nastavení publikování zahrnují hodnoty trasy příspěvek, hodnota hostitele a EndpointKey hodnoty. 
+    Nastavení stránky publikovat zahrnuje hodnotu POST Route, hodnotu Host a hodnotu EndpointKey. 
 
     ![Nastavení publikování](../media/qnamaker-quickstart-get-answer/publish-settings.png)
 
-Kód v tomto rychlém startu se [ https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp ](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp/tree/master/documentation-samples/quickstarts/get-answer) úložiště. 
+Kód pro tento rychlý Start je v [https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp/tree/master/documentation-samples/quickstarts/get-answer) úložišti. 
 
 ## <a name="create-a-knowledge-base-project"></a>Vytvoření projektu znalostní báze
 
-1. Otevřít Visual Studio. 2019 Community edition.
-1. Vytvoření nového projektu aplikace konzoly (.NET Core) a název projektu QnaMakerQuickstart. U zbývajících nastavení přijměte výchozí hodnoty.
+1. Otevřete Visual Studio 2019 Community Edition.
+1. Vytvořte nový projekt Konzolová aplikace (.NET Core) a pojmenujte projekt QnaMakerQuickstart. U zbývajících nastavení přijměte výchozí hodnoty.
 
 ## <a name="add-the-required-dependencies"></a>Přidání požadovaných závislostí
 
-V horní části souboru Program.cs nahraďte jedné potřebné závislosti přidejte do projektu pomocí příkazu s následujícími řádky:
+V horní části souboru Program.cs nahraďte jediný příkaz using následujícími řádky, aby bylo možné přidat nezbytné závislosti do projektu:
 
 [!code-csharp[Add the required dependencies](~/samples-qnamaker-csharp/documentation-samples/quickstarts/get-answer/QnAMakerAnswerQuestion/Program.cs?range=1-3 "Add the required dependencies")]
 
 ## <a name="add-the-required-constants"></a>Přidání požadovaných konstant
 
-V horní části `Program` uvnitř třídy `Main`, přidejte požadované konstanty na používání nástroje QnA Maker. Tyto hodnoty jsou na **publikovat** stránce po publikování znalostní báze. 
+V horní `Program` části třídy v `Main`rámci přidejte požadované konstanty pro přístup k QnA maker. Tyto hodnoty jsou po publikování znalostní báze na stránce **publikovat** . 
 
 [!code-csharp[Add the required constants](~/samples-qnamaker-csharp/documentation-samples/quickstarts/get-answer/QnAMakerAnswerQuestion/Program.cs?range=14-30 "Add the required constants")]
 
-## <a name="add-a-post-request-to-send-question-and-get-answer"></a>Přidat požadavek POST odeslat dotaz a získejte odpověď
+## <a name="add-a-post-request-to-send-question-and-get-answer"></a>Přidat požadavek POST k odeslání otázky a získat odpověď
 
-Následující kód odešle požadavek HTTPS API nástroje QnA Maker odeslat dotaz do znalostní báze a přijímat odpovědi:
+Následující kód provede požadavek HTTPS na rozhraní API služby QnA Maker k odeslání otázky do znalostní báze a obdrží odpověď:
 
 [!code-csharp[Add a POST request to send question to knowledge base](~/samples-qnamaker-csharp/documentation-samples/quickstarts/get-answer/QnAMakerAnswerQuestion/Program.cs?range=32-57 "Add a POST request to send question to knowledge base")]
 
-`Authorization` Hodnotu hlavičky obsahuje řetězec `EndpointKey`. 
+Hodnota hlavičky obsahuje řetězec `EndpointKey`. `Authorization` 
 
-Další informace o [požadavek](../how-to/metadata-generateanswer-usage.md#generateanswer-request) a [odpovědi](../how-to/metadata-generateanswer-usage.md#generateanswer-response). 
+Přečtěte si další informace o [žádosti](../how-to/metadata-generateanswer-usage.md#generateanswer-request) a [odpovědi](../how-to/metadata-generateanswer-usage.md#generateanswer-response). 
 
 ## <a name="build-and-run-the-program"></a>Sestavení a spuštění programu
 
@@ -69,7 +69,7 @@ Sestavte a spusťte program ze sady Visual Studio. Automaticky se odešle požad
 
 [!INCLUDE [Clean up files and knowledge base](../../../../includes/cognitive-services-qnamaker-quickstart-cleanup-resources.md)] 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
 > [Reference k rozhraní REST API služby QnA Maker (V4)](https://go.microsoft.com/fwlink/?linkid=2092179)

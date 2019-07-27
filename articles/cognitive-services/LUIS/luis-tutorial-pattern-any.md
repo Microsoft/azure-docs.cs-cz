@@ -1,5 +1,5 @@
 ---
-title: Pattern.Any entity
+title: Vzor. jakékoli entity – LUIS
 titleSuffix: Azure Cognitive Services
 description: Pomocí entity Pattern.any můžete extrahovat data ze správně naformátovaných promluv, kde je možné snadno zaměnit konec dat se zbývajícími slovy promluvy.
 services: cognitive-services
@@ -11,21 +11,21 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 06/12/2019
 ms.author: diberry
-ms.openlocfilehash: 6007f88af4d1049a87851b3808c66693173a648a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 165163d0a889e0bd5f1faef8d7f6a17d28c2b4f7
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67069250"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563276"
 ---
-# <a name="tutorial-extract-free-form-data-with-patternany-entity"></a>Kurz: Extrahování dat volného tvaru pomocí Pattern.any entity
+# <a name="tutorial-extract-free-form-data-with-patternany-entity"></a>Kurz: Extrahujte data z volných formulářů pomocí vzoru. libovolná entita
 
 V tomto kurzu použijete entitu Pattern.any k extrakci dat ze správně naformátovaných promluv, kde je možné snadno zaměnit konec dat se zbývajícími slovy promluvy. 
 
 **V tomto kurzu se naučíte:**
 
 > [!div class="checklist"]
-> * Importovat ukázková aplikace
+> * Importovat ukázkovou aplikaci
 > * Přidání ukázkových promluv do stávající entity
 > * Vytvoření entity Pattern.any
 > * Vytvoření vzoru
@@ -34,7 +34,7 @@ V tomto kurzu použijete entitu Pattern.any k extrakci dat ze správně naformá
 
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
-## <a name="using-patternany-entity"></a>Použití Pattern.any entity
+## <a name="using-patternany-entity"></a>Pomocí vzoru. kterákoli entita
 
 Entita Pattern.any umožňuje vyhledat data volného tvaru, kde je kvůli formulaci entity obtížné odlišit konec entity od zbytku promluvy. 
 
@@ -64,11 +64,11 @@ Různá délka promluv zahrnuje slova, která můžou službě LUIS komplikovat 
 |Who authored {FormName}[?] (Kdo vytvořil {FormName}[?])|
 |{FormName} is published in French[?] (Je {FormName} ve francouzštině[?])|
 
-## <a name="import-example-app"></a>Importovat ukázková aplikace
+## <a name="import-example-app"></a>Importovat ukázkovou aplikaci
 
 1. Stáhněte si [soubor JSON aplikace](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-pattern-roles-HumanResources.json) a uložte si ho.
 
-1. V [LUIS portál](https://www.luis.ai)na **Moje aplikace** stránce, importovat do nové aplikace ve formátu JSON.
+1. Na stránce **Moje aplikace** na [portálu Luis](https://www.luis.ai)importujte JSON do nové aplikace.
 
 1. V části **Manage** (Správa) na kartě **Versions** (Verze) naklonujte verzi a pojmenujte ji `patt-any`. Klonování představuje skvělý způsob, jak si můžete vyzkoušet různé funkce služby LUIS, aniž by to mělo vliv na původní verzi. Název verze je součástí cesty URL, a proto smí obsahovat jenom znaky, které jsou platné v adresách URL.
 
@@ -96,7 +96,7 @@ Entita Pattern.any extrahuje entity různé délky. Funguje pouze ve vzoru, prot
 
 1. Vyberte **Create new entity** (Vytvořit novou entitu), zadejte název `FormName` a jako typ vyberte **Pattern.any**. Vyberte **Done** (Hotovo). 
 
-    Entity v záměr projevů příklad nelze popisek, protože Pattern.any platí pouze ve vzorku. 
+    Entitu nejde označit jako příklad projevy záměru, protože vzor. any je platný jenom ve vzoru. 
 
     Pokud chcete, aby extrahovaná data zahrnovala i další entity, jako jsou entity number nebo datetimeV2, budete muset vytvořit složenou entitu obsahující entity Pattern.any i number a datetimeV2.
 
@@ -134,7 +134,7 @@ Entita Pattern.any extrahuje entity různé délky. Funguje pouze ve vzoru, prot
 
 1. Zavřete panel testování výběrem tlačítka **Test** v horní navigaci.
 
-## <a name="using-an-explicit-list"></a>Použít explicitní seznam
+## <a name="using-an-explicit-list"></a>Použití explicitního seznamu
 
 Pokud zjistíte, že váš vzor zahrnující entitu Pattern.any neextrahuje entity správně, můžete tento problém opravit pomocí [explicitního seznamu](luis-concept-patterns.md#explicit-lists).
 

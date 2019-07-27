@@ -1,7 +1,7 @@
 ---
-title: Přesunout omezenou zkušební projekt do Azure
-titlesuffix: Azure Cognitive Services
-description: Zjistěte, jak přesunout omezenou zkušební verzí projektu do Azure.
+title: Přesunutí omezeného zkušebního projektu do Azure
+titleSuffix: Azure Cognitive Services
+description: Přečtěte si, jak přesunout omezený zkušební projekt do Azure.
 services: cognitive-services
 author: anrothMSFT
 manager: nitinme
@@ -10,52 +10,52 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: anroth
-ms.openlocfilehash: 6fac6531ea0a39796de13f95aee33b30dc91f131
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 22c3767dfac1e377890f1e01517d18263e694854
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60816517"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560934"
 ---
-# <a name="how-to-move-your-limited-trial-project-to-azure"></a>Postup přesunutí projektu omezenou zkušební verzí Azure
+# <a name="how-to-move-your-limited-trial-project-to-azure"></a>Postup přesunutí vašeho omezeného zkušebního projektu do Azure
 
-Custom Vision Service dokončení jeho přesun do Azure, podporu pro projekty omezenou zkušební verzí mimo systém Azure se ukončuje. Tento dokument se ukazují, jak použít vlastní rozhraní API pro zpracování obrazu ke zkopírování omezenou zkušební verzí projektu do prostředku Azure.
+Jak Custom Vision Service dokončí přesun do Azure, končí podpora omezených zkušebních projektů mimo Azure. V tomto dokumentu se dozvíte, jak používat rozhraní API pro Custom Vision ke zkopírování vašeho omezeného zkušebního projektu do prostředku Azure.
 
-Podpora pro zobrazení omezenou zkušební verzí projektů na [webu Custom Vision](https://customvision.ai) skončila 25. března 2019. Tento dokument teď ukazuje, jak používat vlastní rozhraní API pro zpracování obrazu pomocí [skript pythonu migrace](https://github.com/Azure-Samples/custom-vision-move-project) na Githubu) duplicitního projektu k prostředku Azure.
+Podpora zobrazení omezených zkušebních projektů na [webu Custom Vision](https://customvision.ai) skončila 25. března 2019. V tomto dokumentu se teď dozvíte, jak používat rozhraní Custom Vision API s [migrací skriptu Pythonu](https://github.com/Azure-Samples/custom-vision-move-project) na GitHubu) a duplikovat svůj projekt do prostředku Azure.
 
-Další podrobnosti, včetně klíčových termínů v omezené zkušební verze procesu, najdete [poznámky k verzi](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/release-notes#february-25-2019) nebo na e-mailové komunikace pro vlastníky omezenou zkušební projekty.
+Další podrobnosti, včetně klíčových termínů v procesu vyřazení omezených zkušebních verzí, najdete v poznámkách k [verzi](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/release-notes#february-25-2019) nebo na e-mailovou komunikaci odeslané vlastníkům omezených zkušebních projektů.
 
-[Skript migrace](https://github.com/Azure-Samples/custom-vision-move-project) umožňuje znovu vytvořit projekt stažením a odesláním všechny uvedené značky, oblastech a Image v aktuální iteraci. Bude vám nechat s novým projektem ve své nové předplatné, které lze poté trénování.
+[Skript pro migraci](https://github.com/Azure-Samples/custom-vision-move-project) umožňuje znovu vytvořit projekt stažením a odesláním všech značek, oblastí a obrázků v aktuální iteraci. V novém předplatném vám ponechá nový projekt, který pak můžete vyškolit.
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Budete potřebovat platné předplatné Azure spojené s účtem Microsoft nebo chcete použít pro přihlášení k účtu Azure Active Directory (AAD) [webu Custom Vision](https://customvision.ai). 
-    - Pokud nemáte účet Azure [vytvořit účet](https://azure.microsoft.com/free/) zdarma.
-    - Úvod do Azure koncepty předplatná a prostředky, najdete [– Příručka pro vývojáře Azure.](https://docs.microsoft.com/azure/guides/developer/azure-developer-guide#manage-your-subscriptions).
+- Budete potřebovat platné předplatné Azure přidružené k účtu účet Microsoft nebo Azure Active Directory (AAD), který chcete použít k přihlášení na [web Custom Vision](https://customvision.ai). 
+    - Pokud nemáte účet Azure, [Vytvořte si účet](https://azure.microsoft.com/free/) zdarma.
+    - Úvod do konceptů předplatných a prostředků Azure najdete v [příručce pro vývojáře Azure.](https://docs.microsoft.com/azure/guides/developer/azure-developer-guide#manage-your-subscriptions)
 -  [Python](https://www.python.org/downloads/)
 - [PIP](https://pip.pypa.io/en/stable/installing/)
 
-## <a name="create-custom-vision-resources-in-the-azure-portal"></a>Vytvoření vlastní vizi prostředků na webu Azure Portal
+## <a name="create-custom-vision-resources-in-the-azure-portal"></a>Vytvoření prostředků Custom Vision v Azure Portal
 
-Použít službu Custom Vision Service pomocí Azure, budete muset vytvořit vlastní zpracování obrazu trénování a Predikcí prostředky v [webu Azure portal](https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=microsoft_azure_cognitiveservices_customvision#create/Microsoft.CognitiveServicesCustomVision). 
+Pokud chcete použít Custom Vision Service s Azure, budete muset vytvořit Custom Vision školení a předpovědi prostředků v [Azure Portal](https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=microsoft_azure_cognitiveservices_customvision#create/Microsoft.CognitiveServicesCustomVision). 
 
-Více projektů lze přidružit jeden prostředek. Další podrobnosti o [ceny a omezení](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/limits-and-quotas) je k dispozici. A pokračujte v bezplatném používání služby Custom Vision Service, můžete vybrat úroveň F0 na webu Azure Portal. 
+K jednomu prostředku může být přidruženo více projektů. Další podrobnosti o [cenách a omezeních](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/limits-and-quotas) jsou k dispozici. Pokud chcete nadále používat Custom Vision Service zdarma, můžete v Azure Portal vybrat úroveň F0. 
 
 > [!NOTE]
-> Při přesunu vlastní vize projektu do prostředku Azure, dědí základní [oprávnění]( https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) prostředku Azure. Pokud ostatní uživatelé ve vaší organizaci jsou vlastníky váš projekt je v prostředku Azure, bude mít přístup k projektu na [webu Custom Vision](https://customvision.ai). Obdobně odstranění vašich prostředků se odstraní vaše projekty.  
+> Když přesunete projekt Custom Vision do prostředku Azure, zdědí základní [oprávnění]( https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) tohoto prostředku Azure. Pokud jsou jiní uživatelé ve vaší organizaci vlastníci prostředku Azure, ve kterém je váš projekt, budou mít přístup k vašemu projektu na [Custom Vision webu](https://customvision.ai). Podobně při odstraňování vašich prostředků se odstraní vaše projekty.  
 
-## <a name="find-your-limited-trial-project-information"></a>Najít informace o omezené zkušební verze projektu
+## <a name="find-your-limited-trial-project-information"></a>Hledání informací o aplikaci s omezeným počtem zkušebních verzí
 
-Pokud chcete přesunout svůj projekt, musíte _projektu ID_ a _školení klíč_ pro projekt, který se pokoušíte migrovat. Pokud tyto informace nemáte, navštivte [ https://limitedtrial.customvision.ai/projects ](https://limitedtrial.customvision.ai/projects) získat ID a klíč pro každý z vašich projektů. 
+Chcete-li přesunout projekt, budete potřebovat _ID projektu_ a _školicí klíč_ pro projekt, který se pokoušíte migrovat. Pokud tyto informace nemáte, přejděte [https://limitedtrial.customvision.ai/projects](https://limitedtrial.customvision.ai/projects) k získání ID a klíče pro každý z vašich projektů. 
 
-## <a name="use-the-python-sample-code-to-copy-your-project-to-azure"></a>Zkopírujte váš projekt do Azure pomocí vzorového kódu Pythonu
+## <a name="use-the-python-sample-code-to-copy-your-project-to-azure"></a>Zkopírování projektu do Azure pomocí ukázkového kódu Pythonu
 
-Postupujte podle [ukázkový kód pokyny](https://github.com/Azure-Samples/custom-vision-move-project)pomocí omezenou zkušební klíč a ID projektu jako "zdroj" materiály a klíče z nového prostředku Azure, kterou jste vytvořili jako "cíl".
+Postupujte podle [pokynů k ukázkovému kódu](https://github.com/Azure-Samples/custom-vision-move-project), pomocí vašeho omezeného zkušebního klíče a ID projektu jako "zdrojové" materiály a klíče z nového prostředku Azure, který jste vytvořili jako "cíl".
 
-Standardně jsou všechny projekty omezenou zkušební verzí hostované v Jižní střední USA oblast Azure.
+Ve výchozím nastavení se všechny omezené zkušební projekty hostují v Střed USA – jih oblasti Azure.
 
 ## <a name="next-steps"></a>Další postup
 
-Váš projekt nyní byl přesunut do prostředku Azure. Je potřeba aktualizovat trénování a Predikcí klíče ve všech aplikacích, které jste napsali.
+Váš projekt byl nyní přesunut do prostředku Azure. V aplikacích, které jste napsali, budete muset aktualizovat klíče pro školení a předpovědi.
 
-Chcete-li zobrazit svůj projekt na [webu Custom Vision](https://customvision.ai), přihlaste se pomocí stejného účtu, který jste použili pro přihlášení na web Azure Portal. Pokud se váš projekt nezobrazí, zkontrolujte, že jste ve stejném adresáři v [webu Custom Vision](https://customvision.ai) jako adresář, kde jsou umístěny prostředky na webu Azure Portal. Na webu Azure portal i CustomVision.ai můžete vybrat adresáře z rozevírací nabídky uživatele v pravém horním rohu obrazovky.
+Pokud chcete svůj projekt zobrazit na [webu Custom Vision](https://customvision.ai), přihlaste se pomocí stejného účtu, který jste použili k přihlášení do Azure Portal. Pokud se váš projekt nezobrazuje, potvrďte prosím, že jste ve stejném adresáři [Custom Vision](https://customvision.ai) jako adresář, ve kterém se vaše prostředky nacházejí v Azure Portal. V Azure Portal i CustomVision.ai můžete svůj adresář vybrat v nabídce rozevíracího uživatele v pravém horním rohu obrazovky.

@@ -1,5 +1,5 @@
 ---
-title: Testovací služby batch
+title: Batch test – LUIS
 titleSuffix: Azure Cognitive Services
 description: Tento kurz ukazuje, jak pomocí služby batch testu najít utterance předpovědi problémy ve vaší aplikaci a opravte je.
 services: cognitive-services
@@ -11,14 +11,14 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 03/29/2019
 ms.author: diberry
-ms.openlocfilehash: af04ca19961abcfc7ee218824a4a1a804f7ad79c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d6b3f864ded8b6f5ac0a1d839768801788d7d765
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65146163"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560132"
 ---
-# <a name="tutorial-batch-test-data-sets"></a>Kurz: Batch testovací datové sady
+# <a name="tutorial-batch-test-data-sets"></a>Kurz: Sady dat dávkového testu
 
 Tento kurz ukazuje, jak pomocí služby batch testu najít utterance předpovědi problémy ve vaší aplikaci a opravte je.  
 
@@ -28,7 +28,7 @@ Požadavky pro testování služby batch:
 
 * Maximálně 1000 projevy na test. 
 * Žádné duplicity. 
-* Povolené typy entit: pouze entity se naučili obrobeny jednoduchého a složeného. Testování služby batch je užitečná pouze pro obrobeny zjistili záměry a entity.
+* Povolené typy entit: jenom ty počítače, které se naučily jednoduché a složené. Testování služby batch je užitečná pouze pro obrobeny zjistili záměry a entity.
 
 Při používání aplikace než v tomto kurzu, proveďte *není* pomocí příkladu projevy již byla přidána do záměru. 
 
@@ -36,7 +36,7 @@ Při používání aplikace než v tomto kurzu, proveďte *není* pomocí přík
 
 <!-- green checkmark -->
 > [!div class="checklist"]
-> * Importovat ukázková aplikace
+> * Importovat ukázkovou aplikaci
 > * Vytvořte dávkový soubor testu 
 > * Spuštění testu služby batch
 > * Kontrola výsledků testu
@@ -45,7 +45,7 @@ Při používání aplikace než v tomto kurzu, proveďte *není* pomocí přík
 
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
-## <a name="import-example-app"></a>Importovat ukázková aplikace
+## <a name="import-example-app"></a>Importovat ukázkovou aplikaci
 
 Pokračujte s aplikací **HumanResources**, kterou jste vytvořili v posledním kurzu. 
 
@@ -95,7 +95,7 @@ Použijte k tomu následující postup:
 
 ## <a name="review-batch-results"></a>Zkontrolujte výsledky služby batch
 
-Batch graf zobrazuje čtyři kvadrantech výsledky. Napravo od grafu je filtr. Ve výchozím nastavení je nastaven filtr na první záměr v seznamu. Filtr obsahuje všechny záměry a entity pouze jednoduché a složené. Když vyberete [části grafu](luis-concept-batch-test.md#batch-test-results) nebo bodu v rámci tohoto grafu, přidružené utterance(s) zobrazení pod grafem. 
+Batch graf zobrazuje čtyři kvadrantech výsledky. Napravo od grafu je filtr. Ve výchozím nastavení je nastaven filtr na první záměr v seznamu. Filtr obsahuje všechny záměry a pouze jednoduché a složené entity. Když vyberete [části grafu](luis-concept-batch-test.md#batch-test-results) nebo bodu v rámci tohoto grafu, přidružené utterance(s) zobrazení pod grafem. 
 
 Když najede myší na graf, kolečko myši můžete zvětšit nebo zmenšit zobrazení v grafu. To je užitečné, když existuje mnoho bodů v grafu úzce společně v clusteru. 
 
@@ -169,7 +169,7 @@ Pokud chcete ověřit, že jsou správně předpovědět projevy v testu služby
 
 ## <a name="create-batch-file-with-entities"></a>Vytvořte dávkový soubor s entitami 
 
-Aby bylo možné ověřit entity v rámci služby batch testu, entity muset označeny v dávkovém souboru JSON. Pouze entity zjištěné počítače se používají: jednoduché a složené entity. Nepřidávejte mimo počítač zjistili entity, protože se nenachází vždy prostřednictvím regulární výrazy nebo explicitní text odpovídá.
+Aby bylo možné ověřit entity v rámci služby batch testu, entity muset označeny v dávkovém souboru JSON. Používají se jenom ty entity, které se strojově naučily: jednoduché a složené entity. Nepřidávejte mimo počítač zjistili entity, protože se nenachází vždy prostřednictvím regulární výrazy nebo explicitní text odpovídá.
 
 Změnu entity pro celkový počet slov ([token](luis-glossary.md#token)) počet může mít vliv na kvalitu předpovědi. Zajistěte, aby trénovacích dat zadané na záměr s s popiskem projevy zahrnuje celou řadu délky entity. 
 
@@ -205,11 +205,11 @@ Hodnota **úlohy** entita, součástí projevy testu je obvykle jedno nebo dvě 
 
 ## <a name="review-entity-batch-results"></a>Zkontrolujte výsledky entit služby batch
 
-Grafu se otevře s všechny záměry správně předpovědět. Přejděte dolů na pravé straně filtru se najít entitu předpovědi s chybami. 
+Grafu se otevře s všechny záměry správně předpovědět. Posuňte se dolů na filtr na pravé straně, abyste našli předpovědi entit s chybami. 
 
 1. Vyberte **úlohy** entity ve filtru.
 
-    ![Chyba předpovědi entity ve filtru](./media/luis-tutorial-batch-testing/hr-entities-filter-errors.png)
+    ![Předpovědi entit chyb ve filtru](./media/luis-tutorial-batch-testing/hr-entities-filter-errors.png)
 
     Graf se změny zobrazily predikcí entity. 
 

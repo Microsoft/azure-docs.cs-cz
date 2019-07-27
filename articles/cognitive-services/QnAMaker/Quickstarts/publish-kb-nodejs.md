@@ -1,6 +1,6 @@
 ---
-title: Publikování znalostní báze, REST, Node.js
-titleSuffix: QnA Maker - Azure Cognitive Services
+title: 'Rychlý start: Publikování znalostní báze, REST, Node. js – QnA Maker'
+titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu Node.js provede programově publikování znalostní bázi (KB). Publikování odešle nejnovější verzi znalostní báze do vyhrazeného indexu Azure Search a vytvoří koncový bod, který je možné volat v aplikaci nebo chatovacím robotu.
 services: cognitive-services
 author: diberry
@@ -11,14 +11,14 @@ ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 02/28/2019
 ms.author: diberry
-ms.openlocfilehash: 915d5223b99f530978ade41f69420766cf591021
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: d47359f92a2cebef10514b3746fbf32f7e952132
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65787903"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68562916"
 ---
-# <a name="quickstart-publish-a-knowledge-base-in-qna-maker-using-nodejs"></a>Rychlý start: Publikování znalostní báze v nástroje QnA Maker pomocí Node.js
+# <a name="quickstart-publish-a-knowledge-base-in-qna-maker-using-nodejs"></a>Rychlý start: Publikování znalostní báze v QnA Maker pomocí Node. js
 
 V tomto rychlém startu založené na protokolu REST provede programově publikování znalostní bázi (KB). Publikování odešle nejnovější verzi znalostní báze do vyhrazeného indexu Azure Search a vytvoří koncový bod, který je možné volat v aplikaci nebo chatovacím robotu.
 
@@ -33,11 +33,11 @@ Tento rychlý start volá rozhraní API služby QnA Maker:
 
     ![ID znalostní báze ve službě QnA Maker](../media/qnamaker-quickstart-kb/qna-maker-id.png)
 
-    Pokud ještě nemáte znalostní báze, můžete vytvořit ukázky, jednu pro účely tohoto rychlého startu: [Vytvoření nové znalostní báze](create-new-kb-nodejs.md).
+    Pokud ještě nemáte znalostní bázi Knowledge Base, můžete si vytvořit ukázku pro použití v tomto rychlém startu: [Vytvořte novou znalostní bázi](create-new-kb-nodejs.md).
 
 
 > [!NOTE] 
-> Soubory tak získají kompletní řešení jsou k dispozici na [ **Azure – ukázky/cognitive-services – QnA maker nodejs** úložiště GitHub](https://github.com/Azure-Samples/cognitive-services-qnamaker-nodejs/tree/master/documentation-samples/quickstarts/publish-knowledge-base-short).
+> Kompletní soubory řešení jsou k dispozici v [úložišti GitHub **Azure-Samples/vnímání-Services-qnamakerem-NodeJS** ](https://github.com/Azure-Samples/cognitive-services-qnamaker-nodejs/tree/master/documentation-samples/quickstarts/publish-knowledge-base-short).
 
 ## <a name="create-a-knowledge-base-nodejs-file"></a>Vytvoření souboru Node.js znalostní báze
 

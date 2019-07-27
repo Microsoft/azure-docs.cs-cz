@@ -1,7 +1,7 @@
 ---
-title: Pokyny pro lidské s názvem bez přípony přepisů – hlasové služby
-titlesuffix: Azure Cognitive Services
-description: Pokud chcete zlepšit přesnost rozpoznávání, zejména problémy, které jsou způsobeny, když slova jsou odstraněny nebo nesprávně nahrazena, budete chtít použít lidských s názvem bez přípony přepisů spolu s zvuková data. Co jsou označené jako lidských přepisů? Je to jednoduché, jsou aplikace word ve Wordu, verbatim přepisů zvukový soubor.
+title: Pravidla přepisu na základě popisku – služba řeči
+titleSuffix: Azure Cognitive Services
+description: Pokud chcete zlepšit přesnost rozpoznávání, zejména problémy, které jsou způsobeny odstraněním nebo nesprávným nahrazením slov, budete chtít použít přepisy, které jsou pro vaše zvuková data k popisku. Co jsou Přepisy na základě popisku? To je snadné – jedná se o slovo do Wordu, doslovného přepisu zvukového souboru.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,162 +10,162 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 1fca2a21758a060dbfdc4acb2123a59fcae585fd
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 1645e97e5648032a1281e7cb410c42f0a28b6767
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606552"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68559655"
 ---
-# <a name="how-to-create-human-labeled-transcriptions"></a>Jak vytvořit lidských s názvem bez přípony přepisů
+# <a name="how-to-create-human-labeled-transcriptions"></a>Jak vytvořit přepisy s lidským popiskem
 
-Pokud chcete zlepšit přesnost rozpoznávání, zejména problémy, které jsou způsobeny, když slova jsou odstraněny nebo nesprávně nahrazena, budete chtít použít lidských s názvem bez přípony přepisů spolu s zvuková data. Co jsou označené jako lidských přepisů? Je to jednoduché, jsou aplikace word ve Wordu, verbatim přepisů zvukový soubor.
+Pokud chcete zlepšit přesnost rozpoznávání, zejména problémy, které jsou způsobeny odstraněním nebo nesprávným nahrazením slov, budete chtít použít přepisy, které jsou pro vaše zvuková data k popisku. Co jsou Přepisy na základě popisku? To je snadné – jedná se o slovo do Wordu, doslovného přepisu zvukového souboru.
 
-Ukázku velkých dat určené k transkripci je vyžadováno pro zlepšení rozpoznávání, doporučujeme poskytuje rozmezí 10 až 1 000 hodin dat určené k transkripci. Na této stránce si probereme pokyny, které jsou navržené tak, aby vám pomůžou vytvořit vysoce kvalitní přepisů. Tato příručka je rozdělený podle národního prostředí a s oddíly pro Americkou angličtinu, Mandarínština čínštiny a němčina.
+Pro zlepšení rozpoznávání je nutná rozsáhlá ukázka dat přepisu, což nabízíme mezi 10 a 1 000 hodinami přepisu dat. Na této stránce si ukážeme pokyny, které vám pomůžou vytvořit vysoce kvalitní přepisy. Tato příručka je rozdělená podle národního prostředí s oddíly pro AMERICKou angličtinu, Mandarinii, čínskou a Německo.
 
-## <a name="us-english-en-us"></a>Jazykovou verzi US English (en US)
+## <a name="us-english-en-us"></a>USA – angličtina (EN-US)
 
-Lidské s názvem bez přípony přepisy pro anglickou zvuk musí být uvedeny jako prostý text, použití pouze znaky ASCII. Nepoužívejte Latin-1 nebo Unicode znaky interpunkce. Tyto znaky jsou často nechtěně přidány po zkopírování textu z textového procesoru nebo automatizované získávání dat data z webové stránky. Pokud tyto znaky jsou k dispozici, ujistěte se, že aktualizace pomocí odpovídající nahrazení ASCII.
+Přepisy v angličtině pro angličtinu musí být zadány jako prostý text, a to pouze pomocí znaků ASCII. Vyhněte se použití interpunkčních znamének s latinkou 1 nebo Unicode. Tyto znaky jsou často nechtěně přidány při kopírování textu z aplikace pro zpracování textu nebo z dat z webových stránek. Pokud jsou tyto znaky k dispozici, nezapomeňte je aktualizovat pomocí odpovídající náhrady ASCII.
 
 Tady je pár příkladů:
 
-| Aby se zabránilo znaků | Nahrazení | Poznámky |
+| Znaky, které se mají zabránit | Nahrazení | Poznámky |
 |---------------------|--------------|-------|
-| "Hello world" | "Hello world" | Uvozovky otevírací a zavírací byla nahrazena s odpovídající znaky ASCII. |
-| John's na den | John's na den | Apostrof má byla nahrazena příslušný znak ASCII. |
-| bylo dobré – Ne, bylo vynikající! | bylo dobré – Ne, bylo vynikající! | Dlouhé pomlčky byla nahrazena dva spojovníky. |
+| Hello World | Hello World | Levé a pravé uvozovky se nahradily odpovídajícími znaky ASCII. |
+| Den Jan | Den Jan | Apostrof byl nahrazen příslušným znakem ASCII. |
+| to bylo dobré – ne, bylo skvělé! | je dobrá – ne, bylo skvělé! | Em pomlčka byla nahrazena dvěma pomlčkami. |
 
-### <a name="text-normalization-for-us-english"></a>Text normalizace pro Americkou angličtinu
+### <a name="text-normalization-for-us-english"></a>Normalizace textu pro AMERICKou angličtinu
 
-Normalizace text je transformace slova do konzistentní formát používaný při cvičení modelu. Některá pravidla normalizace se použijí na text automaticky, ale doporučujeme pomocí těchto pokynů, jak připravit data přepis lidských s názvem bez přípony:
+Normalizace textu je transformace slov do konzistentního formátu, který se používá při výuce modelu. Některá pravidla normalizace se aplikují na text automaticky, doporučujeme ale tyto pokyny použít při přípravě dat přepisu na základě popisku:
 
-* Vypsat zkratky ve slovech.
-* Vypsat nestandardní číselných řetězců v slova (jako jsou podmínky monitorování účtů).
-* Jako vyslovováno by měla být přepsána interpunkční znaky nebo smíšené alfanumerické znaky.
-* Zkratky, které jsou vyslovuje se jako slova by neměla být upravována (například "této možnosti taky přemýšlíte", "laserové", "RAM" nebo "NATO").
-* Zápis si zkratek, které jsou vyslovuje se jako samostatné písmena každé písmeno oddělené mezerou.
+* Vypište zkratky v slovech.
+* Vypište nestandardní číselné řetězce v slovech (například účetní termíny).
+* Neabecední znaky nebo smíšené alfanumerické znaky by měly být přepisu jako vyslovované.
+* Zkratky, které jsou vyslovované jako slova, by se neměly upravovat (například "paprsky", "Laser", "RAM" nebo "NATO").
+* Odpište zkratky, které jsou vyslovované jako samostatná písmena s každým písmenem oddělené mezerou.
 
-Tady je pár příkladů normalizace, který by měl provádět na přepis:
+Tady je několik příkladů normalizace, které byste měli provést na přepisu:
 
-| Původní text | Text za normalizace |
+| Původní text | Text po normalizaci |
 |---------------|--------------------------|
-| Dr. Bruce Banner | Banner Bruce lékař |
-| James Bond, 007 | James Bond dvakrát ale sedm |
+| Dr. Banner Bruce | Bruce banner pro lékaře |
+| Jan dluhopis, 007 | Jan dluhopis, dvojitý Oh 7 |
 | Ke$ha | Kesha |
-| Jak dlouhé je 2 × 4 | Jak dlouhé je pomocí čtyř |
-| Schůzky přejde z 1 – 15: 00 | Schůzky přechází z jedné do tří hodin |
-| Můj typ krve je O + | Můj typ krve je O pozitivní |
-| hodnota je H20 | hodnota je H 2 O |
-| Přehrát OU812 podle Van Halen | Přehrát U O 8 1 2 Van Halen |
-| UTF-8 s BOM | U T F 8 s BOM |
+| Jak dlouho je 2x4 | Jak dlouho jsou dva čtyři |
+| Schůzka směřuje z 1 – 3pm | Schůzka bude směrována z jedné na tři odpoledne. |
+| Moje krevní typ je O + | Můj typ krevního typu je O kladné |
+| Voda je H20 | Voda je H 2 O |
+| Hraní OU812 po Van Halen | Přehrát O U 8 1 2 od Van Halen |
+| UTF-8 s BOM | U T F 8 pomocí kusovníku |
 
-Přepisy se automaticky použijí následující pravidla normalizace:
+Následující pravidla normalizace se automaticky aplikují na Přepisy:
 
 * Používejte malá písmena.
-* Odeberte všechny interpunkční znaménka s výjimkou apostrofy v rámci slova.
-* Do formuláře slyšet/slova, jako je například korunách rozbalte čísla.
+* Odebrat všechna interpunkční znaménka s výjimkou apostrofů v rámci slov.
+* Rozbalí čísla do slov nebo mluveného formuláře, jako jsou třeba částky dolaru.
 
-Tady je pár příkladů normalizace automaticky provedeno přepis:
+Tady je několik příkladů normalizace, které se automaticky provedou na přepisu:
 
-| Původní text | Text za normalizace |
+| Původní text | Text po normalizaci |
 |---------------|--------------------------|
-| "Tichá krávy!" uvedené Batman. | tichá krávy říká, že batman |
-| "Co?" uvedené Batman sidekick dotazování. | jaké uvedené batman sidekick dotazování |
-| Go get - em! | em přejděte get |
-| Já jsem double-jointed | Já jsem double jointed |
-| 104 Elm Street | jeden ale čtyři jilm ulice |
-| Vyladění 102.7 | ladění na jednu ale dvě sedm |
-| Pi je asi 3.14 | Pi je přibližně tři čtyři jeden bod |
-To stojí $3.14| to stojí tři čtrnáct |
+| "Svatý kráva" zmíněné Batman. | Svatý kráva, na kterou se říká Batman |
+| "Co?" v tomto Batman je to Sidekick, Robin. | Co říká dotaz na Batman – Sidekick |
+| Získat – em! | získat em |
+| Já jsem se zdvojnásobil | Jsem se zdvojnásobil |
+| 104 Elm Street | ELM ulice 1 0 4 |
+| Vylaďte 102,7 | Vylaďte 1 0 2 7 |
+| Pi má přibližně 3,14 | Pi má přibližně tři body 1 4 |
+Náklady na IT $3,14| náklady na IT 3 14 |
 
-## <a name="mandarin-chinese-zh-cn"></a>Mandarínština čínština (zh-CN)
+## <a name="mandarin-chinese-zh-cn"></a>Mandarin čínština (zh-CN)
 
-Lidské s názvem bez přípony přepisy pro čínské zvuk Mandarínština musí být kódovaný pomocí značky pořadí bajtů kódování UTF-8. Nepoužívejte poloviční šířku interpunkční znaménka. Tyto znaky může být zahrnuta neúmyslně při přípravě dat v textovém editoru nebo scrape data z webové stránky. Pokud tyto znaky jsou k dispozici, ujistěte se, že aktualizace pomocí odpovídající nahrazení plnou šířkou.
+Přepisy na základě popisku pro formát mandarinek pro lidskou čínštinu musí mít kódování UTF-8 s označením pořadí bajtů. Vyhněte se použití interpunkčních znamének s poloviční šířkou. Tyto znaky mohou být neúmyslně zahrnuty při přípravě dat v programu pro zpracování textu nebo při vynechání dat z webových stránek. Pokud jsou tyto znaky k dispozici, nezapomeňte je aktualizovat o příslušnou substituci s plnou šířkou.
 
 Tady je pár příkladů:
 
-| Aby se zabránilo znaků | Nahrazení | Poznámky |
+| Znaky, které se mají zabránit | Nahrazení | Poznámky |
 |---------------------|--------------|-------|
-| "你好" | "你好" | Uvozovky otevírací a zavírací byla nahrazena odpovídající znaky. |
-| 需要什么帮助? | 需要什么帮助？ | Otazník má byla nahrazena odpovídající znak. |
+| "你好" | "你好" | Úvodní a koncové uvozovky byly nahrazeny příslušnými znaky. |
+| 需要什么帮助? | 需要什么帮助？ | Otazník byl nahrazen vhodným znakem. |
 
-### <a name="text-normalization-for-mandarin-chinese"></a>Text normalizace pro Mandarínština čínštinu
+### <a name="text-normalization-for-mandarin-chinese"></a>Normalizace textu u Mandarinie v čínštině
 
-Normalizace text je transformace slova do konzistentní formát používaný při cvičení modelu. Některá pravidla normalizace se použijí na text automaticky, ale doporučujeme pomocí těchto pokynů, jak připravit data přepis lidských s názvem bez přípony:
+Normalizace textu je transformace slov do konzistentního formátu, který se používá při výuce modelu. Některá pravidla normalizace se aplikují na text automaticky, doporučujeme ale tyto pokyny použít při přípravě dat přepisu na základě popisku:
 
-* Vypsat zkratky ve slovech.
-* Vypsat číselných řetězců v podobě mluvené slovo.
+* Vypište zkratky v slovech.
+* Vypište číselné řetězce v mluvené formě.
 
-Tady je pár příkladů normalizace, který by měl provádět na přepis:
+Tady je několik příkladů normalizace, které byste měli provést na přepisu:
 
-| Původní text | Text za normalizace |
+| Původní text | Text po normalizaci |
 |---------------|--------------------------|
 | 我今年21 | 我今年二十一 |
 | 3号楼504 | 三号 楼 五 零 四 |
 
-Přepisy se automaticky použijí následující pravidla normalizace:
+Následující pravidla normalizace se automaticky aplikují na Přepisy:
 
-* Odebrat všechny interpunkční znaménka
-* Rozbalte čísla do mluvené řeči formuláře
-* Převést na poloviční šířku písmena plnou šířkou
-* Použití velkých písmen pro všechny anglická slova
+* Odebrat všechna interpunkční znaménka
+* Rozbalit čísla do mluveného formuláře
+* Převést písmena s plnou šířkou na písmena s poloviční šířkou
+* Použití velkých písmen pro všechna anglická slova
 
-Tady je pár příkladů normalizace automaticky provedeno přepis:
+Tady je několik příkladů normalizace, které se automaticky provedou na přepisu:
 
-| Původní text | Text za normalizace |
+| Původní text | Text po normalizaci |
 |---------------|--------------------------|
-| 3.1415 | 三 点 一 四 一 五 |
-| ￥3.5 | 三 元 五 角 |
+| 3,1415 | 三 点 一 四 一 五 |
+| ¥3,5 | 三 元 五 角 |
 | w f y z |W F Y Z |
-| 1992年8月8日 | 一 九 九 二 年 八 月 八 日 |
+| 1992 年 8 月 8 日 | 一 九 九 二 年 八 月 八 日 |
 | 你吃饭了吗? | 你 吃饭 了 吗 |
 | 下午5:00的航班 | 下午 五点 的 航班 |
 | 我今年21岁 | 我 今年 二十 一 岁 |
 
 ## <a name="german-de-de-and-other-languages"></a>Němčina (de-DE) a další jazyky
 
-Lidské s názvem bez přípony přepisů německé zvuku (a ostatní jiné než anglické jazykové nebo Mandarínština čínskými jazyky) musí být kódovaný pomocí značky pořadí bajtů kódování UTF-8. Pro každý zvukový soubor musí být zadána jedna přepisu lidských s názvem bez přípony.
+Přepisy pro německý zvuk (a jiné jazyky jiné než anglické nebo Mandarine) musí mít kódování UTF-8 s označením pořadí bajtů. Pro každý zvukový soubor je třeba zadat jeden přepis s názvem.
 
-### <a name="text-normalization-for-german"></a>Text normalizace pro němčinu
+### <a name="text-normalization-for-german"></a>Normalizace textu pro němčinu
 
-Normalizace text je transformace slova do konzistentní formát používaný při cvičení modelu. Některá pravidla normalizace se použijí na text automaticky, ale doporučujeme pomocí těchto pokynů, jak připravit data přepis lidských s názvem bez přípony:
+Normalizace textu je transformace slov do konzistentního formátu, který se používá při výuce modelu. Některá pravidla normalizace se aplikují na text automaticky, doporučujeme ale tyto pokyny použít při přípravě dat přepisu na základě popisku:
 
-*   Zápis desetinné čárky jako ","a".".
-*   Zápis oddělovače času jako ":"a"." (například: 12:00 Uhr).
-*   Zkratky jako "ca". nejsou nahrazeny. Doporučujeme použít úplný formát mluvené slovo.
-*   Čtyři hlavní matematické operátory (+, -, \*, a /) se odeberou. Doporučujeme nahradit psané formy: "plus," "minus," "zjišťování" a "geteilt."
-*   Operátory porovnání jsou odebrány. (=, <, a >). Doporučujeme nahradit "gleich", "kleiner als," a "grösser als."
-*   Zápis zlomky, jako je například 3/4 v písemné formě (například: "drei viertel" namísto 3/4).
-*   Symbol "do" nahraďte její psané formy "Euro."
+*   Zápis desetinných míst jako "," a nikoli ".".
+*   Oddělovače času zápisu jako ":", nikoli "." (například: 12:00 Uhr).
+*   Zkratky jako "CA". nejsou nahrazeny. Doporučujeme, abyste použili úplný mluvený formulář.
+*   Čtyři hlavní matematické operátory (+,-, \*a/) se odeberou. Doporučujeme, abyste je nahradili pomocí vytvořeného formuláře: "plus", "mínus" "," "", "" "
+*   Operátory porovnání jsou odebrány (=, < a >). Doporučujeme, abyste je nahradili "Gleich", "Kleiner ALS" a "grösser ALS".
+*   Zapište zlomky, například 3/4, v písemné podobě (například "Drei Viertel" namísto 3/4).
+*   Nahraďte symbol "€" jeho napsaným formulářem "euro".
 
-Tady je pár příkladů normalizace, který by měl provádět na přepis:
+Tady je několik příkladů normalizace, které byste měli provést na přepisu:
 
-| Původní text | Text za normalizace uživatele | Text za normalizace systému |
+| Původní text | Text po normalizaci uživatele | Text po normalizaci systému |
 |---------------|-------------------------------|---------------------------------|
-| Uhr TIS 12.23 ES | ES TIS 12:23 Uhr | ES TIS zwölf uhr drei a zwanzig uhr |
+| ES tis 12,23 Uhr | ES tis 12:23 Uhr | ES tis Zwölf Uhr Drei und zwanzig Uhr |
 | {12.45} | {12,45} | zwölf komma vier fünf |
 | 2 + 3 - 4 | 2 plus 3 minus 4 | zwei plus drei minus vier |
 
-Přepisy se automaticky použijí následující pravidla normalizace:
+Následující pravidla normalizace se automaticky aplikují na Přepisy:
 
-* Použijte pro veškerý text malými písmeny.
-* Odebrat všechny interpunkční znaménka, včetně různých typů uvozovky ("test", "test", "test" a "test" jsou OK).
-* Zahodit řádky s žádné speciální znaky z této sady: z ¤ y ¦ smyslu © ª ¬® ° rozmezí ² µ × ÿ Ø¬¬.
-* Rozbalte čísla do mluvené řeči formuláře, včetně dolar nebo eurech.
-* Přijměte samohlásky pouze u, e a vy. Ostatní se nahradí "th" nebo zahozeny.
+* Pro veškerý text použijte malá písmena.
+* Odebrat veškerou interpunkci, včetně různých typů uvozovek ("test", "test", "test" a «test» "OK).
+* Zahodí řádky se všemi speciálními znaky z této sady: ¢ ¤ y ¦ § © ª ¬® ° ± 20. až ¬ ¬.
+* Rozbalíte čísla do mluveného formuláře, včetně částek dolaru nebo eura.
+* Přijměte umlauts jenom pro a, o a vy. Ostatní budou nahrazeny "th" nebo budou zahozeny.
 
-Tady je pár příkladů normalizace automaticky provedeno přepis:
+Tady je několik příkladů normalizace, které se automaticky provedou na přepisu:
 
-| Původní text | Text za normalizace |
+| Původní text | Text po normalizaci |
 |---------------|--------------------------|
-| Aktualizační kanál Frankfurter | aktualizační kanál frankfurter |
+| Frankfurter Ring | Frankfurter Ring |
 | ¡Eine Frage! | eine frage |
-| WIR haben | WIR haben |
+| wir, haben | wir haben |
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Připravit a otestovat vašich dat](how-to-custom-speech-test-data.md)
+* [Příprava a testování dat](how-to-custom-speech-test-data.md)
 * [Kontrola dat](how-to-custom-speech-inspect-data.md)
-* [Vyhodnocení vašich dat](how-to-custom-speech-evaluate-data.md)
-* [Vyzkoušejte svůj model](how-to-custom-speech-train-model.md)
+* [Vyhodnocení dat](how-to-custom-speech-evaluate-data.md)
+* [Výuka modelu](how-to-custom-speech-train-model.md)
 * [Nasazení modelu](how-to-custom-speech-deploy-model.md)

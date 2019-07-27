@@ -1,5 +1,5 @@
 ---
-title: Kontextová data s rolemi – Language Understanding
+title: Kontextová data s rolemi – LUIS
 titleSuffix: Azure Cognitive Services
 description: Najde související data na základě kontextu. Spolu například souvisí počáteční a cílová umístění pro fyzický přesun z jedné budovy a kanceláře do jiné.
 services: cognitive-services
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: 061bd94a839d83f75566412ac546ab3208543780
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: 2eac05712dc7b3deceba52681195101f9bf2b40c
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68467632"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560008"
 ---
 # <a name="tutorial-extract-contextually-related-data-from-an-utterance"></a>Kurz: Extrakce kontextově souvisejících dat z utterance
 
@@ -167,7 +167,7 @@ Předem sestavená entita, geographyV2, extrahuje informace o poloze, včetně n
 * [Testování na portálu LUIS](luis-interactive-test.md)
 * [Role](luis-concept-roles.md)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste vytvořili nový záměr a Přidali jste příklad projevy pro kontextové naučená data o původu a cílovém umístění. Jakmile aplikaci vytrénujete a publikujete, klientská aplikace může tyto informace použít k vytvoření lístku přesunu s relevantními informacemi.
 

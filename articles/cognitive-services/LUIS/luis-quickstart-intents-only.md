@@ -1,7 +1,7 @@
 ---
-title: Předpověď záměry
+title: Předpověď záměrů – LUIS
 titleSuffix: Azure Cognitive Services
-description: V tomto kurzu vytvořte vlastní aplikaci, který bude předpovídat záměru uživatele. Tato aplikace představuje nejjednodušší typ aplikace LUIS, protože neextrahuje různé datové prvky z textu promluvy, jako jsou e-mailové adresy nebo kalendářní data.
+description: V tomto kurzu vytvoříte vlastní aplikaci, která předpovídá záměr uživatele. Tato aplikace představuje nejjednodušší typ aplikace LUIS, protože neextrahuje různé datové prvky z textu promluvy, jako jsou e-mailové adresy nebo kalendářní data.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,14 +11,14 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 07/16/2019
 ms.author: diberry
-ms.openlocfilehash: 534aa678df69a4ef71296005922fa59bbe7bbcfa
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 249ac689f855d175fa5df7cc5fed9438c0873289
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68277576"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560383"
 ---
-# <a name="tutorial-build-luis-app-to-determine-user-intentions"></a>Kurz: Sestavení aplikace LUIS k určení záměry uživatele
+# <a name="tutorial-build-luis-app-to-determine-user-intentions"></a>Kurz: Sestavování aplikace LUIS pro určení záměrů uživatelů
 
 V tomto kurzu vytvoříte vlastní aplikaci pro lidské zdroje, která předpovídá záměr uživatele na základě promluvy (textu). 
 
@@ -35,9 +35,9 @@ V tomto kurzu vytvoříte vlastní aplikaci pro lidské zdroje, která předpov�
 
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
-## <a name="user-intentions-as-intents"></a>Uživatel záměry jako záměrů
+## <a name="user-intentions-as-intents"></a>Záměry uživatelů jako záměrů
 
-Účelem aplikace je určit záměr konverzační, přirozený jazyk textu: 
+Účelem aplikace je určit záměr konverzací, text přirozeného jazyka: 
 
 `Are there any new positions in the Seattle office?`
 
@@ -47,9 +47,9 @@ Tato aplikace má několik záměrů.
 
 |Záměr|Účel|
 |--|--|
-|ApplyForJob|Určete, pokud uživatel žádá o úlohu.|
-|GetJobInformation|Určete, pokud uživatel hledající informace o úlohy v obecné nebo konkrétní úlohy.|
-|Žádné|Určit, pokud uživatel požaduje něco aplikace by neměl odpovědět. Pokud záměru poskytnutého jako součást vytváření aplikací a nelze ji odstranit. |
+|ApplyForJob|Určete, jestli se uživatel pro úlohu používá.|
+|GetJobInformation|Určete, jestli uživatel hledá informace o úlohách v obecné nebo konkrétní úloze.|
+|Žádné|Určení, jestli uživatel žádá o nějakou aplikaci, nemá odpovídat. Tento záměr, pokud je k dispozici jako součást vytváření aplikace a nelze jej odstranit. |
 
 ## <a name="create-a-new-app"></a>Vytvoření nové aplikace
 
@@ -57,52 +57,52 @@ Tato aplikace má několik záměrů.
 
 ## <a name="create-intent-for-job-information"></a>Vytvořit záměr pro informace o úloze
 
-1. Vyberte **Create new intent** (Vytvořit nový záměr). Zadejte název nového záměru `GetJobInformation`. Cílem tohoto je očekává se, že když uživatel chce, aby se informace o úlohách otevřít ve společnosti. 
+1. Vyberte **Create new intent** (Vytvořit nový záměr). Zadejte název nového záměru `GetJobInformation`. Předpokládá se, že pokud uživatel potřebuje informace o otevřených úlohách ve společnosti, bude tento záměr předpovězen. 
 
     ![Snímek obrazovky z Language Understanding (LUIS) dialogové okno záměru nového](media/luis-quickstart-intents-only/create-intent.png "nové záměru dialogové okno snímek obrazovky z Language Understanding (LUIS)")
 
 1. Vyberte **Done** (Hotovo).
 
-2. Přidání projevů několik příklad na toto záměr, že očekáváte, že uživatel požádat:
+2. Do tohoto záměru přidejte několik příkladů projevy, u kterých očekáváte, že se uživatel zeptá:
 
     | Ukázkové promluvy|
     |--|
     |Any new jobs posted today? (Nějaké nové nabídky práce?)|
     |Are there any new positions in the Seattle office? (Nejsou na pobočce v Seattlu nějaké nové pozice?)|
-    |Existují jakékoli vzdálených pracovníků nebo práce z domu open úlohy pro techniky?|
+    |Jsou pro inženýry otevřené nějaké úlohy vzdáleného pracovního procesu nebo zaměstnání?|
     |Is there any work with databases? (Nabízíte nějakou práci se s databázemi?)|
-    |Hledám situace společné práci v aplikaci tampa office.|
-    |Existuje lékařského v kalifornském san franciscu office?|
-    |Je k dispozici žádné úvazku osobám ve škole?|
+    |Hledám spolupracovní situaci v kanceláři Tampa.|
+    |Je k dispozici interně pobočka v síti San Francisco?|
+    |Je pro lidi v rámci školy nějaká pracovní doba?|
     |Looking for a new situation with responsibilities in accounting (Hledám něco nového v oboru účetnictví).|
-    |Hledáte dvojjazyčné přednášející pro úlohy v new Yorku.|
-    |Hledání pro novou situaci s odpovědnosti v monitorování účtů.|
+    |Hledání úlohy v New York City pro dvojjazyčné reproduktory.|
+    |Hledáte novou situaci s odpovědností v účetnictví.|
     |New jobs? (Nějaké nové pracovní pozice?)|
-    |Zobrazte všechny úlohy pro techniky, které byly přidány v posledních 2 dnech.|
-    |Dnešní úlohy příspěvky?|
-    |Jaké pozice monitorování účtů jsou otevřeny v londýnské pobočce?|
+    |Zobrazit všechny úlohy pro inženýry, kteří byli přidáni za poslední 2 dny.|
+    |Dnešní příspěvky na úlohy?|
+    |Jaké jsou v pobočce v Londýně otevřené pozice pro monitorování účtů?|
     |What positions are available for Senior Engineers? (Jaké pozice jsou otevřené na úrovni inženýr senior?)|
     |Where is the job listings (Kde najdu seznam pracovních pozic)|
 
     [![Snímek obrazovky zadání nového projevy pro MyStore záměr](media/luis-quickstart-intents-only/utterance-getstoreinfo.png "snímek obrazovky zadání nového projevy pro MyStore záměr")](media/luis-quickstart-intents-only/utterance-getstoreinfo.png#lightbox)
 
-    Tím, že poskytuje _příklad projevy_, jsou školení LUIS, o jaký druh projevy musí předpovídat pro tohoto záměru. 
+    Poskytnutím _ukázkového projevyu_budete školením Luis o tom, jaké druhy projevyy by se měly pro tento záměr odhadnout. 
 
     [!INCLUDE [Do not use too few utterances](../../../includes/cognitive-services-luis-too-few-example-utterances.md)]    
 
-## <a name="add-example-utterances-to-the-none-intent"></a>Přidání projevů příklad na hodnotu None záměru 
+## <a name="add-example-utterances-to-the-none-intent"></a>Přidat příklad projevy k záměru None 
 
 [!INCLUDE [Follow these steps to add the None intent to the app](../../../includes/cognitive-services-luis-create-the-none-intent.md)]
 
-## <a name="train-the-app-before-testing-or-publishing"></a>Trénování před testování a publikování aplikace
+## <a name="train-the-app-before-testing-or-publishing"></a>Výuka aplikace před testováním nebo publikováním
 
 [!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
-## <a name="publish-the-app-to-query-from-the-endpoint"></a>Publikujte aplikaci do dotaz z koncového bodu
+## <a name="publish-the-app-to-query-from-the-endpoint"></a>Publikování aplikace pro dotaz z koncového bodu
 
 [!INCLUDE [LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)] 
 
-## <a name="get-intent-prediction-from-the-endpoint"></a>Získání záměru předpovědi z koncového bodu
+## <a name="get-intent-prediction-from-the-endpoint"></a>Získání předpovědi záměru z koncového bodu
 
 1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
@@ -129,17 +129,17 @@ Tato aplikace má několik záměrů.
     }
     ```
 
-    `verbose=true` Parametr querystring znamená, že zahrnují **všechny záměry** ve výsledcích dotazu aplikaci. Pole entit je prázdné, protože tato aplikace momentálně nemá žádné entity. 
+    Parametr QueryString znamená, že zahrnuje **všechny záměry** ve výsledcích dotazu aplikace. `verbose=true` Pole entit je prázdné, protože tato aplikace momentálně nemá žádné entity. 
 
     Výsledek JSON identifikuje záměr s nejvyšším skóre jako vlastnost **`topScoringIntent`** . Všechna skóre jsou v rozmezí 1 až 0, přičemž čím blíže je skóre hodnotě 1, tím je lepší. 
 
-## <a name="create-intent-for-job-applications"></a>Vytvořit záměr pro úlohy aplikací
+## <a name="create-intent-for-job-applications"></a>Vytvoření záměru pro aplikace úloh
 
-Vraťte se na portál služby LUIS a vytvořit nové záměr k určení, zda je uživatel utterance o použití pro úlohu.
+Vraťte se na portál LUIS a vytvořte nový záměr, abyste zjistili, jestli se uživatel utterance o použití pro úlohu.
 
 1. V nabídce vpravo nahoře vyberte **Build** (Sestavení) a vraťte se k vytváření aplikace.
 
-1. Vyberte **záměry** v levé nabídce zobrazíte seznam záměry.
+1. V  nabídce vlevo můžete vybrat záměry a získat tak seznam záměrů.
 
 1. Vyberte **Create new intent** (Vytvořit nový záměr) a zadejte název `ApplyForJob`. 
 
@@ -151,19 +151,19 @@ Vraťte se na portál služby LUIS a vytvořit nové záměr k určení, zda je 
     |--|
     |Fill out application for Job 123456 (Vyplňte přihlášku pro pozici 123456)|
     |Here is my c.v. (Tady je můj životopis) for position 654234 (na pozici 654234)|
-    |Tady je Moje pokračovat na částečný úvazek recepční příspěvek.|
-    |Můžu jsem použití pro úlohu helpdesku obrázky s této doklady.|
-    |Žádající lékařského Fakultě léto pro výzkum a vývoj v San Diegu|
-    |Požaduji odeslání svůj životopis dočasné umístění v stravování.|
-    |Můžu jsem odesílání Moje pokračovat pro nový tým Autocar v Kolumbův, raději neříkám:|
+    |Tady je moje obnovení pro recepční příspěvek na částečný úvazek.|
+    |Mám v rámci této paperwork použít pro úlohu s uměleckými pracovníky.|
+    |Používám pro školní školní účely v oblasti výzkumu a vývoje v San Diegu|
+    |Žádám se o odeslání životopisu na dočasnou pozici v stravování.|
+    |Odesílám novou Autocar týmu v Columbus.|
     |I want to apply for the new accounting job (Chci se přihlásit na novou pozici v účetnictví)|
-    |Tady je doklady lékařského 456789 úlohy monitorování účtů|
+    |Paperwork v účtování úlohy 456789 účtů|
     |Job 567890 and my paperwork (Pracovní pozice 567890 a moje doklady)|
-    |Moje lístky pro monitorování účtů lékařského tulsa jsou připojené.|
-    |Moje doklady pozice doručování svátek|
-    |Odešlete své obnovit pro nové úlohy monitorování účtů v Praze|
+    |Připojí se moje publikace pro učně účetní tulsay.|
+    |Můj paperwork pro pozici svátků|
+    |Odešlete prosím nové úlohy monitorování účtů v Seattlu.|
     |Submit resume for engineering position (Odeslat životopis pro pozici technického pracovníka)|
-    |This is my c.v. pro metodu post 234123 v Tampa.|
+    |This is my c.v. pro post 234123 v Tampa.|
 
 <!--
 
@@ -181,7 +181,7 @@ Vraťte se na portál služby LUIS a vytvořit nové záměr k určení, zda je 
 
 [!INCLUDE [LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)] 
 
-## <a name="get-intent-prediction-again"></a>Získání záměru předpovědi znovu
+## <a name="get-intent-prediction-again"></a>Získat předpověď záměru
 
 1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
@@ -214,9 +214,9 @@ Vraťte se na portál služby LUIS a vytvořit nové záměr k určení, zda je 
 
     Výsledky zahrnují nový záměr **ApplyForJob** i už existující záměry. 
 
-## <a name="client-application-next-steps"></a>Další kroky klientské aplikace
+## <a name="client-application-next-steps"></a>Klient-aplikace – další kroky
 
-Poté, co LUIS vrátí odpověď JSON, služba LUIS s touto žádostí skončila. Služba LUIS neposkytuje odpovědi na promluvy uživatelů, pouze identifikuje, na jaký typ informací směřuje dotaz v přirozeném jazyce. Klientská aplikace, jako jsou Azure Bot poskytuje konverzační následnou akci. 
+Poté, co LUIS vrátí odpověď JSON, služba LUIS s touto žádostí skončila. Služba LUIS neposkytuje odpovědi na promluvy uživatelů, pouze identifikuje, na jaký typ informací směřuje dotaz v přirozeném jazyce. Následná následné konverzace poskytuje klientská aplikace, jako je třeba robot Azure. 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
@@ -225,17 +225,17 @@ Poté, co LUIS vrátí odpověď JSON, služba LUIS s touto žádostí skončila
 ## <a name="related-information"></a>Související informace
 
 * [Typy entit](luis-concept-entity-types.md)
-* [Trénování](luis-how-to-train.md)
+* [Postup výuky](luis-how-to-train.md)
 * [Jak publikovat](luis-how-to-publish-app.md)
-* [Testování v portálu služby LUIS](luis-interactive-test.md)
-* [Azure Bot](https://docs.microsoft.com/azure/bot-service/?view=azure-bot-service-4.0)
+* [Testování na portálu LUIS](luis-interactive-test.md)
+* [Robot Azure bot](https://docs.microsoft.com/azure/bot-service/?view=azure-bot-service-4.0)
 
 
 ## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste vytvořili aplikaci Human Resources, dva záměry, přidali jste ukázkové promluvy jednotlivých záměrů, přidali jste ukázkové promluvy do záměru None a vytrénovali, publikovali a otestovali jste aplikaci na koncovém bodu. Toto jsou základní kroky vytvoření modelu LUIS. 
 
-Pokračovat v této aplikaci [přidání jednoduchý seznam entit a frází](luis-quickstart-primary-and-secondary-data.md).
+Pokračujte v této aplikaci a [přidejte jednoduchý seznam entit a frází](luis-quickstart-primary-and-secondary-data.md).
 
 > [!div class="nextstepaction"]
 > [Přidání předem připravených záměrů a entit do této aplikace](luis-tutorial-prebuilt-intents-entities.md)

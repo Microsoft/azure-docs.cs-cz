@@ -1,7 +1,7 @@
 ---
-title: Vzory přidat přesnost
-titleSuffix: Language Understanding - Azure Cognitive Services
-description: Přidejte vzor šablony zvyšte přesnost předpovědi v aplikacích Language Understanding (LUIS).
+title: Vzory – přesnost přidávání – LUIS
+titleSuffix: Azure Cognitive Services
+description: Přidejte šablony vzorů, aby se zlepšila přesnost předpovědi v aplikacích Language Understanding (LUIS).
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,15 +11,15 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: diberry
-ms.openlocfilehash: 202b9632b7a7faaf955874a0300edbe5134b7fa1
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f0e801afde240d8b2d6e0798e6894b2e83f9c5cb
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60196661"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560442"
 ---
-# <a name="how-to-add-patterns-to-improve-prediction-accuracy"></a>Jak přidat vzorce, a zvyšte přesnost předpovědi
-Po aplikaci LUIS obdrží koncový bod projevy, použijte [vzor](luis-concept-patterns.md) zvyšte přesnost předpovědi pro projevy, které se zjistí vzor v pořadí slov a požadované aplikace word. Vzory použít konkrétní [syntaxe](luis-concept-patterns.md#pattern-syntax) označující umístění: [entity](luis-concept-entity-types.md), entity [role](luis-concept-roles.md)a volitelný text, který.
+# <a name="how-to-add-patterns-to-improve-prediction-accuracy"></a>Postup přidání vzorů pro zlepšení přesnosti předpovědi
+Jakmile aplikace LUIS přijme koncový bod projevy, použijte [vzorek](luis-concept-patterns.md) , který vylepšit přesnost předpovědi pro projevy, která odhalí vzor v textovém pořadí a v textovém výběru. Vzory používají specifickou [syntaxi](luis-concept-patterns.md#pattern-syntax) k označení umístění: [entity](luis-concept-entity-types.md), [role](luis-concept-roles.md)entit a volitelného textu.
 
 ## <a name="add-template-utterance-to-create-pattern"></a>Přidat utterance šablony k vytvoření vzorku
 1. Otevřete aplikaci tak, že vyberete jeho název na **Moje aplikace** stránce a pak vyberte **vzory** v levém panelu klikněte v části **zvýšit výkon aplikace**.
@@ -34,7 +34,7 @@ Po aplikaci LUIS obdrží koncový bod projevy, použijte [vzor](luis-concept-pa
 
     ![Snímek obrazovky pro model entity](./media/luis-how-to-model-intent-pattern/patterns-3.png)
 
-    Pokud entita obsahuje [role](luis-concept-roles.md), naznačit roli s jedinou dvojtečku `:`po název entity, jako `{Location:Origin}`. Seznam rolí pro entity, které se zobrazí v seznamu. Vyberte roli a pak stiskněte Enter. 
+    Pokud vaše entita obsahuje [roli](luis-concept-roles.md), uveďte roli s jednou dvojtečkou `:`, za `{Location:Origin}`názvem entity, jako je například. Seznam rolí pro entity, které se zobrazí v seznamu. Vyberte roli a pak stiskněte Enter. 
 
     ![Snímek obrazovky entity s rolí](./media/luis-how-to-model-intent-pattern/patterns-4.png)
 
@@ -56,22 +56,22 @@ Po přidání, úpravy, odebrat nebo změnit přiřazení vzor, [trénování](l
 <a name="remove-entity-or-intent-filter"></a>
 <a name="add-pattern-from-existing-utterance-on-intent-or-entity-page"></a>
 
-## <a name="use-contextual-toolbar"></a>Použít kontextové panel nástrojů
+## <a name="use-contextual-toolbar"></a>Použít kontextový panel nástrojů
 
-Kontextové nástrojů nad seznamem vzory vám umožní:
+Kontextový panel nad seznamem vzorů vám umožní:
 
-* Hledat vzorce
+* Vyhledat vzory
 * Úprava vzoru
 * Změnit přiřazení jednotlivých vzor, který má jiný záměr
 * Znovu přiřadit několik vzory na různých záměr
-* Odstranění jeden vzor
+* Odstranění – jeden vzor
 * Odstranit některé postupy
 * Vzor seznam můžete filtrovat podle entity
-* Filtr vzor – seznam – podle záměr
+* Filtr – vzor – seznam po záměru
 * Odebrat entitu nebo záměru filtru
 * Přidat model z existující utterance na stránce záměr nebo entity
 
 ## <a name="next-steps"></a>Další postup
 
-* Zjistěte, jak [sestavení vzor](luis-tutorial-pattern.md) se pattern.any a rolemi kurzu.
+* Naučte se [vytvářet vzor](luis-tutorial-pattern.md) pomocí vzoru. jakékoli role a s kurzem.
 * Zjistěte, jak [trénování](luis-how-to-train.md) vaší aplikace.

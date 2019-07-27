@@ -10,14 +10,13 @@ ms.topic: quickstart
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-manager: craigg
 ms.date: 12/18/2018
-ms.openlocfilehash: f1eac83f2b5460bf56ddff1bf15d9180adb49a48
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: 63ed2c5c334aef8f6281ee34ec4ed6e47ca8521a
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66382279"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68569101"
 ---
 # <a name="quickstarts-azure-sql-database-connect-and-query"></a>Šablony rychlý start: Azure SQL Database připojení a dotazování
 
@@ -39,7 +38,7 @@ Následující dokument obsahuje odkazy na příklady Azure, které ukazují př
 |[PHP](sql-database-connect-query-php.md)|Tento rychlý start ukazuje použití PHP k vytvoření programu pro připojení k databázi Azure SQL a použití příkazů jazyka Transact-SQL k dotazování dat.|
 |[Python](sql-database-connect-query-python.md)|Tento rychlý start ukazuje použití Pythonu pro připojení k databázi Azure SQL a použití příkazů jazyka Transact-SQL k dotazování dat. |
 |[Ruby](sql-database-connect-query-ruby.md)|Tento rychlý start ukazuje použití Ruby k vytvoření programu pro připojení k databázi Azure SQL a použití příkazů jazyka Transact-SQL k dotazování dat.|
-|[R](sql-database-connect-query-r.md)|Tento rychlý start ukazuje použití jazyka R s Azure SQL Database Machine Learning Services k vytvoření programu pro připojení k databázi Azure SQL a použití příkazů jazyka Transact-SQL k dotazování dat.|
+|[R](sql-database-connect-query-r.md)|Tento rychlý Start ukazuje použití jazyka R s Azure SQL Database Machine Learning Services k vytvoření programu pro připojení k databázi SQL Azure a použití příkazů jazyka Transact-SQL k dotazování dat.|
 |||
 
 ## <a name="tls-considerations-for-sql-database-connectivity"></a>Důležité informace o použití protokolu TLS pro připojení k databázi SQL
@@ -56,44 +55,44 @@ Ovladače od jiných výrobců nemusí ve výchozím nastavení protokol TLS pou
 
 ## <a name="libraries"></a>Knihovny
 
-Pro připojení ke službě Azure SQL Database můžete použít různé knihoven a architektur. Podívejte se na naše [získat tutoriály Začínáme](https://aka.ms/sqldev) rychle začít s programovacích jazyků, jako je C#, Java, Node.js, PHP a Pythonu. Začnete vytvářejte aplikace s použitím SQL serveru v Linuxu nebo Windows nebo Dockeru v systému macOS.
+K připojení k Azure SQL Database můžete použít různé knihovny a architektury. [Výukové kurzy](https://aka.ms/sqldev) Začínáme vám pomohou rychle začít s programovacími jazyky C#, jako jsou, Java, Node. js, php a Python. Pak sestavte aplikaci pomocí SQL Server on Linux nebo Windows nebo Docker v macOS.
 
-V následující tabulce jsou uvedeny knihovny pro připojení nebo *ovladače* , klientské aplikace můžou použít z celé řady jazyků k připojení a použití SQL serveru spuštěné místně nebo v cloudu. Můžete je použít v systému Linux, Windows nebo Docker a použít pro připojení k Azure SQL Database a Azure SQL Data Warehouse. 
+Následující tabulka obsahuje seznam knihoven nebo *ovladačů* připojení, které klientské aplikace mohou používat z různých jazyků pro připojení a používání SQL Server v místním prostředí nebo v cloudu. Můžete je používat v systémech Linux, Windows nebo Docker a používat je k připojení k Azure SQL Database a Azure SQL Data Warehouse. 
 
-| Jazyk | Platforma | Další materiály | Ke stažení | Začínáme |
+| Jazyk | Platforma | Další zdroje | Ke stažení | Začínáme |
 | :-- | :-- | :-- | :-- | :-- |
 | C# | Windows, Linux, macOS | [Microsoft ADO.NET for SQL Server](https://docs.microsoft.com/sql/connect/ado-net/microsoft-ado-net-for-sql-server) | [Stáhnout](https://www.microsoft.com/net/download/) | [Začínáme](https://www.microsoft.com/sql-server/developer-get-started/csharp/ubuntu)
 | Java | Windows, Linux, macOS | [Ovladač Microsoft JDBC pro SQL Server](https://msdn.microsoft.com/library/mt484311.aspx) | [Stáhnout](https://go.microsoft.com/fwlink/?linkid=852460) |  [Začínáme](https://www.microsoft.com/sql-server/developer-get-started/java/ubuntu)
 | PHP | Windows, Linux, macOS| [Ovladač PHP SQL pro SQL Server](https://docs.microsoft.com/sql/connect/php/microsoft-php-driver-for-sql-server) | [Stáhnout](https://docs.microsoft.com/sql/connect/php/download-drivers-php-sql-server) | [Začínáme](https://www.microsoft.com/sql-server/developer-get-started/php/ubuntu/)
-| Node.js | Windows, Linux, macOS | [Ovladač Node.js pro SQL Server](https://msdn.microsoft.com/library/mt652093.aspx) | [Instalace](https://msdn.microsoft.com/library/mt652094.aspx) |  [Začínáme](https://www.microsoft.com/sql-server/developer-get-started/node/ubuntu)
+| Node.js | Windows, Linux, macOS | [Ovladač Node. js pro SQL Server](https://msdn.microsoft.com/library/mt652093.aspx) | [Instalace](https://msdn.microsoft.com/library/mt652094.aspx) |  [Začínáme](https://www.microsoft.com/sql-server/developer-get-started/node/ubuntu)
 | Python | Windows, Linux, macOS | [Python SQL driver](https://msdn.microsoft.com/library/mt652092.aspx) | Možnosti instalace: <br/> \* [pymssql](https://msdn.microsoft.com/library/mt694094.aspx) <br/> \* [pyodbc](https://msdn.microsoft.com/library/mt763257.aspx) |  [Začínáme](https://www.microsoft.com/sql-server/developer-get-started/python/ubuntu)
-| Ruby | Windows, Linux, macOS | [Ovladače Ruby pro SQL Server](https://msdn.microsoft.com/library/mt691981.aspx) | [Instalace](https://msdn.microsoft.com/library/mt711041.aspx) | [Začínáme](https://www.microsoft.com/sql-server/developer-get-started/ruby/ubuntu)
+| Ruby | Windows, Linux, macOS | [Ovladač Ruby pro SQL Server](https://msdn.microsoft.com/library/mt691981.aspx) | [Instalace](https://msdn.microsoft.com/library/mt711041.aspx) | [Začínáme](https://www.microsoft.com/sql-server/developer-get-started/ruby/ubuntu)
 | C++ | Windows, Linux, macOS | [Ovladač Microsoft ODBC pro SQL Server](https://msdn.microsoft.com/library/mt654048(v=sql.1).aspx) | [Stáhnout](https://msdn.microsoft.com/library/mt654048(v=sql.1).aspx) |  
 
-V následující tabulce jsou uvedeny příklady architektur objektově relační mapování (ORM) a webová rozhraní, které klientské aplikace můžou použít s využitím SQL serveru spuštěné místně nebo v cloudu. Můžete použít rozhraní v systému Linux, Windows nebo Dockeru a použít pro připojení k SQL Database a SQL Data Warehouse. 
+V následující tabulce jsou uvedeny příklady rozhraní a webové architektury pro mapování relačních objektů (ORM), které klientské aplikace mohou používat s SQL Server spuštěnou místně nebo v cloudu. Můžete použít rozhraní v systémech Linux, Windows nebo Docker a použít je k připojení k SQL Database a SQL Data Warehouse. 
 
-| Jazyk | Platforma | ORM(s) |
+| Jazyk | Platforma | ORM (y) |
 | :-- | :-- | :-- |
 | C# | Windows, Linux, macOS | [Entity Framework](https://docs.microsoft.com/ef)<br>[Entity Framework Core](https://docs.microsoft.com/ef/core/index) |
-| Java | Windows, Linux, macOS |[Do režimu hibernace ORM](https://hibernate.org/orm)|
+| Java | Windows, Linux, macOS |[ORM – hibernace](https://hibernate.org/orm)|
 | PHP | Windows, Linux, macOS | [Laravel (Eloquent)](https://laravel.com/docs/eloquent)<br>[Doctrine](https://www.doctrine-project.org/projects/orm.html) |
 | Node.js | Windows, Linux, macOS | [Sequelize ORM](https://docs.sequelizejs.com) |
 | Python | Windows, Linux, macOS |[Django](https://www.djangoproject.com/) |
-| Ruby | Windows, Linux, macOS | [Aplikace Ruby on Rails](https://rubyonrails.org/) |
+| Ruby | Windows, Linux, macOS | [Ruby na železnici](https://rubyonrails.org/) |
 ||||
 
 ## <a name="next-steps"></a>Další postup
 
 - Informace o připojení k architektuře najdete v článku o [architektuře připojení k databázi Azure SQL](sql-database-connectivity-architecture.md).
-- Najít [ovladače systému SQL Server](https://msdn.microsoft.com/library/mt654049.aspx) , který slouží k připojení z klientské aplikace
-- Připojení k SQL Database:
+- Vyhledat [ovladače SQL Server](https://msdn.microsoft.com/library/mt654049.aspx) používané pro připojení z klientských aplikací
+- Připojit k SQL Database:
   - [Připojení k SQL Database s použitím rozhraní .NET (C#)](sql-database-connect-query-dotnet.md) 
   - [Připojení k SQL Database s použitím jazyka PHP](sql-database-connect-query-php.md) 
   - [Připojení k SQL Database s použitím prostředí Node.js](sql-database-connect-query-nodejs.md) 
   - [Připojení k SQL Database s použitím jazyka Java](sql-database-connect-query-java.md) 
   - [Připojení k SQL Database s použitím jazyka Python](sql-database-connect-query-python.md)
   - [Připojení k SQL Database s použitím prostředí Ruby](sql-database-connect-query-ruby.md)
-- Příklady kódu logiku pro opakování:
+- Příklady kódu logiky opakování:
   - [Odolné připojení k SQL pomocí ADO.NET][step-4-connect-resiliently-to-sql-with-ado-net-a78n]
   - [Odolné připojení k SQL pomocí PHP][step-4-connect-resiliently-to-sql-with-php-p42h]
 

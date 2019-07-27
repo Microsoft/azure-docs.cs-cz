@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý start: Syntetizace řeči, C# (.NET Core) – hlasové služby'
+title: 'Rychlý start: Rozpoznávání řeči, C# (.NET Core) – služba Speech'
 titleSuffix: Azure Cognitive Services
-description: Zjistěte, jak tak, aby odpovídaly řeči v C# v .NET Core ve Windows s použitím sadou SDK pro řeč
+description: Naučte se, jak v C# rámci .NET Core v systému Windows syntetizovat řeč pomocí sady Speech SDK
 services: cognitive-services
 author: yinhew
 manager: nitinme
@@ -10,23 +10,23 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 6/24/2019
 ms.author: yinhew
-ms.openlocfilehash: 7b4a018e38ca625e38dc1658a95d3ce0e677f711
-ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
+ms.openlocfilehash: b298e66674753e33a28fb3404e36e63b5baa8dff
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67467422"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68559241"
 ---
-# <a name="quickstart-synthesize-speech-with-the-speech-sdk-for-net-core"></a>Rychlý start: Syntetizace řeči se sadou SDK pro řeč pro .NET Core
+# <a name="quickstart-synthesize-speech-with-the-speech-sdk-for-net-core"></a>Rychlý start: Sada Speech SDK pro .NET Core syntetizuje řeč
 
-Rychlí průvodci jsou také k dispozici pro [rozpoznávání řeči](quickstart-csharp-dotnetcore-windows.md) a [překlad řeči](quickstart-translate-speech-dotnetcore-windows.md).
+K dispozici jsou také rychlé starty pro [rozpoznávání řeči](quickstart-csharp-dotnetcore-windows.md) a [Překlad řeči](quickstart-translate-speech-dotnetcore-windows.md).
 
-V tomto článku vytvoříte konzolovou aplikaci v jazyce C# pro .NET Core ve Windows s využitím sady Cognitive Services [Speech SDK](speech-sdk.md). Můžete syntetizace řeč z textu v reálném čase k vašemu počítači mluvčího. Tato aplikace je vytvořená pomocí [balíčku NuGet sady Speech SDK](https://aka.ms/csspeech/nuget) a sady Microsoft Visual Studio 2017 (libovolné edice).
+V tomto článku vytvoříte konzolovou aplikaci v jazyce C# pro .NET Core ve Windows s využitím sady Cognitive Services [Speech SDK](speech-sdk.md). Rozpoznávání řeči od textu v reálném čase do mluvčího počítače. Tato aplikace je vytvořená pomocí [balíčku NuGet sady Speech SDK](https://aka.ms/csspeech/nuget) a sady Microsoft Visual Studio 2017 (libovolné edice).
 
 > [!NOTE]
 > .NET Core je Open Source multiplatformní rozhraní .NET, které implementuje specifikace rozhraní [.NET Standard](https://docs.microsoft.com/dotnet/standard/net-standard).
 
-Klíč předplatného hlasové služby k dokončení tohoto rychlého startu potřebujete. Můžete ho získat zdarma. Zobrazit [hlasové služby si můžete vyzkoušet zdarma](get-started.md) podrobnosti.
+K dokončení tohoto rychlého startu budete potřebovat klíč předplatného služby Speech Services. Můžete ho získat zdarma. Další informace najdete v tématu o bezplatném pokusu o [hlasové služby](get-started.md) .
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -34,7 +34,7 @@ K tomuto rychlému startu potřebujete:
 
 * [Sada .NET Core SDK](https://dotnet.microsoft.com/download)
 * [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)
-* Klíč předplatného pro službu rozpoznávání řeči. [Získat zdarma](get-started.md).
+* Klíč předplatného Azure pro službu Speech Service. [Získejte je zdarma](get-started.md).
 
 ## <a name="create-a-visual-studio-project"></a>Vytvoření projektu ve Visual Studiu
 
@@ -62,18 +62,18 @@ K tomuto rychlému startu potřebujete:
 
     ![Snímek obrazovky s aplikací sady Visual Studio se zvýrazněnou možností Spustit ladění](media/sdk/qs-csharp-dotnetcore-windows-06-start-debugging.png "Spuštění aplikace s laděním")
 
-1. Zobrazí se okno konzoly vás vyzve k zadání nějaký text. Zadejte pár slov nebo věty. Text, který jste zadali se přenášejí do služeb řeči a syntetizovat do mluvené řeči, který přehraje na reproduktoru.
+1. Zobrazí se okno konzoly, které vás vyzve k zadání textu. Zadejte několik slov nebo větu. Text, který jste zadali, se přenáší do služeb řeči a syntetizuje se na řeč, který hraje na reproduktoru.
 
-    ![Snímek obrazovky výstup na konzole po úspěšné syntézu](media/sdk/qs-tts-csharp-dotnet-windows-console-output.png "výstupu konzoly po úspěšné syntézu")
+    ![Snímek obrazovky s výstupem konzoly po úspěšném Shrnutí](media/sdk/qs-tts-csharp-dotnet-windows-console-output.png "Výstup na konzole po úspěšném Shrnutí")
 
 ## <a name="next-steps"></a>Další postup
 
-Další ukázky, jako je například postup syntetizace převod řeči na zvukový soubor, jsou k dispozici na Githubu.
+Na GitHubu jsou k dispozici další ukázky, například jak syntetizovat řeč ke zvukovému souboru.
 
 > [!div class="nextstepaction"]
-> [Prozkoumejte C# ukázky na Githubu](https://aka.ms/csspeech/samples)
+> [Prozkoumejte C# ukázky na GitHubu](https://aka.ms/csspeech/samples)
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také:
 
-- [Přizpůsobení hlasová písma](how-to-customize-voice-font.md)
-- [Záznam hlasu ukázky](record-custom-voice-samples.md)
+- [Přizpůsobení hlasových písem](how-to-customize-voice-font.md)
+- [Záznam ukázek hlasu](record-custom-voice-samples.md)

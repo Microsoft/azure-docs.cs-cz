@@ -1,6 +1,6 @@
 ---
-title: Spolupráce s ostatními
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: Spolupráce s ostatními – LUIS
+titleSuffix: Azure Cognitive Services
 description: Vlastník aplikace můžete přidat spolupracovníky do aplikace. Tyto spolupracovníky můžete měnit model, natrénujete ho a publikovat aplikace.
 services: cognitive-services
 author: diberry
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 02/12/2019
 ms.author: diberry
-ms.openlocfilehash: f23212a854fb37dda89fd2bf6b223cf0dc69526b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 004bb979adcc0d7ba4860a917242e2219d7f1379
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60198692"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560471"
 ---
 # <a name="how-to-manage-authors-and-collaborators"></a>Jak spravovat autorů a spolupracovníci 
 
@@ -44,12 +44,12 @@ Zatímco LUIS v současné době nepodporuje převod vlastnictví, můžete expo
 
 ## <a name="azure-active-directory-resources"></a>Prostředky služby Azure Active Directory
 
-Pokud používáte [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/) (Azure AD) ve vaší organizaci, Language Understanding (LUIS) potřebuje oprávnění pro informace o přístupu vašich uživatelů, pokud chtějí používat službu LUIS. Prostředky, které vyžaduje služba LUIS jsou minimální. 
+Pokud ve vaší organizaci používáte [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/) (Azure AD), Language UNDERSTANDING (Luis) potřebuje oprávnění k informacím o přístupu vašich uživatelů, když chtějí používat Luis. Prostředky, které vyžaduje služba LUIS jsou minimální. 
 
 Podrobný popis zobrazí při pokusu o přihlášení pomocí účtu, který má souhlas správce, nebo není vyžadují souhlas správce, jako je například souhlas správce:
 
-* Umožňuje přihlášení k aplikaci pomocí účtu organizace a umožňuje aplikaci číst váš profil. Také to umožňuje aplikaci číst základní informace o firmě. Díky tomu LUIS oprávnění ke čtení dat základního profilu, jako je například ID uživatele, e-mailu, název
-* Umožňuje aplikaci zobrazovat a aktualizovat data, i když se aplikace nejsou aktuálně používá. Oprávnění je potřeba aktualizovat přístupový token uživatele.
+* Umožňuje přihlášení k aplikaci pomocí účtu organizace a umožňuje aplikaci číst váš profil. Také to umožňuje aplikaci číst základní informace o firmě. To dává LUIS oprávnění ke čtení dat základních profilů, jako je ID uživatele, e-mail, jméno
+* Umožňuje aplikaci zobrazovat a aktualizovat data, i když se aplikace nejsou aktuálně používá. K aktualizaci přístupového tokenu uživatele se vyžaduje oprávnění.
 
 
 ## <a name="azure-active-directory-tenant-user"></a>Uživatel tenanta Azure Active Directory
@@ -59,16 +59,16 @@ LUIS používá standardní toku souhlasu Azure Active Directory (Azure AD).
 Správce klienta by měl spolupracovat přímo s uživatele, který potřebuje udělení přístupu k použití LUIS ve službě Azure AD. 
 
 * Nejprve uživatel přihlásí do LUIS a vidí v místním dialogovém okně, které vyžadují schválení správce. Uživatel kontaktuje správce tenanta, než budete pokračovat. 
-* Druhý správce klienta do LUIS přihlásí a zobrazí automaticky otevíraný dialog toku souhlasu. Toto je dialogové okno Správce musí udělit oprávnění pro uživatele. Jakmile správce přijímá oprávnění, uživatel je moci pokračovat s LUIS. Pokud správce tenanta se přihlaste se k LUIS, můžete přístup správce [souhlas](https://account.activedirectory.windowsazure.com/r#/applications) LUIS, je znázorněno na následujícím snímku obrazovky. Všimněte si, seznam je filtrovaný pro položky, které obsahují název `LUIS`.
+* Druhý správce klienta do LUIS přihlásí a zobrazí automaticky otevíraný dialog toku souhlasu. Toto je dialogové okno Správce musí udělit oprávnění pro uživatele. Jakmile správce přijímá oprávnění, uživatel je moci pokračovat s LUIS. Pokud se správce tenanta nebude přihlašovat k LUIS, může správce získat přístup k [souhlasu](https://account.activedirectory.windowsazure.com/r#/applications) pro Luis, které vidíte na následujícím snímku obrazovky. Všimněte si, že seznam je filtrovaný na položky, které `LUIS`obsahují název.
 
 ![Oprávnění Azure active directory web aplikace](./media/luis-how-to-collaborate/tenant-permissions.png)
 
-Pokud správce tenanta požaduje pouze určití uživatelé mohli používat službu LUIS, existuje několik možných řešení:
-* Udělení souhlasu"admin" (souhlas pro všechny uživatele služby Azure AD), ale pak nastavte na "Ano" "přiřazení uživatelů povinné" v části Vlastnosti podnikové aplikace a nakonec přiřadit nebo přidat jenom požadovaného uživatele k aplikaci. Pomocí této metody správce je stále poskytuje "souhlas správce" do aplikace, je však možné spravovat uživatele, kteří k němu máte přístup.
-* Druhým řešením je použití [Azure AD Graph API](https://docs.microsoft.com/graph/azuread-identity-access-management-concept-overview) poskytnout souhlas s konkrétním uživatelům. 
+Pokud chce správce tenanta používat LUIS jenom někteří uživatelé, existuje několik možných řešení:
+* Udělení souhlasu správce (souhlasu se všemi uživateli Azure AD), ale pak nastavte na Ano, aby se přiřazení uživatelů vyžadovalo v části vlastnosti podnikové aplikace, a nakonec přiřaďte nebo přidejte do aplikace jenom ty, které jsou k tomu potřeba. V této metodě správce stále poskytuje aplikaci souhlas správce, ale je možné řídit uživatele, kteří k nim mají přístup.
+* Druhým řešením je použití [služby Azure AD Graph API](https://docs.microsoft.com/graph/azuread-identity-access-management-concept-overview) k poskytnutí souhlasu každému konkrétnímu uživateli. 
 
-Další informace o uživatelů Azure active directory a vyjádření souhlasu: 
-* [Omezit aplikace](../../active-directory/develop/howto-restrict-your-app-to-a-set-of-users.md) pro skupinu uživatelů
+Další informace o uživatelích a souhlasu Azure Active Directory: 
+* [Omezení aplikace](../../active-directory/develop/howto-restrict-your-app-to-a-set-of-users.md) na sadu uživatelů
 
 ### <a name="user-accounts-with-multiple-emails-for-collaborators"></a>Uživatelské účty s více e-mailů pro spolupracovníky.
 

@@ -1,6 +1,6 @@
 ---
-title: Příklad Powershellu – vytvoření izolované databáze ve službě Azure SQL Database | Dokumentace Microsoftu
-description: Ukázkový skript Azure Powershellu pro vytvoření izolované databáze ve službě Azure SQL Database
+title: Příklad PowerShellu – vytvoření jedné databáze v Azure SQL Database | Microsoft Docs
+description: Azure PowerShell ukázkový skript pro vytvoření jedné databáze v Azure SQL Database
 services: sql-database
 ms.service: sql-database
 ms.subservice: single-database
@@ -10,16 +10,15 @@ ms.topic: sample
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-manager: craigg
 ms.date: 03/12/2019
-ms.openlocfilehash: 3eeedd87f8cfb734c81a238a1a8a6295145f0241
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.openlocfilehash: 7aa38f61d74a5418b4c33fef550f70ba4254e00d
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66729425"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68569998"
 ---
-# <a name="use-powershell-to-create-a-single-azure-sql-database-and-configure-a-sql-database-server-firewall-rule"></a>Vytvoření izolované databáze Azure SQL a nakonfigurujte pravidlo brány firewall serveru SQL Database pomocí Powershellu
+# <a name="use-powershell-to-create-a-single-azure-sql-database-and-configure-a-sql-database-server-firewall-rule"></a>Použití PowerShellu k vytvoření jedné databáze SQL Azure a konfiguraci pravidla brány firewall pro SQL Database Server
 
 Tento ukázkový skript PowerShellu vytvoří databázi Azure SQL a nakonfiguruje pravidlo brány firewall na úrovni serveru. Po úspěšném spuštění skriptu bude služba SQL Database přístupná ze všech služeb Azure a nakonfigurovaných IP adres.
 
@@ -27,7 +26,7 @@ Tento ukázkový skript PowerShellu vytvoří databázi Azure SQL a nakonfiguruj
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Pokud se rozhodnete nainstalovat a používat PowerShell místně, v tomto kurzu vyžaduje AZ PowerShell 1.4.0 nebo novější. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzAccount` pro vytvoření připojení k Azure.
+Pokud se rozhodnete nainstalovat a používat PowerShell místně, musíte použít AZ PowerShell 1.4.0 nebo novější. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzAccount` pro vytvoření připojení k Azure.
 
 ## <a name="sample-script"></a>Ukázkový skript
 
@@ -35,7 +34,7 @@ Pokud se rozhodnete nainstalovat a používat PowerShell místně, v tomto kurzu
 
 ## <a name="clean-up-deployment"></a>Vyčištění nasazení
 
-Použijte následující příkaz k odebrání skupiny prostředků a všechny prostředky, které s ním spojená.
+Pomocí následujícího příkazu odeberte skupinu prostředků a všechny k ní přidružené prostředky.
 
 ```powershell
 Remove-AzResourceGroup -ResourceGroupName $resourcegroupname
@@ -48,7 +47,7 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 | Příkaz | Poznámky |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
-| [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | Vytvoří server služby SQL Database, který je hostitelem elastický fond nebo izolovanou databázi. |
+| [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | Vytvoří server SQL Database, který hostuje jednu databázi nebo elastický fond. |
 | [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) | Vytvoří pravidlo brány firewall umožňující přístup ke všem databázím SQL na serveru ze zadaného rozsahu IP adres. |
 | [New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase) | Vytvoří izolovanou databázi nebo elastický fond. |
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |

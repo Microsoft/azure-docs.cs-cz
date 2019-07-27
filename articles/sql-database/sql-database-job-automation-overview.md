@@ -1,6 +1,6 @@
 ---
-title: Azure automation úlohy SQL | Dokumentace Microsoftu
-description: Použití úlohy automatizace ke spouštění skriptů Transact-SQL (T-SQL) mezi sadu jednu nebo více databází Azure SQL
+title: Automatizace úloh Azure SQL | Microsoft Docs
+description: Použití automatizace úloh ke spouštění skriptů jazyka Transact-SQL (T-SQL) v rámci jedné nebo více databází SQL Azure
 services: sql-database
 ms.service: sql-database
 ms.custom: ''
@@ -9,95 +9,94 @@ ms.topic: overview
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlr
-manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 4e80bbc868376a41212d924bd31df6ac70a52ded
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 677d9b5a8ca837288755ab098fbccd8a5b7ddacd
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60702988"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68567859"
 ---
-# <a name="automate-management-tasks-using-database-jobs"></a>Automatizace úloh správy pomocí úlohy databáze
+# <a name="automate-management-tasks-using-database-jobs"></a>Automatizace úloh správy pomocí databázových úloh
 
-Azure SQL Database vám umožňuje vytvářet a plánovat úlohy, které může pravidelně provést jeden nebo více databází, které ke spuštění dotazů T-SQL a provádění úloh údržby. Každá úloha zaznamená stav spuštění a také automaticky opakuje operace, pokud dojde k žádné chybě.
-Můžete definovat cílovou databázi nebo skupiny databází Azure SQL, ve kterém se spustí úlohy a také nastavit plány, které ke spuštění úlohy.
-Úloha zpracuje úloh přihlášení do cílové databáze. Můžete také definujte, udržovat a zachovat skriptů Transact-SQL, který se spustí v rámci skupiny databází Azure SQL.
+Azure SQL Database vám umožní vytvářet a plánovat úlohy, které se můžou pravidelně provádět v jedné nebo mnoha databázích, aby se daly spouštět dotazy T-SQL a provádět úlohy údržby. Každá úloha zaznamená stav spuštění a také automaticky opakuje operace, pokud dojde k nějaké chybě.
+Můžete definovat cílovou databázi nebo skupiny databází Azure SQL, kde se úloha spustí, a také definovat plány pro spuštění úlohy.
+Úloha zpracovává úlohu přihlášení do cílové databáze. Můžete také definovat, udržovat a zachovat skripty jazyka Transact-SQL, které se mají spouštět napříč skupinou databází SQL Azure.
 
 ## <a name="when-to-use-automated-jobs"></a>Kdy použít automatizované úlohy
 
-Existuje několik scénářů, když můžete použít automatizaci úloh:
+K dispozici je několik scénářů, kdy můžete použít automatizaci úloh:
 
-- Automatizace úloh správy a pak naplánovat spuštění každý den v týdnu po hodiny atd.
+- Automatizujte úlohy správy a naplánujte, aby se spouštěly každý den v týdnu, a to po hodinách atd.
   - Nasazování změn schématu, správa přihlašovacích údajů, shromažďování dat o výkonu nebo shromažďování telemetrických dat tenantů (zákazníků).
-  - Aktualizace referenčních dat (informace o běžných napříč všemi databázemi), načítání dat z úložiště objektů Blob v Azure.
+  - Aktualizujte referenční data (společné informace napříč všemi databázemi), načtěte data z úložiště objektů BLOB v Azure.
   - Vylepšení výkonu dotazů díky opětovnému sestavení indexů. Konfigurace spouštění úloh pro kolekci databází nebo jejich opakovaného spouštění, například v době mimo špičku.
   - Průběžné shromažďování výsledků dotazů ze sady databází do centrální tabulky. Výkonové dotazy je možné spouštět průběžně a nakonfigurovat tak, aby aktivovaly další úlohy, které se mají provést.
 - Shromažďování dat pro účely generování sestav
   - Agregace dat z kolekce databází Azure SQL do jedné cílové tabulky.
   - Spouštění dlouhotrvajících dotazů na zpracování dat pro velkou sadu databází, například shromažďování telemetrických dat uživatelů. Výsledky se pro účely další analýzy shromažďují do jedné cílové tabulky.
 - Přesuny dat
-  - Vytvoření úlohy, které replikovat změny provedené ve vašich databázích jiných databází nebo shromažďovat aktualizace provedené v vzdálené databáze a použít změny v databázi.
-  - Vytvoření úlohy, které načítají data z nebo do vaší databáze pomocí SQL Server Integration Services (SSIS).
+  - Vytváření úloh, které replikují změny provedené ve vašich databázích do jiných databází nebo shromažďují aktualizace provedené ve vzdálených databázích a aplikují změny v databázi.
+  - Vytvářejte úlohy, které načítají data z databáze nebo do databází pomocí služba SSIS (SQL Server Integration Services) (SSIS).
 
 ## <a name="overview"></a>Přehled
 
-Následující technologie plánování úlohy jsou k dispozici ve službě Azure SQL Database:
+V Azure SQL Database jsou k dispozici následující technologie plánování úloh:
 
-- **Úlohy agenta serveru SQL** jsou plánování classic a testovány v těžkém provozu úloh SQL serveru součásti, která je k dispozici ve spravované instanci. Úlohy agenta serveru SQL nejsou k dispozici v izolované databáze.
-- **Úlohy elastic Database** jsou plánování úloh služby, které provádí vlastní úlohy na jeden nebo více databází Azure SQL Database.
+- **Úlohy agenta SQL** jsou klasické a s prošlou dostupností SQL Server komponenty plánování úloh, která je k dispozici ve spravované instanci. Úlohy agenta SQL nejsou k dispozici v izolovaných databázích.
+- **Úlohy elastic Database** jsou služba plánování úloh, která spouští vlastní úlohy v jedné nebo mnoha databázích SQL Azure.
 
-Stojí za povšimnutí několik rozdílů mezi Agent serveru SQL (k dispozici místně a v rámci SQL Database Managed Instance) a agenta Elastických úloh databáze (dostupné pro izolované databáze v Azure SQL database a databází v SQL Data Warehouse).
+Je potřeba si vymezit několik rozdílů mezi agentem SQL (dostupnými místně a jako součást SQL Database spravované instance) a Agent elastické úlohy databáze (k dispozici pro izolované databáze ve službě Azure SQL Database a databáze v SQL Data Warehouse).
 
-|  |Elastické úlohy  |Agent serveru SQL |
+|  |Elastické úlohy  |Agent SQL |
 |---------|---------|---------|
-|Rozsah     |  Libovolný počet databází Azure SQL nebo datových skladů ve stejném cloudu Azure jako agent úloh. Cíle může být v jiné servery SQL Database, předplatná a oblasti. <br><br>Cílové skupiny se můžou skládat z jednotlivých databází nebo datových skladů nebo ze všech databází na serveru, ve fondu nebo v mapě horizontálních oddílů (dynamicky se zjišťují za běhu úlohy). | Jednotlivé databáze ve stejné instanci systému SQL Server jako agent serveru SQL. |
+|Scope     |  Libovolný počet databází Azure SQL nebo datových skladů ve stejném cloudu Azure jako agent úloh. Cíle můžou být v různých SQL Databasech serverech, předplatných a/nebo oblastech. <br><br>Cílové skupiny se můžou skládat z jednotlivých databází nebo datových skladů nebo ze všech databází na serveru, ve fondu nebo v mapě horizontálních oddílů (dynamicky se zjišťují za běhu úlohy). | Všechny jednotlivé databáze ve stejné instanci SQL Server jako Agent SQL. |
 |Podporovaná rozhraní API a nástroje     |  Portál, PowerShell, T-SQL, Azure Resource Manager      |   T-SQL, SQL Server Management Studio (SSMS)     |
 
 ## <a name="sql-agent-jobs"></a>SQL Agent Jobs
 
-Úlohy agenta serveru SQL se zadaným řadu skriptů T-SQL na vaší databázi. Použití úloh k definování úlohou správy, můžete spouštět jednou nebo vícekrát a monitorovat úspěch nebo neúspěch.
-Úlohu můžete spustit na místním serveru jeden nebo víc vzdálených serverů. Úloha agenta SQL je vnitřní komponenta databázový stroj, který se spouští v rámci Managed Instance služby.
-Existuje několik klíčových konceptů v úlohy agenta serveru SQL:
+Úlohy agenta SQL jsou určeny řadou skriptů T-SQL pro vaši databázi. Použijte úlohy k definování úlohy správy, kterou je možné spustit jednou nebo vícekrát a monitorovat pro úspěch nebo neúspěch.
+Úlohu můžete spustit na jednom místním serveru nebo na několika vzdálených serverech. Úloha agenta SQL je interní součást databázového stroje, která je spuštěna v rámci služby Managed instance.
+V úlohách agenta SQL je několik klíčových konceptů:
 
-- **Kroky úlohy** sadu jeden nebo více kroků, které budou spuštěny v rámci úlohy. Pro každý krok úlohy můžete definovat strategii opakování a akce, která se stane při splnění krok úlohy úspěšné nebo neúspěšné.
-- **Plány** definovat provedení úlohy.
-- **Oznámení** vám umožňují definovat pravidla, která se použije k oznámení operátory prostřednictvím e-mailů po dokončení úlohy.
+- **Kroky úlohy** v jednom nebo několika krocích, které by měly být provedeny v rámci úlohy. Pro každý krok úlohy můžete definovat strategii opakování a akci, která se má provést, když se krok úlohy zdaří nebo selže.
+- **Plány** definují, kdy se má úloha spustit.
+- **Oznámení** umožňují definovat pravidla, která budou sloužit k oznamování operátorů prostřednictvím e-mailů po dokončení úlohy.
 
 ### <a name="job-steps"></a>Kroky úlohy
 
-Úloha agenta SQL kroky jsou pořadí akcí, které by se měl spustit agenta systému SQL. Každý krok obsahuje následující krok, který má být provedena, pokud v kroku úspěšné nebo neúspěšné, počet opakovaných pokusů v případě selhání.
-Agent SQL Server vám umožní vytvářet různé typy kroky úlohy, jako je například krok úlohy příkazů jazyka Transact-SQL, který se spustí v jedné dávce Transact-SQL na databázi nebo kroky příkaz/PowerShell operačního systému, které můžete spustit vlastní skript operačního systému, kroky úlohy služby SSIS umožňují načtení dat pomocí modulu runtime služby SSIS, nebo [replikace](sql-database-managed-instance-transactional-replication.md) kroky, které můžete publikovat změny z databáze do jiné databáze.
+Kroky úlohy agenta SQL jsou sekvence akcí, které by měl Agent SQL spustit. Každý krok má následující krok, který by měl být proveden, pokud je krok úspěšný nebo neúspěšný, počet opakovaných pokusů v případě selhání.
+Agent SQL vám umožňuje vytvořit různé typy kroků úlohy, jako je například krok úlohy Transact-SQL, který spouští jednu dávku Transact-SQL v databázi, nebo kroky příkazu nebo PowerShellu pro operační systém, které mohou spustit vlastní skript operačního systému, a kroky SSIS úlohy umožňují načíst data. pomocí modulu runtime SSIS nebo kroků [replikace](sql-database-managed-instance-transactional-replication.md) , které mohou publikovat změny z databáze do jiných databází.
 
-[Transakční replikace](sql-database-managed-instance-transactional-replication.md) je funkce databázového stroje, který vám umožní publikovat změny provedené na jeden nebo více tabulek v jedné databázi a publikovat/distribuovat na sadu předplatitelskými databázemi. Publikování změn je implementováno pomocí následující typy krok úlohy agenta SQL:
+[Transakční replikace](sql-database-managed-instance-transactional-replication.md) je funkce databázového stroje, která umožňuje publikovat změny provedené v jedné nebo několika tabulkách v jedné databázi a publikovat je nebo distribuovat do sady databází předplatitelů. Publikování změn je implementováno pomocí následujících typů kroků úlohy agenta SQL:
 
-- Čtečky protokolů transakcí.
-- Pořízení snímku.
-- Distributor.
+- Čtečka protokolu transakcí.
+- Snímek.
+- Rozdělovač.
 
-Jiné druhy kroky úlohy se aktuálně nepodporují, včetně:
+Jiné typy kroků úlohy se aktuálně nepodporují, včetně:
 
-- Krok úlohy slučovací replikace nepodporuje.
-- Čtečky fronty se nepodporuje.
-- Analysis Services nejsou podporovány.
+- Krok úlohy sloučení replikace se nepodporuje.
+- Čtečka fronty není podporována.
+- Analysis Services se nepodporují.
 
 ### <a name="job-schedules"></a>Plány úlohy
 
-Plán Určuje, kdy se spouští úloha. Více než jednu úlohu můžete spustit ve stejném plánu a více než jeden plán můžou použít stejné úloze.
-Plán můžete definovat dobu, kdy se spouští úloha následující podmínky:
+Plán určuje, kdy úloha běží. Ve stejném plánu může běžet víc než jedna úloha a u stejné úlohy se může použít víc než jeden plán.
+Plán může definovat následující podmínky pro čas spuštění úlohy:
 
-- Při každém restartování Instance (nebo při spuštění agenta systému SQL Server). Úloha se aktivuje po každé převzetí služeb při selhání.
-- Jednou, v určité datum a čas, což je užitečné pro provádění zpožděných některé úlohy.
-- Podle opakovaného plánu.
+- Pokaždé, když je instance restartována (nebo když se spustí Agent SQL Server). Úloha se aktivuje po každém převzetí služeb při selhání.
+- Jednou, v konkrétní datum a čas, který je vhodný pro opožděné provádění některých úloh.
+- Podle plánu opakování.
 
 > [!Note]
-> Managed Instance aktuálně není umožňuje spuštění úlohy, jakmile bude instance "nečinnosti".
+> Spravovaná instance aktuálně neumožňuje spustit úlohu, když je instance nečinná.
 
-### <a name="job-notifications"></a>Oznámení úlohy
+### <a name="job-notifications"></a>Oznámení úloh
 
-Úlohy agenta SQL serveru vám umožní dostávat oznámení, když se úloha úspěšně dokončí nebo se nezdařilo. Můžete dostávat e-mailové oznámení e-mailem.
+Úlohy agenta SQL vám umožňují dostávat oznámení, když se úloha úspěšně dokončí nebo se nezdařila. E-mailová oznámení můžete dostávat e-mailem.
 
-Nejprve je třeba nastavit e-mailový účet, který se použije k odesílání e-mailová oznámení a přiřadit účet e-mailový profil, který volá `AzureManagedInstance_dbmail_profile`, jak je znázorněno v následujícím příkladu:
+Nejdřív je potřeba nastavit e-mailový účet, který se použije k odeslání e-mailových oznámení a přiřadit účet k e-mailovému profilu s `AzureManagedInstance_dbmail_profile`názvem, jak je znázorněno v následující ukázce:
 
 ```sql
 -- Create a Database Mail account
@@ -122,7 +121,7 @@ EXECUTE msdb.dbo.sysmail_add_profileaccount_sp
     @sequence_number = 1;
 ```
 
-Bude také potřeba povolit na spravované instanci databázového e-mailu:
+Budete taky muset povolit Databázová pošta na spravované instanci:
 
 ```sql
 GO
@@ -135,10 +134,10 @@ GO
 RECONFIGURE 
 ```
 
-Operátor může upozornit, že se něco stalo s úlohy agenta serveru SQL. Operátor definuje kontaktní informace pro osoba zodpovědná za údržbu jeden nebo více spravovaných instancí. Odpovědnosti operátora nějakou dobu, jsou přiřazeny k jedna osoba.
-V systémech s více mi nebo SQL serverů můžete sdílet mnoho jednotlivce odpovědnosti operátora. Operátor neobsahuje informace o zabezpečení a nedefinuje objektu zabezpečení.
+Můžete upozornit operátora, že se něco stalo s vašimi úlohami agenta SQL. Operátor definuje kontaktní informace pro jednotlivce zodpovědného za údržbu jedné nebo více spravovaných instancí. V některých případech se odpovědnosti operátorů přiřazují jednomu jednotlivci.
+V systémech, které mají více spravovaných instancí nebo serverů SQL, mnoho jednotlivců může sdílet zodpovědnost za operátora. Operátor neobsahuje informace o zabezpečení a nedefinuje objekt zabezpečení.
 
-Můžete vytvořit operátory pomocí aplikace SSMS nebo příkazů jazyka Transact-SQL skriptu je znázorněno v následujícím příkladu:
+Můžete vytvořit operátory pomocí skriptu SSMS nebo jazyka Transact-SQL, který je znázorněn v následujícím příkladu:
 
 ```sql
 EXEC msdb.dbo.sp_add_operator 
@@ -147,7 +146,7 @@ EXEC msdb.dbo.sp_add_operator
         @email_address=N'mihajlo.pupin@contoso.com'
 ```
 
-Můžete upravit libovolnou úlohu a přiřadit operátor, který budete upozorněni prostřednictvím e-mailu, pokud se úloha dokončí, selže nebo úspěšné pomocí aplikace SSMS nebo následující skript jazyka Transact-SQL:
+Můžete upravit libovolnou úlohu a operátor přiřazení, který bude upozorněn e-mailem, pokud se úloha dokončí, selže nebo uspěje pomocí SSMS nebo následujícího skriptu Transact-SQL:
 
 ```sql
 EXEC msdb.dbo.sp_update_job @job_name=N'Load data using SSIS', 
@@ -155,19 +154,19 @@ EXEC msdb.dbo.sp_update_job @job_name=N'Load data using SSIS',
         @notify_email_operator_name=N'Mihajlo Pupun'
 ```
 
-### <a name="sql-agent-job-limitations"></a>Omezení úlohu agenta SQL
+### <a name="sql-agent-job-limitations"></a>Omezení úloh agenta SQL
 
-Některé funkce agenta SQL, které jsou k dispozici v systému SQL Server nejsou podporovány ve spravované instanci:
-- Nastavení agenta SQL jsou jen pro čtení. Postup `sp_set_agent_properties` není ve spravované instanci podporováno.
-- Povolit/zakázat agenta není aktuálně podporován ve spravované instanci. Vždy je spuštěn Agent serveru SQL.
-- Jsou podporovány jen částečně oznámení
-  - Operátor není podporován.
-  - Příkazu není podporován.
-  - Výstrahy se ještě nepodporuje.
-- Nepodporuje proxy servery.
-- Protokol událostí se nepodporuje.
+Některé funkce agenta SQL, které jsou k dispozici v SQL Server, nejsou ve spravované instanci podporovány:
+- Nastavení agenta SQL jsou jen pro čtení. Procedura `sp_set_agent_properties` není ve spravované instanci podporována.
+- Povolení nebo zakázání agenta není aktuálně podporováno ve spravované instanci. Agent SQL je vždycky spuštěný.
+- Oznámení jsou částečně podporovaná.
+  - Pager není podporován.
+  - NetSend se nepodporuje.
+  - Výstrahy ještě nejsou podporované.
+- Proxy servery nejsou podporovány.
+- Protokol událostí není podporován.
 
-Informace o agenta systému SQL Server najdete v tématu [agenta systému SQL Server](https://docs.microsoft.com/sql/ssms/agent/sql-server-agent).
+Informace o agentovi SQL Server najdete v tématu [agent SQL Server](https://docs.microsoft.com/sql/ssms/agent/sql-server-agent).
 
 ## <a name="elastic-database-jobs"></a>Úlohy elastické databáze
 
@@ -186,7 +185,7 @@ Následující obrázek ukazuje agenta úloh, který spouští úlohy napříč 
 |[**Agent elastických úloh**](#elastic-job-agent) |  Prostředek Azure, který vytvoříte pro spouštění a správu úloh.   |
 |[**Databáze úloh**](#job-database)    |    Databáze Azure SQL, do které agent úloh ukládá data související s úlohami, definice úloh atd.      |
 |[**Cílová skupina**](#target-group)      |  Sada serverů, fondu, databází a map horizontálních oddílů, pro které se má úloha spustit.       |
-|[**Úloha**](#job)  |  Úloha je jednotka práce, která se skládá z jedné nebo více [úlohy kroky](#job-step). Kroky úlohy určují skript T-SQL, který se má spustit, a také další podrobnosti potřebné ke spuštění skriptu.  |
+|[**Úloha**](#job)  |  Úloha je jednotka práce, která se skládá z jednoho nebo více [kroků úlohy](#job-step). Kroky úlohy určují skript T-SQL, který se má spustit, a také další podrobnosti potřebné ke spuštění skriptu.  |
 
 
 #### <a name="elastic-job-agent"></a>Agent elastických úloh
@@ -224,7 +223,7 @@ Při vytváření agenta úloh se v *databázi úloh* vytvoří schéma, tabulky
 
 *Cílová skupina* definuje sadu databází, pro které se provede určitý krok úlohy. Cílová skupina může obsahovat libovolný počet a kombinaci následujících položek:
 
-- **Server služby SQL Database** – Pokud je zadán server, všechny databáze, které existují na serveru v době provádění úlohy jsou součástí skupiny. Je potřeba zadat přihlašovací údaje k hlavní databázi, aby se mohla skupina určit a aktualizovat před spuštěním úlohy.
+- **SQL Database Server** – Pokud je zadaný server, všechny databáze, které existují na serveru v době provádění úlohy, jsou součástí skupiny. Je potřeba zadat přihlašovací údaje k hlavní databázi, aby se mohla skupina určit a aktualizovat před spuštěním úlohy.
 - **Elastický fond** – pokud je zadaný elastický fond, součástí skupiny jsou všechny databáze, které jsou v elastickém fondu v době spuštění úlohy. Stejně jako u serveru je potřeba zadat přihlašovací údaje k hlavní databázi, aby se mohla skupina aktualizovat před spuštěním úlohy.
 - **Izolovaná databáze** – zadejte jednu nebo několik samostatných databází, které mají být součástí skupiny.
 - **Mapa horizontálních oddílů** – databáze mapy horizontálních oddílů.
@@ -282,7 +281,7 @@ Pokud chcete zajistit, aby při spouštění úloh pro databáze v elastickém f
 
 ## <a name="next-steps"></a>Další postup
 
-- [Co je Agent systému SQL Server](https://docs.microsoft.com/sql/ssms/agent/sql-server-agent) 
-- [Vytvoření a správa elastických úloh](elastic-jobs-overview.md) 
+- [Co je Agent SQL Server](https://docs.microsoft.com/sql/ssms/agent/sql-server-agent) 
+- [Jak vytvářet a spravovat elastické úlohy](elastic-jobs-overview.md) 
 - [Vytváření a správa elastických úloh s využitím PowerShellu](elastic-jobs-powershell.md) 
 - [Vytváření a správa elastických úloh pomocí Transact-SQL (T-SQL)](elastic-jobs-tsql.md) 

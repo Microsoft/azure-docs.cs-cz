@@ -1,7 +1,7 @@
 ---
-title: Vytvoření pomocí rozhraní .NET – Content Moderator revize přepis videa
-titlesuffix: Azure Cognitive Services
-description: Vytvoření kontroly přepis videa pomocí Content Moderator SDK pro .NET
+title: Vytváření recenzí přepisů videa pomocí .NET-Content Moderator
+titleSuffix: Azure Cognitive Services
+description: Vytváření recenzí přepisů videa pomocí sady Content Moderator SDK pro .NET
 services: cognitive-services
 author: sanjeev3
 manager: nitinme
@@ -10,27 +10,27 @@ ms.subservice: content-moderator
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: sajagtap
-ms.openlocfilehash: fa782f687979f1d32cdf1c18bd08f6672e39adfe
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7bbdfb995ab6c819b0782a30e2ade4df4e5e0551
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64868593"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68564250"
 ---
-# <a name="create-video-transcript-reviews-using-net"></a>Vytvoření kontroly přepis videa pomocí .NET
+# <a name="create-video-transcript-reviews-using-net"></a>Vytváření recenzí přepisů videa pomocí .NET
 
-Tento článek obsahuje informace a ukázky kódu, které vám pomohou rychle začít používat [Content Moderator SDK pomocí jazyka C#](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) na:
+Tento článek poskytuje informace a ukázky kódu, které vám pomůžou rychle začít s používáním [Content moderator C# SDK s](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) :
 
-- Vytváření video kontroly pro lidských moderátorů
-- Přidat moderované přepisu k revizi
-- Publikování revize
+- Vytvoření recenze videa pro moderátory lidí
+- Přidání moderovaného přepisu do Revize
+- Publikování Revize
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Přihlaste se nebo si vytvořte účet v Content Moderatoru [nástroj pro recenze](https://contentmoderator.cognitive.microsoft.com/) lokality, pokud jste tak již neučinili.
-- Tento článek předpokládá, že máte [který video](video-moderation-api.md) a [vytvořili videa revize](video-reviews-quickstart-dotnet.md) v nástroj pro recenze lidské rozhodování. Chcete přidat nástroj pro recenze moderování videa záznamy o studiu.
+- Pokud jste to ještě neudělali, přihlaste se nebo vytvořte účet na webu [Nástroje pro kontrolu](https://contentmoderator.cognitive.microsoft.com/) Content moderator.
+- V tomto článku se předpokládá, že jste rozvedli [střední video](video-moderation-api.md) a [vytvořili jste kontrolu videa](video-reviews-quickstart-dotnet.md) v nástroji pro revize pro rozhodování o lidském rozhodování. Nyní chcete přidat do nástroje pro revize moderované přepisy videa.
 
-## <a name="ensure-your-api-key-can-call-the-review-api-job-creation"></a>Ujistěte se, že svůj klíč rozhraní API můžete volat rozhraní API pro kontrolu (vytvoření úlohy)
+## <a name="ensure-your-api-key-can-call-the-review-api-job-creation"></a>Ujistěte se, že klíč rozhraní API může volat rozhraní API pro revize (vytváření úloh).
 
 Pokud jste začínali na portálu Azure Portal, můžete po dokončení předchozích kroků získat dva klíče Content Moderatoru.
 
@@ -38,13 +38,13 @@ Pokud plánujete ve své ukázkové sadě SDK používat klíč rozhraní API po
 
 Pokud použijete klíč bezplatné zkušební verze vygenerovaný nástrojem pro kontrolu, váš účet nástroje pro kontrolu už klíč zná, proto není nutné dělat nic dalšího.
 
-## <a name="prepare-your-video-for-review"></a>Příprava vašeho videa k revizi
+## <a name="prepare-your-video-for-review"></a>Příprava videa na kontrolu
 
-Přidáte přepisu videa shrnutí. Video musí publikovaná online. Potřebujete její koncový bod streamování. Koncový bod streamování umožňuje přehrávač videa nástroj pro revize k přehrání videa.
+Přidejte přepis do recenze videa. Video se musí publikovat online. Potřebujete svůj koncový bod streamování. Koncový bod streamování umožňuje přehrání videa v přehrávači videa nástroje pro kontrolu.
 
-![Miniatura videa demo](images/ams-video-demo-view.PNG)
+![Miniatura ukázky videa](images/ams-video-demo-view.PNG)
 
-- Kopírování **URL** na tomto [Azure Media Services vyzkoušejte](https://aka.ms/azuremediaplayer?url=https%3A%2F%2Famssamples.streaming.mediaservices.windows.net%2F91492735-c523-432b-ba01-faba6c2206a2%2FAzureMediaServicesPromo.ism%2Fmanifest) stránky pro adresu URL manifestu.
+- Zkopírujte **adresu URL** na této [Azure Media Services ukázkové](https://aka.ms/azuremediaplayer?url=https%3A%2F%2Famssamples.streaming.mediaservices.windows.net%2F91492735-c523-432b-ba01-faba6c2206a2%2FAzureMediaServicesPromo.ism%2Fmanifest) stránce pro adresu URL manifestu.
 
 ## <a name="create-your-visual-studio-project"></a>Vytvoření projektu Visual Studio
 
@@ -56,7 +56,7 @@ Přidáte přepisu videa shrnutí. Video musí publikovaná online. Potřebujete
 
 ### <a name="install-required-packages"></a>Instalace požadovaných balíčků
 
-Nainstalujte následující balíčky NuGet pro projekt TermLists.
+Pro projekt TermLists nainstalujte následující balíčky NuGet.
 
 - Microsoft.Azure.CognitiveServices.ContentModerator
 - Microsoft.Rest.ClientRuntime
@@ -65,7 +65,7 @@ Nainstalujte následující balíčky NuGet pro projekt TermLists.
 
 ### <a name="update-the-programs-using-statements"></a>Aktualizace příkazů using programu
 
-Upravit program společnosti příkazy následujícím způsobem.
+Pomocí příkazů programu upravte následující příkazy.
 
 
 ```csharp
@@ -81,9 +81,9 @@ using Newtonsoft.Json;
 
 ### <a name="add-private-properties"></a>Přidání soukromých vlastností
 
-Přidejte následující soukromé vlastnosti do oboru názvů VideoTranscriptReviews, třídu programu.
+Přidejte následující soukromé vlastnosti do oboru názvů VideoTranscriptReviews, program třídy.
 
-Uvedeno, nahraďte vzorové hodnoty těchto vlastností.
+Tam, kde je uvedeno, nahraďte příklady hodnot těchto vlastností.
 
 ```csharp
 namespace VideoReviews
@@ -126,9 +126,9 @@ namespace VideoReviews
         private const int throttleRate = 2000;
 ```
 
-### <a name="create-content-moderator-client-object"></a>Vytvoření objektu klienta Content Moderatoru
+### <a name="create-content-moderator-client-object"></a>Vytvořit objekt Content Moderator klienta
 
-Přidejte následující definici metody do oboru názvů VideoTranscriptReviews, třídu programu.
+Přidejte následující definici metody do oboru názvů VideoTranscriptReviews, program třídy.
 
 ```csharp
 /// <summary>
@@ -147,24 +147,24 @@ public static ContentModeratorClient NewClient()
 }
 ```
 
-## <a name="create-a-video-review"></a>Vytváření video kontroly
+## <a name="create-a-video-review"></a>Vytvořit recenzi videa
 
-Vytvořit kontrolu videa s **ContentModeratorClient.Reviews.CreateVideoReviews**. Další informace najdete v [referenčních informacích k rozhraní API](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c4).
+Vytvoří recenzi videa pomocí **ContentModeratorClient. Reviews. CreateVideoReviews**. Další informace najdete v [referenčních informacích k rozhraní API](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c4).
 
-**CreateVideoReviews** má následující povinné parametry:
-1. Řetězec obsahující typ MIME, které by se měly "application/json". 
-1. Název týmu Content Moderatoru.
-1. **IList\<CreateVideoReviewsBodyItem >** objektu. Každý **CreateVideoReviewsBodyItem** objekt představuje přezkoumání videa. Tento rychlý start vytvoří jeden revize najednou.
+**CreateVideoReviews** má následující požadované parametry:
+1. Řetězec obsahující typ MIME, který by měl být "Application/JSON" 
+1. Váš Content Moderator název týmu.
+1. Objekt **IList\<CreateVideoReviewsBodyItem >** objekt. Každý objekt **CreateVideoReviewsBodyItem** představuje kontrolu videa. Tento rychlý Start vytváří vždy jednu kontrolu.
 
 **CreateVideoReviewsBodyItem** má několik vlastností. Minimálně nastavte následující vlastnosti:
-- **Obsahu**. Adresa URL videa musí zkontrolovat.
-- **ContentId**. ID přiřazení k revizi videa.
-- **Stav**. Nastavte hodnotu na "Nepublikované." Pokud ho nenastavíte, použije se výchozí "Čeká na vyřízení", což znamená, že je publikovaná videa revize a recenze prováděné lidmi ve stavu čekání. Po publikování videa revize můžete už přidat snímky videí, přepis nebo výsledek moderování přepisu k němu.
+- **Obsah**. Adresa URL videa, která se má zkontrolovat
+- ID **obsahu.** ID, které se má přiřadit k recenzi videa
+- **Stav**. Nastavte hodnotu na Nepublikováno. Pokud ho nenastavíte, použije se výchozí nastavení "čeká", což znamená, že se recenze videa publikuje a čeká na revizi pro lidskou kontrolu. Po publikování recenze videa už nemůžete do ní přidávat snímky videa, přepisy ani jejich nemoderování.
 
 > [!NOTE]
-> **CreateVideoReviews** vrátí objekt IList\<řetězec >. Každý z těchto řetězců obsahuje ID videa revize. Tyto identifikátory jsou identifikátory GUID a nejsou stejná jako hodnota **ContentId** vlastnost.
+> **CreateVideoReviews** vrací řetězec IList\<>. Každý z těchto řetězců obsahuje ID pro kontrolu videa. Tato ID jsou identifikátory GUID a nejsou stejná jako **hodnota vlastnosti ID** obsahu.
 
-Přidejte následující definici metody do oboru názvů VideoReviews, třídu programu.
+Přidejte následující definici metody do oboru názvů VideoReviews, program třídy.
 
 ```csharp
 /// <summary>
@@ -204,19 +204,19 @@ private static string CreateReview(ContentModeratorClient client, string id, str
 >
 > Klíč úrovně Free má limit nastavený na 1 RPS.
 
-## <a name="add-transcript-to-video-review"></a>Přidat přepisu videa revize
+## <a name="add-transcript-to-video-review"></a>Přidat přepis do recenze videa
 
-Přidat přepis videa shrnutí s **ContentModeratorClient.Reviews.AddVideoTranscript**. **AddVideoTranscript** má následující povinné parametry:
-1. ID vašeho týmu Content Moderatoru.
-1. ID videa kontroly vrácený **CreateVideoReviews**.
-1. A **Stream** objekt, který obsahuje přepisu.
+Do recenze videa přidáte přepis pomocí **ContentModeratorClient. Reviews. AddVideoTranscript**. **AddVideoTranscript** má následující požadované parametry:
+1. Vaše Content Moderator ID týmu.
+1. ID kontroly videa vrácené funkcí **CreateVideoReviews**.
+1. Objekt **datového proudu** , který obsahuje přepis.
 
-Zápis musí být ve formátu WebVTT. Další informace najdete v tématu [WebVTT: Text videa na webu sleduje formátu](https://www.w3.org/TR/webvtt1/).
+Přepis musí být ve formátu WebVTT. Další informace najdete v tématu [WebVTT: Text webového videa sleduje formát](https://www.w3.org/TR/webvtt1/).
 
 > [!NOTE]
-> Program používá ukázkový přepisu ve formátu VTT. Skutečná řešení, použijte službu Azure Media Indexer [generovat řádné záznamy o studiu](https://docs.microsoft.com/azure/media-services/media-services-index-content) z videa.
+> Program používá ukázkový přepis ve formátu VTT. V reálném řešení použijete službu Azure Media Indexer k [Vytvoření přepisu](https://docs.microsoft.com/azure/media-services/media-services-index-content) z videa.
 
-Přidejte následující definici metody do oboru názvů VideotranscriptReviews, třídu programu.
+Přidejte následující definici metody do oboru názvů VideotranscriptReviews, program třídy.
 
 ```csharp
 /// <summary>
@@ -236,23 +236,23 @@ static void AddTranscript(ContentModeratorClient client, string review_id, strin
 }
 ```
 
-## <a name="add-a-transcript-moderation-result-to-video-review"></a>Přidat výsledek moderování přepisu videa revize
+## <a name="add-a-transcript-moderation-result-to-video-review"></a>Přidání výsledku moderování přepisu do kontroly videa
 
-Kromě přidání přepis videa shrnutí, je také přidat výsledek moderování tento přepis. Uděláte s **ContentModeratorClient.Reviews.AddVideoTranscriptModerationResult**. Další informace najdete v [referenčních informacích k rozhraní API](https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/59e7b93ce7151f0b10d451ff).
+Kromě přidání přepisu do recenze videa přidáte také výsledek moderování tohoto přepisu. Provedete to pomocí **ContentModeratorClient. Reviews. AddVideoTranscriptModerationResult**. Další informace najdete v [referenčních informacích k rozhraní API](https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/59e7b93ce7151f0b10d451ff).
 
-**AddVideoTranscriptModerationResult** má následující povinné parametry:
-1. Řetězec obsahující typ MIME, které by se měly "application/json". 
-1. Název týmu Content Moderatoru.
-1. ID videa kontroly vrácený **CreateVideoReviews**.
-1. Objekt IList\<TranscriptModerationBodyItem >. A **TranscriptModerationBodyItem** má následující vlastnosti:
-1. **Podmínky**. Objekt IList\<TranscriptModerationBodyItemTermsItem >. A **TranscriptModerationBodyItemTermsItem** má následující vlastnosti:
-1. **Index**. Index založený na nule termín.
-1. **Termín**. Řetězec, který obsahuje výraz.
-1. **Časové razítko**. Řetězec, který obsahuje během několika sekund, čas v přepisu, ve kterém se nacházejí podmínky.
+**AddVideoTranscriptModerationResult** má následující požadované parametry:
+1. Řetězec obsahující typ MIME, který by měl být "Application/JSON" 
+1. Váš Content Moderator název týmu.
+1. ID kontroly videa vrácené funkcí **CreateVideoReviews**.
+1. Objekt IList\<TranscriptModerationBodyItem >. **TranscriptModerationBodyItem** má následující vlastnosti:
+1. **Podmínek**. Objekt IList\<TranscriptModerationBodyItemTermsItem >. **TranscriptModerationBodyItemTermsItem** má následující vlastnosti:
+1. **Index**. Index výrazu založený na nule.
+1. **Termín**. Řetězec, který obsahuje termín.
+1. **Časové razítko**. Řetězec, který obsahuje v sekundách čas v přepisu, při kterém jsou výrazy nalezeny.
 
-Zápis musí být ve formátu WebVTT. Další informace najdete v tématu [WebVTT: Text videa na webu sleduje formátu](https://www.w3.org/TR/webvtt1/).
+Přepis musí být ve formátu WebVTT. Další informace najdete v tématu [WebVTT: Text webového videa sleduje formát](https://www.w3.org/TR/webvtt1/).
 
-Přidejte následující definici metody do oboru názvů VideoTranscriptReviews, třídu programu. Tato metoda odešle přepis můžete **ContentModeratorClient.TextModeration.ScreenText** metody. Také převádí výsledek na objekt IList\<TranscriptModerationBodyItem > a odešle **AddVideoTranscriptModerationResult**.
+Přidejte následující definici metody do oboru názvů VideoTranscriptReviews, program třídy. Tato metoda odesílá přepis do metody **ContentModeratorClient. TextModeration. ScreenText** . Také překládá výsledek do objektu IList\<TranscriptModerationBodyItem > a odesílá je do **AddVideoTranscriptModerationResult**.
 
 ```csharp
 /// <summary>
@@ -299,13 +299,13 @@ static void AddTranscriptModerationResult(ContentModeratorClient client, string 
 }
 ```
 
-## <a name="publish-video-review"></a>Publikovat video revize
+## <a name="publish-video-review"></a>Publikování recenze videa
 
-Publikovat video recenzi s **ContentModeratorClient.Reviews.PublishVideoReview**. **PublishVideoReview** má následující povinné parametry:
-1. Název týmu Content Moderatoru.
-1. ID videa kontroly vrácený **CreateVideoReviews**.
+Můžete publikovat kontrolu videa pomocí **ContentModeratorClient. Reviews. PublishVideoReview**. **PublishVideoReview** má následující požadované parametry:
+1. Váš Content Moderator název týmu.
+1. ID kontroly videa vrácené funkcí **CreateVideoReviews**.
 
-Přidejte následující definici metody do oboru názvů VideoReviews, třídu programu.
+Přidejte následující definici metody do oboru názvů VideoReviews, program třídy.
 
 ```csharp
 /// <summary>
@@ -324,10 +324,10 @@ private static void PublishReview(ContentModeratorClient client, string review_i
 
 ## <a name="putting-it-all-together"></a>Spojení všech součástí dohromady
 
-Přidat **hlavní** definici metody do oboru názvů VideoTranscriptReviews, třídu programu. A konečně zavřete třídu Program a VideoTranscriptReviews oboru názvů.
+Přidejte definici **Main** metody do oboru názvů VideoTranscriptReviews, program třídy. Nakonec zavřete třídu program a obor názvů VideoTranscriptReviews.
 
 > [!NOTE]
-> Program používá ukázkový přepisu ve formátu VTT. Skutečná řešení, použijte službu Azure Media Indexer [generovat řádné záznamy o studiu](https://docs.microsoft.com/azure/media-services/media-services-index-content) z videa.
+> Program používá ukázkový přepis ve formátu VTT. V reálném řešení použijete službu Azure Media Indexer k [Vytvoření přepisu](https://docs.microsoft.com/azure/media-services/media-services-index-content) z videa.
 
 ```csharp
 static void Main(string[] args)
@@ -363,7 +363,7 @@ static void Main(string[] args)
 
 ## <a name="run-the-program-and-review-the-output"></a>Spuštění programu a kontrola výstupu
 
-Při spuštění aplikace, zobrazí se výstup na následující řádky:
+Při spuštění aplikace se zobrazí výstup na následujících řádcích:
 
 ```console
 Creating a video review.
@@ -374,21 +374,21 @@ Open your Content Moderator Dashboard and select Review > Video to see the revie
 Press any key to close the application.
 ```
 
-## <a name="navigate-to-your-video-transcript-review"></a>Přejděte na kontrolu přepis videa
+## <a name="navigate-to-your-video-transcript-review"></a>Přejít na kontrolu přepisu videa
 
-Přejděte k revizi přepis videa v nástroji pro kontrolu Content Moderatoru **zkontrolujte**>**videa**>**přepisu** obrazovky.
+Přejít na kontrolu přepisu videa v nástroji pro kontrolu Content moderator na obrazovce **Kontrola**>**přepisu** **videa**>.
 
 Zobrazí se následující funkce:
-- Dva řádky přepisu, kterou jste přidali
-- Termín vulgárních výrazů nalezen a zvýrazněnou službou moderování textu
-- Výběr textu určené k transkripci začíná video od tohoto časového razítka
+- Dva řádky přepisu, které jste přidali
+- Výraz vulgárního výrazu byl nalezen a zvýrazněný službou pro moderování textu
+- Výběr přepisu textu spustí video z tohoto časového razítka.
 
-![Revize přepis videa pro lidských moderátorů](images/ams-video-transcript-review.PNG)
+![Kontrola přepisu videa pro Moderátoři pro člověka](images/ams-video-transcript-review.PNG)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Získejte [Content Moderator sady .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) a [řešení sady Visual Studio](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator) pro tuto a další rychlé starty Content Moderator pro .NET.
+Získejte [Content moderator .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) a řešení sady [Visual Studio](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator) pro tuto a další Content moderator rychlý Start pro .NET.
 
-Zjistěte, jak generovat [video kontroly](video-reviews-quickstart-dotnet.md) v nástroj pro recenze.
+Naučte se generovat [recenze videí](video-reviews-quickstart-dotnet.md) v nástroji pro revize.
 
-Podívejte se na podrobný kurz o tom, jak vyvíjet [dokončení moderování videa řešení](video-transcript-moderation-review-tutorial-dotnet.md).
+Podrobné informace o tom, jak vyvíjet [kompletní řešení pro moderování videa](video-transcript-moderation-review-tutorial-dotnet.md), najdete v podrobném kurzu.

@@ -1,6 +1,6 @@
 ---
-title: Správa verzí
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: Správa verzí – LUIS
+titleSuffix: Azure Cognitive Services
 description: Verze umožňují sestavovat a publikovat různých modelů. Dobrým postupem je klonovat aktuální active vzor na jinou verzi aplikace před prováděním změn do modelu.
 services: cognitive-services
 author: diberry
@@ -11,20 +11,20 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 04/16/2019
 ms.author: diberry
-ms.openlocfilehash: f919651cf39d1f2c48fca87da935e49e3affa79f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 1169af85c35f04a302816f564caeb49eaf455d0e
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60198866"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563672"
 ---
-# <a name="use-versions-to-edit-and-test-without-impacting-staging-or-production-apps"></a>Verze můžete upravit a testování bez dopadu na pracovní nebo produkční aplikace
+# <a name="use-versions-to-edit-and-test-without-impacting-staging-or-production-apps"></a>Použití verzí k úpravám a testování bez dopadu na pracovní nebo produkční aplikace
 
 Verze umožňují sestavovat a publikovat různých modelů. Dobrým postupem je klonovat aktuální active vzor na jiný [verze](luis-concept-version.md) aplikace před prováděním změn do modelu. 
 
 Pro práci s verzí, otevřete aplikaci tak, že vyberete jeho název na **Moje aplikace** stránce a pak vyberte **spravovat** v horním pruhu vyberte **verze** v levém navigačním panelu. 
 
-Seznam verzí ukazuje, jaké verze jsou publikovány, kde jsou publikovány, a kterou verzi je aktuálně aktivní. 
+Seznam verzí ukazuje, které verze jsou publikovány, kde jsou publikovány a která verze je aktuálně aktivní. 
 
 [![Části Správa, verze stránky](./media/luis-how-to-manage-versions/versions-import.png "části Správa, verze stránky")](./media/luis-how-to-manage-versions/versions-import.png#lightbox)
 
@@ -45,7 +45,7 @@ Seznam verzí ukazuje, jaké verze jsou publikovány, kde jsou publikovány, a k
 
 Ze seznamu vyberte verzi a potom vyberte **zkontrolujte aktivní** z panelu nástrojů. 
 
-[![Části Správa, verze stránky, zkontrolujte verzi akce](./media/luis-how-to-manage-versions/versions-other.png "části Správa, verze stránky, zkontrolujte verzi akce")](./media/luis-how-to-manage-versions/versions-other.png#lightbox)
+[![Stránka spravovat oddíl, verze, vytvořit akci verze](./media/luis-how-to-manage-versions/versions-other.png "Stránka spravovat oddíl, verze, vytvořit akci verze")](./media/luis-how-to-manage-versions/versions-other.png#lightbox)
 
 ## <a name="import-version"></a>Import verze
 
@@ -53,13 +53,13 @@ Ze seznamu vyberte verzi a potom vyberte **zkontrolujte aktivní** z panelu nás
 
 2. V **Import nové verze** automaticky otevírané okno, zadejte název nové verze deset znaků. Stačí nastavit ID verze, pokud už existuje verze v souboru JSON v aplikaci.
 
-    ![Správa části, stránka verze, import nové verze](./media/luis-how-to-manage-versions/versions-import-pop-up.png)
+    ![Správa oddílu, stránky verze, importování nové verze](./media/luis-how-to-manage-versions/versions-import-pop-up.png)
 
     Jakmile dokončíte import verze, nová verze stane aktivní verze.
 
 ### <a name="import-errors"></a>Chyby importu
 
-* Tokenizátor chyby: Pokud se zobrazí **tokenizátor chyba** při importování, se pokoušíte importovat, který používá jinou verzi [tokenizátor](luis-language-support.md#custom-tokenizer-versions) než aplikace aktuálně používá. Chcete-li to vyřešit, najdete v článku [migrace mezi verzemi tokenizátor](luis-language-support.md#migrating-between-tokenizer-versions).
+* Provádějících tokenizaci chyby: Pokud při importu dojde k **chybě provádějících tokenizaci** , snažíte se naimportovat verzi, která používá jiný [provádějících tokenizaci](luis-language-support.md#custom-tokenizer-versions) , než který aktuálně používá aplikace. Chcete-li tento problém vyřešit, přečtěte si téma [migrace mezi provádějících tokenizaci verzemi](luis-language-support.md#migrating-between-tokenizer-versions).
 
 <a name = "export-version"></a>
 
@@ -67,5 +67,5 @@ Ze seznamu vyberte verzi a potom vyberte **zkontrolujte aktivní** z panelu nás
 
 * K **odstranit** verze, ze seznamu vyberte verzi a potom vyberte **odstranit** z panelu nástrojů. Vyberte **OK**. 
 * K **přejmenovat** verze, ze seznamu vyberte verzi a potom vyberte **přejmenovat** z panelu nástrojů. Zadejte nový název a vyberte **provádí**. 
-* K **exportovat** verze, ze seznamu vyberte verzi a potom vyberte **Export aplikace** z panelu nástrojů. Zvolte JSON pro export pro zálohování, vyberte **Export pro kontejner** k [používání této aplikace v kontejneru služby LUIS](luis-container-howto.md).  
+* K **exportovat** verze, ze seznamu vyberte verzi a potom vyberte **Export aplikace** z panelu nástrojů. Vyberte JSON pro export pro zálohování, vyberte **Exportovat pro kontejner** pro [použití této aplikace v kontejneru Luis](luis-container-howto.md).  
 

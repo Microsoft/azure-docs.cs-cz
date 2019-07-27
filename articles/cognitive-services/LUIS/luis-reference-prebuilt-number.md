@@ -1,6 +1,6 @@
 ---
-title: Číslo předem připravených entit
-titleSuffix: Azure
+title: Počet předem sestavených entit – LUIS
+titleSuffix: Azure Cognitive Services
 description: Tento článek obsahuje informace o čísle předem připravených entit v Language Understanding (LUIS).
 services: cognitive-services
 author: diberry
@@ -11,18 +11,18 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: d4f707d4bf9bac5e2208eadb94983af368b9f521
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 88f36fb6d73e2ec88940e7eb53d982824e194074
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65072250"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560195"
 ---
-# <a name="number-prebuilt-entity-for-a-luis-app"></a>Číslo předem připravených entit pro aplikace LUIS
+# <a name="number-prebuilt-entity-for-a-luis-app"></a>Počet předem sestavené entity pro aplikaci LUIS
 Existuje mnoho způsobů, ve kterých se používají číselných hodnot umožňuje vyčíslit, express a popisují informace. Tento článek se týká jenom některé z možných příkladů. Služba LUIS interpretuje kolísání uživatele projevy a vrátí konzistentní číselné hodnoty. Protože tato entita je už vytrénovaný, není potřeba přidat příklad projevy obsahující číslo k záměry aplikace. 
 
 ## <a name="types-of-number"></a>Typy číslo
-Spravuje se z číslo [rozpoznávání textu](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-Numbers.yaml) úložiště GitHub
+Číslo je spravované z úložiště pro [rozpoznávání textu](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-Numbers.yaml) v GitHubu.
 
 ## <a name="examples-of-number-resolution"></a>Příklady čísel řešení
 
@@ -43,7 +43,7 @@ Služba LUIS zahrnuje rozpoznaná hodnota **`builtin.number`** entity v `resolut
 ## <a name="resolution-for-prebuilt-number"></a>Řešení pro předem připravených číslo
 
 
-### <a name="api-version-2x"></a>Verze rozhraní API 2.x
+### <a name="api-version-2x"></a>Rozhraní API verze 2. x
 
 Následující příklad ukazuje služby luis, odpověď ve formátu JSON, který obsahuje řešení hodnota 24, utterance "z dvou tuctů".
 
@@ -83,9 +83,9 @@ Následující příklad ukazuje služby luis, odpověď ve formátu JSON, kter�
 }
 ```
 
-### <a name="preview-api-version-3x"></a>Verze Preview rozhraní API 3.x
+### <a name="preview-api-version-3x"></a>Verze Preview rozhraní API verze 3. x
 
-Následující kód JSON je `verbose` parametr nastaven na `false`:
+Následující kód JSON je s `verbose` parametrem nastaveným na: `false`
 
 ```json
 {
@@ -107,7 +107,7 @@ Následující kód JSON je `verbose` parametr nastaven na `false`:
 }
 ```
 
-Následující kód JSON je `verbose` parametr nastaven na `true`:
+Následující kód JSON je s `verbose` parametrem nastaveným na: `true`
 
 ```json
 {

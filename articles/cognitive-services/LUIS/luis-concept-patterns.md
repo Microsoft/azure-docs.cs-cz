@@ -1,6 +1,6 @@
 ---
-title: Vzory pomáhají predikcí
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: Vzorce – předpověď pro LUIS
+titleSuffix: Azure Cognitive Services
 description: Vzor umožňuje získat vyšší přesnost pro záměru bez zadání projevy mnoho více.
 services: cognitive-services
 author: diberry
@@ -11,18 +11,18 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: diberry
-ms.openlocfilehash: 2a160ab7447304dc6eb14f76a723df4e8a4d9f46
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: acbcaa7e5588c0fecf2c20751e69442e1373cbb5
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60813566"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563985"
 ---
 # <a name="patterns-improve-prediction-accuracy"></a>Vzory zvyšte přesnost předpovědi
 Vzory jsou navržené pro zlepšení přesnosti, když několik projevy jsou velmi podobné.  Vzor umožňuje získat vyšší přesnost pro záměru bez zadání projevy mnoho více. 
 
 ## <a name="patterns-solve-low-intent-confidence"></a>Způsoby řešení s nízkou spolehlivostí záměru
-Vezměte v úvahu aplikaci lidských zdrojů, která generuje sestavy v organizační grafu ve vztahu k zaměstnance. Zadaný název a relace zaměstnance, LUIS vrátí zaměstnanci zahrnuté. Vezměte v úvahu zaměstnanec Petr, se správcem název Alice a tým s názvem podřízené uzly: Michael Milena a Carl.
+Vezměte v úvahu aplikaci lidských zdrojů, která generuje sestavy v organizační grafu ve vztahu k zaměstnance. Zadaný název a relace zaměstnance, LUIS vrátí zaměstnanci zahrnuté. Berte v úvahu zaměstnance, název, s názvem manažera Alice a týmu podřízených s názvem: Michael, a Carl.
 
 ![Obrázek organizačního diagramu](./media/luis-concept-patterns/org-chart.png)
 
@@ -31,23 +31,23 @@ Vezměte v úvahu aplikaci lidských zdrojů, která generuje sestavy v organiza
 |Kdo je na Tom podřízený?|GetOrgChart|.30|
 |Kdo je podřízenou položkou tohoto Tom?|GetOrgChart|.30|
 
-Pokud aplikace má mezi 10 a 20 projevy pomocí různých délek věty, jiné pořadí slov a dokonce během různých slova (synonymům těchto "podřízený", "manage", "zpráva"), může vrátit LUIS nízká pravděpodobnost. Společně tvoří masku umožňující LUIS pochopení důležitosti pořadí slov. 
+Pokud aplikace má mezi 10 a 20 projevy pomocí různých délek věty, jiné pořadí slov a dokonce během různých slova (synonymům těchto "podřízený", "manage", "zpráva"), může vrátit LUIS nízká pravděpodobnost. Vytvořte vzor, který pomůže LUIS pochopit důležitost pořadí slov. 
 
 Způsoby řešení těchto situacích: 
 
-* Záměru skóre je nízká
-* Správné záměr není horním skóre, ale příliš blízko horní skóre. 
+* Skóre záměru je nízké.
+* Správný záměr není nejvyšší skóre, ale příliš blízko k hornímu skóre. 
 
 ## <a name="patterns-are-not-a-guarantee-of-intent"></a>Vzory nejsou zárukou záměr
 Vzory pomocí kombinace technologií předpovědi. Nastavení pro šablony utterance záměru ve vzorku není zárukou záměru předpovědí, ale je silný signál. 
 
 <a name="patterns-do-not-improve-entity-detection"/></a>
 
-## <a name="patterns-do-not-improve-machine-learned-entity-detection"></a>Vzory nevedou k lepšímu zjišťování počítače zjistili entity
+## <a name="patterns-do-not-improve-machine-learned-entity-detection"></a>Vzory nezlepšují detekci entit zjištěné počítačem
 
-Vzor je primárně určený účelem předpovědi záměry a rolí. Pattern.any entita se používá k extrakci entity volného tvaru. Zatímco vzorky se používají entity, vzor nepomůže, detekovat entity se zjištěné počítače.  
+Vzor je primárně určen pro lepší předpověď záměrů a rolí. Vzor. Každá entita se používá k extrakci entit volných formulářů. I když vzory používají entity, vzor nedokáže detekovat entitu získanou počítačem.  
 
-Nečekejte zobrazíte predikcí vylepšené entity při sbalení více projevy do jednoho modelu. Pro jednoduché entity má provést, budete muset přidání projevů nebo použijte jiný seznam entit vzorku neaktivují.
+Neočekává se, že se lepší předpověď entity zobrazí, pokud sbalíte více projevy do jediného vzoru. Aby bylo možné jednoduché entity aktivovat, je nutné přidat projevy nebo použít entity seznamu jinak se váš vzor neaktivuje.
 
 ## <a name="patterns-use-entity-roles"></a>Vzory použít entitu role
 Pokud souvisí kontextově dva nebo více entit ve vzorku, použijte vzory entity [role](luis-concept-roles.md) extrahovat kontextové informace o entitách.  
@@ -61,55 +61,55 @@ Vzor je nalezena shoda podle nejprve zjišťování entit v modelu a ověření 
 ## <a name="pattern-syntax"></a>Vzor syntaxe
 Vzor syntaxe je šablona pro utterance. Šablona by měl obsahovat slova a entity, které chcete porovnat a také slova a interpunkční znaménka, které má být ignorována. Je **není** regulární výraz. 
 
-Entity ve vzorech jsou ohraničeny složených závorek, `{}`. Vzory mohou zahrnovat entit a entit s rolemi. [Pattern.Any](luis-concept-entity-types.md#patternany-entity) je entita použít jenom ve vzorcích. 
+Entity ve vzorech jsou ohraničeny složených závorek, `{}`. Vzory mohou zahrnovat entit a entit s rolemi. [Vzor. any](luis-concept-entity-types.md#patternany-entity) je entita, která se používá pouze ve vzorcích. 
 
-Vzor syntaxe podporuje následující syntaxi:
+Syntaxe vzoru podporuje následující syntaxi:
 
-|Funkce|Syntaxe|Úroveň vnoření|Příklad:|
+|Funkce|Syntaxe|Úroveň vnoření|Příklad|
 |--|--|--|--|
-|entita| {} -složené závorky|2|Kde je formulář {název entity}?|
-|Volitelné|[] - hranaté závorky<BR><BR>Je stanovený limit 3 na úrovní vnoření z jakékoli kombinace volitelné a seskupování |2|Otazník je volitelné [?]|
-|Seskupení|() – závorky|2|je ( \| b).|
-|nebo| \| -svislá čára (kanál)<br><br>Je stanovený limit 2 na svislé čáry (nebo) v jedné skupině |-|Kde je formulář ({formuláře krátký název} &#x7c; {formuláře název dlouho} &#x7c; {číslo formuláře})| 
-|začátek nebo konec utterance|^ – blikajícího kurzoru|-|^ začít utterance<br>provádí utterance ^<br>^ striktní literálu shodu celého utterance s entitou {number} ^|
+|entita| {}– složené závorky|2|Kde je tvar {entity-Name}?|
+|nepovinné|[] – hranaté závorky<BR><BR>Existuje limit 3 pro vnořování úrovní jakékoli kombinace Optional and Grouping. |2|Otazník je nepovinný [?].|
+|sloučení|() – závorky|2|je (a \| b)|
+|or| \|– svislá čára (svislá čára)<br><br>U svislých pruhů (nebo) v jedné skupině je povolený limit 2. |-|Kde je tvar ({Form-Name-short} &#x7c; {Form-Name-Long} &#x7c; {Form-Number})| 
+|začátek a/nebo konec utterance|^ – blikající kurzor|-|^ začátek utterance<br>utterance je hotové ^<br>^ striktní shoda literálu celého utterance s {Number} entitou ^|
 
-## <a name="nesting-syntax-in-patterns"></a>Vnoření syntaxe ve vzorcích
+## <a name="nesting-syntax-in-patterns"></a>Syntaxe vnořování ve vzorcích
 
-**Volitelné** syntaxe do složených závorek, mohou být vnořené dvě úrovně. Například: `[[this]is] a new form`. Tento příklad umožňuje projevy následující: 
+**Volitelná** syntaxe s hranatými závorkami může být vnořená na dvě úrovně. Například: `[[this]is] a new form`. Tento příklad umožňuje následující projevy: 
 
-|Příklad vnořené volitelné utterance|Vysvětlení|
+|Příklad vnořeného volitelného utteranceu|Vysvětlení|
 |--|--|
-|Toto je nový formulář|odpovídá všem slovům ve vzoru|
-|je nový formulář|odpovídá vnější volitelné aplikace word a povinný slova ve vzoru|
-|nový formulář|odpovídá vyžaduje pouze slova|
+|Toto je nový formulář.|odpovídá všem slovům ve vzoru|
+|je nový formulář|odpovídá vnějšímu volitelnému slovu a jiným nevolitelným slovům ve vzoru|
+|nový formulář|odpovídá pouze povinným slovům|
 
-**Seskupení** syntaxi se závorkami, mohou být vnořené dvě úrovně. Například: `(({Entity1.RoleName1} | {Entity1.RoleName2} ) | {Entity2} )`. Tato funkce umožňuje všechny tři entity lze porovnat. 
+Syntaxe **seskupení** s kulatými závorkami může být vnořená dvě úrovně. Například: `(({Entity1.RoleName1} | {Entity1.RoleName2} ) | {Entity2} )`. Tato funkce umožňuje, aby se všechny tři entity shodovaly. 
 
-Pokud Entity1 se umístění s rolemi, jako je například původ (Praha) a cíl (Cairo) a Entity 2 je název známé sestavení ze seznamu entity (RedWest-C), by následující projevy mapování pro tento model:
+Pokud je Entity1 umístění s rolemi, jako je počátek (Seattle) a cíl (Cairo) a entita 2 je známý název budovy ze seznamu entit (RedWest-C), následující projevy by se namapovaly na tento vzor:
 
-|Příklad utterance vnořeného seskupení|Vysvětlení|
+|Příklad vnořeného seskupení utterance|Vysvětlení|
 |--|--|
-|RedWest-C|odpovídá vnější seskupení entity|
-|Seattle|odpovídá jednomu z entity vnitřní seskupení|
-|Káhira|odpovídá jednomu z entity vnitřní seskupení|
+|RedWest-C|odpovídá vnější entitě seskupení|
+|Seattle|odpovídá jedné z vnitřních entit seskupení.|
+|Káhira|odpovídá jedné z vnitřních entit seskupení.|
 
-## <a name="nesting-limits-for-groups-with-optional-syntax"></a>Vnoření omezení pro skupiny se syntaxí volitelné
+## <a name="nesting-limits-for-groups-with-optional-syntax"></a>Omezení vnořování pro skupiny s volitelnou syntaxí
 
-Kombinace **seskupení** s **volitelné** syntaxe je omezena limitem 3 úrovní vnoření.
+Kombinace **seskupení** s volitelnou  syntaxí má limit 3 úrovní vnoření.
 
-|Povoleno|Příklad:|
+|Povoleno|Příklad|
 |--|--|
-|Ano|([(test1 &#x7c; test2)] &#x7c; test3)|
+|Ano|([(Test1 &#x7c; test2)] &#x7c; test3)|
 |Ne|([([test1] &#x7c; test2)] &#x7c; test3)|
 
-## <a name="nesting-limits-for-groups-with-or-ing-syntax"></a>Vnoření omezení pro skupiny se syntaxí nebo ing
+## <a name="nesting-limits-for-groups-with-or-ing-syntax"></a>Omezení vnořování pro skupiny s syntaxí or-Lo
 
-Kombinace **seskupení** s **nebo ing** syntaxe má omezení 2 svislých pruhů.
+Kombinace **seskupení** se syntaxí **or-Lo** má omezení 2 svislé pruhy.
 
-|Povoleno|Příklad:|
+|Povoleno|Příklad|
 |--|--|
-|Ano|( test1 &#x7c; test2 &#x7c; ( test3 &#x7c; test4 ) )|
-|Ne|( test1 &#x7c; test2 &#x7c; test3 &#x7c; ( test4 &#x7c; test5 ) ) |
+|Ano|(Test1 &#x7c; test2 &#x7c; (test3 &#x7c; test4))|
+|Ne|(Test1 &#x7c; test2 &#x7c; test3 &#x7c; (test4 &#x7c; test5)) |
 
 ## <a name="syntax-to-add-an-entity-to-a-pattern-template"></a>Syntaxe pro přidání entity do modelu šablony
 Přidání entity do modelu šablony, uzavřete název entity se složenými závorkami, `Who does {Employee} manage?`. 
@@ -140,14 +140,14 @@ Chcete-li přidat **Pattern.any** entity do modelu šablony obklopit Pattern.any
 |Kolik **požádejte** náklady a jaký formát je k dispozici?|
 |Kolik **The zvědaví Incident pes včas noční** náklady a jaký formát je k dispozici?| 
 
-Slova název knihy nejsou matoucí LUIS protože LUIS ví, kde končí název knihy, na základě Pattern.any entity.
+Slova názvu knihy nejsou matoucí LUIS, protože LUIS ví, kde končí název knihy, na základě vzoru. kterákoli entita.
 
 ## <a name="explicit-lists"></a>Explicitní seznamy
 
-vytvoření [explicitní seznam](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5ade550bd5b81c209ce2e5a8) prostřednictvím rozhraní API pro vytváření povolit výjimku při:
+Vytvořte [explicitní seznam](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5ade550bd5b81c209ce2e5a8) prostřednictvím rozhraní API pro vytváření obsahu, aby byla výjimka povolena v těchto případech:
 
-* Váš model obsahuje [Pattern.any](luis-concept-entity-types.md#patternany-entity)
-* A jestli vzor syntaxe poskytuje možnost extrakci nesprávné entity podle utterance. 
+* Váš vzor obsahuje [vzorek. any](luis-concept-entity-types.md#patternany-entity)
+* A tato syntaxe vzoru umožňuje možnost nesprávného extrakce entit založeného na utterance. 
 
 Předpokládejme například, že máte model obsahující jak syntaxi volitelné `[]`a syntaxi entity `{}`kombinované v způsob, jak extrahovat data nesprávně.
 
@@ -160,7 +160,7 @@ V následující projevy **subjektu** a **osoba** entity se extrahují správně
 |e-mailu o PSI ze Chris|předmět = PSI<br>osoba = Jan|✔|
 |e-mailu o man z La Mancha|předmět = mužem<br>osoba = La Mancha|X|
 
-V předchozí tabulce by měl být předmět `the man from La Mancha` (název knihy), ale vzhledem k tomu subjekt zahrnuje volitelné slovo `from`, nesprávně očekává název. 
+V předchozí tabulce by měl předmět obsahovat `the man from La Mancha` (název knihy), ale vzhledem k tomu, že předmět obsahuje volitelné slovo `from`, název je nesprávně předpovězený. 
 
 Chcete-li vyřešit tato výjimka se vzorem, přidejte `the man from la mancha` jako explicitní seznam v případě shody s využitím entity {subject} [vytváření rozhraní API pro explicitní seznam](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5ade550bd5b81c209ce2e5a8).
 
@@ -169,13 +169,13 @@ Označit volitelný text, který v utterance pomocí syntaxe regulárních výra
 
 |Vzor s volitelným textem|Význam|
 |--|--|
-|`[find] email about {subject} [from {person}]`|`find` a `from {person}` jsou volitelné|
-|' Je mi může pomoci [?]|Je volitelný interpunkčního znaménka.|
+|`[find] email about {subject} [from {person}]`|`find`a `from {person}` jsou volitelné|
+|' Vám může pomáhat: [?]|Interpunkční znaménko je volitelné.|
 
-Interpunkční znaménka (`?`, `!`, `.`) ignorovat a je potřeba je pomocí syntaxe hranatá závorka ve vzorech ignorovat. 
+Interpunkční znaménka`?`( `!`, `.`,) by měla být ignorována a je třeba je ignorovat pomocí syntaxe hranaté závorky ve vzorcích. 
 
-## <a name="pattern-only-apps"></a>Pouze model aplikace
-Můžete vytvořit aplikaci s příkazy, které mají žádné projevy příklad, za předpokladu, zde neexistuje vzor pro každý záměr. Pro aplikaci pouze pro vzor vzor nesmí obsahovat zjištěné počítače entity protože vyžadují projevy příklad. 
+## <a name="pattern-only-apps"></a>Pouze vzorové aplikace
+Můžete vytvořit aplikaci s záměry, které nemají žádný vzorový projevy, pokud existuje vzor pro každý záměr. V případě aplikace jenom se vzorkem by neměl vzor obsahovat entity, které se naučily počítačem, protože to vyžaduje příklad projevy. 
 
 ## <a name="best-practices"></a>Osvědčené postupy
 Přečtěte si [osvědčené postupy](luis-concept-best-practices.md).

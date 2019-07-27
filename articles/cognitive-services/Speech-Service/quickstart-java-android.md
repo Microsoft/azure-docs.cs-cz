@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý start: Rozpoznávání řeči, jazyka Java (Android) – hlasové služby'
+title: 'Rychlý start: Rozpoznávání řeči, Java (Android) – Speech Service'
 titleSuffix: Azure Cognitive Services
-description: Zjistěte, jak rozpoznávat řeč v jazyce Java v Androidu pomocí sadou SDK pro řeč
+description: Naučte se rozpoznávat řeč v Java v Androidu pomocí sady Speech SDK
 services: cognitive-services
 author: fmegen
 manager: nitinme
@@ -10,19 +10,19 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: wolfma
-ms.openlocfilehash: 22970eb58dc244405e522d46fcaa380151076062
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: c9b63685ae73fb4e056c72a640d6c4049e98b8b8
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67603102"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68559504"
 ---
-# <a name="quickstart-recognize-speech-in-java-on-android-by-using-the-speech-sdk"></a>Rychlý start: Rozpoznávání řeči v jazyce Java v Androidu pomocí sadou SDK pro řeč
+# <a name="quickstart-recognize-speech-in-java-on-android-by-using-the-speech-sdk"></a>Rychlý start: Rozpoznávání řeči v Java v Androidu pomocí sady Speech SDK
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
-V tomto článku se dozvíte, jak vyvíjet aplikace v Javě pro Android pomocí Cognitive Services SDK řeči přepisy převod řeči na text.
-Aplikace vychází z balíčku Maven sady SDK pro řeč, verze 1.6.0 a Android Studio 3.3.
+V tomto článku se naučíte vyvíjet aplikace Java pro Android pomocí sady Cognitive Services Speech SDK pro přepisovat řeči na text.
+Aplikace je založena na balíčku sady Speech SDK Maven, verze 1.6.0 a Android Studio 3,3.
 Sada Speech SDK je aktuálně kompatibilní se zařízeními s Androidem, která používají 32bitové nebo 64bitové procesory ARM a kompatibilní procesory Intel x86 nebo x64.
 
 > [!NOTE]
@@ -30,7 +30,7 @@ Sada Speech SDK je aktuálně kompatibilní se zařízeními s Androidem, která
 
 ## <a name="prerequisites"></a>Požadavky
 
-Klíč předplatného hlasové služby k dokončení tohoto rychlého startu potřebujete. Můžete ho získat zdarma. Zobrazit [hlasové služby si můžete vyzkoušet zdarma](get-started.md) podrobnosti.
+K dokončení tohoto rychlého startu budete potřebovat klíč předplatného služby Speech Services. Můžete ho získat zdarma. Další informace najdete v tématu o bezplatném pokusu o [hlasové služby](get-started.md) .
 
 ## <a name="create-and-configure-a-project"></a>Vytvoření a konfigurace projektu
 
@@ -38,7 +38,7 @@ Klíč předplatného hlasové služby k dokončení tohoto rychlého startu pot
 
 ## <a name="create-user-interface"></a>Vytvoření uživatelského rozhraní
 
-Vytvoříme základní uživatelské rozhraní pro aplikaci. Upravte rozložení hlavní aktivity `activity_main.xml`. Na začátku rozložení obsahuje záhlaví s názvem vaší aplikace a TextView obsahující text "Hello World!".
+Vytvoříme základní uživatelské rozhraní pro aplikaci. Upravte rozložení hlavní aktivity `activity_main.xml`. Ve výchozím rozložení obsahuje záhlaví název vaší aplikace a TextView obsahující text "Hello World!".
 
 * Klikněte na element TextView. Změňte jeho atribut ID v pravém horním rohu na `hello`.
 
@@ -50,7 +50,7 @@ Vytvoříme základní uživatelské rozhraní pro aplikaci. Upravte rozložení
 
   ![Snímek obrazovky s ikonou kouzelné hůlky](media/sdk/qs-java-android-10-infer-layout-constraints.png)
 
-Textové a grafické vyjádření uživatelském rozhraní by teď měl vypadat takto:
+Text a grafická reprezentace vašeho uživatelského rozhraní by teď měla vypadat takto:
 
 ![](media/sdk/qs-java-android-11-gui.png)
 
@@ -82,16 +82,16 @@ Textové a grafické vyjádření uživatelském rozhraní by teď měl vypadat 
 
    ![Snímek obrazovky okna s výběrem cíle nasazení](media/sdk/qs-java-android-12-deploy.png)
 
-Stisknutím tlačítka v aplikaci spusťte rozpoznávání řeči. Další 15 sekund anglické řeči se odesílají do hlasové služby a převede. Výsledek se zobrazí v aplikaci pro Android a v okně logcat v Android Studiu.
+Stisknutím tlačítka v aplikaci spusťte rozpoznávání řeči. Do služby Speech Services a přepisu se pošle další 15 sekund anglického hlasu. Výsledek se zobrazí v aplikaci pro Android a v okně logcat v Android Studiu.
 
 ![Snímek obrazovky aplikace pro Android](media/sdk/qs-java-android-13-gui-on-device.png)
 
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Prozkoumejte ukázky v Javě na Githubu](https://aka.ms/csspeech/samples)
+> [Zkoumání ukázek Java na GitHubu](https://aka.ms/csspeech/samples)
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také:
 
 - [Přizpůsobení akustických modelů](how-to-customize-acoustic-models.md)
 - [Přizpůsobení jazykových modelů](how-to-customize-language-model.md)

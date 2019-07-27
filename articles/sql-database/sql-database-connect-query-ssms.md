@@ -1,5 +1,5 @@
 ---
-title: 'SSMS: Připojení a dotazování dat v databázi Azure SQL | Dokumentace Microsoftu'
+title: 'SSMS: Připojení a dotazování dat ve službě Azure SQL Database | Microsoft Docs'
 description: Zjistěte, jak se připojit k SQL Database na Azure pomocí služby SQL Server Management Studio (SSMS). Potom spustíte příkazy jazyka Transact-SQL (T-SQL) k dotazování a úpravě dat.
 keywords: Připojení k SQL Database, SQL Server Management Studio
 services: sql-database
@@ -11,56 +11,55 @@ ms.topic: quickstart
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-manager: craigg
 ms.date: 03/25/2019
-ms.openlocfilehash: b060c971218561f285dbd2292529e01a0069d357
-ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.openlocfilehash: 0a08ee9d38065b0dff13f68a7b5473aa93787cf5
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67147743"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68569180"
 ---
-# <a name="quickstart-use-sql-server-management-studio-to-connect-and-query-an-azure-sql-database"></a>Rychlý start: Pomocí SQL Server Management Studio k připojení a dotazování Azure SQL database
+# <a name="quickstart-use-sql-server-management-studio-to-connect-and-query-an-azure-sql-database"></a>Rychlý start: Použití SQL Server Management Studio k připojení a dotazování databáze SQL Azure
 
-V tomto rychlém startu použijete [SQL Server Management Studio] [ ssms-install-latest-84g] (SSMS) pro připojení k databázi Azure SQL. Potom spustíte příkazy jazyka Transact-SQL k dotazování, vkládání, aktualizace a odstranění dat. Použití SSMS pro správu jakékoliv infrastruktury SQL z SQL serveru do služby SQL Database pro Microsoft Windows.  
+V tomto rychlém startu použijete [SQL Server Management Studio][ssms-install-latest-84g] (SSMS) pro připojení k databázi SQL Azure. Potom spustíte příkazy jazyka Transact-SQL k dotazování, vkládání, aktualizaci a odstraňování dat. SSMS můžete použít ke správě jakékoli infrastruktury SQL, od SQL Server k SQL Database pro Microsoft Windows.  
 
 ## <a name="prerequisites"></a>Požadavky
 
-Databázi Azure SQL. Jeden z těchto rychlých startech můžete vytvořit a potom nakonfigurovat databázi ve službě Azure SQL Database:
+Databázi Azure SQL. K vytvoření a konfiguraci databáze v Azure SQL Database můžete použít jeden z těchto rychlých startů:
 
   || Izolovaná databáze | Spravovaná instance |
   |:--- |:--- |:---|
-  | Vytvořit| [Azure Portal](sql-database-single-database-get-started.md) | [Azure Portal](sql-database-managed-instance-get-started.md) |
+  | Create| [Azure Portal](sql-database-single-database-get-started.md) | [Azure Portal](sql-database-managed-instance-get-started.md) |
   || [Rozhraní příkazového řádku](scripts/sql-database-create-and-configure-database-cli.md) | [Rozhraní příkazového řádku](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
   || [PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) | [PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md) |
-  | Konfigurace | [pravidlo brány firewall na úrovni serveru IP](sql-database-server-level-firewall-rule.md)| [Připojení z virtuálního počítače](sql-database-managed-instance-configure-vm.md)|
-  |||[Připojení z na místě](sql-database-managed-instance-configure-p2s.md)
-  |Načtení dat|Společnosti Adventure Works načtených za rychlý start|[Obnovit Wide World Importers](sql-database-managed-instance-get-started-restore.md)
-  |||Obnovení nebo importovat společnosti Adventure Works z [BACPAC](sql-database-import.md) souboru z [Githubu](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works)|
+  | Konfigurace | [Pravidlo brány firewall protokolu IP na úrovni serveru](sql-database-server-level-firewall-rule.md)| [Připojení z virtuálního počítače](sql-database-managed-instance-configure-vm.md)|
+  |||[Připojení z webu](sql-database-managed-instance-configure-p2s.md)
+  |Načtení dat|Načtený Adventure Works pro každý rychlý Start|[Obnovení celosvětových dovozců](sql-database-managed-instance-get-started-restore.md)
+  |||Obnovení nebo import Adventure Works ze souboru [BacPac](sql-database-import.md) z [GitHubu](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works)|
 
   > [!IMPORTANT]
-  > Skripty v tomto článku se zapisují do použít databázi společnosti Adventure Works. S managed instance musíte importovat databázi společnosti Adventure Works do instance databáze nebo upravovat skripty v tomto článku pro používání databáze Wide World Importers.
+  > Skripty v tomto článku jsou určeny k používání databáze Adventure Works. Se spravovanou instancí musíte buď importovat databázi Adventure Works do databáze instance, nebo upravit skripty v tomto článku, aby používaly databázi World Importers.
 
 ## <a name="install-the-latest-ssms"></a>Instalace nejnovější verze aplikace SSMS
 
-Než začnete, ujistěte se, že jste nainstalovali nejnovější [SSMS][ssms-install-latest-84g].
+Než začnete, ujistěte se, že máte nainstalovanou nejnovější verzi [SSMS][ssms-install-latest-84g].
 
-## <a name="get-sql-server-connection-information"></a>Získejte informace o připojení SQL serveru
+## <a name="get-sql-server-connection-information"></a>Získat informace o připojení k SQL serveru
 
-Získejte informace o připojení potřebné pro připojení k databázi Azure SQL. Nadcházející postupy budete potřebovat plně kvalifikovaný název serveru nebo název hostitele, název databáze a přihlašovací údaje.
+Získejte informace o připojení, které potřebujete pro připojení ke službě Azure SQL Database. Pro nadcházející postupy budete potřebovat plně kvalifikovaný název serveru nebo název hostitele, název databáze a přihlašovací údaje.
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
-2. Přejděte **databází SQL** nebo **spravované instance SQL** stránky.
+2. Přejděte na stránku **databáze SQL** nebo **spravované instance SQL** .
 
-3. Na **přehled** stránce si prohlédněte plně kvalifikovaný název vedle **název serveru** pro izolované databáze nebo serveru plně kvalifikovaný název vedle **hostitele** pro spravované instance. Zkopírujte název serveru nebo název hostitele, je ukazatel myši a vyberte **kopírování** ikonu.
+3. Na stránce **Přehled** zkontrolujte plně kvalifikovaný název serveru vedle **názvu serveru** pro izolovanou databázi nebo plně kvalifikovaný název serveru vedle možnost **hostitel** pro spravovanou instanci. Pokud chcete zkopírovat název serveru nebo název hostitele, najeďte na něj ukazatelem myši a vyberte ikonu **kopírování** .
 
 ## <a name="connect-to-your-database"></a>Připojení k databázi
 
 V SMSS připojení k vašemu serveru Azure SQL Database.
 
 > [!IMPORTANT]
-> Server Azure SQL Database naslouchá na portu 1433. Pro připojení k serveru služby SQL Database za podniková brána firewall, brána firewall musí mít tento port otevřít.
+> Azure SQL Database Server naslouchá na portu 1433. Aby bylo možné připojit se k serveru SQL Database za podnikovou bránou firewall, musí mít brána firewall otevřený tento port.
 >
 
 1. Otevřete aplikaci SSMS. Zobrazí se dialogové okno **Připojení k serveru**.
@@ -86,11 +85,11 @@ V SMSS připojení k vašemu serveru Azure SQL Database.
 
 5. Chcete-li zobrazit objekty databáze, rozbalte **databází** a potom rozbalte **mySampleDatabase**.
 
-   ![mySampleDatabase objekty](./media/sql-database-connect-query-ssms/connected.png)  
+   ![objekty mySampleDatabase](./media/sql-database-connect-query-ssms/connected.png)  
 
 ## <a name="query-data"></a>Dotazování dat
 
-To [vyberte](https://msdn.microsoft.com/library/ms189499.aspx) kód Transact-SQL k dotazu na top 20 produktů podle kategorie.
+Spuštěním tohoto příkazu [Vyberte](https://msdn.microsoft.com/library/ms189499.aspx) kód Transact-SQL pro dotazování na prvních 20 produktů podle kategorie.
 
 1. V Průzkumníku objektů klikněte pravým tlačítkem na **mySampleDatabase** a vyberte **nový dotaz**. Otevře se nové okno dotazu připojené k vaší databázi.
 
@@ -105,11 +104,11 @@ To [vyberte](https://msdn.microsoft.com/library/ms189499.aspx) kód Transact-SQL
 
 3. Na panelu nástrojů vyberte **Execute** načítat data z `Product` a `ProductCategory` tabulky.
 
-    ![dotaz pro načtení dat z tabulek Product a ProductCategory](./media/sql-database-connect-query-ssms/query2.png)
+    ![dotaz pro načtení dat z tabulkového produktu a ProductCategory](./media/sql-database-connect-query-ssms/query2.png)
 
 ## <a name="insert-data"></a>Vložení dat
 
-To [vložit](https://msdn.microsoft.com/library/ms174335.aspx) kód jazyka Transact-SQL k vytvoření nového produktu v `SalesLT.Product` tabulky.
+Spuštěním tohoto příkazu [vložte](https://msdn.microsoft.com/library/ms174335.aspx) kód Transact-SQL k vytvoření nového produktu v `SalesLT.Product` tabulce.
 
 1. Nahraďte předchozí dotaz s touto položkou.
 
@@ -132,7 +131,7 @@ To [vložit](https://msdn.microsoft.com/library/ms174335.aspx) kód jazyka Trans
            ,GETDATE() );
    ```
 
-2. Vyberte **Execute** vložte nový řádek v `Product` tabulky. **Zprávy** podokně se zobrazí **(1 řádek vliv)** .
+2. Vyberte **Spustit** pro vložení nového řádku do `Product` tabulky. **Zprávy** podokně se zobrazí **(1 řádek vliv)** .
 
 ## <a name="view-the-result"></a>Zobrazení výsledku
 
@@ -143,13 +142,13 @@ To [vložit](https://msdn.microsoft.com/library/ms174335.aspx) kód jazyka Trans
    WHERE Name='myNewProduct'
    ```
 
-2. Vyberte **Provést**. Zobrazí se následující výsledky.
+2. Vyberte **Provést**. Zobrazí se následující výsledek.
 
-   ![Výsledek dotazu tabulka produktů](./media/sql-database-connect-query-ssms/result.png)
+   ![výsledek dotazu na tabulku produktu](./media/sql-database-connect-query-ssms/result.png)
 
 ## <a name="update-data"></a>Aktualizace dat
 
-To [aktualizace](https://msdn.microsoft.com/library/ms177523.aspx) kód Transact-SQL k úpravě nového produktu.
+Spusťte tento [kód](https://msdn.microsoft.com/library/ms177523.aspx) Transact-SQL pro úpravu nového produktu.
 
 1. Nahraďte předchozí dotaz s touto položkou.
 
@@ -159,11 +158,11 @@ To [aktualizace](https://msdn.microsoft.com/library/ms177523.aspx) kód Transact
    WHERE Name = 'myNewProduct';
    ```
 
-2. Vyberte **Execute** aktualizujte zadaný řádek v `Product` tabulky. **Zprávy** podokně se zobrazí **(1 řádek vliv)** .
+2. Vyberte **provést** a aktualizujte zadaný řádek v `Product` tabulce. **Zprávy** podokně se zobrazí **(1 řádek vliv)** .
 
 ## <a name="delete-data"></a>Odstranění dat
 
-To [odstranit](https://msdn.microsoft.com/library/ms189835.aspx) kód Transact-SQL k odstranění nového produktu.
+Spuštěním tohoto příkazu [odstraňte](https://msdn.microsoft.com/library/ms189835.aspx) kód Transact-SQL, abyste mohli nový produkt odebrat.
 
 1. Nahraďte předchozí dotaz s touto položkou.
 
@@ -172,7 +171,7 @@ To [odstranit](https://msdn.microsoft.com/library/ms189835.aspx) kód Transact-S
    WHERE Name = 'myNewProduct';
    ```
 
-2. Vyberte **Execute** odstraňte zadaný řádek v `Product` tabulky. **Zprávy** podokně se zobrazí **(1 řádek vliv)** .
+2. Zvolením příkazu **Spustit** odstraňte zadaný řádek v `Product` tabulce. **Zprávy** podokně se zobrazí **(1 řádek vliv)** .
 
 ## <a name="next-steps"></a>Další postup
 

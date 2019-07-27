@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-custom-search
 ms.topic: quickstart
-ms.date: 03/04/2019
+ms.date: 07/26/2019
 ms.author: aahi
-ms.openlocfilehash: 9af82ae8cff2e93c0456ed8b5a84414f98ba5b06
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: afb804dd3fd0fecd676f04f18db577f87861a163
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68405282"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68564684"
 ---
 # <a name="quickstart-call-your-bing-custom-search-endpoint-using-java"></a>Rychlý start: Volání koncového bodu Vlastní vyhledávání Bingu pomocí jazyka Java
 
@@ -129,7 +129,7 @@ Pomocí tohoto rychlého startu můžete začít požadovat výsledky hledání 
 
 4. Spusťte program.
     
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 > [Vytvoření vlastní vyhledávací webové aplikace](./tutorials/custom-search-web-page.md)

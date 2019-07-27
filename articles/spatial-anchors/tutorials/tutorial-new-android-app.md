@@ -1,6 +1,6 @@
 ---
-title: Kurz – podrobné pokyny k vytvoření nové aplikace pro Android pomocí Azure prostorových kotvy | Dokumentace Microsoftu
-description: V tomto kurzu se dozvíte, jak vytvořit novou aplikaci Android pomocí Azure prostorových ukotvení.
+title: Kurz – podrobné pokyny k vytvoření nové aplikace pro Android pomocí prostorových kotev Azure | Microsoft Docs
+description: V tomto kurzu se naučíte, jak vytvořit novou aplikaci pro Android pomocí prostorových kotev Azure.
 author: ramonarguelles
 manager: vicenterivera
 services: azure-spatial-anchors
@@ -8,43 +8,43 @@ ms.author: rgarcia
 ms.date: 04/03/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 9838add4f83434848d61f3ae86db71765efdc59a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 499b08dbdc8e798a884b721bcba51be1f6973df6
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60786400"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68562383"
 ---
-# <a name="tutorial-step-by-step-instructions-to-create-a-new-android-app-using-azure-spatial-anchors"></a>Kurz: Podrobné pokyny k vytvoření nové aplikace pro Android pomocí Azure prostorových kotvy
+# <a name="tutorial-step-by-step-instructions-to-create-a-new-android-app-using-azure-spatial-anchors"></a>Kurz: Podrobné pokyny k vytvoření nové aplikace pro Android pomocí prostorových kotev Azure
 
-Tomto kurzu se dozvíte, jak vytvořit novou aplikaci Android, která se integruje s Azure prostorových kotvy ARCore funkce.
+V tomto kurzu se dozvíte, jak vytvořit novou aplikaci pro Android, která integruje funkce ARCore s prostorovými kotvami Azure.
 
 ## <a name="prerequisites"></a>Požadavky
 
 Abyste mohli absolvovat tento kurz, ujistěte se, že máte následující:
 
-- Windows nebo macOS počítače s <a href="https://developer.android.com/studio/" target="_blank">Android Studio 3.3 +</a>.
-- A <a href="https://developer.android.com/studio/debug/dev-options" target="_blank">developer povolené</a> a <a href="https://developers.google.com/ar/discover/supported-devices" target="_blank">ARCore podporující</a> zařízení s Androidem.
+- Počítač s Windows nebo macOS, který má <a href="https://developer.android.com/studio/" target="_blank">Android Studio 3.4 +</a>.
+- Zařízení s Androidem podporující <a href="https://developer.android.com/studio/debug/dev-options" target="_blank">vývojáře</a> a <a href="https://developers.google.com/ar/discover/supported-devices" target="_blank">ARCore</a> .
 
 ## <a name="getting-started"></a>Začínáme
 
-Spusťte Android Studio. V **Vítejte v nástroji Android Studio** okna, klikněte na tlačítko **spusťte nový projekt Android Studio**. Nebo, pokud máte projekt už otevřený, vyberte **souboru**->**nový projekt**.
+Spusťte Android Studio. V okně **Vítá vás Android Studio** klikněte na **spustit nový projekt Android Studio**. Nebo, pokud máte projekt již otevřen, vyberte **soubor**->**Nový projekt**.
 
-V **vytvořit nový projekt** okně v části **telefony a tablety** zvolte **prázdná aktivita**a klikněte na tlačítko **Další**. Potom v části **rozhraní API minimálně úrovně**, zvolte `API 26: Android 8.0 (Oreo)`a zajistit **jazyk** je nastavena na `Java`. Můžete změnit název projektu & umístění a název balíčku. U ostatních možností ponechte, protože jde o. Klikněte na **Dokončit**. **Instalační program komponenty** poběží. Po dokončení klikněte na tlačítko **Dokončit**. Po nějaké zpracování Android Studio otevře rozhraní IDE.
+V okně **vytvořit nový projekt** v části **telefon a tablet** vyberte možnost **prázdná aktivita**a klikněte na tlačítko **Další**. Pak v části **minimální úroveň rozhraní API**zvolte `API 26: Android 8.0 (Oreo)`a zkontrolujte, že je **jazyk** nastavený na `Java`. Je možné, že budete chtít změnit název projektu & umístění a název balíčku. Ostatní možnosti ponechte beze změny. Klikněte na tlačítko **Dokončit**. Spustí se **instalační program součásti** . Až to bude hotové, klikněte na **Dokončit**. Po nějakém zpracování Android Studio otevře IDE.
 
-## <a name="trying-it-out"></a>Vyzkoušejte si
+## <a name="trying-it-out"></a>Vyzkoušení
 
-K otestování vaší nové aplikace, připojení zařízení povolené pro vývojáře na vývojovém počítači pomocí kabelu USB. Klikněte na tlačítko **spustit**->**spuštění "aplikace"**. V **vyberte cíl nasazení** okna, vyberte zařízení a klikněte na tlačítko **OK**. Android Studio nainstaluje aplikaci na připojeném zařízení a spustí ho. Teď byste měli vidět "Hello World!" zobrazí v aplikaci spuštěnou na zařízení. Klikněte na tlačítko **spustit**->**Stop "aplikace"**.
+Pokud chcete otestovat novou aplikaci, připojte zařízení s podporou vývojářů k vývojovému počítači pomocí kabelu USB. Klikněte na **Spustit**->**Spustit aplikaci**. V okně **vybrat cíl nasazení** vyberte své zařízení a klikněte na **OK**. Android Studio nainstaluje aplikaci na připojené zařízení a spustí ji. Nyní by se měla zobrazit zpráva "Hello World!". Zobrazuje se v aplikaci běžící na vašem zařízení. Klikněte na **Spustit**->**zastavit aplikaci**.
 
 ## <a name="integrating-arcore"></a>Integrace _ARCore_
 
-<a href="https://developers.google.com/ar/discover/" target="_blank">_ARCore_ </a> je od Googlu platforma pro vytváření prostředí pro rozšířené Reality, aktivace vašeho zařízení ke sledování jeho pozice přesune a sestaví vlastní znalost reálného světa.
+<a href="https://developers.google.com/ar/discover/" target="_blank">_ARCore_</a> je platforma Google pro vytváření rozšířených funkcí reálného realit a umožňuje tak vašemu zařízení sledovat jeho polohu při přesunu a sestavuje své znalosti reálného světa.
 
-Upravit `app\manifests\AndroidManifest.xml` zahrnout následující položky v kořenovém adresáři `<manifest>` uzlu. Tento fragment kódu se provede několik věcí:
+Upravit `app\manifests\AndroidManifest.xml` tak, aby zahrnoval následující položky uvnitř kořenového `<manifest>` uzlu. Tento fragment kódu provede několik věcí:
 
-- To vám umožní vaší aplikaci přístup k fotoaparátu zařízení.
-- Také zajistí, že vaše aplikace je viditelná jen v Store Google Play na zařízení, která podporují ARCore.
-- Nakonfiguruje Google Play Store ke stažení a instalaci ARCore, pokud nainstalovaná není, ještě při instalaci aplikace.
+- Umožní vaší aplikaci přístup k fotoaparátu vašeho zařízení.
+- Tím zajistíte, že se vaše aplikace bude zobrazovat jenom v Obchod Google Play na zařízeních, která podporují ARCore.
+- Nakonfiguruje Obchod Google Play ke stažení a instalaci ARCore, pokud už není nainstalovaná, když je vaše aplikace nainstalovaná.
 
 ```xml
 <uses-permission android:name="android.permission.CAMERA" />
@@ -57,21 +57,21 @@ Upravit `app\manifests\AndroidManifest.xml` zahrnout následující položky v k
 </application>
 ```
 
-Upravit `Gradle Scripts\build.gradle (Module: app)` přidejte následující položku. Tento kód, který zajistí vaše aplikace cílí ARCore verze 1.7. Po této změně, může se zobrazit oznámení z Gradle s výzvou k synchronizaci: klikněte na tlačítko **synchronizovat nyní**.
+Upravte `Gradle Scripts\build.gradle (Module: app)` , aby obsahovala následující položku. Tento kód zajistí, že vaše aplikace bude cílena na verzi ARCore 1,8. Po této změně můžete obdržet oznámení od Gradle s výzvou k synchronizaci: klikněte na **synchronizovat hned**.
 
 ```
 dependencies {
     ...
-    implementation 'com.google.ar:core:1.7.0'
+    implementation 'com.google.ar:core:1.8.0'
     ...
 }
 ```
 
 ## <a name="integrating-sceneform"></a>Integrace _Sceneform_
 
-<a href="https://developers.google.com/ar/develop/java/sceneform/" target="_blank">_Sceneform_ </a> usnadňuje vykreslení realistické 3D scény v aplikacích pro rozšířené Reality, bez nutnosti učit OpenGL.
+<a href="https://developers.google.com/ar/develop/java/sceneform/" target="_blank">_Sceneform_</a> usnadňuje vykreslování realistické 3D scény v rozšířených aplikacích realit, aniž byste se museli učit OpenGL.
 
-Upravit `Gradle Scripts\build.gradle (Module: app)` zahrnout následující položky. Tento kód vám umožní vaši aplikaci, aby používala jazykovým konstrukcím z Javy 8, které `Sceneform` vyžaduje. Také zajistí vaší aplikaci zaměřuje `Sceneform` verze 1.7, protože to by měla odpovídat verzi ARCore vaše aplikace používá. Po této změně, může se zobrazit oznámení z Gradle s výzvou k synchronizaci: klikněte na tlačítko **synchronizovat nyní**.
+Upravte `Gradle Scripts\build.gradle (Module: app)` , aby obsahovala následující položky. Tento kód umožní vaší aplikaci používat jazykové konstrukce z jazyka Java 8, který `Sceneform` vyžaduje. Tím se také zajistí, že vaše `Sceneform` aplikace cílí na verzi 1,8, protože by se měla shodovat s verzí ARCore, kterou vaše aplikace používá. Po této změně můžete obdržet oznámení od Gradle s výzvou k synchronizaci: klikněte na **synchronizovat hned**.
 
 ```
 android {
@@ -85,12 +85,12 @@ android {
 
 dependencies {
     ...
-    implementation 'com.google.ar.sceneform.ux:sceneform-ux:1.7.0'
+    implementation 'com.google.ar.sceneform.ux:sceneform-ux:1.8.0'
     ...
 }
 ```
 
-Otevřete váš `app\res\layout\activity_main.xml`a nahraďte existující Hello Wolrd `<TextView>` element s následující ArFragment. Tento kód způsobí, že zobrazený na obrazovce povolení ARCore sledovat svou pozici zařízení při jejich přesunu kanálu fotoaparátu funguje.
+Otevřete své `app\res\layout\activity_main.xml`a nahraďte existující element Hello `<TextView>` wolrd následujícím ArFragment. Tento kód způsobí, že se na obrazovce zobrazí informační kanál kamery umožňující ARCore sledovat polohu zařízení při jeho přesunutí.
 
 ```xml
 <fragment android:name="com.google.ar.sceneform.ux.ArFragment"
@@ -99,48 +99,48 @@ Otevřete váš `app\res\layout\activity_main.xml`a nahraďte existující Hello
     android:layout_height="match_parent" />
 ```
 
-[Znovu nasadit](#trying-it-out) aplikaci tak, aby vaše zařízení, abyste ověřili, že ještě jednou. Tentokrát by měl vyzváni k fotoaparátu oprávnění. Po schválení, měli byste vidět fotoaparátu kanálu vykreslování na obrazovce.
+[Znovu nasaďte](#trying-it-out) aplikaci do svého zařízení a znovu ji ověřte. Tentokrát byste měli požádat o oprávnění kamery. Po schválení by se na obrazovce mělo zobrazit vykreslování informačního kanálu kamery.
 
-## <a name="place-an-object-in-the-real-world"></a>Umístit objekt v reálném světě
+## <a name="place-an-object-in-the-real-world"></a>Umístit objekt do reálného světa
 
-Pojďme vytvořit & umístit objekt pomocí vaší aplikace. Nejprve přidejte následující importy do vaší `app\java\<PackageName>\MainActivity`:
+Pojďme vytvořit & umístit objekt pomocí vaší aplikace. Nejdřív přidejte následující importy do `app\java\<PackageName>\MainActivity`:
 
 [!code-java[MainActivity](../../../includes/spatial-anchors-new-android-app-finished.md?range=23-33)]
 
-Pak přidejte následující proměnné členů do vaší `MainActivity` třídy:
+Pak do své `MainActivity` třídy přidejte následující proměnné členů:
 
 [!code-java[MainActivity](../../../includes/spatial-anchors-new-android-app-finished.md?range=52-57)]
 
-Dále přidejte následující kód do vašeho `app\java\<PackageName>\MainActivity` `onCreate()` metody. Tento kód se připojí naslouchací proces nazvaný `handleTap()`, který bude rozpoznat, kdy se uživatel klepl na obrazovku na zařízení. V případě vzoru tap bude v reálném světě povrch, který již rozpoznávaných ARCore pro sledování se spustí naslouchací proces.
+Dále do své `app\java\<PackageName>\MainActivity` `onCreate()` metody přidejte následující kód. Tento kód zaznamená naslouchací proces, který se `handleTap()`zavolá, který zjistí, že uživatel na zařízení klepne na obrazovku. Pokud se klepnutí stane na reálném světovém povrchu, který již byl rozpoznán sledováním ARCore, spustí se naslouchací proces.
 
 [!code-java[MainActivity](../../../includes/spatial-anchors-new-android-app-finished.md?range=68-74,85&highlight=6-7)]
 
-Nakonec přidejte následující `handleTap()` metoda, která vše spojí dohromady. Bude vytvořit kouli a umístěte ho na které jste klepli umístění. Oblasti budou zpočátku černé od `this.recommendedSessionProgress` je nastaven na hodnotu nula hned teď. Tato hodnota bude později upravit.
+Nakonec přidejte následující `handleTap()` metodu, která bude spojovat vše dohromady. Vytvoří objekt sphere a umístí jej na místo, na které jste klepli. Koule bude zpočátku černá, protože `this.recommendedSessionProgress` je teď nastavená nula. Tato hodnota se upraví později.
 
 [!code-java[MainActivity](../../../includes/spatial-anchors-new-android-app-finished.md?range=150-158,170-171,174-182,198-199)]
 
-[Znovu nasadit](#trying-it-out) aplikaci tak, aby vaše zařízení, abyste ověřili, že ještě jednou. Tentokrát se můžete pohybovat zařízení zobrazíte ARCore spustit uznání vašeho prostředí. Potom klepněte na obrazovku k vytváření a umístěte černé sphere na plochu podle vašeho výběru.
+[Znovu nasaďte](#trying-it-out) aplikaci do svého zařízení a znovu ji ověřte. Tentokrát se můžete pohybovat v rámci svého zařízení, abyste mohli ARCore začít rozpoznávat vaše prostředí. Pak klepněte na obrazovku, abyste vytvořili & umístit černou plochu přes plochu podle vašeho výběru.
 
-## <a name="attach-a-local-azure-spatial-anchor"></a>Připojení místní prostorových ukotvení Azure
+## <a name="attach-a-local-azure-spatial-anchor"></a>Připojení místního prostorového ukotvení Azure
 
-Upravit `Gradle Scripts\build.gradle (Module: app)` přidejte následující položku. Tento kód se zajistit, aby vaše aplikace cíle ukotvení prostorových Azure verze 1.0.2. Ale nutné dodat, odkazuje na všechny nejnovější verzi Azure prostorových kotvy by mělo fungovat.
+Upravte `Gradle Scripts\build.gradle (Module: app)` , aby obsahovala následující položku. Tento kód zajistí, že vaše aplikace bude cílena na prostorové kotvy Azure verze 1.3.0. Tato verze by odkazovala na jakoukoli poslední verzi prostorových kotev Azure, která by měla fungovat.
 
 ```
 dependencies {
     ...
-    implementation "com.microsoft.azure.spatialanchors:spatialanchors_jni:[1.0.2]"
-    implementation "com.microsoft.azure.spatialanchors:spatialanchors_java:[1.0.2]"
+    implementation "com.microsoft.azure.spatialanchors:spatialanchors_jni:[1.3.0]"
+    implementation "com.microsoft.azure.spatialanchors:spatialanchors_java:[1.3.0]"
     ...
 }
 ```
 
-Klikněte pravým tlačítkem na `app\java\<PackageName>` -> **nové**->**třídy Java**. Nastavte **název** k _Mojeprvníaplikace_, a **supertřídě** k _android.app.Application_. U ostatních možností ponechte, protože jde o. Klikněte na **OK**. Soubor s názvem `MyFirstApp.java` vytvoří. Přidejte do něj následující import:
+Klikněte pravým `app\java\<PackageName>`tlačítkem na -> **novou**->**třídu Java**. Nastavte **název** na _MojePrvníAplikace_a **supertřída** na _Android. app. Application_. Ostatní možnosti ponechte beze změny. Klikněte na **OK**. Vytvoří se soubor `MyFirstApp.java` s názvem. Přidejte do něj následující import:
 
 ```java
 import com.microsoft.CloudServices;
 ```
 
-Potom přidejte následující kód do nové `MyFirstApp` třídu, která zajistí prostorových kotvy Azure se inicializuje s kontextem vaší aplikace.
+Potom do nové `MyFirstApp` třídy přidejte následující kód, který zajistí, že jsou prostorové kotvy Azure inicializovány s kontextem vaší aplikace.
 
 ```java
     @Override
@@ -150,7 +150,7 @@ Potom přidejte následující kód do nové `MyFirstApp` třídu, která zajist
     }
 ```
 
-Nyní, upravte `app\manifests\AndroidManifest.xml` přidejte následující položku v kořenovém adresáři `<application>` uzlu. Tento kód bude připojení – třída aplikace, kterou jste vytvořili do vaší aplikace.
+Nyní upravte `app\manifests\AndroidManifest.xml` , aby zahrnovala následující položku uvnitř kořenového `<application>` uzlu. Tento kód zařadí třídu aplikace, kterou jste vytvořili do vaší aplikace.
 
 ```xml
     <application
@@ -159,74 +159,74 @@ Nyní, upravte `app\manifests\AndroidManifest.xml` přidejte následující polo
     </application>
 ```
 
-Zpět v `app\java\<PackageName>\MainActivity`, přidejte do něj následující importy:
+Zpátky do `app\java\<PackageName>\MainActivity`přidejte do něj následující importy:
 
 [!code-java[MainActivity](../../../includes/spatial-anchors-new-android-app-finished.md?range=33-40&highlight=2-8)]
 
-Pak přidejte následující proměnné členů do vaší `MainActivity` třídy:
+Pak do své `MainActivity` třídy přidejte následující proměnné členů:
 
 [!code-java[MainActivity](../../../includes/spatial-anchors-new-android-app-finished.md?range=57-60&highlight=3-4)]
 
-V dalším kroku přidejme následující `initializeSession()` metoda uvnitř vaší `mainActivity` třídy. Po zavolání zajistí relaci prostorových kotvy Azure se vytvoří a správně inicializován během spuštění aplikace.
+Nyní přidáme do vaší `initializeSession()` `mainActivity` třídy následující metodu. Po volání se zajistí, že se vytvoří relace prostorových kotev Azure, která se při spuštění vaší aplikace správně inicializuje.
 
 [!code-java[MainActivity](../../../includes/spatial-anchors-new-android-app-finished.md?range=89-97,146)]
 
-Teď můžeme zapojit vaše `initializeSession()` metodu do vaší `onCreate()` – metoda. Také jsme zajistíte, že snímky z kanálu fotoaparátu funguje odesílají do Azure prostorových kotvy SDK pro zpracování.
+Nyní zapojte `onCreate()` metodu do vaší metody. `initializeSession()` Také zajistíme, aby se snímky z vašeho informačního kanálu kamery odesílaly do sady SDK prostorových kotev Azure ke zpracování.
 
 [!code-java[MainActivity](../../../includes/spatial-anchors-new-android-app-finished.md?range=68-85&highlight=9-17)]
 
-Nakonec přidejte následující kód do vašeho `handleTap()` metody. Místní prostorových ukotvení Azure se bude připojení k černé oblasti, které jsme umísťování v reálném světě.
+Nakonec do své `handleTap()` metody přidejte následující kód. Připojí místní prostor Azure do černé koule, kterou umísťujeme do reálného světa.
 
 [!code-java[MainActivity](../../../includes/spatial-anchors-new-android-app-finished.md?range=150-158,170-182,198-199&highlight=12-13)]
 
-[Znovu nasadit](#trying-it-out) ještě jednou vaše aplikace. Pohyb zařízení, klepněte na obrazovku a umístěte černé koule. Tentokrát ale kódu vytvářet a místní prostorových ukotvení Azure se připojuje k vaší oblasti.
+[Znovu nasaďte](#trying-it-out) aplikaci ještě jednou. Pohybujte zařízení, klepněte na obrazovku a umístěte černou koule. Tentokrát ale váš kód bude vytvářet a připojovat místní prostorové ukotvení Azure do vaší koule.
 
-Než budete pokračovat dále, budete muset vytvořit prostorových ukotvení Azure účtu identifikátor a klíč, pokud ještě nemáte je. Pomocí postupu v následující části je můžete získat.
+Než budete pokračovat, budete muset vytvořit identifikátor účtu a klíč prostorových kotev Azure, pokud je ještě nemáte. Pokud je chcete získat, postupujte podle následujících částí.
 
 [!INCLUDE [Create Spatial Anchors resource](../../../includes/spatial-anchors-get-started-create-resource.md)]
 
-## <a name="upload-your-local-anchor-into-the-cloud"></a>Nahrání místního ukotvení do cloudu
+## <a name="upload-your-local-anchor-into-the-cloud"></a>Nahrání místního kotvy do cloudu
 
-Jakmile budete mít účet Azure prostorových kotvy identifikátor a klíč, jsme se můžete vrátit `app\java\<PackageName>\MainActivity`, přidejte do něj následující importy:
+Jakmile budete mít identifikátor a klíč svého účtu prostorových ukotvení Azure, můžeme se zpátky `app\java\<PackageName>\MainActivity`vrátit do portálu a přidat do něj následující importy:
 
 [!code-java[MainActivity](../../../includes/spatial-anchors-new-android-app-finished.md?range=40-45&highlight=3-6)]
 
-Pak přidejte následující proměnné členů do vaší `MainActivity` třídy:
+Pak do své `MainActivity` třídy přidejte následující proměnné členů:
 
 [!code-java[MainActivity](../../../includes/spatial-anchors-new-android-app-finished.md?range=60-65&highlight=3-6)]
 
-Teď přidejte následující kód do vašeho `initializeSession()` metody. Nejprve, tento kód vám umožní vaši aplikaci pro sledování pokroku, sady SDK Azure prostorových kotvy díky shromažďuje snímky z kanálu fotoaparátu funguje. Stejně, barva vaší oblasti začne změna z jeho původní černé do šedá. Pak ji vypne bílé po dostatek snímků jsou shromažďovány pro odeslání vašeho ukotvení do cloudu. Tento kód bude kromě toho poskytují přihlašovací údaje potřebné ke komunikaci s back-end cloudu. Zde je, kde budete konfigurovat aplikace pro použití vašeho účtu identifikátor a klíč. Jste zkopírovali do textového editoru, když [nastavení zdroje prostorových kotvy](#create-a-spatial-anchors-resource).
+Nyní do své `initializeSession()` metody přidejte následující kód. Nejprve tento kód umožní vaší aplikaci monitorovat průběh, který sada SDK prostorových ukotvení vytvoří při shromažďování snímků z kanálu kamery. V takovém případě se barva vaší koule začne měnit z původní černé na šedá. Pak se v případě, že se shromáždí dostatek snímků pro odeslání kotvy do cloudu, zapíná bíle. Za druhé tento kód poskytne přihlašovací údaje potřebné ke komunikaci s back-end cloudu. Tady můžete nakonfigurovat aplikaci tak, aby používala identifikátor účtu a klíč. Při nastavování [prostředku prostorových ukotvení](#create-a-spatial-anchors-resource)jste je zkopírovali do textového editoru.
 
 [!code-java[MainActivity](../../../includes/spatial-anchors-new-android-app-finished.md?range=89-120,142-146&highlight=11-36)]
 
-V dalším kroku přidejte následující `uploadCloudAnchorAsync()` metoda uvnitř vaší `mainActivity` třídy. Po zavolání této metody asynchronně počká, až dostatek snímků se shromažďují ze svého zařízení. Poté, co se stane, že přepne barva vaší oblasti na žlutou a pak spustí nahrávání místní prostorových ukotvení Azure do cloudu. Po dokončení nahrávání kód vrátí identifikátor elementu anchor.
+Dále do vaší `mainActivity` třídy přidejte `uploadCloudAnchorAsync()` následující metodu. Po zavolání bude tato metoda asynchronně čekat, dokud nebudou ze zařízení shromažďovány dostatečné snímky. Jakmile k tomu dojde, změní se barva vaší koule na žlutou a potom se začne nahrávat vaše místní prostorové ukotvení Azure do cloudu. Po dokončení nahrávání kód vrátí identifikátor kotvy.
 
 [!code-java[MainActivity](../../../includes/spatial-anchors-new-android-app-finished.md?name=uploadCloudAnchorAsync)]
 
-Nakonec Pojďme integrovat všechno dohromady. Ve vaší `handleTap()` metodu, přidejte následující kód. Se vyvolá vaše `uploadCloudAnchorAsync()` metoda co nejdříve po vytvoření vaší oblasti. Jakmile se metoda vrátí hodnotu, následující kód provede jednu poslední aktualizaci do vaší oblasti, změníte jeho barvu na modrou.
+Nakonec připojovat všechno dohromady. `handleTap()` Do metody přidejte následující kód. Vyvolá vaši `uploadCloudAnchorAsync()` metodu, jakmile bude vaše koule vytvořena. Jakmile se metoda vrátí, kód níže provede jednu poslední aktualizaci vaší koule, přičemž změna barvy na modrou.
 
 [!code-java[MainActivity](../../../includes/spatial-anchors-new-android-app-finished.md?range=150-158,170-199&highlight=24-37)]
 
-[Znovu nasadit](#trying-it-out) ještě jednou vaše aplikace. Pohyb zařízení, klepněte na obrazovku a umístěte vaší oblasti. Tentokrát ale vaší oblasti změní jeho barva od černé směrem k prázdné, jako fotoaparátu snímků se shromažďují. Jakmile budeme mít dostatek snímků, oblasti se změní na žlutou barvou a spustí se nahrávání cloudu. Po dokončení nahrávání se modře vaší oblasti. Volitelně můžete také použít `Logcat` okna v prostředí Android Studio pro monitorování zpráv protokolu vaše aplikace odesílá. Například zachycuje průběh relace během rámce a identifikátor ukotvení cloudu vrátí po odeslání se dokončí.
+[Znovu nasaďte](#trying-it-out) aplikaci ještě jednou. Pohybujte na svém zařízení, klepněte na obrazovku a umístěte svoji koule. Tentokrát ale vaše koule změní barvu z černé na bílou, protože se shromažďují snímky kamery. Jakmile máme dostatek snímků, koule se změní na žlutou a spustí se nahrávání do cloudu. Až se nahrávání dokončí, vaše koule se změní na modrou. V případě potřeby můžete také použít `Logcat` okno uvnitř Android Studio k monitorování protokolů zpráv, které vaše aplikace posílá. Například průběh relace během zachycení snímku a identifikátor kotvy, který Cloud vrátí po dokončení nahrávání.
 
-## <a name="locate-your-cloud-spatial-anchor"></a>Vyhledejte své cloudové prostorových kotvy
+## <a name="locate-your-cloud-spatial-anchor"></a>Najděte své cloudové kotvy
 
-Jeden vaše ukotvení je nahraná na cloud, jsme připraveni pokusu o vyhledání znovu. Nejprve přidejte následující importy do kódu.
+Jedna vaše kotva se nahraje do cloudu, můžeme se pokusit o jejich vyhledání znovu. Nejprve přidáme následující importy do kódu.
 
 [!code-java[MainActivity](../../../includes/spatial-anchors-new-android-app-finished.md?range=45-48&highlight=3-4)]
 
-Potom přidejte následující kód do vašeho `handleTap()` metody. Tento kód vám:
+Pak přidejte do vaší `handleTap()` metody následující kód. Tento kód bude:
 
-- Naše stávající modré sphere odeberte z obrazovky.
-- Naše prostorových kotvy Azure relaci znovu inicializujte. Tím zajistíte, že anchor, které chceme vyhledejte pochází z cloudu místo místních anchor, který jsme vytvořili.
-- Zadat dotaz na ukotvení, že jsme nahráli do cloudu.
+- Z obrazovky odeberte existující modrou koule.
+- Znovu inicializujte naši relaci prostorové kotvy Azure. Tato akce zajistí, že kotva, kterou vyhledáme, pochází z cloudu namísto místního ukotvení, které jsme vytvořili.
+- Vydejte dotaz na kotvu, kterou jsme nahráli do cloudu.
 
 [!code-java[MainActivity](../../../includes/spatial-anchors-new-android-app-finished.md?name=handleTap&highlight=10-19)]
 
-Teď Pojďme upravíme kód, který bude vyvolán při ukotvení jsme se pro dotazování se nachází. Uvnitř vaší `initializeSession()` metodu, přidejte následující kód. Tento fragment kódu se vytvořit & na místě kouli zelené po ukotvení prostorových cloud nachází. Také umožní obrazovky klepněte znovu, takže můžete opakovat celý scénář ještě jednou: vytvořit jiného místního ukotvení, nahrajte ho a znovu ho najít.
+Nyní připravujeme kód, který bude vyvolán, když se na něj nachází kotva, pro kterou se dotazuje. V rámci `initializeSession()` metody přidejte následující kód. Tento fragment kódu vytvoří & umístit zelenou koule po umístění cloudové kotvy. Také se znovu aktivuje obrazovka, takže můžete celý scénář zopakovat, a to ještě jednou: vytvořte další místní kotvu, nahrajte ho a znovu ho vyhledejte.
 
 [!code-java[MainActivity](../../../includes/spatial-anchors-new-android-app-finished.md?name=initializeSession&highlight=34-53)]
 
-A to je vše! [Znovu nasadit](#trying-it-out) aplikace jeden poslední vyzkoušet si celý scénář koncového času. Pohyb zařízení a umístěte černé koule. Potom přesouvat zařízení pro zachycování snímků fotoaparát, dokud oblasti se změní na žlutou. Nahraje místní ukotvení a bude modře vaší oblasti. A konečně klepněte na obrazovku ještě jednou klikněte tak, aby místní ukotvení se odebere a pak jsme dotaz pro jeho protějšek cloudu. Pokračujte, dokud se nachází vaše cloudové prostorových ukotvení přesouvat zařízení. Zelená koule by se měla objevit ve správném umístění a může zasažení vodou a znovu opakujte celý scénář.
+A to je vše! [Opětovným nasazením](#trying-it-out) aplikace z poslední doby můžete vyzkoušet celý scénář a ukončit ho. Pohybujte kolem zařízení a umístěte černou koule. Pak můžete pokračovat ve svém zařízení a zachytit snímky z kamery, dokud se koule nezmění žlutě. Vaše místní kotva se nahraje a vaše koule se zachová modře. Nakonec klepněte na obrazovku ještě jednou, aby se vaše místní kotva odebrala, a pak se podíváme na svůj cloudový protějšek. Pokračujte v přesouvání zařízení, dokud se neumístí cloudové ukotvení. Zelená koule by se měla zobrazit ve správném umístění a můžete ji vypláchněte & opakujte celý scénář.
 
 [!INCLUDE [Share Anchors Sample Prerequisites](../../../includes/spatial-anchors-new-android-app-finished.md)]

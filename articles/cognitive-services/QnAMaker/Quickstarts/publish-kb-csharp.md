@@ -1,6 +1,6 @@
 ---
-title: Publikování znalostní báze knowledge base, REST,C#
-titleSuffix: QnA Maker- Azure Cognitive Services
+title: 'Rychlý start: Publikování znalostní báze, REST, C# -QnA maker'
+titleSuffix: Azure Cognitive Services
 description: To C# založené na protokolu REST rychlý start vás provede s publikování znalostní báze, která odesílá na nejnovější verzi znalostní báze otestované vyhrazené index Azure Search představující publikované znalostní báze. Také se přitom vytvoří koncový bod, který je možné volat v aplikaci nebo chatovacím robotu.
 services: cognitive-services
 author: diberry
@@ -11,14 +11,14 @@ ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 02/28/2019
 ms.author: diberry
-ms.openlocfilehash: 3460424a8d80baef92eb8b29a3be4de5686027c6
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: 0ce0f3673a297964932f3b97dfd1d49d7c1e55e5
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65827575"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68559788"
 ---
-# <a name="quickstart-publish-a-knowledge-base-in-qna-maker-using-c"></a>Rychlý start: Publikování znalostní báze v pomocí nástroje QnA MakerC#
+# <a name="quickstart-publish-a-knowledge-base-in-qna-maker-using-c"></a>Rychlý start: Publikování znalostní báze ve QnA Maker pomocíC#
 
 V tomto rychlém startu založené na protokolu REST provede programově publikování znalostní bázi (KB). Publikování odešle nejnovější verzi znalostní báze do vyhrazeného indexu Azure Search a vytvoří koncový bod, který je možné volat v aplikaci nebo chatovacím robotu.
 
@@ -33,15 +33,15 @@ Tento rychlý start volá rozhraní API služby QnA Maker:
 
     ![ID znalostní báze ve službě QnA Maker](../media/qnamaker-quickstart-kb/qna-maker-id.png)
 
-    Pokud ještě nemáte znalostní báze, můžete vytvořit ukázky, jednu pro účely tohoto rychlého startu: [Vytvoření nové znalostní báze](create-new-kb-csharp.md).
+    Pokud ještě nemáte znalostní bázi Knowledge Base, můžete si vytvořit ukázku pro použití v tomto rychlém startu: [Vytvořte novou znalostní bázi](create-new-kb-csharp.md).
 
 > [!NOTE] 
-> Soubory tak získají kompletní řešení jsou k dispozici na [ **Azure – ukázky/cognitive-services – QnA maker csharp** úložiště GitHub](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp/tree/master/documentation-samples/quickstarts/publish-knowledge-base).
+> Kompletní soubory řešení jsou k dispozici v [úložišti GitHub **Azure-Samples/vnímání-Services-qnamakerem-CSharp** ](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp/tree/master/documentation-samples/quickstarts/publish-knowledge-base).
 
 ## <a name="create-knowledge-base-project"></a>Vytvoření projektu znalostní báze
 
-1. Open Visual Studio 2019 Community edition.
-1. Vytvořte nový **Konzolová aplikace (.NET Core)** projektu a projekt pojmenujte `QnaMakerQuickstart`. U zbývajících nastavení přijměte výchozí hodnoty.
+1. Otevřete Visual Studio 2019 Community Edition.
+1. Vytvořte nový projekt **Konzolová aplikace (.NET Core)** a pojmenujte `QnaMakerQuickstart`projekt. U zbývajících nastavení přijměte výchozí hodnoty.
 
 ## <a name="add-required-dependencies"></a>Přidání požadovaných závislostí
 

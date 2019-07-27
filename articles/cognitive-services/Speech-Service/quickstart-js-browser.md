@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý start: Rozpoznávání řeči, jazyka JavaScript (prohlížeči) – hlasové služby'
+title: 'Rychlý start: Rozpoznávání řeči, JavaScript (prohlížeč) – služba Speech'
 titleSuffix: Azure Cognitive Services
-description: Zjistěte, jak rozpoznávat řeč v jazyce JavaScript v prohlížeči pomocí sadou SDK pro řeč
+description: Naučte se rozpoznávat řeč v JavaScriptu v prohlížeči pomocí sady Speech SDK
 services: cognitive-services
 author: fmegen
 manager: nitinme
@@ -10,26 +10,26 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: fmegen
-ms.openlocfilehash: a2884b43268b4c067e6e739f67d2253f8c45a408
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 69ec6062d0dba1f1044f9a7dcfbe75924887d2b4
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67603056"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68559417"
 ---
-# <a name="quickstart-recognize-speech-in-javascript-in-a-browser-using-the-speech-sdk"></a>Rychlý start: Rozpoznávání řeči v jazyce JavaScript v prohlížeči pomocí sadou SDK pro řeč
+# <a name="quickstart-recognize-speech-in-javascript-in-a-browser-using-the-speech-sdk"></a>Rychlý start: Rozpoznávání řeči v JavaScriptu v prohlížeči pomocí sady Speech SDK
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
 V tomto článku se dozvíte, jak vytvořit web pro přepis řeči na text s využitím vazby JavaScriptu na sadu Cognitive Services Speech SDK.
-Aplikace je založena na sadou SDK pro řeč pro jazyk JavaScript ([stahování verze 1.5.0](https://aka.ms/csspeech/jsbrowserpackage)).
+Aplikace je založena na sadě Speech SDK for JavaScript ([Stáhnout verzi 1.5.0](https://aka.ms/csspeech/jsbrowserpackage)).
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Klíč předplatného pro službu Speech. Zobrazit [hlasové služby si můžete vyzkoušet zdarma](get-started.md).
+* Klíč předplatného pro službu Speech. Další informace najdete v článku [o bezplatné rozpoznávání hlasových služeb](get-started.md).
 * PC nebo Mac s funkčním mikrofonem
 * Textový editor
-* Aktuální verzi Chrome, Microsoft Edge nebo Safari.
+* Aktuální verze Chrome, Microsoft Edge nebo Safari.
 * Volitelně webový server s podporou hostování skriptů PHP
 
 ## <a name="create-a-new-website-folder"></a>Vytvoření složky nového webu
@@ -40,8 +40,8 @@ Vytvořte novou prázdnou složku. Pokud chcete ukázku hostovat na webovém ser
 
 [!INCLUDE [License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
 
-Stáhněte si sadu Speech SDK jako [balíček .zip](https://aka.ms/csspeech/jsbrowserpackage) a rozbalte ho do nově vytvořené složky. Výsledkem je dva soubory během rozbalování `microsoft.cognitiveservices.speech.sdk.bundle.js` a `microsoft.cognitiveservices.speech.sdk.bundle.js.map`.
-Druhá možnost soubor je volitelný a je užitečné pro ladění do kódu SDK.
+Stáhněte si sadu Speech SDK jako [balíček .zip](https://aka.ms/csspeech/jsbrowserpackage) a rozbalte ho do nově vytvořené složky. Výsledkem je, `microsoft.cognitiveservices.speech.sdk.bundle.js` že se dva soubory rozbalí a `microsoft.cognitiveservices.speech.sdk.bundle.js.map`.
+Druhý soubor je nepovinný a je vhodný pro ladění kódu SDK.
 
 ## <a name="create-an-indexhtml-page"></a>Vytvoření stránky index.html
 
@@ -74,7 +74,7 @@ Vytvořte ve složce nový soubor `index.html` a otevřete ho v textovém editor
 
    [!code-html[](~/samples-cognitive-services-speech-sdk/quickstart/js-browser/index.html#speechsdkref)]
 
-1. Nastavit obslužné rutiny pro rozpoznávání tlačítko, výsledek rozpoznání a týkajících se předplatného polí definovaných v kódu uživatelského rozhraní:
+1. Obslužné rutiny pro tlačítko pro rozpoznávání, výsledek rozpoznávání a pole související s předplatným, které jsou definovány kódem uživatelského rozhraní:
 
    [!code-html[](~/samples-cognitive-services-speech-sdk/quickstart/js-browser/index.html#quickstartcode)]
 
@@ -101,7 +101,7 @@ Pokud chcete aplikaci spustit, dvakrát klikněte na soubor index.html nebo tent
 
 > [!NOTE]
 > Tato metoda nefunguje v prohlížeči Safari.
-> V Safari musí být hostované na webovém serveru; ukázková webová stránka Safari neumožňuje weby, které jsou načteny z místního souboru používat mikrofon.
+> V prohlížeči Safari musí být Ukázková webová stránka hostovaná na webovém serveru. Safari nepovoluje webům načtených z místního souboru, aby používaly mikrofon.
 
 ## <a name="build-and-run-the-sample-via-a-web-server"></a>Sestavení a spuštění ukázky pomocí webového serveru
 
@@ -110,4 +110,4 @@ Pokud chcete aplikaci spustit, otevřete oblíbený webový prohlížeč a přej
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Prozkoumejte ukázky jazyka JavaScript na Githubu](https://aka.ms/csspeech/samples)
+> [Prozkoumejte ukázky JavaScriptu na GitHubu](https://aka.ms/csspeech/samples)

@@ -1,6 +1,6 @@
 ---
-title: Provádění operací image – Java
-titlesuffix: Azure Cognitive Services
+title: Provádění operací s imagemi – Java
+titleSuffix: Azure Cognitive Services
 description: Prozkoumejte základní aplikaci v Java Swingu, která v Azure Cognitive Services používá rozhraní API pro počítačové zpracování obrazu. Provádějte optické rozpoznávání znaků (OCR), vytvářejte miniatury a pracujte s vizuálními funkcemi obrázku.
 services: cognitive-services
 author: KellyDF
@@ -11,14 +11,14 @@ ms.topic: conceptual
 ms.author: kefre
 ms.custom: seodec18
 ms.date: 04/30/2019
-ms.openlocfilehash: a22308e0c7ff924205f715692d011a4572b2bdb8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 16f75095c7e4461c84a1fea28cc620c49b6c5bca
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65232627"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68565688"
 ---
-# <a name="use-computer-vision-features-with-the-rest-api-and-java"></a>Používat funkce pro počítačové zpracování obrazu pomocí rozhraní REST API a Javy.
+# <a name="use-computer-vision-features-with-the-rest-api-and-java"></a>Použití funkcí Počítačové zpracování obrazu s REST API a Java
 
 Tento kurz ukazuje funkce rozhraní REST API pro počítačové zpracování obrazu služby Azure Cognitive Services.
 
@@ -34,7 +34,7 @@ V tomto kurzu se naučíte používat Počítačové zpracování obrazu k:
 > * Přečtení tištěného textu na obrázku
 > * Přečtení rukou psaného textu na obrázku
 
-Formulářová aplikace Java postupná byl již zapsán, ale nemá žádné funkce. V tomto kurzu přidáte konkrétní kód rozhraní REST API pro počítačové zpracování obrazu, kterým aplikaci funkci přidáte.
+Aplikace Java přítvarování již byla napsána, ale nemá žádné funkce. V tomto kurzu přidáte konkrétní kód rozhraní REST API pro počítačové zpracování obrazu, kterým aplikaci funkci přidáte.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -44,11 +44,11 @@ Tento kurz jsme vyvinuli v integrovaném vývojovém prostředí (IDE) NetBeans.
 
 ### <a name="subscribe-to-computer-vision-api-and-get-a-subscription-key"></a>Získejte předplatné rozhraní API pro počítačové zpracování obrazu a získejte klíč předplatného
 
-Před vytvořením příkladu, se musíte přihlásit k rozhraní API pro zpracování obrazu počítače, které je součástí Azure Cognitive Services. Podrobnosti o správě předplatného a klíče najdete v [předplatných](https://azure.microsoft.com/try/cognitive-services/). V tomto kurzu můžete použít jak primární, tak i sekundární klíče.
+Než vytvoříte příklad, musíte se přihlásit k odběru rozhraní API pro počítačové zpracování obrazu, který je součástí Azure Cognitive Services. Podrobnosti o správě předplatného a klíče najdete v [předplatných](https://azure.microsoft.com/try/cognitive-services/). V tomto kurzu můžete použít jak primární, tak i sekundární klíče.
 
-## <a name="acquire-incomplete-tutorial-project"></a>Získat neúplné projekt kurz
+## <a name="acquire-incomplete-tutorial-project"></a>Projekt získání nekompletního kurzu
 
-### <a name="download-the-project"></a>Stáhněte si projekt
+### <a name="download-the-project"></a>Stáhnout projekt
 
 1. Přejděte do úložiště [Cognitive Services Java Computer Vision Tutorial](https://github.com/Azure-Samples/cognitive-services-java-computer-vision-tutorial).
 1. Klikněte na tlačítko **Naklonovat nebo stáhnout**.
@@ -78,7 +78,7 @@ Soubor **cognitive-services-java-computer-vision-tutorial-master.zip** importujt
 
 1. Výukovou aplikaci ukončete.
 
-## <a name="add-tutorial-code-to-the-project"></a>Přidání kódu do projektu
+## <a name="add-tutorial-code-to-the-project"></a>Přidat kód kurzu do projektu
 
 Aplikace v Java Swingu má nastavených šest karet. Každá karta představuje jinou funkci rozhraní API pro počítačové zpracování obrazu (analýza, OCR atd.). Následujících šest částí kurzu na sobě nezávisí, takže jich můžete přidat kolik chcete – jednu, několik nebo všech šest. Můžete je přidávat v libovolném pořadí.
 
@@ -88,7 +88,7 @@ Funkce Analyze v rozhraní API pro počítačové zpracování obrazu během pro
 
 K dokončení funkce Analyze výukové aplikace musíte provést následující kroky:
 
-#### <a name="add-the-event-handler-code-for-the-analyze-button"></a>Přidejte kód pro obslužnou rutinu události pro tlačítko analyzovat
+#### <a name="add-the-event-handler-code-for-the-analyze-button"></a>Přidejte kód obslužné rutiny události pro tlačítko analyzovat.
 
 Metoda obslužné rutiny události **analyzeImageButtonActionPerformed** vymaže formulář, zobrazí obrázek zadaný adresou URL a potom zavolá metodu **AnalyzeImage**, která obrázek analyzuje. Když se metoda **AnalyzeImage** vrátí, zobrazí v textové oblasti **Response** (Odpověď) formátovanou odpověď JSON, z objektu **JSONObject** extrahuje první titulek a zobrazí ho spolu s úrovní spolehlivosti, že je titulek správný.
 
@@ -202,7 +202,7 @@ Metodu **AnalyzeImage** zkopírujte a vložte těsně pod metodu **analyzeImageB
     }
  ```
 
-#### <a name="run-the-analyze-function"></a>Spusťte funkci analyzovat
+#### <a name="run-the-analyze-function"></a>Spuštění funkce analyzovat
 
 Stisknutím klávesy **F6** spusťte aplikaci. Do pole **Subscription Key** (Klíč předplatného) vložte svůj klíč předplatného a zkontrolujte, že v poli **Subscription Region** (Oblast předplatného) používáte správnou oblast. Zadejte adresu URL obrázku, který chcete analyzovat, potom klikněte na tlačítko **Analyze Image** (Analyzovat obrázek) a podívejte se na výsledek.
 
@@ -326,7 +326,7 @@ Metodu **LandmarkImage** zkopírujte a vložte těsně pod metodu **landmarkImag
     }
 ```
 
-#### <a name="run-the-landmark-function"></a>Spusťte funkci landmark
+#### <a name="run-the-landmark-function"></a>Spuštění funkce orientačních bodů
 
 Stisknutím klávesy **F6** spusťte aplikaci. Do pole **Subscription Key** (Klíč předplatného) vložte svůj klíč předplatného a zkontrolujte, že v poli **Subscription Region** (Oblast předplatného) používáte správnou oblast. Klikněte na kartu **Landmark** (Památka), zadejte adresu URL obrázku s památkou, potom klikněte na tlačítko **Analyze Image** (Analyzovat obrázek) a podívejte se na výsledek.
 
@@ -336,7 +336,7 @@ Funkce Celebrities počítačového zpracování obrazu vyhledá na obrázku zn�
 
 K dokončení funkce Celebrities výukové aplikace musíte provést následující kroky:
 
-#### <a name="add-the-event-handler-code-for-the-celebrities-button"></a>Přidejte kód pro obslužnou rutinu události pro tlačítko celebrit
+#### <a name="add-the-event-handler-code-for-the-celebrities-button"></a>Přidejte kód obslužné rutiny události pro tlačítko celebrit.
 
 Metoda obslužné rutiny události **celebritiesImageButtonActionPerformed** vymaže formulář, zobrazí obrázek zadaný adresou URL a potom zavolá metodu **CelebritiesImage**, která obrázek analyzuje. Když se metoda **CelebritiesImage** vrátí, zobrazí v textové oblasti **Response** (Odpověď) formátovanou odpověď JSON, z objektu **JSONObject** extrahuje první jméno celebrity a zobrazí ho v okně spolu s úrovní spolehlivosti, že je celebrita identifikovaná správně.
 
@@ -450,7 +450,7 @@ Metodu **CelebritiesImage** zkopírujte a vložte těsně pod metodu **celebriti
     }
 ```
 
-#### <a name="run-the-celebrities-function"></a>Spustit celebrit – funkce
+#### <a name="run-the-celebrities-function"></a>Spuštění funkce celebrit
 
 Stisknutím klávesy **F6** spusťte aplikaci. Do pole **Subscription Key** (Klíč předplatného) vložte svůj klíč předplatného a zkontrolujte, že v poli **Subscription Region** (Oblast předplatného) používáte správnou oblast. Klikněte na kartu **Celebrities** (Celebrity), zadejte adresu URL obrázku s celebritou, potom klikněte na tlačítko **Analyze Image** (Analyzovat obrázek) a podívejte se na výsledek.
 
@@ -460,7 +460,7 @@ Funkce Thumbnail počítačového zpracování obrazu vygeneruje z obrázku mini
 
 K dokončení funkce Thumbnail výukové aplikace musíte provést následující kroky:
 
-#### <a name="add-the-event-handler-code-for-the-thumbnail-button"></a>Přidejte kód pro obslužnou rutinu události pro tlačítko miniatur
+#### <a name="add-the-event-handler-code-for-the-thumbnail-button"></a>Přidejte kód obslužné rutiny události pro tlačítko miniatura.
 
 Metoda obslužné rutiny události **thumbnailImageButtonActionPerformed** vymaže formulář, zobrazí obrázek zadaný adresou URL a potom zavolá metodu **getThumbnailImage**, která vytvoří miniaturu. Když se metoda **getThumbnailImage** vrátí, zobrazí vygenerovanou miniaturu.
 
@@ -573,7 +573,7 @@ Metodu **getThumbnailImage** zkopírujte a vložte těsně pod metodu **thumbnai
     }
 ```
 
-#### <a name="run-the-thumbnail-function"></a>Spusťte funkci miniatur
+#### <a name="run-the-thumbnail-function"></a>Spuštění funkce Miniatura
 
 Stisknutím klávesy **F6** spusťte aplikaci. Do pole **Subscription Key** (Klíč předplatného) vložte svůj klíč předplatného a zkontrolujte, že v poli **Subscription Region** (Oblast předplatného) používáte správnou oblast. Klikněte na kartu **Thumbnail** (Miniatura), zadejte adresu URL obrázku, potom klikněte na tlačítko **Generate Thumbnail** (Vygenerovat miniaturu) a podívejte se na výsledek.
 
@@ -583,7 +583,7 @@ Funkce optického rozpoznávání znaků (OCR) počítačového zpracování obr
 
 K dokončení funkce OCR výukové aplikace musíte provést následující kroky:
 
-#### <a name="add-the-event-handler-code-for-the-ocr-button"></a>Přidejte kód pro obslužnou rutinu události pro tlačítko optické rozpoznávání znaků
+#### <a name="add-the-event-handler-code-for-the-ocr-button"></a>Přidat kód obslužné rutiny události pro tlačítko OCR
 
 Metoda obslužné rutiny události **ocrImageButtonActionPerformed** vymaže formulář, zobrazí obrázek zadaný adresou URL a potom zavolá metodu **OcrImage**, která obrázek analyzuje. Když se metoda **OcrImage** vrátí, zobrazí v textové oblasti **Response** (Odpověď) rozpoznaný text jako formátovanou odpověď JSON.
 
@@ -684,7 +684,7 @@ Metodu **OcrImage** zkopírujte a vložte těsně pod metodu **ocrImageButtonAct
     }
 ```
 
-#### <a name="run-the-ocr-function"></a>Spuštění funkce technologie OCR
+#### <a name="run-the-ocr-function"></a>Spuštění funkce OCR
 
 Stisknutím klávesy **F6** spusťte aplikaci. Do pole **Subscription Key** (Klíč předplatného) vložte svůj klíč předplatného a zkontrolujte, že v poli **Subscription Region** (Oblast předplatného) používáte správnou oblast. Klikněte na kartu **OCR**, zadejte adresu URL obrázku s tištěným textem, potom klikněte na tlačítko **Read Image** (Přečíst obrázek) a podívejte se na výsledek.
 
@@ -694,7 +694,7 @@ Funkce Handwriting Recognition počítačového zpracování obrazu analyzuje ob
 
 K dokončení funkce Handwriting Recognition výukové aplikace musíte provést následující kroky:
 
-#### <a name="add-the-event-handler-code-for-the-handwriting-button"></a>Přidejte kód pro obslužnou rutinu události pro tlačítko rukopisu
+#### <a name="add-the-event-handler-code-for-the-handwriting-button"></a>Přidejte kód obslužné rutiny události pro tlačítko rukopisu.
 
 Metoda obslužné rutiny události **handwritingImageButtonActionPerformed** vymaže formulář, zobrazí obrázek zadaný adresou URL a potom zavolá metodu **HandwritingImage**, která obrázek analyzuje. Když se metoda **HandwritingImage** vrátí, zobrazí v textové oblasti **Response** (Odpověď) rozpoznaný text jako formátovanou odpověď JSON.
 
@@ -842,12 +842,12 @@ Metodu **HandwritingImage** zkopírujte a vložte těsně pod metodu **handwriti
     }
 ```
 
-#### <a name="run-the-handwriting-function"></a>Spusťte funkci rukopisu
+#### <a name="run-the-handwriting-function"></a>Spuštění funkce rukopisu
 
 Stisknutím klávesy **F6** spusťte aplikaci. Do pole **Subscription Key** (Klíč předplatného) vložte svůj klíč předplatného a zkontrolujte, že v poli **Subscription Region** (Oblast předplatného) používáte správnou oblast. Klikněte na kartu **Read Handwritten Text** (Přečíst rukou psaný text), zadejte adresu URL obrázku s rukou psaným textem, potom klikněte na tlačítko **Read Image** (Přečíst obrázek) a podívejte se na výsledek.
 
 ## <a name="next-steps"></a>Další postup
 
-V této příručce můžete použít rozhraní API pro počítačové zpracování obrazu REST s Javou k testování řadu funkcí, analýzy dostupné image. V dalším kroku naleznete v referenční dokumentaci se dozvíte, že informace o rozhraních API zahrnuta.
+V této příručce jste použili Počítačové zpracování obrazu REST API s Java k otestování mnoha dostupných funkcí analýzy obrázků. Dále si přečtěte referenční dokumentaci, kde najdete další informace o příslušných rozhraních API.
 
-- [Computer Vision REST API](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa)
+- [Počítačové zpracování obrazu REST API](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa)

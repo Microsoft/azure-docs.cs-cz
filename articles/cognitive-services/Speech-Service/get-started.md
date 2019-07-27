@@ -1,7 +1,7 @@
 ---
-title: Vyzkoušejte hlasové služby zdarma
+title: Vyzkoušejte si službu Speech Service zdarma
 titleSuffix: Azure Cognitive Services
-description: Začínáme se službou Speech je jednoduché a cenově dostupné. 30denní bezplatná zkušební verze vám umožní zjistit, co může služba provádět a rozhodnout, jestli je vhodná pro potřeby vaší aplikace.
+description: Začínáme se službou Speech je snadná a cenově dostupná. 30denní bezplatná zkušební verze vám umožní zjistit, co může služba provádět a rozhodnout, jestli je vhodná pro potřeby vaší aplikace.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -11,20 +11,20 @@ ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 203526b23a9571f0cccf3ebed432978772282418
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: a8797afdfacfcfc75445c7f35083aeb9bb847ac1
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68226427"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68562931"
 ---
 # <a name="try-speech-services-for-free"></a>Vyzkoušejte hlasové služby zdarma
 
-Začínáme se službou Speech je jednoduché a cenově dostupné. 30denní bezplatná zkušební verze vám umožní zjistit, co může služba provádět a rozhodnout, jestli je vhodná pro potřeby vaší aplikace.
+Začínáme se službami Speech Services jsou snadno a cenově dostupné. 30denní bezplatná zkušební verze vám umožní zjistit, co může služba provádět a rozhodnout, jestli je vhodná pro potřeby vaší aplikace.
 
-Pokud potřebujete více času, zaregistrujte si účet Microsoft Azure – jde o s 200 USD v kredit služby, které můžete použít na placené předplatné hlasové služby po dobu až 30 dnů.
+Pokud potřebujete víc času, zaregistrujte si účet Microsoft Azure – najdete ho v kreditu služby $200, který můžete uplatnit na placené předplatné služby Speech Services po dobu až 30 dnů.
 
-A konečně hlasových služeb nabízí na úrovni free, s nízkým objemem, který je vhodný pro vývoj aplikací. Abyste mohli tuto bezplatnou registraci i po vypršení platnosti vašeho kreditu služby.
+Služba rozpoznávání řeči nakonec nabízí bezplatnou a nízkou úroveň, která je vhodná pro vývoj aplikací. Abyste mohli tuto bezplatnou registraci i po vypršení platnosti vašeho kreditu služby.
 
 ## <a name="free-trial"></a>Bezplatná zkušební verze
 
@@ -38,7 +38,7 @@ Chcete-li zaregistrovat 30denní bezplatnou zkušební verzi:
 
    ![Karta služby řeči](media/index/try-speech-api-free-trial1.png)
 
-1. V části **hlasové služby**, vyberte **získat klíč rozhraní API** tlačítko.
+1. V části **Speech Services**vyberte tlačítko **získat klíč rozhraní API** .
 
    ![Klíč rozhraní API](media/index/try-speech-api-free-trial2.png)
 
@@ -50,24 +50,24 @@ Chcete-li zaregistrovat 30denní bezplatnou zkušební verzi:
 
     Můžete se zaregistrovat si bezplatný účet Microsoft na [portálu účtů Microsoft](https://account.microsoft.com/account). Abyste mohli začít, klikněte na tlačítko **přihlásit se účtem Microsoft** a když se zobrazí výzva k přihlášení, klepněte na tlačítko **ho vytvořit.** Postupujte podle kroků k vytvoření a ověřte svůj nový účet Microsoft.
 
-Po přihlášení k zkuste služby Cognitive Services, začne bezplatné zkušební verze. Zobrazená webová stránka obsahuje seznam všech služeb Azure Cognitive Services, pro které máte aktuálně zkušebních verzí předplatného. Vedle položky jsou uvedeny dva klíče předplatného **hlasové služby**. Ani jeden klíč můžete použít ve svých aplikacích.
+Po přihlášení k zkuste služby Cognitive Services, začne bezplatné zkušební verze. Zobrazená webová stránka obsahuje seznam všech služeb Azure Cognitive Services, pro které máte aktuálně zkušebních verzí předplatného. Vedle **služby Speech Services**jsou uvedeny dva klíče předplatného. Ani jeden klíč můžete použít ve svých aplikacích.
 
 > [!NOTE]
 > Všechny bezplatných zkušebních verzí předplatného se v oblasti západní USA. Pokud provedete požadavky, je potřeba použít `westus` koncového bodu.
 
 ## <a name="new-azure-account"></a>Nový účet Azure
 
-Nové účty Azure získáte kredit 200 USD, služby, který je k dispozici po dobu až 30 dnů. Tento kredit můžete podrobněji prozkoumat hlasové služby nebo začátek vývoje aplikace.
+Nové účty Azure získáte kredit 200 USD, služby, který je k dispozici po dobu až 30 dnů. Tento kredit můžete využít k dalšímu zkoumání služeb řeči nebo k zahájení vývoje aplikací.
 
 Si zaregistrovat nový účet Azure, přejděte [Azure registrační stránku](https://azure.microsoft.com/free/ai/), klikněte na tlačítko **začít zdarma** a vytvořit nový účet Azure pomocí účtu Microsoft.
 
 Můžete se zaregistrovat si bezplatný účet Microsoft na [portálu účtů Microsoft](https://account.microsoft.com/account). Abyste mohli začít, klikněte na tlačítko **přihlásit se účtem Microsoft** a když se zobrazí výzva k přihlášení, klepněte na tlačítko **ho vytvořit.** Postupujte podle kroků k vytvoření a ověřte svůj nový účet Microsoft.
 
-Po vytvoření účtu Azure, postupujte podle kroků v další části, kde začít předplatné hlasové služby.
+Po vytvoření účtu Azure postupujte podle pokynů v následující části a spusťte předplatné služeb pro rozpoznávání řeči.
 
 ## <a name="create-a-speech-resource-in-azure"></a>Vytvořit prostředek řeči v Azure
 
-Chcete-li přidat prostředek hlasové služby (bezplatné nebo placené úrovně) ke svému účtu Azure:
+Postup přidání prostředku služby Speech Services (bezplatné nebo placené úrovně) do účtu Azure:
 
 1. Přihlaste se k [webu Azure portal](https://portal.azure.com/) pomocí účtu Microsoft.
 
@@ -89,7 +89,7 @@ Chcete-li přidat prostředek hlasové služby (bezplatné nebo placené úrovn�
 
    * Název pro nový prostředek. Název umožňuje rozlišit několik předplatných ve stejné službě.
    * Zvolte předplatné Azure, se nový prostředek je přidružený k určení, jak se účtují poplatky.
-   * Zvolte [oblasti](regions.md) použití prostředku.
+   * Vyberte [oblast](regions.md) , ve které se prostředek použije.
    * Zvolte buď bezplatné i placené cenové úrovně. Klikněte na tlačítko **zobrazit všechny podrobnosti o cenách** podrobnější informace o cenách a využití kvóty pro jednotlivé úrovně.
    * Vytvořit novou skupinu prostředků pro toto předplatné řeči nebo předplatné přiřadit existující skupinu prostředků. Pomáhají udržovat vaše různých předplatných Azure, které jsou uspořádány skupiny zdrojů.
    * Pohodlný přístup k vašemu předplatnému v budoucnu, vyberte **připnout na řídicí panel** zaškrtávací políčko.
@@ -114,7 +114,7 @@ Přepínání z jednoho předplatného do jiného, například kdy vyprší plat
 > Bezplatná zkušební verze klíče vytvořené v oblasti západní USA (`westus`) oblasti. Předplatné vytvořili prostřednictvím řídicího panelu Azure může být v některé oblasti, pokud se pro to rozhodnete.
 
 * Pokud vaše aplikace používá [sadou SDK pro řeč](speech-sdk.md), zadejte kód oblasti, jako třeba `westus`, při vytváření konfigurace řeči.
-* Pokud vaše aplikace používá jednu z hlasové služby [rozhraní REST API](rest-apis.md), oblast je součástí koncového bodu identifikátor URI, které používáte při zasílání požadavků.
+* Pokud vaše aplikace používá jedno z [rozhraní REST API](rest-apis.md)služby Speech Services, je tato oblast součástí identifikátoru URI koncového bodu, který používáte při provádění požadavků.
 
 Klíče vytvořené pro oblasti jsou platné pouze v dané oblasti. Pokus o použití s jinými oblastmi způsobí chyby ověřování.
 
@@ -123,5 +123,5 @@ Klíče vytvořené pro oblasti jsou platné pouze v dané oblasti. Pokus o pou�
 Proveďte jeden z našich šablon rychlý start během 10 minut nebo projděte si naše ukázky SDK:
 
 > [!div class="nextstepaction"]
-> [Rychlé zprovoznění: Rozpoznávání řeči v C# ](quickstart-csharp-dotnet-windows.md) 
->  [ukázky sadou SDK pro řeč](speech-sdk.md#get-the-samples)
+> [Rychlé zprovoznění: Ukázka rozpoznávání řeči C# ](quickstart-csharp-dotnet-windows.md)v 
+>  [sadě Speech SDK Samples](speech-sdk.md#get-the-samples)

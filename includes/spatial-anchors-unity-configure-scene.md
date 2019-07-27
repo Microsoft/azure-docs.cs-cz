@@ -4,13 +4,13 @@ ms.service: azure-spatial-anchors
 ms.topic: include
 ms.date: 1/2/2019
 ms.author: crtreasu
-ms.openlocfilehash: e796e836a8250c665ac09b66b51ed32380e56723
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 96046e63c896817a2af78b2a11af34af24565608
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67174693"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68561443"
 ---
-Dalším krokem je konfigurace aplikace pro používání identifikátor účtu a klíč účtu. Jste zkopírovali do textového editoru, když [nastavení zdroje prostorových kotvy](#create-a-spatial-anchors-resource).
+Dalším krokem je konfigurace aplikace tak, aby používala identifikátor účtu a klíč účtu. Při nastavování [prostředku prostorových ukotvení](#create-a-spatial-anchors-resource)jste je zkopírovali do textového editoru.
 
-V **projektu** podokně přejděte do `Assets\AzureSpatialAnchorsPlugin\Examples\Resources`. Vyberte `AzureSpatialAnchorsDemoConfig`. Potom v **inspektoru** podokně, zadejte `Account Key` hodnotu `Spatial Anchors Account Key` a `Account ID` jako hodnotu pro `Spatial Anchors Account Id`.
+V podokně **projekt** přejděte na `Assets\AzureSpatialAnchors.SDK\Resources`. Vyberte `SpatialAnchorConfig`. Poté v podokně **inspektor** `Account Key` zadejte jako `Account ID` hodnotu pro `Spatial Anchors Account Key` a jako hodnotu pro `Spatial Anchors Account Id`.

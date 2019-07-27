@@ -8,16 +8,15 @@ ms.custom: ''
 ms.devlang: azurecli
 ms.topic: sample
 author: stevestein
-manager: craigg
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 06/25/2019
-ms.openlocfilehash: 2a5fb6fcd9b1f0c327df23741284ec0d5fc26c71
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: f6051c5c83f43f20e453b5f87aabb1a80d7a0487
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67447879"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68569986"
 ---
 # <a name="use-cli-to-create-a-single-azure-sql-database-and-configure-a-firewall-rule"></a>Použití rozhraní příkazového řádku k vytvoření jedné databáze Azure SQL a konfiguraci pravidla brány firewall
 
@@ -35,7 +34,7 @@ Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku (
 
 ## <a name="clean-up-deployment"></a>Vyčištění nasazení
 
-Použijte následující příkaz k odebrání skupiny prostředků a všechny prostředky, které s ním spojená.
+Pomocí následujícího příkazu odeberte skupinu prostředků a všechny k ní přidružené prostředky.
 
 ```azurecli-interactive
 az group delete --name $resourceGroupName
@@ -48,8 +47,8 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 | Příkaz | Poznámky |
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
-| [az sql server create](/cli/azure/sql/server#az-sql-server-create) | Vytvoří server služby SQL Database, který je hostitelem elastický fond nebo izolovanou databázi. |
-| [az sql server firewall create](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-create) | Vytvoří pravidlo brány firewall umožňující přístup pro všechny izolované databáze elastické fondy na serveru SQL Database ze zadaného rozsahu IP adres. |
+| [az sql server create](/cli/azure/sql/server#az-sql-server-create) | Vytvoří server SQL Database, který hostuje jednu databázi nebo elastický fond. |
+| [az sql server firewall create](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-create) | Vytvoří pravidlo brány firewall, které umožní přístupu ke všem izolovaným databázím elastické fondy na serveru SQL Database ze zadaného rozsahu IP adres. |
 | [az sql db create](/cli/azure/sql/db#az-sql-db-create) | Vytvoří izolovanou databázi nebo elastický fond. |
 | [az group delete](/cli/azure/resource#az-resource-delete) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 

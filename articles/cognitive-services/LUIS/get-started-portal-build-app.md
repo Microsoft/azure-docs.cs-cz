@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý start: Vytvoření nové aplikace na portálu služby LUIS'
-titleSuffix: Language Understanding - Azure Cognitive Services
-description: V tomto rychlém startu vytvoříte novou aplikaci na portálu služby LUIS. Vytvoření základní součásti aplikace, záměry a entity. Otestujte aplikaci zadáním utterance uživatele ukázkové panelu interaktivní testu pro získání záměru předpokládané. Vytvoření aplikace je zdarma; nevyžaduje předplatné Azure.
+title: 'Rychlý start: Vytvoření nové aplikace na portálu LUIS'
+titleSuffix: Azure Cognitive Services
+description: V tomto rychlém startu vytvoříte novou aplikaci na portálu LUIS. Vytvoření základních částí aplikace, záměrů a entit. Otestujte aplikaci zadáním ukázkového uživatele utterance na interaktivním panelu testů, který získá předpokládaný záměr. Sestavování aplikace je zdarma. nevyžaduje předplatné Azure.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -10,163 +10,163 @@ ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: 2e4ff7dc97e3ee72336bd4c081caf1aa1a62bc56
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: f54643883028d93b56c7e122f43db95bb6d0b8c1
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65146555"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560869"
 ---
-# <a name="quickstart-create-a-new-app-in-the-luis-portal"></a>Rychlý start: Vytvoření nové aplikace na portálu služby LUIS
+# <a name="quickstart-create-a-new-app-in-the-luis-portal"></a>Rychlý start: Vytvoření nové aplikace na portálu LUIS
 
-V tomto rychlém startu vytvoříte novou aplikaci v [LUIS portál](https://www.luis.ai). Nejprve vytvoříte základní části aplikace, **záměry**, a **entity**. Potom otestujte aplikaci zadáním utterance uživatele ukázkové panelu interaktivní testu pro získání záměru předpokládané.
+V tomto rychlém startu vytvoříte novou aplikaci na [portálu Luis](https://www.luis.ai). Nejdřív vytvoříte základní části aplikace, **záměrů**a **entit**. Pak otestujete aplikaci zadáním ukázkového uživatele utterance na interaktivním panelu testů, který získá předpokládaný záměr.
 
-Vytvoření aplikace je bezplatná a nevyžaduje předplatné Azure. Jakmile budete připraveni k nasazení své aplikace, najdete v článku [rychlý start k nasazení aplikace](get-started-portal-deploy-app.md). To ukazuje, jak vytvořit prostředek Azure Cognitive Service a přiřadit aplikace.
+Sestavování aplikace je bezplatné a nevyžaduje předplatné Azure. Až budete připraveni k nasazení aplikace, přečtěte si [rychlý Start k nasazení aplikace](get-started-portal-deploy-app.md). Ukazuje, jak vytvořit prostředek služby pro rozpoznávání Azure a přiřadit ho k aplikaci.
 
-## <a name="create-an-app"></a>Vytvoření aplikace
+## <a name="create-an-app"></a>Vytvoření nové aplikace
 
-1. Otevřít [LUIS portál](https://www.luis.ai) v prohlížeči a přihlaste se. Pokud je poprvé přihlášení, musíte vytvořit bezplatný účet uživatele portálu služby LUIS.
+1. Otevřete [portál Luis](https://www.luis.ai) v prohlížeči a přihlaste se. Pokud se přihlašujete poprvé, musíte vytvořit uživatelský účet bezplatného portálu LUIS.
 
-1. Vyberte **vytvořit novou aplikaci** z panelu nástrojů kontextu.
+1. Na panelu nástrojů kontextu vyberte **vytvořit novou aplikaci** .
 
-   [![Vytvoření nové aplikace na portálu služby LUIS](./media/get-started-portal-build-app/create-app-in-portal.png)](./media/get-started-portal-build-app/create-app-in-portal.png#lightbox)
+   [![Vytvoření nové aplikace na portálu LUIS](./media/get-started-portal-build-app/create-app-in-portal.png)](./media/get-started-portal-build-app/create-app-in-portal.png#lightbox)
 
-1. V místním okně Konfigurace aplikace s následujícím nastavením a pak vyberte **provádí**.
+1. V automaticky otevíraném okně nakonfigurujte aplikaci s následujícím nastavením a potom vyberte **Hotovo**.
 
    |Název nastavení| Hodnota | Účel|
    |--|--|--|
-   |Název|`myEnglishApp`|Jedinečný název aplikace LUIS<br>povinné|
-   |Jazyková verze|**Angličtina**|Jazyk projevy od uživatelů, **en-us**<br>povinné|
+   |Name|`myEnglishApp`|Jedinečný název aplikace LUIS<br>povinné|
+   |Jazyková verze|**Angličtina**|Jazyk projevy od uživatelů, **en-US**<br>povinné|
    |Popis|`App made with LUIS Portal`|Popis aplikace<br>nepovinné|
    | | | |
 
-   ![Zadejte nové nastavení aplikace](./media/get-started-portal-build-app/create-new-app-settings.png)
+   ![Zadat nové nastavení aplikace](./media/get-started-portal-build-app/create-new-app-settings.png)
 
 ## <a name="create-intents"></a>Vytvořit záměry
 
-Po vytvoření aplikace LUIS, je potřeba vytvořit záměry. Záměry představují způsob, jak zařadit text od uživatelů. Například aplikaci lidských zdrojů může mít dvě funkce. Abyste pomohli uživatelům:
+Po vytvoření aplikace LUIS je potřeba vytvořit záměry. Záměry je způsob kategorizace textu od uživatelů. Například aplikace pro lidské zdroje může mít dvě funkce. Pomáhat lidem:
 
- 1. Vyhledejte a použijte pro úlohy
- 1. Najít tvary, které chcete použít pro úlohy
+ 1. Najít a použít pro úlohy
+ 1. Najít formuláře, které se mají použít pro úlohy
 
-Aplikaci prvku dva různé _záměry_ zarovnat následující příkazy:
+Dvě různé záměry aplikace  jsou v souladu s následujícími záměry:
 
-|Záměr|Příklad od uživatele<br>označuje jako _utterance_|
+|Záměr|Příklad textu od uživatele<br>známé jako _utterance_|
 |--|--|
 |ApplyForJob|`I want to apply for the new software engineering position in Cairo.`|
 |FindForm|`Where is the job transfer form hrf-123456?`|
 
-Pokud chcete vytvořit záměrů, proveďte následující kroky:
+Chcete-li vytvořit záměry, proveďte následující kroky:
 
-1. Po vytvoření aplikace je na **záměry** stránku **sestavení** oddílu. Vyberte **Create new intent** (Vytvořit nový záměr).
+1. Po vytvoření aplikace se nacházíte na stránce záměry  v části **sestavení** . Vyberte **Create new intent** (Vytvořit nový záměr).
 
-   [![Vyberte tlačítko Vytvořit nový záměru](./media/get-started-portal-build-app/create-new-intent-button.png)](./media/get-started-portal-build-app/create-new-intent-button.png#lightbox)
+   [![Tlačítko pro výběr vytvoření nového záměru](./media/get-started-portal-build-app/create-new-intent-button.png)](./media/get-started-portal-build-app/create-new-intent-button.png#lightbox)
 
-1. Zadejte název záměru `FindForm`a pak vyberte **provádí**.
+1. Zadejte název `FindForm`záměru a potom vyberte Hotovo .
 
-   ![Zadejte název FindForm záměru](./media/get-started-portal-build-app/create-new-intent-dialog.png)
+   ![Zadejte název záměru pro FindForm.](./media/get-started-portal-build-app/create-new-intent-dialog.png)
 
 ## <a name="add-an-example-utterance"></a>Přidat utterance příklad
 
-Příklad projevy přidáte po vytvoření záměry. Příklad projevy jsou text, který uživatel zadá v chatovací robot nebo v jiné klientské aplikace. Jsou záměr LUIS mapovány záměru uživatele text.
+Můžete přidat příklad projevy po vytvoření záměrů. Příkladem projevy je text, který uživatel zadá do robota chatu nebo jiné klientské aplikace. Namapují záměr textu uživatele na LUIS záměr.
 
-Pro tuto aplikaci příklad `FindForm` záměru, příklad projevy bude obsahovat číslo formuláře. Klientská aplikace potřebuje ke splnění žádost uživatele, takže je důležité zahrnout utterance číslo formuláře.
+Pro tento příklad `FindForm` záměru aplikace bude vzorový projevy obsahovat číslo formuláře. Klientská aplikace potřebuje ke splnění požadavku uživatele číslo formuláře, takže je důležité ho zahrnout do utterance.
 
-[![Zadejte projevy příklad pro FindForm záměr](./media/get-started-portal-build-app/add-example-utterance.png)](./media/get-started-portal-build-app/add-example-utterance.png#lightbox)
+[![Zadejte příklad projevy pro záměr FindForm.](./media/get-started-portal-build-app/add-example-utterance.png)](./media/get-started-portal-build-app/add-example-utterance.png#lightbox)
 
-Přidejte následující projevy 15 příklad do `FindForm` záměr.
+Přidejte následující 15 příkladů projevy k `FindForm` záměru.
 
 |#|Ukázkové promluvy|
 |--|--|
-|1|Hledáte hrf 123456|
-|2|Kde je hrf-234591 formuláře lidských zdrojů?|
-|3|hrf 345623, kde je to|
-|4|Je možné poslat mi hrf 345794|
-|5|Potřebuji hrf 234695 chtějí zažádat o interní úlohy?|
-|6|Potřebuje vědět, že žádající úlohy pomocí hrf 234091 vedoucí|
-|7|Kam můžu poslat hrf 234918? Získat e-mailové odpovědi, který byl přijat?|
+|1|Hledání HRF-123456|
+|2|Kde se nachází formulář lidské zdroje HRF-234591?|
+|3|HRF-345623, kde je|
+|4|Je možné poslat mi HRF-345794|
+|5|Potřebuji pro interní úlohu použít HRF-234695?|
+|6|Potřebuje mi správce vědět, že ho mám použít pro úlohu s HRF-234091|
+|7|Kam můžu odeslat HRF-234918? Zobrazuje se mi e-mailová odpověď, která byla přijata?|
 |8|hrf-234555|
-|9|Pokud byla aktualizována hrf 234987?|
-|10|Pomocí formuláře hrf-876345 platí pro technický pozice|
-|11|Bylo na novou verzi hrf-765234 odeslané pro moje open No?|
-|12|Pro mezinárodní úlohy používají hrf 234234?|
-|13|hrf 234598 překlepy|
-|14|bude hrf 234567 upravovat pro nové požadavky|
+|9|Kdy byla aktualizace HRF-234987?|
+|10|Použít formu HRF-876345 k použití pro technické pozice|
+|11|Byla pro moji Open REQ odeslána nová verze HRF-765234?|
+|12|Používám HRF-234234 pro mezinárodní úlohy?|
+|13|HRF-234598 pravopisná chyba|
+|14|bude HRF-234567 upravovat nové požadavky|
 |15|hrf-123456, hrf-123123, hrf-234567|
 
-Návrh těchto projevů příklad liší následujícími způsoby:
+Podle návrhu se tyto příklady projevy liší následujícími způsoby:
 
 * Délka utterance
-* Interpunkce
-* Volba aplikace Word
-* příkaz čas (je, byla, bude)
+* oddělovač
+* Volba Wordu
+* příkaz vhodné (is, was, bude)
 * pořadí slov
 
 
 
-## <a name="create-a-regular-expression-entity"></a>Vytvoření entity regulárního výrazu
+## <a name="create-a-regular-expression-entity"></a>Vytvořit entitu regulárního výrazu
 
-V modulu runtime předpověď odpovědi vrátit číslo formuláře, formulář musí být označen jako entity. Protože text čísla formuláře je vysoce strukturovaná, můžete označit pomocí regulárních výrazů entity. Vytvoření entity pomocí následujících kroků:
+Chcete-li vrátit číslo formuláře v odpovědi předpovědi modulu runtime, musí být formulář označen jako entita. Vzhledem k tomu, že je text s číslem formuláře vysoce strukturovaný, můžete ho označit pomocí entity regulárního výrazu. Vytvořte entitu pomocí následujících kroků:
 
-1. Vyberte **entity** z nabídky na levé straně.
+1. V nabídce vlevo vyberte **entity** .
 
-1. Vyberte **vytvořit novou entitu** na **entity** stránky.
+1. Na stránce **entity** vyberte **vytvořit novou entitu** .
 
-1. Zadejte název `Human Resources Form Number`, vyberte **regulární výraz** entity typu a zadejte regulární výraz `hrf-[0-9]{6}`. Tato položka shoduje s literálními znaky `hrf-`a umožňuje přesně 6 číslic.
+1. Zadejte název `Human Resources Form Number`, vyberte typ entity **Regex** a zadejte regulární výraz `hrf-[0-9]{6}`. Tato položka odpovídá znakům literálu `hrf-`, a umožňuje přesně 6 číslic.
 
-   ![Zadejte informace o entitách entity regulárního výrazu](./media/get-started-portal-build-app/create-regular-expression-entity.png)
+   ![Zadejte informace o entitě pro entitu regulárního výrazu.](./media/get-started-portal-build-app/create-regular-expression-entity.png)
 
 1. Vyberte **Done** (Hotovo).
 
-## <a name="add-example-utterances-to-the-none-intent"></a>Přidání projevů příklad na hodnotu None záměru
+## <a name="add-example-utterances-to-the-none-intent"></a>Přidat příklad projevy k záměru None
 
-**Žádný** záměr je záložní záměr a by nemělo být ponecháno prázdné. Cílem tohoto je by měl obsahovat jeden utterance pro každých 10 příklad projevy, které jste přidali pro ostatní záměry aplikace.
+Záměr **none** není záložním záměrem a neměl by být ponechán prázdný. Tento záměr by měl obsahovat jeden utterance pro každých 10 příkladů projevy, které jste přidali pro ostatní záměry aplikace.
 
-**Žádný** na záměr projevů příklad by měla být mimo doménu aplikace vašeho klienta.
+Příklad projevy záměru **none** by měl být mimo vaši doménu klientské aplikace.
 
-1. Vyberte **záměry** v levé nabídce a pak vyberte **žádný** ze seznamu záměry.
+1. V  nabídce vlevo vyberte záměry a pak v seznamu záměry vyberte **žádné** .
 
-1. Následující příklad projevy přidejte k příslušnému záměru:
+1. Do záměru přidejte následující příklad projevy:
 
-   |Jeden příklad záměr projevů|
+   |Projevy příklad záměru None|
    |--|
    |Barking dogs are annoying (Štěkající psi jsou otravní)|
    |Order a pizza for me (Objednej mi pizzu)|
    |Penguins in the ocean (Tučňáci v oceánech)|
 
-   Pro tuto aplikaci lidských zdrojů těchto projevů příkladu jsou mimo doménu. Pokud vaši doménu lidských zdrojů patří zvířata, potravin nebo oceánských, pak byste měli používat jiný příklad projevy pro **žádný** záměr.
+   V případě této aplikace pro lidské zdroje jsou tyto příklady projevy mimo doménu. Pokud vaše doména lidských zdrojů zahrnuje zvířata, jídlo nebo oceánu, měli byste pro záměr **none** použít jiný příklad projevy.
 
 ## <a name="train-the-app"></a>Trénování aplikace
 
-V nabídce v pravé horní části vyberte **trénování** použít záměr a entity model změní na aktuální verzi aplikace.
+V nabídce v pravém horním rohu vyberte možnost **vlak** , aby se projevily změny modelu a modelu entity v aktuální verzi aplikace.
 
-## <a name="look-at-the-regular-expression-entity-in-the-example-utterances"></a>Podívejte se na entitu regulárních výrazů v příkladu projevy
+## <a name="look-at-the-regular-expression-entity-in-the-example-utterances"></a>Podívejte se na entitu regulární výraz v příkladu projevy
 
-1. Zkontrolujte entity je ve **FindForm** záměru tak, že vyberete **záměry** v levé nabídce. Potom vyberte **FindForm** záměr.
+1. Ověřte, že se entita nachází v **FindForm** záměru tím  , že v nabídce vlevo vyberete záměry. Pak vyberte **FindForm** záměr.
 
-   Entita je označeno, ve kterém se zobrazuje v projevy příklad. Pokud chcete zobrazit původního textu místo názvu entity, přepněte **zobrazení entity** z panelu nástrojů.
+   Entita je označena tak, jak se zobrazuje v příkladu projevy. Chcete-li zobrazit původní text místo názvu entity, přepínejte **zobrazení entit** z panelu nástrojů.
 
-   [![Všechny projevy příklad označena s entitami](./media/get-started-portal-build-app/all-example-utterances-marked-with-entities.png)](./media/get-started-portal-build-app/all-example-utterances-marked-with-entities.png#lightbox)
+   [![Všechny příklady projevy označené entitami](./media/get-started-portal-build-app/all-example-utterances-marked-with-entities.png)](./media/get-started-portal-build-app/all-example-utterances-marked-with-entities.png#lightbox)
 
-## <a name="test-your-new-app-with-the-interactive-test-pane"></a>Otestovat novou aplikaci s interaktivní testovací podokno
+## <a name="test-your-new-app-with-the-interactive-test-pane"></a>Otestujte novou aplikaci pomocí interaktivního testovacího podokna.
 
-Pomocí interaktivního **Test** podokně portálu LUIS k ověření, že entita se extrahují z nové projevy aplikace nebylo dosud nikdy.
+Pomocí interaktivního **testovacího** podokna na portálu Luis ověřte, že se entita extrahuje z nové projevy aplikace ještě nevidí.
 
-1. Vyberte **Test** v pravé horní nabídce.
+1. V pravé horní nabídce vyberte **test** .
 
-1. Přidat nový utterance a potom stiskněte klávesu Enter:
+1. Přidejte nový utterance a stiskněte klávesu ENTER:
 
    ```Is there a form named hrf-234098```
 
-   ![Nové utterance testů v testovací podokno](./media/get-started-portal-build-app/test-new-utterance.png)
+   ![Test New utterance v testovacím podokně](./media/get-started-portal-build-app/test-new-utterance.png)
 
-   Horní předpovědět záměrem je správně **FindForm** s více než 90 % spolehlivosti (0.977). **Číslo formuláře lidských zdrojů** entity se extrahuje hodnotu hrf 234098.
+   Nejvyšší předpokládaný záměr je správně **FindForm** s více než 90% spolehlivostí (0,977). Entita **Číslo formuláře pro lidské zdroje** je extrahována hodnotou hrf-234098.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Po dokončení tohoto rychlého startu a nejsou dalšímu rychlému startu pokračovat, vyberte **Moje aplikace** v horní navigační nabídce. Vyberte zaškrtávací políčko vlevo aplikace ze seznamu a vyberte **odstranit** z kontextu nástrojů nad seznamem.
+Až budete s tímto rychlým startem hotovi a nepřesouváte se k dalšímu rychlému startu, vyberte **Moje aplikace** z horní navigační nabídky. Pak ze seznamu vyberte levé políčko aplikace a na panelu nástrojů kontext vyberte tlačítko **Odstranit** nad seznamem.
 
-[![Odstranit aplikaci ze seznamu aplikací](./media/get-started-portal-build-app/delete-app.png)](./media/get-started-portal-build-app/delete-app.png#lightbox)
+[![Odstranit aplikaci ze seznamu Moje aplikace](./media/get-started-portal-build-app/delete-app.png)](./media/get-started-portal-build-app/delete-app.png#lightbox)
 
 ## <a name="next-steps"></a>Další postup
 

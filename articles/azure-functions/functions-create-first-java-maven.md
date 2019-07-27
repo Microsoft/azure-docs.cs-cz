@@ -1,5 +1,5 @@
 ---
-title: Vytvoření první funkce v Azure pomocí Javy a Mavenu | Dokumentace Microsoftu
+title: Použití jazyka Java a Maven k publikování funkce – Azure Functions
 description: Vytvořte a publikujte do Azure jednoduchou funkci aktivovanou protokolem HTTP pomocí Javy a Mavenu.
 services: functions
 documentationcenter: na
@@ -12,13 +12,13 @@ ms.topic: quickstart
 ms.date: 08/10/2018
 ms.author: routlaw
 ms.reviewer: glenga
-ms.custom: mvc, devcenter
-ms.openlocfilehash: 20327e64080182518fd28b1d367ffe37be5ce9a4
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.custom: mvc, devcenter, seo-java-july2019
+ms.openlocfilehash: 9ed954eaf96196fdaa944778db8ea47dd5e6da9f
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68323966"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68564804"
 ---
 # <a name="create-your-first-function-with-java-and-maven"></a>Vytvoření první funkce pomocí Java a Maven
 
@@ -223,7 +223,7 @@ Bude mít aktualizovaný výstup:
 Hi, AzureFunctionsTest
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Vytvořili jste aplikaci funkcí v Javě s jednoduchým triggerem HTTP a nasadili jste ji do služby Azure Functions.
 

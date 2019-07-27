@@ -1,7 +1,7 @@
 ---
-title: Správa účtu a klíčů
-titleSuffix: Language Understanding - Azure Cognitive Services
-description: Dvě důležité informace pro účet LUIS jsou uživatelský účet a pro tvorbu klíč. Přihlašovací údaje se spravuje na adrese account.microsoft.com. Klíč pro vytváření obsahu je spravován na stránce Nastavení portálu služby LUIS.
+title: Správa účtu a klíčů – LUIS
+titleSuffix: Azure Cognitive Services
+description: Dvě důležité informace pro účet LUIS jsou uživatelský účet a pro tvorbu klíč. Vaše přihlašovací údaje se spravují na adrese account.microsoft.com. Váš klíč pro vytváření obsahu se spravuje na stránce nastavení portálu LUIS.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,20 +11,20 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 03/11/2019
 ms.author: diberry
-ms.openlocfilehash: d5a1d7ee3b8b16631f7b919f3aece0848d662e62
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9164c94886488ac7dcadeb7894453daad5d8b322
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65523520"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560486"
 ---
 # <a name="manage-account-and-authoring-key"></a>Správa účtu a klíč pro tvorbu
 
-Dvě důležité informace pro účet LUIS jsou uživatelský účet a pro tvorbu klíč. Přihlašovací údaje se spravuje na [account.microsoft.com](https://account.microsoft.com). Spravuje se z vašeho klíče pro vytváření obsahu [LUIS](luis-reference-regions.md) portál **nastavení** stránky.
+Dvě důležité informace pro účet LUIS jsou uživatelský účet a pro tvorbu klíč. Přihlašovací údaje se spravuje na [account.microsoft.com](https://account.microsoft.com). Váš klíč pro vytváření obsahu se spravuje na stránce **Nastavení** portálu [Luis](luis-reference-regions.md) .
 
 ## <a name="authoring-key"></a>Klíč pro tvorbu
 
-Tento jeden, oblast pro tvorbu klíče na **nastavení** stránce umožňuje vytvářet všechny aplikace [LUIS](luis-reference-regions.md) portálu stejně jako [rozhraní API pro vytváření](https://go.microsoft.com/fwlink/?linkid=2092087). Pro zjednodušení vytváření klíč má povoleno provést [omezené](luis-boundaries.md) počet koncových bodů dotazuje každý měsíc.
+Tento jediný klíč pro vytváření obsahu specifický pro oblast na stránce **Nastavení** vám umožní vytvářet všechny vaše aplikace z portálu [Luis](luis-reference-regions.md) a také s [rozhraními API pro vytváření obsahu](https://go.microsoft.com/fwlink/?linkid=2092087). Pro zjednodušení vytváření klíč má povoleno provést [omezené](luis-boundaries.md) počet koncových bodů dotazuje každý měsíc.
 
 [![Stránka nastavení služby LUIS](./media/luis-how-to-account-settings/account-settings.png)](./media/luis-how-to-account-settings/account-settings.png#lightbox)
 
@@ -36,7 +36,7 @@ Klíč pro vytváření obsahu je specifická pro [pro vytváření oblasti](lui
 
 ## <a name="reset-authoring-key"></a>Obnovit klíč pro tvorbu
 
-Pokud pro tvorbu klíče je ohrožena obnovte klíč. Klíč se resetuje na všech aplikacích [LUIS](luis-reference-regions.md) portálu. Pokud vytváříte aplikace pomocí rozhraní API pro vytváření, budete muset změnit hodnotu `Ocp-Apim-Subscription-Key` do nového klíče.
+Pokud pro tvorbu klíče je ohrožena obnovte klíč. Klíč se resetuje na všech vašich aplikacích na portálu [Luis](luis-reference-regions.md) . Pokud vytváříte aplikace pomocí rozhraní API pro vytváření, budete muset změnit hodnotu `Ocp-Apim-Subscription-Key` do nového klíče.
 
 ## <a name="delete-account"></a>Odstranit účet
 

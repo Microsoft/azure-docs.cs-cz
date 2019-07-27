@@ -1,6 +1,6 @@
 ---
-title: Spolupráce
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: Spolupráce – LUIS
+titleSuffix: Azure Cognitive Services
 description: Služba LUIS aplikace vyžadují jednoho vlastníka a volitelné spolupracovníci umožňuje více uživatelům vytvářet jednotlivé aplikace.
 services: cognitive-services
 author: diberry
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.author: diberry
-ms.openlocfilehash: 294905ccfd0ce8db6da8737277b0ce978ba837ea
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e53ba9f24e40837a823e6012340358113d490f46
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66473502"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560789"
 ---
 # <a name="collaborating-with-other-authors"></a>Spolupráce s jinými autory
 
@@ -31,7 +31,7 @@ Zobrazit [uživatel tenanta Azure Active Directory](luis-how-to-collaborate.md#a
 
 ## <a name="luis-app-owner"></a>Vlastník aplikace LUIS
 
-Účet, který vytvoří aplikaci je vlastníkem a každá aplikace má jednoho vlastníka. Vlastník je uveden v aplikaci **[nastavení](luis-how-to-collaborate.md)** stránky. Vlastník obdrží e-mail, když se naplní kvóta koncový bod 75 % měsíčního limitu. 
+Účet, který vytváří aplikaci, je vlastníkem a každá aplikace má jednoho vlastníka. Vlastník je uveden na stránce **[Nastavení](luis-how-to-collaborate.md)** aplikace. Vlastník obdrží e-mail, když kvóta koncového bodu dosáhne 75% měsíčního limitu. 
 
 ## <a name="authorization-roles"></a>Povolení role
 Služba LUIS nepodporuje různé role pro vlastníky a spolupracovníci s jednou výjimkou. Vlastník je jediný účet, který může odstranit aplikace.
@@ -52,7 +52,7 @@ Pokud chcete sdílet více aplikací s spolupracovníky, každé aplikaci, kter�
 ## <a name="manage-multiple-versions-inside-the-same-app"></a>Spravovat více verzí uvnitř stejné aplikace
 Začněte tím, že [klonování](luis-how-to-manage-versions.md#clone-a-version), od základní verze, pro jednotlivé autory. 
 
-Jednotlivé autory provede změny jejich vlastní verzi aplikace. Jakmile jednotlivé autory s modelem spokojeni, exportujte soubory JSON nové verze.  
+Každý autor provádí změny ve své vlastní verzi aplikace. Jakmile jednotlivé autory s modelem spokojeni, exportujte soubory JSON nové verze.  
 
 Exportované aplikace jsou soubory ve formátu JSON, které je možné porovnat změny. Kombinovat soubory, které chcete vytvořit jeden soubor JSON s novou verzi. Změnit **versionId** vlastností ve formátu JSON místo nové sloučené verze. Tuto verzi naimportujte do původní aplikace. 
 
@@ -63,9 +63,9 @@ Tato metoda umožňuje mít jeden aktivní verze, jedna fáze a jednu publikovan
 
 Exportované aplikace jsou soubory ve formátu JSON, které můžete ve srovnání s exportem základní změny. Kombinovat soubory, které chcete vytvořit jeden soubor JSON s novou verzi. Změnit **versionId** vlastností ve formátu JSON místo nové sloučené verze. Tuto verzi naimportujte do původní aplikace.
 
-## <a name="collaborator-roles-vs-entity-roles"></a>Spolupracovník role vs entity role
+## <a name="collaborator-roles-vs-entity-roles"></a>Role spolupracovníka a role entit
 
-[Entita role](luis-concept-roles.md) platí do datového modelu aplikace LUIS. Spolupracovník rolí platí pro úrovně přístupu pro vytváření. 
+[Role entit](luis-concept-roles.md) se vztahují na datový model aplikace Luis. Role spolupracovníka se vztahují na úrovně přístupu pro vytváření. 
 
 ## <a name="next-steps"></a>Další postup
 

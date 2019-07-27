@@ -1,6 +1,6 @@
 ---
-title: Vytrénovat aplikaci
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: Výuka aplikace – LUIS
+titleSuffix: Azure Cognitive Services
 description: Školení je proces vaše verze aplikace Language Understanding (LUIS) ke zlepšení jeho pochopení přirozeného jazyka. Po aktualizacích na model, jako je například přidávání, úpravy, označování popisky a odstranění entit, záměry nebo projevy trénování aplikace LUIS.
 services: cognitive-services
 author: diberry
@@ -11,14 +11,14 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 04/07/2019
 ms.author: diberry
-ms.openlocfilehash: ba0db22437961a33b0b415ec7cb60ad3df12821c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 70c29769da2ec092b2b27b83f2f83200d4e727af
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60195846"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560358"
 ---
-# <a name="train-your-active-version-of-the-luis-app"></a>Trénování vaše aktivní verzi aplikace LUIS 
+# <a name="train-your-active-version-of-the-luis-app"></a>Výuka aktivní verze aplikace LUIS 
 
 Školení je proces Language Understanding (LUIS) aplikace lepší pochopení jeho přirozeného jazyka. Po aktualizacích na model, jako je například přidávání, úpravy, označování popisky a odstranění entit, záměry nebo projevy trénování aplikace LUIS. 
 
@@ -44,9 +44,9 @@ Spuštění iterativní proces [LUIS portál](https://www.luis.ai), musíte nejp
 >[!NOTE]
 >Pokud máte jeden nebo více tříd Intent ve vaší aplikaci, které neobsahují příklad projevy, nelze trénování vaší aplikace. Přidání projevů pro vaše záměry. Další informace najdete v tématu [přidání projevů příklad](luis-how-to-add-example-utterances.md).
 
-## <a name="training-date-and-time"></a>Trénovací data a času
+## <a name="training-date-and-time"></a>Datum a čas školení
 
-Trénovací data a času je GMT + 2. 
+Datum a čas školení je čas GMT + 2. 
 
 ## <a name="train-with-all-data"></a>Trénování se všemi daty
 

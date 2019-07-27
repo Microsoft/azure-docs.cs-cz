@@ -10,14 +10,13 @@ ms.topic: quickstart
 author: sachinpMSFT
 ms.author: ninarn
 ms.reviewer: carlrab, sstein
-manager: craigg
 ms.date: 04/23/2019
-ms.openlocfilehash: 470dca235b9a3212c09052f7535fa90d076fe4d3
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: 39ea967de1ad06fdf942a8e3a21dbea9f9f8f61f
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68444475"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68566584"
 ---
 # <a name="quickstart-create-a-single-database-in-azure-sql-database-using-the-azure-portal-powershell-and-azure-cli"></a>Rychlý start: Vytvoření izolované databáze v Azure SQL Database pomocí Azure Portal, PowerShellu a rozhraní příkazového řádku Azure
 

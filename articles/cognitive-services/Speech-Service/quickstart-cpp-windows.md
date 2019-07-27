@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý start: Rozpoznávání řeči, jazyka C++ (Windows) – hlasové služby'
+title: 'Rychlý start: Rozpoznávání řeči, C++ (Windows) – služba Speech'
 titleSuffix: Azure Cognitive Services
-description: Zjistěte, jak rozpoznávat řeč v jazyce C++ na ploše Windows s použitím sadou SDK pro řeč
+description: Naučte se rozpoznávat řeč ve C++ Windows desktopu pomocí sady Speech SDK
 services: cognitive-services
 author: wolfma61
 manager: nitinme
@@ -10,25 +10,25 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: wolfma
-ms.openlocfilehash: d63d1c96077642e660e2272cbd8c2ee1250b1471
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: b79d5aeb20301a2e5359ea712017b40ca7279bf0
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606480"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68559532"
 ---
-# <a name="quickstart-recognize-speech-in-c-on-windows-by-using-the-speech-sdk"></a>Rychlý start: Rozpoznávání řeči v C++ ve Windows s použitím sadou SDK pro řeč
+# <a name="quickstart-recognize-speech-in-c-on-windows-by-using-the-speech-sdk"></a>Rychlý start: Rozpoznávání řeči v C++ systému Windows pomocí sady Speech SDK
 
-Rychlí průvodci jsou také k dispozici pro [převod textu na řeč](quickstart-text-to-speech-cpp-windows.md) a [překlad řeči](quickstart-translate-speech-cpp-windows.md).
+K dispozici jsou také rychlé starty pro převod [textu na řeč](quickstart-text-to-speech-cpp-windows.md) a [Převod řeči](quickstart-translate-speech-cpp-windows.md).
 
-V případě potřeby vyberte jiný programovací jazyk a/nebo prostředí:<br/>
+V případě potřeby vyberte jiný programovací jazyk nebo prostředí:<br/>
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
 V tomto článku vytvoříte konzolovou aplikaci pro Windows v jazyce C++. Použijete sadu Cognitive Services [Speech SDK](speech-sdk.md) k přepisu řeči na text v reálném čase z mikrofonu počítače. Tato aplikace je vytvořená pomocí [balíčku NuGet sady Speech SDK](https://aka.ms/csspeech/nuget) a sady Microsoft Visual Studio 2017 (libovolné edice).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Klíč předplatného hlasové služby k dokončení tohoto rychlého startu potřebujete. Můžete ho získat zdarma. Zobrazit [hlasové služby si můžete vyzkoušet zdarma](get-started.md) podrobnosti.
+K dokončení tohoto rychlého startu budete potřebovat klíč předplatného služby Speech Services. Můžete ho získat zdarma. Další informace najdete v tématu o bezplatném pokusu o [hlasové služby](get-started.md) .
 
 ## <a name="create-a-visual-studio-project"></a>Vytvoření projektu ve Visual Studiu
 
@@ -56,18 +56,18 @@ Klíč předplatného hlasové služby k dokončení tohoto rychlého startu pot
 
    ![Snímek obrazovky s aplikací sady Visual Studio se zvýrazněnou možností Spustit ladění](media/sdk/qs-cpp-windows-07-start-debugging.png)
 
-1. Zobrazí se okno konzoly a vyzve vás, abyste něco řekli. Vyslovte anglickou frázi nebo větu. Vaše řeči se přenášejí do služeb řeči a převede na text, který se zobrazí ve stejném okně.
+1. Zobrazí se okno konzoly a vyzve vás, abyste něco řekli. Vyslovte anglickou frázi nebo větu. Váš hlas se přenáší do služby Speech Services a přepisu na text, který se zobrazí ve stejném okně.
 
    ![Snímek obrazovky s výstupem konzoly po úspěšném rozpoznání](media/sdk/qs-cpp-windows-08-console-output-release.png)
 
 ## <a name="next-steps"></a>Další postup
 
-Další ukázky, jako je čtení řeči z zvukový soubor, jsou k dispozici na Githubu.
+Další ukázky, například jak číst řeč ze zvukového souboru, jsou k dispozici na GitHubu.
 
 > [!div class="nextstepaction"]
-> [Prozkoumejte C++ – ukázky na Githubu](https://aka.ms/csspeech/samples)
+> [Prozkoumejte C++ ukázky na GitHubu](https://aka.ms/csspeech/samples)
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také:
 
 - [Přizpůsobení akustických modelů](how-to-customize-acoustic-models.md)
 - [Přizpůsobení jazykových modelů](how-to-customize-language-model.md)

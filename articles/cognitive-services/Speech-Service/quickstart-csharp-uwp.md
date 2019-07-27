@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Rozpoznávání řeči, C# (UWP) – hlasové služby'
+title: 'Rychlý start: Rozpoznávání řeči, C# (UWP) – služba Speech'
 titleSuffix: Azure Cognitive Services
 description: V tomto článku vytvoříte C# aplikace univerzální platformy Windows (UPW) s využitím Cognitive Services SDK řeči. V reálném čase přepíšete řeč z mikrofonu zařízení na text. Aplikace je sestavená pomocí balíčku NuGet sady SDK pro řeč a Microsoft Visual Studio 2017.
 services: cognitive-services
@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 07/23/2019
 ms.author: lisaweixu
 ms.custom: seodec18
-ms.openlocfilehash: 25b3474e33351d6365af37d78f442768aba88625
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: 5505288a494aefe165e829f53c1869f4cc5f176f
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68405930"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68559430"
 ---
 # <a name="quickstart-recognize-speech-in-a-uwp-app-by-using-the-speech-sdk"></a>Rychlý start: Rozpoznávání řeči v aplikaci UWP pomocí sady Speech SDK
 
@@ -75,7 +75,7 @@ K tomuto rychlému startu potřebujete:
 
     ![Snímek obrazovky uživatelského rozhraní pro rozpoznávání řeči](media/sdk/qs-csharp-uwp-11-ui-result.png)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
 > [Prozkoumejte C# ukázky na GitHubu](https://aka.ms/csspeech/samples)

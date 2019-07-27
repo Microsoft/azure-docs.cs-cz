@@ -1,6 +1,6 @@
 ---
-title: Konfigurace kontejnerů
-titlesuffix: Face - Azure Cognitive Services
+title: Konfigurace kontejnerů – rozhraní API pro rozpoznávání tváře
+titleSuffix: Azure Cognitive Services
 description: Nastavení konfigurace pro kontejnery.
 services: cognitive-services
 author: IEvangelist
@@ -11,12 +11,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.author: dapine
-ms.openlocfilehash: c5044428b6f9c7c8fd343c93b06c1774eba8e17f
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 6dd047b0ba7f9a123ffcc014cff5604466946d07
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68320506"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68564099"
 ---
 # <a name="configure-face-docker-containers"></a>Konfigurace kontejnerů Docker obličeje
 
@@ -168,6 +168,6 @@ Následující příklady Docker jsou pro kontejner obličeje.
   Logging:Console:LogLevel:Default=Information
   ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * Kontrola [instalace a spouštění kontejnerů](face-how-to-install-containers.md)

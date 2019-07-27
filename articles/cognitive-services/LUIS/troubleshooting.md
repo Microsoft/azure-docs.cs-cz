@@ -1,5 +1,5 @@
 ---
-title: Nejčastější dotazy
+title: Nejčastější dotazy (FAQ) – LUIS
 titleSuffix: Azure Cognitive Services
 description: Tento článek obsahuje odpovědi na nejčastější dotazy o Language Understanding (LUIS).
 author: diberry
@@ -11,20 +11,20 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 06/18/2019
 ms.author: diberry
-ms.openlocfilehash: 7e1e61d96b066c395668ce1dd9cdba4cb4ecb2be
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: bccdcce52b9e62048d7eb307a4783abda0f9d17c
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67204103"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563178"
 ---
-# <a name="language-understanding-frequently-asked-questions-faq"></a>Language Understanding – nejčastější dotazy (FAQ)
+# <a name="language-understanding-frequently-asked-questions-faq"></a>Nejčastější dotazy Language Understanding
 
 Tento článek obsahuje odpovědi na nejčastější dotazy o Language Understanding (LUIS).
 
 ## <a name="whats-new"></a>Co je nového
 
-[Další informace](whats-new.md) o tom, co je nového v Language Understanding.
+[Přečtěte si další](whats-new.md) informace o tom, co je nového v Language Understanding.
 
 <a name="luis-authoring"></a>
 
@@ -68,21 +68,21 @@ Cortana, které předem sestavených aplikací byla vyřazena jako zastaralá v 
 ### <a name="how-do-i-transfer-ownership-of-a-luis-app"></a>Jak se převést vlastnictví aplikace LUIS?
 Aplikace LUIS přenést do jiného předplatného Azure, aplikace LUIS exportujte a importujte ho pomocí nového účtu. Aktualizujte ID aplikace LUIS v klientské aplikaci, která je volá. Nová aplikace může vrátit mírně odlišné LUIS skóre z původní aplikace.
 
-### <a name="a-prebuilt-entity-is-tagged-in-an-example-utterance-instead-of-my-custom-entity-how-do-i-fix-this"></a>V utterance příklad namísto Moje vlastní entity se označí předem připravených entit. Jak to mohu napravit? 
+### <a name="a-prebuilt-entity-is-tagged-in-an-example-utterance-instead-of-my-custom-entity-how-do-i-fix-this"></a>Předem vytvořená entita je označena jako utterance jako místo vlastní entity. Jak to můžu vyřešit? 
 
-Zobrazit [řešení potíží s předem vytvořenými entitami](luis-concept-entity-types.md#troubleshooting-prebuilt-entities).
+Viz [Poradce při potížích s předem vytvořenými entitami](luis-concept-entity-types.md#troubleshooting-prebuilt-entities).
 
-### <a name="i-tried-to-import-an-app-or-version-file-but-i-got-an-error-what-happened"></a>Jsem se pokusil importovat soubor aplikace nebo verze, ale se zobrazila chybová zpráva, co se stalo? 
+### <a name="i-tried-to-import-an-app-or-version-file-but-i-got-an-error-what-happened"></a>Pokusili jste se importovat soubor aplikace nebo verze, ale zobrazila se chyba, co se stalo? 
 
-Další informace o [chyby importu verze](luis-how-to-manage-versions.md#import-errors) a [chyby importu aplikace](luis-how-to-start-new-app.md#import-errors).
+Přečtěte si další informace o [chybách importu verzí](luis-how-to-manage-versions.md#import-errors) a [chybách importu aplikací](luis-how-to-start-new-app.md#import-errors).
 
 <a name="luis-collaborating"></a>
 
 ## <a name="collaborating"></a>Spolupráce
 
-### <a name="how-do-i-give-collaborators-access-to-luis-with-azure-active-directory-azure-ad-or-role-based-access-control-rbac"></a>Jak můžu poskytnout spolupracovníci přístup k LUIS s Azure Active Directory (Azure AD) nebo řízení přístupu na základě Role (RBAC)?
+### <a name="how-do-i-give-collaborators-access-to-luis-with-azure-active-directory-azure-ad-or-role-based-access-control-rbac"></a>Návody dát spolupracovníkům přístup k LUIS pomocí Azure Active Directory (Azure AD) nebo řízení přístupu na základě role (RBAC)?
 
-Zobrazit [prostředky služby Azure Active Directory](luis-how-to-collaborate.md#azure-active-directory-resources) a [uživatel tenanta Azure Active Directory](luis-how-to-collaborate.md#azure-active-directory-tenant-user) se naučíte udělit přístup spolupracovníky. 
+Informace o tom, jak dát spolupracovníkům přístup, najdete v tématu [Azure Active Directory prostředky](luis-how-to-collaborate.md#azure-active-directory-resources) a [Azure Active Directory uživatele klienta](luis-how-to-collaborate.md#azure-active-directory-tenant-user) . 
 
 <a name="luis-endpoint"></a>
 
@@ -90,7 +90,7 @@ Zobrazit [prostředky služby Azure Active Directory](luis-how-to-collaborate.md
 
 ### <a name="my-endpoint-query-returned-unexpected-results-what-should-i-do"></a>Můj dotaz koncový bod vrátil neočekávané výsledky. Co bych měl/a dělat?
 
-Neočekávaný dotaz predikované výsledky jsou založeny na stav publikovaného modelu. Chcete-li model, je může potřebovat změnit model, trénování a publikujte ho znovu. 
+Neočekávaný dotaz predikované výsledky jsou založeny na stav publikovaného modelu. Pokud chcete model opravit, možná budete muset model, vlak a publikování znovu změnit. 
 
 Oprava modelu začíná [aktivně učit](luis-how-to-review-endpoint-utterances.md).
 
@@ -110,13 +110,13 @@ Systém by měl používat nejvyšší hodnocení záměr bez ohledu na jeho hod
 ### <a name="why-dont-i-see-my-endpoint-hits-in-my-apps-dashboard"></a>Proč nevidím moje přístupů koncový bod v řídicí panel Moje aplikace?
 Celkový počet koncových bodů přístupů na řídicím panelu vaší aplikace jsou pravidelně aktualizovány, ale metriky související s vaší klíče koncového bodu služby LUIS na webu Azure Portal se aktualizuje častěji.
 
-Pokud se nezobrazí aktualizované koncový bod přístupů na řídicím panelu, přihlaste se k webu Azure portal a najít prostředek přidružený klíč koncového bodu služby LUIS a otevřete **metriky** vyberte **volání celkem** metriku. Pokud klíč koncového bodu se používá pro více než jednu aplikaci LUIS, metriky na webu Azure Portal zobrazí souhrnný počet volání ze všech aplikací LUIS, které ji používají.
+Pokud na řídicím panelu nevidíte aktualizované přístupy ke koncovému bodu, přihlaste se k Azure Portal a vyhledejte prostředek přidružený ke klíči koncového bodu  Luis a otevřete metriky pro výběr metriky **Celkový počet volání** . Pokud klíč koncového bodu se používá pro více než jednu aplikaci LUIS, metriky na webu Azure Portal zobrazí souhrnný počet volání ze všech aplikací LUIS, které ji používají.
 
-### <a name="is-there-a-powershell-command-get-to-the-endpoint-quota"></a>Je k dispozici PowerShell příkaz získat koncový bod kvóty?
+### <a name="is-there-a-powershell-command-get-to-the-endpoint-quota"></a>Je k dispozici příkaz prostředí PowerShell k dosažení kvóty koncového bodu?
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Příkaz prostředí PowerShell můžete zobrazit kvóty koncový bod:
+K zobrazení kvóty koncového bodu můžete použít příkaz prostředí PowerShell:
 
 ```powershell
 Get-AzCognitiveServicesAccountUsage -ResourceGroupName <your-resource-group> -Name <your-resource-name>
@@ -183,17 +183,17 @@ Pokud vaše aplikace existovala předtím, než služba LUIS je všeobecně dost
 
 ## <a name="key-management"></a>Správa klíčů
 
-### <a name="how-do-i-know-what-key-i-need-where-i-get-it-and-what-i-do-with-it"></a>Jak poznám, že klíč, co budu potřebovat, kde můžu získat, a co ho můžu použít? 
+### <a name="how-do-i-know-what-key-i-need-where-i-get-it-and-what-i-do-with-it"></a>Návody vědět, jakou klávesu potřebuji, jak ji získám a co s nimi mám dělat? 
 
-Naleznete v tématu [vytváření obsahu a dotaz předpovědi klíče koncového bodu v LUIS](luis-concept-keys.md) Další informace o rozdílech mezi [vytváření klíč](luis-how-to-account-settings.md) a [klíče koncového bodu předpovědi](luis-how-to-azure-subscription.md). 
+Další informace o rozdílech mezi klíčovým slovem pro [vytváření](luis-how-to-account-settings.md) a [klíč předpovědi koncového bodu](luis-how-to-azure-subscription.md)najdete [v tématu klíče koncového bodu předpovědi a předpovědi pro dotazy v Luis](luis-concept-keys.md) . 
 
-### <a name="i-got-an-error-about-being-out-of-quota-how-do-i-fix-it"></a>Zobrazila se chyba o překročení kvóty. Jak ho mám opravit? 
+### <a name="i-got-an-error-about-being-out-of-quota-how-do-i-fix-it"></a>Zobrazila se mi chyba při nedostatku kvóty. Jak ho mám opravit? 
 
-Zobrazit, [stavový kód opravit HTTP 403 a 429](luis-how-to-azure-subscription.md#fix-http-status-code-403-and-429) Další informace.
+Další informace najdete v tématu [opravení stavového kódu HTTP 403 a 429](luis-how-to-azure-subscription.md#fix-http-status-code-403-and-429) .
 
-### <a name="i-need-to-handle-more-endpoint-queries-how-do-i-do-that"></a>Potřebuji další koncový bod dotazy zpracovávají. Jak to mohu provést? 
+### <a name="i-need-to-handle-more-endpoint-queries-how-do-i-do-that"></a>Potřebuji zpracovat další dotazy koncového bodu. Návody to udělat? 
 
-Zobrazit, [stavový kód opravit HTTP 403 a 429](luis-how-to-azure-subscription.md#fix-http-status-code-403-and-429) Další informace.
+Další informace najdete v tématu [opravení stavového kódu HTTP 403 a 429](luis-how-to-azure-subscription.md#fix-http-status-code-403-and-429) .
 
 
 
@@ -237,32 +237,32 @@ Klíč pro vytváření/starter je povolený jenom 1000 koncový bod dotazů za 
 
 ## <a name="bots"></a>Roboti
 
-### <a name="my-luis-bot-isnt-working-what-do-i-do"></a>Moje LUIS bot nefunguje. Co mám udělat?
+### <a name="my-luis-bot-isnt-working-what-do-i-do"></a>LUIS robot nepracuje. Co mám udělat?
 
-Prvním problémem, je izolovat-li tento problém má vztah k LUIS nebo se stane mimo LUIS middlewaru. 
+Prvním problémem je izolovat, jestli problém souvisí s LUIS nebo nastane mimo middleware LUIS. 
 
 #### <a name="resolve-issue-in-luis"></a>Řešení potíží v LUIS
-Předat stejnou utterance LUIS z [koncový bod služby LUIS](luis-get-started-create-app.md#query-the-endpoint-with-a-different-utterance). Pokud obdržíte chybu, dokud se už vrátila řešení problému s LUIS. Běžné chyby patří:
+Předejte stejný utterance do LUIS z [koncového bodu Luis](luis-get-started-create-app.md#query-the-endpoint-with-a-different-utterance). Pokud se zobrazí chyba, vyřešte problém v LUIS, dokud nebude chyba nadále vrácena. Běžné chyby patří:
 
-* `Out of call volume quota. Quota will be replenished in <time>.` – Tento problém znamená, že buď potřebujete změnit z vytváření klíče do [klíče koncového bodu](luis-how-to-azure-subscription.md) nebo budete muset změnit [úrovně služeb](luis-how-to-azure-subscription.md#change-pricing-tier). 
+* `Out of call volume quota. Quota will be replenished in <time>.`– Tento problém znamená, že buď potřebujete změnit z klíčového obsahu na [klíč koncového bodu](luis-how-to-azure-subscription.md) , nebo potřebujete změnit [úrovně služeb](luis-how-to-azure-subscription.md#change-pricing-tier). 
 
 #### <a name="resolve-issue-in-azure-bot-service"></a>Řešení potíží v Azure Bot Service
 
-Pokud používáte Azure Bot Service a problému je, že **testování ve Web Chat** vrátí `Sorry, my bot code is having an issue`, najdete v protokolech:
+Pokud používáte Azure bot Service a problém je, že se **test ve webovém chatu** vrátí `Sorry, my bot code is having an issue`, zkontrolujte protokoly:
 
-1. Na webu Azure Portal, pro svého robota z **Bot správu** vyberte **sestavení**.
-1. Otevřete editor kódu online. 
-1. Na začátek, modrá navigačním panelu vyberte název robota (druhá položka určená k pravé straně).
-1. V seznamu výsledků rozevíracího seznamu vyberte **otevřete konzoly Kudu**.
-1. Vyberte **LogFiles**a pak vyberte **aplikace**. Projděte si všechny soubory protokolu. Pokud nevidíte ve složce aplikace zobrazí chyba, zkontrolujte všechny soubory protokolu v **LogFiles**. 
-1. Nezapomeňte znovu sestavit projekt, pokud používáte jazyk kompilovaný jako C#.
+1. V Azure Portal pro robota v části **Správa robota** vyberte **Build (sestavit**).
+1. Otevřete Editor kódu online. 
+1. V horním, modrém navigačním panelu vyberte název robota (druhá položka napravo).
+1. V rozevíracím seznamu výsledek vyberte možnost **otevřít konzolu Kudu**.
+1. Vyberte **soubory protokolu**a pak vyberte **aplikace**. Zkontrolujte všechny soubory protokolu. Pokud se ve složce aplikace nezobrazuje chyba, zkontrolujte všechny soubory protokolu v **souboru**protokolu. 
+1. Nezapomeňte projekt znovu sestavit, pokud používáte zkompilovaný jazyk, jako je například C#.
 
 > [!Tip] 
-> Balíčky můžete nainstalovat také konzole. 
+> Konzolu nástroje může nainstalovat i balíčky. 
 
-#### <a name="resolve-issue-while-debugging-on-local-machine-with-bot-framework"></a>Řešení potíží při ladění na místním počítači pomocí rozhraní Bot Framework. 
+#### <a name="resolve-issue-while-debugging-on-local-machine-with-bot-framework"></a>Vyřešte problém při ladění na místním počítači s rozhraním bot Framework. 
 
-Další informace o místním ladění kódu robota, naleznete v tématu [ladění robota](https://docs.microsoft.com/azure/bot-service/bot-service-debug-bot?view=azure-bot-service-4.0).
+Další informace o místním ladění robota najdete v tématu věnovaném [ladění robota](https://docs.microsoft.com/azure/bot-service/bot-service-debug-bot?view=azure-bot-service-4.0).
 
 ## <a name="integrating-luis"></a>Integrace LUIS
 
@@ -274,11 +274,11 @@ Pokud vyberete šablonu služby LUIS a vyberte **vyberte** tlačítko v podokně
 ### <a name="what-luis-regions-support-bot-framework-speech-priming"></a>Jaké oblasti LUIS podporují dočištění řeči Bot Framework?
 [Rozpoznávání řeči dočištění](https://docs.microsoft.com/bot-framework/bot-service-manage-speech-priming) je podporována pouze pro aplikace LUIS v instanci střed (USA).
 
-## <a name="api-programming-strategies"></a>Strategie programování rozhraní API
+## <a name="api-programming-strategies"></a>Strategie programování API
 
-### <a name="how-do-i-programmatically-get-the-luis-region-of-a-resource"></a>Jak prostřednictvím kódu programu získat oblasti LUIS prostředku? 
+### <a name="how-do-i-programmatically-get-the-luis-region-of-a-resource"></a>Návody programově získat oblast LUIS prostředku? 
 
-Použijte ukázku služby LUIS [najít oblast](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/find-region) programově pomocí C# nebo Node.Js. 
+Pomocí ukázky LUIS můžete [najít oblast](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/find-region) programově pomocí nástroje C# nebo Node. js. 
 
 ## <a name="luis-service"></a>Služba LUIS
 
@@ -286,27 +286,27 @@ Použijte ukázku služby LUIS [najít oblast](https://github.com/Azure-Samples/
 
 Ano, můžete použít LUIS [kontejneru](luis-container-howto.md) pro tyto scénáře, pokud máte nezbytné připojení k měření využití. 
 
-## <a name="migrating-to-the-next-version"></a>Migrace na novou verzi
+## <a name="migrating-to-the-next-version"></a>Migrace na další verzi
 
-### <a name="how-do-i-migrate-to-preview-v3-api"></a>Jak migrovat do verze preview rozhraní API V3 
+### <a name="how-do-i-migrate-to-preview-v3-api"></a>Návody migrujete na verzi Preview V3 API? 
 
-Zobrazit [příručka k rozhraní API v2 na v3 migrace pro aplikace LUIS](luis-migration-api-v3.md)
+Viz [Průvodce migrací rozhraní API v2 na verzi v3 pro aplikace Luis](luis-migration-api-v3.md) .
 
-## <a name="build-2019-conference-announcements"></a>Konference Build 2019 oznámení
+## <a name="build-2019-conference-announcements"></a>Oznámení o konferenci Build 2019
 
-Následující funkce byly vydány na konferenci Build. 2019:
+Následující funkce byly vydány na konferenci Build 2019:
 
-* [Ve verzi Preview rozhraní API V3 Průvodce migrací](luis-migration-api-v3.md)
-* [Řídicí panel vylepšených analýz](luis-how-to-use-dashboard.md)
-* [Vylepšené, předem připravených domén](luis-reference-prebuilt-domains.md) 
-* [Dynamický seznam entit](luis-migration-api-v3.md#dynamic-lists-passed-in-at-prediction-time)
+* [Verze Preview Průvodce migrací rozhraní V3 API](luis-migration-api-v3.md)
+* [Vylepšený řídicí panel analýzy](luis-how-to-use-dashboard.md)
+* [Vylepšené předem připravené domény](luis-reference-prebuilt-domains.md) 
+* [Dynamické seznam entit](luis-migration-api-v3.md#dynamic-lists-passed-in-at-prediction-time)
 * [Externí entity](luis-migration-api-v3.md#external-entities-passed-in-at-prediction-time)
 
 Videa:
 
-* [Jak používat Azure konverzační AI k škálujte svůj firemní pro nové generace](https://www.youtube.com/watch?v=_k97jd-csuk&feature=youtu.be)
+* [Jak používat konverzační službu Azure ke škálování vašeho podnikání pro novou generaci](https://www.youtube.com/watch?v=_k97jd-csuk&feature=youtu.be)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o LUIS, najdete v následujících zdrojích:
 * [Dotazy přetečení zásobníku označené LUIS](https://stackoverflow.com/questions/tagged/luis)

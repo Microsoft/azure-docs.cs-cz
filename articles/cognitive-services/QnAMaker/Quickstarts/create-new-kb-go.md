@@ -1,6 +1,6 @@
 ---
-title: 'Rychlý start: Vytvoření znalostní báze knowledge base - REST, Go – QnA Maker'
-titlesuffix: Azure Cognitive Services
+title: 'Rychlý start: Vytvoření znalostní báze – REST, přejít na QnA Maker'
+titleSuffix: Azure Cognitive Services
 description: Tento rychlý start založený na REST a jazyce Go vás provede procesem vytvoření ukázkové znalostní báze služby QnA Maker prostřednictvím kódu programu. Tato znalostní báze se zobrazí na řídicím panelu Azure účtu rozhraní API služeb Cognitive Services.
 services: cognitive-services
 author: diberry
@@ -10,14 +10,14 @@ ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 07/16/2019
 ms.author: diberry
-ms.openlocfilehash: b4a399901b8bba1c97a5571d3db4ef1cbe713a6c
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: a6ee10c998af564630ae1aefd01ec2f4e360abf8
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68254201"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563047"
 ---
-# <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-go"></a>Rychlý start: Vytvoření znalostní báze v nástroje QnA Maker pomocí jazyka Go
+# <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-go"></a>Rychlý start: Vytvoření znalostní báze ve QnA Maker pomocí jazyka přejít
 
 Tento rychlý start vás provede vytvořením ukázkové znalostní báze služby QnA Maker pomocí kódu programu. Služba QnA Maker automaticky extrahuje otázky a odpovědi z částečně strukturovaného obsahu, jako jsou třeba časté otázky, ze [zdrojů dat](../Concepts/data-sources-supported.md). Model pro znalostní bázi je definovaný v kódu ve formátu JSON poslaném v těle požadavku rozhraní API. 
 

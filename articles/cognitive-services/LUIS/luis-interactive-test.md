@@ -1,6 +1,6 @@
 ---
 title: Test aplikace portálu služby LUIS
-titleSuffix: Language Understanding - Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: Language Understanding (LUIS) umožňuje neustále pracovat na aplikaci zpřesnit jej a zvýšit jeho umožňující porozumět jazyku.
 services: cognitive-services
 author: diberry
@@ -11,14 +11,14 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: diberry
-ms.openlocfilehash: 51c6a58567b35c9b8486d8634b0bed1af7218994
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c1a0afc909aa7ef16fa54b931e1601c2ce7304cc
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60199067"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560412"
 ---
-# <a name="test-your-luis-app-in-the-luis-portal"></a>Otestujte aplikaci LUIS na portálu služby LUIS
+# <a name="test-your-luis-app-in-the-luis-portal"></a>Testování aplikace LUIS na portálu LUIS
 <a name="train-your-app"></a>
 [Testování](luis-concept-test.md) aplikace je iterativní proces. Po školení aplikace LUIS, otestujte ho s ukázka projevy a zjistěte, jestli jsou správně rozpoznány záměry a entity. Pokud ne, proveďte aktualizace znovu na aplikaci LUIS, trénování a testování. 
 
@@ -47,7 +47,7 @@ Prozkoumejte podrobnosti o výsledku testu v **zkontrolujte, jestli se** panelu.
  
 1. S **testovací** snímku na více instancí panel otevřený, vyberte **zkontrolujte, jestli se** pro utterance chcete porovnat. 
 
-    ![Vyberte tlačítko zkontrolujte, jestli chcete zobrazit další podrobnosti o výsledcích testů](./media/luis-how-to-interactive-test/inspect.png)
+    ![Kliknutím na tlačítko zkontrolovat zobrazíte další podrobnosti o výsledcích testu.](./media/luis-how-to-interactive-test/inspect.png)
 
 2. **Kontroly** otevře se panel. Na panelu zahrnuje nejvyšší hodnocení záměr, stejně jako všechny zjištěné entity. Na panelu zobrazuje výsledek vybraný utterance.
 

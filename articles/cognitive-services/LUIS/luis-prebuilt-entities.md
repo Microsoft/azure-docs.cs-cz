@@ -1,5 +1,5 @@
 ---
-title: Předem připravených entit
+title: Předem připravené entity pro Language Understanding
 titleSuffix: Azure Cognitive Services
 description: Služba LUIS zahrnuje sadu předem připravených entit pro rozpoznávání běžných typů informací, jako jsou data, časy, čísla, měření a měny. Podpora předem připravených entit se liší podle jazykové verze vaší aplikace LUIS.
 services: cognitive-services
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 03/11/2019
 ms.author: diberry
-ms.openlocfilehash: 0cfc4ff58cfeb65f80f9ac5ce2dd532defde5ef8
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: db0fb8962030b536b6ea73f4141da551434cd528
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60596121"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560357"
 ---
 # <a name="prebuilt-entities-to-recognize-common-data-types"></a>Předem připravených entit rozpoznat běžné typy dat
 
@@ -60,7 +60,7 @@ Test nové záměr na koncovém bodu podle přidán hodnotu **q** parametru. Ná
 
  Pokud chcete aplikaci označit tento typ token, pokud jeho část je již označena s využitím předem připravených entit, odeberte z aplikace LUIS předem připravených entit. Není nutné k trénování aplikace. Označte token s vlastní entitu. Přidejte zpátky do aplikace LUIS předem připravených entit.
 
- Další příklad vezměte v úvahu utterance jako seznam předvolby třídy: `I want first year spanish, second year calculus, and fourth year english lit.` Pokud má aplikace LUIS řadová číslovka Prebuild přidali, `first`, `second`, a `fourth` se již označen atributem řadové číslovky. Pokud chcete zaznamenat řadová číslovka a třídy, můžete vytvořit složenou entitu a obtékat kolem pořadovém místě předem připravená a vlastní entity pro název třídy.
+ Pro jiný příklad zvažte utterance jako seznam předvoleb třídy: `I want first year spanish, second year calculus, and fourth year english lit.`Pokud má aplikace Luis přidané pořadové číslo předbuildu, `first`, `second`a `fourth` již bude označeno pořadovým číslem. Pokud chcete zaznamenat řadová číslovka a třídy, můžete vytvořit složenou entitu a obtékat kolem pořadovém místě předem připravená a vlastní entity pro název třídy.
 
 ## <a name="next-steps"></a>Další postup
 > [!div class="nextstepaction"]

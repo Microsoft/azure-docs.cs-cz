@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý start: Překlad řeči, C# (.NET Core Windows)'
+title: 'Rychlý start: Převod řeči, C# (Windows Core Windows) – služba Speech'
 titleSuffix: Azure Cognitive Services
-description: V tomto rychlém startu vytvoříte jednoduchou aplikaci .NET Core pro zachycení uživatele řeči, přeloží ji do jiného jazyka a výstupní text do příkazového řádku. Tato příručka je určená pro uživatele Windows.
+description: V tomto rychlém startu vytvoříte jednoduchou aplikaci .NET Core, která bude zachytávání uživatelského rozpoznávání řeči, přeložit ho do jiného jazyka a navýstupovat text do příkazového řádku. Tato příručka je určená pro uživatele Windows.
 services: cognitive-services
 author: wolfma61
 manager: nitinme
@@ -10,20 +10,20 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 8ab76a786f11677f5d8f0715b257bd2fb04e50bf
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: fa2601ea80a0d875724126f8e6cb2bd65cf5ec3a
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67602812"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68559222"
 ---
-# <a name="quickstart-translate-speech-with-the-speech-sdk-for-net-core"></a>Rychlý start: Překlad řeči se sadou SDK pro řeč pro .NET Core
+# <a name="quickstart-translate-speech-with-the-speech-sdk-for-net-core"></a>Rychlý start: Převod řeči pomocí sady Speech SDK pro .NET Core
 
-Rychlí průvodci jsou také k dispozici pro [speech to text](quickstart-csharp-dotnet-windows.md) a [převod textu na řeč](quickstart-text-to-speech-dotnetcore.md).
+K dispozici jsou také rychlé starty pro [Převod řeči na text](quickstart-csharp-dotnet-windows.md) a [Převod textu na řeč](quickstart-text-to-speech-dotnetcore.md).
 
-V tomto rychlém startu vytvoříte jednoduchou aplikaci .NET Core, která zachycuje uživatele řeči z vašeho počítače mikrofonu, přeloží řeč a transcribes přeložený text do příkazového řádku v reálném čase. Tato aplikace je navržen pro spouštění na Windows 64-bit a využívá rozhraní [balíček NuGet sady SDK pro řeč](https://aka.ms/csspeech/nuget) a Microsoft Visual Studio 2017.
+V tomto rychlém startu vytvoříte jednoduchou aplikaci .NET Core, která zachycuje řeč uživatele z mikrofonu vašeho počítače, převede řeč a transcribes přeložený text do příkazového řádku v reálném čase. Tato aplikace je určená ke spuštění v 64 Windows a je sestavená pomocí [balíčku NuGet sady Speech SDK](https://aka.ms/csspeech/nuget) a Microsoft Visual Studio 2017.
 
-Úplný seznam jazyků, které jsou k dispozici pro překlad řeči, naleznete v tématu [jazykovou podporu](language-support.md).
+Úplný seznam jazyků dostupných pro překlad řeči najdete v tématu [Podpora jazyků](language-support.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -31,7 +31,7 @@ K tomuto rychlému startu potřebujete:
 
 * [Sada .NET Core SDK](https://dotnet.microsoft.com/download)
 * [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)
-* Klíč předplatného pro službu rozpoznávání řeči. [Získat zdarma](get-started.md).
+* Klíč předplatného Azure pro službu Speech Service. [Získejte je zdarma](get-started.md).
 
 ## <a name="create-a-visual-studio-project"></a>Vytvoření projektu ve Visual Studiu
 
@@ -59,19 +59,19 @@ K tomuto rychlému startu potřebujete:
 
     ![Snímek obrazovky s aplikací sady Visual Studio se zvýrazněnou možností Spustit ladění](media/sdk/qs-csharp-dotnetcore-windows-06-start-debugging.png "Spuštění aplikace s laděním")
 
-1. Zobrazí se okno konzoly a vyzve vás, abyste něco řekli. Vyslovte anglickou frázi nebo větu. Hlasu je do služby řeči, přeložit a převede na text, který se zobrazí ve stejném okně.
+1. Zobrazí se okno konzoly a vyzve vás, abyste něco řekli. Vyslovte anglickou frázi nebo větu. Rozpoznávání řeči se přenáší do služby Speech, přeložená a přepisu na text, který se zobrazí ve stejném okně.
 
-    ![Snímek obrazovky výstup na konzole po úspěšné překlad](media/sdk/qs-translate-csharp-dotnetcore-windows-output.png "výstupu konzoly po úspěšné překladu")
+    ![Snímek obrazovky s výstupem konzoly po úspěšném překladu](media/sdk/qs-translate-csharp-dotnetcore-windows-output.png "Výstup na konzole po úspěšném překladu")
 
 
 ## <a name="next-steps"></a>Další postup
 
-Další ukázky, jako je čtení řeči ze zvukových souboru a výstup přeložený text jako řečového, jsou k dispozici na Githubu.
+Na GitHubu jsou k dispozici další ukázky, jako je například čtení řeči ze zvukového souboru a výstup přeloženého textu jako syntetizované řeči.
 
 > [!div class="nextstepaction"]
-> [Prozkoumejte C# ukázky na Githubu](https://aka.ms/csspeech/samples)
+> [Prozkoumejte C# ukázky na GitHubu](https://aka.ms/csspeech/samples)
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také:
 
 - [Přizpůsobení akustických modelů](how-to-customize-acoustic-models.md)
 - [Přizpůsobení jazykových modelů](how-to-customize-language-model.md)

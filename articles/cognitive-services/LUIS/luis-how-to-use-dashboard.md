@@ -1,5 +1,5 @@
 ---
-title: Řídicí panel – Language Understanding
+title: Řídicí panel – Language Understanding – LUIS
 titleSuffix: Azure Cognitive Services
 description: Opravte záměry pomocí řídicího panelu Analytics, vizuálního nástroje pro sestavy.
 services: cognitive-services
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 05/22/2019
 ms.author: diberry
-ms.openlocfilehash: f068aa7ca6b396ebba05b9d9462d9e95faf7fbaa
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: 42dfe4af56149e4305d076b0427f15038a01fadc
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68296423"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563625"
 ---
 # <a name="how-to-use-the-dashboard-to-improve-your-app"></a>Vylepšení aplikace pomocí řídicího panelu
 
@@ -33,7 +33,7 @@ Tři problémy řešené na řídicím panelu jsou:
 |Problém|Barva grafu|Vysvětlení|
 |--|--|--|
 |Nevyrovnanost dat|-|K tomu dochází, když se množství příkladů projevy významně liší. Všechny záměry musí mít _zhruba_ stejný počet příkladů projevy – s výjimkou záměru None. Mělo by to mít jenom 10%-15% celkového počtu projevy v aplikaci.<br><br> Pokud jsou data nevyvážená, ale přesnost záměru je nad určitou prahovou hodnotou, tato nerovnováha není hlášena jako problém.<br><br>**Začněte s tímto problémem – může to být hlavní příčina dalších problémů.**|
-|Zrušit zaškrtnutí předpovědi|Orange|K tomu dojde v případě, že je přední záměr a skóre dalšího záměru dostatečně blízko, že se mohou vrátit k dalšímu školení, z důvodu [negativního vzorkování](luis-how-to-train.md#train-with-all-data) nebo více příkladů projevy přidaných do záměru. |
+|Zrušit zaškrtnutí předpovědi|Oranžová|K tomu dojde v případě, že je přední záměr a skóre dalšího záměru dostatečně blízko, že se mohou vrátit k dalšímu školení, z důvodu [negativního vzorkování](luis-how-to-train.md#train-with-all-data) nebo více příkladů projevy přidaných do záměru. |
 |Nesprávné předpovědi|Červená|K tomu dochází, když se příklad utterance nepředpokládá pro označení záměru (záměr je v rámci).|
 
 Správné předpovědi jsou reprezentovány barvou modrá.

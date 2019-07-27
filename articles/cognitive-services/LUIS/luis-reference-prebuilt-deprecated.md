@@ -1,6 +1,6 @@
 ---
-title: Nepoužívané předem připravených entit
-titleSuffix: Azure
+title: Zastaralé předem vytvořené entity – LUIS
+titleSuffix: Azure Cognitive Services
 description: Tento článek obsahuje informace zastaralé předem připravených entit v Language Understanding (LUIS).
 services: cognitive-services
 author: diberry
@@ -11,19 +11,19 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 02/28/2019
 ms.author: diberry
-ms.openlocfilehash: 653fbd65e5ccfbc65781f2332b35d10237f718d5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 17693b7dff1df1d538f2f4a180be025e0de67c82
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60712776"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563475"
 ---
-# <a name="deprecated-prebuilt-entities-in-a-luis-app"></a>Nepoužívané předem připravených entit v aplikaci LUIS
+# <a name="deprecated-prebuilt-entities-in-a-luis-app"></a>Zastaralé předem připravené entity v aplikaci LUIS
 Následující předem připravených entit se považují za zastaralé a nelze přidat do nové aplikace LUIS.
 
-* **Datum a čas**: Existující aplikace LUIS, které používají **data a času** by se měly migrovat do **datetimeV2**, i když entity data a času je nadále funkční v již existující aplikace, které ji používají.
-* **Zeměpisné oblasti**: Existující aplikace LUIS, které používají **zeměpisné oblasti** platí až do prosince 2018.
-* **Encyklopedie**: Existující aplikace LUIS, které používají **encyklopedie** platí až do prosince 2018.
+* **Datum a čas**: Stávající aplikace LUIS, které používají **DateTime** , by se měly migrovat na **datetimeV2**, i když entita DateTime dál funguje v existujících aplikacích, které ji používají.
+* **Zeměpisná**oblast: Stávající aplikace LUIS, které  používají geografickou oblast, jsou podporovány do prosince 2018.
+* **Encyklopedie**: Stávající aplikace LUIS, které  používají encyklopedii, se podporují do prosince 2018.
 
 ## <a name="geography-culture"></a>Zeměpisné oblasti jazykovou verzi
 **Zeměpisné oblasti** je k dispozici pouze v `en-us` národní prostředí.
@@ -43,7 +43,7 @@ Předem připravených entit   |   Ukázková promluva   |   JSON
 **Encyklopedie** je k dispozici pouze v `en-US` národní prostředí.
 
 #### <a name="encyclopedia-subtypes"></a>Podtypy encyklopedie
-Integrované entity encyklopedie obsahuje více než 100 podtypy v následující tabulce: Kromě toho encyklopedie entity se často mapují na víc typů. Například dotaz Ronald Reagan poskytuje: 
+Integrovaná entita encyklopedie obsahuje více než 100 dílčích typů v následující tabulce: Kromě toho se entity encyklopedie často mapují na více typů. Například dotaz Ronald Reagan poskytuje: 
 
 ```json
 {

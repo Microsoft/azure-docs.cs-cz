@@ -1,7 +1,7 @@
 ---
-title: Použití úloh moderování pomocí rozhraní .NET – Content Moderator
-titlesuffix: Azure Cognitive Services
-description: Ke spuštění úlohy začátku do konce pro moderování obsahu pro obsah image nebo text v Azure Content Moderator použijte Content Moderator .NET SDK.
+title: Použití úloh moderování pomocí .NET-Content Moderator
+titleSuffix: Azure Cognitive Services
+description: Pomocí sady Content Moderator .NET SDK zahajte kompletní úlohy Moderování obsahu pro obrázek nebo textový obsah ve službě Azure Content Moderator.
 services: cognitive-services
 author: sanjeev3
 manager: nitinme
@@ -10,25 +10,25 @@ ms.subservice: content-moderator
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: sajagtap
-ms.openlocfilehash: 24d5483cf3b418cada3c5b7f03eedbff13cc36d6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d98c88a6e1d6dfa23f53c32c85c013b4cf2c468d
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62113864"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68565605"
 ---
-# <a name="define-and-use-moderation-jobs-net"></a>Definice a používání moderování úlohy (.NET)
+# <a name="define-and-use-moderation-jobs-net"></a>Definování a použití úloh moderování (.NET)
 
-Moderování úlohy slouží jako typ obálky pro funkce moderování obsahu, pracovní postupy a kontroly. Tato příručka obsahuje informace a ukázky kódu, které vám pomůžou začít používat [Content Moderator SDK pro .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) na:
+Úloha moderování slouží jako typ obálky pro funkčnost Moderování obsahu, pracovních postupů a revizí. Tato příručka poskytuje informace a ukázky kódu, které vám pomohou začít používat [sadu Content moderator SDK pro .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) k těmto akcím:
 
 - Spuštění úlohy moderování, která vyhledá a vytvoří kontroly pro lidské moderátory
 - Získání stavu čekající kontroly
 - Sledování kontroly a získání jejího konečného stavu
-- Odeslání výsledků kontroly pro adresu URL zpětného volání
+- Odeslat výsledky kontroly na adresu URL zpětného volání
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Přihlaste se nebo si vytvořte účet v Content Moderatoru [nástroj pro recenze](https://contentmoderator.cognitive.microsoft.com/) lokality.
+- Přihlaste se nebo vytvořte účet na webu [Nástroje pro kontrolu](https://contentmoderator.cognitive.microsoft.com/) Content moderator.
 
 ## <a name="ensure-your-api-key-can-call-the-review-api-for-review-creation"></a>Kontrola, že klíč rozhraní API může volat rozhraní API pro kontroly, aby se mohla vytvořit kontrola
 

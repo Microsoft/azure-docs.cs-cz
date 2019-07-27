@@ -1,6 +1,6 @@
 ---
-title: 'Rychlý start: vytvoření aplikace'
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: 'Rychlý Start: Vytvoření aplikace – LUIS'
+titleSuffix: Azure Cognitive Services
 description: Vytvoříte aplikaci LUIS, která používá předem připravenou doménu `HomeAutomation` pro zapínání a vypínání světel a zařízení. Tato předem připravená doména poskytuje záměry, entity a příklady promluv. Až budete hotovi, budete mít koncový bod služby LUIS spuštěný v cloudu.
 services: cognitive-services
 author: diberry
@@ -11,14 +11,14 @@ ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: 6d3b4d23ae1ad04142b0dec01a1abccbd2f81942
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: e53f8d6e08b345d417ce54deacd658275cb1cd00
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65150241"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563926"
 ---
-# <a name="quickstart-use-prebuilt-home-automation-app"></a>Rychlý start: Použití předem připravené aplikace automatizace Domovská stránka
+# <a name="quickstart-use-prebuilt-home-automation-app"></a>Rychlý start: Použití předem připravené aplikace pro domácí automatizaci
 
 V tomto rychlém startu vytvoříte aplikaci LUIS, která používá předem připravenou doménu `HomeAutomation` pro zapínání a vypínání světel a zařízení. Tato předem připravená doména poskytuje záměry, entity a příklady promluv. Až budete hotovi, budete mít koncový bod služby LUIS spuštěný v cloudu.
 
@@ -58,7 +58,7 @@ Po úspěšném přidání domény pak pole předem připravené domény zobrazu
 
 V levém navigačním podokně vyberte **Intents** (Záměry) a podívejte se na záměry domény Home Automation. Každý záměr má ukázkové promluvy.
 
-![Snímek obrazovky HomeAutomation záměry seznamu](media/luis-quickstart-new-app/home-automation-intents.png "snímek obrazovky HomeAutomation záměry seznamu")]
+![Snímek obrazovky seznamu HomeAutomation záměrů](media/luis-quickstart-new-app/home-automation-intents.png "Snímek obrazovky seznamu HomeAutomation záměrů")]
 
 > [!NOTE]
 > **None** (Žádný) je záměr, který poskytují všechny aplikace LUIS. Používá se ke zpracování promluv, které neodpovídají funkci poskytované vaší aplikací. 

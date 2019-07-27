@@ -1,6 +1,6 @@
 ---
-title: Rychlý start – izolované databáze ve službě Azure SQL Database | Dokumentace Microsoftu
-description: Zjistěte, jak rychle začít používat izolované databáze ve službě Azure SQL Database
+title: Rychlý Start – jednotlivé databáze v Azure SQL Database | Microsoft Docs
+description: Naučte se, jak rychle začít s izolovanými databázemi v Azure SQL Database
 services: sql-database
 ms.service: sql-database
 ms.subservice: single-database
@@ -10,45 +10,44 @@ ms.topic: quickstart
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlr
-manager: craigg
 ms.date: 02/04/2019
-ms.openlocfilehash: 7b52453bab661531461a2bec2f15f7659ec15a1c
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: b4341cb7d1734cb25aae890cc282c67ef38d67bf
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67441710"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68566482"
 ---
-# <a name="getting-started-with-single-databases-in-azure-sql-database"></a>Začínáme s izolované databáze ve službě Azure SQL Database
+# <a name="getting-started-with-single-databases-in-azure-sql-database"></a>Začínáme s izolovanými databázemi v Azure SQL Database
 
-[Izolované databáze](sql-database-single-index.yml) je plně spravovaná databáze PaaS jako služba (DbaaS), která je ideální úložiště modul moderních cloudových aplikací. V této části se dozvíte, jak rychle nakonfigurovat a vytvoření izolované databáze ve službě SQL Database.
+[Jediná databáze](sql-database-single-index.yml) je plně spravovaná databáze PaaS jako služba (DbaaS), která je ideálním modulem úložiště pro moderní aplikace v cloudu. V této části se dozvíte, jak rychle nakonfigurovat a vytvořit izolovanou databázi v SQL Database.
 
-## <a name="quickstart-overview"></a>Rychlý start – přehled
+## <a name="quickstart-overview"></a>Přehled rychlého startu
 
-V této části zobrazí přehled dostupných články, které vám umožňují rychle začít používat izolované databáze. Následujících šablon rychlý start vám umožňují rychle vytvářet izolované databáze, konfigurace pravidla brány firewall serveru databáze a pak importovat databázi do nové izolované databáze pomocí `.bacpac` souboru:
+V této části se zobrazí přehled dostupných článků, které vám pomohou rychle začít s izolovanými databázemi. Následující rychlé starty vám umožní rychle vytvořit izolovanou databázi, nakonfigurovat pravidlo brány firewall databázového serveru a pak importovat databázi do nové izolované databáze pomocí `.bacpac` souboru:
 
-- [Vytvoření izolované databáze pomocí webu Azure portal](sql-database-single-database-get-started.md).
-- Po vytvoření databáze, je třeba [zabezpečení databáze pomocí konfigurace pravidla brány firewall](sql-database-server-level-firewall-rule.md).
-- Pokud máte existující databázi na SQL Server, který chcete migrovat do Azure, měli byste nainstalovat [Data Migration Assistant (DMA)](https://www.microsoft.com/download/details.aspx?id=53595) , která analyzuje vaše databáze na SQL serveru a najít všechny problémy, které by mohly blokovat migrace do jedné možnost nasazení databáze. Pokud nenajdete žádné potíže, můžete exportovat databázi jako `.bacpac` souboru a [naimportujete pomocí webu Azure portal nebo SqlPackage](sql-database-import.md).
+- [Vytvořte jednu databázi pomocí Azure Portal](sql-database-single-database-get-started.md).
+- Po vytvoření databáze bude nutné [zabezpečit databázi konfigurací pravidel brány firewall](sql-database-server-level-firewall-rule.md).
+- Pokud máte v SQL Server existující databázi, kterou chcete migrovat do Azure, měli byste nainstalovat [Data Migration Assistant (DMA)](https://www.microsoft.com/download/details.aspx?id=53595) , která bude analyzovat vaše databáze na SQL Server, a najít případné potíže, které by mohly blokovat migraci do nasazení jediné databáze. nastavení. Pokud nějaký problém nenajdete, můžete databázi exportovat jako `.bacpac` soubor a [importovat ji pomocí Azure Portal nebo SqlPackage](sql-database-import.md).
 
 ## <a name="automating-management-operations"></a>Automatizace operací správy
 
-Vytvořte, nakonfigurujte a škálujte databázi, můžete použít PowerShell nebo rozhraní příkazového řádku Azure.
+K vytvoření, konfiguraci a škálování databáze můžete použít PowerShell nebo Azure CLI.
 
 - [Vytvoření a konfigurace izolované databáze pomocí prostředí PowerShell](scripts/sql-database-create-and-configure-database-powershell.md)
-- [Vytvoření a konfigurace izolované databáze pomocí rozhraní příkazového řádku Azure](scripts/sql-database-create-and-configure-database-cli.md)
-- [Aktualizace jedné databáze a škálování prostředků pomocí Powershellu](scripts/sql-database-monitor-and-scale-database-powershell.md)
-- [Aktualizace jedné databáze a škálování prostředků pomocí Azure CLI](scripts/sql-database-monitor-and-scale-database-cli.md)
+- [Vytvoření a konfigurace izolované databáze pomocí Azure CLI](scripts/sql-database-create-and-configure-database-cli.md)
+- [Aktualizace databáze a škálování prostředků pomocí PowerShellu](scripts/sql-database-monitor-and-scale-database-powershell.md)
+- [Aktualizujte svou databázi a škálujte prostředky pomocí Azure CLI.](scripts/sql-database-monitor-and-scale-database-cli.md)
 
-## <a name="migrating-to-a-single-database-with-minimal-downtime"></a>Migrace na izolované databáze s minimálními výpadky
+## <a name="migrating-to-a-single-database-with-minimal-downtime"></a>Migrace na izolovanou databázi s minimálními výpadky
 
-V těchto rychlých startech umožňují rychle vytvořit nebo importovat databázi do Azure s využitím `.bacpac` souboru. Ale `.bacpac` a `.dacpac` souborů jsou navržené tak, jak rychle přesunout databáze v různých verzích systému SQL Server a možnosti nasazení v rámci Azure SQL Database nebo implementaci nepřetržité integrace do vašeho kanálu DevOps. Však tato metoda není určená pro migraci vašich provozních databází s minimálními výpadky, protože je třeba zastavit přidávání nových dat, počkejte export zdrojové databáze do `.bacpac` souborů k dokončení a potom počkejte importu do Azure SQL Database k dokončení. Všechna tato čekací za následek výpadek aplikace, zejména u velkých databází. Chcete-li přesunout provozní databázi, budete potřebovat lepší způsob, jak migrovat, které zaručují minimálními prostoji migrace. V takovém případě použijte [Data Migration Service (DMS)](https://docs.microsoft.com/azure/dms/tutorial-sql-server-to-azure-sql?toc=/azure/sql-database/toc.json) migrace databáze s minimálními prostoji... DMS dosahuje tak, že postupně doručením (push) změny provedené ve zdrojové databázi izolované databáze obnovena. Díky tomu můžete rychle přepínat aplikace ze zdroje do cílové databáze s minimálními výpadky.
+Tyto rychlé starty vám umožní rychle vytvořit nebo importovat databázi do Azure pomocí `.bacpac` souboru. `.bacpac` Soubory a `.dacpac` jsou ale navržené k rychlému přesunu databází napříč různými verzemi SQL Server a možností nasazení v rámci Azure SQL Database nebo k implementaci průběžné integrace do kanálu DevOps. Tato metoda není navržená pro migraci provozních databází s minimálními prostoji, protože byste museli ukončit přidávání nových dat, počkat na dokončení exportu zdrojové databáze do `.bacpac` souboru a pak počkat na import do Azure SQL Database k dokončení. Všechny tyto čekající výsledky v důsledku výpadku vaší aplikace, zejména pro velké databáze. Pro přesun provozní databáze potřebujete lepší způsob migrace, která zaručuje minimální výpadky migrace. K tomu je potřeba použít [službu migrace dat (DMS)](https://docs.microsoft.com/azure/dms/tutorial-sql-server-to-azure-sql?toc=/azure/sql-database/toc.json) k migraci databáze s minimálními výpadky. DMS to provede přírůstkovým vložením změn provedených ve zdrojové databázi do databáze, která se obnovuje. Tímto způsobem můžete rychle přepnout aplikaci ze zdrojového do cílové databáze s minimálními výpadky.
 
 ## <a name="next-steps"></a>Další postup
 
-- Najít [podrobný seznam podporovaných funkcí ve službě Azure SQL Database](sql-database-features.md).
-- Naučte se, aby vaše [databáze bezpečnější](sql-database-security-tutorial.md).
-- Jak najít pokročilejší-pro uživatele [použití izolované databáze ve službě Azure SQL Database](sql-database-howto-single-database.md).
-- Najít další ukázkové skripty, které jsou napsané v [PowerShell](sql-database-powershell-samples.md) a [rozhraní příkazového řádku Azure](sql-database-cli-samples.md).
-- Další informace o [rozhraní API pro správu](sql-database-single-databases-manage.md) , můžete použít ke konfiguraci vašich databází.
-- [Určení správné Azure SQL Database nebo spravované Instance SKU pro místní databázi](/sql/dma/dma-sku-recommend-sql-db/).
+- [Seznam podporovaných funkcí v Azure SQL Database najdete na nejvyšší úrovni](sql-database-features.md).
+- Přečtěte si, jak zvýšit [zabezpečení databáze](sql-database-security-tutorial.md).
+- Najděte si pokročilejší postupy, [Jak používat izolovanou databázi v Azure SQL Database](sql-database-howto-single-database.md).
+- Najděte si další ukázkové skripty napsané v [PowerShellu](sql-database-powershell-samples.md) a [Azure CLI](sql-database-cli-samples.md).
+- Přečtěte si další informace o [rozhraní API pro správu](sql-database-single-databases-manage.md) , které můžete použít ke konfiguraci databází.
+- [Identifikujte správnou Azure SQL Database/SKU spravované instance pro vaši místní databázi](/sql/dma/dma-sku-recommend-sql-db/).

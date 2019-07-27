@@ -10,65 +10,64 @@ ms.topic: quickstart
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-manager: craigg
 ms.date: 03/25/2019
-ms.openlocfilehash: d674928bbe585174db897b2a052a5fd09bcee329
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 5b47ddc2d865108e03b3c649536bfaa700e4a59d
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65792068"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68569110"
 ---
 # <a name="quickstart-use-ruby-to-query-an-azure-sql-database"></a>Rychlý start: Použití Ruby k dotazování databáze Azure SQL
 
-Tento rychlý start ukazuje, jak používat [Ruby](https://www.ruby-lang.org) pro připojení Azure SQL database a dotazování dat pomocí příkazů jazyka Transact-SQL.
+Tento rychlý Start ukazuje, jak se pomocí [Ruby](https://www.ruby-lang.org) připojit k databázi SQL Azure a dotazovat data pomocí příkazů jazyka Transact-SQL.
 
 ## <a name="prerequisites"></a>Požadavky
 
-K dokončení tohoto rychlého startu budete potřebovat následující:
+K dokončení tohoto rychlého startu potřebujete následující požadavky:
 
-- Databázi Azure SQL. Jeden z těchto rychlých startech můžete vytvořit a potom nakonfigurovat databázi ve službě Azure SQL Database:
+- Databázi Azure SQL. K vytvoření a konfiguraci databáze v Azure SQL Database můžete použít jeden z těchto rychlých startů:
 
   || Izolovaná databáze | Spravovaná instance |
   |:--- |:--- |:---|
-  | Vytvořit| [Azure Portal](sql-database-single-database-get-started.md) | [Azure Portal](sql-database-managed-instance-get-started.md) |
+  | Create| [Azure Portal](sql-database-single-database-get-started.md) | [Azure Portal](sql-database-managed-instance-get-started.md) |
   || [Rozhraní příkazového řádku](scripts/sql-database-create-and-configure-database-cli.md) | [Rozhraní příkazového řádku](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
   || [PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) | [PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md) |
-  | Nakonfigurovat | [pravidlo brány firewall na úrovni serveru IP](sql-database-server-level-firewall-rule.md)| [Připojení z virtuálního počítače](sql-database-managed-instance-configure-vm.md)|
-  |||[Připojení z na místě](sql-database-managed-instance-configure-p2s.md)
-  |Načíst data|Společnosti Adventure Works načtených za rychlý start|[Obnovit Wide World Importers](sql-database-managed-instance-get-started-restore.md)
-  |||Obnovení nebo importovat společnosti Adventure Works z [BACPAC](sql-database-import.md) souboru z [Githubu](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works)|
+  | Konfigurace | [Pravidlo brány firewall protokolu IP na úrovni serveru](sql-database-server-level-firewall-rule.md)| [Připojení z virtuálního počítače](sql-database-managed-instance-configure-vm.md)|
+  |||[Připojení z webu](sql-database-managed-instance-configure-p2s.md)
+  |Načtení dat|Načtený Adventure Works pro každý rychlý Start|[Obnovení celosvětových dovozců](sql-database-managed-instance-get-started-restore.md)
+  |||Obnovení nebo import Adventure Works ze souboru [BacPac](sql-database-import.md) z [GitHubu](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works)|
   |||
 
   > [!IMPORTANT]
-  > Skripty v tomto článku se zapisují do použít databázi společnosti Adventure Works. S managed instance musíte importovat databázi společnosti Adventure Works do instance databáze nebo upravovat skripty v tomto článku pro používání databáze Wide World Importers.
+  > Skripty v tomto článku jsou určeny k používání databáze Adventure Works. Se spravovanou instancí musíte buď importovat databázi Adventure Works do databáze instance, nebo upravit skripty v tomto článku, aby používaly databázi World Importers.
   
 - Ruby a související software pro váš operační systém:
   
-  - **MacOS**: Nainstalujte Homebrew, rbenv a ruby-build, Ruby, FreeTDS a TinyTDS. Najdete v krocích 1.2, 1.3, 1.4, 1.5 a 2.1 v [Ruby vytvořit aplikace s využitím SQL serveru v systému macOS](https://www.microsoft.com/sql-server/developer-get-started/ruby/mac/).
+  - **MacOS**: Nainstalujte homebrew, rbenv a Ruby-Build, Ruby, FreeTDS a TinyTDS. V tématu [vytváření aplikací Ruby pomocí SQL Server v MacOS](https://www.microsoft.com/sql-server/developer-get-started/ruby/mac/)najdete postup 1,2, 1,3, 1,4, 1,5 a 2,1.
   
-  - **Ubuntu**: Instalace požadovaných součástí pro Ruby, rbenv a ruby-build, Ruby, FreeTDS a TinyTDS. Najdete v krocích 1.2, 1.3, 1.4, 1.5 a 2.1 v [Ruby vytvořit aplikace s využitím SQL serveru na Ubuntu](https://www.microsoft.com/sql-server/developer-get-started/ruby/ubuntu/).
+  - **Ubuntu**: Nainstalujte požadavky na Ruby, rbenv a Ruby-Build, Ruby, FreeTDS a TinyTDS. V tématu [vytváření aplikací Ruby pomocí SQL Server v Ubuntu](https://www.microsoft.com/sql-server/developer-get-started/ruby/ubuntu/)najdete postup 1,2, 1,3, 1,4, 1,5 a 2,1.
   
-  - **Windows:** Nainstalujte Ruby, Ruby Devkit a TinyTDS. Zobrazit [konfigurace vývojového prostředí o vývoji v Ruby](/sql/connect/ruby/step-1-configure-development-environment-for-ruby-development).
+  - **Windows:** Nainstalujte Ruby, Ruby DevKit a TinyTDS. Viz [Konfigurace vývojového prostředí pro vývoj v Ruby](/sql/connect/ruby/step-1-configure-development-environment-for-ruby-development).
 
-## <a name="get-sql-server-connection-information"></a>Získejte informace o připojení SQL serveru
+## <a name="get-sql-server-connection-information"></a>Získat informace o připojení k SQL serveru
 
-Získejte informace o připojení potřebné pro připojení k databázi Azure SQL. Nadcházející postupy budete potřebovat plně kvalifikovaný název serveru nebo název hostitele, název databáze a přihlašovací údaje.
+Získejte informace o připojení, které potřebujete pro připojení ke službě Azure SQL Database. Pro nadcházející postupy budete potřebovat plně kvalifikovaný název serveru nebo název hostitele, název databáze a přihlašovací údaje.
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
-2. Přejděte **databází SQL** nebo **spravované instance SQL** stránky.
+2. Přejděte na stránku **databáze SQL** nebo **spravované instance SQL** .
 
-3. Na **přehled** stránce si prohlédněte plně kvalifikovaný název vedle **název serveru** pro izolované databáze nebo serveru plně kvalifikovaný název vedle **hostitele** pro spravované instance. Zkopírujte název serveru nebo název hostitele, je ukazatel myši a vyberte **kopírování** ikonu. 
+3. Na stránce **Přehled** zkontrolujte plně kvalifikovaný název serveru vedle **názvu serveru** pro izolovanou databázi nebo plně kvalifikovaný název serveru vedle možnost **hostitel** pro spravovanou instanci. Pokud chcete zkopírovat název serveru nebo název hostitele, najeďte na něj ukazatelem myši a vyberte ikonu **kopírování** . 
 
 ## <a name="create-code-to-query-your-sql-database"></a>Vytvoření kódu pro dotazování databáze SQL
 
-1. V editoru kódu nebo textu, vytvořte nový soubor s názvem *sqltest.rb*.
+1. V textovém editoru nebo editoru kódu vytvořte nový soubor s názvem *sqltest. RB*.
    
-1. Přidejte následující kód. Nahraďte hodnotami z Azure SQL database pro `<server>`, `<database>`, `<username>`, a `<password>`.
+1. Přidejte následující kód. Nahraďte hodnoty z vaší databáze SQL Azure pro `<server>`, `<database>`, `<username>`a `<password>`.
    
    >[!IMPORTANT]
-   >Kód v tomto příkladu se používá ukázková data AdventureWorksLT, které můžete použít jako zdroj při vytváření databáze. Pokud vaše databáze má jiná data, pomocí tabulek z vlastní databázi v dotazu SELECT. 
+   >Kód v tomto příkladu používá ukázková data AdventureWorksLT, která můžete zvolit jako zdroj při vytváření databáze. Pokud má vaše databáze jiná data, použijte tabulky z vlastní databáze v dotazu SELECT. 
    
    ```ruby
    require 'tiny_tds'
@@ -98,10 +97,10 @@ Získejte informace o připojení potřebné pro připojení k databázi Azure S
    ruby sqltest.rb
    ```
    
-1. Ověřte, že se vrátí prvních 20 řádků kategorie nebo produktů z databáze. 
+1. Ověřte, že jsou vraceny první 20 řádků kategorie/produktu z vaší databáze. 
 
 ## <a name="next-steps"></a>Další postup
-- [Návrh první databáze Azure SQL database](sql-database-design-first-database.md).
+- [Navrhněte svou první databázi SQL Azure](sql-database-design-first-database.md).
 - [Úložiště GitHub pro TinyTDS](https://github.com/rails-sqlserver/tiny_tds).
-- [Hlášení problémů nebo kladení dotazů ohledně TinyTDS](https://github.com/rails-sqlserver/tiny_tds/issues).
-- [Ovladače Ruby pro SQL Server](https://docs.microsoft.com/sql/connect/ruby/ruby-driver-for-sql-server/).
+- [Oznamte problémy nebo položte otázky týkající se TinyTDS](https://github.com/rails-sqlserver/tiny_tds/issues).
+- [Ovladač Ruby pro SQL Server](https://docs.microsoft.com/sql/connect/ruby/ruby-driver-for-sql-server/).

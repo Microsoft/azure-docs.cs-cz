@@ -1,6 +1,6 @@
 ---
-title: Změny dat
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: Změna dat – LUIS
+titleSuffix: Azure Cognitive Services
 description: Zjistěte, jak lze změnit data před predikce v Language Understanding (LUIS)
 services: cognitive-services
 author: diberry
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: diberry
-ms.openlocfilehash: 0648dd9bc93097d3c2433943f983b5e9d22f0279
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 67b56f09663aca35ed0843f50e2420b531c82833
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66473504"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560832"
 ---
 # <a name="alter-utterance-data-before-or-during-prediction"></a>Příkaz ALTER utterance dat před nebo během predikcí
 Služba LUIS poskytuje možnosti pro manipulaci s utterance před nebo během do predikce. Patří mezi ně opravuje pravopis a opravit problémy časové pásmo pro události prebuild datetimeV2. 

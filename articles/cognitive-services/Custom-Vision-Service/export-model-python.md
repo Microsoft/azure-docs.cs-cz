@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Spustit TensorFlow model v Pythonu – Custom Vision Service'
-titlesuffix: Azure Cognitive Services
+title: 'Kurz: Spuštění modelu TensorFlow v Pythonu – Custom Vision Service'
+titleSuffix: Azure Cognitive Services
 description: Spusťte model TensorFlow v Pythonu.
 services: cognitive-services
 author: areddish
@@ -10,19 +10,19 @@ ms.subservice: custom-vision
 ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: areddish
-ms.openlocfilehash: ba8cf3392ac2bd3d371e5e1910c6671feba9dedf
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: c6e7cf770e5f1639e676d232564809121a8c4e4b
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606871"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68561097"
 ---
 # <a name="tutorial-run-tensorflow-model-in-python"></a>Kurz: Spuštění modelu TensorFlow v Pythonu
 
 V tomto rychlém startu se dozvíte, jak po [exportování modelu TensorFlow](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/export-your-model) ze služby Custom Vision Service použít tento model místně ke klasifikaci obrázků.
 
 > [!NOTE]
-> Tento kurz se vztahuje pouze na modely exportovat z projektů klasifikace obrázků.
+> Tento kurz se týká pouze modelů exportovaných z projektů klasifikace obrázků.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -31,7 +31,7 @@ Pro tento kurz budete muset:
 - Nainstalovat Python 2.7+ nebo Python 3.5+.
 - Nainstalovat pip.
 
-V dalším kroku je potřeba nainstalovat následující balíčky:
+V dalším kroku budete muset nainstalovat tyto balíčky:
 
 ```
 pip install tensorflow
@@ -88,7 +88,7 @@ image = update_orientation(image)
 image = convert_to_opencv(image)
 ```
 
-### <a name="handle-images-with-a-dimension-1600"></a>Zpracování imagí pomocí dimenze > 1600
+### <a name="handle-images-with-a-dimension-1600"></a>Zpracování imagí s použitím dimenze > 1600
 
 ```Python
 # If the image has either w or h greater than 1600 we resize it down respecting
@@ -172,7 +172,7 @@ def update_orientation(image):
 
 ## <a name="predict-an-image"></a>Předpověď obrázku
 
-Jakmile bitová kopie je připravená jako tensor, pošleme ji prostřednictvím modelu pro předpověď:
+Jakmile se obrázek připraví jako tensor, můžeme ho poslat přes model předpovědi:
 
 ```Python
 
@@ -210,7 +210,7 @@ Výsledky zpracování tensoru obrázku modelem pak bude potřeba namapovat zpě
 
 ## <a name="next-steps"></a>Další postup
 
-V dalším kroku zjistěte, jak zabalit modelu do mobilní aplikace:
+V dalším kroku se dozvíte, jak model zabalit do mobilní aplikace:
 * [Použití exportovaného modelu Tensorflow v aplikaci pro Android](https://github.com/Azure-Samples/cognitive-services-android-customvision-sample)
 * [Použití exportovaného modelu CoreML v aplikaci Swift pro iOS](https://go.microsoft.com/fwlink/?linkid=857726)
 * [Použití exportovaného modelu CoreML v aplikaci pro iOS s Xamarinem](https://github.com/xamarin/ios-samples/tree/master/ios11/CoreMLAzureModel)

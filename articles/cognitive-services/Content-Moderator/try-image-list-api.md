@@ -1,7 +1,7 @@
 ---
-title: Moderování obrázků pomocí vlastních seznamů a rozhraní API konzoly – Content Moderator
-titlesuffix: Azure Content Moderator
-description: Rozhraní API pro správu seznamu v Azure Content Moderator použijete k vytvoření vlastních seznamů obrázků.
+title: Střední obrázky s vlastními seznamy a konzolou rozhraní API – Content Moderator
+titleSuffix: Azure Content Moderator
+description: Pomocí rozhraní API pro správu seznamu v Azure Content Moderator můžete vytvářet vlastní seznamy imagí.
 services: cognitive-services
 author: sanjeev3
 manager: nitinme
@@ -10,72 +10,72 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 7efa5114a903ba88010ec44f2f1038331df62948
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2b2ab138945d32ca874dc20576d412c862965dc9
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62097976"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68564364"
 ---
-# <a name="moderate-with-custom-image-lists-in-the-api-console"></a>Střední s vlastním seznamem obrázků v konzole pro rozhraní API
+# <a name="moderate-with-custom-image-lists-in-the-api-console"></a>Střední s vlastními seznamy obrázků v konzole API
 
-Můžete použít [rozhraní API pro správu seznamu](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f672) v Azure Content Moderator k vytvoření vlastních seznamů obrázků. Vlastní seznam imagí pomocí rozhraní API pro moderování obrázků. Operace pro moderování obrázků vyhodnotí bitové kopie. Pokud vytvoříte vlastní seznamy, operace se taky porovnává do bitové kopie ve vlastních seznamů. Vlastní seznamy můžete použít k blokování nebo povolení bitovou kopii.
+Pomocí [rozhraní API pro správu seznamu](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f672) v Azure Content moderator můžete vytvářet vlastní seznamy imagí. Použijte vlastní seznamy imagí s rozhraním API pro moderování imagí. Operace moderování obrázku vyhodnocuje váš obrázek. Pokud vytvoříte vlastní seznamy, tato operace také porovná obrázek ve vlastních seznamech. K blokování nebo povolení image můžete použít vlastní seznamy.
 
 > [!NOTE]
 > Limit je maximálně **5 seznamů obrázků** a v každém seznamu může být **maximálně 10 000 obrázků**.
 >
 
-Rozhraní API pro správu seznamu můžete provádět následující úlohy:
+Pomocí rozhraní API pro správu seznamu můžete provádět následující úlohy:
 
 - Vytvoření seznamu
-- Přidání obrázků do seznamu.
-- Obrázky obrazovky s obrázky v seznamu.
-- Odstraňte Image ze seznamu.
+- Přidejte obrázky do seznamu.
+- Obrázky obrazovky proti obrázkům v seznamu.
+- Odstraní obrázky ze seznamu.
 - Odstranění seznamu
 - Úprava informací o seznamu
 - Aktualizace indexu tak, aby změny provedené v seznamu byly součástí nového porovnávání
 
-## <a name="use-the-api-console"></a>Pomocí rozhraní API konzoly
-Předtím, než můžete vyzkoušet rozhraní API v konzole online, budete potřebovat klíč předplatného. To je umístěn na **nastavení** kartě **Ocp-Apim-Subscription-Key** pole. Další informace najdete v tématu [Přehled](overview.md).
+## <a name="use-the-api-console"></a>Použití konzoly API
+Než budete moct otestovat rozhraní API v online konzole, budete potřebovat svůj klíč předplatného. Najdete ho na kartě **Nastavení** v poli **OCP-APIM-Subscription-Key** . Další informace najdete v tématu [Přehled](overview.md).
 
-## <a name="refresh-search-index"></a>Aktualizujte index vyhledávání
+## <a name="refresh-search-index"></a>Aktualizovat index vyhledávání
 
-Když provedete změny seznamu obrázků, je nutné aktualizovat jeho index pro změny, které mají být zahrnuty v budoucích kontrolách. Tento krok je podobný jak vyhledávacího webu na ploše (je-li povoleno) nebo webového vyhledávacího webu průběžně aktualizuje jeho index nových souborů nebo stránky.
+Až provedete změny v seznamu obrázků, je nutné aktualizovat index, aby byly změny zahrnuté do budoucích kontrol. Tento krok je podobný tomu, jak vyhledávací modul na ploše (Pokud je povolen) nebo webový vyhledávací modul průběžně aktualizuje svůj index, aby zahrnoval nové soubory nebo stránky.
 
-1. V [referenční dokumentace rozhraní API pro správu seznamu obrázků](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f672), v nabídce vlevo vyberte **seznamy obrázků**a pak vyberte **aktualizovat Index vyhledávání**.
+1. V referenčních informacích k [rozhraní API pro správu seznamu obrázků](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f672)v nabídce vlevo vyberte **seznamy obrázků**a pak vyberte **Aktualizovat index vyhledávání**.
 
-   **Seznamy obrázků – aktualizovat Index vyhledávání** otevře se stránka.
+   Otevře se stránka **seznam obrázků – index hledání obnovení** .
 
-2. Pro **testovací konzoly Open API**, vyberte oblast, která nejlépe popisuje vaši polohu. 
+2. V případě **konzoly Open API Testing**vyberte oblast, která nejlépe popisuje vaše umístění. 
  
-    ![Seznamy obrázků – výběr oblasti stránek indexu vyhledávání aktualizace](images/test-drive-region.png)
+    ![Seznamy obrázků – aktualizovat výběr oblasti stránky indexu hledání](images/test-drive-region.png)
 
-    **Seznamy obrázků – aktualizovat Index vyhledávání** otevře se konzola rozhraní API.
+    Otevře se seznam imagí – spustí se konzola rozhraní API **pro obnovení indexu vyhledávání** .
 
-3. V **listId** zadejte ID seznamu. Zadejte klíč předplatného a pak vyberte **odeslat**.
+3. Do pole **listId** zadejte ID seznamu. Zadejte svůj klíč předplatného a pak vyberte **Odeslat**.
 
-   ![Seznamy obrázků - Index vyhledávání aktualizace konzoly pole obsahu odpovědi](images/try-image-list-refresh-1.png)
+   ![Seznamy obrázků – aktualizovat obsah odpovědi konzoly indexu hledání](images/try-image-list-refresh-1.png)
 
 
 ## <a name="create-an-image-list"></a>Vytvoření seznamu obrázků
 
-1. Přejděte [referenční dokumentace rozhraní API pro správu seznamu obrázků](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f672).
+1. Přejít na [Reference k rozhraní API pro správu seznamu obrázků](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f672).
 
-   **Seznamy obrázků – vytvořit** otevře se stránka. 
+   Otevře se **seznam obrázků – vytvořit** stránku. 
 
-3. Pro **testovací konzoly Open API**, vyberte oblast, která nejlépe popisuje vaši polohu.
+3. V případě **konzoly Open API Testing**vyberte oblast, která nejlépe popisuje vaše umístění.
 
-   ![Seznamy obrázků: vytvoření stránky oblast výběru](images/test-drive-region.png)
+   ![Seznamy obrázků – výběr oblasti vytvoření stránky](images/test-drive-region.png)
 
-   **Seznamy obrázků – vytvořit** otevře se konzola rozhraní API.
+   Otevře se **seznam imagí – vytvoří** se konzola rozhraní API.
  
-4. V **Ocp-Apim-Subscription-Key** zadejte váš klíč předplatného.
+4. Do pole **OCP-APIM-Subscription-Key** zadejte svůj klíč předplatného.
 
-5. V **text žádosti** , zadejte hodnoty pro pole **název** (například MyList) a **popis**.
+5. Do pole **Text žádosti** zadejte hodnoty pro **Name** (například myList) a **Description (popis**).
 
-   ![Seznamy obrázků – vytvoření konzoly žádost subjektu název a popis](images/try-terms-list-create-1.png)
+   ![Seznamy obrázků – název a popis žádosti o vytvoření konzoly](images/try-terms-list-create-1.png)
 
-6. Pomocí páru klíč hodnota zástupné symboly můžete přiřadit více popisná metadata do seznamu.
+6. Použijte zástupné symboly dvojice klíč-hodnota k přiřazení dalších popisných metadat k seznamu.
 
        {
           "Name": "MyExclusionList",
@@ -87,83 +87,83 @@ Když provedete změny seznamu obrázků, je nutné aktualizovat jeho index pro 
           }
        }
 
-   Přidáte seznam metadat jako páry klíč hodnota a ne skutečné bitové kopie.
+   Přidejte metadata seznamu jako páry klíč-hodnota, nikoli skutečné obrázky.
  
-7. Vyberte **Poslat**. Vytvoření seznamu. Poznámka: **ID** hodnotu, která je přidružena k nového seznamu. Toto ID budete potřebovat další funkce správy seznamu obrázků.
+7. Vyberte **Poslat**. Vytvoří se Váš seznam. Poznamenejte si hodnotu **ID** , která je přidružená k novému seznamu. Toto ID budete potřebovat pro další funkce správy seznamu obrázků.
 
-   ![Seznamy obrázků – vytvoření konzoly odpovědi obsahu pole se zobrazí seznam ID](images/try-terms-list-create-2.png)
+   ![Seznamy obrázků – okno vytvořit obsah odpovědi konzoly zobrazuje ID seznamu](images/try-terms-list-create-2.png)
  
-8. V dalším kroku přidáte Image do MyList. V nabídce vlevo vyberte **Image**a pak vyberte **přidat obrázek**.
+8. Dále přidejte obrázky do MyList. V nabídce vlevo vyberte **Obrázek**a pak vyberte **Přidat obrázek**.
 
-   **Image - přidat bitovou kopii** otevře se stránka. 
+   Otevře se stránka **obrázek – přidat obrázek** . 
 
-9. Pro **testovací konzoly Open API**, vyberte oblast, která nejlépe popisuje vaši polohu.
+9. V případě **konzoly Open API Testing**vyberte oblast, která nejlépe popisuje vaše umístění.
 
-   ![Obrázek – přidat výběr oblasti obrázku stránky](images/test-drive-region.png)
+   ![Obrázek – přidat výběr oblasti stránky obrázku](images/test-drive-region.png)
 
-   **Image - přidat bitovou kopii** otevře se konzola rozhraní API.
+   Otevře se konzola rozhraní API **pro přidání** image.
  
-10. V **listId** zadejte ID seznamu, který jste vygenerovali a potom zadejte adresu URL obrázku, který chcete přidat. Zadejte klíč předplatného a pak vyberte **odeslat**.
+10. Do pole **listId** zadejte ID seznamu, které jste vygenerovali, a pak zadejte adresu URL obrázku, který chcete přidat. Zadejte svůj klíč předplatného a pak vyberte **Odeslat**.
 
-11. Chcete-li ověřit, že image byla přidána do seznamu, v nabídce vlevo vyberte **Image**a pak vyberte **získáte všechna ID Image**.
+11. Chcete-li ověřit, zda byla obrázek přidána do seznamu, vyberte v nabídce vlevo položku **Obrázek**a potom vyberte možnost **získat všechna ID imagí**.
 
-    **Image - získáte všechna ID Image** otevře se konzola rozhraní API.
+    Otevře se konzola rozhraní API **image – získat všechna ID imagí** .
   
-12. V **listId** zadejte ID seznamu a pak zadejte klíč předplatného. Vyberte **Poslat**.
+12. Do pole **listId** zadejte ID seznamu a potom zadejte svůj klíč předplatného. Vyberte **Poslat**.
 
-    ![Obrázek – Get všechny Image ID konzole odpovědi obsahu pole obsahuje seznam imagí, které jste zadali](images/try-image-list-create-11.png)
+    ![Image – získat všechna ID imagí v konzole obsah odpovědi konzoly seznam imagí, které jste zadali](images/try-image-list-create-11.png)
  
-10. Přidáte pár další Image. Teď, když vytvoříte vlastní seznam imagí, zkuste [vyhodnocování image](try-image-api.md) pomocí seznamu vlastní image. 
+10. Přidejte několik dalších imagí. Teď, když jste vytvořili vlastní seznam imagí, zkuste vyhodnotit [Image](try-image-api.md) pomocí vlastního seznamu obrázků. 
 
-## <a name="delete-images-and-lists"></a>Odstranit Image a seznamy
+## <a name="delete-images-and-lists"></a>Odstranění obrázků a seznamů
 
-Odstraňuje se obrázek nebo seznamu je jednoduché. Rozhraní API můžete provádět následující úlohy:
+Odstranění obrázku nebo seznamu je jednoduché. Pomocí tohoto rozhraní API můžete provádět následující úlohy:
 
-- Odstranění image. (**Obrázek – odstranit**)
-- Odstraňte všechny Image v seznamu bez odstranění seznamu. (**Obrázek – odstranit všechny image**)
-- Odstranění seznamu a veškerého jeho obsahu. (**Seznamy obrázků - Delete**)
+- Odstranění image. (**Bitová kopie – odstranění**)
+- Odstraní všechny obrázky v seznamu bez odstranění seznamu. (**Obrázek – odstranění všech imagí**)
+- Odstranění seznamu a veškerého jeho obsahu. (**Seznamy obrázků-odstranit**)
 
-Tento příklad odstraní jedné image:
+Tento příklad odstraní jeden obrázek:
 
-1. V [referenční dokumentace rozhraní API pro správu seznamu obrázků](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f672), v nabídce vlevo vyberte **Image**a pak vyberte **odstranit**. 
+1. V referenčních informacích k [rozhraní API pro správu seznamu obrázků](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f672)vyberte v nabídce vlevo možnost **Obrázek**a pak vyberte **Odstranit**. 
 
-   **Obrázek – odstranit** otevře se stránka.
+   Otevře se stránka **Obrázek – odstranit** .
 
-2. Pro **testovací konzoly Open API**, vyberte oblast, která nejlépe popisuje vaši polohu. 
+2. V případě **konzoly Open API Testing**vyberte oblast, která nejlépe popisuje vaše umístění. 
 
-   ![Obrázek – výběr oblasti stránek Delete](images/test-drive-region.png)
+   ![Obrázek – výběr oblasti stránky pro odstranění](images/test-drive-region.png)
  
-   **Obrázek – odstranit** otevře se konzola rozhraní API.
+   Otevře se konzola rozhraní API **pro odstranění imagí** .
  
-3. V **listId** , zadejte ID seznamu, který se má odstranit bitové kopie z pole.  Toto je číslo vrácen v **Image - získáte všechna ID Image** konzoly, kde MyList. Potom zadejte **ID obrázku** bitové kopie odstranit. 
+3. V poli **listId** zadejte ID seznamu, ze kterého se má obrázek odstranit.  Toto je číslo vrácené v konzole **image – získat všechna ID imagí** pro myList. Pak zadejte **ImageId** obrázku, který chcete odstranit. 
 
-V našem příkladu je ID seznamu **58953**, hodnota **ContentSource**. Na obrázku je ID **59021**, hodnota **ContentIds**.
+V našem příkladu je ID seznamu **58953**, hodnota pro **ContentSource**. ID Image je **59021**, hodnota pro **ContentIds**.
 
-1. Zadejte klíč předplatného a pak vyberte **odeslat**.
+1. Zadejte svůj klíč předplatného a pak vyberte **Odeslat**.
 
-1. Chcete-li ověřit, že image byla odstraněna, použijte **Image - získáte všechna ID Image** konzoly.
+1. Pokud chcete ověřit, že se image odstranila, použijte konzolu **image – získat všechna ID imagí** .
  
-## <a name="change-list-information"></a>Informace o změně seznamu
+## <a name="change-list-information"></a>Změnit informace o seznamu
 
 Můžete upravit název a popis seznamu a přidat položky metadat.
 
-1. V [referenční dokumentace rozhraní API pro správu seznamu obrázků](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f672), v nabídce vlevo vyberte **seznamy obrázků**a pak vyberte **podrobnosti o aktualizacích**. 
+1. V referenčních informacích k [rozhraní API pro správu seznamu obrázků](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f672)v nabídce vlevo vyberte **seznamy obrázků**a pak vyberte **aktualizovat podrobnosti**. 
 
-   **Image obsahuje seznam - podrobnosti o aktualizacích** otevře se stránka.
+   Otevře se stránka **seznamy obrázků – podrobnosti o aktualizaci** .
 
-2. Pro **testovací konzoly Open API**, vyberte oblast, která nejlépe popisuje vaši polohu.  
+2. V případě **konzoly Open API Testing**vyberte oblast, která nejlépe popisuje vaše umístění.  
 
-    ![Seznamy obrázků – podrobné informace o aktualizaci stránky oblast výběru](images/test-drive-region.png)
+    ![Seznamy obrázků – výběr oblasti stránky s podrobnostmi aktualizace](images/test-drive-region.png)
 
-    **Image obsahuje seznam - podrobnosti o aktualizacích** otevře se konzola rozhraní API.
+    Otevře se **seznam obrázků – konzola rozhraní API s podrobnostmi o aktualizaci** .
  
-3. V **listId** zadejte ID seznamu a pak zadejte klíč předplatného.
+3. Do pole **listId** zadejte ID seznamu a potom zadejte svůj klíč předplatného.
 
-4. V **text žádosti** udělejte úpravy a potom vyberte **odeslat** tlačítko na stránce.
+4. V poli **Text žádosti** proveďte úpravy a pak na stránce vyberte tlačítko **Odeslat** .
 
-   ![Seznamy obrázků – podrobnosti o aktualizacích konzole úpravy textu požadavku](images/try-terms-list-change-1.png)
+   ![Seznamy obrázků – aktualizace těla žádosti konzoly úpravy textu](images/try-terms-list-change-1.png)
  
 
 ## <a name="next-steps"></a>Další postup
 
-Použití rozhraní REST API ve vašem kódu nebo začínat [Image obsahuje rychlý úvod k .NET](image-lists-quickstart-dotnet.md) integrovat s vaší aplikací.
+Pomocí REST API v kódu nebo začněte s [imagí Seznamte](image-lists-quickstart-dotnet.md) se s rychlým startem .NET pro integraci s vaší aplikací.

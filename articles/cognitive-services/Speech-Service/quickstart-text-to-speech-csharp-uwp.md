@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý start: Syntetizace řeči, C# (UPW) – hlasové služby'
+title: 'Rychlý start: Syntetizace řeči, C# (UWP) – služba pro rozpoznávání řeči'
 titleSuffix: Azure Cognitive Services
-description: V tomto článku vytvoříte C# aplikace univerzální platformy Windows (UPW) s využitím Cognitive Services SDK řeči. Můžete syntetizace řeč z textu v reálném čase na vaše zařízení mluvčího. Aplikace je sestavená pomocí balíčku NuGet sady SDK pro řeč a Microsoft Visual Studio 2017.
+description: V tomto článku vytvoříte C# aplikace univerzální platformy Windows (UPW) s využitím Cognitive Services SDK řeči. Rozpoznávání řeči textu v reálném čase pro mluvčí zařízení. Aplikace je sestavená pomocí balíčku NuGet sady SDK pro řeč a Microsoft Visual Studio 2017.
 services: cognitive-services
 author: yinhew
 manager: nitinme
@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 6/24/2019
 ms.author: yinhew
-ms.openlocfilehash: c11fbff883d2699bdd0a107fc462524d92ee410d
-ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
+ms.openlocfilehash: 3d5bc1e9cc27fd3c40c15ba55f577779c65e6851
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67467443"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68559321"
 ---
-# <a name="quickstart-synthesize-speech-in-a-uwp-app-by-using-the-speech-sdk"></a>Rychlý start: Syntetizace řeči do aplikace pro UPW pomocí sady SDK pro řeč
+# <a name="quickstart-synthesize-speech-in-a-uwp-app-by-using-the-speech-sdk"></a>Rychlý start: Rozpoznávání řeči v aplikaci pro UWP pomocí sady Speech SDK
 
-Rychlí průvodci jsou také k dispozici pro [rozpoznávání řeči](quickstart-csharp-uwp.md), [překlad řeči](quickstart-translate-speech-uwp.md) a [virtuálních asistentů hlasové první](quickstart-virtual-assistant-csharp-uwp.md).
+K dispozici jsou také rychlé starty pro [rozpoznávání řeči](quickstart-csharp-uwp.md), [Převod řeči](quickstart-translate-speech-uwp.md) a [hlasově prvního virtuálního pomocníka](quickstart-virtual-assistant-csharp-uwp.md).
 
-V tomto článku se při vývoji C# univerzální platformu Windows (UPW; Windows verze 1709 později) aplikací pomocí služeb Cognitive Services [sadou SDK pro řeč](speech-sdk.md). Program bude syntetizace řeč z textu v reálném čase na vaše zařízení mluvčího. Tato aplikace je vytvořená pomocí [balíčku NuGet sady Speech SDK](https://aka.ms/csspeech/nuget) a sady Microsoft Visual Studio 2017 (libovolné edice).
+V tomto článku vyvíjíte C# Univerzální platforma Windows (UWP; Aplikace Windows verze 1709 novější) pomocí [sady Cognitive Services Speech SDK](speech-sdk.md). Program bude z textu v reálném čase pro mluvčí zařízení syntetizovat řeč. Tato aplikace je vytvořená pomocí [balíčku NuGet sady Speech SDK](https://aka.ms/csspeech/nuget) a sady Microsoft Visual Studio 2017 (libovolné edice).
 
 > [!NOTE]
 > Univerzální platforma Windows umožňuje vyvíjet aplikace, které běží na všech zařízeních podporujících Windows 10 včetně počítačů, Xboxu, Surface Hubu a dalších.
@@ -31,7 +31,7 @@ V tomto článku se při vývoji C# univerzální platformu Windows (UPW; Window
 K tomuto rychlému startu potřebujete:
 
 * [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)
-* Klíč předplatného pro službu rozpoznávání řeči. [Získat zdarma](get-started.md).
+* Klíč předplatného Azure pro službu Speech Service. [Získejte je zdarma](get-started.md).
 
 ## <a name="create-a-visual-studio-project"></a>Vytvoření projektu ve Visual Studiu
 
@@ -63,16 +63,16 @@ K tomuto rychlému startu potřebujete:
 
     ![Snímek obrazovky s aplikací sady Visual Studio se zvýrazněnou možností Spustit ladění](media/sdk/qs-csharp-uwp-09-start-debugging.png "Spuštění aplikace s laděním")
 
-1. Zadejte nějaký text do textového pole a klikněte na tlačítko **Speak**. Text se přenášejí do služeb řeči a syntetizovat do mluvené řeči, který přehraje na reproduktoru.
+1. Do textového pole zadejte nějaký text a klikněte na **mluvit**. Váš text se přenáší do služeb řeči a syntetizuje se na řeč, který hraje na reproduktoru.
 
-    ![Snímek obrazovky uživatelského rozhraní pro syntézu řeči](media/sdk/qs-tts-csharp-uwp-ui-result.png)
+    ![Snímek uživatelského rozhraní syntézy řeči](media/sdk/qs-tts-csharp-uwp-ui-result.png)
 
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Prozkoumejte C# ukázky na Githubu](https://aka.ms/csspeech/samples)
+> [Prozkoumejte C# ukázky na GitHubu](https://aka.ms/csspeech/samples)
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také:
 
-- [Přizpůsobení hlasová písma](how-to-customize-voice-font.md)
-- [Záznam hlasu ukázky](record-custom-voice-samples.md)
+- [Přizpůsobení hlasových písem](how-to-customize-voice-font.md)
+- [Záznam ukázek hlasu](record-custom-voice-samples.md)

@@ -9,15 +9,15 @@ ms.date: 01/23/2019
 ms.author: danlep
 ms.custom: include file
 ms.openlocfilehash: cd97c61e7493249785293ae331713ba1a98efee3
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "67175562"
 ---
-## <a name="run-image-from-registry"></a>Spuštění image z registru
+## <a name="run-image-from-registry"></a>Spustit bitovou kopii z registru
 
-Teď můžete vyžádat a spustit `hello-world:v1` image kontejneru z registru kontejnerů pomocí [dockeru spustit][docker-run]:
+Nyní můžete načíst a spustit `hello-world:v1` image kontejneru z registru kontejneru pomocí nástroje Docker [Run][docker-run]:
 
 ```
 docker run <acrLoginServer>/hello-world:v1  

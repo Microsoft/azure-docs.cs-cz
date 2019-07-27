@@ -1,6 +1,6 @@
 ---
-title: 'Rychlý start: Vytvoření znalostní báze knowledge base - REST, Javy – QnA Maker'
-titlesuffix: Azure Cognitive Services
+title: 'Rychlý start: Vytvoření znalostní báze – REST, Java-QnA Maker'
+titleSuffix: Azure Cognitive Services
 description: Tento rychlý start založený na REST a Javě vás provede procesem vytvoření ukázkové znalostní báze služby QnA Maker prostřednictvím kódu programu. Tato znalostní báze se zobrazí na řídicím panelu Azure účtu rozhraní API služeb Cognitive Services.
 services: cognitive-services
 author: diberry
@@ -10,14 +10,14 @@ ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 07/16/2019
 ms.author: diberry
-ms.openlocfilehash: 298f7e90bb6848d7b0af032bdaff8724a69c227f
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 767866fd6768237c4d3a0d7ea422521254414fb3
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68249656"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68559877"
 ---
-# <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-java"></a>Rychlý start: Vytvoření znalostní báze v jazyce Java pomocí nástroje QnA Maker
+# <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-java"></a>Rychlý start: Vytvoření znalostní báze v QnA Maker pomocí jazyka Java
 
 Tento rychlý start vás provede vytvořením ukázkové znalostní báze služby QnA Maker pomocí kódu programu. Služba QnA Maker automaticky extrahuje otázky a odpovědi z částečně strukturovaného obsahu, jako jsou třeba časté otázky, ze [zdrojů dat](../Concepts/data-sources-supported.md). Model pro znalostní bázi je definovaný v kódu ve formátu JSON poslaném v těle požadavku rozhraní API.
 
@@ -100,7 +100,7 @@ Volání opakujte, dokud neskočí úspěchem nebo neúspěchem:
 ```
 
 ## <a name="add-a-main-method"></a>Přidání metody main
-Metoda main vytvoří znalostní bázi a pak se dotazuje na stav. Operace POST pole hlavičky odpovědi se vrátí ID **umístění**, použije se jako součást trasy v požadavek GET. `while` Smyčka opakování stav, pokud není dokončena.
+Metoda main vytvoří znalostní bázi a pak se dotazuje na stav. ID operace se vrátí v **umístění**pole HLAVIČKY odpovědi post a pak se použije jako součást trasy v žádosti o získání. `while` Smyčka opakuje stav, pokud není dokončen.
 
 [!code-java[Add main method](~/samples-qnamaker-java/documentation-samples/quickstarts/create-knowledge-base/CreateKB.java?range=152-191 "Add main method")]
 

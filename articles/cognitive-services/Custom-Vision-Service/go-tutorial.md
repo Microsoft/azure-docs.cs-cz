@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý start: Vytvoření projektu klasifikace obrázků s sady Custom Vision SDK for Go'
-titlesuffix: Azure Cognitive Services
-description: Vytvoření projektu, přidání značek, nahrávat obrázky, trénování váš projekt a předpověď pomocí Go SDK.
+title: 'Rychlý start: Vytvoření projektu klasifikace Image pomocí sady Custom Vision SDK for přejít'
+titleSuffix: Azure Cognitive Services
+description: Vytvořte projekt, přidejte značky, nahrajte obrázky, výukujte projekt a vytvořte předpovědi pomocí sady SDK.
 services: cognitive-services
 author: areddish
 manager: daauld
@@ -10,30 +10,30 @@ ms.subservice: custom-vision
 ms.topic: quickstart
 ms.date: 07/15/2019
 ms.author: areddish
-ms.openlocfilehash: f2b43349b1060739b44ab34f463300dd62569252
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: f21ab53b3beeead8cbd4ba781cd54b23420661f0
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68276462"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68561006"
 ---
-# <a name="quickstart-create-an-image-classification-project-with-the-custom-vision-go-sdk"></a>Rychlý start: Vytvoření projektu klasifikace obrázků s Custom Vision Go SDK
+# <a name="quickstart-create-an-image-classification-project-with-the-custom-vision-go-sdk"></a>Rychlý start: Vytvoření projektu klasifikace obrázků pomocí sady Custom Vision jít SDK
 
-Tento článek obsahuje informace a ukázky kódu pro vám pomůže začít s pomocí sady SDK pro zpracování obrazu vlastní s využitím Go sestavit model klasifikace obrázků. Po jeho vytvoření, je můžete přidat značky, nahrávání obrázků, trénování projektu, získat adresu URL koncového bodu publikované predikce v projektu a použít koncový bod pro programové testování bitovou kopii. V tomto příkladu můžete použijte jako šablonu pro vytváření vlastních aplikací v Go. Pokud chcete procesem vytvoření a používání modelu klasifikace projít _bez_ kódu, přečtěte si místo toho [pokyny s využitím prohlížeče](getting-started-build-a-classifier.md).
+Tento článek poskytuje informace a ukázkový kód, který vám může pomoci začít používat sadu Custom Vision SDK s nástrojem přejít k sestavení modelu klasifikace imagí. Po vytvoření můžete přidat značky, nahrát obrázky, naučit projekt, získat adresu URL koncového bodu předpovědi projektu a použít koncový bod k programovému testování obrázku. Tento příklad použijte jako šablonu pro vytvoření vlastní aplikace v cestách. Pokud chcete procesem vytvoření a používání modelu klasifikace projít _bez_ kódu, přečtěte si místo toho [pokyny s využitím prohlížeče](getting-started-build-a-classifier.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-- [Přejděte 1.8 +](https://golang.org/doc/install)
+- [Přejít 1.8 +](https://golang.org/doc/install)
 
 ## <a name="install-the-custom-vision-sdk"></a>Instalace sady Custom Vision SDK
 
-Pokud chcete nainstalovat službu Custom Vision SDK for Go, spusťte následující příkaz powershellu:
+Pokud chcete nainstalovat sadu Custom Vision Service SDK pro přejít, spusťte v PowerShellu následující příkaz:
 
 ```shell
 go get -u github.com/Azure/azure-sdk-for-go/...
 ```
 
-nebo pokud používáte `dep`, v rámci vašeho úložiště, spusťte:
+nebo pokud `dep`používáte, v rámci vašeho spuštění úložiště:
 ```shell
 dep ensure -add github.com/Azure/azure-sdk-for-go
 ```
@@ -44,7 +44,7 @@ dep ensure -add github.com/Azure/azure-sdk-for-go
 
 ## <a name="add-the-code"></a>Přidání kódu
 
-Vytvořte nový soubor s názvem *sqlserversample* v adresáři projektu upřednostňované.
+Vytvořte nový soubor s názvem *Sample. přejít* do preferovaného adresáře projektu.
 
 ### <a name="create-the-custom-vision-service-project"></a>Vytvoření projektu služby Custom Vision
 
@@ -88,7 +88,7 @@ func main() {
 
 ### <a name="create-tags-in-the-project"></a>Vytvoření značek v projektu
 
-Vytvořit klasifikaci značky do projektu přidejte následující kód do konce *sqlserversample*:
+Chcete-li vytvořit klasifikační značky pro projekt, přidejte následující kód na konec *Sample. přejít*:
 
 ```go
 // Make two tags in the new project
@@ -98,10 +98,10 @@ cherryTag, _ := trainer.CreateTag(ctx, *project.ID, "Japanese Cherry", "Japanese
 
 ### <a name="upload-and-tag-images"></a>Nahrání a označení obrázků
 
-Ukázkové obrázky do projektu přidáte tak, že po vytvoření značky vložíte následující kód. Tento kód nahraje jednotlivé obrázky s odpovídající značkou. Je potřeba zadat cestu adresy URL základní image, podle kterého jste stáhli projekt ukázky Cognitive Services Go SDK.
+Ukázkové obrázky do projektu přidáte tak, že po vytvoření značky vložíte následující kód. Tento kód nahraje jednotlivé obrázky s odpovídající značkou. Na základě toho, kam jste stáhli projekt ukázek sady Cognitive Services jít na sadu SDK, budete muset zadat cestu k adrese URL základního obrázku.
 
 > [!NOTE]
-> Budete muset změnit cestu k bitové kopie, podle kterého jste stáhli projekt ukázky Cognitive Services Go SDK, dříve.
+> Budete muset změnit cestu k obrázkům na základě toho, kam jste dříve stáhli projekt ukázek sady Cognitive Services jít na sadu SDK.
 
 ```go
 fmt.Println("Adding images...")
@@ -129,9 +129,9 @@ for _, file := range japaneseCherryImages {
 }
 ```
 
-### <a name="train-the-classifier-and-publish"></a>Klasifikátor trénovat a publikovat
+### <a name="train-the-classifier-and-publish"></a>Výuka třídění a publikování
 
-Tento kód vytvoří první iterace v projektu a ke koncovému bodu predikcí následně publikuje danou iteraci. Název zadaný pro publikované iterace lze použít k odesílání požadavků předpovědi. Iterace není k dispozici v koncovém bodě predikcí, dokud je publikována.
+Tento kód vytvoří první iteraci v projektu a pak tuto iteraci publikuje do koncového bodu předpovědi. Název zadaný pro publikovanou iteraci lze použít k odeslání požadavků předpovědi. Iterace není v koncovém bodu předpovědi k dispozici, dokud není publikována.
 
 ```go
 fmt.Println("Training...")
@@ -149,7 +149,7 @@ fmt.Println("Training status: " + *iteration.Status)
 trainer.PublishIteration(ctx, *project.ID, *iteration.ID, iteration_publish_name, prediction_resource_id))
 ```
 
-### <a name="get-and-use-the-published-iteration-on-the-prediction-endpoint"></a>Získat a používat publikované iterace na koncovém bodu predikcí
+### <a name="get-and-use-the-published-iteration-on-the-prediction-endpoint"></a>Získání a použití publikované iterace na koncovém bodu předpovědi
 
 Pokud chcete odeslat obrázek do koncového bodu předpovědi a načíst předpověď, přidejte na konec souboru následující kód:
 
@@ -169,7 +169,7 @@ Pokud chcete odeslat obrázek do koncového bodu předpovědi a načíst předpo
 
 ## <a name="run-the-application"></a>Spuštění aplikace
 
-Spustit *sqlserversample*.
+Spusťte *Sample. přejít*.
 
 ```shell
 go run sample.go

@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý start: Vyzkoušejte si Content Moderator na web – Content Moderator'
-titlesuffix: Azure Cognitive Services
-description: V tomto rychlém startu použijete online nástroje pro recenze Content Moderator, k otestování základní funkce Content Moderator bez nutnosti psát jakýkoli kód.
+title: 'Rychlý start: Vyzkoušejte Content Moderator na webu Content Moderator'
+titleSuffix: Azure Cognitive Services
+description: V tomto rychlém startu použijete nástroj online Content Moderator recenze k otestování základních funkcí Content Moderator bez nutnosti psát jakýkoli kód.
 services: cognitive-services
 author: sanjeev3
 manager: nitinme
@@ -10,64 +10,64 @@ ms.subservice: content-moderator
 ms.topic: quickstart
 ms.date: 07/03/2019
 ms.author: sajagtap
-ms.openlocfilehash: 31bbc59b0587bb71999c4b10d273f75942737be2
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: e5b20bb45c08330c59fc72712b9e65b488c8c68b
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67604132"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68564440"
 ---
-# <a name="quickstart-try-content-moderator-on-the-web"></a>Rychlý start: Vyzkoušejte si Content Moderator na webu
+# <a name="quickstart-try-content-moderator-on-the-web"></a>Rychlý start: Vyzkoušet Content Moderator na webu
 
-V tomto rychlém startu použijete online nástroje pro recenze Content Moderator, k otestování základní funkce Content Moderator bez nutnosti psát jakýkoli kód. Pokud chcete integrovat tuto službu do aplikace rychleji, viz další rychlé starty v [další kroky](#next-steps) oddílu.
+V tomto rychlém startu použijete nástroj online Content Moderator recenze k otestování základních funkcí Content Moderator bez nutnosti psát jakýkoli kód. Pokud chcete tuto službu integrovat do vaší aplikace rychleji, přečtěte si další rychlé starty v části [Další kroky](#next-steps) .
 
 ## <a name="prerequisites"></a>Požadavky
 
 - Webový prohlížeč
 
-## <a name="set-up-the-review-tool"></a>Nastavení nástroje pro recenze
-Nástroj pro recenze Content Moderator je webový nástroj, který umožňuje lidské revidující na podporu služby cognitive Services v rozhodování. V tomto průvodci budou procházet krátký proces nastavení nástroje pro recenze tak, abyste viděli, jak funguje služba Content Moderatoru. Přejděte [nástroj pro kontrolu Content Moderator](https://contentmoderator.cognitive.microsoft.com/) webu a zaregistrovat.
+## <a name="set-up-the-review-tool"></a>Nastavení nástroje pro kontrolu
+Nástroj pro kontrolu Content Moderator je webový nástroj, který umožňuje lidským kontrolorům pomoci při rozhodování. V této příručce si projdete krátký proces nastavení nástroje pro kontrolu, abyste viděli, jak služba Content Moderator funguje. Přejít na web [nástroje Content moderator recenze](https://contentmoderator.cognitive.microsoft.com/) a zaregistrovat se.
 
-![Content Moderator domovské stránky](images/homepage.PNG)
+![Content Moderator domovskou stránku](images/homepage.PNG)
 
-## <a name="create-a-review-team"></a>Vytvořit tým kontroly
+## <a name="create-a-review-team"></a>Vytvořit tým pro revize
 
-Dále vytvořte tým kontroly. Ve scénáři pracovní bude skupina uživatelů, kteří budou ručně zkontrolovat služby moderování rozhodnutí. Teď stačí vytvořit název týmu. Pokud chcete, aby vaši kolegové mohli týmu, provést zadáním jejich e-mailové adresy.
+Dále vytvořte tým revize. V pracovním scénáři se jedná o skupinu uživatelů, kteří budou ručně kontrolovat rozhodnutí o moderování služby. Prozatím stačí vytvořit název týmu. Pokud chcete kolegům pozvat do týmu, můžete to udělat tak, že zadáte e-mailovou adresu.
 
-![Pozvání členů týmu](images/QuickStart-2-small.png)
+![Pozvat člena týmu](images/QuickStart-2-small.png)
 
-## <a name="upload-sample-content"></a>Nahrajte ukázkový obsah
+## <a name="upload-sample-content"></a>Nahrát ukázkový obsah
 
-Nyní jste připraveni nahrát ukázkový obsah. Vyberte **zkuste > obrázku**, **zkuste > Text**, nebo **zkuste > Video**.
+Teď jste připraveni nahrát ukázkový obsah. Vyberte možnost **vyzkoušet > obrázek**, **zkuste > Text**nebo **Vyzkoušejte > video**.
 
-![Zkuste použít obraz nebo moderování textu](images/tryimagesortext.png)
+![Vyzkoušení obrázku nebo moderování textu](images/tryimagesortext.png)
 
-Svůj obsah odešlete k moderování. Nástroj pro recenze interně, zavolá rozhraní API kontrolovat obsah pro moderování. Po dokončení skenování zobrazí zpráva oznamující, že jsou výsledky čekání na kontrolu.
+Odešlete obsah pro moderování. Interně Nástroj pro kontrolu zavolá rozhraní API pro moderování, aby kontroloval váš obsah. Až se kontrola dokončí, zobrazí se zpráva s oznámením, že výsledky čekají na vaši kontrolu.
 
 ![Střední soubory](images/submitted.png)
 
-## <a name="review-moderation-tags"></a>Zkontrolujte moderování značky
+## <a name="review-moderation-tags"></a>Kontrola značek moderování
 
-Projděte si značky použité pro moderování. Můžete zobrazit značky, které byly použity k vašemu obsahu a skóre byla v každé kategorii. Najdete v článku [Image](image-moderation-api.md), [Text](text-moderation-api.md), a [Video](video-moderation-api.md) označení moderování témata pro další informace o klíčových jiný obsah.
+Zkontrolujte použité značky moderování. Můžete vidět, které značky byly aplikovány na váš obsah a jaké byly skóre v každé kategorii. Další informace o tom, co ukazují různé značky obsahu, najdete v tématech o moderování [obrázku](image-moderation-api.md), [textu](text-moderation-api.md)a [videa](video-moderation-api.md) .
 
-![Kontrola výsledků](images/reviewresults_text.png)
+![Zkontrolovat výsledky](images/reviewresults_text.png)
 
-V projektu můžete vy nebo váš tým kontroly změnit tyto značky nebo přidat další značky, podle potřeby. Bude odesílat tyto změny se **Další** tlačítko. Obchodní aplikace volá rozhraní API moderátora, bude obsah označený fronty tady, jste připravení začít prověřena týmy recenze prováděné lidmi. Můžete rychle zkontrolovat velké objemy obsahu pomocí tohoto přístupu.
+V projektu můžete vy nebo váš tým revize tyto značky změnit nebo podle potřeby přidat další značky. Tyto změny odešlete tlačítkem **Další** . Protože vaše obchodní aplikace volá rozhraní API moderátorů, bude se zde zařadit do fronty, která je připravená k revizi týmy pro lidskou kontrolu. Pomocí tohoto přístupu můžete rychle zkontrolovat velké objemy obsahu.
 
-V tomto okamžiku jste použili nástroj pro recenze Content Moderator příklady co dokáže služba Content Moderatoru. V dalším kroku můžete buď Další informace o nástroje pro recenze a jak integrovat do softwarovém projektu pomocí rozhraní API, přečtěte si, nebo můžete přejít k [další kroky](#next-steps) části a zjistěte, jak použít rozhraní API pro moderování sami ve vaší aplikaci.
+V tuto chvíli jste použili nástroj Content Moderator recenze k zobrazení příkladů, co může služba Content Moderator provádět. Dále si můžete přečíst další informace o nástroji pro revize a o tom, jak ho integrovat do softwarového projektu pomocí rozhraní API pro revize, nebo můžete přejít na část [Další kroky](#next-steps) , kde se dozvíte, jak používat rozhraní API pro moderování ve vaší aplikaci.
 
-## <a name="learn-more-about-the-review-tool"></a>Další informace o nástroje pro recenze
+## <a name="learn-more-about-the-review-tool"></a>Další informace o nástroji pro revize
 
-Další informace o tom, jak používat nástroj zkontrolujte Content Moderator, podívejte se na [nástroj pro recenze](Review-Tool-User-Guide/human-in-the-loop.md) průvodce a nástroj pro recenze rozhraní API pro informace o optimalizaci prostředí pro recenze prováděné lidmi naleznete v tématu:
-- [Úlohy API](try-review-api-job.md) kontroluje váš obsah s použitím rozhraní API pro moderování a generuje revize v nástroj pro recenze. 
-- [Revizi rozhraní API](try-review-api-review.md) přímo vytvoří image, text nebo video revize pro lidské moderátory bez první kontrolu obsahu. 
-- [Pracovního postupu API](try-review-api-workflow.md) vytvoří, aktualizuje a načte podrobnosti o vlastních pracovních postupů, které váš tým vytvoří.
+Další informace o tom, jak používat nástroj pro kontrolu Content Moderator, najdete v příručce k [nástroji](Review-Tool-User-Guide/human-in-the-loop.md) pro kontrolu a v tématu rozhraní API pro revize se dozvíte, jak vyladit možnosti lidské recenze:
+- [Rozhraní API úlohy](try-review-api-job.md) prohledává váš obsah pomocí rozhraní API pro moderování a generuje recenze v nástroji pro kontrolu. 
+- [Rozhraní API recenze](try-review-api-review.md) přímo vytváří recenze obrázků, textů nebo videí pro Moderátoři pro člověka bez toho, aby nejdřív kontrolovala obsah. 
+- [Rozhraní API pracovního postupu](try-review-api-workflow.md) vytvoří, aktualizuje a získá podrobnosti o vlastních pracovních postupech, které tým vytvoří.
 
-Nebo můžete pokračovat s dalšími kroky, abyste mohli začít používat rozhraní API pro moderování ve vašem kódu.
+Nebo pokračujte dalšími kroky, abyste mohli začít používat rozhraní API pro moderování ve vašem kódu.
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace o použití rozhraní API pro moderování sami ve vaší aplikaci.
-- Implementace moderování obrázků. Použití [rozhraní API konzoly](try-image-api.md) nebo [ C# rychlý Start](image-moderation-quickstart-dotnet.md) prohledávat obrázky a detekovat potenciální obsah pro dospělé nebo pikantního pomocí značek, skóre spolehlivosti a další extrahovat informace.
-- Implementace moderování textu. Použít [rozhraní API konzoly](try-text-api.md) nebo použijte [ C# rychlý Start](text-moderation-quickstart-dotnet.md) kontrolovat textový obsah pro potenciální vulgární výrazy, klasifikaci s podporou počítače nežádoucího textu (preview) a osobních údajů.
-- Implementace moderování videa. Postupujte podle [Průvodce postupy moderování videa pro C# ](video-moderation-api.md) kontrolovat videa a detekovat potenciální obsah pro dospělé nebo pikantního. 
+Naučte se používat rozhraní API pro moderování ve vaší aplikaci.
+- Implementujte moderování imagí. Použijte [konzolu rozhraní API](try-image-api.md) nebo [ C# rychlý Start](image-moderation-quickstart-dotnet.md) pro skenování imagí a detekci potenciálního dospělého a pikantní obsahu pomocí značek, hodnocení spolehlivosti a dalších extrahovaných informací.
+- Implementujte moderování textu. Použijte [konzolu rozhraní API](try-text-api.md) nebo pomocí [ C# rychlého](text-moderation-quickstart-dotnet.md) startu naskenujte textový obsah pro potenciální vulgární výrazy, nepotřebnou klasifikaci textu s asistencí pro počítače (Preview) a osobní údaje.
+- Implementujte moderování videa. Postupujte podle pokynů v tématu [Průvodce moderováním videa pro C# ](video-moderation-api.md) vyhledávání videí a detekci potenciálního dospělého a pikantní obsahu. 

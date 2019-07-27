@@ -1,6 +1,6 @@
 ---
-title: Telefonní číslo předem připravených entit
-titleSuffix: Azure
+title: Předem připravené entity telefonního čísla – LUIS
+titleSuffix: Azure Cognitive Services
 description: Tento článek obsahuje informace telefonním čísle předem připravených entit v Language Understanding (LUIS).
 services: cognitive-services
 author: diberry
@@ -11,22 +11,22 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: 43d0b855c25ed10b074d99b247ee56dc2ba7769b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a640412fb98fb1d4215bd34c205d4fba253cd7e0
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65146176"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560155"
 ---
-# <a name="phone-number-prebuilt-entity-for-a-luis-app"></a>Telefonní číslo předem připravených entit pro aplikace LUIS
+# <a name="phone-number-prebuilt-entity-for-a-luis-app"></a>Předem vytvořená entita pro aplikaci pro LUIS s telefonním číslem
 `phonenumber` Entity extrahuje širokou škálu telefonní čísla, včetně směrové číslo země. Protože tato entita je už vytrénovaný, není potřeba přidat příklad projevy do aplikace. `phonenumber` Entity se podporuje v `en-us` pouze jazykovou verzi. 
 
-## <a name="types-of-a-phone-number"></a>Typy telefonní číslo
-`Phonenumber` spravuje se z [rozpoznávání textu](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/Base-PhoneNumbers.yaml) úložiště GitHub
+## <a name="types-of-a-phone-number"></a>Typy telefonního čísla
+`Phonenumber`je spravováno z úložiště pro [rozpoznávání textu](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/Base-PhoneNumbers.yaml) v GitHubu.
 
-## <a name="resolution-for-this-prebuilt-entity"></a>Řešení pro tuto předem připravených entit
+## <a name="resolution-for-this-prebuilt-entity"></a>Řešení pro tuto předem vytvořenou entitu
 
-### <a name="api-version-2x"></a>Verze rozhraní API 2.x
+### <a name="api-version-2x"></a>Rozhraní API verze 2. x
 
 Následující příklad ukazuje rozlišení **builtin.phonenumber** entity.
 
@@ -58,9 +58,9 @@ Následující příklad ukazuje rozlišení **builtin.phonenumber** entity.
 }
 ```
 
-### <a name="preview-api-version-3x"></a>Verze Preview rozhraní API 3.x
+### <a name="preview-api-version-3x"></a>Verze Preview rozhraní API verze 3. x
 
-Následující kód JSON je `verbose` parametr nastaven na `false`:
+Následující kód JSON je s `verbose` parametrem nastaveným na: `false`
 
 ```json
 {
@@ -82,7 +82,7 @@ Následující kód JSON je `verbose` parametr nastaven na `false`:
 }
 ```
 
-Následující kód JSON je `verbose` parametr nastaven na `true`:
+Následující kód JSON je s `verbose` parametrem nastaveným na: `true`
 
 ```json
 {

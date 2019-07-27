@@ -1,6 +1,6 @@
 ---
-title: Rychlý start – vytvoření aplikace pro Android pomocí Azure prostorových kotvy | Dokumentace Microsoftu
-description: V tomto rychlém startu se dozvíte, jak k vytváření aplikací pro Android pomocí prostorových ukotvení.
+title: Rychlý Start – vytvoření aplikace pro Android pomocí prostorových kotev Azure | Microsoft Docs
+description: V tomto rychlém startu se dozvíte, jak vytvořit aplikaci pro Android pomocí prostorových ukotvení.
 author: craigktreasure
 manager: aliemami
 services: azure-spatial-anchors
@@ -8,22 +8,22 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 9046af82388f99cfdd82c8cb816d4cda1e5f8237
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: f7387b210c1499ff0a19fe17667090be0c2c0933
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67206869"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68561399"
 ---
-# <a name="quickstart-create-an-android-app-with-azure-spatial-anchors"></a>Rychlý start: Vytvoření aplikace pro Android pomocí Azure prostorových kotvy
+# <a name="quickstart-create-an-android-app-with-azure-spatial-anchors"></a>Rychlý start: Vytvoření aplikace pro Android s prostorovými kotvami Azure
 
-Tento rychlý Start obsahuje postup pro vytvoření aplikace pro Android s využitím [prostorových kotvy Azure](../overview.md) v obou Java nebo C++/NDK. Azure prostorových kotvy je služba napříč platformami pro vývojáře, která vám umožní vytvořit prostředí hybridní realita s využitím objektů, které se zachovávají jejich umístění na zařízeních v čase. Jakmile budete hotovi, budete mít aplikaci ARCore Android, která můžete uložit a odvolat prostorových ukotvení.
+Tento rychlý Start popisuje, jak vytvořit aplikaci pro Android pomocí [prostorových kotev Azure](../overview.md) v jazyce Java C++nebo/NDK. Prostorové kotvy Azure je služba pro vývojáře napříč platformami, která umožňuje vytvářet hybridní prostředí realit pomocí objektů, které v průběhu času trvale uchovávají jejich umístění v rámci zařízení. Až budete hotovi, budete mít ARCore aplikaci pro Android, která může uložit a odvolat prostorovou kotvu.
 
 Dozvíte se, jak provést tyto akce:
 
 > [!div class="checklist"]
-> * Vytvoření účtu prostorových kotvy
-> * Konfigurace prostorový kotvy účtu identifikátor a klíč účtu
+> * Vytvoření účtu prostorových kotev
+> * Konfigurace identifikátoru účtu prostorových kotev a klíče účtu
 > * Nasazení a spuštění na zařízení s Androidem
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
@@ -32,68 +32,82 @@ Dozvíte se, jak provést tyto akce:
 
 Abyste mohli absolvovat tento rychlý start, ujistěte se, že máte následující:
 
-- Windows nebo macOS počítače s <a href="https://developer.android.com/studio/" target="_blank">Android Studio 3.3 +</a>.
-  - Pokud používáte Windows, budete také potřebovat <a href="https://git-scm.com/download/win" target="_blank">Git pro Windows</a>.
-  - Pokud spuštěný v systému macOS, zajistit správné fungování Gitu instalovaných pomocí instalace HomeBrew. Jako jeden řádek, terminálu zadejte následující příkaz: `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`. Potom spusťte `brew install git`.
-  - K vytvoření vzorku NDK, budete také muset nainstalovat NDK a CMake 3.6 SDK Tools v nástroji Android Studio.
-- A <a href="https://developer.android.com/studio/debug/dev-options" target="_blank">developer povolené</a> a <a href="https://developers.google.com/ar/discover/supported-devices" target="_blank">ARCore podporující</a> zařízení s Androidem.
-- Aplikace musí cílit na ARCore 1.7.
+- Počítač s Windows nebo macOS, který má <a href="https://developer.android.com/studio/" target="_blank">Android Studio 3.4 +</a>.
+  - Pokud používáte systém Windows, budete také potřebovat <a href="https://git-scm.com/download/win" target="_blank">Git pro Windows</a>.
+  - Pokud používáte macOS, načtěte Git prostřednictvím HomeBrew. Do jednoho řádku terminálu zadejte následující příkaz: `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`. Potom spusťte `brew install git`příkaz.
+  - Chcete-li vytvořit ukázku NDK, budete také muset nainstalovat NDK a CMake 3,6 nebo vyšší SDK Tools v Android Studio.
+- Zařízení s Androidem podporující <a href="https://developer.android.com/studio/debug/dev-options" target="_blank">vývojáře</a> a <a href="https://developers.google.com/ar/discover/supported-devices" target="_blank">ARCore</a> .
+- Vaše aplikace musí cílit na ARCore **1,8**.
 
 [!INCLUDE [Create Spatial Anchors resource](../../../includes/spatial-anchors-get-started-create-resource.md)]
 
-## <a name="open-the-sample-project"></a>Otevřete ukázkový projekt
+## <a name="open-the-sample-project"></a>Otevřete vzorový projekt
+
+# <a name="javatabopenproject-java"></a>[Java](#tab/openproject-java)
 
 [!INCLUDE [Clone Sample Repo](../../../includes/spatial-anchors-clone-sample-repository.md)]
 
-Pokud vytváříte ukázkové sady Android NDK, budete muset stáhnout `arcore_c_api.h` z [tady](https://raw.githubusercontent.com/google-ar/arcore-android-sdk/v1.7.0/libraries/include/arcore_c_api.h) a umístit ji `Android\NDK\libraries\include`.
+# <a name="ndktabopenproject-ndk"></a>[NDK](#tab/openproject-ndk)
+
+[!INCLUDE [Clone Sample Repo](../../../includes/spatial-anchors-clone-sample-repository.md)]
+
+Stáhněte `arcore_c_api.h` si ho [odsud](https://raw.githubusercontent.com/google-ar/arcore-android-sdk/v1.8.0/libraries/include/arcore_c_api.h) a umístěte ho `Android\NDK\libraries\include`do umístění.
+
+V rámci nově naklonovaného úložiště inicializujte dílčí modul spuštěním následujícího příkazu:
+
+```console
+git submodule update --init --recursive
+```
+
+---
 
 Otevřete Android Studio.
 
 # <a name="javatabopenproject-java"></a>[Java](#tab/openproject-java)
 
-Vyberte **otevřete existující projekt Android Studio** a vyberte projekt v `Android/Java/`.
+Vyberte **otevřít existující Android Studio projekt** a vyberte projekt v `Android/Java/`umístění.
 
 # <a name="ndktabopenproject-ndk"></a>[NDK](#tab/openproject-ndk)
 
-Vyberte **otevřete existující projekt Android Studio** a vyberte projekt v `Android/NDK/`.
+Vyberte **otevřít existující Android Studio projekt** a vyberte projekt v `Android/NDK/`umístění.
 
 ---
 
-## <a name="configure-account-identifier-and-key"></a>Nakonfigurujte identifikátor účtu a klíč
+## <a name="configure-account-identifier-and-key"></a>Konfigurace identifikátoru a klíče účtu
 
-Dalším krokem je konfigurace aplikace pro používání identifikátor účtu a klíč účtu. Jste zkopírovali do textového editoru, když [nastavení zdroje prostorových kotvy](#create-a-spatial-anchors-resource).
+Dalším krokem je konfigurace aplikace tak, aby používala identifikátor účtu a klíč účtu. Při nastavování [prostředku prostorových ukotvení](#create-a-spatial-anchors-resource)jste je zkopírovali do textového editoru.
 
 # <a name="javatabopenproject-java"></a>[Java](#tab/openproject-java)
 
 Otevřít `Android/Java/app/src/main/java/com/microsoft/sampleandroid/AzureSpatialAnchorsManager.java`.
 
-Vyhledejte `SpatialAnchorsAccountKey` pole a nahraďte `Set me` klíčem účtu.
+Vyhledejte pole a nahraďte `Set me` ho klíčem účtu. `SpatialAnchorsAccountKey`
 
-Vyhledejte `SpatialAnchorsAccountId` pole a nahraďte `Set me` s identifikátor účtu.
+Vyhledejte pole a nahraďte `Set me` ho identifikátorem účtu. `SpatialAnchorsAccountId`
 
 # <a name="ndktabopenproject-ndk"></a>[NDK](#tab/openproject-ndk)
 
 Otevřít `Android/NDK/app/src/main/cpp/AzureSpatialAnchorsApplication.cpp`.
 
-Vyhledejte `SpatialAnchorsAccountKey` pole a nahraďte `Set me` klíčem účtu.
+Vyhledejte pole a nahraďte `Set me` ho klíčem účtu. `SpatialAnchorsAccountKey`
 
-Vyhledejte `SpatialAnchorsAccountId` pole a nahraďte `Set me` s identifikátor účtu.
+Vyhledejte pole a nahraďte `Set me` ho identifikátorem účtu. `SpatialAnchorsAccountId`
 
 ---
 
 ## <a name="deploy-the-app-to-your-android-device"></a>Nasazení aplikace na zařízení s Androidem
 
-Zapněte zařízení s Androidem, přihlaste a připojte ho k počítači pomocí kabelu USB.
+Zapněte zařízení se systémem Android, přihlaste se a připojte ho k počítači pomocí kabelu USB.
 
-Vyberte **spustit** z panelu nástrojů Android Studio.
+Na panelu nástrojů Android Studio vyberte **Spustit** .
 
-![Android Studio nasadit a spustit](./media/get-started-android/android-studio-deploy-run.png)
+![Nasazení a spuštění Android Studio](./media/get-started-android/android-studio-deploy-run.png)
 
-Vyberte zařízení s Androidem v **vyberte cíl nasazení** dialogového okna a vyberte **OK** ke spuštění aplikace na zařízení s Androidem.
+V dialogovém okně **vybrat cíl nasazení** vyberte zařízení s Androidem a kliknutím na **OK** spusťte aplikaci na zařízení s Androidem.
 
-Postupujte podle pokynů v aplikaci umístit a odvolat ukotvení.
+Podle pokynů v aplikaci založte a odvoláte kotvu.
 
-Zastavte aplikaci tak, že vyberete **Zastavit** z panelu nástrojů Android Studio.
+Zastavte aplikaci tak, že na panelu nástrojů Android Studio vyberete **zastavit** .
 
 ![Android Studio Stop](./media/get-started-android/android-studio-stop.png)
 
@@ -102,4 +116,4 @@ Zastavte aplikaci tak, že vyberete **Zastavit** z panelu nástrojů Android Stu
 [!INCLUDE [Next steps](../../../includes/spatial-anchors-quickstarts-nextsteps.md)]
 
 > [!div class="nextstepaction"]
-> [Kurz: Sdílená složka prostorových kotvy napříč zařízeními](../tutorials/tutorial-share-anchors-across-devices.md)
+> [Kurz: Sdílet prostorové kotvy napříč zařízeními](../tutorials/tutorial-share-anchors-across-devices.md)

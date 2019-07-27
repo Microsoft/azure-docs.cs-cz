@@ -1,6 +1,6 @@
 ---
-title: Funkce
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: Funkce – LUIS
+titleSuffix: Azure Cognitive Services
 description: Přidání funkcí do jazykového modelu poskytnout nápovědu, jak rozpoznat vstup, který chcete klasifikovat a označovat.
 services: cognitive-services
 author: diberry
@@ -11,71 +11,71 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: diberry
-ms.openlocfilehash: 7889f223b607912fd88c798b31ec028f97dfbbd6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1aed6f9a0ceec18ca800e5030ec09bbb8d98cb76
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60812935"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560717"
 ---
-# <a name="phrase-list-features-in-your-luis-app"></a>Seznam frázi je součástí aplikace LUIS
+# <a name="phrase-list-features-in-your-luis-app"></a>Funkce seznamu frází ve vaší aplikaci LUIS
 
 Ve službě machine learning *funkce* rozlišovací vlastností nebo atribut data, která dodržuje vašeho systému. 
 
 Přidání funkcí do jazykového modelu poskytnout nápovědu, jak rozpoznat vstup, který chcete klasifikovat a označovat. Funkce pomáhají LUIS rozpoznat záměry a entity, ale funkce nejsou záměry a entity sami. Místo toho funkce může poskytnout příklady jejími podmínkami.  
 
 ## <a name="what-is-a-phrase-list-feature"></a>Co je součástí seznamu frází?
-Seznam frázi je seznam slova nebo fráze, které jsou důležité pro vaši aplikaci, takže než jiná slova v projevy. Fráze seznamu se přidá do slovníku domény aplikace jako další signál k LUIS o těchto slov. Služba LUIS dozvídá o jeden z nich se automaticky využije na ostatní také. Tento seznam není uzavřená [seznam entit](luis-concept-entity-types.md#types-of-entities) přesný text odpovídá.
+Seznam frází je seznam slov nebo frází, které jsou pro vaši aplikaci významné, více než ostatní slova v projevy. Seznam frází se přidá do slovníku domény aplikace jako další signál, který LUIS o těchto slovech. Služba LUIS dozvídá o jeden z nich se automaticky využije na ostatní také. Tento seznam není uzavřenou [entitou seznamu](luis-concept-entity-types.md#types-of-entities) přesně vyhovujících textů.
 
-Fráze seznamy vám s slovního rozboru, budete muset přidat utterance příklady použití širokou škálu slovního rozboru pro všechny důležité slovník slova a slovní spojení.
+Seznamy frází neumožňují odvozování, takže je třeba přidat příklady utterance, které používají různé výrazy pro všechna významná slova a fráze typu slovního.
 
-## <a name="phrase-lists-help-all-models"></a>Seznamy frázi pomohou všechny modely
+## <a name="phrase-lists-help-all-models"></a>Seznamy frází, které pomůžou všechny modely
 
-Fráze seznamy nejsou připojeny na specifické cílem nebo entity, ale jsou přidány jako výrazné zvýšení výkonu pro všechny záměry a entity. Jeho účelem je zlepšit záměru klasifikace zjišťování a entity.
+Seznamy frází nejsou propojené s konkrétním záměrem nebo entitou, ale přidávají se jako významné zvýšení na všechny záměry a entity. Jejím účelem je zlepšit detekci záměrů a klasifikaci entit.
 
 ## <a name="how-to-use-phrase-lists"></a>Použití seznamů fráze
 
-Vytvořte seznam frází, když slova nebo fráze, které jsou důležité pro aplikace, jako má vaše aplikace:
+Vytvořte seznam frází, pokud má vaše aplikace slova nebo fráze, které jsou pro aplikaci důležité, například:
 
-* oborových termínech
-* slang
+* oborové výrazy
+* slangem
 * zkratky
-* jazyka specifického pro společnost
-* jazyk, který je z jiného jazyka, ale často používaných v aplikaci
-* klíčová slova a frází ve vaší příklad projevy
+* jazyk specifický pro společnost
+* jazyk, který pochází z jiného jazyka, ale často se používá ve vaší aplikaci
+* Klíčová slova a fráze v příkladu projevy
 
-Po zadání několika slova nebo fráze, použijte **doporučujeme** funkce k vyhledání souvisejících hodnot. Zkontrolujte související hodnoty před přidáním do seznamu hodnoty frázi.
+Po zadání několika slov nebo frází můžete najít související hodnoty pomocí funkce **doporučit** . Před přidáním do hodnot seznamu frází Zkontrolujte související hodnoty.
 
 |Typ seznamu|Účel|
 |--|--|
-|Zaměňovat|Synonyma nebo slova, že při změně do jiného slova v seznamu, mají stejné záměr a extrakce entity.|
-|Non zaměnitelné|Slovník aplikace, specifické pro vaši aplikaci více, než obecně jiné slov v daném jazyce.|
+|Zaměnitelné|Synonyma nebo slova, která při změně na jiné slovo v seznamu mají stejný záměr a extrakci entit.|
+|Bez zaměnitelné|Slovní slovník pro aplikace, který je specifický pro vaši aplikaci, je větší než obecně další slova v daném jazyce.|
 
-### <a name="interchangeable-lists"></a>Zaměňovat seznamy
+### <a name="interchangeable-lists"></a>Proměnitelné seznamy
 
-*Zaměnitelné* je frázi seznam hodnot, které jsou synonyma. Pokud chcete najít všechny obsahy vody a máte projevy příklad například: 
+Seznam  frází, který je proměnitelné, je určen pro hodnoty, které jsou synonymy. Například pokud chcete, aby byly nalezeny všechny útvary vody a jako příklad projevy například: 
 
-* Jaké měst jsou blízko Vysočina? 
-* Jaké silniční spustí podél Lake Havasu?
-* Pokud Nil počáteční a koncové? 
+* Jaká města jsou blízko skvělých laků? 
+* Jakou cestu spouštíte podél jezera Havasu?
+* Kde Nile začíná a končí? 
 
-Každý utterance byste měli určit záměr a entit bez ohledu na text vody: 
+Každá utterance by měla být určena pro záměr i entity bez ohledu na tělo vody: 
 
-* Jaké měst jsou blízko [bodyOfWater]?
-* Jaké silniční spustí podél [bodyOfWater]?
-* Pokud [bodyOfWater] počáteční a koncové? 
+* Jaká města se blíží k [bodyOfWater]?
+* Jakou cestu spouštíte společně [bodyOfWater]?
+* Kde [bodyOfWater] začíná a končí? 
 
-Vzhledem k tomu, že slova nebo fráze těla vody je synonymní a můžou používat Zaměnitelně v projevy, použít **Interchangeable** nastavení v seznamu frázi. 
+Vzhledem k tomu, že slova nebo fráze pro tělo vody jsou synonyma a je možné je v projevy použít zaměnitelné, použijte  nastavení proměnitelné v seznamu frází. 
 
-### <a name="non-interchangeable-lists"></a>Non zaměnitelné seznamy
+### <a name="non-interchangeable-lists"></a>Seznamy, které nelze měnit
 
-Signál, který zvyšuje zjišťování, aby se služba LUIS je seznam-zaměnitelné frázi. Seznam frází označuje slova nebo fráze, které jsou mnohem závažnější, další slova. To pomáhá při obou určování zjišťování záměr a entity. Řekněme například, že máte domény předmětu jako cesty, který je globální (tj. napříč jazykovými verzemi, ale stále v jediném jazyce). Existují slova a slovní spojení, které jsou důležité pro aplikace, ale nejsou totožná. 
+Seznam frází, která není zaměnitelné, je signál, který zvyšuje detekci na LUIS. Seznam frází označuje slova nebo fráze, které jsou důležitější, že jsou další slova významná. To pomáhá při určování záměru a detekce entit. Řekněme například, že máte doménu předmětu, jako je například cesta, která je globální (to znamená napříč kulturami, ale stále v jednom jazyce). Existují slova a fráze, které jsou pro aplikaci důležité, ale nejsou synonyma. 
 
-Další příklad použijte seznam bez zaměnitelné frázi vzácné, proprietární a cizí slova. Služba LUIS možná nebudete moct rozpoznat vzácné a proprietární slova, jakož i cizí slova (mimo jazykovou verzi aplikace). Zaměnitelné nastavení znamená, že sadu výjimečných slova tvoří třídu, která by měla služba LUIS učení se rozpoznávání, ale nejsou synonyma nebo mezi sebou vzájemně zaměnitelné.
+Pro jiný příklad použijte seznam frází, které nemůžete měnit, pro vzácná, proprietární a cizí slova. Služba LUIS možná nebudete moct rozpoznat vzácné a proprietární slova, jakož i cizí slova (mimo jazykovou verzi aplikace). Zaměnitelné nastavení znamená, že sadu výjimečných slova tvoří třídu, která by měla služba LUIS učení se rozpoznávání, ale nejsou synonyma nebo mezi sebou vzájemně zaměnitelné.
 
-Nezadávejte přidat všechny možné slova nebo fráze do seznamu frázi, přidat několik slova nebo fráze v době, pak přeučování a publikovat. 
+Nepřidávejte do seznamu frází všechna možná slova nebo fráze, přidejte několik slov nebo frází najednou a pak je přehlaste a publikujte. 
 
-S růstem seznamu frázi v čase, může být pro vás termíny, které se mají celou řadu forem (synonym). Rozdělte tyto do jiného seznamu frázi, která je zaměnitelné. 
+Jak se seznam frází postupně rozrůstá, může se stát, že některé výrazy mají mnoho forem (synonym). Rozdělte je do jiného seznamu frází, které jsou zaměnitelné. 
 
 <a name="phrase-lists-help-identify-simple-exchangeable-entities"></a>
 
@@ -93,7 +93,7 @@ Zatímco frázi seznamu a seznam entit může mít vliv na projevy přes všechn
 ### <a name="use-a-phrase-list"></a>Použijte seznam fráze
 Se seznamem frázi LUIS stále vezměte v úvahu kontext a generalizace k identifikaci položky, které jsou podobné, ale není přesná shoda, jako položky v seznamu. Pokud potřebujete aplikaci LUIS tak, aby mohli generalize a identifikaci nových položek v kategorii, použijte seznam frázi. 
 
-Pokud chcete být schopni rozpoznat nové instance entity, jako je plánovače schůzku, který by měl rozpoznávat názvy nových kontaktů, nebo aplikaci inventář, který by měl rozpoznat nové produkty, použijte jiný typ počítače zjistili entity jako jsou jednoduché entity. Pak vytvořte frázi seznam slova a slovní spojení, která pomáhá LUIS, hledání podobně jako v entitě jiná slova. Tento seznam provede LUIS rozpoznat příklady entity tak, že přidáte další význam hodnotu z těchto slov. 
+Pokud chcete mít přehled o nových instancích entity, jako je Plánovač schůzky, který by měl rozpoznávat názvy nových kontaktů, nebo aplikaci inventáře, která by měla rozpoznávat nové produkty, použijte jiný typ entity, která se naučila počítače, jako je například jednoduchá entita. Pak vytvořte frázi seznam slova a slovní spojení, která pomáhá LUIS, hledání podobně jako v entitě jiná slova. Tento seznam provede LUIS rozpoznat příklady entity tak, že přidáte další význam hodnotu z těchto slov. 
 
 Fráze seznamy jsou jako slovník jazyka specifického pro doménu, která usnadní vylepšení kvality znalost záměry a entity. Běžné použití seznamu frázi je podstatná jména správných například názvy měst. Název města, může být několik slova, včetně pomlček nebo apostrofy.
  

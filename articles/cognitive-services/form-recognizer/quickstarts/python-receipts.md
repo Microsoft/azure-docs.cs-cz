@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý start: Extrahovat příjmu dat s využitím Pythonu – nástroj pro rozpoznávání formuláře'
+title: 'Rychlý start: Extrakce dat příjmu pomocí nástroje pro rozpoznávání formulářů Pythonu'
 titleSuffix: Azure Cognitive Services
-description: V tomto rychlém startu použijete rozhraní REST API pro rozpoznávání formulář s využitím Pythonu extrahovat data z imagí prodejních výnosů.
+description: V tomto rychlém startu použijete REST API pro rozpoznávání formulářů s Pythonem k extrakci dat z imagí prodejních příjmů.
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
@@ -9,36 +9,36 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 07/01/2019
 ms.author: pafarley
-ms.openlocfilehash: 8bd4d441859df6dbb36f594d8423eefd84274ec4
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: e3c5583f38f7a7f5a3654bfdd27620593175cf58
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67592549"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68562667"
 ---
-# <a name="quickstart-extract-receipt-data-using-the-form-recognizer-rest-api-with-python"></a>Rychlý start: Extrahování příjmu dat pomocí rozhraní REST API pro rozpoznávání formulář s využitím Pythonu
+# <a name="quickstart-extract-receipt-data-using-the-form-recognizer-rest-api-with-python"></a>Rychlý start: Extrakce dat příjmu pomocí REST API pro rozpoznávání formulářů v Pythonu
 
-V tomto rychlém startu použijete rozhraní REST API pro rozpoznávání formulář Azure s využitím Pythonu pro extrakci a identifikaci relevantních informací v prodejních výnosů.
+V tomto rychlém startu použijete nástroj pro rozpoznávání formulářů Azure REST API s Pythonem k extrakci a identifikaci relevantních informací v prodejních příjemkách.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
-Abyste mohli absolvovat tento rychlý start, musíte mít:
-- Přístup k rozpoznávání formuláře omezený přístup ve verzi Preview. Pokud chcete získat přístup k verzi preview, vyplňte a odešlete [žádost o přístup formulář Rozlišovač](https://aka.ms/FormRecognizerRequestAccess) formuláře.
-- [Python](https://www.python.org/downloads/) nainstalovaná (Pokud chcete ke spuštění ukázky místně).
-- Adresa URL obrázku příjmu. Můžete použít [Ukázkový obrázek](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/contoso-receipt.png?raw=true) pro tento rychlý start.
+K dokončení tohoto rychlého startu musíte mít:
+- Přístup k nástroji pro rozpoznávání přístupu s omezeným přístupem ve formě přístupu Chcete-li získat přístup k verzi Preview, vyplňte a odešlete formulář [žádosti o přístup pro rozpoznávání formulářů](https://aka.ms/FormRecognizerRequestAccess) .
+- Je nainstalovaný [Python](https://www.python.org/downloads/) (Pokud chcete spustit ukázku místně).
+- Adresa URL obrázku účtenky Pro tento rychlý Start můžete použít [ukázkový obrázek](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/contoso-receipt.png?raw=true) .
 
-## <a name="create-a-form-recognizer-resource"></a>Vytvořit prostředek Rozlišovač formuláře
+## <a name="create-a-form-recognizer-resource"></a>Vytvoření prostředku pro rozpoznávání formulářů
 
 [!INCLUDE [create resource](../includes/create-resource.md)]
 
-## <a name="analyze-a-receipt"></a>Analýza potvrzení
+## <a name="analyze-a-receipt"></a>Analýza účtenky
 
-Chcete-li začít analýza potvrzení, zavolejte **analyzovat příjmu** rozhraní API pomocí níže uvedeného skriptu Pythonu. Předtím, než spustíte skript, proveďte následující změny:
+Chcete-li zahájit analýzu účtenky, zavolejte rozhraní API **analýzy pro příjem** pomocí níže uvedeného skriptu Pythonu. Před spuštěním skriptu proveďte tyto změny:
 
-1. Nahraďte `<Endpoint>` s koncovým bodem, který jste získali váš klíč předplatného Rozlišovač formuláře. Vyhledejte ji na váš prostředek formuláře Rozlišovač **přehled** kartu.
-1. Nahraďte `<your receipt URL>` s adresou URL příjmu bitové kopie.
-1. Nahraďte `<subscription key>` s klíči předplatného jste zkopírovali v předchozím kroku.
+1. Nahraďte `<Endpoint>` koncovým bodem, který jste získali z klíče předplatného pro rozpoznávání formulářů. Můžete ji najít na kartě **Přehled** prostředků nástroje pro rozpoznávání formulářů.
+1. Nahraďte `<your receipt URL>` adresou URL obrázku účtenky.
+1. Nahraďte `<subscription key>` klíčem předplatného, který jste zkopírovali z předchozího kroku.
 
     ```python
     import http.client, urllib.request, urllib.parse, urllib.error, base64
@@ -66,19 +66,19 @@ Chcete-li začít analýza potvrzení, zavolejte **analyzovat příjmu** rozhran
         exit()
     ```
 
-1. Uložte kód do souboru s příponou .py. Například *formuláře. pro rozpoznávání receipts.py*.
+1. Uložte kód do souboru s příponou. py. Například *Form-Recognizer-Receipts.py*.
 1. Otevřete okno příkazového řádku.
 1. Ke spuštění ukázky na příkazovém řádku použijte příkaz `python`. Například, `python form-recognizer-receipts.py`.
 
-Zobrazí se `202 (Success)` odpověď, která obsahuje **operace umístění** hlavičky, která skriptu se vypíše do konzoly. Této hlavičky obsahuje ID operace, které můžete použít k dotazování stavu operace a získat výsledky analýzy. Následující příklad hodnotu řetězce po `operations/` je ID operace.
+Dostanete `202 (Success)` odpověď, která obsahuje hlavičku **umístění operace** , kterou skript vytiskne do konzoly. Tato hlavička obsahuje ID operace, pomocí které můžete zadat dotaz na stav operace a získat výsledky analýzy. V následujícím příkladu hodnoty řetězec `operations/` následuje ID operace.
 
 ```console
 https://cognitiveservice/formrecognizer/v1.0-preview/prebuilt/receipt/operations/54f0b076-4e38-43e5-81bd-b85b8835fdfb
 ```
 
-## <a name="get-the-receipt-results"></a>Získání výsledků příjmu
+## <a name="get-the-receipt-results"></a>Získání výsledků pro příjem
 
-Poté, co jste volat **analyzovat příjmu** volání rozhraní API, **získat výsledek přijetí** rozhraní API se získat stav operace a extrahovaná data. Přidejte následující kód k dolnímu okraji váš skript Python. To extrahuje hodnotu ID operace a předá ji do nové volání rozhraní API. Operace je asynchronní, takže tento skript volá rozhraní API v pravidelných intervalech, dokud výsledky jsou k dispozici. Doporučujeme, abyste intervalu nejméně jedné sekundy.
+Po volání funkce **analyzovat příjem** rozhraní API zavolejte rozhraní API **získat výsledek příjemky** , abyste získali stav operace a extrahovaná data. Do dolní části skriptu Pythonu přidejte následující kód. Tím se extrahuje hodnota ID operace a předá ji novému volání rozhraní API. Operace je asynchronní, takže tento skript volá rozhraní API v pravidelných intervalech, dokud nebudou k dispozici výsledky. Doporučujeme interval jednoho sekundy nebo více.
 
 ```python
 operationId = operationURL.split("operations/")[1]
@@ -100,15 +100,15 @@ while True:
 ```
 
 1. Uložte skript.
-1. Znovu použít `python` příkaz ke spuštění ukázky. Například, `python form-recognize-analyze.py`.
+1. Znovu použijte `python` příkaz ke spuštění ukázky. Například, `python form-recognize-analyze.py`.
 
 ### <a name="examine-the-response"></a>Prozkoumání odpovědi
 
-Skript vytiskne odpovědi do konzoly, až do dokončení operace analýzy. Potom vytiskne data byl extrahován text ve formátu JSON. `"recognitionResults"` Pole obsahuje každý jednotlivý řádek textu, který byl získán z příjmu a `"understandingResults"` pole obsahuje informace o klíč/hodnota pro nejdůležitější části jeho přijetí.
+Skript vytiskne odpovědi na konzolu, dokud se nedokončí operace analyzovat. Pak budou ve formátu JSON vytištěna extrahovaná textová data. Pole obsahuje každý řádek textu, který byl extrahován z účtenky, `"understandingResults"` a pole obsahuje informace o klíč/hodnotě pro nejrelevantnější části účtenky. `"recognitionResults"`
 
-Viz následující obrázek potvrzení a jeho odpovídající JSON výstupu. Ve výstupu byla zkrácena pro lepší čitelnost.
+Podívejte se na následující obrázek účtenky a příslušný výstup JSON. Výstup byl zkrácen z důvodu čitelnosti.
 
-![Potvrzení z obchodu společnosti Contoso](../media/contoso-receipt.png)
+![Účtenka z obchodu contoso](../media/contoso-receipt.png)
 
 ```json
 {
@@ -223,7 +223,7 @@ Viz následující obrázek potvrzení a jeho odpovídající JSON výstupu. Ve 
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto rychlém startu jste použili rozhraní REST API pro rozpoznávání formulář s využitím Pythonu ke trénování modelu a jeho spuštění v ukázkovém scénáři. V dalším kroku naleznete v referenční dokumentaci rozhraní API pro rozpoznávání formuláře podrobněji prozkoumat.
+V tomto rychlém startu jste použili nástroj pro rozpoznávání formulářů REST API s Pythonem k vytvoření výukového modelu a jeho spuštění ve vzorovém scénáři. Dále si přečtěte referenční dokumentaci a prozkoumejte rozhraní API pro rozpoznávání formulářů ve větší hloubkě.
 
 > [!div class="nextstepaction"]
-> [Dokumentace k rozhraní REST API](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api/operations/AnalyzeReceipt)
+> [Referenční dokumentace REST API](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api/operations/AnalyzeReceipt)

@@ -1,7 +1,7 @@
 ---
-title: Moderování videa s lidskou kontrolu - Content Moderatoru
-titlesuffix: Azure Cognitive Services
-description: Použít s podporou počítače moderování videa a nástroje pro recenze prováděné lidmi, obscénnost nevhodný obsah
+title: Moderování videa pomocí recenze pro člověka – Content Moderator
+titleSuffix: Azure Cognitive Services
+description: Pro střední nevhodný obsah použijte moderování videa a nástroje pro kontrolu člověkem s podporou počítače.
 services: cognitive-services
 author: sanjeev3
 manager: nitinme
@@ -10,30 +10,30 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 04/30/2019
 ms.author: sajagtap
-ms.openlocfilehash: a6c467d3153400815e37a5d461766140abd1fa32
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 69075f6b36a0be7cd4d0dd4453ea9cdfc08d77dc
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65228129"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68561172"
 ---
-# <a name="video-moderation-with-human-review"></a>Moderování videa s recenze prováděné lidmi
+# <a name="video-moderation-with-human-review"></a>Moderování videa díky lidské kontrole
 
-Použití Content Moderator s podporou počítače [moderování videa](video-moderation-api.md) a [nástroj pro recenze prováděné lidmi](Review-Tool-User-Guide/human-in-the-loop.md) moderování videa a záznamy o studiu pro dospělé (explicitně) a pikantní obsah (sugestivní) k dosažení nejlepších výsledků pro vaši firmu.
+Využijte Nástroj pro [moderování videa](video-moderation-api.md) v počítači Content moderator a [Nástroj pro kontrolu lidského](Review-Tool-User-Guide/human-in-the-loop.md) obrazu pro střední videa a Přepisy obsahu pro dospělé (explicitní) a pikantní (sugestivní), abyste dosáhli nejlepších výsledků pro vaši firmu.
 
-## <a name="video-trained-classifier-preview"></a>Třídění školení videa (preview)
+## <a name="video-trained-classifier-preview"></a>Třídění učené videem (Preview)
 
-S podporou počítače videa klasifikace se buď dosahuje prostřednictvím image Trénink modelů nebo video trénované modely. Na rozdíl od školení obrázku videa třídění společnosti Microsoft pro dospělé nebo pikantního videa třídění natrénovaný pomocí videa. Tato metoda má za následek lepší kvalitu shody.
+Klasifikace videa s asistencí počítače se dosáhla i u modelů vyškolených imagí nebo na základě videí. Na rozdíl od klasifikátorů pro video, které jsou v obrazech vyškolené, je k dispikantníi videa od Microsoftu a jeho třídění. Tato metoda má za následek lepší shodu kvality.
 
-## <a name="shot-detection"></a>Detekci
+## <a name="shot-detection"></a>Detekce snímku
 
-Při výstupu podrobnosti klasifikace, další videa inteligentní funkce pomáhají s větší flexibilitou videí analýzy. Místo výstupu pouze snímky, poskytuje služba moderování videa příliš informace na úrovni snímku. Teď máte možnost analyzovat vaše videa na úrovni snímek a snímek.
+Když vydáte podrobnosti klasifikace, další video analýza pomáhá s větší flexibilitou při analýze videí. Služba pro moderování videa od Microsoftu poskytuje také informace na úrovni snímku. Teď máte možnost analyzovat vaše videa na úrovni snímku a na úrovni snímků.
 
 ## <a name="key-frame-detection"></a>Detekce klíčových snímků
 
-Služba moderování videa místo výstupu rámce v pravidelných intervalech, identifikuje a vypíše pouze potenciálně kompletní snímky (dobré). Tato funkce umožňuje generování efektivní rámce pro analýzu pro dospělé nebo pikantního úrovni rámce.
+Místo vyplňování snímků v pravidelných intervalech služba pro moderování videa identifikuje a produkuje pouze potenciálně kompletní (dobré) snímky. Tato funkce umožňuje efektivní generování snímků pro dospělé a pikantní analýzu na úrovni snímků.
 
-Následující výpis ukazuje částečné odpovědi s potenciálním snímky, klíčových snímků a pro dospělé nebo pikantního skóre:
+Následující extrakce ukazuje částečnou odpověď s potenciálními snímky, klíčovými snímky a pikantní a výsledky pro dospělé:
 
 ```json
 "fragments":[  
@@ -76,33 +76,33 @@ Následující výpis ukazuje částečné odpovědi s potenciálním snímky, k
     ]
 ```
 
-## <a name="visualization-for-human-reviews"></a>Vizualizace pro recenze prováděné lidmi
+## <a name="visualization-for-human-reviews"></a>Vizualizace pro lidské recenze
 
-Další informace odlišování případy, podniky potřebují řešení recenze prováděné lidmi pro vykreslení videa, snímky a značky počítač přiřazený. Lidských moderátorů kontrola videa a snímků získat ucelený pohled přehledy, upravit značky a odešlete své rozhodnutí.
+Pro další odlišit případy potřebují firmy řešení pro lidské recenze pro vykreslování videa, jeho rámců a značek přiřazených k počítači. Lidé, kteří si kontrolují videa a snímky, získají kompletní pohled na přehledy, změny značek a odeslání jejich rozhodnutí.
 
-![Video revize nástroj výchozí zobrazení](images/video-review-default-view.png)
+![výchozí zobrazení nástroje pro kontrolu videa](images/video-review-default-view.png)
 
-## <a name="player-view-for-video-level-review"></a>Zobrazení Player ke kontrole úrovni videa
+## <a name="player-view-for-video-level-review"></a>Zobrazení přehrávače pro kontrolu na úrovni videa
 
-Binární rozhodování o úrovni videa jsou možné zobrazení videopřehrávače, který znázorňuje potenciální pro dospělé nebo pikantního snímků. Lidské revidující přejděte na video s různé možnosti rychlost prozkoumat informace pro pokročilé uživatele. Potvrzení rozhodnutí poznamenáno přepnutím značky.
+Binární rozhodnutí na úrovni videa se umožňují pomocí zobrazení přehrávače videa, které zobrazuje potenciální dospělé a pikantní snímky. Recenzenti přecházejí na video s různými možnostmi rychlosti, aby prozkoumali scény. Potvrdili si jejich rozhodnutí tím, že je vypřepínáním značek.
 
-![zobrazení přehrávač videa kontroly nástroje](images/video-review-player-view.PNG)
+![zobrazení přehrávače nástrojů pro kontrolu videa](images/video-review-player-view.PNG)
 
-## <a name="frames-view-for-detailed-reviews"></a>Zobrazení snímků pro podrobné revize
+## <a name="frames-view-for-detailed-reviews"></a>Zobrazení snímků pro podrobné Revize
 
-Podrobná videa revize pro analýzu snímků snímků je možné se zobrazením založených na snímcích. Lidské revidující zkontrolujte a vyberte jeden nebo více snímků a značky pro potvrzení rozhodnutí poznamenáno přepínat. Volitelné dalším krokem je redigování urážlivé snímků nebo obsahu.
+Podrobná kontrola videí pro analýzu snímků po snímku je umožněna pomocí zobrazení založeného na snímcích. Recenzenti kontrolují výběr jednoho nebo více rámců a přepnuli si jejich rozhodnutí. Volitelným dalším krokem je redigování urážlivých rámců nebo obsahu.
 
-![zobrazení snímků nástroje video revize](images/video-review-frames-view-apply-tags.PNG)
+![zobrazení snímků nástroje pro kontrolu videa](images/video-review-frames-view-apply-tags.PNG)
 
 ## <a name="transcript-moderation"></a>Moderování přepisu
 
-Videa obvykle mají hlasové, které potřebuje moderování i pro urážlivé řeči. Pomocí služby Azure Media Indexer umožňuje převádět řeč na text a použijte k odeslání přepisu pro moderování textu v rámci nástroje pro recenze rozhraní API Content Moderatoru revize.
+Videa obvykle využívají hlas nad tím, že se vyžaduje moderování a také urážlivý hlas. Služba Azure Media Indexer slouží k převodu řeči na text Content Moderator a k odeslání přepisu pro moderování textu v rámci nástroje pro kontrolu.
 
-![zobrazení přepisu videa kontroly nástroje](images/video-review-transcript-view.png)
+![zobrazení přepisu nástroje pro kontrolu videa](images/video-review-transcript-view.png)
 
 ## <a name="next-steps"></a>Další postup
 
-- Začínáme s [moderování videa quickstart](video-moderation-api.md).
-- Zjistěte, jak generovat [video kontroly](video-reviews-quickstart-dotnet.md) pro vaše recenzenty lidí z moderované výstupu.
-- Přidat [přepis videa kontroly](video-transcript-reviews-quickstart-dotnet.md) na video kontroly.
-- Podívejte se na podrobný kurz o tom, jak vyvíjet [dokončení moderování videa řešení](video-transcript-moderation-review-tutorial-dotnet.md).
+- Začněte s rychlým [startem pro moderování videa](video-moderation-api.md).
+- Naučte se generovat [recenze videí](video-reviews-quickstart-dotnet.md) pro své lidské kontrolory ze svého moderovaného výstupu.
+- Přidejte [recenze přepisu videa](video-transcript-reviews-quickstart-dotnet.md) do recenze videí.
+- Podrobné informace o tom, jak vyvíjet [kompletní řešení pro moderování videa](video-transcript-moderation-review-tutorial-dotnet.md), najdete v podrobném kurzu.

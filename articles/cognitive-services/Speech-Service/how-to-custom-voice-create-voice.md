@@ -1,7 +1,7 @@
 ---
-title: Vytvořit vlastní hlasové funkce – hlasové služby
-titlesuffix: Azure Cognitive Services
-description: Až budete připravení nahrát data, přejděte na portál pro vlastní hlasové. Vytvořte nebo vyberte vlastní hlasové projektu. Projekt musí sdílet správné jazyka/národního prostředí a vlastnosti pohlaví jako data máte v úmyslu použít pro trénování hlasu.
+title: Vytvoření vlastní hlasové služby řeči
+titleSuffix: Azure Cognitive Services
+description: Až budete připraveni na nahrání dat, přejdete na vlastní hlasový portál. Vytvořte nebo vyberte vlastní projekt hlasu. Projekt musí sdílet správný jazyk/národní prostředí a vlastnosti pohlaví jako data, která chcete použít pro hlasové školení.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,138 +10,138 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 0c2889cef01345f00d1669e7549a2fe25ac07b97
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 0fdc58ba54c63ba7dd6b74f56aa91e9c2b3c0936
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67603124"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68562837"
 ---
-# <a name="create-a-custom-voice"></a>Vytvořit vlastní hlasový vstup
+# <a name="create-a-custom-voice"></a>Vytvoření vlastního hlasu
 
-V [připravit data pro vlastní hlasové](how-to-custom-voice-prepare-data.md), jsme popsané různé datové typy, které můžete použít k trénování vlastních hlasový vstup a požadavky na jiný formát. Jakmile dokončíte přípravu dat, můžete začít nahrají je do [vlastní hlasové portál](https://aka.ms/custom-voice-portal), nebo prostřednictvím rozhraní API pro vlastní hlasové školení. Tady popisujeme kroky přípravy vlastní hlasové prostřednictvím portálu.
+V části [Příprava dat pro vlastní hlas](how-to-custom-voice-prepare-data.md)jsme popsali různé typy dat, které můžete použít k učení vlastního hlasu a různých požadavků na formát. Po přípravě dat je můžete začít nahrávat do [vlastního hlasového portálu](https://aka.ms/custom-voice-portal)nebo pomocí rozhraní API pro vlastní hlasové školení. Tady popisujeme kroky školení vlastního hlasu prostřednictvím portálu.
 
 > [!NOTE]
-> Tato stránka předpokládá, že jste si přečetli [začít pracovat s vlastní hlasové](how-to-custom-voice.md) a [připravit data pro vlastní hlasové](how-to-custom-voice-prepare-data.md)a vytvořili vlastní hlasové projektu.
+> Tato stránka předpokládá, že jste si přečetli [Začínáme s vlastním hlasem](how-to-custom-voice.md) a připravují [data pro vlastní hlas](how-to-custom-voice-prepare-data.md)a vytvořili vlastní hlasový projekt.
 
-Zkontrolujte jazyky podporované pro vlastní hlasové: [jazyk pro přizpůsobení](language-support.md#customization).
+Podívejte se na jazyky podporované pro vlastní hlas: [jazyk pro přizpůsobení](language-support.md#customization).
 
 ## <a name="upload-your-datasets"></a>Nahrání datových sad
 
-Až budete připravení nahrát data, přejděte [vlastní hlasové portál](https://aka.ms/custom-voice-portal). Vytvořte nebo vyberte vlastní hlasové projektu. Projekt musí sdílet správné jazyka/národního prostředí a vlastnosti pohlaví jako data máte v úmyslu použít pro trénování hlasu. Vyberte například `en-GB` Pokud zvukových záznamů, je nutné se provádí v angličtině s UK zvýraznění.
+Až budete připraveni na nahrání dat, přejdete na [vlastní hlasový portál](https://aka.ms/custom-voice-portal). Vytvořte nebo vyberte vlastní projekt hlasu. Projekt musí sdílet správný jazyk/národní prostředí a vlastnosti pohlaví jako data, která chcete použít pro hlasové školení. Například vyberte `en-GB` , jestli se zvukové nahrávky provedly v angličtině s zvýrazňující velkou Británie.
 
-Přejděte **Data** kartě a klikněte na tlačítko **nahrání dat**. V průvodci vyberte správného datového typu, který odpovídá, co jste připravili.
+Přejděte na kartu **data** a klikněte na **Odeslat data**. V průvodci vyberte správný datový typ, který odpovídá, co jste připravili.
 
-Každou datovou sadu, které nahrajete, musí splňovat požadavky pro datový typ, který zvolíte. Je důležité správně formátovat data před odesláním. Tím se zajistí, že se pomocí vlastní hlasové služby přesně zpracovat data. Přejděte na [připravit data pro vlastní hlasové](how-to-custom-voice-prepare-data.md) a ujistěte se, že vaše data byla správně naformátovaná.
-
-> [!NOTE]
-> Uživatelé bezplatné předplatné (F0) najednou můžete nahrát dvě datové sady. Standardní předplatné (S0) mohou uživatelé odeslat pět datových sad současně. Pokud limit překročíte, počkejte aspoň jeden z datových sad dokončení importu. Pak to zkuste znovu.
+Každá datová sada, kterou nahráváte, musí splňovat požadavky na datový typ, který zvolíte. Před nahráním dat je důležité data správně naformátovat. Tím se zajistí, že se data budou přesně zpracovávat pomocí vlastní hlasové služby. Přejít na [Příprava dat pro vlastní hlas](how-to-custom-voice-prepare-data.md) a zajistěte, aby byla data ve správném formátu.
 
 > [!NOTE]
-> Maximální počet datových sadách povoleno importovat na jedno předplatné je 10 zip soubory zdarma uživatelé předplatného (F0) a 500 uživatelů standardní předplatné (S0).
+> Uživatelé bezplatného předplatného (F0) můžou nahrávat dvě datové sady současně. Standardní předplatné (S0) uživatelé můžou nahrávat pět datových sad současně. Pokud dosáhnete limitu, počkejte na dokončení importu alespoň jedné z vašich datových sad. Pak to zkuste znovu.
 
-Datové sady se automaticky ověří po kliknutí na tlačítko Uložit. Ověření dat obsahuje řadu kontrol zvukové soubory, chcete-li ověřit jejich formát souboru, velikost a vzorkovací frekvenci. Opravte případné chyby a znovu odešlete. Při importu dat požadavek úspěšně vyvolán, měli byste vidět položku v tabulce dat, která odpovídá datovou sadu, kterou jste právě nahráli.
+> [!NOTE]
+> Maximální počet datových sad povolených pro import na jedno předplatné je 10 souborů. zip pro uživatele bezplatného předplatného (F0) a 500 pro uživatele Standard Subscription (S0).
+
+Datové sady se po stisknutí tlačítka Odeslat automaticky ověřují. Ověřování dat zahrnuje sérii kontrol zvukových souborů pro ověření jejich formátu, velikosti a vzorkovací frekvence. Opravte chyby, pokud nějaké existují, a odešlete je znovu. Po úspěšném zahájení žádosti o import dat by se měla zobrazit položka v tabulce dat, která odpovídá datové sadě, kterou jste právě Nahráli.
 
 V následující tabulce jsou uvedeny stavy zpracování pro importované datové sady:
 
 | Stav | Význam |
 | ----- | ------- |
-| Zpracování | Vaše datová sada byla přijata a se zpracovává. |
-| Úspěch | Vaše datová sada je potvrzená a můžete nyní používat k sestavení modelu hlasu. |
-| Selhalo | Vaše datová sada selhal při zpracování z mnoha důvodů, například soubor chyby, problémy dat nebo problémů se sítí. |
+| Zpracování | Vaše datová sada byla přijata a je zpracovávána. |
+| Úspěch | Vaše datová sada byla ověřena a lze ji nyní použít k sestavení hlasového modelu. |
+| Selhalo | Vaše datová sada se během zpracování v důsledku mnoha důvodů nezdařila, například chyby souborů, problémy s daty nebo problémy se sítí. |
 
-Po dokončení ověření můžete zobrazit celkový počet odpovídajících projevy pro každý z datových sad v **projevy** sloupce. Pokud datový typ, který jste zvolili vyžaduje dlouho zvuk segmentace, v tomto sloupci jsou pouze údaje projevy, které můžeme mít segmentované, buď v závislosti na své záznamy nebo prostřednictvím služby určené k transkripci řeči. Můžete dál stáhnout datovou sadu ověřen, chcete-li zobrazit podrobné výsledky projevy, které byly úspěšně naimportovány a jejich mapování přepisy. Tip: více než jedna hodina dokončení zpracování dat může trvat dlouho zvuk segmentace.
+Po dokončení ověření uvidíte celkový počet odpovídajících projevy pro každou datovou sadu ve sloupci **projevy** . Pokud datový typ, který jste vybrali, vyžaduje segmentaci dlouhého zvuku, tento sloupec odráží jenom projevy, které jsme pro vás segmentoval buď na základě vašich přepisů, nebo prostřednictvím služby přepisu řeči. Můžete ještě více stáhnout datovou sadu, která je ověřená, aby se zobrazily podrobné výsledky projevy úspěšně naimportované a jejich přepisů mapování. Pomocný parametr: dlouhé segmentace zvuku může trvat déle než hodinu, než se zpracování dat dokončí.
 
-Pro datové sady en US a zh-CN můžete dál stáhnout sestavu zkontrolovat skóre výslovnost a úroveň šumu pro každý z vašich nahrávek. Výslovnost skóre je v rozsahu 0 až 100. Skóre pod 70 obvykle znamená neshodou řeči chyba nebo skriptu. Silná zvýraznění může snížit vaše skóre výslovnost a ovlivnit generované digitální hlasu.
+U datových sad en-US a zh-CN můžete dál stahovat sestavu pro kontrolu skóre výslovnosti a úrovně hluku pro každé vaše nahrávky. Skóre výslovnosti je rozsah od 0 do 100. Skóre nižší než 70 (normálně) indikuje chybu řeči nebo neshoda skriptu. Hodně zdůraznění může snížit vaše výsledky výslovnosti a ovlivnit vygenerovaný digitální hlas.
 
-Vyšší poměr signálu šumu (SNR) znamená nižší šumu v zvuku. Obvykle můžete oslovit SNR víc než 50 zaznamenáváním na profesionální aplikace. Zvuk se SNR pod 20 může vést k zřejmé šumu v generované hlasu.
+Vyšší poměr mezi signálem a hlukem (SNR) znamená nižší šum ve zvukovém prostředí. Můžete obvykle dosáhnout 50 + SNR záznamem na Professional studia. Zvuk s SNRem nižším než 20 může vést k zjevnému šumu ve vygenerovaném hlasu.
 
-Vezměte v úvahu znovu záznam jakékoli projevy s nízkou výslovnost skóre nebo nízký poměr signálu šumu. Pokud nejde znovu záznam, může být těchto projevů vyloučit z datové sady.
+Zvažte opětovné zaznamenávání všech projevy s nízkými výslovnostmi nebo nedostatečnými poměry k hluku. Pokud se nemůžete znovu nahrávat, můžete tyto projevy z datové sady vyloučit.
 
-## <a name="build-your-custom-voice-model"></a>Sestavit model ve vaší vlastní hlasové
+## <a name="build-your-custom-voice-model"></a>Sestavení vlastního hlasového modelu
 
-Po ověření datové sady můžete vytvářet vlastní hlasové modelu.
+Po ověření datové sady ji můžete použít k sestavení vlastního hlasového modelu.
 
-1.  Přejděte do **převod textu na řeč > vlastní hlasové > školení**.
+1.  Přejděte na **text na řeč > Custom Voice > Training**.
 
-2.  Klikněte na tlačítko **Train model**.
+2.  Klikněte na **výuka model**.
 
-3.  Pak zadejte **název** a **popis** ke snadnější identifikaci tohoto modelu.
+3.  Potom zadejte **název** a **Popis** , který vám usnadní identifikaci tohoto modelu.
 
-    Zvolte název pečlivě. Název, které zadáte tady bude název, který se používá k určení hlasu ve vaší žádosti pro syntézu řeči, jako součást SSML vstup. Pouze písmena, číslice a pár znaků interpunkce jako - \_a (,) jsou povoleny. Použijte jiné názvy pro jiný hlas modely.
+    Vyberte název pečlivě. Název, který zde zadáte, bude název, který použijete k zadání hlasu v žádosti o Shrnutí řeči v rámci vstupu SSMLu. Povolena jsou pouze písmena, číslice a znaky interpunkce, například-, \_a (', '). Pro různé modely hlasu použijte jiné názvy.
 
-    Běžně **popis** pole je záznam názvech datových sad, které byly použity k vytvoření modelu.
+    Běžné použití pole **Description** je záznam názvů datových sad, které byly použity k vytvoření modelu.
 
-4.  Z **vyberte trénovacích dat** zvolte jednu nebo více datových sad, které chcete použít k trénování. Zkontrolujte počet projevy před jejich odesláním. Můžete začít s libovolným počtem projevy pro modely en US a zh-CN hlasu. Pro jiné národní prostředí je nutné vybrat více než 2 000 projevy do ji moci natrénovat hlasový vstup.
+4.  Na stránce **Vybrat data školení** zvolte jednu nebo více datových sad, které chcete použít pro školení. Před odesláním projevy ověřte jeho počet. Můžete začít s libovolným počtem projevy pro hlasové modely en-US a zh-CN. Pro ostatní národní prostředí musíte vybrat více než 2 000 projevy, aby bylo možné naučit hlas.
 
     > [!NOTE]
-    > Duplicitní názvy zvuku se odebere z školení. Ujistěte se, že datové sady, kterou vyberete neobsahují zvukový stejné názvy do více souborů ZIP.
+    > Z školení se odeberou duplicitní názvy zvuku. Ujistěte se, že datové sady, které vyberete, neobsahují stejné zvukové názvy v několika souborech. zip.
 
     > [!TIP]
-    > Pomocí datové sady ze stejné mluvčího se vyžaduje pro kvality výsledků. Při odeslání pro trénovací datové sady obsahují celkový počet méně než 6 000 jedinečných projevy, bude natrénování modelu hlas prostřednictvím statistické ukazatelů syntézu technika. V případě, kdy trénovacích dat překročí celkový počet 6 000 jedinečných projevy se spustí řízený proces školení s techniku syntézu zřetězení. Zřetězení technologie obvykle může vést k hlasu přirozenější a vyšší přesnosti výsledků. [Obraťte se na tým vlastní hlasové](mailto:speechsupport@microsoft.com) Pokud budete chtít vyškolíme model pomocí nejnovějších technologiích neuronových sítí převod textu na ŘEČ, které mohou způsobit digitální hlasový vstup ekvivalentní veřejně dostupné [neuronových sítí hlasy](language-support.md#neural-voices).
+    > Pro výsledky kvality se vyžaduje použití datových sad ze stejného mluvčího. Pokud datové sady, které jste odeslali pro školení, obsahují celkový počet menší než 6 000 jedinečných projevy, budete svůj hlasový model předávat prostřednictvím techniky syntézy statistických ukazatelů. V případě, že vaše školicí data překročí celkový počet 6 000 jedinečných projevy, zahájíte školicí proces s technikou syntézy zřetězení. Technologie zřetězení obvykle může mít za následek větší přirozený a vyšší přesnost hlasových výsledků. Pokud chcete vytvořit model s nejnovější technologií neuronové TTS, která může vytvořit digitální hlasový ekvivalent veřejně dostupných [hlasů neuronové](language-support.md#neural-voices), [obraťte se na vlastního hlasového týmu](mailto:speechsupport@microsoft.com) .
 
-5.  Klikněte na tlačítko **trénování** můžete začít vytvářet svůj hlas model.
+5.  Klikněte na **výuka** a začněte vytvářet svůj hlasový model.
 
-Školení tabulce nový záznam, který odpovídá na tuto nově vytvořenou modelu. V tabulce se také zobrazí stav: Zpracování, bylo úspěšné, neúspěšné.
+V tabulce školení se zobrazí nová položka, která odpovídá nově vytvořenému modelu. V tabulce se zobrazí také stav: Zpracování, úspěšné, neúspěšné.
 
-Stav, který se zobrazí odráží proces převodu datové sady do modelu hlasu, jak je znázorněno zde.
+Zobrazený stav odráží proces převodu datové sady na hlasový model, jak je znázorněno zde.
 
 | Stav | Význam |
 | ----- | ------- |
-| Zpracování | Vytváří se váš model hlasu. |
-| Úspěch | Váš model hlasové vytvořilo a je možné nasadit. |
-| Selhalo | Váš model hlasové selhal v školení z mnoha důvodů, například nezobrazený data problémy nebo problémů se sítí. |
+| Zpracování | Probíhá vytváření hlasového modelu. |
+| Úspěch | Váš hlasový model byl vytvořen a lze jej nasadit. |
+| Selhalo | Váš hlasový model se v rámci školení nezdařil z důvodu mnoha důvodů, například problémy s nezpracovanými daty nebo problémy se sítí. |
 
-Školení čas se liší v závislosti na objemu zpracovaných dat zvuku. Typické doby rozsahu o 30 minut, než stovky projevy až 40 hodin pro 20 000 projevy. Jakmile se úspěšně trénování modelu, můžete spustit a otestovat ho.
-
-> [!NOTE]
-> Uživatelé bezplatné předplatné (F0) současně trénovat hlasových písem. Standardní předplatné (S0) uživatelů současně trénovat tři hlasy. Pokud limit překročíte, počkejte aspoň jeden hlasová písma dokončení školení a pak to zkuste znovu.
+Doba školení se liší v závislosti na objemu zpracovaných zvukových dat. Typický časový rozsah od přibližně 30 minut po stovky projevy až 40 hodin za 20 000 projevy. Po úspěšném školení o modelu ho můžete začít testovat.
 
 > [!NOTE]
-> Maximální počet modelů hlasové povolené zaškolení na jedno předplatné je 10 modelů pro uživatele bezplatné předplatné (F0) až 100 uživatelů standardní předplatné (S0).
+> Uživatelé bezplatného předplatného (F0) mohou současně vyškolit jedno písmo hlasu. Standardní předplatné (S0) uživatelé můžou doškolit tři hlasy současně. Pokud dosáhnete limitu, počkejte, dokud alespoň jedno z vašich hlasových písem dokončí školení, a akci opakujte.
 
-## <a name="test-your-voice-model"></a>Testování modelu hlasu
+> [!NOTE]
+> Maximální počet hlasových modelů, které je možné vyškolet na předplatné, je 10 modelů pro uživatele bezplatného předplatného (F0) a 100 pro uživatele Standard Subscription (S0).
 
-Po úspěšném sestavení hlasového písma, takže ji můžete otestovat před nasazením pro použití.
+## <a name="test-your-voice-model"></a>Testování hlasového modelu
 
-1.  Přejděte do **převod textu na řeč > vlastní hlasové > testování**.
+Po úspěšném vytvoření hlasového písma ho můžete před nasazením pro použití otestovat.
 
-2.  Klikněte na tlačítko **testu přidat**.
+1.  Přejděte k převodu **textu na řeč > vlastního hlasového > testování**.
+
+2.  Klikněte na **Přidat test**.
 
 3.  Vyberte jeden nebo více modelů, které chcete testovat.
 
-4.  Zadejte text, který má voice(s) mluvit. Pokud jste vybrali k otestování několik modelů v jednom okamžiku, použije se stejný text pro testování různých modelů.
+4.  Zadejte text, který chcete mluvit s hlasem. Pokud jste vybrali možnost testování více modelů najednou, bude stejný text použit pro testování různých modelů.
 
     > [!NOTE]
-    > Jazyk textu musí být stejný jako jazyk hlasového písma. Pouze úspěšně trénované modely můžete otestovat. V tomto kroku se podporuje jenom prostý text.
+    > Jazyk textu musí být stejný jako jazyk vašeho hlasového písma. Testovat lze pouze úspěšně proučené modely. V tomto kroku je podporován pouze prostý text.
 
 5.  Klikněte na možnost **Vytvořit**.
 
-Po odeslání testovací požadavek, vrátíte se k testovací stránce. Tabulka teď obsahuje položku, která odpovídá vaší novou žádost a ve sloupci stav. Může trvat několik minut tak, aby odpovídaly řeči. Když uvádí, že sloupec Stav na **Succeeded**, můžete přehrát zvuk nebo stáhnout textové zadání (soubor .txt) a zvuku výstup (soubor WAV) a další audition ten kvality.
+Jakmile odešlete žádost o test, vrátíte se na stránku test. Tabulka nyní obsahuje položku, která odpovídá vaší nové žádosti a sloupci Stav. Vysyntetizování řeči může trvat několik minut. Když se sloupec Stav **úspěšně**dožádaný, můžete přehrát zvuk, nebo si stáhnout textový vstup (soubor. txt) a zvukový výstup (soubor. wav) a další Audition k jeho kvalitě.
 
-Výsledky testů můžete také najít na stránce podrobností každé modelů, které jste vybrali pro testování. Přejděte **školení** kartu a klikněte na název modelu přejděte na stránku podrobností modelu.
+Výsledky testu můžete také najít na stránce podrobností u jednotlivých modelů, které jste vybrali pro testování. Přejděte na kartu **školení** a kliknutím na název modelu zadejte stránku s podrobnostmi o modelu.
 
-## <a name="create-and-use-a-custom-voice-endpoint"></a>Vytvoření a použití vlastní hlasové endpoint
+## <a name="create-and-use-a-custom-voice-endpoint"></a>Vytvoření a použití vlastního koncového bodu hlasu
 
-Po jste úspěšně vytvořili a otestování modelu hlasové, nasaďte do vlastního koncového bodu převodu textu na řeč. Pak použijete tento koncový bod místo obvyklých koncového bodu při vytváření žádosti o převod textu na řeč přes rozhraní REST API. Vlastní koncový bod lze volat pouze podle předplatného, který jste použili k nasazení písmo.
+Po úspěšném vytvoření a otestování vašeho hlasového modelu ho nasadíte do vlastního koncového bodu pro převod textu na řeč. Tento koncový bod pak použijete místo obvyklého koncového bodu při vytváření požadavků na převod textu na řeč prostřednictvím REST API. Váš vlastní koncový bod může být volán pouze předplatným, které jste použili k nasazení písma.
 
-Pokud chcete vytvořit nový koncový bod vlastní hlasové, přejděte na **převod textu na řeč > vlastní hlasové > nasazení**. Vyberte **přidat koncový bod** a zadejte **název** a **popis** pro váš vlastní koncový bod. Vyberte vlastní hlasové model, který chcete přidružit k tomuto koncovému bodu.
+Pokud chcete vytvořit nový vlastní hlasový koncový bod, přečtěte si **text na řeč > vlastního nasazení hlasových >** . Vyberte **přidat koncový bod** a zadejte **název** a **Popis** vlastního koncového bodu. Pak vyberte vlastní hlasový model, který chcete přidružit k tomuto koncovému bodu.
 
-Po klepnutí **přidat** tlačítko, v tabulce koncových bodů se zobrazí záznam pro nový koncový bod. Může trvat několik minut pro vytvoření instance nového koncového bodu. Pokud je stav nasazení **Succeeded**, koncový bod je připraven k použití.
-
-> [!NOTE]
-> Uživatelé bezplatné předplatné (F0) mohou mít pouze jeden model nasadit. Uživatelé Standard předplatného (S0) můžete vytvořit až 50 koncové body, každý s vlastním hlasem vlastní.
+Po kliknutí na tlačítko **Přidat** se v tabulce koncového bodu zobrazí položka pro nový koncový bod. Vytvoření instance nového koncového bodu může trvat několik minut. Po úspěšném stavu nasazení je koncový bod připravený k použití.
 
 > [!NOTE]
-> Pokud chcete použít vlastní hlasové, musíte zadat název modelu hlasové, použijte vlastní identifikátor URI přímo v jednom požadavku HTTP a používat stejné předplatné ověřování převod textu na ŘEČ služby předávání.
+> Uživatelé bezplatného předplatného (F0) můžou mít nasazený jenom jeden model. Standardní předplatné (S0) může vytvořit až 50 koncových bodů, z nichž každý má vlastní hlas.
 
-Po nasazení je váš koncový bod, název koncového bodu se zobrazí jako odkaz. Klikněte na odkaz zobrazíte informace o konkrétní do vašeho koncového bodu, jako jsou klíče koncového bodu, adresa URL koncového bodu a ukázky kódu.
+> [!NOTE]
+> Pokud chcete použít vlastní hlas, musíte zadat název hlasového modelu, použít vlastní URI přímo v požadavku HTTP a použít stejné předplatné k předání ověřování služby TTS.
 
-Online testování koncového bodu je také k dispozici prostřednictvím portálu pro vlastní hlasové. Chcete-li otestovat váš koncový bod, zvolte **zkontrolujte koncový bod** z **podrobnosti koncového bodu** stránky. Koncový bod testování stránky se zobrazí. Zadejte text, který budou (buď jako prostý text nebo [SSML formátu](speech-synthesis-markup.md) v textovém poli. Pokud chcete slyšet text, kterým se mluví ve vaší vlastní hlasové písmo, vyberte **Přehrát**. Tato funkce testování se bude poplatek využití syntézu řeči vlastní.
+Po nasazení koncového bodu se název koncového bodu zobrazí jako odkaz. Kliknutím na odkaz zobrazíte informace, které jsou specifické pro váš koncový bod, jako je klíč koncového bodu, adresa URL koncového bodu a ukázkový kód.
 
-Vlastní koncový bod je funkčně stejný jako standardní koncový bod, který se používá pro převod textu na řeč požadavky. Zobrazit [rozhraní REST API](rest-text-to-speech.md) Další informace.
+Online testování koncového bodu je dostupné taky prostřednictvím vlastního hlasového portálu. Chcete-li otestovat koncový bod, vyberte možnost **zkontrolovat koncový bod** na stránce s **podrobnostmi koncového** bodu. Zobrazí se stránka testování koncového bodu. Do textového pole zadejte text, který chcete vymluveného textu (ve formátu prostého textu nebo [SSML](speech-synthesis-markup.md) ). Chcete-li slyšet text mluvený ve vlastním hlasovém písmu, vyberte možnost **Přehrát**. Tato funkce testování se bude účtovat za vaše vlastní použití funkce pro syntézu řeči.
+
+Vlastní koncový bod je funkčně stejný jako standardní koncový bod, který se používá pro požadavky převodu textu na řeč. Další informace najdete v tématu [REST API](rest-text-to-speech.md) .
 
 ## <a name="next-steps"></a>Další postup
 
-* [Průvodce: Záznam vašich ukázek hlasu](record-custom-voice-samples.md)
-* [Převod textu na řeč reference k rozhraní API](rest-text-to-speech.md)
+* [Program Záznam ukázek hlasu](record-custom-voice-samples.md)
+* [Reference k rozhraní API pro převod textu na mluvené slovo](rest-text-to-speech.md)

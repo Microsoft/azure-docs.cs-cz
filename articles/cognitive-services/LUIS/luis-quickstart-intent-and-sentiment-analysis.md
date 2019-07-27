@@ -1,7 +1,7 @@
 ---
-title: Analýza mínění
+title: Analýza mínění – LUIS
 titleSuffix: Azure Cognitive Services
-description: V tomto kurzu vytvořte aplikaci, která ukazuje, jak získat z projevy kladná, záporná a neutrální mínění. Mínění se určuje z celé promluvy.
+description: V tomto kurzu vytvoříte aplikaci, která ukazuje, jak získat pozitivní, negativní a neutrální mínění z projevy. Mínění se určuje z celé promluvy.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,16 +11,16 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 06/03/2019
 ms.author: diberry
-ms.openlocfilehash: 1408e29793fdac77b89e3f0cc0a7be525f7fa1d2
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: ad1dba3c35c0f1fa5640e484319b584731843dd8
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66479777"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563578"
 ---
-# <a name="tutorial--get-sentiment-of-utterance"></a>Kurz:  Získat mínění utterance
+# <a name="tutorial--get-sentiment-of-utterance"></a>Kurz:  Získat mínění z utterance
 
-V tomto kurzu vytvořte aplikaci, která ukazuje, jak určit kladná, záporná a neutrální mínění v projevy. Mínění se určuje z celé promluvy.
+V tomto kurzu vytvoříte aplikaci, která ukazuje, jak určit kladné, záporné a neutrální mínění z projevy. Mínění se určuje z celé promluvy.
 
 **V tomto kurzu se naučíte:**
 
@@ -34,16 +34,16 @@ V tomto kurzu vytvořte aplikaci, která ukazuje, jak určit kladná, záporná 
 
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
-## <a name="sentiment-analysis-is-a-publish-setting"></a>Analýza subjektivního hodnocení se nastavení publikování
+## <a name="sentiment-analysis-is-a-publish-setting"></a>Analýza mínění je nastavení publikování
 
 Následující promluvy ukazují příklady mínění:
 
 |Mínění|Skóre|Promluva|
 |:--|:--|:--|
 |pozitivní|0,91 |John W. Smith did a great job on the presentation in Paris (John W. Smith udělal skvělou práci na prezentaci v Paříži).|
-|pozitivní|0,84 |Technici Seattle nebyla slavných práci na prodejní prvotního Parker.|
+|pozitivní|0,84 |Technici v Seattlu slavná práci na rozteči Parker Sales.|
 
-Analýza mínění je nastavení publikování, které se vztahuje na všechny promluvy. Není nutné slova označující mínění v utterance a označte je. 
+Analýza mínění je nastavení publikování, které se vztahuje na všechny promluvy. Nemusíte hledat slova označující mínění v utterance a označit je. 
 
 Jedná se o nastavení publikování, takže se nezobrazuje na stránkách záměrů a entit. Zobrazuje se v podokně [interaktivního testu](luis-interactive-test.md#view-sentiment-results) nebo při testování na adrese URL koncového bodu. 
 
@@ -52,21 +52,21 @@ Jedná se o nastavení publikování, takže se nezobrazuje na stránkách zám�
 
 [!INCLUDE [Follow these steps to create a new LUIS app](../../../includes/cognitive-services-luis-create-new-app-steps.md)]
 
-## <a name="add-personname-prebuilt-entity"></a>Přidat PersonName předem připravených entit 
+## <a name="add-personname-prebuilt-entity"></a>Přidat předem vytvořenou entitu Person 
 
-1. Vyberte **sestavení** z navigační nabídky.
+1. V navigační nabídce vyberte **sestavení** .
 
 1. V levé navigační nabídce vyberte **Entities** (Entity).
 
 1. Vyberte tlačítko **Add prebuilt entity** (Přidat předem připravenou entitu).
 
-1. Vyberte ze seznamu předem připravených entit následující entity a pak vyberte **provádí**:
+1. V seznamu předem vytvořených entit vyberte následující entitu a potom vyberte **Hotovo**:
 
    * **[PersonName](luis-reference-prebuilt-person.md)** 
 
      ![Snímek obrazovky s vybranou možností number (číslo) v dialogovém okně s předem připravenými entitami](./media/luis-quickstart-intent-and-sentiment-analysis/add-personname-prebuilt-entity.png)
 
-## <a name="create-an-intent-to-determine-employee-feedback"></a>Vytvoření záměru určit zaměstnance zpětné vazby
+## <a name="create-an-intent-to-determine-employee-feedback"></a>Vytvoření záměru k určení názoru zaměstnanců
 
 Přidejte nový záměr, který bude zachycovat zpětnou vazbu o zaměstnancích od členů společnosti. 
 
@@ -82,24 +82,24 @@ Přidejte nový záměr, který bude zachycovat zpětnou vazbu o zaměstnancích
 
     |Projevy|
     |--|
-    |Jan Macek členkou nebyla odvádí dobrou práci při uvítacímu zpět z mateřská|
-    |Skvělá práce z comforting kolegou v ušetřil čas grief se nespustil Jill Jones.|
-    |Bob Barnes nebyly k dispozici všechny požadované faktury doklady.|
-    |Tomáš TODD zapnuté v požadované formuláře měsíc pozdní bez podpisu|
-    |Katherine Kelly nevytvořili důležité marketingové schůzku mimo pracoviště.|
-    |Jan Dillard nenalezlo schůzky u revizí dne.|
-    |Označit Mathews rocked prodejní prvotního na Harvard|
-    |Walter Williams nebyla Skvělá práce na prezentaci v informačních technologií|
+    |Jan Novák měl dobrý úkol vítání spolupracovníka z mateřského pozůstatku.|
+    |Jill Novotný dostal skvělou úlohu, která by v čase Grief pohodlí spolupracovníka.|
+    |Bob Barnes nemá všechny požadované faktury pro paperwork.|
+    |Todd Tomáš se zapnul do požadovaných forem za měsíc pozdě bez signatur|
+    |Katherine Kelly neudělala tuto důležitou marketingovou schůzku mimo pracoviště.|
+    |Denise Dillard nenalezl schůzku pro recenze z června.|
+    |Označení Mathews Rock Sales rozteč na Harvard|
+    |Waltera Williams v prezentaci Skvělé úlohy na Stanfordu|
 
-    Vyberte **zobrazit možnosti**vyberte **zobrazí hodnoty entity** zobrazíte názvy.
+    Vyberte **Možnosti zobrazení**, vyberte **Zobrazit hodnoty entit** pro zobrazení názvů.
 
-    [![Snímek obrazovky LUIS aplikace s využitím příkladu projevy v EmployeeFeedback záměr](./media/luis-quickstart-intent-and-sentiment-analysis/hr-utterance-examples.png)](./media/luis-quickstart-intent-and-sentiment-analysis/hr-utterance-examples.png#lightbox)
+    [![Snímek obrazovky aplikace LUIS s příkladem projevy v EmployeeFeedback záměru](./media/luis-quickstart-intent-and-sentiment-analysis/hr-utterance-examples.png)](./media/luis-quickstart-intent-and-sentiment-analysis/hr-utterance-examples.png#lightbox)
 
-## <a name="add-example-utterances-to-the-none-intent"></a>Přidání projevů příklad na hodnotu None záměru 
+## <a name="add-example-utterances-to-the-none-intent"></a>Přidat příklad projevy k záměru None 
 
 [!INCLUDE [Follow these steps to add the None intent to the app](../../../includes/cognitive-services-luis-create-the-none-intent.md)]
 
-## <a name="train-the-app-so-the-changes-to-the-intent-can-be-tested"></a>Trénování aplikace, takže můžete otestovat změny k příslušnému záměru 
+## <a name="train-the-app-so-the-changes-to-the-intent-can-be-tested"></a>Výuka aplikace, aby se mohly testovat změny záměru 
 
 [!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
@@ -107,11 +107,11 @@ Přidejte nový záměr, který bude zachycovat zpětnou vazbu o zaměstnancích
 
 1. Na pravém horním navigačním panelu vyberte **Manage** (Správa) a pak v levé nabídce vyberte **Publish settings** (Nastavení publikování).
 
-1. Vyberte **použít analýzu subjektivního hodnocení k určení, zda je uživatele utterance kladná, záporná nebo neutrální.** Chcete-li povolit toto nastavení. 
+1. Vyberte možnost **použít analýzu mínění k určení, zda je utterance uživatele kladné, záporné nebo neutrální.** pro povolení tohoto nastavení. 
 
     ![Zapnout analýzu subjektivního hodnocení jako nastavení publikování](./media/luis-quickstart-intent-and-sentiment-analysis/turn-on-sentiment-analysis-as-publish-setting.png)
 
-## <a name="publish-the-app-so-the-trained-model-is-queryable-from-the-endpoint"></a>Publikování aplikace, tedy dotazovatelné z koncového bodu trénovaného modelu
+## <a name="publish-the-app-so-the-trained-model-is-queryable-from-the-endpoint"></a>Publikujte aplikaci, aby se Queryable z koncového bodu vyškolený model.
 
 [!INCLUDE [LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 
@@ -157,9 +157,9 @@ Přidejte nový záměr, který bude zachycovat zpětnou vazbu o zaměstnancích
     }
     ```
 
-    SentimentAnalysis je kladný se skóre 86 %. 
+    SentimentAnalysis je pozitivní s skóre 86%. 
 
-    Zkuste jiné utterance odebráním hodnota `q` do adresního řádku prohlížeče: `William Jones did a terrible job presenting his ideas.` Označuje skóre mínění negativní zabarvení vrácením nízké skóre `0.18597582`.
+    Zkuste jiné utterance odebráním hodnoty pro `q` v adresním řádku prohlížeče: `William Jones did a terrible job presenting his ideas.`Skóre mínění označuje negativní mínění vrácením nízkého skóre `0.18597582`.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
@@ -167,13 +167,13 @@ Přidejte nový záměr, který bude zachycovat zpětnou vazbu o zaměstnancích
 
 ## <a name="related-information"></a>Související informace
 
-* Analýza subjektivního hodnocení poskytuje služby Cognitive Services [rozhraní Text Analytics](../Text-Analytics/index.yml). Tato funkce je omezen na rozhraní Text Analytics [podporované jazyky](luis-language-support.md##languages-supported).
-* [Trénování](luis-how-to-train.md)
+* Mínění je k dispozici pomocí [Analýza textu](../Text-Analytics/index.yml)služby pro rozpoznávání. Tato funkce je omezená, aby Analýza textu [podporované jazyky](luis-language-support.md##languages-supported).
+* [Postup výuky](luis-how-to-train.md)
 * [Jak publikovat](luis-how-to-publish-app.md)
-* [Testování v portálu služby LUIS](luis-interactive-test.md)
+* [Testování na portálu LUIS](luis-interactive-test.md)
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 V tomto kurzu se přidá analýza mínění jako nastavení publikování tak, aby se extrahovaly hodnoty mínění z promluvy jako celku.
 
 > [!div class="nextstepaction"] 

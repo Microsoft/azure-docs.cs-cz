@@ -1,6 +1,6 @@
 ---
-title: Dávkové testování
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: Dávkové testování – LUIS
+titleSuffix: Azure Cognitive Services
 description: Pomocí služby batch testování neustále pracovat na aplikaci zpřesnit jej a zvýšit jeho umožňující porozumět jazyku.
 services: cognitive-services
 author: diberry
@@ -11,14 +11,14 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 03/29/2019
 ms.author: diberry
-ms.openlocfilehash: acb561970b6a8576d1219fc15758e21a3032c9e5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a9a6e7ae48a51ab10e6ba2e5d3996e61938c6f3a
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60813282"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560835"
 ---
-# <a name="batch-testing-with-1000-utterances-in-luis-portal"></a>Testování s 1 000 projevy portálu LUIS služby batch
+# <a name="batch-testing-with-1000-utterances-in-luis-portal"></a>Dávkové testování s 1000 projevy na portálu LUIS
 
 Testování služby batch ověří vaše [aktivní](luis-concept-version.md#active-version) trénovaný model pro měření jeho přesnost předpovědi. Testovací služby batch umožňuje zobrazit aktuální trained model v grafu přesnosti jednotlivých záměr a entity. Posoudit výsledky testu služby batch a přijmout vhodná opatření zvyšte přesnost, jako je například přidávání další příklad projevy k záměru, pokud vaše aplikace často nepodaří identifikovat správné záměr.
 
@@ -48,7 +48,7 @@ Všechny vlastní entity v modelu se zobrazí ve filtru entity batch test i v p�
 
 Dávkový soubor se skládá z projevy. Každý utterance musí mít očekávané záměru předpovědi spolu s [zjištěné počítače entity](luis-concept-entity-types.md#types-of-entities) očekáváte, že aby se rozpoznal. 
 
-## <a name="batch-syntax-template-for-intents-with-entities"></a>Syntaxe šablony služby batch pro záměry s entitami
+## <a name="batch-syntax-template-for-intents-with-entities"></a>Šablona syntaxe služby Batch pro záměry s entitami
 
 Pomocí následující šablony můžete spustit dávkový soubor:
 
@@ -78,9 +78,9 @@ Dávkový soubor používá **startPos** a **endPos** vlastnosti poznamenat zač
 
 [!INCLUDE [Entity roles in batch testing - currently not supported](../../../includes/cognitive-services-luis-roles-not-supported-in-batch-testing.md)]
 
-## <a name="batch-syntax-template-for-intents-without-entities"></a>Syntaxe šablony služby batch pro záměry bez entity
+## <a name="batch-syntax-template-for-intents-without-entities"></a>Šablona syntaxe služby Batch pro záměry bez entit
 
-Pomocí následující šablony spusťte váš dávkový soubor bez entity:
+K spuštění dávkového souboru bez entit použijte následující šablonu:
 
 ```JSON
 [
@@ -92,7 +92,7 @@ Pomocí následující šablony spusťte váš dávkový soubor bez entity:
 ]
 ```
 
-Pokud nechcete k otestování entity, zahrňte `entities` vlastnosti a hodnotu jako prázdné pole, nastavte `[]`.
+Pokud nechcete testovat entity, zahrňte `entities` vlastnost a nastavte hodnotu jako prázdné pole,. `[]`
 
 
 ## <a name="common-errors-importing-a-batch"></a>Běžné chyby při importu služby batch

@@ -1,6 +1,6 @@
 ---
-title: Dimenze předem připravených entit
-titleSuffix: Azure
+title: Předem připravené entity dimenzí – LUIS
+titleSuffix: Azure Cognitive Services
 description: Tento článek obsahuje dimenze informace předem připravených entit v Language Understanding (LUIS).
 services: cognitive-services
 ms.custom: seodec18
@@ -11,24 +11,24 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: e77cd2290981de62ba7fce7f04174cd0c5ec2af3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2a2654947ab43000613cb1076b41d2ff5c2180e9
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65072188"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560272"
 ---
-# <a name="dimension-prebuilt-entity-for-a-luis-app"></a>Dimenze předem připravených entit pro aplikace LUIS
+# <a name="dimension-prebuilt-entity-for-a-luis-app"></a>Předem vytvořená entita dimenze pro aplikaci LUIS
 Různé typy dimenzí, bez ohledu na jazykovou verzi aplikace LUIS rozpozná dimenze předem připravených entit. Protože tato entita je už vytrénovaný, není potřeba přidat příklad projevy obsahující rozměry záměry aplikace. Dimenze entity se podporuje v [mnoha jazykových verzí](luis-reference-prebuilt-entities.md). 
 
 ## <a name="types-of-dimension"></a>Typy dimenze
 
-Spravuje se z dimenze [rozpoznávání textu](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-NumbersWithUnit.yaml) úložiště GitHub
+Dimenze je spravovaná z úložiště pro [rozpoznávání textu](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-NumbersWithUnit.yaml) v GitHubu.
 
 
 ## <a name="resolution-for-dimension-entity"></a>Řešení pro entity dimenze
 
-### <a name="api-version-2x"></a>Verze rozhraní API 2.x
+### <a name="api-version-2x"></a>Rozhraní API verze 2. x
 
 Následující příklad ukazuje rozlišení **builtin.dimension** entity.
 
@@ -60,9 +60,9 @@ Následující příklad ukazuje rozlišení **builtin.dimension** entity.
 }
 ```
 
-### <a name="preview-api-version-3x"></a>Verze Preview rozhraní API 3.x
+### <a name="preview-api-version-3x"></a>Verze Preview rozhraní API verze 3. x
 
-Následující kód JSON je `verbose` parametr nastaven na `false`:
+Následující kód JSON je s `verbose` parametrem nastaveným na: `false`
 
 ```json
 {
@@ -87,7 +87,7 @@ Následující kód JSON je `verbose` parametr nastaven na `false`:
 }
 ```
 
-Následující kód JSON je `verbose` parametr nastaven na `true`:
+Následující kód JSON je s `verbose` parametrem nastaveným na: `true`
 
 ```json
 {

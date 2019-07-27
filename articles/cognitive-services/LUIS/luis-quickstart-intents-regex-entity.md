@@ -1,5 +1,5 @@
 ---
-title: Regulární výraz entity
+title: Regulární výraz entity – LUIS
 titleSuffix: Azure Cognitive Services
 description: Extrahování konzistentně formátovaných dat z promluvy s využitím entity regulárního výrazu
 services: cognitive-services
@@ -11,15 +11,15 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 06/03/2019
 ms.author: diberry
-ms.openlocfilehash: 5e79de8dc8b4e81f427925b6e3d662bd4931804d
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: 958d880829e9524389a25f029415786231644c04
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66497030"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563591"
 ---
-# <a name="tutorial-get-well-formatted-data-from-the-utterance"></a>Kurz: Získejte správně formátovaná data z utterance
-V tomto kurzu, vytvořte aplikaci extrahovat data konzistentním formátováním z utterance pomocí **regulárního výrazu** entity.
+# <a name="tutorial-get-well-formatted-data-from-the-utterance"></a>Kurz: Získat dobře formátovaná data z utterance
+V tomto kurzu vytvoříte aplikaci, která extrahuje konzistentně formátovaná data z utterance pomocí entity regulárního **výrazu** .
 
 **V tomto kurzu se naučíte:**
 
@@ -34,19 +34,19 @@ V tomto kurzu, vytvořte aplikaci extrahovat data konzistentním formátováním
 
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
-## <a name="regular-expression-entities"></a>Regulární výraz entity
+## <a name="regular-expression-entities"></a>Entity regulárních výrazů
 
-Použití této aplikace entity regulárního výrazu je vyžádá si správně naformátovaný čísla formuláře lidských zdrojů (HR) ze utterance. Když se záměr promluvy vždy určuje pomocí strojového učení, tento konkrétní typ entity se pomocí strojového učení nezískává. 
+Pomocí entity regulárních výrazů této aplikace je možné vyžádat si ve správném formátu utterance čísla lidských zdrojů (HR). Když se záměr promluvy vždy určuje pomocí strojového učení, tento konkrétní typ entity se pomocí strojového učení nezískává. 
 
 **Mezi ukázkové promluvy patří:**
 
 |Ukázkové promluvy|
 |--|
-|Kde je HRF 123456?|
-|Autora HRF 123234?|
-|HRF 456098 je publikována ve francouzštině?|
+|Kde je HRF-123456?|
+|Kdo vytvořil HRF-123234?|
+|HRF-456098 se zveřejňuje ve francouzštině?|
 |HRF-456098|
-|Datum HRF 456098?|
+|Datum HRF-456098?|
  
 Regulární výraz je pro tento typ dat vhodný, když:
 
@@ -57,7 +57,7 @@ Regulární výraz je pro tento typ dat vhodný, když:
 
 [!INCLUDE [Follow these steps to create a new LUIS app](../../../includes/cognitive-services-luis-create-new-app-steps.md)]
 
-## <a name="create-intent-for-finding-form"></a>Vytvořit záměr pro vyhledání formuláře
+## <a name="create-intent-for-finding-form"></a>Vytvořit záměr pro hledání formuláře
 
 1. [!INCLUDE [Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
@@ -75,18 +75,18 @@ Regulární výraz je pro tento typ dat vhodný, když:
     |Where is hrf-345678? (Kde je hrf-345678?)|
     |When was hrf-456098 updated? (Kdy se aktualizoval formulář hrf-456098?)|
     |Did John Smith update hrf-234639 last week? (Aktualizoval John Smith minulý týden hrf-234639?)|
-    |Kolik verzí hrf 345123 existují?|
+    |Kolik verzí HRF-345123?|
     |Who needs to authorize form hrf-123456? (Kdo musí autorizovat hrf-123456?)|
     |How many people need to sign off on hrf-345678? (Kolik lidí musí podepsat hrf-345678?)|
     |hrf-234123 date? (datum hrf-234123?)|
     |author of hrf-546234? (autor hrf-546234?)|
     |title of hrf-456234? (název hrf-456234?)|
 
-    [![Snímek obrazovky s cílem stránka s novou projevy zvýrazněnou](./media/luis-quickstart-intents-regex-entity/findform-intent.png)](./media/luis-quickstart-intents-regex-entity/findform-intent.png#lightbox)
+    [![Snímek stránky záměru s novým projevy zvýrazněnou](./media/luis-quickstart-intents-regex-entity/findform-intent.png)](./media/luis-quickstart-intents-regex-entity/findform-intent.png#lightbox)
 
     [!INCLUDE [Do not use too few utterances](../../../includes/cognitive-services-luis-too-few-example-utterances.md)]  
 
-## <a name="use-the-regular-expression-entity-for-well-formatted-data"></a>Použít regulární výraz entity pro správně formátovaná data
+## <a name="use-the-regular-expression-entity-for-well-formatted-data"></a>Použití entity regulárního výrazu pro dobře formátovaná data
 Entita regulárního výrazu, který hledá shodu s číslem formuláře, je `hrf-[0-9]{6}`. Tento regulární výraz hledá shodu se znaky literálů `hrf-`, ale ignoruje velikost a kulturní varianty. Hledá shodu s číslicemi 0–9 o délce přesně 6 číslic.
 
 HRF je zkratka pro `human resources form`.
@@ -107,21 +107,21 @@ Podle následujících kroků vytvořte entitu regulárního výrazu, která slu
 
     [![Snímek obrazovky s promluvami s označenou stávající entitou a vzorem regulárního výrazu](./media/luis-quickstart-intents-regex-entity/labeled-utterances-for-entity.png)](./media/luis-quickstart-intents-regex-entity/labeled-utterances-for-entity.png#lightbox)
 
-    Protože entity není entita se zjištěné počítače, je entita u projevy a zobrazí na webu služby LUIS ihned po jeho vytvoření.
+    Vzhledem k tomu, že entita není entitou získanou počítačem, entita se použije na projevy a zobrazí se na webu LUIS, jakmile se vytvoří.
 
-## <a name="add-example-utterances-to-the-none-intent"></a>Přidání projevů příklad na hodnotu None záměru 
+## <a name="add-example-utterances-to-the-none-intent"></a>Přidat příklad projevy k záměru None 
 
 [!INCLUDE [Follow these steps to add the None intent to the app](../../../includes/cognitive-services-luis-create-the-none-intent.md)]
 
-## <a name="train-the-app-before-testing-or-publishing"></a>Trénování před testování a publikování aplikace
+## <a name="train-the-app-before-testing-or-publishing"></a>Výuka aplikace před testováním nebo publikováním
 
 [!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
-## <a name="publish-the-app-to-query-from-the-endpoint"></a>Publikujte aplikaci do dotaz z koncového bodu
+## <a name="publish-the-app-to-query-from-the-endpoint"></a>Publikování aplikace pro dotaz z koncového bodu
 
 [!INCLUDE [LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 
-## <a name="get-intent-and-entity-prediction-from-endpoint"></a>Získání předpovědi záměr a entity z koncového bodu
+## <a name="get-intent-and-entity-prediction-from-endpoint"></a>Získání záměru a předpovědi entit z koncového bodu
 
 1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
@@ -174,10 +174,10 @@ Podle následujících kroků vytvořte entitu regulárního výrazu, která slu
 
 ## <a name="related-information"></a>Související informace
 
-* [Regulární výraz](luis-concept-entity-types.md#regular-expression-entity) koncepty entity
-* [Trénování](luis-how-to-train.md)
+* Koncepty entit [regulárního výrazu](luis-concept-entity-types.md#regular-expression-entity)
+* [Postup výuky](luis-how-to-train.md)
 * [Jak publikovat](luis-how-to-publish-app.md)
-* [Testování v portálu služby LUIS](luis-interactive-test.md)
+* [Testování na portálu LUIS](luis-interactive-test.md)
 
 ## <a name="next-steps"></a>Další postup
 V tomto kurzu jste vytvořili nový záměr, přidali příklady promluv a pak vytvořili entitu regulárního výrazu k extrahování správně formátovaných data z promluv. Po natrénování a publikování aplikace jste dotazem adresovaným koncovému bodu zjistili záměr a vrátili extrahovaná data.

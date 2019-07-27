@@ -1,6 +1,6 @@
 ---
-title: Získání záměru Node.js
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: Získat záměr, Node. js – LUIS
+titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu použijete dostupnou veřejnou aplikaci LUIS ke zjištění záměru uživatele z textu konverzace. Pomocí Node.js odešlete záměr uživatele jako text do koncového bodu předpovědi HTTP veřejné aplikace.
 services: cognitive-services
 author: diberry
@@ -11,14 +11,14 @@ ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 07/16/2019
 ms.author: diberry
-ms.openlocfilehash: 51ba4935afc2713fb0dc92ebbf6ca31f7c60355a
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 084d717c1001604a7fb8ed60518777f956dec8b9
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68276092"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563807"
 ---
-# <a name="quickstart-get-intent-using-nodejs"></a>Rychlý start: Get záměr pomocí Node.js
+# <a name="quickstart-get-intent-using-nodejs"></a>Rychlý start: Získání záměru pomocí Node. js
 
 [!INCLUDE [Quickstart introduction for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-intro-para.md)]
 
@@ -32,7 +32,7 @@ ms.locfileid: "68276092"
 
 
 > [!NOTE] 
-> Kompletní řešení Node.js je k dispozici [ **Azure-Samples** úložiště GitHub](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/quickstarts/analyze-text/node).
+> Kompletní řešení Node. js je k dispozici v [úložišti GitHub **Azure-Samples** ](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/quickstarts/analyze-text/node).
 
 ## <a name="get-luis-key"></a>Získání klíče LUIS
 

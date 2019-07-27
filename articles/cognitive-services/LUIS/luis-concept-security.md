@@ -1,6 +1,6 @@
 ---
-title: Zabezpečení při spolupráci
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: Zabezpečení při spolupráci – LUIS
+titleSuffix: Azure Cognitive Services
 description: Vytváření přístup je k dispozici pro vlastníky a spolupracovníky. Privátní aplikaci je k dispozici pro vlastníky a spolupracovníci přístup koncového bodu.
 services: cognitive-services
 author: diberry
@@ -11,15 +11,15 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 06/12/2019
 ms.author: diberry
-ms.openlocfilehash: b52b0fffe9c32ab14600a3e296852faa626d794d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 25f6b675846f028b4ba9d49cce9e075bc79eece9
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67058536"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560664"
 ---
 # <a name="authoring-and-endpoint-user-access"></a>Vytváření a koncového bodu přístupu uživatelů
-Vytváření přístup je k dispozici pro vlastníky a spolupracovníky. Privátní aplikaci je k dispozici pro vlastníky a spolupracovníci přístup koncového bodu. Veřejné aplikace, koncový bod přístup je k dispozici pro všechny uživatele, který má své vlastní Azure [služby Cognitive Services](../cognitive-services-apis-create-account.md) nebo [LUIS](luis-how-to-azure-subscription.md#create-prediction-endpoint-runtime-resource-in-the-azure-portal) prostředků, a má ID veřejné aplikace. 
+Vytváření přístup je k dispozici pro vlastníky a spolupracovníky. Privátní aplikaci je k dispozici pro vlastníky a spolupracovníci přístup koncového bodu. U veřejné aplikace je přístup k koncovým službám dostupný všem, kdo má vlastní prostředek pro [rozpoznávání](../cognitive-services-apis-create-account.md) Azure nebo prostředek [Luis](luis-how-to-azure-subscription.md#create-prediction-endpoint-runtime-resource-in-the-azure-portal) a má ID veřejné aplikace. 
 
 ## <a name="access-to-authoring"></a>Přístup k vytváření obsahu
 Přístup k aplikaci z [LUIS](luis-reference-regions.md#luis-website) webu nebo [rozhraní API pro vytváření](https://go.microsoft.com/fwlink/?linkid=2092087) řídí vlastník aplikace. 

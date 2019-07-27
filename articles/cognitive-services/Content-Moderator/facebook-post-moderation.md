@@ -1,7 +1,7 @@
 ---
-title: 'Kurz: Moderovat obsah Facebooku – Content Moderator'
-titlesuffix: Azure Cognitive Services
-description: V tomto kurzu se dozvíte, jak používat na základě machine learningu Content Moderator moderování příspěvků na Facebooku a komentáře.
+title: 'Kurz: Obsah střední Facebooku – Content Moderator'
+titleSuffix: Azure Cognitive Services
+description: V tomto kurzu se naučíte, jak pomocí Content Moderator založeného na strojovém učení pomáhat moderovaným příspěvkům a komentářům na Facebooku.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -10,63 +10,63 @@ ms.subservice: content-moderator
 ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: dd06330e82850cc44bc0f4d36ba7caf596ace939
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: bd2ed09294ad122b7e8af045f01d3c6f63fcc510
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67603502"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68564945"
 ---
-# <a name="tutorial-moderate-facebook-posts-and-commands-with-azure-content-moderator"></a>Kurz: Moderování příspěvků na Facebooku a příkazy s Azure Content Moderator
+# <a name="tutorial-moderate-facebook-posts-and-commands-with-azure-content-moderator"></a>Kurz: Střední příspěvky a příkazy Facebooku pomocí Azure Content Moderator
 
-V tomto kurzu se dozvíte, jak pomocí Azure Content Moderator moderování příspěvků a komentáře na stránku Facebooku. Facebook odešle obsah publikovaný ze strany návštěvníků ke službě Content Moderator. Pak vašich pracovních postupů Content Moderator bude buď publikovat obsah nebo vytvářet revize v rámci nástroje pro recenze, v závislosti na obsahu skóre a prahové hodnoty. Zobrazit [Build 2017 – ukázkové video](https://channel9.msdn.com/Events/Build/2017/T6033) pro funkční příklad tohoto scénáře.
+V tomto kurzu se naučíte, jak používat Azure Content Moderator k tomu, abyste se seznámili s příspěvky a komentáři na stránce Facebook. Facebook pošle obsah publikovaný návštěvníkům do služby Content Moderator. V závislosti na hodnocení obsahu a prahových hodnotch pak vaše Content Moderator pracovní postupy publikují obsah nebo vytvoří recenze v rámci nástroje pro kontrolu. Pracovní příklad tohoto scénáře najdete v [ukázkovém videu Build 2017](https://channel9.msdn.com/Events/Build/2017/T6033) .
 
 V tomto kurzu získáte informace o následujících postupech:
 
 > [!div class="checklist"]
 > * Vytvoření týmu Content Moderatoru.
 > * Vytvoření funkcí Azure Functions, které naslouchají událostem protokolu HTTP od Content Moderatoru a Facebooku.
-> * Propojte Facebookové stránce Content Moderator pomocí aplikace pro Facebook.
+> * Propojte stránku Facebooku s Content Moderator pomocí aplikace Facebook.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-Tento diagram znázorňuje jednotlivé komponenty v tomto scénáři:
+Tento diagram znázorňuje jednotlivé komponenty tohoto scénáře:
 
-![Diagram Content Moderator přijímat informace ze sítě Facebook prostřednictvím "FBListener" a odesílání informací prostřednictvím "CMListener"](images/tutorial-facebook-moderation.png)
+![Diagram Content Moderator přijímání informací z Facebooku prostřednictvím "FBListener" a odesílání informací prostřednictvím "CMListener"](images/tutorial-facebook-moderation.png)
 
 > [!IMPORTANT]
-> V roce 2018 Facebooku implementované přísnější prověřování aplikace pro Facebook. Nebudete mít k dokončení kroků v tomto kurzu, pokud vaše aplikace nebyla byly zkontrolován a schválen revize týmem Facebooku.
+> V 2018 byla Facebook implementovala přísnější dozvíte ČSFD aplikací z Facebooku. Kroky tohoto kurzu nebudete moci dokončit, pokud vaše aplikace nebyla přezkoumána a schválena v rámci týmu pro kontrolu Facebooku.
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Klíč předplatného Content Moderatoru. Postupujte podle pokynů v [vytvoření účtu služeb Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) k odběru služby Content Moderator a získejte klíč.
-- A [Facebookový účet](https://www.facebook.com/).
+- Klíč předplatného Content Moderatoru. Podle pokynů v části [Vytvoření účtu Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) se přihlaste k odběru služby Content moderator a Získejte svůj klíč.
+- [Účet Facebook](https://www.facebook.com/).
 
-## <a name="create-a-review-team"></a>Vytvořit tým kontroly
+## <a name="create-a-review-team"></a>Vytvořit tým pro revize
 
-Odkazovat [zkuste Content Moderator na webu](quick-start.md) rychlý start pro pokyny, jak zaregistrovat [Content Moderator Zkontrolujte nástroj](https://contentmoderator.cognitive.microsoft.com/) a vytvořte tým kontroly. Poznamenejte si **ID týmu** hodnoty na **pověření** stránky.
+Pokyny, jak se zaregistrovat do [Nástroje pro kontrolu Content moderator](https://contentmoderator.cognitive.microsoft.com/) a vytvořit tým pro kontrolu, najdete v Content Moderatorm rychlém startu na [webu](quick-start.md) . Poznamenejte si hodnotu **ID týmu** na stránce **přihlašovací údaje** .
 
-## <a name="configure-image-moderation-workflow"></a>Konfigurace pracovního postupu pro moderování obrázků
+## <a name="configure-image-moderation-workflow"></a>Pracovní postup konfigurace pro moderování obrázků
 
-Odkazovat [definovat, testování a pracovních postupů pomocí](review-tool-user-guide/workflows.md) průvodce k vytvoření vlastní image pracovního postupu. Content Moderator použije tento pracovní postup automaticky kontrolu imagí na Facebooku a některé pro nástroj pro recenze odeslat. Poznamenejte si pracovní postup **název**.
+Postup vytvoření vlastní image pracovního postupu najdete v průvodci [definováním, otestováním a používáním pracovních postupů](review-tool-user-guide/workflows.md) . Content Moderator použije tento pracovní postup k automatické kontrole imagí na Facebooku a odeslání některých do nástroje pro kontrolu. Poznamenejte si **název**pracovního postupu.
 
-## <a name="configure-text-moderation-workflow"></a>Konfigurace pracovního postupu pro moderování textu
+## <a name="configure-text-moderation-workflow"></a>Pracovní postup konfigurace moderování textu
 
-Znovu, odkazovat [definovat, testování a pracovních postupů pomocí](review-tool-user-guide/workflows.md) Průvodce; to čas, vytvoření pracovního postupu vlastní text. Content Moderator použije tento pracovní postup k automatické kontrole textový obsah. Poznamenejte si pracovní postup **název**.
+Znovu si přečtěte téma průvodce [definováním, otestováním a používáním pracovních postupů](review-tool-user-guide/workflows.md) . Tentokrát vytvořte vlastní textový pracovní postup. Content Moderator použije tento pracovní postup k automatické kontrole obsahu textu. Poznamenejte si **název**pracovního postupu.
 
 ![Konfigurace pracovního postupu textu](images/text-workflow-configure.PNG)
 
-Testování pomocí vašeho pracovního postupu **spuštění pracovního postupu** tlačítko.
+Otestujte pracovní postup pomocí tlačítka **Spustit pracovní postup** .
 
 ![Testování pracovního postupu textu](images/text-workflow-test.PNG)
 
 ## <a name="create-azure-functions"></a>Vytvoření funkcí Azure Functions
 
-Přihlaste se k [webu Azure portal](https://portal.azure.com/) a postupujte podle těchto kroků:
+Přihlaste se k [Azure Portal](https://portal.azure.com/) a proveďte následující kroky:
 
 1. Vytvořte aplikaci funkcí Azure Function App, jak je to zobrazeno na stránce [Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-create-function-app-portal).
-1. Přejděte do nově vytvořené aplikace Function App.
-1. V aplikaci, přejděte **funkce platformy** kartě a vyberte **konfigurace**. V **nastavení aplikace** na další stránce vyberte **nové nastavení aplikace** přidáte následující dvojice klíč/hodnota:
+1. Přejít na nově vytvořenou Function App.
+1. V aplikaci otevřete kartu **funkce platformy** a vyberte **Konfigurace**. V části **nastavení aplikace** na další stránce vyberte možnost **nové nastavení aplikace** a přidejte následující páry klíč/hodnota:
     
     | Název nastavení aplikace | value   | 
     | -------------------- |-------------|
@@ -75,24 +75,24 @@ Přihlaste se k [webu Azure portal](https://portal.azure.com/) a postupujte podl
     | cm:Region | Název oblasti Content Moderatoru bez mezer. |
     | cm:ImageWorkflow | Název pracovního postupu ke spuštění na obrázcích. |
     | cm:TextWorkflow | Název pracovního postupu pro spuštění na textu. |
-    | cm:CallbackEndpoint | Adresa URL pro aplikaci funkcí CMListener, kterou vytvoříte později v tomto průvodci |
-    | fb:VerificationToken | Tajný token, který vytvoříte, používá k registraci na Facebook informační kanál událostí |
-    | fb:PageAccessToken | Přístupovému tokenu Facebook Graph API nekončí platnost a povoluje se pomocí něho používání funkcí skrytí a odstranění příspěvků vaším jménem. Zobrazí se tento token v pozdějším kroku. |
+    | cm:CallbackEndpoint | Adresa URL Function App CMListener, kterou vytvoříte později v této příručce |
+    | fb:VerificationToken | Tajný token, který vytvoříte, který se používá k přihlášení k odběru událostí kanálu Facebooku |
+    | fb:PageAccessToken | Přístupovému tokenu Facebook Graph API nekončí platnost a povoluje se pomocí něho používání funkcí skrytí a odstranění příspěvků vaším jménem. Tento token se zobrazí v pozdějším kroku. |
 
-    Klikněte na tlačítko **Uložit** tlačítko v horní části stránky.
+    Klikněte na tlačítko **Uložit** v horní části stránky.
 
-1. Přejděte zpět **funkce platformy** kartu. Použití **+** tlačítko v levém podokně zobrazí se **novou funkci** podokně. Funkce, do které se chystáte vytvořit zobrazí události ze sítě Facebook.
+1. Vraťte se na kartu **funkce platformy** . Pomocí tlačítka v levém podokně zobrazte **nové podokno funkce.** **+** Funkce, kterou se chystáte vytvořit, bude přijímat události z Facebooku.
 
-    ![Podokno s Azure Functions se zvýrazněným tlačítkem Přidat funkci.](images/new-function.png)
+    ![Podokno Azure Functions s zvýrazněným tlačítkem přidat funkci](images/new-function.png)
 
-    1. Kliknutím na dlaždici, která uvádí, že **triggeru Http**.
+    1. Klikněte na dlaždici, která říká **Trigger http**.
     1. Zadejte název **FBListener**. Pole **Úroveň autorizace** by mělo být nastavené na možnost **Funkce**.
     1. Klikněte na možnost **Vytvořit**.
-    1. Nahraďte obsah **run.csx** s obsahem z **FbListener/run.csx**
+    1. Nahraďte obsah rutiny **Run. csx** obsahem z **FbListener/run. csx**
 
     [!code-csharp[FBListener: csx file](~/samples-fbPageModeration/FbListener/run.csx?range=1-154)]
 
-1. Vytvořte nový **triggeru Http** funkce s názvem **CMListener**. Tato funkce přijímá události od Content Moderatoru. Nahraďte obsah **run.csx** s obsahem z **CMListener/run.csx**
+1. Vytvořte novou funkci **triggeru http** s názvem **CMListener**. Tato funkce přijímá události od Content Moderatoru. Nahraďte obsah rutiny **Run. csx** obsahem z **CMListener/run. csx**
 
     [!code-csharp[FBListener: csx file](~/samples-fbPageModeration/CmListener/run.csx?range=1-110)]
 
@@ -102,22 +102,22 @@ Přihlaste se k [webu Azure portal](https://portal.azure.com/) a postupujte podl
 
 1. Vytvořte aplikaci pro Facebook.
 
-    ![stránka na facebooku pro vývojáře](images/facebook-developer-app.png)
+    ![Stránka pro vývojáře na Facebooku](images/facebook-developer-app.png)
 
     1. Přejděte na [web pro vývojáře Facebooku](https://developers.facebook.com/).
     1. Klikněte na **My Apps** (Moje aplikace).
     1. Přidejte novou aplikaci.
-    1. Název
-    1. Vyberte **Webhooky -> sady nahoru**
-    1. Vyberte **stránky** v rozevírací nabídce a vyberte **přihlášení odběru tohoto objektu**
+    1. nějaké pojmenování
+    1. Vyberte **Webhooky – nastavení >**
+    1. V rozevírací nabídce vyberte **stránku** a vyberte **přihlášení k odběru tohoto objektu** .
     1. Zadejte **FBListener URL** jako adresu URL pro zpětné volání a **Token ověření**, který jste nakonfigurovali v části **nastavení aplikace Function App**.
     1. Jakmile se přihlásíte k odběru, posuňte se dolů na informační kanál a vyberte **Přihlásit k odběru**.
-    1. Klikněte na **testování** tlačítko **kanálu** řádek odeslat zkušební zprávu FBListener funkce Azure, stačí stisknout **odesílání na tento Server** tlačítko. Měli byste vidět požadavku na vaše FBListener.
+    1. Kliknutím na tlačítko **test** na řádku **informačního kanálu** odešlete zkušební zprávu do FBListener funkce Azure a potom stiskněte tlačítko **Odeslat na server** . Měla by se zobrazit žádost o přijetí v FBListener.
 
 1. Vytvořte Facebookovou stránku.
 
     > [!IMPORTANT]
-    > V roce 2018 Facebooku implementované přísnější prověřování aplikace pro Facebook. Nebudete moci být prováděny části 2, 3 a 4, pokud vaše aplikace nebyla byly zkontrolován a schválen revize týmem Facebooku.
+    > V 2018 byla Facebook implementovala přísnější dozvíte ČSFD aplikací z Facebooku. Pokud vaše aplikace nebyla přezkoumána a schválena v rámci týmu pro kontrolu Facebooku, nebudete moct spouštět oddíly 2, 3 a 4.
 
     1. Přejděte na [Facebook](https://www.facebook.com/bookmarks/pages) a vytvořte **novou Facebookovou stránku**.
     1. Povolte aplikaci pro Facebook přístup k této stránce pomocí následujících kroků:
@@ -144,7 +144,7 @@ Přihlaste se k [webu Azure portal](https://portal.azure.com/) a postupujte podl
         2. [Postman Environment](https://github.com/MicrosoftContentModerator/samples-fbPageModeration/blob/master/FB%20Page%20Access%20Token%20Environment.postman_environment.json)       
     3. Aktualizujte tyto proměnné prostředí:
     
-        | Klíč | Hodnota   | 
+        | Klíč | Value   | 
         | -------------------- |-------------|
         | appId   | Sem vložte identifikátor vaší aplikace pro Facebooku  | 
         | appSecret | Sem vložte tajný klíč vaší aplikace pro Facebooku | 
@@ -155,11 +155,11 @@ Přihlaste se k [webu Azure portal](https://portal.azure.com/) a postupujte podl
         3. Vyberte **Get Permanent Page Access Token** (získat dlouhotrvající přístupový token stránky) a klikněte na tlačítko **Send** (Odeslat).
     5. Zkopírujte hodnotu **access_tokenu** z odpovědi a přiřaďte ji k nastavení aplikace **fb:PageAccessToken**.
 
-Toto řešení odešle všechny obrázky a texty zveřejněné na vaší Facebookové stránce do Content Moderatoru. Poté jsou spuštěny pracovní postupy, které jste nakonfigurovali v předchozích krocích. Obsah, který nepředá vaše kritéria definovaná v pracovních postupech bude předána do revize v rámci nástroje pro recenze. Získá zbývající obsah automaticky publikován.
+Toto řešení odešle všechny obrázky a texty zveřejněné na vaší Facebookové stránce do Content Moderatoru. Pak jsou vyvolány pracovní postupy, které jste nakonfigurovali dříve. Obsah, který nepředává kritéria definovaná v pracovních postupech, se předává kontrolám v rámci nástroje pro kontrolu. Zbytek obsahu se bude publikovat automaticky.
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto kurzu nastavíte programu k analýze obrázků produktů pro účely označování podle typu produktu a povolení tým kontroly se informovaně rozhodnout o moderování obsahu. Další informace o podrobnosti o moderování obrázků v dalším kroku.
+V tomto kurzu nastavíte program k analýze imagí produktu za účelem jejich označování podle typu produktu a umožnění, aby měl kontrolující tým na základě Moderování obsahu provádět kvalifikovaná rozhodnutí. V dalším kroku se dozvíte více o podrobnostech o moderování imagí.
 
 > [!div class="nextstepaction"]
 > [Moderování obrázků](./image-moderation-api.md)

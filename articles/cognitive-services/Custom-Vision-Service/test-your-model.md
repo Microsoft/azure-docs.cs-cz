@@ -1,7 +1,7 @@
 ---
-title: Testování a přeučování modelů – Custom Vision Service
-titlesuffix: Azure Cognitive Services
-description: Zjistěte, jak otestovat bitovou kopii a pak přes ni přeučování modelu.
+title: Testování a přeučení modelu – Custom Vision Service
+titleSuffix: Azure Cognitive Services
+description: Naučte se testovat image a pak ji použít k přeškolování modelu.
 services: cognitive-services
 author: anrothMSFT
 manager: nitinme
@@ -10,52 +10,52 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: anroth
-ms.openlocfilehash: d516cee81aef66ec58399cb5ff23c89db16bf2ab
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3f78f0b992581a44b030387f1bd0e37664df4cfd
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60816676"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560913"
 ---
-# <a name="test-and-retrain-a-model-with-custom-vision-service"></a>Testování a přeučování modelů pomocí služby Custom Vision Service
+# <a name="test-and-retrain-a-model-with-custom-vision-service"></a>Testování a přeškolování modelu pomocí Custom Vision Service
 
-Po tréninku modelu, můžete rychle otestovat pomocí bitové kopie uložené místně nebo online bitové kopie. Test používá nedávno trénovaného iterace.
+Po vytvoření vašeho modelu ho můžete rychle otestovat pomocí místně uložené Image nebo online image. Test používá naposledy vyškolenou iteraci.
 
 ## <a name="test-your-model"></a>Testování modelu
 
-1. Z [vizi vlastní webovou stránku](https://customvision.ai), vyberte svůj projekt. Vyberte **rychle otestovat spuštěním** v pravé horní nabídce. Tato akce otevře okno s popiskem **rychle otestovat spuštěním**.
+1. Z [webové stránky Custom Vision](https://customvision.ai)vyberte svůj projekt. Na pravé straně horního panelu nabídek vyberte **rychlý test** . Tato akce otevře okno s popisem **rychlého testu**.
 
-    ![Rychlé otestování tlačítko se zobrazí v pravém horním rohu okna.](./media/test-your-model/quick-test-button.png)
+    ![Tlačítko rychlý test se zobrazí v pravém horním rohu okna.](./media/test-your-model/quick-test-button.png)
 
-2. V **rychlého testu** okno, kliknutím na webu **odešlete Image** pole a zadejte adresu URL image, kterou chcete použít pro váš test. Pokud chcete místo toho použít místně uložený obrázek, klikněte na tlačítko **procházet místní soubory** tlačítko a vyberte soubor místní image.
+2. V okně **rychlé testování** klikněte na pole **Odeslat obrázek** a zadejte adresu URL obrázku, který chcete použít pro test. Pokud místo toho chcete použít místně uloženou bitovou kopii, klikněte na tlačítko **Procházet místní soubory** a vyberte místní soubor bitové kopie.
 
-    ![Obrázek stránky odeslat image](./media/test-your-model/submit-image.png)
+    ![Obrázek stránky odeslat obrázek](./media/test-your-model/submit-image.png)
 
-Uprostřed stránky se zobrazí obrázek, který jste vybrali. Potom výsledky se zobrazí pod obrázkem ve formě tabulky se dvěma sloupci, s popiskem **značky** a **spolehlivosti**. Po zobrazení výsledků můžete zavřít **rychle otestovat spuštěním** okna.
+Obrázek, který vyberete, se zobrazí uprostřed stránky. Výsledky se pak zobrazí pod obrázkem ve formě tabulky se dvěma sloupci, **popisky a** **spolehlivost**. Po zobrazení výsledků můžete zavřít okno s **rychlým testem** .
 
-Můžete teď do modelu přidat tento testovací obrázek a potom přeučování modelu.
+Teď můžete do modelu přidat tuto testovací image a pak svůj model přeškolit.
 
-## <a name="use-the-predicted-image-for-training"></a>Použít předpokládané obrázků k trénování
+## <a name="use-the-predicted-image-for-training"></a>Použití předpovězené image pro školení
 
-Pokud chcete použít image dříve odešle ke školení, postupujte následovně:
+Pokud chcete použít image odeslanou dříve pro školení, použijte následující postup:
 
-1. Chcete-li zobrazit Image odeslat do třídění, otevřete [vizi vlastní webovou stránku](https://customvision.ai) a vyberte __předpovědi__ kartu.
+1. Chcete-li zobrazit obrázky odeslané do třídění, otevřete [webovou stránku Custom Vision](https://customvision.ai) a vyberte kartu __předpovědi__ .
 
-    ![Obrázek karty predikcí](./media/test-your-model/predictions-tab.png)
-
-    > [!TIP]
-    > Výchozí zobrazení zobrazuje obrázky z aktuální iteraci. Můžete použít __iterace__ rozevírací nabídka pole k zobrazení obrázků odeslaných během předchozími iteracemi.
-
-2. Najeďte myší na obrázek zobrazíte značky, které byly předpovídané pomocí třídění.
+    ![Obrázek karty předpovědi](./media/test-your-model/predictions-tab.png)
 
     > [!TIP]
-    > Bitové kopie jsou hodnoceny, tak, že jsou obrázky, které přinést většina zisky třídění v horní části. Chcete-li vybrat jinou řazení, použijte __řazení__ oddílu.
+    > Výchozí zobrazení zobrazuje obrázky z aktuální iterace. Pomocí rozevíracího pole __iterace__ můžete zobrazit obrázky odeslané během předchozích iterací.
 
-    Přidání obrázku na trénovací data, vyberte bitovou kopii, vyberte značku a potom vyberte __uložte a zavřete__. Na obrázku je odebrán z __předpovědi__ a přidán do trénovacích obrázků. Můžete ho zobrazit výběrem __Trénovacích obrázků__ kartu.
+2. Najeďte ukazatelem myši na obrázek a zobrazí se značky, které třídění vypoví.
 
-    ![Obrázek označení stránky](./media/test-your-model/tag-image.png)
+    > [!TIP]
+    > Obrázky jsou seřazené tak, aby v horní části byly obrázky, které mohou přenést největší zisky do třídění. Chcete-li vybrat jiné řazení, použijte oddíl __řazení__ .
 
-3. Použití __trénování__ tlačítko přeučování třídění.
+    Chcete-li přidat obrázek do školicích dat, vyberte obrázek, vyberte značku a pak vyberte __Uložit a zavřít__. Obrázek se odebere z __předpovědi__ a přidá se do školicích imagí. Můžete ji zobrazit výběrem karty školicích __imagí__ .
+
+    ![Obrázek stránky označování](./media/test-your-model/tag-image.png)
+
+3. Pro přeučení třídění použijte tlačítko __výuka__ .
 
 ## <a name="next-steps"></a>Další postup
 

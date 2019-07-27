@@ -1,7 +1,7 @@
 ---
-title: Obrázek moderování – Content Moderator
-titlesuffix: Azure Cognitive Services
-description: Pomocí Content Moderator moderování obrázků s podporou počítače a nástroj pro recenze lidských v the smyčky pro moderování obrázků pro dospělé nebo pikantního obsahu.
+title: Moderování obrázku – Content Moderator
+titleSuffix: Azure Cognitive Services
+description: Využijte Nástroj pro kontrolu obrazu s asistencí Content Moderator a nástroj pro recenze na základě lidského provozu pro použití pro dospělé a pikantní obsah.
 services: cognitive-services
 author: sanjeev3
 manager: nitinme
@@ -10,20 +10,20 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 9f1df23d1f0f24787bb9267064ffd647eda2cb74
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8b3449edb539ab56fcf206a367f9b81e43290733
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60699269"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68564901"
 ---
-# <a name="learn-image-moderation-concepts"></a>Další koncepty moderování obrázků
+# <a name="learn-image-moderation-concepts"></a>Základní informace o principech moderování obrázků
 
-Použít moderování obrázků s podporou počítače Content Moderator a [nástroj pro recenze lidských v the smyčky](Review-Tool-User-Guide/human-in-the-loop.md) pro moderování obrázků pro dospělé nebo pikantního obsahu. Kontroly imagí pro textový obsah a extrahovat text a rozpoznávání tváří. Můžete odpovídat bitové kopie na základě vlastních seznamů a provádět další akci.
+Využijte Nástroj pro kontrolu obrazu s asistencí Content Moderator a [Nástroj pro recenze na základě lidského](Review-Tool-User-Guide/human-in-the-loop.md) provozu pro použití pro dospělé a pikantní obsah. Naskenujte obrázky pro textový obsah a extrahuje text a detekuje obličeje. Obrázky můžete porovnávat s vlastními seznamy a provádět další akce.
 
-## <a name="evaluating-for-adult-and-racy-content"></a>Vyhodnocení pro obsahu pro dospělé nebo pikantního obsahu
+## <a name="evaluating-for-adult-and-racy-content"></a>Hodnocení obsahu pro dospělé a pikantní
 
-**Vyhodnotit** operace vrátí skóre spolehlivosti mezi 0 a 1. Také vrátí boolean – datový rovna true nebo false. Tyto hodnoty předpovědět, zda bitová kopie obsahuje potenciální obsah pro dospělé nebo pikantního. Při volání rozhraní API pomocí bitové kopie (soubor nebo adresa URL) vrácená odpověď obsahuje následující informace:
+Operace **vyhodnocení** vrátí skóre spolehlivosti mezi 0 a 1. Vrátí také logická data rovnající se hodnotě true nebo false. Tyto hodnoty předpovídá, jestli image obsahuje potenciálně dospělý nebo pikantní obsah. Při volání rozhraní API s obrázkem (soubor nebo adresa URL) vrácená odpověď obsahuje následující informace:
 
     "ImageModeration": {
       .............
@@ -38,18 +38,18 @@ Použít moderování obrázků s podporou počítače Content Moderator a [nás
 > 
 > - `isImageAdultClassified` představuje potenciální přítomnost obrázků, které lze v určitých situacích považovat za sexuálně explicitní nebo pouze pro dospělé.
 > - `isImageRacyClassified` představuje potenciální přítomnost obrázků, které lze v určitých situacích považovat za sexuálně sugestivní nebo pouze pro dospělé.
-> - Skóre jsou v rozmezí od 0 do 1. Čím více bodů vyšší model je predikce kategorii lze použít. V této verzi preview spoléhá na statistických modelů a nikoli ručně kódovaný výsledků. Doporučujeme ve Visual Basicu s vlastní obsah k určení, jak každou kategorii odpovídá vašim požadavkům.
-> - Logické hodnoty jsou true nebo false, v závislosti na interní skóre prahové hodnoty. Zákazníci by měli zhodnotit, zda chcete použít tuto hodnotu nebo při rozhodování o vlastní prahové hodnoty na základě jejich obsahu zásad.
+> - Skóre jsou mezi 0 a 1. Čím vyšší je skóre, tím vyšší je model, který předpokládá, že se kategorie může použít. Tato verze Preview spoléhá na místo ručně kódovaných výsledků z statistického modelu. Doporučujeme, abyste při testování pomocí vlastního obsahu určili, jak jednotlivé kategorie odpovídají vašim požadavkům.
+> - Hodnoty Boolean jsou buď true, nebo false v závislosti na vnitřních prahech skóre. Zákazníci by měli posoudit, jestli tuto hodnotu použít, nebo se rozhodnout o vlastních prahech na základě zásad obsahu.
 
-## <a name="detecting-text-with-optical-character-recognition-ocr"></a>Rozpoznání textu s optického rozpoznávání znaků (OCR)
+## <a name="detecting-text-with-optical-character-recognition-ocr"></a>Detekce textu pomocí optického rozpoznávání znaků (OCR)
 
-**Optického rozpoznávání znaků (OCR)** operace předpovídá přítomnost textový obsah v obrázku a extrahuje pro moderování textu, mimo jiné účely. Můžete určit jazyk. Pokud jazyk není zadán, výchozí hodnota je detekce na angličtinu.
+Operace **optického rozpoznávání znaků (OCR)** předpovídá přítomnost textového obsahu v obrázku a extrahuje jej pro moderování textu, a to mimo jiné použití. Můžete zadat jazyk. Pokud nezadáte jazyk, je výchozí hodnota detekce angličtina.
 
 Odpověď obsahuje následující informace:
 - Původní text.
-- Zjištěné textových prvků s jejich skóre spolehlivosti.
+- Zjištěné textové prvky s výsledky jejich spolehlivosti.
 
-Příklad výpisu:
+Příklad extrakce:
 
     "TextDetection": {
       "status": {
@@ -66,14 +66,14 @@ Příklad výpisu:
 
 ## <a name="detecting-faces"></a>Rozpoznávání tváří
 
-Rozpoznání tváře pomáhá zjistit osobní údaje, jako je například tváří na obrázcích. Zjistit potenciální tváří a počet potenciálních tváří v každé image.
+Detekce plošek pomáhá detekovat osobní údaje, jako jsou obličeje v obrázcích. Detekujete potenciální plošky a počet potenciálních plošek v jednotlivých obrazech.
 
 Odpověď obsahuje tyto informace:
 
-- Počet tváří
-- Seznam umístění zjistil tváří
+- Počet plošek
+- Seznam umístění zjištěných plošek
 
-Příklad výpisu:
+Příklad extrakce:
 
 
     "FaceDetection": {
@@ -99,30 +99,30 @@ Příklad výpisu:
       ]
     }
 
-## <a name="creating-and-managing-custom-lists"></a>Vytváření a správě vlastních seznamů
+## <a name="creating-and-managing-custom-lists"></a>Vytváření a Správa vlastních seznamů
 
-V mnoha online komunit po uživatelé odesílat obrázky nebo jiný typ obsahu, urážlivé položek může získat sdílené více než jednou průběhu následujících dnů, týdnů a měsíců. Ceny za opakovaného vyhledávání a filtrování byť jen mírně upravenou verzí bitové kopie z více míst pro stejnou bitovou kopii nebo může být náročné a náchylné k chybě.
+V mnoha online komunitách se po odeslání obrázků nebo jiného typu obsahu můžou v průběhu následujících dnů, týdnů a měsíců sdílet urážlivé položky několikrát. Náklady na opakované prohledávání a filtrování ve stejné imagi nebo dokonce mírně upravené verze image z více míst můžou být nákladné a náchylné k chybám.
 
-Místo moderování více než jednou stejnou bitovou kopii, přidat urážlivé bitové kopie na vlastní seznam blokovaných obsah. Tímto způsobem, moderování obsahu systému porovná příchozí bitové kopie na základě vlastních seznamů a zastaví další zpracování.
+Místo toho, aby se stejná image několikrát vymezily, přidáte do svého vlastního seznamu blokovaného obsahu tyto urážlivé image. Tímto způsobem systém Moderování obsahu porovnává příchozí image s vlastními seznamy a zastaví jakékoli další zpracování.
 
 > [!NOTE]
 > Limit je maximálně **5 seznamů obrázků** a v každém seznamu může být **maximálně 10 000 obrázků**.
 >
 
-Content Moderator poskytuje kompletní [rozhraní API pro správu seznamu obrázků](try-image-list-api.md) s operacemi správy seznam vlastních imagí. Začněte [Image obsahuje rozhraní API konzoly](try-image-list-api.md) a používat rozhraní REST API ukázky kódu. Podívejte se také [rychlý úvod k .NET seznam obrázků](image-lists-quickstart-dotnet.md) Pokud jste se seznámili s Visual Studio a C#.
+Content Moderator poskytuje kompletní [rozhraní API pro správu seznamu obrázků](try-image-list-api.md) s operacemi pro správu seznamů vlastních imagí. Začněte s [imagí](try-image-list-api.md) a použijte REST API ukázky kódu. Pokud jste obeznámeni se sadou Visual Studio a C#, podívejte se také na [rychlý Start pro seznam imagí .NET](image-lists-quickstart-dotnet.md) .
 
-## <a name="matching-against-your-custom-lists"></a>Přiřazování na základě vlastních seznamů
+## <a name="matching-against-your-custom-lists"></a>Porovnání s vlastními seznamy
 
-Operace shody umožňuje přibližné shody příchozí bitové kopie pro některý z vlastních seznamů, vytváří a spravují pomocí operace výpisu.
+Operace porovnávání umožňuje přibližnou shodu příchozích imagí s libovolnými vlastními seznamy vytvořenými a spravované pomocí operací se seznamem.
 
-Pokud se najde shoda, vrátí operaci značky moderování odpovídající Image a identifikátor. Odpověď obsahuje tyto informace:
+Pokud je nalezena shoda, operace vrátí identifikátor a značky moderování odpovídajícího obrázku. Odpověď obsahuje tyto informace:
 
-- Skóre shodu (mezi 0 a 1)
-- Odpovídající image
-- Obrázek značky (přiřazené během předchozí moderování)
-- Obrázek popisky
+- Skóre shody (mezi 0 a 1)
+- Odpovídající obrázek
+- Značky obrázku (přiřazené během předchozího moderování)
+- Popisky obrázků
 
-Příklad výpisu:
+Příklad extrakce:
 
     {
     ..............,
@@ -141,10 +141,10 @@ Příklad výpisu:
 
 ## <a name="human-review-tool"></a>Nástroj pro kontrolu prováděnou lidmi
 
-Další odlišování případů použití Content Moderator [nástroji pro kontrolu](Review-Tool-User-Guide/human-in-the-loop.md) a jeho rozhraní API k poskytování výsledky při moderování a obsah revize pro lidské moderátory. Zkontrolovat počítač přiřazený značky a potvrdit jejich konečné rozhodnutí.
+Pro více případů odlišit použijte [Nástroj pro kontrolu](Review-Tool-User-Guide/human-in-the-loop.md) Content moderator a jeho rozhraní API k obstudování výsledků moderování a obsahu v recenzi pro své lidské moderátoři. Posuzuje značky přiřazené počítači a potvrdí jejich konečné rozhodnutí.
 
 ![Kontrola obrázku lidskými moderátory](images/moderation-reviews-quickstart-dotnet.PNG)
 
 ## <a name="next-steps"></a>Další postup
 
-Testovací verze [konzole rozhraní API pro moderování obrázků](try-image-api.md) a používat rozhraní REST API ukázky kódu. Podívejte se také [rychlý úvod k .NET pro moderování obrázků](image-moderation-quickstart-dotnet.md) Pokud jste se seznámili s Visual Studio a C#.
+Otestujte konzolu [rozhraní API pro moderování imagí](try-image-api.md) a použijte ukázky kódu REST API. Pokud jste obeznámeni se sadou Visual Studio a C#, podívejte se také na [rychlý Start pro moderování image .NET](image-moderation-quickstart-dotnet.md) .
