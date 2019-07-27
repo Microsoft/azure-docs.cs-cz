@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý start: Převést převod textu na řeč, Node.js – hlasové služby'
+title: 'Rychlý start: Převod textu na řeč, Node. js – služba Speech'
 titleSuffix: Azure Cognitive Services
-description: V tomto rychlém startu se dozvíte jak převést převod textu na řeč pomocí Node.js a rozhraní REST API pro převod textu na řeč. Ukázkový text v tomto průvodci strukturovaná jako jazyk pro značky syntézu řeči (SSML). To umožňuje zvolit hlasu a jazyk odpovědi řeči.
+description: V tomto rychlém startu se dozvíte, jak převést převod textu na řeč pomocí Node. js a REST API převodu textu na řeč. Ukázkový text v tomto průvodci strukturovaná jako jazyk pro značky syntézu řeči (SSML). To umožňuje zvolit hlasu a jazyk odpovědi řeči.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 5a218db0527a5e1d5642cb485b75df894a275764
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 72be99ec666bb9e04ffca6e14ab4fcafa889ae68
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67605006"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68553948"
 ---
-# <a name="quickstart-convert-text-to-speech-using-nodejs"></a>Rychlý start: Převést převod textu na řeč pomocí Node.js
+# <a name="quickstart-convert-text-to-speech-using-nodejs"></a>Rychlý start: Převod textu na řeč pomocí Node. js
 
-V tomto rychlém startu se dozvíte jak převést převod textu na řeč pomocí Node.js a převod textu na řeč rozhraní REST API. Text požadavku v této příručce má strukturu [řeči syntézu Markup Language (SSML)](speech-synthesis-markup.md), která umožňuje výběr hlasu a jazyk odpovědi.
+V tomto rychlém startu se dozvíte, jak převést převod textu na řeč pomocí Node. js a REST API převodu textu na řeč. Text požadavku v této příručce má strukturu [řeči syntézu Markup Language (SSML)](speech-synthesis-markup.md), která umožňuje výběr hlasu a jazyk odpovědi.
 
-Tento rychlý start vyžaduje [účtu služeb Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) s prostředkem hlasové služby. Pokud účet nemáte, můžete k získání klíče předplatného použít [bezplatnou zkušební verzi](get-started.md).
+Tento rychlý Start vyžaduje [účet Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) s prostředkem služeb Speech Services. Pokud účet nemáte, můžete k získání klíče předplatného použít [bezplatnou zkušební verzi](get-started.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -29,11 +29,11 @@ K tomuto rychlému startu potřebujete:
 
 * [Node.js 8.12.x nebo novější](https://nodejs.org/en/)
 * [Visual Studio](https://visualstudio.microsoft.com/downloads/), [Visual Studio Code](https://code.visualstudio.com/download), nebo vašem oblíbeném textovém editoru
-* Klíč předplatného pro hlasové služby. [Získejte ji zdarma. ](get-started.md).
+* Klíč předplatného Azure pro hlasové služby. [Získejte ho zdarma!](get-started.md).
 
-## <a name="create-a-project-and-require-dependencies"></a>Vytvoření projektu a vyžadují závislosti
+## <a name="create-a-project-and-require-dependencies"></a>Vytvořit projekt a vyžadovat závislosti
 
-Vytvořte nový projekt Node.js pomocí Oblíbené prostředí IDE nebo editoru. Pak do svého projektu, do souboru s názvem `tts.js`, zkopírujte tento fragment kódu.
+Vytvořte nový projekt Node. js pomocí oblíbeného integrovaného vývojového prostředí (IDE) nebo editoru. Pak do svého projektu, do souboru s názvem `tts.js`, zkopírujte tento fragment kódu.
 
 ```javascript
 // Requires request and request-promise for HTTP requests
@@ -52,9 +52,9 @@ const xmlbuilder = require('xmlbuilder');
 
 ## <a name="get-an-access-token"></a>Získání přístupového tokenu
 
-Převod textu na řeč rozhraní REST API vyžaduje přístupového tokenu pro ověřování. Chcete-li získat přístupový token, je potřeba systému exchange. Vymění váš klíč předplatného hlasových služeb pro aplikace access token pomocí této funkce `issueToken` koncového bodu.
+Převod textu na řeč rozhraní REST API vyžaduje přístupového tokenu pro ověřování. Chcete-li získat přístupový token, je potřeba systému exchange. Tato funkce vyměňuje klíč předplatného služby Speech pro přístupový token pomocí `issueToken` koncového bodu.
 
-Tento příklad předpokládá, že vaše předplatné hlasové služby je v oblasti západní USA. Pokud používáte jiné oblasti, aktualizujte hodnotu pro `uri`. Úplný seznam najdete v tématu [oblastech](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#rest-apis).
+V této ukázce se předpokládá, že vaše předplatné služby Speech Services je v oblasti Západní USA. Pokud používáte jiné oblasti, aktualizujte hodnotu pro `uri`. Úplný seznam najdete v tématu [oblastech](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#rest-apis).
 
 Zkopírujte do svého projektu tento kód:
 
@@ -75,11 +75,11 @@ function getAccessToken(subscriptionKey) {
 > [!NOTE]
 > Další informace o ověřování najdete v tématu [ověřování pomocí přístupového tokenu](https://docs.microsoft.com/azure/cognitive-services/authentication#authenticate-with-an-authentication-token).
 
-V další části vytvoříme funkce pro volání rozhraní API pro převod textu na řeč a uložení odpovědi řečového.
+V další části vytvoříme funkci pro volání rozhraní API pro převod textu na mluvené slovo a uložení syntetizované odpovědi na řeč.
 
 ## <a name="make-a-request-and-save-the-response"></a>Vytvořit žádost a uložit odpověď
 
-Tady se chystáte vytvořit požadavek na rozhraní API pro převod textu na řeč a uložení odpovědi řeči. Tento příklad předpokládá, že používáte koncový bod západní USA. Pokud váš prostředek je registrován v jiné oblasti, ujistěte se, že aktualizujete `uri`. Další informace najdete v tématu [hlasových služeb regiony](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#text-to-speech).
+Tady se chystáte sestavit požadavek na rozhraní API pro převod textu na mluvené slovo a Uložit odpověď na řeč. Tento příklad předpokládá, že používáte koncový bod západní USA. Pokud váš prostředek je registrován v jiné oblasti, ujistěte se, že aktualizujete `uri`. Další informace najdete v tématu [oblasti služby Speech Services](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#text-to-speech).
 
 Dále je třeba přidat povinné hlavičky pro dané žádosti. Ujistěte se, že aktualizujete `User-Agent` názvem prostředku (nachází se na webu Azure Portal) a nastavte `X-Microsoft-OutputFormat` na preferovaný zvuku. Úplný seznam formátech výstupu najdete v tématu [zvuk výstupy](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis).
 
@@ -89,7 +89,7 @@ Potom vytvořte datovou část požadavku pomocí řeči syntézu Markup Languag
 > Tento příklad používá `JessaRUS` hlasového písma. Pro úplný seznam Microsoft poskytuje hlasy/jazyky, naleznete v tématu [jazykovou podporu](language-support.md).
 > Pokud vás zajímá vytváření jedinečné, rozpoznat hlas pro hodnotu značky, přečtěte si téma [vytváření vlastního hlasového písma](how-to-customize-voice-font.md).
 
-A konečně provede požadavek do služby. Pokud je žádost úspěšná a se vrátí stavový kód 200 kódu, odpověď řeči je zapsán jako `TTSOutput.wav`.
+A konečně provede požadavek do služby. Pokud je požadavek úspěšný a vrátí se stavový kód 200, odpověď na řeč se zapíše jako `TTSOutput.wav`.
 
 ```javascript
 // Make sure to update User-Agent with the name of your resource.
@@ -135,9 +135,9 @@ function textToSpeech(accessToken, text) {
 
 ## <a name="put-it-all-together"></a>Spojení všech součástí dohromady
 
-Už jste téměř hotovi. Posledním krokem je vytvoření asynchronní funkce. Tato funkce bude číst váš klíč předplatného z proměnné prostředí, vyzvat k textu, získání tokenu, počkejte požadavek na dokončení, potom převést převod textu na řeč a uložit jako WAV zvuk.
+Už jste téměř hotovi. Posledním krokem je vytvoření asynchronní funkce. Tato funkce načte klíč předplatného z proměnné prostředí, zobrazí výzvu k zadání textu, získá token, počká na dokončení žádosti a pak převede text na řeč a uloží zvuk jako. wav.
 
-Pokud jste obeznámeni s proměnnými prostředí nebo dáváte přednost testu se vaše předplatné klíče pevně zakódované jako řetězec, nahraďte `process.env.SPEECH_SERVICE_KEY` s klíči předplatného jako řetězec.
+Pokud nejste obeznámeni s proměnnými prostředí nebo upřednostňujete testování pomocí klíče předplatného pevně zakódované jako řetězce, `process.env.SPEECH_SERVICE_KEY` nahraďte klíč předplatného jako řetězec.
 
 ```javascript
 // Use async and await to get the token before attempting
@@ -179,12 +179,12 @@ Po zobrazení výzvy zadejte cokoli, co byste chtěli převést z převodu textu
 
 Ujistěte se, že zdrojový kód ukázkové aplikace, jako jsou klíče předplatného odebrání jakýchkoli důvěrných informací.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Prozkoumejte Node.js ukázky na Githubu](https://github.com/Azure-Samples/Cognitive-Speech-TTS/tree/master/Samples-Http/NodeJS)
+> [Prozkoumejte ukázky pro Node. js na GitHubu](https://github.com/Azure-Samples/Cognitive-Speech-TTS/tree/master/Samples-Http/NodeJS)
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také:
 
 * [Referenční informace k rozhraní API pro převod textu na řeč](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis)
 * [Vytvoření vlastního hlasového písma](how-to-customize-voice-font.md)

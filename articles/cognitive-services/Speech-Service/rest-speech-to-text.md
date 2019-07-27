@@ -1,7 +1,7 @@
 ---
-title: Převod řeči na text reference k rozhraní API (REST) – hlasové služby
+title: Referenční informace k rozhraní API pro převod řeči na text (REST) – služba Speech
 titleSuffix: Azure Cognitive Services
-description: Další informace o použití rozhraní REST API pro rozpoznávání řeči na text. V tomto článku se dozvíte o autorizaci, možnosti dotazu, jak strukturovat žádost a přijetí odpovědi.
+description: Naučte se používat REST API převodu řeči na text. V tomto článku se dozvíte o autorizaci, možnosti dotazu, jak strukturovat žádost a přijetí odpovědi.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,19 +10,19 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 9d967fa4d5ba54e4470dadc5e797067454e1769a
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 6324c00d9b85a13ef6e69185e3b380b20f761f3b
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606353"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68552978"
 ---
-# <a name="speech-to-text-rest-api"></a>Rozhraní REST Speech to text API
+# <a name="speech-to-text-rest-api"></a>Převod řeči na text REST API
 
-Jako alternativu k [sadou SDK pro řeč](speech-sdk.md), hlasové služby umožňují převod řeči na text pomocí rozhraní REST API. Každý dostupný koncový bod je přidružen k oblasti. Vaše aplikace vyžaduje klíč předplatného pro koncový bod, který chcete použít.
+Jako alternativu ke službě [Speech SDK](speech-sdk.md)můžete pomocí REST API převést řeč na text. Každý dostupný koncový bod je přidružen k oblasti. Vaše aplikace vyžaduje klíč předplatného pro koncový bod, který chcete použít.
 
-Než začnete používat rozhraní REST API pro rozpoznávání řeči na text, pochopení:
-* 10 sekund nahraného zvukového může obsahovat pouze požadavky, které využívají rozhraní REST API.
+Než začnete používat převod řeči na text, REST API pochopit:
+* Žádosti, které používají REST API, můžou obsahovat jenom 10 sekund zaznamenaného zvuku.
 * Rozhraní REST API pro rozpoznávání řeči na text vrací pouze konečných výsledků. Nejsou k dispozici částečné výsledky.
 
 Pokud odesílání delší zvuk představuje požadavek pro aplikace, zvažte použití [sadou SDK pro řeč](speech-sdk.md) nebo [batch určené k transkripci](batch-transcription.md).
@@ -51,12 +51,12 @@ Tato tabulka obsahuje povinné a nepovinné hlavičky pro žádosti o převod ř
 
 |Hlavička| Popis | Povinné / volitelné |
 |------|-------------|---------------------|
-| `Ocp-Apim-Subscription-Key` | Váš klíč předplatného hlasové služby. | Buď toto záhlaví nebo `Authorization` je povinný. |
+| `Ocp-Apim-Subscription-Key` | Klíč předplatného služby Speech Services | Buď toto záhlaví nebo `Authorization` je povinný. |
 | `Authorization` | Autorizační token předcházet slovo `Bearer`. Další informace najdete v tématu [Ověřování](#authentication). | Buď toto záhlaví nebo `Ocp-Apim-Subscription-Key` je povinný. |
 | `Content-type` | Popisuje formátu a kodek zadaná zvuková data. Platné hodnoty jsou `audio/wav; codecs=audio/pcm; samplerate=16000` a `audio/ogg; codecs=opus`. | Požaduje se |
 | `Transfer-Encoding` | Určuje, že blokového zvukových dat je odesíláno, místo jednoho souboru. Tuto hlavičku používají pouze bloků zvuková data. | Nepovinné |
-| `Expect` | Pokud pomocí přenosu v bloku, pošlete `Expect: 100-continue`. Hlasové služby potvrdí v prvotní žádosti a čeká další data.| Požadováno při odesílání bloku zvuková data. |
-| `Accept` | Pokud je zadán, musí být `application/json`. Hlasové služby poskytují výsledky ve formátu JSON. Některé webové žádosti platformy poskytují nekompatibilní výchozí hodnotu, pokud není zadán, takže je dobrým zvykem vždy zahrnovat `Accept`. | Volitelné, ale doporučené. |
+| `Expect` | Pokud pomocí přenosu v bloku, pošlete `Expect: 100-continue`. Služba Speech Services potvrdí počáteční požadavek a očekává další data.| Požadováno při odesílání bloku zvuková data. |
+| `Accept` | Pokud je zadán, musí být `application/json`. Služba Speech Services poskytuje výsledky ve formátu JSON. Některé webové žádosti platformy poskytují nekompatibilní výchozí hodnotu, pokud není zadán, takže je dobrým zvykem vždy zahrnovat `Accept`. | Volitelné, ale doporučené. |
 
 ## <a name="audio-formats"></a>Formáty zvuku
 
@@ -68,7 +68,7 @@ Zvuk se poslala v těle HTTP `POST` požadavku. Musí být v jednom z formátů,
 | OGG | DÍLE | 16 bitů | 16 kHz, mono |
 
 >[!NOTE]
->Výše uvedené formáty jsou podporované prostřednictvím rozhraní REST API a protokolu WebSocket v hlasových služeb. [Sadou SDK pro řeč](speech-sdk.md) aktuálně podporuje jenom WAV naformátuje PCM kodek.
+>Výše uvedené formáty jsou podporovány prostřednictvím REST API a WebSocket ve službě Speech Services. [Sadou SDK pro řeč](speech-sdk.md) aktuálně podporuje jenom WAV naformátuje PCM kodek.
 
 ## <a name="sample-request"></a>Ukázková žádost
 
@@ -98,7 +98,7 @@ Stavový kód HTTP pro každou odpověď indikuje úspěch nebo běžné chyby.
 
 ## <a name="chunked-transfer"></a>Bloku
 
-Přenos rozdělený do bloků dat (`Transfer-Encoding: chunked`) může pomoct snížit latenci rozpoznávání, protože povoluje hlasové služby začala zpracovat zvukový soubor při přenosu je zašifrované. Rozhraní REST API neposkytuje výsledky částečné nebo dočasné. Tato možnost je určena výhradně pro zvýšení rychlosti odezvy.
+Blokový přenos (`Transfer-Encoding: chunked`) může přispět ke snížení latence při rozpoznávání, protože umožňuje službám Speech začít zpracovávat zvukový soubor během přenosu. Rozhraní REST API neposkytuje výsledky částečné nebo dočasné. Tato možnost je určena výhradně pro zvýšení rychlosti odezvy.
 
 Tento vzorový kód ukazuje, jak posílat zvuk v blocích. Zvukový soubor záhlaví by měl obsahovat pouze u prvního bloku. `request` připojen objekt HTTPWebRequest na příslušný koncový bod REST. `audioFile` je cesta k zvukový soubor na disku.
 
@@ -163,7 +163,7 @@ Výsledky jsou k dispozici jako dokumenty JSON. `simple` Formát obsahuje tato p
 > [!NOTE]
 > Pokud se zvuk skládá pouze z vulgárních výrazů a `profanity` parametr dotazu je nastaven na `remove`, služba nevrací výsledek řeči.
 
-`detailed` Formát obsahuje stejná data jako `simple` formátovat, spolu s `NBest`, seznam alternativních interpretace stejný výsledek rozpoznání. Tyto výsledky jsou řazeny od nejpodezřelejších po pravděpodobně k nejméně pravděpodobně. První položka je stejný jako výsledek hlavní rozpoznání.  Při použití `detailed` formátu `DisplayText` se poskytuje jako `Display` pro každého výsledku v `NBest` seznamu.
+Formát zahrnuje stejná data `simple` jako formát spolu se `NBest`seznamem alternativních interpretů stejného výsledku rozpoznávání. `detailed` Tyto výsledky jsou seřazené z nejpravděpodobnějšího nejnižší pravděpodobně. První položka je stejná jako u hlavního výsledku rozpoznávání.  Při použití `detailed` formátu `DisplayText` se poskytuje jako `Display` pro každého výsledku v `NBest` seznamu.
 
 Každý objekt v `NBest` seznam obsahuje:
 

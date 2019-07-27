@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý start: Syntetizace řeči, jazyka C++ (Linux) – hlasové služby'
+title: 'Rychlý start: Syntetizace řeči, C++ (Linux) – služba Speech'
 titleSuffix: Azure Cognitive Services
-description: Zjistěte, jak tak, aby odpovídaly řeči v jazyce C++ v Linuxu pomocí sadou SDK pro řeč
+description: Naučte se, jak pomocí sady C++ Speech SDK syntetizovat řeč v systému Linux.
 services: cognitive-services
 author: yinhew
 manager: nitinme
@@ -10,22 +10,22 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: yinhew
-ms.openlocfilehash: fbc5f21bb97eabb234e2b3905796ae01877ed89f
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: dbc9c2adc2663d3ba0ec3f9ea17b758ca2723441
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67604943"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68553696"
 ---
-# <a name="quickstart-synthesize-speech-in-c-on-linux-by-using-the-speech-sdk"></a>Rychlý start: Syntetizace řeči v jazyce C++ v Linuxu pomocí sadou SDK pro řeč
+# <a name="quickstart-synthesize-speech-in-c-on-linux-by-using-the-speech-sdk"></a>Rychlý start: Rozpoznávání řeči v C++ systému Linux pomocí sady Speech SDK
 
-Rychlí průvodci jsou také k dispozici pro [rozpoznávání řeči](quickstart-cpp-linux.md).
+K dispozici jsou také rychlé starty pro [rozpoznávání řeči](quickstart-cpp-linux.md).
 
-V tomto článku vytvoříte C++ konzolové aplikace pro Linux (Ubuntu 16.04, Ubuntu 18.04, Debian 9). Použití služeb Cognitive Services [sadou SDK pro řeč](speech-sdk.md) syntetizace řeč z textu v reálném čase a přehrát řeč na váš počítač mluvčího. Aplikace je sestavená se [sadou Speech SDK pro Linux](https://aka.ms/csspeech/linuxbinary) a kompilátorem C++ vaší Linuxové distribuce (například `g++`).
+V tomto článku vytvoříte C++ konzolovou aplikaci pro Linux (Ubuntu 16,04, Ubuntu 18,04, Debian 9). [Sada Cognitive Services Speech SDK](speech-sdk.md) slouží k syntetizování řeči z textu v reálném čase a přehrávání řeči v mluvčím počítače. Aplikace je sestavená se [sadou Speech SDK pro Linux](https://aka.ms/csspeech/linuxbinary) a kompilátorem C++ vaší Linuxové distribuce (například `g++`).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Klíč předplatného hlasové služby k dokončení tohoto rychlého startu potřebujete. Můžete ho získat zdarma. Zobrazit [hlasové služby si můžete vyzkoušet zdarma](get-started.md) podrobnosti.
+K dokončení tohoto rychlého startu budete potřebovat klíč předplatného služby Speech Services. Můžete ho získat zdarma. Další informace najdete v tématu o bezplatném pokusu o [hlasové služby](get-started.md) .
 
 ## <a name="install-speech-sdk"></a>Instalace sady Speech SDK
 
@@ -33,20 +33,20 @@ Klíč předplatného hlasové služby k dokončení tohoto rychlého startu pot
 
 Aktuální verze sady Cognitive Services Speech SDK je `1.6.0`.
 
-Sadu Speech SDK pro Linux můžete použít k sestavení 64bitových i 32bitových aplikací. Požadované knihovny a soubory hlaviček si můžete stáhnout jako soubor tar z https://aka.ms/csspeech/linuxbinary.
+Sadu Speech SDK pro Linux můžete použít k sestavení 64bitových i 32bitových aplikací. Požadované knihovny a hlavičkové soubory lze stáhnout jako soubor tar z https://aka.ms/csspeech/linuxbinary.
 
 Sadu SDK si stáhněte a nainstalujte následujícím způsobem:
 
 1. Ujistěte se, že jsou závislosti sady SDK nainstalované.
 
-   * On Ubuntu:
+   * V Ubuntu:
 
      ```sh
      sudo apt-get update
      sudo apt-get install build-essential libssl1.0.0 libasound2 wget
      ```
 
-   * Na Debian 9:
+   * V Debian 9:
 
      ```sh
      sudo apt-get update
@@ -88,7 +88,7 @@ Sadu SDK si stáhněte a nainstalujte následujícím způsobem:
 
    [!code-cpp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/text-to-speech/cpp-linux/helloworld.cpp#code)]
 
-1. V tento nový soubor, nahraďte řetězec `YourSubscriptionKey` s klíči předplatného hlasové služby.
+1. V tomto novém souboru nahraďte řetězec `YourSubscriptionKey` pomocí klíče předplatného služby Speech Services.
 
 1. Řetězec `YourServiceRegion` nahraďte [oblastí](regions.md) přidruženou k vašemu předplatnému (například `westus` pro bezplatnou zkušební verzi předplatného).
 
@@ -131,7 +131,7 @@ Sadu SDK si stáhněte a nainstalujte následujícím způsobem:
    ./helloworld
    ```
 
-1. V okně konzoly výzva zobrazí, vás vyzve k zadání nějaký text. Zadejte pár slov nebo věty. Text, který jste zadali se přenášejí do služeb řeči a syntetizovat do mluvené řeči, který přehraje na reproduktoru.
+1. V okně konzoly se zobrazí výzva s výzvou k zadání textu. Zadejte několik slov nebo větu. Text, který jste zadali, se přenáší do služeb řeči a syntetizuje se na řeč, který hraje na reproduktoru.
 
    ```text
    Type some text that you want to speak...
@@ -140,12 +140,12 @@ Sadu SDK si stáhněte a nainstalujte následujícím způsobem:
    Press enter to exit...
    ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Prozkoumejte C++ – ukázky na Githubu](https://aka.ms/csspeech/samples)
+> [Prozkoumejte C++ ukázky na GitHubu](https://aka.ms/csspeech/samples)
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také:
 
-- [Přizpůsobení hlasová písma](how-to-customize-voice-font.md)
-- [Záznam hlasu ukázky](record-custom-voice-samples.md)
+- [Přizpůsobení hlasových písem](how-to-customize-voice-font.md)
+- [Záznam ukázek hlasu](record-custom-voice-samples.md)

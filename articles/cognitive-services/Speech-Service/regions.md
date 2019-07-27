@@ -1,6 +1,6 @@
 ---
-title: Oblastí – hlasové služby
-titlesuffix: Azure Cognitive Services
+title: Oblasti – služba řeči
+titleSuffix: Azure Cognitive Services
 description: Referenční informace pro oblasti Speech Service.
 services: cognitive-services
 author: mahilleb-msft
@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/12/2019
 ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: 1ad618e9eb70fd75f433030584c0f6538532928f
-ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
+ms.openlocfilehash: c0414277b4851891911908ba4f42e92abedc86e4
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67466993"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68553217"
 ---
 # <a name="speech-service-supported-regions"></a>Speech Service podporované oblasti
 
@@ -26,26 +26,26 @@ Ujistěte se, že používáte koncového bodu, který se shoduje s oblastí pro
 
 ## <a name="speech-sdk"></a>Speech SDK
 
-V [sadou SDK pro řeč](speech-sdk.md), oblastí jsou určené jako řetězec (například jako parametr `SpeechConfig.FromSubscription` v sadou SDK pro řeč pro jazyk C#).
+V [sadě Speech SDK](speech-sdk.md)jsou oblasti určeny jako řetězec (například jako parametr `SpeechConfig.FromSubscription` v sadě Speech SDK pro C#).
 
-### <a name="speech-to-text-text-to-speech-and-translation"></a>Převod řeči na text, převodu textu na řeč a překladu
+### <a name="speech-to-text-text-to-speech-and-translation"></a>Převod řeči na text, převod textu na řeč a překlad
 
-Sadou SDK pro řeč je k dispozici v těchto oblastech pro **rozpoznávání řeči**, **převod textu na řeč**, a **překlad**:
+Sada Speech SDK je k dispozici v těchto oblastech pro **rozpoznávání řeči**, převod **textu na řeč**a **překlady**:
 
   Oblast | Parametr SDK řeči | Přizpůsobení portálu řeči
  ------|-------|--------
- Západní USA | `westus` | https://westus.cris.ai
- Západní USA 2 | `westus2` | https://westus2.cris.ai
- USA – východ | `eastus` | https://eastus.cris.ai
+ USA – západ | `westus` | https://westus.cris.ai
+ USA – západ 2 | `westus2` | https://westus2.cris.ai
+ East US | `eastus` | https://eastus.cris.ai
  Východní USA 2 | `eastus2` | https://eastus2.cris.ai
- USA – střed | `centralus` | https://centralus.cris.ai
- Středoseverní USA | `northcentralus` | https://northcentralus.cris.ai
- Středojižní USA | `southcentralus` | https://southcentralus.cris.ai
+ Střed USA | `centralus` | https://centralus.cris.ai
+ Střed USA – sever | `northcentralus` | https://northcentralus.cris.ai
+ Střed USA – jih | `southcentralus` | https://southcentralus.cris.ai
  Střed Indie | `centralindia` | https://centralindia.cris.ai
  Východní Asie | `eastasia` | https://eastasia.cris.ai
  Jihovýchodní Asie | `southeastasia` | https://southeastasia.cris.ai
  Japonsko – východ | `japaneast` | https://japaneast.cris.ai
- Korea – střed | `koreacentral` | https://koreacentral.cris.ai
+ Jižní Korea – střed | `koreacentral` | https://koreacentral.cris.ai
  Austrálie – východ | `australiaeast` | https://australiaeast.cris.ai
  Kanada – střed | `canadacentral` | https://canadacentral.cris.ai
  Severní Evropa | `northeurope` | https://northeurope.cris.ai
@@ -55,7 +55,7 @@ Sadou SDK pro řeč je k dispozici v těchto oblastech pro **rozpoznávání ře
 
 ### <a name="intent-recognition"></a>Rozpoznání záměru
 
-Dostupné oblasti pro **rozpoznání záměru** prostřednictvím sadou SDK pro řeč jsou následující:
+Dostupné oblasti pro **rozpoznávání záměrů** prostřednictvím sady Speech SDK jsou následující:
 
  Globální oblast | Oblast | Parametr SDK řeči
  ------|-------|--------
@@ -64,25 +64,25 @@ Dostupné oblasti pro **rozpoznání záměru** prostřednictvím sadou SDK pro 
  Austrálie | Austrálie – východ | `australiaeast`
  Evropa | Severní Evropa | `northeurope`
  Evropa | Západní Evropa | `westeurope`
- Severní Amerika | USA – východ | `eastus`
+ Severní Amerika | East US | `eastus`
  Severní Amerika | Východní USA 2 | `eastus2`
- Severní Amerika | Středojižní USA | `southcentralus`
+ Severní Amerika | Střed USA – jih | `southcentralus`
  Severní Amerika | Západní střed USA | `westcentralus`
- Severní Amerika | Západní USA | `westus`
- Severní Amerika | Západní USA 2 | `westus2`
+ Severní Amerika | USA – západ | `westus`
+ Severní Amerika | USA – západ 2 | `westus2`
  Jižní Amerika | Brazílie – jih | `brazilsouth`
 
-Toto je podmnožinou publikování oblastí podporovaných službou [služby Language Understanding (LUIS)](/azure/cognitive-services/luis/luis-reference-regions).
+Toto je podmnožina oblastí publikování, které podporuje [služba Language Understanding (Luis)](/azure/cognitive-services/luis/luis-reference-regions).
 
-### <a name="voice-first-virtual-assistants"></a>Asistenti virtuální první hlasu
+### <a name="voice-first-virtual-assistants"></a>Virtuální asistenti prvního hlasu
 
-[Sadou SDK pro řeč](speech-sdk.md) podporuje **virtuálních asistentů hlasové první** možnosti v těchto oblastech:
+[Sada Speech SDK](speech-sdk.md) podporuje funkce pro **virtuální asistenty prvního hlasu** v těchto oblastech:
 
 Oblast | Parametr SDK řeči
 -------|---------------------
-Západní USA | `westus`
-Západní USA 2 | `westus2`
-USA – východ | `eastus`
+USA – západ | `westus`
+USA – západ 2 | `westus2`
+East US | `eastus`
 Východní USA 2 | `eastus2`
 Západní Evropa | `westeurope`
 Severní Evropa | `northeurope`
@@ -94,12 +94,12 @@ Speech service také poskytuje koncové body REST pro požadavky na převod ře�
 
 ### <a name="speech-to-text"></a>Převod řeči na text
 
-Převod řeči na text referenční dokumentaci, naleznete v tématu [rozhraní REST API pro rozpoznávání řeči na text](rest-speech-to-text.md).
+Referenční dokumentaci k textu pro převod řeči na text najdete v tématu [REST API řeči](rest-speech-to-text.md).
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-endpoints-speech-to-text.md)]
 
 ### <a name="text-to-speech"></a>Převod textu na řeč
 
-Převod textu na řeč referenční dokumentaci najdete v tématu [rozhraní REST API pro převod textu na řeč](rest-text-to-speech.md).
+Referenční dokumentaci pro převod textu na řeč najdete v tématu [REST API převodu textu na řeč](rest-text-to-speech.md).
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-endpoints-text-to-speech.md)]

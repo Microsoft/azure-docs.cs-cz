@@ -1,6 +1,6 @@
 ---
-title: Scénář dostupnost – hlasové služby
-titlesuffix: Azure Cognitive Services
+title: Dostupnost scénáře – služba pro rozpoznávání řeči
+titleSuffix: Azure Cognitive Services
 description: Referenční informace pro oblasti Speech Service.
 services: cognitive-services
 author: chrisbasoglu
@@ -10,40 +10,40 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/07/2019
 ms.author: cbasoglu
-ms.openlocfilehash: 7aa2c72a01f1887ea9680f8d5706b825a49039a1
-ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
+ms.openlocfilehash: 94fd415909e86a43916ee2f510732a6a6d9c5ed3
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67561288"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68552958"
 ---
-# <a name="scenario-availability"></a>Scénář dostupnosti
+# <a name="scenario-availability"></a>Dostupnost scénáře
 
-Speech service SDK nabízí mnoho scénářů napříč celou řadu programovacích jazyků a prostředí.  Všechny scénáře ještě nejsou aktuálně k dispozici ve všech programovacích jazyků nebo pro všechna prostředí.  Tady je dostupnost jednotlivých scénářů.
+Sada SDK služby pro rozpoznávání řeči nabízí mnoho scénářů napříč širokou škálou programovacích jazyků a prostředí.  Ne všechny scénáře jsou aktuálně k dispozici ve všech programovacích jazycích nebo ve všech prostředích.  Níže je uveden seznam dostupnosti jednotlivých scénářů.
 
-- **Rozpoznávání řeči (SR), seznam frází, záměr, překlad a On-premises kontejnery**
-  - Všechny programovací jazyky nebo prostředími ve kterých je odkaz na šipku <img src="media/index/link.jpg" height="15" width="15"></img> v tabulce rychlý Start [tady](https://aka.ms/csspeech).
-- **Převod textu na ŘEČ**
-  - C++/ Windows a Linuxu
-  - C#/ Windows a UPW a Unity
-  - Rozhraní REST API pro převod textu na ŘEČ, je možné v každé situaci.
-- **Probuzení Word (klíčové slovo Spotter/KWS)**
-  - C++/ Windows a Linuxu
-  - C#/ Windows a Linuxu
-  - Python/Windows a Linuxu
-  - Java/Windows a Linuxu a Android (řeči zařízení SDK)
-  - Funkce probuzení Wordu (klíčové slovo Spotter/KWS) může fungovat s jakýmkoli typem mikrofon, oficiální KWS podporu, ale aktuálně je omezená na mikrofon pole nachází v Azure Kinect DK hardwaru nebo sadou SDK pro řeč zařízení
-- **Voice-First Virtual Assistant**
-  - C++/ Windows a Linuxu a macOS
+- **Rozpoznávání řeči (SR), seznam frází, záměr, překlad a místní kontejnery**
+  - Všechny programovací jazyky/prostředí, ve kterých se nachází odkaz na šipku <img src="media/index/link.jpg" height="15" width="15"></img> v tabulce pro rychlé zprovoznění [tady](https://aka.ms/csspeech).
+- **PŘEVOD textu na řeč**
+  - C++/Windows & Linux
+  - C#/Windows & UWP & Unity
+  - REST API TTS lze použít v každé jiné situaci.
+- **Wake Word (klíčové slovo spotter/KWS)**
+  - C++/Windows & Linux
+  - C#/Windows & Linux
+  - Python/Windows & Linux
+  - Java/Windows & Linux & Android (Speech Devices SDK)
+  - Funkce Wake Word (klíčové slovo spotter/KWS) můžou fungovat s jakýmkoli typem mikrofonu. oficiální podpora KWS se ale v tuto chvíli omezila na pole mikrofonu, která najdete v hardwaru Azure Kinect DK nebo v sadě Speech SDK pro zařízení.
+- **Hlas – první virtuální asistent**
+  - C++/Windows & Linux & macOS
   - C#/Windows
-  - Java/Windows & Linux a macOS a Android (sadou SDK pro řeč zařízení)
+  - Java/Windows & Linux & macOS & Android (Speech Devices SDK)
 - **Přepis konverzace**
-  - C++/ Windows a Linuxu
-  - C#(Rozhraní framework a .NET Core) / Windows a UPW a Linuxu
-  - Java/Windows a Linuxu a Android (řeči zařízení SDK)
-- **Přepis Call Center**
-  - Rozhraní REST API a je možné v každé situaci
-- **Kodek komprimované zvukového vstupu**
-  - C++/ Linux
+  - C++/Windows & Linux
+  - C#(Rozhraní Framework & .NET Core)/Windows & UWP & Linux
+  - Java/Windows & Linux & Android (Speech Devices SDK)
+- **Přepis centra volání**
+  - REST API a lze je použít v jakékoli situaci
+- **Komprimovaný zvukový vstup kodeku**
+  - C++/Linux
   - C#/Linux
-  - Java/Linux a Android
+  - Java/Linux & Android

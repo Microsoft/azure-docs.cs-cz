@@ -10,10 +10,10 @@ ms.date: 09/24/2018
 ms.author: danlep
 ms.custom: seodec18, mvc
 ms.openlocfilehash: a9e84210427612143bffe33efe4a5da5364b7a22
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68310438"
 ---
 # <a name="tutorial-build-and-deploy-container-images-in-the-cloud-with-azure-container-registry-tasks"></a>Kurz: Sestavování a nasazování imagí kontejneru v cloudu s využitím Azure Container Registrych úloh
@@ -192,7 +192,7 @@ az keyvault create --resource-group $RES_GROUP --name $AKV_NAME
 
 Teď je potřeba vytvořit instanční objekt a uložit jeho přihlašovací údaje do trezoru klíčů.
 
-Pomocí příkaz [AZ AD SP Create-for-RBAC][az-ad-sp-create-for-rbac] command to create the service principal, and [az keyvault secret set][az-keyvault-secret-set] uložte **heslo** instančního objektu do trezoru:
+Pomocí příkazu [AZ AD SP Create-for-RBAC][az-ad-sp-create-for-rbac] vytvořte instanční objekt a vyaz heslo [tajného klíče trezoru][az-keyvault-secret-set] klíčů, aby se uložilo **heslo** objektu služby v trezoru:
 
 ```azurecli-interactive
 # Create service principal, store its password in AKV (the registry *password*)
@@ -308,7 +308,7 @@ az group delete --resource-group $RES_GROUP
 az ad sp delete --id http://$ACR_NAME-pull
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Teď, když jste pomocí rychlé úlohy otestovali vnitřní smyčku, můžete nakonfigurovat **úlohu sestavení**, která aktivuje sestavení imagí kontejnerů při potvrzení zdrojového kódu do úložiště Git:
 

@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý start: Překlad řeči, jazyka Java (Windows, Linux) – hlasové služby'
+title: 'Rychlý start: Převod řeči, Java (Windows, Linux) – Speech Service'
 titleSuffix: Azure Cognitive Services
-description: V tomto rychlém startu vytvoříte jednoduchou aplikaci Java zaznamenat uživatelské řeči, přeloží ji do jiného jazyka a panelem text do příkazového řádku. Tato příručka je určená pro uživatele Windows a Linux.
+description: V tomto rychlém startu vytvoříte jednoduchou aplikaci v jazyce Java, která bude zachytávání uživatelského rozpoznávání řeči, jeho překladu do jiného jazyka a výstup textu do příkazového řádku. Tato příručka je určená pro uživatele systému Windows a Linux.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,40 +10,40 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 68567e673cf6fb53b8d9b6f7b9ef96aee691ac3a
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: cbb86dd4b24cb325b8ea6708ebc2ffc89a697757
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67604955"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68553392"
 ---
 # <a name="quickstart-translate-speech-with-the-speech-sdk-for-java"></a>Rychlý start: Překlad řeči se sadou SDK pro řeč pro Javu
 
-Rychlí průvodci jsou také k dispozici pro [speech to text](quickstart-java-jre.md) a [virtuálních asistentů hlasové první](quickstart-virtual-assistant-java-jre.md).
+K dispozici jsou také rychlé starty pro [virtuální asistenty](quickstart-virtual-assistant-java-jre.md) [pro převod řeči na text](quickstart-java-jre.md) a hlas.
 
-V tomto rychlém startu vytvoříte jednoduchou aplikaci Java, která zachycuje uživatele řeči z vašeho počítače mikrofonu, přeloží řeč a transcribes přeložený text do příkazového řádku v reálném čase. Tato aplikace je navržen pro spouštění na 64-bit Windows 64-bit Linux (Ubuntu 16.04, 18.04 Ubuntu, Debian 9) nebo v systému macOS 10.13 nebo novější. Je vytvořen pomocí balíčku Maven řeči sady SDK a Eclipse Java IDE.
+V tomto rychlém startu vytvoříte jednoduchou aplikaci v jazyce Java, která zachycuje řeč uživatele z mikrofonu vašeho počítače, převede řeč a transcribes přeložený text do příkazového řádku v reálném čase. Tato aplikace je navržená tak, aby běžela na 64 Windows nebo 64 systému Linux (Ubuntu 16,04, Ubuntu 18,04, Debian 9), nebo v macOS 10,13 nebo novějším. Je sestavená pomocí balíčku Maven sady Speech SDK a Java IDE zatmění.
 
-Úplný seznam jazyků, které jsou k dispozici pro překlad řeči, naleznete v tématu [jazykovou podporu](language-support.md).
+Úplný seznam jazyků dostupných pro překlad řeči najdete v tématu [Podpora jazyků](language-support.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
 K tomuto rychlému startu potřebujete:
 
-* Operační systém: 64bitová verze Windows 64-bit Linux (Ubuntu 16.04, Ubuntu 18.04, Debian 9) a macOS 10.13 nebo novější
-* [Eclipse Java IDE](https://www.eclipse.org/downloads/)
+* Operační systém: 64-bit Windows, 64-bit Linux (Ubuntu 16,04, Ubuntu 18,04, Debian 9) nebo macOS 10,13 nebo novější
+* [Java IDE zatmění](https://www.eclipse.org/downloads/)
 * [Java 8](https://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html) nebo [JDK 8](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
-* Klíč předplatného pro službu rozpoznávání řeči. [Získat zdarma](get-started.md).
+* Klíč předplatného Azure pro službu Speech Service. [Získejte je zdarma](get-started.md).
 
-Pokud používáte systém Linux, ujistěte se, že jsou tyto závislosti nainstalovány před zahájením Eclipse.
+Pokud používáte systém Linux, ujistěte se, že jsou tyto závislosti nainstalovány před spuštěním služby zatmění.
 
- * On Ubuntu:
+ * V Ubuntu:
 
    ```sh
    sudo apt-get update
    sudo apt-get install libssl1.0.0 libasound2
    ```
 
- * Na Debian 9:
+ * V Debian 9:
 
    ```sh
    sudo apt-get update
@@ -79,19 +79,19 @@ Pokud používáte systém Linux, ujistěte se, že jsou tyto závislosti nainst
 
 Stiskněte F11 nebo vyberte **Run** (Spustit)  >  **Debug** (Ladit).
 
-Řeči vstup z mikrofon se převede do němčiny a protokolovány v okně konzoly. Stisknutím klávesy "Enter" zastavit zachytávání řeči.
+Vstup z mluveného slova z vašeho mikrofonu se přepisu do němčiny a přihlásí v okně konzoly. Zachytávání řeči zastavíte stisknutím klávesy ENTER.
 
 ![Snímek obrazovky s výstupem konzoly po úspěšném rozpoznání](media/sdk/qs-translate-java-jre-output.png)
 
 ## <a name="next-steps"></a>Další postup
 
-Další ukázky, jako je čtení řeči ze zvukových souboru a výstup přeložený text jako řečového, jsou k dispozici na Githubu.
+Na GitHubu jsou k dispozici další ukázky, jako je například čtení řeči ze zvukového souboru a výstup přeloženého textu jako syntetizované řeči.
 
 > [!div class="nextstepaction"]
-> [Prozkoumejte ukázky v Javě na Githubu](https://aka.ms/csspeech/samples)
+> [Zkoumání ukázek Java na GitHubu](https://aka.ms/csspeech/samples)
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také:
 
-- [Rychlé zprovoznění: Rozpoznávání řeči, jazyka Java (Windows, Linux)](quickstart-java-jre.md)
+- [Rychlé zprovoznění: Rozpoznávání řeči, Java (Windows, Linux)](quickstart-java-jre.md)
 - [Přizpůsobení akustických modelů](how-to-customize-acoustic-models.md)
 - [Přizpůsobení jazykových modelů](how-to-customize-language-model.md)

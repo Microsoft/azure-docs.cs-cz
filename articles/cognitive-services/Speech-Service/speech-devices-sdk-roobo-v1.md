@@ -1,7 +1,7 @@
 ---
-title: Rozpoznávání řeči zařízení SDK Roobo Smart zvuku Dev Kit v1 – hlasové služby
+title: Speech Devices SDK Roobo Smart audio dev Kit v1 – Speech Service
 titleSuffix: Azure Cognitive Services
-description: Požadavky a pokyny pro zahájení práce s zařízení sadou SDK pro řeč, Roobo inteligentní zvuk Dev Kit v1.
+description: Požadavky a pokyny pro zahájení práce se sadou Speech Devices SDK a Roobo Smart audio dev Kit v1.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,26 +10,26 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: e4aba26238a0d87c8e708ae27c7b2dbdb73f16ab
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 08bac7cd833f52d2dfec4561c2f87330a4119748
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67604837"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68552862"
 ---
-# <a name="device-roobo-smart-audio-dev-kit"></a>Zařízení: Roobo Smart zvuku Dev Kit
+# <a name="device-roobo-smart-audio-dev-kit"></a>Zařízení: Sada Roobo Smart audio dev Kit
 
-Tento článek obsahuje konkrétní informace o zařízení pro Roobo inteligentní zvuk Dev Kit.
+Tento článek popisuje informace specifické pro zařízení pro sadu Roobo Smart audio dev Kit.
 
 ## <a name="set-up-the-development-kit"></a>Nastavení sady development kit
 
-1. Vývojová sada obsahuje dva konektory micro USB. Je vlevo konektor k sadě pro vývoj a je zvýrazněn jako napájení na následujícím obrázku. Vpravo je ovládat ji a je označen ladění na obrázku.
+1. Vývojová sada má dva konektory USB. Levý konektor je Power Kit a na obrázku níže se zvýrazní jako napájení. Napravo je jeho řízení a je označeno jako ladění v obrázku.
 
     ![připojení dev kit](media/speech-devices-sdk/qsg-1.png)
 
-1. Vývojová sada Power pomocí kabelu USB micro pro připojení k počítači port, který power nebo napájení adaptér. Indikátor zelené power bude zprovoznění v horním panelu.
+1. Pokud chcete připojit port napájení k počítači nebo adaptéru napájení, zapněte vývojovou sadu pomocí kabelu mikroUSB. Zelený indikátor napájení se na horní desce rozsvítí.
 
-1. K řízení development kit, připojení k počítači pomocí druhého micro USB kabelu portu ladění. Je nutné pomocí kabelu vysoce kvalitní zajistit spolehlivou komunikaci.
+1. K řízení vývojové sady připojte port ladění k počítači pomocí druhého kabelu USB. Je nutné používat vysoce kvalitní kabel k zajištění spolehlivé komunikace.
 
 1. Orientovat vývojové sady pro buď zacyklená nebo lineární konfigurace.
 
@@ -40,7 +40,7 @@ Tento článek obsahuje konkrétní informace o zařízení pro Roobo inteligent
 
     ![orientace lineární dev kit](media/speech-devices-sdk/qsg-2.png)
 
-1. Instalace certifikátů a nastavení oprávnění zvukové zařízení. V okně příkazového řádku zadejte následující příkazy:
+1. Nainstalujte certifikáty a nastavte oprávnění pro zvukové zařízení. V okně příkazového řádku zadejte následující příkazy:
 
    ```powershell
    adb push C:\SDSDK\Android-Sample-Release\scripts\roobo_setup.sh /data/
@@ -54,23 +54,23 @@ Tento článek obsahuje konkrétní informace o zařízení pro Roobo inteligent
     > [!NOTE]
     > Tyto příkazy používají Android Debug Bridge, `adb.exe`, který je součástí instalace sady Android Studio. Tento nástroj se nachází v C:\Users\[uživatelské jméno] \AppData\Local\Android\Sdk\platform nástroje. Tento adresář můžete přidat do cesty k němu pohodlnější, který má být vyvolán `adb`. V opačném případě musíte zadat úplnou cestu k instalaci adb.exe v každý příkaz, který vyvolá `adb`.
     >
-    > Pokud se zobrazí chyba `no devices/emulators found` zkontrolujte USB kabelu je připojený a vysoce kvalitní kabel. Můžete použít `adb devices` ke kontrole, že počítač může kontaktovat pracovníka development Kit jako vrátí seznam zařízení.
+    > Pokud se zobrazí chyba `no devices/emulators found` , zkontrolujte, zda je kabel USB připojen a je kabelem vysoké kvality. Můžete použít `adb devices` ke kontrole, jestli počítač může komunikovat s vývojovou sadou, protože vrátí seznam zařízení.
     >
     > [!TIP]
     > Ztlumte mikrofonu a reproduktorů Ujistěte se, že pracujete s mikrofonů development kit v počítači. Díky tomu nebude aktivujete omylem zařízení se zvukem z počítače.
 
-1. Pokud se chcete připojit mluvčího dev Kit, můžete ho připojíte k zvukového výstupu. Měli byste zvolit kvalitní mluvčího s analogové moduly 3,5 mm.
+1. Pokud se chcete připojit mluvčího dev Kit, můžete ho připojíte k zvukového výstupu. Měli byste zvolit kvalitní mluvčí s analogovým konektorem 3,5 mm.
 
     ![Vysor zvuku](media/speech-devices-sdk/qsg-14.png)
 
-## <a name="development-information"></a>Informace o vývoj
+## <a name="development-information"></a>Informace o vývoji
 
-Další informace o vývoj, naleznete v tématu [Příručka pro vývojáře v Roobo](http://dwn.roo.bo/server_upload/ddk/ROOBO%20Dev%20Kit-User%20Guide.pdf).
+Další informace o vývoji najdete v [příručce pro vývoj Roobo](http://dwn.roo.bo/server_upload/ddk/ROOBO%20Dev%20Kit-User%20Guide.pdf).
 
 ## <a name="audio"></a>Zvuk
 
-Roobo poskytuje nástroj, který zachycuje všechny zvuk na flash paměti. Občas může pomoci při odstraňování problémů zvuku. Verze nástroje se poskytuje pro každou konfiguraci development kit. Na [Roobo lokality](https://ddk.roobo.com/), vyberte zařízení a pak vyberte **Roobo nástroje** odkaz v dolní části stránky.
+Roobo poskytuje nástroj, který zachycuje všechny zvuky do paměti Flash. Občas může pomoci při odstraňování problémů zvuku. Verze nástroje se poskytuje pro každou konfiguraci development kit. Na [webu Roobo](https://ddk.roobo.com/)vyberte své zařízení a potom v dolní části stránky vyberte odkaz **nástroje Roobo** .
 
 ## <a name="next-steps"></a>Další postup
 
-* [Spuštění aplikace ukázka pro Android](speech-devices-sdk-android-quickstart.md)
+* [Spuštění ukázkové aplikace pro Android](speech-devices-sdk-android-quickstart.md)

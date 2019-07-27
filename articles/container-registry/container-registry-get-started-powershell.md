@@ -10,10 +10,10 @@ ms.date: 01/22/2019
 ms.author: danlep
 ms.custom: seodec18, mvc
 ms.openlocfilehash: f99b4ee6dd11a109d1c563c84debc2157cb03337
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68309502"
 ---
 # <a name="quickstart-create-a-private-container-registry-using-azure-powershell"></a>Rychlý start: Vytvoření soukromého registru kontejnerů pomocí Azure PowerShell
@@ -26,7 +26,7 @@ Azure Container Registry je spravovaná privátní služba registru kontejneru D
 
 Tento rychlý Start vyžaduje modul Azure PowerShell. Svou nainstalovanou verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable Az`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps).
 
-Je také nutné mít Docker nainstalovaný místně. Docker poskytuje balíčky pro systémy [MacOS][docker-mac], [Windows][docker-windows]a [Linux][Docker-Linux] .
+Je také nutné mít Docker nainstalovaný místně. Docker poskytuje balíčky pro systémy [MacOS][docker-mac], [Windows][docker-windows]a [Linux][docker-linux] .
 
 Azure Cloud Shell neobsahuje všechny požadované součásti Dockeru (démon `dockerd`), a proto pro tento rychlý start nelze Cloud Shell použít.
 
@@ -46,7 +46,7 @@ Až budete s Azure ověřeni, vytvořte skupinu prostředků pomocí [New-AzReso
 New-AzResourceGroup -Name myResourceGroup -Location EastUS
 ```
 
-## <a name="create-container-registry"></a>Vytvoření registru kontejneru
+## <a name="create-container-registry"></a>Vytvořit registr kontejneru
 
 V dalším kroku vytvořte v nové skupině prostředků registr kontejneru pomocí příkazu [New-AzContainerRegistry][New-AzContainerRegistry] .
 

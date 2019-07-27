@@ -1,7 +1,7 @@
 ---
-title: Řešení potíží s zařízení řeči SDK – hlasové služby
+title: Řešení potíží se službou Speech SDK – Speech Service
 titleSuffix: Azure Cognitive Services
-description: Tento článek obsahuje informace, které vám pomůžou při řešení problémů, že se můžete setkat při použití sady SDK zařízení řeči.
+description: Tento článek poskytuje informace, které vám pomůžou při řešení problémů, se kterými se můžete setkat při používání sady Speech Devices SDK.
 services: cognitive-services
 author: mswellsi
 manager: nitinme
@@ -10,20 +10,20 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: wellsi
-ms.openlocfilehash: f55171a177dfcbebb9bc6df5ce125a8f29494946
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 9a757402360b4b69e760315a809482be9b4e04d4
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606300"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68558906"
 ---
 # <a name="troubleshoot-the-speech-devices-sdk"></a>Řešení potíže se sadou Speech Devices SDK
 
-Tento článek obsahuje informace, které vám pomůžou při řešení problémů, že se můžete setkat při použití sady SDK zařízení řeči.
+Tento článek poskytuje informace, které vám pomůžou při řešení problémů, se kterými se můžete setkat při používání sady Speech Devices SDK.
 
 ## <a name="certificate-failures"></a>Selhání certifikátu
 
-Pokud se zobrazí chyby certifikátů při používání hlasové služby, ujistěte se, že vaše zařízení má správné datum a čas:
+Pokud při používání služeb řeči dojde k selhání certifikátu, ujistěte se, že má vaše zařízení správné datum a čas:
 
 1. Přejděte na **nastavení**. V části **systému**vyberte **datum a čas**.
 
@@ -35,6 +35,6 @@ Pokud se zobrazí chyby certifikátů při používání hlasové služby, ujist
 
     Když se zobrazí, že dev kit čas odpovídá času ve vašem počítači, dev kit je připojený k Internetu.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Přečtěte si poznámky k verzi](devices-sdk-release-notes.md)

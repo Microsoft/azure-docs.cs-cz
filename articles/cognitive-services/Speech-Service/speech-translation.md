@@ -1,7 +1,7 @@
 ---
-title: Překlad řeči Speech službami Azure
-titlesuffix: Azure Cognitive Services
-description: Hlasové služby umožňují přidat začátku do konce, v reálném čase, vícejazykového překlad řeči do aplikací, nástroje a zařízení. Stejného rozhraní API můžete použít pro překlad řeči řeči a rozpoznávání řeči na text.
+title: Překlad řeči pomocí služby Speech
+titleSuffix: Azure Cognitive Services
+description: Služba Speech umožňuje přidat do aplikací, nástrojů a zařízení komplexní překlady řeči v reálném čase na více jazyků. Stejného rozhraní API můžete použít pro překlad řeči řeči a rozpoznávání řeči na text.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,34 +10,34 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 428dba9e8ff5ec072d5172fee357fd5319d04ad8
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: cfcefd0b18831163324519b61dbea305f90f44bc
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67657733"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68552648"
 ---
-# <a name="what-is-speech-translation"></a>Co je pro překlad řeči?
+# <a name="what-is-speech-translation"></a>Co je překlad řeči?
 
-Překlad řeči z hlasové služby Azure, umožňuje v reálném čase, vícejazykového řeči řeči a rozpoznávání řeči na text překlad zvukové streamy. Se sadou SDK pro řeč aplikace, nástroje a zařízení mít přístup k přepisů zdroje a překladu výstupy pro zadaný zvuk. Dočasné určené k transkripci a překladu výsledky jsou vráceny podle zjištění řeči a finále výsledky mohou být převedeny na řečového.
+Překlad řeči z Azure Speech Services umožňuje v reálném čase využívat Převod zvukových datových proudů na řeč v reálném čase a převod řeči na text. Pomocí sady Speech SDK mají vaše aplikace, nástroje a zařízení přístup ke zdroji přepisů a výstupům překladu pro daný zvuk. Průběžné výsledky přepisu a překladu se vrátí, protože se detekuje řeč a konečné výsledky je možné převést na syntetizované řeč.
 
-Překlad modulu společnosti Microsoft využívá k tomu dva různé přístupy: statistické strojový překlad (SMT) a strojovému překladu neuronových (sítí NMT). SMT využívá pokročilé statistická odhadnout nejlepší možné překlady daném kontextu pár slov. S NMT neuronové sítě umožňují zajistit přesnější, přirozeného to nezní překlady pomocí úplný kontext věty překládat slova.
+Překladatelské modul společnosti Microsoft používá dva různé přístupy: statistická strojové překlady (SMT) a neuronové Machine Translation (NMT). SMT používá pokročilou statistickou analýzu k odhadu nejlepší možné překlady s ohledem na kontext několika slov. Pomocí NMT se sítě neuronové používají k zajištění přesnější a přirozeného akustického překladu pomocí úplného kontextu vět k překladu slov.
 
-Dnes společnost Microsoft používá NMT pro překlad pro Nejoblíbenější jazyky. Všechny [jazyky dostupné pro překlad řeči speech](language-support.md#speech-translation) NMT využívají. Překlad řeči na text pomocí SMT nebo NMT v závislosti na pár jazyka. Pokud cílový jazyk je podporována NMT, úplný překlad je s využitím NMT. Cílový jazyk není podporován NMT, překlad při hybridním NMT a SMT, pomocí angličtina jako "kontingenční tabulku" mezi dva jazyků.
+Dnes Microsoft používá NMT k překladu do nejoblíbenějších jazyků. Všechny [jazyky dostupné pro překlad řeči speech](language-support.md#speech-translation) NMT využívají. Překlad řeči na text pomocí SMT nebo NMT v závislosti na pár jazyka. Pokud je cílový jazyk podporován nástrojem NMT, úplný překlad je NMT. Pokud NMT cílový jazyk nepodporuje, je překlad hybridem NMT a SMT, a to pomocí angličtiny jako "Pivot" mezi dvěma jazyky.
 
 ## <a name="core-features"></a>Základní funkce
 
-Zde jsou funkce k dispozici prostřednictvím rozhraní REST API a sadou SDK pro řeč:
+Tady jsou funkce, které jsou k dispozici prostřednictvím sady Speech SDK a rozhraní REST API:
 
 | Případ použití | Sada SDK | REST |
 |----------|-----|------|
 | Překlad řeči na text s výsledky rozpoznávání. | Ano | Ne |
-| Překlad řeči speech. | Ano | Ne |
-| Dočasné rozpoznávání a překladu výsledky. | Ano | Ne |
+| Překlad řeči na řeč. | Ano | Ne |
+| Výsledky dočasnáho rozpoznávání a překladu. | Ano | Ne |
 
-## <a name="get-started-with-speech-translation"></a>Začínáme s překlad řeči
+## <a name="get-started-with-speech-translation"></a>Začínáme s překladem řeči
 
-Nabízíme rychlí průvodci navržená tak, aby se spouštěním kódu za méně než 10 minut. Tato tabulka obsahuje seznam šablon rychlý start překlad řeči uspořádané podle jazyka.
+Nabízíme rychlé starty, které jsou navržené tak, aby běžely kód za méně než 10 minut. Tato tabulka obsahuje seznam rychlých startů překladu řeči uspořádaných podle jazyka.
 
 | Rychlý start | Platforma | API – referenční informace |
 |------------|----------|---------------|
@@ -49,25 +49,25 @@ Nabízíme rychlí průvodci navržená tak, aby se spouštěním kódu za mén�
 
 ## <a name="sample-code"></a>Ukázka kódu
 
-Ukázkový kód pro zpracování řeči SDK je k dispozici na Githubu. Tyto ukázky zahrnují běžné scénáře, jako jsou čtení zvuk ze souboru nebo datový proud, průběžné a jednorázová rozpoznávání/překlad prostředků a práci s vlastní modely.
+Vzorový kód pro sadu Speech SDK je k dispozici na GitHubu. Tyto ukázky se týkají běžných scénářů, jako je čtení zvuku ze souboru nebo datového proudu, nepřetržitého a jednorázového rozpoznávání/překladu a práce s vlastními modely.
 
-* [Ukázky řeči na text a překladu (SDK)](https://github.com/Azure-Samples/cognitive-services-speech-sdk)
+* [Ukázky pro převod řeči na text a překlady (SDK)](https://github.com/Azure-Samples/cognitive-services-speech-sdk)
 
-## <a name="migration-guides"></a>Průvodce migrací
+## <a name="migration-guides"></a>Příručky k migraci
 
-Pokud používáte aplikace, nástroje nebo produkty [rozhraní Translator Speech API](https://docs.microsoft.com/azure/cognitive-services/translator-speech/overview), jsme vytvořili, kteří vám pomůžeme s migrací hlasové služby.
+Pokud vaše aplikace, nástroje nebo produkty používají [Translator Speech API](https://docs.microsoft.com/azure/cognitive-services/translator-speech/overview), vytvořili jsme příručky, které vám pomůžou s migrací na služby pro rozpoznávání řeči.
 
-* [Migrace z Translator Speech API do hlasové služby](how-to-migrate-from-translator-speech-api.md)
+* [Migrace z Translator Speech API na služby pro rozpoznávání řeči](how-to-migrate-from-translator-speech-api.md)
 
 ## <a name="reference-docs"></a>Referenční dokumenty
 
 * [Speech SDK](speech-sdk-reference.md)
-* [Rozpoznávání řeči zařízení SDK](speech-devices-sdk.md)
-* [REST API: Speech-to-text](rest-speech-to-text.md)
-* [REST API: Text-to-speech](rest-text-to-speech.md)
-* [REST API: Přepis služby batch a přizpůsobení](https://westus.cris.ai/swagger/ui/index)
+* [Sada Speech Devices SDK](speech-devices-sdk.md)
+* [REST API: Převod řeči na text](rest-speech-to-text.md)
+* [REST API: Převod textu na řeč](rest-text-to-speech.md)
+* [REST API: Přepis a přizpůsobení Batch](https://westus.cris.ai/swagger/ui/index)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* [Získejte klíč předplatného hlasových služeb zdarma](get-started.md)
-* [Získání sady SDK pro řeč](speech-sdk.md)
+* [Získat klíč předplatného služby Speech Services zdarma](get-started.md)
+* [Získat sadu Speech SDK](speech-sdk.md)

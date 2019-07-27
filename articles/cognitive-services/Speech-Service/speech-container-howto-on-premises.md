@@ -1,5 +1,5 @@
 ---
-title: Použití s Kubernetes a Helmem
+title: Použití s Kubernetes a Helm službou pro rozpoznávání řeči
 titleSuffix: Azure Cognitive Services
 description: Když použijete Kubernetes a Helm k definování imagí na kontejnerech pro text a převod textu na řeč, vytvoříme balíček Kubernetes. Tento balíček se nasadí do místního clusteru Kubernetes.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 7/16/2019
 ms.author: dapine
-ms.openlocfilehash: ba292a7d3bdf58ff78764bc2095fdf4a8c486070
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 06f2db708385c4c3fbf8d005b701b633ac52776a
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326203"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68559139"
 ---
 # <a name="use-with-kubernetes-and-helm"></a>Použití s Kubernetes a Helmem
 
@@ -30,7 +30,7 @@ Před použitím kontejnerů řeči v místním prostředí použijte následuj�
 | Účet Azure | Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet][free-azure-account] před tím, než začnete. |
 | Přístup k Container Registry | Aby Kubernetes mohl načíst image Docker do clusteru, bude potřebovat přístup k registru kontejneru. Je nutné nejprve [požádat o přístup k registru kontejneru][speech-preview-access] . |
 | Kubernetes CLI | [KUBERNETES CLI][kubernetes-cli] se vyžaduje pro správu sdílených přihlašovacích údajů z registru kontejneru. Kubernetes je také potřeba před Helm, což je správce balíčků Kubernetes. |
-| Helm CLI | V rámci rozhraní příkazového [řádku][helm-install] install, you'll also need to initialize Helm, which will install [Tiller][tiller-install]Helm. |
+| Helm CLI | V rámci instalace rozhraní příkazového [řádku Helm][helm-install] budete taky muset inicializovat Helm, který se nainstaluje do nástroje [.][tiller-install] |
 |Prostředek řeči |Aby bylo možné tyto kontejnery použít, je nutné mít následující:<br><br>Prostředek Azure _Speech_ pro získání přidruženého fakturačního klíče a identifikátoru URI koncového bodu faktury Obě hodnoty jsou k dispozici na stránkách přehled a klíče Azure Portal **řeči** a jsou požadovány ke spuštění kontejneru.<br><br>**{API_KEY}** : klíč prostředku<br><br>**{ENDPOINT_URI}** : příklad identifikátoru URI koncového bodu je:`https://westus.api.cognitive.microsoft.com/sts/v1.0`|
 
 ## <a name="the-recommended-host-computer-configuration"></a>Doporučená konfigurace hostitelského počítače

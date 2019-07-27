@@ -10,10 +10,10 @@ ms.date: 06/12/2019
 ms.author: danlep
 ms.custom: seodec18, mvc
 ms.openlocfilehash: 496aa065b3b10eac546dbe41f5a2650acc112d29
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68310522"
 ---
 # <a name="tutorial-automate-container-image-builds-when-a-base-image-is-updated-in-an-azure-container-registry"></a>Kurz: Automatizace sestavení imagí kontejneru, když se v registru kontejnerů Azure aktualizuje základní image 
@@ -62,7 +62,7 @@ GIT_PAT=<personal-access-token> # The PAT you generated in the second tutorial
 
 ## <a name="base-images"></a>Základní image
 
-Soubory Dockerfile definující většinu imagí kontejnerů specifikují nadřazenou image, na které jsou založené. Tato image se často označuje jako *základní image*. Základní image obvykle obsahují operační systém, například [Alpine Linux][base-alpine] or [Windows Nano Server][base-windows], na kterém se používají zbývající vrstvy kontejneru. Můžou také zahrnovat aplikační architektury, jako je [Node. js][Base-Node] nebo [.NET Core][base-dotnet].
+Soubory Dockerfile definující většinu imagí kontejnerů specifikují nadřazenou image, na které jsou založené. Tato image se často označuje jako *základní image*. Základní image typicky obsahují operační systém, například [Alpine Linux][base-alpine] nebo [Windows nano Server][base-windows], na kterém se používají zbývající vrstvy kontejneru. Můžou taky zahrnovat aplikační architektury, jako je [Node. js][base-node] nebo [.NET Core][base-dotnet].
 
 ### <a name="base-image-updates"></a>Aktualizace základní image
 

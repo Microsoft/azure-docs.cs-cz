@@ -1,5 +1,5 @@
 ---
-title: Zaznamenat vlastní hlasové ukázky – hlasové služby
+title: Záznam vlastních hlasových ukázek – služba pro rozpoznávání řeči
 titleSuffix: Azure Cognitive Services
 description: Díky přípravu robustní skriptu, Náboroví talentu dobré hlasové a záznam profesionálně vlastní hlasové produkční kvality.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: ad2a3cd73fe97415f0d6835d70e15bf90349696c
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 47e1f8bf178723a5d4be323f24724214a67499e2
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67604910"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68559189"
 ---
 # <a name="record-voice-samples-to-create-a-custom-voice"></a>Záznam hlasu ukázky vytvořte vlastní hlasové
 
@@ -52,7 +52,7 @@ Zvolte hlasové talentu, jehož přirozeného hlasu je například. Je možné v
 
 Jediným nejdůležitějším faktorem pro výběr hlasu talentu je konzistence. Vašich nahrávek všechny zvukové jako byly provedeny v jednom dni ve stejné místnosti. Může přistupovat tato ideální prostřednictvím dobré záznam postupy a technologie.
 
-Talentu váš hlas je ta druhá půlka rovnice. Musí být schopné mluvit s frekvence konzistentní vzhledem k aplikacím, úroveň hlasitosti, výšku a tón. Vymazat diction je nezbytnost. Talentu také musí být striktně řídit jejich výšku variace, citové vliv a zkoušky prezentace řeči.
+Talentu váš hlas je ta druhá půlka rovnice. Musí být schopni mluvit s konzistentní frekvencí, úrovní hlasitosti, roztečí a tónů. Vymazat diction je nezbytnost. Talentů také musí být schopné přesně řídit jejich kolísání sklonu, emocionálních ovlivnit a mannerisms řeči.
 
 Záznam vlastní hlasové ukázky může být více fatiguing než jiné druhy práce hlasu. Většina talentu hlasové můžete zaznamenat pro dvě nebo tři hodiny denně. Pokud je to možné omezení relací na tři nebo čtyři za týden, dnem vypnout nevede.
 
@@ -108,7 +108,7 @@ Naštěstí je možné zcela se těmto problémům. Existuje mnoho zdrojů text,
 |-|-|
 |[CMU Arctic souhrnu](http://festvox.org/cmu_arctic/)|Vybrat z předem copyright funguje speciálně pro použití v projektech syntézu řeči asi 1100 věty. Vynikající výchozí bod.|
 |Už funguje<br>v části autorských práv|Funguje se obvykle vydávané před 1923. Pro angličtinu [projektu Gutenberg](https://www.gutenberg.org/) nabízí desítky tisíc tyto práce. Můžete chtít zaměřit na novější funguje jako jazyk bude blíže na moderní angličtinu.|
-|Government&nbsp;funguje|Funguje vytvořené ze státní správy USA nejsou autorským právům ve Spojených státech amerických, i když vláda se mohou prohlásit copyright v jiných zemích nebo oblastech.|
+|Government&nbsp;funguje|Práce vytvořená USA vládou nejsou v USA s copyrightem, i když státní správa může nárokovat na Copyright v jiných zemích nebo oblastech.|
 |Veřejné domény.|Funguje pro které copyright byl výslovně odmítnuté nebo mít byl vyhrazen pro veřejné domény. Nemusí být možné zrušíme copyright zcela v některé jurisdikce.|
 |Permissively licenci funguje|Distribuováno za licenci funguje jako licence Creative Commons nebo GNU licenci pro bezplatnou dokumentaci (GFDL). Wikipedia používá GFDL. Některé licence, však může omezení výkonu licencovaný obsah, který může mít vliv na vytváření modelu vlastní hlasové, proto licence si pozorně přečtěte.|
 
@@ -116,7 +116,7 @@ Naštěstí je možné zcela se těmto problémům. Existuje mnoho zdrojů text,
 
 Skriptu na profesionální záznam studio, která se specializuje na záznam hlasu práci. Budou mít stánku záznam, správné zařízení a lidé provozovat ho. Vyplatí se skimp na záznam.
 
-Prodiskutujte projekt s pracovníkem technické záznamové sady studio a požadavkům na svá doporučení. Záznam by měl mít žádné nebo téměř žádné komprese dynamických rozsahů (maximálně 4:1). Je velmi důležité, že zvuk mají konzistentní svazku a vysoký poměr signálu šumu a při zachování bez nežádoucí zvuky.
+Prodiskutujte svůj projekt s technikou pro zaznamenávání studia a naslouchat jim rady. Záznam by měl mít žádné nebo téměř žádné komprese dynamických rozsahů (maximálně 4:1). Je velmi důležité, že zvuk mají konzistentní svazku a vysoký poměr signálu šumu a při zachování bez nežádoucí zvuky.
 
 ### <a name="do-it-yourself"></a>Provést sami
 
@@ -130,7 +130,7 @@ Můžete také použít analogové mikrofon. Obsahuje mnoho pronájem nabízejí
 
 Nainstalujte mikrofon samostatné nebo Vida a pop filtru mikrofon k odstranění šumu z "plosive" souhláskami jako "p" a "b". Některé mikrofony součástí pozastavení připojení, který izoluje je od vibrace ve stojan, což je užitečné.
 
-Talentu hlasu musí zůstat na konzistentní vzdálenost od mikrofon. K označení, kde by měl být používejte pásku na dolní mez. Pokud se vám sedět dává přednost talentu, věnujte zvláštní pozornost monitorování vzdálenost povinná kontrola úrovně důvěryhodnosti a vyhnutí se zbytečnému vytváření řetězce.
+Talentu hlasu musí zůstat na konzistentní vzdálenost od mikrofon. Použijte pásku na podlaze k označení místa, kde se mají stát. Pokud se vám sedět dává přednost talentu, věnujte zvláštní pozornost monitorování vzdálenost povinná kontrola úrovně důvěryhodnosti a vyhnutí se zbytečnému vytváření řetězce.
 
 Použijte v případě k uložení skriptu. Vyhněte se angling samostatné, takže ji můžete sledovat, zvuk směrem k mikrofonu.
 
@@ -157,12 +157,12 @@ V ideálním případě mají různí lidé slouží v rolích ředitel, inžen�
 
 ### <a name="before-the-session"></a>Před relací
 
-Aby se zabránilo plýtvání časem studio, spuštěn prostřednictvím skriptu pomocí vašeho talentu hlasového záznamu. Zatímco talentu hlasové přestane být obeznámeni s textem, můžete ukazují, výslovnost neznámého slov.
+Aby se zabránilo plýtvání časem studio, spuštěn prostřednictvím skriptu pomocí vašeho talentu hlasového záznamu. I když se hlasový talentů bude dobře rozumět textu, může objasnit výslovnost všech neznámých slov.
 
 > [!NOTE]
 > Většina studios záznam nabízejí elektronických zobrazení skriptů v záznamu z mýtných bran. V takovém případě zadejte poznámky průběh prezentace přímo do vašeho skriptu dokumentu. Stále můžete dělat poznámky během relace, i když kopii dokumentu. Většina technici kopii pevný příliš vhodné. A budete pořád potřebovat že třetí vytisknout kopii jako záložní pro talentu v případě, že počítač je vypnutý.
 
-Váš hlas talentu požádat aplikaci word chcete, aby oznámil v utterance ("rozhodnou slovo"). Informujte, který má fyzická čtení s žádné zvláštní důraz. Zvýraznění můžete přidat, pokud je syntetizovat řeči; neměl by být součástí původní záznam.
+Váš hlas talentu požádat aplikaci word chcete, aby oznámil v utterance ("rozhodnou slovo"). Řekněte jim, že chcete přirozeným čtením bez zvláštního zdůraznění. Zvýraznění můžete přidat, pokud je syntetizovat řeči; neměl by být součástí původní záznam.
 
 Přímé talentu k vyslovte slova odděleně. Každé slovo skript by měl výraznější, jak je uvedená. Zvuky by neměly být vynechán nebo slurred společně, což je běžné v příležitostné řeči *Pokud byla napsána tak ve skriptu*.
 
@@ -195,7 +195,7 @@ Naslouchání úzce, použít sluchátka, talentů hlasové výkonu. Hledáte do
 
 Poznámka: převzít číslo nebo čas kód na váš skript pro každý utterance. Požádejte inženýr označit každý utterance ve tento záznam metadat nebo startovacího seznamu také.
 
-Bere regulární konce a poskytne můžete dát chvilku pauzu pomáhají vašeho talentu hlasové zachovat hlasu v dobrém stavu.
+Využijte pravidelných konců a poskytněte nápoj, který vašemu hlasu talentů ponechá svůj hlas v dobrém tvaru.
 
 ### <a name="after-the-session"></a>Po relaci
 

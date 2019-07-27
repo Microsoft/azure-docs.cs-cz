@@ -10,10 +10,10 @@ ms.date: 03/21/2018
 ms.author: danlep
 ms.custom: seodec18, mvc
 ms.openlocfilehash: 719237f63d387cf56ab7947f8f168e0aa4351376
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68325573"
 ---
 # <a name="tutorial-create-a-container-image-for-deployment-to-azure-container-instances"></a>Kurz: Vytvoření image kontejneru pro nasazení do Azure Container Instances
@@ -49,7 +49,7 @@ git clone https://github.com/Azure-Samples/aci-helloworld.git
 
 ## <a name="build-the-container-image"></a>Sestavení image kontejneru
 
-Soubor Dockerfile v ukázkové aplikaci ukazuje postup sestavení kontejneru. Začíná od based on [Alpine Linux][alpine-linux] [oficiální image Node. js][docker-hub-nodeimage] , což je malá distribuce, která je vhodná pro použití s kontejnery. Potom zkopíruje soubory aplikace do kontejneru, nainstaluje závislosti pomocí Node Package Manageru a nakonec aplikaci spustí.
+Soubor Dockerfile v ukázkové aplikaci ukazuje postup sestavení kontejneru. Začíná od [oficiální image Node. js][docker-hub-nodeimage] založené na systému [Alpine Linux][alpine-linux], malé distribuci, která je vhodná pro použití s kontejnery. Potom zkopíruje soubory aplikace do kontejneru, nainstaluje závislosti pomocí Node Package Manageru a nakonec aplikaci spustí.
 
 ```Dockerfile
 FROM node:8.9.3-alpine

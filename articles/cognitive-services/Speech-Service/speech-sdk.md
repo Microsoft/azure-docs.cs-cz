@@ -1,7 +1,7 @@
 ---
-title: Informace o řeči SDK – hlasové služby
+title: O sadě Speech SDK – Speech Service
 titleSuffix: Azure Cognitive Services
-description: Řeči Software Development Kit (SDK) poskytuje vaše aplikace nativní přístup k funkce Speech service, což usnadňuje vývoj softwaru. Tento článek obsahuje další podrobnosti o sadě SDK pro Windows, Linux a Android.
+description: Sada Speech Software Development Kit (SDK) poskytuje vašim aplikacím nativní přístup k funkcím služby Speech, což usnadňuje vývoj softwaru. Tento článek obsahuje další podrobnosti o sadě SDK pro Windows, Linux a Android.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: wolfma
-ms.openlocfilehash: 120dd4a6a342732f3e07d87786009779d23be829
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: c5e12812a4305493be2cdc234946796b21dd26d8
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606413"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68558946"
 ---
-# <a name="about-the-speech-sdk"></a>Informace o řeči SDK
+# <a name="about-the-speech-sdk"></a>Sada Speech SDK
 
-Rozpoznávání řeči Software Development Kit (SDK) poskytuje vaše aplikace přístup k funkce hlasové služby usnadňují vývoj softwaru podporou řeči. V současné době se sadami SDK poskytují přístup k **speech to text**, **převod textu na řeč**, **překlad řeči**, **rozpoznání záměru**, a **Kanál s přímým přístupem řeči řádku bot Framework**. Obecný přehled o možnostech a podporovaných platforem najdete v dokumentaci [položka stránky](https://aka.ms/csspeech).
+Sada Speech Software Development Kit (SDK) poskytuje vašim aplikacím přístup k funkcím služby Speech, což usnadňuje vývoj softwaru s podporou řeči. Sady SDK v současné době poskytují přístup k převodu **řeči na text**, převod **textu na řeč**, **překladu řeči**, **rozpoznávání záměrů**a přímém **line kanálu pro rozhraní bot**. Obecný přehled možností a podporovaných platforem najdete na [stránce](https://aka.ms/csspeech)dokumentace.
 
 [!INCLUDE [Speech SDK Platforms](../../../includes/cognitive-services-speech-service-speech-sdk-platforms.md)]
 
@@ -31,40 +31,40 @@ Rozpoznávání řeči Software Development Kit (SDK) poskytuje vaše aplikace p
 
 Pro Windows Podporujeme následující jazyky:
 
-* C#Jazyk C++ (UPW a .NET): Můžete odkazovat a využívat nejnovější verzi naší balíček NuGet sady SDK pro řeč. Balíček obsahuje 32bitové a 64bitové klientské knihovny a spravované knihovny (.NET). Sada SDK lze nainstalovat v sadě Visual Studio pomocí NuGet. Vyhledejte **Microsoft.CognitiveServices.Speech**.
+* C#(UWP a .NET) C++: Můžete odkazovat a používat nejnovější verzi našeho balíčku NuGet sady Speech SDK. Balíček obsahuje 32bitové a 64bitové klientské knihovny a spravované knihovny (.NET). Sada SDK lze nainstalovat v sadě Visual Studio pomocí NuGet. Vyhledejte **Microsoft.CognitiveServices.Speech**.
 
-* Java: Můžete odkazovat a využívat nejnovější verzi naší řeči SDK Maven balíček, který podporuje pouze Windows x64. V projektu Maven, přidejte `https://csspeechstorage.blob.core.windows.net/maven/` jako další úložiště a odkaz `com.microsoft.cognitiveservices.speech:client-sdk:1.6.0` jako závislost.
+* Java: Můžete odkazovat a používat nejnovější verzi našeho balíčku Maven sady Speech SDK, který podporuje pouze systém Windows x64. V projektu Maven, přidejte `https://csspeechstorage.blob.core.windows.net/maven/` jako další úložiště a odkaz `com.microsoft.cognitiveservices.speech:client-sdk:1.6.0` jako závislost.
 
 ### <a name="linux"></a>Linux
 
 > [!NOTE]
-> V současné době podporujeme pouze Ubuntu 16.04 Ubuntu 18.04 a Debian 9 na počítači (x86 nebo x64 pro C++ vývoje a x64 pro .NET Core, Java a Python).
+> V současné době podporujeme jenom Ubuntu 16,04, Ubuntu 18,04 a Debian 9 na počítači (x86 nebo x64 pro C++ vývoj a x64 pro .NET Core, Java a Python).
 
-Ujistěte se, že máte požadované knihovny instalaci spuštěním následujících příkazů prostředí:
+Ujistěte se, že máte nainstalované požadované knihovny spuštěním následujících příkazů prostředí:
 
-On Ubuntu:
+V Ubuntu:
 
 ```sh
 sudo apt-get update
 sudo apt-get install libssl1.0.0 libasound2
 ```
 
-Na Debian 9:
+V Debian 9:
 
 ```sh
 sudo apt-get update
 sudo apt-get install libssl1.0.2 libasound2
 ```
 
-* C#: Můžete odkazovat a využívat nejnovější verzi naší balíček NuGet sady SDK pro řeč. K odkazování sadu SDK, přidejte následující odkaz na balíček do projektu:
+* C#: Můžete odkazovat a používat nejnovější verzi našeho balíčku NuGet sady Speech SDK. K odkazování sadu SDK, přidejte následující odkaz na balíček do projektu:
 
   ```xml
   <PackageReference Include="Microsoft.CognitiveServices.Speech" Version="1.6.0" />
   ```
 
-* Java: Můžete odkazovat a využívat nejnovější verzi naší řeči SDK Maven balíček. V projektu Maven, přidejte `https://csspeechstorage.blob.core.windows.net/maven/` jako další úložiště a odkaz `com.microsoft.cognitiveservices.speech:client-sdk:1.6.0` jako závislost.
+* Java: Můžete odkazovat a používat nejnovější verzi našeho balíčku Maven sady Speech SDK. V projektu Maven, přidejte `https://csspeechstorage.blob.core.windows.net/maven/` jako další úložiště a odkaz `com.microsoft.cognitiveservices.speech:client-sdk:1.6.0` jako závislost.
 
-* C++: Stáhnout sadu SDK jako [instalačního balíčku .tar](https://aka.ms/csspeech/linuxbinary) a rozbalte soubory v adresáři podle vašeho výběru. V následující tabulce jsou uvedeny strukturu složek sady SDK:
+* C++: Stáhněte si sadu SDK jako [balíček. tar](https://aka.ms/csspeech/linuxbinary) a rozbalte soubory v adresáři dle vašeho výběru. V následující tabulce jsou uvedeny strukturu složek sady SDK:
 
   |Cesta|Popis|
   |-|-|
@@ -78,7 +78,7 @@ sudo apt-get install libssl1.0.2 libasound2
 
 ### <a name="android"></a>Android
 
-Sady Java SDK pro Android je zabalena jako [AAR (knihovna pro Android)](https://developer.android.com/studio/projects/android-library), který obsahuje potřebné knihovny a požadovaná oprávnění pro Android. Je hostován v úložiště Maven v `https://csspeechstorage.blob.core.windows.net/maven/` jako balíček `com.microsoft.cognitiveservices.speech:client-sdk:1.6.0`.
+Java SDK pro Android je zabalená jako [Knihovna AAR (Android Library)](https://developer.android.com/studio/projects/android-library), která zahrnuje nezbytné knihovny a požadovaná oprávnění pro Android. Je hostován v úložiště Maven v `https://csspeechstorage.blob.core.windows.net/maven/` jako balíček `com.microsoft.cognitiveservices.speech:client-sdk:1.6.0`.
 
 Chcete-li využívají balíček z vašeho projektu Android Studio, proveďte následující změny:
 

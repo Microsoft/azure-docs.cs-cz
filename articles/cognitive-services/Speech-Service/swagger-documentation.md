@@ -1,7 +1,7 @@
 ---
-title: Dokumentace ke službě – hlasové služby swagger
+title: Dokumentace k Swagger – služba pro rozpoznávání řeči
 titleSuffix: Azure Cognitive Services
-description: Dokumentace ke službě Swagger lze automaticky generovat sady SDK pro řadu programovacích jazyků. Podporovány jsou všechny operace v naší službě ve Swaggeru
+description: Dokumentaci Swagger lze použít k automatickému generování sad SDK pro řadu programovacích jazyků. Swagger podporuje všechny operace v naší službě.
 services: cognitive-services
 author: PanosPeriorellis
 manager: nitinme
@@ -10,41 +10,41 @@ ms.subservice: speech-service
 ms.topic: reference
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: f6420ea8918816f7356e567ec48cb0f7456065e0
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 232435a424d2461bce4598356a986473cb1d3644
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67604772"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68552588"
 ---
 # <a name="swagger-documentation"></a>Dokumentace ke Swaggeru
 
-Hlasové služby nabízejí specifikace Swagger pro interakci s několika rozhraní REST API používá k umožňuje importovat data, vytvářet modely, testování přesnosti modelu, vytvořit vlastní koncové body, fronty batch přepisů a spravovat předplatná. Většinu operací, které jsou k dispozici prostřednictvím portálu pro Custom Speech je možné provést prostřednictvím kódu programu pomocí těchto rozhraní API.
+Služba Speech Services nabízí specifikaci Swagger pro interakci s několik rozhraní REST API, která se používají k importu dat, vytváření modelů, přesnosti testovacích modelů, vytváření vlastních koncových bodů, zařazování přepisů dávek a správě předplatných. Většinu operací, které jsou dostupné prostřednictvím portálu Custom Speech, se dají pomocí těchto rozhraní API dokončit programově.
 
 > [!NOTE]
-> Převod řeči na Text a převod textu na řeč operace jsou podporovány dostupná jako rozhraní REST API, která zase popsané ve specifikaci Swaggeru.
+> Operace převodu řeči na text a převod textu na řeč jsou podporované jako rozhraní REST API, která jsou dále popsána ve specifikaci Swagger.
 
 ## <a name="generating-code-from-the-swagger-specification"></a>Generování kódu ze specifikace Swagger
 
-[Vytvořené specifikace Swaggeru](https://cris.ai/swagger/ui/index) obsahuje možnosti, které umožňují rychle otestovat u různých cest. Někdy je však vhodné pro generování kódu pro všechny cesty, vytváření knihovny jednoho volání, které můžete založit na budoucí řešení. Pojďme se podívat na proces generovat knihovnu Pythonu.
+[Specifikace Swagger](https://cris.ai/swagger/ui/index) obsahuje možnosti, které umožňují rychlé testování různých cest. Někdy je však žádoucí vygenerovat kód pro všechny cesty a vytvořit jedinou knihovnu volání, na kterých můžete založit budoucí řešení. Pojďme se podívat na proces generování knihovny Pythonu.
 
-Budete muset nastavit Swagger do stejné oblasti jako vaše předplatné Speech Service. V rámci vašeho prostředku hlasové služby můžete ověřit oblast ve na webu Azure portal. Úplný seznam podporovaných oblastí najdete v tématu [oblastech](regions.md).
+Musíte nastavit Swagger na stejnou oblast jako vaše předplatné služby Speech. Oblast můžete v Azure Portal ověřit v části prostředek služby Speech Services. Úplný seznam podporovaných oblastí najdete v tématu [oblasti](regions.md).
 
 1. Přejděte na https://editor.swagger.io.
-2. Klikněte na tlačítko **souboru**, pak klikněte na tlačítko **importu**
-3. Zadejte adresu URL swaggeru, včetně oblastí pro vaše předplatné hlasové služby `https://<your-region>.cris.ai/docs/v2.0/swagger`
-4. Klikněte na tlačítko **generovat klientské** a vyberte Pythonu
-5. Uložit klientské knihovny
+2. Klikněte na **soubor**a pak na **importovat** .
+3. Zadejte adresu URL Swagger, včetně oblasti pro vaše předplatné služby Speech Services.`https://<your-region>.cris.ai/docs/v2.0/swagger`
+4. Klikněte na **vygenerovat klienta** a vyberte Python.
+5. Uložení klientské knihovny
 
-Můžete použít knihovnu Pythonu, který jste vygenerovali pomocí [hlasové služby ukázky na Githubu](https://aka.ms/csspeech/samples).
+Můžete použít knihovnu Python, kterou jste vygenerovali s [ukázkami služby Speech Services na GitHubu](https://aka.ms/csspeech/samples).
 
 ## <a name="reference-docs"></a>Referenční dokumenty
 
-* [REST (Swagger): Přepis služby batch a přizpůsobení](https://westus.cris.ai/swagger/ui/index)
-* [REST API: Speech-to-text](rest-speech-to-text.md)
-* [REST API: Text-to-speech](rest-text-to-speech.md)
+* [REST (Swagger): Přepis a přizpůsobení Batch](https://westus.cris.ai/swagger/ui/index)
+* [REST API: Převod řeči na text](rest-speech-to-text.md)
+* [REST API: Převod textu na řeč](rest-text-to-speech.md)
 
 ## <a name="next-steps"></a>Další postup
 
-* [Ukázky služby řeči na Githubu](https://aka.ms/csspeech/samples).
-* [Získejte klíč předplatného hlasových služeb zdarma](get-started.md)
+* [Ukázky služeb řeči na GitHubu](https://aka.ms/csspeech/samples).
+* [Získat klíč předplatného služby Speech Services zdarma](get-started.md)

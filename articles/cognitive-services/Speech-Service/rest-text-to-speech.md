@@ -1,7 +1,7 @@
 ---
-title: Převod textu na řeč reference k rozhraní API (REST) – hlasové služby
+title: Referenční informace k rozhraní API pro převod textu na řeč (REST) – služba Speech
 titleSuffix: Azure Cognitive Services
-description: Další informace o použití rozhraní API REST pro převod textu na řeč. V tomto článku se dozvíte o autorizaci, možnosti dotazu, jak strukturovat žádost a přijetí odpovědi.
+description: Naučte se používat REST API převodu textu na řeč. V tomto článku se dozvíte o autorizaci, možnosti dotazu, jak strukturovat žádost a přijetí odpovědi.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,34 +10,34 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 684ddcd49d3cd3c3d4f0a8d6f4675e1e27bdb7b9
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: b0a0d788c9fadd13b9a37f541a81945c86b37c29
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67604890"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68559183"
 ---
-# <a name="text-to-speech-rest-api"></a>Převod textu na řeč REST API
+# <a name="text-to-speech-rest-api"></a>REST API převodu textu na řeč
 
-Hlasové služby umožňují [převod textu na řeč syntetizovaný](#convert-text-to-speech) a [získání seznamu podporovaných hlasy](#get-a-list-of-voices) pro oblast, používáte sadu rozhraní REST API. Každý dostupný koncový bod je přidružen k oblasti. Je požadován klíč předplatného pro koncový bod/oblast, kterou plánujete použít.
+Služba Speech Services umožňuje [převést text na syntetizované rozpoznávání řeči](#convert-text-to-speech) a [získat seznam podporovaných hlasů](#get-a-list-of-voices) pro oblast s použitím sady rozhraní REST API. Každý dostupný koncový bod je přidružen k oblasti. Vyžaduje se klíč předplatného pro koncový bod nebo oblast, kterou plánujete použít.
 
-Převod textu na řeč rozhraní REST API podporuje neuronových sítí a standardní převod textu na řeč hlasů, z nichž každý podporuje konkrétní jazyku a dialektu, identifikovat podle národního prostředí.
+REST API převodu textu na řeč podporuje neuronové a standardní hlasy převodu textu na řeč, z nichž každý podporuje konkrétní jazyk a dialekt identifikovaný národním prostředím.
 
-* Úplný seznam hlasů, naleznete v tématu [jazykovou podporu](language-support.md#text-to-speech).
-* Informace o dostupnosti v jednotlivých oblastech najdete v tématu [oblastech](regions.md#text-to-speech).
+* Úplný seznam hlasů najdete v tématu [Podpora jazyků](language-support.md#text-to-speech).
+* Informace o regionální dostupnosti najdete v tématu [oblasti](regions.md#text-to-speech).
 
 > [!IMPORTANT]
-> Náklady se liší pro standardní, vlastní a neuronových sítí hlasy. Další informace najdete v tématu [ceny](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/).
+> Náklady se liší pro standardní, vlastní a neuronové hlasy. Další informace najdete v tématu [ceny](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/).
 
-Před použitím tohoto rozhraní API, porozumět:
+Než začnete používat toto rozhraní API, pochopte:
 
 * Převod textu na řeč rozhraní REST API vyžaduje také hlavičku ověřování. To znamená, že je potřeba dokončit výměnu tokenů pro přístup ke službě. Další informace najdete v tématu [Ověřování](#authentication).
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-rest-auth.md)]
 
-## <a name="get-a-list-of-voices"></a>Získání seznamu sad hlasů
+## <a name="get-a-list-of-voices"></a>Získat seznam hlasů
 
-`voices/list` Koncového bodu vám umožňuje získat úplný seznam hlasy pro konkrétní oblasti nebo koncového bodu.
+`voices/list` Koncový bod umožňuje získat úplný seznam hlasů pro konkrétní oblast nebo koncový bod.
 
 ### <a name="regions-and-endpoints"></a>Oblasti a koncových bodů
 
@@ -46,38 +46,38 @@ Před použitím tohoto rozhraní API, porozumět:
 | Austrálie – východ | `https://australiaeast.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Brazílie – jih | `https://brazilsouth.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Kanada – střed | `https://canadacentral.tts.speech.microsoft.com/cognitiveservices/voices/list` |
-| USA – střed | `https://centralus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| Střed USA | `https://centralus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Východní Asie | `https://eastasia.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | East US | `https://eastus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Východní USA 2 | `https://eastus2.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Francie – střed | `https://francecentral.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Indie – střed | `https://centralindia.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Japonsko – východ | `https://japaneast.tts.speech.microsoft.com/cognitiveservices/voices/list` |
-| Korea – střed | `https://koreacentral.tts.speech.microsoft.com/cognitiveservices/voices/list` |
-| Středoseverní USA | `https://northcentralus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| Jižní Korea – střed | `https://koreacentral.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| Střed USA – sever | `https://northcentralus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Severní Evropa | `https://northeurope.tts.speech.microsoft.com/cognitiveservices/voices/list` |
-| Středojižní USA | `https://southcentralus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| Střed USA – jih | `https://southcentralus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Jihovýchodní Asie | `https://southeastasia.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Velká Británie – jih | `https://uksouth.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Západní Evropa | `https://westeurope.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Západní USA | `https://westus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
-| Západní USA 2 | `https://westus2.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| USA – západ 2 | `https://westus2.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 
 ### <a name="request-headers"></a>Hlavičky požadavku
 
-Tato tabulka obsahuje povinné a nepovinné hlavičky pro žádosti o převod textu na řeč.
+Tato tabulka obsahuje seznam požadovaných a volitelných hlaviček pro požadavky na převod textu na řeč.
 
 | Záhlaví | Popis | Povinné / volitelné |
 |--------|-------------|---------------------|
-| `Authorization` | Autorizační token předcházet slovo `Bearer`. Další informace najdete v tématu [Ověřování](#authentication). | Požaduje se |
+| `Authorization` | Autorizační token předcházet slovo `Bearer`. Další informace najdete v tématu [Ověřování](#authentication). | Požadováno |
 
 ### <a name="request-body"></a>Text požadavku
 
-Není vyžadováno pro tělo `GET` požadavky do tohoto koncového bodu.
+Pro `GET` požadavky na tento koncový bod není vyžadován text.
 
 ### <a name="sample-request"></a>Ukázková žádost
 
-Tato žádost vyžaduje pouze se autorizační hlavička.
+Tato žádost vyžaduje pouze hlavičku autorizace.
 
 ```http
 GET /cognitiveservices/voices/list HTTP/1.1
@@ -88,10 +88,10 @@ Authorization: Bearer [Base64 access_token]
 
 ### <a name="sample-response"></a>Ukázková odpověď
 
-Pro ilustraci struktura odpověď byla zkrácena tuto odpověď.
+Tato odpověď byla zkrácena, aby ukázala strukturu odpovědi.
 
 > [!NOTE]
-> Hlasové dostupnost se liší podle oblasti nebo koncového bodu.
+> Dostupnost hlasu se liší podle oblasti nebo koncového bodu.
 
 ```json
 [
@@ -146,7 +146,7 @@ Stavový kód HTTP pro každou odpověď indikuje úspěch nebo běžné chyby.
 
 ## <a name="convert-text-to-speech"></a>Převod textu na řeč
 
-`v1` Koncového bodu vám umožňuje převádět převod textu na řeč pomocí [řeči syntézu Markup Language (SSML)](speech-synthesis-markup.md).
+Koncový bod umožňuje převod textu na řeč pomocí [jazyka SSML (Speech Shrnutí Markup Language).](speech-synthesis-markup.md) `v1`
 
 ### <a name="regions-and-endpoints"></a>Oblasti a koncových bodů
 
@@ -156,18 +156,18 @@ Tyto oblasti jsou podporovány pro převod textu na řeč pomocí rozhraní REST
 
 ### <a name="request-headers"></a>Hlavičky požadavku
 
-Tato tabulka obsahuje povinné a nepovinné hlavičky pro žádosti o převod textu na řeč.
+Tato tabulka obsahuje seznam požadovaných a volitelných hlaviček pro požadavky na převod textu na řeč.
 
 | Záhlaví | Popis | Povinné / volitelné |
 |--------|-------------|---------------------|
-| `Authorization` | Autorizační token předcházet slovo `Bearer`. Další informace najdete v tématu [Ověřování](#authentication). | Požaduje se |
+| `Authorization` | Autorizační token předcházet slovo `Bearer`. Další informace najdete v tématu [Ověřování](#authentication). | Požadováno |
 | `Content-Type` | Určuje typ obsahu pro zadaný text. Přijata hodnota: `application/ssml+xml`. | Požaduje se |
 | `X-Microsoft-OutputFormat` | Určuje formát zvukového výstupu. Úplný seznam platných hodnot najdete v tématu [zvuku výstupy](#audio-outputs). | Požaduje se |
-| `User-Agent` | Název aplikace Zadaná hodnota musí být kratší než 255 znaků. | Požaduje se |
+| `User-Agent` | Název aplikace Zadaná hodnota musí být kratší než 255 znaků. | Požadováno |
 
 ### <a name="audio-outputs"></a>Zvukový výstupy
 
-Toto je seznam podporovaných formátů zvuku, které se odesílají v každé žádosti o jako `X-Microsoft-OutputFormat` záhlaví. Každý zahrnuje s přenosovou rychlostí a typ kódování. 24 kHz, 16 kHz, podporuje hlasových služeb a vypíše 8 kHz zvuk.
+Toto je seznam podporovaných formátů zvuku, které se odesílají v každé žádosti o jako `X-Microsoft-OutputFormat` záhlaví. Každý zahrnuje s přenosovou rychlostí a typ kódování. Služba Speech Services podporuje zvukové výstupy 24 kHz, 16 kHz a 8 kHz.
 
 |||
 |-|-|
@@ -180,14 +180,14 @@ Toto je seznam podporovaných formátů zvuku, které se odesílají v každé �
 | `audio-24khz-48kbitrate-mono-mp3` | |
 
 > [!NOTE]
-> Pokud vybraný hlasový a výstupní formát různé přenosové rychlosti, zvuku poklesu podle potřeby. Ale 24 kHz hlasy nepodporují `audio-16khz-16kbps-mono-siren` a `riff-16khz-16kbps-mono-siren` formáty výstupu.
+> Pokud vybraný hlasový a výstupní formát různé přenosové rychlosti, zvuku poklesu podle potřeby. Avšak 24 kHz hlasy nepodporuje `audio-16khz-16kbps-mono-siren` a `riff-16khz-16kbps-mono-siren` výstupní formáty.
 
 ### <a name="request-body"></a>Text požadavku
 
-Text jednotlivých `POST` žádosti se odešle jako [řeči syntézu Markup Language (SSML)](speech-synthesis-markup.md). SSML můžete rozhodnout voice a jazyk řečového vrácené službou převod textu na řeč. Úplný seznam podporovaných hlasů, naleznete v tématu [jazykovou podporu](language-support.md#text-to-speech).
+Tělo každé `POST` žádosti se odešle jako [jazyk SSML (Speech syntézy)](speech-synthesis-markup.md). SSML umožňuje zvolit hlas a jazyk syntetizované řeči, kterou vrátí služba pro převod textu na mluvené slovo. Úplný seznam podporovaných hlasů najdete v tématu [Podpora jazyků](language-support.md#text-to-speech).
 
 > [!NOTE]
-> Pokud používáte vlastní hlasové, tělo požadavku nelze odesílat jako prostý text (ASCII nebo UTF-8).
+> Pokud používáte vlastní hlas, text požadavku se dá poslat jako prostý text (ASCII nebo UTF-8).
 
 ### <a name="sample-request"></a>Ukázková žádost
 
@@ -208,9 +208,9 @@ Authorization: Bearer [Base64 access_token]
 </voice></speak>
 ```
 
-Najdete v našich rychlých startů pro konkrétní jazyk příklady:
+Příklady konkrétního jazyka najdete v našich rychlých startech:
 
-* [.NET Core, C#](quickstart-dotnet-text-to-speech.md)
+* [.NET Core,C#](quickstart-dotnet-text-to-speech.md)
 * [Python](quickstart-python-text-to-speech.md)
 * [Node.js](quickstart-nodejs-text-to-speech.md)
 
@@ -224,7 +224,7 @@ Stavový kód HTTP pro každou odpověď indikuje úspěch nebo běžné chyby.
 | 400 | Chybný požadavek | Povinný parametr nebyl nalezen, prázdný nebo null. Nebo hodnota předaná buď povinný nebo volitelný parametr není platný. Běžné potíže se hlavičku, která je příliš dlouhý. |
 | 401 | Neautorizováno | Požadavek není autorizovaný. Ověřte váš klíč předplatného nebo token je platný a v oblasti správné. |
 | 413 | Příliš velká entita požadavku | Vstup SSML je delší než 1024 znaků. |
-| 415 | Nepodporovaný typ média | Je možné, který chybného `Content-Type` nebyl poskytnut. `Content-Type` musí být nastavená na `application/ssml+xml`. |
+| 415 | Nepodporovaný typ média | Je možné, že bylo zadáno `Content-Type` chybné. `Content-Type`měla by být nastavena `application/ssml+xml`na. |
 | 429 | Příliš mnoho žádostí | Překročili jste kvótu nebo počet požadavků pro vaše předplatné povolená. |
 | 502 | Chybná brána | Problém sítě nebo na straně serveru. Může také znamenat neplatné záhlaví. |
 

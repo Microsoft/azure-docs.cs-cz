@@ -1,7 +1,7 @@
 ---
-title: Převod řeči na text pomocí Azure Speech Services
+title: Služba Speech to text-Speech
 titleSuffix: Azure Cognitive Services
-description: Převod řeči na text z Azure Speech Services, označovaný také jako převod řeči na text, umožňuje přepis zvukových streamů v reálném čase na text, který vaše aplikace, nástroje nebo zařízení můžou spotřebovat, zobrazovat a provádět s nimi akce jako vstup příkazu. Tato služba využívá stejnou technologii rozpoznávání, kterou Microsoft používá pro Cortana a produkty Office, a bezproblémově pracuje s překlady a převodem textu na řeč.
+description: Funkce řeči k textu ve službě Speech Service, která se označuje také jako převod řeči na text, umožňuje přepis zvukových datových proudů v reálném čase na text, který aplikace, nástroje nebo zařízení můžou spotřebovat, zobrazovat a provádět s nimi akce jako vstup příkazu. Tato služba využívá stejnou technologii rozpoznávání, kterou Microsoft používá pro Cortana a produkty Office, a bezproblémově pracuje s překlady a převodem textu na řeč.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: cb9362c4d58deb5472c8d5adab39cdd1cc4e2600
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: 435de6e6516256d350ad93b121dd5a38d1512ddc
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68333568"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68558858"
 ---
 # <a name="what-is-speech-to-text"></a>Co je převod řeči na text?
 
@@ -92,7 +92,7 @@ Pokud vaše aplikace, nástroje nebo produkty používají Zpracování řeči B
 * [REST API: Převod textu na řeč](rest-text-to-speech.md)
 * [REST API: Přepis a přizpůsobení Batch](https://westus.cris.ai/swagger/ui/index)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Získat klíč předplatného služby Speech Services zdarma](get-started.md)
 * [Získat sadu Speech SDK](speech-sdk.md)

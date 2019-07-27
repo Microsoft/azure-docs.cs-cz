@@ -1,7 +1,7 @@
 ---
 title: Volání rozhraní Text Analytics API
-titlesuffix: Azure Cognitive Services
-description: Zjistěte, jak zavolat REST API pro analýzu textu.
+titleSuffix: Azure Cognitive Services
+description: Přečtěte si, jak volat Analýza textu REST API.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,55 +10,55 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 02/26/2019
 ms.author: aahi
-ms.openlocfilehash: e98979ac43945ebc9af82d5f89db01855429ca70
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: 2aa43318eab9a8d1beb2b133ab9802d390de8a7f
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67304209"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68552450"
 ---
-# <a name="how-to-call-the-text-analytics-rest-api"></a>Volání REST API pro analýzu textu
+# <a name="how-to-call-the-text-analytics-rest-api"></a>Způsob volání Analýza textu REST API
 
-Volání **rozhraní Text Analytics API** jsou volání HTTP POST nebo GET, které formulujete v libovolném jazyce. V tomto článku používáme REST a [Postman](https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop) pro předvedení klíčových konceptů.
+Volání **rozhraní API pro analýzu textu** jsou volání http post/Get, která lze formulovat v libovolném jazyce. V tomto článku k předvedení klíčových konceptů používáme REST a [post](https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop) .
 
-Každý požadavek musí obsahovat svůj přístupový klíč a koncový bod HTTP. Určuje koncový bod oblast zvolili při registraci, adresa URL služby a prostředek, který používá na žádost: `sentiment`, `keyphrases`, `languages`, a `entities`. 
+Každý požadavek musí zahrnovat váš přístupový klíč a koncový bod HTTP. Koncový bod určuje oblast, kterou jste zvolili při registraci, adresu URL služby a prostředek, který se používá na žádosti `sentiment`: `keyphrases`, `languages`, a `entities`. 
 
-Připomínáme, že pro analýzu textu je bezstavové, takže nejsou žádné datové prostředky se mají spravovat. Nahrání text analyzován přijetí, a výsledky se vrátí okamžitě volající aplikaci.
+Odvolání tohoto Analýza textu je bezstavové, takže neexistují žádné datové assety, které by bylo možné spravovat. Váš text se nahraje, analyzuje se po přijetí a výsledky se vrátí hned do volající aplikace.
 
 > [!Tip]
-> Pro jednorázové volání, uvidíte, jak funguje rozhraní API, je možné posílat požadavky POST z integrovaného **testovací rozhraní API konzoly**, k dispozici na všech [stránky dokumentace rozhraní API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6). Neexistuje žádné nastavení, a jediným požadavkem je na dokumenty JSON a přístupový klíč vložte do požadavku. 
+> Chcete-li zjistit, jak funguje rozhraní API, můžete odeslat požadavky POST z integrované **testovací konzoly API**, které jsou k dispozici na libovolné stránce s [dokumentem rozhraní API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6). Není k dispozici žádná instalace a jediným požadavkem je vložit přístupový klíč a dokumenty JSON do žádosti. 
 
 ## <a name="prerequisites"></a>Požadavky
 
-Musíte mít [účet rozhraní API služeb Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) pomocí rozhraní API pro analýzu textu a [koncový bod a přístupový klíč](text-analytics-how-to-access-key.md) , vygeneruje se pro vás při registraci pro služby Cognitive Services. 
+Musíte mít [Cognitive Services účet rozhraní API](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) s rozhraní API pro analýzu textu a [koncový bod a přístupový klíč](text-analytics-how-to-access-key.md) , který jste vygenerovali při registraci Cognitive Services. 
 
 <a name="json-schema"></a>
 
 ## <a name="json-schema-definition"></a>Definice schématu JSON
 
-Vstup musí být v nezpracované nestrukturovaného textu JSON. XML není podporován. Schéma je jednoduché, který se skládá z prvků, je popsáno v následujícím seznamu. 
+Vstup musí být JSON v nezpracovaném nestrukturovaném textu. KÓD XML není podporován. Schéma je jednoduché a skládá se z prvků popsaných v následujícím seznamu. 
 
-Aktuálně můžete odeslat dokumenty stejný pro všechny operace rozhraní Text Analytics: zabarvení, klíčových frází, rozpoznávání jazyka a identifikace entit. (Schéma je pravděpodobně lišit pro každou analýzy v budoucnu.)
+V současné době můžete pro všechny operace Analýza textu odeslat stejné dokumenty: mínění, klíčová fráze, rozpoznávání jazyka a identifikace entit. (Schéma se může v budoucnu lišit pro každou analýzu.)
 
-| Element | Platné hodnoty | Požadováno? | Využití |
+| Prvek | Platné hodnoty | Požadováno? | Použití |
 |---------|--------------|-----------|-------|
-|`id` |Datový typ je řetězec, ale v praxi ID dokumentu mají být celá čísla. | Požaduje se | Systém používá ID zadáte strukturovat výstup. Pro každé ID v požadavku se generují kódech jazyků, klíčové fráze a skóre mínění.|
-|`text` | Nestrukturované nezpracovaný text, maximálně 5 120 znaků. | Požaduje se | Pro rozpoznávání jazyka lze vyjádřit text v libovolném jazyce. Pro analýzu mínění, extrakci klíčových frází a identifikace entit, musí mít text [podporovaný jazyk](../text-analytics-supported-languages.md). |
-|`language` | 2 znacích [ISO 639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) kód [podporovaný jazyk](../text-analytics-supported-languages.md) | Různé | Vyžaduje se pro analýzu mínění, extrakci klíčových frází a propojování entit; volitelné pro rozpoznání jazyka. Se nezobrazí žádná chyba, pokud se můžete vyloučit, ale analýza správné provedení příslušných činností bez něj. Kód jazyka, musí odpovídat `text` zadáte. |
+|`id` |Datovým typem je řetězec, ale v praxi se ID dokumentů považují za celá čísla. | Požadováno | Systém používá ID, která zadáte k strukturování výstupu. Pro každé ID v žádosti jsou vygenerovány kódy jazyka, klíčové fráze a výsledky mínění.|
+|`text` | Nestrukturovaný nezpracovaný text, maximálně 5 120 znaků. | Požadováno | V případě detekce jazyka lze text vyjádřit v jakémkoli jazyce. Pro analýzu mínění, extrakci klíčových frází a identifikaci entit musí být text v [podporovaném jazyce](../text-analytics-supported-languages.md). |
+|`language` | 2 – znakový kód [ISO 639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) pro [podporovaný jazyk](../text-analytics-supported-languages.md) | Různé | Vyžaduje se pro analýzu míněníí, extrakci klíčových frází a propojení entit. volitelné pro detekci jazyka. Pokud vyloučíte, nedošlo k žádné chybě, ale analýza je bez něj oslabena. Kód jazyka by měl odpovídat `text` vašemu zadání. |
 
-Další informace o omezeních najdete v tématu [Text Analytics – přehled > omezení datové](../overview.md#data-limits). 
+Další informace o omezeních najdete v tématu [Analýza textu přehled >ch omezení dat](../overview.md#data-limits). 
 
-## <a name="set-up-a-request-in-postman"></a>Nastavit požadavek v nástroji Postman
+## <a name="set-up-a-request-in-postman"></a>Nastavení žádosti na post
 
-Služba přijímá požádat o velikost až 1 MB. Pokud používáte Postman (nebo jiný nástroj pro testování webového rozhraní API), nastavení koncového bodu zahrnout prostředek, který chcete použít a zadejte přístupový klíč v hlavičce požadavku. Každá operace požaduje připojení odpovídající prostředek ke koncovému bodu. 
+Služba přijme požadavek o velikosti až 1 MB. Pokud používáte metodu post (nebo jiný nástroj pro testování webového rozhraní API), nastavte koncový bod tak, aby zahrnoval prostředek, který chcete použít, a zadejte přístupový klíč v hlavičce požadavku. Každá operace vyžaduje, abyste ke koncovému bodu připojili příslušný prostředek. 
 
-1. V nástroji Postman:
+1. V příspěvku:
 
-   + Zvolte **příspěvek** jako typu požadavku.
-   + Vložte koncový bod, který jste zkopírovali ze stránky portálu.
-   + Připojte prostředek.
+   + Jako typ žádosti vyberte **post** .
+   + Vložte do koncového bodu, který jste zkopírovali ze stránky portálu.
+   + Připojit prostředek.
 
-   Koncové body prostředků jsou následujícím způsobem (vaší oblasti se mohou lišit):
+   Koncové body prostředků jsou následující (vaše oblast se může lišit):
 
    + `https://westus.api.cognitive.microsoft.com/text/analytics/v2.1/sentiment`
    + `https://westus.api.cognitive.microsoft.com/text/analytics/v2.1/keyPhrases`
@@ -67,31 +67,31 @@ Služba přijímá požádat o velikost až 1 MB. Pokud používáte Postman (ne
 
 2. Nastavte tři hlavičky žádosti:
 
-   + `Ocp-Apim-Subscription-Key`: přístupový klíč k získané z webu Azure portal.
-   + `Content-Type`: application/json.
-   + `Accept`: application/json.
+   + `Ocp-Apim-Subscription-Key`: přístupový klíč získaný z Azure Portal.
+   + `Content-Type`: Application/JSON.
+   + `Accept`: Application/JSON.
 
-   Váš požadavek by měl vypadat podobně jako na následujícím snímku obrazovky, za předpokladu, že **/keyPhrases** prostředků.
+   Váš požadavek by měl vypadat podobně jako na následujícím snímku obrazovky za předpokladu, že **/keyPhrases** prostředek.
 
-   ![Snímek obrazovky s koncovým bodem a hlavičky požadavku](../media/postman-request-keyphrase-1.png)
+   ![Snímek obrazovky žádosti s koncovým bodem a záhlavími](../media/postman-request-keyphrase-1.png)
 
-4. Klikněte na tlačítko **tělo** a zvolte **nezpracovaná** formátu.
+4. Klikněte na **text** a pro formát vyberte **raw** .
 
-   ![Požádat o snímek obrazovky s nastavením textu](../media/postman-request-body-raw.png)
+   ![Snímek obrazovky žádosti s nastavením textu](../media/postman-request-body-raw.png)
 
-5. Vložte několik dokumentů JSON ve formátu, který je platný pro určené analýzy. Další informace o konkrétní analýzy najdete v tématech níže:
+5. Vložte je do některých dokumentů JSON ve formátu, který je platný pro zamýšlenou analýzu. Další informace o konkrétní analýze najdete v následujících tématech:
 
   + [Rozpoznávání jazyka](text-analytics-how-to-language-detection.md)  
   + [Extrakce klíčových frází](text-analytics-how-to-keyword-extraction.md)  
-  + [Analýza subjektivního hodnocení](text-analytics-how-to-sentiment-analysis.md)  
+  + [Analýza mínění](text-analytics-how-to-sentiment-analysis.md)  
   + [Rozpoznávání entit](text-analytics-how-to-entity-linking.md)  
 
 
-6. Klikněte na tlačítko **odeslat** odešlete žádost. Najdete v článku [limity dat](../overview.md#data-limits) části v přehledu o počtu požadavků můžete odesílat za minutu a sekundu.
+6. Žádost odešlete kliknutím na **Odeslat** . Informace o počtu požadavků, které můžete poslat za minutu a sekundu, najdete v části [omezení dat](../overview.md#data-limits) v přehledu.
 
-   V nástroji Postman by se odpověď zobrazí v dalším okně dolů, jako jeden dokument JSON, s položkou pro každé ID dokumentu, který je zadaný v požadavku.
+   V poli post se odpověď zobrazuje v následujícím okně jako jeden dokument JSON s položkou pro každé ID dokumentu, které je v požadavku k dispozici.
 
-## <a name="see-also"></a>Další informace najdete v tématech 
+## <a name="see-also"></a>Viz také: 
 
  [Přehled rozhraní API pro analýzu textu](../overview.md)  
  [Nejčastější dotazy](../text-analytics-resource-faq.md)

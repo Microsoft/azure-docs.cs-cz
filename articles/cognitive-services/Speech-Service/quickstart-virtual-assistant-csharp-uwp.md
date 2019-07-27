@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý start: Vlastní hlasové první virtuálních asistentů (Preview), C# (UPW) – hlasové služby'
+title: 'Rychlý start: Vlastní hlas – první virtuální asistent (Preview), C# (UWP) – služba Speech'
 titleSuffix: Azure Cognitive Services
-description: V tomto článku vytvoříte C# aplikace univerzální platformy Windows (UPW) s použitím Cognitive Services řeči Software Development Kit (SDK). Připojíte se klientská aplikace mohla dříve vytvořeného bot Bot Framework konfigurován pro použití s přímým přístupem řeči řádek kanál. Aplikace je sestavená pomocí balíčku NuGet sady SDK pro řeč a Microsoft Visual Studio 2017.
+description: V tomto článku vytvoříte aplikaci C# Univerzální platforma Windows (UWP) pomocí sady Cognitive Services Speech Software Development Kit (SDK). Klientská aplikace se připojuje k dřív vytvořeným robotem rozhraní robota, který je nakonfigurovaný tak, aby používal kanál Direct line Speech. Aplikace je sestavená pomocí balíčku NuGet sady SDK pro řeč a Microsoft Visual Studio 2017.
 services: cognitive-services
 author: trrwilson
 manager: nitinme
@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: travisw
-ms.openlocfilehash: 22c18b573e7107163f858c79956ca6f5380f6834
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: d61040e740c06fc336e3764a0d972640443a6de5
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67604976"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68553377"
 ---
-# <a name="quickstart-create-a-voice-first-virtual-assistant-with-the-speech-sdk-uwp"></a>Rychlý start: Vytvoření první hlasové virtuálních asistentů se sadou SDK pro řeč, UPW
+# <a name="quickstart-create-a-voice-first-virtual-assistant-with-the-speech-sdk-uwp"></a>Rychlý start: Vytvoření virtuálního pomocníka pro hlasový vstup se sadou Speech SDK, UWP
 
-Rychlí průvodci jsou také k dispozici pro [speech to text](quickstart-csharp-uwp.md), [převod textu na řeč](quickstart-text-to-speech-csharp-uwp.md) a [překlad řeči](quickstart-translate-speech-uwp.md).
+K dispozici jsou také rychlé starty pro převod [řeči na text](quickstart-csharp-uwp.md), převod [textu na řeč](quickstart-text-to-speech-csharp-uwp.md) a [rozpoznávání řeči](quickstart-translate-speech-uwp.md).
 
-V tomto článku budete vyvíjet C# aplikace univerzální platformy Windows (UPW) s použitím [sadou SDK pro řeč](speech-sdk.md). Program se připojí k dříve vytvořený a nakonfigurovaný bot umožňující hlasové první virtuálních asistentů prostředí z klientské aplikace. Tato aplikace je vytvořená pomocí [balíčku NuGet sady Speech SDK](https://aka.ms/csspeech/nuget) a sady Microsoft Visual Studio 2017 (libovolné edice).
+V tomto článku vyvíjíte aplikaci C# Univerzální platforma Windows (UWP) pomocí [sady Speech SDK](speech-sdk.md). Program se připojí k dřív vytvořeným a nakonfigurovaným robotům, aby bylo možné v klientské aplikaci povolit prostředí pro virtuální asistenty prvního hlasu. Tato aplikace je vytvořená pomocí [balíčku NuGet sady Speech SDK](https://aka.ms/csspeech/nuget) a sady Microsoft Visual Studio 2017 (libovolné edice).
 
 > [!NOTE]
 > Univerzální platforma Windows umožňuje vyvíjet aplikace, které běží na všech zařízeních podporujících Windows 10 včetně počítačů, Xboxu, Surface Hubu a dalších.
@@ -31,15 +31,15 @@ V tomto článku budete vyvíjet C# aplikace univerzální platformy Windows (UP
 K tomuto rychlému startu potřebujete:
 
 * [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)
-* Klíč předplatného pro hlasové služby. [Získat zdarma](get-started.md) neexistuje, vytvořte ho na [webu Azure portal](https://portal.azure.com).
-* Dříve vytvořeného bot nakonfigurovanou [kanál s přímým přístupem řádku řeči](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)
+* Klíč předplatného Azure pro hlasové služby. [Získejte ho zdarma](get-started.md) nebo ho vytvořte na [Azure Portal](https://portal.azure.com).
+* Dřív vytvořený robot nakonfigurovaný s kanálem [Direct line Speech](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)
 
     > [!NOTE]
-    > Řeči řádku s přímým přístupem (Preview) je momentálně dostupný v podmnožině oblastí s hlasové služby. Najdete [seznam podporovaných oblastí pro virtuálních asistentů hlasové první](regions.md#voice-first-virtual-assistants) a ujistěte se prostředky nasadí v těchto oblastech.
+    > Přímý line Speech (Preview) je aktuálně k dispozici v podmnožině oblastí služby Speech Services. Další informace najdete v [seznamu podporovaných oblastí pro virtuální asistenty pro hlasové](regions.md#voice-first-virtual-assistants) služby a zajistěte, aby byly vaše prostředky nasazeny v jedné z těchto oblastí.
 
-## <a name="optional-get-started-fast"></a>Volitelné: Rychlý začátek
+## <a name="optional-get-started-fast"></a>Volitelné: Začínáme rychle
 
-V tomto rychlém startu popíše krok za krokem, jak vytvořit jednoduchý klientské aplikace pro připojení k rozpoznávání řeči robota. Pokud chcete rovnou, dokončena, připraveno kompilace zdrojového kódu v tomto rychlém startu je k dispozici v [ukázky řeči SDK](https://aka.ms/csspeech/samples) pod `quickstart` složky.
+V tomto rychlém startu se dozvíte, jak vytvořit jednoduchou klientskou aplikaci pro připojení ke robotu s povoleným rozpoznáváním řeči. Pokud upřednostňujete podrobně přímo v, je kompletní zdrojový kód připravený k zkompilování použitý v tomto rychlém startu k dispozici v [ukázkách sady Speech SDK](https://aka.ms/csspeech/samples) ve `quickstart` složce.
 
 ## <a name="create-a-visual-studio-project"></a>Vytvoření projektu ve Visual Studiu
 
@@ -47,7 +47,7 @@ V tomto rychlém startu popíše krok za krokem, jak vytvořit jednoduchý klien
 
 ## <a name="add-sample-code"></a>Přidání ukázkového kódu
 
-1. Uživatelské rozhraní aplikace je definované pomocí XAML. Otevřete `MainPage.xaml` v Průzkumníku řešení. V zobrazení návrháři XAML, nahraďte celý obsah s níže.
+1. Uživatelské rozhraní aplikace je definované pomocí XAML. Otevřete `MainPage.xaml` v Průzkumníku řešení. V zobrazení jazyka XAML návrháře nahraďte celý obsah následujícím obsahem.
 
     ```xml
     <Page
@@ -80,14 +80,14 @@ V tomto rychlém startu popíše krok za krokem, jak vytvořit jednoduchý klien
     </Page>
     ```
 
-1. Otevřít zdrojový soubor kódu na pozadí `MainPage.xaml.cs`. Najdete ji seskupené pod nadpisem `MainPage.xaml`. Nahraďte obsah následujícím kódem. Zde je, co tato ukázka obsahuje:
+1. Otevřete zdrojový soubor `MainPage.xaml.cs`kódu na pozadí. Najdete ho seskupený v části `MainPage.xaml`. Nahraďte obsah následujícím kódem. Tady je popis toho, co tento ukázka popisuje:
 
-    * Pomocí příkazů pro zpracování řeči a Speech.Dialog obory názvů
-    * Jednoduchá implementace zajistit přístup k mikrofonu, připojené k rutině tlačítka
-    * Základní pomocné rutiny uživatelského rozhraní k zobrazení zprávy a chyby v aplikaci
-    * Bod cílová cesta inicializace kódu, který naplní se později
-    * Pomocné rutiny k přehrání zpět převod textu na řeč (bez podpora streamování)
-    * Obslužné rutiny prázdný tlačítko zahájit naslouchání, která naplní později
+    * Použití příkazů pro obory názvů Speech a Speech. dialog
+    * Jednoduchá implementace pro zajištění přístupu přes mikrofon, který je kabelem k obslužné rutině tlačítka
+    * Základní pomocníky uživatelského rozhraní pro prezentování zpráv a chyb v aplikaci
+    * Místo pro cestu inicializačního kódu, který se naplní později
+    * Pomocná funkce pro přehrání textu na řeč (bez podpory streamování)
+    * Prázdná obslužná rutina tlačítka pro zahájení naslouchání, které se naplní později
 
     ```csharp
     using Microsoft.CognitiveServices.Speech;
@@ -239,13 +239,13 @@ V tomto rychlém startu popíše krok za krokem, jak vytvořit jednoduchý klien
     }
     ```
 
-1. V dalším kroku vytvoříte `DialogServiceConnector` informace o vašem předplatném. Do těla metody přidejte následující `InitializeDialogServiceConnector`, stačí nahradit řetězce `YourChannelSecret`, `YourSpeechSubscriptionKey`, a `YourServiceRegion` vlastními hodnotami pro svého robota, předplatné řeči a [oblasti](regions.md).
+1. V `DialogServiceConnector` dalším kroku vytvoříte informace o svém předplatném. Přidejte následující `InitializeDialogServiceConnector`text do těla metody, nahraďte řetězce `YourChannelSecret`, `YourSpeechSubscriptionKey`a `YourServiceRegion` vlastními hodnotami pro váš robot, předplatné řeči a [oblast](regions.md).
 
     > [!NOTE]
-    > Řeči řádku s přímým přístupem (Preview) je momentálně dostupný v podmnožině oblastí s hlasové služby. Najdete [seznam podporovaných oblastí pro virtuálních asistentů hlasové první](regions.md#voice-first-virtual-assistants) a ujistěte se prostředky nasadí v těchto oblastech.
+    > Přímý line Speech (Preview) je aktuálně k dispozici v podmnožině oblastí služby Speech Services. Další informace najdete v [seznamu podporovaných oblastí pro virtuální asistenty pro hlasové](regions.md#voice-first-virtual-assistants) služby a zajistěte, aby byly vaše prostředky nasazeny v jedné z těchto oblastí.
 
     > [!NOTE]
-    > Informace o konfiguraci vašeho robota a načítání tajného klíče kanálu, naleznete v dokumentaci rozhraní Bot Framework pro [kanál s přímým přístupem řádku řeči](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech).
+    > Informace o konfiguraci robota a načtení tajného klíče kanálu najdete v dokumentaci k rozhraní bot pro [kanál Direct line Speech](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech).
 
     ```csharp
     // create a DialogServiceConfig by providing a bot secret key and Cognitive Services subscription key
@@ -259,7 +259,7 @@ V tomto rychlém startu popíše krok za krokem, jak vytvořit jednoduchý klien
     connector = new DialogServiceConnector(botConfig);
     ```
 
-1. `DialogServiceConnector` spoléhá na několik událostí ke komunikaci se svou činnost robota, výsledky rozpoznávání řeči a další informace. Přidání obslužných rutin pro tyto události, přidáním následující na konec těla `InitializeDialogServiceConnector`.
+1. `DialogServiceConnector`spoléhá na několik událostí a sdělí své aktivity robota, výsledky rozpoznávání řeči a další informace. Přidejte obslužné rutiny pro tyto události, připojí následující na konec těla `InitializeDialogServiceConnector`metody.
 
     ```csharp
     // ActivityReceived is the main way your bot will communicate with the client and uses bot framework activities
@@ -303,7 +303,7 @@ V tomto rychlém startu popíše krok za krokem, jak vytvořit jednoduchý klien
     };
     ```
 
-1. Konfiguraci a obslužné rutiny událostí zaregistrované `DialogServiceConnector` teď právě potřebuje naslouchat. Přidejte následující text `ListenButton_ButtonClicked` metodu `MainPage` třídy.
+1. Po navázání konfigurace a zaregistrovaných `DialogServiceConnector` obslužných rutin událostí teď stačí naslouchat. Do těla `ListenButton_ButtonClicked` metody `MainPage` ve třídě přidejte následující text.
 
     ```csharp
     private async void ListenButton_ButtonClicked(object sender, RoutedEventArgs e)
@@ -336,31 +336,31 @@ V tomto rychlém startu popíše krok za krokem, jak vytvořit jednoduchý klien
 
 ## <a name="build-and-run-the-app"></a>Sestavení a spuštění aplikace
 
-1. Sestavte aplikaci. Vyberte z nabídky panelu Nástroje sady Visual Studio, **sestavení** > **sestavit řešení**. Kód by se teď měl zkompilovat bez chyb.
+1. Sestavte aplikaci. Z panelu nabídek v aplikaci Visual Studio vyberte **sestavit** > **sestavení řešení**. Kód by se teď měl zkompilovat bez chyb.
 
     ![Snímek obrazovky s aplikací sady Visual Studio se zvýrazněnou možností Sestavit řešení](media/sdk/qs-csharp-uwp-08-build.png "Úspěšné sestavení")
 
-1. Spusťte aplikaci. Vyberte z nabídky panelu Nástroje sady Visual Studio, **ladění** > **spustit ladění**, nebo stiskněte klávesu **F5**.
+1. Spusťte aplikaci. V panelu nabídek v aplikaci Visual Studio vyberte **ladit** > **Spustit ladění**nebo stiskněte klávesu **F5**.
 
     ![Snímek obrazovky s aplikací sady Visual Studio se zvýrazněnou možností Spustit ladění](media/sdk/qs-csharp-uwp-09-start-debugging.png "Spuštění aplikace s laděním")
 
-1. Otevře se okno. Ve vaší aplikaci, vyberte **povolit mikrofon**a berou na vědomí žádost o oprávnění, která se otevře.
+1. Otevře se okno. V aplikaci vyberte možnost **Povolit mikrofon**a potvrďte požadavek na oprávnění, který se objeví.
 
     ![Snímek obrazovky s žádostí o oprávnění](media/sdk/qs-csharp-uwp-10-access-prompt.png "Spuštění aplikace s laděním")
 
-1. Vyberte **obraťte se na svého robota**a Mluvte anglickou fráze nebo větu do vašeho zařízení mikrofon. Hlasu je přenášet do kanálu s přímým přístupem řádku řeči a převede na text, který se zobrazí v okně.
+1. Vyberte možnost **mluvit na robota**a mluvte do mikrofonu zařízení anglickou frázi nebo větu. Váš hlas se přenáší na kanál s přímým přístupem a přepisu na text, který se zobrazí v okně.
 
-    ![Snímek obrazovky úspěšně bot zapnout](media/voice-first-virtual-assistants/quickstart-cs-uwp-bot-successful-turn.png "zapnout úspěšné robota")
+    ![Snímek obrazovky s úspěšným zapnutím bot](media/voice-first-virtual-assistants/quickstart-cs-uwp-bot-successful-turn.png "Úspěšná Změna bot")
 
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Vytvoření a nasazení základního robota](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0)
+> [Vytvoření a nasazení základního chatbota](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0)
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také:
 
-- [O virtuálních asistentů hlasové první](voice-first-virtual-assistants.md)
-- [Získejte klíč předplatného hlasových služeb zdarma](get-started.md)
-- [Vlastní probuzení slova](speech-devices-sdk-create-kws.md)
-- [Připojení s přímým přístupem řádku řeči pro svého robota](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)
-- [Prozkoumejte C# ukázky na Githubu](https://aka.ms/csspeech/samples)
+- [O virtuálních asistentech pro hlasové telefony](voice-first-virtual-assistants.md)
+- [Získat klíč předplatného služby Speech Services zdarma](get-started.md)
+- [Vlastní slova probuzení](speech-devices-sdk-create-kws.md)
+- [Připojení přímého Lineového rozpoznávání řeči k robotovi](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)
+- [Prozkoumejte C# ukázky na GitHubu](https://aka.ms/csspeech/samples)

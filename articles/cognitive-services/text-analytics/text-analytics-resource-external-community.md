@@ -1,7 +1,7 @@
 ---
-title: E & xterní komunity obsah pro API pro analýzu textu
+title: Obsah komunitního externího & pro rozhraní API pro analýzu textu
 titleSuffix: Azure Cognitive Services
-description: Partnerské, blogy, videích na youtube, školení pro Microsoft Text Analytics API služeb Cognitive Services v Azure.
+description: Blogy pro partnery, videa na YouTube, školení pro Azure Cognitive Services rozhraní API pro analýzu textu.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,44 +10,44 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: aahi
-ms.openlocfilehash: b46acb2f0fe04c37e73a69a09ee6ede9110864ca
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 51263af978ed599d7a7b8a2159c0c9c3c25b33a0
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60827931"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68558815"
 ---
-# <a name="external--community-content-for-the-text-analytics-cognitive-service"></a>E & xterní komunity obsah pro Text Analytics služby Cognitive Services
+# <a name="external--community-content-for-the-text-analytics-cognitive-service"></a>Obsah komunitního externího & pro službu pro rozpoznávání Analýza textu
 
- Odkazy v tomto článku vás přesměrují na užitečný webový obsah vyvinul a vytvářené partneři a specialisté s ukázkami využití rozhraní API pro analýzu textu.
+ Odkazy v tomto článku vás zavedou na užitečný webový obsah, který vyvinuly partneři a odborníci a kteří mají zkušenosti s používáním rozhraní API pro analýzu textu.
 
 ## <a name="blogs"></a>Blogy
 
-+ [Text Analytics API původní oznámení (blog o Azure)](https://blogs.technet.microsoft.com/machinelearning/2015/04/08/introducing-text-analytics-in-the-azure-ml-marketplace/)
++ [Rozhraní API pro analýzu textu původní oznámení (blog Azure)](https://blogs.technet.microsoft.com/machinelearning/2015/04/08/introducing-text-analytics-in-the-azure-ml-marketplace/)
 
-+ [Pomocí Text Analytics klíč frázi API služeb Cognitive Services z prostředí PowerShell (AutomationNext blogu)](https://automationnext.wordpress.com/tag/text-analytics/)
++ [Použití Analýza textu klíčových frází Cognitive Services API z PowerShellu (blog AutomationNext)](https://automationnext.wordpress.com/tag/text-analytics/)
 
-+ [Rychlé R tip: Microsoft Cognitive Services Text Analytics API (bloggerům R)](https://www.r-bloggers.com/r-quick-tip-microsoft-cognitive-services-text-analytics-api/)
++ [Rychlý tip pro R: Microsoft Cognitive Services ' rozhraní API pro analýzu textu (R blogerů)](https://www.r-bloggers.com/r-quick-tip-microsoft-cognitive-services-text-analytics-api/)
 
-+ [Analýza subjektivního hodnocení do aplikace logiky pomocí systému SQL Server data (blog na TechNetu)](https://social.technet.microsoft.com/wiki/contents/articles/36074.logic-apps-with-azure-cognitive-service.aspx)
++ [Analýza mínění v aplikaci logiky pomocí SQL Server dat (blog TechNet)](https://social.technet.microsoft.com/wiki/contents/articles/36074.logic-apps-with-azure-cognitive-service.aspx)
 
-+ [Analýza subjektivního hodnocení s Dynamics 365 CRM Online (MSDN blog)](https://blogs.msdn.microsoft.com/geoffreyinnis/2016/07/11/sentiment-analysis-in-usd-with-cognitive-services-text-analytics/) 
++ [Analýza mínění pomocí Dynamics 365 CRM Online (blog MSDN)](https://blogs.msdn.microsoft.com/geoffreyinnis/2016/07/11/sentiment-analysis-in-usd-with-cognitive-services-text-analytics/) 
 
-+ PowerBI blog: Extrakce klíčových frází z zpráv na Facebooku: [1. část](https://community.powerbi.com/t5/Community-Blog/Text-Analytics-in-Power-BI-Extraction-of-key-phrases-from/ba-p/88483) a [2. část](https://community.powerbi.com/t5/Community-Blog/Text-Analytics-in-Power-BI-Extraction-of-key-phrases-from/ba-p/88487)
++ Blog PowerBI: Extrakce klíčových frází z facebookových zpráv: [Část 1](https://community.powerbi.com/t5/Community-Blog/Text-Analytics-in-Power-BI-Extraction-of-key-phrases-from/ba-p/88483) a [část 2](https://community.powerbi.com/t5/Community-Blog/Text-Analytics-in-Power-BI-Extraction-of-key-phrases-from/ba-p/88487)
 
 ## <a name="videos"></a>Videa
 
-+ [Aplikace Logic App k rozpoznávání mínění a extrakce klíčových frází z textu](https://www.youtube.com/watch?v=jVN9NObAzgk)
++ [Aplikace logiky, která detekuje mínění a extrahuje klíčové fráze z textu](https://www.youtube.com/watch?v=jVN9NObAzgk)
 
-+ [Analýza mínění s využitím Power BI a služby Microsoft Cognitive Services](https://www.youtube.com/watch?v=gJ1j3N7Y75k)
++ [Analýza mínění používání Power BI a Microsoft Cognitive Services](https://www.youtube.com/watch?v=gJ1j3N7Y75k)
 
-+ [Rozhraní text analytics extrakce klíčových frází pomocí Power BI a služby Microsoft Cognitive Services](https://www.youtube.com/watch?v=R_-1TB2BF14)
++ [Analýza textu extrahuje klíčové fráze pomocí Power BI a Microsoft Cognitive Services](https://www.youtube.com/watch?v=R_-1TB2BF14)
 
 ## <a name="next-steps"></a>Další postup
 
-Hledáte informace o funkci nebo případ použití, které naše dokumentace nepokrývá? Vezměte v úvahu požádat nebo Hlasujte pro ni [UserVoice](https://cognitive.uservoice.com/forums/555922-text-analytics). 
+Hledáte informace o funkci nebo případu použití, které nepokrýváme? V [UserVoice](https://cognitive.uservoice.com/forums/555922-text-analytics)si můžete vyžádat nebo hlasovat. 
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také:
 
- [StackOverflow: Azure Text Analytics API](https://stackoverflow.com/questions/tagged/text-analytics-api)   
- [StackOverflow: Azure Cognitive Services](https://stackoverflow.com/questions/tagged/microsoft-cognitive)
+ [StackOverflow rozhraní API pro analýzu textu Azure](https://stackoverflow.com/questions/tagged/text-analytics-api)   
+ [StackOverflow Azure Cognitive Services](https://stackoverflow.com/questions/tagged/microsoft-cognitive)

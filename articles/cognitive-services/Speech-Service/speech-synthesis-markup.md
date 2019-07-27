@@ -1,5 +1,5 @@
 ---
-title: SSML (Speech syntézy Language) – hlasové služby
+title: SSML (Speech syntézy Language) – služba pro rozpoznávání řeči
 titleSuffix: Azure Cognitive Services
 description: K řízení výslovnost a prosody v převodu textu na řeč pomocí Markup Language syntézu řeči.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: e2b1e02a622dfe4ae488e372e44c8440f20d7034
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 1bd1882218630aca0707a792d120045c06dea127
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68501151"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68552684"
 ---
 # <a name="speech-synthesis-markup-language-ssml"></a>Jazyk SSML (Speech Synthesis Markup Language)
 

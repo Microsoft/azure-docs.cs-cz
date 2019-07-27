@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý start: Rozpoznávání řeči, Node.js – hlasové služby'
+title: 'Rychlý start: Rozpoznávání řeči, Node. js – Speech Service'
 titleSuffix: Azure Cognitive Services
-description: Použijte tuto příručku k vytvoření speech to text konzolové aplikace pomocí sadou SDK pro řeč pro Node.js. Po dokončení můžete použít mikrofon vašeho počítače a v reálném čase přepisovat řeč na text.
+description: Pomocí tohoto průvodce můžete vytvořit konzolovou aplikaci pro převod řeči na text pomocí sady Speech SDK pro Node. js. Po dokončení můžete použít mikrofon vašeho počítače a v reálném čase přepisovat řeč na text.
 services: cognitive-services
 author: fmegen
 manager: nitinme
@@ -10,69 +10,69 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: fmegen
-ms.openlocfilehash: 9d233de8a9cdd4b9a3637edcd1c6196b4ad16fd2
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 1a3d1bc62e995aff43d9538f49b436a7de16f1e9
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67605120"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68554079"
 ---
-# <a name="quickstart-recognize-speech-with-the-speech-sdk-for-nodejs"></a>Rychlý start: Rozpoznávání řeči se sadou SDK pro řeč pro Node.js
+# <a name="quickstart-recognize-speech-with-the-speech-sdk-for-nodejs"></a>Rychlý start: Rozpoznávání řeči pomocí sady Speech SDK pro Node. js
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
-V tomto článku se dozvíte, jak vytvořit projekt Node.js pomocí JavaScriptu vazba sadou SDK pro řeč pro Azure Cognitive Services pro přepisy převod řeči na text.
-Aplikace je založena na [sadou SDK pro řeč pro jazyk JavaScript](https://aka.ms/csspeech/npmpackage).
+V tomto článku se dozvíte, jak vytvořit projekt Node. js pomocí vazby JavaScriptu sady Speech SDK pro Azure Cognitive Services přepisovat řeči na text.
+Aplikace je založená na sadě [Speech SDK pro JavaScript](https://aka.ms/csspeech/npmpackage).
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Klíč předplatného pro službu rozpoznávání řeči. [Získat zdarma](get-started.md).
-* Aktuální verze [Node.js](https://nodejs.org).
+* Klíč předplatného Azure pro službu Speech Service. [Získejte je zdarma](get-started.md).
+* Aktuální verze [Node. js](https://nodejs.org).
 
 ## <a name="create-a-new-project"></a>Vytvoření nového projektu
 
-Vytvořte novou složku a inicializace projektu:
+Vytvořte novou složku a inicializujte projekt:
 
 ```sh
 npm init -f
 ```
 
-Tento příkaz inicializuje **package.json** souborů s výchozími hodnotami. Pravděpodobně budete chtít tento soubor upravit později.
+Tento příkaz inicializuje soubory **Package. JSON** s výchozími hodnotami. Tento soubor budete pravděpodobně chtít později upravit.
 
-## <a name="install-the-speech-sdk"></a>Instalace sady SDK pro řeč
+## <a name="install-the-speech-sdk"></a>Instalace sady Speech SDK
 
-Přidejte do projektu Node.js sadou SDK pro řeč:
+Přidejte sadu Speech SDK do projektu Node. js:
 
 ```
 npm install microsoft-cognitiveservices-speech-sdk
 ```
 
-Tento příkaz stáhne a nainstaluje nejnovější verzi sadou SDK pro řeč a všechny požadované součásti z **npmjs**. Sada SDK nainstaluje `node_modules` adresáře uvnitř složky vašeho projektu.
+Tento příkaz stáhne a nainstaluje nejnovější verzi sady Speech SDK a všechny požadované požadavky z **npmjs**. Sada SDK se nainstaluje v `node_modules` adresáři do složky projektu.
 
-## <a name="use-the-speech-sdk"></a>Umožňuje využít řeč SDK
+## <a name="use-the-speech-sdk"></a>Použití sady Speech SDK
 
-Vytvořte nový soubor ve složce s názvem `index.js`a tento soubor otevřít v textovém editoru.
+Vytvořte nový soubor ve složce s názvem `index.js`a otevřete tento soubor pomocí textového editoru.
 
 > [!NOTE]
-> V Node.js, sadou SDK pro řeč nepodporuje mikrofon nebo **souboru** datového typu. Obě jsou podporovány pouze v prohlížečích. Místo toho použijte **Stream** rozhraní sadou SDK pro řeč, buď prostřednictvím `AudioInputStream.createPushStream()` nebo `AudioInputStream.createPullStream()`.
+> V Node. js sada Speech SDK nepodporuje datový typ mikrofonu nebo **souboru** . Obě jsou podporované jenom v prohlížečích. Místo toho použijte rozhraní **Stream** pro sadu Speech SDK, a to buď `AudioInputStream.createPushStream()` prostřednictvím `AudioInputStream.createPullStream()`nebo.
 
 V tomto příkladu používáme `PushAudioInputStream` rozhraní.
 
-Přidejte tento kód jazyka JavaScript:
+Přidat tento kód JavaScriptu:
 
 [!code-javascript[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/js-node/index.js#code)]
 
 ## <a name="run-the-sample"></a>Spuštění ukázky
 
-Otevřete aplikaci, přizpůsobit `YourSubscriptionKey`, `YourServiceRegion`, a `YourAudioFile.wav` do vaší konfigurace. Po zavolání tohoto příkazu ho spusťte:
+Pro otevření aplikace, přizpůsobení `YourSubscriptionKey`, `YourServiceRegion`a `YourAudioFile.wav` ke konfiguraci. Pak ji spusťte voláním tohoto příkazu:
 
 ```sh
 node index.js
 ```
 
-Aktivuje rozlišení pomocí zadaného názvu souboru. A představuje výstup na konzole.
+Aktivuje rozpoznávání pomocí zadaného názvu souboru. A prezentuje výstup na konzole.
 
-Tato ukázka je výstup při spuštění `index.js` po aktualizaci klíče předplatného a použít soubor `whatstheweatherlike.wav`:
+Tato ukázka je výstupem při spuštění `index.js` nástroje po aktualizaci klíče předplatného a použití souboru: `whatstheweatherlike.wav`
 
 ```json
 SpeechRecognitionResult {
@@ -92,39 +92,39 @@ SpeechRecognitionResult {
 }
 ```
 
-## <a name="install-and-use-the-speech-sdk-with-visual-studio-code"></a>Instalace a používání sadou SDK pro řeč s Visual Studio Code
+## <a name="install-and-use-the-speech-sdk-with-visual-studio-code"></a>Instalace a použití sady Speech SDK s Visual Studio Code
 
-Ukázku můžete také spustit z aplikace Visual Studio Code. Postupujte podle následujících kroků nainstalujte, otevřete a spuštění tohoto rychlého startu:
+Ukázku můžete také spustit z Visual Studio Code. Pomocí těchto kroků můžete nainstalovat, otevřít a spustit rychlý Start:
 
-1. Spusťte Visual Studio Code. Vyberte **otevřete složku**. Pak přejděte do složky, rychlý start.
+1. Spusťte Visual Studio Code. Vyberte možnost **Otevřít složku**. Pak přejděte do složky pro rychlé zprovoznění.
 
    ![Otevřít složku](media/sdk/qs-js-node-01-open_project.png)
 
-1. Otevřete terminál ve Visual Studio Code.
+1. Otevřete terminál v Visual Studio Code.
 
-   ![V okně terminálu](media/sdk/qs-js-node-02_open_terminal.png)
+   ![Okno terminálu](media/sdk/qs-js-node-02_open_terminal.png)
 
-1. Spustit `npm` instalace závislostí.
+1. Spusťte `npm` pro instalaci závislostí.
 
    ![instalace npm](media/sdk/qs-js-node-03-npm_install.png)
 
-1. Nyní jste připraveni k otevření `index.js`a nastavte zarážku.
+1. Teď jste připraveni otevřít `index.js`a nastavit zarážku.
 
-   ![index.js s zarážku na řádku 16](media/sdk/qs-js-node-04-setup_breakpoint.png)
+   ![index. js se zarážkou na řádku 16](media/sdk/qs-js-node-04-setup_breakpoint.png)
 
-1. Ladění spustíte stisknutím klávesy F5 nebo vyberte **ladění/spuštění ladění** z nabídky.
+1. Chcete-li spustit ladění, vyberte možnost F5 nebo vyberte ladění **/Spustit ladění** z nabídky.
 
-   ![V nabídce ladění](media/sdk/qs-js-node-05-start_debugging.png)
+   ![Nabídka ladění](media/sdk/qs-js-node-05-start_debugging.png)
 
-1. Při dosažení zarážky, si můžete prohlédnout zásobník volání a proměnné.
+1. Když je dosaženo zarážky, můžete zkontrolovat zásobník volání a proměnné.
 
    ![Ladicí program](media/sdk/qs-js-node-06-hit_breakpoint.png)
 
-1. Žádný výstup zobrazuje v okně konzoly ladění.
+1. Libovolný výstup se zobrazí v okně konzoly ladění.
 
-   ![Konzole ladění](media/sdk/qs-js-node-07-debug_output.png)
+   ![Ladit konzolu](media/sdk/qs-js-node-07-debug_output.png)
 
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Prozkoumejte Node.js ukázky na Githubu](https://aka.ms/csspeech/samples)
+> [Prozkoumejte ukázky pro Node. js na GitHubu](https://aka.ms/csspeech/samples)

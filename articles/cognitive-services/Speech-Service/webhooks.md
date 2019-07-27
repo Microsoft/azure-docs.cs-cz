@@ -1,7 +1,7 @@
 ---
-title: Webhooky – hlasové služby
-titlesuffix: Azure Cognitive Services
-description: Webhooky jsou ideální pro optimalizaci vašeho řešení při práci s dlouhým zpětných volání HTTP s procesy, jako je importy, přizpůsobení, testy přesnosti nebo přepisů dlouho běžící souborů.
+title: Webhooky – služba pro rozpoznávání řeči
+titleSuffix: Azure Cognitive Services
+description: Webhooky jsou testy volání HTTP, které jsou ideální pro optimalizaci řešení při práci s dlouho běžícími procesy, jako jsou import, přizpůsobení, testy přesnosti nebo přepisy dlouhotrvajících souborů.
 services: cognitive-services
 author: PanosPeriorellis
 manager: nitinme
@@ -10,20 +10,20 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: panosper
-ms.openlocfilehash: a100049ddfc9d4859e303546c1b10e814cf96ebb
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 3d07e540bf88c956f61b5d3b2a98702cad616985
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606206"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68558810"
 ---
 # <a name="webhooks-for-speech-services"></a>Webhooky pro hlasové služby
 
-Webhooky jsou jako zpětná volání HTTP, které umožňují vaší aplikaci přijímat data z hlasové služby, až bude k dispozici. Pomocí webhooků, můžete optimalizovat vaše užívání rozhraní REST API pomocí tím eliminuje nutnost neustálého dotazování pro odpověď. V následujících částech dozvíte postupy použití webhooků pomocí hlasové služby.
+Webhooky jsou jako zpětná volání HTTP, která aplikacím umožňují přijímat data ze služeb Speech, když budou k dispozici. Pomocí webhooků můžete optimalizovat používání našich rozhraní REST API tím, že Eliminujte nutnost nepřetržitého dotazování na odpověď. V následujících částech se dozvíte, jak používat Webhooky se službami Speech.
 
 ## <a name="supported-operations"></a>Podporované operace
 
-Hlasové služby podpora webhooků pro všechny dlouho běžící operace. Každou z operací uvedené níže můžete aktivovat zpětné volání HTTP při dokončení.
+Služba Speech Services podporuje Webhooky pro všechny dlouho běžící operace. Každá z níže uvedených operací může po dokončení aktivovat zpětné volání HTTP.
 
 * DataImportCompletion
 * ModelAdaptationCompletion
@@ -32,15 +32,15 @@ Hlasové služby podpora webhooků pro všechny dlouho běžící operace. Každ
 * EndpointDeploymentCompletion
 * EndpointDataCollectionCompletion
 
-V dalším kroku vytvoříme webhooku.
+Nyní vytvoříme Webhook.
 
-## <a name="create-a-webhook"></a>Vytvořit webhook
+## <a name="create-a-webhook"></a>Vytvoření Webhooku
 
-Pojďme vytvořit webhook pro offline přepis. Scénář: uživatel má dlouho spuštěná zvukový soubor, který by chtěli přepisy asynchronně pomocí rozhraní API služby Batch určené k transkripci.
+Pojďme vytvořit Webhook pro online přepis. Scénář: uživatel má dlouho běžící audio soubor, který by chtěl přepisovat asynchronně s rozhraním API služby Batch pro přepis.
 
-Webhooků je možné vytvořit tak, že požadavek POST na https://\<oblasti\>.cris.ai/api/speechtotext/v2.1/transcriptions/hooks.
+Webhooky je možné vytvořit tak, že vytvoříte požadavek post na\<https://\>region. CRIS.AI/API/speechtotext/v2.1/Transcriptions/Hooks.
 
-Parametry konfigurace pro žádost se poskytují jako JSON:
+Parametry konfigurace pro požadavek se poskytují jako JSON:
 
 ```json
 {
@@ -60,17 +60,17 @@ Parametry konfigurace pro žádost se poskytují jako JSON:
 
 }
 ```
-Vyžadovat všech požadavků POST na rozhraní API služby Batch určené k transkripci `name`. `description` a `properties` parametry jsou volitelné.
+Všechny požadavky POST do rozhraní API Batch přepisu vyžadují `name`. Parametry `description` a`properties` jsou volitelné.
 
-`Active` Vlastnost se používá k přepnutí zpětné volání do adresy URL a vypnout, aniž by bylo nutné odstranit a znovu vytvořit registrace webhooku. Pokud potřebujete pouze pro zpětné volání jednou po procesu kompletní, poté odstranit webhook a přepínač `Active` vlastnost na hodnotu false.
+Tato `Active` vlastnost slouží k přepnutí zpětného volání zpět do vaší adresy URL bez nutnosti odstranit a znovu vytvořit registraci Webhooku. Pokud potřebujete volat pouze jednou po dokončení procesu, pak odstraňte Webhook a přepněte `Active` vlastnost na false.
 
-Typ události `TranscriptionCompletion` je uvedený v poli události. To zavolá zpět do vašeho koncového bodu při určené k transkripci dostane do konečného stavu (`Succeeded` nebo `Failed`). Při zpětné volání registrované adresy URL, bude obsahovat žádost `X-MicrosoftSpeechServices-Event` záhlaví obsahující jeden z typů registrované události. Existuje jeden požadavek na typ registrované události.
+Typ `TranscriptionCompletion` události je k dispozici v poli události. Pokud se přepis dostane do stavu terminálu (`Succeeded` nebo `Failed`), bude volat zpátky do koncového bodu. Při volání zpět na registrovanou adresu URL bude požadavek obsahovat `X-MicrosoftSpeechServices-Event` hlavičku obsahující jeden z registrovaných typů událostí. Na registrovaný typ události je jedna žádost.
 
-Existuje jeden typ události, která se nemůže přihlásit k odběru. Je `Ping` typ události. Požadavek s tímto typem je odeslán na adresu URL po dokončení vytvoření webhooku, při použití příkazu ping adresy URL (viz níže).  
+Existuje jeden typ události, ke kterému se nelze přihlásit. Jedná se o `Ping` typ události. Požadavek s tímto typem se pošle na adresu URL, když se při použití adresy URL pro připojení k nástroji otestuje Webhook (viz níže).  
 
-V konfiguraci `url` vlastnost je povinná. Požadavky POST se odesílají na tuto adresu URL. `secret` Slouží k vytvoření s tajným klíčem jako klíčem HMAC hash SHA256 objektu datové části. Hodnota hash je nastaven jako `X-MicrosoftSpeechServices-Signature` hlavičku při zpětné volání registrované adresy URL. Tato hlavička se kódování Base64.
+V konfiguraci `url` je vlastnost povinná. Žádosti POST se odesílají na tuto adresu URL. `secret` Slouží k vytvoření hodnoty hash SHA256 datové části s tajným klíčem jako klíč HMAC. Hodnota hash je nastavena jako `X-MicrosoftSpeechServices-Signature` záhlaví při volání zpět na registrovanou adresu URL. Tato hlavička je kódovaná v kódování Base64.
 
-Tento příklad ukazuje, jak ověřit datovou část pomocí C#:
+Tato ukázka ukazuje, jak ověřit datovou část C#pomocí:
 
 ```csharp
 
@@ -110,32 +110,32 @@ public async Task<IActionResult> PostAsync([FromHeader(Name = EventTypeHeaderNam
 }
 
 ```
-V tomto fragmentu kódu `secret` je dekódovat a ověřit. Také můžete všimnout, že bylo změněno typ události webhooku. Aktuálně je jednu událost za dokončené určené k transkripci. Kód opakování pětkrát pro všechny události (s jeden druhý zpožděním), než se ukončí.
+V tomto fragmentu `secret` kódu je dekóduje a ověřen. Všimněte si také, že byl přepnut typ události Webhooku. V současné době je u každého dokončeného přepisu jedna událost. Kód opakuje pokusy o každou událost (s zpožděním sekund), než se zaregistruje.
 
-### <a name="other-webhook-operations"></a>Další operace webhooku
+### <a name="other-webhook-operations"></a>Další operace Webhooku
 
-Pokud chcete získat všechny registrované webhooků: ZÍSKAT https://westus.cris.ai/api/speechtotext/v2.1/transcriptions/hooks
+Pro získání všech registrovaných webhooků: ČTĚTE https://westus.cris.ai/api/speechtotext/v2.1/transcriptions/hooks
 
-Chcete-li získat jeden konkrétní webhooku: ZÍSKAT https://westus.cris.ai/api/speechtotext/v2.1/transcriptions/hooks/:id
+Postup získání jednoho konkrétního Webhooku: ČTĚTE https://westus.cris.ai/api/speechtotext/v2.1/transcriptions/hooks/:id
 
-Chcete-li odebrat jednu konkrétní webhooku: DELETE https://westus.cris.ai/api/speechtotext/v2.1/transcriptions/hooks/:id
+Postup odebrání jednoho konkrétního Webhooku: DELETE https://westus.cris.ai/api/speechtotext/v2.1/transcriptions/hooks/:id
 
 > [!Note]
-> V předchozím příkladu je oblast 'westus'. To je třeba nahradit oblasti, kde jste vytvořili váš prostředek hlasové služby na webu Azure Portal.
+> V předchozím příkladu je oblast "westus". To by mělo být nahrazeno oblastí, ve které jste vytvořili prostředek služby Speech Services v Azure Portal.
 
-PŘÍSPĚVEK https://westus.cris.ai/api/speechtotext/v2.1/transcriptions/hooks/:id/ping subjekt: prázdné
+Tělo https://westus.cris.ai/api/speechtotext/v2.1/transcriptions/hooks/:id/ping příspěvku: prázdné
 
-Odešle požadavek POST na adresu registrovaný. Požadavek obsahuje `X-MicrosoftSpeechServices-Event` záhlaví pomocí příkazu ping hodnotu. Webhook byl zaregistrován s tajným kódem, bude obsahovat `X-MicrosoftSpeechServices-Signature` záhlaví s algoritmus hash SHA256 datové části s tajným klíčem HMAC klíče. Hodnota hash je kódování Base64.
+Pošle požadavek POST na registrovanou adresu URL. Požadavek obsahuje `X-MicrosoftSpeechServices-Event` hlavičku s hodnotou "otestuje". Pokud byl Webhook zaregistrován s tajným klíčem, bude obsahovat `X-MicrosoftSpeechServices-Signature` hlavičku s hodnotou SHA256 hash datové části s tajným klíčem, jako je klíč HMAC. Hodnota hash je kódovaná v kódování Base64.
 
-PŘÍSPĚVEK https://westus.cris.ai/api/speechtotext/v2.1/transcriptions/hooks/:id/test subjekt: prázdné
+Tělo https://westus.cris.ai/api/speechtotext/v2.1/transcriptions/hooks/:id/test příspěvku: prázdné
 
-Pokud entitu pro typ předplacenému události (určené k transkripci) je k dispozici v systému a je ve správném stavu, odešle požadavek POST na adresu registrované. Datová část se budou generovat z poslední entita, která by vyvolali volané webhookem. Pokud je k dispozici žádné entity, odpoví na příspěvek 204. Pokud testovací požadavek může být provedeno, odpoví 200. Text požadavku je stejný tvar stejně jako v požadavek GET na konkrétní entitu, že že webhook má přihlášený(á) k odběru (například určené k transkripci). Žádost bude mít `X-MicrosoftSpeechServices-Event` a `X-MicrosoftSpeechServices-Signature` záhlaví, jak je popsáno před.
+Pošle požadavek POST na registrovanou adresu URL, pokud se v systému nachází entita pro typ události s předplatným typem (přepis) a je v příslušném stavu. Datová část bude vygenerována z poslední entity, která by vyvolala webový Hook. Pokud není přítomna žádná entita, bude příspěvek odpovídat 204. Pokud se žádost o test dá provést, odpoví 200. Tělo požadavku má stejný tvar jako v žádosti o získání konkrétní entity, pro kterou se Webhook předplatil (například přepisu instance). Požadavek bude obsahovat `X-MicrosoftSpeechServices-Event` záhlaví a `X-MicrosoftSpeechServices-Signature` , jak je popsáno výše.
 
-### <a name="run-a-test"></a>Spuštění testu
+### <a name="run-a-test"></a>Spustit test
 
-Akci můžete udělat rychle otestovat na webu https://bin.webhookrelay.com. Odtud můžete získat volání zpět adresy URL pro předání jako parametru HTTP POST pro vytvoření webhooku je popsáno výše v dokumentu.
+Rychlý test lze provést pomocí webu https://bin.webhookrelay.com. Odtud můžete získat adresy URL zpětného volání, které se mají předat jako parametr HTTP POST pro vytvoření Webhooku popsaného výše v dokumentu.
 
-Klikněte na "Vytvoření kontejneru a použijte na obrazovce pokyny, jak získat hák. Potom použijte informace uvedené na této stránce k registraci háku službou Speech. Datová část přenosu zprávy – v reakci na doplňování přepis – vypadá takto:
+Klikněte na vytvořit sadu a postupujte podle pokynů na obrazovce pro získání zavěšení. Pak použijte informace uvedené na této stránce k registraci zavěšení ve službě Speech. Datová část zprávy přenosu – v reakci na dokončení přepisu vypadá takto:
 
 ```json
 {
@@ -177,7 +177,7 @@ Klikněte na "Vytvoření kontejneru a použijte na obrazovce pokyny, jak získa
     }
 }
 ```
-Zpráva obsahuje adresu URL záznam a modely pro přepisy tohoto záznamu.
+Zpráva obsahuje adresu URL záznamu a modely používané k přepisovat tohoto záznamu.
 
 ## <a name="next-steps"></a>Další postup
 

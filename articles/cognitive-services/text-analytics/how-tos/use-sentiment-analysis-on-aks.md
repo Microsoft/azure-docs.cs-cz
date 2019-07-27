@@ -1,6 +1,6 @@
 ---
-title: Spustit službu Azure Kubernetes
-titleSuffix: Text Analytics - Azure Cognitive Services
+title: Spuštění služby Azure Kubernetes – Analýza textu
+titleSuffix: Azure Cognitive Services
 description: Nasaďte kontejnery Analýza textu s imagí analýzy mínění do služby Azure Kubernetes a otestujte je ve webovém prohlížeči.
 services: cognitive-services
 author: IEvangelist
@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
 ms.author: dapine
-ms.openlocfilehash: 290a01e7e478f718607c0550702474cd31979a63
-ms.sourcegitcommit: b49431b29a53efaa5b82f9be0f8a714f668c38ab
+ms.openlocfilehash: 44ee5fab5b4e8900b823453e5674fc9bdb5fe9ac
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68377385"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68552282"
 ---
 # <a name="deploy-a-sentiment-analysis-container-to-azure-kubernetes-service"></a>Nasazení kontejneru analýzy mínění do služby Azure Kubernetes
 
@@ -150,7 +150,7 @@ Tento postup vyžaduje několik nástrojů, které je třeba nainstalovat a spus
 
 [!INCLUDE [Verify the sentiment analysis container instance](../includes/verify-sentiment-analysis-container.md)]
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * Použít více [Cognitive Servicesch kontejnerů](../../cognitive-services-container-support.md)
 * Použití [připojené služby analýza textu](../vs-text-connected-service.md)

@@ -10,10 +10,10 @@ author: wmengmsft
 ms.author: wmeng
 ms.reviewer: sngun
 ms.openlocfilehash: 0f0acc721fd8888953d80976234b431943985ebf
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68356267"
 ---
 # <a name="get-started-with-azure-table-storage-and-the-azure-cosmos-db-table-api-using-python"></a>Začínáme se službou Azure Table Storage a rozhraním Table API služby Azure Cosmos DB pomocí Pythonu
@@ -56,7 +56,7 @@ Po vytvoření účtu služby Storage je dalším krokem instalace [sady Table S
 
 ## <a name="import-the-tableservice-and-entity-classes"></a>Import tříd TableService a Entity
 
-Pokud chcete pracovat s entitami v Azure Table Service v Pythonu, použijte třídy [TableService][py_TableService] and [Entity][py_Entity] . Importujte obě třídy přidáním tohoto kódu na začátek souboru Pythonu:
+Chcete-li pracovat s entitami v Azure Table service v Pythonu, použijte třídy [TableService][py_TableService] a [entity][py_Entity] . Importujte obě třídy přidáním tohoto kódu na začátek souboru Pythonu:
 
 ```python
 from azure.cosmosdb.table.tableservice import TableService
@@ -89,7 +89,7 @@ table_service.create_table('tasktable')
 
 ## <a name="add-an-entity-to-a-table"></a>Přidání entity do tabulky
 
-Chcete-li přidat entitu, je třeba nejprve vytvořit objekt, který představuje vaši entitu, pak předat objektu. The entity object can be a dictionary or an object of type [Entity][py_Entity] [metodě TableService. insert_entity][py_TableService]a definovat názvy a hodnoty vlastností vaší entity. Každá entita musí kromě případných dalších vlastností, které pro ni definujete, obsahovat i požadované vlastnosti [PartitionKey a RowKey](#partitionkey-and-rowkey).
+Chcete-li přidat entitu, nejprve vytvořte objekt, který reprezentuje vaši entitu, a pak objekt předejte [metodě TableService. insert_entity][py_TableService]. Objekt entity může být slovníkem nebo objektem typu [entity][py_Entity]a definuje názvy a hodnoty vlastností vaší entity. Každá entita musí kromě případných dalších vlastností, které pro ni definujete, obsahovat i požadované vlastnosti [PartitionKey a RowKey](#partitionkey-and-rowkey).
 
 Tento příklad vytvoří objekt Dictionary reprezentující entitu a poté předá metodu [insert_entity][py_insert_entity] , aby ji přidal do tabulky:
 
@@ -99,7 +99,7 @@ task = {'PartitionKey': 'tasksSeattle', 'RowKey': '001',
 table_service.insert_entity('tasktable', task)
 ```
 
-V tomto příkladu se vytvoří metoda [entity][py_Entity] object, then passes it to the [insert_entity][py_insert_entity] , která se přidá do tabulky:
+Tento příklad vytvoří objekt [entity][py_Entity] a pak ho předá metodě [insert_entity][py_insert_entity] k přidání do tabulky:
 
 ```python
 task = Entity()

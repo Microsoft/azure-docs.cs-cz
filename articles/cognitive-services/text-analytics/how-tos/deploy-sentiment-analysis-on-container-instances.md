@@ -1,7 +1,7 @@
 ---
-title: Spusťte Azure Container Instances
+title: Spustit Azure Container Instances – Analýza textu
 titleSuffix: Azure Cognitive Services
-description: Nasazení kontejnerů text analytics Image analýzy mínění, do Azure Container Instance a otestujte ji ve webovém prohlížeči.
+description: Nasaďte kontejnery pro analýzu textu s imagí analýzy mínění do instance kontejneru Azure a otestujte je ve webovém prohlížeči.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -10,16 +10,16 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
 ms.author: dapine
-ms.openlocfilehash: 9f174d54fcc74eed613eb69412bc0e515f15897b
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 9ef529c9d505e5b305602c80a8dbef906f52269c
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67711722"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68552523"
 ---
-# <a name="deploy-a-sentiment-analysis-container-to-azure-container-instances"></a>Nasazení kontejneru analýza mínění do služby Azure Container Instances
+# <a name="deploy-a-sentiment-analysis-container-to-azure-container-instances"></a>Nasazení kontejneru Analýza mínění do Azure Container Instances
 
-Informace o nasazení služeb Cognitive Services [rozhraní Text Analytics](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-install-containers) kontejneru s analýzu subjektivního hodnocení imagí do Azure [Container Instances](https://docs.microsoft.com/azure/container-instances/). Tento postup exemplifies vytvoření prostředku pro analýzu textu, vytváření přidružené image analýzu subjektivního hodnocení a schopnost vykonávat tuto orchestraci dvě z prohlížeče. Pomocí kontejnerů můžete posunout vývojářů pozornost od správy infrastruktury na místo toho soustředit na vývoj aplikací.
+Naučte se, jak nasadit kontejner Cognitive Services [Analýza textu](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-install-containers) s analýza mínění image do Azure [Container Instances](https://docs.microsoft.com/azure/container-instances/). Tento postup exemplifies vytvoření prostředku Analýza textu, vytvoření přidružené Analýza mínění image a schopnost vykonat tuto orchestraci těchto dvou z prohlížeče. Pomocí kontejnerů můžete před správou infrastruktury místo toho, aby se zaměřily na vývoj aplikací, posunout pozornost vývojářů.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -33,5 +33,5 @@ Informace o nasazení služeb Cognitive Services [rozhraní Text Analytics](http
 
 ## <a name="next-steps"></a>Další postup 
 
-* Použití více [kontejnery Cognitive Services](../../cognitive-services-container-support.md)
-* Použití [rozhraní Text Analytics připojená služba](../vs-text-connected-service.md)
+* Použít více [Cognitive Servicesch kontejnerů](../../cognitive-services-container-support.md)
+* Použití [připojené služby analýza textu](../vs-text-connected-service.md)

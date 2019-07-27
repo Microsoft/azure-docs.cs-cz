@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý start: Rozpoznávání řeči, jazyka C++ (macOS) – hlasové služby'
+title: 'Rychlý start: Rozpoznávání řeči, C++ (MacOS) – služba Speech'
 titleSuffix: Azure Cognitive Services
-description: Zjistěte, jak rozpoznávat řeč v jazyce C++ v systému macOS pomocí sady SDK pro řeč
+description: Naučte se rozpoznávat řeč v C++ MacOS pomocí sady Speech SDK
 services: cognitive-services
 author: wolfma61
 manager: nitinme
@@ -10,22 +10,22 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: wolfma
-ms.openlocfilehash: de170955ced45040541565800fc9853edea322f5
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: d7d35c251848af5cfd5852080d01831085401227
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67603064"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68554131"
 ---
-# <a name="quickstart-recognize-speech-in-c-on-macos-by-using-the-speech-sdk"></a>Rychlý start: Rozpoznávání řeči v jazyce C++ v systému macOS pomocí sady SDK pro řeč
+# <a name="quickstart-recognize-speech-in-c-on-macos-by-using-the-speech-sdk"></a>Rychlý start: Rozpoznávání řeči v C++ MacOS pomocí sady Speech SDK
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
-V tomto článku vytvoříte konzolovou aplikaci jazyka C++ pro macOS 10.13 a vyšší. Použití služeb Cognitive Services [sadou SDK pro řeč](speech-sdk.md) pro přepisy řeči na text v reálném čase z počítače Mac mikrofonu. Aplikace je sestavená s [sadou SDK pro řeč pro macOS](https://aka.ms/csspeech/macosbinary) a kompilátor C++ výchozí počítače Mac (například `g++`).
+V tomto článku vytvoříte C++ konzolovou aplikaci pro MacOS 10,13 a novější. [Sadu Cognitive Services Speech SDK](speech-sdk.md) můžete použít k přepisovat řeči v reálném čase z mikrofonu vašeho počítače Mac. Aplikace je sestavená pomocí [sady Speech SDK pro MacOS](https://aka.ms/csspeech/macosbinary) a výchozího C++ kompilátoru Mac (například `g++`).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Klíč předplatného hlasové služby k dokončení tohoto rychlého startu potřebujete. Můžete ho získat zdarma. Zobrazit [hlasové služby si můžete vyzkoušet zdarma](get-started.md) podrobnosti.
+K dokončení tohoto rychlého startu budete potřebovat klíč předplatného služby Speech Services. Můžete ho získat zdarma. Další informace najdete v tématu o bezplatném pokusu o [hlasové služby](get-started.md) .
 
 ## <a name="install-speech-sdk"></a>Instalace sady Speech SDK
 
@@ -33,7 +33,7 @@ Klíč předplatného hlasové služby k dokončení tohoto rychlého startu pot
 
 Aktuální verze sady Cognitive Services Speech SDK je `1.6.0`.
 
-Sadou SDK pro řeč pro macOS můžete stáhnout jako ZIP framework sada z https://aka.ms/csspeech/macosbinary.
+Sadu Speech SDK for macOS je možné stáhnout jako sadu ze https://aka.ms/csspeech/macosbinary sady.
 
 Sadu SDK si stáhněte a nainstalujte následujícím způsobem:
 
@@ -49,7 +49,7 @@ Sadu SDK si stáhněte a nainstalujte následujícím způsobem:
    mkdir -p "$SPEECHSDK_ROOT"
    ```
 
-1. Stažení a extrakci `.zip` archiv obsahující rozhraní sadou SDK pro řeč:
+1. Stažení a extrahování `.zip` archivu obsahujícího rozhraní sady Speech SDK:
 
    ```sh
    wget -O SpeechSDK-macOS.zip https://aka.ms/csspeech/macosbinary
@@ -62,7 +62,7 @@ Sadu SDK si stáhněte a nainstalujte následujícím způsobem:
    ls -l "$SPEECHSDK_ROOT"
    ```
 
-   Výpis adresáře by měl obsahovat oznámení třetích stran a soubory s licencí, a také `MicrosoftCognitiveServicesSpeech.framework` adresáře.
+   Výpis adresáře by měl obsahovat soubory oznámení a licencí třetích stran, jakož i `MicrosoftCognitiveServicesSpeech.framework` adresář.
 
 ## <a name="add-sample-code"></a>Přidání ukázkového kódu
 
@@ -70,7 +70,7 @@ Sadu SDK si stáhněte a nainstalujte následujícím způsobem:
 
    [!code-cpp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/cpp-macos/helloworld.cpp#code)]
 
-1. V tento nový soubor, nahraďte řetězec `YourSubscriptionKey` s klíči předplatného hlasové služby.
+1. V tomto novém souboru nahraďte řetězec `YourSubscriptionKey` pomocí klíče předplatného služby Speech Services.
 
 1. Řetězec `YourServiceRegion` nahraďte [oblastí](regions.md) přidruženou k vašemu předplatnému (například `westus` pro bezplatnou zkušební verzi předplatného).
 
@@ -79,7 +79,7 @@ Sadu SDK si stáhněte a nainstalujte následujícím způsobem:
 > [!NOTE]
 > Nezapomeňte zadat níže uvedené příkazy jako _jeden příkazový řádek_. Nejjednodušším způsobem, jak to udělat, je zkopírovat příkaz pomocí tlačítka **Kopírovat** vedle každého příkazu a vložit ho do příkazového řádku vašeho prostředí.
 
-* Spusťte následující příkaz k sestavení aplikace.
+* Spuštěním následujícího příkazu sestavte aplikaci.
 
   ```sh
   g++ helloworld.cpp -o helloworld --std=c++14 -F${SPEECHSDK_ROOT} -framework MicrosoftCognitiveServicesSpeech
@@ -99,7 +99,7 @@ Sadu SDK si stáhněte a nainstalujte následujícím způsobem:
    ./helloworld
    ```
 
-1. V okně konzoly se zobrazí výzva požadující, abyste něco řekli. Vyslovte anglickou frázi nebo větu. Vaše řeči se přenášejí do služeb řeči a převede na text, který se zobrazí ve stejném okně.
+1. V okně konzoly se zobrazí výzva požadující, abyste něco řekli. Vyslovte anglickou frázi nebo větu. Váš hlas se přenáší do služby Speech Services a přepisu na text, který se zobrazí ve stejném okně.
 
    ```text
    Say something...
@@ -109,9 +109,9 @@ Sadu SDK si stáhněte a nainstalujte následujícím způsobem:
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Prozkoumejte C++ – ukázky na Githubu](https://aka.ms/csspeech/samples)
+> [Prozkoumejte C++ ukázky na GitHubu](https://aka.ms/csspeech/samples)
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také:
 
 - [Přizpůsobení akustických modelů](how-to-customize-acoustic-models.md)
 - [Přizpůsobení jazykových modelů](how-to-customize-language-model.md)
