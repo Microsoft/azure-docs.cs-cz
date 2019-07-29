@@ -163,7 +163,7 @@ Nyní nastavte některé metriky a sledujte pro odeslání zprávy do centra.
 
 1. V podokně nastavení pro službu IoT hub, klikněte na **metriky** možnost **monitorování** oddílu.
 
-2. V horní části obrazovky klikněte na tlačítko **posledních 24 hodin (automaticky)**. V rozevíracím seznamu, který se zobrazí, vyberte **poslední 4 hodiny** pro **časový rozsah**a nastavte **časové intervaly** k **1 minuta**, místního času. Klikněte na tlačítko **použít** nastavení uložte. 
+2. V horní části obrazovky klikněte na tlačítko **posledních 24 hodin (automaticky)** . V rozevíracím seznamu, který se zobrazí, vyberte **poslední 4 hodiny** pro **časový rozsah**a nastavte **časové intervaly** k **1 minuta**, místního času. Klikněte na tlačítko **použít** nastavení uložte. 
 
    ![Snímek obrazovky zobrazující nastavení času metriky.](./media/tutorial-use-metrics-and-diags/06-metrics-set-time-range.png)
 
@@ -238,7 +238,7 @@ Nebyla migrována do služby IoT Hub [metriky ve službě Azure Monitor](/azure/
 
 5. Teď nastavte další výstrahu pro *celkový počet zpráv používá*. Tato metrika je užitečné, pokud chcete odeslat výstrahu, když počet zpráv, které používají, které se blíží kvótu pro službu IoT hub – s oznámením centra brzy začne odmítnutí zpráv.
 
-   Na **zobrazit upozornění classic** obrazovce, klikněte na tlačítko **přidat upozornění metriky (klasické)**, potom vyplňte tato pole na **přidat pravidlo** podokně.
+   Na **zobrazit upozornění classic** obrazovce, klikněte na tlačítko **přidat upozornění metriky (klasické)** , potom vyplňte tato pole na **přidat pravidlo** podokně.
 
    **Název**: Zadejte název pro pravidlo výstrahy, jako třeba *číslo sady zpráv – používá*.
 

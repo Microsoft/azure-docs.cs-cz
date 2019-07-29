@@ -54,7 +54,7 @@ V následujících částech najdete podrobnější popis požadovaných kroků.
 3. Vytvořte centrum událostí.
 
 > [!NOTE]
-> V každém skriptu jsou nastavené proměnné, které budete potřebovat v pozdější části kurzu. Patří mezi ně název skupiny prostředků ($resourceGroup), obor názvů centra událostí (**$eventHubNamespace**) a název centra událostí (**$eventHubName**). V pozdějších částech tohoto článku se na tyto hodnoty odkazuje s použitím předpony symbolu dolaru ($), abyste věděli, že se nastavily ve skriptu.
+> V každém skriptu jsou nastavené proměnné, které budete potřebovat v pozdější části kurzu. Patří mezi ně název skupiny prostředků ($resourceGroup), obor názvů centra událostí ( **$eventHubNamespace**) a název centra událostí ( **$eventHubName**). V pozdějších částech tohoto článku se na tyto hodnoty odkazuje s použitím předpony symbolu dolaru ($), abyste věděli, že se nastavily ve skriptu.
 
 <!-- some day they will approve the tab control; 
   When that happens, put CLI and PSH in tabs. -->

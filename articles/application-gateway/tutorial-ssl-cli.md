@@ -165,7 +165,7 @@ az network public-ip show \
   --output tsv
 ```
 
-Zkopírujte veřejnou IP adresu a pak ji vložte do adresního řádku svého prohlížeče. V tomto příkladu je adresa URL **https://52.170.203.149**.
+Zkopírujte veřejnou IP adresu a pak ji vložte do adresního řádku svého prohlížeče. V tomto příkladu je adresa URL **https://52.170.203.149** .
 
 ![Zabezpečené upozornění](./media/tutorial-ssl-cli/application-gateway-secure.png)
 
