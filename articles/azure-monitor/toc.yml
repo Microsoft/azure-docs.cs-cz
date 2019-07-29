@@ -308,7 +308,13 @@
               displayname: 'live, quickpulse, quick pulse, live metrics'
               href: app/live-stream.md
             - name: Metriky
-              href: app/metrics-explorer.md
+              items:
+                - name: Metriky založené na protokolech a agregované předem
+                  href: app/pre-aggregated-metrics-log-metrics.md
+                - name: Definice metrik založených na protokolech
+                  href: platform/app-insights-metrics.md
+                - name: Klasický průzkumník metrik
+                  href: app/metrics-explorer.md
             - name: Search
               href: app/diagnostic-search.md
             - name: Profiler
@@ -425,8 +431,6 @@
                   href: app/asp-net-dependencies.md
                 - name: ApplicationInsights.config
                   href: app/configuration-with-applicationinsights-config.md
-                - name: Metriky založené na protokolech a agregované předem
-                  href: app/pre-aggregated-metrics-log-metrics.md
                 - name: Diagnostika transakcí
                   href: app/transaction-diagnostics.md
                 - name: Korelace vlastních zdrojů dat
@@ -659,15 +663,13 @@
                 - name: Shromažďování v protokolech
                   href: platform/diagnostic-logs-stream-log-store.md
                 - name: Shromažďování ze služby Azure Storage
-                  href: platform/collect-azure-metrics-logs.md
+                  href: platform/azure-storage-iis-table.md
                 - name: Archivace do úložiště
                   href: platform/archive-diagnostic-logs.md
                 - name: Streamování dat do Event Hubs
                   href: platform/diagnostic-logs-stream-event-hubs.md
                 - name: Povolení s využitím šablon Resource Manageru
                   href: platform/diagnostic-logs-stream-template.md
-                - name: Metriky a protokoly služeb
-                  href: platform/azure-storage-iis-table.md
             - name: Streamování dat do Event Hubs
               href: platform/stream-monitoring-data-event-hubs.md
             - name: Key Vault Analytics
@@ -736,8 +738,8 @@
               href: platform/metrics-getting-started.md
             - name: Pokročilé funkce Průzkumníku metrik
               href: platform/metrics-charts.md
-            - name: Metriky založené na protokolech
-              href: platform/app-insights-metrics.md
+            - name: Příklady grafů metrik
+              href: platform/metric-chart-samples.md
             - name: Řešení potíží s grafy metrik
               href: platform/metrics-troubleshoot.md
         - name: Protokoly

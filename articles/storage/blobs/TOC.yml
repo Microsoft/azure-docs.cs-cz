@@ -555,6 +555,20 @@
       items:
         - name: Analýza dat s využitím Databricks
           href: ../blobs/data-lake-storage-quickstart-create-databricks-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: Správa objektů blob bez kódu
+          items:
+            - name: PowerShell
+              href: storage-quickstart-blobs-powershell.md
+            - name: Rozhraní příkazového řádku
+              href: storage-quickstart-blobs-cli.md
+        - name: Vývoj s využitím objektů blob
+          items:
+            - name: .NET
+              href: storage-quickstart-blobs-dotnet.md
+            - name: Java
+              href: storage-quickstart-blobs-java-v10.md
+            - name: Python
+              href: storage-quickstart-blobs-python.md
     - name: Kurzy
       items:
         - name: 'Extrakce, transformace a načítání dat pomocí Azure Databricks'
@@ -667,6 +681,12 @@
               href: ../blobs/data-lake-storage-performance-tuning-mapreduce.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Optimalizace Stormu v HDInsightu
               href: ../blobs/data-lake-storage-performance-tuning-storm.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: Správa souborů (objekty blob)
+          items:
+            - name: PowerShell
+              href: /powershell/module/azure.storage
+            - name: Azure CLI
+              href: ../common/storage-azure-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Migrace dat
           items:
             - name: Upgrade ze služby Data Lake Storage Gen1
@@ -675,8 +695,37 @@
               href: ../blobs/data-lake-storage-migrate-on-premises-HDFS-cluster.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
     - name: Referenční informace
       items:
+        - name: PowerShell
+          href: /powershell/module/azure.storage
+        - name: Azure CLI
+          href: /cli/azure/storage
+        - name: .NET
+          items:
+            - name: 'Objekty blob, tabulky, fronty a soubory'
+              href: 'https://docs.microsoft.com/dotnet/api/overview/azure/storage/client'
+            - name: Přesuny dat
+              href: /dotnet/api/microsoft.azure.storage.datamovement
+            - name: Resource Manager
+              href: 'https://docs.microsoft.com/dotnet/api/overview/azure/storage/management'
+        - name: Java
+          items:
+            - name: 'Objekty blob, tabulky, fronty a soubory (v7)'
+              href: 'https://docs.microsoft.com/java/api/overview/azure/storage/client?view=azure-java-stable'
+            - name: Blob SDK (v10)
+              href: 'https://docs.microsoft.com/java/api/overview/azure/storage/client?view=azure-java-preview'
         - name: REST
-          href: 'https://docs.microsoft.com/rest/api/storageservices/data-lake-storage-gen2'
+          items:
+            - name: 'Objekty blob, tabulky, fronty a soubory'
+              href: /rest/api/storageservices
+            - name: Data Lake Storage Gen2
+              href: 'https://docs.microsoft.com/rest/api/storageservices/data-lake-storage-gen2'
+            - name: Poskytovatel prostředků
+              href: /rest/api/storagerp
+            - name: Import/export
+              href: /rest/api/storageimportexport
+        - name: Šablona Resource Manageru
+          displayName: ARM
+          href: /azure/templates/microsoft.storage/allversions
     - name: Zdroje a prostředky
       items:
         - name: Známé problémy
