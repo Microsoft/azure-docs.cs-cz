@@ -10,10 +10,10 @@ ms.date: 01/22/2019
 ms.author: danlep
 ms.custom: seodec18, mvc
 ms.openlocfilehash: c9e8c7fe4d32a44e8c0831154f02eda1f82aaff3
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68309474"
 ---
 # <a name="quickstart-create-a-private-container-registry-using-the-azure-portal"></a>Rychlý start: Vytvoření soukromého registru kontejnerů pomocí Azure Portal
@@ -22,7 +22,7 @@ Registr kontejnerů Azure je privátním registrem Dockeru v Azure, kde můžete
 
 Pokud se chcete přihlásit k registru, abyste mohli pracovat s imagemi kontejnerů, tento rychlý Start vyžaduje, abyste spustili Azure CLI (doporučuje se verze 2.0.55 nebo novější). Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][azure-cli].
 
-Je také nutné mít Docker nainstalovaný místně. Docker poskytuje balíčky, které snadno konfigurují Docker na jakémkoli [Macu][docker-mac], [Windows][docker-windows]nebo systému [Linux][Docker-Linux] .
+Je také nutné mít Docker nainstalovaný místně. Docker nabízí balíčky pro snadnou konfiguraci Dockeru na jakémkoli systému [Mac][docker-mac], [Windows][docker-windows] nebo [Linux][docker-linux].
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
@@ -60,7 +60,7 @@ Příkaz po dokončení vrátí zprávu `Login Succeeded` (Přihlášení bylo �
 
 ## <a name="list-container-images"></a>Výpis imagí kontejnerů
 
-Pokud chcete zobrazit seznam imagí v registru, přejděte na portálu na svůj registr a vyberte úložiště a pak vyberte úložiště, pomocí `docker push`kterého jste vytvořili.
+Pokud chcete zobrazit seznam imagí v registru, přejděte na portálu na svůj registr **a vyberte úložiště**a pak vyberte úložiště, pomocí `docker push`kterého jste vytvořili.
 
 V tomto příkladu vybereme úložiště **Hello-World** a v části `v1` **značky**se zobrazí obrázek označený příznakem.
 

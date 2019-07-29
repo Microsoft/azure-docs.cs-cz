@@ -1,7 +1,7 @@
 ---
-title: Vlastní hlasové první virtuálních asistentů (Preview) – hlasové služby
+title: Vlastní hlasová – první virtuální asistenti (Preview) – služba Speech
 titleSuffix: Azure Cognitive Services
-description: Přehled o funkcích, možnosti a omezení pro vlastní hlasové první virtuální Asistenti pomocí kanálu s přímým přístupem řeči řádku na rozhraní Bot Framework a Cognitive Services řeči Software Development Kit (SDK).
+description: Přehled funkcí, možností a omezení pro vlastní virtuální asistenty hlasu pomocí kanálu Direct line Speech v rozhraní robot a sady Cognitive Services Speech Software Development Kit (SDK).
 services: cognitive-services
 author: trrwilson
 manager: nitinme
@@ -10,56 +10,56 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: travisw
-ms.openlocfilehash: c9b85895e701ff74e025d6f7895bc32513bc29a1
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 8a12c9e5d569092440552958554681c0b1d79590
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67806899"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68552545"
 ---
-# <a name="about-custom-voice-first-virtual-assistants-preview"></a>O vlastní hlasové první virtuální Asistenti ve verzi preview
+# <a name="about-custom-voice-first-virtual-assistants-preview"></a>O vlastních hlasech pro virtuální asistenty ve verzi Preview
 
-Vlastní virtuálních asistentů pomocí hlasové služby Azure umožní vývojářům vytvářet konverzační rozhraní přirozené, podobnou té lidské pro jejich aplikace a prostředí. Kanál s přímým přístupem řeči řádku rozhraní Bot Framework rozšiřuje tyto možnosti tím, že poskytuje koordinované, iniciovat organizovaně, což vstupní bod do kompatibilní bot umožňující hlasové v hlasových si interakce s nízkou latencí a vysokou spolehlivostí. Tyto roboty můžete použít pro přirozeného jazyka zásahu od Microsoftu Language Understanding (LUIS). Přímé řeči řádku přístupu k zařízení pomocí řeči Software Development Kit (SDK).
+Vlastní virtuální asistenti využívající Azure Speech Services umožňují vývojářům vytvářet pro své aplikace a prostředí přirozené rozhraní pro konverzaci podobné člověku. Kanál pro přímý přenos řeči platformy robota tyto možnosti vylepšuje tím, že poskytuje koordinovaný a orchestrující vstupní bod na kompatibilním robotovi, který umožňuje hlas v, komunikaci hlasu s nízkou latencí a vysokou spolehlivostí. Tyto roboty můžou pro interakci v přirozeném jazyce použít Language Understanding (LUIS) od Microsoftu. K přímému line Speech přistupovala zařízení pomocí sady Speech Software Development Kit (SDK).
 
-   ![Koncepční diagram přímou linku řeči Orchestrace služby flow](media/voice-first-virtual-assistants/overview.png "tok kanál řeči")
+   ![Koncepční diagram toku služby orchestrace zpracování textu v přímém řádku](media/voice-first-virtual-assistants/overview.png "Tok kanálu řeči")
 
 
-Přímé řádku řeči a jeho přidružené funkce pro vlastní hlasové první virtuální Asistenti jsou ideální doplněk k [virtuální pomocníka řešení a šablony organizace](https://docs.microsoft.com/azure/bot-service/bot-builder-enterprise-template-overview). I když s přímým přístupem řeči řádek můžete pracovat s robotovi kompatibilní, tyto zdroje poskytují opakovaně použitelné základní konverzační prostředí vysoce kvalitní a běžné podpůrné dovednosti a modely pro rychlé seznámení.
+Přímý line Speech a jeho přidružená funkce pro vlastní virtuální asistenty hlasu jsou ideálním doplňkem k [řešení Virtual Assistant a šabloně organizace](https://docs.microsoft.com/azure/bot-service/bot-builder-enterprise-template-overview). I když je přímým line Speech možné pracovat s jakýmkoli kompatibilním robotem, poskytují tyto prostředky opakovaně použitelný směrný plán pro vysoce kvalitní konverzační prostředí a také společné podpůrné dovednosti a modely pro rychlé zahájení práce.
 
 
 ## <a name="core-features"></a>Základní funkce
 
 | Kategorie | Funkce |
 |----------|----------|
-|[Vlastní probuzení word](speech-devices-sdk-create-kws.md) | Můžete povolit uživatelům začít konverzace s roboty pomocí vlastních klíčových slov, například "Hey Contoso." Provedení této úlohy se modul probuzení vlastní aplikace word v sadě SDK řeči, který se dá nakonfigurovat s vlastní probuzení slovo [, který může vytvořit tady](speech-devices-sdk-create-kws.md). Kanál s přímým přístupem řeči řádku zahrnuje straně služby probuzení slovo ověření, že zvyšují přesnost aktivace slovo probuzení versus zařízení samostatně.
-|[Převod řeči na text](speech-to-text.md) | Kanál s přímým přístupem řeči řádku obsahuje v reálném čase přepisu zvuku do textové rozpoznaných pomocí [Speech to text](speech-to-text.md) z hlasové služby Azure. Tento text je k dispozici pro vašeho robota a klientské aplikace, jako je přepisována.
-|[Převod textu na řeč](text-to-speech.md) | Textové odpovědí z vašeho robota se má syntetizovat pomocí [převod textu na řeč](text-to-speech.md) z hlasové služby Azure. Tohoto slučování pak budou dostupné do klientské aplikace jako zvukový datový proud. Společnost Microsoft nabízí možnost vytvářet vlastní vysoce kvalitní, vlastní hlasové neuronových sítí převod textu na ŘEČ, umožňující hlasový vstup do vaší značky, další informace [kontaktujte nás](mailto:mstts@microsoft.com).
-|[Direct Line řeči](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech) | Jako kanál v rámci rozhraní Bot Framework s přímým přístupem řádku Speech umožňuje hladký a bezproblémový připojení mezi klientskou aplikaci, kompatibilní robotů a možnosti hlasové služby Azure. Další informace o konfiguraci vašeho robota použití kanálu Direct řeči řádku, naleznete v tématu [jeho stránky v dokumentaci k rozhraní Bot Framework](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech).
+|[Vlastní slovo Wake](speech-devices-sdk-create-kws.md) | Uživatelům můžete povolit konverzaci pomocí roboty pomocí vlastního klíčového slova "Hey contoso". Tato úloha se provádí pomocí vlastního modulu Wordu Wake v sadě Speech SDK, který se dá nakonfigurovat pomocí vlastního slova Wake [, které tady můžete vygenerovat](speech-devices-sdk-create-kws.md). Přímý spojnicový řeč zahrnuje ověřování v případě probuzení na straně služby, které zlepšuje přesnost aktivace funkce Wake Word, oproti samotnému zařízení.
+|[Převod řeči na text](speech-to-text.md) | Přímý spojnicový řeč zahrnuje přepis zvuku v reálném čase s rozpoznaným textem pomocí převodu [řeči na text](speech-to-text.md) z Azure Speech Services. Tento text je k dispozici pro robot i klientskou aplikaci, protože je přepisu.
+|[Převod textu na řeč](text-to-speech.md) | Textové odpovědi z robota se budou syntetizovat pomocí převodu [textu na řeč](text-to-speech.md) z Azure Speech Services. Tato syntéza pak bude zpřístupněna klientské aplikaci jako zvukový datový proud. Microsoft nabízí možnost vytvářet vlastní a vysoce kvalitní hlas neuronové TTS, který poskytuje hlas k vaší značce, a dozví se, jak [nás kontaktovat](mailto:mstts@microsoft.com).
+|[Přímý line – řeč](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech) | V rámci kanálu v rámci rozhraní bot je přímým vstupem na řeč umožněno hladké a bezproblémové propojení mezi klientskou aplikací, kompatibilní robotem a možnostmi služby Azure Speech Services. Další informace o konfiguraci robota pro použití kanálu přímým line Speech najdete na [stránce v dokumentaci k rozhraní bot Framework](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech).
 
 ## <a name="sample-code"></a>Ukázka kódu
 
-Ukázkový kód pro vytváření virtuálních asistentů první hlasu je k dispozici na Githubu. Tyto ukázky zahrnují klientská aplikace pro připojení k svého robota v různých oblíbených programovacích jazyků.
+Vzorový kód pro vytvoření virtuálního asistenta prvního hlasu je k dispozici na GitHubu. Tyto ukázky zahrnují klientskou aplikaci pro připojení k robotovi v několika oblíbených programovacích jazycích.
 
-* [Ukázky virtuálních asistentů Voice-first (SDK)](https://aka.ms/csspeech/samples)
-* [Rychlý start: voice první virtuálních asistentů (C#)](quickstart-virtual-assistant-csharp-uwp.md)
-* [Rychlý start: hlasové první virtuálních asistentů (Java)](quickstart-virtual-assistant-java-jre.md)
-* [Přímé řádku řečového klienta (C#, WPF)](https://github.com/Azure-Samples/Cognitive-Services-Direct-Line-Speech-Client)
+* [Ukázka hlasu prvního virtuálního pomocníka (SDK)](https://aka.ms/csspeech/samples)
+* [Rychlý Start: virtuální asistenti prvního hlasuC#()](quickstart-virtual-assistant-csharp-uwp.md)
+* [Rychlý Start: virtuální asistenti, kteří jsou první hlas (Java)](quickstart-virtual-assistant-java-jre.md)
+* [Klient Direct line Speech (C#, WPF)](https://github.com/Azure-Samples/Cognitive-Services-Direct-Line-Speech-Client)
 
 ## <a name="customization"></a>Přizpůsobení
 
-Hlasové první virtuální Asistenti vyvíjené hlasové služby Azure můžete použít celou škálu možnosti přizpůsobení, které jsou k dispozici pro [speech to text](speech-to-text.md), [převod textu na řeč](text-to-speech.md), a [custom – klíčové slovo Výběr](speech-devices-sdk-create-kws.md).
+Pomocí služby Azure Speech Services můžete využít celou řadu možností přizpůsobení, které jsou k dispozici pro [Převod řeči na text](speech-to-text.md), [Převod textu na řeč](text-to-speech.md)a [vlastní výběr vlastního klíčového slova](speech-devices-sdk-create-kws.md).
 
 > [!NOTE]
-> Možnosti vlastního nastavení se liší podle jazyka a národního prostředí (viz [podporované jazyky](supported-languages.md)).
+> Možnosti přizpůsobení se liší podle jazyka nebo národního prostředí (viz [podporované jazyky](supported-languages.md)).
 
 ## <a name="reference-docs"></a>Referenční dokumenty
 
 * [Speech SDK](speech-sdk-reference.md)
 * [Azure Bot Service](https://docs.microsoft.com/azure/bot-service/?view=azure-bot-service-4.0)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
-* [Získejte klíč předplatného hlasových služeb zdarma](get-started.md)
-* [Získání sady SDK pro řeč](speech-sdk.md)
+* [Získat klíč předplatného služby Speech Services zdarma](get-started.md)
+* [Získat sadu Speech SDK](speech-sdk.md)
 * [Vytvoření a nasazení základního chatbota](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0)
-* [Získejte virtuální pomocníka řešení a šablony organizace](https://github.com/Microsoft/AI)
+* [Získat řešení a šablonu společnosti Virtual Assistant](https://github.com/Microsoft/AI)

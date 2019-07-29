@@ -1,6 +1,6 @@
 ---
-title: 'Rychlý start: Vytvoření projektu zjišťování objektu se vlastní Vision SDK pro Python'
-titlesuffix: Azure Cognitive Services
+title: 'Rychlý start: Vytvoření projektu pro detekci objektů pomocí sady Custom Vision SDK pro Python'
+titleSuffix: Azure Cognitive Services
 description: Vytvořte projekt, přidejte značky, nahrajte obrázky, natrénujte svůj projekt a detekujte objekty pomocí sady Python SDK.
 services: cognitive-services
 author: areddish
@@ -10,16 +10,16 @@ ms.subservice: custom-vision
 ms.topic: quickstart
 ms.date: 07/03/2019
 ms.author: areddish
-ms.openlocfilehash: 623bf0b054544d2c25f3542043afe20d778fdd24
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 2994d696f463c32ed05fd42b694f29fa2035b9d2
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67603501"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68564158"
 ---
-# <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-python-sdk"></a>Rychlý start: Vytvoření projektu zjišťování objektů s využitím Custom Vision Python SDK
+# <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-python-sdk"></a>Rychlý start: Vytvoření projektu pro detekci objektů pomocí Custom Vision Python SDK
 
-Tento článek obsahuje informace a vzorový kód, které vám pomůžou začít s vytvořením modelu detekce objektů pomocí sady Custom Vision SDK a Pythonu. Po jeho vytvoření, je můžete přidat označený oblastí, nahrávání obrázků, trénování projektu, získat adresu URL koncového bodu publikované předpovědi projektu a použít koncový bod pro programové testování bitovou kopii. Tento příklad použijte jako šablonu pro vytvoření vlastní aplikace v Pythonu.
+Tento článek obsahuje informace a vzorový kód, které vám pomůžou začít s vytvořením modelu detekce objektů pomocí sady Custom Vision SDK a Pythonu. Po vytvoření můžete přidat tagované oblasti, nahrát obrázky, naučit projekt, získat adresu URL koncového bodu předpovědi projektu a použít koncový bod k programovému testování obrázku. Tento příklad použijte jako šablonu pro vytvoření vlastní aplikace v Pythonu.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -46,7 +46,7 @@ V upřednostňovaném adresáři projektu vytvořte nový soubor *sample.py*.
 
 ### <a name="create-the-custom-vision-service-project"></a>Vytvoření projektu služby Custom Vision
 
-Přidáním následujícího kódu do svého skriptu vytvořte nový projekt služby Custom Vision. Do odpovídajících definic vložte své klíče předplatného. Rozdíl mezi vytvoření klasifikace projektu objekt, zjišťování a image je doména zadaná v **create_project** volání.
+Přidáním následujícího kódu do svého skriptu vytvořte nový projekt služby Custom Vision. Do odpovídajících definic vložte své klíče předplatného. Rozdíl mezi vytvořením projektu detekce objektu a klasifikace obrázků je doména zadaná ve volání **create_project** .
 
 ```Python
 from azure.cognitiveservices.vision.customvision.training import CustomVisionTrainingClient
@@ -73,7 +73,7 @@ project = trainer.create_project("My Detection Project", domain_id=obj_detection
 
 ### <a name="create-tags-in-the-project"></a>Vytvoření značek v projektu
 
-Pokud chcete vytvořit objekt značky ve vašem projektu, přidejte následující kód do konce *sample.py*:
+Chcete-li v projektu vytvořit značky objektů, přidejte následující kód na konec *Sample.py*:
 
 ```Python
 # Make two tags in the new project
@@ -85,7 +85,7 @@ scissors_tag = trainer.create_tag(project.id, "scissors")
 
 Při označování obrázků v projektech detekce obrázků je potřeba zadat oblast každého označeného objektu pomocí normalizovaných souřadnic.
 
-Obrázky, značky a oblasti do projektu přidáte tak, že po vytvoření značky vložíte následující kód. Pro účely tohoto kurzu oblasti jsou pevně zakódované vložený v kódu. Oblasti určují ohraničující rámeček s normalizovanými souřadnicemi, které jsou v tomto pořadí: vlevo, nahoře, šířka, výška.
+Obrázky, značky a oblasti do projektu přidáte tak, že po vytvoření značky vložíte následující kód. Pro tento kurz jsou oblasti pevně zakódované vložené s kódem. Oblasti určují ohraničující rámeček s normalizovanými souřadnicemi, které jsou v tomto pořadí: vlevo, nahoře, šířka, výška.
 
 ```Python
 fork_image_regions = {
@@ -167,9 +167,9 @@ if not upload_result.is_batch_successful:
     exit(-1)
 ```
 
-### <a name="train-the-project-and-publish"></a>Projekt pro trénování a publikování
+### <a name="train-the-project-and-publish"></a>Výuka projektu a publikování
 
-Tento kód vytvoří první iterace v projektu a ke koncovému bodu predikcí následně publikuje danou iteraci. Název zadaný pro publikované iterace lze použít k odesílání požadavků předpovědi. Iterace není k dispozici v koncovém bodě predikcí, dokud je publikována.
+Tento kód vytvoří první iteraci v projektu a pak tuto iteraci publikuje do koncového bodu předpovědi. Název zadaný pro publikovanou iteraci lze použít k odeslání požadavků předpovědi. Iterace není v koncovém bodu předpovědi k dispozici, dokud není publikována.
 
 ```Python
 import time
@@ -186,7 +186,7 @@ trainer.publish_iteration(project.id, iteration.id, publish_iteration_name, pred
 print ("Done!")
 ```
 
-### <a name="get-and-use-the-published-iteration-on-the-prediction-endpoint"></a>Získat a používat publikované iterace na koncovém bodu predikcí
+### <a name="get-and-use-the-published-iteration-on-the-prediction-endpoint"></a>Získání a použití publikované iterace na koncovém bodu předpovědi
 
 Pokud chcete odeslat obrázek do koncového bodu předpovědi a načíst předpověď, přidejte na konec souboru následující kód:
 

@@ -16,10 +16,10 @@ ms.date: 07/10/2019
 ms.author: aljo
 ms.custom: mvc
 ms.openlocfilehash: ebc3d988afd9257bbdf045814877ab70012836aa
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
-ms.translationtype: MT
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/15/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68225086"
 ---
 # <a name="quickstart-deploy-windows-containers-to-service-fabric"></a>Rychlý start: Nasazení kontejnerů Windows pro Service Fabric
@@ -160,7 +160,7 @@ Otevřete prohlížeč a přejděte na adresu, kterou jste vložili do pole **ko
 
 Po spuštění clusteru se vám budou účtovat poplatky. Zvažte [odstranění clusteru](service-fabric-cluster-delete.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto rychlém startu jste se naučili:
 

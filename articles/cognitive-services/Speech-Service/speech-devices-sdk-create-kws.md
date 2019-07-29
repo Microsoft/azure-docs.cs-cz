@@ -1,5 +1,5 @@
 ---
-title: Vytvořit vlastní probuzení word – hlasové služby
+title: Vytvoření vlastní služby pro rozpoznávání řeči ve slově Wake
 titleSuffix: Azure Cognitive Services
 description: Vaše zařízení je vždy naslouchání pro probuzení slova (nebo fráze). Když uživatel zvolí slovo probuzení, zařízení odesílá všechny následné zvuk do cloudu, dokud uživatel zastaví čtení. Přizpůsobení vaší aplikace word probuzení je účinný způsob, jak odlišit zařízení a posilovat brandingu.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: f43cbedc633b26a3a7fcbfb5f6a75da514bf0c45
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 2bc1a6cbbf1e0d790326849a41b0788e332daa31
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67604871"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68553110"
 ---
 # <a name="create-a-custom-wake-word-by-using-the-speech-service"></a>Vytvořit vlastní probuzení word s použitím Speech service
 
@@ -46,26 +46,26 @@ Při výběru slova probuzení vezměte v úvahu následující pokyny:
 
 ## <a name="create-your-wake-word"></a>Vytvoření vaší aplikace word probuzení
 
-Před použitím vlastní probuzení word s vaším zařízením, budete muset vytvořit probuzení slova ve službě Microsoft vlastní funkci generování aplikace Word. Po zadání slovo probuzení, služba vytvoří soubor, který nasadíte do vaše sada povolit probuzení slovo na vašem zařízení.
+Než budete moct použít vlastní probuzení zařízení, budete muset vytvořit probudit Word se službou Microsoft Custom Wake Word Generation. Jakmile zadáte slovo Wake, služba vytvoří soubor, který nasadíte do vývojové sady, aby bylo možné na zařízení zapnout slovo Wake.
 
-1. Přejděte na [vlastní Speech Service Portal](https://aka.ms/sdsdk-speechportal) a **přihlášení** nebo pokud máte předplatné řeči zvolte [ **vytvořit odběr**](https://go.microsoft.com/fwlink/?linkid=2086754)
+1. Přejít na [portál Custom Speech Service](https://aka.ms/sdsdk-speechportal) a **Přihlásit** se nebo pokud nemáte předplatné pro rozpoznávání řeči, vyberte [**Vytvořit předplatné**](https://go.microsoft.com/fwlink/?linkid=2086754) .
 
     ![Portál Custom Speech Service](media/speech-devices-sdk/wake-word-4.png)
 
-1. Na [slovo probuzení vlastní](https://aka.ms/sdsdk-wakewordportal) napište v aplikaci word probuzení podle vašeho výběru a klikněte na tlačítko **přidat slovo probuzení**. Jsme našli [pokyny](#choose-an-effective-wake-word) pomoc při výběru efektivní klíčové slovo. Momentálně podporujeme pouze jazyk en US.
+1. Na vlastním typu stránky [Wordu Wake](https://aka.ms/sdsdk-wakewordportal) v slově Wake vyberte a klikněte na **Přidat probuzení**. Máme nějaké [pokyny](#choose-an-effective-wake-word) , které vám pomůžou zvolit efektivní klíčové slovo. V současné době podporujeme jenom jazyk EN-US.
 
     ![Zadejte vaše slova probuzení](media/speech-devices-sdk/wake-word-5.png)
 
-1. Vytvoří se tři alternativní výslovnosti vaše slova probuzení. Můžete použít všechny výslovnosti, které vám vyhovuje. Potom vyberte **odeslat** ke generování slovo probuzení. Pokud chcete změnit slovo probuzení prosím odeberte existující nejprve při najetí myší na řádku Výslovnost se zobrazí na ikonu Odstranit.
+1. Vytvoří se tři alternativní výslovnosti slova Wake. Můžete zvolit všechny výslovnosti, které chcete. Pak vyberte **Odeslat** , aby se vygenerovalo slovo Wake. Pokud chcete změnit slovo probudit, nejdřív prosím odeberte existující, a když najedete na řádek výslovnosti, zobrazí se ikona odstranit.
 
-    ![Projděte si vaše aplikace word probuzení](media/speech-devices-sdk/wake-word-6.png)
+    ![Kontrola slova Wake](media/speech-devices-sdk/wake-word-6.png)
 
-1. Může trvat až jednu minutu modelu, který má být vygenerována. Zobrazí výzva ke stažení souboru.
+1. Generování modelu může trvat až jednu minutu. Zobrazí se výzva ke stažení souboru.
 
-    ![Stáhněte si vaše aplikace word probuzení](media/speech-devices-sdk/wake-word-7.png)
+    ![Stažení slova Wake](media/speech-devices-sdk/wake-word-7.png)
 
-1. Uložte soubor .zip na vašem počítači. Budete potřebovat tento soubor k nasazení vaší vlastní probuzení slovo development Kit.
+1. Uložte soubor .zip na vašem počítači. Tento soubor budete potřebovat k nasazení vlastního probuzení Wordu do vývojové sady.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Testovat váš vlastní probuzení word s [řeči zařízení SDK Quickstart](https://aka.ms/sdsdk-quickstart).
+Vyzkoušejte si vlastní funkci probuzení Wordu pro [rozpoznávání řeči zařízení pomocí sady Speech](https://aka.ms/sdsdk-quickstart).
