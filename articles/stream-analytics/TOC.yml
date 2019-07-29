@@ -148,6 +148,8 @@
               href: stream-analytics-scale-jobs.md
         - name: Škálování s využitím funkcí ML
           href: stream-analytics-scale-with-machine-learning-functions.md
+        - name: Škálování s opakovaným dělením
+          href: repartition.md
     - name: Automatizace
       items:
         - name: Pomocí sady .NET SDK
