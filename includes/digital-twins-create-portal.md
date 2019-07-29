@@ -5,36 +5,36 @@ services: digital-twins
 author: dsk-2015
 ms.service: digital-twins
 ms.topic: include
-ms.date: 6/26/2019
+ms.date: 07/26/2019
 ms.author: dkshir
 ms.custom: include file
-ms.openlocfilehash: 9771e312269eb78e0dc4535a61e9287b5b169d7c
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: de81700496089ffc6cfdba8e02eaa4e14200d16d
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "67459159"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68601314"
 ---
-1. Přihlaste se k webu [Azure Portal](http://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
-1. V levém podokně vyberte **vytvořit prostředek**. Vyhledejte **digitální dvojče**a vyberte **digitální dvojče**. Vyberte **vytvořit** k zahájení procesu nasazení.
+1. V levém podokně vyberte **vytvořit prostředek**. Vyhledejte **digitální vlákna**a vyberte **digitální vlákna**. Vyberte **vytvořit** a zahajte proces nasazení.
 
-   ![Výběry pro vytvoření nové instance digitální dvojče](./media/create-digital-twins-portal/create-digital-twins.png)
+   ![Výběry pro vytvoření nové instance digitálního vlákna](./media/create-digital-twins-portal/create-digital-twins.png)
 
 1. V podokně **Digital Twins** zadejte následující informace:
-   * **Název prostředku**: Vytvořte jedinečný název pro vaši instanci digitální dvojče.
-   * **Předplatné**: Vyberte předplatné, které chcete použít k vytvoření této instance digitální dvojče. 
-   * **Skupina prostředků**: Vyberte nebo vytvořte [skupiny prostředků](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#resource-groups) digitální dvojče instance.
-   * **Umístění**: Vyberte nejbližší umístění pro vaše zařízení.
+   * **Název prostředku**: Vytvořte jedinečný název instance digitálního vlákna.
+   * **Předplatné**: Vyberte předplatné, které chcete použít k vytvoření této instance digitálního vlákna. 
+   * **Skupina prostředků**: Vyberte nebo vytvořte [skupinu prostředků](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#resource-groups) pro instanci digitálních vláken.
+   * **Umístění**: Vyberte nejbližší umístění zařízení.
 
-     ![Digitální dvojče podokno pomocí zadaných informací](./media/create-digital-twins-portal/create-digital-twins-param.png)
+     ![Podokno digitální vlákna s zadanými informacemi](./media/create-digital-twins-portal/create-digital-twins-param.png)
 
-1. Zkontrolujte informace o digitální dvojče a pak vyberte **vytvořit**. Vaše digitální dvojče instance může trvat několik minut, který se má vytvořit. Průběh můžete sledovat v podokně **Oznámení**.
+1. Projděte si informace o digitálním zaznamenání a pak vyberte **vytvořit**. Vytvoření instance digitálního vlákna může trvat několik minut. Průběh můžete sledovat v podokně **Oznámení**.
 
-1. Otevřete podokno **Přehled** vaší instance služby Digital Twins. Všimněte si, na odkaz v části **rozhraní API pro správu**.
+1. Otevřete podokno **Přehled** vaší instance služby Digital Twins. Poznamenejte si odkaz v části **rozhraní API pro správu**.
 
-   **Rozhraní API pro správu** adresa URL je formátován jako `https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/swagger`. Tato adresa URL vás přesměruje na dokumentaci k rozhraní REST API služby Azure Digital Twins odpovídající vaší instanci. Informace o tom, jak číst a používat tuto dokumentaci k rozhraní API, najdete v článku [Jak používat Swagger pro službu Azure Digital Twins](../articles/digital-twins/how-to-use-swagger.md).
+   Adresa URL **pro správu rozhraní API** je `https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/swagger`formátována jako. Tato adresa URL vás přesměruje na dokumentaci k rozhraní REST API služby Azure Digital Twins odpovídající vaší instanci. Informace o tom, jak číst a používat tuto dokumentaci k rozhraní API, najdete v článku [Jak používat Swagger pro službu Azure Digital Twins](../articles/digital-twins/how-to-use-swagger.md).
 
-    Upravit **rozhraní API pro správu** adresa URL tento formát `https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/api/v1.0/`. Vaše aplikace bude tuto upravenou adresu URL používat jako základní adresu URL pro přístup k vaší instanci. Zkopírujte tuto upravenou adresu URL do dočasného souboru. Budete potřebovat v další části.
+    Změňte adresu URL pro **správu rozhraní API** na `https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/api/v1.0/`tento formát. Vaše aplikace bude tuto upravenou adresu URL používat jako základní adresu URL pro přístup k vaší instanci. Zkopírujte tuto upravenou adresu URL do dočasného souboru. Budete ho potřebovat v další části.
 
     ![Rozhraní API pro správu](./media/create-digital-twins-portal/digital-twins-management-api.png)

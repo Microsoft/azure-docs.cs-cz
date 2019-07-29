@@ -1,9 +1,9 @@
 ---
-title: Skript Azure Powershellu ukázkový – nasazení aplikace do clusteru | Dokumentace Microsoftu
-description: Skript Azure Powershellu ukázkový – nasazení aplikace do clusteru Service Fabric.
+title: Ukázka skriptu Azure PowerShell – nasazení aplikace do clusteru | Microsoft Docs
+description: Ukázkový skript Azure PowerShell – nasazení aplikace do clusteru Service Fabric
 services: service-fabric
 documentationcenter: ''
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: ''
 tags: azure-service-management
@@ -13,18 +13,18 @@ ms.workload: multiple
 ms.devlang: na
 ms.topic: sample
 ms.date: 01/18/2018
-ms.author: aljo
+ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 6de7a721a5042a20537d3f09ea9b8de1cc0e7169
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 53c4d3c18072f2644c472e5b78f144faba4dce50
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60622029"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68597731"
 ---
 # <a name="deploy-an-application-to-a-service-fabric-cluster"></a>Nasazení aplikace do clusteru Service Fabric
 
-Tento ukázkový skript zkopíruje balíček aplikace do úložiště imagí clusteru, zaregistruje typ aplikace v clusteru, odebere balíček nepotřebných aplikací a vytvoří instanci aplikace z typu aplikace.  Pokud žádné výchozí služby byly definovány v manifestu aplikace typ cílové aplikace, vytvoří se v tuto chvíli těchto služeb. Podle potřeby upravte parametry. 
+Tento ukázkový skript zkopíruje balíček aplikace do úložiště imagí clusteru, zaregistruje typ aplikace v clusteru, odebere nepotřebný balíček aplikace a vytvoří instanci aplikace z typu aplikace.  Pokud byly v manifestu aplikace typu cílové aplikace definovány nějaké výchozí služby, pak se tyto služby v tuto chvíli vytvoří. Podle potřeby upravte parametry. 
 
 V případě potřeby nainstalujte modul PowerShellu pro Service Fabric se sadou [Service Fabric SDK](../service-fabric-get-started.md). 
 
@@ -34,7 +34,7 @@ V případě potřeby nainstalujte modul PowerShellu pro Service Fabric se sadou
 
 ## <a name="clean-up-deployment"></a>Vyčištění nasazení 
 
-Po ukázkového skriptu spuštění skriptu [odebrat aplikaci](service-fabric-powershell-remove-application.md) slouží k odebrání instance aplikace, zrušte registraci typu aplikace a odstranit balíček aplikace z úložiště imagí.
+Po spuštění ukázkového skriptu lze pomocí skriptu v části [odebrat aplikaci](service-fabric-powershell-remove-application.md) odebrat instanci aplikace, zrušit registraci typu aplikace a odstranit balíček aplikace z úložiště imagí.
 
 ## <a name="script-explanation"></a>Vysvětlení skriptu
 
@@ -43,13 +43,13 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 | Příkaz | Poznámky |
 |---|---|
 |[Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps)| Vytvoří připojení ke clusteru Service Fabric. |
-|[Copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) | Kopie ukládání balíčku aplikace k bitové kopii clusteru.  |
-|[Register-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps)| Zaregistruje typ a verze aplikace v clusteru. |
-|[New-ServiceFabricApplication](/powershell/module/servicefabric/new-servicefabricapplication?view=azureservicefabricps)| Vytvoří aplikaci z typu registrované aplikaci. |
+|[Copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) | Zkopíruje balíček aplikace do úložiště imagí clusteru.  |
+|[Register-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps)| Zaregistruje typ a verzi aplikace v clusteru. |
+|[New-ServiceFabricApplication](/powershell/module/servicefabric/new-servicefabricapplication?view=azureservicefabricps)| Vytvoří aplikaci z registrovaného typu aplikace. |
 | [Remove-ServiceFabricApplicationPackage](/powershell/module/servicefabric/remove-servicefabricapplicationpackage?view=azureservicefabricps) | Odebere balíček aplikace Service Fabric z úložiště imagí.|
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Další informace o modulu Powershellu pro Service Fabric najdete v tématu [dokumentaci k Azure Powershellu](/powershell/azure/service-fabric/?view=azureservicefabricps).
+Další informace o modulu Service Fabric PowerShellu najdete v [dokumentaci k Azure PowerShell](/powershell/azure/service-fabric/?view=azureservicefabricps).
 
 Další ukázky PowerShellu pro Azure Service Fabric najdete v [ukázkách Azure PowerShellu](../service-fabric-powershell-samples.md).

@@ -1,30 +1,30 @@
 ---
-title: 'Rychlý start: Získání délky věty přejít – Translator Text API'
+title: 'Rychlý start: Získat délky vět, přejít-Translator Text API'
 titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu zjistíte délky vět v textu pomocí rozhraní Translator Text API a jazyka Go.
 services: cognitive-services
 author: swmachan
-manager: erhopf
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 06/04/2019
 ms.author: swmachan
-ms.openlocfilehash: 574f70f8f091e0f0df65f7d52df5ca73ac00b2c0
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: a71e0859d7d677865cbacbf24de8b0e17861a192
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67704542"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68595173"
 ---
-# <a name="quickstart-use-the-translator-text-api-to-determine-sentence-length-using-go"></a>Rychlý start: Určení délky větu pomocí jazyka Go pomocí rozhraní Translator Text API
+# <a name="quickstart-use-the-translator-text-api-to-determine-sentence-length-using-go"></a>Rychlý start: Pomocí Translator Text API můžete určit délku věty pomocí možnosti přejít.
 
-V tomto rychlém startu zjistíte určení délky věta (ve znacích) pomocí Go a rozhraní REST Translator Text API.
+V tomto rychlém startu se dozvíte, jak určit délku věty (ve znacích) pomocí funkce přejít a Translator Text REST API.
 
 K tomuto rychlému startu potřebujete [účet služby Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) s prostředkem služby Translator Text. Pokud účet nemáte, můžete k získání klíče předplatného použít [bezplatnou zkušební verzi](https://azure.microsoft.com/try/cognitive-services/).
 
 >[!TIP]
-> Pokud chcete zobrazit veškerý kód najednou, zdrojový kód pro tuto ukázku je k dispozici na [Githubu](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-Go).
+> Pokud byste chtěli zobrazit všechen kód najednou, je zdrojový kód pro tuto ukázku dostupný na [GitHubu](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-Go).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -35,7 +35,7 @@ K tomuto rychlému startu potřebujete:
 
 ## <a name="create-a-project-and-import-required-modules"></a>Vytvoření projektu a import požadovaných modulů
 
-Vytvoření nového projektu přejít pomocí Oblíbené prostředí IDE nebo editoru. Pak do svého projektu, do souboru s názvem `sentence-length.go`, zkopírujte tento fragment kódu.
+Vytvořte nový projekt pro procházení pomocí oblíbených rozhraní IDE nebo editoru. Pak do svého projektu, do souboru s názvem `sentence-length.go`, zkopírujte tento fragment kódu.
 
 ```go
 package main
@@ -78,9 +78,9 @@ func main() {
 }
 ```
 
-## <a name="create-a-function-to-determine-sentence-length"></a>Vytvoření funkce k určení délky větu
+## <a name="create-a-function-to-determine-sentence-length"></a>Vytvoření funkce pro určení délky věty
 
-Pojďme vytvořit funkci, kterou chcete určit délka věty. Tato funkce se přijímají jediný argument, váš klíč předplatného Translator Text.
+Pojďme vytvořit funkci, která určí délku věty. Tato funkce bude mít jeden argument, Translator Text klíč předplatného.
 
 ```go
 func breakSentence(subscriptionKey string) {
@@ -91,7 +91,7 @@ func breakSentence(subscriptionKey string) {
 }
 ```
 
-Dále můžeme se vytvoří adresa URL. Adresa URL se vytvořil pomocí `Parse()` a `Query()` metody. Všimněte si, že se přidají parametry `Add()` metody.
+Nyní vytvoříme adresu URL. Adresa URL je sestavena pomocí `Parse()` metod `Query()` a. Všimněte si, že parametry jsou přidány s `Add()` metodou.
 
 Zkopírujte tento kód do `breakSentence` funkce.
 
@@ -104,11 +104,11 @@ u.RawQuery = q.Encode()
 ```
 
 >[!NOTE]
-> Další informace o koncových bodech, cesty a parametry požadavku najdete v tématu [Translator Text API 3.0: BreakSentence](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-break-sentence).
+> Další informace o koncových bodech, trasách a parametrech požadavků [najdete v článku Translator text API 3,0: BreakSentence](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-break-sentence).
 
-## <a name="create-a-struct-for-your-request-body"></a>Vytvoření struktury vaší tělo žádosti
+## <a name="create-a-struct-for-your-request-body"></a>Vytvoření struktury pro tělo žádosti
 
-V dalším kroku vytvoření anonymní struktury tělo žádosti a kódovat jako dokumenty JSON pomocí `json.Marshal()`. Přidejte tento kód `breakSentence` funkce.
+Dále vytvořte anonymní strukturu pro text žádosti a zakódovat ji jako JSON pomocí `json.Marshal()`. Přidejte tento kód do `breakSentence` funkce.
 
 ```go
 // Create an anonymous struct for your request body and encode it to JSON
@@ -122,7 +122,7 @@ b, _ := json.Marshal(body)
 
 ## <a name="build-the-request"></a>Žádost o sestavení
 
-Teď, když jste kódování textu žádosti jako dokumenty JSON, můžete vytvořit váš požadavek POST a volání rozhraní Translator Text API.
+Teď, když jste zakódovi tělo požadavku jako JSON, můžete sestavit požadavek POST a zavolat Translator Text API.
 
 ```go
 // Build the HTTP POST request
@@ -141,11 +141,11 @@ if err != nil {
 }
 ```
 
-Pokud používáte víc služeb předplatného služeb Cognitive Services, musíte taky zahrnout `Ocp-Apim-Subscription-Region` v parametry požadavku. [Další informace o dvojúrovňovém víc služeb předplatného](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication).
+Pokud používáte Cognitive Services předplatné s více službami, musíte taky zahrnout `Ocp-Apim-Subscription-Region` do parametrů žádosti. [Přečtěte si další informace o ověřování pomocí předplatného s více službami](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication).
 
-## <a name="handle-and-print-the-response"></a>Zpracování a tisku odpověď
+## <a name="handle-and-print-the-response"></a>Zpracuje a vytiskne odpověď.
 
-Přidejte tento kód `breakSentence` funkce, která se dekódovat odpověď JSON a poté ho naformátujte a vytiskne výsledek.
+Přidejte tento kód do `breakSentence` funkce k dekódování odpovědi JSON a pak formátujte a tiskněte výsledek.
 
 ```go
 // Decode the JSON response
@@ -188,14 +188,14 @@ Pokud chcete porovnat svůj kód s naším, kompletní ukázka je k dispozici na
 
 ## <a name="next-steps"></a>Další postup
 
-Podívejte se na referenční dokumentace rozhraní API o všechno, co můžete dělat s rozhraním Translator Text API.
+Podívejte se na reference k rozhraní API, abyste porozuměli všem, co můžete s Translator Text API dělat.
 
 > [!div class="nextstepaction"]
 > [Referenční materiály k rozhraní API](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také:
 
-Další informace o použití rozhraní Translator Text API na:
+Naučte se používat Translator Text API k těmto akcím:
 
 * [Překlad textu](quickstart-go-translate.md)
 * [Transliterace textu](quickstart-go-transliterate.md)

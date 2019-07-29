@@ -1,18 +1,18 @@
 ---
 title: Zálohování sdílených složek Azure
 description: Tento článek podrobně popisuje, jak zálohovat a obnovovat sdílené složky Azure, a vysvětluje úlohy správy.
-author: rayne-wiselman
-ms.author: raynew
-ms.date: 01/31/2019
+author: dcurwin
+ms.author: dacurwin
+ms.date: 07/29/2019
 ms.topic: tutorial
 ms.service: backup
 manager: carmonm
-ms.openlocfilehash: 7233db1e685c3edcdbd6a97bc2ae23706ad6f767
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: 9cb0150efcb4860af98b47aa5da4cfd24d2e9de9
+ms.sourcegitcommit: 15f7b641a67f3d6cf4fb4b4c11eaee18cf335923
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68466546"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68602015"
 ---
 # <a name="back-up-azure-file-shares"></a>Zálohování sdílených složek Azure
 Tento článek vysvětluje, jak pomocí webu Azure Portal zálohovat a obnovovat [sdílené složky Azure](../storage/files/storage-files-introduction.md).
@@ -34,6 +34,7 @@ Zálohování sdílených složek Azure je ve verzi Preview. Podporují se sdíl
 - Podpora pro zálohování sdílených složek Azure v účtech úložiště s replikací [zóny redundantního úložiště](../storage/common/storage-redundancy-zrs.md) (ZRS) je v současné době omezená na [tyto oblasti](backup-azure-files-faq.md#in-which-geos-can-i-back-up-azure-file-shares-).
 - Nemůžete chránit sdílené složky Azure v účtech úložiště s povolenými virtuálními sítěmi nebo bránou firewall.
 - K ochraně souborů Azure pomocí Azure Backup není k dispozici žádné rozhraní příkazového řádku.
+- Azure Backup aktuálně podporuje konfiguraci naplánovaných jednorázových záloh sdílených složek Azure.
 - Maximální počet plánovaných záloh je jedna za den.
 - Maximální počet záloh na vyžádání jsou čtyři za den.
 - Používejte v účtu úložiště [zámky prostředků](https://docs.microsoft.com/cli/azure/resource/lock?view=azure-cli-latest), abyste zabránili nechtěnému odstranění záloh v trezoru služby Recovery Services.
@@ -49,7 +50,7 @@ Tento kurz předpokládá, že už máte vytvořenou sdílenou složku Azure. Z�
 
     ![Volba sdílené složky Azure jako cíle zálohování](./media/backup-file-shares/overview-backup-page.png)
 
-2. V nabídce **cíl zálohování** z nabídky **co chcete zálohovat?** vyberte sdílená složka Azure.
+2. V nabídce **cíl zálohování** z části **co chcete zálohovat?** vyberte sdílená složka Azure.
 
     ![Volba sdílené složky Azure jako cíle zálohování](./media/backup-file-shares/choose-azure-fileshare-from-backup-goal.png)
 
@@ -65,7 +66,7 @@ Tento kurz předpokládá, že už máte vytvořenou sdílenou složku Azure. Z�
 
    ![přidružení sdílené složky Azure k trezoru kliknutím na Zálohovat](./media/backup-file-shares/discover-file-shares.png)
 
-5. V seznamu **Sdílené složky** vyberte jednu nebo několik sdílených složek, které chcete zálohovat, a klikněte na **OK**.
+5. V seznamu **sdílené složky** vyberte jednu nebo více sdílených souborů, které chcete zálohovat, a klikněte na tlačítko **OK**.
 
 6. Po zvolení sdílených složek se nabídka Zálohování přepne na **Zásady zálohování**. V této nabídce buď vyberte existující zásadu zálohování, nebo vytvořte novou, a pak klikněte na **Povolit zálohování**.
 
@@ -192,6 +193,6 @@ Zálohu sdílené složky můžete odstranit během úlohy zastavení zálohová
 Následující postup předpokládá, že se úloha zálohování virtuálního počítače zastavila. Po zastavení úlohy zálohování budou na řídicím panelu Zálohovaná položka dostupné možnosti Obnovit zálohování a Odstranit zálohovaná data. Klikněte na Odstranit zálohovaná data a zadáním názvu sdílené složky potvrďte odstranění. Volitelně zadejte Důvod odstranění nebo Komentář.
 
 ## <a name="see-also"></a>Viz také
-Další informace o sdílených složkách Azure najdete tady:
+Další informace o sdílených složkách Azure najdete v tématu.
 - [Nejčastější dotazy k zálohování sdílených složek Azure](backup-azure-files-faq.md)
 - [Řešení potíží se zálohováním sdílených složek Azure](troubleshoot-azure-files.md)

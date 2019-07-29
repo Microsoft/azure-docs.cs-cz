@@ -9,37 +9,37 @@ ms.topic: tutorial
 ms.date: 05/30/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 4ed66e3a0237eced852c806e78a8af6bdf8d8579
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.openlocfilehash: b8c8d1a867f6872c5e3ec9e1b48dac8f80c84950
+ms.sourcegitcommit: 15f7b641a67f3d6cf4fb4b4c11eaee18cf335923
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66417824"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68602140"
 ---
 # <a name="run-a-disaster-recovery-drill-to-azure"></a>Spuštění postupu zotavení po havárii do Azure
 
-Tento článek popisuje, jak spustit zotavení po havárii pro místní počítač do Azure s využitím [Azure Site Recovery](site-recovery-overview.md) služby. Postup ověří vaši strategii replikace bez ztráty dat.
+Tento článek popisuje, jak spustit postup zotavení po havárii pro místní počítač do Azure pomocí služby [Azure Site Recovery](site-recovery-overview.md) . Postup ověří vaši strategii replikace bez ztráty dat.
 
 
-Toto je čtvrtý dílem série, která ukazuje, jak nastavit zotavení po havárii do Azure pro místní počítače.
+Toto je čtvrtý kurz v řadě, ve kterém se dozvíte, jak nastavit zotavení po havárii do Azure pro místní počítače.
 
 V tomto kurzu se dozvíte, jak:
 
 > [!div class="checklist"]
 > * Nastavení izolované sítě pro testovací převzetí služeb při selhání
 > * Příprava připojení k virtuálnímu počítači Azure po převzetí služeb při selhání
-> * Spuštění testovací převzetí služeb při selhání pro jeden počítač.
+> * Spusťte testovací převzetí služeb při selhání pro jeden počítač.
 
 > [!NOTE]
-> Kurzy vám ukážou, nejjednodušší způsob nasazení pro scénář. V rámci možností používají jen výchozí možnosti a neuvádějí všechny varianty nastavení ani všechny cesty. Pokud chcete další informace o procházení kroky zotavení po havárii ve více podrobností, [k tomuto článku](site-recovery-test-failover-to-azure.md).
+> Kurzy ukazují nejjednodušší cestu k nasazení scénáře. V rámci možností používají jen výchozí možnosti a neuvádějí všechny varianty nastavení ani všechny cesty. Pokud se chcete dozvědět víc o krocích v postupu zotavení po havárii podrobněji, [Přečtěte si tento článek](site-recovery-test-failover-to-azure.md).
 
 ## <a name="before-you-start"></a>Než začnete
 
-Proveďte z předchozích kurzů:
+Dokončete předchozí kurzy:
 
-1. Ujistěte se, že jste [nastavení Azure](tutorial-prepare-azure.md) zotavení po havárii místních virtuálních počítačů VMware, virtuálních počítačů Hyper-V a fyzických počítačů do Azure.
-2. Příprava na místní [VMware](vmware-azure-tutorial-prepare-on-premises.md) nebo [Hyper-V](hyper-v-prepare-on-premises-tutorial.md) prostředí pro zotavení po havárii. Pokud při nastavování zotavení po havárii pro fyzické servery, přečtěte si [systém podpory replikace z](vmware-physical-secondary-support-matrix.md).
-3. Nastavení zotavení po havárii pro [virtuálních počítačů VMware](vmware-azure-tutorial.md), [virtuálních počítačů Hyper-V](hyper-v-azure-tutorial.md), nebo [fyzické počítače](physical-azure-disaster-recovery.md).
+1. Ujistěte se, že jste nastavili [Azure](tutorial-prepare-azure.md) pro místní zotavení po havárii virtuálních počítačů VMware, virtuálních počítačů Hyper-V a fyzických počítačů do Azure.
+2. Připravte místní prostředí [VMware](vmware-azure-tutorial-prepare-on-premises.md) nebo [Hyper-V](hyper-v-prepare-on-premises-tutorial.md) pro zotavení po havárii. Pokud nastavujete zotavení po havárii pro fyzické servery, přečtěte si [matici podpory](vmware-physical-secondary-support-matrix.md).
+3. Nastavte zotavení po havárii pro [virtuální počítače VMware](vmware-azure-tutorial.md), [virtuální počítače Hyper-V](hyper-v-azure-tutorial.md)nebo [fyzické počítače](physical-azure-disaster-recovery.md).
  
 
 ## <a name="verify-vm-properties"></a>Ověření vlastností virtuálního počítače
@@ -81,13 +81,13 @@ Spusťte testovací převzetí služeb při selhání následujícím způsobem:
 
 V některých scénářích vyžaduje převzetí služeb při selhání další zpracování, které trvá asi osm až deset minut. Možná si všimnete delšího trvání testovacího převzetí služeb při selhání u počítačů VMware s Linuxem, virtuálních počítačů VMware, které nemají povolenou službu DHCP, a virtuálních počítačů VMware, které nemají následující ovladače spuštění: storvsc, vmbus, storflt, intelide, atapi.
 
-## <a name="connect-after-failover"></a>Připojení po převzetí služeb při selhání
+## <a name="connect-after-failover"></a>Připojit po převzetí služeb při selhání
 
-Pokud se chcete připojit k virtuálním počítačům Azure pomocí RDP/SSH po převzetí služeb při selhání, [Příprava připojení](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover). Pokud narazíte na jakékoli problémy s připojením po převzetí služeb při selhání, postupujte [řešení potíží s](site-recovery-failover-to-azure-troubleshoot.md) průvodce.
+Pokud se chcete po převzetí služeb při selhání připojit k virtuálním počítačům Azure pomocí protokolu RDP/SSH, [Připravte se na připojení](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover). Pokud narazíte na problémy s připojením po převzetí služeb při selhání, postupujte podle pokynů průvodce [řešením potíží](site-recovery-failover-to-azure-troubleshoot.md) .
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Spuštění převzetí služeb při selhání a navrácení služeb po obnovení pro virtuální počítače VMware](vmware-azure-tutorial-failover-failback.md).
-> [Spuštění převzetí služeb při selhání a navrácení služeb po obnovení pro virtuální počítače Hyper-V](hyper-v-azure-failover-failback-tutorial.md).
-> [Spuštění převzetí služeb při selhání a navrácení služeb po obnovení pro fyzické počítače](physical-to-azure-failover-failback.md)
+> [Spuštění převzetí služeb při selhání a navrácení služeb po obnovení pro virtuální počítače](vmware-azure-tutorial-failover-failback.md)
+> VMware spusťte převzetí služeb při selhání a navrácení služeb po obnovení pro
+> virtuální[počítače](physical-to-azure-failover-failback.md) [Hyper-V](hyper-v-azure-failover-failback-tutorial.md).

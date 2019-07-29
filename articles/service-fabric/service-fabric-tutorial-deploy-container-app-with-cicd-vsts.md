@@ -1,9 +1,9 @@
 ---
 title: Nasazení aplikace typu kontejner s CI/CD do clusteru Azure Service Fabric
-description: V tomto kurzu se dozvíte, jak nastavit průběžnou integraci a nasazování pro aplikaci Azure Service Fabric kontejneru s využitím Azure DevOps sady Visual Studio.
+description: V tomto kurzu se naučíte, jak nastavit průběžnou integraci a nasazování pro aplikaci Azure Service Fabric Container pomocí sady Visual Studio Azure DevOps.
 services: service-fabric
 documentationcenter: .net
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: ''
 ms.assetid: ''
@@ -13,25 +13,25 @@ ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/29/2018
-ms.author: aljo
+ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 37305f27203986ce2e3d06276b5169ffd9b41287
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b686ceace3679d1541e8f1a74bca7e99b81ba932
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60720575"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68598892"
 ---
-# <a name="tutorial-deploy-a-container-application-with-cicd-to-a-service-fabric-cluster"></a>Kurz: Nasazení aplikace typu kontejner s CI/CD do clusteru Service Fabric
+# <a name="tutorial-deploy-a-container-application-with-cicd-to-a-service-fabric-cluster"></a>Kurz: Nasazení aplikace typu kontejner pomocí CI/CD do clusteru Service Fabric
 
-Tento kurz je součástí série a popisuje, jak nastavit průběžnou integraci a nasazování pro aplikaci kontejneru Azure Service Fabric pomocí sady Visual Studio a Azure DevOps.  Je zapotřebí existující aplikace Service Fabric; jako příklad se používá aplikace vytvořená v článku [Nasazení aplikace .NET v kontejneru Windows do Azure Service Fabric](service-fabric-host-app-in-a-container.md).
+Tento kurz je druhou částí série a popisuje, jak nastavit průběžnou integraci a nasazování pro aplikaci Azure Service Fabric Container pomocí sady Visual Studio a Azure DevOps.  Je zapotřebí existující aplikace Service Fabric; jako příklad se používá aplikace vytvořená v článku [Nasazení aplikace .NET v kontejneru Windows do Azure Service Fabric](service-fabric-host-app-in-a-container.md).
 
 Ve druhé části této série se naučíte:
 
 > [!div class="checklist"]
 > * Přidání správy zdrojového kódu do projektu
-> * Vytvořte definici sestavení v aplikaci Visual Studio Team Explorer
-> * Vytvoření definice verze v sadě Visual Studio Team Explorer
+> * Vytvoření definice sestavení v aplikaci Visual Studio Team Explorer
+> * Vytvoření definice verze v aplikaci Visual Studio Team Explorer
 > * Automatické nasazení a upgrade aplikace
 
 ## <a name="prerequisites"></a>Požadavky
@@ -51,7 +51,7 @@ Zvolte v rámci projektu aplikace cílový profil, který se použije pro pracov
 
 ## <a name="share-your-visual-studio-solution-to-a-new-azure-devops-git-repo"></a>Sdílení řešení sady Visual Studio do nového úložiště Gitu Azure DevOps
 
-Sdílejte zdrojové soubory své aplikace do týmového projektu v Azure DevOps, abyste mohli generovat sestavení.
+Sdílejte zdrojové soubory aplikace do týmového projektu v Azure DevOps, abyste mohli generovat sestavení.
 
 Vytvořte pro svůj projekt nové místní úložiště Git tím, že na stavovém řádku v pravém dolním rohu sady Visual Studio vyberete **Přidat do správy zdrojového kódu** -> **Git**.
 
@@ -59,7 +59,7 @@ V zobrazení **Nasdílet změny** v **Team Exploreru** vyberte v části **Doru�
 
 ![Nasdílení úložiště Git][push-git-repo]
 
-Ověřte svůj e-mail a vyberte svoji organizaci v **účet** rozevíracího seznamu. Budete muset nastavit organizace, pokud ho ještě nemáte. Zadejte název svého úložiště a vyberte **Publikovat úložiště**.
+Ověřte svůj e-mail a v rozevíracím seznamu **účet** vyberte svou organizaci. Je možné, že budete muset nastavit organizaci, pokud ji ještě nemáte. Zadejte název svého úložiště a vyberte **Publikovat úložiště**.
 
 ![Nasdílení úložiště Git][publish-code]
 
@@ -67,22 +67,22 @@ Publikováním úložiště se ve vašem účtu vytvoří nový týmový projekt
 
 ## <a name="configure-continuous-delivery-with-azure-pipelines"></a>Nakonfigurujte průběžné doručování s Azure kanály
 
-Definici sestavení Azure DevOps popisuje pracovní postup, který se skládá ze sady kroků sestavení, které jsou spouštěny postupně. Vytvořte definici sestavení, která vytvoří balíček aplikace Service Fabric a další artefakty pro nasazení do clusteru Service Fabric. Další informace o Azure DevOps [definice sestavení](https://www.visualstudio.com/docs/build/define/create). 
+Definice sestavení Azure DevOps popisuje pracovní postup, který se skládá ze sady kroků sestavení, které jsou spouštěny sekvenčně. Vytvořte definici sestavení, která vytvoří balíček aplikace Service Fabric a další artefakty pro nasazení do clusteru Service Fabric. Přečtěte si další informace o [definicích sestavení](https://www.visualstudio.com/docs/build/define/create)Azure DevOps. 
 
-Definice vydané verze Azure DevOps popisuje pracovní postup, který nasadí balíček aplikace do clusteru. Při společném použití definice sestavení a definice verze provedou celý pracovní postup od zdrojových souborů až po spuštění aplikace v clusteru. Další informace o Azure DevOps [definice verzí](https://www.visualstudio.com/docs/release/author-release-definition/more-release-definition).
+Definice vydané verze Azure DevOps popisuje pracovní postup, který nasadí balíček aplikace do clusteru. Při společném použití definice sestavení a definice verze provedou celý pracovní postup od zdrojových souborů až po spuštění aplikace v clusteru. Přečtěte si další informace o [definicích verzí](https://www.visualstudio.com/docs/release/author-release-definition/more-release-definition)Azure DevOps.
 
-### <a name="create-a-build-definition"></a>Vytvoření definice sestavení
+### <a name="create-a-build-definition"></a>Vytvořte definici sestavení
 
-Otevřete nový týmový projekt tak, že přejdete do https://dev.azure.com ve webovém prohlížeči a vyberte vaše organizace, následovaný nový projekt. 
+Otevřete nový týmový projekt tak, že přejdete https://dev.azure.com na webový prohlížeč a vyberete svou organizaci a potom nový projekt. 
 
-Vyberte **kanály** možnost na levém panelu a potom klikněte na **nový kanál**.
+Na levém panelu vyberte možnost **kanály** a pak klikněte na **Nový kanál**.
 
 >[!NOTE]
 >Pokud se šablona definice sestavení nezobrazí, ujistěte se, že je vypnutá funkce **Nové prostředí pro tvorbu kanálů YAML**. Tato funkce se konfiguruje v části **Funkce Preview** vašeho účtu DevOps.
 
 ![Nový kanál][new-pipeline]
 
-Vyberte **úložiště Git v Azure** jako zdroj, název, váš projekt úložišti, váš tým projektu a **hlavní** výchozí větev nebo ruční a plánovaná sestavení.  Pak klikněte na **Pokračovat**.
+Vyberte **Azure Repos Git** jako zdroj, název týmového projektu, úložiště projektu a **hlavní** výchozí větev nebo ruční a plánované sestavení.  Pak klikněte na **Pokračovat**.
 
 V části **Vybrat šablonu** vyberte šablonu **Aplikace Azure Service Fabric s podporou Dockeru** a klikněte na **Použít**.
 
@@ -104,7 +104,7 @@ V části **Typ registru kontejneru** vyberte **Azure Container Registry**. Vybe
 
 ![Výběr možnosti Nabídnout image v Dockeru][select-push-images]
 
-V části **triggery** kartu, povolte průběžnou integraci kontrolou **aktivovat nepřetržitou integraci**. V části **Filtry větví** klikněte na **+ Přidat** a do pole **Specifikace větve** se vyplní výchozí hodnota **master**.
+Na kartě **aktivační události** povolte kontinuální integraci zaškrtnutím **Povolit průběžnou integraci**. V části **Filtry větví** klikněte na **+ Přidat** a do pole **Specifikace větve** se vyplní výchozí hodnota **master**.
 
 Kliknutím na **Uložit a zařadit do fronty** v dialogu **Uložit kanál buildu a zařadit do fronty** ručně spusťte build.
 
@@ -114,7 +114,7 @@ Sestavení se aktivují také pro nasdílení změn nebo vrácení se změnami. 
 
 ### <a name="create-a-release-definition"></a>Vytvoření definice verze
 
-Vyberte **kanály** možnost na levém panelu a potom **verze**, pak **+ nový kanál**.  V části **Vybrat šablonu** vyberte ze seznamu šablonu **Nasazení Azure Service Fabric** a pak klikněte na **Použít**.
+Na levém panelu vyberte možnost **kanály** a pak **verze**a potom **+ Nový kanál**.  V části **Vybrat šablonu** vyberte ze seznamu šablonu **Nasazení Azure Service Fabric** a pak klikněte na **Použít**.
 
 ![Výběr šablony vydání][select-release-template]
 
@@ -137,7 +137,7 @@ Klikněte na **Nastavení Dockeru** a potom na **Konfigurovat nastavení Dockeru
 
 ![Agent kanálu verze][release-pipeline-agent]
 
-Dále do kanálu přidejte artefakt sestavení, aby definice verze dokázala najít výstup sestavení. Vyberte **Kanál** a pak **Artefakty**->**+ Přidat**.  V části **Zdroj (definice sestavení)** vyberte definici sestavení, kterou jste předtím vytvořili.  Kliknutím na **Přidat** uložte artefakt sestavení.
+Dále do kanálu přidejte artefakt sestavení, aby definice verze dokázala najít výstup sestavení. Vyberte **Kanál** a pak **Artefakty**-> **+ Přidat**.  V části **Zdroj (definice sestavení)** vyberte definici sestavení, kterou jste předtím vytvořili.  Kliknutím na **Přidat** uložte artefakt sestavení.
 
 ![Přidání artefaktu][add-artifact]
 

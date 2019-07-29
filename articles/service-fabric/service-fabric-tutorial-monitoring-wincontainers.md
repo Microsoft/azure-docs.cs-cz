@@ -3,7 +3,7 @@ title: Monitorování a diagnostika kontejnerů Windows na platformě Service Fa
 description: V tomto kurzu nakonfigurujete protokoly Azure Monitor pro monitorování a diagnostiku kontejnerů Windows v Azure Service Fabric.
 services: service-fabric
 documentationcenter: .net
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: ''
 ms.assetid: ''
@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 07/22/2019
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: ae3366d6918ced1526da1c9be10e977ae0a53cd5
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 856e2859c778c9f23bc093c2283571a1440ef701
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68385239"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68598786"
 ---
 # <a name="tutorial-monitor-windows-containers-on-service-fabric-using-azure-monitor-logs"></a>Kurz: Monitorování kontejnerů Windows na Service Fabric pomocí protokolů Azure Monitor
 
@@ -231,7 +231,7 @@ Za několik minut **aktualizujte** řešení pro monitorování kontejnerů. Mě
 
 ![Čítače výkonu 2](./media/service-fabric-tutorial-monitoring-wincontainers/perf-counters2.png)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste se naučili:
 

@@ -3,7 +3,7 @@ title: Škálování clusteru Service Fabric v Azure | Microsoft Docs
 description: V tomto kurzu se naučíte škálovat Cluster Service Fabric v Azure.
 services: service-fabric
 documentationcenter: .net
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: ''
 ms.assetid: ''
@@ -13,14 +13,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/22/2019
-ms.author: aljo
+ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 9e34984dde4ae09540ff73a8ddd1a90c11d5bef4
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 5c4d40e13a31a613a6eb4a741935a1c88287d0cf
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68385187"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68598760"
 ---
 # <a name="tutorial-scale-a-service-fabric-cluster-in-azure"></a>Kurz: Škálování Service Fabric clusteru v Azure
 
@@ -66,8 +66,8 @@ Při škálování clusteru Azure mějte na paměti následující pokyny:
 
 * Jeden nebo více než jedna sada uzlů typu Service Fabric nebo škálování nemůže obsahovat více než 100 uzlů/virtuálních počítačů.  Chcete-li škálovat cluster nad rámec 100 uzlů, přidejte další typy uzlů.
 * Typy primárních uzlů, které spouštějí provozní úlohy, by měly mít [úroveň životnosti][durability] Gold nebo stříbrné a mají vždy pět nebo více uzlů.
-* neprimární typy uzlů, na kterých běží stavová provozní zatížení, by měly mít vždycky pět nebo více uzlů.
-* neprimární typy uzlů, na kterých běží Bezstavová provozní zatížení, by měly mít vždycky dva nebo více uzlů.
+* Neprimární typy uzlů, na kterých běží stavová provozní zatížení, by měly mít vždycky pět nebo více uzlů.
+* Neprimární typy uzlů, na kterých běží Bezstavová provozní zatížení, by měly mít vždycky dva nebo více uzlů.
 * Každý typ uzlu [úrovně trvanlivosti][durability] Gold nebo stříbrného by měl mít vždy pět nebo více uzlů.
 * Pokud při škálování (odebírání uzlů z) primární typ uzlu, neměli byste nikdy snížit počet instancí na méně, než jakou vyžaduje [úroveň spolehlivosti][reliability] .
 
@@ -93,7 +93,7 @@ Změna velikosti a zmenšení nebo horizontální škálování mění počet uz
 
 [Exportujte šablonu a soubor parametrů](#export-the-template-for-the-resource-group) ze skupiny prostředků pro nejnovější nasazení.  Otevřete soubor *Parameters. JSON* .  Pokud jste nasadili cluster pomocí [ukázkové šablony][template] v tomto kurzu, existují tři typy uzlů v clusteru a tři parametry, které nastavují počet uzlů pro každý typ uzlu: *nt0InstanceCount*, *nt1InstanceCount*a  *nt2InstanceCount*.  Parametr *nt1InstanceCount* například nastaví počet instancí pro druhý typ uzlu a nastaví počet virtuálních počítačů v přidružené sadě škálování virtuálního počítače.
 
-Pokud tedy aktualizujete hodnotu *nt1InstanceCount* , změníte počet uzlů v druhém typu uzlu.  Nezapomeňte, že nemůžete škálovat typ uzlu na více než 100 uzlů.  neprimární typy uzlů, na kterých běží stavová provozní zatížení, by měly mít vždycky pět nebo více uzlů. neprimární typy uzlů, na kterých běží Bezstavová provozní zatížení, by měly mít vždycky dva nebo více uzlů.
+Pokud tedy aktualizujete hodnotu *nt1InstanceCount* , změníte počet uzlů v druhém typu uzlu.  Nezapomeňte, že nemůžete škálovat typ uzlu na více než 100 uzlů.  Neprimární typy uzlů, na kterých běží stavová provozní zatížení, by měly mít vždycky pět nebo více uzlů. Neprimární typy uzlů, na kterých běží Bezstavová provozní zatížení, by měly mít vždycky dva nebo více uzlů.
 
 Pokud provádíte horizontální navýšení kapacity, při odebírání uzlů z, typu na bronzové [úrovni trvanlivosti][durability] musíte [ručně odebrat stav těchto uzlů](service-fabric-cluster-scale-up-down.md#manually-remove-vms-from-a-node-typevirtual-machine-scale-set).  Pro stříbro a zlatou úroveň odolnosti se tyto kroky provádí automaticky na platformě.
 

@@ -1,45 +1,45 @@
 ---
-title: Poznámkové bloky Jupyter příklad použití NOAA otevřete datovou sadu
+title: Příklad poznámkových bloků Jupyter s využitím otevřené datové sady NOAA
 titleSuffix: Azure Open Datasets
-description: Zjistěte, jak načíst otevřít datové sady a využít k obohacení ukázková data pomocí příkladu poznámkové bloky Jupyter pro Azure otevření datové sady. Mezi dostupné techniky patří použití Sparku a Pandas zpracovat data.
+description: Pomocí ukázkových poznámkových bloků Jupyter pro Azure Open DataSets se naučíte načíst otevřené datové sady a použít je k obohacení ukázkových dat. Mezi techniky patří použití Sparku a PANDAS ke zpracování dat.
 ms.service: open-datasets
 ms.topic: sample
 author: cjgronlund
 ms.author: cgronlun
 ms.date: 05/02/2019
-ms.openlocfilehash: b62a2690e5879e45a14d0b06a38e8c5171dda14e
-ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
+ms.openlocfilehash: 6991b641bc85a8944bfd12a43f9b049e44ea88d8
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65442330"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68598971"
 ---
-# <a name="example-jupyter-notebooks-show-how-to-enrich-data-with-open-datasets"></a>Poznámkové bloky Jupyter příklad ukazují, jak rozšířit data s datovými sadami otevřít 
-Poznámkové bloky Jupyter příklad pro datové sady otevře Azure ukazují, jak načíst otevřít datové sady a využít k obohacení ukázková data. Mezi dostupné techniky patří použití Apache Spark a Pandas zpracovat data.
+# <a name="example-jupyter-notebooks-show-how-to-enrich-data-with-open-datasets"></a>Příklady Jupyter poznámkových bloků ukazují, jak rozšířit data pomocí otevřených datových sad 
+Příklady Jupyter poznámkových bloků pro Azure Open DataSet ukazují, jak načíst otevřené datové sady a používat je k obohacení ukázkových dat. Mezi techniky patří použití Apache Spark a PANDAS ke zpracování dat.
 
 >[!IMPORTANT]
->Při práci v prostředí bez Spark, umožňuje otevřít datové sady, stahování jenom jeden měsíc dat najednou kombinací určité třídy předejdete tak MemoryError s rozsáhlými datovými sadami.
+>Když pracujete v prostředí, které není Spark, umožňuje otevřené datové sady stahovat jenom jeden měsíc dat s určitými třídami, aby se předešlo MemoryErrorí s velkými datovými sadami.
 
-## <a name="load-noaa-integrated-surface-database-isd-data"></a>Načíst data NOAA integrované Surface databáze (investičních službách) 
+## <a name="load-noaa-integrated-surface-database-isd-data"></a>Načtení dat NOAA Integrated Surface Database (ISD) 
 |Poznámkový blok        | Popis                                    |
 |----------------|------------------------------------------------|
-|[Načíst poslední měsíc data o počasí do struktury Pandas dataframe](https://github.com/Azure/OpenDatasetsNotebooks/blob/master/tutorials/data-access/02-weather-to-pandas-dataframe.ipynb) | Zjistěte, jak načíst do vaší oblíbené balíčky Pandas dataframe historická data o počasí. |
-|[Načíst poslední měsíc data o počasí do Spark dataframe](https://github.com/Azure/OpenDatasetsNotebooks/blob/master/tutorials/data-access/01-weather-to-spark-dataframe.ipynb) | Zjistěte, jak načíst do oblíbených Spark dataframe historická data o počasí.  |
+|[Načtení jednoho nedávných měsíců dat počasí do PANDAS dataframe](https://github.com/Azure/OpenDatasetsNotebooks/blob/master/tutorials/data-access/02-weather-to-pandas-dataframe.ipynb) | Naučte se, jak načíst historická data o počasí do oblíbeného PANDAS dataframe. |
+|[Načtení jednoho posledního měsíce dat o počasí do datového rámce Sparku](https://github.com/Azure/OpenDatasetsNotebooks/blob/master/tutorials/data-access/01-weather-to-spark-dataframe.ipynb) | Naučte se, jak načíst historická data o počasí do oblíbeného datového rámce Sparku.  |
 
-## <a name="join-demo-data-with-noaa-isd-data"></a>Připojte se k ukázková data s daty investičních NOAA službách 
+## <a name="join-demo-data-with-noaa-isd-data"></a>Spojit ukázková data s daty NOAA ISD 
 |Poznámkový blok        | Popis                                    |
 |----------------|------------------------------------------------|
-|[Připojte se k ukázková data s daty o počasí - Pandas](https://github.com/Azure/OpenDatasetsNotebooks/blob/master/tutorials/data-join/02-weather-join-in-pandas.ipynb) | Připojte se k 1 měsíc ukázkové datové sady senzor umístění se údaje o počasí v Pandas dataframe.  |
-|[Připojte se k ukázková data s daty o počasí – Spark](https://github.com/Azure/OpenDatasetsNotebooks/blob/master/tutorials/data-join/01-weather-join-in-spark.ipynb) | Připojte se k ukázkové datové sady senzor umístění se údaje o počasí v Spark dataframe. |
+|[Spojit ukázková data s daty o počasí – PANDAS](https://github.com/Azure/OpenDatasetsNotebooks/blob/master/tutorials/data-join/02-weather-join-in-pandas.ipynb) | Propojte si ukázkovou datovou sadu senzorů na 1 měsíc s čtenými počasí v PANDAS dataframe.  |
+|[Spojování ukázkových dat s daty o počasí – Spark](https://github.com/Azure/OpenDatasetsNotebooks/blob/master/tutorials/data-join/01-weather-join-in-spark.ipynb) | Připojte se k demonstrační datové sadě umístění senzorů s čtenými počasí v dataframe Spark. |
 
-## <a name="join-nyc-taxi-data-with-noaa-isd-data"></a>Připojte se k NYC data taxislužby města s daty investičních NOAA službách 
+## <a name="join-nyc-taxi-data-with-noaa-isd-data"></a>Spojování dat NYC taxislužby s daty NOAA ISD 
 |Poznámkový blok        | Popis                                    |
 |----------------|------------------------------------------------|
-|[Data o jízdách taxislužby obohacené data o počasí - Pandas](https://github.com/Azure/OpenDatasetsNotebooks/blob/master/tutorials/data-join/04-nyc-taxi-join-weather-in-pandas.ipynb) | Načtení dat taxislužby zelené NYC (více než 1 měsíc) a rozšiřovat s daty o počasí v Pandas dataframe. Tento příklad přepíše metodu `get_pandas_limit` a vyváží výkon množství dat a dat zatížení.|
-|[Data o jízdách taxislužby obohacené data o počasí – Spark](https://github.com/Azure/OpenDatasetsNotebooks/blob/master/tutorials/data-join/03-nyc-taxi-join-weather-in-spark.ipynb) | Načíst data taxislužby města zelené NYC a rozšiřovat s daty o počasí v Spark dataframe.  |
+|[Taxislužby data o cestách obohacená daty o počasí – PANDAS](https://github.com/Azure/OpenDatasetsNotebooks/blob/master/tutorials/data-join/04-nyc-taxi-join-weather-in-pandas.ipynb) | Načtěte data NYC zelenou taxislužby (více než 1 měsíc) a rozšiřte je daty o počasí v dataframe PANDAS. Tento příklad přepisuje metodu `get_pandas_limit` a vyvažuje výkon načítání dat s množstvím dat.|
+|[Taxislužby data o cestách obohacená daty o počasí – Spark](https://github.com/Azure/OpenDatasetsNotebooks/blob/master/tutorials/data-join/03-nyc-taxi-join-weather-in-spark.ipynb) | Načtěte NYC zelená data taxislužby a rozšiřujte je pomocí dat o počasí v dataframe Spark.  |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* [Kurz: Regrese modelování automatizované strojového učení a otevřete datovou sadu](tutorial-opendatasets-automl.md)
-* [Python SDK pro Open datové sady](https://aka.ms/open-datasets-api)
-* [Katalog Azure Open datové sady](https://azure.microsoft.com/services/open-datasets/catalog/)
+* [Kurz: Regresní modelování pomocí automatizovaného strojového učení a otevřené datové sady](tutorial-opendatasets-automl.md)
+* [Python SDK pro otevřené datové sady](/python/api/azureml-opendatasets/azureml.opendatasets?view=azure-ml-py)
+* [Katalog otevřených datových sad pro Azure](https://azure.microsoft.com/services/open-datasets/catalog/)

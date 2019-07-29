@@ -3,7 +3,7 @@ title: Vytvoření clusteru Service Fabric s Windows v Azure | Microsoft Docs
 description: V tomto kurzu se naučíte nasadit cluster Windows Service Fabric do virtuální sítě Azure a skupiny zabezpečení sítě pomocí PowerShellu.
 services: service-fabric
 documentationcenter: .net
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: ''
 ms.assetid: ''
@@ -13,14 +13,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/22/2019
-ms.author: aljo
+ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 3e98b159443cec868040298d76e87a8de6b507ae
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 12e886c107249c338dc27aefcd2e1a32eba13d3e
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68385092"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68598873"
 ---
 # <a name="tutorial-deploy-a-service-fabric-cluster-running-windows-into-an-azure-virtual-network"></a>Kurz: Nasazení clusteru Service Fabric se systémem Windows do virtuální sítě Azure
 
@@ -86,14 +86,14 @@ V prostředku **Microsoft.ServiceFabric/clusters** se konfiguruje cluster s Wind
 * [Služba DNS](service-fabric-dnsservice.md) je povolena.
 * Bronzová [úroveň odolnosti](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster) (konfigurovatelné v parametrech šablony)
 * [Úroveň spolehlivosti](service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster) stříbrného (konfigurovatelné v parametrech šablony).
-* koncový bod připojení klienta: 19000 (konfigurovatelné v parametrech šablony).
+* Koncový bod připojení klienta: 19000 (konfigurovatelné v parametrech šablony).
 * Koncový bod služby HTTP Gateway: 19080 (konfigurovatelné v parametrech šablony).
 
 ### <a name="azure-load-balancer"></a>Azure Load Balancer
 
 V prostředku **Microsoft. Network/loadBalancers** je nakonfigurován Nástroj pro vyrovnávání zatížení. Testy a pravidla se nastavují pro následující porty:
 
-* koncový bod připojení klienta: 19000
+* Koncový bod připojení klienta: 19000
 * Koncový bod služby HTTP Gateway: 19080
 * Port aplikace: 80
 * Port aplikace: 443
@@ -105,7 +105,7 @@ Pokud jsou potřeba další porty aplikací, budete muset upravit prostředek **
 
 Názvy virtuální sítě, podsítě a skupiny zabezpečení sítě jsou deklarované v parametrech šablony. Adresní prostory virtuální sítě a podsítě se taky deklarují v parametrech šablony a konfigurují v prostředku **Microsoft.Network/virtualNetworks**:
 
-* adresní prostor virtuální sítě: 172.16.0.0/20
+* Adresní prostor virtuální sítě: 172.16.0.0/20
 * Service Fabric adresní prostor podsítě: 172.16.2.0/23
 
 V prostředku **Microsoft.Network/networkSecurityGroups** jsou povolená následující pravidla pro příchozí provoz. Hodnoty portů můžete změnit změnou proměnných šablony.

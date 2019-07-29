@@ -10,12 +10,12 @@ ms.subservice: bing-web-search
 ms.topic: quickstart
 ms.date: 07/25/2019
 ms.author: aahi
-ms.openlocfilehash: 0d2c1ca439dbbbd79ddabd2ea7a4eb5298d1071a
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 64d1ce1aa6435d9d1716364cb16f8fee7ca09ebb
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68500968"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68597807"
 ---
 # <a name="quickstart-use-the-bing-web-search-sdk-for-java"></a>Rychlý start: Použití sady Vyhledávání na webu Bingu SDK pro jazyk Java
 
@@ -293,7 +293,7 @@ mvn compile exec:java
 
 Až projekt dokončíte, nezapomeňte z kódu programu odebrat klíč předplatného.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
 > [Ukázky kognitivních služeb sady Java SDK](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingWebSearch)

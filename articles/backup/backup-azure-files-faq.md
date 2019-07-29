@@ -3,16 +3,16 @@ title: Nejčastější dotazy k zálohování Souborů Azure
 description: Tento článek obsahuje podrobnosti o ochraně sdílených složek Azure.
 author: dcurwin
 ms.author: dacurwin
-ms.date: 01/31/2019
+ms.date: 07/29/2019
 ms.topic: tutorial
 ms.service: backup
 manager: carmonm
-ms.openlocfilehash: e3f94badb3af2e3f26a857f27f0b68a78338db92
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: 35a41abb156326612c2d60829980f73457cde881
+ms.sourcegitcommit: 15f7b641a67f3d6cf4fb4b4c11eaee18cf335923
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68466313"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68601762"
 ---
 # <a name="questions-about-backing-up-azure-files"></a>Dotazy týkající se zálohování Souborů Azure
 V tomto článku najdete odpovědi na běžné dotazy týkající se zálohování Souborů Azure. Některé odpovědi zahrnují odkazy na články obsahující komplexní informace. Otázky týkající se služby Azure Backup můžete také publikovat na [diskusním fóru](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup).
@@ -33,7 +33,7 @@ Ano. Ochrana sdílených složek Azure připojených ke skupinám synchronizace 
 ### <a name="when-trying-to-back-up-file-shares-i-clicked-on-a-storage-account-for-discovering-the-file-shares-in-it-however-i-did-not-protect-them-how-do-i-protect-these-file-shares-with-any-other-vault"></a>Při pokusu o zálohování sdílených složek jsem kliknul/a na účet úložiště, abych zjistil/a, které sdílené složky obsahuje. Nenastavil/a jsem však jejich ochranu. Jak nastavím ochranu těchto sdílených složek pomocí jiného trezoru?
 Při pokusu o zálohování se výběrem účtu úložiště kvůli zjištění, které sdílené složky obsahuje, zaregistruje účet úložiště do trezoru, ze kterého se tato akce provede. Pokud se rozhodnete chránit sdílené složky pomocí jiného trezoru, [zrušte registraci](troubleshoot-azure-files.md#configuring-backup) zvoleného účtu úložiště v tomto trezoru.
 
-### <a name="can-i-change-the-vault-to-which-i-backup-my-file-shares"></a>Můžu změnit trezor, do kterého zálohuji své sdílené složky?
+### <a name="can-i-change-the-vault-to-which-i-back-up-my-file-shares"></a>Můžu změnit trezor, do kterého zálohujte své sdílené složky?
 Ano. Budete však muset [zastavit ochranu](backup-azure-files.md#stop-protecting-an-azure-file-share) v připojeném trezoru, [zrušit registraci](troubleshoot-azure-files.md#configuring-backup) tohoto účtu úložiště a pak nastavit ochranu v jiném trezoru.
 
 ### <a name="in-which-geos-can-i-back-up-azure-file-shares-br"></a>Ve kterých zeměpisných oblastech můžu zálohovat sdílené složky Azure? <br/>
@@ -76,6 +76,9 @@ Během období Preview můžete v jednom trezoru chránit sdílené složky Azur
 Ne. Všechny sdílené složky v účtu úložiště je možné chránit pouze ve stejném trezoru.
 
 ## <a name="backup"></a>Zálohovat
+
+### <a name="how-many-scheduled-backups-can-i-configure-per-file-share"></a>Kolik naplánovaných záloh můžu nakonfigurovat na sdílení souborů?
+Azure Backup aktuálně podporuje konfiguraci naplánovaných jednorázových záloh sdílených složek Azure. 
 
 ### <a name="how-many-on-demand-backups-can-i-take-per-file-share-br"></a>Kolik záloh na vyžádání jedné sdílené složky můžu vytvořit? <br/>
 V jakémkoli okamžiku můžete mít až 200 snímků jedné sdílené složky. Toto omezení zahrnuje snímky pořízené službou Azure Backup podle definice ve vašich zásadách. Pokud po dosažení omezení začne zálohování selhávat, zajistěte úspěch budoucích zálohování odstraněním bodů obnovení na vyžádání.

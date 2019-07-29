@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: overview
 ms.date: 07/25/2019
 ms.author: pafarley
-ms.openlocfilehash: e910f2733a5485d50ad387a1e82ce27e0ba8fdea
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: b07201556f08bde4ef8c7a7904c6619a126d7765
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562699"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68594542"
 ---
 # <a name="what-is-form-recognizer"></a>Co je služba Rozpoznávání formulářů?
 
@@ -28,7 +28,7 @@ Učení bez supervize umožňuje tomuto modelu porozumět relacím mezi poli a p
 
 ## <a name="prebuilt-receipt-model"></a>Předem sestavený model příjmu
 
-Nástroj pro rozpoznávání formulářů obsahuje také model pro čtení prodejních příjmů. Tento model extrahuje klíčové informace, jako je čas a datum transakce, informace o obchodníkech, množství daní a součtů a další. Předem sestavený model příjemek je navíc vyškolen pro rozpoznání a vrácení veškerého textu na účtence.
+Nástroj pro rozpoznávání formulářů obsahuje také model pro čtení prodejních příjmů. Tento model extrahuje klíčové informace, jako je čas a datum transakce, informace o obchodníkech, množství daní a součtů a další. Předem sestavený model příjmu je navíc vyškolen pro rozpoznání a vrácení veškerého textu na účtence.
 
 ## <a name="what-it-includes"></a>Co zahrnuje
 

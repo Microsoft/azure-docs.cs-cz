@@ -1,7 +1,7 @@
 ---
 title: 'Kurz: Nasazení prediktivního modelu v jazyce R'
 titleSuffix: Azure SQL Database Machine Learning Services (preview)
-description: Ve třetí části této třídílném kurzu budete nasazovat prediktivní model v R s Azure SQL Database Machine Learning Services (preview).
+description: Ve třetí části tohoto kurzu se třemi částmi nasadíte prediktivní model v jazyce R s Azure SQL Database Machine Learning Services (Preview).
 services: sql-database
 ms.service: sql-database
 ms.subservice: machine-learning
@@ -12,43 +12,43 @@ author: garyericson
 ms.author: garye
 ms.reviewer: davidph
 manager: cgronlun
-ms.date: 05/02/2019
-ms.openlocfilehash: 17b68f71f4034e5eb637d40b975cc22d94438fb7
-ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
+ms.date: 07/26/2019
+ms.openlocfilehash: 9fa816b2a8e736f03c99b66b898f48bd2a483b31
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65978685"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68596769"
 ---
-# <a name="tutorial-deploy-a-predictive-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>Kurz: Nasazení prediktivního modelu v R s Azure SQL Database Machine Learning Services (preview)
+# <a name="tutorial-deploy-a-predictive-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>Kurz: Nasazení prediktivního modelu v R s Azure SQL Database Machine Learning Services (Preview)
 
-Ve třetí části této třídílném kurzu budete nasazovat prediktivní model v R s Azure SQL Database Machine Learning Services (preview).
+V třetí části tohoto kurzu se seznámíte s prediktivním modelem, který je vyvíjený v jazyce R, do databáze SQL pomocí Azure SQL Database Machine Learning Services (Preview).
 
-Vytvoříte uloženou proceduru s vložený skript R, který vytváří předpovědi pomocí modelu. Vzhledem k tomu, že váš model spouští ve službě Azure SQL database, můžete snadno školení pro data uložená v databázi.
+Uloženou proceduru vytvoříte pomocí vloženého skriptu jazyka R, který vytváří předpovědi pomocí modelu. Vzhledem k tomu, že se váš model spouští ve službě Azure SQL Database, můžete ho snadno vyškolet s daty uloženými v databázi.
 
-V tomto článku se dozvíte jak:
+V tomto článku se naučíte, jak pomocí skriptů R, které jste vytvořili v částech One a 2, jak:
 
 > [!div class="checklist"]
-> * Store prediktivního modelu v databázové tabulce
-> * Vytvořit uloženou proceduru, která generuje modelu
-> * Vytvořit uloženou proceduru, která vytváří předpovědi pomocí modelu
-> * Spuštění modelem s novými daty
+> * Vytvořit uloženou proceduru, která generuje model strojového učení
+> * Uložení modelu v databázové tabulce
+> * Vytvořit uloženou proceduru, která provede předpovědi pomocí modelu
+> * Spuštění modelu s novými daty
 
-V [první část](sql-database-tutorial-predictive-model-prepare-data.md), jste zjistili, jak importovat ukázkovou databázi do Azure SQL database a poté si připravte data, která má být použit pro trénování modelu prediktivní v jazyce R.
+V [první části](sql-database-tutorial-predictive-model-prepare-data.md)jste zjistili, jak naimportovat ukázkovou databázi a potom připravit data, která se mají používat k výuce prediktivního modelu v jazyce R.
 
-V [druhá část](sql-database-tutorial-predictive-model-build-compare.md), jste zjistili, jak vytvořit a trénování modelů více a poté vyberte požadovanou možnost nejpřesnější.
+V [druhé části](sql-database-tutorial-predictive-model-build-compare.md)jste zjistili, jak vytvořit a naučit více modelů strojového učení v jazyce R, a pak zvolíte nejpřesnější.
 
 [!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Třetí části této série kurzů se předpokládá dokončení [ **první část** ](sql-database-tutorial-predictive-model-prepare-data.md) a [ **druhá část**](sql-database-tutorial-predictive-model-build-compare.md).
+* Třetí část této série kurzů předpokládá, že jste dokončili [**jednu**](sql-database-tutorial-predictive-model-prepare-data.md) a [**druhou část**](sql-database-tutorial-predictive-model-build-compare.md).
 
-## <a name="create-a-stored-procedure-that-generates-the-model"></a>Vytvořit uloženou proceduru, která generuje modelu
+## <a name="create-a-stored-procedure-that-generates-the-model"></a>Vytvořit uloženou proceduru, která generuje model
 
-Ve druhé části této série kurzů jste se rozhodli, bylo co nejvíce zpřesnili modelu rozhodovacího stromu (dtree). Teď Vytvořte uloženou proceduru (`generate_rental_rx_model`), trénovat a generuje dtree modelu s použitím rxDTree z balíčku RevoScaleR.
+Ve druhé části této série kurzů jste se rozhodli, že model rozhodovacího stromu (dtree) byl nejpřesnější. Nyní pomocí skriptů jazyka R, které jste vyvinuli, vytvořte uloženou`generate_rental_rx_model`proceduru (), která bude vlakem a vygenerovat model dtree pomocí rxDTree z balíčku RevoScaleR.
 
-Spuštěním následujících příkazů v Azure Data studiu nebo v aplikaci SSMS.
+Spusťte následující příkazy v Azure Data Studio nebo SSMS.
 
 ```sql
 -- Stored procedure that trains and generates an R model using the rental_data and a decision tree algorithm
@@ -88,11 +88,11 @@ END;
 GO
 ```
 
-## <a name="store-the-model-in-a-database-table"></a>Store modelu v databázové tabulce
+## <a name="store-the-model-in-a-database-table"></a>Uložení modelu v databázové tabulce
 
-Vytvoření tabulky v databázi databáze TutorialDB a pak model uložit do tabulky.
+Vytvořte tabulku v databázi databáze tutorialdb a potom tento model uložte do tabulky.
 
-1. Vytvoření tabulky (`rental_rx_models`) pro ukládání modelu.
+1. Vytvořte tabulku (`rental_rx_models`) pro uložení modelu.
 
     ```sql
     USE TutorialDB;
@@ -105,7 +105,7 @@ Vytvoření tabulky v databázi databáze TutorialDB a pak model uložit do tabu
     GO
     ```
 
-1. Uložte model do tabulky jako objekt binární s názvem "rxDTree model".
+1. Uložte model do tabulky jako binární objekt s názvem modelu "rxDTree".
 
     ```sql
     -- Save model to table
@@ -128,9 +128,9 @@ Vytvoření tabulky v databázi databáze TutorialDB a pak model uložit do tabu
     FROM rental_rx_models;
     ```
 
-## <a name="create-a-stored-procedure-that-makes-predictions"></a>Vytvořit uloženou proceduru, která vytváří předpovědi
+## <a name="create-a-stored-procedure-that-makes-predictions"></a>Vytvořit uloženou proceduru, která provede předpovědi
 
-Vytvoření uložené procedury (`predict_rentalcount_new`), která vytváří předpovědi pomocí trénovaný model a sadu nová data.
+Vytvořte uloženou proceduru`predict_rentalcount_new`(), která vytvoří předpovědi s využitím trained model a sady nových dat.
 
 ```sql
 -- Stored procedure that takes model name and new data as input parameters and predicts the rental count for the new data
@@ -173,9 +173,9 @@ END;
 GO
 ```
 
-## <a name="execute-the-model-with-new-data"></a>Spuštění modelem s novými daty
+## <a name="execute-the-model-with-new-data"></a>Spuštění modelu s novými daty
 
-Nyní můžete pomocí uložené procedury `predict_rentalcount_new` předpovědět počet pronájmu z nová data.
+Nyní můžete použít uloženou proceduru `predict_rentalcount_new` pro předpověď počtu pronájmu z nových dat.
 
 ```sql
 -- Use the predict_rentalcount_new stored procedure with the model name and a set of features to predict the rental count
@@ -190,37 +190,37 @@ EXECUTE dbo.predict_rentalcount_new @model_name = 'rxDTree'
 GO
 ```
 
-Zobrazí se výsledek podobný následujícímu.
+Měl by se zobrazit výsledek podobný následujícímu.
 
 ```results
 RentalCount_Predicted
 332.571428571429
 ```
 
-Jste úspěšně vytvořili, školení a nasazení modelu ve službě Azure SQL database. Pak jste použili tento model v uložené proceduře k předpovědi na základě hodnot na nová data.
+Úspěšně jste vytvořili, proučeni a nasadili model ve službě Azure SQL Database. Pak jste tento model použili v uložené proceduře k předpovědi hodnot na základě nových dat.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Jakmile budete hotovi, pomocí databáze TutorialDB databáze, jej odstraníte z vašeho serveru Azure SQL Database.
+Po dokončení používání databáze databáze tutorialdb ji odstraňte ze serveru Azure SQL Database.
 
-Na webu Azure Portal postupujte podle těchto kroků:
+V Azure Portal postupujte podle následujících kroků:
 
-1. V nabídce vlevo na webu Azure Portal vyberte **všechny prostředky** nebo **databází SQL**.
-1. V **filtrovat podle názvu...**  zadejte **databáze TutorialDB**a vyberte své předplatné.
-1. Vyberte vaši databázi databáze TutorialDB.
+1. V nabídce na levé straně Azure Portal vyberte **všechny prostředky** nebo **databáze SQL**.
+1. Do pole **filtrovat podle názvu...** zadejte **databáze tutorialdb**a vyberte své předplatné.
+1. Vyberte databázi databáze tutorialdb.
 1. Na stránce **Přehled** vyberte **Odstranit**.
 
 ## <a name="next-steps"></a>Další postup
 
-Ve třetí části této série kurzů dokončení těchto kroků:
+V třetí části této série kurzů jste dokončili tyto kroky:
 
-* Store prediktivního modelu v databázové tabulce
-* Vytvořit uloženou proceduru, která generuje modelu
-* Vytvořit uloženou proceduru, která vytváří předpovědi pomocí modelu
-* Spuštění modelem s novými daty
+* Vytvořit uloženou proceduru, která generuje model strojového učení
+* Uložení modelu v databázové tabulce
+* Vytvořit uloženou proceduru, která provede předpovědi pomocí modelu
+* Spuštění modelu s novými daty
 
-Další informace o používání R v Azure SQL Database Machine Learning Services (preview) najdete v tématu:
+Další informace o používání jazyka R v Azure SQL Database Machine Learning Services (Preview) najdete v tématech:
 
-* [Zápis pokročilé funkce jazyka R ve službě Azure SQL Database pomocí služby Machine Learning (preview)](sql-database-machine-learning-services-functions.md)
-* [Práce s daty R a SQL v Azure SQL Database Machine Learning Services (preview)](sql-database-machine-learning-services-data-issues.md)
-* [Přidat balíček R do Azure SQL Database Machine Learning Services (preview)](sql-database-machine-learning-services-add-r-packages.md)
+* [Zápis pokročilých funkcí R v Azure SQL Database pomocí Machine Learning Services (Preview)](sql-database-machine-learning-services-functions.md)
+* [Práce s daty R a SQL v Azure SQL Database Machine Learning Services (Preview)](sql-database-machine-learning-services-data-issues.md)
+* [Přidání balíčku R do Azure SQL Database Machine Learning Services (Preview)](sql-database-machine-learning-services-add-r-packages.md)

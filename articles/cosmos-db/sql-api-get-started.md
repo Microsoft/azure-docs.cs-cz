@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 07/23/2019
 ms.author: kirankk
-ms.openlocfilehash: 36d172daed487372401691c7046215fb6c4a63ee
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 37b6a9947d3cabe1f566f842e321229efe9d03b6
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68384937"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68598528"
 ---
 # <a name="build-a-net-console-app-to-manage-data-in-azure-cosmos-db-sql-api-account"></a>Vytvoření konzolové aplikace .NET pro správu dat v Azure Cosmos DB účtu rozhraní SQL API
 
@@ -261,7 +261,7 @@ Blahopřejeme! Úspěšně jste vytvořili databázi Azure Cosmos DB.
 >
 >
 
-Kontejner lze vytvořit pomocí funkce [**CreateContainerIfNotExistsAsync**](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosdatabase) nebo [**CreateContainerAsync**](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosdatabase) ve třídě **CosmosDatabase** . Kontejner se skládá z položek (dokumenty JSON, pokud je SQL API) a přidružená aplikační logika na straně serveru v JavaScriptu, například uložené procedury, uživatelsky definované funkce a triggery.
+Kontejner lze vytvořit pomocí funkce [**CreateContainerIfNotExistsAsync**](/dotnet/api/microsoft.azure.cosmos.database.createcontainerifnotexistsasync?view=azure-dotnet#Microsoft_Azure_Cosmos_Database_CreateContainerIfNotExistsAsync_Microsoft_Azure_Cosmos_ContainerProperties_System_Nullable_System_Int32__Microsoft_Azure_Cosmos_RequestOptions_System_Threading_CancellationToken_) nebo [**CreateContainerAsync**](/dotnet/api/microsoft.azure.cosmos.database.createcontainerasync?view=azure-dotnet#Microsoft_Azure_Cosmos_Database_CreateContainerAsync_Microsoft_Azure_Cosmos_ContainerProperties_System_Nullable_System_Int32__Microsoft_Azure_Cosmos_RequestOptions_System_Threading_CancellationToken_) ve třídě **CosmosDatabase** . Kontejner se skládá z položek (dokumenty JSON, pokud je SQL API) a přidružená aplikační logika na straně serveru v JavaScriptu, například uložené procedury, uživatelsky definované funkce a triggery.
 
 1. Zkopírujte a vložte metodu **CreateContainerAsync** pod vaší metodou **metody createdatabaseasync** . **CreateContainerAsync** vytvoří nový kontejner s ID ``FamilyContainer`` , pokud ještě neexistuje, s ``containerId`` identifikátorem zadaným z pole, které je rozdělené podle ``LastName`` vlastnosti.
 
@@ -286,7 +286,7 @@ Kontejner lze vytvořit pomocí funkce [**CreateContainerIfNotExistsAsync**](htt
 Blahopřejeme! Úspěšně jste vytvořili kontejner Azure Cosmos DB.  
 
 ## <a id="CreateDoc"></a>Krok 6: Přidat položky do kontejneru
-Položku lze vytvořit pomocí funkce [**CreateItemAsync**](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmoscontainer) třídy **CosmosContainer** . Při používání rozhraní SQL API jsou položky dokumenty, které představují uživatelem definovaný (libovolný) obsah JSON. Nyní můžete vložit položku do kontejneru Azure Cosmos DB.
+Položku lze vytvořit pomocí funkce [**CreateItemAsync**](/dotnet/api/microsoft.azure.cosmos.container.createitemasync?view=azure-dotnet#Microsoft_Azure_Cosmos_Container_CreateItemAsync__1___0_System_Nullable_Microsoft_Azure_Cosmos_PartitionKey__Microsoft_Azure_Cosmos_ItemRequestOptions_System_Threading_CancellationToken_) třídy **CosmosContainer** . Při používání rozhraní SQL API jsou položky dokumenty, které představují uživatelem definovaný (libovolný) obsah JSON. Nyní můžete vložit položku do kontejneru Azure Cosmos DB.
 
 Nejprve vytvoříme třídu **Family** , která bude představovat objekty uložené v rámci Azure Cosmos DB v této ukázce. Kromě toho vytvoříme i podtřídy **Parent**, **Child**, **Pet** a **Address**, které se použijí v rámci **Family**. Položka poznámky musí mít vlastnost **ID** serializovanou jako **ID** ve formátu JSON.
 

@@ -10,56 +10,56 @@ ms.subservice: bing-visual-search
 ms.topic: overview
 ms.date: 03/27/2019
 ms.author: scottwhi
-ms.openlocfilehash: 4da4340176259265fd36c55d2b81ecfc3f4ed5f8
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: 15abbfd8892464f3a2c21a85c07bc5b8e94e47ad
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67657703"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68594702"
 ---
 # <a name="what-is-the-bing-visual-search-api"></a>Co je rozhraní API pro vizuální vyhledávání Bingu?
 
-Bing API pro vizuální vyhledávání vrací přehledy o určité imagi. Můžete nahrát obrázek nebo zadejte adresu URL do jedné. Přehledy jsou vizuálně podobné obrázky, nákupní zdrojů, webové stránky, které zahrnují image a další. Jsou podobné těch, které jsou zobrazené na Bing.com/images přehledy vrácená rozhraním API vizuální vyhledávání Bingu.
+Rozhraní API pro vizuální vyhledávání Bingu vrátí přehledy pro obrázek. Můžete buď nahrát obrázek, nebo zadat adresu URL k jednomu. Přehledy jsou vizuálně podobné obrázky, nákupní zdroje, webové stránky, které obsahují obrázek, a další. Přehledy vrácené rozhraní API pro vizuální vyhledávání Bingu jsou podobné těm, které jsou zobrazené na Bing.com/images.
 
-Pokud používáte [API pro vyhledávání obrázků Bingu](../bing-image-search/overview.md), můžete používat tokeny přehledy z výsledků hledání toto rozhraní API pro vizuální vyhledávání Bingu místo nahrání obrázku.
+Pokud použijete [rozhraní API Bingu pro vyhledávání obrázků](../bing-image-search/overview.md), můžete použít tokeny Insight z výsledků hledání rozhraní API pro vizuální vyhledávání Bingu místo nahrání obrázku.
 
 > [!IMPORTANT]
-> Pokud se zobrazí obrázek přehledy s využitím rozhraní API Bingu pro vyhledávání obrázků, zvažte možnost API Bingu pro vizuální vyhledávání, které poskytuje komplexnější Přehled.
+> Pokud získáte přehledy imagí pomocí rozhraní API Bingu pro vyhledávání obrázků, zvažte přechod na rozhraní API pro vizuální vyhledávání Bingu, který poskytuje komplexnější přehledy.
 
 ## <a name="insights"></a>Insights
 
-Je možné zjistit tyto přehledy s využitím vizuálního vyhledávání Bingu:
+Pomocí Vizuální vyhledávání Bingu můžete zjistit následující přehledy:
 
-| Insight                              | Popis |
+| Přehled                              | Popis |
 |--------------------------------------|-------------|
-| Vizuálně podobné obrázky              | Seznam imagí, které jsou vizuálně podobné vstupního obrázku. |
-| Vizuálně podobné produkty            | Produkty, které jsou vizuálně podobné produkt zobrazí.            |
-| Nákupní zdroje                     | Místa, kde si můžete koupit položky zobrazené v vstupního obrázku.            |
-| Související hledání                     | Související hledání od ostatních nebo které jsou na základě obsahu obrázku.            |
-| Webové stránky, které zahrnují image     | Webové stránky, které zahrnují vstupního obrázku.            |
-| Recepty                              | Webové stránky, které obsahují recepty vznesení pokrmu vstupního obrázku.            |
+| Vizuálně podobné obrázky              | Seznam obrázků, které jsou vizuálně podobné vstupní imagi. |
+| Vizuálně podobné produkty            | Produkty, které jsou vizuálně podobné uvedenému produktu.            |
+| Nákupy zdrojů                     | Místa, kde si můžete koupit položku zobrazenou ve vstupní imagi.            |
+| Související hledání                     | Související hledání provedené jinými uživateli nebo, která jsou založena na obsahu obrázku.            |
+| Webové stránky, které obsahují obrázek     | Webové stránky, které obsahují vstupní image.            |
+| Složení                              | Webové stránky, které obsahují recepty pro vytváření misky ve vstupní imagi.            |
 
-Kromě přehledu o pro vizuální vyhledávání Bingu vrátí různé podmínky (značky) odvozené ze vstupního obrázku. Značky umožňují uživatelům Seznamte se s koncepty, které jsou součástí image. Pokud vstupního obrázku je známý athlete, jedna značka může být název sportovce, jiné značky může být sportu. Nebo pokud vstupního obrázku je apple výsečové, značky může být Apple výsečového, Pies a My jsme zvolili zákusky.
+Kromě přehledů Vizuální vyhledávání Bingu vrací různé výrazy (tj. značky) odvozené ze vstupní image. Značky umožňují uživatelům prozkoumat koncepty nalezené v imagi. Pokud je vstupní obrázek například slavných Athlete, jedna z značek může být název Athlete, další značka by mohla být sportovní. Nebo, pokud je vstupní obrázek z Apple výsečového grafu, značky by mohly být Apple koláče, koláče a desserts.
 
-Výsledky pro vizuální vyhledávání Bingu také obsahovat ohraničující polí pro oblasti zájmu v bitové kopii. Například pokud image obsahuje několik celebrit, výsledky mohou zahrnovat ohraničující políčka pro každou rozpoznaný celebrit. Nebo pokud Bingu rozpozná produktu nebo oblečení v bitové kopii, výsledek může zahrnovat rámeček ohraničující konkrétní rozpoznaných položek.
+Výsledky Vizuální vyhledávání Bingu také obsahují ohraničující pole pro oblasti zájmu v obrázku. Pokud například obrázek obsahuje několik celebrit, mohou výsledky zahrnovat ohraničovací rámečky pro každou rozpoznanou celebrit. Nebo pokud Bing rozpoznává produkt nebo oděvy v imagi, výsledek může obsahovat ohraničovací rámeček pro rozpoznanou položku.
 
 ## <a name="workflow"></a>Pracovní postup
 
-Bing API pro vizuální vyhledávání je RESTful webová služba, což usnadňuje volat z libovolného programovacího jazyka, který může vytvářet požadavky HTTP a parsování formátu JSON. Rozhraní REST API nebo sady SDK můžete použít pro službu.
+Rozhraní API pro vizuální vyhledávání Bingu je webová služba RESTful, která usnadňuje volání ze všech programovacích jazyků, které mohou provádět požadavky HTTP a analyzovat JSON. Pro službu můžete použít buď REST API, nebo sadu SDK.
 
-1. Vytvoření [účtu služeb Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) pro přístup k rozhraní API pro vyhledávání Bingu. Pokud nemáte předplatné Azure, můžete si [zdarma vytvořit účet](https://azure.microsoft.com/free/). Můžete získat klíč předplatného z [webu Azure portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#get-the-keys-for-your-subscription) po vytvoření účtu, nebo [web Azure](https://azure.microsoft.com/try/cognitive-services/my-apis) až po dokončení aktivace bezplatné zkušební verze.
-2. Odeslat požadavek na rozhraní API pomocí platný vyhledávacího dotazu.
+1. Pro přístup k rozhraní API pro vyhledávání Bingu vytvořte [účet Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) . Pokud nemáte předplatné Azure, můžete si [účet zdarma vytvořit](https://azure.microsoft.com/free/). Klíč předplatného můžete získat z [Azure Portal](../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) po vytvoření účtu nebo [webu Azure](https://azure.microsoft.com/try/cognitive-services/my-apis) po aktivaci bezplatné zkušební verze.
+2. Odešle požadavek do rozhraní API platným vyhledávacím dotazem.
 3. Zpracujte odpověď rozhraní API parsováním vrácené zprávy JSON.
 
 ## <a name="next-steps"></a>Další postup
 
-Nejprve zkuste Visual API Bingu pro vyhledávání [interaktivní ukázka](https://azure.microsoft.com/services/cognitive-services/bing-visual-search/).
-Ukázka ukazuje, jak můžete rychle přizpůsobení vyhledávací dotaz a projeďte obrázky na webu.
+Nejprve vyzkoušejte rozhraní API pro vizuální vyhledávání Bingu [interaktivní ukázku](https://azure.microsoft.com/services/cognitive-services/bing-visual-search/).
+Ukázka vám ukáže, jak rychle upravit vyhledávací dotaz a projeďte web pro obrázky.
 
-Abyste mohli rychle začít s vaší první žádost, najdete v článku postupů rychlý start: [C#](quickstarts/csharp.md) | [Java](quickstarts/java.md) | [node.js](quickstarts/nodejs.md) | [Python](quickstarts/python.md).
+Pokud chcete rychle začít s prvním požadavkem, přečtěte si rychlý Start: [C#](quickstarts/csharp.md) | [Java](quickstarts/java.md) | [node.js](quickstarts/nodejs.md) | [Python](quickstarts/python.md).
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také:
 
-* [Image - vizuálního vyhledávání](https://docs.microsoft.com/rest/api/cognitiveservices/bingvisualsearch/images/visualsearch) referenční popisuje definice a informace o koncových bodech, požádat o hlavičky odpovědi a výsledky hledání parametry dotazu, které slouží k požadavku na základě bitové kopie.
+* Odkazy na [vizuální vyhledávání obrázky](https://docs.microsoft.com/rest/api/cognitiveservices/bingvisualsearch/images/visualsearch) popisují definice a informace o koncových bodech, hlavičkách požadavků, odpovědích a parametrech dotazů, které můžete použít k vyžádání výsledků hledání na základě bitové kopie.
 
-* [Pomocí rozhraní API Bingu pro vyhledávání a zobrazit požadavky](../bing-web-search/use-display-requirements.md) zadejte přijatelné použití obsahu a informací získaných z rozhraní API pro vyhledávání Bingu.
+* [Požadavky na použití a zobrazení rozhraní api vyhledávání Bingu](../bing-web-search/use-display-requirements.md) určují přijatelné využití obsahu a informací získaných prostřednictvím rozhraní API pro vyhledávání Bingu.

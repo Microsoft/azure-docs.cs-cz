@@ -1,7 +1,7 @@
 ---
-title: 'Kurz: Generovat metadata pro Image Azure'
+title: 'Kurz: Generování metadat pro Image Azure'
 titleSuffix: Azure Cognitive Services
-description: V tomto kurzu se dozvíte, jak integrovat službu Azure pro počítačové zpracování obrazu do webové aplikace generovat metadata pro Image.
+description: V tomto kurzu se dozvíte, jak integrovat službu Azure Počítačové zpracování obrazu do webové aplikace pro generování metadat pro image.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -10,73 +10,73 @@ ms.subservice: computer-vision
 ms.topic: tutorial
 ms.date: 04/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 75e52398386e7ef1b338d13a8cfe8f20c06abcc6
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 00cca0cbf500ea4e884a9f9334896a18fe7b0978
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65541525"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68597865"
 ---
-# <a name="tutorial-use-computer-vision-to-generate-image-metadata-in-azure-storage"></a>Kurz: Můžete generovat metadata obrázků ve službě Azure Storage pro počítačové zpracování obrazu
+# <a name="tutorial-use-computer-vision-to-generate-image-metadata-in-azure-storage"></a>Kurz: Použití Počítačové zpracování obrazu k vygenerování metadat imagí v Azure Storage
 
-V tomto kurzu se dozvíte, jak integrovat službu Azure pro počítačové zpracování obrazu do webové aplikace ke generování metadat pro nahraných obrázků. Úplná příručku můžete najít v [služby Azure Storage a Cognitive Services Lab](https://github.com/Microsoft/computerscience/blob/master/Labs/Azure%20Services/Azure%20Storage/Azure%20Storage%20and%20Cognitive%20Services%20(MVC).md) na Githubu a v tomto kurzu v podstatě zahrnuje vykonávat 5 tohoto prostředí. Možná chcete vytvořit aplikaci začátku do konce pomocí následujících každý krok, ale pokud chcete pouze naleznete v tématu jak pro počítačové zpracování obrazu je možné integrovat do existující webové aplikace, přečíst podél tady.
+V tomto kurzu se naučíte, jak integrovat službu Azure Počítačové zpracování obrazu do webové aplikace, která generuje metadata pro nahrané obrázky. Úplný Průvodce aplikací najdete v [Azure Storage a Cognitive Services testovacím prostředí](https://github.com/Microsoft/computerscience/blob/master/Labs/Azure%20Services/Azure%20Storage/Azure%20Storage%20and%20Cognitive%20Services%20(MVC).md) na GitHubu a tento kurz v podstatě pokrývá cvičení 5 testovacího prostředí. V rámci každého kroku možná budete chtít vytvořit koncovou aplikaci, ale pokud chcete zjistit, jak Počítačové zpracování obrazu lze integrovat do existující webové aplikace, přečtěte si také téma.
 
 V tomto kurzu získáte informace o následujících postupech:
 
 > [!div class="checklist"]
-> * Vytvoření prostředku pro počítačové zpracování obrazu v Azure
-> * Proveďte analýzu obrázků na Image služby Azure Storage
-> * Připojit metadata do Image služby Azure Storage
-> * Zkontrolujte metadata obrázků pomocí Průzkumníka služby Azure Storage
+> * Vytvoření prostředku Počítačové zpracování obrazu v Azure
+> * Provedení analýzy obrázků u Azure Storage imagí
+> * Připojení metadat k Azure Storage imagí
+> * Kontrolovat metadata imagí pomocí Průzkumník služby Azure Storage
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete. 
 
 ## <a name="prerequisites"></a>Požadavky
 
-- [Visual Studio 2017 Community edition](https://www.visualstudio.com/products/visual-studio-community-vs.aspx) nebo vyšší s "vývoj aplikací ASP.NET a web" a "Vývoj pro Azure" nainstalovaných úlohách.
-- Účet služby Azure Storage s přidělené pro Image kontejneru objektů blob (podle [cvičení 1 z Azure Storage Lab](https://github.com/Microsoft/computerscience/blob/master/Labs/Azure%20Services/Azure%20Storage/Azure%20Storage%20and%20Cognitive%20Services%20(MVC).md#Exercise1) Pokud potřebujete pomoc s tímto krokem).
-- Nástroj Průzkumník služby Azure Storage (podle [cvičení 2 Azure Lab úložiště](https://github.com/Microsoft/computerscience/blob/master/Labs/Azure%20Services/Azure%20Storage/Azure%20Storage%20and%20Cognitive%20Services%20(MVC).md#Exercise2) Pokud potřebujete pomoc s tímto krokem).
-- Webové aplikace ASP.NET s přístupem ke službě Azure Storage (podle [cvičení 3 z Azure Storage Lab](https://github.com/Microsoft/computerscience/blob/master/Labs/Azure%20Services/Azure%20Storage/Azure%20Storage%20and%20Cognitive%20Services%20(MVC).md#Exercise3) takové aplikace rychle vytvořit).
+- [Visual Studio 2017 Community Edition](https://www.visualstudio.com/products/visual-studio-community-vs.aspx) nebo vyšší s nainstalovanou úlohou vývoj ASP.NET a web a vývoj pro Azure.
+- Účet Azure Storage s kontejnerem objektů BLOB přiděleným pro obrázky (Pokud potřebujete s tímto krokem nápovědu, postupujte podle [cvičení 1 Azure Storage laboratorního prostředí](https://github.com/Microsoft/computerscience/blob/master/Labs/Azure%20Services/Azure%20Storage/Azure%20Storage%20and%20Cognitive%20Services%20(MVC).md#Exercise1) ).
+- Nástroj pro Průzkumník služby Azure Storage (Pokud potřebujete s tímto krokem pomáhat, postupujte podle [cvičení 2 Azure Storage testovacího prostředí](https://github.com/Microsoft/computerscience/blob/master/Labs/Azure%20Services/Azure%20Storage/Azure%20Storage%20and%20Cognitive%20Services%20(MVC).md#Exercise2) ).
+- ASP.NET webová aplikace s přístupem k Azure Storage (pro rychlé vytvoření takové aplikace použijte [cvičení 3 Azure Storage testovacího prostředí](https://github.com/Microsoft/computerscience/blob/master/Labs/Azure%20Services/Azure%20Storage/Azure%20Storage%20and%20Cognitive%20Services%20(MVC).md#Exercise3) ).
 
-## <a name="create-a-computer-vision-resource"></a>Vytvoření prostředku pro počítačové zpracování obrazu
+## <a name="create-a-computer-vision-resource"></a>Vytvoření prostředku Počítačové zpracování obrazu
 
-Budete muset vytvořit prostředek pro počítačové zpracování obrazu k vašemu účtu Azure; Tento prostředek řídí přístup ke službě Azure pro počítačové zpracování obrazu. 
+Budete muset vytvořit prostředek Počítačové zpracování obrazu pro svůj účet Azure. Tento prostředek spravuje váš přístup k Počítačové zpracování obrazu službě Azure. 
 
-1. Postupujte podle pokynů v [vytvoří prostředek služby Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#single-service-subscription) vytvoření prostředku pro počítačové zpracování obrazu.
+1. Podle pokynů v části [vytvoření prostředku Azure Cognitive Services](../../cognitive-services-apis-create-account.md#single-service-resource) vytvořte prostředek počítačové zpracování obrazu.
 
-1. Pak přejděte do nabídky pro skupinu prostředků a klikněte na předplatné rozhraní API pro počítačové zpracování obrazu, který jste právě vytvořili. Zkopírujte adresu URL v části **koncový bod** k někde měli snadno k dispozici to za chvíli. Pak klikněte na tlačítko **zobrazení přístupových klíčů**.
+1. Pak přejděte do nabídky pro skupinu prostředků a klikněte na předplatné rozhraní API pro počítačové zpracování obrazu, které jste právě vytvořili. Zkopírujte adresu URL pod **koncovým bodem** , abyste ji mohli snadno načíst za chvíli. Pak klikněte na **Zobrazit přístupové klíče**.
 
-    ![Stránky Azure portal se koncový bod adresy URL a přístup klíče odkazu uvedeno](../Images/copy-vision-endpoint.png)
+    ![Stránka Azure Portal s odkazem adresa URL koncového bodu a přístup k klávesovým zkratkám](../Images/copy-vision-endpoint.png)
 
-1. V dalším okně, zkopírujte hodnotu **klíč 1** do schránky.
+1. V dalším okně Zkopírujte hodnotu **klíče 1** do schránky.
 
-    ![Správa klíčů dialogové okno, pomocí tlačítka pro kopírování uvedených](../Images/copy-vision-key.png)
+    ![Dialogové okno Správa klíčů s popsaným tlačítkem kopírování](../Images/copy-vision-key.png)
 
-## <a name="add-computer-vision-credentials"></a>Přidat přihlašovací údaje pro počítačové zpracování obrazu
+## <a name="add-computer-vision-credentials"></a>Přidat pověření Počítačové zpracování obrazu
 
-V dalším kroku přidáte požadované přihlašovací údaje do vaší aplikace tak, aby měl přístup k prostředkům pro počítačové zpracování obrazu
+V dalším kroku přidáte do své aplikace požadované přihlašovací údaje, které budou mít přístup k Počítačové zpracování obrazu prostředkům.
 
-Otevřete vaši webovou aplikaci ASP.NET v sadě Visual Studio a přejděte **Web.config** souboru v kořenovém adresáři projektu. Přidejte následující příkazy, čímž `<appSettings>` část souboru, nahrazení `VISION_KEY` s klíčem, který jste zkopírovali v předchozím kroku, a `VISION_ENDPOINT` s adresou URL, který jste uložili v kroku před tímto.
+Otevřete webovou aplikaci v ASP.NET v aplikaci Visual Studio a přejděte do souboru **Web. config** v kořenovém adresáři projektu. Do `<appSettings>` části souboru přidejte následující příkazy, nahraďte `VISION_KEY` klíč, který jste zkopírovali v předchozím kroku, a `VISION_ENDPOINT` adresou URL, kterou jste v kroku předtím uložili.
 
 ```xml
 <add key="SubscriptionKey" value="VISION_KEY" />
 <add key="VisionEndpoint" value="VISION_ENDPOINT" />
 ```
 
-Potom v Průzkumníku řešení klikněte pravým tlačítkem na projekt a využijte **spravovat balíčky NuGet** příkaz k instalaci balíčku **Microsoft.Azure.CognitiveServices.Vision.ComputerVision**. Tento balíček obsahuje typy potřebných k volání rozhraní API pro počítačové zpracování obrazu.
+Pak v Průzkumník řešení klikněte pravým tlačítkem na projekt a pomocí příkazu **Spravovat balíčky NuGet** nainstalujte balíček **Microsoft. Azure. cognitiveservices Account. Vision. ComputerVision**. Tento balíček obsahuje typy potřebné pro volání rozhraní API pro počítačové zpracování obrazu.
 
-## <a name="add-metadata-generation-code"></a>Přidat do kódu generování metadat
+## <a name="add-metadata-generation-code"></a>Přidat kód pro generování metadat
 
-V dalším kroku přidáte kód, který ve skutečnosti využívá službu pro počítačové zpracování obrazu vytvořit metadata pro Image. Tyto kroky se použijí na aplikaci technologie ASP.NET v testovacím prostředí, ale můžete je upravit podle vašich vlastních aplikací. Důležité je, že v tomto okamžiku můžete mít webovou aplikaci ASP.NET, který můžete nahrávat obrázky do kontejneru služby Azure Storage, čtení z něj Image a zobrazí je v zobrazení. Pokud si nejste jisti, o tom, je nejlepší postupovat podle [cvičení 3 z Azure Storage Lab](https://github.com/Microsoft/computerscience/blob/master/Labs/Azure%20Services/Azure%20Storage/Azure%20Storage%20and%20Cognitive%20Services%20(MVC).md#Exercise3). 
+Dále přidáte kód, který ve skutečnosti využívá službu Počítačové zpracování obrazu k vytváření metadat pro image. Tyto kroky se vztahují na aplikaci ASP.NET v testovacím prostředí, ale můžete je přizpůsobit na vlastní aplikaci. Důležité je, že v tomto okamžiku máte webovou aplikaci ASP.NET, která může nahrávat obrázky do kontejneru Azure Storage, číst z něj obrázky a zobrazovat je v zobrazení. Pokud si o tom nejste jisti, je vhodné postupovat podle [cvičení 3 Azure Storageho testovacího prostředí](https://github.com/Microsoft/computerscience/blob/master/Labs/Azure%20Services/Azure%20Storage/Azure%20Storage%20and%20Cognitive%20Services%20(MVC).md#Exercise3). 
 
-1. Otevřít *HomeController.cs* souboru v projektu **řadiče** složky a přidejte následující `using` příkazů v horní části souboru:
+1. Otevřete soubor *HomeController.cs* ve složce Controllers projektu  a na začátek souboru přidejte následující `using` příkazy:
 
     ```csharp
     using Microsoft.Azure.CognitiveServices.Vision.ComputerVision;
     using Microsoft.Azure.CognitiveServices.Vision.ComputerVision.Models;
     ```
 
-1. Potom pokračujte **nahrát** metoda; tato metoda převede a nahrávání imagí do úložiště objektů blob. Přidejte následující kód bezprostředně po bloku, který začíná `// Generate a thumbnail` (nebo na konci procesu vytvoření bitové kopie objektů blob). Tento kód používá objekt blob obsahující bitovou kopii (`photo`) a používá ke generování popis obrázku pro počítačové zpracování obrazu. Rozhraní API pro počítačové zpracování obrazu také vygeneruje seznam klíčových slov, které se vztahují k bitové kopii. Vygenerovaný popis a klíčová slova jsou uloženy v metadata objektu blob tak, že je možné načíst později.
+1. Pak přejít na metodu **odeslání** ; Tato metoda převádí a nahrává obrázky do úložiště objektů BLOB. Přidejte následující kód hned za blok, který začíná `// Generate a thumbnail` (nebo na konci procesu vytváření objektů BLOB v obraze). Tento kód přebírá objekt BLOB obsahující obrázek (`photo`) a používá počítačové zpracování obrazu k vygenerování popisu pro tento obrázek. Rozhraní API pro počítačové zpracování obrazu také generuje seznam klíčových slov, která se vztahují na obrázek. Vygenerovaný popis a klíčová slova jsou uloženy v metadatech objektu blob, aby je bylo možné později načíst.
 
     ```csharp
     // Submit the image to Azure's Computer Vision API
@@ -100,7 +100,7 @@ V dalším kroku přidáte kód, který ve skutečnosti využívá službu pro p
     await photo.SetMetadataAsync();
     ```
 
-1. Dále přejděte na **Index** metoda ve stejném souboru; Tato metoda vytvoří výčet uloženého obrázku objektů BLOB v kontejneru cílové objektů blob (jako **IListBlobItem** instance) a předává je do zobrazení aplikace. Nahradit `foreach` blokovat v této metodě následujícím kódem. Tento kód volá **CloudBlockBlob.FetchAttributes** zobrazíte každý objekt blob je připojen metadat. Extrahuje popis počítačem generované (`caption`) z metadat a přidá jej do **BlobInfo** objektu, který bude předána do zobrazení.
+1. V dalším kroku, ve stejném souboru, přejdete na metodu **indexu** . Tato metoda vytvoří výčet uložených objektů BLOB imagí v cílovém kontejneru objektů BLOB (jako instance **položky ilistblobitem** ) a předává je do zobrazení aplikace. Nahraďte `foreach` blok v této metodě následujícím kódem. Tento kód volá **CloudBlockBlob. FetchAttributes** , aby získal všechna připojená metadata objektu BLOB. Extrahuje z metadat popis generovaný počítačem (`caption`) a přidá je do objektu **BlobInfo** , který se předává do zobrazení.
     
     ```csharp
     foreach (IListBlobItem item in container.ListBlobs())
@@ -124,23 +124,23 @@ V dalším kroku přidáte kód, který ve skutečnosti využívá službu pro p
 
 ## <a name="test-the-app"></a>Testování aplikace
 
-Uložte změny v sadě Visual Studio a stiskněte klávesu **Ctrl + F5** ke spuštění aplikace v prohlížeči. Můžete nahrát několik obrázků ve složce "fotografie" v prostředky testovacího prostředí nebo z vlastní složky aplikace. Pokud můžete najet myší na některou k imagí v zobrazení, by měla okno popisku se zobrazí a zobrazit počítačem generované titulek pro bitovou kopii.
+Uložte změny v aplikaci Visual Studio a stisknutím **kombinace kláves CTRL + F5** spusťte aplikaci v prohlížeči. Použijte aplikaci k nahrání několika imagí buď ze složky fotek v prostředcích testovacího prostředí, nebo z vaší vlastní složky. Když najedete kurzorem na jeden z obrázků v zobrazení, zobrazí se okno s popisem tlačítka a zobrazí se název obrázku generovaný počítačem.
 
-![Počítačem generované titulek](../Images/thumbnail-with-tooltip.png)
+![Titulek generovaný počítačem](../Images/thumbnail-with-tooltip.png)
 
-Chcete-li zobrazit všechny připojené metadat, zobrazíte kontejner úložiště, které používáte pro obrázky pomocí Průzkumníka služby Azure Storage. Klikněte pravým tlačítkem na některý z objektů BLOB v kontejneru a vyberte **vlastnosti**. V dialogovém okně uvidíte seznam párů klíč hodnota. Popis počítačem vytvořené bitové kopie je uložena v položky "Titulek" a hledat klíčová slova jsou uloženy v "Tag0," "značky 1" a tak dále. Jakmile budete hotovi, klikněte na tlačítko **zrušit** zavřete dialogové okno.
+Chcete-li zobrazit všechna připojená metadata, použijte Průzkumník služby Azure Storage k zobrazení kontejneru úložiště, který používáte pro obrázky. Klikněte pravým tlačítkem na kterýkoli z objektů BLOB v kontejneru a vyberte **vlastnosti**. V dialogovém okně se zobrazí seznam párů klíč-hodnota. Popis obrázku vygenerovaného počítačem je uložený v položce Caption a klíčová slova hledání jsou uložená v části "Tag0", "značky 1" atd. Až skončíte, zavřete dialogové okno kliknutím na tlačítko **Storno** .
 
-![Obrázek vlastnosti dialogového okna, s uvedené značky metadat](../Images/blob-metadata.png)
+![Dialogové okno Vlastnosti obrázku s uvedenými značkami metadat](../Images/blob-metadata.png)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud chcete pokračovat v práci na vaší webové aplikace, najdete v článku [další kroky](#next-steps) oddílu. Pokud nemáte v úmyslu pokračovat v používání této aplikace, odstraňte všechny prostředky specifické pro aplikace. K tomuto účelu můžete jednoduše odstranit skupinu prostředků, která obsahuje vaše předplatné služby Azure Storage a prostředků pro počítačové zpracování obrazu. Tato akce odebere účet úložiště, objekty BLOB nahrané do ní a prostředek služby App Service, které jsou potřebné pro připojení s webovou aplikací ASP.NET. 
+Pokud chcete ve své webové aplikaci dál pracovat, přečtěte si část [Další kroky](#next-steps) . Pokud tuto aplikaci nechcete dál používat, měli byste odstranit všechny prostředky specifické pro danou aplikaci. K tomu můžete jednoduše odstranit skupinu prostředků, která obsahuje vaše předplatné Azure Storage a prostředek Počítačové zpracování obrazu. Tím se odebere účet úložiště, do kterého se nahrály objekty blob, a App Service prostředek potřebný pro připojení k webové aplikaci ASP.NET. 
 
-Chcete-li odstranit skupinu prostředků, otevřete **skupiny prostředků** okno na portálu přejděte do skupiny prostředků, který jste použili pro tento projekt a klikněte na tlačítko **odstranit skupinu prostředků** v horní části stránky zobrazení. Zobrazí výzva k zadání názvu skupiny prostředků pro potvrzení, že chcete odstranit, protože po odstranění, nejde obnovit skupinu prostředků.
+Pokud chcete odstranit skupinu prostředků, otevřete okno **skupiny prostředků** na portálu, přejděte do skupiny prostředků, kterou jste použili pro tento projekt, a v horní části zobrazení klikněte na **Odstranit skupinu prostředků** . Budete vyzváni k zadání názvu skupiny prostředků, abyste potvrdili, že ji chcete odstranit, protože po jejím odstranění nebude možné obnovit skupinu prostředků.
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto kurzu služby Azure pro počítačové zpracování obrazu integrována do existující webové aplikace se automaticky vygenerovat titulků a klíčová slova pro objekt blob bitové kopie, protože jste nahráli. V dalším kroku najdete Azure Storage testovacího prostředí, cvičení 6, a zjistěte, jak přidat integraci vyhledávacích funkcí do webové aplikace. Toto využívá Hledat klíčová slova, která generuje služba pro počítačové zpracování obrazu.
+V tomto kurzu jste do existující webové aplikace Počítačové zpracování obrazu službu Azure, která umožňuje automaticky vygenerovat titulky a klíčová slova pro obrázky objektů BLOB při jejich nahrávání. V dalším kroku se dozvíte, jak Azure Storage testovací prostředí, cvičení 6, abyste se dozvěděli, jak do své webové aplikace přidat funkce hledání. To využívá klíčová slova pro hledání, která služba Počítačové zpracování obrazu generuje.
 
 > [!div class="nextstepaction"]
-> [Přidání vyhledávání do vaší aplikace](https://github.com/Microsoft/computerscience/blob/master/Labs/Azure%20Services/Azure%20Storage/Azure%20Storage%20and%20Cognitive%20Services%20(MVC).md#Exercise6)
+> [Přidání vyhledávání do aplikace](https://github.com/Microsoft/computerscience/blob/master/Labs/Azure%20Services/Azure%20Storage/Azure%20Storage%20and%20Cognitive%20Services%20(MVC).md#Exercise6)
