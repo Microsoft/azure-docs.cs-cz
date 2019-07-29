@@ -1,6 +1,6 @@
 ---
-title: Využijte Azure Security Center pro služby ve verzi Preview centra IoT Azure IoT | Dokumentace Microsoftu
-description: Zjistěte, jak povolit Azure Security Center pro službu IoT ve službě IoT Hub.
+title: Povolit Azure Security Center pro službu IoT v IoT Hub | Microsoft Docs
+description: Naučte se, jak ve IoT Hub povolit Azure Security Center pro službu IoT.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -15,54 +15,63 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/16/2019
 ms.author: mlottner
-ms.openlocfilehash: f81fb7aeed1b704ebdd82c1f5b83c33a4b05e9ca
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: a794ccea13323f38b20906458e216f85652bfc3e
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67618004"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68596961"
 ---
-# <a name="quickstart-enable-service-in-iot-hub"></a>Rychlý start: Povolit službu ve službě IoT Hub
+# <a name="quickstart-onboard-azure-security-center-for-iot-service-in-iot-hub"></a>Rychlý start: Připojení Azure Security Center služby IoT v IoT Hub
 
-> [!IMPORTANT]
-> Azure Security Center pro IoT je aktuálně ve verzi public preview.
-> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
-Tento článek obsahuje vysvětlení, jak povolit Azure Security Center (ASC) pro službu IoT ve verzi preview ve službě IoT Hub.  
+Tento článek popisuje, jak povolit Azure Security Center pro službu IoT v existujícím IoT Hub. Pokud v tuto chvíli nemáte IoT Hub, přečtěte si téma [vytvoření IoT Hub pomocí Azure Portal](https://docs.microsoft.com/azure/iot-hub/iot-hub-create-through-portal) pro začátek. 
 
 > [!NOTE]
-> Azure Security Center pro IoT aktuálně podporuje pouze IoT hub úrovně standard.
-> Azure Security Center pro IoT je řešení jednoho rozbočovače. Pokud budete potřebovat více Center, se vyžadují více řešení. 
+> Azure Security Center pro IoT v současné době podporuje pouze centra IoT úrovně Standard.
+> Azure Security Center pro IoT je jediné řešení. Pokud budete potřebovat více rozbočovačů, vyžadují se několik Azure Security Center řešení IoT. 
 
-## <a name="prerequisites-for-enabling-the-service"></a>Požadavky pro povolení služby
+## <a name="prerequisites-for-enabling-the-service"></a>Předpoklady pro povolení služby
 
-- Pracovní prostor log Analytics
-  - Dva druhy informace jsou uloženy ve výchozím nastavení v pracovním prostoru Log Analytics služba ASC pro IoT; **výstrahy zabezpečení** a **doporučení**. 
-  - Můžete také přidat další informace o typu, úložiště **nezpracovaných událostí**. Všimněte si, že ukládání **nezpracovaných událostí** v Log Analytics představuje náklady na další úložiště. 
-- IoT Hub (úrovně standard)
-- Splňovat všechna [požadované součásti služby](service-prerequisites.md) 
-- Oblasti podporované služby
-  - Střed USA
-  - Severní Evropa
-  - Jihovýchodní Asie
+- Pracovní prostor Log Analytics
+  - Ve výchozím nastavení se ve vašem Log Analytics pracovním prostoru ukládají dva typy informací Azure Security Center pro IoT. **výstrahy** a **doporučení**zabezpečení. 
+  - Můžete zvolit, že chcete přidat úložiště pro další typ informací, **nezpracované události**. Pamatujte, že ukládání nezpracovaných **událostí** v Log Analytics přináší další náklady na úložiště. 
+- IoT Hub (úroveň Standard)
+- Splnění všech [požadavků služby](service-prerequisites.md) 
 
-## <a name="enable-asc-for-iot-on-your-iot-hub"></a>Povolit ASC pro IoT ve službě IoT Hub 
+|Podporované oblasti služeb Azure | ||
+|---|---|---|
+| Střed USA |East US |Východní USA 2 |
+| Západní střed USA |USA – západ |Západní USA 2 |
+| Střed USA – jih|Střed USA – sever | Kanada – střed|
+| Kanada – východ| Severní Evropa|Brazílie – jih|
+| Francie – střed| Spojené království – západ|Velká Británie – jih|
+|Západní Evropa|Severní Evropa| Japonsko – západ|
+|Japonsko – východ | Austrálie – jihovýchod|Austrálie – východ|
+|Východní Asie| Jihovýchodní Asie| Jižní Korea – střed|
+|Jižní Korea – jih| Střed Indie| Jižní Indie|
+|
 
-Pokud chcete povolit zabezpečení ve službě IoT Hub, postupujte takto: 
+## <a name="enable-azure-security-center-for-iot-on-your-iot-hub"></a>Povolení Azure Security Center pro IoT na IoT Hub 
 
-1. Otevřete váš **služby IoT Hub** na webu Azure portal. 
-2. V části **zabezpečení** nabídky, klikněte na tlačítko **přehled**, pak klikněte na tlačítko **Start ve verzi preview**. 
-3. Zvolte **povolit zabezpečení IoT**. 
-4. Zadejte podrobnosti vašeho pracovního prostoru Log Analytics. 
-   - Zvolit k uložení **nezpracovaných událostí** kromě výchozí informace typy úložiště se zaškrtnutým políčkem **nezpracovaných událostí** přepnout **na**. 
-   - Aktivujete **dvojčete kolekce** se zaškrtnutým políčkem **dvojčete kolekce** přepnout **na**. 
-5. Klikněte na **Uložit**. 
+Pokud chcete povolit zabezpečení IoT Hub, udělejte toto: 
 
-Blahopřejeme! Dokončení povolení ASC pro IoT ve službě IoT Hub. 
+1. Otevřete **IoT Hub** v Azure Portal. 
+1. V nabídce **zabezpečení** klikněte na **zabezpečení řešení IoT** .
+1. Jako výchozí ponechte vybranou **možnost Povolit** . 
+1. Vyberte svůj pracovní prostor Log Analytics.
+1. Zadejte podrobnosti o svém pracovním prostoru Log Analytics. 
+   - Vyberte možnost povolit **dvojí shromažďování** tím, že zachováte **přepínač s** **dvojitou kolekcí** .
+   - Výběrem možnosti **Uložit nezpracované události zabezpečení zařízení** v Log Analytics se kromě výchozích typů úložišť rozhodnete ukládat nezpracované **události** . Ponechte přepínač nezpracovaná **událost** **zapnutý**. 
+    
+1. Klikněte na **Uložit**. 
 
-## <a name="next-steps"></a>Další kroky
+Blahopřejeme! Dokončili jste povolování Azure Security Center pro IoT na IoT Hub. 
 
-Přejděte k dalším článku se naučíte, jak nakonfigurovat řešení...
+## <a name="next-steps"></a>Další postup
+
+Přejděte k dalšímu článku a nakonfigurujte vaše řešení...
 
 > [!div class="nextstepaction"]
 > [Konfigurace řešení](quickstart-configure-your-solution.md)
+
+

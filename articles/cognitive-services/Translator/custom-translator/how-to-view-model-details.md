@@ -1,96 +1,96 @@
 ---
-title: Zobrazit podrobné informace o modelu – vlastní Translator
+title: Zobrazit podrobnosti modelu – vlastní Překladatel
 titleSuffix: Azure Cognitive Services
-description: Karta modely v rámci žádného projektu zobrazuje podrobnosti o každý model, jako je například název modelu, stav modelu, BLEU skóre, školení, ladění, testování počet věty.
+description: Karta modely v rámci libovolného projektu zobrazuje podrobnosti o jednotlivých modelech, jako je název modelu, stav modelu, BLEU skóre, školení, ladění, počet vět.
 author: swmachan
-manager: christw
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 92f5275b85b4a257e8841f43424d356db702cacd
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 64f446c3b331c1aa6ddaae9081b7f61943f74ab2
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67442472"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68595560"
 ---
 # <a name="view-model-details"></a>Zobrazení podrobností o modelu
 
-Na kartě modely v rámci projektu zobrazí všechny modely v daném projektu. Všechny modely školení, které projekt je uveden na této kartě.
+Karta modely v rámci projektu zobrazuje všechny modely v daném projektu. Na této kartě jsou uvedeny všechny modely školení pro daný projekt.
 
 Pro každý model v projektu se zobrazí tyto podrobnosti.
 
-1.  Název modelu: Zobrazí název modelu z daného modelu.
+1.  Název modelu: Zobrazuje název modelu daného modelu.
 
-2.  Stav: Zobrazuje stav daného modelu. Nové trénování bude mít tudíž stav Odesláno, dokud je přijat. Stav se změní na zpracování dat, zatímco služba vyhodnocuje obsah dokumentů. Po dokončení hodnocení dokumentů se stav změní na spuštěno a budete mít viz počet věty, které jsou součástí školení, včetně ladění a testování sad, které se automaticky vytvoří za vás. Níže je seznam stav modelu, který popisuje stav modelů.
+2.  Stav: Zobrazuje stav daného modelu. Vaše nové školení bude mít stav Odesláno až do přijetí. Stav se změní na zpracování dat, zatímco služba vyhodnocuje obsah vašich dokumentů. Po dokončení vyhodnocení vašich dokumentů se stav změní na spuštěno a uvidíte počet vět, které jsou součástí školení, včetně sad pro vyladění a testování, které jsou vytvořeny automaticky. Níže je uveden seznam stavů modelu, který popisuje stav modelů.
 
-    -  Odeslal: Určuje, že back-end je zpracování dokumentů pro tento model.
+    -  Předán Určuje, že back-end zpracovává dokumenty pro tento model.
 
-    -  TrainingQueued: Určuje, že se školení byla zařazena do systému MT pro tento model.
+    -  TrainingQueued: Určuje, že školení je zařazené do fronty MT systému pro tento model.
 
-    -  Spuštění: Určuje, zda je spuštěna na školení systému MT pro tento model.
+    -  Spuštěno: Určuje, že školení běží v systému MT pro daný model.
 
-    -  Úspěšné: Určuje, že v systému MT byla úspěšná na školení a model je k dispozici. V tomto stavu zobrazí se pro tento model BLEU skóre.
+    -  Úspěchu Určuje, že školení bylo úspěšné v systému MT a že je k dispozici model. V tomto stavu se pro tento model zobrazí BLEU skóre.
 
-    -  Nasazení: Určuje, že úspěšná trénovaného modelu se odešle do systému MT pro nasazení.
+    -  Nainstalována Určuje, že se úspěšně proučený model posílá do MT systému pro nasazení.
 
-    -  Undeploying: Určuje, že je undeploying nasazeného modelu.
+    -  Odsazování se nasazuje: Určuje, že nasazený model se odsazuje.
 
-    -  Nasazení: Určuje, že proces zrušení nasazení modelu byla úspěšně dokončena.
+    -  Nenasazené Určuje, že proces odsazování modelu byl úspěšně dokončen.
 
-    -  Školení se nezdařilo: Určuje, že se školení se nezdařilo. Pokud dojde k selhání školení, vzdělávání úlohu opakujte. Pokud potíže potrvají, kontaktujte nás. Neodstraňovat modelu se nezdařilo.
+    -  Neúspěšné školení: Určuje, že se nezdařila analýza. Pokud dojde k selhání školení, zkuste úlohu školení zopakovat. Pokud chyba přetrvává, kontaktujte nás. Neodstraňujte model, který selhal.
 
-    - DataProcessingFailed: Určuje, že zpracování dat se nezdařila pro jeden nebo více dokumentů, které patří do modelu.
+    - DataProcessingFailed: Určuje, že zpracování dat pro jeden nebo více dokumentů patřících do modelu selhalo.
 
-    - DeploymentFailed: Určuje, že model nasazení nebylo úspěšné.
+    - DeploymentFailed Určuje, že se nasazení modelu nezdařilo.
 
-    - MigratedDraft: Určuje, že je ve stavu návrhu model po migraci z centra k Translatoru Custom.
+    - MigratedDraft: Určuje, že model je ve stavu konceptu po migraci z centra na vlastní překladatel.
 
-4.  Skóre BLEU: zobrazí skóre BLEU (Understudy dvojjazyčné vyhodnocení) modelu udávající kvalitu překladu systému. Toto skóre zjistíte, jak překladů provádí překlad systému vyplývajících z této školicí odpovídalo vět referenční datové sady testů. Skóre BLEU se zobrazí v případě, že je úspěšně dokončené školení. Není-li školení kompletní / neúspěšné, neuvidíte žádné BLEU skóre.
+4.  BLEU skore: zobrazuje skóre BLEU (dvojjazyčné vyhodnocení destudie) modelu a označuje kvalitu vašeho systému překladu. V tomto skóre se dozvíte, jak pečlivě překlady provedené systémem překladu vycházející z tohoto školení odpovídají referenčním vět v sadě testovacích dat. Po úspěšném dokončení školení se zobrazí BLEU skóre. Pokud není školení dokončené/neúspěšné, neuvidíte žádné BLEU skóre.
 
-5.  Počet věty školení: Zobrazí celkový počet použít jako trénovací sada věty.
+5.  Počet vět pro cvičení: Zobrazuje celkový počet vět použitých jako školicí sada.
 
-6.  Počet věty ladění: Zobrazí celkový počet věty použít jako ladění sady.
+6.  Počet vět pro ladění: Zobrazuje celkový počet vět použitých jako nastavení optimalizace.
 
-7.  Počet věty školení: Zobrazí celkový počet věty použít jako testovací sadu.
+7.  Počet vět pro cvičení: Zobrazuje celkový počet vět použitých jako testovací sada.
 
-8.  Počet mono větu: Zobrazí celkový počet věty používá jako sada mono.
+8.  Počet vět v mono: Zobrazuje celkový počet vět použitých jako sada mono.
 
-9.  Nasazení tlačítko akce: Pro úspěšně trénovaného modelu se zobrazí tlačítko "Nasazení", pokud není nasazení. Pokud model nasazení, zobrazí se tlačítko "Undeploy".
+9.  Tlačítko pro nasazení akce: V případě úspěšného školení modelu se zobrazí tlačítko "nasadit", pokud není nasazeno. Pokud je model nasazený, zobrazí se tlačítko zrušit nasazení.
 
-10. Odstraňte: Pokud chcete odstranit modelu, můžete pomocí tohoto tlačítka. Odstraňuje se model se neodstraní žádná dokumentů použitý k vytvoření tohoto modelu.
+10. Dstranit Toto tlačítko můžete použít, pokud chcete model odstranit. Odstraněním modelu se neodstraní žádné dokumenty použité k vytvoření tohoto modelu.
 
     ![Zobrazení podrobností o modelu](media/how-to/how-to-view-model-details.png)
 
 >[!Note]
->K porovnání po sobě jdoucích školení pro stejných systémů, je důležité udržovat o optimalizaci nastavení a testování nastavit konstantní.
+>Chcete-li porovnat po sobě jdoucí školení pro tytéž systémy, je důležité udržovat sadu optimalizace a sadu testování nastavenou na konstantní.
 
-## <a name="view-model-training-details"></a>Zobrazit podrobnosti o trénování modelu
+## <a name="view-model-training-details"></a>Zobrazit podrobnosti o školeních modelu
 
-Po dokončení trénování můžete zkontrolovat informace o školení na stránce Podrobnosti. Vyberte projekt, vyhledejte a vyberte kartu modely a zvolte model.
+Po dokončení školení si můžete prohlédnout podrobnosti o školení ze stránky s podrobnostmi. Vyberte projekt, najděte a vyberte kartu modely a zvolte model.
 
-Stránce o modelu obsahuje dvě karty: Podrobnosti trénování a testování.
+Stránka model obsahuje dvě karty: Podrobnosti a testování školení.
 
-1.  **Školení podrobnosti:** Tato karta zobrazuje seznam dokumentů používán vzdělávání:
+1.  **Podrobnosti o školení:** Tato karta zobrazuje seznam dokumentů používaných při školení:
 
-    -  Název dokumenty: Toto pole zobrazí název dokumentu
+    -  Název dokumentů: V tomto poli se zobrazuje název dokumentu.
 
-    -  Typ dokumentu: Toto pole zobrazí, pokud tento dokument slouží paralelní / mono.
+    -  Typ dokumentu: Toto pole ukazuje, jestli je tento dokument paralelní/mono.
 
-    -  Počet větu v Zdrojový jazyk: Toto pole obsahuje počet věty jsou existuje jako součást Zdrojový jazyk.
+    -  Počet vět ve zdrojovém jazyce: V tomto poli se zobrazuje počet vět v rámci zdrojového jazyka.
 
-    -  Počet větu v cílovém jazyce: Toto pole obsahuje počet věty jsou existuje jako součást cílový jazyk.
+    -  Počet vět v cílovém jazyce: V tomto poli se zobrazuje počet vět v rámci cílového jazyka.
 
-    -  Zarovnané věty: Toto pole obsahuje počet věty má byly zarovnané vlastní Translator během zarovnat procesu.
+    -  Zarovnané věty: Toto pole zobrazuje počet vět, které vlastní Překladatel zarovnává během procesu zarovnávání.
 
-    -  Použít věty: Toto pole obsahuje počet věty se použil ve vlastní Translator během tohoto cvičení.
+    -  Použité věty: Toto pole zobrazuje počet vět, které vlastní Překladatel používá během tohoto školení.
 
-    ![Podrobnosti trénování modelu](media/how-to/how-to-model-training-details.png)
+    ![Podrobnosti o školeních modelu](media/how-to/how-to-model-training-details.png)
 
-2.  **Test:** Tato karta zobrazuje podrobnosti testu pro úspěšné školení.
+2.  **Napaden** Tato karta zobrazuje podrobné informace o testu pro úspěšné školení.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- Kontrola [výsledky testů](how-to-view-system-test-results.md) a analyzujte výsledky školení.
+- Zkontrolujte [výsledky testů](how-to-view-system-test-results.md) a analyzujte výsledky školení.

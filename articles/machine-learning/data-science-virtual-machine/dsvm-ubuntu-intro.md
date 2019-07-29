@@ -4,8 +4,8 @@ titleSuffix: Azure
 description: Nakonfigurujte a vytvořte v Azure a provádět analýzy a strojové učení datové vědy virtuálních počítačů pro Linux (Ubuntu).
 services: machine-learning
 documentationcenter: ''
-author: gopitk
-ms.author: gokuma
+author: vijetajo
+ms.author: vijetaj
 manager: cgronlun
 ms.custom: seodec18
 ms.assetid: 3bab0ab9-3ea5-41a6-a62a-8c44fdbae43b
@@ -14,30 +14,30 @@ ms.subservice: data-science-vm
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: quickstart
 ms.date: 03/16/2018
-ms.openlocfilehash: 5a9fdebc8db0c2a1acc20a894f80cfcc87fb89d5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8a19f414f31c307111edad876ed973ff4027d907
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66236497"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68591933"
 ---
 # <a name="provision-the-data-science-virtual-machine-for-linux-ubuntu"></a>Zřízení virtuálního počítače pro datové vědy pro Linux (Ubuntu)
 
 Virtuální počítač pro datové vědy pro Linux je image virtuálního počítače založeného na Ubuntu, který umožňuje snadno a rychle začít s machine learningem, včetně obsáhlého learningu v Azure. Nástroje pro hloubkové učení patří:
 
-* [Caffe](https://caffe.berkeleyvision.org/): Architektura obsáhlý learning zajišťující rychlost, expressivity a modularitu
-* [Caffe2](https://github.com/caffe2/caffe2): Multiplatformní verzi Caffe
-* [Microsoft Cognitive Toolkit](https://github.com/Microsoft/CNTK): Hloubkové učení softwarových nástrojů Microsoft Research
-* [H2O](https://www.h2o.ai/): Platformy pro velká data open source a grafické uživatelské rozhraní
-* [Keras](https://keras.io/): Základní neuronové sítě rozhraní API v jazyce Python pro TensorFlow, Microsoft Cognitive Toolkit a Theano
-* [MXNet](https://mxnet.io/): Knihovna flexibilní a efektivní obsáhlý learning s mnoha jazykové vazby
-* [NVIDIA ČÍSLIC](https://developer.nvidia.com/digits): Grafické systému, který zjednodušuje běžných úloh hloubkového učení
-* [PyTorch](https://pytorch.org/): Základní knihovna Python s podporou pro dynamické sítě
-* [TensorFlow](https://www.tensorflow.org/): Knihovny open source pro inteligencí z Googlu
-* [Theano](http://deeplearning.net/software/theano/): Knihovna Python pro definování, optimalizovat a efektivně hodnocení matematické výrazy zahrnující vícerozměrná pole
-* [Svítilnou](http://torch.ch/): Vědecké výpočetní architektura díky široké podpoře algoritmů strojového učení
+* [Caffe](https://caffe.berkeleyvision.org/): Architektura hloubkového učení vytvořená pro rychlost, expressivity a modularitu
+* [Caffe2](https://github.com/caffe2/caffe2): Verze Caffe pro různé platformy
+* [Microsoft Cognitive Toolkit](https://github.com/Microsoft/CNTK): Sada nástrojů pro hloubkové učení od Microsoft Research
+* [H2O](https://www.h2o.ai/): Open Source platforma pro velké objemy dat a grafické uživatelské rozhraní
+* [Keras](https://keras.io/): Rozhraní API vysoké úrovně neuronové sítě v Pythonu pro TensorFlow, Microsoft Cognitive Toolkit a Theano
+* [MXNet](https://mxnet.io/): Flexibilní a efektivní knihovna pro hloubkové učení s mnoha jazykovými vazbami
+* [ČÍSLICE NVIDIA](https://developer.nvidia.com/digits): Grafický systém, který zjednodušuje běžné úlohy s hloubkovým učením
+* [PyTorch](https://pytorch.org/): Knihovna Pythonu vysoké úrovně s podporou pro dynamické sítě
+* [TensorFlow](https://www.tensorflow.org/): Open source knihovna pro Machine Intelligence z Google
+* [Theano](http://deeplearning.net/software/theano/): Knihovna Pythonu pro definování, optimalizaci a efektivní vyhodnocení matematických výrazů, které zahrnují multidimenzionální pole
+* [Torch](http://torch.ch/): Vědecká výpočetní architektura s rozsáhlou podporou algoritmů strojového učení
 * CUDA, cuDNN a ovladač NVIDIA
 * Mnoho ukázkové poznámkové bloky Jupyter
 
@@ -53,10 +53,10 @@ Virtuální počítač pro datové vědy pro Linux také obsahuje oblíbené ná
 * Azure Storage Explorer
 * Rozhraní příkazového řádku Azure (CLI) pro správu prostředků Azure
 * Nástroje Machine learning
-  * [Vowpal Wabbit](https://github.com/JohnLangford/vowpal_wabbit): Rychlé strojového učení systému podporuje techniky, jako jsou online, algoritmus hash, allreduce, snížení, learning2search, aktivní a interaktivní učení
-  * [XGBoost](https://xgboost.readthedocs.org/en/latest/): Nástroj poskytuje rychlý a přesné Posílený stromu implementace
-  * [Rattle](https://togaware.com/rattle/): Grafický nástroj, který umožňuje Začínáme se službou analýzy dat a strojové učení v jazyce R snadno
-  * [LightGBM](https://github.com/Microsoft/LightGBM): Rychlé, distribuovaná, vysoce výkonné přechodem zvýšení skóre framework
+  * [Pro dostupné](https://github.com/JohnLangford/vowpal_wabbit): Rychlý systém strojového učení, který podporuje techniky, jako je online, hashing, allreduce, snižování, learning2search, aktivní a interaktivní učení
+  * [XGBoost](https://xgboost.readthedocs.org/en/latest/): Nástroj, který poskytuje rychlou a přesnou zesílenou implementaci stromu
+  * [Rattle](https://togaware.com/rattle/): Grafický nástroj, který usnadňuje Začínáme s analýzou dat a strojovým učením v R.
+  * [LightGBM](https://github.com/Microsoft/LightGBM): Rychlá, distribuovaná a vysoce výkonná architektura pro zvyšování barevného přechodu
 * Azure SDK v jazyce Java, Python, node.js, Ruby, PHP
 * Knihovny v R a Python pro použití v Azure Machine Learning a dalšími službami Azure
 * Nástroje pro vývoj a editory (RStudio, PyCharm, IntelliJ, (emacs), vim)
@@ -85,23 +85,23 @@ Než vytvoříte virtuální počítač pro datové vědy pro Linux, musíte mí
 
 Tady jsou kroky pro vytvoření instance z virtuální počítač pro datové vědy pro Linux:
 
-1. Přejděte na virtuální počítač [webu Azure portal](https://portal.azure.com/#create/microsoft-dsvm.linux-data-science-vm-ubuntulinuxdsvmubuntu). Můžete být vyzváni k přihlášení ke svému účtu Azure, pokud ještě nejste přihlášeni. 
+1. Přejděte na virtuální počítač [webu Azure portal](https://portal.azure.com/#create/microsoft-dsvm.linux-data-science-vm-ubuntulinuxdsvmubuntu). Může se zobrazit výzva, abyste se přihlásili ke svému účtu Azure, pokud ještě nejste přihlášení. 
 1. Klikněte na tlačítko **vytvořit** (dole) a zobrazte si průvodce.![ Konfigurace data vědy vm](./media/dsvm-ubuntu-intro/configure-data-science-virtual-machine.png)
 1. Vstupy pro každý z kroků v průvodci (uvedené na pravé straně na předchozím obrázku) použitý k vytvoření virtuálního počítače Microsoft datové vědy v následujících částech. Tady jsou vstupy potřebné ke konfiguraci každý z těchto kroků:
 
    a. **Základy**:
 
-   * **Název**: Název serveru datové vědy, kterou vytváříte.
-   * **Typ disku virtuálního počítače**: Zvolte **Premium SSD** Pokud dáváte přednost jednotky SSD (Solid-State Drive). Jinak klikněte na tlačítko **standardní HDD**. 
-   * **Uživatelské jméno**: ID první účet přihlásit.
-   * **Heslo**: První heslo účtu (veřejný klíč SSH můžete použít namísto hesla).
+   * **Název**: Název vašeho serveru pro datové vědy, který vytváříte.
+   * **Typ disku virtuálního počítače**: Pokud dáváte přednost jednotce SSD (Solid-State Drive), vyberte **SSD úrovně Premium** . Jinak klikněte na tlačítko **standardní HDD**. 
+   * **Uživatelské jméno**: Přihlašovací jméno prvního účtu
+   * **Heslo**: První heslo účtu (místo hesla můžete použít veřejný klíč SSH).
    * **Předplatné**: Pokud máte více předplatných, vyberte ten, ve které je vytvořené a fakturuje počítač. Toto předplatné musí mít oprávnění vytvářet prostředky.
    * **Skupina prostředků**: Vytvořit nové nebo použijte existující skupinu.
-   * **Umístění**: Vyberte datové centrum, které je nejvhodnější. Obvykle je většina vašich dat, nebo je nejblíže vašemu fyzickému umístění pro nejrychlejší přístup k síti datového centra.
+   * **Umístění**: Vyberte datové centrum, které je vhodné. Obvykle je většina vašich dat, nebo je nejblíže vašemu fyzickému umístění pro nejrychlejší přístup k síti datového centra.
 
    b. **Velikost**:
 
-   * Vyberte jeden z typů serveru, které splňuje požadavek na funkční a náklady na omezení. Vyberte síťový adaptér nebo virtuálního počítače ND třídy pro instance virtuálních počítačů založený na grafickém procesoru. [Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/) stránka obsahuje seznam oblastí s grafickými procesory.
+   * Vyberte jeden z typů serveru, které splňuje požadavek na funkční a náklady na omezení. Vyberte virtuální počítač pro instance virtuálních počítačů založených na GPU nebo ND-Class. [Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/) stránka obsahuje seznam oblastí s grafickými procesory.
 
    c. **Nastavení**:
 
@@ -121,7 +121,7 @@ Můžete získat přístup k datové VĚDY se systémem Ubuntu pomocí tří met
 1. X2Go grafické relací
 1. JupyterHub a JupyterLab pro aplikace Jupyter notebook
 
-Virtuální počítač pro datové vědy můžete také připojit k poznámkových bloků Azure možnost spouštět poznámkové bloky Jupyter ve virtuálním počítači a obejít omezení úroveň free služby. Další informace najdete v tématu [spravovat a nakonfigurovat projekty poznámkových bloků – výpočetní vrstva](/azure/notebooks/configure-manage-azure-notebooks-projects#compute-tier).
+K Azure Notebooks můžete také připojit Data Science VM ke spuštění poznámkových bloků Jupyter na virtuálním počítači a obejít omezení úrovně bezplatné služby. Další informace najdete v tématu [Správa a konfigurace projektů poznámkových bloků – výpočetní vrstva](../../notebooks/configure-manage-azure-notebooks-projects.md#compute-tier).
 
 ### <a name="ssh"></a>SSH
 
@@ -137,20 +137,20 @@ Virtuální počítač s Linuxem už zřízeny X2Go serveru a připravené tak, 
 1. Stažení a instalace klienta X2Go pro vaše klientská platforma z [X2Go](https://wiki.x2go.org/doku.php/doc:installation:x2goclient).
 1. Spusťte klienta X2Go a vyberte **novou relaci**. Otevře se okno Konfigurace s více karet. Zadejte následující parametry konfigurace:
    * **Karta relace**:
-     * **Host**: Název hostitele nebo IP adresu virtuálního počítače s Linuxem datové vědy.
-     * **Přihlášení**: Uživatelské jméno na Linuxovém virtuálním počítači.
-     * **SSH Port**: Ponechte výchozí hodnota 22.
-     * **Typ relace**: Změňte hodnotu na XFCE. Virtuální počítač s Linuxem v současné době podporuje pouze Desktop xfce.
-   * **Karta média**: Můžete vypnout podpory zvuku a klient tisku, pokud není nutné k jejich použití.
-   * **Sdílené složky**: Pokud chcete adresářů z klientských počítačů připojené na Linuxovém virtuálním počítači, přidejte adresáře klientské počítače, které chcete sdílet s virtuálním Počítačem na této kartě.
+     * **Hostitel**: Název hostitele nebo IP adresa Data Science VM pro Linux
+     * **Přihlašovací jméno**: Uživatelské jméno na virtuálním počítači se systémem Linux.
+     * **Port SSH**: Ponechte to 22, výchozí hodnota.
+     * **Typ relace**: Změňte hodnotu na desktop Xfce. Virtuální počítač s Linuxem v současné době podporuje pouze Desktop xfce.
+   * **Karta média**: Pokud je nepotřebujete používat, můžete vypnout zvukovou podporu a tisk klienta.
+   * **Sdílené složky**: Pokud chcete adresáře z klientských počítačů připojených k VIRTUÁLNÍmu počítači se systémem Linux, přidejte do této karty adresáře klientských počítačů, které chcete sdílet s VIRTUÁLNÍm počítačem.
 
 Po přihlášení k virtuálnímu počítači pomocí klienta SSH nebo grafické Desktop xfce prostřednictvím klienta X2Go, jste připraveni začít používat nástroje, které jsou nainstalované a nakonfigurované na virtuálním počítači. Na XFCE uvidíte aplikacích zástupci v nabídce a ikony na ploše pro celou řadu nástrojů.
 
 ### <a name="jupyterhub-and-jupyterlab"></a>JupyterHub a JupyterLab
 
-Datové VĚDY se systémem Ubuntu běží [JupyterHub](https://github.com/jupyterhub/jupyterhub), server Jupyter více uživatelů. Pro připojení, přejděte na protokol https:\// vaše – virtuální počítač – ip:8000 na přenosném počítači nebo stolní počítač, zadejte uživatelské jméno a heslo, které jste použili k vytvoření virtuálního počítače a přihlášení. Mnoho ukázkové poznámkové bloky jsou k dispozici pro procházení a vyzkoušejte si.
+Datové VĚDY se systémem Ubuntu běží [JupyterHub](https://github.com/jupyterhub/jupyterhub), server Jupyter více uživatelů. Pokud se chcete připojit, přejděte na\/adresu https:/your-VM-IP: 8000 na svém přenosném počítači nebo na ploše, zadejte uživatelské jméno a heslo, které jste použili k vytvoření virtuálního počítače, a přihlaste se. Mnoho ukázkové poznámkové bloky jsou k dispozici pro procházení a vyzkoušejte si.
 
-JupyterLab, generace poznámkové bloky Jupyter a JupyterHub, je také k dispozici. Získat přístup, přihlaste se k JupyterHub a potom přejděte na adresu URL https:\// vaše-vm-ip:8000/uživatel/your-uživatelské jméno/testovací prostředí. JupyterLab můžete nastavit jako výchozí server poznámkového bloku přidáním tohoto řádku */etc/jupyterhub/jupyterhub_config.py*:
+JupyterLab, generace poznámkové bloky Jupyter a JupyterHub, je také k dispozici. Pokud k němu chcete získat přístup, přihlaste se k JupyterHub a potom přejděte\/k adrese URL https:/your-VM-IP: 8000/User/Your-username/Lab. JupyterLab můžete nastavit jako výchozí server Poznámkový blok přidáním tohoto řádku do */etc/jupyterhub/jupyterhub_config.py*:
 
 ```python
 c.Spawner.default_url = '/lab'
@@ -164,7 +164,7 @@ c.Spawner.default_url = '/lab'
 
 Microsoft Cognitive Toolkit je open source, obsáhlý learning toolkit. Python vazeb jsou k dispozici v kořenové certifikáty a py35 prostředí Conda. Zahrnuje také nástroj příkazového řádku (cntk), který je již v CESTĚ.
 
-Ukázkové poznámkové bloky Python jsou k dispozici v JupyterHub. Pokud chcete spustit základní ukázka na příkazovém řádku, spusťte následující příkazy v prostředí:
+Ukázkové poznámkové bloky Python jsou k dispozici v JupyterHub. Pokud chcete spustit základní ukázku z příkazového řádku, spusťte v prostředí následující příkazy:
 
 ```bash
 cd /home/[USERNAME]/notebooks/CNTK/HelloWorld-LogisticRegression
@@ -179,7 +179,7 @@ Caffe je rozhraní hloubkového učení z Berkeley vize a výukové centrum. Je 
 
 #### <a name="caffe2"></a>Caffe2
 
-Caffe2 je rozhraní hloubkového učení ze sítě Facebook, která je založená na Caffe. Je dostupná v případě Pythonu 2.7 v kořenové prostředí Conda. Aktivovat, spusťte následující příkaz z prostředí:
+Caffe2 je rozhraní hloubkového učení ze sítě Facebook, která je založená na Caffe. Je dostupná v případě Pythonu 2.7 v kořenové prostředí Conda. Pokud ho chcete aktivovat, spusťte následující příkaz z prostředí:
 
 ```bash
 source /anaconda/bin/activate root
@@ -193,7 +193,7 @@ H2O je rychlé, v paměti a distribuované machine learning a prediktivní analy
 
 #### <a name="keras"></a>Keras
 
-Keras je vysoké úrovně neuronové sítě rozhraní API v jazyce Python, který je schopen spuštění v horní části TensorFlow, Microsoft Cognitive Toolkit nebo Theano. Je k dispozici v kořenové certifikáty a py35 prostředí Pythonu.
+Keras je špičkové síťové rozhraní API neuronové v Pythonu, které je schopné spouštět na TensorFlow, Microsoft Cognitive Toolkit nebo Theano. Je k dispozici v kořenové certifikáty a py35 prostředí Pythonu.
 
 #### <a name="mxnet"></a>MXNet
 
@@ -209,7 +209,7 @@ NVIDIA hloubkového učení GPU školení systému, známé jako ČÍSLICE, je s
 
 #### <a name="tensorflow"></a>TensorFlow
 
-TensorFlow je knihovna obsáhlého learningu od Googlu. Knihovny open-source software pro numerické výpočty pomocí grafy toku dat. je. Je k dispozici v prostředí Python py35 TensorFlow, a některé ukázkové poznámkové bloky jsou součástí JupyterHub.
+TensorFlow je knihovna obsáhlého learningu od Googlu. Je to open source softwarová knihovna pro numerické výpočty pomocí grafů toku dat. Je k dispozici v prostředí Python py35 TensorFlow, a některé ukázkové poznámkové bloky jsou součástí JupyterHub.
 
 #### <a name="theano"></a>Theano
 
@@ -225,7 +225,7 @@ PyTorch dočíst i v prostředí Anaconda root. Příklady v /dsvm/samples/pytor
 
 R je jedním z nejoblíbenějších jazyků pro analýzy dat a strojové učení. Pokud chcete používat R pro analýzy, virtuální počítač má Microsoft R Server (Paní) s Microsoft R Open (MRO) a matematické jádra knihovny (MKL). MKL optimalizuje matematických operací, které jsou běžné v analytických algoritmů. MRO je 100 % kompatibilní s CRAN r. a některé z knihoven jazyka R, které jsou publikovány v síti CRAN se dá nainstalovat na MRO. PANÍ umožňuje škálování a operacionalizace R modely do webové služby. Můžete upravit sady R v jednom z výchozí editorů, jako je RStudio, editoru vi nebo (emacs). Pokud dáváte přednost použití editoru Emacs, byl předem nainstalované. Balíček (emacs) UPU (Emacs mluví statistiky) zjednodušuje práci se soubory R v editoru (emacs).
 
-Spuštění R konzoly, stačí zadat **R** v prostředí. Tento příkaz vás přesměruje na interaktivní prostředí. K vývoji aplikace R, obvykle použít editor, například (emacs) nebo vi a pak spusťte skripty v rámci jazyka R. S prostředím RStudio máte úplné grafické prostředí IDE k vývoji aplikace R.
+Spuštění R konzoly, stačí zadat **R** v prostředí. Tento příkaz vás provede interaktivním prostředím. K vývoji aplikace R, obvykle použít editor, například (emacs) nebo vi a pak spusťte skripty v rámci jazyka R. S prostředím RStudio máte úplné grafické prostředí IDE k vývoji aplikace R.
 
 K dispozici je také skriptu jazyka R můžete nainstalovat [balíčky Top 20 R](https://www.kdnuggets.com/2015/06/top-20-r-packages.html) potřebujete. Tento skript můžete spustit, jakmile se v rozhraní interaktivní R, které může uživatel zadat (jak je uvedeno) tak, že zadáte **R** v prostředí.  
 
@@ -286,11 +286,11 @@ Sbalené ukázkové poznámkové bloky – jednu v Pythonu a jeden v jazyce R. Z
 
 ### <a name="apache-spark-standalone"></a>Apache Spark samostatné
 
-Samostatná Apache Spark je předinstalován v systému Linux datové VĚDY můžete vyvíjet aplikace Spark místně nejprve před testování a nasazení na velkých clusterech. Jádra aplikace Jupyter můžete si projít programy PySpark. Když otevřete Jupyter, klikněte na tlačítko **nový** tlačítko by se měla zobrazit seznam dostupných jader. "– Python Spark" je jádra PySpark, který vám umožňuje vytvářet aplikace pomocí jazyka Python Spark. Integrované vývojové prostředí Pythonu, jako je PyCharm nebo Spyder můžete také použít k sestavení aplikace Spark. V tomto případě samostatné zásobníku Spark běží v rámci volající program klienta, která zrychluje a usnadňuje řešení problémů ve srovnání s vývojem v clusteru Spark.
+Samostatná Apache Spark je předinstalován v systému Linux datové VĚDY můžete vyvíjet aplikace Spark místně nejprve před testování a nasazení na velkých clusterech. Jádra aplikace Jupyter můžete si projít programy PySpark. Když otevřete Jupyter, klikněte na tlačítko **nový** tlačítko by se měla zobrazit seznam dostupných jader. "– Python Spark" je jádra PySpark, který vám umožňuje vytvářet aplikace pomocí jazyka Python Spark. K sestavování programu Spark můžete použít také Python IDE, jako je PyCharm nebo Spyder. V této samostatné instanci se zásobník Spark spouští v rámci volajícího klientského programu, který urychluje a usnadňuje řešení problémů v porovnání s vývojem v clusteru Spark.
 
 Poznámkový blok PySpark ukázka je k dispozici na Jupyter, které můžete najít v adresáři "Ve SparkML" v domovském adresáři Jupyter ($HOME/poznámkových bloků/ve SparkML/pySpark). 
 
-Pokud programujete v jazyce R pro Spark, můžete použít Microsoft R serveru, SparkR nebo sparklyr. 
+Pokud programujete v jazyce R pro Spark, můžete použít Microsoft R Server, Spark nebo sparklyr. 
 
 Před spuštěním v kontextu Sparku Microsoft R serveru, je potřeba jeden čas instalace krok umožňující místní Hadoop HDFS a Yarn instance jednoho uzlu. Ve výchozím nastavení služby Hadoop jsou nainstalované ale deaktivovány datové VĚDY. Chcete-li ji povolit, je třeba spustit následující příkazy jako uživatel root při prvním:
 
@@ -304,13 +304,13 @@ chown hadoop:hadoop ~hadoop/.ssh/authorized_keys
 systemctl start hadoop-namenode hadoop-datanode hadoop-yarn
 ```
 
-Hadoop můžete zastavit služby související s, když je nepotřebujete spuštěním ```systemctl stop hadoop-namenode hadoop-datanode hadoop-yarn```
+Služby související se systémem Hadoop můžete zastavit, pokud je nepotřebujete spuštěním```systemctl stop hadoop-namenode hadoop-datanode hadoop-yarn```
 
-Ukázka ukazuje, jak vyvíjet a testovat paní ve vzdálené kontextu Spark (což je samostatné instanci Spark na datové VĚDY), je poskytovaná a k dispozici v */dsvm/samples/MRS* adresáře.
+Ukázka demonstrující, jak vyvíjet a testovat paní ve vzdáleném kontextu Spark (což je samostatná instance Spark na DSVM), je k dispozici v adresáři */dsvm/Samples/MRS* .
 
 ### <a name="ides-and-editors"></a>Editory a integrovanými vývojovými prostředími
 
-Máte možnost výběru z několika editory kódu včetně vi/VIM, (emacs), PyCharm, RStudio a IntelliJ. IntelliJ, RStudio PyCharm jsou grafické editory a musíte být přihlášeni grafické desktopu k jejich použití. Tyto editory obsahují desktopových a aplikačních zástupci v nabídce je spustit.
+Máte možnost zvolit si několik editorů kódu, včetně VI/VIM, (Emacs), PyCharm, RStudio a IntelliJ. IntelliJ, RStudio PyCharm jsou grafické editory a musíte být přihlášeni grafické desktopu k jejich použití. Tyto editory obsahují desktopových a aplikačních zástupci v nabídce je spustit.
 
 **VIM** a **Emacs** jsou textové editory. Do (emacs) jsme nainstalovali balíček doplňku volat (emacs) mluví statistiky (UPU), která usnadňuje práci s jazykem R v editoru (emacs). Další informace najdete v [UPU](https://ess.r-project.org/).
 
@@ -320,7 +320,7 @@ Máte možnost výběru z několika editory kódu včetně vi/VIM, (emacs), PyCh
 
 #### <a name="graphical-sql-client"></a>Grafický klient SQL
 
-**SQuirrel SQL**, grafický klient SQL byl poskytnut se připojit do různých databází (jako je například Microsoft SQL Server a MySQL) a ke spouštění dotazů SQL. SQuirrel SQL můžete spustit z grafického desktopové relace (například pomocí klienta X2Go) pomocí ikony na ploše nebo v prostředí pomocí následujícího příkazu:
+**SQuirrel SQL**, grafický klient SQL byl poskytnut se připojit do různých databází (jako je například Microsoft SQL Server a MySQL) a ke spouštění dotazů SQL. SQuirrel SQL můžete spustit z grafické relace plochy (například pomocí klienta X2Go) pomocí ikony na ploše nebo pomocí následujícího příkazu v prostředí:
 
 ```bash
 /usr/local/squirrel-sql-3.7/squirrel-sql.sh
@@ -336,11 +336,11 @@ Další informace najdete v tématu [SQuirrel SQL](http://squirrel-sql.sourcefor
 
 Balíček ovladače ODBC pro SQL Server také obsahuje dva nástroje příkazového řádku:
 
-**bcp**: Hromadné nástroj bcp kopíruje data mezi instance systému Microsoft SQL Server a datový soubor ve formátu zadané uživatelem. Nástroje bcp lze použít k importu velkého počtu nových řádků do tabulky serveru SQL Server nebo exportovat data z tabulek do datových souborů. Import dat do tabulky, musíte použít soubor formátu vytvořený pro tabulku nebo pochopit strukturu tabulky a typy dat, které jsou platné pro její sloupce.
+**bcp**: Nástroj BCP hromadně kopíruje data mezi instancí Microsoft SQL Server a datovým souborem v uživatelsky definovaném formátu. Nástroje bcp lze použít k importu velkého počtu nových řádků do tabulky serveru SQL Server nebo exportovat data z tabulek do datových souborů. Import dat do tabulky, musíte použít soubor formátu vytvořený pro tabulku nebo pochopit strukturu tabulky a typy dat, které jsou platné pro její sloupce.
 
 Další informace najdete v tématu [připojení pomocí bcp](https://msdn.microsoft.com/library/hh568446.aspx).
 
-**sqlcmd**: Můžete zadat příkazů jazyka Transact-SQL s Nástroj sqlcmd, stejně jako postupy systému a soubory skriptů příkazového řádku. Tento nástroj používá rozhraní ODBC pro spuštění dávky Transact-SQL.
+**sqlcmd**: Příkazy jazyka Transact-SQL můžete zadat pomocí nástroje Sqlcmd a také systémových postupů a souborů skriptu na příkazovém řádku. Tento nástroj používá rozhraní ODBC pro spuštění dávky Transact-SQL.
 
 Další informace najdete v tématu [připojení pomocí sqlcmd](https://msdn.microsoft.com/library/hh568447.aspx).
 
@@ -359,12 +359,12 @@ Nejsou k dispozici v R a Python pro přístup k databázím knihovny.
 Na virtuálním počítači jsou nainstalované nástroje Azure následující:
 
 * **Rozhraní příkazového řádku Azure**: Rozhraní příkazového řádku Azure umožňuje vytvářet a spravovat prostředky Azure prostřednictvím příkazů prostředí. Abyste mohli vyvolat nástrojů Azure, stačí zadat **azure pomáhají**. Další informace najdete v tématu [stránku dokumentace k Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2).
-* **Microsoft Azure Storage Exploreru**: Microsoft Azure Storage Explorer je grafické nástroj, který slouží k procházení objektů, které jsou uložené v účtu služby Azure storage a k nahrávání a stahování dat do a z objektů BLOB Azure. Průzkumník služby Storage se dá dostat z ikonu zástupce na ploše. Můžete ho vyvolat na příkazovém řádku prostředí tak, že zadáte **StorageExplorer**. Musíte být přihlášeni z klienta X2Go nebo mít X11 předávání set up.
-* **Knihovny Azure**: Následují některé z předem nainstalovaných knihoven.
+* **Průzkumník služby Microsoft Azure Storage**: Průzkumník služby Microsoft Azure Storage je grafický nástroj, který se používá k procházení objektů, které jste uložili v účtu úložiště Azure, a k nahrávání a stahování dat do a z objektů blob Azure. Průzkumník služby Storage se dá dostat z ikonu zástupce na ploše. Můžete ho vyvolat na příkazovém řádku prostředí tak, že zadáte **StorageExplorer**. Musíte být přihlášeni z klienta X2Go nebo mít nastavené přesměrování X11.
+* **Knihovny Azure**: Níže jsou uvedené některé z předem nainstalovaných knihoven.
   
-  * **Python**: Jsou knihovny souvisejících s Azure v Pythonu, které jsou nainstalovány **azure**, **azureml**, **pydocumentdb**, a **pyodbc**. První tři knihovny můžete přístup služby Azure storage, Azure Machine Learning a Azure Cosmos DB (databáze NoSQL v Azure). Čtvrtý knihovny pyodbc (spolu s ovladač Microsoft ODBC pro SQL Server), umožňuje přístup k systému SQL Server, Azure SQL Database a Azure SQL Data Warehouse z Pythonu pomocí rozhraní ODBC. Zadejte **pip seznamu** zobrazíte všechny uvedené knihovny. Ujistěte se, že tento příkaz spustit v případě Pythonu 2.7 i 3.5 prostředí.
-  * **R**: Jsou souvisejících s Azure knihovny v jazyce R, které jsou nainstalovány **AzureML** a **RODBC**.
-  * **Java**: Seznam knihovny Java v Azure najdete v adresáři **/dsvm/sdk/AzureSDKJava** na virtuálním počítači. Jsou klíčové knihovny Azure ovladače úložiště a správu rozhraní API služby Azure Cosmos DB a JDBC pro SQL Server.  
+  * **Python**: Knihovny související s Azure v Pythonu, které jsou nainstalované, jsou **Azure**, **AzureML**, **pydocumentdb**a **pyodbc**. První tři knihovny můžete přístup služby Azure storage, Azure Machine Learning a Azure Cosmos DB (databáze NoSQL v Azure). Čtvrtý knihovny pyodbc (spolu s ovladač Microsoft ODBC pro SQL Server), umožňuje přístup k systému SQL Server, Azure SQL Database a Azure SQL Data Warehouse z Pythonu pomocí rozhraní ODBC. Zadejte **pip seznamu** zobrazíte všechny uvedené knihovny. Ujistěte se, že tento příkaz spustit v případě Pythonu 2.7 i 3.5 prostředí.
+  * **R**: Knihovny související s Azure v jazyce R, které jsou nainstalovány, jsou **AzureML** a **RODBC**.
+  * **Java**: Seznam knihoven Azure Java najdete v adresáři **/dsvm/SDK/AzureSDKJava** na virtuálním počítači. Jsou klíčové knihovny Azure ovladače úložiště a správu rozhraní API služby Azure Cosmos DB a JDBC pro SQL Server.  
 
 Můžete přistupovat [webu Azure portal](https://portal.azure.com) předinstalované prohlížeče Firefox. Na portálu Azure portal můžete vytvářet, spravovat a monitorovat prostředky Azure.
 
@@ -372,7 +372,7 @@ Můžete přistupovat [webu Azure portal](https://portal.azure.com) předinstalo
 
 Azure Machine Learning je plně spravovaná Cloudová služba, která umožňuje vytvořit, nasadit a sdílení řešení prediktivní analýzy. Vytváření experimentů a modelů z Azure Machine Learning Studio. Byla přístupná z webového prohlížeče na virtuální počítač pro datové vědy návštěvou [Microsoft Azure Machine Learning](https://studio.azureml.net).
 
-Po přihlášení k Azure Machine Learning Studio máte přístup k plátno pro experimentování ve kterém můžete vytvořit logický tok pro algoritmech strojového učení. Také mají přístup do poznámkového bloku Jupyter, které jsou hostované v Azure Machine Learning a můžete bez problémů pracovat s experimenty v nástroji Machine Learning Studio. Zprovoznění modelů strojového učení, které jste vytvořili podle jejich zabalení v rozhraní webových služeb. Až po zprovoznění modelů strojového učení umožňuje klientům napsané v libovolném jazyce vyvolat předpovědi z těchto modelech. Další informace najdete v tématu [dokumentace ke službě Machine Learning](https://azure.microsoft.com/documentation/services/machine-learning/).
+Po přihlášení k Azure Machine Learning Studio máte přístup k plátno pro experimentování ve kterém můžete vytvořit logický tok pro algoritmech strojového učení. Také mají přístup do poznámkového bloku Jupyter, které jsou hostované v Azure Machine Learning a můžete bez problémů pracovat s experimenty v nástroji Machine Learning Studio. Zprovoznění modelů strojového učení, které jste vytvořili podle jejich zabalení v rozhraní webových služeb. Modely strojového učení zprovozňování umožňují klientům napsaným v jakémkoli jazyce vyvolat předpovědi z těchto modelů. Další informace najdete v tématu [dokumentace ke službě Machine Learning](https://azure.microsoft.com/documentation/services/machine-learning/).
 
 Můžete také sestavovat modely v R nebo Pythonu ve virtuálním počítači a potom ji nasadíte v produkčním prostředí v Azure Machine Learning. Jsme nainstalovali knihovny v jazyce R (**AzureML**) a Python (**azureml**) Chcete-li povolit tuto funkci.
 
@@ -385,12 +385,12 @@ Informace o tom, jak nasadit modely R a Pythonu do Azure Machine Learning najdet
 
 Virtuální počítač obsahuje několik strojového učení, nástroje a algoritmy, které byly předem zkompilovat a předem nainstalovaný místně. Mezi ně patří:
 
-* **Vowpal Wabbit**: Algoritmus rychlého online výukové kurzy.
-* **xgboost**: Nástroj, který poskytuje optimalizované algoritmy Posílený stromu.
-* **Rattle**: Je založené na jazyce R grafický nástroj pro zkoumání a modelování dat snadno.
-* **Python**: Anaconda Python se dodává jako součást balíčku s algoritmy strojového učení s knihovnami, jako je Scikit poučení. Můžete nainstalovat další knihovny pomocí `pip install` příkazu.
-* **LightGBM**: Rychlé, distribuovaná, vysoce výkonné přechodem zvýšení skóre framework podle algoritmů rozhodovacího stromu.
-* **R**: Bohatá knihovna funkcí machine learning je dostupná pro jazyk R. Některé z knihoven, které jsou předem nainstalované jsou lm, glm, randomForest, rpart. Další knihovny se dá nainstalovat spuštěním:
+* **Pro dostupné**: Rychlý online algoritmus pro učení.
+* **xgboost**: Nástroj, který poskytuje optimalizované a posílené doménové algoritmy.
+* **Rattle**: Grafický nástroj založený na jazyce R pro snadné zkoumání a modelování dat.
+* **Python**: Anaconda Python se dodává s algoritmy strojového učení s knihovnami, jako je Scikit – učení. Můžete nainstalovat další knihovny pomocí `pip install` příkazu.
+* **LightGBM**: Rychlé a distribuované barevné přechodové rozhraní s vysokým výkonem na základě algoritmů rozhodovacího stromu.
+* **R**: K dispozici je bohatá knihovna funkcí strojového učení pro R. Některé z knihoven, které jsou předem nainstalovány, jsou LM, GLM, randomForest, rpart. Další knihovny se dá nainstalovat spuštěním:
   
         install.packages(<lib name>)
 
@@ -400,7 +400,7 @@ Zde jsou některé další informace o nástrojích pro první tři strojového 
 
 Vowpal Wabbit je strojové učení systém, který používá techniky, jako je online, hash, allreduce, snížení, learning2search, aktivní a interaktivního vzdělávacího.
 
-Chcete-li spustit nástroj na základní příklad, použijte následující příkazy:
+Chcete-li spustit nástroj na základním příkladu, použijte následující příkazy:
 
 ```bash
 cp -r /dsvm/tools/VowpalWabbit/demo vwdemo
@@ -455,7 +455,7 @@ library(rattle)
 rattle()
 ```
 
-Nyní grafické rozhraní otevře sadu karet. Tady jsou kroky rychlý start v Rattle potřeba použít ukázkovou datovou sadu počasí a sestavení modelu. V některé z následujících kroků zobrazí se výzva k automaticky nainstaluje a načte některé požadované balíčky jazyka R, které ještě nejsou v systému.
+Nyní grafické rozhraní otevře sadu karet. Tady jsou kroky pro rychlý Start v Rattle potřebné k použití ukázkové sady dat počasí a vytvoření modelu. V některé z následujících kroků zobrazí se výzva k automaticky nainstaluje a načte některé požadované balíčky jazyka R, které ještě nejsou v systému.
 
 > [!NOTE]
 > Pokud nemáte přístup k instalaci balíčku v adresáři systému (výchozí), může se zobrazit výzva v okně konzoly R k instalaci balíčků na své osobní knihovny. Odpověď *y* -li zobrazit tyto výzvy.

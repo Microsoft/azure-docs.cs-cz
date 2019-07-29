@@ -17,20 +17,20 @@ ms.author: ryanwi
 ms.reviewer: brandwe, jmprieur, saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6023e4bd4028cf1679051b6665297afd00b1eba7
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: f1ebfce2b96da51b9c33646c1626495d280d7b8a
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67482653"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68592248"
 ---
-# <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app"></a>Rychlý start: Přihlašování uživatelů a volání rozhraní Microsoft Graph API z aplikace pro Android
+# <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app"></a>Rychlý start: Přihlaste se uživatelům a zavolejte rozhraní API pro Microsoft Graph z aplikace pro Android.
 
 [!INCLUDE [active-directory-develop-applies-v1-adal](../../../includes/active-directory-develop-applies-v1-adal.md)]
 
 Pokud vyvíjíte aplikaci pro Android, Microsoft vám usnadní práci s přihlášením uživatelů do Azure Active Directory (Azure AD). Azure AD umožňuje vaší aplikaci získat přístup k datům uživatelů prostřednictvím Microsoft Graphu nebo vlastního chráněného webového rozhraní API.
 
-Knihovna pro Android Azure AD Authentication Library (ADAL) dává aplikaci možnost začít používat [cloudu Microsoft Azure](https://cloud.microsoft.com) a [Microsoft Graph API](https://developer.microsoft.com/graph) díky podpoře [Microsoft Azure Účty služby Active Directory](https://azure.microsoft.com/services/active-directory/) pomocí oborový standard OAuth 2.0 a OpenID Connect.
+Knihovna Androidu pro Azure AD Authentication Library (ADAL) umožňuje, aby vaše aplikace mohla začít používat [Microsoft Azure Cloud](https://azure.microsoft.com/free/cloud-services/) a [rozhraní API Microsoft Graph](https://developer.microsoft.com/graph) tím, že podporuje [Microsoft Azure Active Directory účty](https://azure.microsoft.com/services/active-directory/) pomocí standardu v oboru. OAuth 2,0 a OpenID Connect.
 
 V tomto rychlém startu se naučíte:
 
@@ -43,15 +43,15 @@ V tomto rychlém startu se naučíte:
 
 Abyste mohli začít, budete potřebovat tenanta služby Azure AD, ve kterém můžete vytvářet uživatele a zaregistrovat aplikaci. Pokud ho ještě nemáte, [zjistěte, jak ho získat](quickstart-create-new-tenant.md).
 
-## <a name="scenario-sign-in-users-and-call-the-microsoft-graph"></a>Scénář: Přihlašování uživatelů a volání Microsoft Graphu
+## <a name="scenario-sign-in-users-and-call-the-microsoft-graph"></a>Scénář: Přihlaste se uživatelům a zavolejte Microsoft Graph
 
-![Ukazuje Azure AD a s Androidem topologie](./media/quickstart-v1-android/active-directory-android-topology.png)
+![Zobrazuje topologii Azure AD a Androidu.](./media/quickstart-v1-android/active-directory-android-topology.png)
 
 Tuto aplikaci můžete použít pro všechny účty Azure AD. Podporuje jak scénáře s jedním tenantem, tak i scénáře s více tenanty (popsáno v postupech). Ukazuje, jak můžete sestavit aplikace pro připojení podnikových uživatelů a získání přístupu prostřednictvím Microsoft Graphu k jejich datům Azure a O365. Během autorizačního toku se budou muset koncoví uživatelé přihlásit a vyjádřit souhlas s oprávněními aplikace a v některých případech se může v aplikaci vyžadovat i vyjádření souhlasu správce. Většina logiky v tomto příkladu ukazuje, jak ověřit uživatele a provést základní volání Microsoft Graphu.
 
 ## <a name="sample-code"></a>Ukázka kódu
 
-Úplnou ukázku kódu lze najít [na Githubu](https://github.com/Azure-Samples/active-directory-android).
+Úplný ukázkový kód můžete najít [na GitHubu](https://github.com/Azure-Samples/active-directory-android).
 
 ```Java
 // Initialize your app with MSAL
@@ -85,16 +85,16 @@ Budete potřebovat nativní klientskou aplikaci zaregistrovanou u Microsoftu pro
     - Vyberte ***Azure Active Directory*** > ***Registrace aplikací***.
 
 2. Vytvoření aplikace
-    - Vyberte **registrace nové**.
+    - Vyberte **Nová registrace**.
     - Do pole **Název** zadejte název aplikace.
-    - V části **podporovaných typů účtu**vyberte **účty v jakékoli organizaci adresáři a osobní účty Microsoft**.
-    - V **identifikátor URI pro přesměrování**vyberte **veřejným klientem (mobilních a desktopových)** z rozevíracího seznamu a zadejte `http://localhost`.
-    - Klikněte na tlačítko **zaregistrovat**.
+    - V části **podporované typy účtů**vyberte **účty v libovolném organizačním adresáři a osobní účty Microsoft**.
+    - V části **identifikátor URI přesměrování**vyberte z rozevíracího seznamu možnost **veřejný klient (mobilní zařízení a plocha)** a zadejte `http://localhost`.
+    - Klikněte na **zaregistrovat**.
 
 3. Konfigurace Microsoft Graphu
     - Vyberte **oprávnění k rozhraní API**.
-    - Vyberte **přidat oprávnění**uvnitř **vyberte rozhraní API** vyberte ***Microsoft Graphu***.
-    - V části **delegovaná oprávnění**, vyberte oprávnění **User.Read**, pak klikněte na tlačítko **přidat** uložte.        
+    - Vyberte **Přidat oprávnění**a uvnitř **Vyberte rozhraní API** vyberte ***Microsoft Graph***.
+    - V části **delegovaná oprávnění**vyberte oprávnění **uživatel. číst**a pak klikněte na tlačítko **Přidat** k uložení.        
     
 4. Blahopřejeme! Aplikace se úspěšně nakonfigurovala. V další části budete potřebovat:
     - `Application ID`
@@ -126,7 +126,7 @@ Veškerou konfiguraci tohoto ukázkového kódu najdete v souboru ***src/main/ja
 
 1. Pokud chcete získat další informace o mechanismech knihovny a způsobu konfigurace nových scénářů a funkcí, projděte si [stránku Wiki knihovny ADAL pro Android](https://github.com/AzureAD/azure-activedirectory-library-for-android/wiki).
 2. V nativních scénářích bude aplikace používat vložené webové zobrazení Webview a neopustí aplikaci. Identifikátor URI pro přesměrování může být libovolný.
-3. Došlo k problémům nebo máte nějaký požadavek? Můžete vytvořit chybu nebo publikovat na webu Stack Overflow pomocí značky `azure-active-directory`.
+3. Došlo k problémům nebo máte nějaký požadavek? Můžete vytvořit problém nebo odeslat Stack Overflow se značkou `azure-active-directory`.
 
 ### <a name="cross-app-sso"></a>Jednotné přihlašování napříč aplikacemi
 

@@ -1,7 +1,7 @@
 ---
-title: Zabránit obsahu překladu – Translator Text API
-titlesuffix: Azure Cognitive Services
-description: Zakázat posunutí obsahu s rozhraním Translator Text API.
+title: Zabránit překladu obsahu – Translator Text API
+titleSuffix: Azure Cognitive Services
+description: Zabraňte překladu obsahu pomocí Translator Text API.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,21 +10,21 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 06/04/2019
 ms.author: swmachan
-ms.openlocfilehash: 02c4e90879b81e29f3972d262f36d5c6b6d8e841
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: f9b48b094713f6ee141c5c15d5636ca965ad61b9
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67448275"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68595227"
 ---
-# <a name="how-to-prevent-translation-of-content-with-the-translator-text-api"></a>Jak zabránit překlad obsahu s rozhraním Translator Text API
+# <a name="how-to-prevent-translation-of-content-with-the-translator-text-api"></a>Jak zabránit překladu obsahu pomocí Translator Text API
 
-Translator Text API vám umožní obsah značky tak, aby není přeložen. Můžete například označit kód, název značky nebo slovo nebo fráze, který nemá smysl při lokalizována.
+Translator Text API umožňuje označit obsah tak, aby nebyl přeložen. Například můžete chtít označit kód, název značky nebo slovo nebo frázi, které nedává smysl, pokud je lokalizováno.
 
-## <a name="methods-for-preventing-translation"></a>Metody jak zabránit překladu
-1. Řídicí klíčové slovo Twitteru @somethingtopassthrough nebo #somethingtopassthrough. Zrušit řídicí po převodu.
+## <a name="methods-for-preventing-translation"></a>Metody prevence překladu
+1. Řídicí znak @somethingtopassthrough na Twitteru nebo #somethingtopassthrough. Zrušit řídicí znak po překladu.
 
-2. Obsah s `notranslate`.
+2. Označte svůj obsah pomocí `notranslate`.
 
    Příklad:
 
@@ -33,13 +33,13 @@ Translator Text API vám umožní obsah značky tak, aby není přeložen. Můž
    <div>This will be translated. </div>
    ```
 
-3. Použití [dynamický slovník](dynamic-dictionary.md) stanovit konkrétní překladu.
+3. Pomocí [dynamického slovníku](dynamic-dictionary.md) nařídíte konkrétní překlad.
 
-4. Nepředávejte řetězec rozhraní Translator Text API pro překlad.
+4. Nepředávejte řetězec do Translator Text API pro překlad.
 
-5. Vlastní Translator: Použití [slovníku v vlastní Translator](custom-translator/what-is-dictionary.md) stanovit překladu věty se 100 % pravděpodobností.
+5. Vlastní Překladatel: Použijte [slovník ve vlastním překladateli](custom-translator/what-is-dictionary.md) k navýšení překladu fráze s pravděpodobností 100%.
 
 
 ## <a name="next-steps"></a>Další postup
 > [!div class="nextstepaction"]
-> [Vyhněte se překlad do volání rozhraní Translator API](reference/v3-0-translate.md)
+> [Zamezení překladu ve volání rozhraní API pro překladatele](reference/v3-0-translate.md)

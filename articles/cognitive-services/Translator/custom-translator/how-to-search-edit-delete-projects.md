@@ -1,68 +1,68 @@
 ---
-title: Jak hledat, upravovat a odstraňovat projekt – vlastní Translator
+title: Jak hledat, upravovat a odstraňovat projekty – vlastní Překladatel
 titleSuffix: Azure Cognitive Services
-description: Vlastní Translator poskytuje různé způsoby, jak spravovat vaše projekty efektivním způsobem. Můžete vytvořit více projektů, na základě vašich kritérií vyhledávání upravit vaše projekty. Odstranění projektu je také možné ve vlastní překladač.
+description: Vlastní Překladatel nabízí různé způsoby, jak efektivně spravovat projekty. Můžete vytvořit více projektů, vyhledávat podle svých kritérií, upravovat své projekty. Odstranění projektu je možné také ve vlastním překladateli.
 author: swmachan
-manager: christw
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 3a19feb76b5f5e65f891dc9f4e9dbfbd642d15b6
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 9432ac390b7677b3dea5aebc84cf23ef6e45db92
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67447941"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68595709"
 ---
-# <a name="search-edit-and-delete-projects"></a>Hledání, upravovat a odstraňovat projekty
+# <a name="search-edit-and-delete-projects"></a>Hledání, úpravy a odstraňování projektů
 
-Vlastní Translator poskytuje několik způsobů, jak spravovat vaše projekty efektivním způsobem. Můžete vytvořit mnoho projektů, na základě vašich kritérií vyhledávání a upravit vaše projekty. Odstranění projektu je také možné ve vlastní překladač.  
+Vlastní Překladatel nabízí několik způsobů, jak můžete své projekty spravovat účinným způsobem. Můžete vytvořit mnoho projektů, vyhledávat podle vašich kritérií a upravovat projekty. Odstranění projektu je možné také ve vlastním překladateli.  
 
-## <a name="search-and-filter-projects"></a>Vyhledávání a filtrování projektů
+## <a name="search-and-filter-projects"></a>Hledání a filtrování projektů
 
-Nástroj filtr umožňuje vyhledávat projekty podle podmínek jiný filtr. Filtruje jako název projektu, stav, zdrojový a cílový jazyk a druh projektu.
+Nástroj filtru umožňuje vyhledávat projekty podle různých podmínek filtrování. Filtruje jako název projektu, stav, zdrojový a cílový jazyk a kategorii projektu.
 
-1.  Klikněte na tlačítko filtru.
+1.  Klikněte na tlačítko filtr.
 
-    ![Hledání projektů](media/how-to/how-to-search-project.png)
+    ![Hledat projekt](media/how-to/how-to-search-project.png)
 
-1.  Můžete filtrovat podle některé (nebo všechny) následující pole: název projektu, stav, zdrojový jazyk, cílový jazyk a kategorie.
+1.  Můžete filtrovat podle všech (nebo všech) následujících polí: název projektu, stav, zdrojový jazyk, cílový jazyk a kategorie.
 
-2.  Kliknutím na tlačítko použít.
+2.  Klikněte na použít.
 
-    ![Možnosti filtru hledání projektu](media/how-to/how-to-search-project-filters.png)
+    ![Vyhledat možnosti filtru projektu](media/how-to/how-to-search-project-filters.png)
 
-3.  Vymažte filtr, chcete-li zobrazit všechny projekty klepnutím na tlačítko "Clear".
+3.  Pokud chcete zobrazit všechny vaše projekty klepnutím na Vymazat, vymažte filtr.
 
 
 ## <a name="edit-a-project"></a>Upravit projekt
 
-Vlastní Translator umožňuje upravit název a popis projektu. Další metadata projektu jako kategorie, jazyk zdrojového a cílového jazyka nejsou k dispozici pro úpravy. Níže uvedené kroky popisují, jak upravit projekt.
+Vlastní Překladatel vám dává možnost upravit název a popis projektu. Jiná metadata projektu, jako je kategorie, zdrojový jazyk a cílový jazyk, nejsou k dispozici pro úpravy. Následující postup popisuje, jak upravit projekt.
 
-1.  Klikněte na ikonu tužky, která se zobrazí, když najedete myší do projektu.
+1.  Klikněte na ikonu tužky, která se zobrazí při najetí myší na projekt.
 
     ![Upravit projekt](media/how-to/how-to-edit-project.png)
 
-2.  V dialogovém okně můžete změnit název projektu nebo popis projektu ale pár popisek, kategorie nebo jazyk projektu nelze změnit.
+2.  V dialogovém okně lze upravit buď název projektu, nebo popis projektu, ale nelze změnit popisek projektu, kategorii nebo dvojici jazyků.
 
-    ![Upravit projekt – dialogové okno](media/how-to/how-to-edit-project-dialog.png)
+    ![Dialogové okno Upravit projekt](media/how-to/how-to-edit-project-dialog.png)
 
-3.  Klikněte na tlačítko filtru.
+3.  Klikněte na tlačítko filtr.
 
-## <a name="delete-a-project"></a>Odstranění projektu
+## <a name="delete-a-project"></a>Odstranit projekt
 
-Projekt můžete odstranit, pokud ho už nepotřebují. Níže uvedené kroky popisují, jak odstranit projekt.
+Projekt můžete odstranit, pokud ho již nepotřebujete. Následující kroky popisují, jak odstranit projekt.
 
-1. Najeďte myší na libovolný záznam projektu a klikněte na ikonu odpadkového koše.
+1. Najeďte myší na libovolný záznam projektu a klikněte na ikonu koše.
 
    ![Odstranit projekt](media/how-to/how-to-delete-project.png)
 
-2. Potvrzení odstranění. Odstranění projektu se odstraní všechny modely, které byly vytvořeny v rámci tohoto projektu. Odstranění projektu nebude mít vliv na vaše dokumenty.
+2. Potvrďte odstranění. Odstraněním projektu dojde k odstranění všech modelů, které byly vytvořeny v rámci daného projektu. Odstranění projektu nebude mít vliv na vaše dokumenty.
 
-   ![Odstranit potvrzení](media/how-to/how-to-delete-project-confirm.png)
+   ![Potvrzovací dialog pro odstranění](media/how-to/how-to-delete-project-confirm.png)
 
 ## <a name="next-steps"></a>Další postup
 
-- [Nahrání dokumentů](how-to-upload-document.md) abyste mohli začít vytvářet vlastní překladu modelu.
+- [Nahrajte dokumenty](how-to-upload-document.md) a začněte vytvářet vlastní model překladu.

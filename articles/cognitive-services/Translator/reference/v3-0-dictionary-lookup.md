@@ -1,7 +1,7 @@
 ---
-title: Translator Text API slovníku vyhledávání – metoda
-titlesuffix: Azure Cognitive Services
-description: Použijte metodu Translator Text API slovníku vyhledávání.
+title: Způsob vyhledávání Translator Text API slovníku
+titleSuffix: Azure Cognitive Services
+description: Použijte metodu vyhledávání slovníku Translator Text API.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,20 +10,20 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: swmachan
-ms.openlocfilehash: 8cc37c9edd5679158f8454e00bd27a53e4491004
-ms.sourcegitcommit: a7ea412ca4411fc28431cbe7d2cc399900267585
+ms.openlocfilehash: 9a06c8e3b50c3f54971694f8d3924a3a5ba5f071
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2019
-ms.locfileid: "67357703"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68595032"
 ---
-# <a name="translator-text-api-30-dictionary-lookup"></a>Translator Text API 3.0: Slovníkové vyhledávání
+# <a name="translator-text-api-30-dictionary-lookup"></a>Translator Text API 3,0: Slovníkové vyhledávání
 
-Poskytuje alternativní překlady pro slovo a malý počet idiomatickou frází. Každý překlad obsahuje část řeči a seznam back překlady. Back překlady povolit tak uživateli pochopit překlad v kontextu. [Slovníku příklad](./v3-0-dictionary-examples.md) operace povoluje další hierarchií naleznete v příkladu se používá každá dvojice překladu.
+Poskytuje alternativní překlady pro slovo a malý počet idiomatickou frází. Každý překlad má část řeči a seznam back-vrácených překladů. Back-překlady umožňují uživateli pochopit překlad v kontextu. Operace [ukázkového slovníku](./v3-0-dictionary-examples.md) umožňuje další přechod k podrobnostem, aby se zobrazil příklad použití každého páru překladu.
 
 ## <a name="request-url"></a>Adresa URL požadavku
 
-Odeslat `POST` požadavek na:
+`POST` Odeslat požadavek na:
 
 ```HTTP
 https://api.cognitive.microsofttranslator.com/dictionary/lookup?api-version=3.0
@@ -31,51 +31,51 @@ https://api.cognitive.microsofttranslator.com/dictionary/lookup?api-version=3.0
 
 ## <a name="request-parameters"></a>Parametry žádosti
 
-Žádosti jsou parametry předané v řetězci dotazu:
+Parametry žádosti předané řetězci dotazu jsou:
 
 <table width="100%">
   <th width="20%">Parametr dotazu</th>
   <th>Popis</th>
   <tr>
     <td>api-version</td>
-    <td>*Povinný parametr*.<br/>Verze rozhraní API požadovaná klientem. Hodnota musí být `3.0`.</td>
+    <td>*Povinný parametr*.<br/>Verze rozhraní API, kterou klient požaduje. Hodnota musí být `3.0`.</td>
   </tr>
   <tr>
     <td>from</td>
-    <td>*Povinný parametr*.<br/>Určuje jazyk, který vstupního textu. Zdrojový jazyk musí být jedna z [podporované jazyky](./v3-0-languages.md) součástí `dictionary` oboru.</td>
+    <td>*Povinný parametr*.<br/>Určuje jazyk vstupního textu. Zdrojový jazyk musí být jeden z [podporovaných jazyků](./v3-0-languages.md) zahrnutých v `dictionary` oboru.</td>
   </tr>
   <tr>
     <td>na</td>
-    <td>*Povinný parametr*.<br/>Určuje jazyk text výstupu. Cílový jazyk musí být jedna z [podporované jazyky](./v3-0-languages.md) součástí `dictionary` oboru.</td>
+    <td>*Povinný parametr*.<br/>Určuje jazyk výstupního textu. Cílový jazyk musí být jeden z [podporovaných jazyků](./v3-0-languages.md) zahrnutých v `dictionary` oboru.</td>
   </tr>
 </table>
 
-Hlavičky žádosti patří:
+Hlavičky požadavku zahrnují:
 
 <table width="100%">
-  <th width="20%">Hlavičky</th>
+  <th width="20%">Záhlaví</th>
   <th>Popis</th>
   <tr>
-    <td>Ověřovací hlavičky</td>
-    <td><em>Hlavička požadavku požadované</em>.<br/>Zobrazit <a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">dostupné možnosti pro ověřování</a>.</td>
+    <td>Ověřovací hlavičky (y)</td>
+    <td><em>Požadovaná hlavička žádosti</em><br/>Podívejte se <a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">na dostupné možnosti ověřování</a>.</td>
   </tr>
   <tr>
-    <td>Content-Type</td>
-    <td>*Hlavička požadavku požadované*.<br/>Určuje typ obsahu datové části. Možné hodnoty jsou: `application/json`.</td>
+    <td>Typ obsahu</td>
+    <td>*Požadovaná hlavička žádosti*<br/>Určuje typ obsahu datové části. Možné hodnoty jsou: `application/json`.</td>
   </tr>
   <tr>
     <td>Content-Length</td>
-    <td>*Hlavička požadavku požadované*.<br/>Délka textu požadavku.</td>
+    <td>*Požadovaná hlavička žádosti*<br/>Délka textu žádosti</td>
   </tr>
   <tr>
     <td>X-ClientTraceId</td>
-    <td>*Volitelné*.<br/>Klientem generovaná identifikátor GUID k jednoznačné identifikaci požadavku. Tato hlavička můžete vynechat, pokud zahrnete ID trasování v řetězci dotazu pomocí parametru dotazu s názvem `ClientTraceId`.</td>
+    <td>*Volitelné*.<br/>Identifikátor GUID generovaný klientem pro jednoznačnou identifikaci požadavku. Tuto hlavičku můžete vynechat, pokud zahrnete ID trasování do řetězce dotazu pomocí parametru dotazu s názvem `ClientTraceId`.</td>
   </tr>
 </table> 
 
 ## <a name="request-body"></a>Text požadavku
 
-Text požadavku je pole JSON. Každý prvek pole je objekt JSON s řetězcovou vlastnost s názvem `Text`, která představuje výraz k vyhledání.
+Tělo požadavku je pole JSON. Každý prvek pole je objekt JSON s vlastností řetězce s názvem `Text`, který představuje termín pro vyhledání.
 
 ```json
 [
@@ -86,61 +86,61 @@ Text požadavku je pole JSON. Každý prvek pole je objekt JSON s řetězcovou v
 Platí následující omezení:
 
 * Pole může mít maximálně 10 prvků.
-* Textová hodnota elementu pole může mít maximálně 100 znaků včetně mezer.
+* Textová hodnota prvku pole nesmí být delší než 100 znaků včetně mezer.
 
 ## <a name="response-body"></a>Text odpovědi
 
-Úspěšná odpověď je pole JSON se jeden výsledek pro každý řetězec vstupního pole. Výsledný objekt zahrnuje následující vlastnosti:
+Úspěšná odpověď je pole JSON s jedním výsledkem pro každý řetězec ve vstupním poli. Objekt výsledku obsahuje následující vlastnosti:
 
-  * `normalizedSource`: Řetězec poskytující normalizovaná forma jako zdroj. Například pokud je požadavek "JOHN", normalizovaná forma bude "john". Obsah tohoto pole se stane vstupem do [vyhledávání příkladů](./v3-0-dictionary-examples.md).
+  * `normalizedSource`: Řetězec, který poskytuje normalizovanou formu zdrojového termínu. Například pokud je žádost "Jan", normalizovaná forma bude "Jan". Obsah tohoto pole se zobrazí jako vstup do [příkladů vyhledávání](./v3-0-dictionary-examples.md).
     
-  * `displaySource`: Řetězec poskytující zdrojový výraz ve formě nejlépe vhodné pro zobrazení koncových uživatelů. Například pokud je vstup "JOHN", bude odrážet formulář pro zobrazení obvykle správnost názvu: "John". 
+  * `displaySource`: Řetězec poskytující zdrojový termín ve formuláři nejvhodnější pro zobrazení koncového uživatele. Například pokud je vstup "Jan", formulář pro zobrazení bude odrážet obvyklý pravopis názvu: "Jan". 
 
-  * `translations`: Seznam překlady období zdroje. Každý prvek seznamu je objekt s následujícími vlastnostmi:
+  * `translations`: Seznam překladů pro zdrojový termín. Každý prvek seznamu je objekt s následujícími vlastnostmi:
 
-    * `normalizedTarget`: Řetězec poskytující normalizovaná forma tento termín v cílovém jazyce. Tato hodnota má být použita jako vstup pro [vyhledávání příkladů](./v3-0-dictionary-examples.md).
+    * `normalizedTarget`: Řetězec, který poskytuje normalizovanou formu tohoto termínu v cílovém jazyce. Tato hodnota by měla být použita jako vstup do [příkladů vyhledávání](./v3-0-dictionary-examples.md).
 
-    * `displayTarget`: Řetězec poskytující termín v cílovém jazyce a ve formě nejlépe vhodné pro zobrazení koncových uživatelů. Obecně platí, to bude pouze se liší od `normalizedTarget` z hlediska malá a velká písmena. Například vlastní jméno jako "Juan" bude mít `normalizedTarget = "juan"` a `displayTarget = "Juan"`.
+    * `displayTarget`: Řetězec, který dává termín v cílovém jazyce a ve formuláři, který nejlépe vyhovuje zobrazení pro koncové uživatele. Obecně platí, že `normalizedTarget` se bude lišit pouze z pohledu na velká a malá písmena. Například správné podstatné jméno, například "Juan", bude mít `normalizedTarget = "juan"` a `displayTarget = "Juan"`.
 
-    * `posTag`: Řetězec, který tento termín přidružení značku částí řeči.
+    * `posTag`: Řetězec, který se přidruží k tomuto termínu se značkou, která je součástí mluveného slova.
 
         | Název značky | Popis  |
         |----------|--------------|
-        | ADJ      | Přídavných jmen   |
-        | ADV      | Příslovcí      |
+        | ADJ      | Přídavná jména   |
+        | ADV      | Příslovné      |
         | CONJ     | Spojky |
         | DET      | Determiners  |
-        | MODÁLNÍ OKNO    | Příkazy        |
+        | PŘEVODU    | Příkazy        |
         | PODSTATNÉ JMÉNO     | Podstatná jména        |
-        | PREP     | Předložky |
-        | PRON     | Zájmena     |
-        | VERB     | Příkazy        |
-        | OSTATNÍ    | Ostatní        |
+        | PROSTŘEDÍ     | Předložkami |
+        | CHYB     | Podstatná jména     |
+        | OPERACE     | Příkazy        |
+        | JINÁ    | Ostatní        |
 
-        Jako poznámka implementaci tyto značky byly určeny část umožňuje označování straně anglické a následné provádění nejčastěji se vyskytujících značky pro každý pár zdroje/cíle. Proto pokud se lidé často přeložit španělské slovo do různých částí řeči značky v angličtině, značky uvíznout je nesprávné (s ohledem na španělské slovo).
+        Jako poznámku k implementaci byly tyto značky určeny funkcí označení částí v jazyce Speech a následně jsou pro každou dvojici zdrojového/cíle předány nejčastěji se značkami. Takže pokud lidé často převádějí španělské slovo na jinou značku v jazyce Speech v angličtině, může dojít k chybě značek (s ohledem na španělské slovo).
 
-    * `confidence`: Hodnota mezi 0,0 a 1,0, který představuje "důvěry" (nebo možná více přesně, "pravděpodobnost v trénovací data") tohoto páru překladu. Součet skóre spolehlivosti pro jedno slovo zdroje může nebo nemusí součet 1.0. 
+    * `confidence`: Hodnota mezi 0,0 a 1,0, která představuje "jistotu" (nebo možná přesněji, "pravděpodobnost v školicích datech") daného páru překladu. Součet hodnocení spolehlivosti pro jedno zdrojové slovo může nebo nemusí být v součtu 1,0. 
 
-    * `prefixWord`: Řetězec poskytující slovo zobrazí jako předponu překladu. V současné době je to gendered determiner podstatná jména v jazycích, které mají gendered determiners. Předpona španělské slovo "mosca" je například "la", protože "mosca" je Ženský podstatné jméno ve španělštině. Toto je pouze závislé na překlad a ne na zdroji. Pokud zde není žádná předpona, bude mít prázdný řetězec.
+    * `prefixWord`: Řetězec, který aplikaci zobrazí jako předponu překladu. V současné době se jedná o nejpodstatnější rozhodnutí v jazycích, které mají determiners v rovnosti. Například předpona španělského slova "Mosca" je "La", protože "Mosca" je Feminine podstatnou příponou v španělštině. Tato je závislá pouze na překladu, nikoli na zdroji. Pokud není žádná předpona, bude to prázdný řetězec.
     
-    * `backTranslations`: Seznam "zpět"překlady cíle. Například zdroj slova, která cíle jsou dobře převeditelné na. V seznamu je zaručeno, že obsahují slovo zdroj, který byl vyžádán (například pokud zdroj aplikace word se hledá "plout", pak je zaručeno, že "plout" budou `backTranslations` seznamu). Však to není zaručeno, že na první pozici a často nebude. Každý prvek `backTranslations` seznamu je objekt popsal následující vlastnosti:
+    * `backTranslations`: Seznam back-překlady cíle. Například zdrojová slova, na která může cíl překládat. V seznamu je zaručeno, že obsahuje zdrojové slovo, které bylo vyžádáno (například pokud je zdrojové slovo "přílet", je zaručeno, že bude v `backTranslations` seznamu "přílet". Není však zaručena, že by měla být na první pozici a často nebude. Každý prvek `backTranslations` seznamu je objekt popsaný následujícími vlastnostmi:
 
-        * `normalizedText`: Řetězec poskytující normalizovaná forma zdroj termín, který je back překlad cíle. Tato hodnota má být použita jako vstup pro [vyhledávání příkladů](./v3-0-dictionary-examples.md).        
+        * `normalizedText`: Řetězec, který poskytuje normalizovanou formu zdrojového termínu, který je zpětný překlad cíle. Tato hodnota by měla být použita jako vstup do [příkladů vyhledávání](./v3-0-dictionary-examples.md).        
 
-        * `displayText`: Řetězec poskytující zdroje termín, který je back překlad cíle ve formě nejlepší vhodné pro zobrazení koncových uživatelů.
+        * `displayText`: Řetězec, který představuje zdrojový termín, který je zpětný překlad cíle ve formuláři, který nejlépe vyhovuje zobrazení pro koncové uživatele.
 
-        * `numExamples`: Celé číslo představující počet příklady, které jsou k dispozici pro tento překlad pár. Skutečné příklady musí být načten pomocí samostatné volání [vyhledávání příkladů](./v3-0-dictionary-examples.md). Číslo je většinou určená pro usnadnění zobrazení v uživatelské prostředí Uživatelské rozhraní může například přidání hypertextového odkazu do back překlad, pokud řadu příkladů je větší než nula a zobrazení zpětného překladu jako prostý text, pokud nejsou žádné příklady. Všimněte si, že je skutečný počet příklady vrácený voláním [vyhledávání příkladů](./v3-0-dictionary-examples.md) může být kratší než `numExamples`, protože další filtrování se dá v reálném čase, chcete-li odebrat "špatné" příklady.
+        * `numExamples`: Celé číslo představující počet příkladů, které jsou k dispozici pro tento dvojici překladu. Skutečné příklady musí být načteny pomocí samostatného volání [příkladů vyhledávání](./v3-0-dictionary-examples.md). Toto číslo je většinou určeno k usnadnění zobrazení v uživatelském rozhraní. Uživatelské rozhraní může například přidat hypertextový odkaz na zpětný překlad, pokud je počet příkladů větší než nula, a pokud chcete zobrazit zpětný překlad jako prostý text, pokud nejsou k dispozici žádné příklady. Počítejte s tím, že skutečný počet příkladů vrácených voláním [příkladů vyhledávání](./v3-0-dictionary-examples.md) může být menší než `numExamples`, protože další filtrování může být provedeno za běhu pro odebrání "špatných" příkladů.
         
-        * `frequencyCount`: Celé číslo představující frekvence tento překlad pár v datech. Hlavním účelem toto pole je poskytnout způsob řazení překlady zpět tak, aby byly první nejčastěji se vyskytujících podmínky uživatelské rozhraní.
+        * `frequencyCount`: Celé číslo představující frekvenci tohoto páru překladu v datech. Hlavním účelem tohoto pole je poskytnout uživatelské rozhraní se prostředkem pro řazení zpětných překladů, takže nejčastěji se jedná o nejčastější výrazy.
 
     > [!NOTE]
-    > Pokud se výraz právě vyhledaných neexistuje ve slovníku, odpověď je 200 (OK) ale `translations` seznam je prázdný seznam.
+    > Pokud hledaný termín neexistuje ve slovníku, odpověď je 200 (ok), ale `translations` seznam je prázdný seznam.
 
 ## <a name="examples"></a>Příklady
 
-Tento příklad ukazuje, jak vyhledat alternativní překlady ve španělštině anglické termín `fly` .
+Tento příklad ukazuje, jak vyhledat alternativní překlady ve španělštině anglického období `fly` .
 
-# <a name="curltabcurl"></a>[curl](#tab/curl)
+# <a name="curltabcurl"></a>[Curl](#tab/curl)
 
 ```
 curl -X POST "https://api.cognitive.microsofttranslator.com/dictionary/lookup?api-version=3.0&from=en&to=es" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'fly'}]"
@@ -148,7 +148,7 @@ curl -X POST "https://api.cognitive.microsofttranslator.com/dictionary/lookup?ap
 
 ---
 
-Text odpovědi (zkrácený pro přehlednost) je:
+Tělo odpovědi (zkrácené pro přehlednost) je:
 
 ```
 [
@@ -189,9 +189,9 @@ Text odpovědi (zkrácený pro přehlednost) je:
 ]
 ```
 
-Tento příklad ukazuje, co se stane, když se hledá výraz neexistuje pro dvojici platný slovník.
+Tento příklad ukazuje, co se stane, když hledaný termín neexistuje pro platnou dvojici slovníku.
 
-# <a name="curltabcurl"></a>[curl](#tab/curl)
+# <a name="curltabcurl"></a>[Curl](#tab/curl)
 
 ```
 curl -X POST "https://api.cognitive.microsofttranslator.com/dictionary/lookup?api-version=3.0&from=en&to=es" -H "X-ClientTraceId: 875030C7-5380-40B8-8A03-63DACCF69C11" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'fly123456'}]"
@@ -199,7 +199,7 @@ curl -X POST "https://api.cognitive.microsofttranslator.com/dictionary/lookup?ap
 
 ---
 
-Vzhledem k tomu, že výraz nebyl nalezen ve slovníku, tělo odpovědi obsahuje prázdnou `translations` seznamu.
+Vzhledem k tomu, že výraz nebyl nalezen ve slovníku, tělo odpovědi obsahuje prázdný `translations` seznam.
 
 ```
 [

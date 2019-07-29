@@ -1,7 +1,7 @@
 ---
-title: Collaborative Translation Framework (CTF) generování sestav – Translator Text API
-titlesuffix: Azure Cognitive Services
-description: Jak použít vytváření sestav Collaborative Translation Framework (CTF).
+title: Vytváření sestav architektury CTF (spolupráce s překlady) – Translator Text API
+titleSuffix: Azure Cognitive Services
+description: Jak používat vytváření sestav architektury CTF (spolupráce s překlady).
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,46 +10,46 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: swmachan
-ms.openlocfilehash: 79a645b0b41f200c384c165f244efa679be65171
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 6a197095d97e67f7548e60375148cff57e47b797
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67443447"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68595934"
 ---
 # <a name="how-to-use-collaborative-translation-framework-ctf-reporting"></a>Jak použít vytváření sestav CTF (Collaborative Translation Framework)
 
 > [!NOTE]
-> Tato metoda je zastaralá. Není k dispozici v V3.0 Translator Text API.
+> Tato metoda je zastaralá. Není k dispozici v v 3.0 Translator Text API.
 > 
-> Od 1. února 2018 se přestala nabízet spolupráci překlady Framework (CTF), dříve k dispozici pro V2.0 Translator Text API. Funkce AddTranslation a AddTranslationArray umožňují uživatelům povolit opravy prostřednictvím spolupráce Translation Framework. Po 31. ledna 2018 tyto dvě funkce nepřijímá nové příspěvky věty a uživatelé zobrazí chybová zpráva. Tyto funkce bylo vyřazeno a nebudou nahrazeny.
+> Rozhraní CTF (Týmová překlady), dříve dostupné v verzi 2.0 Translator Text API, bylo Zastaralé od 1. února 2018. Funkce AddTranslation a AddTranslationArray umožňují uživatelům povolit opravy prostřednictvím architektury pro překlady pro spolupráci. Po 31. ledna 2018 tyto dvě funkce nepřijaly nové zprávy o větě a uživatelé obdrží chybovou zprávu. Tyto funkce byly vyřazeny a nebudou nahrazeny.
 
-API pro generování sestav Collaborative Translation Framework (CTF) vrátí statistiku a skutečný obsah v úložišti CTF. Toto rozhraní API se liší od metody GetTranslations() protože ji:
-* Vrátí přeloženého obsahu a jeho celkového počtu pouze z vašeho účtu (appId nebo účet Azure Marketplace).
-* Vrátí přeloženého obsahu a jeho celkového počtu bez nutnosti shodu na konec věty zdroje.
-* Nevrátí automatizovaný překlad (strojový překlad).
+Rozhraní API pro vytváření sestav (CTF) pro vytváření sestav vrátí statistické údaje a skutečný obsah v úložišti CTF. Toto rozhraní API se liší od metody gettranslations (), protože:
+* Vrátí přeložený obsah a celkový počet z vašeho účtu (appId nebo Azure Marketplace účet).
+* Vrátí přeložený obsah a celkový počet bez nutnosti shody zdrojové věty.
+* Nevrátí automatický překlad (strojový překlad).
 
 ## <a name="endpoint"></a>Koncový bod
-Koncový bod rozhraní API CTF generování sestav https://api.microsofttranslator.com/v2/beta/ctfreporting.svc
+Koncový bod rozhraní API pro vytváření sestav CTF je https://api.microsofttranslator.com/v2/beta/ctfreporting.svc
 
 
 ## <a name="methods"></a>Metody
-| Název |    Popis|
+| Name |    Popis|
 |:---|:---|
-| GetUserTranslationCounts Method | Získáte počet překlady, které jsou vytvořené tímto uživatelem. |
-| GetUserTranslations Method | Načte překlady, které jsou vytvořené tímto uživatelem. |
+| GetUserTranslationCounts Method | Získejte počty překladů, které jsou vytvořené uživatelem. |
+| GetUserTranslations Method | Načte překlady, které jsou vytvořeny uživatelem. |
 
 Tyto metody umožňují:
-* Načtení všech uživatelů překlady a opravy pod svým ID účtu ke stažení.
-* Získáte seznam častí přispěvatelé. Ujistěte se, že je v AddTranslation() zadali správné uživatelské jméno.
-* Vytváření uživatelského rozhraní (UI), který umožňuje vašim uživatelům důvěryhodné zobrazíte všechny dostupné kandidáty, v případě potřeby omezit na části webu, na základě předpony identifikátoru URI.
+* Načte úplnou sadu uživatelských překladů a oprav v rámci ID účtu ke stažení.
+* Získejte seznam častých přispěvatelů. Ujistěte se, že v AddTranslation () je zadáno správné uživatelské jméno.
+* Sestavte uživatelské rozhraní (UI), které umožňuje důvěryhodným uživatelům zobrazit všechny dostupné kandidáty, pokud je to nutné omezit na část vaší lokality na základě předpony identifikátoru URI.
 
 > [!NOTE]
-> Obě metody jsou relativně pomalé a drahé. Doporučujeme používat opatrně.
+> Obě metody jsou poměrně pomalé a nákladné. Doporučuje se je používat zřídka.
 
-## <a name="getusertranslationcounts-method"></a>GetUserTranslationCounts method
+## <a name="getusertranslationcounts-method"></a>Metoda GetUserTranslationCounts
 
-Tato metoda načte počet překlady, které jsou vytvořené tímto uživatelem. Poskytuje seznam seskupených podle uriPrefix, od uživatele, minRating a parametry požadavku maxRating počty překladu.
+Tato metoda získá počet překladů, které jsou vytvořeny uživatelem. Poskytuje seznam počtů překladů seskupených podle parametrů uriPrefix, from, to, User, minRating a maxRating.
 
 **Syntaxe**
 
@@ -74,53 +74,53 @@ Tato metoda načte počet překlady, které jsou vytvořené tímto uživatelem.
 
 | Parametr | Popis |
 |:---|:---|
-| appId | **Vyžaduje** Pokud hlavička autorizace se používá, ponechejte tuto položku appid pole prázdné jinak zadat řetězec obsahující "Nosiče" + "" + přístupový token.|
-| uriPrefix | **Volitelné** řetězec obsahující předponu identifikátoru URI překladu.|
-| from | **Volitelné** řetězec představující kód jazyka textu překlad. |
-| na | **Volitelné** řetězec představující kód jazyka můžete přeložit text do.|
-| minRating| **Volitelné** celočíselnou hodnotu představující hodnocení minimální kvalitu přeloženého textu. Platná hodnota je od -10 do 10. Výchozí hodnota je 1.|
-| maxRating| **Volitelné** celočíselnou hodnotu představující hodnocení maximální kvalitu přeloženého textu. Platná hodnota je od -10 do 10. Výchozí hodnota je 1.|
-| uživatel | **Volitelné** řetězec, který se používá k filtrování výsledků podle odesílatel požadavku dostane informaci odeslání. |
-| category| **Volitelné** řetězec obsahující kategorie nebo domény překladu. Tento parametr podporuje pouze výchozí možnost Obecné.|
-| minDateUtc| **Volitelné** datum, od kdy budete chtít načíst překlady. Datum musí být ve formátu UTC. |
-| maxDateUtc| **Volitelné** datum, do kdy budete chtít načíst překlady. Datum musí být ve formátu UTC. |
-| Přeskočit| **Volitelné** počet výsledků, které chcete nechat přeskočit na stránce. Například pokud chcete přeskočit prvních 20 řádků výsledků a zobrazení z 21. záznamu výsledku, zadejte 20 pro tento parametr. Výchozí hodnota tohoto parametru je 0.|
-| Take | **Volitelné** počet výsledků, které chcete načíst. Maximální počet každý požadavek je 100. Výchozí hodnota je 100.|
+| appId | **Vyžaduje** se Pokud se používá autorizační hlavička, nechte pole AppID prázdné jinak zadejte řetězec, který obsahuje řetězec "nosič" + "" a přístupový token.|
+| uriPrefix | **Volitelné** Řetězec obsahující předponu identifikátoru URI překladu.|
+| from | **Volitelné** Řetězec představující kód jazyka textu překladu. |
+| na | **Volitelné** Řetězec představující kód jazyka, do kterého se má text překládat.|
+| minRating| **Volitelné** Celočíselná hodnota představující minimální hodnocení kvality pro přeložený text. Platná hodnota je mezi-10 a 10. Výchozí hodnota je 1.|
+| maxRating| **Volitelné** Celočíselná hodnota představující maximální hodnocení kvality pro přeložený text. Platná hodnota je mezi-10 a 10. Výchozí hodnota je 1.|
+| uživatel | **Volitelné** Řetězec, který se používá k filtrování výsledku na základě původce odeslání. |
+| category| **Volitelné** Řetězec obsahující kategorii nebo doménu překladu. Tento parametr podporuje pouze výchozí možnost Obecné.|
+| minDateUtc| **Volitelné** Datum, od kterého chcete načíst překlady. Datum musí být ve formátu UTC. |
+| maxDateUtc| **Volitelné** Datum, do kterého chcete načíst překlady. Datum musí být ve formátu UTC. |
+| přeskočit| **Volitelné** Počet výsledků, které mají být na stránce přeskočeny. Například pokud chcete přeskočit prvních 20 řádků výsledků a zobrazit z 21 záznamu výsledků, zadejte pro tento parametr 20. Výchozí hodnota pro tento parametr je 0.|
+| nezbytná | **Volitelné** Počet výsledků, které chcete načíst. Maximální počet jednotlivých požadavků je 100. Výchozí hodnota je 100.|
 
 > [!NOTE]
-> Parametry požadavku skip a take povolit stránkování pro velký počet výsledků.
+> Parametry vynechání a přijetí žádosti umožňují stránkování pro velký počet výsledných záznamů.
 
 **Návratová hodnota**
 
-Sada výsledků obsahuje pole **UserTranslationCount**. Každý UserTranslationCount obsahuje následující prvky:
+Sada výsledků obsahuje pole **UserTranslationCount**. Každý UserTranslationCount má následující prvky:
 
 | Pole | Popis |
 |:---|:---|
-| Count| Počet výsledků, který je načten|
+| Count| Počet načtených výsledků|
 | Z | Zdrojový jazyk|
-| Hodnocení| Hodnocení, který je používán jako odesílatel ve volání metody AddTranslation()|
+| Hodnocení| Hodnocení, které je použito odesílatelem ve volání metody AddTranslation ()|
 | Do| Cílový jazyk|
-| Uri| Identifikátor URI použitý ve volání metody AddTranslation()|
+| Uri| Identifikátor URI, který se použije ve volání metody AddTranslation ()|
 | Uživatel| Uživatelské jméno|
 
 **Výjimky**
 
 | Výjimka | Message | Podmínky |
 |:---|:---|:---|
-| ArgumentOutOfRangeException | Parametr '**maxDateUtc**'musí být větší než nebo rovna hodnotě'**minDateUtc**".| Hodnota parametru **maxDateUtc** je menší než hodnota parametru **minDateUtc**.|
-| TranslateApiException | IP adresa je přes kvótu.| <ul><li>Je dosažen limit pro počet požadavků za minutu.</li><li>Velikost požadavku zůstane omezené na znaky 10000.</li><li>Každou hodinu a denní kvótu omezit počet znaků, které Microsoft Translator API bude přijímat.</li></ul>|
-| TranslateApiException | AppId je přes kvótu.| ID aplikace překročila kvótu hodinových nebo denních.|
+| ArgumentOutOfRangeException | Parametr**maxDateUtc**musí být větší nebo roven hodnotě "**minDateUtc**".| Hodnota parametru **maxDateUtc** je menší než hodnota parametru **minDateUtc**.|
+| TranslateApiException | IP adresa překračuje kvótu.| <ul><li>Dosáhlo se limitu počtu požadavků za minutu.</li><li>Velikost žádosti zůstane omezená na 10000 znaků.</li><li>Hodinová a denní kvóta omezuje počet znaků, které bude rozhraní API služby Microsoft Translator akceptovat.</li></ul>|
+| TranslateApiException | AppId je nad kvótou.| ID aplikace překročilo hodinovou nebo denní kvótu.|
 
 > [!NOTE]
-> Kvóta upraví zajistit rovnost mezi všemi uživateli služby.
+> Kvóta se upraví, aby se zajistilo spravedlivé mezi všemi uživateli služby.
 
-**Příklady kódu zobrazení GitHib**
+**Zobrazit příklady kódu na GitHib**
 * [C#](https://github.com/MicrosoftTranslator/Documentation-Code-TextAPI/blob/master/ctf/ctf-getusertranslationcounts-example-csharp.md)
 * [PHP](https://github.com/MicrosoftTranslator/Documentation-Code-TextAPI/blob/master/ctf/ctf-getusertranslationcounts-example-php.md)
 
-## <a name="getusertranslations-method"></a>GetUserTranslations – metoda
+## <a name="getusertranslations-method"></a>Metoda GetUserTranslations
 
-Tato metoda načte překlady, které jsou vytvořené tímto uživatelem. Nabízí že překlady seskupené podle uriPrefix, od, uživatele a minRating a maxRating parametry požadavku.
+Tato metoda načte překlady, které jsou vytvořeny uživatelem. Poskytuje překlady seskupené podle parametrů uriPrefix, from, to, User a minRating a maxRating.
 
 **Syntaxe**
 
@@ -145,48 +145,48 @@ Tato metoda načte překlady, které jsou vytvořené tímto uživatelem. Nabíz
 
 | Parametr | Popis |
 |:---|:---|
-| appId | **Vyžaduje** Pokud hlavička autorizace se používá, ponechejte tuto položku appid pole prázdné jinak zadat řetězec obsahující "Nosiče" + "" + přístupový token.|
-| uriPrefix| **Volitelné** řetězec obsahující předponu identifikátoru URI překladu.|
-| from| **Volitelné** řetězec představující kód jazyka textu překlad.|
-| na| **Volitelné** řetězec představující kód jazyka můžete přeložit text do.|
-| minRating| **Volitelné** celočíselnou hodnotu představující hodnocení minimální kvalitu přeloženého textu. Platná hodnota je od -10 do 10. Výchozí hodnota je 1.|
-| maxRating| **Volitelné** celočíselnou hodnotu představující hodnocení maximální kvalitu přeloženého textu. Platná hodnota je od -10 do 10. Výchozí hodnota je 1.|
-| uživatel| **Volitelné. Řetězec, který se používá k filtrování výsledků podle odesílatel požadavku dostane informaci odesílání**|
-| category| **Volitelné** řetězec obsahující kategorie nebo domény překladu. Tento parametr podporuje pouze výchozí možnost Obecné.|
-| minDateUtc| **Volitelné** datum, od kdy budete chtít načíst překlady. Datum musí být ve formátu UTC.|
-| maxDateUtc| **Volitelné** datum, do kdy budete chtít načíst překlady. Datum musí být ve formátu UTC.|
-| Přeskočit| **Volitelné** počet výsledků, které chcete nechat přeskočit na stránce. Například pokud chcete přeskočit prvních 20 řádků výsledků a zobrazení z 21. záznamu výsledku, zadejte 20 pro tento parametr. Výchozí hodnota tohoto parametru je 0.|
-| Take| **Volitelné** počet výsledků, které chcete načíst. Maximální počet každý požadavek je 100. Výchozí hodnota je 50.|
+| appId | **Vyžaduje** se Pokud se používá autorizační hlavička, nechte pole AppID prázdné jinak zadejte řetězec, který obsahuje řetězec "nosič" + "" a přístupový token.|
+| uriPrefix| **Volitelné** Řetězec obsahující předponu identifikátoru URI překladu.|
+| from| **Volitelné** Řetězec představující kód jazyka textu překladu.|
+| na| **Volitelné** Řetězec představující kód jazyka, do kterého se má text překládat.|
+| minRating| **Volitelné** Celočíselná hodnota představující minimální hodnocení kvality pro přeložený text. Platná hodnota je mezi-10 a 10. Výchozí hodnota je 1.|
+| maxRating| **Volitelné** Celočíselná hodnota představující maximální hodnocení kvality pro přeložený text. Platná hodnota je mezi-10 a 10. Výchozí hodnota je 1.|
+| uživatel| **Volitelné. Řetězec, který se používá k filtrování výsledku na základě původce odeslání**|
+| category| **Volitelné** Řetězec obsahující kategorii nebo doménu překladu. Tento parametr podporuje pouze výchozí možnost Obecné.|
+| minDateUtc| **Volitelné** Datum, od kterého chcete načíst překlady. Datum musí být ve formátu UTC.|
+| maxDateUtc| **Volitelné** Datum, do kterého chcete načíst překlady. Datum musí být ve formátu UTC.|
+| přeskočit| **Volitelné** Počet výsledků, které mají být na stránce přeskočeny. Například pokud chcete přeskočit prvních 20 řádků výsledků a zobrazit z 21 záznamu výsledků, zadejte pro tento parametr 20. Výchozí hodnota pro tento parametr je 0.|
+| nezbytná| **Volitelné** Počet výsledků, které chcete načíst. Maximální počet jednotlivých požadavků je 100. Výchozí hodnota je 50.|
 
 > [!NOTE]
-> Parametry požadavku skip a take povolit stránkování pro velký počet výsledků.
+> Parametry vynechání a přijetí žádosti umožňují stránkování pro velký počet výsledných záznamů.
 
 **Návratová hodnota**
 
-Sada výsledků obsahuje pole **UserTranslation**. Každý UserTranslation obsahuje následující prvky:
+Sada výsledků obsahuje pole **UserTranslation**. Každý UserTranslation má následující prvky:
 
 | Pole | Popis |
 |:---|:---|
-| CreatedDateUtc| Datum vytvoření položky na základě AddTranslation()|
+| CreatedDateUtc| Datum vytvoření položky pomocí AddTranslation ()|
 | Z| Zdrojový jazyk|
-| OriginalText| Zdrojový jazyk textu, který se používá při odesílání žádosti|
-|Hodnocení |Hodnocení, který je používán jako odesílatel ve volání metody AddTranslation()|
+| OriginalText| Text zdrojového jazyka, který se používá při odesílání žádosti|
+|Hodnocení |Hodnocení, které je použito odesílatelem ve volání metody AddTranslation ()|
 |Do|    Cílový jazyk|
-|TranslatedText|    Překlad ve volání metody AddTranslation() odeslané podobě|
-|Uri|   Identifikátor URI použitý ve volání metody AddTranslation()|
+|TranslatedText|    Překlad jako odeslaný ve volání metody AddTranslation ()|
+|Uri|   Identifikátor URI, který se použije ve volání metody AddTranslation ()|
 |Uživatel   |Uživatelské jméno|
 
 **Výjimky**
 
 | Výjimka | Message | Podmínky |
 |:---|:---|:---|
-| ArgumentOutOfRangeException | Parametr '**maxDateUtc**'musí být větší než nebo rovna hodnotě'**minDateUtc**".| Hodnota parametru **maxDateUtc** je menší než hodnota parametru **minDateUtc**.|
-| TranslateApiException | IP adresa je přes kvótu.| <ul><li>Je dosažen limit pro počet požadavků za minutu.</li><li>Velikost požadavku zůstane omezené na znaky 10000.</li><li>Každou hodinu a denní kvótu omezit počet znaků, které Microsoft Translator API bude přijímat.</li></ul>|
-| TranslateApiException | AppId je přes kvótu.| ID aplikace překročila kvótu hodinových nebo denních.|
+| ArgumentOutOfRangeException | Parametr**maxDateUtc**musí být větší nebo roven hodnotě "**minDateUtc**".| Hodnota parametru **maxDateUtc** je menší než hodnota parametru **minDateUtc**.|
+| TranslateApiException | IP adresa překračuje kvótu.| <ul><li>Dosáhlo se limitu počtu požadavků za minutu.</li><li>Velikost žádosti zůstane omezená na 10000 znaků.</li><li>Hodinová a denní kvóta omezuje počet znaků, které bude rozhraní API služby Microsoft Translator akceptovat.</li></ul>|
+| TranslateApiException | AppId je nad kvótou.| ID aplikace překročilo hodinovou nebo denní kvótu.|
 
 > [!NOTE]
-> Kvóta upraví zajistit rovnost mezi všemi uživateli služby.
+> Kvóta se upraví, aby se zajistilo spravedlivé mezi všemi uživateli služby.
 
-**Příklady kódu zobrazení GitHib**
+**Zobrazit příklady kódu na GitHib**
 * [C#](https://github.com/MicrosoftTranslator/Documentation-Code-TextAPI/blob/master/ctf/ctf-getusertranslations-example-csharp.md)
 * [PHP](https://github.com/MicrosoftTranslator/Documentation-Code-TextAPI/blob/master/ctf/ctf-getusertranslations-example-php.md)

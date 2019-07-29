@@ -4,7 +4,7 @@ titleSuffix: Azure
 description: Konfigurace a vytvořit hloubkové učení virtuální počítač pro datové vědy v Azure pro účely analýzy a strojového učení.
 services: machine-learning
 documentationcenter: ''
-author: gopitk
+author: vijetajo
 manager: cgronlun
 ms.custom: seodec18
 ms.assetid: e1467c0f-497b-48f7-96a0-7f806a7bec0b
@@ -12,15 +12,15 @@ ms.service: machine-learning
 ms.subservice: data-science-vm
 ms.workload: data-services
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: quickstart
 ms.date: 03/16/2018
-ms.author: gokuma
-ms.openlocfilehash: 318df03c7c4447d051dfa396098462c0f8bbf423
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: vijetaj
+ms.openlocfilehash: b9d0f9aead6e2cedd3ca0884273bac0106a925a0
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65410436"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68591910"
 ---
 # <a name="provision-a-deep-learning-virtual-machine-on-azure"></a>Zřízení pro hloubkové učení na virtuálním počítači Azure 
 
@@ -39,22 +39,22 @@ Tady jsou kroky pro vytvoření instance aplikace virtuální počítač pro hlo
    <a name="basics"></a>   
    1. **Základy**
       
-      1. **Název**: Název serveru datové vědy, kterou vytváříte.
-      2. **Vyberte typ operačního systému pro počítače pro obsáhlý Learning**: Zvolte Windows nebo Linuxem (pro Windows 2016 a základní DSVM Ubuntu Linux)
-      2. **Uživatelské jméno**: Id přihlášení účtu správce.
+      1. **Název**: Název serveru pro datové vědy, který vytváříte.
+      2. **Vyberte typ operačního systému pro virtuální počítač s hloubkovým učením**: Výběr systému Windows nebo Linux (pro Windows 2016 a Ubuntu Linux základní DSVM)
+      2. **Uživatelské jméno**: Přihlašovací ID účtu správce
       3. **Heslo**: Heslo účtu správce.
       4. **Předplatné**: Pokud máte více předplatných, vyberte ten, ve které je vytvořené a fakturuje počítač.
-      5. **Skupina prostředků**: Vytvořit nové nebo použijte **prázdný** existující skupinu prostředků Azure v rámci vašeho předplatného.
-      6. **Umístění**: Vyberte datové centrum, které je nejvhodnější. Obvykle se většina dat nebo je nejblíže vašemu fyzickému umístění pro nejrychlejší přístup k síti datového centra. 
+      5. **Skupina prostředků**: V předplatném můžete vytvořit novou nebo použít **prázdnou** skupinu prostředků Azure.
+      6. **Umístění**: Vyberte datové centrum, které je vhodné. Obvykle se většina dat nebo je nejblíže vašemu fyzickému umístění pro nejrychlejší přístup k síti datového centra. 
       
       > [!NOTE]
       > DLVM podporuje všechny síťového adaptéru a ND řady instancí virtuálního počítače s GPU. Při zřizování DLVM, musíte zvolit jedno z umístění v Azure, který má grafické procesory. Zkontrolujte [produkty Azure podle oblasti stránky](https://azure.microsoft.com/regions/services/) stránce dostupných umístění a zkuste najít **NC-Series**, **řada NCv2**, **řady NCv3-Series** , nebo **i řada ND-Series** pod **Compute**. 
 
-   1. **Nastavení**: Vyberte jednu z řady síťový adaptér (NC, NCv2, NCv3) nebo řady ND GPU velikosti virtuálních počítačů, která splňuje požadavek na funkční a náklady na omezení. Vytvoření účtu úložiště pro virtuální počítač.  ![dlvm-settings](./media/dlvm-provision-step-2.PNG)
+   1. **Nastavení**: Vyberte jednu z velikostí virtuálních počítačů řady NC (NC, NCv2, NCv3) nebo ND Series GPU, které splňují vaše požadavky na funkční a nákladové omezení. Vytvoření účtu úložiště pro virtuální počítač.  ![dlvm-settings](./media/dlvm-provision-step-2.PNG)
    
    1. **Souhrn**: Ověřte správnost všech informací, které jste zadali.
 
-   1. **Koupit**: Klikněte na tlačítko **koupit** zahájíte zřizování. Zobrazí se odkaz na podmínky transakce. Virtuální počítač nemá žádné další poplatky za výpočetní prostředky pro velikost serveru, kterou jste zvolili v **velikost** kroku. 
+   1. **Koupit**: Kliknutím na **koupit** zahájíte zřizování. Zobrazí se odkaz na podmínky transakce. Virtuální počítač nemá žádné další poplatky za výpočetní prostředky pro velikost serveru, kterou jste zvolili v **velikost** kroku. 
 
 > [!NOTE]
 > Zřizování by měla trvat asi 10-20 minut. Stav zřizování se zobrazí na portálu Azure portal.
@@ -68,7 +68,7 @@ Po vytvoření virtuálního počítače můžete do něj pomocí přihlašovac�
 
 ### <a name="linux-edition"></a>Edice pro Linux
 
-Po vytvoření virtuálního počítače se můžete přihlásit se pomocí protokolu SSH. Pomocí přihlašovacích údajů účtu, které jste vytvořili v [ **Základy** ](#basics) část krok 3 pro rozhraní text prostředí. Další informace o připojení SSH k virtuálním počítačům Azure najdete v tématu [instalace a konfigurace vzdálené plochy pro připojení k virtuálnímu počítači s Linuxem v Azure](/azure/virtual-machines/linux/use-remote-desktop). V klientovi Windows, si můžete stáhnout nástroj klienta SSH jako [Putty](https://www.putty.org). Pokud dáváte přednost grafické desktop (X systému Windows), můžete použít X11 předávání v Putty nebo nainstalovat klienta X2Go. 
+Po vytvoření virtuálního počítače se můžete přihlásit se pomocí protokolu SSH. Pro rozhraní textového prostředí použijte přihlašovací údaje účtu, které jste vytvořili v části [**základy**](#basics) v kroku 3. Další informace o připojení SSH k virtuálním počítačům Azure najdete v tématu [instalace a konfigurace vzdálené plochy pro připojení k virtuálnímu počítači se systémem Linux v Azure](../../virtual-machines/linux/use-remote-desktop.md). Na klienta Windows si můžete stáhnout klientský nástroj SSH [, jako je](https://www.putty.org)například výstup. Pokud dáváte přednost grafické desktop (X systému Windows), můžete použít X11 předávání v Putty nebo nainstalovat klienta X2Go. 
 
 > [!NOTE]
 > Klient X2Go lepších výsledků než X11 předávání v našich testech. Doporučujeme používat X2Go klienta klasické pracovní plochy grafické rozhraní.
@@ -81,12 +81,12 @@ Linux DLVM už zřízeny X2Go serveru a připravené tak, aby přijímal připoj
 1. Stažení a instalace klienta X2Go pro vaše klientská platforma z [X2Go](https://wiki.x2go.org/doku.php/doc:installation:x2goclient).    
 2. Spusťte klienta X2Go a vyberte **novou relaci**. Otevře se okno Konfigurace s více karet. Zadejte následující parametry konfigurace:
    * **Karta relace**:
-     * **Host**: Název hostitele nebo IP adresu virtuálního počítače s Linuxem datové vědy.
-     * **Přihlášení**: Uživatelské jméno na Linuxovém virtuálním počítači.
-     * **SSH Port**: Ponechte výchozí hodnota 22.
-     * **Typ relace**: Změňte hodnotu na **XFCE**. Datové VĚDY pro Linux v současné době podporuje pouze Desktop xfce.
-   * **Karta média**: Můžete vypnout podpory zvuku a klient tisku, pokud není nutné k jejich použití.
-   * **Sdílené složky**: Pokud chcete adresářů z klientských počítačů připojené na Linuxovém virtuálním počítači, přidejte adresáře klientské počítače, které chcete sdílet s virtuálním Počítačem na této kartě.
+     * **Hostitel**: Název hostitele nebo IP adresa Data Science VM pro Linux
+     * **Přihlašovací jméno**: Uživatelské jméno na virtuálním počítači se systémem Linux.
+     * **Port SSH**: Ponechte to 22, výchozí hodnota.
+     * **Typ relace**: Změňte hodnotu na **desktop Xfce**. Datové VĚDY pro Linux v současné době podporuje pouze Desktop xfce.
+   * **Karta média**: Pokud je nepotřebujete používat, můžete vypnout zvukovou podporu a tisk klienta.
+   * **Sdílené složky**: Pokud chcete adresáře z klientských počítačů připojených k VIRTUÁLNÍmu počítači se systémem Linux, přidejte do této karty adresáře klientských počítačů, které chcete sdílet s VIRTUÁLNÍm počítačem.
 
 Po přihlášení k virtuálnímu počítači pomocí klienta SSH nebo grafické Desktop xfce prostřednictvím klienta X2Go, jste připraveni začít používat nástroje, které jsou nainstalované a nakonfigurované na virtuálním počítači. Na XFCE uvidíte aplikacích zástupci v nabídce a ikony na ploše pro celou řadu nástrojů.
 

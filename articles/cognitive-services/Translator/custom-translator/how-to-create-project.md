@@ -1,68 +1,68 @@
 ---
 title: Jak vytvořit projekt? – Vlastní Translator
 titleSuffix: Azure Cognitive Services
-description: Postup vytvoření projektu v Translator vlastní?
+description: Jak vytvořit projekt ve vlastním překladateli?
 author: swmachan
-manager: christw
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 6c8b46c35c03b472863bdc71d29552198dbb0d77
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: a62cc6133fe01bf7478166c526e32b3215ceebf1
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67448335"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68595750"
 ---
 # <a name="create-a-project"></a>Vytvoření projektu
 
-Projekt je kontejner pro modely, dokumenty a testy. Každý projekt automaticky obsahuje všechny dokumenty, které jsou odeslány do pracovního prostoru, které mají pár správný jazyk.
+Projekt je kontejner pro modely, dokumenty a testy. Každý projekt automaticky obsahuje všechny dokumenty, které jsou odeslány do daného pracovního prostoru, které mají správnou dvojici jazyků.
 
-Vytvoření projektu je prvním krokem k sestavení modelu.
+Vytvoření projektu je prvním krokem k vytvoření modelu.
 
-## <a name="create-a-project"></a>Vytvoření projektu:
+## <a name="create-a-project"></a>Vytvořit projekt:
 
-1.  V [vlastní Translator](https://portal.customtranslator.azure.ai) portálu, klikněte na tlačítko Vytvořit projekt.
+1.  Na portálu [Custom Translator](https://portal.customtranslator.azure.ai) klikněte na vytvořit projekt.
 
     ![Vytvoření projektu](media/how-to/how-to-create-project.png)
 
-2.  V dialogovém okně zadejte následující podrobnosti o projektu:
+2.  Do dialogového okna zadejte následující podrobnosti o projektu:
 
-    a.  Název projektu (povinné): Pojmenujte svůj projekt jedinečný a smysluplné. Není nutné uvést jazyků v rámci názvu.
+    a.  Název projektu (povinné): Dejte vašemu projektu jedinečný, smysluplný název. V rámci názvu není nutné uvádět jazyky.
 
-    b.  Popis: Krátké shrnutí o projektu. Tento popis nemá vliv na chování vlastní překladač nebo výsledné vlastní systému, ale může pomoci rozlišit mezi různými projekty.
+    b.  Popis: Stručný souhrn o projektu. Tento popis nemá žádný vliv na chování vlastního překladatele ani na výsledný vlastní systém, ale může vám povýšit rozdíl mezi různými projekty.
 
-    c.  Dvojice jazyk (povinné): Vyberte jazyk, ve kterém jste překladu od a do.
+    c.  Dvojice jazyků (povinné): Vyberte jazyk, ze kterého se chystáte překládáte, a.
 
-    d.  Kategorie (povinné): Vyberte kategorii, která je nejvhodnější pro váš projekt. Kategorie popisuje terminologie a stylu dokumenty, které chcete přeložit.
+    d.  Kategorie (povinné): Vyberte kategorii, která je nejvhodnější pro váš projekt. Kategorie popisuje terminologii a styl dokumentů, které chcete přeložit.
 
-    e.  Popis kategorie: Toto pole použijte zájmu lepšího popsání konkrétní pole nebo oboru, ve kterém pracujete. Například pokud kategorii medicíně, může být přidáte určitému dokumentu, takový operaci nebo pediatrics. Popis nemá vliv na chování vlastní překladač nebo výsledné vlastní systému.
+    e.  Popis kategorie: Toto pole použijte k lepšímu popisu konkrétního pole nebo odvětví, ve kterém pracujete. Pokud je vaše kategorie například lékařství, můžete přidat konkrétní dokument, takovou chirurgie nebo Pediatrics. Popis nemá žádný vliv na chování vlastního překladatele ani na výsledný vlastní systém.
 
-    f.  Popisek projektu: [Projektu popisek](workspace-and-project.md#project-labels) rozlišuje mezi projekty pomocí stejného páru jazyka a kategorie. Jako nejlepší postup použijte popisek *pouze* Pokud plánujete sestavování více projektů pro stejného páru jazyka a stejnou category a chtějí mít přístup k tyto projekty s jinou ID kategorie. Nepoužívejte toto pole, pokud vytváříte systémy pro pouze jednu kategorii. Popisek projektu není povinné a neužitečný rozlišovat mezi dvojice jazyků. Stejný popisek můžete použít pro více projektů.
+    f.  Popisek projektu: [Popisek projektu](workspace-and-project.md#project-labels) rozlišuje mezi projekty se stejnou dvojicí a kategorií jazyka. Jako osvědčený postup použijte popisek *pouze* v případě, že plánujete sestavit více projektů pro stejnou jazykovou dvojici a stejnou kategorii a chcete získat přístup k těmto projektům s jiným KódKategorie. Toto pole nepoužívejte, pokud vytváříte systémy pouze pro jednu kategorii. Popisek projektu není vyžadován a není vhodný k rozlišení mezi dvojicemi jazyků. Můžete použít stejný popisek pro více projektů.
 
-    ![Vytvořit dialogové okno projektu](media/how-to/how-to-create-project-dialog.png)
+    ![Dialogové okno vytvořit projekt](media/how-to/how-to-create-project-dialog.png)
 
 3.  Kliknutí na Vytvořit
 
-## <a name="view-project-details"></a>Zobrazit podrobnosti o projektu
+## <a name="view-project-details"></a>Zobrazit podrobnosti projektu
 
-Cílová stránka vlastní Translator ukazuje prvních 10 projektů ve vašem pracovním prostoru. Zobrazí název projektu, dvojici jazyků, kategorie, stav a BLEU skóre.
+Úvodní stránka pro vlastní překladatele zobrazuje prvních 10 projektů v pracovním prostoru. Zobrazuje název projektu, dvojici jazyků, kategorii, stav a BLEU skóre.
 
-Až vyberete projekt, uvidíte na stránce projektu následující:
+Po výběru projektu se na stránce projektu zobrazí následující:
 
-- ID kategorie: ID kategorie se vytváří zřetězením ID pracovního prostoru, popisek projektu a kód kategorie. Chcete-li získat vlastní překlady použijete ID kategorie s Translator Text API.
+- KódKategorie KódKategorie je vytvořeno zřetězením ID pracovního prostoru, popisku projektu a kódu kategorie. K získání vlastních překladů použijete KódKategorie s rozhraním API pro překladatele textu.
 
-- Trénování tlačítka: Pomocí tohoto tlačítka můžete začít [trénujete model pro](how-to-train-model.md).
+- Tlačítko Výuka: Pomocí tohoto tlačítka můžete spustit [výuku modelu](how-to-train-model.md).
 
-- Přidejte tlačítko dokumenty: Pomocí tohoto tlačítka [nahrávat dokumenty](how-to-upload-document.md).
+- Tlačítko Přidat dokumenty: Toto tlačítko slouží k [nahrání dokumentů](how-to-upload-document.md).
 
-- Tlačítko filtr dokumentů: Pomocí tohoto tlačítka na filtr a vyhledejte konkrétní dokumenty.
+- Tlačítko filtrovat dokumenty: Pomocí tohoto tlačítka můžete filtrovat a hledat konkrétní dokumenty.
 
-    ![Zobrazit podrobnosti o projektu](media/how-to/how-to-view-project.png)
+    ![Zobrazit podrobnosti projektu](media/how-to/how-to-view-project.png)
 
 ## <a name="next-steps"></a>Další postup
 
-- Přečtěte si [jak hledat, upravit, odstranit projekt](how-to-search-edit-delete-projects.md).
-- Přečtěte si [jak nahrát dokument](how-to-upload-document.md) sestavovat modely překladu.
+- Naučte se [Hledat, upravovat a odstraňovat projekty](how-to-search-edit-delete-projects.md).
+- Přečtěte si, [Jak nahrát dokument](how-to-upload-document.md) pro sestavení modelů překladu.

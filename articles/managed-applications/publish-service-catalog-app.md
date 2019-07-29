@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.date: 10/04/2018
 ms.author: tomfitz
-ms.openlocfilehash: dc86943924cd0c47c465e9d3bac4ca91b73a3ff5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: bf6ae32a61504dc344e140a0e27c5a17b5422073
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66171558"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68609869"
 ---
 # <a name="create-and-publish-a-managed-application-definition"></a>Vytvoření a publikování definice spravované aplikace
 
@@ -85,20 +85,20 @@ Přidejte do souboru následující kód JSON. Definuje parametry pro vytvořen�
 
 Uložte soubor mainTemplate.json.
 
-## <a name="create-the-user-interface-definition"></a>Vytvoření definice uživatelského rozhraní
+## <a name="defining-your-create-experience-using-createuidefinitionjson"></a>Definování prostředí pro vytváření pomocí CreateUiDefinition. JSON
 
-Azure Portal využívá soubor **createUiDefinition.json** ke generování uživatelského rozhraní pro uživatele, kteří vytvářejí spravovanou aplikaci. Můžete definovat, jak budou uživatelé zadávat vstup pro jednotlivé parametry. Můžete používat možnosti, jako je rozevírací seznam, textové pole, pole pro heslo a další nástroje pro zadávání vstupu. Pokud chcete zjistit, jak vytvořit definiční soubor uživatelského rozhraní pro spravovanou aplikaci, přečtěte si téma [Začínáme s CreateUiDefinition](create-uidefinition-overview.md).
+Jako vydavatel definujete své prostředí pro vytváření pomocí souboru **createUiDefinition. JSON** , který vygeneruje rozhraní pro uživatele, kteří vytvářejí spravované aplikace. Definujete, jak uživatelé zadávají zadání pro každý parametr pomocí [Control Elements] (create-uidefinition-elements.md) včetně rozevíracích polí, textových polí a hesel.
 
-Vytvořte soubor s názvem **createUiDefinition.json**. V názvu se rozlišují velká a malá písmena.
+Vytvoří soubor s názvem **createUiDefinition. JSON** (u tohoto názvu se rozlišují velká a malá písmena).
 
-Přidejte do souboru následující kód JSON.
+Do souboru přidejte následující spouštěcí kód JSON a uložte ho.
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/0.1.2-preview/CreateUIDefinition.MultiVm.json#",
-    "handler": "Microsoft.Compute.MultiVm",
-    "version": "0.1.2-preview",
-    "parameters": {
+   "$schema": "https://schema.management.azure.com/schemas/0.1.2-preview/CreateUIDefinition.MultiVm.json#",
+   "handler": "Microsoft.Azure.CreateUIDef",
+   "version": "0.1.2-preview",
+   "parameters": {
         "basics": [
             {}
         ],
@@ -139,10 +139,9 @@ Přidejte do souboru následující kód JSON.
             "location": "[location()]"
         }
     }
-}
 ```
 
-Uložte soubor createUiDefinition.json.
+Další informace najdete v tématu Začínáme [s CreateUiDefinition](create-uidefinition-overview.md).
 
 ## <a name="package-the-files"></a>Zabalení souborů
 

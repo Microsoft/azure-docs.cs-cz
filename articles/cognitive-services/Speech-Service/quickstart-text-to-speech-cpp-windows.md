@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: yinhew
-ms.openlocfilehash: 6936d8f93221402fca9b250d09a842ce753e0e12
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: fdc5e540dd7e84d47aa139768fbfc2614f38b376
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559308"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68607710"
 ---
 # <a name="quickstart-synthesize-speech-in-c-on-windows-by-using-the-speech-sdk"></a>Rychlý start: Používání sady Speech SDK C++ v systému Windows syntetiz řeči
 
 K dispozici jsou také rychlé starty pro [rozpoznávání řeči](quickstart-cpp-windows.md) a [Překlad řeči](quickstart-translate-speech-cpp-windows.md).
 
-V tomto článku vytvoříte konzolovou aplikaci pro Windows v jazyce C++. [Sada Cognitive Services Speech SDK](speech-sdk.md) slouží k syntetizování řeči z textu v reálném čase a přehrávání řeči v mluvčím počítače. Tato aplikace je vytvořená pomocí [balíčku NuGet sady Speech SDK](https://aka.ms/csspeech/nuget) a sady Microsoft Visual Studio 2017 (libovolné edice).
+V tomto článku vytvoříte konzolovou aplikaci pro Windows v jazyce C++. [Sada Cognitive Services Speech SDK](speech-sdk.md) slouží k syntetizování řeči z textu v reálném čase a přehrávání řeči v mluvčím počítače. Aplikace je sestavená pomocí [balíčku NuGet sady Speech SDK](https://aka.ms/csspeech/nuget) a Microsoft Visual Studio 2017 nebo novější (libovolná edice).
 
 Funkce popsaná v tomto článku je k dispozici v [sadě Speech SDK 1.5.0](https://www.nuget.org/packages/Microsoft.CognitiveServices.Speech/1.5.0).
 

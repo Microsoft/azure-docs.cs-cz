@@ -1,56 +1,56 @@
 ---
-title: Co je školení a modelu? – Vlastní Translator
+title: Co je školení a model? – Vlastní Translator
 titleSuffix: Azure Cognitive Services
-description: Model je systém, který zajišťuje překlad pro konkrétní jazyk pár. Výsledek úspěšné školení je model. Při tréninku modelu, jsou požadovány trénovací datové sady, optimalizace datovou sadu a datovou sadu testování tři vzájemně se vylučující datových sad.
+description: Model je systém, který poskytuje překlad pro konkrétní dvojici jazyků. Výsledkem úspěšného školení je model. Při výuce modelu se pro školicí datovou sadu, optimalizační datovou sadu a testovací datovou sadu vyžadují tři vzájemně se vylučující datové sady.
 author: swmachan
-manager: christw
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 02/21/2019
 ms.author: swmachan
-ms.openlocfilehash: 5d82baf3e7458a42429df9dafc9c8d5e16744716
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: af3f795dc5036b23b82562e7af4582bd90b44f47
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67436120"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68595428"
 ---
-# <a name="what-are-trainings-and-models"></a>Co jsou školení a modely?
+# <a name="what-are-trainings-and-models"></a>Co jsou kurzy a modely?
 
-Model je systém, který zajišťuje překlad pro konkrétní jazyk pár.
-Výsledek úspěšné školení je model. Při tréninku modelu, tři vzájemně se vylučující datové sady jsou požadovány: trénovací datové sady, optimalizace datové sady a testování datové sady. Slovník dat lze také zadat.
+Model je systém, který poskytuje překlad pro konkrétní dvojici jazyků.
+Výsledkem úspěšného školení je model. Při výuce modelu jsou vyžadovány tři vzájemně se vylučující datové sady: školicí datová sada, optimalizační datová sada a testovací datová sada. Je také možné zadat data slovníku.
 
-Pokud jen Cvičná data poskytuje při zařazení do fronty školení, bude automaticky sestavit Translator vlastní, ladění a testování datových sad. Bude vyloučit 5 000 vět z trénovacích dat a 2 500 každý z nich k sestavování ladění a testování sad.
+Pokud jsou při zařazování do fronty školení k dispozici jenom školicí údaje, vlastní Překladatel automaticky sestaví ladění a testování datových sad. Vyloučí z vašich školicích dat 5 000 vět a pro sestavování sad pro vyladění a testování se použijí 2 500.
 
-## <a name="training-dataset-for-custom-translator"></a>Trénovací datové sady pro vlastní Translator
+## <a name="training-dataset-for-custom-translator"></a>Datová sada školení pro vlastní překladatele
 
-Vlastní překladač používají dokumenty, které jsou součástí trénovací sada jako základ pro vytváření modelu. Během provádění školení věty, které jsou k dispozici v těchto dokumentech jsou zarovnána (nebo spárované). Můžete využít svobod v sestavování sady dokumentů školení. Můžete zahrnout dokumenty, které si myslíte, že se dotýká podle relevance v jednom modelu. Znovu vyloučit, pokud je v jiném zobrazení dopadů v [BLEU (Understudy dvojjazyčné vyhodnocení) skóre](what-is-bleu-score.md). Jak dlouho, dokud je ladění sady a testovací sady konstanta, bez obav experimentovat s složení trénovací sady. Tento přístup je účinný způsob, jak upravit kvalitu překladu systému.
+Dokumenty zahrnuté do sady školení jsou používány vlastním překladatelem jako základem pro vytvoření modelu. Během provádění školení jsou věty, které jsou k dispozici v těchto dokumentech, zarovnané (nebo spárovány). Liberties můžete využít při vytváření sady školicích dokumentů. Můžete zahrnout dokumenty, u kterých se domníváte, že jsou v jednom modelu tečná relevance. Znovu je vylučte v jiném, abyste viděli dopad ve [výsledku Bleu (dvojjazyčné vyhodnocení destudie)](what-is-bleu-score.md). Pokud zachováte nastavení optimalizace a konstantní sadu testů, můžete experimentovat se složením sady školení. Tento přístup představuje účinný způsob, jak změnit kvalitu systému překladu.
 
-Můžete spustit více školení v rámci projektu a porovnat [BLEU skóre](what-is-bleu-score.md) přes všechny tréninkových spuštění. Pokud spouštíte více školení pro porovnání, zajistěte stejnou ladění / pokaždé, když je zadána testovací data. Také si nezapomeňte také zkontrolovat ručně v výsledky ["Testování"](how-to-view-system-test-results.md) kartu.
+V rámci projektu můžete spustit více školení a porovnat [Bleu skóre](what-is-bleu-score.md) v rámci všech školicích běhů. Když spouštíte více školení pro porovnání, zajistěte, aby byla pokaždé zadáno stejné údaje o ladění a testování. Nezapomeňte také zkontrolovat výsledky ručně na kartě [testování](how-to-view-system-test-results.md) .
 
-## <a name="tuning-dataset-for-custom-translator"></a>Optimalizace datové sady pro vlastní Translator
+## <a name="tuning-dataset-for-custom-translator"></a>Vyladit datovou sadu pro vlastní překladatele
 
-Paralelní dokumenty, které jsou zahrnuté v této sadě používají vlastní překladač vyladit překladový systém pro dosažení optimálních výsledků.
+Paralelní dokumenty zahrnuté v této sadě používá vlastní Překladatel k ladění systému překladu pro optimální výsledky.
 
-Ladění sady se používá během cvičení a upravte všechny parametry a systému překladu do optimálních hodnot váhu. Zvolte vaši ladění pečlivě nastavit: optimalizace sada by měla vystihovat obsah dokumentů, které chcete přeložit v budoucnu. Ladění sady má hlavní vliv na kvalitu překladu vytvořen. Ladění umožňuje překlad systém mohl zajistit překlady, které jsou uživatelům nejblíže na ukázky, které zadáte v ladění datové sadě. Není nutné více než 2500 věty jako ladění sady. Pro optimální překlad kvality se doporučuje ručně vyberte sadu ladění zvolením nejreprezentativnější výběr vět.
+Sada pro vyladění se používá během školení k úpravě všech parametrů a vah systému překladu na optimální hodnoty. Pečlivě vyberte svou sadu optimalizací: sada vyladění by měla odpovídat obsahu dokumentů, které v budoucnu hodláte přeložit. Sada optimalizací má zásadní vliv na kvalitu vytvořeného překladu. Vyladění umožňuje, aby systém překladu poskytoval překlady, které jsou nejblíže ukázkám, které zadáte v sadě dat pro optimalizaci. Jako nastavení optimalizace nepotřebujete více než 2500 vět. Pro zajištění optimální kvality překladu se doporučuje vybrat sadu optimalizace ručně volbou nejvhodnějšího výběru vět.
 
-Při vytváření sady optimalizace, zvolte věty, které mají smysl a reprezentativní délku budoucí vět, které očekáváte, že pro převod. Měli byste zvolit také věty obsahující slova a slovní spojení, které chcete přeložit v přibližné distribuci, která očekáváte, že v budoucnu překlady. V praxi vytvoří věty délku 8 až 18 slova nejlepších výsledků dosáhnete, protože tyto věty obsahují dostatečný kontext a zobrazit důležitý poskytující délkou frázi, která je důležité, aniž by byla příliš složitá.
+Při vytváření sady pro vyladění vyberte věty, které jsou smysluplnou a zástupnou délkou budoucích vět, které chcete přeložit. Měli byste také zvolit věty, které mají slova a fráze, které chcete přeložit, do přibližné distribuce, kterou očekáváte v budoucích překladech. V praxi výsledkem je délka věty 8 až 18 slov nejlepší výsledky, protože tyto věty obsahují dostatek kontextu pro zobrazení inflexe a zadání délky fráze, která je významná, aniž by byla příliš složitá.
 
-Dobrý popis typu věty a použít v sadě ladění je prose: skutečný fluent věty. Buňky tabulky, není básních, ne seznam věcí, nejen interpunkční znaménka ani čísla ve větě – regulární jazyka.
+Dobrým popisem typu vět, které se mají použít v sadě pro optimalizaci, je prose: skutečnými větami Fluent. Nejedná se o buňky tabulky, nikoli POEMS, ne pouze interpunkční znaménka nebo číslice v regulárním jazyce věty.
 
-Pokud po ručním výběru ladění datovou sadu, by neměl mít některý z stejné věty jako trénovací a testovací data. Ladění sady má významný dopad na kvalitu překladů – pečlivě vět.
+Pokud ručně vyberete svou sadu dat optimalizace, neměla by mít žádné ze stejných vět jako data školení a testování. Sada optimalizace má významný dopad na kvalitu překladů – pečlivě vybírejte věty.
 
-Pokud si nejste jisti, co se má vybrat pro ladění sady, stačí vybrat sadu školení a nechat vlastní překladač vyberte sady optimalizace za vás. Pokud umožníte vlastní překladač zvolit sadu ladění automaticky ji použije podmnožinu náhodné věty z vašich dokumentů dvojjazyčné školení a vyloučit tyto věty z školicí materiály, samotného.
+Pokud si nejste jisti, co zvolit pro sadu pro vyladění, stačí vybrat sadu školení a nechat si vlastní překladatelskou sadu optimalizace vybrat. Když necháte vlastní Překladatel zvolit automaticky sadu optimalizace, bude používat náhodnou podmnožinu vět z dvojjazyčných školicích dokumentů a vyloučit tyto věty z školicího materiálu.
 
-## <a name="testing-dataset-for-custom-translator"></a>Testovací datové sady pro vlastní Translator
+## <a name="testing-dataset-for-custom-translator"></a>Testovací datová sada pro vlastní překladatele
 
-Paralelní dokumenty, které jsou součástí sady testování se používají k výpočtu skóre BLEU (Understudy dvojjazyčné vyhodnocení). Toto skóre udává kvalitu překladu systému. Toto skóre skutečně zjistíte, jak překladů provádí překlad systému vyplývajících z této školicí odpovídalo vět referenční datové sady testů.
+Paralelní dokumenty zahrnuté do testovací sady se používají k výpočtu skóre BLEU (dvojjazyčné vyhodnocení destudie). Toto skóre indikuje kvalitu vašeho systému překladu. V tomto skóre se ve skutečnosti dozvíte, jak pečlivě překlady provedené systémem překladu vycházející z tohoto školení odpovídají referenčním vět v sadě testovacích dat.
 
-Skóre BLEU je měření rozdílů mezi automatický překlad a překladu odkazu. Jeho hodnotu od 0 do 100. Hodnota 0 označuje, že jedno slovo odkazu se zobrazí v překladu. Skóre 100 označuje, že automatický překlad přesně odpovídá odkaz: téhož slova je přesně stejné pozici. Skóre, které obdržíte je průměr BLEU skóre pro všechny věty sady testování.
+BLEU skóre je měření rozdílu mezi automatickým překladem a překladem odkazu. Jeho rozsah hodnot je od 0 do 100. Skóre 0 značí, že v překladu se nezobrazuje jedno slovo odkazu. Skóre 100 znamená, že automatický překlad přesně odpovídá odkazu: stejné slovo je ve stejné pozici. Skóre, které obdržíte, je průměrem skóre BLEU pro všechny věty sady testování.
 
-Testovací sada by měla obsahovat paralelní dokumenty, kde jsou věty cílový jazyk nejvhodnější překlady odpovídající věty Zdrojový jazyk v páru. Můžete chtít použít stejná kritéria, které jste použili k vytvoření sady pro optimalizaci. Sady testování však nemá žádný vliv na kvalitu překladu systému. Používá se jenom pro vygenerování skóre BLEU za vás a pro nic jiného.
+Testovací sada by měla obsahovat paralelní dokumenty, kde cílové jazykové věty jsou nejvhodnějšími překlady odpovídajících vět zdrojového jazyka ve páru. Možná budete chtít použít stejná kritéria, která jste použili k vytvoření sady optimalizace. Nicméně sada testů nemá žádný vliv na kvalitu systému překladu. Používá se výhradně k vygenerování BLEU skóre pro vás a pro nic jiného.
 
-Není nutné více než 2 500 věty jako sady testování. Když necháte systém automaticky zvolte testovací sadu, bude používat podmnožinu náhodné věty z vašich dokumentů dvojjazyčné školení a vyloučit tyto věty z školicí materiály, samotného.
+Jako sadu testování nepotřebujete více než 2 500 vět. Když necháte systému možnost automaticky zvolit sadu testů, použije se náhodná podmnožina vět z dvojjazyčných školicích dokumentů a tyto věty vyloučí z školicího materiálu.
 
-Můžete zobrazit vlastní překlady testovací sady a jejich porovnání překlady podle testovací sady, tak, že přejdete na kartu testu v rámci modelu.
+Můžete zobrazit vlastní překlady sady testování a porovnat je s překlady uvedenými v sadě testování, a to tak, že přejdete na kartu test v rámci modelu.

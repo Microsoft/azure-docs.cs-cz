@@ -1,6 +1,6 @@
 ---
-title: Vytvoření vlastních výstrah pro Azure Security Center pro IoT ve verzi Preview | Dokumentace Microsoftu
-description: Vytvoření a přiřazení vlastního zařízení výstrah pro Azure Security Center pro IoT.
+title: Vytváření vlastních výstrah pro Azure Security Center pro IoT | Microsoft Docs
+description: Vytvořte a přiřaďte vlastní výstrahy zařízení pro Azure Security Center pro IoT.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -13,81 +13,102 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/19/2019
+ms.date: 07/23/2019
 ms.author: mlottner
-ms.openlocfilehash: 12559af013d49e557ba0132bef24867867745c16
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: ed10cbf89f878f8d27b43476d26ac93dd373ed66
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67618032"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68597002"
 ---
-# <a name="quickstart-create-custom-alerts"></a>Rychlý start: Vytvořit vlastní upozornění
+# <a name="quickstart-create-custom-alerts"></a>Rychlý start: Vytváření vlastních výstrah
 
-> [!IMPORTANT]
-> Azure Security Center pro IoT je aktuálně ve verzi public preview.
-> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Použití výstrah a vlastní skupiny zabezpečení, plně využijte informace o zabezpečení začátku do konce a znalostí zařazené do kategorií zařízení k zajištění lepší zabezpečení v řešení IoT. 
+Pomocí vlastních skupin zabezpečení a výstrah aplikace plně využívá kompletní informace o zabezpečení a znalosti zařízení kategorií, aby bylo zajištěno lepší zabezpečení v rámci řešení IoT. 
 
-## <a name="why-use-custom-alerts"></a>Proč používat vlastní upozornění? 
+## <a name="why-use-custom-alerts"></a>Proč používat vlastní výstrahy? 
 
-Znáte nejlepší zařízení IoT.
+Víte, co nejlépe jsou vaše zařízení IoT.
 
-Pro zákazníky, kteří plně porozumět jejich zařízení očekávané chování Azure Security Center (ASC) pro IoT umožňuje přeložit tyto znalosti do zásad chování zařízení a upozornění na jakékoli odchylky od očekávaného, běžné chování.
+Pro zákazníky, kteří plně pochopili své očekávané chování zařízení, Azure Security Center pro IoT vám umožní přeložit toto porozumění na zásady chování zařízení a upozornit na jakoukoli odchylku od očekávaného, normálního chování.
 
 ## <a name="security-groups"></a>Skupiny zabezpečení
 
-Skupiny zabezpečení umožňují definovat logické skupiny zařízení a spravovat jejich stavu centralizované způsobem.
+Skupiny zabezpečení umožňují definovat logické skupiny zařízení a spravovat jejich stav zabezpečení centralizovaným způsobem.
 
-Tyto skupiny může představovat zařízení s konkrétním hardwarovým nasazené do určitého umístění nebo libovolné jiné skupiny, které jsou vhodné k vašim konkrétním potřebám.
+Tyto skupiny můžou představovat zařízení s konkrétním hardwarem, zařízeními nasazenými v určitém umístění nebo v jakékoli jiné skupině vhodné pro vaše konkrétní potřeby.
 
-Skupiny zabezpečení jsou definovány pomocí vlastnosti značku dvojčete modulu zabezpečení s názvem **skupiny SecurityGroup**. Změňte hodnotu této vlastnosti se změnit skupinu zabezpečení zařízení.  
+Skupiny zabezpečení jsou definovány pomocí vlastnosti značky zařízení s názvem **Security**. Ve výchozím nastavení má každé řešení IoT na IoT Hub jednu skupinu zabezpečení s názvem **Default**. Změňte hodnotu vlastnosti Securitycollection  , aby se změnila skupina zabezpečení zařízení.
+ 
+Příklad:
 
-Ve výchozím nastavení, každé řešení IoT na centrum IoT má jednu skupinu zabezpečení s názvem **výchozí**.
+```
+{
+  "deviceId": "VM-Contoso12",
+  "etag": "AAAAAAAAAAM=",
+  "deviceEtag": "ODA1BzA5QjM2",
+  "status": "enabled",
+  "statusUpdateTime": "0001-01-01T00:00:00",
+  "connectionState": "Disconnected",
+  "lastActivityTime": "0001-01-01T00:00:00",
+  "cloudToDeviceMessageCount": 0,
+  "authenticationType": "sas",
+  "x509Thumbprint": {
+    "primaryThumbprint": null,
+    "secondaryThumbprint": null
+  },
+  "version": 4,
+  "tags": {
+    "SecurityGroup": "default"
+  }, 
+```
 
-Pomocí skupin zabezpečení k seskupení zařízení do logických kategorií. Po vytvoření skupiny, je přiřadíte k vlastní výstrahy podle vašeho výběru pro nejúčinnější-ucelené řešení. 
+Skupiny zabezpečení použijte k seskupení zařízení do logických kategorií. Po vytvoření skupin je přiřaďte k vlastním výstrahám podle vašeho výběru a získáte tak nejúčinnější řešení zabezpečení IoT od začátku až do konce. 
 
-## <a name="customize-an-alert"></a>Přizpůsobení upozornění
+## <a name="customize-an-alert"></a>Přizpůsobení výstrahy
 
-1. Otevřete své Centrum IoT. 
-2. Klikněte na tlačítko **vlastní výstrahy** v **zabezpečení** oddílu. 
-3. Zvolte, kterou chcete použít vlastní nastavení pro skupinu zabezpečení. 
-4. Klikněte na tlačítko **přidat vlastní upozornění** 
-5. Z rozevíracího seznamu vyberte vlastní chování výstrah. 
-6. Upravit požadované vlastnosti, klikněte na tlačítko **OK**.
-7. Ujistěte se, že klikněte na tlačítko **Uložit**. Bez uložení nové výstrahy, oznámení se odstraní při příštím zavřete služby IoT Hub.
+1. Otevřete IoT Hub. 
+2. V části **zabezpečení** klikněte na **vlastní výstrahy** . 
+3. Vyberte skupinu zabezpečení, pro kterou chcete použít vlastní nastavení. 
+4. Klikněte na **Přidat vlastní výstrahu**.
+5. V rozevíracím seznamu vyberte vlastní výstrahu. 
+6. Upravte požadované vlastnosti a klikněte na tlačítko **OK**.
+7. Nezapomeňte kliknout na **Uložit**. Bez uložení nové výstrahy se upozornění odstraní při příštím zavření IoT Hub.
 
  
-## <a name="alerts-available-for-customization"></a>Výstrahy, které jsou k dispozici pro přizpůsobení
+## <a name="alerts-available-for-customization"></a>Výstrahy k dispozici pro přizpůsobení
 
-Následující tabulka nabízí souhrn výstrah, které jsou k dispozici pro přizpůsobení.
+Následující tabulka poskytuje souhrn výstrah dostupných pro přizpůsobení.
 
-| severity | Name                                                                                                    | Zdroj dat | Popis                                                                                                                                     |
-|----------|---------------------------------------------------------------------------------------------------------|-------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
-| Nízká      | Vlastní výstraha – počet cloudu na zařízení zprávy v protokolu AMQP není v povoleném rozsahu          | IoT Hub     | Množství cloudu do zařízení zpráv (AMQP protocol) v časové okno není v nakonfigurovaných povolený rozsah                                  |
-| Nízká      | Vlastní upozornění - počet odmítnutých cloudu na zařízení zprávy v protokolu AMQP není v povoleném rozsahu | IoT Hub     | Velikost zprávy typu zařízení (protokolu AMQP), které byly odmítnuty přenosem zařízení v časové okno v cloudu se nenachází v nakonfigurovaných povolený rozsah |
-| Nízká      | Vlastní výstraha – počet zařízení na cloud zprávy v protokolu AMQP není v povoleném rozsahu          | IoT Hub     | Množství zařízení na cloud zprávy (protokolu AMQP) v časové okno není v nakonfigurovaných povolený rozsah                                  |
-| Nízká      | Vyvolá vlastní výstraha – počet přímé metody není v povoleném rozsahu                              | IoT Hub     | Vyvolá množství přímé metody v okamžiku okno není v nakonfigurovaných povolený rozsah                                                     |
-| Nízká      | Vlastní výstraha – počet nahrávání souborů není v povoleném rozsahu                                       | IoT Hub     | Množství nahrávání souborů v časové okno není v nakonfigurovaných povolený rozsah                                                              |
-| Nízká      | Vlastní výstraha – počet cloudu na zařízení zprávy v protokolu HTTP není v povoleném rozsahu          | IoT Hub     | Množství cloudu na zařízení zprávy (protokol HTTP) v časové okno není v nakonfigurovaných povolený rozsah                                  |
-| Nízká      | Vlastní upozornění - počet odmítnutých cloudu na zařízení zprávy v protokolu HTTP není v povoleném rozsahu | IoT Hub     | Velikost zprávy typu zařízení (protokol HTTP), které byly odmítnuty přenosem zařízení v časové okno v cloudu se nenachází v nakonfigurovaných povolený rozsah |
-| Nízká      | Vlastní výstraha – počet zařízení na cloud zprávy v protokolu HTTP není v povoleném rozsahu          | IoT Hub     | Množství zařízení na cloud zprávy (protokol HTTP) v časové okno není v nakonfigurovaných povolený rozsah                                  |
-| Nízká      | Vlastní výstraha – počet cloudu na zařízení zprávy v protokolu MQTT není v povoleném rozsahu          | IoT Hub     | Množství cloudu na zařízení zprávy (protokolu MQTT) v časové okno není v nakonfigurovaných povolený rozsah                                  |
-| Nízká      | Vlastní upozornění - počet odmítnutých cloudu na zařízení zprávy v protokolu MQTT není v povoleném rozsahu | IoT Hub     | Velikost zprávy typu zařízení (protokolu MQTT), které byly odmítnuty přenosem zařízení v časové okno v cloudu se nenachází v nakonfigurovaných povolený rozsah |
-| Nízká      | Vlastní výstraha – počet zařízení na cloud zprávy v protokolu MQTT není v povoleném rozsahu          | IoT Hub     | Množství zařízení na cloud zprávy (protokolu MQTT) v časové okno není v nakonfigurovaných povolený rozsah                                  |
-| Nízká      | Vlastní výstraha – počet vymazat frontu příkaz není v povoleném rozsahu                               | IoT Hub     | Vymaže množství frontu příkazů v čase, které okno není v nakonfigurovaných povolený rozsah                                                      |
-| Nízká      | Vlastní výstraha – počet aktualizace dvojčat není v povoleném rozsahu                                       | IoT Hub     | Množství aktualizace dvojčat v časové okno není v nakonfigurovaných povolený rozsah                                                              |
-| Nízká      | Vlastní výstraha – počet neautorizovaných operací není v povoleném rozsahu                            | IoT Hub     | Množství neautorizovaných operací v časové okno není v nakonfigurovaných povolený rozsah                                                   |
-| Nízká      | Vlastní výstraha – počet aktivních připojení není v povoleném rozsahu                                        | Agent       | Počet aktivních připojení v časové okno není v nakonfigurovaných povolený rozsah                                                        |
-| Nízká      | Vytvoření vlastní výstraha – odchozí připojení pro integrační balíček, který není povolen                              | Agent       | Odchozí připojení pro integrační balíček, který není povolen, někdo vytvořil                                                                                  |
-| Nízká      | Vlastní výstrahy – počet neúspěšných přihlášení místní není v povoleném rozsahu                                | Agent       | Množství neúspěšných místní přihlášení v časové okno není v nakonfigurovaných povolený rozsah                                                       |
-| Nízká      | Vlastní výstraha – přihlašovací jméno uživatele, který není povolen                                                      | Agent       | Místní uživatel, který není povoleno přihlášení k zařízení                                                                                        |
-| Nízká      | Vlastní výstraha – spuštění procesu, který není povolen                                               | Agent       | Spustil se proces, který není povolen v zařízení |          |
+
+| severity | Name | Zdroj dat | Popis | Navrhovaná náprava|
+|---|---|---|---|---|
+| Nízká      | Vlastní upozornění – počet zpráv v cloudu na zařízení v protokolu AMQP je mimo povolený rozsah.          | IoT Hub     | Počet zpráv z cloudu na zařízení (AMQP Protocol) v rámci určitého časového období je mimo aktuálně nakonfigurovaný a povolený rozsah.||
+| Nízká      | Vlastní upozornění – počet odmítnutých zpráv v cloudu na zařízení v protokolu AMQP je mimo povolený rozsah. | IoT Hub     | Počet zpráv z cloudu na zařízení (Protokol AMQP) zamítnutý zařízením v rámci určitého časového období je mimo aktuálně nakonfigurovaný a povolený rozsah.||
+| Nízká      | Vlastní upozornění – počet zpráv ze zařízení na Cloud v protokolu AMQP je mimo povolený rozsah.      | IoT Hub     | Množství zpráv ze zařízení do cloudu (AMQP Protocol) v rámci určitého časového období je mimo aktuálně nakonfigurovaný a povolený rozsah.|   |
+| Nízká      | Vlastní výstraha – počet volání přímé metody je mimo povolený rozsah. | IoT Hub     | Množství přímé metody vyvolání v rámci určitého časového období je mimo aktuálně nakonfigurovaný a povolený rozsah.||
+| Nízká      | Vlastní výstraha – počet nahrávání souborů je mimo povolený rozsah. | IoT Hub     | Velikost nahrávání souborů v rámci určitého časového období je mimo aktuálně nakonfigurovaný a povolený rozsah.| |
+| Nízká      | Vlastní upozornění – počet zpráv v cloudu na zařízení v protokolu HTTP je mimo povolený rozsah. | IoT Hub     | Množství zpráv z cloudu na zařízení (protokol HTTP) v časovém okně není v nakonfigurovaném povoleném rozsahu.                                  |
+| Nízká      | Vlastní výstraha – počet odmítnutých zpráv v cloudu na zařízení v protokolu HTTP není v povoleném rozsahu. | IoT Hub     | Množství zpráv z cloudu na zařízení (protokol HTTP) v rámci určitého časového období je mimo aktuálně nakonfigurovaný a povolený rozsah. |
+| Nízká      | Vlastní upozornění – počet zpráv ze zařízení na Cloud v protokolu HTTP je mimo povolený rozsah. | IoT Hub| Velikost zařízení pro cloudové zprávy (protokol HTTP) v rámci určitého časového období je mimo aktuálně nakonfigurovaný a povolený rozsah.|    |
+| Nízká      | Vlastní upozornění – počet zpráv v cloudu na zařízení v protokolu MQTT je mimo povolený rozsah. | IoT Hub     | Množství zpráv z cloudu na zařízení (MQTT Protocol) v rámci určitého časového období je mimo aktuálně nakonfigurovaný a povolený rozsah.|   |
+| Nízká      | Vlastní upozornění – počet odmítnutých zpráv v cloudu na zařízení v protokolu MQTT je mimo povolený rozsah. | IoT Hub     | Množství zpráv z cloudu na zařízení (protokol MQTT) odmítnuté zařízením v rámci určitého časového období je mimo aktuálně nakonfigurovaný a povolený rozsah. |
+| Nízká      | Vlastní upozornění – počet zpráv ze zařízení na Cloud v protokolu MQTT je mimo povolený rozsah.          | IoT Hub     | Množství zpráv ze zařízení do cloudu (MQTT Protocol) v rámci určitého časového období je mimo aktuálně nakonfigurovaný a povolený rozsah.|
+| Nízká      | Vlastní upozornění – počet vyprázdnění fronty příkazů je mimo povolený rozsah.                               | IoT Hub     | Velikost fronty příkazů v rámci určitého časového období je mimo aktuálně nakonfigurovaný a povolený rozsah.||
+| Nízká      | Vlastní výstraha – počet nevlákenných aktualizací modulu je mimo povolený rozsah.                                       | IoT Hub     | Množství nespuštěných aktualizací v rámci určitého časového okna je mimo aktuálně nakonfigurovaný a povolený rozsah.|
+| Nízká      | Vlastní výstraha – počet neautorizovaných operací je mimo povolený rozsah.  | IoT Hub     | Množství neautorizovaných operací v rámci určitého časového období je mimo aktuálně nakonfigurovaný a povolený rozsah.|
+| Nízká      | Vlastní upozornění – počet aktivních připojení je mimo povolený rozsah.  | Agent       | Počet aktivních připojení v rámci určitého časového období je mimo aktuálně nakonfigurovaný a povolený rozsah.|  Prozkoumejte protokoly zařízení. Zjistěte, kde připojení pochází, a zjistěte, jestli je neškodný nebo škodlivý. Pokud máte škodlivou, odstraňte možný malware a porozumět zdroji. Pokud je neškodný, přidejte zdroj do seznamu povolených připojení.  |
+| Nízká      | Vlastní výstraha – odchozí připojení vytvořené na IP adresu, která není povolená                             | Agent       | Odchozí připojení bylo vytvořeno na IP adresu, která je mimo povolený seznam IP adres. |Prozkoumejte protokoly zařízení. Zjistěte, kde připojení pochází, a zjistěte, jestli je neškodný nebo škodlivý. Pokud máte škodlivou, odstraňte možný malware a porozumět zdroji. Pokud je neškodný, přidejte zdroj do seznamu povolených IP adres.                        |
+| Nízká      | Vlastní upozornění – počet neúspěšných místních přihlášení je mimo povolený rozsah.                               | Agent       | Množství neúspěšných místních přihlášení v rámci určitého časového období je mimo aktuálně nakonfigurovaný a povolený rozsah. |   |
+| Nízká      | Vlastní výstraha – přihlášení uživatele, který není v seznamu povolených uživatelů | Agent       | Místní uživatel mimo seznam povolených uživatelů, přihlášený k zařízení.|  Pokud ukládáte nezpracovaná data, přejděte k účtu Log Analytics a pomocí dat Prozkoumejte zařízení, identifikujte zdroj a pak pro tato nastavení opravte seznam povolených/blokovaných dat. Pokud v současné době neukládáte nezpracovaná data, přečtěte si zařízení a opravte seznam povolených a blokovaných dat pro tato nastavení.|
+| Nízká      | Vlastní výstraha – proces byl spuštěn, což není povoleno. | Agent       | V zařízení se spustil proces, který není povolený. |Pokud ukládáte nezpracovaná data, přejděte k účtu Log Analytics a pomocí dat Prozkoumejte zařízení, identifikujte zdroj a pak pro tato nastavení opravte seznam povolených/blokovaných dat. Pokud v současné době neukládáte nezpracovaná data, přečtěte si zařízení a opravte seznam povolených a blokovaných dat pro tato nastavení.  |
+|
+
 
 ## <a name="next-steps"></a>Další postup
 
-Přejděte k dalším článku se dozvíte, jak nasadit agenta zabezpečení...
+V dalším článku se dozvíte, jak nasadit agenta zabezpečení...
 
 > [!div class="nextstepaction"]
 > [Nasazení agenta zabezpečení](how-to-deploy-agent.md)

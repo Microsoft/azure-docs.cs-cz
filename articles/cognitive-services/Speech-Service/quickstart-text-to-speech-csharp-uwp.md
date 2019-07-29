@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 6/24/2019
 ms.author: yinhew
-ms.openlocfilehash: 3d5bc1e9cc27fd3c40c15ba55f577779c65e6851
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 5e1f8aea1b00cbba7fec6c7ca416a965458ab526
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559321"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68607754"
 ---
 # <a name="quickstart-synthesize-speech-in-a-uwp-app-by-using-the-speech-sdk"></a>Rychlý start: Rozpoznávání řeči v aplikaci pro UWP pomocí sady Speech SDK
 
 K dispozici jsou také rychlé starty pro [rozpoznávání řeči](quickstart-csharp-uwp.md), [Převod řeči](quickstart-translate-speech-uwp.md) a [hlasově prvního virtuálního pomocníka](quickstart-virtual-assistant-csharp-uwp.md).
 
-V tomto článku vyvíjíte C# Univerzální platforma Windows (UWP; Aplikace Windows verze 1709 novější) pomocí [sady Cognitive Services Speech SDK](speech-sdk.md). Program bude z textu v reálném čase pro mluvčí zařízení syntetizovat řeč. Tato aplikace je vytvořená pomocí [balíčku NuGet sady Speech SDK](https://aka.ms/csspeech/nuget) a sady Microsoft Visual Studio 2017 (libovolné edice).
+V tomto článku vyvíjíte C# Univerzální platforma Windows (UWP; Aplikace Windows verze 1709 novější) pomocí [sady Cognitive Services Speech SDK](speech-sdk.md). Program bude z textu v reálném čase pro mluvčí zařízení syntetizovat řeč. Aplikace je sestavená pomocí [balíčku NuGet sady Speech SDK](https://aka.ms/csspeech/nuget) a Microsoft Visual Studio 2017 nebo novější (libovolná edice).
 
 > [!NOTE]
 > Univerzální platforma Windows umožňuje vyvíjet aplikace, které běží na všech zařízeních podporujících Windows 10 včetně počítačů, Xboxu, Surface Hubu a dalších.
@@ -30,7 +30,7 @@ V tomto článku vyvíjíte C# Univerzální platforma Windows (UWP; Aplikace Wi
 
 K tomuto rychlému startu potřebujete:
 
-* [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)
+* [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/) nebo novější
 * Klíč předplatného Azure pro službu Speech Service. [Získejte je zdarma](get-started.md).
 
 ## <a name="create-a-visual-studio-project"></a>Vytvoření projektu ve Visual Studiu

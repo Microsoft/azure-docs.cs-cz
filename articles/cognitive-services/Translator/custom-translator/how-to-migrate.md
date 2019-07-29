@@ -3,31 +3,31 @@ title: Migrace pracovního prostoru Microsoft Translator Hub a projekty? – Vla
 titleSuffix: Azure Cognitive Services
 description: Migrace do vlastní Translator váš pracovní prostor centra a projekty.
 author: swmachan
-manager: christw
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: ce81c23a42895f72545a8241d2e002d9798fec05
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: cd821ad8fce813d269ace8fb4945cb796c2ae758
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67447991"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68595739"
 ---
 # <a name="migrate-hub-workspace-and-projects-to-custom-translator"></a>Migrace na Translator vlastní pracovní prostor centra a projekty
 
 Můžete snadno migrovat vaše [Microsoft Translator Hub](https://hub.microsofttranslator.com/) pracovní prostor a projekty, které mají vlastní překladač. Migrace je zahájeno z Microsoft Hub vyberete pracovní prostor nebo projektu, pak výběrem pracovního prostoru v Translator vlastní a pak vyberete školení, které chcete převést. Po zahájení migrace nastavení vybrané školení bude převeden pomocí všechny související dokumenty. Nasazených modelů jsou trénované a může být autodeployed po dokončení.
 
 Během migrace se provádí tyto akce:
-* Všechny dokumenty a definice projektu budou mít jejich názvy přenesená a uveďte "hub_" předponou názvu. Automaticky generované testování a ladění data se budou pojmenovávat hub_systemtune_\<modelid > nebo hub_systemtest_\<modelid >.
+* Všechny dokumenty a definice projektu budou mít jejich názvy přenesená a uveďte "hub_" předponou názvu. Automaticky generovaný test a data optimalizace budou mít název hub_systemtune_\<ModelID > nebo hub_systemtest_\<ModelID >.
 * Jakékoli školení, které byly v nasazeném stavu místo pořízením migrace bude automaticky trénuje použití dokumentů Centrum školení. Toto školení nebude účtovat do vašeho předplatného. Pokud automatické nasazení byla vybrána pro migraci se po dokončení nasadí trénovaného modelu. Aplikují se standardní poplatky za hostování.
 * Všechny migrované školení, které nebyly v nasazeném stavu zařadí do stavu migrovaných konceptu. V tomto stavu budete mít možnost trénujete model pro migrované definicí, ale poplatky za regulární školení.
 * V libovolném bodě skóre BLEU migrovat z centra školení najdete na stránce TrainingDetails modelu v "Bleu skóre v centru MT" záhlaví.
 
 > [!Note]
-> Školení na úspěšné, vlastní Translator vyžaduje minimálně 10 000 jedinečných extrahované věty. Vlastní překladač nemůže provádějte školení s méně než [navrhované minimální](sentence-alignment.md#suggested-minimum-number-of-extracted-and-aligned-sentences).
+> Pro úspěšné školení vyžaduje vlastní Překladatel minimálně 10 000 jedinečných extrahovaných vět. Vlastní Překladatel nemůže provádět školení s méně než navrhovaným [minimem](sentence-alignment.md#suggested-minimum-number-of-extracted-and-aligned-sentences).
 
 ## <a name="find-custom-translator-workspace-id"></a>Najít vlastní Translator ID pracovního prostoru
 
@@ -80,9 +80,9 @@ K migraci pracovního prostoru:
 
 4. Na další stránce vyberte jednu z těchto dvou možností:
 
-    a. Pouze nasazené školení: Výběrem této možnosti bude migrovat pouze nasazené systémy a související dokumenty.
+    a. Jenom nasazené školení: Výběrem této možnosti dojde k migraci pouze nasazených systémů a souvisejících dokumentů.
 
-    b. Všechny úspěšné školení: Výběrem této možnosti bude migrace úspěšná školení a související dokumenty.
+    b. Všechna úspěšná školení: Výběrem této možnosti se migrují všechna vaše úspěšná školení a související dokumenty.
 
     c. Zadejte vlastní Translator cíl ID pracovního prostoru.
 
@@ -104,27 +104,27 @@ Chcete-li zobrazit historii migrace, postupujte podle těchto kroků:
 
 Migrace historie stránce se zobrazí následující informace jako souhrn pro každou migraci, o kterou žádáte.
 
-1. Při migraci: Jméno a e-mailu uživatele odeslání této žádosti o migraci
+1. Migrovali: Jméno a e-mail uživatele, který odeslal tuto žádost o migraci
 
-2. Migrovat na: Datum a časové razítko migrace
+2. Migrováno: Datum a časové razítko migrace
 
-3. Projekty: Počet projektů požadovaná pro migraci v/s počtu projektů úspěšné migraci.
+3. Projekty: Počet projektů požadovaných pro migraci počtu projektů v/s, které byly úspěšně migrovány.
 
-4. Školení: Počet školení požadovaná pro migraci v/s počet školení úspěšné migraci.
+4. Získejte školení Počet školení požadovaných pro migraci v/s pro počet úspěšně migrovaných školení.
 
-5. Dokumenty: Počet dokumentů požadovaná pro migraci v/s počtem dokumentů úspěšné migraci.
+5. Document Počet dokumentů požadovaných pro migraci v/s pro počet dokumentů, které byly úspěšně migrovány.
 
     ![Podrobnosti o migraci historie](media/how-to/how-to-migration-history-details.png)
 
 Pokud chcete podrobnější sestavu migrace o projekty, školení a dokumenty, máte možnost Exportovat podrobnosti jako sdílený svazek clusteru.
 
 ## <a name="implementation-notes"></a>Poznámky k implementaci
-* Systémy s jazykem dvojice není zatím k dispozici ve vlastní Translator budou k dispozici pouze pro přístup k datům nebo zrušení prostřednictvím překladače vlastní. Tyto projekty budou označeny jako "Není k dispozici" na stránce projekty. Jak je budeme povolovat nové dvojice jazyků s vlastní překlady, se stane aktivní, trénovat a nasazovat projekty. 
+* Systémy s páry jazyka, které ještě nejsou dostupné ve vlastním překladateli, budou k dispozici jenom pro přístup k datům nebo jejich nasazení prostřednictvím vlastního překladatele. Tyto projekty budou na stránce projekty označeny jako "nedostupné". Jak povolíme nové páry jazyků s vlastním překladatelem, projekty se aktivují pro vlak a nasazení. 
 * Migrace projektu z centra na vlastní Translator nebude mít žádný vliv na vaše Centrum školení nebo projekty. Jsme neodstraňujte projekty nebo dokumenty z centra během migrace a jsme není zrušení modely.
 * Jsou povolené jenom po migraci na projekt. Pokud je nutné opakovat migraci na projekt, kontaktujte nás prosím.
-* Vlastní Translator podporuje dvojice jazyků NMT do a z angličtiny. [Zobrazit úplný seznam podporovaných langauges](https://docs.microsoft.com/azure/cognitive-services/translator/language-support#customization). Centrum nevyžaduje základní modely a proto podporuje několik jazyků tisíců. Dvojici nepodporovaný jazyk, můžete migrovat, ale My pouze provést migraci dokumenty a projektu definice. Společnost Microsoft nebude moci natrénovat nový model. Kromě toho tyto dokumenty a projektů se zobrazí jako neaktivní indikaci, že nelze použít v tuto chvíli. Pokud je přidána podpora pro tyto projekty a/nebo dokumenty, budou aktivní a trainable.
+* Vlastní Překladatel podporuje páry jazyků NMT a z angličtiny. [Úplný seznam podporovaných langauges najdete v](https://docs.microsoft.com/azure/cognitive-services/translator/language-support#customization)části. Centrum nevyžaduje základní modely a proto podporuje několik jazyků tisíců. Dvojici nepodporovaný jazyk, můžete migrovat, ale My pouze provést migraci dokumenty a projektu definice. Společnost Microsoft nebude moci natrénovat nový model. Kromě toho tyto dokumenty a projektů se zobrazí jako neaktivní indikaci, že nelze použít v tuto chvíli. Pokud je přidána podpora pro tyto projekty a/nebo dokumenty, budou aktivní a trainable.
 * Vlastní Translator v současné době nepodporuje jeden jazyk trénovací data. Podobně jako páry nepodporovaný jazyk můžete migrovat jeden jazyk dokumenty, ale zobrazí jako neaktivní, dokud jeden jazyk data se podporuje.
-* Vlastní Translator vyžaduje 10 tisíc paralelní věty k trénování. Na menší sadu dat může trénování Microsoft Hub. Školicí migrována, který nesplňuje tento požadavek, nebude Trénink.
+* Vlastní Translator vyžaduje 10 tisíc paralelní věty k trénování. Na menší sadu dat může trénování Microsoft Hub. Pokud je migrováno školení, které tento požadavek nesplňuje, nebude vyškolené.
 
 ## <a name="custom-translator-versus-hub"></a>Vlastní Translator oproti centra
 
@@ -141,7 +141,7 @@ Tato tabulka obsahuje porovnání funkcí mezi centrem Microsoft Translator a vl
 
 ## <a name="new-languages"></a>Nové jazyky
 
-Pokud jste komunity nebo organizací pracující na vytvoření nového systému jazyk pro Microsoft Translatoru, kontaktujte [ custommt@microsoft.com ](mailto:custommt@microsoft.com) Další informace.
+Pokud jste komunitou nebo organizací, která pracuje na vytváření nového jazykového systému pro Microsoft Translator, získáte [custommt@microsoft.com](mailto:custommt@microsoft.com) Další informace v.
 
 ## <a name="next-steps"></a>Další postup
 

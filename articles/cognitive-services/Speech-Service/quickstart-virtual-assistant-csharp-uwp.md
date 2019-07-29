@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: travisw
-ms.openlocfilehash: d61040e740c06fc336e3764a0d972640443a6de5
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 6d88bcc6d9d2c2e46ef3a3cb841c9268a544e37c
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68553377"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68609683"
 ---
 # <a name="quickstart-create-a-voice-first-virtual-assistant-with-the-speech-sdk-uwp"></a>Rychlý start: Vytvoření virtuálního pomocníka pro hlasový vstup se sadou Speech SDK, UWP
 
 K dispozici jsou také rychlé starty pro převod [řeči na text](quickstart-csharp-uwp.md), převod [textu na řeč](quickstart-text-to-speech-csharp-uwp.md) a [rozpoznávání řeči](quickstart-translate-speech-uwp.md).
 
-V tomto článku vyvíjíte aplikaci C# Univerzální platforma Windows (UWP) pomocí [sady Speech SDK](speech-sdk.md). Program se připojí k dřív vytvořeným a nakonfigurovaným robotům, aby bylo možné v klientské aplikaci povolit prostředí pro virtuální asistenty prvního hlasu. Tato aplikace je vytvořená pomocí [balíčku NuGet sady Speech SDK](https://aka.ms/csspeech/nuget) a sady Microsoft Visual Studio 2017 (libovolné edice).
+V tomto článku vyvíjíte aplikaci C# Univerzální platforma Windows (UWP) pomocí [sady Speech SDK](speech-sdk.md). Program se připojí k dřív vytvořeným a nakonfigurovaným robotům, aby bylo možné v klientské aplikaci povolit prostředí pro virtuální asistenty prvního hlasu. Aplikace je sestavená pomocí [balíčku NuGet sady Speech SDK](https://aka.ms/csspeech/nuget) a Microsoft Visual Studio 2017 nebo novější (libovolná edice).
 
 > [!NOTE]
 > Univerzální platforma Windows umožňuje vyvíjet aplikace, které běží na všech zařízeních podporujících Windows 10 včetně počítačů, Xboxu, Surface Hubu a dalších.
@@ -30,7 +30,7 @@ V tomto článku vyvíjíte aplikaci C# Univerzální platforma Windows (UWP) po
 
 K tomuto rychlému startu potřebujete:
 
-* [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)
+* [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/) nebo novější
 * Klíč předplatného Azure pro hlasové služby. [Získejte ho zdarma](get-started.md) nebo ho vytvořte na [Azure Portal](https://portal.azure.com).
 * Dřív vytvořený robot nakonfigurovaný s kanálem [Direct line Speech](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)
 

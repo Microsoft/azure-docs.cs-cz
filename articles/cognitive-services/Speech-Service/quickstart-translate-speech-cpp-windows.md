@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 099d167e14d58f2239b4e86cb01bf0ab3621daa7
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 379087ca94eee6ce3d45bfd97b4771c5f08d6333
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68553571"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68607703"
 ---
 # <a name="quickstart-translate-speech-with-the-speech-sdk-for-c"></a>Rychlý start: Převod řeči pomocí sady Speech SDK proC++
 
 K dispozici jsou také rychlé starty pro [rozpoznávání řeči](quickstart-cpp-windows.md) a [Převod textu na řeč](quickstart-text-to-speech-cpp-windows.md).
 
-V tomto rychlém startu vytvoříte jednoduchou C++ aplikaci, která zachycuje řeč uživatele z mikrofonu vašeho počítače, převede řeč a transcribes přeložený text do příkazového řádku v reálném čase. Tato aplikace je určená ke spuštění v 64 Windows a je sestavená pomocí [balíčku NuGet sady Speech SDK](https://aka.ms/csspeech/nuget) a Microsoft Visual Studio 2017.
+V tomto rychlém startu vytvoříte jednoduchou C++ aplikaci, která zachycuje řeč uživatele z mikrofonu vašeho počítače, převede řeč a transcribes přeložený text do příkazového řádku v reálném čase. Tato aplikace je určená ke spuštění v 64 Windows a je sestavená pomocí [balíčku NuGet sady Speech SDK](https://aka.ms/csspeech/nuget) a Microsoft Visual Studio 2017 nebo novější.
 
 Úplný seznam jazyků dostupných pro překlad řeči najdete v tématu [Podpora jazyků](language-support.md).
 
@@ -29,7 +29,7 @@ V tomto rychlém startu vytvoříte jednoduchou C++ aplikaci, která zachycuje �
 
 K tomuto rychlému startu potřebujete:
 
-* [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)
+* [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/) nebo novější
 * Klíč předplatného Azure pro službu Speech Service. [Získejte je zdarma](get-started.md).
 
 ## <a name="create-a-visual-studio-project"></a>Vytvoření projektu ve Visual Studiu
@@ -62,7 +62,7 @@ K tomuto rychlému startu potřebujete:
 
    ![Snímek obrazovky s výstupem konzoly po úspěšném překladu](media/sdk/qs-translate-cpp-windows-output.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Na GitHubu jsou k dispozici další ukázky, jako je například čtení řeči ze zvukového souboru a výstup přeloženého textu jako syntetizované řeči.
 

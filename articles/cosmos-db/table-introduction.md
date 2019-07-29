@@ -1,18 +1,18 @@
 ---
 title: Úvod do služby Azure Cosmos DB Table API
-description: Zjistěte, jak můžete používat službu Azure Cosmos DB k ukládání a dotazování velkých objemů dat, klíč hodnota s nízkou latencí pomocí rozhraní API tabulky Azure.
+description: Přečtěte si, jak můžete použít Azure Cosmos DB k ukládání a dotazování velkých objemů dat klíč-hodnota s nízkou latencí pomocí rozhraní API Azure Tables.
 author: SnehaGunda
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.topic: overview
-ms.date: 05/20/2019
+ms.date: 07/26/2019
 ms.author: sngun
-ms.openlocfilehash: bd86b230d801f5fff8a9fb0de85f9f3025527382
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: be6a402673fd2d3ba01451c6ea04e723cbdfa292
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65953447"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68597502"
 ---
 # <a name="introduction-to-azure-cosmos-db-table-api"></a>Úvod do služby Azure Cosmos DB: Rozhraní Table API
 
@@ -22,26 +22,26 @@ ms.locfileid: "65953447"
 * [Vyhrazená propustnost](partition-data.md) po celém světě.
 * Latence v řádu milisekund na 99. percentilu.
 * Záruka vysoké dostupnosti.
-* [Automatické sekundární indexování](https://www.vldb.org/pvldb/vol8/p1668-shukla.pdf).
+* Automatické sekundární indexování.
 
 Pomocí rozhraní API tabulky je možné migrovat aplikace napsané pro Azure Table Storage beze změn kódu na službu Azure Cosmos DB a využít tak prémiové funkce. Rozhraní API tabulky má klientské sady SDK dostupné pro .NET, Java, Python a Node.js.
 
 > [!IMPORTANT]
-> .NET Framework SDK [Microsoft.Azure.CosmosDB.Table](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.Table) je ve stavu údržby režimu a bude brzy přestanou používat. Upgradujte prosím do nové knihovny .NET Standard [Microsoft.Azure.Cosmos.Table](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table) pokračujte získáte nejnovější funkce, které jsou podporovány v rozhraní API tabulky.
+> Sada .NET Framework SDK [Microsoft. Azure. CosmosDB. Table](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.Table) je v režimu údržby a bude brzy zastaralá. Upgradujte prosím na novou .NET Standard knihovny [Microsoft. Azure. Cosmos. Table](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table) , abyste mohli dál získávat nejnovější funkce, které rozhraní API pro tabulky podporuje.
 
 ## <a name="table-offerings"></a>Nabídky Table
 Pokud aktuálně používáte službu Azure Table Storage, získáte přechodem na rozhraní API tabulky Azure Cosmos DB následující výhody:
 
 | | Azure Table Storage | Rozhraní API tabulky Azure Cosmos DB |
 | --- | --- | --- |
-| Latence | Rychlá, bez horních omezení latence. | Latence pro čtení a zápis v řádu milisekund, podložená latencí pro čtení menší než 10 ms a latencí pro zápis menší než 15 ms na 99. percentilu, při libovolném škálování, kdekoli na světě. |
+| Latence | Rychlá, bez horních omezení latence. | Latence pro čtení a zápis v řádu milisekund, která se zálohuje < 10 MS, pro čtení a zápisy na 99 percentilu v jakémkoli měřítku, kdekoli na světě. |
 | Propustnost | Model variabilní propustnosti. Tabulky mají omezení škálovatelnosti 20 000 operací za sekundu. | Vysoká škálovatelnost s [vyhrazenou rezervovanou propustností na tabulku](request-units.md), podložená smlouvami SLA. Účty nemají žádné horní omezení propustnosti a podporují více než 10 milionů operací za sekundu na tabulku. |
-| Globální distribuce | Jedna oblast s jednou volitelnou čitelnou sekundární oblastí čtení pro vysokou dostupnost. Nemůžete zahájit převzetí služeb při selhání. | [Globální distribuce na klíč](distribute-data-globally.md) od jedné po 30 a více oblastí. Podpora [automatického a ručního převzetí služeb při selhání](high-availability.md) kdykoli a kdekoli na světě. |
-| Indexování | PartitionKey a RowKey používají pouze primární index. Žádné sekundární indexy. | Automatické a úplné indexování u všech vlastností, žádná správa indexů. |
+| Globální distribuce | Jedna oblast s jednou volitelnou čitelnou sekundární oblastí čtení pro vysokou dostupnost. Nemůžete zahájit převzetí služeb při selhání. | [Klíč globální distribuce](distribute-data-globally.md) z jednoho na libovolný počet oblastí. Podpora [automatického a ručního převzetí služeb při selhání](high-availability.md) kdykoli a kdekoli na světě. Možnost více hlavních možností, která umožňuje, aby kterákoli oblast přijímala operace zápisu. |
+| Indexování | PartitionKey a RowKey používají pouze primární index. Žádné sekundární indexy. | Automatické a úplné indexování všech vlastností ve výchozím nastavení bez správy indexů. |
 | Dotaz | Při provádění dotazu se používá index pro primární klíč, jinak dochází k prohledávání. | Dotazy mohou ke zrychlení použít výhod automatického indexování vlastností. |
 | Konzistence | Silná v rámci primární oblasti. Nahodilá v rámci sekundární oblasti. | [Pět jasně definovaných úrovní konzistence](consistency-levels.md) pro využití dostupnosti, latence, propustnosti a konzistence na základě potřeb vašich aplikací. |
 | Ceny | Optimalizované úložiště. | Optimalizovaná propustnost. |
-| Smlouvy SLA | 99,99 % dostupnost. | Smlouva SLA o 99,99% dostupnosti pro všechny účty v jedné oblasti a všechny účty ve více oblastech s mírnější konzistencí a [Nejlepší komplexní smlouvy SLA v oboru](https://azure.microsoft.com/support/legal/sla/cosmos-db/) týkající se obecné dostupnosti zajišťující 99,999% dostupnost čtení pro všechny účty databáze ve více oblastech. |
+| Smlouvy SLA | 99,9% až 99,99% dostupnost v závislosti na strategii replikace. | 99,999% dostupnost pro čtení, 99,99% dostupnost zápisu v účtu s jednou oblastí a 99,999% dostupnosti zápisu pro účty ve více oblastech. [Komplexní SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/) zahrnující dostupnost, latenci, propustnost a konzistenci. |
 
 ## <a name="get-started"></a>Začínáme
 

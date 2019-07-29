@@ -1,10 +1,10 @@
 ---
-title: Úvod do hloubkového učení virtuálního počítače – Azure | Dokumentace Microsoftu
-description: Důležité analytické scénáře a komponenty pro obsáhlý Learning Virtual Machines.
-keywords: obsáhlý learning, AI, nástrojů pro datové vědy, virtuální počítač pro datové vědy, nástroje pro datové vědy pro datové vědy pro linux
+title: Seznámení s virtuálním počítačem s hloubkovým učením – Azure | Microsoft Docs
+description: Klíčové analytické scénáře a komponenty pro Virtual Machines s hloubkovým učením.
+keywords: obsáhlý Learning, AI, nástroje pro datové vědy, virtuální počítač pro datové vědy, nástroje pro datové vědy, datové vědy pro Linux
 services: machine-learning
 documentationcenter: ''
-author: gopitk
+author: vijetajo
 manager: cgronlun
 ms.assetid: d4f91270-dbd2-4290-ab2b-b7bfad0b2703
 ms.service: machine-learning
@@ -12,30 +12,30 @@ ms.subservice: data-science-vm
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: overview
 ms.date: 03/16/2018
-ms.author: gokuma
-ms.openlocfilehash: 879f5939f110fb841ad160bf09f597edcdd86d31
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: vijetaj
+ms.openlocfilehash: ddf1169d94c3e71b92e8b1835040ab5738bf94b8
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60502185"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68591885"
 ---
-# <a name="introduction-to-the-deep-learning-virtual-machine"></a>Úvod do hloubkového učení virtuálního počítače
+# <a name="introduction-to-the-deep-learning-virtual-machine"></a>Seznámení s virtuálním počítačem s hloubkovým učením
 
-## <a name="why-deep-learning-virtual-machine"></a>Důvod, proč hloubkového učení virtuálního počítače? 
+## <a name="why-deep-learning-virtual-machine"></a>Proč se virtuální počítač s hloubkovým učením? 
 
-Čím dál, hluboké učení se supervizí / hluboké neuronové sítě se stávají jeden z oblíbených metody používané v mnoha problémů machine learning. Je obzvláště vhodný pro počítač léčby úkoly, jako je obrázek, text, pochopení, často blíží lidské cognitive úrovně v některé konkrétní domény s pokročilé architektury hluboké neuronové sítě a přístup k rozsáhlé sady dat pro trénování modelů zvuk/video. Obsáhlý learning vyžaduje velkou výpočetní výkon pro trénování modelů pomocí těchto velkých datových sad. Cloud a dostupnost grafických procesorů (GPU) je stále možné sestavujte sofistikované hloubkových neurálních architektury a je trénovat ve velkých sadách dat na výkonné výpočetní infrastruktura v cloudu.  [Virtuální počítač pro datové vědy](overview.md) poskytuje bohatou sadu nástrojů a ukázek pro přípravu dat, strojové učení a hloubkového učení. Ale jedním z problémů uživatelů s rozšiřováním je ke zjištění nástroje a ukázky pro konkrétní scénáře, jako jsou obsáhlého learningu snadno a také snadněji zřizovat instancí virtuálních počítačů založený na grafickém procesoru. Tato obsáhlý Learning virtuálního počítače (DLVM) řeší tyto problémy. 
+Stále se objevují algoritmy hloubkového učení nebo rozsáhlé neuronové sítě, které se v mnoha problémech se strojovým učením vycházejí z oblíbených metod. Jsou obzvláště dobré v Cognition úlohách, jako je obrázek, text, zvuk/video, porozumění často se přibližuje k úrovním lidského vnímání v některých specifických doménách s pokročilými neuronové síťovými architekturami a přístupem k velké sadě dat pro výukové modely. Obsáhlý Learning vyžaduje velké množství výpočetního výkonu pro výuku modelů s těmito velkými datovými sadami. Díky cloudu a dostupnosti grafických procesorů (GPU) je možné vytvořit sofistikované architektury hloubkové neuronové a naučit se je ve velké sadě dat na výkonné výpočetní infrastruktuře v cloudu.  [Data Science Virtual Machine](overview.md) poskytuje bohatou sadu nástrojů a ukázek pro přípravu dat, strojové učení a rozsáhlou výuku. Ale jedním z výzev, kterým uživatelé čelí, je zjistit nástroje a ukázky pro konkrétní scénáře, jako je obsáhlý Learning, a taky snadněji zřídit instance virtuálních počítačů na bázi GPU. Tento virtuální počítač s hlubokou výukou (DLVM) tyto výzvy řeší. 
 
-## <a name="what-is-deep-learning-virtual-machine"></a>Co je virtuální počítač pro hloubkové učení? 
-Virtuální počítač hloubkové učení je speciálně nakonfigurovaného varianta [virtuální počítač pro datové vědy](overview.md) instance (DSVM), aby bylo jednodušší použít založený na grafickém procesoru virtuálního počítače pro trénování modelů hloubkového učení. Je podporováno ve Windows 2016 a virtuální počítač Ubuntu datové vědy.  Sdílí stejnou základní imagí virtuálních počítačů (a tedy bohatou sadu nástrojů) jako datové VĚDY, ale je nakonfigurovaný pro usnadnění hloubkového učení. Koncové ukázky, poskytujeme také pro image a porozumění text, který široce platí pro mnoho scénářů reálného života AI. Virtuálního počítače pro obsáhlý learning se rovněž snaží díky bohatou sadu nástrojů a ukázek na datové VĚDY snadněji zjistitelné zpřístupnění katalog Nástroje a ukázky na virtuálním počítači. Co se týče nástrojů, virtuální počítač hloubkové učení nabízí několik oblíbených architektur obsáhlého learningu, nástroje pro získání a předběžného zpracování obrazu, textová data. Úplný seznam nástrojů, můžete se podívat do [stránka s přehledem Data Science virtuálního počítače](overview.md#whats-included-in-the-data-science-vm). 
+## <a name="what-is-deep-learning-virtual-machine"></a>Co je to virtuální počítač s hloubkovým učením? 
+Virtuální počítač s hloubkovým učením je speciálně nakonfigurovaná varianta [Data Science Virtual Machine](overview.md) (DSVM), která usnadňuje používání instancí virtuálních počítačů založených na GPU pro školení modelů pro obsáhlý Learning. Podporuje se ve Windows 2016 a Ubuntu Data Science Virtual Machine.  Sdílí stejné základní image virtuálních počítačů (a tedy celou bohatou sadu nástrojů) jako DSVM, ale je nakonfigurovaná tak, aby usnadnila hloubkové učení. Poskytujeme také ucelené ukázky pro obrázky a porozumění textu, které se dají široce použít na mnoho scénářů pro čtení AI z reálného života. Virtuální počítač s hloubkovým učením se taky snaží vytvořit bohatou sadu nástrojů a ukázek na DSVM snáze zjistitelné zpřístupnění katalogu nástrojů a ukázek na virtuálním počítači. V souvislosti s nástroji poskytuje virtuální počítač pro obsáhlý Learning několik oblíbených architektur hloubkového učení, nástroje pro získání a předzpracování imagí a textových dat. Úplný seznam nástrojů najdete na [stránce přehled Data Science Virtual Machine](overview.md#whats-included-in-the-data-science-vm). 
 
 ## <a name="next-steps"></a>Další kroky
 
-Začínáme s virtuální počítač pro hloubkové učení pomocí následujících kroků:
+Začněte s virtuálním počítačem s hloubkovým učením pomocí následujících kroků:
 
-* [Zřízení pro hloubkové učení virtuálního počítače](provision-deep-learning-dsvm.md)
-* [Použijte hloubkové učení virtuálního počítače](use-deep-learning-dsvm.md)
-* [Referenční dokumentace nástroje](dsvm-deep-learning-ai-frameworks.md)
+* [Zřízení virtuálního počítače s hloubkovým učením](provision-deep-learning-dsvm.md)
+* [Použití virtuálního počítače s hloubkovým učením](use-deep-learning-dsvm.md)
+* [Reference k nástroji](dsvm-deep-learning-ai-frameworks.md)
 * [Ukázky](dsvm-samples-and-walkthroughs.md)

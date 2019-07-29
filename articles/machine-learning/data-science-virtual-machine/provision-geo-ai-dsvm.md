@@ -4,7 +4,7 @@ description: Zjistěte, jak vytvořit a nakonfigurovat virtuální počítač ge
 keywords: obsáhlý learning, AI, nástrojů pro datové vědy, virtuální počítač pro datové vědy, geoprostorové analýzy
 services: machine-learning
 documentationcenter: ''
-author: gopitk
+author: vijetajo
 manager: cgronlun
 ms.custom: seodec18
 ms.assetid: ''
@@ -13,15 +13,15 @@ ms.subservice: data-science-vm
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: quickstart
 ms.date: 03/05/2018
-ms.author: gokuma
-ms.openlocfilehash: dde9b71c3615a592f8c08e040c5e9ba7bc756bd6
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: vijetaj
+ms.openlocfilehash: 4772bf8341196485a91b3df30801b9714a4a64a8
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60578512"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68591866"
 ---
 # <a name="provision-a-geo-artificial-intelligence-virtual-machine-on-azure"></a>Zřízení virtuálního počítače geografickou umělou inteligenci v Azure 
 
@@ -49,24 +49,24 @@ Tady je postup pro vytvoření instance virtuální počítač pro geograficky A
 
    - **Základy**
 
-      1. **Název**: Název serveru datové vědy, kterou vytváříte.
+      1. **Název**: Název serveru pro datové vědy, který vytváříte.
 
-      2. **Uživatelské jméno**: Id přihlášení účtu správce.
+      2. **Uživatelské jméno**: Přihlašovací ID účtu správce
 
       3. **Heslo**: Heslo účtu správce.
 
       4. **Předplatné**: Pokud máte více předplatných, vyberte ten, ve které je vytvořené a fakturuje počítač.
 
-      5. **Skupina prostředků**: Vytvořit nové nebo použijte **prázdný** existující skupinu prostředků Azure v rámci vašeho předplatného.
+      5. **Skupina prostředků**: V předplatném můžete vytvořit novou nebo použít **prázdnou** skupinu prostředků Azure.
 
-      6. **Umístění**: Vyberte datové centrum, které je nejvhodnější. Obvykle se většina dat nebo je nejblíže vašemu fyzickému umístění pro nejrychlejší přístup k síti datového centra. Pokud je potřeba hloubkového učení na grafickém procesoru, je třeba zvolit jedno z umístění v Azure, která má instance virtuálních počítačů NC-Series GPU. Aktuálně jsou umístění, které mají virtuální počítače GPU: **USA – východ, USA (střed) – sever, střed USA – Jih, USA – západ 2, Severní Evropa, západní Evropa**. Nejaktuálnější seznam najdete v dokumentaci [produkty Azure podle oblasti stránky](https://azure.microsoft.com/regions/services/) a hledejte **NC-Series** pod **Compute**. 
+      6. **Umístění**: Vyberte datové centrum, které je vhodné. Obvykle se většina dat nebo je nejblíže vašemu fyzickému umístění pro nejrychlejší přístup k síti datového centra. Pokud je potřeba hloubkového učení na grafickém procesoru, je třeba zvolit jedno z umístění v Azure, která má instance virtuálních počítačů NC-Series GPU. V současné době jsou k dispozici umístění virtuálních počítačů GPU: **Východní USA, střed USA – sever, střed USA – jih, západní USA 2, Severní Evropa**západní Evropa. Nejaktuálnější seznam najdete v dokumentaci [produkty Azure podle oblasti stránky](https://azure.microsoft.com/regions/services/) a hledejte **NC-Series** pod **Compute**. 
 
 
-   - **Nastavení**: Pokud budete chtít spustit hloubkové učení na grafickém procesoru na vaší geografické DSVM, vyberte jednu z velikost virtuálního počítače GPU NC-Series. V opačném případě můžete zvolit jeden z procesoru na základě instance.  Vytvoření účtu úložiště pro virtuální počítač. 
+   - **Nastavení**: Pokud máte v plánu provozovat hloubkové učení na GPU v geografických DSVMch, vyberte jednu z velikostí virtuálních počítačů GPU řady NC-Series. V opačném případě můžete zvolit jeden z procesoru na základě instance.  Vytvoření účtu úložiště pro virtuální počítač. 
    
    - **Souhrn**: Ověřte správnost všech informací, které jste zadali.
 
-   - **Koupit**: Klikněte na tlačítko **koupit** zahájíte zřizování. Pomocí odkazu uvedeného na podmínky služby. Virtuální počítač nemá žádné další poplatky za výpočetní prostředky pro velikost serveru, kterou jste zvolili v **velikost** kroku. 
+   - **Koupit**: Kliknutím na **koupit** zahájíte zřizování. Pomocí odkazu uvedeného na podmínky služby. Virtuální počítač nemá žádné další poplatky za výpočetní prostředky pro velikost serveru, kterou jste zvolili v **velikost** kroku. 
  
 >[!NOTE]
 > Zřizování zabere asi 20 – 30 minut. Stav zřizování se zobrazí na portálu Azure portal.
@@ -87,7 +87,7 @@ V opačném případě můžete zaregistrovat nový účet ArcGIS a licence nebo
 
 ![ArcGIS-Free-Trial](./media/provision-geo-ai-dsvm/ArcGIS-Free-Trial.png)
 
-Po registraci placené nebo bezplatné zkušební verze ArcGIS účet může autorizovat ArcGIS Pro pro váš účet podle pokynů v [Začínáme se službou ArcGIS Pro](https://www.esri.com/library/brochures/getting-started-with-arcgis-pro.pdf). 
+Po registraci placeného nebo bezplatného zkušebního účtu ArcGIS můžete autorizovat ArcGIS pro pro svůj účet podle pokynů v [Začínáme s ArcGIS pro](https://www.esri.com/library/brochures/getting-started-with-arcgis-pro.pdf). 
 
 Po přihlášení k ploše ArcGIS Pro pomocí svého účtu ArcGIS, jste připraveni začít používat nástrojů pro datové vědy, které jsou nainstalované a nakonfigurované na virtuálním počítači pro geoprostorové analýzy a machine learningu projekty.
 

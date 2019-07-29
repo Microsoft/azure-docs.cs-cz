@@ -1,49 +1,49 @@
 ---
 title: Co jsou paralelní dokumenty? – Vlastní Translator
 titleSuffix: Azure Cognitive Services
-description: Paralelní dokumenty jsou páry dokumentů, pokud je překlad druhé. Jeden dokument v páru obsahuje vět Zdrojový jazyk a druhý dokument obsahuje tyto věty přeloženy do cílového jazyka.
+description: Paralelní dokumenty jsou páry dokumentů, kde jeden je převod druhé. Jeden dokument ve dvojici obsahuje ve zdrojovém jazyce věty a druhý dokument obsahuje tyto věty přeložené do cílového jazyka.
 author: swmachan
-manager: christw
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 3b7997adfa38fa24bdf41f22c99f06e9a0ba1bf0
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: fb54df2e1eb89d30e62ae80355635356343994ee
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67447394"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68595440"
 ---
 # <a name="what-are-parallel-documents"></a>Co jsou paralelní dokumenty?
 
-Paralelní dokumenty jsou páry dokumentů, pokud je překlad druhé. Jeden dokument v páru obsahuje vět Zdrojový jazyk a druhý dokument obsahuje tyto věty přeloženy do cílového jazyka.
-Nezáleží na jazyk, který je označen jako "zdroj" a jazyk, který je označen jako "cíl" – paralelní dokumentu lze použít k trénování překladový systém v obou směrech.
+Paralelní dokumenty jsou páry dokumentů, kde jeden je převod druhé. Jeden dokument ve dvojici obsahuje ve zdrojovém jazyce věty a druhý dokument obsahuje tyto věty přeložené do cílového jazyka.
+Nezáleží na tom, který jazyk je označený jako "zdroj" a který jazyk je označený jako "cíl" – paralelní dokument se dá použít k tomu, aby se v obou směrech mohl naučit systém překladu.
 
 ## <a name="requirements"></a>Požadavky
 
-Budete potřebovat minimálně 10 000 jedinečných paralelní věty a vytrénovat systém. Jako osvědčený postup, můžete průběžně přidat více paralelních obsahu a obsloužených a zlepšovat tak kvalitu překladu systému.
+Abyste mohli naučit systém, budete potřebovat minimálně 10 000 jedinečných paralelních vět. Osvědčeným postupem je průběžné přidávání více paralelních obsahu a revýuky, aby se zlepšila kvalita vašeho systému překladu.
 
-Microsoft vyžaduje od dokumenty nahráli do vlastní překladač nebudou porušovat třetích stran o autorských právech nebo duševního vlastnosti. Další informace najdete v tématu [Terms of Use](https://azure.microsoft.com/support/legal/cognitive-services-terms/).
-Nahrání dokumentu s použitím portálu nezmění vlastnictví duševního vlastnictví v dokumentu.
+Microsoft vyžaduje, aby dokumenty odeslané do vlastního překladatele nenarušily autorské právo nebo duševní vlastnictví třetí strany. Další informace najdete v tématu věnovaném [podmínkám použití](https://azure.microsoft.com/support/legal/cognitive-services-terms/).
+Nahrání dokumentu pomocí portálu nemění vlastnictví duševního vlastnictví v samotném dokumentu.
 
-## <a name="use-of-parallel-documents"></a>Používání paralelních dokumentů
+## <a name="use-of-parallel-documents"></a>Použití paralelních dokumentů
 
-Paralelní dokumentů se používají v systému:
+Systém používá paralelní dokumenty:
 
-1.  Další informace o způsobu slov a vět věty běžně mapování mezi dva jazyků
+1.  Informace o tom, jak jsou slova, fráze a věty často mapované mezi oběma jazyky.
 
-2.  Další postupy zpracování kontextu vhodné v závislosti na okolní frází. Slovo nemusí vždy přeložit na stejnou slovo v přesném znění v jiném jazyce.
+2.  Zjistíte, jak zpracovat příslušný kontext v závislosti na okolních frázích. Slovo se nemusí vždycky překládat na stejné slovo v jiném jazyce.
 
-Jako osvědčený postup Ujistěte se, že je 1:1 věty propojeni zdrojové a cílové jazykové verze dokumentů.
+V souladu s osvědčeným postupem se ujistěte, že mezi zdrojovými a cílovými jazykovými verzemi dokumentů je 1:1 věta.
 
-Pokud váš projekt je specifických pro doménu (kategorie), dokumenty musí být konzistentní vzhledem k aplikacím v, řečeno terminologií v rámci dané kategorie. Kvality výsledný překladový systém závisí na počtu věty ve vaší sadě dokumentu a kvalitu vět. Další příklady dokumenty obsahují s různými použití slova specifická pro danou kategorii, lepší úlohy systému můžete provést při překladu.
+Pokud je váš projekt specifický pro doménu (kategorie), měly by být dokumenty v terminologii v této kategorii konzistentní. Kvalita výsledného systému překladu závisí na počtu vět v sadě dokumentů a na kvalitě vět. V dalších příkladech jsou dokumenty, které obsahují různé použití pro konkrétní kategorii, lepší úlohu, kterou může systém provádět během překladu.
 
-Dokumenty, nahraje jsou privátní pro každý pracovní prostor a můžou používat libovolný počet projektů nebo školení jak potřebujete. Věty extrahovat z vašich dokumentů samostatně uložených v úložišti jako prostý text soubory Unicode a jsou k dispozici pro odstranění. Nepoužívejte vlastní překladač jako úložiště dokumentů, nebudete moct stahovat dokumenty, které jste nahráli ve formátu je nahráli.
+Nahrané dokumenty jsou pro každý pracovní prostor privátní a dají se použít v tolika projektech nebo školeních, kolik vám vyhovuje. Věty extrahované z vašich dokumentů se ukládají samostatně v úložišti jako textové soubory s kódováním Unicode a jsou dostupné pro odstranění. Nepoužívejte vlastní překladatele jako úložiště dokumentů, takže nebudete moct stahovat dokumenty, které jste nahráli ve formátu, který jste nahráli.
 
 
 
 ## <a name="next-steps"></a>Další postup
 
-- Další informace o použití [slovníku](what-is-dictionary.md) ve vlastní překladač.
+- Naučte se používat [slovník](what-is-dictionary.md) ve vlastním překladateli.

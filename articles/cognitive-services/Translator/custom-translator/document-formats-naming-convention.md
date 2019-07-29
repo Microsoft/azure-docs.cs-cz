@@ -1,56 +1,56 @@
 ---
-title: Formát dokumentu a konvence pojmenování – vlastní Translator
+title: Formáty dokumentů a konvence pojmenování – vlastní Překladatel
 titleSuffix: Azure Cognitive Services
-description: Toto je Průvodce na formát dokumentu a zásady vytváření názvů Translatoru Custom. Tento koncept pomáhá spravovat lepší abd předešel konfliktům názvů dokumenty.
+description: Toto je průvodce formáty dokumentů a konvence pojmenování ve vlastním překladateli. Tento koncept pomáhá spravovat názvy dokumentů lépe Abd konflikty při pojmenovávání.
 author: swmachan
-manager: christw
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 2f7a83be510e608bb3f630a2fb1860502d8e4475
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 41b15cc998a7bacd033ef2fe083fc99f1bff0286
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67443427"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68595850"
 ---
-# <a name="document-formats-and-naming-convention-guidance"></a>Zdokumentujte formátů a pojmenování pokyny konvence
+# <a name="document-formats-and-naming-convention-guidance"></a>Formáty dokumentů a pokyny k konvenci pojmenování
 
-Jakýkoli soubor používaný pro vlastní překládání musí být dlouhý aspoň **čtyři** znaků.
+Každý soubor, který se používá pro vlastní překlad, musí mít délku alespoň **čtyři** znaky.
 
-Tato tabulka obsahuje všechny podporované formáty souborů, které vám umožní vytvořit svůj systém překlad:
+Tato tabulka obsahuje všechny podporované formáty souborů, které můžete použít k sestavení systému překladu:
 
 | Formát            | Rozšíření   | Popis                                                                                                                                                                                                                                                                    |
 |-------------------|--------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| XLIFF             | . XLF. XLIFF | Paralelní dokumentu formát exportu systémů překladu paměti. Použít jazyky jsou definovány v souboru.                                                                                                                                                              |
-| TMX               | .TMX         | Paralelní dokumentu formát exportu systémů překladu paměti. Použít jazyky jsou definovány v souboru.                                                                                                                                                              |
-| ZIP               | . PSČ         | PSČ je ve formátu souboru archivu.                                                                                                                                                                                                        |
-| Locstudio         | .LCL         | Microsoft formát pro paralelní dokumenty                                                                                                                                                                                                                                      |
+| XLIFF             | . XLF, . XLIFF | Formát paralelního dokumentu, který exportuje systémy překladu paměti. Používané jazyky jsou definovány v souboru.                                                                                                                                                              |
+| TMX               | .TMX         | Formát paralelního dokumentu, který exportuje systémy překladu paměti. Používané jazyky jsou definovány v souboru.                                                                                                                                                              |
+| VĚŘITEL               | . VĚŘITEL         | ZIP je formát souboru archivu.                                                                                                                                                                                                        |
+| Locstudio         | .LCL         | Formát Microsoft pro paralelní dokumenty                                                                                                                                                                                                                                      |
 | Microsoft Word    | .DOCX        | Dokument aplikace Microsoft Word                                                                                                                                                                                                                                                        |
-| Adobe Acrobat     | .PDF         | Adobe Acrobat PDF                                                                                                                                                                                                                                                |
+| Adobe Acrobat     | .PDF         | Portable Document Adobe Acrobat                                                                                                                                                                                                                                                |
 | HTML              | .HTML, .HTM  | Dokument HTML                                                                                                                                                                                                                                                                  |
-| Textový soubor         | .TXT         | Textových souborů s kódováním UTF-16 nebo UTF-8. Název souboru nesmí obsahovat japonské znaky.                                                                                                                                                                                        |
-| Zarovnané textový soubor | . ZAROVNÁNÍ       | Rozšíření `.ALIGN` je zvláštní rozšíření, které můžete použít, pokud víte, že jsou věty v páru dokumentu perfektně zarovnaný. Pokud zadáte `.ALIGN` souboru, vlastní Translator nebude zarovnat vět za vás. |
-| Excelový soubor        | .XLSX        | Soubor aplikace Excel (2013 nebo novější). První řádek / řádků tabulky by měl být kód jazyka.                                                                                                                                                                                                                                                      |
+| Textový soubor         | .TXT         | Textové soubory kódované v kódování UTF-16 nebo UTF-8. Název souboru nesmí obsahovat japonské znaky.                                                                                                                                                                                        |
+| Soubor zarovnaného textu | . VZTAHUJÍ       | Přípona `.ALIGN` je speciální rozšíření, které můžete použít, pokud víte, že věty v páru dokumentů jsou dokonale zarovnané. Pokud zadáte `.ALIGN` soubor, vlastní Překladatel nebude zarovnávat věty za vás. |
+| Excelový soubor        | .XLSX        | Excelový soubor (2013 nebo novější). První řádek nebo řádek tabulky by měl být kód jazyka.                                                                                                                                                                                                                                                      |
 
-## <a name="dictionary-formats"></a>Slovník formátů
+## <a name="dictionary-formats"></a>Formáty slovníku
 
-Translator vlastní slovníky, podporuje všechny formáty souborů, které jsou podporovány pro trénovací sady. Pokud používáte Excel slovníku, první řádek / řádků tabulky by měl být kódech jazyků.
+U slovníků podporuje vlastní Překladatel všechny formáty souborů, které jsou podporované pro školicí sady. Pokud používáte slovník aplikace Excel, první řádek nebo řádek tabulky by měl být jazykový kód.
 
-## <a name="zip-file-formats"></a>Formáty souboru ZIP
+## <a name="zip-file-formats"></a>Formáty souborů zip
 
-Dokumenty lze seskupené do souboru zip jeden a nahráli. Podporuje vlastní Translator zip formáty souborů (ZIP, GZ a TGZ).
+Dokumenty mohou být seskupeny do jednoho souboru zip a nahrány. Vlastní Překladatel podporuje formáty souborů zip (ZIP, GZ a TGZ).
 
-Každý dokument v souboru zip s příponou TXT, HTML, HTM, PDF, DOCX, ZAROVNAT musí následovat tyto zásady vytváření názvů:
+Každý dokument v souboru zip, který má příponu TXT, HTML, HTM, PDF, DOCX, musí být v souladu s těmito konvencemi vytváření názvů:
 
-{název dokumentu} \_{kód jazyka} {název dokumentu} je název dokumentu, je {kód jazyka} LanguageID ISO (dvou znaků) označující, že dokument obsahuje věty v daném jazyce. Musí existovat podtržítko (_), než kód jazyka.
+{název dokumentu} \_{Code Language} kde {Document Name} je název vašeho dokumentu a {Language Code} je ISO LanguageID (dva znaky), což značí, že dokument obsahuje věty v tomto jazyce. Před kódem jazyka musí být znak podtržítka (_).
 
-Například pokud chcete nahrát dva paralelní dokumenty v rámci zip pro anglické Španělština systému, soubory by měl být s názvem "data_en" a "data_es".
+Například pro nahrání dvou paralelních dokumentů v rámci souboru zip pro angličtinu do španělštiny by měly být soubory pojmenovány "data_en" a "data_es".
 
-Soubory z paměti překladu (TMX XLF, XLIFF, LCL, XLSX) nemusí dodržovat zásady vytváření názvů konkrétní jazyk.  
+Soubory paměti pro překlad (TMX, XLF, XLIFF, LCL, XLSX) nejsou vyžadovány pro konkrétní jazykové konvence pojmenování.  
 
 ## <a name="next-steps"></a>Další postup
 
-- Přečtěte si informace o [projektu](workspace-and-project.md#what-is-a-custom-translator-project) můžete vytvořit a spravovat je.
+- Přečtěte si o [projektu](workspace-and-project.md#what-is-a-custom-translator-project) , abyste ho mohli vytvořit a spravovat.

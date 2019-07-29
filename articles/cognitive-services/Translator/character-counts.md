@@ -1,7 +1,7 @@
 ---
-title: Znak počty – Translator Text API
-titlesuffix: Azure Cognitive Services
-description: Jak rozhraní Translator Text API vrátí počet znaků.
+title: Počty znaků – Translator Text API
+titleSuffix: Azure Cognitive Services
+description: Způsob, jakým Translator Text API počítá znaky.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,34 +10,34 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 06/04/2019
 ms.author: swmachan
-ms.openlocfilehash: cfd5823009b66b6b525c7add1fb56953d3c1a507
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: e3a16d9272e75f9a94f5381c1681c036d177e0f6
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67445264"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68595987"
 ---
-# <a name="how-the-translator-text-api-counts-characters"></a>Jak rozhraní Translator Text API vrátí počet znaků
+# <a name="how-the-translator-text-api-counts-characters"></a>Jak Translator Text API počítá znaky
 
-Translator Text API se počítá každý bod kódu Unicode vstupního textu jako znak. Každý překlad textu do jazyka se počítá jako samostatný překladu i v případě, že byla žádost učiněna v jediné rozhraní API volání přitom přeložte do více jazyků. Délka odpovědi, nezáleží.
+Translator Text API počítá každý bod kódu Unicode vstupního textu jako znak. Každý překlad textu na jazyk se počítá jako samostatný překlad, i když se požadavek provedl v jediném volání rozhraní API, které se překládá do několika jazyků. Délka odpovědi nezáleží.
 
-Co se počítá je:
+Jaké počty jsou:
 
-* Text předané rozhraní Translator Text API v textu požadavku
-   * `Text` Při použití metody přeložit, Transliterate a vyhledávací slovník
-   * `Text` a `Translation` při použití metody ukázky slovníků
-* Všechny značky: HTML, značky XML a další v rámci textového pole z textu požadavku. Zápis JSON použitý k vytvoření žádosti (například "Text:") se nepočítá.
-* Jednotlivé písmeno
+* Text předaný do Translator Text API v těle žádosti
+   * `Text`Při použití metod překladu, přepisu a slovníku vyhledávání
+   * `Text`a `Translation` při použití metody Dictionary Examples
+* Všechny značky: HTML, značky XML atd. v textovém poli textu žádosti. Zápis JSON použitý k vytvoření žádosti (například text:) se nepočítá.
+* Jednotlivá písmena
 * Interpunkce
-* Mezera, kartu, značky a jakýkoli druh prázdný znak
-* Každý bod kódu definované v kódování Unicode
-* Opakované překladu, i když mají přeložit stejný text dříve
+* Mezera, tabulátor, značka a libovolný druh prázdného znaku
+* Každý bod kódu definovaný v kódování Unicode
+* Opakovaný překlad, i když jste dříve přeložili stejný text
 
-U skriptů podle ideogramů například čínštiny a japonská Kanji Translator Text API bude stále počet kódové body sady Unicode, ideogram o jeden znak. Výjimka: Náhrady kódu Unicode počet jako dva znaky.
+Pro skripty založené na ideograms, jako je například čínština a japonština kanji, bude Translator Text API stále počítat počet kódových bodů Unicode, jeden znak na ideogram. Výjimka: Náhrada Unicode se počítá jako dva znaky.
 
-Počet požadavků, slova, bajtů nebo věty je bezvýznamná v počtu znaků.
+Počet požadavků, slov, bajtů nebo vět není v počtu znaků podstatný.
 
-Volání metody rozpoznat a BreakSentence započítávají spotřeby znak. Předpokládáme, že volání metody rozpoznat a BreakSentence jsou v rozumné poměru k použití jiné funkce, které jsou započteny. Pokud počet rozpoznat nebo BreakSentence volání, které provedete překračuje počet jiných spočítaný počet metod 100krát, Microsoft si vyhrazuje právo k omezení použití metody rozpoznat a BreakSentence.
+Volání metod detekce a BreakSentence se ve spotřebě znaků nezapočítávají. Očekáváme ale, že volání metod detekce a BreakSentence jsou úměrná k používání dalších funkcí, které se počítají. Pokud počet vydaných volání detekce nebo BreakSentence překročí počet dalších výpočetních metod o 100 krát, společnost Microsoft si vyhrazuje právo omezit použití metod detekce a BreakSentence.
 
 
-Další informace o počtu znaků je v [nejčastější dotazy k Microsoft Translatoru](https://www.microsoft.com/en-us/translator/faq.aspx).
+Další informace o počtu znaků najdete v tématu [Nejčastější dotazy k Microsoft translatoru](https://www.microsoft.com/en-us/translator/faq.aspx).

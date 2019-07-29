@@ -1,7 +1,7 @@
 ---
 title: Filtrování vulgárních výrazů – Translator Text API
-titlesuffix: Azure Cognitive Services
-description: Použijte vulgárních výrazů v rozhraní Translator Text API filtrování.
+titleSuffix: Azure Cognitive Services
+description: Použijte filtrování vulgárních výrazů v Translator Text API.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,28 +10,28 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 06/04/2019
 ms.author: swmachan
-ms.openlocfilehash: cc6bf9766912aa55d7869d90976d3089cfd6cf4c
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 114dea098db5c824a1235ba1635f547383bf6743
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67448265"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68595190"
 ---
-# <a name="add-profanity-filtering-with-the-translator-text-api"></a>Přidat vulgárních výrazů filtrování s rozhraním Translator Text API
+# <a name="add-profanity-filtering-with-the-translator-text-api"></a>Přidání filtrování vulgárních výrazů pomocí Translator Text API
 
-Službu Translator obvykle uchovává vulgárních výrazů, který je k dispozici ve zdroji v překladu. Do jaké míry vulgárních výrazů a stejného kontextu, který umožňuje neslušná slova se liší mezi jazykovými verzemi. Stupeň vulgárních výrazů v cílovém jazyce v důsledku toho mohou rozšířit nebo nižší.
+Služba Translator obvykle uchovává vulgární výrazy, které se nacházejí ve zdroji v překladu. Stupeň vulgárních výrazů a kontext, který dává slova neslušně odlišně mezi kulturami. V důsledku toho může být stupeň vulgárních výrazů v cílovém jazyce zesílený nebo omezený.
 
-Pokud chcete-li předejít zobrazení vulgárních výrazů v překladu, i když vulgárních výrazů je k dispozici ve zdrojovém textu, použijte vulgárních výrazů v metodě Translate() k dispozici možnost filtrování. Tato možnost umožňuje zvolte, jestli chcete zobrazit vulgárních výrazů odstraněn, označené odpovídající značky, nebo provést nebyla provedena žádná akce.
+Pokud chcete zabránit zobrazení vulgárních výrazů v překladu, a to i v případě, že se ve zdrojovém textu vyskytuje vulgární text, použijte možnost filtrování vulgárních výrazů, která je k dispozici v metodě přeložit (). Tato možnost umožňuje zvolit, zda chcete odstranit vulgární výrazy, označené příslušnými značkami nebo Neprovádět žádnou akci.
 
-Metoda Translate() přijímá parametr "options", který obsahuje nový prvek "ProfanityAction". Přípustné hodnoty ProfanityAction jsou "NoAction", "Označený" a "Odstraněno".
+Metoda přeložit () přebírá parametr options, který obsahuje nový prvek "ProfanityAction". Přijaté hodnoty ProfanityAction jsou "žádná akce", "označeno" a "odstraněno".
 
-## <a name="accepted-values-of-profanityaction-and-examples"></a>Přípustné hodnoty ProfanityAction a příklady
-|Hodnota ProfanityAction | Akce | Příklad: Source – japonština | Příklad: Target – angličtina|
+## <a name="accepted-values-of-profanityaction-and-examples"></a>Přijaté hodnoty ProfanityAction a příkladů
+|Hodnota ProfanityAction | Action | Příklad: Zdroj – japonština | Příklad: Cíl – angličtina|
 | :---|:---|:---|:---|
-| NoAction | Default (Výchozí). Stejně jako nastavit možnost. Vulgárních výrazů předá ze zdroje do cíle. | 彼は変態です。 | Je Hlupák. |
-| Označené | Urážlivá slova jsou ohraničeny značky XML \<vulgárních výrazů >... \</profanity >. | 彼は変態です。 | Je \<vulgárních výrazů > jerk\</profanity >. |
-| Odstranění | Urážlivá slova se odeberou z výstupu bez nahrazení. | 彼は。 | Je. |
+| NoAction | Default (Výchozí). Stejné jako nastavení možnosti. Vulgární výrazy se předává ze zdroje do cíle. | 彼は変態です。 | Je Jerk. |
+| Vyznačen | Slova v vulgárních výrazech jsou obklopená \<vulgárními značkami XML >... \</Profanity >. | 彼は変態です。 | Je to \<vulgární > Jerk\</Profanity >. |
+| Odstraněné | Slova v vulgárních textech se z výstupu odeberou bez náhrady. | 彼は Marketplace. | Je. |
 
 ## <a name="next-steps"></a>Další postup
 > [!div class="nextstepaction"]
-> [Použít filtrování pomocí vaše volání rozhraní Translator API vulgárních výrazů](reference/v3-0-translate.md)
+> [Použití filtrování vulgárních výrazů s voláním rozhraní API pro překladatele](reference/v3-0-translate.md)

@@ -16,14 +16,14 @@ ms.workload: infrastructure
 ms.date: 12/05/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 05fd9f06bec2a68455d42bfd460f0a5a419a255e
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 25160c50cd4844fdb5b3a3454213b2067ef91d01
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67708042"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68608021"
 ---
-# <a name="tutorial-monitor-and-update-a-windows-virtual-machine-in-azure"></a>Kurz: Monitorovat a aktualizovat virtuální počítač s Windows v Azure
+# <a name="tutorial-monitor-and-update-a-windows-virtual-machine-in-azure"></a>Kurz: Monitorování a aktualizace virtuálního počítače s Windows v Azure
 
 Monitorování Azure prostřednictvím agentů shromažďuje data spouštění a výkonu z virtuálních počítačů Azure, ukládá tato data do úložiště Azure a zpřístupňuje je přes portál, modul Azure PowerShell a Azure CLI. Správa aktualizací umožňuje spravovat aktualizace a opravy pro virtuální počítače Azure s Windows.
 
@@ -31,7 +31,7 @@ V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 > * Povolení diagnostiky spouštění na virtuálním počítači
-> * Zobrazení diagnostiky spouštění
+> * Zobrazit diagnostiku spouštění
 > * Zobrazení metrik hostitele virtuálního počítače
 > * Instalace diagnostického rozšíření
 > * Zobrazení metrik virtuálního počítače
@@ -54,7 +54,7 @@ Ke konfiguraci monitorování a správy aktualizací Azure v tomto kurzu budete 
 $cred = Get-Credential
 ```
 
-Teď vytvořte virtuální počítač s [rutiny New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm). Následující příklad vytvoří virtuální počítač s názvem *myVM* v umístění *EastUS*. Pokud ještě neexistuje, vytvoří se skupina prostředků *myResourceGroupMonitorMonitor* a podpůrné síťové prostředky:
+Nyní vytvořte virtuální počítač pomocí [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm). Následující příklad vytvoří virtuální počítač s názvem *myVM* v umístění *EastUS*. Pokud ještě neexistuje, vytvoří se skupina prostředků *myResourceGroupMonitorMonitor* a podpůrné síťové prostředky:
 
 ```azurepowershell-interactive
 New-AzVm `
@@ -66,9 +66,9 @@ New-AzVm `
 
 Vytvoření prostředků a virtuálního počítače trvá několik minut.
 
-## <a name="view-boot-diagnostics"></a>Zobrazení diagnostiky spouštění
+## <a name="view-boot-diagnostics"></a>Zobrazit diagnostiku spouštění
 
-Při spouštění virtuálních počítačů s Windows zachytí agent diagnostiky spouštění výstup na obrazovce, který můžete použít pro účely řešení potíží. Tato funkce je ve výchozím nastavení zapnuta. Zachycené snímky obrazovky jsou uložené v účtu služby Azure storage, který se také vytvoří ve výchozím nastavení.
+Při spouštění virtuálních počítačů s Windows zachytí agent diagnostiky spouštění výstup na obrazovce, který můžete použít pro účely řešení potíží. Tato funkce je ve výchozím nastavení zapnuta. Zachycené snímky obrazovky se ukládají v účtu služby Azure Storage, který je také vytvořen ve výchozím nastavení.
 
 Diagnostická data spouštění můžete získat pomocí příkazu [Get-AzureRmVMBootDiagnosticsData](https://docs.microsoft.com/powershell/module/az.compute/get-azvmbootdiagnosticsdata). V následujícím příkladu se diagnostika spouštění stáhne do kořenové složky na jednotce *c:\*.
 
@@ -142,7 +142,7 @@ Pokud na virtuálních počítačích, které vyžadují aktualizace, chcete pro
 Proces ověřování také zkontroluje, jestli je virtuální počítač zřízený s agentem Microsoft Monitoring Agent (MMA) a hybridním pracovním procesem runbooku Automation.
 Agent slouží ke komunikaci s virtuálním počítačem a získávání informací o nainstalovaném softwaru.
 
-Zvolte Log Analytics pracovní prostor a účet automation a klikněte na tlačítko **povolit** povolte řešení. Povolení řešení trvá přibližně 15 minut.
+Vyberte pracovní prostor Log Analytics a účet Automation a kliknutím na **Povolit** povolte řešení. Povolení řešení trvá přibližně 15 minut.
 
 Pokud během připojování chyběla některá z následujících požadovaných součástí, automaticky se přidá:
 
@@ -150,11 +150,11 @@ Pokud během připojování chyběla některá z následujících požadovaných
 * [Automation](../../automation/automation-offering-get-started.md)
 * Povolený [hybridní pracovní proces runbooku](../../automation/automation-hybrid-runbook-worker.md) na virtuálním počítači
 
-Otevře se obrazovka řešení **Update Management**. Nakonfigurujte umístění, pracovní prostor Log Analytics a účet Automation a klikněte na tlačítko **povolit**. Pokud se pole zobrazují šedě, znamená to, že pro daný virtuální počítač je povolené jiné řešení automatizace a musí se použít stejný pracovní prostor a účet Automation.
+Otevře se obrazovka řešení **Update Management**. Nakonfigurujte umístění, Log Analytics pracovní prostor a účet Automation, které se mají použít, a klikněte na **Povolit**. Pokud se pole zobrazují šedě, znamená to, že pro daný virtuální počítač je povolené jiné řešení automatizace a musí se použít stejný pracovní prostor a účet Automation.
 
 ![Povolení řešení Update Management](./media/tutorial-monitoring/manageupdates-update-enable.png)
 
-Povolení řešení může trvat až 15 minut. Během této doby byste neměli zavírat okno prohlížeče. Po povolení řešení informace o chybějících aktualizacích na virtuálním počítači jsou přenášeny do protokoly Azure monitoru. Zpřístupnění dat pro analýzu může trvat 30 minut až 6 hodin.
+Povolení řešení může trvat až 15 minut. Během této doby byste neměli zavírat okno prohlížeče. Po povolení řešení budou informace o chybějících aktualizacích na virtuálním počítači Azure Monitor protokoly. Zpřístupnění dat pro analýzu může trvat 30 minut až 6 hodin.
 
 ### <a name="view-update-assessment"></a>Zobrazení posouzení aktualizací
 
@@ -168,22 +168,22 @@ Pokud chcete nainstalovat aktualizace, naplánujte nasazení odpovídající va�
 
 Naplánujte nové nasazení aktualizací pro virtuální počítač kliknutím na **Naplánovat nasazení aktualizace** v horní části obrazovky **Update Management**. Na obrazovce **Nové nasazení aktualizací** zadejte následující informace :
 
-Chcete-li vytvořit nové nasazení aktualizace, vyberte **naplánovat nasazení aktualizací**. **Nové nasazení aktualizací** otevře se stránka. Zadejte hodnoty vlastností popsaných v následující tabulce a potom klikněte na tlačítko **vytvořit**:
+Pokud chcete vytvořit nové nasazení aktualizace, vyberte **naplánovat nasazení aktualizací**. Otevře se stránka **nové nasazení aktualizace** . Zadejte hodnoty vlastností popsaných v následující tabulce a pak klikněte na **vytvořit**:
 
 | Vlastnost | Description |
 | --- | --- |
-| Název |Jedinečný název pro identifikaci nasazení aktualizace. |
+| Name |Jedinečný název pro identifikaci nasazení aktualizace. |
 |Operační systém| Linux nebo Windows|
-| Skupiny aktualizace |Pro počítače v Azure definujte dotaz na základě kombinace předplatného, skupiny prostředků, míst a značky vytvářet dynamické skupiny virtuálních počítačů Azure má zahrnout do vašeho nasazení. </br></br>Pro počítače mimo Azure vyberte existující uložené výsledky hledání a vyberte skupinu počítačů mimo Azure zahrnout do nasazení. </br></br>Další informace najdete v tématu [dynamické skupiny](../../automation/automation-update-management.md#using-dynamic-groups)|
-| Počítače k aktualizaci |Vyberte uložená hledání, importované skupiny, nebo vybrat počítač z rozevíracího seznamu a vyberte jednotlivé počítače. Pokud zvolíte možnost **Počítače**, ve sloupci **PŘIPRAVENOST AGENTA AKTUALIZACE** se zobrazí připravenost počítačů.</br> Další informace o různých způsobech vytvoření skupiny počítačů v Azure Monitor protokolů, najdete v článku [skupiny počítačů v protokoly Azure monitoru](../../azure-monitor/platform/computer-groups.md) |
-|Klasifikacích aktualizací|Vyberte všechny klasifikace aktualizací, které potřebujete|
-|Zahrnout nebo vyloučit aktualizace|Tím se otevře **zahrnout/vyloučit** stránky. Aktualizace, které se mají zahrnout nebo vyloučit jsou na samostatných kartách. Další informace o zpracování zařazení, naleznete v tématu [zahrnutí chování](../../automation/automation-update-management.md#inclusion-behavior) |
-|Nastavení plánu|Vyberte čas spuštění a vyberte buď jednou nebo opakovaně pro opakování|
-| Předběžné skripty a pozálohovacích skriptů|Vyberte skripty spouštěné před a po nasazení|
-| Časové období údržby |Počet minut pro aktualizace. Hodnota nemůže být menší než 30 minut a maximálně 6 hodin |
-| Restartovat ovládacího prvku| Určuje, jak by měl být zpracována restartování počítače. Dostupné možnosti jsou:</br>Restartovat v případě potřeby (výchozí)</br>Vždy restartovat</br>Nikdy nerestartovat</br>Pouze restartovat – nenainstalují se aktualizace|
+| Skupiny, které se mají aktualizovat |V případě počítačů Azure definujte dotaz založený na kombinaci předplatného, skupin prostředků, umístění a značek, abyste vytvořili dynamickou skupinu virtuálních počítačů Azure, které chcete zahrnout do nasazení. </br></br>V případě počítačů mimo Azure vyberte existující uložené hledání a vyberte skupinu počítačů mimo Azure, které chcete zahrnout do nasazení. </br></br>Další informace najdete v tématu [dynamické skupiny](../../automation/automation-update-management.md#using-dynamic-groups) .|
+| Počítače, které se mají aktualizovat |V rozevíracím seznamu vyberte uložené hledání, importovanou skupinu nebo vyberte možnost počítač a vyberte jednotlivé počítače. Pokud zvolíte možnost **Počítače**, ve sloupci **PŘIPRAVENOST AGENTA AKTUALIZACE** se zobrazí připravenost počítačů.</br> Další informace o různých metodách vytváření skupin počítačů v protokolu Azure Monitor najdete v tématu [skupiny počítačů v protokolech Azure monitor](../../azure-monitor/platform/computer-groups.md) |
+|Klasifikace aktualizací|Vyberte všechny klasifikace aktualizací, které potřebujete.|
+|Zahrnout nebo vyloučit aktualizace|Tím se otevře stránka **zahrnutí/vyloučení** . Aktualizace, které se mají zahrnout nebo vyloučit jsou na samostatných kartách. Další informace o způsobu zpracování zahrnutí najdete v tématu věnovaném [chování při zahrnutí](../../automation/automation-update-management.md#inclusion-behavior) . |
+|Nastavení plánu|Vyberte čas, kdy se má spustit, a pro opakování vyberte buď jednou, nebo opakovanou.|
+| Pre-Scripts + post-Scripts|Vyberte skripty, které se spustí před nasazením a po něm.|
+| Časové období údržby |Počet minut, po které se nastaví aktualizace. Hodnota nesmí být kratší než 30 minut a maximálně 6 hodin. |
+| Restartovat ovládací prvek| Určuje, jak by se mělo zpracovat restartování. Dostupné možnosti jsou:</br>Restartovat v případě potřeby (výchozí)</br>Vždy restartovat</br>Nikdy nerestartovat</br>Pouze restartovat – nenainstalují se aktualizace|
 
-Nasazení aktualizací můžete vytvořit také prostřednictvím kódu programu. Informace o vytvoření nasazení aktualizace pomocí rozhraní REST API najdete v tématu [vytvoření konfigurace aktualizace softwaru -](/rest/api/automation/softwareupdateconfigurations/create). Je také ukázkové sady runbook, který slouží k vytvoření týdenní aktualizace nasazení. Další informace o této sady runbook najdete v tématu [vytvořte týdenní nasazení aktualizací pro jeden nebo více virtuálních počítačů ve skupině prostředků](https://gallery.technet.microsoft.com/scriptcenter/Create-a-weekly-update-2ad359a1).
+Nasazení aktualizací lze také vytvořit programově. Informace o tom, jak vytvořit nasazení aktualizace pomocí REST API, najdete v tématu [Konfigurace aktualizací softwaru-vytvořit](/rest/api/automation/softwareupdateconfigurations/create). K dispozici je také Ukázková sada Runbook, kterou lze použít k vytvoření týdenního nasazení aktualizací. Další informace o této sadě Runbook najdete v tématu [Vytvoření týdenního nasazení aktualizací pro jeden nebo více virtuálních počítačů ve skupině prostředků](https://gallery.technet.microsoft.com/scriptcenter/Create-a-weekly-update-2ad359a1).
 
 Jakmile dokončíte konfiguraci plánu, klikněte na tlačítko **Vytvořit** a vrátíte se na řídicí panel stavu.
 Všimněte si, že v tabulce **Naplánované** se zobrazí plán nasazení, který jste vytvořili.
@@ -222,13 +222,13 @@ Povolení správy změn a inventáře pro virtuální počítač:
 2. V seznamu vyberte virtuální počítač.
 3. Na obrazovce virtuálního počítače v části **Operace** klikněte na **Inventory** nebo **Change Tracking**. Otevře se obrazovka **Povolit řešení Change Tracking a Inventory**.
 
-Nakonfigurujte umístění, pracovní prostor Log Analytics a účet Automation a klikněte na tlačítko **povolit**. Pokud se pole zobrazují šedě, znamená to, že pro daný virtuální počítač je povolené jiné řešení automatizace a musí se použít stejný pracovní prostor a účet Automation. I když jsou řešení v nabídce oddělená, stále se jedná o stejné řešení. Povolením jednoho se na virtuálním počítači povolí obě.
+Nakonfigurujte umístění, Log Analytics pracovní prostor a účet Automation, které se mají použít, a klikněte na **Povolit**. Pokud se pole zobrazují šedě, znamená to, že pro daný virtuální počítač je povolené jiné řešení automatizace a musí se použít stejný pracovní prostor a účet Automation. I když jsou řešení v nabídce oddělená, stále se jedná o stejné řešení. Povolením jednoho se na virtuálním počítači povolí obě.
 
 ![Povolení sledování změn a inventáře](./media/tutorial-monitoring/manage-inventory-enable.png)
 
 Po povolení řešení může shromažďování soupisu na virtuálním počítači nějakou dobu trvat, a až pak se zobrazí data.
 
-### <a name="track-changes"></a>Sledování změn
+### <a name="track-changes"></a>Sledovat změny
 
 Na svém virtuálním počítači v části **OPERACE** vyberte **Sledování změn**. Klikněte na **Upravit nastavení** a zobrazí se stránka **Change Tracking**. Vyberte typ nastavení, které chcete sledovat, a kliknutím na **+ Přidat** nakonfigurujte nastavení. Dostupné možnosti pro Windows:
 
@@ -255,11 +255,11 @@ Zastavení a spuštění virtuálního počítače zapíše tuto událost do jeh
 
 Tento graf ukazuje změny, ke kterým došlo v průběhu času. Po přidání připojení protokolu aktivit zobrazuje čára grafu úplně nahoře události protokolu aktivit Azure. Jednotlivé řádky grafu reprezentují různé typy sledovatelných změn. Tyto typy jsou linuxové procesy démon, soubory, klíče registru systému Windows, software a služby pro Windows. Karta Změny zobrazuje podrobnosti o změnách znázorněných ve vizualizaci v sestupném pořadí podle času, kdy ke změně došlo (nejnovější je první).
 
-## <a name="advanced-monitoring"></a>Pokročilé sledování
+## <a name="advanced-monitoring"></a>Rozšířené monitorování
 
 K pokročilejšímu monitorování virtuálního počítače můžete použít řešení, jako jsou Update Management, Change Tracking a Inventory, která poskytuje [Azure Automation](../../automation/automation-intro.md).
 
-Pokud máte přístup k pracovnímu prostoru služby Log Analytics, můžete výběrem možnosti **Upřesnit nastavení** v části **NASTAVENÍ** zjistit klíč a identifikátor pracovního prostoru. Použití [Set-AzVMExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension) příkaz pro přidání rozšíření Microsoft Monitoring agent k virtuálnímu počítači. Aktualizujte hodnoty proměnných v níže uvedené ukázce pomocí svého klíče a ID pracovního prostoru služby Log Analytics.
+Pokud máte přístup k pracovnímu prostoru služby Log Analytics, můžete výběrem možnosti **Upřesnit nastavení** v části **NASTAVENÍ** zjistit klíč a identifikátor pracovního prostoru. K přidání rozšíření Microsoft Monitoring Agent do virtuálního počítače použijte příkaz [set-AzVMExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension) . Aktualizujte hodnoty proměnných v níže uvedené ukázce pomocí svého klíče a ID pracovního prostoru služby Log Analytics.
 
 ```powershell
 $workspaceId = "<Replace with your workspace Id>"
@@ -278,7 +278,7 @@ Set-AzVMExtension -ResourceGroupName "myResourceGroupMonitor" `
 
 Po několika minutách by se nový počítač měl zobrazit v pracovním prostoru služby Log Analytics.
 
-![Okno pracovních prostorů log Analytics](./media/tutorial-monitoring/tutorial-monitor-oms.png)
+![Okno pracovního prostoru Log Analytics](./media/tutorial-monitoring/tutorial-monitor-oms.png)
 
 ## <a name="next-steps"></a>Další postup
 
@@ -288,7 +288,7 @@ V tomto kurzu jste nakonfigurovali a zkontrolovali virtuální počítače ve sl
 > * Vytvoření virtuální sítě
 > * Vytvoření skupiny prostředků a virtuálního počítače
 > * Povolení diagnostiky spouštění ve virtuálním počítači
-> * Zobrazení diagnostiky spouštění
+> * Zobrazit diagnostiku spouštění
 > * Zobrazení metrik hostitele
 > * Instalace diagnostického rozšíření
 > * Zobrazení metrik virtuálního počítače
@@ -300,4 +300,4 @@ V tomto kurzu jste nakonfigurovali a zkontrolovali virtuální počítače ve sl
 V dalším kurzu se dozvíte něco o službě Azure Security Center.
 
 > [!div class="nextstepaction"]
-> [Správa zabezpečení virtuálních počítačů](./tutorial-azure-security.md)
+> [Správa zabezpečení virtuálních počítačů](../../security/fundamentals/overview.md)

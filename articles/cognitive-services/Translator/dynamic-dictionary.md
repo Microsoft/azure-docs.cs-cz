@@ -1,7 +1,7 @@
 ---
 title: Dynamický slovník – Translator Text API
-titlesuffix: Azure Cognitive Services
-description: Jak používat funkci dynamický slovník Translator Text API.
+titleSuffix: Azure Cognitive Services
+description: Jak používat funkci dynamického slovníku Translator Text API.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,32 +10,32 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 06/04/2019
 ms.author: swmachan
-ms.openlocfilehash: a815434cb8797acf6b92a8fe4a4f1ff69508975d
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: f586702350b38c6d546767f64a8e2f6115b59817
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67839217"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68595290"
 ---
-# <a name="how-to-use-a-dynamic-dictionary"></a>Jak používat dynamický slovník
+# <a name="how-to-use-a-dynamic-dictionary"></a>Použití dynamického slovníku
 
-Pokud již znáte překlad, kterou chcete použít pro slovo nebo frázi, můžete je zadat jako kód v rámci požadavku. Je dynamický slovník je jen bezpečný pro složená, jako jsou vlastní názvy a názvy produktů.
+Pokud už znáte překlad, který chcete použít pro slovo nebo frázi, můžete ho v rámci žádosti dodat jako značku. Dynamický slovník je bezpečný jenom pro složená podstatná jména, jako jsou správné názvy a názvy produktů.
 
-**Syntaxe:**
+**Syntaktick**
 
-< mstrans:dictionary překlad = "překlad frázi" > frází < / mstrans:dictionary >
+< msTrans: slovníkové Translation = "překlady fráze" > fráze </msTrans: Dictionary >
 
-**Požadavky:**
+**Požadavků**
 
-* `From` a `To` jazyky se musí lišit. 
-* Je nutné uvést `From` parametru v žádosti o překlad API namísto použití auto-detect funkce. 
+* Jazyky `From` a`To` se musí lišit. 
+* Místo použití funkce automatického `From` rozpoznávání musíte uvést parametr v požadavku na překlad rozhraní API. 
 
-**Příklad: cs de:**
+**Příklad: en-de:**
 
-Vstupní zdroj: Slovo < mstrans:dictionary překlad =\"wordomatic\"> slova nebo fráze < / mstrans:dictionary > je ke slovníku.
+Zdrojový vstup: Slovo < msTrans: Dictionary Translation =\"wordomatic\"> Word nebo fráze </msTrans: Dictionary > je položka slovníku.
 
-Výstup cíle: DAS sladové "wordomatic" TIS ein Wörterbucheintrag.
+Cílový výstup: Das Wort "wordomatic" tis Ein Wörterbucheintrag.
 
-Tato funkce funguje stejným způsobem a nemusíte režimu HTML.
+Tato funkce funguje stejně jako v režimu HTML a bez něj.
 
-Tato funkce by měly používat střídmě. Odpovídající a mnohem lepší způsob přizpůsobení překladu je s použitím překladač vlastní. Vlastní Translator umožňuje plně využívat kontextu a statistické pravděpodobnosti. Pokud máte nebo můžete vytvořit trénovací data, která zobrazuje vaše firma nebo frázi v kontextu, získáte mnohem lepší výsledky. Můžete najít další informace o vlastní Translator na [ https://aka.ms/CustomTranslator ](https://aka.ms/CustomTranslator).
+Funkce by se měla používat zřídka. Vhodný a mnohem lepší způsob přizpůsobení překladu je použití vlastního překladatele. Vlastní Překladatel umožňuje plné využití kontextových a statistických pravděpodobností. Pokud máte nebo můžete vytvořit školicí data, která zobrazují vaši práci nebo frázi v kontextu, získáte mnohem lepší výsledky. Další informace o vlastní překladateli najdete na adrese [https://aka.ms/CustomTranslator](https://aka.ms/CustomTranslator).

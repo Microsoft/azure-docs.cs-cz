@@ -1,54 +1,54 @@
 ---
-title: Časté otázky – vlastní Translator
+title: Nejčastější dotazy – vlastní Překladatel
 titleSuffix: Azure Cognitive Services
-description: Poskytuje odpovědi na nejčastější dotazy týkající se vlastní překladač.
+description: Obsahuje odpovědi na nejčastější dotazy týkající se vlastního překladatele.
 author: swmachan
-manager: christw
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: reference
-ms.openlocfilehash: 00921eeb9f966ed62d1a2d7605419432a9fa50f5
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 25b7e7015b32609356eb138c86fbe537a87a7a22
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67443402"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68595814"
 ---
 # <a name="frequently-asked-questions"></a>Nejčastější dotazy
 
-Tento článek obsahuje odpovědi na nejčastější dotazy o [vlastní Translator](https://portal.customtranslator.azure.ai).
+Tento článek obsahuje odpovědi na nejčastější dotazy týkající se [vlastního překladatele](https://portal.customtranslator.azure.ai).
 
-## <a name="what-are-the-current-restrictions-in-custom-translator"></a>Jaká jsou aktuální omezení v Translator vlastní?
+## <a name="what-are-the-current-restrictions-in-custom-translator"></a>Jaká jsou aktuální omezení vlastního překladatele?
 
-Existují omezení a limity s ohledem na velikost souboru, cvičení modelu a nasazení modelu. Mějte na tato omezení při nastavování trénování sestavit model ve vlastní překladač.
+Existují omezení a omezení týkající se velikosti souboru, školení modelů a nasazení modelu. Při nastavování vašeho školení pro sestavování modelu ve vlastním překladateli mějte na paměti tato omezení.
 
-- Zadané soubory musí být menší než 100 MB.
-- Jeden jazyk data se nepodporuje.
+- Odeslané soubory musí mít velikost menší než 100 MB.
+- Data Monolingual se nepodporují.
 
-## <a name="when-should-i-request-deployment-for-a-translation-system-that-has-been-trained"></a>Pokud by měl požádat o nasazení pro překlad systému, který byl vyškolila?
+## <a name="when-should-i-request-deployment-for-a-translation-system-that-has-been-trained"></a>Kdy bych chtěl požádat o nasazení systému překladu, který je školený?
 
-Může trvat několik školení k vytvoření optimální překladový systém pro váš projekt. Můžete chtít zkuste použít další trénovacích dat nebo více pečlivě filtrovaná data, pokud nejsou uspokojivé BLEU skóre a / nebo výsledky testů. By měl být striktní a pozor při navrhování ladění sady a vašeho testu nastavte, plně reprezentativní terminologie a stylu materiálů, které chcete přeložit. Může být volnější v sestavování trénovacích dat a experimentovat s různými možnostmi. Žádost o nasazení systému, když jste spokojeni s tím, překlady v výsledkům testů systému neobsahují žádná další data pro přidání do školení k vylepšení trénovaného systému, a chcete získat přístup přes rozhraní API trénovaného modelu.
+Vytvoření optimálního systému překladu pro váš projekt může trvat několik školení. Možná budete chtít zkusit použít více školicích dat nebo více pečlivě filtrovaných dat, pokud BLEU skóre nebo výsledky testu nejsou uspokojivé. Měli byste být přísní a opatrní v návrhu vaší sady pro optimalizaci a sady testů, aby byly plně reprezentativní pro terminologii a styl materiálu, který chcete přeložit. Při vytváření školicích dat můžete provést větší možnosti a experimentovat s různými možnostmi. Vyžádejte nasazení systému, pokud jste spokojeni s překlady ve výsledcích testů systému, nemusíte mít žádná další data, která by bylo možné přidat do školení pro zlepšení vašeho vyučeného systému, a chcete získat přístup k školicímu modelu prostřednictvím rozhraní API.
 
-## <a name="how-many-trained-systems-can-be-deployed-in-a-project"></a>Kolik trénovaného systémy je možné nasadit v projektu?
+## <a name="how-many-trained-systems-can-be-deployed-in-a-project"></a>Kolik naučených systémů lze nasadit v projektu?
 
-Pouze jeden trénovaného systém lze nasadit na projekt. Může trvat několik školení k vytvoření systému vhodný překladu pro váš projekt a doporučujeme vám žádost o nasazení školení, který vám poskytne nejlepší výsledek. Můžete určit kvalitu na školení podle skóre BLEU (vyšší je lepší) a konzultaci s kontrolory před rozhodování o tom, že kvalitu překladu je vhodný pro nasazení.
+V jednom projektu lze nasadit pouze jeden vycvičený systém. Může provést několik školení pro vytvoření vhodného systému překladu pro váš projekt a doporučujeme vám, abyste požádali o nasazení školení, které vám poskytne nejlepší výsledek. Můžete určit kvalitu školení BLEU skóre (vyšší je lepší) a konzultovat s kontrolory před tím, než se rozhodnete, že kvalita překladů je vhodná pro nasazení.
 
-## <a name="when-can-i-expect-my-trainings-to-be-deployed"></a>Když můžou očekávat Moje školení k nasazení?
+## <a name="when-can-i-expect-my-trainings-to-be-deployed"></a>Kdy můžu očekávat, že se mají nasadit moje školení?
 
 Nasazení obvykle trvá méně než hodinu.
 
-## <a name="how-do-you-access-a-deployed-system"></a>Jak můžete přistupovat k nasazený systém?
+## <a name="how-do-you-access-a-deployed-system"></a>Jak přistupujete k nasazenému systému?
 
-Nasazené systémy přístupné prostřednictvím Microsoft Translator Text API V3 zadáním ID kategorie. Další informace o rozhraní Translator Text API najdete v [Reference k rozhraní API](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference) webové stránky.
+Nasazené systémy jsou k dispozici prostřednictvím Microsoft Translator Text API V3 zadáním KódKategorie. Další informace o Translator Text API najdete na webové stránce referenčního [rozhraní API](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference) .
 
-## <a name="how-do-i-skip-alignment-and-sentence-breaking-if-my-data-is-already-sentence-aligned"></a>Jak přeskočit zarovnání a rozdělení dat je již věty zarovnané věty?
+## <a name="how-do-i-skip-alignment-and-sentence-breaking-if-my-data-is-already-sentence-aligned"></a>Návody přeskočit zarovnání a konce věty, pokud jsou moje data už zarovnané na větu?
 
-Vlastní překladač přeskočí zarovnání věty a větu zásadní pro soubory TMX a vyhledat textové soubory s `.align` rozšíření. `.align` soubory uživatelům možnost pro přeskočení vlastní Translator věty dopadem na dřívější kód a zarovnání proces pro soubory, které jsou perfektně zarovnaný a nutné žádné další zpracování. Doporučujeme používat `.align` rozšíření pouze pro soubory, které jsou perfektně zarovnaný.
+Vlastní Překladatel přeskočí zarovnání věty a konce věty pro soubory TMX a textové soubory s `.align` příponou. `.align`soubory dávají uživatelům možnost přeskočit krok a proces zarovnání věty vlastního překladatele pro soubory, které jsou dokonale zarovnané a nemusí provádět žádné další zpracování. Pro soubory, `.align` které jsou dokonale zarovnané, doporučujeme použít rozšíření.
 
-Pokud počet extrahované věty se neshoduje s dva soubory se stejný základní název, vlastní Translator bude stále spuštěn aligner větu `.align` soubory.
+Pokud se počet extrahovaných vět neshoduje se dvěma soubory se stejným základním názvem, vlastní Překladatel pořád spustí zarovnání věty u `.align` souborů.
 
-## <a name="i-tried-uploading-my-tmx-but-it-says-document-processing-failed"></a>Pokus o nahrání Moje TMX, ale to říká "dokumentu zpracování se nezdařilo".
+## <a name="i-tried-uploading-my-tmx-but-it-says-document-processing-failed"></a>Zkoušel jsem odeslat svůj TMX, ale říká "zpracování dokumentu se nezdařilo".
 
-Ujistěte se, TMX odpovídá TMX 1.4b specifikace na <https://www.gala-global.org/tmx-14b>.
+Ujistěte se, že TMX odpovídá specifikaci TMX 1.4 b na adrese <https://www.gala-global.org/tmx-14b>.

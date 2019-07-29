@@ -1,7 +1,7 @@
 ---
-title: Transformace textu – Translator Text API
-titlesuffix: Azure Cognitive Services
-description: Transformace textu s použitím rozhraní Translator Text API.
+title: Transformovat text – Translator Text API
+titleSuffix: Azure Cognitive Services
+description: Transformuje text pomocí Translator Text API.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,34 +10,34 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: swmachan
-ms.openlocfilehash: 5caefad7b681970e79e727367619ca494335c390
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 533f09b09b7f5899833669b5f0ad4ffa5efa3a43
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67435008"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68594908"
 ---
-# <a name="how-to-use-the-transformtext-method"></a>Jak používat TransformText – metoda
+# <a name="how-to-use-the-transformtext-method"></a>Jak používat metodu běhu metody TransformText
 
 > [!NOTE]
-> Tato metoda je zastaralá. Není k dispozici v V3.0 Translator Text API.
+> Tato metoda je zastaralá. Není k dispozici v v 3.0 Translator Text API.
 
-Metoda TransformText je funkce normalizace text pro sociální média, které vrací normalizovaná forma vstupu. Metoda může sloužit jako předzpracování krok strojového překladu nebo k jiným aplikacím, které očekávají čisté vstupní text, který není obvykle nachází v sociálních sítích nebo na uživatelem generovaný obsah. Funkce v současné době používá pouze anglické vstup.
+Metoda běhu metody TransformText je funkce normalizace textu pro sociální média, která vrací normalizovanou formu vstupu. Metodu lze použít jako krok předzpracování v strojovém překladu nebo v jiných aplikacích, které očekávají čistý vstupní text, který se obvykle nenajde na sociálních médiích nebo v obsahu generovaném uživatelem. Funkce aktuálně funguje pouze se vstupem v angličtině.
 
-Metoda je služba RESTful pomocí protokolu HTTP GET. Podporuje jednoduchý serializace XML a JSON.
+Metoda je služba RESTful pomocí metody GET přes HTTP. Podporuje jednoduché serializace XML a JSON.
 
 ## <a name="parameters"></a>Parametry
 
 | Parametr | Popis |
 |:---|:---|
-| Autorizační hlavičky. | **Vyžaduje** hlavičky protokolu HTTP slouží k identifikaci aplikace. Použít klíč: "Ověřování" a hodnota: "Nosiče" + "" + přístupový token. Podrobnosti najdete tady.|
-| language | **Vyžaduje** řetězec představující kód jazyka. Tento parametr podporuje jenom v angličtině s **en** jako název jazyka.|
-| category | **Volitelné** řetězec obsahující kategorie nebo domény překladu. Tento parametr podporuje pouze výchozí možnost **Obecné**.|
-| větu | **Vyžaduje** věty, kterou chcete opravit. |
+| Autorizační hlavička | **Vyžaduje** se Hlavička protokolu HTTP používaná k identifikaci aplikace Použít klíč: "Authorization" a hodnota: "Nosič" + "+ přístupový token. Podrobnosti najdete tady.|
+| jazyk | **Vyžaduje** se Řetězec představující kód jazyka. Tento parametr podporuje pouze angličtinu s **EN** jako název jazyka.|
+| category | **Volitelné** Řetězec obsahující kategorii nebo doménu překladu. Tento parametr podporuje pouze výchozí možnost **Obecné**.|
+| aktuální | **Vyžaduje** se Věta, kterou chcete opravit. |
 
 ## <a name="return-value"></a>Návratová hodnota
 
-Návratová hodnota obsahuje transformovaný věty.
+Návratová hodnota poskytuje transformované věty.
 
 > [!div class="tabbedCodeSnippets"]
 > ```json
@@ -49,7 +49,7 @@ Návratová hodnota obsahuje transformovaný věty.
 > }
 > ```
 
-## <a name="example"></a>Příklad:
+## <a name="example"></a>Příklad
 
 ```csharp
 using System;
