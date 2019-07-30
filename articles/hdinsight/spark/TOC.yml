@@ -50,6 +50,18 @@
       href: ../hdinsight-version-release.md
     - name: Monitorování dostupnosti clusterů s využitím protokolů Azure Monitoru a Ambari
       href: ../hdinsight-cluster-availability.md
+    - name: Řešení potíží
+      items:
+        - name: Výjimka OutOfMemoryError
+          items:
+            - name: Nedostatek paměti haldy
+              href: ./apache-spark-troubleshoot-outofmemory-heap.md
+        - name: Výjimka IllegalArgumentException
+          href: ./apache-spark-troubleshoot-illegalargumentexception.md
+        - name: Zastavování streamovací aplikace Apache Sparku
+          href: ./apache-spark-troubleshoot-application-stops.md
+        - name: Výjimka RpcTimeoutException
+          href: ./apache-spark-troubleshoot-rpctimeoutexception.md
 - name: Postup
   items:
     - name: Použití úložiště clusteru

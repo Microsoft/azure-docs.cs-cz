@@ -61,7 +61,7 @@
           href: container-instances-restart-policy.md
         - name: Nastavení proměnných prostředí (env)
           href: container-instances-environment-variables.md
-        - name: Přepsání vstupního bodu kontejneru
+        - name: Nastavení spouštěcího příkazu kontejneru (entrypoint)
           href: container-instances-start-command.md
         - name: Spuštění příkazu (exec)
           href: container-instances-exec.md

@@ -249,6 +249,8 @@
               href: devtest-lab-integrate-ci-cd-vsts.md
             - name: Integrace prostředí do kanálu CI/CD Azure DevOps
               href: integrate-environments-devops-pipeline.md
+            - name: Použití DevTest Labs v kanálech sestavování a vydávání verzí Azure DevOps
+              href: use-devtest-labs-build-release-pipelines.md
         - name: DevTest Labs v podniku
           items:
             - name: DevTest Labs v podnikovém měřítku

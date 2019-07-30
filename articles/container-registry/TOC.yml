@@ -77,6 +77,8 @@
       items:
         - name: Omezení přístupu s využitím virtuální sítě (Preview)
           href: container-registry-vnet.md
+        - name: Přístup za bránou firewall
+          href: container-registry-firewall-access-rules.md
         - name: Authentication
           items:
             - name: Přehled ověřování
