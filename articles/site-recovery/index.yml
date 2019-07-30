@@ -5,13 +5,12 @@ metadata:
   title: 'Dokumentace ke službě Azure Site Recovery – kurzy, reference k rozhraní API | Dokumentace Microsoftu'
   meta.description: Learn how to set up cloud disaster recovery and business continuity for physical servers and virtual machines by deploying and managing replication.
   services: site-recovery
-  author: czeumault
-  manager: carolz
+  author: carmonmills
+  manager: carmonm
   ms.service: site-recovery
-  ms.tgt_pltfrm: na
   ms.topic: landing-page
   ms.date: 11/27/2018
-  ms.author: carolz
+  ms.author: carmonm
 abstract:
   description: 'Azure Site Recovery orchestruje a spravuje zotavení po havárii pro virtuální počítače Azure a místní virtuální počítače a fyzické servery. Prostřednictvím našich šablon Rychlý start a kurzů se naučíte, jak replikovat, převzít služby při selhání a navrátit služby po obnovení.'
 sections:

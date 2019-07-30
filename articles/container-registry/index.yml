@@ -5,14 +5,12 @@ metadata:
   title: Dokumentace ke službě Azure Container Registry – kurzy | Dokumentace Microsoftu
   description: 'Azure Container Registry umožňuje sestavovat, ukládat a spravovat image pro všechny typy kontejnerových nasazení. Prostřednictvím těchto šablon Rychlý start, kurzů a ukázek se naučíte používat službu Azure Container Registry.'
   services: container-registry
-  author: czeumault
-  manager: carolz
+  author: georgewallace
+  manager: gwallace
   ms.service: container-registry
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
   ms.date: 07/26/2017
-  ms.author: carolz
+  ms.author: gwallace
 abstract:
   description: 'Azure Container Registry umožňuje sestavovat, ukládat a spravovat image pro všechny typy kontejnerových nasazení. Prostřednictvím těchto šablon Rychlý start, kurzů a ukázek se naučíte používat službu Azure Container Registry.'
 sections:

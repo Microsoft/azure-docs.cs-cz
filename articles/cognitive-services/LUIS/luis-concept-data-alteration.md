@@ -9,20 +9,20 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 01/23/2019
+ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: 67b56f09663aca35ed0843f50e2420b531c82833
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 198ce98808c8a62a839d154c365518c9e8263056
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68560832"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68619906"
 ---
 # <a name="alter-utterance-data-before-or-during-prediction"></a>Příkaz ALTER utterance dat před nebo během predikcí
-Služba LUIS poskytuje možnosti pro manipulaci s utterance před nebo během do predikce. Patří mezi ně opravuje pravopis a opravit problémy časové pásmo pro události prebuild datetimeV2. 
+Služba LUIS poskytuje možnosti pro manipulaci s utterance před nebo během do predikce. Mezi ně patří [Oprava pravopisu](luis-tutorial-bing-spellcheck.md)a řešení problémů s pásmem pro předem sestavené [datetimeV2](luis-reference-prebuilt-datetimev2.md). 
 
 ## <a name="correct-spelling-errors-in-utterance"></a>Psaní opravovat pravopisné chyby v utterance
-Služba LUIS používá [API V7 kontrola pravopisu Bingu](https://azure.microsoft.com/services/cognitive-services/spell-check/) opravte pravopisné chyby utterance. Služba LUIS, musí klíč spojený s touto službou. Vytvoření klíče a pak přidejte klíč jako parametr řetězce dotazu na [koncový bod](https://go.microsoft.com/fwlink/?linkid=2092356). 
+Služba LUIS používá [API V7 kontrola pravopisu Bingu](../Bing-Spell-Check/overview.md) opravte pravopisné chyby utterance. Služba LUIS, musí klíč spojený s touto službou. Vytvoření klíče a pak přidejte klíč jako parametr řetězce dotazu na [koncový bod](https://go.microsoft.com/fwlink/?linkid=2092356). 
 
 Můžete také opravte pravopisné chyby v **testovací** panelu podle [zadávání klíče](luis-interactive-test.md#view-bing-spell-check-corrections-in-test-panel). Klíč se ukládají jako proměnné relace v prohlížeči pro panelu Test. Přidáte klíč do panelu testů v každé relaci prohlížeče má kontrolu pravopisu opravit. 
 
@@ -49,11 +49,11 @@ Když [API V7 kontrola pravopisu Bingu](https://azure.microsoft.com/services/cog
 }
 ```
  
-### <a name="whitelist-words"></a>Slova v seznamu povolených IP adres
-Rozhraní API používané LUIS nepodporuje prázdný seznam slova, která chcete ignorovat během pravopisu pro kontrolu pravopisu Bingu zkontrolovat změny. Pokud potřebujete slova v seznamu povolených nebo zkratky, proces utterance v klientské aplikaci pomocí seznamu povolených před odesláním utterance LUIS k záměru předpovědi.
+### <a name="list-of-allowed-words"></a>Seznam povolených slov
+Rozhraní API pro kontrolu pravopisu Bingu používané v LUIS nepodporuje seznam (označovaný také jako seznam povolených) slov, který se má ignorovat při změnách kontroly pravopisu. Pokud potřebujete povolený seznam slov nebo akronymů, před odesláním utterance do LUIS pro předpověď záměru zpracujte utterance v klientské aplikaci.
 
 ## <a name="change-time-zone-of-prebuilt-datetimev2-entity"></a>Změna časového pásma datetimeV2 předem připravených entit
-Pokud aplikace LUIS používá datetimeV2 předem připravených entit, hodnotu data a času mohou být vráceny v předpověď odpovědi. Časové pásmo požadavku se používá k určení správné datum a čas k vrácení. Pokud požadavek pochází z robota nebo jiné centralizované aplikace před získáním LUIS, opravte časové pásmo, které používá služba LUIS. 
+Když aplikace LUIS používá předem vytvořenou entitu [datetimeV2](luis-reference-prebuilt-datetimev2.md) , hodnota DateTime může být vrácena v odpovědi předpovědi. Časové pásmo požadavku se používá k určení správné datum a čas k vrácení. Pokud požadavek pochází z robota nebo jiné centralizované aplikace před získáním LUIS, opravte časové pásmo, které používá služba LUIS. 
 
 ### <a name="endpoint-querystring-parameter"></a>Parametr řetězce dotazu koncového bodu
 Časové pásmo je opravit tak, že přidáte uživatele časové pásmo pro [koncový bod](https://go.microsoft.com/fwlink/?linkid=2092356) pomocí `timezoneOffset` param. Hodnota `timezoneOffset` během několika minut, chcete-li změnit čas by měl být kladné nebo záporné číslo.  

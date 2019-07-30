@@ -2,22 +2,19 @@
 title: Dokumentace ke službě Azure Scheduler – kurzy, reference k rozhraní API | Dokumentace Microsoftu
 description: Naučte se používat Scheduler k plánování a vyvolávání úloh, jako jsou například opakující se akce aplikace a běžná údržba. Kurzy, reference k rozhraní API a další zdroje informací
 services: scheduler
-author: carolz
-manager: carolz
+author: carmonmills
+manager: carmonm
 layout: LandingPage
-ms.assetid: ''
 ms.service: scheduler
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
-ms.author: carolz
-ms.openlocfilehash: 74f40578ee155eaa7289cfc3e79cdf4c36540af2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: carmonm
+ms.openlocfilehash: ddf335d0c2b165ae98feab0b42e60527f87de59c
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60532088"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68610330"
 ---
 # <a name="scheduler-documentation"></a>Dokumentace ke službě Scheduler
 

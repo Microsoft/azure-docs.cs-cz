@@ -5,14 +5,12 @@ metadata:
   title: 'Dokumentace k síti Azure CDN – kurzy, reference k rozhraní API | Dokumentace Microsoftu'
   description: 'Azure Content Delivery Network (CDN) je globální řešení CDN pro doručování širokopásmového obsahu. Může být hostované v Azure nebo jiném umístění. Pomocí Azure CDN můžete ukládat do mezipaměti statické objekty načítané z úložiště objektů blob v Azure, webové aplikace nebo jakéhokoli veřejně přístupného webového serveru pomocí nejbližšího serveru POP (Point of Presence). Azure CDN může díky využití různých optimalizací sítě a směrování také zrychlit dynamický obsah, který není možné ukládat do mezipaměti.'
   services: cdn
-  author: czeumault
-  manager: carolz
+  author: twooley
+  manager: twooley
   ms.service: azure-cdn
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
   ms.date: 06/08/2018
-  ms.author: carolz
+  ms.author: twooley
 abstract:
   description: 'Azure Content Delivery Network (CDN) je globální řešení CDN pro doručování širokopásmového obsahu. Může být hostované v Azure nebo jiném umístění. Pomocí Azure CDN můžete ukládat do mezipaměti statické objekty načítané z úložiště objektů blob v Azure, webové aplikace nebo jakéhokoli veřejně přístupného webového serveru pomocí nejbližšího serveru POP (Point of Presence). Azure CDN může díky využití různých optimalizací sítě a směrování také zrychlit dynamický obsah, který není možné ukládat do mezipaměti.'
 sections:

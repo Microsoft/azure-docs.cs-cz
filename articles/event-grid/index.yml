@@ -5,14 +5,12 @@ metadata:
   title: 'Dokumentace k Azure Event Grid – kurzy, reference k rozhraní API'
   description: 'Azure Event Grid vám umožní reagovat na relevantní události služeb Azure i mimo Azure, a to téměř v reálném čase.'
   services: event-grid
-  author: czeumault
-  manager: carolz
+  author: dougeby
+  manager: dougeby
   ms.service: event-grid
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
   ms.date: 08/10/2017
-  ms.author: carolz
+  ms.author: dougeby
 abstract:
   description: 'Azure Event Grid je plně spravovaná služba inteligentního směrování událostí, která umožňuje jednotnou spotřebu událostí s využitím modelu publikování a odběru. Azure Event Grid vám umožní reagovat na relevantní události služeb Azure i mimo Azure, a to téměř v reálném čase. Naučte se používat Azure Event Grid prostřednictvím našich šablon Rychlý start, výukových kurzů a ukázek.'
 sections:

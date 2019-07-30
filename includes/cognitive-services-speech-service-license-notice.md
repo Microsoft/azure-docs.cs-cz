@@ -12,4 +12,4 @@ ms.lasthandoff: 06/18/2019
 ms.locfileid: "67175295"
 ---
 > [!IMPORTANT]
-> Když si stáhnete všechny sadou SDK pro řeč pro komponenty Azure Cognitive Services na této stránce, Berete na vědomí jeho licence. Zobrazit [licenční podmínky pro Software Microsoftu pro rozpoznávání řeči SDK](https://aka.ms/csspeech/license201809).
+> Stažením kterékoli sady Speech SDK for Azure Cognitive Services komponenty na této stránce potvrzujete její licenci. Přečtěte si [licenční smlouvy k softwaru společnosti Microsoft pro sadu Speech SDK](https://aka.ms/csspeech/license201809).

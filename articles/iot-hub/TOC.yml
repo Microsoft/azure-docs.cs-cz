@@ -5,6 +5,7 @@
     - name: Co je Azure IoT Hub?
       href: about-iot-hub.md
 - name: Šablony Rychlý start
+  expanded: true
   items:
     - name: Odeslání telemetrie
       items:

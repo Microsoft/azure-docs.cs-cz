@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 07/16/2019
 ms.author: diberry
-ms.openlocfilehash: 58ec78f0c20d6a2d5d86a60c69cc934c8f3076c8
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 55251a553921e947e7c6522677e51e4eb1d3fa5b
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68560641"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68619948"
 ---
 # <a name="quickstart-change-model-using-c"></a>Rychlý start: Změna modelu pomocíC#
 
@@ -115,7 +115,7 @@ Pokud chcete spravovat argumenty příkazového řádku, přidejte hlavní kód.
 
 ### <a name="copy-utterancesjson-to-output-directory"></a>Zkopírování souboru utterances.json do výstupního adresáře
 
-V Průzkumník řešení přidejte `utterances.json` kliknutím pravým tlačítkem myši do názvu projektu Průzkumník řešení a pak výběrem možnosti **Přidat**a vybráním **položky existující položka**. `utterances.json` Vyberte soubor. Tím se soubor přidá do projektu. Pak je nutné přidat do směru výstupu. Klikněte pravým tlačítkem `utterances.json` na a vyberte **vlastnosti**. V okně Vlastnosti označte položku **Akce sestavení** jako `Content` a položku **Kopírovat do výstupního adresáře** jako `Copy Always`.  
+V Průzkumník řešení přidejte `utterances.json` kliknutím pravým tlačítkem myši do názvu projektu Průzkumník řešení a pak výběrem možnosti **Přidat**a vybráním **položky existující položka**. `utterances.json` Vyberte soubor. Tím se soubor přidá do projektu. Pak je nutné přidat do výstupního adresáře. Klikněte pravým tlačítkem `utterances.json` na a vyberte **vlastnosti**. V okně Vlastnosti označte položku **Akce sestavení** jako `Content` a položku **Kopírovat do výstupního adresáře** jako `Copy Always`.  
 
 ![Označení souboru JSON jako obsahu](./media/luis-quickstart-cs-add-utterance/content-properties.png)
 

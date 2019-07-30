@@ -5,14 +5,12 @@ metadata:
   title: 'Dokumentace ke službě Batch – kurzy, reference k rozhraní API | Dokumentace Microsoftu'
   description: 'Služba Batch umožňuje efektivně spouštět rozsáhlé paralelní aplikace a aplikace vysokovýkonného výpočetního prostředí (HPC) v cloudu. Můžete definovat výpočetní prostředky Azure, abyste mohli spouštět vaše aplikace paralelně nebo ve velkém měřítku bez nutnosti ruční konfigurace a správy infrastruktury. Můžete naplánovat úlohy náročné na výpočetní výkon a potom dynamicky přidávat nebo odebírat výpočetní prostředky na základě vašich požadavků. Naučte se používat Azure Batch prostřednictvím našich šablon Rychlý start, výukových kurzů a ukázek.'
   services: batch
-  author: czeumault
-  manager: carolz
+  author: georgewallace
+  manager: gwallace
   ms.service: batch
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
   ms.date: 11/30/2017
-  ms.author: carolz
+  ms.author: gwallace
 abstract:
   description: 'Služba Batch umožňuje efektivně spouštět rozsáhlé paralelní aplikace a aplikace vysokovýkonného výpočetního prostředí (HPC) v cloudu. Můžete definovat výpočetní prostředky Azure, abyste mohli spouštět vaše aplikace paralelně nebo ve velkém měřítku bez nutnosti ruční konfigurace a správy infrastruktury. Můžete naplánovat úlohy náročné na výpočetní výkon a potom dynamicky přidávat nebo odebírat výpočetní prostředky na základě vašich požadavků. Naučte se používat Azure Batch prostřednictvím našich šablon Rychlý start, výukových kurzů a ukázek.'
 sections:
