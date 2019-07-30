@@ -1,46 +1,46 @@
 ---
-title: Věta párování a zarovnání – vlastní Translator
+title: Párování a zarovnání vět – vlastní Překladatel
 titleSuffix: Azure Cognitive Services
-description: Během provádění trénování jsou věty, které jsou k dispozici v dokumentech paralelní spárované nebo zarovnána. Vlastní Translator učí jedné věty překlady najednou, načtením věty, překlad tuto větu. Potom zarovná slova a slovní spojení v těchto dvou věty k sobě navzájem.
+description: Během provádění školení jsou věty přítomné v paralelních dokumentech spárovány nebo zarovnány. Vlastní Překladatel se učí překlady po jednotlivých větách, a to tak, že si přečte větu a překládá tuto větu. Pak zarovnává slova a fráze v těchto dvou větách sobě navzájem.
 author: swmachan
-manager: christw
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: f73c40704e10a8e2368ee1eb369ee3dccdf269ee
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: e9bc5c876da6bd2be1b22b389b819e51330b2e50
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67448317"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68595469"
 ---
-# <a name="sentence-pairing-and-alignment-in-parallel-documents"></a>Párování věty a zarovnání v paralelní dokumenty
+# <a name="sentence-pairing-and-alignment-in-parallel-documents"></a>Párování a zarovnání vět v paralelních dokumentech
 
-Při výuce, jsou věty, které jsou k dispozici v dokumentech paralelní spárované nebo zarovnána. Vlastní Translator hlásí počet věty, které bylo možné spárovat jako věty zarovnané ve všech datových sad.
+V průběhu školení jsou věty přítomné v paralelních dokumentech spárovány nebo zarovnány. Vlastní Překladatel oznamuje počet vět, které byly v každé sadě dat spárovány jako zarovnaných vět.
 
-## <a name="pairing-and-alignment-process"></a>Proces párování a zarovnání
+## <a name="pairing-and-alignment-process"></a>Párování a proces zarovnání
 
-Vlastní Translator učí překlady jedné věty věty najednou. Jeho čtení a větu ze zdroje a překladu tuto větu z cíle. Potom zarovná slova a slovní spojení v těchto dvou věty k sobě navzájem. Tento proces umožňuje vytvořit mapu slova a slovní spojení do jedné věty na ekvivalentní slova a slovní spojení v překladu tuto větu. Zarovnání se pokusí zajistit, že systém trénovat na věty, které jsou vzájemně překlady.
+Vlastní Překladatel se učí překlady vět v jednom okamžiku. Čte ze zdroje větu a pak překládá tuto větu z cíle. Pak zarovnává slova a fráze v těchto dvou větách sobě navzájem. Tento proces umožňuje IT vytvořit mapu slov a frází v jedné větě na ekvivalentní slova a fráze v překladu této věty. Zarovnání se snaží zajistit, aby systém vlakových a vět navzájem přecházejí.
 
 ## <a name="pre-aligned-documents"></a>Předem zarovnané dokumenty
 
-Pokud víte, že máte paralelní dokumentů, můžou přepsat zarovnání věty zadáním předem zarovnané textové soubory. Extrahovat všech vět z oba dokumenty do textového souboru, uspořádané jedné věty na řádku a nahrávání se `.align` rozšíření. `.align` Rozšíření signalizuje vlastní Translator, přeskočte zarovnání věty.
+Pokud víte, že máte paralelní dokumenty, můžete zarovnání věty přepsat zadáním předem zarovnaných textových souborů. Můžete extrahovat všechny věty z obou dokumentů do textového souboru, uspořádat jednu větu na řádek a nahrát s `.align` příponou. `.align` Rozšíření signalizuje vlastní překladateli, že by měl přeskočit zarovnání věty.
 
-Nejlepších výsledků dosáhnete pokuste se ujistěte se, že máte jeden větu na řádek v souborech. Nemáte znaky nového řádku v rámci věty, protože to způsobí, že špatná zarovnání.
+Pro dosažení co nejlepších výsledků se ujistěte, že máte v souborech jednu větu na řádek. Ve větě nemusíte mít znaky nového řádku, protože by to způsobilo špatné zarovnání.
 
-## <a name="suggested-minimum-number-of-extracted-and-aligned-sentences"></a>Doporučený minimální počet extrahované a zarovnané věty
+## <a name="suggested-minimum-number-of-extracted-and-aligned-sentences"></a>Navrhovaný minimální počet vět, které byly extrahovány a zarovnány
 
-Školení na úspěšné, následující tabulka ukazuje minimální počet extrahované věty a zarovnané věty v každé datové sady. Minimální doporučený počet extrahované věty je mnohem vyšší než minimální doporučený počet zarovnané věty a vezměte v úvahu skutečnost, že zarovnání věty nemusí být možné úspěšně zarovnat všechny extrahované věty.
+Pro úspěšné školení zobrazuje tabulka níže minimální počet extrahovaných vět a zarovnané věty vyžadované v každé sadě dat. Navrhovaný minimální počet vět je mnohem vyšší než navrhovaný minimální počet vět zarovnaných, aby se zohlednila skutečnost, že zarovnání věty nemusí být schopné úspěšně zarovnat všechny extrahované věty.
 
-| Datové sady   | Navrhované extrahované věty minimální počet | Navrhované zarovnané věty minimální počet | Počet maximální zarovnané větu |
+| Sada dat   | Navrhovaný minimální počet extrahovaných vět | Navrhovaný minimální počet vět pro zarovnání | Maximální počet vět zarovnaných |
 |------------|--------------------------------------------|------------------------------------------|--------------------------------|
-| Školení   | 10,000                                     | 2 000                                    | Žádná horní hranice                 |
+| Školení   | 10,000                                     | 2 000                                    | Bez horní meze                 |
 | Ladění     | 2 000                                      | 500                                      | 2,500                          |
 | Testování    | 2 000                                      | 500                                      | 2,500                          |
-| Slovník | 0                                          | 0                                        | Žádná horní hranice                 |
+| Slovník | 0                                          | 0                                        | Bez horní meze                 |
 
 ## <a name="next-steps"></a>Další postup
 
-- Další informace o použití [slovníku](what-is-dictionary.md) ve vlastní překladač.
+- Naučte se používat [slovník](what-is-dictionary.md) ve vlastním překladateli.
