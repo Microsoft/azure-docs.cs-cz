@@ -7,22 +7,22 @@
 - name: Šablony Rychlý start
   expaned: true
   items:
-    - name: Trénování vlastních modelů a extrahování dat
+    - name: S využitím REST API
       items:
-        - name: S využitím REST API
+        - name: Trénování vlastních modelů a extrahování dat
           items:
             - name: cURL
               href: quickstarts/curl-train-extract.md
             - name: Python
               href: quickstarts/python-train-extract.md
-    - name: Použití předem připraveného modelu potvrzení
-      items:
-        - name: S využitím REST API
+        - name: Použití předem připraveného modelu potvrzení
           items:
             - name: cURL
               href: quickstarts/curl-receipts.md
             - name: Python
               href: quickstarts/python-receipts.md
+    - name: S využitím .NET SDK
+      href: quickstarts/dotnet-sdk.md
 - name: Návody
   items:
     - name: Vytvoření trénovací sady dat

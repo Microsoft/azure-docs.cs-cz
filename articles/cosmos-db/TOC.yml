@@ -738,6 +738,12 @@
           maintainContext: true
         - name: Ovladač ODBC
           href: odbc-driver.md
+    - name: Migrace dat do Cosmos DB
+      items:
+        - name: Migrace do rozhraní API SQL s využitím Striimu
+          href: cosmosdb-sql-api-migrate-data-striim.md
+        - name: Migrace do rozhraní API Cassandra s využitím Striimu
+          href: cosmosdb-cassandra-api-migrate-data-striim.md
     - name: Knihovna Bulk Executor
       items:
         - name: Informace o knihovně Bulk Executoru

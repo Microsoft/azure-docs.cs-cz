@@ -286,6 +286,8 @@
           href: application-proxy-security.md
         - name: Síťová topologie
           href: application-proxy-network-topology.md
+        - name: Vysoká dostupnost a vyrovnávání zatížení
+          href: application-proxy-high-availability-load-balancing.md
         - name: Porovnání řešení vzdáleného přístupu
           href: application-proxy-migration.md
     - name: Návody

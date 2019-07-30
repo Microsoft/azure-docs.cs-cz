@@ -3,252 +3,252 @@ title: Dokumentace k Azure Active Directory
 summary: Azure Active Directory (Azure AD) je víceklientská cloudová služba pro správu identit a přístupu.
 brand: azure
 metadata:
-  title: Dokumentace ke službě Azure Active Directory – kurzy, reference k rozhraní API
+  title: Dokumentace k Azure Active Directory
   description: Azure Active Directory (Azure AD) od Microsoftu je víceklientská cloudová adresářová služba a služba pro správu identit. V rámci jednoho řešení kombinuje základní adresářové služby, správu přístupu k aplikacím a ochranu identity.
-  author: mtillman
-  manager: daveba
   ms.service: active-directory
   ms.topic: hub-page
-  ms.date: 04/25/2019
-  ms.author: mtillman
   ms.collection: M365-identity-device-management
-  ms.openlocfilehash: 1a019b58d4c2f1e5569cc4e8dd9109e08f313d6c
-  ms.sourcegitcommit: f9448a4d87226362a02b14d88290ad6b1aea9d82
+  author: mtillman
+  ms.author: mtillman
+  manager: daveba
+  ms.date: 07/27/2019
+  ms.openlocfilehash: f3e8495671b56eda804e33b78667cf75cc2f8e70
+  ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 06/07/2019
-  ms.locfileid: "66481861"
+  ms.lasthandoff: 07/29/2019
+  ms.locfileid: "68607629"
 highlightedContent:
   items:
   - title: Co je Azure AD?
     itemType: overview
-    url: /azure/active-directory/fundamentals/active-directory-whatis
+    url: ./fundamentals/active-directory-whatis.md
   - title: Co je nového v Azure AD?
     itemType: whats-new
-    url: /azure/active-directory/fundamentals/whats-new
+    url: ./fundamentals/whats-new.md
   - title: Přiřazení rolí uživatelům
     itemType: how-to-guide
-    url: /azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal
+    url: ./fundamentals/active-directory-users-assign-role-azure-portal.md
   - title: Vytvoření skupiny a přidání členů
     itemType: how-to-guide
-    url: /azure/active-directory/fundamentals/add-users-azure-active-directory
+    url: ./fundamentals/add-users-azure-active-directory.md
   - title: Kontrolní seznam pro nasazení Azure AD
     itemType: concept
-    url: /azure/active-directory/fundamentals/active-directory-deployment-checklist-p2
+    url: ./fundamentals/active-directory-deployment-checklist-p2.md
   - title: Přidání předplatného do vašeho tenanta
     itemType: how-to-guide
-    url: /azure/active-directory/fundamentals/active-directory-how-subscriptions-associated-directory
+    url: ./fundamentals/active-directory-how-subscriptions-associated-directory.md
 conceptualContent:
   items:
   - title: Správa aplikací
     links:
-    - url: /azure/active-directory/manage-apps/what-is-single-sign-on
+    - url: ./manage-apps/what-is-single-sign-on.md
       itemType: concept
       text: Co je jednotné přihlašování (SSO)?
-    - url: /azure/active-directory/manage-apps/user-provisioning
+    - url: ./manage-apps/user-provisioning.md
       itemType: tutorial
       text: Automatické zřizování uživatelů
-    - url: /azure/active-directory/manage-apps/application-proxy
+    - url: ./manage-apps/application-proxy.md
       itemType: concept
       text: Proxy aplikací pro místní aplikace
     footerLink:
-      url: /azure/active-directory/manage-apps/index
+      url: ./manage-apps/index.yml
       text: Další informace
   - title: Authentication
     links:
-    - url: /azure/active-directory/authentication/concept-mfa-howitworks
+    - url: ./authentication/concept-mfa-howitworks.md
       itemType: concept
       text: 'Jak to funguje: Azure MFA'
-    - url: /azure/active-directory/authentication/concept-sspr-howitworks
+    - url: ./authentication/concept-sspr-howitworks.md
       itemType: concept
       text: Samoobslužné resetování hesla Azure AD
-    - url: /azure/active-directory/authentication/concept-password-ban-bad
+    - url: ./authentication/concept-password-ban-bad.md
       itemType: concept
       text: Ochrana hesel Azure AD
     footerLink:
-      url: /azure/active-directory/authentication/index
+      url: ./authentication/index.yml
       text: Další informace
   - title: B2B (Business-to-Business)
     links:
-    - url: /azure/active-directory/b2b/what-is-b2b
+    - url: ./b2b/what-is-b2b.md
       itemType: overview
       text: Co je Azure AD B2B?
-    - url: /azure/active-directory/b2b/add-users-administrator
+    - url: ./b2b/add-users-administrator.md
       itemType: how-to-guide
       text: Přidání uživatelů typu host na portálu
-    - url: /azure/active-directory/b2b/o365-external-user
+    - url: ./b2b/o365-external-user.md
       itemType: concept
       text: B2B a sdílení Office 365
     footerLink:
-      url: /azure/active-directory/b2b/index
+      url: ./b2b/index.yml
       text: Další informace
   - title: B2C (Business-to-Customer)
     links:
-    - url: /azure/active-directory-b2c/active-directory-b2c-overview
+    - url: ../active-directory-b2c/active-directory-b2c-overview.md
       itemType: overview
       text: Co je Azure AD B2C?
-    - url: /azure/active-directory-b2c/tutorial-create-tenant
+    - url: ../active-directory-b2c/tutorial-create-tenant.md
       itemType: tutorial
       text: Vytvoření tenanta Azure AD B2C
-    - url: /azure/active-directory-b2c/active-directory-b2c-get-started-custom
+    - url: ../active-directory-b2c/active-directory-b2c-get-started-custom.md
       itemType: how-to-guide
       text: Vlastní zásady v Azure AD B2C
     footerLink:
-      url: /azure/active-directory-b2c/index
+      url: ../active-directory-b2c/index.yml
       text: Další informace
   - title: Podmíněný přístup
     links:
-    - url: /azure/active-directory/conditional-access/overview
+    - url: ./conditional-access/overview.md
       itemType: overview
       text: Co je podmíněný přístup?
-    - url: /azure/active-directory/conditional-access/app-based-mfa
+    - url: ./conditional-access/app-based-mfa.md
       itemType: quickstart
       text: Vyžadování MFA pro specifické aplikace
-    - url: /azure/active-directory/conditional-access/location-condition
+    - url: ./conditional-access/location-condition.md
       itemType: concept
       text: Podmínky založené na poloze
     footerLink:
-      url: /azure/active-directory/conditional-access/index
+      url: ./conditional-access/index.yml
       text: Další informace
   - title: Vývojáři
     links:
-    - url: /azure/active-directory/develop/about-microsoft-identity-platform
+    - url: ./develop/about-microsoft-identity-platform.md
       itemType: overview
       text: O platformě Microsoft Identity Platform
-    - url: /azure/active-directory/develop/v2-oauth2-auth-code-flow
+    - url: ./develop/v2-oauth2-auth-code-flow.md
       itemType: concept
       text: Udělení toku kódu OAuth 2.0
-    - url: /azure/active-directory/develop/quickstart-register-app
+    - url: ./develop/quickstart-register-app.md
       itemType: quickstart
       text: Registrace aplikace na platformě Microsoft Identity Platform
     footerLink:
-      url: /azure/active-directory/develop/index
+      url: ./develop/index.yml
       text: Další informace
   - title: Správa zařízení
     links:
-    - url: /azure/active-directory/devices/overview
+    - url: ./devices/overview.md
       itemType: overview
       text: Co je správa zařízení?
-    - url: /azure/active-directory/devices/hybrid-azuread-join-plan
+    - url: ./devices/hybrid-azuread-join-plan.md
       itemType: how-to-guide
       text: Plánování hybridního připojení k Azure AD
-    - url: /azure/active-directory/devices/azureadjoin-plan
+    - url: ./devices/azureadjoin-plan.md
       itemType: how-to-guide
       text: Plánování připojení ke službě Azure AD
     footerLink:
-      url: /azure/active-directory/devices/index
+      url: ./devices/index.yml
       text: Další informace
   - title: Doménové služby
     links:
-    - url: /azure/active-directory-domain-services/active-directory-ds-overview
+    - url: ../active-directory-domain-services/active-directory-ds-overview.md
       itemType: overview
       text: Co je služba Azure Active Directory Domain Services?
-    - url: /azure/active-directory-domain-services/active-directory-ds-getting-started
+    - url: ../active-directory-domain-services/active-directory-ds-getting-started.md
       itemType: quickstart
       text: Povolení služby Azure AD Domain Services
-    - url: /azure/active-directory-domain-services/active-directory-ds-admin-guide-administer-group-policy
+    - url: ../active-directory-domain-services/active-directory-ds-admin-guide-administer-group-policy.md
       itemType: how-to-guide
       text: Správa zásad skupiny
     footerLink:
-      url: /azure/active-directory-domain-services/index
+      url: ../active-directory-domain-services/index.yml
       text: Další informace
   - title: Podnikoví uživatelé
     links:
-    - url: /azure/active-directory/users-groups-roles/groups-create-rule
+    - url: ./users-groups-roles/groups-create-rule.md
       itemType: how-to-guide
       text: Vytvoření dynamické skupiny
-    - url: /azure/active-directory/users-groups-roles/groups-settings-v2-cmdlets
+    - url: ./users-groups-roles/groups-settings-v2-cmdlets.md
       itemType: how-to-guide
       text: PowerShell pro skupiny Azure AD
-    - url: /azure/active-directory/users-groups-roles/directory-service-limits-restrictions
+    - url: ./users-groups-roles/directory-service-limits-restrictions.md
       itemType: reference
       text: Omezení služby Azure AD
     footerLink:
-      url: /azure/active-directory/users-groups-roles/index
+      url: ./users-groups-roles/index.yml
       text: Další informace
   - title: Hybridní identita
     links:
-    - url: /azure/active-directory/hybrid/whatis-hybrid-identity
+    - url: ./hybrid/whatis-hybrid-identity.md
       itemType: overview
       text: Co je hybridní identita?
-    - url: /azure/active-directory/hybrid/how-to-connect-sso
+    - url: ./hybrid/how-to-connect-sso.md
       itemType: how-to-guide
       text: Jednotné přihlašování s využitím služby Azure AD Connect
-    - url: /azure/active-directory/hybrid/how-to-connect-install-custom
+    - url: ./hybrid/how-to-connect-install-custom.md
       itemType: how-to-guide
       text: Vlastní instalace služby Azure AD Connect
     footerLink:
-      url: /azure/active-directory/hybrid/index
+      url: ./hybrid/index.yml
       text: Další informace
   - title: Zásady správného řízení identit
     links:
-    - url: /azure/active-directory/governance/create-access-review
+    - url: ./governance/create-access-review.md
       itemType: how-to-guide
       text: Vytvoření kontroly přístupu
-    - url: /azure/active-directory/governance/perform-access-review
+    - url: ./governance/perform-access-review.md
       itemType: how-to-guide
       text: Zahájení kontroly přístupu
-    - url: /azure/active-directory/conditional-access/terms-of-use
+    - url: ./conditional-access/terms-of-use.md
       itemType: how-to-guide
       text: Vyžadování podmínek použití
     footerLink:
-      url: /azure/active-directory/governance/index
+      url: ./governance/index.yml
       text: Další informace
   - title: Ochrana identit
     links:
-    - url: /azure/active-directory/identity-protection/overview
+    - url: ./identity-protection/overview.md
       itemType: overview
       text: Co je ochrana identit?
-    - url: /azure/active-directory/identity-protection/quickstart-sign-in-risk-policy
+    - url: ./identity-protection/quickstart-sign-in-risk-policy.md
       itemType: quickstart
       text: Blokování přístupu, pokud se zjistí riziko relace
-    - url: /azure/active-directory/identity-protection/howto-unblock-user
+    - url: ./identity-protection/howto-unblock-user.md
       itemType: how-to-guide
       text: Postup při odblokování uživatelů
     footerLink:
-      url: /azure/active-directory/identity-protection/index
+      url: ./identity-protection/index.yml
       text: Další informace
   - title: Spravované identity pro prostředky Azure
     links:
-    - url: /azure/active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-sql
+    - url: ./managed-identities-azure-resources/tutorial-windows-vm-access-sql.md
       itemType: tutorial
       text: Použití virtuálního počítače s Windows pro přístupu k Azure SQL
-    - url: /azure/active-directory/managed-identities-azure-resources/how-to-use-vm-token
+    - url: ./managed-identities-azure-resources/how-to-use-vm-token.md
       itemType: how-to-guide
       text: Použití virtuálního počítače Azure pro získání tokenu
-    - url: /azure/active-directory/managed-identities-azure-resources/services-support-managed-identities
+    - url: ./managed-identities-azure-resources/services-support-managed-identities.md
       itemType: concept
       text: Služby, které podporují spravované identity
     footerLink:
-      url: /azure/active-directory/managed-identities-azure-resources/index
+      url: ./managed-identities-azure-resources/index.yml
       text: Další informace
   - title: Privileged Identity Management (PIM)
     links:
-    - url: /azure/active-directory/privileged-identity-management/pim-getting-started
+    - url: ./privileged-identity-management/pim-getting-started.md
       itemType: how-to-guide
       text: Zahájení práce s využitím PIM
-    - url: /azure/active-directory/privileged-identity-management/pim-how-to-activate-role
+    - url: ./privileged-identity-management/pim-how-to-activate-role.md
       itemType: how-to-guide
       text: Aktivace mých rolí adresáře
-    - url: /azure/active-directory/privileged-identity-management/pim-how-to-add-role-to-user
+    - url: ./privileged-identity-management/pim-how-to-add-role-to-user.md
       itemType: how-to-guide
       text: Přiřazení rolí adresáře
     footerLink:
-      url: /azure/active-directory/privileged-identity-management/index
+      url: ./privileged-identity-management/index.yml
       text: Další informace
   - title: Sestavy a sledování
     links:
-    - url: /azure/active-directory/reports-monitoring/concept-audit-logs
+    - url: ./reports-monitoring/concept-audit-logs.md
       itemType: concept
       text: Protokoly auditu
-    - url: /azure/active-directory/reports-monitoring/concept-sign-ins
+    - url: ./reports-monitoring/concept-sign-ins.md
       itemType: concept
       text: Protokoly přihlašování
-    - url: /azure/active-directory/reports-monitoring/reference-sign-ins-error-codes
+    - url: ./reports-monitoring/reference-sign-ins-error-codes.md
       itemType: reference
       text: Referenční informace ke kódům chyb přihlašování
     footerLink:
-      url: /azure/active-directory/reports-monitoring/index
+      url: ./reports-monitoring/index.yml
       text: Další informace
 additionalContent:
   sections:

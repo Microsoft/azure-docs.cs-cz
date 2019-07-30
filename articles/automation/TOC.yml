@@ -253,6 +253,9 @@
         - name: Kompilace konfigurací DSC
           href: automation-dsc-compile.md
           displayName: 'state configuration, composite resources, configurationData'
+        - name: 'Oprava serverů DSC, které nevyhovují předpisům'
+          href: automation-dsc-remediate.md
+          displayName: 'state configuration, DSC, remediate'
         - name: Vytváření konfigurací DSC s využitím složených prostředků
           href: compose-configurationwithcompositeresources.md
         - name: Nepřetržité nasazování pomocí Chocolatey

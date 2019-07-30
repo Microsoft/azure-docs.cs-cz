@@ -1,4 +1,4 @@
-- name: Dokumentace ke službě Azure Security Center (ASC) for IoT Preview
+- name: Dokumentace ke službě Azure Security Center pro IoT
   href: index.yml
 - name: Přehled
   href: overview.md
@@ -11,16 +11,21 @@
       href: security-edge-architecture.md
     - name: Požadavky služeb
       href: service-prerequisites.md
-    - name: Začínáme s ASC for IoT
+    - name: Začínáme se službou Azure Security Center pro IoT
       href: getting-started.md
+      items:
+        - name: IoT Hub
+          href: iot-hub-integration.md
+        - name: Agenti zabezpečení
+          href: security-agents.md
 - name: Šablony Rychlý start
   expanded: true
   items:
-    - name: Povolení ASC for IoT v IoT Hubu
+    - name: Povolení služby Azure Security Center pro IoT v IoT Hubu
       href: quickstart-onboard-iot-hub.md
     - name: Konfigurace vašeho řešení
       href: quickstart-configure-your-solution.md
-    - name: Vytvoření dvojčete modulu ASC for IoT
+    - name: Vytvoření dvojčete modulu služby Azure Security Center pro IoT
       href: quickstart-create-security-twin.md
     - name: Vytváření vlastních výstrah zabezpečení
       href: quickstart-create-custom-alerts.md
@@ -34,6 +39,8 @@
       href: concept-security-alerts.md
     - name: Doporučení zabezpečení
       href: concept-recommendations.md
+    - name: Agregace událostí
+      href: event-aggregation.md
     - name: Ceny a související náklady
       href: concept-pricing.md
 - name: Návody
@@ -48,6 +55,14 @@
           href: how-to-deploy-linux-cs.md
         - name: Nasazení agenta zabezpečení založeného na C v zařízení s Linuxem
           href: how-to-deploy-linux-c.md
+    - name: Řešení potíží s agentem zabezpečení
+      items:
+        - name: Řešení potíží s linuxovým agentem zabezpečení služby Azure Security Center pro IoT
+          href: troubleshoot-agent.md
+        - name: Místní konfigurace C
+          href: azure-iot-security-local-configuration-c.md
+        - name: 'Místní konfigurace C#'
+          href: azure-iot-security-local-configuration-csharp.md
     - name: Nasazení modulu zabezpečení hraničních zařízení
       href: how-to-deploy-edge.md
     - name: Konfigurace agentů zabezpečení

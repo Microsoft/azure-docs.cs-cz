@@ -2,21 +2,20 @@
 title: Cloud Foundry v Azure
 description: Cloud Foundry v Azure
 services: multiple
-author: czeumault
-manager: jeconnoc
+author: georgewallace
+manager: gwallace
 layout: LandingPage
 ms.service: multiple
-ms.tgt_pltfrm: na
 ms.devlang: devops
 ms.topic: landing-page
 ms.date: 06/19/2017
-ms.author: carolz
-ms.openlocfilehash: 850ed1418a8880e30273f62aec3b3420c41b2ef6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: gwallace
+ms.openlocfilehash: f846a199305bbf3f1282649b8c20f46968519e48
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60198064"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68609654"
 ---
 <div class="content">
     <h1>Cloud Foundry v Azure</h1>
