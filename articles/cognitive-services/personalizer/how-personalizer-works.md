@@ -2,19 +2,19 @@
 title: Jak přizpůsobovat funkce přizpůsobování
 titleSuffix: Azure Cognitive Services
 description: Přizpůsobování využívá Machine Learning ke zjištění, jakou akci použít v kontextu. Každá výuková smyčka má model, který je vyškolen výhradně na datech, která jste jim odeslali prostřednictvím volání Rank a disměna. Každá výuková smyčka je zcela nezávislá na sobě.
-author: edjez
+author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 06/07/2019
-ms.author: edjez
-ms.openlocfilehash: 7bdafafc0d542a98b80f2b6f5db2c14c8777bf5b
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.author: diberry
+ms.openlocfilehash: e55ccb508760c4473f71245c183948219f31985c
+ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68423254"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68663914"
 ---
 # <a name="how-personalizer-works"></a>Jak služba Personalizace funguje
 
@@ -30,7 +30,7 @@ Rozhraní API **pořadí** se rozhodne použít buď:
 * _Zneužití_: Aktuální model, který určí nejlepší akci na základě minulých dat.
 * _Prozkoumat_: Místo horní akce vyberte jinou akci.
 
-API  pro odměnu:
+API pro odměnu:
 
 * Shromažďuje data pro výuku modelu pomocí zaznamenávání funkcí a odměňování skóre každého volání pořadí.
 * Tato data používá k aktualizaci modelu na základě nastavení určeného v _zásadách Učení_.

@@ -1,7 +1,7 @@
 ---
-title: 'Kurz: Nasadit model clusteringu v jazyce R'
+title: 'Kurz: Nasazení modelu clusteringu v jazyce R'
 titleSuffix: Azure SQL Database Machine Learning Services (preview)
-description: Ve třetí části této třídílné série nasadíte model clusteringu v R s Azure SQL Database Machine Learning Services (preview).
+description: V třetí části této série kurzů se třemi částmi nasadíte model clusteringu v jazyce R s Azure SQL Database Machine Learning Services (Preview).
 services: sql-database
 ms.service: sql-database
 ms.subservice: machine-learning
@@ -12,45 +12,45 @@ author: garyericson
 ms.author: garye
 ms.reviewer: davidph
 manager: cgronlun
-ms.date: 05/17/2019
-ms.openlocfilehash: 1fe9df6378884ba55cb1017da87522ae66edaff0
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.date: 07/29/2019
+ms.openlocfilehash: 6f4d237d5e923aab61ae34a235d2e1f759399e6d
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66419752"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68640903"
 ---
-# <a name="tutorial-deploy-a-clustering-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>Kurz: Nasadit model clusteringu v R s Azure SQL Database Machine Learning Services (preview)
+# <a name="tutorial-deploy-a-clustering-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>Kurz: Nasazení modelu clusteringu v jazyce R s Azure SQL Database Machine Learning Services (Preview)
 
-Ve třetí části této třídílné série nasadíte model clusteringu v R s Azure SQL Database Machine Learning Services (preview).
+V třetí části této série výukových kurzů nasadíte model clusteringu vyvinutý v jazyce R do databáze SQL pomocí Azure SQL Database Machine Learning Services (Preview).
 
-Vytvoříte uloženou proceduru s vložený skript R, který provádí clustering. Vzhledem k tomu, že váš model spouští ve službě Azure SQL database, můžete snadno školení pro data uložená v databázi.
+Uloženou proceduru vytvoříte pomocí vloženého skriptu jazyka R, který provádí clusteringu. Vzhledem k tomu, že se váš model spouští ve službě Azure SQL Database, můžete ho snadno vyškolet s daty uloženými v databázi.
 
-V tomto článku se dozvíte jak:
+V tomto článku se dozvíte, jak:
 
 > [!div class="checklist"]
-> * Vytvořit uloženou proceduru, která generuje modelu
-> * Provedení clustering ve službě SQL Database
-> * Použití clusteringu informace
+> * Vytvořit uloženou proceduru, která generuje model
+> * Provedení clusteringu v SQL Database
+> * Použití informací o clusteringu
 
-V [první část](sql-database-tutorial-clustering-model-prepare-data.md), jste zjistili, jak k přípravě dat ze služby Azure SQL database k provedení clustering v jazyce R.
+V [první části](sql-database-tutorial-clustering-model-prepare-data.md)jste zjistili, jak připravit data z databáze SQL Azure pro provádění clusteringu.
 
-V [druhá část](sql-database-tutorial-clustering-model-build.md), jste zjistili, jak vytvořit model K-Means provádět clustering.
+V [druhé části](sql-database-tutorial-clustering-model-build.md)jste zjistili, jak vytvořit a naučit model pro clustering v jazyce R.
 
 [!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Třetí části této série kurzů se předpokládá dokončení [ **první část** ](sql-database-tutorial-clustering-model-prepare-data.md) a [ **druhá část**](sql-database-tutorial-clustering-model-build.md).
+* Třetí část této série kurzů předpokládá, že jste dokončili [**jednu**](sql-database-tutorial-clustering-model-prepare-data.md) a [**druhou část**](sql-database-tutorial-clustering-model-build.md).
 
-## <a name="create-a-stored-procedure-that-generates-the-model"></a>Vytvořit uloženou proceduru, která generuje modelu
+## <a name="create-a-stored-procedure-that-generates-the-model"></a>Vytvořit uloženou proceduru, která generuje model
 
-Spusťte následující skript T-SQL Vytvořte uloženou proceduru. Postup znovu vytvoří kroky vyvinuté v části 1 a 2 v této sérii kurzů:
+Spuštěním následujícího skriptu T-SQL vytvořte uloženou proceduru. Procedura znovu vytvoří kroky, které jste vytvořili v částech jedna a dvě z této série kurzů:
 
-* klasifikovat zákazníci podle svých vyčerpá a vrátit historie
-* Generovat čtyři clustery zákazníci, kteří používají K-Means algoritmus
+* klasifikace zákazníků na základě jejich nákupu a návratové historie
+* generovat čtyři clustery zákazníků pomocí algoritmu K
 
-Postup uloží výsledný clusteru mapování zákazníka v tabulce databáze **customer_return_clusters**.
+Procedura ukládá výsledná mapování clusterů zákazníka v tabulce databáze **customer_return_clusters**.
 
 ```sql
 USE [tpcxbb_1gb]
@@ -175,9 +175,9 @@ END;
 GO
 ```
 
-## <a name="perform-clustering-in-sql-database"></a>Provedení clustering ve službě SQL Database
+## <a name="perform-clustering-in-sql-database"></a>Provedení clusteringu v SQL Database
 
-Teď, když jste vytvořili uložené procedury, spusťte následující skript k provedení clustering.
+Teď, když jste vytvořili uloženou proceduru, spusťte následující skript, který provede clusteringu.
 
 ```sql
 --Empty table of the results before running the stored procedure
@@ -188,7 +188,7 @@ TRUNCATE TABLE customer_return_clusters;
 EXECUTE [dbo].[generate_customer_return_clusters];
 ```
 
-Ověřte, že funguje a že máme seznam zákazníků a jejich mapování clusteru.
+Ověřte, že funguje a že ve skutečnosti máme seznam zákazníků a jejich mapování clusteru.
 
 ```sql
 --Select data from table customer_return_clusters
@@ -206,11 +206,11 @@ cluster  customer  orderRatio  itemsRatio  monetaryRatio  frequency
 2        32549     0           0           0.031281       4
 ```
 
-## <a name="use-the-clustering-information"></a>Použití clusteringu informace
+## <a name="use-the-clustering-information"></a>Použití informací o clusteringu
 
-Protože jsou uložené clusteringu procedury v databázi, můžete to provést, efektivně clusteringu pro zákaznická data uložená ve stejné databázi. Proceduru lze provést vždy, když vaše zákaznická data se aktualizuje a aktualizované informace o clusteringu.
+Vzhledem k tomu, že jste v databázi uložili postup clusteringu, můžete efektivně provádět clustering proti zákaznickým datům uloženým ve stejné databázi. Postup můžete provést vždy, když se aktualizují zákaznická data a použijí se aktualizované informace o clusteringu.
 
-Předpokládejme, že chcete posílat propagační e-maily pro zákazníky v clusteru 3, skupiny, která má aktivní chování návratový (zobrazí se, jak bylo popsáno čtyři clustery v [druhá část](sql-database-tutorial-clustering-model-build.md#analyze-the-results)). Následující kód vybere e-mailové adresy zákazníků v clusteru 3.
+Předpokládejme, že chcete odeslat propagační e-mail zákazníkům v clusteru 3, skupině s více aktivními návratovými chováními (vidíte, jak byly čtyři clustery popsány v [části druhá část](sql-database-tutorial-clustering-model-build.md#analyze-the-results)). Následující kód vybere e-mailové adresy zákazníků v clusteru 3.
 
 ```sql
 USE [tpcxbb_1gb]
@@ -222,30 +222,30 @@ JOIN [dbo].[customer_return_clusters] AS r ON r.customer = customer.c_customer_s
 WHERE r.cluster = 3
 ```
 
-Můžete změnit **r.cluster** hodnota má být vrácen e-mailové adresy pro zákazníky v jiných clusterech.
+Hodnotu **r. cluster** můžete změnit tak, aby vracela e-mailové adresy pro zákazníky v jiných clusterech.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Jakmile budete hotovi s tímto kurzem, je odstranit databázi tpcxbb_1gb z vašeho serveru Azure SQL Database.
+Až budete s tímto kurzem hotovi, můžete databázi tpcxbb_1gb odstranit ze serveru Azure SQL Database.
 
-Na webu Azure Portal postupujte podle těchto kroků:
+V Azure Portal postupujte podle následujících kroků:
 
-1. V nabídce vlevo na webu Azure Portal vyberte **všechny prostředky** nebo **databází SQL**.
-1. V **filtrovat podle názvu...**  zadejte **tpcxbb_1gb**a vyberte své předplatné.
-1. Vyberte vaše **tpcxbb_1gb** databáze.
+1. V nabídce na levé straně Azure Portal vyberte **všechny prostředky** nebo **databáze SQL**.
+1. Do pole **filtrovat podle názvu...** zadejte **tpcxbb_1gb**a vyberte své předplatné.
+1. Vyberte databázi **tpcxbb_1gb** .
 1. Na stránce **Přehled** vyberte **Odstranit**.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Ve třetí části této série kurzů dokončení těchto kroků:
+V třetí části této série kurzů jste dokončili tyto kroky:
 
-* Vytvořit uloženou proceduru, která generuje modelu
-* Provedení clustering ve službě SQL Database
-* Použití clusteringu informace
+* Vytvořit uloženou proceduru, která generuje model
+* Provedení clusteringu v SQL Database
+* Použití informací o clusteringu
 
-Další informace o používání R v Azure SQL Database Machine Learning Services (preview) najdete v tématu:
+Další informace o používání jazyka R v Azure SQL Database Machine Learning Services (Preview) najdete v tématech:
 
-* [Kurz: Příprava dat natrénujeme prediktivní model v R s Azure SQL Database Machine Learning Services (preview)](sql-database-tutorial-predictive-model-prepare-data.md)
-* [Zápis pokročilé funkce jazyka R ve službě Azure SQL Database pomocí služby Machine Learning (preview)](sql-database-machine-learning-services-functions.md)
-* [Práce s daty R a SQL v Azure SQL Database Machine Learning Services (preview)](sql-database-machine-learning-services-data-issues.md)
-* [Přidat balíček R do Azure SQL Database Machine Learning Services (preview)](sql-database-machine-learning-services-add-r-packages.md)
+* [Kurz: Příprava dat pro výuku prediktivního modelu v R s Azure SQL Database Machine Learning Services (Preview)](sql-database-tutorial-predictive-model-prepare-data.md)
+* [Zápis pokročilých funkcí R v Azure SQL Database pomocí Machine Learning Services (Preview)](sql-database-machine-learning-services-functions.md)
+* [Práce s daty R a SQL v Azure SQL Database Machine Learning Services (Preview)](sql-database-machine-learning-services-data-issues.md)
+* [Přidání balíčku R do Azure SQL Database Machine Learning Services (Preview)](sql-database-machine-learning-services-add-r-packages.md)

@@ -9,21 +9,21 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 02/28/2019
+ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: 17693b7dff1df1d538f2f4a180be025e0de67c82
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: bbd86ab2ffa55903715da05b0120442f300a1702
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68563475"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68637847"
 ---
 # <a name="deprecated-prebuilt-entities-in-a-luis-app"></a>Zastaralé předem připravené entity v aplikaci LUIS
 Následující předem připravených entit se považují za zastaralé a nelze přidat do nové aplikace LUIS.
 
 * **Datum a čas**: Stávající aplikace LUIS, které používají **DateTime** , by se měly migrovat na **datetimeV2**, i když entita DateTime dál funguje v existujících aplikacích, které ji používají.
-* **Zeměpisná**oblast: Stávající aplikace LUIS, které  používají geografickou oblast, jsou podporovány do prosince 2018.
-* **Encyklopedie**: Stávající aplikace LUIS, které  používají encyklopedii, se podporují do prosince 2018.
+* **Zeměpisná**oblast: Stávající aplikace LUIS, které používají geografickou oblast, jsou podporovány do prosince 2018.
+* **Encyklopedie**: Stávající aplikace LUIS, které používají encyklopedii, se podporují do prosince 2018.
 
 ## <a name="geography-culture"></a>Zeměpisné oblasti jazykovou verzi
 **Zeměpisné oblasti** je k dispozici pouze v `en-us` národní prostředí.

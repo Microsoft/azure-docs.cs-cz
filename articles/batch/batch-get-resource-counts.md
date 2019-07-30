@@ -1,46 +1,46 @@
 ---
-title: Počet stavů úkolů a uzly – Azure Batch | Dokumentace Microsoftu
-description: Počet stavu úkolů služby Azure Batch a výpočetních uzlů ke správě a monitorování řešení Batch.
+title: Počet stavů pro úlohy a uzly – Azure Batch | Microsoft Docs
+description: Spočítejte stav úloh Azure Batch a výpočetních uzlů, které vám pomůžou se správou a monitorováním řešení Batch.
 services: batch
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 ms.service: batch
 ms.topic: article
 ms.date: 09/07/2018
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 574cdea61a474dda5d20254bfae9ff2f06044cca
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7b41be8c325cd238592f33369499348885de1778
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60775368"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68323541"
 ---
-# <a name="monitor-batch-solutions-by-counting-tasks-and-nodes-by-state"></a>Monitorování řešení Batch podle počtu úloh a uzel podle stavu
+# <a name="monitor-batch-solutions-by-counting-tasks-and-nodes-by-state"></a>Monitorování řešení Batch pomocí počítání úkolů a uzlů podle stavu
 
-Ke sledování a správě velkých řešeních Azure Batch, potřebujete přesný počet prostředků v různých stavech. Azure Batch poskytuje efektivní operace k získání těchto počtů pro službu Batch *úlohy* a *výpočetních uzlů*. Tyto operace použijte místo může trvat delší dobu seznamové dotazy, které vrací podrobné informace o rozsáhlých kolekcí úkolů nebo uzly.
+Pokud chcete monitorovat a spravovat rozsáhlá Azure Batch řešení, potřebujete přesné počty prostředků v různých stavech. Azure Batch poskytuje efektivní operace pro získání těchto počtů *úloh* služby Batch a *výpočetních uzlů*. Tyto operace použijte místo potenciálně časově náročného seznamu dotazů, které vracejí podrobné informace o velkých kolekcích úkolů nebo uzlů.
 
-* [Získání úloh se počítá] [ rest_get_task_counts] získá souhrnný počet, aktivní, běžících a dokončených úloh v rámci úlohy a úkolů, které bylo úspěšné nebo neúspěšné. 
+* Čítač [získat počet úloh][rest_get_task_counts] získá agregovaný počet aktivních, spuštěných a dokončených úloh v úloze a úkolů, které byly úspěšné nebo neúspěšné. 
 
-  Podle počtu úloh v jednotlivých stavech, můžete snadněji zobrazit průběh úlohy na uživatele nebo detekci neočekávaným zpožděním nebo chyby, které může mít vliv na úlohy. Počty úloh GET je k dispozici od verze rozhraní API služby Batch verze 2017-06-01.5.1 a souvisejících sad SDK a nástrojů.
+  Díky počítání úkolů v jednotlivých stavech můžete snáze zobrazit průběh úlohy uživateli nebo zjistit Neočekávaná zpoždění nebo chyby, které mohou ovlivnit úlohu. Pro rozhraní API služby Batch verze 2017 -06-01.5.1 a související sady SDK a nástroje jsou k dispozici počty úloh.
 
-* [Seznam fondu uzel počítá] [ rest_get_node_counts] získá počet s nízkou prioritou a vyhrazených výpočetních uzlů ve každý fond, které jsou v různých stavech: vytváření, nečinné, offline, přerušeno, restartování, obnovování z Image, spouštění a další. 
+* [Počty uzlů seznamu][rest_get_node_counts] vycházejí z počtu vyhrazených výpočetních uzlů s nízkou prioritou v každém fondu, které jsou v různých stavech: vytváření, nečinné, offline, přerušené, Restarting, obnovování imagí, spouštění a další. 
 
-  Podle počtu uzlů v jednotlivých stavech, můžete určit, kdy máte dostatečné výpočetní prostředky, které spouštíte úlohy a identifikovat možné problémy s fondech. Seznam fondu uzel počítá je k dispozici od verze rozhraní API služby Batch verze 2018-03-01.6.1 a souvisejících sad SDK a nástrojů.
+  Napočítáním uzlů v jednotlivých stavech můžete určit, kdy máte adekvátní výpočetní prostředky pro spuštění úloh, a identifikovat potenciální problémy s vašimi fondy. Počty uzlů seznamu jsou k dispozici pro rozhraní API služby Batch verze 2018 -03-01.6.1 a související sady SDK a nástroje.
 
-Pokud používáte verzi služby, která nepodporuje operace úloh počet nebo uzel počet, místo toho použijte dotaz na seznam ke zjištění těchto prostředků. Dotaz na seznam můžete také použijte k získání informací o dalších prostředcích služby Batch, jako jsou aplikace, soubory a úlohy. Další informace o použití filtrů do seznamu dotazů najdete v tématu [vytvořit dotazy do seznamu prostředků Batch efektivně](batch-efficient-list-queries.md).
+Pokud používáte verzi služby, která nepodporuje operace počet úloh nebo počet uzlů, použijte místo toho dotaz na seznam a spočítejte tyto prostředky. Pomocí dotazu na seznam můžete také získat informace o dalších prostředcích Batch, jako jsou aplikace, soubory a úlohy. Další informace o použití filtrů pro výpis dotazů najdete v tématu [efektivní vytváření dotazů pro vypsání prostředků služby Batch](batch-efficient-list-queries.md).
 
 ## <a name="task-state-counts"></a>Počty stavů úloh
 
-Operaci získat počty úloh počty úloh podle následujících stavů:
+Operace získat počty úloh počítá úlohy podle následujících stavů:
 
-- **Aktivní** -úlohu, která je ve frontě a moct spustit, ale není aktuálně přiřazená k výpočetnímu uzlu. Úloha je také `active` jde [závisí na nadřazenou úlohu](batch-task-dependencies.md) ještě nebyl dokončen. 
-- **Spuštění** -úlohu, která se přiřadila do výpočetního uzlu, ale zatím není dokončený. Úlohu se počítá jako `running` při jeho stav je buď `preparing` nebo `running`, je určeno [získat informace o úkolu] [ rest_get_task] operace.
-- **Dokončení** -úlohu, která už není vhodné spustit, protože buď bylo dokončeno úspěšně, nebo byl dokončen neúspěšně a také vyčerpali limit opakování. 
-- **Úspěšné** – úkol, jehož výsledek spuštění úkolu je `success`. Batch Určuje, zda úkol úspěšném nebo neúspěšném kontrolou `TaskExecutionResult` vlastnost [executionInfo] [ rest_get_exec_info] vlastnost.
-- **Nepovedlo** úkol, jehož výsledek spuštění úkolu je `failure`.
+- **Aktivní** – úkol, který je ve frontě a který je schopný spustit, ale není aktuálně přiřazený k výpočetnímu uzlu. Úkol je také `active` v případě, že je [závislý na nadřazené úloze](batch-task-dependencies.md) , která ještě nebyla dokončena. 
+- **Running** – úkol, který byl přiřazen k výpočetnímu uzlu, ale ještě nebyl dokončen. Úkol `running` se počítá jako v případě, že je jeho stav buď `preparing` nebo `running`, jak je uvedeno v informacích o operaci [úlohy][rest_get_task] .
+- **Dokončeno** – úkol, který již není způsobilý ke spuštění, protože buď byl dokončen úspěšně, nebo byl dokončen neúspěšně a také vyčerpal svůj limit opakování. 
+- **Úspěch** – úkol, jehož výsledkem je provedení úkolu, `success`je. Služba Batch určí, zda byl úkol úspěšný nebo neúspěšný, `TaskExecutionResult` kontrolou vlastnosti vlastnosti [executionInfo][rest_get_exec_info] .
+- **Nepodařilo se** Úkol, jehož výsledkem je `failure`provedení úkolu.
 
-Následující vzorový kód .NET ukazuje, jak načíst počet úloh podle stavu: 
+Následující ukázka kódu .NET ukazuje, jak načíst počty úloh podle stavu: 
 
 ```csharp
 var taskCounts = await batchClient.JobOperations.GetJobTaskCountsAsync("job-1");
@@ -52,31 +52,31 @@ Console.WriteLine("Succeeded task count: {0}", taskCounts.Succeeded);
 Console.WriteLine("Failed task count: {0}", taskCounts.Failed);
 ```
 
-Chcete-li získat počet úloh pro úlohu můžete použít podobný vzorec pro REST a ostatní podporované jazyky. 
+Podobný vzor můžete použít pro REST a jiné podporované jazyky a získat tak počty úloh pro úlohu. 
 
 > [!NOTE]
-> Verze rozhraní API služby batch, před 2018-08-01.7.0 rovněž vracejí `validationStatus` v odezvě získat počty úloh. Tato vlastnost určuje, zda Batch zarezervovat že počty stavu konzistence se stavy v rozhraní API seznamu úkolů. Hodnota `validated` značí pouze, Batch Kontrola konzistence alespoň jednou pro úlohu. Hodnota `validationStatus` vlastnost neindikuje, zda jsou počty, které vrací získat počty úloh aktuálně aktuální.
+> Verze rozhraní API služby Batch před 2018 -08-01.7.0 také vrátí `validationStatus` vlastnost v odpovědi získat počty úloh. Tato vlastnost určuje, zda se ve službě Batch kontroluje konzistence stavu s tím, jak stavy hlášené v rozhraní API pro úlohy seznamu. Hodnota `validated` znamená pouze to, že v dávce byla alespoň jednou kontrolována konzistence úlohy. Hodnota `validationStatus` vlastnosti neurčuje, zda jsou počty, které obdrží počty úkolů, aktuálně aktuální.
 >
 
-## <a name="node-state-counts"></a>Počty stavů uzlu
+## <a name="node-state-counts"></a>Počty stavů uzlů
 
-Počet operací počítá uzel seznamu fond výpočetních uzlů pomocí následujících stavů v každém fondu. Samostatné celkové počty jsou k dispozici pro vyhrazené uzly a uzly s nízkou prioritou v každém fondu.
+Operace počítání uzlů fondu vypočítává počet výpočetních uzlů podle následujících stavů v jednotlivých fondech. Pro vyhrazené uzly a uzly s nízkou prioritou v každém fondu jsou k dispozici samostatné agregované počty.
 
-- **Vytváření** -přidělené Azure VM, která ještě nezačala k fondu.
-- **Nečinné** – k dispozici výpočetním uzlu, který není aktuálně spuštěna úloha.
-- **LeavingPool** -uzel, který opouští ve fondu, protože uživatel je výslovně odebrali nebo fondu je změna velikosti nebo automatické škálování nefunguje.
-- **Offline** -uzel této služby Batch nelze použít k naplánování nových úloh.
-- **Ke zrušení přidělením** -uzel s nízkou prioritou, který byl odebrán z fondu, protože Azure získat virtuální počítač. A `preempted` uzlu lze znovu inicializovat při nahrazení kapacitu virtuálních počítačů s nízkou prioritou je k dispozici.
-- **Restartování** -uzel, který se restartuje.
-- **Obnovování z image** -uzel, na kterém je přeinstalaci operačního systému.
-- **Spuštění** -uzel, na kterém běží jeden nebo více úkolů (než je na nich spouštěcí úkol).
-- **Spouští se** -uzel, na kterém se spouští služby Batch. 
-- **StartTaskFailed** -uzel, na kterém [spouštěcí úkol] [ rest_start_task] se nezdařilo a k vyčerpání všech opakovaných pokusů, ve kterém `waitForSuccess` je nastaven pro spouštěcí úkol. Uzel se nedá použít pro spouštění úloh.
-- **Neznámý** – uzel, který ztratilo kontakt se službou Batch a jejichž stav není znám.
-- **Nepoužitelné** -uzel, který nelze použít pro provedení úlohy z důvodu chyby.
-- **WaitingForStartTask** -uzel, na kterém spouštěcí úkol spuštěn, ale `waitForSuccess` je sada a začátkem úkol nebyl dokončen.
+- **Vytváření** – virtuální počítač přidělený Azure, který se ještě nespustil pro připojení ke fondu.
+- **Nečinné** – dostupný výpočetní uzel, který aktuálně nespouští úlohu.
+- **LeavingPool** – uzel, který opouští fond, buď proto, že ho uživatel explicitně odebral, nebo protože se mění velikost fondu nebo automatické škálování.
+- **Offline** – uzel, který dávka nemůže použít k naplánování nových úloh.
+- Přerušeno – uzel s nízkou prioritou, který byl odebrán z fondu, protože Azure znovu VYVOLAL virtuální počítač. `preempted` Uzel lze znovu inicializovat, pokud je k dispozici náhradní kapacita virtuálního počítače s nízkou prioritou.
+- Restartování – uzel, který se restartuje.
+- Obnovování **imagí** – uzel, na kterém je operační systém přeinstalován.
+- **Spuštěno** – uzel, na kterém je spuštěna jedna nebo více úloh (jiné než počáteční úkol).
+- **Spuštění** – uzel, na kterém se spouští služba Batch. 
+- **StartTaskFailed** – uzel, na kterém se nezdařil [spouštěcí úkol][rest_start_task] a byl vyčerpán všechny opakované pokusy a který `waitForSuccess` je nastaven na počáteční úkol. Uzel nelze použít pro spuštěné úlohy.
+- **Neznámý** – uzel, který ztratil kontakt se službou Batch a jehož stav není známý.
+- **Nepoužitelný** – uzel, který se nedá použít k provedení úlohy z důvodu chyb.
+- **WaitingForStartTask** – uzel, na kterém byl spuštěn spouštěcí úkol, ale `waitForSuccess` je nastaven a počáteční úkol nebyl dokončen.
 
-Následující jazyka C# fragment kódu ukazuje, jak seznamu uzlu počty pro všechny fondy v aktuální účet:
+Následující C# fragment kódu ukazuje, jak vypsat počty uzlů pro všechny fondy v aktuálním účtu:
 
 ```csharp
 foreach (var nodeCounts in batchClient.PoolOperations.ListPoolNodeCounts())
@@ -96,7 +96,7 @@ foreach (var nodeCounts in batchClient.PoolOperations.ListPoolNodeCounts())
     Console.WriteLine("Low-priority node count in Preempted state: {0}", nodeCounts.LowPriority.Preempted);
 }
 ```
-Následující jazyka C# fragment kódu ukazuje, jak seznamu počtu uzlů pro daný fond na aktuální účet.
+Následující C# fragment kódu ukazuje, jak vypsat počty uzlů pro daný fond v aktuálním účtu.
 
 ```csharp
 foreach (var nodeCounts in batchClient.PoolOperations.ListPoolNodeCounts(new ODATADetailLevel(filterClause: "poolId eq 'testpool'")))
@@ -116,13 +116,13 @@ foreach (var nodeCounts in batchClient.PoolOperations.ListPoolNodeCounts(new ODA
     Console.WriteLine("Low-priority node count in Preempted state: {0}", nodeCounts.LowPriority.Preempted);
 }
 ```
-Chcete-li získat uzel počty pro fondy můžete podobný vzorec pro REST a ostatní podporované jazyky.
+Podobný vzor můžete použít pro REST a jiné podporované jazyky a získat tak počty uzlů pro fondy.
  
 ## <a name="next-steps"></a>Další postup
 
-* Další informace o koncepcích a funkcích služby Batch najdete v článku [Přehled funkcí Batch](batch-api-basics.md). Tento článek popisuje primární prostředky služby Batch, jako jsou fondy, výpočetní uzly, úlohy a úkoly a najdete zde přehled funkcí služby.
+* Další informace o koncepcích a funkcích služby Batch najdete v článku [Přehled funkcí Batch](batch-api-basics.md). Článek popisuje primární prostředky služby Batch, jako jsou fondy, výpočetní uzly, úlohy a úkoly, a poskytuje přehled funkcí služby.
 
-* Informace o použití filtrů na dotazy, které uvádějí prostředky služby Batch najdete v tématu [vytvořit dotazy do seznamu prostředků Batch efektivně](batch-efficient-list-queries.md).
+* Informace o použití filtrů na dotazy, které uvádějí prostředky služby Batch, najdete v tématu [efektivní vytváření dotazů pro vypsání prostředků služby Batch](batch-efficient-list-queries.md).
 
 
 [rest_get_task_counts]: /rest/api/batchservice/job/gettaskcounts

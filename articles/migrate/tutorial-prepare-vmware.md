@@ -1,155 +1,155 @@
 ---
-title: Příprava virtuálních počítačů VMware pro vyhodnocení a migraci do Azure pomocí služby Azure Migrate | Dokumentace Microsoftu
-description: Popisuje postup přípravy pro vyhodnocení a migraci místních virtuálních počítačů VMware do Azure pomocí Azure Migrate.
+title: Příprava virtuálních počítačů VMware pro posouzení a migraci do Azure pomocí Azure Migrate | Microsoft Docs
+description: V této části najdete popis postupu při přípravě na posouzení a migraci místních virtuálních počítačů VMware do Azure pomocí Azure Migrate.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 07/11/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 10f559295ff0598dea26fb30b089f020e2985889
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 286223e091ab0fe8521c29de12e37f5a112240dc
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67840348"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68640755"
 ---
-# <a name="prepare-vmware-vms-for-assessment-and-migration-to-azure"></a>Příprava virtuálních počítačů VMware pro vyhodnocení a migraci do Azure
+# <a name="prepare-vmware-vms-for-assessment-and-migration-to-azure"></a>Příprava virtuálních počítačů VMware pro posouzení a migraci do Azure
 
-Tento článek popisuje, jak připravit pro vyhodnocení a migraci místních virtuálních počítačů VMware do Azure, pomocí [Azure Migrate](migrate-services-overview.md).
+Tento článek popisuje, jak připravit na posouzení a migraci místních virtuálních počítačů VMware do Azure pomocí [Azure Migrate](migrate-services-overview.md).
 
-[Azure Migrate](migrate-overview.md) představuje Centrum nástrojů, které vám umožní zjišťovat, posuzovat a migrovat aplikace, infrastruktury a úlohy Microsoft Azure. Centra zahrnuje nástroje Azure Migrate a nezávislé výrobce softwaru třetích stran výrobce (ISV) nabídky. 
+[Azure Migrate](migrate-overview.md) poskytuje centrum nástrojů, které vám pomůžou zjišťovat, vyhodnocovat a migrovat aplikace, infrastrukturu a úlohy do Microsoft Azure. Centrum zahrnuje nástroje pro Azure Migrate a nabídky nezávislého výrobce softwaru (ISV) od jiných výrobců. 
 
 
-Tento kurz je první z řady, který popisuje, jak vyhodnocovat a migrovat virtuální počítače VMware. V tomto kurzu se naučíte:
+Tento kurz je první v řadě, ve kterém se dozvíte, jak vyhodnocovat a migrovat virtuální počítače VMware. V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Příprava Azure. Nastavení oprávnění pro účet Azure a prostředky pro práci s Azure Migrate.
-> * Příprava místních serverů VMware a virtuálních počítačů na posouzení virtuálních počítačů.
-> * Příprava místních serverů VMware a virtuálních počítačů pro migraci virtuálních počítačů.
+> * Připravte Azure. Nastavte oprávnění pro účet a prostředky Azure pro práci s Azure Migrate.
+> * Připravte místní servery a virtuální počítače VMware pro posouzení virtuálních počítačů.
+> * Připravte místní servery a virtuální počítače VMware pro migraci virtuálních počítačů.
 
 > [!NOTE]
-> Kurzy vám ukážou, nejjednodušší způsob nasazení pro scénář tak, že můžete rychle nastavit testování konceptu. Kurzy použijte výchozí možnosti, kde je to možné a nezobrazovat všechna možná nastavení a cesty. Podrobné pokyny najdete v tématu Jak Tos pro VMware vyhodnocení a migraci.
+> Kurzy vám ukážou nejjednodušší cestu nasazení pro scénář, abyste mohli rychle nastavit zkušební verzi. Kurzy používají výchozí možnosti, pokud je to možné, a nezobrazují všechna možná nastavení a cesty. Podrobné pokyny najdete v tématu How to TOS for VMware Assessment and Migration.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/) před tím, než začnete.
 
 
 ## <a name="prepare-azure"></a>Příprava Azure
 
-Potřebujete tato oprávnění Azure:
+Budete potřebovat tato oprávnění Azure:
 
-- Váš účet Azure potřebuje oprávnění pro vytvoření projektu Azure Migrate pro vyhodnocení a migraci. 
-- Pro vyhodnocení a migrace bez agentů virtuálních počítačů VMware Azure Migrate spustí zjednodušené zařízení, která vyhledá virtuální počítače a odesílá data metadat a výkonu virtuálních počítačů do Azure Migrate. V Azure budete potřebovat oprávnění k registraci zařízení Azure Migrate.
-- Migrace virtuálních počítačů VMware pomocí Azure Migrate serveru migrace, Azure Migrate vytvoří trezor klíčů ve skupině prostředků, ke správě přístupových klíčů k účtu úložiště replikace v rámci vašeho předplatného. Vytvoření trezoru, budete potřebovat oprávnění k přiřazení role u skupiny prostředků, ve kterém je umístěn projekt Azure Migrate. 
-
-
-### <a name="assign-permissions-to-create-project"></a>Přidělování oprávnění k vytvoření projektu
-
-1. Na webu Azure Portal, otevřete předplatné a vyberte **řízení přístupu (IAM)** .
-2. V **zkontrolovat přístup**vyhledejte příslušný účet a klikněte na něj chcete-li zobrazit oprávnění.
-3. Měli byste mít **Přispěvatel** nebo **vlastníka** oprávnění.
-    - Pokud jste právě vytvořili bezplatný účet Azure, vlastník předplatného.
-    - Pokud si nejste vlastník předplatného, pracujete s vlastníkem přiřazení role.
-
-### <a name="assign-permissions-to-register-the-appliance"></a>Přiřadit oprávnění k registraci zařízení
-
-Pokud nasazujete zařízení Azure Migrate k vyhodnocení nebo spuštění agenta migrace virtuálních počítačů, musíte ho zaregistrovat.
-
-- Během registrace zařízení Azure Migrate vytvoří dvě aplikace Azure Active Directory (Azure AD), které jedinečně identifikují zařízení
-    - První aplikace komunikuje se službou Azure Migrate koncových bodů služby.
-    - Druhá aplikace nemá přístup k Azure Key Vault vytvoří během registrace k uložení Azure AD informace a zařízení konfigurační nastavení aplikace.
-- Můžete přiřadit oprávnění ke službě Azure Migrate k vytvoření těchto aplikací Azure AD pomocí jedné z následujících metod:
-    - Tenanta nebo globální správce může udělit oprávnění uživatelům v tenantovi, k vytvoření a registrace aplikace Azure AD.
-    - Tenanta nebo globální správce může k účtu přiřadit roli vývojář aplikace, (který má oprávnění).
-
-Je vhodné poznamenat, že:
-
-- Aplikace nemají žádné jiné oprávnění přístupu na předplatné, než je popsaný výše.
-- Pouze potřebujete tato oprávnění při registraci nového zařízení. Po nastavení zařízení můžete odebrat oprávnění. 
+- Váš účet Azure potřebuje oprávnění k vytvoření Azure Migrate projektu pro účely posouzení a migrace. 
+- Pro účely posouzení a migrace virtuálních počítačů VMware s neagenty Azure Migrate spouští odlehčené zařízení, které zjišťuje virtuální počítače a odesílá data o datech a výkonu virtuálních počítačů do Azure Migrate. V Azure potřebujete oprávnění k registraci zařízení Azure Migrate.
+- Pokud chcete migrovat virtuální počítače VMware pomocí migrace serveru Azure Migrate, vytvoří Azure Migrate ve skupině prostředků Key Vault pro správu přístupových klíčů k účtu úložiště replikace v rámci vašeho předplatného. K vytvoření trezoru potřebujete oprávnění přiřazení role ve skupině prostředků, ve které se nachází Azure Migrate projekt. 
 
 
-#### <a name="grant-account-permissions"></a>Udělte účtu oprávnění
+### <a name="assign-permissions-to-create-project"></a>Přiřadit oprávnění k vytvoření projektu
 
-Tenanta nebo globální správce může udělit oprávnění následujícím způsobem
+1. V Azure Portal otevřete předplatné a vyberte **řízení přístupu (IAM)** .
+2. V části **kontrolovat přístup**Najděte příslušný účet a kliknutím na něj Zobrazte oprávnění.
+3. Měli byste mít oprávnění **Přispěvatel** nebo **Owner** .
+    - Pokud jste právě vytvořili bezplatný účet Azure, jste vlastníkem svého předplatného.
+    - Pokud nejste vlastníkem předplatného, pracujte s vlastníkem a přiřaďte roli.
 
-1. Ve službě Azure AD, by měl tenanta nebo globální správce přejděte na **Azure Active Directory** > **uživatelé** > **uživatelská nastavení**.
-2. Správce by měl nastavit **registrace aplikací** k **Ano**.
+### <a name="assign-permissions-to-register-the-appliance"></a>Přiřazení oprávnění k registraci zařízení
 
-    ![Oprávnění Azure AD](./media/tutorial-prepare-vmware/aad.png)
+Pokud nasazujete zařízení Azure Migrate pro vyhodnocení nebo spuštění migrace virtuálních počítačů bez agenta, je nutné ji zaregistrovat.
+
+- Při registraci zařízení Azure Migrate vytvoří dvě aplikace Azure Active Directory (Azure AD), které zařízení jednoznačně identifikují.
+    - První aplikace komunikuje s koncovými body služby Azure Migrate.
+    - Druhá aplikace přistupuje k Azure Key Vault vytvořenému během registrace za účelem uložení informací o aplikaci Azure AD a nastavení konfigurace zařízení.
+- Můžete přiřadit oprávnění pro Azure Migrate vytvořit tyto aplikace Azure AD pomocí jedné z následujících metod:
+    - Tenant nebo globální správce může udělit oprávnění uživatelům v tenantovi, aby mohli vytvářet a registrovat aplikace služby Azure AD.
+    - Tenant nebo globální správce může k účtu přiřadit roli vývojáře aplikace (která má oprávnění).
+
+Je potřeba poznamenat, že:
+
+- Aplikace nemají žádná jiná přístupová oprávnění k předplatnému, kromě výše popsaných výše.
+- Tato oprávnění budete potřebovat, jenom když zaregistrujete nové zařízení. Po nastavení zařízení můžete oprávnění odebrat. 
+
+
+#### <a name="grant-account-permissions"></a>Udělení oprávnění účtu
+
+Tenant nebo globální správce může udělit oprávnění následujícím způsobem.
+
+1. V Azure AD by měl tenant nebo globální správce přejít na **Azure Active Directory** > **uživatelských nastavení** **uživatelů** > .
+2. Správce by měl nastavit **Registrace aplikací** **Ano**.
+
+    ![Oprávnění služby Azure AD](./media/tutorial-prepare-vmware/aad.png)
 
 > [!NOTE]
-> Toto je výchozí nastavení, která nejsou citlivá. [Další informace](https://docs.microsoft.com/azure/active-directory/develop/active-directory-how-applications-are-added#who-has-permission-to-add-applications-to-my-azure-ad-instance).
+> Toto je výchozí nastavení, které není citlivé. [Další informace](https://docs.microsoft.com/azure/active-directory/develop/active-directory-how-applications-are-added#who-has-permission-to-add-applications-to-my-azure-ad-instance).
 
 
 
-#### <a name="assign-application-developer-role"></a>Přiřazení role aplikace pro vývojáře 
+#### <a name="assign-application-developer-role"></a>Přiřazení role vývojáře aplikace 
 
-Tenanta nebo globální správce může přiřadit roli vývojář aplikace k účtu. [Další informace](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal).
+Tenant/globální správce může přiřadit roli vývojář aplikace k účtu. [Další informace](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal).
 
-## <a name="assign-role-assignment-permissions"></a>Přiřadit oprávnění k přiřazení role
+## <a name="assign-role-assignment-permissions"></a>Přiřadit oprávnění přiřazení role
 
-Přiřadíte oprávnění k přiřazení role u skupiny prostředků, ve kterém projektu Azure Migrate nachází, následujícím způsobem:
+Přiřaďte oprávnění přiřazení role ke skupině prostředků, ve které se Azure Migrate projekt nachází, takto:
 
-1. Ve skupině prostředků na webu Azure Portal, vyberte **řízení přístupu (IAM)** .
-2. V **zkontrolovat přístup**vyhledejte příslušný účet a klikněte na něj chcete-li zobrazit oprávnění.
+1. Ve skupině prostředků v Azure Portal vyberte **řízení přístupu (IAM)** .
+2. V části **kontrolovat přístup**Najděte příslušný účet a kliknutím na něj Zobrazte oprávnění.
 
-    - Spustit posouzení server **Přispěvatel** oprávnění jsou dostačující.
-    - Spuštění agenta serveru migrace, měli byste mít **vlastníka** (nebo **Přispěvatel** a **správce uživatelských přístupů**) oprávnění.
+    - Aby bylo možné spustit vyhodnocení serveru, jsou dostatečná oprávnění přispěvatele.
+    - Pokud chcete spustit migraci serveru bez agenta, měli byste mít oprávnění **vlastníka** (nebo **přispěvatele** a **Správce přístupu uživatelů**).
 
-3. Pokud nemáte potřebná oprávnění, o ně požádat vlastníka skupiny prostředků. 
+3. Pokud nemáte požadovaná oprávnění, požádejte je od vlastníka skupiny prostředků. 
 
 
 
 ## <a name="prepare-for-vmware-vm-assessment"></a>Příprava na posouzení virtuálních počítačů VMware
 
-Příprava na posouzení virtuálních počítačů VMware, budete muset ověřit nastavení virtuálního počítače a hostitele Hyper-V a ověřte nastavení pro nasazení zařízení.
+K přípravě na posouzení virtuálních počítačů VMware je nutné ověřit hostitele Hyper-V a nastavení virtuálního počítače a ověřit nastavení pro nasazení zařízení.
 
-### <a name="verify-vmware-settings"></a>Ověřte nastavení VMware
+### <a name="verify-vmware-settings"></a>Ověření nastavení VMware
 
-1. [Ověřte](migrate-support-matrix-vmware.md#assessment-vmware-server-requirements) požadavků na servery VMware na posouzení virtuálních počítačů.
-2. [Ujistěte se, že](migrate-support-matrix-vmware.md#assessment-port-requirements) , že požadované porty jsou otevřeny v serverů vCenter.
-
-
-### <a name="set-up-an-account-for-assessment"></a>Nastavit účet pro posouzení
-
-Azure Migrate potřebuje přístup k systému vCenter Server ke zjištění virtuálních počítačů pro vyhodnocení a migrace bez agenta. Pro účely posouzení pouze potřebujete účet jen pro čtení pro vCenter Server.
-
-Pokud používáte firewall.proxy založené na adrese URL, povolit přístup k požadovaným [adresám URL služby Azure](migrate-support-matrix-vmware.md#assessment-url-access-requirements).
-
-Ujistěte se, že proxy server odstraňuje všechny záznamy CNAME přijaté při hledání adresy URL.
+1. [Ověřit](migrate-support-matrix-vmware.md#assessment-vcenter-server-requirements) Požadavky na server VMware pro vyhodnocování virtuálních počítačů.
+2. Ujistěte [se, že](migrate-support-matrix-vmware.md#assessment-port-requirements) jsou na vCenter serverech otevřené požadované porty.
 
 
-### <a name="verify-appliance-settings-for-assessment"></a>Ověřte nastavení zařízení pro posouzení
+### <a name="set-up-an-account-for-assessment"></a>Nastavení účtu pro posouzení
 
-Před nastavením zařízení Azure Migrate a začátek hodnocení v dalším kurzu, příprava pro nasazení zařízení.
+Azure Migrate musí mít přístup k vCenter Server, aby se zjistily virtuální počítače pro účely posouzení a migrace bez agentů. Pouze pro posouzení potřebujete účet jen pro čtení vCenter Server.
 
-1. Ověřte, zda [ověřte](migrate-support-matrix-vmware.md#assessment-appliance-requirements) požadavky pro nastavení služby Azure Migrate zařízení ve službě VMware.
-2. [Kontrola](migrate-support-matrix-vmware.md#assessment-url-access-requirements) adresy URL Azure, které budete potřebovat přístup k zařízení.
-3. Kontrolovat data, která bude shromažďovat zařízení během zjišťování a posouzení.
-4. [Poznámka:](migrate-support-matrix-vmware.md#assessment-port-requirements) portů požadavků na přístup pro zařízení.
-5. Jako virtuální počítač VMware pomocí soubor OVA nasazením zařízení Azure Migrate. V systému vCenter Server Ujistěte se, že váš účet má oprávnění k vytvoření virtuálního počítače pomocí soubor OVA.
+Pokud používáte proxy server brány firewall založený na adrese URL, povolte přístup k požadovaným [adresám URL Azure](migrate-support-matrix-vmware.md#assessment-url-access-requirements).
+
+Ujistěte se, že proxy překládá všechny záznamy CNAME přijaté při vyhledávání adres URL.
 
 
-## <a name="prepare-for-agentless-vmware-migration"></a>Příprava na migraci bez agentů VMware
+### <a name="verify-appliance-settings-for-assessment"></a>Ověření nastavení zařízení pro posouzení
 
-Zkontrolujte požadavky bez agentů migrace virtuálních počítačů VMware.
+Před nastavením zařízení Azure Migrate a zahájením posouzení v dalším kurzu připravte na nasazení zařízení.
 
-1. [Kontrola](migrate-support-matrix-vmware.md#agentless-migration-vmware-server-requirements) požadavků na servery VMware pro migraci bez agentů.
-2. Nastavit účet pro přístup k serveru vCenter s [požadovaná oprávnění](migrate-support-matrix-vmware.md#agentless-migration-vcenter-server-permissions) migrace bez agenta.
-3. [Poznámka:](migrate-support-matrix-vmware.md#agentless-migration-vmware-vm-requirements) požadavky na virtuální počítače VMware, které chcete migrovat do Azure s použitím migrace bez agenta.
-4. [Kontrola](migrate-support-matrix-vmware.md#agentless-migration-appliance-requirements) zařízení požadavky na migraci bez agentů.]
-5. Poznámka: zařízení [přístup k adrese URL](migrate-support-matrix-vmware.md#agentless-migration-url-access-requirements) a [port přístup](migrate-support-matrix-vmware.md#agentless-migration-port-requirements) požadavky pro migraci bez agentů.
+1. Ověřte [požadavky pro](migrate-support-matrix-vmware.md#assessment-appliance-requirements) nastavení Azure Migrate zařízení ve VMware.
+2. [Zkontrolujte](migrate-support-matrix-vmware.md#assessment-url-access-requirements) adresy URL Azure, ke kterým bude zařízení potřebovat přístup.
+3. Zkontrolujte data, která bude zařízení shromažďovat během zjišťování a posouzení.
+4. [Poznamenejte si](migrate-support-matrix-vmware.md#assessment-port-requirements) požadavky na přístup k portu pro dané zařízení.
+5. Zařízení Azure Migrate nasadíte jako virtuální počítač VMware pomocí souboru sady vajíček. V vCenter Server se ujistěte, že váš účet má oprávnění k vytvoření virtuálního počítače pomocí souboru sady vajíček.
 
 
-## <a name="prepare-for-agent-based-vmware-migration"></a>Příprava na migraci založené na agentovi VMware
+## <a name="prepare-for-agentless-vmware-migration"></a>Příprava na migraci VMware bez agentů
 
-Zkontrolujte požadavky pro migrace virtuálních počítačů VMware na základě agenta.
+Projděte si požadavky na migraci virtuálních počítačů VMware bez agenta.
 
-1. [Kontrola](migrate-support-matrix-vmware.md#agent-based-migration-vmware-server-requirements) požadavků na servery VMware pro migraci bez agentů. 
-2. Nastavit účet pro přístup k serveru vCenter s [požadovaná oprávnění](migrate-support-matrix-vmware.md#agent-based-migration-vcenter-server-permissions) migrace bez agenta.
-3. [Poznámka:](migrate-support-matrix-vmware.md#agent-based-migration-vmware-vm-requirements) požadavky na virtuální počítače VMware, který chcete migrovat do Azure pomocí migrace založené na agentovi, včetně instalace služby Mobility service na každém virtuálním počítači, které chcete migrovat.
-4. Poznámka: [přístup k adrese URL](migrate-support-matrix-vmware.md#agent-based-migration-url-access-requirements).
-5. Kontrola [port přístup](migrate-support-matrix-vmware.md#agent-based-migration-port-requirements) požadavky na služby Mobility spuštěné na každém virtuálním počítači a pro konfigurační server Azure Migrate.
+1. [Kontrola](migrate-support-matrix-vmware.md#agentless-migration-vmware-server-requirements) Požadavky na server VMware pro migraci bez agenta.
+2. Nastavte účet pro přístup k vCenter Server s [požadovanými oprávněními](migrate-support-matrix-vmware.md#agentless-migration-vcenter-server-permissions) pro migraci bez agenta.
+3. [Poznamenejte](migrate-support-matrix-vmware.md#agentless-migration-vmware-vm-requirements) si požadavky na virtuální počítače VMware, které chcete migrovat do Azure pomocí migrace bez agentů.
+4. [Kontrola](migrate-support-matrix-vmware.md#agentless-migration-appliance-requirements) požadavků na zařízení pro migraci bez agenta.]
+5. Poznamenejte si [přístup k adresám URL](migrate-support-matrix-vmware.md#agentless-migration-url-access-requirements) zařízení a přístup k [portům](migrate-support-matrix-vmware.md#agentless-migration-port-requirements) pro migraci bez agentů.
+
+
+## <a name="prepare-for-agent-based-vmware-migration"></a>Příprava na migraci VMware založenou na agentech
+
+Projděte si požadavky na migraci virtuálních počítačů VMware založených na agentech.
+
+1. [Kontrola](migrate-support-matrix-vmware.md#agent-based-migration-vmware-server-requirements) Požadavky na server VMware pro migraci bez agenta. 
+2. Nastavte účet pro přístup k vCenter Server s [požadovanými oprávněními](migrate-support-matrix-vmware.md#agent-based-migration-vcenter-server-permissions) pro migraci bez agenta.
+3. [Poznamenejte](migrate-support-matrix-vmware.md#agent-based-migration-vmware-vm-requirements) si požadavky na virtuální počítače VMware, které chcete migrovat do Azure pomocí migrace založené na agentech, včetně instalace služby mobility na každý virtuální počítač, který chcete migrovat.
+4. [Přístup k adrese URL](migrate-support-matrix-vmware.md#agent-based-migration-url-access-requirements):
+5. Zkontrolujte požadavky na [přístup k portu](migrate-support-matrix-vmware.md#agent-based-migration-port-requirements) pro službu mobility spuštěnou na každém virtuálním počítači a pro Azure Migrate konfigurační server.
 
 ## <a name="next-steps"></a>Další postup
 
@@ -157,10 +157,10 @@ V tomto kurzu se naučíte:
  
 > [!div class="checklist"] 
 > * Nastavte oprávnění Azure.
-> * Připravit VMware pro vyhodnocení a migraci.
+> * Příprava VMware pro posouzení a migraci
 
 
-Pokračovat druhé části kurzu nastavit projekt Azure Migrate a posouzení virtuálních počítačů VMware pro migraci do Azure.
+Pokračujte druhým kurzem a nastavte projekt Azure Migrate a vyhodnoťte virtuální počítače VMware pro migraci do Azure.
 
 > [!div class="nextstepaction"] 
 > [Posouzení virtuálních počítačů VMware](./tutorial-migrate-vmware.md) 

@@ -11,15 +11,15 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.date: 09/11/2018
 ms.author: jingwang
-ms.openlocfilehash: 553e87cacf407da2333da3105647719679feaabf
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a4d5941091c3cf6516380c4d6384951d886e0e7f
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60624580"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68640339"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-sql-database-by-using-the-copy-data-tool"></a>Kopírování dat z úložiště objektů blob v Azure do databáze SQL pomocí nástroje pro kopírování dat
-> [!div class="op_single_selector" title1="Select the version of the Data Factory service that you're using:"]
+> [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
 > * [Verze 1](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [Aktuální verze](tutorial-copy-data-tool.md)
 
@@ -38,8 +38,8 @@ V tomto kurzu budete provádět následující kroky:
 ## <a name="prerequisites"></a>Požadavky
 
 * **Předplatné Azure**: Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
-* **Účet úložiště Azure**: Použití služby Blob storage jako _zdroj_ datového úložiště. Pokud účet úložiště Azure nemáte, přečtěte si pokyny v tématu [Vytvoření účtu úložiště](../storage/common/storage-quickstart-create-account.md).
-* **Azure SQL Database**: Použití SQL database jako _jímky_ datového úložiště. Pokud databázi SQL nemáte, přečtěte si pokyny v tématu [Vytvoření databáze SQL](../sql-database/sql-database-get-started-portal.md).
+* **Účet úložiště Azure**: Jako _zdrojové_ úložiště dat použijte úložiště objektů BLOB. Pokud účet úložiště Azure nemáte, přečtěte si pokyny v tématu [Vytvoření účtu úložiště](../storage/common/storage-quickstart-create-account.md).
+* **Azure SQL Database**: Použijte databázi SQL jako úložiště dat _jímky_ . Pokud databázi SQL nemáte, přečtěte si pokyny v tématu [Vytvoření databáze SQL](../sql-database/sql-database-get-started-portal.md).
 
 ### <a name="create-a-blob-and-a-sql-table"></a>Vytvoření objektu blob a tabulky SQL
 
@@ -72,7 +72,7 @@ Provedením těchto kroků si připravte úložiště objektů blob a databázi 
     CREATE CLUSTERED INDEX IX_emp_ID ON dbo.emp (ID);
     ```
 
-2. Povolte službám Azure přístup k SQL Serveru. Ověřte, že je pro váš server, na kterém běží SQL Database, povolené nastavení **Povolit přístup ke službám Azure**. Toto nastavení umožní službě Data Factory zapisovat data do vaší instance databáze. Pokud chcete ověřit a zapnout toto nastavení, přejděte na Azure SQL Server > **Zabezpečení** > **Brány firewall a virtuální sítě** > nastavte možnost **Povolit přístup ke službám Azure** na **ZAPNUTO**.
+2. Povolte službám Azure přístup k SQL Serveru. Ověřte, že je pro váš server, na kterém běží SQL Database, povolené nastavení **Povolit přístup ke službám Azure**. Toto nastavení umožní službě Data Factory zapisovat data do vaší instance databáze. Pokud chcete toto nastavení ověřit a zapnout, přejděte na Azure SQL Server > Přehled > nastavení brány firewall serveru > nastavte možnost **Povolit přístup ke službám Azure** na **zapnuto**.
 
 ## <a name="create-a-data-factory"></a>Vytvoření datové továrny
 
@@ -87,7 +87,7 @@ Provedením těchto kroků si připravte úložiště objektů blob a databázi 
     
     ![Nová datová továrna – chybová zpráva](./media/tutorial-copy-data-tool/name-not-available-error.png)
 
-    Pokud se zobrazí chybová zpráva týkající se hodnoty názvu, zadejte jiný název datové továrny. Použijte například název _**vaše_jméno**_**ADFTutorialDataFactory**. Pravidla pojmenování artefaktů služby Data Factory najdete v tématu [Data Factory – pravidla pojmenování](naming-rules.md).
+    Pokud se zobrazí chybová zpráva týkající se hodnoty názvu, zadejte jiný název datové továrny. Použijte například název _**vaše_jméno**_ **ADFTutorialDataFactory**. Pravidla pojmenování artefaktů služby Data Factory najdete v tématu [Data Factory – pravidla pojmenování](naming-rules.md).
 1. Vyberte **předplatné** Azure, v rámci kterého se má nová datová továrna vytvořit.
 1. U položky **Skupina prostředků** proveďte jeden z následujících kroků:
     
@@ -152,7 +152,7 @@ Provedením těchto kroků si připravte úložiště objektů blob a databázi 
 
     ![Nová propojená služba jímky](./media/tutorial-copy-data-tool/new-sink-linked-service.png)
 
-    b. Vyberte **Azure SQL Database** z galerie a pak vyberte **Další**.
+    b. V galerii vyberte **Azure SQL Database** a pak vyberte **Další**.
 
     ![Výběr Azure SQL DB](./media/tutorial-copy-data-tool/select-azure-sql-db.png)
 
@@ -192,7 +192,7 @@ Provedením těchto kroků si připravte úložiště objektů blob a databázi 
 
 1. Výběrem karty **Autor** na levé straně přepněte do režimu úprav. Pomocí editoru můžete aktualizovat propojené služby, datové sady a kanály vytvořené nástrojem. Podrobnosti o úpravách těchto entit v uživatelském rozhraní služby Data Factory najdete ve [verzi tohoto kurzu pro Azure Portal](tutorial-copy-data-portal.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Kanál v této ukázce kopíruje data z úložiště objektů blob do databáze SQL. Naučili jste se tyto postupy:
 
 > [!div class="checklist"]

@@ -1,71 +1,71 @@
 ---
-title: Aktivní učení – Personalizer
+title: Active Learning – Přizpůsobte si
 titleSuffix: Azure Cognitive Services
 description: ''
 services: cognitive-services
-author: edjez
+author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.author: edjez
-ms.openlocfilehash: c44afc81a7ec9d05cdc04cc8bc46c77cd51ceaf8
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.author: diberry
+ms.openlocfilehash: 8c1579be3d11ae14ca45ee861de2d4f705e5d62c
+ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67722526"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68663710"
 ---
-# <a name="active-learning-and-learning-policies"></a>Aktivní učení a učení zásady 
+# <a name="active-learning-and-learning-policies"></a>Zásady aktivního učení a učení 
 
-Když vaše aplikace volá rozhraní API pořadí, obdržíte řád obsah. Obchodní logiky můžete toto pořadí určí, jestli obsah by měl být displej tak, aby uživatel. Při zobrazení seřazený obsah, který je _aktivní_ pořadí událostí. Když vaše aplikace nezobrazuje, seřazené obsahu, který je _neaktivní_ pořadí událostí. 
+Když vaše aplikace volá rozhraní API pro řazení, dostanete si rozměr obsahu. Obchodní logika může toto pořadí použít k určení, zda by měl být obsah zobrazen uživateli. Když zobrazíte seřazený obsah, jedná se o _aktivní_ událost pořadí. Když aplikace nezobrazuje daný obsah, jedná se o _neaktivní_ událost pořadí. 
 
-Informace o aktivních pořadí událostí je vrácena Personalizer. Tyto informace slouží k trénování modelu přes aktuální zásady learning pokračovat.
+K přizpůsobení se vrátí informace o události aktivního pořadí. Tyto informace se používají k pokračování v školení modelu prostřednictvím aktuálních zásad učení.
 
 ## <a name="active-events"></a>Aktivní události
 
-Aktivní události by měla být vždy zobrazí uživateli a potřebu volání se vrátit do překonáte bariéru učení. 
+Aktivní události by se měly vždy zobrazit uživateli a k uzavření výukové smyčky by mělo být vráceno volání odměny. 
 
-### <a name="inactive-events"></a>Aktivní události 
+### <a name="inactive-events"></a>Neaktivní události 
 
-Neaktivní události neměli měnit základní model, protože uživatel Listener was not given možnost výběru z seřazený obsah.
+Neaktivní události by neměly měnit podkladový model, protože uživatel neměl možnost zvolit si z hodnoceného obsahu.
 
-## <a name="dont-train-with-inactive-rank-events"></a>Není trénování s neaktivní pořadí událostí 
+## <a name="dont-train-with-inactive-rank-events"></a>Nevytvářejte výuku s neaktivními událostmi Rank 
 
-Pro některé aplikace budete muset nainstalovat bez mého ještě, pokud vaše aplikace bude uživateli zobrazit výsledky volání rozhraní API pořadí. 
+U některých aplikací možná budete muset volat rozhraní API řazení, aniž byste věděli, jestli aplikace zobrazí výsledky uživateli. 
 
-To se stane, když:
+K tomu dojde v těchto případech:
 
-* Vám může být předem vykreslování některé uživatelské rozhraní, které uživatel může nebo nemůže získat zobrazíte. 
-* Vaše aplikace může dělat prediktivní přizpůsobení, ve kterém pořadí volání s kontextem méně v reálném čase a jejich výstup může nebo nemusí být v aplikaci použít. 
+* Možná budete předem vykreslovat některé uživatelské rozhraní, které uživatel může nebo nemusí zobrazit. 
+* Vaše aplikace může provádět prediktivní přizpůsobení, ve kterém se zadávají volání pořadí s méně kontextem v reálném čase a jejich výstup může nebo nemusí být aplikací používán. 
 
-### <a name="disable-active-learning-for-inactive-rank-events-during-rank-call"></a>Zakázat active learning pro neaktivní pořadí událostí během pořadí volání
+### <a name="disable-active-learning-for-inactive-rank-events-during-rank-call"></a>Zakázat aktivní učení pro události neaktivního pořadí během volání pořadí
 
-Pro zakázání automatické učení, volejte pořadí s `learningEnabled = False`.
+Chcete-li zakázat automatické učení, zavolejte `learningEnabled = False`pořadí pomocí.
 
-Učení pro neaktivní událost se aktivuje implicitně Pokud odesíláte reward pro počet rozměrů.
+Pokud pro danou dobu odešlete nějakou odměnu, bude učení pro neaktivní událost implicitně aktivované.
 
-## <a name="learning-policies"></a>Učení zásady
+## <a name="learning-policies"></a>Zásady učení
 
-Učení zásad určuje konkrétní *hyperparameters* školení modelu. Dva modely stejná data, školení na jiné výukové zásadách, budou se chovat jinak.
+Zásady učení určují konkrétní *parametry* pro školení modelů. Dva modely stejných dat, které jsou vyškolené v různých zásadách učení, se budou chovat jinak.
 
 ### <a name="importing-and-exporting-learning-policies"></a>Import a export zásad učení
 
-Můžete importovat a exportovat learning soubory zásad z portálu Azure portal. To umožňuje uložit existující zásady, jejich testování, je nahradit a archivují ve vaší správě zdrojového kódu jako artefakty pro budoucí použití a auditu.
+Soubory zásad učení můžete importovat a exportovat z Azure Portal. To vám umožňuje uložit existující zásady, otestovat je, nahradit je a archivovat je v rámci správy zdrojového kódu jako artefakty pro budoucí referenci a audit.
 
 ### <a name="learning-policy-settings"></a>Nastavení zásad učení
 
-Nastavení **Learning zásad** nejsou určené ke změnám. Až porozumíte, jak by mohly mít dopad Personalizer jenom změňte nastavení. Změna nastavení, aniž by tyto znalosti způsobí vedlejší účinky, včetně zrušení platnosti Personalizer modely.
+Nastavení v **zásadách Učení** není určeno ke změně. Nastavení můžete změnit jenom v případě, že rozumíte tomu, jak přizpůsobené přizpůsobování ovlivňují. Změna nastavení bez těchto znalostí způsobí vedlejší účinky, včetně neověřování modelů přizpůsobeného pro přizpůsobování.
 
-### <a name="comparing-effectiveness-of-learning-policies"></a>Porovnání efektivitu studijních zásady
+### <a name="comparing-effectiveness-of-learning-policies"></a>Porovnání efektivity studijních zásad
 
-Můžete porovnat jak různé zásady Learning by provedly z posledních dat v protokolech Personalizer prováděním [offline hodnocení](concepts-offline-evaluation.md).
+Můžete porovnat, jak by se různé zásady učení prováděly proti minulým datům v protokolech pro přizpůsobování pomocí [offline vyhodnocení](concepts-offline-evaluation.md).
 
-[Nahrát vlastní zásady učení](how-to-offline-evaluation.md) má být porovnán s aktuální zásady učení.
+[Nahrajte vlastní vzdělávací zásady](how-to-offline-evaluation.md) pro porovnání s aktuálními zásadami učení.
 
-### <a name="discovery-of-optimized-learning-policies"></a>Zjišťování optimalizované learning zásad
+### <a name="discovery-of-optimized-learning-policies"></a>Zjišťování zásad optimalizovaného učení
 
-Personalizer zásadu můžete vytvořit více optimalizované learning při provádění [offline hodnocení](how-to-offline-evaluation.md). Více optimalizované learning zásady, které se zobrazí pro lepší odměny v offline zkušební verzi, budou poskytovat lepší výsledky při použití v Personalizer online.
+Přizpůsobení může při [vyhodnocování offline](how-to-offline-evaluation.md)vytvořit lépe optimalizované výukové zásady. Lépe optimalizované studijní zásady, které mají lepší přínos při offline testování, budou při použití online v přizpůsobeném procesu poskytovat lepší výsledky.
 
-Po vytvoření zásady optimalizované učení, můžete použít přímo na Personalizer nahradí aktuální zásady okamžitě, nebo můžete uložit pro další testování a rozhodnout se v budoucnu, jestli se má zahodit, uložit nebo použít později.
+Po vytvoření optimalizovaných zásad učení ji můžete použít přímo na přizpůsobení, aby se okamžitě nahradila aktuální zásada, nebo ji můžete uložit pro další vyhodnocení a rozhodnout se, jestli ji později zrušíte, uložte nebo použijete.

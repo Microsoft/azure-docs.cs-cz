@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 04/01/2019
+ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: acbcaa7e5588c0fecf2c20751e69442e1373cbb5
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: bad3bdc2b4508c082ca50647d5de5e7265c763a1
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68563985"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68639192"
 ---
 # <a name="patterns-improve-prediction-accuracy"></a>Vzory zvyšte přesnost předpovědi
 Vzory jsou navržené pro zlepšení přesnosti, když několik projevy jsou velmi podobné.  Vzor umožňuje získat vyšší přesnost pro záměru bez zadání projevy mnoho více. 
@@ -95,7 +95,7 @@ Pokud je Entity1 umístění s rolemi, jako je počátek (Seattle) a cíl (Cairo
 
 ## <a name="nesting-limits-for-groups-with-optional-syntax"></a>Omezení vnořování pro skupiny s volitelnou syntaxí
 
-Kombinace **seskupení** s volitelnou  syntaxí má limit 3 úrovní vnoření.
+Kombinace **seskupení** s volitelnou syntaxí má limit 3 úrovní vnoření.
 
 |Povoleno|Příklad|
 |--|--|

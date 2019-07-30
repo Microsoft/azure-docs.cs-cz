@@ -1,6 +1,6 @@
 ---
-title: 'Rychlý start: Prozkoumejte ukázky prostředí Azure čas Series Insights ve verzi Preview | Dokumentace Microsoftu'
-description: Seznamte se s Azure čas Series Insights ve verzi Preview ukázkovém prostředí.
+title: 'Rychlý start: Prozkoumejte ukázkové prostředí Azure Time Series Insights Preview | Microsoft Docs'
+description: Pochopte ukázkové prostředí Azure Time Series Insights Preview.
 ms.service: time-series-insights
 services: time-series-insights
 author: ashannon7
@@ -10,120 +10,126 @@ ms.reviewer: dpalled
 ms.topic: quickstart
 ms.workload: big-data
 ms.custom: mvc seodec18
-ms.date: 04/22/2019
-ms.openlocfilehash: 547edb194ffdf52a805f573d338f61edff80623a
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.date: 07/29/2019
+ms.openlocfilehash: 3e93fdc903b8e0d4ee4233e007014bb82ea22b6b
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67164887"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68638892"
 ---
-# <a name="quickstart-explore-the-azure-time-series-insights-preview-demo-environment"></a>Rychlý start: Prozkoumejte Azure čas Series Insights ve verzi Preview ukázkovém prostředí
+# <a name="quickstart-explore-the-azure-time-series-insights-preview-demo-environment"></a>Rychlý start: Prozkoumat ukázkové prostředí Azure Time Series Insights Preview
 
-Tento rychlý start vám pomůže začít s prostředím Azure čas Series Insights ve verzi Preview. V bezplatné ukázky prohlédnete si klíčové funkce, které byly přidány do čas Series Insights ve verzi Preview.
+Tento rychlý Start vám pomůže začít s prostředím Azure Time Series Insights Preview. V bezplatné ukázce provedete klíčové funkce, které byly přidány do Time Series Insights Preview.
 
-Čas Series Insights ve verzi Preview ukázkovém prostředí obsahuje společnosti scénář, společnosti Contoso, který se ovládá dvě větrné turbíny farmy. Každou farmu má 10 turbíny. Každý turbíny mají 20 snímače, které vykazují data každou minutu pro službu Azure IoT Hub. Snímačům shromažďovat informace o počasí, výšku okna a yaw pozici. Také se zaznamenává informace o výkonu generátor, řazením chování a bezpečný přístup z více monitorů.
+Ukázkové prostředí Time Series Insights Preview obsahuje firmu společnosti Contoso, která pracuje se dvěma farmami větrné turbíny. Každá farma má 10 turbín. Každé turbína má 20 senzorů, které oznamují data každou minutu do Azure IoT Hub. Senzory shromažďují informace o povětrnostních podmínkách, sklonu okna a Yaw pozici. Zaznamenávají se taky informace o výkonu generátoru, chování převodovky a bezpečnostních monitorech.
 
-V tomto rychlém startu se dozvíte, jak pomocí služby Time Series Insights užitečné přehledy v data společnosti Contoso. Také proveďte analýzu krátký původní příčiny lépe předpovědět kritické chyby a provedení údržby.
+V tomto rychlém startu se dozvíte, jak pomocí Time Series Insights najít užitečné poznatky v datech společnosti Contoso. K lepšímu odhadu kritických chyb a k provedení údržby se taky provádí krátká hlavní příčina.
 
-## <a name="explore-the-time-series-insights-explorer-in-a-demo-environment"></a>Prozkoumejte službu v Průzkumníku Time Series Insights v ukázkovém prostředí
+## <a name="explore-the-time-series-insights-explorer-in-a-demo-environment"></a>Prozkoumat Průzkumníka Time Series Insights v ukázkovém prostředí
 
-Průzkumník čas Series Insights ve verzi Preview demonstruje historických dat a hlavní příčiny potíží analýzy. Jak začít:
+Průzkumník Preview Time Series Insights ukazuje historická data a hlavní příčiny analýzy. Jak začít:
 
-1. Vytvoření [bezplatný účet Azure](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) pokud ho nemáte.
+1. Vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) Azure, pokud ho nemáte.
 
-1. Přejděte [Contoso větrné farmy ukázka](https://insights.timeseries.azure.com/preview/samples) prostředí.  
+1. Přejít do ukázkového prostředí [farmy společnosti Contoso Wind](https://insights.timeseries.azure.com/preview/samples)  
 
-1. Pokud se zobrazí výzva, přihlaste se do Průzkumníka služby Time Series Insights pomocí přihlašovacích údajů k účtu Azure.
+1. Pokud se zobrazí výzva, přihlaste se do Průzkumníka Time Series Insights pomocí svých přihlašovacích údajů k účtu Azure.
 
-## <a name="work-with-historical-data"></a>Práce s využitím historických dat
+## <a name="work-with-historical-data"></a>Práce s historickými daty
 
-1. V **1 zařízení Contoso**, podívejte se na větrné turbíny **W7**.  
+1. Ve **společnosti Contoso 1**se podívejte na vítr turbín **W7**.  
 
-   1. Změnit rozsah zobrazení k **1/1/17 20:00 do 3/10/17 20:00 (UTC)** .
-   1. Chcete-li vybrat senzor, vyberte **1 zařízení Contoso** > **W7** > **generátor systému** > **GeneratorSpeed** . Zkontrolujte hodnoty, které jsou zobrazeny.
+   1. Změňte rozsah zobrazení na **1/1/17 20:00 na 3/10/17 20:00 (UTC)** .
+   1. Pokud chcete vybrat senzor, vyberte **Contoso závod 1** > **W7** > **generátor System** > **GeneratorSpeed**. Pak zkontrolujte zobrazené hodnoty.
 
-      [![W7 v závodě Contoso 1](media/v2-update-quickstart/quickstart-one.png)](media/v2-update-quickstart/quickstart-one.png#lightbox)
+      [![W7 ve společnosti Contoso – rostlina 1](media/v2-update-quickstart/quickstart-one.png)](media/v2-update-quickstart/quickstart-one.png#lightbox)
 
-1. Contoso nedávno, najdete je v větrné turbíny **W7**. Názory liší o tom, co způsobilo ohně. V Time Series Insights vidíme, že senzor fire výstrahy se aktivovala během ohně.
+1. V poslední době společnost Contoso našla požár v větrné **turbíně**. Názory se liší v tom, co způsobilo požár. V Time Series Insights vidíte, že senzor výstrah při požáru byl aktivován.
 
-   1. Změnit rozsah zobrazení k **3/9/17 20:00 do 3/10/17 20:00 (UTC)** .
-   1. Vyberte **bezpečnost systému** > **FireAlert**.
+   1. Změňte rozsah zobrazení na **3/9/17 20:00 na 3/10/17 20:00 (UTC)** .
+   1. Vyberte **zabezpečení systému** > **FireAlert**.
 
-      [![Contoso je součástí větrné turbíny W7](media/v2-update-quickstart/quickstart-two.png)](media/v2-update-quickstart/quickstart-two.png#lightbox)
+      [![Společnost Contoso našla požár v větrné turbíně](media/v2-update-quickstart/quickstart-two.png)](media/v2-update-quickstart/quickstart-two.png#lightbox)
 
-1. Kontrolovat další události v době výskytu fire pochopit, co došlo k chybě. Ropa tlaku a vnímal špičku těsně před požár jedno aktivní upozornění.
+1. Zkontrolujte další události v době trvání požáru a zjistěte, co se stalo. Tlak v oleji a aktivní upozornění jsou ve špičkách těsně před požárem.
 
-   1. Vyberte **prezentační systém** > **HydraulicOilPressure**.
-   1. Vyberte **prezentační systém** > **ActiveWarning**.
+   1. Vyberte **Rozteč systému** > **HydraulicOilPressure**.
+   1. Vyberte **Rozteč systému** > **ActiveWarning**.
 
-      [![Kontrolovat další události přibližně ve stejnou dobu](media/v2-update-quickstart/quickstart-three.png)](media/v2-update-quickstart/quickstart-three.png#lightbox)
+      [![Kontrola dalších událostí okolo stejné doby](media/v2-update-quickstart/quickstart-three.png)](media/v2-update-quickstart/quickstart-three.png#lightbox)
 
-1. Přetížení ropy a aktivní upozornění senzorů vnímal špičku těsně před ohně. Rozbalte zobrazené časové řady zobrazíte další příznaky, které byly zřejmá, vedoucí k ohně. Obě senzorů konzistentně pohyboval v čase. Výkyvy označení trvalé a znepokojující vzor.
+1. Tlak v oleji a senzory aktivního upozornění se dopravují přímo před požárem. Rozbalením zobrazené časové řady zobrazíte další příznaky, které byly patrné na oheň. Oba senzory se v průběhu času pohybovaly konzistentně. Kolísání označují trvalý a worrisome vzorek.
 
-    * Změnit rozsah zobrazení k **2/24/17 20:00 do 3/10/17 20:00 (UTC)** .
+    * Změňte rozsah zobrazení na **2/24/17 20:00 na 3/10/17 20:00 (UTC)** .
 
-      [![Ropa tlaku a také vnímal špičku aktivní upozornění senzorů](media/v2-update-quickstart/quickstart-four.png)](media/v2-update-quickstart/quickstart-four.png#lightbox)
+      [![V oleji se také přeroste tlak a aktivní senzory upozornění.](media/v2-update-quickstart/quickstart-four.png)](media/v2-update-quickstart/quickstart-four.png#lightbox)
 
-1. Zkoumání dva roky historických dat zobrazí jiné fire události, který měl stejné kolísání senzor.
+1. Zkoumání dvou let historických dat odhalí další požární událost, která má stejné výkyvy snímačů.
 
-    * Změnit rozsah zobrazení k **1/1/16 12/31/17** (všechna data).
+    * Změňte rozsah zobrazení na **1/1/16 na 12/31/17** (všechna data).
 
-      [![Vyhledávat historických vzory](media/v2-update-quickstart/quickstart-five.png)](media/v2-update-quickstart/quickstart-five.png#lightbox)
+      [![Hledání historických vzorů](media/v2-update-quickstart/quickstart-five.png)](media/v2-update-quickstart/quickstart-five.png#lightbox)
 
-Pomocí služby Time Series Insights a naše telemetrie ze senzorů, jsme přišli problematické tak pro dlouhodobou trend skryté v historická data. Tyto nové poznatky můžeme:
+Díky Time Series Insights a telemetrii senzorů jsme zjistili, že v historických datech jsme skryli dlouhodobě a problematický trend. Díky těmto novým přehledům můžeme:
 
-> [!div class="checklist"]
-> * Vysvětluje, co skutečně došlo k chybě.
-> * Odstranění problému.
-> * Umístění systémy vynikající oznámení výstrah.
+* Vysvětlete, co se skutečně stalo.
+* Opravte problém.
+* Dejte špičkové systémy oznámení výstrah.
 
-## <a name="root-cause-analysis"></a>Analýza původní příčiny
+## <a name="root-cause-analysis"></a>Analýza hlavní příčiny
 
-1. Některé scénáře vyžadují sofistikované analýzy odhalit další drobným příčiny v datech. Vyberte windmill **W6** datu **6/25**.
+1. Některé scénáře vyžadují propracované analýzy k odhalení drobných pokrytí dat. Vyberte Windmill **W6** na datum **6/25**.
 
-    1. Změnit rozsah zobrazení k **6/1/17 20:00 do 7/1/17 20:00 (UTC)** .
-    1. Vyberte **Contoso zařízení 1** > **W6** > **bezpečnost systému** > **VoltageActuatorSwitchWarning**.
+    1. Změňte rozsah zobrazení na **6/1/17 20:00 na 7/1/17 20:00 (UTC)** .
+    1. Vyberte **Contoso rostlinolékařský 1** > **W6** > **Safety System** > **VoltageActuatorSwitchWarning**.
 
-       [![Změnit rozsah zobrazení a vyberte W6](media/v2-update-quickstart/quickstart-six.png)](media/v2-update-quickstart/quickstart-six.png#lightbox)
+       [![Změňte rozsah zobrazení a vyberte W6](media/v2-update-quickstart/quickstart-six.png)](media/v2-update-quickstart/quickstart-six.png#lightbox)
 
-1. Toto upozornění označuje potíže s napětí se výstup generátoru. Celkové výkon generátoru je zpracovávána v rámci normálního parametry v aktuální interval. Zvýšením naše interval splatit jiný model. Jednoznačného pro odložení je evidentní.
+1. Upozornění indikuje problém s napětím výstupu generátorem. Celkový výstup tohoto generátoru je v současné době funkční v rámci normálního parametru. Zvýšením našeho intervalu se objeví další vzor. K určitému odkládacímu umístění je zřejmé.
 
-    1. Odeberte **VoltageActuatorSwitchWarning** senzoru.
-    1. Vyberte **generátor systému** > **ActivePower**.
-    1. Změna intervalu **3d**.
+    1. Odeberte senzor **VoltageActuatorSwitchWarning** .
+    1. Vyberte **generátor System** > **ActivePower**.
+    1. Změňte interval na **3D**.
 
-       [![Změna intervalu 3d](media/v2-update-quickstart/quickstart-seven.png)](media/v2-update-quickstart/quickstart-seven.png#lightbox)
+       [![Změna intervalu na 3D](media/v2-update-quickstart/quickstart-seven.png)](media/v2-update-quickstart/quickstart-seven.png#lightbox)
 
-1. Po rozbalení časový rozsah, můžeme určit, jestli problém zastavila nebo zda bude pokračovat.
+1. Rozšířením časového rozsahu můžeme určit, jestli se problém zastavil, nebo jestli bude pokračovat.
 
-    * Prodloužit časový interval 60 dnů.
+    * Prodlužte časový rozsah až 60 dní.
 
-      [![Prodloužit časový interval 60 dní](media/v2-update-quickstart/quickstart-eight.png)](media/v2-update-quickstart/quickstart-eight.png#lightbox)
+      [![Prodloužení časového intervalu na 60 dní](media/v2-update-quickstart/quickstart-eight.png)](media/v2-update-quickstart/quickstart-eight.png#lightbox)
 
-1. Další datové body senzor lze přidat k zajištění větší kontextu. Další senzorů jsme zobrazení, tím plnější je naše Principy problému. Pojďme vyřadit značky zobrazíte skutečnými hodnotami. 
+1. K zajištění většího kontextu je možné přidat další datové body snímačů. Další senzory, které jsme si vyrozuměli, je úplným porozuměním problému. Pojďme vyřadit značku, aby se zobrazily skutečné hodnoty. 
 
-    1. Vyberte **generátor systému**a pak vyberte tři senzory: **GridVoltagePhase1**, **GridVoltagePhase2**, a **GridVoltagePhase3**.
-    1. Odstranit značku na poslední datový bod viditelná oblast.
+    1. Vyberte **systém generátoru**a potom vyberte tři senzory: **GridVoltagePhase1**, **GridVoltagePhase2**a **GridVoltagePhase3**.
+    1. Přetáhněte značku k poslednímu datovému bodu v viditelné oblasti.
 
-       [![Vyřadit značku](media/v2-update-quickstart/quickstart-nine.png)](media/v2-update-quickstart/quickstart-nine.png#lightbox)
+       [![Odstranit značku](media/v2-update-quickstart/quickstart-nine.png)](media/v2-update-quickstart/quickstart-nine.png#lightbox)
 
-    Dvě napěťovými senzory pracujete srovnatelně a v rámci normálního parametrů. To vypadá, **GridVoltagePhase3** senzor je nadměrné spotřeby.
+    Dva senzory napětí pracují srovnatelně a v normálních parametrech. Vypadá to, že senzor **GridVoltagePhase3** je příčinou.
 
-1. S vysoce kontextová data přidaná se zobrazí pro fázi 3 odložení ještě víc informací, které se tento problém. Teď máme dobré potenciálních zákazníků na příčina upozornění. Jsme připraveni k odkazování na náš tým údržby problém.  
+1. Když se přidají vysoce kontextová data, vypínání fáze 3 se u tohoto problému zobrazuje ještě více. Nyní máme dobrý zájem na příčinu upozornění. Jsme připraveni tuto problematiku na náš tým údržby odkázat.  
 
-    * Změnit zobrazení na všechny překryv **generátor systému** senzory ve stejném grafu škálování.
+    * Změnou zobrazení překryjete všechny senzory **systému generátorů** ve stejné škále grafu.
 
-      [![Změna zobrazení zahrnul všechno](media/v2-update-quickstart/quickstart-ten.png)](media/v2-update-quickstart/quickstart-ten.png#lightbox)
+      [![Změnit zobrazení tak, aby zahrnovalo vše](media/v2-update-quickstart/quickstart-ten.png)](media/v2-update-quickstart/quickstart-ten.png#lightbox)
+
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+
+Teď, když jste dokončili kurz, vyčistěte prostředky, které jste vytvořili:
+
+1. V nabídce vlevo v [Azure Portal](https://portal.azure.com)vyberte **všechny prostředky**a vyhledejte svoji Azure Time Series Insights skupinu prostředků.
+1. Odstraňte celou skupinu prostředků (a všechny prostředky v ní obsažené) tak, že vyberete možnost **Odstranit** nebo odebrat jednotlivé prostředky zvlášť.
 
 ## <a name="next-steps"></a>Další postup
 
-Jste připraveni vytvořit vlastní prostředí čas Series Insights ve verzi Preview. Spuštění:
+Jste připraveni vytvořit vlastní prostředí Time Series Insights Preview. Začněte takto:
 
 > [!div class="nextstepaction"]
-> [Plánování prostředí čas Series Insights ve verzi Preview](time-series-insights-update-plan.md)
+> [Plánování prostředí pro Time Series Insights Preview](time-series-insights-update-plan.md)
 
-Naučte se orientovat na ukázku a jejich funkce:
+Naučte se procházet ukázku a její funkce:
 
 > [!div class="nextstepaction"]
-> [V Průzkumníku čas Series Insights ve verzi Preview](time-series-insights-update-explorer.md)
+> [Průzkumník Preview Time Series Insights](time-series-insights-update-explorer.md)

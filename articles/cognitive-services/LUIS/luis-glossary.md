@@ -7,26 +7,26 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: article
-ms.date: 01/23/2019
+ms.topic: reference
+ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: 595a835018475ed3aa915971f5ff2b78981e7bdf
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 0bf7fe649a5a604c610307b9be0717dce01cb238
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68560495"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68638286"
 ---
 # <a name="language-understanding-glossary-of-common-vocabulary-and-concepts"></a>Jazyk porozumění běžným slovníkům a konceptům
 Language Understanding (LUIS) Glosář vysvětluje podmínky, které můžete narazit při práci se službou LUIS rozhraní API.
 
 ## <a name="active-version"></a>Aktivní verze
 
-Aktivní LUIS verze je verze, která bude přijímat všechny změny modelu. V [LUIS](luis-reference-regions.md) webu, pokud chcete změnit verzi, která není aktivní verze, musíte nejdřív nastavit tuto verzi jako aktivní.
+Aktivní LUIS verze je verze, která bude přijímat všechny změny modelu. Pokud chcete provést změny verze, která není aktivní, musíte na portálu [Luis](luis-reference-regions.md) nejdřív nastavit tuto verzi jako aktivní.
 
 ## <a name="authoring"></a>Pro tvorbu
 
-Vytváření obsahu je schopnost vytvářet, spravovat a nasazovat [aplikace LUIS](#luis-app), buď pomocí [LUIS](luis-reference-regions.md) webu nebo [rozhraní API pro vytváření](https://go.microsoft.com/fwlink/?linkid=2092087).
+Vytváření, Správa a nasazování [aplikace Luis](#luis-app), a to buď pomocí portálu [Luis](luis-reference-regions.md) nebo [rozhraní API pro vytváření obsahu](https://go.microsoft.com/fwlink/?linkid=2092087), je možné vytvářet.
 
 ## <a name="authoring-key"></a>Klíč pro tvorbu
 
@@ -34,30 +34,12 @@ Dříve s názvem "Programátorské" klíč. Umožňuje vytvářet aplikace. Nen
 
 ## <a name="batch-test-json-file"></a>Dávkový soubor JSON textu
 
-Dávkový soubor je pole JSON. Každý prvek v poli má tři vlastnosti: `text`, `intent`, a `entities`. `entities` Vlastnost je pole. Pole může být prázdný. Pokud `entities` pole není prázdný, je potřeba přesně zjistit entity.
+Dávkové testování je schopnost ověřit aktuální model aplikace v LUIS s konzistentní a známou sadou testů uživatele projevy. Dávkový test je definován v souboru ve [formátu JSON](luis-concept-batch-test.md#batch-file-format).
 
-```JSON
-[
-    {
-        "text": "drive me home",
-        "intent": "None",
-        "entities": []
-    },
-    {
-        "text": "book a flight to orlando on the 25th",
-        "intent": "BookFlight",
-        "entities": [
-            {
-                "entity": "orlando",
-                "type": "Location",
-                "startIndex": 18,
-                "endIndex": 25
-            }
-        ]
-    }
-]
-
-```
+Viz také: 
+* [Koncepty](luis-concept-batch-test.md)
+* [Postupy](luis-how-to-batch-test.md)
+* [Kurz] Luis-kurz-Batch-testing.md)
 
 
 ## <a name="collaborator"></a>Spolupracovníka
@@ -114,7 +96,7 @@ Ve službě machine learning [funkce](luis-concept-feature.md) rozlišovací vla
 
 ## <a name="labeling"></a>Používání popisků
 
-Používání popisků je proces přiřazení slova nebo fráze ve záměru [utterance](#utterance) s [entity](#entity) (datový typ).
+Označení nebo označení je proces přidružení slova nebo fráze v [utterance](#utterance) záměru k [entitě](#entity) (DataType).
 
 ## <a name="luis-app"></a>Aplikace LUIS
 

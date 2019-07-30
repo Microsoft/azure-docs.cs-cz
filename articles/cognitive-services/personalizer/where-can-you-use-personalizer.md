@@ -1,73 +1,73 @@
 ---
-title: Scénář hodnocení - Personalizer
+title: Posouzení scénáře – Přizpůsobte si
 titleSuffix: Azure Cognitive Services
-description: Personalizer lze použít v jakékoli situaci, kde můžete vybrat aplikace ravých položek, akce nebo produktu zobrazíte – Pokud chcete vylepšit prostředí, dosahovat lepších obchodních výsledků nebo zvýšit produktivitu.
+description: Přizpůsobování se dá použít v každé situaci, kdy vaše aplikace může vybrat správnou položku, akci nebo produkt k zobrazení, aby bylo lépe lepší, dosáhli jsme lepších obchodních výsledků nebo zlepšili produktivitu.
 services: cognitive-services
-author: edjez
+author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 05/07/2019
-ms.author: edjez
-ms.openlocfilehash: a5bf0d7d0478ad836ed1921b302ab01b004ec73c
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.author: diberry
+ms.openlocfilehash: 465fba3a466aceaf9ef7b71e4b1957bfdbcad766
+ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67722215"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68663641"
 ---
 # <a name="where-can-you-use-personalizer"></a>Kde se dá služba Personalizace využít?
 
-Použití Personalizer v každé situaci, kdy vaše aplikace potřebuje k výběru ravých položek, akce nebo produkt pro zobrazení – aby bylo možné vylepšit prostředí dosažení lepších obchodních výsledků nebo zvýšit produktivitu. 
+Přizpůsobené možnosti můžete použít v jakékoli situaci, kdy aplikace potřebuje vybrat správnou položku, akci nebo produkt, aby se zajistilo lepší, dosáhnout lepších obchodních výsledků nebo zvýšit produktivitu. 
 
-Personalizer využívá strojové učení a vyberte akci, která se uživateli zobrazí. Výběr může výrazně lišit podle toho, množství, kvality a distribuci dat odesílaných službě.
+Individuální nastavení používá Machine Learning k výběru akce pro zobrazení uživatele. Výběr se může výrazně lišit v závislosti na množství, kvalitě a distribuci dat odesílaných službě.
 
-### <a name="checklist-for-applying-personalizer"></a>Kontrolní seznam pro použití Personalizer
+### <a name="checklist-for-applying-personalizer"></a>Kontrolní seznam pro použití přizpůsobeného přizpůsobování
 
 
-Personalizer můžete použít v situacích, kde:
+Přizpůsobené přizpůsobování můžete použít v situacích:
 
-* Máte podnikový proces nebo použitelnosti cíle pro vaši aplikaci.
-* Místo, kde máte ve své aplikaci, ve kterém rozhodování kontextové toho, jak zobrazit uživatelům zlepší tohoto cíle.
-* O nejlepší volbu můžete a měly být přeneseny prostřednictvím kolektivní uživatele chování a součet reward skóre.
-* Použití služby machine learning pro přizpůsobení následuje [pokyny pro využívání](ethics-responsible-use.md) a možnosti, které jste zvolili.
-* Kontextové rozhodnutí může být vyjádřený jako pořadí nejlepší možností (akce) z omezenou sadu možností.
-* Jak se dají určit seřazený podle výběru pracoval pro vaši aplikaci pomocí měření některé aspekty chování uživatelů a jeho v vyjádření _oceňujte skóre_. Toto je číslo v rozsahu od -1 a 1.
-* Skóre reward nebude umožňuje přinést si příliš mnoho zkreslení nebo externí faktory. Doba trvání experimentu je dostatečně nízko, skóre reward můžete vypočítat, i když je stále relevantní.
-* Kontext pro řád můžete vyjádřit jako seznam aspoň 5 [funkce](concepts-features.md) , že si myslíte, že by pomohl učinit správnou volbu a, která nezahrnuje identifikovatelné osobní údaje. (PII).
-* Máte informace o jednotlivých obsahu podle vlastní volby, _akce_, jako seznam aspoň 5 [funkce](concepts-features.md) , že si myslíte, že budou nápovědy Personalizer tou správnou volbou.
-* Vaše aplikace může uchovávat data dlouho dostatek historie alespoň 100 000 interakcí hromadit.
+* Pro vaši aplikaci máte cíl pro podnikání nebo použitelnost.
+* V aplikaci máte místo, kde se pro účely kontextového rozhodování o tom, co Ukázat uživatelům, tento cíl vylepší.
+* Nejlepší volba může a měla by se poznat z kolektivního chování uživatelů a celkové skóre odměňování.
+* Používání strojového učení pro přizpůsobení se řídí [pokyny pro použití](ethics-responsible-use.md) a volbami, které jste zvolili.
+* Kontextové rozhodnutí může být vyjádřeno jako hodnocení nejlepší možnosti (akce) z omezené sady možností.
+* To, jak dobře se vybraná volba rozpracované pro vaši aplikaci může určit měřením určitého aspektu chování uživatelů, a jejím vyjádřením ve _skóre odměňování_. Toto je číslo v rozmezí od-1 do 1.
+* Skóre odměňování nepřináší příliš mnoho nenalezených nebo externích faktorů. Doba trvání experimentu je dostatečně nízká, aby bylo možné vypočítat skóre odměňování, zatímco je stále relevantní.
+* Můžete vyjádřit kontext pro řazení jako seznam alespoň 5 [funkcí](concepts-features.md) , o kterých se domníváte, že vám pomůžete vybrat správnou volbu a že neobsahují osobně identifikovatelné osobní údaje. (PII).
+* Máte informace o jednotlivých možnostech obsahu, _akcích_, jako seznam o nejméně 5 [funkcích](concepts-features.md) , které si myslíte, že přizpůsobíte správnou volbu.
+* Vaše aplikace může uchovávat data dostatečně dlouho a shromažďovat tak historii nejméně 100 000 interakcí.
 
-## <a name="machine-learning-considerations-for-applying-personalizer"></a>Strojové učení důležité informace týkající se použití Personalizer
+## <a name="machine-learning-considerations-for-applying-personalizer"></a>Požadavky na strojové učení pro použití přizpůsobení
 
-Personalizer vychází zpětnovazební učení, přístup do strojového učení, který je vedená zpětnou vazbu, že jí přiřadit. 
+Přizpůsobený objekt je založený na posílení učení, přístupu ke strojovém učení, které je výukou názorů, které vám dáváme. 
 
-Personalizer se dozvíte, nejlépe v situacích, kde:
+Přizpůsobené aplikace se seznámí nejlépe v situacích, kdy:
 
-* Není k dispozici dostatek události pro získání přehledu optimální individuálního nastavení, pokud se problém drifts v čase (například předvolby v zprávy nebo způsobem). Průběžné změny v reálném světě se bude přizpůsobovat personalizer, ale výsledky nebudou optimální, pokud není k dispozici dostatek události a data z se naučíte, jak vyhledat a vyrovnejte na nová schémata. Měli byste vybrat, ke které dochází často případu použití. Vezměte v úvahu hledáte případy použití, ke kterým dochází aspoň 500 časy za den.
-* Kontext a akce dostatek [funkce](concepts-features.md) k usnadnění vzdělávání.
-* Nejsou k dispozici méně než 50 akcí na jedno zavolání pořadí.
-* Nastavení uchovávání dat povolit Personalizer shromažďovat dostatek dat k provedení offline vyhodnocení a optimalizace zásad. Toto je obvykle nejméně 50 000 datových bodů.
+* V případě, že je problém v průběhu času (například předvolby zprávy nebo způsobu), existuje dostatek událostí, aby zůstaly nad optimálním přizpůsobením. Přizpůsobený modul se přizpůsobí nepřetržité změně reálného světa, ale výsledky nebudou optimální, pokud není dostatek událostí a data, která by se dala zjistit a usadit na nové vzory. Měli byste zvolit případ použití, který je často k dispozici. Zvažte možnost Hledat případy použití, které se vyskytují minimálně 500 časů za den.
+* Kontext a akce mají dostatek [funkcí](concepts-features.md) pro usnadnění učení.
+* Pro každé volání je k dispozici méně než 50 akcí.
+* Nastavení uchovávání dat umožňují přizpůsobování shromažďování dostatečného množství dat, aby bylo možné provádět vyhodnocení a optimalizaci zásad offline. Obvykle se jedná o minimálně 50 000 datových bodů.
 
-## <a name="monitor-effectiveness-of-personalizer"></a>Monitorování efektivitu Personalizer
+## <a name="monitor-effectiveness-of-personalizer"></a>Monitorování účinnosti přizpůsobení
 
-Můžete sledovat efektivitu Personalizer pravidelně provedením [offline hodnocení](concepts-offline-evaluation.md).
+Efektivitu přizpůsobeného přizpůsobování můžete pravidelně monitorovat prováděním [offline vyhodnocení](concepts-offline-evaluation.md).
 
-## <a name="use-personalizer-with-recommendation-engines"></a>Pomocí Personalizer generátory doporučení
+## <a name="use-personalizer-with-recommendation-engines"></a>Použití přizpůsobení s moduly s doporučeními
 
-Mnoho společností používá doporučíte produkty z velkých katalogu zákazníkům generátory doporučení, marketing a campaigning nástroje, segmentace cílovou skupinu a clusteringu, filtrování založeného na spolupráci a jiným způsobem.
+Mnohé společnosti využívají moduly doporučení, marketingové a týmové nástroje, segmentování skupin a clusteringu, filtrování pro spolupráci a další způsoby, jak doporučit produkty od velkého katalogu zákazníkům.
 
-[Úložiště Microsoft Recommenders GitHub](https://github.com/Microsoft/Recommenders) poskytuje příklady a osvědčené postupy pro vytváření doporučovacích systémů, poznámkové bloky Jupyter ve formě. Pro přípravu dat, vytváření modelů, vaše rozhodnutí vyzkoušet, ladění a zprovozňování generátory doporučení, pro mnoho běžných přístupů xDeepFM, včetně – zvláštní administrativní oblast, ALS, Mechanismů, DKN poskytuje funkčních příkladů.
+Úložiště GitHubu, které [doporučuje Microsoft](https://github.com/Microsoft/Recommenders) , poskytuje příklady a osvědčené postupy pro vytváření systémů doporučení, které se poskytují jako Jupyter poznámkové bloky. Poskytuje pracovní příklady pro přípravu dat, sestavování modelů, vyhodnocování, ladění a zprovozňováníí pro doporučení pro mnohé běžné přístupy, včetně xDeepFM, správní rady, ALS, MKP, DKN.
 
-Personalizer můžete pracovat s doporučovací modul, když je k dispozici.
+Přizpůsobování může pracovat s modulem doporučení, když je přítomen.
 
-* Generátory doporučení provést velké množství položek (například 500 000) a doporučujeme ze stovek nebo tisíců možnosti podmnožinu (například prvních 20).
-* Personalizer trvá malý počet akcí se velké množství informací o nich a řadí je v reálném čase pro danou zajímavostí, zatímco většina generátory doporučení se používají pouze několik atributů o uživatelích, produkty a jejich interakce.
-* Autonomně prozkoumat uživatelských předvoleb celou dobu, která budou poskytovat lepší výsledky, kde obsah se rychle mění, jako jsou novinky, živé události je navržená personalizer live obsah vytvořený komunitou, s denní aktualizací nebo sezónní obsah.
+* Moduly doporučení využívají velké množství položek (například 500 000) a doporučují podmnožinu (například prvních 20) ze stovek nebo tisíců možností.
+* Přizpůsobený modul přebírá malý počet akcí s velkým množstvím informací o nich a řadí je v reálném čase pro daný bohatý kontext, zatímco většina modulů pro doporučení používá jenom několik atributů o uživatelích, produktech a jejich interakcích.
+* Přizpůsobený modul je navržený tak, aby se samostatně seznámil s uživatelskými preferencemi, což vám poskytne lepší výsledky, při kterých se rychle mění obsah, jako jsou novinky, živé události, živý obsah komunity, obsah s denními aktualizacemi nebo sezónní obsah.
 
-Běžné použití je vzít výstup doporučovací modul (například na top 20 produktů pro určité zákazníka) a použít je jako vstupní akcí pro Personalizer.
+Běžným použitím je pořídit výstup modulu doporučení (například prvních 20 produktů pro určitého zákazníka) a použít ho jako vstupní akce pro přizpůsobené aplikace.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-[Etickými & odpovídá použití](ethics-responsible-use.md).
+[Etika & odpovědná za použití](ethics-responsible-use.md).

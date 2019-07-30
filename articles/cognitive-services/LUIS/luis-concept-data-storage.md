@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 03/28/2019
+ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: af0223db944f01346ddcbc1f198ac0c15a426be4
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: e3028a9f046edb4013d8a2d6ec88d8c3cb2ca489
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564016"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68639235"
 ---
 # <a name="data-storage-and-removal-in-language-understanding-luis-cognitive-services"></a>Úložiště dat a odebírání ve službě Cognitive Services Language Understanding (LUIS)
 Služba LUIS ukládá data šifrovaná v úložišti Azure dat. odpovídající oblast učená klíčem. Tato data jsou ukládána po dobu 30 dnů. 
@@ -34,6 +34,7 @@ Projevy může být uložená na dvou různých místech.
 <a name="utterances-in-an-intent"></a>
 
 ### <a name="delete-example-utterances-from-an-intent"></a>Odstranění příkladu projevy z záměru
+
 Odstranit projevy příklad používá pro školení [LUIS](luis-reference-regions.md). Pokud odstraníte utterance příklad z vaší aplikace LUIS, se odebere z webové služby LUIS a není k dispozici pro export.
 
 <a name="utterances-in-review"></a>

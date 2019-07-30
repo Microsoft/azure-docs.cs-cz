@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 8821ce46c65ac8bca36f006ef77bcaf475b0573d
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: fad0fada4d9dd888b0b2a37b59e4eac1e016aec4
+ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559610"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68663602"
 ---
 # <a name="prepare-data-for-custom-speech"></a>Příprava dat pro Custom Speech
 
@@ -29,7 +29,7 @@ Tato tabulka obsahuje seznam povolených datových typů, kdy se má použít ka
 |-----------|-----------------|----------|-------------------|----------|
 | [Zvuk](#audio-data-for-testing) | Ano<br>Použito pro vizuální kontrolu | 5 zvukových souborů | Ne | N/a |
 | [Audio + přepisy s popiskem](#audio--human-labeled-transcript-data-for-testingtraining) | Ano<br>Používá se k vyhodnocení přesnosti. | 0,5 – 5 hodin zvukového přenosu | Ano | 1 – 1 000 hodin zvukového přenosu |
-| [Související text](##related-text-data-for-training) | Ne | N/a | Ano | 1-200 MB souvisejícího textu |
+| [Související text](#related-text-data-for-training) | Ne | N/a | Ano | 1-200 MB souvisejícího textu |
 
 Soubory by měly být seskupené podle typu do datové sady a nahrané jako soubor zip. Každá datová sada může obsahovat pouze jeden datový typ.
 

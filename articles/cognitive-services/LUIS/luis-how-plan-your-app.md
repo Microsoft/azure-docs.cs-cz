@@ -9,18 +9,18 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 01/02/2019
+ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: 121423682bbd9bbb32f2ab1d02e48d3237ee830d
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: dc648b30dc1236080be06044f510557ae0ce9476
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68563769"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68638309"
 ---
 # <a name="plan-your-luis-app-with-subject-domain-intents-and-entities"></a>Plánování aplikace LUIS s doménou předmětu, záměry a entitami
 
-Je důležité mít plán vaší aplikace. Identifikujte vaší domény, včetně možných záměry a entity, které jsou relevantní pro vaši aplikaci.  
+Chcete-li naplánovat aplikaci, identifikujte svou doménu v oblasti předmětu. To zahrnuje možné záměry a entity, které jsou relevantní pro vaši aplikaci.  
 
 ## <a name="identify-your-domain"></a>Identifikujte domény
 
@@ -39,11 +39,13 @@ Představte si [záměry](luis-concept-intent.md) , které jsou důležité pro 
 
 ## <a name="create-example-utterances-for-each-intent"></a>Vytvořit příklad projevy pro každý záměr
 
-Po určení příkazů vytvořte příklad projevy 10 až 15 pro každý záměr. Než začneme mají méně než tento počet ani vytvořit mnoho projevy pro každý záměr. Každý utterance musí být odlišný od předchozího utterance. Dobré různých v projevy zahrnuje celkový počet slov, volba slov, příkaz čas a interpunkční znaménka. 
+Jakmile určíte záměry, vytvořte pro každý záměr 15 až 30 příkladů projevy. Aby bylo možné začít používat, nemusíte mít méně než tento počet nebo pro každý záměr vytvořit příliš mnoho projevy. Každý utterance musí být odlišný od předchozího utterance. Dobré různých v projevy zahrnuje celkový počet slov, volba slov, příkaz čas a interpunkční znaménka. 
+
+Další informace najdete v [projevy](luis-concept-utterance.md) .
 
 ## <a name="identify-your-entities"></a>Identifikace entit
 
-V příkladu projevy určete entity, které chcete, aby byl extrahován. Rezervovat letu, potřebujeme několik informací jako cíl, datum, letecká společnost, kategorie lístek a cestují třídy. Vytvořte entity pro tyto datové typy a označí [entity](luis-concept-entity-types.md) v příkladu projevy vzhledem k tomu, že jsou důležité pro provedení záměru. 
+V příkladu projevy určete entity, které chcete, aby byl extrahován. Pro zarezervování letu potřebujete informace, jako je cílová, datum, letecká kategorie a třída pro cestování. Vytvořte entity pro tyto datové typy a označte [entity](luis-concept-entity-types.md) v příkladu projevy, protože jsou důležité pro splnění záměru. 
 
 Při zjišťování entit, které mají používat ve vaší aplikaci, mějte na paměti, že existují různé typy entit k zaznamenání relace mezi typy objektů. [Entity v LUIS](luis-concept-entity-types.md) poskytuje další podrobnosti o různých typech.
 

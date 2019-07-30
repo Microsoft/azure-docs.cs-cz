@@ -1,51 +1,51 @@
 ---
-title: Zpětnovazebnému učení – Personalizer
+title: Posílení učení – přizpůsobené přizpůsobování
 titleSuffix: Azure Cognitive Services
-description: Personalizer používá informace o akcích a aktuální kontext a nabízí lepší návrhy hodnocení. Informace o těchto akce a kontextu se atributy nebo vlastnosti, které se označují jako funkce.
+description: Přizpůsobení používá informace o akcích a aktuálním kontextu k zajištění lepšího hodnocení návrhů. Informace o těchto akcích a kontextu jsou atributy nebo vlastnosti, které jsou označovány jako funkce.
 services: cognitive-services
-author: edjez
+author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 05/07/2019
-ms.author: edjez
-ms.openlocfilehash: 26f8348bc2de9cb56110c1cc7ce896934bb46ef7
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.author: diberry
+ms.openlocfilehash: 36071cdee25cfa99fc54b0e5c0c0aa822cb5fe2f
+ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67722451"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68662841"
 ---
-# <a name="what-is-reinforcement-learning"></a>Co je Zpětnovazebnému učení?
+# <a name="what-is-reinforcement-learning"></a>Co je posílení učení?
 
-Zpětnovazebnému učení je přístup k sadě machine learning, která se učí chování získáním zpětnou vazbu od jeho použití.
+Posílení učení je přístup ke strojovém učení, který se učí chování díky získání zpětné vazby od jejího používání.
  
-Zpětnovazebnému učení funguje tak, že:
+Posílení učení prostřednictvím:
 
-* Poskytování příležitosti a stupeň volnosti upravovat chování – například provedení rozhodnutí nebo voleb.
-* Poskytuje kontextové informace o prostředí a možnosti.
-* Poskytování zpětné vazby o tom, jak dobře chování dosahuje určitého cíle.
+* Poskytnutí příležitosti nebo stupně volnosti k vystavení chování, například rozhodování nebo výběru.
+* Poskytování kontextových informací o prostředí a volbách.
+* Poskytnutí zpětné vazby o tom, jak dobře má chování dosáhnout určitého cíle.
 
-Přestože existuje mnoho podtypy a styly zpětnovazební učení, jedná se o fungování koncept v Personalizer:
+I když existuje spousta podtypů a stylů pro posílení učení, jedná se o to, jak koncept funguje v přizpůsobování:
 
-* Vaše aplikace poskytuje možnost zobrazit jednu část obsahu ze seznamu možností.
-* Vaše aplikace obsahuje informace o všech možností a kontextu uživatele.
-* Výpočetní prostředí vaší aplikace _oceňujte skóre_.
+* Vaše aplikace nabízí možnost zobrazit jednu část obsahu ze seznamu alternativ.
+* Vaše aplikace poskytuje informace o každé Alternative a kontextu uživatele.
+* Vaše aplikace počítá _skóre odměňování_.
 
-Na rozdíl od některých přístupy k zpětnovazební učení Personalizer nevyžaduje simulace pracovat v. Své algoritmy learning jsou navrženy pro react vnějším světem (a řídit ho) a Učte se od datových bodů seznámíte, že se jedná o jedinečnou příležitost, náklady, čas a peníze na vytváření, a má nenulovou lituje (ztráta možné reward) Pokud neoptimální výkonu se stane.
+Na rozdíl od některých přístupů k posílení učení, přizpůsobování nevyžaduje simulaci pro práci v. Výukové algoritmy jsou navržené tak, aby reagovaly na vnější svět (nad ním), a Naučte se od každého datového bodu vědět, že se jedná o jedinečnou příležitost, kterou je potřeba vytvořit a který je nenulový (ztrátou případné odměny). dojde k dosažení optimálního výkonu.
 
-## <a name="what-type-of-reinforcement-learning-algorithms-does-personalizer-use"></a>Jaký typ učení se supervizí zpětnovazebnému Personalizer použít?
+## <a name="what-type-of-reinforcement-learning-algorithms-does-personalizer-use"></a>Jaký typ sledovacích algoritmů pro posílení využití přizpůsobuje použití?
 
-Používá aktuální verzi Personalizer **kontextové bandits**, uvedeny přístup, který zpětnovazební učení, který je po provedení rozhodnutí nebo se nemusíte rozhodovat mezi diskrétní akce v daném kontextu.
+Aktuální verze přizpůsobeného doplňku používá **kontext Bandits**, přístup k posílení učení, které se v rámci daného kontextu rozhodne při rozhodování nebo volbách mezi diskrétními akcemi.
 
-_Rozhodnutí paměti_, modelu, která vyškolila zachycení nejlepší možné rozhodnutí zadaný kontext, používá sadu lineární modely. Tyto opakovaně ukázalo obchodních výsledků a jsou prověřené přístup částečně, protože se můžou učit z reálného světa velmi rychle bez nutnosti školení s více průchody a částečně protože doplňují pod dohledem, učení modely a hloubkových neurálních modely sítě.
+_Rozhodovací paměť_, model, který byl vyškolený k zaznamenání nejlepšího možného rozhodnutí, s ohledem na kontext, používá sadu lineárních modelů. Tyto informace se opakovaně ukázaly jako obchodní výsledky a jsou osvědčeným přístupem, které se dají rychle učit z reálného světa, aniž byste museli postupovat na více průchodech a částečně, protože můžou doplňovat modely výukových kurzů a hloubkové neuronové síťové modely.
 
-Přidělení paměti prozkoumat/zneužití provoz se provádí náhodně následující procento nastavit pro zkoumání a je výchozí algoritmus pro zkoumání epsilon greedy.
+Přidělení provozu prozkoumat/zneužít se provádí náhodně za procento nastavené pro průzkum a výchozí algoritmus pro zkoumání je Epsilon – hladec.
 
-### <a name="history-of-contextual-bandits"></a>Historie kontextové Bandits
+### <a name="history-of-contextual-bandits"></a>Historie kontextových Bandits
 
-Jan Langford poprvé použit název kontextové Bandits (Langford a Potokar [2007]) k popisu tractable podmnožinou zpětnovazebnému učení a pracoval na pět papírů zlepšit naši představu o tom se dozvíte v tomto paradigma:
+Jan Langford mince kontext Bandits (Langford and Zhang [2007]), aby popsal odvolávatelné podmnožiny pro posílení učení a pracovali na pololetních materiálech, které zlepšují pochopení toho, jak se v tomto paradigmatu naučíte:
 
 * Beygelzimer et al. [2011]
 * Dudík et al. [2011a,b]
@@ -53,20 +53,20 @@ Jan Langford poprvé použit název kontextové Bandits (Langford a Potokar [200
 * Beygelzimer a Langford [2009]
 * Li et al. [2010]
 
-John je také několik kurzy dříve uvedeného na témata, jako je společné Predikcí (ICML 2015), kontextové Bandit teorie (NIPS 2013), Active Learning (ICML 2009) a ukázkové složitost meze (ICML 2003)
+Jan taky pro témata, jako je například společná předpověď (ICML 2015), provedl několik kurzů, kontextová Bandit teorie (NIPS 2013), Active Learning (ICML 2009) a meze složitosti vzorku (ICML 2003)
 
-## <a name="what-machine-learning-frameworks-does-personalizer-use"></a>Jaké architektury strojového učení Personalizer použít?
+## <a name="what-machine-learning-frameworks-does-personalizer-use"></a>Jaké architektury machine learningu používá přizpůsobování?
 
-Aktuálně používá personalizer [Vowpal Wabbit](https://github.com/VowpalWabbit/vowpal_wabbit/wiki) jako základ pro machine learning. Toto rozhraní umožňuje maximální propustnost a nejnižší latence při provádění přizpůsobení řadí a trénování modelu se všechny události.
+Přizpůsobování aktuálně používá [pro dostupné](https://github.com/VowpalWabbit/vowpal_wabbit/wiki) jako základ pro strojové učení. Toto rozhraní umožňuje maximální propustnost a nejnižší latenci při provádění pořadí přizpůsobení a školení modelu se všemi událostmi.
 
 ## <a name="references"></a>Odkazy
 
-* [Kontextové rozhodování s nízkou technického dluhu](https://arxiv.org/abs/1606.03966)
-* [Snížení cen přístup ke korektní klasifikace](https://arxiv.org/abs/1803.02453)
-* [Efektivní kontextové Bandits ve světě – stojícího vozidla](https://arxiv.org/abs/1708.01799)
-* [Predikcí zbývající ztráta: Posílení: učení s ne přírůstkové zpětné vazby](https://openreview.net/pdf?id=HJNMYceCW)
-* [Mapování pokyny a vizuální pozorování na akce s Zpětnovazebnému učení](https://arxiv.org/abs/1704.08795)
-* [Naučte se vyhledávání lepší výsledky než vaše vyučující](https://arxiv.org/abs/1502.02206)
+* [Provádění kontextových rozhodnutí s nízkým technickým dluhem](https://arxiv.org/abs/1606.03966)
+* [Snížení přístupu k korektní klasifikaci](https://arxiv.org/abs/1803.02453)
+* [Efektivní kontextová Bandits v nestacionárních světů](https://arxiv.org/abs/1708.01799)
+* [Předpověď reziduální ztráty: Posílení: učení bez přírůstkové zpětné vazby](https://openreview.net/pdf?id=HJNMYceCW)
+* [Mapování pokynů a vizuálních pozorování na akce s posílením učení](https://arxiv.org/abs/1704.08795)
+* [Výuka pro hledání lépe než učitelů](https://arxiv.org/abs/1502.02206)
 
 ## <a name="next-steps"></a>Další postup
 

@@ -8,15 +8,15 @@ manager: nitinme
 ms.custom: seodec18
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 04/01/2019
+ms.date: 07/29/2019
 ms.author: diberry
 ms.service: cognitive-services
-ms.openlocfilehash: 639079a43e75741d78496939f90324b076b164d5
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 84799c2866e7b887a7b509280b073814e7653638
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68563704"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68638205"
 ---
 # <a name="add-intents-to-determine-user-intention-of-utterances"></a>Přidání záměrů k určení záměru uživatele projevy
 
@@ -48,7 +48,7 @@ Příklad projevy jsou příkladem text otázky uživatele nebo příkazy. Před
 
 Příklad utterance záměru může mít chybu předpovědi záměru mezi záměrem, který je v současnosti v rámci, a záměrem, který je určen během školení. 
 
-Chcete-li najít chyby předpovědi utterance a opravit je,  použijte možnosti **vyhodnocení** nesprávné a nejasné v kombinaci s možností **zobrazení** **podrobného zobrazení**. 
+Chcete-li najít chyby předpovědi utterance a opravit je, použijte možnosti **vyhodnocení** nesprávné a nejasné v kombinaci s možností **zobrazení** **podrobného zobrazení**. 
 
 ![Chcete-li najít chyby předpovědi utterance a opravit je, použijte možnost filtr.](./media/luis-how-to-add-intents/find-intent-prediction-errors.png)
 

@@ -1,44 +1,44 @@
 ---
-title: Škálování propustnosti ve službě Azure Cosmos DB
-description: Tento článek popisuje, jak službu Azure Cosmos DB Elasticky škáluje propustnost
+title: Škálování propustnosti v Azure Cosmos DB
+description: Tento článek popisuje, jak Azure Cosmos DB škálování propustnosti elasticky.
 author: dharmas-cosmos
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/23/2019
+ms.date: 07/23/2019
 ms.author: dharmas
 ms.reviewer: sngun
-ms.openlocfilehash: f930b5c478cc880952b4559be4c6647b260efcf2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 29a92f04a1d36004fa082bfafe2310f9e0e3e5c6
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66243493"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68467604"
 ---
 # <a name="globally-scale-provisioned-throughput"></a>Globální škálování zřízené propustnosti 
 
-Ve službě Azure Cosmos DB, zřízená propustnost je vyjádřena jako požadavek jednotek za sekundu (RU/s nebo množný tvar ru). Měření náklady na čtení a zápisu operace kontejneru Cosmos, jak je znázorněno na následujícím obrázku:
+V Azure Cosmos DB je zajištěná propustnost reprezentovaná jako jednotka žádosti za sekundu (RU/s nebo ru ve formě plural). Ru změřte náklady na operace čtení i zápisu na kontejneru Cosmos, jak je znázorněno na následujícím obrázku:
 
-![Jednotky žádostí](./media/scaling-throughput/request-unit-charge-of-read-and-write-operations.png)
+![Jednotky žádosti](./media/scaling-throughput/request-unit-charge-of-read-and-write-operations.png)
 
-Můžete zřídit RU v kontejneru Cosmos nebo v databázi Cosmos. RU zřízených v kontejneru je dostupná výhradně pro operace prováděné v tomto kontejneru. RU zřízených pro databázi jsou sdílena mezi všechny kontejnery v rámci této databáze (s výjimkou všechny kontejnery s exkluzivně přiřazená ru).
+Ru můžete zřídit v kontejneru Cosmos nebo v databázi Cosmos. Ru zřízené na kontejneru jsou k dispozici výhradně pro operace prováděné na daném kontejneru. Ru zřízené v databázi se sdílí mezi všemi kontejnery v této databázi (s výjimkou všech kontejnerů se exkluzivně přiřazeným ru).
 
-Elasticky škálovat propustnost, můžete zvýšit nebo snížit RU/s zřízených v každém okamžiku. Další informace najdete v tématu [postupy: poskytování propustnost](set-throughput.md) a Elasticky škálovat Cosmos kontejnerů a databáze. Globální škálování propustnosti, můžete přidat nebo odebrat oblasti ze svého účtu Cosmos kdykoli. Další informace najdete v tématu [přidat nebo odebrat oblasti ze svého účtu databáze](how-to-manage-database-account.md#addremove-regions-from-your-database-account). Přidružení účtu Cosmos více oblastí je důležité v mnoha scénářích – pro zajištění nízké latence a [vysoké dostupnosti](high-availability.md) po celém světě.
+Pro elastické škálování zajištěné propustnosti můžete kdykoli zvýšit nebo snížit výše zřízené RU/s. Další informace najdete v tématech [jak zřídit propustnost](set-throughput.md) a elasticky škálovat Cosmos kontejnery a databáze. V případě propustnosti globálně škály můžete kdykoli přidat nebo odebrat oblasti z účtu Cosmos. Další informace najdete v tématu [Přidání nebo odebrání oblastí z databázového účtu](how-to-manage-database-account.md#addremove-regions-from-your-database-account). Přidružení více oblastí k účtu Cosmos je důležité v mnoha scénářích – pro zajištění nízké latence a [vysoké dostupnosti](high-availability.md) po celém světě.
 
-## <a name="how-provisioned-throughput-is-distributed-across-regions"></a>jak zřízená propustnost je distribuovaná napříč oblastmi
+## <a name="how-provisioned-throughput-is-distributed-across-regions"></a>Jak se distribuuje zajištěná propustnost napříč oblastmi
 
-Pokud zřizujete *"R"* ru na Cosmos kontejneru (nebo databáze), služby Cosmos DB zajišťuje, že *"R"* ru jsou k dispozici v *každý* oblasti přidružené k účtu Cosmos. Pokaždé, když přidáte novou oblast ke svému účtu služby Cosmos DB automaticky zřídí *"R"* RUs v nově přidaném oblasti. Je zaručeno, že operací provedených v kontejneru Cosmos získat *"R"* RUs v jednotlivých oblastech. Nelze přiřadit selektivně ru určité oblasti. Ve všech oblastech, které jsou spojené s vaším účtem Cosmos jsou zřízené ru zřízených v databázi Cosmos kontejneru (nebo).
+Pokud zřizujete *' r '* ru na kontejneru Cosmos (nebo databázi), Cosmos DB zajistí, že je v *každé* oblasti přidružené k vašemu účtu Cosmos k dispozici ru *r* . Pokaždé, když do svého účtu přidáte novou oblast, Cosmos DB v nově přidané oblasti automaticky zřídit *R* ru. Operace prováděné na vašem kontejneru Cosmos jsou zaručené získat *"R"* ru v každé oblasti. Ru nelze selektivně přiřadit ke konkrétní oblasti. Ru zřízené na kontejneru Cosmos (nebo databázi) se zřídí ve všech oblastech přidružených k vašemu účtu Cosmos.
 
-Za předpokladu, že se v kontejneru Cosmos nakonfigurují *"R"* ru a existují *n* oblasti přidružené k účtu Cosmos, pak:
+Za předpokladu, že je kontejner Cosmos nakonfigurovaný pomocí *R* ru a k účtu Cosmos jsou přidružené oblasti *N* , pak:
 
-- Pokud je nakonfigurovaný účet Cosmos s oblastí jeden zápis, celkový počet ru dostupná globálně v kontejneru = *R* x *N*.
+- Pokud je účet Cosmos nakonfigurovaný s jednou oblastí zápisu, celkový ru dostupný globálně na kontejneru = *R* x *N*.
 
-- Pokud je nakonfigurovaný účet Cosmos s využitím více oblastí zápisu, celkový počet ru dostupná globálně v kontejneru = *R* x (*N*+ 1). Další *R* ru budou automaticky přiřazeni k procesu aktualizace je v konfliktu a proti entropie provoz napříč regiony.
+- Pokud je účet Cosmos nakonfigurovaný s více oblastmi zápisu, celkový ru dostupný globálně na kontejneru = *R* x (*N*+ 1). Další *R* ru se automaticky zřídí pro zpracování konfliktů aktualizací a provozu ochrany proti entropii napříč oblastmi.
 
-Podle vaší volby [model pro zajištění konzistence](consistency-levels.md) má vliv také propustnost. Pro více volný úrovně konzistence můžete získat přibližně 2 × propustnost čtení (například *relace*, *konzistentní předpona* a *konečné* konzistence) v porovnání s silnější úrovně konzistence (například *omezená neaktuálnost* nebo *silné* konzistence).
+Vaše volba [modelu konzistence](consistency-levels.md) má vliv také na propustnost. V porovnání s silnějšími úrovněmi *konzistence můžete dosáhnout přibližně dvojnásobné propustnosti čtení pro příznivější úrovně konzistence (např. relace, konzistentní předpona a konečná konzistence). silná* konzistence).
 
 ## <a name="next-steps"></a>Další postup
 
-Dále můžete zjistěte, jak nakonfigurovat propustnosti na kontejner nebo v databázi:
+V dalším kroku se dozvíte, jak nakonfigurovat propustnost na kontejneru nebo databázi:
 
 * [Získání a nastavení propustnosti pro kontejnery a databáze](set-throughput.md) 
 

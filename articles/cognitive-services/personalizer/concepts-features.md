@@ -3,19 +3,19 @@ title: 'Funkce: Akce a kontext – přizpůsobování'
 titleSuffix: Azure Cognitive Services
 description: Přizpůsobení používá funkce, informace o akcích a kontextu k zajištění lepšího hodnocení návrhů. Funkce mohou být velmi obecné nebo specifické pro položku.
 services: cognitive-services
-author: edjez
+author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 06/24/2019
-ms.author: edjez
-ms.openlocfilehash: 2dab7447e6051d4559f7f3985579cac9376ac7be
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.author: diberry
+ms.openlocfilehash: 1960856ce2f15945d1b1bfa093f349771d481ffc
+ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68423287"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68663847"
 ---
 # <a name="features-are-information-about-actions-and-context"></a>Funkce jsou informace o akcích a kontextu.
 
@@ -106,7 +106,7 @@ Zvažte odeslání funkcí rozhraní API pro řazení přizpůsobeného rozhran�
 
 * K dispozici je dostatek funkcí pro přizpůsobení. Přesnější cílení obsahu vyžaduje, aby bylo potřeba víc funkcí.
 
-* Existuje dostatek funkcí různých *hustot*. Funkce je *zhuštěná* , pokud je v několika intervalech seskupeno mnoho položek. Například tisíce videí mohou být klasifikovány jako "Long" (více než 5 minut dlouhé) a "krátká" (méně než 5 minut). Toto je *velmi zhuštěná* funkce. Na druhé straně stejné tisíce položek mohou mít atribut nazvaný "title", který téměř nikdy nebude mít stejnou hodnotu z jedné položky do druhé. Toto je velmi nezhuštěná nebo zhuštěná  funkce.  
+* Existuje dostatek funkcí různých *hustot*. Funkce je *zhuštěná* , pokud je v několika intervalech seskupeno mnoho položek. Například tisíce videí mohou být klasifikovány jako "Long" (více než 5 minut dlouhé) a "krátká" (méně než 5 minut). Toto je *velmi zhuštěná* funkce. Na druhé straně stejné tisíce položek mohou mít atribut nazvaný "title", který téměř nikdy nebude mít stejnou hodnotu z jedné položky do druhé. Toto je velmi nezhuštěná nebo zhuštěná funkce.  
 
 Funkce vysoké hustoty pomáhá přizpůsobování odvodit z jedné položky do druhé. Pokud ale existuje jenom několik funkcí a jsou moc husté, přizpůsobené aplikace se pokusí přesně cílit na obsah, který se dá vybrat jenom v několika intervalech.
 
@@ -153,7 +153,7 @@ Každá akce:
 * Má ID.
 * Obsahuje seznam funkcí.
 * Seznam funkcí může být velký (stovky), ale doporučujeme vyhodnotit efektivitu funkcí a odebrat funkce, které nepřispívají k získání neprospěchu. 
-* Funkce v akcích  mohou nebo nemusí mít žádnou korelaci s funkcemi v **kontextu** , který používá přizpůsobený modul.
+* Funkce v akcích mohou nebo nemusí mít žádnou korelaci s funkcemi v **kontextu** , který používá přizpůsobený modul.
 * V některých akcích se můžou vyskytovat funkce pro akce, které ne ostatní. 
 * Funkce pro konkrétní ID akce mohou být k dispozici po jednom dni, ale později v ní nejsou k dispozici. 
 

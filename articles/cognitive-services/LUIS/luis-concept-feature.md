@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 04/01/2019
+ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: 1aed6f9a0ceec18ca800e5030ec09bbb8d98cb76
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: e85f9a90af778a7e68bf761d8d2159e808cf122d
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68560717"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68639211"
 ---
 # <a name="phrase-list-features-in-your-luis-app"></a>Funkce seznamu frází ve vaší aplikaci LUIS
 
@@ -35,7 +35,7 @@ Seznamy frází nejsou propojené s konkrétním záměrem nebo entitou, ale př
 
 ## <a name="how-to-use-phrase-lists"></a>Použití seznamů fráze
 
-Vytvořte seznam frází, pokud má vaše aplikace slova nebo fráze, které jsou pro aplikaci důležité, například:
+[Vytvořte](luis-how-to-add-features.md) seznam frází, pokud má vaše aplikace slova nebo fráze, které jsou pro aplikaci důležité, například:
 
 * oborové výrazy
 * slangem
@@ -53,7 +53,7 @@ Po zadání několika slov nebo frází můžete najít související hodnoty po
 
 ### <a name="interchangeable-lists"></a>Proměnitelné seznamy
 
-Seznam  frází, který je proměnitelné, je určen pro hodnoty, které jsou synonymy. Například pokud chcete, aby byly nalezeny všechny útvary vody a jako příklad projevy například: 
+Seznam frází, který je proměnitelné, je určen pro hodnoty, které jsou synonymy. Například pokud chcete, aby byly nalezeny všechny útvary vody a jako příklad projevy například: 
 
 * Jaká města jsou blízko skvělých laků? 
 * Jakou cestu spouštíte podél jezera Havasu?
@@ -65,7 +65,7 @@ Každá utterance by měla být určena pro záměr i entity bez ohledu na tělo
 * Jakou cestu spouštíte společně [bodyOfWater]?
 * Kde [bodyOfWater] začíná a končí? 
 
-Vzhledem k tomu, že slova nebo fráze pro tělo vody jsou synonyma a je možné je v projevy použít zaměnitelné, použijte  nastavení proměnitelné v seznamu frází. 
+Vzhledem k tomu, že slova nebo fráze pro tělo vody jsou synonyma a je možné je v projevy použít zaměnitelné, použijte nastavení proměnitelné v seznamu frází. 
 
 ### <a name="non-interchangeable-lists"></a>Seznamy, které nelze měnit
 
@@ -79,7 +79,7 @@ Jak se seznam frází postupně rozrůstá, může se stát, že některé výra
 
 <a name="phrase-lists-help-identify-simple-exchangeable-entities"></a>
 
-## <a name="phrase-lists-help-identify-simple-interchangeable-entities"></a>Fráze uvádí nápovědy identifikovat jednoduchých zaměnitelné entit
+## <a name="phrase-lists-help-identify-simple-interchangeable-entities"></a>Seznamy frází, které vám pomůžou identifikovat jednoduchá zaměnitelné entity
 Zaměňovat frázi seznamy jsou dobrým způsobem, jak optimalizovat výkon vaší aplikace LUIS. Pokud má vaše aplikace potíže při predikci projevy na správné záměr nebo rozpoznávání entit, zamyslete se, jestli projevy obsahovat neobvyklé slova ani slova, která může být nejednoznačný ve smyslu. Tato slova jsou vhodnými kandidáty zahrnout do seznamu frázi.
 
 ## <a name="phrase-lists-help-identify-intents-by-better-understanding-context"></a>Fráze uvádí nápovědy identifikovat záměry lepší porozumění kontextu
@@ -88,7 +88,7 @@ Seznam frázi není instrukce k LUIS provést odpovídající strict nebo vždy 
 Přidání seznamu frázi je alternativa k přidání další příklad projevy záměru. 
 
 ## <a name="when-to-use-phrase-lists-versus-list-entities"></a>Kdy použít seznamy frázi a seznam entit
-Zatímco frázi seznamu a seznam entit může mít vliv na projevy přes všechny záměrů, mají funkce to jiným způsobem. Pomocí seznamu frázi vliv na skóre záměru předpovědi. Použijte seznam entit ovlivnit extrakce entity shodu přesný text. 
+Přestože seznam frází i [entity seznamu](reference-entity-list.md) mohou ovlivnit projevy napříč všemi záměry, každý z nich má jiný způsob. Pomocí seznamu frázi vliv na skóre záměru předpovědi. Použijte seznam entit ovlivnit extrakce entity shodu přesný text. 
 
 ### <a name="use-a-phrase-list"></a>Použijte seznam fráze
 Se seznamem frázi LUIS stále vezměte v úvahu kontext a generalizace k identifikaci položky, které jsou podobné, ale není přesná shoda, jako položky v seznamu. Pokud potřebujete aplikaci LUIS tak, aby mohli generalize a identifikaci nových položek v kategorii, použijte seznam frázi. 

@@ -1,6 +1,6 @@
 ---
-title: Změnit nastavení clusteru Azure Service Fabric | Dokumentace Microsoftu
-description: Tento článek popisuje nastavení prostředků infrastruktury a zásad upgradu prostředků infrastruktury, které můžete přizpůsobit.
+title: Změnit nastavení clusteru Azure Service Fabric | Microsoft Docs
+description: Tento článek popisuje nastavení prostředků infrastruktury a zásady upgradu prostředků infrastruktury, které můžete přizpůsobit.
 services: service-fabric
 documentationcenter: .net
 author: aljo-microsoft
@@ -14,875 +14,895 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/12/2019
 ms.author: aljo
-ms.openlocfilehash: a309b30fc9438ded280109691afd3bde0883dc3c
-ms.sourcegitcommit: 22c97298aa0e8bd848ff949f2886c8ad538c1473
-ms.translationtype: MT
+ms.openlocfilehash: 951c244d7f7d037c8d2ae117f36c18acd902436f
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67144397"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67850058"
 ---
-# <a name="customize-service-fabric-cluster-settings"></a>Nastavení clusteru Service Fabric
-Tento článek popisuje různé nastavení prostředků infrastruktury pro cluster Service Fabric, kterou můžete přizpůsobit. Pro clustery hostovaných v Azure, můžete upravit pomocí nastavení [webu Azure portal](https://portal.azure.com) nebo s použitím šablony Azure Resource Manageru. Další informace najdete v tématu [upgradovat konfiguraci clusteru Azure](service-fabric-cluster-config-upgrade-azure.md). Pro samostatné clustery, můžete upravit nastavení aktualizací *ClusterConfig.json* souborů a provádění konfigurace upgradu ve vašem clusteru. Další informace najdete v tématu [upgradovat konfiguraci samostatného clusteru](service-fabric-cluster-config-upgrade-windows-server.md).
+# <a name="customize-service-fabric-cluster-settings"></a>Přizpůsobení Service Fabricho nastavení clusteru
+Tento článek popisuje různá nastavení prostředků infrastruktury pro váš Service Fabric cluster, který můžete přizpůsobit. Pro clustery hostované v Azure můžete nastavení přizpůsobit prostřednictvím [Azure Portal](https://portal.azure.com) nebo pomocí Azure Resource Manager šablony. Další informace najdete v tématu [Upgrade konfigurace clusteru Azure](service-fabric-cluster-config-upgrade-azure.md). U samostatných clusterů můžete upravit nastavení aktualizací souboru *ClusterConfig. JSON* a provést upgrade konfigurace v clusteru. Další informace najdete v tématu [Upgrade konfigurace samostatného clusteru](service-fabric-cluster-config-upgrade-windows-server.md).
 
 Existují tři různé zásady upgradu:
 
-- **Dynamické** – změny v dynamickou konfiguraci nezpůsobí žádné restartování procesu Service Fabric procesů nebo procesy hostitele vaší služby. 
-- **Statické** – změny v konfiguraci statického způsobí, že uzel Service Fabric restartovat, aby bylo možné změny využívat. Služby na uzlech se restartuje.
-- **Hodnotu NotAllowed** – tato nastavení nelze změnit. Změna těchto nastavení vyžaduje zničení clusteru a vytvoření nového clusteru. 
+- **Dynamické** – změny dynamické konfigurace nezpůsobí restartování žádného procesu Service Fabricch procesů ani procesů hostování služby. 
+- **Statické** – změny statické konfigurace způsobí, že se uzel Service Fabric restartuje, aby se změna projevila. Služby na uzlech budou restartovány.
+- Nelůjelné – tato nastavení nelze upravovat. Změna těchto nastavení vyžaduje, aby se cluster zničil a vytvořil nový cluster. 
 
-Tady je seznam prostředků infrastruktury nastavení, které můžete přizpůsobit, uspořádané podle části.
+Následuje seznam nastavení prostředků infrastruktury, která lze přizpůsobit, Uspořádáno podle části.
 
-## <a name="applicationgatewayhttp"></a>ApplicationGateway/Http
+## <a name="applicationgatewayhttp"></a>ApplicationGateway/http
 
 | **Parametr** | **Povolené hodnoty** | **Zásady upgradu** | **Doprovodné materiály nebo krátký popis** |
 | --- | --- | --- | --- |
-|ApplicationCertificateValidationPolicy|řetězec, výchozí je "None"|Statická| Nelze ověřit certifikát serveru; úspěšná žádost. Odkazovat na config ServiceCertificateThumbprints čárkami oddělený seznam kryptografických otisků, ze vzdáleného certifikáty, které můžete důvěřovat reverzního proxy serveru. Odkazovat na config ServiceCommonNameAndIssuer subjektu název a vystavitele kryptografický otisk vzdálené certifikáty, které můžete důvěřovat reverzního proxy serveru. Další informace najdete v tématu [reverzního proxy serveru zabezpečené připojení](service-fabric-reverseproxy-configure-secure-communication.md#secure-connection-establishment-between-the-reverse-proxy-and-services). |
-|BodyChunkSize |Uint, výchozí hodnota je 16384 |Dynamické| Dává velikost bloků dat v bajtech používá ke čtení textu. |
-|CrlCheckingFlag|uint, výchozí je 0x40000000 |Dynamické| Příznaky pro ověřování řetězu certifikátů aplikace/služby; třeba kontroly seznamu odvolaných certifikátů 0x10000000 CERT_CHAIN_REVOCATION_CHECK_END_CERT 0x20000000 CERT_CHAIN_REVOCATION_CHECK_CHAIN 0x40000000 CERT_CHAIN_REVOCATION_CHECK_CHAIN_EXCLUDE_ROOT 0x80000000 CERT_CHAIN_REVOCATION_CHECK_CACHE_ONLY nastavení na hodnotu 0 Zakáže seznamu CRL kontrola, zda úplný seznam podporovaných hodnot je popsána pomocí dwFlags CertGetCertificateChain: https://msdn.microsoft.com/library/windows/desktop/aa376078(v=vs.85).aspx  |
-|DefaultHttpRequestTimeout |Čas v sekundách. Výchozí hodnota je 120 |Dynamické|Zadejte časový interval v sekundách.  Poskytuje výchozí časový limit žádosti pro požadavky http jsou zpracovávány v aplikaci bránu http. |
-|ForwardClientCertificate|Logická hodnota, výchozí hodnotu FALSE|Dynamické|Když nastavenou na hodnotu false, reverzní proxy server nebude vyžadovat zadání klientského certifikátu. Pokud se žádost o certifikát klienta během metody handshake SSL a předávání kódovanou jako base64 nastavenou na hodnotu true, reverzní proxy řetězec formátu PEM do služby v hlavičce X-klienta Certificate.The služby s názvem převzít požadavek s odpovídající stavový kód až po kontrole data certifikátu. Pokud klient není k dispozici certifikát má hodnotu true, budou reverzní proxy server předat prázdnou hlavičku a nechat službu zpracování případu. Reverzní proxy server bude sloužit jako transparentní vrstvy. Další informace najdete v tématu [nastavení ověřování pomocí certifikátu klienta](service-fabric-reverseproxy-configure-secure-communication.md#setting-up-client-certificate-authentication-through-the-reverse-proxy). |
-|GatewayAuthCredentialType |řetězec, výchozí je "None" |Statická| Určuje typ zabezpečení přihlašovacích údajů pro použití v aplikaci brány koncový bod platné hodnoty http k žádným nedošlo / X 509. |
-|GatewayX509CertificateFindType |řetězec, výchozí je "FindByThumbprint" |Dynamické| Určuje, jak vyhledat certifikát v úložišti určené GatewayX509CertificateStoreName podporované hodnoty: FindByThumbprint; FindBySubjectName. |
-|GatewayX509CertificateFindValue | řetězec, výchozí hodnota je "" |Dynamické| Hodnota filtru hledání používaná k nalezení certifikát brány aplikace http. Tento certifikát je nakonfigurovaná na koncový bod https a je také použít k ověření identity aplikace v případě potřeby prostřednictvím služeb. Nejdříve; je vyhledán FindValue a pokud, který neexistuje; FindValueSecondary se hledá. |
-|GatewayX509CertificateFindValueSecondary | řetězec, výchozí hodnota je "" |Dynamické|Hodnota filtru hledání používaná k nalezení certifikát brány aplikace http. Tento certifikát je nakonfigurovaná na koncový bod https a je také použít k ověření identity aplikace v případě potřeby prostřednictvím služeb. Nejdříve; je vyhledán FindValue a pokud, který neexistuje; FindValueSecondary se hledá.|
-|GatewayX509CertificateStoreName |řetězec, výchozí hodnota je "My" |Dynamické| Název úložiště certifikátů X.509, který obsahuje certifikát pro bránu aplikace http. |
-|HttpRequestConnectTimeout|Časový interval, výchozí hodnota je Common::TimeSpan::FromSeconds(5)|Dynamické|Zadejte časový interval v sekundách.  Poskytuje časový limit připojení pro požadavky http odeslané z aplikace bránu http.  |
-|IgnoreCrlOfflineError|Logická hodnota, výchozí hodnotu TRUE|Dynamické|Určuje, zda ignorovat chybu offline seznamu odvolaných certifikátů pro ověření certifikátu aplikace/služby. |
-|hodnotu isEnabled |Logická hodnota, výchozí hodnota je false |Statická| Povolí nebo zakáže HttpApplicationGateway. HttpApplicationGateway je ve výchozím nastavení vypnutá. Tato konfigurace se musí nastavit, aby je. |
-|NumberOfParallelOperations | Uint, výchozí je 5 000 |Statická|Počet čtení k odeslání do fronty http serveru. Tato volba určuje počet souběžných požadavků, které je možné splnit HttpGateway. |
-|RemoveServiceResponseHeaders|řetězec, výchozí je "datum; Server"|Statická|Středníkem nebo čárkou oddělený seznam hlaviček odpovědí, které budou odebrány z odpovědi služby; Před předáním do klienta. Pokud je nastavené na prázdný řetězec. Předejte všechny hlavičky vrácené službou jako-je. i.e Nepřepisovat data a serveru |
-|ResolveServiceBackoffInterval |Čas v sekundách, výchozí hodnota je 5 |Dynamické|Zadejte časový interval v sekundách.  Poskytuje řešení výchozí regresní interval před opakováním nezdařené operace služby. |
-|SecureOnlyMode|Logická hodnota, výchozí hodnotu FALSE|Dynamické| SecureOnlyMode: true: Reverzní proxy server bude předávat jenom ke službám, které publikují zabezpečené koncové body. FALSE: Reverzní proxy server může předat požadavky na zabezpečení/nezabezpečené koncových bodů. Další informace najdete v tématu [reverzního proxy koncový bod výběru logiky](service-fabric-reverseproxy-configure-secure-communication.md#endpoint-selection-logic-when-services-expose-secure-as-well-as-unsecured-endpoints).  |
-|ServiceCertificateThumbprints|řetězec, výchozí hodnota je ""|Dynamické|Čárkou oddělený seznam kryptografické otisky vzdálené certifikáty, které můžete důvěřovat reverzního proxy serveru. Další informace najdete v tématu [reverzního proxy serveru zabezpečené připojení](service-fabric-reverseproxy-configure-secure-communication.md#secure-connection-establishment-between-the-reverse-proxy-and-services). |
+|ApplicationCertificateValidationPolicy|řetězec, výchozí hodnota je None.|Static| Tím se certifikát serveru neověřuje. požadavek byl úspěšný. V části config ServiceCertificateThumbprints najdete čárkami oddělený seznam kryptografických otisků vzdálených certifikátů, které může reverzní proxy důvěřovat. V tématu config ServiceCommonNameAndIssuer najdete název předmětu a kryptografický otisk vystavitele vzdálených certifikátů, které může reverzní proxy důvěřovat. Další informace najdete v tématu [zabezpečené připojení k reverznímu proxy serveru](service-fabric-reverseproxy-configure-secure-communication.md#secure-connection-establishment-between-the-reverse-proxy-and-services). |
+|BodyChunkSize |Uint, výchozí hodnota je 16384 |Dynamické| Udává velikost bloku v bajtech použitých ke čtení těla. |
+|CrlCheckingFlag|uint, Default je 0x40000000 |Dynamické| Příznaky pro ověření řetězu certifikátů aplikací nebo služeb; například kontrola CRL 0x10000000 CERT_CHAIN_REVOCATION_CHECK_END_CERT 0x20000000 CERT_CHAIN_REVOCATION_CHECK_CHAIN 0x40000000 CERT_CHAIN_REVOCATION_CHECK_CHAIN_EXCLUDE_ROOT 0x80000000 CERT_CHAIN_REVOCATION_CHECK_CACHE_ONLY nastavení na hodnotu 0 zakáže kontrolu seznamu CRL úplný seznam podporovaných hodnot je popsán v dwFlags z CertGetCertificateChain: https://msdn.microsoft.com/library/windows/desktop/aa376078(v=vs.85).aspx  |
+|DefaultHttpRequestTimeout |Čas v sekundách. Výchozí hodnota je 120. |Dynamické|Zadejte časový interval v sekundách.  Poskytuje výchozí časový limit žádosti pro požadavky HTTP zpracovávané ve službě HTTP App Gateway. |
+|ForwardClientCertificate|logická hodnota, výchozí hodnota je FALSE.|Dynamické|Při nastavení na hodnotu false nebude reverzní proxy vyžadovat klientský certifikát. Při nastavení na hodnotu true bude reverzní proxy požadovat klientský certifikát během ověřování SSL a předá službě v hlavičce s názvem X-Client-Certificate PEM řetězec formátu base64. služba může požadavek s příslušným stavovým kódem selhat. Po kontrole dat certifikátu. Pokud je to pravda a klient neprezentuje certifikát, reverzní proxy přepošle prázdné záhlaví a umožní, aby služba zavedla případ. Reverzní proxy bude fungovat jako průhledná vrstva. Další informace najdete v tématu [nastavení ověřování klientských certifikátů](service-fabric-reverseproxy-configure-secure-communication.md#setting-up-client-certificate-authentication-through-the-reverse-proxy). |
+|GatewayAuthCredentialType |řetězec, výchozí hodnota je None. |Static| Určuje typ přihlašovacích údajů zabezpečení, které se mají použít u koncových bodů služby http App Gateway. platné hodnoty jsou None/x509. |
+|GatewayX509CertificateFindType |řetězec, výchozí hodnota je "FindByThumbprint" |Dynamické| Určuje, jak se má vyhledat certifikát v úložišti určeném podporovanou hodnotou GatewayX509CertificateStoreName: FindByThumbprint; FindBySubjectName. |
+|GatewayX509CertificateFindValue | řetězec, výchozí hodnota je "" |Dynamické| Hodnota vyhledávacího filtru, která se používá k vyhledání certifikátu služby http App Gateway Tento certifikát je nakonfigurovaný na koncovém bodu https a dá se taky použít k ověření identity aplikace, pokud to vyžadují služby. Je vyhledána FindValue jako první; a pokud neexistuje, FindValueSecondary je vyhledán. |
+|GatewayX509CertificateFindValueSecondary | řetězec, výchozí hodnota je "" |Dynamické|Hodnota vyhledávacího filtru, která se používá k vyhledání certifikátu služby http App Gateway Tento certifikát je nakonfigurovaný na koncovém bodu https a dá se taky použít k ověření identity aplikace, pokud to vyžadují služby. Je vyhledána FindValue jako první; a pokud neexistuje, FindValueSecondary je vyhledán.|
+|GatewayX509CertificateStoreName |řetězec, výchozí hodnota je my |Dynamické| Název úložiště certifikátů X. 509, které obsahuje certifikát pro bránu http App Gateway. |
+|HttpRequestConnectTimeout|Časový interval, výchozí hodnota je common:: TimeSpan:: FromSeconds (5)|Dynamické|Zadejte časový interval v sekundách.  Poskytuje časový limit připojení pro požadavky HTTP odesílané z služby http App Gateway.  |
+|IgnoreCrlOfflineError|logická hodnota, výchozí hodnota je TRUE.|Dynamické|Určuje, zda má být pro ověřování certifikátu aplikace/služby ignorována chyba režimu CRL. |
+|hodnotu isEnabled |Logická hodnota, výchozí hodnota je false. |Static| Povolí nebo zakáže HttpApplicationGateway. HttpApplicationGateway je ve výchozím nastavení zakázaná a tato konfigurace musí být nastavená tak, aby se povolila. |
+|NumberOfParallelOperations | Uint, výchozí hodnota je 5000 |Static|Počet operací čtení, které se mají odeslat do fronty serveru http Tento ovládací prvek řídí počet souběžných požadavků, které může HttpGateway splnit. |
+|RemoveServiceResponseHeaders|řetězec, výchozí hodnota je "datum; WebServer|Static|Středník nebo čárkami oddělený seznam hlaviček odpovědí, které budou odebrány z odpovědi na službu; před předáním klientovi. Pokud je toto nastaveno na prázdný řetězec; Předejte všechny hlavičky vrácené službou tak, jak jsou. t Nepřepisovat datum a Server |
+|ResolveServiceBackoffInterval |Čas v sekundách, výchozí hodnota je 5. |Dynamické|Zadejte časový interval v sekundách.  Nastaví výchozí Back-off interval před opakováním operace neúspěšného překladu služby. |
+|SecureOnlyMode|logická hodnota, výchozí hodnota je FALSE.|Dynamické| SecureOnlyMode: true: Reverzní proxy server bude předáván pouze službám, které publikují zabezpečené koncové body. chybné Reverzní proxy může přesměrovat požadavky do zabezpečených nebo nezabezpečených koncových bodů. Další informace najdete v tématu [logika výběru koncového bodu proxy](service-fabric-reverseproxy-configure-secure-communication.md#endpoint-selection-logic-when-services-expose-secure-as-well-as-unsecured-endpoints).  |
+|ServiceCertificateThumbprints|řetězec, výchozí hodnota je ""|Dynamické|Čárkami oddělený seznam kryptografických otisků vzdálených certifikátů, které může reverzní proxy důvěřovat. Další informace najdete v tématu [zabezpečené připojení k reverznímu proxy serveru](service-fabric-reverseproxy-configure-secure-communication.md#secure-connection-establishment-between-the-reverse-proxy-and-services). |
 
 ## <a name="applicationgatewayhttpservicecommonnameandissuer"></a>ApplicationGateway/Http/ServiceCommonNameAndIssuer
 
 | **Parametr** | **Povolené hodnoty** | **Zásady upgradu** | **Doprovodné materiály nebo krátký popis** |
 | --- | --- | --- | --- |
-|PropertyGroup|X509NameMap, výchozí hodnota je None|Dynamické| Předmět název a vystavitele kryptografický otisk vzdálené certifikáty, které můžete důvěřovat reverzního proxy serveru. Další informace najdete v tématu [reverzního proxy serveru zabezpečené připojení](service-fabric-reverseproxy-configure-secure-communication.md#secure-connection-establishment-between-the-reverse-proxy-and-services). |
+|PropertyGroup|X509NameMap, výchozí hodnota je None|Dynamické| Název subjektu a kryptografický otisk vystavitele vzdálených certifikátů, které může reverzní proxy důvěřovat. Další informace najdete v tématu [zabezpečené připojení k reverznímu proxy serveru](service-fabric-reverseproxy-configure-secure-communication.md#secure-connection-establishment-between-the-reverse-proxy-and-services). |
 
 ## <a name="backuprestoreservice"></a>BackupRestoreService
 
 | **Parametr** | **Povolené hodnoty** | **Zásady upgradu** | **Doprovodné materiály nebo krátký popis** |
 | --- | --- | --- | --- |
-|MinReplicaSetSize|int, výchozí je 0|Statická|MinReplicaSetSize pro BackupRestoreService |
-|PlacementConstraints|řetězec, výchozí hodnota je ""|Statická|  PlacementConstraints BackupRestore služby |
-|SecretEncryptionCertThumbprint|řetězec, výchozí hodnota je ""|Dynamické|Kryptografický otisk certifikátu šifrování s tajným X509 |
-|SecretEncryptionCertX509StoreName|řetězec, výchozí hodnota je "My"|   Dynamické|    To znamená certifikát, který chcete použít pro šifrování a dešifrování úložiště certifikátů X.509 název přihlašovacích údajů, který se používá pro šifrování, dešifrování přihlašovacích údajů úložiště používá služba Backup Restore |
-|TargetReplicaSetSize|int, výchozí je 0|Statická| TargetReplicaSetSize pro BackupRestoreService |
+|MinReplicaSetSize|int, výchozí hodnota je 0|Static|MinReplicaSetSize pro BackupRestoreService |
+|PlacementConstraints|řetězec, výchozí hodnota je ""|Static|  Služba PlacementConstraints for BackupRestore |
+|SecretEncryptionCertThumbprint|řetězec, výchozí hodnota je ""|Dynamické|Kryptografický otisk certifikátu šifrovaného šifrovacího klíče x509 |
+|SecretEncryptionCertX509StoreName|řetězec, výchozí hodnota je my|   Dynamické|    Určuje certifikát, který se má použít pro šifrování a dešifrování přihlašovacích údajů s názvem úložiště certifikátů X. 509, který se používá k šifrování šifrovacích přihlašovacích údajů, které používá služba obnovení záloh. |
+|TargetReplicaSetSize|int, výchozí hodnota je 0|Static| TargetReplicaSetSize pro BackupRestoreService |
 
 ## <a name="clustermanager"></a>ClusterManager
 
 | **Parametr** | **Povolené hodnoty** | **Zásady upgradu** | **Doprovodné materiály nebo krátký popis** |
 | --- | --- | --- | --- |
-|EnableDefaultServicesUpgrade | Logická hodnota, výchozí hodnota je false |Dynamické|Povolte upgrade výchozích služeb během upgradu aplikace. Popisy výchozí služby přepsána po upgradu. |
-|FabricUpgradeHealthCheckInterval |Čas v sekundách, výchozí hodnota je 60 |Dynamické|Frekvence stav kontroly během monitorovaných upgrade pro Fabric |
-|FabricUpgradeStatusPollInterval |Čas v sekundách, výchozí hodnota je 60 |Dynamické|Frekvence dotazování na stav upgradu prostředků infrastruktury. Tato hodnota určuje frekvence aktualizace pro každé volání GetFabricUpgradeProgress |
-|ImageBuilderTimeoutBuffer |Čas v sekundách, výchozí hodnota je 3 |Dynamické|Zadejte časový interval v sekundách. Množství času, aby pro Image Builder pro konkrétní vypršení časového limitu se vraťte do klienta. Pokud tuto vyrovnávací paměť je příliš malý. pak klienta vyprší časový limit než server a získá chybu obecný časový limit. |
-|InfrastructureTaskHealthCheckRetryTimeout | Čas v sekundách, výchozí hodnota je 60 |Dynamické|Zadejte časový interval v sekundách. Množství času věnovat opakování nepovedlo kontroly stavu při následné zpracování úlohu infrastruktury. Sledování Kontrola stavu úspěch resetuje tento časovač. |
-|InfrastructureTaskHealthCheckStableDuration | Čas v sekundách, výchozí hodnota je 0|Dynamické| Zadejte časový interval v sekundách. Množství času sledovat kontroly stavu po sobě jdoucích předaný před po zpracování úkolu infrastruktury dokončí úspěšně. Sledování selhání kontrolu resetuje tento časovač. |
-|InfrastructureTaskHealthCheckWaitDuration |Čas v sekundách, výchozí hodnota je 0|Dynamické| Zadejte časový interval v sekundách. Množství času se má čekat před spuštěním kontroly stavu po následné zpracování úlohu infrastruktury. |
-|InfrastructureTaskProcessingInterval | Čas v sekundách, výchozí hodnota je 10 |Dynamické|Zadejte časový interval v sekundách. Interval zpracování používán úkolem infrastruktury zpracování stavového stroje. |
-|MaxCommunicationTimeout |Čas v sekundách, výchozí hodnota je 600 |Dynamické|Zadejte časový interval v sekundách. Maximální časový limit pro interní komunikaci mezi ClusterManager a další systémové služby (tj.); Služba pojmenování; "Správce převzetí služeb při selhání a atd.). Tento časový limit by měl být menší než globální MaxOperationTimeout (jak může existovat více komunikaci mezi součástmi systému pro každou operaci klienta). |
-|MaxDataMigrationTimeout |Čas v sekundách, výchozí hodnota je 600 |Dynamické|Zadejte časový interval v sekundách. Maximální časový limit pro operace obnovení migrace dat, po úspěšném upgradu prostředků infrastruktury. |
-|MaxOperationRetryDelay |Čas v sekundách, výchozí hodnota je 5|Dynamické| Zadejte časový interval v sekundách. Maximální zpoždění interní opakovaných pokusů při výskytu chyby. |
-|MaxOperationTimeout |Čas v sekundách, výchozí hodnota je hodnota MaxValue |Dynamické| Zadejte časový interval v sekundách. Maximální globální časový limit pro operace na ClusterManager zpracování interně. |
-|MaxTimeoutRetryBuffer | Čas v sekundách, výchozí hodnota je 600 |Dynamické|Zadejte časový interval v sekundách. Časový limit maximální operace při opakování interně z důvodu vypršení časového limitu je `<Original Time out> + <MaxTimeoutRetryBuffer>`. V krocích po MinOperationTimeout se přidá další časový limit. |
-|MinOperationTimeout | Čas v sekundách, výchozí hodnota je 60 |Dynamické|Zadejte časový interval v sekundách. Minimální globální časový limit pro operace na ClusterManager zpracování interně. |
-|MinReplicaSetSize |Int, výchozí hodnota je 3 |Nepovoleno|MinReplicaSetSize pro ClusterManager. |
-|PlacementConstraints | řetězec, výchozí hodnota je "" |Nepovoleno|PlacementConstraints pro ClusterManager. |
-|QuorumLossWaitDuration |Čas v sekundách, výchozí hodnota je hodnota MaxValue |Nepovoleno| Zadejte časový interval v sekundách. QuorumLossWaitDuration pro ClusterManager. |
-|ReplicaRestartWaitDuration |Čas v sekundách, výchozí hodnota je (60.0 * 30)|Nepovoleno|Zadejte časový interval v sekundách. ReplicaRestartWaitDuration pro ClusterManager. |
-|ReplicaSetCheckTimeoutRollbackOverride |Čas v sekundách, výchozí hodnota je 1200 |Dynamické| Zadejte časový interval v sekundách. Pokud ReplicaSetCheckTimeout nastavená na maximální hodnotu DWORD; pak je přepsáno hodnotou tato konfigurace za účelem vrácení zpět. Hodnota použitá vpřed je nikdy přepsána. |
-|SkipRollbackUpdateDefaultService | Logická hodnota, výchozí hodnota je false |Dynamické|SP přeskočí vracení k uloženým standardním aktualizace výchozí služby během vrácení upgradu aplikace. |
-|StandByReplicaKeepDuration | Čas v sekundách, výchozí hodnota je (3600.0 * 2)|Nepovoleno|Zadejte časový interval v sekundách. StandByReplicaKeepDuration pro ClusterManager. |
-|TargetReplicaSetSize |Int, výchozí hodnota je 7 |Nepovoleno|TargetReplicaSetSize pro ClusterManager. |
-|UpgradeHealthCheckInterval |Čas v sekundách, výchozí hodnota je 60 |Dynamické|Frekvence stavu kontroluje během upgradu monitorovanou aplikaci |
-|UpgradeStatusPollInterval |Čas v sekundách, výchozí hodnota je 60 |Dynamické|Frekvence dotazování na stav upgradu aplikace. Tato hodnota určuje frekvence aktualizace pro každé volání GetApplicationUpgradeProgress |
+|AllowCustomUpgradeSortPolicies | Logická hodnota, výchozí hodnota je false. |Dynamické|Zda jsou povoleny vlastní zásady pro řazení upgradu. Tato funkce se používá k provedení 2 fáze upgradu. Service Fabric 6,5 přidává podporu pro zadání zásad řazení pro domény upgradu během upgradů clusteru nebo aplikací. Podporované zásady jsou numeric, lexicographical, ReverseNumeric a ReverseLexicographical. Výchozí hodnota je číslo. Aby bylo možné tuto funkci používat, nastavení manifestu clusteru ClusterManager/AllowCustomUpgradeSortPolicies musí být nastavené na hodnotu true jako druhý krok upgradu konfigurace po dokončení upgradu kódu SF 6,5. Je důležité, aby se provedlo ve dvou fázích, jinak se upgrade kódu může zaměňovat o pořadí upgradu během prvního upgradu.|
+|EnableDefaultServicesUpgrade | Logická hodnota, výchozí hodnota je false. |Dynamické|Povolit upgrade výchozích služeb během upgradu aplikace. Výchozí popisy služeb by se po upgradu přepsaly. |
+|FabricUpgradeHealthCheckInterval |Čas v sekundách, výchozí hodnota je 60. |Dynamické|Frekvence kontroly stavu během monitorovaného upgradu prostředků infrastruktury |
+|FabricUpgradeStatusPollInterval |Čas v sekundách, výchozí hodnota je 60. |Dynamické|Frekvence cyklického dotazování na stav upgradu prostředků infrastruktury. Tato hodnota určuje rychlost aktualizace pro libovolný GetFabricUpgradeProgress hovor. |
+|ImageBuilderTimeoutBuffer |Čas v sekundách, výchozí hodnota je 3. |Dynamické|Zadejte časový interval v sekundách. Doba, po kterou se má v případě, že se má v případě, že se mají v nástroji pro image s časovým limitem Pokud je tato vyrovnávací paměť příliš malá; pak časový limit klienta vyprší před serverem a získá obecnou chybu časového limitu. |
+|InfrastructureTaskHealthCheckRetryTimeout | Čas v sekundách, výchozí hodnota je 60. |Dynamické|Zadejte časový interval v sekundách. Doba, po kterou se má při následném zpracování úlohy infrastruktury vyhradit neúspěšné kontroly stavu Při sledování předané kontroly stavu dojde k resetování tohoto časovače. |
+|InfrastructureTaskHealthCheckStableDuration | Čas v sekundách, výchozí hodnota je 0.|Dynamické| Zadejte časový interval v sekundách. Doba, po kterou se po úspěšném dokončení následného zpracování úlohy infrastruktury dopustí úspěšné kontroly stavu Při pozorování neúspěšné kontroly stavu dojde k resetování tohoto časovače. |
+|InfrastructureTaskHealthCheckWaitDuration |Čas v sekundách, výchozí hodnota je 0.|Dynamické| Zadejte časový interval v sekundách. Doba, po kterou se má čekat před spuštěním kontrol stavu po následném zpracování úlohy infrastruktury |
+|InfrastructureTaskProcessingInterval | Čas v sekundách, výchozí hodnota je 10. |Dynamické|Zadejte časový interval v sekundách. Interval zpracování, který využíval Stavový počítač pro zpracování úloh infrastruktury. |
+|MaxCommunicationTimeout |Čas v sekundách, výchozí hodnota je 600. |Dynamické|Zadejte časový interval v sekundách. Maximální časový limit pro interní komunikaci mezi ClusterManager a dalšími systémovými službami (tj.) Naming Service; Správce převzetí služeb při selhání a atd.). Tento časový limit by měl být menší než globální MaxOperationTimeout (protože může existovat více komunikací mezi součástmi systému pro každou operaci klienta). |
+|MaxDataMigrationTimeout |Čas v sekundách, výchozí hodnota je 600. |Dynamické|Zadejte časový interval v sekundách. Maximální časový limit pro operace obnovení migrace dat po uskutečnění upgradu prostředků infrastruktury |
+|MaxOperationRetryDelay |Čas v sekundách, výchozí hodnota je 5.|Dynamické| Zadejte časový interval v sekundách. Maximální zpoždění pro interní opakování při zjištění selhání |
+|MaxOperationTimeout |Čas v sekundách, výchozí hodnota je MaxValue. |Dynamické| Zadejte časový interval v sekundách. Maximální globální časový limit pro operace interního zpracování v ClusterManager. |
+|MaxTimeoutRetryBuffer | Čas v sekundách, výchozí hodnota je 600. |Dynamické|Zadejte časový interval v sekundách. Maximální časový limit operace při interním pokusu o opakování z důvodu `<Original Time out> + <MaxTimeoutRetryBuffer>`vypršení časového limitu. Další časový limit je přidaný v přírůstcích MinOperationTimeout. |
+|MinOperationTimeout | Čas v sekundách, výchozí hodnota je 60. |Dynamické|Zadejte časový interval v sekundách. Minimální globální časový limit pro operace interního zpracování v ClusterManager. |
+|MinReplicaSetSize |Int, výchozí hodnota je 3 |Nepovolené|MinReplicaSetSize pro ClusterManager. |
+|PlacementConstraints | řetězec, výchozí hodnota je "" |Nepovolené|PlacementConstraints pro ClusterManager. |
+|QuorumLossWaitDuration |Čas v sekundách, výchozí hodnota je MaxValue. |Nepovolené| Zadejte časový interval v sekundách. QuorumLossWaitDuration pro ClusterManager. |
+|ReplicaRestartWaitDuration |Čas v sekundách, výchozí hodnota je ( \* 60,0 30)|Nepovolené|Zadejte časový interval v sekundách. ReplicaRestartWaitDuration pro ClusterManager. |
+|ReplicaSetCheckTimeoutRollbackOverride |Čas v sekundách, výchozí hodnota je 1200. |Dynamické| Zadejte časový interval v sekundách. Pokud je ReplicaSetCheckTimeout nastaveno na maximální hodnotu DWORD; pak je přepsána hodnotou této konfigurace pro účely vrácení zpět. Hodnota použitá pro přeposílání není nikdy přepsána. |
+|SkipRollbackUpdateDefaultService | Logická hodnota, výchozí hodnota je false. |Dynamické|CM při vrácení aktualizace upgradu aplikace přeskočí původní výchozí služby. |
+|StandByReplicaKeepDuration | Čas v sekundách, výchozí hodnota je ( \* 3600,0 2)|Nepovolené|Zadejte časový interval v sekundách. StandByReplicaKeepDuration pro ClusterManager. |
+|TargetReplicaSetSize |Int, výchozí hodnota je 7 |Nepovolené|TargetReplicaSetSize pro ClusterManager. |
+|UpgradeHealthCheckInterval |Čas v sekundách, výchozí hodnota je 60. |Dynamické|Frekvence kontroly stavu během monitorovaných upgradů aplikace |
+|UpgradeStatusPollInterval |Čas v sekundách, výchozí hodnota je 60. |Dynamické|Frekvence cyklického dotazování na stav upgradu aplikace. Tato hodnota určuje rychlost aktualizace pro libovolný GetApplicationUpgradeProgress hovor. |
 
 ## <a name="common"></a>Společné
 
 | **Parametr** | **Povolené hodnoty** | **Zásady upgradu** | **Doprovodné materiály nebo krátký popis** |
 | --- | --- | --- | --- |
-|PerfMonitorInterval |Čas v sekundách, výchozí hodnota je 1 |Dynamické|Zadejte časový interval v sekundách. Interval monitorování výkonu. Nastavení na hodnotu 0 nebo záporná zakáže monitorování. |
+|PerfMonitorInterval |Čas v sekundách, výchozí hodnota je 1. |Dynamické|Zadejte časový interval v sekundách. Interval sledování výkonu Nastavení na hodnotu 0 nebo záporná hodnota zakáže monitorování. |
 
 ## <a name="defragmentationemptynodedistributionpolicy"></a>DefragmentationEmptyNodeDistributionPolicy
 | **Parametr** | **Povolené hodnoty** |**Zásady upgradu**| **Doprovodné materiály nebo krátký popis** |
 | --- | --- | --- | --- |
-|PropertyGroup|KeyIntegerValueMap, výchozí hodnota je None|Dynamické|Určuje, že defragmentace zásad řídí při vyprazdňování uzlů. Pro danou metriku 0 označuje, že SF pokusit o defragmentaci uzly rovnoměrně napříč aktualizačními doménami a doménami selhání; 1 znamená jen, že musí být defragmentovat uzly |
+|PropertyGroup|KeyIntegerValueMap, výchozí hodnota je None|Dynamické|Určuje, že defragmentace zásad následuje po vyprázdnění uzlů. U dané metriky 0 znamená, že SF by se měl pokusit defragmentovat uzly rovnoměrně napříč UDs a doménami selhání; 1 znamená, že uzly musí být defragmentované. |
 
 ## <a name="defragmentationmetrics"></a>DefragmentationMetrics
 | **Parametr** | **Povolené hodnoty** |**Zásady upgradu**| **Doprovodné materiály nebo krátký popis** |
 | --- | --- | --- | --- |
-|PropertyGroup|KeyBoolValueMap, výchozí hodnota je None|Dynamické|Určuje nastavení metriky, který se má použít pro defragmentaci a ne pro vyrovnávání zatížení. |
+|PropertyGroup|KeyBoolValueMap, výchozí hodnota je None|Dynamické|Určuje sadu metrik, která se má použít pro defragmentaci, a ne pro vyrovnávání zatížení. |
 
 ## <a name="defragmentationmetricspercentornumberofemptynodestriggeringthreshold"></a>DefragmentationMetricsPercentOrNumberOfEmptyNodesTriggeringThreshold
 | **Parametr** | **Povolené hodnoty** |**Zásady upgradu**| **Doprovodné materiály nebo krátký popis** |
 | --- | --- | --- | --- |
-|PropertyGroup|KeyDoubleValueMap, výchozí hodnota je None|Dynamické|Určuje počet volné uzly, které jsou potřeba vzít v úvahu clusteru defragmentovat zadáním buď procent v rozsahu [0.0-1.0) nebo počtu uzlů prázdné jako číslo > = 1.0 |
+|PropertyGroup|KeyDoubleValueMap, výchozí hodnota je None|Dynamické|Určuje počet bezplatných uzlů, které jsou potřeba k tomu, aby bylo možné cluster defragmentovat, a to zadáním procenta v rozsahu [0,0-1,0] nebo počtu prázdných uzlů jako číslo > = 1,0. |
 
 ## <a name="diagnostics"></a>Diagnostika
 
 | **Parametr** | **Povolené hodnoty** | **Zásady upgradu** | **Doprovodné materiály nebo krátký popis** |
 | --- | --- | --- | --- |
-|AdminOnlyHttpAudit |Logická hodnota, výchozí hodnota je true | Dynamické | Vylučte požadavky HTTP, které nemají vliv na stav clusteru z auditování. Aktuálně; nevylučují se pouze žádosti typu "GET"; ale to se může změnit. |
-|AppDiagnosticStoreAccessRequiresImpersonation |Logická hodnota, výchozí hodnota je true | Dynamické |Určuje, jestli je potřeba zosobnění, při přístupu k diagnostiky ukládá jménem aplikace. |
-|AppEtwTraceDeletionAgeInDays |Int, výchozí hodnota je 3 | Dynamické |Počet dní, po jejichž uplynutí jsme odstranit staré soubory ETL trasování událostí pro Windows trasování aplikací obsahující. |
-|ApplicationLogsFormatVersion |int, výchozí je 0 | Dynamické |Verze aplikace protokoluje formátu. Podporované hodnoty jsou 0 a 1. Verze 1 obsahuje více polí ze záznamu události trasování událostí pro Windows než verze 0. |
-|AuditHttpRequests |Logická hodnota, výchozí hodnota je false | Dynamické | Zapněte auditování protokolu HTTP nebo vypnout. Účelem auditování je zobrazíte aktivity, které byly provedeny clusteru; včetně, kdo inicioval žádost. Všimněte si, že se jedná o nejlepší pokus o protokolování. a může dojít ke ztrátě trasování. Požadavky HTTP s ověřováním "User", není zaznamenána. |
-|CaptureHttpTelemetry|Logická hodnota, výchozí hodnota je false | Dynamické | Telemetrie HTTP zapněte nebo vypnout. Účelem telemetrických dat je pro Service Fabric budete moci zachytávat data telemetrie vám pomůže plánovat budoucí práce a určení problémových oblastí. Telemetrie nezaznamenává všechny osobní údaje nebo textu požadavku. Telemetrie zachycuje všechny požadavky HTTP, pokud jinak nakonfigurován. |
-|ClusterId |String | Dynamické |Jedinečné id clusteru. Tím se vygeneruje, když se cluster vytvoří. |
-|ConsumerInstances |String | Dynamické |Seznam instancí DCA příjemce. |
-|DiskFullSafetySpaceInMB |Int, výchozí hodnota je 1024 | Dynamické |Zbývající místo na disku v MB k ochraně před používá DCA. |
-|EnableCircularTraceSession |Logická hodnota, výchozí hodnota je false | Statická |Příznak určuje, zda má být použita cyklické trasování relace. |
-|EnableTelemetry |Logická hodnota, výchozí hodnota je true | Dynamické |Tím vytvořím k zapnutí nebo vypnutí telemetrie. |
-|FailuresOnlyHttpTelemetry | Logická hodnota, výchozí hodnota je true | Dynamické | Pokud je povolené zachycování telemetrie HTTP; zachycení pouze neúspěšné požadavky. To je pomoct Omezit počtu událostí vygenerovaných telemetrie. |
-|HttpTelemetryCapturePercentage | Int, výchozí hodnota je 50 | Dynamické | Pokud je povolené zachycování telemetrie HTTP; zachycení pouze náhodné procento žádostí. To je pomoct Omezit počtu událostí vygenerovaných telemetrie. |
-|MaxDiskQuotaInMB |Int, výchozí hodnota je 65536 | Dynamické |Disková kvóta v MB pro Windows Fabric protokolových souborech. |
-|ProducerInstances |String | Dynamické |Seznam instancí DCA výrobce. |
+|AdminOnlyHttpAudit |Logická hodnota, výchozí hodnota je true. | Dynamické | Vylučte požadavky HTTP, které nemají vliv na stav clusteru z auditování. Aktuálně jsou vyloučeny pouze požadavky typu "GET"; ale tato změna se může změnit. |
+|AppDiagnosticStoreAccessRequiresImpersonation |Logická hodnota, výchozí hodnota je true. | Dynamické |Bez ohledu na to, jestli je při přístupu k diagnostickým úložištím jménem aplikace vyžadováno zosobnění. |
+|AppEtwTraceDeletionAgeInDays |Int, výchozí hodnota je 3 | Dynamické |Počet dní, po které odstraníme staré soubory ETL, které obsahují trasování ETW aplikace |
+|ApplicationLogsFormatVersion |Int, výchozí hodnota je 0 | Dynamické |Verze pro formát protokolů aplikací Podporovány jsou hodnoty 0 a 1. Verze 1 obsahuje více polí z záznamu události ETW než verze 0. |
+|AuditHttpRequests |Logická hodnota, výchozí hodnota je false. | Dynamické | Zapnout nebo vypnout auditování protokolu HTTP. Účelem auditování je zobrazit aktivity, které byly provedeny v clusteru. včetně toho, kdo žádost inicioval. Všimněte si, že se jedná o osvědčené protokolování; a mohlo by dojít ke ztrátě trasování. Požadavky HTTP s ověřováním "uživatel" nejsou zaznamenávány. |
+|CaptureHttpTelemetry|Logická hodnota, výchozí hodnota je false. | Dynamické | Zapnutí nebo vypnutí telemetrie HTTP Účelem telemetrie je Service Fabric, aby bylo možné zachytit data telemetrie, abyste mohli naplánovat budoucí práci a identifikovat problematické oblasti. Telemetrie nezaznamenává žádná osobní data ani tělo žádosti. Telemetrie zachycuje všechny požadavky HTTP, pokud není nakonfigurované jinak. |
+|ClusterId |Řetězec | Dynamické |Jedinečné ID clusteru Tato funkce je generována při vytvoření clusteru. |
+|ConsumerInstances |Řetězec | Dynamické |Seznam instancí příjemce DCA |
+|DiskFullSafetySpaceInMB |Int, výchozí hodnota je 1024 | Dynamické |Zbývající místo na disku v MB pro ochranu před použitím DCA. |
+|EnableCircularTraceSession |Logická hodnota, výchozí hodnota je false. | Static |Příznak označuje, zda by měly být použity cyklické relace trasování. |
+|EnablePlatformEventsFileSink |Logická hodnota, výchozí hodnota je false. | Static |Povolit nebo zakázat zapsané události platformy na disk |
+|EnableTelemetry |Logická hodnota, výchozí hodnota je true. | Dynamické |Tím se povolí nebo zakáže telemetrie. |
+|FailuresOnlyHttpTelemetry | Logická hodnota, výchozí hodnota je true. | Dynamické | Pokud je povoleno zachycení telemetrie HTTP; zachytávání pouze neúspěšných žádostí To vám umožní snížit počet událostí vygenerovaných pro telemetrii. |
+|HttpTelemetryCapturePercentage | int, výchozí hodnota je 50 | Dynamické | Pokud je povoleno zachycení telemetrie HTTP; zachytit jenom náhodné procento požadavků. To vám umožní snížit počet událostí vygenerovaných pro telemetrii. |
+|MaxDiskQuotaInMB |Int, výchozí hodnota je 65536 | Dynamické |Disková kvóta v MB pro soubory protokolu Windows Fabric. |
+|ProducerInstances |Řetězec | Dynamické |Seznam instancí výrobců DCA. |
 
-## <a name="dnsservice"></a>DnsService
+## <a name="dnsservice"></a>Služba DNSservice
 | **Parametr** | **Povolené hodnoty** |**Zásady upgradu**| **Doprovodné materiály nebo krátký popis** |
 | --- | --- | --- | --- |
-|EnablePartitionedQuery|Logická hodnota, výchozí hodnotu FALSE|Statická|Příznak povolení podpory pro dotazy DNS pro dělené služby. Tato funkce je ve výchozím nastavení vypnuta. Další informace najdete v tématu [služba DNS Service Fabricu.](service-fabric-dnsservice.md)|
-|InstanceCount|je int, výchozí hodnota -1|Statická|Výchozí hodnota je -1, což znamená, že služba DnsService běží na všech uzlech. OneBox musí to být nastavena na hodnotu 1, protože služba DnsService používá dobře známý port 53, takže nemůže mít více instancí ve stejném počítači.|
-|hodnotu isEnabled|Logická hodnota, výchozí hodnotu FALSE|Statická|Povolí nebo zakáže služba DnsService. Služba DnsService je ve výchozím nastavení vypnutá. Tato konfigurace se musí nastavit, aby je. |
-|PartitionPrefix|řetězec, výchozí hodnota je "--"|Statická|Určuje předponu řetězce oddílu v dotazy DNS pro dělené služby. Hodnota: <ul><li>By měl být kompatibilní s RFC, protože ji budete součást dotazu DNS.</li><li>Nesmí obsahovat tečku, ".", jak je tečka, dochází ke kolizím s chování příponu DNS.</li><li>Nesmí být delší než 5 znaků.</li><li>Nemůže být prázdný řetězec.</li><li>Pokud je přepsána PartitionPrefix nastavení, pak PartitionSuffix musí přepsat a naopak.</li></ul>Další informace najdete v tématu [služba DNS Service Fabricu.](service-fabric-dnsservice.md).|
-|PartitionSuffix|řetězec, výchozí hodnota je ""|Statická|Určuje řetězcovou hodnotu přípony oddílu v dotazy DNS pro dělené služby. Hodnota: <ul><li>By měl být kompatibilní s RFC, protože ji budete součást dotazu DNS.</li><li>Nesmí obsahovat tečku, ".", jak je tečka, dochází ke kolizím s chování příponu DNS.</li><li>Nesmí být delší než 5 znaků.</li><li>Pokud je přepsána PartitionPrefix nastavení, pak PartitionSuffix musí přepsat a naopak.</li></ul>Další informace najdete v tématu [služba DNS Service Fabricu.](service-fabric-dnsservice.md). |
+|EnablePartitionedQuery|logická hodnota, výchozí hodnota je FALSE.|Static|Příznak pro povolení podpory pro dotazy DNS pro dělené služby. Tato funkce je ve výchozím nastavení vypnutá. Další informace najdete v tématu [Service Fabric služby DNS.](service-fabric-dnsservice.md)|
+|InstanceCount|int, výchozí hodnota je-1.|Static|Výchozí hodnota je-1, což znamená, že služba DNSservice běží na všech uzlech. OneBox musí být nastavené na hodnotu 1, protože služba DNSservice používá dobře známý port 53, takže nemůže mít ve stejném počítači více instancí.|
+|hodnotu isEnabled|logická hodnota, výchozí hodnota je FALSE.|Static|Povolí nebo zakáže služba DNSservice. Služba DNSservice je ve výchozím nastavení zakázaná a tato konfigurace musí být nastavená tak, aby se povolila. |
+|PartitionPrefix|řetězec, výchozí hodnota je "--"|Static|Určuje řetězcovou hodnotu předpony oddílu v dotazech DNS pro dělené služby. Hodnota: <ul><li>By měl být kompatibilní se specifikací RFC, protože bude součástí dotazu DNS.</li><li>Nesmí obsahovat tečku (.), protože tečka má vliv na chování přípony DNS.</li><li>By neměl být delší než 5 znaků.</li><li>Nemůže být prázdný řetězec.</li><li>Pokud je nastavení PartitionPrefix přepsáno, pak PartitionSuffix musí být přepsáno a naopak.</li></ul>Další informace najdete v tématu [Service Fabric služby DNS.](service-fabric-dnsservice.md)|
+|PartitionSuffix|řetězec, výchozí hodnota je ""|Static|Určuje hodnotu řetězce přípony oddílu v dotazech DNS pro dělené služby. Hodnota: <ul><li>By měl být kompatibilní se specifikací RFC, protože bude součástí dotazu DNS.</li><li>Nesmí obsahovat tečku (.), protože tečka má vliv na chování přípony DNS.</li><li>By neměl být delší než 5 znaků.</li><li>Pokud je nastavení PartitionPrefix přepsáno, pak PartitionSuffix musí být přepsáno a naopak.</li></ul>Další informace najdete v tématu [Service Fabric služby DNS.](service-fabric-dnsservice.md) |
 
 ## <a name="eventstoreservice"></a>EventStoreService
 
 | **Parametr** | **Povolené hodnoty** | **Zásady upgradu** | **Doprovodné materiály nebo krátký popis** |
 | --- | --- | --- | --- |
-|MinReplicaSetSize|int, výchozí je 0|Statická|MinReplicaSetSize služby Eventstoru |
-|PlacementConstraints|řetězec, výchozí hodnota je ""|Statická|  PlacementConstraints služby Eventstoru |
-|TargetReplicaSetSize|int, výchozí je 0|Statická| TargetReplicaSetSize služby Eventstoru |
+|MinReplicaSetSize|int, výchozí hodnota je 0|Static|Služba MinReplicaSetSize for Eventstoru |
+|PlacementConstraints|řetězec, výchozí hodnota je ""|Static|  Služba PlacementConstraints for Eventstoru |
+|TargetReplicaSetSize|int, výchozí hodnota je 0|Static| Služba TargetReplicaSetSize for Eventstoru |
 
 ## <a name="fabricclient"></a>FabricClient
 
 | **Parametr** | **Povolené hodnoty** | **Zásady upgradu** | **Doprovodné materiály nebo krátký popis** |
 | --- | --- | --- | --- |
-|ConnectionInitializationTimeout |Čas v sekundách, výchozí hodnota je 2 |Dynamické|Zadejte časový interval v sekundách. Interval časového limitu připojení pro každého klienta se pokusí otevřít připojení k bráně.|
-|HealthOperationTimeout |Čas v sekundách, výchozí hodnota je 120 |Dynamické|Zadejte časový interval v sekundách. Časový limit pro sestavy zpráva odeslaná do Správce stavu. |
-|HealthReportRetrySendInterval |Čas v sekundách, výchozí hodnota je 30, minimální hodnota je 1 |Dynamické|Zadejte časový interval v sekundách. Interval, jakou součást pro vytváření sestav, znovu odešle nahromaděné stavu hlásí do Správce stavu. |
-|HealthReportSendInterval |Čas v sekundách, výchozí hodnota je 30 |Dynamické|Zadejte časový interval v sekundách. Interval, ve kterém hlásí, že komponenta odešle nahromaděné stavových sestav pro správce stavu. |
-|KeepAliveIntervalInSeconds |Int, výchozí hodnota je 20 |Statická|Interval, jakou odešle FabricClient přenosu zpráv keep-alive k bráně. Pro 0; keepAlive je zakázaná. Musí být kladná hodnota. |
-|MaxFileSenderThreads |Uint, výchozí hodnota je 10 |Statická|Maximální počet souborů, které se přenáší paralelně. |
-|NodeAddresses |řetězec, výchozí hodnota je "" |Statická|Kolekce adres (připojovací řetězce) na různých uzlech, které lze použít ke komunikaci se službou názvy. Zpočátku připojení klienta výběrem jedné z adresy náhodně. Pokud je zadán více než jeden řetězec připojení a připojení se nezdaří z důvodu vypršení časového limitu; a komunikace přepínače klienta, která se mají použít adresa dalšího postupně. Zobrazit podrobné informace na sémantiku opakované pokusy opakovat pojmenování adresa služby. |
-|PartitionLocationCacheLimit |Int, výchozí hodnota je 100 000 |Statická|Počet oddílů v mezipaměti pro službu rozlišení (nastavena na hodnotu 0 pro žádné omezení). |
-|RetryBackoffInterval |Čas v sekundách, výchozí hodnota je 3 |Dynamické|Zadejte časový interval v sekundách. Regresní interval před opakováním operace. |
-|ServiceChangePollInterval |Čas v sekundách, výchozí hodnota je 120 |Dynamické|Zadejte časový interval v sekundách. Interval mezi po sobě jdoucích hlasování pro službu se změní z klienta do brány pro zpětná volání oznámení změn registrovanou službu. |
+|ConnectionInitializationTimeout |Čas v sekundách, výchozí hodnota je 2 |Dynamické|Zadejte časový interval v sekundách. Interval časového limitu připojení pro pokaždé, když se klient pokusí otevřít připojení k bráně.|
+|HealthOperationTimeout |Čas v sekundách, výchozí hodnota je 120. |Dynamické|Zadejte časový interval v sekundách. Časový limit pro zprávu sestavy odeslanou správci stavu. |
+|HealthReportRetrySendInterval |Čas v sekundách, výchozí hodnota je 30, minimum je 1. |Dynamické|Zadejte časový interval v sekundách. Interval, ve kterém komponenta pro vytváření sestav znovu odesílá shromážděné zprávy o stavu správci stavu. |
+|HealthReportSendInterval |Čas v sekundách, výchozí hodnota je 30. |Dynamické|Zadejte časový interval v sekundách. Interval, ve kterém komponenta pro vytváření sestav odesílá shromážděné zprávy o stavu správci stavu. |
+|KeepAliveIntervalInSeconds |Int, výchozí hodnota je 20 |Static|Interval, ve kterém přenos FabricClient odesílá do brány zprávy Keep-Alive. Pro 0; Udržení naživu je zakázané. Musí být kladná hodnota. |
+|MaxFileSenderThreads |Uint, výchozí hodnota je 10. |Static|Maximální počet souborů, které jsou přenášeny paralelně. |
+|NodeAddresses |řetězec, výchozí hodnota je "" |Static|Kolekce adres (připojovacích řetězců) na různých uzlech, které lze použít ke komunikaci s Naming Service. Zpočátku se klient připojí a vybere jednu z adres náhodně. Je-li zadán více než jeden připojovací řetězec a připojení selže z důvodu chyby komunikace nebo vypršení časového limitu; Klient přepne na použití další adresy postupně. Podrobnosti o sémantikě opakování najdete v části Naming Service adresy pro opakování. |
+|PartitionLocationCacheLimit |Int, výchozí hodnota je 100000 |Static|Počet oddílů v mezipaměti pro účely překladu služby (nastavte na 0 bez omezení). |
+|RetryBackoffInterval |Čas v sekundách, výchozí hodnota je 3. |Dynamické|Zadejte časový interval v sekundách. Back-off interval před opakováním operace. |
+|ServiceChangePollInterval |Čas v sekundách, výchozí hodnota je 120. |Dynamické|Zadejte časový interval v sekundách. Interval mezi po sobě jdoucími dotazy na změny služby od klienta k bráně pro zpětná volání oznámení změn služby. |
 
-## <a name="fabrichost"></a>FabricHost
+## <a name="fabrichost"></a>Hostitele fabrichost vrátilo
 
 | **Parametr** | **Povolené hodnoty** | **Zásady upgradu** | **Doprovodné materiály nebo krátký popis** |
 | --- | --- | --- | --- |
-|ActivationMaxFailureCount |Int, výchozí hodnota je 10 |Dynamické|Toto je maximální počet, pro kterou systém bude opakovat neúspěšné aktivace, než se ukončí. |
-|ActivationMaxRetryInterval |Čas v sekundách, výchozí hodnota je 300 |Dynamické|Zadejte časový interval v sekundách. Maximální interval opakování pro aktivaci. Při každé průběžné selhání interval opakování se počítá jako Min (ActivationMaxRetryInterval; Průběžný počet selhání * ActivationRetryBackoffInterval). |
-|ActivationRetryBackoffInterval |Čas v sekundách, výchozí hodnota je 5 |Dynamické|Zadejte časový interval v sekundách. Interval omezení rychlosti při každé aktivaci selhání; při selhání každý průběžné aktivace systému bude opakovat akci během aktivace pro až MaxActivationFailureCount. Interval opakování na každou akci je produkt průběžné aktivace se nezdařila a aktivace regresní interval. |
-|EnableRestartManagement |Logická hodnota, výchozí hodnota je false |Dynamické|To je umožnit restartování serveru. |
-|EnableServiceFabricAutomaticUpdates |Logická hodnota, výchozí hodnota je false |Dynamické|Toto je chcete povolit automatické aktualizace prostředků infrastruktury prostřednictvím Windows Update. |
-|EnableServiceFabricBaseUpgrade |Logická hodnota, výchozí hodnota je false |Dynamické|To je umožnit základní aktualizace pro server. |
-|StartTimeout |Čas v sekundách, výchozí hodnota je 300 |Dynamické|Zadejte časový interval v sekundách. Časový limit pro spuštění fabricactivationmanager. |
-|StopTimeout |Čas v sekundách, výchozí hodnota je 300 |Dynamické|Zadejte časový interval v sekundách. Časový limit pro hostovanou službu Aktivace. deaktivace a upgrade. |
+|ActivationMaxFailureCount |Int, výchozí hodnota je 10. |Dynamické|Toto je maximální počet, který systém před tím, než se pokusí o aktivaci, selže. |
+|ActivationMaxRetryInterval |Čas v sekundách, výchozí hodnota je 300. |Dynamické|Zadejte časový interval v sekundách. Maximální interval opakování pro aktivaci Při každé nepřetržité chybě se interval opakování počítá jako min (ActivationMaxRetryInterval; Počet nepřetržitých selhání * ActivationRetryBackoffInterval). |
+|ActivationRetryBackoffInterval |Čas v sekundách, výchozí hodnota je 5. |Dynamické|Zadejte časový interval v sekundách. Omezení rychlosti interval při každém selhání aktivace; při každé chybě průběžné aktivace provede systém aktivaci znovu pro MaxActivationFailureCount. Interval opakování při každém pokusu je produktem selhání průběžné aktivace a interval back-v aktivace. |
+|EnableRestartManagement |Logická hodnota, výchozí hodnota je false. |Dynamické|Tím se povolí restart serveru. |
+|EnableServiceFabricAutomaticUpdates |Logická hodnota, výchozí hodnota je false. |Dynamické|Slouží k povolení automatické aktualizace prostředků infrastruktury prostřednictvím web Windows Update. |
+|EnableServiceFabricBaseUpgrade |Logická hodnota, výchozí hodnota je false. |Dynamické|Slouží k povolení základní aktualizace pro server. |
+|Čas spuštění |Čas v sekundách, výchozí hodnota je 300. |Dynamické|Zadejte časový interval v sekundách. Vypršel časový limit pro fabricactivationmanager spuštění. |
+|StopTimeout |Čas v sekundách, výchozí hodnota je 300. |Dynamické|Zadejte časový interval v sekundách. Časový limit pro aktivaci hostované služby; deaktivace a upgrade. |
 
 ## <a name="fabricnode"></a>FabricNode
 
 | **Parametr** | **Povolené hodnoty** | **Zásady upgradu** | **Doprovodné materiály nebo krátký popis** |
 | --- | --- | --- | --- |
-|ClientAuthX509FindType |řetězec, výchozí je "FindByThumbprint" |Dynamické|Určuje, jak vyhledat certifikát v úložišti určené ClientAuthX509StoreName podporované hodnoty: FindByThumbprint; FindBySubjectName. |
-|ClientAuthX509FindValue |řetězec, výchozí hodnota je "" | Dynamické|Hodnota filtru hledání používaná k nalezení certifikát pro roli správce výchozí FabricClient. |
-|ClientAuthX509FindValueSecondary |řetězec, výchozí hodnota je "" |Dynamické|Hodnota filtru hledání používaná k nalezení certifikát pro roli správce výchozí FabricClient. |
-|ClientAuthX509StoreName |řetězec, výchozí hodnota je "My" |Dynamické|Název úložiště certifikátu X.509, který obsahuje certifikát pro roli správce výchozí FabricClient. |
-|ClusterX509FindType |řetězec, výchozí je "FindByThumbprint" |Dynamické|Určuje, jak vyhledat certifikát clusteru v úložišti určené ClusterX509StoreName podporované hodnoty: "FindByThumbprint"; "FindBySubjectName" s "FindBySubjectName"; Pokud existuje více shod použije se ten nejvzdálenější vypršení platnosti. |
-|ClusterX509FindValue |řetězec, výchozí hodnota je "" |Dynamické|Hodnota filtru hledání používaná k nalezení certifikát clusteru. |
-|ClusterX509FindValueSecondary |řetězec, výchozí hodnota je "" |Dynamické|Hodnota filtru hledání používaná k nalezení certifikát clusteru. |
-|ClusterX509StoreName |řetězec, výchozí hodnota je "My" |Dynamické|Název úložiště certifikátů X.509, který obsahuje certifikát clusteru pro zabezpečení komunikace mezi clustery. |
-|EndApplicationPortRange |int, výchozí je 0 |Statická|End (ne inkluzivní) porty aplikace spravuje hostování subsystému. Požadováno, pokud EndpointFilteringEnabled true v Hosting. |
-|ServerAuthX509FindType |řetězec, výchozí je "FindByThumbprint" |Dynamické|Určuje, jak vyhledat certifikát serveru v úložišti určené ServerAuthX509StoreName podporované hodnoty: FindByThumbprint; FindBySubjectName. |
-|ServerAuthX509FindValue |řetězec, výchozí hodnota je "" |Dynamické|Hodnota filtru hledání používaná k nalezení certifikát serveru. |
-|ServerAuthX509FindValueSecondary |řetězec, výchozí hodnota je "" |Dynamické|Hodnota filtru hledání používaná k nalezení certifikát serveru. |
-|ServerAuthX509StoreName |řetězec, výchozí hodnota je "My" |Dynamické|Název úložiště certifikátů X.509, který obsahuje certifikát serveru pro službu bezbolestný. |
-|StartApplicationPortRange |int, výchozí je 0 |Statická|Počáteční porty aplikace spravuje hostování subsystému. Požadováno, pokud EndpointFilteringEnabled true v Hosting. |
-|StateTraceInterval |Čas v sekundách, výchozí hodnota je 300 |Statická|Zadejte časový interval v sekundách. Interval pro stav uzlu na každém uzlu a novějšími uzly na největší FM/FMM trasování. |
-|UserRoleClientX509FindType |řetězec, výchozí je "FindByThumbprint" |Dynamické|Určuje, jak vyhledat certifikát v úložišti určené UserRoleClientX509StoreName podporované hodnoty: FindByThumbprint; FindBySubjectName. |
-|UserRoleClientX509FindValue |řetězec, výchozí hodnota je "" |Dynamické|Hodnota filtru hledání používaná k nalezení certifikát pro výchozí roli uživatele FabricClient. |
-|UserRoleClientX509FindValueSecondary |řetězec, výchozí hodnota je "" |Dynamické|Hodnota filtru hledání používaná k nalezení certifikát pro výchozí roli uživatele FabricClient. |
-|UserRoleClientX509StoreName |řetězec, výchozí hodnota je "My" |Dynamické|Název úložiště certifikátu X.509, který obsahuje certifikát pro výchozí roli uživatele FabricClient. |
+|ClientAuthX509FindType |řetězec, výchozí hodnota je "FindByThumbprint" |Dynamické|Určuje, jak se má vyhledat certifikát v úložišti určeném podporovanou hodnotou ClientAuthX509StoreName: FindByThumbprint; FindBySubjectName. |
+|ClientAuthX509FindValue |řetězec, výchozí hodnota je "" | Dynamické|Hodnota vyhledávacího filtru, která se používá k vyhledání certifikátu pro výchozí roli správce FabricClient. |
+|ClientAuthX509FindValueSecondary |řetězec, výchozí hodnota je "" |Dynamické|Hodnota vyhledávacího filtru, která se používá k vyhledání certifikátu pro výchozí roli správce FabricClient. |
+|ClientAuthX509StoreName |řetězec, výchozí hodnota je my |Dynamické|Název úložiště certifikátů X. 509, které obsahuje certifikát pro výchozí roli správce FabricClient. |
+|ClusterX509FindType |řetězec, výchozí hodnota je "FindByThumbprint" |Dynamické|Určuje, jak se má vyhledat certifikát clusteru v úložišti určeném hodnotami podporované hodnotou ClusterX509StoreName: "FindByThumbprint"; "FindBySubjectName" s "FindBySubjectName"; Pokud existuje více shod; použije se tu, která má nejdálení vypršení platnosti. |
+|ClusterX509FindValue |řetězec, výchozí hodnota je "" |Dynamické|Hodnota vyhledávacího filtru, která se používá k vyhledání certifikátu clusteru |
+|ClusterX509FindValueSecondary |řetězec, výchozí hodnota je "" |Dynamické|Hodnota vyhledávacího filtru, která se používá k vyhledání certifikátu clusteru |
+|ClusterX509StoreName |řetězec, výchozí hodnota je my |Dynamické|Název úložiště certifikátů X. 509, které obsahuje certifikát clusteru pro zabezpečení komunikace uvnitř clusteru. |
+|EndApplicationPortRange |Int, výchozí hodnota je 0 |Static|Konec (No včetně) portů aplikace, které spravuje hostující podsystém. Požadováno v případě, že EndpointFilteringEnabled má hodnotu true v hostování. |
+|ServerAuthX509FindType |řetězec, výchozí hodnota je "FindByThumbprint" |Dynamické|Určuje, jak se má vyhledat certifikát serveru v úložišti určeném podporovanou hodnotou ServerAuthX509StoreName: FindByThumbprint; FindBySubjectName. |
+|ServerAuthX509FindValue |řetězec, výchozí hodnota je "" |Dynamické|Hodnota vyhledávacího filtru, která se používá k vyhledání certifikátu serveru |
+|ServerAuthX509FindValueSecondary |řetězec, výchozí hodnota je "" |Dynamické|Hodnota vyhledávacího filtru, která se používá k vyhledání certifikátu serveru |
+|ServerAuthX509StoreName |řetězec, výchozí hodnota je my |Dynamické|Název úložiště certifikátů X. 509, které obsahuje certifikát serveru pro službu bezbolestný. |
+|StartApplicationPortRange |Int, výchozí hodnota je 0 |Static|Začátek portů aplikace, které spravuje hostující podsystém. Požadováno v případě, že EndpointFilteringEnabled má hodnotu true v hostování. |
+|StateTraceInterval |Čas v sekundách, výchozí hodnota je 300. |Static|Zadejte časový interval v sekundách. Interval pro trasování stavu uzlu v každém uzlu a v uzlech na FMM na FM/. |
+|UserRoleClientX509FindType |řetězec, výchozí hodnota je "FindByThumbprint" |Dynamické|Určuje, jak se má vyhledat certifikát v úložišti určeném podporovanou hodnotou UserRoleClientX509StoreName: FindByThumbprint; FindBySubjectName. |
+|UserRoleClientX509FindValue |řetězec, výchozí hodnota je "" |Dynamické|Hodnota vyhledávacího filtru, která se používá k vyhledání certifikátu pro výchozí roli uživatele FabricClient |
+|UserRoleClientX509FindValueSecondary |řetězec, výchozí hodnota je "" |Dynamické|Hodnota vyhledávacího filtru, která se používá k vyhledání certifikátu pro výchozí roli uživatele FabricClient |
+|UserRoleClientX509StoreName |řetězec, výchozí hodnota je my |Dynamické|Název úložiště certifikátů X. 509, které obsahuje certifikát pro výchozí roli uživatele FabricClient. |
 
 ## <a name="failovermanager"></a>FailoverManager
 
 | **Parametr** | **Povolené hodnoty** | **Zásady upgradu** | **Doprovodné materiály nebo krátký popis** |
 | --- | --- | --- | --- |
-|BuildReplicaTimeLimit|Časový interval, výchozí hodnota je Common::TimeSpan::FromSeconds(3600)|Dynamické|Zadejte časový interval v sekundách. Časový limit pro vytvoření stavové repliky; po jejímž uplynutí se iniciovalo sestava stavu upozornění |
-|ClusterPauseThreshold|int, výchozí je 1|Dynamické|Pokud počet uzlů v systému přejděte pod tuto hodnotu poté umístění; načíst vyrovnávání; a převzetí služeb při selhání se zastaví. |
-|CreateInstanceTimeLimit|Časový interval, výchozí hodnota je Common::TimeSpan::FromSeconds(300)|Dynamické|Zadejte časový interval v sekundách. Časový limit pro vytvoření nestavové instance; po jejímž uplynutí se iniciovalo sestava stavu upozornění |
-|ExpectedClusterSize|int, výchozí je 1|Dynamické|Při prvním spuštění clusteru. počká převzetí služeb při selhání pro tuto mnoha uzly k hlášení sami si před zahájením umístění jiných služeb; včetně systémových služeb jako pojmenování. Doba trvání clusteru spustit; zvýšení hodnoty tuto zvyšuje. ale zabraňuje počáteční uzly z Přetěžovaná a také další přesuny, které bude nutné jako více uzlů do režimu online. Tato hodnota by měla obecně nastavena na malá část clusteru počáteční velikost. |
-|ExpectedNodeDeactivationDuration|Časový interval, výchozí hodnota je Common::TimeSpan::FromSeconds(60.0 * 30)|Dynamické|Zadejte časový interval v sekundách. Toto je očekávané době trvání pro uzel k deaktivaci v dokončení. |
-|ExpectedNodeFabricUpgradeDuration|Časový interval, výchozí hodnota je Common::TimeSpan::FromSeconds(60.0 * 30)|Dynamické|Zadejte časový interval v sekundách. Toto je očekávané době trvání pro uzel k upgradu při upgradu Windows Fabric. |
-|ExpectedReplicaUpgradeDuration|Časový interval, výchozí hodnota je Common::TimeSpan::FromSeconds(60.0 * 30)|Dynamické|Zadejte časový interval v sekundách. Toto je očekávané době trvání pro všechny repliky k upgradu na uzlu během upgradu aplikace. |
-|IsSingletonReplicaMoveAllowedDuringUpgrade|Logická hodnota, výchozí hodnotu TRUE|Dynamické|Pokud nastavenou na hodnotu true; repliky s cílovou velikost sady replik 1 budou moci přesunout během upgradu. |
-|MinReplicaSetSize|Int, výchozí hodnota je 3|Nepovoleno|Toto je velikost minimální sady replik pro převzetí služeb při selhání. Pokud klesne pod tuto hodnotu; počet aktivní repliky převzetí služeb při selhání převzetí služeb při selhání, bude taková změny do clusteru, dokud alespoň minimální počet replik se obnoví. |
-|PlacementConstraints|řetězec, výchozí hodnota je ""|Nepovoleno|Žádné omezení umístění pro repliky Správce převzetí služeb při selhání |
-|PlacementTimeLimit|Časový interval, výchozí hodnota je Common::TimeSpan::FromSeconds(600)|Dynamické|Zadejte časový interval v sekundách. Časový limit pro dosažení počtu cílových replik; po jejímž uplynutí se iniciovalo sestava stavu upozornění |
-|QuorumLossWaitDuration |Čas v sekundách, výchozí hodnota je hodnota MaxValue |Dynamické|Zadejte časový interval v sekundách. Toto je maximální dobu trvání, pro kterou jsou povoleny oddíl a být ve stavu ztrátě kvora. Pokud oddíl je stále ve ztrátě kvora po tuto dobu trvání; oddíl je obnovena ze ztráty kvora vycházet dolů repliky jako ztracené. Všimněte si, že to může potenciálně dojít ke ztrátě dat. |
-|ReconfigurationTimeLimit|Časový interval, výchozí hodnota je Common::TimeSpan::FromSeconds(300)|Dynamické|Zadejte časový interval v sekundách. Časový limit pro změnu konfigurace; po jejímž uplynutí se iniciovalo sestava stavu upozornění |
-|ReplicaRestartWaitDuration|Časový interval, výchozí hodnota je Common::TimeSpan::FromSeconds(60.0 * 30)|Nepovoleno|Zadejte časový interval v sekundách. Toto je ReplicaRestartWaitDuration pro FMService |
-|StandByReplicaKeepDuration|Časový interval, výchozí hodnota je Common::TimeSpan::FromSeconds(3600.0 * 24 * 7)|Nepovoleno|Zadejte časový interval v sekundách. Toto je StandByReplicaKeepDuration pro FMService |
-|TargetReplicaSetSize|Int, výchozí hodnota je 7|Nepovoleno|Toto je cílový počet převzetí služeb při selhání replik, které bude udržovat Windows Fabric. Větší číslo má za následek vyšší spolehlivost dat převzetí služeb při selhání; s na úkor výkonu malé. |
-|UserMaxStandByReplicaCount |int, výchozí je 1 |Dynamické|Výchozí maximální počet replik StandBy, které systém uchovává pro uživatele služby. |
-|UserReplicaRestartWaitDuration |Čas v sekundách, výchozí hodnota je 60.0 * 30 |Dynamické|Zadejte časový interval v sekundách. Když repliku trvalý ocitne mimo provoz; Windows Fabric počká na této hodnotě duration repliky a navrhněte zpět před vytvořením nové repliky nahrazení (které by vyžadovaly kopii stavu). |
-|UserStandByReplicaKeepDuration |Čas v sekundách, výchozí hodnota je 3600.0 * 24 * 7 |Dynamické|Zadejte časový interval v sekundách. Když repliku trvalý vrátit z dolů stavu; To může mít již bylo nahrazeno. Tento časovač Určuje, jak dlouho převzetí služeb při selhání budete mít pohotovostní repliky před budou zrušeny. |
+|AllowNodeStateRemovedForSeedNode|Logická hodnota, výchozí hodnota je FALSE. |Dynamické|Příznak označující, zda je povoleno odebrat stav uzlu pro počáteční uzel |
+|BuildReplicaTimeLimit|Časový interval, výchozí hodnota je common:: TimeSpan:: FromSeconds (3600)|Dynamické|Zadejte časový interval v sekundách. Časový limit pro vytvoření stavové repliky; po které se bude iniciovat zpráva o stavu upozornění |
+|ClusterPauseThreshold|int, výchozí hodnota je 1.|Dynamické|Pokud počet uzlů v systému přechází pod tuto hodnotu, pak na umístění; Vyrovnávání zatížení; a převzetí služeb při selhání se zastavilo. |
+|CreateInstanceTimeLimit|Časový interval, výchozí hodnota je common:: TimeSpan:: FromSeconds (300)|Dynamické|Zadejte časový interval v sekundách. Časový limit pro vytvoření bezstavové instance; po které se bude iniciovat zpráva o stavu upozornění |
+|ExpectedClusterSize|int, výchozí hodnota je 1.|Dynamické|Při počátečním spuštění clusteru; FM bude čekat na to, než se před zahájením umístění dalších služeb zahlásí tento počet uzlů. včetně systémových služeb, jako je pojmenování. Zvýšení hodnoty zvyšuje čas potřebný ke spuštění clusteru. ale zabrání nadměrnému zatížení uzlů a také dalším přesunům, které budou nezbytné k tomu, aby další uzly byly online. Tato hodnota by měla být obecně nastavená na malý zlomek počáteční velikosti clusteru. |
+|ExpectedNodeDeactivationDuration|Časový interval, výchozí hodnota je common:: TimeSpan:: FromSeconds \* (60.0 30)|Dynamické|Zadejte časový interval v sekundách. Toto je očekávaná doba, po kterou se uzel dokončí deaktivací. |
+|ExpectedNodeFabricUpgradeDuration|Časový interval, výchozí hodnota je common:: TimeSpan:: FromSeconds \* (60.0 30)|Dynamické|Zadejte časový interval v sekundách. Toto je očekávaná doba trvání uzlu, který se má upgradovat během Windows Fabric upgradu. |
+|ExpectedReplicaUpgradeDuration|Časový interval, výchozí hodnota je common:: TimeSpan:: FromSeconds \* (60.0 30)|Dynamické|Zadejte časový interval v sekundách. Toto je očekávaná doba trvání pro všechny repliky, které se mají upgradovat na uzlu během upgradu aplikace. |
+|IsSingletonReplicaMoveAllowedDuringUpgrade|logická hodnota, výchozí hodnota je TRUE.|Dynamické|Pokud je nastaveno na true; repliky s cílovou sadou replik s velikostí 1 se budou moct během upgradu přesunout. |
+|MinReplicaSetSize|int, výchozí hodnota je 3|Nepovolené|Toto je minimální velikost sady replik pro FM. Pokud počet aktivních replik FM klesne pod tuto hodnotu; v případě, že dojde k obnovení nejméně minimálního počtu replik, bude FM zamítnout změny do clusteru. |
+|PlacementConstraints|řetězec, výchozí hodnota je ""|Nepovolené|Všechna omezení umístění pro repliky správce převzetí služeb při selhání |
+|PlacementTimeLimit|Časový interval, výchozí hodnota je common:: TimeSpan:: FromSeconds (600)|Dynamické|Zadejte časový interval v sekundách. Časový limit pro dosažení počtu cílových replik; po které se bude iniciovat zpráva o stavu upozornění |
+|QuorumLossWaitDuration |Čas v sekundách, výchozí hodnota je MaxValue. |Dynamické|Zadejte časový interval v sekundách. Toto je maximální doba, po kterou je možné, aby oddíl byl ve stavu ztráty kvora. Pokud je oddíl stále ve ztrátě kvora po uplynutí této doby; oddíl se obnoví ze ztráty kvora tím, že se posuzuje o ztracené repliky. Všimněte si, že to může potenciálně dojít ke ztrátě dat. |
+|ReconfigurationTimeLimit|Časový interval, výchozí hodnota je common:: TimeSpan:: FromSeconds (300)|Dynamické|Zadejte časový interval v sekundách. Časový limit pro rekonfiguraci; po které se bude iniciovat zpráva o stavu upozornění |
+|ReplicaRestartWaitDuration|Časový interval, výchozí hodnota je common:: TimeSpan:: FromSeconds \* (60.0 30)|Nepovolené|Zadejte časový interval v sekundách. Toto je ReplicaRestartWaitDuration pro FMService. |
+|StandByReplicaKeepDuration|Časový interval, výchozí hodnota je common:: TimeSpan:: FromSeconds \* ( \* 3600.0 24 7)|Nepovolené|Zadejte časový interval v sekundách. Toto je StandByReplicaKeepDuration pro FMService. |
+|TargetReplicaSetSize|int, výchozí hodnota je 7|Nepovolené|Toto je cílový počet replik FM, které se Windows Fabric zachovají. Vyšší hodnota má za následek vyšší spolehlivost dat FM; s malými kompromisy ve výkonu. |
+|UserMaxStandByReplicaCount |Int, výchozí hodnota je 1. |Dynamické|Výchozí maximální počet replik v pohotovostním stavu, které systém udržuje pro uživatelské služby. |
+|UserReplicaRestartWaitDuration |Čas v sekundách, výchozí hodnota je \* 60,0 30. |Dynamické|Zadejte časový interval v sekundách. Dojde-li k výpadku trvalé repliky; Windows Fabric čeká na tuto dobu, než se replika před vytvořením nových náhradních replik (která by vyžadovala kopii stavu). |
+|UserStandByReplicaKeepDuration |Čas v sekundách, výchozí hodnota je \* 3600,0 \* 24 7. |Dynamické|Zadejte časový interval v sekundách. Když se trvalá replika vrátí ze stavu mimo provoz; je možné, že již byla nahrazena. Tento časovač určuje, jak dlouho bude FM uchovávat pohotovostní repliku před zahozením. |
 
 ## <a name="faultanalysisservice"></a>FaultAnalysisService
 
 | **Parametr** | **Povolené hodnoty** | **Zásady upgradu** | **Doprovodné materiály nebo krátký popis** |
 | --- | --- | --- | --- |
-|CompletedActionKeepDurationInSeconds | Int, výchozí hodnota je 604800 |Statická| To je přibližně jak dlouho se mají uchovávat akce, které jsou ve stavu terminálu. To také závisí na StoredActionCleanupIntervalInSeconds; protože práce, kterou čištění se provádí jenom na tohoto intervalu. 604800 je 7 dní. |
-|DataLossCheckPollIntervalInSeconds|int, výchozí je 5|Statická|Toto je doba mezi kontroly, které systém provádí při čekání na ztrátě dat, která se provede. Počet pokusů, které vrátí číslo ztráta dat za interní iterace je DataLossCheckWaitDurationInSeconds/this. |
-|DataLossCheckWaitDurationInSeconds|int, výchozí je 25|Statická|Celkové množství času; během několika sekund; bude systém čekat ztráty dat, která se provede. Používá se interně při volání rozhraní api StartPartitionDataLossAsync(). |
-|MinReplicaSetSize |int, výchozí je 0 |Statická|MinReplicaSetSize pro FaultAnalysisService. |
-|PlacementConstraints | řetězec, výchozí hodnota je ""|Statická| PlacementConstraints pro FaultAnalysisService. |
-|QuorumLossWaitDuration | Čas v sekundách, výchozí hodnota je hodnota MaxValue |Statická|Zadejte časový interval v sekundách. QuorumLossWaitDuration pro FaultAnalysisService. |
-|ReplicaDropWaitDurationInSeconds|int, výchozí je 600|Statická|Tento parametr se používá při ztrátě dat volání rozhraní api. Určuje, jak dlouho bude systém čekat repliky získáte po odebrání repliky vyvolán interně v něm. |
-|ReplicaRestartWaitDuration |Čas v sekundách, výchozí hodnota je 60 minut|Statická|Zadejte časový interval v sekundách. ReplicaRestartWaitDuration pro FaultAnalysisService. |
-|StandByReplicaKeepDuration| Čas v sekundách, výchozí hodnota je (60*24*7) minut |Statická|Zadejte časový interval v sekundách. StandByReplicaKeepDuration pro FaultAnalysisService. |
-|StoredActionCleanupIntervalInSeconds | Int, výchozí hodnota je 3600 |Statická|To je, jak často se vyčistí úložiště. Pouze akce přechodu k ve stavu terminálu; a dokončení alespoň CompletedActionKeepDurationInSeconds před bude odebrána. |
-|StoredChaosEventCleanupIntervalInSeconds | Int, výchozí hodnota je 3600 |Statická|To je, jak často se bude auditovat úložišti pro vyčištění Pokud počet událostí, které je více než 30000; čištění se rozjíždí. |
-|TargetReplicaSetSize |int, výchozí je 0 |Statická|NOT_PLATFORM_UNIX_START TargetReplicaSetSize pro FaultAnalysisService. |
+|CompletedActionKeepDurationInSeconds | Int, výchozí hodnota je 604800 |Static| To je přibližně doba, po kterou je možné zachovat akce, které jsou ve stavu terminálu. To závisí také na StoredActionCleanupIntervalInSeconds; vzhledem k tomu, že práce na čištění je provedena pouze v tomto intervalu. 604800 je 7 dní. |
+|DataLossCheckPollIntervalInSeconds|int, výchozí hodnota je 5|Static|Jedná se o čas mezi kontrolami, které systém provádí při čekání na ztrátu dat. Počet, kolikrát bude číslo ztráty dat kontrolováno na interní iteraci, je DataLossCheckWaitDurationInSeconds/this. |
+|DataLossCheckWaitDurationInSeconds|int, výchozí hodnota je 25.|Static|Celkové množství času; v sekundách; systém bude čekat na ztrátu dat. Tato metoda se používá interně při volání rozhraní API StartPartitionDataLossAsync (). |
+|MinReplicaSetSize |Int, výchozí hodnota je 0 |Static|MinReplicaSetSize pro FaultAnalysisService. |
+|PlacementConstraints | řetězec, výchozí hodnota je ""|Static| PlacementConstraints pro FaultAnalysisService. |
+|QuorumLossWaitDuration | Čas v sekundách, výchozí hodnota je MaxValue. |Static|Zadejte časový interval v sekundách. QuorumLossWaitDuration pro FaultAnalysisService. |
+|ReplicaDropWaitDurationInSeconds|int, výchozí hodnota je 600|Static|Tento parametr se používá v případě, že je voláno rozhraní API pro ztrátu dat. Určuje, jak dlouho bude systém čekat na vyřazení repliky po jejím interním vyvolání odebrání repliky. |
+|ReplicaRestartWaitDuration |Čas v sekundách, výchozí hodnota je 60 minut.|Static|Zadejte časový interval v sekundách. ReplicaRestartWaitDuration pro FaultAnalysisService. |
+|StandByReplicaKeepDuration| Čas v sekundách, výchozí hodnota je (60*24*7) min. |Static|Zadejte časový interval v sekundách. StandByReplicaKeepDuration pro FaultAnalysisService. |
+|StoredActionCleanupIntervalInSeconds | Int, výchozí hodnota je 3600 |Static|To je postup, jak často se bude obchod vyčistit. Pouze akce ve stavu terminálu; a které byly dokončeny alespoň před CompletedActionKeepDurationInSeconds, budou odebrány. |
+|StoredChaosEventCleanupIntervalInSeconds | Int, výchozí hodnota je 3600 |Static|To je postup, jak často bude úložiště auditováno pro vyčištění. Pokud je počet událostí vyšší než 30000; Vyčištění bude vykázat. |
+|TargetReplicaSetSize |Int, výchozí hodnota je 0 |Static|NOT_PLATFORM_UNIX_START TargetReplicaSetSize pro FaultAnalysisService. |
 
-## <a name="federation"></a>metadata
+## <a name="federation"></a>Federace
 
 | **Parametr** | **Povolené hodnoty** | **Zásady upgradu** | **Doprovodné materiály nebo krátký popis** |
 | --- | --- | --- | --- |
-|LeaseDuration |Čas v sekundách, výchozí hodnota je 30 |Dynamické|Doba, po kterou má platnost zapůjčení mezi uzlem a jeho okolím. |
-|LeaseDurationAcrossFaultDomain |Čas v sekundách, výchozí hodnota je 30 |Dynamické|Doba trvání zapůjčení vydrží mezi uzlem a jeho okolím napříč doménami selhání. |
+|LeaseDuration |Čas v sekundách, výchozí hodnota je 30. |Dynamické|Doba, po kterou zapůjčení trvá mezi uzlem a jeho sousedními okruhy. |
+|LeaseDurationAcrossFaultDomain |Čas v sekundách, výchozí hodnota je 30. |Dynamické|Doba, po kterou zapůjčení trvá mezi uzlem a jeho sousedními uzly napříč doménami selhání. |
 
 ## <a name="filestoreservice"></a>FileStoreService
 
 | **Parametr** | **Povolené hodnoty** | **Zásady upgradu** | **Doprovodné materiály nebo krátký popis** |
 | --- | --- | --- | --- |
-|AcceptChunkUpload|Logická hodnota, výchozí hodnotu TRUE|Dynamické|Konfigurace k určení, jestli služba úložiště souborů přijímá nahrávání bloků dat na základě souborů, nebo ne během kopírování balíčku aplikace. |
-|AnonymousAccessEnabled | Logická hodnota, výchozí hodnota je true |Statická|Povolí nebo zakáže anonymní přístup ke sdíleným složkám FileStoreService. |
-|CommonName1Ntlmx509CommonName|řetězec, výchozí hodnota je ""|Statická| Běžný název X509 certifikát používaný k vygenerování HMAC na CommonName1NtlmPasswordSecret při použití ověřování NTLM |
-|CommonName1Ntlmx509StoreLocation|řetězec, výchozí je "LocalMachine"|Statická|Umístění úložiště X509 certifikát používaný k vygenerování HMAC na CommonName1NtlmPasswordSecret při použití ověřování NTLM |
-|CommonName1Ntlmx509StoreName|řetězec, výchozí je "MY"| Statická|Název úložiště X509 certifikát používaný k vygenerování HMAC na CommonName1NtlmPasswordSecret při použití ověřování NTLM |
-|CommonName2Ntlmx509CommonName|řetězec, výchozí hodnota je ""|Statická|Běžný název X509 certifikát používaný k vygenerování HMAC na CommonName2NtlmPasswordSecret při použití ověřování NTLM |
-|CommonName2Ntlmx509StoreLocation|řetězec, výchozí je "LocalMachine"| Statická|Umístění úložiště X509 certifikát používaný k vygenerování HMAC na CommonName2NtlmPasswordSecret při použití ověřování NTLM |
-|CommonName2Ntlmx509StoreName|řetězec, výchozí je "MY"|Statická| Název úložiště X509 certifikát používaný k vygenerování HMAC na CommonName2NtlmPasswordSecret při použití ověřování NTLM |
-|CommonNameNtlmPasswordSecret|SecureString, výchozí hodnota je Common::SecureString("")| Statická|Heslo tajný klíč, který používá jako počáteční hodnota generovaného stejné heslo při použití ověřování NTLM |
-|GenerateV1CommonNameAccount| Logická hodnota, výchozí hodnotu TRUE|Statická|Určuje, jestli se má generovat účet s algoritmem generování V1 jméno uživatele. Spouští se s platformou Service Fabric verze 6.1; vždy se vytvoří účet s verze 2. generace. Účet V1 je nezbytné pro upgrade z/do verze, která nepodporují generování V2 (před 6.1).|
-|MaxCopyOperationThreads | Uint, výchozí hodnota je 0 |Dynamické| Maximální počet paralelních souborů, který sekundární můžete zkopírovat z primární. '0' == počet jader. |
-|MaxFileOperationThreads | Uint, výchozí hodnota je 100 |Statická| Maximální počet paralelních vláken povoleno provádět FileOperations (Copy/Move) v primární. '0' == počet jader. |
-|MaxRequestProcessingThreads | Uint, výchozí hodnota je 200 |Statická|Maximální počet paralelních vláken zpracování požadavků v primární povoleno. '0' == počet jader. |
-|MaxSecondaryFileCopyFailureThreshold | Uint, výchozí hodnota je 25|Dynamické|Maximální počet opakovaných pokusů kopírování souborů na sekundárním, než se ukončí. |
-|MaxStoreOperations | Uint, výchozí hodnota je 4096 |Statická|Maximální počet operací transakce paralelní úložiště povolené pro primární. '0' == počet jader. |
-|NamingOperationTimeout |Čas v sekundách, výchozí hodnota je 60 |Dynamické|Zadejte časový interval v sekundách. K provedení operace názvů vypršel časový limit. |
-|PrimaryAccountNTLMPasswordSecret | SecureString, výchozí hodnota je prázdná |Statická| Heslo tajný klíč, který používá jako počáteční hodnoty pro generované stejné heslo při použití ověřování NTLM. |
-|PrimaryAccountNTLMX509StoreLocation | řetězec, výchozí je "LocalMachine"|Statická| Umístění úložiště X509 certifikát používaný k vygenerování HMAC na PrimaryAccountNTLMPasswordSecret při použití ověřování NTLM. |
-|PrimaryAccountNTLMX509StoreName | řetězec, výchozí je "MY"|Statická| Název úložiště X509 certifikát používaný k vygenerování HMAC na PrimaryAccountNTLMPasswordSecret při použití ověřování NTLM. |
-|PrimaryAccountNTLMX509Thumbprint | řetězec, výchozí hodnota je ""|Statická|Kryptografický otisk X509 certifikát používaný k vygenerování HMAC na PrimaryAccountNTLMPasswordSecret při použití ověřování NTLM. |
-|PrimaryAccountType | řetězec, výchozí hodnota je "" |Statická|Primární AccountType instančního objektu pro seznam ACL FileStoreService sdílí. |
-|PrimaryAccountUserName | řetězec, výchozí hodnota je "" |Statická|Primární účet uživatelské jméno instančního objektu pro seznam ACL sdílí FileStoreService. |
-|PrimaryAccountUserPassword | SecureString, výchozí hodnota je prázdná |Statická|Primární účet heslo instančního objektu pro seznam ACL sdílí FileStoreService. |
-|QueryOperationTimeout | Čas v sekundách, výchozí hodnota je 60 |Dynamické|Zadejte časový interval v sekundách. Časový limit pro provedení operace dotazu. |
-|SecondaryAccountNTLMPasswordSecret | SecureString, výchozí hodnota je prázdná |Statická| Heslo tajný klíč, který používá jako počáteční hodnoty pro generované stejné heslo při použití ověřování NTLM. |
-|SecondaryAccountNTLMX509StoreLocation | řetězec, výchozí je "LocalMachine" |Statická|Umístění úložiště X509 certifikát používaný k vygenerování HMAC na SecondaryAccountNTLMPasswordSecret při použití ověřování NTLM. |
-|SecondaryAccountNTLMX509StoreName | řetězec, výchozí je "MY" |Statická|Název úložiště X509 certifikát používaný k vygenerování HMAC na SecondaryAccountNTLMPasswordSecret při použití ověřování NTLM. |
-|SecondaryAccountNTLMX509Thumbprint | řetězec, výchozí hodnota je ""| Statická|Kryptografický otisk X509 certifikát používaný k vygenerování HMAC na SecondaryAccountNTLMPasswordSecret při použití ověřování NTLM. |
-|SecondaryAccountType | řetězec, výchozí hodnota je ""|Statická| Sekundární AccountType instančního objektu pro seznam ACL FileStoreService sdílí. |
-|SecondaryAccountUserName | řetězec, výchozí hodnota je ""| Statická|Sekundární účet uživatelské jméno instančního objektu pro seznam ACL sdílí FileStoreService. |
-|SecondaryAccountUserPassword | SecureString, výchozí hodnota je prázdná |Statická|Sekundární účet heslo instančního objektu pro seznam ACL sdílí FileStoreService. |
-|SecondaryFileCopyRetryDelayMilliseconds|uint, výchozí je 500|Dynamické|Zpoždění (v milisekundách) opakovaného kopírování souborů.|
-|UseChunkContentInTransportMessage|Logická hodnota, výchozí hodnotu TRUE|Dynamické|Příznak pro použití nové verze nahrávání protokolu zavedený v6.4. Tato verze protokolu používá přenosy service fabricu k nahrání souborů do úložiště imagí, která poskytuje lepší výkon než protokol SMB použitý v předchozích verzích. |
+|AcceptChunkUpload|Logická hodnota, výchozí hodnota je TRUE.|Dynamické|Konfigurace k určení, zda služba File Store akceptuje nahrávání souborů na základě bloku nebo ne během kopírování balíčku aplikace. |
+|AnonymousAccessEnabled | Logická hodnota, výchozí hodnota je true. |Static|Povolí nebo zakáže anonymní přístup ke sdíleným složkám FileStoreService. |
+|CommonName1Ntlmx509CommonName|řetězec, výchozí hodnota je ""|Static| Běžný název certifikátu x509, který se používá k vygenerování HMAC u CommonName1NtlmPasswordSecret při použití ověřování NTLM |
+|CommonName1Ntlmx509StoreLocation|řetězec, výchozí hodnota je "LocalMachine"|Static|Umístění úložiště certifikátu x509 používaného k vygenerování HMAC u CommonName1NtlmPasswordSecret při použití ověřování NTLM |
+|CommonName1Ntlmx509StoreName|řetězec, výchozí hodnota je MY| Static|Název úložiště certifikátu x509, který se používá k vygenerování HMAC u CommonName1NtlmPasswordSecret při použití ověřování NTLM |
+|CommonName2Ntlmx509CommonName|řetězec, výchozí hodnota je ""|Static|Běžný název certifikátu x509, který se používá k vygenerování HMAC u CommonName2NtlmPasswordSecret při použití ověřování NTLM |
+|CommonName2Ntlmx509StoreLocation|řetězec, výchozí hodnota je "LocalMachine"| Static|Umístění úložiště certifikátu x509 používaného k vygenerování HMAC u CommonName2NtlmPasswordSecret při použití ověřování NTLM |
+|CommonName2Ntlmx509StoreName|řetězec, výchozí hodnota je MY|Static| Název úložiště certifikátu x509, který se používá k vygenerování HMAC u CommonName2NtlmPasswordSecret při použití ověřování NTLM |
+|CommonNameNtlmPasswordSecret|SecureString, výchozí nastavení je běžné:: SecureString ("")| Static|Tajný klíč hesla, který se používá jako základ pro generování stejného hesla při použití ověřování NTLM |
+|DiskSpaceHealthReportingIntervalWhenCloseToOutOfDiskSpace |Časový interval, výchozí hodnota je common:: TimeSpan:: FromMinutes (5)|Dynamické|Zadejte časový interval v sekundách. Časový interval mezi kontrolou místa na disku pro hlášení stavu události, když se na disku blíží volné místo. |
+|DiskSpaceHealthReportingIntervalWhenEnoughDiskSpace |Časový interval, výchozí hodnota je common:: TimeSpan:: FromMinutes (15)|Dynamické|Zadejte časový interval v sekundách. Časový interval mezi kontrolou místa na disku pro hlášení stavu události, když je na disku dostatek místa. |
+|EnableImageStoreHealthReporting |logická hodnota, výchozí hodnota je TRUE. |Static|Konfigurace k určení, zda by služba úložiště souborů měla hlásit svůj stav. |
+|FreeDiskSpaceNotificationSizeInKB|Int64, výchozí hodnota je\*25 1024 |Dynamické|Velikost volného místa na disku, pod kterým může dojít k upozornění na stav. Minimální hodnota této konfigurace a FreeDiskSpaceNotificationThresholdPercentage config slouží k určení odeslání upozornění na stav. |
+|FreeDiskSpaceNotificationThresholdPercentage|Double, výchozí hodnota je 0,02. |Dynamické|Procento volného místa na disku, na kterém se může objevit upozornění na stav. Minimální hodnota této konfigurace a FreeDiskSpaceNotificationInMB config slouží k určení odesílání upozornění na stav. |
+|GenerateV1CommonNameAccount| logická hodnota, výchozí hodnota je TRUE.|Static|Určuje, jestli se má vygenerovat účet s algoritmem generace uživatelského jména v1. Počínaje verzí Service Fabric 6,1; je vždy vytvořen účet se generováním v2. Účet v1 je nutný pro upgrady z/na verze, které nepodporují generování v2 (před 6,1).|
+|MaxCopyOperationThreads | Uint, výchozí hodnota je 0 |Dynamické| Maximální počet paralelních souborů, které sekundární může kopírovat z primárního. 0 = = počet jader. |
+|MaxFileOperationThreads | Uint, výchozí hodnota je 100 |Static| Maximální počet paralelních vláken, která mohou v primárních operacích provádět operace operací (kopírování a přesun). 0 = = počet jader. |
+|MaxRequestProcessingThreads | Uint, výchozí hodnota je 200 |Static|Maximální počet paralelních vláken, která mohou zpracovávat požadavky v primárním vlákně. 0 = = počet jader. |
+|MaxSecondaryFileCopyFailureThreshold | Uint, výchozí hodnota je 25|Dynamické|Maximální počet opakovaných pokusů o kopírování souborů v sekundárním souboru před tím, než bude proveden. |
+|MaxStoreOperations | Uint, výchozí hodnota je 4096 |Static|Maximální počet paralelních operací transakcí úložiště, které jsou povoleny na primárním počítači. 0 = = počet jader. |
+|NamingOperationTimeout |Čas v sekundách, výchozí hodnota je 60. |Dynamické|Zadejte časový interval v sekundách. Časový limit pro provedení operace pojmenování. |
+|PrimaryAccountNTLMPasswordSecret | SecureString, výchozí hodnota je prázdná. |Static| Tajný klíč hesla, který se používá jako základ pro generování stejného hesla při použití ověřování NTLM. |
+|PrimaryAccountNTLMX509StoreLocation | řetězec, výchozí hodnota je "LocalMachine"|Static| Umístění úložiště certifikátu x509 používaného k vygenerování HMAC ve PrimaryAccountNTLMPasswordSecret při použití ověřování NTLM. |
+|PrimaryAccountNTLMX509StoreName | řetězec, výchozí hodnota je MY|Static| Název úložiště certifikátu x509, který se používá k vygenerování HMAC u PrimaryAccountNTLMPasswordSecret při použití ověřování NTLM. |
+|PrimaryAccountNTLMX509Thumbprint | řetězec, výchozí hodnota je ""|Static|Kryptografický otisk certifikátu x509, který se používá k vygenerování HMAC u PrimaryAccountNTLMPasswordSecret při použití ověřování NTLM |
+|PrimaryAccountType | řetězec, výchozí hodnota je "" |Static|Primární AccountType objektu zabezpečení pro sdílení seznamu FileStoreService. |
+|PrimaryAccountUserName | řetězec, výchozí hodnota je "" |Static|Primární uživatelské jméno účtu objektu zabezpečení pro sdílené složky FileStoreService. |
+|PrimaryAccountUserPassword | SecureString, výchozí hodnota je prázdná. |Static|Primární heslo účtu objektu zabezpečení k seznamu ACL pro sdílené složky FileStoreService. |
+|QueryOperationTimeout | Čas v sekundách, výchozí hodnota je 60. |Dynamické|Zadejte časový interval v sekundách. Časový limit pro provedení operace dotazu. |
+|SecondaryAccountNTLMPasswordSecret | SecureString, výchozí hodnota je prázdná. |Static| Tajný klíč hesla, který se používá jako základ pro generování stejného hesla při použití ověřování NTLM. |
+|SecondaryAccountNTLMX509StoreLocation | řetězec, výchozí hodnota je "LocalMachine" |Static|Umístění úložiště certifikátu x509 používaného k vygenerování HMAC ve SecondaryAccountNTLMPasswordSecret při použití ověřování NTLM. |
+|SecondaryAccountNTLMX509StoreName | řetězec, výchozí hodnota je MY |Static|Název úložiště certifikátu x509, který se používá k vygenerování HMAC u SecondaryAccountNTLMPasswordSecret při použití ověřování NTLM. |
+|SecondaryAccountNTLMX509Thumbprint | řetězec, výchozí hodnota je ""| Static|Kryptografický otisk certifikátu x509, který se používá k vygenerování HMAC u SecondaryAccountNTLMPasswordSecret při použití ověřování NTLM |
+|SecondaryAccountType | řetězec, výchozí hodnota je ""|Static| Sekundární AccountType objektu zabezpečení k řízení přístupu ke sdíleným složkám FileStoreService. |
+|SecondaryAccountUserName | řetězec, výchozí hodnota je ""| Static|Uživatelské jméno sekundárního účtu objektu zabezpečení pro sdílené složky FileStoreService. |
+|SecondaryAccountUserPassword | SecureString, výchozí hodnota je prázdná. |Static|Heslo sekundárního účtu objektu zabezpečení pro sdílené složky FileStoreService. |
+|SecondaryFileCopyRetryDelayMilliseconds|uint, výchozí hodnota je 500|Dynamické|Zpoždění při kopírování souboru (v milisekundách)|
+|UseChunkContentInTransportMessage|logická hodnota, výchozí hodnota je TRUE.|Dynamické|Příznak pro použití nové verze protokolu nahrání představeného v v 6.4 Tato verze protokolu pomocí Service Fabric transportu odesílá soubory do úložiště imagí, což poskytuje lepší výkon než protokol SMB používaný v předchozích verzích. |
 
 ## <a name="healthmanager"></a>HealthManager
 
 | **Parametr** | **Povolené hodnoty** | **Zásady upgradu** | **Doprovodné materiály nebo krátký popis** |
 | --- | --- | --- | --- |
-|EnableApplicationTypeHealthEvaluation |Logická hodnota, výchozí hodnota je false |Statická|Zásady pro vyhodnocení stavu clusteru: Povolit za vyhodnocování stavu typu aplikace. |
-|MaxSuggestedNumberOfEntityHealthReports|Int, výchozí hodnota je 500 |Dynamické|Maximální počet stavů hlásí, že entita může mít před vyvoláním obavy týkající sledovacího zařízení stav logiky generování sestav. Každá entita stavu by měl mít relativně malý počet sestav o stavu. Pokud sestava počet překročí tento počet; mohou nastat problémy s implementací sledovacího zařízení. Entita se příliš mnoho sestav je označen jako prostřednictvím sestava stavu upozornění, při vyhodnocování entity. |
+|EnableApplicationTypeHealthEvaluation |Logická hodnota, výchozí hodnota je false. |Static|Zásady hodnocení stavu clusteru: Povolit pro vyhodnocení stavu podle typu aplikace. |
+|MaxSuggestedNumberOfEntityHealthReports|Int, výchozí hodnota je 500 |Dynamické|Maximální počet zpráv o stavu, které může entita mít, než vyvolává obavy o logice vytváření sestav o stavu sledovacího zařízení. Každá entita o stavu by měla mít relativně malý počet sestav o stavu. Pokud počet sestav překročí toto číslo, mohou nastat problémy s implementací sledovacího zařízení. Entita s příliš mnoha sestavami je označena prostřednictvím sestavy stavu upozornění, když je entita vyhodnocena. |
 
 ## <a name="healthmanagerclusterhealthpolicy"></a>HealthManager/ClusterHealthPolicy
 
 | **Parametr** | **Povolené hodnoty** | **Zásady upgradu** | **Doprovodné materiály nebo krátký popis** |
 | --- | --- | --- | --- |
-|ConsiderWarningAsError |Logická hodnota, výchozí hodnota je false |Statická|Zásady pro vyhodnocení stavu clusteru: upozornění jsou považována za chyby. |
-|MaxPercentUnhealthyApplications | int, výchozí je 0 |Statická|Zásady pro vyhodnocení stavu clusteru: maximální procento aplikací není v pořádku, povolen pro cluster se stavem v pořádku. |
-|MaxPercentUnhealthyNodes | int, výchozí je 0 |Statická|Zásady pro vyhodnocení stavu clusteru: maximální procento uzlů, není v pořádku, povolen pro cluster se stavem v pořádku. |
+|ConsiderWarningAsError |Logická hodnota, výchozí hodnota je false. |Static|Zásady hodnocení stavu clusteru: upozornění jsou považována za chyby. |
+|MaxPercentUnhealthyApplications | Int, výchozí hodnota je 0 |Static|Zásady hodnocení stavu clusteru: maximální procento aplikací, které nejsou v pořádku, povolené pro cluster v dobrém stavu. |
+|MaxPercentUnhealthyNodes | Int, výchozí hodnota je 0 |Static|Zásady hodnocení stavu clusteru: maximální procento uzlů, které nejsou v pořádku, povolené pro cluster v pořádku. |
 
 ## <a name="healthmanagerclusterupgradehealthpolicy"></a>HealthManager/ClusterUpgradeHealthPolicy
 
 | **Parametr** | **Povolené hodnoty** | **Zásady upgradu** | **Doprovodné materiály nebo krátký popis** |
 | --- | --- | --- | --- |
-|MaxPercentDeltaUnhealthyNodes|Int, výchozí hodnota je 10|Statická|Vyhodnocení zásad upgradu stav clusteru: maximální procento rozdílových uzlů není v pořádku, povolen pro cluster se stavem v pořádku |
-|MaxPercentUpgradeDomainDeltaUnhealthyNodes|int, výchozí je 15|Statická|Vyhodnocení zásad upgradu stav clusteru: maximální procento rozdílových uzlů není v pořádku v upgradovací doméně povolený pro cluster se stavem v pořádku |
+|MaxPercentDeltaUnhealthyNodes|int, výchozí hodnota je 10.|Static|Zásady hodnocení stavu upgradu clusteru: maximální procento rozdílových uzlů, které nemají stav v pořádku, aby byl cluster v pořádku |
+|MaxPercentUpgradeDomainDeltaUnhealthyNodes|int, výchozí hodnota je 15.|Static|Zásady hodnocení stavu upgradu clusteru: maximální procento rozdílu uzlů, které nejsou v pořádku, v upgradovací doméně povolené pro cluster v dobrém stavu |
 
 ## <a name="hosting"></a>Hostování
 
 | **Parametr** | **Povolené hodnoty** | **Zásady upgradu** | **Doprovodné materiály nebo krátký popis** |
 | --- | --- | --- | --- |
-|ActivationMaxFailureCount |Celé číslo, výchozí je 10 |Dynamické|Počet pokusů, které systém opakování se nezdařila aktivace, než se ukončí. |
-|ActivationMaxRetryInterval |Čas v sekundách, výchozí hodnota je 300 |Dynamické|Na každé průběžné aktivace se nezdařila systém zopakuje pokus o aktivaci pro až ActivationMaxFailureCount. ActivationMaxRetryInterval Určuje časový interval čekání před opakováním po každé aktivace se nezdařila |
-|ActivationRetryBackoffInterval |Čas v sekundách, výchozí hodnota je 5 |Dynamické|Interval omezení rychlosti při každé aktivaci selhání; Na každé průběžné aktivace se nezdařila systém zopakuje pokus o aktivaci pro až MaxActivationFailureCount. Interval opakování na každou akci je produkt průběžné aktivace se nezdařila a aktivace regresní interval. |
-|ActivationTimeout| Časový interval, výchozí hodnota je Common::TimeSpan::FromSeconds(180)|Dynamické| Zadejte časový interval v sekundách. Časový limit pro aktivaci aplikace; deaktivace a upgrade. |
-|ApplicationHostCloseTimeout| Časový interval, výchozí hodnota je Common::TimeSpan::FromSeconds(120)|Dynamické| Zadejte časový interval v sekundách. Když se v svým zjistí Fabric ukončovací aktivované procesy; FabricRuntime zavře všechny repliky v procesu hostitele (hostitele aplikace) daného uživatele. Toto je časový limit pro operaci zavření. |
-|ApplicationUpgradeTimeout| Časový interval, výchozí hodnota je Common::TimeSpan::FromSeconds(360)|Dynamické| Zadejte časový interval v sekundách. Časový limit pro upgrade aplikace. Pokud časový limit je menší než "ActivationTimeout" deployer se nezdaří. |
-|ContainerServiceArguments|řetězec, výchozí hodnota je "-H localhost: 2375 -H npipe: / /"|Statická|Service Fabric (SF) spravuje démona dockeru (s výjimkou na klientské počítače s windows jako Win10). Tato konfigurace umožňuje uživateli zadat vlastní argumenty, které by měly být předány démona dockeru, při jeho spuštění. Když zadáte vlastní argumenty, Service Fabric do modulu Dockeru s výjimkou nepředávejte žádné další argumenty '--pidfile "argument. Proto by neměl určovat uživatele '--pidfile "argument jako součást svých argumentů zákazníka. Kromě toho vlastní argumenty se ujistěte, které docker démon naslouchá na kanálu s výchozím názvem ve Windows (nebo Unixovému soketu domény v Linuxu) služba Service Fabric komunikovat s ním.|
-|ContainerServiceLogFileMaxSizeInKb|int, výchozí je 32768|Statická|Maximální velikost souboru protokolu vygenerované kontejnery dockeru.  Jenom Windows.|
-|ContainerImageDownloadTimeout|int, počet sekund, výchozí hodnota je 1200 (20 minut)|Dynamické|Počet sekund, než vyprší časový limit stahování bitové kopie.|
-|ContainerImagesToSkip|řetězec, názvy imagí, které jsou oddělené znakem svislé čáry, výchozí hodnota je ""|Statická|Název jedné nebo víc imagí kontejnerů, které by neměly být odstraněny.  Použít s parametrem PruneContainerImages.|
-|ContainerServiceLogFileNamePrefix|řetězec, výchozí je "sfcontainerlogs"|Statická|Předpona názvu souboru pro soubory protokolů generované kontejnery dockeru.  Jenom Windows.|
-|ContainerServiceLogFileRetentionCount|Int, výchozí hodnota je 10|Statická|Počet souborů protokolů generovaných kontejnery dockeru se soubory protokolu budou přepsány.  Jenom Windows.|
-|CreateFabricRuntimeTimeout|Časový interval, výchozí hodnota je Common::TimeSpan::FromSeconds(120)|Dynamické| Zadejte časový interval v sekundách. Hodnota časového limitu pro synchronizaci FabricCreateRuntime volání |
-|DefaultContainerRepositoryAccountName|řetězec, výchozí hodnota je ""|Statická|Výchozí pověření použít místo přihlašovacích údajů zadaných v souboru ApplicationManifest.xml |
-|DefaultContainerRepositoryPassword|řetězec, výchozí hodnota je ""|Statická|Výchozí heslo pověření použít místo přihlašovacích údajů zadaných v souboru ApplicationManifest.xml|
-|DefaultContainerRepositoryPasswordType|řetězec, výchozí hodnota je ""|Statická|Pokud není prázdný řetězec, hodnota může být "Šifrovaný" nebo "SecretsStoreRef".|
-|DeploymentMaxFailureCount|Int, výchozí hodnota je 20| Dynamické|Nasazení aplikace se provede pro časy DeploymentMaxFailureCount před selháním nasazení této aplikace na uzlu.| 
-|DeploymentMaxRetryInterval| Časový interval, výchozí hodnota je Common::TimeSpan::FromSeconds(3600)|Dynamické| Zadejte časový interval v sekundách. Maximální interval opakování pro nasazení. Při každé průběžné selhání interval opakování se počítá jako Min (DeploymentMaxRetryInterval; Průběžný počet selhání * DeploymentRetryBackoffInterval) |
-|DeploymentRetryBackoffInterval| Časový interval, výchozí hodnota je Common::TimeSpan::FromSeconds(10)|Dynamické|Zadejte časový interval v sekundách. Regresní interval selhání nasazení. Při každé selhání průběžného nasazování bude systém pokusem o nasazení pro až MaxDeploymentFailureCount. Interval opakování je produkt selhání průběžného nasazování a interval omezení rychlosti nasazení. |
-|DisableContainers|Logická hodnota, výchozí hodnotu FALSE|Statická|Konfigurace pro zakázání kontejnery – používá se místo DisableContainerServiceStartOnContainerActivatorOpen, což je zastaralé config |
-|DisableDockerRequestRetry|Logická hodnota, výchozí hodnotu FALSE |Dynamické| Ve výchozím nastavení SF komunikuje s DD (docker dameon) s časovým limitem "DockerRequestTimeout" pro každý požadavek http do něj odesílají. Pokud není DD odpoví během tohoto časového období; SF znovu odešle požadavek, pokud nejvyšší úrovně operace stále obsahuje zbývající čas.  S Hyper-v kontejneru; DD někdy trvat mnohem více času, vyvolejte kontejneru nebo ho deaktivovat. V takových případech DD žádosti vyprší z perspektivy SF a SF zopakuje pokus o operaci. Někdy se to zdá přidá další tlak na DD. Tato konfigurace umožňuje zakázat při tomto opakovaném pokusu a počkejte, DD reagovat. |
-|EnableActivateNoWindow| Logická hodnota, výchozí hodnotu FALSE|Dynamické| Aktivovaný proces se vytvoří na pozadí bez jakékoli konzoly. |
-|EnableContainerServiceDebugMode|Logická hodnota, výchozí hodnotu TRUE|Statická|Povolí nebo zakáže protokolování pro kontejnery dockeru.  Jenom Windows.|
-|EnableDockerHealthCheckIntegration|Logická hodnota, výchozí hodnotu TRUE|Statická|Umožňuje integraci dockeru HEALTHCHECK událostí s sestavy stavu systému Service Fabric |
-|EnableProcessDebugging|Logická hodnota, výchozí hodnotu FALSE|Dynamické| Povolí spouštění hostitele aplikace pod ladicím programem |
-|EndpointProviderEnabled| Logická hodnota, výchozí hodnotu FALSE|Statická| Umožňuje správu koncový bod prostředků infrastruktury. Vyžaduje, aby počáteční a koncové rozsahu portů aplikace v FabricNode. |
-|FabricContainerAppsEnabled| Logická hodnota, výchozí hodnotu FALSE|Statická| |
-|FirewallPolicyEnabled|Logická hodnota, výchozí hodnotu FALSE|Statická| Umožňuje otevřít porty brány firewall pro koncový bod prostředků s explicitní portů zadaných v souboru ServiceManifest |
-|GetCodePackageActivationContextTimeout|Časový interval, výchozí hodnota je Common::TimeSpan::FromSeconds(120)|Dynamické|Zadejte časový interval v sekundách. Hodnota časového limitu pro CodePackageActivationContext volání. To neplatí pro služby ad hoc. |
-|GovernOnlyMainMemoryForProcesses|Logická hodnota, výchozí hodnotu FALSE|Statická|Výchozí chování zásady správného řízení prostředků, je vložit limitu zadaného ve MemoryInMB za množství z celkové paměti (RAM + odkládacího souboru), že proces používá. Pokud dojde k překročení limitu; proces obdrží OutOfMemory výjimky. Pokud tento parametr je nastaven na hodnotu true; omezení se použijí pouze k množství paměti RAM, kterou proces použije. Pokud se překročí toto omezení; a pokud je toto nastavení true. operační systém potom budou provádět záměnu hlavní paměti na disk. |
-|IPProviderEnabled|Logická hodnota, výchozí hodnotu FALSE|Statická|Umožňuje pomocí správy IP adres. |
-|IsDefaultContainerRepositoryPasswordEncrypted|Logická hodnota, výchozí hodnotu FALSE|Statická|Určuje, zda je nebo není zašifrovaná DefaultContainerRepositoryPassword.|
-|LinuxExternalExecutablePath|řetězec, výchozí hodnota je "/ usr/bin /" |Statická|Primární adresář externí spustitelné příkazy na uzlu.|
-|NTLMAuthenticationEnabled|Logická hodnota, výchozí hodnotu FALSE|Statická| Povolí podporu pro balíčky kódu, které jsou s jiným uživatelům, aby procesy napříč počítači zabezpečeně komunikovat pomocí protokolu NTLM. |
-|NTLMAuthenticationPasswordSecret|SecureString, výchozí hodnota je Common::SecureString("")|Statická|Není že šifrované má, který se používá ke generování hesla pro uživatele, protokol NTLM. Musí být nastavena pokud NTLMAuthenticationEnabled má hodnotu true. Ověřuje modul pro nasazení. |
-|NTLMSecurityUsersByX509CommonNamesRefreshInterval|Časový interval, výchozí hodnota je Common::TimeSpan::FromMinutes(3)|Dynamické|Zadejte časový interval v sekundách. Pravidelné interval, ve které Hosting hledá nové certifikáty pro použití protokolu NTLM FileStoreService konfigurace nastavení pro konkrétní prostředí. |
-|NTLMSecurityUsersByX509CommonNamesRefreshTimeout|Časový interval, výchozí hodnota je Common::TimeSpan::FromMinutes(4)|Dynamické| Zadejte časový interval v sekundách. Pro konfiguraci protokolu NTLM uživatele, kteří používají certifikát běžných názvů vypršel časový limit. Uživatelé NTLM je třeba FileStoreService sdílené složky. |
-|PruneContainerImages|Logická hodnota, výchozí hodnotu FALSE|Dynamické| Odeberte nepoužívané aplikace Image kontejneru z uzlů. Když ApplicationType se registrace z clusteru Service Fabric, imagí kontejnerů, které byly použity touto aplikací se odeberou na uzlech, které jste stáhli Service Fabric. Vyřazení spouští každou hodinu, tak může trvat až jednu hodinu (a dobu chcete-li vyřadit bitovou kopii) pro Image má být odebrán z clusteru.<br>Service Fabric se nikdy stáhnout a odebíráním imagí není související s aplikací.  Nesouvisejících imagí, které byly staženy ručně nebo v opačném případě je nutné explicitně.<br>V parametru ContainerImagesToSkip lze bitové kopie, které se nesmí odstranit.| 
-|RegisterCodePackageHostTimeout|Časový interval, výchozí hodnota je Common::TimeSpan::FromSeconds(120)|Dynamické| Zadejte časový interval v sekundách. Hodnota časového limitu pro volání FabricRegisterCodePackageHost synchronizace. To je možné použít pouze s více kódu balíček hostitelů aplikací jako FWP |
-|RequestTimeout|Časový interval, výchozí hodnota je Common::TimeSpan::FromSeconds(30)|Dynamické| Zadejte časový interval v sekundách. To představuje časový limit pro komunikaci mezi aplikační hostitel systému a prostředků infrastruktury proces pro různé hostingové souvisejících operací jako je registrace továrny; uživatele Registrace modulu runtime. |
-|RunAsPolicyEnabled| Logická hodnota, výchozí hodnotu FALSE|Statická| Povolí spouštění balíčků kódu jako místní uživatel, než je uživatel v rámci které prostředků infrastruktury je proces spuštěn. Chcete-li povolit tyto zásady, které prostředky infrastruktury musí běžet jako systém, nebo jako uživatel, který má SeAssignPrimaryTokenPrivilege. |
-|ServiceFactoryRegistrationTimeout| Časový interval, výchozí hodnota je Common::TimeSpan::FromSeconds(120)|Dynamické|Zadejte časový interval v sekundách. Hodnota časového limitu pro synchronizaci volání ServiceFactory registr (Stateless/stavová) |
-|ServiceTypeDisableFailureThreshold |Celé číslo, výchozí je 1 |Dynamické|Toto je prahová hodnota pro počet selhání, po jejímž uplynutí je oznámena FailoverManager (převzetí služeb při selhání) zakažte typ služby v tomto uzlu a zkuste jiný uzel pro umístění. |
-|ServiceTypeDisableGraceInterval|Časový interval, výchozí hodnota je Common::TimeSpan::FromSeconds(30)|Dynamické|Zadejte časový interval v sekundách. Časový interval, po jejímž uplynutí se dají zakázat typ služby |
-|ServiceTypeRegistrationTimeout |Čas v sekundách, výchozí hodnota je 300 |Dynamické|Maximální dobu povolenou pro ServiceType zaregistrovat u prostředků infrastruktury |
-|UseContainerServiceArguments|Logická hodnota, výchozí hodnotu TRUE|Statická|Tato konfigurace říká hostování přeskočit předávání argumentů (zadané v konfiguraci ContainerServiceArguments) démona dockeru.|
+|ActivationMaxFailureCount |Celé číslo, výchozí hodnota je 10. |Dynamické|Počet neúspěšných pokusů o aktivaci systému před tím, než se zahájí |
+|ActivationMaxRetryInterval |Čas v sekundách, výchozí hodnota je 300. |Dynamické|Při každé chybě průběžné aktivace se systém znovu pokusí o aktivaci až do ActivationMaxFailureCount. ActivationMaxRetryInterval určuje časový interval čekání před opakováním při každé aktivaci. |
+|ActivationRetryBackoffInterval |Čas v sekundách, výchozí hodnota je 5. |Dynamické|Omezení rychlosti interval při každém selhání aktivace; Při každé chybě průběžné aktivace se systém znovu pokusí o aktivaci až do MaxActivationFailureCount. Interval opakování při každém pokusu je produktem selhání průběžné aktivace a interval back-v aktivace. |
+|ActivationTimeout| Časový interval, výchozí hodnota je common:: TimeSpan:: FromSeconds (180)|Dynamické| Zadejte časový interval v sekundách. Časový limit pro aktivaci aplikace; deaktivace a upgrade. |
+|ApplicationHostCloseTimeout| Časový interval, výchozí hodnota je common:: TimeSpan:: FromSeconds (120)|Dynamické| Zadejte časový interval v sekundách. Když se v automaticky aktivovaných procesech zjistí ukončení prostředků infrastruktury; FabricRuntime zavře všechny repliky v procesu hostitele (ApplicationHost) daného uživatele. Toto je časový limit pro operaci Zavřít. |
+|ContainerServiceArguments|řetězec, výchozí hodnota je "-H localhost: 2375-H npipe://"|Static|Service Fabric (SF) spravuje démona Docker (s výjimkou klientských počítačů s Windows, jako je Win10). Tato konfigurace umožňuje uživateli zadat vlastní argumenty, které by měly být předány do Docker démona při spuštění. Pokud jsou zadány vlastní argumenty, Service Fabric Nepředávat žádný jiný argument stroji Docker s výjimkou argumentu--PidFile. Proto by uživatelé neměli jako součást svých argumentů zákazníků zadávat argument--PidFile. Vlastní argumenty by taky měly zajišťovat, že démon Docker naslouchá na výchozím kanálu názvů v systému Windows (nebo v případě, že se nachází na platformě Linux v systému Linux), aby Service Fabric mohl komunikovat s ním.|
+|ContainerServiceLogFileMaxSizeInKb|int, výchozí hodnota je 32768|Static|Maximální velikost souboru protokolu generovaných kontejnery Docker.  Pouze Windows.|
+|ContainerImageDownloadTimeout|int, počet sekund, výchozí hodnota je 1200 (20 minut)|Dynamické|Počet sekund před časovým limitem stahování imagí.|
+|ContainerImagesToSkip|řetězec, názvy obrázků oddělené znakem svislé čáry, výchozí hodnota je ""|Static|Název jednoho nebo více imagí kontejneru, které by neměly být odstraněny.  Používá se s parametrem PruneContainerImages.|
+|ContainerServiceLogFileNamePrefix|řetězec, výchozí hodnota je "sfcontainerlogs"|Static|Předpona názvu souboru pro soubory protokolu generované kontejnery Docker.  Pouze Windows.|
+|ContainerServiceLogFileRetentionCount|int, výchozí hodnota je 10.|Static|Počet souborů protokolu generovaných kontejnery Docker před přepsáním souborů protokolu.  Pouze Windows.|
+|CreateFabricRuntimeTimeout|Časový interval, výchozí hodnota je common:: TimeSpan:: FromSeconds (120)|Dynamické| Zadejte časový interval v sekundách. Hodnota časového limitu pro FabricCreateRuntime volání Sync |
+|DefaultContainerRepositoryAccountName|řetězec, výchozí hodnota je ""|Static|Místo přihlašovacích údajů zadaných v souboru souboru ApplicationManifest. XML se použily výchozí přihlašovací údaje. |
+|DefaultContainerRepositoryPassword|řetězec, výchozí hodnota je ""|Static|Místo přihlašovacích údajů zadaných v souboru souboru ApplicationManifest. XML se použily výchozí přihlašovací údaje hesla.|
+|DefaultContainerRepositoryPasswordType|řetězec, výchozí hodnota je ""|Static|Pokud není prázdný řetězec, hodnota může být "Encrypted" nebo "SecretsStoreRef".|
+|DeploymentMaxFailureCount|int, výchozí hodnota je 20| Dynamické|Nasazení aplikace se bude opakovat po DeploymentMaxFailureCount dobu, než dojde k selhání nasazení této aplikace na uzlu.| 
+|DeploymentMaxRetryInterval| Časový interval, výchozí hodnota je common:: TimeSpan:: FromSeconds (3600)|Dynamické| Zadejte časový interval v sekundách. Maximální interval opakování pro nasazení Při každé nepřetržité chybě se interval opakování počítá jako min (DeploymentMaxRetryInterval; Počet nepřetržitých selhání * DeploymentRetryBackoffInterval) |
+|DeploymentRetryBackoffInterval| Časový interval, výchozí hodnota je common:: TimeSpan:: FromSeconds (10)|Dynamické|Zadejte časový interval v sekundách. Záložní interval pro selhání nasazení. Při každém selhání průběžného nasazování systém zopakuje nasazení až do MaxDeploymentFailureCount. Interval opakování je produktem selhání průběžného nasazování a interval omezení rychlosti nasazení. |
+|DisableContainers|logická hodnota, výchozí hodnota je FALSE.|Static|Konfigurace pro zákaz použití kontejnerů místo DisableContainerServiceStartOnContainerActivatorOpen, což je nepoužívané konfigurace |
+|DisableDockerRequestRetry|logická hodnota, výchozí hodnota je FALSE. |Dynamické| Ve výchozím nastavení SF komunikuje pomocí příkazu DD (Docker Dameon) s časovým limitem "DockerRequestTimeout" pro každý odeslaný požadavek HTTP. Pokud DD nereaguje v rámci tohoto časového období; SF znovu odešle požadavek, pokud stále zbývá operace na nejvyšší úrovni.  S kontejnerem HyperV; DD někdy vybere mnohem více času, aby kontejner mohl vyvolat nebo deaktivovat. V takových případech DD žádosti vyprší od SF perspektivy a SF opakuje operaci. Někdy se zdá, že přidá větší tlak na DD. Tato konfigurace umožňuje zakázat tento pokus o opakování a počkat na odpověď DD. |
+|EnableActivateNoWindow| logická hodnota, výchozí hodnota je FALSE.|Dynamické| Aktivovaný proces se vytvoří na pozadí bez konzoly. |
+|EnableContainerServiceDebugMode|logická hodnota, výchozí hodnota je TRUE.|Static|Povolí nebo zakáže protokolování kontejnerů Docker.  Pouze Windows.|
+|EnableDockerHealthCheckIntegration|logická hodnota, výchozí hodnota je TRUE.|Static|Umožňuje integraci událostí Docker HEALTHCHECK se sestavou stavu systému Service Fabric. |
+|EnableProcessDebugging|logická hodnota, výchozí hodnota je FALSE.|Dynamické| Povoluje spouštění hostitelů aplikace v rámci ladicího programu. |
+|EndpointProviderEnabled| logická hodnota, výchozí hodnota je FALSE.|Static| Umožňuje správu prostředků koncového bodu podle prostředků infrastruktury. Vyžaduje určení rozsahu portů počáteční a koncové aplikace v FabricNode. |
+|FabricContainerAppsEnabled| logická hodnota, výchozí hodnota je FALSE.|Static| |
+|FirewallPolicyEnabled|logická hodnota, výchozí hodnota je FALSE.|Static| Umožňuje otevřít porty brány firewall pro prostředky koncového bodu s explicitními porty zadanými v ServiceManifest. |
+|GetCodePackageActivationContextTimeout|Časový interval, výchozí hodnota je common:: TimeSpan:: FromSeconds (120)|Dynamické|Zadejte časový interval v sekundách. Hodnota časového limitu pro volání CodePackageActivationContext. Neplatí to pro ad hoc služby. |
+|GovernOnlyMainMemoryForProcesses|logická hodnota, výchozí hodnota je FALSE.|Static|Výchozím chováním zásad správného řízení prostředků je vložení omezení určeného v MemoryInMB na množství paměti (RAM + swap), které proces používá. Pokud je limit překročen, proces dostane výjimku OutOfMemory. Pokud je tento parametr nastaven na hodnotu true; limit se použije jenom na velikost paměti RAM, kterou bude proces používat. Pokud je tento limit překročen, a pokud je toto nastavení pravdivé; pak operační systém zahodí hlavní paměť na disk. |
+|IPProviderEnabled|logická hodnota, výchozí hodnota je FALSE.|Static|Umožňuje správu IP adres. |
+|IsDefaultContainerRepositoryPasswordEncrypted|logická hodnota, výchozí hodnota je FALSE.|Static|Určuje, zda je DefaultContainerRepositoryPassword zašifrováno.|
+|LinuxExternalExecutablePath|řetězec, výchozí hodnota je "/usr/bin/" |Static|Primární adresář externích spustitelných příkazů na uzlu.|
+|NTLMAuthenticationEnabled|logická hodnota, výchozí hodnota je FALSE.|Static| Povoluje podporu pro použití protokolu NTLM balíčky kódu, které jsou spuštěny jako jiní uživatelé, aby procesy napříč počítači mohly komunikovat bezpečně. |
+|NTLMAuthenticationPasswordSecret|SecureString, výchozí nastavení je běžné:: SecureString ("")|Static|Je šifrovaný, který slouží ke generování hesla pro uživatele protokolu NTLM. Je nutné nastavit, pokud má NTLMAuthenticationEnabled hodnotu true. Ověřil Nástroj pro nasazení. |
+|NTLMSecurityUsersByX509CommonNamesRefreshInterval|Časový interval, výchozí hodnota je common:: TimeSpan:: FromMinutes (3)|Dynamické|Zadejte časový interval v sekundách. Nastavení specifické pro prostředí – pravidelný interval, při kterém hostování vyhledává nové certifikáty, které se mají použít pro FileStoreService konfiguraci NTLM. |
+|NTLMSecurityUsersByX509CommonNamesRefreshTimeout|Časový interval, výchozí hodnota je common:: TimeSpan:: FromMinutes (4)|Dynamické| Zadejte časový interval v sekundách. Časový limit pro konfiguraci uživatelů NTLM pomocí společných názvů certifikátů. Uživatelé protokolu NTLM jsou potřeba pro sdílené složky FileStoreService. |
+|PruneContainerImages|logická hodnota, výchozí hodnota je FALSE.|Dynamické| Odebere nepoužívané image kontejneru aplikace z uzlů. Pokud je typu ApplicationType odregistrována v clusteru Service Fabric, bitové kopie kontejneru, které byly použity touto aplikací, budou odebrány na uzlech, které byly staženy pomocí Service Fabric. Vyřazování se spouští každou hodinu, takže může trvat až jednu hodinu (a navíc dobu vyřazení obrázku) pro image, které se mají z clusteru odebrat.<br>Service Fabric nikdy nebude stahovat ani odebírat obrázky, které nesouvisí s aplikací.  Nesouvisející obrázky, které byly staženy ručně nebo jinak, je nutné odebrat explicitně.<br>Obrázky, které by neměly být odstraněny, lze zadat v parametru ContainerImagesToSkip.| 
+|RegisterCodePackageHostTimeout|Časový interval, výchozí hodnota je common:: TimeSpan:: FromSeconds (120)|Dynamické| Zadejte časový interval v sekundách. Hodnota časového limitu pro FabricRegisterCodePackageHost synchronizační hovor. To platí jenom pro hostitele aplikací balíčku s více kódy, jako je FWP. |
+|RequestTimeout|Časový interval, výchozí hodnota je common:: TimeSpan:: FromSeconds (30)|Dynamické| Zadejte časový interval v sekundách. To představuje časový limit pro komunikaci mezi hostitelem aplikace uživatele a procesem prostředků infrastruktury pro různé hostující operace, jako je registrace do továrního umístění. Registrace modulu runtime. |
+|RunAsPolicyEnabled| logická hodnota, výchozí hodnota je FALSE.|Static| Povoluje spouštění balíčků kódu jako místní uživatel jiný než uživatel, pod kterým je spuštěn proces Fabric. Aby bylo možné povolit tuto zásadu Fabric, musí být spuštěná jako systém nebo uživatel, který má SeAssignPrimaryTokenPrivilege. |
+|ServiceFactoryRegistrationTimeout| Časový interval, výchozí hodnota je common:: TimeSpan:: FromSeconds (120)|Dynamické|Zadejte časový interval v sekundách. Hodnota časového limitu pro ServiceFactory volání synchronizace (stav bez stavu/stav) |
+|ServiceTypeDisableFailureThreshold |Celé číslo, výchozí hodnota je 1. |Dynamické|Toto je prahová hodnota počtu selhání, po kterém se FailoverManager (FM) upozorní na zakázání typu služby v tomto uzlu a pro umístění zkuste použít jiný uzel. |
+|ServiceTypeDisableGraceInterval|Časový interval, výchozí hodnota je common:: TimeSpan:: FromSeconds (30)|Dynamické|Zadejte časový interval v sekundách. Časový interval, po kterém může být typ služby zakázán |
+|ServiceTypeRegistrationTimeout |Čas v sekundách, výchozí hodnota je 300. |Dynamické|Maximální doba, po kterou je ServiceType zaregistrovaný do prostředků infrastruktury |
+|UseContainerServiceArguments|logická hodnota, výchozí hodnota je TRUE.|Static|Tato konfigurace oznamuje hostování, aby vynechala předávání argumentů (určených v konfiguračním ContainerServiceArguments) do Docker démon.|
 
 ## <a name="httpgateway"></a>HttpGateway
 
 | **Parametr** | **Povolené hodnoty** | **Zásady upgradu** | **Doprovodné materiály nebo krátký popis** |
 | --- | --- | --- | --- |
-|ActiveListeners |Uint, výchozí hodnota je 50 |Statická| Počet čtení k odeslání do fronty http serveru. Tato volba určuje počet souběžných požadavků, které je možné splnit HttpGateway. |
-|HttpGatewayHealthReportSendInterval |Čas v sekundách, výchozí hodnota je 30 |Statická|Zadejte časový interval v sekundách. Interval, ve kterém bránu Http odesílá nahromaděné stavu sestav nástroje Health Manager. |
-|HttpStrictTransportSecurityHeader|řetězec, výchozí hodnota je ""|Dynamické| Zadejte hodnotu hlavičky striktní zabezpečení přenosu HTTP mají být zahrnuty v každé odpovědi odeslané HttpGateway. Pokud je nastavena na prázdný řetězec. Tato hlavička nebudou zahrnuty v odpovědi brány.|
-|hodnotu isEnabled|Logická hodnota, výchozí hodnota je false |Statická| Povolí nebo zakáže HttpGateway. Ve výchozím nastavení je zakázána HttpGateway. |
-|MaxEntityBodySize |Uint, výchozí hodnota je 4194304 |Dynamické|Poskytuje maximální velikost obsahu, která se dají očekávat od požadavku http. Výchozí hodnota je 4MB. Httpgateway se požadavek nezdaří, pokud má tělo velikosti > tuto hodnotu. Velikost bloku dat minimální čtení je 4096 bajtů. Takže to musí být > = 4096. |
+|ActiveListeners |Uint, výchozí hodnota je 50 |Static| Počet operací čtení, které se mají odeslat do fronty serveru http Tento ovládací prvek řídí počet souběžných požadavků, které může HttpGateway splnit. |
+|HttpGatewayHealthReportSendInterval |Čas v sekundách, výchozí hodnota je 30. |Static|Zadejte časový interval v sekundách. Interval, ve kterém brána protokolu HTTP odesílá shromážděné zprávy o stavu správci stavu. |
+|HttpStrictTransportSecurityHeader|řetězec, výchozí hodnota je ""|Dynamické| Zadejte hodnotu hlavičky zabezpečení přenosu HTTP Strict, která se má zahrnout do každé odpovědi odeslané HttpGateway. Při nastavení na prázdný řetězec; Tato hlavička nebude obsažena v odpovědi brány.|
+|hodnotu isEnabled|Logická hodnota, výchozí hodnota je false. |Static| Povolí nebo zakáže HttpGateway. HttpGateway je ve výchozím nastavení zakázaná. |
+|MaxEntityBodySize |Uint, výchozí hodnota je 4194304 |Dynamické|Dává maximální velikost textu, který se dá očekávat od požadavku HTTP. Výchozí hodnota je 4 MB. Httpgateway selže požadavek, pokud má tělo velikosti > této hodnotě. Minimální velikost bloku pro čtení je 4096 bajtů. Proto musí být > = 4096. |
 
 ## <a name="imagestoreservice"></a>ImageStoreService
 
 | **Parametr** | **Povolené hodnoty** | **Zásady upgradu** | **Doprovodné materiály nebo krátký popis** |
 | --- | --- | --- | --- |
-|Enabled |Logická hodnota, výchozí hodnota je false |Statická|Příznak povoleno ImageStoreService. Výchozí: false |
-|MinReplicaSetSize | Int, výchozí hodnota je 3 |Statická|MinReplicaSetSize pro ImageStoreService. |
-|PlacementConstraints | řetězec, výchozí hodnota je "" |Statická| PlacementConstraints pro ImageStoreService. |
-|QuorumLossWaitDuration | Čas v sekundách, výchozí hodnota je hodnota MaxValue |Statická| Zadejte časový interval v sekundách. QuorumLossWaitDuration pro ImageStoreService. |
-|ReplicaRestartWaitDuration | Čas v sekundách, výchozí hodnota je 60.0 * 30 |Statická|Zadejte časový interval v sekundách. ReplicaRestartWaitDuration pro ImageStoreService. |
-|StandByReplicaKeepDuration | Čas v sekundách, výchozí hodnota je 3600.0 * 2 |Statická| Zadejte časový interval v sekundách. StandByReplicaKeepDuration pro ImageStoreService. |
-|TargetReplicaSetSize | Int, výchozí hodnota je 7 |Statická|TargetReplicaSetSize pro ImageStoreService. |
+|Enabled |Logická hodnota, výchozí hodnota je false. |Static|Příznak Enabled pro ImageStoreService. Výchozí: false |
+|MinReplicaSetSize | Int, výchozí hodnota je 3 |Static|MinReplicaSetSize pro ImageStoreService. |
+|PlacementConstraints | řetězec, výchozí hodnota je "" |Static| PlacementConstraints pro ImageStoreService. |
+|QuorumLossWaitDuration | Čas v sekundách, výchozí hodnota je MaxValue. |Static| Zadejte časový interval v sekundách. QuorumLossWaitDuration pro ImageStoreService. |
+|ReplicaRestartWaitDuration | Čas v sekundách, výchozí hodnota je \* 60,0 30. |Static|Zadejte časový interval v sekundách. ReplicaRestartWaitDuration pro ImageStoreService. |
+|StandByReplicaKeepDuration | Čas v sekundách, výchozí hodnota je \* 3600,0 2 |Static| Zadejte časový interval v sekundách. StandByReplicaKeepDuration pro ImageStoreService. |
+|TargetReplicaSetSize | Int, výchozí hodnota je 7 |Static|TargetReplicaSetSize pro ImageStoreService. |
 
 ## <a name="ktllogger"></a>KtlLogger
 
 | **Parametr** | **Povolené hodnoty** | **Zásady upgradu** | **Doprovodné materiály nebo krátký popis** |
 | --- | --- | --- | --- |
-|AutomaticMemoryConfiguration |int, výchozí je 1 |Dynamické|Příznak označující, pokud paměti by měla být automaticky a dynamicky konfigurovat nastavení. Pokud nula a konfiguraci nastavení paměti se používají přímo a nemění podle podmínek systému. Pokud jeden pak nastavení paměti jsou konfigurovány automaticky a může se změnit na základě systému podmínek. |
-|MaximumDestagingWriteOutstandingInKB | int, výchozí je 0 |Dynamické|Číslo KB umožňující sdílené protokol pro přechod náskok před vyhrazené protokolu. Použijte hodnotu 0 označující bez omezení.
-|SharedLogId |řetězec, výchozí hodnota je "" |Statická|Jedinečný identifikátor guid pro sdílené protokolu kontejneru. Použití "" Pokud používáte výchozí cesta pod kořen dat prostředků infrastruktury. |
-|SharedLogPath |řetězec, výchozí hodnota je "" |Statická|Cesta a název souboru do umístění, na sdílené protokolu kontejneru. Použití "" pro použití výchozí cesta pod kořen dat prostředků infrastruktury. |
-|SharedLogSizeInMB |Int, výchozí hodnota je 8192 |Statická|Počet MB k přidělení v kontejneru sdílené protokolu. |
-|SharedLogThrottleLimitInPercentUsed|int, výchozí je 0 | Statická | Procento využití sdílené protokolu, který způsobí omezení šířky pásma. Hodnota by měla být mezi 0 a 100. Hodnota 0 znamená, s výchozí hodnotou procenta. Hodnota 100 znamená, nedojde k omezování vůbec. Určuje hodnotu mezi 1 a 99 procento využití log výše, bude probíhat který omezení; Například pokud sdílené protokolu je 10GB a hodnota je 90 a omezování dojde až 9GB se používá. Doporučuje se použít výchozí hodnotu.|
-|WriteBufferMemoryPoolMaximumInKB | int, výchozí je 0 |Dynamické|Číslo KB umožňující paměti fondu vyrovnávacích pamětí zápisu rozšířit až. Použijte hodnotu 0 označující bez omezení. |
-|WriteBufferMemoryPoolMinimumInKB |Int, výchozí hodnota je 8388608 |Dynamické|Číslo KB k začátku přidělení pro fond vyrovnávací paměti zápisu. Použijte hodnotu 0 označující bez omezení, výchozí by měl být konzistentní s SharedLogSizeInMB níže. |
+|AutomaticMemoryConfiguration |Int, výchozí hodnota je 1. |Dynamické|Příznak, který označuje, jestli se má nastavení paměti automaticky a dynamicky nakonfigurovat. Pokud je nula, nastavení konfigurace paměti se používá přímo a nemění se v závislosti na systémových podmínkách. Pokud je nastavení paměti nakonfigurované automaticky a může se změnit v závislosti na systémových podmínkách. |
+|MaximumDestagingWriteOutstandingInKB | Int, výchozí hodnota je 0 |Dynamické|Počet KB, které umožní sdílenému protokolu předem vyhradit vyhrazený protokol. Hodnotu 0 použijte k označení bez omezení.
+|SharedLogId |řetězec, výchozí hodnota je "" |Static|Jedinečný identifikátor GUID pro sdílený kontejner protokolu Použijte "", pokud se používá výchozí cesta v části Fabric data root. |
+|SharedLogPath |řetězec, výchozí hodnota je "" |Static|Cesta a název souboru, kam se má umístit sdílený kontejner protokolu. Pro použití výchozí cesty v části Fabric data root použijte "". |
+|SharedLogSizeInMB |Int, výchozí hodnota je 8192 |Static|Počet MB, který se má přidělit v kontejneru sdíleného protokolu. |
+|SharedLogThrottleLimitInPercentUsed|int, výchozí hodnota je 0 | Static | Procentuální podíl využití sdíleného protokolu, který bude omezovat. Hodnota by měla být mezi 0 a 100. Hodnota 0 znamená použití výchozí procentuální hodnoty. Hodnota 100 nezahrnuje žádné omezení. Hodnota v rozsahu 1 až 99 určuje procento využití protokolu, které se omezuje; Pokud je například sdílený protokol 10 GB a hodnota je 90, po použití 9 GB dojde k omezení. Doporučuje se použít výchozí hodnotu.|
+|WriteBufferMemoryPoolMaximumInKB | Int, výchozí hodnota je 0 |Dynamické|Počet KB, který umožňuje, aby fond paměti vyrovnávací paměti pro zápis vzrostl. Hodnotu 0 použijte k označení bez omezení. |
+|WriteBufferMemoryPoolMinimumInKB |Int, výchozí hodnota je 8388608 |Dynamické|Počet KB, které se mají zpočátku přidělit fondu paměti pro vyrovnávací paměť zápisu. Hodnota 0 značí, že výchozí omezení nesmí odpovídat SharedLogSizeInMB níže. |
 
 ## <a name="management"></a>Správa
 
 | **Parametr** | **Povolené hodnoty** | **Zásady upgradu** | **Doprovodné materiály nebo krátký popis** |
 | --- | --- | --- | --- |
-|AutomaticUnprovisionInterval|Časový interval, výchozí hodnota je Common::TimeSpan::FromMinutes(5)|Dynamické|Zadejte časový interval v sekundách. Interval čištění pro povolené pro zrušte registraci typu aplikace při čištění typ Automatické aplikace.|
-|AzureStorageMaxConnections | Int, výchozí je 5 000 |Dynamické|Maximální počet souběžných připojení ke službě azure storage. |
-|AzureStorageMaxWorkerThreads | int, výchozí je 25 |Dynamické|Maximální počet pracovních vláken současně. |
-|AzureStorageOperationTimeout | Čas v sekundách, výchozí hodnota je 6000 |Dynamické|Zadejte časový interval v sekundách. Časový limit pro dokončení operace xstore. |
-|CleanupApplicationPackageOnProvisionSuccess|Logická hodnota, výchozí hodnotu FALSE |Dynamické|Povolí nebo zakáže automatické čištění balíčku aplikace v úspěšném zřízení. |
-|CleanupUnusedApplicationTypes|Logická hodnota, výchozí hodnotu FALSE |Dynamické|Tuto konfiguraci, pokud je povoleno, umožňuje automaticky zrušit registraci verze typů nepoužívané aplikace přeskočení nejnovější tři nevyužité verze, a tím ořezávání obsazena úložiště image store místo na disku. Automatické čištění se aktivuje na konci úspěšné zřízení pro daný typ konkrétní aplikace a také spouští pravidelně jednou za den pro všechny typy aplikací. Počet nepoužívaných verzí přeskočit se dá změnit pomocí parametru "MaxUnusedAppTypeVersionsToKeep". |
-|DisableChecksumValidation | Logická hodnota, výchozí hodnota je false |Statická| Tato konfigurace umožňuje povolit nebo zakázat ověření kontrolního součtu během zřizování aplikací. |
-|DisableServerSideCopy | Logická hodnota, výchozí hodnota je false |Statická|Tato konfigurace povolí nebo zakáže na straně serveru kopii balíčku aplikace na ImageStore během zřizování aplikací. |
-|ImageCachingEnabled | Logická hodnota, výchozí hodnota je true |Statická|Tato konfigurace umožňuje povolit nebo zakázat ukládání do mezipaměti. |
-|ImageStoreConnectionString |SecureString |Statická|Připojovací řetězec do kořenového adresáře pro ImageStore. |
-|ImageStoreMinimumTransferBPS | Int, výchozí hodnota je 1024 |Dynamické|Minimální přenosovou rychlost mezi clusterem a ImageStore. Tato hodnota se používá k určení časového limitu při přístupu k externí ImageStore. Tuto hodnotu změňte, pouze pokud je latence mezi clusterem a ImageStore vysokou a více času pro cluster můžete stáhnout z externí ImageStore. |
-|MaxUnusedAppTypeVersionsToKeep | Int, výchozí hodnota je 3 |Dynamické|Tato konfigurace definuje počet verze typů nepoužívané aplikace přeskočit pro vyčištění. Tento parametr platí pouze v případě, že je povolen parametr CleanupUnusedApplicationTypes. |
+|AutomaticUnprovisionInterval|Časový interval, výchozí hodnota je common:: TimeSpan:: FromMinutes (5)|Dynamické|Zadejte časový interval v sekundách. Interval čištění, který je povolen pro zrušení registrace typu aplikace během automatického čištění typu aplikace.|
+|AzureStorageMaxConnections | Int, výchozí hodnota je 5000 |Dynamické|Maximální počet souběžných připojení ke službě Azure Storage. |
+|AzureStorageMaxWorkerThreads | Int, výchozí hodnota je 25. |Dynamické|Maximální počet paralelně spuštěných pracovních vláken. |
+|AzureStorageOperationTimeout | Čas v sekundách, výchozí hodnota je 6000. |Dynamické|Zadejte časový interval v sekundách. Vypršel časový limit pro dokončení operace xstore. |
+|CleanupApplicationPackageOnProvisionSuccess|logická hodnota, výchozí hodnota je FALSE. |Dynamické|Povolí nebo zakáže automatické čištění balíčku aplikace při úspěšném zřízení. |
+|CleanupUnusedApplicationTypes|Logická hodnota, výchozí hodnota je FALSE. |Dynamické|Tato konfigurace, pokud je povolená, umožňuje automaticky odregistrovat nepoužívané verze typu aplikace, které přeskočí nejnovější tři nepoužívané verze, a tím vystřihuje místo na disku obsazené úložištěm imagí. Automatické čištění se spustí na konci úspěšného zřízení pro daný typ aplikace a také bude pravidelně spouštět jednou denně pro všechny typy aplikací. Počet nepoužívaných verzí, které se mají přeskočit, se dá konfigurovat pomocí parametru "MaxUnusedAppTypeVersionsToKeep". |
+|DisableChecksumValidation | Logická hodnota, výchozí hodnota je false. |Static| Tato konfigurace umožňuje povolit nebo zakázat ověření kontrolního součtu během zřizování aplikace. |
+|DisableServerSideCopy | Logická hodnota, výchozí hodnota je false. |Static|Tato konfigurace povolí nebo zakáže kopii balíčku aplikace na straně serveru na úložiště bitových kopií během zřizování aplikace. |
+|ImageCachingEnabled | Logická hodnota, výchozí hodnota je true. |Static|Tato konfigurace nám umožňuje povolit nebo zakázat ukládání do mezipaměti. |
+|ImageStoreConnectionString |SecureString |Static|Připojovací řetězec do kořenového adresáře pro úložiště bitových kopií. |
+|ImageStoreMinimumTransferBPS | Int, výchozí hodnota je 1024 |Dynamické|Minimální přenosová rychlost mezi clusterem a úložiště bitových kopií. Tato hodnota se používá k určení časového limitu při přístupu k externímu úložiště bitových kopií. Tuto hodnotu změňte jenom v případě, že latence mezi clusterem a úložiště bitových kopií je vysoká, aby se cluster mohl stáhnout z externího úložiště bitových kopií. |
+|MaxUnusedAppTypeVersionsToKeep | Int, výchozí hodnota je 3 |Dynamické|Tato konfigurace definuje počet nepoužitých verzí typu aplikace, které mají být vynechány pro vyčištění. Tento parametr je použitelný pouze v případě, že je povolen parametr CleanupUnusedApplicationTypes. |
 
 
 ## <a name="metricactivitythresholds"></a>MetricActivityThresholds
 | **Parametr** | **Povolené hodnoty** |**Zásady upgradu**| **Doprovodné materiály nebo krátký popis** |
 | --- | --- | --- | --- |
-|PropertyGroup|KeyIntegerValueMap, výchozí hodnota je None|Dynamické|Určuje sadu MetricActivityThresholds pro metriky v clusteru. Vyrovnávání bude fungovat, pokud je větší než MetricActivityThresholds maxNodeLoad. Pro defragmentaci metrik definuje množství zatížení stejné nebo nižší které Service Fabric bude předpokládat, že uzel prázdné |
+|PropertyGroup|KeyIntegerValueMap, výchozí hodnota je None|Dynamické|Určuje sadu MetricActivityThresholds pro metriky v clusteru. Vyrovnávání bude fungovat, pokud je maxNodeLoad větší než MetricActivityThresholds. Pro metriky Defrag definuje množství zátěže, které se rovná nebo je nižší, než Service Fabric bude brát v úvahu, že uzel je prázdný. |
 
 ## <a name="metricbalancingthresholds"></a>MetricBalancingThresholds
 | **Parametr** | **Povolené hodnoty** |**Zásady upgradu**| **Doprovodné materiály nebo krátký popis** |
 | --- | --- | --- | --- |
-|PropertyGroup|KeyDoubleValueMap, výchozí hodnota je None|Dynamické|Určuje sadu MetricBalancingThresholds pro metriky v clusteru. Vyrovnávání bude fungovat, pokud je větší než MetricBalancingThresholds maxNodeLoad/minNodeLoad. Defragmentace bude fungovat, pokud je menší než MetricBalancingThresholds maxNodeLoad/minNodeLoad v nejméně jedné FD nebo UD. |
+|PropertyGroup|KeyDoubleValueMap, výchozí hodnota je None|Dynamické|Určuje sadu MetricBalancingThresholds pro metriky v clusteru. Vyrovnávání bude fungovat, pokud je maxNodeLoad/minNodeLoad větší než MetricBalancingThresholds. Defragmentace bude fungovat, pokud je maxNodeLoad/minNodeLoad alespoň v jednom FD nebo UD menší než MetricBalancingThresholds. |
+
+## <a name="metricloadstickinessforswap"></a>MetricLoadStickinessForSwap
+| **Parametr** | **Povolené hodnoty** |**Zásady upgradu**| **Doprovodné materiály nebo krátký popis** |
+| --- | --- | --- | --- |
+|PropertyGroup|KeyDoubleValueMap, výchozí hodnota je None|Dynamické|Určuje část zatížení, která se na základě repliky používá, pokud je zaměněna hodnota mezi 0 (načtení nefunguje s replikou) a 1 (načíst hole s výchozí replikou). |
 
 ## <a name="namingservice"></a>NamingService
 
 | **Parametr** | **Povolené hodnoty** | **Zásady upgradu** | **Doprovodné materiály nebo krátký popis** |
 | --- | --- | --- | --- |
-|GatewayServiceDescriptionCacheLimit |int, výchozí je 0 |Statická|Maximální počet položek udržovat v mezipaměti popis služby LRU brána pojmenování (nastavena na hodnotu 0 pro žádné omezení). |
-|MaxClientConnections |Int, výchozí hodnota je 1000 |Dynamické|Maximální povolený počet připojení klientů na jednu bránu. |
-|MaxFileOperationTimeout |Čas v sekundách, výchozí hodnota je 30 |Dynamické|Zadejte časový interval v sekundách. Maximální časový limit povolený pro operaci služby úložiště souborů. Odmítne požadavky zadávání většího časového limitu. |
-|MaxIndexedEmptyPartitions |Int, výchozí hodnota je 1000 |Dynamické|Maximální počet prázdné oddíly, které zůstanou indexování v mezipaměti oznámení pro synchronizaci opětovné připojení klientů. Všechny prázdné oddíly vyšší než toto číslo se odebere z indexu ve vzestupném pořadí vyhledávání verze. Opětovné připojení klientů stále můžete synchronizovat a dostávat aktualizace zmeškaných prázdný oddíl. ale protokol synchronizace bude dražší. |
-|MaxMessageSize |Int, výchozí hodnota je 4\*1024\*1024 |Statická|Maximální velikost zprávy pro komunikaci s klienty uzlu při použití pojmenování. Zmírnění útoků DOS; Výchozí hodnota je 4MB. |
-|MaxNamingServiceHealthReports | Int, výchozí hodnota je 10 |Dynamické|Maximální počet pomalých operací, které ukládají pojmenování služby v jednom okamžiku sestavy není v pořádku. Pokud je 0; všechny operace pomalé se odesílají. |
-|MaxOperationTimeout |Čas v sekundách, výchozí hodnota je 600 |Dynamické|Zadejte časový interval v sekundách. Maximální časový limit pro klientské operace povolena. Odmítne požadavky zadávání většího časového limitu. |
-|MaxOutstandingNotificationsPerClient |Int, výchozí hodnota je 1000 |Dynamické|Maximální počet nezpracovaných oznámení před registrace klienta je vynuceně ukončeno brány. |
-|MinReplicaSetSize | Int, výchozí hodnota je 3 |Nepovoleno| Minimální počet replik pojmenování Service vyžadovaných k zápisu do dokončení aktualizace. Pokud jsou repliky míň než toto aktivní v systému spolehlivost systému zakazuje aktualizace Store služba pojmenování dokud repliky se obnoví. Tato hodnota by měla být nikdy víc než TargetReplicaSetSize. |
-|PartitionCount |Int, výchozí hodnota je 3 |Nepovoleno|Počet oddílů služby pojmenování úložiště vytvořit. Každý oddíl vlastní jeden klíč oddílu, který odpovídá jeho index; takže klíče oddílů [0; PartitionCount) neexistuje. Zvýšení počtu oddílů zvýšení pojmenování Service měřítka, pojmenování Service můžete provést na snížením průměrné velikosti data ukládaná společností jakákoli replika zálohování nastavte; a účtuje se cenou vyšší využití prostředků (od PartitionCount * musí být udržovány ReplicaSetSize služby repliky).|
-|PlacementConstraints | řetězec, výchozí hodnota je "" |Nepovoleno| Omezení umístění pro službu pojmenování. |
-|QuorumLossWaitDuration | Čas v sekundách, výchozí hodnota je hodnota MaxValue |Nepovoleno| Zadejte časový interval v sekundách. Při pojmenování Service dostane do ztráty kvora; Tento časovač spustí. Po jeho vypršení převzetí služeb při selhání bude vezměte v úvahu dolů repliky jako ztracené; a pokud se pokusíte obnovit kvora. Ne, která to může způsobit ztrátu dat. |
-|RepairInterval | Čas v sekundách, výchozí hodnota je 5 |Statická| Zadejte časový interval v sekundách. Interval, ve kterém se spustí pojmenování opravu nekonzistence mezi autority vlastníka a název vlastníka. |
-|ReplicaRestartWaitDuration | Čas v sekundách, výchozí hodnota je (60.0 * 30)|Nepovoleno| Zadejte časový interval v sekundách. Když se replika Naming Service ocitne mimo provoz; Tento časovač spustí. Po jeho vypršení převzetí služeb při selhání se začnou nahradit replik, které jsou mimo provoz (ji ještě je nepovažuje ztráty). |
-|ServiceDescriptionCacheLimit | int, výchozí je 0 |Statická| Maximální počet položek udržovat v mezipaměti popis služby LRU Naming Store Service (nastavena na hodnotu 0 pro žádné omezení). |
-|ServiceNotificationTimeout |Čas v sekundách, výchozí hodnota je 30 |Dynamické|Zadejte časový interval v sekundách. Časový limit při doručování oznámení služby klienta. |
-|StandByReplicaKeepDuration | Čas v sekundách, výchozí hodnota je 3600.0 * 2 |Nepovoleno| Zadejte časový interval v sekundách. Pokud replika Naming Service vrátit z dolů stavu; To může mít již bylo nahrazeno. Tento časovač Určuje, jak dlouho převzetí služeb při selhání budete mít pohotovostní repliky před budou zrušeny. |
-|TargetReplicaSetSize |Int, výchozí hodnota je 7 |Nepovoleno|Nastaví počet replik pro každý oddíl úložiště pojmenování Service. Zvýšení počtu sady replik zvyšuje úroveň spolehlivosti informace ve Store služba pojmenování; snížení změn, informace, se ztratí v důsledku selhání uzlů; za cenu zvýšení zatížení Windows Fabric a dobu trvá provádění aktualizací na pojmenování data.|
+|GatewayServiceDescriptionCacheLimit |Int, výchozí hodnota je 0 |Static|Maximální počet položek udržovaných v mezipaměti popisů služby LRU v bráně pro pojmenovávání (nastavený na 0 bez omezení). |
+|MaxClientConnections |Int, výchozí hodnota je 1000 |Dynamické|Maximální povolený počet připojení klientů na bránu. |
+|MaxFileOperationTimeout |Čas v sekundách, výchozí hodnota je 30. |Dynamické|Zadejte časový interval v sekundách. Maximální časový limit povolený pro operaci služby File Store. Požadavky, které určují větší časový limit, se odmítnou. |
+|MaxIndexedEmptyPartitions |Int, výchozí hodnota je 1000 |Dynamické|Maximální počet prázdných oddílů, které zůstanou indexované v mezipaměti oznámení pro synchronizaci klientů. Všechny prázdné oddíly nad tímto číslem budou odebrány z indexu ve vzestupném pořadí verzí vyhledávání. Opětovné připojení klientů může stále synchronizovat a přijímat chybějící prázdné aktualizace oddílů. ale synchronizační protokol se bude levnější. |
+|MaxMessageSize |Int, výchozí hodnota je\*4\*1024 1024 |Static|Maximální velikost zprávy pro komunikaci klientského uzlu při použití názvů DOS – zmírnění útoků; Výchozí hodnota je 4 MB. |
+|MaxNamingServiceHealthReports | Int, výchozí hodnota je 10. |Dynamické|Maximální počet pomalých operací, které pojmenovává nestavové operace služby Store Pokud 0; odesílají se všechny pomalé operace. |
+|MaxOperationTimeout |Čas v sekundách, výchozí hodnota je 600. |Dynamické|Zadejte časový interval v sekundách. Maximální časový limit povolený pro klientské operace. Požadavky, které určují větší časový limit, se odmítnou. |
+|MaxOutstandingNotificationsPerClient |Int, výchozí hodnota je 1000 |Dynamické|Maximální počet nevyřízených oznámení před vynuceným zavřením registrace klienta bránou. |
+|MinReplicaSetSize | Int, výchozí hodnota je 3 |Nepovolené| Minimální počet replik Naming Service potřebných k zápisu do k dokončení aktualizace. Pokud je v systému méně replik, než je aktivní, systém pro spolehlivost odmítne aktualizace služby Naming Service Store, dokud nebudou repliky obnoveny. Tato hodnota by nikdy neměla být větší než TargetReplicaSetSize. |
+|PartitionCount |Int, výchozí hodnota je 3 |Nepovolené|Počet oddílů úložiště Naming Service, které se mají vytvořit. Každý oddíl vlastní jeden klíč oddílu, který odpovídá jeho indexu. Takže klíče oddílů [0; PartitionCount] existuje. Zvýšení počtu Naming Service oddílů zvyšuje měřítko, které může Naming Service provádět na základě snížení průměrného množství dat, která uchovává jakákoli záložní sada replik. za cenu zvýšeného využití prostředků (vzhledem k tomu, že repliky služby PartitionCount * ReplicaSetSize musí být zachovány).|
+|PlacementConstraints | řetězec, výchozí hodnota je "" |Nepovolené| Omezení umístění pro Naming Service. |
+|QuorumLossWaitDuration | Čas v sekundách, výchozí hodnota je MaxValue. |Nepovolené| Zadejte časový interval v sekundách. Když se Naming Service dostane do ztráty kvora; Tento časovač se spustí. Po vypršení jeho platnosti bude FM považovat za ztracené repliky. a pokuste se o obnovení kvora. To může mít za následek ztrátu dat. |
+|RepairInterval | Čas v sekundách, výchozí hodnota je 5. |Static| Zadejte časový interval v sekundách. Interval, ve kterém se spustí oprava nekonzistence názvů mezi vlastníkem úřadu a vlastníkem jména. |
+|ReplicaRestartWaitDuration | Čas v sekundách, výchozí hodnota je (60,0 × 30)|Nepovolené| Zadejte časový interval v sekundách. Když se replika Naming Service neukončí; Tento časovač se spustí. Po vypršení platnosti FM začnou nahrazené repliky (ještě nepovažují za ztracené). |
+|ServiceDescriptionCacheLimit | Int, výchozí hodnota je 0 |Static| Maximální počet položek udržovaných v mezipaměti popisů služby LRU ve službě úložiště názvů (nastavené na 0 bez omezení). |
+|ServiceNotificationTimeout |Čas v sekundách, výchozí hodnota je 30. |Dynamické|Zadejte časový interval v sekundách. Časový limit, který se použije při doručování oznámení služby klientovi. |
+|StandByReplicaKeepDuration | Čas v sekundách, výchozí hodnota je 3600,0 × 2 |Nepovolené| Zadejte časový interval v sekundách. Když se replika Naming Service vrátí ze stavu dole; je možné, že již byla nahrazena. Tento časovač určuje, jak dlouho bude FM uchovávat pohotovostní repliku před zahozením. |
+|TargetReplicaSetSize |Int, výchozí hodnota je 7 |Nepovolené|Počet sad replik pro každý oddíl úložiště Naming Service. Zvýšení počtu sad replik zvyšuje úroveň spolehlivosti pro informace v úložišti Naming Service. snížení změny, ke kterým dojde v důsledku selhání uzlu. za cenu zvýšeného zatížení na Windows Fabric a množství času potřebného k provedení aktualizací dat pro pojmenování.|
 
 ## <a name="nodebufferpercentage"></a>NodeBufferPercentage
 | **Parametr** | **Povolené hodnoty** |**Zásady upgradu**| **Doprovodné materiály nebo krátký popis** |
 | --- | --- | --- | --- |
-|PropertyGroup|KeyDoubleValueMap, výchozí hodnota je None|Dynamické|Procento kapacity uzel za název metriky; aby bylo možné zachovat některé volné místo na uzlu pro případ převzetí služeb při selhání použít jako vyrovnávací paměť. |
+|PropertyGroup|KeyDoubleValueMap, výchozí hodnota je None|Dynamické|Procento kapacity uzlu na název metriky; používá se jako vyrovnávací paměť, aby bylo na uzlu pro případ převzetí služeb při selhání zachováno nějaké volné místo. |
 
 ## <a name="nodecapacities"></a>NodeCapacities
 
 | **Parametr** | **Povolené hodnoty** | **Zásady upgradu** | **Doprovodné materiály nebo krátký popis** |
 | --- | --- | --- | --- |
-|PropertyGroup |NodeCapacityCollectionMap |Statická|Kolekce kapacity uzlů pro různé požadované metriky. |
+|PropertyGroup |NodeCapacityCollectionMap |Static|Kolekce kapacit uzlů pro různé metriky. |
 
 ## <a name="nodedomainids"></a>NodeDomainIds
 
 | **Parametr** | **Povolené hodnoty** | **Zásady upgradu** | **Doprovodné materiály nebo krátký popis** |
 | --- | --- | --- | --- |
-|PropertyGroup |NodeFaultDomainIdCollection |Statická|Popisuje domén selhání, do které patří uzlu. Doména selhání je definován pomocí identifikátor URI, který popisuje umístění uzlu v datovém centru.  Domény selhání identifikátory URI jsou ve formátu fd: / fd/následovaný segment cesty identifikátoru URI.|
-|UpgradeDomainId |řetězec, výchozí hodnota je "" |Statická|Popisuje upgradovací doména, do které patří uzlu. |
+|PropertyGroup |NodeFaultDomainIdCollection |Static|Popisuje domény selhání, ke kterým uzel patří. Doména selhání je definována pomocí identifikátoru URI, který popisuje umístění uzlu v datovém centru.  Identifikátory URI domény selhání mají formát FD:/FD/následovaný segmentem cesty identifikátoru URI.|
+|UpgradeDomainId |řetězec, výchozí hodnota je "" |Static|Popisuje doménu upgradu, do které uzel patří. |
 
 ## <a name="nodeproperties"></a>NodeProperties
 
 | **Parametr** | **Povolené hodnoty** | **Zásady upgradu** | **Doprovodné materiály nebo krátký popis** |
 | --- | --- | --- | --- |
-|PropertyGroup |NodePropertyCollectionMap |Statická|Kolekce párů klíč hodnota řetězce pro vlastnosti uzlu. |
+|PropertyGroup |NodePropertyCollectionMap |Static|Kolekce párů klíč-hodnota řetězce pro vlastnosti uzlu. |
 
-## <a name="paas"></a>Paas
+## <a name="paas"></a>PaaS
 
 | **Parametr** | **Povolené hodnoty** | **Zásady upgradu** | **Doprovodné materiály nebo krátký popis** |
 | --- | --- | --- | --- |
-|ClusterId |řetězec, výchozí hodnota je "" |Nepovoleno|X509 certifikátu úložiště používané konvencemi prostředků infrastruktury pro ochranu konfigurace. |
+|ClusterId |řetězec, výchozí hodnota je "" |Nepovolené|Úložiště certifikátů x509 používané prostředky infrastruktury pro ochranu konfigurací. |
 
 ## <a name="performancecounterlocalstore"></a>PerformanceCounterLocalStore
 
 | **Parametr** | **Povolené hodnoty** | **Zásady upgradu** | **Doprovodné materiály nebo krátký popis** |
 | --- | --- | --- | --- |
-|Čítače |String | Dynamické |Čárkami oddělený seznam čítačů výkonu k získání. |
-|hodnotu isEnabled |Logická hodnota, výchozí hodnota je true | Dynamické |Příznak určuje, zda je povoleno shromažďování čítačů výkonu na místní uzel wsfc. |
-|MaxCounterBinaryFileSizeInMB |int, výchozí je 1 | Dynamické |Maximální velikost (v MB) pro každý soubor binární čítače výkonu. |
-|NewCounterBinaryFileCreationIntervalInMinutes |Int, výchozí hodnota je 10 | Dynamické |Maximální interval (v sekundách) po kterém se vytvoří nový soubor binární čítače výkonu. |
-|SamplingIntervalInSeconds |Int, výchozí hodnota je 60 | Dynamické |Interval vzorkování pro shromažďování čítačů výkonu. |
+|Èítaèù |Řetězec | Dynamické |Čárkami oddělený seznam čítačů výkonu ke shromáždění. |
+|hodnotu isEnabled |Logická hodnota, výchozí hodnota je true. | Dynamické |Příznak označuje, zda je povolena kolekce čítačů výkonu v místním uzlu. |
+|MaxCounterBinaryFileSizeInMB |Int, výchozí hodnota je 1. | Dynamické |Maximální velikost (v MB) pro každý binární soubor čítače výkonu. |
+|NewCounterBinaryFileCreationIntervalInMinutes |Int, výchozí hodnota je 10. | Dynamické |Maximální interval (v sekundách), po kterém se vytvoří nový binární soubor čítače výkonu. |
+|SamplingIntervalInSeconds |Int, výchozí hodnota je 60 | Dynamické |Interval vzorkování pro shromažďované čítače výkonu. |
 
 ## <a name="placementandloadbalancing"></a>PlacementAndLoadBalancing
 
 | **Parametr** | **Povolené hodnoty** | **Zásady upgradu** | **Doprovodné materiály nebo krátký popis** |
 | --- | --- | --- | --- |
-|AffinityConstraintPriority | int, výchozí je 0 | Dynamické|Určuje prioritu omezení vztahů: 0: Hard; 1: Obnovitelné; záporná: Ignorujte. |
-|ApplicationCapacityConstraintPriority | int, výchozí je 0 | Dynamické|Určuje prioritu omezení kapacity: 0: Hard; 1: Obnovitelné; záporná: Ignorujte. |
-|AutoDetectAvailableResources|Logická hodnota, výchozí hodnotu TRUE|Statická|Tato konfigurace aktivuje Automatická detekce dostupné prostředky na uzel (procesoru a paměti) když tato konfigurace je nastaveno na true – budeme číst skutečné kapacity a opravte je, pokud uživatel zadaný špatný uzel kapacity nebo nebyl jejich definování vůbec tato konfigurace je nastavený na hodnotu false - budeme  upozornění, že tento uživatel zadaný špatný uzel kapacity; trasování ale nebudeme opravovat. To znamená, tento uživatel chce mít kapacity, zadaný jako > než ve skutečnosti má uzel nebo pokud nejsou definovány; kapacity bude předpokládat, neomezenou kapacitu |
-|BalancingDelayAfterNewNode | Čas v sekundách, výchozí hodnota je 120 |Dynamické|Zadejte časový interval v sekundách. Nespouštějte vyrovnávání aktivit během tohoto období po přidání nového uzlu. |
-|BalancingDelayAfterNodeDown | Čas v sekundách, výchozí hodnota je 120 |Dynamické|Zadejte časový interval v sekundách. Nespouštějte vyrovnávání aktivit během tohoto období po uzel událost vypnutí. |
-|CapacityConstraintPriority | int, výchozí je 0 | Dynamické|Určuje prioritu omezení kapacity: 0: Hard; 1: Obnovitelné; záporná: Ignorujte. |
-|ConsecutiveDroppedMovementsHealthReportLimit | Int, výchozí hodnota je 20 | Dynamické|Definuje počet po sobě jdoucích pokusů vydané ResourceBalancer pohybů plb typu jsou odstraněna dříve, než jsou prováděny diagnostiky a jsou emitovány upozornění stavu. Záporná: Žádná varování, protože ho za těchto podmínek. |
-|ConstraintFixPartialDelayAfterNewNode | Čas v sekundách, výchozí hodnota je 120 |Dynamické| Zadejte časový interval v sekundách. DDo FaultDomain opravit a narušení omezení UpgradeDomain během tohoto období po přidání nového uzlu. |
-|ConstraintFixPartialDelayAfterNodeDown | Čas v sekundách, výchozí hodnota je 120 |Dynamické| Zadejte časový interval v sekundách. To není narušení omezení FaultDomain opravit a UpgradeDomain během tohoto období po uzel událost vypnutí. |
-|ConstraintViolationHealthReportLimit | Int, výchozí hodnota je 50 |Dynamické| Definuje počet pokusů, které bychom při tom porušili repliky omezení musí být trvale laťky předtím, než jsou prováděny diagnostiky a jsou emitovány sestav stravu. |
-|DetailedConstraintViolationHealthReportLimit | Int, výchozí hodnota je 200 |Dynamické| Definuje počet pokusů, které bychom při tom porušili repliky omezení musí být trvale laťky před Diagnostika se provádí a podrobných stavu, které jsou emitovány sestavy. |
-|DetailedDiagnosticsInfoListLimit | int, výchozí je 15 |Dynamické| Definuje počtem diagnostických záznamů (s podrobnými informacemi) za omezení, které zahrnují před zkrácením v diagnostice.|
-|DetailedNodeListLimit | int, výchozí je 15 |Dynamické| Definuje počet uzlů na omezení, které zahrnují před zkrácením v sestavách Unplaced repliky. |
-|DetailedPartitionListLimit | int, výchozí je 15 |Dynamické| Definuje počet oddílů na diagnostických položku pro omezení, které zahrnují před zkrácením v diagnostice. |
-|DetailedVerboseHealthReportLimit | Int, výchozí hodnota je 200 | Dynamické|Definuje počet pokusů, které unplaced replika musí být trvale unplaced předtím, než jsou emitovány stavu podrobné sestavy. |
-|FaultDomainConstraintPriority | int, výchozí je 0 |Dynamické| Určuje prioritu omezení domény selhání: 0: Hard; 1: Obnovitelné; záporná: Ignorujte. |
-|GlobalMovementThrottleCountingInterval | Čas v sekundách, výchozí hodnota je 600 |Statická| Zadejte časový interval v sekundách. Označuje délku posledních interval, pro které chcete sledovat jednotlivé domény repliky pohybu (používá se společně s GlobalMovementThrottleThreshold). Můžete nastavit na hodnotu 0 ignorovat, globální omezení úplně se vynechá. |
-|GlobalMovementThrottleThreshold | Uint, výchozí hodnota je 1000 |Dynamické| Maximální počet pohybů plb typu ve fázi vyrovnávání v posledních interval indikován GlobalMovementThrottleCountingInterval povoleny. |
-|GlobalMovementThrottleThresholdForBalancing | Uint, výchozí hodnota je 0 | Dynamické|Maximální počet pohybů plb typu ve fázi vyrovnávání v posledních interval indikován GlobalMovementThrottleCountingInterval povoleny. Hodnota 0 znamená bez omezení. |
-|GlobalMovementThrottleThresholdForPlacement | Uint, výchozí hodnota je 0 |Dynamické| Maximální počet pohybů plb typu povolené ve fázi umístění v posledních intervalu indikován GlobalMovementThrottleCountingInterval.0 znamená bez omezení.|
-|GlobalMovementThrottleThresholdPercentage|Double výchozí hodnota je 0|Dynamické|Maximální počet celkový počet pohybů plb typu v posledních interval indikován GlobalMovementThrottleCountingInterval povolena ve fázích vyrovnávání a umístění (vyjádřený jako procentní podíl celkového počtu replik v clusteru). Hodnota 0 znamená bez omezení. Pokud tato a jsou uvedeny GlobalMovementThrottleThreshold; použije konzervativnější limit.|
-|GlobalMovementThrottleThresholdPercentageForBalancing|Double výchozí hodnota je 0|Dynamické|Maximální počet pohybů plb typu v posledních interval indikován GlobalMovementThrottleCountingInterval povolena ve fázi vyrovnávání (vyjádřený jako procentní podíl celkového počtu replik v PLB). Hodnota 0 znamená bez omezení. Pokud tato a jsou uvedeny GlobalMovementThrottleThresholdForBalancing; použije konzervativnější limit.|
-|InBuildThrottlingAssociatedMetric | řetězec, výchozí hodnota je "" |Statická| Přidružený název metriky pro toto omezení. |
-|InBuildThrottlingEnabled | Logická hodnota, výchozí hodnota je false |Dynamické| Určení, zda je povoleno omezení v sestavení. |
-|InBuildThrottlingGlobalMaxValue | int, výchozí je 0 |Dynamické|Maximální počet replik ve sestavení povoleno globálně. |
-|InterruptBalancingForAllFailoverUnitUpdates | Logická hodnota, výchozí hodnota je false | Dynamické|Určuje, zda by měl jakýkoli druh aktualizace jednotek převzetí služeb při selhání přerušení rychlé nebo pomalé vyrovnávání spustit. Pomocí zadané "false" vyrovnávání spuštění se odešle, pokud FailoverUnit: vytvoření/odstranění; Chybí repliky; změnit umístění primární repliku nebo změněných počet replik. Vyrovnávání spuštění není, přeruší se v ostatních případech – Pokud FailoverUnit: má navíc replik; změnit všechny repliky příznaky; změnit pouze verze oddílu nebo všechny ostatní případy. |
-|MinConstraintCheckInterval | Čas v sekundách, výchozí hodnota je 1 |Dynamické| Zadejte časový interval v sekundách. Definuje minimální množství času, které musí uplynout, než dvěma po sobě jdoucích omezení zkontrolujte Zaokrouhlí číslo. |
-|MinLoadBalancingInterval | Čas v sekundách, výchozí hodnota je 5 |Dynamické| Zadejte časový interval v sekundách. Definuje minimální množství času, které musí uplynout před dvě po sobě jdoucích vyrovnávání kola. |
-|MinPlacementInterval | Čas v sekundách, výchozí hodnota je 1 |Dynamické| Zadejte časový interval v sekundách. Definuje minimální množství času, která musí uplynout před zaokrouhlí dvě po sobě jdoucích umístění. |
-|MoveExistingReplicaForPlacement | Logická hodnota, výchozí hodnota je true |Dynamické|Nastavení, která určuje, pokud chcete přesunout existující repliku během umísťování. |
-|MovementPerPartitionThrottleCountingInterval | Čas v sekundách, výchozí hodnota je 600 |Statická| Zadejte časový interval v sekundách. Označuje délku posledních interval, pro které chcete sledovat pohybů plb typu replik pro každý oddíl (používá se společně s MovementPerPartitionThrottleThreshold). |
-|MovementPerPartitionThrottleThreshold | Uint, výchozí hodnota je 50 |Dynamické| Žádné související s vyrovnávání přesun dojde pro oddíl, pokud má dosáhli nebo Přesáhli jste MovementPerFailoverUnitThrottleThreshold v posledních intervalu udávají počet vyrovnávání související pohybů plb typu pro repliky daného oddílu MovementPerPartitionThrottleCountingInterval. |
-|MoveParentToFixAffinityViolation | Logická hodnota, výchozí hodnota je false |Dynamické| Nastavení, která určuje, zda lze přesunout nadřazené repliky opravit omezení spřažení.|
-|PartiallyPlaceServices | Logická hodnota, výchozí hodnota je true |Dynamické| Určuje, pokud všechny repliky služby v clusteru budou umístěny "všechno nebo nic" daný omezený vhodný uzly pro ně.|
-|PlaceChildWithoutParent | Logická hodnota, výchozí hodnota je true | Dynamické|Nastavení, která určuje, zda podřízené služby repliky mohou být umístěny, pokud žádná nadřazená replika je v provozu. |
-|PlacementConstraintPriority | int, výchozí je 0 | Dynamické|Určuje prioritu omezení umístění: 0: Hard; 1: Obnovitelné; záporná: Ignorujte. |
-|PlacementConstraintValidationCacheSize | Int, výchozí hodnota je 10000 |Dynamické| Omezuje velikost tabulky použitý pro rychlé ověření a ukládání do mezipaměti výrazů omezení umístění. |
-|PlacementSearchTimeout | Čas v sekundách, výchozí hodnota je 0,5 |Dynamické| Zadejte časový interval v sekundách. Při umístění služeb; Vyhledejte maximálně této doby před vrácením výsledku. |
-|PLBRefreshGap | Čas v sekundách, výchozí hodnota je 1 |Dynamické| Zadejte časový interval v sekundách. Definuje minimální množství času, které musí uplynout, než PLB aktualizuje stav znovu. |
-|PreferredLocationConstraintPriority | Int, výchozí hodnota je 2| Dynamické|Určuje prioritu omezení upřednostňované umístění: 0: Hard; 1: Obnovitelné; 2: Optimalizace; záporná: Ignorovat |
-|PreferUpgradedUDs|Logická hodnota, výchozí hodnotu TRUE|Dynamické|Zapne zapnutí a vypnutí logiku, která dává přednost Přesun do už upgradovali aktualizačními doménami.|
-|PreventTransientOvercommit | Logická hodnota, výchozí hodnota je false | Dynamické|Určuje, by měl PLB okamžitě Spolehněte se na prostředky, které se uvolní přesune spuštěné. Ve výchozím nastavení; Přesun navýšení kapacity můžete inicializovat PLB a přesunutí najdete v na stejném uzlu, což může způsobit přechodné přetížit. Nastavení tohoto parametru na hodnotu true, nebude moct tyto typy z overcommits a na vyžádání defragmentace (neboli placementWithMove) bude zakázán. |
-|ScaleoutCountConstraintPriority | int, výchozí je 0 |Dynamické| Určuje prioritu omezení počtu horizontálním navýšením kapacity: 0: Hard; 1: Obnovitelné; záporná: Ignorujte. |
-|SwapPrimaryThrottlingAssociatedMetric | řetězec, výchozí hodnota je ""|Statická| Přidružený název metriky pro toto omezení. |
-|SwapPrimaryThrottlingEnabled | Logická hodnota, výchozí hodnota je false|Dynamické| Určení, zda je povoleno omezení primárních prohození. |
-|SwapPrimaryThrottlingGlobalMaxValue | int, výchozí je 0 |Dynamické| Maximální počet replik primárních prohození povoleno globálně. |
-|TraceCRMReasons |Logická hodnota, výchozí hodnota je true |Dynamické|Určuje, zda chcete trasovat důvodů, proč CRM pohybů plb typu vydat provozní události kanálu. |
-|UpgradeDomainConstraintPriority | int, výchozí je 1| Dynamické|Určuje prioritu omezení domény upgradu: 0: Hard; 1: Obnovitelné; záporná: Ignorujte. |
-|UseMoveCostReports | Logická hodnota, výchozí hodnota je false | Dynamické|Dává pokyn LB ignorovat elementu náklady na funkci bodování; Výsledný potenciálně velkého počtu přesun lépe vyvážené umístění. |
-|UseSeparateSecondaryLoad | Logická hodnota, výchozí hodnota je true | Dynamické|Nastavení, která určuje, zda použít jiné sekundární zatížení. |
-|ValidatePlacementConstraint | Logická hodnota, výchozí hodnota je true |Dynamické| Určuje, zda se při aktualizaci služby ServiceDescription ověří PlacementConstraint výraz pro službu. |
-|VerboseHealthReportLimit | Int, výchozí hodnota je 20 | Dynamické|Definuje počet pokusů, které replika musí projít unplaced před stavu upozornění je hlášeno pro něj (Pokud je povoleno oznamování podrobný stav). |
+|AffinityConstraintPriority | Int, výchozí hodnota je 0 | Dynamické|Určuje prioritu omezení spřažení: 0: Hard; 1: Pohyblivý příznivé Ohled. |
+|ApplicationCapacityConstraintPriority | Int, výchozí hodnota je 0 | Dynamické|Určuje prioritu omezení kapacity: 0: Hard; 1: Pohyblivý příznivé Ohled. |
+|AutoDetectAvailableResources|logická hodnota, výchozí hodnota je TRUE.|Static|Tato konfigurace aktivuje automatické zjišťování dostupných prostředků v uzlu (procesor a paměť), pokud je tato konfigurace nastavená na hodnotu true. Pokud uživatel zadal chybné kapacity uzlů nebo pokud je tato konfigurace nastavená na false, načtou se reálné kapacity a opraví se.  trasovat upozornění, že uživatel zadal chybné kapacity uzlu; ale nebudeme je opravovat. To znamená, že uživatel chce mít zadané kapacity jako >, než má uzel skutečně má, nebo pokud nejsou definovány kapacity; bude předpokládat neomezenou kapacitu. |
+|BalancingDelayAfterNewNode | Čas v sekundách, výchozí hodnota je 120. |Dynamické|Zadejte časový interval v sekundách. Po přidání nového uzlu nespouštějte vyrovnávání aktivit v tomto období. |
+|BalancingDelayAfterNodeDown | Čas v sekundách, výchozí hodnota je 120. |Dynamické|Zadejte časový interval v sekundách. Nepovolujte vyvážení aktivit v rámci této doby po událostech uzlu. |
+|CapacityConstraintPriority | Int, výchozí hodnota je 0 | Dynamické|Určuje prioritu omezení kapacity: 0: Hard; 1: Pohyblivý příznivé Ohled. |
+|ConsecutiveDroppedMovementsHealthReportLimit | Int, výchozí hodnota je 20 | Dynamické|Definuje počet po sobě jdoucích pohybů vydaných ResourceBalancer před provedením diagnostiky a vygenerování upozornění na stav. Příznivé Za touto podmínkou nejsou vygenerována žádná upozornění. |
+|ConstraintFixPartialDelayAfterNewNode | Čas v sekundách, výchozí hodnota je 120. |Dynamické| Zadejte časový interval v sekundách. Po přidání nového uzlu DDo v tomto období neopravit FaultDomain a porušení omezení UpgradeDomain. |
+|ConstraintFixPartialDelayAfterNodeDown | Čas v sekundách, výchozí hodnota je 120. |Dynamické| Zadejte časový interval v sekundách. Neopravujte porušení omezení FaultDomain a UpgradeDomain v rámci této doby za událostí uzlu. |
+|ConstraintViolationHealthReportLimit | Int, výchozí hodnota je 50 |Dynamické| Definuje počet porušujících omezení repliky musí být před provedením diagnostiky trvale neopravené a budou vygenerovány sestavy o stavu. |
+|DetailedConstraintViolationHealthReportLimit | Int, výchozí hodnota je 200 |Dynamické| Definuje počet porušujících omezení repliky musí být před provedením diagnostiky trvale neopravené a budou vygenerovány podrobné sestavy o stavu. |
+|DetailedDiagnosticsInfoListLimit | Int, výchozí hodnota je 15. |Dynamické| Definuje počet diagnostických položek (s podrobnými informacemi) na omezení, které chcete zahrnout před zkrácením diagnostiky.|
+|DetailedNodeListLimit | Int, výchozí hodnota je 15. |Dynamické| Definuje počet uzlů na omezení, které mají být zahrnuty před zkrácením v sestavách neumístěných replik. |
+|DetailedPartitionListLimit | Int, výchozí hodnota je 15. |Dynamické| Definuje počet oddílů na položku diagnostiky pro omezení, které chcete zahrnout před zkrácením diagnostiky. |
+|DetailedVerboseHealthReportLimit | Int, výchozí hodnota je 200 | Dynamické|Definuje počet, kolikrát musí být Neumístěná replika trvale Neumístěná před vygenerováním podrobných sestav o stavu. |
+|EnforceUserServiceMetricCapacities|logická hodnota, výchozí hodnota je FALSE. | Static |Povoluje ochranu služeb prostředků infrastruktury. všechny uživatelské služby jsou v rámci jednoho objektu úlohy/CGROUP a omezují se na zadané množství prostředků. Toto musí být statické (vyžaduje restart hostitele fabrichost vrátilo) jako vytvoření nebo odebrání objektu uživatelské úlohy a nastavení omezení provedeného během otevírání. Hostitel infrastruktury |
+|FaultDomainConstraintPriority | Int, výchozí hodnota je 0 |Dynamické| Určuje prioritu omezení domény selhání: 0: Hard; 1: Pohyblivý příznivé Ohled. |
+|GlobalMovementThrottleCountingInterval | Čas v sekundách, výchozí hodnota je 600. |Static| Zadejte časový interval v sekundách. Uveďte délku minulého intervalu, pro který se má sledovat pohyb repliky domény (používá se společně s GlobalMovementThrottleThreshold). Můžete nastavit na 0, aby bylo globální omezení zcela ignorováno. |
+|GlobalMovementThrottleThreshold | Uint, výchozí hodnota je 1000 |Dynamické| Maximální počet pohybů povolený ve fázi vyrovnávání v minulém intervalu, který ukazuje GlobalMovementThrottleCountingInterval. |
+|GlobalMovementThrottleThresholdForBalancing | Uint, výchozí hodnota je 0 | Dynamické|Maximální počet pohybů povolený ve fázi vyrovnávání v minulém intervalu, který ukazuje GlobalMovementThrottleCountingInterval. 0 označuje bez omezení. |
+|GlobalMovementThrottleThresholdForPlacement | Uint, výchozí hodnota je 0 |Dynamické| Maximální počet pohybů povolený ve fázi umístění v minulém intervalu uvedeném GlobalMovementThrottleCountingInterval. 0 znamená bez omezení.|
+|GlobalMovementThrottleThresholdPercentage|Double, výchozí hodnota je 0.|Dynamické|Maximální počet povolených přesunů v rámci fází vyrovnávání a umístění (vyjádřený jako procento celkového počtu replik v clusteru) v minulém intervalu určeném hodnotou GlobalMovementThrottleCountingInterval 0 označuje bez omezení. Pokud je zadána tato i GlobalMovementThrottleThreshold; pak se použije větší konzervativní limit.|
+|GlobalMovementThrottleThresholdPercentageForBalancing|Double, výchozí hodnota je 0.|Dynamické|Maximální počet pohybů povolený ve fázi vyrovnání (vyjádřený jako procento celkového počtu replik v PLB) v minulém intervalu, který je určen GlobalMovementThrottleCountingInterval. 0 označuje bez omezení. Pokud je zadána tato i GlobalMovementThrottleThresholdForBalancing; pak se použije větší konzervativní limit.|
+|InBuildThrottlingAssociatedMetric | řetězec, výchozí hodnota je "" |Static| Název přidružené metriky pro toto omezení |
+|InBuildThrottlingEnabled | Logická hodnota, výchozí hodnota je false. |Dynamické| Určete, zda je povoleno omezení v rámci sestavení. |
+|InBuildThrottlingGlobalMaxValue | Int, výchozí hodnota je 0 |Dynamické|Maximální počet replik v rámci sestavení povolených globálně. |
+|InterruptBalancingForAllFailoverUnitUpdates | Logická hodnota, výchozí hodnota je false. | Dynamické|Určuje, jestli má nějaký typ aktualizace jednotky převzetí služeb při selhání přerušit rychlé nebo pomalé vyrovnávání zatížení. Při vytvoření nebo odstranění zadaného příkazu pro vyrovnávání zatížení bude přerušena hodnota FailoverUnit: chybí repliky. změnili jste umístění primární repliky nebo změnili počet replik. Vyrovnávání zatížení nebude přerušeno v jiných případech – Pokud FailoverUnit: má nadbytečné repliky; změnili jste příznak libovolné repliky; změnila se pouze verze oddílu nebo jakýkoli jiný případ. |
+|MinConstraintCheckInterval | Čas v sekundách, výchozí hodnota je 1. |Dynamické| Zadejte časový interval v sekundách. Definuje minimální dobu, která musí uplynout před tím, než se dvě po sobě jdoucí kontrolní omezení zaokrouhlí. |
+|MinLoadBalancingInterval | Čas v sekundách, výchozí hodnota je 5. |Dynamické| Zadejte časový interval v sekundách. Definuje minimální dobu, která musí uplynout před tím, než se zaokrouhlí dvě po sobě jdoucí vyrovnávání. |
+|MinPlacementInterval | Čas v sekundách, výchozí hodnota je 1. |Dynamické| Zadejte časový interval v sekundách. Definuje minimální dobu, která musí uplynout před dvěma po sobě jdoucími umístěními. |
+|MoveExistingReplicaForPlacement | Logická hodnota, výchozí hodnota je true. |Dynamické|Nastavení, které určuje, zda se má během umísťování přesunout existující replika. |
+|MovementPerPartitionThrottleCountingInterval | Čas v sekundách, výchozí hodnota je 600. |Static| Zadejte časový interval v sekundách. Označuje délku minulého intervalu, pro který se má sledovat pohyb repliky pro každý oddíl (používá se společně s MovementPerPartitionThrottleThreshold). |
+|MovementPerPartitionThrottleThreshold | Uint, výchozí hodnota je 50 |Dynamické| Pro oddíl se neobjeví žádný pohyb související s vyrovnáváním, pokud počet ovlivněných pohybů pro repliky tohoto oddílu dosáhl nebo překročil MovementPerFailoverUnitThrottleThreshold v minulém intervalu označeném MovementPerPartitionThrottleCountingInterval. |
+|MoveParentToFixAffinityViolation | Logická hodnota, výchozí hodnota je false. |Dynamické| Nastavení, které určuje, jestli je možné přesunout nadřazené repliky a opravit omezení spřažení.|
+|PartiallyPlaceServices | Logická hodnota, výchozí hodnota je true. |Dynamické| Určuje, zda budou všechny repliky služby v clusteru umístěny na hodnotu "vše" nebo "nic", na které jsou přiděleny omezené vhodné uzly.|
+|PlaceChildWithoutParent | Logická hodnota, výchozí hodnota je true. | Dynamické|Nastavení, které určuje, zda lze repliku podřízené služby umístit, pokud není nastavena žádná nadřazená replika. |
+|PlacementConstraintPriority | Int, výchozí hodnota je 0 | Dynamické|Určuje prioritu omezení umístění: 0: Hard; 1: Pohyblivý příznivé Ohled. |
+|PlacementConstraintValidationCacheSize | Int, výchozí hodnota je 10000 |Dynamické| Omezuje velikost tabulky používané pro rychlé ověřování a ukládání výrazů omezení umístění do mezipaměti. |
+|PlacementSearchTimeout | Čas v sekundách, výchozí hodnota je 0,5. |Dynamické| Zadejte časový interval v sekundách. Při umísťování služeb; předtím, než vrátíte výsledek, hledejte na příliš dlouhou dobu. |
+|PLBRefreshGap | Čas v sekundách, výchozí hodnota je 1. |Dynamické| Zadejte časový interval v sekundách. Definuje minimální dobu, která musí uplynout před tím, než PLB obnoví stav. |
+|PreferredLocationConstraintPriority | Int, výchozí hodnota je 2| Dynamické|Určuje prioritu upřednostňovaného omezení umístění: 0: Hard; 1: Pohyblivý 2: Vybrané příznivé Ignorovat |
+|PreferUpgradedUDs|logická hodnota, výchozí hodnota je TRUE.|Dynamické|Zapne a vypne logiku, která preferuje přesun na již upgradovanou UDs.|
+|PreventTransientOvercommit | Logická hodnota, výchozí hodnota je false. | Dynamické|Určuje, že se má PLB okamžitě počítat s prostředky, které budou uvolněny pomocí iniciované přesunutí. Ve výchozím nastavení. PLB může iniciovat přesun a přesunout se na stejný uzel, který může vytvořit přechodný přepisování. Nastavením tohoto parametru na hodnotu true zabráníte tomu, aby se tyto typy nadtvrzování a příkazu defrag na vyžádání (neboli placementWithMove) zakázaly. |
+|ScaleoutCountConstraintPriority | Int, výchozí hodnota je 0 |Dynamické| Určuje prioritu omezení počtu navýšení kapacity: 0: Hard; 1: Pohyblivý příznivé Ohled. |
+|SwapPrimaryThrottlingAssociatedMetric | řetězec, výchozí hodnota je ""|Static| Název přidružené metriky pro toto omezení |
+|SwapPrimaryThrottlingEnabled | Logická hodnota, výchozí hodnota je false.|Dynamické| Určete, zda je povoleno omezení swap-Primary. |
+|SwapPrimaryThrottlingGlobalMaxValue | Int, výchozí hodnota je 0 |Dynamické| Maximální počet přehozených primárních replik je povolen globálně. |
+|TraceCRMReasons |Logická hodnota, výchozí hodnota je true. |Dynamické|Určuje, jestli se mají sledovat důvody pro pohyby vydaných aplikací CRM do kanálu provozních událostí. |
+|UpgradeDomainConstraintPriority | Int, výchozí hodnota je 1.| Dynamické|Určuje prioritu omezení domény upgradu: 0: Hard; 1: Pohyblivý příznivé Ohled. |
+|UseMoveCostReports | Logická hodnota, výchozí hodnota je false. | Dynamické|Dá pokyn k ignorování nákladového prvku funkce bodování. Výsledkem je potenciálně velký počet přesunů pro lepší vyvážené umístění. |
+|UseSeparateSecondaryLoad | Logická hodnota, výchozí hodnota je true. | Dynamické|Nastavení, které určuje, zda se používá jiné sekundární zatížení. |
+|ValidatePlacementConstraint | Logická hodnota, výchozí hodnota je true. |Dynamické| Určuje, jestli se má PlacementConstraint výraz pro službu ověřit, když se aktualizuje ServiceDescription služby. |
+|ValidatePrimaryPlacementConstraintOnPromote| Logická hodnota, výchozí hodnota je TRUE. |Dynamické|Určuje, jestli se má pro převzetí služeb při selhání vyhodnotit výraz PlacementConstraint pro službu pro primární preference. |
+|VerboseHealthReportLimit | Int, výchozí hodnota je 20 | Dynamické|Definuje počet, kolikrát musí být replika Neumístěná předtím, než se pro ni nahlásí upozornění na stav (Pokud je zapnuté podrobné hlášení stavu). |
 
 ## <a name="reconfigurationagent"></a>ReconfigurationAgent
 
 | **Parametr** | **Povolené hodnoty** | **Zásady upgradu** | **Doprovodné materiály nebo krátký popis** |
 | --- | --- | --- | --- |
-|ApplicationUpgradeMaxReplicaCloseDuration | Čas v sekundách, výchozí hodnota je 900 |Dynamické|Zadejte časový interval v sekundách. Doba trvání pro kterou systém počká, než se ukončuje Obsluha hostitelů, které mají repliky, který se zablokuje a v zavřete během upgradu aplikace.|
-|FabricUpgradeMaxReplicaCloseDuration | Čas v sekundách, výchozí hodnota je 900 |Dynamické| Zadejte časový interval v sekundách. Doba trvání pro kterou systém počká, než se ukončuje Obsluha hostitelů, které mají repliky, který se zablokuje a v zavřete během upgradu prostředků infrastruktury. |
-|GracefulReplicaShutdownMaxDuration|Časový interval, výchozí hodnota je Common::TimeSpan::FromSeconds(120)|Dynamické|Zadejte časový interval v sekundách. Doba trvání pro kterou systém počká, než se ukončuje Obsluha hostitelů, které mají repliky, který se zablokuje a v zavřete. Pokud tato hodnota nastavena na hodnotu 0, nebudou se repliky pokyny, zavřete.|
-|NodeDeactivationMaxReplicaCloseDuration | Čas v sekundách, výchozí hodnota je 900 |Dynamické|Zadejte časový interval v sekundách. Doba trvání pro kterou systém počká, než se ukončuje Obsluha hostitelů, které mají repliky, který se zablokuje a v zavřete během deaktivace uzlu. |
-|PeriodicApiSlowTraceInterval | Čas v sekundách, výchozí hodnota je 5 minut |Dynamické| Zadejte časový interval v sekundách. PeriodicApiSlowTraceInterval definuje interval, přes který bude pomalé volání rozhraní API překreslována monitorování rozhraní API. |
-|ReplicaChangeRoleFailureRestartThreshold|Int, výchozí hodnota je 10|Dynamické| Celé číslo. Zadejte počet neúspěšných rozhraní API během primární povýšení, po které se použijí automaticky zmírňující opatření (repliky restartování). |
-|ReplicaChangeRoleFailureWarningReportThreshold|int, výchozí je 2147483647.|Dynamické| Celé číslo. Zadejte počet neúspěšných rozhraní API během primární povýšení, po jejímž uplynutí bude vydána upozornění sestava stavu.|
-|ServiceApiHealthDuration | Čas v sekundách, výchozí hodnota je 30 minut |Dynamické| Zadejte časový interval v sekundách. ServiceApiHealthDuration definuje, jak dlouho do jsme čekat pro rozhraní API služby běžet, než jsme nahlaste to není v pořádku. |
-|ServiceReconfigurationApiHealthDuration | Čas v sekundách, výchozí hodnota je 30 |Dynamické| Zadejte časový interval v sekundách. ServiceReconfigurationApiHealthDuration definuje, jak dlouho do jsme čekat pro rozhraní API služby běžet, než vytvoříme sestavy není v pořádku. To platí pro volání rozhraní API, které ovlivňují dostupnost.|
+|ApplicationUpgradeMaxReplicaCloseDuration | Čas v sekundách, výchozí hodnota je 900. |Dynamické|Zadejte časový interval v sekundách. Doba, po kterou systém počká, než se ukončí hostitelé služby s replikami, které jsou zablokované v ukončení během upgradu aplikace.|
+|FabricUpgradeMaxReplicaCloseDuration | Čas v sekundách, výchozí hodnota je 900. |Dynamické| Zadejte časový interval v sekundách. Doba, po kterou systém počká, než se ukončí hostitelé služby s replikami, které jsou zablokované během upgradu prostředků infrastruktury v blízkosti. |
+|GracefulReplicaShutdownMaxDuration|Časový interval, výchozí hodnota je common:: TimeSpan:: FromSeconds (120)|Dynamické|Zadejte časový interval v sekundách. Doba, po kterou systém počká, než se ukončí hostitelé služby s replikami, které jsou zablokované v Zavřít. Pokud je tato hodnota nastavená na 0, repliky se nedají pokyn zavřít.|
+|NodeDeactivationMaxReplicaCloseDuration | Čas v sekundách, výchozí hodnota je 900. |Dynamické|Zadejte časový interval v sekundách. Doba, po kterou systém počká, než se ukončí hostitelé služby s replikami, které jsou zablokované v zavření během deaktivace uzlu. |
+|PeriodicApiSlowTraceInterval | Čas v sekundách, výchozí hodnota je 5 minut. |Dynamické| Zadejte časový interval v sekundách. PeriodicApiSlowTraceInterval definuje interval, za který se budou přesledovat pomalá volání rozhraní API monitorováním rozhraní API. |
+|ReplicaChangeRoleFailureRestartThreshold|int, výchozí hodnota je 10.|Dynamické| Čísla. Zadejte počet selhání rozhraní API při primární promoakci, po kterém se použije akce automatického zmírnění (restart repliky). |
+|ReplicaChangeRoleFailureWarningReportThreshold|int, výchozí hodnota je 2147483647|Dynamické| Čísla. Zadejte počet selhání rozhraní API při primární promoakci, po kterém bude vyvolána zpráva o stavu upozornění.|
+|ServiceApiHealthDuration | Čas v sekundách, výchozí hodnota je 30 minut. |Dynamické| Zadejte časový interval v sekundách. ServiceApiHealthDuration definuje, jak dlouho čekáme na spuštění rozhraní API služby předtím, než pošleme zprávu, že není v pořádku. |
+|ServiceReconfigurationApiHealthDuration | Čas v sekundách, výchozí hodnota je 30. |Dynamické| Zadejte časový interval v sekundách. ServiceReconfigurationApiHealthDuration definuje, jak dlouho čekáme na spuštění rozhraní API služby předtím, než nahlásíme, že není v pořádku. To platí pro volání rozhraní API, která mají vliv na dostupnost.|
 
 ## <a name="replication"></a>Replikace
 | **Parametr** | **Povolené hodnoty** | **Zásady upgradu**| **Doprovodné materiály nebo krátký popis** |
 | --- | --- | --- | --- |
-|BatchAcknowledgementInterval|Časový interval, výchozí hodnota je Common::TimeSpan::FromMilliseconds(15)|Statická|Zadejte časový interval v sekundách. Určuje množství času, které Replikátor čeká po přijetí operace před odesláním zpět na potvrzení. Další operace přijatých během tohoto období budou mít jejich potvrzení odeslaných zpět do jedné zprávy -> snížení síťový provoz, ale potenciálně snížení propustnosti replikátoru.|
-|MaxCopyQueueSize|uint, výchozí je 1024|Statická|Toto je maximální hodnota definuje počáteční velikost fronty, který udržuje operací replikace. Všimněte si, že musí být mocninou čísla 2. Pokud za běhu zvětšuje, aby tato operace velikost fronty se omezí mezi primárním a sekundárním replikátorů.|
-|MaxPrimaryReplicationQueueMemorySize|Uint, výchozí hodnota je 0|Statická|To je maximální hodnota primární replikace fronty v bajtech.|
-|MaxPrimaryReplicationQueueSize|uint, výchozí je 1024|Statická|Toto je maximální počet operací, které může existovat ve frontě primární replikace. Všimněte si, že musí být mocninou čísla 2.|
-|MaxReplicationMessageSize|uint, výchozí je 52428800|Statická|Maximální velikost zprávy operací replikace. Výchozí hodnota je 50MB.|
-|MaxSecondaryReplicationQueueMemorySize|Uint, výchozí hodnota je 0|Statická|To je maximální hodnota fronty sekundární replikace v bajtech.|
-|MaxSecondaryReplicationQueueSize|uint, výchozí je 2048|Statická|Toto je maximální počet operací, které může existovat ve frontě replikací sekundární. Všimněte si, že musí být mocninou čísla 2.|
-|QueueHealthMonitoringInterval|Časový interval, výchozí hodnota je Common::TimeSpan::FromSeconds(30)|Statická|Zadejte časový interval v sekundách. Tato hodnota určuje časové období, které Replikátor používá ke sledování žádné události stavu upozornění nebo chyby ve frontách operace replikace. Hodnota '0' vypne sledování stavu |
-|QueueHealthWarningAtUsagePercent|uint, výchozí je 80|Statická|Tato hodnota určuje využití fronty replikací (v procentech), po jejímž uplynutí vytvoříme upozornění sestavy o využití vysoké fronty. To uděláme za dobu odkladu o QueueHealthMonitoringInterval. Pokud využití fronty klesne pod tuto procentuální hodnotu v intervalu odkladu|
-|ReplicatorAddress|řetězec, výchozí je "localhost:0"|Statická|Koncový bod v podobě řetězce-"IP: port" který používá Replikátor Windows Fabric pro navázání připojení s ostatními replikami k posílání a přijímání operace.|
-|ReplicatorListenAddress|řetězec, výchozí je "localhost:0"|Statická|Koncový bod v podobě řetězce-"IP: port" který používá Replikátor Windows Fabric přijímat operace z jiné repliky.|
-|ReplicatorPublishAddress|řetězec, výchozí je "localhost:0"|Statická|Koncový bod v podobě řetězce-"IP: port" sloužící k odesílání operace do jiné repliky, které Replikátor Windows Fabric.|
-|RetryInterval|Časový interval, výchozí hodnota je Common::TimeSpan::FromSeconds(5)|Statická|Zadejte časový interval v sekundách. Při operaci, dojde ke ztrátě nebo odmítl tento časovač Určuje, jak často bude Replikátor opakovat operaci odeslání.|
+|BatchAcknowledgementInterval|Časový interval, výchozí hodnota je common:: TimeSpan:: FromMilliseconds (15)|Static|Zadejte časový interval v sekundách. Určuje dobu, po kterou Replikátor po přijetí operace počká, než pošle zpět potvrzení. Jiné operace přijaté během tohoto časového období budou mít potvrzení, které se vrátí v rámci jedné zprávy – > snižují síťový provoz, ale můžou snížit propustnost replikátoru.|
+|MaxCopyQueueSize|uint, výchozí hodnota je 1024|Static|Toto je maximální hodnota definující počáteční velikost fronty, která udržuje operace replikace. Všimněte si, že musí být mocninou 2. Pokud během běhu bude fronta růst s touto operací velikosti, bude omezena mezi primárními a sekundárními replikami.|
+|MaxPrimaryReplicationQueueMemorySize|uint, výchozí hodnota je 0|Static|Toto je maximální hodnota primární fronty replikace v bajtech.|
+|MaxPrimaryReplicationQueueSize|uint, výchozí hodnota je 1024|Static|Toto je maximální počet operací, které mohou existovat ve frontě primární replikace. Všimněte si, že musí být mocninou 2.|
+|MaxReplicationMessageSize|uint, výchozí hodnota je 52428800|Static|Maximální velikost zprávy operací replikace. Výchozí hodnota je 50 MB.|
+|MaxSecondaryReplicationQueueMemorySize|uint, výchozí hodnota je 0|Static|Toto je maximální hodnota fronty sekundární replikace v bajtech.|
+|MaxSecondaryReplicationQueueSize|uint, výchozí hodnota je 2048|Static|Toto je maximální počet operací, které mohou existovat v sekundární frontě replikace. Všimněte si, že musí být mocninou 2.|
+|QueueHealthMonitoringInterval|Časový interval, výchozí hodnota je common:: TimeSpan:: FromSeconds (30)|Static|Zadejte časový interval v sekundách. Tato hodnota určuje časové období, které Replikátor využíval k monitorování všech událostí stavu upozornění/chyby ve frontách operací replikace. Hodnota 0 zakáže sledování stavu. |
+|QueueHealthWarningAtUsagePercent|uint, výchozí hodnota je 80|Static|Tato hodnota určuje využití fronty replikace (v procentech) po tom, co oznamuje upozornění na vysoké využití fronty. Provedeme to po uplynutí časového limitu QueueHealthMonitoringInterval. Pokud využití fronty v intervalu odkladu klesne pod toto procento,|
+|ReplicatorAddress|řetězec, výchozí hodnota je "localhost: 0"|Static|Koncový bod ve formě řetězce "IP: port", který používá Replikátor Windows Fabric k navázání připojení k ostatním replikám za účelem odesílání/přijímání operací.|
+|ReplicatorListenAddress|řetězec, výchozí hodnota je "localhost: 0"|Static|Koncový bod ve formě řetězce "IP: port", který používá Replikátor Windows Fabric k přijímání operací z jiných replik.|
+|ReplicatorPublishAddress|řetězec, výchozí hodnota je "localhost: 0"|Static|Koncový bod ve formě řetězce "IP: port", který používá Replikátor Windows Fabric k odesílání operací do jiných replik.|
+|RetryInterval|Časový interval, výchozí hodnota je common:: TimeSpan:: FromSeconds (5)|Static|Zadejte časový interval v sekundách. Když dojde ke ztrátě nebo zamítnutí operace, určíte, jak často se Replikátor bude pokoušet odeslat operaci.|
 
 ## <a name="resourcemonitorservice"></a>ResourceMonitorService
 | **Parametr** | **Povolené hodnoty** | **Zásady upgradu**| **Doprovodné materiály nebo krátký popis** |
 | --- | --- | --- | --- |
-|hodnotu isEnabled|Logická hodnota, výchozí hodnotu FALSE |Statická|Určuje, zda je služba zapnutá v clusteru nebo ne. |
+|hodnotu isEnabled|logická hodnota, výchozí hodnota je FALSE. |Static|Řídí, jestli je služba v clusteru povolená, nebo ne. |
 
 ## <a name="runas"></a>RunAs
 
 | **Parametr** | **Povolené hodnoty** | **Zásady upgradu** | **Doprovodné materiály nebo krátký popis** |
 | --- | --- | --- | --- |
-|RunAsAccountName |řetězec, výchozí hodnota je "" |Dynamické|Určuje název účtu RunAs. To je potřeba jenom pro účet "DomainUser" nebo "ManagedServiceAccount" typu. Platné hodnoty jsou "doména\uživatel" nebo "user@domain". |
-|RunAsAccountType|řetězec, výchozí hodnota je "" |Dynamické|Určuje typ účtu spustit jako. To je potřeba pro všechny RunAs části platné hodnoty jsou "Uživatele DomainUser nebo NetworkService/ManagedServiceAccount/LocalSystem".|
-|RunAsPassword|řetězec, výchozí hodnota je "" |Dynamické|Určuje heslo k účtu RunAs. To je potřeba jenom pro typ účtu "uživatele DomainUser". |
+|RunAsAccountName |řetězec, výchozí hodnota je "" |Dynamické|Označuje název účtu RunAs. To je potřeba jenom pro typ účtu "DomainUser" nebo "ManagedServiceAccount". Platné hodnoty jsou "doména \ uživatel"user@domainnebo "". |
+|RunAsAccountType|řetězec, výchozí hodnota je "" |Dynamické|Označuje typ účtu RunAs. To je potřeba pro všechny platné hodnoty oddílu RunAs jsou "DomainUser/NetworkService/ManagedServiceAccount/LocalSystem".|
+|RunAsPassword|řetězec, výchozí hodnota je "" |Dynamické|Označuje heslo účtu RunAs. To je potřeba jenom pro typ účtu "DomainUser". |
 
 ## <a name="runasdca"></a>RunAs_DCA
 
 | **Parametr** | **Povolené hodnoty** | **Zásady upgradu** | **Doprovodné materiály nebo krátký popis** |
 | --- | --- | --- | --- |
-|RunAsAccountName |řetězec, výchozí hodnota je "" |Dynamické|Určuje název účtu RunAs. To je potřeba jenom pro účet "DomainUser" nebo "ManagedServiceAccount" typu. Platné hodnoty jsou "doména\uživatel" nebo "user@domain". |
-|RunAsAccountType|řetězec, výchozí hodnota je "" |Dynamické|Určuje typ účtu spustit jako. To je potřeba pro všechny RunAs části platné hodnoty jsou "LocalUser/uživatele DomainUser nebo NetworkService/ManagedServiceAccount/LocalSystem". |
-|RunAsPassword|řetězec, výchozí hodnota je "" |Dynamické|Určuje heslo k účtu RunAs. To je potřeba jenom pro typ účtu "uživatele DomainUser". |
+|RunAsAccountName |řetězec, výchozí hodnota je "" |Dynamické|Označuje název účtu RunAs. To je potřeba jenom pro typ účtu "DomainUser" nebo "ManagedServiceAccount". Platné hodnoty jsou "doména \ uživatel"user@domainnebo "". |
+|RunAsAccountType|řetězec, výchozí hodnota je "" |Dynamické|Označuje typ účtu RunAs. To je potřeba pro všechny platné hodnoty oddílu RunAs jsou "LocalUser/DomainUser/NetworkService/ManagedServiceAccount/LocalSystem". |
+|RunAsPassword|řetězec, výchozí hodnota je "" |Dynamické|Označuje heslo účtu RunAs. To je potřeba jenom pro typ účtu "DomainUser". |
 
 ## <a name="runasfabric"></a>RunAs_Fabric
 
 | **Parametr** | **Povolené hodnoty** | **Zásady upgradu** | **Doprovodné materiály nebo krátký popis** |
 | --- | --- | --- | --- |
-|RunAsAccountName |řetězec, výchozí hodnota je "" |Dynamické|Určuje název účtu RunAs. To je potřeba jenom pro účet "DomainUser" nebo "ManagedServiceAccount" typu. Platné hodnoty jsou "doména\uživatel" nebo "user@domain". |
-|RunAsAccountType|řetězec, výchozí hodnota je "" |Dynamické|Určuje typ účtu spustit jako. To je potřeba pro všechny RunAs části platné hodnoty jsou "LocalUser/uživatele DomainUser nebo NetworkService/ManagedServiceAccount/LocalSystem". |
-|RunAsPassword|řetězec, výchozí hodnota je "" |Dynamické|Určuje heslo k účtu RunAs. To je potřeba jenom pro typ účtu "uživatele DomainUser". |
+|RunAsAccountName |řetězec, výchozí hodnota je "" |Dynamické|Označuje název účtu RunAs. To je potřeba jenom pro typ účtu "DomainUser" nebo "ManagedServiceAccount". Platné hodnoty jsou "doména \ uživatel"user@domainnebo "". |
+|RunAsAccountType|řetězec, výchozí hodnota je "" |Dynamické|Označuje typ účtu RunAs. To je potřeba pro všechny platné hodnoty oddílu RunAs jsou "LocalUser/DomainUser/NetworkService/ManagedServiceAccount/LocalSystem". |
+|RunAsPassword|řetězec, výchozí hodnota je "" |Dynamické|Označuje heslo účtu RunAs. To je potřeba jenom pro typ účtu "DomainUser". |
 
 ## <a name="runashttpgateway"></a>RunAs_HttpGateway
 
 | **Parametr** | **Povolené hodnoty** | **Zásady upgradu** | **Doprovodné materiály nebo krátký popis** |
 | --- | --- | --- | --- |
-|RunAsAccountName |řetězec, výchozí hodnota je "" |Dynamické|Určuje název účtu RunAs. To je potřeba jenom pro účet "DomainUser" nebo "ManagedServiceAccount" typu. Platné hodnoty jsou "doména\uživatel" nebo "user@domain". |
-|RunAsAccountType|řetězec, výchozí hodnota je "" |Dynamické|Určuje typ účtu spustit jako. To je potřeba pro všechny RunAs části platné hodnoty jsou "LocalUser/uživatele DomainUser nebo NetworkService/ManagedServiceAccount/LocalSystem". |
-|RunAsPassword|řetězec, výchozí hodnota je "" |Dynamické|Určuje heslo k účtu RunAs. To je potřeba jenom pro typ účtu "uživatele DomainUser". |
+|RunAsAccountName |řetězec, výchozí hodnota je "" |Dynamické|Označuje název účtu RunAs. To je potřeba jenom pro typ účtu "DomainUser" nebo "ManagedServiceAccount". Platné hodnoty jsou "doména \ uživatel"user@domainnebo "". |
+|RunAsAccountType|řetězec, výchozí hodnota je "" |Dynamické|Označuje typ účtu RunAs. To je potřeba pro všechny platné hodnoty oddílu RunAs jsou "LocalUser/DomainUser/NetworkService/ManagedServiceAccount/LocalSystem". |
+|RunAsPassword|řetězec, výchozí hodnota je "" |Dynamické|Označuje heslo účtu RunAs. To je potřeba jenom pro typ účtu "DomainUser". |
 
 ## <a name="security"></a>Zabezpečení
 | **Parametr** | **Povolené hodnoty** |**Zásady upgradu**| **Doprovodné materiály nebo krátký popis** |
 | --- | --- | --- | --- |
-|AADCertEndpointFormat|řetězec, výchozí hodnota je ""|Statická|AAD Cert formát koncového bodu, výchozí Azure Commercial zadané pro jiné než výchozí prostředí, jako je například Azure Government "https:\//login.microsoftonline.us/{0}/federationmetadata/2007-06/federationmetadata.xml" |
-|AADClientApplication|řetězec, výchozí hodnota je ""|Statická|Název nativní klientské aplikace nebo Identifikátor představující Fabric klientů |
-|AADClusterApplication|řetězec, výchozí hodnota je ""|Statická|Název aplikace webového rozhraní API nebo Identifikátor představující clusteru |
-|AADLoginEndpoint|řetězec, výchozí hodnota je ""|Statická|AAD koncový bod přihlašovacího účtu, výchozí Azure Commercial zadané pro jiné než výchozí prostředí, jako je například Azure Government "https:\//login.microsoftonline.us" |
-|AADTenantId|řetězec, výchozí hodnota je ""|Statická|ID tenanta (GUID) |
-|AdminClientCertThumbprints|řetězec, výchozí hodnota je ""|Dynamické|Kryptografické otisky certifikátů používaných klienty v roli správce. Je seznam čárkami oddělených názvů. |
-|AADTokenEndpointFormat|řetězec, výchozí hodnota je ""|Statická|AAD koncový bod tokenu, výchozí Azure Commercial zadané pro jiné než výchozí prostředí, jako je například Azure Government "https:\//login.microsoftonline.us/{0}" |
-|AdminClientClaims|řetězec, výchozí hodnota je ""|Dynamické|Všechny možné deklarací, od správce klientů; stejný formát jako ClientClaims; Tento seznam interně přidá do ClientClaims; proto není potřeba přidat také stejné položky ClientClaims. |
-|AdminClientIdentities|řetězec, výchozí hodnota je ""|Dynamické|Identity Windows fabric klientů v roli správce použít k autorizaci fabric privilegované operace. Je čárkami oddělený seznam; Každá položka je název účtu domény nebo název skupiny. Pro usnadnění práce; účet, který spouští fabric.exe se automaticky přiřadí role správce; Proto je seskupit ServiceFabricAdministrators. |
-|AppRunAsAccountGroupX509Folder|řetězec, výchozí je /home/sfuser/sfusercerts |Statická|Složky, ve kterém jsou uložené AppRunAsAccountGroup X509 certifikátů a privátních klíčů |
-|CertificateExpirySafetyMargin|Časový interval, výchozí hodnota je Common::TimeSpan::FromMinutes(43200)|Statická|Zadejte časový interval v sekundách. Bezpečný přístup z více rozpětí pro vypršení platnosti certifikátu; Sestava Stav certifikátu změní z OK upozornění při vypršení platnosti je blíže než to. Výchozí hodnota je 30 dní. |
-|CertificateHealthReportingInterval|Časový interval, výchozí hodnota je Common::TimeSpan::FromSeconds(3600 * 8)|Statická|Zadejte časový interval v sekundách. Zadejte interval pro vykazování stavu certifikátu; výchozí na 8 hodin; nastavení na hodnotu 0 zakazuje generování sestav stavu certifikátu |
-|ClientCertThumbprints|řetězec, výchozí hodnota je ""|Dynamické|Kryptografické otisky certifikátů používaných klienty komunikovat s clusteru; cluster používá toto povolit příchozí připojení. Je seznam čárkami oddělených názvů. |
-|ClientClaimAuthEnabled|Logická hodnota, výchozí hodnotu FALSE|Statická|Označuje, pokud je povoleno ověřování na základě deklarace identity na klientských počítačích; Pokud typ nastavíte hodnotu true implicitně nastaví ClientRoleEnabled. |
-|ClientClaims|řetězec, výchozí hodnota je ""|Dynamické|Všechny možné deklarace identity pro připojování k bráně očekává od klientů. Toto je seznam 'OR': ClaimsEntry \| \| ClaimsEntry \| \| ClaimsEntry... každý ClaimsEntry je seznam "A": Typ ClaimType = ClaimValue & & Typ ClaimType = ClaimValue & & Typ ClaimType = ClaimValue... |
-|ClientIdentities|řetězec, výchozí hodnota je ""|Dynamické|Windows identity FabricClient; pojmenování brána používá toto povolit příchozí připojení. Je čárkami oddělený seznam; Každá položka je název účtu domény nebo název skupiny. Pro usnadnění práce; účet, který spouští fabric.exe je automaticky povolen; Proto jsou skupině ServiceFabricAllowedUsers a ServiceFabricAdministrators. |
-|ClientRoleEnabled|Logická hodnota, výchozí hodnotu FALSE|Statická|Určuje, zda je povolena klientská role; Pokud je nastavena na hodnotu true; Klienti se přiřadí role na základě jejich identit. Pro V2; Umožňuje to znamená, že klient není v AdminClientCommonNames/AdminClientIdentities může být vykonávána pouze operace určené jen pro čtení. |
-|ClusterCertThumbprints|řetězec, výchozí hodnota je ""|Dynamické|Kryptografické otisky certifikátů, moct připojit ke clusteru; seznam čárkami oddělených názvů. |
-|ClusterCredentialType|řetězec, výchozí je "None"|Nepovoleno|Určuje typ zabezpečovací přihlašovací údaje pro použití za účelem zabezpečení clusteru. Platné hodnoty jsou "None/X509/Windows" |
-|ClusterIdentities|řetězec, výchozí hodnota je ""|Dynamické|Identity Windows uzlů clusteru; používá pro autorizaci členství v clusteru. Je čárkami oddělený seznam; Každá položka je název účtu domény nebo název skupiny |
-|ClusterSpn|řetězec, výchozí hodnota je ""|Nepovoleno|Hlavní název služby clusteru; Když fabric funguje jako jednu doménu uživatele (uživatelský účet gMSA a domény). Je název SPN naslouchacích procesů zapůjčení a moduly pro naslouchání v fabric.exe: federační naslouchacích procesů; naslouchací procesy interní replikace; naslouchací proces služby modulu runtime a pojmenování naslouchací proces brány. To by měla zůstat prázdná při fabric funguje jako účty počítače; v takovém případě připojení na straně služby compute naslouchací proces hlavního názvu služby z naslouchacího procesu přenosu adresy. |
-|CrlCheckingFlag|uint, výchozí je 0x40000000|Dynamické|Výchozí příznak ověření řetězu certifikátu; může být přepsána specifické komponenty příznak; například Federation/X509CertChainFlags 0x10000000 CERT_CHAIN_REVOCATION_CHECK_END_CERT 0x20000000 CERT_CHAIN_REVOCATION_CHECK_CHAIN 0x40000000 CERT_CHAIN_REVOCATION_CHECK_CHAIN_EXCLUDE_ROOT 0x80000000 CERT_CHAIN_REVOCATION_CHECK_CACHE_ Podle dwFlags CertGetCertificateChain je uvedeno pouze nastavení 0 zakáže seznamu CRL kontrola, zda úplný seznam podporovaných hodnot: https://msdn.microsoft.com/library/windows/desktop/aa376078(v=vs.85).aspx |
-|CrlDisablePeriod|Časový interval, výchozí hodnota je Common::TimeSpan::FromMinutes(15)|Dynamické|Zadejte časový interval v sekundách. Jak dlouho kontrola CRL je zakázaná pro daný certifikát po zjištění chyby offline; Pokud seznam CRL offline chybu můžete ignorovat. |
-|CrlOfflineHealthReportTtl|Časový interval, výchozí hodnota je Common::TimeSpan::FromMinutes(1440)|Dynamické|Zadejte časový interval v sekundách. |
-|DisableFirewallRuleForDomainProfile| Logická hodnota, výchozí hodnotu TRUE |Statická| Označuje, pokud by nemělo být povoleno pravidlo brány firewall pro profil domény |
-|DisableFirewallRuleForPrivateProfile| Logická hodnota, výchozí hodnotu TRUE |Statická| Označuje, pokud by nemělo být povoleno pravidlo brány firewall pro privátní profil | 
-|DisableFirewallRuleForPublicProfile| Logická hodnota, výchozí hodnotu TRUE | Statická|Označuje, pokud by nemělo být povoleno pravidlo brány firewall pro veřejný profil |
-|FabricHostSpn| řetězec, výchozí hodnota je "" |Statická| Hlavní název služby z hostitele FabricHost; Když fabric funguje jako jednu doménu uživatele (uživatelský účet gMSA a domény) a hostitele FabricHost běží pod účtem počítače. Je název SPN IPC naslouchacího procesu pro hostitele FabricHost; která ve výchozím nastavení by měla zůstat prázdná od hostitele FabricHost běží pod účtem počítače |
-|IgnoreCrlOfflineError|Logická hodnota, výchozí hodnotu FALSE|Dynamické|Jestli se do seznamu odvolaných certifikátů offline chybu ignorovat, když ověří příchozí klientské certifikáty na straně serveru |
-|IgnoreSvrCrlOfflineError|Logická hodnota, výchozí hodnotu TRUE|Dynamické|Jestli se do seznamu odvolaných certifikátů offline chybu ignorovat, když na straně klienta ověří příchozí certifikáty serveru; Výchozí nastavení na hodnotu true. Útoky s využitím certifikátů odvolaný serveru vyžadovat porušení zabezpečení DNS. obtížnější než s odvolané klientské certifikáty. |
-|ServerAuthCredentialType|řetězec, výchozí je "None"|Statická|Určuje typ pověření zabezpečení má použít k zabezpečení komunikace mezi FabricClient a clusteru. Platné hodnoty jsou "None/X509/Windows" |
-|ServerCertThumbprints|řetězec, výchozí hodnota je ""|Dynamické|Kryptografické otisky certifikátů serveru používaného clusterem ke komunikaci s klienty používají klienti k ověření clusteru. Je seznam čárkami oddělených názvů. |
-|SettingsX509StoreName| řetězec, výchozí je "MY"| Dynamické|X509 úložiště používané prostředky infrastruktury pro ochranu konfigurace certifikátů |
-|UseClusterCertForIpcServerTlsSecurity|Logická hodnota, výchozí hodnotu FALSE|Statická|Jestli se má použít certifikát clusteru k zabezpečení IPC Server TLS přenosu jednotek |
-|X509Folder|řetězec, výchozí je /var/lib/waagent|Statická|Složka kde X509 certifikátů a privátních klíčů jsou umístěné |
+|AADCertEndpointFormat|řetězec, výchozí hodnota je ""|Static|Formát koncového bodu certifikátu AAD, výchozí komerční Azure, určený pro jiné než výchozí prostředí, například Azure Government "\/https:{0}/Login.microsoftonline.us//federationmetadata/2007-06/federationmetadata.XML" |
+|AADClientApplication|řetězec, výchozí hodnota je ""|Static|Název nebo ID nativní klientské aplikace představující klienty topologie Fabric |
+|AADClusterApplication|řetězec, výchozí hodnota je ""|Static|Název nebo ID aplikace webového rozhraní API představující cluster |
+|AADLoginEndpoint|řetězec, výchozí hodnota je ""|Static|Koncový bod přihlášení AAD, výchozí komerční Azure, zadaný pro jiné než výchozí prostředí, například Azure Government "https\/:/login.microsoftonline.us" |
+|AADTenantId|řetězec, výchozí hodnota je ""|Static|ID tenanta (GUID) |
+|AdminClientCertThumbprints|řetězec, výchozí hodnota je ""|Dynamické|Kryptografické otisky certifikátů používaných klienty v roli správce Je to seznam názvů oddělených čárkami. |
+|AADTokenEndpointFormat|řetězec, výchozí hodnota je ""|Static|Koncový bod tokenu AAD, výchozí komerční Azure, zadaný pro jiné než výchozí prostředí, například Azure Government "\/https:{0}/Login.microsoftonline.us/" |
+|AdminClientClaims|řetězec, výchozí hodnota je ""|Dynamické|Od klientů pro správu jsou očekávány všechny možné deklarace identity. stejný formát jako ClientClaims; v tomto seznamu se interně přidají do ClientClaims; Proto není nutné přidávat stejné položky do ClientClaims. |
+|AdminClientIdentities|řetězec, výchozí hodnota je ""|Dynamické|Identity klientů prostředků infrastruktury Windows v roli správce; slouží k autorizaci privilegovaných operací prostředků infrastruktury. Je to seznam oddělený čárkami. Každá položka je název účtu domény nebo název skupiny. Pro pohodlí; k účtu, který spouští Fabric. exe, se automaticky přiřadí role správce. Takže je skupina ServiceFabricAdministrators. |
+|AppRunAsAccountGroupX509Folder|řetězec, výchozí hodnota je/Home/sfuser/sfusercerts |Static|Složka, ve které se nachází certifikáty AppRunAsAccountGroup x509 a soukromé klíče |
+|CertificateExpirySafetyMargin|Časový interval, výchozí hodnota je common:: TimeSpan:: FromMinutes (43200)|Static|Zadejte časový interval v sekundách. Bezpečnostní okraj pro vypršení platnosti certifikátu; Zpráva o stavu certifikátu se změní z OK na varování, pokud je vypršení platnosti menší než toto. Výchozí hodnota je 30 dní. |
+|CertificateHealthReportingInterval|Časový interval, výchozí hodnota je common:: TimeSpan:: FromSeconds (3600 * 8)|Static|Zadejte časový interval v sekundách. Zadejte interval pro vytváření sestav stavu certifikátů; Výchozí hodnota je 8 hodin; nastavením na hodnotu 0 zakážete vytváření sestav stavu certifikátů. |
+|ClientCertThumbprints|řetězec, výchozí hodnota je ""|Dynamické|Kryptografické otisky certifikátů používaných klienty ke komunikaci s clusterem; cluster používá toto autorizaci příchozího připojení. Je to seznam názvů oddělených čárkami. |
+|ClientClaimAuthEnabled|logická hodnota, výchozí hodnota je FALSE.|Static|Určuje, zda je na klientech povoleno ověřování na základě deklarace identity. nastavení této hodnoty true implicitně nastaví ClientRoleEnabled. |
+|ClientClaims|řetězec, výchozí hodnota je ""|Dynamické|Od klientů se pro připojení k bráně očekávají všechny možné deklarace identity. Toto je seznam nebo: ClaimsEntry \| \| ClaimsEntry ClaimsEntry\|... \| Každý ClaimsEntry je seznam a: ClaimType = ClaimValue & & ClaimType = ClaimValue & & ClaimType = ClaimValue... |
+|ClientIdentities|řetězec, výchozí hodnota je ""|Dynamické|Identity Windows FabricClient; k autorizaci příchozích připojení se používá pojmenování brány. Je to seznam oddělený čárkami. Každá položka je název účtu domény nebo název skupiny. Pro pohodlí; účet, který spouští Fabric. exe, je automaticky povolen. Takže jsou skupiny ServiceFabricAllowedUsers a ServiceFabricAdministrators. |
+|ClientRoleEnabled|logická hodnota, výchozí hodnota je FALSE.|Static|Indikuje, jestli je role klienta povolená; Při nastavení na hodnotu true; Klienti jsou přiřazeni role na základě jejich identit. Pro v2; Povolením této možnosti znamená, že klient, který není v AdminClientCommonNames/AdminClientIdentities, může spouštět pouze operace jen pro čtení. |
+|ClusterCertThumbprints|řetězec, výchozí hodnota je ""|Dynamické|Kryptografické otisky certifikátů s povoleným připojením ke clusteru; seznam názvů oddělených čárkami. |
+|ClusterCredentialType|řetězec, výchozí hodnota je None.|Nepovolené|Určuje typ přihlašovacích údajů zabezpečení, které se mají použít k zabezpečení clusteru. Platné hodnoty jsou None/x509/Windows. |
+|ClusterIdentities|řetězec, výchozí hodnota je ""|Dynamické|Identity Windows uzlů clusteru; používá se pro autorizaci členství v clusteru. Je to seznam oddělený čárkami. Každá položka je název účtu domény nebo název skupiny. |
+|ClusterSpn|řetězec, výchozí hodnota je ""|Nepovolené|Hlavní název služby clusteru; Když se prostředky infrastruktury spouštějí jako uživatel s jedním doménou (účet uživatele gMSA/doména). Je hlavní název služby pro naslouchací procesy zapůjčení a naslouchací procesy v Fabric. exe: federační naslouchací procesy; interní naslouchací procesy replikace; naslouchací proces služby runtime a naslouchací proces pro pojmenovávání brány. Při spuštění prostředků infrastruktury jako účtů počítačů by toto mělo zůstat prázdné. v takovém případě připojení hlavního názvu služby (SPN) služby COMPUTE COMPUTE z přenosové adresy naslouchacího procesu. |
+|CrlCheckingFlag|uint, Default je 0x40000000|Dynamické|Výchozí příznak ověření řetězu certifikátů; může být přepsán příznakem specifickým pro součást; například Federation/X509CertChainFlags 0x10000000 CERT_CHAIN_REVOCATION_CHECK_END_CERT 0x20000000 CERT_CHAIN_REVOCATION_CHECK_CHAIN 0x40000000 CERT_CHAIN_REVOCATION_CHECK_CHAIN_EXCLUDE_ROOT 0x80000000 CERT_CHAIN_REVOCATION_CHECK_CACHE_ POUZE nastavení 0 zakáže kontrolu seznamu CRL úplný seznam podporovaných hodnot je popsán v dwFlags z CertGetCertificateChain: https://msdn.microsoft.com/library/windows/desktop/aa376078(v=vs.85).aspx |
+|CrlDisablePeriod|Časový interval, výchozí hodnota je common:: TimeSpan:: FromMinutes (15)|Dynamické|Zadejte časový interval v sekundách. Jak dlouho je kontrola seznamu CRL pro daný certifikát vypnuta po zjištění chyby v režimu offline; Pokud je offline chyba seznamu CRL, můžete ji ignorovat. |
+|CrlOfflineHealthReportTtl|Časový interval, výchozí hodnota je common:: TimeSpan:: FromMinutes (1440)|Dynamické|Zadejte časový interval v sekundách. |
+|DisableFirewallRuleForDomainProfile| logická hodnota, výchozí hodnota je TRUE. |Static| Indikuje, jestli se nemá Povolit pravidlo brány firewall pro profil domény. |
+|DisableFirewallRuleForPrivateProfile| logická hodnota, výchozí hodnota je TRUE. |Static| Indikuje, jestli se nemá Povolit pravidlo brány firewall pro privátní profil. | 
+|DisableFirewallRuleForPublicProfile| logická hodnota, výchozí hodnota je TRUE. | Static|Indikuje, jestli se nemá Povolit pravidlo brány firewall pro veřejný profil. |
+|FabricHostSpn| řetězec, výchozí hodnota je "" |Static| Hlavní název služby pro hostitele fabrichost vrátilo; Když se Fabric spustí jako uživatel s jedním doménou (účet uživatele gMSA/doména) a hostitele fabrichost vrátilo se spustí pod účtem počítače. Je hlavní název služby (SPN) naslouchacího procesu IPC pro hostitele fabrichost vrátilo; které by ve výchozím nastavení mělo zůstat prázdné, protože hostitele fabrichost vrátilo běží pod účtem počítače |
+|IgnoreCrlOfflineError|logická hodnota, výchozí hodnota je FALSE.|Dynamické|Bez ohledu na to, jestli se má při ověřování příchozích klientských certifikátů na straně serveru ignorovat chyba režimu CRL |
+|IgnoreSvrCrlOfflineError|logická hodnota, výchozí hodnota je TRUE.|Dynamické|Bez ohledu na to, jestli se má ignorovat chyba offline v seznamu CRL, když klientská strana ověří příchozí certifikáty serveru Výchozí hodnota je true. Útoky s odvolanými certifikáty serveru vyžadují narušení služby DNS; těžší než u odvolaných klientských certifikátů. |
+|ServerAuthCredentialType|řetězec, výchozí hodnota je None.|Static|Určuje typ přihlašovacích údajů zabezpečení, které se mají použít, aby se zabezpečila komunikace mezi FabricClient a clusterem. Platné hodnoty jsou None/x509/Windows. |
+|ServerCertThumbprints|řetězec, výchozí hodnota je ""|Dynamické|Kryptografické otisky certifikátů serveru, které cluster používá ke komunikaci s klienty; klienti používají tuto metodu k ověření clusteru. Je to seznam názvů oddělených čárkami. |
+|SettingsX509StoreName| řetězec, výchozí hodnota je MY| Dynamické|Úložiště certifikátů x509 používané prostředky infrastruktury ke konfiguraci ochrany |
+|UseClusterCertForIpcServerTlsSecurity|logická hodnota, výchozí hodnota je FALSE.|Static|Určuje, jestli se má k zabezpečení přenosové jednotky TLS serveru IPC použít certifikát clusteru. |
+|X509Folder|řetězec, výchozí hodnota je/var/lib/waagent|Static|Složka, ve které se nachází certifikáty x509 a soukromé klíče |
 
-## <a name="securityadminclientx509names"></a>Security/AdminClientX509Names
+## <a name="securityadminclientx509names"></a>Zabezpečení/AdminClientX509Names
 
 | **Parametr** | **Povolené hodnoty** | **Zásady upgradu** | **Doprovodné materiály nebo krátký popis** |
 | --- | --- | --- | --- |
-|PropertyGroup|X509NameMap, výchozí hodnota je None|Dynamické|Toto je seznam dvojic "Name" a "Hodnota". Každý "Name" je běžný název subjektu nebo DnsName X509 certifikáty oprávnění pro správu klientské operace. Pro daný "název", "Value" je na čárkami oddělený seznam kryptografické otisky certifikátů pro vystavitele, připínání, pokud není prázdná, přímého vystavitele správce klientské certifikáty musí být v seznamu. |
+|PropertyGroup|X509NameMap, výchozí hodnota je None|Dynamické|Toto je seznam dvojic "název" a "hodnota". Každé "název" je subjektem běžný název nebo DnsName certifikátů x509 autorizovaných pro operace klienta správce. Pro dané "název", "value" je čárkami oddělený seznam kryptografických otisků certifikátů pro připnutí vystavitele, pokud není prázdný, musí být přímým vystavitelem klientských certifikátů správce v seznamu. |
 
 ## <a name="securityclientaccess"></a>Zabezpečení/ClientAccess
 
 | **Parametr** | **Povolené hodnoty** | **Zásady upgradu** | **Doprovodné materiály nebo krátký popis** |
 | --- | --- | --- | --- |
-|ActivateNode |řetězec, výchozí je "Admin" |Dynamické| Konfigurace zabezpečení pro aktivaci se uzel. |
-|CancelTestCommand |řetězec, výchozí je "Admin" |Dynamické| Zruší konkrétní TestCommand – Pokud je v letu. |
-|CodePackageControl |řetězec, výchozí je "Admin" |Dynamické| Konfigurace zabezpečení pro restartování balíčky kódu. |
-|CreateApplication |řetězec, výchozí je "Admin" | Dynamické|Konfigurace zabezpečení pro vytváření aplikací. |
-|CreateComposeDeployment|řetězec, výchozí je "Admin"| Dynamické|Vytvoří nasazení compose popsal soubory compose |
-|CreateGatewayResource|řetězec, výchozí je "Admin"| Dynamické|Vytváření prostředku brány |
-|CreateName |řetězec, výchozí je "Admin" |Dynamické|Konfigurace zabezpečení pro identifikátor URI pojmenování vytvoření. |
-|CreateNetwork|řetězec, výchozí je "Admin" |Dynamické|Vytvoří kontejner sítě |
-|CreateService |řetězec, výchozí je "Admin" |Dynamické| Konfigurace zabezpečení k tvorbě služeb. |
-|CreateServiceFromTemplate |řetězec, výchozí je "Admin" |Dynamické|Konfigurace zabezpečení pro vytvoření služby ze šablony. |
-|CreateVolume|řetězec, výchozí je "Admin"|Dynamické|Vytvoří svazek |
-|DeactivateNode |řetězec, výchozí je "Admin" |Dynamické| Konfigurace zabezpečení pro deaktivace uzlu. |
-|DeactivateNodesBatch |řetězec, výchozí je "Admin" |Dynamické| Konfigurace zabezpečení pro deaktivaci více uzlů. |
-|Odstranění |řetězec, výchozí je "Admin" |Dynamické| Konfigurace zabezpečení pro image ukládání operace odstranění klienta. |
-|DeleteApplication |řetězec, výchozí je "Admin" |Dynamické| Konfigurace zabezpečení pro odstranění aplikace. |
-|DeleteComposeDeployment|řetězec, výchozí je "Admin"| Dynamické|Odstraní nasazení compose |
-|DeleteGatewayResource|řetězec, výchozí je "Admin"| Dynamické|Odstraní prostředek brány |
-|DeleteName |řetězec, výchozí je "Admin" |Dynamické|Konfigurace zabezpečení pro identifikátor URI pojmenování odstranění. |
-|DeleteNetwork|řetězec, výchozí je "Admin" |Dynamické|Odstraní kontejner sítě |
-|DeleteService |řetězec, výchozí je "Admin" |Dynamické|Konfigurace zabezpečení pro odstranění služby. |
-|DeleteVolume|řetězec, výchozí je "Admin"|Dynamické|Odstraní svazku.| 
-|EnumerateProperties |řetězec, výchozí hodnota je "správce\|\|uživatele" | Dynamické|Konfigurace zabezpečení pro pojmenování výčet vlastností. |
-|EnumerateSubnames |řetězec, výchozí hodnota je "správce\|\|uživatele" |Dynamické| Konfigurace zabezpečení pro identifikátor URI pojmenování výčtu. |
-|FileContent |řetězec, výchozí je "Admin" |Dynamické| Přenos souborů klienta (externí clusteru) úložiště konfigurace zabezpečení pro bitovou kopii. |
-|FileDownload |řetězec, výchozí je "Admin" |Dynamické| Konfigurace zabezpečení pro image store klienta soubor ke stažení zahájení (mimo cluster). |
-|FinishInfrastructureTask |řetězec, výchozí je "Admin" |Dynamické| Konfigurace zabezpečení pro dokončení úlohy infrastruktury. |
-|GetChaosReport | řetězec, výchozí hodnota je "správce\|\|uživatele" |Dynamické| Načte stav Chaos v daném časovém rozsahu. |
-|GetClusterConfiguration | řetězec, výchozí hodnota je "správce\|\|uživatele" | Dynamické|Indukuje GetClusterConfiguration na oddíl. |
-|GetClusterConfigurationUpgradeStatus | řetězec, výchozí hodnota je "správce\|\|uživatele" |Dynamické| Indukuje GetClusterConfigurationUpgradeStatus na oddíl. |
-|GetFabricUpgradeStatus |řetězec, výchozí hodnota je "správce\|\|uživatele" |Dynamické| Konfigurace zabezpečení pro dotazování stav upgradu clusteru. |
-|GetNodeDeactivationStatus |řetězec, výchozí je "Admin" |Dynamické| Kontrola stavu deaktivace konfiguraci zabezpečení. |
-|GetNodeTransitionProgress | řetězec, výchozí hodnota je "správce\|\|uživatele" |Dynamické| Konfigurace zabezpečení pro získání průběh na přechod příkaz uzlu. |
-|GetPartitionDataLossProgress | řetězec, výchozí hodnota je "správce\|\|uživatele" | Dynamické|Načte průběhu pro volání rozhraní api ke ztrátě dat vyvolat. |
-|GetPartitionQuorumLossProgress | řetězec, výchozí hodnota je "správce\|\|uživatele" |Dynamické| Načte průběhu pro volání rozhraní api ke ztrátě kvora invoke. |
-|GetPartitionRestartProgress | řetězec, výchozí hodnota je "správce\|\|uživatele" |Dynamické| Načte průběhu pro volání rozhraní api oddílu restartování. |
-|GetSecrets|řetězec, výchozí je "Admin"|Dynamické|Získání hodnoty tajných kódů |
-|GetServiceDescription |řetězec, výchozí hodnota je "správce\|\|uživatele" |Dynamické| Konfigurace zabezpečení pro oznámení služby dlouho dotazování a čtení popis služeb. |
-|GetStagingLocation |řetězec, výchozí je "Admin" |Dynamické| Konfigurace zabezpečení pro image ukládat pracovní umístění načítání klienta. |
-|GetStoreLocation |řetězec, výchozí je "Admin" |Dynamické| Načtení umístění úložiště klienta úložiště konfigurace zabezpečení pro bitovou kopii. |
-|GetUpgradeOrchestrationServiceState|řetězec, výchozí je "Admin"| Dynamické|Indukuje GetUpgradeOrchestrationServiceState na oddíl |
-|GetUpgradesPendingApproval |řetězec, výchozí je "Admin" |Dynamické| Indukuje GetUpgradesPendingApproval na oddíl. |
-|GetUpgradeStatus |řetězec, výchozí hodnota je "správce\|\|uživatele" |Dynamické| Konfigurace zabezpečení pro dotazování stav upgradu aplikace. |
-|InternalList |řetězec, výchozí je "Admin" | Dynamické|Konfigurace zabezpečení pro image ukládání operace seznam souborů klienta (interní). |
-|InvokeContainerApi|řetězec, výchozí je "Admin"|Dynamické|Volání rozhraní API kontejneru |
-|InvokeInfrastructureCommand |řetězec, výchozí je "Admin" |Dynamické| Konfigurace zabezpečení pro příkazy pro správu infrastruktury úloh. |
-|InvokeInfrastructureQuery |řetězec, výchozí hodnota je "správce\|\|uživatele" | Dynamické|Konfigurace zabezpečení pro dotazování infrastrukturních úloh. |
-|Seznam |řetězec, výchozí hodnota je "správce\|\|uživatele" | Dynamické|Konfigurace zabezpečení pro image ukládání operace seznam souborů klienta. |
-|MoveNextFabricUpgradeDomain |řetězec, výchozí je "Admin" |Dynamické| Konfigurace zabezpečení pro obnovení upgrady clusteru s explicitní doménou upgradu. |
-|MoveNextUpgradeDomain |řetězec, výchozí je "Admin" |Dynamické| Konfigurace zabezpečení pro obnovení upgrady aplikací s explicitní doménou upgradu. |
-|MoveReplicaControl |řetězec, výchozí je "Admin" | Dynamické|Přesuňte repliky. |
-|NameExists |řetězec, výchozí hodnota je "správce\|\|uživatele" | Dynamické|Konfigurace zabezpečení pro identifikátor URI pojmenování kontroly existence. |
-|NodeControl |řetězec, výchozí je "Admin" |Dynamické| Konfigurace zabezpečení pro spuštění; Probíhá zastavování. a restartování uzlů. |
-|NodeStateRemoved |řetězec, výchozí je "Admin" |Dynamické| Konfigurace zabezpečení pro vytváření sestav stavu uzel odebrán. |
-|Ping |řetězec, výchozí hodnota je "správce\|\|uživatele" |Dynamické| Konfigurace zabezpečení pro příkazy ping pro zjištění klienta. |
-|PredeployPackageToNode |řetězec, výchozí je "Admin" |Dynamické| Před nasazením rozhraní api. |
-|PrefixResolveService |řetězec, výchozí hodnota je "správce\|\|uživatele" |Dynamické| Konfigurace zabezpečení pro překlad předpony služeb na základě předpisy. |
-|PropertyReadBatch |řetězec, výchozí hodnota je "správce\|\|uživatele" |Dynamické| Operace čtení konfiguraci zabezpečení pro zásady vytváření názvů vlastností. |
-|PropertyWriteBatch |řetězec, výchozí je "Admin" |Dynamické|Operace zápisu konfiguracích zabezpečení pro zásady vytváření názvů vlastností. |
-|ProvisionApplicationType |řetězec, výchozí je "Admin" |Dynamické| Konfigurace zabezpečení pro zřízení typu aplikace. |
-|ProvisionFabric |řetězec, výchozí je "Admin" |Dynamické| Konfigurace zabezpečení pro MSI a/nebo clusteru manifestu zřizování. |
-|Dotaz |řetězec, výchozí hodnota je "správce\|\|uživatele" |Dynamické| Konfigurace zabezpečení pro dotazy. |
-|RecoverPartition |řetězec, výchozí je "Admin" | Dynamické|Konfigurace zabezpečení pro obnovení oddílu. |
-|RecoverPartitions |řetězec, výchozí je "Admin" | Dynamické|Konfigurace zabezpečení pro obnovení oddíly. |
-|RecoverServicePartitions |řetězec, výchozí je "Admin" |Dynamické| Konfigurace zabezpečení pro obnovení oddílů služby. |
-|RecoverSystemPartitions |řetězec, výchozí je "Admin" |Dynamické| Konfigurace zabezpečení pro obnovení oddílů systémové služby. |
-|RemoveNodeDeactivations |řetězec, výchozí je "Admin" |Dynamické| Konfigurace zabezpečení pro vracení k uloženým standardním deaktivaci ve více uzlech. |
-|ReportFabricUpgradeHealth |řetězec, výchozí je "Admin" |Dynamické| Konfigurace zabezpečení pro obnovení inovace clusteru se aktuální průběh upgradu. |
-|ReportFault |řetězec, výchozí je "Admin" |Dynamické| Konfigurace zabezpečení pro hlášení chyb. |
-|ReportHealth |řetězec, výchozí je "Admin" |Dynamické| Konfigurace zabezpečení pro vytváření sestav stavu. |
-|ReportUpgradeHealth |řetězec, výchozí je "Admin" |Dynamické| Konfigurace zabezpečení pro obnovení upgrady aplikací s aktuální průběh upgradu. |
-|ResetPartitionLoad |řetězec, výchozí hodnota je "správce\|\|uživatele" |Dynamické| Konfigurace zabezpečení pro zatížení failoverUnit resetování. |
-|ResolveNameOwner |řetězec, výchozí hodnota je "správce\|\|uživatele" | Dynamické|Konfigurace zabezpečení pro identifikátor URI pojmenování vlastníka řešení. |
-|ResolvePartition |řetězec, výchozí hodnota je "správce\|\|uživatele" | Dynamické|Konfigurace zabezpečení pro řešení systémových služeb. |
-|ResolveService |řetězec, výchozí hodnota je "správce\|\|uživatele" |Dynamické| Konfigurace zabezpečení pro řešení služeb na základě předpisy. |
-|ResolveSystemService|řetězec, výchozí hodnota je "správce\|\|uživatele"|Dynamické| Konfigurace zabezpečení pro řešení systémových služeb |
-|RollbackApplicationUpgrade |řetězec, výchozí je "Admin" |Dynamické| Konfigurace zabezpečení pro vrácení zpět upgrady aplikací. |
-|RollbackFabricUpgrade |řetězec, výchozí je "Admin" |Dynamické| Konfigurace zabezpečení pro vrácení zpět upgrady clusteru. |
-|ServiceNotifications |řetězec, výchozí hodnota je "správce\|\|uživatele" |Dynamické| Konfigurace zabezpečení pro oznámení služby založené na událostech. |
-|SetUpgradeOrchestrationServiceState|řetězec, výchozí je "Admin"| Dynamické|Indukuje SetUpgradeOrchestrationServiceState na oddíl |
-|StartApprovedUpgrades |řetězec, výchozí je "Admin" |Dynamické| Indukuje StartApprovedUpgrades na oddíl. |
-|StartChaos |řetězec, výchozí je "Admin" |Dynamické| Spustí Chaos – Pokud ještě není spuštěný. |
-|StartClusterConfigurationUpgrade |řetězec, výchozí je "Admin" |Dynamické| Indukuje StartClusterConfigurationUpgrade na oddíl. |
-|StartInfrastructureTask |řetězec, výchozí je "Admin" | Dynamické|Konfigurace zabezpečení pro spuštění úlohy infrastruktury. |
-|StartNodeTransition |řetězec, výchozí je "Admin" |Dynamické| Konfigurace zabezpečení pro spuštění uzlu přechodu. |
-|StartPartitionDataLoss |řetězec, výchozí je "Admin" |Dynamické| Indukuje ztrátu dat na oddíl. |
-|StartPartitionQuorumLoss |řetězec, výchozí je "Admin" |Dynamické| Indukuje ztráty kvora na oddíl. |
-|StartPartitionRestart |řetězec, výchozí je "Admin" |Dynamické| Zároveň restartuje některé nebo všechny repliky oddílu. |
-|StopChaos |řetězec, výchozí je "Admin" |Dynamické| Chaos - zastaví, pokud byla spuštěna. |
-|ToggleVerboseServicePlacementHealthReporting | řetězec, výchozí hodnota je "správce\|\|uživatele" |Dynamické| Konfigurace zabezpečení pro přepínání podrobné ServicePlacement HealthReporting. |
-|UnprovisionApplicationType |řetězec, výchozí je "Admin" |Dynamické| Konfigurace zabezpečení pro zrušení zřízení typu aplikace. |
-|UnprovisionFabric |řetězec, výchozí je "Admin" |Dynamické| Konfigurace zabezpečení pro MSI a/nebo clusteru manifestu zrušení zřízení. |
-|UnreliableTransportControl |řetězec, výchozí je "Admin" |Dynamické| Nespolehlivém přenosu pro přidávání a odebírání chování. |
-|UpdateService |řetězec, výchozí je "Admin" |Dynamické|Konfigurace zabezpečení pro aktualizace služby. |
-|UpgradeApplication |řetězec, výchozí je "Admin" |Dynamické| Konfigurace zabezpečení pro spuštění nebo by bylo třeba přerušit upgrady aplikací. |
-|UpgradeComposeDeployment|řetězec, výchozí je "Admin"| Dynamické|Upgrade nasazení compose |
-|UpgradeFabric |řetězec, výchozí je "Admin" |Dynamické| Konfigurace zabezpečení pro spuštění inovace clusteru. |
-|Nahrávání |řetězec, výchozí je "Admin" | Dynamické|Operace nahrávání klienta úložiště konfigurace zabezpečení pro bitovou kopii. |
+|ActivateNode |řetězec, výchozí hodnota je admin. |Dynamické| Konfigurace zabezpečení pro aktivaci uzlu |
+|CancelTestCommand |řetězec, výchozí hodnota je admin. |Dynamické| Zruší konkrétní TestCommand – Pokud se nachází v letu. |
+|CodePackageControl |řetězec, výchozí hodnota je admin. |Dynamické| Konfigurace zabezpečení pro restartování balíčků kódu. |
+|CreateApplication |řetězec, výchozí hodnota je admin. | Dynamické|Konfigurace zabezpečení pro vytváření aplikací. |
+|CreateComposeDeployment|řetězec, výchozí hodnota je admin.| Dynamické|Vytvoří nasazení typu popsané pomocí souborů pro vytváření. |
+|CreateGatewayResource|řetězec, výchozí hodnota je admin.| Dynamické|Vytvoření prostředku brány |
+|CreateName |řetězec, výchozí hodnota je admin. |Dynamické|Konfigurace zabezpečení pro vytváření názvů identifikátorů URI. |
+|CreateNetwork|řetězec, výchozí hodnota je admin. |Dynamické|Vytvoří síť kontejneru. |
+|Operace CreateService |řetězec, výchozí hodnota je admin. |Dynamické| Konfigurace zabezpečení pro vytvoření služby. |
+|CreateServiceFromTemplate |řetězec, výchozí hodnota je admin. |Dynamické|Konfigurace zabezpečení pro vytvoření služby ze šablony |
+|CreateVolume|řetězec, výchozí hodnota je admin.|Dynamické|Vytvoří svazek. |
+|Operace deactivatenode |řetězec, výchozí hodnota je admin. |Dynamické| Konfigurace zabezpečení pro deaktivaci uzlu. |
+|DeactivateNodesBatch |řetězec, výchozí hodnota je admin. |Dynamické| Konfigurace zabezpečení pro deaktivaci více uzlů. |
+|Odstranění |řetězec, výchozí hodnota je admin. |Dynamické| Konfigurace zabezpečení pro operaci odstranění klienta úložiště imagí. |
+|DeleteApplication |řetězec, výchozí hodnota je admin. |Dynamické| Konfigurace zabezpečení pro odstranění aplikace |
+|DeleteComposeDeployment|řetězec, výchozí hodnota je admin.| Dynamické|Odstraní nasazení vytváření. |
+|DeleteGatewayResource|řetězec, výchozí hodnota je admin.| Dynamické|Odstraní prostředek brány. |
+|DeleteName |řetězec, výchozí hodnota je admin. |Dynamické|Konfigurace zabezpečení pro odstranění názvů identifikátorů URI. |
+|DeleteNetwork|řetězec, výchozí hodnota je admin. |Dynamické|Odstraní síť kontejneru. |
+|DeleteService |řetězec, výchozí hodnota je admin. |Dynamické|Konfigurace zabezpečení pro odstranění služby. |
+|DeleteVolume|řetězec, výchozí hodnota je admin.|Dynamické|Odstraní svazek.| 
+|EnumerateProperties |řetězec, výchozí hodnota je "\|admin\|User" | Dynamické|Konfigurace zabezpečení pro vytváření výčtu vlastností |
+|EnumerateSubnames |řetězec, výchozí hodnota je "\|admin\|User" |Dynamické| Konfigurace zabezpečení pro vytváření názvů výčtu identifikátorů URI. |
+|FileContent |řetězec, výchozí hodnota je admin. |Dynamické| Konfigurace zabezpečení pro přenos souborů klienta úložiště imagí (externí do clusteru). |
+|FileDownload |řetězec, výchozí hodnota je admin. |Dynamické| Konfigurace zabezpečení pro spuštění stahování souboru klienta úložiště imagí (externí do clusteru) |
+|FinishInfrastructureTask |řetězec, výchozí hodnota je admin. |Dynamické| Konfigurace zabezpečení pro dokončení úloh infrastruktury |
+|GetChaosReport | řetězec, výchozí hodnota je "\|admin\|User" |Dynamické| Načte stav chaos v daném časovém rozsahu. |
+|GetClusterConfiguration | řetězec, výchozí hodnota je "\|admin\|User" | Dynamické|VyGetClusterConfiguration na oddíl. |
+|GetClusterConfigurationUpgradeStatus | řetězec, výchozí hodnota je "\|admin\|User" |Dynamické| VyGetClusterConfigurationUpgradeStatus na oddíl. |
+|GetFabricUpgradeStatus |řetězec, výchozí hodnota je "\|admin\|User" |Dynamické| Konfigurace zabezpečení pro dotazování na stav upgradu clusteru. |
+|GetFolderSize |řetězec, výchozí hodnota je admin. |Dynamické|Konfigurace zabezpečení pro získání velikosti složky v FileStoreService |
+|GetNodeDeactivationStatus |řetězec, výchozí hodnota je admin. |Dynamické| Konfigurace zabezpečení pro kontrolu stavu deaktivace. |
+|GetNodeTransitionProgress | řetězec, výchozí hodnota je "\|admin\|User" |Dynamické| Konfigurace zabezpečení pro získání průběhu příkazu přechodu uzlu. |
+|GetPartitionDataLossProgress | řetězec, výchozí hodnota je "\|admin\|User" | Dynamické|Načte průběh volání rozhraní API pro ztrátu dat. |
+|GetPartitionQuorumLossProgress | řetězec, výchozí hodnota je "\|admin\|User" |Dynamické| Načte průběh volání rozhraní API ztráty kvora. |
+|GetPartitionRestartProgress | řetězec, výchozí hodnota je "\|admin\|User" |Dynamické| Načte průběh volání rozhraní API pro restartování oddílu. |
+|Gettajných kódů|řetězec, výchozí hodnota je admin.|Dynamické|Získat tajné hodnoty |
+|Getservicedescription |řetězec, výchozí hodnota je "\|admin\|User" |Dynamické| Konfigurace zabezpečení pro zasílání oznámení služby Long-cyklické dotazování a čtení popisů služeb. |
+|GetStagingLocation |řetězec, výchozí hodnota je admin. |Dynamické| Konfigurace zabezpečení pro načtení pracovního umístění klienta úložiště imagí. |
+|GetStoreLocation |řetězec, výchozí hodnota je admin. |Dynamické| Konfigurace zabezpečení pro načítání umístění úložiště klienta úložiště imagí. |
+|GetUpgradeOrchestrationServiceState|řetězec, výchozí hodnota je admin.| Dynamické|VyGetUpgradeOrchestrationServiceState na oddíl. |
+|GetUpgradesPendingApproval |řetězec, výchozí hodnota je admin. |Dynamické| VyGetUpgradesPendingApproval na oddíl. |
+|GetUpgradeStatus |řetězec, výchozí hodnota je "\|admin\|User" |Dynamické| Konfigurace zabezpečení pro dotazování na stav upgradu aplikace. |
+|InternalList |řetězec, výchozí hodnota je admin. | Dynamické|Konfigurace zabezpečení pro operaci seznamu klientských souborů úložiště imagí (interní). |
+|InvokeContainerApi|řetězec, výchozí hodnota je admin.|Dynamické|Vyvolat rozhraní API kontejneru |
+|InvokeInfrastructureCommand |řetězec, výchozí hodnota je admin. |Dynamické| Konfigurace zabezpečení pro příkazy správy úloh infrastruktury |
+|InvokeInfrastructureQuery |řetězec, výchozí hodnota je "\|admin\|User" | Dynamické|Konfigurace zabezpečení pro dotazování na úlohy infrastruktury. |
+|List |řetězec, výchozí hodnota je "\|admin\|User" | Dynamické|Konfigurace zabezpečení pro operaci seznamu klientských souborů úložiště imagí |
+|MoveNextFabricUpgradeDomain |řetězec, výchozí hodnota je admin. |Dynamické| Konfigurace zabezpečení pro obnovení upgradu clusteru s explicitní upgradovací doménou |
+|MoveNextUpgradeDomain |řetězec, výchozí hodnota je admin. |Dynamické| Konfigurace zabezpečení pro obnovení upgradu aplikace s explicitní upgradovací doménou |
+|MoveReplicaControl |řetězec, výchozí hodnota je admin. | Dynamické|Přesuňte repliku. |
+|NameExists |řetězec, výchozí hodnota je "\|admin\|User" | Dynamické|Konfigurace zabezpečení pro kontrolu existence identifikátorů URI pojmenování. |
+|NodeControl |řetězec, výchozí hodnota je admin. |Dynamické| Konfigurace zabezpečení pro spuštění; zastaví a restartování uzlů. |
+|NodeStateRemoved |řetězec, výchozí hodnota je admin. |Dynamické| Odstranila se konfigurace zabezpečení pro stav uzlu vytváření sestav. |
+|Ping |řetězec, výchozí hodnota je "\|admin\|User" |Dynamické| Konfigurace zabezpečení pro klientské příkazy pro ověřování. |
+|PredeployPackageToNode |řetězec, výchozí hodnota je admin. |Dynamické| Rozhraní API pro předinstalaci |
+|PrefixResolveService |řetězec, výchozí hodnota je "\|admin\|User" |Dynamické| Konfigurace zabezpečení pro rozlišení předpony služby na základě stížnosti. |
+|PropertyReadBatch |řetězec, výchozí hodnota je "\|admin\|User" |Dynamické| Konfigurace zabezpečení pro operace čtení vlastností pojmenování |
+|PropertyWriteBatch |řetězec, výchozí hodnota je admin. |Dynamické|Konfigurace zabezpečení pro operace zápisu vlastností pojmenování. |
+|ProvisionApplicationType |řetězec, výchozí hodnota je admin. |Dynamické| Konfigurace zabezpečení pro zřizování typu aplikace. |
+|ProvisionFabric |řetězec, výchozí hodnota je admin. |Dynamické| Konfigurace zabezpečení pro clustery MSI a/nebo zřizování manifestu clusteru. |
+|Dotaz |řetězec, výchozí hodnota je "\|admin\|User" |Dynamické| Konfigurace zabezpečení pro dotazy. |
+|RecoverPartition |řetězec, výchozí hodnota je admin. | Dynamické|Konfigurace zabezpečení pro obnovování oddílu. |
+|Operace recoverpartitions |řetězec, výchozí hodnota je admin. | Dynamické|Konfigurace zabezpečení pro obnovování oddílů. |
+|RecoverServicePartitions |řetězec, výchozí hodnota je admin. |Dynamické| Konfigurace zabezpečení pro obnovování oddílů služby. |
+|Operace recoversystempartitions |řetězec, výchozí hodnota je admin. |Dynamické| Konfigurace zabezpečení pro obnovování oddílů systémových služeb. |
+|RemoveNodeDeactivations |řetězec, výchozí hodnota je admin. |Dynamické| Konfigurace zabezpečení pro vrácení deaktivace na více uzlech. |
+|ReportFabricUpgradeHealth |řetězec, výchozí hodnota je admin. |Dynamické| Konfigurace zabezpečení pro obnovení upgradu clusteru s aktuálním průběhem upgradu. |
+|ReportFault |řetězec, výchozí hodnota je admin. |Dynamické| Konfigurace zabezpečení pro chybu generování sestav. |
+|ReportHealth |řetězec, výchozí hodnota je admin. |Dynamické| Konfigurace zabezpečení pro vytváření sestav stavu. |
+|ReportUpgradeHealth |řetězec, výchozí hodnota je admin. |Dynamické| Konfigurace zabezpečení pro obnovení upgradu aplikací s aktuálním průběhem upgradu. |
+|ResetPartitionLoad |řetězec, výchozí hodnota je "\|admin\|User" |Dynamické| Konfigurace zabezpečení pro obnovení zatížení pro failoverUnit. |
+|ResolveNameOwner |řetězec, výchozí hodnota je "\|admin\|User" | Dynamické|Konfigurace zabezpečení pro překlad vlastníka identifikátoru URI pro pojmenování. |
+|ResolvePartition |řetězec, výchozí hodnota je "\|admin\|User" | Dynamické|Konfigurace zabezpečení pro překlad systémových služeb. |
+|ResolveService |řetězec, výchozí hodnota je "\|admin\|User" |Dynamické| Konfigurace zabezpečení pro řešení služby na základě stížností. |
+|ResolveSystemService|řetězec, výchozí hodnota je "\|admin\|User"|Dynamické| Konfigurace zabezpečení pro překlad systémových služeb |
+|RollbackApplicationUpgrade |řetězec, výchozí hodnota je admin. |Dynamické| Konfigurace zabezpečení pro vrácení zpět upgradů aplikací. |
+|RollbackFabricUpgrade |řetězec, výchozí hodnota je admin. |Dynamické| Konfigurace zabezpečení pro vracení zpět upgradů clusteru. |
+|ServiceNotifications |řetězec, výchozí hodnota je "\|admin\|User" |Dynamické| Konfigurace zabezpečení pro oznámení služby na základě událostí. |
+|SetUpgradeOrchestrationServiceState|řetězec, výchozí hodnota je admin.| Dynamické|VySetUpgradeOrchestrationServiceState na oddíl. |
+|StartApprovedUpgrades |řetězec, výchozí hodnota je admin. |Dynamické| VyStartApprovedUpgrades na oddíl. |
+|StartChaos |řetězec, výchozí hodnota je admin. |Dynamické| Spustí chaos – Pokud ještě není spuštěný. |
+|StartClusterConfigurationUpgrade |řetězec, výchozí hodnota je admin. |Dynamické| VyStartClusterConfigurationUpgrade na oddíl. |
+|StartInfrastructureTask |řetězec, výchozí hodnota je admin. | Dynamické|Konfigurace zabezpečení pro spouštění úloh infrastruktury |
+|StartNodeTransition |řetězec, výchozí hodnota je admin. |Dynamické| Konfigurace zabezpečení pro spuštění přechodu uzlu. |
+|StartPartitionDataLoss |řetězec, výchozí hodnota je admin. |Dynamické| Vychází ze ztráty dat na oddílu. |
+|StartPartitionQuorumLoss |řetězec, výchozí hodnota je admin. |Dynamické| Vychází ze ztráty kvora v oddílu. |
+|StartPartitionRestart |řetězec, výchozí hodnota je admin. |Dynamické| Současně restartuje některé nebo všechny repliky oddílu. |
+|StopChaos |řetězec, výchozí hodnota je admin. |Dynamické| Zastaví chaos – Pokud bylo spuštěno. |
+|ToggleVerboseServicePlacementHealthReporting | řetězec, výchozí hodnota je "\|admin\|User" |Dynamické| Konfigurace zabezpečení pro přepnutí podrobného ServicePlacementho HealthReporting. |
+|UnprovisionApplicationType |řetězec, výchozí hodnota je admin. |Dynamické| Konfigurace zabezpečení pro zrušení zřízení typu aplikace |
+|UnprovisionFabric |řetězec, výchozí hodnota je admin. |Dynamické| Konfigurace zabezpečení pro odzřizování MSI nebo manifestu clusteru. |
+|UnreliableTransportControl |řetězec, výchozí hodnota je admin. |Dynamické| Nespolehlivý přenos pro přidání a odebrání chování |
+|UpdateService |řetězec, výchozí hodnota je admin. |Dynamické|Konfigurace zabezpečení pro aktualizace služby. |
+|UpgradeApplication |řetězec, výchozí hodnota je admin. |Dynamické| Konfigurace zabezpečení pro spuštění nebo přerušení upgradu aplikace. |
+|UpgradeComposeDeployment|řetězec, výchozí hodnota je admin.| Dynamické|Upgraduje nasazení vytváření. |
+|UpgradeFabric |řetězec, výchozí hodnota je admin. |Dynamické| Konfigurace zabezpečení pro spouštění upgradů clusteru. |
+|Odeslat |řetězec, výchozí hodnota je admin. | Dynamické|Konfigurace zabezpečení pro operaci nahrání klienta úložiště imagí |
 
-## <a name="securityclientcertificateissuerstores"></a>Security/ClientCertificateIssuerStores
+## <a name="securityclientcertificateissuerstores"></a>Zabezpečení/ClientCertificateIssuerStores
 
 | **Parametr** | **Povolené hodnoty** | **Zásady upgradu** | **Doprovodné materiály nebo krátký popis** |
 | --- | --- | --- | --- |
-|PropertyGroup|IssuerStoreKeyValueMap, výchozí hodnota je None |Dynamické|X509 úložiště certifikátů vystavitele pro klientské certifikáty; Název = clientIssuerCN; Hodnota = čárkami oddělený seznam úložišť |
+|PropertyGroup|IssuerStoreKeyValueMap, výchozí hodnota je None |Dynamické|Úložiště certifikátů vystavitele x509 pro klientské certifikáty; Název = clientIssuerCN; Value = seznam obchodů oddělených čárkami |
 
 ## <a name="securityclientx509names"></a>Zabezpečení/ClientX509Names
 
 | **Parametr** | **Povolené hodnoty** | **Zásady upgradu** | **Doprovodné materiály nebo krátký popis** |
 | --- | --- | --- | --- |
-|PropertyGroup|X509NameMap, výchozí hodnota je None|Dynamické|Toto je seznam dvojic "Name" a "Hodnota". Každý "Name" je běžný název subjektu nebo DnsName X509 certifikáty, které jsou autorizované pro klientské operace. Pro daný "název", "Value" je na čárkami oddělený seznam kryptografické otisky certifikátů pro vystavitele, připínání, pokud není prázdná, přímého vystavitele klientské certifikáty musí být v seznamu.|
+|PropertyGroup|X509NameMap, výchozí hodnota je None|Dynamické|Toto je seznam dvojic "název" a "hodnota". Každé "název" je subjektem běžný název nebo DnsName certifikátů x509 autorizovaných pro klientské operace. Pro dané "název", "value" je čárkami oddělený seznam kryptografických otisků certifikátů pro připnutí vystavitele, pokud není prázdný, musí být na seznamu přímo Vystavitel klientských certifikátů.|
 
 ## <a name="securityclustercertificateissuerstores"></a>Security/ClusterCertificateIssuerStores
 
 | **Parametr** | **Povolené hodnoty** | **Zásady upgradu** | **Doprovodné materiály nebo krátký popis** |
 | --- | --- | --- | --- |
-|PropertyGroup|IssuerStoreKeyValueMap, výchozí hodnota je None |Dynamické|X509 úložiště certifikátů vystavitele pro certifikáty clusteru; Název = clusterIssuerCN; Hodnota = čárkami oddělený seznam úložišť |
+|PropertyGroup|IssuerStoreKeyValueMap, výchozí hodnota je None |Dynamické|Úložiště certifikátů vystavitele x509 pro certifikáty clusteru; Název = clusterIssuerCN; Value = seznam obchodů oddělených čárkami |
 
 ## <a name="securityclusterx509names"></a>Zabezpečení/ClusterX509Names
 
 | **Parametr** | **Povolené hodnoty** | **Zásady upgradu** | **Doprovodné materiály nebo krátký popis** |
 | --- | --- | --- | --- |
-|PropertyGroup|X509NameMap, výchozí hodnota je None|Dynamické|Toto je seznam dvojic "Name" a "Hodnota". Každý "Name" je běžný název subjektu nebo DnsName X509 certifikáty oprávnění pro operace clusteru. Pro daný "název", "Value" je na čárkami oddělený seznam kryptografické otisky certifikátů pro vystavitele, připínání, pokud není prázdná, přímého vystavitele certifikátů clusteru musí být v seznamu.|
+|PropertyGroup|X509NameMap, výchozí hodnota je None|Dynamické|Toto je seznam dvojic "název" a "hodnota". Každé "název" je subjektem běžný název nebo DnsName certifikátů x509 autorizovaných pro operace clusteru. Pro dané "název", "value" je čárkami oddělený seznam kryptografických otisků certifikátů pro připnutí vystavitele, pokud není prázdný, musí být přímým vystavitelem certifikátů clusteru v seznamu.|
 
 ## <a name="securityservercertificateissuerstores"></a>Security/ServerCertificateIssuerStores
 
 | **Parametr** | **Povolené hodnoty** | **Zásady upgradu** | **Doprovodné materiály nebo krátký popis** |
 | --- | --- | --- | --- |
-|PropertyGroup|IssuerStoreKeyValueMap, výchozí hodnota je None |Dynamické|X509 úložiště certifikátů vystavitele pro certifikát serveru; Název = serverIssuerCN; Hodnota = čárkami oddělený seznam úložišť |
+|PropertyGroup|IssuerStoreKeyValueMap, výchozí hodnota je None |Dynamické|Úložiště certifikátů vystavitele x509 pro certifikáty serveru; Název = serverIssuerCN; Value = seznam obchodů oddělených čárkami |
 
-## <a name="securityserverx509names"></a>Security/ServerX509Names
+## <a name="securityserverx509names"></a>Zabezpečení/ServerX509Names
 
 | **Parametr** | **Povolené hodnoty** | **Zásady upgradu** | **Doprovodné materiály nebo krátký popis** |
 | --- | --- | --- | --- |
-|PropertyGroup|X509NameMap, výchozí hodnota je None|Dynamické|Toto je seznam dvojic "Name" a "Hodnota". Každý "Name" je běžný název subjektu nebo DnsName X509 certifikáty, které jsou autorizované pro operace serveru. Pro daný "název", "Value" je na čárkami oddělený seznam kryptografické otisky certifikátů pro vystavitele, připínání, pokud není prázdná, přímého vystavitele certifikátů serveru musí být v seznamu.|
+|PropertyGroup|X509NameMap, výchozí hodnota je None|Dynamické|Toto je seznam dvojic "název" a "hodnota". Každé "název" je subjektem běžný název nebo DnsName certifikátů x509 autorizovaných pro operace serveru. Pro dané "název", "value" je čárkami oddělený seznam kryptografických otisků certifikátů pro připnutí vystavitele, pokud není prázdný, musí být přímým vystavitelem certifikátů serveru v seznamu.|
 
 ## <a name="setup"></a>Instalace
 
 | **Parametr** | **Povolené hodnoty** | **Zásady upgradu** | **Doprovodné materiály nebo krátký popis** |
 | --- | --- | --- | --- |
-|ContainerNetworkName|řetězec, výchozí hodnota je ""| Statická |Název sítě pro použití při vytváření kontejneru sítě.|
-|ContainerNetworkSetup|Logická hodnota, výchozí hodnotu FALSE| Statická |Určuje, zda nastavení sítě kontejneru.|
-|FabricDataRoot |String | Nepovoleno |Service Fabric data kořenový adresář. Výchozí pro Azure je d:\svcfab |
-|FabricLogRoot |String | Nepovoleno |Service fabric protokolu kořenový adresář. Je to, kde jsou umístěny SF protokoly a trasování. |
-|NodesToBeRemoved|řetězec, výchozí hodnota je ""| Dynamické |Uzly, které byste měli odebrat jako součást konfigurace upgradu. (Pouze pro samostatné nasazení)|
-|ServiceRunAsAccountName |String | Nepovoleno |Název účtu, pod kterým chcete spustit service fabric hostitele. |
-|SkipContainerNetworkResetOnReboot|Logická hodnota, výchozí hodnotu FALSE|Hodnotu NotAllowed|Určuje, zda se mají přeskočit obnovení kontejner sítě při restartování.|
-|SkipFirewallConfiguration |Logická hodnota, výchozí hodnota je false | Nepovoleno |Určuje, pokud nastavení brány firewall, který je potřeba nastavit v systému nebo ne. To platí jenom v případě, že používáte bránu windows firewall. Pokud používáte brány firewall třetích stran, pak je nutné otevřít porty pro systém a aplikace, aby používaly |
+|ContainerNetworkName|řetězec, výchozí hodnota je ""| Static |Název sítě, který se má použít při nastavování sítě kontejneru|
+|ContainerNetworkSetup|logická hodnota, výchozí hodnota je FALSE.| Static |Určuje, zda se má nastavit síť kontejneru.|
+|FabricDataRoot |Řetězec | Nepovolené |Service Fabric adresář data root. Výchozí hodnota pro Azure je d:\svcfab |
+|FabricLogRoot |Řetězec | Nepovolené |Kořenový adresář protokolu Service Fabric. To je místo, kde jsou umístěny záznamy a záznamy SF. |
+|NodesToBeRemoved|řetězec, výchozí hodnota je ""| Dynamické |Uzly, které by měly být odebrány jako součást upgradu konfigurace. (Jenom pro samostatná nasazení)|
+|ServiceRunAsAccountName |Řetězec | Nepovolené |Název účtu, pod kterým se má spustit služba hostitele prostředků infrastruktury |
+|SkipContainerNetworkResetOnReboot|logická hodnota, výchozí hodnota je FALSE.|Nepovoleno|Bez ohledu na to, jestli se při restartování má přeskočit resetování sítě kontejneru|
+|SkipFirewallConfiguration |Logická hodnota, výchozí hodnota je false. | Nepovolené |Určuje, jestli musí být nastavení brány firewall nastavené systémem, nebo ne. To platí jenom v případě, že používáte bránu Windows Firewall. Pokud používáte brány firewall třetích stran, musíte otevřít porty pro systém a aplikace, které chcete použít. |
 
 ## <a name="tokenvalidationservice"></a>TokenValidationService
 
 | **Parametr** | **Povolené hodnoty** | **Zásady upgradu** | **Doprovodné materiály nebo krátký popis** |
 | --- | --- | --- | --- |
-|Poskytovatelé |řetězec, výchozí je "DSTS" |Statická|Čárkami oddělený seznam zprostředkovatelů ověření tokenu umožňující (platný zprostředkovatelé jsou: DSTS; AAD). Aktuálně lze kdykoli povolit pouze jednoho poskytovatele. |
+|Zprostředkovatelé |řetězec, výchozí hodnota je "DSTS" |Static|Seznam zprostředkovatelů ověřování tokenů oddělených čárkou, které se mají povolit (platné zprostředkovatele jsou: DSTS; AAD). V současné době může být povolen pouze jeden zprostředkovatel. |
 
 ## <a name="traceetw"></a>Trasování/trasování událostí pro Windows
 
 | **Parametr** | **Povolené hodnoty** | **Zásady upgradu** | **Doprovodné materiály nebo krátký popis** |
 | --- | --- | --- | --- |
-|Level |Int, výchozí hodnota je 4 | Dynamické |Úroveň trasování událostí pro Windows trasování může přijmout hodnoty 1, 2, 3, 4. Podporovaná je nutné zachovat úroveň trasování na 4 |
+|Level |Int, výchozí hodnota je 4. | Dynamické |Trasovat úroveň trasování událostí pro Windows může přibírat hodnoty 1, 2, 3, 4. Aby byla podpora podporovaná, musíte udržet úroveň trasování 4. |
 
-## <a name="transactionalreplicator"></a>Transakční Replikátor
+## <a name="transactionalreplicator"></a>TransactionalReplicator
 
 | **Parametr** | **Povolené hodnoty** | **Zásady upgradu** | **Doprovodné materiály nebo krátký popis** |
 | --- | --- | --- | --- |
-|BatchAcknowledgementInterval | Čas v sekundách, výchozí hodnota je 0,015 | Statická | Zadejte časový interval v sekundách. Určuje množství času, které Replikátor čeká po přijetí operace před odesláním zpět na potvrzení. Další operace přijatých během tohoto období budou mít jejich potvrzení odeslaných zpět do jedné zprávy -> snížení síťový provoz, ale potenciálně snížení propustnosti replikátoru. |
-|MaxCopyQueueSize |Uint, výchozí hodnota je 16384 | Statická |Toto je maximální hodnota definuje počáteční velikost fronty, který udržuje operací replikace. Všimněte si, že musí být mocninou čísla 2. Pokud za běhu zvětšuje, aby tato operace velikost fronty se omezí mezi primárním a sekundárním replikátorů. |
-|MaxPrimaryReplicationQueueMemorySize |Uint, výchozí hodnota je 0 | Statická |To je maximální hodnota primární replikace fronty v bajtech. |
-|MaxPrimaryReplicationQueueSize |Uint, výchozí hodnota je 8192 | Statická |Toto je maximální počet operací, které může existovat ve frontě primární replikace. Všimněte si, že musí být mocninou čísla 2. |
-|MaxReplicationMessageSize |uint, výchozí je 52428800 | Statická | Maximální velikost zprávy operací replikace. Výchozí hodnota je 50MB. |
-|MaxSecondaryReplicationQueueMemorySize |Uint, výchozí hodnota je 0 | Statická |To je maximální hodnota fronty sekundární replikace v bajtech. |
-|MaxSecondaryReplicationQueueSize |Uint, výchozí hodnota je 16384 | Statická |Toto je maximální počet operací, které může existovat ve frontě replikací sekundární. Všimněte si, že musí být mocninou čísla 2. |
-|ReplicatorAddress |řetězec, výchozí je "localhost:0" | Statická | Koncový bod v podobě řetězce-"IP: port" který používá Replikátor Windows Fabric pro navázání připojení s ostatními replikami k posílání a přijímání operace. |
+|BatchAcknowledgementInterval | Čas v sekundách, výchozí hodnota je 0,015. | Static | Zadejte časový interval v sekundách. Určuje dobu, po kterou Replikátor po přijetí operace počká, než pošle zpět potvrzení. Jiné operace přijaté během tohoto časového období budou mít potvrzení, které se vrátí v rámci jedné zprávy – > snižují síťový provoz, ale můžou snížit propustnost replikátoru. |
+|MaxCopyQueueSize |Uint, výchozí hodnota je 16384 | Static |Toto je maximální hodnota definující počáteční velikost fronty, která udržuje operace replikace. Všimněte si, že musí být mocninou 2. Pokud během běhu bude fronta růst s touto operací velikosti, bude omezena mezi primárními a sekundárními replikami. |
+|MaxPrimaryReplicationQueueMemorySize |Uint, výchozí hodnota je 0 | Static |Toto je maximální hodnota primární fronty replikace v bajtech. |
+|MaxPrimaryReplicationQueueSize |Uint, výchozí hodnota je 8192 | Static |Toto je maximální počet operací, které mohou existovat ve frontě primární replikace. Všimněte si, že musí být mocninou 2. |
+|MaxReplicationMessageSize |Uint, výchozí hodnota je 52428800 | Static | Maximální velikost zprávy operací replikace. Výchozí hodnota je 50 MB. |
+|MaxSecondaryReplicationQueueMemorySize |Uint, výchozí hodnota je 0 | Static |Toto je maximální hodnota fronty sekundární replikace v bajtech. |
+|MaxSecondaryReplicationQueueSize |Uint, výchozí hodnota je 16384 | Static |Toto je maximální počet operací, které mohou existovat v sekundární frontě replikace. Všimněte si, že musí být mocninou 2. |
+|ReplicatorAddress |řetězec, výchozí hodnota je "localhost: 0" | Static | Koncový bod ve formě řetězce "IP: port", který používá Replikátor Windows Fabric k navázání připojení k ostatním replikám za účelem odesílání/přijímání operací. |
 
 ## <a name="transport"></a>Přenos
 | **Parametr** | **Povolené hodnoty** |**Zásady upgradu** |**Doprovodné materiály nebo krátký popis** |
 | --- | --- | --- | --- |
-|ConnectionOpenTimeout|Časový interval, výchozí hodnota je Common::TimeSpan::FromSeconds(60)|Statická|Zadejte časový interval v sekundách. Vypršení časového limitu pro nastavení připojení pro příchozí a přijímá na straně (včetně vyjednávání zabezpečení v zabezpečeném režimu) |
-|FrameHeaderErrorCheckingEnabled|Logická hodnota, výchozí hodnotu TRUE|Statická|Výchozí nastavení pro kontrolu chyb na záhlaví rámce v nezabezpečené režimu. komponenta nastavení přepíše tuto položku. |
-|MessageErrorCheckingEnabled|Logická hodnota, výchozí hodnotu FALSE|Statická|Výchozí nastavení pro kontrolu chyb na záhlaví zprávy a text v nezabezpečené režimu. komponenta nastavení přepíše tuto položku. |
-|ResolveOption|řetězec, výchozí hodnota je "neurčené"|Statická|Určuje, jak je přeložit plně kvalifikovaný název domény.  Platné hodnoty jsou "Tento parametr zadán/ipv4/ipv6". |
-|SendTimeout|Časový interval, výchozí hodnota je Common::TimeSpan::FromSeconds(300)|Dynamické|Zadejte časový interval v sekundách. Odešlete časový limit pro zjišťování zablokované připojení. Sestavy selhání TCP nejsou spolehlivé v některé prostředí. To možná bude potřeba upravit podle dostupnou šířku pásma sítě a objem odchozích dat (\*MaxMessageSize\/\*SendQueueSizeLimit). |
+|ConnectionOpenTimeout|Časový interval, výchozí hodnota je common:: TimeSpan:: FromSeconds (60)|Static|Zadejte časový interval v sekundách. Časový limit pro nastavení připojení na straně příjmu (včetně vyjednávání zabezpečení v zabezpečeném režimu) |
+|FrameHeaderErrorCheckingEnabled|logická hodnota, výchozí hodnota je TRUE.|Static|Výchozí nastavení pro kontrolu chyb v hlavičce snímku v nezabezpečeném režimu; nastavení součásti přepisuje toto. |
+|MessageErrorCheckingEnabled|logická hodnota, výchozí hodnota je FALSE.|Static|Výchozí nastavení pro kontrolu chyb v záhlaví a textu zprávy v nezabezpečeném režimu; nastavení součásti přepisuje toto. |
+|ResolveOption|řetězec, výchozí hodnota je "Neurčeno".|Static|Určuje, jak se přeloží plně kvalifikovaný název domény.  Platné hodnoty jsou "Neurčeno/IPv4/IPv6". |
+|SendTimeout|Časový interval, výchozí hodnota je common:: TimeSpan:: FromSeconds (300)|Dynamické|Zadejte časový interval v sekundách. Vypršel časový limit pro detekci zablokování připojení. Zprávy o chybách TCP nejsou v některých prostředí spolehlivé. To může být potřeba upravit podle dostupné šířky pásma sítě a velikosti odchozích dat (\*MaxMessageSize\/\*SendQueueSizeLimit). |
 
 ## <a name="upgradeorchestrationservice"></a>UpgradeOrchestrationService
 
 | **Parametr** | **Povolené hodnoty** | **Zásady upgradu** | **Doprovodné materiály nebo krátký popis** |
 | --- | --- | --- | --- |
-|AutoupgradeEnabled | Logická hodnota, výchozí hodnota je true |Statická| Automatické cyklického dotazování a akce upgradu na základě souboru cílový stav. |
-|AutoupgradeInstallEnabled|Logická hodnota, výchozí hodnotu FALSE|Statická|Automatické dotazování, zřizování a instalaci kódu upgrade akce na základě souboru cílový stav.|
-|GoalStateExpirationReminderInDays|int, výchozí je 30|Statická|Nastaví počet zbývajících dnů, po jejichž uplynutí má být zobrazena cíle stavu připomenutí.|
-|MinReplicaSetSize |int, výchozí je 0 |Statická |MinReplicaSetSize pro UpgradeOrchestrationService.|
-|PlacementConstraints | řetězec, výchozí hodnota je "" |Statická| PlacementConstraints pro UpgradeOrchestrationService. |
-|QuorumLossWaitDuration | Čas v sekundách, výchozí hodnota je hodnota MaxValue |Statická| Zadejte časový interval v sekundách. QuorumLossWaitDuration pro UpgradeOrchestrationService. |
-|ReplicaRestartWaitDuration | Čas v sekundách, výchozí hodnota je 60 minut|Statická| Zadejte časový interval v sekundách. ReplicaRestartWaitDuration pro UpgradeOrchestrationService. |
-|StandByReplicaKeepDuration | Čas v sekundách, výchozí hodnota je 60*24*7 minut |Statická| Zadejte časový interval v sekundách. StandByReplicaKeepDuration pro UpgradeOrchestrationService. |
-|TargetReplicaSetSize |int, výchozí je 0 |Statická |TargetReplicaSetSize pro UpgradeOrchestrationService. |
-|UpgradeApprovalRequired | Logická hodnota, výchozí hodnota je false | Statická|Nastavení provést upgrade kódu vyžadovat schválení správce, než budete pokračovat. |
+|AutoupgradeEnabled | Logická hodnota, výchozí hodnota je true. |Static| Automatická akce cyklického dotazování a upgradu na základě souboru s cílovým stavem. |
+|AutoupgradeInstallEnabled|Logická hodnota, výchozí hodnota je FALSE.|Static|Automatické dotazování, zřizování a instalaci akce upgradu kódu na základě souboru s cílovým stavem.|
+|GoalStateExpirationReminderInDays|int, výchozí hodnota je 30.|Static|Nastaví počet zbývajících dnů, po kterých se má zobrazit připomenutí stavu cíle.|
+|MinReplicaSetSize |Int, výchozí hodnota je 0 |Static |MinReplicaSetSize pro UpgradeOrchestrationService.|
+|PlacementConstraints | řetězec, výchozí hodnota je "" |Static| PlacementConstraints pro UpgradeOrchestrationService. |
+|QuorumLossWaitDuration | Čas v sekundách, výchozí hodnota je MaxValue. |Static| Zadejte časový interval v sekundách. QuorumLossWaitDuration pro UpgradeOrchestrationService. |
+|ReplicaRestartWaitDuration | Čas v sekundách, výchozí hodnota je 60 minut.|Static| Zadejte časový interval v sekundách. ReplicaRestartWaitDuration pro UpgradeOrchestrationService. |
+|StandByReplicaKeepDuration | Čas v sekundách, výchozí hodnota je 60*24*7 minut. |Static| Zadejte časový interval v sekundách. StandByReplicaKeepDuration pro UpgradeOrchestrationService. |
+|TargetReplicaSetSize |Int, výchozí hodnota je 0 |Static |TargetReplicaSetSize pro UpgradeOrchestrationService. |
+|UpgradeApprovalRequired | Logická hodnota, výchozí hodnota je false. | Static|Nastavení pro provedení upgradu kódu vyžaduje schválení správcem, než budete pokračovat. |
 
 ## <a name="upgradeservice"></a>UpgradeService
 
 | **Parametr** | **Povolené hodnoty** | **Zásady upgradu** | **Doprovodné materiály nebo krátký popis** |
 | --- | --- | --- | --- |
-|BaseUrl | řetězec, výchozí hodnota je "" |Statická|BaseUrl pro UpgradeService. |
-|ClusterId | řetězec, výchozí hodnota je "" |Statická|ClusterId pro UpgradeService. |
-|CoordinatorType | řetězec, výchozí je "WUTest"|Nepovoleno|CoordinatorType pro UpgradeService. |
-|MinReplicaSetSize | Int, výchozí hodnota je 2 |Nepovoleno| MinReplicaSetSize pro UpgradeService. |
-|OnlyBaseUpgrade | Logická hodnota, výchozí hodnota je false |Dynamické|OnlyBaseUpgrade pro UpgradeService. |
-|PlacementConstraints |řetězec, výchozí hodnota je "" |Nepovoleno|PlacementConstraints upgradu služby. |
-|PollIntervalInSeconds|Časový interval, výchozí hodnota je Common::TimeSpan::FromSeconds(60) |Dynamické|Zadejte časový interval v sekundách. Interval dotazování UpgradeService pro operace správy ARM. |
-|TargetReplicaSetSize | Int, výchozí hodnota je 3 |Nepovoleno| TargetReplicaSetSize pro UpgradeService. |
-|TestCabFolder | řetězec, výchozí hodnota je "" |Statická| TestCabFolder for UpgradeService. |
+|BaseUrl | řetězec, výchozí hodnota je "" |Static|BaseUrl pro UpgradeService. |
+|ClusterId | řetězec, výchozí hodnota je "" |Static|ClusterId pro UpgradeService. |
+|CoordinatorType | řetězec, výchozí hodnota je "WUTest"|Nepovolené|CoordinatorType pro UpgradeService. |
+|MinReplicaSetSize | Int, výchozí hodnota je 2 |Nepovolené| MinReplicaSetSize pro UpgradeService. |
+|OnlyBaseUpgrade | Logická hodnota, výchozí hodnota je false. |Dynamické|OnlyBaseUpgrade pro UpgradeService. |
+|PlacementConstraints |řetězec, výchozí hodnota je "" |Nepovolené|PlacementConstraints pro upgrade služby. |
+|PollIntervalInSeconds|Časový interval, výchozí hodnota je common:: TimeSpan:: FromSeconds (60) |Dynamické|Zadejte časový interval v sekundách. Interval mezi UpgradeService dotazem na operace správy ARM |
+|TargetReplicaSetSize | Int, výchozí hodnota je 3 |Nepovolené| TargetReplicaSetSize pro UpgradeService. |
+|TestCabFolder | řetězec, výchozí hodnota je "" |Static| TestCabFolder pro UpgradeService. |
 |X509FindType | řetězec, výchozí hodnota je ""|Dynamické| X509FindType pro UpgradeService. |
 |X509FindValue | řetězec, výchozí hodnota je "" |Dynamické| X509FindValue pro UpgradeService. |
 |X509SecondaryFindValue | řetězec, výchozí hodnota je "" |Dynamické| X509SecondaryFindValue pro UpgradeService. |
 |X509StoreLocation | řetězec, výchozí hodnota je "" |Dynamické| X509StoreLocation pro UpgradeService. |
-|X509StoreName | řetězec, výchozí hodnota je "My"|Dynamické|X509StoreName pro UpgradeService. |
+|X509StoreName | řetězec, výchozí hodnota je my|Dynamické|X509StoreName pro UpgradeService. |
 
-## <a name="next-steps"></a>Další postup
-Další informace najdete v tématu [upgradovat konfiguraci clusteru Azure](service-fabric-cluster-config-upgrade-azure.md) a [upgradovat konfiguraci samostatného clusteru](service-fabric-cluster-config-upgrade-windows-server.md).
+## <a name="userservicemetriccapacities"></a>UserServiceMetricCapacities
+| **Parametr** | **Povolené hodnoty** | **Zásady upgradu** | **Doprovodné materiály nebo krátký popis** |
+| --- | --- | --- | --- |
+|PropertyGroup| UserServiceMetricCapacitiesMap, výchozí hodnota je None | Static | Kolekce omezení zásad správného řízení prostředků uživatelských služeb musí být statická, protože má vliv na logiku pro automatickou detekci. |
+
+## <a name="next-steps"></a>Další kroky
+Další informace najdete v tématu [Upgrade konfigurace clusteru Azure](service-fabric-cluster-config-upgrade-azure.md) a [Upgrade konfigurace samostatného clusteru](service-fabric-cluster-config-upgrade-windows-server.md).

@@ -8,13 +8,13 @@ ms.topic: tutorial
 author: stevestein
 ms.author: sstein
 ms.reviewer: v-masebo
-ms.date: 02/08/2019
-ms.openlocfilehash: bbd009d127eecc4df357fc1073ba4055d13a8b2c
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.date: 07/29/2019
+ms.openlocfilehash: c6ad1cd7af02f281c53ece23a018f8b5ec0c7da9
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569024"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68640952"
 ---
 # <a name="tutorial-design-a-relational-database-in-a-single-database-within-azure-sql-database-using-ssms"></a>Kurz: Návrh relační databáze v jedné databázi v rámci Azure SQL Database pomocí SSMS
 
@@ -30,6 +30,8 @@ Azure SQL Database je relační databáze jako služba (DBaaS) v Microsoft Cloud
 
 \* Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
+> [!TIP]
+> Následující Microsoft Learn modul vám pomůže naučit se zdarma, jak [vyvíjet a konfigurovat aplikaci ASP.NET, která](https://docs.microsoft.com/learn/modules/develop-app-that-queries-azure-sql/)se dotazuje na Azure SQL Database, včetně vytvoření jednoduché databáze.
 > [!NOTE]
 > Pro účely tohoto kurzu používáme samostatnou databázi. Můžete použít také databázi ve fondu v elastickém fondu nebo databázi instancí ve spravované instanci. Informace o připojení ke spravované instanci najdete v těchto rychlých startech spravované instance: [Rychlé zprovoznění: Konfigurace virtuálního počítače Azure pro připojení k spravované instanci](sql-database-managed-instance-configure-vm.md) Azure SQL Database a [rychlé spuštění: Nakonfigurujte připojení typu Point-to-site k Azure SQL Database spravované instanci z místního](sql-database-managed-instance-configure-p2s.md)prostředí.
 
@@ -264,7 +266,7 @@ Informace z databázových tabulek můžete načíst spuštěním následující
        AND person.LastName = 'Coleman'
    ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste se naučili mnoho základních databázových úloh. Naučili jste se tyto postupy:
 

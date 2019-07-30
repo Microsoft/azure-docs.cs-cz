@@ -9,26 +9,26 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 03/29/2019
+ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: a9a6e7ae48a51ab10e6ba2e5d3996e61938c6f3a
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: b962fc32cdcde0509cfa60d105022bb208633ae3
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68560835"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68639299"
 ---
 # <a name="batch-testing-with-1000-utterances-in-luis-portal"></a>Dávkové testování s 1000 projevy na portálu LUIS
 
-Testování služby batch ověří vaše [aktivní](luis-concept-version.md#active-version) trénovaný model pro měření jeho přesnost předpovědi. Testovací služby batch umožňuje zobrazit aktuální trained model v grafu přesnosti jednotlivých záměr a entity. Posoudit výsledky testu služby batch a přijmout vhodná opatření zvyšte přesnost, jako je například přidávání další příklad projevy k záměru, pokud vaše aplikace často nepodaří identifikovat správné záměr.
+Testování služby batch ověří vaše [aktivní](luis-concept-version.md#active-version) trénovaný model pro měření jeho přesnost předpovědi. Batch test vám pomůže zobrazit přesnost každého záměru a entity v aktuálním vyškolený model a zobrazovat výsledky pomocí grafu. Posoudit výsledky testu služby batch a přijmout vhodná opatření zvyšte přesnost, jako je například přidávání další příklad projevy k záměru, pokud vaše aplikace často nepodaří identifikovat správné záměr.
 
 ## <a name="group-data-for-batch-test"></a>Data skupiny pro testovací služby batch
 
-Je důležité, že teprve začínáte LUIS projevy, používá se pro testování služby batch. Pokud už máte datovou sadu projevy, rozdělit projevy do tří sad: projevy přidá k záměru, projevy přijatých z publikovaných koncového bodu a projevy po jsou trénovaná používat batch testu LUIS. 
+Je důležité, že teprve začínáte LUIS projevy, používá se pro testování služby batch. Pokud máte datovou sadu projevy, rozdělte projevy na tři sady: příklad projevy přidané k záměru, projevy přijatý od publikovaného koncového bodu a projevy, který se používá k dávkovému testování LUIS po jeho školení. 
 
-## <a name="a-dataset-of-utterances"></a>Datovou sadu projevy
+## <a name="a-data-set-of-utterances"></a>Sada dat projevy
 
-Odeslat soubor batch projevy, označované jako *datovou sadu*, pro účely testování služby batch. Tato datová sada je soubor ve formátu JSON, který obsahuje maximálně 1 000 označené **neduplicitní** projevy. V aplikaci můžete otestovat až 10 datové sady. Pokud potřebujete další testování, odstranění datové sady a pak přidat nový.
+Odeslání dávkového souboru projevy, který se označuje jako *datová sada*, pro dávkové testování. Datová sada je soubor ve formátu JSON, který obsahuje maximálně 1 000 s označením, že **není duplicitní** projevy. V aplikaci můžete testovat až 10 datových sad. Pokud potřebujete vyzkoušet víc, odstraňte datovou sadu a pak přidejte novou.
 
 |**pravidla**|
 |--|
@@ -106,7 +106,7 @@ Běžné chyby patří:
 
 ## <a name="batch-test-state"></a>Stav testu služby batch
 
-Služba LUIS sleduje stav poslední sady testů každou datovou sadu. To zahrnuje velikost (počet v dávce projevy), poslední spuštění data a výsledek posledního (počet úspěšně předpokládané projevy).
+LUIS sleduje stav posledního testu sady dat. To zahrnuje velikost (počet v dávce projevy), poslední spuštění data a výsledek posledního (počet úspěšně předpokládané projevy).
 
 <a name="sections-of-the-results-chart"></a>
 
@@ -114,7 +114,7 @@ Služba LUIS sleduje stav poslední sady testů každou datovou sadu. To zahrnuj
 
 Výsledek testu batch je bodový graf, označované jako matici chyby. Tento graf se 4 způsob porovnání projevy dávkový soubor a předpokládané záměr aktuální model a entity. 
 
-Datových bodů na **falešně pozitivní** a **falešně negativní** části označují chyby, které by mělo být vypátráno. Pokud jsou všechny datové body na **True kladné** a **True negativní** části, je ideální pro tuto datovou sadu přesnost vaší aplikace.
+Datových bodů na **falešně pozitivní** a **falešně negativní** části označují chyby, které by mělo být vypátráno. Pokud jsou všechny datové body na **true pozitivních** částech a **pravdivé záporné** části, je přesnost vaší aplikace ideální pro tuto datovou sadu.
 
 ![Čtyři části grafu](./media/luis-concept-batch-test/chart-sections.png)
 

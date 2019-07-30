@@ -10,19 +10,19 @@ ms.topic: quickstart
 author: sachinpMSFT
 ms.author: ninarn
 ms.reviewer: carlrab, sstein
-ms.date: 04/23/2019
-ms.openlocfilehash: 39ea967de1ad06fdf942a8e3a21dbea9f9f8f61f
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.date: 07/29/2019
+ms.openlocfilehash: f9c2ed77075affdfdf464dbf8a468629fc2e610d
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566584"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68640042"
 ---
 # <a name="quickstart-create-a-single-database-in-azure-sql-database-using-the-azure-portal-powershell-and-azure-cli"></a>Rychlý start: Vytvoření izolované databáze v Azure SQL Database pomocí Azure Portal, PowerShellu a rozhraní příkazového řádku Azure
 
 Vytvoření [jedné databáze](sql-database-single-database.md) je nejrychlejší a nejjednodušší možnost nasazení pro vytvoření databáze v Azure SQL Database. V tomto rychlém startu se dozvíte, jak vytvořit a pak zadat dotaz na izolovanou databázi pomocí Azure Portal.
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/).
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/). 
 
 Pro všechny kroky v tomto rychlém startu se přihlaste k [Azure Portal](https://portal.azure.com/).
 
@@ -36,7 +36,7 @@ Jednu databázi je možné vytvořit buď ve výpočetní úrovni zřízené, ne
 Když vytvoříte izolovanou databázi, nadefinujete taky [SQL Database Server](sql-database-servers.md) , který budete spravovat a umístit do [skupiny prostředků Azure](../azure-resource-manager/resource-group-overview.md) v zadané oblasti.
 
 > [!NOTE]
-> Tento rychlý Start používá [nákupní model založený na Vcore](sql-database-service-tiers-vcore.md) a výpočetní úroveň bez [serveru](sql-database-serverless.md) , ale je k dispozici i [nákupní model založený na DTU](sql-database-service-tiers-DTU.md) .
+> V tomto rychlém startu se používá [nákupní model založený na Vcore](sql-database-service-tiers-vcore.md), ale [nákupní model založený na DTU](sql-database-service-tiers-DTU.md) je také k dispozici.
 
 Vytvoření samostatné databáze obsahující ukázková data AdventureWorksLT:
 
@@ -76,7 +76,7 @@ Po dokončení používání těchto prostředků je můžete odstranit následu
 2. Na stránce skupiny prostředků vyberte **Odstranit skupinu prostředků**.
 3. Do pole zadejte *myResourceGroup* a pak vyberte **Odstranit**.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Vytvořte pravidlo brány firewall na úrovni serveru pro připojení k izolované databázi z místních nebo vzdálených nástrojů. Další informace najdete v tématu [Vytvoření pravidla brány firewall na úrovni serveru](sql-database-server-level-firewall-rule.md).
 - Po vytvoření pravidla brány firewall na úrovni serveru se [připojte a Dotazujte](sql-database-connect-query.md) databázi pomocí několika různých nástrojů a jazyků.

@@ -53,6 +53,8 @@
       href: use-editor-create-project.md
     - name: Vložení widgetů do aplikace
       href: video-indexer-embed-widgets.md
+    - name: Zotavení po havárii
+      href: video-indexer-disaster-recovery.md
     - name: Přizpůsobení modelů obsahu
       items:
         - name: Person (Osoba)

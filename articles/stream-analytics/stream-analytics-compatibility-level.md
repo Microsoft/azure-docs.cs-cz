@@ -6,135 +6,141 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 5/2/2019
-ms.openlocfilehash: c1b2875e6899d2301a4c4b564882214dc7bc4981
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8e3ae84242a1a9b76fbb18a8d8164c97a62a97d9
+ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65205459"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68003911"
 ---
 # <a name="compatibility-level-for-azure-stream-analytics-jobs"></a>Úroveň kompatibility pro úlohy Azure Stream Analytics
 
-Tento článek popisuje možnosti úrovně kompatibility ve službě Azure Stream Analytics. Stream Analytics je spravovaná služba, se aktualizace regulární funkcí a vylepšení výkonu. Většinu aktualizací služby moduly runtime jsou automaticky k dispozici koncovým uživatelům. 
+Tento článek popisuje možnost úrovně kompatibility v Azure Stream Analytics. Stream Analytics je spravovaná služba s pravidelnými aktualizacemi funkcí a vylepšení výkonu. Většina aktualizací za běhu služby je automaticky dostupná pro koncové uživatele. 
 
-Ale některé nové funkce ve službě může představovat velkou změnu, jako je například změna v chování existující úlohy, nebo změny v datech způsob, jak se spotřebovává v běžící úlohy. Můžete zachovat existující úlohy Stream Analytics spustíte bez významné změny se zaškrtnutým políčkem nastavení sníženou úrovní kompatibility. Až budete připravení nejnovější chování za běhu, které můžete vyjádřit výslovný souhlas zvýšením úrovně kompatibility. 
+Některé nové funkce ve službě však mohou způsobit zásadní změnu, například změnu chování existující úlohy nebo změnu způsobu, jakým se data ve spuštěných úlohách spotřebovávají. Stávající úlohy Stream Analytics běží bez podstatných změn, protože nastavení úrovně kompatibility zůstane nižší. Až budete připraveni na nejnovější chování modulu runtime, můžete se rozhodnout, že vyvyvoláváte úroveň kompatibility. 
 
-## <a name="choose-a-compatibility-level"></a>Zvolte úroveň kompatibility
+## <a name="choose-a-compatibility-level"></a>Zvolit úroveň kompatibility
 
 Úroveň kompatibility řídí chování za běhu úlohy stream analytics. 
 
 Azure Stream Analytics aktuálně podporuje tři úrovně kompatibility:
 
-* Dřívější chování při 1.0-
-* 1.1 – výchozí chování
-* 1.2 (preview) – nejnovější chování pomocí nejnovější vylepšení ve vyhodnocování
+* 1,0 – předchozí chování
+* 1,1 – výchozí chování
+* 1,2 (Preview) – nejnovější chování s nejnovějšími vylepšeními ve vyhodnocování
 
-Původní 1.0 úroveň kompatibility byla zavedena v období všeobecné dostupnosti služby Azure Stream Analytics už před několika lety.
+Původní úroveň kompatibility 1,0 byla zavedena během obecné dostupnosti Azure Stream Analytics před několika lety.
 
-Při vytváření nové úlohy Stream Analytics, je osvědčeným postupem je vytvoření s použitím nejnovější úroveň kompatibility. Spuštění úlohy návrhu importovaným nejnovější chování, aby se zabránilo přidání změn a složitosti později.
+Když vytváříte novou Stream Analytics úlohu, je osvědčeným postupem, jak ji vytvořit pomocí nejnovější úrovně kompatibility. Zahajte návrh úlohy, který se spoléhá na nejnovější chování, abyste se později vyhnuli přidané změně a složitosti.
 
-## <a name="set-the-compatibility-level"></a>Nastavit úroveň kompatibility
+## <a name="set-the-compatibility-level"></a>Nastavení úrovně kompatibility
 
-Můžete nastavit úroveň kompatibility pro úlohu Stream Analytics na portálu Azure portal nebo pomocí [vytvořit úlohu volání rozhraní REST API](/rest/api/streamanalytics/stream-analytics-job).
+Úroveň kompatibility pro úlohu Stream Analytics můžete nastavit v Azure Portal nebo pomocí [volání funkce vytvořit úlohu REST API](/rest/api/streamanalytics/stream-analytics-job).
 
-Chcete-li aktualizovat úroveň kompatibility úlohy na webu Azure Portal:
+Postup aktualizace úrovně kompatibility úlohy v Azure Portal:
 
-1. Použití [webu Azure portal](https://portal.azure.com) najít vaší úlohy Stream Analytics.
-2. **Zastavit** úlohy před aktualizací úroveň kompatibility. Úroveň kompatibility nelze aktualizovat, pokud vaše úloha není ve spuštěném stavu.
-3. V části **konfigurovat** záhlaví, vyberte **úroveň kompatibility**.
-4. Zvolte požadovanou hodnotu úroveň kompatibility.
-5. Vyberte **Uložit** v dolní části stránky.
+1. K vyhledání Stream Analytics úlohy použijte [Azure Portal](https://portal.azure.com) .
+2. Před aktualizací úrovně kompatibility úlohu zastavte. Úroveň kompatibility nelze aktualizovat, pokud vaše úloha není ve spuštěném stavu.
+3. V části **Konfigurovat** záhlaví vyberte **úroveň kompatibility**.
+4. Vyberte hodnotu úrovně kompatibility, kterou chcete.
+5. V dolní části stránky vyberte **Save (Uložit** ).
 
 ![Úroveň kompatibility Stream Analytics na webu Azure portal](media/stream-analytics-compatibility-level/stream-analytics-compatibility.png)
 
 Při aktualizaci úrovní kompatibility T-SQL compiler ověří úlohy pomocí syntaxe, která odpovídá úroveň kompatibility vybrané.
 
-## <a name="compatibility-level-12-preview"></a>Úroveň kompatibility 1.2 (Preview)
+## <a name="compatibility-level-12-preview"></a>Úroveň kompatibility 1,2 (Preview)
 
-V úrovni kompatibility 1.2 byly zavedeny následující hlavní změny:
+V úrovni kompatibility 1,2 jsou představeny tyto hlavní změny:
 
 ### <a name="geospatial-functions"></a>Geoprostorové funkce
 
-**Předchozí úrovně:** Azure Stream Analytics používá výpočty zeměpisné oblasti.
+**Předchozí úrovně:** Azure Stream Analytics použití geografických výpočtů.
 
-**1.2 úroveň:** Azure Stream Analytics umožňuje compute geometrické předpokládané geografické souřadnice. Není žádná změna v podpisu geoprostorové funkce. Je však poněkud lišit, a umožňuje přesnější výpočty než před jejich sémantiku.
+**úroveň 1,2:** Azure Stream Analytics umožňuje výpočet geometrických geografických souřadnic. Signatura geoprostorových funkcí se nijak nemění. Jejich sémantika je však mírně odlišná a umožňuje přesnější výpočet než předtím.
 
-Azure Stream Analytics podporuje geoprostorové indexování dat k odkazu. Referenční Data obsahující prvky geoprostorové můžete možné indexovat pro rychlejší připojení k výpočtu.
+Azure Stream Analytics podporuje indexování geoprostorových referenčních dat. Referenční data obsahující geoprostorové prvky lze indexovat pro rychlejší výpočet spojení.
 
-Aktualizované geoprostorové funkce přineste úplné expresivity formátu geoprostorové dobře známé Text (Well-Known text). Zadejte další geoprostorové komponenty, které dříve nebyly podporovány s GeoJson.
+Aktualizované geoprostorové funkce přinášejí úplný expresivity geoprostorového formátu dobře známého textu (Well). Můžete určit další geoprostorové komponenty, které nebyly dříve podporovány s funkcí injson.
 
-Další informace najdete v tématu [aktualizuje geoprostorové funkce ve službě Azure Stream Analytics – cloudem a hraničními zařízeními IoT](https://azure.microsoft.com/blog/updates-to-geospatial-functions-in-azure-stream-analytics-cloud-and-iot-edge/).
+Další informace najdete v tématu [aktualizace geoprostorových funkcí v Azure Stream Analytics – Cloud a IoT Edge](https://azure.microsoft.com/blog/updates-to-geospatial-functions-in-azure-stream-analytics-cloud-and-iot-edge/).
 
-### <a name="parallel-query-execution-for-input-sources-with-multiple-partitions"></a>Paralelní provádění dotazů pro vstupní zdroje s více oddílů
+### <a name="parallel-query-execution-for-input-sources-with-multiple-partitions"></a>Paralelní provádění dotazů pro vstupní zdroje s více oddíly
 
-**Předchozí úrovně:** Azure Stream Analytics dotazů vyžaduje použití klauzule PARTITION BY paralelizovat dotaz zpracování napříč oddíly vstupní zdroj.
+**Předchozí úrovně:** Azure Stream Analytics dotazy vyžadovaly použití klauzule PARTITION BY k paralelizovat zpracování dotazů přes vstupní zdrojové oddíly.
 
-**1.2 úroveň:** Pokud logiku dotazu může být paralelizována přes vstupní zdrojové oddíly, Azure Stream Analytics vytváří samostatný dotaz instance a spustí paralelní výpočty.
+**úroveň 1,2:** Pokud je možné logiku dotazů paralelně rozdělit mezi vstupní zdrojové oddíly, Azure Stream Analytics vytvoří samostatné instance dotazů a souběžné spouštění výpočtů.
 
-### <a name="native-bulk-api-integration-with-cosmosdb-output"></a>Nativní integrace rozhraní API hromadného s výkonem CosmosDB
+### <a name="native-bulk-api-integration-with-cosmosdb-output"></a>Nativní integrace rozhraní API s využitím výstupu CosmosDB
 
-**Předchozí úrovně:** Chování upsert byl *vložit nebo sloučit*.
+**Předchozí úrovně:** Chování Upsert bylo *vloženo nebo sloučeno*.
 
-**1.2 úroveň:** Nativní integrace rozhraní API hromadného s výkonem CosmosDB maximalizuje propustnost a efektivně zvládne omezování požadavků. Další informace najdete v tématu [výstupu Azure Stream Analytics na stránku služby Azure Cosmos DB](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-documentdb-output#improved-throughput-with-compatibility-level-12).
+**úroveň 1,2:** Nativní integrace rozhraní API s využitím výstupu CosmosDB maximalizuje propustnost a efektivně zpracovává požadavky na omezování. Další informace najdete [na stránce Azure Stream Analytics výstup do Azure Cosmos DB](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-documentdb-output#improved-throughput-with-compatibility-level-12).
 
-Chování upsert je *vložení nebo nahrazení*.
+Chování Upsert je *vloženo nebo nahrazeno*.
 
 ### <a name="datetimeoffset-when-writing-to-sql-output"></a>DateTimeOffset při zápisu do výstupu SQL
 
-**Předchozí úrovně:** [DateTimeOffset](https://docs.microsoft.com/sql/t-sql/data-types/datetimeoffset-transact-sql?view=sql-server-2017) typy byly upraveny na čas UTC.
+**Předchozí úrovně:** Typy [DateTimeOffset](https://docs.microsoft.com/sql/t-sql/data-types/datetimeoffset-transact-sql?view=sql-server-2017) byly upraveny na čas UTC.
 
-**1.2 úroveň:** Už se upraví DateTimeOffset.
+**úroveň 1,2:** DateTimeOffset již není upravován.
 
-### <a name="strict-validation-of-prefix-of-functions"></a>Přísný ověřovací předpony funkcí
+### <a name="long-when-writing-to-sql-output"></a>Long při zápisu do výstupu SQL
 
-**Předchozí úrovně:** Došlo k dispozici žádné přísný ověřovací funkce předpony.
+**Předchozí úrovně:** Hodnoty byly zkráceny na základě cílového typu.
 
-**1.2 úroveň:** Azure Stream Analytics má přísný ověřovací funkce předpony. Přidání předpony předdefinované funkce způsobí chybu. Například`myprefix.ABS(…)` se nepodporuje.
+**úroveň 1,2:** Hodnoty, které se nevejdou do cílového typu, se zpracovávají podle zásad výstupních chyb.
 
-Přidání předpony vestavěné agregace také výsledkem chyba. Například `myprefix.SUM(…)` se nepodporuje.
+### <a name="strict-validation-of-prefix-of-functions"></a>Striktní ověření předpony funkcí
 
-Pomocí předpony "systém" pro všechny uživatelem definované funkce výsledkem chyba.
+**Předchozí úrovně:** Nedošlo k žádné striktní kontrole prefixů funkcí.
 
-### <a name="disallow-array-and-object-as-key-properties-in-cosmos-db-output-adapter"></a>Zakázat pole a objektu jako vlastnosti klíče v adaptér pro výstup služby Cosmos DB
+**úroveň 1,2:** Azure Stream Analytics má striktní ověření prefixů funkcí. Přidáním předpony k předdefinované funkci dojde k chybě. Například`myprefix.ABS(…)` není podporován.
 
-**Předchozí úrovně:** Jako klíčová vlastnost nebyly podporovány typy pole a objektu.
+Přidání předpony k předdefinovaným agregacím také způsobí chybu. Například `myprefix.SUM(…)` není podporován.
 
-**1.2 úroveň:** Typy pole a objekt již nejsou podporovány jako klíčová vlastnost.
+Výsledkem použití předpony "System" pro jakékoli uživatelsky definované funkce je chyba.
 
-## <a name="compatibility-level-11"></a>Úroveň kompatibility 1.1
+### <a name="disallow-array-and-object-as-key-properties-in-cosmos-db-output-adapter"></a>Zakázat pole a objekt jako klíčové vlastnosti v Cosmos DB výstupním adaptéru
+
+**Předchozí úrovně:** Typy polí a objektů byly podporovány jako vlastnost klíče.
+
+**úroveň 1,2:** Typy polí a objektů již nejsou podporovány jako vlastnost klíče.
+
+## <a name="compatibility-level-11"></a>Úroveň kompatibility 1,1
 
 V úrovni kompatibility 1.1 byly zavedeny následující hlavní změny:
 
-### <a name="service-bus-xml-format"></a>Formát XML služby Service Bus
+### <a name="service-bus-xml-format"></a>Service Bus formát XML
 
-**úroveň 1.0:** Azure Stream Analytics používá DataContractSerializer, takže obsah zprávy zahrnout tagů XML. Příklad:
+**úroveň 1,0:** Azure Stream Analytics použila DataContractSerializer, takže obsah zprávy obsahuje značky XML. Příklad:
 
 `@\u0006string\b3http://schemas.microsoft.com/2003/10/Serialization/\u0001{ "SensorId":"1", "Temperature":64\}\u0001`
 
-**1.1 úroveň:** Obsah zprávy obsahuje datovým proudem přímo s žádné další značky. Příklad: `{ "SensorId":"1", "Temperature":64}`
+**úroveň 1,1:** Obsah zprávy obsahuje datový proud přímo bez dalších značek. Příklad: `{ "SensorId":"1", "Temperature":64}`
 
-### <a name="persisting-case-sensitivity-for-field-names"></a>Zachování rozlišování názvů polí
+### <a name="persisting-case-sensitivity-for-field-names"></a>Zachování rozlišování velkých a malých písmen u názvů polí
 
-**úroveň 1.0:** Názvy polí byly změněny na malá písmena, když modul Azure Stream Analytics zpracovává.
+**úroveň 1,0:** Názvy polí se změnily na malá písmena při zpracování modulem Azure Stream Analytics.
 
-**1.1 úroveň:** rozlišování se ukládají pro názvy polí při jejich zpracování pomocí modulu Azure Stream Analytics.
+**1,1 úroveň:** rozlišování malých a velkých písmen je u názvů polí při zpracovávání modulem Azure Stream Analytics trvalé.
 
 > [!NOTE]
 > Zachování rozlišování ještě není k dispozici pro Stream analytických úloh, které jsou hostované pomocí hraničním prostředí. Názvy všech polí v důsledku toho jsou převedeny na malá písmena, pokud vaše úloha je hostovaná na hraničních zařízeních.
 
 ### <a name="floatnandeserializationdisabled"></a>FloatNaNDeserializationDisabled
 
-**úroveň 1.0:** Příkaz CREATE TABLE není filtrovat události s NaN (Not a Number. Například nekonečno, - nekonečno) ve sloupci PLOVOUCÍ typ, protože jsou mimo rozsah zdokumentovaných pro tato čísla.
+**úroveň 1,0:** Příkaz CREATE TABLE nefiltroval události s NaN (nejedná se o číslo). Například nekonečno, - nekonečno) ve sloupci PLOVOUCÍ typ, protože jsou mimo rozsah zdokumentovaných pro tato čísla.
 
-**1.1 úroveň:** VYTVOŘIT tabulku můžete zadat silné schématu. Modul Stream Analytics ověří, že toto schéma odpovídá data. V tomto modelu můžete příkaz Filtrovat události s hodnoty NaN.
+**úroveň 1,1:** CREATE TABLE umožňuje zadat silné schéma. Modul Stream Analytics ověří, že toto schéma odpovídá data. V tomto modelu můžete příkaz Filtrovat události s hodnoty NaN.
 
-### <a name="disable-automatic-upcast-for-datetime-strings-in-json"></a>Zakázat automatické přetypování nahoru pro řetězce data a času ve formátu JSON
+### <a name="disable-automatic-upcast-for-datetime-strings-in-json"></a>Zakázat automatické přetypování pro řetězce DateTime ve formátu JSON
 
-**úroveň 1.0:** Analyzátor JSON by automaticky upcast řetězcové hodnoty s informacemi o datum/čas/pásmo na typ DateTime a převeďte jej na UTC. Toto chování za následek ztrátu informace o časovém pásmu.
+**úroveň 1,0:** Analyzátor JSON automaticky přesměruje řetězcové hodnoty s informacemi o datu a času nebo zóně na typ DateTime a pak je převede na UTC. Výsledkem tohoto chování je ztráta informací o časovém pásmu.
 
-**1.1 úroveň:** Neexistuje žádné další automaticky upcast řetězcových hodnot s informacemi o datum/čas/pásmo na typ DateTime. V důsledku toho se ukládají informace o časovém pásmu.
+**úroveň 1,1:** Neexistují žádné další automatické přetypování řetězcových hodnot s informacemi o datu a času nebo zóně k typu DateTime. V důsledku toho se ukládají informace o časovém pásmu.
 
 ## <a name="next-steps"></a>Další postup
 
 * [Řešení potíží s Azure Stream Analytics vstupy](stream-analytics-troubleshoot-input.md)
-* [Stream Analytics Resource health](stream-analytics-resource-health.md)
+* [Stav prostředku Stream Analytics](stream-analytics-resource-health.md)

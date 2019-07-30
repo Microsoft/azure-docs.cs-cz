@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 04/18/2019
+ms.date: 07/29/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 5dd49035414c7e717c3d60ab9bc185f42dcac408
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 6d4991a0a05bbdd7143987bfa227cc40732cda35
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68560860"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68639252"
 ---
 # <a name="boundaries-for-your-luis-model-and-keys"></a>Hranice pro LUIS model a klíče
 Služba LUIS má několik oblasti hranic. První je [modelu hranice](#model-boundaries), který určuje záměrů, entit a funkcí v LUIS. Druhá oblast je [kvóty](#key-limits) podle typu klíče. Je třetí oblasti hranic [klávesové kombinace](#keyboard-controls) pro řízení webu LUIS. Je čtvrtý oblast [mapování oblasti world](luis-reference-regions.md) mezi LUIS vytváření webu a LUIS [koncový bod](luis-glossary.md#endpoint) rozhraní API. 
@@ -76,7 +76,7 @@ Vytváření klíč má různá omezení pro vytváření obsahu a koncový bod.
 |[Předplatné][pricing] Language Understanding – S0 – úroveň Basic|neplatné|50/s|Dotazování na koncový bod služby LUIS|
 |[Předplatné][pricing] služby vnímání – S0 – úroveň Standard|neplatné|50/s|Dotazování na koncový bod služby LUIS|
 |[Integrace analýzy mínění](luis-how-to-publish-app.md#enable-sentiment-analysis)|neplatné|bez poplatků|Přidání informací o mínění včetně extrakce klíčových frází |
-|Integrace rozpoznávání řeči|neplatné|Žádosti koncového bodu 5.50 USD/1 tisíc|Převést utterance mluvené slovo na text utterance a vrátí výsledky LUIS|
+|[Integrace řeči](../speech-service/how-to-recognize-intents-from-speech-csharp.md)|neplatné|Žádosti koncového bodu 5.50 USD/1 tisíc|Převést utterance mluvené slovo na text utterance a vrátí výsledky LUIS|
 
 ## <a name="keyboard-controls"></a>Ovládacím prvkům klávesnice
 
@@ -84,7 +84,7 @@ Vytváření klíč má různá omezení pro vytváření obsahu a koncový bod.
 |--|--|
 |Ovládací prvek + E|Přepne mezi tokeny a entit v seznamu projevy|
 
-## <a name="website-sign-in-time-period"></a>Webu přihlásit v časovém období
+## <a name="website-sign-in-time-period"></a>Časové období pro přihlášení k webu
 
 Přihlášení přístup je pro **60 minut**. Tato chyba se zobrazí po tomto časovém období. Budete se muset znovu přihlásit.
 

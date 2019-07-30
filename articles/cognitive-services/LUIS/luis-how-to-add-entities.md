@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 04/01/2019
+ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: fdf60a454aeb19b83ce455a771b8399c90af3bce
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 1b42ab9155f5b9719ef6477934722021e3fbac99
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68563745"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68638266"
 ---
 # <a name="create-entities-without-utterances"></a>Vytvoření entity bez projevy
 
@@ -114,13 +114,13 @@ V utterance `Where is Request relocation from employee new to the company on the
 
 Role je pojmenovaný podtyp založený na kontextu. Je k dispozici ve všech entitách, včetně předem sestavených a nestrojově zjištěných entit. 
 
-Syntaxe role je **`{Entityname:Rolename}`** , kde je název entity následován dvojtečkou a potom názvem role. Například, `Move {personName} from {LocationUsingRoles:Origin} to {LocationUsingRoles:Destination}`.
+Syntaxe role je **`{Entityname:Rolename}`** , kde je název entity následován dvojtečkou a potom názvem role. Například, `Move {personName} from {Location:Origin} to {Location:Destination}`.
 
 1. Z **sestavení** vyberte **entity** na levém panelu.
 
-1. Vyberte **Create new entity** (Vytvořit novou entitu). Zadejte název `LocationUsingRoles`. Vyberte typ **jednoduché** a vyberte **provádí**. 
+1. Vyberte **Create new entity** (Vytvořit novou entitu). Zadejte název `Location`. Vyberte typ **jednoduché** a vyberte **provádí**. 
 
-1. Vyberte **entity** na levém panelu, vyberte novou entitu **LocationUsingRoles** vytvořili v předchozím kroku.
+1. Na levém panelu vyberte **entity** a pak vyberte nové **umístění** entity vytvořené v předchozím kroku.
 
 1. V **název Role** textového pole zadejte název role `Origin` a zadejte. Přidejte druhý název role `Destination`. 
 

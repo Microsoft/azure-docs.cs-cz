@@ -9,17 +9,19 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 01/23/2019
+ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: c1a0afc909aa7ef16fa54b931e1601c2ce7304cc
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 31d979b92bdf050f28ac5d7549218016dc5e473c
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68560412"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68638015"
 ---
-# <a name="test-your-luis-app-in-the-luis-portal"></a>Testování aplikace LUIS na portálu LUIS
 <a name="train-your-app"></a>
+
+# <a name="test-your-luis-app-in-the-luis-portal"></a>Testování aplikace LUIS na portálu LUIS
+
 [Testování](luis-concept-test.md) aplikace je iterativní proces. Po školení aplikace LUIS, otestujte ho s ukázka projevy a zjistěte, jestli jsou správně rozpoznány záměry a entity. Pokud ne, proveďte aktualizace znovu na aplikaci LUIS, trénování a testování. 
 
 <!-- anchors for H2 name changes -->
@@ -31,13 +33,13 @@ ms.locfileid: "68560412"
 
 1. Přístup k aplikaci tak, že vyberete jeho název na **Moje aplikace** stránky. 
 
-2. Pro přístup k **testovací** snímku na více instancí panelu, vyberte **Test** v horním panelu vaší aplikace.
+1. Pro přístup k **testovací** snímku na více instancí panelu, vyberte **Test** v horním panelu vaší aplikace.
 
     ![Aplikace Test pro trénování a stránky](./media/luis-how-to-interactive-test/test.png)
 
-3. Zadejte utterance do textového pole a stiskněte Enter. Můžete zadat tolik testovacích projevy, jak chcete, aby **testování**, ale pouze jeden utterance najednou.
+1. Zadejte utterance do textového pole a stiskněte Enter. Můžete zadat tolik testovacích projevy, jak chcete, aby **testování**, ale pouze jeden utterance najednou.
 
-4. Utterance, hlavní záměr a skóre jsou přidány do seznamu projevy pod textovým polem.
+1. Utterance, hlavní záměr a skóre jsou přidány do seznamu projevy pod textovým polem.
 
     ![Interaktivní testování identifikuje nesprávné záměr](./media/luis-how-to-interactive-test/test-weather-1.png)
 
@@ -49,7 +51,7 @@ Prozkoumejte podrobnosti o výsledku testu v **zkontrolujte, jestli se** panelu.
 
     ![Kliknutím na tlačítko zkontrolovat zobrazíte další podrobnosti o výsledcích testu.](./media/luis-how-to-interactive-test/inspect.png)
 
-2. **Kontroly** otevře se panel. Na panelu zahrnuje nejvyšší hodnocení záměr, stejně jako všechny zjištěné entity. Na panelu zobrazuje výsledek vybraný utterance.
+1. **Kontroly** otevře se panel. Na panelu zahrnuje nejvyšší hodnocení záměr, stejně jako všechny zjištěné entity. Na panelu zobrazuje výsledek vybraný utterance.
 
     ![Na panelu zahrnuje nejvyšší hodnocení záměr, stejně jako všechny zjištěné entity. Na panelu zobrazuje výsledek vybraný utterance.](./media/luis-how-to-interactive-test/inspect-panel.png)
 
@@ -57,7 +59,7 @@ Prozkoumejte podrobnosti o výsledku testu v **zkontrolujte, jestli se** panelu.
 
 1. Pokud je nesprávná horní vyhodnocování záměr, vyberte **upravit** tlačítko.
 
-2.  V rozevíracím seznamu vyberte správné záměr pro utterance.
+1.  V rozevíracím seznamu vyberte správné záměr pro utterance.
 
     ![Vyberte správný záměr](./media/luis-how-to-interactive-test/intent-select.png)
 
@@ -103,16 +105,14 @@ Pomocí následujícího postupu Pokud chcete zahrnout [kontrolu pravopisu Bingu
 
 1. V **Test** podokně, zadejte utterance. Když očekává se, utterance, vyberte **[zkontrolujte, jestli se](#inspect-score)** pod utterance jste zadali. 
 
-2. Když **zkontrolujte, jestli se** panelu otevře, vyberte  **[porovnat s publikovanou](#compare-with-published-version)** . 
+1. Když **zkontrolujte, jestli se** panelu otevře, vyberte  **[porovnat s publikovanou](#compare-with-published-version)** . 
 
-3. Když **publikováno** panelu otevře, vyberte  **[další nastavení](#additional-settings-in-test-panel)** .
+1. Když **publikováno** panelu otevře, vyberte  **[další nastavení](#additional-settings-in-test-panel)** .
 
-4. V místním dialogovém okně zadejte vaše **kontrolu pravopisu Bingu** klíč služby. 
-    ![Zadejte klíč služby pro kontrolu pravopisu Bingu](./media/luis-how-to-interactive-test/interactive-with-spell-check-service-key.png)
+1. V místním dialogovém okně zaškrtněte **povolit kontrola pravopisu Bingu** a zadejte klíč a potom vyberte **Hotovo**. 
+    ![Zadejte klíč služby pro kontrolu pravopisu Bingu](./media/luis-how-to-interactive-test/interactive-with-spell-check-service-key-text.png)
 
-5. Zadejte dotaz s nesprávné pravopisu, jako `book flite to seattle` a vyberte možnost enter. Nesprávný pravopis slova `flite` nahrazuje ve dotaz odeslaný do služby LUIS a výsledné JSON ukazuje obě původní dotaz, jako `query`a opravený pravopis v dotazu jako `alteredQuery`.
-
-    ![Oprava kontroly pravopisu JSON](./media/luis-how-to-interactive-test/interactive-with-spell-check-results.png)
+1. Zadejte dotaz s nesprávné pravopisu, jako `book flite to seattle` a vyberte možnost enter. Nesprávný pravopis slova `flite` nahrazuje ve dotaz odeslaný do služby LUIS a výsledné JSON ukazuje obě původní dotaz, jako `query`a opravený pravopis v dotazu jako `alteredQuery`.
 
 <a name="json-file-with-no-duplicates"></a>
 <a name="import-a-dataset-file-for-batch-testing"></a>

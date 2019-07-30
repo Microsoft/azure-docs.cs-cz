@@ -1,6 +1,6 @@
 ---
-title: Přidání vazby fronty Azure Storage do funkce Pythonu
-description: Zjistěte, jak přidat vazby funkce Pythonu pomocí rozhraní příkazového řádku Azure a Functions Core Tools výstupní fronty Azure Storage.
+title: Přidání vazby fronty Azure Storage k funkci Pythonu
+description: Naučte se, jak do funkce Pythonu Přidat výstupní vazbu Azure Storage fronty pomocí základních nástrojů Azure CLI a Functions.
 services: functions
 keywords: ''
 author: ggailey777
@@ -11,61 +11,61 @@ ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: python
 manager: jeconnoc
-ms.openlocfilehash: c2565a5549cbca08b987883e5905f09070b5ab2c
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 34ec7c678410b2e0814f8dbb7a69257886cb891d
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67443208"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68639153"
 ---
-# <a name="add-an-azure-storage-queue-binding-to-your-python-function"></a>Přidání vazby fronty Azure Storage do funkce Pythonu
+# <a name="add-an-azure-storage-queue-binding-to-your-python-function"></a>Přidání vazby fronty Azure Storage k funkci Pythonu
 
-Služba Azure Functions vám umožní připojit se službami Azure a dalších prostředků pro funkce bez nutnosti psát vlastní kód integrace. Tyto *vazby*, které představují vstupní a výstupní, jsou deklarované uvnitř definice funkce. Data z vazby je k dispozici funkce jako parametry. Aktivační události je zvláštní druh vstupní vazby. Funkce obsahuje pouze jednu aktivační událost, může mít více vstupní a výstupní vazby. Další informace najdete v tématu [aktivace Azure Functions a vazby koncepty](functions-triggers-bindings.md).
+Azure Functions umožňuje připojit služby Azure a další prostředky k funkcím bez nutnosti psát vlastní kód pro integraci. Tyto *vazby*, které představují vstupní i výstupní, jsou deklarovány v rámci definice funkce. Data z vazeb jsou k dispozici funkci jako parametry. *Trigger* je speciální typ vstupní vazby. I když má funkce pouze jednu Trigger, může mít více vstupních a výstupních vazeb. Další informace najdete v tématu [Azure Functions triggery a koncepty vazeb](functions-triggers-bindings.md).
 
-V tomto článku se dozvíte, jak integrovat funkce, kterou jste vytvořili v [předchozím článku rychlý Start](functions-create-first-function-python.md) pomocí fronty služby Azure Storage. Výstupní vazby, který přidáte do této funkce zapíše data z požadavku HTTP pro zprávu ve frontě. 
+V tomto článku se dozvíte, jak integrovat funkci, kterou jste vytvořili v [předchozím článku rychlý Start](functions-create-first-function-python.md) s frontou Azure Storage. Výstupní vazba, kterou přidáte do této funkce, zapisuje data z požadavku HTTP do zprávy ve frontě.
 
-Většina vazby vyžadují uložené připojovací řetězec, který funkce používá pro přístup k vazbou služby. Aby bylo snazší, použijete účet úložiště, který jste vytvořili pomocí aplikace function app. Připojení k tomuto účtu je již uložen v aplikaci nastavení s názvem `AzureWebJobsStorage`.  
+Většina vazeb vyžaduje uložený připojovací řetězec, který funkce používá pro přístup k vázané službě. Aby bylo toto připojení snazší, použijte účet úložiště, který jste vytvořili v aplikaci Function App. Připojení k tomuto účtu je již Uloženo v nastavení aplikace s názvem `AzureWebJobsStorage`.  
 
 ## <a name="prerequisites"></a>Požadavky
 
-Předtím, než se pustíte do tohoto článku, proveďte kroky v [části 1 tohoto rychlého startu Python](functions-create-first-function-python.md).
+Než začnete s tímto článkem, proveďte kroky v [části 1 rychlého](functions-create-first-function-python.md)startu v Pythonu.
 
-## <a name="download-the-function-app-settings"></a>Stáhněte si nastavení aplikace function app
+## <a name="download-the-function-app-settings"></a>Stažení nastavení Function App
 
-V předchozím článku rychlý start jste vytvořili aplikaci function app v Azure společně s vyžaduje účet úložiště. Připojovací řetězec pro tento účet je bezpečně uložen v nastavení aplikace v Azure. V tomto článku se zápis zpráv do fronty úložiště ve stejném účtu. Pro připojení k účtu úložiště při místním spuštění funkce, je třeba do souboru local.settings.json stáhnout nastavení aplikace. Spuštěním následujícího příkazu Azure Functions Core Tools ke stažení nastavení do souboru local.settings.json, nahrazení `<APP_NAME>` s názvem aplikace function App v předchozím článku:
+V předchozím článku rychlý Start jste vytvořili aplikaci funkcí v Azure společně s požadovaným účtem úložiště. Připojovací řetězec pro tento účet je bezpečně uložený v nastavení aplikace v Azure. V tomto článku napíšete zprávy do fronty úložiště ve stejném účtu. Pokud se chcete připojit k účtu úložiště, když se funkce spouští místně, musíte si stáhnout nastavení aplikace do souboru Local. Settings. JSON. Spuštěním následujícího příkazu Azure Functions Core Tools Stáhněte nastavení do Local. Settings. JSON a nahraďte `<APP_NAME>` ho názvem vaší aplikace Function App z předchozího článku:
 
 ```bash
 func azure functionapp fetch-app-settings <APP_NAME>
 ```
 
-Možná budete muset přihlásit ke svému účtu Azure.
+Možná se budete muset přihlásit ke svému účtu Azure.
 
 > [!IMPORTANT]  
-> Protože obsahuje tajné kódy, souboru local.settings.json nikdy publikuje a má být vyloučena ze správy zdrojového kódu.
+> Protože obsahuje tajné kódy, soubor Local. Settings. JSON se nikdy nepublikuje a měl by být vyloučený ze správy zdrojového kódu.
 
-Danou hodnotu potřebujete `AzureWebJobsStorage`, což je připojovací řetězec účtu úložiště. Toto připojení použijete k ověření, že výstupní vazbu funguje podle očekávání.
+Potřebujete hodnotu `AzureWebJobsStorage`, což je připojovací řetězec účtu úložiště. Pomocí tohoto připojení ověříte, zda výstupní vazba funguje podle očekávání.
 
-## <a name="enable-extension-bundles"></a>Povolení rozšíření sady
+## <a name="enable-extension-bundles"></a>Povolit sady rozšíření
 
 [!INCLUDE [functions-extension-bundles](../../includes/functions-extension-bundles.md)]
 
-Teď můžete přidat do úložiště výstupní vazby do projektu.
+Nyní můžete přidat výstupní vazbu úložiště do projektu.
 
 ## <a name="add-an-output-binding"></a>Přidání výstupní vazby
 
-Ve funkcích, každý typ vazby vyžaduje `direction`, `type`a jedinečný `name` byly definovány v souboru function.json. V závislosti na typu vazby může vyžadovat další vlastnosti. [Konfigurace výstupní fronty](functions-bindings-storage-queue.md#output---configuration) popisuje pole, vyžaduje se pro vazbu fronty Azure Storage.
+V Functions každý typ vazby vyžaduje, aby `direction` `type`byl v souboru Function. JSON definován `name` , a a jedinečný. V závislosti na typu vazby můžou být potřeba další vlastnosti. [Konfigurace výstupu fronty](functions-bindings-storage-queue.md#output---configuration) popisuje pole požadovaná pro vazbu fronty Azure Storage.
 
-Pokud chcete vytvořit vazbu, přidáte objekt konfigurace vazby na `function.json` souboru. Upravte soubor function.json ve složce HttpTrigger přidání objektu do `bindings` pole, které má následující vlastnosti:
+Chcete-li vytvořit vazbu, přidejte objekt konfigurace vazby do souboru Function. JSON. Úpravou souboru Function. JSON ve složce HttpTrigger přidejte objekt do `bindings` pole, které má tyto vlastnosti:
 
-| Vlastnost | Hodnota | Popis |
+| Vlastnost | Value | Popis |
 | -------- | ----- | ----------- |
-| **`name`** | `msg` | Název identifikující vazby parametru odkazovaného v kódu. |
-| **`type`** | `queue` | Vazba je vazbu fronty Azure Storage. |
-| **`direction`** | `out` | Vazba je výstupní vazbu. |
-| **`queueName`** | `outqueue` | Název, který vazba zapisuje do fronty. Když *queueName* neexistuje, vazba se vytvoří při prvním použití. |
-| **`connection`** | `AzureWebJobsStorage` | Název nastavení aplikace, které obsahuje připojovací řetězec pro účet úložiště. `AzureWebJobsStorage` Nastavení obsahuje připojovací řetězec pro účet úložiště, který jste vytvořili pomocí aplikace function app. |
+| **`name`** | `msg` | Název, který identifikuje parametr vazby, na který je odkazováno v kódu. |
+| **`type`** | `queue` | Vazba je vazba fronty Azure Storage. |
+| **`direction`** | `out` | Vazba je výstupní vazba. |
+| **`queueName`** | `outqueue` | Název fronty, do které vazba zapisuje. `queueName` Pokud neexistuje, vazba ji vytvoří při prvním použití. |
+| **`connection`** | `AzureWebJobsStorage` | Název nastavení aplikace, které obsahuje připojovací řetězec pro účet úložiště. Toto `AzureWebJobsStorage` nastavení obsahuje připojovací řetězec pro účet úložiště, který jste vytvořili pomocí aplikace Function App. |
 
-Váš soubor function.json by teď měl vypadat jako v následujícím příkladu:
+Váš soubor Function. JSON by teď měl vypadat jako v tomto příkladu:
 
 ```json
 {
@@ -99,7 +99,7 @@ Váš soubor function.json by teď měl vypadat jako v následujícím příklad
 
 ## <a name="add-code-that-uses-the-output-binding"></a>Přidání kódu, který používá výstupní vazbu
 
-Jakmile je nakonfigurovaná, můžete začít používat `name` vazby pro přístup k ní jako atribut method v signatuře funkce. V následujícím příkladu `msg` je instance [ `azure.functions.InputStream class` ](/python/api/azure-functions/azure.functions.httprequest).
+Po dokončení konfigurace je můžete začít používat pro přístup k vazbě jako atributu metody v signatuře funkce. `name` V následujícím příkladu `msg` je instance [`azure.functions.InputStream class`](/python/api/azure-functions/azure.functions.httprequest)třídy.
 
 ```python
 import logging
@@ -128,77 +128,77 @@ def main(req: func.HttpRequest, msg: func.Out[func.QueueMessage]) -> str:
         )
 ```
 
-Když použijete výstupní vazbu, není nutné použít sadu SDK služby Azure Storage kód pro ověření, získat odkaz na frontu nebo zápis dat. Funkce modulu runtime a fronty výstupní vazbu udělal za vás tyto úlohy.
+Když použijete výstupní vazbu, nemusíte používat Azure Storage kód SDK pro ověřování, získání odkazu na frontu nebo zápis dat. Úlohy za běhu functions a Queue výstupní vazby jsou za vás.
 
 ## <a name="run-the-function-locally"></a>Místní spuštění funkce
 
-Modul runtime služby Functions místně spustit stejně jako dříve použijte následující příkaz:
+Stejně jako dřív pomocí následujícího příkazu spusťte modul runtime Functions místně:
 
 ```bash
 func host start
 ```
 
 > [!NOTE]  
-> Protože předchozím článku měli povolit rozšíření sady v host.json, [rozšíření vazby úložiště](functions-bindings-storage-blob.md#packages---functions-2x) byla stažena a nainstalována během spouštění, společně s další rozšíření vazby společnosti Microsoft.
+> Vzhledem k tomu, že v předchozím rychlém startu jste povolili sady rozšíření v Host. JSON, bylo [rozšíření pro vytváření úložiště](functions-bindings-storage-blob.md#packages---functions-2x) během spouštění staženo a nainstalováno společně s dalšími rozšířeními vazby společnosti Microsoft.
 
-Zkopírujte adresu URL vaší funkce `HttpTrigger` z výstupu modulu runtime a vložte do panelu Adresa vašeho prohlížeče. K této adrese URL připojte řetězec dotazu `?name=<yourname>` a proveďte požadavek. Stejně jako v předchozím článku byste měli vidět stejnou odpověď v prohlížeči.
+Zkopírujte adresu URL vaší funkce `HttpTrigger` z výstupu modulu runtime a vložte do panelu Adresa vašeho prohlížeče. Připojí řetězec `?name=<yourname>` dotazu k této adrese URL a spustí žádost. V prohlížeči by se měla zobrazit stejná odpověď jako v předchozím článku.
 
-Tentokrát výstupní vazbu také vytvoří frontu s názvem `outqueue` ve službě Storage account a přidá zprávu pomocí tohoto stejného řetězce.
+Tentokrát výstupní vazba také vytvoří ve svém účtu úložiště frontu `outqueue` s názvem a přidá zprávu se stejným řetězcem.
 
-V dalším kroku použijete rozhraní příkazového řádku Azure k zobrazení novou frontu a ověřte, že byl přidán zprávu. Můžete také zobrazit, pomocí vaší fronty [Microsoft Azure Storage Explorer][Azure Storage Explorer] nebo v [webu Azure portal](https://portal.azure.com).
+Dále pomocí Azure CLI zobrazíte novou frontu a ověříte, že se přidala zpráva. Frontu můžete také zobrazit pomocí [Průzkumník služby Microsoft Azure Storage][Azure Storage Explorer] nebo v [Azure Portal](https://portal.azure.com).
 
-### <a name="set-the-storage-account-connection"></a>Nastavit připojení k účtu úložiště
+### <a name="set-the-storage-account-connection"></a>Nastavení připojení účtu úložiště
 
-Otevřete soubor local.settings.json a zkopírujte hodnotu `AzureWebJobsStorage`, což je připojovací řetězec účtu úložiště. Nastavte `AZURE_STORAGE_CONNECTION_STRING` proměnnou prostředí pro připojovací řetězec pomocí následujícího příkazu prostředí Bash:
+Otevřete soubor Local. Settings. JSON a zkopírujte hodnotu `AzureWebJobsStorage`, což je připojovací řetězec účtu úložiště. Nastavte proměnnou `AZURE_STORAGE_CONNECTION_STRING` prostředí na připojovací řetězec pomocí tohoto příkazu bash:
 
 ```azurecli-interactive
 export AZURE_STORAGE_CONNECTION_STRING=<STORAGE_CONNECTION_STRING>
 ```
 
-S připojovacím řetězcem, nastavte `AZURE_STORAGE_CONNECTION_STRING` proměnnou prostředí vašeho účtu úložiště můžou přistupovat bez nutnosti se poskytovat ověřování pokaždé, když.
+Při nastavování připojovacího řetězce v `AZURE_STORAGE_CONNECTION_STRING` proměnné prostředí můžete získat přístup k účtu úložiště bez nutnosti zadávat ověřování pokaždé, když.
 
-### <a name="query-the-storage-queue"></a>Dotaz na frontu úložiště
+### <a name="query-the-storage-queue"></a>Dotazování fronty úložiště
 
-Můžete použít [ `az storage queue list` ](/cli/azure/storage/queue#az-storage-queue-list) příkazu zobrazíte fronty úložiště ve vašem účtu, jako v následujícím příkladu:
+Pomocí [`az storage queue list`](/cli/azure/storage/queue#az-storage-queue-list) příkazu můžete zobrazit fronty úložiště ve vašem účtu, jako v následujícím příkladu:
 
 ```azurecli-interactive
 az storage queue list --output tsv
 ```
 
-Výstup tohoto příkazu obsahuje frontu s názvem `outqueue`, což je fronty, který byl vytvořen při spuštění funkce.
+Výstup z tohoto příkazu zahrnuje frontu s názvem `outqueue`, což je fronta, která se vytvořila při spuštění funkce.
 
-Pak pomocí [ `az storage message peek` ](/cli/azure/storage/message#az-storage-message-peek) příkazu zobrazte zprávy z této fronty, jako v následujícím příkladu.
+Dále pomocí [`az storage message peek`](/cli/azure/storage/message#az-storage-message-peek) příkazu Zobrazte zprávy v této frontě, jako v tomto příkladu:
 
 ```azurecli-interactive
 echo `echo $(az storage message peek --queue-name outqueue -o tsv --query '[].{Message:content}') | base64 --decode`
 ```
 
-Řetězec vrácený by měl být stejný jako zprávy odeslané k otestování funkce.
+Vrácený řetězec by měl být stejný jako zpráva, kterou jste odeslali k otestování funkce.
 
 > [!NOTE]  
-> V předchozím příkladu dekóduje vráceného řetězce z formátu base64. Důvodem je, že vazby úložiště front zapisovat a číst ze služby Azure Storage jako [řetězce ve formátu base64](functions-bindings-storage-queue.md#encoding).
+> Předchozí příklad dekóduje vrácený řetězec z formátu base64. Důvodem je to, že vazby úložiště fronty zapisují a čtou z Azure Storage jako [řetězce Base64](functions-bindings-storage-queue.md#encoding).
 
-Teď je čas se publikovat aplikace aktualizace funkcí do Azure.
+Teď je čas na opětovné publikování aktualizované aplikace Function App do Azure.
 
 [!INCLUDE [functions-publish-project](../../includes/functions-publish-project.md)]
 
-Znovu můžete otestujete nasazenou funkci pomocí cURL nebo v prohlížeči. Stejně jako předtím připojte řetězec dotazu `&name=<yourname>` na adresu URL, jako v následujícím příkladu:
+Znovu můžete k otestování nasazené funkce použít kudrlinkou nebo prohlížeč. Stejně jako dřív přidejte řetězec `&name=<yourname>` dotazu k adrese URL, jako v tomto příkladu:
 
 ```bash
 curl https://myfunctionapp.azurewebsites.net/api/httptrigger?code=cCr8sAxfBiow548FBDLS1....&name=<yourname>
 ```
 
-Je možné [Zkontrolujte zprávu fronty úložiště](#query-the-storage-queue) k ověření, že výstupní vazbu znovu vygeneruje nové zprávy ve frontě.
+Můžete [zkontrolovat zprávu fronty úložiště](#query-the-storage-queue) a ověřit, zda výstupní vazba znovu generuje novou zprávu ve frontě.
 
 [!INCLUDE [functions-cleanup-resources](../../includes/functions-cleanup-resources.md)]
 
 ## <a name="next-steps"></a>Další postup
 
-Aktualizovali jsme vaši funkci aktivovanou protokolem HTTP k zápisu dat do fronty úložiště. Další informace o vývoji funkcí Azure pomocí Pythonu najdete v tématu [– Příručka pro vývojáře Azure Functions Python](functions-reference-python.md) a [aktivační události Azure Functions a vazby](functions-triggers-bindings.md).
+Aktualizovali jste funkci aktivovanou protokolem HTTP, která zapisuje data do fronty úložiště. Další informace o vývoji Azure Functions pomocí Pythonu najdete v [příručce pro vývojáře Azure Functions Pythonu](functions-reference-python.md) a v [Azure Functions triggerech a vazbách](functions-triggers-bindings.md).
 
-Dále byste měli povolit monitorování pomocí Application Insights pro aplikaci funkcí:
+Dále byste měli povolit Application Insights monitorování aplikace Function App:
 
 > [!div class="nextstepaction"]
-> [Povolit integraci modulu Application Insights](functions-monitoring.md#manually-connect-an-app-insights-resource)
+> [Povolit integraci Application Insights](functions-monitoring.md#manually-connect-an-app-insights-resource)
 
 [Azure Storage Explorer]: https://storageexplorer.com/

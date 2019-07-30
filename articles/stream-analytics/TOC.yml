@@ -7,6 +7,7 @@
     - name: Kompletní vzory řešení
       href: stream-analytics-solution-patterns.md
 - name: Šablony Rychlý start
+  expanded: true
   items:
     - name: Vytvoření úlohy – Azure Portal
       href: stream-analytics-quick-create-portal.md

@@ -1,74 +1,74 @@
 ---
-title: 'Rychlý start: Vytvořit smyčku zpětné vazby - Personalizer'
+title: 'Rychlý start: Vytvoření vlastní smyčky zpětné vazby'
 titleSuffix: Azure Cognitive Services
-description: Přizpůsobení obsahu v tomto C# rychlý start ke službě Personalizer.
+description: Přizpůsobení obsahu v tomto C# rychlém startu pomocí služby pro přizpůsobení.
 services: cognitive-services
-author: edjez
+author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: quickstart
 ms.date: 06/11/2019
-ms.author: edjez
-ms.openlocfilehash: 0b856b8d134cc160b8bb759fce0408204cf0ba61
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.author: diberry
+ms.openlocfilehash: 54aa23071fef09058a1702218d6b7fc920363518
+ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67722436"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68662794"
 ---
 # <a name="quickstart-personalize-content-using-c"></a>Rychlý start: Přizpůsobení obsahu pomocíC# 
 
-Zobrazit přizpůsobený obsah v tomto C# rychlý start ke službě Personalizer.
+Zobrazit přizpůsobený obsah C# v tomto rychlém startu pomocí služby pro přizpůsobení.
 
-Tento příklad ukazuje, jak použít Personalizer klientskou knihovnu pro C# provádět následující akce: 
+Tato ukázka předvádí, jak použít klientskou knihovnu pro přizpůsobování pro C# k provedení následujících akcí: 
 
- * Řadit seznam akcí pro přizpůsobení.
- * Sestavy reward přidělit nahoru seřazené akce na základě výběru uživatelem zadané události.
+ * Seřadit seznam akcí pro přizpůsobení.
+ * Odkázat odměnu pro přidělení k horní seřazené akci na základě výběru uživatele pro zadanou událost.
 
-Začínáme s Personalizer zahrnuje následující kroky:
+Začínáme s přizpůsobením nástroje zahrnuje následující kroky:
 
 1. Odkazování na sadu SDK 
-1. Zápis kódu pro akce, které chcete zobrazit uživatelům, pořadí
-1. Zápis kódu pro odesílání odměny tak moct trénovat smyčky.
+1. Psaní kódu pro řazení akcí, které chcete uživatelům zobrazit,
+1. Psaní kódu pro odeslání neprospěchu ke výukě smyčky.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Je nutné [Personalizer služby](how-to-settings.md) získat adresu url předplatné key a koncového bodu služby. 
+* Abyste získali klíč předplatného a adresu URL služby koncového bodu, potřebujete [službu](how-to-settings.md) pro přizpůsobování. 
 * [Visual Studio 2015 nebo 2017](https://visualstudio.microsoft.com/downloads/).
-* [Microsoft.Azure.CognitiveServices.Personalizer](https://go.microsoft.com/fwlink/?linkid=2092272) balíček NuGet sady SDK. Pokyny k instalaci jsou uvedené dál.
+* Balíček NuGet sady SDK pro [Microsoft. Azure. cognitiveservices Account. personalizovat](https://go.microsoft.com/fwlink/?linkid=2092272) . Pokyny k instalaci jsou uvedené dál.
 
 ## <a name="change-the-model-update-frequency"></a>Změna frekvence aktualizace modelu
 
-V prostředku Personalizer na webu Azure Portal, přejděte **četnost aktualizace modelu** na 10 sekund. To bude trénování služby rychle, což vám umožní podívat, jak se mění hlavní akce pro každou iteraci.
+V prostředku přizpůsobeného nástroji v Azure Portal změňte **Četnost aktualizace modelu** na 10 sekund. Tím se služba bude vytvářet rychle a umožní vám to zjistit, jak se hlavní akce mění pro každou iteraci.
 
-Při vytváření smyčku Personalizer první instance, není žádný model, protože nepřichází žádná volání rozhraní API Reward tak moct trénovat z. Pořadí volání vrátí stejné pravděpodobnosti pro každou položku. Vaše aplikace by měla stále vždy řadit obsahu pomocí výstupu RewardActionId.
+Když se poprvé vytvoří instance smyčky pro přizpůsobení, neexistuje žádný model, protože neexistovala žádná Neplatní volání rozhraní API pro vlak. Volání Rank budou pro každou položku vracet stejné pravděpodobnosti. Vaše aplikace by měla stále vždy Seřadit obsah pomocí výstupu RewardActionId.
 
 ![Změna frekvence aktualizace modelu](./media/settings/configure-model-update-frequency-settings.png)
 
-## <a name="creating-a-new-console-app-and-referencing-the-personalizer-sdk"></a>Vytváření nových konzolovou aplikaci a odkazování na sadu SDK Personalizer 
+## <a name="creating-a-new-console-app-and-referencing-the-personalizer-sdk"></a>Vytvoření nové aplikace konzoly a odkazování na sadu SDK pro přizpůsobování 
 
 <!--
 Get the latest code as a Visual Studio solution from [GitHub] (add link).
 -->
 
 1. V sadě Visual Studio vytvořte novou konzolovou aplikaci Visual C#.
-1. Nainstalujte balíček NuGet Personalizer klienta knihovny. V nabídce vyberte **nástroje**vyberte **Nuget package Manager**, pak **spravovat balíčky NuGet pro řešení**.
-1. Zkontrolujte **zahrnout předběžné verze**.
-1. Vyberte **Procházet** kartu a **hledání** zadejte `Microsoft.Azure.CognitiveServices.Personalizer`.
-1. Vyberte **Microsoft.Azure.CognitiveServices.Personalizer** při zobrazí.
-1. Zaškrtněte políčko vedle názvu vašeho projektu a vyberte **nainstalovat**.
+1. Nainstalujte balíček NuGet klientské knihovny pro přizpůsobování. V nabídce vyberte **nástroje**, vyberte **Správce balíčků NuGet**a pak **spravujte balíčky NuGet pro řešení**.
+1. Podívejte se na **zahrnout předběžné verze**.
+1. Vyberte kartu **Procházet** a do pole **Hledat** zadejte `Microsoft.Azure.CognitiveServices.Personalizer`.
+1. Po zobrazení vyberte **Microsoft. Azure. cognitiveservices Account. personalizovat** .
+1. Zaškrtněte políčko vedle názvu projektu a vyberte **instalovat**.
 
-## <a name="add-the-code-and-put-in-your-personalizer-and-azure-keys"></a>Přidejte kód a vložit vaše klíče Personalizer a Azure
+## <a name="add-the-code-and-put-in-your-personalizer-and-azure-keys"></a>Přidejte kód a vložte ho do přizpůsobené aplikace a klíčů Azure.
 
 1. Soubor Program.cs nahraďte následujícím kódem. 
-1. Nahraďte `serviceKey` hodnotu s klíči předplatného Personalizer platný.
-1. Nahraďte `serviceEndpoint` s vašeho koncového bodu služby. Příklad: `https://westus2.api.cognitive.microsoft.com/`.
+1. Nahraďte `serviceKey` hodnotu platným klíčem předplatného pro přizpůsobování.
+1. Nahraďte `serviceEndpoint` koncovým bodem služby. Příklad: `https://westus2.api.cognitive.microsoft.com/`.
 1. Spusťte program.
 
-## <a name="add-code-to-rank-the-actions-you-want-to-show-to-your-users"></a>Přidejte kód, který řadit akce, které chcete zobrazit uživatelům
+## <a name="add-code-to-rank-the-actions-you-want-to-show-to-your-users"></a>Přidejte kód, který bude seřadit akce, které chcete uživatelům zobrazit.
 
-Následující C# kód je kompletní výpis k předání informací o uživateli, _features a informace o obsahu, _akce_, k Personalizer pomocí sady SDK. Personalizer vrátí horní seřazené akce se zobrazí uživateli.  
+Následující C# kód je úplný seznam pro předání informací o uživateli, _features a informace o vašem obsahu, akcích, přizpůsobování pomocí sady SDK. Přizpůsobování vrátí nejvyšší seřazenou akci pro zobrazení uživatele.  
 
 ```csharp
 using Microsoft.Azure.CognitiveServices.Personalizer;
@@ -256,15 +256,15 @@ namespace PersonalizerExample
 
 ## <a name="run-the-program"></a>Spuštění programu
 
-Sestavte program a spusťte ho. Rychlý start program zeptá na několik otázek k získání uživatelských předvoleb, označované jako funkce, pak poskytuje hlavní akce.
+Sestavte program a spusťte ho. V programu rychlý Start se požádá o shromáždění uživatelských předvoleb, označovaných jako funkce, a pak poskytuje hlavní akci.
 
-![Rychlý start program zeptá na několik otázek k získání uživatelských předvoleb, označované jako funkce, pak poskytuje hlavní akce.](media/csharp-quickstart-commandline-feedback-loop/quickstart-program-feedback-loop-example.png)
+![V programu rychlý Start se požádá o shromáždění uživatelských předvoleb, označovaných jako funkce, a pak poskytuje hlavní akci.](media/csharp-quickstart-commandline-feedback-loop/quickstart-program-feedback-loop-example.png)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 Jakmile tento rychlý start dokončíte, odeberte všechny soubory, které jste v něm vytvořili. 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-[Jak funguje Personalizer](how-personalizer-works.md)
+[Jak přizpůsobovat práci](how-personalizer-works.md)
 
 

@@ -7,6 +7,7 @@
     - name: Integrace s App Service Mobile Apps
       href: notification-hubs-app-service.md
 - name: Šablony Rychlý start
+  expanded: true
   items:
     - name: Vytvoření centra oznámení – Azure Portal
       href: create-notification-hub-portal.md

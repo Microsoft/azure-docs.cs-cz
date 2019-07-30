@@ -1,6 +1,6 @@
 ---
-title: Vysvětlení, zasílání zpráv typu cloud zařízení Azure IoT Hub | Dokumentace Microsoftu
-description: Tato příručka pro vývojáře popisuje způsob použití zasílání zpráv typu cloud zařízení pomocí služby IoT hub. Obsahuje informace o životním cyklu zprávy a možnosti konfigurace.
+title: Vysvětlení zasílání zpráv z cloudu na zařízení v Azure IoT Hub | Microsoft Docs
+description: Tato příručka pro vývojáře popisuje, jak používat zasílání zpráv z cloudu na zařízení ve službě IoT Hub. Obsahuje informace o životním cyklu zprávy a možnostech konfigurace.
 author: wesmc7777
 manager: philmea
 ms.author: wesmc
@@ -8,102 +8,102 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 03/15/2018
-ms.openlocfilehash: 0fc1b65a4ba1c8a3d76b48206d6a4703035e05bc
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b0057815bee46d6708886302ff5b598c89b47e8f
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67055319"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68335728"
 ---
-# <a name="send-cloud-to-device-messages-from-an-iot-hub"></a>Odesílat zprávy typu cloud zařízení ze služby IoT hub
+# <a name="send-cloud-to-device-messages-from-an-iot-hub"></a>Posílání zpráv z cloudu na zařízení ze služby IoT Hub
 
-Neodesílat jednosměrné oznámení z back-endem řešení do aplikace pro zařízení, odesílání zpráv typu cloud zařízení ze služby IoT hub do vašeho zařízení. Informace o možnostech typu cloud zařízení podporované ve službě Azure IoT Hub, najdete v článku [doprovodných materiálech ke komunikaci typu Cloud zařízení](iot-hub-devguide-c2d-guidance.md).
+Pokud chcete poslat jednosměrová oznámení do aplikace zařízení z back-endu vašeho řešení, pošlete do svého zařízení zprávy typu cloud-zařízení ze služby IoT Hub. Diskuzi o dalších možnostech cloudu na zařízení, které podporuje Azure IoT Hub, najdete v tématu [pokyny pro komunikaci z cloudu na zařízení](iot-hub-devguide-c2d-guidance.md).
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
-Odesílat zprávy typu cloud zařízení přes koncový bod služby přístupem */zpráv/devicebound*. Zařízení pak přijme zprávy přes koncový bod specifický pro zařízení */devices/ {deviceId} / zpráv/devicebound*.
+Zprávy typu cloud-zařízení odesíláte prostřednictvím koncového bodu s přístupem ke službě */Messages/devicebound*. Zařízení pak obdrží zprávy přes koncový bod specifický pro zařízení */Devices/{deviceId}/Messages/devicebound*.
 
-Cílit na každou zprávu typu cloud zařízení na jedno zařízení, nastaví služby IoT hub **k** vlastnost */devices/ {deviceId} / zpráv/devicebound*.
+Chcete-li zacílit každou zprávu typu cloud-zařízení na jednom zařízení, vaše centrum IoT nastaví vlastnost **na** hodnotu */Devices/{deviceId}/Messages/devicebound*.
 
-Každá fronta zařízení obsahuje maximálně 50 zprávy typu cloud zařízení. Se pokouší odeslat další zprávy do stejného zařízení dojde k chybě.
+Každá fronta zařízení obsahuje maximálně 50 zpráv z cloudu na zařízení. Chcete-li se pokusit odeslat více zpráv na stejné zařízení, dojde k chybě.
 
-## <a name="the-cloud-to-device-message-life-cycle"></a>Životním cyklu zprávy typu cloud zařízení
+## <a name="the-cloud-to-device-message-life-cycle"></a>Životní cyklus zpráv z cloudu do zařízení
 
-Zaručit doručování zpráv v alespoň jedno, váš IoT hub udržuje takové zprávy typu cloud zařízení do fronty jednotlivá zařízení. Pro službu IoT hub k odebrání zprávy z fronty, musí zařízení explicitně potvrdit *dokončení*. Tento postup zaručuje, což zvyšuje odolnost vůči připojení a selhání zařízení.
+Abychom zajistili, že vaše centrum IoT udržuje zprávy z cloudu na zařízení ve frontách jednotlivých zařízení, zaručí vám nepřesnou doručení zpráv. Aby služby IoT Hub odebrala zprávy z fronty, zařízení musí explicitně potvrdit *dokončení*. Tento přístup zaručuje odolnost proti chybám připojení a zařízení.
 
-Životní cyklus stavu grafu se zobrazí v následujícím diagramu:
+Graf stavu životního cyklu se zobrazí v následujícím diagramu:
 
-![Životní cyklus zpráv typu cloud zařízení](./media/iot-hub-devguide-messages-c2d/lifecycle.png)
+![Životní cyklus zpráv z cloudu do zařízení](./media/iot-hub-devguide-messages-c2d/lifecycle.png)
 
-Když služby Azure IoT hub odesílá zprávy do zařízení, nastaví služba stavu zprávy na *zařazených do fronty*. Když zařízení chce *přijímat* zprávu, služby IoT hub *zámky* zprávy podle nastavení stavu na *neviditelné*. Tento stav umožňuje ostatní vlákna v zařízení a začít přijímat další zprávy. Po dokončení zpracování zprávy typu zařízení vlákno upozorní služby IoT hub pomocí *dokončení* zprávy. IoT hub poté nastaví stav *dokončeno*.
+Když služba IoT Hub pošle zprávu na zařízení, služba nastaví stav zprávy na zařazování do *fronty*. Když zařízení chce *přijmout* zprávu, služba IoT Hub zprávu *zamkne* nastavením stavu na neviditelné. Tento stav umožňuje ostatním vláknům na zařízení začít přijímat další zprávy. Když vlákno zařízení dokončí zpracování zprávy, upozorní centrum IoT o *dokončení* zprávy. Centrum IoT pak nastaví stav na *dokončeno*.
 
-Může také zařízení:
+Zařízení může také:
 
-* *Odmítnout* zpráva, což způsobí, že služby IoT hub ji nastavit na hodnotu *Dead lettered* stavu. Zařízení, která se připojují přes protokol zpráv služby Řízení front MQTT (Telemetry Transport) nelze odmítnout zprávy typu cloud zařízení.
+* *Odmítněte* zprávu, což způsobí, že centrum IoT ho nastaví na nedoručený stav. Zařízení, která se připojují přes přenos telemetrie služby Řízení front zpráv (MQTT), nemůžou odmítat zprávy z cloudu na zařízení.
 
-* *Opustit* zpráva, což způsobí, že služby IoT hub do zprávy zpět ve frontě, se stavem nastavena na *zařazených do fronty*. Zařízení, která se připojují přes protokol MQTT nejde opustit zprávy typu cloud zařízení.
+* Zrušte zprávu, která způsobí, že centrum IoT vloží zprávu zpátky do fronty s stavem nastaveným na zařazovánído fronty. Zařízení, která se připojují přes protokol MQTT, nemůžou opustit zprávy z cloudu na zařízení.
 
-Vlákno se nemusí zpracovávat zprávy bez upozornění služby IoT hub. V takovém případě zprávy automaticky přechod ze *neviditelné* zpět do stavu *zařazených do fronty* stavu po *viditelnost* vypršení časového limitu (nebo *zámku* časový limit). Výchozí hodnota tento časový limit je jedna minuta.
+Vlákno se nepovedlo zpracovat zprávu bez upozorňování centra IoT. V takovém případě zprávy automaticky přecházejí z neviditelného stavu zpátky do *fronty* po vypršení časového limitu *viditelnosti* (nebo vypršení časového limitu *zámku* ). Hodnota časového limitu je jedna minuta a nedá se změnit.
 
-**Maximální počet doručení** vlastnost v IoT hubu určuje maximální počet pokusů zprávu můžete přecházet mezi *zařazených do fronty* a *neviditelné* stavy. Po tomto počtu přechody služby IoT hub, nastaví stav zprávy, která se *Dead lettered*. Obdobně služby IoT hub nastaví stav zprávy *Dead lettered* po dobu jeho platnosti. Další informace najdete v tématu [TTL](#message-expiration-time-to-live).
+Vlastnost **maximální počet doručení** ve službě IoT Hub určuje maximální počet pokusů, které může zpráva mezi zařazováním a neviditelnými stavy přecházet. Po tomto počtu přechodů centrum IoT nastaví stav zprávy na nedoručené *písmeno*. Podobně centrum IoT nastaví stav zprávy na nedoručené *písmeno* po uplynutí doby jeho platnosti. Další informace najdete v tématu [Time to Live](#message-expiration-time-to-live).
 
-[Jak odesílat zprávy typu cloud zařízení pomocí služby IoT Hub](iot-hub-csharp-csharp-c2d.md) článku se dozvíte, jak odesílat zprávy typu cloud zařízení z cloudu a přijímat je na zařízení.
+[Postup posílání zpráv typu cloud-zařízení pomocí IoT Hub](iot-hub-csharp-csharp-c2d.md) článku ukazuje, jak odesílat zprávy z cloudu na zařízení z cloudu a přijímat je na zařízení.
 
-Zařízení se obvykle dokončí zprávu typu cloud zařízení po ztrátě zpráva nemá vliv na aplikaci logiky. Příkladem může být, pokud zařízení obsahuje trvalé místně obsah zprávy nebo po úspěšném provedení operace. Zpráva může mít také přechodných informací, jejichž ztrátu nebude mít vliv na funkčnost aplikace. Pro dlouho běžící úlohy můžete v některých případech:
+Zařízení obvykle dokončí zprávu typu cloud-zařízení, pokud ztráta zprávy nemá vliv na logiku aplikace. To může být například v případě, že zařízení trvale zachovalo obsah zprávy nebo úspěšně provedlo operaci. Zpráva může také vést k přechodným informacím, jejichž ztráta by ovlivnila funkčnost aplikace. V případě dlouhotrvajících úloh je někdy možné:
 
-* Dokončete zprávu typu cloud zařízení po něm obsahuje trvalé popis úlohy v místním úložišti.
+* Dokončete zprávu Cloud-zařízení poté, co zařízení trvale zachová popis úlohy v místním úložišti.
 
-* Upozornění pro back-end řešení pomocí jednoho nebo více zpráv typu zařízení cloud v různých fázích průběh úlohy.
+* Upozorněte back-endu řešení s jednou nebo více zprávami typu zařízení-Cloud v různých fázích postupu úkolu.
 
-## <a name="message-expiration-time-to-live"></a>Vypršení platnosti zpráv (hodnota time to live)
+## <a name="message-expiration-time-to-live"></a>Vypršení platnosti zprávy (Time to Live)
 
-Všechny zprávy typu cloud zařízení má čas vypršení platnosti. Tentokrát nastavená buď z následujících akcí:
+Každé zprávě z cloudu na zařízení je čas vypršení platnosti. Tato doba je nastavena jedním z následujících způsobů:
 
-* **ExpiryTimeUtc** vlastnosti ve službě
-* Služby IoT hub s využitím výchozí *TTL* , který je zadán jako vlastnost centra IoT
+* Vlastnost **ExpiryTimeUtc** ve službě
+* Služba IoT Hub, která používá výchozí hodnotu *TTL (Time to Live* ), která je určená jako vlastnost služby IoT Hub
 
-Zobrazit [možnosti konfigurace Cloud zařízení](#cloud-to-device-configuration-options).
+Viz [Možnosti konfigurace Cloud-zařízení](#cloud-to-device-configuration-options).
 
-Je běžným způsobem, abyste mohli využívat vypršení platnosti zpráv a aby se zabránilo odesílání zpráv do odpojená zařízení nastavit krátký *TTL* hodnoty. Tento přístup dosáhne stejného výsledku jako zachování stavu připojení zařízení, ale je mnohem efektivnější. Pokud budete požadovat zprávy potvrzení, upozorní služby IoT hub, které jsou zařízení:
+Běžný způsob, jak využít výhod vypršení platnosti zprávy a zabránit posílání zpráv na odpojená zařízení, je nastavit krátkou *dobu na živé* hodnoty. Tento přístup dosahuje stejného výsledku jako udržování stavu připojení zařízení, ale je efektivnější. Po podání žádosti o potvrzení zpráv vás Centrum IoT upozorní na to, jaká zařízení jsou:
 
 * Může přijímat zprávy.
-* Nejsou v režimu online nebo se nezdařilo.
+* Nejsou online nebo se nezdařily.
 
-## <a name="message-feedback"></a>Zprávy zpětné vazby
+## <a name="message-feedback"></a>Zpráva o zpětné vazbě
 
-Při odesílání zpráv typu cloud zařízení služby můžou požádat o doručení zpětnou vazbu za zprávy o konečný stav této zprávy. To provedete tak, že nastavíte **iothub-ack** vlastnost aplikace ve zprávě typu cloud zařízení, která je odesíláno na jednu z následujících čtyř hodnot:
+Když odešlete zprávu typu cloud-zařízení, může služba požádat o doručení zpětné vazby na základě zprávy o konečném stavu této zprávy. To provedete nastavením vlastnosti aplikace **iothub-ACK** ve zprávě typu cloud-zařízení, která se odesílá do jedné z následujících čtyř hodnot:
 
-| Hodnota vlastnosti objektu ACK. | Chování |
+| Hodnota vlastnosti ACK | Chování |
 | ------------ | -------- |
-| None     | IoT hub nebude generovat zprávu zpětnou vazbu (výchozí chování). |
-| pozitivní | Pokud dosáhne zprávy typu cloud zařízení *dokončeno* stavu služby IoT hub vygeneruje zprávu zpětnou vazbu. |
-| Záporná | Pokud dosáhne zprávy typu cloud zařízení *Dead lettered* stavu služby IoT hub vygeneruje zprávu zpětnou vazbu. |
-| úplná     | IoT hub vygeneruje zprávu zpětnou vazbu v obou případech. |
+| žádný     | Centrum IoT negeneruje zprávu zpětné vazby (výchozí chování). |
+| pozitivní | Pokud zpráva typu cloud-zařízení dosáhne stavu *dokončeno* , Centrum IoT vygeneruje zprávu o zpětné vazbě. |
+| příznivé | Pokud zpráva typu cloud-zařízení dosáhne nedoručeného *písmena* , Centrum IoT vygeneruje zprávu zpětné vazby. |
+| úplná     | Centrum IoT v obou případech vygeneruje zprávu zpětné vazby. |
 
-Pokud **Ack** hodnotu *úplné*a neobdrželi zprávu zpětnou vazbu, znamená to, že vypršela platnost zprávy zpětné vazby. Služba nemůže vědět, co se stalo s původní zprávy. V praxi služba zajistil zpětnou vazbu ji může zpracovat, než vyprší její platnost. Čas vypršení platnosti maximální dva dny, které nechá je načase začít službu opětovném zprovoznění Pokud dojde k chybě.
+Pokud je hodnota **ACK** *plná*a neobdržíte zprávu o zpětné vazbě, znamená to, že vypršela platnost zprávy zpětné vazby. Služba nemůže zjistit, co se stalo s původní zprávou. V praxi by služba měla zajistit, aby mohla zpracovat zpětnou vazbu před vypršením platnosti. Maximální doba vypršení platnosti je dva dny, což ponechá čas k opětovnému spuštění služby, pokud dojde k selhání.
 
-Jak je vysvětleno v [koncové body](iot-hub-devguide-endpoints.md), IoT hub doručí zpětné vazby prostřednictvím koncového bodu služby přístupem, */messages/servicebound/feedback*, jako zprávy. Sémantika pro příjem zpětná vazba je stejný jako u zprávy typu cloud zařízení. Kdykoli je to možné, zpětnou vazbu zpráv v dávce do jedné zprávy v následujícím formátu:
+Jak je vysvětleno v [koncových bodech](iot-hub-devguide-endpoints.md), služba IoT Hub poskytuje zpětnou vazbu prostřednictvím koncového bodu s přístupem ke službě, */Messages/servicebound/Feedback*jako zprávy. Sémantika pro příjem zpětné vazby je stejná jako u zpráv z cloudu na zařízení. Kdykoli je to možné, zpětná vazba je dávkovaná v jedné zprávě s následujícím formátem:
 
 | Vlastnost     | Popis |
 | ------------ | ----------- |
-| EnqueuedTime | Časové razítko, které určuje, kdy byla přijata zpráva zpětné vazby pomocí centra |
+| EnqueuedTime | Časové razítko, které indikuje, že centrum přijalo zprávu zpětné vazby |
 | UserId       | `{iot hub name}` |
 | ContentType  | `application/vnd.microsoft.iothub.feedback.json` |
 
-Text je serializací JSON pole záznamů, každý s následujícími vlastnostmi:
+Tělo je pole záznamů serializovaných ve formátu JSON, z nichž každá má následující vlastnosti:
 
 | Vlastnost           | Popis |
 | ------------------ | ----------- |
-| EnqueuedTimeUtc    | Časové razítko, které určuje, kdy se stalo výsledek zprávy (například centra zobrazila zpráva zpětnou vazbu nebo vypršení platnosti na původní zprávu o) |
-| OriginalMessageId  | *MessageId* zprávy typu cloud zařízení, ke kterému se vztahuje tyto informace zpětné vazby |
-| StatusCode         | Povinný řetězec použitý v zpráv se zpětnou vazbou, které jsou generovány ve službě IoT hub: <br/> *Úspěch* <br/> *Vypršela platnost* <br/> *DeliveryCountExceeded* <br/> *Zamítnuto* <br/> *Vymazat* |
-| Popis        | Hodnoty pro řetězce *StatusCode* |
-| DeviceId           | *DeviceId* cílového zařízení zprávy typu cloud zařízení, na který se týká tato složka zpětné vazby |
-| DeviceGenerationId | *DeviceGenerationId* cílového zařízení zprávy typu cloud zařízení, na který se týká tato složka zpětné vazby |
+| EnqueuedTimeUtc    | Časové razítko, které indikuje, kdy došlo k výsledku zprávy (například centrum přijalo zprávu o zpětné vazbě nebo původní zpráva vypršela) |
+| OriginalMessageId  | Parametr *MessageID* zprávy typu cloud-zařízení, na kterou se vztahují tyto informace o zpětné vazbě |
+| StatusCode         | Požadovaný řetězec, který se používá ve zprávách zpětné vazby, které jsou generovány službou IoT Hub: <br/> *Nástup* <br/> *Vypršela* <br/> *DeliveryCountExceeded* <br/> *Odmítnutí* <br/> *Odstraněna* |
+| Popis        | Hodnoty řetězce pro *StatusCode* |
+| DeviceId           | *DeviceID* cílového zařízení zprávy typu cloud-zařízení, na které se vztahuje tato zpětná vazba |
+| DeviceGenerationId | *DeviceGenerationId* cílového zařízení zprávy typu cloud-zařízení, na které se vztahuje tato zpětná vazba |
 
-Pro zprávy typu cloud zařízení je možné korelovat s na původní zprávu o jeho zpětné vazby, musíte zadat službu *MessageId*.
+Aby zpráva typu cloud-zařízení mohla korelovat svou zpětnou vazbu s původní zprávou, musí služba specifikovat parametr *MessageID*.
 
-Text zprávy zpětné vazby můžete vidět v následujícím kódu:
+Text zprávy zpětné vazby je zobrazen v následujícím kódu:
 
 ```json
 [
@@ -122,21 +122,21 @@ Text zprávy zpětné vazby můžete vidět v následujícím kódu:
 ]
 ```
 
-## <a name="cloud-to-device-configuration-options"></a>Možnosti konfigurace cloud zařízení
+## <a name="cloud-to-device-configuration-options"></a>Možnosti konfigurace z cloudu na zařízení
 
-Každé centrum IoT zpřístupňuje následující možnosti konfigurace pro zasílání zpráv typu cloud zařízení:
+Každá služba IoT Hub zpřístupňuje následující možnosti konfigurace pro zasílání zpráv z cloudu na zařízení:
 
 | Vlastnost                  | Popis | Rozsah a výchozí |
 | ------------------------- | ----------- | ----------------- |
-| defaultTtlAsIso8601       | Výchozí hodnota TTL pro zprávy typu cloud zařízení | ISO_8601 interval až dvou dnů (minimální 1 minuta); Výchozí hodnota: 1 hodina |
-| maxDeliveryCount          | Maximální počet doručení zpráv typu cloud zařízení na zařízení fronty | 1 až 100; Výchozí hodnota: 10 |
-| feedback.ttlAsIso8601     | Uchovávání zpráv se zpětnou vazbou vázané služby | ISO_8601 interval až dvou dnů (minimální 1 minuta); Výchozí hodnota: 1 hodina |
-| feedback.maxDeliveryCount | Maximální počet doručení zpráv do fronty zpětné vazby | 1 až 100; Výchozí hodnota: 100 |
+| defaultTtlAsIso8601       | Výchozí hodnota TTL pro zprávy z cloudu na zařízení | ISO_8601 interval až 2 dny (minimálně 1 minuta); výchozí 1 hodina |
+| maxDeliveryCount          | Maximální počet doručení pro fronty z cloudu na zařízení podle zařízení | 1 až 100; výchozí 10 |
+| feedback.ttlAsIso8601     | Uchovávání zpráv o zpětné vazbě vázaných na služby | ISO_8601 interval až 2 dny (minimálně 1 minuta); výchozí 1 hodina |
+| feedback.maxDeliveryCount | Maximální počet doručení pro frontu zpětné vazby | 1 až 100; výchozí 100 |
 
-Další informace o tom, jak nastavit tyto možnosti konfigurace najdete v tématu [vytvořit IoT hub](iot-hub-create-through-portal.md).
+Další informace o tom, jak tyto možnosti konfigurace nastavit, najdete v tématu [vytvoření centra IoT](iot-hub-create-through-portal.md).
 
 ## <a name="next-steps"></a>Další postup
 
-Informace o sadách SDK, které můžete použít pro příjem zpráv typu cloud zařízení najdete v tématu [sad SDK Azure IoT](iot-hub-devguide-sdks.md).
+Informace o sadách SDK, které můžete použít pro příjem zpráv z cloudu na zařízení, najdete v tématu sady [SDK služby Azure IoT](iot-hub-devguide-sdks.md).
 
-Vyzkoušejte si příjem zpráv z cloudu do zařízení, najdete v článku [odesílání typu cloud zařízení](iot-hub-csharp-csharp-c2d.md) kurzu.
+Pokud si chcete vyzkoušet příjem zpráv z cloudu na zařízení, přečtěte si kurz [odeslání cloudu na zařízení](iot-hub-csharp-csharp-c2d.md) .

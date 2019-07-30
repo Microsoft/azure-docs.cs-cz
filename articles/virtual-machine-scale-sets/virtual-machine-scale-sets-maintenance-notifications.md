@@ -1,6 +1,6 @@
 ---
-title: Oznámení o údržbě pro virtuální počítač škálovací sady v Azure | Dokumentace Microsoftu
-description: Zobrazení oznámení o údržbě a spustit samoobslužné údržby pro škálovací sady virtuálních počítačů v Azure.
+title: Oznámení o údržbě pro služby Virtual Machine Scale Sets v Azure | Microsoft Docs
+description: Zobrazte si oznámení o údržbě a spusťte samoobslužnou údržbu pro služby Virtual Machine Scale Sets v Azure.
 services: virtual-machine-scale-sets
 documentationcenter: ''
 author: shants123
@@ -14,153 +14,163 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/09/2018
 ms.author: shants
-ms.openlocfilehash: 31d4829c6adaf4bd5392ef393dcaefbeb7dc6255
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 2ba1bb914dfc2edbe17d12cc58df097b60d1f94c
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60618451"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67849727"
 ---
-# <a name="planned-maintenance-notifications-for-virtual-machine-scale-sets"></a>Oznámení o plánované údržbě pro škálovací sady virtuálních počítačů
+# <a name="planned-maintenance-notifications-for-virtual-machine-scale-sets"></a>Oznámení o plánované údržbě pro Virtual Machine Scale Sets
 
 
-Azure provádí pravidelné aktualizace zvýšit spolehlivost, výkon a zabezpečení hostitelské infrastruktury pro virtuální počítače (VM). Aktualizace může zahrnovat opravy hostitelské prostředí nebo upgradu a vyřazení z provozu hardwaru. Většinu aktualizací nemají vliv na hostované virtuální počítače. Nicméně aktualizace ovlivní virtuální počítače v těchto scénářích:
+Azure pravidelně provádí aktualizace a vylepšuje tak spolehlivost, výkon a zabezpečení hostitelské infrastruktury pro virtuální počítače (VM). Aktualizace můžou zahrnovat opravy hostitelského prostředí nebo upgrade a vyřazení hardwaru z provozu. Většina aktualizací nemá vliv na hostované virtuální počítače. Aktualizace ale mají vliv na virtuální počítače v těchto scénářích:
 
-- Pokud údržbu nevyžaduje restartování, Azure využívá místní migrace se pozastavit virtuální počítač během aktualizace hostitele. Operace údržby, které nevyžadují restartování jsou použité doména podle domény selhání. Průběh je zastaven, pokud jsou přijímány všechny signály stavu upozornění.
+- Pokud údržba nevyžaduje restart, Azure pomocí místní migrace pozastaví virtuální počítač v době, kdy se hostitel aktualizuje. Operace údržby, které nevyžadují restart, se aplikují jako doména selhání podle domény selhání. Průběh se zastaví, pokud se obdrží nějaké signály stavu upozornění.
 
-- Údržba vyžaduje restartování, obdržíte oznámení, který zobrazuje, když je naplánovaná údržba. V těchto případech budete mít časový interval, ve které můžete spustit údržbu sami když ji vám bude nejlépe vyhovovat.
+- Pokud údržba vyžaduje restart, obdržíte oznámení, které ukazuje, kdy se údržba plánuje. V těchto případech jste přihlášeni jako časový interval, ve kterém můžete zahájit údržbu, když to bude fungovat nejlépe.
 
 
-Plánované údržby, které vyžaduje restartování počítače je naplánováno ve vlnách. Každé vlně má jiný rozsah (oblasti):
+Plánovaná údržba, která vyžaduje restart, je naplánována na vlny. Každý vlna má jiný obor (oblasti):
 
-- Vlnu začíná oznámení pro zákazníky. Ve výchozím nastavení odešle se oznámení na předplatné vlastník a spoluvlastníci. Můžete přidat příjemce a možnosti zasílání zpráv, jako je e-mail, SMS a webhooky pro oznámení pomocí služby Azure [upozornění protokolu aktivit](../azure-monitor/platform/activity-logs-overview.md).  
-- S oznámením *samoobslužné služby okno* je k dispozici. Během tohoto časového období zjistíte, které vaše virtuální počítače jsou uvedeny ve zprávě the wave. Podle svých potřeb plánování můžete aktivně začít s údržbou.
-- Po okno samoobslužných služeb *plánované časové období údržby* začíná. Azure někdy během intervalu plánuje a může požadovaná údržba se vztahuje k vašemu virtuálnímu počítači. 
+- Wave začíná oznámením pro zákazníky. Ve výchozím nastavení se oznámení pošle vlastníkovi předplatného a spoluvlastníkům. K oznámením můžete přidat příjemce a možnosti zasílání zpráv, jako jsou e-maily, SMS a Webhooky, pomocí [upozornění protokolu aktivit](../azure-monitor/platform/activity-logs-overview.md)Azure.  
+- K dispozici je *samoobslužné okno* s oznámením. V průběhu tohoto okna můžete zjistit, které z vašich virtuálních počítačů jsou součástí vlny. Údržbu můžete proaktivně spustit podle vlastních potřeb plánování.
+- Po samoobslužném okně začne *plánované časové období údržby* . V určitém okamžiku v tomto okně Azure plánuje a na váš virtuální počítač aplikuje požadovanou údržbu. 
 
-Cílem tím, že dvě okna je vám poskytnou dostatek času na spuštění údržby a zároveň budete vědět, když Azure automaticky spustit údržbu restartu virtuálního počítače.
+V případě, že máte k dispozici dva systémy Windows, získáte dostatek času na spuštění údržby a restartování virtuálního počítače s vědomím, kdy bude Azure automaticky spouštět údržbu.
 
-Na webu Azure portal, Powershellu, rozhraní REST API a rozhraní příkazového řádku Azure můžete použít k dotazování pro správu a údržbu pro váš virtuální počítač škálovací sadu virtuálních počítačů a provádět samoobslužné údržby.
+Můžete použít Azure Portal, PowerShell, REST API a Azure CLI k dotazování na časová období údržby pro virtuální počítače sady škálování virtuálních počítačů a spustit samoobslužnou údržbu.
 
-## <a name="should-you-start-maintenance-during-the-self-service-window"></a>By měl spustit během časového intervalu samoobslužné údržby?  
+## <a name="should-you-start-maintenance-during-the-self-service-window"></a>Měli byste začít s údržbou během samoobslužného okna?  
 
-Následující pokyny vám mohou pomoci při rozhodování, jestli se má spustit údržbu v čase, který zvolíte.
+Následující pokyny vám pomohou při rozhodování, zda spustit údržbu v době, kterou zvolíte.
 
 > [!NOTE] 
-> Samoobslužné údržby nemusí být k dispozici pro všechny vaše virtuální počítače. Chcete-li zjistit, zda je k dispozici pro váš virtuální počítač proaktivní znovu nasaďte, vyhledejte **spustit** ve stavu údržby. V současné době není k dispozici pro Azure Cloud Services (Role Web/Worker) a Azure Service Fabric samoobslužné údržby.
+> Samoobslužná údržba nemusí být k dispozici pro všechny vaše virtuální počítače. Pokud chcete zjistit, jestli je pro váš virtuální počítač k dispozici proaktivní opětovné nasazení, vyhledejte možnost **Spustit nyní** ve stavu údržby. V současné době není samoobslužná údržba dostupná pro Azure Cloud Services (Web/role pracovního procesu) a Azure Service Fabric.
 
 
-Nedoporučuje se používat samoobslužné údržby pro nasazení, která používají *dostupnosti*. Skupiny dostupnosti jsou vysoce dostupná nastavení v které jenom jedna aktualizační doména má vliv kdykoli. Pro skupiny dostupnosti:
+Samoobslužná údržba se nedoporučuje pro nasazení, která používají *skupiny dostupnosti*. Skupiny dostupnosti jsou nastavení s vysokou dostupností, ve kterém je kdykoli ovlivněna pouze jedna aktualizační doména. Pro skupiny dostupnosti:
 
-- Nechejte systém Azure aktivuje údržbu. Kvůli údržbě, která vyžaduje restartování údržba se provádí aktualizační doména podle aktualizačních domén. Aktualizační domény nepřijímají nutně údržbu postupně. Není k dispozici víkend na 30minutové pozastavení mezi aktualizační domény.
-- Pokud k dočasné ztrátě některých vaší kapacity (počet domén/aktualizace 1) je důležité, můžete snadno kompenzovat ztrátu přidělením dalších instancí během doby údržby.
-- Kvůli údržbě, který nevyžaduje restartování se aktualizace na úrovni domény selhání. 
+- Umožněte službě Azure aktivovat údržbu. V případě údržby, která vyžaduje restart, je údržba dokončena aktualizací aktualizačních domén. Aktualizace domén nutně nezískají průběžnou údržbu. Mezi aktualizačními doménami je pauza o 30 minut.
+- Pokud je k dispozici Dočasná ztráta některé z vaší kapacity (1/aktualizace počtu domén), můžete tuto ztrátu snadno kompenzovat přidělením dalších instancí během období údržby.
+- V případě údržby, která nevyžaduje restart, se aktualizace aplikují na úrovni domény selhání. 
     
-**Není** používat samoobslužné údržby v následujících scénářích: 
+Nepoužívejte samoobslužnou údržbu v následujících scénářích: 
 
-- Pokud vypnete virtuální počítače často, buď ručně, pomocí DevTest Labs, pomocí automatické vypnutí nebo podle plánu. Samoobslužné údržby v těchto scénářích může vrátit stav údržby a způsobit, že další prostoje.
-- Na virtuálních počítačích krátkodobou znát bude odstraněn před koncem vlna údržby. 
-- Pro úlohy se stavem velké uložené na místním disku (dočasný), která chcete zachovat po aktualizaci. 
-- Pokud změníte velikost virtuálního počítače často. Tento scénář může vrátit stav údržby. 
-- Pokud si osvojila naplánované události, které umožňují 15 minut, než začne Údržba vypnutí proaktivní převzetí služeb při selhání nebo řádné vypnutí vašich úloh.
+- Pokud jste virtuální počítače často vypnuli ručně, pomocí DevTest Labs, pomocí automatického vypnutí nebo podle plánu. Samoobslužná údržba v těchto scénářích může vrátit stav údržby a způsobit další výpadky.
+- V případě krátkodobých virtuálních počítačů, o kterých víte, že se odstraní před koncem vlny údržby. 
+- Pro úlohy s velkým stavem uloženým v místním (dočasném) disku, který chcete zachovat po aktualizaci. 
+- Pokud často měníte velikost virtuálního počítače. Tento scénář může vrátit stav údržby. 
+- Pokud jste přijali naplánované události, které umožní proaktivní převzetí služeb při selhání nebo řádné vypnutí úlohy 15 minut před tím, než se zahájí vypnutí údržby.
 
-**Proveďte** používat samoobslužné údržby, pokud máte v plánu pro spuštění virtuálního počítače během fáze plánované údržby bez přerušení a předchozí counterindications nepoužijí. 
+**Využijte** samoobslužnou údržbu, pokud plánujete spustit virtuální počítač v době plánované fáze údržby bez přerušení a žádný z předchozích counterindications použít. 
 
-Je nejvhodnější použít samoobslužné údržby v následujících případech:
+Je nejvhodnější použít samoobslužnou údržbu v následujících případech:
 
-- Budete muset komunikaci přesné údržbu pro správu nebo vašich zákazníků. 
-- Potřebujete k dokončení údržby podle konkrétního data. 
-- Je potřeba řídit pořadí údržby, třeba ve vícevrstvé aplikace, k zajištění bezpečného obnovení.
-- Potřebujete více než 30 minut od čas obnovení virtuálního počítače mezi dvě aktualizační domény. K řízení času mezi aktualizační domény, musí spustit údržbu na vaše virtuální počítače jednu aktualizační doménu najednou.
+- Pro správu nebo zákazníky musíte sdělit přesné časové období údržby. 
+- Je potřeba dokončit údržbu do konkrétního data. 
+- Aby bylo zajištěno bezpečné obnovení, je třeba řídit sekvencování údržby, například ve vícevrstvé aplikaci.
+- Pro dobu obnovení virtuálních počítačů mezi dvěma aktualizačními doménami potřebujete víc než 30 minut. Chcete-li řídit dobu mezi aktualizačními doménami, je nutné aktivovat údržbu pro virtuální počítače s jednou aktualizační doménou v jednom okamžiku.
 
  
-## <a name="view-virtual-machine-scale-sets-that-are-affected-by-maintenance-in-the-portal"></a>Zobrazení škálovací sady virtuálních počítačů, které jsou ovlivněny údržby na portálu
+## <a name="view-virtual-machine-scale-sets-that-are-affected-by-maintenance-in-the-portal"></a>Zobrazit sady škálování virtuálních počítačů, které jsou ovlivněné údržbou na portálu
 
-Když je naplánováno vlny plánované údržby, můžete zobrazit seznam škálovacích sad virtuálních počítačů, které jsou ovlivněny wave nadcházející údržby pomocí webu Azure portal. 
+Po naplánování naplánovaných vln údržby můžete zobrazit seznam sad škálování virtuálních počítačů, na které se vztahuje nadcházející údržba Wave, a to pomocí Azure Portal. 
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-2. V nabídce vlevo vyberte **všechny služby**a pak vyberte **škálovací sady virtuálních počítačů**.
-3. V části **škálovací sady virtuálních počítačů**vyberte **upravit sloupce** otevřete seznam dostupných sloupců.
-4. V **dostupných sloupců** vyberte **samoobslužné údržby**, a pak ho přesunout do **vybrané sloupce** seznamu. Vyberte **Použít**.  
+2. V nabídce vlevo vyberte **všechny služby**a pak vyberte **Virtual Machine Scale Sets**.
+3. V části **Virtual Machine Scale Sets**vyberte **Upravit sloupce** a otevřete seznam dostupných sloupců.
+4. V části **Dostupné sloupce** vyberte samoobslužná **Údržba**a pak ji přesuňte do seznamu **vybrané sloupce** . Vyberte **Použít**.  
 
-    Chcete-li **samoobslužné údržby** položky snazší najít, můžete změnit možnost rozevíracího seznamu v **dostupných sloupců** v článku **všechny** k  **Vlastnosti**.
+    Chcete-li umožnit snazší vyhledání položky **samoobslužné údržby** , můžete změnit možnost rozevíracího seznamu v části **Dostupné sloupce** z možnosti **všechny** na **vlastnosti**.
 
-**Samoobslužné údržby** sloupce se zobrazí v seznamu škálovací sady virtuálních počítačů. Každou škálovací sadu virtuálních počítačů může mít jednu z následujících hodnot ve sloupci samoobslužné údržby:
+Sloupec **samoobslužná údržba** se teď zobrazuje v seznamu služby Virtual Machine Scale Sets. Každá sada škálování virtuálního počítače může mít jednu z následujících hodnot pro sloupec samoobslužná Údržba:
 
-| Hodnota | Popis |
+| Value | Popis |
 |-------|-------------|
-| Ano | Alespoň jeden virtuální počítač ve škálovací sadě virtuálního počítače je v okně samoobslužné služby. Spustit údržbu kdykoli během tohoto časového intervalu pro samoobslužné služby. | 
-| Ne | Žádné virtuální počítače v okně samoobslužné služby v škálovací ovlivněných virtuálních počítačů nastavené. | 
-| - | Virtuální počítače škálovací sady nejsou součástí vlny plánované údržby.| 
+| Ano | Aspoň jeden virtuální počítač v sadě škálování virtuálního počítače je v samoobslužném okně. Údržbu můžete kdykoli spustit během tohoto samoobslužného okna. | 
+| Ne | V rámci příslušné sady škálování virtuálních počítačů nejsou žádné virtuální počítače v okně samoobslužné služby. | 
+| - | Vaše služby Virtual Machine Scale Sets nejsou součástí plánovaného formátu Wave pro údržbu.| 
 
 ## <a name="notification-and-alerts-in-the-portal"></a>Oznámení a výstrahy na portálu
 
-Azure komunikuje plánu kvůli plánované údržbě e-mailem do skupiny vlastník a spoluvlastníci předplatného. Příjemci a kanály pro tuto komunikaci můžete přidat tak, že vytvoříte upozornění protokolu aktivit. Další informace najdete v tématu [monitorovat aktivitu předplatného se protokol aktivit Azure](../azure-monitor/platform/activity-logs-overview.md).
+Azure komunikuje s plánem plánované údržby odesláním e-mailu vlastníkovi předplatného a spoluvlastníci. Do této komunikace můžete přidat příjemce a kanály tím, že vytvoříte výstrahy protokolu aktivit. Další informace najdete v tématu [monitorování aktivity předplatného pomocí protokolu aktivit Azure](../azure-monitor/platform/activity-logs-overview.md).
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-2. V nabídce vlevo vyberte **monitorování**. 
-3. V **monitorování – upozornění (klasická)** vyberte **+ přidat upozornění protokolu aktivit**.
-4. Na **přidat upozornění protokolu aktivit** stránky, vyberte nebo zadejte požadované informace. V **kritéria**, nezapomeňte nastavit následující hodnoty:
+2. V nabídce vlevo vyberte **monitor**. 
+3. V podokně **monitor – výstrahy (Classic)** vyberte **+ Přidat upozornění protokolu aktivit**.
+4. Na stránce **Přidat upozornění protokolu aktivit** vyberte nebo zadejte požadované informace. V části **kritéria**ověřte, že jste nastavili následující hodnoty:
    - **Kategorie události**: Vyberte **Service Health**.
-   - **Služby**: Vyberte **Škálovací sady virtuálních počítačů a virtuálních počítačů**.
-   - **Typ**: Vyberte **plánované údržby**. 
+   - **Služby**: Vyberte **Virtual Machine Scale Sets a Virtual Machines**.
+   - **Zadejte**: Vyberte možnost **plánovaná údržba**. 
     
-Další informace o tom, jak nakonfigurovat výstrahy protokolu aktivit najdete v tématu [výstrahy vytvoření protokolu aktivit](../azure-monitor/platform/activity-log-alerts.md)
+Další informace o tom, jak nakonfigurovat výstrahy protokolu aktivit, najdete v tématu [Vytvoření upozornění protokolu aktivit](../azure-monitor/platform/activity-log-alerts.md) .
     
     
-## <a name="start-maintenance-on-your-virtual-machine-scale-set-from-the-portal"></a>Spustit údržbu na vaši škálovací sadu virtuálních počítačů z portálu
+## <a name="start-maintenance-on-your-virtual-machine-scale-set-from-the-portal"></a>Spuštění údržby sady škálování virtuálních počítačů z portálu
 
-Zobrazí se další podrobnosti týkající se údržby v přehledu škálovací sady virtuálních počítačů. Pokud alespoň jeden virtuální počítač ve škálovací sadě virtuálního počítače je součástí vlny plánované údržby, přidá se nové oznámení pásu karet v horní části stránky. Vyberte přejděte na pásu karet oznámení **údržby** stránky. 
+Podrobné informace o údržbě najdete v přehledu virtuálních počítačů s měřítkem. Pokud je v plánovaném vlnovce údržby zahrnutý aspoň jeden virtuální počítač v sadě škálování virtuálního počítače, přidá se v horní části stránky nový pás karet oznámení. Vyberte pás karet oznámení, který chcete přejít na stránku **údržby** . 
 
-Na **údržby** stránku, uvidíte, které instance virtuálního počítače je ovlivněna plánované údržby. Chcete-li spustit údržbu, zaškrtněte políčko, která odpovídá ovlivněných virtuálních počítačů. Vyberte **spustit údržbu**.
+Na stránce **Údržba** vidíte, která instance virtuálního počítače je ovlivněna plánovanou údržbou. Pokud chcete spustit údržbu, zaškrtněte políčko, které odpovídá příslušnému virtuálnímu počítači. Pak vyberte **Spustit údržbu**.
 
-Po zahájení údržby ovlivněné virtuální počítače ve škálovací sadě virtuálních počítačů provést údržbu a jsou dočasně nedostupné. Pokud jste okno samoobslužných služeb, pořád uvidíte časový interval při se zachová svou škálovací sadu virtuálních počítačů Azure.
+Po spuštění údržby se ovlivněné virtuální počítače v sadě škálování virtuálního počítače procházejí údržbou a dočasně nejsou k dispozici. Pokud jste okno samoobslužné služby nenalezli, můžete i nadále zobrazovat časový interval, kdy Azure zachovává sadu škálování virtuálního počítače.
  
-## <a name="check-maintenance-status-by-using-powershell"></a>Kontrola stavu údržby pomocí Powershellu
+## <a name="check-maintenance-status-by-using-powershell"></a>Ověření stavu údržby pomocí PowerShellu
 
-Prostředí Azure PowerShell můžete zjistit, kdy jsou virtuální počítače ve škálovací sadě virtuálních počítačů plánu údržby. Informace o plánované údržbě je k dispozici prostřednictvím [Get-AzVmss](https://docs.microsoft.com/powershell/module/az.compute/get-azvmss) rutiny při použití `-InstanceView` parametru.
+Pomocí Azure PowerShell můžete zobrazit, kdy se u virtuálních počítačů ve službě Virtual Machine Scale Sets plánuje údržba. Informace o plánované údržbě jsou k dispozici pomocí rutiny [Get-AzVmss](https://docs.microsoft.com/powershell/module/az.compute/get-azvmss) při `-InstanceView` použití parametru.
  
-Informace o údržbě se vrátí jenom v případě plánované údržby. Pokud žádná údržba je naplánována tak, že má vliv na instanci virtuálního počítače, rutina nevrací žádné informace o údržbě. 
+Informace o údržbě jsou vráceny pouze v případě, že je údržba plánována. Pokud není naplánována žádná údržba, která by měla vliv na instanci virtuálního počítače, rutina nevrátí žádné informace o údržbě. 
 
 ```powershell
 Get-AzVmss -ResourceGroupName rgName -VMScaleSetName vmssName -InstanceId id -InstanceView
 ```
 
-Následující vlastnosti jsou vráceny v rámci **MaintenanceRedeployStatus**: 
+V **MaintenanceRedeployStatus**se vrátí následující vlastnosti: 
 
-| Hodnota | Popis |
+| Value | Popis   |
+|-------|---------------|
+| IsCustomerInitiatedMaintenanceAllowed | Určuje, jestli můžete v tomto okamžiku spustit údržbu virtuálního počítače. |
+| PreMaintenanceWindowStartTime         | Začátek samoobslužného okna údržby, když můžete na svém VIRTUÁLNÍm počítači zahájit údržbu. |
+| PreMaintenanceWindowEndTime           | Konec samoobslužného okna údržby, když můžete na svém VIRTUÁLNÍm počítači iniciovat údržbu. |
+| MaintenanceWindowStartTime            | Začátek údržby naplánovaný při zahájení údržby virtuálního počítače v Azure. |
+| MaintenanceWindowEndTime              | Konec okna naplánované údržby, ve kterém Azure iniciuje údržbu na vašem VIRTUÁLNÍm počítači. |
+| LastOperationResultCode               | Výsledek posledního pokusu o spuštění údržby na virtuálním počítači. |
 
-|-------|---------------| | IsCustomerInitiatedMaintenanceAllowed | Určuje, zda lze spustit údržbu na virtuálním počítači v tuto chvíli. | | PreMaintenanceWindowStartTime | Začátek samoobslužné časové období údržby při údržby můžete spustit na virtuálním počítači. | | PreMaintenanceWindowEndTime | Konec samoobslužné časové období údržby při údržby můžete spustit na virtuálním počítači. | | MaintenanceWindowStartTime | Na začátek plánované údržby, ve kterém Azure zahájí Údržba na vašem virtuálním počítači. | | MaintenanceWindowEndTime | Konec okna plánované údržby, ve kterém Azure zahájí Údržba na vašem virtuálním počítači. | | LastOperationResultCode | Výsledek posledního pokusu o zahájení údržby ve virtuálním počítači. |
 
 
+### <a name="start-maintenance-on-your-vm-instance-by-using-powershell"></a>Spuštění údržby instance virtuálního počítače pomocí PowerShellu
 
-### <a name="start-maintenance-on-your-vm-instance-by-using-powershell"></a>Spustit údržbu na instanci virtuálního počítače pomocí Powershellu
-
-Můžete spustit údržbu na virtuálním počítači, pokud **IsCustomerInitiatedMaintenanceAllowed** je nastavena na **true**. Použití [Set-AzVmss](/powershell/module/az.compute/set-azvmss) rutinu s `-PerformMaintenance` parametru.
+Pokud je **IsCustomerInitiatedMaintenanceAllowed** nastavená na **true**, můžete spustit údržbu na virtuálním počítači. Použijte rutinu [set-AzVmss](/powershell/module/az.compute/set-azvmss) s `-PerformMaintenance` parametrem.
 
 ```powershell
 Set-AzVmss -ResourceGroupName rgName -VMScaleSetName vmssName -InstanceId id -PerformMaintenance 
 ```
 
-## <a name="check-maintenance-status-by-using-the-cli"></a>Kontrola stavu údržby pomocí rozhraní příkazového řádku
+## <a name="check-maintenance-status-by-using-the-cli"></a>Ověření stavu údržby pomocí rozhraní příkazového řádku
 
-Můžete zobrazit informace o plánované údržbě pomocí [az vmss list-instances](/cli/azure/vmss?view=azure-cli-latest#az-vmss-list-instances).
+Informace o plánované údržbě můžete zobrazit pomocí [AZ VMSS list-Instances](/cli/azure/vmss?view=azure-cli-latest#az-vmss-list-instances).
  
-Informace o údržbě se vrátí jenom v případě plánované údržby. Pokud je naplánovaná žádná Údržba, který má vliv na instanci virtuálního počítače, že příkaz nevrací žádné informace o údržbě. 
+Informace o údržbě jsou vráceny pouze v případě, že je údržba plánována. Pokud není naplánována žádná údržba, která má vliv na instanci virtuálního počítače, příkaz nevrátí žádné informace o údržbě. 
 
 ```azure-cli
 az vmss list-instances -g rgName -n vmssName --expand instanceView
 ```
 
-Následující vlastnosti jsou vráceny v rámci **MaintenanceRedeployStatus** jednotlivých instancí virtuálních počítačů: 
+V **MaintenanceRedeployStatus** se vrátí následující vlastnosti pro každou instanci virtuálního počítače: 
 
-| Hodnota | Popis |
+| Value | Popis   |
+|-------|---------------|
+| IsCustomerInitiatedMaintenanceAllowed | Určuje, jestli můžete v tomto okamžiku spustit údržbu virtuálního počítače. |
+| PreMaintenanceWindowStartTime         | Začátek samoobslužného okna údržby, když můžete na svém VIRTUÁLNÍm počítači zahájit údržbu. |
+| PreMaintenanceWindowEndTime           | Konec samoobslužného okna údržby, když můžete na svém VIRTUÁLNÍm počítači iniciovat údržbu. |
+| MaintenanceWindowStartTime            | Začátek údržby naplánovaný při zahájení údržby virtuálního počítače v Azure. |
+| MaintenanceWindowEndTime              | Konec okna naplánované údržby, ve kterém Azure iniciuje údržbu na vašem VIRTUÁLNÍm počítači. |
+| LastOperationResultCode               | Výsledek posledního pokusu o spuštění údržby na virtuálním počítači. |
 
-|-------|---------------| | IsCustomerInitiatedMaintenanceAllowed | Určuje, zda lze spustit údržbu na virtuálním počítači v tuto chvíli. | | PreMaintenanceWindowStartTime | Začátek samoobslužné časové období údržby při údržby můžete spustit na virtuálním počítači. | | PreMaintenanceWindowEndTime | Konec samoobslužné časové období údržby při údržby můžete spustit na virtuálním počítači. | | MaintenanceWindowStartTime | Na začátek plánované údržby, ve kterém Azure zahájí Údržba na vašem virtuálním počítači. | | MaintenanceWindowEndTime | Konec okna plánované údržby, ve kterém Azure zahájí Údržba na vašem virtuálním počítači. | | LastOperationResultCode | Výsledek posledního pokusu o zahájení údržby ve virtuálním počítači. |
 
+### <a name="start-maintenance-on-your-vm-instance-by-using-the-cli"></a>Spuštění údržby instance virtuálního počítače pomocí rozhraní příkazového řádku
 
-### <a name="start-maintenance-on-your-vm-instance-by-using-the-cli"></a>Spustit údržbu na instanci virtuálního počítače pomocí rozhraní příkazového řádku
-
-Následující volání zahájí Údržba na instancích virtuálních počítačů, pokud `IsCustomerInitiatedMaintenanceAllowed` je nastavena na **true**:
+Následující volání inicializuje údržbu instance virtuálního počítače, pokud `IsCustomerInitiatedMaintenanceAllowed` je nastavená na **hodnotu true**:
 
 ```azure-cli
 az vmss perform-maintenance -g rgName -n vmssName --instance-ids id
@@ -168,47 +178,47 @@ az vmss perform-maintenance -g rgName -n vmssName --instance-ids id
 
 ## <a name="faq"></a>Nejčastější dotazy
 
-**Otázka: Proč je potřeba pro svoje virtuální počítače restartovat?**
+**Otázka: Proč je potřeba restartovat svoje virtuální počítače hned?**
 
-**Odpověď:** I když většina aktualizací a upgradů platformy Azure nemají vliv na dostupnost virtuálních počítačů, v některých případech Nedokážeme vyhnout restartování virtuálních počítačů hostovaných v Azure. Jsme nashromáždili několik změn, které vyžadují restartování našich serverů, které způsobí restartování virtuálního počítače.
+**Odpověď:** I když většina aktualizací a upgradů na platformu Azure nemá vliv na dostupnost virtuálního počítače, nemůžeme v některých případech vyhýbat restartování virtuálních počítačů hostovaných v Azure. Shromáždili jsme několik změn, které vyžadují restart našich serverů, které způsobí restartování virtuálního počítače.
 
-**Otázka: Pokud sleduji svá doporučení pro zajištění vysoké dostupnosti s využitím dostupnosti nastavit, mám bezpečný?**
+**Otázka: Pokud vystupujem podle doporučení pro vysokou dostupnost pomocí skupiny dostupnosti, je I bezpečné?**
 
-**Odpověď:** Virtuální počítače nasazené ve skupině dostupnosti nastavena nebo v škálovací sady virtuálních počítačů pomocí aktualizačních domén. Při provádění údržby Azure dodržuje omezení aktualizace domény a nebude restartování virtuálních počítačů z jiné aktualizační doméně (v rámci stejné skupiny dostupnosti). Azure také čeká aspoň 30 minut před přechodem na další skupinu virtuálních počítačů. 
+**Odpověď:** Virtuální počítače nasazené ve skupině dostupnosti nebo v sadě Virtual Machine Scale Sets používají aktualizační domény. Při provádění údržby Azure respektuje omezení domény aktualizace a nerestartuje virtuální počítače z jiné aktualizační domény (ve stejné skupině dostupnosti). Azure také před přechodem na další skupinu virtuálních počítačů počká aspoň 30 minut. 
 
-Další informace o vysoké dostupnosti najdete v tématu [oblasti a dostupnost virtuálních počítačů v Azure](../virtual-machines/windows/regions-and-availability.md).
+Další informace o vysoké dostupnosti najdete v tématu [oblasti a dostupnost pro virtuální počítače v Azure](../virtual-machines/windows/availability.md).
 
-**Otázka: Jak mohu nastavit oznamování o plánované údržbě?**
+**Otázka: Jak můžu dostávat informace o plánované údržbě?**
 
-**Odpověď:** Nastavením plánu na jeden nebo více oblastech Azure začíná vlny plánované údržby. Krátce po e-mailové oznámení, přijde vlastníkům předplatného (jeden e-mail na jedno předplatné). Kanály a příjemců tohoto oznámení můžete přidat pomocí upozornění protokolu aktivit. Pokud provádíte nasazení virtuálního počítače do oblasti, ve kterém je již naplánována plánované údržby, není dostat oznámení. Místo toho zkontrolujte stav údržby virtuálního počítače.
+**Odpověď:** Spustí se naplánovaná údržba Wave tím, že nastaví plán na jednu nebo více oblastí Azure. Brzy se pošle e-mailové oznámení vlastníkům předplatného (jeden e-mail na předplatné). Můžete přidat kanály a příjemce pro toto oznámení pomocí upozornění protokolu aktivit. Pokud virtuální počítač nasadíte do oblasti, ve které je plánovaná údržba už naplánovaná, neobdržíte oznámení. Místo toho se podívejte na stav údržby virtuálního počítače.
 
-**Otázka: Můžu nezobrazuje žádný indikátor plánované údržby na portálu, Powershellu nebo rozhraní příkazového řádku. Co je?**
+**Otázka: Na portálu, PowerShellu nebo rozhraní příkazového řádku se nezobrazují žádné informace o plánované údržbě. Co je?**
 
-**Odpověď:** Informace týkající se plánované údržby je k dispozici během vlny plánované údržby pouze pro virtuální počítače, které jsou ovlivněny plánované údržby. Pokud nevidíte data, že vlna údržby již pravděpodobně bylo dokončeno (nebo nespuštění), nebo virtuální počítač už může být hostován na aktualizovaném serveru.
+**Odpověď:** Informace týkající se plánované údržby jsou k dispozici v průběhu plánované údržby, pouze pro virtuální počítače, které jsou ovlivněné plánovanou údržbou. Pokud nevidíte data, může se stát, že je již dokončeno (nebo ne spuštěno), nebo že je váš virtuální počítač již hostovaný na aktualizovaném serveru.
 
-**Otázka: Existuje způsob, jak zjistit přesně když můj virtuální počítač bude mít vliv na?**
+**Otázka: Existuje způsob, jak přesně zjistit, kdy to bude mít vliv na můj virtuální počítač?**
 
-**Odpověď:** Nastavíme plán, nadefinujeme časovým intervalem několik dní. Přesné pořadí serverů (a virtuálních počítačů) v rámci tohoto časového intervalu není známo. Pokud chcete zjistit přesný čas aktualizují vaše virtuální počítače, můžete použít [naplánované události](../virtual-machines/windows/scheduled-events.md). Při použití naplánované události, můžete dotaz z v rámci virtuálního počítače a dostanete oznámení 15 minut před restartováním virtuálního počítače.
+**Odpověď:** Když nastavíme plán, nadefinujeme časový interval několik dní. Přesné pořadí serverů (a virtuálních počítačů) v rámci tohoto časového intervalu není známo. Pokud chcete znát přesný čas, kdy se vaše virtuální počítače budou aktualizovat, můžete použít [naplánované události](../virtual-machines/windows/scheduled-events.md). Když použijete naplánované události, můžete se z virtuálního počítače dotazovat a obdržet oznámení o 15 minutách před restartováním virtuálního počítače.
 
 **Otázka: Jak dlouho bude trvat restartování virtuálního počítače?**
 
-**Odpověď:**  V závislosti na velikosti virtuálního počítače restartování může trvat až několik minut, než během časového intervalu samoobslužné údržby. Restartování během restartování iniciované platformou Azure – v plánované časové období údržby, obvykle trvá přibližně 25 minut. Pokud používáte cloudové služby (webové nebo pracovní Role), škálovací sady virtuálních počítačů nebo skupiny dostupnosti, budete mít 30 minut mezi jednotlivými skupinami virtuálních počítačů (aktualizační doména) během plánované časové období údržby. 
+**Odpověď:**  V závislosti na velikosti virtuálního počítače může restartování trvat až několik minut, než se okno samoobslužné údržby. Během restartování iniciované Azure v plánovaném časovém období údržby trvá restart obvykle přibližně 25 minut. Pokud používáte Cloud Services (Web/role pracovního procesu), sady škálování virtuálních počítačů nebo sady dostupnosti, budete během naplánovaného časového období údržby dodávat 30 minut mezi každou skupinou virtuálních počítačů (aktualizační doména). 
 
-**Otázka: Nevidím žádné informace o údržbě na svoje virtuální počítače. K jakému?**
+**Otázka: Na virtuálních počítačích nevidím žádné informace o údržbě. Co se pokazilo?**
 
-**Odpověď:** Tady je několik důvodů, proč se nemusí zobrazit informace o libovolné údržby na virtuálních počítačích:
-   - Používáte předplatné označen jako *Microsoft Internal*.
-   - Nejsou vaše virtuální počítače s naplánovanou údržbou. Může být, že vlna údržby skončila, byla zrušena nebo byla změněna tak, aby vaše virtuální počítače jsou už vliv.
-   - Nemáte k dispozici **údržby** sloupec přidali do zobrazení seznamu virtuálních počítačů. I když jsme tento sloupec přidali do výchozího zobrazení, pokud nakonfigurujete zobrazení zobrazíte nevýchozí sloupce, je třeba ručně přidat **údržby** sloupec do zobrazení seznamu virtuálních počítačů.
+**Odpověď:** Existuje několik důvodů, proč se na virtuálních počítačích nemusejí zobrazovat žádné informace o údržbě:
+   - Používáte odběr označený jako *interní Microsoft*.
+   - Pro vaše virtuální počítače není naplánovaná údržba. Může to být tím, že se ukončila vlna údržby, byla zrušena nebo změněna, aby vaše virtuální počítače už neovlivnily.
+   - Do zobrazení seznamu virtuálních počítačů nemáte přidaný sloupec **Údržba** . I když jsme tento sloupec přidali do výchozího zobrazení, pokud nakonfigurujete zobrazení tak, aby se zobrazily jiné než výchozí sloupce, musíte do zobrazení seznamu virtuálních počítačů ručně přidat sloupec **Údržba** .
 
-**Otázka: Můj virtuální počítač je naplánovaná údržba podruhé. Proč?**
+**Otázka: Pro tento virtuální počítač se naplánuje údržba podruhé. Proč?**
 
-**Odpověď:** V několika případech použití váš virtuální počítač je naplánovaná údržba po již dokončení vaší údržby a znovu nasadit:
-   - Jsme zrušena vlna údržby a restartuje s jinou datovou částí. Může být, že jsme zjistili chybnou datové části a potřebujeme jen nasadit další datové části.
-   - Virtuální počítač byl *službami opraven* do jiného uzlu z důvodu selhání hardwaru.
-   - Vybrali jste zastavení (uvolnění) a restartujte virtuální počítač.
-   - Máte **automatické vypnutí** zapnuta pro daný virtuální počítač.
+**Odpověď:** V několika případech použití je naplánována údržba virtuálního počítače po dokončení údržby a opětovného nasazení:
+   - Zrušili jste vlnu údržby a restartovali ji s jinou datovou částí. Může to být tím, že jsme zjistili chybnou datovou část a jednoduše potřebujete nasadit další datovou část.
+   - Kvůli hardwarové chybě byla *Služba* VM zacelená na jiný uzel.
+   - Vybrali jste možnost zastavit (zrušit přidělení) a restartovat virtuální počítač.
+   - Pro virtuální počítač je zapnuté **Automatické vypnutí** .
 
 ## <a name="next-steps"></a>Další postup
 
-Informace o postupu registrace události údržby ve virtuálním počítači s použitím [naplánované události](../virtual-machines/windows/scheduled-events.md).
+Naučte se registrovat události údržby z virtuálního počítače pomocí naplánovaných [událostí](../virtual-machines/windows/scheduled-events.md).

@@ -1,55 +1,55 @@
 ---
-title: Zkoumání - Personalizer
+title: Vlastní nastavení pro průzkum
 titleSuffix: Azure Cognitive Services
-description: Zkoumání Personalizer je moci pokračovat v poskytování dobré výsledky, i když se změní chování uživatelů. Výběr prostředí zkoumání je obchodní rozhodnutí o podíl interakce uživatele s, za účelem zlepšení modelu.
+description: V případě průzkumu může přizpůsobený uživatel pokračovat v poskytování dobrých výsledků, i když se změní chování uživatele. Výběr nastavení průzkumu je obchodní rozhodnutí o poměru interakcí uživatelů, které se mají prozkoumat, aby bylo možné model vylepšit.
 services: cognitive-services
-author: edjez
+author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 05/13/2019
-ms.author: edjez
-ms.openlocfilehash: ebb59b6bb7c36f4558b2bd63d2d55fa95823c4c3
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.author: diberry
+ms.openlocfilehash: cfecea6a64301d86aa657420dc300c26d4ed6f1e
+ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67722480"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68663399"
 ---
 # <a name="exploration-and-exploitation"></a>Zkoumání a využití
 
-Zkoumání Personalizer je moci pokračovat v poskytování dobré výsledky, i když se změní chování uživatelů.
+V případě průzkumu může přizpůsobený uživatel pokračovat v poskytování dobrých výsledků, i když se změní chování uživatele.
 
-Pořadí volání přijetí Personalizer vrátí RewardActionID, která buď:
-* Využívání používá tak, aby odpovídaly nejpravděpodobnější chování uživatelů podle aktuální model strojového učení.
-* Používá průzkumu, který neodpovídá akci, která má největší pravděpodobnost v pořadí.
+Když přizpůsobené přizpůsobuje volání pořadí, vrátí RewardActionID, který buď:
+* Používá využívání, které odpovídá nejpravděpodobnějšímu chování uživatelů na základě aktuálního modelu strojového učení.
+* Používá průzkum, který se neshoduje s akcí, která má nejvyšší pravděpodobnost v pořadí.
 
 <!--
 Returning the most probable action is called *exploit* behavior. Returning a different action is called *exploration*.
 -->
-Personalizer aktuálně používá algoritmus volá *epsilon greedy* prozkoumat. 
+Přizpůsobené přizpůsobování v současnosti používá algoritmus s názvem *Epsilon hlad* . 
 
-## <a name="choosing-an-exploration-setting"></a>Výběr prostředí průzkum
+## <a name="choosing-an-exploration-setting"></a>Výběr nastavení průzkumu
 
-Můžete nakonfigurovat procentuální hodnotu provoz určený pro zkoumání webu Azure Portal **nastavení** stránka Personalizer. Toto nastavení určuje procento pořadí volání, které provádějí průzkum. 
+Procentuální hodnotu provozu, který se má použít pro průzkum, nakonfigurujete na stránce **nastavení** Azure Portal pro přizpůsobení. Toto nastavení určuje procento volání pořadí, která provádějí průzkum. 
 
-Personalizer Určuje, jestli se má prozkoumat nebo jejich zneužití s této pravděpodobnosti pro všechna pořadí volání. To se liší od chování v některých A / B architektur, které zámky ošetření na konkrétní ID uživatele.
+Přizpůsobení určuje, zda se má tato pravděpodobnost prozkoumat nebo zneužít při každém volání pořadí. To se liší od chování v některých architekturách A/B, které zablokují zpracování pro konkrétní ID uživatelů.
 
-## <a name="best-practices-for-choosing-an-exploration-setting"></a>Osvědčené postupy pro výběr prostředí průzkum
+## <a name="best-practices-for-choosing-an-exploration-setting"></a>Osvědčené postupy pro výběr nastavení průzkumu
 
 <!--
 @edjez - you say what not to do, but make no recommendations of what **to** do. 
 -->
 
-Výběr prostředí zkoumání je obchodní rozhodnutí o podíl interakce uživatele s, za účelem zlepšení modelu. 
+Výběr nastavení průzkumu je obchodní rozhodnutí o poměru interakcí uživatelů, které se mají prozkoumat, aby bylo možné model vylepšit. 
 
-Nastavení nula bude negovat mnohé z výhod Personalizer. S tímto nastavením Personalizer použije bez interakce uživatelů ke zjištění lepší interakci uživatele. To vede k modelu stagnation odchylek a nakonec nižší výkon.
+Nastavení nuly bude mít na starosti mnoho výhod přizpůsobeného aplikace. Pomocí tohoto nastavení přizpůsobené přizpůsobování nevyužívá žádné uživatelské interakce, aby bylo možné zjistit lepší uživatelské interakce. To vede k modelování stagnation, snížení rychlosti a konečnému snížení výkonu.
 
-Nastavení, které je příliš vysoká. bude negovat výhody učení z chování uživatelů. Ji nastavíte na 100 % znamená konstantní náhodné a jakékoli zjištěná chování uživatelů by ovlivňovali výsledek.
+Nastavení, které je příliš vysoké, bude mít na starosti výhody učení od chování uživatele. Nastavení na 100% implikuje konstantní náhodnost a jakékoli zjištěné chování uživatelů by neovlivnilo výsledek.
 
-Je důležité, abyste změnit chování aplikací podle toho, jestli zjistíte, pokud je Personalizer zkoumání nebo zneužití. To vedlo k učení chyb, které by nakonec snížit potenciální výkon.
+Je důležité, abyste neměnili chování aplikace na základě toho, jestli se vám zobrazuje, jestli se dá přizpůsobovat nebo zneužít. To by vedlo k případným posunům, které by nakonec snížily potenciální výkon.
 
 ## <a name="next-steps"></a>Další postup
 
-[Zpětnovazebnému učení](concepts-reinforcement-learning.md) 
+[Posílení učení](concepts-reinforcement-learning.md) 

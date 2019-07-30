@@ -10,13 +10,13 @@ ms.topic: quickstart
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlr
-ms.date: 02/04/2019
-ms.openlocfilehash: b4341cb7d1734cb25aae890cc282c67ef38d67bf
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.date: 07/29/2019
+ms.openlocfilehash: 45b0b2bc7a2ef5c3cb6ca801668f7b5be7c8ac73
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566482"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68639997"
 ---
 # <a name="getting-started-with-single-databases-in-azure-sql-database"></a>Začínáme s izolovanými databázemi v Azure SQL Database
 
@@ -43,7 +43,15 @@ K vytvoření, konfiguraci a škálování databáze můžete použít PowerShel
 
 Tyto rychlé starty vám umožní rychle vytvořit nebo importovat databázi do Azure pomocí `.bacpac` souboru. `.bacpac` Soubory a `.dacpac` jsou ale navržené k rychlému přesunu databází napříč různými verzemi SQL Server a možností nasazení v rámci Azure SQL Database nebo k implementaci průběžné integrace do kanálu DevOps. Tato metoda není navržená pro migraci provozních databází s minimálními prostoji, protože byste museli ukončit přidávání nových dat, počkat na dokončení exportu zdrojové databáze do `.bacpac` souboru a pak počkat na import do Azure SQL Database k dokončení. Všechny tyto čekající výsledky v důsledku výpadku vaší aplikace, zejména pro velké databáze. Pro přesun provozní databáze potřebujete lepší způsob migrace, která zaručuje minimální výpadky migrace. K tomu je potřeba použít [službu migrace dat (DMS)](https://docs.microsoft.com/azure/dms/tutorial-sql-server-to-azure-sql?toc=/azure/sql-database/toc.json) k migraci databáze s minimálními výpadky. DMS to provede přírůstkovým vložením změn provedených ve zdrojové databázi do databáze, která se obnovuje. Tímto způsobem můžete rychle přepnout aplikaci ze zdrojového do cílové databáze s minimálními výpadky.
 
-## <a name="next-steps"></a>Další postup
+## <a name="hands-on-learning-modules"></a>Praktické výukové moduly
+
+Následující Microsoft Learn moduly vám pomůžou naučit se zdarma o Azure SQL Database.
+
+- [Zřízení databáze SQL Azure pro ukládání dat aplikací](https://docs.microsoft.com/learn/modules/provision-azure-sql-db/)
+- [Vývoj a konfigurace aplikace ASP.NET, která se dotazuje na Azure SQL Database](https://docs.microsoft.com/learn/modules/develop-app-that-queries-azure-sql/)
+- [Zabezpečení Azure SQL Database](https://docs.microsoft.com/learn/modules/secure-your-azure-sql-database/)
+
+## <a name="next-steps"></a>Další kroky
 
 - [Seznam podporovaných funkcí v Azure SQL Database najdete na nejvyšší úrovni](sql-database-features.md).
 - Přečtěte si, jak zvýšit [zabezpečení databáze](sql-database-security-tutorial.md).

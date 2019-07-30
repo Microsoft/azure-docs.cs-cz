@@ -1,6 +1,6 @@
 ---
-title: Jak chcete začít s znalostní báze dolování (preview) – Azure Search
-description: Přečtěte si postup pro odeslání bohatších možností dokumentů vytvořil AI indexování kanály ve službě Azure Search do znalostní báze úložiště v účtu úložiště Azure. Odtud můžete zobrazit, upravovat a využívat bohatších možností dokumentů ve službě Azure Search i v jiných aplikacích.
+title: Jak začít s úložištěm Knowledge Store (Preview) – Azure Search
+description: Naučte se, jak odesílat obohacené dokumenty vytvořené kanály indexování AI v Azure Search do úložiště znalostí v účtu Azure Storage. Odtud můžete zobrazit, změnit tvar a využívat obohacené dokumenty v Azure Search i v jiných aplikacích.
 manager: cgronlun
 author: HeidiSteen
 services: search
@@ -8,116 +8,116 @@ ms.service: search
 ms.topic: quickstart
 ms.date: 06/29/2019
 ms.author: heidist
-ms.openlocfilehash: e50dfcdc5ac2fbe2435066546a340874e1b8f682
-ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
+ms.openlocfilehash: 5794a24931b613bf1bdddd983799367bb02cf44d
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67551056"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68641004"
 ---
-# <a name="how-to-get-started-with-knowledge-mining-in-azure-search"></a>Jak začít pracovat s znalostní báze dolování ve službě Azure Search
+# <a name="how-to-get-started-with-knowledge-store-in-azure-search"></a>Jak začít se službou Knowledge Store v Azure Search
 
 > [!Note]
-> Znalostní báze úložiště je ve verzi preview a není určen pro použití v produkčním prostředí. [Rozhraní REST API verze 2019-05-06-Preview](search-api-preview.md) tuto funkci poskytuje. Není dostupná podpora .NET SDK v současnosti.
+> Znalostní databáze je ve verzi Preview a není určená pro produkční použití. Tato funkce poskytuje [REST API verze 2019-05-06-Preview](search-api-preview.md) . V tuto chvíli není dostupná žádná podpora sady .NET SDK.
 >
-[Znalostní báze úložiště](knowledge-store-concept-intro.md) uloží obohaceného AI dokumenty vytvořené při indexování do účtu úložiště Azure pro příjem dat znalostní báze dolování v jiných aplikacích. Uložené obohacení můžete také použít k pochopení a zpřesnit kanál indexování Azure Search. 
+[Znalostní báze](knowledge-store-concept-intro.md) šetří soubory AI, které se vytvořily během indexování vašeho účtu Azure Storage pro dolování dat v jiných aplikacích. Pomocí uložených rozšíření můžete také pochopit a zdokonalit Azure Search kanál indexování. 
 
-Znalostní báze úložiště je definován *dovednosti* a vytvořené *indexer*. Je zadán fyzický výraz znalostní báze úložiště prostřednictvím *projekce* , které definují datové struktury v úložišti. Čas dokončení tohoto návodu bude vytvořená všechny tyto objekty a budete vědět, jak všechny zapadají. 
+Znalostní databáze je definována *dovednosti* a vytvořeným *indexerem*. Fyzický výraz úložiště znalostí je *určen pomocí projekcí* , které určují datové struktury v úložišti. V době, kdy jste tento návod dokončili, jste vytvořili všechny tyto objekty a vy budete znát, jak se budou všechny vzájemně přizpůsobovat. 
 
-V tomto cvičení začněte ukázková data, služby a nástroje pro další základní pracovní postup pro vytváření a používání vaší první znalostní báze úložiště, s důrazem na definici dovednosti.
+V tomto cvičení začněte s ukázkovými daty, službami a nástroji a Naučte se základní pracovní postup pro vytváření a používání vašeho prvního obchodu s poznatky s důrazem na dovednosti definition.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Znalostní báze úložiště je uprostřed více služeb, s Azure Blob storage a Azure Table storage poskytuje fyzického úložiště a Azure Search a Cognitive Services pro vytvoření objektu a aktualizací. Znalost [základní architekturu](knowledge-store-concept-intro.md) je předpokladem pro tento návod.
+Znalostní báze je ve středu více služeb, kde Azure Blob Storage a Azure Table Storage poskytuje fyzické úložiště a Azure Search a Cognitive Services pro vytváření a aktualizace objektů. Znalost [základní architektury](knowledge-store-concept-intro.md) je předpokladem pro tento návod.
 
-Tyto služby a nástroje se používají v tomto rychlém startu. 
+V tomto rychlém startu se používají následující služby a nástroje. 
 
-+ [Získat desktopová aplikace Postman](https://www.getpostman.com/), která se používá pro odesílání požadavků HTTP do služby Azure Search.
++ [Získat aplikaci po pracovní ploše](https://www.getpostman.com/), která se používá k odesílání požadavků HTTP do Azure Search.
 
-+ [Vytvoření účtu služby Azure storage](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) pro uložení ukázkových dat a ve znalostní bázi úložiště. Vaše znalosti úložiště bude existovat ve službě Azure storage.
++ [Vytvořte účet úložiště Azure](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) pro ukládání ukázkových dat a úložiště znalostí. Vaše znalostní báze bude existovat v úložišti Azure.
 
-+ [Vytvoření prostředku služeb Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) S0 s průběžnými platbami úrovní broad-spectrum přístup k široké spektrum dovednosti používaných pro obohacení AI. Služby cognitive Services a služby Azure Search se musí být ve stejné oblasti.
++ [Vytvořte prostředek Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) na úrovni průběžných plateb podle aktuálního využití S0 pro širokou škálu dovedností, která se používá v rozšíření AI. Cognitive Services a vaše služba Azure Search musí být ve stejné oblasti.
 
-+ [Vytvoření služby Azure Search](search-create-service-portal.md) nebo [najít existující službu](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) pod vaším aktuálním předplatným. Můžete použít bezplatnou službu pro účely tohoto kurzu. 
++ [Vytvořte službu Azure Search](search-create-service-portal.md) nebo [Najděte existující službu](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) v rámci aktuálního předplatného. Pro tento kurz můžete použít bezplatnou službu. 
 
-Vyžaduje se také ukázkové dokumenty JSON a soubor Postman collection. Pokyny k vyhledání a načtení doplňující souborů je součástí [Příprava ukázková data](#prepare-sample-data) oddílu.
+Jsou také požadovány ukázkové dokumenty JSON a soubor kolekce po odeslání. Pokyny pro vyhledání a načtení doplňkových souborů jsou uvedené v části [Příprava ukázkových dat](#prepare-sample-data) .
 
-## <a name="get-a-key-and-url"></a>Získejte klíč a adresy URL
+## <a name="get-a-key-and-url"></a>Získat klíč a adresu URL
 
 Volání REST vyžadují pro každý požadavek adresu URL služby a přístupový klíč. Vyhledávací služba se vytvoří s oběma, takže pokud jste do svého předplatného přidali službu Azure Search, získejte potřebné informace pomocí následujícího postupu:
 
-1. [Přihlaste se k webu Azure portal](https://portal.azure.com/)a ve vyhledávací službě **přehled** stránce, získat adresu URL. Příkladem koncového bodu může být `https://mydemo.search.windows.net`.
+1. Přihlaste se [k Azure Portal](https://portal.azure.com/)a na stránce **Přehled** vyhledávací služby Získejte adresu URL. Příkladem koncového bodu může být `https://mydemo.search.windows.net`.
 
-1. V **nastavení** > **klíče**, získat klíč pro úplná práva správce na službu. Existují dva klíče zaměnitelné správce, v případě, že budete potřebovat k výměně jeden k dispozici zajišťuje nepřetržitý chod podniků. U požadavků můžete použít buď primární nebo sekundární klíč pro přidání, úpravy a odstraňování objektů.
+1. V části **Nastavení** > **klíče**Získejte klíč správce s úplnými právy k této službě. Existují dva zaměnitelné klíče správce poskytované pro zajištění kontinuity podnikových služeb pro případ, že byste museli nějakou dobu navrátit. V žádostech o přidání, úpravu a odstranění objektů můžete použít primární nebo sekundární klíč.
 
-    ![Získejte koncový bod a přístupový klíč rozhraní HTTP](media/search-get-started-postman/get-url-key.png "získat HTTP koncový bod a přístupový klíč")
+    ![Získání koncového bodu http a přístupového klíče](media/search-get-started-postman/get-url-key.png "Získání koncového bodu http a přístupového klíče")
 
-Všechny požadavky vyžaduje klíč rozhraní api na každou požadavku odeslaného do vaší služby. Název služby a klíč API-key budete poskytovat v každém požadavku HTTP v následujících částech.
+Všechny požadavky vyžadují klíč rozhraní API na všech žádostech odeslaných službě. V následujících oddílech zadáte název služby a klíč API-Key v každém požadavku HTTP.
 
 <a name="prepare-sample-data"></a>
 
 ## <a name="prepare-sample-data"></a>Příprava ukázkových dat
 
-Znalostní báze úložiště obsahuje výstup kanál rozšíření. Vstupy se skládají z "nepoužitelné" data se nakonec stanou "použitelné" při jejich postupu prostřednictvím kanálu. Příklady nepoužitelnými daty může obsahovat soubory obrázků, které musí být analyzován na text nebo obrázek vlastnosti nebo hustému textové soubory, které mohou být analyzovány pro entity, klíčové fráze a mínění. 
+Znalostní databáze obsahuje výstup kanálu rozšíření. Vstupy se skládají z "nepoužitelných" dat, která se při průběhu kanálu stane příznakem "použitelného". Příklady nepoužitelných dat mohou zahrnovat soubory obrázků, které je třeba analyzovat pro charakteristiky textu nebo obrázku, nebo zhuštěné textové soubory, které lze analyzovat pro entity, klíčové fráze nebo mínění. 
 
-Toto cvičení používá hustému textové soubory (informace o případu práva), které mohou být [judikatura přístup k projektu](https://case.law/bulk/download/) veřejná Data hromadné stažení stránky. Ukázka 10 dokumentu jsme nahráli do Githubu pro účely tohoto cvičení. 
+Toto cvičení používá zhuštěné textové soubory (informace o právním řádu), které pocházejí ze stránky pro stažení veřejné hromadné služby pro [přístup k projektu Caselaw](https://case.law/bulk/download/) . Pro toto cvičení jsme nahráli ukázku pro 10 dokumentů na GitHub. 
 
-V této úloze vytvoříte kontejner objektů Blob v Azure pro tyto dokumenty, který se použije jako vstup do kanálu. 
+V této úloze vytvoříte kontejner objektů BLOB v Azure pro tyto dokumenty, které použijete jako vstup do kanálu. 
 
-1. Stažení a extrakci [Azure Search ukázková Data](https://github.com/Azure-Samples/azure-search-sample-data/tree/master/caselaw) úložišti, abyste si [judikatura datovou sadu](https://github.com/Azure-Samples/azure-search-sample-data/tree/master/caselaw). 
+1. Stáhněte si a rozbalte úložiště [ukázkových dat Azure Search](https://github.com/Azure-Samples/azure-search-sample-data/tree/master/caselaw) , abyste získali [datovou sadu Caselaw](https://github.com/Azure-Samples/azure-search-sample-data/tree/master/caselaw). 
 
-1. [Přihlaste se k webu Azure portal](https://portal.azure.com), přejděte do svého účtu úložiště Azure, klikněte na tlačítko **objekty BLOB**a potom klikněte na tlačítko **+ kontejner**.
+1. Přihlaste se [k Azure Portal](https://portal.azure.com), přejděte k účtu úložiště Azure, klikněte na **objekty blob**a pak klikněte na **+ kontejner**.
 
-1. [Vytvořte kontejner objektů Blob](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal) obsahuje ukázková data: 
+1. [Vytvořte kontejner objektů BLOB](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal) , který bude obsahovat vzorová data: 
 
-   1. Název kontejneru `caselaw-test`. 
+   1. Pojmenujte `caselaw-test`kontejner. 
    
-   1. Nastavte úroveň veřejného přístupu na některou z jeho platných hodnot.
+   1. Nastavte úroveň veřejného přístupu na jakoukoli z jeho platných hodnot.
 
-1. Po vytvoření kontejneru ho otevřete a vyberte **nahrát** na panelu příkazů.
+1. Po vytvoření kontejneru ho otevřete a na panelu příkazů vyberte **nahrát** .
 
-   ![Nahrát na panelu příkazů](media/search-semi-structured-data/upload-command-bar.png "nahrát na panelu příkazů")
+   ![Nahrát na panel příkazů](media/search-semi-structured-data/upload-command-bar.png "Nahrát na panel příkazů")
 
-1. Přejděte do složky obsahující **judikatura sample.json** ukázkový soubor. Vyberte soubor a potom klikněte na tlačítko **nahrát**.
+1. Přejděte do složky, která obsahuje vzorový soubor **caselaw-Sample. JSON** . Vyberte soubor a pak klikněte na **nahrát**.
 
-1. Když jste ve službě Azure storage, získejte název připojovacího řetězce a kontejner.  Budete potřebovat oba z těchto řetězců v [vytvořit zdroj dat](#create-data-source):
+1. Když jste ve službě Azure Storage, Získejte připojovací řetězec a název kontejneru.  Oba tyto řetězce budete potřebovat v části [vytvořit zdroj dat](#create-data-source):
 
-   1. Na stránce Přehled klikněte na tlačítko **přístupové klíče** a zkopírujte *připojovací řetězec*. Začíná `DefaultEndpointsProtocol=https;` a končí `EndpointSuffix=core.windows.net`. Název účtu a klíč jsou mezi. 
+   1. Na stránce Přehled klikněte na **přístupové klíče** a zkopírujte *připojovací řetězec*. Začíná `DefaultEndpointsProtocol=https;` a končí `EndpointSuffix=core.windows.net`. Název vašeho účtu a klíč jsou mezi. 
 
-   1. Název kontejneru musí být `caselaw-test` nebo jakýmkoli názvem jste přiřadili.
+   1. Název kontejneru by měl být `caselaw-test` nebo libovolný název, který jste přiřadili.
 
 
 
 ## <a name="set-up-postman"></a>Nastavení nástroje Postman
 
-Postman je klientská aplikace, které budete používat k odesílání požadavků a dokumentů JSON do Azure Search. Některé z požadavků se dají formulovat pomocí pouze informace v tomto článku. Dvě největší požadavků (vytvoření indexu, vytváření dovedností) ale obsahovat podrobné JSON, který je příliš velká k vložení do článku. 
+Odesílací je klientská aplikace, kterou použijete k odeslání žádostí a dokumentů JSON pro Azure Search. Několik požadavků lze formulovat pouze pomocí informací v tomto článku. Nicméně dvě z největších požadavků (vytvoření indexu, vytvoření dovednosti) obsahují podrobný formát JSON, který je příliš velký pro vložení do článku. 
 
-Chcete-li všechny dokumenty JSON a požadavky plně dostupná, jsme vytvořili soubor Postman collection. Stažení a následným importem tohoto souboru je vaší první úlohou nastavení klienta.
+Aby všechny dokumenty JSON a požadavky byly plně dostupné, vytvořili jsme soubor kolekce post. Stažení a import tohoto souboru je první úloha při nastavování klienta.
 
-1. Stáhněte a rozbalte [ukázek Azure Search Postman](https://github.com/Azure-Samples/azure-search-postman-samples) úložiště.
+1. Stáhněte si a rozbalte úložiště [ukázek Azure Search](https://github.com/Azure-Samples/azure-search-postman-samples) .
 
-1. Spusťte Postman a import kolekce Postman judikatura:
+1. Spusťte post a importujte kolekci Caselaw post:
 
-   1. Klikněte na tlačítko **Import** > **importovat soubory** > **vybrat soubory**. 
+   1. Klikněte na **importovat** > **Import souborů** > **zvolit soubory**. 
 
    1. Přejděte do složky \azure-search-postman-samples-master\azure-search-postman-samples-master\Caselaw.
 
-   1. Select **Caselaw.postman_collection_v2.json**. Měli byste vidět čtyři **příspěvek** požadavků v kolekci.
+   1. Vyberte **Caselaw. postman_collection_v2. JSON**. V kolekci by se měly zobrazit čtyři požadavky **post** .
 
-   ![Kolekce postman pro ukázku judikatura](media/knowledge-store-howto/postman-collection.png "kolekce Postman pro ukázku judikatura")
+   ![Kolekce post pro Caselaw ukázku](media/knowledge-store-howto/postman-collection.png "Kolekce post pro Caselaw ukázku")
    
 
 ## <a name="create-an-index"></a>Vytvoření indexu
     
-První požadavek používá [vytvořit Index API](https://docs.microsoft.com/rest/api/searchservice/create-data-source), vytvoření indexu Azure Search, která ukládá veškerá prohledávatelná data. Index určuje pole, parametry a atributy.
+První požadavek používá [rozhraní API Create index](https://docs.microsoft.com/rest/api/searchservice/create-data-source)a vytváří index Azure Search, který ukládá všechna hledaná data. Index určuje všechna pole, parametry a atributy.
 
-Není nezbytně nutné index pro znalostní báze dolování, ale indexeru se nespustí, pokud je k dispozici indexu. 
+Nepotřebujete nutně index pro dolování znalostí, ale indexer nebude možné spustit, dokud není poskytnutý index. 
 
-1. V adrese URL `https://YOUR-AZURE-SEARCH-SERVICE-NAME.search.windows.net/indexes?api-version=2019-05-06-Preview`, nahraďte `YOUR-AZURE-SEARCH-SERVICE-NAME` s názvem vaší služby search. 
+1. V adrese URL `https://YOUR-AZURE-SEARCH-SERVICE-NAME.search.windows.net/indexes?api-version=2019-05-06-Preview`nahraďte `YOUR-AZURE-SEARCH-SERVICE-NAME` názvem vaší vyhledávací služby. 
 
-1. V záhlaví, nahraďte `<YOUR AZURE SEARCH ADMIN API-KEY>` s klíčem rozhraní API pro správu pro službu Azure Search.
+1. V části záhlaví nahraďte `<YOUR AZURE SEARCH ADMIN API-KEY>` klíč rozhraní API pro správu Azure Search.
 
-1. V části textu dokumentu JSON je schématu indexu. Sbalení pro viditelnost vnější prostředí indexu se skládá z následujících elementů. Kolekce polí odpovídající pole v datové sadě judikatura.
+1. V části tělo je dokument JSON schématem indexu. Sbalení pro viditelnost, vnější prostředí indexu se skládá z následujících prvků. Kolekce polí odpovídá polím v sadě dat caselaw.
 
    ```json
    {
@@ -135,9 +135,9 @@ Není nezbytně nutné index pro znalostní báze dolování, ale indexeru se ne
    }
    ```
 
-1. Rozbalte `fields` kolekce. Obsahuje hromadně definici indexu, která se skládá z jednoduchého pole [komplexní pole](search-howto-complex-data-types.md) vnořené používání dílčích struktur a kolekce.
+1. `fields` Rozbalte kolekci. Obsahuje hromadnou definici indexu skládající se z jednoduchých polí, [komplexních polí](search-howto-complex-data-types.md) s vnořenými podstrukturami a kolekcemi.
 
-   Za chvíli Zkontrolujte definici pole pro `casebody` komplexní pole na řádcích 302-384. Všimněte si, že komplexní pole může obsahovat jiné komplexní pole potřeby Hierarchická reprezentace. Hierarchické struktury můžete modelovat v indexu, jak je znázorněno zde a také jako projekce dovedností, tedy vytvoření vnořené struktury dat v úložišti znalostní báze.
+   Chvíli počkejte, než zkontrolujete definici pole pro `casebody` komplexní pole na řádcích 302-384. Všimněte si, že komplexní pole může obsahovat další složitá pole, pokud jsou potřeba hierarchické reprezentace. Hierarchické struktury lze modelovat v indexu, jak je znázorněno zde, a také jako projekce v dovednosti, takže se vytvoří vnořená datová struktura ve znalostní bázi Store.
 
    ```json
    {
@@ -227,19 +227,19 @@ Není nezbytně nutné index pro znalostní báze dolování, ale indexeru se ne
     . . .
    ```
 
-1. Klikněte na tlačítko **odeslat** provedení požadavku.  Měli byste obdržet **stavu: 201 – vytvořeno** zprávu jako odpověď.
+1. Kliknutím na **Odeslat** žádost spusťte.  Měl by se zobrazit **stav: 201 byla** vytvořena zpráva jako odpověď.
 
 <a name="create-data-source"></a>
 
 ## <a name="create-a-data-source"></a>Vytvoření zdroje dat
 
-Druhý požadavek používá [rozhraní API vytvořit zdroj dat](https://docs.microsoft.com/rest/api/searchservice/create-data-source) pro připojení k úložišti objektů Blob v Azure. 
+Druhý požadavek používá [rozhraní API pro vytvoření zdroje dat](https://docs.microsoft.com/rest/api/searchservice/create-data-source) pro připojení k úložišti objektů BLOB v Azure. 
 
-1. V adrese URL `https://YOUR-AZURE-SEARCH-SERVICE-NAME.search.windows.net/datasources?api-version=2019-05-06-Preview`, nahraďte `YOUR-AZURE-SEARCH-SERVICE-NAME` s názvem vaší služby search. 
+1. V adrese URL `https://YOUR-AZURE-SEARCH-SERVICE-NAME.search.windows.net/datasources?api-version=2019-05-06-Preview`nahraďte `YOUR-AZURE-SEARCH-SERVICE-NAME` názvem vaší vyhledávací služby. 
 
-1. V záhlaví, nahraďte `<YOUR AZURE SEARCH ADMIN API-KEY>` s klíčem rozhraní API pro správu pro službu Azure Search.
+1. V části záhlaví nahraďte `<YOUR AZURE SEARCH ADMIN API-KEY>` klíč rozhraní API pro správu Azure Search.
 
-1. V části textu dokument JSON obsahuje název svého účtu úložiště připojovací řetězec a objektů blob v kontejneru. Připojovací řetězec najdete na webu Azure Portal v účtu úložiště **přístupové klíče**. 
+1. V části tělo dokument JSON zahrnuje připojovací řetězec vašeho účtu úložiště a název kontejneru objektů BLOB. Připojovací řetězec najdete v Azure Portal v rámci **přístupových klíčů**účtu úložiště. 
 
     ```json
     {
@@ -259,21 +259,21 @@ Druhý požadavek používá [rozhraní API vytvořit zdroj dat](https://docs.mi
     }
     ```
 
-1. Klikněte na tlačítko **odeslat** provedení požadavku.  Měli byste obdržet **stavu: 201 – vytvořeno** zprávu jako odpověď.
+1. Kliknutím na **Odeslat** žádost spusťte.  Měl by se zobrazit **stav: 201 byla** vytvořena zpráva jako odpověď.
 
 
 
 <a name="create-skillset"></a>
 
-## <a name="create-a-skillset-and-knowledge-store"></a>Vytvoření úložiště dovednosti a znalosti
+## <a name="create-a-skillset-and-knowledge-store"></a>Vytvoření úložiště dovednosti a znalostní báze
 
-Třetí požadavek používá [vytvořit rozhraní API dovednosti](https://docs.microsoft.com/rest/api/searchservice/create-skillset), vytvoření objektu Azure Search, která určuje, jaké kognitivní dovednosti k volání, jak zřetězit dohromady a co je nejdůležitější dovednosti pro Tento názorný postup – určení úložiště znalostní báze.
+Třetí požadavek používá [rozhraní API Create dovednosti](https://docs.microsoft.com/rest/api/searchservice/create-skillset)a vytváří objekt Azure Search, který určuje, jaké dovednosti při rozpoznávání se mají volat, jak zřetězit dovednosti společně a nejdůležitější pro tento návod – jak zadat znalostní bázi.
 
-1. V adrese URL `https://YOUR-AZURE-SEARCH-SERVICE-NAME.search.windows.net/skillsets?api-version=2019-05-06-Preview`, nahraďte `YOUR-AZURE-SEARCH-SERVICE-NAME` s názvem vaší služby search. 
+1. V adrese URL `https://YOUR-AZURE-SEARCH-SERVICE-NAME.search.windows.net/skillsets?api-version=2019-05-06-Preview`nahraďte `YOUR-AZURE-SEARCH-SERVICE-NAME` názvem vaší vyhledávací služby. 
 
-1. V záhlaví, nahraďte `<YOUR AZURE SEARCH ADMIN API-KEY>` s klíčem rozhraní API pro správu pro službu Azure Search.
+1. V části záhlaví nahraďte `<YOUR AZURE SEARCH ADMIN API-KEY>` klíč rozhraní API pro správu Azure Search.
 
-1. V části textu je dokument JSON definice dovednosti. Sbalení pro viditelnost vnější prostředí dovedností se skládá z následujících elementů. `skills` Kolekce definuje obohacení v paměti, ale `knowledgeStore` definic Určuje, jak se ukládá výstup. `cognitiveServices` Definice není připojení k obohacení moduly AI.
+1. V části tělo je dokument JSON definicí dovednosti. V rámci viditelnosti je vnější prostředí dovednosti tvořeno následujícími prvky. Kolekce definuje rozšíření v paměti, `knowledgeStore` ale definice určuje, jak je výstup uložen. `skills` `cognitiveServices` Definice je vaše připojení k modulům pro obohacení AI.
 
    ```json
    {
@@ -285,11 +285,11 @@ Třetí požadavek používá [vytvořit rozhraní API dovednosti](https://docs.
    }
    ```
 
-1. Rozbalte `cognitiveServices` a `knowledgeStore` může poskytnout informace o připojení. V tomto příkladu tyto řetězce jsou umístěné za definici dovednosti, na konci textu požadavku. 
+1. Rozbalte `cognitiveServices` položku `knowledgeStore` a, aby bylo možné zadat informace o připojení. V tomto příkladu jsou tyto řetězce umístěny za definicí dovednosti do konce textu žádosti. 
 
-   Pro `cognitiveServices`, zřídit prostředek na úroveň S0, umístěný ve stejné oblasti jako Azure Search. CognitiveServices názvu a klíče můžete získat na stejné stránce na webu Azure Portal. 
+   Pro `cognitiveServices`můžete zřídit prostředek na úrovni S0, který je umístěný ve stejné oblasti jako Azure Search. Můžete získat název a klíč Cognitiveservices Account ze stejné stránky v Azure Portal. 
    
-   Pro `knowledgeStore`, můžete použít stejný připojovací řetězec použitý pro kontejner objektů Blob judikatura.
+   Pro `knowledgeStore`můžete použít stejný připojovací řetězec, který se používá pro kontejner objektů BLOB caselaw.
 
     ```json
     "cognitiveServices": {
@@ -301,7 +301,7 @@ Třetí požadavek používá [vytvořit rozhraní API dovednosti](https://docs.
         "storageConnectionString": "YOUR-STORAGE-ACCOUNT-CONNECTION-STRING",
     ```
 
-1. Rozbalte kolekci dovednosti zejména Shaper dovednosti na řádcích 85 a 179, v uvedeném pořadí. Dovednosti Shaper je důležité, protože sestavuje datové struktury, která chcete pro dolování znalostní báze. Během provádění dovednosti tyto struktury jsou pouze v paměti, ale jak přesunete k dalšímu kroku, se zobrazí, jak lze tento výstup uložit do úložiště znalostní báze pro další zkoumání.
+1. Rozšiřte shromažďování dovedností, konkrétně Shaperch dovedností na řádcích 85 a 179, v uvedeném pořadí. Dovednost Shaper je důležitá, protože sestavuje datové struktury, které chcete pro dolování znalostí. Během provádění dovednosti jsou tyto struktury jenom v paměti, ale při přechodu k dalšímu kroku uvidíte, jak se tento výstup dá Uložit do znalostní báze pro další zkoumání.
 
    Následující fragment kódu je z řádku 217. 
 
@@ -337,11 +337,11 @@ Třetí požadavek používá [vytvořit rozhraní API dovednosti](https://docs.
    . . .
    ```
 
-1. Rozbalte `projections` prvek `knowledgeStore`začíná na řádku 262. Projekce zadejte úložiště složení znalostní báze. Projekce jsou určené v dvojice tabulky objektů, ale aktuálně pouze jednu v době. Jak je vidět v první projekci `tables` je zadán, ale `objects` není. V druhém je opak.
+1. Rozbalí `projections` element `knowledgeStore`v, počínaje řádkem 262. Projekce určují složení znalostní báze Store. Projekce se zadává v sestavách tabulky – objekty, aktuálně jenom v jednom okamžiku. Jak vidíte v první projekci, je určena, `tables` ale `objects` není. Ve druhém se jedná o opak.
 
-   Ve službě Azure storage vytvoří se tabulky ve službě Table storage pro každou tabulku, kterou jste vytvořili a každý objekt získá kontejner v úložišti objektů Blob.
+   V Azure Storage se tabulky vytvoří v úložišti tabulek pro každou tabulku, kterou vytvoříte, a každý objekt Získá kontejner ve službě BLOB Storage.
 
-   Objekty BLOB obvykle obsahují úplného výrazu rozšíření. Tabulky obvykle obsahují částečnou obohacení v kombinacích, které můžete uspořádat pro konkrétní účely. Tento příklad ukazuje případů tabulku a tabulku s názory, ale nezobrazují se další tabulky jako entity, Nedopustíte, porotce a strany.
+   Objekty blob obvykle obsahují úplný výraz rozšíření. Tabulky typicky obsahují částečná rozšíření v kombinacich, které můžete uspořádat pro konkrétní účely. Tento příklad ukazuje tabulku případů a tabulku stanovisek, ale nezobrazuje se o dalších tabulkách, jako jsou entity, právní zástupce, soudce a strany.
 
     ```json
     "projections": [
@@ -373,7 +373,7 @@ Třetí požadavek používá [vytvořit rozhraní API dovednosti](https://docs.
     ]
     ```
 
-1. Klikněte na tlačítko **odeslat** provedení požadavku. Odpověď by měla být **201** a vypadat podobně jako v následujícím příkladu zobrazuje první část odpovědi.
+1. Kliknutím na **Odeslat** žádost spusťte. Odpověď by měla být **201** a měla by vypadat podobně jako v následujícím příkladu, který ukazuje první část odpovědi.
 
     ```json
     {
@@ -406,13 +406,13 @@ Třetí požadavek používá [vytvořit rozhraní API dovednosti](https://docs.
 
 ## <a name="create-and-run-an-indexer"></a>Vytvoření a spuštění indexeru
 
-Čtvrtá žádost používá [vytvořit Indexer API](https://docs.microsoft.com/rest/api/searchservice/create-indexer), vytvoření indexeru Azure Search. Indexer je prováděcí modul na kanál indexování. Všechny definice, kterou jste vytvořili, pokud jsou vloženy do pohybu s tímto krokem.
+Čtvrtá žádost používá [rozhraní API vytvořit indexer](https://docs.microsoft.com/rest/api/searchservice/create-indexer)a vytváří indexer Azure Search. Indexer je spouštěcí modul kanálu indexování. Všechny definice, které jste doposud vytvořili, jsou v tomto kroku převedeny do chodu.
 
-1. V adrese URL `https://YOUR-AZURE-SEARCH-SERVICE-NAME.search.windows.net/indexers?api-version=2019-05-06-Preview`, nahraďte `YOUR-AZURE-SEARCH-SERVICE-NAME` s názvem vaší služby search. 
+1. V adrese URL `https://YOUR-AZURE-SEARCH-SERVICE-NAME.search.windows.net/indexers?api-version=2019-05-06-Preview`nahraďte `YOUR-AZURE-SEARCH-SERVICE-NAME` názvem vaší vyhledávací služby. 
 
-1. V záhlaví, nahraďte `<YOUR AZURE SEARCH ADMIN API-KEY>` s klíčem rozhraní API pro správu pro službu Azure Search.
+1. V části záhlaví nahraďte `<YOUR AZURE SEARCH ADMIN API-KEY>` klíč rozhraní API pro správu Azure Search.
 
-1. V části textu dokumentu JSON Určuje název indexeru. Zdroj dat a index jsou vyžadované indexeru. Dovedností je volitelný pro indexer, ale vyžaduje pro rozšiřování AI.
+1. V části tělo dokument JSON Určuje název indexeru. Indexer vyžaduje zdroj dat a index. Dovednosti je volitelná pro indexer, ale vyžaduje se pro obohacení AI.
 
     ```json
     {
@@ -428,7 +428,7 @@ Třetí požadavek používá [vytvořit rozhraní API dovednosti](https://docs.
         "outputFieldMappings": [ ]
     ```
 
-1. Rozbalte outputFieldMappings. Rozdíl od fieldMappings, které se používají pro vlastní mapování mezi poli ve zdroji dat a polí v indexu, jsou outputFieldMappings použitý pro mapování polí bohatších možností, vytvořeny a naplněny kanál, pro výstupní pole v indexu, projekce.
+1. Rozbalte outputFieldMappings. Na rozdíl od fieldMappings, které se používají pro vlastní mapování mezi poli ve zdroji dat a polích v indexu, se outputFieldMappings používá pro mapování obohacených polí vytvořených a vyplněných kanálem na výstupní pole v indexu nebo projekci.
 
     ```json
     "outputFieldMappings": [
@@ -460,7 +460,7 @@ Třetí požadavek používá [vytvořit rozhraní API dovednosti](https://docs.
     ]
     ```
 
-1. Klikněte na tlačítko **odeslat** provedení požadavku. Odpověď by měla být **201** a tělo odpovědi by měl vypadat téměř stejný jako datová část požadavku jste zadali (oříznut pro zkrácení).
+1. Kliknutím na **Odeslat** žádost spusťte. Odpověď by měla být **201** a text odpovědi by měl vypadat téměř stejně jako datová část požadavku, kterou jste zadali (oříznuté pro zkrácení).
 
     ```json
     {
@@ -477,22 +477,22 @@ Třetí požadavek používá [vytvořit rozhraní API dovednosti](https://docs.
     }
     ```
 
-## <a name="explore-knowledge-store"></a>Prozkoumejte službu knowledge store
+## <a name="explore-knowledge-store"></a>Prozkoumat znalostní bázi Knowledge Store
 
-Můžete začít s prozkoumáváním jako první dokument se importují. Pro tento úkol použijte [ **Průzkumníka služby Storage** ](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-storage-explorer) na portálu.
+Můžete začít prozkoumávat hned po importu prvního dokumentu. Pro tuto úlohu použijte [**Průzkumník služby Storage**](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-storage-explorer) na portálu.
 
-Je důležité si uvědomit, že je úložiště znalostní báze plně odpojen od Azure Search. Index Azure Search a znalostní báze úložišti oba obsahují reprezentaci dat a obsah, ale část způsoby, jak z něj. Pomocí rejstříku pro fulltextové vyhledávání, vyhledávání filtrované a všechny scénáře podporované ve službě Azure Search. Nebo Posunout vpřed s právě znalostní báze úložišti, připojení dalších nástrojů k analýze obsahu.
+Je důležité si uvědomit, že je úložiště znalostí zcela odpojeno od Azure Search. Azure Search index a úložiště znalostní báze obsahují jak datovou reprezentaci, tak obsah, ale z těchto částí. Použijte index pro fulltextové vyhledávání, filtrované hledání a všechny scénáře podporované v Azure Search. Nebo můžete přesunout vpřed se stejným úložištěm znalostní báze a připojit další nástroje pro analýzu obsahu.
 
 ## <a name="takeaways"></a>Shrnutí
 
-Právě jste vytvořili vaší první znalostní báze úložiště ve službě Azure storage a slouží k zobrazení obohacení Průzkumníka služby Storage. Toto je základní prostředí pro práci s obohacení uložené. 
+Nyní jste vytvořili první znalostní bázi Knowledge Store ve službě Azure Storage a použili Průzkumník služby Storage k zobrazení rozšíření. Toto je základní prostředí pro práci s uloženými rozšířeními. 
 
 ## <a name="next-steps"></a>Další postup
 
-Dovednosti Shaper provede rutinní týkající se vytvoření detailní data formuláře, které je možné kombinovat do nové obrazce. V dalším kroku zkontrolujte na referenční stránce tento dovednosti pro podrobnosti o způsobu jejich použití.
+Shaper dovednost provádí těžkou zvedání vytváření podrobných datových formulářů, které lze kombinovat do nových tvarů. V dalším kroku si Projděte referenční stránku pro tuto dovednost, kde najdete podrobnosti o tom, jak se používá.
 
 > [!div class="nextstepaction"]
-> [Odkaz na Shaper dovedností](cognitive-search-skill-shaper.md)
+> [Shaper dovednosti – referenční informace](cognitive-search-skill-shaper.md)
 
 
 <!---

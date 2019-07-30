@@ -1,6 +1,6 @@
 ---
-title: Azure Media Services v3 poznámky k verzi | Dokumentace Microsoftu
-description: Abyste mohli používat aktuální pomocí nejnovější vývoj, tento článek poskytuje nejnovější informace o Azure Media Services v3.
+title: Poznámky k verzi Azure Media Services V3 | Microsoft Docs
+description: Abyste měli přehled o nejnovějším vývoji, najdete v tomto článku nejnovější aktualizace Azure Media Services V3.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -11,14 +11,14 @@ ms.workload: na
 ms.topic: article
 ms.date: 06/07/2019
 ms.author: juliako
-ms.openlocfilehash: b3e772ebb05f79abb70e58e63a93c3336a413e38
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.openlocfilehash: c730f41d1dbc48c6622d0a2ba43c32dd1a96c24c
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67542536"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68311811"
 ---
-# <a name="azure-media-services-v3-release-notes"></a>Azure Media Services v3 poznámky k verzi
+# <a name="azure-media-services-v3-release-notes"></a>Zpráva k vydání verze Azure Media Services V3
 
 Abyste mohli používat aktuální pomocí nejnovější vývoj, tento článek poskytuje informace o:
 
@@ -30,228 +30,236 @@ Abyste mohli používat aktuální pomocí nejnovější vývoj, tento článek 
 ## <a name="known-issues"></a>Známé problémy
 
 > [!NOTE]
-> Aktuálně nemůžete spravovat prostředky v3 pomocí webu Azure Portal. Použití [rozhraní REST API](https://aka.ms/ams-v3-rest-sdk), rozhraní příkazového řádku, nebo jeden z podporovaných sad SDK.
+> Aktuálně nemůžete spravovat prostředky v3 pomocí webu Azure Portal. Použijte [REST API](https://aka.ms/ams-v3-rest-sdk), CLI nebo jednu z podporovaných sad SDK.
 
-Další informace najdete v tématu [pokyny k migraci pro přechod ze služby Media Services v2 na v3](migrate-from-v2-to-v3.md#known-issues).
+Další informace najdete v tématu [pokyny k migraci pro přesun z Media Services V2 na V3](migrate-from-v2-to-v3.md#known-issues).
 
-## <a name="june-2019"></a>2019 dne
+## <a name="july-2019"></a>Červenec 2019
 
-### <a name="video-subclipping"></a>Video oříznutím
+### <a name="content-protection"></a>Ochrana obsahu
 
-Teď můžete oříznout nebo dílčího klipu videa, když ho pomocí kódování [úlohy](https://docs.microsoft.com/rest/api/media/jobs). 
+Při streamování obsahu chráněného omezením tokenu musí koncoví uživatelé získat token, který se odešle jako součást žádosti o doručení klíče. Funkce *prevence* opětovného přehrání tokenu umožňuje Media Services zákazníkům nastavit limit, kolikrát se dá stejný token použít k vyžádání klíče nebo licence. Další informace najdete v tématu [prevence](content-protection-overview.md#token-replay-prevention)opětovného přehrání tokenu.
 
-Tato funkce funguje s jakoukoli [transformace](https://docs.microsoft.com/rest/api/media/transforms) , který je sestaven buď pomocí [BuiltInStandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset) přednastavení, nebo [StandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset) předvolby. 
+Tato funkce je aktuálně dostupná v USA – střed a USA – středozápad.
 
-Příklady:
+## <a name="june-2019"></a>Červeně 2019
 
-* [Dílčí klip videa s využitím .NET](subclip-video-dotnet-howto.md)
-* [Dílčí klip videa s využitím REST](subclip-video-rest-howto.md)
+### <a name="video-subclipping"></a>Dílčí výstřižek videa
 
-## <a name="may-2019"></a>. Května 2019.
+Video teď můžete při kódování pomocí [úlohy](https://docs.microsoft.com/rest/api/media/jobs)oříznout nebo vystřihnout. 
 
-### <a name="azure-monitor-support-for-media-services-diagnostic-logs-and-metrics"></a>Podpora Azure Monitor pro Media Services diagnostické protokoly a metriky
+Tato funkce funguje s libovolnou [transformací](https://docs.microsoft.com/rest/api/media/transforms) , která je sestavená buď pomocí přednastavení [BuiltInStandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset) , nebo z [StandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset) předvoleb. 
 
-Azure Monitor můžete nyní zobrazit telemetrická data emmited službou Media Services.
+Viz příklady:
 
-* Použijte diagnostické protokoly Azure monitoru ke sledování požadavků odesílaných Media Services klíč doručování koncový bod. 
-* Monitorování metrik, protože ho vygeneroval Media Services [koncové body streamování](streaming-endpoint-concept.md).   
+* [Vytvoření dílčího klipu videa s využitím .NET](subclip-video-dotnet-howto.md)
+* [Vytvoření dílčího klipu videa s REST](subclip-video-rest-howto.md)
 
-Podrobnosti najdete v tématu [Media Services monitorování metrik a diagnostických protokolů](media-services-metrics-diagnostic-logs.md).
+## <a name="may-2019"></a>Květen 2019
 
-### <a name="multi-audio-tracks-support-in-dynamic-packaging"></a>Zvukové stopy s více podporují v dynamické balení 
+### <a name="azure-monitor-support-for-media-services-diagnostic-logs-and-metrics"></a>Azure Monitor podporu pro diagnostické protokoly a metriky Media Services
 
-Při streamování prostředky, které mají více zvukové stopy s více kodeky a jazyky, [dynamické balení](dynamic-packaging-overview.md) teď podporuje více zvukové stopy pro výstup HLS (verze 4 nebo vyšší).
+Nyní můžete použít Azure Monitor k zobrazení dat telemetrie emmited pomocí Media Services.
 
-### <a name="korea-regional-pair-is-open-for-media-services"></a>Korea páru oblastí je otevřen pro Media Services 
+* Pomocí diagnostických protokolů Azure Monitor můžete monitorovat požadavky odeslané koncovým bodem pro doručení Media Services Key. 
+* Monitoruje metriky vydávané Media Services [koncovými body streamování](streaming-endpoint-concept.md).   
 
-Služba Media Services je teď dostupná v oblastech Korea – střed a Korea – jih. 
+Podrobnosti najdete v tématu [monitorování metrik Media Services a diagnostických protokolů](media-services-metrics-diagnostic-logs.md).
 
-Další informace najdete v tématu [Cloudy a oblasti, ve které Media Services v3 existuje](azure-clouds-regions.md).
+### <a name="multi-audio-tracks-support-in-dynamic-packaging"></a>Podpora více zvukových stop v dynamickém balení 
+
+Při streamování assetů, které mají více zvukových stop s více kodeky a jazyky, teď [Dynamická balení](dynamic-packaging-overview.md) podporuje více zvukových stop pro výstup HLS (verze 4 nebo vyšší).
+
+### <a name="korea-regional-pair-is-open-for-media-services"></a>Oblast Korea je otevřená pro Media Services 
+
+Media Services je teď k dispozici v oblasti Korea – střed a Korea – jih. 
+
+Další informace najdete v tématu [cloudy a oblasti, ve kterých existuje Media Services V3](azure-clouds-regions.md).
 
 ### <a name="performance-improvements"></a>Vylepšení výkonu
 
-Přidané aktualizace, které zahrnují vylepšení výkonu služby Media Services.
+Byly přidány aktualizace, které zahrnují vylepšení výkonu Media Services.
 
-* Maximální velikost souboru podporovaná při zpracování byl aktualizován. Zobrazit, [kvóty a omezení](limits-quotas-constraints.md).
-* [Kódování vylepšení rychlosti](media-reserved-units-cli-how-to.md#choosing-between-different-reserved-unit-types).
+* Maximální velikost souboru podporovaná pro zpracování byla aktualizována. Podívejte se na [kvóty a omezení](limits-quotas-constraints.md).
+* [Vylepšení rychlosti kódování](media-reserved-units-cli-how-to.md#choosing-between-different-reserved-unit-types).
 
-## <a name="april-2019"></a>2019. dubna
+## <a name="april-2019"></a>Duben 2019
 
-### <a name="new-presets"></a>Nové přednastavení
+### <a name="new-presets"></a>Nové předvolby
 
-* [FaceDetectorPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#facedetectorpreset) byl přidán do přednastavení integrovaná analýza.
-* [ContentAwareEncodingExperimental](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#encodernamedpreset) přidal do předdefinované kodér přednastavení. Další informace najdete v tématu [kódování obsahu](cae-experimental.md). 
+* [FaceDetectorPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#facedetectorpreset) se přidal do vestavěných přednastavení analyzátoru.
+* [ContentAwareEncodingExperimental](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#encodernamedpreset) se přidal do vestavěných přednastavení kodéru. Další informace najdete v tématu [kódování s ohledem na obsah](cae-experimental.md). 
 
-## <a name="march-2019"></a>2019. března
+## <a name="march-2019"></a>Březen 2019
 
-Dynamické balení, teď podporuje Dolby Atmos. Další informace najdete v tématu [zvuk kodeky podporuje dynamické balení](dynamic-packaging-overview.md#audio-codecs).
+Dynamické balení teď podporuje Dolby ATMOS. Další informace najdete v tématu [zvukové kodeky podporované dynamickým balením](dynamic-packaging-overview.md#audio-codecs).
 
-Nyní můžete zadat seznam prostředků nebo účet filtrů, které pro vaše Lokátor streamování. Další informace najdete v tématu [filtry přidružit Lokátor streamování](filters-concept.md#associating-filters-with-streaming-locator).
+Teď můžete určit seznam filtrů Asset nebo Account, které se vztahují na Lokátor streamování. Další informace najdete v tématu [přidružení filtrů k lokátoru streamování](filters-concept.md#associating-filters-with-streaming-locator).
 
-## <a name="february-2019"></a>. Února 2019
+## <a name="february-2019"></a>Únor 2019
 
-Media Services v3 je nyní podporována v národních cloudů Azure. Ne všechny funkce jsou dostupné ve všech cloudech ještě. Podrobnosti najdete v tématu [Cloudy a oblasti, ve které Azure Media Services v3 existuje](azure-clouds-regions.md).
+V národních cloudech Azure se teď podporuje Media Services V3. Ne všechny funkce jsou zatím dostupné ve všech cloudech. Podrobnosti najdete v tématu [cloudy a oblasti, ve kterých existuje Azure Media Services V3](azure-clouds-regions.md).
 
-[Microsoft.Media.JobOutputProgress](media-services-event-schemas.md#monitoring-job-output-progress) událostí byl přidán do služby Azure Event Grid schémata pro Media Services.
+Do schémat Azure Event Grid byla přidána událost [Microsoft. Media. JobOutputProgress](media-services-event-schemas.md#monitoring-job-output-progress) pro Media Services.
 
-## <a name="january-2019"></a>2019. ledna
+## <a name="january-2019"></a>Leden 2019
 
-### <a name="media-encoder-standard-and-mpi-files"></a>Soubory kodéru Media Encoder Standard a MPI 
+### <a name="media-encoder-standard-and-mpi-files"></a>Soubory Media Encoder Standard a MPI 
 
-Při kódování pomocí Media Encoder Standard na vytvářejí soubory MP4, je nový soubor .mpi generují a přidávají do výstupu Asset. Tento soubor MPI slouží pro zvýšení výkonu [dynamické balení](dynamic-packaging-overview.md) a streamování scénáře.
+Při kódování s Media Encoder Standard k vytvoření souborů MP4 se vygeneruje nový soubor. MPI a přidá se do výstupního prostředku. Tento soubor MPI má za cíl zlepšit výkon pro [dynamické balení](dynamic-packaging-overview.md) a streamování.
 
-Nesmí změnit nebo odebrat soubor MPI či provést všechny závislosti ve své službě existence (nebo nemusíte) tyto souboru.
+Soubor MPI byste neměli upravovat ani odebírat nebo v rámci služby nemusíte mít žádnou závislost na existenci (nebo ne) takového souboru.
 
 ## <a name="december-2018"></a>Prosinec 2018
 
-Aktualizace z verze GA z rozhraní API V3 zahrnují:
+Mezi verze V3 rozhraní API pro aktualizace od verze GA patří:
        
-* **PresentationTimeRange** již nejsou požadovány pro vlastnosti **Asset filtry** a **filtrů účtů**. 
-* Možnosti pro dotaz $top a $skip **úlohy** a **transformuje** byly odebrány a byla přidána $orderby. Při přidání nové funkce řazení bylo zjištěno, že možnosti $top a $skip došlo omylem byl zpřístupněn dříve i v případě, že nejsou implementované.
-* Rozšíření výčtu se znovu povolil. Tato funkce bylo povoleno ve verzi preview verze sady SDK a je teď ve verzi GA omylem zakázán.
-* Dvě předdefinované datové proudy zásady byly přejmenovány. **SecureStreaming** je nyní **MultiDrmCencStreaming**. **SecureStreamingWithFairPlay** je nyní **Predefined_MultiDrmStreaming**.
+* Pro **filtry prostředků** a **filtry účtu**se už nevyžadují vlastnosti **PresentationTimeRange** . 
+* Možnosti $top a $skip dotazu pro **úlohy** a **transformace** byly odebrány a $OrderBy byly přidány. V rámci přidávání nové funkce řazení bylo zjištěno, že $top a $skip možnosti byly omylem vystaveny dříve, i když nejsou implementovány.
+* Rozšiřitelnost výčtu byla znovu povolena. Tato funkce byla povolená ve verzi Preview sady SDK a v rámci verze GA se nechtěně vypnula.
+* Dva předdefinované zásady streamování se přejmenovaly. **SecureStreaming** je teď **MultiDrmCencStreaming**. **SecureStreamingWithFairPlay** je teď **Predefined_MultiDrmStreaming**.
 
-## <a name="november-2018"></a>. Listopadu 2018
+## <a name="november-2018"></a>Listopadu 2018
 
-Modul CLI 2.0 je nyní k dispozici pro [všeobecné dostupnosti služby Azure Media Services v3](https://docs.microsoft.com/cli/azure/ams?view=azure-cli-latest) – v 2.0.50.
+Modul CLI 2,0 je teď dostupný pro [Azure Media Services V3 GA](https://docs.microsoft.com/cli/azure/ams?view=azure-cli-latest) – v 2.0.50.
 
 ### <a name="new-commands"></a>Nové příkazy
 
-- [AZ jeden účet ams](https://docs.microsoft.com/cli/azure/ams/account?view=azure-cli-latest)
-- [účet ams az-filtru](https://docs.microsoft.com/cli/azure/ams/account-filter?view=azure-cli-latest)
-- [az ams asset](https://docs.microsoft.com/cli/azure/ams/asset?view=azure-cli-latest)
-- [asset ams az-filtru](https://docs.microsoft.com/cli/azure/ams/asset-filter?view=azure-cli-latest)
-- [az ams content-key-policy](https://docs.microsoft.com/cli/azure/ams/content-key-policy?view=azure-cli-latest)
-- [az ams job](https://docs.microsoft.com/cli/azure/ams/job?view=azure-cli-latest)
-- [živá ams az – událost](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest)
-- [az ams live-output](https://docs.microsoft.com/cli/azure/ams/live-output?view=azure-cli-latest)
-- [az ams streaming-endpoint](https://docs.microsoft.com/cli/azure/ams/streaming-endpoint?view=azure-cli-latest)
-- [streamování ams az-lokátoru](https://docs.microsoft.com/cli/azure/ams/streaming-locator?view=azure-cli-latest)
-- [AZ ams account naposledy použité položky](https://docs.microsoft.com/cli/azure/ams/account/mru?view=azure-cli-latest) – umožňuje spravovat rezervovaných jednotek médií. Další informace najdete v tématu [rezervovaných jednotek médií škálování](media-reserved-units-cli-how-to.md).
+- [AZ AMS Account](https://docs.microsoft.com/cli/azure/ams/account?view=azure-cli-latest)
+- [AZ AMS Account-Filter](https://docs.microsoft.com/cli/azure/ams/account-filter?view=azure-cli-latest)
+- [AZ AMS Asset](https://docs.microsoft.com/cli/azure/ams/asset?view=azure-cli-latest)
+- [AZ AMS Asset-Filter](https://docs.microsoft.com/cli/azure/ams/asset-filter?view=azure-cli-latest)
+- [AZ AMS Content-Key-Policy](https://docs.microsoft.com/cli/azure/ams/content-key-policy?view=azure-cli-latest)
+- [AZ AMS Job](https://docs.microsoft.com/cli/azure/ams/job?view=azure-cli-latest)
+- [AZ AMS Live-Event](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest)
+- [AZ AMS Live-Output](https://docs.microsoft.com/cli/azure/ams/live-output?view=azure-cli-latest)
+- [AZ AMS streaming-Endpoint](https://docs.microsoft.com/cli/azure/ams/streaming-endpoint?view=azure-cli-latest)
+- [AZ AMS streaming – Lokátor](https://docs.microsoft.com/cli/azure/ams/streaming-locator?view=azure-cli-latest)
+- [AZ AMS Account MRU](https://docs.microsoft.com/cli/azure/ams/account/mru?view=azure-cli-latest) -umožňuje správu rezervovaných jednotek médií. Další informace najdete v tématu [škálování rezervovaných jednotek médií](media-reserved-units-cli-how-to.md).
 
-### <a name="new-features-and-breaking-changes"></a>Nové funkce a změny způsobující chyby
+### <a name="new-features-and-breaking-changes"></a>Nové funkce a zásadní změny
 
-#### <a name="asset-commands"></a>Příkazy Asset
+#### <a name="asset-commands"></a>Příkazy assetu
 
-- ```--storage-account``` a ```--container``` argumenty přidán.
-- Výchozí hodnoty pro oprávnění (čtení) a čas vypršení platnosti (Now + 23h) v ```az ams asset get-sas-url``` příkazu přidaného.
+- ```--storage-account```a ```--container``` přidané argumenty.
+- Výchozí hodnoty pro čas vypršení platnosti (nyní + 23H) a oprávnění (čtení) ```az ams asset get-sas-url``` v příkazu byl přidán.
 
 #### <a name="job-commands"></a>Příkazy úlohy
 
-- ```--correlation-data``` a ```--label``` Přidat argumenty
-- ```--output-asset-names``` přejmenovat na ```--output-assets```. Nyní přijímá místo oddělený seznam prostředků v "assetName = label" formátu. Prostředek bez popisku je možné odeslat takto: "assetName =".
+- ```--correlation-data```a ```--label``` přidané argumenty
+- ```--output-asset-names```přejmenování na ```--output-assets```. Nyní přijímá seznam assetů oddělených mezerou ve formátu "název prostředku". Prostředek bez popisku se dá odeslat takto: "Asset =".
 
-#### <a name="streaming-locator-commands"></a>Příkazy Lokátor streamování
+#### <a name="streaming-locator-commands"></a>Příkazy lokátoru streamování
 
-- ```az ams streaming locator``` základní příkaz nahradí ```az ams streaming-locator```.
-- ```--streaming-locator-id``` a ```--alternative-media-id support``` argumenty přidán.
-- ```--content-keys argument``` argument aktualizovat.
-- ```--content-policy-name``` přejmenovat na ```--content-key-policy-name```.
+- ```az ams streaming locator```základní příkaz nahrazen ```az ams streaming-locator```.
+- ```--streaming-locator-id```a ```--alternative-media-id support``` přidané argumenty.
+- ```--content-keys argument```argument se aktualizoval.
+- ```--content-policy-name```přejmenování na ```--content-key-policy-name```.
 
-#### <a name="streaming-policy-commands"></a>Streamování příkazy zásad
+#### <a name="streaming-policy-commands"></a>Příkazy zásad streamování
 
-- ```az ams streaming policy``` základní příkaz nahradí ```az ams streaming-policy```.
-- Podpora šifrování parametry v ```az ams streaming-policy create``` přidán.
+- ```az ams streaming policy```základní příkaz nahrazen ```az ams streaming-policy```.
+- Podporuje parametry šifrování v ```az ams streaming-policy create``` přidaných.
 
-#### <a name="transform-commands"></a>Transformovat
+#### <a name="transform-commands"></a>Příkazy transformace
 
-- ```--preset-names``` argument nahrazena ```--preset```. Nyní lze nastavit pouze 1 výstup/přednastavení najednou (abyste mohli přidat další musíte spustit ```az ams transform output add```). Také můžete nastavit vlastní StandardEncoderPreset předáním cesty do vaší vlastní formátu JSON.
-- ```az ams transform output remove``` můžete provést předáním výstup index odebrat.
-- ```--relative-priority, --on-error, --audio-language and --insights-to-extract``` argumenty přidá ```az ams transform create``` a ```az ams transform output add``` příkazy.
+- ```--preset-names```Argument byl nahrazen ```--preset```parametrem. Nyní můžete nastavit pouze 1 výstup/přednastavení současně (Pokud chcete přidat více, je třeba spustit ```az ams transform output add```). Můžete také nastavit vlastní StandardEncoderPreset předáním cesty k vlastnímu formátu JSON.
+- ```az ams transform output remove```dá se provést předáním výstupního indexu, který se má odebrat.
+- ```--relative-priority, --on-error, --audio-language and --insights-to-extract```argumenty přidané v ```az ams transform create``` příkazech a ```az ams transform output add``` .
 
-## <a name="october-2018---ga"></a>. Října 2018 – GA
+## <a name="october-2018---ga"></a>Říjen 2018 – GA
 
-Tato část popisuje aktualizace Azure Media Services (AMS) dne.
+Tato část popisuje Azure Media Services (AMS) Říjen Updates.
 
-### <a name="rest-v3-ga-release"></a>Verze GA v3 REST
+### <a name="rest-v3-ga-release"></a>Verze REST v3 pro GA
 
-[Verze GA v3 REST](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01) zahrnuje další rozhraní API pro Live, manifestu filtry na úrovni účtu/Asset a podpora DRM.
+[Verze REST v3 pro ga](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01) zahrnuje více rozhraní API pro filtry manifestu Live, Account/Asset Level a podpora DRM.
 
 #### <a name="azure-resource-management"></a>Správa prostředků Azure 
 
-Podpora správy prostředků Azure umožňuje jednotnou správu a operace rozhraní API (teď všechno na jednom místě).
+Podpora správy prostředků Azure umožňuje sjednocené rozhraní API pro správu a provoz (teď všechno na jednom místě).
 
-Od této verze, můžete pomocí šablon Resource Manageru k vytvoření živé události.
+Od této verze můžete použít šablony Správce prostředků k vytvoření živých událostí.
 
-#### <a name="improvement-of-asset-operations"></a>Zlepšení Asset operací 
+#### <a name="improvement-of-asset-operations"></a>Zlepšení provozu prostředků 
 
-Byly zavedeny následující vylepšení:
+Byla představena následující vylepšení:
 
-- Ingestování z adresy URL http (s) nebo adresy URL SAS úložiště objektů Blob v Azure.
-- Zadejte vlastní kontejner názvy pro prostředky. 
-- Jednodušší podpora výstupu k vytvoření vlastních pracovních postupů s využitím Azure Functions.
+- Ingestování z adres URL protokolu HTTP (s) nebo Blob Storage adres URL SAS Azure
+- Zadejte vlastní názvy kontejnerů pro prostředky. 
+- Snadnější podpora výstupu při vytváření vlastních pracovních postupů pomocí Azure Functions.
 
-#### <a name="new-transform-object"></a>Nové transformace objektů
+#### <a name="new-transform-object"></a>Nový objekt transformace
 
-Nové **transformace** objekt zjednodušuje modelu kódování. Nový objekt umožňuje snadno vytvářet a sdílet kódování šablon Resource Manageru a předvolby. 
+Nový objekt **transformace** zjednodušuje model kódování. Nový objekt usnadňuje vytváření a sdílení kódování Správce prostředků šablon a přednastavení. 
 
-#### <a name="azure-active-directory-authentication-and-rbac"></a>Ověřování služby Active Directory a Azure RBAC
+#### <a name="azure-active-directory-authentication-and-rbac"></a>Ověřování Azure Active Directory a RBAC
 
-Ověřování Azure AD a řízení přístupu na základě Role (RBAC) umožňují zabezpečené transformací, LiveEvents, zásady klíč obsahu nebo prostředků podle Role nebo uživatelé ve službě Azure AD.
+Ověřování Azure AD a Access Control na základě rolí (RBAC) umožňují zabezpečené transformace, LiveEvents, zásady klíčů obsahu nebo prostředky podle rolí nebo uživatelů v Azure AD.
 
 #### <a name="client-sdks"></a>Klientské sady SDK  
 
-Jazyky podporované v Media Services v3: .NET Core, Javy, Node.js, Ruby, Typescript, Python, Go.
+Jazyky podporované v Media Services V3: .NET Core, Java, Node. js, Ruby, TypeScript, Python, přejít.
 
-#### <a name="live-encoding-updates"></a>Živé kódování aktualizace
+#### <a name="live-encoding-updates"></a>Živé aktualizace kódování
 
-Jsou zavedené následující živé kódování aktualizace:
+Zavádí se následující aktualizace pro živé kódování:
 
-- Nový režim s nízkou latencí pro živé (10 sekund end-to-end).
-- (Zvýšení stability a další podporu zdrojového kodér) Vylepšená podpora RTMP ve službě.
-- Ingestování RTMPS zabezpečené.
+- Nový režim s nízkou latencí pro živý (10 sekund od začátku do konce).
+- Vylepšená podpora RTMP (zvýšená stabilita a lepší podpora zdrojového kodéru).
+- Zabezpečení pro ingestování RTMP
 
-    Když vytvoříte živá událost, můžete teď získání 4 ingestovaných adres URL. Ingestování 4 adresy URL jsou téměř identické, mít stejný token streamování (AppId), jenom část čísla portu se liší. Dva z adres URL jsou primární a záložní pro RTMPS. 
-- Podpora překódování 24 hodin. 
-- Vylepšená podpora ad signalizace v RTMP prostřednictvím SCTE35.
+    Při vytváření živé události teď dostanete čtyři adresy URL pro příjem. 4 adresy URL pro přijímání jsou skoro stejné, mají stejný token streamování (AppId), ale liší se jenom část číslo portu. Dvě z těchto adres URL jsou primární a zálohují pro RTMP. 
+- Podpora překódování po dobu 24 hodin. 
+- Vylepšená podpora služby AD-Signaling v RTMP přes SCTE35.
 
-#### <a name="improved-event-grid-support"></a>Vylepšená podpora služby Event Grid
+#### <a name="improved-event-grid-support"></a>Vylepšená podpora Event Grid
 
-Zobrazí se následující služby Event Grid podporují vylepšení:
+Můžete si prohlédnout následující Event Grid vylepšení podpory:
 
-- Integrace služby Azure Event Grid pro jednodušší vývoj pomocí Logic Apps a Azure Functions. 
-- Přihlásit k odběru událostí v kódování, živých kanálů a další.
+- Azure Event Grid Integration pro snazší vývoj s Logic Apps a Azure Functions. 
+- Přihlaste se k odběru událostí pro kódování, živé kanály a další.
 
 ### <a name="cmaf-support"></a>Podpora CMAF
 
-Podpora šifrování CMAF a "cbcs" (iOS 11 +) Apple HLS a MPEG-DASH přehrávačů, které podporují CMAF.
+CMAF a podpora šifrování "cbcs" pro Apple HLS (iOS 11 +) a přehrávače MPEG-SPOJOVNÍKů, které podporují CMAF.
 
 ### <a name="video-indexer"></a>Video Indexer
 
-Video verzi Indexer GA byl jsme oznámili v srpnu. Nové informace o aktuálně podporovaných funkcích najdete v tématu [co je Video Indexer](../../cognitive-services/video-indexer/video-indexer-overview.md?toc=/azure/media-services/video-indexer/toc.json&bc=/azure/media-services/video-indexer/breadcrumb/toc.json). 
+Vydání Video Indexer GA bylo oznámeno v srpnu. Nové informace o aktuálně podporovaných funkcích najdete v tématu [co je video indexer](../../cognitive-services/video-indexer/video-indexer-overview.md?toc=/azure/media-services/video-indexer/toc.json&bc=/azure/media-services/video-indexer/breadcrumb/toc.json). 
 
 ### <a name="plans-for-changes"></a>Plány pro změny
 
 #### <a name="azure-cli-20"></a>Azure CLI 2.0
  
-Modul Azure CLI 2.0, který obsahuje operace s funkcí (včetně Live, obsahu zásady klíčů, účtu nebo Asset filtry, streamování zásady) je již brzy. 
+Připravuje se modul Azure CLI 2,0, který obsahuje operace se všemi funkcemi (včetně živých, zásad pro klíče obsahu, filtrů účtů a assetů, zásad streamování). 
 
 ### <a name="known-issues"></a>Známé problémy
 
-Tento problém týká pouze zákazníků, které používají rozhraní API ve verzi preview pro prostředek nebo AccountFilters.
+Následující problém mají vliv jenom na zákazníky, kteří použili rozhraní API pro verzi Preview pro Asset nebo AccountFilters.
 
-Pokud jste vytvořili prostředky nebo filtry účtů 09/28 až 10/12 pomocí Media Services v3 rozhraní příkazového řádku nebo rozhraní API, musíte odebrat všechny prostředky a AccountFilters a znovu je vytvořit z důvodu konfliktu verze. 
+Pokud jste vytvořili filtry prostředků nebo účtů mezi 09/28 a 10/12 pomocí Media Services V3 CLI nebo rozhraní API, je potřeba odebrat všechny Assety a AccountFilters a znovu je vytvořit z důvodu konfliktu verzí. 
 
 ## <a name="may-2018---preview"></a>Květen 2018 – Preview
 
 ### <a name="net-sdk"></a>.NET SDK
 
-Následující funkce jsou k dispozici v sadě .NET SDK:
+V sadě .NET SDK jsou k dispozici následující funkce:
 
-* **Transformuje** a **úlohy** k zakódování nebo analyzovat mediálního obsahu. Příklady najdete v tématu [Stream soubory](stream-files-tutorial-with-api.md) a [analyzovat](analyze-videos-tutorial-with-api.md).
+* **Transformuje** a **úlohy** ke kódování nebo analýze mediálního obsahu. Příklady najdete v tématu [streamování souborů](stream-files-tutorial-with-api.md) a [Analýza](analyze-videos-tutorial-with-api.md).
 * **Lokátory streamování** pro publikování a streamování obsahu do zařízení koncových uživatelů
-* **Streamování zásady** a **zásady klíčů obsahu** konfigurace doručení klíče a ochrana obsahu (DRM) při doručování obsahu.
-* **Živé události** a **Live výstupy** konfigurace ingestování a archivaci obsah živého streamování.
-* **Prostředky** ukládat a publikovat mediálního obsahu ve službě Azure Storage. 
-* **Koncové body streamování** ke konfiguraci a škálování dynamické balení, šifrování a streamování živě i na vyžádání multimediálního obsahu.
+* Zásady streamování a **zásady klíčů obsahu** ke konfiguraci doručování klíčů a ochrany obsahu (DRM) při doručování obsahu.
+* **Živé události** a **živé výstupy** umožňují konfigurovat ingestování a archivaci obsahu živého streamování.
+* **Prostředky** pro ukládání a publikování mediálního obsahu v Azure Storage. 
+* **Koncové body streamování** , které slouží ke konfiguraci a škálování dynamického balení, šifrování a streamování pro živý i mediální obsah na vyžádání.
 
 ### <a name="known-issues"></a>Známé problémy
 
-* Po odeslání úlohy, můžete ingestovat zdrojového videa zdroje pomocí adresy URL HTTPS, adresy URL SAS nebo cesty k souborům umístěným v úložišti objektů Blob v Azure. AMS v3 v současné době nepodporuje blokového kódování přenosu prostřednictvím adresy URL HTTPS.
+* Při odesílání úlohy můžete určit, že se má vaše zdrojové video ingestovat pomocí adres URL protokolu HTTPS, adres URL SAS nebo cest k souborům umístěným v úložišti objektů BLOB v Azure. AMS v3 v současné době nepodporuje blokového kódování přenosu prostřednictvím adresy URL HTTPS.
 
-## <a name="ask-questions-give-feedback-get-updates"></a>Klást otázky, váš názor, získávat aktualizace
+## <a name="ask-questions-give-feedback-get-updates"></a>Položte otázky, sdělte nám svůj názor, Získejte aktualizace.
 
-Podívejte se [komunita Azure Media Services](media-services-community.md) článek a zobrazit různé způsoby můžete klást otázky, poskytnout zpětnou vazbu a aktualizace o Media Services.
+Podívejte se na článek o [komunitě Azure Media Services](media-services-community.md) a podívejte se na různé způsoby, jak můžete klást otázky, sdělit svůj názor a získávat aktualizace Media Services.
 
 ## <a name="next-steps"></a>Další postup
 

@@ -1,37 +1,37 @@
 ---
-title: Škálovatelnost a výkonnostní - Personalizer
+title: Škálovatelnost a přizpůsobení výkonu
 titleSuffix: Azure Cognitive Services
-description: 'Vysoce výkonné a navštěvované weby a aplikace mají dva hlavní faktory vzít v úvahu s Personalizer pro zajištění škálovatelnosti a výkonu: latenci a propustnost školení.'
+description: 'Vysoce výkonné a vysoce náročné weby a aplikace mají dva hlavní faktory, které je potřeba zvážit v oblasti škálovatelnosti a výkonu: propustnost a školení.'
 services: cognitive-services
-author: edjez
+author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 06/07/2019
-ms.author: edjez
-ms.openlocfilehash: 06c2e65c723e18acc515dd7effc61aae0564f411
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.author: diberry
+ms.openlocfilehash: d116f6bd389b1404ea723c965111cd05880e6c30
+ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67722415"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68662824"
 ---
 # <a name="scalability-and-performance"></a>Škálovatelnost a výkon
 
-Vysoce výkonné a navštěvované weby a aplikace mají dva hlavní faktory vzít v úvahu s Personalizer pro zajištění škálovatelnosti a výkonu:
+Vysoce výkonné a vysoce náročné weby a aplikace mají dva hlavní faktory, které je potřeba zvážit s možností přizpůsobovat škálovatelnost a výkon:
 
-* Udržování nízkou latenci při volání rozhraní API pořadí
-* Ujistěte se, že propustnost školení drží krok s vstupní události
+* Udržování nízké latence při vytváření volání rozhraní API pořadí
+* Zajištění zajištění propustnosti školení pomocí vstupu události
 
-Přizpůsobení můžete velmi rychle vrátit pořadí s většinu doby trvání volání vyhrazený pro komunikaci přes rozhraní REST API. Azure bude automaticky škálovat schopnost rychle reagovat na požadavky.
+Individuální nastavení může vracet pořadí velmi rychle, s většinou dobu trvání volání vyhrazenou pro komunikaci prostřednictvím REST API. Azure vám umožní rychle reagovat na požadavky.
 
 ##  <a name="low-latency-scenarios"></a>Scénáře s nízkou latencí
 
-Některé aplikace vyžadují nízkou latenci při vrácení pořadí. To je nezbytné:
+Některé aplikace vyžadují při vracení pořadí nízkou latenci. To je nezbytné:
 
-* Chcete-li uživateli zabránit ve čekání na určitou dobu před zobrazením seřazené obsah.
-* Abychom server, na kterém dochází k provoz extrémně vyhnout obsadit omezených výpočetní čas a připojení k síti.
+* Aby uživatel mohl před zobrazením hodnoceného obsahu čekat na znatelné množství času.
+* Aby bylo možné zajistit, že server má extrémní provoz, vyhněte se tomu omezených výpočetním časem a síťovým připojením.
 
 <!--
 
@@ -49,19 +49,19 @@ If you require latencies under a millisecond, and have already tested using Pers
 
 ## <a name="scalability-and-training-throughput"></a>Škálovatelnost a propustnost školení
 
-Funguje personalizer prostřednictvím aktualizace modelu, který je retrained podle zprávy asynchronně odeslané Personalizer po hodnocení a potřebu rozhraní API. Tyto zprávy se odešlou pomocí centra událostí Azure pro aplikaci.
+Přizpůsobení funguje tak, že aktualizuje model, který se překládá na základě zpráv odeslaných asynchronně pomocí přizpůsobeného rozhraní API pro řazení a odměnu. Tyto zprávy jsou odesílány pomocí služby Azure EventHub pro aplikaci.
 
- Není pravděpodobné, že většina aplikací bude dosáhnout maximální připojení a propustnost Personalizer školení. Při dosažení tohoto maximální nebude ke zpomalení aplikace, by to znamenat, že fronty centra událostí jsou získávání vyplněny interně rychleji, než že je možné vymazat.
+ Nepravděpodobné, že většina aplikací dosáhne maximálního počtu připojení a školení k propustnosti přizpůsobeného. I když se toto maximum nezpomalí, může to znamenat, že se fronty centra událostí vyplňují rychleji, než se dají vyčistit.
 
-## <a name="how-to-estimate-your-throughput-requirements"></a>Jak odhadovat vašim požadavkům na propustnost
+## <a name="how-to-estimate-your-throughput-requirements"></a>Odhad požadavků na propustnost
 
-* Odhad průměrný počet bajtů na událost pořadí přidávání délky dokumentů JSON kontextu a akce.
-* Tento odhad průměrného počtu bajtů dělení 20MB za sekundu.
+* Odhadem průměrného počtu bajtů na událost řazení přidejte délky dokumentů JSON kontextu a akce.
+* Rozdělte 20MB za sekundu za tento předpokládaný průměrný počet bajtů.
 
-Například pokud váš průměrný datová část obsahuje 500 funkce a všechny jsou odhadované 20 znaků, pak každá událost představuje přibližně 10kb. Tyto odhady 20000000 / 10 000 = 2 000 událostí za sekundu, což je přibližně 173 milionů událostí za den. 
+Pokud například vaše průměrná datová část obsahuje 500 funkcí a každá z nich má odhadované 20 znaků, pak je každá událost přibližně 10 KB. V těchto odhadech 20 000 000/10 000 = 2 000 události/s, což znamená o událostech 173 000 000 za den. 
 
-Pokud jsou překročení těchto omezení, kontaktujte prosím náš tým podpory pro architekturu poradenství.
+Pokud dosáhnou těchto limitů, obraťte se na náš tým podpory, kde najdete doporučení pro architekturu.
 
 ## <a name="next-steps"></a>Další postup
 
-[Vytvoření a konfigurace Personalizer](how-to-settings.md).
+[Vytvořte a nakonfigurujte](how-to-settings.md)přizpůsobeného přizpůsobování.

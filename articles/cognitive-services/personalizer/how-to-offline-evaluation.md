@@ -1,65 +1,65 @@
 ---
-title: Testování offline – Personalizer
+title: Přizpůsobování offline vyhodnocení
 titleSuffix: Azure Cognitive Services
-description: Zjistěte, jak analyzovat learning smyčku s použitím offline zkušební verzi
+description: Naučte se analyzovat výukovou smyčku pomocí offline vyhodnocení.
 services: cognitive-services
-author: edjez
+author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 05/07/2019
-ms.author: edjez
-ms.openlocfilehash: b719e6e693471415350007a4f4fabed917b8e12d
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.author: diberry
+ms.openlocfilehash: f14403422e2c783d75634bb929d8c2130bd505b6
+ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67722327"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68663880"
 ---
-# <a name="how-to-analyze-your-learning-loop-with-an-offline-evaluation"></a>Jak analyzovat learning smyčku s použitím offline zkušební verzi
+# <a name="how-to-analyze-your-learning-loop-with-an-offline-evaluation"></a>Jak analyzovat výukovou smyčku pomocí offline vyhodnocení
 
 
-Zjistěte, jak dokončit offline zkušební verzi a pochopení výsledky.
+Naučte se, jak dokončit offline testování a porozumět výsledkům.
 
-Offline hodnocení umožňují měřit jak efektivní Personalizer je ve srovnání s výchozí chování vaší aplikace, přečtěte si, jaké funkce jsou nejvíce přispívá k přizpůsobení a Objevte nové nastavení machine learning automaticky.
+Vyhodnocení v režimu offline umožňuje měřit, jak efektivní přizpůsobení přispěje k výchozímu chování vaší aplikace, informace o tom, jaké funkce přispěje nejvíc k přizpůsobení a že se automaticky zjistí nové nastavení strojového učení.
 
-Přečtěte si informace o [Offline hodnocení](concepts-offline-evaluation.md) Další informace.
+Další informace najdete v článku o [hodnoceních offline](concepts-offline-evaluation.md) .
 
 
 ## <a name="prerequisites"></a>Požadavky
 
-1. Musíte mít smyčku Personalizer nakonfigurované
-1. Smyčka Personalizer musí mít nejméně 50 000 událostí v jeho protokoly pro vyhodnocení smysluplné výsledky.
+1. Musíte mít nakonfigurovanou smyčku pro přizpůsobení.
+1. Ve svých protokolech musí mít smyčka přizpůsobené nejmíň 50 000 událostí pro smysluplné výsledky vyhodnocení.
 
-Volitelně může také jste dříve exportovali _učení zásad_ soubory můžete porovnat a otestovat stejný hodnocení.
+Volitelně můžete také dříve exportovat soubory _zásad učení_ , které můžete porovnat a testovat ve stejném vyhodnocení.
 
-## <a name="steps-to-start-a-new-offline-evaluation"></a>Kroky ke spuštění nové Offline vyhodnocení
+## <a name="steps-to-start-a-new-offline-evaluation"></a>Postup spuštění nového offline vyhodnocení
 
-1. Vyhledejte prostředek smyčky přizpůsobení na webu Azure Portal.
-1. Přejděte do části "Vyhodnocení".
-1. Klikněte na nové hodnocení
-1. Vyberte počáteční a koncové datum pro offline hodnocení. Jedná se o data v minulosti, které určují rozsah data se mají použít v pořadí vyhodnocování. Tato data musí být k dispozici v protokolech, jak je uvedeno v [uchovávání dat](how-to-settings.md) nastavení.
+1. Vyhledejte prostředek smyčky individuálního nastavení v Azure Portal.
+1. Přejděte do části hodnocení.
+1. Klikněte na nové vyhodnocení.
+1. Vyberte počáteční a koncové datum pro offline testování. Jedná se o data v minulosti, která určují rozsah dat, která se mají použít při vyhodnocování. Tato data musí být k dispozici v protokolech, jak je uvedeno v nastavení [uchovávání dat](how-to-settings.md) .
 1. Volitelně můžete nahrát vlastní zásady učení. 
-1. Určuje, zda by měl Personalizer vytvořit zásadu optimalizované učení na základě chování uživatelů v tomto časovém období.
+1. Určete, jestli má přidaný uživatel vytvořit optimalizované zásady učení na základě chování uživatele zjištěného v tomto časovém období.
 1. Spustit vyhodnocení
 
 ## <a name="results"></a>Výsledky
 
-Hodnocení může trvat dlouhou dobu pro spuštění, v závislosti na množství dat ke zpracování, počet učení zásady pro porovnání, a určuje, zda byl vyžádán optimalizace.
+Spuštění hodnocení může trvat dlouhou dobu, v závislosti na množství dat, která se mají zpracovat, počtu porovnávacích zásad a na tom, jestli byla požadovaná optimalizace.
 
-Po dokončení se zobrazí následující výsledky:
+Po dokončení můžete zobrazit následující výsledky:
 
 1. Porovnání zásad učení, včetně:
-    * **Zásady pro online**: Aktuální zásady Learning používané Personalizer
-    * **Směrný plán**: Výchozí aplikace (počítáno od první akci odesílají v pořadí volání)
-    * **Náhodné zásad**: Imaginární řadit chování, která vždy vrátí náhodné volby Akce z nabízených.
-    * **Vlastní zásady**: Další zásady Learning odeslat při spouštění hodnocení.
-    * **Zásada, jehož**: Pokud vyhodnocení byl spuštěn s možností zjišťování optimalizované zásad, budou také porovnání a bude možné si ho stáhnout nebo ji zásady online výukové kurzy nahrazení stávající.
+    * **Online zásady**: Aktuální zásady učení použité v přizpůsobeném nástroji
+    * **Standardní hodnoty**: Výchozí hodnota aplikace (určená první akcí odeslanou při voláních pořadí),
+    * **Náhodné zásady**: Chování imaginárního pořadí, které vždy vrátí náhodný výběr akcí ze zadaných.
+    * **Vlastní zásady**: Při spuštění vyhodnocení se nahrály další zásady učení.
+    * **Optimalizované zásady**: Pokud bylo vyhodnocení spuštěno s možností zjišťování optimalizované zásady, bude porovnána a bude možné ji stáhnout, nebo ji můžete nastavit jako zásady učení online, přičemž nahradíte tu aktuální.
 
-1. Efektivitu [funkce](concepts-features.md) pro akce a kontextu.
+1. Efektivita [funkcí](concepts-features.md) pro akce a kontext.
 
 
 ## <a name="more-information"></a>Další informace
 
-* Přečtěte si [jak offline hodnocení fungovat](concepts-offline-evaluation.md).
+* Přečtěte si, [Jak funguje hodnocení offline](concepts-offline-evaluation.md).

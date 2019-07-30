@@ -1,95 +1,95 @@
 ---
-title: Konfigurace nastavení - Personalizer
+title: Konfigurace nastavení – přizpůsobení
 titleSuffix: Azure Cognitive Services
-description: Konfigurace služby obsahuje jak služba zpracovává odměny, popisuje, jak často služby, jak často retrained modelu a jaká data se ukládají.
+description: Konfigurace služby zahrnuje způsob, jakým služba zpracovává ceny, jak často se služba zkoumá, jak často se model překládá a kolik dat se ukládá.
 services: cognitive-services
-author: edjez
+author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 05/07/2019
-ms.author: edjez
-ms.openlocfilehash: 6f5028f093a9fd8c17928c2167039599d4db897c
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.author: diberry
+ms.openlocfilehash: f0ccf0e480fa57e0ffdfc94ca35cfaceded37a0b
+ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67722335"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68663899"
 ---
-# <a name="personalizer-settings"></a>Nastavení personalizer
+# <a name="personalizer-settings"></a>Nastavení přizpůsobení
 
-Konfigurace služby obsahuje jak služba zpracovává odměny, popisuje, jak často služby, jak často retrained modelu a jaká data se ukládají.
+Konfigurace služby zahrnuje způsob, jakým služba zpracovává ceny, jak často se služba zkoumá, jak často se model překládá a kolik dat se ukládá.
 
-## <a name="create-personalizer-resource"></a>Vytvořit prostředek Personalizer
+## <a name="create-personalizer-resource"></a>Vytvořit prostředek přizpůsobeného pro přizpůsobování
 
-Vytvořte prostředek Personalizer pro každou smyčku zpětné vazby. 
+Vytvořte prostředek pro přizpůsobení pro každou smyčku zpětné vazby. 
 
-1. Přihlaste se k [portálu Azure](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer). Předchozí odkaz přejdete na **vytvořit** stránku Personalizer služby. 
-1. Zadejte název vaší služby, vyberte předplatné, umístění, cenová úroveň a skupinu prostředků.
-1. Vyberte potvrzení a pak vyberte **vytvořit**.
+1. Přihlaste se k [portálu Azure](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer). Předchozí odkaz vás přesměruje na stránku pro **Vytvoření** služby pro přizpůsobení. 
+1. Zadejte název služby, vyberte předplatné, umístění, cenovou úroveň a skupinu prostředků.
+1. Vyberte potvrzení a vyberte **vytvořit**.
 
-## <a name="configure-service-settings-in-the-azure-portal"></a>Konfigurace nastavení služby na webu Azure Portal
+## <a name="configure-service-settings-in-the-azure-portal"></a>Konfigurace nastavení služby v Azure Portal
 
 1. Přihlaste se k webu [Azure Portal](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer).
-1. Najdete Personalizer prostředku. 
-1. V **správy prostředků** vyberte **nastavení**.
+1. Najděte prostředek pro přizpůsobování. 
+1. V části **Správa prostředků** vyberte **Nastavení**.
 
-    Před byste museli opustit Azure portal, zkopírujte jeden z klíčů prostředků **klíče** stránky. Budete ho potřebovat k použití [Personalizer SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.personalizer).
+    Před ukončením Azure Portal zkopírujte jeden ze svých klíčů prostředků ze stránky **klíče** . Budete ho potřebovat k použití [sady personalizovat SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.personalizer).
 
-### <a name="configure-reward-settings-for-the-feedback-loop-based-on-use-case"></a>Konfigurace nastavení reward pro smyčku zpětné vazby, který je založený na případu použití
+### <a name="configure-reward-settings-for-the-feedback-loop-based-on-use-case"></a>Konfigurace nastavení odměňování pro smyčku zpětné vazby na základě případu použití
 
-Konfigurace nastavení služby pro použití odměny smyčka zpětné vazby. Změny následujícího nastavení se obnovit aktuální model Personalizer a přeučování s využitím poslední 2 dny dat:
+Nakonfigurujte nastavení služby pro použití smyčky zpětné vazby. Změny následujícího nastavení obnoví aktuální model přizpůsobeného přizpůsobování a znovu ho provede za poslední 2 dny v datech:
 
-![Konfigurace nastavení reward pro smyčku zpětné vazby](media/settings/configure-model-reward-settings.png)
+![Konfigurace nastavení odměňování pro smyčku zpětné vazby](media/settings/configure-model-reward-settings.png)
 
 |Nastavení|Účel|
 |--|--|
-|Doba čekání rewards|Nastaví dobu, během které Personalizer shromáždí reward hodnoty pořadí volání, od chvíle, kdy pořadí volání se stane. Tato hodnota nastavená požádá: "Jak dlouho má Personalizer čekat pro volání odměny?" Jakékoli reward přicházejících po tomto okně budou protokolovány ale není možné použít u učení.|
-|Výchozí rewards|Pokud neobdrží žádná volání reward podle Personalizer během časového intervalu Reward čekací doby přidružený k pořadí volání, Personalizer, přiřadí se výchozí účet. Ve výchozím nastavení a ve většině scénářů výchozí účet je nula.|
-|Agregace rewards|Pokud více odměny přijme stejné pořadí rozhraní API volat, tato metoda agregace se používá: **součet** nebo **nejdřívější**. Nejdříve Vybere nejbližší skóre přijata a zbytek zahodí. To je užitečné, pokud chcete potřebu jedinečný mezi možná duplicitní volání. |
+|Doba čekání na odměnu|Nastaví dobu, během které bude přizpůsobené aplikace shromažďovat hodnoty pro volání pořadí od okamžiku, kdy dojde k volání pořadí. Tato hodnota se nastaví podle dotazu: Jak dlouho by měl přizpůsobovat čekání na neprospěch hovorů? " Jakékoli odměny, které přicházejí do tohoto okna, se budou protokolovat, ale nepoužijí se ke učení.|
+|Výchozí odměna|Pokud přizpůsobené není žádné volání na základě odměny během časového intervalu čekání na odměnu přidruženého k volání pořadí, přizpůsobování přiřadí výchozí odměnu. Ve výchozím nastavení a ve většině scénářů je výchozí odměna nula.|
+|Agregace odměňování|Pokud se pro stejné volání rozhraní API pořadí přijímá více než jeden případ, použije se tato agregační metoda: **Sum** nebo **nejstarší**. Nejstarší vybere nejstarší skóre, které zbytek přijal a zahodí. To je užitečné, pokud chcete jedinečnou měnu mezi potenciálně duplicitními voláními. |
 
-Po změně těchto nastavení, je nutné vybrat **Uložit**.
+Po změně těchto nastavení nezapomeňte vybrat **Uložit**.
 
-### <a name="exploration-setting"></a>Zkoumání nastavení 
+### <a name="exploration-setting"></a>Nastavení průzkumu 
 
-Přizpůsobení je možné zjišťovat nová schémata a reagovat na změny chování uživatelů v čase, ve kterých alternativy. **Zkoumání** nastavení určuje, jaké je procento pořadí volání s zkoumání odpovědi. 
+Přizpůsobení je schopné zjistit nové vzory a přizpůsobit se změnám chování uživatelů v průběhu času prozkoumáním alternativ. Nastavení **průzkumu** určuje, jaké procento volání pořadí je zodpovězeno s průzkumem. 
 
-Změnou tohoto nastavení se obnovit aktuální model Personalizer a přeučování s využitím poslední 2 dny dat.
+Změny tohoto nastavení obnoví aktuální model přizpůsobeného přizpůsobování a znovu ho přeškolí za poslední 2 dny dat.
 
-![Zkoumání nastavení určuje, jaké je procento pořadí volání odpovědi s průzkum](media/settings/configure-exploration-setting.png)
+![Nastavení průzkumu určuje, jaké procento volání pořadí je zodpovězeno s průzkumem.](media/settings/configure-exploration-setting.png)
 
-Jakmile změníte toto nastavení, je nutné vybrat **Uložit**.
+Po změně tohoto nastavení nezapomeňte vybrat **Uložit**.
 
-### <a name="model-update-frequency"></a>Četnost aktualizace modelu
+### <a name="model-update-frequency"></a>Frekvence aktualizace modelu
 
-Nejnovější model Trénink probíhal volání rozhraní API Reward z každé aktivní události automaticky nepoužívá Personalizer pořadí volání. **Četnost aktualizace modelu** nastaví, jak často aktualizovány model používaný v pořadí volání. 
+Poslední model, který je z každé aktivní události vyškolený z volání rozhraní API, není automaticky použit v rámci volání pořadí řazení. **Frekvence aktualizace modelu** nastavuje, jak často se model používaný pořadím volá aktualizovaný. 
 
-Frekvence aktualizace vysokou modelu jsou užitečné v situacích, ve které chcete pečlivě sledovat změny v chování uživatelů. Mezi příklady patří lokality, které můžete spouštět na živé novinky, virální obsah, nebo za ohlašování produktu. V těchto scénářích můžete použít s frekvencí 15 minut. Pro většinu případů použití je účinné nižší četnost aktualizace. Minutové frekvence aktualizace jsou užitečné při ladění kódu vaší aplikace pomocí Personalizer, provádění ukázky nebo interaktivně testování aspekty machine learning.
+Vysoké frekvence aktualizací modelu jsou užitečné v situacích, kdy chcete pozorně sledovat změny chování uživatelů. Mezi příklady patří weby, které běží na aktivních novinkách, Virovém obsahu nebo živých nabídkách produktů. V těchto scénářích můžete použít frekvenci na 15 minut. Pro většinu případů použití je nižší frekvence aktualizace platná. Jednorázová frekvence aktualizace je užitečná při ladění kódu aplikace pomocí přizpůsobeného, provádění demo ukázek nebo interaktivního testování aspektů strojového učení.
 
-![Četnost aktualizace modelu nastaví, jak často je nový model Personalizer retrained.](media/settings/configure-model-update-frequency-settings.png)
+![Frekvence aktualizace modelu nastavuje, jak často se nový model přizpůsobování přeučení.](media/settings/configure-model-update-frequency-settings.png)
 
-Jakmile změníte toto nastavení, je nutné vybrat **Uložit**.
+Po změně tohoto nastavení nezapomeňte vybrat **Uložit**.
 
 ### <a name="data-retention"></a>Uchovávání dat
 
-**Období uchovávání dat** nastaví, kolik dní uchovává Personalizer protokoly s daty. Za data protokolů jsou požadované k provedení [offline hodnocení](concepts-offline-evaluation.md), které se používají k změřte efektivitu Personalizer a optimalizovat Learning zásad.
+**Doba uchovávání dat** určuje, kolik dnů přizpůsobování udržuje protokoly dat. Minulé datové protokoly se vyžadují k provedení [hodnocení offline](concepts-offline-evaluation.md), které slouží k měření efektivity přizpůsobování a optimalizace výukových zásad.
 
-Jakmile změníte toto nastavení, je nutné vybrat **Uložit**.
+Po změně tohoto nastavení nezapomeňte vybrat **Uložit**.
 
-## <a name="export-the-personalizer-model"></a>Export Personalizer modelu
+## <a name="export-the-personalizer-model"></a>Export modelu přizpůsobeného pro přizpůsobování
 
-V části Správa prostředků pro **modelu a zásady**zkontrolujte vytvoření modelu a datum poslední aktualizace a exportovat aktuální model. Na webu Azure portal nebo rozhraní API Personalizer můžete exportovat soubor modelu pro archivační účely. 
+Z oddílu správy prostředků pro **model a zásady**zkontrolujte vytváření modelů a datum poslední aktualizace a exportujte aktuální model. Pomocí Azure Portal nebo rozhraní API pro přizpůsobení můžete exportovat soubor modelu pro účely archivace. 
 
-![Exportovat aktuální model Personalizer](media/settings/export-current-personalizer-model.png)
+![Exportovat aktuální model přizpůsobeného přizpůsobování](media/settings/export-current-personalizer-model.png)
 
-## <a name="import-and-export-learning-policy"></a>Import a export zásad učení
+## <a name="import-and-export-learning-policy"></a>Zásady učení pro import a export
 
-V části Správa prostředků pro **modelu a zásady**, nové zásady learning importovat nebo exportovat aktuální zásady učení.
+V části Správa prostředků pro **model a zásady**importujte nové zásady učení nebo exportujte aktuální zásady učení.
 
 ## <a name="next-steps"></a>Další postup
 
 <!--
 [How to use the Personalizer container](https://go.microsoft.com/fwlink/?linkid=2083923&clcid=0x409)
 -->
-[Další informace o dostupnosti oblast](https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services)
+[Informace o dostupnosti oblastí](https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services)

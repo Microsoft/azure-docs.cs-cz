@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Nastavení prostředí Azure čas Series Insights ve verzi Preview | Dokumentace Microsoftu'
+title: 'Kurz: Nastavení prostředí pro Azure Time Series Insights Preview | Microsoft Docs'
 description: Zjistěte, jak nastavit prostředí v Azure čas Series Insights ve verzi Preview.
 author: ashannon7
 ms.author: dpalled
@@ -8,335 +8,349 @@ manager: cshankar
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: tutorial
-ms.date: 06/18/2019
+ms.date: 07/29/2019
 ms.custom: seodec18
-ms.openlocfilehash: 824d24b97f192583a42192b3bb90eb1818e1aa18
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: c6fdb9a993bc81feea5566ee5c10c2c727df1390
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67273059"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68638931"
 ---
-# <a name="tutorial-set-up-an-azure-time-series-insights-preview-environment"></a>Kurz: Nastavení prostředí Azure čas Series Insights ve verzi Preview
+# <a name="tutorial-set-up-an-azure-time-series-insights-preview-environment"></a>Kurz: Nastavení prostředí pro Azure Time Series Insights Preview
 
-Tento kurz vás provede procesem vytvoření prostředí Azure čas Series Insights ve verzi Preview průběžných plateb (PAYG). 
+Tento kurz vás provede procesem vytvoření náhledu prostředí s průběžnými platbami v Azure Time Series Insights Preview (PAYG). 
 
 V tomto kurzu se naučíte:
 
-* Vytvoření prostředí Azure čas Series Insights ve verzi Preview.
-* Prostředí Azure čas Series Insights ve verzi Preview připojte do centra událostí ve službě Azure Event Hubs.
-* Spuštění ukázky akcelerátor řešení pro streamování dat do prostředí Azure čas Series Insights ve verzi Preview.
-* Proveďte základní analýzy na data.
-* Definujte typ modelu časové řady a hierarchie a přidružte jej k instancím.
+> [!div class="checklist"]
+> * Vytvořte prostředí Azure Time Series Insights Preview.
+> * Připojte prostředí Azure Time Series Insights Preview k centru událostí ve službě Azure Event Hubs.
+> * Spusťte ukázku akcelerátoru řešení pro streamování dat do prostředí Azure Time Series Insights Preview.
+> * Proveďte základní analýzy na data.
+> * Definujte typ modelu časové řady a hierarchii a přidružte je k vašim instancím.
 
 >[!TIP]
-> [Akcelerátory řešení IoT](https://www.azureiotsolutions.com/Accelerators) poskytují podnikové předkonfigurované řešení, která vám pomůže zrychlit vývoj vlastních řešení IoT.
+> [Akcelerátory řešení IoT](https://www.azureiotsolutions.com/Accelerators) poskytují předkonfigurovaná řešení na podnikové úrovni, která můžete použít k urychlení vývoje vlastních řešení IoT.
+
+## <a name="prerequisites"></a>Požadavky
+
+* Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/).
+* Účet pro přihlášení do Azure musí být také členem role **vlastníka** předplatného. Další informace najdete v tématu [Správa přístupu pomocí řízení přístupu na základě role a Azure Portal](../role-based-access-control/role-assignments-portal.md).
 
 ## <a name="create-a-device-simulation"></a>Vytvoření simulace zařízení
 
-V této části vytvoříte tři Simulovaná zařízení, které posílají data do instance služby Azure IoT Hub.
+V této části vytvoříte tři simulovaná zařízení, která odesílají data do instance služby Azure IoT Hub.
 
-1. Přejděte [stránka akcelerátory řešení Azure IoT](https://www.azureiotsolutions.com/Accelerators). Na stránce se zobrazí předem připravených několik příkladů. Přihlaste se pomocí svého účtu Azure. Vyberte **simulace zařízení**.
+1. Přejít na [stránku akcelerátory řešení Azure IoT](https://www.azureiotsolutions.com/Accelerators). Na stránce se zobrazí několik předem sestavených příkladů. Přihlaste se pomocí svého účtu Azure. Pak vyberte **simulace zařízení**.
 
    [![Stránka akcelerátory řešení Azure IoT](media/v2-update-provision/device-one-accelerator.png)](media/v2-update-provision/device-one-accelerator.png#lightbox)
 
-   Vyberte **vyzkoušet**.
+   Vyberte **zkusit nyní**.
 
-1. Na **simulace zařízení vytvořit řešení** nastavte následující parametry:
+1. Na stránce **vytvoření řešení simulace zařízení** nastavte následující parametry:
 
-    | Parametr | Akce |
+    | Parametr | Action |
     | --- | --- |
     | **Název nasazení** | Zadejte jedinečnou hodnotu pro novou skupinu prostředků. Uvedené prostředky Azure se vytvoří a přiřadí do skupiny prostředků. |
     | **Předplatné Azure** | Vyberte předplatné, které jste použili k vytvoření prostředí Time Series Insights. |
-    | **Umístění Azure** | Vyberte oblast, který jste použili k vytvoření prostředí Time Series Insights. |
-    | **Možnosti nasazení** | Vyberte **zřídit novou službu IoT Hub**. |
+    | **Umístění Azure** | Vyberte oblast, kterou jste použili k vytvoření prostředí Time Series Insights. |
+    | **Možnosti nasazení** | Vyberte možnost **zřídit nové IoT Hub**. |
  
-    Vyberte **vytvořit řešení**. Může trvat až 20 minut, než se řešení pro dokončení nasazení.
+    Vyberte **vytvořit řešení**. Může trvat až 20 minut, než se řešení dokončí nasazováním.
 
-    [![Vytvoření stránky řešení simulace zařízení](media/v2-update-provision/device-two-create.png)](media/v2-update-provision/device-two-create.png#lightbox)
+    [![Stránka pro vytvoření řešení simulace zařízení](media/v2-update-provision/device-two-create.png)](media/v2-update-provision/device-two-create.png#lightbox)
 
-## <a name="create-a-time-series-insights-preview-payg-environment"></a>Vytvoření prostředí s průběžnými PLATBAMI čas Series Insights ve verzi Preview
+## <a name="create-a-time-series-insights-preview-payg-environment"></a>Vytvoření PAYG prostředí Time Series Insights ve verzi Preview
 
-Tato část popisuje, jak vytvořit prostředí Azure čas Series Insights ve verzi Preview a připojte ho ke službě IoT hub, který je vytvořen s využitím akcelerátorů řešení IoT [webu Azure portal](https://portal.azure.com/).
+Tato část popisuje, jak vytvořit prostředí Azure Time Series Insights Preview a připojit ho ke službě IoT Hub vytvořené pomocí akcelerátoru řešení IoT pomocí [Azure Portal](https://portal.azure.com/).
 
 1. Přihlaste se k webu Azure portal pomocí svého účtu předplatného.
 
-1. Vyberte **vytvořit prostředek** > **Internet of Things** > **Time Series Insights**.
+1. Vyberte **vytvořit prostředek** > **Internet věcí** > **Time Series Insights**.
 
-   [![Vyberte Internet of Things a pak vyberte Time Series Insights](media/v2-update-provision/payg-one-azure.png)](media/v2-update-provision/payg-one-azure.png#lightbox)
+   [![Vyberte Internet věcí a potom vyberte Time Series Insights](media/v2-update-provision/payg-one-azure.png)](media/v2-update-provision/payg-one-azure.png#lightbox)
 
-1. V **prostředí vytvořit Time Series Insights** podokně na **Základy** kartu, nastavit následující parametry:
+1. V podokně **vytvořit Time Series Insights prostředí** na kartě **základy** nastavte následující parametry:
 
-    | Parametr | Akce |
+    | Parametr | Action |
     | --- | ---|
-    | **Název prostředí** | Zadejte jedinečný název pro prostředí Azure čas Series Insights ve verzi Preview. |
-    | **Předplatné** | Zadejte předplatné, ve kterém chcete vytvořit prostředí Azure čas Series Insights ve verzi Preview. Osvědčeným postupem je používat stejné předplatné jako v ostatních prostředků IoT, které jsou vytvořené v simulátoru zařízení. |
-    | **Skupina prostředků** | Vyberte existující skupinu prostředků nebo vytvořte novou skupinu prostředků pro prostředek prostředí Azure čas Series Insights ve verzi Preview. Skupina prostředků představuje kontejner prostředků Azure. Osvědčeným postupem je použít stejnou skupinu prostředků jako ostatní prostředky IoT, které jsou vytvořené v simulátoru zařízení. |
-    | **Location** | Vyberte oblast datového centra pro prostředí Azure čas Series Insights ve verzi Preview. Aby se zabránilo další latenci, je nejlepší vytvořit prostředí Azure čas Series Insights ve verzi Preview ve stejné oblasti jako vašich IoT prostředků. |
-    | **Tier** |  Vyberte **PAYG** (*s průběžnými platbami*). Toto je SKU produktu Azure čas Series Insights ve verzi Preview. |
-    | **ID vlastnosti** | Zadejte hodnotu, která jednoznačně identifikuje instanci času řady. Hodnotu, kterou zadáte v **ID vlastnosti** pole je neměnný. Později ho nelze změnit. Pro účely tohoto kurzu zadejte **iothub připojení zařízení id**. Další informace o ID řady času, naleznete v tématu [osvědčené postupy pro výběr ID řady času](./time-series-insights-update-how-to-id.md). |
-    | **Název účtu úložiště** | Zadejte globálně jedinečný název pro nový účet úložiště vytvořit. |
+    | **Název prostředí** | Zadejte jedinečný název prostředí Azure Time Series Insights Preview. |
+    | **Předplatné** | Zadejte předplatné, ve kterém chcete vytvořit prostředí Azure Time Series Insights Preview. Osvědčeným postupem je použít stejné předplatné jako zbytek prostředků IoT vytvořených simulátorem zařízení. |
+    | **Skupina prostředků** | Vyberte existující skupinu prostředků nebo vytvořte novou skupinu prostředků pro prostředek prostředí Azure Time Series Insights Preview. Skupina prostředků představuje kontejner prostředků Azure. Osvědčeným postupem je použití stejné skupiny prostředků jako u jiných prostředků IoT, které jsou vytvořené simulátorem zařízení. |
+    | **Location** | Vyberte oblast datového centra pro prostředí Azure Time Series Insights Preview. Abyste se vyhnuli další latenci, je nejlepší vytvořit prostředí Azure Time Series Insights Preview ve stejné oblasti jako vaše jiné prostředky IoT. |
+    | **Vrstva** |  Vyberte **PAYG** (průběžné*platby*). Toto je SKU produktu Azure Time Series Insights Preview. |
+    | **ID vlastnosti** | Zadejte hodnotu, která jedinečně identifikuje vaši instanci časové řady. Hodnota, kterou zadáte v poli **ID vlastnosti** , je neměnný. Později ji nemůžete změnit. Pro tento kurz zadejte **iothub-Connection-Device-ID**. Další informace o ID časových řad najdete v tématu [osvědčené postupy pro výběr ID časové řady](./time-series-insights-update-how-to-id.md). |
+    | **Název účtu úložiště** | Zadejte globálně jedinečný název pro nový účet úložiště, který chcete vytvořit. |
    
-   Vyberte **Další: Zdroj události**.
+   Vyberte **další: Zdroj**události
 
-   [![Podokno pro vytvoření prostředí Time Series Insights](media/v2-update-provision/payg-two-create.png)](media/v2-update-provision/payg-two-create.png#lightbox)
+   [![Podokno pro vytváření Time Series Insightsho prostředí](media/v2-update-provision/payg-two-create.png)](media/v2-update-provision/payg-two-create.png#lightbox)
 
-1. Na **zdroj události** kartu, nastavit následující parametry:
+1. Na kartě **zdroj události** nastavte následující parametry:
 
-   | Parametr | Akce |
+   | Parametr | Action |
    | --- | --- |
-   | **Vytvoření zdroje událostí?** | Vyberte **Ano**.|
-   | **Název** | Zadejte jedinečnou hodnotu pro název zdroje událostí. |
-   | **Typ zdroje** | Vyberte **služby IoT Hub**. |
-   | **Vyberte centrum** | Zvolte **vybrat existující**. |
+   | **Vytvořit zdroj události?** | Vyberte **Ano**.|
+   | **Název** | Zadejte jedinečnou hodnotu názvu zdroje události. |
+   | **Typ zdroje** | Vyberte **IoT Hub**. |
+   | **Výběr centra** | Zvolte **Vybrat existující**. |
    | **Předplatné** | Vyberte předplatné, které jste použili pro simulátor zařízení. |
-   | **Název centra IoT** | Vyberte název centra IoT, které jste vytvořili pro simulátor zařízení. |
-   | **Zásady přístupu pro službu IoT Hub** | Vyberte **iothubowner**. |
-   | **IoT Hub consumer group** | Vyberte **nový**, zadejte jedinečný název a potom vyberte **přidat**. Skupina uživatelů musí být jedinečná hodnota v Azure čas Series Insights ve verzi Preview. |
-   | **Vlastnost časového razítka** | Tato hodnota se používá k identifikaci **časové razítko** vlastnost v příchozí telemetrická data. Pro účely tohoto kurzu ponechte toto pole prázdné. Simulátor používá příchozí časové razítko ze služby IoT Hub, kde je použit výchozí Time Series Insights. |
+   | **Název IoT Hub** | Vyberte název služby IoT Hub, který jste vytvořili pro simulátor zařízení. |
+   | **Zásada přístupu IoT Hub** | Vyberte **iothubowner**. |
+   | **Skupina uživatelů IoT Hub** | Vyberte **Nový**, zadejte jedinečný název a pak vyberte **Přidat**. Skupina příjemců musí být ve verzi Azure Time Series Insights Preview jedinečná. |
+   | **Vlastnost timestamp** | Tato hodnota se používá k identifikaci vlastnosti **časového razítka** ve příchozích datech telemetrie. V tomto kurzu ponechte toto pole prázdné. Simulátor používá příchozí časové razítko z IoT Hub, které Time Series Insights výchozím nastavením. |
 
    Vyberte **Zkontrolovat a vytvořit**.
 
-   [![Konfigurace zdroje událostí](media/v2-update-provision/payg-five-event-source.png)](media/v2-update-provision/payg-five-event-source.png#lightbox)
+   [![Konfigurace zdroje události](media/v2-update-provision/payg-five-event-source.png)](media/v2-update-provision/payg-five-event-source.png#lightbox)
 
-1. Na **zkontrolovat a vytvořit** kartu zkontrolujte vybrané možnosti a pak vyberte **vytvořit**.
+1. Na kartě **Revize + vytvořit** zkontrolujte výběry a pak vyberte **vytvořit**.
 
-    [![Zkontrolovat a vytvořit stránku, pomocí tlačítka pro vytvoření](media/v2-update-provision/payg-six-review.png)](media/v2-update-provision/payg-six-review.png#lightbox)
+    [![Stránka pro revize + vytvořit s tlačítkem vytvořit](media/v2-update-provision/payg-six-review.png)](media/v2-update-provision/payg-six-review.png#lightbox)
 
     Můžete zobrazit stav nasazení:
 
-    [![Oznámení, že je nasazení dokončeno](media/v2-update-provision/payg-seven-deploy.png)](media/v2-update-provision/payg-seven-deploy.png#lightbox)
+    [![Oznámení o dokončení nasazení](media/v2-update-provision/payg-seven-deploy.png)](media/v2-update-provision/payg-seven-deploy.png#lightbox)
 
-1. Pokud jste vlastníkem tenanta máte přístup k prostředí Azure čas Series Insights ve verzi Preview. Abyste měli jistotu, že máte přístup:
+1. Pokud vlastníte tenanta, máte přístup k prostředí Azure Time Series Insights ve verzi Preview. Ujistěte se, že máte přístup:
 
-   1. Vyhledejte skupinu prostředků a poté vyberte vaše prostředí Azure čas Series Insights ve verzi Preview:
+   1. Vyhledejte skupinu prostředků a potom vyberte prostředí Azure Time Series Insights Preview:
 
       [![Vybrané prostředí](media/v2-update-provision/payg-eight-environment.png)](media/v2-update-provision/payg-eight-environment.png#lightbox)
 
-   1. Na stránce Azure čas Series Insights ve verzi Preview vyberte **zásady přístupu k datům**:
+   1. Na stránce Náhled Azure Time Series Insights vyberte **zásady přístupu k datům**:
 
       [![Zásady přístupu k datům](media/v2-update-provision/payg-nine-data-access.png)](media/v2-update-provision/payg-nine-data-access.png#lightbox)
 
-   1. Ověřte, že vaše přihlašovací údaje patří:
+   1. Ověřte, že jsou uvedené přihlašovací údaje:
 
-      [![Uvedené pověření](media/v2-update-provision/payg-ten-verify.png)](media/v2-update-provision/payg-ten-verify.png#lightbox)
+      [![Uvedené přihlašovací údaje](media/v2-update-provision/payg-ten-verify.png)](media/v2-update-provision/payg-ten-verify.png#lightbox)
 
-   Pokud vaše přihlašovací údaje nejsou uvedené, je nutné si udělit oprávnění pro přístup k prostředí. Další informace o nastavení oprávnění najdete v článku [udělení přístupu k datům](./time-series-insights-data-access.md).
+   Pokud vaše přihlašovací údaje nejsou uvedené, musíte sami udělit oprávnění k přístupu k prostředí. Pokud se chcete dozvědět víc o nastavení oprávnění, přečtěte si téma [udělení přístupu k datům](./time-series-insights-data-access.md).
 
-## <a name="stream-data-into-your-environment"></a>Datový Stream do vašeho prostředí
+## <a name="stream-data-into-your-environment"></a>Streamování dat do vašeho prostředí
 
-1. Přejděte zpět [stránka akcelerátory řešení Azure IoT](https://www.azureiotsolutions.com/Accelerators). Vyhledejte řešení v řídicím panelu řešení akcelerátoru. Vyberte **spuštění**:
+1. Přejděte zpátky na [stránku akcelerátory řešení Azure IoT](https://www.azureiotsolutions.com/Accelerators). Vyhledejte řešení na řídicím panelu akcelerátoru řešení. Pak vyberte **Spustit**:
 
-    [![Spuštění řešení simulace zařízení](media/v2-update-provision/device-three-launch.png)](media/v2-update-provision/device-three-launch.png#lightbox)
+    [![Spustit řešení pro simulaci zařízení](media/v2-update-provision/device-three-launch.png)](media/v2-update-provision/device-three-launch.png#lightbox)
 
-1. Budete přesměrováni na **simulace zařízení IoT Microsoft Azure** stránky. V pravém horním rohu stránky vyberte **nové simulace**.
+1. Budete přesměrováni na stránku **Microsoft Azure pro simulaci zařízení IoT** . V pravém horním rohu stránky vyberte **Nová simulace**.
 
     [![Stránka simulace Azure IoT](media/v2-update-provision/device-four-iot-sim-page.png)](media/v2-update-provision/device-four-iot-sim-page.png#lightbox)
 
-1. V **nastavení** podokně nastavit následující parametry:
+1. V podokně **Nastavení simulace** nastavte následující parametry:
 
-    | Parametr | Akce |
+    | Parametr | Action |
     | --- | --- |
-    | **Název** | Zadejte jedinečný název pro simulátor. |
+    | **Název** | Zadejte jedinečný název simulátoru. |
     | **Popis** | Zadejte definici. |
-    | **Simulation duration** („Doba trvání simulace“) | Nastavte na **běží hodně dlouho**. |
-    | **Device model** („Model zařízení“) | **Název**: Zadejte **chladič**. <br />**Velikost**: Zadejte **3**. |
-    | **Target IoT Hub** („Cílový IoT Hub“) | Nastavte na **použití předem zřízené služby IoT Hub**. |
+    | **Simulation duration** („Doba trvání simulace“) | Nastaveno na **neomezenou dobu**. |
+    | **Device model** („Model zařízení“) | **Název**: Zadejte **chladicíer**. <br />**Množství**: Zadejte **3**. |
+    | **Target IoT Hub** („Cílový IoT Hub“) | Nastavte na **použít předem zřízené IoT Hub**. |
 
-    [![Parametry pro nastavení](media/v2-update-provision/device-five-params.png)](media/v2-update-provision/device-five-params.png#lightbox)
+    [![Parametry k nastavení](media/v2-update-provision/device-five-params.png)](media/v2-update-provision/device-five-params.png#lightbox)
 
     Vyberte **spustit simulaci**.
 
-    Na řídicím panelu zařízení simulace, poznamenejte si informace zobrazené pro **aktivních zařízení** a **zpráv za sekundu**.
+    Na řídicím panelu pro simulaci zařízení si všimněte informací zobrazených pro **aktivní zařízení** a **zprávy za sekundu**.
 
-    [![Simulace řídicí panel služby Azure IoT](media/v2-update-provision/device-seven-dashboard.png)](media/v2-update-provision/device-seven-dashboard.png#lightbox)
+    [![Řídicí panel simulace Azure IoT](media/v2-update-provision/device-seven-dashboard.png)](media/v2-update-provision/device-seven-dashboard.png#lightbox)
 
 ## <a name="analyze-data-in-your-environment"></a>Analýza dat ve vašem prostředí
 
-V této části provedete základní analýzy ve vašich datech časových řad s využitím [Průzkumníka Azure čas Series Insights ve verzi Preview](./time-series-insights-update-explorer.md).
+V této části provedete základní analýzy dat časových řad pomocí [Průzkumníka služby Azure Time Series Insights Preview](./time-series-insights-update-explorer.md).
 
-1. Přejděte do aplikace Azure čas Series Insights ve verzi Preview explorer tak, že vyberete adresu URL stránky prostředku na [webu Azure portal](https://portal.azure.com/).
+1. Pokud chcete přejít do Průzkumníka služby Azure Time Series Insights Preview, vyberte adresu URL ze stránky prostředků v [Azure Portal](https://portal.azure.com/).
 
-    [![Adresa URL explorer čas Series Insights ve verzi Preview](media/v2-update-provision/analyze-one-portal.png)](media/v2-update-provision/analyze-one-portal.png#lightbox)
+    [![Adresa URL aplikace Time Series Insights Preview](media/v2-update-provision/analyze-one-portal.png)](media/v2-update-provision/analyze-one-portal.png#lightbox)
 
-1. V Průzkumníkovi, vyberte **instance řady času** uzlu pro zobrazení všech instancí Azure čas Series Insights ve verzi Preview v prostředí.
+1. V Průzkumníkovi vyberte uzel **instance časové řady** , aby se zobrazily všechny instance Azure Time Series Insights Preview v prostředí.
 
-    [![Seznam instancí bez nadřazených položek](media/v2-update-provision/analyze-two-unparented.png)](media/v2-update-provision/analyze-two-unparented.png#lightbox)
+    [![Seznam nenadřazených instancí](media/v2-update-provision/analyze-two-unparented.png)](media/v2-update-provision/analyze-two-unparented.png#lightbox)
 
-1. Vyberte první instance řady čas. Vyberte **zobrazit tlak**.
+1. Vyberte instanci první časové řady. Pak vyberte **Zobrazit tlak**.
 
-    [![Vybraná instance řady čas pomocí příkazu nabídky můžete zobrazit průměrné zatížení](media/v2-update-provision/analyze-three-show-pressure.png)](media/v2-update-provision/analyze-three-show-pressure.png#lightbox)
+    [![Vybraná instance časové řady s příkazem nabídky k zobrazení průměrného tlaku](media/v2-update-provision/analyze-three-show-pressure.png)](media/v2-update-provision/analyze-three-show-pressure.png#lightbox)
 
-    Zobrazí se graf časové řady. Změnit **Interval** k **15s**.
+    Zobrazí se graf časové řady. Změňte **interval** na **15s**.
 
     [![Graf časové řady](media/v2-update-provision/analyze-four-chart.png)](media/v2-update-provision/analyze-four-chart.png#lightbox)
 
-1. Opakováním kroků 3 s další dva časové řady instancí. Všechny instance řady času, můžete zobrazit, jak je znázorněno v tomto grafu:
+1. Opakujte krok 3 s ostatními dvěma instancemi časových řad. Můžete zobrazit všechny instance časových řad, jak je znázorněno v tomto grafu:
 
     [![Graf pro všechny časové řady](media/v2-update-provision/analyze-five-chart.png)](media/v2-update-provision/analyze-five-chart.png#lightbox)
 
-1. V **časový rámec** možnost pole, změnit časový rozsah, pokud chcete zobrazit trendy řady čas za poslední hodinu:
+1. V poli **časový rámec** změňte časový rozsah, abyste viděli trendy časových řad za poslední hodinu:
 
-    [![Nastavte časové rozpětí za hodinu](media/v2-update-provision/analyze-six-time.png)](media/v2-update-provision/analyze-six-time.png#lightbox)
+    [![Nastavte časový rozsah na hodinu.](media/v2-update-provision/analyze-six-time.png)](media/v2-update-provision/analyze-six-time.png#lightbox)
 
 ## <a name="define-and-apply-a-model"></a>Definování a použití modelu
 
-V této části použijete model strukturovat vaše data. K dokončení modelu, můžete definovat typy, hierarchie a instance. Další informace o modelování dat, naleznete v tématu [modelu časové řady](./time-series-insights-update-tsm.md).
+V této části použijete model ke strukturování dat. Pro dokončení modelu definujete typy, hierarchie a instance. Další informace o modelování dat najdete v tématu [model časové řady](./time-series-insights-update-tsm.md).
 
-1. V Průzkumníkovi, vyberte **modelu** kartu:
+1. V Průzkumníku vyberte kartu **model** :
 
-   [![Karta modelu v Průzkumníku](media/v2-update-provision/define-one-model.png)](media/v2-update-provision/define-one-model.png#lightbox)
+   [![Karta model v Průzkumníkovi](media/v2-update-provision/define-one-model.png)](media/v2-update-provision/define-one-model.png#lightbox)
 
-1. Vyberte **přidat** přidejte typ:
+1. Vyberte **Přidat** a přidejte typ:
 
    [![Tlačítko Přidat pro typy](media/v2-update-provision/define-two-add.png)](media/v2-update-provision/define-two-add.png#lightbox)
 
-1. V dalším kroku definujete tří proměnných pro typ: *tlak*, *teploty*, a *vlhkosti*. V **přidat typ** podokně nastavit následující parametry:
+1. Dále definujete tři proměnné pro typ: *tlak*, *teplota*a *vlhkost*. V podokně **Přidat typ** nastavte následující parametry:
 
-    | Parametr | Akce |
+    | Parametr | Action |
     | --- | ---|
-    | **Název** | Zadejte **chladič**. |
-    | **Popis** | Zadejte **jde definici typu chladič**. |
+    | **Název** | Zadejte **chladicíer**. |
+    | **Popis** | Zadejte **Toto je definice typu chladicího programu**. |
 
-   * Chcete-li definovat *tlak*v části **proměnné**, nastavit následující parametry:
+   * Chcete-li definovat *tlak*, v části **proměnné**nastavte následující parametry:
 
-     | Parametr | Akce |
+     | Parametr | Action |
      | --- | ---|
-     | **Název** | Zadejte **Avg tlak**. |
-     | **Hodnota** | Vyberte **tlak (Double)** . Může trvat několik minut, než **hodnotu** automaticky vyplní se po Azure čas Series Insights ve verzi Preview začne přijímat události. |
-     | **Agregační operace** | Vyberte **AVG**. |
+     | **Název** | Zadejte **průměrný tlak**. |
+     | **Hodnota** | Vyberte možnost **přítlak (Double)** . Automatické naplnění **hodnoty** po Azure Time Series Insights ve verzi Preview může trvat několik minut, než začnou přijímat události. |
+     | **Agregační operace** | Vyberte **prům**. |
 
       [![Výběry pro definování tlaku](media/v2-update-provision/define-three-variable.png)](media/v2-update-provision/define-three-variable.png#lightbox)
 
-      Chcete-li přidat další proměnné, **přidat proměnnou**.
+      Chcete-li přidat další proměnnou, vyberte možnost **přidat proměnnou**.
 
-   * Definování *teploty*:
+   * Definovat *teplotu*:
 
-     | Parametr | Akce |
+     | Parametr | Action |
      | --- | ---|
-     | **Název** | Zadejte **průměrná teplota**. |
-     | **Hodnota** | Vyberte **teploty (Double)** . Může trvat několik minut, než **hodnotu** automaticky vyplní se po Azure čas Series Insights ve verzi Preview začne přijímat události. |
-     | **Agregační operace** | Vyberte **AVG**.|
+     | **Název** | Zadejte **průměrnou teplotu**. |
+     | **Hodnota** | Vyberte možnost **teplota (Double)** . Automatické naplnění **hodnoty** po Azure Time Series Insights ve verzi Preview může trvat několik minut, než začnou přijímat události. |
+     | **Agregační operace** | Vyberte **prům**.|
 
       [![Výběry pro definování teploty](media/v2-update-provision/define-four-avg.png)](media/v2-update-provision/define-four-avg.png#lightbox)
 
-      Chcete-li přidat další proměnné, **přidat proměnnou**.
+      Chcete-li přidat další proměnnou, vyberte možnost **přidat proměnnou**.
 
-   * Definování *vlhkosti*:
+   * Definovat *vlhkost*:
 
       | | |
       | --- | ---|
-      | **Název** | Zadejte **maximální vlhkost** |
-      | **Hodnota** | Vyberte **vlhkosti (Double)** . Může trvat několik minut, než **hodnotu** automaticky vyplní se po Azure čas Series Insights ve verzi Preview začne přijímat události. |
-      | **Agregační operace** | Vyberte **maximální**.|
+      | **Název** | Zadejte **maximální vlhkost** . |
+      | **Hodnota** | Vyberte **vlhkost (dvojitá přesnost)** . Automatické naplnění **hodnoty** po Azure Time Series Insights ve verzi Preview může trvat několik minut, než začnou přijímat události. |
+      | **Agregační operace** | Vyberte **Max**.|
 
       [![Výběry pro definování teploty](media/v2-update-provision/define-five-humidity.png)](media/v2-update-provision/define-five-humidity.png#lightbox)
 
     Vyberte **Vytvořit**.
 
-    Zobrazí se na typ, který jste přidali:
+    Můžete si prohlédnout typ, který jste přidali:
 
-    [![Informace o přidání typu](media/v2-update-provision/define-six-type.png)](media/v2-update-provision/define-six-type.png#lightbox)
+    [![Informace o přidaném typu](media/v2-update-provision/define-six-type.png)](media/v2-update-provision/define-six-type.png#lightbox)
 
-1. Dalším krokem je přidání hierarchie. V části **hierarchie**vyberte **přidat**:
+1. Dalším krokem je přidání hierarchie. V části **hierarchie**vyberte **Přidat**:
 
     [![Karta hierarchie s tlačítkem Přidat](media/v2-update-provision/define-seven-hierarchy.png)](media/v2-update-provision/define-seven-hierarchy.png#lightbox)
 
-1. V **Upravit hierarchii** podokně nastavit následující parametry:
+1. V podokně **Upravit hierarchii** nastavte následující parametry:
 
-   | Parametr | Akce |
+   | Parametr | Action |
    | --- | ---|
-   | **Název** | Zadejte **umístění hierarchie**. |
-   | **1. úrovně** | Zadejte **země**. |
-   | **Úroveň 2** | Zadejte **Město**. |
-   | **Úroveň 3** | Zadejte **vytváření**. |
+   | **Název** | Zadejte **hierarchii umístění**. |
+   | **Úroveň 1** | Zadejte **Country (země**). |
+   | **Úroveň 2** | Zadejte **City**. |
+   | **Úroveň 3** | Zadejtesestavování. |
 
    Vyberte **Uložit**.
 
-    [![Hierarchie pole pomocí tlačítka pro vytvoření](media/v2-update-provision/define-eight-add-hierarchy.png)](media/v2-update-provision/define-eight-add-hierarchy.png#lightbox)
+    [![Pole hierarchie s tlačítkem vytvořit](media/v2-update-provision/define-eight-add-hierarchy.png)](media/v2-update-provision/define-eight-add-hierarchy.png#lightbox)
 
    Můžete zobrazit hierarchii, kterou jste vytvořili:
 
     [![Informace o hierarchii](media/v2-update-provision/define-nine-created.png)](media/v2-update-provision/define-nine-created.png#lightbox)
 
-1. Vyberte **instance**. Vyberte první instanci a pak vyberte **upravit**:
+1. Vyberte **instance**. Vyberte první instanci a pak vyberte **Upravit**:
 
-    [![Vyberte tlačítko Upravit pro instance](media/v2-update-provision/define-ten-edit.png)](media/v2-update-provision/define-ten-edit.png#lightbox)
+    [![Výběr tlačítka pro úpravy instance](media/v2-update-provision/define-ten-edit.png)](media/v2-update-provision/define-ten-edit.png#lightbox)
 
-1. V **upravit instance** podokně nastavit následující parametry:
+1. V podokně **upravit instance** nastavte následující parametry:
 
-    | Parametr | Akce |
+    | Parametr | Action |
     | --- | --- |
-    | **Typ** | Vyberte **chladič**. |
-    | **Popis** | Zadejte **instanci chladič 01.1**. |
-    | **Hierarchie** | Vyberte **umístění hierarchie**. |
-    | **Země** | Zadejte **USA**. |
-    | **Město** | Zadejte **Seattle**. |
-    | **Sestavování** | Zadejte **místo ručička**. |
+    | **Typ** | Vyberte **chladicíer**. |
+    | **Popis** | Zadejte **instanci pro chladicího a 01,1**. |
+    | **Hierarchie** | Vyberte možnost **Hierarchie umístění**. |
+    | **Krajin** | Zadejte **USA**. |
+    | **Vatikán** | Zadejte **Seattle**. |
+    | **Kapacit** | Zadejte **ručičku místa**. |
 
-    [![Pole instance s uložit tlačítkem](media/v2-update-provision/define-eleven-chiller.png)](media/v2-update-provision/define-eleven-chiller.png#lightbox)
+    [![Pole instancí s tlačítkem Uložit](media/v2-update-provision/define-eleven-chiller.png)](media/v2-update-provision/define-eleven-chiller.png#lightbox)
 
    Vyberte **Uložit**.
 
-1. Opakujte předchozí krok pro další senzory. Aktualizací následujících hodnot:
+1. Předchozí krok opakujte pro ostatní senzory. Aktualizací následujících hodnot:
 
-   * Pro chladič 01.2:
+   * Pro chlazení 01,2:
 
-     | Parametr | Akce |
+     | Parametr | Action |
      | --- | --- |
-     | **Typ** | Vyberte **chladič**. |
-     | **Popis** | Zadejte **instanci chladič 01.2**. |
-     | **Hierarchie** | Vyberte **umístění hierarchie**. |
-     | **Země** | Zadejte **USA**. |
-     | **Město** | Zadejte **Seattle**. |
-     | **Sestavování** | Zadejte **Tichomoří vědy Center**. |
+     | **Typ** | Vyberte **chladicíer**. |
+     | **Popis** | Zadejte **instanci pro chladicího a 01,2**. |
+     | **Hierarchie** | Vyberte možnost **Hierarchie umístění**. |
+     | **Krajin** | Zadejte **USA**. |
+     | **Vatikán** | Zadejte **Seattle**. |
+     | **Kapacit** | Zadejte **centrum tichomořské vědy**. |
 
-   * Pro chladič 01.3:
+   * Pro chlazení 01,3:
 
-     | Parametr | Akce |
+     | Parametr | Action |
      | --- | --- |
-     | **Typ** | Vyberte **chladič**. |
-     | **Popis** | Zadejte **instanci chladič 01.3**. |
-     | **Hierarchie** | Vyberte **umístění hierarchie**. |
-     | **Země** | Zadejte **USA**. |
-     | **Město** | Zadejte **New York**. |
-     | **Sestavování** | Zadejte **Empire stav vytváření**. |
+     | **Typ** | Vyberte **chladicíer**. |
+     | **Popis** | Zadejte **instanci pro chladicího a 01,3**. |
+     | **Hierarchie** | Vyberte možnost **Hierarchie umístění**. |
+     | **Krajin** | Zadejte **USA**. |
+     | **Vatikán** | Zadejte **New York**. |
+     | **Kapacit** | Jako stav zadejte **Empire**. |
 
-1. Vyberte **analyzovat** kartu a potom aktualizujte zobrazení stránky. V části **umístění hierarchie**, Rozbalit všechny úrovně hierarchie k zobrazení instance řady čas:
+1. Vyberte kartu **analyzovat** a aktualizujte stránku. V části **Hierarchie umístění**rozbalte všechny úrovně hierarchie, aby se zobrazily instance časových řad:
 
-   [![Karta Analyze](media/v2-update-provision/define-twelve.png)](media/v2-update-provision/define-twelve.png#lightbox)
+   [![Karta analyzovat](media/v2-update-provision/define-twelve.png)](media/v2-update-provision/define-twelve.png#lightbox)
 
-1. Chcete-li prozkoumat instance řady času za poslední hodinu, změňte **rychlé časy** k **za poslední hodinu**:
+1. Chcete-li prozkoumat instance časových řad za poslední hodinu, změňte **rychlé časy** na **Poslední hodinu**:
 
-    [![Rychlé časy pole s vybrána poslední hodina](media/v2-update-provision/define-thirteen-explore.png)](media/v2-update-provision/define-thirteen-explore.png#lightbox)
+    [![Rychlé časové pole s vybranou poslední hodinu](media/v2-update-provision/define-thirteen-explore.png)](media/v2-update-provision/define-thirteen-explore.png#lightbox)
 
-1. V části **Tichomoří vědy Center**, vyberte instance řady čas a pak vyberte **zobrazit maximální vlhkost**.
+1. V **centru pro Tichomoří – vědu**vyberte instanci časové řady a pak vyberte **Zobrazit maximální vlhkost**.
 
-    [![Instance řady vybraný čas a výběr nabídky Zobrazit maximální vlhkost](media/v2-update-provision/define-fourteen-show-max.png)](media/v2-update-provision/define-fourteen-show-max.png#lightbox)
+    [![Vybraná instance časové řady a výběr nabídky Zobrazit maximální vlhkost](media/v2-update-provision/define-fourteen-show-max.png)](media/v2-update-provision/define-fourteen-show-max.png#lightbox)
 
-1. Časové řady pro **maximální vlhkost** interval velikosti **1 minuta** otevře. Filtrovat řady, vyberte oblast. Analýza událostí v časovém rámci, klikněte pravým tlačítkem na graf a potom vyberte **přiblížení**:
+1. Otevře se časová řada pro **maximální vlhkost** s velikostí intervalu **1 minuta** . Chcete-li filtrovat rozsah, vyberte oblast. Chcete-li analyzovat události v časovém rámci, klikněte pravým tlačítkem na graf a vyberte možnost **Zvětšit**:
 
-   [![Vybraný rozsah příkazem zvětšení v místní nabídce](media/v2-update-provision/define-fifteen-filter.png)](media/v2-update-provision/define-fifteen-filter.png#lightbox)
+   [![Vybraný rozsah s příkazem Lupa v místní nabídce](media/v2-update-provision/define-fifteen-filter.png)](media/v2-update-provision/define-fifteen-filter.png#lightbox)
 
-1. Pokud chcete zobrazit podrobnosti o události, vyberte oblast a klikněte pravým tlačítkem na graf:
+1. Pokud chcete zobrazit podrobnosti události, vyberte oblast a potom klikněte pravým tlačítkem myši na graf:
 
    [![Podrobný seznam událostí](media/v2-update-provision/define-eighteen.png)](media/v2-update-provision/define-eighteen.png#lightbox)
+
+
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+
+Teď, když jste dokončili kurz, vyčistěte prostředky, které jste vytvořili:
+
+1. V nabídce vlevo v [Azure Portal](https://portal.azure.com)vyberte **všechny prostředky**a vyhledejte svoji Azure Time Series Insights skupinu prostředků.
+1. Odstraňte celou skupinu prostředků (a všechny prostředky v ní obsažené) tak, že vyberete možnost **Odstranit** nebo odebrat jednotlivé prostředky zvlášť.
 
 ## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste se naučili:  
 
 > [!div class="checklist"]
-> * Vytváření a používání akcelerátoru simulaci zařízení.
-> * Vytvoření prostředí Azure čas Series Insights ve verzi Preview s průběžnými PLATBAMI.
-> * Prostředí Azure čas Series Insights ve verzi Preview připojte do centra událostí.
-> * Spuštění ukázky akcelerátor řešení pro streamování dat do prostředí Azure čas Series Insights ve verzi Preview.
+> * Vytvořte a použijte akcelerátor simulace zařízení.
+> * Vytvořte PAYG prostředí Azure Time Series Insights ve verzi Preview.
+> * Připojte prostředí Azure Time Series Insights Preview k centru událostí.
+> * Spusťte ukázku akcelerátoru řešení pro streamování dat do prostředí Azure Time Series Insights Preview.
 > * Proveďte analýzu základní data.
-> * Definujte typ modelu časové řady a hierarchie a přidružit vaše instance.
+> * Definujte typ modelu časové řady a hierarchii a přidružte je k vašim instancím.
 
-Teď, když víte, jak vytvořit prostředí Azure čas Series Insights ve verzi Preview, přečtěte si další informace o klíčových konceptech Azure Time Series Insights.
+Teď, když víte, jak vytvořit vlastní prostředí pro Azure Time Series Insights Preview, získáte další informace o klíčových konceptech v Azure Time Series Insights.
 
-Přečtěte si informace o konfiguraci úložiště Azure Time Series Insights:
+Přečtěte si o konfiguraci úložiště Azure Time Series Insights:
 
 > [!div class="nextstepaction"]
 > [Azure storage čas Series Insights ve verzi Preview a příchozího přenosu dat](./time-series-insights-update-storage-ingress.md)

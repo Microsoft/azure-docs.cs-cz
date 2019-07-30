@@ -1,21 +1,21 @@
 ---
-title: Připojení k Azure Database for MySQL pomocí Javy
-description: V tomto rychlém startu najdete vzorový kód Java, které můžete použít k připojení a dotazování dat ze služby Azure Database for MySQL database.
+title: Připojení k Azure Database for MySQL pomocí jazyka Java
+description: V tomto rychlém startu najdete ukázku kódu Java, který můžete použít k připojení a dotazování dat z databáze Azure Database for MySQL.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
-ms.custom: mvc, devcenter
+ms.custom: mvc, devcenter, seo-java-july2019
 ms.topic: quickstart
 ms.devlang: java
 ms.date: 02/28/2018
-ms.openlocfilehash: 7ad24a691153161ff2283030a4a597544205de6d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 96f793031f39e051d3cbe21bfd192a4d914239a8
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61091845"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68640718"
 ---
-# <a name="azure-database-for-mysql-use-java-to-connect-and-query-data"></a>Azure Database for MySQL: Použití Javy k připojení a dotazování dat
+# <a name="azure-database-for-mysql-use-java-to-connect-and-query-data"></a>Azure Database for MySQL: Připojení a dotazování dat pomocí jazyka Java
 Tento rychlý start ukazuje, jak se připojit ke službě Azure Database for MySQL s použitím aplikace v Javě a ovladače JDBC [MySQL Connector/J](https://dev.mysql.com/downloads/connector/j/). Ukazuje, jak pomocí příkazů jazyka SQL dotazovat, vkládat, aktualizovat a odstraňovat data v databázi. Tento článek předpokládá, že máte zkušenosti s vývojem pomocí Javy a teprve začínáte pracovat se službou Azure Database for MySQL.
 
 Řadu dalších příkladů a vzorových kódů najdete na [stránce s příklady pro konektor MySQL](https://dev.mysql.com/doc/connector-j/5.1/en/connector-j-examples.html).

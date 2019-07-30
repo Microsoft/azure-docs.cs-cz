@@ -1,123 +1,123 @@
 ---
-title: Skóre Reward – Personalizer
+title: Skóre záměna – Přizpůsobte si
 titleSuffix: Azure Cognitive Services
-description: Potřebu skóre označuje, jak dobře přizpůsobení podle vlastní volby, RewardActionID, výsledkem je pro daného uživatele. Hodnota reward skóre je určeno obchodní logiky a podle pozorování chování uživatelů. Personalizer trénovat jeho modelů strojového učení s vyhodnocením výhody.
+description: Skóre odměňování indikuje, jak dobře vlastní individuální nastavení RewardActionID a způsobilo pro uživatele. Hodnota skóre odměňování je určena vaší obchodní logikou na základě pozorování chování uživatele. Přizpůsobené vlaky modely strojového učení vyhodnocením neprospěchu.
 services: cognitive-services
-author: edjez
+author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 06/07/2019
-ms.author: edjez
-ms.openlocfilehash: 39db28cd7e11d77362a2aefcf4ad8d2748db59c2
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.author: diberry
+ms.openlocfilehash: 72c425a1ec9fb83cc2e9dd1bae2c4f521109f162
+ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67722505"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68663380"
 ---
-# <a name="reward-scores-indicate-success-of-personalization"></a>Potřebu skóre znamená úspěch individuálního nastavení
+# <a name="reward-scores-indicate-success-of-personalization"></a>Skóre odměňování indikuje úspěch přizpůsobení
 
-Potřebu skóre označuje, jak dobře přizpůsobení podle vlastní volby, [RewardActionID](https://docs.microsoft.com/rest/api/cognitiveservices/personalizer/rank/rank#response), byl pro uživatele. Hodnota reward skóre je určeno obchodní logiky a podle pozorování chování uživatelů.
+Skóre odměňování indikuje, jak dobře vlastní individuální nastavení [RewardActionID](https://docs.microsoft.com/rest/api/cognitiveservices/personalizer/rank/rank#response)a způsobilo pro uživatele. Hodnota skóre odměňování je určena vaší obchodní logikou na základě pozorování chování uživatele.
 
-Personalizer trénovat jeho modelů strojového učení s vyhodnocením výhody. 
+Přizpůsobené vlaky modely strojového učení vyhodnocením neprospěchu. 
 
-## <a name="use-reward-api-to-send-reward-score-to-personalizer"></a>Použít účet rozhraní API k odeslání skóre reward Personalizer
+## <a name="use-reward-api-to-send-reward-score-to-personalizer"></a>Použití API pro odměnu pro posílání skóre nedostatku do přizpůsobení
 
-Odměny se odesílají do Personalizer podle [Reward API](https://docs.microsoft.com/rest/api/cognitiveservices/personalizer/events/reward). Odměny je číslo od -1 a 1. Personalizer trénovat modelu k dosažení nejvyšší součet odměny v čase.
+Do přizpůsobení přizpůsobeného pomocí API pro [odměnu](https://docs.microsoft.com/rest/api/cognitiveservices/personalizer/events/reward)se posílají ceny. Odměňování je číslo od-1 do 1. Přizpůsobené vlaky je modelem, který dosáhne nejvyšší možné ceny v průběhu času.
 
-Odměny jsou odeslány po chování uživatelů se stalo, které by mohly být dnů později. Maximální množství času Personalizer počká, až událost je považována za mít žádná odměna nebo výchozí účet je nakonfigurovaný s [Reward čekací doby](#reward-wait-time) na webu Azure Portal.
+Ceny jsou odesílány poté, co došlo k chování uživatele, což může být několik dní později. Maximální doba přizpůsobování času bude počkat, dokud se událost nepovažuje za neurčitou, nebo pokud se výchozí měna nakonfiguruje s [dobou čekání](#reward-wait-time) na Azure Portal.
 
-Pokud nebyl přijat reward skóre pro události v rámci **Reward čekací doby**, pak bude **výchozí Reward** se použijí. Obvykle **[výchozí Reward](how-to-settings.md#configure-reward-settings-for-the-feedback-loop-based-on-use-case)** byl nakonfigurován jako nula.
+Pokud se skóre pro událost nedostalo v **době čekání**na odměnu, použije se **Výchozí měna** . **[Výchozí odměna](how-to-settings.md#configure-reward-settings-for-the-feedback-loop-based-on-use-case)** je obvykle nastavena na hodnotu nula.
 
 
-## <a name="behaviors-and-data-to-consider-for-rewards"></a>Chování a dat, které je potřeba zvážit odměny
+## <a name="behaviors-and-data-to-consider-for-rewards"></a>Chování a data, která je třeba zvážit při neprospěchu
 
-Vezměte v úvahu tyto signály a chování pro daný kontext reward skóre:
+Vezměte v úvahu tyto signály a chování pro kontext skóre odměňování:
 
-* Přímý vstup uživatele, pro návrhy při možnosti souvisejí ("se myslí pod X?").
+* Přímý vstup uživatele pro návrhy, pokud se týkají možnosti (znamená to, že X?).
 * Délka relace.
 * Čas mezi relacemi.
-* Analýza mínění interakcí uživatele.
-* Směrovat otázky a mini zjišťování, ve kterém robota požádá uživatele o zpětnou vazbu o použitelnosti, přesnost.
-* Odpověď na oznámení, nebo zpoždění k reakci na výstrahy.
+* Analýza interakcí uživatele mínění.
+* Přímé otázky a mini průzkumy, kde robot žádá uživatele o odezvu na užitečnost, přesnost.
+* Reakce na výstrahy nebo zpoždění reakce na výstrahy.
 
-## <a name="composing-reward-scores"></a>Vytváření reward skóre
+## <a name="composing-reward-scores"></a>Vytváření skóre záměna
 
-Potřebu skóre musí být vypočítány na obchodní logiku. Skóre můžou být vyjádřeny jako:
+V obchodní logice musí být vypočítáno skóre odměňování. Skóre lze znázornit jako:
 
-* Jedno číslo zaslán jednou 
-* Skóre odeslána ihned (třeba 0,8) a další skóre odeslána později (obvykle 0,2 požadavku).
+* Jedno odeslané číslo 
+* Skóre odesláno okamžitě (například 0,8) a další skóre bylo odesláno později (obvykle 0,2).
 
-## <a name="default-rewards"></a>Výchozí odměny
+## <a name="default-rewards"></a>Výchozí ceny
 
-Pokud neobdrží žádná odměna v rámci [Reward čekací doby](#reward-wait-time), doba trvání od pořadí volání, Personalizer implicitně platí **výchozí Reward** na tuto událost pořadí.
+Pokud v [době čekání](#reward-wait-time)na odměnu nedojde k žádné záměna, doba od volání metody Rank implicitně aplikuje **výchozí odměnu** na tuto událost pořadí.
 
-## <a name="building-up-rewards-with-multiple-factors"></a>Vytváření odměny několika faktory  
+## <a name="building-up-rewards-with-multiple-factors"></a>Sestavování na více faktorech  
 
-Pro efektivní přizpůsobení lze sestavit reward skóre (libovolné číslo od -1 a 1) založené na více faktorech. 
+Pro efektivní přizpůsobení můžete vytvořit skóre odměňování (libovolné číslo od-1 a 1) na základě více faktorů. 
 
-Například můžete použít tato pravidla pro přizpůsobení seznamu obsahu videa:
+Můžete například použít tato pravidla pro přizpůsobení seznamu obsahu videa:
 
-|Chování uživatelů|Částečné skóre hodnota|
+|Chování uživatele|Hodnota částečného skóre|
 |--|--|
-|Uživatel kliknul na horní položku.|+0.5 rewards|
-|Uživatel otevřel skutečný obsah této položky.|+0.3 rewards|
-|Uživatel sledovali vysílání televizní 5 minut obsahu nebo 30 %, podle toho, co je delší.|+0.2 rewards|
+|Uživatel kliknul na nejvyšší položku.|\+ 0,5|
+|Uživatel otevřel skutečný obsah této položky.|\+ 0,3|
+|Uživatel sledoval 5 minut obsahu nebo 30%, podle toho, co je delší.|\+ 0,2|
 |||
 
-Celkový počet reward můžete odešlete do rozhraní API.
+Pak můžete k rozhraní API odeslat celkovou odměnu.
 
-## <a name="calling-the-reward-api-multiple-times"></a>Volání rozhraní API pro potřebu více než jednou.
+## <a name="calling-the-reward-api-multiple-times"></a>Vícenásobné volání rozhraní API pro odměnu
 
-Můžete také volat rozhraní API Reward pomocí stejné ID události odeslání skóre jiný účet. Když Personalizer dostane těchto odměny, určuje konečný reward pro tuto událost na základě agregace je uvedená v nastavení Personalizer.
+Můžete také volat API pro odměnu pomocí stejného ID události, která posílá různé výsledky odměňování. Když aplikace přizpůsobuje tyto odměny, určí konečnou odměnu této události jejich agregací, jak je uvedeno v nastavení přizpůsobení.
 
 Nastavení agregace:
 
-*  **První**: Přijímá první reward skóre přijaté události a zbytek zahodí.
-* **Součet**: Přijímá všechny reward skóre shromážděných pro eventId a přidá je společně.
+*  **První**: Bere v případě, že je pro událost obdrženo první skóre a zahodí zbytek.
+* **Součet**: Vybírá všechny hodnocení bez jakýchkoli motivů pro ID události a přidává je dohromady.
 
-Všechny odměny pro událost, která jsou přijata po **Reward čekací doby**, se zahodí a nemají vliv na trénování modelů.
+Všechny odměny za události, které jsou obdrženy po **dobu čekání**na odměnu, se zahodí a neovlivňují školení modelů.
 
-Součtem reward skóre, může být finální reward vyšší než 1 nebo nižší než -1. To neprovede služby nezdaří.
+Pokud přidáte skóre pro každou měnu, vaše konečná odměna může být vyšší než 1 nebo nižší než-1. Tím nedojde k selhání služby.
 
 <!--
 @edjez - is the number ignored if it is outside the acceptable range?
 -->
 
-## <a name="best-practices-for-calculating-reward-score"></a>Osvědčené postupy pro výpočet skóre rewards
+## <a name="best-practices-for-calculating-reward-score"></a>Osvědčené postupy pro výpočet skóre odměňování
 
-* **Vezměte v úvahu true indikátory úspěšné přizpůsobení**: Je snadné uvažují v rámci kliknutí, ale vhodné reward je založena na to, co chtějí uživatelům *dosáhnout* místo chcete lidem *proveďte*.  Například odměny v kliknutí může vést k výběru obsah, který je clickbait náchylné k chybám.
+* **Vezměte v úvahu pravdivé indikátory úspěšného přizpůsobení**: Můžete se snadno domnívat, že se jedná o kliknutí, ale dobrá výhoda je založená na tom, co chcete, aby uživatelé *měli místo toho* , co chcete, aby mohli *dělat*.  Například odměňování za kliknutí může vést k výběru obsahu, který je clickbait náchylnější.
 
-* **Použití odměny skóre pro jak kvalitní individuálního nastavení spolupráci**: Přizpůsobení návrh film snad výsledkem by uživatel sledování videa a poskytuje tak vysoké hodnocení. Protože hodnocení filmu pravděpodobně závisí na mnoha věcech (kvalita acting nálady uživatele), není dobrý reward signál o tom, dobře *přizpůsobení* pracovali. Uživatel sledování prvních několik minut videa, ale může být signál lepší přizpůsobení efektivitu a odesílání reward 1 po 5 minutách bude lepší signál.
+* **Použijte skóre odměňování pro to, jak dobrá přizpůsobení fungovala**: Přizpůsobení návrhu filmu by vedlo k tomu, že by se snado, že uživatel sleduje film a dává jim vysoké hodnocení. Vzhledem k tomu, že hodnocení filmu pravděpodobně závisí na mnoha věcech (kvalita jednání, nálada uživatele), není dobrým signálem pro to, jak dobře *přizpůsobení* fungovalo. Uživatel sleduje několik prvních minut filmu, ale může to být lepší signál účinnosti přizpůsobení a odeslání odměna 1 až 5 minut bude lepším signálem.
 
-* **Odměny se vztahují jenom na RewardActionID**: Personalizer platí odměny pochopit účinnosti akce určená ve RewardActionID. Pokud se rozhodnete zobrazíte další akce a uživatel klikne na nich potřebu musí být nula.
+* **Ceny se vztahují jenom na RewardActionID**: Přizpůsobování platí pro pochopení účinnosti akce zadané v RewardActionID. Pokud se rozhodnete zobrazit další akce a uživatel na ně klikne, odměna by měla být nulová.
 
-* **Vezměte v úvahu nežádoucí důsledky**: Vytvořit reward funkce, které vést k zodpovědná výsledků při využití [etickými a využívání](ethics-responsible-use.md).
+* **Zvažte nezamýšlené důsledky**: Vytvořte funkce odměňování, které vedou k odpovědným výsledkům s [etickým a odpovědným používáním](ethics-responsible-use.md).
 
-* **Použít přírůstkové odměny**: Přidání částečné odměny pro menší chování uživatelů pomáhá Personalizer dosahování lepší odměny. Tato přírůstkové reward umožňuje algoritmus vědět, že je to stále blíž k zapojení uživatel v poslední požadované chování.
-    * Pokud seznam filmy, se zobrazují, pokud uživatel najede myší první z nich nějakou dobu zobrazíte další informace, můžete určit, že došlo k nějaké zapojení uživatelů. Chování můžete počítat s reward skóre 0,1. 
-    * Pokud uživatel otevře na stránce a potom byla ukončena, může být skóre reward 0.2. 
+* **Použijte přírůstkové ceny**: Přidání částečných odčítání pro menší uživatelské chování pomáhá přizpůsobovat, aby se dosáhlo lepšího zvýšení ceny. Tato přírůstková odměna umožňuje algoritmu poznat, že je přiblížný k uživateli v konečném požadovaném chování.
+    * Pokud se zobrazuje seznam filmů, pokud uživatel po chvíli najede myší na jednu z nich, můžete určit, že došlo k nějakému uživateli – zapojení. Chování se může počítat s skóre pro odměnu 0,1. 
+    * Pokud uživatel stránku otevřel a pak skončil, může být skóre odměňování 0,2. 
 
-## <a name="reward-wait-time"></a>Doba čekání rewards
+## <a name="reward-wait-time"></a>Doba čekání na odměnu
 
-Personalizer bude korelovat informace pořadí volání s odměny poslaná Reward volání pro trénování modelu. Ty můžou pocházet v různých časech. Personalizer čeká po omezenou dobu od pořadí volání se stalo, i v případě, že pořadí volání byla provedena jako neaktivní událost a aktivovat později.
+Přizpůsobování bude korelovat informace o volání pořadí s neprospěchem v souvislosti s voláními na základě počtu volání ke výukě modelu. Můžou se nacházet v různou dobu. Přizpůsobování čeká na omezený čas, počínaje okamžikem, kdy došlo k volání pořadí, i v případě, že bylo volání řazení provedeno jako neaktivní událost a aktivováno později.
 
-Pokud **Reward čekací doby** vyprší platnost a nepřichází žádné informace o odměnu, reward výchozí se použije pro tuto událost pro vzdělávání. Maximální čekací doba je 6 dnů.
+Pokud **Doba čekání** na odměnu vyprší a neexistují žádné informace o záplatcích, použije se pro tuto událost výchozí odměna za školení. Maximální doba čekání je 6 dnů.
 
-## <a name="best-practices-for-setting-reward-wait-time"></a>Osvědčené postupy pro nastavení reward doba čekání
+## <a name="best-practices-for-setting-reward-wait-time"></a>Osvědčené postupy pro nastavení doby čekání na odměnu
 
-Postupujte podle následujících doporučení pro lepší výsledky.
+Pro lepší výsledky použijte tato doporučení.
 
-* Ujistěte se, Reward čekací doby krátký, protože je to možné, ale zároveň je nechává dost času na získání zpětné vazby uživatelů. 
+* Nechte si volnou dobu čekání, jak je to možné, a zároveň nechat dostatek času na získání zpětné vazby od uživatele. 
 
 <!--@Edjez - storage quota? -->
 
-* Neklikejte dobu, po kterou je kratší než čas potřebný k získání zpětné vazby. Například pokud některé z vašich odměny poté, co uživatel má sledovali vysílání televizní 1 minuta videa, experiment by měl být alespoň double, která.
+* Nevybírejte dobu trvání, která je kratší než čas potřebný k získání zpětné vazby. Například pokud se některé z vašich vydaných vašich vydaných z vašich vydaných uživatelů dokončí po zobrazení 1 minuty videa, délka experimentu by měla být aspoň dvojitá.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* [Zpětnovazebnému učení](concepts-reinforcement-learning.md) 
-* [Zkuste pořadí rozhraní API](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Rank/console)
-* [Zkuste účet rozhraní API](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Reward)
+* [Posílení učení](concepts-reinforcement-learning.md) 
+* [Vyzkoušejte rozhraní API pro řazení](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Rank/console)
+* [Vyzkoušejte API pro odměnu](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Reward)

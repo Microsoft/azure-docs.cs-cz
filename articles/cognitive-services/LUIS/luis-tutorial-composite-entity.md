@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 02/19/2019
+ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: 6d54b46ff8b0c8a987653b4fc0344377c0115b58
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 610a7ee677771777c9bd88e5747ff766f284ae3e
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68560090"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68637913"
 ---
 # <a name="tutorial-group-and-extract-related-data"></a>Kurz: Seskupení a extrakce souvisejících dat
 V tomto kurzu přidáte složené entitu seskupit do jedné entity obsahující extrahované data různých typů. Seskupí dat, klientská aplikace snadno extrahovat souvisejících dat v různých datových typů.
@@ -69,11 +69,11 @@ Požadavek Move by měl obsahovat název oddělení a jméno zaměstnance.
 
 Služba LUIS poskytuje několik předem připravených entit pro extrakci běžných dat. 
 
-1. V  horním navigačním panelu vyberte sestavovat a pak v levé navigační nabídce vyberte **entity** .
+1. V horním navigačním panelu vyberte sestavovat a pak v levé navigační nabídce vyberte **entity** .
 
 1. Vyberte tlačítko **Manage prebuilt entity** (Spravovat předem připravenou entitu).
 
-1. V seznamu předem vytvořených entit vyberte **[Person](luis-reference-prebuilt-person.md)** a potom vyberte Hotovo .
+1. V seznamu předem vytvořených entit vyberte **[Person](luis-reference-prebuilt-person.md)** a potom vyberte Hotovo.
 
     ![Snímek obrazovky s vybranou možností number (číslo) v dialogovém okně s předem připravenými entitami](./media/luis-tutorial-composite-entity/add-personname-prebuilt-entity.png)
 
