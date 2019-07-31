@@ -11,26 +11,27 @@ ms.topic: quickstart
 ms.workload: big-data
 ms.custom: mvc seodec18
 ms.date: 07/29/2019
-ms.openlocfilehash: 94402953a7168b6518d0a50f81f75ee63da8c902
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 0a91db15fcf77a936905a68c6b69b507d4e32a78
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68638878"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68677696"
 ---
 # <a name="quickstart-explore-azure-time-series-insights"></a>Rychlý start: Prozkoumat službu Azure Time Series Insights
 
-Tento rychlý Start Azure Time Series Insights Exploreru vám pomůže začít pracovat s Time Series Insights v bezplatném ukázkovém prostředí. Díky tomu se naučíte, jak pomocí webového prohlížeče vizualizovat velké objemy dat IoT a klíčových funkcí, které jsou všeobecně dostupné.
+Tento rychlý Start Azure Time Series Insights Exploreru vám pomůže začít pracovat s Time Series Insights v bezplatném ukázkovém prostředí. V tomto rychlém startu se dozvíte, jak pomocí webového prohlížeče vizualizovat velké objemy dat IoT a klíčových funkcí, které jsou všeobecně dostupné.
 
 Azure Time Series Insights je plně spravovaná služba pro analýzy, ukládání a vizualizace, která usnadňuje zkoumání a analýzy miliard událostí IoT současně. Poskytuje globální přehled o datech, abyste mohli rychle ověřit vaše řešení IoT a vyhnout se nákladným výpadkům důležitých zařízení. Azure Time Series Insights vám pomůže odhalit skryté trendy, odhalit anomálie a provádět analýzy hlavních příčin téměř v reálném čase.
 
 Pro větší flexibilitu můžete přidat Azure Time Series Insights do existující aplikace prostřednictvím svých výkonných [rozhraní REST API](./time-series-insights-update-tsq.md) a [klientské sady SDK](./tutorial-create-tsi-sample-spa.md). Rozhraní API můžete použít k ukládání, dotazování a zpracování dat časových řad v klientské aplikaci podle vašeho výběru. Můžete také použít sadu SDK klienta k přidání součástí uživatelského rozhraní do existující aplikace.
 
-Tento rychlý Start Time Series Insights Exploreru nabízí Průvodce funkcemi, které jsou teď obecně dostupné.
+Tento rychlý Start Time Series Insights Exploreru nabízí Průvodce funkcemi, které jsou všeobecně dostupné.
+
+> [!IMPORTANT]
+> Vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) , pokud jste ho ještě nevytvořili.
 
 ## <a name="prepare-the-demo-environment"></a>Příprava ukázkového prostředí
-
-1. Vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) , pokud jste ho ještě nevytvořili.
 
 1. V prohlížeči přejdete do [ukázky obecné dostupnosti](https://insights.timeseries.azure.com/demo).
 

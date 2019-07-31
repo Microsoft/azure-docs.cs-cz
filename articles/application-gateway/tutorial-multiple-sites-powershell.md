@@ -4,16 +4,16 @@ description: Přečtěte si, jak vytvořit v Azure PowerShellu aplikační brán
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: tutorial
+ms.topic: article
 ms.date: 7/31/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: a936a7f7eff60d5875b917c7957211d70b325e89
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: db2582cada453d95faa91eeeec8dd20b9a82ae6c
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68663108"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68688207"
 ---
 # <a name="create-an-application-gateway-that-hosts-multiple-web-sites-using-azure-powershell"></a>Vytvoření aplikační brány v Azure PowerShellu, která hostuje více webů
 

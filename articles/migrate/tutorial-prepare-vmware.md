@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 07/11/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 286223e091ab0fe8521c29de12e37f5a112240dc
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 993b0249bdcc8e0e54dbe0c222aa2335c3bf8d4a
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68640755"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68679146"
 ---
 # <a name="prepare-vmware-vms-for-assessment-and-migration-to-azure"></a>Příprava virtuálních počítačů VMware pro posouzení a migraci do Azure
 
@@ -102,7 +102,7 @@ Přiřaďte oprávnění přiřazení role ke skupině prostředků, ve které s
 
 ## <a name="prepare-for-vmware-vm-assessment"></a>Příprava na posouzení virtuálních počítačů VMware
 
-K přípravě na posouzení virtuálních počítačů VMware je nutné ověřit hostitele Hyper-V a nastavení virtuálního počítače a ověřit nastavení pro nasazení zařízení.
+K přípravě na vyhodnocení virtuálních počítačů VMware je nutné ověřit hostitele VMware a nastavení virtuálního počítače a ověřit nastavení nasazení zařízení.
 
 ### <a name="verify-vmware-settings"></a>Ověření nastavení VMware
 
@@ -151,7 +151,7 @@ Projděte si požadavky na migraci virtuálních počítačů VMware založenýc
 4. [Přístup k adrese URL](migrate-support-matrix-vmware.md#agent-based-migration-url-access-requirements):
 5. Zkontrolujte požadavky na [přístup k portu](migrate-support-matrix-vmware.md#agent-based-migration-port-requirements) pro službu mobility spuštěnou na každém virtuálním počítači a pro Azure Migrate konfigurační server.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu se naučíte:
  

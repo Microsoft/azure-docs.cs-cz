@@ -4,16 +4,16 @@ description: Přečtěte si, jak vytvořit aplikační bránu a přidat certifik
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: tutorial
+ms.topic: article
 ms.date: 7/31/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 9989f133bcb7a23727aafb4b370f6289c9c98219
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: 70447e01fc248e889662c5ec15cb65b1c0cc4848
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68667352"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68688091"
 ---
 # <a name="create-an-application-gateway-with-ssl-termination-using-azure-powershell"></a>Vytvoření aplikační brány s ukončením protokolu SSL pomocí Azure PowerShellu
 

@@ -3,17 +3,18 @@ title: Zálohování virtuálních počítačů Azure ve velkém měřítku
 description: Současné zálohování několika virtuálních počítačů do Azure
 keywords: virtual machine backup; virtual machine back up; back up vm; backup vm; backup Azure vm; backup and disaster recovery
 author: dcurwin
+manager: carmonm
 ms.author: dacurwin
 ms.date: 01/31/2019
 ms.topic: tutorial
 ms.service: backup
 ms.custom: mvc
-ms.openlocfilehash: 1d57ca7e5a182877565c1add295cb504381dd3e5
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: fa9f13bf4f4e06973f7b9125897366ad53d06857
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639518"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68688437"
 ---
 # <a name="use-azure-portal-to-back-up-multiple-virtual-machines"></a>Zálohování několika virtuálních počítačů pomocí webu Azure Portal
 
@@ -171,7 +172,7 @@ Pokud chcete pokračovat v práci s dalšími kurzy, neprovádějte čištění 
     Po odstranění trezoru se vrátíte k seznamu trezorů služby Recovery Services.
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste pomocí webu Azure Portal provedli následující kroky:
 

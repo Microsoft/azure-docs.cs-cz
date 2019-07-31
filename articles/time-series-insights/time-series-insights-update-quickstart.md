@@ -1,6 +1,6 @@
 ---
 title: 'Rychlý start: Prozkoumejte ukázkové prostředí Azure Time Series Insights Preview | Microsoft Docs'
-description: Pochopte ukázkové prostředí Azure Time Series Insights Preview.
+description: Rychlý Start pro pochopení ukázkového prostředí Azure Time Series Insights Preview
 ms.service: time-series-insights
 services: time-series-insights
 author: ashannon7
@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.workload: big-data
 ms.custom: mvc seodec18
 ms.date: 07/29/2019
-ms.openlocfilehash: 3e93fdc903b8e0d4ee4233e007014bb82ea22b6b
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 3d098b1806e4fdf5b45030dfebf3dfe5959b7d5c
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68638892"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68677712"
 ---
 # <a name="quickstart-explore-the-azure-time-series-insights-preview-demo-environment"></a>Rychlý start: Prozkoumat ukázkové prostředí Azure Time Series Insights Preview
 
@@ -26,11 +26,12 @@ Ukázkové prostředí Time Series Insights Preview obsahuje firmu společnosti 
 
 V tomto rychlém startu se dozvíte, jak pomocí Time Series Insights najít užitečné poznatky v datech společnosti Contoso. K lepšímu odhadu kritických chyb a k provedení údržby se taky provádí krátká hlavní příčina.
 
+> [!IMPORTANT]
+> Vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) Azure, pokud ho nemáte.
+
 ## <a name="explore-the-time-series-insights-explorer-in-a-demo-environment"></a>Prozkoumat Průzkumníka Time Series Insights v ukázkovém prostředí
 
 Průzkumník Preview Time Series Insights ukazuje historická data a hlavní příčiny analýzy. Jak začít:
-
-1. Vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) Azure, pokud ho nemáte.
 
 1. Přejít do ukázkového prostředí [farmy společnosti Contoso Wind](https://insights.timeseries.azure.com/preview/samples)  
 

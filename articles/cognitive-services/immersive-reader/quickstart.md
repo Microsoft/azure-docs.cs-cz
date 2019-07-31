@@ -10,18 +10,18 @@ ms.subservice: immersive-reader
 ms.topic: quickstart
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: 6386c22044483a0ac4a324397cf2f9d22e83b579
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: 978b56f5c38a154c79544c7deb5d49396b1deff9
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68442858"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68688867"
 ---
 # <a name="quickstart-create-a-web-app-that-launches-the-immersive-reader-c"></a>Rychlý start: Vytvoření webové aplikace, která spustí moderní čtečku (C#)
 
 [Moderní čtečka](https://www.onenote.com/learningtools) je celkově navržený nástroj, který implementuje osvědčené techniky pro zlepšení porozumění čtení.
 
-V tomto rychlém startu vytvoříte webovou aplikaci od začátku a integrujete moderní čtečku pomocí sady moderních čtenářů. Kompletní pracovní vzorek tohoto rychlého startu je k dispozici [zde](https://github.com/microsoft/immersive-reader-sdk/tree/master/samples/quickstart-csharp).
+V tomto rychlém startu vytvoříte webovou aplikaci od začátku a integrujete moderní čtečku pomocí sady moderních čtenářů. Kompletní pracovní vzorek tohoto rychlého startu je k dispozici [zde](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/quickstart-csharp).
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
@@ -224,4 +224,4 @@ Po kliknutí na tlačítko "moderní čtečka" se zobrazí moderní čtečka, kt
 ## <a name="next-steps"></a>Další postup
 
 * Podívejte se na [kurz](./tutorial.md) , který vám umožní udělat si další informace, které můžete dělat v sadě moderní čtečky.
-* Prozkoumejte [sadu moderních čtenářů](https://github.com/Microsoft/immersive-reader-sdk) a [referenční materiály k sadě pro moderní čtečku](./reference.md)
+* Prozkoumejte [sadu moderních čtenářů](https://github.com/microsoft/immersive-reader-sdk) a [referenční materiály k sadě pro moderní čtečku](./reference.md)

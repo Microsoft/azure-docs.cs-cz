@@ -34,7 +34,6 @@ sections:
       - items:
           - html: <a href="service/quickstart-run-cloud-notebook">Spuštění experimentu v cloudu</a> (nevyžaduje se žádná instalace)
           - html: <a href="service/quickstart-run-local-notebook">Spuštění experimentu s využitím místního serveru poznámkového bloku</a> (místní instalace SDK)
-          - html: <a href="service/ui-quickstart-run-experiment">Spuštění experimentu ve vizuálním prostředí</a> (bez kódu)
         style: unordered
         type: list
       - text: '<b>Kurz: Klasifikace obrázků dat MNIST s využitím SDK:</b>'

@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Prozkoumejte knihovnu klienta Azure Time Series Insights JavaScript | Microsoft Docs'
-description: Seznamte se s javascriptovou klientskou knihovnou pro službu Azure Time Series Insights a se souvisejícím programovacím modelem.
+description: V tomto kurzu se dozvíte o knihovně klienta Azure Time Series Insights JavaScript a souvisejícím programovacím modelu.
 author: ashannon7
 manager: cshankar
 ms.service: time-series-insights
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/29/2019
 ms.author: dpalled
 ms.custom: seodec18
-ms.openlocfilehash: 1ae37636a2caf108221be2240a9517a547945096
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 2c1013829a7e6e94712e22ae235a47490c8c5eaa
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68638828"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68677666"
 ---
 # <a name="tutorial-explore-the-azure-time-series-insights-javascript-client-library"></a>Kurz: Zkoumání javascriptové klientské knihovny pro službu Azure Time Series Insights
 
@@ -34,9 +34,9 @@ Konkrétně se dozvíte o:
 > * Zdrojové soubory ukázkové aplikace Time Series Insights jsou k dispozici v [úložišti ukázek GitHubu](https://github.com/Microsoft/tsiclient/tree/tutorial/pages/tutorial).
 > * Přečtěte si [referenční dokumentaci Time Series Insights klienta](https://github.com/microsoft/tsiclient/blob/master/docs/API.md).
 
-## <a name="prerequisites"></a>Požadavky
+Zaregistrujte si [bezplatné předplatné Azure](https://azure.microsoft.com/free/) , pokud ho ještě nemáte.
 
-* Zaregistrujte si [bezplatné předplatné Azure](https://azure.microsoft.com/free/) , pokud ho ještě nemáte.
+## <a name="prerequisites"></a>Požadavky
 
 * V tomto kurzu se používá funkce **vývojářské nástroje** vašeho prohlížeče. Moderní webové prohlížeče ([Microsoft Edge](/microsoft-edge/devtools-guide), [Chrome](https://developers.google.com/web/tools/chrome-devtools/), [Firefox](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/What_are_browser_developer_tools), [Safari](https://developer.apple.com/safari/tools/)a další) obvykle poskytují přístup k **zobrazení webové kontroly** přes klávesovou zkratku F12 na klávesnici. Dalším způsobem, jak získat přístup k zobrazení, je kliknout pravým tlačítkem na webovou stránku a pak vybrat **zkontrolovat element**.
 
@@ -46,8 +46,6 @@ V tomto videu zavádíme Open-Source Time Series Insights JavaScript SDK:
 <br /><br />
 
 > [!VIDEO https://www.youtube.com/embed/X8sSm7Pl9aA]
-
-
 
 ## <a name="time-series-insights-sample-application"></a>Ukázková aplikace Time Series Insights
 
@@ -104,7 +102,7 @@ Nejdřív si Podívejme [zdrojový kód HTML a JavaScript](https://github.com/Mi
 
 ## <a name="time-series-insights-javascript-client-library-concepts"></a>Koncepty Time Series Insights JavaScriptu pro klientské knihovny
 
-Klientská knihovna Time Series Insights (*Tsclient. js*) poskytuje abstrakce pro dvě důležité funkce JavaScriptu:
+Klientská knihovna Time Series Insights (*tsiclient. js*) poskytuje abstrakce pro dvě důležité funkce JavaScriptu:
 
 * **Metody obálky pro volání rozhraní API pro Time Series Insights dotazy**: Rozhraní REST API můžete použít k dotazování na data Time Series Insights pomocí agregačních výrazů. Metody jsou uspořádány pod oborem názvů TsiClient. Server knihovny.
 

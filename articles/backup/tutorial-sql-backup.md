@@ -2,17 +2,17 @@
 title: Zálohování databází SQL Server do Azure | Microsoft Docs
 description: V tomto kurzu se dozvíte, jak zálohovat SQL Server do Azure.
 author: dcurwin
-manager: ''
+manager: carmonm
 ms.service: backup
 ms.topic: tutorial
 ms.date: 06/18/2019
 ms.author: dacurwin
-ms.openlocfilehash: 31549ddbc0fbe237b9cca1b2b7a4893bc98abaf9
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: 99e1e8194594d204a5080287794362dbe028a1f5
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68467088"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68688423"
 ---
 # <a name="back-up-sql-server-databases-in-azure-vms"></a>Zálohování databází SQL Serveru ve virtuálních počítačích Azure
 
@@ -182,7 +182,7 @@ Vytvoření zásady zálohování:
    - Musíte spustit úplnou zálohu, protože nemůžete vypnout možnost **úplného zálohování** .
    - Zásadu zobrazíte kliknutím na **úplné zálohování** .
    - Pro každodenní úplné zálohování nemůžete vytvořit rozdílové zálohy.
-   - V poli týdně vyberte den v týdnu, hodinu a časové pásmo při zahájení úlohy zálohování.
+   - Vpoli týdně vyberte den v týdnu, hodinu a časové pásmo při zahájení úlohy zálohování.
 
      ![Nová pole zásad zálohování](./media/backup-azure-sql-database/full-backup-policy.png)  
 

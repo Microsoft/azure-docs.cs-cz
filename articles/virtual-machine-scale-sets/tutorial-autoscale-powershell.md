@@ -16,14 +16,14 @@ ms.topic: tutorial
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 7a592a7d0d8c9d32de83c92b258c4678dc3f8166
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2d743b53f5ca74299c865d381f0832729fc956f4
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60188264"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68677597"
 ---
-# <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-azure-powershell"></a>Kurz: Automatické škálování virtuálního počítače škálovací sady pomocí Azure Powershellu
+# <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-azure-powershell"></a>Kurz: Automatické škálování sady škálování virtuálních počítačů pomocí Azure PowerShell
 
 [!INCLUDE [requires-azurerm](../../includes/requires-azurerm.md)]
 
@@ -75,7 +75,7 @@ Pro toto pravidlo se používají následující parametry:
 | Parametr               | Vysvětlení                                                                                                         | Value          |
 |-------------------------|---------------------------------------------------------------------------------------------------------------------|----------------|
 | *-MetricName*           | Metrika výkonu, která se má monitorovat a na kterou se mají použít akce škálovací sady.                                                   | Procento CPU |
-| *-TimeGrain*            | Četnost shromažďování metrik pro účely analýzy.                                                                   | 1 minuta       |
+| *-TimeGrain*            | Četnost shromažďování metrik pro účely analýzy.                                                                   | 1 minutu       |
 | *-MetricStatistic*      | Definuje způsob agregace shromážděných metrik pro účely analýzy.                                                | Průměr        |
 | *-TimeWindow*           | Doba, která se monitoruje před porovnáním metrik a prahových hodnot.                                   | 5 minut      |
 | *-Operator*             | Operátor sloužící k porovnání dat metriky s prahovou hodnotou.                                                     | Větší než   |
@@ -137,7 +137,7 @@ $myScaleProfile = New-AzureRmAutoscaleProfile `
 ```
 
 
-## <a name="apply-autoscale-rules-to-a-scale-set"></a>Použití pravidel automatického škálování na škálovací sadu
+## <a name="apply-autoscale-profile-to-a-scale-set"></a>Použít profil automatického škálování na sadu škálování
 Posledním krokem je použít profil automatického škálování na vaši škálovací sadu. Vaše škálovací sada pak bude moct horizontálně snížit nebo zvýšit svou kapacitu na základě požadavků na aplikaci. Následujícím způsobem použijte profil automatického škálování pomocí rutiny [Add-AzureRmAutoscaleSetting](/powershell/module/AzureRM.Insights/Add-AzureRmAutoscaleSetting):
 
 ```azurepowershell-interactive
@@ -188,7 +188,7 @@ IpAddress
 52.168.121.216
 ```
 
-Vytvořte vzdálené připojení k první instanci virtuálního počítače. Zadejte vlastní veřejnou IP adresu a číslo portu požadované instance virtuálního počítače uvedené ve výstupech předchozích příkazů. Po zobrazení výzvy zadejte přihlašovací údaje, které jste použili při vytváření škálovací sady (ve výchozím nastavení v ukázkových příkazech je *azureuser* a *P\@ssw0rd!*). Pokud používáte Azure Cloud Shell, proveďte tento krok z příkazového řádku místního PowerShellu nebo klienta Vzdálené plochy. Následující příklad se připojí k instanci virtuálního počítače *0*:
+Vytvořte vzdálené připojení k první instanci virtuálního počítače. Zadejte vlastní veřejnou IP adresu a číslo portu požadované instance virtuálního počítače uvedené ve výstupech předchozích příkazů. Po zobrazení výzvy zadejte přihlašovací údaje, které jste použili při vytváření sady škálování (ve výchozím nastavení v vzorových příkazech jsou *azureuser* a *\@P ssw0rd!* ). Pokud používáte Azure Cloud Shell, proveďte tento krok z příkazového řádku místního PowerShellu nebo klienta Vzdálené plochy. Následující příklad se připojí k instanci virtuálního počítače *0*:
 
 ```powershell
 mstsc /v 52.168.121.216:50001
@@ -197,7 +197,7 @@ mstsc /v 52.168.121.216:50001
 Po přihlášení z hlavního panelu otevřete aplikaci Internet Explorer.
 
 - Výběrem **OK** povolte příkazovému řádku *Použít doporučená nastavení zabezpečení, ochrany osobních údajů a kompatibility*.
-- Do adresního řádku zadejte *http://download.sysinternals.com/files/CPUSTRES.zip*.
+- Do adresního řádku zadejte *http://download.sysinternals.com/files/CPUSTRES.zip* .
 - Vzhledem k tomu, že je zapnutá konfigurace rozšířeného zabezpečení aplikace Internet Explorer, zvolte **Přidat** doménu *http://download.sysinternals.com* na seznam důvěryhodných webů.
 - Po zobrazení výzvy ke stažení souboru vyberte **Otevřít** a pak výběrem **Spustit** spusťte nástroj *CPUSTRES.EXE*.
 

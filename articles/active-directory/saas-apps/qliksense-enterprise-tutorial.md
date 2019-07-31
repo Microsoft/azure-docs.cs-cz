@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory Qlik Sense Enterprise | Dokumentace Microsoftu'
-description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Qlik Sense Enterprise.
+title: 'Kurz: Azure Active Directory integrace s Qlik Sense Enterprise | Microsoft Docs'
+description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Qlikem Enterprise.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -12,297 +12,248 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 12/17/2018
+ms.date: 06/06/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e72ec4f9c512f6525f790d555794c1a120ac07c9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9265a5951ceb7b0cb757e392c2e26aa19bfefd06
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67093423"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68678497"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-qlik-sense-enterprise"></a>Kurz: Integrace Azure Active Directory Qlik Sense Enterprise
+# <a name="tutorial-integrate-qlik-sense-enterprise-with-azure-active-directory"></a>Kurz: Integrace Qlik Sense Enterprise s Azure Active Directory
 
-V tomto kurzu se dozvíte, jak integrovat Qlik Sense organizace Azure Active Directory (Azure AD).
-Qlik Sense podnikové integrace s Azure AD poskytuje následující výhody:
+V tomto kurzu se dozvíte, jak integrovat Qlik Sense Enterprise s Azure Active Directory (Azure AD). Když integrujete Qlikal Enterprise s Azure AD, můžete:
 
-* Můžete řídit ve službě Azure AD, který má přístup k Qlik Sense Enterprise.
-* Uživatelům se automaticky přihlášeni k Qlik Sense Enterprise (Single Sign-On) můžete povolit pomocí jejich účtů služby Azure AD.
-* Můžete spravovat své účty na jediném místě – na webu Azure portal.
+* Řízení ve službě Azure AD, která má přístup k Qlik Sense Enterprise.
+* Umožněte, aby se vaši uživatelé automaticky přihlásili k Qliku společnosti na základě svých účtů Azure AD.
+* Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Konfigurace integrace Azure AD s Qlik Sense Enterprise, budete potřebovat následující položky:
+Chcete-li začít, potřebujete následující položky:
 
-* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat měsíční zkušební verze [zde](https://azure.microsoft.com/pricing/free-trial/)
-* Qlik Sense podnikové jednotné přihlašování povolená předplatného
+* Předplatné služby Azure AD. Pokud předplatné nemáte, můžete získat zdarma [bezplatnou zkušební verzi](https://azure.microsoft.com/pricing/free-trial/).
+* Qlik je povolený podnikový odběr s jednotným přihlašováním (SSO).
 
 ## <a name="scenario-description"></a>Popis scénáře
 
-V tomto kurzu konfigurace a testování v testovacím prostředí Azure AD jednotného přihlašování.
+V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí. Qlik Sense Enterprise podporuje jednotné přihlašování iniciované v rámci **SP** .
 
-* Podporuje Qlik Sense Enterprise **SP** jednotné přihlašování zahájené pomocí
+## <a name="adding-qlik-sense-enterprise-from-the-gallery"></a>Přidání Qlik Sense Enterprise z Galerie
 
-## <a name="adding-qlik-sense-enterprise-from-the-gallery"></a>Přidání organizace Qlik Sense z Galerie
+Pokud chcete nakonfigurovat integraci Qlikho druhu Enterprise do služby Azure AD, musíte do seznamu spravovaných aplikací SaaS přidat Qlik Sense Enterprise z galerie.
 
-Ke konfiguraci integrace Qlik Sense organizace do služby Azure AD, budete muset přidat Qlik Sense Enterprise na váš seznam spravovaných aplikací SaaS z galerie.
-
-**Chcete-li přidat Qlik Sense organizace z galerie, postupujte následovně:**
-
-1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
-
-    ![Tlačítko Azure Active Directory](common/select-azuread.png)
-
-2. Přejděte do **podnikové aplikace** a pak vyberte **všechny aplikace** možnost.
-
-    ![V okně podnikové aplikace](common/enterprise-applications.png)
-
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
-
-    ![Tlačítko nové aplikace](common/add-new-app.png)
-
-4. Do vyhledávacího pole zadejte **Qlik Sense Enterprise**vyberte **Qlik Sense Enterprise** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
-
-     ![Qlik Sense Enterprise v seznamu výsledků](common/search-new-app.png)
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účtu Microsoft.
+1. V levém navigačním podokně vyberte službu **Azure Active Directory** .
+1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace**.
+1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
+1. V části **Přidat z Galerie** do vyhledávacího pole zadejte **Qlik Sense Enterprise** .
+1. Z panelu výsledků vyberte **Qlik Sense Enterprise** a pak přidejte aplikaci. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
 
-V této části, konfigurace a testování Azure AD jednotné přihlašování s Enterprise Qlik Sense podle testovacího uživatele, volá se, **Britta Simon**.
-Pro jednotné přihlašování pro práci je potřeba navázat vztah odkazu mezi uživatele služby Azure AD a související uživatelské v Qlik Sense Enterprise.
+Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí Qlik Sense Enterprise pomocí testovacího uživatele s názvem **Britta Simon**. Aby jednotné přihlašování fungovalo, je potřeba vytvořit vztah propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v Qlik smyslu Enterprise.
 
-Nakonfigurovat a otestovat Azure AD jednotné přihlašování s Qlik Sense organizace, které potřebujete k dokončení následujících stavebních bloků:
+Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí Qlik Sense Enterprise, dokončete následující stavební bloky:
 
-1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
-2. **[Konfigurace Qlik Sense Enterprise Single Sign-On](#configure-qlik-sense-enterprise-single-sign-on)**  – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
+1. **[NAKONFIGURUJTE jednotné přihlašování Azure AD](#configure-azure-ad-sso)** – umožníte uživatelům používat tuto funkci.
+2. **[Nakonfigurujte Qlik Sense Enterprise SSO](#configure-qlik-sense-enterprise-sso)** – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
 3. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
 4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
-5. **[Vytvořit testovacího uživatele Qlik Sense Enterprise](#create-qlik-sense-enterprise-test-user)**  – Pokud chcete mít protějšek Britta Simon v sadě Qlik Sense Enterprise, který je propojený s Azure AD reprezentace uživatele.
-6. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
+5. **[Vytvořte Qlik (Enterprise Test User](#create-qlik-sense-enterprise-test-user)** ), abyste měli protějšek Britta Simon v Qliki Enterprise, který je propojený s reprezentací uživatele Azure AD.
+6. **[Test SSO](#test-sso)** – ověřte, zda konfigurace funguje.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
+### <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování Azure AD
 
-V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure portal.
+Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal.
 
-Ke konfiguraci Azure AD jednotné přihlašování s Qlik Sense organizace, proveďte následující kroky:
+1. V [Azure Portal](https://portal.azure.com/)na stránce věnované integraci **podnikových aplikací Qlik** , najděte část **Správa** a vyberte **jednotné přihlašování**.
+1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu Upravit/pero pro **základní konfiguraci SAML** a upravte nastavení.
 
-1. V [webu Azure portal](https://portal.azure.com/)na **Qlik Sense Enterprise** integrace stránce aplikace vyberte **jednotného přihlašování**.
+   ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
-    ![Nakonfigurovat jednotné přihlašování – odkaz](common/select-sso.png)
+1. Na stránce **základní konfigurace SAML** zadejte hodnoty pro následující pole:
 
-2. Na **vybrat jedinou metodu přihlašování** dialogového okna, vyberte **SAML/WS-Fed** chcete povolit jednotné přihlašování.
-
-    ![Jednotné přihlašování režim výběru](common/select-saml-option.png)
-
-3. Na **nastavte si jednotné přihlašování pomocí SAML** klikněte na **upravit** ikony otevřete **základní konfiguraci SAML** dialogového okna.
-
-    ![Upravit konfiguraci základní SAML](common/edit-urls.png)
-
-4. Na **základní konfiguraci SAML** části, proveďte následující kroky:
-
-    ![Qlik Sense podnikové domény a adresy URL jednotného přihlašování – informace](common/sp-identifier-reply.png)
-
-    a. V **přihlašovací adresa URL** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://<Qlik Sense Fully Qualifed Hostname>:4443/azure/hub`
+    a. V **přihlašovací adresa URL** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://<Fully Qualified Domain Name>:443{/virtualproxyprefix}/hub`
 
     b. V **identifikátor** textového pole zadejte adresu URL pomocí následujícímu vzoru:
 
     | |
     |--|
-    | `https://<Qlik Sense Fully Qualifed Hostname>.qlikpoc.com`|
-    | `https://<Qlik Sense Fully Qualifed Hostname>.qliksense.com`|
+    | `https://<Fully Qualified Domain Name>.qlikpoc.com`|
+    | `https://<Fully Qualified Domain Name>.qliksense.com`|
     | |
 
-    c. V **adresy URL odpovědi** textového pole zadejte adresu URL pomocí následujícímu vzoru:
+    c. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru:
 
-    `https://<Qlik Sense Fully Qualifed Hostname>:4443/samlauthn/`
+    `https://<Fully Qualified Domain Name>:443{/virtualproxyprefix}/samlauthn/`
 
     > [!NOTE]
-    > Tyto hodnoty nejsou skutečný. Tyto hodnoty aktualizovat skutečné přihlašovací adresa URL, identifikátoru a adresa URL odpovědi, které jsou vysvětleny dále v tomto kurzu nebo se obraťte na [tým podpory Qlik Sense Enterprise Client](https://www.qlik.com/us/services/support) k získání těchto hodnot.
+    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty pomocí skutečné přihlašovací adresy URL, identifikátoru a adresy URL odpovědi, které jsou vysvětleny dále v tomto kurzu, nebo se obraťte na [tým podpory Qlik Sense Enterprise Client](https://www.qlik.com/us/services/support) pro získání těchto hodnot. Výchozí port pro adresy URL je 443, ale můžete ho přizpůsobit podle potřeb vaší organizace.
 
-5. Na **nastavte si jednotné přihlašování pomocí SAML** stránku, **podpisový certifikát SAML** klikněte na tlačítko **Stáhnout** ke stažení **kód XML metadat federace**  z se zadanými možnostmi podle vašich požadavků a uložit je ve vašem počítači.
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** Najděte z daných možností **XML federačních metadat** podle vašich požadavků a uložte ho do svého počítače.
 
     ![Odkaz ke stažení certifikátu](common/metadataxml.png)
 
-### <a name="configure-qlik-sense-enterprise-single-sign-on"></a>Konfigurace Qlik Sense Enterprise Single Sign-On
+### <a name="configure-qlik-sense-enterprise-sso"></a>Konfigurace Qlikho podnikového jednotného přihlašování
 
-1. Příprava souboru XML metadat federace tak, aby, který můžete nahrát na server Qlik Sense.
+1. Připravte soubor XML s federačními metadaty, abyste ho mohli nahrát na Qlik Server pro rozpoznávání.
 
     > [!NOTE]
-    > Před nahráním na server Qlik Sense metadat zprostředkovatele identity, musí tento soubor upravit odebrat informace, chcete-li zajistit správnou funkci mezi službami Azure AD a Qlik Sense serveru.
+    > Než nahrajete metadata IdP na server pro rozpoznávání Qlik, je potřeba upravit soubor a odebrat informace, aby se zajistila správná operace mezi Azure AD a serverem pro Qlik rozpoznávání.
 
     ![QlikSense][qs24]
 
-    a. Otevřete soubor FederationMetaData.xml, který jste si stáhli z webu Azure portal v textovém editoru.
+    a. Otevřete soubor FederationMetaData. XML, který jste stáhli z Azure Portal v textovém editoru.
 
-    b. Vyhledejte hodnotu **RoleDescriptor**.  Existují čtyři záznamy (dvě dvojice otevření a zavření značky elementu).
+    b. Vyhledejte hodnotu **RoleDescriptor**.  Existují čtyři položky (dvě dvojice levé a pravé značky elementu).
 
-    c. Odstraňte RoleDescriptor značky a všech informací mezi ze souboru.
+    c. Odstraňte ze souboru značky RoleDescriptor a všechny informace.
 
-    d. Uložte soubor a zachování jejich okolních pro pozdější použití v tomto dokumentu.
+    d. Uložte soubor a nechte ho v jeho blízkosti pro pozdější použití v tomto dokumentu.
 
-2. Přejděte k Qlik Sense Qlik správy konzoly (QMC) jako uživatel, který můžete vytvořit konfigurace virtuálního serveru proxy.
+2. Přejděte do konzoly pro správu Qlik Qlik (QMC) jako uživatel, který může vytvářet konfigurace virtuálních proxy serverů.
 
-3. V QMC, klikněte na **virtuální proxy** položky nabídky.
+3. V QMC klikněte na položku nabídky **virtuální proxy servery** .
 
     ![QlikSense][qs6]
 
-4. V dolní části obrazovky klikněte na tlačítko **vytvořit nový** tlačítko.
+4. V dolní části obrazovky klikněte na tlačítko **vytvořit nové** .
 
     ![QlikSense][qs7]
 
-5. Zobrazí se na obrazovce pro úpravy proxy virtuální.  Na pravé straně obrazovky je nabídka pro zviditelnění možnosti konfigurace.
+5. Zobrazí se obrazovka pro úpravu virtuálního proxy serveru.  Na pravé straně obrazovky je nabídka, která usnadňuje zobrazení možností konfigurace.
 
     ![QlikSense][qs9]
 
-6. Možnost nabídky identifikace zaškrtnuté zadejte identifikační informace pro konfiguraci proxy služby Azure virtual.
+6. Když je zaškrtnutá možnost nabídky identifikace, zadejte identifikační informace pro konfiguraci virtuálního proxy serveru Azure.
 
     ![QlikSense][qs8]  
 
-    a. **Popis** pole je popisný název pro konfiguraci virtuálního proxy serveru.  Zadejte hodnotu pro popis.
+    a. Pole **Popis** je popisný název pro konfiguraci virtuálního proxy serveru.  Zadejte hodnotu pro popis.
 
-    b. **Předpony** pole identifikuje koncový bod virtuální proxy pro připojení k Qlik Sense s Azure AD jednotného přihlašování.  Zadejte jedinečnou předponu názvu pro tento virtuální server proxy.
+    b. V poli Předpona se určuje koncový bod virtuálního proxy serveru pro připojení k Qlik smyslu pomocí jednotného přihlašování služby Azure AD.  Zadejte jedinečný název předpony pro tento virtuální proxy server.
 
-    c. **Časový limit nečinnosti relace (minuty)** je časový limit pro připojení přes tuto virtuální proxy serveru.
+    c. **Časový limit nečinnosti relace (minuty)** je časový limit pro připojení prostřednictvím tohoto virtuálního proxy serveru.
 
-    d. **Název hlavičky souboru cookie relace** je název souboru cookie uložením identifikátor relace pro relaci Qlik Sense uživateli se zobrazí po úspěšném ověření.  Tento název musí být jedinečný.
+    d. **Název hlavičky souboru cookie relace** je název souboru cookie, který ukládá identifikátor relace pro relaci Qlik Sense, kterou uživatel obdrží po úspěšném ověření.  Tento název musí být jedinečný.
 
-7. Klikněte na možnost nabídky ověřování, aby ji viděli.  Zobrazí se obrazovka ověřování.
+7. Klikněte na možnost nabídky ověřování, aby se zobrazila.  Zobrazí se obrazovka ověřování.
 
     ![QlikSense][qs10]
 
-    a. **Anonymní přístup režimu** rozevírací seznam určuje, pokud anonymní uživatelé mohou přistupovat k Qlik Sense přes virtuální proxy serveru.  Výchozí možnost je žádný uživatel anonymní.
+    a. Rozevírací seznam **režim anonymního přístupu** určuje, jestli můžou anonymní uživatelé přistupovat k Qlik smyslu prostřednictvím virtuálního proxy serveru.  Výchozí možnost není anonymní uživatel.
 
-    b. **Metodu ověřování** rozevíracího seznamu určuje schéma ověřování proxy virtuální použije.  Z rozevíracího seznamu vyberte SAML.  Díky tomu se zobrazí další možnosti.
+    b. Rozevírací seznam **metoda ověřování** Určuje schéma ověřování, které bude virtuální proxy server používat.  V rozevíracím seznamu vyberte SAML.  V důsledku toho se zobrazí další možnosti.
 
-    c. V **pole identifikátoru URI hostitele SAML**, zadejte název hostitele uživatele enter zpřístupníte Qlik Sense přes toto virtuální proxy SAML.  Název hostitele je identifikátor uri serveru Qlik Sense.
+    c. Do **pole identifikátor URI hostitele SAML**zadejte název hostitele, který pomocí tohoto virtuálního proxy serveru SAML přistupují k Qlik smyslu.  Název hostitele je identifikátor URI serveru Qlik Sense.
 
-    d. V **SAML entity ID**, zadejte stejnou hodnotu pro pole identifikátoru URI hostitele SAML.
+    d. Do pole **ID entity SAML**zadejte stejnou hodnotu, jakou jste zadali v poli identifikátor URI hostitele SAML.
 
-    e. **Metadat SAML zprostředkovatele identity** je soubor upravovat v **upravit federačních metadat z konfigurace služby Azure AD** oddílu.  **Před nahráním metadat zprostředkovatele identity, je potřeba soubor upravit** odebrat informace, chcete-li zajistit správnou funkci mezi službami Azure AD a Qlik Sense serveru.  **Najdete na výše uvedených pokynů, pokud má soubor ještě upravit.**  Pokud byl upraven soubor klikněte na tlačítko Procházet a vyberte soubor upravený metadat k nahrání do konfigurace virtuálního serveru proxy.
+    e. **Metadata IDP SAML** je soubor upravený dříve v části **Upravit metadata federace z Azure AD Configuration** .  **Před nahráním metadat IDP je potřeba upravit soubor,** aby se odebraly informace, aby se zajistila správná operace mezi Azure AD a serverem Qlik Sense.  **Pokud je soubor ještě upravován, přečtěte si prosím pokyny výše.**  Pokud je soubor upravený, klikněte na tlačítko Procházet a vyberte upravený soubor metadat, který chcete odeslat do konfigurace virtuálního proxy serveru.
 
-    f. Zadejte odkaz na atribut name nebo schéma pro zastoupení SAML atribut **UserID** Azure AD odešle na server Qlik Sense.  Referenční informace o schématu je k dispozici v konfiguraci příspěvek obrazovky aplikace Azure.  Chcete-li použít atribut name, zadejte `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`.
+    f. Zadejte název atributu nebo odkaz na schéma pro atribut SAML představující **ID uživatele** Azure AD, který je odesílán na Qlik Server pro rozpoznávání.  Referenční informace schématu jsou k dispozici na stránce Azure App screens po konfiguraci.  Chcete-li použít atribut Name, `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`zadejte.
 
-    g. Zadejte hodnotu **adresář uživatele** pro uživatele, který bude připojen v při ověřování Qlik Sense server prostřednictvím služby Azure AD.  Pevně zakódované hodnoty musí být uzavřeny do **hranaté závorky []** .  Pokud chcete použít atribut poslaná kontrolní výraz Azure AD SAML, zadejte název atributu do tohoto textového pole **bez** hranaté závorky.
+    g. Zadejte hodnotu pro **adresář uživatele** , který se připojí uživatelům při ověřování k serveru Qlik Sense prostřednictvím služby Azure AD.  Hodnoty pevně zakódované musí být obklopeny **hranatými závorkami []** .  Pokud chcete použít atribut odeslaný v kontrolním výrazu SAML služby Azure AD, zadejte název atributu do tohoto textového pole **bez** hranatých závorek.
 
-    h. **Podpisový algoritmus SAML** nastaví certifikát služby zprostředkovatele (v tomto případě Qlik Sense serveru), podepisování pro konfiguraci virtuálního proxy serveru.  Pokud server Qlik Sense používá důvěryhodný certifikát vytvořený pomocí Microsoft Enhanced RSA a AES Cryptographic Provider, změňte podpisový algoritmus SAML **SHA-256**.
+    h. **Podpisový algoritmus SAML** nastaví poskytovatele služeb (v tomto případě Qlik Server pro rozpoznávání certifikátů) pro konfiguraci virtuálního proxy serveru.  Pokud server Qlik Sense používá důvěryhodný certifikát vygenerovaný pomocí rozšířených zprostředkovatelů šifrování RSA a AES společnosti Microsoft, změňte podpisový algoritmus SAML na **SHA-256**.
 
-    i. Mapování oddílu SAML atribut umožňuje další atributy, jako jsou skupiny k odeslání do Qlik Sense pro použití v pravidlech zabezpečení.
+    i. Oddíl mapování atributů SAML umožňuje, aby se pro použití v pravidlech zabezpečení odesílaly další atributy, jako jsou skupiny, které se mají odeslat Qlik smyslu.
 
-8. Klikněte na **Vyrovnávání zatížení** možnost nabídky, aby byla viditelná.  Zobrazí se obrazovka Vyrovnávání zatížení.
+8. Klikněte na možnost nabídky vyrovnávání **zatížení** , aby se zobrazila.  Zobrazí se obrazovka vyrovnávání zatížení.
 
     ![QlikSense][qs11]
 
-9. Klikněte na **přidat nový uzel serveru** tlačítka, vyberte modul uzel nebo uzly Qlik Sense relace pro účely Vyrovnávání zatížení a klikněte na tlačítko pošle **přidat** tlačítko.
+9. Klikněte na tlačítko **Přidat nový uzel serveru** , vyberte uzel modulu nebo uzly Qlik smysl budou odesílat relace pro účely vyrovnávání zatížení a klikněte na tlačítko **Přidat** .
 
     ![QlikSense][qs12]
 
-10. Klikněte na možnost rozšířené nabídky a aktivujte ji. Pokročilé obrazovka se zobrazí.
+10. Klikněte na možnost Upřesnit nabídku a nastavte ji jako viditelnou. Zobrazí se obrazovka Upřesnit.
 
     ![QlikSense][qs13]
 
-    Prázdný seznam hostitele určuje názvy hostitelů, které přijímá při připojování k serveru Qlik Sense.  **Zadejte název hostitele, které budou uživatelé zadávat při připojování k serveru Qlik Sense.** Název hostitele se stejnou hodnotu jako identifikátoru uri hostitele SAML bez https://.
+    Seznam povolených hostitelů identifikuje názvy hostitelů, které jsou přijaty při připojování k serveru Qlik Sense.  **Zadejte název hostitele, který budou uživatelé zadávat při připojování k serveru Qlik Sense.** Název hostitele má stejnou hodnotu jako identifikátor URI hostitele SAML bez https://.
 
-11. Klikněte na tlačítko **použít** tlačítko.
+11. Klikněte na tlačítko **použít** .
 
     ![QlikSense][qs14]
 
-12. Klikněte na tlačítko OK potvrďte zprávu upozornění oznamující proxy propojené s virtuální proxy server se restartuje.
+12. Kliknutím na OK potvrďte, že se restartuje zpráva s upozorněním, že jsou stavy proxy spojené s virtuálním proxy serverem.
 
     ![QlikSense][qs15]
 
-13. Na pravé straně obrazovky zobrazí se nabídka přidružené položky.  Klikněte na **proxy** nabídky.
+13. Na pravé straně obrazovky se zobrazí nabídka přidružené položky.  Klikněte na možnost nabídky **proxy** .
 
     ![QlikSense][qs16]
 
-14. Zobrazí se obrazovka proxy serveru.  Klikněte na tlačítko **odkaz** tlačítko v dolní části můžete propojit virtuální proxy serveru proxy.
+14. Zobrazí se obrazovka proxy serveru.  Kliknutím na tlačítko **odkaz** v dolní části propojíte proxy server s virtuálním proxy serverem.
 
     ![QlikSense][qs17]
 
-15. Vyberte uzel proxy server, který bude podporovat toto připojení virtuální proxy serveru a klikněte na tlačítko **odkaz** tlačítko.  Po propojení, budou uvedeny proxy pod přidružené servery proxy.
+15. Vyberte uzel proxy, který bude podporovat toto připojení k virtuálnímu proxy serveru, a klikněte na tlačítko **odkaz** .  Po propojování se proxy server zobrazí v části přidružené proxy servery.
 
     ![QlikSense][qs18]
   
     ![QlikSense][qs19]
 
-16. Po přibližně pět až deset sekund zobrazí se zpráva QMC aktualizovat.  Klikněte na tlačítko **aktualizovat QMC** tlačítko.
+16. Po asi pěti až deseti sekundách se zobrazí zpráva QMC aktualizace.  Klikněte na tlačítko **aktualizovat qmc** .
 
     ![QlikSense][qs20]
 
-17. Když se aktualizuje QMC, klikněte na **virtuální proxy** položky nabídky. Nová položka virtuální proxy SAML je uveden v tabulce na obrazovce.  Jediným kliknutím na položku virtuální proxy.
+17. Po aktualizaci QMC klikněte na položku nabídky **virtuální proxy servery** . Nová položka virtuálního proxy serveru SAML je uvedena v tabulce na obrazovce.  Jediným kliknutím na položku virtuálního proxy serveru.
 
     ![QlikSense][qs51]
 
-18. V dolní části obrazovky se budou aktivovat tlačítko Stáhnout SP metadat.  Klikněte na tlačítko **SP stáhnout metadata** tlačítko Uložit metadata do souboru.
+18. V dolní části obrazovky se aktivuje tlačítko Stáhnout metadata SP.  Kliknutím na tlačítko **Stáhnout metadata SP** uložte metadata do souboru.
 
     ![QlikSense][qs52]
 
-19. Otevření souboru sp metadat.  Podívejte se **entityID** položku a **AssertionConsumerService** položka.  Tyto hodnoty odpovídají **identifikátor**, **přihlašovací adresa URL** a **adresy URL odpovědi** v konfiguraci aplikace Azure AD. Vložte tyto hodnoty **Qlik Sense podnikové domény a adresy URL** části v konfiguraci Azure AD aplikace, pokud tyto neodpovídají, pak byste měli vyměnit v Průvodci konfigurací aplikací Azure AD.
+19. Otevřete soubor metadat SP.  Sledujte položku **entityID** a položku **AssertionConsumerService** .  Tyto hodnoty jsou ekvivalentní identifikátoru, **přihlašovací adrese URL** a **adrese URL odpovědi** v konfiguraci aplikace Azure AD. Tyto hodnoty vložte v části **Qlik Sense Enterprise doména a adresy URL** v konfiguraci aplikace Azure AD, pokud se neshodují, a pak je nahraďte v průvodci konfigurací aplikace Azure AD.
 
     ![QlikSense][qs53]
 
-### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD 
+### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
 
-Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
+V této části vytvoříte testovacího uživatele v Azure Portal s názvem Britta Simon.
 
-1. Na webu Azure Portal, v levém podokně vyberte **Azure Active Directory**vyberte **uživatelé**a pak vyberte **všichni uživatelé**.
-
-    !["Uživatele a skupiny" a "Všechny uživatele" odkazy](common/users.png)
-
-2. Vyberte **nového uživatele** v horní části obrazovky.
-
-    ![Tlačítko Nový uživatel](common/new-user.png)
-
-3. Ve vlastnosti uživatele proveďte následující kroky.
-
-    ![Dialogové okno uživatele](common/user-properties.png)
-
-    a. V **název** zadat **BrittaSimon**.
-  
-    b. V **uživatelské jméno** typ pole **brittasimon\@yourcompanydomain.extension**  
-    Například BrittaSimon@contoso.com.
-
-    c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.
-
-    d. Klikněte na možnost **Vytvořit**.
+1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. Vyberte **nového uživatele** v horní části obrazovky.
+1. Ve vlastnostech **uživatele** proveďte následující kroky:
+   1. Do pole **Název** zadejte `Britta Simon`.  
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `BrittaSimon@contoso.com`.
+   1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
+   1. Klikněte na možnost **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
-V této části je povolit Britta Simon používat jednotné přihlašování Azure tím, že uděluje přístup do firemní sítě Qlik Sense.
+V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k Qliki Enterprise.
 
-1. Na webu Azure Portal, vyberte **podnikové aplikace**vyberte **všechny aplikace**a pak vyberte **Qlik Sense Enterprise**.
+1. V Azure Portal vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. V seznamu aplikace vyberte **Qlik Sense Enterprise**.
+1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
 
-    ![Okno aplikace organizace](common/enterprise-applications.png)
+   ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
 
-2. V seznamu aplikace zadejte a vyberte **Qlik Sense Enterprise**.
+1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
-    ![Odkaz Qlik Sense Enterprise v seznamu aplikací](common/all-applications.png)
+    ![Odkaz Přidat uživatele](common/add-assign-user.png)
 
-3. V nabídce na levé straně vyberte **uživatelů a skupin**.
-
-    ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
-
-4. Klikněte na tlačítko **přidat uživatele** tlačítko a pak vyberte **uživatelů a skupin** v **přidat přiřazení** dialogového okna.
-
-    ![Podokno Přidat přiřazení](common/add-assign-user.png)
-
-5. V **uživatelů a skupin** dialogové okno Vybrat **Britta Simon** v seznamu uživatelů, klikněte **vyberte** tlačítko v dolní části obrazovky.
-
-6. Pokud očekáváte libovolnou hodnotu role v kontrolní výraz SAML a potom v **vybrat roli** dialogové okno vybrat vhodnou roli pro uživatele ze seznamu, klikněte **vyberte** tlačítko v dolní části obrazovky.
-
-7. V **přidat přiřazení** dialogové okno kliknutím **přiřadit** tlačítko.
+1. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelů položku **Britta Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+1. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+1. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
 
 ### <a name="create-qlik-sense-enterprise-test-user"></a>Vytvořit testovacího uživatele Qlik Sense Enterprise
 
-V této části vytvořte uživatele Britta Simon v Qlik Sense Enterprise. Práce s [tým podpory Qlik Sense Enterprise](https://www.qlik.com/us/services/support) přidat uživatele na platformě Qlik Sense Enterprise. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
+V této části vytvoříte uživatele s názvem Britta Simon v Qliku Enterprise. Pokud chcete přidat uživatele na platformě Qlik Sense Enterprise, pracujte s [týmem Qlik Sense Enterprise support](https://www.qlik.com/us/services/support) . Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
+### <a name="test-sso"></a>Test SSO
 
-V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
-
-Po kliknutí na dlaždici Qlik Sense Enterprise na přístupovém panelu, můžete by měl být automaticky přihlášeni k Enterprise Qlik Sense, u kterého nastavíte jednotné přihlašování. Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když na přístupovém panelu vyberete dlaždici Qlik Sense Enterprise, měli byste být automaticky přihlášeni ke Qlik, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Další prostředky
 
@@ -333,4 +284,3 @@ Po kliknutí na dlaždici Qlik Sense Enterprise na přístupovém panelu, může
 [qs51]: ./media/qliksense-enterprise-tutorial/tutorial_qliksenseenterprise_51.png
 [qs52]: ./media/qliksense-enterprise-tutorial/tutorial_qliksenseenterprise_52.png
 [qs53]: ./media/qliksense-enterprise-tutorial/tutorial_qliksenseenterprise_53.png
-

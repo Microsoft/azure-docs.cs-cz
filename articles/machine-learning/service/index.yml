@@ -36,7 +36,6 @@ sections:
         items:
           - html: <a href="quickstart-run-cloud-notebook">Spuštění experimentu v cloudu</a> (nevyžaduje se žádná instalace)
           - html: <a href="quickstart-run-local-notebook">Spuštění experimentu s využitím místního serveru poznámkového bloku</a> (místní instalace SDK)
-          - html: <a href="ui-quickstart-run-experiment">Příprava a vizualizace dat bez psaní kódu</a> ve vizuálním rozhraní
   - title: Podrobné kurzy
     items:
       - type: paragraph

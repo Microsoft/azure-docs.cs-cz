@@ -24,11 +24,6 @@
         - name: Spuštění experimentu v místním prostředí
           displayName: 'workspace, install, sdk'
           href: quickstart-run-local-notebook.md
-    - name: Vizuální rozhraní
-      items:
-        - name: Příprava a vizualizace dat
-          displayName: experiment drag-and-drop
-          href: ui-quickstart-run-experiment.md
 - name: Kurzy
   items:
     - name: Python SDK
