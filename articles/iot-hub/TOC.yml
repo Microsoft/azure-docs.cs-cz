@@ -91,6 +91,8 @@
       href: iot-hub-scaling.md
     - name: Vysoká dostupnost a zotavení po havárii
       href: iot-hub-ha-dr.md
+    - name: Vysvětlení IP adresy centra IoT
+      href: iot-hub-understand-ip-address.md
     - name: Podpora dalších protokolů
       href: iot-hub-protocol-gateway.md
     - name: Porovnání směrování událostí a zpráv

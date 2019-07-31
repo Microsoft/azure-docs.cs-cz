@@ -526,6 +526,8 @@
           href: create-shared-self-hosted-integration-runtime-powershell.md
     - name: Spouštění balíčků služby SSIS v Azure
       items:
+        - name: Spouštění balíčků služby SSIS v Azure z SSDT
+          href: how-to-invoke-ssis-package-ssdt.md
         - name: Spouštění balíčků služby SSIS s aktivitami spuštění balíčku SSIS
           href: how-to-invoke-ssis-package-ssis-activity.md
         - name: Spouštění balíčků služby SSIS s aktivitami uložených procedur

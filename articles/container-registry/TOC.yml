@@ -105,8 +105,14 @@
           href: container-registry-tasks-multi-step.md
         - name: Sestavení image s využitím Buildpacks (Preview)
           href: container-registry-tasks-pack-build.md
-        - name: Použití s využitím spravované identity
-          href: container-registry-tasks-authentication-managed-identity.md
+        - name: Přístup k zabezpečeným prostředkům pomocí spravovaných identit
+          items:
+            - name: Povolení spravované identity v úloze
+              href: container-registry-tasks-authentication-managed-identity.md
+            - name: Ověřování z úlohy napříč registry
+              href: container-registry-tasks-cross-registry-authentication.md
+            - name: Externí ověřování s využitím trezoru klíčů
+              href: container-registry-tasks-authentication-key-vault.md
     - name: Registry a další služby Azure
       items:
         - name: Azure Container Instances

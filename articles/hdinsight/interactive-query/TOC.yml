@@ -22,6 +22,12 @@
     - name: Plánování kapacity
       href: ../hdinsight-capacity-planning.md
       maintainContext: true
+    - name: Řešení potíží
+      items:
+        - name: Výjimka OutOfMemoryError
+          items:
+            - name: Překročení limitu režie GC
+              href: ./interactive-query-troubleshoot-outofmemory-overhead-exceeded.md
 - name: Postup
   items:
     - name: Migrace úloh Hive na HDInsight 4.0

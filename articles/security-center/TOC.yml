@@ -75,8 +75,6 @@
       href: security-center-provide-security-contact-details.md
     - name: Cenová úroveň
       href: security-center-pricing.md
-    - name: Konfigurace zabezpečení
-      href: security-center-customize-os-security-config.md
     - name: Viditelnost v rámci celého tenanta
       href: security-center-management-groups.md
     - name: Implementace doporučení pro zabezpečení
@@ -183,6 +181,8 @@
           href: security-center-alerts-type.md
         - name: UEBA pro uživatele a prostředky Azure
           href: security-center-ueba-mcas.md
+        - name: Přizpůsobení konfigurací zabezpečení
+          href: security-center-customize-os-security-config.md
 - name: Referenční informace
   items:
     - name: Rozhraní REST API

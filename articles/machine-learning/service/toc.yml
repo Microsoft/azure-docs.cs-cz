@@ -33,6 +33,12 @@
   items:
     - name: Python SDK
       items:
+        - name: Vytvoření prvního experimentu ML
+          items:
+            - name: 1. Nastavení pracovního prostoru a vývojového prostředí
+              href: tutorial-1st-experiment-sdk-setup.md
+            - name: 2. Trénování prvního modelu
+              href: tutorial-1st-experiment-sdk-train.md
         - name: Klasifikace obrázků (data MNIST)
           items:
             - name: 1. Učení modelu
