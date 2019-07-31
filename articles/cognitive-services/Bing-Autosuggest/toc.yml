@@ -74,6 +74,7 @@
     - name: Podpora jazyků a oblastí
       href: language-support.md
     - name: Analýzy pro rozhraní API pro automatické návrhy Bingu
-      href: bing-autosuggest-stats.md
+      maintainContext: true
+      href: ../bing-web-search/bing-web-stats.md
     - name: Dodržování předpisů
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'

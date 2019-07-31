@@ -231,7 +231,9 @@
           href: cognitive-search-resources-documentation.md
     - name: Knowledge Store (Preview)
       items:
-        - name: Jak začít
+        - name: Připojení s využitím Power BI
+          href: knowledge-store-connect-powerbi.md
+        - name: Vytvoření s využitím architektury REST a Postman
           href: knowledge-store-howto.md
     - name: Dotazování dat
       items:

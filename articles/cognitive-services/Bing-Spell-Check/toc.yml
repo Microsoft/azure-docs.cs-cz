@@ -70,7 +70,8 @@
 - name: Zdroje a prostředky
   items:
     - name: Analýzy pro rozhraní API pro kontrolu pravopisu Bingu
-      href: bing-spell-check-stats.md
+      maintainContext: true
+      href: ../bing-web-search/bing-web-stats.md
     - name: Podpora jazyků a oblastí
       href: language-support.md
     - name: Ceny

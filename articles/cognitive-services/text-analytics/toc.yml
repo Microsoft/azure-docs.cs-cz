@@ -7,6 +7,8 @@
       href: overview.md
     - name: Ukázkové uživatelské scénáře
       href: text-analytics-user-scenarios.md
+    - name: Co je nového
+      href: whats-new.md
 - name: Šablony Rychlý start
   expanded: true
   items:
