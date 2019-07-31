@@ -52,7 +52,8 @@
     - name: Využití přehledů Bingu
       href: bing-insights-usage.md
     - name: Analýzy pro rozhraní API pro vizuální vyhledávání
-      href: bing-visual-search-stats.md
+      maintainContext: true
+      href: ../bing-web-search/bing-web-stats.md
 - name: Návody
   items:
     - name: Získání přehledů s využitím tokenu

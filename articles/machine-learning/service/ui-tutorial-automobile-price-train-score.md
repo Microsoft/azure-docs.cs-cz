@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 07/21/2019
-ms.openlocfilehash: 09d81e281b92b662572cefc220f2227651b69838
-ms.sourcegitcommit: 83a89c45253b0d432ce8dcd70084c18e9930b1fd
+ms.openlocfilehash: b0d227b71677db1d6b4ce8386b02cf957ca259f7
+ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68371732"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68668414"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-visual-interface"></a>Kurz: Předpověď ceny automobilu pomocí vizuálního rozhraní
 
@@ -93,9 +93,7 @@ Machine Learning závisí na datech. Donovanovo je v tomto rozhraní k dispozici
 
 ## <a name="run-the-experiment"></a>Spusťte experiment.
 
-V každém okamžiku klikněte na výstupní port datové sady nebo modulu, abyste viděli, jak data v tomto okamžiku v toku dat vypadají. Pokud je  možnost vizualizace zakázaná, musíte nejdřív spustit experiment.
-
-Experiment běží na výpočetním cíli, což je výpočetní prostředek, který je připojený k vašemu pracovnímu prostoru. Jakmile vytvoříte cílový výpočetní výkon, můžete ho znovu použít pro budoucí spuštění.
+V každém okamžiku klikněte na výstupní port datové sady nebo modulu, abyste viděli, jak data v tomto okamžiku v toku dat vypadají. Pokud je možnost vizualizace zakázaná, musíte nejdřív spustit experiment.
 
 [!INCLUDE [aml-ui-create-training-compute](../../../includes/aml-ui-create-training-compute.md)]
 
@@ -112,7 +110,7 @@ Teď, když jste spustili svůj úvodní experiment, můžete vizualizovat data 
 
     V této datové sadě každý řádek představuje automobil a proměnné přidružené k jednotlivým automobilům se zobrazí jako sloupce. V této datové sadě jsou 205 řádky a 26 sloupců.
 
-     Pokaždé, když kliknete na sloupec dat,  zobrazí se vlevo obrázek informace o statistice a **vizualizaci** daného sloupce. Když například kliknete na **Počet dvířek** , které vidíte, má dvě jedinečné hodnoty a dvě chybějící hodnoty. Posuňte se dolů a zobrazte hodnoty: dvě a čtyři dveře.
+     Pokaždé, když kliknete na sloupec dat, zobrazí se vlevo obrázek informace o statistice a **vizualizaci** daného sloupce. Když například kliknete na **Počet dvířek** , které vidíte, má dvě jedinečné hodnoty a dvě chybějící hodnoty. Posuňte se dolů a zobrazte hodnoty: dvě a čtyři dveře.
 
      ![Náhled dat](./media/ui-tutorial-automobile-price-train-score/preview-data.gif)
 

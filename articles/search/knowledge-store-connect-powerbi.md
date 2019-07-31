@@ -8,12 +8,12 @@ ms.devlang: NA
 ms.topic: tutorial
 ms.date: 07/30/2019
 ms.author: heidist
-ms.openlocfilehash: dd1e42b590127362441c99a19e612ddf42bdfa63
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 04b04e8080590aa6e9fe1c17369e83fa5bb6b894
+ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/30/2019
-ms.locfileid: "68641171"
+ms.locfileid: "68668221"
 ---
 # <a name="create-an-azure-search-knowledge-store-and-connect-using-power-bi"></a>Vytvoření Azure Search znalostní báze Knowledge Store a připojení pomocí Power BI
 
@@ -171,7 +171,7 @@ Vytvořte nové kontejnery ve službě Azure Blob Storage a nahrajte všechny so
 | Úroveň Free   | [HotelReviews_Free. csv](https://knowledgestoredemo.blob.core.windows.net/hotel-reviews/HotelReviews_Free.csv?st=2019-07-29T17%3A51%3A30Z&se=2021-07-30T17%3A51%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=LnWLXqFkPNeuuMgnohiz3jfW4ijePeT5m2SiQDdwDaQ%3D) |
 | Malé (500 záznamů) | [HotelReviews_Small. csv](https://knowledgestoredemo.blob.core.windows.net/hotel-reviews/HotelReviews_Small.csv?st=2019-07-29T17%3A51%3A30Z&se=2021-07-30T17%3A51%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=LnWLXqFkPNeuuMgnohiz3jfW4ijePeT5m2SiQDdwDaQ%3D) |
 | Střední (6000 záznamů)| [HotelReviews_Medium. csv](https://knowledgestoredemo.blob.core.windows.net/hotel-reviews/HotelReviews_Medium.csv?st=2019-07-29T17%3A51%3A30Z&se=2021-07-30T17%3A51%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=LnWLXqFkPNeuuMgnohiz3jfW4ijePeT5m2SiQDdwDaQ%3D)
-| Velký (úplný záznam datové sady 35000) | [HotelReviews_Large. csv](https://knowledgestoredemo.blob.core.windows.net/hotel-reviews/HotelReviews_Large.csv?st=2019-07-29T17%3A51%3A30Z&se=2021-07-30T17%3A51%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=LnWLXqFkPNeuuMgnohiz3jfW4ijePeT5m2SiQDdwDaQ%3D)|
+| Velký (úplný záznam datové sady 35000) | [HotelReviews_Large. csv](https://knowledgestoredemo.blob.core.windows.net/hotel-reviews/HotelReviews_Large.csv?st=2019-07-29T17%3A51%3A30Z&se=2021-07-30T17%3A51%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=LnWLXqFkPNeuuMgnohiz3jfW4ijePeT5m2SiQDdwDaQ%3D). Mějte na paměti, že zpracování velkých datových sad je náročné na zpracování. Tato jedna cena zhruba $1000. S dolarů.|
 
 V kroku průvodce pro rozšíření připojte Fakturovatelné [Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) prostředek vytvořený na úrovni *S0* ve stejné oblasti jako Azure Search pro použití větších datových sad. 
 

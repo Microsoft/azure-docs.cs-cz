@@ -5,19 +5,19 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: tutorial
-ms.date: 5/20/2019
+ms.date: 07/31/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: caf82fdab8a841e5c49616a40216a788d877a81b
-ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
+ms.openlocfilehash: 00be168f36ba8016167d2ea004c1093295c0b8e9
+ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67501964"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68667372"
 ---
-# <a name="create-an-application-gateway-that-hosts-multiple-web-sites-using-the-azure-cli"></a>Vytvoření služby application gateway, který je hostitelem více webů pomocí Azure CLI
+# <a name="create-an-application-gateway-that-hosts-multiple-web-sites-using-the-azure-cli"></a>Vytvoření aplikační brány, která hostuje několik webů pomocí Azure CLI
 
-Při vytvoření [aplikační brány](multiple-site-overview.md) můžete Azure CLI použít ke [konfiguraci hostování více webů](overview.md). V tomto článku definujte fondy adres back-end pomocí škálovací sady virtuálních počítačů. Pak na základě domén, které vám patří, nakonfigurujete naslouchací procesy a pravidla, aby se webový provoz přesměroval na příslušné servery ve fondech. Tento článek předpokládá, že jste vlastníkem více domén a používá příklady *www\.contoso.com* a *www\.fabrikam.com*.
+Při vytvoření [aplikační brány](multiple-site-overview.md) můžete Azure CLI použít ke [konfiguraci hostování více webů](overview.md). V tomto článku definujete fondy back-end adres pomocí sad škálování virtuálních počítačů. Pak na základě domén, které vám patří, nakonfigurujete naslouchací procesy a pravidla, aby se webový provoz přesměroval na příslušné servery ve fondech. V tomto článku se předpokládá, že vlastníte více domén a používáte příklady *webových\.contoso.com* a *www\.Fabrikam.com*.
 
 V tomto článku získáte informace o těchto tématech:
 
@@ -31,13 +31,13 @@ V tomto článku získáte informace o těchto tématech:
 
 ![Příklad směrování na více webů](./media/tutorial-multiple-sites-cli/scenario.png)
 
-Pokud dáváte přednost, můžete absolvovat s použitím tohoto postupu [prostředí Azure PowerShell](tutorial-multiple-sites-powershell.md).
+Pokud budete chtít, můžete tento postup dokončit pomocí [Azure PowerShell](tutorial-multiple-sites-powershell.md).
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít rozhraní příkazového řádku Azure ve verzi 2.0.4 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli).
+Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít spuštěnou verzi Azure CLI 2.0.4 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli).
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
@@ -70,7 +70,9 @@ az network vnet subnet create \
 
 az network public-ip create \
   --resource-group myResourceGroupAG \
-  --name myAGPublicIPAddress
+  --name myAGPublicIPAddress \
+  --allocation-method Static \
+  --sku Standard
 ```
 
 ## <a name="create-the-application-gateway"></a>Vytvoření služby Application Gateway
@@ -85,7 +87,7 @@ az network application-gateway create \
   --vnet-name myVNet \
   --subnet myAGsubnet \
   --capacity 2 \
-  --sku Standard_Medium \
+  --sku Standard_v2 \
   --http-settings-cookie-based-affinity Disabled \
   --frontend-port 80 \
   --http-settings-port 80 \
@@ -103,7 +105,7 @@ Vytvoření aplikační brány může trvat několik minut. Po vytvoření aplik
 
 ### <a name="add-the-backend-pools"></a>Přidání back-endových fondů
 
-Přidat back-endové fondy, které jsou potřeba tak, aby obsahovala servery back-end pomocí [vytvořit az network application-gateway fondu adres](/cli/azure/network/application-gateway/address-pool#az-network-application-gateway-address-pool-create)
+Přidejte back-end fondy, které jsou potřeba k tomu, aby obsahovaly servery back-end, pomocí [AZ Network Application-Gateway Address-Pool Create](/cli/azure/network/application-gateway/address-pool#az-network-application-gateway-address-pool-create) .
 ```azurecli-interactive
 az network application-gateway address-pool create \
   --gateway-name myAppGateway \
@@ -140,9 +142,9 @@ az network application-gateway http-listener create \
 
 ### <a name="add-routing-rules"></a>Přidání pravidel směrování
 
-Pravidla se zpracovávají v pořadí, v kterém jsou uvedena, a provoz se směruje pomocí prvního odpovídajícího pravidla bez ohledu na specifickou podobu. Pokud máte například na stejném portu pravidlo založené na základním naslouchacím procesu a pravidlo založené na naslouchacím procesu pro více webů, musí být pravidlo s naslouchacím procesem pro více webů uvedeno před pravidlem se základním naslouchacím procesem, aby fungovalo podle očekávání. 
+Pravidla se zpracovávají v pořadí, v jakém jsou uvedena. Provoz se přesměruje pomocí prvního pravidla, které odpovídá bez ohledu na specifičnost. Pokud máte například na stejném portu pravidlo založené na základním naslouchacím procesu a pravidlo založené na naslouchacím procesu pro více webů, musí být pravidlo s naslouchacím procesem pro více webů uvedeno před pravidlem se základním naslouchacím procesem, aby fungovalo podle očekávání. 
 
-V tomto příkladu vytvoříte dvě nová pravidla a odstraníte výchozí pravidlo, které se vytvořilo při vytvoření aplikační brány. Pravidlo přidáte příkazem [az network application-gateway rule create](/cli/azure/network/application-gateway/rule#az-network-application-gateway-rule-create).
+V tomto příkladu vytvoříte dvě nová pravidla a odstraníte výchozí pravidlo vytvořené při nasazení aplikační brány. Pravidlo přidáte příkazem [az network application-gateway rule create](/cli/azure/network/application-gateway/rule#az-network-application-gateway-rule-create).
 
 ```azurecli-interactive
 az network application-gateway rule create \
@@ -229,7 +231,7 @@ az network public-ip show \
   --output tsv
 ```
 
-Použití záznamů typu A se nedoporučuje, protože virtuální IP adresa se při restartování aplikační brány může změnit.
+Použití záznamů A se nedoporučuje, protože virtuální IP adresa se může změnit při restartování služby Application Gateway.
 
 ## <a name="test-the-application-gateway"></a>Otestování aplikační brány
 
@@ -246,9 +248,9 @@ Změňte adresu na jinou ze svých domén. Měli byste vidět něco podobného j
 Až nebudete skupinu prostředků, aplikační bránu a další související prostředky potřebovat, odeberte je.
 
 ```azurecli-interactive
-az group delete --name myResourceGroupAG --location eastus
+az group delete --name myResourceGroupAG
 ```
 
 ## <a name="next-steps"></a>Další postup
 
-* [Vytvoření aplikační brány s pravidly směrování založenými na cestě URL](./tutorial-url-route-cli.md)
+[Vytvoření aplikační brány s pravidly směrování založenými na cestě URL](./tutorial-url-route-cli.md)

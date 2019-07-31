@@ -10,14 +10,14 @@ ms.devlang: csharp
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 06/21/2019
-ms.openlocfilehash: 1433e71a5e4f9d4effe82d489145c364355100d4
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: c8bfb159dc56ff701f8d3c7eff00f04e28f8704a
+ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67330442"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68667822"
 ---
-# <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-c"></a>Rychlý start: Odesílání telemetrických dat ze zařízení do služby IoT hub a čtení s back endové aplikace (C#)
+# <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-net"></a>Rychlý start: Posílání telemetrie ze zařízení do služby IoT Hub a jejich čtení pomocí back-endové aplikace (.NET)
 
 [!INCLUDE [iot-hub-quickstarts-1-selector](../../includes/iot-hub-quickstarts-1-selector.md)]
 
@@ -41,7 +41,7 @@ Aktuální verzi C# na počítači používaném pro vývoj můžete ověřit po
 dotnet --version
 ```
 
-Spusťte následující příkaz pro přidání rozšíření Microsoft Azure IoT pro Azure CLI do instance služby Cloud Shell. Rozšíření IOT přidá služby IoT Hub, IoT Edge a IoT zařízení zřizování služby (DPS) konkrétní příkazy rozhraní příkazového řádku Azure.
+Spuštěním následujícího příkazu přidejte do instance služby Cloud Shell Microsoft Azure rozšíření IoT pro rozhraní příkazového řádku Azure. Rozšíření IOT přidá do Azure CLI příkazy určené pro služby IoT Hub, IoT Edge a IoT Device Provisioning Service (DPS).
 
 ```azurecli-interactive
 az extension add --name azure-cli-iot-ext
@@ -57,11 +57,11 @@ Stáhněte si ukázkový projekt C# z https://github.com/Azure-Samples/azure-iot
 
 Zařízení musí být zaregistrované ve vašem centru IoT, aby se mohlo připojit. V tomto rychlém startu zaregistrujete simulované zařízení pomocí služby Azure Cloud Shell.
 
-1. Spusťte následující příkaz v Azure Cloud Shell vytvořte identitu zařízení.
+1. Spuštěním následujícího příkazu v Azure Cloud Shell vytvořte identitu zařízení.
 
-   **YourIoTHubName**: Nahraďte tento zástupný text pod názvem, který jste vybrali pro službu IoT hub.
+   **YourIoTHubName**: Nahraďte tento zástupný symbol níže názvem, který zvolíte pro Centrum IoT.
 
-   **MyDotnetDevice**: Název zařízení, které se registrace. Použití **MyDotnetDevice** jak je znázorněno. Pokud zvolíte jiný název pro vaše zařízení, musíte použít tento název v rámci tohoto článku a aktualizujte název zařízení v ukázkové aplikace před spuštěním je.
+   **MyDotnetDevice**: Název zařízení, které se chystáte registrovat. Použijte **MyDotnetDevice** , jak je znázorněno na obrázku. Pokud pro své zařízení zvolíte jiný název, budete ho muset použít v celém rámci tohoto článku a před jeho spuštěním aktualizovat název zařízení v ukázkových aplikacích.
 
     ```azurecli-interactive
     az iot hub device-identity create --hub-name YourIoTHubName --device-id MyDotnetDevice
@@ -69,7 +69,7 @@ Zařízení musí být zaregistrované ve vašem centru IoT, aby se mohlo připo
 
 2. Spuštěním následujícího příkazu ve službě Azure Cloud Shell získejte _připojovací řetězec zařízení_ pro zařízení, které jste právě zaregistrovali:
 
-   **YourIoTHubName**: Nahraďte tento zástupný text pod názvem, který jste vybrali pro službu IoT hub.
+   **YourIoTHubName**: Nahraďte tento zástupný symbol níže názvem, který zvolíte pro Centrum IoT.
 
     ```azurecli-interactive
     az iot hub device-identity show-connection-string --hub-name YourIoTHubName --device-id MyDotnetDevice --output table
@@ -81,9 +81,9 @@ Zařízení musí být zaregistrované ve vašem centru IoT, aby se mohlo připo
 
     Tuto hodnotu použijete později v tomto rychlém startu.
 
-3. Musíte také _koncový bod kompatibilní se službou Event Hubs_, _kompatibilní se službou Event Hubs cesta_, a _primární klíč služby_ ze služby IoT hub umožňuje back endové aplikace připojení ke službě IoT hub a načítání zpráv. Následující příkazy načtou tyto hodnoty pro centrum IoT:
+3. K povolení back-endové aplikace pro připojení ke službě IoT Hub a k načtení zpráv budete potřebovat taky _koncový bod kompatibilní s Event Hubs_, _cestu kompatibilní s Event Hubs_a _primární klíč služby_ z vašeho centra IoT. Následující příkazy načtou tyto hodnoty pro centrum IoT:
 
-   **YourIoTHubName**: Nahraďte tento zástupný text pod názvem, který jste vybrali pro službu IoT hub.
+   **YourIoTHubName**: Nahraďte tento zástupný symbol níže názvem, který zvolíte pro Centrum IoT.
 
     ```azurecli-interactive
     az iot hub show --query properties.eventHubEndpoints.events.endpoint --name YourIoTHubName
@@ -129,11 +129,11 @@ Back-endová aplikace se připojí ke koncovému bodu **Events** na straně slu�
 
 2. V libovolném textovém editoru otevřete soubor **ReadDeviceToCloudMessages.cs**. Aktualizujte následující proměnné a uložte provedené změny souboru.
 
-    | Proměnná | Value |
+    | Proměnná | Hodnota |
     | -------- | ----------- |
     | `s_eventHubsCompatibleEndpoint` | Hodnotu proměnné nahraďte koncovým bodem kompatibilním s Event Hubs, který jste si předtím poznamenali. |
     | `s_eventHubsCompatiblePath`     | Hodnotu proměnné nahraďte cestou kompatibilní s Event Hubs, kterou jste si předtím poznamenali. |
-    | `s_iotHubSasKey`                | Nahraďte hodnotou proměnné, primární klíč služby, které jste si poznamenali dříve. |
+    | `s_iotHubSasKey`                | Nahraďte hodnotu proměnné primárním klíčem služby, na který jste si poznamenali dříve. |
 
 3. V okně místního terminálu pomocí následujících příkazů nainstalujte požadované knihovny pro back-endovou aplikaci:
 
@@ -162,4 +162,4 @@ V tomto rychlém startu jste nastavili centrum IoT, zaregistrovali zařízení, 
 Informace o tom, jak řídit simulované zařízení z back-endové aplikace, najdete v dalším rychlém startu.
 
 > [!div class="nextstepaction"]
-> [Rychlé zprovoznění: Řízení zařízení připojeném do služby IoT hub](quickstart-control-device-dotnet.md)
+> [Rychlé zprovoznění: Řízení zařízení připojeného k centru IoT](quickstart-control-device-dotnet.md)

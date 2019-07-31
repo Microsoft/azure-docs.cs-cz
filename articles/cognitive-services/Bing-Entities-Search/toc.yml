@@ -93,6 +93,7 @@
     - name: Koncové body Vyhledávání entit Bingu
       href: entity-search-endpoint.md
     - name: Analýzy pro rozhraní API Bingu pro vyhledávání entit
-      href: bing-entity-stats.md
+      maintainContext: true
+      href: ../bing-web-search/bing-web-stats.md
     - name: Dodržování předpisů
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'

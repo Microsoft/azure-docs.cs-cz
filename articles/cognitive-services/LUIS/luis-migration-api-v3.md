@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 07/22/2019
+ms.date: 07/30/2019
 ms.author: diberry
-ms.openlocfilehash: edaa36cf22e63d42eb347aea3da1816e2c93b45e
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: a61f196a509c3e84b518fffb4eb78f5f7430cb28
+ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479219"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68667581"
 ---
 # <a name="preview-migrate-to-api-version-3x-for-luis-apps"></a>Verze Preview: Migrace na rozhraní API verze 3. x pro aplikace LUIS
 
@@ -150,7 +150,9 @@ Horních vlastností JSON pro v3 jsou:
 }
 ```
 
-`normalizedQuery` Obsahuje pravopisné opravy. To odpovídá vlastnosti `alteredQuery`v2 API.  
+<!--
+The `alteredQuery` contains spelling corrections. This corresponds to the V2 API property `alteredQuery`.  
+-->
 
 `intents` Objekt je neuspořádaný seznam. Nepředpokládáme, že první podřízená `intents` položka v odpovídá. `topIntent` Místo toho použijte `topIntent` hodnotu k nalezení skóre:
 
@@ -451,6 +453,6 @@ Tato odpověď obsahuje entitu seznam se všemi ostatními předpovězenými ent
 
 Rozhraní v2 API nebude zastaralé po dobu nejméně 9 měsíců od verze V3 Preview. 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Pomocí dokumentace k rozhraní V3 API aktualizujte existující volání REST na rozhraní API [koncového bodu](https://aka.ms/luis-api-v3) Luis. 
