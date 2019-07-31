@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 06/15/2017
 ms.author: matd
 ms.openlocfilehash: 957fff73f2406e0e057a7c978dd76a6bd9c156b7
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/15/2019
+ms.lasthandoff: 07/31/2019
 ms.locfileid: "67876212"
 ---
 # <a name="storsimple-as-a-backup-target-with-netbackup"></a>StorSimple jako cíl zálohování s NetBackup
@@ -300,11 +300,11 @@ Následující obrázek ukazuje mapování typického svazku na úlohu zálohov�
 
 Tady je příklad plánu GFS rotace na čtyři týdny, měsíčně a ročně:
 
-| Frekvence/typ zálohování | Úplná | Přírůstkové (dny 1-5)  |   
+| Frekvence/typ zálohování | Úplný | Přírůstkové (dny 1-5)  |   
 |---|---|---|
 | Týdně (týdny 1-4) | Sobota | Pondělí – pátek |
 | Měsíční  | Sobota  |   |
-| Rok | Sobota  |   |
+| Ročně | Sobota  |   |
 
 ## <a name="assigning-storsimple-volumes-to-a-netbackup-backup-job"></a>Přiřazení svazků StorSimple k úloze zálohování NetBackup
 
@@ -408,14 +408,14 @@ Následující tabulka ukazuje, jak nastavit zálohování pro spouštění na m
 
 ### <a name="gfs-example-schedule-gfs-rotation-weekly-monthly-and-yearly-schedule"></a>GFS příklad plánu: GFS rotace týdně, měsíčně a ročního plánu
 
-| Týden | Úplná | Přírůstkový den 1 | Přírůstkový den 2 | Přírůstkový den 3 | Přírůstkový den 4 | Přírůstkový den 5 |
+| Týden | Úplný | Přírůstkový den 1 | Přírůstkový den 2 | Přírůstkový den 3 | Přírůstkový den 4 | Přírůstkový den 5 |
 |---|---|---|---|---|---|---|
 | Týden 1 | Místní svazek RAID  | Místní svazek RAID | Místní svazek RAID | Místní svazek RAID | Místní svazek RAID | Místní svazek RAID |
 | Týden 2 | StorSimple týdny 2-4 |   |   |   |   |   |
 | Týden 3 | StorSimple týdny 2-4 |   |   |   |   |   |
 | Týden 4 | StorSimple týdny 2-4 |   |   |   |   |   |
 | Měsíční | StorSimple měsíčně |   |   |   |   |   |
-| Rok | StorSimple ročně  |   |   |   |   |   |
+| Ročně | StorSimple ročně  |   |   |   |   |   |
 
 
 ## <a name="assign-storsimple-volumes-to-a-netbackup-archive-and-duplication-job"></a>Přiřazení svazků StorSimple k úloze archivace a duplikování NetBackup

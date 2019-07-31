@@ -1,34 +1,34 @@
 ---
-title: Řešení potíží – Personalizer
+title: Řešení potíží – přizpůsobení
 titleSuffix: Azure Cognitive Services
-description: Řešení potíží s dotazy týkající se Personalizer najdete v tomto článku.
-author: edjez
+description: V tomto článku najdete otázky týkající se řešení potíží s přizpůsobením.
+author: diberry
 manager: nitinme
 services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: article
 ms.date: 06/15/2019
-ms.author: edjez
-ms.openlocfilehash: be6119d96b89622f45db1099a47e858a5893c2cb
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.author: diberry
+ms.openlocfilehash: 7f7a6a08b86d21287c644f6a851d465d97f32e74
+ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67722244"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68663687"
 ---
-# <a name="personalizer-troubleshooting"></a>Řešení potíží s personalizer
+# <a name="personalizer-troubleshooting"></a>Řešení potíží s přizpůsobením
 
-Tento článek obsahuje odpovědi na časté otázky ke správě řešení problémů s Personalizer.
+Tento článek obsahuje odpovědi na nejčastější dotazy k řešení potíží týkajících se přizpůsobení.
 
-## <a name="learning-loop"></a>Učení smyčky
+## <a name="learning-loop"></a>Výuková smyčka
 
-### <a name="the-learning-loop-doesnt-seem-to-learn-how-do-i-fix-this"></a>Smyčka learning vypadá, že nepodporuje další. Jak to mohu napravit?
+### <a name="the-learning-loop-doesnt-seem-to-learn-how-do-i-fix-this"></a>Výuková smyčka se zřejmě neučí. Jak to můžu vyřešit?
 
-Smyčka learning musí několik tisíc volání Reward předtím, než pořadí volání upřednostnit efektivně. 
+Výuková smyčka potřebuje několik tisíc volání odměna před tím, než volání pořadí zařadí přednost. 
 
-Pokud si nejste jisti, o jak smyčku learning aktuálně nepracuje, spusťte [offline hodnocení](concepts-offline-evaluation.md)a použijí tyto zásady opravený učení. 
+Pokud si nejste jistí, jak se vaše výuková smyčka právě chová, spusťte [testování offline](concepts-offline-evaluation.md)a použijte opravené zásady učení. 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
-[Nastavte četnost aktualizace modelu](how-to-settings.md#model-update-frequency)
+[Konfigurace frekvence aktualizace modelu](how-to-settings.md#model-update-frequency)

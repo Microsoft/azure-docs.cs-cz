@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 05/22/2017
 ms.author: gwallace
 ms.openlocfilehash: 5f2ec77452b90d4270de043955fc0b443f045d5b
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2019
+ms.lasthandoff: 07/31/2019
 ms.locfileid: "68359687"
 ---
 # <a name="enabling-azure-diagnostics-in-azure-cloud-services"></a>Povolení Azure Diagnostics v Azure Cloud Services
@@ -24,7 +24,7 @@ Další informace najdete v tématu [přehled Azure Diagnostics](../azure-diagno
 Tento návod popisuje, jak implementovat roli pracovního procesu Azure, která generuje data telemetrie pomocí třídy EventSource .NET. Azure Diagnostics se používá ke shromažďování dat telemetrie a jejich uložení v účtu úložiště Azure. Při vytváření role pracovního procesu Visual Studio automaticky povolí diagnostiku 1,0 jako součást řešení v sadách Azure SDK pro .NET 2,4 a starší. Následující pokyny popisují proces vytvoření role pracovního procesu, zakázání diagnostiky 1,0 z řešení a nasazení diagnostiky 1,2 nebo 1,3 do role pracovního procesu.
 
 ### <a name="prerequisites"></a>Požadavky
-V tomto článku se předpokládá, že máte předplatné Azure a používáte sadu Visual Studio se sadou Azure SDK. Pokud předplatné Azure nemáte, můžete si zaregistrovat [bezplatnou zkušební verzi][Free Trial]. Make sure to [Install and configure Azure PowerShell version 0.8.7 or later][Install and configure Azure PowerShell version 0.8.7 or later].
+V tomto článku se předpokládá, že máte předplatné Azure a používáte sadu Visual Studio se sadou Azure SDK. Pokud předplatné Azure nemáte, můžete si zaregistrovat [bezplatnou zkušební verzi][Free Trial]. Nezapomeňte [nainstalovat a nakonfigurovat Azure PowerShell verze 0.8.7 nebo novější][Install and configure Azure PowerShell version 0.8.7 or later].
 
 ### <a name="step-1-create-a-worker-role"></a>Krok 1: Vytvoření role pracovního procesu
 1. Spusťte **Visual Studio**.
@@ -122,13 +122,13 @@ namespace WorkerRole1
 
 [!INCLUDE [cloud-services-wad-warning](../../includes/cloud-services-wad-warning.md)]
 
-1. Nasaďte svoji pracovní roli do Azure ze sady Visual Studio tak, že vyberete projekt **WadExample** v nabídce  Průzkumník řešení pak publikujete z nabídky **sestavit** .
+1. Nasaďte svoji pracovní roli do Azure ze sady Visual Studio tak, že vyberete projekt **WadExample** v nabídce Průzkumník řešení pak publikujete z nabídky **sestavit** .
 2. Zvolte vaše předplatné.
 3. V dialogovém okně **Microsoft Azure nastavení publikování** vyberte **vytvořit novou...** .
 4. V dialogu **vytvořit cloudovou službu a účet úložiště** zadejte **název** (například "WadExample") a vyberte oblast nebo skupinu vztahů.
 5. Nastavte **prostředí** na **fázování**.
 6. Podle potřeby upravte všechna další **Nastavení** a klikněte na **publikovat**.
-7. Po dokončení nasazení ověřte v Azure Portal, že je vaše cloudová služba ve spuštěném  stavu.
+7. Po dokončení nasazení ověřte v Azure Portal, že je vaše cloudová služba ve spuštěném stavu.
 
 ### <a name="step-4-create-your-diagnostics-configuration-file-and-install-the-extension"></a>Krok 4: Vytvoření konfiguračního souboru diagnostiky a instalace rozšíření
 1. Stáhněte si definici schématu veřejného konfiguračního souboru spuštěním následujícího příkazu PowerShellu:

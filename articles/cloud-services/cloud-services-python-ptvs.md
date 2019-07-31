@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 07/18/2017
 ms.author: gwallace
 ms.openlocfilehash: 981b1cc4a7adb98ba68ebf3a7673b7116479e704
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2019
+ms.lasthandoff: 07/31/2019
 ms.locfileid: "68359576"
 ---
 # <a name="python-web-and-worker-roles-with-python-tools-for-visual-studio"></a>Webové role a role pracovních procesů Pythonu při použití nástrojů Python Tools for Visual Studio
@@ -23,15 +23,15 @@ Tento článek obsahuje přehled používání webových rolí a rolí pracovní
 ## <a name="prerequisites"></a>Požadavky
 * [Visual Studio 2013, 2015 nebo 2017](https://www.visualstudio.com/)
 * [Python Tools for Visual Studio][Python Tools for Visual Studio] (PTVS)
-* [Azure SDK Tools pro VS 2013][Azure SDK Tools for VS 2013] or  
-[Azure SDK Tools for VS 2015][Azure SDK Tools for VS 2015] nebo  
-[Azure SDK Tools pro VS 2017] [Azure SDK Tools pro VS 2017]
+* [Azure SDK Tools pro VS 2013][Azure SDK Tools for VS 2013] nebo  
+[Azure SDK Tools pro VS 2015][Azure SDK Tools for VS 2015] nebo  
+[Azure SDK Tools pro VS 2017][Azure SDK Tools for VS 2017]
 * [Python 2.7 (32bitová verze)][Python 2.7 32-bit] nebo [Python 3.5 (32bitová verze)][Python 3.5 32-bit]
 
 [!INCLUDE [create-account-and-websites-note](../../includes/create-account-and-websites-note.md)]
 
 ## <a name="what-are-python-web-and-worker-roles"></a>Co jsou webové role a role pracovních procesů Pythonu?
-V rámci systému Azure jsou dostupné tři výpočetní modely ke spouštění aplikací: [Web Apps funkce v Azure App Service][execution model-web sites], [Azure Virtual Machines][execution model-vms]a model spouštění [Azure Cloud Services][– cloudové služby]. Všechny tři modely podporují Python. Služby Cloud Services, které obsahují webové role a role pracovních procesů, zajišťují *PaaS (Platform as a Service)* . Webová role v rámci cloudové služby poskytuje vyhrazený webový server Internetové informační služby (IIS) pro hostování front-endových webových aplikací, zatímco role pracovních procesů dokážou spouštět asynchronní, dlouhotrvající nebo trvalé úlohy, které jsou nezávislé na vstupu nebo interakci uživatelů.
+V rámci systému Azure jsou dostupné tři výpočetní modely ke spouštění aplikací: [Web Apps funkce v Azure App Service][execution model-web sites], [Azure Virtual Machines][execution model-vms]a [Azure Cloud Services][execution model-cloud services]. Všechny tři modely podporují Python. Služby Cloud Services, které obsahují webové role a role pracovních procesů, zajišťují *PaaS (Platform as a Service)* . Webová role v rámci cloudové služby poskytuje vyhrazený webový server Internetové informační služby (IIS) pro hostování front-endových webových aplikací, zatímco role pracovních procesů dokážou spouštět asynchronní, dlouhotrvající nebo trvalé úlohy, které jsou nezávislé na vstupu nebo interakci uživatelů.
 
 Další informace najdete v článku [Co je cloudová služba?].
 
@@ -325,7 +325,7 @@ Pár minut bude probíhat nasazování a pak už vám na Azure začne běžet we
 ### <a name="investigate-logs"></a>Prozkoumání protokolů
 Po spuštění virtuálního počítače cloudové služby a instalaci Pythonu si můžete prohlédnou protokoly a hledat případné zprávy o neúspěchu. Tyto protokoly jsou umístěné ve složce **C:\Resources\Directory\\{role}\LogFiles**. Soubor **PrepPython.err.txt** obsahuje alespoň jednu chybu, protože se skript pokusil zjistit, zda je nainstalován Python, a soubor **PipInstaller.err.txt** může obsahovat zprávu ohledně zastaralé verze programu pip.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Další podrobné informace o práci s webovými rolemi a rolemi pracovních procesů v nástrojích Python Tools for Visual Studio najdete v dokumentaci k těmto nástrojům:
 
 * [Projekty cloudových služeb][Cloud Service Projects]
